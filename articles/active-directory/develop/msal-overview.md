@@ -3,7 +3,7 @@ title: Tudnivalók a Microsoft Authentication Library (MSAL) szolgáltatásról 
 description: A Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazások fejlesztői számára a jogkivonatok beszerzését a biztonságos webes API-k meghívásához. Ezek a webes API-k lehetnek a Microsoft Graph, más Microsoft API-k, harmadik féltől származó webes API-k vagy a saját webes API-jai. A MSAL több alkalmazás-architektúrát és platformot is támogat.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/25/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b09f5c3fffe73b399fd02f74166f1c52fc90accd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: d686fad8471064f127e75f10f42f34350c764837
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032367"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532543"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>A Microsoft Authentication Library (MSAL) áttekintése
 A Microsoft Authentication Library (MSAL) lehetővé teszi a [](developer-glossary.md#security-token) fejlesztők számára a tokenek beszerzését a Microsoft Identity platform-végpontból a biztonságos webes API-k eléréséhez. Ezek a webes API-k lehetnek a Microsoft Graph, más Microsoft API-k, harmadik féltől származó webes API-k vagy a saját webes API-jai. A MSAL olyan .NET-, JavaScript-, Android-és iOS-eszközökhöz érhető el, amelyek számos különböző alkalmazás-architektúrát és platformot támogatnak.

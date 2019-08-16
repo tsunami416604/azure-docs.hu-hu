@@ -1,6 +1,6 @@
 ---
-title: Durable Functions – az Azure a külső vezénylések
-description: Ismerje meg, hogy külső vezénylések megvalósítása az Azure Functions a Durable Functions bővítmény használatával.
+title: Örök Összehangolók a Durable Functionsban – Azure
+description: Megtudhatja, hogyan valósítható meg az örök Összehangolók a Azure Functions Durable Functions-bővítményének használatával.
 services: functions
 author: ggailey777
 manager: jeconnoc
@@ -10,33 +10,33 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 99eabf3bc91887ff19b3a0bc9cf6647d32fa6750
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 352fd16d98e6f376e230d2112a9b94b66ccc1b5a
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787564"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542732"
 ---
-# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) a külső vezénylések
+# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Örök összeszerelések Durable Functionsban (Azure Functions)
 
-*Külső vezénylések* az orchestrator-függvény, amely soha nem végződhet. Ezek akkor hasznos, ha a használni kívánt [Durable Functions](durable-functions-overview.md) összesítők adatait és a egy végtelen ciklust igénylő forgatókönyvek.
+Az *örök* Összehangolók olyan Orchestrator függvények, amelyek soha nem fejeződik be. Akkor hasznosak, ha a Durable Functionst [](durable-functions-overview.md) szeretné használni a gyűjtők számára, és olyan forgatókönyveket, amelyek végtelen hurkot igényelnek.
 
-## <a name="orchestration-history"></a>Vezénylési előzmények
+## <a name="orchestration-history"></a>Előkészítési előzmények
 
-A [ellenőrzőpont és visszajátszás](durable-functions-checkpointing-and-replay.md), tartós feladat keretében nyomon követi, hogy az egyes függvény vezénylési előzményeit. Az előzményekben folyamatosan, amíg az orchestrator-funkció ütemezéséhez új munkahelyi folyamatosan nő. Ha az orchestrator függvény végtelen ciklust lépnek, és folyamatosan ütemezi a munkát, az előzmények sikerült növelheti a kritikus fontosságú, nagy és jelentős teljesítménybeli problémákat okozhat. A *külső vezénylési* fogalom úgy lett kialakítva, az ilyen típusú problémák végtelen hurkok igénylő alkalmazások esetében csökkentése érdekében.
+Az ellenőrzőpontok [és a visszajátszás](durable-functions-checkpointing-and-replay.md)terén kifejtetteknek megfelelően a tartós feladatok keretrendszere nyomon követi az egyes függvények előkészítésének előzményeit. Az előzmények folyamatosan növekednek, amíg a Orchestrator függvény továbbra is új munkát ütemezhet. Ha a Orchestrator függvény végtelen ciklusba kerül, és folyamatosan dolgozik, az előzmények kritikusan nagy mértékben növekednek, és jelentős teljesítménnyel kapcsolatos problémákat okozhatnak. Az *örök* előkészítési koncepció célja, hogy enyhítse az ilyen típusú problémákat a végtelen hurkokat igénylő alkalmazások esetében.
 
-## <a name="resetting-and-restarting"></a>Alaphelyzetbe állítása és újraindítása
+## <a name="resetting-and-restarting"></a>Alaphelyzetbe állítás és újraindítás
 
-Végtelen hurkok helyett az orchestrator funkciók állapotuk alaphelyzetbe meghívásával a [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) metódust. Ez a módszer egy egyetlen szerializálható JSON paramétert, amely az új beviteli válik az orchestrator függvény a következő generációs vesz igénybe.
+A végtelen hurkok használata helyett a Orchestrator functions a [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) metódus meghívásával állítja vissza az állapotukat. Ez a metódus egy JSON-szerializálható paramétert használ, amely a következő Orchestrator-függvény új bemenete lesz.
 
-Amikor `ContinueAsNew` nevezzük, a példány enqueues magát, mielőtt kilép, egy üzenetet. Az üzenet az új bemeneti érték a példány újraindul. Az azonos Példányazonosító marad, de az orchestrator-függvény előzmények hatékonyan csonkítja.
+Ha `ContinueAsNew` a hívása megtörténik, a példány enqueues egy üzenetet, mielőtt kilép. Az üzenet újraindítja a példányt az új bemeneti értékkel. A rendszer megőrzi a példány AZONOSÍTÓját, de a Orchestrator függvény előzményeit a rendszer gyakorlatilag csonkolja.
 
 > [!NOTE]
-> A tartós feladat keretrendszer megtartja ugyanazt a Példányazonosító, de belsőleg létrehoz egy új *végrehajtási Azonosítóhoz* az orchestrator-függvény, amely lekérdezi állítsa alaphelyzetbe a `ContinueAsNew`. A végrehajtási Azonosítóhoz általában nem lesz közzétéve kívülről, de hasznos tudnivalók az orchestration végrehajtási történő hibakeresése során.
+> Az állandó feladathoz tartozó keretrendszer ugyanazt a példányt tárolja, de belsőleg létrehoz egy új *végrehajtási azonosítót* a Orchestrator függvény számára, amely `ContinueAsNew`alaphelyzetbe áll. Ez a végrehajtási azonosító általában nem külsőleg van kitéve, de hasznos lehet tudni, hogy mikor kell a hibakeresést végrehajtani.
 
-## <a name="periodic-work-example"></a>Rendszeres munkahelyi példa
+## <a name="periodic-work-example"></a>Ismétlődő munka példája
 
-Egy külső vezénylések funkcióban kódot, amely a rendszeres munkához határozatlan időre van szüksége.
+Az örök feldolgozók esetében az egyik használati eset olyan kód, amelynek határozatlan idejű munkát kell végeznie.
 
 ### <a name="c"></a>C#
 
@@ -45,7 +45,7 @@ Egy külső vezénylések funkcióban kódot, amely a rendszeres munkához hatá
 public static async Task Run(
     [OrchestrationTrigger] DurableOrchestrationContext context)
 {
-    await context.CallActivityAsync("DoCleanup");
+    await context.CallActivityAsync("DoCleanup", null);
 
     // sleep for one hour between cleanups
     DateTime nextCleanup = context.CurrentUtcDateTime.AddHours(1);
@@ -55,7 +55,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
 ```javascript
 const df = require("durable-functions");
@@ -72,15 +72,15 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Ebben a példában és a egy időzítő által aktivált függvény közötti különbség itt törlési eseményindító többször nem a ütemezés szerint. Például egy CRON-ütemezését, amely végrehajtja a függvényt óránként hajtja végre, 1:00, 2:00, 3:00-kor stb., és sikerült potenciálisan felmerülő átfedés hibák. Ebben a példában azonban a tisztítás 30 percet vesz igénybe. Ha ezután azt lesz ütemezve, 1:00, 2:30, 4:00, stb., és nem okoz átfedés.
+A példa és az időzítő által aktivált függvény közötti különbség az, hogy a törlési kiváltó idő itt nem menetrend alapján történik. Például egy olyan CRON-ütemterv, amely óránként hajt végre egy függvényt, a 1:00-es, 2:00-es, 3:00-as és más-más időpontban hajtja végre, és az átfedésben lévő problémákba ütközik. Ebben a példában azonban, ha a tisztítás 30 percet vesz igénybe, akkor a rendszer a 1:00, 2:30, 4:00 stb. időpontban ütemezi, és az átfedés nem lehetséges.
 
-## <a name="exit-from-an-eternal-orchestration"></a>Kilépés a külső vezénylések
+## <a name="exit-from-an-eternal-orchestration"></a>Kilépés az örök összeszerelésből
 
-Ha egy orchestrator-funkció végül befejezéséhez szükséges, akkor ehhez mindössze *nem* hívja `ContinueAsNew` , és lépjen ki a függvényt.
+Ha egy Orchestrator függvénynek végül végre kell hajtania a műveletet, akkor mindössze annyit kell `ContinueAsNew` tennie, hogy *nem* hívja meg a függvényt, és hagyja ki a funkciót.
 
-Ha egy orchestrator-függvényt egy végtelen ciklust, és igényeinek megfelelően le kell állítani, akkor a [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) metódus leállításához. További információkért lásd: [példány felügyeleti](durable-functions-instance-management.md).
+Ha egy Orchestrator-függvény végtelen ciklusban van, és le kell állítani, a [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) metódus használatával állítsa le. További információ: példányok [kezelése](durable-functions-instance-management.md).
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan valósíthat meg egyszeres vezénylések](durable-functions-singletons.md)
+> [Ismerje meg, hogyan valósítható meg az Egypéldányos előkészítés](durable-functions-singletons.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció a workdayjel képes |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Workday között.
+title: 'Oktatóanyag: Egyszeri bejelentkezéses (SSO) integráció Azure Active Directory munkanapokkal | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és munkanap között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,242 +13,242 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aba2d3bab7d709b4bb9ac18e4a9c6ed052a5fb83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 217a51c1032f946e8aaf377627f30aa4faa83a86
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086968"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542707"
 ---
-# <a name="tutorial-integrate-workday-with-azure-active-directory"></a>Oktatóanyag: Workday integrálása az Azure Active Directoryval
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Oktatóanyag: Egyszeri bejelentkezéses (SSO) integráció Azure Active Directory munkanapokkal
 
-Ebben az oktatóanyagban elsajátíthatja a Workday integrálása az Azure Active Directory (Azure AD) lesz. Workday integrálása az Azure ad-vel, akkor a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a munkanapokat Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a munkanapokat, a következőket teheti:
 
-* Szabályozza, ki férhet hozzá a Workday az Azure AD-ben.
-* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezett a Workday az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* A munkanapokhoz hozzáféréssel rendelkező Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a munkanapokra az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként szüksége van a következő elemek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, hozzájuthat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* Munkanapi egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* A munkaidő egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Támogatja a WORKDAY **SP** által kezdeményezett egyszeri bejelentkezés.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A munkanap támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
 
-## <a name="adding-workday-from-the-gallery"></a>Workday hozzáadása a katalógusból
+## <a name="adding-workday-from-the-gallery"></a>Munkanapok hozzáadása a katalógusból
 
-Az Azure AD integrálása a Workday konfigurálásához hozzá kell Workday a galériából a felügyelt SaaS-alkalmazások listájára.
+A munkanapoknak az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a munkaterületet a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
-1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
-1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
-1. Az a **Hozzáadás a katalógusból** területén írja be a **Workday** kifejezést a keresőmezőbe.
-1. Válassza ki **Workday** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **munkanap** kifejezést a keresőmezőbe.
+1. Válassza ki a munkanapokat az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on-for-workday"></a>Azure AD-beli egyszeri bejelentkezés konfigurálása és tesztelése munkanapokon
 
-Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata workdayjel képes **Britta Simon**. SSO működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolat kapcsolatot hozhat létre az WORKDAY kell.
+Konfigurálja és tesztelje az Azure AD SSO-t munkanapokon egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között munkanapokon.
 
-Az Azure AD SSO Workday tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+Az Azure AD SSO munkanapokkal való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Konfigurálja a Workday](#configure-workday)**  alkalmazás oldalán az egyszeri bejelentkezési beállításainak konfigurálására.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Workday tesztfelhasználót](#create-workday-test-user)**  szeretné, hogy egy Britta Simon megfelelője a WORKDAY, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  ellenőrzése, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
+    1. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+2. A **[munkanap beállítása](#configure-workday)** az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+    1. **[Hozzon létre egy munkanap-tesztelési felhasználót](#create-workday-test-user)** , hogy a felhasználó Azure ad-képviseletéhez csatolt B. Simon-beli munkatársaival rendelkezzen.
+3. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Workday** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
-1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
+1. A [Azure Portal](https://portal.azure.com/)a **munkanap** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **alapszintű SAML-konfigurációja** lap, adja meg az értékeket a következő mezőket:
+1. Az alapszintű **SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://impl.workday.com/<tenant>/login-saml2.flex`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://impl.workday.com/<tenant>/login-saml2.flex`
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://www.workday.com`
+    b. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`http://www.workday.com`
 
-    c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://impl.workday.com/<tenant>/login-saml.htmld`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://impl.workday.com/<tenant>/login-saml.htmld`
 
     > [!NOTE]
-    > Ezek az értékek nem a valós. Ezek az értékek frissítse a tényleges bejelentkezési URL-cím és a válasz URL-cím. A válasz URL-cím rendelkeznie kell egy altartomány például: www, wd2, wd3, wd3-impl, wd5, wd5-impl).
-    > Vagy hasonló `http://www.myworkday.com` működik, de `http://myworkday.com` nem létezik. Kapcsolattartó [Workday ügyfél-támogatási csapatának](https://www.workday.com/en-us/partners-services/services/support.html) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valódiak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. A válasz URL-címének rendelkeznie kell egy altartománnyal, például: www, WD2, wd3, wd3-Impl, wd5, wd5-Impl).
+    > Hasonló `http://www.myworkday.com` , de `http://myworkday.com` nem használható. Az értékek lekéréséhez forduljon a munkanapokhoz tartozó [ügyfél-támogatási csapathoz](https://www.workday.com/en-us/partners-services/services/support.html) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. A Workday-alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. Munkanapi alkalmazás vár **nameidentifier** a leképezendő **user.mail**, **UPN**stb., így a attribútumleképezés szerkesztéséhez kattintson a szükséges  **Szerkesztés** ikonra, és módosítsa a attribútumleképezés.
+6. A munkanap alkalmazása egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A munkanap-alkalmazás azt várja, hogy a **NameIdentifier** a **User. mail**, **UPN**stb. használatával legyen leképezve, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy rákattint a **Szerkesztés** ikonra, és megváltoztatja az attribútum-hozzárendelést.
 
     ![image](common/edit-attribute.png)
 
     > [!NOTE]
-    > Itt azt leképezett az egyszerű felhasználónév (user.userprincipalname) a Névazonosító alapértelmezettként. Meg kell feleltetni a Névazonosító a tényleges felhasználói Azonosítót a Workday-fiókban (az e-mailben UPN, stb.) az egyszeri bejelentkezés sikeres használatához.
+    > Itt a name ID-t az UPN (User. userPrincipalName) értékkel rendelte hozzá alapértelmezettként. Az egyszeri bejelentkezés sikeres működéséhez le kell képeznie a tényleges felhasználói azonosító nevét (e-mail-címe, UPN stb.).
 
-1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **tanúsítvány (Base64)** válassza **letöltése** töltse le a tanúsítványt, és menti azt a számítógépet.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-1. Módosíthatja a **aláírás** lehetőségek a követelmény megfelelően kattintson **szerkesztése** gombra kattintva nyissa meg a **SAML-aláíró tanúsítvány** párbeszédpanel.
+1. Ha módosítani szeretné az aláírási beállításokat a követelmény szerint, kattintson a **Szerkesztés** gombra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
 
     ![image](common/edit-certificate.png) 
 
     ![image](./media/workday-tutorial/signing-option.png)
 
-    a. Válassza ki **bejelentkezési SAML-válasz és -előfeltétel** a **aláírási beállítás**.
+    a. Válassza az **SAML-válasz aláírása és** az **aláírási beállítás**lehetőséget.
 
     b. Kattintson a **Save** (Mentés) gombra
 
-1. Az a **állítsa be a Workday** területén másolja a megfelelő URL-címe szerint.
+1. A **munkanap beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
-   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+   ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="configure-workday"></a>Workday konfigurálása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-1. Egy másik böngészőablakban jelentkezzen be a Workday vállalati hely rendszergazdaként.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-2. Az a **keresőmezőbe** nevű keresési **szerkesztése Bérlőbeállítást – biztonsági** bal oldalt a kezdőlap tetején található.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
-    ![Bérlői biztonsági szerkesztése](./media/workday-tutorial/IC782925.png "bérlői biztonsági szerkesztése")
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-3. Az a **átirányítási URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát a munkanapokhoz való hozzáférés biztosításával.
 
-    ![Redirection URLs](./media/workday-tutorial/IC7829581.png "Redirection URLs")
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **munkanap**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-    a. Kattintson a **sort ad hozzá a**.
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-    b. Az a **bejelentkezés átirányítási URL-cím**, **időtúllépési átirányítási URL-cím** és **Mobile átirányítási URL-cím** szövegmezőjébe illessze be a **bejelentkezési URL-cím** másolta, amely az a **állítsa be a Workday** szakaszban az Azure Portalon.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    c. Az a **kijelentkezési átirányítási URL-cím** szövegmezőjébe illessze be a **kijelentkezési URL-címe** másolta amely a **állítsa be a Workday** szakaszban az Azure Portalon.
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-    d. A **környezetekben használt** szövegmezőben válassza ki a környezet nevét.  
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+## <a name="configure-workday"></a>Munkanapok konfigurálása
+
+1. Egy másik böngészőablakban jelentkezzen be a munkanap vállalati webhelyre rendszergazdaként.
+
+2. A **keresőmezőbe** keresse meg a Kezdőlap bal felső részén található **bérlő beállítása – biztonság** jelölőnégyzetet.
+
+    ![Bérlői biztonság szerkesztése](./media/workday-tutorial/IC782925.png "Bérlői biztonság szerkesztése")
+
+3. Az **átirányítási URL-címek** szakaszban hajtsa végre a következő lépéseket:
+
+    ![Átirányítási URL-címek](./media/workday-tutorial/IC7829581.png "Átirányítási URL-címek")
+
+    a. Kattintson a **sor hozzáadása**gombra.
+
+    b. A **bejelentkezési átirányítási URL-cím**, az **időtúllépés átirányítása URL** -cím és a **mobil átirányítási URL-cím** szövegmezőbe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portal munkaterületének **beállítása** szakaszában másolt
+
+    c. A kijelentkezési **átirányítás URL-címe** szövegmezőbe illessze be azt a kijelentkezési **URL-címet** , amelyet a Azure Portal munkaterületének **beállítása** szakaszában másolt.
+
+    d. A **környezetekhez használt** szövegmezőben válassza ki a környezet nevét.  
 
    > [!NOTE]
-   > A környezet attribútum vannak kötve, a bérlői URL-cím értékét:  
-   > -Ha a tartomány neve a Workday-bérlői URL-cím kezdődik impl például: *https:\//impl.workday.com/\<bérlői\>/login-saml2.flex*), a **környezet**attribútum megvalósítási értékre kell állítani.  
-   > -Ha a tartománynév valami mást kezdődik, lépjen kapcsolatba kell [Workday ügyfél-támogatási csapatának](https://www.workday.com/en-us/partners-services/services/support.html) beolvasni a megfelelő **környezet** érték.
+   > A környezeti attribútum értéke a bérlői URL-cím értékéhez van kötve:  
+   > – Ha a munkanap bérlői URL-címének tartományneve a Impl-val kezdődik, például: *https\<:\>\//Impl.WORKDAY.com/bérlő/login-saml2.Flex*), a **környezeti** attribútumot a megvalósítás értékre kell beállítani.  
+   > – Ha a tartománynév egy másikkal kezdődik, kapcsolatba kell lépnie a [munkanap ügyfél-támogatási csapatával](https://www.workday.com/en-us/partners-services/services/support.html) , hogy a megfelelő **környezeti** értéket kapja.
 
-4. Az a **SAML-telepítő** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az **SAML beállítása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![SAML-telepítő](./media/workday-tutorial/IC782926.png "SAML-telepítő")
+    ![SAML-telepítés](./media/workday-tutorial/IC782926.png "SAML-telepítés")
 
-    a.  Válassza ki **SAML-hitelesítés engedélyezése**.
+    a.  Válassza az **SAML-hitelesítés engedélyezése**lehetőséget.
 
-    b.  Kattintson a **sort ad hozzá a**.
+    b.  Kattintson a **sor hozzáadása**gombra.
 
-5. Az a **SAML Identitásszolgáltatók** szakaszban, hajtsa végre az alábbi lépéseket:
+5. Az **SAML Identity Providers** szakaszban hajtsa végre a következő lépéseket:
 
-    ![SAML-Identitásszolgáltatók](./media/workday-tutorial/IC7829271.png "SAML Identitásszolgáltatók")
+    ![SAML-identitás szolgáltatók](./media/workday-tutorial/IC7829271.png "SAML-identitás szolgáltatók")
 
-    a. Az a **identitásszolgáltató neve** szövegmezőbe írja be a szolgáltató nevét (például: *SPInitiatedSSO*).
+    a. Az **identitás-szolgáltató neve** szövegmezőbe írja be a szolgáltató nevét (például: *SPInitiatedSSO*).
 
-    b. Az Azure Portalon az a **állítsa be a Workday** területén másolja a **az Azure AD-azonosító** értéket, és illessze be azt a **kibocsátó** szövegmezőbe.
+    b. A Azure Portal a **munkanap beállítása** szakaszban másolja az **Azure ad-azonosító** értékét, majd illessze be a **kiállító** szövegmezőbe.
 
-    ![SAML-Identitásszolgáltatók](./media/workday-tutorial/IC7829272.png "SAML Identitásszolgáltatók")
+    ![SAML-identitás szolgáltatók](./media/workday-tutorial/IC7829272.png "SAML-identitás szolgáltatók")
 
-    c. Az Azure Portalon az a **állítsa be a Workday** területén másolja a **kijelentkezési URL-címe** értéket, és illessze be azt a **kijelentkezési válasz URL-címe** szövegmezőbe.
+    c. A Azure Portal a **munkanap beállítása** szakaszban másolja ki a kijelentkezési **URL-címet** , majd illessze be a KIJELENTKEZÉSI **Válasz URL-címe** szövegmezőbe.
 
-    d. Az Azure Portalon az a **állítsa be a Workday** területén másolja a **bejelentkezési URL-cím** értéket, és illessze be azt a **identitásszolgáltató egyszeri bejelentkezési szolgáltatás URL-címe** szövegmezőbe.
+    d. A Azure Portal a **munkanap beállítása** szakaszban másolja be a **bejelentkezési URL-címet** , majd ILLESSZE be a **identitásszolgáltató SSO-szolgáltatás URL-címének** szövegmezőbe.
 
-    e. A **környezetekben használt** szövegmezőben válassza ki a környezet nevét.
+    e. A **környezetekhez használt** szövegmezőben válassza ki a környezet nevét.
 
-    f. Kattintson a **szolgáltató nyilvános kulcs Identitástanúsítványt**, és kattintson a **létrehozás**.
+    f. Kattintson az **Identity Provider nyilvánoskulcs**-tanúsítványa elemre, majd a **Létrehozás**gombra.
 
-    ![Hozzon létre](./media/workday-tutorial/IC782928.png "létrehozása")
+    ![Létrehozás](./media/workday-tutorial/IC782928.png "Létrehozás")
 
-    g. Kattintson a **x509 létrehozása nyilvános kulcs**.
+    g. Kattintson a **X509 nyilvános kulcs létrehozása**lehetőségre.
 
-    ![Hozzon létre](./media/workday-tutorial/IC782929.png "létrehozása")
+    ![Létrehozás](./media/workday-tutorial/IC782929.png "Létrehozás")
 
-6. Az a **nézet x509 nyilvános kulcs** szakaszban, hajtsa végre az alábbi lépéseket:
+6. A **X509 nyilvános kulcsának megtekintése** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Nyilvános kulcs nézet x509](./media/workday-tutorial/IC782930.png "nézet x509 nyilvános kulcs")
+    ![X509 nyilvános kulcsának megtekintése](./media/workday-tutorial/IC782930.png "X509 nyilvános kulcsának megtekintése")
 
-    a. Az a **neve** szövegmezőbe írja be a tanúsítvány nevét (például: *PPE\_SP*).
+    a. A **név** szövegmezőbe írja be a tanúsítvány nevét (például: *PPE\_SP*).
 
-    b. Az a **érvényes a** szövegmezőbe írja be az attribútum értékét a tanúsítvány érvényes.
+    b. Az **érvényes feladó** szövegmezőbe írja be a tanúsítvány érvényes értékének értékét.
 
-    c.  Az a **érvényes való** szövegmezőbe írja be a tanúsítvány attribútum értéke érvénytelen.
+    c.  Az **érvényes** a szövegmezőbe írja be a tanúsítvány érvényes attribútum értékét.
 
     > [!NOTE]
-    > Kérheti az érvényes dátumot és az érvényes, ha duplán kattint a letöltött tanúsítvány az a dátum a.  A dátumok vannak felsorolva a **részletek** fülre.
+    > A letöltött tanúsítvány érvényességének dátumát és érvényességi idejét úgy érheti el, ha duplán rákattint.  A dátumok a **részletek** lapon jelennek meg.
     >
     >
 
-    d.  Nyissa meg a base-64 kódolású tanúsítványt a Jegyzettömbben, és másolja a tartalmát.
+    d.  Nyissa meg a Base-64 kódolású tanúsítványt a Jegyzettömbben, és másolja a tartalmát.
 
-    e.  Az a **tanúsítvány** szövegmezőjébe illessze be a vágólap tartalmát.
+    e.  A **tanúsítvány** szövegmezőbe illessze be a vágólap tartalmát.
 
     f.  Kattintson az **OK** gombra.
 
-7. Hajtsa végre az alábbi lépéseket:
+7. Hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurációja](./media/workday-tutorial/WorkdaySSOConfiguratio.png "egyszeri bejelentkezés konfigurálása")
+    ![SSO-konfiguráció](./media/workday-tutorial/WorkdaySSOConfiguratio.png "SSO-konfiguráció")
 
-    a.  Az a **szolgáltatás Szolgáltatóazonosító** szövegmezőbe írja be **https://www.workday.com** .
+    a.  A **szolgáltató azonosítója** szövegmezőbe írja be a **https://www.workday.com** következőt:.
 
-    b. Válassza ki **nem Deflate hitelesítési Szolgáltató által kezdeményezett kérelem**.
+    b. Válassza a ne állítsa le az **SP által kezdeményezett hitelesítési kérelmet**.
 
-    c. Mint **hitelesítési kérelmek aláírását módszer**válassza **SHA256**.
+    c. A **hitelesítési kérelem aláírása módszerként**válassza a **sha256**lehetőséget.
 
-    ![Hitelesítési kérelem-aláírás módszer](./media/workday-tutorial/WorkdaySSOConfiguration.png "hitelesítési kérelmek aláírását módja") 
+    ![Hitelesítési kérelem aláírása módszer](./media/workday-tutorial/WorkdaySSOConfiguration.png "Hitelesítési kérelem aláírása módszer") 
 
     d. Kattintson az **OK** gombra.
 
     ![OK](./media/workday-tutorial/IC782933.png "OK")
 
     > [!NOTE]
-    > Ellenőrizze, hogy megfelelően állítsa be egyszeri bejelentkezést. Abban az esetben, ha egyszeri bejelentkezést helytelen telepítés engedélyezi, nem lehet kizárva, és adja meg az alkalmazás a hitelesítő adataival. Ebben a helyzetben a Workday biztosít egy biztonsági mentési bejelentkezési URL-cím, a felhasználók is be a normál felhasználónevükkel és jelszavukkal használatával a következő formátumban: [a Workday URL]/login.flex?redirect=n
+    > Győződjön meg arról, hogy helyesen állította be az egyszeri bejelentkezést. Ha az egyszeri bejelentkezést nem megfelelő beállítással engedélyezi, előfordulhat, hogy nem tudja beírni az alkalmazást a hitelesítő adataival, és kizárja a zárolást. Ebben az esetben a munkanap olyan biztonsági mentési bejelentkezési URL-címet biztosít, ahol a felhasználók a szokásos felhasználónévvel és jelszóval jelentkezhetnek be a következő formátumban: [a munkanap URL-címe]/login.Flex? átirányítás = n
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-workday-test-user"></a>Munkanapokat vizsgáló felhasználó létrehozása
 
-Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre munkanapokon. A munkanapokat [támogató](https://www.workday.com/en-us/partners-services/services/support.html) ügyfélszolgálati csapattal együtt veheti fel a felhasználókat a munkanap platformba. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-1. Válassza ki **új felhasználó** a képernyő tetején.
-1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
-   1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `BrittaSimon@contoso.com`.
-   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban a hozzáférés biztosításával workdaybe Azure egyszeri bejelentkezés használatára Britta Simon engedélyeznie kell.
-
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
-1. Az alkalmazások listájában jelölje ki a **Workday**.
-1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
-
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
-
-1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
-1. Az a **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
-
-### <a name="create-workday-test-user"></a>Workday tesztfelhasználó létrehozása
-
-Ebben a szakaszban egy WORKDAY Britta Simon nevű felhasználó létrehozásához. Együttműködve [Workday ügyfél-támogatási csapatának](https://www.workday.com/en-us/partners-services/services/support.html) a felhasználók hozzáadása a Workday-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
-
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
-
-A Workday csempe kiválasztásakor a hozzáférési panelen, érdemes lehet automatikusan bejelentkezett a Workday, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a munkanap csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a munkanapon, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -256,4 +256,6 @@ A Workday csempe kiválasztásakor a hozzáférési panelen, érdemes lehet auto
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [A munkanap kipróbálása az Azure AD-vel](https://aad.portal.azure.com)

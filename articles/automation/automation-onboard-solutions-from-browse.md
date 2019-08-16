@@ -9,12 +9,12 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: cf063311e5559ddf5706df397ce744a726610000
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 5be247e8bb999ee5306d10e67c46c7273953dc71
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667348"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534701"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management-, Change Tracking-és leltározási megoldások engedélyezése több virtuális gépen
 
@@ -45,7 +45,7 @@ A virtuális gépek listája úgy van szűrve, hogy csak az azonos előfizetésb
 
 ### <a name="resource-group-limit"></a>Bevezetési korlátozások
 
-Az előkészítéshez használható erőforráscsoportok számát a [Resource Manager](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md)-alapú üzemelő példányok korlátozzák. A Resource Manager-alapú üzemelő példányok, amelyek nem tévesztendő össze a frissítési környezetekkel, üzembe helyezésük legfeljebb 5 erőforráscsoport lehet. A bevezetésének integritásának biztosítása érdekében az erőforráscsoportok közül 2 az Log Analytics munkaterület, az Automation-fiók és a kapcsolódó erőforrások konfigurálására van fenntartva. Így 3 erőforráscsoport közül választhat az üzembe helyezéshez.
+Az előkészítéshez használható erőforráscsoportok számát a [Resource Manager](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md)-alapú üzemelő példányok korlátozzák. A Resource Manager-alapú üzemelő példányok, amelyek nem tévesztendő össze a frissítési környezetekkel, üzembe helyezésük legfeljebb 5 erőforráscsoport lehet. A bevezetésének integritásának biztosítása érdekében az erőforráscsoportok közül 2 az Log Analytics munkaterület, az Automation-fiók és a kapcsolódó erőforrások konfigurálására van fenntartva. Így 3 erőforráscsoport közül választhat az üzembe helyezéshez. Ez a korlát csak az egyidejű bevezetésre vonatkozik, nem az Automation-megoldással felügyelhető erőforráscsoportok számára.
 
 Emellett runbook is használhat a bevezetéshez, további információért lásd: az [Update és a Change Tracking megoldások](automation-onboard-solutions.md)bevezetésének Azure Automation.
 

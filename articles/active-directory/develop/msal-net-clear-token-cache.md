@@ -1,9 +1,9 @@
 ---
-title: A token gyorsítótár ürítése a .NET-hez - Azure Microsoft-hitelesítési tár használatával
-description: 'Útmutató: a jogkivonat gyorsítótár használatával a Microsoft-hitelesítési tár .NET (MSAL.NET).'
+title: A jogkivonat-gyorsítótár kiürítése a .NET-Azure-hoz készült Microsoft Authentication Library használatával
+description: Megtudhatja, hogyan törölheti a jogkivonat-gyorsítótárat a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6763c6b2b1f9b4de7d8669a50a4979a7aac00c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1cee6443db0b019f79a80cf5b7c0e2a7a50240f2
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544117"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532666"
 ---
-# <a name="clear-the-token-cache-using-msalnet"></a>Az MSAL.NET használatával token gyorsítótár ürítése
+# <a name="clear-the-token-cache-using-msalnet"></a>A jogkivonat-gyorsítótár kiürítése a MSAL.NET használatával
 
-Ha Ön [hozzáférési jogkivonat beszerzése](msal-acquire-cache-tokens.md) használja Microsoft-hitelesítési tár .NET (MSAL.NET), a jogkivonatot a rendszer gyorsítótárazza. Ha az alkalmazás egy jogkivonatot, azt először meghívja a `AcquireTokenSilent` metódust annak ellenőrzéséhez, ha egy elfogadható jogkivonat a gyorsítótárban. 
+Ha a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával szerzi be a [hozzáférési](msal-acquire-cache-tokens.md) jogkivonatot, a rendszer gyorsítótárazza a tokent. Ha az alkalmazásnak tokenre van szüksége, először hívja meg `AcquireTokenSilent` a metódust annak ellenőrzéséhez, hogy elfogadható token van-e a gyorsítótárban. 
 
-A gyorsítótár kiürítése érik el a fiókokat eltávolítása a gyorsítótárból. A munkamenetcookie-t, amely a böngészőben, azonban ez nem távolítja el.  Az alábbi példa példányosítja az ügyfélalkalmazások nyilvános, az alkalmazás lekéri a fiókokat, és eltávolítja a fiókok.
+A gyorsítótár kiürítésével a fiókok a gyorsítótárból való eltávolításával érhetők el. Ez nem távolítja el a böngészőben található munkamenet-cookie-t, de.  A következő példa egy nyilvános ügyfélalkalmazás létrehozását, beolvassa az alkalmazás fiókját, és eltávolítja a fiókokat.
 
 ```csharp
 private readonly IPublicClientApplication _app;
@@ -50,4 +50,4 @@ while (accounts.Any())
 
 ```
 
-További információ beszerzéséhez és a jogkivonatok gyorsítótárazását, olvassa el [hozzáférési jogkivonat beszerzése](msal-acquire-cache-tokens.md).
+A tokenek beszerzésével és gyorsítótárazásával kapcsolatos további tudnivalókért olvassa el a [hozzáférési token](msal-acquire-cache-tokens.md)beszerzése című témakört.

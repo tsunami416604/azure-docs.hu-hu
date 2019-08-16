@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 247665f58dd064565f0e9aebc9859e97ce0ab0c0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5a69882f6bb38ac8e005ce5552fe57383a58cc63
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67836975"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542573"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>A CoreDNS testreszabása az Azure Kubernetes szolgáltatással
 
 Az Azure Kubernetes Service (ak) a [CoreDNS][coredns] -projektet használja a fürt DNS-kezeléséhez és feloldásához az összes *1,12. x* és újabb fürtök esetében. Korábban a rendszer a Kube-DNS-projektet használta. Ez a Kube-DNS-projekt már elavult. A CoreDNS testreszabásával és Kubernetes kapcsolatos további információkért tekintse meg a [hivatalos upstream dokumentációját][corednsk8s].
 
-Mivel az AK felügyelt szolgáltatás, nem módosíthatja a CoreDNS (a *alapfájl*) fő konfigurációját. Ehelyett Kubernetes- *ConfigMap* használ az alapértelmezett beállítások felülbírálásához. Az alapértelmezett AK-CoreDNS ConfigMaps megtekintéséhez használja az `kubectl get configmaps coredns -o yaml` parancsot.
+Mivel az AK felügyelt szolgáltatás, nem módosíthatja a CoreDNS (a *alapfájl*) fő konfigurációját. Ehelyett Kubernetes- *ConfigMap* használ az alapértelmezett beállítások felülbírálásához. Az alapértelmezett AK-CoreDNS ConfigMaps megtekintéséhez használja az `kubectl get configmaps -namespace=kube-system coredns -o yaml` parancsot.
 
 Ebből a cikkből megtudhatja, hogyan használhatja a ConfigMaps-t az CoreDNS alapszintű, az AK-ban található testreszabási lehetőségei
 

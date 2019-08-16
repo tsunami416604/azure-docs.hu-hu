@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 07/16/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: b6ca43616a2e7e7611b122bce5c95084e1fd5012
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 55cdd864d73ce084d994c64233e79d5a58b17def
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402381"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558448"
 ---
 <!-- This tells how to get the connection string for the service shared access policy of your IoT hub -->
 
 A **szolgáltatási** házirendhez tartozó IoT hub kapcsolódási karakterlánc beszerzéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg az IoT hubot a [Azure Portal](https://portal.azure.com).  Az IoT hub kiválasztásának legegyszerűbb módja az **erőforráscsoportok**kiválasztása. Válassza ki azt az erőforráscsoportot, ahol az IoT hub található, majd válassza ki az IoT hubot az erőforrások listájából.
+1. A [Azure Portal](https://portal.azure.com)válassza az **erőforráscsoportok**lehetőséget. Válassza ki azt az erőforráscsoportot, amelyben a hub található, majd válassza ki az elosztót az erőforrások listájából.
 
-2. Az IoT hub bal oldali ablaktábláján válassza a **megosztott hozzáférési házirendek**elemet.
+1. Az IoT hub bal oldali ablaktábláján válassza a **megosztott hozzáférési házirendek**elemet.
 
-3. A házirendek listájából válassza ki a **szolgáltatási** házirendet.
+1. A házirendek listájából válassza ki a **szolgáltatási** házirendet.
 
-4. A **megosztott elérési kulcsok**területen válassza a **kapcsolati sztring – elsődleges kulcs** másolási ikonját, és mentse az értéket.
+1. A **megosztott elérési kulcsok**területen válassza a **kapcsolati sztring – elsődleges kulcs** másolási ikonját, és mentse az értéket.
 
     ![A kapcsolati karakterlánc lekérésének megjelenítése](./media/iot-hub-include-find-service-connection-string/iot-hub-get-connection-string.png)
 

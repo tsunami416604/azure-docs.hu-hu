@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 08/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e30bd940d3312a16f2dd30b175deb6622cb8c01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: eb751d4cad036135865af9f97e159da104749388
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834745"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532406"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>A OAuth2 implicit engedélyezési folyamatának megértése Azure Active Directoryban (AD)
 
@@ -35,7 +35,7 @@ A OAuth2 implicit megadása a leghírhedtebb, hogy a OAuth2-specifikációban a 
 
 A tömör [OAuth2 engedélyezési kód megadása](https://tools.ietf.org/html/rfc6749#section-1.3.1) az engedélyezési engedély, amely két különálló végpontot használ. A rendszer az engedélyezési végpontot használja a felhasználói interakciós fázishoz, amely egy engedélyezési kódot eredményez. Az ügyfél ezt követően a jogkivonat-végpontot használja a hozzáférési jogkivonat kódjának cseréjére, és gyakran frissítési jogkivonatra is. A webalkalmazásoknak saját alkalmazásbeli hitelesítő adataikat kell megadniuk a jogkivonat-végponthoz, hogy az engedélyezési kiszolgáló hitelesíteni tudja az ügyfelet.
 
-A [OAuth2 implicit támogatás](https://tools.ietf.org/html/rfc6749#section-1.3.2) más engedélyezési támogatások egy változata. Lehetővé teszi, hogy az ügyfél hozzáférési tokent szerezzen (és id_token az [OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html)használatakor) közvetlenül az engedélyezési végpontról, anélkül, hogy a jogkivonat-végponttal kellene kapcsolatba lépnie, és nem hitelesíti az ügyfelet. Ez a változat a webböngészőben futó JavaScript-alapú alkalmazásokhoz lett tervezve: az eredeti OAuth2-specifikációban a tokenek egy URI-töredékben lesznek visszaadva. Így a jogkivonat-bitek elérhetővé válnak az ügyfél JavaScript-kódjában, de garantálják, hogy a rendszer a kiszolgáló felé irányuló átirányítások során nem fog szerepelni. A jogkivonatokat a böngésző átirányítja közvetlenül az engedélyezési végpontról. Emellett megvan az előnye, hogy kiküszöböli a kereszthivatkozási hívások követelményeit, amelyek akkor szükségesek, ha a JavaScript-alkalmazásnak a jogkivonat-végponthoz kell kapcsolódnia.
+A [OAuth2 implicit támogatás](https://tools.ietf.org/html/rfc6749#section-1.3.2) más engedélyezési támogatások egy változata. Lehetővé teszi, hogy az ügyfél hozzáférési tokent szerezzen (és id_token az [OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html)használatakor) közvetlenül az engedélyezési végpontról, anélkül, hogy a jogkivonat-végponttal kellene kapcsolatba lépnie, és nem hitelesíti az ügyfelet. Ez a változat a webböngészőben futó JavaScript-alapú alkalmazásokhoz lett tervezve: az eredeti OAuth2-specifikációban a tokenek egy URI-töredékben lesznek visszaadva. Így a jogkivonat-bitek elérhetővé válnak az ügyfél JavaScript-kódjában, de garantálják, hogy a rendszer a kiszolgáló felé irányuló átirányítások során nem fog szerepelni. Az OAuth2 implicit megadása esetén az engedélyezési végpont a korábban megadott átirányítási URI használatával kiadja a hozzáférési jogkivonatokat közvetlenül az ügyfélnek. Emellett megvan az előnye, hogy kiküszöböli a kereszthivatkozási hívások követelményeit, amelyek akkor szükségesek, ha a JavaScript-alkalmazásnak a jogkivonat-végponthoz kell kapcsolódnia.
 
 Az OAuth2 implicit támogatás fontos jellemzője, hogy az ilyen folyamatok soha nem adnak vissza frissítési jogkivonatokat az ügyfélnek. A következő szakasz azt mutatja be, hogy ez miért nem szükséges, és valójában biztonsági probléma lenne.
 

@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/15/2019
 ms.author: diberry
-ms.openlocfilehash: d7049c729140591717782b191f970f4295140cb8
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 570429a2d5332e7d951271b36b79d9d16df174c0
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697926"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535206"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services és gépi tanulás
 
@@ -79,7 +79,7 @@ A teljesen betanított modellt biztosító szolgáltatások _fekete dobozként_i
 
 Egyes szolgáltatások lehetővé teszik saját adatai használatát, majd a modellek betanítását. Ez lehetővé teszi a modell kiterjesztését a szolgáltatás adatai és algoritmusa használatával a saját adataival. A kimenet megfelel az Ön igényeinek. A saját adatai használatakor előfordulhat, hogy a szolgáltatásra vonatkozó módon kell címkével ellátnia az adatait. Ha például a virágokat azonosító modellt szeretne betanítani, megadhatja a virág-rendszerképek katalógusát, valamint a virág helyét az egyes képeken a modell betanításához. 
 
-A szolgáltatások _lehetővé_ tehetik, hogy a saját adatvédelme érdekében adatforrást szolgáltasson. _Előfordulhat,_ hogy egy szolgáltatásnak meg kell adnia az adattárolást. 
+A szolgáltatások _lehetővé_ tehetik, hogy a saját adatvédelme érdekében adatforrást szolgáltasson. Előfordulhat, hogy egy szolgáltatásnak meg kell adnia az adattárolást. 
 
 ### <a name="real-time-or-near-real-time-data-required"></a>Valós idejű vagy közel valós idejű adatbevitel szükséges
 
@@ -131,6 +131,10 @@ Más gépi tanulási eszközökhöz exportált modelleket biztosító Cognitive 
 |--|--|
 |[Custom Vision](./custom-vision-service/home.md)|[Exportálás](./Custom-Vision-Service/export-model-python.md) az Androidhoz készült Tensorflow, CoreML for IOS11, ONNX for Windows ml|
 
+## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
+
+* [Architektúra-útmutató – Mik a gépi tanulási termékek a Microsoftnál?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
+* [Gépi tanulás – a Deep learning és a Machine learning bemutatása](../machine-learning/service/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>További lépések
 

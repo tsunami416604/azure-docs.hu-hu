@@ -9,12 +9,12 @@ ms.date: 07/22/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7296760a177b949d2f921e11b28105ca6eb67fee
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 892076954535d880f9081a269215cb7e2a0a8dce
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036291"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541859"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge-modulok fejlesztése és hibakeresése a Visual Studio 2019 használatával
 
@@ -99,19 +99,19 @@ Az Azure IoT Edge webesprojekt-sablon a Visual Studio létrehoz egy projektet, a
 
    ![Új projekt létrehozása](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-1. A **IoT Edge alkalmazás és modul hozzáadása** ablakban válassza a  **C# modul** vagy a **C modul** lehetőséget, majd adja meg a modul nevét és a modul rendszerkép-tárházát. A Visual Studio automatikusan feltölti a modul nevét a **localhost: 5000/< a modul\>nevével**. Cserélje le a saját beállításjegyzék-információkat. Ha a teszteléshez helyi Docker-beállításjegyzéket használ, a **localhost** rendben van. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló úgy tűnik   **_\<, hogy\>a beállításjegyzék neve_. azurecr.IO**. Csak cserélje le a **localhost: 5000** részét a karakterláncra, hogy a végső eredmény  **\<a *beállításjegyzék neveként*\>hasonlítson. azurecr.IO/ _\<a\>modul nevét_** . Az alapértelmezett modul neve **IoTEdgeModule1**
+1. A **IoT Edge alkalmazás és modul hozzáadása** ablakban válassza a  **C# modul** vagy a **C modul** lehetőséget, majd adja meg a modul nevét és a modul rendszerkép-tárházát. A Visual Studio automatikusan feltölti a modul nevét a **localhost: 5000/< a modul\>nevével**. Cserélje le a saját beállításjegyzék-információkat. Ha a teszteléshez helyi Docker-beállításjegyzéket használ, a **localhost** rendben van. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló úgy tűnik   **_\<, hogy\>a beállításjegyzék neve_. azurecr.IO**. Csak cserélje le a **localhost: 5000** részét a karakterláncra, hogy a végső eredmény  **\<a *beállításjegyzék neveként*\>hasonlítson. azurecr.IO/ _\<a\>modul nevét_** . Az alapértelmezett modul neve **IotEdgeModule1**
 
    ![Alkalmazás és modul hozzáadása](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 
 1. Kattintson **az OK** gombra, ha a Azure IoT Edge megoldást egy C# vagy C betűt használó modullal szeretné létrehozni.
 
-Most már rendelkezik egy **AzureIoTEdgeApp1. Linux. amd64** projekttel vagy egy **AzureIoTEdgeApp1. Windows. Amd64** projekttel, valamint egy **IoTEdgeModule1** -projekttel a megoldásban. Minden **AzureIoTEdgeApp1** -projekt tartalmaz `deployment.template.json` egy fájlt, amely meghatározza a IoT Edge megoldásához felépíteni és telepíteni kívánt modulokat, valamint meghatározza a modulok közötti útvonalakat is. Az alapértelmezett megoldás egy **SimulatedTemperatureSensor** modult és egy **IoTEdgeModule1** modult tartalmaz. A **SimulatedTemperatureSensor** modul szimulált értékeket hoz létre a **IoTEdgeModule1** modulba, míg az **IoTEdgeModule1** modul alapértelmezett kódja a közvetlenül az Azure IoT hubba érkező üzeneteket fogad.
+Most már rendelkezik egy **AzureIoTEdgeApp1. Linux. amd64** projekttel vagy egy **AzureIoTEdgeApp1. Windows. Amd64** projekttel, valamint egy **IotEdgeModule1** -projekttel a megoldásban. Minden **AzureIoTEdgeApp1** -projekt tartalmaz `deployment.template.json` egy fájlt, amely meghatározza a IoT Edge megoldásához felépíteni és telepíteni kívánt modulokat, valamint meghatározza a modulok közötti útvonalakat is. Az alapértelmezett megoldás egy **tempSensor** modult és egy **IotEdgeModule1** modult tartalmaz. A **tempSensor** modul szimulált értékeket hoz létre a **IotEdgeModule1** modulba, míg az **IotEdgeModule1** modul alapértelmezett kódja a közvetlenül az Azure IoT hubba érkező üzeneteket fogad.
 
-A **IoTEdgeModule1** -projekt egy .net Core 2,1 Console-alkalmazás, ha C# modul. A Windows-tárolóval vagy a Linux-tárolóval futó IoT Edge eszközhöz szükséges Docker-fájlokat tartalmazza. A `module.json` fájl a modul metaadatait írja le. Az Azure IoT Device SDK-t függőségként tároló tényleges modul-kód a vagy `Program.cs` `main.c` a fájlban található.
+A **IotEdgeModule1** -projekt egy .net Core 2,1 Console-alkalmazás, ha C# modul. A Windows-tárolóval vagy a Linux-tárolóval futó IoT Edge eszközhöz szükséges Docker-fájlokat tartalmazza. A `module.json` fájl a modul metaadatait írja le. Az Azure IoT Device SDK-t függőségként tároló tényleges modul-kód a vagy `Program.cs` `main.c` a fájlban található.
 
 ## <a name="develop-your-module"></a>A modul fejlesztése
 
-A megoldáshoz tartozó alapértelmezett modul-kód a következő helyen található: **IoTEdgeModule1** > **program.cs** ( C#for) vagy **Main. c** (c). A rendszer úgy állítja `deployment.template.json` be a modult és a fájlt, hogy felépítse a megoldást, leküldi a tároló-beállításjegyzékbe, és üzembe helyezi azt egy eszközön, hogy bármilyen kód megérintése nélkül el tudja indítani a tesztelést. A modul úgy lett felépítve, hogy bejegyezze a forrás (ebben az esetben az adatokat szimuláló **SimulatedTemperatureSensor** modul) adatait, és átadja az Azure IoT hubnak.
+A megoldáshoz tartozó alapértelmezett modul-kód a következő helyen található: **IotEdgeModule1** > **program.cs** ( C#for) vagy **Main. c** (c). A rendszer úgy állítja `deployment.template.json` be a modult és a fájlt, hogy felépítse a megoldást, leküldi a tároló-beállításjegyzékbe, és üzembe helyezi azt egy eszközön, hogy bármilyen kód megérintése nélkül el tudja indítani a tesztelést. A modul úgy lett felépítve, hogy bejegyezze a forrás (ebben az esetben az adatokat szimuláló **tempSensor** modul) adatait, és átadja az Azure IoT hubnak.
 
 Ha készen áll a modul sablonjának testre szabására a saját kódjával, az [Azure IoT hub SDK](../iot-hub/iot-hub-devguide-sdks.md) -k segítségével olyan modulokat építhet ki, amelyek a IoT-megoldások, például a biztonság, az eszközkezelés és a megbízhatóság terén szükségesek.
 
@@ -134,7 +134,7 @@ Ha készen áll a modul sablonjának testre szabására a saját kódjával, az 
 
 Az egyes modulokat általában tesztelni és hibakeresést végezni, mielőtt egy teljes megoldáson belül futtatja, több modullal.
 
-1. Kattintson a jobb gombbal a **IoTEdgeModule1** elemre, és válassza a **beállítás indítási projektként** lehetőséget a helyi menüben.
+1. Kattintson a jobb gombbal a **IotEdgeModule1** elemre, és válassza a **beállítás indítási projektként** lehetőséget a helyi menüben.
 
    ![Indítási projekt beállítása](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
 
@@ -165,16 +165,16 @@ Az egyes modulokat általában tesztelni és hibakeresést végezni, mielőtt eg
 
 Miután befejezte egyetlen modul fejlesztését, érdemes lehet egy teljes megoldást futtatni és hibakeresést végezni több modullal.
 
-1. Vegyen fel egy második modult a megoldáshoz a jobb gombbal a **AzureIoTEdgeApp1** elemre, és válassza az**új IoT Edge modul** **hozzáadása** > lehetőséget. A második modul alapértelmezett neve **IoTEdgeModule2** , és egy másik pipe-modulként fog működni.
+1. Vegyen fel egy második modult a megoldáshoz a jobb gombbal a **AzureIoTEdgeApp1** elemre, és válassza az**új IoT Edge modul** **hozzáadása** > lehetőséget. A második modul alapértelmezett neve **IotEdgeModule2** , és egy másik pipe-modulként fog működni.
 
-1. Nyissa meg `deployment.template.json` a fájlt, és látni fogja, hogy a **IoTEdgeModule2** hozzá lett adva a **modulok** szakaszhoz. Cserélje le a **útvonalak** a következő szakaszt. Ha testre szabta a modulok nevét, ügyeljen rá, hogy a neveket a megfelelő értékre frissítse.
+1. Nyissa meg `deployment.template.json` a fájlt, és látni fogja, hogy a **IotEdgeModule2** hozzá lett adva a **modulok** szakaszhoz. Cserélje le a **útvonalak** a következő szakaszt. Ha testre szabta a modulok nevét, ügyeljen rá, hogy a neveket a megfelelő értékre frissítse.
 
     ```json
         "routes": {
-          "IoTEdgeModule1ToIoTHub": "FROM /messages/modules/IoTEdgeModule1/outputs/* INTO $upstream",
-          "sensorToIoTEdgeModule1": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IoTEdgeModule1/inputs/input1\")",
-          "IoTEdgeModule2ToIoTHub": "FROM /messages/modules/IoTEdgeModule2/outputs/* INTO $upstream",
-          "sensorToIoTEdgeModule2": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IoTEdgeModule2/inputs/input1\")"
+          "IotEdgeModule1ToIoTHub": "FROM /messages/modules/IotEdgeModule1/outputs/* INTO $upstream",
+          "sensorToIotEdgeModule1": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule1/inputs/input1\")",
+          "IotEdgeModule2ToIoTHub": "FROM /messages/modules/IotEdgeModule2/outputs/* INTO $upstream",
+          "sensorToIotEdgeModule2": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule2/inputs/input1\")"
         },
     ```
 
@@ -232,7 +232,7 @@ Az IoT Edge-eszköz beállításához használt rövid útmutatóban egy modult 
    > [!NOTE]
    > Nem kell választania `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json`
 
-1. Kattintson a refresh (frissítés) gombra, és tekintse meg az új modulokat, amelyek a **SimulatedTemperatureSensor** modullal és a **$edgeAgent** és **$edgeHubval**együtt futnak.
+1. Kattintson a refresh (frissítés) gombra, és tekintse meg az új modulokat, amelyek a **tempSensor** modullal és a **$edgeAgent** és **$edgeHubval**együtt futnak.
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 

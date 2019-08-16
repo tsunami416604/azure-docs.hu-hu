@@ -4,18 +4,19 @@ description: Ez a rövid útmutató egy olyan Java-kódrészletet tartalmaz, ame
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, devcenter, seo-java-july2019
+ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/08/2019
-ms.openlocfilehash: 5dbac4cee4df43dfc2f0ebf9fdb5e2e7b7d3192c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b24efe52d0ab24659c4278c6be59c4262023b26f
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931601"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541821"
 ---
-# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure Database for MySQL: A Java használata a kapcsolódáshoz és az adatlekérdezéshez
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Gyors útmutató: A Java használatával csatlakozhat a Azure Database for MySQLhoz, és lekérdezheti azokat
+
 Ez a rövid útmutató azt ismerteti, hogyan csatlakozhat egy Azure Database for MySQLhoz egy Java-alkalmazás és a [MariaDB Connector/J JDBC-](https://mariadb.com/kb/en/library/mariadb-connector-j/)illesztő használatával. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A cikk feltételezi, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, az Azure Database for MySQL használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek

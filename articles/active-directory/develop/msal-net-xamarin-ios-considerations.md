@@ -3,7 +3,7 @@ title: Xamarin iOS-megfontolások (Microsoft Authentication Library for .NET) | 
 description: Ismerje meg, hogy milyen szempontokat kell figyelembe venni a Xamarin iOS és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használata esetén.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7bb4aab4c217e20245a1f6ee9b2910a4558acad
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 906f2fc8cdac31922e6e93526f65577fe76c4b9c
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278213"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532351"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Xamarin iOS-specifikus megfontolások a MSAL.NET
 A Xamarin iOS-ben számos szempontot figyelembe kell venni a MSAL.NET használatakor
@@ -71,7 +71,7 @@ var builder = PublicClientApplicationBuilder
 
 A jogosultságokat. plist frissíteni kell, hogy az a következő XML-kódrészlethez hasonlítson:
 
-Ez a változás  a kulcstartó hozzáférésének `Entitlements.plist` engedélyezése mellett a fájlban, vagy az alábbi hozzáférési csoport vagy a saját:
+Ez a változás a kulcstartó hozzáférésének `Entitlements.plist` engedélyezése mellett a fájlban, vagy az alábbi hozzáférési csoport vagy a saját:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -116,7 +116,7 @@ Használja az új `iOSKeychainSecurityGroup` tulajdonságot, amelyhez nincs szü
 
 További részletek a következő minta readme.md-fájljának [iOS-specifikus szempontjaival](https://github.com/azure-samples/active-directory-xamarin-native-v2#ios-specific-considerations) kapcsolatos bekezdésében találhatók:
 
-Sample | Platform | Leírás
+Minta | Platform | Leírás
 ------ | -------- | -----------
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Egy egyszerű Xamarin űrlapos alkalmazás, amely bemutatja, hogyan használható a MSAL a MSA és az Azure AD hitelesítésére az Azure AD V 2.0-végponton keresztül, és az eredményül kapott jogkivonattal fér hozzá a Microsoft Graphhoz.
 

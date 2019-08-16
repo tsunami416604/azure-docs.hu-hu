@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: a24159a482c55496bb1e6031be951196258a6796
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 837231ca07abcfdbd6ce932bb24bd890d91506a8
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565463"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541485"
 ---
 Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozására is használhatja. 
 
-1. Kattintson az **Adatkezelő** > **Új gráf** lehetőségre.
+1. Válassza ki **adatkezelő** > **új gráfot**.
 
     A jobb szélen megjelenik a **Gráf hozzáadása** terület. Előfordulhat, hogy jobbra kell görgetnie, hogy lássa.
 
@@ -32,4 +32,4 @@ Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozás
     Gráfazonosító|sample-graph|Az új gyűjteménynek adja a *sample-graph* nevet. A gráfok nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázis-azonosítókra.
     Partíciókulcs| /pk |Az összes Cosmos DB-fióknak szüksége van egy partíciós kulcsra a horizontális skálázáshoz. Megtudhatja, hogyan választhatja ki a megfelelő partíciós kulcsot a [Graph Adatparticionálási cikkben](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning).
 
-3. Miután kitöltötte az űrlapot, kattintson az **OK** elemre.
+3. Miután kitöltötte az űrlapot, kattintson az **OK gombra**.

@@ -1,38 +1,38 @@
 ---
-title: IPsec-alagutak megszüntette az Azure VPN gateway alaphelyzetbe állítása |} A Microsoft Docs
-description: Ez a cikk bemutatja az Azure VPN Gateway IPsec-alagutak megszüntette alaphelyzetbe állításához. A cikk a VPN-átjárókhoz a klasszikus és a Resource Manager-alapú üzemi modellek vonatkozik.
+title: Azure VPN Gateway alaphelyzetbe állítása az IPsec-alagutak újralétesítéséhez | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan állíthatja alaphelyzetbe az Azure VPN Gateway az IPsec-alagutak visszaállítását. A cikk a klasszikus és a Resource Manager-alapú üzemi modellekben található VPN-átjárók esetében is érvényes.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9744a4b7bc5d2e9ce22bfa14ea33a2b11dacda85
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 359773dad53f333b2f052dd5b5481645c72746da
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612467"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533934"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway alaphelyzetbe állítása
 
-Az Azure VPN Gateway alaphelyzetbe állítása akkor hasznos, ha egy vagy több helyek közötti VPN-alagúton elveszíti a létesítmények közötti VPN-kapcsolatot. Ebben az esetben a helyszíni VPN-eszközei megfelelően működnek, de nem tudnak Ipsec-alagutakat létesíteni az Azure VPN Gateway átjárókkal. Ez a cikk segítséget nyújt a VPN gateway alaphelyzetbe állítása.
+Az Azure VPN Gateway alaphelyzetbe állítása akkor hasznos, ha egy vagy több helyek közötti VPN-alagúton elveszíti a létesítmények közötti VPN-kapcsolatot. Ebben az esetben a helyszíni VPN-eszközei megfelelően működnek, de nem tudnak Ipsec-alagutakat létesíteni az Azure VPN Gateway átjárókkal. Ez a cikk segítséget nyújt a VPN-átjáró alaphelyzetbe állításához.
 
-### <a name="what-happens-during-a-reset"></a>Mi történik, a visszaállítás során?
+### <a name="what-happens-during-a-reset"></a>Mi történik az Alaphelyzetbe állítás során?
 
-Egy VPN-átjárót egy aktív-készenléti konfigurációban futó két Virtuálisgép-példányok tevődik össze. Az átjáró alaphelyzetbe állítása, ha újraindítja az átjárót, és majd újra alkalmazza arra a létesítmények közötti konfigurációkat. Az átjáró megtartja azt a nyilvános IP-címet, amellyel rendelkezik. Ez azt jelenti, hogy a VPN-útválasztó konfigurációját nem kell frissíteni új nyilvános IP-címmel az Azure VPN Gatewayhez.
+A VPN-átjáró két virtuálisgép-példányból áll, amelyek aktív-készenléti konfigurációban futnak. Az átjáró alaphelyzetbe állításakor újraindítja az átjárót, majd újra alkalmazza a létesítmények közötti konfigurációkat. Az átjáró megtartja azt a nyilvános IP-címet, amellyel rendelkezik. Ez azt jelenti, hogy a VPN-útválasztó konfigurációját nem kell frissíteni új nyilvános IP-címmel az Azure VPN Gatewayhez.
 
-Amikor a parancsot az átjáró alaphelyzetbe állítása, az Azure VPN gateway jelenleg aktív példánya azonnal újraindul. Lesz olyan rövid szünet készenléti példány (újraindítása), az aktív példányról a feladatátvétel során. Ez a szünet nem tart tovább egy percnél.
+Amikor a parancsot az átjáró alaphelyzetbe állítására állítja ki, az Azure VPN Gateway aktuális aktív példánya azonnal újraindul. Az aktív példány feladatátvétele (újraindításkor) a készenléti példányra rövid hézagot eredményez. Ez a szünet nem tart tovább egy percnél.
 
-Ha a kapcsolat nem áll vissza az első újraindítás után, adja ki ugyanezt a parancsot újra a második virtuálisgép-példány (az új aktív átjáró) újraindításához. Ha a két, újraindításra vonatkozó kérelem egymás után van kiadva, hosszabb szünet következhet be, amíg az aktív és a készenléti virtuálisgép-példány is újraindul. Ez lesz hosszabb szünet következik be a VPN-kapcsolatban – akár 30-45 percre a virtuális gépek újraindulnak.
+Ha a kapcsolat nem áll vissza az első újraindítás után, adja ki ugyanezt a parancsot újra a második virtuálisgép-példány (az új aktív átjáró) újraindításához. Ha a két, újraindításra vonatkozó kérelem egymás után van kiadva, hosszabb szünet következhet be, amíg az aktív és a készenléti virtuálisgép-példány is újraindul. Ez a művelet a VPN-kapcsolaton túl hosszú időt eredményez, ami akár 30 – 45 percet is igénybe vehet, amíg a virtuális gépek újraindulnak.
 
-Után két újraindításra Ha továbbra is létesítmények közötti csatlakozási problémákat tapasztal, nyisson egy támogatási kérést az Azure Portalról.
+Ha a két újraindítást követően továbbra is a létesítmények közötti kapcsolati problémák léptek fel, nyisson meg egy támogatási kérést a Azure Portal.
 
 ## <a name="before"></a>Előkészületek
 
-Az átjáró alaphelyzetbe állítása előtt ellenőrizze az alábbi listán szereplő legfontosabb elemeket mindegyik IPsec helyek közötti (S2S) VPN-alagúthoz. Ha bármilyen eltérés van az elemek között, az S2S VPN-alagutak kapcsolata meg fog szakadni. Ellenőrzésével és javításával a helyszíni és az Azure VPN-átjárók konfigurációi veszi szükségtelen újraindítások és más, működő kapcsolatainak az átjárókon megszakadása.
+Az átjáró alaphelyzetbe állítása előtt ellenőrizze az alábbi listán szereplő legfontosabb elemeket mindegyik IPsec helyek közötti (S2S) VPN-alagúthoz. Ha bármilyen eltérés van az elemek között, az S2S VPN-alagutak kapcsolata meg fog szakadni. A helyszíni és az Azure-beli VPN-átjárók konfigurációjának ellenőrzése és javítása a szükségtelen újraindítások és az átjárók egyéb munkakapcsolatainak megszakadásai miatt megszakad.
 
-Ellenőrizze a következő elemeket az átjáró alaphelyzetbe állítása előtt:
+Az átjáró alaphelyzetbe állítása előtt ellenőrizze a következő elemeket:
 
 * Az Azure VPN Gateway és a helyszíni VPN-átjáró internetes IP-címei (VIP-k) helyesen vannak konfigurálva az Azure és a helyszíni VPN-házirendekben.
 * Az előre megosztott kulcsnak meg kell egyeznie az Azure VPN Gateway átjáróban és a helyszíni VPN-átjáróban.
@@ -40,15 +40,15 @@ Ellenőrizze a következő elemeket az átjáró alaphelyzetbe állítása előt
 
 ## <a name="portal"></a>Azure Portal
 
-Alaphelyzetbe állíthatja a Resource Manager VPN-átjáró, az Azure portal használatával. Ha azt szeretné, a klasszikus átjáró alaphelyzetbe állítása, tekintse meg a [PowerShell](#resetclassic) lépéseket.
+A Azure Portal segítségével alaphelyzetbe állíthatja a Resource Manager VPN-átjárót. Ha alaphelyzetbe szeretné állítani a klasszikus átjárót, tekintse meg a [PowerShell](#resetclassic) lépéseit.
 
 ### <a name="resource-manager-deployment-model"></a>Resource Manager-alapú üzemi modell
 
-1. Nyissa meg a [az Azure portal](https://portal.azure.com) , és keresse meg a Resource Manager virtuális hálózati átjáró, amely alaphelyzetbe állítja.
-2. A virtuális hálózati átjáró paneljén kattintson a "Új" elemre.
+1. Nyissa [](https://portal.azure.com) meg a Azure Portalt, és navigáljon az alaphelyzetbe állítani kívánt Resource Manager-beli virtuális hálózati átjáróhoz.
+2. A virtuális hálózati átjáró paneljén kattintson az Alaphelyzetbe állítás elemre.
 
-   ![VPN-átjáró panel visszaállítása](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
-3. A visszaállítás panelen kattintson a **alaphelyzetbe** gombra.
+   ![VPN Gateway panel alaphelyzetbe állítása](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
+3. Az Alaphelyzetbe állítás panelen kattintson az alaphelyzetbe **állítás** gombra.
 
 ## <a name="ps"></a>PowerShell
 
@@ -56,26 +56,26 @@ Alaphelyzetbe állíthatja a Resource Manager VPN-átjáró, az Azure portal has
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ha szeretne alaphelyzetbe állítani egy átjárót a parancsmag **alaphelyzetbe állítása – AzVirtualNetworkGateway**. A alaphelyzetbe állítása előtt, ellenőrizze, hogy a legújabb verzióját a [PowerShell Az-parancsmagok](https://docs.microsoft.com/powershell/module/az.network). A következő példa alaphelyzetbe állítja a virtuális hálózati átjáró nevű VNet1GW TestRG1 az erőforráscsoportban:
+Az átjáró alaphelyzetbe állítására szolgáló parancsmag a következőt állítja be: **AzVirtualNetworkGateway**. Az Alaphelyzetbe állítás előtt győződjön meg arról, hogy a PowerShell legújabb verziója van telepítve a [parancsmagok használatával](https://docs.microsoft.com/powershell/module/az.network). A következő példa egy VNet1GW nevű virtuális hálózati átjárót állít alaphelyzetbe a TestRG1 erőforráscsoporthoz:
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 ```
 
-Eredmény:
+Találat
 
-Visszatérési eredményt kapunk, akkor feltételezheti, az átjáró alaphelyzetbe állítása sikeres volt. Azonban nincs semmi a visszaadott eredmény, amely azt jelzi, hogy explicit módon, hogy a alaphelyzetbe állítása sikeres volt-e. Ha szeretné a példakódot előzményeinek megtekintéséhez a pontosan az átjáró alaphelyzetbe állítása fellépésének, ezt az információt is megtekintheti a [az Azure portal](https://portal.azure.com). A portálon lépjen a **(GatewayName) -> a Resource Health**.
+Ha visszatérési eredményt kap, akkor feltételezhető, hogy az átjáró alaphelyzetbe állítása sikeres volt. A visszatérési eredmény azonban semmis, ami explicit módon jelzi, hogy az Alaphelyzetbe állítás sikeres volt. Ha azt szeretné, hogy az előzmények alapján pontosan megtekinthető legyen az átjáró alaphelyzetbe állítása, megtekintheti ezeket az információkat a [Azure Portal](https://portal.azure.com). A portálon navigáljon a **"átjáró neve"-> Resource Health**.
 
-### <a name="resetclassic"></a>Klasszikus üzemi modellben
+### <a name="resetclassic"></a>Klasszikus üzembe helyezési modell
 
-Ha szeretne alaphelyzetbe állítani egy átjárót a parancsmag **Reset-AzureVNetGateway**. A alaphelyzetbe állítása előtt, ellenőrizze, hogy a legújabb verzióját a [Service Management (SM) PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets). A következő példa alaphelyzetbe állítja a "ContosoVNet" nevű virtuális hálózati átjáró:
+Az átjáró alaphelyzetbe állítására szolgáló parancsmag a következőt állítja be: **AzureVNetGateway**. A Service Management Azure PowerShell-parancsmagjai helyileg kell telepíteni az asztalra. A Azure Cloud Shell nem használható. Az Alaphelyzetbe állítás előtt ellenőrizze, hogy rendelkezik-e a [Service Management (SM) PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets)legújabb verziójával. A következő példa alaphelyzetbe állítja a "ContosoVNet" nevű virtuális hálózat átjáróját:
 
 ```powershell
 Reset-AzureVNetGateway –VnetName “ContosoVNet”
 ```
 
-Eredmény:
+Találat
 
 ```powershell
 Error          :
@@ -88,12 +88,12 @@ StatusCode     : OK
 
 ## <a name="cli"></a>Azure CLI
 
-Az átjáró alaphelyzetbe állítása, használja a [az network vnet-átjáró alaphelyzetbe állítása](https://docs.microsoft.com/cli/azure/network/vnet-gateway) parancsot. A következő példa alaphelyzetbe állítja a virtuális hálózati átjáró nevű VNet5GW TestRG5 az erőforráscsoportban:
+Az átjáró alaphelyzetbe állításához használja az az [Network vnet-Gateway reset](https://docs.microsoft.com/cli/azure/network/vnet-gateway) parancsot. A következő példa egy VNet5GW nevű virtuális hálózati átjárót állít alaphelyzetbe a TestRG5 erőforráscsoporthoz:
 
 ```azurecli
 az network vnet-gateway reset -n VNet5GW -g TestRG5
 ```
 
-Eredmény:
+Találat
 
-Visszatérési eredményt kapunk, akkor feltételezheti, az átjáró alaphelyzetbe állítása sikeres volt. Azonban nincs semmi a visszaadott eredmény, amely azt jelzi, hogy explicit módon, hogy a alaphelyzetbe állítása sikeres volt-e. Ha szeretné a példakódot előzményeinek megtekintéséhez a pontosan az átjáró alaphelyzetbe állítása fellépésének, ezt az információt is megtekintheti a [az Azure portal](https://portal.azure.com). A portálon lépjen a **(GatewayName) -> a Resource Health**.
+Ha visszatérési eredményt kap, akkor feltételezhető, hogy az átjáró alaphelyzetbe állítása sikeres volt. A visszatérési eredmény azonban semmis, ami explicit módon jelzi, hogy az Alaphelyzetbe állítás sikeres volt. Ha azt szeretné, hogy az előzmények alapján pontosan megtekinthető legyen az átjáró alaphelyzetbe állítása, megtekintheti ezeket az információkat a [Azure Portal](https://portal.azure.com). A portálon navigáljon a **"átjáró neve"-> Resource Health**.

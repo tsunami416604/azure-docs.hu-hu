@@ -3,7 +3,7 @@ title: V 1.0-alkalmazás hatókörök (Microsoft Authentication Library) | Azure
 description: Ismerje meg a Microsoft Authentication Library (MSAL) használatával egy v 1.0-alkalmazás hatóköreit.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/23/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17837c6f4d1b3c690c39c9f99ca4896fcce16b00
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 0590614e1c1bc7331246e76fa26a6567a05324e6
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834902"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532343"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>A webes API-k 1.0-s verziójának elfogadására szolgáló hatókörök
 

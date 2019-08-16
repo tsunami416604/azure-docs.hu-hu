@@ -3,7 +3,7 @@ title: Böngészők a .NET-hez készült Microsoft Authentication Library-ben | 
 description: Ismerje meg a Xamarin Android és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokat.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: jmprieur
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb04a30719f7603610b323a4bb271666371ba97
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: e1285c5c61cee25e387ca5fb598f0e062088e549
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276855"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532496"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Böngészők használata a MSAL.NET-ben
 Az interaktív hitelesítéshez böngészők szükségesek. Alapértelmezés szerint a MSAL.NET támogatja a rendszerböngészőt a Xamarin. iOS és a Xamarin. Android [rendszeren](#system-web-browser-on-xamarinios-xamarinandroid) . A [beágyazott](#enable-embedded-webviews-on-ios-and-android) webböngészőt azonban a követelményektől függően (UX, egyszeri bejelentkezésre (SSO), biztonságra) is engedélyezheti a [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) és a [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) alkalmazásokban. Emellett azt is megteheti, hogy [dinamikusan](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) használja azt a böngészőt, amelyet a Chrome vagy az Android rendszerű egyéni Chrome-lapokat támogató böngésző jelenléte alapján használ. A MSAL.NET csak a rendszerböngészőt támogatja a .NET Core Desktop-alkalmazásokban.
@@ -46,23 +46,23 @@ A MSAL.NET egy multi-Framework könyvtár, amely keretrendszer-specifikus kódda
 
 Általában azt javasoljuk, hogy használja a platform alapértelmezését, és ez általában a rendszerböngésző. A rendszerböngésző jobban megjegyezi a korábban bejelentkezett felhasználókat. Ha módosítania kell ezt a viselkedést, használja a következőt`WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>Áttekintés
+### <a name="at-a-glance"></a>Gyorsnézet
 
-| Keretében        | beágyazott | Rendszer | Alapértelmezett |
+| Keretében        | Beágyazott | Rendszer | Alapértelmezett |
 | ------------- |-------------| -----| ----- |
-| Klasszikus .NET     | Igen | Igen ^ | beágyazott |
+| Klasszikus .NET     | Igen | Igen ^ | Beágyazott |
 | .NET Core     | Nem | Igen ^ | Rendszer |
 | .NET Standard | Nem | Igen ^ | Rendszer |
-| UWP | Igen | Nem | beágyazott |
+| UWP | Igen | Nem | Beágyazott |
 | Xamarin.Android | Igen | Igen  | Rendszer |
 | Xamarin.iOS | Igen | Igen  | Rendszer |
-| Xamarin. Mac| Igen | Nem | beágyazott |
+| Xamarin. Mac| Igen | Nem | Beágyazott |
 
 ^ A következőt http://localhost igényli: "" átirányítási URI
 
 ## <a name="system-web-browser-on-xamarinios-xamarinandroid"></a>Rendszerböngésző a Xamarin. iOS, Xamarin. Android rendszeren
 
-Alapértelmezés szerint a MSAL.NET támogatja a rendszerböngészőt a Xamarin. iOS, a Xamarin. Android és a .NET Core rendszeren. Az összes olyan platform esetében, amely felhasználói felületet (azaz nem .NET Core-t) biztosít, a függvénytár egy webböngésző-vezérlő beágyazásával biztosít egy párbeszédpanelt. A MSAL.NET a UWP platformhoz a .NET Desktop és a WAB beágyazott webes nézetét is használja. Ez azonban alapértelmezés szerint a rendszerböngészőt **** használja az iOS-és Xamarin Android-alkalmazások Xamarin. IOS rendszeren az operációs rendszer verziójától (iOS12, iOS11 és korábbi verziók) függően a webes nézetet is választhatja.
+Alapértelmezés szerint a MSAL.NET támogatja a rendszerböngészőt a Xamarin. iOS, a Xamarin. Android és a .NET Core rendszeren. Az összes olyan platform esetében, amely felhasználói felületet (azaz nem .NET Core-t) biztosít, a függvénytár egy webböngésző-vezérlő beágyazásával biztosít egy párbeszédpanelt. A MSAL.NET a UWP platformhoz a .NET Desktop és a WAB beágyazott webes nézetét is használja. Ez azonban alapértelmezés szerint a rendszerböngészőt használja az iOS-és Xamarin Android-alkalmazások Xamarin. IOS rendszeren az operációs rendszer verziójától (iOS12, iOS11 és korábbi verziók) függően a webes nézetet is választhatja.
 
 A rendszerböngészővel jelentős előnye van annak, hogy az SSO-állapotot más alkalmazásokkal és webalkalmazásokkal közösen ossza meg anélkül, hogy közvetítőt (vállalati portált/hitelesítő) kellene használnia. A rendszerböngészőt alapértelmezetten a Xamarin iOS és a Xamarin Android platformhoz készült MSAL.NET használták, mert ezeken a platformokon a rendszer webböngészője a teljes képernyőt foglalja le, és a felhasználói élmény jobb. A rendszer webes nézete nem különbözteti meg a párbeszédpanelt. Az iOS-ben azonban előfordulhat, hogy a felhasználónak engedélyt kell adnia a böngészőnek az alkalmazás visszahívására, ami bosszantó lehet.
 

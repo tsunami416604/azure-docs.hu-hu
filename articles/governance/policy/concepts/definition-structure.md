@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 77bf284734428e9257b46d85296796e4051ace26
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 44bf3171f9da73dac17b29e86c80fc8f0d011498
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494826"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557933"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -72,7 +72,7 @@ Az összes Azure Policy minta [Azure Policy minta](../samples/index.md).
 
 ## <a name="mode"></a>Mód
 
-A **mód** beállítása attól függően történik, hogy a házirend Azure Resource Manager tulajdonságot vagy erőforrás-szolgáltatói tulajdonságot céloz meg.
+A **mód** attól függően van konfigurálva, hogy a házirend Azure Resource Manager tulajdonságot vagy erőforrás-szolgáltatói tulajdonságot céloz meg.
 
 ### <a name="resource-manager-modes"></a>Resource Manager-módok
 
@@ -250,7 +250,7 @@ A feltétel azt értékeli, hogy egy **mező** vagy az **érték** -hozzáféré
 Használatakor a **például** és **notLike** , feltételek meg helyettesítő karakter `*` értéke.
 Az érték nem tartalmazhat egynél több helyettesítő `*`.
 
-A egyezési  és **notMatch** `#` feltételek használatakor az adott számjegyre `?` , betűre, `.` bármilyen karakterre és bármely más karakterre illeszkedik, amely megfelel a tényleges karakternek.
+A egyezési és **notMatch** `#` feltételek használatakor az adott számjegyre `?` , betűre, `.` bármilyen karakterre és bármely más karakterre illeszkedik, amely megfelel a tényleges karakternek.
 a **Match** és a **notMatch** megkülönbözteti a kis-és nagybetűket. Kis-és nagybetűket megkülönböztető alternatívák a **matchInsensitively** és a **notMatchInsensitively**szolgáltatásban érhetők el. Példák: [lehetővé teszik több név minták](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Mezők
@@ -304,7 +304,7 @@ A következő példában `concat` a **TagName** paraméter értékének megadás
 }
 ```
 
-### <a name="value"></a>Érték
+### <a name="value"></a>Value
 
 A feltételek az **érték**használatával is létrehozhatók. az **érték** a [paraméterekkel](#parameters), a [támogatott sablon](#policy-functions)-funkciókkal vagy a literálokkal kapcsolatos feltételeket ellenőrzi.
 az **érték** a támogatott [feltételekkel](#conditions)párosítva van.
@@ -314,7 +314,7 @@ az **érték** a támogatott [feltételekkel](#conditions)párosítva van.
 
 #### <a name="value-examples"></a>Példák az értékekre
 
-Ez a házirend-szabály például az **érték** használatával hasonlítja össze `resourceGroup()` a függvény eredményét és a visszaadott  `*netrg` **Name** tulajdonságot a hasonló feltétellel. A szabály minden olyan erőforrást megtagad, `Microsoft.Network/*` amely nem egy olyan erőforráscsoport, amelynek a  `*netrg`neve véget ér.
+Ez a házirend-szabály például az **érték** használatával hasonlítja össze `resourceGroup()` a függvény eredményét és a visszaadott `*netrg` **Name** tulajdonságot a hasonló feltétellel. A szabály minden olyan erőforrást megtagad, `Microsoft.Network/*` amely nem egy olyan erőforráscsoport, amelynek a `*netrg`neve véget ér.
 
 ```json
 {
@@ -335,7 +335,7 @@ Ez a házirend-szabály például az **érték** használatával hasonlítja ös
 }
 ```
 
-Ez a házirend-szabály például az **érték** használatával ellenőrizze, hogy a több beágyazott  `true`függvény eredménye egyenlő-e. A szabály minden olyan erőforrást megtagad, amely nem rendelkezik legalább három címkével.
+Ez a házirend-szabály például az **érték** használatával ellenőrizze, hogy a több beágyazott `true`függvény eredménye egyenlő-e. A szabály minden olyan erőforrást megtagad, amely nem rendelkezik legalább három címkével.
 
 ```json
 {
@@ -370,9 +370,9 @@ A _template functions_ in **Value** használata számos összetett beágyazott f
 }
 ```
 
-A fenti példában az alsztring [()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) érték a **név** első három karakterének **ABC**-re való összevetését használja. Ha a **név** rövidebb, mint három karakter, `substring()` a függvény hibát eredményez. Ez a hiba azt eredményezi, hogy  a házirend megtagadási hatást vált ki.
+A fenti példában az alsztring [()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) érték a **név** első három karakterének **ABC**-re való összevetését használja. Ha a **név** rövidebb, mint három karakter, `substring()` a függvény hibát eredményez. Ez a hiba azt eredményezi, hogy a házirend megtagadási hatást vált ki.
 
-Ehelyett a [IF ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) függvény használatával ellenőrizze, hogy az első három **karakter egyenlő-** e az **ABC** -vel anélkül, hogy a **név** három karakternél rövidebb legyen, ami hibát okozhat:
+Ehelyett a [IF ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) függvény használatával ellenőrizze, hogy az első három karakter egyenlő- e az **ABC** -vel anélkül, hogy a **név** három karakternél rövidebb legyen, ami hibát okozhat:
 
 ```json
 {

@@ -471,14 +471,6 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: SaaS Fulfillment API-k – GYIK
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
-            - name: SaaS-alkalmazás regisztrálása
-              href: ./partner-center-portal/pc-saas-registration.md
-            - name: 'SaaS Fulfillment API-k, 2-es verzió'
-              href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
-            - name: 'SaaS Fulfillment API-k, 1-es verzió (elavult)'
-              href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
-            - name: SaaS Fulfillment API-k – GYIK
-              href: ./partner-center-portal/saas-fulfillment-apis-faq.md
         - name: Az ajánlat kipróbálása
           href: ./partner-center-portal/test-drive.md
     - name: Közzététel állapota

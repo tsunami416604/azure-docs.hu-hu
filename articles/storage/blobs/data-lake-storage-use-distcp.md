@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: d33518c7dc82f8af61fef02ecabb7ac7f42e28fb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847095"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543666"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Az DistCp használata az Azure Storage-blobok és a Azure Data Lake Storage Gen2 közötti adatmásoláshoz
 
@@ -65,7 +65,7 @@ Mivel a DistCp legalacsonyabb részletessége egyetlen fájl, az egyidejű máso
 
 **Példa**
 
-    hadoop distcp wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder -m 100
+    hadoop distcp -m 100 wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Hogyan határozza meg a használni kívánt leképezések számát?
 
@@ -73,7 +73,7 @@ Az alábbiakban olvashat némi útmutatást ezzel kapcsolatban.
 
 * **1. lépés: A "default" fonal-alkalmazási várólista** számára elérhető teljes memória meghatározása – az első lépés az "alapértelmezett" fonal-alkalmazási várólista számára elérhető memória meghatározása. Ezek az információk a fürthöz társított Ambari-portálon érhetők el. Keresse meg a FONALat, és tekintse meg a konfigurációk lapot, és tekintse meg az "alapértelmezett" alkalmazás-várólista számára elérhető fonal-memóriát. Ez a teljes rendelkezésre álló memória a DistCp-feladatokhoz (amely valójában egy MapReduce-feladatokhoz).
 
-* **2. lépés: A leképezések** számának kiszámítása – az **m** érték egyenlő a fonalas tároló méretének hányadosával. A FONALak tárolójának mérete információi a Ambari portálon is elérhetők. Navigáljon a FONALhoz, és tekintse meg a konfigurációk lapot. Ebben az ablakban a szál tárolójának mérete jelenik meg. A leképezések (**m**) számának megérkezésére szolgáló egyenlet
+* **2. lépés: A leképezések** számának kiszámítása – az **m** érték egyenlő a fonalas tároló méretének hányadosával. A FONALak tárolójának mérete információi a Ambari portálon is elérhetők. Navigáljon a FONALhoz, és tekintse meg a konfigurációk lapot. Ebben az ablakban a szál tárolójának mérete jelenik meg. A leképezések (**m**) számának megérkezésére szolgáló egyenlet
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 

@@ -14,30 +14,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2017
+ms.date: 08/11/2019
 ms.author: vijetaj
-ms.openlocfilehash: 08a740ec898f1ac46ff66de9002e4241d918adc0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e2bcda25ed6897f8955d7e74981bc4f04a145c99
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558168"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534925"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Mély tanulás és mesterségesintelligencia-keretrendszerek
-A [adatelemző virtuális gép](https://aka.ms/dsvm) (DSVM) és a [Deep Learning virtuális gép](https://aka.ms/dsvm/deeplearning) segítségével prediktív elemzéssel mesterséges intelligencia (AI) alkalmazásokat hozhat létre deep learning-keretrendszerek számos támogat, és kognitív képességeket, például kép és a language understanding.
+A [Data Science Virtual Machine](https://aka.ms/dsvm) (DSVM) számos mély tanulási keretrendszert támogat, amelyek segítségével mesterséges intelligencia (AI) alkalmazásokat hozhat létre prediktív elemzési és kognitív képességekkel, például a képekkel és a nyelvekkel kapcsolatos ismeretekkel.
 
 Az alábbiakban az összes a mélytanulási keretrendszerekkel a dsvm-hez elérhető.
 
-## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
-
-|    |           |
-| ------------- | ------------- |
-| Mi ez?   | Deep learning-keretrendszerek      |
-| Támogatott DSVM-kiadások      | Windows, Linux     |
-| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | A Microsoft Cognitive Toolkit (CNTK) telepítve van a Python 3.5 [Linux és Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) és a Python 3.6-os [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition).   |
-| A minták mutató hivatkozások      | Mintául szolgáló Jupyter notebookok szerepelnek.     |
-| A dsvm-hez kapcsolódó eszközök      | Keras      |
-| Hogyan futtathatja / használata?    | * A parancsot egy terminálban: aktiválja a megfelelő környezetet, majd futtassa a Python. <br/> * A Jupyter: Kapcsolódjon a [Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) vagy a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), majd nyissa meg a CNTK könyvtárat a mintákhoz. |
 
 ## <a name="tensorflow"></a>TensorFlow
 
@@ -50,16 +40,16 @@ Az alábbiakban az összes a mélytanulási keretrendszerekkel a dsvm-hez elérh
 | A dsvm-hez kapcsolódó eszközök      | Keras      |
 | Hogyan futtathatja / használata?    | * A parancsot egy terminálban: aktiválja a megfelelő környezetet, majd futtassa a Python. <br/> * A Jupyter: Kapcsolódjon a [Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) vagy a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), majd nyissa meg a TensorFlow könyvtárat a mintákhoz.  |
 
-## <a name="horovod"></a>Horovod
+## <a name="pytorch"></a>PyTorch
 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Distribued deep learning keretrendszer, a tensorflow-hoz      |
-| Támogatott DSVM-kiadások      | Ubuntu     |
-| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Horovod Python 3.5 települ az [Ubuntu](dsvm-languages.md#python-linux-and-windows-server-2012-edition).  |
-| A minták mutató hivatkozások      | [https://github.com/uber/horovod/tree/master/examples](https://github.com/uber/horovod/tree/master/examples)     |
-| A dsvm-hez kapcsolódó eszközök      | TensorFlow      |
-| Hogyan futtathatja / használata?    | Egy terminálon: aktiválja a megfelelő környezetet, majd futtassa a Python. |
+| Mi ez?   | Deep learning-keretrendszerek      |
+| Támogatott DSVM-kiadások      | Linux     |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | PyTorch telepítve van a [Python 3.5-ös](dsvm-languages.md#python-linux-and-windows-server-2012-edition).  |
+| A minták mutató hivatkozások      | Mintául szolgáló Jupyter notebookok megtalálhatók, és minták /dsvm/samples/pytorch is található.      |
+| A dsvm-hez kapcsolódó eszközök      | Torch      |
+| Hogyan futtathatja / használata |* A parancsot egy terminálban: aktiválja a megfelelő környezetet, majd futtassa a Python. <br/> * A Jupyter: Kapcsolódjon a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux)-hez, majd nyissa meg a PyTorch könyvtárat a mintákhoz.  |
 
 ## <a name="keras"></a>Keras
 
@@ -111,6 +101,70 @@ Caffe telepített verziója van szükség a Python 2.7-t, és a Python 3.5 alap�
 | Hogyan futtathatja / használata?    | * A terminálon: aktiválja a [legfelső szintű Python-környezetet](dsvm-languages.md#python-linux-and-windows-server-2012-edition), indítsa el a Python és caffe2 importálása. <br/> * A JupyterHub: [JupyterHub csatlakozni](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), majd keresse meg a Caffe2 könyvtárát mintafüzetek található. Néhány notebookok megkövetelése a Caffe2 legfelső szintű kell beállítani, a Python-kódban; Adja meg a /opt/caffe2. |
 | Jegyzetek létrehozása | Caffe2 a Linux rendszerű forrásból épül, és tartalmazza a CUDA, cuDNN és Intel MKL. A jelenlegi véglegesítés 0d9c0d48c6f20143d6404b99cc568efd29d5a4be, minden gpu-k és minták tesztelt stabilitását választott. |
 
+## <a name="torch"></a>Torch
+
+|    |           |
+| ------------- | ------------- |
+| Mi ez?   | Deep learning-keretrendszerek      |
+| Támogatott DSVM-kiadások      | Ubuntu     |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Torch telepítve van a `/dsvm/tools/torch`. PyTorch telepítve van a Python 2.7-es (_legfelső szintű_), valamint a Python 3.5-ös (_py35_) környezetben.   |
+| A minták mutató hivatkozások      | Torch mintát a következő helyen találhatók `/dsvm/samples/torch`. PyTorch mintát a következő helyen találhatók `/dsvm/samples/pytorch`.      |
+
+
+
+
+## <a name="mxnet-model-server"></a>MXNet Model Server
+
+|    |           |
+| ------------- | ------------- |
+| Mi ez?   | A kiszolgáló HTTP-végpontokat MXNet és ONNX-modellek létrehozása      |
+| Támogatott DSVM-kiadások      | Linux     |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | _mxnet-modell-server_ érhető el a terminálon.   |
+| A minták mutató hivatkozások      | Naprakész mintákat keressen az [MXNet modell kiszolgáló lap](https://github.com/awslabs/mxnet-model-server).    |
+| A dsvm-hez kapcsolódó eszközök      | MXNet      |
+
+
+## <a name="mxnet"></a>MXNet
+
+|    |           |
+| ------------- | ------------- |
+| Mi ez?   | Deep learning-keretrendszerek      |
+| Támogatott DSVM-kiadások      | Windows, Linux     |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | MXNet telepítve van a `C:\dsvm\tools\mxnet` a Windows és `/dsvm/tools/mxnet` Linux rendszeren. Python-kötések vannak telepítve a Python 3.5 [Linux és Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) és a Python 3.6-os [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition). R-kötések az ubuntu rendszeren is telepítve lesz.   |
+| A minták mutató hivatkozások      | Mintául szolgáló Jupyter notebookok szerepelnek.    |
+| A dsvm-hez kapcsolódó eszközök      | Keras      |
+| Hogyan futtathatja / használata?    | * A parancsot egy terminálban: aktiválja a megfelelő környezetet, majd futtassa a Python. <br/> * A Jupyter: Kapcsolódjon a [Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) vagy a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), majd nyissa meg a mxnet könyvtárat a mintákhoz.  |
+ | Jegyzetek létrehozása | MXNet Linux épülő forrásból. A build CUDA, cuDNN, NCCL és MKL tartalmazza. |
+
+
+
+
+
+
+## <a name="horovod"></a>Horovod
+
+|    |           |
+| ------------- | ------------- |
+| Mi ez?   | Elosztott mély tanulási keretrendszer a TensorFlow-hez      |
+| Támogatott DSVM-kiadások      | Ubuntu     |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Horovod Python 3.5 települ az [Ubuntu](dsvm-languages.md#python-linux-and-windows-server-2012-edition).  |
+| A minták mutató hivatkozások      | [https://github.com/uber/horovod/tree/master/examples](https://github.com/uber/horovod/tree/master/examples)     |
+| A dsvm-hez kapcsolódó eszközök      | TensorFlow      |
+| Hogyan futtathatja / használata?    | Egy terminálon: aktiválja a megfelelő környezetet, majd futtassa a Python. |
+
+
+
+## <a name="theano"></a>Theano
+
+|    |           |
+| ------------- | ------------- |
+| Mi ez?   | Deep learning-keretrendszerek      |
+| Támogatott DSVM-kiadások      | Ubuntu     |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Theano telepítve van a Python 2.7-es (_legfelső szintű_), valamint a Python 3.5-ös (_py35_) környezetben.   |
+| A dsvm-hez kapcsolódó eszközök      | Keras      |
+| Hogyan futtathatja / használata?    | * A terminálon a Python-verzió (legfelső szintű vagy py35) kívánja, futtassa a python, majd importálja a theano aktiválása. <br/> * A Jupyter területen válassza a Python 2,7 vagy a 3,5 kernel elemet, majd importálja a theano.  <br/>Egy közelmúltbeli MKL hiba elkerüléséhez először állítsa a réteg threading MKL kell:<br/><br/>_export MKL_THREADING_LAYER=GNU_|
+
+
 ## <a name="chainer"></a>Chainer
 
 |    |           |
@@ -146,17 +200,6 @@ Mély víz használata:
 * A terminálon: aktiválja a [Python 3.5-ös](dsvm-languages.md#python-linux-and-windows-server-2012-edition) környezetre, majd futtassa a _python_. <br/>
 * A JupyterHub: [JupyterHub csatlakozni](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), majd keresse meg a deep_water könyvtárát mintafüzetek található.
 
-## <a name="mxnet"></a>MXNet
-
-|    |           |
-| ------------- | ------------- |
-| Mi ez?   | Deep learning-keretrendszerek      |
-| Támogatott DSVM-kiadások      | Windows, Linux     |
-| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | MXNet telepítve van a `C:\dsvm\tools\mxnet` a Windows és `/dsvm/tools/mxnet` Linux rendszeren. Python-kötések vannak telepítve a Python 3.5 [Linux és Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) és a Python 3.6-os [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition). R-kötések az ubuntu rendszeren is telepítve lesz.   |
-| A minták mutató hivatkozások      | Mintául szolgáló Jupyter notebookok szerepelnek.    |
-| A dsvm-hez kapcsolódó eszközök      | Keras      |
-| Hogyan futtathatja / használata?    | * A parancsot egy terminálban: aktiválja a megfelelő környezetet, majd futtassa a Python. <br/> * A Jupyter: Kapcsolódjon a [Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) vagy a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), majd nyissa meg a mxnet könyvtárat a mintákhoz.  |
- | Jegyzetek létrehozása | MXNet Linux épülő forrásból. A build CUDA, cuDNN, NCCL és MKL tartalmazza. |
 
 ## <a name="nvidia-digits"></a>NVIDIA SZÁMJEGY
 
@@ -187,48 +230,6 @@ A szolgáltatás indítása körülbelül egy percig tart. Indítson el egy webb
 
 
 
-## <a name="theano"></a>Theano
-
-|    |           |
-| ------------- | ------------- |
-| Mi ez?   | Deep learning-keretrendszerek      |
-| Támogatott DSVM-kiadások      | Ubuntu     |
-| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Theano telepítve van a Python 2.7-es (_legfelső szintű_), valamint a Python 3.5-ös (_py35_) környezetben.   |
-| A dsvm-hez kapcsolódó eszközök      | Keras      |
-| Hogyan futtathatja / használata?    | * A terminálon a Python-verzió (legfelső szintű vagy py35) kívánja, futtassa a python, majd importálja a theano aktiválása. <br/> * A Jupyter területen válassza a Python 2,7 vagy a 3,5 kernel elemet, majd importálja a theano.  <br/>Egy közelmúltbeli MKL hiba elkerüléséhez először állítsa a réteg threading MKL kell:<br/><br/>_export MKL_THREADING_LAYER=GNU_|
-
-
-
-## <a name="torch"></a>Torch
-
-|    |           |
-| ------------- | ------------- |
-| Mi ez?   | Deep learning-keretrendszerek      |
-| Támogatott DSVM-kiadások      | Ubuntu     |
-| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Torch telepítve van a `/dsvm/tools/torch`. PyTorch telepítve van a Python 2.7-es (_legfelső szintű_), valamint a Python 3.5-ös (_py35_) környezetben.   |
-| A minták mutató hivatkozások      | Torch mintát a következő helyen találhatók `/dsvm/samples/torch`. PyTorch mintát a következő helyen találhatók `/dsvm/samples/pytorch`.      |
-
-
-## <a name="pytorch"></a>PyTorch
-
-|    |           |
-| ------------- | ------------- |
-| Mi ez?   | Deep learning-keretrendszerek      |
-| Támogatott DSVM-kiadások      | Linux     |
-| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | PyTorch telepítve van a [Python 3.5-ös](dsvm-languages.md#python-linux-and-windows-server-2012-edition).  |
-| A minták mutató hivatkozások      | Mintául szolgáló Jupyter notebookok megtalálhatók, és minták /dsvm/samples/pytorch is található.      |
-| A dsvm-hez kapcsolódó eszközök      | Torch      |
-| Hogyan futtathatja / használata |* A parancsot egy terminálban: aktiválja a megfelelő környezetet, majd futtassa a Python. <br/> * A Jupyter: Kapcsolódjon a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux)-hez, majd nyissa meg a PyTorch könyvtárat a mintákhoz.  |
-
-## <a name="mxnet-model-server"></a>MXNet Model Server
-
-|    |           |
-| ------------- | ------------- |
-| Mi ez?   | A kiszolgáló HTTP-végpontokat MXNet és ONNX-modellek létrehozása      |
-| Támogatott DSVM-kiadások      | Linux     |
-| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | _mxnet-modell-server_ érhető el a terminálon.   |
-| A minták mutató hivatkozások      | Naprakész mintákat keressen az [MXNet modell kiszolgáló lap](https://github.com/awslabs/mxnet-model-server).    |
-| A dsvm-hez kapcsolódó eszközök      | MXNet      |
 
 ## <a name="tensorflow-serving"></a>TensorFlow-kiszolgáló
 
@@ -251,4 +252,14 @@ A szolgáltatás indítása körülbelül egy percig tart. Indítson el egy webb
 | A dsvm-hez kapcsolódó eszközök      | Szolgáltató, MXNet modell kiszolgáló tensorflow-hoz  |
 
 
+## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
+
+|    |           |
+| ------------- | ------------- |
+| Mi ez?   | Deep learning-keretrendszerek      |
+| Támogatott DSVM-kiadások      | Windows, Linux     |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | A Microsoft Cognitive Toolkit (CNTK) telepítve van a Python 3.5 [Linux és Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) és a Python 3.6-os [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition).   |
+| A minták mutató hivatkozások      | Mintául szolgáló Jupyter notebookok szerepelnek.     |
+| A dsvm-hez kapcsolódó eszközök      | Keras      |
+| Hogyan futtathatja / használata?    | * A parancsot egy terminálban: aktiválja a megfelelő környezetet, majd futtassa a Python. <br/> * A Jupyter: Kapcsolódjon a [Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) vagy a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), majd nyissa meg a CNTK könyvtárat a mintákhoz. |
 

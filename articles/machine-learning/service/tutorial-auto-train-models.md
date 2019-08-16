@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 08/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 060257ef144309e37208db80c7731ed96b995b2c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 49f46c09cfcfef2ab1e74ae7c08d9a54289293ac
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990477"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534829"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Az automatizált gépi tanulás használata a regressziós modell létrehozásához
 
@@ -42,36 +42,11 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ing
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ugorjon a telepítési [környezet beállítása](#start) a jegyzetfüzet lépéseinek beolvasásához, vagy az alábbi utasításokat követve szerezze be a jegyzetfüzetet, és futtassa azt Azure Notebooks vagy a saját notebook-kiszolgálóján. A jegyzetfüzet futtatásához a következőkre lesz szüksége:
+* Fejezze be az első részt [](tutorial-data-prep.md), az adatelőkészítési oktatóanyagot.
 
-* [Futtassa az adat-előkészítési oktatóanyagot](tutorial-data-prep.md).
-* Python 3,6 notebook-kiszolgáló a következő telepítéssel:
-    * A Pythonhoz készült `automl` Azure Machine learning SDK és `notebooks` az extrák
-    * `matplotlib`
-* Az oktatóanyag notebookja
-* Machine learning-munkaterület
-* A munkaterülethez tartozó konfigurációs fájl ugyanabban a könyvtárban, mint a jegyzetfüzet
+* Az első rész befejezése után nyissa meg az **oktatóanyagok/Regression-part2-Automated-ml. ipynb** jegyzetfüzetet ugyanazzal a notebook-kiszolgálóval.
 
-Az alábbi részekben ismertetett előfeltételek bármelyikét lekérheti.
-
-* [Felhőalapú notebook-kiszolgáló használata a](#azure) munkaterületen
-* [Saját notebook-kiszolgáló](#server) használata
-
-### <a name="azure"></a>Felhőalapú notebook-kiszolgáló használata a munkaterületen
-
-Könnyedén megkezdheti saját felhőalapú notebook-kiszolgálójának megkezdését. A [Pythonhoz készült Azure Machine learning SDK](https://aka.ms/aml-sdk) már telepítve van és konfigurálva van a felhőalapú erőforrás létrehozása után.
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* A jegyzetfüzet weboldalának elindítása után futtassa az **oktatóanyagok/Regression-part2-Automated-ml. ipynb** notebookot.
-
-### <a name="server"></a>Saját Jupyter notebook-kiszolgáló használata
-
-Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  Győződjön meg arról, hogy `matplotlib` a környezetében `notebooks` a és a és az `automl` extrák is telepítve vannak.
-
-[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
-
-A lépések elvégzése után futtassa az **oktatóanyagok/Regression-part2-Automated-ml. ipynb** notebookot.
+Ez az oktatóanyag a githubon [](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha saját [helyi környezetében](how-to-configure-environment.md#local)szeretné használni.  Győződjön meg arról, hogy `matplotlib` telepítette `automl` és `notebooks` az extrákat a Azure Machine learning SDK-ból.
 
 ## <a name="start"></a>A fejlesztési környezet beállítása
 

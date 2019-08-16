@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: diberry
-ms.openlocfilehash: dbfa7aaccd513ffcf8ba3907911d8c49275b2ea6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 18b901b429ee675726ef0e36535f1f97f4cdd076
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967656"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542995"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz kérése a GenerateAnswer API-val és a metaadatokkal
 
@@ -228,6 +228,18 @@ A alkalmazásban a közzétett kb, `isTest=false`a vagy a teszt Tudásbázis has
   "RankerType":"QuestionOnly"
 }
 ```
+
+## <a name="common-http-errors"></a>Gyakori HTTP-hibák
+
+|Kód|Magyarázat|
+|:--|--|
+|2xx|Sikeres|
+|400|kérés paraméterei helytelen, ami azt jelenti, a szükséges paraméterek: hiányzó, hibás vagy túl nagy|
+|400|kérelem törzse nem megfelelő, ami azt jelenti, a JSON-ja hiányzik, hibás vagy túl nagy|
+|401|Érvénytelen kulcs|
+|403|-Tiltott nem rendelkezik megfelelő engedélyekkel|
+|404|KB nem létezik.|
+|410|Ez az API elavult, és már nem érhető el|
 
 ## <a name="next-steps"></a>További lépések
 

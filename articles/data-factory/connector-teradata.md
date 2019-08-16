@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 6cbddfc5e529bc48e08407796024e5232d1a22e8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 134302bffdadc27cf202a43e7dc4cc94704bb5b3
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966366"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557864"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Adatok másolása a Teradata a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -196,12 +196,12 @@ Az adatok Teradata történő másolásához a másolási tevékenység **forrá
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre `TeradataSource`kell beállítani:. | Igen |
-| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`.<br>Ha engedélyezi a particionált terhelést, össze kell kapcsolnia a lekérdezéshez tartozó beépített partíciós paramétereket. Példákat a [párhuzamos másolás Teradata](#parallel-copy-from-teradata) szakaszban talál. | Nem (ha meg van adva table az adatkészletben) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`.<br>Ha engedélyezi a particionált terhelést, össze kell kapcsolnia a lekérdezéshez tartozó beépített partíciós paramétereket. Példákat a [párhuzamos másolás Teradata](#parallel-copy-from-teradata) szakaszban talál. | Nem (ha meg van adva táblázat az adatkészletben) |
 | partitionOptions | Meghatározza az adatok Teradata való betöltéséhez használt adatparticionálási beállításokat. <br>Értékek engedélyezése: **Nincs** (alapértelmezett), **kivonat** -és **DynamicRange**.<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None`), konfigurálja a [`parallelCopies`](copy-activity-performance.md#parallel-copy) beállítást is a másolási tevékenységhez. Ez határozza meg az adatok Teradata-adatbázisból való egyidejű betöltésének párhuzamos mértékét. Beállíthatja például a következőt: 4. | Nem |
 | partitionSettings | Határozza meg az adatparticionálási beállítások csoportját. <br>Akkor alkalmazza, ha a `None`partíció beállítása nem. | Nem |
 | partitionColumnName | Adja meg a forrás oszlop **olyan egész típusú** nevét, amelyet a párhuzamos másolási tartomány particionálásakor fog használni. Ha nincs megadva, a rendszer automatikusan észleli a tábla elsődleges kulcsát, és a partíció oszlopként használja. <br>Akkor alkalmazza, ha a partíció `Hash` beállítás `DynamicRange`értéke vagy. Ha lekérdezést használ a forrásadatok, a Hook `?AdfHashPartitionCondition` vagy `?AdfRangePartitionColumnName` a WHERE záradék beolvasásához. Lásd: példa [párhuzamos másolással a Teradata](#parallel-copy-from-teradata) szakaszból. | Nem |
 | partitionUpperBound | Az adatmásolásra szolgáló partíciós oszlop maximális értéke. <br>Akkor alkalmazza, ha a `DynamicRange`partíció lehetőség van. Ha lekérdezést használ a forrásadatok beolvasásához, a `?AdfRangePartitionUpbound` where záradékban lévő hookot. Példaként tekintse meg a [Parallel másolás a Teradata](#parallel-copy-from-teradata) szakaszát. | Nem |
-| PartitionLowerBound | Az adatmásolásra szolgáló partíciós oszlop minimális értéke. <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange`. Ha lekérdezést használ a forrásadatok beolvasásához, a WHERE záradékban lévő hookot `?AdfRangePartitionLowbound` . Példaként tekintse meg a [Parallel másolás a Teradata](#parallel-copy-from-teradata) szakaszát. | Nem |
+| partitionLowerBound | Az adatmásolásra szolgáló partíciós oszlop minimális értéke. <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange`. Ha lekérdezést használ a forrásadatok beolvasásához, a WHERE záradékban lévő hookot `?AdfRangePartitionLowbound` . Példaként tekintse meg a [Parallel másolás a Teradata](#parallel-copy-from-teradata) szakaszát. | Nem |
 
 > [!NOTE]
 >
@@ -299,7 +299,7 @@ Az adatok Teradata történő másolásakor a következő leképezések érvény
 | Decimal |Decimal |
 | Double |Double |
 | Graphic |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Egész szám |Int32 |
+| Integer |Int32 |
 | Interval Day |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Interval Day To Hour |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Interval Day To Minute |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |

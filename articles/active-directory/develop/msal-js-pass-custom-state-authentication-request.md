@@ -1,9 +1,9 @@
 ---
-title: A hitelesítési kérések (Microsoft-hitelesítési tár JavaScript-) egyéni állapotát adja át |} Az Azure
-description: Ismerje meg, hogyan adhatók át egy egyéni Állapot paraméter értéke a használatával a Microsoft-hitelesítési tár (MSAL.js) JavaScript-hitelesítési kérelmet.
+title: Egyéni állapot továbbítása a hitelesítési kérelmekben (a JavaScripthez készült Microsoft Authentication Library) | Azure
+description: Megtudhatja, hogyan adhat át egyéni állapotú paramétereket a hitelesítési kérelemben a JavaScripthez készült Microsoft Authentication Library (MSAL. js) használatával.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,21 +13,21 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/29/2019
-ms.author: nacanuma
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f29d84838ddb11ac359d7a04dbce8e39dd05ac01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2ae12624b3d897f05437f7795d1a1eee32ca37a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66420498"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532750"
 ---
-# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Adja át a hitelesítési kérések MSAL.js használatával egyéni állapota
-A *állapot* paramétert, ahogyan az OAuth 2.0, a hitelesítési kérelmet szerepel, és webhelyközi kérések hamisításának megakadályozása támadások megelőzése érdekében a token válaszban visszaadott is. Alapértelmezés szerint a Microsoft Authentication Library for JavaScript rendszerhez (MSAL.js) átadja egy véletlenszerűen létrehozott egyedi *állapot* paraméter értéke az a hitelesítési kérelmeket.
+# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Egyéni állapot továbbítása a hitelesítési kérelmekben a MSAL. js használatával
+A OAuth 2,0 által definiált *State* paraméter a hitelesítési kérelem része, és a jogkivonat válaszában is visszaadja, hogy megakadályozza a helyek közötti kérelmek hamisításának elleni támadásokat. Alapértelmezés szerint a Microsoft Authentication Library for JavaScript (MSAL. js) egy véletlenszerűen generált egyedi *állapot* paramétert ad meg a hitelesítési kérelmekben.
 
-A state paraméterben is használható információk átirányítási előtt az alkalmazás állapotának kódolása. A felhasználói állapot az alkalmazásban, például az oldal vagy nézet, ez a paraméter bemeneteként voltak adhat át. Az MSAL.js library lehetővé teszi, hogy, hogy adja át az egyéni állapotáról, mint az Állapot paraméter az `Request` objektum:
+Az állapot paraméter az alkalmazás állapotának az átirányítás előtt történő kódolására is használható. Átadhatja a felhasználó állapotát az alkalmazásban, például a lapon vagy a nézetben, a paraméter bemenetének megfelelően. A MSAL. js függvénytár lehetővé teszi, hogy az `Request` objektumon keresztül átadja az egyéni állapot paraméterét:
 
 ```javascript
 // Request type
@@ -57,7 +57,7 @@ let loginRequest = {
 myMSALObj.loginPopup(loginRequest);
 ```
 
-Az átadott állapot a rendszer hozzáfűzi az MSAL.js állította, a kérés küldésekor egyedi GUID Azonosítót. Ha a válasz, MSAL.js állapot egyezést ellenőrzi, és adja vissza az egyéni, az állapota sikeres a `Response` az objektum `accountState`.
+A rendszer hozzáfűzi az átadott állapotot a MSAL. js által a kérelem elküldésekor beállított egyedi GUID-azonosítóhoz. A válasz visszaadásakor a MSAL. js ellenőrzi az állapot egyezését, majd az `Response` `accountState`objektumban lévő egyéni átadott állapotot adja vissza.
 
 ```javascript
 export type AuthResponse = {
@@ -73,4 +73,4 @@ export type AuthResponse = {
 };
 ```
 
-További tudnivalókért olvassa el [egy egyoldalas alkalmazás (SPA) felépítésére](scenario-spa-overview.md) MSAL.js használatával.
+További tudnivalókért tekintse meg az [egyoldalas alkalmazások (Spa)](scenario-spa-overview.md) MSAL. js használatával történő létrehozását ismertető témakört.

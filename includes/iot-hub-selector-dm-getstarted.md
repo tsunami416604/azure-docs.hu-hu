@@ -4,12 +4,12 @@ ms.author: wesmc
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 60c0c700dde5afda2ca93a92b334cbc4f0134043
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 239ea2eb4d5bc8d326d5ca503a18b149252dc1be
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667992"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558753"
 ---
 > [!div class="op_single_selector"]
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
@@ -24,7 +24,9 @@ A háttérbeli alkalmazások az Azure IoT Hub primitíveket, például az eszkö
 A felhőben található háttérbeli alkalmazásból közvetlen metódust használhat az Eszközkezelő műveletek (például az újraindítás, a gyári beállítások visszaállítása és a belső vezérlőprogram frissítése) elindításához. Az eszköz feladata:
 
 * A IoT Hub által elküldett metódus-kérelem feldolgozása.
+
 * A megfelelő eszközre vonatkozó művelet kezdeményezése az eszközön.
+
 * Az állapot frissítéseinek biztosítása a *jelentett tulajdonságokkal* IoT hub.
 
 A felhőben található háttérbeli alkalmazás használatával az eszközökre vonatkozó kettős lekérdezések futtatásával jelentést készíthet az Eszközkezelő műveleteinek folyamatáról.

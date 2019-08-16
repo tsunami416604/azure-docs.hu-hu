@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6725bbc1978109d2b690a98e2cf98cc8c8c25141
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033003"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534805"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Oktatóanyag: Képosztályozási modellek betanítása MNIST-adatokkal és scikit – további tudnivalók a Azure Machine Learning használatával
 
@@ -40,33 +40,15 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ing
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ugorjon a telepítési [környezet beállítása](#start) a jegyzetfüzet lépéseinek beolvasásához, vagy az alábbi utasításokat követve szerezze be a jegyzetfüzetet, és futtassa azt Azure Notebooks vagy a saját notebook-kiszolgálóján.  A jegyzetfüzet futtatásához a következőkre lesz szüksége:
+* Fejezze be [az oktatóanyagot: Ismerkedjen meg az első ml-](tutorial-1st-experiment-sdk-setup.md) kísérlet létrehozásával:
+    * Munkaterület létrehozása
+    * Felhőalapú notebook-kiszolgáló létrehozása
+    * A Jupyter notebook irányítópultjának elindítása
 
-* Python 3,6 notebook-kiszolgáló a következő telepítéssel:
-    * A Pythonhoz készült Azure Machine Learning SDK
-    * `matplotlib` és `scikit-learn`
-* Az oktatóanyag jegyzetfüzet és a fájl **utils.py**
-* Machine learning-munkaterület
-* A munkaterülethez tartozó konfigurációs fájl ugyanabban a könyvtárban, mint a jegyzetfüzet
+* A Jupyter notebook irányítópultjának elindítása után nyissa meg az **oktatóanyagok/IMG-Classification-part1-Training. ipynb** notebookot.
 
-Az alábbi részekben ismertetett előfeltételek bármelyikét lekérheti.
+Az oktatóanyag és a kapcsolódó **utils.py** -fájl a [githubon](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha a saját [helyi környezetében](how-to-configure-environment.md#local)szeretné használni.  Győződjön meg arról, hogy `matplotlib` telepítve `scikit-learn` van és a környezetében.
 
-* [Felhőalapú notebook-kiszolgáló használata a](#azure) munkaterületen
-* [Saját notebook-kiszolgáló](#server) használata
-
-### <a name="azure"></a>Felhőalapú notebook-kiszolgáló használata a munkaterületen
-
-Könnyedén megkezdheti saját felhőalapú notebook-kiszolgálójának megkezdését. A [Pythonhoz készült Azure Machine learning SDK](https://aka.ms/aml-sdk) már telepítve van és konfigurálva van a felhőalapú erőforrás létrehozása után.
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* A jegyzetfüzet weboldalának elindítása után nyissa meg az **oktatóanyagok/IMG-Classification-part1-Training. ipynb** jegyzetfüzetet.
-
-### <a name="server"></a>Saját Jupyter notebook-kiszolgáló használata
-
-[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
-
- A lépések elvégzése után futtassa az **oktatóanyagok/IMG-Classification-part1-Training. ipynb** notebookot a klónozott címtárból.
 
 ## <a name="start"></a>A fejlesztési környezet beállítása
 

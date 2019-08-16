@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: ae809dd4841d6df8caabebfaded263b52f386834
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2359befc05bff867a8f8b17943ed67d906ff4971
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845035"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534339"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Egyéni tartománynév beállítása az Azure Storage-fiókhoz
 
@@ -27,7 +27,7 @@ A blob-adatok Azure Storage-fiókban való eléréséhez egyéni tartományt is 
 > A Storage-fiókok jelenleg csak egy egyéni tartománynevet támogatnak. Egyéni tartománynevet nem képezhető le a webes és a blob szolgáltatásbeli végpontokra is.
 > 
 > [!NOTE]
-> A leképezés csak altartományok esetében működik (például www\.contoso.com). Ha szeretné, hogy a webes végpont elérhető legyen a legfelső szintű tartományban (például contoso.com), akkor a Azure CDNt [Egyéni tartományokkal](storage-https-custom-domain-cdn.md) kell használnia
+> A leképezés csak altartományok esetében működik (például www\.contoso.com). Ha szeretné, hogy a webes végpont elérhető legyen a legfelső szintű tartományban (például contoso.com), akkor [egy egyéni tartományt](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain)kell hozzáadnia az Azure CDN-végponthoz.
 
 Az alábbi táblázatban néhány példa látható a *mystorageaccount*nevű Storage-fiókban található blob-adatra. A Storage-fiókhoz regisztrált egyéni altartomány a *www\.contoso.com*:
 

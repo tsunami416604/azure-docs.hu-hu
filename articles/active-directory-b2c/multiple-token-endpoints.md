@@ -1,6 +1,6 @@
 ---
-title: Több jogkivonat-kiállító támogatása egy OWIN-alapú webalkalmazásban – Azure Active Directory B2C
-description: Megtudhatja, hogyan engedélyezheti a .NET-webalkalmazásokat több tartomány által kiadott jogkivonatok támogatásához.
+title: OWIN-alapú webes API-k migrálása a b2clogin.com-Azure Active Directory B2C
+description: Megtudhatja, hogyan engedélyezheti a .NET-es webes API-k számára, hogy támogassa a több jogkivonat-kiállítók által kiállított jogkivonatokat, miközben az alkalmazásokat a b2clogin.com
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,21 +10,23 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 31ab19b8b3adbef1f0ea573af13b98750d278db8
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a8a6b4f90fe3f1e60341cc59e7d81870c82e843b
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716735"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533768"
 ---
-# <a name="support-multiple-token-issuers-in-an-owin-based-web-application"></a>Több jogkivonat-kiállítók támogatása egy OWIN-alapú webalkalmazásban
+# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWIN-alapú webes API migrálása b2clogin.com
 
-Ez a cikk egy olyan technikát ismertet, amely lehetővé teszi a több jogkivonat-kiállítók támogatását a webalkalmazásokban és az API-kon, amelyek implementálják a web [Interface for .net (OWIN)](http://owin.org/)alkalmazást A több jogkivonat-végpont támogatása akkor hasznos, ha Azure Active Directory (Azure AD) B2C-alkalmazásokat telepít át a *login.microsoftonline.com* -ről a *b2clogin.com*-re.
+Ez a cikk egy olyan technikát ismertet, amely lehetővé teszi a több jogkivonat-kiállítók támogatását a webes API- [k nyílt webes felületének (OWIN)](http://owin.org/)megvalósításában. A több jogkivonat-végpont támogatása akkor hasznos, ha Azure Active Directory B2C (Azure AD B2C) API-kat és azok alkalmazásait a *login.microsoftonline.com* -ből a *b2clogin.com*-be telepíti.
 
-A következő részek egy példát mutatnak arra, hogyan engedélyezhető több kiállító egy webalkalmazásban és a megfelelő webes API-ban, amely a [Microsoft OWIN][katana] middleware-összetevőket (Katana) használja. Bár a kód például a Microsoft OWIN-alapú middleware-re vonatkozik, az általános technikának más OWIN-könyvtárakra is érvényesnek kell lennie.
+Ha az API-ban támogatást ad a b2clogin.com és a login.microsoftonline.com által kiállított jogkivonatok fogadásához, áttelepítheti a webalkalmazásokat, mielőtt eltávolítja a login.microsoftonline.com által kiadott tokenek támogatását az API-ból.
+
+A következő részek egy példát mutatnak arra, hogyan engedélyezhető több kiállító egy webes API-ban, amely a [Microsoft OWIN][katana] middleware-összetevőket (Katana) használja. Bár a kód például a Microsoft OWIN-alapú middleware-re vonatkozik, az általános technikának más OWIN-könyvtárakra is érvényesnek kell lennie.
 
 > [!NOTE]
-> Ez a cikk azoknak a jelenleg üzembe helyezett alkalmazásoknak a Azure ad B2C, amelyek `login.microsoftonline.com` az ajánlott `b2clogin.com` végpontra való áttelepítést végzik. Ha új alkalmazást állít be, használja a [b2clogin.com](b2clogin.md) utasítást.
+> Ez a cikk olyan Azure ad B2C ügyfelek számára készült, akik jelenleg telepített API-kkal és `login.microsoftonline.com` alkalmazásokkal rendelkeznek, és amelyek a javasolt `b2clogin.com` végpontra kívánnak áttelepítést végezni. Ha új alkalmazást állít be, használja a [b2clogin.com](b2clogin.md) utasítást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +36,7 @@ A cikk lépéseinek folytatása előtt a következő Azure AD B2C erőforrásokr
 
 ## <a name="get-token-issuer-endpoints"></a>Jogkivonat-kiállítói végpontok beolvasása
 
-Először le kell kérnie a jogkivonat kiállítói végpontjának URI-azonosítóit minden olyan kiállítónál, amelyet támogatni kíván az alkalmazásban. A Azure AD B2C-bérlő által támogatott *b2clogin.com* és *login.microsoftonline.com* végpontok beszerzéséhez használja az alábbi eljárást a Azure Portal.
+Először le kell kérnie a jogkivonat kiállítói végpontjának URI azonosítóit minden olyan kiállítónál, amelyet támogatni szeretne az API-ban. A Azure AD B2C-bérlő által támogatott *b2clogin.com* és *login.microsoftonline.com* végpontok beszerzéséhez használja az alábbi eljárást a Azure Portal.
 
 Először válassza ki az egyik meglévő felhasználói folyamatot:
 

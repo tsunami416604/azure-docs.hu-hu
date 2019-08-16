@@ -1,33 +1,33 @@
 ---
-title: Az Azure piactér szabályzata és feltételeket |} Az Azure
-description: A Microsoft Azure Marketplace-en házirendek és a feltételek a alkalmazni az összes kiadóra és ajánlatra a Microsoft Azure Marketplace-en.
-services: Azure, Marketplace, AppSource
+title: Kereskedelmi Marketplace-szabályzatok és-feltételek | Azure
+description: A Microsoft kereskedelmi Marketplace-szabályzatok és-feltételek a Microsoft Azure Marketplace összes közzétevője és ajánlata esetében érvényesek.
+services: Azure, Marketplace, AppSource, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 08/09/2019
 ms.author: v-qiwe
-ms.openlocfilehash: c5041e9f7b19508480ff27311ba61d180f4a5a01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: edee3224e32fd853ca2de836f5c4dc0e5e87a100
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937635"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543596"
 ---
-# <a name="azure-marketplace-policies-and-terms"></a>Azure Marketplace – szabályzatok és feltételek
+# <a name="commercial-marketplace-policies-and-terms"></a>Kereskedelmi Marketplace-szabályzatok és-feltételek
 
 >[!Note]
->"Piactér" vagy "Azure piactér" jelenti, hogy a Microsoft tulajdonában lévő vagy a üzemeltetett platform, azonban neve, amelyen keresztül ajánlatok bemutatott vagy ügyfelek által igényelt. Ellenkező értelmű rendelkezés a Marketplace-en az Azure Marketplace-en, appsource-ban és az Azure Portal Marketplace tartalmazza.
+>"Microsoft kereskedelmi piactér": az a Microsoft tulajdonában álló vagy üzemeltetett platform, amelynek a neve, amelyeken keresztül az ügyfelek bemutatják vagy beszerezhetik az ajánlatokat. Ha másként nincs megadva, a kereskedelmi piactér tartalmazza a Microsoft Azure Marketplace és Microsoft AppSource.
 
-Köszönjük érdeklődését az Azure piactér közzétételi ajánlatokat. Elkötelezett, a felhőalapú megoldások széles forrását és üzleti ajánlatok esetében, amelyek lenyűgöző világszerte, és az üzleti segíteni az üzletági építhet együttműködve.
+Köszönjük érdeklődését a kereskedelmi piactéren elérhető közzétételi ajánlatok iránt. Elkötelezettek vagyunk a partnerekkel együttműködve a felhőalapú megoldások és az üzleti ajánlatok széles választékával, amely a világ minden részén elérhetővé teszi az ügyfeleket, és megkönnyíti a vállalat felépítését.
 
-Ajánlatokat a piactéren meg kell felelnie a házirendek és a feltételeket. Frissítjük a házirendek és kifejezések időről időre jó felhasználói élményt nyújt, és adja meg a partnerek sikeres lehetőséget. Ha a házirendek vagy a használati visszajelzést szeretne küldeni, vegye fel velünk a Megjegyzések a projektsablonokban a [Azure Marketplace és AppSource fórum](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
+A piactéren elérhető ajánlatoknak meg kell felelniük a szabályzatoknak és a feltételeknek. A szabályzatokat és a feltételeket időről időre frissítjük, így biztosítva a jó felhasználói élményt, és lehetőséget biztosítanak a partnereinknek a sikerre. Ha visszajelzése van a szabályzatokról vagy a feltételekről, tudassa velünk az Azure Marketplace-en [és a AppSource-fórumon](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
 
-## <a name="policies-and-terms"></a>Szabályzatok és feltételek
+## <a name="policies-and-terms"></a>Szabályzatok és kifejezések
 
-* [Az Azure Marketplace-en hitelesítési házirendek](https://docs.microsoft.com/legal/marketplace/certification-policies)
+* [Kereskedelmi piactér – minősítési szabályzatok](https://docs.microsoft.com/legal/marketplace/certification-policies)
 
-* [Részvételi szabályzata](https://docs.microsoft.com/legal/marketplace/participation-policy)
+* [Részvételi szabályzatok](https://docs.microsoft.com/legal/marketplace/participation-policy)
 
 * [Minősítési és felülvizsgálati szabályzatok](https://docs.microsoft.com/legal/marketplace/rating-review-policies)
 
@@ -35,6 +35,6 @@ Ajánlatokat a piactéren meg kell felelnie a házirendek és a feltételeket. F
 
 ## <a name="next-steps"></a>További lépések
 
-Látogasson el a [közzétételi útmutató az Azure Marketplace és AppSource](./marketplace-publishers-guide.md) lapot.
+Látogasson el az [Azure Marketplace és a AppSource közzétételi útmutató](./marketplace-publishers-guide.md) oldalára.
 
 ---

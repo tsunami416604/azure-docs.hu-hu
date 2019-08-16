@@ -1,9 +1,9 @@
 ---
-title: Az Azure AD B2C (Microsoft-hitelesítési tár .NET) |} Az Azure
-description: Figyelembe kell venni bizonyos ismerje meg az Azure AD B2C-vel használata a Microsoft-hitelesítési tár .NET (MSAL.NET) esetén.
+title: Azure AD B2C (Microsoft Authentication Library for .NET) | Azure
+description: Ismerkedjen meg az Azure AD B2C és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokkal.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,38 +13,38 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8240a487bdb01cdbe9017ddc7cb95ce4fc0e1503
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7444ecfd7a59224d0f08390385c508e4ecc40ddd
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052356"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532710"
 ---
-# <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>A közösségi identitású felhasználók az MSAL.NET használatával
+# <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>A MSAL.NET használata a felhasználók közösségi identitásokkal való bejelentkezéséhez
 
-MSAL.NET használatával jelentkezzen be a közösségi identitású felhasználók [Azure Active Directory B2C (Azure AD B2C-vel)](https://aka.ms/aadb2c). Az Azure AD B2C házirendek fogalma köré épül. Az MSAL.NET házirendet a rendszer lefordítja arra-szolgáltató kezeléséről.
+A MSAL.NET használatával közösségi identitásokkal jelentkezhet be a felhasználókba [Azure Active Directory B2C (Azure ad B2C)](https://aka.ms/aadb2c)használatával. Azure AD B2C a szabályzatok fogalma köré épül fel. A MSAL.NET-ben egy szabályzatot kell megadnia, amely egy szolgáltatót biztosít.
 
-- Ha a nyilvános ügyfélalkalmazás elindításához példányosítania, adja meg a házirend-szolgáltató kell.
-- Ha meg szeretné alkalmazni a szabályzatot, meg kell hívnia a felülbírálás `AcquireTokenInteractive` tartalmazó egy `authority` paraméter.
+- A nyilvános ügyfélalkalmazás létrehozásakor meg kell adnia a szabályzatot a szolgáltatónál.
+- Ha alkalmazni szeretné a szabályzatot, meg kell hívnia egy `AcquireTokenInteractive` `authority` paramétert tartalmazó felülbírálást.
 
-Az MSAL van ezen a lapon 3.x. Ha érdekli az MSAL 2.x verzióját, lásd: [MSAL az Azure AD B2C-vel tulajdonságairól 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x).
+Ez az oldal a 3. x MSAL. Ha érdekli a 2. x MSAL, tekintse meg [a Azure ad B2C a MSAL 2. x verziójában](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x).
 
-## <a name="authority-for-a-azure-ad-b2c-tenant-and-policy"></a>Egy Azure AD B2C-bérlő és a házirend hatóság
+## <a name="authority-for-a-azure-ad-b2c-tenant-and-policy"></a>Azure AD B2C bérlő és házirend szolgáltatója
 
-A használandó hatóság `https://login.microsoftonline.com/tfp/{tenant}/{policyName}` ahol:
+A használandó `https://login.microsoftonline.com/tfp/{tenant}/{policyName}` szolgáltató a következő:
 
-- `tenant` az Azure AD B2C bérlő neve 
-- `policyName` a szabályzat vonatkozik (például "b2c_1_susi" sign-a vagy a regisztráláshoz a) neve.
+- `tenant`a Azure AD B2C bérlő neve, 
+- `policyName`az alkalmazandó szabályzat neve (például "b2c_1_susi" a bejelentkezéshez/regisztrációhoz).
 
-Az aktuális útmutatás az Azure AD B2C-ből a használandó `b2clogin.com` szolgáltatóként. Például: `$"https://{your-tenant-name}.b2clogin.com/tfp/{your-tenant-ID}/{policyname}"`. További információkért lásd: Ez [dokumentáció](/azure/active-directory-b2c/b2clogin).
+A Azure ad B2C aktuális útmutatása a szolgáltató `b2clogin.com` . Például: `$"https://{your-tenant-name}.b2clogin.com/tfp/{your-tenant-ID}/{policyname}"`. További információkért tekintse meg ezt [](/azure/active-directory-b2c/b2clogin)a dokumentációt.
 
-## <a name="instantiating-the-application"></a>Az alkalmazás hárítható el
+## <a name="instantiating-the-application"></a>Az alkalmazás példányának példánya
 
-Az alkalmazás létrehozását, meg kell adnia a szolgáltatót.
+Az alkalmazás létrehozásakor meg kell adnia a szolgáltatót.
 
 ```csharp
 // Azure AD B2C Coordinates
@@ -64,9 +64,9 @@ application = PublicClientApplicationBuilder.Create(ClientID)
                .Build();
 ```
 
-## <a name="acquire-a-token-to-apply-a-policy"></a>A szabályzat alkalmazásához jogkivonat beszerzése
+## <a name="acquire-a-token-to-apply-a-policy"></a>Jogkivonat beszerzése házirend alkalmazásához
 
-Egy token beszerzése az Azure AD B2C-t a védett API-ja nyilvános ügyfélalkalmazás előírja, hogy a felülbírálás-szolgáltató:
+A nyilvános ügyfélalkalmazás Azure AD B2C védett API-hoz való jogkivonatának beszerzéséhez a felülbírálásokat egy szolgáltatóval kell használni:
 
 ```csharp
 IEnumerable<IAccount> accounts = await application.GetAccountsAsync();
@@ -77,8 +77,8 @@ AuthenticationResult ar = await application .AcquireToken(scopes, parentWindow)
 
 a következőre:
 
-- `policy` folyamatban van egy korábbi karakterlánc (például `PolicySignUpSignIn`).
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)` a fiók megkeresi egy adott házirend módszer. Példa:
+- `policy`a korábbi karakterláncok egyike (például `PolicySignUpSignIn`).
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)`egy olyan metódus, amely megkeresi az adott szabályzathoz tartozó fiókot. Példa:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -93,11 +93,11 @@ a következőre:
   }
   ```
 
-(Például hogy a felhasználó szerkesztheti a profilját, vagy új jelszót kérnek) házirend alkalmazása jelenleg kész meghívásával `AcquireTokenInteractive`. Ezek a házirendek két esetén a visszaadott jogkivonat ne használjon / hitelesítés eredménye.
+A szabályzat alkalmazása (például a végfelhasználók saját profiljának szerkesztése vagy jelszavának alaphelyzetbe állítása) jelenleg a `AcquireTokenInteractive`meghívásával történik. Ezen két házirend esetében nem a visszaadott jogkivonat/hitelesítés eredményét használja.
 
-## <a name="special-case-of-editprofile-and-resetpassword-policies"></a>Különleges eset EditProfile és ResetPassword házirendek
+## <a name="special-case-of-editprofile-and-resetpassword-policies"></a>EditProfile-és ResetPassword metódusát-szabályzatok speciális esete
 
-Ha azt szeretné, ahol a végfelhasználók jelentkezzen be egy közösségi identitást biztosít, és ezután szerkesztheti a profilját az Azure AD B2C-vel EditProfile házirendet alkalmazni szeretné. Ehhez a úgy, hogy a hívó `AcquireTokenInteractive` az adott házirendnek és a egy kérdés beállítása az adott szolgáltató `Prompt.NoPrompt` elkerülése érdekében a fiók kiválasztása párbeszédpanelen megjelenő (a felhasználó már bejelentkezett)
+Ha olyan felhasználói élményt szeretne biztosítani, amelyben a végfelhasználók bejelentkeznek a közösségi identitásba, majd szerkeszthetik azt a profilt, amelyre alkalmazni szeretné a Azure AD B2C EditProfile szabályzatot. Ezt úgy teheti meg, hogy meghívja `AcquireTokenInteractive` az adott szabályzathoz tartozó adott szolgáltatót, és egy kérést `Prompt.NoPrompt` kap, hogy elkerülje a fiók kiválasztása párbeszédpanel megjelenítését (mivel a felhasználó már be van jelentkezve)
 
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
@@ -118,20 +118,20 @@ private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
  }
 }
 ```
-## <a name="resource-owner-password-credentials-ropc-with-azure-ad-b2c"></a>Erőforrás tulajdonosának jelszavas hitelesítő (ROPC) adatai az Azure AD B2C-vel
-A ROPC folyamatot a további részletekért tekintse meg a [dokumentáció](v2-oauth-ropc.md).
+## <a name="resource-owner-password-credentials-ropc-with-azure-ad-b2c"></a>Erőforrás-tulajdonos jelszavának hitelesítő adatai (ROPC) Azure AD B2C
+A ROPC folyamattal kapcsolatos további részletekért tekintse meg [](v2-oauth-ropc.md)ezt a dokumentációt.
 
-Ez a folyamat **nem ajánlott** mivel az alkalmazás a felhasználó megkérése a jelszavát nem biztonságos. A problémáról további információk: [Ez a cikk](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
+Ez a folyamat **nem ajánlott** , mert az alkalmazás a jelszót kérő felhasználó nem biztonságos. A problémával kapcsolatos további információkért tekintse meg [ezt a cikket](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
 
-Felhasználónév/jelszó használatával, vannak megadva felfelé több minden:
-- Alapszintű bérlők modern identitás: jelszó fogott lekérdezi, játssza vissza. Mert a fogalom, amely megszerezhetik megosztás titkos kód. Ez az beállításának kompatibilis.
-- Felhasználók, akik kell tennie a többtényezős hitelesítés nem lehet bejelentkezni (mivel nem lett a beavatkozás nélküli).
-- Felhasználók nem tudják az egyszeri bejelentkezés.
+A Felhasználónév/jelszó használatával számos dolgot ad meg:
+- a modern identitás alapbérlői: a jelszó bekerül, majd újra lejátszhatók. Mivel egy titkos megosztási titok ezt a fogalmát felhasználhatja. Ez nem kompatibilis a jelszóval.
+- Az MFA-t igénylő felhasználóknak nem lehet bejelentkezniük (mivel nincs interakció).
+- A felhasználók nem tudnak egyszeri bejelentkezést végezni.
 
-### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>A ROPC folyamat konfigurálása az Azure AD B2C-vel
-Az Azure AD B2C-bérlőben, hozzon létre egy új felhasználói folyamat, és válassza **jelentkezzen be a ROPC**. Ez lehetővé teszi a ROPC házirend-bérlője számára. Lásd: [konfigurálása az erőforrás tulajdonosának jelszavas hitelesítő adatai flow](/azure/active-directory-b2c/configure-ropc) további részletekért.
+### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>A ROPC folyamat konfigurálása Azure AD B2C
+A Azure AD B2C-bérlőben hozzon létre egy új felhasználói folyamatot, és válassza a bejelentkezés lehetőséget a **ROPC használatával**. Ez lehetővé teszi a bérlő ROPC-szabályzatának engedélyezését. További részletekért lásd: [az erőforrás-tulajdonos jelszava hitelesítő adatainak konfigurálása](/azure/active-directory-b2c/configure-ropc) .
 
-`IPublicClientApplication` egy metódust tartalmaz:
+`IPublicClientApplication`metódust tartalmaz:
 ```csharp
 AcquireTokenByUsernamePassword(
             IEnumerable<string> scopes,
@@ -139,50 +139,50 @@ AcquireTokenByUsernamePassword(
             SecureString password)
 ```
 
-Ez a módszer paraméterekként fogadja:
-- A *hatókörök* hozzáférési jogkivonat kérése.
-- A *felhasználónév*.
-- A SecureString *jelszó* a felhasználó számára.
+A metódus a következő paramétereket veszi figyelembe:
+- Azok a *hatókörök* , amelyekhez hozzáférési tokent kell kérni.
+- Egy *Felhasználónév*.
+- A felhasználó SecureString *jelszava* .
 
-Fontos, hogy a szolgáltató, amely tartalmazza a ROPC házirendet használja.
+Ne felejtse el használni a ROPC házirendet tartalmazó szolgáltatót.
 
-### <a name="limitations-of-the-ropc-flow"></a>A ROPC flow korlátozásai
- - A ROPC folyamat **csak a helyi fiókok esetében működik** (kell regisztrálnia az Azure AD B2C egy e-mail vagy felhasználónév). Ez a folyamat nem működik, ha az Azure AD B2C által támogatott Identitásszolgáltatók valamelyik összevonása (Facebook, Google, stb.).
- - Jelenleg nincs **id_token nem adott vissza az Azure AD B2C-ből** az MSAL ROPC folyamat végrehajtása során. Ez azt jelenti, egy fiók objektum nem hozható létre, így a gyorsítótárban lesz nincs fiókja, és a felhasználói. A AcquireTokenSilent folyamat nem fog működni ebben a forgatókönyvben. Azonban ROPC nem jelenik meg a felhasználói Felületet, így nem nincs hatással a felhasználói élményt.
+### <a name="limitations-of-the-ropc-flow"></a>A ROPC folyamat korlátai
+ - A ROPC folyamat **csak helyi fiókoknál működik** (a Azure ad B2C e-mailben vagy felhasználónévvel való regisztrálásakor). Ez a folyamat nem működik, ha a Azure AD B2C (Facebook, Google stb.) által támogatott egyesítő.
+ - Jelenleg **nem tért vissza id_token a Azure ad B2C** a ROPC folyamat MSAL-ből való megvalósítása során. Ez azt jelenti, hogy a fiók objektum nem hozható létre, tehát a gyorsítótárban nem lesz fiók, és nincs felhasználó. Ebben a forgatókönyvben a AcquireTokenSilent folyamat nem fog működni. A ROPC azonban nem jeleníti meg a felhasználói FELÜLETET, így nem lesz hatással a felhasználói élményre.
 
-## <a name="google-auth-and-embedded-webview"></a>Google-hitelesítés és a beágyazott WebView-t
+## <a name="google-auth-and-embedded-webview"></a>Google-hitelesítés és beágyazott webnézet
 
-Ha Ön egy Azure AD B2C-t fejlesztő Google használata Identitásszolgáltatóként, azt recommand rendszer böngészőt használ, nem engedélyezi a Google [beágyazott webnézeteket hitelesítést](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Jelenleg `login.microsoftonline.com` megbízható hatóság a Google-lel. Ez a szolgáltató használatával a beágyazott WebView-t fog működni. Azonban használatával `b2clogin.com` nem megbízható hatóság a Google-lel, így a felhasználók nem fognak tudni hitelesíteni.
+Ha Ön egy Azure AD B2C fejlesztő, aki a Google-t használja identitás-szolgáltatóként, a rendszerböngészőt használja, mivel a Google nem engedélyezi a [hitelesítést a beágyazott](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)webnézetekben. Jelenleg egy `login.microsoftonline.com` megbízható szolgáltató a Google-ban. A szolgáltató használata a beágyazott webnézettel fog működni. A használata `b2clogin.com` azonban nem megbízható a Google-ban, így a felhasználók nem fognak tudni hitelesítést végezni.
 
-A wikin, és a egy frissítést biztosít [probléma](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) dolgot módosítjuk.
+Egy frissítést biztosítunk a wikihöz, és ezt a [problémát](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) a dolgok megváltozásakor.
 
-## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>Az Azure AD B2C az MSAL.Net gyorsítótárazás 
+## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>Azure AD B2C gyorsítótárazása a MSAL.Net-ben 
 
-### <a name="known-issue-with-azure-ad-b2c"></a>Ismert probléma az Azure AD B2C-vel
+### <a name="known-issue-with-azure-ad-b2c"></a>Ismert probléma a Azure AD B2C
 
-Támogatja az MSAL.Net egy [jogkivonat-gyorsítótár](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet). A jogkivonat kulcs gyorsítótárazását a jogcímek, az identitásszolgáltató által visszaadott alapul. Jelenleg az MSAL.Net kell két jogcímek jogkivonat gyorsítótár kulcsának hozhat létre:  
-- `tid` az Azure AD-bérlő azonosítója, azaz és 
+A MSAL.Net támogatja a [jogkivonat](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet)-gyorsítótárat. A jogkivonat-gyorsítótárazási kulcs az identitás-szolgáltató által visszaadott jogcímek alapján történik. Jelenleg a MSAL.Net két jogcímet igényel a jogkivonat-gyorsítótár kulcsának létrehozásához:  
+- `tid`Ez az Azure AD-bérlő azonosítója, és 
 - `preferred_username` 
 
-Mindkét ezeket a jogcímeket hiányoznak számos, az Azure AD B2C-forgatókönyveket. 
+Ezek a jogcímek számos Azure AD B2C esetben hiányoznak. 
 
-Az ügyfél hatás az, hogy a felhasználónév mező megjelenítése során kapott "A jogkivonatot a válaszból hiányzik" értéket? Ha igen, ennek az az oka az Azure AD B2C-vel nesmí vracet hodnotu a számára a preferred_username a IdToken a közösségi fiókok és a külső identitásszolgáltató (IDP) vonatkozó korlátozások miatt. Az Azure AD egy preferred_username értékét adja vissza, mert a felhasználó, akik tudni fogja, de az Azure AD B2C-vel, mert a felhasználó bejelentkezhet egy helyi fiók, Facebook, Google, a GitHub-stb. hiba nem konzisztens az Azure AD B2C preferred_username használandó értéket. Az ADAL-gyorsítótár kompatibilitási bevezetéséről MSAL feloldásához döntöttünk során kezelése az Azure AD B2C fiókkal rendelkező, amikor a IdToken ad vissza semmit a preferred_username "A jogkivonatot a válaszból hiányzik" használandó található a rendszerünkben. Az MSAL való gyorsítótár kompatibilitás megőrzése érdekében a szalagtárak különböző preferred_username értéket kell visszaadnia.
+Az ügyfél hatással van arra, hogy amikor a Felhasználónév mezőt szeretné megjeleníteni, "hiányzik a jogkivonat-válaszból" értékként? Ha igen, ennek az az oka, hogy Azure AD B2C nem ad vissza értéket a preferred_username IdToken a közösségi fiókok és külső identitás-szolgáltatók (IDP) korlátai miatt. Az Azure AD egy értéket ad vissza a preferred_username számára, mert tudja, hogy kik a felhasználók, de a Azure AD B2C esetében, mivel a felhasználó helyi fiókkal, Facebook-, Google-, GitHub-és egyéb szolgáltatásokkal is bejelentkezhet Azure AD B2C. A ADAL-mel való MSAL-kompatibilitás blokkolásának feloldásához úgy döntöttünk, hogy a "hiányzó a jogkivonat-válaszból" kifejezést használjuk a végén a Azure AD B2C-fiókok kezelésekor, amikor a IdToken semmit nem ad vissza a preferred_username. A MSAL-nek egy értéket kell visszaadnia a preferred_username számára a gyorsítótár-kompatibilitás fenntartásához a kódtárak között.
 
 ### <a name="workarounds"></a>Megkerülő megoldások
 
-#### <a name="mitigation-for-the-missing-tenant-id"></a>A bérlői azonosító mérséklése.
+#### <a name="mitigation-for-the-missing-tenant-id"></a>A hiányzó bérlői azonosító enyhítése
 
-A javasolt áthidaló megoldás a [gyorsítótárazási házirend](#acquire-a-token-to-apply-a-policy)
+A javasolt Áthidaló megoldás a gyorsítótárazás használata [házirend szerint](#acquire-a-token-to-apply-a-policy)
 
-Másik lehetőségként használhatja a `tid` jogcímet, ha használja a [B2C-vel egyéni szabályzatok](https://aka.ms/ief), mert azt lehetővé teszi az alkalmazás további jogcímeket adja vissza. Tudjon meg többet a [jogcímek átalakítása](/azure/active-directory-b2c/claims-transformation-technical-profile)
+Alternatív megoldásként használhatja a `tid` jogcímet is, ha a [B2C egyéni házirendeket](https://aka.ms/ief)használja, mert lehetővé teszi, hogy további jogcímeket ad vissza az alkalmazásnak. További információ a jogcímek [átalakításáról](/azure/active-directory-b2c/claims-transformation-technical-profile)
 
-#### <a name="mitigation-for-missing-from-the-token-response"></a>"A jogkivonatot a válaszból hiányzik" megoldás
-Az egyik lehetőség, hogy a "name" jogcímet a előnyben részesített felhasználóneveként. Ez a folyamat említett [B2C doc](../../active-directory-b2c/active-directory-b2c-reference-policies.md) -> "a visszatérési jogcím oszlop kiválasztása a visszaküldött hitelesítő jogkivonatokban a sikeres Profilszerkesztési művelet után az alkalmazásnak szeretne jogcímeket. Jelölje be például megjelenítendő név, postai irányítószám."
+#### <a name="mitigation-for-missing-from-the-token-response"></a>A "hiányzó jogkivonat-válasz" megoldásának enyhítése
+Az egyik lehetőség a "név" jogcím használata előnyben részesített felhasználónévként. Ennek a [B2C doc](../../active-directory-b2c/active-directory-b2c-reference-policies.md) ->nak a folyamata szerepel a Return jogcím oszlopban, majd válassza ki azokat a jogcímeket, amelyeket az alkalmazásnak a sikeres profil-szerkesztési élmény után visszaküldött engedélyezési jogkivonatokban szeretne visszaadni. Válassza például a megjelenítendő név, az irányítószám lehetőséget.
 
 ## <a name="next-steps"></a>További lépések 
 
-Interaktív módon az Azure AD B2C-alkalmazást az MSAL.NET-jogkivonatok beszerzésének további információt a következő minta szerepelnek.
+A jogkivonatok interaktív módon való beszerzésével kapcsolatban további részleteket a következő példában talál: Azure AD B2C alkalmazások MSAL.NET.
 
-| Sample | Platform | Leírás|
+| Minta | Platform | Leírás|
 |------ | -------- | -----------|
-|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Android, Xamarin az UWP | Egy egyszerű Xamarin Forms alkalmazás amely azt mutatja be az MSAL.NET használatával hitelesíteni a felhasználókat az Azure AD B2C és hozzáférni egy webes API-hoz az eredményül kapott jogkivonatokkal.|
+|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Egy egyszerű Xamarin űrlapos alkalmazás, amely bemutatja, hogyan használható a MSAL.NET a felhasználók hitelesítéséhez Azure AD B2C segítségével, és hogyan férhet hozzá egy webes API-hoz az eredményül kapott jogkivonatokkal.|

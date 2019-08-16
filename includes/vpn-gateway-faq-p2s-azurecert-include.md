@@ -5,21 +5,25 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e2e91dc91cf0fbe6827808785a4c3cc25b06542b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 93f6bc8533218af7f0e6dcd1c5f7be6fe8c00e29
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178939"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69520845"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
-### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>Használhatom a saját PKI legfelső szintű hitelesítésszolgáltatómat a pont–hely kapcsolathoz?
+### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Használhatom a saját belső PKI legfelső szintű HITELESÍTÉSSZOLGÁLTATÓját a pont – hely kapcsolatokhoz tartozó tanúsítványok létrehozásához?
 
 Igen. Korábban csak önaláírt főtanúsítványt lehetett használni. Továbbra is 20 főtanúsítvány tölthető fel.
+
+### <a name="can-i-use-certificates-from-azure-key-vault"></a>Használhatok Azure Key Vault tanúsítványokat?
+
+Nem.
 
 ### <a name="what-tools-can-i-use-to-create-certificates"></a>Milyen eszközökkel hozhatok létre tanúsítványokat?
 
@@ -27,11 +31,11 @@ Használhatja a Vállalati nyilvános kulcsú infrastruktúra megoldást (belső
 
 ### <a name="certsettings"></a>Elérhető útmutató a tanúsítvány beállításaihoz és paramétereihez?
 
-* **Belső PKI/vállalati nyilvános kulcsú infrastruktúra megoldás:** Tekintse meg a lépéseket [tanúsítványok előállítása](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert).
+* **Belső PKI/nagyvállalati PKI-megoldás:** Lásd a [tanúsítványok létrehozásához](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)szükséges lépéseket.
 
-* **Azure PowerShell:** Tekintse meg a [Azure PowerShell-lel](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) ismertető cikket.
+* **Azure PowerShell:** A lépésekért tekintse meg a [Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) cikket.
 
-* **MakeCert:** Tekintse meg a [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) ismertető cikket.
+* **MakeCert** A lépésekért tekintse meg a [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) című cikket.
 
 * **OpenSSL:** 
 

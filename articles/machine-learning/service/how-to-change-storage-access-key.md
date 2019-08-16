@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/08/2019
-ms.openlocfilehash: 7c6b85bd1f5935fb3722f82efcdfc921fc9cb2ec
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/16/2019
+ms.openlocfilehash: e386e34a8326a51753631ee9ea4215d01ba7ceb3
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990542"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558228"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>A Storage-fiók elérési kulcsainak újragenerálása
 
@@ -50,12 +50,15 @@ ws = Workspace.from_config()
 
 default_ds = ws.get_default_datastore()
 print("Default datstore: " + default_ds.name + ", storage account name: " +
-      default_ds.account_name + ", container name: " + ds.container_name)
+      default_ds.account_name + ", container name: " + default_ds.container_name)
 
 datastores = ws.datastores
 for name, ds in datastores.items():
-    if ds.datastore_type == "AzureBlob" or ds.datastore_type == "AzureFile":
-        print("datastore name: " + name + ", storage account name: " +
+    if ds.datastore_type == "AzureBlob":
+        print("Blob store - datastore name: " + name + ", storage account name: " +
+              ds.account_name + ", container name: " + ds.container_name)
+    if ds.datastore_type == "AzureFile":
+        print("File share - datastore name: " + name + ", storage account name: " +
               ds.account_name + ", container name: " + ds.container_name)
 ```
 
@@ -64,6 +67,8 @@ Ez a kód az Azure Storage-t használó regisztrált adattárakat keres, és fel
 * Adattár neve: Annak az adattárnak a neve, amelyhez a Storage-fiók regisztrálva van.
 * Tárfiók neve: Az Azure Storage-fiók neve.
 * Tároló A regisztráció során használt Storage-fiókban található tároló.
+
+Azt is jelzi, hogy az adattár egy Azure-Blob vagy egy Azure-fájlmegosztás esetében van-e, mivel az egyes adattárolók újraregisztrálásának különböző módjai vannak.
 
 Ha létezik egy bejegyzés ahhoz a Storage-fiókhoz, amelyet a hozzáférési kulcsok újragenerálásához tervez, mentse az adattár nevét, a Storage-fiók nevét és a tároló nevét.
 
@@ -97,12 +102,21 @@ Ha Azure Machine Learning szolgáltatást szeretné frissíteni az új kulcs has
 1. A Storage-fiókot használó adattár (ok) újbóli regisztrálásához használja a [mit kell frissíteni](#whattoupdate) és az 1. lépésben szereplő kulcsot a következő kóddal:
 
     ```python
-    ds = Datastore.register_azure_blob_container(workspace=ws, 
-                                              datastore_name='your datastore name', 
+    # Re-register the blob container
+    ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+                                              datastore_name='your datastore name',
                                               container_name='your container name',
-                                              account_name='your storage account name', 
+                                              account_name='your storage account name',
                                               account_key='new storage account key',
                                               overwrite=True)
+    # Re-register file shares
+    ds_file = Datastore.register_azure_file_share(workspace=ws,
+                                          datastore_name='your datastore name',
+                                          file_share_name='your container name',
+                                          account_name='your storage account name',
+                                          account_key='new storage account key',
+                                          overwrite=True)
+    
     ```
 
     Mivel `overwrite=True` a meg van adva, ez a kód felülírja a meglévő regisztrációt, és frissíti azt az új kulcs használatára.

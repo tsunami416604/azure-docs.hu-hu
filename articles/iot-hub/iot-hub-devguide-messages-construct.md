@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: dd45c68fb7d7a7226d18dd1afc508b3dbf7b770b
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9a62001f168e0577ea07ad030923a4d0398e50af
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950437"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534975"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-üzenetek létrehozása és olvasása
 
@@ -49,14 +49,15 @@ További információ a különböző protokollok használatával elküldött ü
 
 ## <a name="system-properties-of-d2c-iot-hub-messages"></a>**D2C** IoT hub üzenetek rendszertulajdonságai
 
-| Tulajdonság | Leírás  |A felhasználó beállítható?|Az útválasztási lekérdezés kulcsszava|
+| Tulajdonság | Leírás  |A felhasználó beállítható?|Kulcsszó a következőhöz: </br>útválasztási lekérdezés|
 | --- | --- | --- | --- |
-| üzenet-azonosító |A kérelem-válasz mintákhoz használt üzenet felhasználó által beállítható azonosítója. Formátum: Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterek + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`.  | Igen | MessageId |
-| iothub-enqueuedtime |Az [eszközről a felhőbe](iot-hub-devguide-d2c-guidance.md) irányuló üzenet IoT hub általi fogadásának dátuma és időpontja. | Nem | EnqueuedTime |
-| user-id |Az üzenetek eredetének meghatározására szolgáló azonosító. Ha IoT Hub hozza létre az üzeneteket, az értéke a `{iot hub name}`következő lesz:. | Igen | UserId |
-| iothub-connection-device-id |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Tartalmazza az üzenetet küldő eszköz **deviceId** -számát. | Nem | DeviceId |
-| iothub-connection-auth-generation-id |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **generationId** (az [eszköz identitásának tulajdonságai](iot-hub-devguide-identity-registry.md#device-identity-properties)alapján) tartalmazza. | Nem |DeviceGenerationId |
-| iothub-connection-auth-method |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított hitelesítési módszer. Ez a tulajdonság az üzenetet küldő eszköz hitelesítéséhez használt hitelesítési módszerről tartalmaz információkat.| Nem | AuthMethod |
+| üzenet-azonosító |A kérelem-válasz mintákhoz használt üzenet felhasználó által beállítható azonosítója. Formátum: Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterek + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`.  | Igen | messageId |
+| iothub-enqueuedtime |Az [eszközről a felhőbe](iot-hub-devguide-d2c-guidance.md) irányuló üzenet IoT hub általi fogadásának dátuma és időpontja. | Nem | enqueuedTime |
+| user-id |Az üzenetek eredetének meghatározására szolgáló azonosító. Ha IoT Hub hozza létre az üzeneteket, az értéke a `{iot hub name}`következő lesz:. | Igen | userId |
+| iothub-connection-device-id |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Tartalmazza az üzenetet küldő eszköz **deviceId** -számát. | Nem | connectionDeviceId |
+| iothub – összekapcsolási modul azonosítója |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **moduleId** tartalmazza. | Nem | connectionModuleId |
+| iothub-connection-auth-generation-id |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **connectionDeviceGenerationId** (az [eszköz identitásának tulajdonságai](iot-hub-devguide-identity-registry.md#device-identity-properties)alapján) tartalmazza. | Nem |connectionDeviceGenerationId |
+| iothub-connection-auth-method |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított hitelesítési módszer. Ez a tulajdonság az üzenetet küldő eszköz hitelesítéséhez használt hitelesítési módszerről tartalmaz információkat.| Nem | connectionAuthMethod |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT hub üzenetek rendszertulajdonságai
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: d4b7a214af23d69f1217d84e9401de230cd358b0
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 903fd2309949036b62fb4975596fb645c021d06d
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877362"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535030"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights log-alapú metrikák
 
@@ -93,7 +93,7 @@ availabilityResults
 A böngésző metrikáit a Application Insights JavaScript SDK gyűjti a valós végfelhasználói böngészőkből. Nagyszerű betekintést nyújtanak a felhasználói élménybe a webalkalmazással. A böngésző metrikái jellemzően nem mintavételezés alatt állnak, ami azt jelenti, hogy a használati számok nagyobb pontosságot biztosítanak, mint a kiszolgálóoldali metrikák, amelyeket mintavételezéssel lehet eldönteni.
 
 > [!NOTE]
-> A böngésző metrikáinak összegyűjtéséhez az alkalmazásnak a [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md#add-the-sdk-script-to-your-app-or-web-pages)-kódrészlettel kell rendelkeznie.
+> A böngésző metrikáinak összegyűjtéséhez az alkalmazásnak a [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md)-val kell rendelkeznie.
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>Böngésző oldalának betöltési ideje (browserTimings/totalDuration)
 
@@ -115,7 +115,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodperc|Átlag, min, Max|None|
+|Ezredmásodperc|Átlag, min, Max|Nincsenek|
 
 ```Kusto
 browserTimings
@@ -131,7 +131,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodperc|Átlag, min, Max|None|
+|Ezredmásodperc|Átlag, min, Max|Nincsenek|
 
 ```Kusto
 browserTimings
@@ -163,7 +163,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodperc|Átlag, min, Max|None|
+|Ezredmásodperc|Átlag, min, Max|Nincsenek|
 
 ```Kusto
 browserTimings
@@ -225,7 +225,7 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>Sikertelen kérelmek (kérelmek/sikertelen)
 
-A sikertelenként megjelölt, nyomon követett kiszolgálói kérelmek száma. Alapértelmezés szerint a Application Insights SDK automatikusan megjelöl minden olyan kiszolgálói kérelmet, amely sikertelen kérelemként HTTP-5xx vagy 4xx adott vissza. Ezt a logikát testreszabhatja úgy  , hogy módosítja a kérelem telemetria-eleme sikerességi tulajdonságát egy [Egyéni telemetria](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)-inicializálásban.
+A sikertelenként megjelölt, nyomon követett kiszolgálói kérelmek száma. Alapértelmezés szerint a Application Insights SDK automatikusan megjelöl minden olyan kiszolgálói kérelmet, amely sikertelen kérelemként HTTP-5xx vagy 4xx adott vissza. Ezt a logikát testreszabhatja úgy , hogy módosítja a kérelem telemetria-eleme sikerességi tulajdonságát egy [Egyéni telemetria](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)-inicializálásban.
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
 |---|---|---|---|
@@ -313,7 +313,7 @@ A metrika azt mutatja, hogy a teljes processzor-kapacitás mekkora hányadát ha
 
 |Mértékegység|Támogatott összesítések|Támogatott méretek|
 |---|---|---|
-|Százalék|Átlag, min, Max|Felhőalapú szerepkör-példány
+|Százalék|Átlag, min, Max|Felhőalapú szerepkörpéldány
 
 ```Kusto
 performanceCounters
@@ -327,7 +327,7 @@ performanceCounters
 
 |Mértékegység|Támogatott összesítések|Támogatott méretek|
 |---|---|---|
-|Bájt/másodperc|Átlag, min, Max|Felhőalapú szerepkör-példány
+|Bájt/s|Átlag, min, Max|Felhőalapú szerepkörpéldány
 
 ```Kusto
 performanceCounters
@@ -343,7 +343,7 @@ Azon nem megosztott memória mennyisége, amelyet a figyelt folyamat az adatforr
 
 |Mértékegység|Támogatott összesítések|Támogatott méretek|
 |---|---|---|
-|Bájt|Átlag, min, Max|Felhőalapú szerepkör-példány
+|Bájt|Átlag, min, Max|Felhőalapú szerepkörpéldány
 
 ```Kusto
 performanceCounters
@@ -359,7 +359,7 @@ CPU-felhasználás a figyelt kiszolgálói példányon futó *összes* folyamat 
 
 |Mértékegység|Támogatott összesítések|Támogatott méretek|
 |---|---|---|
-|Százalék|Átlag, min, Max|Felhőalapú szerepkör-példány
+|Százalék|Átlag, min, Max|Felhőalapú szerepkörpéldány
 
 >[!NOTE]
 > A processzoridő-metrika nem érhető el az Azure App Servicesban üzemeltetett alkalmazásokhoz. A [folyamat CPU](#process-cpu-performancecountersprocesscpupercentage) -metrikájának használatával követheti a app Servicesban üzemeltetett webalkalmazások CPU-kihasználtságát.

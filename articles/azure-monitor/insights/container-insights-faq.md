@@ -8,14 +8,14 @@ editor: tysonn
 ms.service: azure-monitor
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 08/02/2019
+ms.date: 08/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 3644b40311c037df800eb89ca26d1285fbf1e082
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: f8d763f8bb228a0d4d83a3776f818d59939b942d
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741511"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69559079"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Azure Monitor a tárolók számára – gyakori kérdések
 
@@ -33,7 +33,7 @@ Ha a Log Analytics munkaterületen nem tud adatokat látni a mindennapi időpont
 
 A ContainerInventory tábla a leállított és futó tárolókkal kapcsolatos információkat tartalmaz. A tábla az ügynökön belüli munkafolyamattal van feltöltve, amely lekérdezi a Docker-t az összes tárolónál (futó és leállított), és továbbítja az adatokat a Log Analytics munkaterületen.
  
-## <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Hogyan a **hiányzó előfizetés-regisztrációs** hiba elhárítása?
+## <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Hogyan a *hiányzó előfizetés-regisztrációs* hiba elhárítása?
 
 Ha a **Microsoft. OperationsManagement előfizetés-regisztrációja hiányzik**, akkor a Microsoft. OperationsManagement erőforrás-szolgáltató regisztrálása az előfizetésben, ahol a munkaterület meg van adva, a **Microsoft.** . Ennek a dokumentációja [itt](../../azure-resource-manager/resource-manager-register-provider-errors.md)található.
 
@@ -86,6 +86,9 @@ Ha egy AK-fürthöz engedélyezte a Azure Monitort a tárolók számára, akkor 
 - *.oms.opinsights.azure.com   443
 - *. blob.core.windows.net 443
 - dc.services.visualstudio.com 443
+- *. microsoftonline.com 443
+- *. monitoring.azure.com 443
+- login.microsoftonline.com 443
 
 ## <a name="next-steps"></a>További lépések
 

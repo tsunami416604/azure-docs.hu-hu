@@ -3,7 +3,7 @@ title: MSAL-alkalmazások naplózása | Azure
 description: Tudnivalók a Microsoft Authentication Library-(MSAL-) alkalmazások naplózásáról.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/22/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 475b692a29edf5cdd05552e7b5c3dc5fde210275
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 2f52ca8062ed1ed196a67d25385b712451afe8ae
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512525"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532729"
 ---
 # <a name="logging"></a>Naplózás
 A Microsoft Authentication Library (MSAL) alkalmazásai olyan naplófájlok előállítására szolgálnak, amelyek segíthetnek a problémák diagnosztizálásában és a részletekben. Egy alkalmazás több sornyi kóddal is konfigurálhatja a naplózást, és egyéni vezérléssel láthatja el a részletességi szintet, valamint azt, hogy a rendszer naplózza-e a személyes és a szervezeti adatokat. Javasoljuk, hogy állítson be egy MSAL-naplózási visszahívást, és adjon meg egy módszert a felhasználók számára a hitelesítési problémákkal rendelkező naplók elküldéséhez.

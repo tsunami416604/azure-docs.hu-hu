@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: a92cb0f3da5058e7ffeee6f47e8cfa26ae291005
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5c0c3ade3fd089a4819b8836b07e249fc32c06e0
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990564"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543614"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -149,12 +149,25 @@ A következő számítási célok vagy számítási erőforrások használhatók
 
 ## <a name="prepare-to-deploy"></a>Az üzembe helyezés előkészítése
 
-Webszolgáltatásként való üzembe helyezéshez létre kell hoznia egy következtetési konfigurációt`InferenceConfig`() és egy központi telepítési konfigurációt. A következtetés vagy a modell pontozása az a fázis, ahol az üzembe helyezett modellt az előrejelzéshez használják, leggyakrabban a termelési adatforgalomban. A következtetések konfigurációjában meg kell adnia a modell kiszolgálásához szükséges parancsfájlokat és függőségeket. A telepítési konfigurációban meg kell adnia a modellnek a számítási célra való kiszolgálásának részleteit.
+A modell üzembe helyezéséhez több dolog szükséges:
 
-> [!IMPORTANT]
-> A Azure Machine Learning SDK nem biztosítja a webszolgáltatások vagy IoT Edge központi telepítések elérését az adattárhoz vagy az adatkészletekhez való hozzáféréshez. Ha a központi telepítésen kívül tárolt adatokat szeretné elérni az üzembe helyezett modellel, például egy Azure Storage-fiókban, egyéni kódot kell létrehoznia a megfelelő SDK használatával. Például a Pythonhoz készült [Azure Storage SDK](https://github.com/Azure/azure-storage-python)-t.
->
-> Egy másik alternatíva, amely a forgatókönyv esetében is működhet, a [Batch-előrejelzések](how-to-run-batch-predictions.md), amelyek a pontozáskor hozzáférést biztosítanak az adattárolóhoz.
+* Egy __bejegyzési parancsfájl__. Ez a szkript fogadja a kéréseket, a modell használatával szerzi a kérést, és visszaadja az eredményeket.
+
+    > [!IMPORTANT]
+    > A bejegyzési parancsfájl a modellre jellemző. meg kell ismernie a bejövő kérelmek adatainak formátumát, a modell által várt adatformátumot, valamint az ügyfeleknek visszaadott adatformátumot.
+    >
+    > Ha a kérelem adatai olyan formátumban vannak, amely nem használható a modellben, a parancsfájl elfogadható formátumba alakíthatja át. A válasz is át lehet alakítani, mielőtt visszatért az ügyfélhez.
+
+    > [!IMPORTANT]
+    > A Azure Machine Learning SDK nem biztosítja a webszolgáltatások vagy IoT Edge központi telepítések elérését az adattárhoz vagy az adatkészletekhez való hozzáféréshez. Ha a központi telepítésen kívül tárolt adatokat szeretné elérni az üzembe helyezett modellel, például egy Azure Storage-fiókban, egyéni kódot kell létrehoznia a megfelelő SDK használatával. Például a Pythonhoz készült [Azure Storage SDK](https://github.com/Azure/azure-storage-python)-t.
+    >
+    > Egy másik alternatíva, amely a forgatókönyv esetében is működhet, a [Batch-előrejelzések](how-to-run-batch-predictions.md), amelyek a pontozáskor hozzáférést biztosítanak az adattárolóhoz.
+
+* **Függőségek**, például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
+
+* Az üzembe helyezett modellt futtató számítási cél __telepítési konfigurációja__ . Ez a konfiguráció a modell futtatásához szükséges memória-és CPU-követelményeket ismerteti.
+
+Ezek az entitások egy következtetési __konfigurációba__és egy __központi telepítési konfigurációba__vannak ágyazva. A következtetési konfiguráció a bejegyzési parancsfájlra és más függőségekre hivatkozik. Ezek a konfigurációk programozott módon vannak definiálva az SDK használatakor, és JSON-fájlként, amikor a CLI használatával végzik el a telepítést.
 
 ### <a id="script"></a> 1. Adja meg a bejegyzési parancsfájlt & függőségeket
 
@@ -399,9 +412,13 @@ def run(request):
 
 ### <a name="2-define-your-inferenceconfig"></a>2. A InferenceConfig meghatározása
 
-A következtetési konfiguráció azt ismerteti, hogyan konfigurálható a modell az előrejelzések készítéséhez. Az alábbi példa bemutatja, hogyan hozhat létre egy következtetési konfigurációt. Ez a konfiguráció határozza meg a futtatókörnyezetet, a bejegyzés parancsfájlját és (opcionálisan) a Conda környezeti fájlját:
+A következtetési konfiguráció azt ismerteti, hogyan konfigurálható a modell az előrejelzések készítéséhez. Ez a konfiguráció nem része a belépési parancsfájlnak; Ez a bejegyzési parancsfájlra hivatkozik, és a telepítéshez szükséges összes erőforrás megkeresésére szolgál. Később, a modell tényleges üzembe helyezése során használják.
+
+Az alábbi példa bemutatja, hogyan hozhat létre egy következtetési konfigurációt. Ez a konfiguráció határozza meg a futtatókörnyezetet, a bejegyzés parancsfájlját és (opcionálisan) a Conda környezeti fájlját:
 
 ```python
+from azureml.core.model import InferenceConfig
+
 inference_config = InferenceConfig(runtime="python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
@@ -431,7 +448,7 @@ További információ a következtetési konfigurációval rendelkező egyéni D
 
 ### <a name="3-define-your-deployment-configuration"></a>3. A telepítési konfiguráció megadása
 
-A telepítés előtt meg kell határoznia a telepítési konfigurációt. __A központi telepítési konfiguráció a webszolgáltatást futtató számítási célra vonatkozik__. Ha például helyileg telepíti a szolgáltatást, meg kell adnia azt a portot, ahol a szolgáltatás fogadja a kérelmeket.
+A telepítés előtt meg kell határoznia a telepítési konfigurációt. __A központi telepítési konfiguráció a webszolgáltatást futtató számítási célra vonatkozik__. Ha például helyileg telepíti a szolgáltatást, meg kell adnia azt a portot, ahol a szolgáltatás fogadja a kérelmeket. A telepítési konfiguráció nem része a belépési parancsfájlnak. A modell és a beléptetési parancsfájl tárolására szolgáló számítási cél jellemzőinek meghatározására szolgál.
 
 Előfordulhat, hogy létre kell hoznia a számítási erőforrást is. Ha például még nem rendelkezik a munkaterülethez társított Azure Kubernetes szolgáltatással.
 
@@ -442,6 +459,12 @@ Az alábbi táblázat az egyes számítási célkitűzések központi telepíté
 | Helyi: | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instance | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+
+Ezen osztályok helyi, ACI és AK-alapú webszolgáltatásokhoz való importálása `azureml.core.webservice`a következő helyekről végezhető el:
+
+```python
+from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
+```
 
 > [!TIP]
 > A modell szolgáltatásként való üzembe helyezése előtt érdemes lehet profilt használni az optimális CPU-és memória-követelmények meghatározásához. A modellt az SDK-val vagy a parancssori felülettel is felhasználhatja. További információ: [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) és az [az ml Model Profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) Reference.
@@ -459,6 +482,8 @@ A helyileg történő üzembe helyezéshez a Docker-t telepíteni kell a helyi g
 #### <a name="using-the-sdk"></a>Az SDK használata
 
 ```python
+from azureml.core.webservice import LocalWebservice, Webservice
+
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
 service.wait_for_deployment(show_output = True)

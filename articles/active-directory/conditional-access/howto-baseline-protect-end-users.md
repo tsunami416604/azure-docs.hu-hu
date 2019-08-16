@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afcd9c9d3191caeabe182f499b5fd80cd8e1d8dd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 131d38f6154e7a6e2f3175838b084e47e17ec582
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608138"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532932"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Alapterv házirend: Végfelhasználói védelem (előzetes verzió)
 
@@ -64,11 +64,11 @@ A házirend **alapkonfigurációjának házirendje: A végfelhasználói védele
 
 A szabályzat engedélyezése és a felhasználók védetté tétele:
 
-1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
+1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory** > a**feltételes hozzáférést**.
 1. A szabályzatok listájában válassza ki **az alapházirend elemet: Végfelhasználói védelem (előzetes verzió**).
 1. Állítsa be a házirend **engedélyezése** beállítást a **szabályzat azonnali használatára**.
-1. Kattintson a **Mentés**gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="next-steps"></a>További lépések
 

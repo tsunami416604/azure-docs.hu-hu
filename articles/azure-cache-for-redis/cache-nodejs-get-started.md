@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: dc629133a393c4ff8f9193b02e9080d7f08f4958
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: dc427620b8aa64b9eae7a35f81c02ae5016153f9
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326464"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542787"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Gyors útmutató: Az Azure cache használata a Node. js-sel rendelkező Redis
 
@@ -125,13 +125,13 @@ Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díj
 > Az erőforráscsoport törlése nem vonható vissza; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
 >
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 
-A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az eredménylistában kattintson a **…** ikonra az erőforráscsoport mellett, majd kattintson az **Erőforráscsoport törlése** elemre.
+A **szűrés név alapján** szövegmezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az erőforráscsoport az eredmény listán válassza a **...** , majd az **erőforráscsoport törlése**elemet.
 
 ![Törlés](./media/cache-nodejs-get-started/cache-delete-resource-group.png)
 
-A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be az erőforráscsoport nevét, és kattintson a **Törlés** gombra.
+A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. Adja meg a megerősíteni kívánt erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 

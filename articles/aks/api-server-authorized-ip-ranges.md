@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 7dcf962345a2453fca52825c4be33a439d25df54
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: fe0c9d7e870b56bf83b70845af9159ea0703c4ab
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68740930"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533626"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Előzetes verzió – biztonságos hozzáférés az API-kiszolgálóhoz az Azure Kubernetes szolgáltatásban (ak) lévő, jogosult IP-címtartományok használatával
 
@@ -21,7 +21,7 @@ A Kubernetes-ben az API-kiszolgáló kérelmeket fogad a fürt műveleteinek vé
 Ez a cikk bemutatja, hogyan használható az API-kiszolgáló által engedélyezett IP-címtartományok a sík vezérlésére irányuló kérések korlátozására. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
 > [!IMPORTANT]
-> Az AK előzetes verziójának funkciói önkiszolgáló, választhatók. A felhasználók visszajelzéseket és hibákat biztosítanak a Közösségtől. Az előzetes verzióban ezek a szolgáltatások éles használatra nem használhatók. A nyilvános előzetes verzió funkciói a "legjobb erőfeszítés" támogatás alatt állnak. Az AK technikai támogatási csapatának segítsége csak a munkaidőn kívüli időzóna (PST) időpontjában érhető el. További információkért tekintse meg a következő támogatási cikkeket:
+> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További részletekért tekintse meg a következő támogatási cikkeket:
 >
 > * [AK-támogatási szabályzatok][aks-support-policies]
 > * [Azure-támogatás – gyakori kérdések][aks-faq]
@@ -108,6 +108,14 @@ Annak biztosítása érdekében, hogy a fürt csomópontjai megbízhatóan kommu
 
 > [!WARNING]
 > A Azure Firewall használata jelentős költségeket eredményezhet a havi elszámolási időszakra vonatkozóan. A Azure Firewall használatára vonatkozó követelmény csak ebben a kezdeti előnézeti időszakban szükséges. További információ és Cost-tervezés: [Azure Firewall díjszabása][azure-firewall-costs].
+>
+> Ha a fürt [szabványos SKU Load balancert][standard-sku-lb]használ, akkor nem kell konfigurálnia a Azure Firewall a kimenő átjáróként. Használja az [az Network Public-IP List][az-network-public-ip-list] , és adja meg az AK-fürthöz tartozó erőforráscsoportot, amely általában a *MC_* -vel kezdődik. Ez a fürt nyilvános IP-címét jeleníti meg, amelyet engedélyezheti. Példa:
+>
+> ```azurecli-interactive
+> RG=$(az aks show --resource-group myResourceGroup --name myAKSClusterSLB --query nodeResourceGroup -o tsv)
+> SLB_PublicIP=$(az network public-ip list --resource-group $RG --query [].ipAddress -o tsv)
+> az aks update --api-server-authorized-ip-ranges $SLB_PublicIP --resource-group myResourceGroup --name myAKSClusterSLB
+> ```
 
 Először kérje le a *MC_* erőforráscsoport nevét az AK-fürthöz és a virtuális hálózathoz. Ezután hozzon létre egy alhálózatot az az [Network vnet subnet Create][az-network-vnet-subnet-create] paranccsal. A következő példában létrehozunk egy *AzureFirewallSubnet* nevű alhálózatot a *10.200.0.0/16*CIDR tartományba:
 
@@ -259,11 +267,13 @@ További információ: az [AK-ban található alkalmazásokhoz és fürtökhöz 
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [create-aks-sp]: kubernetes-service-principal.md#manually-create-a-service-principal
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-network-firewall-create]: /cli/azure/ext/azure-firewall/network/firewall#ext-azure-firewall-az-network-firewall-create
 [az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
 [az-network-firewall-ip-config-create]: /cli/azure/ext/azure-firewall/network/firewall/ip-config#ext-azure-firewall-az-network-firewall-ip-config-create
 [az-network-firewall-network-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/network-rule#ext-azure-firewall-az-network-firewall-network-rule-create
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
@@ -271,3 +281,4 @@ További információ: az [AK-ban található alkalmazásokhoz és fürtökhöz 
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[standard-sku-lb]: load-balancer-standard.md

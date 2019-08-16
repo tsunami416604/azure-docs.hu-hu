@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 62859dde7cd4f2335b696eedb2cdfbd1daad9456
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: daf31c382f2b6d6e164092d587eb65afa25323f1
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934951"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534757"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Adatok átvitele a AzCopy és a blob Storage szolgáltatással
 
@@ -148,10 +148,14 @@ A könyvtár tartalmát letöltheti anélkül, hogy a benne foglalt könyvtárat
 
 A AzCopy a Blobok más Storage-fiókba való másolására is használható. A másolási művelet szinkronban van, így amikor a parancs visszatér, ez azt jelzi, hogy az összes fájl másolása megtörtént.
 
-> [!NOTE]
-> Ez a forgatókönyv jelenleg csak olyan fiókok esetében támogatott, amelyek nem rendelkeznek hierarchikus névtérrel. 
+A AzCopy [kiszolgálók](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) közötti [API](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)-kat használ, így az Adatmásolás közvetlenül a Storage-kiszolgálók között történik. Ezek a másolási műveletek nem használják a számítógép hálózati sávszélességét. A `AZCOPY_CONCURRENCY_VALUE` környezeti változó értékének megadásával növelheti a műveletek átviteli sebességét. További információ: az [átviteli sebesség optimalizálása](storage-use-azcopy-configure.md#optimize-throughput).
 
-A AzCopy [kiszolgálók](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) közötti [API](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)-kat használ, így az Adatmásolás közvetlenül a Storage-kiszolgálók között történik. Ezek a másolási műveletek nem használják a számítógép hálózati sávszélességét.
+> [!NOTE]
+> Ez a forgatókönyv a jelenlegi kiadásban a következő korlátozásokkal rendelkezik.
+>
+> - Csak azok a fiókok támogatottak, amelyek nem rendelkeznek hierarchikus névtérrel.
+> - Minden forrás URL-címhez hozzá kell fűzni egy SAS-tokent. Ha Azure Active Directory (AD) hitelesítő adatokat ad meg, kihagyhatja az SAS-tokent csak a cél URL-címről.
+>-  A prémium szintű blokk blob Storage-fiókok nem támogatják a hozzáférési szinteket. Hagyja ki a blob hozzáférési szintjét a másolási műveletből a (z `s2s-preserve-access-tier` ) `false` értékre való beállításával (például: `--s2s-preserve-access-tier=false`).
 
 Ez a szakasz tartalmazza az alábbi példák:
 
@@ -160,9 +164,6 @@ Ez a szakasz tartalmazza az alábbi példák:
 > * Könyvtár másolása másik Storage-fiókba
 > * Tárolók másolása másik Storage-fiókba
 > * Minden tároló, könyvtár és fájl másolása egy másik Storage-fiókba
-
-> [!NOTE]
-> A jelenlegi kiadásban egy SAS-tokent kell hozzáfűzni az egyes forrás URL-címekhez. Ha Azure Active Directory (AD) hitelesítő adatokat ad meg, kihagyhatja az SAS-tokent csak a cél URL-címről. 
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>BLOB másolása másik Storage-fiókba
 
@@ -185,7 +186,7 @@ Ez a szakasz tartalmazza az alábbi példák:
 | **Syntax** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>" --recursive` |
 | **Példa** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D" "https://mydestinationaccount.blob.core.windows.net/mycontainer" --recursive` |
 
-### <a name="copy-all-containers-directories-and-files-to-another-storage-account"></a>Minden tároló, könyvtár és fájl másolása egy másik Storage-fiókba
+### <a name="copy-all-containers-directories-and-blobs-to-another-storage-account"></a>Minden tároló, könyvtár és blob másolása egy másik Storage-fiókba
 
 |    |     |
 |--------|-----------|

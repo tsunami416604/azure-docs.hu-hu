@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 025e45b86fa3a6020652ae9756ceace5b51daa55
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: d2d52d2faf9122b7dc87f71ac7b1be53eaa99878
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516202"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534984"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>IP-korlátozási szabály konfigurálása a webalkalmazási tűzfallal az Azure bejárati ajtó szolgáltatáshoz
 Ez a cikk bemutatja, hogyan konfigurálhat IP-korlátozási szabályokat egy webalkalmazási tűzfalban (WAF) az Azure bejárati ajtó szolgáltatásához az Azure CLI, Azure PowerShell vagy egy Azure Resource Manager sablon használatával.
@@ -56,7 +56,7 @@ Az alábbi példákban:
 -  Cserélje le a *IPAllowPolicyExampleCLI* -t a korábban létrehozott egyedi szabályzatra.
 -  Cserélje le az *IP-cím-Range-1*, *IP-cím-Range-2* tartományt a saját tartományára.
 
-Először hozzon létre egy IP-engedélyezési szabályt az előző lépésben létrehozott házirendhez. Megjegyzés **– a késleltetés** megadása kötelező, mert egy szabálynak meg kell egyeznie a következő lépésben felvenni kívánt egyeztetési feltétellel.
+Először hozzon létre egy IP-engedélyezési szabályt az előző lépésben létrehozott házirendhez. Megjegyzés **–** a késleltetést kötelező megadni, mert egy szabálynak tartalmaznia kell legalább egy egyezési feltételt. 
 
 ```azurecli
 az network front-door waf-policy rule create \

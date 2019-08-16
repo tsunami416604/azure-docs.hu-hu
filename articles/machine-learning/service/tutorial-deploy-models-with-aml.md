@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: c673fd43abe6808256eb74f435aad48ed8d41539
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a4395105c66756c4743373707309a88e2afa96b7
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359845"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534815"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Oktatóanyag: Rendszerkép-besorolási modell üzembe helyezése Azure Container Instances
 
@@ -38,10 +38,10 @@ A Container Instances nagyszerű megoldás a munkafolyamatok tesztelésére és 
 > A cikkben ismertetett kód Azure Machine Learning SDK 1.0.41-verzióval lett tesztelve.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ugorjon a [fejlesztői környezet beállítására](#start) a jegyzetfüzet lépéseinek elolvasásához.  
 
-A jegyzetfüzet futtatásához először végezze el [a modell betanítását az oktatóanyagban (1. rész): Rendszerkép-besorolási modell betanítása](tutorial-train-models-with-aml.md)Azure Machine learning szolgáltatással.   Ezután futtassa az **oktatóanyagok/IMG-Classification-part2-Deploy. ipynb** jegyzetfüzetet ugyanazzal a notebook-kiszolgálóval.
+A jegyzetfüzet futtatásához először végezze el [a modell betanítását az oktatóanyagban (1. rész): Képbesorolási modell](tutorial-train-models-with-aml.md)betanítása.   Ezután nyissa meg az **oktatóanyagok/IMG-Classification-part2-Deploy. ipynb** jegyzetfüzetet ugyanazzal a notebook-kiszolgálóval.
 
+Ez az oktatóanyag a githubon [](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha saját [helyi környezetében](how-to-configure-environment.md#local)szeretné használni.  Győződjön meg arról, hogy `matplotlib` telepítve `scikit-learn` van és a környezetében. 
 
 ## <a name="start"></a>A környezet beállítása
 

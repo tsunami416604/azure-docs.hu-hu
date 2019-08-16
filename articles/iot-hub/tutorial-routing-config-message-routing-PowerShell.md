@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-lel az Azure IoT Hub üzenet útválasztásának konfigurálása |} A Microsoft Docs
-description: Azure PowerShell-lel az Azure IoT Hub üzenet útválasztásának konfigurálása
+title: Az üzenetsor-útválasztás konfigurálása az Azure IoT Hub Azure PowerShell használatával | Microsoft Docs
+description: Az üzenetsor-útválasztás konfigurálása az Azure IoT Hubhoz Azure PowerShell használatával
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,42 +9,42 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 51e9bc85c2ee843aa096674a25a1f634bd08b838
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2c0e66bfe5ec332d25b93305cb2ac8d172ca130d
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162629"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535142"
 ---
-# <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>Oktatóanyag: Az IoT Hub üzenet útválasztásának konfigurálása az Azure PowerShell használatával
+# <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>Oktatóanyag: IoT Hub üzenetek útválasztásának konfigurálása a Azure PowerShell használatával
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
 
 [!INCLUDE [iot-hub-include-routing-create-resources](../../includes/iot-hub-include-routing-create-resources.md)]
 
-## <a name="download-the-script-optional"></a>Töltse le a parancsfájl (nem kötelező)
+## <a name="download-the-script-optional"></a>A parancsfájl letöltése (opcionális)
 
-Ez az oktatóanyag második része, a töltse le és a egy Visual Studio-alkalmazást az üzenetek küldése az IoT Hub futtassa. A letöltés, amely tartalmazza az Azure Resource Manager-sablon és paraméterek fájl, valamint az Azure CLI és PowerShell-parancsfájlok egy mappában van. 
+Az oktatóanyag második részében le kell töltenie és futtatnia kell egy Visual Studio-alkalmazást, amely üzeneteket küld a IoT Hub. A letöltésben egy olyan mappa található, amely tartalmazza a Azure Resource Manager sablont és a paramétereket tartalmazó fájlt, valamint az Azure CLI-és PowerShell-parancsfájlokat. 
 
-Ha azt szeretné, a befejezett parancsfájl megtekintése, töltse le a [Azure IoT C# minták](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Bontsa ki a master.zip fájlt. Az Azure CLI-példaszkript /iot-hub/Tutorials/Routing/SimulatedDevice/resources/másként van **iothub_routing_psh.ps1**.
+Ha szeretné megtekinteni a kész parancsfájlt, töltse le az [Azure IoT C# -mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Bontsa ki a Master. zip fájlt. Az Azure CLI-szkript a/iot-hub/Tutorials/Routing/SimulatedDevice/resources/-ben **iothub_routing_psh. ps1**néven szerepel.
 
-## <a name="create-your-resources"></a>Az erőforrások létrehozása
+## <a name="create-your-resources"></a>Erőforrások létrehozása
 
-Először hozzon létre erőforrásokat a PowerShell használatával.
+Először hozza létre az erőforrásokat a PowerShell használatával.
 
-### <a name="use-powershell-to-create-your-base-resources"></a>Az alapvető erőforrások létrehozása a PowerShell használatával
+### <a name="use-powershell-to-create-your-base-resources"></a>Alaperőforrások létrehozása a PowerShell használatával
 
-Nincsenek több erőforrás nevét, például az IoT Hub nevét és a tárfiók nevének globálisan egyedinek kell lennie. Az eljárás egyszerűbbé tétele az erőforráscsoport nevére kiegészítve egy véletlenszerű alfanumerikus érték nevű *randomValue*. A randomValue egyszer jön létre, a szkript elején, és hozzáfűzi az erőforrások nevei a parancsfájl egész igény szerint. Ha nem szeretné, hogy a véletlenszerű, beállíthatja azt egy adott értékre vagy üres karakterlánc. 
+Több olyan erőforrás neve van, amelynek globálisan egyedinek kell lennie, például a IoT Hub neve és a Storage-fiók neve. Ennek egyszerűbbé tétele érdekében az erőforrásnevek egy *randomValue*nevű véletlenszerű alfanumerikus értékkel vannak hozzáfűzve. A rendszer egyszer hozza létre a randomValue a parancsfájl tetején, és szükség szerint hozzáfűzi az erőforrások nevét a parancsfájlban. Ha nem szeretné, hogy véletlenszerű legyen, beállíthatja egy üres sztringre vagy egy adott értékre. 
 
 > [!IMPORTANT]
-> A kezdeti parancsfájlban állítsa be a változókat is használhatók az útválasztási parancsfájl, így a ugyanazon Cloud Shell-munkameneten belül futó minden, a parancsfájl. Futtassa a parancsfájlt az útválasztás beállítása új munkamenetet nyit meg, ha több, változó hiányozni fognak értékeket. 
+> A kezdeti parancsfájlban beállított változókat az útválasztási parancsfájl is használja, ezért futtassa az összes parancsfájlt ugyanabban a Cloud Shell-munkamenetben. Ha új munkamenetet nyit meg az Útválasztás beállítására szolgáló parancsfájl futtatásához, akkor a változók közül számos érték hiányzik. 
 >
 
-Másolja és illessze be az alábbi parancsfájlt a Cloud shellbe, és nyomja le az Enter billentyűt. A szkript egy sor fut egyszerre. Ez a szkript első szakaszában létrehozza az alapvető erőforrások ebben az oktatóanyagban, beleértve a storage-fiók, az IoT Hub, a Service Bus-Namespace és a Service Bus-üzenetsorba. Az oktatóanyag lépéseinek követése közben minden parancsfájl-blokk másolja és illessze be a Cloud Shell a futtatáshoz.
+Másolja és illessze be az alábbi szkriptet Cloud Shellba, majd nyomja le az ENTER billentyűt. A parancsfájl egyszerre egy sort futtat. A szkript ezen első szakasza létrehozza az oktatóanyag alaperőforrásait, beleértve a Storage-fiókot, a IoT Hub, a Service Bus névteret és a Service Bus üzenetsor-t. Az oktatóanyag során másolja az egyes parancsfájlokat, és illessze be Cloud Shellba a futtatásához.
 
 ```azurepowershell-interactive
 # This command retrieves the subscription id of the current Azure account.
-# This field is used when setting up the routing rules.
+# This field is used when setting up the routing queries.
 $subscriptionID = (Get-AzContext).Subscription.Id
 
 # Concatenate this number onto the resources that have to be globally unique.
@@ -126,45 +126,45 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 
 [!INCLUDE [iot-hub-include-create-simulated-device-portal](../../includes/iot-hub-include-create-simulated-device-portal.md)]
 
-Most, hogy az alapvető erőforrások beállítása, beállíthatja az üzenet-útválasztással.
+Most, hogy beállította az alaperőforrásokat, beállíthatja az üzenet-útválasztást.
 
 ## <a name="set-up-message-routing"></a>Üzenetek útválasztásának beállítása
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-Hozzon létre egy útválasztási végpontot, használja a [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint). Az üzenetkezelési útvonal a végpont létrehozásához használja [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute).
+Útválasztási végpont létrehozásához használja az [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint). A végpont üzenetküldési útvonalának létrehozásához használja az [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute).
 
-### <a name="route-to-a-storage-account"></a>Átirányítása a tárfiókba 
+### <a name="route-to-a-storage-account"></a>Útvonal egy Storage-fiókhoz 
 
-Először állítsa be a storage-fiók végpontját, majd hozzon létre az üzenetek útvonalának.
+Először állítsa be a tárolási fiók végpontját, majd hozza létre az üzenet útvonalát.
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
-Ezek a változók vannak beállítva:
+A következő változók vannak beállítva:
 
-**Erőforráscsoport**: Nincsenek ezt a mezőt két előfordulását – mindkettő értékre az erőforráscsoportban.
+**resourceGroup**: Ennek a mezőnek két előfordulása van – mindkettőt állítsa mindkét csoportra az erőforráscsoporthoz.
 
-**Név**: Ez a mező pedig az IoT Hub, amelyekre alkalmazza az útválasztási neve.
+**név**: Ez a mező annak a IoT Hub a neve, amelyre az Útválasztás érvényes lesz.
 
-**Végpontneve**: A mező kitöltése azonosítása a végpont nevét. 
+**végpontneve**: Ez a mező a végpontot azonosító név. 
 
-**endpointType**: Ebben a mezőben az a végpont típusa. Ezt az értéket kell beállítani `azurestoragecontainer`, `eventhub`, `servicebusqueue`, vagy `servicebustopic`. A okokból Itt beállíthatja azt a `azurestoragecontainer`.
+**endpointType**: Ez a mező a végpont típusát adja meg. Ezt az értéket a,, `azurestoragecontainer` `servicebusqueue`, `eventhub`vagy `servicebustopic`a értékre kell beállítani. Itt adja meg a kívánt `azurestoragecontainer`célokat.
 
-**subscriptionID**: Ez a mező értéke az előfizetés-azonosító az Azure-fiókjával.
+**subscriptionID**: Ez a mező az Azure-fiók subscriptionID van beállítva.
 
-**storageConnectionString**: Ezt az értéket veszi át az előző parancsfájlban állítsa be a tárfiók. Akkor használják az Útválasztás a tárfiók eléréséhez.
+**storageConnectionString**: Ezt az értéket az előző parancsfájlban beállított Storage-fiókból kéri le a rendszer. Ezt az Útválasztás használja a Storage-fiók eléréséhez.
 
-**containerName**: Ebben a mezőben az a név a tároló a tárfiókban, amelyre az adatok írva lesznek.
+**containerName**: Ez a mező annak a tárolónak a neve, amelybe az adatírás történik.
 
-**Kódolás**: Adja meg a mezőben vagy `AVRO` vagy `JSON`. Ez azt jelzi, a tárolt adatok formátumát. Az alapértelmezett érték az avro-hoz.
+**Kódolás**: Állítsa a mezőt a `AVRO` vagy `JSON`a értékre. Ez kijelöli a tárolt adatmennyiség formátumát. Az alapértelmezett érték a AVRO.
 
-**routeName**: Ebben a mezőben az a név, az útvonal állítja be. 
+**z**: Ez a mező a beállított útvonal neve. 
 
-**A feltétel**: Ez a mező ennek a végpontnak küldött üzenetek szűréséhez használt lekérdezés. A lekérdezési feltétel, az üzenetek továbbítása a storage `level="storage"`.
+**feltétel**: Ez a mező a végpontnak küldött üzenetek szűrésére szolgáló lekérdezés. A tárolóba `level="storage"`átirányított üzenetek lekérdezési feltétele.
 
-**Engedélyezett**: Ez a mező az alapértelmezett `true`, amely azt jelzi, hogy az üzenetek útvonalának engedélyezni kell a létrehozása után.
+**engedélyezve**: A mező alapértéke `true`a, amely azt jelzi, hogy az üzenet útvonalát a létrehozás után engedélyezni kell.
 
-Ez a szkript másolja és illessze be a Cloud Shell ablakába.
+Másolja ezt a szkriptet, és illessze be a Cloud Shell ablakába.
 
 ```powershell
 ##### ROUTING FOR STORAGE #####
@@ -175,7 +175,7 @@ $routeName = "ContosoStorageRoute"
 $condition = 'level="storage"'
 ```
 
-A következő lépés, hogy a tárfiók útválasztási végpont létrehozásához. Emellett adja meg a tároló, amelyben az eredményeket fogja tárolni. A tároló létrejött, a storage-fiók létrehozásakor.
+A következő lépés a Storage-fiók útválasztási végpontjának létrehozása. Megadhatja azt a tárolót is, amelyben az eredményeket tárolni fogja. A tároló létre lett hozva a Storage-fiók létrehozásakor.
 
 ```powershell
 # Create the routing endpoint for storage.
@@ -192,7 +192,7 @@ Add-AzIotHubRoutingEndpoint `
   -Encoding AVRO
 ```
 
-Ezután hozza létre az üzenetek útvonalának a storage-végponthoz. Az üzenet útvonalának jelöl ki, hova küldhetők az üzeneteket, amelyek megfelelnek a lekérdezés specifikációjában.
+Ezután hozza létre a tárolási végponthoz tartozó üzenet útvonalát. Az üzenet útvonala azt jelöli, hogy hová kell elküldeni a lekérdezési specifikációnak megfelelő üzeneteket.
 
 ```powershell
 # Create the route for the storage endpoint.
@@ -206,9 +206,9 @@ Add-AzIotHubRoute `
    -Enabled 
 ```
 
-### <a name="route-to-a-service-bus-queue"></a>Irányíthatja a Service Bus-üzenetsorba
+### <a name="route-to-a-service-bus-queue"></a>Útvonal Service Bus üzenetsor felé
 
-Most állítsa be az útválasztást a Service Bus-üzenetsorhoz. A Service Bus-üzenetsor kapcsolati karakterláncára lekéréséhez létre kell hoznia egy engedélyezési szabályt, amely rendelkezik definiált e megfelelő jogosultságokkal. A következő szkriptet a Service Bus-üzenetsorba nevű engedélyezési szabályt hoz létre `sbauthrule`, és a jogok `Listen Manage Send`. Ez az engedélyezési szabály beállítása után használhatja, hogy a várólista a kapcsolati karakterlánc lekéréséhez.
+Most állítsa be az útválasztást a Service Bus-üzenetsorhoz. A Service Bus üzenetsor kapcsolódási karakterláncának beolvasásához létre kell hoznia egy engedélyezési szabályt, amely rendelkezik a megfelelő jogosultságokkal. A következő szkript létrehoz egy engedélyezési szabályt a nevű `sbauthrule`Service Bus üzenetsor számára, és beállítja a `Listen Manage Send`jogosultságokat. Ha ezt az engedélyezési szabályt beállította, a segítségével lekérheti a várólista kapcsolódási karakterláncát.
 
 ```powershell
 ##### ROUTING FOR SERVICE BUS QUEUE #####
@@ -222,7 +222,7 @@ New-AzServiceBusAuthorizationRule `
   -Rights @("Manage","Listen","Send")
 ```
 
-A Service Bus üzenetsor-kulcs lekérése mostantól használhatja az engedélyezési szabályt. Ez az engedélyezési szabály le a kapcsolati karakterláncot a szkript későbbi részében lesz használható.
+Most az engedélyezési szabály segítségével kérje le az Service Bus üzenetsor kulcsát. Ez az engedélyezési szabály a parancsfájlban később a kapcsolódási karakterlánc lekérésére szolgál.
 
 ```powershell
 $sbqkey = Get-AzServiceBusKey `
@@ -232,17 +232,17 @@ $sbqkey = Get-AzServiceBusKey `
     -Name "sbauthrule"
 ```
 
-Most állítsa be az útválasztási végpont és az üzenetek útvonalának for a Service Bus-üzenetsorba. Ezek a változók vannak beállítva:
+Most állítsa be az útválasztási végpontot és a Service Bus üzenetsor üzenetének útvonalát. A következő változók vannak beállítva:
 
-**Végpontneve**: A mező kitöltése azonosítása a végpont nevét. 
+**végpontneve**: Ez a mező a végpontot azonosító név. 
 
-**endpointType**: Ebben a mezőben az a végpont típusa. Ezt az értéket kell beállítani `azurestoragecontainer`, `eventhub`, `servicebusqueue`, vagy `servicebustopic`. A okokból Itt beállíthatja azt a `servicebusqueue`.
+**endpointType**: Ez a mező a végpont típusát adja meg. Ezt az értéket a,, `azurestoragecontainer` `servicebusqueue`, `eventhub`vagy `servicebustopic`a értékre kell beállítani. Itt adja meg a kívánt `servicebusqueue`célokat.
 
-**routeName**: Ebben a mezőben az a név, az útvonal állítja be. 
+**z**: Ez a mező a beállított útvonal neve. 
 
-**A feltétel**: Ez a mező ennek a végpontnak küldött üzenetek szűréséhez használt lekérdezés. A lekérdezési feltétel esetében az üzeneteket, hogy a Service Bus-üzenetsorba `level="critical"`.
+**feltétel**: Ez a mező a végpontnak küldött üzenetek szűrésére szolgáló lekérdezés. Az Service Bus várólistára `level="critical"`átirányított üzenetek lekérdezési feltétele.
 
-Itt látható az Azure PowerShell, az üzenet útválasztás esetében a Service Bus-üzenetsorba.
+Itt látható a Service Bus üzenetsor üzenet-útválasztási Azure PowerShell.
 
 ```powershell
 $endpointName = "ContosoSBQueueEndpoint"
@@ -271,13 +271,13 @@ Add-AzIotHubRoute `
    -Enabled 
 ```
 
-### <a name="view-message-routing-in-the-portal"></a>Zobrazit zprávu útválasztás a portálon
+### <a name="view-message-routing-in-the-portal"></a>Üzenet-útválasztás megtekintése a portálon
 
 [!INCLUDE [iot-hub-include-view-routing-in-portal](../../includes/iot-hub-include-view-routing-in-portal.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy rendelkezik az erőforrások beállítása és az üzenetútvonalak konfigurálva, folytassa a következő oktatóanyag üzenetek küldése az IoT hub és azok a másik helyre lesznek irányítva. 
+Most, hogy beállította az erőforrásokat, és konfigurálta az üzenet útvonalait, folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan küldhet üzeneteket az IoT hubhoz, és hogyan irányíthatja őket át a különböző célhelyekre. 
 
 > [!div class="nextstepaction"]
-> [2. rész – az üzenet-útválasztási eredmények megtekintése](tutorial-routing-view-message-routing-results.md)
+> [2. rész – az üzenetek útválasztási eredményeinek megtekintése](tutorial-routing-view-message-routing-results.md)

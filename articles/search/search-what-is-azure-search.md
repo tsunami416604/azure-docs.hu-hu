@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: overview
 ms.date: 08/13/2019
 ms.author: heidist
-ms.openlocfilehash: eefa0eb5d1e15df34089d7baa3241cbbed4724c2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: MT
+ms.openlocfilehash: 0a254716acbcd51263680d421045788e8365ae8b
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034851"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533176"
 ---
 # <a name="what-is-azure-search"></a>Mi az az Azure Search?
 
 Az Azure Search egy felhőalapú keresőszolgáltatás, amely olyan API-kat és eszközöket nyújt a fejlesztőknek, amelyek segítségével fejlett keresési funkciókat adhatnak hozzá a privát, heterogén tartalmak keresése érdekében a webes, mobilos és vállalati alkalmazásokhoz. Az egyéni kód meghívja az adatfeldolgozást (indexelést), lekérdezi a lekérdezési kérelmeket, és kezeli a válaszokat. A keresési élmény az ügyfél kódjában az Azure Search funkcióinak használatával van meghatározva, és a lekérdezés végrehajtása a saját maga által létrehozott, a saját tulajdonában lévő és a Azure Search tárolt index alapján történik.
 
-![Azure Search architektúra](media/search-what-is-azure-search/azure-search-diagram.png "Azure Search architektúra")
+![Azure Search architektúra](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Search architektúra")
 
 <!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
 + Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.

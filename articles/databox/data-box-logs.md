@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 8fecc00a970f0e706dc6240eaec593fd54968ff8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934196"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535172"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box és Azure Data Box Heavy követése és eseménynaplózása
 
@@ -64,7 +64,7 @@ A megrendelés nyomon követhető a Azure Portal és a szállítási szolgáltat
 
 - A Data Box zárolt állapotban érkezik a helyszínen. A megrendeléséhez a Azure Portal elérhető hitelesítő adatok használhatók.  
 
-    Egy Data Box beállításakor előfordulhat, hogy tudnia kell, hogy ki fér hozzá az eszköz hitelesítő adataihoz. Annak megállapításához, hogy ki fér hozzá az **eszköz hitelesítő adatai** panelhez, lekérdezheti a tevékenység naplóit.  Minden olyan művelet, amely magában foglalja az **eszköz adatainak** elérését > a hitelesítő adatok panelje `ListCredentials` műveletként van bejelentkezve a tevékenység naplóiba.
+    Egy Data Box beállításakor előfordulhat, hogy tudnia kell, hogy ki fér hozzá az eszköz hitelesítő adataihoz. Annak megállapításához, hogy ki fér hozzá az **eszköz hitelesítő adatai** panelhez, lekérdezheti a tevékenység naplóit.  Minden olyan művelet, amely magában foglalja az **eszköz adatainak** elérését > a hitelesítő adatok panelje `ListCredentials` műveletként van bejelentkezve a tevékenység naplóiba.
 
     ![Tevékenységnaplók lekérdezése](media/data-box-logs/query-activity-log-1.png)
 
@@ -76,7 +76,7 @@ Az Adatmásolás során Data Box vagy Data Box Heavy a rendszer hibaüzenetet k�
 
 ### <a name="errorxml-file"></a>Error. xml fájl
 
-Győződjön meg arról, hogy a másolási feladatok végrehajtása hibák nélkül befejeződött. Ha a másolási folyamat során hibák léptek fel, töltse le a naplókat a **csatlakozás és másolás** lapról.
+Győződjön meg arról, hogy a másolási feladatok végrehajtása hibák nélkül befejeződött. Ha a másolási folyamat során hibák léptek fel, töltse le a naplókat a **csatlakozás és másolás** lapról.
 
 - Ha olyan fájlt másolt, amely nem 512 bájtra van igazítva a Data Box felügyelt lemez mappájába, a fájl nem lesz feltöltve az átmeneti tárolási fiókba. Hibaüzenet jelenik meg a naplókban. Távolítsa el a fájlt, és másolja a 512 bájtra igazított fájlt.
 - Ha másolt egy VHDX, vagy egy dinamikus VHD-t vagy egy különbséglemezek VHD-t (ezek a fájlok nem támogatottak), akkor hibaüzenet jelenik meg a naplókban.
@@ -203,7 +203,7 @@ A Data Box szolgáltatás minden feldolgozott rendeléshez létrehoz egy másol�
 
 Az Azure-ba való feltöltés során ciklikus redundancia-ellenőrzési (CRC) számítás történik. A FCSF az adatmásolatból és az adatok feltöltése után összehasonlítjuk. A CRC-eltérés azt jelzi, hogy a megfelelő fájlokat nem sikerült feltölteni.
 
-Alapértelmezés szerint a rendszer a naplókat egy nevű `copylog`tárolóba írja. A naplók tárolása a következő elnevezési konvencióval történik:
+Alapértelmezés szerint a rendszer a naplókat egy nevű `copylog`tárolóba írja. A naplók tárolása a következő elnevezési konvencióval történik:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
@@ -354,7 +354,7 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Rendelés előzményeinek letöltése
 
-A rendelési előzmények a Azure Portalban érhetők el. Ha a megrendelés befejeződött, és az eszköz tisztítása (a lemezekről történő adattörlés) befejeződött, lépjen az eszköz sorrendjébe, és navigáljon a **Rendelés részletei**elemre.  **Rendelési előzmények letöltése**  a lehetőség elérhető. További információ: a [rendelési előzmények letöltése](data-box-portal-admin.md#download-order-history).
+A rendelési előzmények a Azure Portalban érhetők el. Ha a megrendelés befejeződött, és az eszköz tisztítása (a lemezekről történő adattörlés) befejeződött, lépjen az eszköz sorrendjébe, és navigáljon a **Rendelés részletei**elemre. Elérhető a **Rendelés előzményeinek letöltése** lehetőség. További információ: a [rendelési előzmények letöltése](data-box-portal-admin.md#download-order-history).
 
 Ha a sorrendet az előzmények között görgeti, a következőt látja:
 

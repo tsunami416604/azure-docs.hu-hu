@@ -1,9 +1,9 @@
 ---
-title: Hozza létre a bizalmas ügyfélalkalmazás lehetőségek (Microsoft-hitelesítési tár .NET) |} Az Azure
-description: Ismerje meg, hogyan hozható létre egy bizalmas ügyfélalkalmazás konfigurációs lehetőségek a Microsoft-hitelesítési tár .NET (MSAL.NET) használatával.
+title: Bizalmas ügyfélalkalmazás létrehozása lehetőségekkel (Microsoft Authentication Library for .NET) | Azure
+description: Ismerje meg, hogyan hozhat létre egy bizalmas ügyfélalkalmazás konfigurációs beállításokkal a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,33 +13,33 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7814ff6b7575fedc19e63676ce3353c2a62a62b4
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 47a05959311b7f62f88a7b474b907982e005b98b
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154440"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532628"
 ---
-# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Hozza létre a bizalmas ügyfélalkalmazás az MSAL.NET használatával, a konfigurációs beállítások
+# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Bizalmas ügyfélalkalmazás létrehozása konfigurációs beállításokkal a MSAL.NET használatával
 
-Ez a cikk bemutatja, hogyan hozhat létre egy [ügyfélalkalmazás bizalmas](msal-client-applications.md) Microsoft-hitelesítési tár .NET (MSAL.NET) használatával.  Az alkalmazás beállításainak fájlban meghatározott konfigurációs beállításokkal jön létre.
+Ez a cikk azt ismerteti, hogyan hozható létre egy [bizalmas ügyfélalkalmazás](msal-client-applications.md) a .net-hez készült Microsoft Authentication Library (MSAL.net) használatával.  Az alkalmazás egy beállítási fájlban megadott konfigurációs beállításokkal lett létrehozva.
 
-Alkalmazás inicializálása, előtt először létre kell [regisztrálása](quickstart-register-app.md) azt, hogy az alkalmazás integrálható a Microsoft identity platform. A regisztrációt követően szükség lehet a következő információkat (amely az Azure Portalon található):
+Az alkalmazás inicializálásához először regisztrálnia kell, hogy [](quickstart-register-app.md) az alkalmazás integrálható legyen a Microsoft Identity platformmal. A regisztráció után a következő információkra lehet szüksége (amelyek a Azure Portalban találhatók):
 
-- Az ügyfél-Azonosítót (GUID képviselő karakterláncot)
-- Az identitásszolgáltató szolgáltató URL-címe (a példány neve) és az alkalmazás bejelentkezési célközönség. E két paraméter együttesen hatóságként ismert.
-- A bérlő Azonosítóját, ha egy üzletági alkalmazás kizárólag a szervezetben (egybérlős alkalmazás elnevezett is ismert).
-- Az alkalmazás titkos kulcs (ügyfél titkos karakterlánc) vagy a tanúsítvány (típusú X509Certificate2) egy bizalmas ügyfél alkalmazás esetén.
-- A web apps, és egyes esetekben a nyilvános ügyfélalkalmazások (különösen ha az alkalmazás egy közvetítő) fog is beállította a redirectUri, lépjen kapcsolatba az identitásszolgáltató vissza az alkalmazás a biztonsági jogkivonatokkal.
+- Az ügyfél-azonosító (GUID jelölő sztring)
+- Az identitás-szolgáltató URL-címe (a példány neve) és az alkalmazás bejelentkezési célközönsége. Ez a két paraméter együttesen a hatóság néven ismert.
+- A bérlő azonosítója, ha csak az Ön szervezete számára ír üzletági alkalmazást (más néven egybérlős alkalmazás).
+- Az alkalmazás titkos kulcsa (az ügyfél titkos karakterlánca) vagy a tanúsítvány (X509certificate2) típusú), ha bizalmas ügyfélalkalmazás.
+- Webalkalmazások esetében, és esetenként a nyilvános ügyfélalkalmazások számára (különösen, ha az alkalmazásnak közvetítőt kell használnia), azt a redirectUri is be kell állítania, amelyben az identitás-szolgáltató felveszi a kapcsolatot az alkalmazással a biztonsági jogkivonatokkal.
 
-## <a name="configure-the-application-from-the-config-file"></a>A konfigurációs fájlból az alkalmazás konfigurálása
-A lehetőségek a MSAL.NET tulajdonságainak neve egyezik tulajdonságainak neve a `AzureADOptions` az ASP.NET Core, így nem kell minden olyan integrációs kódot írnia.
+## <a name="configure-the-application-from-the-config-file"></a>Az alkalmazás konfigurálása a konfigurációs fájlból
+A MSAL.net lévő beállítások tulajdonságainak neve megegyezik a `AzureADOptions` ben lévő ASP.net Core tulajdonságainak nevével, így nincs szükség ragasztó-kód írására.
 
-Az ASP.NET Core-konfigurációjához leírt egy *appsettings.json* fájlt:
+Egy ASP.NET Core alkalmazás konfigurációját egy *appSettings. JSON* fájl írja le:
 
 ```json
 {
@@ -62,9 +62,9 @@ Az ASP.NET Core-konfigurációjához leírt egy *appsettings.json* fájlt:
 }
 ```
 
-A MSAL.NET v3.x-től kezdődően a konfigurációs fájlból bizalmas ügyfélalkalmazás konfigurálása.
+A MSAL.NET v3. x verziótól kezdődően beállíthatja a bizalmas ügyfélalkalmazás konfigurációját a konfigurációs fájlból.
 
-Deklarálni kell az osztályban, ahol azt szeretné, konfigurálja és hozza létre az alkalmazás egy `ConfidentialClientApplicationOptions` objektum.  A konfiguráció olvasása a forrásból (beleértve a appconfig.json fájl) kötni az alkalmazások közül, használja a példány a `IConfigurationRoot.Bind()` módszerrel a [Microsoft.Extensions.Configuration.Binder nuget-csomag](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
+Abban az osztályban, amelyben konfigurálni és létrehozni szeretné az alkalmazást, deklarálnia kell egy `ConfidentialClientApplicationOptions` objektumot.  Kösse össze a forrásról (beleértve az appconfig. JSON fájlt) az alkalmazás beállításaihoz tartozó konfigurációt a `IConfigurationRoot.Bind()` [Microsoft. Extensions. Configuration. kévekötő nuget csomag](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)metódusának használatával.
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -74,7 +74,7 @@ _applicationOptions = new ConfidentialClientApplicationOptions();
 configuration.Bind("AzureAD", _applicationOptions);
 ```
 
-Ez lehetővé teszi, hogy az "Azure ad" szakaszában tartalmát a *appsettings.json* fájl megfelelő tulajdonságainak kell kötni a `ConfidentialClientApplicationOptions` objektum.  Ezután hozhat létre egy `ConfidentialClientApplication` objektum:
+Ez lehetővé teszi az *appSettings. JSON* fájl "AzureAD" szakaszának tartalmát, hogy az `ConfidentialClientApplicationOptions` objektum megfelelő tulajdonságaihoz legyen kötve.  Következő lépésként hozzon létre egy `ConfidentialClientApplication` objektumot:
 
 ```csharp
 IConfidentialClientApplication app;
@@ -82,8 +82,8 @@ app = ConfidentialClientApplicationBuilder.CreateWithApplicationOptions(_applica
         .Build();
 ```
 
-## <a name="add-runtime-configuration"></a>Futásidejű konfigurációjának hozzáadása
-A bizalmas ügyfélalkalmazás felhasználónként gyorsítótár általában rendelkezik. Ezért kell a gyorsítótárban, a felhasználóhoz társított, és tájékoztatja az alkalmazást a jelentéskészítő, hogy szeretné-e használni. Ugyanúgy lehetséges, hogy dinamikusan számított átirányítási URI-t. Ebben az esetben a kódja: a következő:
+## <a name="add-runtime-configuration"></a>Futtatókörnyezet-konfiguráció hozzáadása
+Egy bizalmas ügyfélalkalmazás esetében általában gyorsítótár felhasználónként. Ezért be kell szereznie a felhasználóhoz tartozó gyorsítótárat, és értesítenie kell a használni kívánt Application Builder-t. Ugyanígy előfordulhat, hogy egy dinamikusan számított átirányítási URI-val rendelkezik. Ebben az esetben a kód a következő:
 
 ```csharp
 IConfidentialClientApplication app;

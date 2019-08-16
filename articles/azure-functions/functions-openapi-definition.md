@@ -1,61 +1,60 @@
 ---
-title: Az Azure API Management-függvény OpenAPI definíció létrehozása
+title: OpenAPI-definíció létrehozása kiszolgáló nélküli API-hoz az Azure API Management használatával
 description: Hozzon létre egy OpenAPI definíciót, amely lehetővé teszi más alkalmazások és szolgáltatások számára, hogy meghívják a függvényt az Azure-ban.
-services: functions
 keywords: OpenAPI, Swagger, felhőalkalmazás, felhőszolgáltatások,
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: fc724e241849f4519a0e353cb6789d3f83eaf4b9
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 54a4c6eba094231e8e73cdef87b911dfba20f657
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510450"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533541"
 ---
-# <a name="create-an-openapi-definition-for-a-function-with-azure-api-management"></a>Az Azure API Management-függvény OpenAPI definíció létrehozása
+# <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>OpenAPI-definíció létrehozása kiszolgáló nélküli API-hoz az Azure API Management használatával
 
-REST API-k leírása gyakran OpenAPI-definícióval. Ez a definíció tartalmazza az API-ban elérhető műveletekkel kapcsolatos információkat, illetve az API kérés- és válaszadatainak felépítését.
+A REST API-kat gyakran egy OpenAPI-definíció használatával írják le. Ez a definíció tartalmazza az API-ban elérhető műveletekkel kapcsolatos információkat, illetve az API kérés- és válaszadatainak felépítését.
 
-Ebben az oktatóanyagban létrehoz egy függvényt, amely megállapítja, hogy egy szélturbina sürgősségi javítása költséghatékony-e. Ezután létrehoz egy OpenAPI-definícióját a függvény használatával [Azure API Management](../api-management/api-management-key-concepts.md) úgy, hogy a függvényt más alkalmazások és szolgáltatások is meghívhassák.
+Ebben az oktatóanyagban létrehoz egy függvényt, amely megállapítja, hogy egy szélturbina sürgősségi javítása költséghatékony-e. Ezután létrehoz egy OpenAPI-definíciót a Function alkalmazáshoz az [Azure API Management](../api-management/api-management-key-concepts.md) használatával, hogy a függvény más alkalmazásokból és szolgáltatásokból is meghívható legyen.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Függvény létrehozása az Azure-ban
-> * Az Azure API Management segítségével a OpenAPI-definíció létrehozása
+> * OpenAPI-definíció létrehozása az Azure API Management használatával
 > * A definíció tesztelése a függvény meghívásával
-> * Az OpenAPI-definíció letöltése
+> * A OpenAPI-definíció letöltése
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A függvényalkalmazás lehetővé teszi, csoportosítsa a függvényeket egy logikai egységet az egyszerűbb felügyelete, telepítése, méretezése és az erőforrások megosztása.
+Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A Function app lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése, skálázása és megosztása érdekében.
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
 ## <a name="create-the-function"></a>A függvény létrehozása
 
-Ebben az oktatóanyagban egy HTTP által aktivált függvényt, amely a két paraméter szükséges:
+Ez az oktatóanyag egy HTTP által aktivált függvényt használ, amely két paramétert vesz igénybe:
 
-* A becsült ideje, hogy a turbina javításához (óra).
-* A kapacitás a turbina kilowattban. 
+* A turbina javításának várható ideje (óra).
+* A turbina kapacitása kilowattban. 
 
-A függvény kiszámolja, hogy mennyibe kerül a javítás, és hogy a turbina 24 óra alatt mennyi bevételt tudna termelni. HOZHAT létre a HTTP által aktivált függvény a [az Azure portal](https://portal.azure.com).
+A függvény kiszámolja, hogy mennyibe kerül a javítás, és hogy a turbina 24 óra alatt mennyi bevételt tudna termelni. A HTTP által aktivált függvény létrehozása a Azure Portalban [](https://portal.azure.com).
 
-1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Válassza ki **a portálon** > **továbbra is**.
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Válassza **a portálon** > belüli**Folytatás**lehetőséget.
 
-1. Válassza ki **további sablonok...** , majd **Befejezés és nézet sablonok**
+1. Válassza a **további sablonok...** lehetőséget, majd kattintson a **Befejezés és a sablonok megtekintése** elemre.
 
-1. Írja be a HTTP-eseményindító kiválasztása `TurbineRepair` a függvény **neve**, válassza a `Function` a  **[hitelesítési szint](functions-bindings-http-webhook.md#http-auth)**, majd válassza ki  **Hozzon létre**.  
+1. Válassza a http-trigger `TurbineRepair` lehetőséget, írja be a függvény `Function` **nevét**, válassza a **[hitelesítési szint](functions-bindings-http-webhook.md#http-auth)** lehetőséget, majd válassza a **Létrehozás**lehetőséget.  
 
-    ![Az OpenAPI HTTP-függvény létrehozása](media/functions-openapi-definition/select-http-trigger-openapi.png)
+    ![HTTP-függvény létrehozása a OpenAPI](media/functions-openapi-definition/select-http-trigger-openapi.png)
 
-1. Cserélje le a run.csx tartalmát C# parancsfájlt a következő kódra, majd kattintson a **mentése**:
+1. Cserélje le a Run. CSX C# parancsfájl tartalmát a következő kódra, majd válassza a **Mentés**lehetőséget:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -127,51 +126,51 @@ A függvény kiszámolja, hogy mennyibe kerül a javítás, és hogy a turbina 2
     {"message":"Yes","revenueOpportunity":"$7200","costToFix":"$1600"}
     ```
 
-Most már van egy olyan függvénye, amely megállapítja a sürgősségi javítások költséghatékonyságát. Következő lépésként hozza létre a függvényalkalmazás OpenAPI-definíció.
+Most már van egy olyan függvénye, amely megállapítja a sürgősségi javítások költséghatékonyságát. Ezután létrehoz egy OpenAPI-definíciót a Function alkalmazáshoz.
 
 ## <a name="generate-the-openapi-definition"></a>Az OpenAPI-definíció létrehozása
 
 Most már készen áll arra, hogy létrehozza az OpenAPI-definíciót.
 
-1. Válassza ki a függvényt, majd a **platformfunkciók**, válassza a **az API Management** válassza **új Létrehozása** alatt **az API Management**.
+1. Válassza ki a Function alkalmazást, majd a **platform szolgáltatásainál**válassza a **API Management** lehetőséget, majd válassza az **új létrehozása** lehetőséget **API Management**alatt.
 
-    ![Válassza ki az API Management Platform szolgáltatásai](media/functions-openapi-definition/select-all-settings-openapi.png)
+    ![API Management kiválasztása a platform szolgáltatásaiban](media/functions-openapi-definition/select-all-settings-openapi.png)
 
-1. Az API Management-beállításokat használja az ábra alatti táblázatban megadott.
+1. Használja a rendszerkép alatti táblázatban megadott API Management beállításokat.
 
     ![Új API Management szolgáltatás létrehozása](media/functions-openapi-definition/new-apim-service-openapi.png)
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name (Név)** | Globálisan egyedi név | Egy nevet a függvényalkalmazás neve alapján generált. |
-    | **Előfizetés** | Az Ön előfizetése | Az előfizetés, amelyben az új erőforrás jön létre. |  
-    | **[Erőforráscsoport](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Ugyanazt az erőforrást a függvényalkalmazás, amely kell első beállítva az Ön számára. |
-    | **Hely** | USA nyugati régiója | Válassza ki az usa Nyugati régiójában. |
-    | **Szervezet neve** | Contoso | A fejlesztői portálon, és az e-mail értesítések a szervezet neve. |
-    | **Rendszergazdai e-mail** | az e-mailben | E-mailt, amely az API Management rendszer értesítést kapott. |
-    | **Tarifacsomag** | Használat (előzetes verzió) | Használatalapú csomag előzetes verzióban érhető el, és minden régióban nem érhető el. Teljes körű díjszabási részletek: a [az API Management-díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/api-management/) |
+    | **Name** | Globálisan egyedi név | A rendszer a függvény alkalmazásának neve alapján hozza létre a nevet. |
+    | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amely alatt az új erőforrást létrehozták. |  
+    | **[Erőforráscsoport](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | A Function alkalmazással megegyező erőforrás, amelyet be kell állítani. |
+    | **Location** | USA nyugati régiója | Válassza ki az USA nyugati régióját. |
+    | **Szervezet neve** | Contoso | A fejlesztői portálon használt szervezet neve és e-mail-értesítések. |
+    | **Rendszergazdai e-mail** | e-mail-címe | A API Managementtól kapott rendszerértesítéseket tartalmazó e-mailek. |
+    | **Tarifacsomag** | Felhasználás (előzetes verzió) | A használati szintek előzetes verzióban érhetők el, és nem érhető el minden régióban. A díjszabással kapcsolatos részletekért tekintse meg a [API Management díjszabási oldalát](https://azure.microsoft.com/pricing/details/api-management/) . |
 
-1. Válasszon **létrehozás** hozhat létre az API Management-példány, ami eltarthat néhány percig.
+1. Válassza a **Létrehozás** lehetőséget a API Management példány létrehozásához, amely több percet is igénybe vehet.
 
-1. Válassza ki **engedélyezze az Application Insights** elküldeni a naplókat a függvény alkalmazás ugyanezen a helyen, majd fogadja el a fennmaradó alapértelmezett beállításokat, és válasszon **hivatkozás API**.
+1. Válassza az **engedélyezés Application Insights** lehetőséget, hogy a függvény alkalmazással megegyező helyre küldje a naplókat, majd fogadja el a fennmaradó alapértékeket, és válassza az **API csatolása**lehetőséget.
 
-1. A **importálása az Azure Functions** megnyílik a **TurbineRepair** függvény vannak kiemelve. Válasszon **kiválasztása** folytatásához.
+1. Megnyílik az **importálási Azure functions** a **TurbineRepair** függvénnyel kiemelve. A folytatáshoz válassza a **Kiválasztás lehetőséget** .
 
-    ![Az Azure Functions importálni az API Management](media/functions-openapi-definition/import-function-openapi.png)
+    ![Azure Functions importálása a API Managementba](media/functions-openapi-definition/import-function-openapi.png)
 
-1. Az a **létrehozás függvényalkalmazásból** lapon elfogadhatja az alapértelmezett beállításokat, és válassza **létrehozása**
+1. A **Létrehozás a függvényalkalmazás** lapon fogadja el az alapértelmezett értékeket, és válassza a **Létrehozás** lehetőséget.
 
     ![Létrehozás függvényalkalmazásból](media/functions-openapi-definition/create-function-openapi.png)
 
-Az API-t a függvény megtörtént.
+Ekkor létrejön az API a függvényhez.
 
 ## <a name="test-the-api"></a>Az API tesztelése
 
-Az OpenAPI-definíció használatához ellenőrizze, hogy működik-e az API-t.
+A OpenAPI-definíció használata előtt ellenőrizze, hogy az API működik-e.
 
-1. Az a **teszt** fülre a select függvény **POST** műveletet.
+1. A függvény **teszt** lapján válassza a művelet **küldése** lehetőséget.
 
-1. Adjon meg értéket a **óra** és **kapacitás**
+1. Adja meg az **órák** és a **kapacitás** értékét
 
     ```json
     {
@@ -180,15 +179,15 @@ Az OpenAPI-definíció használatához ellenőrizze, hogy működik-e az API-t.
     }
     ```
 
-1. Kattintson a **küldése**, majd tekintse meg a HTTP-válasz.
+1. Kattintson a **Küldés**gombra, majd tekintse meg a http-választ.
 
-    ![Függvény API tesztelése](media/functions-openapi-definition/test-function-api-openapi.png)
+    ![Function API tesztelése](media/functions-openapi-definition/test-function-api-openapi.png)
 
-## <a name="download-the-openapi-definition"></a>Az OpenAPI-definíció letöltése
+## <a name="download-the-openapi-definition"></a>A OpenAPI-definíció letöltése
 
-Ha az API a várt módon működik, letöltheti az OpenAPI-definíció.
+Ha az API a várt módon működik, letöltheti a OpenAPI-definíciót.
 
-1. Válassza ki **töltse le az OpenAPI-definíció** az oldal tetején.
+1. A lap tetején válassza a **OpenAPI-definíció letöltése** lehetőséget.
    
    ![OpenAPI-definíció letöltése](media/functions-openapi-definition/download-definition.png)
 
@@ -198,7 +197,7 @@ Ha az API a várt módon működik, letöltheti az OpenAPI-definíció.
 
 ## <a name="next-steps"></a>További lépések
 
-Integráció az API Management segítségével a függvények OpenAPI-definíció létrehozása. Most már szerkesztheti a definíció az API Management a portálon. Emellett [további információ az API Management](../api-management/api-management-key-concepts.md).
+API Management integrációt használt a függvények OpenAPI-definíciójának létrehozásához. Most már szerkesztheti a definíciót API Management a portálon. [További tudnivalókat a API Managementról](../api-management/api-management-key-concepts.md)is kaphat.
 
 > [!div class="nextstepaction"]
-> [Az API Management szolgáltatásban az OpenAPI-definíció szerkesztése](../api-management/edit-api.md)
+> [A OpenAPI-definíció szerkesztése a API Managementban](../api-management/edit-api.md)

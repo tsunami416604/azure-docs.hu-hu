@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 795e805e4629a4f4674c296e555ece6230cf66f1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: bf63a9fb552b2a41ce7b9945faeda362592d8efb
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883137"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558812"
 ---
 Ez a szakasz azt ismerteti, hogyan hozható létre IoT hub a [Azure Portal](https://portal.azure.com)használatával.
 
@@ -48,7 +48,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre IoT hub a [Azure Portal](http
     - **IoT hub egységek**: A napi egységenként engedélyezett üzenetek száma a központ díjszabási szintjétől függ. Ha például azt szeretné, hogy a központ támogassa a 700 000-es bejövő üzeneteket, két S1 szintű egységet választ.
     További információ a többi lehetőségről: [a megfelelő IoT hub](../articles/iot-hub/iot-hub-scaling.md)-szinten való választás.
 
-    - **Speciális eszközről** **a felhőbe irányuló partíciók:**  >  Ez a tulajdonság az eszközről a felhőbe irányuló üzeneteket az üzenetek egyidejű olvasóinak számához kapcsolja. A legtöbb hubhoz csak négy partíció szükséges.
+    -  > **Az eszközről a felhőbe irányuló**speciális beállítások: Ez a tulajdonság az eszközről a felhőbe irányuló üzeneteket az üzenetek egyidejű olvasóinak számához kapcsolja. A legtöbb hubhoz csak négy partíció szükséges.
 
 1. Ebben az oktatóanyagban fogadja el az alapértelmezett beállításokat, majd válassza a **felülvizsgálat + létrehozás** lehetőséget a választási lehetőségek áttekintéséhez. Ehhez hasonló képernyő jelenik meg.
 

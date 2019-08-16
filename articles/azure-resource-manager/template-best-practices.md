@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2019
+ms.date: 08/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: cdec216187050a449f23f72474e0265acce14c5f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: cf6a5b07dd72c4e2364281b755e77e642f8fe167
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67867393"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542981"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager sablon – ajánlott eljárások
 
@@ -150,6 +150,8 @@ Az ebben a szakaszban található információk hasznosak lehetnek, ha [paramét
 ## <a name="variables"></a>Változók
 
 A következő információk hasznosak lehetnek a [változók](resource-group-authoring-templates.md#variables)használatakor:
+
+* A Camel Case változó nevek használata.
 
 * Használjon változókat olyan értékekhez, amelyeket többször kell használni a sablonban. Ha egy értéket csak egyszer használ, a rögzített érték megkönnyíti a sablon olvasását.
 

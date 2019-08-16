@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c192a994ac5398d41e28a35267b922ba98b721cc
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: dd898397b4aaec2e62558d12a3547f7b61d6d3fd
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69513613"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533465"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation állapot konfigurációjának áttekintése
 
@@ -126,15 +126,6 @@ A régiók neveit tartalmazó régió IP-címeinek listáját az Azure- [adatkö
 >A frissített fájlok hetente kerülnek közzétételre. A fájl a jelenleg telepített tartományokat és az IP-címtartományok közelgő változásait tükrözi. A fájlban megjelenő új tartományok legalább egy hétig nem használhatók az adatközpontokban.
 >
 > Érdemes minden héten letölteni az új XML-fájlt. Ezután frissítse a webhelyet az Azure-ban futó szolgáltatások megfelelő azonosításához. Az Azure ExpressRoute felhasználói számára fontos megjegyezni, hogy ez a fájl az Azure Space Border Gateway Protocol (BGP) hirdetményének frissítésére szolgál minden hónap első hetében.
-
-## <a name="introduction-video"></a>Bevezető videó
-
-Inkább néz videót olvasás helyett? Tekintse meg az alábbi videót május 2015-tól, amikor először bejelentettük Azure Automation állapot konfigurációját.
-
-> [!NOTE]
-> Habár az ebben a videóban tárgyalt fogalmak és életciklus helyes, Azure Automation állapot-konfiguráció sokat fejlődött a videó rögzítése óta. Már általánosan elérhető, sokkal kiterjedtebb felhasználói felülettel rendelkezik a Azure Portalban, és számos további funkciót támogat.
-
-> [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
 ## <a name="next-steps"></a>További lépések
 

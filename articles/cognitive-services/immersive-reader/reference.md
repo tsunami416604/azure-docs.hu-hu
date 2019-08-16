@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1a616bce8c161825853b1966769d9505595d95de
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 1d9fc20055fe3adb571b5a77330cc6537998cb5f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688315"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534469"
 ---
 # <a name="immersive-reader-sdk-reference"></a>A részletes olvasó SDK-referenciája
 
@@ -40,7 +40,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | `token` | Karakterlánc | Az Azure AD hitelesítési jogkivonata. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
 | `subdomain` | Karakterlánc | Az Azure-beli magától elolvasó erőforrás egyedi altartománya. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
 | `content` | [Tartalom](#content) | Egy objektum, amely a magába foglaló olvasóban megjelenítendő tartalmat tartalmazza. |
-| `options` | [Beállítások](#options) | Beállítások a magával ragadó olvasó bizonyos viselkedésének konfigurálásához. Választható. |
+| `options` | [Beállítások](#options) | Beállítások a magával ragadó olvasó bizonyos viselkedésének konfigurálásához. Nem kötelező. |
 
 #### <a name="returns"></a>Visszatérési érték
 
@@ -73,6 +73,7 @@ A lebilincselő olvasóban megjelenítendő tartalmat tartalmazza.
 | --------- | ----------- |
 | szöveg/egyszerű | Egyszerű szöveg. |
 | Application/MathML + XML | Matematikai Markup Language (MathML). [További információk](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| Application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx formátumú dokumentum.
 
 ### <a name="options"></a>Beállítások
 
@@ -104,7 +105,8 @@ A hibával kapcsolatos információkat tartalmaz.
 | ---- | ----------- |
 | BadArgument | A megadott argumentum érvénytelen. a `message` részletekért tekintse meg a következőt:. |
 | Időtúllépés | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
-| TokenExpired| A megadott jogkivonat lejárt. |
+| TokenExpired | A megadott jogkivonat lejárt. |
+| Szabályozott | Túllépte a hívási sebesség korlátját. |
 
 ## <a name="launching-the-immersive-reader"></a>A lebilincselő olvasó elindítása
 

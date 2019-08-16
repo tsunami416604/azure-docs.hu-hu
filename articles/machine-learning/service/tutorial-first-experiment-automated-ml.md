@@ -5,23 +5,23 @@ description: Megtudhatja, hogyan lehet betanítani és üzembe helyezni egy beso
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 07/23/2019
-ms.openlocfilehash: 7ef19db472b30d82f14a5dd650cb8f4cb1f3ed3a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/14/2019
+ms.openlocfilehash: e53cd92a9dfd8f823918fb38e14c2b73c2ce071f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990080"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534426"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-train-and-deploy-your-first-classification-model-preview"></a>Oktatóanyag: Automatikus gépi tanulás használata az első besorolási modell betanításához és üzembe helyezéséhez (előzetes verzió)
+# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: Az első besorolási modell létrehozása automatizált gépi tanulással
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhatja létre első automatizált gépi tanulási kísérletét a Azure Portal. Ez a példa egy besorolási modellt hoz létre, amely azt jelzi, hogy az ügyfél előfizet-e egy, a banknál befizetett időszakra.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhatja létre első automatizált gépi tanulási kísérletét a Azure Portalban (előzetes verzió) anélkül, hogy egyetlen sor kódot kellene írnia. Ez a példa egy besorolási modellt hoz létre, amely azt jelzi, hogy az ügyfél egy pénzügyi intézmény által rögzített értékű letétbe kerül.
 
-A szolgáltatás és a Azure Portal gépi tanulási képességeinek használatával megkezdheti az automatizált gépi tanulási folyamatot. Az algoritmus kiválasztása és a hiperparaméter finomhangolása az Ön számára történik. Az automatizált gépi tanulási technika az algoritmusok és a hiperparaméterek beállítása számos kombinációjára támaszkodik, amíg meg nem találja a saját feltétel alapján a legjobb modellt, mindezt anélkül, hogy egyetlen sor kódot kellene írnia.
+A Azure Machine Learning szolgáltatás és a Azure Portal automatizált gépi tanulási képességeinek használatával megkezdheti az automatizált gépi tanulási folyamatot. Az algoritmus kiválasztása és a hiperparaméter finomhangolása az Ön számára történik. Az automatizált gépi tanulási módszer az algoritmusok és a hiperparaméterek beállítása számos kombinációjára támaszkodik, amíg meg nem találja a legjobb modellt a feltétele alapján.
 
 Ez az oktatóanyag a következő feladatokat ismerteti:
 
@@ -36,7 +36,7 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
 
-* A **bankmarketing_train. csv** fájl adatfájlja. [Töltse le](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
+* Töltse le az [ **bankmarketing_train. csv** ](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) adatfájlt. Az **y** oszlop azt jelzi, hogy az ügyfél egy rögzített lejáratú befizetésre fizetett-e, amelyet később a jelen oktatóanyagban megjelenő előrejelzések céljának oszlopa azonosítottak. 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
@@ -44,11 +44,14 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 
 ## <a name="create-an-experiment"></a>Kísérlet létrehozása
 
+Ezek a lépések végigvezetik az adatok kiválasztásának beállításán az elsődleges metrika és a modell típusának kiválasztásához. 
+
 1. Nyissa meg a munkaterület bal oldali paneljét. Válassza az **automatikus gépi tanulás** lehetőséget az **authoring (előzetes verzió)** szakaszban.
+Ekkor megjelenik az **automatikus Machine learning** képernyő, mivel ez az első kísérlet az automatizált Machine learning.
 
     ![Azure Portal navigációs ablaktábla](media/tutorial-1st-experiment-automated-ml/nav-pane.png)
 
-    Mivel ez az első kísérlet az automatizált Machine Learning, az **automatikus Machine learning** képernyőn láthatja az üdvözlő képernyőt. 
+
 
 1. Válassza a **kísérlet létrehozása**lehetőséget. Ezután írja be a **My-1st-automl-Experiment** nevet a kísérlet neveként.
 
@@ -64,7 +67,8 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 
     A létrehozás befejeződése után válassza ki az új számítást a legördülő listából, majd kattintson a **tovább**gombra.
 
-1. Ebben az oktatóanyagban az új számítási feladatokkal létrehozott alapértelmezett Storage-fiókot és-tárolót használjuk. Ezek automatikusan feltöltve lesznek az űrlapon.
+    >[!NOTE]
+    >Ebben az oktatóanyagban az új számítási feladatokkal létrehozott alapértelmezett Storage-fiókot és-tárolót használjuk. Ezek automatikusan feltöltve lesznek az űrlapon.
 
 1. Válassza a **feltöltés** lehetőséget, és válassza ki a **bankmarketing_train. csv** fájlt a helyi számítógépről, hogy feltöltse az alapértelmezett tárolóba. A nyilvános előzetes verzió csak a helyi fájlok feltöltését és az Azure Blob Storage-fiókokat támogatja. Ha a feltöltés befejeződött, válassza ki a fájlt a listából. 
 
@@ -116,7 +120,9 @@ A kísérlet előrehaladása esetén a **Futtatás részletei** képernyő friss
 
 ## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
-Ebben a kísérletben a **VotingEnsemble** a **AUC_weighted** metrika alapján a legjobb modellnek számít. A Azure Portal automatizált gépi tanulás használatával üzembe helyezheti ezt a modellt webszolgáltatásként az új adatértékek előrejelzéséhez. 
+A Azure Portal automatizált gépi tanulás alkalmazásával a legjobb modellt üzembe helyezheti webszolgáltatásként, amely előre jelezheti az új adatmennyiséget, és azonosíthatja a lehetséges területeket. Ebben a kísérletben az üzembe helyezés azt jelenti, hogy a pénzügyi intézmény most már rendelkezik egy iterációs és méretezhető megoldással a lehetséges rögzített lejáratú ügyfelek azonosításához.
+
+Ebben a kísérleti kontextusban a **VotingEnsemble** a **AUC_weighted** metrika alapján a legjobb modellnek számít.  Ezt a modellt üzembe helyezjük, de javasoljuk, hogy az üzembe helyezés körülbelül 20 percet vesz igénybe.
 
 1. A **Futtatás részletei** lapon válassza a **legjobb modell üzembe helyezése** gombot.
 
@@ -129,13 +135,13 @@ Ebben a kísérletben a **VotingEnsemble** a **AUC_weighted** metrika alapján a
     Pontozási parancsfájl| Autogenerate
     Környezeti parancsfájl| Autogenerate
     
-1. Válassza az **Üzembe helyezés** lehetőséget. Az üzembe helyezés körülbelül 20 percet vesz igénybe.
+1. Válassza az **Üzembe helyezés** lehetőséget.
 
     Az üzembe helyezés sikeres befejeződése után a következő üzenet jelenik meg:
 
     ![Az üzembe helyezés befejeződött](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png)
     
-    Ennyi az egész! Van egy operatív webszolgáltatás az előrejelzések létrehozásához.
+    Most már rendelkezik egy operatív webszolgáltatással előrejelzések létrehozásához.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -159,7 +165,10 @@ Ha az erőforráscsoportot és a munkaterületet más oktatóanyagok és feltár
 
 Ebben az automatizált gépi tanulási oktatóanyagban a Azure Portal használatával létrehozhatja és üzembe helyezheti a besorolási modellt. További információkat és további lépéseket a következő cikkekben talál:
 
-+ Ismerje meg, [](how-to-consume-web-service.md)hogyan használhat webszolgáltatásokat.
+> [!div class="nextstepaction"]
+> [Webszolgáltatás felhasználása](how-to-consume-web-service.md)
+
+
 + További információ az [](how-to-create-portal-experiments.md#preprocess)előfeldolgozásról.
 + További információ az [](how-to-create-portal-experiments.md#profile)adatprofilkészítésről.
 + További információ az [automatizált gépi tanulásról](concept-automated-ml.md).

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Security Centerben a virtuális gépre vonatkozó javaslatok |} A Microsoft Docs
-description: Ez a dokumentum azt ismerteti, hogyan a virtuális gépek és számítógépek és a webalkalmazások és App Service Environment-környezetek védelmét az Azure Security Center javaslatok.
+title: Virtuális gépekre vonatkozó javaslatok a Azure Security Centerban | Microsoft Docs
+description: Ez a dokumentum ismerteti a Azure Security Center javaslatokat a virtuális gépek és számítógépek, valamint a webalkalmazások és a App Service környezetek védelmének biztosításához.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,56 +14,56 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2018
 ms.author: rkarlin
-ms.openlocfilehash: a4aaf440856746895a31914aeee2bddec2ce23f6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 798e027ca611905766b1fb8bcdb89cba4aeaf9b2
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544984"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69531338"
 ---
-# <a name="understand-azure-security-center-resource-recommendations"></a>Az Azure Security Center erőforrás kapcsolatos javaslatok megértése
+# <a name="understand-azure-security-center-resource-recommendations"></a>A Azure Security Center erőforrással kapcsolatos javaslatok ismertetése
 
 
 ## <a name="recommendations"></a>Javaslatok
-Használja az alábbi táblázatokban referenciaként segítenek megérteni a rendelkezésre álló számítási és az App services-ajánlásokat és mindegyikhez funkciója alkalmazásuk esetén azok.
+Az alábbi táblázatokat hivatkozásként használva megismerheti az elérhető számítási és app Services-ajánlásokat, és azt, hogy mit tesznek, ha alkalmazza azt.
 
 ### <a name="computers"></a>Számítógépek
 | Ajánlás | Leírás |
 | --- | --- |
-| [Adatgyűjtés engedélyezése az előfizetések számára](security-center-enable-data-collection.md) |Javasolja, hogy minden egyes előfizetés és virtuális gép (VM) esetében kapcsolja be az adatgyűjtést az előfizetéseinek biztonsági házirendjében. |
-| [Az Azure Storage-fiók titkosításának engedélyezése](security-center-enable-encryption-for-storage-account.md) | Inaktív adatok Azure Storage szolgáltatás titkosításának engedélyezését javasolja. Storage Service Encryption (SSE) működik, az adatok titkosítása az Azure storage-bA írt, és visszafejti őket a lekérés előtt. SSE jelenleg csak az Azure Blob service érhető el, és a blokkblobok, lapblobok és használható, és hozzáfűző blobok. További tudnivalókért lásd: [inaktív adatok a Storage Service Encryption](../storage/common/storage-service-encryption.md).</br>Az SSE csak Resource Manager-tárfiókok esetében támogatott. Klasszikus storage-fiókok jelenleg nem támogatott. A klasszikus és Resource Manager üzembe helyezési modellek ismertetése: [Azure üzembehelyezési modell](../azure-classic-rm.md). |
-| [Biztonsági konfigurációk javítása](security-center-remediate-os-vulnerabilities.md) |Javasolja, hogy az operációs rendszer konfigurálását az ajánlott biztonsági konfigurációs szabályok, például ne engedélyezze a jelszavak mentését. |
-| [Rendszerfrissítések alkalmazása](security-center-apply-system-updates.md) |Javasolja, hogy végezze el a hiányzó rendszerbiztonsági és kritikus frissítések központi telepítését a virtuális gépeken. |
-| [A Just-In-Time a alkalmazni a hálózati hozzáférés-vezérlés](security-center-just-in-time.md) | Javasolja, time VM access csak a alkalmazni. Az igény szerinti funkció előzetes verzióban érhető el, és a Security Center Standard szinten elérhető. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md). |
-| [Rendszerfrissítések utáni újraindítás](security-center-apply-system-updates.md#reboot-after-system-updates) |Javasolja, hogy a rendszerfrissítések alkalmazási folyamatának befejezéséhez indítson újra egy virtuális gépet. |
-| [Endpoint Protection telepítése](security-center-install-endpoint-protection.md) |Javasolja, hogy telepítsen kártevőirtó programokat a virtuális gépekre (csak Windows rendszerű virtuális gépek esetében). |
-| [Virtuálisgép-ügynök engedélyezése](security-center-enable-vm-agent.md) |Lehetővé teszi a virtuálisgép-ügynök alkalmazását igénylő virtuális gépek megtekintését. A virtuálisgép-ügynöknek telepítve kell lennie a virtuális gépeken a javítás- és alapkonfiguráció-keresés, valamint a kártevőirtó programok üzembe helyezéséhez. Az Azure Marketplace-ről üzembe helyezett virtuális gépek esetében a virtuálisgép-ügynök alapértelmezés szerint telepítve van. A virtuálisgép-ügynök telepítéséről a [Virtuális gép-ügynök és -bővítmények – 2. rész](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) cikkben talál információkat. |
-| [Lemeztitkosítás alkalmazása](security-center-apply-disk-encryption.md) |Javasolja, hogy végezze el a virtuális gép titkosítását az Azure Disk Encryption használatával (Windows és Linux rendszerű virtuális gépek esetében). A titkosítás elvégzése az operációs rendszer és az adatkötetek esetében egyaránt javasolt a virtuális gépen. |
-| [Operációs rendszer verziójának frissítése](security-center-update-os-version.md) |Javasolja, hogy frissíti az operációs rendszer (OS) verzióját a legújabb elérhető verzió a felhőalapú szolgáltatás az operációsrendszer-család.  Cloud Services kapcsolatos további információkért tekintse meg a [Cloud Services – áttekintés](../cloud-services/cloud-services-choose-me.md). |
-| [A sebezhetőségi felmérés nincs telepítve](security-center-vulnerability-assessment-recommendations.md) |Javasolja, hogy telepítsen egy biztonsági rések felmérése szolgáló megoldást a virtuális gépére. |
-| [Sebezhetőségek javítása](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |Lehetővé teszi a virtuális gépre telepített sebezhetőségfelmérő megoldás által észlelt rendszer- és alkalmazássebezhetőségek megtekintését. |
+| Adatgyűjtés engedélyezése az előfizetések számára|Javasolja, hogy minden egyes előfizetés és virtuális gép (VM) esetében kapcsolja be az adatgyűjtést az előfizetéseinek biztonsági házirendjében. |
+| Az Azure Storage-fiók titkosításának engedélyezése| Javasolja, hogy engedélyezze az Azure Storage Service Encryptiont a nyugalmi állapotban lévő adatokhoz. Storage Service Encryption (SSE) az adatok titkosításával működik, amikor az Azure Storage-ba íródik, és a lekérés előtt visszafejti őket. Az SSE jelenleg csak az Azure Blob service számára érhető el, és a Blobok, a blobok és a hozzáfűző Blobok számára is használható. További információ: [Storage Service encryption for](../storage/common/storage-service-encryption.md)inaktív adatok.</br>Az SSE csak Resource Manager-beli Storage-fiókok esetén támogatott. A klasszikus Storage-fiókok jelenleg nem támogatottak. A klasszikus és a Resource Manager-alapú üzemi modellek megismeréséhez tekintse meg az Azure Deployment models című témakört. |
+| Biztonsági konfigurációk szervizelése|Javasolja, hogy az operációs rendszer konfigurációit az ajánlott biztonsági konfigurációs szabályokkal igazítsa, például ne engedélyezze a jelszavak mentését. |
+| Rendszerfrissítések alkalmazása |Javasolja, hogy végezze el a hiányzó rendszerbiztonsági és kritikus frissítések központi telepítését a virtuális gépeken. |
+| Igény szerinti hálózati hozzáférés-vezérlés alkalmazása| Javasolja, hogy csak időben alkalmazza a virtuális gépekhez való hozzáférést. Az igény szerinti funkció előzetes verzióban érhető el, és a standard szintű Security Center elérhető. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md). |
+| Újraindítás a rendszerfrissítések után|Javasolja, hogy a rendszerfrissítések alkalmazási folyamatának befejezéséhez indítson újra egy virtuális gépet. |
+| Az Endpoint Protection telepítése|Javasolja, hogy telepítsen kártevőirtó programokat a virtuális gépekre (csak Windows rendszerű virtuális gépek esetében). |
+| VM-ügynök engedélyezése |Lehetővé teszi a virtuálisgép-ügynök alkalmazását igénylő virtuális gépek megtekintését. A virtuálisgép-ügynöknek telepítve kell lennie a virtuális gépeken a javítás- és alapkonfiguráció-keresés, valamint a kártevőirtó programok üzembe helyezéséhez. Az Azure Marketplace-ről üzembe helyezett virtuális gépek esetében a virtuálisgép-ügynök alapértelmezés szerint telepítve van. A virtuálisgép-ügynök telepítéséről a [Virtuális gép-ügynök és -bővítmények – 2. rész](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) cikkben talál információkat. |
+| Lemeztitkosítás alkalmazása|Javasolja, hogy végezze el a virtuális gép titkosítását az Azure Disk Encryption használatával (Windows és Linux rendszerű virtuális gépek esetében). A titkosítás elvégzése az operációs rendszer és az adatkötetek esetében egyaránt javasolt a virtuális gépen. |
+| Operációs rendszer verziójának frissítése|Javasolja, hogy frissítse a Cloud Service operációs rendszer (OS) verzióját a legújabb, az operációsrendszer-család számára elérhető verzióra.  Ha többet szeretne megtudni a Cloud Servicesről, tekintse meg a Cloud Services áttekintést. |
+| A sebezhetőségi felmérés nincs telepítve|Javasolja, hogy telepítsen egy biztonsági rések felmérése szolgáló megoldást a virtuális gépére. |
+| Biztonsági rések szervizelése) |Lehetővé teszi a virtuális gépre telepített sebezhetőségfelmérő megoldás által észlelt rendszer- és alkalmazássebezhetőségek megtekintését. |
 
-### Alkalmazásszolgáltatások <a name="app-services"></a>
+### App Services<a name="app-services"></a>
 | Ajánlás | Leírás |
 | --- | --- |
-| App Service-ben csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül | Javasolja, hogy korlátozza az App Service hozzáférését a HTTPS-kapcsolaton keresztül csak. |
-| Webes szoftvercsatornák le kell tiltani a webes alkalmazás| Keresse fel a Web Sockets websocket webalkalmazásokban használatát javasolja.  A Websocket protokoll téve a különböző típusú biztonsági fenyegetéseket. |
-| Egyéni tartományok használata az zabalení Webové Aplikace | Egyéni tartományok közös adathalász támadások és más DNS-sel támadások elleni webalkalmazás használatát javasolja. |
-| Webes alkalmazás IP-korlátozások konfigurálása | Javasolja, hogy az alkalmazás-hozzáférést IP-címek listájának meghatározását.  Az IP-korlátozások használatát megvédheti webalkalmazását a gyakori támadásoktól. |
-| Ne engedélyezze az összes ("*") erőforrások hozzáférhetnek az alkalmazáshoz | Javasolja, hogy nem WEBSITE_LOAD_CERTIFICATES paraméter értéke " *". A paraméter beállítása "* " azt jelenti, hogy minden tanúsítvány betöltődik a webes alkalmazások személyes tanúsítványtárolójába.  A minimális jogosultság elvével való visszaéléshez ez is vezethet, mert nem valószínű, hogy a hely összes tanúsítvány futásidőben hozzá kell férnie. |
-| A CORS nem teszi lehetővé az alkalmazás eléréséhez annak minden erőforrás | Javasolja, hogy lehetővé tegye a kommunikál a webes alkalmazások csak a szükséges tartományok. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a webalkalmazáshoz való hozzáférés. |
-| A legújabb támogatott .NET-keretrendszer-webalkalmazás | A .NET-keretrendszer legújabb verzióját a legújabb biztonsági osztályok használatát javasolja. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
-| A Java legújabb támogatott verzióját használja a webalkalmazáshoz | Javasolja, hogy a legújabb Java-verzió esetében a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
-| A PHP legújabb támogatott verzióját használja a webalkalmazáshoz | A PHP legújabb verzióját a legújabb biztonsági osztályok használatát javasolja. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
-| [Webalkalmazási tűzfal hozzáadása](security-center-add-web-application-firewall.md) |Javasolja, hogy telepít egy webalkalmazási tűzfal (WAF) webes végpontok. A WAF ajánlás bármely nyilvános IP-Címmel (példány szintű IP vagy Load elosztott terhelésű IP), amely rendelkezik egy társított hálózati biztonsági csoport nyílt bejövő webes porttal (80,443) jelennek meg.</br></br>A Security Center javasolja, hogy a WAF elleni támadásokat a webalkalmazások virtuális gépeken, és az App Service Environment célcsoportkezelés segítségével telepítsen. Van egy App Service Environment (ASE) egy [prémium](https://azure.microsoft.com/pricing/details/app-service/) szolgáltatás, amely az Azure App Service-alkalmazások biztonságos futtatása teljesen elkülönített és dedikált környezetet biztosít az Azure App Service csomag lehetőséget. ASE kapcsolatos további információkért tekintse meg a [App Service Environment dokumentációja](../app-service/environment/intro.md).</br></br>A Security Center több webalkalmazás védheti meg ezeket az alkalmazásokat a meglévő WAF-példányok hozzáadásával. |
-| [Alkalmazásvédelem véglegesítése](security-center-add-web-application-firewall.md#finalize-application-protection) |A WAF konfigurációjának befejezéséhez forgalmat a WAF berendezésre át irányítva. Ez a javaslat a következő befejezi a szükséges telepítőfájlokat módosításokat. |
-| A legújabb támogatott Node.js verzió használata a webalkalmazáshoz | Javasolja, hogy a legfrissebb Node.js-verzió esetében a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
-| A CORS nem teszi lehetővé a Függvényalkalmazás eléréséhez minden erőforrás | Javasolja, hogy lehetővé tegye a kommunikál a webes alkalmazások csak a szükséges tartományok. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a függvény-alkalmazás elérésére. |
-| Egyéni tartományok használata az Függvényalkalmazás | Egyéni tartományok közös adathalász támadások és más DNS-sel támadások elleni függvényalkalmazás használatát javasolja. |
-| Függvényalkalmazás IP-korlátozások konfigurálása | Javasolja, hogy az alkalmazás-hozzáférést IP-címek listájának meghatározását. Az IP-korlátozások használata gyakori támadások ellen védi a függvényalkalmazást. |
-| Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül | Hozzáférés korlátozásáról függvényalkalmazások HTTPS-kapcsolaton keresztül csak javasolni a felhasználóknak. |
-| Távoli hibakeresést ki kell kapcsolni a Függvényalkalmazás | Javasolja, kapcsolja ki a hibakeresési függvényalkalmazás, ha már nincs rá szüksége. Távoli hibakeresés használatához meg kell nyitni a Függvényalkalmazás bejövő portokat. |
-| Webes szoftvercsatornák le kell tiltani a Függvényalkalmazás | Javasolja, hogy alaposan tekintse át a Web Sockets funkciót alkalmazásokon belüli használata. A Websocket protokoll téve a különböző típusú biztonsági fenyegetéseket. |
+| App Service csak HTTPS-kapcsolaton keresztül érhető el | Javasolja, hogy csak HTTPS-kapcsolaton korlátozza a App Service elérését. |
+| Webes szoftvercsatornák le kell tiltani a webes alkalmazás| Javasolja, hogy alaposan tekintse át a webes szoftvercsatornák használatát a webalkalmazásokon belül.  A Websocket protokoll téve a különböző típusú biztonsági fenyegetéseket. |
+| Egyéni tartományok használata az zabalení Webové Aplikace | Javasolja, hogy egyéni tartományokat használjon a webalkalmazások a gyakori támadásokkal, például az adathalászattal és más DNS-mel kapcsolatos támadásokkal szembeni védelemhez. |
+| Webes alkalmazás IP-korlátozások konfigurálása | Javasolja az alkalmazás elérésére jogosult IP-címek listájának megadását.  Az IP-korlátozások használatát megvédheti webalkalmazását a gyakori támadásoktól. |
+| Ne engedélyezze az összes ("*") erőforrások hozzáférhetnek az alkalmazáshoz | Azt javasolja, hogy ne állítsa be a WEBSITE_LOAD_CERTIFICATES paramétert a következőre: " *". Ha a paramétert "* " értékre állítja, akkor az összes tanúsítvány betöltődik a webalkalmazások személyes tanúsítványtárolóba.  A minimális jogosultság elvével való visszaéléshez ez is vezethet, mert nem valószínű, hogy a hely összes tanúsítvány futásidőben hozzá kell férnie. |
+| A CORS nem engedheti meg, hogy minden erőforrás hozzáférjen az alkalmazáshoz | Javasolja, hogy csak a szükséges tartományokat engedélyezze a webalkalmazással való kommunikációhoz. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a webalkalmazáshoz való hozzáférés. |
+| A legújabb támogatott .NET-keretrendszer-webalkalmazás | Javasolja, hogy a legújabb biztonsági osztályokhoz használja a .NET-keretrendszer legújabb verzióját. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
+| A Java legújabb támogatott verzióját használja a webalkalmazáshoz | Javasolja, hogy a legújabb biztonsági osztályokhoz a Java legújabb verzióját használja. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
+| A PHP legújabb támogatott verzióját használja a webalkalmazáshoz | Javasolja, hogy a legújabb biztonsági osztályokhoz a PHP legújabb verzióját használja. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
+| [Webalkalmazási tűzfal hozzáadása](security-center-add-web-application-firewall.md) |Javasolja, hogy webes végpontok számára telepítsen webalkalmazási tűzfalat (WAF). Egy WAF javaslat jelenik meg a nyilvános IP-címek (a példányok szintjének IP-címe vagy a terheléselosztási IP-cím) számára, amely egy nyitott bejövő webes porttal (80 443) rendelkező hálózati biztonsági csoporttal rendelkezik.</br></br>Security Center azt javasolja, hogy egy WAF hozzon létre, amely segít megvédeni a webalkalmazásait a virtuális gépeken és a App Service Environmenteken. Az App Service Environment (bevezetési) egy olyan [prémium](https://azure.microsoft.com/pricing/details/app-service/) szintű szolgáltatási Azure app Service csomag, amely teljesen elkülönített és dedikált környezetet biztosít Azure app Service alkalmazások biztonságos futtatásához. A betanító szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [app Service Environment dokumentációját](../app-service/environment/intro.md).</br></br>Az alkalmazások a meglévő WAF-környezetekhez való hozzáadásával Security Center több webalkalmazást is védetté tenni. |
+| [Alkalmazásvédelem véglegesítése](security-center-add-web-application-firewall.md#finalize-application-protection) |Egy WAF konfigurációjának befejezéséhez át kell irányítani a forgalmat a WAF készülékre. Ezt a javaslatot követve a telepítés szükséges módosításokat hajtja végre. |
+| A legújabb támogatott Node.js verzió használata a webalkalmazáshoz | Javasolja, hogy a legújabb biztonsági osztályokhoz a Node. js legújabb verzióját használja. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását. |
+| A CORS nem teszi lehetővé a Függvényalkalmazás eléréséhez minden erőforrás | Javasolja, hogy csak a szükséges tartományokat engedélyezze a webalkalmazással való kommunikációhoz. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a függvény-alkalmazás elérésére. |
+| Egyéni tartományok használata az Függvényalkalmazás | Azt javasolja, hogy egyéni tartományokat használjon az olyan gyakori támadások elleni védelemhez, mint például az adathalászat és a DNS-sel kapcsolatos egyéb támadások. |
+| Függvényalkalmazás IP-korlátozások konfigurálása | Javasolja az alkalmazás elérésére jogosult IP-címek listájának megadását. Az IP-korlátozások használata gyakori támadások ellen védi a függvényalkalmazást. |
+| Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül | Javasolja, hogy csak HTTPS-kapcsolaton keresztül korlátozza a Function apps alkalmazásait. |
+| A távoli hibakeresést ki kell kapcsolni a függvényalkalmazásban | Javasolja, hogy kapcsolja ki a függvényalkalmazás hibakeresését, ha már nincs szüksége a használatára. Távoli hibakeresés használatához meg kell nyitni a Függvényalkalmazás bejövő portokat. |
+| Webes szoftvercsatornák le kell tiltani a Függvényalkalmazás | Javasolja, hogy körültekintően tekintse át a web Sockets használatát a Function apps szolgáltatásban. A Websocket protokoll téve a különböző típusú biztonsági fenyegetéseket. |
 
 
 ## <a name="next-steps"></a>További lépések

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: 9d973cb2ac210e912d93941a2f81889557379f43
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 032a907e45e007cb51357300e4bbf3c7afb40dde
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67625976"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542882"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>A Istio telepítése és használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -41,6 +41,8 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 A cikkben részletezett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt `1.11` (Kubernetes és újabb, RBAC engedélyezve), és létesítettek egy `kubectl` , a fürttel létesített kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket.
 
 Az utasítások követéséhez és a Istio telepítéséhez a [Helm][helm] szükséges. Javasoljuk, hogy a fürtben megfelelően `2.12.2` telepítse és konfigurálja a verziót. Ha segítségre van szüksége a Helm telepítéséhez, tekintse meg az [AK Helm telepítési útmutatóját][helm-install]. Az összes Istio-hüvelyt is be kell ütemezni a Linux-csomópontokon történő futtatásra.
+
+Győződjön meg arról, hogy elolvasta a [Istio teljesítményének és méretezhetőségének](https://istio.io/docs/concepts/performance-and-scalability/) dokumentációját, és Ismerje meg a Istio futtatásához szükséges további erőforrás-követelményeket az AK-fürtben. Az alapvető és a memóriára vonatkozó követelmények az adott munkaterhelés alapján változhatnak. Válasszon megfelelő számú csomópontot és virtuálisgép-méretet a telepítéshez.
 
 Ez a cikk a Istio telepítési útmutatóját több különálló lépésben elkülöníti. A végeredmény ugyanaz, mint a hivatalos Istio telepítési [útmutatója][istio-install-helm].
 

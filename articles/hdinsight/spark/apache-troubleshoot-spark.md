@@ -4,15 +4,15 @@ description: Az Apache Spark és az Azure HDInsight használatához kapcsolatos 
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.topic: troubleshooting
+ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4dc7293c00097c7a5752e29bf7c9a203cbb31a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c88136fee7a75b8f3b8e504b1ff1e6673a31bcf7
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721155"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543172"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Hibaelhárítás az Apache Spark az Azure HDInsight segítségével
 
@@ -22,7 +22,7 @@ Ismerje meg a leggyakoribb problémák és azok megoldásait az használatakor [
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-A Spark konfigurációs értékek hangolásával Apache Spark-alkalmazás OutofMemoryError kivételt elkerülése érdekében. A következő lépésekkel alapértelmezett Spark konfigurációs értékeket az Azure HDInsight: 
+A Spark konfigurációs értékei úgy állíthatók be, hogy elkerülhető legyen egy Apache Spark alkalmazás-működése OutOfMemoryError kivétel. Az alábbi lépések az alapértelmezett Spark-konfigurációs értékeket mutatják be az Azure HDInsight: 
 
 1. Fürtök listájából válassza ki **Spark2**.
 
@@ -90,7 +90,7 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: Mi az Apache Spark-alkalmazás OutofMemoryError kivétel okozza.
+1. Annak meghatározásához, hogy mely Spark-konfigurációkat kell beállítani, és milyen értékekre van szükségük, tekintse meg a következő témakört: Mi okozza Apache Spark alkalmazás működése OutOfMemoryError
 
 2. Az első olyan cellára, a Jupyter notebookot az után a **%% konfigurálása** irányelv, érvényes JSON formátumban adja meg a Spark-konfigurációkat. A tényleges értékek módosítása szükséges:
 
@@ -105,7 +105,7 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: Mi az Apache Spark-alkalmazás OutofMemoryError kivétel okozza. 
+1. Annak meghatározásához, hogy mely Spark-konfigurációkat kell beállítani, és milyen értékekre van szükségük, tekintse meg a következő témakört: Mi okozza Apache Spark alkalmazás működése OutOfMemoryError 
 
 2. Küldje el a Livy-, Spark-alkalmazás REST-ügyfél, például a cURL használatával. Használjon az alábbihoz hasonló parancsot. A tényleges értékek módosítása szükséges:
 
@@ -121,7 +121,7 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: Mi az Apache Spark-alkalmazás OutofMemoryError kivétel okozza.
+1. Annak meghatározásához, hogy mely Spark-konfigurációkat kell beállítani, és milyen értékekre van szükségük, tekintse meg a következő témakört: Mi okozza Apache Spark alkalmazás működése OutOfMemoryError
 
 2. Indítsa el a spark-shell az alábbihoz hasonló parancs használatával. Szükség szerint módosítsa a konfiguráció a tényleges érték: 
 
@@ -133,91 +133,16 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 [A HDInsight-fürtökön az Apache Spark-feladat küldése](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
+## <a name="next-steps"></a>További lépések
 
-## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>Az Apache Spark-alkalmazás OutofMemoryError kivételt mi okozza?
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-### <a name="detailed-description"></a>Részletes leírás
+* A [Spark memória-kezelési áttekintése](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview).
 
-A Spark-alkalmazás meghibásodik, a nem kezelt kivételek a következő típusú:
+* [A Spark-alkalmazás hibakeresése a HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)-fürtökön.
 
-```apache
-ERROR Executor: Exception in task 7.0 in stage 6.0 (TID 439) 
+* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-java.lang.OutOfMemoryError 
-    at java.io.ByteArrayOutputStream.hugeCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.grow(Unknown Source) 
-    at java.io.ByteArrayOutputStream.ensureCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.write(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.drain(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject0(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject(Unknown Source) 
-    at org.apache.spark.serializer.JavaSerializationStream.writeObject(JavaSerializer.scala:44) 
-    at org.apache.spark.serializer.JavaSerializerInstance.serialize(JavaSerializer.scala:101) 
-    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:239) 
-    at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) 
-    at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) 
-    at java.lang.Thread.run(Unknown Source) 
-```
+* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-```apache
-ERROR SparkUncaughtExceptionHandler: Uncaught exception in thread Thread[Executor task launch worker-0,5,main] 
-
-java.lang.OutOfMemoryError 
-    at java.io.ByteArrayOutputStream.hugeCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.grow(Unknown Source) 
-    at java.io.ByteArrayOutputStream.ensureCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.write(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.drain(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject0(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject(Unknown Source) 
-    at org.apache.spark.serializer.JavaSerializationStream.writeObject(JavaSerializer.scala:44) 
-    at org.apache.spark.serializer.JavaSerializerInstance.serialize(JavaSerializer.scala:101) 
-    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:239) 
-    at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) 
-    at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) 
-    at java.lang.Thread.run(Unknown Source) 
-```
-
-### <a name="probable-cause"></a>Lehetséges ok
-
-A kivétel legvalószínűbb oka az, hogy a nem elegendő halommemória a Java virtuális gépekhez (JVMs) van lefoglalva. Ezek JVMs vannak vagy illesztőprogramként indít el illesztőprogramokat a Spark-alkalmazás részeként. 
-
-### <a name="resolution-steps"></a>A megoldás lépései
-
-1. Határozza meg a maximális méretet, az adatok a Spark alkalmazás kezeli. A bemeneti adatok az előállított a bemeneti adatok átalakításával keletkező köztes adatok és a kimeneti adatokat, amelyek jön létre, amikor az alkalmazás további formálja át a köztes adatok maximális mérete alapján egy találgatásos teheti meg. Ez a folyamat az ismétlődő lehet, ha nem választja ki egy hivatalos kezdeti becslésre. 
-
-2. Győződjön meg arról, hogy a HDInsight-fürtöt fog használni, memória és a Spark-alkalmazás maggal elegendő erőforrással rendelkezik-e. Megadhatja, hogy ez a fürt metrikáit ismertető szakaszban a YARN felhasználói felületén, az értékek megtekintésével **felhasznált memória** vs. **Teljes memória**, és **használatban lévő virtuális magok** vs. **Virtuális magok összesen**.
-
-3. Állítsa be a következő Spark konfigurációk megfelelő értékekre, amely nem haladhatja meg a rendelkezésre álló memória és magok 90 %-át. Az értékeket is a Spark-alkalmazás memóriakövetelményei belül kell lennie: 
-
-    ```apache
-    spark.executor.instances (Example: 8 for 8 executor count) 
-    spark.executor.memory (Example: 4g for 4 GB) 
-    spark.yarn.executor.memoryOverhead (Example: 384m for 384 MB) 
-    spark.executor.cores (Example: 2 for 2 cores per executor) 
-    spark.driver.memory (Example: 8g for 8GB) 
-    spark.driver.cores (Example: 4 for 4 cores)   
-    spark.yarn.driver.memoryOverhead (Example: 384m for 384MB) 
-    ```
-
-    A teljes memória, összes végrehajtóval által használt számítása: 
-    
-    ```apache
-    spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
-    ```
-   Az illesztőprogram által használt a teljes memória számítása:
-    
-    ```apache
-    spark.driver.memory + spark.yarn.driver.memoryOverhead
-    ```
-
-### <a name="additional-reading"></a>További olvasnivaló
-
-- [Az Apache Spark memória – áttekintés](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [Egy HDInsight-fürtön egy Apache Spark-alkalmazás hibakeresése](https://web.archive.org/web/20190112152909/https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
-
-
-### <a name="see-also"></a>Lásd még:
-[Hibaelhárítás az Azure HDInsight segítségével](../../hdinsight/hdinsight-troubleshoot-guide.md)
+* Ha további segítségre van szüksége, támogatási kérést küldhet a Azure Portaltól [](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

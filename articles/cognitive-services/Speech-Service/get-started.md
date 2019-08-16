@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: a8797afdfacfcfc75445c7f35083aeb9bb847ac1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 41d12013ec7eaa4e2aae59e1b366cc511a41f749
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562927"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535110"
 ---
 # <a name="try-speech-services-for-free"></a>Beszédszolgáltatások ingyenes kipróbálása
 
@@ -38,7 +38,7 @@ Regisztráció a 30 napos ingyenes próbaverziójára:
 
    ![Beszéd szolgáltatások lap](media/index/try-speech-api-free-trial1.png)
 
-1. A **Speech Services**területen válassza az **API-kulcs** beolvasása gombot.
+1. A **Speech Services**területen válassza az **API-kulcs**beolvasása elemet.
 
    ![API-kulcs](media/index/try-speech-api-free-trial2.png)
 
@@ -48,7 +48,7 @@ Regisztráció a 30 napos ingyenes próbaverziójára:
 
 1. Jelentkezzen be a Microsoft, a Facebook, a LinkedIn, vagy a GitHub-fiók használatával.
 
-    Regisztrálhat egy ingyenes Microsoft-fiókot a [Microsoft fiókportál](https://account.microsoft.com/account). Első lépésként kattintson **Bejelentkezés Microsoft-fiókkal** és, ha a rendszer kéri, hogy jelentkezzen be, kattintson a **hozzon létre egyet.** A lépésekkel hozhat létre, és ellenőrizze az új Microsoft-fiókjával.
+    Regisztrálhat egy ingyenes Microsoft-fiókot a [Microsoft fiókportál](https://account.microsoft.com/account). Első lépésként válassza a **Bejelentkezés Microsoft-fiókkal** lehetőséget, majd amikor a rendszer kéri a bejelentkezést, válassza a **Létrehozás lehetőséget.** A lépésekkel hozhat létre, és ellenőrizze az új Microsoft-fiókjával.
 
 Miután bejelentkezett, próbálja meg a Cognitive Services, az ingyenes próbaverzió kezdődik. A megjelenő képernyőn látható weblapon, amelyhez jelenleg rendelkezik próba-előfizetések az Azure Cognitive Services szolgáltatásokat sorolja fel. Két előfizetési kulcs szerepel a **Speech Services**mellett. Használhatja az egyiket sem az alkalmazásokban.
 
@@ -59,9 +59,9 @@ Miután bejelentkezett, próbálja meg a Cognitive Services, az ingyenes próbav
 
 Új Azure-fiókok jóváírás 200 USD értékű szolgáltatás, amely legfeljebb 30 napig érhető el. Ezt a kreditet a Speech Services további megismeréséhez vagy az alkalmazásfejlesztés megkezdéséhez használhatja.
 
-Regisztráljon egy új Azure-fiókkal, keresse fel a [oldala az Azure-előfizetési](https://azure.microsoft.com/free/ai/), kattintson a **ingyenes próba megkezdése,** és az új Azure-fiók létrehozása a Microsoft-fiókjával.
+Ha új Azure-fiókot szeretne regisztrálni, lépjen az [Azure regisztrációs oldalára](https://azure.microsoft.com/free/ai/), válassza az **ingyenes indítás lehetőséget,** és hozzon létre egy új azure-fiókot a Microsoft-fiók használatával.
 
-Regisztrálhat egy ingyenes Microsoft-fiókot a [Microsoft fiókportál](https://account.microsoft.com/account). Első lépésként kattintson **Bejelentkezés Microsoft-fiókkal** és, ha a rendszer kéri, hogy jelentkezzen be, kattintson a **hozzon létre egyet.** A lépésekkel hozhat létre, és ellenőrizze az új Microsoft-fiókjával.
+Regisztrálhat egy ingyenes Microsoft-fiókot a [Microsoft fiókportál](https://account.microsoft.com/account). Első lépésként válassza a **Bejelentkezés Microsoft-fiókkal** lehetőséget, majd amikor a rendszer kéri a bejelentkezést, válassza a **Létrehozás lehetőséget.** A lépésekkel hozhat létre, és ellenőrizze az új Microsoft-fiókjával.
 
 Az Azure-fiók létrehozása után kövesse a következő szakaszban ismertetett lépéseket a Speech Services-előfizetés elindításához.
 
@@ -90,7 +90,7 @@ A Speech Services-erőforrások (ingyenes vagy fizetős szintek) hozzáadása az
    * Az új erőforrás neve. A név segítségével megkülönböztetésére, amelyek ugyanazt a szolgáltatást több előfizetést.
    * Válassza ki az Azure-előfizetést, amelyhez az új erőforrás a határozza meg, hogy a díjak számlázása van társítva.
    * Válassza ki [](regions.md) azt a régiót, ahol az erőforrást használni szeretné.
-   * Válassza ki, vagy egy ingyenes vagy fizetős tarifacsomagra. Kattintson a **díjszabási részletek megtekintése** kapcsolatban az egyes szintek díjszabását és a használati kvótákat.
+   * Válassza ki, vagy egy ingyenes vagy fizetős tarifacsomagra. Az egyes csomagokra vonatkozó díjszabási és használati kvótákkal kapcsolatos teljes információk megtekintéséhez válassza a **teljes díjszabási részletek megtekintése** lehetőséget.
    * Hozzon létre egy új erőforráscsoportot, beszéd ehhez az előfizetéshez, vagy az előfizetés hozzárendelése egy meglévő erőforráscsoportot. Erőforráscsoportokat tarthatja rendezve különböző Azure-előfizetéseit.
    * A jövőben az előfizetés hozzáférés kényelmes, válassza ki a **rögzítés az irányítópulton** jelölőnégyzetet.
    * Válassza ki **létrehozása.**
@@ -101,7 +101,7 @@ A Speech Services-erőforrások (ingyenes vagy fizetős szintek) hozzáadása az
 
      ![A rövid útmutató panel](media/index/try-speech-api-create-speech5.png)
 
-1. Alatt **rövid**, kattintson a **kulcsok** az előfizetési kulcsok megjelenítése 1. lépés alatti hivatkozásra. Minden előfizetési csomaghoz tartozik két kulcs; mindkét kulcsot is használhatja az alkalmazásban. Válassza ki a gomb mellett minden egyes kulcs másolja a vágólapra a Beillesztés elhelyezni a kódban.
+1. Agyors üzembe helyezés szakaszban válassza az 1. lépés alatt lévő **kulcsok** hivatkozást az előfizetési kulcsok megjelenítéséhez. Minden előfizetési csomaghoz tartozik két kulcs; mindkét kulcsot is használhatja az alkalmazásban. Válassza ki a gomb mellett minden egyes kulcs másolja a vágólapra a Beillesztés elhelyezni a kódban.
 
 > [!NOTE]
 > Standard szintű előfizetés korlátlan számú egy vagy több régióban hozhat létre. Azonban csak egy ingyenes szintű előfizetést hozhat létre. Modell-üzembehelyezések az ingyenes szintet, amely 7 napig marad a fel nem használt automatikusan decomissioned lesz.

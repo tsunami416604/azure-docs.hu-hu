@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819b2f3c54d97639eceae9aed60fdd5da2e7b3ef
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 572371f4abec413be5a2320c7d69d8126f26924f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608182"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533052"
 ---
 # <a name="what-are-baseline-policies"></a>Mik azok az alapkonfigurációs házirendek?
 
@@ -41,7 +41,7 @@ Ezeknek a szabályzatoknak mind a négye befolyásolja az örökölt hitelesít�
 
 A rendszergazdai fiókok teljesítményének és hozzáférésének köszönhetően különleges gondossággal kezelheti őket. A rendszerjogosultságú fiókok védelmének egyik gyakori módszere, ha a bejelentkezéshez a fiókok ellenőrzésének erősebb formáját igényli. Azure Active Directory az Azure multi-Factor Authentication regisztrálásához és használatához a rendszergazdának be kell szereznie egy erősebb fiók ellenőrzését.
 
-[Az MFA a rendszergazdák számára (előzetes verzió)](howto-baseline-protect-administrators.md) olyan alapszintű szabályzat, amely a következő címtárbeli szerepkörökhöz szükséges többtényezős hitelesítést (MFA) igényli, amely a legalkalmasabb Azure ad-szerepköröknek tekintendő:
+Az [MFA a rendszergazdák számára (előzetes verzió)](howto-baseline-protect-administrators.md) olyan alapszintű szabályzat, amely a következő címtárbeli szerepkörökhöz szükséges többtényezős HITELESÍTÉST (MFA) igényli, amely a legalkalmasabb Azure ad-szerepköröknek tekintendő:
 
 * Globális rendszergazda
 * SharePoint-rendszergazda
@@ -52,7 +52,7 @@ A rendszergazdai fiókok teljesítményének és hozzáférésének köszönhet�
 * Számlázási adminisztrátor
 * Felhasználói adminisztrátor
 
-Ha a szervezete ezeket a fiókokat parancsfájlokban vagy kódban használja, érdemes lehet a [felügyelt identitásokkal](../managed-identities-azure-resources/overview.md)helyettesíteni őket.
+Ha a szervezete ezeket a fiókokat parancsfájlokban vagy kódban használja, érdemes lehet a [felügyelt identitásokkal](../managed-identities-azure-resources/overview.md)helyettesíteni őket.
 
 ### <a name="end-user-protection-preview"></a>Végfelhasználói védelem (előzetes verzió)
 
@@ -87,7 +87,7 @@ Az emelt szintű jogosultságok elleni védelem érdekében az MFA-t **a Service
 
 Alapházirend engedélyezése:
 
-1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
+1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory** > a**feltételes hozzáférést**.
 1. A szabályzatok listájában válassza ki az engedélyezni kívánt alaptervet.
 1. **Engedélyezze a házirend engedélyezése beállítást** **a**következőre:.

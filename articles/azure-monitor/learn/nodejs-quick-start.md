@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: d92a96f928c859fba056f1d98c07ee4852aad0f1
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: f7c8e4e240d4278257da9df5cea67a7e55eb1019
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68002751"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543072"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>A Node.js-webalkalmazás monitorozásának indítása
 
@@ -56,7 +56,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
    | **Alkalmazás típusa** | Node.js-alkalmazás | A figyelt alkalmazás típusa |
    | **Location** | East US | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-2. Kattintson a **Create** (Létrehozás) gombra.
+2. Kattintson a **Létrehozás** gombra.
 
 ## <a name="configure-app-insights-sdk"></a>Az App Insights SDK konfigurálása
 
@@ -88,11 +88,11 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    ![Az Application Insights áttekintése menü](./media/nodejs-quick-start/4overview.png)
 
-2. Kattintson az **Alkalmazástérkép** elemre az alkalmazás-összetevők függőségi viszonyait mutató vizuális elrendezés megjelenítéséhez. Minden egyes összetevőnél megjelennek a KPI-k, például a terhelés, a teljesítmény, a hibák és a riasztások.
+2. Válassza ki az alkalmazás-összetevők közötti függőségi kapcsolatok vizualizációs elrendezéséhez tartozó **Application Map** elemet. Minden egyes összetevőnél megjelennek a KPI-k, például a terhelés, a teljesítmény, a hibák és a riasztások.
 
    ![Alkalmazástérkép](./media/nodejs-quick-start/5appmap.png)
 
-3. Kattintson az **app Analytics** ikon ![alkalmazás-Térkép ikon](./media/nodejs-quick-start/006.png) **nézet az elemzés**elemre.  Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
+3. Válassza az **app Analytics** ikon ![alkalmazás-hozzárendelés](./media/nodejs-quick-start/006.png) ikon **nézetét az elemzés elemnél**.  Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
    ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/nodejs-quick-start/6analytics.png)
 
@@ -122,7 +122,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
    </script>
    ```
 
-5. A bal oldali kattintson a **metrikák**elemre. Az erőforrás állapotának és kihasználtságának vizsgálatához használja a metrikák Explorert. Az **Új diagram hozzáadása** gombra kattintva további egyéni nézeteket adhat hozzá, a **Szerkesztés** gombra kattintva pedig módosíthatja a meglévő diagramok típusát, magasságát, színpalettáját, csoportosításait és metrikáit. Létrehozhat például egy olyan diagramot, amely megjeleníti a böngésző átlagos betöltési idejét úgy, hogy kiveszi a "böngésző oldal betöltési ideje" lehetőséget a metrikák legördülő menüből és az "AVG" összesítésből való kiválasztásával. Ha többet szeretne megtudni az Azure Metrikaböngésző-ról, látogasson el [az azure Metrikaböngésző](../../azure-monitor/platform/metrics-getting-started.md)használatába.
+5. A bal oldalon válassza a **metrikák**lehetőséget. Az erőforrás állapotának és kihasználtságának vizsgálatához használja a metrikák Explorert. Az **új diagram hozzáadása** lehetőség kiválasztásával további egyéni nézeteket hozhat létre, vagy a **Szerkesztés** gombra kattintva módosíthatja a meglévő diagramtípust, a magasságot, a színpalettát, a csoportosításokat és a metrikákat. Létrehozhat például egy olyan diagramot, amely megjeleníti a böngésző átlagos betöltési idejét, ha a mérőszámok legördülő menüből kiválasztja a "böngésző oldal betöltési ideje" lehetőséget, és az összesítést az "AVG" értékre. Ha többet szeretne megtudni az Azure Metrikaböngésző-ról, látogasson el [az azure Metrikaböngésző](../../azure-monitor/platform/metrics-getting-started.md)használatába.
 
    ![Kiszolgálómetrikák diagram](./media/nodejs-quick-start/8metrics.png)
 
@@ -132,8 +132,8 @@ A Node.js monitorozásával kapcsolatos további információkért tekintse át 
 
 Ha végzett a teszteléssel, törölheti az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez kövesse az alábbi lépéseket.
 
-1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre.
-2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
+1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget, majd válassza a **myResourceGroup**lehetőséget.
+2. Az erőforráscsoport lapon válassza a **Törlés**lehetőséget, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

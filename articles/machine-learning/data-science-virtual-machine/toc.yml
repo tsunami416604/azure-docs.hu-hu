@@ -19,9 +19,7 @@
       href: dsvm-ubuntu-intro.md
     - name: CentOS rendszerű DSVM létrehozása
       href: linux-dsvm-intro.md
-    - name: Mélytanulási virtuális gép létrehozása
-      href: provision-deep-learning-dsvm.md
-    - name: Geo AI DSVM létrehozása
+    - name: Mesterséges intelligenciát használó geo-adatelemzési virtuális gép létrehozása
       href: provision-geo-ai-dsvm.md
 - name: Alapelvek
   items:

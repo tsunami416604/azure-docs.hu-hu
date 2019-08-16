@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3594d9670e8fb94b053479352fb88997caa16db6
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 7de3dd016700d10ef5fac97fada5cd23c2f4e1cb
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016480"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558314"
 ---
 # <a name="execute-r-script"></a>R-szkript végrehajtása
 
@@ -65,6 +65,8 @@ azureml_main <- function(dataframe1, dataframe2){
   return(list(dataset1=dataframe1, dataset2=dataframe2))
 }
 ```
+ > [!NOTE]
+    > Győződjön meg arról, hogy a csomag már létezik a telepítés előtt, hogy elkerülje az ismételt telepítést. Például `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` a fenti mintakód esetében. Előfordulhat, hogy a telepítés megismétlése webszolgáltatási kérés időtúllépését okozhatja.     
 
 ## <a name="how-to-configure-execute-r-script"></a>Az R-szkript végrehajtásának konfigurálása
 

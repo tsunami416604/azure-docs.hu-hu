@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: f93b74c57d45ddfc7b47beff7852d183a93df00e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 81e1104d71706194ba1c54e42722b4508df09091
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856155"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534841"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Hozzon létre, és az Azure Machine Learning szolgáltatás munkaterületek kezelése
 
@@ -27,6 +27,17 @@ Ebben a cikkben azt fogjuk létrehozása, megtekintése és törlése [ **Azure 
 Munkaterület létrehozásához Azure-előfizetés szükséges. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
+
+### <a name="download-a-configuration-file"></a>Konfigurációs fájl letöltése
+
+1. Ha [Jegyzetfüzet virtuális gépet](tutorial-1st-experiment-sdk-setup.md#azure)hoz létre, ugorja át ezt a lépést.
+
+1. Ha azt tervezi, hogy a munkaterületre hivatkozó helyi környezet programkódját használja, válassza a munkaterület **Áttekintés** szakaszában található **config. JSON letöltése** lehetőséget.  
+
+   ![A config. JSON fájl letöltése](./media/how-to-manage-workspace/configure.png)
+   
+   Helyezze a fájlt a címtár-struktúrába a Python-szkriptekkel vagy a Jupyter notebookokkal. Ez lehet ugyanabban a címtárban, egy *. azureml*nevű alkönyvtár vagy egy szülő könyvtárban. Jegyzetfüzet-alapú virtuális gép létrehozásakor a rendszer ezt a fájlt adja hozzá a virtuális gép megfelelő könyvtárába.
+
 
 ## <a name="view"></a>Munkaterület megtekintése
 

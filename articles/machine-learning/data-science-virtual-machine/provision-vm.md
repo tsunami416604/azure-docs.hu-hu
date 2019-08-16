@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: vijetaj
-ms.openlocfilehash: dfb3e9f6390d4c80b8f3c37b87f2659c671fa823
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 488dc7db01bd865268e143b68cdaccd989010912
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591823"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534928"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Windows Data Science Virtual Machine kiépítése az Azure-ban
 
@@ -48,6 +48,7 @@ A DSVM a következő eszközöket tartalmazza:
   * [Apache Drill](https://drill.apache.org/) – egy séma nélküli SQL-lekérdezési motor Apache Hadoop-, NoSQL-és felhőalapú tároláshoz. A nosql-alapú, és a standard szintű BI eszközök, Power BI, a Microsoft Excel és a Tableau fájlok ODBC, JDBC és felületek támogatja.
 * Az R és Python for kódtárak használata az Azure Machine Learning és más Azure-szolgáltatások
 * A Git, beleértve a Git bash eszközt, például a GitHub és az Azure DevOps forráskódtárházak dolgozhat. A Git nyújt számos népszerű Linux parancssor eszközök, amelyek elérhetők mind a Git Bash és a egy parancssort. Példák awk, a csökkentésének, a perl, a grep, a keresés, a wget és a curl.
+* Fejlesztői eszközök és szerkesztők (RStudio, Notebookshoz)
 
 ### <a name="about-data-science"></a>Tudnivalók az adattudományról
 

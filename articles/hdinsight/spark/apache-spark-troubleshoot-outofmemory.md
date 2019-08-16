@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/02/2019
-ms.openlocfilehash: a8351f13f015ca53e72bbff41152e46690fdc7bc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 08/15/2019
+ms.openlocfilehash: f6ff654b8e51dfaf2697df69c7f220d41346c2bc
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855730"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543481"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Működése OutOfMemoryError-kivételek az Azure HDInsight Apache Spark
 
@@ -53,13 +53,13 @@ java.lang.OutOfMemoryError
 
 ### <a name="cause"></a>Ok
 
-A kivétel legvalószínűbb oka az, hogy nincs elég halom memória. A Spark-alkalmazás végrehajtók vagy illesztőprogramokként való futtatásakor elegendő Java Virtual Machines-(JVM-) halom memóriát igényel.
+A kivétel legvalószínűbb oka az, hogy a nem elegendő halommemória a Java virtuális gépekhez (JVMs) van lefoglalva. Ezek a JVMs végrehajtók vagy illesztőprogramokként lesznek elindítva a Apache Spark alkalmazás részeként.
 
 ### <a name="resolution"></a>Megoldás:
 
 1. Határozza meg a Spark-alkalmazás által kezelendő adatok maximális méretét. Becsülje meg a méretet a bemeneti adatok, a bemeneti adatok átalakításával előállított köztes adatok és a köztes adatok további átalakításával létrehozott kimeneti adatok maximális mérete alapján. Ha a kezdeti becslés nem elegendő, növelje a méretet kis mértékben, és ismételje meg a memória hibáit.
 
-1. Győződjön meg arról, hogy a használni kívánt HDInsight-fürtnek elegendő memória-erőforrás áll a rendelkezésére, és elegendő maggal rendelkezik a Spark-alkalmazás elhelyezéséhez. Ennek meghatározásához a fürt YARN felhasználói felületén, a fürt metrikáit ismertető szakaszban tekintse meg a felhasznált memória és a teljes memória, valamint a használatban lévő virtuális magok és az összes virtuális mag értékét.
+1. Győződjön meg arról, hogy a használni kívánt HDInsight-fürtnek elegendő memória-erőforrás áll a rendelkezésére, és elegendő maggal rendelkezik a Spark-alkalmazás elhelyezéséhez. Ezt úgy határozhatja meg, ha megtekinti a fürt FONÁL FELÜLETének fürt metrikák szakaszát a **felhasznált memória** és a A **teljes memória** és a **virtuális mag használata** **Virtuális magok összesen**.
 
     ![a fonal alapmemóriájának nézete](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018, seo-java-july2019
-ms.openlocfilehash: 7172cd01ca881ec3027854444107b0744b65feb3
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 7deb9d2cf16aa82de7ce4ea163652c2936819063
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489790"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533241"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-java"></a>Gyors útmutató: Azure Search index létrehozása javában
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ Az alábbi lista a példához kapcsolódó fájlokat ismerteti.
 A Azure Search összes REST API hívásához meg kell adnia a szolgáltatás URL-címét `api-key`és a-t. 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Az ugrás sávon kattintson a **Keresési szolgáltatás** elemre, hogy megjelenjen az előfizetéséhez kapcsolódó összes Azure Search szolgáltatás.
+2. A Jump (keresősáv) sávon válassza a **Search Service (keresési szolgáltatás** ) lehetőséget az előfizetéshez kiépített Azure Search szolgáltatások listázásához.
 3. Válassza ki a használni kívánt szolgáltatást.
 4. A szolgáltatás irányítópultján megjelennek az alapvető információkat tartalmazó csempék, valamint az adminisztrációs kulcsok eléréséhez szükséges kulcs ikon.
    
@@ -69,20 +69,20 @@ A Azure Search összes REST API hívásához meg kell adnia a szolgáltatás URL
 
 ## <a name="download-the-sample-files"></a>A mintafájlok letöltése
 1. Lépjen a GitHubon található [search-node-indexer-demo](https://github.com/Azure-Samples/search-java-indexer-demo) elemre.
-2. Kattintson a **Download ZIP** (ZIP-fájl letöltése) elemre, mentse a .zip-fájlt a lemezre, és bontsa ki a benne található összes fájlt. A Java-munkaterületére csomagolja ki a fájlokat, hogy később könnyebben megtalálja a projektet.
+2. Válassza a **zip letöltése**lehetőséget, mentse a. zip fájlt a lemezre, majd bontsa ki a benne található összes fájlt. A Java-munkaterületére csomagolja ki a fájlokat, hogy később könnyebben megtalálja a projektet.
 3. A mintafájlok csak olvashatók. Kattintson a jobb gombbal a mappa tulajdonságaira, és törölje a csak olvasható attribútumot.
 
 Minden további fájlmódosítás és utasításfuttatás az ebben a mappában lévő fájlokra vonatkozóan fog történni.  
 
 ## <a name="import-project"></a>Projekt importálása
-1. Az Eclipse-ben válassza ki a **File** (Fájl)  > **Import** (Importálás)  > **General** (Általános)  > **Existing Projects into Workspace** (Meglévő projekteket a munkaterületre) lehetőséget.
+1. Az Eclipse-ben válassza a **fájl** > **általános** > **meglévő projektek** **importálása** > munkaterületre lehetőséget.
    
     ![Meglévő projekt importálását bemutató képernyőfelvétel][4]
 2. A **Select root directory** (Gyökérkönyvtár kiválasztása) ablakban keresse meg a mintafájlokat tartalmazó mappát. Válassza ki a .project mappát tartalmazó mappát. A projektnek kiválasztott elemként meg kell jelennie a **Projects** (Projektek) listán.
    
     ![Képernyőfelvétel: a projektek listájának megjelenítése a projektek importálása ablakban][12]
-3. Kattintson a **Befejezés**gombra.
-4. A **Project Explorer** (Projektböngésző) segítségével megtekintheti és szerkesztheti a fájlokat. Ha az még nincs megnyitva, kattintson a **Window** (Ablak)  > **Show View** (Nézet megjelenítése)  > **Project Explorer** (Projektböngésző) lehetőségre, vagy nyissa meg a megfelelő parancsikonnal.
+3. Válassza a **Finish** (Befejezés) elemet.
+4. A **Project Explorer** (Projektböngésző) segítségével megtekintheti és szerkesztheti a fájlokat. Ha még nincs megnyitva, válassza az **ablak** > **Megjelenítés nézet** > **Project Explorer** lehetőséget, vagy a parancsikon segítségével nyissa meg.
 
 ## <a name="configure-the-service-url-and-api-key"></a>Konfigurálja a szolgáltatás URL-címét és`api-key`
 1. A **Project Explorerben**kattintson duplán a **config. properties** elemre a kiszolgáló nevét és `api-key`a-t tartalmazó konfigurációs beállítások szerkesztéséhez.
@@ -102,13 +102,13 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
    
     ![Képernyőfelvétel: a futásidejű környezet ablakának helye, ahol kiválaszthatja az Apache Tomcat verzióját][7]
 6. A következő oldalon adja meg a Tomcat telepítési könyvtárát. Windows rendszerű számítógépeken ez valószínűleg a következő lesz: C:\Program Files\Apache Software Foundation\Tomcat *verzió*.
-7. Kattintson a **Befejezés**gombra.
+7. Válassza a **Finish** (Befejezés) elemet.
 8. Válassza ki a **Window** (Ablak)  > **Preferences** (Beállítások)  > **Java** > **Installed JREs** (Telepített JRE-k)  > **Add** (Hozzáadás) lehetőséget.
 9. Az **Add JRE** (JRE hozzáadása) panelen válassza ki a **Standard VM** elemet.
 10. Kattintson a **Tovább** gombra.
-11. A JRE Definition (JRE_definíció) ablakban, a JRE kezdőlapján kattintson a **Directory** (Könyvtár) elemre.
+11. A JRE-definícióban, a JRE kezdőlapján válassza a **címtár**lehetőséget.
 12. Navigáljon a **Program Files** (Programfájlok)  > **Java** könyvtárra, és válassza ki a korábban telepített JDK-t. Fontos, hogy a JDK-t JRE-ként válassza ki.
-13. Az Installed JREs (Telepített JRE-k) panelen válassza ki a **JDK** elemet. A beállításainak az alábbi képernyőfelvételhez hasonlóan kell kinéznie.
+13. A telepített JREs válassza ki a **JDK**-t. A beállításainak az alábbi képernyőfelvételhez hasonlóan kell kinéznie.
     
     ![Képernyőfelvétel a JDK kiválasztásáról a telepített JRE-ként][9]
 14. Ha az alkalmazást egy külső böngészőablakban szeretné megnyitni, válassza ki a **Window** (Ablak)  > **Web Browser** (Webböngésző)  > **Internet Explorer** lehetőséget. Külső böngészővel fokozhatja a webalkalmazás használatának élményét.
@@ -118,10 +118,10 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
 Ezzel befejezte a konfigurálási feladatokat. A következő lépésben felépíti és futtatja a projektet.
 
 ## <a name="build-the-project"></a>A projekt felépítése
-1. A projekt konfigurálásához a Project Explorer (Projektböngésző) nézetben kattintson a jobb gombbal a projekt nevére, és válassza ki a **Run As** (Futtatás másként)  > **Maven build...** elemet.
+1. A Project Explorerben kattintson a jobb gombbal a projekt nevére, és válassza a **Futtatás mint** > **Maven Build** lehetőséget a projekt konfigurálásához.
    
-    ![Képernyőfelvétel: a Maven-Build kiválasztása a Project Explorer ablakában][10]
-2. Az Edit Configuration (Konfiguráció szerkesztése) panelen a Goals (Célok) mezőbe írja be a „clean install” („tiszta telepítés”) kifejezést, majd kattintson a **Run** (Futtatás) gombra.
+    ![Képernyőfelvétel: a Maven Build kiválasztása a Project Explorer ablakában][10]
+2. A konfiguráció szerkesztése területen a célok területen adja meg a "telepítés törlése" kifejezést, majd válassza a **Futtatás**lehetőséget.
 
 Az állapotüzenetek kimenetként a konzolablakban jelennek meg. A BUILD SUCCESS (Sikeres felépítés) üzenetnek kell megjelennie, amely azt jelzi, hogy a projekt hibák nélkül felépült.
 
@@ -131,19 +131,19 @@ Utolsó lépésként futtassa le az alkalmazást egy helyi kiszolgáló futtató
 Ha az Eclipse keretrendszerben még nem határozta meg egy kiszolgáló futtatókörnyezetét, először azt kell elvégeznie.
 
 1. A Project Explorer (Projektböngésző) nézetben bontsa ki a **WebContent** elemet.
-2. Kattintson a jobb gombbal a **Search.jsp** fájlra, majd kattintson a  > **Run As** (Futtatás másként)  > **Run on Server** (Futtatás a kiszolgálón) elemre. Válassza ki az Apache Tomcat kiszolgálót, majd kattintson a **Run** (Futtatás) gombra.
+2. Kattintson a jobb gombbal a **Search.jsp** fájlra, majd kattintson a  > **Run As** (Futtatás másként)  > **Run on Server** (Futtatás a kiszolgálón) elemre. Válassza ki az Apache Tomcat-kiszolgálót, majd válassza a **Futtatás**lehetőséget.
 
 > [!TIP]
-> Ha nem alapértelmezett munkaterületen tárolja a projektet, a kiszolgálóindítási hiba elkerülése érdekében úgy kell módosítania a **Run Configuration** (Konfiguráció futtatása) beállítást, hogy a projekt helyére mutasson. A Project Explorer (Projektböngésző) nézetben kattintson a jobb gombbal a **Search.jsp** fájlra, majd kattintson a  > **Run As** (Futtatás másként)  > **Run Configurations** (Konfigurációk futtatása) elemre. Válassza ki az Apache Tomcat kiszolgálót. Kattintson az **Arguments** (Argumentumok) elemre. A projektet tartalmazó mappa beállításához kattintson a **Workspace** (Munkaterület) vagy a **File System** (Fájlrendszer) elemre.
+> Ha nem alapértelmezett munkaterületen tárolja a projektet, a kiszolgálóindítási hiba elkerülése érdekében úgy kell módosítania a **Run Configuration** (Konfiguráció futtatása) beállítást, hogy a projekt helyére mutasson. A Project Explorer (Projektböngésző) nézetben kattintson a jobb gombbal a **Search.jsp** fájlra, majd kattintson a  > **Run As** (Futtatás másként)  > **Run Configurations** (Konfigurációk futtatása) elemre. Válassza ki az Apache Tomcat kiszolgálót. Válasszaaz argumentumok lehetőséget. A projektet tartalmazó mappa beállításához válassza a **munkaterület** vagy a **fájlrendszer** lehetőséget.
 > 
 > 
 
 Az alkalmazás futtatásakor egy keresőmezőt tartalmazó böngészőablaknak kell megjelennie, ahová beírhatja a kifejezéseket.
 
-Várjon körülbelül egy percet, mielőtt a **Search** (Keresés) gombra kattintana, hogy a szolgáltatásnak legyen elég ideje az index létrehozására és betöltésére. Ha a HTTP 404 hibaüzenet jelenik meg, csak egy kicsit tovább kell várnia az újrapróbálkozás előtt.
+Várjon körülbelül egy percet, mielőtt kiválasztja a **keresést** , hogy a szolgáltatás időt adjon az index létrehozásához és betöltéséhez. Ha a HTTP 404 hibaüzenet jelenik meg, csak egy kicsit tovább kell várnia az újrapróbálkozás előtt.
 
 ## <a name="search-on-usgs-data"></a>USGS-adatok keresése
-Az USGS-adatkészlet a Rhode Island államra vonatkozó rekordokat tartalmaz. Ha rákattint egy üres keresőmező **Search** (Keresés) gombjára, megjelenik az 50 legfontosabb bejegyzés; ez az alapértelmezett viselkedés.
+Az USGS-adatkészlet a Rhode Island államra vonatkozó rekordokat tartalmaz. Ha a **Keresés** üres keresőmezőben lehetőséget választja, akkor a legfontosabb 50 bejegyzést kapja meg, amely az alapértelmezett.
 
 A keresett kifejezés beírása elindítja a keresőmotort. Próbáljon meg a helyhez kötődő nevet beírni. „Roger Williams” volt Rhode Island első kormányzója. Számos parkot, épületet és iskolát neveztek el róla.
 

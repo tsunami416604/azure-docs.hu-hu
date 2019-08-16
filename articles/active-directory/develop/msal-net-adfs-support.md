@@ -3,7 +3,7 @@ title: AD FS támogatás a .NET-hez készült Microsoft Authentication Library-b
 description: Ismerje meg a .NET-hez készült Microsoft Authentication Library (MSAL.NET) Active Directory összevonási szolgáltatások (AD FS) (AD FS) támogatását.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: jmprieur
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13e1f80f3a0a10466ead60d828d28aa9916fe26b
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: beb1bcc4599a891b8748b63c5e7c5c09f5acdac7
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302693"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532685"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>Active Directory összevonási szolgáltatások (AD FS) támogatás a MSAL.NET-ben
 A Windows Server Active Directory összevonási szolgáltatások (AD FS) (AD FS) lehetővé teszi az OpenID Connect és a OAuth 2,0-alapú hitelesítés és engedélyezés hozzáadását a fejleszthető alkalmazásokhoz. Ezek az alkalmazások közvetlenül a AD FSon keresztül hitelesítik a felhasználókat. További információkért olvassa el [AD FS fejlesztői forgatókönyvek](/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)című témakört.
@@ -36,7 +36,7 @@ A .NET-hez készült Microsoft Authentication Library (MSAL.NET) két forgatók�
 ## <a name="msal-connects-to-azure-ad-which-is-federated-with-ad-fs"></a>A MSAL csatlakozik az Azure AD-hez, amely összevont AD FS
 A MSAL.NET támogatja az Azure AD-hez való csatlakozást, amely a felügyelt felhasználók (az Azure AD-ben felügyelt felhasználók) vagy összevont felhasználók (más identitás-szolgáltató, például AD FS) által felügyelt felhasználók számára jelentkezik. A MSAL.NET nem tudja, hogy a felhasználók összevontak-e. A szóban forgó módon az Azure AD-t beszéli.
 
-Az [ebben](msal-client-application-configuration.md#authority) az esetben használt szolgáltató a szokásos hatóság (szolgáltatói állomásnév + bérlő, közös vagy szervezet).
+Az [](msal-client-application-configuration.md#authority) ebben az esetben használt szolgáltató a szokásos hatóság (szolgáltatói állomásnév + bérlő, közös vagy szervezet).
 
 ### <a name="acquiring-a-token-interactively"></a>Token interaktív beszerzése
 A `AcquireTokenInteractive` metódus meghívásakor a felhasználói élmény általában:

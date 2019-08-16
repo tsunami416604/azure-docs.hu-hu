@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 884ded67c25aca78225baef2d7e4c5de1cc94fd0
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: c6a76f4188ecbf6ca778fdbcd23ac9fed2f60dde
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782289"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534665"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Hibák elhárítása Update Management
 
@@ -22,6 +22,42 @@ Ez a cikk a Update Management használatakor esetlegesen futtatott problémák m
 A hibrid feldolgozói ügynöknek van egy ügynök-hibakeresője, amely meghatározza a mögöttes problémát. A hibaelhárítással kapcsolatos további tudnivalókért tekintse meg a [frissítési ügynökkel kapcsolatos problémák elhárítása](update-agent-issues.md)című témakört. Az összes többi probléma esetén tekintse meg az alábbi részletes információkat a lehetséges problémákkal kapcsolatban.
 
 ## <a name="general"></a>Általános
+
+### <a name="rp-register"></a>Forgatókönyv Nem lehet regisztrálni az Automation erőforrás-szolgáltatót az előfizetésekhez
+
+#### <a name="issue"></a>Probléma
+
+Az Automation-fiókban található megoldások használatakor a következő hibaüzenet jelenhet meg.
+
+```error
+Error details: Unable to register Automation Resource Provider for subscriptions:
+```
+
+#### <a name="cause"></a>Ok
+
+Az Automation erőforrás-szolgáltató nincs regisztrálva az előfizetésben.
+
+#### <a name="resolution"></a>Megoldás:
+
+Az Automation erőforrás-szolgáltatókat az alábbi lépések végrehajtásával regisztrálhatja a Azure Portalban:
+
+1. Az alsó Azure-szolgáltatás listában kattintson az **összes szolgáltatás** lehetőségre , majd válassza az előfizetések lehetőséget az _általános_ szolgáltatás csoportban.
+2. Válassza ki előfizetését.
+3. Kattintson az **erőforrás-szolgáltatók** elemre a _Beállítások_területen.
+4. Az erőforrás-szolgáltatók listájából ellenőrizze, hogy a **Microsoft. Automation** erőforrás-szolgáltató regisztrálva van-e.
+5. Ha a szolgáltató nem szerepel a listáján, regisztrálja a **Microsoft. Automation** -szolgáltatót [ ](/azure/azure-resource-manager/resource-manager-register-provider-errors)a következő szakaszban ismertetett lépésekkel:.
+
+### <a name="mw-exceeded"></a>Forgatókönyv A frissítés kezelése nem sikerült – a hiba MaintenanceWindowExceeded
+
+#### <a name="issue"></a>Probléma
+
+A frissítések alapértelmezett karbantartási időszaka 120 perc. A karbantartási időszakot legfeljebb hat (6) órára növelheti, vagy 360 percet is igénybe vehet.
+
+#### <a name="resolution"></a>Megoldás:
+
+Szerkessze a sikertelen ütemezett frissítések telepítését, és növelje a karbantartási időszakot.
+
+További információ a karbantartási időszakokról: [Install Updates (frissítések telepítése](../automation-update-management.md#install-updates)).
 
 ### <a name="components-enabled-not-working"></a>Forgatókönyv A "Update Management" megoldás összetevői engedélyezve lettek, és most már konfigurálva van a virtuális gép.
 
@@ -298,7 +334,31 @@ Ha nem tudja feloldani a javítási problémát, készítsen másolatot a követ
 /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
 ```
 
-### <a name="other"></a>Forgatókönyv A probléma nem szerepel a fenti felsorolásban
+## <a name="patches-are-not-installed"></a>Nincsenek telepítve a javítások
+
+### <a name="machines-do-not-install-updates"></a>A gépek nem telepítik a frissítéseket
+
+* Próbálja meg közvetlenül a gépen lefuttatni a frissítéseket. Ha a gép nem frissül, akkor tekintse át a [lehetséges hibák listáját a hibaelhárítási útmutatóban](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult).
+* Ha a frissítések helyszíni futtatással működnek, akkor távolítsa el és telepítse újra az ügynököt a gépen a [VM Update Managementből történő eltávolításával](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-for-update-management) foglalkozó témakör alapján.
+
+### <a name="i-know-updates-are-available-but-they-dont-show-as-needed-on-my-machines"></a>Tudom, hogy vannak elérhető frissítések, de nem jelennek meg a gépeken
+
+* Ez gyakran előfordul, ha a gépek úgy vannak konfigurálva, hogy a WSUS/SCCM-ből kérjék le a frissítéseket, de a WSUS/SCCM még nem hagyta azokat jóvá.
+* Azt, hogy a gépek a WSUS/SCCM-re vannak-e konfigurálva, úgy ellenőrizheti, hogy [kereszthivatkozza a „UseWUServer” beállításkulcsot a jelen dokumentum „Automatikus frissítések konfigurálása a beállításjegyzék szerkesztésével” szakaszában](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s) található beállításkulcsokkal.
+
+### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>**A frissítések telepítettként jelennek meg, de nem találom őket a számítógépen**
+
+* A frissítéseket gyakran felülírják más frissítések. További információért tekintse meg [a felülírt frissítésekkel foglalkozó szakaszt a Windows Update hibaelhárítási útmutatójában](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
+
+### <a name="installing-updates-by-classification-on-linux"></a>**Frissítések telepítése besorolás szerint Linuxon**
+
+* Ha Linuxon dolgozik, a frissítések besorolás szerinti („kritikus és biztonsági frissítések”) üzembe helyezésekor fontos kikötéseket kell figyelembe venni, különösen CentOS használata esetén. Ezeket [a korlátozásokat megtalálja az Update Management áttekintő oldalán](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2).
+
+### <a name="kb2267602-is-consistently--missing"></a>**A KB2267602 folyamatosan hiányzik**
+
+* A KB2267602 a [Windows Defender definíciófrissítése](https://www.microsoft.com/wdsi/definitions). Naponta frissül.
+
+## <a name="other"></a>Forgatókönyv A probléma nem szerepel a fenti felsorolásban
 
 ### <a name="issue"></a>Probléma
 

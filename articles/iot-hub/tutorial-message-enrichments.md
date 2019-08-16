@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 2c115bf0ad21e905e998692fbbc175f5aa52b86d
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 77d900844705bb86ce4bcfeda31d6ee765cb8d45
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014243"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535009"
 ---
 # <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Oktatóanyag: Az Azure IoT Hub üzenet-gazdagítás használata (előzetes verzió)
 
@@ -84,7 +84,7 @@ Itt láthatók a szkript által létrehozott erőforrások. A **dúsított** ér
 
 ```azurecli-interactive
 # This command retrieves the subscription id of the current Azure account.
-# This field is used when setting up the routing rules.
+# This field is used when setting up the routing queries.
 subscriptionID=$(az account show --query id -o tsv)
 
 # Concatenate this number onto the resources that have to be globally unique.
@@ -269,7 +269,7 @@ Ezen a ponton az erőforrások mindegyike be van állítva, és az Útválasztá
 
 ## <a name="send-messages-to-the-iot-hub"></a>Üzenetek küldése a IoT Hub
 
-Most, hogy az üzenet gazdagítása konfigurálva van a végponthoz, futtassa a szimulált eszköz alkalmazást, hogy üzeneteket küldjön a IoT Hub. A hub olyan szabályokkal lett beállítva, amelyek a következőket hajtják végre:
+Most, hogy az üzenet gazdagítása konfigurálva van a végponthoz, futtassa a szimulált eszköz alkalmazást, hogy üzeneteket küldjön a IoT Hub. A hub beállítása olyan beállításokkal történt, amelyek a következőket hajtják végre:
 
 * A tárolási végpont ContosoStorageEndpointOriginal továbbított üzenetek nem lesznek gazdagítva, és a tárolóban `original`lesznek tárolva.
 

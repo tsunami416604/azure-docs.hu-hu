@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f14403422e2c783d75634bb929d8c2130bd505b6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a8a75601daf36ca21ea56a5930219d7d467f0c85
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663879"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557817"
 ---
 # <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>Tanulási hurok elemzése offline kiértékeléssel
 
@@ -30,7 +30,7 @@ További információért olvassa el a [kapcsolat nélküli értékeléseket](co
 ## <a name="prerequisites"></a>Előfeltételek
 
 1. Meg kell adni egy személyre szabott hurok konfigurálását
-1. A személyre szabott huroknak legalább 50 000 eseménynek kell lennie a naplókban az értelmes kiértékelési eredmények érdekében.
+1. A személyre szabott huroknak reprezentatív mennyiségű adatnak kell lennie, de a naplókban legalább 50 000 eseményt recommmend az értelmes értékelés eredményeire.
 
 Előfordulhat, hogy korábban már exportálta a _tanulási szabályzatok_ fájljait, amelyeket összevetheti és tesztelheti ugyanabban az értékelésben.
 

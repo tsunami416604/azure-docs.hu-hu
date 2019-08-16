@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a334b19fe4dd819a6e4c391e49d934bf5955a567
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516059"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541479"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Gyakori kérdések az Azure IaaS VM-lemezekről, valamint a felügyelt és a nem felügyelt prémium szintű lemezekről
 
@@ -172,7 +172,7 @@ Előfordulhat, hogy a virtuális gépnek egy olyan régióban és rendelkezésre
 Nem, az ultra-lemezek csak az adatlemezek, és csak 4K natív lemezként támogatottak.
 
 **Átválthatok egy meglévő lemezt egy ultra lemezre?**
-Nem, de a dátumot egy meglévő lemezről is áttelepítheti egy ultra lemezre. Egy meglévő lemez Ultra-lemezre való áttelepítéséhez csatlakoztassa mindkét lemezt ugyanahhoz a virtuális géphez, és másolja a lemez adatait egyik lemezről a másikra, vagy használja ki a külső féltől származó megoldást az adatok áttelepítésére.
+Nem, de az adatok áttelepíthetők egy meglévő lemezről egy ultra lemezre. Egy meglévő lemez Ultra-lemezre való áttelepítéséhez csatlakoztassa mindkét lemezt ugyanahhoz a virtuális géphez, és másolja a lemez adatait egyik lemezről a másikra, vagy használja ki a külső féltől származó megoldást az adatok áttelepítésére.
 
 **Készíthetők Pillanatképek az ultra-lemezekhez?**
 Nem, a pillanatképek még nem érhetők el.

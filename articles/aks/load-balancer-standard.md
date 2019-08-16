@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: zarhoads
-ms.openlocfilehash: 1dcf08f4fefb53ed46038c82e0ce8f9d3dd94de2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 68968c1f846a1052600a8ed108f4d40fd9d8f2cb
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032247"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534728"
 ---
 # <a name="preview---use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Előzetes verzió – szabványos SKU Load Balancer használata az Azure Kubernetes Service-ben (ak)
 
@@ -92,11 +92,11 @@ A következő korlátozások érvényesek a terheléselosztó és a *szabványos
 
 * A terheléselosztó *szabványos* SKU-jának használatakor engedélyeznie kell a nyilvános címeket, és el kell kerülnie az IP-létrehozást megtiltó Azure Policy létrehozását. Az AK-fürt automatikusan létrehoz egy *szabványos* SKU nyilvános IP-címet ugyanabban az erőforráscsoporthoz, amely az AK-fürthöz lett létrehozva, amely általában a *MC_* elején szerepel. Az AK a nyilvános IP-címet a *standard* SKU Load Balancerhez rendeli. A nyilvános IP-cím szükséges ahhoz, hogy engedélyezi a kimenő forgalmat az AK-fürtről. Ez a nyilvános IP-cím a vezérlési sík és az ügynök csomópontjai közötti kapcsolat fenntartásához is szükséges, valamint az AK korábbi verzióival való kompatibilitás fenntartásához.
 * A terheléselosztó *szabványos* SKU-jának használatakor a Kubernetes 1.13.5 vagy újabb verzióját kell használnia.
-* Ha a [Node nyilvános IP-szolgáltatást](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool) standard terheléselosztó használatával használja, BEÁLLÍTHAT egy SLB kimenő szabályt vagy egy nyilvános IP-címet a csomóponthoz. Ki kell választania egyet vagy a másikat, mert egy virtuális gép nem csatlakoztatható egyszerre egy SLB kimenő szabályhoz és egy nyilvános IP-címhez.
 
 Habár ez a funkció előzetes verzióban érhető el, a következő további korlátozások érvényesek:
 
 * Ha a *standard* SKU-t az AK-ban lévő terheléselosztó esetében használja, nem állíthatja be a kimenő forgalomhoz tartozó saját nyilvános IP-címet a terheléselosztó számára. A terheléselosztó IP-címét kell használnia.
+* Ez a [csomópont nyilvános IP-](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool)címével nem használható.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 

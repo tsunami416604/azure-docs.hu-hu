@@ -7,16 +7,16 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: banders
-ms.openlocfilehash: 2e595fbee90b710ec6b8090a770d93e688a04818
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2122b6bd5fbd6b15bd5a2e411898d957708bf4c9
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839992"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558870"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
-Azure Reservations a virtuális gépek egy-vagy hároméves, SQL Database számítási kapacitásának, Azure Cosmos DB átviteli sebességének vagy más Azure-erőforrásoknak az előfizetésével segítheti a pénz megtakarítását. Az előzetes fizetés lehetővé teszi, hogy kedvezményt kapjon a felhasznált erőforrásokhoz. A foglalások jelentősen csökkenthetik a virtuális gépeket, az SQL Database számítási, Azure Cosmos DB-és egyéb erőforrás-költségeit, akár 72%-ot az utólagos elszámolású árakon. A foglalások számlázási kedvezményt biztosítanak, és nem érintik az erőforrások futtatókörnyezeti állapotát.
+Azure Reservations a virtuális gépek egy-vagy hároméves, SQL Database számítási kapacitásának, Azure Cosmos DB átviteli sebességének vagy más Azure-erőforrásoknak az előfizetésével segítheti a pénz megtakarítását. Az előre fizetéssel kedvezményt kaphat a használt erőforrásokra. A foglalások jelentősen csökkenthetik a virtuális gépeket, az SQL Database számítási, Azure Cosmos DB-és egyéb erőforrás-költségeit, akár 72%-ot az utólagos elszámolású árakon. A foglalások számlázási kedvezményt biztosítanak, és nem érintik az erőforrások futtatókörnyezeti állapotát.
 
 Foglalást a [Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)vásárolhat.
 
@@ -36,7 +36,7 @@ A Windows rendszerű virtuális gépek és a SQL Database esetében a licencelé
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Ki jogosult a foglalás megvásárlására?
 
-A csomagok megvásárlásához előfizetés-tulajdonosi szerepkörrel kell rendelkeznie egy vállalatnál (MS-AZR-0017P vagy MS-AZR-0148P) vagy utólagos elszámolású előfizetésben (MS-AZR-003P vagy MS-AZR-0023P). A felhőalapú megoldások szolgáltatói a Azure Portal vagy a [partner központ](/partner-center/azure-reservations) használatával vásárolhatják meg Azure Reservations.
+A csomagok megvásárlásához előfizetés-tulajdonosi szerepkörrel kell rendelkeznie egy vállalatnál (MS-AZR-0017P vagy MS-AZR-0148P) vagy utólagos elszámolású előfizetésben (MS-AZR-0003P vagy MS-AZR-0023P). A felhőalapú megoldások szolgáltatói a Azure Portal vagy a [partner központ](/partner-center/azure-reservations) használatával vásárolhatják meg Azure Reservations.
 
 A Nagyvállalati Szerződés (EA) ügyfelek az EA-portálon a fenntartott **példányok hozzáadása** lehetőség letiltásával KORLÁTOZHATJÁK az EA rendszergazdáknak beérkező vásárlásokat. Egy foglalás megvásárlásához a nagyvállalati szerződéssel rendelkező rendszergazdának legalább egy EA-előfizetéshez előfizetés-tulajdonosnak kell lennie. Ez a lehetőség olyan vállalatok számára hasznos, akik egy központi csapatot szeretnének vásárolni a különböző költséghely-foglalások megvásárlásához. A vásárlást követően a központosított csapatok felvehetik a Cost Center-tulajdonosokat a foglalásokhoz. A tulajdonosok ezután a foglalást a saját előfizetésük körébe helyezhetik. A központi csapatnak nem kell előfizetés-tulajdonosi hozzáféréssel rendelkeznie a foglalás megvásárlásához.
 

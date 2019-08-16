@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: c2f115564c81f38dd437f1d3ff1e33d7d162a42f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 858508e949f8a880498e1a3d983dc76224010c31
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326445"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534617"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Függőségek nyomon követése az Azure Application Insights 
 
@@ -33,7 +33,7 @@ Application Insights SDK-kat .net-és .net Core `DependencyTrackingTelemetryModu
 |---------------|-------|
 |HTTP/HTTPS | Helyi vagy távoli HTTP/HTTPS-hívások |
 |WCF-hívások| Csak automatikusan nyomon követhető, ha HTTP-alapú kötések vannak használatban.|
-|SQL | A-vel `SqlClient`végzett hívások. [Tekintse](#advanced-sql-tracking-to-get-full-sql-query) meg az SQL-lekérdezés rögzítését ismertető témakört.  |
+|SQL | A-vel `SqlClient`végzett hívások. Tekintse meg az SQL-lekérdezés rögzítését ismertető témakört. [](#advanced-sql-tracking-to-get-full-sql-query)  |
 |[Azure Storage (blob, tábla, üzenetsor)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Az Azure Storage-ügyféllel kezdeményezett hívások. |
 |[EventHub Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | A 1.1.0 vagy újabb verzió. |
 |[ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3\.0.0 vagy újabb verzió. |
@@ -86,11 +86,11 @@ Ha a kódot készíthet, amelyeket Ön nem írt szerelvény, például sikerült
 
 Azt is `TelemetryClient` megteheti `StartOperation` , `StopOperation` hogy bővítményi metódusokat biztosít, amelyek használatával manuálisan követheti a függőségeket, ahogy az [itt](custom-operations-tracking.md#outgoing-dependencies-tracking) látható.
 
-Ha ki szeretné kapcsolni a normál függőség-követési modult, távolítsa el a ASP.NET-alkalmazások [ApplicationInsights. config fájljában](../../azure-monitor/app/configuration-with-applicationinsights-config.md) található DependencyTrackingTelemetryModule mutató hivatkozást. ASP.NET Core alkalmazásokhoz kövesse az alábbi [utasításokat.](asp-net-core.md#configuring-or-removing-default-telemetrymodules)
+Ha ki szeretné kapcsolni a normál függőség-követési modult, távolítsa el a ASP.NET-alkalmazások [ApplicationInsights. config fájljában](../../azure-monitor/app/configuration-with-applicationinsights-config.md) található DependencyTrackingTelemetryModule mutató hivatkozást. ASP.NET Core alkalmazásokhoz kövesse az alábbi [](asp-net-core.md#configuring-or-removing-default-telemetrymodules)utasításokat.
 
 ## <a name="tracking-ajax-calls-from-web-pages"></a>AJAX-hívások követése weblapokról
 
-Weblapok esetében Application Insights JavaScript SDK automatikusan az [itt](javascript.md#ajax-performance)leírtak szerint függőségként gyűjti az Ajax-hívásokat. Ez a dokumentum a kiszolgálói összetevőktől való függőségekre koncentrál.
+Weblapok esetében Application Insights JavaScript SDK automatikusan függőségként gyűjti az AJAX-hívásokat.
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Részletes SQL-követés a teljes SQL-lekérdezés beszerzéséhez
 
@@ -113,7 +113,7 @@ A fenti esetekben a rendszerállapot-kezelő motor megfelelő ellenőrzésének 
 
 * [Alkalmazás-hozzárendelés](app-map.md) megjeleníti az alkalmazás és a szomszédos összetevők közötti függőségek.
 * A [tranzakciós diagnosztika](transaction-diagnostics.md) az egyesített, korrelált kiszolgáló adatait jeleníti meg.
-* A [böngészők lapon](javascript.md#ajax-performance) Ajax-hívásokat láthat a felhasználói böngészőkből.
+* A [böngészők lapon](javascript.md) Ajax-hívásokat láthat a felhasználói böngészőkből.
 * A függőségi hívások vizsgálatához kattintson a lassú vagy sikertelen kérelmekre.
 * [Analytics](#logs-analytics) használható függőségi adatokat lekérdezni.
 
@@ -141,11 +141,11 @@ Nem tudja, ahol az idő halad? A [Application Insights PROFILER](../../azure-mon
 
 Sikertelen kérelmek is lehet társítva, a függőségek hívásainak sikertelen.
 
-Lépjen a **hibák** lapra a bal oldalon, majd kattintson a felül található függőségek **** fülre.
+Lépjen a **hibák** lapra a bal oldalon, majd kattintson a felül található függőségek fülre.
 
 ![Kattintson a sikertelen kérelmeit tartalmazó diagram](./media/asp-net-dependencies/4-fail.png)
 
-Itt láthatja a sikertelen függőségek darabszámát. Ha további részleteket szeretne megtudni egy sikertelen előfordulásról, az alsó táblázatban található függőségi névre kattintva próbálkozhat. Kattintson a jobb alsó sarokban található **** kék függőségek gombra a végpontok közötti tranzakció részleteinek beszerzéséhez.
+Itt láthatja a sikertelen függőségek darabszámát. Ha további részleteket szeretne megtudni egy sikertelen előfordulásról, az alsó táblázatban található függőségi névre kattintva próbálkozhat. Kattintson a jobb alsó sarokban található kék függőségek gombra a végpontok közötti tranzakció részleteinek beszerzéséhez.
 
 ## <a name="logs-analytics"></a>Naplók (Analitika)
 

@@ -1,9 +1,9 @@
 ---
-title: Hozza létre egy nyilvános ügyfélalkalmazás lehetőségek (Microsoft-hitelesítési tár .NET) |} Az Azure
-description: Ismerje meg, hogyan hozható létre egy nyilvános ügyfélalkalmazás konfigurációs lehetőségek a Microsoft-hitelesítési tár .NET (MSAL.NET) használatával.
+title: Nyilvános ügyfélalkalmazás létrehozása lehetőségekkel (Microsoft Authentication Library for .NET) | Azure
+description: Megtudhatja, hogyan hozhat létre egy nyilvános ügyfélalkalmazás konfigurációs beállításokkal a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,30 +13,30 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 125bbf9aed54fb00f039aeffddd5cc1aad3360a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1311e047b63cc9b5cccc785fbcd118db29f7c4bd
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544396"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532616"
 ---
-# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Hozza létre egy nyilvános ügyfélalkalmazás az MSAL.NET használatával, a konfigurációs beállítások
+# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Nyilvános ügyfélalkalmazás létrehozása konfigurációs beállításokkal a MSAL.NET használatával
 
-Ez a cikk bemutatja, hogyan hozhat létre egy [ügyfélalkalmazás nyilvános](msal-client-applications.md) Microsoft-hitelesítési tár .NET (MSAL.NET) használatával.  Az alkalmazás beállításainak fájlban meghatározott konfigurációs beállításokkal jön létre.
+Ez a cikk azt ismerteti, hogyan hozható létre [nyilvános ügyfélalkalmazás](msal-client-applications.md) a .net-hez készült Microsoft Authentication Library (MSAL.net) használatával.  Az alkalmazás egy beállítási fájlban megadott konfigurációs beállításokkal lett létrehozva.
 
-Alkalmazás inicializálása, előtt először létre kell [regisztrálása](quickstart-register-app.md) azt, hogy az alkalmazás integrálható a Microsoft identity platform. A regisztrációt követően szükség lehet a következő információkat (amely az Azure Portalon található):
+Az alkalmazás inicializálásához először regisztrálnia kell, hogy [](quickstart-register-app.md) az alkalmazás integrálható legyen a Microsoft Identity platformmal. A regisztráció után a következő információkra lehet szüksége (amelyek a Azure Portalban találhatók):
 
-- Az ügyfél-Azonosítót (GUID képviselő karakterláncot)
-- Az identitásszolgáltató szolgáltató URL-címe (a példány neve) és az alkalmazás bejelentkezési célközönség. E két paraméter együttesen hatóságként ismert.
-- A bérlő Azonosítóját, ha egy üzletági alkalmazás kizárólag a szervezetben (egybérlős alkalmazás elnevezett is ismert).
-- A web apps, és egyes esetekben a nyilvános ügyfélalkalmazások (különösen ha az alkalmazás egy közvetítő) fog is beállította a redirectUri, lépjen kapcsolatba az identitásszolgáltató vissza az alkalmazás a biztonsági jogkivonatokkal.
+- Az ügyfél-azonosító (GUID jelölő sztring)
+- Az identitás-szolgáltató URL-címe (a példány neve) és az alkalmazás bejelentkezési célközönsége. Ez a két paraméter együttesen a hatóság néven ismert.
+- A bérlő azonosítója, ha csak az Ön szervezete számára ír üzletági alkalmazást (más néven egybérlős alkalmazás).
+- Webalkalmazások esetében, és esetenként a nyilvános ügyfélalkalmazások számára (különösen, ha az alkalmazásnak közvetítőt kell használnia), azt a redirectUri is be kell állítania, amelyben az identitás-szolgáltató felveszi a kapcsolatot az alkalmazással a biztonsági jogkivonatokkal.
 
 
-Egy .NET Core-konzolalkalmazást az alábbiakra van szükség *appsettings.json* konfigurációs fájlban:
+Egy .NET Core Console-alkalmazáshoz a következő *appSettings. JSON* konfigurációs fájl tartozhat:
 
 ```json
 {
@@ -52,7 +52,7 @@ Egy .NET Core-konzolalkalmazást az alábbiakra van szükség *appsettings.json*
 }
 ```
 
-A következő kódot a használatával a .NET-keretrendszer konfigurációs fájl beolvasása:
+A következő kód a .NET konfigurációs keretrendszer használatával olvassa be ezt a fájlt:
 
 ```csharp
 public class SampleConfiguration
@@ -94,7 +94,7 @@ public class SampleConfiguration
 }
 ```
 
-A következő kódot az alkalmazás, a konfiguráció használatával a beállítások fájlból hoz létre:
+A következő kód létrehozza az alkalmazást a beállítások fájljának konfigurációjának használatával:
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");

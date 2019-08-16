@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 8f180308133ffba12cc3bffb19130aa7a129da9f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 48c6d6ed60045d906fcb711bd07ab492b6bbf488
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952903"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543681"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek
 
@@ -80,6 +80,7 @@ Az archív hozzáférési szint használati forgatókönyvei például a követk
 ### <a name="blob-rehydration"></a>Blob rehidratálása
 
 [!INCLUDE [storage-blob-rehydrate-include](../../../includes/storage-blob-rehydrate-include.md)]
+További információért lásd [a blob-adatok rehidratálása az archív szintről](storage-blob-rehydration.md) című témakört.  
 
 ## <a name="account-level-tiering"></a>Fiók szintű rétegek
 
@@ -127,8 +128,8 @@ Az alábbi táblázat a prémium szintű, a blob Storage és a gyakori, ritka el
 
 |                                           | **Prémium szintű teljesítmény**   | **Gyors elérési szint** | **Hűvös szint**       | **Archiválási szint**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
-| **Rendelkezésre állás**                          | 99,9%                     | 99,9%        | 99%                 | Offline           |
-| **Rendelkezésre állás** <br> **(RA-GRS olvasások)**  | –                       | 99.99%       | 99,9%               | Offline           |
+| **Rendelkezésre állás**                          | 99.9%                     | 99.9%        | 99%                 | Offline           |
+| **Rendelkezésre állás** <br> **(RA-GRS olvasások)**  | –                       | 99.99%       | 99.9%               | Offline           |
 | **Használati díjak**                         | Magasabb tárolási költségek, alacsonyabb hozzáférési és tranzakciós költségek | Magasabb tárolási költségek, alacsonyabb hozzáférés és tranzakciós költségek | Alacsonyabb tárolási költségek, magasabb hozzáférési és tranzakciós költségek | Legalacsonyabb tárolási költségek, legmagasabb hozzáférési és tranzakciós költségek |
 | **Minimális objektumméret**                   | N/A                       | N/A          | N/A                 | N/A               |
 | **Minimális tárolási időtartam**              | N/A                       | –          | 30 nap<sup>1</sup> | 180 nap
@@ -164,11 +165,13 @@ Ebben a szakaszban a következő forgatókönyveket mutatjuk be az Azure Portal 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Ha meg szeretné keresni a blobot a Storage-fiókjában, válassza a **minden erőforrás**lehetőséget, válassza ki a Storage-fiókját, válassza ki a tárolót, majd válassza ki a blobot.
+1. A tárfiókban található blobja eléréséhez válassza az Összes erőforrás lehetőséget, majd válassza ki a tárfiókot, a tárolót és végül a blobot.
 
-1. A **blob tulajdonságai** panelen válassza a **hozzáférési szint** legördülő menüt a gyakori, ritkavagy **archív** hozzáférési szint kiválasztásához.
+1. A **blob tulajdonságai** panelen kattintson a **rétegek módosítása** gombra a Rétegek panel megnyitásához.
 
-1. Kattintson a panel tetején lévő **Mentés** elemre.
+1. Válassza a **gyors**,a lassú vagy az **archív** hozzáférési szintet. Ha a blob jelenleg archiválás alatt áll, és egy online szintre szeretné kiszáradni, akkor a **standard** vagy a **magas**rehidratálás prioritást is kiválaszthatja.
+
+1. Kattintson az **OK** gombra a panel alján.
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
@@ -245,6 +248,8 @@ Az adattárolás és más korlátok a fiók szintjén vannak megadva, nem pedig 
 [A gyakori és ritka elérésű, valamint az archív tárolási szint rendelkezésre állásának ellenőrzése régiónként](https://azure.microsoft.com/regions/#services)
 
 [Az Azure Blob Storage életciklusának kezelése](storage-lifecycle-management-concepts.md)
+
+[Tudnivalók a blob-adatok archiválási szintről való kiszárításáról](storage-blob-rehydration.md)
 
 [Aktuális tárfiókjai használatának értékelése az Azure Storage mérőszámainak engedélyezésével](../common/storage-enable-and-view-metrics.md)
 

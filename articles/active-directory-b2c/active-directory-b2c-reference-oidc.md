@@ -1,5 +1,5 @@
 ---
-title: Webes bejelentkezés OpenID Connecttel – Azure Active Directory B2C | Microsoft Docs
+title: Webes bejelentkezés OpenID Connecttel – Azure Active Directory B2C
 description: Hozzon létre webalkalmazásokat az OpenID Connect hitelesítési protokoll használatával Azure Active Directory B2Cban.
 services: active-directory-b2c
 author: mmacy
@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 08/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0e60bedcf1324b443d9b9cd34e8dc695fdb0b372
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f6188f5c5bdd256ee84c5e7dc8632e5c067ceca5
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931757"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541721"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webes bejelentkezés OpenID-kapcsolattal Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Azure AD B2C kiterjeszti a szabványos OpenID Connect protokollt, hogy több, mi
 
 Ha a webalkalmazásnak hitelesítenie kell a felhasználót, és futtatnia kell egy felhasználói folyamatot, akkor a felhasználó a `/authorize` végpontra irányíthatja a felhasználót. A felhasználó a felhasználói folyamattól függően végrehajtja a műveletet.
 
-Ebben a kérelemben az ügyfél a `scope` paraméterben szereplő felhasználótól beszerzett engedélyeket, valamint a `p` paraméterben futtatandó felhasználói folyamatot jelzi. Három példát ismertetünk a következő fejezetekben (az olvashatóság érdekében), amelyek mindegyike egy másik felhasználói folyamatot használ. Az egyes kérések működésének megismeréséhez próbálja meg beilleszteni a kérést egy böngészőben, és futtassa azt. Ha rendelkezik ilyennel `fabrikamb2c` , és létrehozta a felhasználói folyamatot, a helyére a nevet használhatja. Le kell cserélnie `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`a t is. Cserélje le ezt az ügyfél-azonosítót a létrehozott alkalmazás-regisztráció alkalmazás-azonosítójával. Módosítsa a szabályzat nevét `b2c_1_sign_in` a bérlőben található szabályzat nevére is. 
+Ebben a kérelemben az ügyfél a `scope` paraméterben szereplő felhasználótól beszerzett engedélyeket, valamint a `p` paraméterben futtatandó felhasználói folyamatot jelzi. Három példát ismertetünk a következő fejezetekben (az olvashatóság érdekében), amelyek mindegyike egy másik felhasználói folyamatot használ. Az egyes kérések működésének megismeréséhez próbálja meg beilleszteni a kérést egy böngészőben, és futtassa azt. Ha rendelkezik ilyennel `fabrikamb2c` , és létrehozta a felhasználói folyamatot, a helyére a nevet használhatja. Le kell cserélnie `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`a t is. Cserélje le ezt az ügyfél-azonosítót a létrehozott alkalmazás-regisztráció alkalmazás-azonosítójával. Módosítsa a szabályzat nevét `b2c_1_sign_in` a bérlőben található szabályzat nevére is.
 
 #### <a name="use-a-sign-in-user-flow"></a>Bejelentkezési felhasználói folyamat használata
 ```
@@ -121,7 +121,7 @@ error=access_denied
 
 ## <a name="validate-the-id-token"></a>AZONOSÍTÓ jogkivonat ellenőrzése
 
-Az azonosító jogkivonat fogadása nem elegendő a felhasználó hitelesítéséhez. Érvényesítse az azonosító jogkivonat aláírását, és ellenőrizze az alkalmazás követelményei szerint a jogkivonatban lévő jogcímeket. Azure AD B2C [JSON webes tokeneket (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) és nyilvános kulcsú titkosítást használ a tokenek aláírásához, és ellenőrizze, hogy érvényesek-e. Számos olyan nyílt forráskódú kódtár van, amely a JWTs ellenőrzéséhez használható, a kívánt nyelvtől függően. Javasoljuk, hogy a saját érvényesítési logikájának megvalósítása helyett ezeket a lehetőségeket vizsgálja. 
+Az azonosító jogkivonat fogadása nem elegendő a felhasználó hitelesítéséhez. Érvényesítse az azonosító jogkivonat aláírását, és ellenőrizze az alkalmazás követelményei szerint a jogkivonatban lévő jogcímeket. Azure AD B2C [JSON webes tokeneket (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) és nyilvános kulcsú titkosítást használ a tokenek aláírásához, és ellenőrizze, hogy érvényesek-e. Számos olyan nyílt forráskódú kódtár van, amely a JWTs ellenőrzéséhez használható, a kívánt nyelvtől függően. Javasoljuk, hogy a saját érvényesítési logikájának megvalósítása helyett ezeket a lehetőségeket vizsgálja.
 
 Azure AD B2C rendelkezik egy OpenID Connect metaadat-végponttal, amely lehetővé teszi, hogy az alkalmazások a futtatókörnyezetről Azure AD B2C információkat kapjanak. Ezek az adatok a végpontokat, a jogkivonat tartalmát és a jogkivonat-aláíró kulcsokat tartalmazzák. A B2C-bérlőben minden felhasználói folyamathoz van egy JSON-metaadatokat tartalmazó dokumentum. A `b2c_1_sign_in` felhasználói folyamat metaadat- `fabrikamb2c.onmicrosoft.com` dokumentuma például a következő helyen található:
 
@@ -155,7 +155,7 @@ Az azonosító jogkivonat ellenőrzése után elindíthat egy munkamenetet a fel
 
 Ha szüksége van a webalkalmazásra, hogy csak a felhasználói folyamatokat futtassa, kihagyhatja a következő néhány szakaszt. Ezek a csoportok csak olyan webalkalmazásokra vonatkoznak, amelyeknek hitelesített hívásokat kell végezniük a webes API-k számára, és a Azure AD B2C is védi őket.
 
-Megadhatja a tokenhez a kívánt erőforráshoz beszerzett `response_type=code+id_token`engedélyezési kódot (a használatával), ha egy `POST` kérést küld a `/token` végpontnak. A Azure AD B2Cban a [más API-k számára](active-directory-b2c-access-tokens.md#request-a-token) a szokásos módon kérhet hozzáférési jogkivonatokat a kérelemben szereplő hatókör (ek) megadásával.
+Megadhatja a tokenhez a kívánt erőforráshoz beszerzett `response_type=code+id_token`engedélyezési kódot (a használatával), ha egy `POST` kérést küld a `/token` végpontnak. Azure AD B2C a szokásos módon [kérhet hozzáférési jogkivonatokat más API](active-directory-b2c-access-tokens.md#request-a-token) -khoz a kérelemben szereplő hatókör (ek) megadásával.
 
 Az alkalmazás saját háttérbeli webes API-hoz is kérhet hozzáférési tokent, ha az alkalmazás ügyfél-AZONOSÍTÓját használja a kért hatókörként (amely az ügyfél-AZONOSÍTÓhoz tartozó hozzáférési jogkivonatot eredményezi a "célközönség"):
 
@@ -283,18 +283,24 @@ A hibaüzenetek így néznek ki:
 
 Ha ki szeretné írni a felhasználót az alkalmazásból, nem elég az alkalmazás cookie-jait törölni, vagy más módon leállítani a munkamenetet a felhasználóval. Átirányítja a felhasználót, hogy Azure AD B2C a kijelentkezéshez. Ha ezt nem teszi meg, előfordulhat, hogy a felhasználó újra hitelesíteni tudja az alkalmazását anélkül, hogy újra be kellene írnia a hitelesítő adatait.
 
-Egyszerűen átirányíthatja a felhasználót arra a `end_session` végpontra, amely a korábban ismertetett OpenID Connect metaadat-dokumentumban szerepel:
+A felhasználó kijelentkezéséhez irányítsa át a felhasználót `end_session` a korábban ismertetett OpenID Connect metadata dokumentumban felsorolt végpontra:
 
 ```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
-p=b2c_1_sign_in
-&post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
 | Paraméter | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| p | Igen | Az alkalmazásból a felhasználó aláírásához használni kívánt felhasználói folyamat. |
+| Bérlő | Igen | A Azure AD B2C bérlő neve |
+| politika | Igen | Az alkalmazásból a felhasználó aláírásához használni kívánt felhasználói folyamat. |
+| id_token_hint| Nem | Egy korábban kiállított azonosító token, amelyet a kijelentkezési végpontnak továbbít a végfelhasználó aktuálisan hitelesített munkamenetével kapcsolatban az ügyféllel. |
 | post_logout_redirect_uri | Nem | Az URL-cím, amelyet a felhasználónak át kell irányítani a sikeres kijelentkezés után. Ha nem tartalmazza, a Azure AD B2C általános üzenetet jelenít meg a felhasználó számára. |
+| state | Nem | Ha egy `state` paraméter szerepel a kérelemben, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, `state` hogy a kérelemben és a válaszban szereplő értékek azonosak-e. |
 
-A felhasználó a `end_session` végpontra történő átirányítása törli a felhasználó egyszeri bejelentkezési állapotát Azure ad B2C, de nem írja alá a felhasználót a közösségi identitásszolgáltató-munkamenetből. Ha a felhasználó ugyanazt a IDENTITÁSSZOLGÁLTATÓ választja egy későbbi bejelentkezés során, a rendszer újból hitelesíti a hitelesítő adataik megadása nélkül. Ha a felhasználó ki szeretne jelentkezni az alkalmazásból, nem feltétlenül jelenti azt, hogy ki szeretné jelentkezni a Facebook-fiókjából. Ha azonban helyi fiókokat használ, a felhasználó munkamenete megfelelően végződik.
+### <a name="require-id-token-hint-in-logout-request"></a>AZONOSÍTÓ jogkivonat-emlékeztető megkövetelése a kijelentkezési kérelemben
 
+A kijelentkezés után a rendszer átirányítja a felhasználót a `post_logout_redirect_uri` paraméterben megadott URI-ra, az alkalmazáshoz megadott válasz URL-címektől függetlenül. Ha azonban érvényes `id_token_hint` `post_logout_redirect_uri` értéket ad meg, Azure ad B2C ellenőrzi, hogy az érték megegyezik-e az alkalmazás által konfigurált átirányítási URI-k egyikével az átirányítás végrehajtása előtt. Ha nincs beállítva egyező válasz URL-cím az alkalmazáshoz, a rendszer hibaüzenetet jelenít meg, és a felhasználót nem irányítja át.
+
+### <a name="external-identity-provider-session"></a>Külső identitás-szolgáltató munkamenete
+
+A felhasználó a `end_session` végpontra történő átirányítása törli a felhasználó egyszeri bejelentkezési állapotát Azure ad B2C, de nem írja alá a felhasználót a közösségi identitásszolgáltató-munkamenetből. Ha a felhasználó ugyanazt a IDENTITÁSSZOLGÁLTATÓ választja egy későbbi bejelentkezés során, a rendszer a hitelesítő adatok megadása nélkül újra hitelesíti őket. Ha a felhasználó ki szeretne jelentkezni az alkalmazásból, nem feltétlenül jelenti azt, hogy ki szeretné jelentkezni a Facebook-fiókjából. Ha azonban helyi fiókokat használ, a felhasználó munkamenete megfelelően végződik.

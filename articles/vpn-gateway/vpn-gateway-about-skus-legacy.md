@@ -1,71 +1,67 @@
 ---
-title: Örökölt az Azure virtual network VPN gateway Termékváltozatoktól |} A Microsoft Docs
-description: A régi virtuális hálózati átjárók Termékváltozatainak; használata Alapszintű, Standard és HighPerformance.
+title: Örökölt Azure Virtual Network VPN Gateway SKU-i | Microsoft Docs
+description: A régi virtuális hálózati átjáró SKU-i használata; Alapszintű, standard és HighPerformance.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/10/2019
+ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 00f1677e2691f9be5bb4584b07ca00340a52b1e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c745258929d495c1e568a156690f569de9f0e36
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056437"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533905"
 ---
-# <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Virtuális hálózati átjáró Termékváltozatai (örökölt termékváltozatok) használata
+# <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>A Virtual Network Gateway SKU-i (örökölt SKU) használata
 
-Ez a cikk az örökölt (régi) virtuális hálózati átjáró-Termékváltozatokkal kapcsolatos információkat tartalmaz. Az örökölt termékváltozatok továbbra is működni a már létrehozott VPN-átjárók mindkét üzemi modellben. Klasszikus VPN-átjárók továbbra is a meglévő átjárók, és új átjárók örökölt termékváltozatok használata. Amikor hoz létre új Resource Manager VPN-átjárók, használja az új átjáró SKU-k. Az új termékváltozatokra vonatkozó információkért lásd: [információk a VPN Gateway](vpn-gateway-about-vpngateways.md).
+Ez a cikk az örökölt (régi) virtuális hálózati átjáró SKU-ról tartalmaz információkat. Az örökölt SKU-ket továbbra is a már létrehozott VPN-átjárók üzembe helyezési modelljei is működnek. A klasszikus VPN-átjárók továbbra is a régi SKU-ket használják a meglévő átjárók és az új átjárók esetében. Új Resource Manager VPN Gateway-átjárók létrehozásakor használja az új átjárók SKU-t. További információ az új SKU-ról: [about VPN Gateway](vpn-gateway-about-vpngateways.md).
 
 ## <a name="gwsku"></a>Átjáró-termékváltozatok
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 
-Megtekintheti a régi átjáró díjszabását a **virtuális hálózati átjárók** szakaszban található a [díjszabását ismertető lapon ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute).
+Az örökölt átjáró díjszabását a [ExpressRoute díjszabása lapon](https://azure.microsoft.com/pricing/details/expressroute)található **Virtual Network átjárók** című szakaszban tekintheti meg.
 
-## <a name="agg"></a>Becsült összesített átviteli sebessége Termékváltozat
+## <a name="agg"></a>Becsült összesített átviteli sebesség SKU szerint
 
 [!INCLUDE [Aggregated throughput by legacy SKU](../../includes/vpn-gateway-table-gwtype-legacy-aggtput-include.md)]
 
-## <a name="config"></a>Írja be a Termékváltozat és a VPN által támogatott konfigurációk
+## <a name="config"></a>Az SKU és a VPN típusa által támogatott konfigurációk
 
 [!INCLUDE [Table requirements for old SKUs](../../includes/vpn-gateway-table-requirements-legacy-sku-include.md)]
 
-## <a name="resize"></a>Az átjáró átméretezése
+## <a name="resize"></a>Átjáró átméretezése
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Az átjárót átméretezheti egy olyan átjáró SKU-ra, amely ugyanazon SKU-családon belül található. Ha például standard SKU-t használ, átméretezheti a HighPerformance SKU-ra. A VPN-átjárót azonban nem lehet átméretezni a régi SKU-és az új SKU-család között. Például nem mehet át standard SKU-ról egy VpnGw2 SKU-ra vagy egy alapszintű SKU-VpnGw1.
 
-Az átjárók Termékváltozatainak belül az azonos Termékváltozat-család átjáró méretezheti. Például ha a Standard Termékváltozat, átméretezheti, a HighPerformance termékváltozatra. Azonban nem tudják átméretezni a régi termékváltozatokról az új Termékváltozat-családokra közötti VPN-átjárót. Ha például már nem válthat a Standard Termékváltozat VpnGw2 Termékváltozat vagy alapszintű Termékváltozat a VpnGw1.
+### <a name="resource-manager"></a>Resource Manager
 
-Méretezze át a klasszikus üzemi modell esetében egy átjárót, használja a következő parancsot:
-
-```powershell
-Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
-```
-
-Méretezze át a Resource Manager üzemi modell PowerShell használatával egy átjárót, használja a következő parancsot:
+Ha át szeretné méretezni a Resource Manager-alapú üzemi modell átjáróját a PowerShell használatával, használja a következő parancsot:
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
-Az Azure Portalon egy átjárót is méretezheti.
 
-## <a name="change"></a>Módosítsa az új átjáró SKU-k
+Az átjárókat a Azure Portal is átméretezheti.
+
+### <a name="classicresize"></a>Klasszikus
+
+A klasszikus üzemi modell átjárójának átméretezéséhez a Service Management PowerShell-parancsmagokat kell használnia. Használja az alábbi parancsot:
+
+```powershell
+Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
+```
+
+## <a name="change"></a>Váltás az új átjárós SKU-ra
 
 [!INCLUDE [Change to the new SKUs](../../includes/vpn-gateway-gwsku-change-legacy-sku-include.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Az új átjáró-termékváltozatok kapcsolatos további információkért lásd: [átjáró-termékváltozatok](vpn-gateway-about-vpngateways.md#gwsku).
+További információ az átjárók új SKU-ról: [átjáró SKU](vpn-gateway-about-vpngateways.md#gwsku)-i.
 
-Konfigurációs beállításaival kapcsolatos további információkért lásd: [információk a VPN Gateway konfigurációs beállításairól](vpn-gateway-about-vpn-gateway-settings.md).
+További információ a konfigurációs beállításokról: [Tudnivalók a VPN Gateway konfigurációs beállításairól](vpn-gateway-about-vpn-gateway-settings.md).

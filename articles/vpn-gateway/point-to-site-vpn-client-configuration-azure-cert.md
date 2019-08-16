@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 624c1648bc709e1ca6ee9c4120350a606df67df5
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 79e7027d308d389aa672d164de91df61b1142e32
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035749"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534165"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése natív Azure-beli tanúsítvány-hitelesítési P2S-konfigurációkhoz
 
@@ -126,12 +126,12 @@ Ha még nem hozott létre tanúsítványokat, kövesse az alábbi lépéseket:
 
 ### <a name="install"></a>Telepítés és konfigurálás
 
-Az alábbi utasítások a alapú strongswan 5.5.1 használatával készültek az Ubuntu-17.0.4. Az Ubuntu-16.0.10 nem támogatja a alapú strongswan grafikus felhasználói felületét. Ha Ubuntu-16.0.10 szeretne használni, a parancssort kell használnia. [](#linuxinstallcli) Előfordulhat, hogy az alábbi példák nem egyeznek meg a megjelenő képernyőkkel a Linux és a alapú strongswan verziójától függően.
+Az alábbi utasítások az Ubuntu 18.0.4 lettek létrehozva. Az Ubuntu-16.0.10 nem támogatja a alapú strongswan grafikus felhasználói felületét. Ha Ubuntu-16.0.10 szeretne használni, a parancssort kell használnia. [](#linuxinstallcli) Előfordulhat, hogy az alábbi példák nem egyeznek meg a megjelenő képernyőkkel a Linux és a alapú strongswan verziójától függően.
 
-1. A példában a parancs futtatásával nyissa meg a terminált a **alapú strongswan** és a hálózati kezelő telepítéséhez. Ha olyan hibaüzenetet kap, amely a *libcharon-extra-plugins*szolgáltatáshoz kapcsolódik, cserélje le a "alapú strongswan-plugin-EAP-MSCHAPv2" kifejezésre.
+1. A példában a parancs futtatásával nyissa meg a terminált a **alapú strongswan** és a hálózati kezelő telepítéséhez.
 
    ```
-   sudo apt-get install strongswan libcharon-extra-plugins moreutils iptables-persistent network-manager-strongswan
+   sudo apt install network-manager-strongswan
    ```
 2. Válassza a **Network Manager** ikont (felfelé mutató nyíl/lefelé mutató nyíl), majd válassza a **Kapcsolatok szerkesztése**lehetőséget.
 

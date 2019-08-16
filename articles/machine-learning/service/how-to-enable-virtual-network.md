@@ -1,7 +1,7 @@
 ---
-title: Kísérletek és következtetések futtatása egy virtuális hálózaton
+title: Biztonságos kísérletek és következtetések egy virtuális hálózaton
 titleSuffix: Azure Machine Learning service
-description: Gépi tanulási kísérletek futtatása és az Azure-beli virtuális hálózatokon belüli biztonság következtetése. Megtudhatja, hogyan hozhat létre számítási célokat a modell betanításához, és hogyan futtathat következtetéseket egy virtuális hálózaton belül. Ismerje meg a biztonságos virtuális hálózatok követelményeit, például a bejövő és a kimenő portok megkövetelését.
+description: megtudhatja, hogyan védheti meg a kísérletezési/betanítási feladatokat, valamint az Azure-Virtual Network belüli Azure Machine Learning következtetési/pontozási feladatait.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,29 +10,30 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: bd70957671c11137465225aa3bbb046b12a2c650
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 1b5e3777109b13baa7d774a524664551798ba4ca
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966906"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558200"
 ---
-# <a name="run-experiments-and-inference-securely-within-an-azure-virtual-network"></a>Kísérletek futtatása egy Azure-beli virtuális hálózaton belül biztonságosan
+# <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit
 
-Ebből a cikkből megtudhatja, hogyan futtathat kísérleteket és következtetéseket, illetve hogyan modellezheti a modelleket egy virtuális hálózaton belül. A virtuális hálózat biztonsági határként működik, és az Azure-erőforrásokat a nyilvános internetről különíti el. Egy Azure-beli virtuális hálózatot is csatlakoztathat a helyszíni hálózathoz. A hálózatok összekapcsolásával biztonságosan betaníthatja a modelleket, és elérheti az üzembe helyezett modelleket a következtetésekhez. A következtetés vagy a modell pontozása az a fázis, amely alatt a rendszer az üzembe helyezett modellt használja az előrejelzéshez, leggyakrabban az éles adatforgalomra.
+Ebből a cikkből megtudhatja, hogyan védheti meg az Azure-Virtual Network (vnet) Azure Machine Learning kísérletezési/betanítási feladatait és következtetéseit/pontozási feladatait. 
 
-A Azure Machine Learning szolgáltatás más Azure-szolgáltatásokra támaszkodik számítási erőforrásokhoz. A számítási erőforrások vagy számítási célok a modellek betanítására és üzembe helyezésére szolgálnak. A célok létrehozhatók egy virtuális hálózaton belül. Használhatja például a Microsoft Data Science Virtual Machinet egy modell betanításához, majd a modell üzembe helyezéséhez az Azure Kubernetes Service (ak) szolgáltatásban. A virtuális hálózatokkal kapcsolatos további információkért lásd: az [Azure Virtual Network áttekintése](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+A **virtuális hálózat** biztonsági határként működik, és az Azure-erőforrásokat a nyilvános internetről különíti el. Egy Azure-beli virtuális hálózatot is csatlakoztathat a helyszíni hálózathoz. A hálózatok összekapcsolásával biztonságosan betaníthatja a modelleket, és elérheti az üzembe helyezett modelleket a következtetésekhez.
 
-Ez a cikk részletes információkat tartalmaz a *speciális biztonsági beállításokról*, az alapszintű vagy kísérleti felhasználási esetekben nem szükséges információkról. A cikk bizonyos fejezetei számos különböző forgatókönyvhöz biztosítanak konfigurációs információkat. Nem kell megadnia az utasításokat sorrendben vagy teljes egészében.
+A Azure Machine Learning szolgáltatás más Azure-szolgáltatásokra támaszkodik számítási erőforrásokhoz. A számítási erőforrások vagy [számítási célok](concept-compute-target.md)a modellek betanítására és üzembe helyezésére szolgálnak. A célok létrehozhatók egy virtuális hálózaton belül. Használhatja például a Microsoft Data Science Virtual Machinet egy modell betanításához, majd a modell üzembe helyezéséhez az Azure Kubernetes Service (ak) szolgáltatásban. A virtuális hálózatokkal kapcsolatos további információkért lásd: az [Azure Virtual Network áttekintése](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+
+Ez a cikk részletes információkat is tartalmaz a *speciális biztonsági beállításokról*, az alapszintű és a kísérleti felhasználási esetekben nem szükséges információkról. A cikk bizonyos fejezetei számos különböző forgatókönyvhöz biztosítanak konfigurációs információkat. Nem kell megadnia az utasításokat sorrendben vagy teljes egészében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nem rendelkezik [](how-to-manage-workspace.md) ilyennel, hozzon létre egy Azure Machine learning szolgáltatás-munkaterületet. Ez a cikk azt feltételezi, hogy már ismeri az Azure Virtual Network szolgáltatást és az IP-hálózatkezelést általánosságban. A cikk azt is feltételezi, hogy létrehozott egy virtuális hálózatot és alhálózatot a számítási erőforrásokkal való használatra. Ha nem ismeri az Azure Virtual Network szolgáltatást, a következő cikkekben tájékozódhat:
++ Egy Azure Machine Learning szolgáltatás [](how-to-manage-workspace.md)munkaterülete. 
 
-* [IP-címzés](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
-* [Biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview)
-* [Rövid útmutató: Virtuális hálózat létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
-* [Hálózati forgalom szűrése](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
++ Az [Azure Virtual Network szolgáltatás](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) és az [IP-hálózatkezelés](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)általános munkaismerete. 
+
++ Meglévő virtuális hálózat és alhálózat a számítási erőforrásokkal való használathoz. 
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>A munkaterülethez tartozó Storage-fiók használata
 
@@ -232,6 +233,9 @@ A létrehozási folyamat befejeződése után a modellt egy kísérletben a für
 
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Virtuális gép vagy HDInsight-fürt használata
 
+> [!IMPORTANT]
+> A Azure Machine Learning szolgáltatás csak az Ubuntut futtató virtuális gépeket támogatja.
+
 Ha egy virtuális gépet vagy Azure HDInsight-fürtöt szeretne használni a munkaterülettel rendelkező virtuális hálózatban, tegye a következőket:
 
 1. Hozzon létre egy virtuális GÉPET vagy HDInsight-fürtöt a Azure Portal vagy az Azure CLI használatával, és helyezze üzembe a fürtöt egy Azure-beli virtuális hálózaton. További információkért tekintse át a következő cikkeket:
@@ -263,17 +267,12 @@ Ha egy virtuális gépet vagy Azure HDInsight-fürtöt szeretne használni a mun
 
 1. Csatlakoztassa a virtuális gépet vagy a HDInsight-fürtöt a Azure Machine Learning szolgáltatás munkaterületéhez. További információ: [számítási célok beállítása a modell](how-to-set-up-training-targets.md)betanításához.
 
-> [!IMPORTANT]
-> A Azure Machine Learning szolgáltatás csak az Ubuntut futtató virtuális gépeket támogatja.
-
 ## <a name="use-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) használata
 
 Ha AK-t szeretne hozzáadni egy virtuális hálózathoz a munkaterülethez, tegye a következőket:
 
 > [!IMPORTANT]
 > Az alábbi eljárás megkezdése előtt tekintse át az előfeltételeket, és tervezze meg az IP-címzést a fürt számára. További információ: [speciális hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)](https://docs.microsoft.com/azure/aks/configure-advanced-networking).
->
-> Tartsa meg a NSG alapértelmezett kimenő szabályait. További információ: [biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)alapértelmezett biztonsági szabályai.
 >
 > Az AK-példánynak és az Azure-beli virtuális hálózatnak ugyanabban a régióban kell lennie.
 
@@ -304,13 +303,12 @@ Ha AK-t szeretne hozzáadni egy virtuális hálózathoz a munkaterülethez, tegy
    ![Azure Machine Learning szolgáltatás: Virtuális hálózati beállítások Machine Learning Compute](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
 1. Győződjön meg arról, hogy a virtuális hálózatot vezérlő NSG-csoport rendelkezik egy bejövő biztonsági szabállyal, amely engedélyezi a pontozási végpontot, hogy a virtuális hálózaton kívülről is meghívható legyen.
+   > [!IMPORTANT]
+   > Tartsa meg a NSG alapértelmezett kimenő szabályait. További információ: [biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)alapértelmezett biztonsági szabályai.
+  
+   ![Egy bejövő biztonsági szabály](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
 
-    ![Egy bejövő biztonsági szabály](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
-
-    > [!TIP]
-    > Ha már van egy AK-fürtje egy virtuális hálózaton, akkor csatolhatja azt a munkaterülethez. További információ: [üzembe helyezés az AK](how-to-deploy-to-aks.md)-ban.
-
-A Azure Machine Learning SDK-val is hozzáadhat AK-t egy virtuális hálózatban. A következő kód létrehoz egy új AK- `default` példányt egy nevű `mynetwork`virtuális hálózat alhálózatában:
+A Azure Machine Learning SDK-val is hozzáadhatja az Azure Kubernetes szolgáltatást egy virtuális hálózatban. Ha már van egy AK-fürtje egy virtuális hálózaton, csatolja azt a munkaterülethez a következő témakörben leírtak szerint: [üzembe helyezés az AK](how-to-deploy-to-aks.md)-ban. A következő kód létrehoz egy új AK- `default` példányt egy nevű `mynetwork`virtuális hálózat alhálózatában:
 
 ```python
 from azureml.core.compute import ComputeTarget, AksCompute

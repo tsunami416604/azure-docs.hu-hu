@@ -7,16 +7,18 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7dd053e3a9824ac0817db528b8b053666e1ded04
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 131d6865c47a32bbefbfbd397a5f0f88dedc9c35
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881816"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543508"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Vendég-konfigurációs szabályzatok létrehozása
 
 A vendég konfigurációja a [kívánt állapot-konfigurációs](/powershell/dsc) (DSC) erőforrás-modult használja az Azure-beli virtuális gépek naplózási konfigurációjának létrehozásához. A DSC-konfiguráció azt a feltételt határozza meg, amelyben a virtuális gépnek szerepelnie kell. Ha a konfiguráció kiértékelése nem sikerül, a rendszer elindítja a házirend hatásának naplózását, és a virtuális gép **nem megfelelőnek**minősül.
+
+[Azure Policy vendég konfiguráció](/azure/governance/policy/concepts/guest-configuration) csak a virtuális gépeken belüli beállítások naplózására használható. A virtuális gépeken belüli beállítások szervizelése még nem érhető el.
 
 Az alábbi műveletek végrehajtásával hozhatja létre saját konfigurációját egy Azure-beli virtuális gép állapotának ellenőrzéséhez.
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 647ab76760d0c5ce5315a60d0a671163b902be0f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 23c10fbed751e05fea2a95030c720f622e195f40
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954540"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534221"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
@@ -22,9 +22,9 @@ SQL Server adatbázisok olyan kritikus fontosságú munkaterhelések, amelyek al
 
 Ez a megoldás kihasználja az SQL natív API-kat az SQL-adatbázisok biztonsági mentésének elvégzéséhez.
 
-* Miután megadta a védelemmel ellátni kívánt SQL Server VMt, és lekérdezi a benne lévő adatbázisokat, Azure Backup szolgáltatás a számítási feladatok biztonsági mentési bővítményét a virtuális `AzureBackupWindowsWorkload`gépen telepíti a  fájlnévkiterjesztés alapján.
+* Miután megadta a védelemmel ellátni kívánt SQL Server VMt, és lekérdezi a benne lévő adatbázisokat, Azure Backup szolgáltatás a számítási feladatok biztonsági mentési bővítményét a virtuális `AzureBackupWindowsWorkload` gépen telepíti a fájlnévkiterjesztés alapján.
 * Ez a bővítmény egy koordinátorból és egy SQL-beépülő modulból áll. Míg a koordinátor felelős a munkafolyamatok különböző műveletekhez, például a biztonsági mentés konfigurálásához, a biztonsági mentéshez és a visszaállításhoz, a beépülő modul felelős a tényleges adatforgalomért.
-* Ahhoz, hogy fel tudja deríteni a virtuális gép adatbázisait, Azure Backup létrehozza `NT SERVICE\AzureWLBackupPluginSvc`a fiókot. Ez a fiók használható a biztonsági mentéshez és a visszaállításhoz, és SQL sysadmin engedélyekre van szükség. Azure Backup kihasználja `NT AUTHORITY\SYSTEM`az adatbázis-felderítési/-lekérdezési fiókot, ezért ennek a fióknak nyilvános bejelentkezéssel kell rendelkeznie az SQL-ben. Ha nem hozta létre a SQL Server VM az Azure piactéren, hibaüzenetet kaphat a **UserErrorSQLNoSysadminMembership**. Ha ez történik, [kövesse ezeket az utasításokat](backup-azure-sql-database.md).
+* Ahhoz, hogy fel tudja deríteni a virtuális gép adatbázisait, Azure Backup létrehozza `NT SERVICE\AzureWLBackupPluginSvc`a fiókot. Ez a fiók használható a biztonsági mentéshez és a visszaállításhoz, és SQL sysadmin engedélyekre van szükség. Azure Backup kihasználja `NT AUTHORITY\SYSTEM` az adatbázis-felderítési/-lekérdezési fiókot, ezért ennek a fióknak nyilvános bejelentkezéssel kell rendelkeznie az SQL-ben. Ha nem hozta létre a SQL Server VM az Azure piactéren, hibaüzenetet kaphat a **UserErrorSQLNoSysadminMembership**. Ha ez történik, [kövesse ezeket az utasításokat](backup-azure-sql-database.md).
 * Miután elindította a védelem konfigurálását a kiválasztott adatbázisokon, a Backup szolgáltatás beállítja a koordinátort a biztonsági mentési ütemtervekkel és egyéb házirend-adatokkal, amelyeket a bővítmény a virtuális gépen helyileg gyorsítótáraz.
 * Az ütemezett időpontban a koordinátor kommunikál a beépülő modullal, és elindítja a biztonsági mentési adatok továbbítását az SQL Serverről a VDI használatával.  
 * A beépülő modul közvetlenül a Recovery Services-tárolóba küldi az adatokat, így nincs szükség átmeneti helyre. Az adattitkosítás és a Azure Backup szolgáltatás tárolja a Storage-fiókokban.
@@ -45,7 +45,7 @@ Mielőtt elkezdené, ellenőrizze az alábbiakat:
 **Támogatás** | **Részletek**
 --- | ---
 **Támogatott központi telepítések** | Az SQL Marketplace Azure-beli virtuális gépek és a nem piactér (SQL Server manuálisan telepített) virtuális gépek támogatottak.
-**Támogatott térségek** | Délkelet-Ausztrália, Kelet-Ausztrália (AE) <br> Dél-Brazília (BRS)<br> Közép-Kanada (CNC), Kelet-Kanada (CE)<br> Dél-Kelet-Ázsia (tenger), Kelet-Ázsia (EA) <br> USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), USA nyugati középső régiója (WCUS), USA nyugati régiója (WUS); USA 2. nyugati régiója (WUS 2), USA északi középső régiója (NCUS), USA középső régiója (ke), USA déli középső régiója (SCUS) <br> India Central (INC), Dél-India (INS) <br> Kelet-Japán (JPE), Nyugat-Japán (JPW) <br> Korea középső régiója (KRC), Dél-Korea (KRS) <br> Észak-Európa (NE), Nyugat-Európa <br> Egyesült Királyság déli régiója (UKS), Egyesült Királyság nyugati régiója (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Texas, US DoD – középső régió, US DoD – keleti régió
+**Támogatott térségek** | Délkelet-Ausztrália, Kelet-Ausztrália (AE) <br> Dél-Brazília (BRS)<br> Közép-Kanada (CNC), Kelet-Kanada (CE)<br> Dél-Kelet-Ázsia (tenger), Kelet-Ázsia (EA) <br> USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), USA nyugati középső régiója (WCUS), USA nyugati régiója (WUS); USA 2. nyugati régiója (WUS 2), USA északi középső régiója (NCUS), USA középső régiója (ke), USA déli középső régiója (SCUS) <br> India Central (INC), Dél-India (INS) <br> Kelet-Japán (JPE), Nyugat-Japán (JPW) <br> Korea középső régiója (KRC), Dél-Korea (KRS) <br> Észak-Európa (NE), Nyugat-Európa <br> Egyesült Királyság déli régiója (UKS), Egyesült Királyság nyugati régiója (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Texas, US DoD – középső régió, US DoD – keleti régió
 **Támogatott operációs rendszerek** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> A Linux jelenleg nem támogatott.
 **Támogatott SQL Server verziók** | SQL Server 2017-as részletes leírást [itt](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 és az SPS részletesen [itt](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Támogatott .NET-verziók** | A .NET-keretrendszer 4.5.2-es és újabb verziójának telepítése a virtuális gépen

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 5e38684500520d4565835456b94200aea399c938
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814110"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543024"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure Reservations önkiszolgáló csereprogramok és visszatérítések
 
@@ -60,11 +60,6 @@ Az eredeti számla meg lett szakítva, és létrejön egy új számla. A pénz v
 
 Az Azure-ban a következő szabályzatok állnak rendelkezésre: lemondás, cserék és visszatérítések.
 
-**Lemondási szabályzatok**
-
-- Ha megszakít egy foglalást, akkor a rendszer 12%-os korai lemondási díjat is igénybe vehet.
-- A lemondáshoz kapott visszatérítés a fennmaradó, a 12%-os korai lemondási díj mínusz a megmaradt Pro-rated egyenleg. A megszakításhoz nyissa meg a Azure Portal foglalását, és válassza a **visszatérítés**lehetőséget.
-
 **Exchange-házirendek**
 
 - Több meglévő foglalást is visszaadhat, hogy az azonos típusú új foglalást vásárolja meg. Egy típusú foglalást nem lehet másikra cserélni. Például nem lehet visszaadni egy virtuális gép foglalását egy SQL-foglalás megvásárlásához.
@@ -77,10 +72,12 @@ Az Azure-ban a következő szabályzatok állnak rendelkezésre: lemondás, cser
 - A cserékhez nem jár büntetés vagy éves korlátozás.
 
 **Visszatérítési szabályzatok**
+- Ha megszakít egy foglalást, akkor a rendszer 12%-os korai lemondási díjat is igénybe vehet.
+- A lemondáshoz kapott visszatérítés a fennmaradó, a 12%-os korai lemondási díj mínusz a megmaradt Pro-rated egyenleg. A megszakításhoz nyissa meg a Azure Portal foglalását, és válassza a **visszatérítés**lehetőséget.
 - A teljes visszatérítés összege nem haladhatja meg a 12 hónapos időszak $50 000 USD-t.
 - A visszatérítések kiszámítása a vételár vagy a foglalás aktuális díja alapján történik.
 - Csak a foglalási tulajdonosok dolgozhatnak fel visszatérítést. [Megtudhatja, hogyan adhat hozzá vagy módosíthat egy foglalást kezelő felhasználókat](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- A Microsoft fenntartja a jogot arra, hogy bármely megtérülés esetén 12%-os szankciót számoljon fel, bár a büntetés jelenleg nem számít fel díjat.
+- A Microsoft fenntartja a jogot arra, hogy bármilyen megtérülés esetén 12%-os szankciót számoljon fel. A büntetés jelenleg nem számít fel díjat, de a jövőben kerül kiszámlázásra.
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>A Premium Storage szolgáltatáshoz nem prémium szintű Exchange-tárterület
 

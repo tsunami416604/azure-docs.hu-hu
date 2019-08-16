@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f0ccf0e480fa57e0ffdfc94ca35cfaceded37a0b
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: cd67f435ff390267e01acd99594b9063db4c4ee1
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663904"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69559086"
 ---
 # <a name="personalizer-settings"></a>Személyre szabott beállítások
 
@@ -86,6 +86,7 @@ A **modell és a házirend**erőforrás-kezelés szakaszában tekintse át a mod
 ## <a name="import-and-export-learning-policy"></a>Képzési szabályzat importálása és exportálása
 
 A **modell és a házirend erőforrás-** kezelés szakaszában importáljon egy új képzési szabályzatot, vagy exportálja az aktuális képzési szabályzatot.
+A korábbi exportálásokból lekérheti a tanulási szabályzatok fájljait, vagy letöltheti az offline értékelések során felderített optimalizált szabályzatokat. Ezeknek a fájloknak a manuális módosítása hatással lesz a gépi tanulási teljesítményre és az offline értékelések pontosságára, és a Microsoft nem tudja tanúsítani a gépi tanulás és az értékelések pontosságát, vagy a manuálisan szerkesztett házirendek miatti szolgáltatási kivételeket.
 
 ## <a name="next-steps"></a>További lépések
 

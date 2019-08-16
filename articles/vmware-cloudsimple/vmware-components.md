@@ -3,17 +3,17 @@ title: Azure VMware-megoldás CloudSimple-Private Cloud VMware Components
 description: Leírja, hogyan vannak telepítve a VMware-összetevők a privát felhőben
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 89bc9c07ae74da1a4269a505627a7626e478ef99
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 26f58a38ac3abe9c6e2a3c6254190dffc4a51eb9
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812182"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543708"
 ---
 # <a name="private-cloud-vmware-components"></a>Private Cloud VMware-összetevők
 
@@ -47,11 +47,11 @@ a vCenter Server Appliance (VCSA) a CloudSimple által biztosított VMware-megol
 
 ### <a name="vcenter-single-sign-on"></a>vCenter egyszeri bejelentkezés
 
-A VCSA Embedded platform Services-vezérlője egy **vCenter egyszeri bejelentkezési tartománnyal**van társítva.  A tartománynév a **cloudsimple. local**nevet adja meg.  A rendszer létrehoz **CloudOwner@cloudsimple.com** egy alapértelmezett felhasználót a vCenter eléréséhez.  Felveheti a helyszíni/Azure Active Directory [Identity sources for vCenter](https://docs.azure.cloudsimple.com/set-vcenter-identity/).
+A VCSA Embedded platform Services-vezérlője egy **vCenter egyszeri bejelentkezési tartománnyal**van társítva.  A tartománynév a **cloudsimple. local**nevet adja meg.  A rendszer létrehoz **CloudOwner@cloudsimple.com** egy alapértelmezett felhasználót a vCenter eléréséhez.  Felveheti a helyszíni/Azure Active Directory [Identity sources for vCenter](set-vcenter-identity.md).
 
 ## <a name="vsan-storage"></a>vSAN-tároló
 
-A privát felhők teljesen konfigurált összes Flash vSAN-tárolóval jönnek létre a fürtben.  Az vSAN adattárral rendelkező vSphere-fürtök létrehozásához legalább három csomópontnak kell futnia ugyanazon SKU-ban.  A deduplikálás és a tömörítés alapértelmezés szerint engedélyezve van a vSAN adattárában.  Két lemezcsoport jön létre a vSphere-fürt minden egyes csomópontján. Mindegyik lemezcsoport egy gyorsítótár-lemezt és három kapacitású lemezt tartalmaz.
+A privát felhők teljesen konfigurált összes Flash vSAN-tárolóval jönnek létre a fürtben.  Az vSAN adattárral rendelkező vSphere-fürtök létrehozásához legalább három csomópontnak kell futnia ugyanazon SKU-ban.  A vSAN adattárolón alapértelmezés szerint engedélyezve van a Duplikálás és a tömörítés.  Két lemezcsoport jön létre a vSphere-fürt minden egyes csomópontján. Mindegyik lemezcsoport egy gyorsítótár-lemezt és három kapacitású lemezt tartalmaz.
 
 A rendszer létrehoz egy alapértelmezett vSAN-tárolási házirendet a vSphere-fürtön, és alkalmazza őket a vSAN adattárra.  Ez a házirend határozza meg, hogy a virtuális gép tárolási objektumai hogyan legyenek kiépítve és lefoglalva az adattáron belül, hogy garantálható legyen a szükséges szolgáltatási szint.  A tárolási házirend határozza meg a **tolerálható (tranzakciós)** és a **hibatűrési módszer**hibáit.  Új tárolási szabályzatokat hozhat létre, és alkalmazhatja őket a virtuális gépekre. Az SLA fenntartása érdekében a 25%-os tartalék kapacitást a vSAN adattáron kell karbantartani.  
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: e6ba6aeaeadb2359c4b30efa35471ca62dcc6b41
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 514098368c38c6d61bc192f5ba0f0450dc05776c
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033969"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533474"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Előzetes verzió – több Node-készlet létrehozása és kezelése az Azure Kubernetes Service-ben (ak)
 
@@ -35,7 +35,7 @@ Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfig
 
 ### <a name="install-aks-preview-cli-extension"></a>Az Kabai szolgáltatás telepítése – előnézeti CLI-bővítmény
 
-Ha több nodepools szeretne használni, szüksége lesz az *AK-* előnézeti CLI-bővítmény 0.4.1 vagy újabb verziójára. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg az elérhető frissítéseket:
+Több Node-készlet használatához szüksége lesz az *AK-* előnézeti CLI-bővítmény 0.4.1 vagy újabb verziójára. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg az elérhető frissítéseket:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -167,6 +167,9 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 
 ## <a name="upgrade-a-node-pool"></a>Csomópont-készlet frissítése
 
+> [!NOTE]
+> Egy fürtön vagy csomóponton található műveletek frissítése és méretezése kölcsönösen kizárható. Nem lehet egyszerre frissíteni és méretezni a fürt vagy a csomópont készletét. Ehelyett minden Művelettípus a következő, ugyanazon az erőforráson megjelenő kérelem előtt fejeződik be a cél erőforráson. Erről a hibaelhárítási útmutatóban [](https://aka.ms/aks-pending-upgrade)olvashat bővebben.
+
 Ha az AK-fürt az első lépésben lett létrehozva, `--kubernetes-version` a rendszer egy *1.13.9* adott meg. Ezzel beállítja a Kubernetes verzióját a vezérlő síkja és a kezdeti csomópont-készlet esetében is. A vezérlő síkja és a Kubernetes verziójának frissítéséhez különböző parancsok tartoznak. A `az aks upgrade` parancs a vezérlési sík frissítésére szolgál, míg az `az aks nodepool upgrade` egy adott csomópont-készlet frissítésére szolgál.
 
 Frissítse a *mynodepool* az Kubernetes *1.13.9*. Az az [AK Node Pool upgrade][az-aks-nodepool-upgrade] paranccsal frissítse a csomópont-készletet, ahogy az az alábbi példában is látható:
@@ -283,7 +286,7 @@ A skálázási művelet elvégzése néhány percet vesz igénybe.
 
 ## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>A fürt automatikus méretezésének engedélyezésével automatikusan méretezhető egy adott csomópont-készlet
 
-Az AK egy külön funkciót kínál az előzetes verzióban, amely automatikusan méretezi a csomópont-készleteket a [fürt automatikus méretezés](cluster-autoscaler.md)nevű összetevővel. Ez az összetevő egy olyan AK-bővítmény, amely csomópont-készleten engedélyezhető, és a csomópontok készletének egyedi minimális és maximális méretezési száma. Megtudhatja, hogyan [használhatja a fürt automéretezőjét egy csomópontos készleten](cluster-autoscaler.md#enable-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-multiple-node-pools).
+Az AK egy külön funkciót kínál az előzetes verzióban, amellyel automatikusan méretezheti a csomópont-készleteket a [fürt automatikus méretezés](cluster-autoscaler.md)nevű funkciójával. Ez a funkció egy olyan AK-bővítmény, amely egy csomópont-készletben engedélyezhető, és amelyekben egyedi minimális és maximális méretezési szám adható meg. Megtudhatja, hogyan [használhatja a fürt automéretezőjét egy csomópontos készleten](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
 
 ## <a name="delete-a-node-pool"></a>Csomópont-készlet törlése
 
@@ -553,6 +556,9 @@ az group deployment create \
 A Resource Manager-sablonban definiált csomópont-készlet beállításaitól és műveleteitől függően néhány percet is igénybe vehet az AK-fürt frissítése.
 
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Nyilvános IP-cím társítása egy csomópont-készletben
+
+> [!NOTE]
+> Az előzetes verzió ideje alatt a szolgáltatás a virtuális gépek üzembe helyezésével ütköző lehetséges Load Balancer-szabályok miatt korlátozva van a *standard Load BALANCER SKU-ban (előzetes verzió)* . Az előzetes verzióban az *Alapszintű Load BALANCER SKU* -t használja, ha csomóponthoz kell hozzárendelni egy nyilvános IP-címet.
 
 Az AK-csomópontok nem igénylik a saját nyilvános IP-címeiket a kommunikációhoz. Bizonyos esetekben azonban előfordulhat, hogy a csomópontok csomópontjain a saját nyilvános IP-címeiket kell megadni. Egy példa a játékra, ahol a konzolnak közvetlen csatlakoznia kell egy felhőalapú virtuális géphez a ugrások minimalizálásához. Ezt úgy érheti el, ha regisztrál egy külön előzetes verziójú szolgáltatásra, a Node nyilvános IP-címére (előzetes verzió).
 

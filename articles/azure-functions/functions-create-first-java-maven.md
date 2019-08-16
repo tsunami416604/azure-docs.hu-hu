@@ -13,12 +13,12 @@ ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
 ms.custom: mvc, devcenter, seo-java-july2019
-ms.openlocfilehash: 1bb370009ce76b1962204907689d85b4f89c26c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 116d211e366e17ba667baf1e1deae719b56dc3ee
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932159"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542747"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Az első függvény létrehozása a Java és a Maven használatával
 
@@ -67,7 +67,7 @@ mvn archetype:generate ^
     "-DarchetypeArtifactId=azure-functions-archetype"
 ```
 
-A Maven kérni fogja a projekt létrehozásához szükséges értékeket. A _groupId_ , _artifactId_ és _version_ értékek a [Maven elnevezési konvenciókra](https://maven.apache.org/guides/mini/guide-naming-conventions.html) vonatkozó referenciákban találhatók. Az _appName_ értékének egyedinek kell lennie az Azure-ban, ezért a Maven alapértelmezés szerint az előzőleg megadott _artifactId_ érték alapján létrehoz egy alkalmazásnevet. A _packageName_ érték meghatározza a Java-csomagot a létrehozott függvénykódhoz.
+A Maven kérni fogja a projekt létrehozásához szükséges értékeket. A _groupId_, _artifactId_ és _version_ értékek a [Maven elnevezési konvenciókra](https://maven.apache.org/guides/mini/guide-naming-conventions.html) vonatkozó referenciákban találhatók. Az _appName_ értékének egyedinek kell lennie az Azure-ban, ezért a Maven alapértelmezés szerint az előzőleg megadott _artifactId_ érték alapján létrehoz egy alkalmazásnevet. A _packageName_ érték meghatározza a Java-csomagot a létrehozott függvénykódhoz.
 
 Az alábbi `com.fabrikam.functions` és `fabrikam-functions` azonosítók példaként szolgálnak, és könnyebben átláthatóvá teszik a rövid útmutató későbbi lépéseit. Javasoljuk, hogy adja meg a saját értékekeit a Mavennek ebben a lépésben.
 
@@ -202,13 +202,13 @@ Hello AzureFunctions!
 Szerkessze a létrehozott projektben az `src/main.../Function.java` forrásfájlt a függvényalkalmazás által visszaadott szöveg módosításához. Módosítsa ezt a sort:
 
 ```java
-return request.createResponse(200, "Hello, " + name);
+return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
 ```
 
 A következőre:
 
 ```java
-return request.createResponse(200, "Hi, " + name);
+return request.createResponseBuilder(HttpStatus.OK).body("Hi, " + name).build();
 ```
 
 Mentse a módosításokat. Futtassa a MVN tiszta csomagot, és végezze `azure-functions:deploy` el az újbóli üzembe helyezést a terminálról a korábban lefuttatva. A függvényalkalmazás frissül, és ez a kérés:

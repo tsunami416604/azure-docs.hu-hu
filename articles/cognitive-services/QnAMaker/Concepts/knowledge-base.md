@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/15/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 022b16669791b9b9cce066b3dd17c70b33569cc0
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 8cd63913c0e96d496aa617369601c1dd121b4b46
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955238"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542842"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Mit jelent a QnA Maker Knowledge base?
 
@@ -59,6 +59,70 @@ A folyamatot az alábbi táblázat ismerteti:
 
 A használatban lévő funkciók közé tartozik például a Word-szintű szemantika, a nagybetűs szint fontossága egy corpusban, és a mélyebben megtanult szemantikai modellek határozzák meg a hasonlóságot és a megfelelést két szöveges karakterlánc között.
 
+## <a name="http-request-and-response-with-endpoint"></a>HTTP-kérelem és-válasz végponttal
+A Tudásbázis közzétételekor a szolgáltatás egy REST-alapú HTTP-végpontot hoz létre , amely integrálható az alkalmazásba, és általában egy csevegési robot. 
+
+### <a name="the-user-query-request-to-generate-an-answer"></a>A felhasználó lekérdezési kérelme a válasz létrehozásához
+
+A **felhasználó lekérdezése** az a kérdés, hogy a végfelhasználó megkéri a tudásbázist, például `How do I add a collaborator to my app?`:. A lekérdezés gyakran természetes nyelvi formátumban van, vagy néhány kulcsszó, amely a kérdést jelképezi, például `help with collaborators`:. A lekérdezést az ügyfélalkalmazás HTTP- **kérelme** alapján küldi el a rendszer.
+
+```json
+{
+    "question": "qna maker and luis",
+    "top": 6,
+    "isTest": true,
+    "scoreThreshold": 20,
+    "strictFilters": [
+    {
+        "name": "category",
+        "value": "api"
+    }],
+    "userId": "sd53lsY="
+}
+```
+
+A választ a tulajdonságok, például a [scoreThreshold](./confidence-score.md#choose-a-score-threshold), a [Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)és a [stringFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags)tulajdonságainak beállításával szabályozhatja.
+
+A beszélgetési [tartalmat](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) többfordulatos [funkciókkal](../how-to/multiturn-conversation.md) használva megtarthatja a beszélgetést a kérdések és válaszok pontosítására, hogy megtalálja a megfelelő és a végső választ.
+
+### <a name="the-response-from-a-call-to-generate-answer"></a>A válasz meghívása a válasz létrehozásához
+
+A HTTP- **Válasz** a Tudásbázisból beolvasott válasz, amely egy adott felhasználói lekérdezés legjobb egyezése alapján történik. A válasz tartalmazza a választ és az előrejelzési pontszámot. Ha több legfelső szintű választ kér, a `top` tulajdonsággal egynél több legjobb választ kap, amelyek mindegyike egy pontszámmal rendelkezik. 
+
+```json
+{
+    "answers": [
+        {
+            "questions": [
+                "What is the closing time?"
+            ],
+            "answer": "10.30 PM",
+            "score": 100,
+            "id": 1,
+            "source": "Editorial",
+            "metadata": [
+                {
+                    "name": "restaurant",
+                    "value": "paradise"
+                },
+                {
+                    "name": "location",
+                    "value": "secunderabad"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### <a name="test-and-production-knowledge-base"></a>Tesztelési és üzemi Tudásbázis
+Tudásbázis az adattár kérdések, valamint választ ad a, karbantartani, és a QnA Maker keresztül használt. Az egyes QnA Maker szintek több tudásbázisok használható.
+
+Tudásbázis kétállapotú - teszt rendelkezik, és közzé. 
+
+A **teszt Tudásbázis** az a verzió, amelyet a rendszer szerkeszt, ment és tesztelt a válaszok pontossága és teljessége érdekében. A teszt Tudásbázisban végzett módosítások nem érintik a végfelhasználó számára az alkalmazás-/ csevegőrobot. A teszt Tudásbázis a http `test` -kérelemben is ismert. 
+
+A **közzétett Tudásbázis** a csevegési robotban/alkalmazásban használt verzió. Tudásbázis közzététele művelet a teszt Tudásbázis tartalmát a Tudásbázis közzétett verziójának helyezi. Mivel a közzétett Tudásbázis a verzió, az alkalmazás által használt a végponton keresztül, annak érdekében, hogy a tartalom-e a megfelelő és tesztelt gondot kell fordítani. A közzétett Tudásbázis a http `prod` -kérelemben is ismert. 
 
 ## <a name="next-steps"></a>További lépések
 
@@ -68,3 +132,11 @@ A használatban lévő funkciók közé tartozik például a Word-szintű szeman
 ## <a name="see-also"></a>Lásd még
 
 [A QnA Maker áttekintése](../Overview/overview.md)
+
+Tudásbázis létrehozása és szerkesztése a rel: 
+* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamaker/knowledgebase)
+* [.Net SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
+
+Válasz készítése az alábbiakkal: 
+* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
+* [.Net SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

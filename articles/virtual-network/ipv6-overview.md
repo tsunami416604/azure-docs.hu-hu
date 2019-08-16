@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5093b74484cd04a0c0c7afed8e2ebc725af033f5
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 33078439e8f055d746fad9949a9b0d7651e120f7
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249829"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543819"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Mi az az IPv6 for Azure Virtual Network? (Előzetes verzió)
 
@@ -48,10 +48,12 @@ A VNet-hez készült IPv6 a következő képességeket tartalmazza:
 
 - Az Azure-ügyfelek meghatározhatják saját IPv6-alapú virtuális hálózati címüket, hogy megfeleljenek alkalmazásaik, ügyfeleik igényeinek, vagy zökkenőmentesen integrálhatók a helyszíni IP-helyükbe.
 - A Dual stack alhálózatokkal rendelkező kettős verem (IPv4 és IPv6) virtuális hálózatok lehetővé teszik, hogy az alkalmazások IPv4-és IPv6-erőforrásokkal csatlakozhassanak a virtuális hálózatban vagy az interneten.
-- Az erőforrások védelme a hálózati biztonsági csoportokra vonatkozó IPv6-szabályokkal
+    > [!IMPORTANT]
+    > Az IPv6-alhálózatok méretének pontosan/64-nek kell lennie.  Ez biztosítja a kompatibilitást, ha úgy dönt, hogy engedélyezi az alhálózat útválasztását egy helyszíni hálózatra, mivel egyes útválasztók csak a/64 IPv6-útvonalakat fogadják el.  
+- Az erőforrások védelme a hálózati biztonsági csoportokra vonatkozó IPv6-szabályokkal.
 - Testre szabhatja az IPv6-forgalom útválasztását a virtuális hálózaton a felhasználó által megadott útvonalakkal – különösen a hálózati virtuális berendezések kihasználása az alkalmazások bővítéséhez.
 - Lehetővé teszi, hogy az internetes ügyfelek zökkenőmentesen férjenek hozzá a kettős stack-alkalmazásokhoz, és a Azure DNS IPv6-(AAAA-) rekordokat támogatják. 
-- Standard IPv6 nyilvános Load Balancer támogatás rugalmas, méretezhető alkalmazások létrehozásához, amelyek a következőket tartalmazzák:
+- Standard IPv6-os nyilvános terheléselosztó-támogatás rugalmas és skálázható alkalmazások létrehozásához, az alábbiakkal:
     - Opcionális IPv6-alapú állapot-mintavétel, amely meghatározza, hogy mely háttérbeli készlet-példányok állapota, így az új folyamatok fogadására is képes. .  
     - Opcionális kimenő szabályok, amelyek teljes körű deklaratív vezérlést biztosítanak a kimenő kapcsolaton keresztül az adott igényeknek megfelelően méretezhető és hangolható módon.
     - Nem kötelező több előtér-konfiguráció, amely lehetővé teszi, hogy egyetlen terheléselosztó több IPv6 nyilvános IP-címet használjon – ugyanezt a frontend-protokollt és portot újra felhasználhatja a frontend-címek között.

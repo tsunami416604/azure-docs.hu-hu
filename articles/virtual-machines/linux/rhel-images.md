@@ -3,22 +3,22 @@ title: Red Hat Enterprise Linux rendszerképek az Azure-ban | Microsoft Docs
 description: Ismerkedjen meg Red Hat Enterprise Linux rendszerképekkel Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: gwallace
+author: asinn826
+manager: BorisB2015
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 6/6/2019
+ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: 7d34e480dd3cf90f1948e83ea1d18c04f1dcdce2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 25b0ccfa5ed2b7b9ff031565fe7f14b1477769c4
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854443"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543850"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux rendszerképek az Azure-ban
 Ez a cikk az Azure Marketplace-en elérhető Red Hat Enterprise Linux-(RHEL-) rendszerképeket ismerteti, valamint az elnevezési és adatmegőrzési szabályzatok körét.
@@ -99,13 +99,15 @@ A következő táblázat a SKU-ban található alverziót tartalmazó RHEL-lemez
 
 >[!NOTE]
 > Az írás időpontjában csak a 7,4-es és újabb alverziók RHEL EUS-támogatással rendelkeznek. A EUS már nem támogatott a RHEL < = 7,3 esetében.
+>
+> A RHEL EUS rendelkezésre állásáról további részleteket [itt](https://access.redhat.com/support/policy/updates/errata)találhat.
 
 Másodlagos verzió |EUS-rendszerkép – példa              |EUS állapota                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
 RHEL 7,4      |RedHat:RHEL:7.4:7.4.2019041718 | A 2019. április és újabb kiadású lemezképek alapértelmezés szerint EUS lesznek|
 RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | A 2019-es és újabb kiadású lemezképek alapértelmezés szerint EUS lesznek. |
 RHEL 7,6      |RedHat:RHEL:7.6:7.6.2019052206 | Az 2019-es és újabb verziókon közzétett lemezképek alapértelmezés szerint EUS lesznek  |
-RHEL 8,0      |–                            | Jelenleg nincsenek elérhető EUS-lemezképek                 |
+RHEL 8,0      |–                            | Nem érhető el EUS a Red hat-ból                               |
 
 
 ## <a name="list-of-rhel-images-available"></a>Az elérhető RHEL-lemezképek listája

@@ -11,12 +11,12 @@ ms.author: sihhu
 ms.reviewer: trbye
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 241c84212132ee90e71291758e094cb4a115f2e2
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: cc243fea67c479879f25e4f39e3cd1c5e0237869
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018084"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534364"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatelőkészítés a regressziós modellezéshez
 
@@ -35,40 +35,15 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ugorjon a telepítési [környezet beállítása](#start) a jegyzetfüzet lépéseinek beolvasásához, vagy az alábbi utasításokat követve szerezze be a jegyzetfüzetet, és futtassa azt Azure Notebooks vagy a saját notebook-kiszolgálóján. A jegyzetfüzet futtatásához a következőkre lesz szüksége:
+* Fejezze be [az oktatóanyagot: Ismerkedjen meg az első ml-](tutorial-1st-experiment-sdk-setup.md) kísérlet létrehozásával:
+    * Munkaterület létrehozása
+    * Felhőalapú notebook-kiszolgáló létrehozása
+    * A Jupyter notebook irányítópultjának elindítása
 
-* Python 3,6 notebook-kiszolgáló a következő telepítéssel:
-    * A `azureml-dataprep` csomag a Azure Machine learning SDK-ból
-* Az oktatóanyag notebookja
+* A Jupyter notebook irányítópultjának elindítása után nyissa meg az **oktatóanyagok/Regression-part1-Data-PREP. ipynb** notebookot.
 
-* [Felhőalapú notebook-kiszolgáló használata a](#azure) munkaterületen 
-* [Saját notebook-kiszolgáló](#server) használata
+Ez az oktatóanyag a githubon [](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha saját [helyi környezetében](how-to-configure-environment.md#local)szeretné használni.  Győződjön meg arról, hogy telepítette a `azureml-dataprep` csomagot a Azure Machine learning SDK-ból.
 
-### <a name="azure"></a>Felhőalapú notebook-kiszolgáló használata a munkaterületen
-
-Könnyedén megkezdheti saját felhőalapú notebook-kiszolgálójának megkezdését. A Pythonhoz készült Azure Machine Learning SDK már telepítve van és konfigurálva van a felhőalapú erőforrás létrehozása után.
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* A jegyzetfüzet weboldalának elindítása után futtassa az **oktatóanyagok/Regression-part1-Data-PREP. ipynb** notebookot.
-
-### <a name="server"></a>Saját Jupyter notebook-kiszolgáló használata
-
-Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  A lépések elvégzése után futtassa az **oktatóanyagok/Regression-part1-Data-PREP. ipynb** notebookot.
-
-1. Hajtsa végre a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)telepítési lépéseit.
-1. A `azureml-dataprep` csomag automatikusan települ az SDK telepítésekor.
-1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
-
-    ```
-    git clone https://github.com/Azure/MachineLearningNotebooks.git
-    ```
-
-1. Indítsa el a notebook-kiszolgálót a klónozott könyvtárból.
-
-    ```shell
-    jupyter notebook
-    ```
 
 ## <a name="start"></a>A fejlesztési környezet beállítása
 

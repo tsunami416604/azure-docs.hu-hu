@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: a357e403aba64a5d05e359bf1186b01f73146758
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0f8942d92958ee8add9645239cc5664a4a96bb33
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934095"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533355"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>IoT Hub eseményekre való reagálás Event Grid használatával a műveletek elindításához
 
@@ -203,3 +203,5 @@ Az IoT Hub eseményeket kezelő alkalmazásoknak a következő ajánlott eljár�
 * [További információ a Event Grid](../event-grid/overview.md)
 
 * [Az Útválasztás IoT Hub események és üzenetek közötti különbségek összehasonlítása](iot-hub-event-grid-routing-comparison.md)
+
+* [Ismerje meg, hogyan használhatók a IoT telemetria-események a IoT térbeli elemzések megvalósításához Azure Maps használatával (és IoT Hub üzenet-útválasztással)](../azure-maps/tutorial-iot-hub-maps.md#filter-events-using-iot-hub-message-routing)

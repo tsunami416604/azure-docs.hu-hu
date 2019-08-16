@@ -3,7 +3,7 @@ title: Univerzális Windows-platform megfontolások (Microsoft Authentication Li
 description: Ismerkedjen meg az Univerzális Windows-platform és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokkal.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d78a64ee41e37fe53eba20eab6753c0b6eb8389
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 263264742088a0012ea844946e13cffbab634b29
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277917"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532471"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>Univerzális Windows-platform-specifikus megfontolások a MSAL.NET
 A UWP-on több szempontot is figyelembe kell vennie a MSAL.NET használatakor.
@@ -32,7 +32,7 @@ A WinRT platformon `PublicClientApplication` a következő logikai tulajdonság 
 
 > [!IMPORTANT]
 > Ha a tulajdonságot igaz értékre állítja, feltételezi, hogy az alkalmazás fejlesztője engedélyezte az integrált Windows-hitelesítést (IWA) az alkalmazásban. Ehhez:
-> - A UWP alkalmazásban a képességek lapon engedélyezze a következő képességeket:  ``Package.appxmanifest``
+> - A UWP alkalmazásban a képességek lapon engedélyezze a következő képességeket: ``Package.appxmanifest``
 >   - Vállalati hitelesítés
 >   - Magánhálózatok (ügyfél & kiszolgáló)
 >   - Megosztott felhasználói tanúsítvány
@@ -67,7 +67,7 @@ Részletekért lásd: [web Authentication Broker-Hegedűs](https://docs.microsof
 ## <a name="next-steps"></a>További lépések
 További részleteket az alábbi példákban talál:
 
-Sample | Platform | Leírás 
+Minta | Platform | Leírás 
 |------ | -------- | -----------|
 |[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Egy Univerzális Windows-platform ügyfélalkalmazás a msal.net használatával, amely az Azure AD v 2.0-végponttal hitelesítő felhasználó Microsoft Graphhoz fér hozzá. <br>![Topológia](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Egy egyszerű Xamarin űrlapos alkalmazás, amely bemutatja, hogyan használhatja az MSAL-t a MSA és az Azure AD hitelesítésére a HRE 2.0-s végponton keresztül, és az eredményül kapott jogkivonattal fér hozzá a Microsoft Graphhoz. <br>![Topológia](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

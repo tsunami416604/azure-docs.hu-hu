@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 51ef55247d3262d8707403ed09cc8643403dda23
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 393c66f57cd4a7621ad660774a95502c0f5ad8c4
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952973"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534710"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
@@ -250,6 +250,15 @@ Az Azure piactéren elérhető, igény szerinti Red Hat Enterprise Linux (RHEL) 
 | Vezérlő újraindítása| Meghatározza az újraindítások kezelését. Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
 
 A frissítési központi telepítések programozott módon is létrehozhatók. Ha meg szeretné tudni, hogyan hozhat létre frissítési központi telepítést a REST API, tekintse meg a [szoftverfrissítési konfigurációk – létrehozás](/rest/api/automation/softwareupdateconfigurations/create)című témakört. Létezik egy minta runbook is, amely a heti frissítés központi telepítésének létrehozására használható. További információ erről a runbook: [heti frissítési telepítés létrehozása egy vagy több virtuális géphez egy erőforráscsoport esetében](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+
+### <a name="maintenance-windows"></a>Karbantartási időszakok
+
+A karbantartási időszakok a frissítések telepítésének időtartamát szabályozzák. Karbantartási időszak megadásakor vegye figyelembe a következő adatokat.
+
+* A karbantartási időszakok azt szabályozzák, hogy a rendszer hány frissítést próbáljon telepíteni.
+* A Update Management nem állítja le az új frissítések telepítését, ha a karbantartási időszak végére közeledik.
+* A Update Management nem szakítja meg a folyamatban lévő frissítéseket, ha a karbantartási időszak túllépve.
+* Ha a karbantartási időszakot túllépik a Windowson, gyakran egy szervizcsomag-frissítés miatt sok időt vesz igénybe a telepítés.
 
 ### <a name="multi-tenant"></a>Több-bérlős frissítések telepítése
 

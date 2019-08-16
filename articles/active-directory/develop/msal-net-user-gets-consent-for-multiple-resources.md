@@ -1,9 +1,9 @@
 ---
-title: Jóváhagyás lekérése több erőforrás (Microsoft-hitelesítési tár .NET) |} Az Azure
-description: Ismerje meg, hogy a felhasználók miként juthatnak előzetes beleegyezés kérése a Microsoft-hitelesítési tár .NET (MSAL.NET) használatával több erőforrás.
+title: Beleegyezik több erőforráshoz (Microsoft Authentication Library for .NET) | Azure
+description: Megtudhatja, hogy a felhasználók hogyan kaphatnak előzetes beleegyezett több erőforrásra a Microsoft Authentication Library for .NET (MSAL.NET) használatával.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,29 +13,29 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8bd9a86d5ec0d39a7f1c26adac52f41e6420283
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ded7a6fc465b4cfc98d26f65195f89de8381ac6
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66121989"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532372"
 ---
-# <a name="user-gets-consent-for-several-resources-using-msalnet"></a>Felhasználói jóváhagyás az MSAL.NET használatával több erőforrás beolvasása
-A Microsoft identity platform végpont nem engedélyezi, hogy egyszerre több erőforrás lekérése egy token. A Microsoft-hitelesítési tár .NET (MSAL.NET) használata esetén a beolvasási token módszer a hatókörök paramétere csak tartalmaznia kell egy adott erőforrás hatókörök. Azonban meg előre engedélyezhetik, hogy előre a számos erőforrás használatával további hatókörökkel megadásával a `.WithExtraScopeToConsent` builder metódust.
+# <a name="user-gets-consent-for-several-resources-using-msalnet"></a>A felhasználó beleegyezik több erőforráshoz a MSAL.NET használatával
+A Microsoft Identity platform végpontja nem teszi lehetővé, hogy egyszerre több erőforráshoz kapjon tokent. A .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatakor a beszerzési jogkivonat metódus Scopes paraméterének csak egyetlen erőforráshoz tartozó hatóköröket kell tartalmaznia. A `.WithExtraScopeToConsent` Builder metódussal azonban további hatóköröket is megadhat, ha előre beleegyezett több erőforráshoz.
 
 > [!NOTE]
-> Jóváhagyás lekérdezése több erőforrások működését a Microsoft identity platform, de nem Azure AD B2C-t. Az Azure AD B2C csak rendszergazdai jóváhagyás, nem a felhasználói beleegyezés támogatja.
+> A Microsoft Identity platform számos erőforrásának beszerzése, de nem Azure AD B2C. A Azure AD B2C csak a rendszergazdai jogosultságokat támogatja, a felhasználói beleegyezett nem.
 
-Ha például két olyan erőforrásokat, ha a 2 hatókörök minden:
+Ha például két olyan erőforrással rendelkezik, amelyek mindegyike 2 hatókörrel rendelkezik:
 
-- https:\//mytenant.onmicrosoft.com/customerapi (2 hatókörökkel `customer.read` és `customer.write`)
-- https:\//mytenant.onmicrosoft.com/vendorapi (2 hatókörökkel `vendor.read` és `vendor.write`)
+- https:\//mytenant.onmicrosoft.com/customerapi (2 hatókörrel `customer.read` és `customer.write`)
+- https:\//mytenant.onmicrosoft.com/vendorapi (2 hatókörrel `vendor.read` és `vendor.write`)
 
-Használjon a `.WithExtraScopeToConsent` módosító, amelyen a *extraScopesToConsent* paramétert az alábbi példában látható módon:
+Az `.WithExtraScopeToConsent` alábbi példában látható módon a *extraScopesToConsent* paraméterrel rendelkező módosítót kell használnia:
 
 ```csharp
 string[] scopesForCustomerApi = new string[]
@@ -56,7 +56,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-Ez lesz, hozzáférési jogkivonatot kapjon az első webes API-hoz. Majd ha a második webes API-k beavatkozás nélkül is el kell beszerezni a jogkivonatot a jogkivonat-gyorsítótárból:
+Ez egy hozzáférési jogkivonatot kap az első webes API-hoz. Ezután, amikor el kell érnie a második webes API-t, a jogkivonat-gyorsítótárból csendesen is beszerezheti a tokent:
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();

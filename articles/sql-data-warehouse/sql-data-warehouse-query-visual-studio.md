@@ -2,20 +2,20 @@
 title: Csatlakozás az Azure SQL Data Warehouse-hoz – VSTS | Microsoft Docs
 description: Az SQL Data Warehouse lekérdezése a Visual Studióval.
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.date: 08/15/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5c0867252023378347e55d673260f28a7bf2ccc4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: aea2b3229dd793bc31adc0038763e09340a5f85a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479451"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534775"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Csatlakozás a SQL Data Warehouse-hoz a Visual Studio és az SSDT használatával
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "68479451"
 > 
 > 
 
-A Visual Studio használatával néhány perc alatt lekérdezheti az Azure SQL Data Warehouse-t. Ez a módszer a Visual Studio SQL Server Data Tools (SSDT) bővítményét használja. 
+A Visual Studio használatával néhány perc alatt lekérdezheti az Azure SQL Data Warehouse-t. Ez a metódus a SQL Server Data Tools (SSDT) bővítményt használja a Visual Studio 2019-ben. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
@@ -37,7 +37,7 @@ Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 * Az Azure SQL-kiszolgáló teljes neve. Ennek megkeresésével kapcsolatban olvassa el a [Connect to SQL Data Warehouse][Connect to SQL Data Warehouse] (Csatlakozás az SQL Data Warehouse-hoz) című cikket.
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Csatlakozás az SQL Data Warehouse-hoz
-1. Nyissa meg a Visual Studio 2013-at vagy 2015-öt.
+1. Nyissa meg a Visual Studio 2019 alkalmazást.
 2. Nyissa meg az SQL Server Object Explorert. Ehhez válassza a következőket: **View** (Nézet)  > **SQL Server Object Explorer**.
    
     ![SQL Server Object Explorer][1]

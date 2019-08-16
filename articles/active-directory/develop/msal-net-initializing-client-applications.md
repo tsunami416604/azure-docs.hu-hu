@@ -1,9 +1,9 @@
 ---
-title: Inicializálja az ügyfélalkalmazások (Microsoft-hitelesítési tár .NET) |} Az Azure
-description: További információ a nyilvános ügyfél és a bizalmas ügyfélalkalmazások használatával a Microsoft-hitelesítési tár .NET (MSAL.NET) inicializálása közben.
+title: Ügyfélalkalmazások inicializálása (Microsoft Authentication Library for .NET) | Azure
+description: Ismerje meg, hogyan inicializálhatja a nyilvános ügyfelet és a bizalmas ügyfélalkalmazások alkalmazásait a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,46 +13,46 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f22ff41e380a16af2aa45df9a61eefbf293ff83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5012da8f2ff41971df674fd35162fe14e1de8fc9
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544319"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532638"
 ---
-# <a name="initialize-client-applications-using-msalnet"></a>Az ügyfélalkalmazások MSAL.NET használatával inicializálása
-Ez a cikk ismerteti az ügyfél nyilvános és Microsoft-hitelesítési tár .NET (MSAL.NET) használatával bizalmas ügyfélalkalmazások inicializálása.  Az ügyfél alkalmazástípusok és alkalmazáskonfigurációs beállítások kapcsolatos további információkért olvassa el a [áttekintése](msal-client-applications.md).
+# <a name="initialize-client-applications-using-msalnet"></a>Ügyfélalkalmazások inicializálása a MSAL.NET használatával
+Ez a cikk a nyilvános ügyfelek és a bizalmas ügyfélalkalmazások a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával történő inicializálását ismerteti.  Az ügyfélalkalmazások típusairól és az alkalmazás konfigurációs lehetőségeiről az [Áttekintés](msal-client-applications.md)című témakörben olvashat bővebben.
 
-Az MSAL.NET 3.x, az ajánlott módszer a példányt létrehozni egy alkalmazást az alkalmazás kapcsolat építői használatával van: `PublicClientApplicationBuilder` és `ConfidentialClientApplicationBuilder`. Az alkalmazás a kódot, vagy egy konfigurációs fájlból, vagy akár mindkét módszert úgy konfigurálhatja egy hatékony mechanizmust kínálnak.
+A 3. x MSAL.net az alkalmazások létrehozásának ajánlott módja az alkalmazás-építők használata: `PublicClientApplicationBuilder` és. `ConfidentialClientApplicationBuilder` Hatékony mechanizmust biztosítanak az alkalmazás konfigurálásához a kódban, vagy egy konfigurációs fájlból, vagy akár mindkét módszer keverésével is.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Alkalmazás inicializálása, előtt először létre kell [regisztrálja](quickstart-register-app.md) úgy, hogy az alkalmazás integrálható a Microsoft identitásplatformjához.  A regisztrációt követően szükség lehet a következő információkat (amely az Azure Portalon található):
+Az alkalmazás inicializálásához először regisztrálnia kell, hogy [](quickstart-register-app.md) az alkalmazás integrálható legyen a Microsoft Identity platformmal.  A regisztráció után a következő információkra lehet szüksége (amelyek a Azure Portalban találhatók):
 
-- Az ügyfél-Azonosítót (GUID képviselő karakterláncot)
-- Az identitásszolgáltató szolgáltató URL-címe (a példány neve) és az alkalmazás bejelentkezési célközönség. E két paraméter együttesen hatóságként ismert.
-- A bérlő Azonosítóját, ha egy üzletági alkalmazás kizárólag a szervezetben (egybérlős alkalmazás elnevezett is ismert).
-- Az alkalmazás titkos kulcs (ügyfél titkos karakterlánc) vagy a tanúsítvány (típusú X509Certificate2) egy bizalmas ügyfél alkalmazás esetén.
-- A web apps, és egyes esetekben a nyilvános ügyfélalkalmazások (különösen ha az alkalmazás egy közvetítő) fog is beállította a redirectUri, lépjen kapcsolatba az identitásszolgáltató vissza az alkalmazás a biztonsági jogkivonatokkal.
+- Az ügyfél-azonosító (GUID jelölő sztring)
+- Az identitás-szolgáltató URL-címe (a példány neve) és az alkalmazás bejelentkezési célközönsége. Ez a két paraméter együttesen a hatóság néven ismert.
+- A bérlő azonosítója, ha csak az Ön szervezete számára ír üzletági alkalmazást (más néven egybérlős alkalmazás).
+- Az alkalmazás titkos kulcsa (az ügyfél titkos karakterlánca) vagy a tanúsítvány (X509certificate2) típusú), ha bizalmas ügyfélalkalmazás.
+- Webalkalmazások esetében, és esetenként a nyilvános ügyfélalkalmazások számára (különösen, ha az alkalmazásnak közvetítőt kell használnia), azt a redirectUri is be kell állítania, amelyben az identitás-szolgáltató felveszi a kapcsolatot az alkalmazással a biztonsági jogkivonatokkal.
 
-## <a name="ways-to-initialize-applications"></a>Alkalmazások inicializálása módjai
-Nincsenek számos különböző módon az ügyfélalkalmazások elindítását.
+## <a name="ways-to-initialize-applications"></a>Alkalmazások inicializálási módjai
+Az ügyfélalkalmazások számos különböző módon hozhatók létre.
 
-### <a name="initializing-a-public-client-application-from-code"></a>Egy nyilvános ügyfélalkalmazás kódból inicializálása
+### <a name="initializing-a-public-client-application-from-code"></a>Nyilvános ügyfélalkalmazás inicializálása kódból
 
-Az alábbi kód példányosít egy nyilvános ügyfélalkalmazás aláírási a felhasználók a Microsoft Azure nyilvános felhő, a munkahelyi és iskolai fiókokhoz vagy személyes Microsoft-fiókjukkal.
+A következő kód egy nyilvános ügyfélalkalmazás, a Microsoft Azure nyilvános felhőben, a munkahelyi és az iskolai fiókkal, illetve a személyes Microsoft-fiókjaival való bejelentkezési felhasználókat hozza létre.
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-### <a name="initializing-a-confidential-client-application-from-code"></a>A kód egy bizalmas ügyfélalkalmazás inicializálása
+### <a name="initializing-a-confidential-client-application-from-code"></a>Bizalmas ügyfélalkalmazás inicializálása kódból
 
-Ugyanolyan módon, a következő kódot a bizalmas alkalmazások példányosítja (található webalkalmazás `https://myapp.azurewebsites.net`) kezelése a Microsoft Azure nyilvános felhőben, a munkahelyi és iskolai fiókokhoz vagy személyes Microsoft-fiókjukkal felhasználók származó jogkivonatokat. Az alkalmazás megosztása ügyfélkódot, amelynél az identitásszolgáltató:
+Ugyanígy a következő kód egy bizalmas alkalmazást (egy webalkalmazást `https://myapp.azurewebsites.net`) hoz létre, amely a Microsoft Azure nyilvános felhőben lévő felhasználók jogkivonatait, munkahelyi és iskolai fiókjait, illetve személyes Microsoft-fiókjait kezeli. Az alkalmazás az identitás-szolgáltatóval azonosítható az ügyfél titkos kulcsának megosztásával:
 
 ```csharp
 string redirectUri = "https://myapp.azurewebsites.net";
@@ -62,7 +62,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
     .Build();
 ```
 
-Mivel előfordulhat, hogy tudja, éles környezetben, hanem egy ügyfélkulcs használatával, előfordulhat, hogy megosztani kívánt Azure AD-vel egy tanúsítványt. A kód a következő lesz:
+Előfordulhat, hogy az éles környezetben az ügyfél titkos kulcsa helyett érdemes megosztani az Azure AD-tanúsítvánnyal. A kód ezután a következő lesz:
 
 ```csharp
 IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create(clientId)
@@ -71,9 +71,9 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
     .Build();
 ```
 
-### <a name="initializing-a-public-client-application-from-configuration-options"></a>Egy nyilvános ügyfélalkalmazás konfigurációs lehetőség közül inicializálása
+### <a name="initializing-a-public-client-application-from-configuration-options"></a>Nyilvános ügyfélalkalmazás inicializálása a konfigurációs beállításokból
 
-Az alábbi kód példányosít egy nyilvános ügyfélalkalmazást egy konfigurációs objektumot, amelyek ki vannak töltve a programozott módon vagy egy konfigurációs fájl olvasásakor:
+A következő kód egy nyilvános ügyfélalkalmazás példányát egy konfigurációs objektumból hozza létre, amely programozott módon vagy egy konfigurációs fájlból is kitölthető:
 
 ```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
@@ -81,9 +81,9 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
     .Build();
 ```
 
-### <a name="initializing-a-confidential-client-application-from-configuration-options"></a>Konfigurációs lehetőség közül bizalmas ügyfélalkalmazás inicializálása
+### <a name="initializing-a-confidential-client-application-from-configuration-options"></a>Bizalmas ügyfélalkalmazás inicializálása a konfigurációs beállításokból
 
-A minta ugyanolyan típusú bizalmas ügyfélalkalmazások vonatkozik. Azt is megteheti a többi paraméter használatával `.WithXXX` dostupnosti (itt egy tanúsítványt).
+Ugyanez a minta vonatkozik a bizalmas ügyfélalkalmazások alkalmazására is. Más paramétereket `.WithXXX` is hozzáadhat a módosítóhoz (itt egy tanúsítvány).
 
 ```csharp
 ConfidentialClientApplicationOptions options = GetOptions(); // your own method
@@ -92,51 +92,51 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
     .Build();
 ```
 
-## <a name="builder-modifiers"></a>A jelentéskészítő dostupnosti
+## <a name="builder-modifiers"></a>Builder-módosítók
 
-Az alkalmazás sikerei, számos kódtöredékekre `.With` módszereit lehet alkalmazni, dostupnosti (például `.WithCertificate` és `.WithRedirectUri`). 
+Az alkalmazás-építőket használó kódrészletekben számos `.With` metódust lehet alkalmazni Módosítóként ( `.WithCertificate` például és `.WithRedirectUri`). 
 
-### <a name="modifiers-common-to-public-and-confidential-client-applications"></a>Nyilvános és a bizalmas ügyfélalkalmazások közös dostupnosti
+### <a name="modifiers-common-to-public-and-confidential-client-applications"></a>Nyilvános és bizalmas ügyfélalkalmazások által közösen használt módosítók
 
-A állíthat be egy nyilvános ügyfél vagy a bizalmas ügyfél alkalmazás builder módosítók a következők:
+A nyilvános ügyfélen vagy a bizalmas ügyfélalkalmazás-szerkesztőben beállítható módosítók a következők:
 
 |Paraméter | Leírás|
 |--------- | --------- |
-|`.WithAuthority()` 7 felülbírálások | Az alkalmazás alapértelmezett szolgáltató beállítása az Azure AD-szolgáltatót a lehetőséget választja, az Azure Cloud, a közönség a bérlő (bérlői azonosító vagy a tartomány neve), vagy közvetlenül a hitelesítésszolgáltatói URI megadása.|
-|`.WithAdfsAuthority(string)` | Az alkalmazás alapértelmezett-kezelő szolgáltatóként az ADFS-szolgáltató beállítása.|
-|`.WithB2CAuthority(string)` | Beállítja az alkalmazás alapértelmezett-kezelő szolgáltatóként egy Azure AD B2C-szolgáltatót.|
+|`.WithAuthority()`7 felülbírálás | Az alkalmazás alapértelmezett szolgáltatóját egy Azure AD-szolgáltatóra állítja be, és kiválaszthatja az Azure-felhőt, a célközönséget, a bérlőt (bérlői azonosítót vagy tartománynevet), vagy közvetlenül a szolgáltatói URI-t.|
+|`.WithAdfsAuthority(string)` | Az alkalmazás alapértelmezett szolgáltatójának beállítása ADFS-szolgáltatóként.|
+|`.WithB2CAuthority(string)` | Az alkalmazás alapértelmezett szolgáltatóját Azure AD B2C-szolgáltatóként állítja be.|
 |`.WithClientId(string)` | Felülbírálja az ügyfél-azonosítót.|
-|`.WithComponent(string)` | Beállítja a tár nevét, az MSAL.NET használatával (a telemetriai adatok okok miatt). |
-|`.WithDebugLoggingCallback()` | Neve a, ha az alkalmazás meghívja `Debug.Write` egyszerűen engedélyezése nyomkövetések hibakeresés. Lásd: [naplózás](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) további információt.|
-|`.WithExtraQueryParameters(IDictionary<string,string> eqp)` | A rendszer küldi az összes hitelesítési kérés alkalmazás szintű további lekérdezési paraméterek megadása Ez a felülbírálható mindegyik token beszerzéséhez metódus szintjén (azonos `.WithExtraQueryParameters pattern`).|
-|`.WithHttpClientFactory(IMsalHttpClientFactory httpClientFactory)` | Lehetővé teszi a speciális forgatókönyvek, például egy HTTP-proxy vagy a kényszerített MSAL egy adott HttpClient használata (például az ASP.NET Core web apps és API-k) konfigurálása.|
-|`.WithLogging()` | Nevű, ha az alkalmazás meghívja a nyomkövetések hibakeresést egy visszahívást. Lásd: [naplózás](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) további információt.|
-|`.WithRedirectUri(string redirectUri)` | Felülbírálja az alapértelmezett átirányítási URI-t. Nyilvános ügyfélalkalmazások, esetén ez akkor lehet hasznos a forgatókönyveket a közvetítőn.|
-|`.WithTelemetry(TelemetryCallback telemetryCallback)` | Beállítja a küldött telemetriai adatok elküldésére használatosak.|
-|`.WithTenantId(string tenantId)` | Felülbírálja a bérlői azonosító vagy bérlői leírása.|
+|`.WithComponent(string)` | Beállítja a könyvtár nevét a MSAL.NET használatával (telemetria okok miatt). |
+|`.WithDebugLoggingCallback()` | Ha a hívása megtörténik `Debug.Write` , az alkalmazás egyszerűen engedélyezi a hibakeresési nyomkövetést. További információért lásd: [naplózás](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) .|
+|`.WithExtraQueryParameters(IDictionary<string,string> eqp)` | Adja meg az alkalmazási szint további lekérdezési paramétereit, amelyeket a rendszer az összes hitelesítési kérelemben elküld. Ez a Overridable minden egyes jogkivonat-gyűjtési módszer szintjén (azonos `.WithExtraQueryParameters pattern`) történik.|
+|`.WithHttpClientFactory(IMsalHttpClientFactory httpClientFactory)` | Olyan speciális forgatókönyveket tesz lehetővé, mint például a HTTP-proxy konfigurálása vagy a MSAL kényszerítése egy adott HttpClient használatára (például ASP.NET Core Web Apps/API-ban).|
+|`.WithLogging()` | Ha a hívása megtörténik, az alkalmazás meghív egy visszahívást hibakeresési nyomkövetéssel. További információért lásd: [naplózás](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) .|
+|`.WithRedirectUri(string redirectUri)` | Felülbírálja az alapértelmezett átirányítási URI-t. A nyilvános ügyfélalkalmazások esetében ez hasznos lehet a közvetítőt érintő forgatókönyvek esetén.|
+|`.WithTelemetry(TelemetryCallback telemetryCallback)` | Beállítja a telemetria küldéséhez használt delegált.|
+|`.WithTenantId(string tenantId)` | Felülbírálja a bérlő AZONOSÍTÓját vagy a bérlő leírását.|
 
-### <a name="modifiers-specific-to-xamarinios-applications"></a>Xamarin.iOS-alkalmazásokhoz adott dostupnosti
+### <a name="modifiers-specific-to-xamarinios-applications"></a>Xamarin. iOS-alkalmazásokhoz tartozó módosítók
 
-A módosítók Xamarin.iOS a szerkesztő alkalmazás nyilvános ügyfél megadhatja azt a következők:
-
-|Paraméter | Leírás|
-|--------- | --------- |
-|`.WithIosKeychainSecurityGroup()` | **Csak a Xamarin.iOS**: Beállítja a IOS-es főbb lánc biztonsági csoport (a gyorsítótár megőrzése).|
-
-### <a name="modifiers-specific-to-confidential-client-applications"></a>Bizalmas ügyfélalkalmazások számára meghatározott dostupnosti
-
-A állíthat be egy bizalmas ügyfél alkalmazás builder módosítók a következők:
+A Xamarin. iOS nyilvános ügyfélalkalmazás-építője számára beállítható módosítók a következők:
 
 |Paraméter | Leírás|
 |--------- | --------- |
-|`.WithCertificate(X509Certificate2 certificate)` | Beállítja a tanúsítványt, az alkalmazás az Azure AD-azonosító.|
-|`.WithClientSecret(string clientSecret)` | Az alkalmazás Azure AD-vel azonosítja az ügyfél titkos (alkalmazásjelszót) beállítása.|
+|`.WithIosKeychainSecurityGroup()` | **Csak Xamarin. iOS esetén**: Beállítja az iOS-kulcs láncának biztonsági csoportját (a gyorsítótár megőrzéséhez).|
 
-Ezek dostupnosti olyan kölcsönösen kizárják egymást. Ha is megad, az MSAL kivételt fogja kijelezni egy jelentéssel bíró kivétel.
+### <a name="modifiers-specific-to-confidential-client-applications"></a>Bizalmas ügyfélalkalmazások-alkalmazásokhoz kapcsolódó módosítók
 
-### <a name="example-of-usage-of-modifiers"></a>Példa a használatra, dostupnosti
+A bizalmas ügyfélalkalmazás-szerkesztőben beállítható módosítók a következők:
 
-Tegyük fel, hogy az alkalmazás-e egy üzleti alkalmazás, amely csak a szervezet számára.  Majd írhat:
+|Paraméter | Leírás|
+|--------- | --------- |
+|`.WithCertificate(X509Certificate2 certificate)` | Beállítja az alkalmazást az Azure AD-vel azonosító tanúsítványt.|
+|`.WithClientSecret(string clientSecret)` | Az alkalmazás az Azure AD-vel való azonosítására szolgáló ügyfél titkos kulcsának (alkalmazás jelszavának) beállítása.|
+
+Ezek a módosítók kölcsönösen kizárják egymást. Ha mindkettőt megadja, a MSAL egy értelmes kivételt fog eldobni.
+
+### <a name="example-of-usage-of-modifiers"></a>Példa a módosítók használatára
+
+Tegyük fel, hogy az alkalmazás egy üzletági alkalmazás, amely csak a szervezete számára érhető el.  Ezután a következőket írhatja:
 
 ```csharp
 IPublicClientApplication app;
@@ -145,7 +145,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-Ha érdekes válik, hogy az országos felhők programozási most már rendelkezik egyszerűsített. Ha azt szeretné, az alkalmazás egy több-bérlős alkalmazás országos felhőben, is írható, például:
+Ahol érdekesvé válik, az országos felhők programozása már egyszerűbbé vált. Ha azt szeretné, hogy az alkalmazás egy nemzeti felhőben több-bérlős alkalmazás legyen, írhat, például a következőt:
 
 ```csharp
 IPublicClientApplication app;
@@ -154,7 +154,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-Emellett van egy AD FS felülbírálást (AD FS 2019 jelenleg nem támogatott):
+Az ADFS felülbírálása is (ADFS 2019 jelenleg nem támogatott):
 ```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
@@ -162,7 +162,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-Végül ha Ön egy Azure AD B2C-t fejlesztő, megadhatja a bérlő ehhez hasonló:
+Végül, ha Ön Azure AD B2C fejlesztő, a következőhöz hasonló módon adhatja meg a bérlőt:
 
 ```csharp
 IPublicClientApplication app;

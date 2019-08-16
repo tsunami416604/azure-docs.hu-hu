@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/13/2019
 ms.author: dalek
-ms.openlocfilehash: abf23eda2474ecbcfcaf0dadb26327225213a9a6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4029a9e46b9c9bb7cbd677deff4a172d8fc982f8
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989233"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534592"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>A Application Insights használatának és költségeinek kezelése
 
@@ -41,7 +41,7 @@ Az [Azure Application Insights][start] díjszabása a betöltött adatmennyiség
 > [!NOTE]
 > Az ebben a cikkben szereplő képernyőképeken megjelenő árak csak példaként szolgálnak. A pénznem és a régió aktuális áraiért lásd: [Application Insights díjszabása][pricing].
 
-### <a name="multi-step-web-tests"></a>Többlépéses webtesztek
+### <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 
 A többlépéses [webes tesztek](../../azure-monitor/app/availability-multistep.md) felár ellenében merülhetnek fel. A többlépéses webes tesztek olyan webes tesztek, amelyek műveletek sorozatát hajtják végre.
 
@@ -92,7 +92,7 @@ Az alábbi lehetőségek egyikével megtekintheti az alkalmazás által küldöt
 Az alábbi műveleteket végezheti el az adatmennyiség csökkentése érdekében:
 
 * [Mintavétel](../../azure-monitor/app/sampling.md)használata. Ez a technológia csökkenti az adatforgalom mértékét a metrikák eldöntése nélkül. Nem veszíti el a keresést a kapcsolódó elemek között. A kiszolgálói alkalmazásokban a mintavételezés automatikusan működik.
-* [Korlátozza az Ajax-hívások számát, amely](../../azure-monitor/app/javascript.md#detailed-configuration) minden egyes oldalon megjeleníthető, vagy kikapcsolhatja az Ajax-jelentéskészítést.
+* [Korlátozza az Ajax-hívások számát, amely](../../azure-monitor/app/javascript.md#configuration) minden egyes oldalon megjeleníthető, vagy kikapcsolhatja az Ajax-jelentéskészítést.
 * [Szerkessze a ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) fájlt a nem szükséges gyűjteményi modulok kikapcsolásához. Dönthet például úgy, hogy a teljesítményszámlálók vagy a függőségi adat nem elengedhetetlen.
 * Ossza szét a telemetria a különböző rendszerállapot-kulcsok között. 
 * Előre összevont mérőszámok. Ha a TrackMetric-hívásokat az alkalmazásban helyezi üzembe, csökkentheti a forgalmat a mérések egy kötegének átlagát és szórását is elfogadó túlterhelés használatával. Vagy használhatja az [Összesítés előtti csomagot](https://www.myget.org/gallery/applicationinsights-sdk-labs)is.

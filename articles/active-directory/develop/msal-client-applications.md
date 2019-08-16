@@ -1,9 +1,9 @@
 ---
-title: Ügyfélalkalmazások (Microsoft-hitelesítési tár) |} Az Azure
-description: További információ a nyilvános és bizalmas ügyfélprogram alkalmazások a Microsoft hitelesítési tár (MSAL).
+title: Ügyfélalkalmazások (Microsoft Authentication Library) | Azure
+description: Ismerje meg a nyilvános ügyfél és a bizalmas ügyfélalkalmazások használatát a Microsoft Authentication Library (MSAL) alkalmazásban.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,44 +13,44 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/25/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d09436b9a2ac38e7b07a51f01d65769ed19d08e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c854cc34a1ea50f37428cfc18146618d516de7d
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430826"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532976"
 ---
-# <a name="public-client-and-confidential-client-applications"></a>Nyilvános ügyfél és a bizalmas ügyfélalkalmazások
-A Microsoft-hitelesítési tár (MSAL) határozza meg az ügyfelek kétféle: nyilvános ügyfelek és a bizalmas ügyfelek. A két ügyféltípusok különbözteti meg a biztonságos hitelesítést az engedélyezési kiszolgálón, és bizalmasan ügyfél hitelesítő adataikkal tudnak. Ezzel szemben az Azure AD Authentication Library (ADAL) használ, úgynevezett *hitelesítési környezetet* (amely a kapcsolatot az Azure AD).
+# <a name="public-client-and-confidential-client-applications"></a>Nyilvános ügyfél és bizalmas ügyfélalkalmazások
+A Microsoft Authentication Library (MSAL) két típusú ügyfelet határoz meg: a nyilvános ügyfeleket és a bizalmas ügyfeleket. A két ügyfél típusát úgy különböztetik meg, hogy az engedélyezési kiszolgálóval biztonságosan hitelesítik magukat, és megőrzik az ügyfél hitelesítő adataik titkosságát. Ezzel szemben az Azure AD Authentication Library (ADAL) az úgynevezett *hitelesítési környezetet* használja (amely az Azure ad-vel való kapcsolódás).
 
-- **Bizalmas ügyfélalkalmazások** olyan alkalmazások, amelyeket (webalkalmazások, webes API-alkalmazások vagy akár szolgáltatás/démon alkalmazások) kiszolgálókon futnak. Azokat a rendszer hozzáférést, és ezért nehéz alkalmas arra, hogy egy alkalmazás titkos kulcs. Bizalmas ügyfelek konfigurációs idejű titkos kulcsokat tárolhat. Minden példánya az ügyfél rendelkezik egy különálló konfigurációval (beleértve az ügyfél-Azonosítóját és ügyfélkulcsát). Ezek az értékek nehezen a végfelhasználók számára, csomagolja ki. Webes alkalmazás a leggyakrabban használt bizalmas ügyfél. Az ügyfél-azonosító van közzétéve a webböngészőn keresztül, de a titkos kulcs csak a biztonsági csatorna átadott, és soha nem közvetlenül elérhető.
+- A **bizalmas ügyfélalkalmazások** olyan alkalmazások, amelyek kiszolgálókon futnak (webalkalmazások, web API-alkalmazások vagy akár Service/Daemon-alkalmazások). A rendszer nehéznek tekinti a hozzáférést, és emiatt képes megtartani az alkalmazás titkos kulcsát. A bizalmas ügyfelek a konfigurációs idő titkát is tárolhatják. Az ügyfél minden példánya külön konfigurációval rendelkezik (beleértve az ügyfél-azonosítót és az ügyfél titkos kulcsát). Ezek az értékek nehézek a végfelhasználók kinyeréséhez. A webalkalmazás a leggyakoribb bizalmas ügyfél. Az ügyfél-azonosító a webböngészőn keresztül érhető el, de a titkos kulcsot csak a hátsó csatornán át kell adni, és soha nem kerül közvetlenül elérhetővé.
 
     Bizalmas ügyfélalkalmazások: <BR>
-    ![Webalkalmazás](media/msal-client-applications/web-app.png) ![webes API-t](media/msal-client-applications/web-api.png) ![démon vagy szolgáltatás](media/msal-client-applications/daemon-service.png)
+    ![Web App](media/msal-client-applications/web-app.png) ![web API](media/msal-client-applications/web-api.png) démon /szolgáltatás![](media/msal-client-applications/daemon-service.png)
 
-- **Nyilvános ügyfélalkalmazások** eszközök vagy asztali számítógépeken, vagy egy webes böngésző a futó alkalmazások. Ezek még nem megbízható, biztonságos tartani az alkalmazások titkos adatait, így azok csak webes API-k elérésére a felhasználó nevében. (Csak nyilvános client flow támogatja azokat.) Nyilvános ügyfelek nem tartsa, konfiguráció-idő tárolt titkos adatok, hogy ne kelljen ügyfél titkos kulcsok.
+- A **nyilvános ügyfélalkalmazások** olyan alkalmazások, amelyek az eszközökön vagy asztali számítógépeken, vagy egy böngészőben futnak. Nem megbízhatók az alkalmazás titkainak biztonságos megőrzése érdekében, így csak a felhasználó nevében férnek hozzá a webes API-khoz. (Csak a nyilvános ügyfelek folyamatait támogatják.) A nyilvános ügyfelek nem rendelkezhetnek a konfigurációs idő titkával, így nem rendelkeznek az ügyfél titkos kulcsaival.
 
     Nyilvános ügyfélalkalmazások: <BR>
-    ![Asztali alkalmazás](media/msal-client-applications/desktop-app.png) ![Browserless API](media/msal-client-applications/browserless-app.png) ![mobilalkalmazás](media/msal-client-applications/mobile-app.png)
+    ![Asztali alkalmazás](media/msal-client-applications/desktop-app.png) ![böngészővel nem](media/msal-client-applications/browserless-app.png) rendelkező API ![Mobile-alkalmazás](media/msal-client-applications/mobile-app.png)
 
 > [!NOTE]
-> Az MSAL.js nem a nyilvános és bizalmas ügyfélalkalmazások szétválasztása nem.  MSAL.js felhasználói ügynök-alapú alkalmazásokat, a nyilvános ügyfelek, amelyben az Ügyfélkód hajtja végre a felhasználói ügynök, például egy webes böngésző az ügyfélalkalmazások jelöli. Ezek az ügyfelek ne tároljon titkos kulcsok, mert némelyik érhető el a böngésző környezetet.
+> A MSAL. js-ben nincs a nyilvános és a bizalmas ügyfélalkalmazások elkülönítése.  A MSAL. js a felhasználói ügynökön alapuló alkalmazásokként, a nyilvános ügyfeleknél, amelyekben az ügyfél kódját hajtja végre egy felhasználói ügynökben, például egy böngészőben. Ezek az ügyfelek nem tárolják a titkos kulcsokat, mert a böngésző környezete nyíltan elérhető.
 
-## <a name="comparing-the-client-types"></a>Az ügyfél-típusok összehasonlítása
-Íme néhány hasonlóságait és különbségeit nyilvános ügyfél és a bizalmas ügyfél alkalmazások:
+## <a name="comparing-the-client-types"></a>Az ügyfél típusának összehasonlítása
+Íme néhány hasonlóság és különbség a nyilvános ügyfél és a bizalmas ügyfélalkalmazások számára:
 
-- Mindkét típusú alkalmazás felhasználói jogkivonat gyorsítótár karbantartása, és lekérheti a jogkivonat csendes (Ha a jogkivonat már a jogkivonat a gyorsítótárban). Bizalmas ügyfélalkalmazások is, hogy egy alkalmazás tokengyorsítótárral jogkivonatokat, amelyek az alkalmazás lehetőségeit.
-- Mindkét típusú alkalmazás felhasználói fiókok kezelése és lekérése egy fiókot a felhasználói jogkivonat gyorsítótárból, get-fiók annak azonosítója vagy fiók eltávolítása.
-- Nyilvános ügyfélalkalmazások (négy hitelesítési folyamatok) jogkivonat-beszerzési négy módszer lesz. Bizalmas ügyfélalkalmazások háromféleképpen egy token beszerzéséhez (és egyik módja az URL-címét az identitásszolgáltató számítási authorize végponton). További információkért lásd: [-jogkivonatok beszerzésének](msal-acquire-cache-tokens.md).
+- Mindkét fajta alkalmazás egy felhasználói jogkivonat-gyorsítótárat tart fenn, és a tokent csendesen is beszerezheti (ha a jogkivonat már szerepel a jogkivonat-gyorsítótárban). A bizalmas ügyfélalkalmazások az alkalmazáshoz tartozó jogkivonatok esetében is rendelkeznek alkalmazás-jogkivonat-gyorsítótárral.
+- Mindkét típusú alkalmazás kezeli a felhasználói fiókokat, és lekérhet egy fiókot a felhasználói jogkivonat gyorsítótárából, beszerezhet egy fiókot az azonosítóból, vagy eltávolíthatja a fiókot.
+- A nyilvános ügyfélalkalmazások négyféle módon szerzik be a tokeneket (négy hitelesítési folyamat). A bizalmas ügyfélalkalmazások háromféle módon szerzik be a jogkivonatot (és az identitás-szolgáltatói végpont URL-címének kiszámításának egyik módját). További információ: tokenek [](msal-acquire-cache-tokens.md)beszerzése.
 
-Ha már használt adal-t, előfordulhat, hogy megfigyelheti, hogy, ellentétben az adal-t a hitelesítési környezetet, a MSAL az ügyfél-azonosító (más néven a *Alkalmazásazonosító* vagy *Alkalmazásazonosító*) átadott egyszer, az alkalmazás felépítése. Ennek nem kell újra átadandó, amikor az alkalmazás tokenbeolvasás. Ez a nyilvános és a bizalmas ügyfél alkalmazásokhoz egyaránt. Az alkalmazások bizalmas ügyfél konstruktorok is továbbítódnak az ügyfél-hitelesítő adatok: a titok identitásszolgáltató osztanak.
+Ha már használta a ADAL-t, észreveheti, hogy a ADAL hitelesítési környezetével ellentétben a MSAL (más néven az alkalmazás- *azonosító* vagy az alkalmazás- *azonosító*) az alkalmazás felépítésekor a rendszer egyszer átadja az ügyfél-azonosítót. Nem kell újra átadni, ha az alkalmazás jogkivonatot vásárol. Ez mind a nyilvános, mind a bizalmas ügyfélalkalmazások esetében igaz. A bizalmas ügyfélalkalmazások konstruktorai az ügyfél hitelesítő adatait is megkapják: az identitás-szolgáltatóval megosztott titkos kulcsot.
 
 ## <a name="next-steps"></a>További lépések
 További információ:
-- [Ügyféloldali alkalmazás konfigurációs beállításai](msal-client-application-configuration.md)
-- [Ügyfélalkalmazások hárítható el MSAL.NET használatával](msal-net-initializing-client-applications.md)
-- [Ügyfélalkalmazások hárítható el MSAL.js használatával](msal-js-initializing-client-applications.md)
+- [Ügyfélalkalmazás konfigurációs beállításai](msal-client-application-configuration.md)
+- [Ügyfélalkalmazások példányainak MSAL.NET használatával](msal-net-initializing-client-applications.md)
+- [Ügyfélalkalmazások példányainak MSAL. js használatával történő példánya](msal-js-initializing-client-applications.md)

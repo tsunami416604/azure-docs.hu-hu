@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 1668e0b3b155804496b190f2ba66d220ba0dd219
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381946"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533519"
 ---
 # <a name="aks-troubleshooting"></a>AK-hibaelhárítás
 
@@ -86,10 +86,12 @@ Ez a hiba akkor fordul elő, ha a fürtök több okból is hibás állapotba ker
 
 *Ez a hibaelhárítási segítség a következő címről származik: https://aka.ms/aks-pending-upgrade*
 
-A fürtműveleteket az aktív frissítési műveletek vagy a frissítés megkísérlése után korlátozzák, de ezt követően nem sikerült végrehajtani a műveletet. A probléma `az aks show -g myResourceGroup -n myAKSCluster -o table` diagnosztizálásához a fürt részletes állapotának lekéréséhez. Az eredmény alapján:
+Egyetlen csomóponttal rendelkező fürtön lévő műveletek frissítése és méretezése, illetve a [több csomóponttal](use-multiple-node-pools.md) rendelkező fürtök kölcsönösen kizárják egymást. Nem lehet egyszerre frissíteni és méretezni a fürt vagy a csomópont készletét. Ehelyett minden Művelettípus a következő, ugyanazon az erőforráson megjelenő kérelem előtt fejeződik be a cél erőforráson. Ennek eredményeképpen a műveletek korlátozottak, ha az aktív verziófrissítési vagy méretezési műveletek történnek, és a későbbiekben sikertelenek voltak. 
 
-* Ha a fürt aktívan frissít, várjon, amíg a művelet leáll. Ha ez sikeres volt, próbálkozzon újra a korábban meghiúsult művelettel.
-* Ha a fürt frissítése nem sikerült, kövesse a fenti lépéseket.
+A probléma `az aks show -g myResourceGroup -n myAKSCluster -o table` diagnosztizálásához a fürt részletes állapotának lekéréséhez. Az eredmény alapján:
+
+* Ha a fürt aktívan frissít, várjon, amíg a művelet leáll. Ha sikerült, próbálkozzon újra a korábban sikertelen művelettel.
+* Ha a fürt nem tudta frissíteni a frissítést, kövesse az előző szakaszban ismertetett lépéseket.
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Áthelyezhetem a fürtöt egy másik előfizetésbe vagy az előfizetésem a fürttel egy új bérlőre?
 

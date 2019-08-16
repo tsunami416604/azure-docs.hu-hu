@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 2ea17a4363218351eb6e5ba0678435f3707e4ab9
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a559fe86850ee9c1378876bc5ed8f2d0ddfb2d99
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663737"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543049"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager összekötése a Azure Monitor
 
@@ -65,12 +65,12 @@ A Kezdés előtt tekintse át az alábbi követelményeket.
 >[!NOTE]
 >Az Azure API-k legutóbbi módosításai megakadályozzák, hogy az ügyfelek sikeresen konfigurálhatják a felügyeleti csoportjuk és a Azure Monitor közötti integrációt. Azon ügyfelek esetében, akik már integrálták a felügyeleti csoportot a szolgáltatással, nem érinti a rendszer, kivéve, ha újra kell konfigurálnia a meglévő kapcsolatokat.  
 >A Operations Manager következő verzióihoz új felügyeleti csomag lett közzétéve:
->  
->* A System Center Operations Manager 1801-es verziójának letöltéséhez töltse le [innen](https://www.microsoft.com/download/details.aspx?id=57173) a felügyeleti csomagot  
->* A System Center 2016 – Operations Manager esetében töltse le [innen](https://www.microsoft.com/download/details.aspx?id=57172) a felügyeleti csomagot  
->* System Center Operations Manager 2012 R2 esetén töltse le [innen](https://www.microsoft.com/download/details.aspx?id=57171) a felügyeleti csomagot  
->
->Ez a felügyeleti csomag frissítése nem alkalmazható az 1807-es verzióra, amely a 1801-es verziójú frissítés, és nem a termék teljes összeállítására System Center Operations Manager vonatkozik.   
+> - A System Center Operations Manager 2019-es verzióban a felügyeleti csomag a Operations Manager buildtel rendelkezik.
+>- Operations Manager 1801 felügyeleti csomag Operations Manager 1807 esetén is alkalmazható.
+>- Az 1801-es System Center Operations Manager a felügyeleti csomagot [innen](https://www.microsoft.com/download/details.aspx?id=57173)töltheti le.
+>- A System Center 2016 – Operations Manager esetén töltse le [innen](https://www.microsoft.com/download/details.aspx?id=57172)a felügyeleti csomagot.  
+>- System Center Operations Manager 2012 R2 esetén töltse le [innen](https://www.microsoft.com/download/details.aspx?id=57171)a felügyeleti csomagot.  
+
 
 ### <a name="network"></a>Network (Hálózat)
 

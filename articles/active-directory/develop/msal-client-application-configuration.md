@@ -3,7 +3,7 @@ title: Ügyfélalkalmazás konfigurációja (Microsoft Authentication Library) |
 description: Ismerje meg a nyilvános ügyfél és a bizalmas ügyfélalkalmazások konfigurációs beállításait a Microsoft Authentication Library (MSAL) alkalmazásban.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 767f7362a6c46d864ba17f23f6506bf6cdb71414
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 6fedca8dfb60d976723508bb89cab7d5b6dda1b9
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304732"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532916"
 ---
 # <a name="application-configuration-options"></a>Alkalmazás konfigurációs beállításai
 
@@ -35,7 +35,7 @@ A kódban egy új nyilvános vagy bizalmas ügyfélalkalmazás (vagy a MSAL. js-
     - [Ügyfél titka](#client-secret) (bizalmas ügyfélalkalmazások esetében).
 - [Naplózási beállítások](#logging), beleértve a naplózási szintet, a személyes adatvezérlést és az összetevő nevét a könyvtár használatával.
 
-## <a name="authority"></a>Hitelesítésszolgáltató
+## <a name="authority"></a>szolgáltató
 A szolgáltató egy URL-cím, amely egy olyan könyvtárat jelez, amelyből a MSAL jogkivonatokat kérhet. Gyakori hatóságok:
 
 - https\://login.microsoftonline.com/\<bérlő\>/, ahol &lt;a&gt; bérlő a Azure Active Directory (Azure ad) bérlő vagy az ehhez az Azure ad-bérlőhöz társított tartomány bérlői azonosítója. Csak egy adott szervezet felhasználói számára való bejelentkezésre használatos.
@@ -53,7 +53,7 @@ A szolgáltató a következőket teheti:
 - Active Directory összevonási szolgáltatások (AD FS) (AD FS) szolgáltató. Lásd: [AD FS támogatás](https://aka.ms/msal-net-adfs-support).
 
 Az Azure AD Cloud hatóságok két részből állnak:
-- Az identitás- ** szolgáltató példánya
+- Az identitás- szolgáltató példánya
 - Az alkalmazás bejelentkezési *célközönsége*
 
 A példány és a célközönség összefűzve és a szolgáltatói URL-címként adható meg. A MSAL.NET korábbi verzióiban, mint a MSAL 3. *x*-ben saját maga is létre kellett hoznia a hitelesítésszolgáltatót a megcélzott felhő és a bejelentkezési célközönség alapján.  Ez az ábra bemutatja, hogyan áll a szolgáltatói URL-cím:
@@ -129,7 +129,7 @@ A webalkalmazások esetében az átirányítási URI (vagy a válasz URI) az az 
 
 A Daemon-alkalmazások esetében nem kell megadnia az átirányítási URI-t.
 
-## <a name="client-secret"></a>Titkos ügyfélkulcs
+## <a name="client-secret"></a>Titkos ügyfélkód
 Ez a beállítás határozza meg a bizalmas ügyfélalkalmazás ügyfél-titkos kulcsát. Ezt a titkot (az alkalmazás jelszava) a regisztrációs portál vagy az Azure AD számára az alkalmazások regisztrálásakor a PowerShell AzureAD, a PowerShell AzureRM vagy az Azure CLI használatával biztosítjuk.
 
 ## <a name="logging"></a>Naplózás
