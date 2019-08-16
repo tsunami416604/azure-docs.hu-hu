@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: a713ed69dc9c35e16b1cc5d9ad9819d53e2e1efe
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d0dd9a371c4912cae0e74b214c673c629fc1ff55
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986170"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515819"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Azure Cosmos DB lekérdezési teljesítményének megoldása
 Ez a cikk a Azure Cosmos DB SQL-lekérdezési problémák azonosítását, diagnosztizálását és hibaelhárítását ismerteti. Az Azure Cosmos DB lekérdezések optimális teljesítményének elérése érdekében kövesse az alábbi hibaelhárítási lépéseket. 
@@ -24,11 +24,12 @@ A lehető legalacsonyabb késést úgy érheti el, hogy a hívó alkalmazás ugy
 ## <a name="check-consistency-level"></a>Konzisztencia-ellenőrzés
 A [konzisztencia szintje](consistency-levels.md) hatással lehet a teljesítményre és a költségekre. Győződjön meg arról, hogy a konzisztencia szintje megfelel az adott forgatókönyvnek. További részleteket a [konzisztencia szintjének kiválasztása](consistency-levels-choosing.md)című témakörben talál.
 
-## <a name="log-sql-query-in-storage-account"></a>SQL-lekérdezés naplózása a Storage-fiókban
-A [diagnosztikai naplókon keresztüli SQL API-lekérdezési naplók](logging.md#turn-on-logging-in-the-azure-portal) lehetővé teszik a kihasználható lekérdezés naplózását egy tetszőleges Storage-fiókban. Így megtekintheti a diagnosztikai naplókat, és megkeresheti a lekérdezést további RUs használatával, és a tevékenység azonosítóját használhatja a QueryRuntimeStatistics való megfeleléshez. 
+## <a name="log-the-executed-sql-query"></a>A végrehajtott SQL-lekérdezés naplózása 
 
+Naplózhatja a végrehajtott SQL-lekérdezést egy Storage-fiókban vagy a diagnosztikai napló táblájában. A [diagnosztikai naplókon keresztüli SQL-lekérdezési naplók](logging.md#turn-on-logging-in-the-azure-portal) lehetővé teszik, hogy az Ön által választott Storage-fiókba naplózza a megzavarodott lekérdezést. Így megtekintheti a naplókat, és megkeresheti a magasabb RUs-t használó lekérdezést. Később a tevékenység-azonosítóval megegyezően használhatja a QueryRuntimeStatistics aktuális lekérdezését. A lekérdezés a biztonsági célra, a lekérdezési paraméterek neveivel és a WHERE záradékokban szereplő értékekkel nem egyezik meg a tényleges névvel és értékekkel. A naplózás a Storage-fiók használatával megtarthatja a végrehajtott lekérdezések hosszú távú megőrzését.  
 
 ## <a name="log-query-metrics"></a>Napló lekérdezési metrikái
+
 Lassú `QueryMetrics` vagy költséges lekérdezések hibakeresésére használható. 
 
   * Úgy `FeedOptions.PopulateQueryMetrics = true` van beállítva `QueryMetrics` , hogy a válaszban legyen.

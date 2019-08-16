@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 6237b8056262abe1f8cea28bebd6b3bad97e0f7e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a4a1099d90b619be383d440067a692c51a2430ac
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967583"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509073"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>ACR-feladat futtatása meghatározott ütemterven
 
@@ -48,9 +48,9 @@ Egyszerű példaként a következő parancs elindítja a `hello-world` rendszerk
 az acr task create \
   --name mytask \
   --registry myregistry \
-  --context /dev/null \
   --cmd hello-world \
-  --schedule "0 21 * * *"
+  --schedule "0 21 * * *" \
+  --context /dev/null
 ```
 
 Az az [ACR Task show][az-acr-task-show] parancs futtatásával ellenőrizze, hogy az időzítő trigger konfigurálva van-e. Alapértelmezés szerint az alapszintű rendszerkép frissítésének triggere is engedélyezve van.
@@ -176,11 +176,11 @@ Minden mezőhöz a következő típusú értékek tartozhatnak:
 
 |Type  |Példa  |Aktiváláskor  |
 |---------|---------|---------|
-|Egy adott érték |<nobr>"5 * * * *"</nobr>|minden órában, 5 perccel az óra múltán|
-|Minden érték (`*`)|<nobr>"* 5 * * *"</nobr>|az óra 5:00 UTC-től számított percenként (naponta 60 alkalommal)|
-|Tartomány (`-` operátor)|<nobr>"0 1-3 * * *"</nobr>|naponta 3 alkalommal, 1:00, 2:00 és 3:00 UTC|
-|Értékek halmaza (`,` operátor)|<nobr>"20, 30, 40 * * * * *"</nobr>|óránként 3 alkalommal, 20 perc, 30 perc és 40 perccel elmúlt|
-|Intervallum értéke (`/` operátor)|<nobr>"*/10 * * * *"</nobr>|óránként 6 alkalommal, 10 perc, 20 perc és így tovább, az óra vége
+|Egy adott érték |<nobr>`"5 * * * *"`</nobr>|minden órában, 5 perccel az óra múltán|
+|Minden érték (`*`)|<nobr>`"* 5 * * *"`</nobr>|az óra 5:00 UTC-től számított percenként (naponta 60 alkalommal)|
+|Tartomány (`-` operátor)|<nobr>`"0 1-3 * * *"`</nobr>|naponta 3 alkalommal, 1:00, 2:00 és 3:00 UTC|
+|Értékek halmaza (`,` operátor)|<nobr>`"20,30,40 * * * *"`</nobr>|óránként 3 alkalommal, 20 perc, 30 perc és 40 perccel elmúlt|
+|Intervallum értéke (`/` operátor)|<nobr>`"*/10 * * * *"`</nobr>|óránként 6 alkalommal, 10 perc, 20 perc és így tovább, az óra vége
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -198,6 +198,8 @@ Minden mezőhöz a következő típusú értékek tartozhatnak:
 
 
 ## <a name="next-steps"></a>További lépések
+
+Ha például egy ütemezett feladatot szeretne használni a beállításjegyzékben lévő adattárak törléséhez, olvassa el a lemezképek automatikus kitakarítása [Azure Container registryből](container-registry-auto-purge.md)című témakört.
 
 A forráskód-végrehajtás vagy az alaprendszerkép frissítései által aktivált feladatok esetében tekintse meg az ACR- [feladatok oktatóanyag](container-registry-tutorial-quick-task.md)-sorozatát.
 

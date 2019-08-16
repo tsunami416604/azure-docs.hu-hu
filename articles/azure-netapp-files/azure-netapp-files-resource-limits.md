@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: b9dd89e38f5cab6dceca36201695c068e0521943
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: HT
+ms.openlocfilehash: 4ce40fdf36f7d66e60e15955318e43f1f24f275f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034854"
+ms.locfileid: "69515842"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Az Azure NetApp Files erőforráskorlátai
 
@@ -36,7 +36,7 @@ Az alábbi táblázat a Azure NetApp Files erőforrás-korlátozásait ismerteti
 |  Kötetek száma kapacitási készlet szerint     |    500   |    Igen     |
 |  Pillanatképek másodpercenkénti száma       |    255     |    Nem        |
 |  Azure NetApp Files (Microsoft. NetApp/kötetek) számára az Azure-ban delegált alhálózatok száma Virtual Network    |   1   |    Nem    |
-|  A VNet használt IP-címek maximális száma (beleértve a virtuális hálózatok is) a következővel: Azure NetApp Files    |    1000   |    Nem   |
+|  Az egyidejű IP-címek száma VNet (beleértve a virtuális hálózatok is), amelyek hozzáférhetnek Azure NetApp Files   |    1000   |    Nem   |
 |  Egyetlen kapacitású készlet minimális mérete   |  4 TiB     |    Nem  |
 |  Egyetlen kapacitású készlet maximális mérete    |  500 TiB   |   Nem   |
 |  Egyetlen kötet minimális mérete    |    100 GiB    |    Nem    |

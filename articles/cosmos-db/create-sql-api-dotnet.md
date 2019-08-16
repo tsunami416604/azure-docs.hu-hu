@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/12/2019
-ms.openlocfilehash: c738b2d44c5faca1ef95b2da8fd1f90a1b3af919
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: a7950d80bd5aa21b26a7724845f10515a65c033d
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371022"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512711"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Gyors útmutató: .NET-konzol alkalmazás létrehozása Azure Cosmos DB SQL API-erőforrások kezeléséhez
 
@@ -48,7 +48,7 @@ Ez a szakasz végigvezeti egy Azure Cosmos-fiók létrehozásán és egy olyan p
 
 ### <a id="create-account"></a>Azure Cosmos-fiók létrehozása
 
-A következő kód egy Azure Cosmos-fiókot hoz létre a munkamenet konzisztenciájával. A fiók a és `South Central US` `North Central US`a-ben replikálódik. Jelölje ki  a kipróbálom gombot, és illessze be a kódot az Azure Cloud shellben való futtatáshoz. 
+A következő kód egy Azure Cosmos-fiókot hoz létre a munkamenet konzisztenciájával. A fiók a és `South Central US` `North Central US`a-ben replikálódik. Jelölje ki a kipróbálom gombot, és illessze be a kódot az Azure Cloud shellben való futtatáshoz. 
 
 ```azurecli-interactive
 
@@ -164,6 +164,8 @@ A különböző entitások hierarchiájának megismeréséhez tekintse meg az [a
 
 * [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet)– ez a metódus létrehoz (ha nem létezik), vagy (ha már létezik) a tároló aszinkron műveletként. A válaszban található állapotkód alapján megállapíthatja, hogy a tárolót újonnan hozták-e létre (201), vagy egy meglévő tárolót adott vissza (200). 
 * [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet) – ez a metódus létrehoz egy tételt a tárolón belül. 
+
+* [UpsertItemAsync](/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync?view=azure-dotnet) – ez a metódus létrehoz egy tételt a tárolón belül, ha még nem létezik, vagy lecseréli az adott elemre, ha az már létezik. 
 
 * [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet
 ) – ez a metódus létrehoz egy lekérdezést az Azure Cosmos-adatbázis tárolói alá tartozó elemekhez egy paraméteres értékeket tartalmazó SQL-utasítás használatával. 
@@ -294,7 +296,7 @@ public class Program
 
 ### <a name="create-a-database"></a>Adatbázis létrehozása 
 
-Adja meg `CreateDatabaseAsync` a metódust `program.cs` a osztályon belül. Ez a metódus hozza `FamilyDatabase` létre a ha még nem létezik. 
+Adja meg `CreateDatabaseAsync` a metódust `program.cs` a osztályon belül. Ez a metódus hozza `FamilyDatabase` létre a ha még nem létezik.
 
 ```csharp
 private async Task CreateDatabaseAsync()
@@ -322,7 +324,7 @@ private async Task CreateContainerAsync()
 
 ### <a name="create-an-item"></a>Elemek létrehozása
 
-Hozzon létre egy családi tételt a `AddItemsToContainerAsync` metódus hozzáadásával a következő kóddal:
+Hozzon létre egy családi tételt a `AddItemsToContainerAsync` metódus hozzáadásával a következő kóddal. Egy tétel létrehozásához `CreateItemAsync` használhatja `UpsertItemAsync` a vagy metódust:
 
 ```csharp
 private async Task AddItemsToContainerAsync()

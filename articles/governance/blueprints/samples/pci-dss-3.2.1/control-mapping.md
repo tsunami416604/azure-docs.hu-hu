@@ -8,24 +8,24 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 1e85cb5c06f36e0f8c105ece2c012cfe7cb77bf4
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: c2dbfa5f6c9d679582a1834f2ff645c5ff79c51e
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226024"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515688"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v 3.2.1 Blueprint-minta leképezésének vezérlése
 
 A következő cikk azt ismerteti, hogyan jelennek meg az Azure-tervrajzok PCI-DSS v 3.2.1 terv mintája a PCI-DSS v 3.2.1 vezérlőkhöz. További információ a vezérlőelemekről: [PCI-DSS v 3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf).
 
-A következő leképezések a **PCI-DSS v 3.2.1:2018-** as vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa  meg a szabályzatot a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki  **\[az\] előzetes naplózási PCI v 3.2.1:2018 vezérlőt, és telepítsen speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
+A következő leképezések a **PCI-DSS v 3.2.1:2018-** as vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a szabályzatot a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki  **\[az\] előzetes naplózási PCI v 3.2.1:2018 vezérlőt, és telepítsen speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
 
 ## <a name="132-and-134-boundary-protection"></a>1.3.2 és 1.3.4 határ védelme
 
 Ez a terv segítséget nyújt a hálózatok kezelésében és szabályozásában olyan [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével, amelyek megengedő szabályokkal figyelik a hálózati biztonsági csoportokat. A túl megengedhető szabályok lehetővé tehetik a nem kívánt hálózati hozzáférést, és azt felül kell vizsgálni. Ez a terv egy olyan Azure Policy-definíciót rendel hozzá, amely figyeli a nem védett végpontokat, az alkalmazásokat és a Storage-fiókokat. A tűzfal által nem védett végpontok és alkalmazások, valamint a korlátlan hozzáféréssel rendelkező Storage-fiókok nem kívánt hozzáférést biztosíthatnak az információs rendszeren belül található információkhoz.
 
-- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
+- Tárfiókokhoz való korlátlan hálózati hozzáférés naplózása
 - Korlátozni kell az internet felé irányuló végponton keresztüli hozzáférést
 
 ## <a name="34a-41-41g-41h-and-653-cryptographic-protection"></a>3.4. a, 4,1, 4.1. g, 4.1. h és 6.5.3 titkosítási védelem
@@ -34,22 +34,22 @@ Ez a terv segít kikényszeríteni a szabályzatot a titkosítási vezérlők ha
 
 - Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
 - Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
-- Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
-- Titkosítatlan SQL-adatbázis figyelése Azure Security Center
+- Az API-alkalmazás elérése csak HTTPS protokollon keresztül történhet
+- Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
 - A lemezes titkosítást a virtuális gépeken kell alkalmazni
-- Az Automation-fiók változóit titkosítani kell
+- Automation-fiók-változókat titkosítani kell
 - Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve
 - A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell
 - Service Fabric-fürtökön a ClusterProtectionLevel tulajdonságot EncryptAndSign értékre kell beállítani
 - Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
-- Az SQL DB transzparens adattitkosításának üzembe helyezése
+- SQL-adatbázisok transzparens adattitkosításának üzembe helyezése
 
 ## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 és 11.2.1 sebezhetőségi vizsgálat és rendszerfrissítések
 
 Ez a terv a hiányzó rendszerfrissítéseket, az operációs rendszer biztonsági réseit, az SQL-biztonsági réseket és a virtuális gépek Azure-beli biztonsági réseit figyelő [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével segíti a biztonsági rések kezelését Security Center. A Azure Security Center jelentéskészítési funkciókat biztosít, amelyekkel valós idejű betekintést nyerhet az üzembe helyezett Azure-erőforrások biztonsági állapotára.
 
 - Hiányzó Endpoint Protection figyelése Azure Security Center
-- A Windows Serverhez készült alapértelmezett Microsoft IaaSAntimalware-bővítmény telepítése
+- A Windows Serverhez készült alapértelmezett Microsoft IaaSAntimalware bővítmény központi telepítése
 - Veszélyforrások észlelésének üzembe helyezése SQL-kiszolgálókon
 - A számítógépekre telepíteni kell a rendszerfrissítéseket
 - A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell
@@ -110,9 +110,9 @@ Ez a terv segít az erős jelszavak betartatásában olyan [Azure Policy](../../
 Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erőforrások naplózási beállításait naplózó [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével.
 A diagnosztikai naplók betekintést nyújtanak az Azure-erőforrásokon belül végrehajtott műveletekre. Az Azure-naplók a szinkronizált belső órákat használják az események időbeli korrelációs rekordjának létrehozásához az erőforrások között.
 
-- Nem naplózott SQL-kiszolgálók figyelése Azure Security Center
+- A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
 - Diagnosztikai beállítás naplózása
-- Az SQL Server szintű naplózási beállítások naplózása
+- SQL-kiszolgálói szintű naplózási beállítások naplózása
 - Naplózás üzembe helyezése SQL-kiszolgálókon
 - A Storage-fiókokat át kell telepíteni az új Azure Resource Manager erőforrásokra
 - A virtuális gépeket át kell telepíteni az új Azure Resource Manager erőforrásokra
@@ -122,7 +122,7 @@ A diagnosztikai naplók betekintést nyújtanak az Azure-erőforrásokon belül 
 Ez a terv segít a hálózat kezelésében és szabályozásában [Azure Policy](../../../policy/overview.md) definíciók kiosztásával, amelyek naplózzák az elfogadható hálózati telephelyeket és a környezet számára engedélyezett jóváhagyott vállalati termékeket. Ezek az egyes vállalatok által testreszabhatók az egyes szabályzatok házirend-paraméterei között.
 
 - Engedélyezett helyek
-- Erőforráscsoportok engedélyezett helyei
+- Erőforráscsoportok számára engedélyezett helyek
 
 ## <a name="next-steps"></a>További lépések
 

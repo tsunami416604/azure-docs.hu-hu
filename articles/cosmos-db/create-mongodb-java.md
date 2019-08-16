@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
 ms.custom: seo-java-august2019
-ms.openlocfilehash: 701e6f0e93fe853a3703f9923af4dffd16090c80
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: HT
+ms.openlocfilehash: 693e58cf578b5b2374a1d8fc63da8bb1a77faf1b
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036804"
+ms.locfileid: "69515824"
 ---
 # <a name="quickstart-build-a-web-app-using-azure-cosmos-dbs-api-for-mongodb-and-java-sdk"></a>Gyors útmutató: Webalkalmazás létrehozása a MongoDB és a Java SDK-hoz készült Azure Cosmos DB API-val
 
@@ -114,7 +114,7 @@ Az alábbi kódrészletek mind a Program.java fájlból származnak.
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba.
 
-1. A Fiók területen válassza ki az **Első lépések**, majd a Java lehetőséget, és másolja a kapcsolati sztringet a vágólapra
+1. A fiókban válassza a **gyorskonfigurálás**lehetőséget, válassza a **Java**lehetőséget, majd másolja a kapcsolódási karakterláncot a vágólapra.
 
 2. Nyissa meg a `Program.java` fájlt, cserélje le a MongoClientURI konstruktor argumentumát a kapcsolati sztringgel. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
     

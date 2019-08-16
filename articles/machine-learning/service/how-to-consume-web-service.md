@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/10/2019
+ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 873f45a6cce85669581037c4c398a52b1ebd6d68
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9b7157cd58abc7f1fecf288e72b0232c8a67b7ee
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966854"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512581"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 
 REST API-t üzembe helyezése az Azure Machine Learning-modellek webszolgáltatásként hoz létre. Adatokat küldeni az API-t, és a modell által visszaadott az előrejelzést kapni. Ebből a dokumentumból megtudhatja, hogyan hozhat létre ügyfeleket a webszolgáltatáshoz a, a go, a Java és a Python használatával C#.
 
-Webszolgáltatást akkor hozhat létre, amikor lemezképet telepít Azure Container Instances, Azure Kubernetes Service vagy Field-programozható Gate-tömbökbe (FPGA). A lemezképeket regisztrált modellből és pontozási fájlokból hozza létre. A webszolgáltatásokhoz való hozzáféréshez használt URI-t a [Azure Machine learning SDK](https://aka.ms/aml-sdk)-val kéri le. Ha engedélyezve van a hitelesítés, az SDK-t is használhatja a hitelesítési kulcsok beolvasása.
+Webszolgáltatást akkor hozhat létre, amikor lemezképet telepít Azure Container Instances, Azure Kubernetes Service vagy Field-programozható Gate-tömbökbe (FPGA). A lemezképeket regisztrált modellből és pontozási fájlokból hozza létre. A webszolgáltatásokhoz való hozzáféréshez használt URI-t a [Azure Machine learning SDK](https://aka.ms/aml-sdk)-val kéri le. Ha a hitelesítés engedélyezve van, az SDK használatával is beolvashatja a hitelesítési kulcsokat vagy jogkivonatokat.
 
 A Machine learning-webszolgáltatást használó ügyfelek létrehozásának általános munkafolyamata a következő:
 
@@ -81,6 +81,8 @@ A Azure Machine Learning két módszert biztosít a webszolgáltatásokhoz való
 |Kulcs|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezve|
 |Jogkivonat| Nem érhető el| Alapértelmezés szerint letiltva |
 
+Egy kulccsal vagy jogkivonattal védett szolgáltatásnak küldött kérelem küldésekor az __engedélyezési__ fejléc használatával adja át a kulcsot vagy a jogkivonatot. A kulcsot vagy jogkivonatot úgy kell `Bearer <key-or-token>`formázni, `<key-or-token>` hogy hol található a kulcs vagy a jogkivonat értéke.
+
 #### <a name="authentication-with-keys"></a>Hitelesítés kulcsokkal
 
 Ha engedélyezi a hitelesítést a központi telepítéshez, automatikusan létrehozza a hitelesítési kulcsokat.
@@ -112,7 +114,7 @@ A jogkivonat-hitelesítés vezérléséhez használja `token_auth_enabled` a par
 Ha engedélyezve van a jogkivonat-hitelesítés, a `get_token` metódussal kérheti le a tulajdonosi jogkivonatot és a jogkivonatok lejárati idejét:
 
 ```python
-token, refresh_by = service.get_tokens()
+token, refresh_by = service.get_token()
 print(token)
 ```
 
@@ -193,9 +195,9 @@ namespace MLWebServiceClient
     {
         static void Main(string[] args)
         {
-            // Set the scoring URI and authentication key
+            // Set the scoring URI and authentication key or token
             string scoringUri = "<your web service URI>";
-            string authKey = "<your key>";
+            string authKey = "<your key or token>";
 
             // Set the data to be sent to the service.
             // In this case, we are sending two sets of data to be scored.
@@ -309,8 +311,8 @@ var exampleData = []Features{
 
 // Set to the URI for your service
 var serviceUri string = "<your web service URI>"
-// Set to the authentication key (if any) for your service
-var authKey string = "<your key>"
+// Set to the authentication key or token (if any) for your service
+var authKey string = "<your key or token>"
 
 func main() {
     // Create the input data from example data
@@ -364,8 +366,8 @@ public class App {
     public static void sendRequest(String data) {
         // Replace with the scoring_uri of your service
         String uri = "<your web service URI>";
-        // If using authentication, replace with the auth key
-        String key = "<your key>";
+        // If using authentication, replace with the auth key or token
+        String key = "<your key or token>";
         try {
             // Create the request
             Content content = Request.Post(uri)
@@ -438,8 +440,8 @@ import json
 
 # URL for the web service
 scoring_uri = '<your web service URI>'
-# If the service is authenticated, set the key
-key = '<your key>'
+# If the service is authenticated, set the key or token
+key = '<your key or token>'
 
 # Two sets of data to score, so we get two results back
 data = {"data":

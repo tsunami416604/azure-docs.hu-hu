@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6f86a8465bcbd3d88ffb7909cac53c3fd38c3af6
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: f7fbfbe5ae5d2ba4148d94768a1109f566151170
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489439"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69513794"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti GYIK az Azure-beli Web Apps
 
@@ -72,7 +72,7 @@ A webalkalmazás kiszolgálói időzónájának beállítása:
     * Value = *a kívánt időzóna*
 3. Kattintson a **Mentés** gombra.
 
-Az elfogadott értékekhez tekintse meg az [alapértelmezett](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) időzónák című cikk időzóna **oszlopát** .
+Az elfogadott értékekhez tekintse meg az [alapértelmezett](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) időzónák című cikk időzóna oszlopát.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Miért nem sikerül a folyamatos webjobs-feladatok néha?
 
@@ -167,7 +167,7 @@ Ha App Service Environment használ, a [Barracuda](https://azure.microsoft.com/b
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>Hogyan letiltani a portokat egy App Service webalkalmazásban?
 
-A App Service megosztott bérlői környezetben az infrastruktúra jellegéből adódóan nem lehet blokkolni bizonyos portokat. A 4016, 4018 és 4020 TCP-portok is megnyithatók a Visual Studio távoli hibakereséshez.
+A App Service megosztott bérlői környezetben az infrastruktúra jellegéből adódóan nem lehet blokkolni bizonyos portokat. A 4020, 4022 és 4024 TCP-portok is megnyithatók a Visual Studio távoli hibakereséshez.
 
 App Service Environment a bejövő és a kimenő forgalmat teljes mértékben szabályozhatja. A hálózati biztonsági csoportokkal korlátozhatja vagy letilthatja az adott portok használatát. További információ a App Service Environmentről: [app Service Environment bemutatása](https://azure.microsoft.com/blog/introducing-app-service-environment/).
 
@@ -251,7 +251,7 @@ Az ütemezett webjobs-feladatokkal kapcsolatos további információkért tekint
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Hogyan a App Service alkalmazáshoz való behatolás-tesztelést?
 
-A behatolási teszt elvégzéséhez [küldje el a kérelmet](https://portal.msrc.microsoft.com/en-us/engage/pentest).
+A behatolási teszt elvégzéséhez [küldje el a kérelmet](https://portal.msrc.microsoft.com/engage/pentest).
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Hogyan a Traffic Managert használó App Service webalkalmazáshoz egyéni tartománynevet konfigurálhat?
 

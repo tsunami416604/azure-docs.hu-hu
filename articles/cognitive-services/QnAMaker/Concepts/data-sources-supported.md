@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/15/2019
 ms.author: diberry
-ms.openlocfilehash: 78c75e69be5521660937e34da0d7261dba1de385
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a3e1853e587f2f1632641cbb896eba59f8dc9455
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955293"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515778"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>A tartalmat a QnA Maker adatforrások
 
@@ -133,9 +133,21 @@ QnA-tudásbázisok formájában strukturált *.txt*, *.tsv* vagy *.xls* fájloka
 
 A forrásfájl további oszlopokat a rendszer figyelmen kívül hagyja.
 
+### <a name="example-of-structured-excel-file"></a>Példa strukturált Excel-fájlra
+
 Az alábbi példában a strukturált QnA, *.xls* fájlt, HTML-tartalom:
 
  ![Strukturált QnA excel-példa a Tudásbázis](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+
+### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Példa az Excel-fájl egyetlen válaszára vonatkozó alternatív kérdésekre
+
+Az alábbi példa egy strukturált QnA *. xls* fájlt mutat be, amely több alternatív kérdést is biztosít egyetlen válaszhoz:
+
+ ![Példa az Excel-fájl egyetlen válaszára vonatkozó alternatív kérdésekre](../media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+
+A fájl importálása után a kérdés-válasz pár az alábbi Tudásbázisban látható:
+
+ ![A tudásbázisba importált egyetlen válaszra vonatkozó alternatív kérdések képernyőképe](../media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
 ## <a name="structured-data-format-through-import"></a>Strukturált adatok formátumát importálása
 

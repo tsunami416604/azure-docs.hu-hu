@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az első modell betanítása.'
+title: 'Oktatóanyag: Az első ML-modell betanítása'
 titleSuffix: Azure Machine Learning service
 description: Ebben az oktatóanyagban megismerheti a Azure Machine Learning szolgáltatás alapszintű kialakítási mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján.
 services: machine-learning
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: a3db70925d59f9d0e2793b04824b2e8606719dd4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 17fee1f01bf883aa2a9845fe4f2817fb806056dd
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934236"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516239"
 ---
-# <a name="tutorial-train-your-first-model"></a>Oktatóanyag: Az első modell betanítása
+# <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: Az első ML-modell betanítása
 
 Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az előző oktatóanyagban [létrehozott egy munkaterületet, és kiválasztott egy fejlesztési környezetet](tutorial-1st-experiment-sdk-setup.md). Ebben az oktatóanyagban megismerheti a Azure Machine Learning szolgáltatás alapszintű kialakítási mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján. Az oktatóanyag elvégzése után gyakorlati ismeretekkel fog rendelkezni az SDK-ról, hogy az összetettebb kísérleteket és munkafolyamatokat fejlesszen.
 

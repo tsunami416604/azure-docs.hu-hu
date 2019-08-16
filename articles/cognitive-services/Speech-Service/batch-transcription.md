@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: e98ac335f475e4a6db6b17d5954512f5749e6aec
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 101cfacf071292d00556656b0df9c6bf9c15f414
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881159"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515886"
 ---
 # <a name="why-use-batch-transcription"></a>Miért érdemes használni a Batch beszédátírási?
 
@@ -90,7 +90,7 @@ Ezeket a választható tulajdonságokat az átírás konfigurálásához haszná
 | `PunctuationMode` | Adja meg a felismerési eredményeket írásjelek kezelése. Elfogadott értékek a következők `None` ami letiltja az absztrakt, `dictated` explicit írásjelek, amiből `automatic` , amellyel a dekóder írásjelek, kezelése vagy `dictatedandautomatic` írásjelek vagy automatikus azt jelenti, amely során. |
  | `AddWordLevelTimestamps` | Megadja, hogy a rendszer hozzáadja-e a Word szintű időbélyegeket a kimenethez. Az elfogadott értékek `true` lehetővé teszik a Word szintű időbélyegek és `false` (az alapértelmezett érték) letiltását. |
  | `AddSentiment` | Azt adja meg, hogy a rendszer milyen érzést kell hozzáadnia a teljes értékhez. Az elfogadott értékek `true` lehetővé teszik a vélemények kiírását `false` és (az alapértelmezett érték) letiltását. |
- | `AddDiarization` | Megadja, hogy a diarization Alalysis kell végrehajtani a bemeneten, amely a várt két hangokat tartalmazó monó-csatorna. Az elfogadott értékek `true` lehetővé teszik a diarization `false` és (az alapértelmezett érték) letiltását. Azt is megköveteli `AddWordLevelTimestamps` , hogy igaz értékre legyen állítva.|
+ | `AddDiarization` | Meghatározza, hogy a diarization-elemzést a bemeneten kell végrehajtani, amely két hangból álló mono-csatornának kellene lennie. Az elfogadott értékek `true` lehetővé teszik a diarization `false` és (az alapértelmezett érték) letiltását. Azt is megköveteli `AddWordLevelTimestamps` , hogy igaz értékre legyen állítva.|
 
 ### <a name="storage"></a>Storage
 

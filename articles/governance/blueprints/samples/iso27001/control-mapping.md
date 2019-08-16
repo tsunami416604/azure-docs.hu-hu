@@ -7,12 +7,12 @@ ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d49ef19d763ea3ae643a9c7bbbbb620ae414c664
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 7be9a208f82dd9a487c1794a7996f9bb11bb09d8
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816817"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515433"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>Az ISO 27001 tervrajzi minta vezérlésének leképezése
 
@@ -118,13 +118,13 @@ Annak megismerése, hogy az Azure-erőforrások nem optimális titkosítási kon
 - \[Előzetes\]verzió: Hiányzó blob-titkosítás naplózása a Storage-fiókoknál
 - \[Előzetes\]verzió: Virtuálisgép-bővítmény üzembe helyezése a Windows rendszerű virtuális gép naplózásához ne tárolja a jelszavakat visszafejthető titkosítással
 - \[Előzetes\]verzió: A Windows rendszerű virtuális gép naplózása ne tárolja a jelszavakat visszafejthető titkosítással
-- \[Előzetes\]verzió: Titkosítatlan SQL-adatbázis figyelése Azure Security Center
 - \[Előzetes\]verzió: Titkosítatlan virtuálisgép-lemezek figyelése Azure Security Center
 - Az Automation-fiókbeli változótitkosítás engedélyezésének naplózása
 - Azon művelet naplózása, amely a Redis Cache kizárólag biztonságos kapcsolaton keresztül történő elérését engedélyezi
 - Tárfiókokba történő biztonságos átvitel naplózása
 - A ClusterProtectionLevel tulajdonság EncryptAndSign értékre való beállításának naplózása a Service Fabricben
 - Transzparens adattitkosítás állapotának naplózása
+- Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
 
 ## <a name="a1241-event-logging"></a>A. 12.4.1 eseménynaplózása
 
@@ -135,9 +135,9 @@ A diagnosztikai naplók betekintést nyújtanak az Azure-erőforrásokon belül 
 - \[Előzetes\]verzió: Dependency Agent üzemelő példány naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
 - \[Előzetes\]verzió: Log Analytics ügynök üzembe helyezésének naplózása – a virtuálisgép-rendszerkép (operációs rendszer) fel van listázva
 - \[Előzetes\]verzió: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[Előzetes\]verzió: Nem naplózott SQL-adatbázis figyelése Azure Security Center
 - Diagnosztikai beállítás naplózása
 - SQL-kiszolgálói szintű naplózási beállítások naplózása
+- A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
 
 ## <a name="a1243-administrator-and-operator-logs"></a>A. 12.4.3-rendszergazdai és-kezelői naplók
 
@@ -147,9 +147,9 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához, ha hét Azur
 - \[Előzetes\]verzió: Dependency Agent üzemelő példány naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
 - \[Előzetes\]verzió: Log Analytics ügynök üzembe helyezésének naplózása – a virtuálisgép-rendszerkép (operációs rendszer) fel van listázva
 - \[Előzetes\]verzió: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[Előzetes\]verzió: Nem naplózott SQL-adatbázis figyelése Azure Security Center
 - Diagnosztikai beállítás naplózása
 - SQL-kiszolgálói szintű naplózási beállítások naplózása
+- A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
 
 ## <a name="a1244-clock-synchronization"></a>A. 12.4.4 óra szinkronizálása
 
@@ -159,9 +159,9 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához, ha hét Azur
 - \[Előzetes\]verzió: Dependency Agent üzemelő példány naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
 - \[Előzetes\]verzió: Log Analytics ügynök üzembe helyezésének naplózása – a virtuálisgép-rendszerkép (operációs rendszer) fel van listázva
 - \[Előzetes\]verzió: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[Előzetes\]verzió: Nem naplózott SQL-adatbázis figyelése Azure Security Center
 - Diagnosztikai beállítás naplózása
 - SQL-kiszolgálói szintű naplózási beállítások naplózása
+- A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
 
 ## <a name="a1251-installation-of-software-on-operational-systems"></a>A. 12.5.1 szoftver telepítése az operatív rendszereken
 

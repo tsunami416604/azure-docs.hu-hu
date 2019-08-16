@@ -1,49 +1,46 @@
 ---
-title: A Visual Studio és a SSDT telepítése a SQL Data Warehousehoz | Microsoft Docs
+title: A Visual Studio 2019 telepítése a SQL Data Warehousehoz | Microsoft Docs
 description: A Visual Studio és az SQL Server Development Tools (SSDT) telepítése az Azure SQL Data Warehouse-hoz
 services: sql-data-warehouse
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: XiaoyuMSFT
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 04/05/2019
-ms.author: xiaoyul
+ms.date: 08/15/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: aa904ac62ce41cc89945ddfdef2e426143e42bb4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 65cbd6679c85e82eaa5fd28bb91d54b443cc891e
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479490"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515473"
 ---
-# <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>A Visual Studio és a SSDT telepítése SQL Data Warehouse
-A Visual Studio 2019 alkalmazással fejlesztheti SQL Data Warehouse. A SQL Data Warehouse jelenleg nem támogatja a Visual Studio 2019 SSDT. 
+# <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>Első lépések a Visual Studio 2019 for SQL Data Warehouse
+A Visual Studio **2019** SQL Server Data Tools (SSDT) egyetlen eszköz, amely lehetővé teszi a következőket:
 
-A Visual Studio és a SSDT segítségével a SQL Server Object Explorer segítségével megismerheti a táblákat, a nézeteket, a tárolt eljárásokat és számos további objektumot vizuálisan a SQL Data Warehouse. Lehetővé teszi a lekérdezések futtatását is.
+- Alkalmazások összekötése, lekérdezése és fejlesztése SQL Data Warehouse 
+- Az Object Explorer használatával vizuálisan feltárhatja az adatmodellben lévő összes objektumot, beleértve a táblákat, a nézeteket, a tárolt eljárásokat és az egyéb műveleteket.
+- T-SQL adatdefiníciós nyelvi (DDL) parancsfájlok létrehozása az objektumokhoz
+- Az adattárház fejlesztése SSDT adatbázis-projektekkel rendelkező, állapot-alapú megközelítés használatával
+- Az adatbázis-projekt integrálása verziókövetés-rendszerekkel, mint például a git és az Azure DevOps Repos
+- Folyamatos integrációs és üzembe helyezési folyamatokat állíthat be automatizálási kiszolgálókkal, például az Azure DevOps-szel [hamarosan elérhető]
 
 > [!NOTE]
-> Az SQL Data Warehouse még nem támogatja a Visual Studio-adatbázisprojekteket. A szolgáltatás rendszeres frissítéseinek fogadásához szavazzon a [UserVoice-on].
-> 
-> 
+> A Visual Studio SSDT adatbázis-projektjei jelenleg előzetes verzióban érhetők el. A szolgáltatás rendszeres frissítéseinek fogadásához szavazzon a [UserVoice-on].
 
-## <a name="step-1-install-visual-studio"></a>1\. lépés: A Visual Studio telepítése
-A Visual Studio letöltéséhez és telepítéséhez kövesse az alábbi hivatkozásokat. Ha már telepítve van a Visual Studio 2013-es vagy újabb verziója, ugorjon a 2. lépésre, és telepítse a SSDT.
+## <a name="install-visual-studio-2019"></a>A Visual Studio 2019 telepítése
+A Visual Studio letöltéséhez és telepítéséhez használja az alábbi hivatkozást: [A Visual Studio 2019 letöltése][]. A telepítés során ki kell választania az adattárolási és-feldolgozási feladatokat. A Visual Studio 2019-ben nem szükséges több önálló SSDT-telepítés.
 
-1. [A Visual Studio letöltése][].
-2. Kövesse az [Installing Visual Studio][Installing Visual Studio] (A Visual Studio telepítése) útmutatót az MSDN webhelyén, és válassza az alapértelmezett konfigurációkat.
+## <a name="reporting-issues-with-ssdt-visual-studio-2019-preview"></a>Jelentéskészítési problémák a SSDT Visual Studio 2019 (előzetes verzió) szolgáltatással
 
-## <a name="step-2-install-ssdt"></a>2\. lépés: A SSDT telepítése
-A Visual studióhoz készült SSDT telepítéséhez először tekintse meg a SSDT frissítését a Visual studióból a következő lépésekkel.
-
-1. A Visual Studióban kattintson a **Tools** / Extensions and Updates elemre **...** / **Frissítések**
-2. Válassza a **Product Updates** (Termékfrissítések) lehetőséget, majd keresse a **Microsoft SQL Server Update for database tooling** (Microsoft SQL Server frissítése adatbáziseszközökkel) elemet
-
-Ha nem talál frissítést, telepítenie kell a legújabb verziót. Annak megerősítéséhez, hogy az SSDT telepítve van, kattintson a **Help** / **About Microsoft Visual Studio** (Súgó > A Microsoft Visual Studio névjegye) lehetőségre, és keresse meg az SQL Server Data Toolst a listában. Ha a telepítés lehetőség nem érhető el a Visual studióból, látogasson el a [SSDT letöltési][SSDT Download] oldalára, ahol manuálisan letöltheti és telepítheti a SSDT.
+Ha a SSDT és a SQL Data Warehouse használatával szeretne problémákat jelenteni, e-mailben küldje el a következő e-mail-terjesztési listát:<sqldwssdtpreview@service.microsoft.com>
 
 ## <a name="next-steps"></a>További lépések
+
 Most, hogy a SSDT legújabb verzióját használja, készen áll a SQL Data Warehouse [][connect] való kapcsolódásra.
 
 <!--Anchors-->
@@ -54,7 +51,7 @@ Most, hogy a SSDT legújabb verzióját használja, készen áll a SQL Data Ware
 [connect]: ./sql-data-warehouse-query-visual-studio.md
 
 <!--Other-->
-[A Visual Studio letöltése]: https://www.visualstudio.com/downloads/
+[A Visual Studio 2019 letöltése]: https://www.visualstudio.com/downloads/
 [Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
 [SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx
 [UserVoice-on]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu

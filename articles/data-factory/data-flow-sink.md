@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: b228dfd92fe389d196a65f7152ef22751842f4bb
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 24ad0f2e917420c327577851cabc9e5bdbad2825
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640278"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515663"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Adatfolyam-transzformáció
 
@@ -79,13 +79,16 @@ Fájl elnevezésének beállítása:
 
 Adatbázis-beállítások kiválasztása:
 
+![A beállítások lap, amely az SQL-fogadó beállításait mutatja](media/data-flow/alter-row2.png "SQL-beállítások")
+
 * **Frissítési módszer**: Az alapértelmezett érték a beszúrások engedélyezése. Ha le szeretné állítani a forrásból az új sorok beszúrását, törölje a **Beszúrás engedélyezése** jelölőnégyzet jelölését. A sorok frissítéséhez, upsert vagy törléséhez először adjon hozzá egy Alter-Row transzformációt a műveletekhez tartozó sorok címkézéséhez. 
 * **Tábla újbóli létrehozása**: Dobja el vagy hozza létre a cél táblát az adatfolyam befejeződése előtt.
 * **Táblázat csonkítása**: Az adatfolyamat befejeződése előtt távolítsa el a céltábla összes sorát.
 * **Köteg mérete**: Adja meg azt a számot, amelyet a rendszer a tömbökbe ír. Ezt a lehetőséget nagy adatterhelések esetén használja. 
 * **Előkészítés engedélyezése**: Ha az Azure-adattárházat a fogadó adatkészletként tölti be, használja a Base-t.
+* **SQL-szkriptek előtti és utáni parancsfájlok**: Adja meg azokat a többsoros SQL-parancsfájlokat, amelyeket a rendszer a (pre-Processing) és a (post-Processing) adatainak a fogadó adatbázisba való beírása előtt végrehajt.
 
-![A beállítások lap, amely az SQL-fogadó beállításait mutatja](media/data-flow/alter-row2.png "SQL-beállítások")
+![SQL-feldolgozási parancsfájlok előzetes és utáni feldolgozása](media/data-flow/prepost1.png "SQL-feldolgozási parancsfájlok")
 
 > [!NOTE]
 > Az adatforgalomban Data Factory, hogy új tábla-definíciót hozzon létre a céladatbázis használatával. A tábla definíciójának létrehozásához állítson be egy adatkészletet a fogadó átalakításban, amely új táblanév néven szerepel. Az SQL-adatkészletben a tábla neve alatt válassza a **Szerkesztés** lehetőséget, és adjon meg egy új táblanév nevet. Ezután a fogadó átalakításban kapcsolja be a **séma-eltolódás engedélyezése lehetőséget**. Az **importálási séma** beállítása **none**értékre.

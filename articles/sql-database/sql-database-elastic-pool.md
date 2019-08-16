@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 02/28/2019
-ms.openlocfilehash: 31fb6eaefe557c1f135b4558b873454d4a3a01d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/06/2019
+ms.openlocfilehash: 305a35d1d40d94d1ce8e463b4af51eb84278bc3f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568625"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510254"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>A rugalmas készletek segítségével több Azure SQL Database-adatbázist kezelhet és méretezheti
 
@@ -210,9 +210,9 @@ További információ: [SQL Database riasztások létrehozása Azure Portalokban
 
   A árnyék rugalmas készleteket használ a Azure SQL Database segítségével, amelyekkel gyorsan kiépítheti és méretezheti a szolgáltatásokat több ezer bérlő számára a felhőben.
 
-- [Daxko/CSI](https://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+- [Daxko/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
-  A Daxko/CSI rugalmas készleteket használ Azure SQL Database a fejlesztési ciklus felgyorsításához, valamint az ügyfelek szolgáltatásainak és teljesítményének növeléséhez.
+   A Daxko/CSI rugalmas készleteket használ Azure SQL Database a fejlesztési ciklus felgyorsításához, valamint az ügyfelek szolgáltatásainak és teljesítményének növeléséhez.   
 
 ## <a name="next-steps"></a>További lépések
 

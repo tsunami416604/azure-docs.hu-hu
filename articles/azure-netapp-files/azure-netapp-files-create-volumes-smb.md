@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 7/9/2019
 ms.author: b-juche
-ms.openlocfilehash: 9409beea3f22fd7ff09fe49838a37d9ff0b485f6
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 3cd60f390f0233e2923660fc39675b5a307d8d8f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975917"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515415"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
@@ -59,6 +59,18 @@ Az alhálózatot delegálni kell Azure NetApp Files.
     |    Secure LDAP        |    636       |    TCP           |
     |    Secure LDAP        |    3269      |    TCP           |
     |    W32Time            |    123       |    UDP           |
+
+* A célként megadott Active Directory tartományi szolgáltatások helyének topológiájának meg kell felelnie az ajánlott eljárásoknak, különösen az Azure-VNet, ahol a Azure NetApp Files telepítve van.  
+
+    Egy új vagy meglévő Active Directory-helyhez hozzá kell adni a Azure NetApp Files központilag telepített virtuális hálózat címterület (ahol a tartományvezérlő elérhető a Azure NetApp Files-ben). 
+
+* A megadott DNS-kiszolgálóknak elérhetőknek kell lenniük [](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) a Azure NetApp Files delegált alhálózatán.  
+
+    Lásd: [Azure NetApp Files hálózati tervezéssel kapcsolatos irányelvek](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) a támogatott hálózati topológiák esetében.
+
+    A hálózati biztonsági csoportoknak (NSG) és a tűzfalaknak megfelelően konfigurált szabályokkal kell rendelkezniük a Active Directory és a DNS forgalmi kéréseinek engedélyezéséhez.
+
+    Lásd: [a hely topológiájának megtervezése az](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) ad-helyekre és-szolgáltatásokra vonatkozóan. 
 
 ## <a name="create-an-active-directory-connection"></a>Active Directory-kapcsolatok létrehozása
 
@@ -117,15 +129,15 @@ Az alhálózatot delegálni kell Azure NetApp Files.
         A **Rendelkezésre álló kvóta** mező a kiválasztott kapacitáskészletben fel nem használt terület mennyiségét mutatja, amely felhasználható egy új kötet létrehozása során. Az új kötet mérete nem haladhatja meg a rendelkezésre álló kvótát.  
 
     * **Virtuális hálózat**  
-        Adja meg azt az Azure-beli virtuális hálózatot (VNet), amelyről el szeretné érni a kötetet.  
+        Itt adhatja meg azt az Azure-beli virtuális hálózatot (VNet), amelyről el szeretné érni a kötetet.  
 
-        A megadott vnet rendelkeznie kell egy Azure NetApp Files delegált alhálózattal. A Azure NetApp Files szolgáltatás csak ugyanarról a vnet érhető el, vagy egy olyan vnet, amely ugyanabban a régióban található, mint a kötet vnet-társításon keresztül. Az Express Route használatával is elérheti a kötetet a helyszíni hálózatról.   
+        A megadott VNet rendelkeznie kell egy Azure NetApp Files delegált alhálózattal. A Azure NetApp Files szolgáltatás csak ugyanarról a VNet érhető el, vagy egy olyan VNet, amely ugyanabban a régióban található, mint a kötet VNet-társításon keresztül. Az Express Route használatával is elérheti a kötetet a helyszíni hálózatról.   
 
     * **Alhálózat**  
         Itt adhatja meg a kötethez használni kívánt alhálózatot.  
         A megadott alhálózatot delegálni kell Azure NetApp Files. 
         
-        Ha nem delegált alhálózatot, a kötet létrehozása lapon kattintson az **új létrehozása** lehetőségre. Ezután az alhálózat létrehozása lapon adja meg az alhálózati adatokat, majd válassza a **Microsoft. NetApp/kötetek** lehetőséget az alhálózat delegálásához Azure NetApp Files számára. Minden vnet csak egy alhálózat delegálható Azure NetApp Filesra.   
+        Ha nem delegált alhálózatot, a kötet létrehozása lapon kattintson az **új létrehozása** lehetőségre. Ezután az alhálózat létrehozása lapon adja meg az alhálózati adatokat, majd válassza a **Microsoft. NetApp/kötetek** lehetőséget az alhálózat delegálásához Azure NetApp Files számára. Minden VNet csak egy alhálózat delegálható Azure NetApp Filesra.   
  
         ![Kötet létrehozása](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     

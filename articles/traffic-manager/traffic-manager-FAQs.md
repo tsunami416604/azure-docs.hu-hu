@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 37f1a0d9c70afc0a3a86ac76b682ee7b2adb253d
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 86376983f98abd241783f456cb9b41ab5d93ae51
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335795"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69511021"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager gyakori kérdések (GYIK)
 
@@ -49,7 +49,7 @@ Az ügyfél böngészőjéből eljuttatott HTTP-állomásfejléc a leggyakoribb 
 
 Ahogy azt a [Traffic Manager működése című témakör](../traffic-manager/traffic-manager-how-it-works.md)ismerteti, Traffic Manager a DNS-szinten működik. Mivel az ügyfelek közvetlenül a szolgáltatási végpontokhoz csatlakoznak, a kapcsolat létrejötte után a Traffic Manager használatakor nincs hatással a teljesítményre.
 
-Mivel a Traffic Manager DNS-szinten integrálódik az alkalmazásokkal, a DNS-feloldási láncba való beillesztéshez további DNS-névlekérdezésre van szükség. A Traffic Manager DNS-feloldási időpontra gyakorolt hatása minimális. A Traffic Manager a névkiszolgálók globális hálózatát használja, és a teljes képernyős [hálózatkezelést](https://en.wikipedia.org/wiki/Anycast) használja annak biztosítására, hogy a DNS-lekérdezések mindig a legközelebbi elérhető névkiszolgálók felé legyenek irányítva. A DNS-válaszok gyorsítótárazása emellett azt is jelenti, hogy a Traffic Manager használatával felmerülő további DNS-késés csak a munkamenetek töredékére vonatkozik.
+Mivel a Traffic Manager DNS-szinten integrálódik az alkalmazásokkal, a DNS-feloldási láncba való beillesztéshez további DNS-névlekérdezésre van szükség. A Traffic Manager DNS-feloldási időpontra gyakorolt hatása minimális. A Traffic Manager a névkiszolgálók globális hálózatát használja, és a [](https://en.wikipedia.org/wiki/Anycast) teljes képernyős hálózatkezelést használja annak biztosítására, hogy a DNS-lekérdezések mindig a legközelebbi elérhető névkiszolgálók felé legyenek irányítva. A DNS-válaszok gyorsítótárazása emellett azt is jelenti, hogy a Traffic Manager használatával felmerülő további DNS-késés csak a munkamenetek töredékére vonatkozik.
 
 A teljesítmény metódus a legközelebbi elérhető végpontra irányítja a forgalmat. A nettó eredmény az, hogy az ehhez a metódushoz társított általános teljesítményre gyakorolt hatásnak minimálisnak kell lennie. A DNS-késés növelését a végponthoz képest alacsonyabb hálózati késéssel kell ellensúlyozni.
 
@@ -322,9 +322,9 @@ Traffic Manager a végpont DNS-nevével vagy IP-címével válaszol. IPv6-végpo
 
 A Traffic Manager általában a különböző régiókban üzembe helyezett alkalmazásokra irányuló forgalom irányítására szolgál. Ugyanakkor azt is felhasználhatja, hogy egy adott alkalmazás több központi telepítéssel is rendelkezik ugyanabban a régióban. Az Traffic Manager Azure-végpontok nem engedélyezik, hogy ugyanahhoz az Azure-régióhoz több webalkalmazás-végpontot lehessen hozzáadni ugyanahhoz a Traffic Manager-profilhoz.
 
-### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group"></a>Hogyan az Traffic Manager-profil Azure-végpontját egy másik erőforráscsoporthoz helyezi át?
+### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription"></a>Hogyan az Traffic Manager profil Azure-végpontját egy másik erőforráscsoporthoz vagy előfizetésbe helyezi át?
 
-A Traffic Manager profiljához társított Azure-végpontokat az erőforrás-azonosítóik alapján követjük nyomon. A végpontként használt Azure-erőforrások (például a nyilvános IP-cím, a klasszikus felhőalapú szolgáltatás, a WebApp vagy más, beágyazott módon használt Traffic Manager-profilok) átkerülnek egy másik erőforráscsoporthoz, annak erőforrás-azonosítója megváltozik. Ebben a forgatókönyvben jelenleg a Traffic Manager profilt először törölnie kell, majd újra hozzá kell adnia a végpontokat a profilhoz.
+A Traffic Manager profiljához társított Azure-végpontokat az erőforrás-azonosítóik alapján követjük nyomon. Ha egy olyan Azure-erőforrást, amelyet végpontként használ (például a nyilvános IP-címet, a klasszikus felhőalapú szolgáltatást, a WebApp-t vagy egy beágyazott módon használt Traffic Manager profilt), a rendszer áthelyezi egy másik erőforráscsoporthoz vagy előfizetésbe, és az erőforrás-azonosítót módosítja. Ebben a forgatókönyvben jelenleg a Traffic Manager profilt először törölnie kell, majd újra hozzá kell adnia a végpontokat a profilhoz.
 
 ## <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager végpont figyelése
 
@@ -444,7 +444,7 @@ Ha nincs megadva egyéni állomásfejléc-beállítás, az Traffic Manager álta
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Mik azok az IP-címek, amelyekről az állapot-ellenőrzések származnak?
 
-Ide [kattintva](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json) megtekintheti a JSON-fájlt, amely felsorolja azokat az IP-címeket, amelyekről Traffic Manager állapot-ellenőrzések származhatnak. Tekintse át a JSON-fájlban felsorolt IP-címeket annak biztosításához, hogy az ezen IP-címekről érkező bejövő kapcsolatok engedélyezettek legyenek a végpontokon az állapotának ellenőrzéséhez.
+Ide [](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json) kattintva megtekintheti a JSON-fájlt, amely felsorolja azokat az IP-címeket, amelyekről Traffic Manager állapot-ellenőrzések származhatnak. Tekintse át a JSON-fájlban felsorolt IP-címeket annak biztosításához, hogy az ezen IP-címekről érkező bejövő kapcsolatok engedélyezettek legyenek a végpontokon az állapotának ellenőrzéséhez.
 
 ### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Hány állapot-ellenőrzést várhatok a végpontom Traffic Manager?
 

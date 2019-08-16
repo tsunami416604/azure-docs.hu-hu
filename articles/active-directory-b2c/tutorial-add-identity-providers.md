@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5710ccfe5d6450714e029827a795b484b1bcd2b4
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: eee881e6d4e446e07867261545a90dfacaa93712
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716665"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512210"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Oktatóanyag: Identitás-szolgáltatók hozzáadása az alkalmazásokhoz Azure Active Directory B2C
 
@@ -86,7 +86,7 @@ Ha Facebook-fiókot szeretne használni a Azure AD B2C identitás-szolgáltatók
 1. Válassza a **termékek**melletti plusz jelre, majd a **Facebook-Bejelentkezés**alatt válassza a **beállítás**lehetőséget.
 1. A bal oldali menü **Facebook-Bejelentkezés** területén válassza a **Beállítások**lehetőséget.
 1. Az **érvényes OAuth átirányítási URI**- `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`k mezőben adja meg a értéket. Cserélje `your-tenant-name` le a helyére a bérlő nevét. A lap alján kattintson a **módosítások mentése** gombra.
-1. Ahhoz, hogy a Facebook-alkalmazás elérhető legyen a Azure AD B2C számára, kattintson az oldal jobb felső sarkában található **állapot** -választóra, majd kapcsolja be **, hogy az** alkalmazás nyilvános legyen, majd kattintson a Confirm ( **megerősítés**) gombra. Ezen a ponton az állapotnak a fejlesztéstől az **élő**értékre kell váltania.
+1. Ahhoz, hogy a Facebook-alkalmazás elérhető legyen a Azure AD B2C számára, kattintson az oldal jobb felső sarkában található **állapot** -választóra, majd kapcsolja be, hogy az alkalmazás nyilvános legyen, majd kattintson a **Confirm (megerősítés**) gombra. Ezen a ponton az állapotnak a fejlesztéstől az **élő**értékre kell váltania.
 
 ## <a name="add-the-identity-providers"></a>Az identitás-szolgáltatók hozzáadása
 
@@ -98,7 +98,7 @@ Miután létrehozta az alkalmazást a hozzáadni kívánt identitás-szolgáltat
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.
 1. Adjon meg egy **nevet**. Adja meg például a *contoso Azure ad*-t.
-1. Válassza az **identitás-szolgáltató típusa**lehetőséget, válassza az **OpenID Connect (előzetes verzió)** lehetőséget, majd kattintson **az OK**gombra.
+1. Válassza az **identitás-szolgáltató típusa**lehetőséget, válassza az **OpenID Connect**lehetőséget, majd kattintson **az OK**gombra.
 1. Kattintson **az identitás-szolgáltató beállítása** elemre.
 1. A **metaadatok URL**-címéhez adja meg a következő `your-AD-tenant-domain` URL-címet, és cserélje le az Azure ad-bérlő tartománynevére.
 

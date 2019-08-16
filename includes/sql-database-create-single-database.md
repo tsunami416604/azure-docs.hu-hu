@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 06/19/2019
 ms.author: mathoma
 ms.openlocfilehash: eff121cfaf4473607110de4553a9bb8021990caf
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 08/15/2019
 ms.locfileid: "68444681"
 ---
 Ebben a lépésben az erőforráscsoportot és egy Azure SQL Database önálló adatbázist fog létrehozni. 
@@ -55,7 +55,7 @@ Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal
 
      ![Virtuálismag-alapú vásárlási beállítások](../articles/sql-database/media/sql-database-get-started-portal/create-database-vcore.png)
 
-   - Válassza  a kiépített és a **Gen4**lehetőséget.
+   - Válassza a kiépített és a **Gen4**lehetőséget.
 
      ![kiszolgáló nélküli számítási szintek](../articles/sql-database/media/sql-database-get-started-portal/create-database-serverless.png)
 

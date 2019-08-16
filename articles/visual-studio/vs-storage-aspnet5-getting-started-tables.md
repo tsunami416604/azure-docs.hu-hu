@@ -1,9 +1,9 @@
 ---
-title: Ismerkedés a table storage és a Visual Studio csatlakoztatott szolgáltatásainak (az ASP.NET Core) |} A Microsoft Docs
-description: Első lépések az Azure Table storage, ASP.NET Core-projektben a Visual Studióban egy tárfiókot, a Visual Studio használatával való csatlakozást követően kapcsolódó szolgáltatások
+title: Ismerkedés a Table Storage és a Visual Studio csatlakoztatott szolgáltatásaival (ASP.NET Core) | Microsoft Docs
+description: Az Azure Table Storage használatának első lépései egy ASP.NET Core-projektben a Visual Studióban, miután kapcsolódott egy Storage-fiókhoz a Visual Studio Connected Services használatával
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: c3c451d1-71ff-4222-a348-c41c98a02b85
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,30 +12,30 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: 1f90ce71084ba3acbf5a0aec5c7b8e9683323766
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ac610e96d84568b7973f288623730ea1677ceac
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362118"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510919"
 ---
-# <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Ismerkedés az Azure Table storage és a Visual Studio csatlakoztatott szolgáltatásainak
+# <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Ismerkedés az Azure Table Storage és a Visual Studio csatlakoztatott szolgáltatásaival
 
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-Ez a cikk bemutatja, hogyan kezdheti el az Azure Table storage a Visual Studióban létrehozott vagy hivatkozott Azure storage-fiók egy ASP.NET Core-projektet a Visual Studio használatával után **csatlakoztatott szolgáltatás** funkció. A **csatlakoztatott szolgáltatás** művelet telepíti a megfelelő NuGet-csomagokat a projekthez az Azure storage eléréséhez, és a projekt konfigurációs fájlokat ad hozzá a tárfiók kapcsolati karakterláncát. (Lásd: [Storage-dokumentáció](https://azure.microsoft.com/documentation/services/storage/) Azure Storage kapcsolatos általános információkhoz.)
+Ez a cikk azt ismerteti, hogyan kezdheti el az Azure Table Storage használatát a Visual Studióban, miután létrehozta vagy hivatkozott egy Azure Storage-fiókot egy ASP.NET Core-projektben a Visual Studio **csatlakoztatott szolgáltatások** funkciójának használatával. A **csatlakoztatott szolgáltatások** művelet telepíti a megfelelő NuGet-csomagokat az Azure Storage-ban a projektben, és hozzáadja a Storage-fiókhoz tartozó kapcsolati karakterláncot a projekt konfigurációs fájljaihoz. (Lásd az Azure Storage szolgáltatással kapcsolatos általános információk [tárolási dokumentációját](https://azure.microsoft.com/documentation/services/storage/) .)
 
-Az Azure Table storage szolgáltatás lehetővé teszi nagy mennyiségű strukturált adat tárolására. A szolgáltatás egy NoSQL-adattár, amely elfogadja az érkező hitelesített hívásokat belül és kívül az Azure-felhőben. Az Azure-táblák strukturált, nem relációs adatok tárolására alkalmasak. Az Azure Table storage használatával kapcsolatos további általános információkért lásd: [.NET használatával az Azure Table storage használatának első lépései](../storage/storage-dotnet-how-to-use-tables.md).
+Az Azure Table Storage szolgáltatás lehetővé teszi nagy mennyiségű strukturált adattárolás tárolását. A szolgáltatás egy NoSQL-adattár, amely az Azure-felhőn belüli és kívüli hitelesített hívásokat fogadja el. Az Azure-táblák strukturált, nem relációs adatok tárolására alkalmasak. Az Azure Table Storage használatával kapcsolatos általános információkért lásd: [Az Azure Table Storage használatának első lépései a .NET használatával](../storage/storage-dotnet-how-to-use-tables.md).
 
-Első lépésként hozzon létre egy táblát a storage-fiókban. Ez a cikk majd megjelenít egy tábla létrehozása a C#-ban, és hogyan hajthat végre alapszintű táblázat műveletek, például a hozzáadása, módosítása, olvasó és táblabejegyzéseket eltávolítása.  A kódot használja az Azure Storage ügyféloldali kódtára a .NET-hez. Az ASP.NET kapcsolatos további információkért lásd: [ASP.NET](https://www.asp.net).
+Első lépésként hozzon létre egy táblázatot a Storage-fiókban. Ez a cikk bemutatja, hogyan hozhat létre táblát a C# alkalmazásban, és hogyan hajthat végre olyan alapszintű táblázatos műveleteket, mint például a táblamezők hozzáadása, módosítása, olvasása és eltávolítása.  A kód a .NET-hez készült Azure Storage ügyféloldali kódtárat használja. További információ a ASP.NET: [ASP.net](https://www.asp.net).
 
-Az Azure Storage API-k némelyike aszinkron, és ebben a cikkben a kód azt feltételezi, hogy az aszinkron módszereket használ. Lásd: [aszinkron programozás](https://docs.microsoft.com/dotnet/csharp/async) további információt.
+Egyes Azure Storage API-k aszinkron módon működnek, és a cikkben szereplő kód feltételezi az aszinkron metódusok használatát. További információ: [aszinkron programozás](https://docs.microsoft.com/dotnet/csharp/async) .
 
-## <a name="access-tables-in-code"></a>Hozzáférés táblák a code-ban
+## <a name="access-tables-in-code"></a>Hozzáférési táblázatok a kódban
 
-Hozzáférnek az ASP.NET Core-projektek, a C# forrásfájlokat, amely az Azure table storage eléréséhez a következő elemeket is kell.
+ASP.NET Core projektek tábláihoz való hozzáféréshez az alábbi elemeket is fel kell vennie az C# Azure Table Storage-hoz hozzáférő forrásfájlokba.
 
-1. Adja hozzá a szükséges `using` utasításokat:
+1. Adja hozzá a `using` szükséges utasításokat:
 
     ```csharp
     using Microsoft.WindowsAzure.Storage;
@@ -43,7 +43,7 @@ Hozzáférnek az ASP.NET Core-projektek, a C# forrásfájlokat, amely az Azure t
     using System.Threading.Tasks;
     ```
 
-1. Get- `CloudStorageAccount` objektum, amely a storage-fiók adatait jelöli. Használja a következő kódra, a storage-fiók és a fiókkulcsot, amely találhatja meg az appSettings.JSON fájl tárolási kapcsolati karakterlánc neve használatával:
+1. Szerezzen `CloudStorageAccount` be egy objektumot, amely a Storage-fiók adatait jelöli. Használja a következő kódot a Storage-fiókja és a fiók kulcsa alapján, amelyet a appSettings. JSON fájl tárolási kapcsolatainak karakterláncában talál:
 
     ```csharp
         CloudStorageAccount storageAccount = new CloudStorageAccount(
@@ -51,23 +51,23 @@ Hozzáférnek az ASP.NET Core-projektek, a C# forrásfájlokat, amely az Azure t
                 "<name>", "<account-key>"), true);
     ```
 
-1. Get- `CloudTableClient` objektum, melyet a tárfiókban található táblázat objektumokra hivatkozzanak:
+1. Egy `CloudTableClient` objektum lekérése a Storage-fiókban lévő táblázatos objektumokra való hivatkozáshoz:
 
     ```csharp
     // Create the table client.
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Get- `CloudTable` hivatkozási objektumot egy adott táblához és entitások beállításához:
+1. Egy olyan `CloudTable` hivatkozási objektum beszerzése, amely egy adott táblára és entitásokra hivatkozik:
 
     ```csharp
     // Get a reference to a table named "peopleTable"
     CloudTable peopleTable = tableClient.GetTableReference("peopleTable");
     ```
 
-## <a name="create-a-table-in-code"></a>Hozzon létre egy táblát a code-ban
+## <a name="create-a-table-in-code"></a>Tábla létrehozása kódban
 
-Az Azure-tábla létrehozásához async módszert létrehozása, és a benne található hívja `CreateIfNotExistsAsync()`:
+Az Azure-tábla létrehozásához hozzon létre egy aszinkron metódust, `CreateIfNotExistsAsync()`és kattintson a következőre:
 
 ```csharp
 async void CreatePeopleTableAsync()
@@ -79,7 +79,7 @@ async void CreatePeopleTableAsync()
     
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
 
-Entitás hozzáadása egy táblához, hozzon létre egy osztályt, amely az entitás tulajdonságainak meghatározása. Az alábbi kód meghatároz egy entitásosztályt, nevű `CustomerEntity` , amely használ az ügyfél keresztnevét sorkulcsnak és a vezetéknevét partíciókulcsnak.
+Az entitások táblához való hozzáadásához létre kell hoznia egy olyan osztályt, amely meghatározza az entitás tulajdonságait. A következő kód egy nevű `CustomerEntity` Entity osztályt határoz meg, amely az ügyfél utónevét és vezetéknevét használja a partíciós kulcsként.
 
 ```csharp
 public class CustomerEntity : TableEntity
@@ -98,7 +98,7 @@ public class CustomerEntity : TableEntity
 }
 ```
 
-Tábla műveletek használata esetén az entitások használata a `CloudTable` objektumot, amelyet előzőleg létrehozott [hozzáférnek a kódban](#access-tables-in-code). A `TableOperation` objektum képviseli kell végrehajtani a műveletet. Az alábbi példakód bemutatja, hogyan hozhat létre egy `CloudTable` objektum és a egy `CustomerEntity` objektum. A művelet előkészítéséhez egy `TableOperation` hoz létre, beszúrja az ügyfélentitást a táblába. Végül, a művelet meghívásával hajtható végre `CloudTable.ExecuteAsync`.
+Az entitásokat tartalmazó táblák műveletei `CloudTable` a korábban létrehozott objektumot használják a [kódban a hozzáférési táblákban](#access-tables-in-code). Az `TableOperation` objektum a végrehajtani kívánt műveletet jelöli. A következő mintakód bemutatja, hogyan hozhat létre egy `CloudTable` objektumot és egy `CustomerEntity` objektumot. A művelet előkészítéséhez létrejön egy `TableOperation` , az ügyfél entitásnak a táblába való beszúrásához. Végül meghívja `CloudTable.ExecuteAsync`a műveletet.
 
 ```csharp
 // Create a new customer entity.
@@ -115,7 +115,7 @@ await peopleTable.ExecuteAsync(insertOperation);
 
 ## <a name="insert-a-batch-of-entities"></a>Entitásköteg beszúrása
 
-Több entitás beszúrhat egy táblába egyetlen írási művelettel. Az alábbi példakód létrehoz két entitásobjektumot ("Kovács" és "Ben Smith"), hozzáadja őket egy `TableBatchOperation` objektumba a `Insert` módszer, majd elindítja a művelet meghívásával `CloudTable.ExecuteBatchAsync`.
+Egyetlen írási művelettel több entitást is beszúrhat egy táblába. A következő mintakód két entitást hoz létre ("Jeff Smith" és "ben Smith"), hozzáadja őket egy `TableBatchOperation` objektumhoz a `Insert` metódus használatával, majd meghívja `CloudTable.ExecuteBatchAsync`a műveletet.
 
 ```csharp
 // Create the batch operation.
@@ -139,9 +139,9 @@ batchOperation.Insert(customer2);
 await peopleTable.ExecuteBatchAsync(batchOperation);
 ```
 
-## <a name="get-all-of-the-entities-in-a-partition"></a>Az összes entitás partíció beolvasása
+## <a name="get-all-of-the-entities-in-a-partition"></a>Egy partíció összes entitásának beolvasása
 
-Egy tábla az entitások egy partíció összes lekérdezés, használja a `TableQuery` objektum. Az alábbi példakód megad egy szűrőt a „Smith” partíciókulcsú entitásokra. A példa megjeleníti a konzolon a lekérdezés eredményei között szereplő entitásokhoz tartozó mezőket.
+Egy adott partíció összes entitásához tartozó tábla lekérdezéséhez használjon egy `TableQuery` objektumot. Az alábbi példakód megad egy szűrőt a „Smith” partíciókulcsú entitásokra. A példa megjeleníti a konzolon a lekérdezés eredményei között szereplő entitásokhoz tartozó mezőket.
 
 ```csharp
 // Construct the query operation for all customer entities where PartitionKey="Smith".
@@ -164,7 +164,7 @@ do
 
 ## <a name="get-a-single-entity"></a>Egyetlen entitás beolvasása
 
-A lekérdezés az egy adott entitás írhat. A következő kódban a `TableOperation` objektumot adja meg a "Ben Smith" nevű ügyfélhez. A metódus adja vissza, csak egyetlen entitást helyett egy gyűjteményt, és a visszaadott érték `TableResult.Result` van egy `CustomerEntity` objektum. A leggyorsabb módja az egyetlen entitás lekérdezése partíció-és sorkulcsok megadása a lekérdezésben a `Table` szolgáltatás.
+Megírhat egy lekérdezést, amely egyetlen, adott entitást kap. A következő kód egy `TableOperation` objektumot használ a "ben Smith" nevű ügyfél megadásához. A metódus csak egyetlen entitást ad vissza, nem egy gyűjteményt, és a visszaadott `TableResult.Result` érték `CustomerEntity` egy objektum. A partíciók és a sorok kulcsának a lekérdezésben való megadásával a leggyorsabb módszer egyetlen entitás beolvasására a `Table` szolgáltatásból.
 
 ```csharp
 // Create a retrieve operation that takes a customer entity.
@@ -182,7 +182,7 @@ else
 
 ## <a name="delete-an-entity"></a>Entitás törlése
 
-Egy entitás után keresse meg azt törölheti. Az alábbi kód keres, és töröl egy ügyfélentitást "Ben Smith" nevű:
+A keresés után törölheti az entitásokat. A következő kód egy "ben Smith" nevű ügyfél-entitást keres és töröl:
 
 ```csharp
 // Create a retrieve operation that expects a customer entity.

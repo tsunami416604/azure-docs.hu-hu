@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Állítsa be a környezetet és a munkaterületet.'
+title: 'Oktatóanyag: Hozza létre az első ML-kísérletét: Beállítás'
 titleSuffix: Azure Machine Learning service
 description: Ebben az oktatóanyag-sorozatban elvégezheti a teljes körű lépéseket a Jupyter-jegyzetfüzetekben futó Azure Machine Learning Python SDK megkezdéséhez.  Az első rész egy felhőalapú notebook-kiszolgáló környezet létrehozását, valamint a kísérletek és a gépi tanulási modellek kezelésére szolgáló munkaterület létrehozását ismerteti.
 services: machine-learning
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 70fee90fb82618a409d2566a3235ad8ca42e1760
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: cc16f3c8ea287e78d7b7b4d9a56f5a2e82c26f01
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934419"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515342"
 ---
-# <a name="tutorial-set-up-environment-and-workspace"></a>Oktatóanyag: Környezet és munkaterület beállítása
+# <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Oktatóanyag: Ismerkedés az első ML-kísérlet létrehozásával
 
 Ebben az oktatóanyagban a teljes körű lépéseket követve megkezdheti a Jupyter-jegyzetfüzetekben futó Azure Machine Learning Python SDK megkezdését. Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat első része**, amely a Python környezet beállítását és konfigurálását, valamint a kísérletek és a gépi tanulási modellek kezelésére szolgáló munkaterület létrehozását ismerteti. A második [**rész**](tutorial-1st-experiment-sdk-train.md) erre épít több gépi tanulási modell betanításához, és a Azure Portal és az SDK használatával is bevezeti a modell felügyeleti folyamatát.
 

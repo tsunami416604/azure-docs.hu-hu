@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f5869cbb51cf1c968ee8ca1e2286416fd263d647
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: d6cde04d122d20c4aad5920c29995d9d33165163
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68224635"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515522"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>A diagnosztikai funkcióval kapcsolatos problémák azonosítása
 
@@ -88,7 +88,7 @@ A **-befejezési** paramétert hozzáadhatja egy parancsmaghoz a **-kezdő** par
 Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018" -EndTime "08/10/2018"
 ```
 
-A **-kezdő** és  a záró paraméter is kombinálható más opcionális szűrési paraméterekkel.
+A **-kezdő** és a záró paraméter is kombinálható más opcionális szűrési paraméterekkel.
 
 ### <a name="filter-diagnostic-activities-by-activity-type"></a>Diagnosztikai tevékenységek szűrése tevékenység típusa szerint
 
@@ -153,7 +153,7 @@ A következő táblázat azokat a gyakori hibákat sorolja fel, amelyeket a rend
 |8000|InvalidAuthorizationRoleScope|A megadott szerepkör neve nem egyezik a meglévő szerepkörök nevével. Tekintse át az elírásokhoz tartozó szerepkör nevét, és próbálkozzon újra. |
 |8001|UserNotFound |A megadott Felhasználónév nem egyezik a meglévő felhasználónevek nevével. Tekintse át az elírások nevét, és próbálkozzon újra.|
 |8005|UserNotFoundInAAD |A megadott Felhasználónév nem egyezik a meglévő felhasználónevek nevével. Tekintse át az elírások nevét, és próbálkozzon újra.|
-|8008|TenantConsentRequired|Kövesse az [itt](tenant-setup-azure-active-directory.md#grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service) található utasításokat a bérlői engedély megadásához.|
+|8008|TenantConsentRequired|Kövesse az [itt](tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop) található utasításokat a bérlői engedély megadásához.|
 
 ### <a name="external-connection-error-codes"></a>Külső kapcsolatok hibakódai
 

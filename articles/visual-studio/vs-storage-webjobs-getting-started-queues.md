@@ -3,7 +3,7 @@ title: Ismerkedés a üzenetsor-tárolással és a Visual Studio csatlakoztatott
 description: Az Azure üzenetsor-tárolás használatának első lépései egy Webjobs-projektben a Visual Studio csatlakoztatott szolgáltatásainak használatával a Storage-fiókhoz való csatlakozás után.
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 44206f1826fc25407d9dec3f832b70881091e187
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0afed158f5a19f3d82a3953f828f2b5566a6d5ff
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248961"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510792"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure üzenetsor Storage és a Visual Studio csatlakoztatott szolgáltatásaival (Webjobs-projektek)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -44,7 +44,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 A **karakterlánc**mellett a paraméter lehet egy byte Array, egy **CloudQueueMessage** objektum vagy egy Ön által meghatározott poco.
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(régi CLR-objektum](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) üzenetsor-üzenetei
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [(régi CLR-objektum](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) üzenetsor-üzenetei
 A következő példában az üzenetsor-üzenet JSON-t tartalmaz egy **BlobInformation** objektumhoz, amely tartalmaz egy **BlobName** tulajdonságot. Az SDK automatikusan deszerializálja az objektumot.
 
 ```csharp
@@ -201,7 +201,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(régi CLR-objektum](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) üzenetsor-üzenetei
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [(régi CLR-objektum](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) üzenetsor-üzenetei
 Ha nem karakterlánc helyett egy POCOt tartalmazó üzenetsor-üzenetet szeretne létrehozni, adja át a POCO típusát kimeneti paraméterként a **várólista** -attribútum konstruktorának.
 
 ```csharp
@@ -296,10 +296,10 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(régi CLR-objektum](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) üzenetsor-üzenetei
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [(régi CLR-objektum](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) üzenetsor-üzenetei
 A várólista-üzenetben JSON-ként tárolt POCO esetében használhatja a **várólista** -attribútum **blobPath** paraméterében található objektum nevét tartalmazó helyőrzőket. A várólista metaadatainak tulajdonságainak neve helyőrzőként is használható. Lásd: üzenetsor [vagy üzenetsor-üzenetek metaadatainak](#get-queue-or-queue-message-metadata)beolvasása.
 
-A következő példa egy blobot másol egy másik kiterjesztésű új blobra. Az üzenetsor-üzenet egy **BlobInformation** objektum, amely **BlobName** -és **BlobNameWithoutExtension** -tulajdonságokat is tartalmaz. A tulajdonságok nevei helyőrzőként használatosak a blob **-attribútumok blob** -elérési útjában.
+A következő példa egy blobot másol egy másik kiterjesztésű új blobra. Az üzenetsor-üzenet egy **BlobInformation** objektum, amely **BlobName** -és **BlobNameWithoutExtension** -tulajdonságokat is tartalmaz. A tulajdonságok nevei helyőrzőként használatosak a blob-attribútumok blob-elérési útjában.
 
 ```csharp
 public static void CopyBlobPOCO(
@@ -337,7 +337,7 @@ A **blob** attribútum a következő típusokkal használható:
 * **CloudPageBlob** (olvasás vagy írás)
 
 ## <a name="how-to-handle-poison-messages"></a>A mérgezett üzenetek kezelése
-Azok az üzenetek, amelyeknek a tartalma a függvény ** meghibásodását okozza, megmérgezi üzenetnek nevezzük. Ha a függvény meghibásodik, a várólista-üzenet nem törlődik, és végül újra bekerül, így a ciklus megismétlődik. Az SDK csak korlátozott számú iteráció után képes automatikusan megszakítani a ciklust, vagy manuálisan is elvégezheti.
+Azok az üzenetek, amelyeknek a tartalma a függvénymeghibásodását okozza, megmérgezi üzenetnek nevezzük. Ha a függvény meghibásodik, a várólista-üzenet nem törlődik, és végül újra bekerül, így a ciklus megismétlődik. Az SDK csak korlátozott számú iteráció után képes automatikusan megszakítani a ciklust, vagy manuálisan is elvégezheti.
 
 ### <a name="automatic-poison-message-handling"></a>Üzenetek automatikus megmérgezés általi kezelésére
 Az SDK a várólista-üzenetek feldolgozásához legfeljebb 5 alkalommal hívja meg a függvényt. Ha az ötödik próbálkozás sikertelen, az üzenet átkerül egy mérgezett várólistára. Megtudhatja, hogyan állíthatja be az újrapróbálkozások maximális számát a [konfigurációs beállítások](#how-to-set-configuration-options)megadásával.

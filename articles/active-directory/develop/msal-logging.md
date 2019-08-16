@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09590fbd340ac3945f05346f99254ec0b76dcd76
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 475b692a29edf5cdd05552e7b5c3dc5fde210275
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834993"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512525"
 ---
 # <a name="logging"></a>Naplózás
 A Microsoft Authentication Library (MSAL) alkalmazásai olyan naplófájlok előállítására szolgálnak, amelyek segíthetnek a problémák diagnosztizálásában és a részletekben. Egy alkalmazás több sornyi kóddal is konfigurálhatja a naplózást, és egyéni vezérléssel láthatja el a részletességi szintet, valamint azt, hogy a rendszer naplózza-e a személyes és a szervezeti adatokat. Javasoljuk, hogy állítson be egy MSAL-naplózási visszahívást, és adjon meg egy módszert a felhasználók számára a hitelesítési problémákkal rendelkező naplók elküldéséhez.
@@ -40,6 +40,10 @@ A MSAL naplózó segítségével több részletességi szintet is rögzíthet:
 Alapértelmezés szerint a MSAL-naplózó nem gyűjt kényes személyes vagy szervezeti adatokat. A könyvtár lehetővé teszi a személyes és szervezeti adatnaplózás engedélyezését, ha úgy dönt, hogy erre van szükség.
 
 ## <a name="logging-in-msalnet"></a>Naplózás a MSAL.NET
+
+ > [!NOTE]
+ > A MSAL.NET kapcsolatos további információkért tekintse meg a [MSAL.net wikit](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki). MSAL.NET-naplózási és egyéb példákat is találhat. 
+ 
 A 3. x MSAL a naplózás az alkalmazáson belül, a `.WithLogging` Builder módosító használatával van beállítva. Ez a metódus nem kötelező paramétereket vesz igénybe:
 
 - A *szint* lehetővé teszi a kívánt naplózási szint eldöntését. A hibák beállítása csak hibaüzeneteket kap

@@ -200,6 +200,8 @@
       href: /azure/templates/microsoft.hdinsight/allversions
 - name: További források
   items:
+    - name: GYIK
+      href: kafka-faq.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: Segítség kérése a fórumokon

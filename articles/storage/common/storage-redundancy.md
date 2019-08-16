@@ -9,12 +9,12 @@ ms.date: 07/10/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a4c624cf06a0e56b30b71c80a6b4a5ad48cb31a9
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 17d1bd95067c15bd67f80f3713f0e497bff8a68d
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016392"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516124"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -44,7 +44,7 @@ Az alábbi táblázat gyors áttekintést nyújt a tartósság és a rendelkezé
 | Az egész régióra kiterjedő leállás                                                                                     | Nem                              | Nem                               | Igen                                  | Igen                                  |
 | Olvasási hozzáférés az adataihoz (távoli, földrajzilag replikált régióban) az egész régióra kiterjedő elérhetetlenség esetén | Nem                              | Nem                               | Igen (az RA-GRS-vel)                                   | Igen (az RA-GZRS-vel)                                 |
 | Az objektumok tartósságának biztosítására \_ \_ szolgál az adott évben                                          | legalább 99,999999999% (11 9) | legalább 99,9999999999% (12 9) | legalább 99.99999999999999% (16 9) | legalább 99.99999999999999% (16 9) |
-| Támogatott Storage-fiókok típusai                                                                   | GPv2, GPv1, Blob                | GPv2                             | GPv2, GPv1, Blob                     | GPv2, GPv1, Blob                     |
+| Támogatott Storage-fiókok típusai                                                                   | GPv2, GPv1, Blob                | GPv2                             | GPv2, GPv1, Blob                     | GPv2                     |
 | Rendelkezésre állási SLA az olvasási kérelmekhez | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,99% (99,9% a lassú elérési szinthez) |
 | Az írási kérelmek rendelkezésre állási SLA-ja | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) |
 

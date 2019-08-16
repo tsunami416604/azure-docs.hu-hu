@@ -1,9 +1,9 @@
 ---
-title: Ismerkedés a blob storage és a Visual Studio csatlakoztatott szolgáltatásainak (felhőszolgáltatások) |} A Microsoft Docs
-description: Első lépések a Visual studióban egy felhőszolgáltatás-projekt, egy tárfiókot, a Visual Studio használatával való csatlakozást követően az Azure Blob storage-hez kapcsolódó szolgáltatásokkal
+title: Ismerkedés a blob Storage és a Visual Studio csatlakoztatott szolgáltatásaival (Cloud Services) | Microsoft Docs
+description: Az Azure Blob Storage használatának első lépései a Cloud Service-projektben a Visual Studióban, miután kapcsolódott egy Storage-fiókhoz a Visual Studio Connected Services használatával
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 1144a958-f75a-4466-bb21-320b7ae8f304
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,69 +12,69 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 9f1ef06e0275954343c548d0f6937b9c6fbcfd18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56aceb4c782c15f69c7994df787b4b950523e8b5
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122940"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510711"
 ---
-# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Blob Storage és a Visual Studio-hez kapcsolódó szolgáltatásokkal (felhőszolgáltatás-projektek)
+# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Blob Storage és a Visual Studio csatlakoztatott szolgáltatásaival (Cloud Services-projektek)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk azt ismerteti, hogyan kezdheti el az Azure Blob Storage, miután létrehozott vagy hivatkozott Azure Storage-fiókot a Visual Studio használatával **csatlakoztatott szolgáltatás hozzáadása** párbeszédpanel a Visual Studio felhőben services, project. Bemutatjuk, hogyan eléréséhez, és a blob tárolók létrehozása, és hogyan hajthat végre gyakori feladatokat, például feltöltése, listázása és a blobok letöltése. A Kódminták C nyelven írt\# , és használja a [a Microsoft Azure Storage ügyféloldali kódtára a .NET-hez](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Ez a cikk azt ismerteti, hogyan kezdheti meg az Azure Blob Storaget az Azure Storage-fiók létrehozása után, ha a Visual Studio Cloud Services-projekthez **csatlakoztatott szolgáltatások hozzáadása** párbeszédablakot használja. Bemutatjuk, hogyan férhet hozzá és hozhat létre blob-tárolókat, és hogyan végezhet el olyan gyakori feladatokat, mint például a Blobok feltöltése, listázása és letöltése. A mintákat C\# nyelven írták, és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx)használják.
 
-Az Azure Blob Storage szolgáltatás nagy mennyiségű strukturálatlan adat, amely segítségével bárhonnan elérhetők HTTP- vagy HTTPS keresztül a világon tárolásához. Egy blob bármilyen méretű lehet. Blobok lehet többek között a képeket, hang- és videofájlok, nyers adatokat és fájlokat.
+Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására szolgál, amelyek HTTP-vagy HTTPS-kapcsolaton keresztül bárhonnan elérhetők a világon. Egyetlen blob lehet bármilyen méretű. A Blobok olyan dolgok, mint például a képek, a hang-és videofájlok, a nyers adatok és a dokumentumok fájljai.
 
-Fájlok él, mappák, mint a tárolóblobok élő tárolókban. Miután létrehozott egy tárfiókot, hozzon létre egy vagy több tárolókat a storage-ban. "Lapkivágások" nevezett tárolási, például létrehozhat tárolókat a Storage-képek tárolásához "rendszerképek" nevű, és a egy másik néven "hang" zenei fájlok tárolására. Miután létrehozta a tárolók, egyes blob fájlokat tölthet fel őket.
+Ahogy a mappákban élő fájlok, a Storage-Blobok élő tárolókban. A tároló létrehozása után létre kell hoznia egy vagy több tárolót a tárolóban. Például egy "scrapbook" nevű tárolóban létrehozhat tárolókat a "lemezképek" nevű tárolóban a képek tárolásához, és egy másik "hang" nevű fájlt a hangfájlok tárolásához. A tárolók létrehozása után egyéni blob-fájlokat is feltölthet rájuk.
 
-* A blobok programozott módon módosítása további információkért lásd: [.NET használatával az Azure Blob storage használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
-* Az Azure Storage szolgáltatással kapcsolatos általános információkért lásd: [Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/).
-* Azure Cloud Services kapcsolatos általános információkért lásd: [Cloud Services – dokumentáció](https://azure.microsoft.com/documentation/services/cloud-services/).
-* Az ASP.NET-alkalmazások programozásával kapcsolatos további információkért lásd: [ASP.NET](https://www.asp.net).
+* A Blobok programozott kezelésével kapcsolatos további információkért lásd: [Az Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+* Az Azure Storage szolgáltatással kapcsolatos általános információkért lásd a [Storage dokumentációját](https://azure.microsoft.com/documentation/services/storage/).
+* Az Azure Cloud Servicesával kapcsolatos általános információkért tekintse meg [Cloud Services dokumentációját](https://azure.microsoft.com/documentation/services/cloud-services/).
+* További információ a ASP.NET-alkalmazások programozásáról: [ASP.net](https://www.asp.net).
 
-## <a name="access-blob-containers-in-code"></a>Blob-tárolók hozzáférési kód
-Programozott módon érheti el a cloud service-projektek a blobok, hozzá kell a következő elemeket, ha nem már létezik.
+## <a name="access-blob-containers-in-code"></a>BLOB-tárolók elérése a kódban
+A Cloud Service-projektekben lévő Blobok programozott eléréséhez hozzá kell adnia a következő elemeket, ha még nincsenek jelen.
 
-1. Adja hozzá a következő kód névtér-deklarációk bármely, amelyben a programozott módon érheti el az Azure Storage kívánt C#-fájl elejéhez.
+1. Adja hozzá a következő kód névtér-deklarációkat minden olyan C# fájl elejéhez, amelyben programozottan szeretné elérni az Azure Storage-t.
    
         using Microsoft.Framework.Configuration;
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
         using System.Threading.Tasks;
         using LogLevel = Microsoft.Framework.Logging.LogLevel;
-2. Get- **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. Az alábbi kód használatával az a tárolási kapcsolati karakterlánccal és a tárfiók-információ az Azure-szolgáltatás konfigurációjából.
+2. Szerezzen be egy **CloudStorageAccount** -objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával kérheti le a Storage-beli kapcsolódási karakterláncot és a Storage-fiók adatait az Azure-szolgáltatás konfigurációjában.
    
         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("<storage account name>_AzureStorageConnectionString"));
-3. Get- **CloudBlobClient** objektum való hivatkozáshoz egy meglévő tárolót a tárfiókjában.
+3. Szerezzen be egy **CloudBlobClient** objektumot, amely a Storage-fiókban található meglévő tárolóra hivatkozik.
    
         // Create a blob client.
         CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-4. Get- **CloudBlobContainer** objektum való hivatkozáshoz egy adott blob-tárolóba.
+4. **CloudBlobContainer** -objektum lekérése egy adott blob-tárolóra való hivatkozáshoz.
    
         // Get a reference to a container named "mycontainer."
         CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
 > [!NOTE]
-> Használja az előző eljárás során a következő szakaszban látható kód elé látható kódja.
+> Használja az előző eljárásban látható összes kódot az alábbi szakaszokban látható kód elé.
 > 
 > 
 
-## <a name="create-a-container-in-code"></a>Hozzon létre egy tárolót a code-ban
+## <a name="create-a-container-in-code"></a>Tároló létrehozása a kódban
 > [!NOTE]
-> Egyes hajtsa végre az Azure Storage hívásainak az ASP.NET API-k aszinkron jellegűek. Lásd: [aszinkron programozás az Async és Await](https://msdn.microsoft.com/library/hh191443.aspx) további információt. A kódot az alábbi példa azt feltételezi, hogy használ-e az aszinkron programozási módszerek.
+> Egyes API-k, amelyek az Azure Storage-ba irányuló hívásokat hajtanak végre a ASP.NET-ben aszinkron módon. Lásd: [aszinkron programozás aszinkron módon, és](https://msdn.microsoft.com/library/hh191443.aspx) további információra számíthat. Az alábbi példában szereplő kód azt feltételezi, hogy aszinkron programozási módszereket használ.
 > 
 > 
 
-Hozzon létre egy tárolót a storage-fiókban, hogy ehhez szüksége adja hozzá egy hívást **CreateIfNotExistsAsync** hasonlóan az alábbi kódot:
+Ahhoz, hogy tárolót hozzon létre a Storage-fiókban, mindössze annyit kell tennie, hogy felvesz egy hívást a **CreateIfNotExistsAsync** -be a következő kódban:
 
     // If "mycontainer" doesn't exist, create it.
     await container.CreateIfNotExistsAsync();
 
 
-Ahhoz, hogy a tárolóban lévő fájlokat érhető el mindenki számára elérhető, állíthatja be a következő kód segítségével nyilvánossá teheti a tárolót.
+Ha a tárolóban lévő fájlokat mindenki számára elérhetővé szeretné tenni, beállíthatja, hogy a tároló nyilvános legyen a következő kód használatával.
 
     await container.SetPermissionsAsync(new BlobContainerPermissions
     {
@@ -82,10 +82,10 @@ Ahhoz, hogy a tárolóban lévő fájlokat érhető el mindenki számára elérh
     });
 
 
-Bárki hozzáférhet az interneten egy nyilvános tárolóban lévő blobok látható, de módosíthatja vagy törölheti őket, csak akkor, ha rendelkezik a megfelelő hozzáférési kulccsal.
+Az interneten bárki láthatja a blobokat egy nyilvános tárolóban, de csak akkor módosíthatja vagy törölheti őket, ha rendelkezik a megfelelő hozzáférési kulccsal.
 
 ## <a name="upload-a-blob-into-a-container"></a>Blobok feltöltése a tárolóba
-Az Azure Storage támogatja a blokkblobokat és a lapblobokat. A legtöbb esetben a blokkblobok használata javasolt.
+Az Azure Storage támogatja a blobok és a Blobok blokkolását. A legtöbb esetben a blokkblobok használata javasolt.
 
 Fájlok blokkblobba való feltöltéséhez szerezze be a tároló hivatkozását, és annak segítségével kérje le a blokkblob hivatkozását. Ha megszerezte a blobhivatkozást, akkor az **UploadFromStream** metódus hívásával bármilyen streamet feltölthet. Ez az eljárás létrehozza a blobot, ha az még nem létezett, és felülírja, ha már igen. Az alábbi példák azt mutatják be, hogyan tölthetők fel blobok egy tárolóba, és feltételezik, hogy a tároló már létre lett hozva.
 
@@ -99,7 +99,7 @@ Fájlok blokkblobba való feltöltéséhez szerezze be a tároló hivatkozását
     }
 
 ## <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
-A tárolóban lévő blobok listázásához először kérje le a tároló hivatkozását. Ezt követően a tároló **ListBlobs** metódusának segítéségével lekérheti a benne lévő blobokat és/vagy könyvtárakat. Számos tulajdonság és metódus visszaadásakor eléréséhez **IListBlobItem**, kell alakítania azt egy **CloudBlockBlob**, **CloudPageBlob**, vagy  **CloudBlobDirectory** objektum. Ha a típus ismereten, akkor a típusellenőrzés segítségével határozza meg, hogy milyen típussá kell átalakítani. Az alábbi kód bemutatja, hogyan kérhető le és küldhető el a **photos** tárolóban lévő egyes elemek URI azonosítója:
+A tárolóban lévő blobok listázásához először kérje le a tároló hivatkozását. Ezt követően a tároló **ListBlobs** metódusának segítéségével lekérheti a benne lévő blobokat és/vagy könyvtárakat. Ha a tulajdonságok és metódusok gazdag készletét szeretné elérni egy visszaadott **IListBlobItem**, azt egy **CloudBlockBlob**, **CloudPageBlob**vagy **CloudBlobDirectory** objektumra kell átadnia. Ha a típus ismereten, akkor a típusellenőrzés segítségével határozza meg, hogy milyen típussá kell átalakítani. Az alábbi kód bemutatja, hogyan kérhető le és küldhető el a **photos** tárolóban lévő egyes elemek URI azonosítója:
 
     // Loop over items within the container and output the length and URI.
     foreach (IListBlobItem item in container.ListBlobs(null, false))
@@ -126,7 +126,7 @@ A tárolóban lévő blobok listázásához először kérje le a tároló hivat
         }
     }
 
-Ahogyan az előző példakód, a blob szolgáltatás rendelkezik a tárolókat, valamint címtárakat fogalmát. Ez az, hogy több mappát-hoz hasonló struktúrát a blobok rendezhetők. Vegyük példaként az alábbi blokkblobokat a **photos** nevű tárolóban:
+Ahogy az előző kódrészletben is látható, a blob szolgáltatás a tárolókban található címtárak fogalmát is megjeleníti. Így a Blobok a mappákhoz hasonló struktúrában rendezhetők. Vegyük példaként az alábbi blokkblobokat a **photos** nevű tárolóban:
 
     photo1.jpg
     2010/architecture/description.txt
@@ -137,14 +137,14 @@ Ahogyan az előző példakód, a blob szolgáltatás rendelkezik a tárolókat, 
     2011/architecture/description.txt
     2011/photo7.jpg
 
-Meghívásakor **ListBlobs** a tárolóban (a korábbi példa), a visszaadott kolekce obsahuje **CloudBlobDirectory** és **CloudBlockBlob** objektumok könyvtárak és a legfelső szinten lévő blobok jelölő. A kimenet itt látható:
+Ha meghívja a **ListBlobs** a tárolón (ahogy az előző példában is látható), a visszaadott gyűjtemény a legfelső szinten található címtárakat és blobokat jelképező **CloudBlobDirectory** -és **CloudBlockBlob** -objektumokat tartalmazza. Az eredményül kapott kimenet:
 
     Directory: https://<accountname>.blob.core.windows.net/photos/2010/
     Directory: https://<accountname>.blob.core.windows.net/photos/2011/
     Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
 
-Beállíthatja a **ListBlobs** metódus **UseFlatBlobListing** paraméterét **true** értékre. Ennek eredményeképpen minden blob a visszaadott egy **CloudBlockBlob**, függetlenül attól, könyvtár. Íme a hívást **ListBlobs**:
+Beállíthatja a **ListBlobs** metódus **UseFlatBlobListing** paraméterét **true** értékre. Ennek eredményeképpen minden blob **CloudBlockBlob**-ként lett visszaadva, a címtártól függetlenül. Itt látható a **ListBlobs**meghívása:
 
     // Loop over items within the container and output the length and URI.
     foreach (IListBlobItem item in container.ListBlobs(null, true))
@@ -152,7 +152,7 @@ Beállíthatja a **ListBlobs** metódus **UseFlatBlobListing** paraméterét **t
        ...
     }
 
-és itt láthatók a eredményei:
+az eredmények a következők:
 
     Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2010/architecture/description.txt
     Block blob of length 314618: https://<accountname>.blob.core.windows.net/photos/2010/architecture/photo3.jpg
@@ -163,7 +163,7 @@ Beállíthatja a **ListBlobs** metódus **UseFlatBlobListing** paraméterét **t
     Block blob of length 399751: https://<accountname>.blob.core.windows.net/photos/2011/photo7.jpg
     Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
-További információkért lásd: [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx).
+További információ: [CloudBlobContainer. ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx).
 
 ## <a name="download-blobs"></a>Blobok letöltése
 Blobok letöltéséhez először kérjen le egy blobhivatkozást, majd hívja a **DownloadToStream** metódust. A következő példa a **DownloadToStream** metódus segítségével helyezi át a blob tartalmát egy stream objektumra, amelyet egy helyi fájlban megőrizhet.
@@ -190,7 +190,7 @@ A **DownloadToStream** metódussal a blob tartalmát szöveges sztringként is l
     }
 
 ## <a name="delete-blobs"></a>Blobok törlése
-Blobok törléséhez először kérjen le egy blobhivatkozást, majd hívja a **törlése** metódust.
+BLOB törléséhez először szerezzen be egy blob-hivatkozást, majd hívja meg a **delete** metódust.
 
     // Get a reference to a blob named "myblob.txt".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob.txt");

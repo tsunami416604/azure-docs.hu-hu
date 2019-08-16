@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 993b0249bdcc8e0e54dbe0c222aa2335c3bf8d4a
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 16c0354466d5c2a1207873a1e83e209da9339705
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679141"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509996"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware virtuális gépek előkészítése az Azure-ba történő értékeléshez és áttelepítéshez
 
@@ -123,7 +123,7 @@ Győződjön meg arról, hogy a proxy feloldja az URL-címek keresése során fo
 
 A Azure Migrate berendezés beállítása és az értékelés megkezdése előtt a következő oktatóanyagban készítse elő a berendezés üzembe helyezését.
 
-1. Ellenőrizze az Azure Migrate készülék VMware-beli beállításához [szükséges követelményeket.](migrate-support-matrix-vmware.md#assessment-appliance-requirements)
+1. [Ellenőrizze](migrate-support-matrix-vmware.md#assessment-appliance-requirements) a Azure Migrate berendezés VMware környezetben való beállításának követelményeit.
 2. [Tekintse át](migrate-support-matrix-vmware.md#assessment-url-access-requirements) azokat az Azure URL-címeket, amelyekhez a készüléknek hozzá kell férnie.
 3. Tekintse át a berendezés által a felderítés és az értékelés során gyűjtött adatokat.
 4. [Jegyezze](migrate-support-matrix-vmware.md#assessment-port-requirements) fel a port hozzáférési követelményeit a készülékhez.
@@ -137,7 +137,7 @@ Tekintse át a VMware virtuális gépek ügynök nélküli áttelepítésének k
 1. [Tekintse át](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) VMware Server-követelmények ügynök nélküli Migrálás esetén.
 2. Állítson be egy fiókot a vCenter Serverhoz való hozzáféréshez az ügynök nélküli áttelepítés számára [szükséges engedélyekkel](migrate-support-matrix-vmware.md#agentless-migration-vcenter-server-permissions) .
 3. [Jegyezze](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements) fel azokat a VMWare virtuális gépekre vonatkozó követelményeket, amelyeket át szeretne telepíteni az Azure-ba az ügynök nélküli áttelepítés használatával.
-4. [Tekintse át](migrate-support-matrix-vmware.md#agentless-migration-appliance-requirements) az ügynök nélküli Migrálás készülékre vonatkozó követelményeit.]
+4. [Tekintse át](migrate-support-matrix-vmware.md#agentless-migration-appliance-requirements) az ügynök nélküli Migrálás készülékre vonatkozó követelményeit.
 5. Vegye figyelembe a készülék [URL-címének elérését](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) és a [portok hozzáférési](migrate-support-matrix-vmware.md#agentless-migration-port-requirements) követelményeit az ügynök nélküli áttelepítés esetében.
 
 

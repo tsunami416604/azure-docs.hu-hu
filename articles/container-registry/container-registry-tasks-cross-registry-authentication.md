@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 8fac70e7e5125ae86b2b5ce13041bbf1fd067bbe
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07fa7f3df5274ae88c93deac75093ead3f32f036
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68642071"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509096"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Több beállításjegyzékbeli hitelesítés egy ACR-feladatban egy Azure által felügyelt identitás használatával 
 
@@ -76,7 +76,7 @@ Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és enged
 
 ### <a name="create-task"></a>Feladat létrehozása
 
-Hozza létre a feladat *helloworldtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat környezete a helyi rendszer, és a parancs a munkakönyvtárban található fájlra `helloworldtask.yaml` hivatkozik. A `--assign-identity` paraméter átadja a felhasználó által hozzárendelt identitás erőforrás-azonosítóját. 
+Hozza létre a feladat *helloworldtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a munkakönyvtárban `helloworldtask.yaml` található fájlra hivatkozik. A `--assign-identity` paraméter átadja a felhasználó által hozzárendelt identitás erőforrás-azonosítóját. 
 
 ```azurecli
 az acr task create \
@@ -95,7 +95,7 @@ Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és enged
 
 ### <a name="create-task"></a>Feladat létrehozása
 
-Hozza létre a feladat *helloworldtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat környezete a helyi rendszer, és a parancs a munkakönyvtárban található fájlra `helloworldtask.yaml` hivatkozik. Az `--assign-identity` érték nélküli paraméter lehetővé teszi a rendszer által hozzárendelt identitást a feladatban. 
+Hozza létre a feladat *helloworldtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a munkakönyvtárban `helloworldtask.yaml` található fájlra hivatkozik. Az `--assign-identity` érték nélküli paraméter lehetővé teszi a rendszer által hozzárendelt identitást a feladatban. 
 
 ```azurecli
 az acr task create \

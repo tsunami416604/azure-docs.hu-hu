@@ -8,16 +8,16 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 2e97a734a4730e4341614019e3ca1ecaa81420a7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: HT
+ms.openlocfilehash: c6c070012db0857759c63603072b8321896398b4
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035987"
+ms.locfileid: "69516134"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Hosszú rendelkezésre állású Azure Storage-alkalmazások kiépítése a Geo-Zone-redundáns tárolással (GZRS) (előzetes verzió)
 
-A Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió) megtartja a [zóna-redundáns tárolás (ZRS)](storage-redundancy-zrs.md) magas rendelkezésre állását a regionális kimaradások elleni védelemmel, a [földrajzilag REDUNDÁNS tárolás (GRS)](storage-redundancy-grs.md)által biztosított módon. A GZRS-fiókban lévő adatok az elsődleges régió három Azure-beli [rendelkezésre állási zónájában](../../availability-zones/az-overview.md) replikálódnak, és egy másodlagos földrajzi régióba is replikálódnak a regionális katasztrófák elleni védelem érdekében.
+A Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió) megtartja a [zóna-redundáns tárolás (ZRS)](storage-redundancy-zrs.md) magas rendelkezésre állását a regionális kimaradások elleni védelemmel, a [földrajzilag REDUNDÁNS tárolás (GRS)](storage-redundancy-grs.md)által biztosított módon. A GZRS-fiókban lévő adatok az elsődleges régió három Azure-beli [rendelkezésre állási zónájában](../../availability-zones/az-overview.md) replikálódnak, és egy másodlagos földrajzi régióba is replikálódnak a regionális katasztrófák elleni védelem érdekében. Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabban a földrajzi helyen található, és regionális párokat alkot. További részletekért és kivételekhez tekintse [](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)meg a dokumentációt.
 
 GZRS-fiókkal folytathatja az adatok olvasását és írását, ha a rendelkezésre állási zónák elérhetetlenné válnak, vagy nem állíthatók helyre. Emellett az adatai tartósak is maradnak a teljes regionális leállás vagy egy olyan katasztrófa esetén, amelyben az elsődleges régió nem helyreállítható. A GZRS úgy lett kialakítva, hogy legalább 99.99999999999999%-os (16 9) tartósságot biztosítson az objektumok számára egy adott évben. A GZRS ugyanazokat a [skálázhatósági célokat](storage-scalability-targets.md) kínálja, mint a LRS, a ZRS, a GRS vagy az ra-GRS. Engedélyezheti a másodlagos régióban található, olvasási hozzáférésű geo-Zone-redundáns tárolással (RA-GZRS) rendelkező információk olvasási hozzáférését, ha az elsődleges régióban katasztrófa esetén az alkalmazásoknak képesnek kell lenniük az információk olvasására.
 

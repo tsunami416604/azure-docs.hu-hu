@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 21fe92bf4a33dc44545f1bd54c718db6c0a38532
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a334b19fe4dd819a6e4c391e49d934bf5955a567
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843226"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516059"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Gyakori kérdések az Azure IaaS VM-lemezekről, valamint a felügyelt és a nem felügyelt prémium szintű lemezekről
 
@@ -143,7 +143,48 @@ A GPT-particionálás csak olyan adatlemezeken használható, amelyek nem operá
 
 **Milyen típusú lemezek támogatják a pillanatképeket?**
 
-Prémium SSD, standard SSD és standard szintű HDD-támogatási Pillanatképek. Ebben a három lemez típusban a pillanatképek minden lemez mérete esetén támogatottak (beleértve a lemezeket akár 32 TiB méretig). Az ultra SSD-k nem támogatják a pillanatképeket.
+Prémium SSD, standard SSD és standard szintű HDD-támogatási Pillanatképek. Ebben a három lemez típusban a pillanatképek minden lemez mérete esetén támogatottak (beleértve a lemezeket akár 32 TiB méretig). Az ultra-lemezek nem támogatják a pillanatképeket.
+
+## <a name="ultra-disks"></a>Ultra-lemezek
+
+**Jelenleg milyen régiók támogatják az ultra-lemezeket?**
+- USA 2. keleti régiója
+- Délkelet-Ázsia
+- Észak-Európa
+
+**Melyik virtuálisgép-sorozat jelenleg támogatja az ultra-lemezeket?**
+- ESv3
+- DSv3
+
+**Mire kell beállítani az ultra Disk átviteli sebességét?**
+Ha nem biztos abban, hogy mit kell beállítania a lemez átviteli sebességének beállításához, javasoljuk, hogy először a 16 KiB i/o-méretet adja meg, és az alkalmazás figyelése után állítsa be a teljesítményt. A képlet a következő: Átviteli sebesség (MB/s) = # IOPS * 16/1000.
+
+**Úgy konfiguráltam a lemezt, hogy 40000 IOPS, de csak 12800 IOPS látok, miért nem látom a lemez teljesítményét?**
+A lemez szabályozásán kívül van egy IO-szabályozás, amely a virtuális gép szintjén lesz kiszabva. Győződjön meg arról, hogy a használt virtuális gép mérete támogatja a lemezeken konfigurált szinteket. A virtuális gép által kiszabott IO-korlátokkal kapcsolatos részletekért lásd: a [Windows rendszerű virtuális gépek méretei az Azure-ban](../articles/virtual-machines/windows/sizes.md).
+
+**Használhatok gyorsítótárazási szinteket Ultra lemezzel?**
+Nem, az ultra-lemezek nem támogatják a más típusú lemezeken támogatott különböző gyorsítótárazási módszereket. Állítsa a lemezes gyorsítótárazást a none értékre.
+
+**A meglévő virtuális géphez is csatlakoztatok egy ultra-lemezt?**
+Előfordulhat, hogy a virtuális gépnek egy olyan régióban és rendelkezésre állási zónában kell lennie, amely támogatja az ultra-lemezeket. További részletekért lásd: [az ultra Disks szolgáltatás első lépései](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md) .
+
+**Használhatok a virtuális gép operációsrendszer-lemezének ultravékony lemezét?**
+Nem, az ultra-lemezek csak az adatlemezek, és csak 4K natív lemezként támogatottak.
+
+**Átválthatok egy meglévő lemezt egy ultra lemezre?**
+Nem, de a dátumot egy meglévő lemezről is áttelepítheti egy ultra lemezre. Egy meglévő lemez Ultra-lemezre való áttelepítéséhez csatlakoztassa mindkét lemezt ugyanahhoz a virtuális géphez, és másolja a lemez adatait egyik lemezről a másikra, vagy használja ki a külső féltől származó megoldást az adatok áttelepítésére.
+
+**Készíthetők Pillanatképek az ultra-lemezekhez?**
+Nem, a pillanatképek még nem érhetők el.
+
+**Azure Backup érhető el az ultra lemezekhez?**
+Nem, Azure Backup támogatás még nem érhető el.
+
+**A rendelkezésre állási csoportokban futó virtuális gépekhez is lehet Ultra-lemezt csatlakoztatni?**
+Nem, ez még nem támogatott.
+
+**Engedélyezhető Azure Site Recovery (ASR) a virtuális gépekhez az ultra Disks használatával?**
+Nem, az ASR még nem támogatott az ultra lemezek esetében.
 
 ## <a name="standard-ssd-disks"></a>standard SSD lemezek
 

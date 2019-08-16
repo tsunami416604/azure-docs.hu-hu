@@ -8,18 +8,18 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 945898105aab7261ee494a86aeff10337599feb3
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 7da31e09157b8877db4d36d0f061f29433d02d11
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226013"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515627"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása
 
 A következő cikk azt ismerteti, hogyan jelennek meg az Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetei az Egyesült Királyság hivatalos és egyesült királysági NHS-vezérlőinek. További információ a vezérlőelemekről: [Egyesült Királyság hivatalos](https://www.gov.uk/government/publications/government-security-classifications).
 
-Az alábbi hozzárendelések az **Egyesült Királyság hivatalos** és **Egyesült Királysági NHS** -vezérlőinek. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa  meg a szabályzatot a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki  **\[az\] előzetes naplózási Egyesült Királyság hivatalos és egyesült királysági NHS-vezérlőit, és telepítsen speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
+Az alábbi hozzárendelések az **Egyesült Királyság hivatalos** és **Egyesült Királysági NHS** -vezérlőinek. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a szabályzatot a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki  **\[az\] előzetes naplózási Egyesült Királyság hivatalos és egyesült királysági NHS-vezérlőit, és telepítsen speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
 
 ## <a name="1-data-in-transit-protection"></a>1 adatátviteli védelem
 
@@ -33,13 +33,13 @@ A terv segítségével biztosítható, hogy az Azure-szolgáltatásokkal való a
 Ez a terv segítséget nyújt a házirendnek a titkosítási vezérlők használatára való érvényesítéséhez, ha olyan [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá, amelyek kikényszerítik az adott titkosítási vezérlőket, és naplózzák a gyenge titkosítási beállítások használatát.
 Annak megismerése, hogy az Azure-erőforrások nem optimális titkosítási konfigurációval rendelkezzenek-e, segítheti a javítási műveleteket, hogy az erőforrások konfigurálása az adatvédelmi szabályzatnak megfelelően történjen. Pontosabban, a tervhez hozzárendelt szabályzatok titkosítást igényelnek a Lake Storage-fiókokhoz; transzparens adattitkosítás megkövetelése SQL-adatbázisokban; a Storage-fiókokon, az SQL-adatbázisokon, a virtuálisgép-lemezeken és az Automation-fiók változójában a hiányzó titkosítás naplózása; nem biztonságos kapcsolatok naplózása a Storage-fiókokhoz és a Redis Cache; gyenge virtuális gép jelszavas titkosításának naplózása; és a titkosítatlan Service Fabric kommunikáció naplózása.
 
-- Titkosítatlan SQL-adatbázisok figyelése Azure Security Center
+- Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
 - A lemezes titkosítást a virtuális gépeken kell alkalmazni
-- Az Automation-fiók változóit titkosítani kell
+- Automation-fiók-változókat titkosítani kell
 - A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell
 - Service Fabric-fürtökön a ClusterProtectionLevel tulajdonságot EncryptAndSign értékre kell beállítani
 - Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
-- Az SQL DB transzparens adattitkosításának üzembe helyezése
+- SQL-adatbázisok transzparens adattitkosításának üzembe helyezése
 - Titkosítás megkövetelése Data Lake Store fiókokon
 - Engedélyezett helyszínek (az "Egyesült Királyság déli régiója" és az "Egyesült Királyság nyugati régiója" között rögzített)
 - Engedélyezett telephelyek az erőforráscsoportok számára (az "Egyesült Királyság déli régiója" és az "Egyesült Királyság nyugati régiója" között rögzített kód)
@@ -58,9 +58,9 @@ Ebből a tervből megtudhatja, hogyan kezelheti az információs rendszer bizton
 
 Ez a terv segítséget nyújt az információs rendszer eszközeinek védelméhez olyan [Azure Policy](../../../policy/overview.md) -definíciók kiosztásával, amelyek védelmet nyújtanak a korlátlan hozzáféréshez, a engedélyezési listán szereplő tevékenységekhez és a fenyegetésekhez.
 
-- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
+- Tárfiókokhoz való korlátlan hálózati hozzáférés naplózása
 - Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken
-- Veszélyforrások észlelésének üzembe helyezése SQL-kiszolgálókon
+- Fenyegetésészlelés üzembe helyezése SQL-kiszolgálókon
 - Az alapértelmezett Microsoft IaaS anti-malware bővítmény telepítése a Windows Serverhez
 
 ## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 biztonságos felhasználói felügyelet/10 identitás és hitelesítés
@@ -117,7 +117,7 @@ A terv az Azure-erőforrásokhoz való hozzáférés szabályozását is lehető
 
 Ha több mint 25 házirendet használ a megfelelő biztonságos felhasználói felügyelethez, ez a terv a nem korlátozott tárolási fiókokat figyelő [Azure Policy](../../../policy/overview.md) -definíció hozzárendelésével segíti a szolgáltatási felületek jogosulatlan hozzáférés elleni védelmét. A korlátlan hozzáféréssel rendelkező Storage-fiókok nem kívánt hozzáférést biztosíthatnak az információs rendszeren belül található információkhoz. Ez a terv egy olyan szabályzatot is hozzárendel, amely lehetővé teszi az adaptív alkalmazások vezérlését a virtuális gépeken.
 
-- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
+- Tárfiókokhoz való korlátlan hálózati hozzáférés naplózása
 - Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken
 
 ## <a name="12-secure-service-administration"></a>12 biztonságos szolgáltatás felügyelete
@@ -151,9 +151,9 @@ Ez a terv egy Azure Policy-definíciót is hozzárendel, amely a Linux rendszer�
 
 Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erőforrások naplózási beállításait naplózó [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével. A hozzárendelt szabályzat azt is naplózza, hogy a virtuális gépek nem küldenek naplókat egy adott log Analytics-munkaterületre.
 
-- Nem naplózott SQL-kiszolgálók figyelése Azure Security Center
+- A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
 - Diagnosztikai beállítás naplózása
-- Az SQL Server szintű naplózási beállítások naplózása
+- SQL-kiszolgálói szintű naplózási beállítások naplózása
 - \[Előzetes\]verzió: A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
 - \[Előzetes\]verzió: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
 - A Network Watcher üzembe helyezése virtuális hálózatok létrehozásakor

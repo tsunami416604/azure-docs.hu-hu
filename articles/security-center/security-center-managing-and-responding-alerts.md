@@ -13,13 +13,13 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2018
-ms.author: rkarlin
-ms.openlocfilehash: 582912160c8ed514401be3522e52dcc6eb45d263
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: 39849514d772f128434daad590de22f941245af7
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235758"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516106"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben
 Ez a dokumentum segít az Azure Security Center biztonsági riasztások kezelésére és a riasztásokra való válaszadásra szolgáló funkcióinak használatában.
@@ -51,32 +51,32 @@ A **Biztonsági riasztások** csempén áttekintheti az aktuális riasztásokat.
 
 Az oldal alsó részén találhatók az egyes riasztások részletei. Rendezésükhöz kattintson arra az oszlopra, amely szerint rendezni szeretné a riasztásokat. Az oszlopok meghatározása:
 
-* **Leírás**: A riasztás rövid leírása.
-* **Száma**: A riasztások listája az adott típusú észlelt egy adott napon.
-* **Által észlelt**: A riasztás kiváltásáért felelős szolgáltatás.
-* **Dátum**: Az esemény előfordulásának dátuma.
-* **állapot**: A riasztás aktuális állapota. Kétféle állapot létezik:
-  * **Aktív**: A biztonsági riasztást észlelték.
-  * **Elvetett**: A felhasználó elvetette a biztonsági riasztást. Ez az állapot jellemzően a riasztásokat, amelyek került sor, és vagy megoldottak, vagy azok nem bizonyultak tényleges támadásnak.
-* **Súlyosság**: A súlyosság szintje lehet magas, közepes vagy alacsony.
+* **Leírás**: A riasztás rövid magyarázata.
+* **Darabszám**: Az adott típusú, adott napon észlelt riasztások listája.
+* **Észlelte**: A riasztást kiváltó szolgáltatás.
+* **Dátum**: Az esemény dátuma.
+* **Állapot**: Az adott riasztás aktuális állapota. Kétféle állapot létezik:
+  * **Aktív**: A rendszer a biztonsági riasztást észlelte.
+  * **Elutasította**: A felhasználó elutasította a biztonsági riasztást. Ez az állapot általában olyan riasztások esetén használatos, amelyek ki lettek vizsgálva, vagy amelyek enyhítése vagy megállapítása nem volt tényleges támadásnak.
+* **Súlyosság**: A súlyossági szint, amely lehet magas, közepes vagy alacsony.
 
 > [!NOTE]
 > A Security Center által létrehozott riasztások az Azure tevékenységnapló területén is megjelennek. További információk az Azure tevékenységnaplójának eléréséről: [A tevékenységnaplók megtekintése az erőforrásokon végzett műveletek naplózásához](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 >
 
 
-### <a name="alert-severity"></a>Riasztás súlyossága
+### <a name="alert-severity"></a>Riasztás fontossága
 
--   **Magas**: Nincs nagy valószínűséggel, hogy az erőforrás biztonsága sérül. Meg kell megvizsgáljuk azt azonnal. A Security Center megbízható rendelkezik, mindkét az illető ártó szándékkal és a megállapításokat, a riasztás kiadására szolgál. Ha például egy riasztást, amely észleli az ismert kártékony eszköz például a Mimikatz, a hitelesítő adatok ellopását használt gyakori eszköz végrehajtása. 
--   **Közepes**: Ennek oka valószínűleg egy gyanús tevékenységet, amelyek azt jelzik, hogy egy erőforrás biztonsága sérül.
-A Security Center bizalom elemzési vagy keresése a közepes és az illető ártó szándékkal magabiztosan közepes és nagy. Ezek általában lenne, machine learning vagy alapú anomáliadetektálás észleléseket. Ha például egy bejelentkezési kísérlet egy szokatlan helyről.
--   **Alacsony**: Ez lehet egy ártalmatlan pozitív és a egy letiltott támadás. 
-    - A Security Center nem benne, elég, hogy az célja a rosszindulatú és lehet, hogy a tevékenység álcázva. Például a napló törlése egy műveletet, amely akkor fordulhat elő, amikor egy támadó megpróbálja elrejteni a nyomait, de sok esetben egy szokásos műveletet végzi a rendszergazdák.
-    - A Security Center nem általában meg, ha letiltott támadásokkal szemben, kivéve, ha egy érdekes eset, javasoljuk, hogy megvizsgáljuk. 
--   **Tájékoztató**: Csak akkor jelenik meg tájékoztatási szintű riasztások, amikor egyetlen biztonsági incidensben részletezi, vagy ha a REST API használata egy adott riasztás. Az incidens általában épül fel egy ezek közül néhány jelenhet meg a saját kell csak tájékoztató jellegű, de az egyéb riasztásokat kontextusában lehet közelebbről összefügg riasztások száma.  
+-   **Magas**: Nagy valószínűséggel az erőforrás biztonsága sérül. Azonnal megtekintheti. Security Center a kártékony szándék és a riasztás kibocsátására szolgáló megállapítások terén is nagy megbízhatósággal rendelkezik. Például egy olyan riasztás, amely észleli egy ismert kártékony eszköz, például a Mimikatz végrehajtását, a hitelesítő adatok ellopására szolgáló közös eszköz. 
+-   **Közepes**: Ez valószínűleg egy gyanús tevékenység, amely arra utalhat, hogy az erőforrást feltörték.
+Security Center az elemzésben vagy a keresésben a közepes és a rosszindulatú szándék megbízhatósága közepes és magas. Ezek általában gépi tanulás vagy anomália-alapú észlelések. Például egy rendellenes helyről érkező bejelentkezési kísérlet.
+-   **Alacsony**: Ez egy jóindulatú pozitív vagy tiltott támadás lehet. 
+    - A Security Center nem eléggé biztos abban, hogy a szándék rosszindulatú, és a tevékenység ártalmatlan lehet. A napló törlése például olyan művelet, amely akkor fordulhat elő, ha egy támadó megpróbálja elrejteni a zeneszámokat, de sok esetben a rendszergazdák által végrehajtott rutin művelet.
+    - Security Center általában nem derül ki, ha a támadások blokkolva lettek, kivéve, ha azt javasoljuk, hogy tekintse át a következőt:. 
+-   **Tájékoztatás**: A biztonsági incidensek részletezése során csak tájékoztató riasztások jelennek meg, vagy ha a REST API egy adott riasztási AZONOSÍTÓval használja. Az incidensek általában számos riasztásból állnak, amelyek némelyike csak tájékoztató jelleggel jelenhet meg, de a többi riasztás kontextusában érdemes lehet alaposabban megtekinteni.  
 
 > [!NOTE]
-> Ha használja a **2015-06-01-preview** API-verzió van különbség, mely a riasztás súlyossági típusok alkalmazzák, mely esetben a fenti listában, majd.  
+> Ha a **2015-06-01-Preview API-** verziót használja, akkor a riasztás súlyossági típusai a fent felsoroltak szerint vannak alkalmazva.  
 
 ### <a name="filtering-alerts"></a>A riasztások szűrése
 A riasztások dátum, állapot és súlyosság alapján szűrhetők. A riasztások szűrése olyan esetekben lehet hasznos, amikor szűkíteni kell a megjelenített biztonsági riasztások körét. Például olyankor, ha az elmúlt 24 órában történt biztonsági riasztásokat szeretné kezelni, mert egy, a rendszerbe történő lehetséges behatolást vizsgál.
@@ -96,7 +96,7 @@ Ebben az esetben a riasztásokat gyanús RDP-tevékenység váltotta ki. Az els�
 
 A **Leírás** mezőben további információkat talál az eseményről. Ezek az információk áttekintést nyújtanak a biztonsági riasztás kiváltó okáról, a célerőforrásról, (adott esetben) a forrás IP-címéről, valamint a fenyegetés elhárítására vonatkozó javaslatokról.  Bizonyos esetekben a forrás IP-címe üres (nem érhető el), mert a Windows nem minden biztonsági eseménynaplója tartalmazza az IP-címet.
 
-A Security Center által javasolt elhárítási műveletek a biztonsági riasztástól függően eltérők lehetnek. Bizonyos esetekben előfordulhat, hogy az Azure egyéb funkcióit kell használnia a javasolt elhárítási művelet végrehajtásához. A példánkban a támadás elhárításának javasolt módja az, hogy a támadást végrehajtó IP-címet tiltólistára kell helyezni egy [hálózati hozzáférés-vezérlési lista](../virtual-network/virtual-networks-acl.md) vagy egy [hálózati biztonsági csoport](../virtual-network/security-overview.md#security-rules) típusú szabály használatával. A különböző típusú riasztásokkal kapcsolatos további információkért olvassa el [Security Alerts by Type in Azure Security Center](security-center-alerts-type.md) (Az Azure Security Centerben használható biztonsági riasztások típus szerint) című cikket.
+A Security Center által javasolt elhárítási műveletek a biztonsági riasztástól függően eltérők lehetnek. Bizonyos esetekben előfordulhat, hogy az Azure egyéb funkcióit kell használnia a javasolt elhárítási művelet végrehajtásához. A támadás szervizelése például nem teszi lehetővé az olyan IP-cím használatát, amely egy [hálózati ACL](../virtual-network/virtual-networks-acl.md) vagy egy [hálózati biztonsági csoport](../virtual-network/security-overview.md#security-rules) szabályával hozza létre ezt a támadást. A különböző típusú riasztásokkal kapcsolatos további információkért olvassa el a [biztonsági riasztások típusairól](security-center-alerts-overview.md#security-alert-types)szóló témakört.
 
 > [!NOTE]
 > A Security Centernek korlátozott előzetes verzióként kiadott új észlelései naplózott rekordokat használnak egy közös naplózási keretrendszerben a Linux rendszerű gépek rosszindulatú viselkedésének észlelésére. Amennyiben csatlakozni szeretne az előzetes verzióhoz, küldjön [nekünk](mailto:ASC_linuxdetections@microsoft.com) egy e-mailt, amely tartalmazza az előfizetés-azonosítóit.

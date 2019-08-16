@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 94894126be98f0d3d4d404d97d0a4a39fff2e665
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 951d5bb10fbeeac090a1edb510b7214855477eac
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847393"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515354"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású-adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -131,7 +131,7 @@ Jelenleg azonban a számítások és a replikák számának csökkentése érdek
 
 ### <a name="can-i-provision-a-compute-with-extra-ram-for-my-memory-intensive-workload"></a>Létrehozhatok egy extra RAM-mal rendelkező számítási feladatot a nagy memória-igényű munkaterheléshez
 
-Nem. A RAM további mennyiségének megkezdéséhez magasabb számítási méretre kell frissítenie. További információ: [nagy kapacitású Storage és számítási méretek](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier).
+Nem. A RAM további mennyiségének megkezdéséhez magasabb számítási méretre kell frissítenie. További információ: [nagy kapacitású Storage és számítási méretek](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute).
 
 ### <a name="can-i-provision-multiple-compute-nodes-of-different-sizes"></a>Több különböző méretű számítási csomópont is kiépíthető
 

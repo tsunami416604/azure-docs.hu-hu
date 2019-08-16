@@ -1,6 +1,6 @@
 ---
-title: Automatikus skálázása az Azure HDInsight-fürtök (előnézet)
-description: A HDInsight automatikus méretezési funkciója segítségével fürtök automatikus méretezése
+title: Azure HDInsight-fürtök automatikus méretezése (előzetes verzió)
+description: A fürtök automatikus méretezése a HDInsight automatikus méretezési funkciójával
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,123 +8,123 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6ec981164de0ff61b0e83d54255d046a1418ed96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 333eecb11f0bd20c747bc44419fea26765f886c5
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66000107"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509110"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatikus skálázása az Azure HDInsight-fürtök (előnézet)
+# <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Azure HDInsight-fürtök automatikus méretezése (előzetes verzió)
 
 > [!Important]
-> Az automatikus skálázási funkció csak május 8. 2019 után létrehozott Spark, Hive és a MapReduce fürtök esetében működik. 
+> Az autoscale funkció csak a május 8. és 2019. után létrehozott Spark-, kaptár-és MapReduce-fürtökön működik. 
 
-Az Azure HDInsight-fürt automatikus méretezési funkciója automatikusan méretezi magát a munkavégző csomópontok számát a fürtben található felfelé és lefelé. A fürtben található csomópontok más típusú jelenleg nem lehet méretezni.  Egy új HDInsight-fürt létrehozásakor a feldolgozó csomópontok minimális és maximális száma megadható. Automatikus skálázási ezután figyeli a analytics terhelés erőforrásigényeinek és méretezi a munkavégző csomópontok számát felfelé vagy lefelé. Nem jár további költségekkel ennek a funkciónak.
+Az Azure HDInsight fürt automatikus méretezési funkciója automatikusan felfelé és lefelé méretezi a munkavégző csomópontok számát a fürtben. A fürtben lévő más típusú csomópontok jelenleg nem méretezhetők.  Új HDInsight-fürt létrehozása során beállítható a munkavégző csomópontok minimális és maximális száma. Az automatikus skálázás ezután figyeli az elemzési terhelés erőforrás-követelményeit, és a feldolgozói csomópontok számát felfelé vagy lefelé méretezi. Ehhez a szolgáltatáshoz nem számítunk fel további díjat.
 
-## <a name="cluster-compatibility"></a>Fürt-kompatibilitás
+## <a name="cluster-compatibility"></a>Fürt kompatibilitása
 
-A következő táblázat ismerteti a fürt típusát és verziókat, amelyek kompatibilisek az automatikus méretezési funkciója.
+Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típusát és verzióját ismerteti.
 
 | Version | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3.6-os ESP nélkül | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
-| HDInsight 4.0 ESP nélkül | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
-| HDInsight 3.6-ot az ESP | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
-| HDInsight 3.6-ot az ESP | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
+| HDInsight 3,6 ESP nélkül | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
+| HDInsight 4,0 ESP nélkül | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
+| HDInsight 3,6, ESP-vel | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
+| HDInsight 3,6, ESP-vel | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
 
 ## <a name="how-it-works"></a>Működés
 
-Lehetősége van a terhelés-alapú méretezés, vagy a HDInsight-fürt méretezése ütemezésalapú. Betöltés-alapú méretezés módosítja egy Ön által beállított, győződjön meg, hogy optimális CPU-kihasználtság, és minimalizálja a költségeket futó tartományon belül, a fürt csomópontjainak számát.
+Kiválaszthatja a HDInsight-fürt terheléselosztási vagy ütemezett skálázási lehetőségeit. A terhelésen alapuló skálázás megváltoztatja a fürtben lévő csomópontok számát a beállított tartományon belül, így biztosítva az optimális CPU-kihasználtságot, és csökkentheti a futtatási költségeket.
 
-Ütemezésalapú skálázási módosítások a fürtben található csomópontok számát, amelyek a megadott időpontban életbe feltételek alapján. Ezek a feltételek a kívánt számú csomópontot fürt méretezése.
+Az ütemezett skálázás a fürt csomópontjainak számát a megadott időpontokban érvényes feltételek alapján módosítja. Ezek a feltételek a fürtöt a kívánt számú csomópontra méretezhetik.
 
-### <a name="metrics-monitoring"></a>Figyelési metrikák
+### <a name="metrics-monitoring"></a>Metrikák figyelése
 
-Az automatikus méretezés folyamatosan figyeli a fürt és a következő metrikákat gyűjt:
+Az autoscale folyamatosan figyeli a fürtöt, és a következő metrikákat gyűjti össze:
 
-* **Összes függőben lévő CPU**: Az összes függőben lévő tárolók végrehajtásának elindítását szolgáló szükséges magok teljes száma.
-* **Függőben lévő memória teljes**: A teljes memória (MB) van szükség az összes függőben lévő tárolók végrehajtásának elindításához.
-* **Ingyenes CPU összesen**: Az aktív feldolgozó csomópontokon futó összes nem használt magok összege.
-* **Teljes szabad memória**: A fel nem használt memóriamennyiség (MB) a aktív feldolgozó csomópontokon futó összege.
-* **Foglalt memória csomópontonként**: A terhelés, a feldolgozó csomóponton. Munkavégző csomópont 10 GB-nyi memóriát használ, akkor tekinthető, mint a használt memória 2 GB-os dolgozó további terhelés alatt.
-* **Csomópontonként alkalmazás főkiszolgálók száma**: A feldolgozó csomóponton futó alkalmazás fő (Csendes) tárolók száma. Futtató két AM tárolók, munkavégző csomópont fontosabb, mint nulla AM tárolókat üzemeltető munkavégző csomópont számít.
+* **Összes függőben lévő CPU**: Az összes függőben lévő tároló végrehajtásának megkezdéséhez szükséges magok teljes száma.
+* **Függőben lévő memória összesen**: Az összes függőben lévő tároló végrehajtásának megkezdéséhez szükséges teljes memória (MB).
+* **Teljes szabad processzor**: Az aktív munkavégző csomópontokon fel nem használt magok összege.
+* **Szabad memória összesen**: A nem használt memória (MB) összege az aktív munkavégző csomópontokon.
+* **Felhasznált memória/csomópont**: A munkavégző csomópont terhelése. Egy munkavégző csomópontot, amelyen 10 GB memóriát használ, nagyobb terhelésnek számít, mint egy 2 GB-nyi memóriát használó feldolgozó.
+* **Alkalmazás-főkiszolgálók száma csomópont szerint**: A munkavégző csomóponton futó Application Master (AM) tárolók száma. A két tárolót üzemeltető munkavégző csomópont sokkal fontosabbnak számít, mint a nulla AM tárolókat üzemeltető munkavégző csomópont.
 
-A fenti metrikák 60 másodpercenként ellenőrzi. Az automatikus méretezés lehetővé teszi a felfelé és lefelé méretezési döntések metrikák alapján.
+A fenti mérőszámok 60 másodpercenként vannak ellenőrizve. Az autoskálázás a mérőszámok alapján vertikális felskálázást és leskálázást tesz lehetővé.
 
-### <a name="load-based-cluster-scale-up"></a>Betöltés-alapú fürt vertikális felskálázása
+### <a name="load-based-cluster-scale-up"></a>Load-alapú fürt felskálázása
 
-A következő feltételek észlelése esetén, az automatikus méretezés a vertikális felskálázás kérelem állít ki:
+Ha a következő feltételek észlelhetők, az autoskálázás egy Felskálázási kérelmet fog kiadni:
 
-* Függőben van a Processzor teljes mérete nagyobb teljes szabad CPU-nál több mint 3 perc alatt.
-* Függőben lévő memória teljes mérete nagyobb teljes szabad memória-nál több mint 3 perc alatt.
+* A függőben lévő CPU összesen több mint 3 percnél nagyobb az összes szabad PROCESSZORnál.
+* A függőben lévő memória összesen több mint 3 percnél nagyobb a teljes szabad memóriánál.
 
-A HDInsight szolgáltatás kiszámítja a munkavégző csomópontok számát a jelenlegi CPU és memória követelmények teljesítéséhez szükséges, és ezt követően kiállított adja hozzá a szükséges csomópontok számát felfelé irányuló.
+A HDInsight szolgáltatás kiszámítja, hogy hány új feldolgozó csomópontra van szükség ahhoz, hogy megfeleljen a jelenlegi CPU-és memória-követelményeknek, majd kiadja a szükséges számú csomópont hozzáadására szolgáló Felskálázási kérést.
 
-### <a name="load-based-cluster-scale-down"></a>Betöltés-alapú fürt méretezése
+### <a name="load-based-cluster-scale-down"></a>Terheléselosztási fürt leskálázása
 
-A következő feltételek észlelése esetén, automatikus skálázási kérelem állít ki:
+Ha a következő feltételek észlelhetők, az autoscale leskálázási kérést ad ki:
 
-* Függőben lévő CPU összesen 10 percnél hosszabb ideig nem éri el a teljes szabad CPU.
-* Függőben lévő memória összesen 10 percnél hosszabb ideig nem éri el a teljes szabad memória.
+* A függőben lévő PROCESSZORok száma több mint 10 percnél kevesebb, mint az összes szabad CPU.
+* A függőben lévő memória mennyisége kevesebb, mint 10 percnél nagyobb a teljes szabad memória.
 
-/ Csomópont és a jelenlegi CPU és a memóriaigény AM tárolók száma alapján, az automatikus méretezés kibocsát egy kérelmet, bizonyos számú csomópont eltávolítása. A szolgáltatás is észleli, amelyek csomópontok deduplikációra alapján a jelenlegi feladat-végrehajtási eltávolítása. A vertikális leskálázási művelet először decommissions a csomópontokat, és eltávolítja a fürtből.
+A csomópontok száma és a jelenlegi CPU-és memória-követelmények alapján az autoskálázás egy adott számú csomópont eltávolítására irányuló kérést bocsát ki. A szolgáltatás azt is észleli, hogy mely csomópontok vannak kiválasztva az eltávolításra a jelenlegi feladatok végrehajtása alapján. A leskálázási művelet először leszereli a csomópontokat, majd eltávolítja őket a fürtből.
 
 ## <a name="get-started"></a>Bevezetés
 
-### <a name="create-a-cluster-with-load-based-autoscaling"></a>Egy fürt létrehozása a betöltés-alapú automatikus skálázás
+### <a name="create-a-cluster-with-load-based-autoscaling"></a>Fürt létrehozása terheléselosztási alapú automatikus skálázással
 
-Ahhoz, hogy az automatikus méretezési funkciója a terhelés-alapú méretezés, a következő lépéseket a normál Fürtlétrehozási folyamat részeként:
+Ha az automatikus skálázási funkciót terheléselosztásos skálázással szeretné engedélyezni, hajtsa végre a következő lépéseket a fürt normál létrehozási folyamatának részeként:
 
-1. Válassza ki **egyéni (méret, beállítások, alkalmazások)** helyett **Gyorslétrehozás**.
-1. A **egyéni** 5. lépés (**fürtméret**), ellenőrizze a **munkavégző csomópont automatikus skálázási** jelölőnégyzetet.
-1. Válassza a **terhelés-alapú** alatt **automatikus skálázási típus**.
-1. Adja meg a kívánt értékeket a következő tulajdonságokkal:  
+1. **Gyors létrehozás**helyett válassza **az egyéni (méret, beállítások, alkalmazások)** lehetőséget.
+1. Az 5. **Egyéni** lépés (**fürt mérete**) területen jelölje be a munkavégző csomópontok autoskálázása jelölőnégyzetet.
+1. Válassza az **automatikus** **skálázás típusa**beállításnál a betöltés lehetőséget.
+1. Adja meg a kívánt értékeket a következő tulajdonságokhoz:  
 
-    * Kezdeti **száma a munkavégző csomópontok**.  
-    * **Minimális** munkavégző csomópontok száma.  
-    * **Maximális** munkavégző csomópontok száma.  
+    * **A munkavégző csomópontok kezdeti száma**.  
+    * A munkavégző csomópontok **minimális** száma.  
+    * A munkavégző csomópontok **maximális** száma.  
 
-    ![Munkavégző csomópont terhelés-alapú automatikus skálázási beállítás engedélyezése](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
+    ![Munkavégző csomópont terheléses automatikus méretezési beállításának engedélyezése](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
 
-A munkavégző csomópontok kezdeti száma között minimális és maximális tartományba kell esnie. Ez az érték határozza meg a fürt kezdeti mérete, a létrehozásakor. A feldolgozó csomópontok minimális száma csak nullánál nagyobbnak kell lennie.
+A munkavégző csomópontok kezdeti számának a minimális és a maximális érték közé kell esnie. Ez az érték határozza meg a fürt kezdeti méretét a létrehozáskor. A munkavégző csomópontok minimális számának nullánál nagyobbnak kell lennie.
 
-### <a name="create-a-cluster-with-schedule-based-autoscaling"></a>Ütemezésalapú automatikus skálázást egy fürt létrehozása
+### <a name="create-a-cluster-with-schedule-based-autoscaling"></a>Fürt létrehozása Schedule-alapú automatikus skálázással
 
-A méretezéssel ütemezésalapú automatikus skálázási funkció engedélyezéséhez a következő lépéseket a normál Fürtlétrehozási folyamat részeként:
+Ha az automatikus skálázási funkciót ütemezett méretezéssel szeretné engedélyezni, hajtsa végre a következő lépéseket a fürt normál létrehozási folyamatának részeként:
 
-1. Válassza ki **egyéni (méret, beállítások, alkalmazások)** helyett **Gyorslétrehozás**.
-1. A **egyéni** 5. lépés (**fürtméret**), ellenőrizze a **munkavégző csomópont automatikus skálázási** jelölőnégyzetet.
-1. Adja meg a **száma a munkavégző csomópontok**, amely szabályozza, hogy a fürt vertikális felskálázása a korlátot.
-1. Válassza a **ütemezésalapú** alatt **automatikus skálázási típus**.
-1. Kattintson a **konfigurálása** megnyitásához a **automatikus skálázási konfigurációjának** ablak.
-1. Válassza ki az időzóna, és kattintson a **+ feltétel hozzáadása**
-1. Válassza ki a hét azon napjai, az új feltétel kell vonatkozniuk.
-1. Szerkessze az idő a feltételt vesz igénybe, a hatás és a fürt kell méretezhetők a csomópontok számát.
-1. Ha szükséges, hozzáadhat további feltételeket.
+1. **Gyors létrehozás**helyett válassza **az egyéni (méret, beállítások, alkalmazások)** lehetőséget.
+1. Az 5. **Egyéni** lépés (**fürt mérete**) területen jelölje be a munkavégző csomópontok autoskálázása jelölőnégyzetet.
+1. Adja meg a **munkavégző csomópontok számát**, amely a fürt skálázásának korlátját vezérli.
+1. Válassza az **ütemezett** beállítás lehetőséget az **autoskálázás típusa**területen.
+1. Kattintson a **Konfigurálás** elemre az **automatikus skálázási konfiguráció** ablak megnyitásához.
+1. Válassza ki az időzónát, majd kattintson a **+ feltétel hozzáadása** elemre.
+1. Válassza ki a hét azon napjait, amelyeket az új feltételnek alkalmaznia kell.
+1. Szerkessze a feltétel érvénybe léptetésének időpontját, valamint azt, hogy a fürt hány csomópontra legyen méretezhető.
+1. Szükség esetén további feltételek is felvehetők.
 
-    ![Munkavégző csomópont ütemezésalapú automatikus skálázási beállítás engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
+    ![A munkavégző csomópont Schedule-alapú autoskálázási beállításának engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
 
-Csomópontok száma 1 és feltételek hozzáadása előtt a megadott munkavégző csomópontok között kell lennie.
+A csomópontok számának 1 és a feltételek hozzáadása előtt megadott munkavégző csomópontok számának kell lennie.
 
-### <a name="final-creation-steps"></a>Utolsó létrehozásának lépései
+### <a name="final-creation-steps"></a>Végső létrehozás lépései
 
-Betöltés mind ütemezésalapú méretezését, válassza ki a virtuális gép munkavégző csomópontok kattintva **velikost Pracovního uzlu** és **csomópontméret Átjárócsomópont**. Miután kiválasztotta az egyes csomóponttípusok VM-típus, láthatja a becsült költség esik az egész fürt számára. Módosítsa a virtuális gépek típusai a költségvetéshez igazodó.
+A terheléselosztási és az ütemezett skálázás esetében válassza ki a virtuális gép típusát a munkavégző csomópontok számára a feldolgozó **csomópontjának mérete** és a **fő csomópont mérete**lehetőségre kattintva. Miután kiválasztotta a virtuálisgép-típust az egyes csomópont-típusokhoz, a teljes fürt becsült hatókörét láthatja. Állítsa be úgy a virtuális gépek típusait, hogy illeszkedjenek a költségkerethez.
 
-![Munkavégző csomópont ütemezésalapú automatikus skálázási beállítás engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
+![A munkavégző csomópont Schedule-alapú autoskálázási beállításának engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
 
-Az előfizetés minden olyan régió esetében kapacitás kvótával rendelkezik. Kombinálva a feldolgozó csomópontok maximális száma a fő csomópontok magok teljes száma nem haladhatja meg a kapacitás kvótát. Azonban ez a kvóta-e egy enyhe korlát; bármikor létrehozhat egy támogatási jegyet, hogy könnyen növelni álljon.
+Az előfizetéshez tartozik egy kapacitási kvóta az egyes régiókban. A fő csomópontok teljes száma és a munkavégző csomópontok maximális száma együttesen nem lépheti túl a kapacitás kvótáját. Ez a kvóta azonban egy enyhe korlát; bármikor létrehozhat egy támogatási jegyet, hogy könnyebben megnövelhető legyen.
 
 > [!Note]  
-> Ha túllépi a teljes magkvótájának határértékét, kapni fog egy hibaüzenet közli, hogy "a csomópontok maximális túllépte a rendelkezésre álló magok ebben a régióban, válasszon egy másik régióban, vagy forduljon az támogatási a kvóta növeléséhez."
+> Ha túllépi a teljes felső korlátot, a következő hibaüzenet jelenik meg: "a maximális csomópont túllépte az elérhető magok számát ebben a régióban, válasszon egy másik régiót, vagy forduljon a támogatási szolgálathoz a kvóta növeléséhez."
 
-További információ a HDInsight-fürt létrehozása az Azure portal használatával: [a HDInsight az Azure portal használatával Linux-alapú fürtök](hdinsight-hadoop-create-linux-clusters-portal.md).  
+További információ a HDInsight-fürtök létrehozásáról a Azure Portal használatával: [Linux-alapú fürtök létrehozása a HDInsight-ben a Azure Portal használatával](hdinsight-hadoop-create-linux-clusters-portal.md).  
 
-### <a name="create-a-cluster-with-a-resource-manager-template"></a>Fürt létrehozása a Resource Manager-sablonnal
+### <a name="create-a-cluster-with-a-resource-manager-template"></a>Fürt létrehozása Resource Manager-sablonnal
 
-#### <a name="load-based-autoscaling"></a>Betöltés-alapú automatikus skálázás
+#### <a name="load-based-autoscaling"></a>Load-alapú automatikus skálázás
 
-Létrehozhat egy HDInsight-fürt és az automatikus skálázás terhelés-alapú egy Azure Resource Manager-sablon hozzáadásával egy `autoscale` a csomópontot a `computeProfile`  >  `workernode` szakasz a tulajdonságokkal `minInstanceCount` és `maxInstanceCount` , az alábbi json-kódrészletben látható.
+HDInsight `autoscale` -fürtöt egy Azure Resource Manager-sablon terheléses automatikus skálázásával hozhat létre, ha hozzáad egy csomópontot a `computeProfile` `minInstanceCount`  >  `workernode` szakaszhoz a tulajdonságok és `maxInstanceCount` a következővel: az alábbi JSON-kódrészletben látható.
 
 ```json
 {
@@ -150,11 +150,11 @@ Létrehozhat egy HDInsight-fürt és az automatikus skálázás terhelés-alapú
 }
 ```
 
-A Resource Manager-sablonok-fürtök létrehozásával kapcsolatos további információkért, lásd: [Apache Hadoop-fürtök létrehozása a HDInsight használatával a Resource Manager-sablonok](hdinsight-hadoop-create-linux-clusters-arm-templates.md).  
+A fürtök Resource Manager-sablonokkal való létrehozásával kapcsolatos további információkért lásd: [Apache Hadoop-fürtök létrehozása a HDInsight-ben Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).  
 
-#### <a name="schedule-based-autoscaling"></a>Ütemezésalapú automatikus méretezés
+#### <a name="schedule-based-autoscaling"></a>Ütemterv-alapú automatikus skálázás
 
-Létrehozhat egy HDInsight-fürt és az ütemezés alapú automatikus skálázás egy Azure Resource Manager-sablon hozzáadásával egy `autoscale` a csomópontot a `computeProfile`  >  `workernode` szakaszban. A `autoscale` csomópont tartalmaz egy `recurrence` , amely rendelkezik egy `timezone` és `schedule` , amely azt ismerteti, amikor a módosítás történik.
+HDInsight-fürtöt úgy hozhat létre `autoscale` , hogy a szakaszhoz hozzáad egy csomópontot a `computeProfile`  >  `workernode` Azure Resource Manager-sablonhoz. A `autoscale` csomópont `timezone` tartalmazegy-`schedule` t, amely leírja, hogy mikor kerül sor a módosításra. `recurrence`
 
 ```json
 {
@@ -184,60 +184,76 @@ Létrehozhat egy HDInsight-fürt és az ütemezés alapú automatikus skálázá
 }
 ```
 
-### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>Engedélyezheti vagy letilthatja az automatikus skálázási futó fürt
+### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>Az autoskálázás engedélyezése és letiltása egy futó fürtön
 
-Egy futó fürt automatikus skálázás engedélyezéséhez jelölje be **fürtméret** alatt **beállítások**. Kattintson a **automatikus skálázás engedélyezése**. Válassza ki az automatikus méretezés, hogy szeretné, és adja meg a terhelés alapján vagy ütemezés-alapú méretezésének lehetőségeiről. Végül kattintson **mentése**.
+#### <a name="using-the-azure-portal"></a>Az Azure Portal használata
+Ha egy futó fürtön engedélyezni szeretné az autoskálázást, a **Beállítások**területen válassza a **fürt méretét** . Ezután kattintson az **autoskálázás engedélyezése**lehetőségre. Válassza ki a kívánt automatikus méretezési típust, és adja meg a terhelés vagy az ütemterv szerinti skálázás beállításait. Végül kattintson a **Mentés**gombra.
 
-![Munkavégző csomópont ütemezésalapú automatikus skálázási beállítás engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+![A munkavégző csomópont Schedule-alapú autoskálázási beállításának engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+
+#### <a name="using-the-rest-api"></a>A REST API használata
+Ha egy futó fürtön a REST API használatával szeretné engedélyezni vagy letiltani az autoskálázást, tegye az alábbi kódrészletben látható POST-kérést az autoscale végpontra:
+
+```
+https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{resourceGroup Name}/providers/Microsoft.HDInsight/clusters/{CLUSTERNAME}/roles/workernode/autoscale?api-version=2018-06-01-preview
+```
+
+Használja a kérelem hasznos adatainak megfelelő paramétereket. Az alábbi JSON-adattartalom használatával engedélyezhető az autoskálázás. Az autoscale `{autoscale: null}` letiltásához használja a hasznos adatokat.
+
+```json
+{ autoscale: { capacity: { minInstanceCount: 1, maxInstanceCount: 2 } } }
+```
+
+Tekintse meg az előző szakaszt a betöltési [alapú automatikus skálázás engedélyezéséhez](#load-based-autoscaling) az összes hasznos adat paraméterének teljes leírásához.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-### <a name="choosing-load-based-or-schedule-based-scaling"></a>Terhelés alapján vagy ütemezés-alapú méretezés kiválasztása
+### <a name="choosing-load-based-or-schedule-based-scaling"></a>A Load-based vagy az Schedule-alapú skálázás kiválasztása
 
-Mielőtt az válassza ki, milyen módban, vegye figyelembe a következő tényezőket:
+A következő tényezőket kell figyelembe vennie, mielőtt döntést hozna a választott üzemmódról:
 
-* Eltérés betöltése: nem a fürt a terhelés konzisztens mintát követi az adott nap adott időpontokban. Ha nem, nem jobb megoldás-alapú betöltés ütemezése.
-* SLA-követelmények: Automatikus skálázás helyett prediktív reaktív. Lesz-e elegendő késleltetés növelését, és amikor a fürt kell lennie a cél méretét, a terhelés indításakor? Nincsenek a szigorú követelményeket állít fel SLA-t és a terhelés egy ismert rögzített mintát, ha a "ütemezésalapú" nem jobb megoldás.
+* Betöltési eltérés: a fürt terhelése adott időpontokban, meghatározott napokon követi a konzisztens mintát. Ha nem, akkor a betöltés alapú ütemezés jobb megoldás.
+* SLA-követelmények: Az automatikus skálázás a prediktív végrehajtás helyett reaktív. Elegendő késés lesz a terhelés növekedésének megkezdése és a fürtnek a célként megadott méretnél való megadása között? Ha szigorú SLA-követelmények vannak meghatározva, és a terhelés egy rögzített ismert minta, az "ütemezés-alapú" jobb megoldás.
 
-### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Vegye figyelembe a skála késései be- vagy leskálázás műveletek
+### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Vegye figyelembe a vertikális Felskálázási vagy leskálázási műveletek késését
 
-A skálázási művelet elvégzéséhez 10 – 20 percig is eltarthat. Állítson be egy egyéni ütemezést, tervezze meg ezt a késést. Például ha a fürt méretét 20, 9:00 Órakor, állítsa az ütemezési eseményindító egy korábbi időpontra, például 8:30-kor, hogy a skálázási művelet befejeződött, 9:00-kor szerint.
+A skálázási művelet befejezéséhez 10 – 20 percet is igénybe vehet. Testreszabott ütemterv beállításakor tervezze meg ezt a késleltetést. Ha például a fürt méretének 20-at kell megadnia a 9:00-es verziónál, állítsa az ütemezett triggert egy korábbi időpontra, például a 8:30-re, hogy a skálázási művelet a 9:00-as értékkel fejeződött be.
 
-### <a name="preparation-for-scaling-down"></a>Skálázás lefelé előkészítése
+### <a name="preparation-for-scaling-down"></a>Felkészülés a méretezésre
 
-Fürt vertikális leskálázást a folyamat során az automatikus méretezés lejártakor a csomópontok megfelelnek a cél méretét. A csomópontokon futó vannak feladatok, ha az automatikus méretezés megvárja, amíg a feladat befejeződött. Mivel az egyes munkavégző csomópont is szolgál a szerepkör HDFS-ben, az ideiglenes adatokat megjelenítjük a többi csomópont. Ezért győződjön meg arról, hogy van elég hely a többi csomóponton üzemeltetni az ideiglenes adatokat. 
+A fürt skálázási folyamata során az automatikus skálázás leszereli a csomópontokat a célként megadott méret kielégítése érdekében. Ha ezeken a csomópontokon futó feladatok futnak, az automatikusan megvárja, amíg a feladatok befejeződik. Mivel az egyes munkavégző csomópontok is a HDFS szerepkört is kiszolgálják, a rendszer a többi csomópontra helyezi át a temp-adatait. Ezért győződjön meg arról, hogy a többi csomóponton elegendő lemezterület áll rendelkezésre az összes Temp-érték üzemeltetéséhez. 
 
-A futó feladatok továbbra is futtatásához és befejezéséhez. A függőben lévő feladatokat ütemezni kevesebb rendelkezésre álló munkavégző csomópontok a szokásos módon várakozik.
+A futó feladatok továbbra is futnak és befejeződik. A függőben lévő feladatok a szokásosnál kevesebb munkavégző csomóponttal lesznek ütemezve.
 
 ## <a name="monitoring"></a>Figyelés
 
 ### <a name="cluster-status"></a>Fürt állapota
 
-A fürt állapotát, az Azure Portalon szereplő segíthet az automatikus méretezés tevékenységek figyelése.
+A Azure Portalban felsorolt fürt állapota segíthet az autoskálázási tevékenységek figyelésében.
 
-![Munkavégző csomópont terhelés-alapú automatikus skálázási beállítás engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+![Munkavégző csomópont terheléses automatikus méretezési beállításának engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
 
-A fürt állapotüzeneteket, amelyeket láthat minden mutatjuk be az alábbi lista.
+Az alábbi listában az összes olyan fürt állapotüzenetek látható, amelyet látni fog.
 
 | Fürt állapota | Magyarázat |
 |---|---|
-| Fut | A fürt megfelelően működik. Az összes automatikus skálázási előző tevékenység sikeresen befejeződött. |
-| Frissítése  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
-| HDInsight-konfiguráció  | Fürt vertikális felskálázás vagy vertikális leskálázási művelet folyamatban van.  |
-| Frissítési hiba  | HDInsight problémákat észlelt az automatikus skálázási konfigurációjának frissítése során. Ügyfelek eldönthetik, próbálkozzon újra a frissítést, vagy az automatikus skálázás letiltása.  |
-| Hiba  | Hiba található a fürt, és már nem használható. Törli ezt a fürtöt, és hozzon létre egy újat.  |
+| Fut | A fürt rendesen működik. Az összes korábbi autoskálázási tevékenység sikeresen befejeződött. |
+| Frissítés  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
+| HDInsight-konfiguráció  | Egy fürt vertikális fel-vagy leskálázási művelete folyamatban van.  |
+| Frissítési hiba  | A HDInsight problémákba ütközött az automatikus skálázási konfiguráció frissítése során. Az ügyfelek dönthetnek úgy, hogy megpróbálják megismételni a frissítést vagy letiltani az autoskálázást.  |
+| Hiba  | Probléma van a fürttel, és nem használható. Törölje a fürtöt, és hozzon létre egy újat.  |
 
-A fürtben található csomópontok jelenlegi száma megtekintéséhez nyissa meg a **fürtméret** a diagram a **áttekintése** oldalon a fürt számára, vagy kattintson **fürtméret** alatt  **Beállítások**.
+A fürtben lévő csomópontok aktuális számának megtekintéséhez nyissa meg a fürt áttekintő lapján a fürt **mérete** diagramot, vagy kattintson a **fürt mérete** lehetőségre a **Beállítások**területen.
 
-### <a name="operation-history"></a>A művelet előzmények
+### <a name="operation-history"></a>Műveleti előzmények
 
-Megtekintheti a fürt felfelé és lefelé méretezési előzményeket a fürtmetrikák részeként. Az elmúlt nap, hét vagy más időn keresztül is listázhatja az összes skálázási műveletet.
+A fürt metrikáinak részeként megtekintheti a fürt vertikális felskálázásának és leskálázásának előzményeit is. Az összes skálázási műveletet az elmúlt nap, a hét vagy más idő alatt is listázhatja.
 
-Válassza ki **metrikák** alatt **figyelési**. Kattintson a **metrika hozzáadása** és **aktív feldolgozók száma** származó a **metrika** legördülő menüből. A gombra kattintva módosíthatja az időtartományt.
+A **figyelés**területen válassza a **metrikák** lehetőséget. Ezután kattintson a **metrika hozzáadása** és az **aktív feldolgozók száma** lehetőségre a **metrika** legördülő listából. Kattintson a jobb felső sarokban lévő gombra az időtartomány módosításához.
 
-![Munkavégző csomópont ütemezésalapú automatikus skálázási beállítás engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+![A munkavégző csomópont Schedule-alapú autoskálázási beállításának engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-* Olvassa el manuálisan a fürtök méretezés ajánlott eljárásai [skálázása – ajánlott eljárások](hdinsight-scaling-best-practices.md)
+* Olvassa el a fürtök manuális méretezésével kapcsolatos ajánlott eljárásokat az [ajánlott eljárások méretezése](hdinsight-scaling-best-practices.md) című cikkből.

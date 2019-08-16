@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 07/05/2019
-ms.openlocfilehash: 3b9a9f4ac1cf0722ab7d3838f0b0c4c12b47dc74
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 67e877609eec98e7100b34ab477dbab7c5577772
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566809"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515282"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Kiszolgáló nélküli Azure SQL Database (előzetes verzió)
 
@@ -281,7 +281,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>Erőforráskorlátok
 
-Erőforrás-korlátok esetében lásd: [kiszolgáló nélküli számítási szintek](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier)
+Az erőforrás-korlátokat lásd: [kiszolgáló nélküli számítási szintek](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).
 
 ## <a name="billing"></a>Számlázás
 
@@ -324,4 +324,4 @@ A kiszolgáló nélküli számítási csomag világszerte elérhető, kivéve a 
 ## <a name="next-steps"></a>További lépések
 
 - Első lépésként tekintse [meg a gyors útmutató: Hozzon létre egyetlen adatbázist Azure SQL Database a Azure Portal](sql-database-single-database-get-started.md)használatával.
-- Az erőforrások korlátaival kapcsolatban lásd: [kiszolgáló nélküli számítási keret erőforrás-korlátai](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier).
+- Az erőforrások korlátaival kapcsolatban lásd: [kiszolgáló nélküli számítási keret erőforrás-korlátai](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).

@@ -7,20 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 08/06/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 58c6d1b032f5b492c5641ff51da80426124069b1
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 46755cb8d0383d166b10d50854eb476b676a6ee4
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716778"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509742"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása egy adott Azure Active Directory szervezet számára Azure Active Directory B2C
-
->[!NOTE]
-> Ez a funkció nyilvános előzetes verzióban érhető el. Éles környezetben ne használja a szolgáltatást.
 
 Ha egy Azure Active Directory (Azure AD) [identitás](active-directory-b2c-reference-oauth-code.md) -szolgáltatóként kíván használni a Azure ad B2Cban, létre kell hoznia egy alkalmazást, amely azt jelképezi. Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést egy adott Azure AD-szervezet felhasználóinak a Azure AD B2C felhasználói folyamatával.
 
@@ -54,7 +51,7 @@ Ha engedélyezni szeretné a bejelentkezést egy adott Azure AD-szervezet felhas
 2. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 3. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.
 4. Adjon meg egy **nevet**. Adja meg például a következőt: `Contoso Azure AD`.
-5. Válassza az **identitás-szolgáltató típusa**lehetőséget, válassza az **OpenID Connect (előzetes verzió)** lehetőséget, majd kattintson **az OK**gombra.
+5. Válassza az **identitás-szolgáltató típusa**lehetőséget, válassza az **OpenID Connect**lehetőséget, majd kattintson **az OK**gombra.
 6. Válassza ki **az identitás-szolgáltató beállítása** lehetőséget.
 7. A **metaadatok URL-címéhez**adja meg az `your-AD-tenant-domain` alábbi URL-címet, amely az Azure ad-bérlő tartománynevét helyettesíti. Például `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`:
 

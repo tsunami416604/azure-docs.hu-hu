@@ -181,10 +181,6 @@
           href: security-center-search.md
         - name: Tervezés és műveletek
           href: security-center-planning-and-operations-guide.md
-        - name: Biztonsági riasztások ismertetése
-          href: security-center-alerts-type.md
-        - name: Azure-erőforrások és -felhasználók UEBA-elemzése
-          href: security-center-ueba-mcas.md
         - name: Biztonsági konfigurációk testreszabása
           href: security-center-customize-os-security-config.md
 - name: Referencia
