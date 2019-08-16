@@ -79,7 +79,7 @@ Adja hozzá az *USA keleti régiójában* lévő webhelyt elsődleges végpontk�
 
 1. A portál keresősáv mezőjébe írja be az előző szakaszban létrehozott Traffic Manager profil nevét.
 2. Válassza ki a profilt a keresési eredmények közül.
-3. **Traffic Manager profilban**a **Beállítások** szakaszban válassza a végpontok **** lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+3. **Traffic Manager profilban**a **Beállítások** szakaszban válassza a végpontoklehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 4. Adja meg vagy válassza ki a következő beállításokat:
 
     | Beállítás | Érték |
@@ -130,7 +130,7 @@ Ebben a szakaszban a Traffic Manager profil tartománynevét fogja megtekinteni.
 
 2. Ha Traffic Manager feladatátvételt szeretné megtekinteni a működés közben, tiltsa le az elsődleges helyet:
     1. A Traffic Manager profil lapon az **Áttekintés** szakaszban válassza a **myPrimaryEndpoint**lehetőséget.
-    2. A *myPrimaryEndpoint*területen válassza ****  > a letiltott**Mentés**lehetőséget.
+    2. A *myPrimaryEndpoint*területen válassza > a letiltott**Mentés**lehetőséget.
     3. **MyPrimaryEndpoint**lezárása. Figyelje meg, hogy az állapot jelenleg **le van tiltva** .
 3. Másolja a Traffic Manager profiljának DNS-nevét az előző lépésből, hogy megtekintse a webhelyet egy új böngésző-munkamenetben.
 4. Ellenőrizze, hogy a webalkalmazás továbbra is elérhető-e.

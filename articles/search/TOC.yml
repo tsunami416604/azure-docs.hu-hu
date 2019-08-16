@@ -13,7 +13,7 @@
       items:
         - name: Index létrehozása és használata
           href: search-get-started-portal.md
-        - name: Bővítés és gazdagítás mesterséges intelligenciával (kognitív keresés)
+        - name: Bővítés kognitív kereséssel (AI)
           href: cognitive-search-quickstart-blob.md
     - name: 'C#'
       href: search-get-started-dotnet.md
@@ -59,6 +59,8 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'
     - name: Java-példák
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=java'
+    - name: JavaScript-minták
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=javascript'
     - name: Python-példák
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=python'
     - name: REST-minták

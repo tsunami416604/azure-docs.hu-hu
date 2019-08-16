@@ -439,20 +439,38 @@
           href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: Új ajánlat létrehozása
       items:
-        - name: Ajánlat-létrehozási ellenőrzőlista
-          href: ./partner-center-portal/offer-creation-checklist.md
-        - name: SaaS-ajánlat létrehozása
-          href: ./partner-center-portal/create-new-saas-offer.md
-        - name: SaaS forgalmi díjas számlázás
-          href: ./partner-center-portal/saas-metered-billing.md
+        - name: Dynamics 365-ajánlatok
           items:
-            - name: Marketplace metering service API-k – GYIK
-              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-            - name: Marketplace metering service API-k
-              href: ./partner-center-portal/marketplace-metering-service-apis.md
-        - name: SaaS Fulfillment API-k
-          href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+            - name: Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása
+              href: ./partner-center-portal/create-new-customer-engagement-offer.md
+            - name: Dynamics 365 for Operations-ajánlat létrehozása
+              href: ./partner-center-portal/create-new-operations-offer.md
+            - name: Microsoft Dynamics 365 Business Central-ajánlat létrehozása
+              href: ./partner-center-portal/create-new-business-central-offer.md
+        - name: SaaS-ajánlatok
           items:
+            - name: SaaS-ajánlatlétrehozási ellenőrzőlista
+              href: ./partner-center-portal/offer-creation-checklist.md
+            - name: SaaS-ajánlat létrehozása
+              href: ./partner-center-portal/create-new-saas-offer.md
+            - name: SaaS forgalmi díjas számlázás
+              href: ./partner-center-portal/saas-metered-billing.md
+              items:
+                - name: Marketplace metering service API-k – GYIK
+                  href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+                - name: Marketplace metering service API-k
+                  href: ./partner-center-portal/marketplace-metering-service-apis.md
+            - name: SaaS Fulfillment API-k
+              href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+              items:
+                - name: SaaS-alkalmazás regisztrálása
+                  href: ./partner-center-portal/pc-saas-registration.md
+                - name: 'SaaS Fulfillment API-k, 2-es verzió'
+                  href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+                - name: 'SaaS Fulfillment API-k, 1-es verzió (elavult)'
+                  href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
+                - name: SaaS Fulfillment API-k – GYIK
+                  href: ./partner-center-portal/saas-fulfillment-apis-faq.md
             - name: SaaS-alkalmazás regisztrálása
               href: ./partner-center-portal/pc-saas-registration.md
             - name: 'SaaS Fulfillment API-k, 2-es verzió'

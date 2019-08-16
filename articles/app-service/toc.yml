@@ -227,6 +227,8 @@
       href: '../azure-subscription-service-limits.md#app-service-limits'
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=app-service'
+    - name: Migration Assistant-útmutatók
+      href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
     - name: Ajánlott eljárások
       href: app-service-best-practices.md
     - name: Példák

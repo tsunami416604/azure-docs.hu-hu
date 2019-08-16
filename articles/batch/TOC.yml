@@ -79,10 +79,12 @@
           href: batch-pool-vm-sizes.md
         - name: Számítási csomópontokhoz való hozzáférés konfigurálása
           href: pool-endpoint-configuration.md
-        - name: Készlet létrehozása egyéni rendszerképpel
+        - name: Készlet létrehozása megosztott rendszerkép-katalógusból
           href: batch-custom-images.md
         - name: Készlet létrehozása egy virtuális hálózaton belül
           href: batch-virtual-network.md
+        - name: Virtuális fájlrendszer csatlakoztatása
+          href: virtual-file-mount.md
         - name: Azure-fájlmegosztás csatlakoztatása
           href: pool-file-shares.md
         - name: RDMA- vagy GPU-példányok használata

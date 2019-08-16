@@ -85,5 +85,7 @@
           href: how-to/dev-spaces-business-continuity.md
         - name: Windows-tárolók használata
           href: how-to/run-dev-spaces-windows-containers.md
+        - name: Traefik használata egyéni bejövő és HTTPS-kapcsolatokhoz
+          href: how-to/ingress-https-traefik.md
     - name: Hibaelhárítás
       href: troubleshooting.md

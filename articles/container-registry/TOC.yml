@@ -66,7 +66,11 @@
         - name: Tárolórendszerképek zárolása
           href: container-registry-image-lock.md
         - name: Tárolórendszerképek törlése
-          href: container-registry-delete.md
+          items:
+            - name: Képadatok törlése – parancssori felület
+              href: container-registry-delete.md
+            - name: Címkék és jegyzékfájlok automatikus végleges törlése (előzetes verzió)
+              href: container-registry-auto-purge.md
         - name: Klasszikus beállításjegyzék frissítése
           href: container-registry-upgrade.md
         - name: ACR-webhookok használata

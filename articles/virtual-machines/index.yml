@@ -3,7 +3,7 @@ documentType: LandingData
 title: Virtual Machines-dokumentáció
 metadata:
   document_id: na
-  title: Az Azure Linux Virtual Machine dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  title: Az Azure Virtual Machine dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
   meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines
   author: georgewallace

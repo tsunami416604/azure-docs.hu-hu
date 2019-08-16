@@ -120,12 +120,8 @@
         - name: Üzembe helyezés – REST API
           displayName: 'deployment,rollback on error,redeploy'
           href: resource-group-template-deploy-rest.md
-        - name: Sablonok védelme SAS-jogkivonattal
-          items:
-            - name: Az Azure parancssori felületének használata
-              href: resource-manager-cli-sas-token.md
-            - name: Azure PowerShell használatával
-              href: resource-manager-powershell-sas-token.md
+        - name: Sablon védelme SAS-jogkivonattal
+          href: secure-template-with-sas-token.md
         - name: Üzembe helyezés több erőforráscsoporton vagy előfizetésben
           href: resource-manager-cross-resource-group-deployment.md
     - name: CI/CD

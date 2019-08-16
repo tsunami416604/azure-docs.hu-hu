@@ -709,7 +709,7 @@ Legfontosabb információk:
     A következő értékek érhetők el a **relatív** beállításhoz:
   - **Gyökér**: Azt jelzi, hogy az URL-összehasonlító pont közvetlenül a CDN-állomásnév után kezdődik.
 
-    Például: http:\//WPC.0001.&lt; tartományi&gt; **** 800001/myorigin/MyFolder/index.htm/
+    Például: http:\//WPC.0001.&lt; tartományi&gt; 800001/myorigin/MyFolder/index.htm/
 
   - **Forrás**: Azt jelzi, hogy az URL-összehasonlító pont a tartalom-hozzáférési pont után kezdődik (például/000001 vagy/800001/myorigin). Mivel a \*. azureedge.net CNAME azonosító alapértelmezés szerint a Verizon CDN-gazdagépen lévő forrás könyvtárhoz képest jön létre, Azure CDN felhasználóknak a **forrás** értéket kell használniuk. 
 
@@ -793,7 +793,7 @@ Legfontosabb információk:
    Ez a beállítás a következő értékeket veheti fel:
      - **Gyökér**: Azt jelzi, hogy az URL-összehasonlító pont közvetlenül a CDN-állomásnév után kezdődik.
 
-       Például: http:\//WPC.0001.&lt; tartományi&gt; **** 800001/myorigin/MyFolder/index.htm/
+       Például: http:\//WPC.0001.&lt; tartományi&gt; 800001/myorigin/MyFolder/index.htm/
 
      - **Forrás**: Azt jelzi, hogy az URL-összehasonlító pont a tartalom-hozzáférési pont után kezdődik (például/000001 vagy/800001/myorigin). Mivel a \*. azureedge.net CNAME azonosító alapértelmezés szerint a Verizon CDN-gazdagépen lévő forrás könyvtárhoz képest jön létre, Azure CDN felhasználóknak a **forrás** értéket kell használniuk. 
 

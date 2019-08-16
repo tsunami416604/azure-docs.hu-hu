@@ -388,7 +388,7 @@
           items:
             - name: Írásgyorsító engedélyezése
               href: how-to-enable-write-accelerator.md
-            - name: Ultra szintű SSD-k engedélyezése
+            - name: Ultra szintű lemezek használata
               href: disks-enable-ultra-ssd.md
             - name: Lemez teljesítménytesztelése
               href: disks-benchmarks.md

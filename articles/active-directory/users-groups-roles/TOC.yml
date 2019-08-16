@@ -10,7 +10,7 @@
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Licencek hozzárendelése felhasználókhoz
       href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Szerepkör hozzárendelése erőforrás-hatókörrel
+    - name: Korlátlan számú alkalmazásregisztráció engedélyezése
       href: roles-quickstart-app-registration-limits.md
     - name: Csoportok lejáratának beállítása
       href: groups-quickstart-expiration.md
