@@ -56,7 +56,7 @@ A webes tábla társított szolgáltatása a következő tulajdonságokat támog
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **Web** |Igen |
 | url | A webes forrás URL-címe |Igen |
-| authenticationType | Az engedélyezett érték: **Névtelen**. |Igen |
+| authenticationType | Az engedélyezett érték: **Anonymous**. |Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
 **Példa:**
