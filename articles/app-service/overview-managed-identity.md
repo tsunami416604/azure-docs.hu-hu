@@ -9,20 +9,17 @@ ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 8bc30d50772dffddca32d9f6e22c3d7cec566c70
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: a2b8a4e496094c6275710328e70a09376ce0e5fc
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297151"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563025"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
-
-> [!NOTE] 
-> A felügyelt identitás támogatása a Linuxon App Service és a Web App for Containers jelenleg előzetes verzióban érhető el.
 
 > [!Important] 
 > A App Service és Azure Functions felügyelt identitásai nem a várt módon fognak működni, ha az alkalmazást áttelepítik az előfizetések/bérlők között. Az alkalmazásnak új identitást kell beszereznie, amely a funkció letiltásával és újbóli engedélyezésével végezhető el. Lásd [az](#remove) alábbi identitások eltávolítását ismertető szakaszt. Az alárendelt erőforrásoknak is szükségük lesz a hozzáférési szabályzatok frissítésére az új identitás használatához.
@@ -30,8 +27,8 @@ ms.locfileid: "68297151"
 Ebből a témakörből megtudhatja, hogyan hozhat létre felügyelt identitást App Service és Azure Functions alkalmazásokhoz, és hogyan használhatja azt más erőforrásokhoz való hozzáféréshez. A Azure Active Directory felügyelt identitása lehetővé teszi, hogy az alkalmazás könnyedén hozzáférhessen más HRE-védelemmel ellátott erőforrásokhoz, például a Azure Key Vaulthoz. Az identitást az Azure platform felügyeli, és nem igényli semmilyen titok kiépítését és elforgatását. További információ a HRE felügyelt identitásokról: [felügyelt identitások az Azure](../active-directory/managed-identities-azure-resources/overview.md)-erőforrásokhoz.
 
 Az alkalmazás két típusú identitást biztosíthat: 
-- A **rendszer által hozzárendelt identitás** az alkalmazáshoz van kötve, és törlődik, ha az alkalmazás törölve lett. Egy alkalmazásnak csak egy rendszerhez rendelt identitása lehet. A rendszerhez rendelt identitások támogatása általánosan elérhető a Windows-alkalmazásokhoz. 
-- A **felhasználó által hozzárendelt identitás** egy önálló Azure-erőforrás, amelyet hozzá lehet rendelni az alkalmazáshoz. Egy alkalmazáshoz több felhasználó által hozzárendelt identitás is tartozhat. A felhasználó által hozzárendelt identitás támogatása előzetes verzióban érhető el az összes alkalmazás típusához.
+- A **rendszer által hozzárendelt identitás** az alkalmazáshoz van kötve, és törlődik, ha az alkalmazás törölve lett. Egy alkalmazásnak csak egy rendszerhez rendelt identitása lehet.
+- A **felhasználó által hozzárendelt identitás** egy önálló Azure-erőforrás, amelyet hozzá lehet rendelni az alkalmazáshoz. Egy alkalmazáshoz több felhasználó által hozzárendelt identitás is tartozhat.
 
 ## <a name="adding-a-system-assigned-identity"></a>Rendszerhez rendelt identitás hozzáadása
 
@@ -158,17 +155,11 @@ A hely létrehozásakor a következő tulajdonságokkal rendelkezik:
 A `<TENANTID>` és`<PRINCIPALID>` a helyettesítése GUID azonosítókkal. A tenantId tulajdonság azt határozza meg, hogy az identitás melyik HRE-bérlőhöz tartozik. A principalId az alkalmazás új identitásának egyedi azonosítója. A HRE belül az egyszerű szolgáltatásnév neve megegyezik a App Service vagy Azure Functions példányával.
 
 
-## <a name="adding-a-user-assigned-identity-preview"></a>Felhasználó által hozzárendelt identitás hozzáadása (előzetes verzió)
-
-> [!NOTE] 
-> A felhasználó által hozzárendelt identitások jelenleg előzetes verzióban érhetők el. A szuverén felhők még nem támogatottak.
+## <a name="adding-a-user-assigned-identity"></a>Felhasználó által hozzárendelt identitás hozzáadása
 
 A felhasználó által hozzárendelt identitással rendelkező alkalmazások létrehozásához létre kell hoznia az identitást, majd hozzá kell adnia annak erőforrás-azonosítóját az alkalmazás-konfigurációhoz.
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
-
-> [!NOTE] 
-> Ez a portál üzembe helyezése folyamatban van, és még nem érhető el minden régióban.
 
 Először létre kell hoznia egy felhasználó által hozzárendelt identitás-erőforrást.
 
@@ -180,7 +171,7 @@ Először létre kell hoznia egy felhasználó által hozzárendelt identitás-e
 
 4. Válassza a **felügyelt identitás**elemet.
 
-5. A **felhasználó által hozzárendelt (előzetes verzió)** lapon kattintson a **Hozzáadás**gombra.
+5. A **felhasználó** által hozzárendelt lapon kattintson a **Hozzáadás**gombra.
 
 6. Keresse meg a korábban létrehozott identitást, és válassza ki. Kattintson a **Hozzáadás**lehetőségre.
 
@@ -314,7 +305,7 @@ A felügyelt identitású alkalmazások esetében két környezeti változó van
 
 A **MSI_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonatokat igényelhet. Egy erőforráshoz tartozó jogkivonat lekéréséhez hajtson végre egy HTTP GET kérelmet erre a végpontra, beleértve a következő paramétereket:
 
-> |Paraméter neve|A|Leírás|
+> |Paraméternév|A|Leírás|
 > |-----|-----|-----|
 > |resource|Lekérdezés|Annak az erőforrásnak az HRE erőforrás-URI azonosítója, amelynek a jogkivonatát meg kell szerezni. Ez lehet az egyik olyan [Azure-szolgáltatás, amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármilyen más erőforrás-URI-t.|
 > |api-version|Lekérdezés|A használni kívánt jogkivonat-API verziója. a "2017-09-01" jelenleg az egyetlen támogatott verzió.|
@@ -388,6 +379,25 @@ const getToken = function(resource, apiver, cb) {
     rp(options)
         .then(cb);
 }
+```
+
+<a name="token-python"></a>Pythonban:
+
+```python
+import os
+import requests
+
+msi_endpoint = os.environ["MSI_ENDPOINT"]
+msi_secret = os.environ["MSI_SECRET"]
+
+def get_bearer_token(resource_uri, token_api_version):
+    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version={token_api_version}"
+    head_msi = {'Secret':msi_secret}
+
+    resp = requests.get(token_auth_uri, headers=head_msi)
+    access_token = resp.json()['access_token']
+
+    return access_token
 ```
 
 <a name="token-powershell"></a>A PowerShellben:

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/17/2019
+ms.date: 08/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22c25c0a2b2f48baa3b57a8ad39ed4514c884826
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: d18c74e908f6d5c4c3d2eefb0518add380fa1324
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533142"
+ms.locfileid: "69561316"
 ---
 # <a name="what-are-authentication-methods"></a>Mik azok a hitelesítési módszerek?
 
@@ -31,7 +31,7 @@ A Microsoft nagymértékben javasolja a rendszergazdáknak, hogy a minimálisan 
 | Windows 10 | MFA és SSPR |
 | Biztonsági kérdések | Csak SSPR |
 | E-mail-cím | Csak SSPR |
-| Microsoft Authenticator alkalmazás | MFA és nyilvános előzetes verzió a SSPR-hoz |
+| Microsoft Authenticator alkalmazás | MFA és SSPR |
 | A hardver-token ESKÜje | Az MFA és a SSPR nyilvános előzetes verziója |
 | SMS | MFA és SSPR |
 | Hanghívás | MFA és SSPR |
@@ -41,7 +41,7 @@ A Microsoft nagymértékben javasolja a rendszergazdáknak, hogy a minimálisan 
 
 |     |
 | --- |
-| A többtényezős hitelesítés és a SSPR, valamint a Mobile App Notification vagy a Mobile App Code esetében az Azure AD önkiszolgáló jelszó-visszaállítási módszereinek használata a nyilvános előzetes verziójú szolgáltatások Azure Active Directory. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Az MFA és a SSPR-hez tartozó hardver-tokenek a Azure Active Directory nyilvános előzetes verziójának funkciói. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 ## <a name="password"></a>Windows 10

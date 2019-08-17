@@ -8,16 +8,16 @@ ms.service: search
 ms.topic: overview
 ms.date: 08/13/2019
 ms.author: heidist
-ms.openlocfilehash: 0a254716acbcd51263680d421045788e8365ae8b
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
-ms.translationtype: HT
+ms.openlocfilehash: 1f3e4d69d3fdba8eba2e7d3cadc3c29703bffcaf
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533176"
+ms.locfileid: "69558595"
 ---
 # <a name="what-is-azure-search"></a>Mi az az Azure Search?
 
-Az Azure Search egy felhőalapú keresőszolgáltatás, amely olyan API-kat és eszközöket nyújt a fejlesztőknek, amelyek segítségével fejlett keresési funkciókat adhatnak hozzá a privát, heterogén tartalmak keresése érdekében a webes, mobilos és vállalati alkalmazásokhoz. Az egyéni kód meghívja az adatfeldolgozást (indexelést), lekérdezi a lekérdezési kérelmeket, és kezeli a válaszokat. A keresési élmény az ügyfél kódjában az Azure Search funkcióinak használatával van meghatározva, és a lekérdezés végrehajtása a saját maga által létrehozott, a saját tulajdonában lévő és a Azure Search tárolt index alapján történik.
+A Azure Search egy felhőalapú keresési megoldás, amely lehetővé teszi a fejlesztők számára API-k és eszközök számára, hogy a webes, mobil-és vállalati alkalmazásokban gazdag keresési élményt adjanak hozzá. Az egyéni kód meghívja az adatfeldolgozást (indexelést), lekérdezi a lekérdezési kérelmeket, és kezeli a válaszokat. A keresési élmény az ügyfél kódjában az Azure Search funkcióinak használatával van meghatározva, és a lekérdezés végrehajtása a saját maga által létrehozott, a saját tulajdonában lévő és a Azure Search tárolt index alapján történik.
 
 ![Azure Search architektúra](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Search architektúra")
 

@@ -11,18 +11,18 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 66effb095edf7927a38fca53b2ff317e9bad468e
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 525cb444ad7b1b78de867f83539ac338ddd144e9
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619614"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562934"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával
 
 Az Azure Functions lehetővé teszi, hogy a függvényeit Linux rendszerben egy saját egyéni tárolóban üzemeltesse. Emellett [egy alapértelmezett Azure App Service-tárolóban is üzemeltetheti](functions-create-first-azure-function-azure-cli-linux.md). Ehhez a funkcióhoz [a functions 2. x futtatókörnyezete](functions-versions.md)szükséges.
 
-Ez az oktatóanyag bemutatja, hogyan helyezhetők üzembe a függvények az Azure-ban egyéni Docker-rendszerképként. Ez a minta akkor hasznos, ha testre kell szabnia a beépített tároló rendszerképét. Érdemes lehet egyéni rendszerképet használnia, ha a funkciók egy adott nyelvi verziójára vagy egy konkrét függőségre vagy konfigurációra van szükség, amely a beépített rendszerképben nem biztosított. A Azure Functions támogatott alaplemezképei a [Azure functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base)tárházban találhatók. A [Python-támogatás](functions-reference-python.md) jelenleg előzetes verzióban érhető el.
+Ez az oktatóanyag bemutatja, hogyan helyezhetők üzembe a függvények az Azure-ban egyéni Docker-rendszerképként. Ez a minta akkor hasznos, ha testre kell szabnia a beépített tároló rendszerképét. Érdemes lehet egyéni rendszerképet használnia, ha a funkciók egy adott nyelvi verziójára vagy egy konkrét függőségre vagy konfigurációra van szükség, amely a beépített rendszerképben nem biztosított. A Azure Functions támogatott alaplemezképei a [Azure functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base)tárházban találhatók. 
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre függvényeket egyéni Linux-rendszerképekben az Azure Functions Core Tools használatával. A rendszerképet egy, az Azure CLI-vel létrehozott függvényalkalmazásban teszi közzé az Azure-ban. Később frissíti a függvényt az Azure üzenetsor-tárolóhoz való kapcsolódáshoz. Azt is engedélyezi.  
 
@@ -69,8 +69,6 @@ Amikor a rendszer kéri, válasszon ki egy feldolgozói futtatókörnyezetet az 
 * `dotnet`: létrehoz egy .NET Core Class Library-projektet (. csproj).
 * `node`: létrehoz egy JavaScript-projektet.
 * `python`: létrehoz egy Python-projektet.
-
-[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
 A parancs végrehajtásakor a következő kimenethez hasonlót fog látni:
 
@@ -252,7 +250,7 @@ az functionapp deployment container config --enable-cd \
 
 Ez a parancs visszaadja a üzembe helyezési webhook URL-címét a folyamatos üzembe helyezés engedélyezése után. Az URL-cím visszaküldéséhez használhatja az az [functionapp Deployment Container show-CD-URL](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) parancsot is. 
 
-Másolja a telepítési URL-címet, és keresse meg a DockerHub-  tárházat, válassza a webhookok fület, írja be a webhook **nevét** , illessze be az URL-címet a webhook **URL**-címébe, majd válassza a pluszjelet ( **+** ).
+Másolja a telepítési URL-címet, és keresse meg a DockerHub- tárházat, válassza a webhookok fület, írja be a webhook **nevét** , illessze be az URL-címet a webhook **URL**-címébe, majd válassza a pluszjelet ( **+** ).
 
 ![Webhook hozzáadása a DockerHub-tárházban](media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 

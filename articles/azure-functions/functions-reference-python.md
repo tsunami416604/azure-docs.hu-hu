@@ -13,18 +13,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: ec42693fe42f35d728a4a5018776867f07403f81
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 0cdd7f291b43f442b8471a19f515e4a2d12b4e74
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226854"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562879"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
 Ez a cikk bemutatja, hogyan fejlesztheti Azure Functions a Python használatával. Az alábbi tartalom azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői útmutatót](functions-reference.md).
-
-[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
 ## <a name="programming-model"></a>A programozási modell
 
@@ -162,7 +160,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-A függvény meghívásakor a rendszer a HTTP-kérelmet a következőként továbbítja a `req`függvénynek:. A rendszer beolvas egy bejegyzést az Azure-Blob Storage az útvonal URL  -címének azonosítója alapján, és a `obj` függvény törzsében elérhetővé teszi őket.  Itt a megadott Storage- `AzureWebJobsStorage` fiók a függvény alkalmazásban használt tárolási fiók.
+A függvény meghívásakor a rendszer a HTTP-kérelmet a következőként továbbítja a `req`függvénynek:. A rendszer beolvas egy bejegyzést az Azure-Blob Storage az útvonal URL -címének azonosítója alapján, és a `obj` függvény törzsében elérhetővé teszi őket.  Itt a megadott Storage- `AzureWebJobsStorage` fiók a függvény alkalmazásban használt tárolási fiók.
 
 
 ## <a name="outputs"></a>Kimenetek

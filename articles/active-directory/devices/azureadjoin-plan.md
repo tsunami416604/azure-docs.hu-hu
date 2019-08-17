@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 906ab4da941c6a0e1bc98f2f724141c719d04b89
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c739e827589a9fd6adeb10255f869acef29a4f16
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879423"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562205"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: Az Azure AD-csatlakozás implementálásának megtervezése
 
@@ -69,6 +69,7 @@ Egy összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltat�
 
 - **WS-Fed:** Ez a protokoll az eszköz Azure AD-hez való csatlakoztatásához szükséges.
 - **WS-Trust:** Ez a protokoll egy Azure AD-hez csatlakoztatott eszközre való bejelentkezéshez szükséges.
+
 AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat:`/adfs/services/trust/2005/usernamemixed`
  `/adfs/services/trust/13/usernamemixed`
  `/adfs/services/trust/2005/certificatemixed`

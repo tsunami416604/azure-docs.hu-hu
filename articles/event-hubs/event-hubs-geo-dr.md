@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 460ea15b0827ea307d64d1bd92d9bd14d5919d73
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 8dca94f0200f6bd41dfdc199b41bf69981a960da
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704377"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562708"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Az Azure Event Hubs - Geo-vészhelyreállítás 
 
@@ -37,7 +37,7 @@ Az Azure Event Hubs Geo-disaster recovery funkcióját a vészhelyreállítási 
 
 ## <a name="basic-concepts-and-terms"></a>Alapfogalommal és kifejezéssel
 
-A vész-helyreállítási szolgáltatás metaadatainak vész-helyreállítási valósítja meg, és az elsődleges és másodlagos vész-helyreállítási névterek támaszkodik. Vegye figyelembe, hogy a Geo-disaster recovery funkció érhető el a [Standard Termékváltozatú](https://azure.microsoft.com/pricing/details/event-hubs/) csak. Nem kell, végezze el a kapcsolati karakterlánc módosításokat, a kapcsolat alias-n keresztül.
+A vész-helyreállítási szolgáltatás metaadatainak vész-helyreállítási valósítja meg, és az elsődleges és másodlagos vész-helyreállítási névterek támaszkodik. Vegye figyelembe, hogy a Geo-vész-helyreállítási funkció csak a [standard és a dedikált SKU](https://azure.microsoft.com/pricing/details/event-hubs/) esetében érhető el. Nem kell, végezze el a kapcsolati karakterlánc módosításokat, a kapcsolat alias-n keresztül.
 
 Ez a cikk a következő kifejezéseket használjuk:
 

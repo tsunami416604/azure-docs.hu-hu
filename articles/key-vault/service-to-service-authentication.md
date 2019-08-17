@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: f6a95f56b7b617b42c1cec9f64aae73b88b813da
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 30c99ae4150e0bd4645488b5bf75b8bbac0ee66f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934339"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562446"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával
 
@@ -132,7 +132,7 @@ Ez csak a helyi fejlesztésre vonatkozik. Ha a megoldást üzembe helyezi az Azu
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>Az alkalmazás futtatása felügyelt identitás vagy felhasználó által hozzárendelt identitás használatával 
 
-Ha a kódot egy Azure App Service vagy egy Azure-beli virtuális gépen futtatja, amelyen engedélyezve van a felügyelt identitás, a függvénytár automatikusan a felügyelt identitást használja. 
+Ha a kódot egy Azure App Service vagy egy Azure-beli virtuális gépen futtatja, amelyen engedélyezve van a felügyelt identitás, a függvénytár automatikusan a felügyelt identitást használja. Nincs szükség kód módosítására, de a felügyelt identitásnak rendelkeznie kell *Get* engedélyekkel a kulcstartóhoz. A felügyelt identitás a Key Vault *hozzáférési házirendjein*keresztül adható meg.
 
 Azt is megteheti, hogy egy felhasználó által hozzárendelt identitással hitelesíti magát. A felhasználó által hozzárendelt identitásokkal kapcsolatos további információkért tekintse meg az [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)című témakört. A felhasználó által hozzárendelt identitással történő hitelesítéshez meg kell adnia a felhasználó által hozzárendelt identitás ügyfél-AZONOSÍTÓját a kapcsolódási karakterláncban. A kapcsolatok karakterlánca az alábbi, a [kapcsolatok karakterláncának támogatása](#connection-string-support) szakaszban van megadva.
 

@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy új Azure Application Insights-erőforrást |} A Microsoft Docs
-description: Manuálisan állítsa be az Application Insights új élő alkalmazások figyelését.
+title: Új Azure Application Insights-erőforrás létrehozása | Microsoft Docs
+description: Application Insights figyelésének manuális beállítása egy új élő alkalmazáshoz.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,57 +10,152 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 08/16/2019
 ms.author: mbullwin
-ms.openlocfilehash: 9da52e5a9dfa3b55431d66ed3162172226f71a40
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ae9c885b342664baf90f9c2b5702a092c9d838df
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073303"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562838"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 
-Az Azure Application Insights a Microsoft Azure-ban jeleníti meg az alkalmazással kapcsolatos adatok *erőforrás*. Ezért részét képezi egy új erőforrás létrehozását [Application Insights beállítása egy új alkalmazás figyelésére][start]. Miután létrehozta az új erőforrást, a kialakítási kulcs lekérése, és használja, amely az Application Insights SDK konfigurálása. A kialakítási kulcsot a telemetria az erőforrás hivatkozik.
+Az Azure Application Insights Microsoft Azure erőforrásban jeleníti meg azalkalmazással kapcsolatos információkat. Egy új erőforrás létrehozása ezért a Application Insights beállításának része, amely [egy új alkalmazás figyelésére][start]szolgál. Miután létrehozta az új erőforrást, megszerezheti a kialakítási kulcsát, és használhatja azt az Application Insights SDK konfigurálásához. A kialakítási kulcs a telemetria az erőforráshoz csatolja.
 
-## <a name="sign-in-to-microsoft-azure"></a>Jelentkezzen be a Microsoft Azure
+## <a name="sign-in-to-microsoft-azure"></a>Bejelentkezés Microsoft Azure
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 
-Jelentkezzen be a [az Azure portal](https://portal.azure.com), és hozzon létre egy Application Insights-erőforrást:
+Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és hozzon létre egy Application Insights erőforrást:
 
-![Kattintson a bal felső sarokban található "+" jelre. Válassza ki a fejlesztői eszközökkel kiegészítve az Application Insights](./media/create-new-resource/new-app-insights.png)
+![Kattintson a "+" jelre a bal felső sarokban. Válassza a Fejlesztői eszközök, majd a Application Insights](./media/create-new-resource/new-app-insights.png)
 
-   | Beállítások        |  Érték           | Leírás  |
+   | Beállítások        |  Value           | Leírás  |
    | ------------- |:-------------|:-----|
-   | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név. |
-   | **Erőforráscsoport**     | myResourceGroup      | A gazdagép App Insights-adatok új vagy létező erőforráscsoport neve. |
-   | **Hely** | USA keleti régiója | Válasszon egy Önhöz közeli helyet, vagy közel, ahol az alkalmazás üzemel. |
+   | **Name**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név. |
+   | **Erőforráscsoport**     | myResourceGroup      | Az új vagy meglévő erőforráscsoport neve az alkalmazás-elemzési adatforrások üzemeltetéséhez. |
+   | **Location** | East US | Válasszon egy Önhöz közeli helyet, vagy a közelében, ahol az alkalmazás üzemeltetve van. |
 
-Adja meg a megfelelő értékeket a kötelező mezőkbe, majd a **felülvizsgálat + létrehozása**.
+Adja meg a megfelelő értékeket a kötelező mezőkben, majd válassza a **felülvizsgálat + létrehozás**elemet.
 
-![Értékek megadása kötelező, és válassza ki a "felülvizsgálat + létrehozás" gombra.](./media/create-new-resource/review-create.png)
+![Adja meg az értékeket a kötelező mezők mezőben, majd válassza a "felülvizsgálat + létrehozás" lehetőséget.](./media/create-new-resource/review-create.png)
 
-Ha az alkalmazás létrehozása után egy új panel nyílik meg. Ezen a panelen, ahol látható teljesítmény- és használati adatok a figyelt alkalmazásról. 
+Az alkalmazás létrehozása után megnyílik egy új panel. Ebben az ablaktáblában láthatja a figyelt alkalmazás teljesítmény-és használati adatait. 
 
 ## <a name="copy-the-instrumentation-key"></a>A kialakítási kulcs másolása
 
-A kialakítási kulcs azonosítja az erőforrást, amelyhez hozzá szeretne rendelni a telemetriai adatok. Másolás a kialakítási kulcs hozzáadása az alkalmazás kódjában kell.
+A kialakítási kulcs azonosítja azt az erőforrást, amelyhez a telemetria-adatait társítja. A rendszerállapot-kulcs alkalmazás kódjához való hozzáadásához másolás szükséges.
 
-![Kattintson a gombra, és a kialakítási kulcs másolása](./media/create-new-resource/instrumentation-key.png)
+![Kattintson és másolja a kialakítási kulcsot](./media/create-new-resource/instrumentation-key.png)
 
 ## <a name="install-the-sdk-in-your-app"></a>Az SDK telepítése az alkalmazásban
 
-Az Application Insights SDK telepítése az alkalmazásban. Ebben a lépésben a az alkalmazás erősen függ.
+Telepítse az Application Insights SDK-t az alkalmazásban. Ez a lépés nagymértékben függ az alkalmazás típusától.
 
-Konfigurálja a rendszerállapotkulcsot használatával [az SDK az alkalmazás telepítése][start].
+Az [alkalmazásban telepített SDK][start]konfigurálásához használja a kialakítási kulcsot.
 
-Az SDK-t a globális modulok anélkül további kód írása a telemetriai adatokat küldő tartalmaz. Felhasználói műveletek nyomon követése, vagy további részleteket a problémák diagnosztizálása [az API-val] [ api] saját telemetriát küldhet.
+Az SDK olyan szabványos modulokat tartalmaz, amelyek telemetria küldenek anélkül, hogy további kódokat kellene írnia. A felhasználói műveletek nyomon követéséhez vagy a problémák részletesebb diagnosztizálásához [használja az API][api] -t a saját telemetria küldéséhez.
 
 ## <a name="creating-a-resource-automatically"></a>Erőforrás automatikus létrehozása
-Írhat egy [PowerShell-parancsprogram](../../azure-monitor/app/powershell.md) erőforrás automatikus létrehozásához.
+
+### <a name="powershell"></a>PowerShell
+
+Új Application Insights-erőforrás létrehozása
+
+```powershell
+New-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [-Kind <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+#### <a name="example"></a>Példa
+
+```powershell
+New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location eastus
+```
+#### <a name="results"></a>Results (Eredmények)
+
+```powershell
+Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/microsoft.insights/components/test1027
+ResourceGroupName  : testgroup
+Name               : test1027
+Kind               : web
+Location           : eastus
+Type               : microsoft.insights/components
+AppId              : 8323fb13-32aa-46af-b467-8355cf4f8f98
+ApplicationType    : web
+Tags               : {}
+CreationDate       : 10/27/2017 4:56:40 PM
+FlowType           :
+HockeyAppId        :
+HockeyAppToken     :
+InstrumentationKey : 00000000-aaaa-bbbb-cccc-dddddddddddd
+ProvisioningState  : Succeeded
+RequestSource      : AzurePowerShell
+SamplingPercentage :
+TenantId           : {subid}
+```
+
+A parancsmag teljes PowerShell-dokumentációját és a kialakítási kulcs beolvasásának megismeréséhez tekintse meg a [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0).
+
+### <a name="azure-cli-preview"></a>Azure CLI (előzetes verzió)
+
+Az előzetes verzió Application Insights Azure CLI-parancsok eléréséhez először futtatnia kell a következőt:
+
+```azurecli
+ az extension add -n application-insights
+```
+
+Ha nem futtatja a `az extension add` parancsot, megjelenik egy hibaüzenet, amely az alábbiakat jelzi:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+
+Most futtathatja a következőt a Application Insights erőforrás létrehozásához:
+
+```azurecli
+az monitor app-insights component create --app
+                                         --location
+                                         --resource-group
+                                         [--application-type]
+                                         [--kind]
+                                         [--tags]
+```
+
+#### <a name="example"></a>Példa
+
+```azurecli
+az monitor app-insights component create --app demoApp --location westus2 --kind web -g demoRg --application-type web
+```
+
+#### <a name="results"></a>Results (Eredmények)
+
+```azurecli
+az monitor app-insights component create --app demoApp --location eastus --kind web -g demoApp  --application-type web
+{
+  "appId": "87ba512c-e8c9-48d7-b6eb-118d4aee2697",
+  "applicationId": "demoApp",
+  "applicationType": "web",
+  "creationDate": "2019-08-16T18:15:59.740014+00:00",
+  "etag": "\"0300edb9-0000-0100-0000-5d56f2e00000\"",
+  "flowType": "Bluefield",
+  "hockeyAppId": null,
+  "hockeyAppToken": null,
+  "id": "/subscriptions/{subid}/resourceGroups/demoApp/providers/microsoft.insights/components/demoApp",
+  "instrumentationKey": "00000000-aaaa-bbbb-cccc-dddddddddddd",
+  "kind": "web",
+  "location": "eastus",
+  "name": "demoApp",
+  "provisioningState": "Succeeded",
+  "requestSource": "rest",
+  "resourceGroup": "demoApp",
+  "samplingPercentage": null,
+  "tags": {},
+  "tenantId": {tenantID},
+  "type": "microsoft.insights/components"
+}
+```
+
+A parancs teljes Azure CLI-dokumentációja, valamint a rendszerállapot-kulcs beolvasásának megismeréséhez tekintse meg az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
 
 ## <a name="next-steps"></a>További lépések
 * [Diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Blockchain-szolgáltatás támogatott Főkönyv verziók, javítását és frissítése
-description: A támogatott főkönyvek verziók az Azure Blockchain Service, beleértve a házirendek lefektetése rendszerek javításokat és a rendszer által felügyelt és a felhasználó által felügyelt frissítések áttekintése.
+title: Az Azure Blockchain szolgáltatás által támogatott Főkönyv verziója, javítása és frissítése
+description: Az Azure Blockchain szolgáltatás támogatott főkönyvek verzióinak áttekintése, beleértve a rendszerek javításával, a rendszer által felügyelt és a felhasználó által felügyelt frissítésekkel kapcsolatos házirendeket is.
 services: azure-blockchain
 keywords: blockchain
 author: PatAltimore
@@ -10,33 +10,33 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 53f65ec91a1e0f1e5a6322f0125bf83cd3e400b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cded49f14ae90f84b18c0a37059677c6c1fed99
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399103"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562786"
 ---
-# <a name="supported-azure-blockchain-service-ledger-versions"></a>Az Azure Blockchain-szolgáltatás Főkönyv támogatott verziók
+# <a name="supported-azure-blockchain-service-ledger-versions"></a>Támogatott Azure Blockchain Service Ledger-verziók
 
-Az Azure Blockchain-szolgáltatás használ a Ethereum-alapú [kvórum](https://www.goquorum.com/developers) Főkönyv ismert résztvevők azonosította az Azure Blockchain-szolgáltatás konzorcium csoporton belüli privát tranzakciók feldolgozását tervezve.
+Az Azure Blockchain szolgáltatás az Azure Blockchain Service [](https://www.goquorum.com/developers) -ben konzorciumként azonosított Ethereum-alapú kvórumot használ, amely az ismert résztvevők egy csoportján belüli privát tranzakciók feldolgozására lett tervezve.
 
-Jelenleg támogatja az Azure Blockchain-szolgáltatás [kvórum verzió 2.2.1-es](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.1) és [Tessera tranzakciókezelő](https://github.com/jpmorganchase/tessera).
+Az Azure Blockchain szolgáltatás jelenleg támogatja a [kvórum Version 2.2.3](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.3) és [Tessera Transaction Manager](https://github.com/jpmorganchase/tessera)verzióját.
 
-## <a name="managing-updates-and-upgrades"></a>Frissítések kezelése
+## <a name="managing-updates-and-upgrades"></a>Frissítések és frissítések kezelése
 
-Kvórum verziószámozást a fő-és alverzió keresztül történik, és a patch-kiadások. Például 2.0.1 kvórum verzió esetén kiadási típus akkor lehet kategóriái a következők:
+A kvórumon belüli verziószámozás a fő, a másodlagos és a javítási kiadásokon keresztül történik. Ha például a kvórum verziója 2.0.1, a kiadás típusa a következőképpen lesz kategorizálva:
 
 |Fő | Alverzió  | Javítás  |
 | :--- | :----- | :----- |
 | 2 | 0 | 1 | 
 
-Az Azure Blockchain-szolgáltatás automatikusan frissíti kvórum javítás verzióiban meglévő futó tagok vált elérhetővé a kvórum számított 30 napon belül.
+Az Azure Blockchain szolgáltatás a kvórumról elérhetővé tett 30 napon belül automatikusan frissíti a kvórum javítását a meglévő futó tagoknak.
 
-## <a name="availability-of-new-ledger-versions"></a>Új Főkönyv verziók rendelkezésre állása
+## <a name="availability-of-new-ledger-versions"></a>Új Főkönyv-verziók rendelkezésre állása
 
-Az Azure Blockchain-szolgáltatás biztosítja a legújabb fő- és alverzió verziói a kvórum Főkönyv legyenek elérhetők a kvórum gyártótól után 60 napon belül. Négy kisebb kiadások legfeljebb egy új tag és consortium üzembe helyezésekor választhat konzorcium-okat. Frissíti az egy jelentős vagy kisebb kiadás jelenleg nem támogatott.
+Az Azure Blockchain szolgáltatás a kvórum főkönyvének legújabb fő és alverzióit a kvórum gyártójától 60 napon belül elérhetővé teszi. Egy új tag és konzorcium kiépítés esetén legfeljebb négy kisebb kiadást biztosítunk a konzorciumok számára. A verzióról a verzióra való verziófrissítés jelenleg nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure Blockchain-szolgáltatás korlátozásai](limits.md)
+[Korlátok az Azure Blockchain szolgáltatásban](limits.md)

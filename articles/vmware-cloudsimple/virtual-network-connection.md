@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8ba2d2fd9c943fe55e82956d022f6ba9840a550f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 00d49d763dedc5d86557dadd10f5d727e7893dbe
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536598"
+ms.locfileid: "69563057"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>Azure-beli virtuális hálózat összekötése a CloudSimple a ExpressRoute használatával
 
@@ -24,7 +24,7 @@ Saját felhőalapú hálózatát kiterjesztheti az Azure-beli virtuális hálóz
 A privát felhő és az Azure virtuális hálózat közötti ExpressRoute-kapcsolathoz engedélyezési kulcs szükséges. A kulcs beszerzéséhez egy <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">támogatási</a>jegyet kell beszereznie.  A kérelemben használja a következő információkat:
 
 * Probléma típusa: **Technikai**
-* Előfizetés: Válassza ki azt az előfizetést, ahol a CloudSimple szolgáltatás telepítve van * *
+* Előfizetés: **Válassza ki azt az előfizetést, ahol a CloudSimple szolgáltatás telepítve van**
 * Szolgáltatás: **VMware-megoldás CloudSimple szerint**
 * Probléma típusa: **Szolgáltatási kérelem**
 * Probléma altípusa: **Az Azure VNET-kapcsolatok engedélyezési kulcsa**

@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d9fc39edfad18c756c2816f9eb0b3774d8bf882c
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a180e2ba6c1a610116271d5a9b6e3fdf562cecdf
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812683"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563195"
 ---
 # <a name="account-management-overview"></a>Fiókkezelés – áttekintés
 
-A CloudSimple szolgáltatás létrehozásakor létrehoz egy fiókot a CloudSimple.  A fiók társítva van az Azure-előfizetéséhez, ahol a szolgáltatás található.  Az előfizetéshez tartozó **tulajdonosi** és **közreműködői** szerepkörökkel rendelkező felhasználók hozzáférhetnek a CloudSimple-portálhoz.  A CloudSimple szolgáltatáshoz társított Azure-előfizetés azonosítója és a bérlő azonosítója a [fiókok oldalon](https://docs.azure.cloudsimple.com/account/)található.
+A CloudSimple szolgáltatás létrehozásakor létrehoz egy fiókot a CloudSimple.  A fiók társítva van az Azure-előfizetéséhez, ahol a szolgáltatás található.  Az előfizetéshez tartozó **tulajdonosi** és **közreműködői** szerepkörökkel rendelkező felhasználók hozzáférhetnek a CloudSimple-portálhoz.  A CloudSimple szolgáltatáshoz társított Azure-előfizetés azonosítója és a bérlő azonosítója a [fiókok oldalon](account.md)található.
 
 ## <a name="additional-alert-emails"></a>További riasztási e-mailek
 
@@ -36,5 +36,5 @@ Az előfizetéshez tartozó tulajdonosi és **közreműködő** szerepkörrel re
 
 ## <a name="next-steps"></a>További lépések
 
-* [Fiók összegzésének megtekintése](https://docs.azure.cloudsimple.com/account/)
-* [Felhasználói lista megtekintése](https://docs.azure.cloudsimple.com/users/)
+* [Fiók összegzésének megtekintése](account.md)
+* [Felhasználói lista megtekintése](users.md)

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 825379c04c22b3f13e651455c490a58ad47169d8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b71cf55944c1049fa2c3ddca79f02a8b75b9b2ec
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967160"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563016"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Linuxos Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -139,7 +139,7 @@ A App Service tervében egyetlen üzembe helyezési ponttal rendelkező fejleszt
 
 Az alkalmazás-halom beállításainak hangolásához tekintse át a App Service terv részleteit, és vegye figyelembe, hogy a memória optimális elosztása érdekében több alkalmazásra és üzembe helyezési pontra van szükség.
 
-Ha JAR-alkalmazást helyez üzembe, akkor az *app. jar* névvel kell rendelkeznie ahhoz, hogy a beépített lemezkép helyesen tudja azonosítani az alkalmazást. (A Maven beépülő modul automatikusan átnevezi ezt.) Ha nem kívánja átnevezni a JAR-t az *app. jar*névre, feltölthet egy rendszerhéj-parancsfájlt a PARANCCSAL a jar futtatásához. Ezután illessze be a parancsfájl teljes elérési útját az [indítási fájl](app-service-linux-faq.md#built-in-images) szövegmezőbe a portál konfiguráció szakaszában.
+Ha JAR-alkalmazást helyez üzembe, akkor az *app. jar* névvel kell rendelkeznie ahhoz, hogy a beépített lemezkép helyesen tudja azonosítani az alkalmazást. (A Maven beépülő modul automatikusan átnevezi ezt.) Ha nem kívánja átnevezni a JAR-t az *app. jar*névre, feltölthet egy rendszerhéj-parancsfájlt a PARANCCSAL a jar futtatásához. Ezután illessze be a parancsfájl teljes elérési útját az [indítási fájl](app-service-linux-faq.md#built-in-images) szövegmezőbe a portál konfiguráció szakaszában. Az indítási parancsfájl nem azon a címtáron fut, amelybe el van helyezve. Ezért mindig abszolút elérési utakat használjon az indítási parancsfájlban található fájlokra (például `java -jar /home/myapp/myapp.jar`:).
 
 ### <a name="turn-on-web-sockets"></a>Webes szoftvercsatornák bekapcsolása
 

@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 7f931a72eab534bc2856e9e545b684d2b8ae7a60
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 88b6fbbd68f1f98e50ec0f04336a022dc1580a73
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444028"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562913"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Üzembe helyezési technológiák Azure Functions
 
@@ -31,7 +31,7 @@ Azure Functions támogatja a többplatformos helyi fejlesztést és üzemelteté
 
 Minden csomag eltérő viselkedéssel rendelkezik. Nem minden központi telepítési technológia érhető el Azure Functions minden egyes ízét. A következő diagramon látható, hogy mely telepítési technológiák támogatottak az operációs rendszer és a üzemeltetési csomag minden kombinációja esetén:
 
-| Üzembe helyezési technológia | Windows-felhasználás | Windows Premium (előzetes verzió) | Dedikált Windows  | Linux-használat (előzetes verzió) | Linux dedikált |
+| Üzembe helyezési technológia | Windows-felhasználás | Windows Premium (előzetes verzió) | Dedikált Windows  | Linux-felhasználás | Linux dedikált |
 |-----------------------|:-------------------:|:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
 | Külső csomag URL-címe<sup>1</sup> |✔|✔|✔|✔|✔|
 | Zip-telepítés |✔|✔|✔| |✔|
@@ -70,7 +70,7 @@ Külső csomag URL-címével hivatkozhat a Function alkalmazást tartalmazó tá
 >
 >Ha az Azure Blob Storage-t használja, használjon egy [közös hozzáférési aláírással (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) rendelkező privát tárolót, amely lehetővé teszi a funkciók elérését a csomaghoz. Az alkalmazás újraindításakor a rendszer lekéri a tartalom egy példányát. A hivatkozásnak érvényesnek kell lennie az alkalmazás élettartamára.
 
->__Mikor érdemes használni:__ A külső csomag URL-címe az egyetlen támogatott üzembe helyezési módszer a Linux rendszeren futó Azure Functions a használati tervben (előzetes verzió). Amikor frissíti a alkalmazáscsomag által hivatkozott csomagfájl adatait, manuálisan kell szinkronizálnia az [eseményindítókat](#trigger-syncing) , hogy tájékoztassa az Azure-t arról, hogy az alkalmazás megváltozott.
+>__Mikor érdemes használni:__ A külső csomag URL-címe az egyetlen támogatott üzembe helyezési módszer a Linux rendszeren futó Azure Functions a használati tervben. Amikor frissíti a alkalmazáscsomag által hivatkozott csomagfájl adatait, manuálisan kell szinkronizálnia az [eseményindítókat](#trigger-syncing) , hogy tájékoztassa az Azure-t arról, hogy az alkalmazás megváltozott.
 
 ### <a name="zip-deploy"></a>Zip-telepítés
 
@@ -151,14 +151,14 @@ A portálon alapuló szerkesztőben közvetlenül szerkesztheti a Function alkal
 
 A következő táblázat a portál szerkesztését támogató operációs rendszereket és nyelveket tartalmazza:
 
-| | Windows-felhasználás | Windows Premium (előzetes verzió) | Dedikált Windows | Linux-használat (előzetes verzió) | Linux Premium (előzetes verzió)| Linux dedikált |
+| | Windows-felhasználás | Windows Premium (előzetes verzió) | Dedikált Windows | Linux-felhasználás | Linux Premium (előzetes verzió)| Linux dedikált |
 |-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
 | C# | | | | | |
 | C#Parancsfájl |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
 | F# | | | | | | |
 | Java | | | | | | |
 | JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
-| Python (Előzetes verzió) | | | | | | |
+| Python (előzetes verzió) | | | | | | |
 | PowerShell (előzetes verzió) |✔|✔|✔| | | |
 | TypeScript (Node.js) | | | | | | |
 

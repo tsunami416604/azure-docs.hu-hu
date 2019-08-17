@@ -8,27 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a8e99da05f71cb01744111b41c301b11a0969057
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: eca3e316d866814f6727dd8ef2c3fa490a551383
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812707"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563166"
 ---
 # <a name="azure-network-connections-overview"></a>Az Azure hálózati kapcsolatainak áttekintése
 
 Ha CloudSimple-szolgáltatást hoz létre egy régióban, akkor:
 
-* Létrehoz egy Azure ExpressRoute áramkört, és csatolja az adott régióban található szolgáltatáshoz
-* Lehetővé teszi a CloudSimple-régió hálózatról az Azure-beli virtuális hálózatra vagy a helyszíni hálózatra való kapcsolódást az Azure ExpressRoute használatával
-* Hozzáférést biztosít az Azure-előfizetésben vagy a helyszíni hálózaton futó hozzáférési szolgáltatásokhoz a saját felhőalapú környezetből
+* Létrehoz egy Azure ExpressRoute áramkört, és csatolja az adott régióban található szolgáltatáshoz.
+* Az Azure ExpressRoute használatával összekapcsolja az CloudSimple-régió hálózatát az Azure-beli virtuális hálózattal vagy a helyszíni hálózattal.
+* Hozzáférést biztosít az Azure-előfizetésben vagy a helyszíni hálózaton futó szolgáltatásokhoz a saját felhőalapú környezetből.
 
-A kapcsolatok a következőket jelentik:
-
-* Biztonságos
-* Magánjellegű
-* Nagy sávszélesség
-* Közel valós idejű adatelérés
+A ExpressRoute-kapcsolat nagy sávszélességű, kis késleltetésű.
 
 ## <a name="benefits"></a>Előnyök
 
@@ -40,9 +35,9 @@ Az Azure-beli hálózati kapcsolatok a következőket teszik lehetővé:
 
 ## <a name="azure-virtual-network-connection"></a>Azure-beli virtuális hálózati kapcsolatok
 
-A privát felhők a ExpressRoute használatával csatlakoztathatók az Azure-erőforrásokhoz.  Ezzel a kapcsolattal elérheti az Azure-előfizetésében futó különböző erőforrásokat a privát felhőből.  Ez a kapcsolódás lehetővé teszi, hogy saját felhőalapú hálózatot terjesszen az Azure-beli virtuális hálózatra.
+A privát felhők a ExpressRoute használatával csatlakoztathatók az Azure-erőforrásokhoz.  A ExpressRoute-kapcsolat lehetővé teszi, hogy hozzáférjen az Azure-előfizetésében futó erőforrásokhoz a privát felhőből.  Ezzel a kapcsolódással kiterjesztheti saját felhőalapú hálózatát az Azure-beli virtuális hálózatra.
 
-![Azure ExpressRoute-kapcsolódás virtuális hálózathoz](media/cloudsimple-azure-network-connection.png)
+[![Azure ExpressRoute-kapcsolódás virtuális hálózathoz](media/cloudsimple-azure-network-connection.png)
 
 ## <a name="expressroute-connection-to-on-premises-network"></a>ExpressRoute-kapcsolódás a helyszíni hálózathoz
 
@@ -52,5 +47,5 @@ A meglévő Azure ExpressRoute-áramkört a CloudSimple-régióhoz is összekapc
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Virtual Network CloudSimple-hez való kapcsolódási információinak beszerzése](https://docs.azure.cloudsimple.com/virtual-network-connection)
-* [Kapcsolódás a helyszínről a CloudSimple a ExpressRoute használatával](https://docs.azure.cloudsimple.com/on-premises-connection)
+* [Azure-beli virtuális hálózat összekötése a CloudSimple a ExpressRoute használatával](virtual-network-connection.md)
+* [Kapcsolódás a helyszínről a CloudSimple a ExpressRoute használatával](on-premises-connection.md)

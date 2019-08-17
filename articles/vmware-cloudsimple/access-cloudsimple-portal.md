@@ -8,22 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5bb1a4dd9d652481dfe1a2727ee0e5fe7601e96a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 95d27bab243f6805436465f5027e519d33e20f6f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812763"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563236"
 ---
-# <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>A VMware-megoldás elérése a CloudSimple-portálon Azure Portal
+# <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>A VMware-megoldás elérése a CloudSimple-portálon a Azure Portal
 
 Az egyszeri bejelentkezés támogatott a CloudSimple-portálhoz való hozzáféréshez. Miután bejelentkezett a Azure Portalba, a CloudSimple-portálra való bejelentkezés nélkül is hozzáférhet. Amikor először fér hozzá a CloudSimple-portálhoz, a rendszer felszólítja, hogy engedélyezze a [CloudSimple szolgáltatás-engedélyezési](#consent-to-cloudsimple-service-authorization-application) alkalmazást.  Az engedélyezés egyszeri művelet.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A beépített **tulajdonosi** és **közreműködői** szerepkörökkel rendelkező felhasználók hozzáférhetnek a CloudSimple-portálhoz.  A szerepköröket olyan erőforráscsoporthoz kell konfigurálni, ahol a CloudSimple szolgáltatás telepítve van.  A szerepkörök is konfigurálhatók a CloudSimple szolgáltatás objektumán.  A szerepkör ellenőrzésével kapcsolatos további információkért tekintse meg a [szerepkör-hozzárendelések megtekintése](https://docs.microsoft.com/azure/role-based-access-control/check-access) című cikket.
+A beépített **tulajdonosi** és **közreműködői** szerepkörökkel rendelkező felhasználók hozzáférhetnek a CloudSimple-portálhoz.  A szerepköröket olyan erőforráscsoporthoz kell konfigurálni, ahol a CloudSimple szolgáltatás telepítve van.  A szerepkörök is konfigurálhatók a CloudSimple szolgáltatás objektumán.  A szerepkör ellenőrzésével kapcsolatos további információkért tekintse meg a [szerepkör-hozzárendelések megtekintése](https://docs.microsoft.com/azure/role-based-access-control/check-access) című cikket. Csak a beépített tulajdonosi és **közreműködői** szerepkörökkel rendelkező felhasználók férhetnek hozzá a CloudSimple-portálhoz.  A szerepköröket az előfizetésen kell konfigurálni.  A szerepkör ellenőrzésével kapcsolatos további információkért tekintse meg a [szerepkör-hozzárendelések megtekintése](https://docs.microsoft.com/azure/role-based-access-control/check-access) című cikket.
 
-Ha egyéni szerepköröket használ, a szerepkörnek a következő műveletek ```Actions```bármelyikével kell rendelkeznie.  Az egyéni szerepkörökkel kapcsolatos további információkért lásd: [Egyéni szerepkörök az Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)-erőforrásokhoz.  Ha bármelyik művelet a részét képezi ```NotActions```, a felhasználó nem férhet hozzá a CloudSimple-portálhoz. 
+Ha egyéni szerepköröket használ, a szerepkörnek a következő műveletek ```Actions```bármelyikével kell rendelkeznie.  Az egyéni szerepkörökkel kapcsolatos további információkért lásd: [Egyéni szerepkörök az Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)-erőforrásokhoz.  Ha bármelyik művelet a részét képezi ```NotActions```, a felhasználó nem férhet hozzá a CloudSimple-portálhoz.
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -48,7 +48,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
     ![A CloudSimple-portál elindítása](media/launch-cloudsimple-portal.png)
 
-> [!TIP]
+> [!NOTE]
 > Ha kijelöl egy privát Felhőbeli műveletet (például egy privát felhő létrehozását vagy kibővítését) közvetlenül a Azure Portal, megnyílik a CloudSimple portál a jelzett oldalon.
 
 A CloudSimple-portálon válassza a **Kezdőlap** lehetőséget a saját felhőkre vonatkozó összegző információk megjelenítéséhez. A privát felhők erőforrásai és kapacitása látható, valamint a riasztások és a beavatkozást igénylő feladatok. A gyakori feladatokhoz kattintson az oldal tetején található elnevezett ikonokra.
@@ -57,7 +57,7 @@ A CloudSimple-portálon válassza a **Kezdőlap** lehetőséget a saját felhők
 
 ## <a name="consent-to-cloudsimple-service-authorization-application"></a>Hozzájárulás a CloudSimple Service Authorization alkalmazáshoz
 
-Ha első alkalommal indítja el a CloudSimple-portált a Azure Portal, a CloudSimple szolgáltatás-engedélyezési alkalmazáshoz kell beleegyeznie.  Válassza az **elfogadás** lehetőséget a kért engedélyek megadásához és a CloudSimple-portál eléréséhez. 
+Ha első alkalommal indítja el a CloudSimple-portált a Azure Portal, a CloudSimple szolgáltatás-engedélyezési alkalmazáshoz kell beleegyeznie.  Válassza az **elfogadás** lehetőséget a kért engedélyek megadásához és a CloudSimple-portál eléréséhez.
 
 ![Hozzájárulás a CloudSimple szolgáltatás engedélyezéséhez – rendszergazdák](media/cloudsimple-azure-consent.png)
 

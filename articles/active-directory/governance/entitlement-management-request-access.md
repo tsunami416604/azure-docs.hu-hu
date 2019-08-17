@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a81a871d811c68f5e92822ca88446966be4d5c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b5be74b0734a27b02030e2c6995b43ef0c02162
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678109"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562186"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Hozzáférési csomaghoz való hozzáférés kérése az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -29,6 +29,10 @@ ms.locfileid: "68678109"
 > A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Az Azure AD-jogosultságok kezelésével a hozzáférési csomagok lehetővé teszik az erőforrások és házirendek egyszeri beállítását, amely automatikusan felügyeli a hozzáférési csomag élettartamának felügyeletét. 
+
+Az Access Package Manager olyan házirendeket konfigurálhat, amelyek jóváhagyást igényelnek a felhasználók számára a hozzáférési csomagokhoz való hozzáféréshez. Egy hozzáférési csomag elérését igénylő felhasználónak kérést küldhet a hozzáféréshez. Ez a cikk egy hozzáférési kérelem küldését ismerteti.
 
 ## <a name="sign-in-to-the-my-access-portal"></a>Bejelentkezés a saját hozzáférési portálra
 

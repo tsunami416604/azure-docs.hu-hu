@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: dd4eef7998b83c7a527738762379d0d3e720d70f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e076d6fed8cb3baf6b62dc3ede6ddd34732ed7a2
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699818"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562081"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>A Azure Logic Apps korlátai és konfigurációs adatai
 
@@ -143,7 +143,7 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 
 | Name (Név) | Korlát | Megjegyzések |
 | ---- | ----- | ----- |
-| Újrapróbálkozási kísérletek | 90 | Az alapértelmezett érték 4. Az alapértelmezett érték módosításához használja az újrapróbálkozási [házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
+| Újrapróbálkozások száma | 90 | Az alapértelmezett érték 4. Az alapértelmezett érték módosításához használja az újrapróbálkozási [házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 | Újrapróbálkozás maximális késleltetése | 1 nap | Az alapértelmezett érték módosításához használja az újrapróbálkozási [házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 | Újrapróbálkozás minimális késleltetéssel | 5 másodperc | Az alapértelmezett érték módosításához használja az újrapróbálkozási [házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 ||||
@@ -205,7 +205,7 @@ Az egyes integrációs fiókok szintjein található összetevők számának kor
 | Maps | 25 | 500 | 1,000 |
 | Sémák | 25 | 500 | 1,000 |
 | Szerelvények | 10 | 25 | 1,000 |
-| Tanúsítványok | 25 | 2 | 500 |
+| Tanúsítványok | 25 | 2 | 1,000 |
 | Kötegkonfigurációk | 5 | 1 | 50 |
 ||||
 

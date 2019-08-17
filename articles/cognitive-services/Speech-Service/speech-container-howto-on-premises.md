@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/16/2019
 ms.author: dapine
-ms.openlocfilehash: 06f2db708385c4c3fbf8d005b701b633ac52776a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 420ac45b7d3b5e97772b1aa712ba6b8442ac1de2
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559144"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562761"
 ---
 # <a name="use-with-kubernetes-and-helm"></a>Használat Kubernetesszel és Helmmel
 
@@ -31,7 +31,7 @@ A következő előfeltételek a helyszíni beszédfelismerési tárolók haszná
 | Container Registry hozzáférés | Ahhoz, hogy a Kubernetes lekérje a Docker-rendszerképeket a fürtre, hozzá kell férnie a tároló-beállításjegyzékhez. Először be kell [kérnie a tároló beállításjegyzékének elérését][speech-preview-access] . |
 | Kubernetes CLI | A megosztott hitelesítő adatok a tároló-beállításjegyzékből való kezeléséhez a [KUBERNETES CLI][kubernetes-cli] szükséges. A Kubernetes a Helm előtt is szükséges, amely a Kubernetes csomagkezelő. |
 | Helm parancssori felület | A [Helm CLI][helm-install] telepítésének részeként el kell végeznie a Helm inicializálását is, amely a [kormányrúdat][tiller-install]fogja telepíteni. |
-|Beszédfelismerési erőforrás |A tárolók használatához a következőket kell tennie:<br><br>Egy _Speech_ Azure-erőforrás a társított számlázási kulcs és a számlázási végpont URI azonosítójának lekéréséhez. Mindkét érték elérhető a Azure Portal beszédének áttekintése  és a kulcsok oldalain, és a tároló elindításához szükséges.<br><br>**{API_KEY}** : erőforrás-kulcs<br><br>**{ENDPOINT_URI}** : végpont URI-ja például:`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|Beszédfelismerési erőforrás |A tárolók használatához a következőket kell tennie:<br><br>Egy _Speech_ Azure-erőforrás a társított számlázási kulcs és a számlázási végpont URI azonosítójának lekéréséhez. Mindkét érték elérhető a Azure Portal beszédének áttekintése és a kulcsok oldalain, és a tároló elindításához szükséges.<br><br>**{API_KEY}** : erőforrás-kulcs<br><br>**{ENDPOINT_URI}** : végpont URI-ja például:`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>Az ajánlott gazdagép-Számítógép konfigurációja
 
@@ -48,7 +48,7 @@ A gazdaszámítógépnek várhatóan rendelkezésre áll egy Kubernetes-fürt. E
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Docker-hitelesítő adatok megosztása a Kubernetes-fürttel
 
-Ha engedélyezni szeretné a Kubernetes- `docker pull` fürt számára a konfigurált rendszerkép (eke) `containerpreview.azurecr.io` t a tároló-beállításjegyzékből, át kell adnia a Docker hitelesítő adatait a fürtbe. Az alábbi parancs végrehajtásával hozzon létre egy Docker-beállításjegyzékbeli titkot a tároló beállításjegyzék-hozzáférési előfeltétele alapján megadott hitelesítő adatok alapján.  [`kubectl create`][kubectl-create]
+Ha engedélyezni szeretné a Kubernetes- `docker pull` fürt számára a konfigurált rendszerkép (eke) `containerpreview.azurecr.io` t a tároló-beállításjegyzékből, át kell adnia a Docker hitelesítő adatait a fürtbe. Az alábbi parancs végrehajtásával hozzon létre egy Docker-beállításjegyzékbeli titkot a tároló beállításjegyzék-hozzáférési előfeltétele alapján megadott hitelesítő adatok alapján. [`kubectl create`][kubectl-create]
 
 A választható parancssori felületen futtassa a következő parancsot. Ne felejtse el lecserélni `<username>`a `<email-address>` , `<password>`a és a értékét a tároló beállításjegyzékbeli hitelesítő adataival.
 
@@ -95,7 +95,7 @@ Látogasson el a Microsoft [Helm hubhoz][ms-helm-hub] a Microsoft által kínál
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-Ezután a Helm-diagram értékeit fogjuk konfigurálni. Másolja és illessze be a következő YAML egy nevű `config-values.yaml`fájlba. A **Cognitive Services Speech helyszíni Helm diagram**testreszabásával kapcsolatos további információkért lásd: Helm- [diagramok testreszabása](#customize-helm-charts). Cserélje le `billing` az `apikey` és az értékeket a saját értékeire.
+Ezután a Helm-diagram értékeit fogjuk konfigurálni. Másolja és illessze be a következő YAML egy nevű `config-values.yaml`fájlba. A **Cognitive Services Speech helyszíni Helm diagram**testreszabásával kapcsolatos további információkért lásd: Helm- [diagramok testreszabása](#customize-helm-charts). Cserélje le `# {ENDPOINT_URI}` a `# {API_KEY}` és a megjegyzéseket a saját értékeire.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -113,8 +113,8 @@ speechToText:
       - containerpreview # Or an existing secret
     args:
       eula: accept
-      billing: # < Your billing URL >
-      apikey: # < Your API Key >
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
 
 # text-to-speech configurations
 textToSpeech:
@@ -129,8 +129,8 @@ textToSpeech:
       - containerpreview # Or an existing secret
     args:
       eula: accept
-      billing: # < Your billing URL >
-      apikey: # < Your API Key >
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
 ```
 
 > [!IMPORTANT]

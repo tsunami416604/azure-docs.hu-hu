@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: 359773dad53f333b2f052dd5b5481645c72746da
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 92978815af22e3ce1a549b9ca3e335befca8c918
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533934"
+ms.locfileid: "69563052"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway alaphelyzetbe állítása
 
@@ -69,10 +69,12 @@ Ha visszatérési eredményt kap, akkor feltételezhető, hogy az átjáró alap
 
 ### <a name="resetclassic"></a>Klasszikus üzembe helyezési modell
 
-Az átjáró alaphelyzetbe állítására szolgáló parancsmag a következőt állítja be: **AzureVNetGateway**. A Service Management Azure PowerShell-parancsmagjai helyileg kell telepíteni az asztalra. A Azure Cloud Shell nem használható. Az Alaphelyzetbe állítás előtt ellenőrizze, hogy rendelkezik-e a [Service Management (SM) PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets)legújabb verziójával. A következő példa alaphelyzetbe állítja a "ContosoVNet" nevű virtuális hálózat átjáróját:
+Az átjáró alaphelyzetbe állítására szolgáló parancsmag a következőt állítja be: **AzureVNetGateway**. A Service Management Azure PowerShell-parancsmagjai helyileg kell telepíteni az asztalra. A Azure Cloud Shell nem használható. Az Alaphelyzetbe állítás előtt ellenőrizze, hogy rendelkezik-e a [Service Management (SM) PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets)legújabb verziójával. A parancs használatakor győződjön meg arról, hogy a virtuális hálózat teljes nevét használja. A portál használatával létrehozott klasszikus virtuális hálózatok hosszú nevet igényelnek a PowerShell számára. A hosszú nevet a "Get-AzureVNetConfig-ExportToFile C:\Myfoldername\NetworkConfig.xml" paranccsal tekintheti meg.
+
+Az alábbi példa alaphelyzetbe állítja a "Group TestRG1 TestVNet1" nevű virtuális hálózat átjáróját (amely egyszerűen "TestVNet1" a portálon):
 
 ```powershell
-Reset-AzureVNetGateway –VnetName “ContosoVNet”
+Reset-AzureVNetGateway –VnetName 'Group TestRG1 TestVNet1'
 ```
 
 Találat
