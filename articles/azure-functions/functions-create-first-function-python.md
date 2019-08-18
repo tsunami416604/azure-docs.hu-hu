@@ -11,16 +11,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 58f5cfd3718720cafc922bbd7b974a353e0d9d02
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 47de61db96b0f8f9b338f135d4f32eecc4a64efe
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722784"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562947"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>HTTP által aktivált függvény létrehozása az Azure-ban
-
-[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
 Ez a cikk bemutatja, hogyan hozhat létre olyan Python-projektet, amely Azure Functionsban fut. A létrehozott függvényt HTTP-kérések aktiválják. Végezetül közzé kell tenni a projektet, hogy kiszolgáló nélküli [függvényként](functions-scale.md#consumption-plan) fusson az Azure-ban.
 
@@ -40,9 +38,9 @@ A Kezdés előtt a következőkkel kell rendelkeznie:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-and-activate-a-virtual-environment"></a>Hozzon létre, és aktiválja a virtuális környezet
+## <a name="create-and-activate-a-virtual-environment-optional"></a>Virtuális környezet létrehozása és aktiválása (nem kötelező)
 
-A Python-függvények helyi fejlesztéséhez és teszteléséhez Python 3,6-környezetben kell dolgoznia. Futtassa a következő parancsokat, létrehozása és aktiválása nevű virtuális környezetet `.venv`.
+Python-függvények helyi fejlesztéséhez és teszteléséhez javasolt Python 3,6-környezet használata. Futtassa a következő parancsokat, létrehozása és aktiválása nevű virtuális környezetet `.venv`.
 
 ### <a name="bash"></a>Bash
 
@@ -165,15 +163,19 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 --consumption-plan-location westeurope  --runtime python \
 --name <APP_NAME> --storage-account  <STORAGE_NAME>
 ```
-
 > [!NOTE]
-> Azure Functions a Linux rendszerhez készült használati terv jelenleg előzetes verzióban érhető el, és csak a következő régiókban érhető el: USA nyugati régiója, USA keleti régiója, Nyugat-Európa, Kelet-Ázsia. A Linux-és Windows-alkalmazások továbbá nem futtathatók ugyanabban az erőforráscsoporthoz. Ha már van egy nevű `myResourceGroup` erőforráscsoport egy Windows-függvény alkalmazással vagy webalkalmazással, egy másik erőforráscsoportot kell használnia.
+> A Linux-és Windows-alkalmazások nem futhatnak ugyanabban az erőforráscsoporthoz. Ha már van egy nevű `myResourceGroup` erőforráscsoport egy Windows-függvény alkalmazással vagy webalkalmazással, egy másik erőforráscsoportot kell használnia.
+
+Ezzel a paranccsal egy társított Azure Application Insights-példány is kiépíthető ugyanabban az erőforráscsoporthoz, amely a naplók figyelésére és megtekintésére használható.
 
 Most már készen áll a helyi functions-projekt közzétételére az Azure-beli Function alkalmazásban.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+
+> [!NOTE]
+> A közzétett Python-alkalmazások közel valós idejű naplófájljainak megtekintéséhez javasoljuk, hogy használja a [Application Insights élő metrikastream](functions-monitoring.md#streaming-logs)
 
 ## <a name="next-steps"></a>További lépések
 

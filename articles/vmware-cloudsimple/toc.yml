@@ -101,11 +101,9 @@
         - name: Fiókkezelés a CloudSimple portálján
           items:
             - name: Fiók összegzésének megtekintése
-              href: 'https://docs.azure.cloudsimple.com/account/'
+              href: account.md
             - name: Felhasználók listájának megtekintése
-              href: 'https://docs.azure.cloudsimple.com/users/'
-            - name: Használati napló megtekintése
-              href: 'https://docs.azure.cloudsimple.com/usage/'
+              href: users.md
             - name: Virtuális hálózati kapcsolat beállítása magánfelhőhöz
               href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
             - name: Saját felhasználói profil szerkesztése
@@ -129,7 +127,7 @@
             - name: VPN-kapcsolat a helyszíni rendszer és a magánfelhő között
               href: set-up-vpn.md
             - name: Helyszíni hálózati kapcsolat ExpressRoute-tal
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: Azure virtuális hálózati kapcsolat ExpressRoute-tal
               href: azure-expressroute-connection.md
         - name: VMware-platform

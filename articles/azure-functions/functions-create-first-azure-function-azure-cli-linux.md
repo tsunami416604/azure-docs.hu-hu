@@ -11,20 +11,20 @@ ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: 84e05b7afa2746587f2ea5008d493730ccbfad7e
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 40a2d3ab4ec358b5b2d0105703cdc25cdb777c29
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950038"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562971"
 ---
-# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>Az első függvény létrehozása Linux rendszerben a Core Tools és az Azure CLI használatával (előzetes verzió)
+# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli"></a>A Linuxon üzemeltetett első függvény létrehozása a Core Tools és az Azure CLI használatával
 
-Az Azure Functions lehetővé teszi a kód végrehajtását [kiszolgáló nélküli](https://azure.com/serverless) Linux-környezetben anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást. A Linux-hosting működéséhez [az 2,0](functions-versions.md)-es funkciókra van szükség. Jelenleg előzetes verzióban érhető el a Linux rendszeren futó Function app [](functions-scale.md#consumption-plan) -alkalmazás támogatása a kiszolgáló nélküli fogyasztási tervben. További információkért tekintse meg [ezt az előzetes](https://aka.ms/funclinux)verziójú szempontokat ismertető cikket.
+Az Azure Functions lehetővé teszi a kód végrehajtását [kiszolgáló nélküli](https://azure.com/serverless) Linux-környezetben anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást. A Linux-üzemeltetéshez [a 2. x](functions-versions.md)-es függvények szükségesek. A kiszolgáló nélküli függvények a használati [tervben](functions-scale.md#consumption-plan)futnak.
 
 Ez a rövid útmutató bemutatja, hogyan hozhatja létre Linuxon futó első függvényalkalmazását az Azure CLI-vel. A függvénykód helyben jön létre, és az [Azure Functions Core Tools](functions-run-local.md) segítségével lehet üzembe helyezni az Azure-ban.
 
-Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató számítógépeken követheti. Ez a cikk a függvények JavaScript vagy C# használatával való létrehozásához nyújt útmutatást. A Python-függvények létrehozásával kapcsolatos információkért lásd: [az első Python-függvény létrehozása a Core Tools és az Azure CLI (előzetes verzió) használatával](functions-create-first-function-python.md).
+Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató számítógépeken követheti. Ez a cikk a függvények JavaScript vagy C# használatával való létrehozásához nyújt útmutatást. A Python-függvények létrehozásával kapcsolatos információkért lásd: [az első Python-függvény létrehozása a Core Tools és az Azure CLI használatával](functions-create-first-function-python.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
