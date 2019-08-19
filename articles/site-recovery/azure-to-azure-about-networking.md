@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 844563e03529e472624b35d2b545c3e432e4ea17
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c642640d590e1f568fb6f6c5072decd75575ab2d
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876301"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543652"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Tudnivalók az Azure-beli hálózatkezelésről az Azure-ba – replikálás
 
@@ -109,6 +109,11 @@ Site Recovery IP-címtartományok a következők:
    USA-beli államigazgatás – Texas | 52.238.119.218 | 52.238.116.60
    US DoD – Kelet | 52.181.164.103 | 52.181.162.129
    US DoD – Középső régió | 52.182.95.237 | 52.182.90.133
+   Észak-Kína | 40.125.202.254 | 42.159.4.151
+   Észak-Kína 2 | 40.73.35.193 | 40.73.33.230
+   Kelet-Kína | 42.159.205.45 | 42.159.132.40
+   Kelet-Kína 2 | 40.73.118.52| 40.73.100.125
+  
 ## <a name="example-nsg-configuration"></a>Példa NSG-konfigurációra
 
 Ez a példa bemutatja, hogyan konfigurálhatja a virtuális gépek NSG-szabályait a replikáláshoz.

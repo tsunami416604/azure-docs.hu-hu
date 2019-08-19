@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric parancssori felület - sfctl tulajdonság |} A Microsoft Docs
-description: Ismerteti a Service Fabric parancssori felület sfctl tulajdonság parancsokat.
+title: Azure Service Fabric CLI – sfctl tulajdonság | Microsoft Docs
+description: A CLI-sfctl tulajdonságainak Service Fabric ismertetése.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,127 +8,126 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 54cb9f604e9d1b817947990e657390387df6c881
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 34e6fc0d4e6e0817f9312a6565a2dd5dd99fdab9
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60556591"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035247"
 ---
 # <a name="sfctl-property"></a>sfctl-tulajdonság
-A Service Fabric neve Store és a lekérdezés tulajdonságai.
+Tulajdonságok tárolása és lekérdezése Service Fabric neve alatt.
 
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| delete | Törli a megadott Service Fabric-tulajdonságot. |
-| Get | Lekérdezi a megadott Service Fabric-tulajdonságot. |
-| list | Az összes Service Fabric-tulajdonság a megadott név alatt információkat kér le. |
-| PUT | Létrehozza vagy frissíti a Service Fabric-tulajdonság. |
+| törlés | Törli a megadott Service Fabric tulajdonságot. |
+| Get | Lekéri a megadott Service Fabric tulajdonságot. |
+| list | Az adott név alatti összes Service Fabric tulajdonság információinak beolvasása. |
+| Put | Létrehoz vagy frissít egy Service Fabric tulajdonságot. |
 
-## <a name="sfctl-property-delete"></a>sfctl-tulajdonság delete
-Törli a megadott Service Fabric-tulajdonságot.
+## <a name="sfctl-property-delete"></a>sfctl tulajdonság törlése
+Törli a megadott Service Fabric tulajdonságot.
 
-Törli a megadott Service Fabric-tulajdonság a megadott név alatt. A tulajdonság azt törlése előtt kell létrehozni.
-
-### <a name="arguments"></a>Argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --névazonosító [kötelező] | A Service Fabric nélkül adja a "fabric\:" URI-séma. |
-| – [kötelező] tulajdonság neve | Meghatározza a lekérdezni a tulajdonság nevét. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
-
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
-
-## <a name="sfctl-property-get"></a>sfctl-tulajdonság lekérése
-Lekérdezi a megadott Service Fabric-tulajdonságot.
-
-Lekérdezi a megadott Service Fabric-tulajdonság a megadott név alatt. Ez mindig ad vissza értéket és a metaadatok.
+Törli az adott név alatti megadott Service Fabric tulajdonságot. A törlés előtt létre kell hozni egy tulajdonságot.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --névazonosító [kötelező] | A Service Fabric nélkül adja a "fabric\:" URI-séma. |
-| – [kötelező] tulajdonság neve | Meghatározza a lekérdezni a tulajdonság nevét. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
+| --Name-ID [kötelező] | A Service Fabric neve a "Fabric\:" URI-séma nélkül. |
+| --tulajdonság-név [kötelező] | A lekérdezni kívánt tulajdonság nevét adja meg. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-property-list"></a>sfctl-tulajdonságlista
-Az összes Service Fabric-tulajdonság a megadott név alatt információkat kér le.
+## <a name="sfctl-property-get"></a>sfctl tulajdonság beolvasása
+Lekéri a megadott Service Fabric tulajdonságot.
 
-A Service Fabric neve nem lehet egy vagy több elnevezett tulajdonságok, egyéni információkat tároló. A művelet beolvassa ezeket a tulajdonságokat az információ a lapozható listáját. Az információk közé tartozik a név, érték és metaadatokat egyes tulajdonságait.
+Lekéri a megadott Service Fabric tulajdonságot egy adott név alatt. Ez mindig az értéket és a metaadatokat fogja visszaadni.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --névazonosító [kötelező] | A Service Fabric nélkül adja a "fabric\:" URI-séma. |
-| --continuation-token | A folytatási token paraméter eredmények következő készletét beszerzésére használatos. Az eredményeket a rendszer nem férnek el egyetlen válasz egy folytatási tokent egy nem üres értékkel szerepel az API-válasz. Ha ez az érték átadott, a következő API-hívás az API-t az eredmények tovább készletet ad vissza. Ha nincsenek további eredmények, a folytatási token neobsahuje értéket. Ez a paraméter értéke nem lehet URL-kódolású. |
-| --include-values | Lehetővé teszi, hogy használjanak-e a visszaadott tulajdonságának értékét tartalmazza. IGAZ, ha az értékek a rendszer visszalépteti a metaadatokkal; Hamis csak tulajdonság metaadatokat visszaadni. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
+| --Name-ID [kötelező] | A Service Fabric neve a "Fabric\:" URI-séma nélkül. |
+| --tulajdonság-név [kötelező] | A lekérdezni kívánt tulajdonság nevét adja meg. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-property-put"></a>sfctl-tulajdonság put
-Létrehozza vagy frissíti a Service Fabric-tulajdonság.
+## <a name="sfctl-property-list"></a>sfctl-tulajdonságok listája
+Az adott név alatti összes Service Fabric tulajdonság információinak beolvasása.
 
-Létrehozza vagy frissíti a megadott Service Fabric-tulajdonság a megadott név alatt.
+A Service Fabric neve tartalmazhat egy vagy több olyan nevesített tulajdonságot, amely egyéni adatokat tárol. A művelet beolvassa a tulajdonságok adatait egy lapozható listában. Az adatok tartalmazzák az egyes tulajdonságokkal kapcsolatos nevet, értéket és metaadatokat.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --névazonosító [kötelező] | A Service Fabric nélkül adja a "fabric\:" URI-séma. |
-| – [kötelező] tulajdonság neve | A Service Fabric-tulajdonság neve. |
-| – [kötelező] érték | Ismerteti a Service Fabric-tulajdonság értéke. Ez a JSON-karakterláncot. <br><br> A json-karakterláncot tartalmaz két mezőt, a "Kind" az adatok és a "Value" az adatok. A "Kind" értéket kell lennie az első elem jelenik meg a JSON-karakterlánc, és értékek "Binary", "Int64", "Double", "String" vagy "Guid" lehet. Az érték kell tudni szerializálni – a megadott típusok. "Kind" és a "Adatok" értékeket karakterláncként kell megadni. |
-| --custom-id-type | A tulajdonság egyedi azonosítója. Ezt a tulajdonságot használja, a felhasználó nem felcímkézheti a tulajdonság értékének típusa. |
-| --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
+| --Name-ID [kötelező] | A Service Fabric neve a "Fabric\:" URI-séma nélkül. |
+| --Folytatás-token | A folytatási jogkivonat paraméter az eredmények következő készletének beszerzésére szolgál. Egy nem üres értékkel rendelkező folytatási token szerepel az API válaszában, ha a rendszer eredményei nem illeszkednek egyetlen válaszhoz. Ha ezt az értéket átadja a következő API-hívásnak, az API az eredmények következő készletét adja vissza. Ha nincs további eredmény, akkor a folytatási jogkivonat nem tartalmaz értéket. A paraméter értéke nem lehet URL-kódolású. |
+| --include-Values | Lehetővé teszi annak megadását, hogy a visszaadott tulajdonságok értékeit tartalmazza-e. Igaz, ha az értékeket vissza kell adni a metaadatokkal; False (hamis) – csak a tulajdonság metaadatainak visszaadása. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --debug | Növelése a naplózás az összes hibakeresési naplók megjelenítése. |
-| --help -h | A súgóüzenetet és kilépési jelennek meg. |
-| --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
-| – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+
+## <a name="sfctl-property-put"></a>sfctl tulajdonság Put
+Létrehoz vagy frissít egy Service Fabric tulajdonságot.
+
+Létrehozza vagy frissíti a megadott Service Fabric tulajdonságot egy adott név alatt.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --Name-ID [kötelező] | A Service Fabric neve a "Fabric\:" URI-séma nélkül. |
+| --tulajdonság-név [kötelező] | A Service Fabric tulajdonság neve. |
+| --Value [kötelező] | Egy Service Fabric tulajdonság értékét ismerteti. Ez egy JSON-karakterlánc. <br><br> A JSON-karakterlánc két mezőből áll: az adat "Kind", valamint az adat "értéke". A "Kind" értéknek az első elemnek kell lennie, amely megjelenik a JSON-karakterláncban, és a "Binary", "Int64", "Double", "string" vagy "GUID" érték lehet. Az értéknek szerializálva kell lennie, hogy az adott típus legyen. A "Kind" és az "adatok" értékeket karakterláncként kell megadni. |
+| --custom-id-type | A tulajdonság egyéni típusának azonosítója. Ennek a tulajdonságnak a használatával a felhasználó megcímkézheti a tulajdonság értékének típusát. |
+| --időtúllépés-t | Kiszolgáló időtúllépése másodpercben.  Alapértelmezett\: 60. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
 ## <a name="next-steps"></a>További lépések
-- [Állítsa be a](service-fabric-cli.md) a Service Fabric parancssori felület.
-- Ismerje meg, hogyan használható a Service Fabric parancssori felület használatával a [-szkript minták](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

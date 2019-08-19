@@ -4,17 +4,17 @@ ms.service: cloud-services
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 26910fe2b0b45a6e31f9c907ac31d83a74a95775
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a73e8b2d0c35fe4575f36598beee1c1e4bbca488
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179459"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968882"
 ---
 > [!NOTE]
-> Ez a szakasz sikeres végrehajtásához kell rendelkeznie a Node.js és az Azure SDK-val telepített és működő Node.js-hez a platformhoz.
+> A szakasz sikeres elvégzéséhez a Node. js és a Node. js-hez készült Azure SDK-t kell telepíteni a platformhoz.
 > 
-> * Telepítse az Azure SDK for node.js használatával: [Windows installer](https://go.microsoft.com/fwlink/?LinkId=254279) | [Mac telepítő](https://go.microsoft.com/fwlink/?LinkId=253471) | [Linux letöltése](https://go.microsoft.com/fwlink/?LinkId=253472)
-> * Ha Mac vagy Linux használ, telepítse a node.js-t a [ http://nodejs.org ](http://nodejs.org). A Windows telepítő már eleve tartalmazza a Node.js.
+> * Telepítse a Node. js-hez készült Azure SDK-t: [Windows Installer](https://go.microsoft.com/fwlink/?LinkId=254279) | [Mac telepítő](https://go.microsoft.com/fwlink/?LinkId=253471) | [linuxos Letöltés](https://go.microsoft.com/fwlink/?LinkId=253472)
+> * Ha Mac vagy Linux rendszert használ, telepítse a Node. js- [https://nodejs.org](https://nodejs.org)t a rendszerből. A Windows Installer már tartalmazza a Node. js-t.
 > 
 > 
