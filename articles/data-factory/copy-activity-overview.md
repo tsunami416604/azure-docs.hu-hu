@@ -130,7 +130,7 @@ Az alábbi sablont, a másolási tevékenység támogatott tulajdonságok teljes
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység Type tulajdonságát a következőre kell beállítani: **Másolja** | Igen |
+| type | A másolási tevékenység Type tulajdonságát a következőre kell beállítani: **Copy** | Igen |
 | inputs | Adja meg az adatkészlet mely mutat a forrásadatok létrehozott. A másolási tevékenység csak egy egyetlen bemeneti támogatja. | Igen |
 | outputs | Adja meg az adatkészlet mely mutat a fogadó adatait létrehozott. A másolási tevékenység csak egyetlen kimeneti támogatja. | Igen |
 | typeProperties | Egy csoport tulajdonságainak konfigurálása a másolási tevékenység. | Igen |
