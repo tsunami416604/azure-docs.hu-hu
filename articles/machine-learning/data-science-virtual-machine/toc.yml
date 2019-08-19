@@ -6,8 +6,6 @@
   items:
     - name: Mi az az adatelemzési virtuális gép?
       href: overview.md
-    - name: Mi az a mélytanulási virtuális gép?
-      href: deep-learning-dsvm-overview.md
     - name: Mi az a mesterséges intelligenciát használó geo-adatelemzési virtuális gép?
       href: geo-ai-dsvm-overview.md
 - name: Gyors útmutatók
@@ -23,8 +21,6 @@
       href: provision-geo-ai-dsvm.md
 - name: Alapelvek
   items:
-    - name: A DSVM felderítése
-      href: dsvm-tools-overview.md
     - name: Mély tanulás és mesterségesintelligencia-keretrendszerek
       href: dsvm-deep-learning-ai-frameworks.md
     - name: Programozási nyelvek
@@ -49,8 +45,6 @@
       href: vm-do-ten-things.md
     - name: Linuxos DSVM használata
       href: linux-dsvm-walkthrough.md
-    - name: Mélytanulási virtuális gép használata
-      href: use-deep-learning-dsvm.md
     - name: Geo AI DSVM használata
       href: use-geo-ai-dsvm.md
     - name: Automatikus skálázású DSVM-készlet létrehozása
