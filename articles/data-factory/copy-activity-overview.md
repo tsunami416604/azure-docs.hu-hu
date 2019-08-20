@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: a8265496c475566ec7a87a19eab6d975838e9da4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 23ae7b5cfec26fb2483a3e4ac13a1220888d76ee
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966394"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614269"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory másolási tevékenysége
 
@@ -130,7 +130,7 @@ Az alábbi sablont, a másolási tevékenység támogatott tulajdonságok teljes
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység Type tulajdonságát a következőre kell beállítani: **Copy** | Igen |
+| type | A másolási tevékenység Type tulajdonságát a következőre kell beállítani: **Másolja** | Igen |
 | inputs | Adja meg az adatkészlet mely mutat a forrásadatok létrehozott. A másolási tevékenység csak egy egyetlen bemeneti támogatja. | Igen |
 | outputs | Adja meg az adatkészlet mely mutat a fogadó adatait létrehozott. A másolási tevékenység csak egyetlen kimeneti támogatja. | Igen |
 | typeProperties | Egy csoport tulajdonságainak konfigurálása a másolási tevékenység. | Igen |
@@ -144,7 +144,7 @@ Az alábbi sablont, a másolási tevékenység támogatott tulajdonságok teljes
 
 ## <a name="monitoring"></a>Figyelés
 
-A másolási tevékenység futtatása az Azure Data Factory "Létrehozás és Monitorozás" felhasználói felületen vagy programozás útján követheti nyomon. Ezután összehasonlíthatja a teljesítmény és a konfiguráció a másolási tevékenység, megoldásait [teljesítményfigyelési](copy-activity-performance.md#performance-reference) házon belüli tesztelési szakaszából.
+A másolási tevékenység futtatása az Azure Data Factory "Létrehozás és Monitorozás" felhasználói felületen vagy programozás útján követheti nyomon.
 
 ### <a name="monitor-visually"></a>Vizuális megfigyelés
 

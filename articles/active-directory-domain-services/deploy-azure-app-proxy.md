@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 35211d6f832033a2bb16c495ebab839b7f740445
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 21693926bae681cf15d31dca06344dfa5d865e3b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031028"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613019"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure-AD Application Proxy üzembe helyezése Azure AD Domain Services felügyelt tartományon
 A Azure Active Directory (AD) alkalmazásproxy segítséget nyújt a távoli dolgozók támogatásához azáltal, hogy közzéteszi a helyszíni alkalmazásokat az interneten keresztül. A Azure AD Domain Services segítségével mostantól a helyszínen futó örökölt alkalmazások áthelyezhetők az Azure-infrastruktúra szolgáltatásaiba. Ezeket az alkalmazásokat az Azure AD Application Proxy használatával teheti közzé, így biztonságos távoli hozzáférést biztosíthat a szervezet felhasználói számára.
@@ -35,7 +35,7 @@ A cikkben felsorolt feladatok elvégzéséhez a következőkre lesz szüksége:
 1. Érvényes **Azure-előfizetés**.
 2. Egy **Azure ad-címtár** – szinkronizálva van egy helyszíni címtárral vagy egy csak felhőalapú címtárral.
 3. Az Azure-AD Application Proxy használatához **prémium szintű Azure ad licencre** van szükség.
-4. **Azure ad Domain Services** engedélyezni kell az Azure ad-címtárat. Ha még nem tette meg, kövesse az [első lépések útmutatóban](create-instance.md)ismertetett összes feladatot.
+4. **Azure ad Domain Services** engedélyezni kell az Azure ad-címtárat. Ha még nem tette meg, kövesse az [első lépések útmutatóban](tutorial-create-instance.md)ismertetett összes feladatot.
 
 <br>
 
@@ -114,18 +114,18 @@ Használjon erőforrás-alapú KCD a jelen [cikkben](deploy-kcd.md)leírtak szer
 
 Használja a Get-ADComputer PowerShell-parancsmagot azon számítógép beállításainak beolvasásához, amelyen az Azure AD Application Proxy Connector telepítve van.
 ```powershell
-$ConnectorComputerAccount = Get-ADComputer -Identity contoso100-proxy.contoso100.com
+$ConnectorComputerAccount = Get-ADComputer -Identity contoso-proxy.contoso.com
 ```
 
 Ezután a set-ADComputer parancsmag használatával állítsa be az erőforrás-alapú KCD az erőforrás-kiszolgáló számára.
 ```powershell
-Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
+Set-ADComputer contoso-resource.contoso.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
 ```
 
 Ha több alkalmazásproxy-összekötőt telepített a felügyelt tartományhoz, az egyes összekötő-példányokhoz erőforrás-alapú KCD kell konfigurálnia.
 
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
-* [Azure AD Domain Services – Első lépések útmutató](create-instance.md)
+* [Azure AD Domain Services – Első lépések útmutató](tutorial-create-instance.md)
 * [Kerberos által korlátozott delegálás konfigurálása felügyelt tartományon](deploy-kcd.md)
 * [Kerberos által korlátozott delegálás – áttekintés](https://technet.microsoft.com/library/jj553400.aspx)
