@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 46755cb8d0383d166b10d50854eb476b676a6ee4
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 477b4e51c49a558aed0e5623a3821fa9b8d9eabd
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509742"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622368"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása egy adott Azure Active Directory szervezet számára Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Ha egy Azure Active Directory (Azure AD) [identitás](active-directory-b2c-refer
 Ha engedélyezni szeretné a bejelentkezést egy adott Azure AD-szervezet felhasználói számára, regisztrálnia kell egy alkalmazást a szervezeti Azure AD-bérlőn belül, amely nem azonos a Azure AD B2C-Bérlővel.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja. Válassza ki a **címtár és előfizetés szűrőt** a felső menüben, és válassza ki az Azure ad-bérlőt tartalmazó könyvtárat. Ez nem ugyanaz a bérlő, mint a Azure AD B2C bérlője.
+2. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki azt a könyvtárat, amely tartalmazza az Azure ad-bérlőt. Ez nem ugyanaz a bérlő, mint a Azure AD B2C bérlője.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 4. Válassza az **új regisztráció**lehetőséget.
 5. Adja meg az alkalmazás nevét. Például: `Azure AD B2C App`.
@@ -47,27 +47,28 @@ Ha engedélyezni szeretné a bejelentkezést egy adott Azure AD-szervezet felhas
 
 ## <a name="configure-azure-ad-as-an-identity-provider"></a>Az Azure AD konfigurálása identitás-szolgáltatóként
 
-1. Győződjön meg arról, hogy a Azure AD B2C bérlőt tartalmazó könyvtárat használja. Válassza ki a **címtár és előfizetés szűrőt** a felső menüben, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-2. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-3. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.
-4. Adjon meg egy **nevet**. Adja meg például a következőt: `Contoso Azure AD`.
-5. Válassza az **identitás-szolgáltató típusa**lehetőséget, válassza az **OpenID Connect**lehetőséget, majd kattintson **az OK**gombra.
-6. Válassza ki **az identitás-szolgáltató beállítása** lehetőséget.
-7. A **metaadatok URL-címéhez**adja meg az `your-AD-tenant-domain` alábbi URL-címet, amely az Azure ad-bérlő tartománynevét helyettesíti. Például `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`:
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőt tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Válassza az **identitás-szolgáltatók**, majd az **új OpenID Connect Provider**lehetőséget.
+1. Adjon meg egy **nevet**. Adja meg például a *contoso Azure ad*-t.
+1. A **metaadatok URL-címéhez**adja meg az `your-AD-tenant-domain` alábbi URL-címet, amely az Azure ad-bérlő tartománynevét helyettesíti:
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
     ```
 
-8. Az **ügyfél-azonosító**mezőben adja meg a korábban rögzített alkalmazás azonosítóját, és az **ügyfél titkos**kódjánál adja meg a korábban rögzített ügyfél-titkot.
-9. Igény szerint megadhat egy értéket a **Domain_hint**számára. Például: `ContosoAD`. Ez az az érték, amelyet akkor kell használni, ha a kérelemben szereplő *domain_hint* használatával hivatkozik erre az identitás-szolgáltatóra.
-10. Kattintson az **OK** gombra.
-11. Válassza ki az **identitás-szolgáltató** jogcímeit, és állítsa be a következő jogcímeket:
+    Például: `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
-    - A **felhasználói azonosító**mezőben adja `oid`meg a következőt:.
-    - A **megjelenítendő név**mezőbe írja `name`be a következőt:.
-    - A **megadott név**mezőben adja `given_name`meg a következőt:.
-    - A **vezetéknév**mezőbe írja `family_name`be a következőt:.
-    - Az **e-mail**mezőbe írja `unique_name`be a következőt:.
+1. Az **ügyfél-azonosító**mezőben adja meg a korábban rögzített alkalmazás azonosítóját.
+1. Az **ügyfél titkos kulcsa**mezőben adja meg a korábban rögzített ügyfél-titkot.
+1. Hagyja meg a **hatókör**, a **Válasz típusa**és a **válasz mód**alapértelmezett értékeit.
+1. Választható Adja meg a **Domain_hint**értékét. Például: *ContosoAD*. Ez az az érték, amelyet akkor kell használni, ha a kérelemben szereplő *domain_hint* használatával hivatkozik erre az identitás-szolgáltatóra.
+1. Az **Identity Provider**jogcímek leképezése területen adja meg a következő jogcím-hozzárendelési értékeket:
 
-12. Kattintson **az OK**gombra, majd a konfiguráció mentéséhez kattintson a **Létrehozás** gombra.
+    * **Felhasználói azonosító**: *OID*
+    * **Megjelenítendő név**: *név*
+    * **Utónév**: *given_name*
+    * **Vezetéknév**: *family_name*
+    * **E-mail**: *unique_name*
+
+1. Kattintson a **Mentés** gombra.

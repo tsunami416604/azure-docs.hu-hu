@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eee881e6d4e446e07867261545a90dfacaa93712
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 388ef66351140dab18bd7c92290d84f0f4d734ac
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512210"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622793"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Oktatóanyag: Identitás-szolgáltatók hozzáadása az alkalmazásokhoz Azure Active Directory B2C
 
@@ -94,13 +94,11 @@ Miután létrehozta az alkalmazást a hozzáadni kívánt identitás-szolgáltat
 
 ### <a name="add-the-azure-active-directory-identity-provider"></a>A Azure Active Directory identitás-szolgáltató hozzáadása
 
-1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben kattintson a **címtár és előfizetés szűrőre** , és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőt tartalmazza.
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőt tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-1. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.
+1. Válassza az **identitás-szolgáltatók**, majd az **új OpenID Connect Provider**lehetőséget.
 1. Adjon meg egy **nevet**. Adja meg például a *contoso Azure ad*-t.
-1. Válassza az **identitás-szolgáltató típusa**lehetőséget, válassza az **OpenID Connect**lehetőséget, majd kattintson **az OK**gombra.
-1. Kattintson **az identitás-szolgáltató beállítása** elemre.
-1. A **metaadatok URL**-címéhez adja meg a következő `your-AD-tenant-domain` URL-címet, és cserélje le az Azure ad-bérlő tartománynevére.
+1. A **metaadatok URL-címéhez**adja meg az `your-AD-tenant-domain` alábbi URL-címet, amely az Azure ad-bérlő tartománynevét helyettesíti:
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
@@ -108,28 +106,27 @@ Miután létrehozta az alkalmazást a hozzáadni kívánt identitás-szolgáltat
 
     Például: `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
-1. Az **ügyfél-azonosító**mezőben adja meg a korábban rögzített *alkalmazás-(ügyfél-) azonosítót* .
-1. Az **ügyfél titkos kulcsa**mezőben adja meg a korábban rögzített *ügyfél-titkos* értéket.
-1. Igény szerint megadhat egy értéket a **Domain_hint**számára. Például: `ContosoAD`. A [tartományi útmutatók](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) olyan irányelvek, amelyek egy alkalmazás hitelesítési kérelmében szerepelnek. Felhasználhatják a felhasználót az összevont identitásszolgáltató bejelentkezési oldalára. Vagy egy több-bérlős alkalmazás is felhasználhatja, hogy a felhasználó egyenesen a márkás Azure AD bejelentkezési oldalára felgyorsítsa a bérlőt.
-1. Kattintson az **OK** gombra.
-1. Válassza ki az **identitás-szolgáltató** jogcímeit, és állítsa be a következő jogcímeket:
+1. Az **ügyfél-azonosító**mezőben adja meg a korábban rögzített alkalmazás azonosítóját.
+1. Az **ügyfél titkos kulcsa**mezőben adja meg a korábban rögzített ügyfél-titkot.
+1. Hagyja meg a **hatókör**, a **Válasz típusa**és a **válasz mód**alapértelmezett értékeit.
+1. Választható Adja meg a **Domain_hint**értékét. Például: *ContosoAD*. A [tartományi útmutatók](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) olyan irányelvek, amelyek egy alkalmazás hitelesítési kérelmében szerepelnek. Felhasználhatják a felhasználót az összevont identitásszolgáltató bejelentkezési oldalára. Vagy egy több-bérlős alkalmazás is felhasználhatja, hogy a felhasználó egyenesen a márkás Azure AD bejelentkezési oldalára felgyorsítsa a bérlőt.
+1. Az **Identity Provider**jogcímek leképezése területen adja meg a következő jogcím-hozzárendelési értékeket:
 
-    - A **felhasználói azonosító**mezőben adja `oid`meg a következőt:.
-    - A **megjelenítendő név**mezőbe írja `name`be a következőt:.
-    - A **megadott név**mezőben adja `given_name`meg a következőt:.
-    - A **vezetéknév**mezőbe írja `family_name`be a következőt:.
-    - Az **e-mail**mezőbe írja `unique_name`be a következőt:.
+    * **Felhasználói azonosító**: *OID*
+    * **Megjelenítendő név**: *név*
+    * **Utónév**: *given_name*
+    * **Vezetéknév**: *family_name*
+    * **E-mail**: *unique_name*
 
-1. Válassza **az OK**, majd a **Létrehozás** lehetőséget a konfiguráció mentéséhez.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="add-the-facebook-identity-provider"></a>A Facebook-identitás szolgáltatójának hozzáadása
 
-1. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.
-1. Adjon meg egy **nevet**. Írja be például a következőt: *Facebook*.
-1. Válassza az **identitás-szolgáltató típusa**lehetőséget, válassza a **Facebook**lehetőséget, majd kattintson **az OK gombra**.
-1. Válassza az **identitás-szolgáltató beállítása** lehetőséget, és adja meg az **ügyfél**-azonosítóként korábban rögzített *alkalmazás-azonosítót* .
-1. Adja meg az *alkalmazás* titkos kulcsát, amelyet az **ügyfél**titka rögzített.
-1. Válassza **az OK** , majd a **Létrehozás** lehetőséget a Facebook-konfiguráció mentéséhez.
+1. Válassza az **identitás-szolgáltatók**, majd a **Facebook**lehetőséget.
+1. Adjon meg egy **nevet**. Például: *Facebook*.
+1. Az **ügyfél-azonosító**mezőben adja meg a korábban létrehozott Facebook-alkalmazás alkalmazás-azonosítóját.
+1. Az **ügyfél titka**mezőben adja meg a rögzített alkalmazás titkát.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="update-the-user-flow"></a>A felhasználói folyamat frissítése
 

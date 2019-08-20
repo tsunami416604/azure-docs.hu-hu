@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/09/2019
-ms.openlocfilehash: 1e5eb1e363ac9e282a72a9c1430c3f80c825bb91
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a77310d0e45f095260d77ead0cfe14a3ce0ebd8e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945081"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623844"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -201,7 +201,7 @@ Ha ez továbbra sem működik, forduljon a HRE rendszergazdájához, és szerezz
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Mi történik, ha nem végezek műveletet?
 
-A `GET /configurations` `GET /configurations/{configurationName}` és `POST /configurations/gateway` a többé nem ad vissza semmilyen információt, és a hívás többé nem ad vissza bizalmas paramétereket, például a Storage-fiók kulcsát vagy a fürt jelszavát. Ugyanez vonatkozik a megfelelő SDK-módszerekre és a PowerShell-parancsmagokra is.
+A `GET /configurations` `GET /configurations/{configurationName}` és `POST /configurations/gateway` a hívások többé nem adnak vissza semmilyen információt, és a hívás többé nem ad vissza bizalmas paramétereket, például a Storage-fiók kulcsait vagy a fürt jelszavát. Ugyanez vonatkozik a megfelelő SDK-módszerekre és a PowerShell-parancsmagokra is.
 
 Ha a fent említett Visual Studio-, VSCode-, IntelliJ-vagy Eclipse-eszközök valamelyikének egy régebbi verzióját használja, a továbbiakban nem fog működni, amíg nem frissíti.
 

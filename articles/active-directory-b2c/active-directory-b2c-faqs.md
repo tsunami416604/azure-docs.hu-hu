@@ -1,161 +1,161 @@
 ---
-title: Az Azure Active Directory B2C-vel kapcsolatos gyakori kérdések
-description: Gyakori kérdések (GYIK) Azure Active Directory B2C-t.
+title: Gyakori kérdések (GYIK) Azure Active Directory B2C
+description: Válaszok a Azure Active Directory B2Cekkel kapcsolatos gyakori kérdésekre.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6f25cfb2c0e07278220cdd04ee38472157f1be4d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c84f68a9af855f61523919069e1947e051b130b4
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612491"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622262"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Gyakori kérdések (GYIK)
 
-Ez az oldal az Azure Active Directory (Azure AD) B2C-vel kapcsolatos gyakori kérdésekre ad választ. Tartsa vissza a frissítések keresése.
+Ez az oldal válaszol a Azure Active Directory (Azure AD) B2C-vel kapcsolatos gyakori kérdésekre. A frissítések ellenőrzésének megtartása.
 
-### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Miért nem fér hozzá az Azure AD B2C-bővítmény az Azure Portalon?
+### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Miért nem tudom elérni a Azure AD B2C bővítményt a Azure Portalban?
 
-Miért érdemes az Azure AD-bővítmény nem működik az Ön számára a két gyakori oka van. Az Azure AD B2C a a címtár globális rendszergazdai felhasználói szerepkör szükséges. Ha úgy véli, hogy hozzáférhet, forduljon a rendszergazdához. Ha globális rendszergazdai jogosultságokkal rendelkezik, győződjön meg arról, hogy az Azure AD B2C-címtár és a egy Azure Active Directory címtár nem áll. Láthatja, hogy útmutatást [létrehozása az Azure AD B2C-bérlő](tutorial-create-tenant.md).
+Két gyakori oka van annak, hogy az Azure AD-bővítmény miért nem működik. Azure AD B2C megköveteli, hogy a címtárban a globális rendszergazda legyen a felhasználói szerepköre. Vegye fel a kapcsolatot a rendszergazdával, ha úgy gondolja, hogy rendelkezik hozzáféréssel. Ha globális rendszergazdai jogosultságokkal rendelkezik, győződjön meg róla, hogy Azure AD B2C könyvtárban van, és nem Azure Active Directory könyvtárat. [Azure ad B2C bérlő létrehozásához](tutorial-create-tenant.md)szükséges utasításokat itt tekintheti meg.
 
-### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Használható az Azure AD B2C-funkciók a meglévő, az alkalmazott-alapú Azure AD-bérlőm?
+### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Használhatom Azure AD B2C szolgáltatásokat a meglévő, alkalmazotti alapú Azure AD-bérlőn?
 
-Az Azure AD és az Azure AD B2C-t külön termékajánlatokat, és nem szerepelhet egyszerre ugyanabban a bérlőben. Az Azure AD-bérlő szervezet jelöli. Azure AD B2C-bérlő egy függő entitás alkalmazásai a használni kívánt identitások gyűjteményét képviseli. Egyéni szabályzatok (nyilvános előzetes verzióban elérhető) az Azure AD B2C-vel az Azure AD lehetővé teszi az alkalmazottak hitelesítését egy szervezet is összevonható.
+Az Azure AD és a Azure AD B2C külön termék-ajánlat, és nem létezhet egyszerre ugyanabban a bérlőben. Egy Azure AD-bérlő a szervezetet jelöli. Az Azure AD B2C bérlők a függő entitások alkalmazásaival használható identitások gyűjteményét jelölik. Az egyéni szabályzatokkal (nyilvános előzetes verzióban) Azure AD B2C az összevonása az Azure AD-be, amely lehetővé teszi a szervezet alkalmazottainak hitelesítését.
 
-### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Használható az Azure AD B2C-vel (Facebook és a Google +) közösségi bejelentkezés biztosítható az Office 365-be?
+### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Használhatom a közösségi bejelentkezést (Facebook és Google +) az Office 365-be Azure AD B2C?
 
-Az Azure AD B2C felhasználók hitelesítése az Office 365 a Microsoft nem használható. Azure ad-ben az alkalmazottak hozzáférése a SaaS-alkalmazások kezelése a Microsoft-megoldás, és erre a célra például a licencelési és a feltételes hozzáférési funkciók rendelkezik. Az Azure AD B2C-identitás- és hozzáférés-kezelési platformot biztosít a webes és mobil alkalmazások kialakításához. Ha Azure AD B2C-vel az Azure AD-bérlő összevonásához van konfigurálva, az Azure AD-bérlő kezeli az alkalmazottak hozzáférését a Azure AD B2C-t használó alkalmazások.
+Azure AD B2C nem használható a felhasználók Microsoft Office 365-hez való hitelesítéséhez. Az Azure AD a Microsoft megoldás az SaaS-alkalmazásokhoz való alkalmazottak hozzáférésének kezelésére, és olyan funkciókkal rendelkezik, amelyek erre a célra lettek kialakítva, például licencelés és feltételes hozzáférés. A Azure AD B2C identitás-és hozzáférés-kezelési platformot biztosít a webes és mobil alkalmazások létrehozásához. Ha Azure AD B2C úgy van konfigurálva, hogy az Azure AD-bérlőre összevonása, az Azure AD-bérlő kezeli az alkalmazottak hozzáférését a Azure AD B2C-on alapuló alkalmazásokhoz.
 
-### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Mik azok a helyi felhasználói fiókok Azure AD B2C-ben? Miben különböznek, a munkahelyi vagy iskolai fiókok Azure AD-ben?
+### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Mik a Azure AD B2C helyi fiókjai? Miben különböznek a munkahelyi vagy iskolai fiókok az Azure AD-ben?
 
-Az Azure AD-bérlő, a bérlőhöz tartozó felhasználók jelentkezzen be egy e-mail címet az űrlap `<xyz>@<tenant domain>`. A `<tenant domain>` egyik ellenőrzött tartománynak a bérlő vagy az eredeti `<...>.onmicrosoft.com` tartományhoz. Ez a fiók típus egy munkahelyi vagy iskolai fiókjával.
+Egy Azure AD-bérlőben a bérlőhöz tartozó felhasználók az űrlap `<xyz>@<tenant domain>`e-mail-címével rendelkeznek. A `<tenant domain>` a bérlő vagy a kezdeti `<...>.onmicrosoft.com` tartomány ellenőrzött tartományainak egyike. Ez a fióktípus munkahelyi vagy iskolai fiók.
 
-Az Azure AD B2C-bérlő, a legtöbb alkalmazás a felhasználót, hogy jelentkezzen be bármilyen tetszőleges e-mail-címmel szeretne (például joe@comcast.net, bob@gmail.com, sarah@contoso.com, vagy jim@live.com). Ez a fiók típus egy helyi fiókot. Helyi fiókok (például joe, bob, sarah vagy jim) tetszőleges felhasználói neveket is támogatja. Kiválaszthatja az említett két helyi fiók az Azure Portalon az Azure AD B2C Identitásszolgáltatók konfigurálása során. Kattintson az Azure AD B2C-bérlőben **Identitásszolgáltatók** majd **felhasználónév** a helyi fiókok.
+Egy Azure ad B2C bérlőben a legtöbb alkalmazás azt szeretné, hogy a felhasználó tetszőleges e-mail-címmel jelentkezzen be ( joe@comcast.netpéldául bob@gmail.com sarah@contoso.com,,, jim@live.comvagy). Ez a fióktípus helyi fiók. A helyi fiókok (például Joe, Bob, Sarah vagy Jim) alapján is támogatjuk az tetszőleges felhasználóneveket. Ezt a két helyi fióktípus közül választhatja ki, ha az Azure Portal Azure AD B2C identitás-szolgáltatóját konfigurálja. A Azure AD B2C-bérlőben válassza az **identitás-szolgáltatók**, majd a **helyi fiók**lehetőséget, és válassza a **username (Felhasználónév**) lehetőséget.
 
-Alkalmazásokhoz tartozó felhasználói fiókok mindig létre kell hozni egy előfizetési felhasználói folyamatot, a regisztrálási vagy bejelentkezési felhasználói folyamata, vagy az Azure AD Graph API-val. Az Azure Portalon létrehozott felhasználói fiókok felügyelete a bérlő csak szolgálnak.
+Az alkalmazásokhoz tartozó felhasználói fiókokat mindig létre kell hozni egy regisztrációs felhasználói folyamaton, regisztrációs vagy bejelentkezési felhasználói folyamaton, vagy az Azure AD Graph API használatával. A Azure Portal létrehozott felhasználói fiókokat csak a bérlő felügyeletére használják.
 
-### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Melyik közösségi Identitásszolgáltatók támogatja most? Melyik tervezi a jövőben támogatásához?
+### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Mely közösségi identitás-szolgáltatókat támogatja most? Melyeket tervezi a jövőben támogatni?
 
-Jelenleg támogatott Facebook, Google +, LinkedIn, Amazon, a Twitterhez (előzetes verzió), WeChat (előzetes verzió), Weibo (előzetes verzió) és Gyorsműveletek (előzetes verzió). Hozzáadjuk más népszerű közösségi Identitásszolgáltatók az ügyfelek igényei szerint támogatása.
+Jelenleg a Facebook, a Google +, a LinkedIn, az Amazon, a Twitter (előzetes verzió), a WeChat (előzetes verzió), a WeiBo (előzetes verzió) és a QQ (előzetes verzió) támogatott. Az ügyfelek igényei alapján további népszerű közösségi identitás-szolgáltatókat is támogatunk.
 
-Az Azure AD B2C is hozzáadott támogatása [egyéni szabályzatok](active-directory-b2c-overview-custom.md). Ezek egyéni szabályzatok lehetővé teszik a fejlesztők saját szabályzat létrehozása bármely identitásszolgáltatóval, amely támogatja a [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) vagy SAML.
+A Azure AD B2C az [Egyéni házirendek](active-directory-b2c-overview-custom.md)támogatását is felvette. Ezek az egyéni szabályzatok lehetővé teszik a fejlesztők számára, hogy saját szabályzatot hozzanak létre bármely olyan identitás-szolgáltatónál, amely támogatja az [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) vagy az SAML
 
-Ismerkedés az egyéni szabályzatok kiveszi a [egyéni házirendet kezdőcsomag](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack).
+Ismerkedjen meg az egyéni házirendekkel, és tekintse meg az [Egyéni](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)szabályzatok alapszintű csomagját.
 
-### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Konfigurálhatja a felhasználók további információkat gyűjthet a különféle közösségi Identitásszolgáltatók hatókörök?
+### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Beállíthat hatóköröket, hogy további információkat gyűjtsön a különböző közösségi identitású szolgáltatók fogyasztóiról?
 
-Nem. A támogatott set azon közösségi Identitásszolgáltatók használt alapértelmezett hatóköröknek:
+Nem. A közösségi identitás-szolgáltatók támogatott készletéhez használt alapértelmezett hatókörök a következők:
 
-* Facebook: e-mailben
-* A Google +: e-mailben
-* Microsoft-fiók: openid e-mail-profil
+* Facebook: e-mail
+* Google +: e-mail
+* Microsoft-fiók: OpenID e-mail profil
 * Amazon: profil
 * LinkedIn: r_emailaddress, r_basicprofile
 
-### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Az alkalmazásom az Azure-ban futtatni, működni az Azure AD B2C-vel való rendelkezik?
+### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Az alkalmazásnak az Azure-ban kell futnia, hogy működjön a Azure AD B2C?
 
-Nem, az alkalmazás bárhol (a felhőbeli vagy helyszíni) is üzemeltethet. Használhatja az Azure AD B2C-vel kell csak küldése és fogadása HTTP-kérelmekre a nyilvánosan hozzáférhető végpontokkal lehetővé teszi.
+Nem, bárhol is üzemeltetheti az alkalmazást (a felhőben vagy a helyszínen). Ahhoz, hogy a Azure AD B2C kommunikáljon, képesnek kell lennie HTTP-kérések küldésére és fogadására nyilvánosan elérhető végpontokon.
 
-### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Több Azure AD B2C-bérlő van. Hogyan kezelhetem őket az Azure Portal webhelyen?
+### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Több Azure AD B2C Bérlővel rendelkezem. Hogyan kezelhetem ezeket a Azure Portal?
 
-A bal oldali menüben, az Azure Portal megnyitása az "Azure AD-B2C", előtt kell váltania a könyvtárba, amelyet kezelni szeretne. Az identitás, az Azure portal jobb felső kattintva válthat a címtárak, majd válassza a egy könyvtár, a legördülő lista, amely akkor jelenik meg.
+A Azure Portal bal oldali menüjében a "Azure AD B2C" megnyitása előtt be kell váltania a kezelni kívánt könyvtárba. A könyvtárakat a Azure Portal jobb felső sarkában található identitásra kattintva, majd a megjelenő legördülő listából választhatja ki.
 
-### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Hogyan ellenőrzési e-mailek testre (a tartalmat, és az "a:" mező) Azure AD B2C által küldött?
+### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>A Azure AD B2C által küldött ellenőrző e-mailek (a tartalom és a "Feladó:" mező) testreszabása Hogyan
 
-Használhatja a [vállalati arculat megjelenítése a szolgáltatás](../active-directory/fundamentals/customize-branding.md) ellenőrzési e-mailek tartalmának testreszabása. Ez a két elem az e-mail kifejezetten, testre szabható:
+Az ellenőrző e-mailek tartalmának testreszabásához használhatja a [vállalati arculati funkciót](../active-directory/fundamentals/customize-branding.md) . Az e-mailek ezen két eleme testreszabható:
 
-* **Szalagcímembléma**: A jobb alsó látható.
-* **Háttérszín**: A felül látható.
+* **Szalagcím emblémája**: A jobb alsó sarokban látható.
+* **Háttérszín**: Felül látható.
 
-    ![A testre szabott megerősítő e-mail képernyőképe](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
+    ![Képernyőkép a testreszabott ellenőrző e-mailekről](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
-E-mail aláírásának tartalmazza az Azure AD B2C-bérlő neve az Azure AD B2C-bérlő első létrehozásakor megadott. Módosíthatja a nevét, ezen utasításokat követve:
+Az e-mail-aláírás tartalmazza azt a Azure AD B2C bérlő nevét, amelyet a Azure AD B2C bérlő első létrehozásakor adott meg. A nevet a következő utasítások használatával módosíthatja:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) globális rendszergazdájaként.
-1. Nyissa meg a **Azure Active Directory** panelen.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) globális rendszergazdaként.
+1. Nyissa meg a **Azure Active Directory** panelt.
 1. Kattintson a **tulajdonságok** fülre.
-1. Módosítsa a **neve** mező.
+1. Módosítsa a **név** mezőt.
 1. Kattintson az oldal tetején lévő **Mentés** elemre.
 
-Jelenleg nem lehet módosítani a "származó:" mezőjében az e-mailt.
+Jelenleg nincs lehetőség a "from:" mező módosítására az e-mailben.
 
-### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Hogyan telepíthetek át a meglévő felhasználói neveket, jelszavakat és profilok a saját adatbázis az Azure AD B2C-vel?
+### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Hogyan telepíthetem át a meglévő felhasználóneveket, jelszavakat és profilokat az adatbázisból a Azure AD B2Cba?
 
-Az Azure AD Graph API segítségével írhat az áttelepítési eszköz. Tekintse meg a [áttelepítési útmutatója](active-directory-b2c-user-migration.md) részleteiről.
+Az Azure AD Graph API segítségével megírhatja az áttelepítési eszközt. A részletekért tekintse meg a [felhasználói áttelepítési útmutatót](active-directory-b2c-user-migration.md) .
 
-### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Helyi fiókok Azure AD B2C-ben használatos jelszó felhasználói folyamatot?
+### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Milyen jelszó-felhasználói folyamatot használ a Azure AD B2C helyi fiókjaihoz?
 
-Az Azure AD B2C-vel jelszó felhasználói folyamat helyi fiókok esetében a házirend alapján az Azure ad-hez. Az Azure AD B2C a regisztrációt, a regisztrálási vagy bejelentkezési és a jelszó alaphelyzetbe állítása felhasználói folyamatok használja "erős" jelszó erőssége, és nem jár le a jelszavakat. Olvassa el a [az Azure AD-jelszóházirendet](/previous-versions/azure/jj943764(v=azure.100)) további részletekért. További információ a fiók zárolásának és jelszavak: [kezeli az erőforrások és adatok az Azure Active Directory B2C fenyegetések](active-directory-b2c-reference-threat-management.md).
+A helyi fiókok Azure AD B2C jelszavának felhasználói folyamata az Azure AD-szabályzaton alapul. Az Azure AD B2C's regisztrálása, regisztrálása, illetve bejelentkezési és jelszó-visszaállítási felhasználói folyamatai az "erős" jelszó erősségét használják, és nem jár le semmilyen jelszó. További részletekért olvassa el az [Azure ad](/previous-versions/azure/jj943764(v=azure.100)) -beli jelszavas szabályzatot. A fiókok zárolásával és jelszavával kapcsolatos információkért lásd: a [fenyegetések kezelése az erőforrásokra és](active-directory-b2c-reference-threat-management.md)az adatokra Azure Active Directory B2Cban.
 
-### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Az Azure AD Connect használatával a saját Azure AD B2C-vel a helyszíni Active Directory tárolt felhasználói identitások migrálása?
+### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Használhatom Azure AD Connect a helyszíni Active Directory tárolt fogyasztói identitások áttelepíthetők a Azure AD B2Cre?
 
-Nem, az Azure AD Connect nem célja, hogy az Azure AD B2C-vel működik. Fontolja meg a [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) felhasználói migrálásra. Tekintse meg a [áttelepítési útmutatója](active-directory-b2c-user-migration.md) részleteiről.
+Nem, a Azure AD Connect nem a Azure AD B2C való működésre lett tervezve. Érdemes lehet az [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) használni a felhasználók áttelepítéséhez. A részletekért tekintse meg a [felhasználói áttelepítési útmutatót](active-directory-b2c-user-migration.md) .
 
-### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Az alkalmazás megnyitásához is az Azure AD B2C-lapok egy IFRAME?
+### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Megnyithatom az alkalmazásom Azure AD B2C oldalakat egy iFrame-kereten belül?
 
-Nem, biztonsági okokból az Azure AD B2C-lapok nem lehet megnyitni egy IFRAME. A szolgáltatás a böngésző IFRAME időtartamig kommunikál. A biztonsági Közösséggel, az általános és az OAUTH2-specifikáció, javasoljuk, identitással kapcsolatos műveletet, kattintson az-emelési kockázata miatt az IFRAME használatával.
+Nem, biztonsági okokból Azure AD B2C lapok nem nyithatók meg iFrame-kereten belül. A szolgáltatás kommunikál a böngészővel az iFrame-elemek tiltásához. A biztonsági Közösség általánosságban és a OAUTH2-specifikációban ajánlott, hogy a kattintások és a csatlakozás kockázata miatt a személyazonossági tapasztalatok iFrame-alapú használatát ajánljuk.
 
-### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Például a Microsoft Dynamics CRM-rendszerekkel való működik az Azure AD B2C-vel?
+### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Működik Azure AD B2C olyan CRM-rendszerekkel, mint a Microsoft Dynamics?
 
-Integráció a Microsoft Dynamics 365-portál érhető el. Lásd: [Dynamics 365 Portal konfigurálása az Azure AD B2C-t használja a hitelesítéshez](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c).
+Elérhető a Microsoft Dynamics 365 portál integrációja. Lásd: a [Dynamics 365-portál konfigurálása Azure ad B2C használatára a hitelesítéshez](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c).
 
-### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Az Azure AD B2C-vel does működnek a helyszíni SharePoint 2016 vagy korábbi?
+### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Működik Azure AD B2C a SharePoint helyszíni 2016-es vagy korábbi verziójában?
 
-Az Azure AD B2C nem célja a SharePoint külső partner-megosztási forgatókönyvhöz; Lásd: [az Azure AD B2B](https://cloudblogs.microsoft.com/enterprisemobility/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview/) helyette.
+Azure AD B2C nem a SharePoint külső partner-megosztási forgatókönyvének a célja; Lásd: [Azure ad B2B](https://cloudblogs.microsoft.com/enterprisemobility/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview/) .
 
-### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities"></a>Az Azure AD B2C-vel vagy használjak B2B külső identitások kezelése?
+### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities"></a>A külső identitások kezeléséhez Azure AD B2C vagy B2B használata szükséges?
 
-Ez a cikk kapcsolatos [külső identitások](../active-directory/active-directory-b2b-compare-external-identities.md) tudhat meg többet a megfelelő szolgáltatásokat alkalmaz a külső azonosító forgatókönyvekhez.
+Olvassa el ezt a cikket a [külső identitásokkal](../active-directory/active-directory-b2b-compare-external-identities.md) kapcsolatban, ha többet szeretne megtudni a megfelelő szolgáltatások külső identitási forgatókönyvekre való alkalmazásáról.
 
-### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Milyen jelentéskészítési és a naplózási szolgáltatások az Azure AD B2C-t nyújt? Ugyanazok, mint a prémium szintű Azure AD?
+### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Milyen jelentéskészítési és naplózási funkciókat biztosít a Azure AD B2C? Ugyanazok, mint a prémium szintű Azure ADban?
 
-Nem, az Azure AD B2C-vel nem támogatja ugyanazokat a jelentések prémium szintű Azure AD-t. Vannak azonban sok commonalities:
+Nem, Azure AD B2C nem támogatja ugyanazokat a jelentéseket, mint a prémium szintű Azure AD. Számos közös vonás van azonban:
 
-* **Jelentkezzen be a jelentések** adjon meg egy rekord minden egyes bejelentkezés csökkentett adatokkal.
-* **Naplózási jelentések** egyaránt rendszergazdai tevékenységhez, valamint alkalmazás-tevékenységet tartalmaznak.
-* **Használati jelentések** felhasználók száma, a bejelentkezések száma, és az MFA mennyisége.
+* A **bejelentkezési jelentések** a lecsökkentett részletekkel rendelkező bejelentkezéseket tartalmazzák.
+* A **naplózási jelentések** magukban foglalják a rendszergazdai tevékenységeket és az alkalmazás tevékenységeit is.
+* A **használati jelentések** közé tartozik a felhasználók száma, a bejelentkezések száma és az MFA mennyisége.
 
-### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>A felhasználói felület az Azure AD B2C által üzemeltetett oldalak is honosításához? Milyen nyelvek vannak támogatva?
+### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Honosítható a Azure AD B2C által kiszolgált lapok felhasználói felülete? Milyen nyelvek vannak támogatva?
 
-Igen!  További információ [nyelvi testreszabás](active-directory-b2c-reference-language-customization.md), amely jelenleg nyilvános előzetes verzióban. Fordítások 36 nyelvhez biztosítunk, és igény szerint bármilyen karakterlánc felül lehet bírálni.
+Igen!  Tekintse meg a nyilvános előzetes verzióban elérhető [nyelvi testreszabási](active-directory-b2c-reference-language-customization.md)tudnivalókat. 36 nyelvű fordítást biztosítunk, és bármilyen karakterláncot felülbírálhat az igényeinek megfelelően.
 
-### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Használható a saját regisztrációs és bejelentkezési lapok, amelyek az Azure AD B2C által üzemeltetett saját URL-címek? Például válthatok az URL-címet a login.microsoftonline.com login.contoso.com?
+### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Használhatom a saját URL-címeket az Azure AD B2C által kiszolgált regisztrációs és bejelentkezési lapokon? Megváltoztathatom például a login.microsoftonline.com és a login.contoso.com URL-címét?
 
-Jelenleg nem. Ez a funkció tervbe van. A tartomány az ellenőrzése a **tartományok** lap az Azure Portalon nem ezen cél megvalósításához.
+Jelenleg nem. Ez a funkció az ütemterven található. A tartomány ellenőrzése a **tartományok** lapon, a Azure Portal nem hajtja végre ezt a célt.
 
-### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Hogyan törölhetek Azure AD B2C-bérlő?
+### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Hogyan törölni a Azure AD B2C bérlőt?
 
-Kövesse az alábbi lépéseket az Azure AD B2C-bérlő törléséhez:
+A Azure AD B2C bérlő törléséhez kövesse az alábbi lépéseket:
 
-1. Törölje az összes a **felhasználókövetési adatai (szabályzatok)** az Azure AD B2C-bérlőben.
-1. Törölje az összes a **alkalmazások** regisztrált Azure AD B2C-bérlőben.
-1. Ezután jelentkezzen be a [az Azure portal](https://portal.azure.com/) előfizetés-rendszergazdaként. Ugyanaz a munkahelyi vagy iskolai fiókkal, vagy a Microsoft-fiók, amellyel regisztrálhat az Azure használatához.
-1. Váltás az Azure AD B2C-bérlőt szeretne törölni.
-1. Válassza ki **Azure Active Directory** a bal oldali menüben.
+1. Törölje a Azure AD B2C bérlő összes **felhasználói folyamatát (szabályzatát)** .
+1. Törölje az Azure AD B2C-bérlőben regisztrált összes **alkalmazást** .
+1. Ezután jelentkezzen be a [Azure Portalra](https://portal.azure.com/) előfizetés-rendszergazdaként. Ugyanazt a munkahelyi vagy iskolai fiókot használja, vagy ugyanazt a Microsoft-fiók, amelyet az Azure-ra való regisztrációhoz használt.
+1. Váltson a törölni kívánt Azure AD B2C-bérlőre.
+1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
 1. A **Kezelés** alatt válassza a **Felhasználókat**.
-1. Jelölje ki minden egyes felhasználó kapcsolja (a jelenleg bejelentkezett, előfizetés-rendszergazda felhasználó kizárása). Válassza ki **törlése** a lapot, majd válassza az alsó **Igen** amikor a rendszer kéri.
-1. A **kezelés**válassza **alkalmazásregisztrációk** (vagy **alkalmazásregisztrációk (örökölt)** ).
-1. Válassza ki **minden alkalmazás megtekintése**
-1. Válassza ki az alkalmazást nevű **b2c-kiterjesztések alkalmazását**válassza **törlése**, majd válassza ki **Igen** amikor a rendszer kéri.
-1. A **kezelés**válassza **felhasználói beállítások**.
-1. Alatt **LinkedIn-fiókkapcsolatok**válassza **nem**, majd **mentése**.
-1. A **kezelés**válassza **tulajdonságai**
-1. Alatt **Access management az Azure-erőforrások**válassza **Igen**, majd válassza ki **mentése**.
-1. Jelentkezzen ki az Azure Portalon, és ezután jelentkezzen be újra a frissítés a hozzáférést.
-1. Válassza ki **Azure Active Directory** a bal oldali menüben.
-1. Az a **áttekintése** lapon jelölje be **Delete directory**. Kövesse a képernyőn megjelenő utasításokat a folyamat befejezéséhez.
+1. Jelölje ki az egyes felhasználókat, és válassza ki azt az előfizetés-rendszergazda felhasználót, amelyhez jelenleg be van jelentkezve. Kattintson a lap alján található **Törlés** elemre, és válassza az **Igen** lehetőséget, ha a rendszer kéri.
+1. A **kezelés**területen válassza a **Alkalmazásregisztrációk** (vagy **Alkalmazásregisztrációk (örökölt)** lehetőséget.
+1. Válassza **az összes alkalmazás megtekintése** lehetőséget
+1. Válassza ki a **B2C-Extensions-app**nevű alkalmazást, válassza a **Törlés**lehetőséget, majd kattintson az **Igen** gombra, amikor a rendszer kéri.
+1. A **kezelés**területen válassza a **felhasználói beállítások**lehetőséget.
+1. A **LinkedIn-fiók kapcsolatai**területen válassza a **nem**, majd a **Mentés**lehetőséget.
+1. A **kezelés**területen válassza a **Tulajdonságok** lehetőséget.
+1. Az **Azure-erőforrások hozzáférés-kezelés**területén válassza az **Igen**, majd a **Mentés**lehetőséget.
+1. Jelentkezzen ki a Azure Portal, majd jelentkezzen be újra a hozzáférésének frissítéséhez.
+1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
+1. Az **Áttekintés** lapon válassza a **könyvtár törlése**lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
 
-### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Az Azure AD B2C-t a nagyvállalati mobilitási csomag részeként is be?
+### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Lekérhetek Azure AD B2C a nagyvállalati mobilitási csomag részeként?
 
-Nem, az Azure AD B2C-t az Azure-szolgáltatás utólagos elszámolású csomagokra és nem a nagyvállalati mobilitási csomag részeként.
+Nem, Azure AD B2C az utólagos elszámolású Azure-szolgáltatás, amely nem része a nagyvállalati mobilitási csomagnak.
 
-### <a name="how-do-i-report-issues-with-azure-ad-b2c"></a>Hogyan jelenthetem a problémákat az Azure AD B2C-vel?
+### <a name="how-do-i-report-issues-with-azure-ad-b2c"></a>Hogyan a Azure AD B2Ckel kapcsolatos problémákat?
 
-Lásd: [fájl támogatási kéréseket az Azure Active Directory B2C](active-directory-b2c-support.md).
+Lásd: [Azure Active Directory B2C fájlokra vonatkozó támogatási kérelmek](active-directory-b2c-support.md).

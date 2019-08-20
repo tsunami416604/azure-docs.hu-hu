@@ -8,16 +8,19 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 74e36d944450e1ce2c61481b2cb7e345860212af
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6f51d2907738f49ace559f1b127458eda71de287
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326886"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624101"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy Vendég konfiguráció ismertetése
 
 Az Azure-erőforrások naplózása és [szervizelését](../how-to/remediate-resources.md) mellett Azure Policy a virtuális gépen belül is naplózhatja a beállításokat. A Vendég Configuration bővítmény és az ügyfél az érvényesítést végzi. A bővítményt, az ügyfélen, érvényesíti a konfigurációt az operációs rendszer, alkalmazás-konfigurációs vagy jelenléte, környezeti beállítások és beállításait.
+
+Jelenleg Azure Policy vendég konfiguráció csak a gépen belüli setings naplózását végzi.
+A konfigurációk alkalmazása még nem lehetséges.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -74,7 +77,7 @@ Az alábbi táblázat az Azure-rendszerképek támogatott operációs rendszerek
 |Canonical|Ubuntu Server|14.04-es, 16.04, 18.04|
 |credativ|Debian|8, 9|
 |Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
-|Microsoft|Windows-ügyfél|Windows 10|
+|Microsoft|Windows ügyfél|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5|
 |Red Hat|Red Hat Enterprise Linux|7.4, 7.5|
 |SUSE|SLES|12 SP3|
@@ -114,10 +117,10 @@ A fürtérvényesítési eszköz biztosít a Vendég konfigurációs ügyfél az
 Az Azure Policy használja a Vendég-konfigurációs erőforrás-szolgáltatók **complianceStatus** való megfelelőség jelentéséhez a tulajdonság a **megfelelőségi** csomópont. További információkért lásd: [megfelelőségi adatok](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> A naplózási házirendnek az eredmények **** visszaküldéséhez a **DeployIfNotExists** szabályzat szükséges.
+> A naplózási házirendnek az eredmények visszaküldéséhez a **DeployIfNotExists** szabályzat szükséges.
 > A **DeployIfNotExists**nélkül a **naplózási** házirend a "0/0" erőforrást jeleníti meg állapotként.
 
-Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A [Preview] nevű *beépített kezdeményezés: A jelszó biztonsági beállításainak naplózása Linux és Windows rendszerű virtuális gépeken* 18 szabályzatot tartalmaz. Hat **DeployIfNotExists** és naplózási **** pár van a Windowshoz és három pár a Linux rendszerhez. Minden esetben a logika belül a definíció érvényesíti csak a cél operációs rendszer alapján értékeli ki a [felügyeletiházirend-szabálya](definition-structure.md#policy-rule) definíciója.
+Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A [Preview] nevű *beépített kezdeményezés: A jelszó biztonsági beállításainak naplózása Linux és Windows rendszerű virtuális gépeken* 18 szabályzatot tartalmaz. Hat **DeployIfNotExists** és naplózási pár van a Windowshoz és három pár a Linux rendszerhez. Minden esetben a logika belül a definíció érvényesíti csak a cél operációs rendszer alapján értékeli ki a [felügyeletiházirend-szabálya](definition-structure.md#policy-rule) definíciója.
 
 ## <a name="multiple-assignments"></a>Több hozzárendelés
 

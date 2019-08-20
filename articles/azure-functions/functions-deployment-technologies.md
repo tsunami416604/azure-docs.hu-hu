@@ -10,16 +10,16 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 88b6fbbd68f1f98e50ec0f04336a022dc1580a73
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 9f40ec658fc6725f381300d967c9d7cd61c3a218
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562913"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624150"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Üzembe helyezési technológiák Azure Functions
 
-Néhány különböző technológiával üzembe helyezheti Azure Functions-projekt kódját az Azure-ban. Ez a cikk részletes listát nyújt ezekről a technológiákról, leírja, hogy mely technológiák érhetők el, amelyek a függvények különböző típusairól szólnak, és ismerteti, hogy mi történik az egyes módszerek használatakor, és javaslatokat tesz a legjobb módszer használatára különféle helyzetekben . A Azure Functions üzembe helyezését támogató különféle eszközök a környezetük alapján a megfelelő technológiára vannak hangolva.
+Néhány különböző technológiával üzembe helyezheti Azure Functions-projekt kódját az Azure-ban. Ez a cikk részletes listát nyújt ezekről a technológiákról, leírja, hogy mely technológiák érhetők el, amelyek a függvények különböző típusairól szólnak, és ismerteti, hogy mi történik az egyes módszerek használatakor, és javaslatokat tesz a legjobb módszer használatára különféle helyzetekben . A Azure Functions üzembe helyezését támogató különféle eszközök a környezetük alapján a megfelelő technológiára vannak hangolva. Általánosságban elmondható, hogy a zip-telepítés a Azure Functions ajánlott központi telepítési technológiája.
 
 ## <a name="deployment-technology-availability"></a>Üzembe helyezési technológia rendelkezésre állása
 
@@ -31,17 +31,17 @@ Azure Functions támogatja a többplatformos helyi fejlesztést és üzemelteté
 
 Minden csomag eltérő viselkedéssel rendelkezik. Nem minden központi telepítési technológia érhető el Azure Functions minden egyes ízét. A következő diagramon látható, hogy mely telepítési technológiák támogatottak az operációs rendszer és a üzemeltetési csomag minden kombinációja esetén:
 
-| Üzembe helyezési technológia | Windows-felhasználás | Windows Premium (előzetes verzió) | Dedikált Windows  | Linux-felhasználás | Linux dedikált |
-|-----------------------|:-------------------:|:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
-| Külső csomag URL-címe<sup>1</sup> |✔|✔|✔|✔|✔|
-| Zip-telepítés |✔|✔|✔| |✔|
-| Docker tárolók | | | | |✔|
-| Web Deploy |✔|✔|✔| | |
-| Verziókövetés |✔|✔|✔| |✔|
-| Helyi git<sup>1</sup> |✔|✔|✔| |✔|
-| Cloud Sync<sup>1</sup> |✔|✔|✔| |✔|
-| FTP<sup>1</sup> |✔|✔|✔| |✔|
-| Portál szerkesztése |✔|✔|✔| |✔<sup>2</sup>|
+| Üzembe helyezési technológia | Windows-felhasználás | Windows Premium (előzetes verzió) | Dedikált Windows  | Linux-felhasználás | Linux Premium (előzetes verzió) | Linux dedikált |
+|-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
+| Külső csomag URL-címe<sup>1</sup> |✔|✔|✔|✔|✔|✔|
+| Zip-telepítés |✔|✔|✔|✔|✔|✔|
+| Docker tárolók | | | | |✔|✔|
+| Web Deploy |✔|✔|✔| | | |
+| Verziókövetés |✔|✔|✔| |✔|✔|
+| Helyi git<sup>1</sup> |✔|✔|✔| |✔|✔|
+| Cloud Sync<sup>1</sup> |✔|✔|✔| |✔|✔|
+| FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
+| Portál szerkesztése |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
 <sup>1</sup> a [manuális trigger](#trigger-syncing)-szinkronizálást igénylő üzembe helyezési technológia.  
 <sup>2</sup> a portálon történő szerkesztés csak a http-és időzítő-eseményindítók esetében engedélyezett a Linux-függvények prémium és dedikált csomagok használatával.
@@ -58,7 +58,40 @@ Az eseményindítók módosításakor a functions infrastruktúrájának tisztá
 * HTTP post- `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` kérés küldése a főkulcs [](functions-bindings-http-webhook.md#authorization-keys)használatára.
 * HTTP POST-kérelem küldése a `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`következőnek:. Cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra, az erőforráscsoport nevére és a függvény alkalmazásának nevére.
 
-## <a name="deployment-technology-details"></a>Üzembe helyezési technológia részletei 
+### <a name="remote-build"></a>Távoli Build
+
+A Azure Functions automatikusan képes a zip-telepítések után kapott programkódra épülő buildek végrehajtására. Ezek a buildek némileg eltérően működnek attól függően, hogy az alkalmazás Windows vagy Linux rendszeren fut-e. A távoli buildek nem hajthatók végre, ha egy alkalmazás már a [csomag](run-functions-from-deployment-package.md) módból való futtatásra van beállítva. 
+
+> [!NOTE]
+> Ha problémák merülnek fel a távoli buildtel kapcsolatban, annak oka az lehet, hogy az alkalmazást a szolgáltatás elérhetővé tétele előtt hozták létre (2019. augusztus 1.). Próbálkozzon új Function-alkalmazás létrehozásával.
+
+#### <a name="remote-build-on-windows"></a>Távoli Build Windows rendszeren
+
+A Windowson futó összes Function apps egy kis felügyeleti alkalmazással, az SCM (vagy [kudu](https://github.com/projectkudu/kudu)) hellyel rendelkezik. Ez a hely kezeli a központi telepítés nagy részét, és felépíti a logikát a Azure Functions számára.
+
+Ha egy alkalmazás Windows rendszerre van telepítve, a nyelvspecifikus parancsok, például `dotnet restore` a (C#) vagy `npm install` a (JavaScript) futnak.
+
+#### <a name="remote-build-on-linux-preview"></a>Távoli Build Linuxon (előzetes verzió)
+
+A Linuxon a távoli buildek engedélyezéséhez a következő [beállításokat](functions-how-to-use-azure-function-app-settings.md#settings)kell beállítania:
+
+* `ENABLE_ORYX_BUILD=true`
+* `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
+
+Az alkalmazások Linux rendszeren való létrehozásakor [a központi telepítési csomagból futnak](run-functions-from-deployment-package.md).
+
+> [!NOTE]
+> A Linux dedikált (App Service) csomag távoli létrehozása jelenleg csak a Node. js és a Python esetében támogatott.
+
+##### <a name="consumption-preview-plan"></a>Felhasználási (előzetes verzió) csomag
+
+A használati tervben futó Linux-függvények alkalmazásai nem rendelkeznek SCM/kudu hellyel, ami korlátozza az üzembe helyezési lehetőségeket. Az alkalmazások a használati csomagban futó Linux rendszeren azonban támogatják a távoli buildeket. Ezek a távoli buildek a [Oryx](https://github.com/microsoft/Oryx)-t használják.
+
+##### <a name="dedicated-and-premium-preview-plans"></a>Dedikált és Prémium csomag (előzetes verzió)
+
+A [dedikált (App Service) csomagon](functions-scale.md#app-service-plan) belül Linux rendszeren futtatott functions-alkalmazások és a [Prémium csomag](functions-scale.md#premium-plan) korlátozott SCM/kudu-hellyel is rendelkezik, amely maga is kihasználja a [Oryx](https://github.com/microsoft/Oryx).
+
+## <a name="deployment-technology-details"></a>Üzembe helyezési technológia részletei
 
 A következő üzembe helyezési módszerek érhetők el Azure Functionsban.
 
@@ -70,17 +103,25 @@ Külső csomag URL-címével hivatkozhat a Function alkalmazást tartalmazó tá
 >
 >Ha az Azure Blob Storage-t használja, használjon egy [közös hozzáférési aláírással (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) rendelkező privát tárolót, amely lehetővé teszi a funkciók elérését a csomaghoz. Az alkalmazás újraindításakor a rendszer lekéri a tartalom egy példányát. A hivatkozásnak érvényesnek kell lennie az alkalmazás élettartamára.
 
->__Mikor érdemes használni:__ A külső csomag URL-címe az egyetlen támogatott üzembe helyezési módszer a Linux rendszeren futó Azure Functions a használati tervben. Amikor frissíti a alkalmazáscsomag által hivatkozott csomagfájl adatait, manuálisan kell szinkronizálnia az [eseményindítókat](#trigger-syncing) , hogy tájékoztassa az Azure-t arról, hogy az alkalmazás megváltozott.
+>__Mikor érdemes használni:__ A külső csomag URL-címe az egyetlen támogatott üzembe helyezési módszer a Linux rendszeren futó Azure Functions a használati tervben, ha a felhasználó kifejezetten nem kíván távoli buildet létrehozni. Amikor frissíti a alkalmazáscsomag által hivatkozott csomagfájl adatait, manuálisan kell szinkronizálnia az [eseményindítókat](#trigger-syncing) , hogy tájékoztassa az Azure-t arról, hogy az alkalmazás megváltozott.
 
 ### <a name="zip-deploy"></a>Zip-telepítés
 
-A zip-telepítés használatával leküldheti a Function alkalmazást az Azure-ba tartalmazó. zip-fájlt. Azt is megteheti, hogy az alkalmazást [csomag](run-functions-from-deployment-package.md) módból való futtatásra állítja be.
+A zip-telepítés használatával leküldheti a Function alkalmazást az Azure-ba tartalmazó. zip-fájlt. Megadhatja, hogy az alkalmazás a csomagból induljon el, vagy megadhatja, hogy a [rendszer](run-functions-from-deployment-package.md) [távoli buildet](#remote-build) hajtson végre.
 
 >__Használat:__ Üzembe helyezés a kedvenc ügyfél-eszköz használatával: [Vs Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)vagy az [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Ha a. zip-fájlt manuálisan szeretné telepíteni a Function alkalmazásba, kövesse az [üzembe helyezés a. zip fájlból vagy URL-címről](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)című témakör utasításait.
->
->Ha a zip-telepítés használatával végzi a telepítést, beállíthatja, hogy az alkalmazás [csomag](run-functions-from-deployment-package.md) módban fusson. Ha csomag módból szeretné beállítani a futtatást, `WEBSITE_RUN_FROM_PACKAGE` állítsa a `1`értékre az Application Setting értéket. A zip-telepítést javasoljuk. Gyorsabb betöltési időt eredményez az alkalmazások számára, és ez az alapértelmezett a VS Code, a Visual Studio és az Azure CLI számára.
 
->__Mikor érdemes használni:__ A zip-telepítés a Windowson és a Linuxon futó függvények ajánlott központi telepítési technológiája a prémium vagy a dedikált csomagban.
+Egy távoli buildtel rendelkező zip-telepítés végrehajtásához használja a következő [alapvető eszközök](functions-run-local.md) parancsot:
+
+```bash
+func azure functionapp publish <app name> --build remote
+```
+
+Azt is megteheti, hogy a (z) "" azureFunctions. scmDoBuildDuringDeployment "jelző hozzáadásával egy távoli buildet hajt végre a VS Code utasításban. Ha meg szeretné tudni, hogyan adhat hozzá egy jelölőt a VS Code-hoz, olvassa el a [Azure functions Extension wiki](https://github.com/microsoft/vscode-azurefunctions/wiki)utasításait.
+
+>Ha a zip-telepítés használatával végzi a telepítést, beállíthatja, hogy [](run-functions-from-deployment-package.md)az alkalmazás csomagból fusson. A csomagból való futtatáshoz állítsa `WEBSITE_RUN_FROM_PACKAGE` az Alkalmazásbeállítás `1`értéket a következőre:. A zip-telepítést javasoljuk. Gyorsabb betöltési időt eredményez az alkalmazások számára, és ez az alapértelmezett a VS Code, a Visual Studio és az Azure CLI számára. 
+
+>__Mikor érdemes használni:__ A zip-telepítés a Azure Functions ajánlott központi telepítési technológiája.
 
 ### <a name="docker-container"></a>Docker tárolók
 
@@ -93,7 +134,7 @@ Telepítheti a Function alkalmazást tartalmazó Linux-tároló lemezképét.
 >
 >Ha egy meglévő alkalmazást szeretne üzembe helyezni egy egyéni tároló használatával, a [Azure functions Core Toolsban](functions-run-local.md)használja az [`func deploy`](functions-run-local.md#publish) parancsot.
 
->__Mikor érdemes használni:__ Akkor használja a Docker-tároló lehetőséget, ha nagyobb mértékű vezérlésre van szüksége a Function alkalmazást futtató linuxos környezetben. Ez a központi telepítési mechanizmus csak a Linux rendszeren futó függvények esetében érhető el egy App Service csomagban.
+>__Mikor érdemes használni:__ Akkor használja a Docker-tároló lehetőséget, ha nagyobb mértékű vezérlésre van szüksége a Function alkalmazást futtató linuxos környezetben. Ez a központi telepítési mechanizmus csak a Linux rendszeren futó függvények esetében érhető el.
 
 ### <a name="web-deploy-msdeploy"></a>Web Deploy (MSDeploy)
 
@@ -166,23 +207,7 @@ A következő táblázat a portál szerkesztését támogató operációs rendsz
 
 ## <a name="deployment-slots"></a>Üzembehelyezési pontok
 
-Amikor üzembe helyezi a Function alkalmazást az Azure-ban, egy különálló üzembe helyezési pontra helyezheti üzembe, ahelyett, hogy közvetlenül az éles környezetbe telepítené. További információ az üzembe helyezési pontokról: [Azure app Service tárolóhelyek](../app-service/deploy-staging-slots.md).
-
-### <a name="deployment-slots-levels-of-support"></a>Üzembe helyezési pontok támogatási szintjei
-
-Az üzembe helyezési pontok két szinten támogatottak:
-
-* **Általánosan elérhető (GA)** : Teljes mértékben támogatott és jóváhagyott éles használatra.
-* **Előzetes**verzió: Még nem támogatott, de a jövőben várhatóan eléri a GA-állapotot.
-
-| Operációs rendszer/üzemeltetési csomag | Támogatási szint |
-| --------------- | ------ |
-| Windows-felhasználás | Előzetes verzió |
-| Windows Premium (előzetes verzió) | Előzetes verzió |
-| Dedikált Windows | Általános elérhetőség |
-| Linux-felhasználás | Nem támogatott |
-| Linux Premium (előzetes verzió) | Előzetes verzió |
-| Linux dedikált | Általános elérhetőség |
+Amikor üzembe helyezi a Function alkalmazást az Azure-ban, az üzembe helyezést külön üzembe helyezheti közvetlenül az éles környezet helyett. Az üzembe helyezési pontokkal kapcsolatos további információkért tekintse meg a részleteket a [Azure functions üzembe helyezési](../app-service/deploy-staging-slots.md) pontok dokumentációjában.
 
 ## <a name="next-steps"></a>További lépések
 

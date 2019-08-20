@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 08/19/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7463b86ea20a712937b8ccba7997c2551aae5be6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4d7a23ed0a84ebd671c69744dfec145763ef6897
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879108"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622717"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Licencelési követelmények az Azure AD önkiszolgáló jelszó-visszaállításhoz
 
@@ -34,7 +34,7 @@ Az Azure AD önkiszolgáló jelszó-visszaállítás felhasználónként licencc
 * Önkiszolgáló jelszóátállítás felhőfelhasználók számára
    * **Csak Felhőbeli felhasználó** vagyok, és elfelejtettem a jelszavam.
       * Szeretném alaphelyzetbe **állítani** a jelszavamat.
-   * Ez a funkció a P1 vagy P2 prémium szintű Azure AD része, vagy Microsoft 365 Vállalati verzió.
+   * Ez a funkció prémium szintű Azure AD P1 vagy P2, Microsoft 365 Vállalati verzió vagy Office 365 része.
 
 * Önkiszolgáló jelszó-visszaállítás/-módosítás/ **-zárolás a helyszíni visszaírási**
    * **Hibrid felhasználó** vagyok a helyszíni Active Directory felhasználói fiókja szinkronizálva van az Azure ad-fiókkal Azure ad Connect használatával. Szeretném megváltoztatni a jelszavam, elfelejtettem a jelszavam, vagy ki lett zárva.

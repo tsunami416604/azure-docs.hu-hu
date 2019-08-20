@@ -7,7 +7,7 @@ metadata:
   description: 'Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, weboldalakat és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.'
   ms.author: jmartens
   ms.subservice: core
-  ms.date: 5/14/2019
+  ms.date: 8/14/2019
   ms.devlang: na
   ms.service: machine-learning
   ms.tgt_pltfrm: na
