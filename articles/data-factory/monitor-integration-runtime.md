@@ -43,12 +43,12 @@ Az alábbi táblázat ismerteti az Azure-beli integrációs modul a parancsmag �
 
 | Tulajdonság | Leírás |
 -------- | ------------- | 
-| Name (Név) | Az Azure-beli integrációs modul neve. |  
-| Állapot | Az Azure integrációs modul állapotának. | 
-| Location egység | Az Azure-beli integrációs modul helye. További információk az Azure integrációs modul helye: [Bevezetés a saját üzemeltetésű integrációs](concepts-integration-runtime.md). |
+| Name | Az Azure-beli integrációs modul neve. |  
+| State | Az Azure integrációs modul állapotának. | 
+| Location | Az Azure-beli integrációs modul helye. További információk az Azure integrációs modul helye: [Bevezetés a saját üzemeltetésű integrációs](concepts-integration-runtime.md). |
 | DataFactoryName | Az adat-előállítóhoz tartozó az Azure-beli integrációs modul neve. | 
 | ResourceGroupName | Az erőforráscsoporthoz tartozik, az adat-előállító neve.  |
-| Leírás | Az integrációs modul leírása.  |
+| Description | Az integrációs modul leírása.  |
 
 ### <a name="status"></a>Állapot
 A következő táblázat tartalmazza az Azure-beli integrációs modul lehetséges állapotok:
