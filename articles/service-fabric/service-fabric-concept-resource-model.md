@@ -7,15 +7,15 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: atsenthi
-ms.openlocfilehash: 7795612d8aa4974bc640571d49ad1520e2a0f94c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8e39318dcaa31a111908c6be1ae7a51d73eb7478
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963846"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623829"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Mi a Service Fabric alkalmazás-erőforrás modellje?
-Azt javasoljuk, hogy az Service Fabric alkalmazások Azure Resource Manager használatával legyenek telepítve a Service Fabric-fürtön. Ez a módszer lehetővé teszi a JSON-alkalmazások és-szolgáltatások leírását, és azokat ugyanabban a Resource Manager-sablonban telepíteni, mint a fürtöt. Az alkalmazások PowerShell vagy Azure CLI használatával történő üzembe helyezése és kezelése helyett nem kell megvárnia, hogy a fürt készen álljon. Az alkalmazások regisztrációjának, kiépítésének és üzembe helyezésének folyamata egyetlen lépésben történhet. Ez az ajánlott eljárás a fürtben az alkalmazás életciklusának kezelésére. További információkért tekintse meg az [ajánlott eljárásokat](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
+Azt javasoljuk, hogy az Service Fabric alkalmazások Azure Resource Manager használatával legyenek telepítve a Service Fabric-fürtön. Ez a módszer lehetővé teszi a JSON-alkalmazások és-szolgáltatások leírását, és azokat ugyanabban a Resource Manager-sablonban telepíteni, mint a fürtöt. Az alkalmazások PowerShell vagy Azure CLI használatával történő üzembe helyezése és kezelése helyett nem kell megvárnia, hogy a fürt készen álljon. Az alkalmazásregisztráció, -kiépítés és -üzembehelyezés folyamata mind egy lépésben valósulhat meg. Ez a fürtbéli alkalmazás-életciklusok kezelésének ajánlott eljárása. További információkért tekintse meg az [ajánlott eljárásokat](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
 
 Ha alkalmazható, az alkalmazásokat Resource Manager-erőforrásként kezelheti a fejlesztéshez:
 * Naplózási nyomvonal: A Resource Manager minden műveletet naplóz, és részletesen *naplózza a tevékenységeket* , amelyek segítségével nyomon követheti az adott alkalmazásokon és a fürtön végrehajtott módosításokat.
@@ -33,7 +33,7 @@ Ebből a dokumentumból megtudhatja, hogyan végezheti el a következőket:
 ## <a name="deploy-application-resources-using-azure-resource-manager"></a>Alkalmazás-erőforrások központi telepítése Azure Resource Manager használatával  
 Ha egy alkalmazást és annak szolgáltatásait az Azure Resource Manager alkalmazás-erőforrás modell használatával szeretné üzembe helyezni, az alkalmazás kódját kell megadnia, fel kell töltenie a csomagot, majd a csomag helyét egy Azure Resource Manager sablonban kell megadnia alkalmazásként. erőforrás. További információkért tekintse meg [az alkalmazás csomagját](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg).
           
-Ezután hozzon létre egy Azure Resource Manager sablont, frissítse a paramétereket tartalmazó fájlt az alkalmazás részleteivel, és telepítse azt a Service Fabric-fürtön. Tekintse meg a mintákat itt
+Ezután hozzon létre egy Azure Resource Manager sablont, frissítse a paramétereket tartalmazó fájlt az alkalmazás részleteivel, és telepítse azt a Service Fabric-fürtön. Tekintse meg a mintákat [itt](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM).
 
 ### <a name="create-a-storage-account"></a>Storage-fiók létrehozása 
 Az alkalmazások Resource Manager-sablonból való üzembe helyezéséhez Storage-fiók szükséges az alkalmazás rendszerképének előkészítéséhez. Újra felhasználhat egy meglévő Storage-fiókot, vagy létrehozhat egy új Storage-fiókot az alkalmazások előkészítéséhez. Ha meglévő Storage-fiókot szeretne használni, akkor kihagyhatja ezt a lépést. 

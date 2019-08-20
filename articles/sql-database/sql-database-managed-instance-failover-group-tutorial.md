@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 5bf2ee68ff2cfde2846dff2d94f7478920a18760
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e4b7de3931c0d3508e5af6aa6bf85dfa18641aee
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69037111"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624985"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL Database felügyelt példány hozzáadása feladatátvételi csoporthoz
 
@@ -151,7 +151,7 @@ Két felügyelt példánynak a feladatátvételi csoportban való részvételhez
     | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
     | **VPN-típus** | **Útvonal-alapú** |
     | **Termékváltozat**| Hagyja meg az `VpnGw1`alapértelmezett értéket. |
-    | **Location**| A másodlagos felügyelt példány és a másodlagos virtuális hálózat helye.   |
+    | **Location**| Az elsődleges felügyelt példány és az elsődleges virtuális hálózat helye.   |
     | **Virtuális hálózat**| Válassza ki a 2 `vnet-sql-mi-primary`. szakaszban létrehozott virtuális hálózatot, például:. |
     | **Nyilvános IP-cím**| Válassza az **Új létrehozása** lehetőséget. |
     | **Nyilvános IP-cím neve**| Adja meg az IP-cím nevét, például `primary-gateway-IP`:. |

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 7e5c33577a2d926266ae45057509b112dc27ce7b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c4ba2269003c9d401982b83f4e66c8caf45a0073
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985722"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624704"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Funkciók összehasonlítása: Azure SQL Database versus SQL Server
 
@@ -53,7 +53,7 @@ A következő táblázat felsorolja a SQL Server főbb funkcióit, és informác
 | [Rendezés – kiszolgáló/példány](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | Nem, mindig a logikai kiszolgáló alapértelmezett `SQL_Latin1_General_CP1_CI_AS` rendezését használja a rendszer. | Igen, beállítható a [példány létrehozásakor](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md) , és később nem frissíthető. |
 | [Oszlopcentrikus indexek](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Igen – [prémium szint, standard szint – S3 és újabb, általános célú szint, és üzletileg kritikus szint](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Igen |
 | [Közös nyelvi futtatókörnyezet – CLR](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nem | Igen, de nem fér hozzá a fájlrendszerhez `CREATE ASSEMBLY` az utasításban – lásd: [CLR különbségek](sql-database-managed-instance-transact-sql-information.md#clr) |
-| [Foglalt adatbázisok](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Igen | Jelenleg nem [a visszaállítás hibája miatt, beleértve az időponthoz való visszaállítást is](sql-database-managed-instance-transact-sql-information.md#cant-restore-contained-database). Ez egy hiba, amely hamarosan kijavítva lesz. |
+| [Foglalt adatbázisok](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Igen | Igen |
 | [Foglalt felhasználók](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Igen | Igen |
 | [A flow nyelvi kulcsszavainak vezérlése](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | Igen | Igen |
 | [Hitelesítő adatok](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | Igen, de csak az [adatbázis-hatókörű hitelesítő adatok](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Igen, de csak **Azure Key Vault** és `SHARED ACCESS SIGNATURE` támogatottak a [részletek](sql-database-managed-instance-transact-sql-information.md#credential) megtekintése |
@@ -132,7 +132,7 @@ A következő táblázat felsorolja a SQL Server főbb funkcióit, és informác
 | [Historikus táblák](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | [Igen](sql-database-temporal-tables.md) | [Igen](sql-database-temporal-tables.md) |
 | Időzóna választása | Nem | [Igen](sql-database-managed-instance-timezone.md), és konfigurálni kell a felügyelt példány létrehozásakor. |
 | Fenyegetések észlelése|  [Igen](sql-database-threat-detection.md)|[Igen](sql-database-managed-instance-threat-detection.md)|
-| [Nyomkövetési jelzők](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nem | Nem |
+| [Nyomkövetési jelzők](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nem | Igen, de csak a globális nyomkövetési jelzők korlátozott készlete. Lásd: [DBCC különbségek](sql-database-managed-instance-transact-sql-information.md#dbcc) |
 | [Tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) | Igen, [csak tranzakciós és pillanatkép-replikációs előfizető](sql-database-single-database-migrate.md) | Igen, a [nyilvános előzetes](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)verzióban. [Itt](sql-database-managed-instance-transact-sql-information.md#replication)megtalálhatja a megkötéseket. |
 | [Változók](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Igen | Igen |
 | [Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Igen – csak általános célú és üzletileg kritikus szolgáltatási szintet| [Igen](transparent-data-encryption-azure-sql.md) |

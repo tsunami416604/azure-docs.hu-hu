@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4ea6f04dbfd18a6e561a255988ba0465b9e017be
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: da88c6d0195236a6f93f81d3296e4624228125f2
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967609"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624265"
 ---
 # <a name="what-are-the-speech-services"></a>Mi az a Speech Services?
 
@@ -42,7 +42,8 @@ Ezek a funkciók alkotják az Azure Speech Services szolgáltatást. Az ebben a 
 Ismerje meg az Azure Speech Services újdonságait.
 
 * Augusztus 2019
-  * **Új oktatóanyag**: [Hang engedélyezése a robotnak a Speech SDK-valC#](tutorial-voice-enable-your-bot-speech-sdk.md)
+  * **Új oktatóanyag**: [Robot hangvezérlésének engedélyezése a Speech SDK, C# használatával](tutorial-voice-enable-your-bot-speech-sdk.md)
+  * Új beszéd stílus [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)hozzáadva a `en-US-JessaNeural` hanghoz. 
 * Június 2019
   * Megjelent a Speech SDK 1.6.0. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
 * Május 2019 – a dokumentáció már elérhető a [beszélgetés](conversation-transcription-service.md)átírásához, a [Call Center](call-center-transcription.md)átírásához és a hangvezérelt [virtuális asszisztensekhez](voice-first-virtual-assistants.md).

@@ -1,38 +1,38 @@
 ---
-title: Nyisson egy támogatási jegyet a Microsoft Azure FXT Edge Filer
-description: Indítási és a egy Azure FXT Edge Filer csomópont biztonságos leállítás eljárásai
+title: Támogatási jegy megnyitása Microsoft Azure FXT Edge Filer-hoz
+description: Az Azure FXT Edge Filer-rendszerrel kapcsolatos segítség a jegy megnyitásához
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: v-erkell
-ms.openlocfilehash: 82b6477b42d627baff10d9bde46452bf43900ffd
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 04bc7c4d2ff96ef8b403449cf58d131bdc22a101
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67828196"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624113"
 ---
-# <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Az Azure FXT Edge Filer egy támogatási jegyet
+# <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Támogatási jegy megnyitása az Azure FXT Edge Filer-hoz
 
-Ez a cikk bemutatja, hogyan kaphat segítséget az Azure FXT Edge Filer rendszerrel.
+Ez a cikk azt ismerteti, hogyan kérhet segítséget az Azure FXT Edge Filer-rendszerrel.
 
-Az Azure portal használatával a Microsoft ügyfélszolgálata és a egy támogatási jegyet.
+A Azure Portal segítségével nyisson meg egy támogatási jegyet a Microsoft ügyfélszolgálatával és támogatási szolgálatával.
 
-1. Nyissa meg a [az Azure portal](https://portal.azure.com/) , és jelentkezzen be.
-1. A bal oldali panelen görgessen le, és kattintson **súgó + támogatás**.
-1. Kattintson a **új támogatási kérelem**. 
+1. Nyissa meg a [Azure Portal](https://portal.azure.com/) , és jelentkezzen be.
+1. A bal oldali panelen görgessen a lap aljára, majd kattintson a **Súgó és támogatás**elemre.
+1. Kattintson az **új támogatási kérelem**elemre. 
 
-   ![Képernyőkép a üres támogatási űrlap](media/fxt-support-blank.png)
+   ![Képernyőfelvétel az üres támogatási kérelem űrlapról](media/fxt-support-blank.png)
 
-1. Az űrlap kitöltésekor.  
-    1. Az a **alapjai** adja meg a **Problématípus** ``Technical``. 
+1. Töltse ki a kérelem űrlapját.  
+    1. Az **alapvető beállítások** lapon válassza ki a **probléma típusát** ``Technical``. 
     1. Válassza ki előfizetését. 
-    1. A **szolgáltatás**válassza **Azure FXT Edge Filer**. Előfordulhat, hogy kell kattintania a **minden szolgáltatás** szűrővezérlés is megkeresheti. 
-    1. Adjon meg egy **összefoglalás** , és válassza a **Problématípus**. 
-    ![Képernyőkép a üres támogatási űrlap](media/fxt-support-populated.png) 
-    1. Kattintson a **tovább** folytatásához. 
-1. Az a **részletek** lapon maradva adja hozzá a további információt a problémáról és az Önnel való kapcsolatfelvételre. Feltölthet egy fájlt a problémával kapcsolatos. 
-1. A **felülvizsgálat + létrehozása**, olvassa el, és kattintson a **létrehozás** gombra kattintva küldje el a kérést.
+    1. A **szolgáltatás**alatt válassza az **Azure FXT Edge Filer**elemet. Előfordulhat, hogy a **minden szolgáltatás** szűrő vezérlőelemre kell kattintania a kereséshez. 
+    1. Adjon meg egy összegzést, és válassza ki a **probléma típusát**. 
+    ![Képernyőfelvétel az üres támogatási kérelem űrlapról](media/fxt-support-populated.png) 
+    1. A folytatáshoz kattintson a **tovább** gombra. 
+1. A **részletek** lapon adja meg a problémával kapcsolatos további információkat és az Önnel való kapcsolatfelvétel módját. Feltölthet egy, a problémához kapcsolódó fájlt is. 
+1. A **felülvizsgálat és létrehozás**lapon ellenőrizze az információkat, majd kattintson a **Létrehozás** gombra a kérelem elküldéséhez.
 
-Az kérés benyújtása után kapni fog egy e-mailt egy a jegy számát. A támogatási személyzet tagja felveszi Önnel a kapcsolatot a kérelemmel kapcsolatban.
+A kérelem elküldése után egy megerősítő e-mailt fog kapni a jegy számával. A támogatási személyzet tagja felveszi Önnel a kapcsolatot a kéréssel.

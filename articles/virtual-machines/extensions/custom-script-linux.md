@@ -1,6 +1,6 @@
 ---
-title: Egyéni parancsfájlok futtathatók az Azure-ban Linux rendszerű virtuális gépekhez |} A Microsoft Docs
-description: Az egyéni szkriptek futtatására szolgáló bővítmény v2 használatával Linux rendszerű virtuális gép konfigurációs feladatok automatizálása
+title: Egyéni parancsfájlok futtatása Linux rendszerű virtuális gépeken az Azure-ban | Microsoft Docs
+description: A Linux rendszerű virtuális gépek konfigurációs feladatainak automatizálása az egyéni parancsfájl-bővítmény V2 használatával
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
@@ -15,70 +15,70 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: 8b16d7b20c4d49398790d207065da946d98ef658
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1a01f5f8aed994c16b8302e42996b27ee6a48003
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839166"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624859"
 ---
-# <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Az Azure Custom Script bővítmény 2-es verzió használata Linux rendszerű virtuális gépek
-A Custom Script bővítmény 2-es verzió letölti és futtatja a parancsfájlokat, Azure-beli virtuális gépeken. A bővítmény az üzembe helyezés utáni konfigurációs, a szoftver telepítése vagy bármely egyéb konfigurációs/felügyeleti feladat hasznos. Parancsfájlokat tölthet le az Azure Storage vagy egy másik elérhető-e internet-helyre, vagy megadhatja azokat a bővítmény-futtatókörnyezet. 
+# <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Az egyéni Azure script Extension 2. verziójának használata Linux rendszerű virtuális gépekkel
+Az egyéni szkriptek bővítményének 2. verziója letölti és futtatja a parancsfájlokat az Azure Virtual Machines szolgáltatásban. Ez a bővítmény az üzembe helyezés utáni konfiguráció, a Szoftvertelepítés vagy bármely egyéb konfigurációs/felügyeleti feladat esetén hasznos. A szkripteket letöltheti az Azure Storage-ból vagy más elérhető Internet-helyről, vagy megadhatja a bővítmény futtatókörnyezetét. 
 
-Az egyéni Szkriptbővítmény integrálható az Azure Resource Manager-sablonok. Is futtathatja, Azure CLI-vel, a PowerShell vagy az Azure Virtual Machines – REST API használatával.
+Az egyéni szkriptek bővítménye Azure Resource Manager-sablonokkal integrálódik. Azt is futtathatja az Azure CLI, a PowerShell vagy az Azure Virtual Machines REST API használatával.
 
-Ez a cikk részletezi, hogyan használhatja az egyéni szkriptek bővítménye az Azure CLI-vel, és a bővítmény futtatása az Azure Resource Manager-sablon használatával. Ez a cikk a Linux rendszerek hibaelhárítási lépéseket is nyújt.
+Ez a cikk részletesen ismerteti, hogyan használhatja az egyéni szkriptek bővítményét az Azure CLI-ből, és hogyan futtathatja a bővítményt Azure Resource Manager sablon használatával. Ez a cikk a Linux rendszerekre vonatkozó hibaelhárítási lépéseket is tartalmaz.
 
 
-Nincsenek egyéni parancsfájl-kiterjesztés két Linux:
+Két Linux egyéni parancsfájl-bővítmény létezik:
 * Version 1 - Microsoft.OSTCExtensions.CustomScriptForLinux
 * Version 2 - Microsoft.Azure.Extensions.CustomScript
 
-Váltson a meglévő és újonnan üzembe helyezett, használja helyette a 2. új verziója. Az új verzióra van készült protokollkompatibilitását. Ezért az áttelepítés megírásához módosítása a neve és verziója, nem kell módosítani a bővítmény konfigurációját.
+Váltson át új és meglévő központi telepítéseket, hogy az új 2-es verziót használja. Az új verzió célja, hogy a rendszer visszaadja a cserét. Ezért az áttelepítés olyan egyszerű, mint a név és a verzió módosítása, nem kell módosítania a bővítmény konfigurációját.
 
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Az egyéni Szkriptbővítmény Linux fog futni a támogatott bővítmény bővítmény rendszerbeli, további információkért lásd: Ez [cikk](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems).
+A Linux rendszerhez készült egyéni szkript a bővítmény támogatott bővítményi operációs rendszerén fut, további információkért tekintse meg ezt a [cikket](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems).
 
-### <a name="script-location"></a>A parancsprogram helye
+### <a name="script-location"></a>Parancsfájl helye
 
-A bővítmény használhatja az Azure Blob storage hitelesítő adatai az Azure Blob storage elérésére használhat. Másik lehetőségként a parancsprogram helyét lehet bármelyik where, mindaddig, amíg a virtuális gép irányíthatja a végpontot, például a GitHub, a belső fájlkiszolgáló stb.
+A bővítmény használatával az Azure Blob Storage hitelesítő adatait használhatja az Azure Blob Storage eléréséhez. Azt is megteheti, hogy a parancsfájl helye bármilyen lehet, ha a virtuális gép átirányítható erre a végpontra, mint például a GitHub, a belső fájlkiszolgáló stb.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
-Ha le kell töltenie egy parancsfájlt kívülről például a GitHub vagy az Azure Storage, majd további tűzfal/hálózati biztonsági csoportra portokat kell megnyitni. Például ha a parancsfájl található az Azure Storage szolgáltatásban, engedélyezheti a hozzáférés Azure NSG szolgáltatás címkék használatával [tárolási](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Ha külsőleg le kell töltenie egy parancsfájlt, például a GitHubot vagy az Azure Storage-t, akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. Ha például a parancsfájl az Azure Storage-ban található, az Azure NSG Service-címkék használatával engedélyezheti a [](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)hozzáférést a tároláshoz.
 
-Ha a parancsfájl egy helyi kiszolgálón, akkor továbbra is szükség lehet további tűzfal/hálózati biztonsági csoport portokat kell megnyitni.
+Ha a parancsfájl egy helyi kiszolgálón található, akkor továbbra is szükség lehet további tűzfal/hálózati biztonsági csoport portjainak megnyitására.
 
 ### <a name="tips-and-tricks"></a>tippek és trükkök
 * A bővítmény meghibásodásai legnagyobb arányban a szkriptben található szintaktikai hibák miatt jelentkeznek. Tesztelje, hogy a szkript fut-e hiba nélkül, és lássa el további naplózással a szkriptet, hogy könnyebb legyen a hiba helyét azonosítani.
 * Írjon idempotens szkripteket, hogy ne okozzanak változásokat a rendszerben, ha véletlenül többször is futtatják őket.
-* Győződjön meg arról, a parancsfájlok nem igényelnek felhasználói bevitel futtatás esetén.
-* A parancsfájl futtatása engedélyezett 90 perc, semmit hosszabb egy sikertelen a bővítmény kiépítése eredményez.
-* Ne telepítse a parancsfájl belül újraindul, ez lesz okozhat problémát más bővítményeket, amelyek telepítése folyamatban van, és utáni újraindítás, a bővítmény nem továbbra is az újraindítás után. 
-* Ha egy szkript újraindítást vált ki, telepítenie kell az alkalmazásokat, futtatnia kell a szkripteket stb. Olyan időszakra ütemezze az újraindítás egy Cron feladat használatával, vagy a DSC, vagy a Chef, Puppet, bővítmények.
-* A bővítmény csak akkor fog futni egy parancsfájl egyszer, ha azt szeretné, naplózásra kerül minden rendszerindításkor, a parancsfájl futtatásához használhatja [a cloud-init lemezkép](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) , és egy [parancsfájlokat egy rendszerindító](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modul. A parancsfájl segítségével azt is megteheti, hozzon létre egy Systemd szolgáltatás egységet.
-* Ha azt szeretné, meghatározhatja, mikor egy parancsprogram futtatása, a bővítmény egy Cron feladat létrehozásához használjon. 
-* Amikor a szkript fut, az Azure Portalon vagy a CLI-n a bővítmény „átmeneti” állapotát fogja látni. Ha azt szeretné, hogy a futó parancsfájl gyakoribb ügyfélállapot-frissítés, szüksége lesz a saját megoldást hozhat létre.
-* Egyéni szkriptek futtatására szolgáló bővítmény nem támogatja natív módon proxykiszolgálókat, azonban egy fájlátviteli eszköz, amely támogatja a proxykiszolgálók a parancsfájlban, például használhatja *Curl*. 
-* Vegye figyelembe, hogy a parancsfájlok vagy parancsok függő előfordulhat, hogy nem alapértelmezett directory-helyeken, a logikai ennek kezelése rendelkezik.
+* Győződjön meg arról, hogy a parancsfájlok futtatásakor nincs szükség felhasználói bevitelre.
+* A szkript futtatásához 90 perc van engedélyezve, ami továbbra is a bővítmény sikertelen kiépítését eredményezi.
+* Ne helyezzen újraindítást a parancsfájlba, ezért a rendszer a telepített többi bővítménnyel kapcsolatos problémákat okoz, és az újraindítás után a bővítmény nem fog folytatódni az újraindítás után. 
+* Ha egy szkript újraindítást vált ki, telepítenie kell az alkalmazásokat, futtatnia kell a szkripteket stb. Be kell ütemezni az újraindítást egy cron-feladatokkal, vagy olyan eszközök használatával, mint a DSC, a Chef vagy a Puppet Extensions.
+* A bővítmény csak egyszer futtatja a parancsfájlt, ha parancsfájlt szeretne futtatni minden rendszerindításkor, használhatja a [Cloud-init rendszerképet](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) , és használhat [parancsfájlokat](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) rendszerindítási modulként. Azt is megteheti, hogy a parancsfájl segítségével létrehoz egy rendszerszintű szolgáltatási egységet.
+* Ha egy parancsfájl futását szeretné ütemezni, a bővítmény használatával hozzon létre egy cron-feladatot. 
+* Amikor a szkript fut, az Azure Portalon vagy a CLI-n a bővítmény „átmeneti” állapotát fogja látni. Ha egy futó parancsfájl gyakoribb frissítési állapotát szeretné használni, létre kell hoznia a saját megoldását.
+* Az egyéni szkriptek bővítménye nem támogatja natív módon a proxykiszolgálók használatát, azonban használhat olyan fájlátviteli eszközt, amely támogatja a parancsfájlban lévő proxykiszolgálót, például a *curl*-t. 
+* Ne feledje, hogy a parancsfájlok vagy parancsok által felhasználható nem alapértelmezett címtárbeli helyeknek van logikája a kezeléséhez.
 
 
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-Az egyéni Szkriptbővítmény konfigurációját meghatározza többek között a parancsprogram helye és a futtatandó parancsot. Konfigurációs fájlban tárolhatja az ebben a konfigurációban, adja meg azt a parancssorból, vagy adja meg az Azure Resource Manager-sablon. 
+Az egyéni szkriptek bővítményének konfigurációja meghatározza a parancsfájl helyét és a futtatandó parancsot. Ezt a konfigurációt a konfigurációs fájlokban tárolhatja, megadhatja a parancssorban, vagy megadhatja egy Azure Resource Manager sablonban. 
 
-Egy védett konfigurációban, amely titkosított, és csak a virtuális gépen belül visszafejteni bizalmas adatokat tárolhat. A védett konfiguráció akkor hasznos, ha a végrehajtás parancs tartalmazza a titkos kulcsokat például a jelszó.
+A bizalmas adatokat egy védett konfigurációban tárolhatja, amely titkosítva van, és csak a virtuális gépen végez visszafejtést. A védett konfiguráció akkor hasznos, ha a végrehajtási parancs titkos kódokat, például jelszót tartalmaz.
 
-Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények védett beállítás konfigurációjában megadott. Az Azure VM-bővítmény védett beállítás adatok titkosítva, és csak az átjárót tartalmazó a cél virtuális gépen.
+Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bővítmények által védett beállítások konfigurációjában. Az Azure VM-bővítmény védett beállítás adatok titkosítva, és csak az átjárót tartalmazó a cél virtuális gépen.
 
 ```json
 {
   "name": "config-app",
   "type": "Extensions",
   "location": "[resourceGroup().location]",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2019-03-01",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', concat(variables('vmName'),copyindex()))]"
   ],
@@ -109,47 +109,47 @@ Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények vé
 
 | Name (Név) | Érték és példa | Adattípus | 
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute.Extensions | sztring |
+| apiVersion | 2019-03-01 | date |
+| publisher | Microsoft.Compute.Extensions | Karakterlánc |
 | type | CustomScript | Karakterlánc |
 | typeHandlerVersion | 2.0 | int |
-| fileUris (például:) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (például:) | python MyPythonScript.py \<my-param1> | Karakterlánc |
+| fileUris (például) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| commandToExecute (például) | Python- \<MyPythonScript.py My-param1 > | Karakterlánc |
 | script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | Karakterlánc |
-| skipDos2Unix (például:) | false | boolean |
+| skipDos2Unix (például) | false | boolean |
 | timestamp (például:) | 123456789 | 32 bites egész szám |
 | storageAccountName (például:) | examplestorageacct | Karakterlánc |
-| storageAccountKey (például:) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | Karakterlánc |
+| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | Karakterlánc |
 
-### <a name="property-value-details"></a>A tulajdonság értéke részletei
-* `skipDos2Unix`: (nem kötelező, boolean) dos2unix átalakítás parancsfájlalapú fájl URL-címek vagy parancsfájl kihagyja.
-* `timestamp` Ebben a mezőben csak az a mező értékét módosítsa úgy a parancsprogram újra végre-trigger (nem kötelező, a 32 bites egész szám) használatát.  Minden olyan egész értéket az elfogadható; Ez csak különbözőnek kell lennie, mint a korábbi értéket.
-  * `commandToExecute`: (**szükséges** , ha a parancsfájl nincs beállítva, string) végrehajtásához a BelépésiPont-szkriptet. Helyette használja ezt a mezőt, ha a parancs tartalmazza a titkos kulcsok, például jelszavakat.
-* `script`: (**szükséges** Ha commandToExecute nincs beállítva, string) a base64-kódolású (és opcionálisan a gzip'ed) szkript által/bin/sh.
-* `fileUris`: (nem kötelező, csak karakterlánc-tömbben) fájl(ok) le kell tölteni az URL-címeket.
-* `storageAccountName`: (nem kötelező, string) a tárfiók nevére. Ha storage hitelesítő adatai, adja meg az összes `fileUris` URL-címeket kell lennie az Azure-Blobok.
-* `storageAccountKey`: (nem kötelező, string) storage-fiók hozzáférési kulcsa
+### <a name="property-value-details"></a>Tulajdonság értékének részletei
+* `skipDos2Unix`: (nem kötelező, logikai) kihagyhatja a parancsfájl-alapú dos2unix és-parancsfájlok átalakítását.
+* `timestamp`(opcionális, 32 bites egész szám) Ez a mező csak a parancsfájl újbóli futtatásának elindításához használható a mező értékének módosításával.  Bármely egész érték elfogadható; csak az előző értéktől eltérő lehet.
+  * `commandToExecute`: (**kötelező** , ha a parancsfájl nincs beállítva, string) a beléptetési pont parancsfájlját a végrehajtáshoz. Ezt a mezőt használja helyette, ha a parancs titkos kódokat, például jelszavakat tartalmaz.
+* `script`: (**kötelező** , ha a commandToExecute nincs beállítva, string) a/bin/sh. által végrehajtott Base64 kódolású (és opcionálisan gzip'ed) parancsfájlt
+* `fileUris`: (opcionális, karakterlánc-tömb) a letölteni kívánt fájl (ok) URL-címei.
+* `storageAccountName`: (nem kötelező, karakterlánc) a Storage-fiók neve. Ha tárolási hitelesítő adatokat ad meg, `fileUris` az összes URL-címet az Azure-Blobok számára kell megadni.
+* `storageAccountKey`: (nem kötelező, karakterlánc) a Storage-fiók elérési kulcsa
 
 
-A következő értékeket nyilvános vagy védett beállítások is megadhatók, a bővítmény elutasítják semmilyen konfigurálást, ahol az alábbi értékek vannak beállítva, a nyilvános és a védett beállításaiban.
+A következő értékek a nyilvános vagy a védett beállításokban állíthatók be, a bővítmény elveti az összes olyan konfigurációt, ahol az alábbi értékek a nyilvános és a védett beállításokban is be vannak állítva.
 * `commandToExecute`
 * `script`
 * `fileUris`
 
-Hibakeresés, de hasznos lehet nyilvános beállítások használata erősen ajánlott, hogy védett beállításokat használja.
+A nyilvános beállítások használata hasznos lehet a hibakereséshez, de erősen ajánlott a védett beállítások használata.
 
-Nyilvános beállításokat a virtuális gép, ahol a parancsfájl végrehajtása szövegként érkeznek.  Védett beállítások vannak titkosítva, csak az Azure és a virtuális gép ismert kulcsot használ. A beállítások lesznek mentve a virtuális géphez, mivel lettek küldve, vagyis ha a beállítások titkosított menti őket a titkosított a virtuális gépen. A tanúsítvány használatával fejthetők vissza a titkosított értékek tárolja a virtuális gépen, és fejti vissza a futásidejű beállításokat (ha szükséges).
+A nyilvános beállításokat a rendszer tiszta szövegként küldi el arra a virtuális gépre, amelyen a parancsfájl végre lesz hajtva.  A védett beállítások titkosítása csak az Azure-ban és a virtuális gépen ismert kulcs használatával történik. A rendszer elküldte a beállításokat a virtuális gépre, például ha a beállítások titkosítva vannak, a virtuális gépen titkosítva lesznek mentve. A titkosított értékek visszafejtéséhez használt tanúsítványt a virtuális gépen tárolja a rendszer, és a beállításokat (ha szükséges) a futtatáskor használja.
 
 #### <a name="property-skipdos2unix"></a>Tulajdonság: skipDos2Unix
 
-Az alapértelmezett értéke FALSE (hamis), ami azt jelenti, hogy dos2unix átalakítás **van** végrehajtva.
+Az alapértelmezett érték false (hamis), ami azt jelenti, hogy a dos2unix konverziót hajt végre.
 
-CustomScript, Microsoft.OSTCExtensions.CustomScriptForLinux, korábbi verzióját szeretné automatikusan átalakítása DOS fájlok UNIX fájlok lefordításával `\r\n` való `\n`. A fordítási továbbra is létezik, és alapértelmezés szerint be van kapcsolva. Ez a konverzió alkalmazza a rendszer fileUris vagy a parancsfájl-beállítást, a következő kritériumok alapján letöltött összes fájlt.
+A CustomScript (Microsoft. OSTCExtensions. CustomScriptForLinux) előző verziója automatikusan átalakítja a DOS-fájlokat a UNIX-fájlokba a `\r\n` következőre való `\n`fordítással:. Ez a fordítás továbbra is létezik, és alapértelmezés szerint be van kapcsolva. Ez a konverzió a fileUris-ből letöltött összes fájlra vagy a parancsfájl-beállításra vonatkozik a következő feltételek bármelyike alapján.
 
-* Ha a bővítmény az egyik `.sh`, `.txt`, `.py`, vagy `.pl` át lesz alakítva. A parancsfájl-beállítást minden esetben egyezni fog a megadott feltételnek, mert a feltételezhető, hogy /bin/sh végrehajtani egy parancsfájlt, és a virtuális gép mentett script.sh.
-* Ha a fájl kezdődik `#!`.
+* `.sh`Ha a bővítmény a `.txt` `.py`,,, vagy `.pl` az egyike, akkor a rendszer konvertálja. A parancsfájl-beállítás mindig megfelel ennek a feltételnek, mert feltételezi, hogy egy/bin/sh-vel futtatott parancsfájl, és a virtuális gép script.sh mentve lesz.
+* Ha a fájl elindul `#!`.
 
-Az dos2unix átalakítás is kihagyja a skipDos2Unix igaz értékre állításával.
+A dos2unix-konverzió kihagyható úgy, hogy a skipDos2Unix értéke TRUE (igaz) értékre van állítva.
 
 ```json
 {
@@ -161,11 +161,11 @@ Az dos2unix átalakítás is kihagyja a skipDos2Unix igaz értékre állításá
 
 ####  <a name="property-script"></a>Tulajdonság: parancsfájl
 
-CustomScript egy felhasználó által definiált parancsfájl végrehajtása támogatja. A parancsprogram beállításait commandToExecute és fileUris egyesítendő egy egyszeri beállítás. Nem állíthatja be az Azure storage- vagy GitHub gist letölthető egy fájl egyszerűen kódolhatja a parancsfájl-beállításként. Parancsfájl kicserélt commandToExecute és fileUris használható.
+A CustomScript támogatja a felhasználó által definiált parancsfájlok végrehajtását. A commandToExecute és a fileUris egyetlen beállításba való egyesítésére szolgáló parancsfájl-beállítások. Ahelyett, hogy az Azure Storage-ból vagy a GitHub-címről szeretné letölteni a fájlt, egyszerűen beállíthatja a szkriptet. A szkript használható a commandToExecute és a fileUris cseréjére.
 
-A parancsfájl **kell** base64 kódolású legyen.  A parancsfájl is **igény szerint** gzip'ed lehet. A parancsfájl-beállítást a nyilvános vagy védett beállítások használható. A parancsfájl-paraméter adatok maximális mérete 256 KB. Ha a parancsfájl meghaladja ezt a méretet, akkor nem lesz végrehajtva.
+A szkriptnek Base64 kódolással kell **rendelkeznie** .  A parancsfájl **opcionálisan** is gzip'ed. A parancsfájl-beállítás nyilvános vagy védett beállításokban is használható. A parancsfájl-paraméter adatmennyiségének maximális mérete 256 KB. Ha a parancsfájl mérete meghaladja ezt a méretet, a rendszer nem hajtja végre.
 
-Ha például a következő parancsfájl menti a fájlt /script.sh/ megadott.
+Például a következő parancsfájl mentve a fájl-vagy script.sh/.
 
 ```sh
 #!/bin/sh
@@ -174,7 +174,7 @@ apt update
 apt upgrade -y
 ```
 
-A megfelelő CustomScript parancsfájl-beállítást szeretné állítható össze a következő parancs végrehajtásával.
+A megfelelő CustomScript parancsfájl-beállítást a következő parancs kimenetével lehet létrehozni.
 
 ```sh
 cat script.sh | base64 -w0
@@ -186,23 +186,23 @@ cat script.sh | base64 -w0
 }
 ```
 
-A parancsfájl dönthet úgy, hogy gzip'ed további csökkentése érdekében a mérete (a legtöbb esetben). (CustomScript automatikusan észleli a gzip-tömörítés használatát.)
+A parancsfájl opcionálisan gzip'ed a méret csökkentése érdekében (a legtöbb esetben). (A CustomScript automatikusan észleli a gzip tömörítés használatát.)
 
 ```sh
 cat script | gzip -9 | base64 -w 0
 ```
 
-CustomScript parancsprogram végrehajtása a következő algoritmust használ.
+A CustomScript a következő algoritmust használja a parancsfájlok végrehajtásához.
 
- 1. vyhodnocení, a parancsfájl értékének hossza nem haladja meg a 256 KB.
- 1. Base64-dekódolást a parancsfájl érték
- 1. _Próbálja meg_ gunzip, a Base64-kódolású érték dekódovat.
- 1. a dekódolt (és opcionálisan kibontott) értéket írni lemezre (/ var/lib/waagent/custom-script/#/script.sh)
- 1. hajtsa végre a parancsfájl-_ / bin/sh – c /var/lib/waagent/custom-script/#/script.sh használatával.
+ 1. a parancsfájl értékének hossza nem haladja meg a 256 KB-ot.
+ 1. a parancsfájl értékének Base64 dekódolása
+ 1. a Base64 dekódolású érték gunzip kísérlete
+ 1. a dekódolású (és opcionálisan kibontott) érték írása a lemezre (/var/lib/waagent/Custom-script/#/script.sh)
+ 1. a szkript végrehajtása _/bin/sh-c/var/lib/waagent/Custom-script/#/script.sh. használatával
 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletes JSON-sémájában az egyéni szkriptek futtatására szolgáló bővítmény futtatása során egy Azure Resource Manager-sablon üzembe helyezése Azure Resource Manager-sablon is használható. A mintasablon, amely tartalmazza az egyéni szkriptek bővítménye, itt található [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
+Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletezett JSON-séma használható Azure Resource Manager sablonban az egyéni parancsfájl-bővítmény futtatásához Azure Resource Manager sablon központi telepítésekor. Az egyéni szkriptek kiterjesztését tartalmazó minta sablon itt található, [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 
 ```json
@@ -210,7 +210,7 @@ Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource
   "name": "config-app",
   "type": "extensions",
   "location": "[resourceGroup().location]",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2019-03-01",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', concat(variables('vmName'),copyindex()))]"
   ],
@@ -234,10 +234,10 @@ Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource
 ```
 
 >[!NOTE]
->Ezek a tulajdonságnevek megkülönböztetik a kis-és nagybetűket. Alkalmazástelepítéssel kapcsolatos problémák elkerülése érdekében használja a nevek itt látható módon.
+>Ezek a tulajdonságok nevei megkülönböztetik a kis-és nagybetűket. Az üzembe helyezési problémák elkerüléséhez használja az itt látható neveket.
 
 ## <a name="azure-cli"></a>Azure CLI
-Azure CLI-vel használatakor az egyéni szkriptek futtatására szolgáló bővítmény futtatása hozzon létre egy konfigurációs fájlt vagy fájlokat. Minimális "commandToExecute" kell rendelkeznie.
+Ha az Azure CLI használatával futtatja az egyéni szkriptek bővítményét, hozzon létre egy konfigurációs fájlt vagy fájlt. Legalább a "commandToExecute" értékkel kell rendelkeznie.
 
 ```azurecli
 az vm extension set \
@@ -247,7 +247,7 @@ az vm extension set \
   --protected-settings ./script-config.json
 ```
 
-Opcionálisan megadhatja a beállításokat a parancsban formázott JSON-karakterláncot. Ez lehetővé teszi, hogy a konfigurációt a végrehajtás során, és a egy külön konfigurációs fájlt nélkül adható meg.
+A parancs beállításait JSON formátumú karakterláncként is megadhatja. Ez lehetővé teszi, hogy a konfiguráció a végrehajtás során legyen meghatározva, külön konfigurációs fájl nélkül.
 
 ```azurecli
 az vm extension set \
@@ -260,7 +260,7 @@ az vm extension set \
 
 ### <a name="azure-cli-examples"></a>Azure parancssori felületi (CLI) példák
 
-#### <a name="public-configuration-with-script-file"></a>Parancsfájl-nyilvános konfiguráció
+#### <a name="public-configuration-with-script-file"></a>Nyilvános konfiguráció parancsfájl-fájllal
 
 ```json
 {
@@ -269,7 +269,7 @@ az vm extension set \
 }
 ```
 
-Az Azure CLI-parancsot:
+Azure CLI-parancs:
 
 ```azurecli
 az vm extension set \
@@ -279,7 +279,7 @@ az vm extension set \
   --settings ./script-config.json
 ```
 
-#### <a name="public-configuration-with-no-script-file"></a>Nyilvános konfiguráció nincs parancsfájlt
+#### <a name="public-configuration-with-no-script-file"></a>Parancsfájl nélküli nyilvános konfiguráció
 
 ```json
 {
@@ -287,7 +287,7 @@ az vm extension set \
 }
 ```
 
-Az Azure CLI-parancsot:
+Azure CLI-parancs:
 
 ```azurecli
 az vm extension set \
@@ -297,11 +297,11 @@ az vm extension set \
   --settings ./script-config.json
 ```
 
-#### <a name="public-and-protected-configuration-files"></a>Nyilvános és a védett konfigurációs fájlok
+#### <a name="public-and-protected-configuration-files"></a>Nyilvános és védett konfigurációs fájlok
 
-Egy nyilvános konfigurációs fájl használatával adja meg a parancsfájl URI azonosítója. Egy védett konfigurációs fájl használatával adja meg a futtatandó parancsot.
+A parancsfájl URI azonosítójának megadásához egy nyilvános konfigurációs fájlt kell használnia. A futtatni kívánt parancs megadásához egy védett konfigurációs fájlt kell használnia.
 
-Nyilvános konfigurációs fájlt:
+Nyilvános konfigurációs fájl:
 
 ```json
 {
@@ -309,7 +309,7 @@ Nyilvános konfigurációs fájlt:
 }
 ```
 
-Védett konfigurációs fájlt:  
+Védett konfigurációs fájl:  
 
 ```json
 {
@@ -317,7 +317,7 @@ Védett konfigurációs fájlt:
 }
 ```
 
-Az Azure CLI-parancsot:
+Azure CLI-parancs:
 
 ```azurecli
 az vm extension set \
@@ -330,19 +330,19 @@ az vm extension set \
 ```
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Az egyéni Szkriptbővítmény futtatásakor a szkript a létrehozott vagy letöltött, egy olyan könyvtárba, amely az alábbi példához hasonló. A parancs kimenete is ebben a könyvtárban, a mentett `stdout` és `stderr` fájlokat.
+Az egyéni szkriptek bővítményének futtatásakor a szkript az alábbi példához hasonló könyvtárba jön létre vagy töltődik le. A parancs kimenete is ebbe a könyvtárba kerül a `stdout` és `stderr` a fájlokba.
 
 ```bash
 /var/lib/waagent/custom-script/download/0/
 ```
 
-Hibaelhárítás, először a Linux-ügynök naplóban, győződjön meg arról, a bővítmény futtatta, ellenőrizze:
+A hibakereséshez először ellenőrizze a Linux-ügynök naplóját, győződjön meg arról, hogy a bővítmény futott, majd ellenőrizze a következőt:
 
 ```bash
 /var/log/waagent.log 
 ```
 
-Bővítmény végrehajtása kell keresnie, a következőhöz hasonlóan kell kinéznie:
+Meg kell keresnie a bővítmények végrehajtását, így a következőképpen fog kinézni:
 ```text
 2018/04/26 17:47:22.110231 INFO [Microsoft.Azure.Extensions.customScript-2.0.6] [Enable] current handler state is: notinstalled
 2018/04/26 17:47:22.306407 INFO Event: name=Microsoft.Azure.Extensions.customScript, op=Download, message=Download succeeded, duration=167
@@ -353,18 +353,18 @@ Bővítmény végrehajtása kell keresnie, a következőhöz hasonlóan kell kin
 2018/04/26 17:47:23.476151 INFO [Microsoft.Azure.Extensions.customScript-2.0.6] Enable extension [bin/custom-script-shim enable]
 2018/04/26 17:47:24.516444 INFO Event: name=Microsoft.Azure.Extensions.customScript, op=Enable, message=Launch command succeeded: bin/custom-sc
 ```
-Megjegyzés: bizonyos szempontok:
-1. Engedélyezése esetén az, hogy a parancs futtatásának megkezdése.
-2. Letöltési vonatkozik, a CustomScript bővítmény csomag letöltése az Azure-ban, a parancsfájlok nem megadott fileUris.
+Néhány Megjegyzés:
+1. Az engedélyezés az, amikor a parancs elindul.
+2. A letöltés az Azure-ból származó CustomScript-bővítmény-csomag letöltésére vonatkozik, nem a fileUris megadott parancsfájl-fájlokra.
 
 
-Az Azure-Szkriptbővítménnyel hoz létre a napló, amely itt található:
+Az Azure script bővítmény létrehoz egy naplót, amelyet itt talál:
 
 ```bash
 /var/log/azure/custom-script/handler.log
 ```
 
-Meg kell keresnie az egyes végrehajtását, a következőhöz hasonlóan kell kinéznie:
+Meg kell keresnie az egyéni végrehajtást, így a következőképpen fog kinézni:
 ```text
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=start
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=pre-check
@@ -390,18 +390,18 @@ time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=end
 ```
 Itt láthatja:
-* Ez a napló engedélyezése parancs kezdési.
-* A bővítmény átadott beállítások
-* A bővítmény letöltése a fájl- és az eredmény az adott.
-* A parancs futtatása és az eredmény.
+* Az enable parancs indítása ez a napló
+* A bővítménynek átadott beállítások
+* A kiterjesztés fájljának letöltése és eredménye.
+* A futtatandó parancs és az eredmény.
 
-Azure CLI-vel is lekérhet az egyéni Szkriptbővítmény végrehajtási állapotát:
+Az egyéni szkriptek bővítményének végrehajtási állapotát az Azure CLI használatával is lekérheti:
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM
 ```
 
-A kimenet hasonlít az alábbi szöveget:
+A kimenet a következő szöveghez hasonlít:
 
 ```azurecli
 info:    Executing command vm extension get
@@ -414,5 +414,5 @@ info:    vm extension get command OK
 ```
 
 ## <a name="next-steps"></a>További lépések
-A kód, az aktuális problémák és a verziók megtekintéséhez lásd: [egyéni parancsfájl-bővítmény – linux-tárház](https://github.com/Azure/custom-script-extension-linux).
+A kód, az aktuális problémák és a verziók megtekintéséhez lásd: [Custom-script-Extension-Linux](https://github.com/Azure/custom-script-extension-linux)adattár.
 

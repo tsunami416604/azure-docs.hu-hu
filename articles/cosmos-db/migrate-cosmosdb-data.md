@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.author: bharathb
-ms.openlocfilehash: 041f9c95b22fd4b8c238c603deb0558f2bca01a8
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a4de902e51b101d14aac599c9aad8c4feb86a9c6
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737627"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624608"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Több száz terabájtnyi adat migrálása az Azure Cosmos DB-be 
 
@@ -124,7 +124,7 @@ Mivel az áttelepítést a lehető leghamarabb el kell végezni, célszerű mini
 
 Az áttelepítés befejezése után frissítheti az indexelést.  
 
-## <a name="migration-process"></a>Áttelepítési folyamat 
+## <a name="migration-process"></a>Migrálási folyamat 
 
 Az előfeltételek teljesítése után az alábbi lépéseket követve áttelepítheti az adatátvitelt:  
 
@@ -140,9 +140,16 @@ Az előfeltételek teljesítése után az alábbi lépéseket követve áttelep�
 
 6. Ezen hibák némelyike a forrásadatok helytelen dokumentumai miatt lehet. Ezeket azonosítani és rögzíteni kell. Ezt követően újra kell futtatnia az importálás lépést a sikertelen partíciók között a visszatöltéshez. 
 
-Az áttelepítés befejezése után ellenőrizheti, hogy a dokumentumok száma Azure Cosmos DB-e, és megegyezik-e a forrás-adatbázisban lévő dokumentumok számával. Ebben a példában a Azure Cosmos DB teljes mérete 65 terabájtra van kialakítva. A Migrálás után az indexelés szelektíven bekapcsolható, és az RUs a számítási feladatok műveletei által megkövetelt szintre is csökkenthető.   
+Az áttelepítés befejezése után ellenőrizheti, hogy a dokumentumok száma Azure Cosmos DB-e, és megegyezik-e a forrás-adatbázisban lévő dokumentumok számával. Ebben a példában a Azure Cosmos DB teljes mérete 65 terabájtra van kialakítva. A Migrálás után az indexelés szelektíven bekapcsolható, és az RUs a számítási feladatok műveletei által megkövetelt szintre is csökkenthető.
+
+## <a name="contact-the-azure-cosmos-db-team"></a>Kapcsolatfelvétel a Azure Cosmos DB csapattal
+Bár a nagy méretű adathalmazok sikeres áttelepítésére a nagyméretű adatkészletek Azure Cosmos DB, a nagyméretű áttelepítések esetében azt javasoljuk, hogy az adatmodellezés és az általános architektúra-felülvizsgálat ellenőrzéséhez a Azure Cosmos DB termék csapatát is el kell érnie. Az adatkészletek és a számítási feladatok alapján a termék csapata más teljesítményre és költséghatékonyságra is utalhat, amelyek alkalmazhatók az Ön számára. Ha a nagyléptékű áttelepítéssel kapcsolatos segítségért szeretne segítséget nyújtani a Azure Cosmos DB csapatának, nyisson meg egy támogatási jegyet az "általános tanácsadó" probléma típusa és a "nagy (TB +) Migrálás" problémás altípuson az alábbi ábrán látható módon.
+
+![Áttelepítési támogatás témakör](./media/migrate-cosmosdb-data/supporttopic.png)
+
 
 ## <a name="next-steps"></a>További lépések
 * További információ: a [.net](bulk-executor-dot-net.md) és a [Java](bulk-executor-java.md)szolgáltatásban a tömeges végrehajtó függvénytárat használó minta alkalmazások kipróbálása. 
 * A tömeges végrehajtó függvénytár integrálva van a Cosmos DB Spark-összekötőbe, és további információt a [Azure Cosmos db Spark-összekötő](spark-connector.md) című cikkben talál.  
+* A nagyméretű áttelepítéssel kapcsolatos további segítségért lépjen kapcsolatba a Azure Cosmos DB termék csapatával, és nyisson meg egy támogatási jegyet az "általános tanácsadó" probléma típusa és a "nagy (TB +) Migrálás" problémás altípusban. 
 

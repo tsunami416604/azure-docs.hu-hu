@@ -4,12 +4,12 @@ ms.service: azure
 ms.topic: include
 ms.date: 06/13/2019
 ms.author: sttramer
-ms.openlocfilehash: bfefefc365f2725f9f3feacf1e6159d09cc43ba9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: f443b11207f6844bcffc1c7963209bc315f725b4
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68736204"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623853"
 ---
 ## <a name="use-azure-cloud-shell"></a>Az Azure Cloud Shell használata
 
@@ -25,7 +25,7 @@ Azure Cloud Shell elindítása:
 
 A következő cikkben szereplő kód futtatásához Azure Cloud Shell:
 
-1. Cloud Shell elindítása.
+1. Nyissa meg a Cloud Shellt.
 1. A kód másolásához kattintson a kód blokk **Másolás** gombjára. 
 1. Illessze be a kódot a Cloud Shell-munkamenetbe a **CTRL**+**SHIFT**+**v** Windows és Linux rendszeren, vagy a **cmd**+**SHIFT**+**v** MacOS rendszeren. 
 1. A kód futtatásához nyomja le az **ENTER** billentyűt.

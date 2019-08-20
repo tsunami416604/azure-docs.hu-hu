@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 8/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f795822d76def4a6695a4746fba7e8566041cb2b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 70b43c65703316e5dee8e9cf2cf86fe982a49592
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295556"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624770"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Veszélyforrások észlelése az Azure szolgáltatási rétegében Azure Security Center
 
@@ -47,6 +47,7 @@ Security Center a hálózati rétegbeli elemzések a minta [IPFIX adatokon](http
 |**Gyanús bejövő SSH-hálózati tevékenység**|A mintavételes hálózati forgalom elemzése rendellenes bejövő SSH-kommunikációt észlelt az üzemelő példányban található erőforráshoz. Az erőforráshoz tartozó bejövő kapcsolatok viszonylag nagy száma ebben a környezetben rendellenesnek számít. Ez a tevékenység arra utalhat, hogy megpróbálja kikényszeríteni az SSH-felületet.
 |**Gyanús bejövő RDP-hálózati tevékenység több forrásból**|A mintavételes hálózati forgalom elemzése rendellenes bejövő RDP-kommunikációt észlelt több forrásból a telepítésben lévő erőforráshoz. Az erőforráshoz csatlakozó különböző egyedi IP-címek rendellenesnek számítanak ebben a környezetben. Ez a tevékenység arra utalhat, hogy az RDP-felületet több gazdagépről (botnet) próbálja meg kikényszeríteni.|
 |**Gyanús bejövő RDP-hálózati tevékenység**|A mintavételes hálózati forgalom elemzése rendellenes bejövő RDP-kommunikációt észlelt az üzemelő példány egyik erőforrásához. Az erőforráshoz tartozó bejövő kapcsolatok viszonylag nagy száma ebben a környezetben rendellenesnek számít. Ez a tevékenység arra utalhat, hogy megpróbálja kikényszeríteni az SSH-felületet.|
+|**A rendszer kártékony címekkel rendelkező hálózati kommunikációt észlelt**|A mintavételen átvett hálózati forgalom elemzése egy lehetséges parancs-és vezérlési (C & C) kiszolgálóval való kommunikációt észlelt az üzemelő példányból származó erőforrásból. Megjegyzendő, hogy ez a tevékenység külső entitások számára rosszindulatúként sorolhatja be az Ön IP-címét is.|
 
 Annak megismeréséhez, hogy a Security Center hogyan használhatják a hálózattal kapcsolatos jeleket a veszélyforrások elleni védelem alkalmazására, tekintse [meg a Azure Security Center heurisztikus DNS-észleléseit](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)
 ## Azure felügyeleti réteg (Azure Resource Manager) (előzetes verzió)<a name ="management-layer"></a>
@@ -73,8 +74,8 @@ A Security Center egy további védelmi réteget biztosít Azure Resource Manage
 > A fenti elemzések közül több Microsoft Cloud App Securityt (MCAS) működtet. Ezen elemzések kihasználása érdekében aktivált MCAS-licencre van szükség. Ha rendelkezik MCAS-licenccel, akkor ezek a riasztások alapértelmezés szerint engedélyezve vannak. A letiltása:
 >
 > 1. A Security Center panelen válassza a **biztonsági házirend**elemet. A módosítani kívánt előfizetés esetében kattintson a **beállítások szerkesztése**elemre.
-> 2. Kattintson a veszélyforrások észlelése elemre.
+> 2. Kattintsona veszélyforrások észlelése elemre.
 > 3. Az **integráció engedélyezése**területen törölje a **jelet a Microsoft Cloud app Security az adataihoz való hozzáféréshez**jelölőnégyzetből, majd kattintson a **Mentés**gombra.
 
 >[!NOTE]
->Azure Security Center a biztonsággal kapcsolatos ügyféladatokat ugyanabban a földrajzi régióban tárolja, mint az erőforrása. Ha a Microsoft még nincs központilag telepítve Azure Security Center az erőforrás geo-ban, akkor a Egyesült Államok tárolja azokat. Ha a Microsoft Cloud App Security (MCAS) engedélyezve van, ezeket az információkat a MCAS földrajzi elhelyezkedési szabályainak megfelelően tárolja a rendszer. [További információt a nem regionális szolgáltatások](http://azuredatacentermap.azurewebsites.net/)adattárolási szolgáltatásában talál.
+>Azure Security Center a biztonsággal kapcsolatos ügyféladatokat ugyanabban a földrajzi régióban tárolja, mint az erőforrása. Ha a Microsoft még nincs központilag telepítve Azure Security Center az erőforrás geo-ban, akkor a Egyesült Államok tárolja azokat. Ha a Microsoft Cloud App Security (MCAS) engedélyezve van, ezeket az információkat a MCAS földrajzi elhelyezkedési szabályainak megfelelően tárolja a rendszer. [További információt a nem regionális szolgáltatások](https://azuredatacentermap.azurewebsites.net/)adattárolási szolgáltatásában talál.

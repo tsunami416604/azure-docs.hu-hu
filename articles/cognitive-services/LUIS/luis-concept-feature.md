@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: e85f9a90af778a7e68bf761d8d2159e808cf122d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 829054064a21b2fb8da2bd975501bfcd0840e7eb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639212"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624573"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>A LUIS-alkalmazás kifejezés-listájának funkciói
 
@@ -69,7 +69,7 @@ Mivel a víz törzsének szavai vagy kifejezései szinonimák, és a hosszúság
 
 ### <a name="non-interchangeable-lists"></a>Nem felcserélhető felsorolások
 
-A nem felcserélhető kifejezések listája egy olyan jel, amely növeli az észlelést a LUIS számára. A kifejezés lista olyan szavakat vagy kifejezéseket jelöl, amelyek nagyobb jelentőséggel rendelkeznek más szóval. Ez segít a szándékok és az entitások észlelésének meghatározásában. Tegyük fel például, hogy van egy olyan tulajdonosi tartománya, mint a globális utazás (azaz a kultúrák között, de még mindig egyetlen nyelven). Vannak olyan szavak és kifejezések, amelyek fontosak az alkalmazáshoz, de nem szinonimák. 
+A nem felcserélhető kifejezések listája egy olyan jel, amely növeli az észlelést a LUIS számára. A kifejezés lista a más szavaknál jelentősebb szavakat vagy kifejezéseket jelöl. Ez segít a szándékok és az entitások észlelésének meghatározásában. Tegyük fel például, hogy van egy olyan tulajdonosi tartománya, mint a globális utazás (azaz a kultúrák között, de még mindig egyetlen nyelven). Vannak olyan szavak és kifejezések, amelyek fontosak az alkalmazáshoz, de nem szinonimák. 
 
 Egy másik példa a ritka, tulajdonosi és idegen szavakat nem felcserélhető kifejezések listáját használja. Előfordulhat, hogy a LUIS nem ismeri fel a ritka és a szellemi tulajdont képező szavak, valamint a külső szavakat (kívül az alkalmazás kulturális környezet). A nem cserélhető beállítás azt jelzi, hogy a ritka szavak készletét képezi egy osztályt, amely a LUIS kell további ismeri fel, de azok nem szinonimák vagy cserélhető, egymással.
 

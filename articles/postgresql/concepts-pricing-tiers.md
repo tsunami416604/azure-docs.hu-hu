@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 2f6be256801983924cc794d6c8b8fa31e39959e1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f65bc0a9969ac713c2fb9f8629b97fbe522e9fe0
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967856"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624848"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Árképzési szintek Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -67,7 +67,7 @@ A tárolási korlátokat a általános célú és a memória optimalizált szint
 |              | **általános célú** | **Memória optimalizálva** |
 |:-------------|:--------------------|:---------------------|
 | Tárolótípus | Azure Premium Storage | Azure Premium Storage |
-| Tároló mérete | 32 GB – 16 TB| 32 – 16 TB |
+| Tároló mérete | 32 GB – 16 TB| 32 GB – 16 TB |
 | Tárolási növekmény mérete | 1 GB | 1 GB |
 | IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
 

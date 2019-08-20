@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 89b8b5f8c574de033fabf6861e24fc7d2b31e171
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 12d556fd9c37b83a919b830d155250e9eaa64128
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855104"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624244"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Beszédszintézis-jelölőnyelv (SSML)
 
@@ -31,6 +31,10 @@ A SSML Speech Services-implementációja World Wide Web Consortium [Speech szint
 Válasszon a standard és a neurális hangok közül, vagy hozzon létre saját egyéni hangját a termék vagy a márka számára. a 75 + standard hangok több mint 45 nyelven és területi beállításban érhetők el, és az 5 neurális hang 4 nyelven és területi beállításban érhető el. A támogatott nyelvek, területi beállítások és hangok (neurális és standard) teljes listáját a [nyelvi támogatás](language-support.md)című témakörben tekintheti meg.
 
 A standard, a neurális és az egyéni hangok megismeréséhez lásd a [szöveg – beszéd áttekintést](text-to-speech.md).
+
+## <a name="special-characters"></a>Speciális karakterek
+
+Ha a SSML-t használja a szöveg és a szintetizált beszéd átalakítására, ne feledje, hogy az XML-hez hasonlóan a speciális karakterek, például az idézőjelek, az aposztrófok és a szögletes zárójelek is meg kell menekülniük. További információ [: Extensible Markup Language (XML) 1,0: D](https://www.w3.org/TR/xml/#sec-entexpand)függelék
 
 ## <a name="supported-ssml-elements"></a>Támogatott SSML elemek
 
@@ -142,6 +146,7 @@ Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismer�
 |-------|------|-------------|
 | `en-US-JessaNeural` | típus =`cheerful` | Pozitív és boldog érzelemet ad ki |
 | | típus =`empathy` | A gondozás és a megértés értelme |
+| | típus =`chat` | Beszéljen egy hétköznapi, nyugodt hangnemben |
 | `zh-CN-XiaoxiaoNeural` | típus =`newscast` | Egy formális hangjelzést ad a hírekhez hasonló módon |
 | | típus =`sentiment` | Egy megható üzenetet vagy egy történetet közvetít |
 

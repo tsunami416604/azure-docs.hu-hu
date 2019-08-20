@@ -4,14 +4,14 @@ description: Azure Resource Manager segítségével az erőforrások áthelyezé
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 53482fdd760517967c9a4a976b43b64ba745c637
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 114e0d8e935aa8e6ac3f70a34a8050b19758fb42
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542965"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624559"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe
 
@@ -32,9 +32,11 @@ Az erőforrások áthelyezése előtt néhány fontos lépést kell végrehajtan
    * [Útmutató App Services](./move-limitations/app-service-move-limitations.md)
    * [Útmutató az Azure DevOps Serviceshez](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [Klasszikus üzembe helyezési modell – útmutató](./move-limitations/classic-model-move-limitations.md) – klasszikus számítás, klasszikus tárolás, klasszikus virtuális hálózatok és Cloud Services
+   * [Útmutató a hálózatkezelés áthelyezéséhez](./move-limitations/networking-move-limitations.md)
    * [Útmutató Recovery Services](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Útmutató Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
-   * [A virtuális hálózatok útmutatást nyújtanak](./move-limitations/virtual-network-move-limitations.md)
+
+   Ha a cél erőforráscsoport virtuális hálózatot tartalmaz, a függő erőforrások állapota letilthatja az áthelyezést, még akkor is, ha ezek az erőforrások nem vesznek részt az áthelyezésben. További információ: [hálózati áthelyezési útmutató](./move-limitations/virtual-network-move-limitations.md).
 
 1. A forrás-és a cél-előfizetésnek aktívnak kell lennie. Ha problémája van egy letiltott fiók engedélyezésével, [hozzon létre egy Azure-támogatási kérelmet](../azure-supportability/how-to-create-azure-support-request.md). Válassza ki **előfizetés-kezelési** issue type számára.
 
@@ -97,10 +99,11 @@ Az erőforrások áthelyezése előtt néhány fontos lépést kell végrehajtan
 1. **Az előfizetések közötti áthelyezéshez az erőforrásnak és a hozzá tartozó erőforrásoknak ugyanabban az erőforráscsoporthoz kell lenniük, és együtt kell őket áthelyezni.** A felügyelt lemezekkel rendelkező virtuális gépek például megkövetelik, hogy a virtuális gép és a felügyelt lemezek együtt legyenek áthelyezve a többi függő erőforrással együtt.
 
    Ha egy erőforrást új előfizetésre helyez át, ellenőrizze, hogy az erőforrás rendelkezik-e függő erőforrásokkal, és hogy azok ugyanabban az erőforráscsoporthoz találhatók-e. Ha az erőforrások nem ugyanabban az erőforráscsoporthoz találhatók, ellenőrizze, hogy az erőforrások összevonható-e ugyanabba az erőforráscsoporthoz. Ha igen, az összes erőforrást ugyanabba az erőforráscsoporthoz helyezheti át egy áthelyezési művelettel az erőforráscsoportok között.
-    
-További információ: [forgatókönyv az előfizetések közötti áthelyezéshez](#scenario-for-move-across-subscriptions).
+
+   További információ: [forgatókönyv az előfizetések közötti áthelyezéshez](#scenario-for-move-across-subscriptions).
 
 ## <a name="scenario-for-move-across-subscriptions"></a>Az előfizetések közötti áthelyezés forgatókönyve
+
 Az erőforrások egyik előfizetésből egy másikba való áthelyezése három lépésből álló folyamat:
 
 ![előfizetések közötti áthelyezés forgatókönyve](./media/resource-group-move-resources/cross-subscription-move-scenario.png)

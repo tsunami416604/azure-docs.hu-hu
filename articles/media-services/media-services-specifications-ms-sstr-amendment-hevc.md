@@ -3,7 +3,7 @@ title: Azure Media Services-Smooth Streaming Protocol (MS-SSTR) a HEVC-re vonatk
 description: 'Ez a specifikáció a töredezett MP4-alapú élő streamek protokollját és formátumát ismerteti Azure Media Services HEVC. Ez a Smooth Streaming protokoll dokumentációjának (MS-SSTR) módosítása, amely támogatja a HEVC betöltését és továbbítását. Ebben a cikkben csak a HEVC továbbításához szükséges módosítások vannak megadva, kivéve a következőt: "(nincs változás)", amely azt jelzi, hogy a szöveg másolása csak pontosítás céljából történik.'
 services: media-services
 documentationcenter: ''
-author: cenkdin
+author: johndeu
 manager: femila
 editor: ''
 ms.assetid: f27d85de-2cb8-4269-8eed-2efb566ca2c6
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: dfd6de1ab2e4530afb56d1c6c67e6d78eb9ee474
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: e0637b2a015a610f9c3f92809f63a442980b63b1
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015682"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624804"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Smooth Streaming protokoll (MS-SSTR) HEVC vonatkozó módosítása 
 
@@ -27,7 +27,7 @@ ms.locfileid: "69015682"
 
 Ez a cikk részletes módosításokat tartalmaz az [MS-SSTR] Smooth Streaming protokoll-specifikációban, amely lehetővé teszi a HEVC-kódolt videók Smooth Streamingét. Ebben a specifikációban csak azokat a módosításokat vázoljuk, amelyek a HEVC videós kodek továbbításához szükségesek. A cikk ugyanazt a számozási sémát követi, mint az [MS-SSTR] specifikáció. A cikkben ismertetett üres főcímek az olvasót az [MS-SSTR] specifikációban foglalt helyükre irányítják.  "(Nincs változás)" – azt jelzi, hogy a szöveg másolása csak pontosítási célra történik.
 
-A cikk technikai implementációs követelményeket biztosít a HEVC video codec Smooth Streaming-jegyzékben való jelzéséhez, és a normatív referenciák frissülnek az aktuális MPEG-szabványokra, amelyek közé tartozik a HEVC, a HEVC Common Encryption és a Box a rendszer frissítette az ISO-alapú adathordozó-fájlformátum nevét, hogy konzisztensek legyenek a legújabb specifikációkkal. 
+A cikk a HEVC video codec ("hev1" vagy "hvc1" formátumú vágányok) jelzésével kapcsolatos technikai megvalósítási követelményeket ismerteti egy Smooth Streaming jegyzékfájlban, és a normatív referenciák frissülnek az aktuális MPEG-szabványokra. a HEVC Common Encryption, a HEVC és a Box-nevek belefoglalásával a rendszer frissítette a legújabb specifikációkkal összhangban lévő ISO-alapú adathordozó-fájlformátumot. 
 
 A hivatkozott Smooth Streaming protokoll specifikációja [MS-SSTR] az élő és igény szerinti digitális médiatartalmak (például hang és videó) továbbítására használt huzal formátumát ismerteti a következő módon: kódolóról webkiszolgálóra, kiszolgálóról másik kiszolgálóra, valamint egy kiszolgálóról HTTP-ügyfélre.
 Az MPEG-4 ([[MPEG4-ra])](https://go.microsoft.com/fwlink/?LinkId=327787)alapú adatstruktúra http-n keresztüli kézbesítése lehetővé teszi a közel valós időben történő zökkenőmentes váltást a tömörített médiatartalmak különböző minőségi szintjei között. Ennek eredményeképpen a HTTP-ügyfél végfelhasználója állandó lejátszási élményt nyújt, még akkor is, ha a hálózati és a videó megjelenítési feltételei változnak az ügyfélszámítógépen vagy az eszközön.
@@ -148,10 +148,12 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
 >   **FourCC (változó):** Egy négy karakterből álló kód, amely meghatározza, hogy melyik adathordozó-formátumot használja a rendszer az egyes mintákhoz. A következő adattartományok vannak fenntartva a következő szemantikai jelentésekkel:
 > 
 > * "hev1": Az ehhez a számhoz tartozó videós minták a HEVC videót használják az [ISO/IEC-14496-15] által meghatározott "hev1" leírási formátum használatával.
+>
+> * "hvc1": Az ehhez a számhoz tartozó videós minták a HEVC videót használják az [ISO/IEC-14496-15] által meghatározott "hvc1" leírási formátum használatával.
 > 
 >   **CodecPrivateData (változó):** Az adathordozó-formátumra jellemző paramétereket, valamint a nyomon követésben szereplő összes mintában közösen megadott adatok hexadecimális kódolású bájtok sztringként jelennek meg. A byte Sequence formátuma és szemantikai jelentése a következőképpen változik a **FourCC** mező értékével:
 > 
->   * Ha egy TrackElement leírja a HEVC videót, a **FourCC** mező értéke **"hev1"** és;
+>   * Ha egy TrackElement leírja a HEVC-videót, a **FourCC** mező értéke **"hev1"** vagy **"hvc1"** .
 > 
 >   A **CodecPrivateData** mező a következő bájtos sorozat hexadecimális kódolású karakterlánc-ábrázolását tartalmazza, amelyet a ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) adott meg: (nincs változás az MS-SSTR)
 > 
@@ -173,7 +175,7 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
 
 ### <a name="223-fragment-request"></a>2.2.3 töredék-kérelem 
 
->   **Megjegyzés**: A 2. és a "hev1" **MinorVersion** kért alapértelmezett adathordozó-formátum a következő: "iso8", az [ISO/IEC 14496-12] ISO-alap médiafájl-formátuma pedig a negyedik kiadás, a [ISO/IEC 23001-7] Common encryption Second Edition.
+>   **Megjegyzés**: A 2. **MinorVersion** és a "hev1", illetve a "hvc1" alapértelmezett adathordozó-formátuma a következő: "iso8" márka ISO-fájl formátuma [ISO/IEC 14496-12] ISO Base Media File Format negyedik kiadás, és [ISO/IEC 23001-7] Common encryption Second Edition.
 
 ### <a name="224-fragment-response"></a>2.2.4-töredék válasz 
 

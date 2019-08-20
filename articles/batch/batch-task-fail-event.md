@@ -10,14 +10,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/20/2017
+ms.date: 08/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 68c57fbf510d923c4c87bc180a935965a511dc26
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: aa56b0ead8edc17efe74547f6374a3f8888970b5
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322917"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624193"
 ---
 # <a name="task-fail-event"></a>Tevékenység meghiúsult esemény
 
@@ -54,7 +54,7 @@ ms.locfileid: "68322917"
 
 |Elem neve|Type|Megjegyzések|
 |------------------|----------|-----------|
-|jobId|Karakterlánc|A feladatot tartalmazó feladat azonosítója.|
+|jobId|Sztring|A feladatot tartalmazó feladat azonosítója.|
 |id|Sztring|A feladat azonosítója.|
 |taskType|Sztring|A feladat típusa. Ez lehet "JobManager", amely azt jelzi, hogy egy Feladatkezelő feladat vagy "felhasználó", amely azt jelzi, hogy a feladat nem Feladatkezelő feladat. Ez az esemény nem lett kibocsátva a feladat-előkészítési feladatokhoz, a feladat-felszabadítási feladatokhoz és a tevékenységek indításához|
 |systemTaskVersion|Int32|Ez a feladat belső újrapróbálkozási számlálója. A Batch szolgáltatás belsőleg újra tud próbálkozni az átmeneti problémák miatti feladatokkal. Ezek a problémák belső ütemezési hibákat tartalmazhatnak, vagy helytelen állapotú számítási csomópontokból történő helyreállításra tett kísérleteket okozhatnak.|
@@ -67,7 +67,7 @@ ms.locfileid: "68322917"
 
 |Elem neve|Type|Megjegyzések|
 |------------------|----------|-----------|
-|poolId|Karakterlánc|Annak a készletnek az azonosítója, amelyen a feladat futott.|
+|poolId|Sztring|Annak a készletnek az azonosítója, amelyen a feladat futott.|
 |nodeId|Sztring|Annak a csomópontnak az azonosítója, amelyen a feladat futott.|
 
 ###  <a name="multiInstanceSettings"></a>multiInstanceSettings
@@ -87,8 +87,8 @@ ms.locfileid: "68322917"
 
 |Elem neve|Type|Megjegyzések|
 |------------------|----------|-----------|
-|startTime|Datetime|Az az idő, amikor a feladat futása megkezdődött. A "Running" érték a **futó** állapotnak felel meg, így ha a feladat erőforrás-fájlokat vagy alkalmazáscsomagokat határoz meg, akkor a kezdési időpont azt az időpontot jelzi, amikor a feladat megkezdte a letöltését vagy üzembe helyezését.  Ha a feladat újraindult vagy újrapróbálkozott, ez a legutóbbi időpont, amikor a feladat elindult.|
-|endTime|Datetime|Az az idő, amikor a feladat befejeződött.|
+|startTime|DateTime|Az az idő, amikor a feladat futása megkezdődött. A "Running" érték a **futó** állapotnak felel meg, így ha a feladat erőforrás-fájlokat vagy alkalmazáscsomagokat határoz meg, akkor a kezdési időpont azt az időpontot jelzi, amikor a feladat megkezdte a letöltését vagy üzembe helyezését.  Ha a feladat újraindult vagy újrapróbálkozott, ez a legutóbbi időpont, amikor a feladat elindult.|
+|endTime|DateTime|Az az idő, amikor a feladat befejeződött.|
 |exitCode|Int32|A feladat kilépési kódja.|
 |retryCount|Int32|A Batch szolgáltatás által újrapróbált feladatok száma. A feladat újra próbálkozik, ha a nullától eltérő kilépési kóddal kilép a megadott MaxTaskRetryCount.|
 |requeueCount|Int32|A Batch szolgáltatás által a felhasználói kérelem eredményeképpen újravárólistázott feladatok száma.<br /><br /> Ha a felhasználó eltávolít egy készletből származó csomópontokat (a készlet átméretezésével vagy kicsinyítésével), vagy ha a feladat le van tiltva, a felhasználó megadhatja, hogy a csomópontokon futó feladatokat a rendszer újravárólistára helyezi-e a végrehajtáshoz. Ez a szám azt követi nyomon, hogy a feladat hányszor lett újravárólistázott ezen okok miatt.|
