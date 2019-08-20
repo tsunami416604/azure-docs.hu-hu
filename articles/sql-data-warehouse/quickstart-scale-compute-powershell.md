@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 3c3be507fd544ec86790f820830c2275e7703564
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 193aec8de2a6ee34da666a013dcb0d49d85c08b0
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641085"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574856"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Gyors útmutató: Számítások méretezése Azure SQL Data Warehouse a PowerShellben
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ez a gyors útmutató feltételezi, hogy már rendelkezik méretezhető SQL Data Warehouse szolgáltatással. Ha létre kell hoznia egyet, kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
+Ez a rövid útmutató azt feltételezi, hogy már rendelkezik egy méretezhető SQL Data Warehouse. Ha létre kell hoznia egyet, kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -123,4 +123,4 @@ $database | Select-Object DatabaseName,Status
 Ebből az útmutatóból megtudhatta, hogyan tudja méterezni egy adattárház számítási kapacitását. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
->[Adatok betöltése az SQL Data Warehouse-okba](load-data-from-azure-blob-storage-using-polybase.md)
+>[Az adatSQL Data Warehouseba való betöltés](load-data-from-azure-blob-storage-using-polybase.md)

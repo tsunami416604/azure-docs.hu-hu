@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 28ba47c1c0ec053af8632475ad52ab50672eab64
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 9d7dc560d452eba4c31b24a2011254258211bf8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855149"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615736"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Xamarin-alkalmazás létrehozása a Azure Cosmos DB SQL API-fiók használatával
 
@@ -137,7 +137,7 @@ Most tekintsük át röviden, hogyan kommunikál az alkalmazás az Azure Cosmos 
     Az `IDocumentQuery<T>.ExecuteNextAsync<T>` függvény lekéri az eredmények oldalát az Azure Cosmos DB-ből, amely a `HasMoreResults` használatával ellenőrzi, hogy vannak-e még visszaadandó eredmények.
 
 > [!TIP]
-> Azure Cosmos DB tárolók és dokumentumok által működtetett függvények számos funkciója egy URI-t fogad el paraméterként, amely meghatározza a tároló vagy a dokumentum címeit. Ezen URI létrehozása az `URIFactory` osztállyal történik. Az adatbázisokhoz, tárolóhoz és dokumentumokhoz tartozó URI-k mindegyike létrehozható ezzel az osztállyal.
+> Az Azure Cosmos-tárolók és-dokumentumok által működtetett függvények számos funkciója egy URI-t fogad el paraméterként, amely meghatározza a tároló vagy a dokumentum címeit. Ezen URI létrehozása az `URIFactory` osztállyal történik. Az adatbázisokhoz, tárolóhoz és dokumentumokhoz tartozó URI-k mindegyike létrehozható ezzel az osztállyal.
 
 * A `ComsmosDBService.InsertToDoItem` függvény bemutatja, hogyan szúrhat be új dokumentumot:
 

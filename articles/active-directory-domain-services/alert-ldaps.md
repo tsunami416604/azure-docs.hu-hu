@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 8a542f7927ddd834c7273f6ef8b251ddc35e8436
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f9f4a8b52548dad011f5e825fa42c50da970ea7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234188"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613159"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services – Secure LDAP konfiguráció hibaelhárítása
 
-Ez a cikk a [biztonságos LDAP](configure-ldaps.md) a Azure ad domain Serviceshoz való konfigurálásakor felmerülő gyakori problémák megoldásait ismerteti.
+Ez a cikk a [biztonságos LDAP](tutorial-configure-ldaps.md) a Azure ad domain Serviceshoz való konfigurálásakor felmerülő gyakori problémák megoldásait ismerteti.
 
 ## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Secure LDAP hálózati biztonsági csoport konfigurálása
 
@@ -62,7 +62,7 @@ Ha engedélyezve van a biztonságos LDAP, javasoljuk, hogy hozzon létre tovább
 
 **Megoldás:**
 
-Hozzon létre egy új biztonságos LDAP-tanúsítványt a [biztonságos LDAP konfigurálása](configure-ldaps.md) című cikkben ismertetett lépéseket követve.
+Hozzon létre egy új biztonságos LDAP-tanúsítványt a [biztonságos LDAP konfigurálása](tutorial-configure-ldaps.md) című cikkben ismertetett lépéseket követve.
 
 ## <a name="contact-us"></a>Kapcsolat
 A [visszajelzések megosztásához és](contact-us.md)a támogatáshoz forduljon a Azure Active Directory Domain Services termék csapatához.

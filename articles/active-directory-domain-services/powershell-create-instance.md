@@ -1,6 +1,6 @@
 ---
-title: Engedélyezze az Azure Active Directory Domain Services PowerShell-lel |} A Microsoft Docs
-description: Engedélyezze az Azure Active Directory Domain Services PowerShell-lel
+title: Azure Active Directory Domain Services engedélyezése a PowerShell használatával | Microsoft Docs
+description: Azure Active Directory Domain Services engedélyezése a PowerShell használatával
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,36 +15,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: iainfou
-ms.openlocfilehash: daddb2d13aee08fe7294ab2d7f0892bab761562b
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: c6572ab8bc2a10039f327233f983c2e822fba3b0
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472669"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617219"
 ---
-# <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Engedélyezze az Azure Active Directory Domain Services PowerShell-lel
-Ez a cikk bemutatja, hogyan PowerShell-lel az Azure Active Directory (AD) Domain Services engedélyezéséhez.
+# <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Azure Active Directory Domain Services engedélyezése a PowerShell használatával
+Ez a cikk bemutatja, hogyan engedélyezheti Azure Active Directory (AD) tartományi szolgáltatásokat a PowerShell használatával.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
 ## <a name="task-1-install-the-required-powershell-modules"></a>1\. feladat: A szükséges PowerShell-modulok telepítése
 
 ### <a name="install-and-configure-azure-ad-powershell"></a>Az Azure AD PowerShell telepítése és konfigurálása
-Kövesse a cikkben szereplő utasításokat [Azure AD PowerShell-modul telepítéséhez és az Azure AD connect](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+A cikk utasításait követve [telepítse az Azure ad PowerShell-modult, és kapcsolódjon az Azure ad](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)-hez.
 
 ### <a name="install-and-configure-azure-powershell"></a>Az Azure PowerShell telepítése és konfigurálása
-Kövesse a cikkben szereplő utasításokat [az Azure PowerShell-modul telepítése és csatlakozás az Azure-előfizetéshez](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+A cikk utasításait követve [telepítse a Azure PowerShell modult, és kapcsolódjon az Azure-](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)előfizetéséhez.
 
 
-## <a name="task-2-create-the-required-service-principal-in-your-azure-ad-directory"></a>2\. feladat: A szükséges szolgáltatásnév létrehozása az Azure AD-címtár
-Írja be a következő PowerShell-parancsot az Azure AD tartományi szolgáltatásokat az Azure AD-címtár számára szükséges egyszerű szolgáltatás létrehozása.
+## <a name="task-2-create-the-required-service-principal-in-your-azure-ad-directory"></a>2\. feladat: A szükséges egyszerű szolgáltatásnév létrehozása az Azure AD-címtárban
+Írja be a következő PowerShell-parancsot az Azure AD-címtárban Azure AD Domain Serviceshoz szükséges egyszerű szolgáltatásnév létrehozásához.
 ```powershell
 # Create the service principal for Azure AD Domain Services.
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>3\. feladat: Hozzon létre, és az "AAD DC rendszergazdák" csoport konfigurálása
-A következő feladata a felügyeleti feladatok a felügyelt tartomány delegálása használandó rendszergazdai csoport létrehozásához.
+## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>3\. feladat: Az "HRE DC rendszergazdák" csoport létrehozása és konfigurálása
+A következő feladat az a rendszergazda csoport létrehozása, amelyet a rendszer a felügyelt tartomány felügyeleti feladatainak delegálására fog használni.
 ```powershell
 # Create the delegated administration group for AAD Domain Services.
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
@@ -53,7 +53,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
   -MailNickName "AADDCAdministrators"
 ```
 
-Most, hogy létrehozta a csoportot, a felhasználók több hozzáadása a csoporthoz.
+Most, hogy létrehozta a csoportot, adjon hozzá néhány felhasználót a csoporthoz.
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
 $GroupObjectId = Get-AzureADGroup `
@@ -62,22 +62,22 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@contoso100.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-## <a name="task-4-register-the-azure-ad-domain-services-resource-provider"></a>4\. feladat: Az Azure AD tartományi szolgáltatások erőforrás-szolgáltató regisztrálása
-Írja be a következő PowerShell-parancsot az Azure AD tartományi szolgáltatásokhoz az erőforrás-szolgáltató regisztrálásához:
+## <a name="task-4-register-the-azure-ad-domain-services-resource-provider"></a>4\. feladat: A Azure AD Domain Services erőforrás-szolgáltató regisztrálása
+A Azure AD Domain Services erőforrás-szolgáltatójának regisztrálásához írja be a következő PowerShell-parancsot:
 ```powershell
 # Register the resource provider for Azure AD Domain Services with Resource Manager.
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
 ## <a name="task-5-create-a-resource-group"></a>5\. feladat: Hozzon létre egy erőforráscsoportot
-Írja be a következő PowerShell-paranccsal hozzon létre egy erőforráscsoportot:
+Erőforráscsoport létrehozásához írja be a következő PowerShell-parancsot:
 ```powershell
 $ResourceGroupName = "ContosoAaddsRg"
 $AzureLocation = "westus"
@@ -88,13 +88,13 @@ New-AzResourceGroup `
   -Location $AzureLocation
 ```
 
-A virtuális hálózat és az Azure AD tartományi szolgáltatásokkal felügyelt tartományban hozhat létre az erőforráscsoportban.
+Ebben az erőforráscsoporthoz a virtuális hálózatot és a Azure AD Domain Services felügyelt tartományt is létrehozhatja.
 
 
-## <a name="task-6-create-and-configure-the-virtual-network"></a>6\. feladat: Hozzon létre, és a virtuális hálózat konfigurálása
-Hozza létre a virtuális hálózatot, amelyben az Azure AD tartományi szolgáltatások engedélyezése. Győződjön meg arról, hogy az Azure AD tartományi szolgáltatásokhoz hozzon létre egy dedikált alhálózatán. Ne telepítse a munkaterhelési virtuális gépek az dedikált alhálózatban.
+## <a name="task-6-create-and-configure-the-virtual-network"></a>6\. feladat: A virtuális hálózat létrehozása és konfigurálása
+Most hozza létre a virtuális hálózatot, amelyben engedélyezte Azure AD Domain Services. Győződjön meg arról, hogy létrehoz egy dedikált alhálózatot a Azure AD Domain Serviceshoz. Ne helyezzen üzembe munkaterhelési virtuális gépeket ebbe a dedikált alhálózatba.
 
-Írja be a következő PowerShell-parancsok egy kijelölt alhálózatot a virtuális hálózat létrehozása az Azure AD tartományi szolgáltatásokhoz.
+A következő PowerShell-parancsok beírásával hozzon létre egy dedikált alhálózattal rendelkező virtuális hálózatot Azure AD Domain Services számára.
 
 ```powershell
 $ResourceGroupName = "ContosoAaddsRg"
@@ -119,12 +119,12 @@ $Vnet=New-AzVirtualNetwork `
 ```
 
 
-## <a name="task-7-provision-the-azure-ad-domain-services-managed-domain"></a>7\. feladat: Az Azure AD tartományi szolgáltatásokkal felügyelt tartományban üzembe helyezése
-Írja be a címtár Azure AD tartományi szolgáltatások engedélyezése a következő PowerShell-parancsot:
+## <a name="task-7-provision-the-azure-ad-domain-services-managed-domain"></a>7\. feladat: A Azure AD Domain Services felügyelt tartomány kiépítése
+Írja be a következő PowerShell-parancsot a címtár Azure AD Domain Servicesának engedélyezéséhez:
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "contoso100.com"
+$ManagedDomainName = "contoso.com"
 $ResourceGroupName = "ContosoAaddsRg"
 $VnetName = "DomainServicesVNet_WUS"
 $AzureLocation = "westus"
@@ -138,24 +138,24 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 ```
 
 > [!WARNING]
-> **A felügyelt tartomány üzembe helyezés után ne felejtse el a további konfigurációs lépéseket.**
-> A felügyelt tartomány üzembe, után továbbra is szeretné végrehajtani az alábbi feladatokat:
-> * **[DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)**  a virtuális hálózathoz, így a virtuális gépek a felügyelt tartományhoz csatlakozás tartományhoz vagy hitelesítésre.
-> * **[Jelszavak szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatások](active-directory-ds-getting-started-password-sync.md)** , így a végfelhasználók bejelentkezhet a felügyelt tartomány vállalati hitelesítői adataikkal.
-
+> **A felügyelt tartomány kiépítés után ne feledkezzen meg a további konfigurációs lépésekről.**
+> A felügyelt tartomány üzembe helyezése után továbbra is végre kell hajtania a következő feladatokat:
+> * A virtuális hálózat DNS-beállításainak frissítése, hogy a virtuális gépek megtalálják a felügyelt tartományt a tartományhoz való csatlakozáshoz vagy a hitelesítéshez. A DNS konfigurálásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
+> * Hozza létre a szükséges hálózati biztonsági csoport szabályait a felügyelt tartomány bejövő forgalmának korlátozásához. A hálózati biztonsági csoport szabályainak létrehozásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan létrehozza a megfelelő hálózati biztonsági csoportra vonatkozó szabályokat.
+> * A **[Jelszó-szinkronizálás engedélyezése Azure ad domain Servicesre](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)** , így a végfelhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba.
 
 ## <a name="powershell-script"></a>PowerShell-szkript
-A cikkben szereplő összes feladatot használt PowerShell-parancsprogram nem éri el. Másolja a szkriptet, és mentse azt egy ".ps1" kiterjesztésű fájlt. Hajtsa végre a szkriptet a PowerShellben vagy a PowerShell integrált parancsfájl-kezelési környezet (ISE) használatával.
+A cikkben felsorolt feladatok végrehajtásához használt PowerShell-parancsfájl alább látható. Másolja a szkriptet, és mentse egy ". ps1" kiterjesztésű fájlba. Futtassa a szkriptet a PowerShellben vagy a PowerShell integrált parancsfájlkezelési környezet (ISE) használatával.
 
 > [!NOTE]
-> **Ez a szkript futtatásához szükséges engedélyek** ahhoz, hogy az Azure AD tartományi szolgáltatásokat, kell lennie az Azure AD-címtár globális rendszergazdája. Emellett szükség legalább "Közreműködői" jogosultságokkal rendelkezik, amelyben a virtuális hálózaton az Azure AD tartományi szolgáltatások engedélyezése.
+> **A parancsfájl futtatásához szükséges engedélyek** A Azure AD Domain Services engedélyezéséhez az Azure AD-címtár globális rendszergazdájának kell lennie. Emellett legalább "közreműködői" jogosultsággal kell rendelkeznie azon a virtuális hálózaton, amelyben a Azure AD Domain Services engedélyezhető.
 >
 
 ```powershell
 # Change the following values to match your deployment.
-$AaddsAdminUserUpn = "admin@contoso100.onmicrosoft.com"
+$AaddsAdminUserUpn = "admin@contoso.onmicrosoft.com"
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "contoso100.com"
+$ManagedDomainName = "contoso.com"
 $ResourceGroupName = "ContosoAaddsRg"
 $VnetName = "DomainServicesVNet_WUS"
 $AzureLocation = "westus"
@@ -222,13 +222,14 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 ```
 
 > [!WARNING]
-> **A felügyelt tartomány üzembe helyezés után ne felejtse el a további konfigurációs lépéseket.**
-> A felügyelt tartomány üzembe, után továbbra is szeretné végrehajtani az alábbi feladatokat:
-> * Frissítse a virtuális hálózat DNS-beállításait, hogy a virtuális gépek a tartományhoz való csatlakozás és hitelesítés talál a felügyelt tartományhoz.
-> * Jelszavak szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatásokat, a végfelhasználók bejelentkezhet a felügyelt tartomány vállalati hitelesítői adataikkal.
+> **A felügyelt tartomány kiépítés után ne feledkezzen meg a további konfigurációs lépésekről.**
+> A felügyelt tartomány üzembe helyezése után továbbra is végre kell hajtania a következő feladatokat:
+> * A virtuális hálózat DNS-beállításainak frissítése, hogy a virtuális gépek megtalálják a felügyelt tartományt a tartományhoz való csatlakozáshoz vagy a hitelesítéshez. A DNS konfigurálásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
+> * Hozza létre a szükséges hálózati biztonsági csoport szabályait a felügyelt tartomány bejövő forgalmának korlátozásához. A hálózati biztonsági csoport szabályainak létrehozásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan létrehozza a megfelelő hálózati biztonsági csoportra vonatkozó szabályokat.
+> * A **[Jelszó-szinkronizálás engedélyezése Azure ad domain Servicesre](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)** , így a végfelhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba.
 
 ## <a name="next-steps"></a>További lépések
-A felügyelt tartomány létrehozása után hajtsa végre a következő konfigurációs feladatok, így használhatja a felügyelt tartomány:
+A felügyelt tartomány létrehozása után végezze el a következő konfigurációs feladatokat, hogy használhassa a felügyelt tartományt:
 
-* [Frissítse a DNS-kiszolgálójának beállításait a virtuális hálózathoz, hogy a felügyelt tartományra mutasson](active-directory-ds-getting-started-dns.md)
-* [A felügyelt tartományhoz való szinkronizálás engedélyezése](active-directory-ds-getting-started-password-sync.md)
+* [A DNS-kiszolgáló beállításainak frissítése a virtuális hálózathoz a felügyelt tartományra való Rámutatás céljából](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)
+* [Jelszó-szinkronizálás engedélyezése a felügyelt tartományhoz](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)

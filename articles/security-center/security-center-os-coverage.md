@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 9a11af7e2875c9af5cf4b08d459bc67b55dbdcf3
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 21a42b2986b52282fbab914fa702d8c4a323ed35
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515538"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611950"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>A Azure Security Center által támogatott platformok és szolgáltatások
 
@@ -30,8 +30,7 @@ A biztonsági állapot figyelése és javaslatai elérhetők a klasszikus és a 
 >
 
 ## <a name="platforms-that-support-the-data-collection-agent"></a>Az adatgyűjtési ügynököt támogató platformok 
-
-Ez a szakasz felsorolja azokat a platformokat, amelyeken a Azure Security Center ügynök futtatható, és amelyekről adatokat gyűjthet.
+Ez a szakasz felsorolja azokat a platformokat, amelyeken a Azure Security Center által használt Log Analytics-ügynök futtatható.
 
 ### <a name="supported-platforms-for-windows-computers-and-vms"></a>Támogatott platformok Windows rendszerű számítógépekhez és virtuális gépekhez
 A következő Windows operációs rendszerek támogatottak:

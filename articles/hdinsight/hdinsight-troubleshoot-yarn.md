@@ -4,24 +4,24 @@ description: Az Apache Hadoop YARN és az Azure HDInsight használatához kapcso
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
-ms.topic: conceptual
-ms.date: 12/06/2018
-ms.openlocfilehash: 8396f682558b71ca99af845bd51f7b2c8059f79b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: troubleshooting
+ms.date: 08/15/2019
+ms.openlocfilehash: 8bfe249b0295bc860cf17a006c3787ff8afa676b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072021"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69573709"
 ---
-# <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Az Azure HDInsight az Apache Hadoop YARN hibaelhárítása
+# <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Az Azure HDInsight használatával Apache Hadoop-FONALak hibáinak megoldása
 
 A leggyakoribb problémák és azok megoldásait ismerje meg az Apache Ambari az Apache Hadoop YARN hasznos adatot használatakor.
 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Hogyan hozhatok létre egy új YARN-üzenetsorba egy fürtön?
 
-### <a name="resolution-steps"></a>A megoldás lépései 
+### <a name="resolution-steps"></a>A megoldás lépései
 
-Ambari az alábbi lépések segítségével hozzon létre egy új YARN-várólistát, és ezután elosztja a kapacitás lefoglalása valamennyi üzenetsorok között. 
+Ambari az alábbi lépések segítségével hozzon létre egy új YARN-várólistát, és ezután elosztja a kapacitás lefoglalása valamennyi üzenetsorok között.
 
 Ebben a példában két meglévő üzenetsorok (**alapértelmezett** és **thriftsvr**) is úgy módosul, 50 %-os kapacitásból 25 %-os kapacitását, amely az új várólista (spark) 50 %-os kapacitást biztosít.
 
@@ -59,21 +59,20 @@ Ezeket a módosításokat a YARN felhasználói felületén a Scheduler a azonna
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-- [Az Apache Hadoop YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
-
+- [Apache Hadoop fonal CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hogyan tölthetek le YARN-naplókat fürtből?
-
 
 ### <a name="resolution-steps"></a>A megoldás lépései 
 
 1. Csatlakozzon a HDInsight-fürthöz egy Secure Shell (SSH) ügyfél használatával. További információkért lásd: [További olvasnivaló](#additional-reading-2).
 
-2. Az összes alkalmazás azonosítóját az aktuálisan futó YARN-alkalmazások listájában, futtassa a következő parancsot:
+1. Az összes alkalmazás azonosítóját az aktuálisan futó YARN-alkalmazások listájában, futtassa a következő parancsot:
 
     ```apache
     yarn top
     ```
+
     Az azonosítók láthatók a **APPLICATIONID** oszlop. A naplókat letöltheti a **APPLICATIONID** oszlop.
 
     ```apache
@@ -89,51 +88,57 @@ Ezeket a módosításokat a YARN felhasználói felületén a Scheduler a azonna
      application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
     ```
 
-3. Töltse le a YARN-naplóit tároló összes alkalmazás-főkiszolgálóhoz, használja a következő parancsot:
-   
+1. Töltse le a YARN-naplóit tároló összes alkalmazás-főkiszolgálóhoz, használja a következő parancsot:
+
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
     ```
 
-    Ez a parancs létrehoz egy amlogs.txt nevű naplófájlt. 
+    Ez a parancs létrehoz egy amlogs.txt nevű naplófájlt.
 
-4. Töltse le a legfrissebb alkalmazás fő YARN-naplóit tároló, a következő paranccsal:
+1. Töltse le a legfrissebb alkalmazás fő YARN-naplóit tároló, a következő paranccsal:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
     ```
 
-    Ez a parancs létrehoz egy latestamlogs.txt nevű naplófájlt. 
+    Ez a parancs létrehoz egy latestamlogs.txt nevű naplófájlt.
 
-4. Az első két alkalmazás főkiszolgálóhoz YARN-naplóit tároló letöltéséhez használja a következő parancsot:
+1. Az első két alkalmazás főkiszolgálóhoz YARN-naplóit tároló letöltéséhez használja a következő parancsot:
 
     ```apache
-    yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt 
+    yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt
     ```
 
-    Ez a parancs létrehoz egy first2amlogs.txt nevű naplófájlt. 
+    Ez a parancs létrehoz egy first2amlogs.txt nevű naplófájlt.
 
-5. Töltse le az összes tároló YARN-naplókat, használja a következő parancsot:
+1. Töltse le az összes tároló YARN-naplókat, használja a következő parancsot:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> > logs.txt
     ```
 
-    Ez a parancs létrehoz egy logs.txt nevű naplófájlt. 
+    Ez a parancs létrehoz egy logs.txt nevű naplófájlt.
 
-6. A YARN tárolónapló egy adott tároló letöltéséhez használja a következő parancsot:
+1. A YARN tárolónapló egy adott tároló letöltéséhez használja a következő parancsot:
 
     ```apache
-    yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt 
+    yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
     ```
 
     Ez a parancs létrehoz egy containerlogs.txt nevű naplófájlt.
 
 ### <a name="additional-reading-2"></a>További olvasnivaló
 
-- [Csatlakozhat a HDInsight (az Apache Hadoop) SSH-val](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Az Apache Hadoop YARN fogalmakat és alkalmazások](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
+## <a name="next-steps"></a>További lépések
 
-### <a name="see-also"></a>Lásd még:
-[Hibaelhárítás az Azure HDInsight segítségével](hdinsight-troubleshoot-guide.md)
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
+
+- Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
+
+- Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+
+- Ha további segítségre van szüksége, támogatási kérést küldhet a Azure Portaltól [](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

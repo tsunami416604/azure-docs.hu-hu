@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: 246a1461973dba129a5b1d12be8a09703eb99267
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c5aa7af1ca6f4fe0768add47d2037d797e4ef99b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015976"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613244"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Speciális kódolási munkafolyamatok létrehozása a munkafolyamat-tervezővel  
 ## <a name="overview"></a>Áttekintés
@@ -87,7 +87,7 @@ Tekintse át a Media Services képzési terveket.
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-Ha támogatásra van szüksége, vagy kérdése van az egyéni munkafolyamatok létrehozásával kapcsolatban a Munkafolyamat-tervező eszközben, küldjön e-mailt a mepd@microsoft.comkövetkező címre:.
+Ha támogatásra van szüksége, vagy kérdése van az egyéni munkafolyamatok létrehozásával kapcsolatban a Munkafolyamat-tervező eszközben, küldjön e-mailt a mepd@microsoft.comkövetkező címre:. Az e-mailek írásakor használja az angol nyelvet.
 
 ## <a name="see-also"></a>Lásd még:
 [Azure Premium Encoder – munkafolyamat-tervezői képzés – videók](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)

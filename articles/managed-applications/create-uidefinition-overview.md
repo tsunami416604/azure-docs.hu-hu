@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ee6d9332a2be5ccb22b7571b348e2e0aae78fb2
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 783c4f5b1f5a7f2be748bc7173da2d068e1425f4
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563561"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575652"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition. JSON az Azure által felügyelt alkalmazás létrehozási élményéhez
 
@@ -52,13 +52,11 @@ A Parameters tulajdonság sémája a megadott kezelő és verzió kombinációj�
 
 Beleértve `$schema` a javasolt, de nem kötelező. Ha `version` meg van adva, a értékének meg kell egyeznie `$schema` az URI-n belüli verzióval.
 
-A felhasználói felület definícióját JSON-szerkesztővel is létrehozhatja, majd megtekintheti azt a [felhasználói felület definíciójának Homokozójában](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) . A homokozóval kapcsolatos további információkért lásd: [Azure Managed Applications-portál felületének tesztelése](test-createuidefinition.md).
+A createUiDefinition létrehozásához JSON-szerkesztőt használhat, majd a [createUiDefinition](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) -homokozóban tesztelheti azt. A homokozóval kapcsolatos további információkért lásd: [Azure Managed Applications-portál felületének tesztelése](test-createuidefinition.md).
 
 ## <a name="basics"></a>Alapvető beállítások
 
 Az alapismeretek az első lépés, amikor a Azure Portal elemzi a fájlt. A-ben `basics`megadott elemek megjelenítésén kívül a portál befecskendezi az elemeket a felhasználók számára az előfizetés, az erőforráscsoport és a telepítés helyének kiválasztásához. Ha lehetséges, a központi telepítésre vonatkozó paramétereket lekérdező elemek, például a fürt vagy a rendszergazdai hitelesítő adatok neve, ebben a lépésben kell megjelenniük.
-
-Ha egy elem viselkedése a felhasználó előfizetésének, erőforráscsoportának vagy helyének a függvénye, akkor ez az elem nem használható az alapbeállításokban. Például a **Microsoft. számítás. SizeSelector** függvény a felhasználó előfizetése és helye alapján határozza meg az elérhető méretek listáját. Ezért a **Microsoft. számítás. SizeSelector** csak lépésekben használható. Általánosságban elmondható, hogy csak a **Microsoft. Common** névtér elemei használhatók az alapbeállításokban. Bár a más névterekben található egyes elemek (például a **Microsoft. számítás. hitelesítő adatok**) továbbra sem függenek a felhasználó környezetének.
 
 ## <a name="steps"></a>Lépések
 

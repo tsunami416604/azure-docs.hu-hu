@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: de91b2d681037ae67e14b16934cf72441ef9fd82
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4197d7a4724199f8c42fc09a6d1ed18af46cc4f8
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935154"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575362"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Gyors útmutató: Számítások méretezése Azure SQL Data Warehouseban a Azure Portal
 
@@ -60,4 +60,4 @@ Az adattárházegységek számának módosításához:
 Most már megtanulta az adattárház számítási felskálázását. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
->[Adatok betöltése az SQL Data Warehouse-okba](load-data-from-azure-blob-storage-using-polybase.md)
+>[Az adatSQL Data Warehouseba való betöltés](load-data-from-azure-blob-storage-using-polybase.md)

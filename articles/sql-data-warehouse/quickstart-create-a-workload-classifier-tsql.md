@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Hozzon létre egy számítási feladat osztályozó – T-SQL |} A Microsoft Docs'
-description: T-SQL használatával hozzon létre egy számítási feladat osztályozó nagyon fontosként megjelölve.
+title: 'Gyors útmutató: Számítási feladatok besorolásának létrehozása – T-SQL | Microsoft Docs'
+description: A T-SQL használatával hozzon létre egy nagy fontosságú számítási feladatokat.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: f400989fdbdede4f4a07ee13c5a606d51529150c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: ea2e0a3bb55d16c0b413b114fca9da7f95f5c053
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588702"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574863"
 ---
-# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Gyors útmutató: Hozzon létre egy számítási feladat osztályozó T-SQL használatával
+# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Gyors útmutató: Számítási feladatok besorolásának létrehozása T-SQL használatával
 
-Ebben a rövid gyorsan létrehozhat egy számítási feladat osztályozó az ügyvezető Igazgatótól a szervezet számára nagyon fontosként megjelölve. A számítási feladatok osztályozó lehetővé teszi a Vezérigazgató lekérdezéseket elsőbbséget élveznek a más lekérdezések az alacsonyabb fontossági az üzenetsorban.
+Ebben a rövid útmutatóban gyorsan létre fog hozni egy számítási feladatokat, amely nagy fontossággal bír a szervezet VEZÉRIGAZGATÓJA számára. Ez a számítási feladatok besorolása lehetővé teszi, hogy az adatkezelési lekérdezések elsőbbséget élvezzenek más lekérdezésekkel szemben, amelyek kisebb jelentőséggel bírnak a várólistá
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -30,15 +30,15 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató feltételezi, hogy már rendelkezik egy SQL data warehouse-ba, és hogy van-e adatbázis VEZÉRLÉSE engedéllyel. Ha létre kell hoznia egyet, kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
+Ez a rövid útmutató feltételezi, hogy már rendelkezik egy SQL Data Warehouse, és rendelkezik az adatbázis-VEZÉRLÉSi engedélyekkel. Ha létre kell hoznia egyet, kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="create-login-for-theceo"></a>Bejelentkezési TheCEO létrehozása
+## <a name="create-login-for-theceo"></a>TheCEO-beli bejelentkezés létrehozása
 
-Az SQL Server-hitelesítési bejelentkezés létrehozása a `master` használatával [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql) "TheCEO" számára.
+Hozzon létre egy SQL Server hitelesítési bejelentkezést az adatbázisban az `master` "TheCEO" létrehozási [Bejelentkezés](/sql/t-sql/statements/create-login-transact-sql) használatával.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -50,7 +50,7 @@ END
 
 ## <a name="create-user"></a>Felhasználó létrehozása
 
-[Felhasználó létrehozása](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest), "TheCEO", a mySampleDataWarehouse
+[Felhasználó létrehozása](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest)"TheCEO", mySampleDataWarehouse
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -60,9 +60,9 @@ END
 ;
 ```
 
-## <a name="create-a-workload-classifier"></a>Számítási feladatok besorolás létrehozása
+## <a name="create-a-workload-classifier"></a>Számítási feladatok besorolásának létrehozása
 
-Hozzon létre egy [munkaterhelés osztályozó](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) a "TheCEO" nagyon fontosként megjelölve.
+Nagy fontossággal hozza létre a "TheCEO" számítási [feladatok besorolását](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) .
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];
@@ -72,7 +72,7 @@ WITH (WORKLOAD_GROUP = 'xlargerc'
       ,IMPORTANCE = HIGH);
 ```
 
-## <a name="view-existing-classifiers"></a>Meglévő deklarációkkal megtekintése
+## <a name="view-existing-classifiers"></a>Meglévő osztályozók megtekintése
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers
@@ -86,27 +86,27 @@ DROP USER [TheCEO]
 ;
 ```
 
-Az adattárházegységek és az adatraktárban tárolt adatok alatt díjkötelesek. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
+Az adattárház-egységek és az adattárházban tárolt adatforgalomért kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
 
-- Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. Szüneteltetésével számítási adattárolás csak díjkötelesek. Ha készen áll az adatokkal való munka, folytathatja a számítást.
+- Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítás felfüggesztésével csak az adattárolás díját számítjuk fel. Ha készen áll az adatok feldolgozására, folytassa a számítást.
 - Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is.
 
-Kövesse az alábbi lépéseket az erőforrások törlése.
+Az erőforrások tisztításához kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), jelölje be az adattárházra.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az adattárházat.
 
     ![Az erőforrások eltávolítása](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. A számítás szüneteltetésére, válassza ki a **szüneteltetése** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  Válassza ki a számítási erőforrások újraindításához **Start**.
+2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához kattintson a **Start**gombra.
 
-3. A data warehouse-ba, nem számítunk fel díjat, a számítási és tárolási eltávolításához jelölje ki **törlése**.
+3. Ha el szeretné távolítani az adattárházat, hogy ne számítsa ki a számítási és a tárolási díjat, válassza a **Törlés**lehetőséget.
 
-4. Válassza ki a létrehozott SQL-kiszolgáló eltávolításához **mynewserver-20180430.database.windows.net** az előző képen, és válassza ki a **törlése**.  A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
+4. A létrehozott SQL-kiszolgáló eltávolításához válassza a **mynewserver-20180430.database.Windows.net** lehetőséget az előző képen, majd válassza a **Törlés**lehetőséget.  A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
 
-5. Távolítsa el az erőforráscsoportot, válassza ki a **myResourceGroup**, majd válassza ki **erőforráscsoport törlése**.
+5. Az erőforráscsoport eltávolításához válassza a **myResourceGroup**lehetőséget, majd válassza az **erőforráscsoport törlése**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-- Sikeresen létrehozott egy számítási feladat osztályozó által igénybe vett. Néhány lekérdezést futtató TheCEO megtekintéséhez, hogyan működnek. Lásd: [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) a lekérdezések és a hozzárendelt fontosságát.
-- Azure SQL Data Warehouse számítási feladatok kezelésével kapcsolatos további információkért lásd: [számítási feladatok fontossági](sql-data-warehouse-workload-importance.md) és [munkaterhelés besorolási](sql-data-warehouse-workload-classification.md).
-- Tekintse meg az útmutatók a [konfigurálása számítási feladatok fontossági](sql-data-warehouse-how-to-configure-workload-importance.md) és annak [kezelése és megfigyelése számítási feladatok kezeléséhez](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- Ezzel létrehozta a számítási feladatok besorolását. Futtasson néhány lekérdezést a TheCEO, hogy láthassa, hogyan végzik el. A lekérdezéseket és a hozzárendelt fontosságot a [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) tekintheti meg.
+- További információ a Azure SQL Data Warehouse munkaterhelés-kezelésről: a számítási [feladatok fontossága](sql-data-warehouse-workload-importance.md) és a számítási [feladatok besorolása](sql-data-warehouse-workload-classification.md).
+- Tekintse meg az útmutatókat a számítási [feladatok fontosságának konfigurálásához](sql-data-warehouse-how-to-configure-workload-importance.md) , valamint a számítási [feladatok felügyeletének kezeléséhez és figyeléséhez](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

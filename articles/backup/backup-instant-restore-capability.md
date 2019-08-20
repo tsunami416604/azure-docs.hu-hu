@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: f2485786f323bc6d19d39f4da6ffa7cab14bbb4c
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: aad3ca34ab9db5ec910e70e70ba5a31afa94e417
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951836"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611985"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
 
@@ -24,7 +24,7 @@ Az azonnali visszaállítás új modellje a következő funkciókat biztosítja:
 
 * A helyreállításhoz elérhető biztonsági mentési feladatok részeként készített pillanatképek használatának lehetősége anélkül, hogy a tárolóba való adatátvitelre kellene várni. Ez csökkenti a várakozási időt a pillanatképek másolásához a tárolóba a visszaállítás elindítása előtt.
 * Csökkenti a biztonsági mentési és visszaállítási időt a pillanatképek helyi megőrzésével, alapértelmezés szerint két napig. Ez az alapértelmezett pillanatkép-megőrzési érték 1 és 5 nap közötti értékre állítható be.
-* A legfeljebb 4 TB méretű lemezeket támogat. A lemezek átméretezését Azure Backup nem ajánlott. A 4 TB-nál nagyobb lemezek Azure Backup nagyméretű lemezes támogatásának korlátozott nyilvános előzetes verziójára és akár 30 TB-os méretre való regisztráláshoz tekintse meg az [Azure virtuális gépek biztonsági mentésének áttekintését](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+* A legfeljebb 4 TB méretű lemezeket támogat. A lemezek átméretezését Azure Backup nem ajánlott. A 4 TB-nál nagyobb méretű lemezek Azure Backup nagyméretű lemezes támogatásának korlátozott nyilvános előzetes verziójára való regisztráláshoz lásd: a [virtuális gép biztonsági mentése, amelynek mérete legfeljebb 30 TB](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 * A standard SSD lemezeket standard HDD lemezekkel és prémium SSD lemezekkel együtt támogatja.
 * A nem felügyelt virtuális gépek eredeti Storage-fiókjai (lemezenként) való használatának lehetősége a visszaállításkor. Ez a képesség akkor is fennáll, ha a virtuális gépnek vannak olyan lemezek, amelyek a Storage-fiókok között oszlanak el. A rendszer a virtuálisgép-konfigurációk széles körére felgyorsítja a visszaállítási műveleteket.
 * A Premium Storage szolgáltatást használó virtuális gépek biztonsági mentését azonnali visszaállítással ajánlott kiosztani a teljes lefoglalt tárterület *50%-os* szabad területét, amely **csak** az első biztonsági mentéshez szükséges. Az első biztonsági mentés befejezése után az 50%-os szabad terület nem követelmény a biztonsági mentéshez.

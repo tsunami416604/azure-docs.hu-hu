@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 849c3a745de08e7cf8ff7f1b8bb237a6d0f54395
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ce943fbed0774667100f6de4c60f91c0b02de6c3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384166"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615347"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globális Adatterjesztés a Azure Cosmos DB-ben – a motorháztető alatt
 
@@ -34,7 +34,7 @@ Ahogy az az alábbi ábrán is látható, a tárolóban lévő adatok két dimen
 
 A fizikai partíciót replikák egy csoportja *hozza létre, amelyet replika-készletnek*neveznek. Mindegyik gép több száz replikát üzemeltet, amelyek a fenti képen látható különböző fizikai partíciókhoz tartoznak. A fizikai partíciók megfelelő replikák dinamikusan kerülnek, és a terheléselosztáshoz a gépek belül egy adott régión belül egy fürt és adatközpontok között.  
 
-A replika egyedi az Azure Cosmos DB-bérlő tartozik. Minden egyes replikának a Cosmos DB példányát futtatja [adatbázismotor](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), amely kezeli az erőforrások, valamint a hozzá tartozó indexeket. A Cosmos DB adatbázismotorja az atom-rekord-szekvencia (ARS) alapuló típus rendszeren működik. A motor agnosztikus a séma koncepciójában, és elmossa a rekordok szerkezeti és példányi értékei közötti határt. A cosmos DB automatikusan indexeli mindent után az Adatbetöltési és hatékonyan, amely lehetővé teszi a felhasználók számára, hogy sémákkal vagy indexkezeléssel kezelése nélkül kérdezheti le a globálisan elosztott adatokon a teljes séma agnosticism biztosít.
+A replika egyedi az Azure Cosmos DB-bérlő tartozik. Minden egyes replikának a Cosmos DB példányát futtatja [adatbázismotor](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), amely kezeli az erőforrások, valamint a hozzá tartozó indexeket. A Cosmos-adatbázismotor egy Atom-Record-Sequence (ARS) alapú típusú rendszeren működik. A motor agnosztikus a séma koncepciójában, és elmossa a rekordok szerkezeti és példányi értékei közötti határt. A cosmos DB automatikusan indexeli mindent után az Adatbetöltési és hatékonyan, amely lehetővé teszi a felhasználók számára, hogy sémákkal vagy indexkezeléssel kezelése nélkül kérdezheti le a globálisan elosztott adatokon a teljes séma agnosticism biztosít.
 
 A Cosmos adatbázismotor olyan összetevőkből áll, mint a különböző koordinációs primitívek, nyelvi futtatókörnyezetek, a lekérdezési processzor, valamint a tranzakciós tároláshoz és az adatindexeléshez felelős tárolási és indexelési alrendszerek. illetve. Tartósság és magas rendelkezésre állás biztosítása érdekében az adatbázismotor az adatok és index az SSD-k továbbra is fennáll, és azt replikálja a replika belül motor adatbázispéldányok-készleteket jelölik. A nagyobb bérlők az átviteli sebesség és a tárterület nagyobb méretének felelnek meg, és nagyobb vagy több replikával vagy mindkettővel rendelkeznek. A rendszer minden összetevője teljes aszinkron – nincs hozzászóláslánc minden eddiginél letiltja, és minden egyes szál rövid ideig tartó működik olyan felesleges szál kapcsolót anélkül. A sebességhatárolt és vissza – nyomás között a teljes verem a már a betegfelvétel vezérlőből az összes i/o-útvonalat adható hozzá. A Cosmos adatbázismotor a részletes Egyidejűség kihasználása és a nagy adatátviteli sebesség biztosítására szolgál, és a rendszer erőforrásain belül működik.
 
@@ -77,7 +77,7 @@ Akár egy vagy több írási régióval konfigurálja a Cosmos-adatbázist, az �
 
 A határos állandósági konzisztencia garantálja, hogy az összes olvasás *K* előtagon vagy *T* másodpercen belül maradjon a legújabb írásokból bármelyik régióban. Emellett a korlátozott elavulás konzisztenciájával való olvasás garantáltan monoton és konzisztens előtag-garanciákat biztosít. A víruskereső vysokou protokoll sebessége korlátozott módon működik, és biztosítja, hogy az előtagok nem gyűlik össze, és az írási ellennyomásának nem rendelkezik a alkalmazni. A munkamenet konzisztenciája garantálja az monoton olvasást, az monoton írást, a saját írásait, az írást, az olvasást és az konzisztens előtag-garanciákat világszerte. Az erős konzisztencia-konfigurációval konfigurált adatbázisok esetében a több írási régió előnyei (alacsony írási késés, magas írási rendelkezésre állás) nem érvényesek a különböző régiók közötti szinkron replikáció miatt.
 
-Az Cosmos DB öt konzisztencia-modelljének szemantikai leírását [itt](consistency-levels.md)találja, és matematikai módon ismertetjük a magas szintű tla [+ specifikációk](https://github.com/Azure/azure-cosmos-tla)segítségével.
+Az Cosmos DB öt konzisztencia-modelljének szemantikai leírását [itt](consistency-levels.md)találja, és matematikai módon ismertetjük a magas szintű tla + specifikációk [](https://github.com/Azure/azure-cosmos-tla)segítségével.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
-title: A Windows Server rendszerű virtuális gép csatlakoztatása az Azure Active Directory Domain Servicesben |} A Microsoft Docs
-description: A Windows Server virtuális gépek csatlakoztatása felügyelt tartományhoz az Azure Resource Manager-sablonok használatával.
+title: Windows Server rendszerű virtuális gép csatlakoztatása Azure Active Directory Domain Serviceshoz | Microsoft Docs
+description: Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz Azure Resource Manager sablonok használatával.
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,92 +15,92 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 3d16a4240b7a30a483b70b068ab7d91ca7bdcb17
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 599d474b7c45274c87878c622149a86bc93af318
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473039"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612269"
 ---
-# <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Egy Windows Servert futtató virtuális gép csatlakoztatása felügyelt tartományokhoz Resource Manager-sablon használatával
-Ez a cikk bemutatja, hogyan egy Windows Servert futtató virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz Resource Manager-sablonok használatával.
+# <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz Resource Manager-sablon használatával
+Ez a cikk bemutatja, hogyan csatlakozhat egy Windows Server rendszerű virtuális géphez egy Azure AD Domain Services felügyelt tartományhoz Resource Manager-sablonok használatával.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
-A cikkben szereplő feladatok elvégzéséhez szüksége:
-1. Egy érvényes **Azure-előfizetés**.
-2. Egy **Azure AD-címtár** -vagy az egy helyszíni címtár vagy egy csak felhőalapú címtárral szinkronizálja.
-3. **Az Azure AD Domain Services** engedélyezve kell lennie az Azure AD-címtárban. Ha még nem tette, minden ismertetett feladatok végrehajtásával a [a kezdeti lépések útmutatóban](create-instance.md).
-4. Győződjön meg arról, hogy már konfigurálta az IP-címek a felügyelt tartomány a virtuális hálózat DNS-kiszolgálóként. További információkért lásd: [az Azure virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)
-5. Végezze el a szükséges lépéseket [szinkronizálja a jelszavakat az Azure AD tartományi szolgáltatásokkal felügyelt tartományban](active-directory-ds-getting-started-password-sync.md).
+A cikkben felsorolt feladatok elvégzéséhez a következőkre lesz szüksége:
+1. Érvényes **Azure-előfizetés**.
+2. Egy **Azure ad-címtár** – szinkronizálva van egy helyszíni címtárral vagy egy csak felhőalapú címtárral.
+3. **Azure ad Domain Services** engedélyezni kell az Azure ad-címtárat. Ha még nem tette meg, kövesse az [első lépések útmutatóban](tutorial-create-instance.md)ismertetett összes feladatot.
+4. Győződjön meg arról, hogy a felügyelt tartomány IP-címeit a virtuális hálózat DNS-kiszolgálóinak megfelelően konfigurálta. További információ: [Az Azure-beli virtuális hálózat DNS-beállításainak frissítése](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)
+5. Hajtsa végre a [jelszavak Azure ad Domain Services felügyelt tartományhoz](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)való szinkronizálásához szükséges lépéseket.
 
 
-## <a name="install-and-configure-required-tools"></a>Telepítse és konfigurálja a szükséges eszközök
-Az ebben a dokumentumban leírt lépések végrehajtásához a következő lehetőségek bármelyikét használhatja:
-* **Azure PowerShell**: [Telepítése és konfigurálása](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
-* **Az Azure CLI**: [Telepítése és konfigurálása](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
+## <a name="install-and-configure-required-tools"></a>Szükséges eszközök telepítése és konfigurálása
+A jelen dokumentumban ismertetett lépések végrehajtásához a következő lehetőségek bármelyikét használhatja:
+* **Azure PowerShell**: [Telepítés és konfigurálás](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
+* **Azure CLI**: [Telepítés és konfigurálás](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
 
 
-## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>Option 1: Egy új Windows Server virtuális gép létrehozása és csatlakoztatása a felügyelt tartományhoz
-**Gyors üzembe helyezési sablon neve**: [201-vm-domain-join](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
+## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>1\. lehetőség: Új Windows Server-alapú virtuális gép kiépítése és csatlakoztatása felügyelt tartományhoz
+rövid útmutató **sablonjának neve**: [201-vm-domain-join](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
 
-A Windows Server virtuális gép üzembe helyezése és a felügyelt tartományhoz való csatlakozásra, hajtsa végre az alábbi lépéseket:
-1. Keresse meg a [gyors üzembe helyezési sablon](https://azure.microsoft.com/resources/templates/201-vm-domain-join/).
+Windows Server rendszerű virtuális gép üzembe helyezéséhez és egy felügyelt tartományhoz való csatlakoztatásához hajtsa végre a következő lépéseket:
+1. Navigáljon a [Gyorsindítás sablonhoz](https://azure.microsoft.com/resources/templates/201-vm-domain-join/).
 2. Kattintson a **Deploy to Azure** (Üzembe helyezés az Azure-ban) elemre.
-3. Az a **egyéni üzembe helyezés** lap, adja meg a szükséges információkat a virtuális gép kiépítése.
-4. Válassza ki a **Azure-előfizetés** , amelyben üzembe helyezi a virtuális gépet. Válassza ki az Azure-előfizetéshez, amelyben engedélyezte az Azure AD tartományi szolgáltatásokat.
-5. Válasszon egy meglévő **erőforráscsoport** , vagy hozzon létre egy újat.
-6. Válasszon ki egy **hely** melyben szeretné üzembe helyezni az új virtuális gépet.
-7. A **meglévő virtuális hálózat neve**, adja meg a virtuális hálózatot, amelyben van üzembe helyezve az Azure AD tartományi szolgáltatásokkal felügyelt tartományban.
-8. A **meglévő alhálózat neve**, adja meg az alhálózatot, ahol szeretné a virtuális gép üzembe helyezése virtuális hálózaton belül. Ne válassza az átjáró-alhálózatot a virtuális hálózatban. Nem jelölje be a kijelölt alhálózatot, amelyben a felügyelt tartomány üzembe helyezve.
-9. A **DNS-címke előtagja**, adja meg a virtuális gép kiépítése folyamatban az állomásnevet. Például "contoso-win".
-10. Válassza ki a megfelelő **Virtuálisgép-méret** a virtuális gép.
-11. A **tartományhoz való csatlakozás**, adja meg a felügyelt tartomány DNS-tartomány nevét.
-12. A **tartomány felhasználónév**, adja meg a felhasználói fiók nevét a felügyelt tartomány a virtuális gép csatlakoztatása a felügyelt tartományban használandó.
-13. A **tartományi jelszó**, adja meg a "domainUsername" paraméter által hivatkozott tartományi felhasználói fiók jelszavát.
-14. Nem kötelező: Megadhat egy **Szervezetiegység-útvonal** , amelyben a virtuális gép hozzáadása egy egyéni szervezeti egységbe. Ha nem ad meg egy értéket ehhez a paraméterhez, a virtuális gép bekerül az alapértelmezett **AAD DC számítógépek** szervezeti Egységet a felügyelt tartományon.
-15. Az a **virtuális gép rendszergazdai felhasználónevét** mezőben adja meg a virtuális gép helyi rendszergazdai fiók nevét.
-16. Az a **virtuális gép rendszergazdai jelszava** mezőben adja meg a virtuális gép helyi rendszergazdai jelszót. Adjon meg egy erős helyi rendszergazda jelszavát, a virtuális gép jelszava találgatásos támadásokkal szembeni védelem érdekében.
-17. Kattintson a **elfogadom a feltételeket és a fenti feltételeket**.
-18. Kattintson a **beszerzési** a virtuális gép kiépítése.
+3. Az **Egyéni telepítés** lapon adja meg a virtuális gép kiépítéséhez szükséges adatokat.
+4. Válassza ki azt az **Azure** -előfizetést, amelyben ki szeretné építeni a virtuális gépet. Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services.
+5. Válasszon egy meglévő **erőforráscsoportot** , vagy hozzon létre egy újat.
+6. Válasszon egy **helyet** az új virtuális gép üzembe helyezéséhez.
+7. A **meglévő VNET neve**mezőben adja meg azt a virtuális hálózatot, amelyben a Azure ad Domain Services felügyelt tartományt telepítette.
+8. A **meglévő alhálózat neve**mezőben adja meg azt a virtuális hálózaton belüli alhálózatot, amelyre telepíteni szeretné a virtuális gépet. Ne válassza az átjáró alhálózatát a virtuális hálózatban. Ne jelölje ki azt a dedikált alhálózatot, amelyben a felügyelt tartományt üzembe helyezi.
+9. A **DNS-címke előtagja**mezőben határozza meg az üzembe helyezni kívánt virtuális gép állomásnevét. Például: "contoso-win".
+10. Válassza ki a virtuális gép megfelelő virtuálisgép- **méretét** .
+11. A **tartományhoz való csatlakozáshoz**adja meg a felügyelt tartomány DNS-tartománynevét.
+12. A **tartomány felhasználóneve**mezőben adja meg annak a felhasználói fióknak a nevét a felügyelt tartományon, amelyet a virtuális gép felügyelt tartományhoz való csatlakoztatásához kíván használni.
+13. A **tartományi jelszó**mezőben határozza meg az "domainUsername" paraméter által hivatkozott tartományi felhasználói fiók jelszavát.
+14. Nem kötelező: Megadhat egy **szervezeti útvonalat** egy egyéni szervezeti egységhez, amelyben a virtuális gépet hozzá lehet adni. Ha nem ad meg értéket ehhez a paraméterhez, a rendszer hozzáadja a virtuális gépet az alapértelmezett **HRE DC számítógépek** szervezeti egységhez a felügyelt tartományon.
+15. A virtuális gép **rendszergazdai felhasználóneve** mezőben adja meg a virtuális gép helyi rendszergazdai fiókjának nevét.
+16. A virtuális gép **rendszergazdai jelszava** mezőben válasszon egy helyi rendszergazdai jelszót a virtuális géphez. Erős helyi rendszergazdai jelszót adjon meg a virtuális géphez a jelszó-kényszerített támadásokkal szembeni védelem érdekében.
+17. Kattintson **az Elfogadom a fenti feltételeket és**kikötéseket lehetőségre.
+18. A virtuális gép kiépítéséhez kattintson a **vásárlás** elemre.
 
 > [!WARNING]
-> **Legyen körültekintő jelszavak kezelésére.**
-> A sablon alkalmazásparaméter-fájlt a tartományi fiókok jelszavait, valamint a virtuális gép helyi rendszergazdai jelszavak tartalmazza. Győződjön meg arról, nem hagyja ezt a fájlt körül fekszik fájlmegosztások vagy más megosztott helyen. Javasoljuk, hogy megszabadulni tartja ezt a fájlt, ha elkészült a virtuális gépek üzembe helyezéséről.
+> **A jelszavakat körültekintően kezelheti.**
+> A sablon-paraméter fájl a tartományi fiókok jelszavait, valamint a virtuális gép helyi rendszergazdai jelszavait tartalmazza. Ügyeljen arra, hogy ne hagyja a fájlt a fájlmegosztás vagy más megosztott tárolóhelyek köré. Javasoljuk, hogy a virtuális gépek üzembe helyezése után távolítsa el ezt a fájlt.
 >
 
-Miután a telepítés sikeresen befejeződött, az újonnan létrehozott Windows virtuális gép a felügyelt tartományhoz csatlakozik.
+Miután az üzembe helyezés sikeresen befejeződött, az újonnan kiosztott Windows-alapú virtuális gép csatlakoztatva van a felügyelt tartományhoz.
 
 
-## <a name="option-2-join-an-existing-windows-server-vm-to-a-managed-domain"></a>Option 2: Egy meglévő Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományokhoz
-**Gyors üzembe helyezési sablon**: [201-vm-domain-join-existing](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
+## <a name="option-2-join-an-existing-windows-server-vm-to-a-managed-domain"></a>2\. lehetőség: Meglévő Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz
+rövid útmutató sablonja: [201-vm-domain-join-existing](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 
-A Windows Server virtuális gép csatlakoztatása felügyelt tartományokhoz, hajtsa végre az alábbi lépéseket:
-1. Keresse meg a [gyors üzembe helyezési sablon](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
+Ha meglévő Windows Server rendszerű virtuális gépet szeretne csatlakoztatni egy felügyelt tartományhoz, hajtsa végre a következő lépéseket:
+1. Navigáljon a [Gyorsindítás sablonhoz](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 2. Kattintson a **Deploy to Azure** (Üzembe helyezés az Azure-ban) elemre.
-3. Az a **egyéni üzembe helyezés** lap, adja meg a szükséges információkat a virtuális gép kiépítése.
-4. Válassza ki a **Azure-előfizetés** , amelyben üzembe helyezi a virtuális gépet. Válassza ki az Azure-előfizetéshez, amelyben engedélyezte az Azure AD tartományi szolgáltatásokat.
-5. Válasszon egy meglévő **erőforráscsoport** , vagy hozzon létre egy újat.
-6. Válasszon ki egy **hely** melyben szeretné üzembe helyezni az új virtuális gépet.
-7. Az a **Virtuálisgép-lista** mezőben adja meg a meglévő virtuális gépek tartományhoz csatlakoztatni a felügyelt tartomány nevét. Az egyes Virtuálisgép-neveket használjon vesszőt. Ha például **contoso-webes, a contoso-api**.
-8. A **tartományhoz való csatlakozás felhasználónév**, adja meg a felhasználói fiók nevét a felügyelt tartomány a virtuális gép csatlakoztatása a felügyelt tartományban használandó.
-9. A **tartományi csatlakozás jelszó**, adja meg a "domainUsername" paraméter által hivatkozott tartományi felhasználói fiók jelszavát.
-10. A **tartomány teljesen minősített Tartományneve**, adja meg a felügyelt tartomány DNS-tartomány nevét.
-11. Nem kötelező: Megadhat egy **Szervezetiegység-útvonal** , amelyben a virtuális gép hozzáadása egy egyéni szervezeti egységbe. Ha nem ad meg egy értéket ehhez a paraméterhez, a virtuális gép bekerül az alapértelmezett **AAD DC számítógépek** szervezeti Egységet a felügyelt tartományon.
-12. Kattintson a **elfogadom a feltételeket és a fenti feltételeket**.
-13. Kattintson a **beszerzési** a virtuális gép kiépítése.
+3. Az **Egyéni telepítés** lapon adja meg a virtuális gép kiépítéséhez szükséges adatokat.
+4. Válassza ki azt az **Azure** -előfizetést, amelyben ki szeretné építeni a virtuális gépet. Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services.
+5. Válasszon egy meglévő **erőforráscsoportot** , vagy hozzon létre egy újat.
+6. Válasszon egy **helyet** az új virtuális gép üzembe helyezéséhez.
+7. A virtuálisgép- **lista** mezőben határozza meg a felügyelt tartományhoz csatlakoztatni kívánt meglévő virtuális gépek nevét. Használjon vesszőt az egyes virtuális gépek nevének elkülönítéséhez. Például: **contoso-web, contoso-API**.
+8. A **tartományhoz való csatlakozás felhasználóneve**mezőben adja meg a felügyelt tartomány felhasználói fiókjának nevét, amelyet a virtuális gép a felügyelt tartományhoz való csatlakoztatásához kíván használni.
+9. A **tartományhoz való csatlakozás felhasználói jelszava**mezőben határozza meg az "domainUsername" paraméter által hivatkozott tartományi felhasználói fiók jelszavát.
+10. A **tartomány teljes tartományneve**mezőben adja meg a felügyelt tartomány DNS-tartománynevét.
+11. Nem kötelező: Megadhat egy **szervezeti útvonalat** egy egyéni szervezeti egységhez, amelyben a virtuális gépet hozzá lehet adni. Ha nem ad meg értéket ehhez a paraméterhez, a rendszer hozzáadja a virtuális gépet az alapértelmezett **HRE DC számítógépek** szervezeti egységhez a felügyelt tartományon.
+12. Kattintson **az Elfogadom a fenti feltételeket és**kikötéseket lehetőségre.
+13. A virtuális gép kiépítéséhez kattintson a **vásárlás** elemre.
 
 > [!WARNING]
-> **Legyen körültekintő jelszavak kezelésére.**
-> A sablon alkalmazásparaméter-fájlt a tartományi fiókok jelszavait, valamint a virtuális gép helyi rendszergazdai jelszavak tartalmazza. Győződjön meg arról, nem hagyja ezt a fájlt körül fekszik fájlmegosztások vagy más megosztott helyen. Javasoljuk, hogy megszabadulni tartja ezt a fájlt, ha elkészült a virtuális gépek üzembe helyezéséről.
+> **A jelszavakat körültekintően kezelheti.**
+> A sablon-paraméter fájl a tartományi fiókok jelszavait, valamint a virtuális gép helyi rendszergazdai jelszavait tartalmazza. Ügyeljen arra, hogy ne hagyja a fájlt a fájlmegosztás vagy más megosztott tárolóhelyek köré. Javasoljuk, hogy a virtuális gépek üzembe helyezése után távolítsa el ezt a fájlt.
 >
 
-A telepítés sikeres befejezése után a megadott Windows virtuális gépek csatlakoznak, a felügyelt tartományhoz.
+Miután az üzembe helyezés sikeresen befejeződött, a megadott Windows-alapú virtuális gépek csatlakoznak a felügyelt tartományhoz.
 
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * [Az Azure PowerShell áttekintése](/powershell/azure/overview)
-* [Azure gyors üzembe helyezési sablon - tartományhoz való csatlakozás egy új virtuális gép](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
-* [Azure gyors üzembe helyezési sablon - tartományhoz való csatlakozás meglévő virtuális gépek](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
+* [Azure gyors üzembe helyezési sablon – tartomány csatlakoztatása egy új virtuális géphez](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
+* [Azure gyors üzembe helyezési sablon – tartományhoz való csatlakozás meglévő virtuális gépekhez](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../azure-resource-manager/resource-group-template-deploy.md)

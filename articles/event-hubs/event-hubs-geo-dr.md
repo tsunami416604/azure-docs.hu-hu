@@ -14,18 +14,19 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 8dca94f0200f6bd41dfdc199b41bf69981a960da
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 22cf2be8eaed47a9440c6798acfb4383bd84c916
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562708"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611720"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Az Azure Event Hubs - Geo-vészhelyreállítás 
 
 Ha a teljes Azure-régióban, vagy az adatközpontok (Ha nincs [rendelkezésre állási zónák](../availability-zones/az-overview.md) használt) leállás következik be, kritikus fontosságú adatok feldolgozásához, eltérő régióban vagy datacenter továbbra is. Emiatt a *Geo-disaster recovery* és *georeplikációs* bármely vállalat számára fontos funkciók. Az Azure Event Hubs geo-vészhelyreállítás és georeplikáció útján, a névterek szintjén is támogatja. 
 
-A Geo-vész-helyreállítási funkció globálisan elérhető a Event Hubs standard és a dedikált SKU számára egyaránt. Vegye figyelembe, hogy csak az SKU azonos szintjein lévő névtereket lehet megfeleltetni. Ha például olyan névteret használ egy fürtben, amely csak a dedikált SKU-ban érhető el, akkor csak egy másik fürt névterével párosítható. 
+> [!NOTE]
+> A földrajzi katasztrófa utáni helyreállítási funkció csak a [standard és a dedikált SKU](https://azure.microsoft.com/pricing/details/event-hubs/)esetében érhető el.  
 
 ## <a name="outages-and-disasters"></a>Leállások és katasztrófák kezelése
 
@@ -37,7 +38,9 @@ Az Azure Event Hubs Geo-disaster recovery funkcióját a vészhelyreállítási 
 
 ## <a name="basic-concepts-and-terms"></a>Alapfogalommal és kifejezéssel
 
-A vész-helyreállítási szolgáltatás metaadatainak vész-helyreállítási valósítja meg, és az elsődleges és másodlagos vész-helyreállítási névterek támaszkodik. Vegye figyelembe, hogy a Geo-vész-helyreállítási funkció csak a [standard és a dedikált SKU](https://azure.microsoft.com/pricing/details/event-hubs/) esetében érhető el. Nem kell, végezze el a kapcsolati karakterlánc módosításokat, a kapcsolat alias-n keresztül.
+A vész-helyreállítási szolgáltatás metaadatainak vész-helyreállítási valósítja meg, és az elsődleges és másodlagos vész-helyreállítási névterek támaszkodik. 
+
+A földrajzi katasztrófa utáni helyreállítási funkció csak a [standard és a dedikált SKU](https://azure.microsoft.com/pricing/details/event-hubs/) esetében érhető el. Nem kell, végezze el a kapcsolati karakterlánc módosításokat, a kapcsolat alias-n keresztül.
 
 Ez a cikk a következő kifejezéseket használjuk:
 
@@ -48,6 +51,19 @@ Ez a cikk a következő kifejezéseket használjuk:
 -  *Metaadatok*: Entitások, például az Event hubok és a fogyasztói csoportok; a névtérhez társított szolgáltatás tulajdonságai. Vegye figyelembe, hogy csak az entitások és a beállításaik automatikusan replikálja. Üzenetek és események nem lesznek replikálva. 
 
 -  *Feladatátvétel*: A másodlagos névtér aktiválásának folyamata.
+
+## <a name="supported-namespace-pairs"></a>Támogatott névtér-párok
+Az elsődleges és a másodlagos névterek következő kombinációi támogatottak:  
+
+| Elsődleges névtér | Másodlagos névtér | Támogatott | 
+| ----------------- | -------------------- | ---------- |
+| Standard | Standard | Igen | 
+| Standard | Dedikált | Igen | 
+| Dedikált | Dedikált | Igen | 
+| Dedikált | Standard | Nem | 
+
+> [!NOTE]
+> Ugyanahhoz a dedikált fürthöz tartozó névtereket nem lehet párosítani. A különálló fürtökben található névtereket is párosíthatja. 
 
 ## <a name="setup-and-failover-flow"></a>A telepítő és a feladatátvételi folyamat
 

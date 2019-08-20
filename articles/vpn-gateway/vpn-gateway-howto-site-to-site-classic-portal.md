@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 77cfde8cc9c6556b907f1185f451c70c8c8e888d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2e6036c5f29614f2e91278b693c07dc3dc8595f2
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534025"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575481"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Helyek közötti kapcsolat létrehozása az Azure Portal használatával (klasszikus)
 
@@ -39,7 +39,7 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 * Győződjön meg arról, hogy rendelkezésre áll egy kompatibilis VPN-eszköz és egy azt konfigurálni képes személy. További információk a kompatibilis VPN-eszközökről és az eszközkonfigurációról: [Tudnivalók a VPN-eszközökről](vpn-gateway-about-vpn-devices.md).
 * Győződjön meg arról, hogy rendelkezik egy kifelé irányuló, nyilvános IPv4-címmel a VPN-eszköz számára.
 * Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek. Amikor létrehozza ezt a konfigurációt, meg kell határoznia az IP-címtartományok előtagjait, amelyeket az Azure majd a helyszínre irányít. A helyszíni hálózat egyik alhálózata sem lehet átfedésben azokkal a virtuális alhálózatokkal, amelyekhez csatlakozni kíván.
-* Jelenleg a megosztott kulcs megadásához és a VPN Gateway-kapcsolat létrehozásához a PowerShellre van szükség. Telepítse az Azure Service Management (SM) PowerShell-parancsmagjainak legújabb verzióját. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál. Ahhoz, hogy ezt a konfigurációt elvégezhesse, a PowerShellt rendszergazdaként kell futtatnia.
+* Jelenleg a megosztott kulcs megadásához és a VPN Gateway-kapcsolat létrehozásához a PowerShellre van szükség. Telepítse az Azure Service Management (SM) PowerShell-parancsmagjainak legújabb verzióját. A parancsmagok telepítéséhez lásd: [Service Management](/powershell/azure/servicemanagement/install-azure-ps). Az általános PowerShell-telepítésekkel kapcsolatos további információkért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview). Ahhoz, hogy ezt a konfigurációt elvégezhesse, a PowerShellt rendszergazdaként kell futtatnia.
 
 ### <a name="values"></a>Konfigurációs mintaértékek ehhez a gyakorlathoz
 
@@ -159,6 +159,12 @@ Ebben a lépésben beállítja a megosztott kulcsot, és létrehozza a kapcsolat
 
 ### <a name="step-1-connect-to-your-azure-account"></a>1\.lépés Csatlakozás az Azure-fiókhoz
 
+Ezeket a parancsokat helyileg kell futtatni a PowerShell Service Management modul használatával. A Service Management szolgáltatásra való váltáshoz használja a következő parancsot:
+
+```powershell
+azure config mode asm
+```
+
 1. Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
 
    ```powershell
@@ -177,18 +183,14 @@ Ebben a lépésben beállítja a megosztott kulcsot, és létrehozza a kapcsolat
 
 ### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>2\.lépés A megosztott kulcs beállítása és a kapcsolat létrehozása
 
-A PowerShell és a klasszikus üzemi modell használatakor a portálon található erőforrások neve néha nem egyezik azzal, amelyet az Azure elvár a PowerShell használatakor. Az alábbi lépések segítségével exportálhatja a hálózati konfigurációs fájlt a nevek pontos értékeinek lekéréséhez. Ezeket a parancsokat helyileg kell futtatni a PowerShell Service Management modul használatával. A Service Management szolgáltatásra való váltáshoz használja a következő parancsot:
-
-```powershell
-azure config mode asm
-```
+Amikor klasszikus VNet hoz létre a portálon (nem a PowerShell használatával), az Azure hozzáadja az erőforráscsoport nevét a rövid névhez. Például az Azure szerint az ehhez a gyakorlathoz létrehozott VNet neve "Group TestRG1 TestVNet1", nem "TestVNet1". A PowerShell használatához a virtuális hálózat teljes neve szükséges, nem pedig a portálon megjelenő rövid név. A hosszú név nem látható a portálon. A következő lépések segítségével exportálhatja a hálózati konfigurációs fájlt a virtuális hálózat nevének pontos értékeinek beszerzéséhez. 
 
 1. Hozzon létre egy könyvtárat a számítógépén, majd exportálja a hálózati konfigurációs fájlt a könyvtárba. Ebben a példában a hálózati konfigurációs fájlt a C:\AzureNet helyre exportálja.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-2. Nyissa meg a hálózati konfigurációs fájlt egy xml-szerkesztővel, majd ellenőrizze a „LocalNetworkSite name” és a „VirtualNetworkSite name” értékeit. Módosítsa úgy a példát, hogy tükrözze a szükséges értékeket. Amikor szóközt tartalmazó nevet ad meg, zárja az értéket szimpla idézőjelek közé.
+2. Nyissa meg a hálózati konfigurációs fájlt egy xml-szerkesztővel, majd ellenőrizze a „LocalNetworkSite name” és a „VirtualNetworkSite name” értékeit. Módosítsa a gyakorlat példáját, hogy az tükrözze az XML-ben szereplő értékeket. Amikor szóközt tartalmazó nevet ad meg, zárja az értéket szimpla idézőjelek közé.
 
 3. Állítsa be a megosztott kulcsot, és hozza létre a kapcsolatot. A „-SharedKey” egy Ön által létrehozott és megadott érték. A példában az „abc123” értéket használtuk, de érdemesebb egy ennél összetettebb értéket használni. Vegye figyelembe, hogy az itt megadott értéknek meg kell egyeznie a VPN-eszköz konfigurálásakor meghatározott értékkel.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: New York-i taxik adatok betöltése az Azure SQL Data Warehouse |} A Microsoft Docs'
-description: Oktatóanyag az Azure portal és az SQL Server Management Studio New York-i taxik adatainak betöltésére egy nyilvános Azure-blobból Azure SQL Data warehouse-bA.
+title: 'Oktatóanyag: A New York-i taxik betöltése Azure SQL Data Warehouseba | Microsoft Docs'
+description: Az oktatóanyag Azure Portal és SQL Server Management Studio használatával tölti be a New York-i taxik adatait egy nyilvános Azure-blobból a Azure SQL Data Warehouseba.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5f2830b524c554a6988bfc873cd0f6c54e5c56a4
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e3bef20a92322b07219e42c4f7fe8443917eae32
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839683"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575203"
 ---
-# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: New York-i taxik adatait az Azure SQL Data Warehouse betöltése
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: A New York taxik-beli adatAzure SQL Data Warehouse betöltése
 
-A PolyBase, New York-i taxik adatainak betöltésére nyilvános oktatóanyag használ Azure blobból Azure SQL Data Warehouse. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz: 
+Ez az oktatóanyag a Base használatával tölti be a New York-i taxik adatait egy nyilvános Azure-blobból a Azure SQL Data Warehouseba. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz: 
 
 > [!div class="checklist"]
 > * Adattárház létrehozása az Azure Portalon
@@ -42,11 +42,11 @@ Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Mana
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="create-a-blank-sql-data-warehouse"></a>Üres SQL-adattárház létrehozása
+## <a name="create-a-blank-sql-data-warehouse"></a>Üres SQL Data Warehouse létrehozása
 
-Az Azure SQL Data Warehouse [számítási erőforrások](memory-and-concurrency-limits.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-features.md) jön létre. 
+Egy Azure SQL Data Warehouse [számítási erőforrások](memory-and-concurrency-limits.md)meghatározott készletével jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-features.md) jön létre. 
 
-Kövesse az alábbi lépéseket egy üres SQL-adattárház létrehozásához. 
+Az alábbi lépéseket követve hozzon létre egy üres SQL Data Warehouse. 
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
@@ -78,9 +78,9 @@ Kövesse az alábbi lépéseket egy üres SQL-adattárház létrehozásához.
 
 5. Kattintson a **Kiválasztás** gombra.
 
-6. Kattintson a **teljesítményszint** megadásához, hogy az adatraktár Gen1 és Gen2, és az adattárházegységek számának. 
+6. Kattintson a **teljesítményszint** lehetőségre annak megadásához, hogy az adatraktár Gen1 vagy Gen2, valamint az adatraktár-egységek számát. 
 
-7. A jelen oktatóanyag esetében válassza ki a **Gen2** az SQL Data Warehouse. A csúszka értéke **DW1000c** alapértelmezés szerint.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban. 
+7. Ebben az oktatóanyagban válassza ki a SQL Data Warehouse **Gen2** . Alapértelmezés szerint a csúszka a **DW1000c** értékre van állítva.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban. 
 
     ![teljesítmény konfigurálása](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
@@ -103,7 +103,7 @@ Az SQL Data Warehouse szolgáltatás egy tűzfalat hoz létre a kiszolgáló szi
 > Az SQL Data Warehouse az 1433-as portot használja a kommunikációhoz. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot.
 >
 
-1. Az üzembe helyezés befejezése után kattintson az **SQL-adatbázisok** elemre a bal oldali menüben, majd kattintson a **mySampleDatabase** adatbázisra az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő oldala, amelyen látható a teljes kiszolgálónév (például **mynewserver-20180430.database.windows.net**) és a további lehetőségeket biztosít. 
+1. Az üzembe helyezés befejezése után kattintson az **SQL-adatbázisok** elemre a bal oldali menüben, majd kattintson a **mySampleDatabase** adatbázisra az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő lapja, amely megjeleníti a teljes kiszolgálónevet (például **mynewserver-20180430.database.Windows.net**), és további konfigurálási lehetőségeket biztosít. 
 
 2. Másolja le ezt a teljes kiszolgálónevet, mert a későbbi rövid útmutatók során szüksége lesz rá a kiszolgálóhoz és az adatbázisokhoz való csatlakozáshoz. Ezután kattintson a kiszolgáló nevére a kiszolgáló beállításainak megnyitásához.
 
@@ -133,8 +133,8 @@ Mostantól csatlakozhat az SQL-kiszolgálóhoz és annak adattárházaihoz errő
 Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Később ezt a teljes nevet fogja majd használni a kiszolgálóhoz való kapcsolódás során.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Válassza ki **SQL Data warehouse-adattárházak** elemet a bal oldali menüben, és kattintson az adatbázisra az a **SQL data warehouse-adattárházak** lap. 
-3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljes tartománynévvel mynewserver-20180430.database.windows.net. 
+2. Válassza az **SQL** -adattárházak lehetőséget a bal oldali menüben, majd kattintson az adatbázisra az **SQL** -adattárházak lapon. 
+3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljes név mynewserver-20180430.database.windows.net. 
 
     ![kapcsolatadatok](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -149,7 +149,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
     | Beállítás      | Ajánlott érték | Leírás | 
     | ------------ | --------------- | ----------- | 
     | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
-    | Kiszolgálónév | A teljes kiszolgálónév | A névnek valami ilyesmit kell lennie: **mynewserver-20180430.database.windows.net**. |
+    | Kiszolgálónév | A teljes kiszolgálónév | A névnek a következőhöz hasonlónak kell lennie: **mynewserver-20180430.database.Windows.net**. |
     | Authentication | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
     | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
     | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ezt a jelszót adta meg a kiszolgáló létrehozásakor. |
@@ -164,7 +164,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
 
 ## <a name="create-a-user-for-loading-data"></a>Felhasználó létrehozása az adatok betöltéséhez
 
-A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. Memória maximális értékei szerint mely generálása az SQL Data Warehouse, már üzembe helyezett, meghatározott [adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md), és [erőforrásosztály](resource-classes-for-workload-management.md). 
+A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. A memória maximális száma a SQL Data Warehouse kiépített, adatraktár- [egységek](what-is-a-data-warehouse-unit-dwu-cdwu.md)és [erőforrás-osztály](resource-classes-for-workload-management.md)generációjának megfelelően van meghatározva. 
 
 Érdemes létrehozni egy adatok betöltésére kijelölt felhasználót és fiókot. Ezután adja hozzá a betöltést végző felhasználót egy olyan [erőforrásosztályhoz](resource-classes-for-workload-management.md), amely lehetővé teszi a megfelelő mértékű maximális memórialefoglalást.
 
@@ -215,7 +215,7 @@ Az adatok betöltésének első lépése a LoaderRC20-ként való bejelentkezés
 
 ## <a name="create-external-tables-for-the-sample-data"></a>Külső táblák létrehozása a mintaadatokhoz
 
-Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Az oktatóanyag bemutatja, hogyan használható a külső táblák betöltése a New York City i taxik adatait egy Azure storage-blobból. Ha később szeretné megismerni az adatok Azure Blob Storage-be való áthelyezésének vagy a forrásból közvetlenül az SQL Data Warehouse-ba való betöltésének a módját, olvassa el a [betöltés áttekintését](sql-data-warehouse-overview-load.md).
+Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Ebből az oktatóanyagból megtudhatja, hogyan használhatja a külső táblákat a New York-i taxi-adatok Azure Storage-blobból való betöltésére. Ha később szeretné megismerni az adatok Azure Blob Storage-be való áthelyezésének vagy a forrásból közvetlenül az SQL Data Warehouse-ba való betöltésének a módját, olvassa el a [betöltés áttekintését](sql-data-warehouse-overview-load.md).
 
 Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó információk megadásához. Ezen információk közé tartozik az adatok helye, az adatok tartalmának formátuma és az adatok tábladefiníciója. 
 
@@ -561,16 +561,16 @@ A szkript a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-a
 
     ![A betöltött táblák megtekintése](media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
-## <a name="authenticate-using-managed-identities-to-load-optional"></a>Hitelesítés a felügyelt identitások használatával betöltése (nem kötelező)
-Betöltése a PolyBase, és a felügyelt identitásokból hitelesítéshez a legbiztonságosabb módszer, és kihasználhatja a virtuális hálózati Szolgáltatásvégpontok az Azure storage lehetővé teszi. 
+## <a name="authenticate-using-managed-identities-to-load-optional"></a>Hitelesítés felügyelt identitások használatával a betöltéshez (nem kötelező)
+A legbiztonságosabb módszer a VNet-alapú és a felügyelt identitásokon keresztül történő hitelesítés, és lehetővé teszi az Azure Storage használatával történő kihasználása a szolgáltatásbeli végpontokat. 
 
 ### <a name="prerequisites"></a>Előfeltételek
-1.  Ez az Azure PowerShell telepítése [útmutató](https://docs.microsoft.com/powershell/azure/install-az-ps).
-2.  Ha rendelkezik egy általános célú v1- vagy blob storage-fiókot, először frissítenie kell, általános célú v2 ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
-3.  Rendelkeznie kell **engedélyezése megbízható Microsoft-szolgáltatások a tárfiók** kapcsolva az Azure Storage-fiók **tűzfalak és virtuális hálózatok** beállítások menüjében. Ebben [útmutató](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) további információt.
+1.  Azure PowerShell telepítése az [útmutató](https://docs.microsoft.com/powershell/azure/install-az-ps)segítségével.
+2.  Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)használatával kell frissítenie az általános célú v2-re.
+3.  Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage** -fiókhoz az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .
 
 #### <a name="steps"></a>Lépések
-1. A PowerShellben **az SQL Database-kiszolgáló regisztrálása** az Azure Active Directory (AAD):
+1. A PowerShellben **regisztrálja SQL Database** -kiszolgálóját Azure Active Directory (HRE) használatával:
 
    ```powershell
    Connect-AzAccount
@@ -578,32 +578,32 @@ Betöltése a PolyBase, és a felügyelt identitásokból hitelesítéshez a leg
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
    ```
     
-   1. Hozzon létre egy **általános célú v2-Tárfiók** ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+   1. Hozzon létre egy **általános célú v2 Storage-fiókot** az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)segítségével.
 
    > [!NOTE]
-   > - Ha rendelkezik egy általános célú v1- vagy blob storage-fiók, meg kell **először frissítse a v2** ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+   > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re** kell frissítenie az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)segítségével.
     
-1. Lépjen a storage-fiók alatt **hozzáférés-vezérlés (IAM)** , és kattintson a **szerepkör-hozzárendelés hozzáadása**. Rendelje hozzá **Storage-Blobadatok Közreműködője** RBAC szerepkör az SQL Database-kiszolgálóhoz.
+1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendeljen hozzá **Storage blob** -adatközreműködői RBAC szerepkört a SQL Database-kiszolgálóhoz.
 
    > [!NOTE] 
-   > Csak a tulajdonosa a jogosultsággal rendelkező tagok ebben a lépésben hajthat végre. A különféle beépített szerepkörök az Azure-erőforrásokhoz, tekintse meg a [útmutató](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+   > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
   
-1. **A Polybase-kapcsolat az Azure Storage-fiókba:**
+1. **Alapszintű kapcsolat az Azure Storage-fiókkal:**
     
-   1. Az adatbázishoz kötődő hitelesítő adat létrehozása **azonosító = "Felügyeltszolgáltatás-identitást"** :
+   1. Hozza létre az adatbázishoz tartozó hatókörrel rendelkező hitelesítő adatokat az **Identity = ' Managed Service Identity '** használatával:
 
        ```SQL
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
        ```
        > [!NOTE] 
-       > - Adjon meg titkos kulcsot az Azure Storage-hozzáférési kulcsot, mert ezt a mechanizmust használ, nem kell [felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a háttérben.
-       > - SZOLGÁLTATÁSIDENTITÁS neve legyen **Managed Service Identity** a PolyBase csatlakozást az Azure Storage-fiók használata.
+       > - Nincs szükség a titkos kulcs megadására az Azure Storage-hozzáférési kulccsal, mert [](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ez a mechanizmus felügyelt identitást használ a borítók alatt.
+       > - Az identitás nevének **"Managed Service Identity"** kell lennie az Azure Storage-fiókkal való együttműködéshez.
     
-   1. A Database Scoped Credential megadása a Felügyeltszolgáltatás-identitást a külső adatforrás létrehozása.
+   1. Hozza létre a külső adatforrást, amely megadja az adatbázishoz tartozó hatókörrel rendelkező hitelesítő adatokat a Managed Service Identity.
         
-   1. Lekérdezés a normál használatával [külső táblák](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
+   1. Lekérdezés normál módon [külső táblák](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)használatával.
 
-Tekintse meg a következő [dokumentáció](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) Ha szeretné beállítani a virtuális hálózati Szolgáltatásvégpontok az SQL Data warehouse-hoz. 
+Ha a SQL Data Warehouse virtuális [](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) hálózati szolgáltatás-végpontokat szeretne beállítani, tekintse meg az alábbi dokumentációt. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -622,7 +622,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 3. Ha el szeretné távolítani az adattárházat, hogy a számítási és tárolási erőforrásokért se kelljen fizetnie, kattintson a **Törlés** parancsra.
 
-4. A létrehozott SQL-kiszolgáló eltávolításához kattintson **mynewserver-20180430.database.windows.net** az előző képen, majd kattintson a **törlése**.  Ezzel kapcsolatban legyen körültekintő, mert a kiszolgáló törlésével a kiszolgálóhoz rendelt összes adatbázis is törölve lesz.
+4. A létrehozott SQL-kiszolgáló eltávolításához kattintson a **mynewserver-20180430.database.Windows.net** elemre az előző képen, majd kattintson a **Törlés**gombra.  Ezzel kapcsolatban legyen körültekintő, mert a kiszolgáló törlésével a kiszolgálóhoz rendelt összes adatbázis is törölve lesz.
 
 5. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
 
@@ -640,7 +640,7 @@ A következőket hajtotta végre:
 > * Az adatok állapotának megtekintése betöltés közben
 > * Statisztikák készítése az újonnan betöltött adatokról
 
-Folytassa a megtudhatja, hogyan telepíthet át egy meglévő adatbázist az SQL Data Warehouse fejlesztői áttekintés.
+Folytassa a fejlesztési áttekintéssel, amelyből megtudhatja, hogyan telepíthet át egy meglévő adatbázist SQL Data Warehouseba.
 
 > [!div class="nextstepaction"]
->[Tervezési döntéseket telepíthet át egy meglévő adatbázist az SQL Data Warehouse](sql-data-warehouse-overview-migrate.md)
+>[Megtervezheti a meglévő adatbázisok SQL Data Warehouseba való átépítésének döntéseit](sql-data-warehouse-overview-migrate.md)

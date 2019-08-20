@@ -10,16 +10,16 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1f800ade5c5122f0891c9122f6698b6550048c67
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: f5ee4227b0aeb53be4512dafc91f814468b50c12
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479343"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574908"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Gyors útmutató: Azure SQL-adattárház létrehozása és lekérdezése Azure PowerShell
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Gyors útmutató: Azure SQL Data Warehouse létrehozása és lekérdezése Azure PowerShell
 
-Gyorsan létrehozhat egy Azure SQL-adattárházat Azure PowerShell használatával.
+Azure PowerShell használatával gyorsan létrehozhat egy Azure SQL Data Warehouse.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -90,7 +90,7 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Konfiguráljon egy kiszolgálói tűzfalszabályt
 
-Hozzon létre egy [Azure SQL Server-szintű tűzfalszabályok](../sql-database/sql-database-firewall-configure.md) a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) parancs használatával. A kiszolgálói szintű tűzfalszabályok lehetővé teszik egy külső alkalmazás, például a SQL Server Management Studio vagy a SQLCMD segédprogram számára az SQL-adattárházhoz való kapcsolódást az SQL Data Warehouse szolgáltatás tűzfalan keresztül. A következő példában a tűzfal csak más Azure-erőforrások számára van nyitva. A külső csatlakozási lehetőségek engedélyezéséhez módosítsa az IP-címet egy, az Ön környezetének megfelelő címre. Az összes IP-cím megnyitásához használja a 0.0.0.0 címet kezdő IP-címként és a 255.255.255.255 címet zárócímként.
+Hozzon létre egy [Azure SQL Server-szintű tűzfalszabályok](../sql-database/sql-database-firewall-configure.md) a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) parancs használatával. A kiszolgálói szintű tűzfalszabályok lehetővé teszik egy külső alkalmazás, például SQL Server Management Studio vagy a SQLCMD segédprogram számára, hogy a SQL Data Warehouse szolgáltatás tűzfalan keresztül kapcsolódjon egy SQL Data Warehouse. A következő példában a tűzfal csak más Azure-erőforrások számára van nyitva. A külső csatlakozási lehetőségek engedélyezéséhez módosítsa az IP-címet egy, az Ön környezetének megfelelő címre. Az összes IP-cím megnyitásához használja a 0.0.0.0 címet kezdő IP-címként és a 255.255.255.255 címet zárócímként.
 
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
@@ -149,4 +149,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 Létrehozott egy adattárházat, létrehozott egy tűzfalszabályot, kapcsolódott az adattárházhoz, és futtat néhány lekérdezést. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
 > [!div class="nextstepaction"]
->[Adatok betöltése az SQL Data Warehouse-okba](load-data-from-azure-blob-storage-using-polybase.md)
+>[Az adatSQL Data Warehouseba való betöltés](load-data-from-azure-blob-storage-using-polybase.md)

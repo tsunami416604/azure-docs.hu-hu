@@ -1,5 +1,5 @@
 ---
-title: Az Azure CLI-szkript – létrehozása egy Azure Cosmos DB SQL API-fiókot, adatbázist és tároló
+title: Azure CLI-szkript – Azure Cosmos DB SQL API-fiók,-adatbázis és-tároló létrehozása
 description: Azure CLI-példaszkript – Azure Cosmos DB SQL API-fiók, -adatbázis és -tároló létrehozása
 author: markjbrown
 ms.author: mjbrown
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: c139ff60ef36b87d9ac16bfd16ad319cd9e17d10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ff6d0ea2701eab8f7cc98f2aeead7492b231f77
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66154732"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616746"
 ---
-# <a name="azure-cosmos-db-create-a-sql-api-account-using-cli"></a>Az Azure Cosmos DB: A CLI-vel az SQL API-fiók létrehozása
+# <a name="azure-cosmos-db-create-a-sql-api-account-using-cli"></a>Az Azure Cosmos DB: SQL API-fiók létrehozása a parancssori felület használatával
 
 Ez a CLI-példaszkript létrehoz egy Azure Cosmos DB SQL API-fiókot, -adatbázist és -tárolót.  
 
@@ -43,8 +43,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Létrehoz egy Azure Cosmos DB-fiókot. |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Létrehoz egy Azure Cosmos DB-adatbázist. |
-| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Létrehoz egy Azure Cosmos DB-tárolót. |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Létrehoz egy Azure Cosmos-adatbázist. |
+| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Létrehoz egy Azure Cosmos-tárolót. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések

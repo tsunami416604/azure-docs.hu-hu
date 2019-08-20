@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: abnarain
-ms.openlocfilehash: 49d9be9f10f0e840cfa3d027901a297de8cbf750
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87b32fdef449945b1e8facac2ac5a51b4ef67972
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328161"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617592"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 Ebben az oktatóanyagban az Azure PowerShell használatával egy Data Factory-folyamatot hozunk létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között. 
@@ -82,8 +82,6 @@ Ebben az oktatóanyagban az Azure Storage-fiók nevét és kulcsát használjuk.
 
 1. A **Tárfiók** ablakban válassza a **Hozzáférési kulcsok** elemet.
 
-    ![Tárfióknév és -kulcs beszerzése](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
-
 1. Másolja a **Tárfiók neve** és **1. kulcs** mező értékét, majd illessze be őket egy jegyzettömbbe vagy más szerkesztőbe az oktatóanyag későbbi részeiben történő használatra. 
 
 #### <a name="create-the-adftutorial-container"></a>Adftutorial tároló létrehozása 
@@ -107,7 +105,6 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure B
 
 1. Ne zárja be az **adftutorial** **tároló** ablakát. A segítségével ellenőrizheti az oktatóanyag eredményét. A Data Factory automatikusan létrehozza a kimeneti mappát a tárolóban, így nem kell újat létrehoznia.
 
-    ![Tároló ablaka](media/tutorial-hybrid-copy-powershell/container-page.png)
 
 ### <a name="windows-powershell"></a>Windows PowerShell
 
@@ -135,7 +132,7 @@ Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. R
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>data factory létrehozása
 
 1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) nevét (idézőjelek között, például így: `"adfrg"`), majd futtassa a parancsot. 
    
@@ -179,7 +176,7 @@ Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. R
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * Az adat-előállító példányok létrehozásához annak a felhasználói fióknak, amellyel belép az Azure-ba, a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie.
-> * Azure-régióban, amelyben a Data Factory jelenleg listája, válassza ki a régiók, amelyek a következő oldalon érdeklődésére számot tartó, és bontsa ki **Analytics** található **adat-előállító**: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
+> * Azon Azure-régiók listájáért, amelyekben Data Factory jelenleg elérhető, válassza ki a következő oldalon megtekinteni kívánt régiókat, majd bontsa ki az **elemzés** elemet a **Data Factory**megkereséséhez: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
 > 
 > 
 
@@ -415,7 +412,7 @@ Ebben a lépésben a helyszíni SQL Server-példányt társítja az adat-előál
     > [!IMPORTANT]
     > - Válassza ki az SQL Server-példányhoz való kapcsolódáshoz használt hitelesítési módszernek megfelelő szakaszt.
     > - Cserélje le az **\<integration runtime name>** értéket az Integration Runtime nevére.
-    > - A fájl mentése előtt a **\<servername>**, **\<databasename>**, **\<username>** és **\<password>** értékeket cserélje le az SQL Server-példány értékeire.
+    > - A fájl mentése előtt a **\<servername>** , **\<databasename>** , **\<username>** és **\<password>** értékeket cserélje le az SQL Server-példány értékeire.
     > - Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *sajáttartomány\\\\sajátfelhasználó* értéket. 
 
 1. A bizalmas adatok (felhasználónév, jelszó stb.) titkosításához futtassa a `New-AzDataFactoryV2LinkedServiceEncryptedCredential` parancsmagot.  

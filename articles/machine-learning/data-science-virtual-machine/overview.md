@@ -15,27 +15,30 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/22/2019
 ms.author: vijetaj
-ms.openlocfilehash: 5816f53115f3ec54cbd9784894a5262b68dd6e95
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2814ad51d2f0f868833cf9c6964b7ea4a8424435
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565184"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574926"
 ---
 # <a name="what-is-azure-data-science-virtual-machine-for-linux-and-windows"></a>Mi a Linux és a Windows rendszerhez készült Azure Data Science Virtual Machine?
 
-Az Adatelemző virtuális gép (DSVM) egy személyre szabott virtuálisgép-lemezkép a Microsoft Azure-felhőben, amelyet kifejezetten adatelemzésre hoztak létre. Számos népszerű adatelemzési és egyéb eszköz található meg rajta előre telepítve és konfigurálva, amelyek jelentősen felgyorsítják az intelligens alkalmazások fejlett elemzésekhez történő összeállítását. Windows Server és Linux rendszeren érhető el. A DSVM Windows-kiadását Server 2016 és Server 2012 rendszeren tesszük elérhetővé. A DSVM linuxos kiadásait Ubuntu 16.04 LTS és CentOS 7.4 rendszerre kínáljuk.
+Az Adatelemző virtuális gép (DSVM) egy személyre szabott virtuálisgép-lemezkép a Microsoft Azure-felhőben, amelyet kifejezetten adatelemzésre hoztak létre. Számos népszerű adatelemzési és egyéb eszköz található meg rajta előre telepítve és konfigurálva, amelyek jelentősen felgyorsítják az intelligens alkalmazások fejlett elemzésekhez történő összeállítását. 
 
-Ez a cikk azt ismerteti, hogy mit tehet a Data Science VM. Ismerteti a virtuális gép használatának néhány főbb forgatókönyvét, valamint a Windows-és Linux-verziók körvonalazza elérhető főbb funkciókat. A cikk emellett útmutatást nyújt a használat megkezdéséhez.
+Az eszköz-konfigurációk ellenőrizteti kell megvizsgálni, az adatelemzők és fejlesztők a Microsoft és a szélesebb körű adatelemzési Közösség stabilitását és általános életképességgel által.
+
+A DSVM a következő címen érhető el:
++ Windows Server 2016, Windows Server 2012
++ Ubuntu 16,04 LTS és CentOS 7,4
+
+Az **összes Deep learning VM** -eszköz be lett hajtva Data Science VMba. 
 
 
-## <a name="what-can-i-do-with-the-data-science-virtual-machine"></a>Mire használhatom az adatelemző virtuális gépet?
+## <a name="what-can-i-do-with-dsvm"></a>Mire használhatom a DSVM?
 A Data Science Virtual Machine (DSVM) rendeltetése az, hogy könnyen használható, előre konfigurált és teljes körűen integrált adatelemzési környezetet biztosítson a legkülönfélébb képzettségű és a legkülönfélébb iparágakban dolgozó adatszakértőknek. Saját hasonló munkakörnyezet kialakítása helyett üzembe helyezhet egy adatelemző virtuális gépet, így napokat vagy akár _heteket_ is megtakaríthat a telepítés, konfigurálás és csomagkezelés folyamatában. A DSVM üzembe helyezése után azonnal munkához láthat adatelemzési projektjén.
 
 Az adatelemző virtuális gépet úgy tervezték és konfigurálták, hogy sokféle alkalmazási helyzetben használható legyen. A környezet követelményeinek megváltozása mellett akár le is méretezheti a környezetet. Az adatelemzési feladatok elvégzéséhez használhatja az előnyben részesített nyelvet is, és más eszközöket is telepíthet, amelyekkel testre szabhatja a rendszer pontos szükségleteit.
-
-## <a name="key-scenarios"></a>Főbb alkalmazási helyzetek
-Ez a szakasz néhány alapvető alkalmazási helyzetet javasol, amelyben az adatelemző virtuális gép üzembe helyezhető.
 
 ### <a name="preconfigured-analytics-desktop-in-the-cloud"></a>Előre konfigurált felhőbeli elemzési kezelőfelület
 Az adatelemző virtuális gép alapszintű konfigurációt kínál azoknak az adatszakértőknek, akik helyszíni számítógépeiket felügyelt felhőbeli kezelőfelületre szeretnék cserélni. Ez az alapszint biztosítja, hogy egy csapat valamennyi adatszakértője egységes beállításokkal ellenőrizhesse a kísérleti eredményeket, és elősegíti az együttműködést. A rendszergazdai terhek csökkentésével csökkenti a költségeket is. Ez a terhek csökkentése a speciális elemzésekhez szükséges különböző szoftvercsomagok kiértékeléséhez, telepítéséhez és karbantartásához szükséges időt takarít meg.
@@ -47,18 +50,37 @@ Az adatelemzési osztályokat bemutató vállalati oktatók és oktatók által�
 Az adatelemzési ötletbörzékhez/versenyekhez és a nagytömegű adatok elemzéséhez és feltárásához bővebb hardverkapacitás szükséges, általában rövid időre. A Data Science VM segítségével gyorsan igény szerint replikálhatja az adatelemzési környezetet, a kibővített kiszolgálókon, amelyek lehetővé teszik a nagy teljesítményű számítási erőforrások futtatásának kísérleteit.
 
 ### <a name="custom-compute-power-for-azure-notebooks"></a>Azure Notebooks egyéni számítási teljesítmény
-
-[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) egy ingyenes üzemeltetett szolgáltatás, amely a felhőben Jupyter-jegyzetfüzeteket fejleszt, futtat és oszt meg a telepítés nélkül. Az ingyenes szolgáltatás szintje azonban 4 GB-nyi memóriára és 1 GB-ra van korlátozva. Az összes korlát felszabadításához csatolhat jegyzetfüzet-projektet egy Data Science VM vagy bármely más, Jupyter-kiszolgálót futtató virtuális géphez. Ha Azure Active Directory (például vállalati fiókkal) rendelkező fiókkal jelentkezik be Azure Notebooksba, a jegyzetfüzetek automatikusan megjelenítik az adatelemzési virtuális gépeket a fiókhoz társított előfizetésekben. További információ: [projektek kezelése és konfigurálása – számítási réteg](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) egy ingyenes üzemeltetett szolgáltatás, amely a felhőben Jupyter-jegyzetfüzeteket fejleszt, futtat és oszt meg a telepítés nélkül. Az ingyenes szolgáltatás szintje azonban 4 GB-nyi memóriára és 1 GB-ra van korlátozva. Az összes korlát felszabadításához csatolhat jegyzetfüzet-projektet egy Data Science VM vagy bármely más, Jupyter-kiszolgálót futtató virtuális géphez. Ha Azure Active Directory (például vállalati fiókkal) rendelkező fiókkal jelentkezik be Azure Notebooksba, a jegyzetfüzetek automatikusan megjelenítik az adatelemzési virtuális gépeket a fiókhoz társított előfizetésekben. A rendelkezésre álló számítási teljesítmény kibontásához [Data Science VM csatolhat Azure Notebookshoz](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) .
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Rövidtávú kísérletezés és kiértékelés
 Az adatelemző virtuális gép minimális előkészítéssel felhasználható olyan eszközök felmérésére és megismerésére, mint a Microsoft ML Server, az SQL Server, a Visual Studio eszközei, a Jupyter, a deep learning / ML eszközkészletek és a közösségben népszerű új eszközök. Mivel a Data Science VM gyorsan beállítható, más rövid távú használati helyzetekben is alkalmazható. Ilyen forgatókönyvek például a közzétett kísérletek replikálása, bemutatók végrehajtása, az online munkamenetek és a konferencia-oktatóanyagok áttekintése.
 
 ### <a name="deep-learning"></a>Deep learning
-A Data Science VM-en modelleket taníthat be a grafikus processzorokon (GPU) futtatott mélytanulási algoritmusok segítségével. Az Azure-felhőbeli virtuálisgép-méretezési lehetőségeket kihasználva a DSVM segít a felhőbeli GPU-alapú hardver igény szerinti használatában. Nagy modellek betanításakor vagy ha gyors számításokra van szükség, az operációs rendszerlemez megtartásával lehet áttérni GPU-alapó virtuális gépre.  A DSVM Windows Server 2016-os kiadása az előre telepített GPU-illesztőprogramokat, keretrendszereket és deep learning keretrendszerek GPU-verzióit is tartalmazza. A linuxos kiadáson a GPU-alapú mélytanulás a CentOS-es és ubuntus DSVM-eken is engedélyezve van. Data Science VM Ubuntu, CentOS vagy Windows 2016 kiadását a nem GPU-alapú Azure-beli virtuális gépekre is üzembe helyezheti. Ebben az esetben az összes mély tanulási keretrendszer vissza fog térni a CPU-módra.
+A Data Science VM-en modelleket taníthat be a grafikus processzorokon (GPU) futtatott mélytanulási algoritmusok segítségével. Az Azure-felhőbeli virtuálisgép-méretezési lehetőségeket kihasználva a DSVM segít a felhőbeli GPU-alapú hardver igény szerinti használatában. Nagy modellek betanításakor vagy ha gyors számításokra van szükség, az operációs rendszerlemez megtartásával lehet áttérni GPU-alapó virtuális gépre.  A DSVM Windows Server 2016-os kiadása az előre telepített GPU-illesztőprogramokat, keretrendszereket és deep learning keretrendszerek GPU-verzióit is tartalmazza. A linuxos kiadáson a GPU-alapú mélytanulás a CentOS-es és ubuntus DSVM-eken is engedélyezve van. Data Science VM Ubuntu, CentOS vagy Windows 2016 kiadását a nem GPU-alapú Azure-beli virtuális gépekre is üzembe helyezheti. Ebben az esetben az összes mély tanulási keretrendszer vissza fog térni a CPU-módra. További információ az [elérhető Deep learning-és AI-keretrendszerekről](dsvm-deep-learning-ai-frameworks.md).
+ 
+További információ az [elérhető Deep learning-és AI-keretrendszerekről](dsvm-deep-learning-ai-frameworks.md).
 
-## <a name="whats-included-in-the-data-science-vm"></a>Mi tartozik az adatelemző virtuális géphez?
-Az adatelemző virtuális gépen sok közkedvelt adatelemzési és deep learning eszköz már telepítve és konfigurálva van. Olyan eszközöket is tartalmaz, amelyek megkönnyítik a különböző Azure adat- és elemzési termékek használatát. Ilyen például a Microsoft ML Server (R, Python) a prediktív modellek összeállításához vagy az SQL Server 2017 a nagyméretű adatkészletek feltárásához. A Data Science VM számos más eszközt tartalmaz a nyílt forráskódú Közösségből és a Microsofttól, valamint a mintakód és a jegyzetfüzetek számára. Az alábbi táblázat elemenként mutatja be és hasonlítja össze az adatelemző virtuális gép windowsos és linuxos kiadásainak fő összetevőit.
+<a name="included"></a>
 
+## <a name="whats-included-on-dsvm"></a>Mit tartalmaz a DSVM?
+Az adatelemző virtuális gépen sok közkedvelt adatelemzési és deep learning eszköz már telepítve és konfigurálva van. Olyan eszközöket is tartalmaz, amelyek megkönnyítik a különböző Azure adat- és elemzési termékek használatát. Ilyen például a Microsoft ML Server (R, Python) a prediktív modellek összeállításához vagy az SQL Server 2017 a nagyméretű adatkészletek feltárásához. A Data Science VM számos más eszközt tartalmaz a nyílt forráskódú Közösségből és a Microsofttól, valamint a [mintakód és](dsvm-samples-and-walkthroughs.md)a jegyzetfüzetek számára. 
+
+Eszközök és platformok:
++ [Támogatott programozási nyelvek](dsvm-languages.md)
+
++ [Támogatott adatplatformok](dsvm-data-platforms.md)
+
++ [Fejlesztői eszközök és ide-](dsvm-tools-development.md)
+
++ [Mély tanulási és AI-keretrendszerek](dsvm-deep-learning-ai-frameworks.md).
+
++ [Gépi tanulási és adatelemzési eszközök](dsvm-ml-data-science-tools.md)
+
++ [Adatfeldolgozási eszközök](dsvm-tools-ingestion.md)
+
++ [Adatfelderítési és vizualizációs eszközök](dsvm-tools-explore-and-visualize.md)
+
+Az alábbi táblázat elemenként mutatja be és hasonlítja össze az adatelemző virtuális gép windowsos és linuxos kiadásainak fő összetevőit.
 
 | **Eszköz**                                                           | **Windowsos kiadás** | **Linuxos kiadás** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
@@ -129,18 +151,16 @@ Az adatelemző virtuális gépen sok közkedvelt adatelemzési és deep learning
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow Serving](https://www.tensorflow.org/serving/) | N | I |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorRT](https://developer.nvidia.com/tensorrt) | N | I |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [CUDA, cuDNN, NVIDIA illesztőprogram](https://developer.nvidia.com/cuda-toolkit) | I | I |
-| **Big Data Platform (csak Devtest)**|||
-| &nbsp;&nbsp;&nbsp;&nbsp;* Helyszíni különálló [Spark](https://spark.apache.org/) | I | I |
-| &nbsp;&nbsp;&nbsp;&nbsp;* Local [Hadoop](https://hadoop.apache.org/) (HDFS, YARN) | N | I |
-
-## <a name="get-started"></a>Bevezetés
-
-### <a name="windows-data-science-vm"></a>Windows rendszerű adatelemző virtuális gép
-* Windowsos DSVM létrehozásáról és használatáról a [Windows rendszerű adatelemző virtuális gép üzembe helyezése](provision-vm.md) című cikk nyújt bővebb tájékoztatást. Az adatelemzési projektjéhez szükséges különböző tevékenységek windowsos adatelemző virtuális gépen való végrehajtásának módjáról a [Tíz dolog, amit megtehet az adatelemző virtuális géppel](vm-do-ten-things.md) című cikk ír bővebben.
-
-### <a name="linux-data-science-vm"></a>Linux rendszerű adatelemző virtuális gép
-* Ubuntus DSVM létrehozásáról és használatáról az [Adatelemző virtuális gép üzembe helyezése Linuxon (Ubuntu)](dsvm-ubuntu-intro.md) című cikk nyújt bővebb tájékoztatást. CentOS-es DSVM létrehozásáról és használatáról az [Linux CentOS-es adatelemző virtuális gép üzembe helyezése az Azure-on](linux-dsvm-intro.md) című cikk nyújt bővebb tájékoztatást.
-* A gyakori adatelemzési feladatok végrehajtását CentOS és Ubuntu Linux rendszeren is bemutató útmutatást talál az [Adatelemzés a linuxos adatelemző virtuális gépen](linux-dsvm-walkthrough.md) című cikkben.
 
 ## <a name="next-steps"></a>További lépések
-[Az Azure R fejlesztői útmutatója](/azure/architecture/data-guide/technology-choices/r-developers-guide)
+
+További információ ezekről a cikkekről:
+
++ Windows:
+  + [Windows DSVM beállítása](provision-vm.md)
+  + [Tíz dolog, amit elvégezhet a Windows DSVM](vm-do-ten-things.md)
+
++ Linux:
+  + [Linux DSVM (Ubuntu) beállítása](dsvm-ubuntu-intro.md)
+  + [Linux DSVM (CentOS) beállítása](linux-dsvm-intro.md)
+  + [Adatelemzés Linux-DSVM](linux-dsvm-walkthrough.md)

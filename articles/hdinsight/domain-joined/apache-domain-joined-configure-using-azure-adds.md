@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 1ad3c446df2f2ce62024dfdda589669653f65ef4
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 300fd31632a6b3c9043c19dd9b47f40258080261
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488704"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614207"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>HDInsight-fürt konfigurálása Enterprise Security Package-dzsel az Azure Active Directory Domain Services használatával
 
@@ -31,7 +31,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhat HDInsight-fürtöt ESP-vel 
 >
 > Ha a fürt tárterülete Azure Blob Storage (WASB), ne tiltsa le az MFA-t.
 
-A AzureAD engedélyezése – a DS előfeltétele, mielőtt HDInsight-fürtöt hozna létre az ESP használatával. További információ: [Azure Active Directory Domain Services engedélyezése a Azure Portal használatával](../../active-directory-domain-services/create-instance.md). 
+A AzureAD engedélyezése – a DS előfeltétele, mielőtt HDInsight-fürtöt hozna létre az ESP használatával. További információ: [Azure Active Directory Domain Services engedélyezése a Azure Portal használatával](../../active-directory-domain-services/tutorial-create-instance.md). 
 
 Ha az Azure AD-DS engedélyezve van, az összes felhasználó és objektum alapértelmezés szerint megkezdi a Azure Active Directory (HRE) és az Azure AD-DS közötti szinkronizálást. A szinkronizálási művelet hossza az Azure AD-ban található objektumok számától függ. A szinkronizálás eltarthat néhány napig több százezer objektum számára. 
 
@@ -39,7 +39,7 @@ Az Azure AD-DS szolgáltatásban használt tartománynévnek 39 karakter vagy ke
 
 Dönthet úgy is, hogy csak azokat a csoportokat szinkronizálja, amelyeknek hozzáférésre van szüksége a HDInsight-fürtökhöz. Ezzel a beállítással csak bizonyos csoportok szinkronizálhatók, hatókörön belüli *szinkronizálásnak*nevezzük. Útmutatásért lásd: [hatókörön belüli szinkronizálás konfigurálása az Azure ad-ből a felügyelt tartományba](../../active-directory-domain-services/scoped-synchronization.md) .
 
-A biztonságos LDAP engedélyezésekor a tulajdonos neve és a tulajdonos alternatív neve mezőbe helyezze a tartománynevet a tanúsítványban. Ha például a tartománynév *contoso100.onmicrosoft.com*, győződjön meg arról, hogy a pontos név létezik a tanúsítvány tulajdonosának neve és a tulajdonos alternatív neve mezőben. További információ: [Secure LDAP konfigurálása Azure AD-DS felügyelt tartományhoz](../../active-directory-domain-services/configure-ldaps.md). Az alábbi példa egy önaláírt tanúsítványt hoz létre, és a tulajdonos neve és a DnsName (a tulajdonos alternatív neve) tartománynévvel (*contoso100.onmicrosoft.com*) rendelkezik:
+A biztonságos LDAP engedélyezésekor a tulajdonos neve és a tulajdonos alternatív neve mezőbe helyezze a tartománynevet a tanúsítványban. Ha például a tartománynév *contoso100.onmicrosoft.com*, győződjön meg arról, hogy a pontos név létezik a tanúsítvány tulajdonosának neve és a tulajdonos alternatív neve mezőben. További információ: [Secure LDAP konfigurálása Azure AD-DS felügyelt tartományhoz](../../active-directory-domain-services/tutorial-configure-ldaps.md). Az alábbi példa egy önaláírt tanúsítványt hoz létre, és a tulajdonos neve és a DnsName (a tulajdonos alternatív neve) tartománynévvel (*contoso100.onmicrosoft.com*) rendelkezik:
 
 ```powershell
 $lifetime=Get-Date
@@ -70,7 +70,7 @@ Miután létrehozta a felügyelt identitást, és a megfelelő szerepkört adta,
 ## <a name="networking-considerations"></a>Hálózati megfontolások
 
 > [!NOTE]  
-> Az Azure AD-DS-t egy Azure Resource Manager (ARM) alapú vNET kell telepíteni. A klasszikus virtuális hálózatok nem támogatottak az Azure AD-DS-ben. További részletekért tekintse meg a [Azure Active Directory Domain Services engedélyezése a Azure Portal használatával](../../active-directory-domain-services/active-directory-ds-getting-started-network.md) című témakört.
+> Az Azure AD-DS-t egy Azure Resource Manager-alapú vNET kell telepíteni. A klasszikus virtuális hálózatok nem támogatottak az Azure AD-DS-ben. További részletekért tekintse meg a [Azure Active Directory Domain Services engedélyezése a Azure Portal használatával](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network) című témakört.
 
 Az Azure AD-DS engedélyezése után a helyi tartománynév-szolgáltatási (DNS) kiszolgáló fut az AD Virtual Machineson (VM). Konfigurálja az Azure AD-DS Virtual Network (VNET) az egyéni DNS-kiszolgálók használatára. A megfelelő IP-címek megkereséséhez válassza a **kezelés** kategória **Tulajdonságok** elemét, és tekintse meg a **Virtual Network IP-címe**alatt felsorolt IP-címeket.
 

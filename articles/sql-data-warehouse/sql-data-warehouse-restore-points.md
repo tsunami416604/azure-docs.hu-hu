@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: bb5a267d1c7058193f1d7c8ed4087f5c0ebab267
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9dcb8b2e9c1b75aac3c195f89777ac9c6eb030d7
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68426589"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575264"
 ---
 # <a name="user-defined-restore-points"></a>Felhasználó által definiált visszaállítási pontok
 
@@ -61,7 +61,7 @@ A felhasználó által definiált visszaállítási pontok a Azure Portal haszn�
 
 1. Jelentkezzen be [Azure Portal][Azure portal] -fiókjába.
 
-2. Navigáljon ahhoz az SQL-adattárházhoz, amelyhez visszaállítási pontot kíván létrehozni.
+2. Navigáljon ahhoz a SQL Data Warehousehoz, amelyhez visszaállítási pontot kíván létrehozni.
 
 3. Válassza az **Áttekintés** lehetőséget a bal oldali ablaktáblán, majd válassza az **+ új visszaállítási pont**lehetőséget. Ha az új visszaállítási pont gomb nincs engedélyezve, győződjön meg arról, hogy az adatraktár nincs szüneteltetve.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 7db14f6406223486ea0efb80d3d1cfcd0351f414
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3ad9aff10b3bae36a173f776f55a434fd8b38b98
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69037245"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574265"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>A hírcsatorna-processzor módosításának kezdési idejének konfigurálása
 
@@ -51,8 +51,7 @@ A módosítási hírcsatorna processzora inicializálva lesz, és megkezdi a mó
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa további információ a változáscsatorna az alábbi cikkeket:
+A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgozó szolgáltatással kapcsolatos változásokról:
 
-* [A hírcsatorna változásának áttekintése](change-feed.md)
-* [A módosítási csatorna olvasási módjai](read-change-feed.md)
-* [A csatorna módosítása](change-feed-processor.md)
+* [A hírcsatorna-feldolgozó változásának áttekintése](change-feed-processor.md)
+* [A Change feed kalkulátor használata](how-to-use-change-feed-estimator.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Azure Cosmos DB-tároló átviteli teljesítményének skálázása | Microsoft Docs
-description: Azure CLI-példaszkript – Azure Cosmos DB-tároló átviteli teljesítményének skálázása
+title: Azure CLI-szkript – az Azure Cosmos-tároló átviteli sebességének méretezése | Microsoft Docs
+description: Azure CLI-parancsfájl – példa – az Azure Cosmos-tároló átviteli sebességének méretezése
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,16 +8,16 @@ ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 593fade731fac86e7fcda69bfe223716127de9e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a7ae4b015ba476ca1ffdb4b4510334490a6f6fee
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446652"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616697"
 ---
-# <a name="scale-azure-cosmos-db-container-throughput-using-the-azure-cli"></a>Azure Cosmos DB-tároló átviteli teljesítményének skálázása az Azure CLI használatával
+# <a name="scale-azure-cosmos-container-throughput-using-the-azure-cli"></a>Az Azure Cosmos-tároló átviteli sebességének méretezése az Azure CLI használatával
 
-Ez a példa bemutatja bármilyen Azure Cosmos DB-tároló átviteli teljesítményének skálázását.  
+Ez a minta a tároló átviteli sebességét méretezi bármilyen Azure Cosmos-tárolóra.  
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -43,9 +43,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Létrehoz egy Azure Cosmos DB-fiókot. |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Létrehoz egy Azure Cosmos DB-adatbázist. |
-| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Létrehoz egy Azure Cosmos DB-tárolót. |
-| [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) | Frissít egy Azure Cosmos DB-tárolót. |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Létrehoz egy Azure Cosmos-adatbázist. |
+| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Létrehoz egy Azure Cosmos-tárolót. |
+| [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) | Frissít egy Azure Cosmos-tárolót. |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések

@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/16/2019
 ms.author: diberry
-ms.openlocfilehash: a3e1853e587f2f1632641cbb896eba59f8dc9455
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5175dee24542c716b3d087412864ae7e6f056d18
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515778"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615984"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>A tartalmat a QnA Maker adatforrások
 
 A QnA Maker automatikusan kinyeri a kérdés-válasz párt, például – gyakori kérdések, kézikönyvek, irányelvek, támogatási dokumentumok és szabályzatok weblapok, a PDF-fájlokat vagy a Microsoft Word-dokumentum fájlok tárolt részben strukturált tartalomból. Tartalmakat is hozzáadhat a Tudásbázis származó strukturált QnA tartalomfájlok. 
+
+## <a name="data-types"></a>Adattípusok
 
 Az alábbi táblázat foglalja össze a tartalmat és fájlformátumot, QnA Maker által támogatott típusú.
 
@@ -32,11 +34,21 @@ Az alábbi táblázat foglalja össze a tartalmat és fájlformátumot, QnA Make
 
 ## <a name="data-source-locations"></a>Adatforrás helye
 
-A legtöbb adatforrás-helynek nyilvános URL-címeket vagy fájlokat kell megadnia, amelyek nem igényelnek hitelesítést. 
+Az adatforrás helyei **nyilvános URL-címek vagy fájlok**, amelyek nem igényelnek hitelesítést. 
 
-A [SharePoint-adatforrás helyei](../How-to/add-sharepoint-datasources.md) számára engedélyezett a hitelesített fájlok biztosítása. A SharePoint-erőforrásoknak fájlokat, nem weblapokat kell tartalmazniuk. 
+Ha hitelesítésre van szüksége az adatforráshoz, vegye figyelembe a következő módszereket az adatQnA Makerba való beolvasásához:
 
-Ha hitelesített fájllal vagy URL-címmel rendelkezik, Alternatív megoldásként töltse le a fájlt a hitelesített helyről a helyi számítógépre, majd adja hozzá a fájlt a helyi számítógépről a tudásbázishoz. 
+* [Fájl manuális letöltése](#download-file-from-authenticated-data-source-location) és importálása QnA Maker
+* Fájl importálása a hitelesített [SharePoint](#import-file-from-authenticated-sharepoint) -helyhez 
+
+### <a name="download-file-from-authenticated-data-source-location"></a>Fájl letöltése a hitelesített adatforrás helyéről
+
+Ha hitelesített fájllal (nem a hitelesített SharePoint-helytel) vagy URL-címmel rendelkezik, egy másik lehetőségként töltse le a fájlt a hitelesített helyről a helyi számítógépre, majd adja hozzá a fájlt a helyi számítógépről a tudásbázishoz.
+
+### <a name="import-file-from-authenticated-sharepoint"></a>Fájl importálása a hitelesített Sharepointból 
+
+A [SharePoint-adatforrás helyei](../How-to/add-sharepoint-datasources.md) számára engedélyezett a hitelesített **fájlok**biztosítása. A SharePoint-erőforrásoknak fájlokat, nem weblapokat kell tartalmazniuk. Ha az URL-cím egy webes bővítménnyel végződik, például: **. ASPX**, a rendszer nem importálja QnA Maker a sharepointból.
+
 
 ## <a name="faq-urls"></a>Gyakori kérdések URL-címek
 

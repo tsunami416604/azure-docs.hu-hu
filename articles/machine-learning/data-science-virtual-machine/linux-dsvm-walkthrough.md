@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: df05b2605f3553ce26447a4f8e2440002b75ec3a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 95d128a7af60a1504d05fb5316969fccc49c397f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557347"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574966"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adatelemzés a egy Linux rendszerű adatelemző virtuális gép az Azure-ban
 Ez az útmutató bemutatja, hogyan hajthat végre számos gyakori adatelemzési feladatok a Linux rendszerű adatelemző virtuális gép. A Linux rendszerű adatelemzési virtuális gép (DSVM), amely előre telepített gyakran használt adatok elemzési és gépi tanulási eszközök gyűjteményét az Azure-ban elérhető virtuálisgép-lemezkép. A kulcs szoftverösszetevőket esethez vannak a [a Linux rendszerű adatelemző virtuális gép kiépítése](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések adatelemzésre percben, anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Egyszerűen vertikális felskálázás a virtuális Gépet, ha szükséges, és állítsa le, amikor nincs használatban. Ehhez az erőforráshoz így rugalmas és költséghatékony is.
@@ -229,6 +229,20 @@ Próbálja ki az első 10 sort a teszt beállítása:
 
     consume(ep, smallTestSet[1:10, ])
 
+<a name="deep-learning"></a>
+
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>Deep Learning-oktatóanyagok és útmutatók
+
+A keretrendszer-alapú minták mellett forgatókönyvek átfogó készlete is tartalmaz a DLVM a érvényesítve. Ezek az útmutatók segítségével gyorsan elindíthatja a tartományokban, mint például a lemezkép és a szöveg/language understanding deep learning-alkalmazások fejlesztését. További végpontok közötti oktatóanyagok között különböző tartományokban, és a technológia továbbra is hozzá kell adni.   
+
+
+- [Neurális hálózatok futtatása különböző keretrendszerek között](https://github.com/ilkarman/DeepLearningFrameworks): Átfogó útmutató, amely bemutatja, hogyan telepíthet át kódokat egyik keretrendszerről a másikra. Azt is bemutatja, hogyan modell összehasonlítására, és futtathatja időt keretrendszereket. 
+
+- [Útmutató egy teljes körű megoldás](https://github.com/Azure/cortana-intelligence-product-detection-from-images)létrehozásához a képeken belüli termékek észleléséhez: A képészlelés olyan módszer, amellyel objektumokat lehet megkeresni és osztályozni a képeken belül. Ez a technológia potenciálisan hatalmas jutalmakat beemelhet számos valós üzleti tartományok. A kiskereskedők például használhatja ezt a módszert meghatározni, melyik terméket olyan rendelkezik felülettől a kereskedelmi. Ez az információ viszonzásul segíti a Termékleltár kezelése tárolók. 
+
+- [Deep learning-Audio](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) Ez az oktatóanyag bemutatja, hogyan számára audiotartalmak esemény észlelése egy deep learning-modell betanításához az a [városi hangok adatkészlet](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) , és adja meg a hang adatok áttekintése.
+
+- [Szöveges dokumentumok besorolása](https://github.com/anargyri/lstm_han): Ez az útmutató bemutatja, hogyan hozhat létre és taníthat két különböző neurális hálózati architektúrát: Hierarchikus figyelmet igényel a hálózat és a hosszú távú memória (LSTM) hálózata. Ezeket a Neurális hálózatokat a deep learninghez a Keras API használatával szöveges dokumentumok besorolását. A kerasz a legelterjedtebb mély tanulási keretrendszerek közül három: Microsoft Cognitive Toolkit, TensorFlow és theano.
 
 ## <a name="use-other-tools-available"></a>Rendelkezésre álló egyéb eszközök
 A fennmaradó szakaszok bemutatják, hogyan használhatja az egyes eszközök a Linux rendszerű adatelemző virtuális gép telepítve. A következő tárgyalt eszközök listájában:

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 407b5b8dd4aa846140628c7d701ced92e8bcec03
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 57dc1e136d242fd0c5063526dc54bdb95351cf02
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780066"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616647"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-példák az SQL API-hoz
 > [!div class="op_single_selector"]
@@ -138,7 +138,7 @@ A minta *ChangeFeed* -projekt [RunDemoAsync](https://github.com/Azure/azure-docu
 | [Változáscsatorna olvasása](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery) | 
 | [Partíciókulcsok tartományainak olvasása](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync) | 
 
-A [ChangeFeedMigrationTool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool)módosítása, amely azt mutatja be, hogyan lehet az adatfolyamok módosítása egy másik Cosmos db gyűjteménybe replikálni az adatcsatorna-feldolgozó függvénytárának módosítását.   
+A [ChangeFeedMigrationTool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool)módosítása, amely bemutatja, hogyan használható a hírcsatorna-feldolgozó függvénytárának módosítása egy másik Cosmos-tárolóba való replikáláshoz.   
 
 ## <a name="server-side-programming-examples"></a>Kiszolgálóoldali programozási példák
 A minta *ServerSideScripts* -projekt [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs#L58-L91) metódusa a következő feladatok elvégzését mutatja be. Ha többet szeretne megtudni a Azure Cosmos DB kiszolgálóoldali programozásáról a következő minták futtatása előtt, tekintse meg a [tárolt eljárások, eseményindítók és felhasználó által definiált függvények](stored-procedures-triggers-udfs.md)című témakört. 

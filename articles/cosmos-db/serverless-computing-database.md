@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 3bf89cd3ec0822cee2a3ebcf76de4193046462f9
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: e1014c710d892e45f09999db22b1f59c0bb36300
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335905"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614580"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Kiszolgáló nélküli adatbázis-számítástechnika Azure Cosmos DB és Azure Functions használatával
 
@@ -23,9 +23,9 @@ A [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db) és Azure fu
 
 Azure Cosmos DB és Azure Functions lehetővé teszi az adatbázisok és kiszolgáló nélküli alkalmazások integrálását az alábbi módokon:
 
-* Hozzon létre egy eseményvezérelt **Azure functions eseményindítót a Cosmos DBhoz**. Ez az aktiválás a [hírcsatorna](change-feed.md) -adatfolyamok módosítására támaszkodik, hogy figyelje a Azure Cosmos db tárolót a változásokhoz. Ha egy tárolóban bármilyen változást végez, a rendszer elküldi a változási adatfolyamot az triggernek, amely meghívja az Azure-függvényt.
-* Másik lehetőségként egy Azure-függvény kötése egy Azure Cosmos DB-tárolóhoz egy **bemeneti kötés**használatával. A bemeneti kötések adatokat olvasnak be egy tárolóból egy függvény végrehajtásakor.
-* Függvény kötése egy Azure Cosmos DB-tárolóhoz **kimeneti kötés**használatával. A kimeneti kötések adatokat írnak egy tárolóba, amikor egy függvény befejeződik.
+* Hozzon létre egy eseményvezérelt **Azure functions eseményindítót a Cosmos DBhoz**. Ez az aktiválás a [hírcsatorna](change-feed.md) -adatfolyamok módosítására támaszkodik, hogy figyelje az Azure Cosmos-tárolót a változásokhoz. Ha egy tárolóban bármilyen változást végez, a rendszer elküldi a változási adatfolyamot az triggernek, amely meghívja az Azure-függvényt.
+* Azt is megteheti, hogy egy Azure-függvényt egy **bemeneti kötés**használatával kötést használ egy Azure Cosmos-tárolóhoz. A bemeneti kötések adatokat olvasnak be egy tárolóból egy függvény végrehajtásakor.
+* Függvény kötése egy Azure Cosmos-tárolóhoz **kimeneti kötés**használatával. A kimeneti kötések adatokat írnak egy tárolóba, amikor egy függvény befejeződik.
 
 > [!NOTE]
 > Jelenleg a Cosmos DB esetében Azure Functions trigger, bemeneti kötések és kimeneti kötések támogatottak az SQL API-val való használatra. Az összes többi Azure Cosmos DB API esetében az API-hoz készült statikus ügyfél használatával kell elérnie az adatbázist a függvényből.
@@ -37,9 +37,9 @@ A következő ábra az alábbi három integrációt szemlélteti:
 
 A Azure Cosmos DBhoz tartozó Azure Functions trigger, bemeneti kötés és kimeneti kötés a következő kombinációkban használható:
 
-* A Cosmos DB Azure Functions triggere egy másik Azure Cosmos DB tárolóhoz tartozó kimeneti kötéssel használható. Miután egy függvény végrehajt egy műveletet a változási hírcsatorna egyik elemén, megírhatja azt egy másik tárolóba (ugyanezt a tárolóba írhatja, amely valójában egy rekurzív hurok létrehozása). Másik lehetőségként használhat egy Azure Functions triggert is, amellyel a Cosmos DB hatékonyan áttelepítheti az összes módosított elemet egy tárolóból egy másik tárolóba, egy kimeneti kötés használatával.
+* A Cosmos DB Azure Functions triggere egy másik Azure Cosmos-tárolóhoz tartozó kimeneti kötéssel is használható. Miután egy függvény végrehajt egy műveletet a változási hírcsatorna egyik elemén, megírhatja azt egy másik tárolóba (ugyanezt a tárolóba írhatja, amely valójában egy rekurzív hurok létrehozása). Másik lehetőségként használhat egy Azure Functions triggert is, amellyel a Cosmos DB hatékonyan áttelepítheti az összes módosított elemet egy tárolóból egy másik tárolóba, egy kimeneti kötés használatával.
 * A Azure Cosmos DBhoz tartozó bemeneti kötések és kimeneti kötések ugyanabban az Azure-függvényben használhatók. Ez jól működik olyan esetekben, amikor bizonyos adatokat szeretne keresni a bemeneti kötéssel, módosítsa azt az Azure-függvényben, majd mentse azt ugyanabba a tárolóba vagy egy másik tárolóba a módosítás után.
-* A Azure Cosmos DB tárolóhoz tartozó bemeneti kötések ugyanabban a függvényben használhatók, mint a Cosmos DB Azure Functions-trigger, és a rendszer kimeneti kötéssel vagy anélkül is használható. Ezt a kombinációt használhatja a legfrissebb valutaváltó-információk (egy Exchange-tárolóba bevitt bemeneti kötés) a bevásárlókocsi-szolgáltatásban lévő új megrendelések változási csatornán való alkalmazásához. A frissített bevásárlókocsi összege a jelenlegi pénznem-konverzióval együtt egy harmadik tárolóba is írható egy kimeneti kötés használatával.
+* Az Azure Cosmos-tárolóhoz tartozó bemeneti kötések ugyanabban a függvényben használhatók, mint a Cosmos DB Azure Functions-triggere, és kimeneti kötéssel vagy anélkül is használhatók. Ezt a kombinációt használhatja a legfrissebb valutaváltó-információk (egy Exchange-tárolóba bevitt bemeneti kötés) a bevásárlókocsi-szolgáltatásban lévő új megrendelések változási csatornán való alkalmazásához. A frissített bevásárlókocsi összege a jelenlegi pénznem-konverzióval együtt egy harmadik tárolóba is írható egy kimeneti kötés használatával.
 
 ## <a name="use-cases"></a>Használati esetek
 
@@ -57,7 +57,7 @@ A IoT implementációjában egy függvényt hívhat meg, ha az ellenőrzési mot
 4. Az eseményindító minden adatváltozáskor meghívja az érzékelő adatgyűjtését, mivel az összes változás a változási csatornán keresztül áramlik.
 5. A függvényben egy küszöbértéket használunk az érzékelői adat a jótállási osztályba való elküldéséhez.
 6. Ha a hőmérséklet egy bizonyos értékre is vonatkozik, a rendszer riasztást is küld a tulajdonosnak.
-7. A függvény **kimeneti kötése** frissíti az autótelefon egy másik Azure Cosmos db tárolójában lévő rekordot, hogy adatokat tároljon az ellenőrzési motor eseményéről.
+7. A függvény **kimeneti kötése** frissíti az autótelefon egy másik Azure Cosmos-tárolóban lévő rekordját, hogy adatokat tároljon az ellenőrzési motor eseményéről.
 
 Az alábbi képen az trigger Azure Portal írt kód látható.
 
@@ -69,7 +69,7 @@ A pénzügyi megvalósításokban meghívhat egy függvényt, ha a bankszámla e
 
 **Végrehajtása** Időzítő-trigger Azure Cosmos DB bemeneti kötéssel
 
-1. Időzítő- [trigger](../azure-functions/functions-bindings-timer.md)használatával lekérheti a bankszámla-egyenleg adatait egy Azure Cosmos db tárolóban, egy **bemeneti kötés**használatával, a megadott időközönként.
+1. Időzítő- [trigger](../azure-functions/functions-bindings-timer.md)használatával lekérheti az Azure Cosmos-tárolóban tárolt bankszámla-egyenleg adatait egy **bemeneti kötés**használatával.
 2. Ha az egyenleg nem éri el a felhasználó által beállított alacsony egyenleg küszöbértéket, akkor az Azure-függvény egy műveletét követi nyomon.
 3. A kimeneti kötés lehet egy [SendGrid-integráció](../azure-functions/functions-bindings-sendgrid.md) , amely e-mailt küld egy szolgáltatási fiókból az egyes alacsony egyenlegű fiókoknál azonosított e-mail-címekre.
 
@@ -118,7 +118,7 @@ A Azure Cosmos DB és Azure Functions közötti natív integráció a Azure Port
 
 ## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>Miért érdemes Azure Functions integrációt választani a kiszolgáló nélküli számítástechnika számára?
 
-A Azure Functions lehetővé teszi, hogy méretezhető munkaegységeket vagy olyan tömör logikát hozzon létre, amely igény szerint futtatható az infrastruktúra kiépítése vagy kezelése nélkül. Azure Functions használatával nem kell teljes mértékben kifulladt alkalmazást létrehoznia, hogy válaszoljon a Azure Cosmos DB-adatbázis változásaira, így bizonyos feladatokhoz kisebb újrafelhasználható függvényeket hozhat létre. Emellett Azure Cosmos DB adatokat is használhatja bemenetként vagy kimenetként egy Azure-függvénynek, ha az eseményre, például egy HTTP-kérelemre vagy egy időzített eseményindítóra reagál.
+A Azure Functions lehetővé teszi, hogy méretezhető munkaegységeket vagy olyan tömör logikát hozzon létre, amely igény szerint futtatható az infrastruktúra kiépítése vagy kezelése nélkül. Azure Functions használatával nem kell teljes körű alkalmazást létrehoznia ahhoz, hogy válaszoljon az Azure Cosmos-adatbázisban bekövetkezett változásokra, így bizonyos feladatokhoz kis mértékben újrafelhasználható függvények hozhatók létre. Emellett Azure Cosmos DB adatokat is használhatja bemenetként vagy kimenetként egy Azure-függvénynek, ha az eseményre, például egy HTTP-kérelemre vagy egy időzített eseményindítóra reagál.
 
 A kiszolgáló nélküli számítási architektúra ajánlott adatbázisa a következő okok miatt Azure Cosmos DB:
 

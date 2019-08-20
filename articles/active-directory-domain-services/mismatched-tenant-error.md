@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 676efa155c85ab371ec41c49ad0c15eb2bd5a24a
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 4978f7b782271daff996807172a24103bd8d9860
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234008"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617280"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>A meglévő Azure AD Domain Services felügyelt tartományokhoz tartozó eltérő címtárbeli hibák elhárítása
 Meglévő Azure AD Domain Services felügyelt tartománya van. Amikor megnyitja a Azure Portal és megtekinti a felügyelt tartományt, a következő hibaüzenet jelenik meg:
@@ -63,5 +63,5 @@ Két lehetőség közül választhat a nem egyező könyvtár hibáinak elhárí
 
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
-* [Azure AD Domain Services – Első lépések útmutató](create-instance.md)
+* [Azure AD Domain Services – Első lépések útmutató](tutorial-create-instance.md)
 * [Hibaelhárítási útmutató – Azure AD Domain Services](troubleshoot.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 617d19b0dd9da926eb49170c1566febc6f6280ba
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 833d8533ff3289693e1744db2d77d4bed6a9ea69
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467812"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616997"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Azure Cosmos-fiók használata
 
@@ -25,7 +25,7 @@ Az Azure Cosmos-fiókban lévő összes adathoz való hozzáférés biztonságos
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Elemek egy Azure Cosmos-fiókban
 
-Azure Cosmos DB tároló a méretezhetőség alapvető egysége. Gyakorlatilag korlátlan számú kiosztott átviteli sebesség (RU/s) és tárterület található a tárolón. Azure Cosmos DB transzparens módon particionálja a tárolót az Ön által megadott logikai partíciós kulcs használatával, hogy rugalmasan méretezheti a kiosztott átviteli sebességet és tárterületet. További információ: [Az Azure Cosmos-tárolók és-elemek használata](databases-containers-items.md).
+Az Azure Cosmos Container a méretezhetőség alapvető egysége. Gyakorlatilag korlátlan számú kiosztott átviteli sebesség (RU/s) és tárterület található a tárolón. Azure Cosmos DB transzparens módon particionálja a tárolót az Ön által megadott logikai partíciós kulcs használatával, hogy rugalmasan méretezheti a kiosztott átviteli sebességet és tárterületet. További információ: [Az Azure Cosmos-tárolók és-elemek használata](databases-containers-items.md).
 
 Jelenleg legfeljebb 100 Azure Cosmos-fiókot hozhat létre az Azure-előfizetések alatt. Egyetlen Azure Cosmos-fiók gyakorlatilag korlátlan számú adatmennyiséget és kiosztott átviteli sebességet tud kezelni. Az adatok és a kiépített átviteli sebesség kezeléséhez létrehozhat egy vagy több Azure Cosmos-adatbázist a fiókjában és az adatbázison belül, létrehozhat egy vagy több tárolót is. Az alábbi képen egy Azure Cosmos-fiók elemeinek hierarchiája látható:
 

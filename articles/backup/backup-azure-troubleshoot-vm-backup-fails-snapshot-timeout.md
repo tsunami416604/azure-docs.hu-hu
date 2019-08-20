@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: f47afd450350226aa944287e756b73f61b15b32d
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 54b83df4c0ad68c9bd6b39d39926657395c48f3e
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952047"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615880"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hiba hibaelhárítása: Az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -58,7 +58,7 @@ A probléma megoldásához távolítsa el a virtuális gép erőforráscsoport z
 > A Backup szolgáltatás egy külön erőforráscsoportot hoz létre, mint a virtuális gép erőforráscsoport, amely a helyreállítási pontok gyűjtését tárolja. Javasoljuk, hogy ne zárolja a Backup szolgáltatás általi használatra létrehozott erőforráscsoportot. A Backup szolgáltatás által létrehozott erőforráscsoport elnevezési formátuma a következőket eredményezi: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
 
 **1. lépés: [Zárolás eltávolítása a visszaállítási pont erőforráscsoporthoz](#remove_lock_from_the_recovery_point_resource_group)** <br>
-**2. lépés: [Visszaállítási pont gyűjtésének törlése](#clean_up_restore_point_collection)**<br>
+**2. lépés: [Visszaállítási pont gyűjtésének törlése](#clean_up_restore_point_collection)**<br>
 
 ## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured – a biztonsági mentés nem rendelkezik megfelelő engedélyekkel a Key Vault számára a titkosított virtuális gépek biztonsági mentéséhez
 
@@ -106,7 +106,7 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 **Hibakód**: UserErrorUnsupportedDiskSize <br>
 **Hibaüzenet**: Jelenleg Azure Backup nem támogatja a 4095 GB nál-nál nagyobb méretű lemezeket <br>
 
-A biztonsági mentési művelet meghiúsulhat a 4 095 GB-nál nagyobb méretű virtuális gépek biztonsági mentésekor. A 4 TB-nál nagyobb lemezek Azure Backup nagyméretű lemezes támogatásának korlátozott nyilvános előzetes verziójára és akár 30 TB-os méretre való regisztráláshoz tekintse meg az [Azure virtuális gépek biztonsági mentésének áttekintését](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+A biztonsági mentési művelet meghiúsulhat a 4 095 GB-nál nagyobb méretű virtuális gépek biztonsági mentésekor. A 4 TB-nál nagyobb méretű lemezek Azure Backup nagyméretű lemezes támogatásának korlátozott nyilvános előzetes verzióra való regisztrálásához tekintse meg ezt a [cikket](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nem sikerült elindítani a biztonsági mentést, mert folyamatban van egy másik biztonsági mentési művelet végrehajtása.
 

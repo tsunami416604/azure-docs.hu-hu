@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 45f5e21e05cf627d418cb66418cf305833a73891
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: e8f943ebaa5dfc06e0bfb04dc1097d6794ec6d05
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965093"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616832"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL API-erőforrások kezelése a PowerShell használatával
 
@@ -46,7 +46,7 @@ Az alábbi szakaszban bemutatjuk, hogyan kezelheti az Azure Cosmos-fiókot, bele
 
 ### <a id="create-account"></a>Azure Cosmos-fiók létrehozása
 
-Ez a parancs egy Azure Cosmos DB adatbázis-fiókot hoz létre, amely [több régiót][distribute-data-globally], határt nem okozó [konzisztencia-házirenddel](consistency-levels.md)rendelkezik.
+Ez a parancs egy Azure Cosmos-adatbázis-fiókot hoz létre [több régióval][distribute-data-globally], a határértékek közti [konzisztencia-házirenddel](consistency-levels.md).
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos Account for Core (SQL) API
@@ -112,7 +112,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="update-account"></a>Azure Cosmos-fiók frissítése
 
-Ez a parancs lehetővé teszi az Azure Cosmos DB-adatbázis fiók tulajdonságainak frissítése. A frissíthető tulajdonságok közé tartoznak a következők:
+Ezzel a paranccsal frissítheti az Azure Cosmos-adatbázis fiókjának tulajdonságait. A frissíthető tulajdonságok közé tartoznak a következők:
 
 * Régiók hozzáadása vagy eltávolítása
 * Alapértelmezett konzisztencia-házirend módosítása
@@ -247,6 +247,7 @@ Az alábbi példában feltételezzük, hogy a fiók aktuális feladatátvételi 
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
+# Assume existing priority is "West US 2" = 0 and "East US 2" = 1
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"

@@ -6,14 +6,14 @@ author: stevelas
 manager: gwallace
 ms.service: container-registry
 ms.topic: overview
-ms.date: 05/24/2019
+ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 2fffa3b063969cbe68fb9a405f4198f15b3f9809
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 73d497b4784a91974fab8a94c6f9fe595770ea45
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845209"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574385"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikáció az Azure Container Registryben
 
@@ -105,6 +105,14 @@ Az ACR megkezdi a lemezképek szinkronizálását a konfigurált replikák köz�
 A Geo-replikáció a Azure Container Registry [Premium SKU](container-registry-skus.md) egyik funkciója. Ha a beállításjegyzéket a kívánt régióba replikálja, az egyes régiók esetében prémium szintű regisztrációs díjat kell fizetnie.
 
 Az előző példában a contoso két regisztrációs adatbázisba konszolidált egyet, és replikákat ad hozzá az USA keleti régiója, Közép-Kanada és Nyugat-Európa között. A contoso havonta négy alkalommal fizet, további konfiguráció vagy felügyelet nélkül. Minden régió most lekéri a lemezképeket helyileg, a teljesítmény javítása, a megbízhatóság és az USA nyugati régiója és az USA keleti régiója között elérkező költségek nélkül.
+
+## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>Leküldéses műveletek hibakeresése földrajzilag replikált beállításjegyzékekkel
+ 
+Előfordulhat, hogy egy olyan Docker-ügyfél, amely egy földrajzi replikált beállításjegyzékbe küld egy rendszerképet, lehetséges, hogy nem küldi le az összes képréteget és annak jegyzékfájlját egyetlen replikált régióba. Ez azért fordulhat elő, mert az Azure Traffic Manager átirányítja a regisztrációs kérelmeket a hálózatra legközelebb replikált beállításjegyzékbe. Ha a beállításjegyzék két *közeli* replikációs régióval rendelkezik, a képrétegek és a jegyzékfájl kiterjeszthető a két helyre, a leküldéses művelet pedig meghiúsul, ha a jegyzékfájl érvényesítve van. Ez a probléma azért fordul elő, mert a beállításjegyzék DNS-neve egyes Linux-gazdagépeken fel van oldva. Ez a probléma nem fordul elő a Windows rendszeren, amely ügyféloldali DNS-gyorsítótárat biztosít.
+ 
+Ha ez a probléma merül fel, az egyik megoldás egy ügyféloldali DNS-gyorsítótár alkalmazása, például `dnsmasq` a Linux-gazdagépen. Ezzel biztosítható, hogy a beállításjegyzék neve következetesen legyen feloldva. Ha Linux rendszerű virtuális gépet használ az Azure-ban egy beállításjegyzékbe való leküldéshez, tekintse meg az [Azure-beli Linux rendszerű virtuális gépek DNS-névfeloldási lehetőségeinek](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-dns)beállításai című témakört.
+
+Ha a DNS-feloldást a legközelebbi replikára szeretné optimalizálni, amikor képeket küld, állítson be egy földrajzilag replikált beállításjegyzéket ugyanabban az Azure-régióban, mint a leküldéses műveletek forrása, vagy a legközelebbi régió, amikor az Azure-on kívül dolgozik.
 
 ## <a name="next-steps"></a>További lépések
 

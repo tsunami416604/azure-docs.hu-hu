@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 989d52e773ed01a8fd1f4d383c42d7628e196a60
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
-ms.translationtype: MT
+ms.openlocfilehash: 03e620f97ef094994f95b5dc39b95376fa7e09dd
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814721"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614468"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET tömeges végrehajtó könyvtár: Információk letöltése 
 
@@ -33,7 +33,7 @@ ms.locfileid: "68814721"
 
 | |  |
 |---|---|
-| **Leírás**| A .net tömeges végrehajtó függvénytár lehetővé teszi, hogy az ügyfélalkalmazások tömeges műveleteket végezzenek Azure Cosmos DB fiókokon. Ez a függvénytár BulkImport, BulkUpdate és BulkDelete névtereket biztosít. A BulkImport modul képes a dokumentumok egy optimalizált módon történő betöltésére, így a gyűjtemény számára kiépített átviteli sebesség a maximális mértékben felhasználható. A BulkUpdate modul a Azure Cosmos DB tárolókban lévő meglévő adatmennyiségeket javításokként tudja frissíteni. A BulkDelete modul képes a dokumentumok tömeges törlésére olyan optimalizált módon, hogy a gyűjteményhez kiépített átviteli sebesség a maximális mértékig legyen felhasználva.|
+| **Leírás**| A .net tömeges végrehajtó függvénytár lehetővé teszi, hogy az ügyfélalkalmazások tömeges műveleteket végezzenek Azure Cosmos DB fiókokon. Ez a függvénytár BulkImport, BulkUpdate és BulkDelete névtereket biztosít. A BulkImport modul képes a dokumentumok egy optimalizált módon történő betöltésére, így a gyűjtemény számára kiépített átviteli sebesség a maximális mértékben felhasználható. A BulkUpdate modul a meglévő, az Azure Cosmos-tárolókban tárolt adatmennyiséget javításként is frissítheti. A BulkDelete modul képes a dokumentumok tömeges törlésére olyan optimalizált módon, hogy a gyűjteményhez kiépített átviteli sebesség a maximális mértékig legyen felhasználva.|
 |**SDK letöltése**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **BulkExecutor-könyvtár a GitHubban**| [GitHubon](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**API-dokumentáció**|[.NET API dokumentációja](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
@@ -84,7 +84,7 @@ ms.locfileid: "68814721"
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 
-* Továbbfejlesztettük a BulkExecutor importálását és frissítését az API-k számára, hogy transzparens módon alkalmazkodjon Cosmos DB tároló rugalmas méretezéséhez, ha a tárterület meghaladja a jelenlegi kapacitást a kivételek nélkül.
+* Továbbfejlesztettük a BulkExecutor importálási és frissítési API-jait, hogy transzparens módon igazodjanak a Cosmos-tároló rugalmas skálázásához, ha a tárterület meghaladja a jelenlegi kapacitást a kivételek nélkül.
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 

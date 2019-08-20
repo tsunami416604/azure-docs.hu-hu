@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 1654ccabab751896fcbbab09d112080ccc2f67b6
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 1b26f78c6d44123ef1baa3c55fd16c3340d59dd4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467713"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616845"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Térinformatikai és GeoJSON helyadatok használata az Azure Cosmos DB SQL API-fiók
 
@@ -249,7 +249,7 @@ Ezek a függvények is használható poligonok ellenőrzése. Például itt hasz
 ### <a name="linq-querying-in-the-net-sdk"></a>A LINQ lekérdezése a .NET SDK-ban
 Az SQL .NET SDK-t is a szolgáltatók helyettes módszerek `Distance()` és `Within()` LINQ kifejezés belüli használathoz. Az SQL LINQ-szolgáltató fordítja le ezt a módszert a megfelelő SQL beépített függvényhívások-hívások (ST_DISTANCE és ST_WITHIN jelölik). 
 
-Íme egy példa egy LINQ-lekérdezést, amely megkeresi az összes dokumentum a Azure Cosmos DB-gyűjtemény, amelynek "hely" érték van 30 km-re, a megadott sugarú körön belül pont LINQ használatával.
+Íme egy példa egy LINQ-lekérdezésre, amely megkeresi az Azure Cosmos-tárolóban található összes olyan dokumentumot, amelynek "helye" értéke a megadott pont 30 km-es sugarán belül van a LINQ használatával.
 
 **Távolság a LINQ-lekérdezésekre**
 

@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f2145811338200b38e84766459844b4c83e5a80
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 00f8a0e8d655f9412eceb7b0901ced829e490f78
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382767"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616094"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Fiók manuális hozzáadása az alkalmazáshoz
 
@@ -71,7 +71,7 @@ A fiókokhoz megadott kódok nem tesznek különbséget a kis-és nagybetűk kö
 
 3. Adja meg a **fiók nevét** (például Facebook), és írja be a **titkos kulcsot** az 1. lépésben, majd válassza a **Befejezés**gombot.
 
-4. A számítógép  Kéttényezős hitelesítő lapján írja be a Facebook-fiókjához az alkalmazásban megadott hat számjegyű ellenőrző kódot, majd válassza az **ellenőrzés**lehetőséget.
+4. A számítógép Kéttényezős hitelesítő lapján írja be a Facebook-fiókjához az alkalmazásban megadott hat számjegyű ellenőrző kódot, majd válassza az **ellenőrzés**lehetőséget.
 
     Az alkalmazás **fiókok** képernyőjén megjelenik a fiók neve és egy hat számjegyű ellenőrző kód. A további biztonság érdekében az ellenőrző kód 30 másodpercenként változik, ami megakadályozza, hogy valaki többször is felhasználja a kódot.
 
@@ -105,6 +105,6 @@ A kétfaktoros ellenőrzés bekapcsolásával hozzáadhatja az Amazon-fiókját,
 
 - Miután hozzáadta a fiókokat az alkalmazáshoz, bejelentkezhet a Microsoft Authenticator alkalmazás használatával az eszközön. További információ: [Bejelentkezés az alkalmazás használatával](user-help-auth-app-sign-in.md).
 
-- Ha nem sikerül beszereznie a személyes Microsoft-fiók ellenőrzési kódját, tekintse meg az **ellenőrző** kód problémáinak elhárítása című szakaszt a [Microsoft-fiók biztonsági adatok & ellenőrző kódok](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) című cikkben.
+- Ha nem sikerül beszereznie a személyes Microsoft-fiók ellenőrzési kódját, tekintse meg az **ellenőrző** kód problémáinak elhárítása című szakaszt a [Microsoft-fiók biztonsági adatok & ellenőrző kódok](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) című cikkben.
 
 - Az iOS rendszerű eszközökön biztonsági mentést készíthet a fiók hitelesítő adatairól és a kapcsolódó Alkalmazásbeállítások, például a fiókok sorrendjéről a felhőhöz. További információ: [biztonsági mentés és helyreállítás Microsoft Authenticator alkalmazással](user-help-auth-app-backup-recovery.md).

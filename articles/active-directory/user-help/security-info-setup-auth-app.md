@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5fff27094881ffbada2bda7937fa714ffc07133
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0e1be41c854e212a7b673d8c2dff42d7b9981fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954354"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616138"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>A biztonsági adatok (előzetes verzió) beállítása a hitelesítő alkalmazás használatára
 
@@ -145,6 +145,8 @@ További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a s
     >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
 ## <a name="next-steps"></a>További lépések
+
+- Jelentkezzen be a Microsoft Authenticator alkalmazással, a [Bejelentkezés kétlépéses ellenőrzés vagy biztonsági információ használatával](security-info-setup-signin.md) című szakaszának lépéseit követve.
 
 - Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó](https://passwordreset.microsoftonline.com/) -visszaállítási portálról, vagy kövesse a [munkahelyi vagy iskolai jelszó](user-help-reset-password.md) alaphelyzetbe állítása című cikk lépéseit.
 

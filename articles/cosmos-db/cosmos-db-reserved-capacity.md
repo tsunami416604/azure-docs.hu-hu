@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: ab42c600b975adac9f13e8e75da9696e51e7e94d
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e4d33756f1e09abedbf828deb447fbf14c6bfed7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779864"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616920"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>A Cost és a fenntartott kapacitás optimalizálása Azure Cosmos DB
 
@@ -57,7 +57,7 @@ A foglalás méretének a meglévő vagy hamarosan üzembe helyezett Azure Cosmo
    | Erőforráscsoport | Az erőforráscsoport, amelyhez a fenntartott kapacitási kedvezmény érvényes. |
    |Kifejezés  |   Egy vagy három év.   |
    |Átviteli sebesség típusa   |  Az átviteli sebesség kérési egységként van kiépítve. Megvásárolhatja a kiépített átviteli sebességre vonatkozó foglalást mindkét beállítás esetében – az egyrégiós írások és a több régióba írt írások esetében is. Az átviteli sebesség típusa két érték közül választhat: 100 RU/s/óra és 100 multi-Master RU/s óránként.|
-   | Fenntartott kapacitási egységek| A lefoglalni kívánt átviteli sebesség mennyisége. Ezt az értéket kiszámíthatja az összes Cosmos DB erőforráshoz (például adatbázisokhoz vagy tárolóhoz) szükséges átviteli sebesség meghatározásával régiónként. Ezután szorozzuk meg a Cosmos DB-adatbázishoz társítandó régiók számával. Példa: Ha minden régióban 5, 1 000 000 RU/s értékű régió található, akkor a foglalási kapacitás megvásárlásához válassza a 5 000 000 RU/mp lehetőséget. |
+   | Fenntartott kapacitási egységek| A lefoglalni kívánt átviteli sebesség mennyisége. Ezt az értéket kiszámíthatja az összes Cosmos DB erőforráshoz (például adatbázisokhoz vagy tárolóhoz) szükséges átviteli sebesség meghatározásával régiónként. Ezután szorozzuk meg a Cosmos-adatbázishoz társítandó régiók számával. Példa: Ha minden régióban 5, 1 000 000 RU/s értékű régió található, akkor a foglalási kapacitás megvásárlásához válassza a 5 000 000 RU/mp lehetőséget. |
 
 
 5. Az űrlap kitöltése után a lefoglalt kapacitás megvásárlásához szükséges árat számítjuk ki. A kimenet a kiválasztott beállításokkal kapott kedvezmény százalékos arányát is megjeleníti. Kattintson a **kiválasztás** elemre.

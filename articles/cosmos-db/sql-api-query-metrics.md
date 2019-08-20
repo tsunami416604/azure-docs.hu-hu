@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: d61d3d00de5b46f7dad44625509eabe6836ca7cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447259"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614816"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Az Azure Cosmos DB lekérdezési teljesítmény hangolása
 
@@ -44,7 +44,7 @@ Az SDK-k a lekérdezés-végrehajtáshoz különböző lehetőségeket nyújtana
 | `EnableScanInQuery` | Állítsa igaz értékre, ha az indexelés visszavonta, de szeretné futtatni a lekérdezést egy vizsgálattal ennek ellenére. Csak alkalmazható, ha a kért szűrő elérési útja indexelő le van tiltva. | 
 | `MaxItemCount` | Térjen vissza adatváltási száma a kiszolgáló elemek maximális számát. -1-beállítása, hagyhatja, hogy a kiszolgáló kezelése elemek száma. Vagy ezt az értéket csak kis számú tétel / adatváltási beolvasása csökkentheti. 
 | `MaxBufferedItemCount` | Ez egy ügyféloldali beállítást, és korlátozhatja a memóriát a partíciók közti ORDER BY végrehajtása során. Magasabb érték segítségével csökkentse a partíciók közti rendezéséhez. |
-| `MaxDegreeOfParallelism` | Lekérdezi vagy beállítja az ügyféloldali futnak az Azure Cosmos DB adatbázis-szolgáltatás a párhuzamos lekérdezés-végrehajtás során párhuzamos műveletek számát. Egy pozitív tulajdonság értéke a értékét párhuzamos műveletek számát korlátozza. Ha 0-nál kisebb érték, a rendszer automatikusan úgy dönt, hogy futtassa a párhuzamos műveletek számát. |
+| `MaxDegreeOfParallelism` | Lekérdezi vagy beállítja a párhuzamos műveletek számát az ügyféloldali lekérdezés-végrehajtás során az Azure Cosmos Database szolgáltatásban. Egy pozitív tulajdonság értéke a értékét párhuzamos műveletek számát korlátozza. Ha 0-nál kisebb érték, a rendszer automatikusan úgy dönt, hogy futtassa a párhuzamos műveletek számát. |
 | `PopulateQueryMetrics` | Lehetővé teszi, hogy a lekérdezés végrehajtása, például a fordítási idő, index hurok idő és a dokumentum különböző fázisait fordított idő statisztika részletes naplózás betöltési idő. Lekérdezési statisztikák kimenete megoszthatja lekérdezés teljesítménybeli problémák diagnosztizálása az Azure-támogatás. |
 | `RequestContinuation` | A lekérdezés végrehajtása révén minden lekérdezés által visszaadott folytatási átlátszatlan folytathatja. A folytatási token magában foglalja az összes állapot, a lekérdezés-végrehajtáshoz szükséges. |
 | `ResponseContinuationTokenLimitInKb` | Korlátozhatja a kiszolgáló által visszaadott folytatási tokent maximális méretét. Szüksége lehet állítsa ezt, ha az alkalmazás gazdagép korlátok a válaszok fejlécének mérete. Ezt a beállítást a teljes időtartam és a lekérdezés felhasznált Kérelemegységek növelheti.  |
@@ -216,7 +216,7 @@ A szakasz a lekérdezés végrehajtási metrikák azt ismerteti, hogyan kérheti
 ### <a name="indexing-policy"></a>Indexelési szabályzat
 Lásd: [indexelési szabályzat konfigurálása](index-policy.md) indexelés elérési utak, bármilyen, és módok és milyen hatással van, a lekérdezés végrehajtása céljából. Alapértelmezés szerint az indexelési házirendet használja kivonatoló indexelő-karakterlánc, amely hatékony egyenlőség lekérdezések esetében, de nem esik lekérdezések/rendezési lekérdezésekkel. Ha karakterláncokat kell lekérdezések, javasoljuk, adja meg a tartomány minden karakterlánc index típusa. 
 
-Alapértelmezés szerint az Azure Cosmos DB érvényesek az összes adat automatikus indexelése. A nagy teljesítményű beszúrása a forgatókönyvek, fontolja meg az elérési utak kizárása, mivel ez csökkenti a minden egyes végrehajtott beszúrási művelet RU költsége. 
+Alapértelmezés szerint a Azure Cosmos DB minden adattal automatikusan alkalmazza az indexelést. A nagy teljesítményű beszúrási forgatókönyvek esetében érdemes lehet kihagyni az elérési utakat, mivel ez csökkenti az egyes INSERT műveletekhez tartozó RU-költségeket. 
 
 ## <a name="query-execution-metrics"></a>Lekérdezés-végrehajtási metrikák
 Ezt a nem kötelező úgy szerezheti be a lekérdezések részletes metrikákért `x-ms-documentdb-populatequerymetrics` fejléc (`FeedOptions.PopulateQueryMetrics` a .NET SDK-ban). A visszaadott érték `x-ms-documentdb-query-metrics` azt jelentette a speciális hibaelhárításhoz, a lekérdezés végrehajtása a következő kulcs-érték párokat tartalmaz. 

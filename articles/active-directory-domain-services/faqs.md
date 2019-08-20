@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 3d44937c977ba264d671f2053d387470651af68a
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 509bd472fe5f930ac830b8b4016129f8acb67324
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030874"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612882"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Gyakori kérdések (GYIK)
 Ez az oldal válaszol a Azure Active Directory Domain Servicesával kapcsolatos gyakori kérdésekre. A frissítések ellenőrzésének megtartása.
@@ -31,6 +31,9 @@ A Azure AD Domain Services konfigurálásával és felügyeletével kapcsolatos 
 ## <a name="configuration"></a>Konfiguráció
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Több felügyelt tartományt is Létrehozhatok egyetlen Azure AD-címtárhoz?
 Nem. Egyetlen Azure AD-címtárhoz Azure AD Domain Services egyetlen felügyelt tartományt hozhat létre.  
+
+### <a name="can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network"></a>Engedélyezhető a Azure AD Domain Services egy klasszikus virtuális hálózaton?
+A klasszikus virtuális hálózatok nem támogatottak új központi telepítések esetén. A klasszikus virtuális hálózatokban telepített meglévő felügyelt tartományok továbbra is támogatottak.
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Engedélyezhető a Azure AD Domain Services egy Azure Resource Manager virtuális hálózaton?
 Igen. Azure AD Domain Services engedélyezhető Azure Resource Manager virtuális hálózaton. A klasszikus Azure-beli virtuális hálózatok már nem támogatottak új felügyelt tartományok létrehozásához.

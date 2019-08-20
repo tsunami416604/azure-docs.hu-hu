@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 7/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 04d63b2c1583228a274c0ba21c87df08886f5cdb
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: a6a6fdf6e63bf8c063f8dd6f23ae380e9ce7b98d
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619068"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575511"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Hibaelhárítási Azure SQL Data Warehouse
 Ez a cikk a gyakori hibaelhárítási kérdéseit sorolja fel.
@@ -24,7 +24,7 @@ Ez a cikk a gyakori hibaelhárítási kérdéseit sorolja fel.
 | Probléma                                                        | Megoldás:                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | A következő felhasználó bejelentkezése sikertelen volt: "NT AUTHORITY \ névtelen LOGON". (Microsoft SQL Server, Hiba: 18456) | Ez a hiba akkor fordul elő, amikor egy HRE-felhasználó megpróbál csatlakozni a Master adatbázishoz, de nem rendelkezik felhasználóval a főkiszolgálón.  A probléma megoldásához adja meg azt a SQL Data Warehouse, amelyhez csatlakozni szeretne, vagy adja hozzá a felhasználót a Master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése][Security overview] című cikket. |
-| A "MyUserName" kiszolgálói tag nem tud hozzáférni a "Master" adatbázishoz az aktuális biztonsági környezetben. A felhasználói alapértelmezett adatbázis nem nyitható meg. A bejelentkezés nem sikerült. A következő felhasználó bejelentkezése sikertelen volt: "MyUserName". (Microsoft SQL Server, Hiba: 916) | Ez a hiba akkor fordul elő, amikor egy HRE-felhasználó megpróbál csatlakozni a Master adatbázishoz, de nem rendelkezik felhasználóval a főkiszolgálón.  A probléma megoldásához adja meg azt a SQL Data Warehouse, amelyhez csatlakozni szeretne, vagy adja hozzá a felhasználót a Master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése][Security overview] című cikket. |
+| A "MyUserName" kiszolgálói tag nem tud hozzáférni a "Master" adatbázishoz az aktuális biztonsági környezetben. A felhasználói alapértelmezett adatbázis nem nyitható meg. A bejelentkezés sikertelen. A következő felhasználó bejelentkezése sikertelen volt: "MyUserName". (Microsoft SQL Server, Hiba: 916) | Ez a hiba akkor fordul elő, amikor egy HRE-felhasználó megpróbál csatlakozni a Master adatbázishoz, de nem rendelkezik felhasználóval a főkiszolgálón.  A probléma megoldásához adja meg azt a SQL Data Warehouse, amelyhez csatlakozni szeretne, vagy adja hozzá a felhasználót a Master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése][Security overview] című cikket. |
 | CTAIP hiba                                                  | Ez a hiba akkor fordulhat elő, ha az SQL Server főadatbázisán egy bejelentkezési azonosítót hoztak létre, de nem szerepelnek a SQL Data Warehouse adatbázisban.  Ha ezt a hibát tapasztalja, tekintse meg a [biztonsági áttekintést ismertető][Security overview] cikket.  Ez a cikk azt ismerteti, hogyan hozható létre egy bejelentkezési azonosító és egy felhasználó a főkiszolgálón, majd hogyan hozható létre felhasználó a SQL Data Warehouse adatbázisban. |
 | Tűzfal blokkolja                                          | Az Azure SQL Database-adatbázisokat kiszolgáló-és adatbázis-szintű tűzfalak védik, hogy csak az ismert IP-címek férhessenek hozzá egy adatbázishoz. Alapértelmezés szerint a tűzfalak biztonságosak, ami azt jelenti, hogy a kapcsolat megkezdése előtt explicit módon engedélyeznie kell és meg kell adnia az IP-címet vagy a címtartományt.  A tűzfal hozzáférésre való konfigurálásához kövesse a [kiszolgáló tűzfal-hozzáférés konfigurálása az ügyfél IP][Configure server firewall access for your client IP] -címére című témakör lépéseit a [létesítési utasításokban][Provisioning instructions]. |
 | Nem lehet kapcsolatot létesíteni az eszközzel vagy az illesztőprogrammal                           | SQL Data Warehouse a [SSMS][SSMS], [a SSDT for Visual Studio][SSDT for Visual Studio]vagy a [Sqlcmd][sqlcmd] használatát javasolja az adatai lekérdezéséhez. Az illesztőprogramokkal és a SQL Data Warehousehoz való csatlakozással kapcsolatos további információkért lásd: [illesztőprogramok Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] és [Csatlakozás Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse] cikkekhez. |
@@ -34,7 +34,7 @@ Ez a cikk a gyakori hibaelhárítási kérdéseit sorolja fel.
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | A Visual Studio Object Explorerből hiányzik a HRE-felhasználók           | Ez egy ismert probléma.  Megkerülő megoldásként tekintse meg a [sys. database_principals][sys.database_principals]felhasználóit.  A Azure Active Directory és a SQL Data Warehouse használatával kapcsolatos további tudnivalókért tekintse meg a [Azure SQL Data Warehouse hitelesítés][Authentication to Azure SQL Data Warehouse] című témakört. |
 | A manuális parancsfájlok, a parancsfájlkezelés varázsló használata vagy a SSMS-on keresztüli csatlakozás lassú, nem válaszol, vagy hibákat állít elő. | Győződjön meg arról, hogy a felhasználók létre lettek hozva a Master adatbázisban. A parancsfájl-kezelési beállítások területen győződjön meg arról, hogy a motor kiadása "Microsoft Azure SQL Data Warehouse Edition", a motor típusa pedig "Microsoft Azure SQL Database". |
-| A szkriptek előállítása meghiúsul a SSMS                               | Nem sikerül létrehozni egy parancsfájlt az SQL-adattárházhoz, ha a "függő objektumok parancsfájl létrehozása" beállítás értéke "true" (igaz). Megkerülő megoldásként a felhasználóknak manuálisan kell megadniuk az eszközök-> Options-> SQL Server Object Explorer-> parancsfájlt létrehozni a függő beállításokhoz, és false értékre kell állítani. |
+| A szkriptek előállítása meghiúsul a SSMS                               | A SQL Data Warehouse parancsfájl létrehozása meghiúsul, ha a "függő objektumok létrehozásához szükséges parancsfájl létrehozása" beállítás értéke "true" (igaz). Megkerülő megoldásként a felhasználóknak manuálisan kell megadniuk az eszközök-> Options-> SQL Server Object Explorer-> parancsfájlt létrehozni a függő beállításokhoz, és false értékre kell állítani. |
 
 ## <a name="performance"></a>Teljesítmény
 | Probléma                                                        | Megoldás:                                                   |

@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/07/2019
-ms.openlocfilehash: 641d622377bad7a1239efd526b93c6f0f0c08d4a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 08/14/2019
+ms.openlocfilehash: 66077416dca4048fc99047f7d6b967e55aab0a23
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68887039"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575740"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Forgatókönyv: Kapcsolódási problémák Apache Phoenix az Azure HDInsight
 
@@ -27,7 +27,7 @@ Az aktív Zookeeper csomópontjának helytelen IP-címe.
 
 ### <a name="resolution"></a>Megoldás:
 
-Az aktív Zookeeper csomópont IP-címe Ambari felhasználói felületről azonosítható, a **HBase-> Gyorshivatkozások – > ZK***  **(aktív) – > Zookeeper információ**hivatkozásait követve. Szükség szerint javítsa ki.
+Az aktív Zookeeper csomópontjának IP-címe a Ambari felhasználói felületén azonosítható a **HBase** > **Quick Links** > **ZK (aktív)**  > **Zookeeper-információ**hivatkozásait követve. Szükség szerint javítsa ki az IP-címet.
 
 ---
 
@@ -35,27 +35,27 @@ Az aktív Zookeeper csomópont IP-címe Ambari felhasználói felületről azono
 
 A parancs `!tables`futtatásakor a következőhöz hasonló hibaüzenet jelenik meg:
 
-```
+```output
 Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings.
 ```
 
 A parancs `count 'SYSTEM.CATALOG'`futtatásakor a következőhöz hasonló hibaüzenet jelenik meg:
 
-```
+```output
 ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189)
 ```
 
 ### <a name="resolution"></a>Megoldás:
 
-Indítsa újra a HMaster szolgáltatást a Ambari felhasználói felületén lévő összes Zookeeper-csomóponton.
+Az Apache Ambari felhasználói felületén hajtsa végre a következő lépéseket a HMaster szolgáltatás újraindításához az összes ZooKeeper-csomóponton:
 
-1. Nyissa meg a **HBase-> aktív HBase Master** hivatkozást a HBase összefoglaló szakaszában.
+1. A HBase **Összefoglalás** szakaszából válassza a **HBase** > **aktív HBase Master**elemet.
 
 1. Az **összetevők** szakaszban indítsa újra a HBase Master szolgáltatást.
 
-1. Ismételje meg a fenti lépéseket a fennmaradó **készenléti HBase Master** szolgáltatásokhoz.
+1. Ismételje meg ezeket a lépéseket az összes fennmaradó **készenléti HBase Master** szolgáltatás esetében.
 
-Akár 5 percet is igénybe vehet, hogy HBase Master szolgáltatás stabilizálja és fejezze be a helyreállítást. Ha a `SYSTEM.CATALOG` tábla visszatér a normális kerékvágásba, a Apache Phoenix kapcsolódási problémáját automatikusan meg kell oldani.
+Akár öt percet is igénybe vehet, amíg a HBase Master szolgáltatás stabilizálni és befejezni a helyreállítást. Miután a `SYSTEM.CATALOG` tábla visszatér a normális kerékvágásba, a Apache Phoenix kapcsolódási problémáját automatikusan meg kell oldani.
 
 ## <a name="next-steps"></a>További lépések
 

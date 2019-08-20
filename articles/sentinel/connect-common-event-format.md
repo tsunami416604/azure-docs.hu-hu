@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 08/19/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1cc661509a28bb57bed0361b48cdeda5e6338e54
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 28def73926294a025d70844e535a0856153ae30a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679312"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611927"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>A külső megoldás összekötése a közös esemény formátumával
 
@@ -54,6 +54,13 @@ Az Azure Sentinel és a CEF készülék közötti kapcsolat három lépésben za
 Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azure-beli virtuális gépre, egy másik felhőben lévő virtuális gépre vagy egy helyszíni gépre. 
 
  ![CEF a helyszínen](./media/connect-cef/cef-syslog-onprem.png)
+
+## <a name="security-considerations"></a>Biztonsági szempontok
+
+Győződjön meg arról, hogy a cég biztonsági szabályzata szerint konfigurálja a gép biztonságát. Konfigurálhatja például a hálózatot úgy, hogy az megfeleljen a vállalati hálózati biztonsági házirendnek, és módosítsa a démon portjait és protokollait úgy, hogy azok megfeleljenek a követelményeinek. A következő útmutatást követve javíthatja a gép biztonsági konfigurációját:  [biztonságos virtuális gép az Azure-ban](../virtual-machines/linux/security-policy.md), [ajánlott eljárások a hálózati biztonsághoz](../security/fundamentals/network-best-practices.md).
+
+A biztonsági megoldás és a syslog-gép közötti TLS-kommunikáció használatához konfigurálnia kell a syslog démont (rsyslog vagy syslog-ng) a TLS-kommunikációhoz: [A syslog-forgalom titkosítása TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [a naplózási üzenetek titkosítása a TLS-syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)használatával.
+
 
 ## <a name="step-1-configure-your-syslog-vm"></a>1\. lépés: A syslog virtuális gép konfigurálása
 

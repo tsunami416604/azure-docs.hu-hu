@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítás az Azure SQL Data warehouse-bA |} A Microsoft Docs
-description: Hibaelhárítás az Azure SQL Data warehouse-bA.
+title: Hibaelhárítási Azure SQL Data Warehouse | Microsoft Docs
+description: Hibaelhárítási Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,64 +10,64 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 2d7f56b65db09232af4fe7e198675ea0cfd64a25
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 290753b866f15e09a52572fdd7a43a60fc2812d6
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595477"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575541"
 ---
-# <a name="troubleshooting-connectivity-issues"></a>Csatlakozási problémák elhárítása
+# <a name="troubleshooting-connectivity-issues"></a>Kapcsolódási problémák elhárítása
 
-Ez a cikk a gyakori hibaelhárítási eljárásokat körül csatlakozik az SQL Data Warehouse sorolja fel.
-- [Szolgáltatás elérhetőségének ellenőrzése](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
-- [Felfüggesztett vagy skálázási művelet keresése](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
-- [Ellenőrizze a tűzfalbeállításokat](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
-- [Ellenőrizze a virtuális hálózat/Service-végpont beállításait](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
-- [A legújabb illesztőprogramokkal keresése](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
-- [Ellenőrizze a kapcsolati karakterlánc](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
-- [Nem állandó hálózati kapcsolat hibái](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
+Ez a cikk a SQL Data Warehousehoz való csatlakozással kapcsolatos gyakori hibaelhárítási technikákat sorolja fel.
+- [Szolgáltatás rendelkezésre állásának keresése](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
+- [Szüneteltetett vagy skálázási művelet keresése](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
+- [A tűzfal beállításainak megtekintése](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
+- [A VNet/szolgáltatás végpontjának beállításai](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
+- [A legújabb illesztőprogramok keresése](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
+- [A kapcsolatok karakterláncának keresése](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
+- [Időnkénti kapcsolatok problémái](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
 - [Gyakori hibaüzenetek](./sql-data-warehouse-troubleshoot-connectivity.md#common-error-messages)
 
-## <a name="check-service-availability"></a>Szolgáltatás elérhetőségének ellenőrzése
+## <a name="check-service-availability"></a>Szolgáltatás rendelkezésre állásának keresése
 
-Ellenőrizze, hogy a szolgáltatás elérhető-e. Az Azure Portalon nyissa meg az SQL data warehouse kapcsolódni próbál. A bal oldali Tartalomjegyzékben panelen kattintson a **diagnosztizálása és a problémák megoldásához**.
+Ellenőrizze, hogy elérhető-e a szolgáltatás. A Azure Portal lépjen a csatlakoztatni kívánt SQL Data Warehouse. A bal oldali tartalomjegyzék panelen kattintson a **problémák diagnosztizálása és megoldása**elemre.
 
-![Válassza ki a Resource health](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
+![Erőforrás állapotának kiválasztása](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-Az SQL data warehouse állapota megjelenik. Ha a szolgáltatás nem jelenik meg **elérhető**, ellenőrizze a további lépéseket.
+A SQL Data Warehouse állapota itt jelenik meg. Ha a szolgáltatás nem elérhetőkéntjelenik meg, tekintse meg a további lépéseket.
 
-![A szolgáltatás elérhető](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
+![Elérhető szolgáltatás](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Ha a Resource health azt mutatja, hogy az adattárház szüneteltetve van, vagy a méretezés, kövesse az útmutatást az adattárház folytatása.
+Ha az erőforrás állapota azt mutatja, hogy az adattárház szüneteltetve van vagy méretezést végez, kövesse az útmutatást az adattárház folytatásához.
 
-![Szolgáltatás szüneteltetve](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) Resource Health szolgáltatással kapcsolatos további információkat itt található.
+![A szolgáltatás szüneteltette](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) a Resource Health további információit itt találja.
 
-## <a name="check-for-paused-or-scaling-operation"></a>Felfüggesztett vagy skálázási művelet keresése
+## <a name="check-for-paused-or-scaling-operation"></a>Szüneteltetett vagy skálázási művelet keresése
 
-Ellenőrizze a portálon megtekintheti, ha az SQL-adattárház szüneteltetve van vagy méretezést.
+Ellenőrizze a portálon, hogy a SQL Data Warehouse szüneteltetve van-e, vagy a méretezést.
 
 ![Szolgáltatás szüneteltetve](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Ha látni, hogy a szolgáltatás fel van függesztve vagy méretezés, ellenőrizze, hogy a karbantartási ütemezéshez során nem. A portál, az SQL data warehouse *áttekintése*, láthatja, hogy a kijelölt karbantartási ütemezés.
+Ha úgy látja, hogy a szolgáltatás szüneteltetve van vagy méretezést végez, ellenőrizze, hogy nem a karbantartási ütemterv alatt van-e. A SQL Data Warehouse *áttekintését ismertető*portálon láthatja a választott karbantartási ütemtervet.
 
-![Karbantartási ütemezés – áttekintés](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
+![Az Áttekintés karbantartási ütemterve](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Ellenkező esetben ellenőrizze a rendszergazdát, hogy ellenőrizze, hogy a karbantartás nem ütemezett esemény. Újból használni szeretné az SQL data warehouse, kövesse a lépéseket követve [Itt](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute).
+Ellenkező esetben kérdezze meg a rendszergazdát, hogy a karbantartás nem ütemezett esemény-e. A SQL Data Warehouse folytatásához kövesse az [itt](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)ismertetett lépéseket.
 
-## <a name="check-your-firewall-settings"></a>Ellenőrizze a tűzfalbeállításokat
+## <a name="check-your-firewall-settings"></a>A tűzfal beállításainak megtekintése
 
-Az SQL Data Warehouse az 1433-as portot használja a kommunikációhoz.   Csatlakozás a vállalati hálózaton belülről próbál, ha a hálózati tűzfal előfordulhat, hogy nem engedélyezett a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem lehet csatlakoztatni az Azure SQL Database-kiszolgálóhoz, ha az informatikai részleg megnyitja az 1433-as porton. További információ a tűzfal-konfigurációk található [Itt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-the-azure-portal).
+Az SQL Data Warehouse az 1433-as portot használja a kommunikációhoz.   Ha vállalati hálózaton belülről próbál csatlakozni, előfordulhat, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni a Azure SQL Database-kiszolgálóhoz, ha az informatikai részleg nem nyitja meg a 1433-es portot. A tűzfal-konfigurációkról további információt [itt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-the-azure-portal)találhat.
 
-## <a name="check-your-vnetservice-endpoint-settings"></a>Ellenőrizze a virtuális hálózat/Service-végpont beállításait
+## <a name="check-your-vnetservice-endpoint-settings"></a>A VNet/szolgáltatás végpontjának beállításai
 
-Ha hibákat 40914 és 40615 azért küldtük, [hiba leírása és a megoldás Itt](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615).
+Ha a 40914-es és a 40615-es hibákat kapja, tekintse meg [itt a hiba leírása és megoldása](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615)című témakört.
 
-## <a name="check-for-the-latest-drivers"></a>A legújabb illesztőprogramokkal keresése
+## <a name="check-for-the-latest-drivers"></a>A legújabb illesztőprogramok keresése
 
 ### <a name="software"></a>Szoftver
 
-Ellenőrizze, hogy a legújabb eszközök használatával csatlakozhat az SQL data warehouse:
+Győződjön meg arról, hogy a legújabb eszközöket használja a SQL Data Warehousehoz való kapcsolódáshoz:
 
 * SSMS
 * Azure Data Studio
@@ -75,16 +75,16 @@ Ellenőrizze, hogy a legújabb eszközök használatával csatlakozhat az SQL da
 
 ### <a name="drivers"></a>Illesztőprogramok
 
-Ellenőrizze, hogy a legújabb illesztőprogramot használja.  Az illesztőprogramok egy régebbi verzióját használja azt eredményezheti, hogy nem várt működést, a régebbi illesztőprogramok nem támogatja új funkciókat.
+Győződjön meg arról, hogy a legújabb illesztőprogram-verziókat használja.  Az illesztőprogramok egy régebbi verziója váratlan viselkedést eredményezhet, mivel a régebbi illesztőprogramok nem támogatják az új szolgáltatásokat.
 
 * [ODBC](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)
 * [JDBC](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
 * [OLE DB](https://docs.microsoft.com/sql/connect/oledb/download-oledb-driver-for-sql-server)
 * [PHP](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server)
 
-## <a name="check-your-connection-string"></a>Ellenőrizze a kapcsolati karakterlánc
+## <a name="check-your-connection-string"></a>A kapcsolatok karakterláncának keresése
 
-Ellenőrizze, hogy a kapcsolati karakterláncok megfelelően vannak-e beállítva.  Az alábbiakban néhány-minta kipróbálásával.  További információkat talál [kapcsolati karakterláncok, itt](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings).
+Győződjön meg arról, hogy a kapcsolódási karakterláncok megfelelően vannak beállítva.  Az alábbiakban néhány példa látható.  Itt további információkat talál a [kapcsolatok karakterláncáról](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings).
 
 ADO.NET kapcsolati sztring
 
@@ -92,13 +92,13 @@ ADO.NET kapcsolati sztring
 Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};User ID={your_user_name};Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 ```
 
-ODBC kapcsolati karakterlánc
+ODBC-kapcsolatok karakterlánca
 
 ```csharp
 Driver={SQL Server Native Client 11.0};Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};Uid={your_user_name};Pwd={your_password_here};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
 ```
 
-A PHP kapcsolati karakterlánc
+PHP-kapcsolatok karakterlánca
 
 ```PHP
 Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}\", \"{your_user_name}\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting to SQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"{your_user_name}\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"{your_database}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1, \"TrustServerCertificate\" => 0);\r\n$serverName = \"tcp:{your_server}.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
@@ -110,13 +110,13 @@ JDBC-kapcsolati sztring
 jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user={your_user_name};password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
 ```
 
-## <a name="intermittent-connection-issues"></a>Nem állandó hálózati kapcsolat hibái
+## <a name="intermittent-connection-issues"></a>Időnkénti kapcsolatok problémái
 
-Ellenőrizze, hogy ha problémákat tapasztal a kiszolgálón a várólistára került kérelmeket nagy mennyiségű nagy terhelés. Szükség lehet, vertikális felskálázása további erőforrások az adattárház.
+Ellenőrizze, hogy nagy mennyiségű várólistán lévő kéréssel tapasztal-e nagy terhelést a kiszolgálón. Előfordulhat, hogy további erőforrásokhoz is szükség van az adattárház vertikális felskálázására.
 
 ## <a name="common-error-messages"></a>Gyakori hibaüzenetek
 
-Hibák 40914 és 40615, tekintse meg a [hiba leírása és a megoldás Itt](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615).
+A 40914-es és a 40615-es hibákért itt tekintse meg a [hiba leírását és megoldását](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615).
 
-## <a name="still-having-connectivity-issues"></a>Továbbra is kapcsolódási problémái vannak?
-Hozzon létre egy [támogatási jegyet](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) , a mérnöki csapathoz képesek segítséget nyújtani.
+## <a name="still-having-connectivity-issues"></a>Továbbra is csatlakozási problémák léptek fel?
+Hozzon létre egy [támogatási jegyet](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) , hogy a mérnöki csapat támogassa Önt.

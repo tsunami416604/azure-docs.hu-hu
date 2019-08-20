@@ -13,12 +13,12 @@ ms.date: 08/05/2019
 ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6145ccc67eedfdae8e9e1aa9245ff8d34101d387
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: f10f3b272978ea24b515e39a8a8cc1fd0bea73a4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949564"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616001"
 ---
 # <a name="overview-for-two-factor-verification-and-your-work-or-school-account"></a>A kétfaktoros ellenőrzés és a munkahelyi vagy iskolai fiók áttekintése
 
@@ -29,7 +29,15 @@ A kétfaktoros ellenőrzés biztonságosabb, mint a jelszó, mivel a hitelesít�
 >[!Important]
 >Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
 >
->Ezt a tartalmat kizárólag munkahelyi vagy iskolai fiókjával, a szervezet által megadott fiókkal (például alain@contoso.com) kell használni. Ha problémái vannak a kétfaktoros ellenőrzéssel és a személyes Microsoft-fiókával, akkor a saját maga által beállított fiókkal (például danielle@outlook.com) kapcsolatban lásd: kétfaktoros ellenőrzés bekapcsolása a [Microsoft-fiók](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+>Ezt a tartalmat kizárólag munkahelyi vagy iskolai fiókjával, a szervezet által megadott fiókkal (például alain@contoso.com) kell használni. Ha problémái vannak a kétfaktoros ellenőrzéssel és a személyes Microsoft-fiókával, akkor a saját maga által beállított fiókkal (például danielle@outlook.com) kapcsolatban lásd: kétfaktoros ellenőrzés bekapcsolása a [Microsoft-fiók](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+
+## <a name="who-decides-if-you-use-this-feature"></a>Ki dönti el, hogy használja-e ezt a funkciót?
+
+A fiók típusától függően a szervezet dönthet úgy, hogy kétfaktoros ellenőrzést kell használnia, vagy Ön is dönthet úgy, hogy eldönti.
+
+- **Munkahelyi vagy iskolai fiókjával.** Ha munkahelyi vagy iskolai fiókot használ (például alain@contoso.com:), akkor akár a szervezet számára is, akár kétfaktoros ellenőrzést kell használnia, az adott ellenőrzési módszerekkel együtt. Mivel a szervezet úgy döntött, hogy ezt a funkciót kell használnia, nincs mód arra, hogy önállóan kikapcsolja.
+
+- **Személyes Microsoft-fiók.** Dönthet úgy, hogy a személyes Microsoft-fiókjaihoz (például alain@outlook.com:) kétfaktoros ellenőrzést állít be. Ha problémák merülnek fel a kétfaktoros ellenőrzéssel és a személyes Microsoft-fiókával kapcsolatban, tekintse meg a kétfaktoros ellenőrzés bekapcsolását a [Microsoft-fiók](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off). Mivel Ön dönti el, hogy szeretné-e használni ezt a funkciót, bármikor be-és kikapcsolhatja azt.
 
 ## <a name="two-factor-verification-related-articles"></a>Kétfaktoros ellenőrzéssel kapcsolatos cikkek
 

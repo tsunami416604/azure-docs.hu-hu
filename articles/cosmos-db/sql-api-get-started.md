@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 37b6a9947d3cabe1f566f842e321229efe9d03b6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 25275aeb6637d50379b7c71e87be9ecffce269db
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598520"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614691"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>.NET-konzolos alkalmazás létrehozása Azure Cosmos DB SQL API-fiókban tárolt adatkezeléshez
 
@@ -253,7 +253,7 @@ Adatbázis hozható létre az ``CosmosClient`` osztály [**createdatabaseifnotex
 
 Az alkalmazás futtatásához nyomja le az **F5 billentyűt** .
 
-Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-adatbázist.  
+Gratulálunk! Sikeresen létrehozott egy Azure Cosmos-adatbázist.  
 
 ## <a id="CreateColl"></a>5. lépés: Tároló létrehozása
 > [!WARNING]
@@ -283,12 +283,12 @@ A tárolót a [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.
 
    Az alkalmazás futtatásához nyomja le az **F5 billentyűt** .
 
-Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-tárolót.  
+Gratulálunk! Sikeresen létrehozott egy Azure Cosmos-tárolót.  
 
 ## <a id="CreateDoc"></a>6. lépés: Elemek hozzáadása a tárolóhoz
-A **CosmosContainer** osztály [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) funkciójával hozhat létre egy elemeket. Az SQL API használatával az elemek dokumentumokként vannak kivetítve, amelyek felhasználói (tetszőleges) JSON-tartalmak. Most beszúrhat egy elemeket a Azure Cosmos DB tárolóba.
+A **CosmosContainer** osztály [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) funkciójával hozhat létre egy elemeket. Az SQL API használatával az elemek dokumentumokként vannak kivetítve, amelyek felhasználói (tetszőleges) JSON-tartalmak. Most már beszúrhat egy elemeket az Azure Cosmos-tárolóba.
 
-Először hozzon létre egy **család** osztályt, amely a minta Azure Cosmos db belül tárolt objektumokat jelképezi. Létrehozunk még egy **Szülő**, **Gyermek**, **Háziállat** és **Cím** alosztályt is a **Család** osztályban való használatra. Megjegyzés: az elemek azonosító **tulajdonságának** szerializálva kell  lennie a JSON-azonosítóban.
+Először hozzon létre egy **család** osztályt, amely a minta Azure Cosmos db belül tárolt objektumokat jelképezi. Létrehozunk még egy **Szülő**, **Gyermek**, **Háziállat** és **Cím** alosztályt is a **Család** osztályban való használatra. Megjegyzés: az elemek azonosító tulajdonságának szerializálva kell lennie a JSON- **azonosítóban** .
 
 1. Válassza a **CTRL + SHIFT + a** billentyűkombinációt az **új elem hozzáadása** párbeszédpanel megnyitásához. Vegyen fel egy új osztály **Family.cs** a projektbe.
 
@@ -320,7 +320,7 @@ A kód ellenőrzi, hogy az azonos AZONOSÍTÓJÚ elemek még nem léteznek-e a l
 
 Az alkalmazás futtatásához nyomja le az **F5 billentyűt** .
 
-Gratulálunk! Sikeresen létrehozott két Azure Cosmos DB elemet.  
+Gratulálunk! Sikeresen létrehozott két Azure Cosmos-elemet.  
 
 ## <a id="Query"></a>7. lépés: Azure Cosmos DB erőforrások lekérdezése
 Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](sql-api-sql-query.md). Az alábbi mintakód bemutatja, hogyan futtathat lekérdezést az előző lépésben beszúrt elemekhez.
@@ -347,7 +347,7 @@ Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentum
 
 Az alkalmazás futtatásához nyomja le az **F5 billentyűt** .
 
-Gratulálunk! Sikeresen lekérdezett egy Azure Cosmos DB tárolón.
+Gratulálunk! Sikeresen lekérdezett egy Azure Cosmos-tárolón.
 
 ## <a id="ReplaceItem"></a>8. lépés: JSON-elemek cseréje
 Most frissíteni fogjuk a Azure Cosmos DB egy elemét.
@@ -375,7 +375,7 @@ Most frissíteni fogjuk a Azure Cosmos DB egy elemét.
 
    Az alkalmazás futtatásához nyomja le az **F5 billentyűt** .
 
-Gratulálunk! Sikeresen lecserélt egy Azure Cosmos DB-elemet.
+Gratulálunk! Sikeresen lecserélte az Azure Cosmos-elemeket.
 
 ## <a id="DeleteDocument"></a>9. lépés: Elem törlése
 Most töröljük a Azure Cosmos DB egy elemét.
@@ -404,7 +404,7 @@ Most töröljük a Azure Cosmos DB egy elemét.
 
 Az alkalmazás futtatásához nyomja le az **F5 billentyűt** .
 
-Gratulálunk! Sikeresen törölt egy Azure Cosmos DB-elemet.
+Gratulálunk! Sikeresen törölte az Azure Cosmos-elemeket.
 
 ## <a id="DeleteDatabase"></a>10. lépés: Az adatbázis törlése
 Most törölni fogjuk az adatbázist. A létrehozott adatbázis törlésével törlődik az adatbázis és az összes gyermek erőforrás (tárolók, elemek, valamint az összes tárolt eljárás, felhasználó által definiált függvény és eseményindító). A **CosmosClient** -példányt is eldobjuk.
@@ -419,7 +419,7 @@ Most törölni fogjuk az adatbázist. A létrehozott adatbázis törlésével t�
 
 Az alkalmazás futtatásához nyomja le az **F5 billentyűt** .
 
-Gratulálunk! Sikeresen törölt egy Azure Cosmos DB-adatbázist.
+Gratulálunk! Sikeresen törölt egy Azure Cosmos-adatbázist.
 
 ## <a id="Run"></a>11. lépés: Futtassa együtt C# a konzol alkalmazást!
 Az alkalmazás hibakeresési módban való létrehozásához és futtatásához válassza az F5 billentyűt a Visual Studióban.

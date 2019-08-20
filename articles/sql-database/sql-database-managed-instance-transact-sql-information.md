@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 44b98b55bfa2d0424831f6cf612f66dbcdc8a6d9
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
-ms.translationtype: MT
+ms.openlocfilehash: 811d54da2fbcf36bcd2529ed9172c80d6414ab54
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543697"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617620"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database felügyelt példányok T-SQL eltérései SQL Server
 
@@ -449,7 +449,7 @@ Ha a replikáció engedélyezve van egy [feladatátvételi csoportban](sql-datab
 - Nem támogatott szintaxis:
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
-- Adatforrás: 
+- Forrás: 
   - `FROM URL`(Az Azure Blob Storage) az egyetlen támogatott lehetőség.
   - `FROM DISK`/`TAPE`a/Backup-eszköz nem támogatott.
   - A biztonságimásolat-készletek nem támogatottak.
@@ -512,6 +512,10 @@ A több példányban elérhető Service Broker nem támogatott:
 - Felügyelt példány létrehozása után a felügyelt példány vagy VNet másik erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott.
 - Egyes szolgáltatások, például a App Service környezetek, a Logic apps és a felügyelt példányok (földrajzi replikálás, tranzakciós replikálás vagy csatolt kiszolgálókon keresztül) nem férnek hozzá a felügyelt példányokhoz különböző régiókban, ha a virtuális hálózatok globálisan vannak csatlakoztatva [ peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Ezekhez az erőforrásokhoz a ExpressRoute vagy a VNet – VNet használatával csatlakozhat a VNet-átjárók segítségével.
 
+### <a name="tempdb-size"></a>TEMPDB mérete
+
+A maximális fájlméret nem lehet `tempdb` nagyobb, mint 24 GB általános célú szinten. A üzletileg kritikus `tempdb` szinten lévő maximális méretet a példány tárolási mérete korlátozza. `Tempdb`a naplófájl mérete általános célú és üzletileg kritikus szinten egyaránt 120 GB-ra van korlátozva. Előfordulhat, hogy egyes lekérdezések hibát jeleznek, ha legalább 24 GB-nál több `tempdb` adatra van szükségük, vagy ha több mint 120 GB adatnaplót hoznak létre.
+
 ## <a name="Changes"></a>Viselkedési változások
 
 A következő változók, függvények és nézetek eltérő eredményeket adnak vissza:
@@ -526,13 +530,31 @@ A következő változók, függvények és nézetek eltérő eredményeket adnak
 
 ## <a name="Issues"></a>Ismert problémák és korlátozások
 
-### <a name="tempdb-size"></a>TEMPDB mérete
+### <a name="cross-database-service-broker-dialogs-dont-work-after-service-tier-upgrade"></a>Az adatbázisok közötti Service Broker párbeszédpanelek nem működnek a szolgáltatási réteg frissítése után
 
-A maximális fájlméret nem lehet `tempdb` nagyobb, mint 24 GB általános célú szinten. A üzletileg kritikus `tempdb` szinten lévő maximális méretet a példány tárolási mérete korlátozza. `Tempdb`a naplófájl mérete általános célú és üzletileg kritikus szinten egyaránt 120 GB-ra van korlátozva. Az `tempdb` adatbázis mindig 12 adatfájlra van bontva. A fájlok maximális mérete nem módosítható, és az új fájlok nem adhatók hozzá `tempdb`a következőhöz:. Előfordulhat, hogy egyes lekérdezések hibát jeleznek, ha legalább 24 GB-nál több `tempdb` adatra van szükségük, vagy ha több mint 120 GB adatnaplót hoznak létre. `Tempdb`a rendszer mindig üres adatbázisként hozza létre újra, amikor a példány elindul vagy feladatátvételt végez, és a folyamatban `tempdb` lévő módosításokat nem őrzi meg a rendszer. 
+**Dátum** Augusztus 2019
 
-### <a name="cant-restore-contained-database"></a>A tárolt adatbázis nem állítható vissza
+Az adatbázisok közötti Service Broker párbeszédpanelek nem tudják kézbesíteni az üzeneteket a szolgáltatási réteg műveletének módosítása után. A felügyelt példányban a virtuális mag vagy a példány tárolási méretének változása miatt `service_broke_guid` a [sys. Databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) nézetet fogja megváltoztatni az összes adatbázisra vonatkozóan. A `DIALOG` [BEGIN párbeszédablak](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) használatával létrehozott bármely, a más adatbázisban a GUID azonosítóval hivatkozó Service Broker-utasítással létrehozott összes létrehozási üzenet nem fog tudni üzeneteket kézbesíteni.
 
-A felügyelt példány nem tudja visszaállítani a [bennük lévő adatbázisokat](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases). A meglévő foglalt adatbázisok időponthoz való visszaállítása nem működik a felügyelt példányon. Addig is javasoljuk, hogy távolítsa el az adattárolási lehetőséget a felügyelt példányra helyezett adatbázisokból. Ne használja a tárolás lehetőséget az éles adatbázisokhoz. 
+**Workaround** Állítson le minden olyan tevékenységet, amely több adatbázison Service Broker párbeszédet használ a szolgáltatási réteg frissítése előtt, majd újra inicializálja őket.
+
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querya paraméter nem támogatott a sp_send_db_mail
+
+**Dátum** Április 2019
+
+A `@query` [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) eljárásban szereplő paraméter nem működik.
+
+### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>A HRE-bejelentkezések és a felhasználók nem támogatottak az eszközökön
+
+**Dátum** Április 2019
+
+SQL Server Management Studio és SQL Server Data Tools nem támogatja az Azure-beli fuly-bejelentkezések és-felhasználók támogatását.
+- Az Azure AD Server-rendszerbiztonsági tag (Logins) és a felhasználók (nyilvános előzetes verzió) használata SQL Server Data Tools jelenleg nem támogatott.
+- SQL Server Management Studio nem támogatja az Azure AD-kiszolgáló résztvevői (bejelentkezések) és a felhasználók (nyilvános előzetes verzió) parancsfájlkezelését.
+
+### <a name="tempdb-structure-is-re-created"></a>A TEMPDB struktúra újra létrejött
+
+Az `tempdb` adatbázis mindig 12 adatfájlra van bontva, és a fájl szerkezete nem módosítható. A fájlok maximális mérete nem módosítható, és az új fájlok nem adhatók hozzá `tempdb`a következőhöz:. `Tempdb`a rendszer mindig üres adatbázisként hozza létre újra, amikor a példány elindul vagy feladatátvételt végez, és a folyamatban `tempdb` lévő módosításokat nem őrzi meg a rendszer.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Kis méretű adatbázisfájlok esetén a tárterület nagyobb
 
@@ -551,24 +573,9 @@ Ebben a példában a meglévő adatbázisok továbbra is működőképesek marad
 
 [A fennmaradó fájlok számát](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) a rendszernézetek használatával is meghatározhatja. Ha eléri ezt a korlátot, próbálja meg [üresen hagyni, és töröljön néhány kisebb fájlt a DBCC SHRINKFILE utasítás használatával](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) , vagy váltson a [üzletileg kritikus szintjére, amely nem rendelkezik ezzel](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)a korláttal.
 
-### <a name="tooling"></a>Eszközök
-
-Előfordulhat, hogy a SQL Server Management Studio és SQL Server Data Tools bizonyos problémákba ütközik a felügyelt példányokhoz való hozzáférés során.
-
-- Az Azure AD Server-rendszerbiztonsági tag (Logins) és a felhasználók (nyilvános előzetes verzió) használata SQL Server Data Tools jelenleg nem támogatott.
-- SQL Server Management Studio nem támogatja az Azure AD-kiszolgáló résztvevői (bejelentkezések) és a felhasználók (nyilvános előzetes verzió) parancsfájlkezelését.
-
-### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Egyes nézetekben, naplókban és üzenetekben helytelenek az adatbázisok
+### <a name="guid-values-shown-instead-of-database-names"></a>Az adatbázis neve helyett GUID-értékek láthatók
 
 A rendszernézetek, a teljesítményszámlálók, a hibaüzenetek, a Xevent típusú eseményekhez és a hibanapló-bejegyzések a tényleges adatbázis neve helyett GUID-adatbázis-azonosítókat jelenítenek meg. Ne használja ezeket a GUID azonosítókat, mert azokat a rendszer a későbbiekben a tényleges adatbázis-nevekkel cseréli le.
-
-### <a name="database-mail"></a>Adatbázisbeli levelezés
-
-A `@query` [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) eljárásban szereplő paraméter nem működik.
-
-### <a name="database-mail-profile"></a>Database Mail profil
-
-A SQL Server Agent által használt Database Mail profilt hívni `AzureManagedInstance_dbmail_profile`kell. Más Database Mail-profilok neve nem érvényes.
 
 ### <a name="error-logs-arent-persisted"></a>A hibanapló nem marad meg
 

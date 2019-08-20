@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9b0cbe8126a01a64e35b2fcfeca400aed5aef0cc
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: df9e60c8d517c35029e425d50dba81a18c2f1114
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952029"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617351"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 A [Azure Backup szolgáltatás](backup-overview.md) segítségével biztonsági mentést készíthet a helyszíni gépekről és munkaterhelésekről, valamint az Azure-beli virtuális gépekről. Ez a cikk az Azure-beli virtuális gépek Azure Backup-vel történő biztonsági mentésével kapcsolatos támogatási beállításokat és korlátozásokat foglalja össze.
@@ -42,7 +42,7 @@ További információ a biztonsági mentésről [a Backup Server használatával
 Biztonsági mentés engedélyezése Windows Azure-beli virtuális gép létrehozásakor | Támogatott: <br/><br/> – Windows Server 2019 (Datacenter/Datacenter Core/standard) <br/><br/> – Windows Server 2016 (Datacenter/Datacenter Core/standard) <br/><br/> – Windows Server 2012 R2 (Datacenter/standard) <br/><br/> – Windows Server 2008 R2 (RTM és SP1 standard)
 Biztonsági mentés engedélyezése Linux rendszerű virtuális gép létrehozásakor | Támogatott:<br/><br/> -Ubuntu-kiszolgáló: 18,04, 17,10, 17,04, 16,04 (LTS), 14,04 (LTS)<br/><br/> -Red Hat: RHEL 6,7, 6,8, 6,9, 7,2, 7,3, 7,4<br/><br/> -SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> Debian 8, 9<br/><br/> CentOS 6,9, 7,3<br/><br/> -Oracle Linux: 6,7, 6,8, 6,9, 7,2, 7,3
 Leállítás/offline virtuális gép biztonsági mentése | Támogatott.<br/><br/> A pillanatkép csak Crash-konzisztens, nem az alkalmazás-konzisztens.
-Lemezek biztonsági mentése a felügyelt lemezekre való Migrálás után | Támogatott.<br/><br/> A biztonsági mentés továbbra is működni fog. Nincs szükség felhasználói műveletre.
+Lemezek biztonsági mentése a felügyelt lemezekre való Migrálás után | Támogatott.<br/><br/> A biztonsági mentés továbbra is működni fog. Semmit nem kell tenni.
 Felügyelt lemezek biztonsági mentése az erőforráscsoport zárolásának engedélyezése után | Nem támogatott.<br/><br/> Azure Backup nem tudja törölni a régebbi visszaállítási pontokat, és a biztonsági mentések sikertelenek lesznek, ha elérik a visszaállítási pontok maximális korlátját.
 Virtuális gép biztonsági mentési szabályzatának módosítása | Támogatott.<br/><br/> A virtuális gép biztonsági mentése az új házirend ütemterv és adatmegőrzési beállítások használatával történik. Ha a megőrzési beállítások meg vannak hosszabbítva, a meglévő helyreállítási pontok meg vannak jelölve és megmaradnak. Ha csökkennek, a rendszer a meglévő helyreállítási pontokat metszi a következő karbantartási feladatokban, és végül törölve lesz.
 Biztonsági mentési feladat megszakítása | A pillanatkép-készítési folyamat során támogatott.<br/><br/> Nem támogatott, ha a pillanatképet a tárolóba helyezi át.
@@ -157,8 +157,8 @@ A zóna által rögzített virtuális gépek visszaállítása | Támogatott (ol
 
 **Összetevő** | **Támogatás**
 --- | ---
-Azure-beli VM-adatlemezek | Egy virtuális gép biztonsági mentése 16 vagy kevesebb adatlemezzel. <br/><br/> A legfeljebb 4 TB méretű lemezeket támogat.<br/><br/>A 4 TB-nál nagyobb lemezek Azure Backup nagyméretű lemezes támogatásának korlátozott nyilvános előzetes verziójára és akár 30 TB-os méretre való regisztráláshoz tekintse meg az [Azure virtuális gépek biztonsági mentésének áttekintését](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
-Adatlemez mérete | Az egyes lemezek 4095 GB-ig lehetnek.<br/><br/>Ha regisztrálni szeretne a Azure Backup nagyméretű lemezes támogatásának korlátozott nyilvános előzetes verziójára a 4TB-nál nagyobb méretű lemezek esetében, tekintse meg ezt a [cikket](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+Azure-beli VM-adatlemezek | Egy virtuális gép biztonsági mentése 16 vagy kevesebb adatlemezzel. <br/><br/> A legfeljebb 4 TB méretű lemezeket támogat.<br/><br/>A 4 TB-nál nagyobb méretű lemezek Azure Backup nagyméretű lemezes támogatásának korlátozott nyilvános előzetes verzióra való regisztrálásához tekintse meg ezt a [cikket](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+Adatlemez mérete | Az egyes lemezek 4095 GB-ig lehetnek.<br/><br/>Ha Azure Backup nagyméretű lemezes támogatás korlátozott nyilvános előzetes verziójára szeretne regisztrálni a 4TB-nál nagyobb méretű lemezek esetében, tekintse meg ezt a [cikket](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 Tárolótípus | Standard HDD, standard SSD, prémium SSD.
 Felügyelt lemezek | Támogatott.
 Titkosított lemezek | Támogatott.<br/><br/> A Azure Disk Encryption használatával engedélyezett Azure virtuális gépek biztonsági mentése (az Azure AD-alkalmazással vagy anélkül).<br/><br/> A titkosított virtuális gépek nem állíthatók helyre a fájl/mappa szintjén. A teljes virtuális gépet helyre kell állítani.<br/><br/> Engedélyezheti a titkosítást a Azure Backup által már védett virtuális gépeken.

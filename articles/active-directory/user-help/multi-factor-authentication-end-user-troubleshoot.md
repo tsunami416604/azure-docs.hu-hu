@@ -13,12 +13,12 @@ ms.date: 08/07/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df32ec9c2d181072bb67a8ca0f2cb04560287286
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 178ce07db24976d7df590d353603da67b68122e8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949763"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616122"
 ---
 # <a name="troubleshoot-common-two-factor-verification-problems"></a>A kétfaktoros ellenőrzés gyakori problémáinak elhárítása
 
@@ -29,7 +29,7 @@ Vannak olyan gyakori kétfaktoros ellenőrzési problémák, amelyek gyakrabban 
 >[!Important]
 >Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
 >
->Ezt a tartalmat kizárólag munkahelyi vagy iskolai fiókjával, a szervezet által megadott fiókkal (például alain@contoso.com) kell használni. Ha problémái vannak a kétfaktoros ellenőrzéssel és a személyes Microsoft-fiókával, akkor a saját maga által beállított fiókkal (például danielle@outlook.com) kapcsolatban lásd: kétfaktoros ellenőrzés bekapcsolása a [Microsoft-fiók](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+>Ezt a tartalmat kizárólag munkahelyi vagy iskolai fiókjával, a szervezet által megadott fiókkal (például alain@contoso.com) kell használni. Ha problémái vannak a kétfaktoros ellenőrzéssel és a személyes Microsoft-fiókával, akkor a saját maga által beállított fiókkal (például danielle@outlook.com) kapcsolatban lásd: kétfaktoros ellenőrzés bekapcsolása a [Microsoft-fiók](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="i-forgot-my-mobile-device-at-home"></a>Elfelejtettem a mobileszközom otthon
 
@@ -82,9 +82,9 @@ Ha új mobileszköz van, akkor be kell állítania, hogy működjön a kétfakto
 
 2. Frissítse a fiókját és az eszköz adatait a **további biztonsági ellenőrzés** oldalon, törölje a régi eszközt, és adja hozzá az újat. További információt a kétfaktoros [ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md) című cikkben talál.
 
-3. Választható. Töltse le, telepítse és állítsa be a Microsoft Authenticator alkalmazást a mobileszközön a [Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikkben ismertetett lépéseket követve.
+3. Nem kötelező. Töltse le, telepítse és állítsa be a Microsoft Authenticator alkalmazást a mobileszközön a [Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikkben ismertetett lépéseket követve.
 
-4. Választható. Kapcsolja be a kétfaktoros ellenőrzést a megbízható eszközökhöz a kétfaktoros [ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) című cikk a kéttényezős ellenőrzési **kérések megbízható eszközön** című részében ismertetett lépéseket követve.
+4. Nem kötelező. Kapcsolja be a kétfaktoros ellenőrzést a megbízható eszközökhöz a kétfaktoros [ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) című cikk a kéttényezős ellenőrzési **kérések megbízható eszközön** című részében ismertetett lépéseket követve.
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>Problémák léptek fel a mobil eszközön való bejelentkezés közben
 
@@ -92,7 +92,11 @@ Előfordulhat, hogy a mobileszköz-alapú ellenőrzési módszer (például szö
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>Nem tudom beolvasni az alkalmazás jelszavait
 
-Az alkalmazás jelszavai lecserélik a normál jelszót a régebbi asztali alkalmazások esetében, amelyek nem támogatják a kétfaktoros ellenőrzést. Először ellenőrizze, hogy helyesen írta-e be a jelszót. Ha ez nem oldja meg, akkor az alkalmazás jelszavainak [kezelése](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-using-the-myapps-portal) a kétlépéses ellenőrzéshez című cikkben ismertetett lépéseket követve hozzon létre egy új alkalmazást az alkalmazás jelszavának létrehozásához **és törléséhez** .
+Az alkalmazás jelszavai lecserélik a normál jelszót a régebbi asztali alkalmazások esetében, amelyek nem támogatják a kétfaktoros ellenőrzést. Először ellenőrizze, hogy helyesen írta-e be a jelszót. Ha ez nem oldja meg, akkor az alkalmazás jelszavainak [kezelése](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page) a kétlépéses ellenőrzéshez című cikkben ismertetett lépéseket követve hozzon létre egy új alkalmazást az alkalmazás jelszavának létrehozásához **és törléséhez** .
+
+## <a name="why-cant-i-turn-two-factor-verification-off"></a>Miért nem kapcsolhatom ki a kétfaktoros ellenőrzést?
+
+Ha a kétfaktoros ellenőrzést használja munkahelyi vagy iskolai fiókjával (például alain@contoso.com), az valószínűleg azt jelenti, hogy a szervezet úgy döntött, hogy ezt a hozzáadott biztonsági funkciót kell használnia. Mivel a szervezet úgy döntött, hogy ezt a funkciót kell használnia, nincs mód arra, hogy önállóan kikapcsolja. Ha azonban a kéttényezős ellenőrzést személyes fiókkal használja, alain@outlook.compéldául a szolgáltatás be-és kikapcsolását is lehetővé teszi. A személyes Microsoft-fiókok kétfaktoros ellenőrzésének vezérlésével kapcsolatos útmutatásért lásd: [kétfaktoros ellenőrzés bekapcsolása vagy kikapcsolása a Microsoft-fiók](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Nem találok választ a problémára
 

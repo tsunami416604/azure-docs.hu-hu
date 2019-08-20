@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 582b0a586f830659bbea4dd665be938d2895de47
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: f72a3bfcfd6b4f480977510963f49f73a7207e1f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544830"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615290"
 ---
 # <a name="use-the-change-feed-estimator"></a>A módosítási hírcsatorna kalkulátor használata
 
@@ -23,7 +23,7 @@ A Change feed processzor olyan mutatóként működik, amely a változási [csat
 
 A módosítási hírcsatorna-feldolgozó üzembe helyezése az elérhető erőforrások, például a processzor, a memória, a hálózat stb. alapján feldolgozhatja a módosításokat egy adott sebességgel.
 
-Ha ez a sebesség lassabb, mint amikor a módosítások a Azure Cosmos DB tárolóban történnek, a processzor a lemaradás után fog megtörténni.
+Ha ez a sebesség lassabb, mint a változásoknak az Azure Cosmos-tárolóban történt változásai, akkor a processzor elmarad.
 
 Ennek a forgatókönyvnek az azonosítása segít megérteni, hogy szükség van-e a Change feed processzor üzembe helyezésének skálázására.
 
@@ -60,8 +60,7 @@ Ezt a becslést elküldheti a figyelési megoldásnak, és azt is megtudhatja, h
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa további információ a változáscsatorna az alábbi cikkeket:
+A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgozó szolgáltatással kapcsolatos változásokról:
 
-* [A hírcsatorna változásának áttekintése](change-feed.md)
-* [A módosítási csatorna olvasási módjai](read-change-feed.md)
-* [A csatorna módosítása folyamat használata](change-feed-processor.md)
+* [A hírcsatorna-feldolgozó változásának áttekintése](change-feed-processor.md)
+* [Hírcsatorna-processzor kezdő időpontjának módosítása](how-to-configure-change-feed-start-time.md)

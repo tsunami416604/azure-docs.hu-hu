@@ -9,12 +9,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 50711f8675e1b8aca6b9f90925ea921d22020ddd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: f1b578ff70e8a2795ba886e6d0c75eff521f77c3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442557"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615535"
 ---
 # <a name="security-attributes-for-azure-cosmos-db"></a>Azure Cosmos DB biztonsági attribútumai
 
@@ -26,7 +26,7 @@ Ez a cikk a Azure Cosmos DB beépített biztonsági attribútumokat dokumentálj
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Titkosítás inaktív állapotban (például kiszolgálóoldali titkosítás, ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás és egyéb titkosítási funkciók) | Igen | Alapértelmezés szerint az összes Cosmos DB adatbázis és biztonsági másolat titkosítva van; lásd [](database-encryption-at-rest.md): adattitkosítás Azure Cosmos DBban. Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás nem támogatott. |
+| Titkosítás inaktív állapotban (például kiszolgálóoldali titkosítás, ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás és egyéb titkosítási funkciók) | Igen | Alapértelmezés szerint minden Cosmos-adatbázis és-biztonsági másolat titkosítva van; lásd [](database-encryption-at-rest.md): adattitkosítás Azure Cosmos DBban. Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás nem támogatott. |
 | Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | Az összes Azure Cosmos DB-adatforgalom titkosítva van az átvitel során. |
 | Titkosítási kulcsok kezelését (CMK, BYOK stb.)| Nem |  |
 | Oszlop szintű titkosítás (Azure Data Services)| Igen | Csak a Tables API Premiumban. Nem minden API támogatja ezt a funkciót. Lásd [: a Azure Cosmos db bemutatása: Table API](table-introduction.md). |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: abnarain
-ms.openlocfilehash: 7e09c36128c3471ce9df33b2a78eb14fab89435b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad09715f8ccbe20ec6f58d3a4543e0168e9f4cbc
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498211"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617710"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének (UI) használatával egy adat-előállító folyamatot hoz létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között.
@@ -89,7 +89,6 @@ Ebben az oktatóanyagban a tárfiók nevét és kulcsát használjuk. A tárfió
 
 1. A **Tárfiók** ablakban válassza a **Hozzáférési kulcsok** elemet.
 
-    ![Elérési kulcs](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
 
 1. Másolja a **Tárfiók neve** és **1. kulcs** mező értékét, majd illessze be őket egy jegyzettömbbe vagy más szerkesztőbe az oktatóanyag későbbi részeiben történő használatra. 
 
@@ -114,14 +113,11 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 1. Ne zárja be az **adftutorial** **tároló** ablakát. A segítségével ellenőrizheti az oktatóanyag eredményét. A Data Factory automatikusan létrehozza a kimeneti mappát a tárolóban, így nem kell újat létrehoznia.
 
-    ![Tároló ablaka](media/tutorial-hybrid-copy-powershell/container-page.png)
-
-
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>data factory létrehozása
 Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Factory felhasználói felületét, hogy létrehozzon egy folyamatot az adat-előállítóban. 
 
 1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. A bal oldali menüben válassza ki a **erőforrás létrehozása** > **adatok + analitika** > **adat-előállító**:
+1. A bal oldali menüben válassza az **erőforrás** > létrehozása**adatok és Analitika** > **Data Factory**:
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -165,7 +161,7 @@ Az adat-előállító nevének *globálisan egyedinek* kell lennie. Ha a Név me
 
 1. A **Tevékenységek** eszközkészletben bontsa ki a **DataFlow** elemet. Húzza a **Másolás** tevékenységet a folyamat tervezési felületére. Állítsa a tevékenység nevét a következőre: **CopySqlServerToAzureBlobActivity**.
 
-   ![Tevékenység neve](./media/tutorial-hybrid-copy-portal/copy-activity-name.png)
+   ![Tevékenységnév](./media/tutorial-hybrid-copy-portal/copy-activity-name.png)
 
 1. A **Tulajdonságok** ablakban lépjen a **Forrás** lapra, és válassza a **+ Új** elemet.
 
@@ -195,7 +191,7 @@ Az adat-előállító nevének *globálisan egyedinek* kell lennie. Ha a Név me
 
     ![Integrációs modul neve](./media/tutorial-hybrid-copy-portal/integration-runtime-name.png)
 
-1. A **1. lehetőség: Expressz telepítés**válassza **kattintson ide a számítógép Expressz telepítés indításához**. 
+1. Az **1. lehetőség alatt: Expressz beállítás**, válassza **a kattintson ide, hogy elindítsa a számítógép expressz telepítését**. 
 
     ![Expressz telepítés hivatkozás](./media/tutorial-hybrid-copy-portal/click-express-setup.png)
 

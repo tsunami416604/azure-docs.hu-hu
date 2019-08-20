@@ -1,108 +1,94 @@
 ---
-title: Az Azure AD Domain Services DNS kezelése |} A Microsoft Docs
-description: Azure AD Domain Services DNS-ének kezelése
-services: active-directory-ds
-documentationcenter: ''
+title: DNS kezelése Azure AD Domain Serviceshoz | Microsoft Docs
+description: Megtudhatja, hogyan telepítheti a DNS-kiszolgáló eszközöket egy Azure Active Directory Domain Services felügyelt tartomány DNS-kezeléséhez.
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 08/07/2019
 ms.author: iainfou
-ms.openlocfilehash: 6753c26a99bb38e92613a6bad753e7dd101ba68e
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 9279f97d5260eae698d5dbee10e077b71ab01992
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473141"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612337"
 ---
-# <a name="administer-dns-on-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD tartományi szolgáltatások által kezelt tartomány DNS-kezelés
-Az Azure Active Directory Domain Services által biztosított DNS-feloldás a felügyelt tartományhoz tartozó (tartománynevek feloldását) DNS-kiszolgáló is tartalmaz. Egyes esetekben szükség lehet DNS konfigurálása a felügyelt tartományon. You may need to create DNS records for machines that are not joined to the domain, configure virtual IP addresses for load-balancers or setup external DNS forwarders. Ebből kifolyólag az "AAD DC rendszergazdák" csoportba tartozó felhasználók kapnak a felügyelt tartomány DNS felügyeleti jogosultságokkal.
+# <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>DNS felügyelete Azure AD Domain Services felügyelt tartományban
+
+A Azure Active Directory Domain Services (Azure AD DS) egyik kulcsfontosságú összetevője a DNS (tartománynév-feloldás). Az Azure AD DS tartalmaz egy olyan DNS-kiszolgálót, amely névfeloldást biztosít a felügyelt tartomány számára. Ez a DNS-kiszolgáló beépített DNS-rekordokat és frissítéseket tartalmaz a szolgáltatás futtatását lehetővé tevő kulcsfontosságú összetevőkhöz.
+
+A saját alkalmazások és szolgáltatások futtatásakor előfordulhat, hogy DNS-rekordokat kell létrehoznia a tartományhoz nem csatlakoztatott gépekhez, konfigurálnia kell a terheléselosztó virtuális IP-címeit, vagy külső DNS-továbbítókat kell beállítania. Az *HRE DC-rendszergazdák* csoportba tartozó felhasználók DNS-rendszergazdai jogosultságokat kapnak az Azure AD DS felügyelt tartományhoz, és létrehozhatnak és szerkeszthetnek egyéni DNS-rekordokat.
+
+Ez a cikk bemutatja, hogyan telepítheti a DNS-kiszolgáló eszközeit, majd a DNS-konzollal kezelheti a rekordokat.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
-A cikkben szereplő feladatok végrehajtásához szükséges:
 
-1. Egy érvényes **Azure-előfizetés**.
-2. Egy **Azure AD-címtár** -vagy az egy helyszíni címtár vagy egy csak felhőalapú címtárral szinkronizálja.
-3. **Az Azure AD Domain Services** engedélyezve kell lennie az Azure AD-címtárban. Ha még nem tette, minden ismertetett feladatok végrehajtásával a [a kezdeti lépések útmutatóban](create-instance.md).
-4. A **tartományhoz csatlakoztatott virtuális gép** , amelyről felügyelheti az Azure AD tartományi szolgáltatásokkal felügyelt tartományban. Ha egy virtuális gép nem rendelkezik, az összes című cikkben ismertetett feladatok végrehajtásával [Windows virtuális gépek csatlakoztatása felügyelt tartományhoz](active-directory-ds-admin-guide-join-windows-vm.md).
-5. A hitelesítő adatait kell egy **felhasználói fiók, az "AAD DC rendszergazdák" csoportba tartozó** a címtárban, a DNS-kezelés a felügyelt tartományok.
+A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
-<br>
+* Aktív Azure-előfizetés.
+    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure][associate-azure-ad-tenant]-előfizetést a fiókjához.
+* Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
+    * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
+* Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server Management VM.
+    * Ha szükséges, fejezze be az oktatóanyagot [egy Windows Server rendszerű virtuális gép létrehozásához és egy felügyelt tartományhoz való csatlakoztatásához][create-join-windows-vm].
+* Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
 
-## <a name="task-1---create-a-domain-joined-virtual-machine-to-remotely-administer-dns-for-the-managed-domain"></a>1\. feladat – távoli felügyeletéhez a felügyelt tartományhoz tartozó DNS tartományhoz csatlakoztatott virtuális gép létrehozása
-Az Azure AD Domain Services felügyelt tartomány távolról a jól ismert az Active Directory felügyeleti eszközök például az Active Directory felügyeleti központ (ADAC) vagy AD PowerShell segítségével is felügyelhetők. Hasonlóképpen a felügyelt tartományhoz tartozó DNS felügyelhetők távolról segítségével a DNS-kiszolgáló felügyeleti eszközei.
+## <a name="install-dns-server-tools"></a>DNS-kiszolgálói eszközök telepítése
 
-Az Azure AD-címtár rendszergazdái nem rendelkezik jogosultságokkal a tartományvezérlők a távoli asztalon keresztül felügyelt tartományon való kapcsolódáshoz. Az "AAD DC rendszergazdák" csoport tagjai felügyelhetik DNS távolról a DNS-kiszolgáló eszközök a felügyelt tartományhoz csatlakozó számítógépről a Windows Server vagy Windows-ügyfél használatával felügyelt tartományokban. DNS-kiszolgáló eszközök a Távoli kiszolgálófelügyelet eszközei (RSAT) választható szolgáltatás részét képezik.
+A DNS létrehozásához és módosításához telepítenie kell a DNS-kiszolgáló eszközeit. Ezek az eszközök a Windows Server szolgáltatásként is telepíthetők. A felügyeleti eszközök Windows-ügyfélre történő telepítésével kapcsolatos további információkért lásd: install [Távoli kiszolgálófelügyelet eszközei (RSAT)][install-rsat].
 
-Az első feladatra, hogy a felügyelt tartományhoz csatlakozó Windows Server virtuális gép létrehozása. Útmutatásért tekintse meg a című cikkben [Windows Server virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md).
+1. Jelentkezzen be a felügyeleti virtuális gépre. A Azure Portal használatával történő kapcsolódás lépéseiért lásd: [Kapcsolódás Windows Server rendszerű virtuális géphez][connect-windows-server-vm].
+1. A **Kiszolgálókezelő** alapértelmezés szerint meg van nyitva, amikor bejelentkezik a virtuális gépre. Ha nem, a **Start** menüben válassza a **Kiszolgálókezelő**lehetőséget.
+1. A **Kiszolgálókezelő** ablak *irányítópult* paneljén válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
+1. A *szerepkörök és szolgáltatások hozzáadása varázsló*alapismeretek lapján kattintson a **Tovább gombra**.
+1. A *telepítés típusa*beállításnál hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **Tovább gombra**.
+1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.contoso.com*, majd kattintson a **tovább**gombra.
+1. A **kiszolgálói szerepkörök** lapon kattintson a **tovább**gombra.
+1. A **szolgáltatások** lapon bontsa ki a **Távoli kiszolgálófelügyelet eszközei** csomópontot, majd bontsa ki a **szerepkör-felügyeleti eszközök** csomópontot. A szerepkör-felügyeleti eszközök listájából válassza a **DNS-kiszolgálói eszközök** lehetőséget.
 
-## <a name="task-2---install-dns-server-tools-on-the-virtual-machine"></a>2\. feladat – a virtuális gép DNS-kiszolgáló telepítési eszközök
-A következő lépéseket a DNS-felügyeleti eszközök telepítése a tartományhoz csatlakoztatott virtuális gépen. További információ a [telepítéséről és használatáról a Távoli kiszolgálófelügyelet eszközei](https://technet.microsoft.com/library/hh831501.aspx), tekintse meg a TechNet webhelyen.
+    ![Válassza a DNS-kiszolgáló eszközeinek telepítését az elérhető szerepkör-felügyeleti eszközök listájáról](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
 
-1. Keresse meg az Azure Portalon. Kattintson a **összes erőforrás** a bal oldali panelen. Keresse meg és kattintson a virtuális gép az 1. feladatban létrehozott.
-2. Kattintson a **Connect** gomb az Áttekintés lapon. Egy Remote Desktop Protocol (.rdp) fájlt a rendszer létrehoz és letölt.
+1. A **jóváhagyás** lapon válassza a **telepítés**lehetőséget. A Csoportházirend felügyeleti eszközök telepítése egy-két percet is igénybe vehet.
+1. A szolgáltatás telepítésének befejezése után a **Bezárás** gombra kattintva lépjen ki a **szerepkörök és szolgáltatások hozzáadása** varázslóból.
 
-    ![Windows virtuális gép eléréséhez](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz. Ha a rendszer kéri, akkor kattintson a **Csatlakozás** gombra. A "AAD DC rendszergazdák" csoportba tartozó felhasználói hitelesítő adatokat használja. Például "bob@domainservicespreview.onmicrosoft.com". A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Kattintson az Igen gombra vagy való csatlakozáshoz.
+## <a name="open-the-dns-management-console-to-administer-dns"></a>A DNS-kezelő konzol megnyitása a DNS felügyeletéhez
 
-4. A kezdőképernyőről nyissa meg a **Kiszolgálókezelő**. Kattintson a **szerepkörök és szolgáltatások hozzáadása** a Kiszolgálókezelő ablakban középső ablaktábláján.
-
-    ![Indítsa el a Kiszolgálókezelőt a virtuális gépen](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
-5. Az a **alapismeretek** lapján a **adja hozzá szerepkörök és szolgáltatások varázsló**, kattintson a **tovább**.
-
-    ![Lap megkezdése előtt](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
-6. Az a **telepítési típus** lapon, hagyja a **szerepköralapú vagy szolgáltatásalapú telepítés** lehetőség be van jelölve, majd kattintson **tovább**.
-
-    ![Telepítés típusa lap](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
-7. Az a **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgálókészletből, és kattintson a **tovább**.
-
-    ![Kiszolgáló kiválasztása lap](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. Az a **kiszolgálói szerepkörök** kattintson **tovább**.
-9. Az a **funkciók** oldal, ide kattintva bontsa ki a **távoli kiszolgálófelügyelet eszközei** csomópontot, és bontsa ki, majd kattintson a **szerepkör-felügyeleti eszközök** csomópont. Válassza ki **DNS-kiszolgálói eszközök** szolgáltatása szerepkör-felügyeleti eszközök a listából.
-
-    ![Szolgáltatások lapon](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
-10. Az a **megerősítő** kattintson **telepítése** a DNS-kiszolgáló eszközei szolgáltatás telepítése a virtuális gépen. Ha a szolgáltatás telepítése sikeresen befejeződött, kattintson az **Bezárás** való kilépéshez a **szerepkörök és szolgáltatások hozzáadása** varázsló.
-
-    ![Megerősítő oldal](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-confirmation.png)
-
-## <a name="task-3---launch-the-dns-management-console-to-administer-dns"></a>3\. feladat – indítsa el a DNS-kezelő konzolt, a DNS-kezelés
-A Windows Server DNS-eszközök segítségével, a felügyelt tartomány DNS-kezelés.
+A DNS-kiszolgálói eszközök telepítése után felügyelheti a DNS-rekordokat az Azure AD DS felügyelt tartományon.
 
 > [!NOTE]
-> A felügyelt tartomány DNS-kezelés az "AAD DC rendszergazdák" csoport tagjának lennie kell.
->
->
+> A DNS Azure AD DS felügyelt tartományban való felügyeletéhez be kell jelentkeznie egy olyan felhasználói fiókba, amely tagja az *HRE DC-rendszergazdák* csoportjának.
 
-1. A kezdőképernyőről kattintson **felügyeleti eszközök**. Megtekintheti a **DNS** konzol telepítése a virtuális gépen.
+1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik az elérhető felügyeleti eszközök listája, beleértve az előző szakaszban telepített **DNS-t** is. Válassza a **DNS** lehetőséget a DNS-kezelő konzol elindításához.
+1. A **Kapcsolódás a DNS-kiszolgálóhoz** párbeszédpanelen válassza ki **a következő számítógépet**, majd adja meg a felügyelt tartomány DNS-tartománynevét, például *contoso.com*:
 
-    ![Felügyeleti eszközök – DNS-konzol](./media/active-directory-domain-services-admin-guide/install-rsat-dns-tools-installed.png)
-2. Kattintson a **DNS** , indítsa el a DNS-felügyeleti konzolt.
-3. A a **kapcsolódás a DNS-kiszolgáló** párbeszédpanelen kattintson **a következő számítógép**, és adja meg a DNS-tartománynév számára a felügyelt tartomány (például "contoso100.com").
+    ![Kapcsolódás az Azure AD DS felügyelt tartományhoz a DNS-konzolon](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
 
-    ![DNS-konzol - csatlakozás tartományhoz](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
-4. A DNS-konzolt a felügyelt tartományhoz csatlakozik.
+1. A DNS-konzol csatlakozik a megadott Azure AD DS felügyelt tartományhoz. Bontsa ki a **címkeresési zónák** vagy a **névkeresési zónák** elemet a szükséges DNS-bejegyzések létrehozásához vagy a meglévő rekordok szükség szerinti szerkesztéséhez.
 
-    ![DNS-konzol - tartomány kezelése](./media/active-directory-domain-services-admin-guide/dns-console-managed-domain.png)
-5. Mostantól használhatja a DNS-konzolt, amelyben engedélyezte az AAD tartományi szolgáltatásokra a virtuális hálózaton lévő összes számítógép DNS-bejegyzéseinek hozzáadásához.
+    ![DNS-konzol – tartomány felügyelete](./media/active-directory-domain-services-admin-guide/dns-console-managed-domain.png)
 
 > [!WARNING]
-> Ügyeljen arra, hogy amikor DNS felügyelete a felügyelt tartomány DNS-felügyeleti eszközök használatával. Győződjön meg arról, hogy Ön **törölje vagy módosítsa a beépített DNS-rekordok a tartomány a tartományi szolgáltatások által használt**. Beépített DNS-rekordok közé tartozik a tartomány DNS-rekordok névkiszolgálói rekordjainak és más rekordok használt Adatközpont helye. Ha ezeket a rekordokat módosítja, a tartományi szolgáltatások a virtuális hálózati megszakadnak.
->
->
+> Ha a DNS-kiszolgáló eszközeivel kezeli a rekordokat, ügyeljen arra, hogy ne törölje vagy módosítsa az Azure AD DS által használt beépített DNS-rekordokat. A beépített DNS-rekordok közé tartoznak a tartományi DNS-rekordok, a Névkiszolgáló-rekordok és a TARTOMÁNYVEZÉRLŐk helyéhez használt egyéb rekordok. Ha módosítja ezeket a rekordokat, a tartományi szolgáltatások megszakadnak a virtuális hálózaton.
 
-DNS kezelésével kapcsolatos további információkért lásd: a [DNS-eszközök cikket TechNet](https://technet.microsoft.com/library/cc753579.aspx).
+## <a name="next-steps"></a>További lépések
 
-## <a name="related-content"></a>Kapcsolódó tartalom
-* [Az Azure AD tartományi szolgáltatások – első lépések útmutató](create-instance.md)
-* [A Windows Server virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Az Azure AD Domain Services tartomány kezelése](manage-domain.md)
-* [DNS-felügyeleti eszközök](https://technet.microsoft.com/library/cc753579.aspx)
+A DNS kezelésével kapcsolatos további információkért tekintse meg a következő témakört: [DNS-eszközök cikk a TechNeten](https://technet.microsoft.com/library/cc753579.aspx).
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[create-join-windows-vm]: join-windows-vm.md
+[tutorial-create-management-vm]: tutorial-create-management-vm.md
+[connect-windows-server-vm]: join-windows-vm.md#connect-to-the-windows-server-vm
+
+<!-- EXTERNAL LINKS -->
+[install-rsat]: /windows-server/remote/remote-server-administration-tools#BKMK_Thresh

@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: aea2b3229dd793bc31adc0038763e09340a5f85a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: e6c3de1714d363eb1481bcea5f470d04125b96b9
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534775"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575310"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Csatlakozás a SQL Data Warehouse-hoz a Visual Studio és az SSDT használatával
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ A Visual Studio használatával néhány perc alatt lekérdezheti az Azure SQL D
 ## <a name="prerequisites"></a>Előfeltételek
 Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 
-* Egy létező SQL Data Warehouse. A létrehozás menetét az [SQL Data Warehouse létrehozása][Create a SQL Data Warehouse] című cikkben találja.
+* Egy meglévő SQL Data Warehouse. A létrehozás menetét az [SQL Data Warehouse létrehozása][Create a SQL Data Warehouse] című cikkben találja.
 * SSDT a Visual Studióhoz. Ha rendelkezik a Visual Studióval, akkor valószínűleg már ezzel is. A telepítés menetéről és a beállításokról [Installing Visual Studio and SSDT][Installing Visual Studio and SSDT] című cikkben olvashat bővebben.
 * Az Azure SQL-kiszolgáló teljes neve. Ennek megkeresésével kapcsolatban olvassa el a [Connect to SQL Data Warehouse][Connect to SQL Data Warehouse] (Csatlakozás az SQL Data Warehouse-hoz) című cikket.
 

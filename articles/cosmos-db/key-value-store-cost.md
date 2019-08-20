@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 757366f1d1f94d11438be4df0772ce1155f71cee
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 3758766b1051acb9321ec67727eecef249971065
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310590"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615095"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Az Azure Cosmos DB egy kulcs-érték tárolóként – költségek áttekintése
 
 Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás magas rendelkezésre állású, nagy méretű alkalmazások létrehozását, egyszerűen a. Alapértelmezés szerint az Azure Cosmos DB automatikusan indexeli az összes adatot, feltölti, hatékony. Ez lehetővé teszi a gyors és következetes [SQL](how-to-sql-query.md) (és [JavaScript](stored-procedures-triggers-udfs.md)) bármilyen típusú adatot-lekérdezéseket. 
 
-Ez a cikk ismerteti az Azure Cosmos DB költsége egyszerű írási és olvasási műveletek, ha használatban van egy kulcs/érték tároló. Az írási műveletnek számítanak többek között Beszúrások, cserél, törlése és a dokumentumok upserts. Mellett kínál 99,99 %-os rendelkezésre állási SLA minden egyrégiós és minden többrégiós fiókok Könnyített konzisztenciáját, és 99,999 %-os olvasási rendelkezésre állás minden többrégiós adatbázisfiókhoz, Azure Cosmos DB-ajánlatok garantált < 10 ms késést beolvassa és a (indexelt), illetve 99 százalékon. 
+Ez a cikk ismerteti az Azure Cosmos DB költsége egyszerű írási és olvasási műveletek, ha használatban van egy kulcs/érték tároló. Az írási műveletnek számítanak többek között Beszúrások, cserél, törlése és a dokumentumok upserts. A 99,99%-os rendelkezésre állási SLA garantálása mellett minden egyrégiós fiókra és az összes többrégiós fiókra, amely nyugodt konzisztenciát és 99,999%-os olvasási rendelkezésre állást biztosít az összes többrégiós adatbázis-fiókhoz, Azure Cosmos DB garantált < 10 MS késést biztosít a (z) (indexelt) írások beolvasása, illetve a esetek 99% percentilis. 
 
 ## <a name="why-we-use-request-units-rus"></a>Miért kérelemegység (RU) használjuk.
 
 Az Azure Cosmos DB-teljesítmény mennyisége alapján üzembe helyezett [kérelemegység](request-units.md) (RU) a partíció. A kiépítés egy második granularitási és megvásárlása esetén a kérelemegység/s ([, nem tévesztendő össze az óradíjas](https://azure.microsoft.com/pricing/details/cosmos-db/)). Fenntartott egységek kell tekinteni, amely leegyszerűsíti az átviteli sebességgel az alkalmazás üzembe helyezése egy pénznemet. Ügyfeleinknek nem kell gondolja át, hogy olvasási megkülönböztetése és a kapacitásegységek írása. Az egyetlen pénznem modell kérelemegységet hoz létre, növelhető a hatékonyság a kiépített lemezkapacitás olvasási és írási közötti megosztásához. A kiosztott kapacitást modell lehetővé teszi, hogy a szolgáltatás kiszámítható és következetes teljesítményű, garantáltan alacsony késéssel és magas rendelkezésre állást biztosít. Végül modell átviteli RU használjuk, de minden kiosztott RU is rendelkezik egy meghatározott mennyiségű erőforrás (memória, Core). RU/s nem csak az iops-t.
 
-Cosmos DB egy globálisan elosztott adatbázisrendszerként lesz a csak az Azure szolgáltatást biztosító SLA-t a késés, átviteli sebesség és a konzisztencia magas rendelkezésre állás mellett. Az üzembe helyezi az átviteli sebesség a Cosmos DB-adatbázisfiókhoz társított régiók mindegyikében alkalmazza. Az olvasási, Cosmos DB több jól definiált kínál [konzisztenciaszintek](consistency-levels.md) a közül választhat. 
+Cosmos DB egy globálisan elosztott adatbázisrendszerként lesz a csak az Azure szolgáltatást biztosító SLA-t a késés, átviteli sebesség és a konzisztencia magas rendelkezésre állás mellett. A rendszer az Ön által kiépített átviteli sebességet alkalmazza a Cosmos adatbázis-fiókjához társított összes régióra. Az olvasási, Cosmos DB több jól definiált kínál [konzisztenciaszintek](consistency-levels.md) a közül választhat. 
 
 Az alábbi táblázat a fenntartott egységek számát hajtsa végre az olvasási és írási tranzakciók 1 KB-os és 100 Tudásbázis dokumentum mérete alapján szükséges.
 

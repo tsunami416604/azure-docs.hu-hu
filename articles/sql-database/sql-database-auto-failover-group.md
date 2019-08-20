@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 07/18/2019
-ms.openlocfilehash: 05e16a67e6b01ce3bd1f03f0649baa1358414ea7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 08/16/2019
+ms.openlocfilehash: 69a3b4fc966b6dd506d91e52b33967a2e001367f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035069"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575790"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 
@@ -25,7 +25,9 @@ Az automatikus feladatátvételi csoportok egy SQL Database funkció, amely lehe
 > [!NOTE]
 > Ha SQL Database-kiszolgálón található önálló vagy készletezett adatbázisokkal dolgozik, és több formátumú másodlagos zónák szeretne ugyanabban vagy különböző régiókban, használja az [aktív földrajzi replikálást](sql-database-active-geo-replication.md). 
 
-Ha automatikus feladatátvételi házirenddel rendelkező automatikus feladatátvételi csoportokat használ, a csoport egy vagy több adatbázisára hatással lévő kimaradások automatikusan feladatátvételt eredményeznek. Az automatikus feladatátvételi csoportok emellett olyan írási és olvasási figyelőket is biztosítanak, amelyek változatlanok maradnak a feladatátvételek során. Akár kézi, akár automatikus feladatátvételi aktiválást használ, a feladatátvétel a csoportban lévő összes másodlagos adatbázist elsődlegesre váltja. Az adatbázis-feladatátvétel befejeződése után a rendszer automatikusan frissíti a DNS-rekordot, hogy átirányítsa a végpontokat az új régióba. Az adott RPO-és RTO-információk esetében lásd: [az üzletmenet folytonosságának áttekintése](sql-database-business-continuity.md).
+Ha automatikus feladatátvételi házirenddel rendelkező automatikus feladatátvételi csoportokat használ, a csoport egy vagy több adatbázisára hatással lévő kimaradások automatikusan feladatátvételt eredményeznek. Ezek általában olyan incidensek, amelyeket a beépített automatikus magas rendelkezésre állású műveletek nem képesek önállóan elhárítani. A feladatátvételi eseményindítók példái közé tartozik egy olyan incidens, amely egy SQL-bérlői kör vagy egy ellenőrző gyűrű miatt leállt, mert egy operációsrendszer-kernel memóriája több számítási csomóponton van, vagy egy vagy több bérlői kör okozta incidens, mert rossz hálózati kábelt vágtak le utine hardver leszerelése.  További információ: [SQL Database magas rendelkezésre állás](sql-database-high-availability.md).
+
+Az automatikus feladatátvételi csoportok emellett olyan írási és olvasási figyelőket is biztosítanak, amelyek változatlanok maradnak a feladatátvételek során. Akár kézi, akár automatikus feladatátvételi aktiválást használ, a feladatátvétel a csoportban lévő összes másodlagos adatbázist elsődlegesre váltja. Az adatbázis-feladatátvétel befejeződése után a rendszer automatikusan frissíti a DNS-rekordot, hogy átirányítsa a végpontokat az új régióba. Az adott RPO-és RTO-információk esetében lásd: [az üzletmenet folytonosságának áttekintése](sql-database-business-continuity.md).
 
 Ha automatikus feladatátvételi házirenddel rendelkező automatikus feladatátvételi csoportokat használ, az SQL Database-kiszolgáló vagy a felügyelt példány adatbázisait érintő kimaradások automatikusan feladatátvételt eredményeznek. Az automatikus feladatátvételi csoportot az alábbiak szerint kezelheti:
 

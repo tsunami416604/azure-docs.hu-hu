@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 40caea40637c57aedb6315ff6fc032898ff07af7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 20ca823f60ced4260c2e61ca15ae04e158b7d952
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467950"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615668"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB adatcsatorna módosítása – áttekintés
 
-Módosítási hírcsatorna támogatása az Azure Cosmos DB működését úgy egy Azure Cosmos DB-tárolók nem változott. Majd megjeleníti a dokumentumok a sorrendben, amelyben a módosítás módosult a listán. A módosítások meg lesznek őrizve, feldolgozhatók aszinkron és fokozatos módon is, a kimenet pedig több fogyasztó között is elosztható a párhuzamos feldolgozáshoz. 
+Ha módosítani szeretné a hírcsatornák támogatását Azure Cosmos DB működik, egy Azure Cosmos-tárolóban figyelheti a módosításokat. Majd megjeleníti a dokumentumok a sorrendben, amelyben a módosítás módosult a listán. A módosítások meg lesznek őrizve, feldolgozhatók aszinkron és fokozatos módon is, a kimenet pedig több fogyasztó között is elosztható a párhuzamos feldolgozáshoz. 
 
 Az Azure Cosmos DB kiválóan alkalmas IoT, a játékok, kiskereskedelmi, és a működési naplózási alkalmazások. Ezeket az alkalmazásokat a gyakori tervezési minta, hogy további műveletek indításához használja az adatok módosításait. További műveletek közé:
 
@@ -56,7 +56,7 @@ Egy több régióban az Azure Cosmos-fiók egy írási régiót átadja a felada
 
 Ha egy élettartam (idő élettartama) tulajdonsága egy elemet a -1, módosítási hírcsatorna örökre megmaradnak. Az adatok nem törlődnek, ha a csatorna módosítása megmarad.  
 
-### <a name="change-feed-and-etag-lsn-or-ts"></a>Csatorna módosítása és _etag, _lsn vagy _ts
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Csatorna módosítása és _etag, _lsn vagy _ts
 
 A belső _etag formátuma, és nem megtétele függőségi rajta, mivel bármikor módosíthatja. _ts módosítását vagy a létrehozás időbélyegzője. Időrendi összehasonlító _ts is használhat. a _lsn egy olyan batch-azonosító, amely csak a változási hírcsatornához lett hozzáadva; Ez a tranzakció AZONOSÍTÓját jelöli. Előfordulhat, hogy hány elemet azonos _lsn. A FeedResponse ETag eltér a _etag akkor jelenik meg a cikket. _etag belső azonosítója, és ez használatos egyidejűségi vezérlő a verziójának használatát a cikk arról tájékoztatja, mivel az ETag használt műveleti sorrend a hírcsatorna.
 

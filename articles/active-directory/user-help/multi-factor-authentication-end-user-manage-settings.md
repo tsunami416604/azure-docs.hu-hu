@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acfa31434534eb3618b8a279ea6cff543fae076
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9ed7d812a9c1cba356277a4454234531ce8d41ef
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949795"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616148"
 ---
 # <a name="manage-your-two-factor-verification-method-settings"></a>A kétfaktoros ellenőrzési módszer beállításainak kezelése
 
@@ -135,6 +135,10 @@ A szervezeti beállításoktól függően előfordulhat, hogy egy jelölőnégyz
 
 ## <a name="next-steps"></a>További lépések
 
-- Hibaelhárítási tippek és segítség a [kétfaktoros ellenőrzés problémáinak](multi-factor-authentication-end-user-troubleshoot.md) elhárításához
+A kétfaktoros ellenőrzési beállítások hozzáadása vagy frissítése után kezelheti az alkalmazás jelszavait, bejelentkezhet, vagy segítséget kérhet a kétfaktoros ellenőrzésekkel kapcsolatos gyakori problémákról.
 
 - Az [alkalmazás jelszavainak kezelése](multi-factor-authentication-end-user-app-passwords.md) kétfaktoros ellenőrzéshez minden olyan alkalmazás esetében, amely nem támogatja a kétfaktoros ellenőrzést.
+
+- [Bejelentkezés kétfaktoros ellenőrzés használatával](multi-factor-authentication-end-user-signin.md)
+
+- [Segítség kérése kétfaktoros ellenőrzéssel](multi-factor-authentication-end-user-troubleshoot.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 7b3159b6b963cf422442ee7c04253b8172e8f3e9
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: f28933623100ed18320df37741c7c1e82ccffa9f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68773136"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612848"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>CentOS Linux rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz
 Ez a cikk bemutatja, hogyan csatlakozhat egy CentOS Linux rendszerű virtuális géphez az Azure-ban egy Azure AD Domain Services felügyelt tartományhoz.
@@ -31,9 +31,9 @@ Ez a cikk bemutatja, hogyan csatlakozhat egy CentOS Linux rendszerű virtuális 
 A cikkben felsorolt feladatok elvégzéséhez a következőkre lesz szüksége:
 1. Érvényes **Azure-előfizetés**.
 2. Egy **Azure ad-címtár** – szinkronizálva van egy helyszíni címtárral vagy egy csak felhőalapú címtárral.
-3. **Azure ad Domain Services** engedélyezni kell az Azure ad-címtárat. Ha még nem tette meg, kövesse az [első lépések útmutatóban](create-instance.md)ismertetett összes feladatot.
-4. Győződjön meg arról, hogy a felügyelt tartomány IP-címeit a virtuális hálózat DNS-kiszolgálóinak megfelelően konfigurálta. További információ: [Az Azure-beli virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)
-5. Hajtsa végre a [jelszavak Azure ad Domain Services felügyelt tartományhoz](active-directory-ds-getting-started-password-sync.md)való szinkronizálásához szükséges lépéseket.
+3. **Azure ad Domain Services** engedélyezni kell az Azure ad-címtárat. Ha még nem tette meg, kövesse az [első lépések útmutatóban](tutorial-create-instance.md)ismertetett összes feladatot.
+4. Győződjön meg arról, hogy a felügyelt tartomány IP-címeit a virtuális hálózat DNS-kiszolgálóinak megfelelően konfigurálta. További információ: [Az Azure-beli virtuális hálózat DNS-beállításainak frissítése](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)
+5. Hajtsa végre a [jelszavak Azure ad Domain Services felügyelt tartományhoz](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)való szinkronizálásához szükséges lépéseket.
 
 
 ## <a name="provision-a-centos-linux-virtual-machine"></a>CentOS Linux rendszerű virtuális gép kiépítése
@@ -51,7 +51,7 @@ Hozzon létre egy CentOS virtuális gépet az Azure-ban az alábbi módszerek b�
 ## <a name="connect-remotely-to-the-newly-provisioned-linux-virtual-machine"></a>Távoli kapcsolódás az újonnan kiosztott linuxos virtuális géphez
 A CentOS virtuális gép üzembe helyezése az Azure-ban történt. A következő feladat a virtuális gép távoli kapcsolódása a virtuális géphez a virtuális gép üzembe helyezése során létrehozott helyi rendszergazdai fiók használatával.
 
-Kövesse a cikk utasításait a [Linux rendszerű virtuális gépekre való bejelentkezéshez](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Kövesse a cikk utasításait a [Linux rendszerű virtuális gépekre](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)való bejelentkezéshez.
 
 
 ## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>A Hosts fájl konfigurálása a Linux rendszerű virtuális gépen
@@ -64,10 +64,10 @@ sudo vi /etc/hosts
 A Hosts fájlban adja meg a következő értéket:
 
 ```console
-127.0.0.1 contoso-centos.contoso100.com contoso-centos
+127.0.0.1 contoso-centos.contoso.com contoso-centos
 ```
 
-Itt a "contoso100.com" a felügyelt tartomány DNS-tartományneve. a "contoso-CentOS" a felügyelt tartományhoz csatlakozó CentOS virtuális gép állomásneve.
+Itt a "contoso.com" a felügyelt tartomány DNS-tartományneve. a "contoso-CentOS" a felügyelt tartományhoz csatlakozó CentOS virtuális gép állomásneve.
 
 
 ## <a name="install-required-packages-on-the-linux-virtual-machine"></a>A szükséges csomagok telepítése a linuxos virtuális gépen
@@ -84,7 +84,7 @@ Most, hogy a szükséges csomagok telepítve vannak a linuxos virtuális gépen,
 1. Fedezze fel a HRE Domain Services által felügyelt tartományt. Az SSH-terminálban írja be a következő parancsot:
 
     ```console
-    sudo realm discover CONTOSO100.COM
+    sudo realm discover contoso.COM
     ```
 
    > [!NOTE]
@@ -96,11 +96,11 @@ Most, hogy a szükséges csomagok telepítve vannak a linuxos virtuális gépen,
 2. Kerberos inicializálása. Az SSH-terminálban írja be a következő parancsot:
 
     > [!TIP]
-    > * A "HRE DC rendszergazdák" csoportba tartozó felhasználó meghatározása.
+    > * A "HRE DC rendszergazdák" csoportba tartozó felhasználó meghatározása. Ha szükséges, [vegyen fel egy felhasználói fiókot egy csoportba az Azure ad-ben](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)
     > * Adja meg a tartománynevet nagybetűvel, különben a kinit parancsot sikertelen lesz.
 
     ```console
-    kinit bob@CONTOSO100.COM
+    kinit bob@contoso.COM
     ```
 
 3. Csatlakoztassa a gépet a tartományhoz. Az SSH-terminálban írja be a következő parancsot:
@@ -111,7 +111,7 @@ Most, hogy a szükséges csomagok telepítve vannak a linuxos virtuális gépen,
     > Ha a virtuális gép nem tud csatlakozni a tartományhoz, győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoportja engedélyezi a kimenő Kerberos-forgalmat az 464-as TCP + UDP-porton az Azure AD DS felügyelt tartományának virtuális hálózati alhálózatán.
 
     ```console
-    sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'
+    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM'
     ```
 
 Ha a gép sikeresen csatlakoztatva van a felügyelt tartományhoz, egy üzenetet kell kapnia ("a számítógép sikeres regisztrálása a tartományban").
@@ -120,10 +120,10 @@ Ha a gép sikeresen csatlakoztatva van a felügyelt tartományhoz, egy üzenetet
 ## <a name="verify-domain-join"></a>Tartományhoz való csatlakozás ellenőrzése
 Ellenőrizze, hogy a gép sikeresen csatlakozott-e a felügyelt tartományhoz. Csatlakozás a tartományhoz csatlakoztatott CentOS virtuális géphez egy másik SSH-kapcsolat használatával. Használjon tartományi felhasználói fiókot, és ellenőrizze, hogy a felhasználói fiók megfelelően van-e feloldva.
 
-1. Az SSH-terminálon írja be a következő parancsot a tartományhoz csatlakozó CentOS virtuális géphez az SSH használatával való csatlakozáshoz. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik (ebben azbob@CONTOSO100.COMesetben például "").
+1. Az SSH-terminálon írja be a következő parancsot a tartományhoz csatlakozó CentOS virtuális géphez az SSH használatával való csatlakozáshoz. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik (ebben azbob@contoso.COMesetben például "").
     
     ```console
-    ssh -l bob@CONTOSO100.COM contoso-centos.contoso100.com
+    ssh -l bob@contoso.COM contoso-centos.contoso.com
     ```
 
 2. Az SSH-terminálon írja be a következő parancsot annak ellenőrzéséhez, hogy a kezdőkönyvtár megfelelően lett-e inicializálva.
@@ -140,11 +140,11 @@ Ellenőrizze, hogy a gép sikeresen csatlakozott-e a felügyelt tartományhoz. C
 
 
 ## <a name="troubleshooting-domain-join"></a>Tartományhoz való csatlakozás hibaelhárítása
-Tekintse meg a tartományhoz való [Csatlakozás hibaelhárítása](join-windows-vm.md#troubleshoot-joining-a-domain) című cikket.
+Tekintse meg a tartományhoz való [Csatlakozás hibaelhárítása](join-windows-vm.md#troubleshoot-domain-join-issues) című cikket.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
-* [Azure AD Domain Services – Első lépések útmutató](create-instance.md)
+* [Azure AD Domain Services – Első lépések útmutató](tutorial-create-instance.md)
 * [Windows Server rendszerű virtuális gép csatlakoztatása Azure AD Domain Services felügyelt tartományhoz](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Bejelentkezés Linux rendszerű virtuális gépre](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* [Bejelentkezés egy Linux rendszerű virtuális gépre](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * [A Kerberos telepítése](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)
 * [Red Hat Enterprise Linux 7 – Windows-integrációs útmutató](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html)

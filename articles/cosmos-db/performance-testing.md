@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a5842d590a4597253bac39c0b7a6f62e6acad908
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ac257d4eb9fb9e26739f1a63049751f9298efb5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243533"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616781"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Teljesítmény- és mérettesztelés az Azure Cosmos DB tesztelése
 
@@ -37,16 +37,16 @@ Ha az Azure Cosmos DB-teljesítmény javítása érdekében: ügyféloldali konf
 ## <a name="run-the-performance-testing-application"></a>A Teljesítmény alkalmazás tesztelése
 Első lépések a leggyorsabb mód az fordítása és futtatása a .NET-minta a következő lépésben ismertetett módon. Tekintse át a forráskódot, és hasonló konfigurációkat megvalósítani a saját ügyfélalkalmazásait is.
 
-**1. lépés:** Töltse le a projektet a [Azure Cosmos DB teljesítménytesztelési minta](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark), vagy a GitHub-tárház elágaztatása.
+**1. lépés:** Töltse le a projektet [Azure Cosmos db teljesítmény](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)-tesztelési mintából, vagy a GitHub-tárházat.
 
-**2. lépés:** Módosítsa a beállításokat az EndpointUrl, AuthorizationKey, CollectionThroughput és DocumentTemplate az App.config fájlban (nem kötelező).
+**2. lépés:** Módosítsa a EndpointUrl, a AuthorizationKey, a CollectionThroughput és a DocumentTemplate beállításait (opcionális) az app. config fájlban.
 
 > [!NOTE]
-> Mielőtt üzembe helyezi és nagy teljesítményű gyűjteményeket, tekintse meg a [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/cosmos-db/) gyűjteményenként költségek becslése érdekében. Az Azure Cosmos DB keresztül számláz az adott tárolási és átviteli sebesség függetlenül órákra lebontva. Költségeket takaríthat törlése vagy a tesztelés után az Azure Cosmos DB-gyűjtemények átviteli kapacitást csökkentését.
+> Mielőtt üzembe helyezi és nagy teljesítményű gyűjteményeket, tekintse meg a [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/cosmos-db/) gyűjteményenként költségek becslése érdekében. Az Azure Cosmos DB keresztül számláz az adott tárolási és átviteli sebesség függetlenül órákra lebontva. A tesztelés után az Azure Cosmos-tárolók teljesítményének törlésével vagy csökkentésével költségeket takaríthat meg.
 > 
 > 
 
-**3. lépés:** Fordítsa le és futtassa a konzolalkalmazást a parancssorból. A következőhöz hasonló kimenetnek kell megjelennie:
+**3. lépés:** Fordítsa le és futtassa a Console alkalmazást a parancssorból. A következőhöz hasonló kimenetnek kell megjelennie:
 
     C:\Users\cosmosdb\Desktop\Benchmark>DocumentDBBenchmark.exe
     Summary:
@@ -89,7 +89,7 @@ Első lépések a leggyorsabb mód az fordítása és futtatása a .NET-minta a 
     Press any key to exit...
 
 
-**4. lépés (ha szükséges):** A jelentett átviteli sebesség (RU/s) az eszköz legyen ugyanaz vagy magasabb, mint a kiosztott átviteli sebesség, a gyűjtemény vagy egy gyűjteményt. Ha nem így van, kis lépésekben az Analyticsunits növelése segíthetnek eléri a korlátot. Ha az átviteli sebesség az ügyfélalkalmazás trületek, indítsa el az alkalmazás több példánya további ügyfélszámítógépeken. Ehhez a lépéshez segítségre van szüksége, ha e-mailt askcosmosdb@microsoft.com vagy a támogatási jegyet a [az Azure portal](https://portal.azure.com).
+**4. lépés (ha szükséges):** Az eszközről jelentett átviteli sebesség (RU/s) nem lehet nagyobb, mint a gyűjtemény vagy gyűjtemény kiépített átviteli sebessége. Ha nem így van, kis lépésekben az Analyticsunits növelése segíthetnek eléri a korlátot. Ha az átviteli sebesség az ügyfélalkalmazás trületek, indítsa el az alkalmazás több példánya további ügyfélszámítógépeken. Ehhez a lépéshez segítségre van szüksége, ha e-mailt askcosmosdb@microsoft.com vagy a támogatási jegyet a [az Azure portal](https://portal.azure.com).
 
 Miután az alkalmazást futtató, próbálkozzon másik [indexelési szabályzataihoz](index-policy.md) és [konzisztenciaszintek](consistency-levels.md) átviteli sebességgel és késéssel gyakorolt hatásuk megértéséhez. Tekintse át a forráskódot is, és a saját tesztelési megvásárlásával vagy éles üzemi alkalmazások pedig hasonló konfigurációk megvalósításához.
 

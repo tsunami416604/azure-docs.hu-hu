@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 67707b64bb6018b322ba980535651c126a526eb7
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b96896c0366c6fba2548480b166bdb9cf6ca692c
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479534"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575342"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Kapcsolódás SQL Data Warehousehoz SQL Server Management Studio (SSMS) használatával
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ SQL Server Management Studio (SSMS) használata a Azure SQL Data Warehousehoz va
 ## <a name="prerequisites"></a>Előfeltételek
 Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 
-* Egy létező SQL Data Warehouse. A létrehozás menetét az [SQL Data Warehouse létrehozása][Create a SQL Data Warehouse] című cikkben találja.
+* Egy meglévő SQL Data Warehouse. A létrehozás menetét az [SQL Data Warehouse létrehozása][Create a SQL Data Warehouse] című cikkben találja.
 * SQL Server Management Studio (SSMS) telepítve. [Telepítse a SSMS][Install SSMS] -t ingyenesen, ha még nem tette meg.
 * Az Azure SQL-kiszolgáló teljes neve. Ennek megkeresésével kapcsolatban olvassa el a [Connect to SQL Data Warehouse][Connect to SQL Data Warehouse] (Csatlakozás az SQL Data Warehouse-hoz) című cikket.
 

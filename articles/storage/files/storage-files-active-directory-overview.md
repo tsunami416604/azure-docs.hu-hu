@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rogarana
-ms.openlocfilehash: addb97d71da1ceac8717ae77204c87a8197dac86
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6cdee8f1ad59962822e9e0394547c395c13e4bd8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935174"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611775"
 ---
 # <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>Az Azure Files Azure Active Directory tartományi szolgáltatás (Azure AD DS) hitelesítési támogatásának áttekintése SMB-hozzáféréshez
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -59,7 +59,7 @@ Ha egy virtuális gépen futó alkalmazáshoz tartozó identitás megpróbál ho
 ### <a name="enable-azure-ad-domain-service-authentication-for-smb-access"></a>Az Azure AD tartományi szolgáltatás hitelesítésének engedélyezése SMB-hozzáféréshez
 Az Azure AD tartományi szolgáltatás hitelesítését a 2018-es szeptember 24. után létrehozott új és meglévő Storage-fiókok Azure Files is engedélyezheti. 
 
-A szolgáltatás engedélyezése előtt ellenőrizze, hogy a Azure AD Domain Services telepítve van-e az elsődleges Azure AD-bérlőhöz, amelyhez a Storage-fiók társítva van. Ha még nem állított be Azure AD Domain Services, kövesse az [Azure Active Directory Domain Services engedélyezése a Azure Portal használatával](../../active-directory-domain-services/create-instance.md)című témakör lépésenkénti útmutatóját.
+A szolgáltatás engedélyezése előtt ellenőrizze, hogy a Azure AD Domain Services telepítve van-e az elsődleges Azure AD-bérlőhöz, amelyhez a Storage-fiók társítva van. Ha még nem állított be Azure AD Domain Services, kövesse az [Azure Active Directory Domain Services engedélyezése a Azure Portal használatával](../../active-directory-domain-services/tutorial-create-instance.md)című témakör lépésenkénti útmutatóját.
 
 Azure AD Domain Services központi telepítés általában 10 – 15 percet vesz igénybe. Azure AD Domain Services telepítését követően engedélyezheti az Azure AD-hitelesítést az SMB protokollon keresztül a Azure Fileshoz. További információ: [Azure Active Directory tartományi szolgáltatás hitelesítésének engedélyezése az SMB protokollon keresztül Azure Files](storage-files-active-directory-enable.md). 
 

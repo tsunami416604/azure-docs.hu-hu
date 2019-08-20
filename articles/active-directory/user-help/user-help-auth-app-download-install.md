@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1ee54fac5a4c325ea5db3b97522fd2772b8dbd4
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 15ecdf0feb0d8e5307eac9916748e0bacdf51620
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382426"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616045"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Töltse le és telepítse a Microsoft Authenticator alkalmazást
 
@@ -52,7 +52,7 @@ Telepítse a Microsoft Authenticator alkalmazás legújabb verzióját az operá
 - **Apple iOS.** Az Apple iOS-eszközön nyissa meg az App Store-t a [Microsoft Authenticator alkalmazás letöltéséhez és telepítéséhez](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
 >[!Important]
->Ha jelenleg nem a mobileszközön található, akkor továbbra is letöltheti a Microsoft Authenticator alkalmazást a [Microsoft Authenticator oldaláról](https://www.microsoft.com/en-us/account/authenticator).
+>Ha jelenleg nem a mobileszközön található, akkor továbbra is letöltheti a Microsoft Authenticator alkalmazást a [Microsoft Authenticator oldaláról](https://www.microsoft.com/account/authenticator).
 
 ## <a name="next-steps"></a>További lépések
 

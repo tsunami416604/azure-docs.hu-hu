@@ -10,12 +10,12 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 30b4009b2f52f4949a380f0fc51b02f94c98d966
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: f81a19631b29954f9bd3da55a4b332e37746152e
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304296"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574939"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: Betöltés az Azure SQL Data Warehouseba
 
@@ -42,11 +42,11 @@ Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Mana
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="create-a-blank-sql-data-warehouse"></a>Üres SQL-adattárház létrehozása
+## <a name="create-a-blank-sql-data-warehouse"></a>Üres SQL Data Warehouse létrehozása
 
-Az Azure SQL Data Warehouse [számítási erőforrások](memory-and-concurrency-limits.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-features.md) jön létre. 
+Egy Azure SQL Data Warehouse [számítási erőforrások](memory-and-concurrency-limits.md)meghatározott készletével jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-features.md) jön létre. 
 
-Kövesse az alábbi lépéseket egy üres SQL-adattárház létrehozásához. 
+Az alábbi lépéseket követve hozzon létre egy üres SQL Data Warehouse. 
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 

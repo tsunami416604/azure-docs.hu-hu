@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 29c91f2dcff04a2d21973e79c5719c3f4d84181b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827377"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617306"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Útmutató a Log Analytics és Application Insights tárolt személyes adatszolgáltatásokhoz
 
@@ -98,6 +98,11 @@ Az adatkérések megtekintésére és exportálására a [log Analytics lekérde
 Elérhetővé tettük a *kiürítési* API elérési útját az adatvédelem részeként. Ezt az elérési utat takarékosan kell használni a művelethez kapcsolódó kockázat miatt, a lehetséges teljesítményre gyakorolt hatás, valamint a teljes összesítések, a mérések és a Log Analytics-adat egyéb szempontjainak eldöntése. Tekintse meg a [személyes](#strategy-for-personal-data-handling) adatkezeléssel foglalkozó témakört, amely a magánjellegű információk kezelésére szolgáló alternatív módszereket ismerteti.
 
 A kiürítés egy magas jogosultsági szintű művelet, amelyet az Azure-ban egyetlen alkalmazás vagy felhasználó sem tartalmaz (beleértve az erőforrás tulajdonosát is), anélkül, hogy külön szerepkört kellene kiadni a Azure Resource Managerban. Ez a szerepkör _Adattisztító_ , és az adatvesztés lehetősége miatt körültekintően kell delegálni. 
+
+> [!IMPORTANT]
+> A rendszererőforrások kezeléséhez óránként 50 kérelem van szabályozva a kiürítési kérelmek esetében. A kiürítési kérelmek végrehajtását úgy kell elküldenie, hogy egyetlen parancsot küld, amelynek predikátuma minden olyan felhasználói identitást tartalmaz, amelynél törlésre van szükség. Több identitás megadásához használja az [in operátort](/azure/kusto/query/inoperator) . A törlési kérés végrehajtása előtt futtassa a lekérdezést, és ellenőrizze, hogy az eredmények várhatóak-e. 
+
+
 
 A Azure Resource Manager szerepkör hozzárendelése után két új API-elérési út érhető el: 
 

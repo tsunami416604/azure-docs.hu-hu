@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e53d0d4f8f19a3cf81f1adb6c62b2797a50d146
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b54f1d8c0705488c53925d097433e77aed3eac72
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812226"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617610"
 ---
-# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Saját Felhőbeli vCenter jogosultságok kiemelése a CloudSimple-portálról 
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Saját Felhőbeli vCenter jogosultságok kiemelése a CloudSimple-portálról
 
 A saját felhőalapú vCenter való rendszergazdai hozzáféréshez átmenetileg megadhatja a CloudSimple-jogosultságokat.  Emelt szintű jogosultságok használatával VMware-megoldásokat telepíthet, identitás-forrásokat adhat hozzá, és kezelheti a felhasználókat.
 
@@ -38,7 +38,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
     ![VSphere jogosultság módosítása](media/escalate-private-cloud-privilege.png)
 
-4. Válassza ki a vSphere felhasználói típusát.  Csak **CloudOwner@cloudsimple.local** a helyi felhasználók adhatók meg.
+4. Válassza ki a vSphere felhasználói típusát.  Csak `CloudOwner@cloudsimple.local` a helyi felhasználók adhatók meg.
 
 5. Válassza ki a legördülő menüből a kiterjesztés időintervallumát. Válassza ki a legrövidebb időszakot, amely lehetővé teszi a feladat befejezését.
 

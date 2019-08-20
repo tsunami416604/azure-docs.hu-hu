@@ -3,62 +3,63 @@ title: Azure VMware Solution by CloudSimple rövid útmutató – privát felhő
 description: Ismerje meg, hogyan hozhat létre és konfigurálhat egy privát felhőt az Azure VMware-megoldással a CloudSimple használatával
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6b68dcd47377ee56c4ebedc94905e1f0a8b70b38
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: fdf1fc14eb4ab1458c25b484bae6cd84ecec6d7f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812340"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575488"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rövid útmutató – privát felhőalapú környezet konfigurálása
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre CloudSimple saját felhővel, és hogyan állíthatja be a saját felhőalapú környezetét.
 
-## <a name="before-you-begin"></a>Előkészületek
-
-CIDR-tartomány kiosztása a vSphere/vSAN alhálózatokhoz a privát felhőben. A privát felhőt egy vCenter-kiszolgáló által kezelt elkülönített VMware stack (ESXi-gazdagépek, vCenter, vSAN és NSX) környezete hozza létre. A felügyeleti összetevők a vSphere/vSAN alhálózatok CIDR kiválasztott hálózatban vannak telepítve. A hálózati CIDR tartománya különböző alhálózatokra van osztva az üzembe helyezés során.  A vSphere/vSAN alhálózati címtartomány egyedinek kell lennie. Nem lehet átfedésben a CloudSimple-környezettel kommunikáló hálózattal.  A CloudSimple kommunikáló hálózatok a helyszíni hálózatokat és az Azure-beli virtuális hálózatokat is tartalmazzák.  A vSphere/vSAN alhálózatokkal kapcsolatos további információkért lásd: a [VLAN-ok és](cloudsimple-vlans-subnets.md)az alhálózatok áttekintése.
-
-* Minimális vSphere/vSAN alhálózatok CIDR tartományának előtagja:/24 
-* VSphere/vSAN alhálózatok maximális CIDR-tartományának előtagja:/21
-
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="create-a-private-cloud"></a>Magánfelhő létrehozása
+## <a name="create-a-private-cloud"></a>Privát felhő létrehozása
+
+A privát felhő egy elkülönített VMware-verem, amely támogatja az ESXi-gazdagépeket, a vCenter, a vSAN és a NSX.
+
+A privát felhők kezelése a CloudSimple-portálon keresztül történik. Saját vCenter-kiszolgálóval rendelkeznek a saját felügyeleti tartományában. A verem dedikált csomópontokon és elszigetelt operációs rendszer nélküli hardveres csomópontokon fut.
 
 1. Válassza az **Összes szolgáltatás** elemet.
 2. Keressen rá a **CloudSimple Services**kifejezésre.
 3. Válassza ki azt a CloudSimple-szolgáltatást, amelyen létre szeretné hozni a saját Felhőjét.
-4. Az Áttekintés lapon kattintson a **privát felhő létrehozása** elemre a CloudSimple-portál új böngésző lapjának megnyitásához.  Ha a rendszer kéri, jelentkezzen be az Azure bejelentkezési hitelesítő adataival.  
+4. Az **Áttekintés**lapon kattintson a **privát felhő létrehozása** elemre a CloudSimple-portál új böngésző lapjának megnyitásához.  Ha a rendszer kéri, jelentkezzen be az Azure bejelentkezési hitelesítő adataival.  
 
     ![Privát felhő létrehozása az Azure-ból](media/create-private-cloud-from-azure.png)
 
-5. A CloudSimple-portálon adja meg a saját felhő nevét
-6. Válassza ki a saját felhő **helyét**
-7. Válassza ki az Azure-ban kiépített **csomópont típusát** .  Kiválaszthatja a [CS28 vagy a CS36 lehetőséget](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Az utóbbi lehetőség a maximális számítási és memória-kapacitást is tartalmazza.
-8. A **csomópontok számának**meghatározása.  Privát felhő létrehozásához legalább három csomópont szükséges
+5. A CloudSimple-portálon adja meg a saját felhő nevét.
+6. Válassza ki a saját felhő **helyét** .
+7. Válassza ki a **csomópont típusát**, amely megfelel az Azure-beli vásárlásoknak. Kiválaszthatja a [CS28 vagy a CS36 lehetőséget](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Az utóbbi lehetőség a maximális számítási és memória-kapacitást is tartalmazza.
+8. **Csomópontok számának**meghatározása  A privát felhő létrehozásához legalább három csomópont szükséges.
 
     ![Privát felhő létrehozása – alapszintű információ](media/create-private-cloud-basic-info.png)
 
 9. Kattintson **a Tovább gombra: Speciális beállítások**.
-10. Adja meg a vSphere/vSAN alhálózatok CIDR tartományát. Győződjön meg arról, hogy a CIDR-tartomány nem fedi át a helyszíni vagy más Azure-alhálózatokat.
+10. Adja meg a vSphere/vSAN alhálózatok CIDR tartományát. Győződjön meg arról, hogy a CIDR-tartomány nem fedi átfedésben a helyszíni vagy más Azure-alhálózatokkal (virtuális hálózatokkal) vagy az átjáró-alhálózattal.
 
-    ![Privát Felhőbeli speciális beállítások létrehozása](media/create-private-cloud-advanced-options.png)
+    **CIDR-tartomány beállításai:** /24,/23,/22, vagy/21. Az a/24 CIDR-tartomány legfeljebb kilenc csomópontot támogat, a/23 CIDR-tartomány akár 41 csomópontot is támogat, a/22 és/21 CIDR tartomány pedig legfeljebb 64 csomópontot támogat (a csomópontok maximális száma a privát felhőben).
 
-11. Válassza **a Next (tovább) lehetőséget: Tekintse át**és hozza létre.
+      > [!IMPORTANT]
+      > A vSphere/vSAN CIDR-tartomány IP-címei a saját felhőalapú infrastruktúra számára vannak fenntartva.  Ne használja az IP-címet ebben a tartományban bármely virtuális gépen.
+
+11. Kattintson **a Tovább gombra: Tekintse át**és hozza létre.
 12. Tekintse át a beállításokat. Ha módosítania kell a beállításokat, kattintson az **előző**gombra.
 13. Kattintson a **Create** (Létrehozás) gombra.
 
-A felhőalapú kiépítési folyamat elindul.  A privát felhő üzembe helyezése akár két óráig is eltarthat.
+Elindul a felhőalapú kiépítési folyamat.  A privát felhő üzembe helyezése akár két óráig is eltarthat.
 
 ## <a name="launch-cloudsimple-portal"></a>A CloudSimple-portál elindítása
 
-A CloudSimple-portál a Azure Portalról érhető el.  Az CloudSimple-portál az Azure bejelentkezési hitelesítő adataival lesz elindítva az egyszeri bejelentkezés (SSO) használatával.  A CloudSimple-portál eléréséhez engedélyeznie kell a **CloudSimple szolgáltatás-engedélyezési** alkalmazást.  Az engedélyek megadásával kapcsolatos további információkért lásd: [hozzájárulás a CloudSimple Service Authorization alkalmazáshoz](https://docs.azure.cloudsimple.com/access-cloudsimple-portal/#consent-to-cloudsimple-service-authorization-application)
+A CloudSimple-portált Azure Portalról érheti el.  Az CloudSimple-portál az Azure bejelentkezési hitelesítő adataival lesz elindítva az egyszeri bejelentkezés (SSO) használatával.  A CloudSimple-portál eléréséhez engedélyeznie kell a **CloudSimple szolgáltatás-engedélyezési** alkalmazást.  Az engedélyek megadásával kapcsolatos további információkért lásd: [hozzájárulás a CloudSimple szolgáltatás-engedélyezési alkalmazáshoz](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application).
 
 1. Válassza az **Összes szolgáltatás** elemet.
 2. Keressen rá a **CloudSimple Services**kifejezésre.
@@ -69,7 +70,7 @@ A CloudSimple-portál a Azure Portalról érhető el.  Az CloudSimple-portál az
 
 ## <a name="create-point-to-site-vpn"></a>Pont – hely típusú VPN létrehozása
 
-A pont – hely típusú VPN-kapcsolat a legegyszerűbb módszer a privát felhőhöz való csatlakozásra a számítógépről. Pont – hely típusú VPN-kapcsolat használata, ha távolról csatlakozik a privát felhőhöz.  A privát felhőhöz való gyors hozzáféréshez kövesse az alábbi lépéseket.  A helyszíni hálózatról CloudSimple-régióhoz való hozzáférés a [helyek közötti VPN](https://docs.azure.cloudsimple.com/vpn-gateway/) vagy az [Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection/)használatával végezhető el.
+A pont – hely típusú VPN-kapcsolat a legegyszerűbb módszer a privát felhőhöz való csatlakozásra a számítógépről. Pont – hely típusú VPN-kapcsolat használata, ha távolról csatlakozik a privát felhőhöz.  A privát felhőhöz való gyors hozzáféréshez kövesse az alábbi lépéseket.  A helyszíni hálózatról a [helyek közötti VPN](vpn-gateway.md) vagy az [Azure ExpressRoute](on-premises-connection.md)használatával lehet hozzáférni a CloudSimple régióhoz.
 
 ### <a name="create-gateway"></a>Átjáró létrehozása
 
@@ -94,9 +95,9 @@ A pont – hely típusú VPN-kapcsolat a legegyszerűbb módszer a privát felh�
 6. A VLAN-ok/alhálózatok szakaszban megadhatja az átjáróhoz és a kapcsolatokhoz tartozó felügyeleti és felhasználói VLAN-okat/alhálózatokat.
 
     * Az **automatikus hozzáadási** beállítások az átjáróhoz tartozó globális házirendet határozzák meg. A beállítások az aktuális átjáróra érvényesek. A beállítások felülbírálása a **Select** területen lehetséges.
-    * Válassza a **felügyeleti VLAN-ok vagy a privát felhők alhálózatok hozzáadása**lehetőséget. 
-    * A felhasználó által definiált VLAN-ok/alhálózatok hozzáadásához kattintson a **felhasználó által definiált VLAN**-ok/alhálózatok hozzáadása lehetőségre. 
-    * A beállítások **kiválasztása** felülbírálja a globális beállításokat az **automatikus Hozzáadás**területen. 
+    * Válassza a **felügyeleti VLAN-ok vagy a privát felhők alhálózatok hozzáadása**lehetőséget.
+    * A felhasználó által definiált VLAN-ok/alhálózatok hozzáadásához kattintson a **felhasználó által definiált VLAN**-ok/alhálózatok hozzáadása lehetőségre.
+    * A beállítások **kiválasztása** felülbírálja a globális beállításokat az **automatikus Hozzáadás**területen.
 
 7. A beállítások áttekintéséhez kattintson a **tovább** gombra. A módosítások elvégzéséhez kattintson a Szerkesztés ikonra.
 8. A VPN-átjáró létrehozásához kattintson a **Létrehozás** gombra.
@@ -109,16 +110,16 @@ A CloudSimple a számítógépről való csatlakozáshoz VPN-ügyfél szüksége
 2. Válassza a **VPN Gateway**lehetőséget.
 3. A VPN-átjárók listájában kattintson a pont – hely VPN-átjáróra.
 4. Válassza a **felhasználók**lehetőséget.
-5. Kattintson a **saját VPN-konfiguráció letöltése** elemre.
+5. Kattintson **a saját VPN-konfiguráció letöltése**elemre.
 
     ![VPN-konfiguráció letöltése](media/download-p2s-vpn-configuration.png)
 
-6. A konfiguráció importálása a VPN-ügyfélen
+6. Importálja a konfigurációt a VPN-ügyfélen.
 
     * Útmutató a [konfiguráció importálásához a Windows](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program) -ügyfélen
     * Útmutató a [konfiguráció importálásához MacOS vagy OS X rendszeren](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection)
 
-7. Kapcsolódás a CloudSimple
+7. Kapcsolódjon a CloudSimple.
 
 ## <a name="create-a-vlan-for-your-workload-vms"></a>VLAN létrehozása a számítási feladatok virtuális gépei számára
 
@@ -126,7 +127,7 @@ A privát felhő létrehozása után hozzon létre egy VLAN-t, amelyen üzembe h
 
 1. A CloudSimple-portálon válassza a **hálózat**lehetőséget.
 2. Kattintson a **VLAN/** alhálózatok elemre.
-3. Kattintson a **VLAN/alhálózat létrehozása** lehetőségre.
+3. Kattintson a **VLAN/alhálózat létrehozása**lehetőségre.
 
     ![VLAN/alhálózat létrehozása](media/create-new-vlan-subnet.png)
 
@@ -138,11 +139,11 @@ A privát felhő létrehozása után hozzon létre egy VLAN-t, amelyen üzembe h
 
     ![VLAN/alhálózat létrehozása – részletek](media/create-new-vlan-subnet-details.png)
 
-A rendszer létrehozza a VLAN-t/alhálózatot.  Most már használhatja ezt a VLAN-azonosítót egy elosztott porttartomány létrehozásához a saját Felhőbeli vCenter. 
+A rendszer létrehozza a VLAN-t/alhálózatot.  Most már használhatja ezt a VLAN-azonosítót egy elosztott porttartomány létrehozásához a saját Felhőbeli vCenter.
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Környezet összekötése egy Azure-beli virtuális hálózattal
 
-A CloudSimple ExpressRoute áramkört biztosít a saját felhőhöz. Az Azure-beli virtuális hálózatot a ExpressRoute áramkörhöz is összekapcsolhatja. A kapcsolat beállításával kapcsolatos részletes információkért kövesse az [Azure Virtual Network-kapcsolat](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/) lépéseit a ExpressRoute használatával
+A CloudSimple ExpressRoute áramkört biztosít a saját felhőhöz. Az Azure-beli virtuális hálózatot a ExpressRoute áramkörhöz is összekapcsolhatja. A kapcsolat beállításával kapcsolatos részletes információkért kövesse az [Azure Virtual Network-kapcsolat](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)lépéseit a ExpressRoute használatával.
 
 ## <a name="sign-in-to-vcenter"></a>Bejelentkezés a vCenter
 
@@ -154,7 +155,7 @@ Most már bejelentkezhet a vCenter-be a virtuális gépek és házirendek beáll
 
 2. Válassza ki a kívánt vSphere-ügyfelet a vCenter eléréséhez, és jelentkezzen be a felhasználónevével és jelszavával.  Az alapértelmezett értékek a következők:
     * Felhasználónév: **CloudOwner@cloudsimple.local**
-    * Jelszó: **CloudSimple123!**  
+    * Jelszó **CloudSimple123!**  
 
 A következő eljárások vCenter képernyői a vSphere (HTML5) ügyfélből származnak.
 
@@ -182,33 +183,29 @@ Ha olyan jelszót állít be, amely nem felel meg a követelményeknek:
 
 A NSX Manager alapértelmezett jelszóval van telepítve.  Azt javasoljuk, hogy a privát felhő létrehozása után módosítsa a jelszót.
 
-   * Felhasználónév: **rendszergazda**
-   * Jelszó: **CloudSimple123!**
+* Felhasználónév: **rendszergazda**
+* Jelszó **CloudSimple123!**
 
 A NSX Manager teljes tartományneve (FQDN) és IP-címe a CloudSimple portálon található.
 
 1. Indítsa el a CloudSimple portált, és válassza az **erőforrások**lehetőséget.
 2. Kattintson a használni kívánt privát felhőre.
 3. **VSphere felügyeleti hálózat** kiválasztása
-4. Használja a **NSX Manager** teljes tartománynevét vagy IP-címét, és kapcsolódjon a webböngészővel. 
+4. Használja a **NSX Manager** teljes tartománynevét vagy IP-címét, és kapcsolódjon a webböngészővel.
 
     ![NSX-kezelő teljes tartományneve megkeresése](media/private-cloud-nsx-manager-fqdn.png)
 
-A jelszó módosításához kövesse a [felhasználó jelszavának kezelése](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/administration/GUID-DB31B304-66A5-4516-9E55-2712D12B4F27.html)című témakör utasításait.
-
-> [!WARNING]
-> Alapértelmezés szerint a NSX rendszergazdai jelszava 90 nap után lejár.
+A jelszó módosításához kövesse a [NSX Manager telepítésének](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html)utasításait.
 
 ## <a name="create-a-port-group"></a>Port csoport létrehozása
 
 Elosztott porttartomány létrehozása a vSphere-ben:
 
-1. Kövesse az [vSphere hálózati útmutató](https://docs.vmware.com/en/VMware-vSphere/6.5/vsphere-esxi-vcenter-server-65-networking-guide.pdf)"elosztott Port hozzáadása" című szakaszának utasításait.
+1. Kövesse a [vSphere hálózati útmutató](https://docs.vmware.com/en/VMware-vSphere/6.5/vsphere-esxi-vcenter-server-65-networking-guide.pdf)"elosztott Port hozzáadása" című szakaszának utasításait.
 2. Az elosztott port csoport beállításakor adja meg a virtuális [helyi hálózat létrehozása a számítási feladatok virtuális gépei számára](#create-a-vlan-for-your-workload-vms)című részében létrehozott VLAN-azonosítót.
 
 ## <a name="next-steps"></a>További lépések
 
-* [VMware virtuális gépek használata az Azure-ban](https://docs.azure.cloudsimple.com/quickstart-create-vmware-virtual-machine)
 * [VMware virtuális gépek használata az Azure-ban](quickstart-create-vmware-virtual-machine.md)
-* [Kapcsolódás helyszíni hálózathoz az Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection/)
-* [Helyek közötti VPN beállítása a helyszíni környezetből](https://docs.azure.cloudsimple.com/vpn-gateway/)
+* [Kapcsolódás helyszíni hálózathoz az Azure ExpressRoute](on-premises-connection.md)
+* [Helyek közötti VPN beállítása a helyszíni környezetből](vpn-gateway.md)

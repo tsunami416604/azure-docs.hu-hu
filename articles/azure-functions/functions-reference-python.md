@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 0cdd7f291b43f442b8471a19f515e4a2d12b4e74
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 637205bd4ad438d7efbee6fb304b0a934aefdfdf
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562879"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615902"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -160,7 +160,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-A függvény meghívásakor a rendszer a HTTP-kérelmet a következőként továbbítja a `req`függvénynek:. A rendszer beolvas egy bejegyzést az Azure-Blob Storage az útvonal URL -címének azonosítója alapján, és a `obj` függvény törzsében elérhetővé teszi őket.  Itt a megadott Storage- `AzureWebJobsStorage` fiók a függvény alkalmazásban használt tárolási fiók.
+A függvény meghívásakor a rendszer a HTTP-kérelmet a következőként továbbítja a `req`függvénynek:. A rendszer beolvas egy bejegyzést az Azure-Blob Storage az útvonal URL __ -címének azonosítója alapján, és a `obj` függvény törzsében elérhetővé teszi őket.  Itt a megadott Storage- `AzureWebJobsStorage` fiók a függvény alkalmazásban használt tárolási fiók.
 
 
 ## <a name="outputs"></a>Kimenetek
@@ -315,14 +315,22 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Közzététel az Azure-ban
 
-Ha készen áll a közzétételre, győződjön meg arról, hogy az összes függőség szerepel a Project könyvtárának gyökérkönyvtárában található *követelmények. txt* fájlban. Ha olyan csomagot használ, amely egy fordítót igényel, és nem támogatja a manylinux-kompatibilis kerekek PyPI való telepítését, az Azure-ba való közzététel a következő hibával meghiúsul: 
+Ha készen áll a közzétételre, győződjön meg arról, hogy az összes függőség szerepel a Project könyvtárának gyökérkönyvtárában található *követelmények. txt* fájlban. A Azure Functions képes [távolról](functions-deployment-technologies.md#remote-build) felépíteni ezeket a függőségeket.
+
+Az Azure-ba történő üzembe helyezéshez és a távoli buildek elvégzéséhez használja a következő parancsot:
+
+```bash
+func azure functionapp publish <app name> --build remote
+```
+
+Ha nem használ távoli buildet, és olyan csomagot használ, amely egy fordítót igényel, és nem támogatja számos, a Linux-kompatibilis kerekek PyPI való telepítését, az Azure-ba való helyi létrehozás nélküli közzététel sikertelen lesz a következő hiba miatt:
 
 ```
 There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
 The terminal process terminated with exit code: 1
 ```
 
-A szükséges bináris fájlok automatikus létrehozásához és konfigurálásához [telepítse](https://docs.docker.com/install/) a Docker-t a helyi gépre, és futtassa az alábbi parancsot a [Azure functions Core Tools](functions-run-local.md#v2) (a következő parancs használatával történő közzétételhez). Ne felejtse `<app name>` el lecserélni a Function alkalmazás nevét az Azure-ban. 
+Ha helyileg szeretné kiépíteni és konfigurálni a szükséges bináris fájlokat, [telepítse](https://docs.docker.com/install/) a Docker-t a helyi gépre, és futtassa a következő parancsot a [Azure functions Core Tools](functions-run-local.md#v2) (a) használatával történő közzétételhez. Ne felejtse `<app name>` el lecserélni a Function alkalmazás nevét az Azure-ban. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps

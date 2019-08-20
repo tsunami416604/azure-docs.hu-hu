@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: acb001417b85b8ff45b2617e148e8b1961f3cbfa
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c5ec80e81381423bdfdee07b1c020343d14ed559
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772977"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617066"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services – hibaelhárítási útmutató
 Ez a cikk a Azure Active Directory (AD) tartományi szolgáltatások beállításakor vagy felügyeletekor felmerülő problémákkal kapcsolatos hibaelhárítási tippeket tartalmaz.
@@ -32,7 +32,7 @@ Válassza ki a felmerülő hibaüzenetnek megfelelő hibaelhárítási lépések
 
 | **Hibaüzenet** | **Felbontás** |
 | --- |:--- |
-| *A contoso100.com név már használatban van ezen a hálózaton. Adjon meg olyan nevet, amely még nincs használatban.* |[Tartománynév-ütközés a virtuális hálózaton](troubleshoot.md#domain-name-conflict) |
+| *A contoso.com név már használatban van ezen a hálózaton. Adjon meg olyan nevet, amely még nincs használatban.* |[Tartománynév-ütközés a virtuális hálózaton](troubleshoot.md#domain-name-conflict) |
 | *A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. A szolgáltatás nem rendelkezik megfelelő engedélyekkel az „Azure AD Domain Services Sync” alkalmazáshoz. Törölje az „Azure AD Domain Services Sync” alkalmazást, és próbálja meg ezután engedélyezni a tartományi szolgáltatásokat az Azure AD-bérlője számára.* |[A tartományi szolgáltatások nem rendelkezik megfelelő engedélyekkel a Azure AD Domain Services Sync alkalmazáshoz](troubleshoot.md#inadequate-permissions) |
 | *A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. Az Azure AD-bérlőjében található Domain Services alkalmazás nem rendelkezik a tartományi szolgáltatások engedélyezéséhez szükséges engedélyekkel. Törölje a d87dcbc6-a371-462e-88e3-28ad15ec4e64 alkalmazásazonosítójú alkalmazást, majd próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlője számára.* |[A tartományi szolgáltatások alkalmazás nincs megfelelően konfigurálva a bérlőben](troubleshoot.md#invalid-configuration) |
 | *A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. A Microsoft Azure AD alkalmazás le van tiltva az Ön Azure AD-bérlőjében. Engedélyezze a 00000002-0000-0000-c000-000000000000 alkalmazásazonosítójú alkalmazást, majd próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlője számára.* |[Az Microsoft Graph alkalmazás le van tiltva az Azure AD-bérlőben](troubleshoot.md#microsoft-graph-disabled) |
@@ -40,7 +40,7 @@ Válassza ki a felmerülő hibaüzenetnek megfelelő hibaelhárítási lépések
 ### <a name="domain-name-conflict"></a>Tartomány neve ütközés
 **Hibaüzenet:**
 
-*A contoso100.com név már használatban van ezen a hálózaton. Adjon meg olyan nevet, amely még nincs használatban.*
+*A contoso.com név már használatban van ezen a hálózaton. Adjon meg olyan nevet, amely még nincs használatban.*
 
 **Szervizkiszolgáló**
 
@@ -135,12 +135,12 @@ Ha az Azure AD-bérlő egy vagy több felhasználója nem tud bejelentkezni az �
 >
 >
 
-* Győződjön meg arról, hogy [engedélyezte a jelszó-szinkronizálást](active-directory-ds-getting-started-password-sync.md) az első lépéseket ismertető útmutató lépéseinek megfelelően.
+* Győződjön meg arról, hogy [engedélyezte a jelszó-szinkronizálást](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) az első lépéseket ismertető útmutató lépéseinek megfelelően.
 * **Külső fiókok:** Ügyeljen arra, hogy az érintett felhasználói fiók ne külső fiók legyen az Azure AD-bérlőben. Külső fiókok például a Microsoft-fiókok (például "joe@live.com") vagy a külső Azure ad-címtárból származó felhasználói fiókok. Mivel Azure AD Domain Services nem rendelkezik hitelesítő adatokkal az ilyen felhasználói fiókokhoz, ezek a felhasználók nem jelentkezhetnek be a felügyelt tartományba.
 * **Szinkronizált fiókok:** Ha az érintett felhasználói fiókok egy helyszíni címtárból vannak szinkronizálva, ellenőrizze a következőket:
 
   * Telepítette vagy frissítette a [Azure ad Connect legújabb javasolt kiadását](https://www.microsoft.com/download/details.aspx?id=47594).
-  * Úgy konfigurálta a Azure AD Connect, hogy [teljes szinkronizálást végezzen](active-directory-ds-getting-started-password-sync.md).
+  * Úgy konfigurálta a Azure AD Connect, hogy [teljes szinkronizálást végezzen](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).
   * A címtár méretétől függően eltarthat egy ideig, amíg a felhasználói fiókok és a hitelesítő adatok kivonatai elérhetők lesznek Azure AD Domain Servicesban. Győződjön meg arról, hogy elég sokáig várnia kell a hitelesítés újrapróbálkozása előtt.
   * Ha a probléma az előző lépések ellenőrzése után sem szűnik meg, próbálja meg újraindítani a Microsoft Azure AD Sync szolgáltatást. A Szinkronizáló gépről indítson el egy parancssort, és hajtsa végre a következő parancsokat:
 

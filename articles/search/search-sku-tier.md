@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: d93f8c61511dd1d3fc2bfd253fa7a21857f67ed6
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: a874c8a1fe2e8a81e2f42b2c88447fd52b47f3ad
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563371"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611965"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon árképzési szintet Azure Search
 
@@ -62,7 +62,7 @@ Azure Searchra épülő megoldás a következő módokon veheti igénybe a költ
 
 A költségek elkerülése érdekében a virtuális gépekkel vagy más olyan erőforrásokkal szemben, amelyek "szünetelnek", a Azure Search szolgáltatás mindig elérhető a kizárólagos használatra szánt hardveren. Ennek megfelelően a szolgáltatás létrehozása olyan számlázható esemény, amely a szolgáltatás létrehozásakor kezdődik, és a szolgáltatás törlésekor lejár. 
 
-A minimális díj az első keresési egység (az egyik replika x egy partíció). Ez a minimális érték a szolgáltatás élettartamára van javítva, mert a szolgáltatás nem futhat ennél a konfigurációnál kisebb mértékben. A minimumon túl egymástól függetlenül is hozzáadhat replikákat és partíciókat. A kapacitás replikák és partíciók révén történő növekményes növekedése a következő képlet alapján növeli a számla mennyiségét: [(replikák x Partitions x Rate)](#search-units), ahol a felszámított díj a kiválasztott árképzési szinttől függ.
+A minimális díj az első keresési egység (az egyik replika x egy partíció) a számlázható sebességgel. Ez a minimális érték a szolgáltatás élettartamára van javítva, mert a szolgáltatás nem futhat ennél a konfigurációnál kisebb mértékben. A minimumon túl egymástól függetlenül is hozzáadhat replikákat és partíciókat. A kapacitás replikák és partíciók révén történő növekményes növekedése a következő képlet alapján növeli a számla mennyiségét: [(replikák x Partitions x Rate)](#search-units), ahol a felszámított díj a kiválasztott árképzési szinttől függ.
 
 Ha megbecsüli egy keresési megoldás költségét, ne feledje, hogy a díjszabás és a kapacitás nem lineáris. (A kapacitás megkettőzése meghaladja a költségeket.) A képlet működéséről a következő témakörben talál példát: [replikák és partíciók](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)lefoglalása.
 
@@ -157,7 +157,7 @@ L2 offers twice the overall storage capacity of L1.  Choose your tier based on t
 
 ### <a name="evaluating-capacity"></a>Kapacitás kiértékelése
 
-A szolgáltatás üzemeltetésének kapacitása és költségei közvetlenül kapcsolódnak egymáshoz. A rétegek két szintre korlátozzák a korlátozásokat: a tárolást és az erőforrásokat. Érdemes meggondolni, mivel a határértékek közül az első a hatályos korlát.
+A szolgáltatás üzemeltetésének kapacitása és költségei. A rétegek két szintre korlátozzák a korlátozásokat: a tárolást és az erőforrásokat. Érdemes meggondolni, mivel a határértékek közül az első a hatályos korlát.
 
 Az üzleti követelmények általában a szükséges indexek számát írják elő. Előfordulhat például, hogy globális indexre van szüksége a dokumentumok nagyméretű tárházához. Vagy előfordulhat, hogy több indexre van szüksége a régió, az alkalmazás vagy az üzleti Niche alapján.
 
@@ -167,25 +167,25 @@ Az indexek méretének meghatározásához [létre kell egyet](search-create-ind
 > Annak ellenére, hogy az indexek és a tárolás jövőbeli igényeit is megbecsülik, érdemes meggondolni. Ha a rétegek kapacitása túl alacsonyra vált, egy új szolgáltatást kell kiépíteni egy magasabb szintű szinten, majd újra kell töltenie [az indexeket](search-howto-reindex.md). A szolgáltatás egyik SKU-ról egy másikra történő frissítése nem történik meg.
 >
 
-### <a name="step-1-develop-rough-estimates-by-using-the-free-tier"></a>1\. lépés: Durva becslések fejlesztése az ingyenes szintet használva
+### <a name="estimate-with-the-free-tier"></a>Becslés az ingyenes szintjével
 
-A kapacitás becslésének egyik megközelítése az ingyenes szinten való kezdés. Ne feledje, hogy az ingyenes szolgáltatás legfeljebb három indexet kínál, 50 MB tárterületet és 2 perc indexelési időt. Az ilyen megkötésekkel a tervezett indexek méretének becslése is kihívást jelenthet. Az alábbi megközelítéssel elvégezheti a következőket:
+A kapacitás becslésének egyik megközelítése az ingyenes szinten való kezdés. Ne feledje, hogy az ingyenes szolgáltatás legfeljebb három indexet kínál, 50 MB tárterületet és 2 perc indexelési időt. A megszorítások alapján megbecsülheti a tervezett indexek méretét, de ezek a lépések a következők:
 
 + [Hozzon létre egy ingyenes szolgáltatást](search-create-service-portal.md).
-+ Készítsen elő egy kisméretű, reprezentatív adatkészletet (például 5 000-dokumentumok és 10 százalékos minta mérete).
-+ [Hozzon létre egy kezdeti indexet](search-create-index-portal.md) , és jegyezze fel a méretét a portálon (például 30 MB).
++ Készítsen elő egy kis, reprezentatív adatkészletet.
++ [Hozzon létre egy kezdeti indexet a portálon](search-create-index-portal.md) , és jegyezze fel a méretét. A funkciók és attribútumok hatással vannak a tárterületre. Például a javaslatok hozzáadásával (typeahead) növelheti a tárolási követelményeket. Ha ugyanazt az adatkészletet használja, előfordulhat, hogy egy index több verzióját is létrehozhatja az egyes mezők különböző attribútumaival, hogy megtekintse, hogyan változnak a tárolási követelmények. További információkért lásd: alapszintű [index létrehozása "tárolási vonzatok"](search-what-is-an-index.md#storage-implications).
 
-Ha a minta a teljes adatforrás 10 százalékát képviseli, a 30 MB-os index körülbelül 300 MB-ra változik, ha az összes dokumentum indexelve van. Ezt az előzetes számot felfegyverezve megduplázhatja ezt a költségvetést két index (fejlesztés és termelés) esetén. Ez összesen 600 MB tárolási követelményt biztosít. Ezt a követelményt az alapszintű csomag könnyen kielégíti, ezért érdemes elindulni.
+A durva becsléssel megduplázhatja ezt a költségvetést két index (fejlesztés és éles környezet) esetében, majd a szintet ennek megfelelően kiválaszthatja.
 
-### <a name="step-2-develop-refined-estimates-by-using-a-billable-tier"></a>2\. lépés: Finomított becslések kifejlesztése számlázandó rétegek használatával
+### <a name="estimate-with-a-billable-tier"></a>Becslés számlázható szintjével
 
-Egyes ügyfelek inkább olyan dedikált erőforrásokkal kezdenek dolgozni, amelyek nagyobb mintavételi és feldolgozási időt tudnak igénybe venni, majd a fejlesztés során reális becsléseket készítenek a mennyiség, a méret és a lekérdezési kötetek indexéről. A szolgáltatás kezdetben a legjobb becslés alapján lett kiépítve. Ezután a fejlesztési projekt futamideje szerint a csapatok általában azt tudják, hogy a meglévő szolgáltatás a tervezett éles számítási feladatokhoz képest vagy kapacitás alatt van-e.
+A dedikált erőforrások nagyobb mintavételezési és feldolgozási időt biztosítanak a fejlesztés során az index mennyiségének, méretének és lekérdezési köteteinek reális becsléséhez. Néhány ügyfél azonnal egy számlázható réteggel ugrik, majd újraértékeli a fejlesztési projekt futamideje alatt.
 
 1. [Tekintse át a szolgáltatási korlátokat az egyes szinteknél](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) annak megállapításához, hogy az alsóbb szintű csomagok támogatni tudják-e a szükséges indexek számát. Az alapszintű, S1 és S2 szinten az index korlátai 15, 50 és 200. A tárolási optimalizált csomagok korlátja 10 index, mert a rendszer úgy van kialakítva, hogy támogassa a nagyon nagy méretű indexek alacsony számát.
 
 1. [Szolgáltatás létrehozása számlázandó szinten](search-create-service-portal.md):
 
-    + Ha a tanulási görbe elején van, akkor az alapszintű vagy S1-es verzióra kell kezdenie.
+    + Ha nem biztos benne, hogy a tervezett terhelésről van szó, az alapszintű vagy S1.
     + Ha tudja, hogy nagy léptékű indexelési és lekérdezési terheléssel fog rendelkezni, indítsa el a magas, S2-es vagy akár S3-as értékeket is.
     + Ha nagy mennyiségű adatmennyiséget indexel, és a lekérdezés terhelése viszonylag alacsony, mint egy belső üzleti alkalmazás esetében, az optimalizált tárolóval kezdődik az L1 vagy az L2.
 

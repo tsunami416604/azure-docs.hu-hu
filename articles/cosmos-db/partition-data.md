@@ -6,12 +6,12 @@ author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 67ad37491f71ac82ff52331d19ea92a646c80a52
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8f83c40aeecdbf9ca30adc20286712850882ee41
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716986"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616801"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Particionálás és horizontális skálázás Azure Cosmos DB
 
@@ -27,7 +27,7 @@ A logikai partíció az adatbázis-tranzakciók hatókörét is meghatározza. A
 
 ## <a name="physical-partitions"></a>Fizikai partíciók
 
-Az Azure Cosmos-tárolók méretezése az adatok és az átviteli sebesség nagy számú logikai partíción keresztüli elosztásával történik. Belsőleg egy vagy több logikai partíció egy olyan fizikai partícióra van leképezve, amely replikák halmazát, más néven [*replikakészlet*](global-dist-under-the-hood.md)-készletet tartalmaz. Mindegyik replikakészlet a Azure Cosmos DB adatbázismotor egy példányát tárolja. A replikakészlet a fizikai partícióban tárolt, tartós, magasan elérhető és konzisztens módon tárolja az adattárolási készletet. A fizikai partíciók a maximális tárterületet és a kérelmeket (RUs) támogatják. A fizikai partíciót alkotó replikák öröklik a partíció tárolási kvótáját. A fizikai partíció összes replikája együttesen támogatja a fizikai partícióhoz lefoglalt átviteli sebességet. 
+Az Azure Cosmos-tárolók méretezése az adatok és az átviteli sebesség nagy számú logikai partíción keresztüli elosztásával történik. Belsőleg egy vagy több logikai partíció egy olyan fizikai partícióra van leképezve, amely replikák halmazát, más néven [*replikakészlet*](global-dist-under-the-hood.md)-készletet tartalmaz. Mindegyik replikakészlet az Azure Cosmos adatbázismotor egy példányát tárolja. A replikakészlet a fizikai partícióban tárolt, tartós, magasan elérhető és konzisztens módon tárolja az adattárolási készletet. A fizikai partíciók a maximális tárterületet és a kérelmeket (RUs) támogatják. A fizikai partíciót alkotó replikák öröklik a partíció tárolási kvótáját. A fizikai partíció összes replikája együttesen támogatja a fizikai partícióhoz lefoglalt átviteli sebességet. 
 
 Az alábbi képen látható, hogyan vannak leképezve a logikai partíciók a globálisan elosztott fizikai partíciókhoz:
 

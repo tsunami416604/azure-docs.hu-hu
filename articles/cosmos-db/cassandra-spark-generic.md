@@ -1,6 +1,6 @@
 ---
-title: A Spark az Azure Cosmos DB Cassandra API használata
-description: Ez a cikk a fő lapján, a Spark a Cosmos DB Cassandra API-integráció.
+title: Azure Cosmos DB Cassandra API használata a Sparkból
+description: Ez a cikk a Spark Cosmos DB Cassandra API-integrációjának főoldala.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,56 +8,56 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 75d2930363b6ad1aeace22d7529df04f31deefe5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc28cf590a1fd2c3fdfe8651f136526188801c04
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893636"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615645"
 ---
-# <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Csatlakozás a Spark az Azure Cosmos DB Cassandra API-hoz
+# <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Kapcsolódás Azure Cosmos DB Cassandra API a Sparkból
 
-Ez a cikk az egyik, többek között Spark az Azure Cosmos DB Cassandra API-integrációval kapcsolatos cikkeket. A cikkek terjed ki a kapcsolat, adatok definíció Language(DDL) operations, alapvető adatokat adatkezelési Language(DML) műveleteket és speciális Azure Cosmos DB Cassandra API-integráció Spark rendszerből. 
+Ez a cikk többek között a Sparkból való Azure Cosmos DB Cassandra API-integrációról szóló cikkek sorozata. A cikkek kiterjednek a kapcsolatra, az adatdefiníciós nyelv (DDL) műveleteire, az alapszintű adatmanipulációs nyelvre (DML) vonatkozó műveletekre és a Spark Azure Cosmos DB Cassandra API-integrációra. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* [Üzembe helyezhető egy Azure Cosmos DB Cassandra API-fiókot.](create-cassandra-dotnet.md#create-a-database-account)
+* [Azure Cosmos DB Cassandra API-fiók kiépítése.](create-cassandra-dotnet.md#create-a-database-account)
 
-* A választott, a Spark környezet kiépítése [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [Azure HDInsight-Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) |} Mások].
+* A Spark-környezet kiépítése [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [Azure HDInsight – Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | Mások].
 
-## <a name="dependencies-for-connectivity"></a>A hálózati kapcsolatot függőségek
-* **Spark-összekötő Cassandra:** Spark-összekötő segítségével Azure Cosmos DB Cassandra API-hoz csatlakozhat.  Azonosítsa és verzióját használja, az összekötő található [Maven központi]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) Ez az a Spark környezet és a Scala Spark verzióival kompatibilis.
+## <a name="dependencies-for-connectivity"></a>Kapcsolat függőségei
+* **Spark-összekötő Cassandra-hez:** A Spark-összekötő a Azure Cosmos DB Cassandra APIhoz való kapcsolódásra szolgál.  Azonosítsa és használja a [Maven Central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) -ban található összekötő azon verzióját, amely kompatibilis a Spark-környezet Spark-és Scala-verziójával.
 
-* **Az Azure Cosmos DB segédkódtárba helyezni a Cassandra API esetén:** A Spark-összekötő mellett egy másik szalagtárhoz nevű kell [azure-cosmos-cassandra-spark-segítő]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) Azure Cosmos DB-ből. Ez a kódtár egyéni kapcsolat gyári, és ismételje meg a házirend osztályokat tartalmazza.
+* **Azure Cosmos DB segítő könyvtár a Cassandra APIhoz:** A Spark-összekötőn kívül szüksége lesz egy másik, [Azure-Cosmos-Cassandra-Spark-Helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) nevű könyvtárra Azure Cosmos db. Ez a könyvtár tartalmazza az egyéni kapcsolatok gyárát, és újrapróbálkozási házirend-osztályokat tartalmaz.
 
-  Az Azure Cosmos DB újrapróbálkozási szabályzat HTTP állapot kód 429 ("kérés sebessége nagy") kivételek van konfigurálva. Az Azure Cosmos DB Cassandra API a rendszer lefordítja a Cassandra natív protokoll túlterhelt hibákká ezeket a kivételeket, és újra a biztonsági kompromisszumot. Mivel az Azure Cosmos DB a kiosztott átviteli sebesség modellt használ, kérelem korlátozó kivételeket fordulhat elő, ha a bejövő/kimenő forgalom sebesség növekedését. Az újrapróbálkozási szabályzat védelmet biztosít a spark-feladatok ellen, amelyek rövid ideig túllépik a gyűjteményhez kiosztott átviteli adatok adatforgalmi csúcsokhoz.
+  Az újrapróbálkozási szabályzat a (z) Azure Cosmos DBban úgy van konfigurálva, hogy kezelje a 429-es HTTP-állapotkódot ("kérelmek aránya – nagy") A Azure Cosmos DB Cassandra API lefordítja ezeket a kivételeket a Cassandra Native protokollon túlterhelt hibákra, és újra tud próbálkozni a visszalépéssel. Mivel a Azure Cosmos DB kiépített átviteli sebességi modellt használ, a kérelmek arányának korlátozása kivételeket eredményez, ha a bejövő és a kimenő forgalom aránya növekszik. Az újrapróbálkozási szabályzat védi a Spark-feladatokat olyan adatugrások ellen, amelyek egy pillanatra túllépik a gyűjteményhez lefoglalt átviteli sebességet.
 
   > [!NOTE] 
-  > Az újrapróbálkozási szabályzat a spark-feladatok csak pillanatnyi adatforgalmi csúcsokhoz ellen védheti. Ha nem konfigurálta elegendő csökkenti a számítási feladatok futtatásához szükséges, az újrapróbálkozási szabályzat nem alkalmazható, és az újrapróbálkozási szabályzat osztály rethrows a kivétel.
+  > Az újrapróbálkozási szabályzat csak a pillanatnyi tüskékkel tudja védeni a Spark-feladatokat. Ha még nem konfigurálta a számítási feladat futtatásához szükséges RUs-t, akkor az újrapróbálkozási szabályzat nem alkalmazható, és az újrapróbálkozási szabályzat osztálya átadja a kivételt.
 
-* **Az Azure Cosmos DB fiók kapcsolat részletei:** A Azure Cassandra API fióknév, fiók végpontját és kulcsát.
+* **Azure Cosmos DB fiók kapcsolatának részletei:** Az Azure Cassandra API fiók neve, a fiók végpontja és a kulcs.
     
-## <a name="spark-connector-throughput-configuration-parameters"></a>A Spark összekötő átviteli konfigurációs paraméterei
+## <a name="spark-connector-throughput-configuration-parameters"></a>Spark-összekötő átviteli sebességének konfigurációs paraméterei
 
-A következő táblázat felsorolja az Azure Cosmos DB Cassandra API-specifikus átviteli konfigurációs paramétereket az összekötő által biztosított. Az összes konfigurációs paramétereket részletes listáját lásd: [hivatkozás](https://github.com/datastax/spark-cassandra-connector/blob/master/doc/reference.md) a Spark Cassandra összekötő GitHub-adattár oldalát.
+A következő táblázat Azure Cosmos DB felsorolja az összekötő által biztosított Cassandra API-specifikus átviteli sebességű konfigurációs paramétereket. Az összes konfigurációs paraméter részletes listáját a Spark Cassandra Connector GitHub-tárházának [konfigurációs referenciát](https://github.com/datastax/spark-cassandra-connector/blob/master/doc/reference.md) ismertető oldalán tekintheti meg.
 
 | **Tulajdonság neve** | **Alapértelmezett érték** | **Leírás** |
 |---------|---------|---------|
-| spark.cassandra.output.batch.size.rows |  1 |Egyetlen kötegenkénti sorok száma. Ez a paraméter értéke 1. Ezt a paramétert a nehéz számítási feladatokhoz magasabb átviteli sebesség eléréséhez használja. |
-| spark.cassandra.connection.connections_per_executor_max  | None | Csomópontonként engedélyezett végrehajtó kapcsolatok maximális számát. 10 * n megegyezik a csomópontonként Cassandra-n csomópontos fürtben 10 kapcsolatot. Tehát 5 kapcsolatot végrehajtó csomópontonként egy Cassandra-fürt 5 csomópontos van szükség, ha majd kell beállítania ezt a konfigurációt a 25. Módosítsa ezt az értéket a párhuzamosság foka vagy a spark-feladatok konfigurált végrehajtóval száma alapján.   |
-| spark.cassandra.output.concurrent.writes  |  100 | A párhuzamos írások száma végrehajtó előforduló számát határozza meg. Mivel "batch.size.rows" értéke 1, ügyeljen arra, hogy ennek megfelelően vertikális felskálázás ezt az értéket. Módosítsa ezt az értéket a párhuzamosság vagy az átviteli sebességet, amelyeket szeretne eléréséhez a számítási feladatok alapján. |
-| spark.cassandra.concurrent.reads |  512 | A párhuzamos olvasások száma végrehajtó előforduló számát határozza meg. Ez az érték alapján a párhuzamosság vagy az átviteli sebességet a számítási feladatok elérni kívánt módosítása  |
-| spark.cassandra.output.throughput_mb_per_sec  | None | A teljes olvasási sebességet végrehajtó határozza meg. Ez a paraméter használható, valamint a felső korlátja. a spark-feladat átviteli alapja, az átviteli sebesség a Cosmos DB-gyűjtemények.   |
-| spark.cassandra.input.reads_per_sec| None   | A teljes olvasási sebességet végrehajtó határozza meg. Ez a paraméter használható, valamint a felső korlátja. a spark-feladat átviteli alapja, az átviteli sebesség a Cosmos DB-gyűjtemények.  |
-| spark.cassandra.output.batch.grouping.buffer.size |  1000  | Cassandra API küldése előtt a memóriában tárolt egyetlen spark feladatonként kötegeknek a száma határozza meg |
-| spark.cassandra.connection.keep_alive_ms | 60000 | Határozza meg az az időtartam, ameddig a fel nem használt kapcsolatok érhetők el. | 
+| spark.cassandra.output.batch.size.rows |  1 |Sorok száma egy kötegben. Állítsa ezt a paramétert 1-re. Ez a paraméter a nagy teljesítményű számítási feladatok nagyobb átviteli sebességének elérésére szolgál. |
+| spark.cassandra.connection.connections_per_executor_max  | Nincsenek | Csomópontok maximális száma felhasználónként/végrehajtóként. a 10 * n egy n csomópontos Cassandra-fürtön belüli 10 kapcsolattal egyenlő. Tehát, ha az 5 csomópontos Cassandra-fürthöz egy-egy csomóponton 5 kapcsolatra van szüksége, akkor ezt a konfigurációt 25-re kell állítania. Módosítsa ezt az értéket a párhuzamosság foka vagy a Spark-feladatok által konfigurált végrehajtók száma alapján.   |
+| spark.cassandra.output.concurrent.writes  |  100 | Meghatározza, hogy hány párhuzamos írási művelet hajtható végre a végrehajtón. Mivel a "batch. size. sorok" értéket 1-re állítja, ügyeljen arra, hogy ennek az értéknek a méretezése megfelelő legyen. Módosítsa ezt az értéket a párhuzamosság foka vagy a munkaterheléshez elérni kívánt átviteli sebesség alapján. |
+| spark.cassandra.concurrent.reads |  512 | Meghatározza, hogy hány párhuzamos olvasási felmerülhet a végrehajtó. Módosítsa ezt az értéket a párhuzamosság foka vagy a munkaterheléshez elérni kívánt átviteli sebesség alapján.  |
+| spark.cassandra.output.throughput_mb_per_sec  | Nincsenek | Meghatározza az összes írási sebességet egy végrehajtón. Ez a paraméter felső korlátként használható a Spark-feladatok átviteli sebességéhez, és a Cosmos-tároló kiépített átviteli sebességén alapul.   |
+| spark.cassandra.input.reads_per_sec| Nincsenek   | Meghatározza a végrehajtó összes olvasási sebességét. Ez a paraméter felső korlátként használható a Spark-feladatok átviteli sebességéhez, és a Cosmos-tároló kiépített átviteli sebességén alapul.  |
+| spark.cassandra.output.batch.grouping.buffer.size |  1000  | Meghatározza a memóriában tárolható kötegek másodpercenkénti számát, mielőtt elküldené a Cassandra API |
+| spark.cassandra.connection.keep_alive_ms | 60000 | Meghatározza azt az időtartamot, ameddig a fel nem használt kapcsolatok elérhetők. | 
 
-Állítsa be az átviteli sebesség és a ezeket a paramétereket a számítási feladatok várt a spark-feladatok és az átviteli sebesség a Cosmos DB-fiók kiépítése a párhuzamosság szintjét.
+Módosítsa a paraméterek átviteli sebességét és a párhuzamosság mértékét a Spark-feladatokhoz várható számítási feladatok, valamint a Cosmos DB-fiókhoz kiépített átviteli sebesség alapján.
 
-## <a name="connecting-to-azure-cosmos-db-cassandra-api-from-spark"></a>A Spark az Azure Cosmos DB Cassandra API-t kapcsolódás
+## <a name="connecting-to-azure-cosmos-db-cassandra-api-from-spark"></a>Csatlakozás Azure Cosmos DB Cassandra API a Sparkból
 
 ### <a name="cqlsh"></a>cqlsh
-A következő parancsok bemutatják, hogyan csatlakozhat az Azure cosmos DB Cassandra API cqlsh.  Ez akkor hasznos, haladjon végig a minták a Spark ellenőrzés céljából.<br>
-**From Linux/Unix/Mac:**
+Az alábbi parancsok részletesen ismertetik, hogyan csatlakozhat az Azure CosmosDB Cassandra API a cqlsh-ból.  Ez az ellenőrzéshez hasznos, amikor a Sparkban lévő mintákon futtatja őket.<br>
+**Linux/Unix/Mac rendszerből:**
 
 ```bash
 export SSL_VERSION=TLSv1_2
@@ -66,22 +66,22 @@ cqlsh.py YOUR-COSMOSDB-ACCOUNT-NAME.cassandra.cosmosdb.azure.com 10350 -u YOUR-C
 ```
 
 ### <a name="1--azure-databricks"></a>1.  Azure Databricks
-Az alábbi cikk ismerteti az Azure Databricks-fürt kiépítése, fürtkonfiguráció csatlakozhat az Azure Cosmos DB Cassandra API-hoz, és számos mintafüzetek, mind a DDL-műveletek, DML-műveletek és egyéb.<BR>
-[Azure Cosmos DB Cassandra API együttműködik az Azure databricks](cassandra-spark-databricks.md)<BR>
+Az alábbi cikk a fürt kiépítés Azure Databricks, a fürt konfigurálását ismerteti Azure Cosmos DB Cassandra APIhoz való csatlakozáshoz, valamint több, a DDL-műveleteket, a DML-műveleteket és egyebeket magában foglaló jegyzetfüzethez.<BR>
+[Azure Cosmos DB Cassandra API használata az Azure databricks](cassandra-spark-databricks.md)<BR>
   
-### <a name="2--azure-hdinsight-spark"></a>2.  Az Azure HDInsight-Spark
-Az alábbi cikk ismerteti a Spark HDinsight szolgáltatás, a fürtkonfiguráció csatlakozhat az Azure Cosmos DB Cassandra API-hoz, és számos mintafüzetek, mind a DDL-műveletek, DML-műveletek és egyéb.<BR>
-[Az Azure Cosmos DB Cassandra API-hoz az Azure HDInsight-Spark használata](cassandra-spark-hdinsight.md)
+### <a name="2--azure-hdinsight-spark"></a>2.  Azure HDInsight – Spark
+Az alábbi cikk a HDinsight-Spark szolgáltatást, az üzembe helyezést, a fürtkonfiguráció Azure Cosmos DB Cassandra APIhoz való csatlakozást, valamint a DDL-műveleteket, a DML-műveleteket és egyebeket magában foglaló több minta jegyzetfüzetet ismerteti.<BR>
+[Azure Cosmos DB Cassandra API használata az Azure HDInsight-Sparkból](cassandra-spark-hdinsight.md)
  
-### <a name="3--spark-environment-in-general"></a>3.  Az általános Spark-környezetben
-A fenti szakaszban meghatározott, Azure Spark-alapú PaaS-szolgáltatások is, amíg ez a szakasz ismertet bármely általános Spark-környezetben.  Összekötő függőségeket, importálja és munkamenet-konfiguráció Spark lásd lent. A "Következő lépések" szakaszban Kódminták a DDL-műveletek, DML-műveletek és egyéb ismerteti.  
+### <a name="3--spark-environment-in-general"></a>3.  Spark-környezet általánosságban
+A fenti szakaszok az Azure Spark-alapú Pásti-szolgáltatásokra jellemzőek, ez a szakasz minden általános Spark-környezetet magában foglal.  Az összekötő függőségeinek, importálásának és a Spark-munkamenet konfigurálásának részletes leírását az alábbiakban találja. A "Next Steps" (a következő lépések) szakasz a DDL-műveletek, a DML-műveletek és sok más kód mintáit tartalmazza.  
 
 #### <a name="connector-dependencies"></a>Összekötő függőségei:
 
-1. Adja hozzá a maven-koordináták beolvasni a [Cassandra Spark-összekötő](cassandra-spark-generic.md#dependencies-for-connectivity)
-2. Adja hozzá a maven-koordinátái a [segédkódtárba helyezni az Azure Cosmos DB](cassandra-spark-generic.md#dependencies-for-connectivity) Cassandra API-hoz
+1. Adja hozzá a Maven-koordinátákat a [Spark Cassandra-összekötő](cassandra-spark-generic.md#dependencies-for-connectivity) beszerzéséhez
+2. Adja hozzá a Maven-koordinátákat a [Azure Cosmos db Helper könyvtárához](cassandra-spark-generic.md#dependencies-for-connectivity) Cassandra API
 
-#### <a name="imports"></a>Importálásokat:
+#### <a name="imports"></a>Importálja
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -93,7 +93,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 ```
 
-#### <a name="spark-session-configuration"></a>A Spark munkamenet-konfiguráció:
+#### <a name="spark-session-configuration"></a>Spark-munkamenet konfigurációja:
 
 ```scala
 //Connection-related
@@ -115,11 +115,11 @@ spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 
 ## <a name="next-steps"></a>További lépések
 
-A következő cikkek bemutatják a Spark-integráció az Azure Cosmos DB Cassandra API. 
+Az alábbi cikkek a Spark-integrációt mutatják be Azure Cosmos DB Cassandra APIokkal. 
  
 * [DDL-műveletek](cassandra-spark-ddl-ops.md)
-* [Hozzon létre/beszúrási műveletek](cassandra-spark-create-ops.md)
-* [olvasási műveletek](cassandra-spark-read-ops.md)
+* [Műveletek létrehozása/beszúrása](cassandra-spark-create-ops.md)
+* [Olvasási műveletek](cassandra-spark-read-ops.md)
 * [Upsert művelet](cassandra-spark-upsert-ops.md)
 * [Törlési műveletek](cassandra-spark-delete-ops.md)
 * [Összesítési műveletek](cassandra-spark-aggregation-ops.md)

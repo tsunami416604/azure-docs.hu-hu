@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019
-ms.openlocfilehash: e8ca40ec86bc3af92fd23bb7acce3d6c39b082fb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 7a76ed943a9c3f7312653d1ea4d714e4c02a5294
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933928"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615629"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra-alkalmazás létrehozása Java SDK-val és Azure Cosmos DB
 
@@ -220,7 +220,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban bemutattuk, hogyan hozhat létre Azure Cosmos DB-fiókot, Cassandra-adatbázist és tárolót az Adatkezelő segítségével, valamint hogyan futtathat egy alkalmazást, amely programozottan hajtja végre ugyanezt. Most már további adatokat importálhat az Azure Cosmos DB-tárolóba. 
+Ebben a rövid útmutatóban bemutattuk, hogyan hozhat létre Azure Cosmos DB-fiókot, Cassandra-adatbázist és tárolót az Adatkezelő segítségével, valamint hogyan futtathat egy alkalmazást, amely programozottan hajtja végre ugyanezt. Mostantól további adatait is importálhatja az Azure Cosmos-tárolóba. 
 
 > [!div class="nextstepaction"]
 > [Cassandra-adatok importálása az Azure Cosmos DB-be](cassandra-import-data.md)

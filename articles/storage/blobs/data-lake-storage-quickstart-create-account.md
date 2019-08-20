@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 08/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f7c83e67c2162561aa579d38116f8ce01fceda9a
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: e820ed25cae23a2dad37c807eb3e188161eaecbf
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014378"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617696"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage Gen2 Storage-fiók létrehozása
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 |           | Előfeltétel |
 |-----------|--------------|
 |Portál     | None         |
-|PowerShell | Ez a rövid útmutatóhoz a PowerShell-modul Az.Storage verzió **0,7** vagy újabb. Az aktuális verzió azonosításához futtassa a `Get-Module -ListAvailable Az.Storage` parancsot. Ha nincs találat jelenik meg ez a parancs futtatása után, vagy ha egy eltérő verziójú **0,7** jelenik meg, akkor az a powershell-modul frissítéséhez. Tekintse meg a [frissítése a powershell-modul](#upgrade-your-powershell-module) című szakaszában talál.
+|PowerShell | Ez a rövid útmutatóhoz a PowerShell-modul Az.Storage verzió **0,7** vagy újabb. Az aktuális verzió azonosításához futtassa a `Get-Module -ListAvailable Az.Storage` parancsot. Ha a parancs futtatása után nem jelenik meg eredmény, vagy ha a **0,7** -nál kisebb verzió jelenik meg, akkor frissítenie kell a PowerShell-modult. Tekintse meg a [frissítése a powershell-modul](#upgrade-your-powershell-module) című szakaszában talál.
 |parancssori felület        | Jelentkezzen be az Azure-ba, és futtassa az Azure CLI-parancsokat kétféleképpen: <ul><li>A CLI-parancsok az Azure Portalról, az Azure Cloud Shell felületén futtathatók </li><li>Telepítheti a parancssori felületet, így helyben is futtathatja a CLI-parancsokat</li></ul>|
 
 Ha a parancssori felületet használja, futtathatja az Azure Cloud Shellt vagy telepítheti a parancssori felületet helyileg.

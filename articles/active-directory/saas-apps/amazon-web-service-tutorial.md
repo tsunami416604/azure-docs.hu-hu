@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f346c995cbc8be6e609020db799959d873ce89b3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 672a3571202b92232bd45a42254a43019f6a9796
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68944961"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617345"
 ---
 # <a name="tutorial-integrate-amazon-web-services-aws-with-azure-active-directory"></a>Oktatóanyag: Amazon Web Services (AWS) integrálása Azure Active Directory
 
@@ -369,6 +369,12 @@ Amikor kiválasztja az AWS csempét a hozzáférési panelen, automatikusan be k
    A katalógusból több AWS-bérlőt `servicePrincipals`is hozzáadhat az Azure ad-hoz az üzembe helyezéshez. Van azonban egy ismert probléma, amely nem képes automatikusan írni az összes importált szerepkört a több AWS `servicePrincipals` -ből, amelyet az egyszeri `servicePrincipal` bejelentkezéshez használtak. 
    
    Megkerülő megoldásként a [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) -val kinyerheti az `appRoles` összes importált AWS `servicePrincipal` -t, ahol a kiépítés konfigurálva van. Ezeket a szerepkör-karakterláncokat később is hozzáadhatja `servicePrincipal` az AWS-hez, ahol az SSO konfigurálva van.
+ 
+* A szerepköröknek a következő követelményeknek kell megfelelniük, hogy az AWS-ből az Azure AD-be való importálásra jogosult legyen:
+
+  * A szerepköröknek pontosan egy SAML-szolgáltatót kell meghatároznia az AWS-ben
+
+  * Az ARN szerepkör és az általa importált szerepkör SAML-szolgáltatói ARN együttes hosszának 119 vagy kevesebb karakterből kell állnia
 
 ## <a name="additional-resources"></a>További források
 

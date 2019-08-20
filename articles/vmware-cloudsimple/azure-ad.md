@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fe80c6231f95ec7040bde5f1d7e74353b8bfff60
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: b9060ecbb9ca9e77d994a8f20378e2c53927586a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544421"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617370"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Az Azure AD használata identitás-szolgáltatóként a vCenter a CloudSimple Private Cloud szolgáltatásban
 
@@ -64,16 +64,16 @@ Opcionálisan más Azure AD-funkciókat is konfigurálhat.  Ezek nem szükséges
 3. Konfigurálja a felügyeleti csoportot a Azure AD Domain Services kezeléséhez az [Azure Portal használatával Azure Active Directory Domain Services engedélyezése](../active-directory-domain-services/active-directory-ds-getting-started-admingroup.md)című témakörben leírtak szerint.
 4. Frissítse a Azure AD Domain Services DNS-beállításait a [Azure Active Directory Domain Services engedélyezése](../active-directory-domain-services/active-directory-ds-getting-started-dns.md)című témakörben leírtak szerint.  Ha az interneten keresztül szeretne csatlakozni az AD-hez, állítsa be az Azure AD tartományi szolgáltatások nyilvános IP-címéhez tartozó DNS-rekordot a tartománynévre.
 5. Jelszó-kivonatolási szinkronizálás engedélyezése a felhasználók számára.  Ez a lépés lehetővé teszi az NT LAN Manager (NTLM) és a Kerberos-hitelesítéshez szükséges jelszó-kivonatok szinkronizálását Azure AD Domain Services. A jelszókivonat-adatok szinkronizálásának beállítása után a felhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba. Lásd: [jelszó-kivonatolási szinkronizálás engedélyezése Azure Active Directory Domain Servicesra](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md).
-    1. Ha csak felhőalapú felhasználók jelennek meg, akkor az <a href="http://myapps.microsoft.com/" target="_blank">Azure ad hozzáférési paneljén</a> meg kell változtatniuk a jelszavukat, hogy a jelszó-kivonatok az NTLM vagy a Kerberos által megkövetelt formátumban legyenek tárolva.  A [csak felhőalapú felhasználói fiókok esetében kövesse a jelszó-kivonat szinkronizálásának engedélyezése a felügyelt tartományhoz](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md#task-5-enable-password-hash-synchronization-to-your-managed-domain-for-cloud-only-user-accounts)című témakör utasításait.  Ezt a lépést az egyéni felhasználók és az Azure AD-címtárban létrehozott új felhasználók, az Azure Portal vagy az Azure AD PowerShell-parancsmagok használatával kell elvégezni. Az Azure AD tartományi szolgáltatásokhoz hozzáférést igénylő felhasználóknak az <a href="http://myapps.microsoft.com/" target="_blank">Azure ad hozzáférési paneljén</a> kell megadniuk a profilt a jelszó módosításához.
+    1. Ha csak felhőalapú felhasználók jelennek meg, akkor az <a href="http://myapps.microsoft.com/" target="_blank">Azure ad hozzáférési paneljén</a> meg kell változtatniuk a jelszavukat, hogy a jelszó-kivonatok az NTLM vagy a Kerberos által megkövetelt formátumban legyenek tárolva.  A [csak felhőalapú felhasználói fiókok esetében kövesse a jelszó-kivonat szinkronizálásának engedélyezése a felügyelt tartományhoz](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)című témakör utasításait.  Ezt a lépést az egyéni felhasználók és az Azure AD-címtárban létrehozott új felhasználók, az Azure Portal vagy az Azure AD PowerShell-parancsmagok használatával kell elvégezni. Az Azure AD tartományi szolgáltatásokhoz hozzáférést igénylő felhasználóknak az <a href="http://myapps.microsoft.com/" target="_blank">Azure ad hozzáférési paneljén</a> kell megadniuk a profilt a jelszó módosításához.
 
         > [!NOTE]
         > Ha a szervezet csak felhőalapú felhasználói fiókkal rendelkezik, akkor a Azure Active Directory Domain Servicest használó összes felhasználónak meg kell változtatnia a jelszavát. A csak felhőalapú felhasználói fiókok olyan fiókok, amelyek az Azure AD-címtárban lettek létrehozva az Azure Portal vagy Azure AD PowerShell-parancsmagok használatával. Az ilyen felhasználói fiókok nem a helyszíni címtárból szinkronizálódnak.
 
-    2. Ha a helyszíni Active Directoryból szinkronizálja a jelszavakat, kövesse a [Active Directory dokumentáció] (.. /active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md.
+    2. Ha a helyszíni Active Directoryból szinkronizálja a jelszavakat, kövesse az [Active Directory dokumentációjának](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)lépéseit.
 
-6.  Konfigurálja a biztonságos LDAP-t a Azure Active Directory Domain Services a [biztonságos LDAP (LDAPS) konfigurálása Azure ad Domain Services felügyelt tartományhoz](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)című témakörben leírtak szerint.
-    1. Töltse fel az Azure-témakörben leírtak szerint a biztonságos LDAP- [hez](../active-directory-domain-services/configure-ldaps.md#task-1---obtain-a-certificate-for-secure-ldap)készült tanúsítványt a Secure LDAP használatára vonatkozó tanúsítvány beszerzése érdekében.  A CloudSimple azt javasolja, hogy a hitelesítésszolgáltató által kiadott aláírt tanúsítványt használja, hogy a vCenter megbízható legyen a tanúsítványban.
-    2. A biztonságos LDAP engedélyezése a [Azure ad Domain Services felügyelt tartomány biztonságos LDAP (LDAPS) engedélyezése](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)című részében leírtak szerint.
+6.  Konfigurálja a biztonságos LDAP-t a Azure Active Directory Domain Services a [biztonságos LDAP (LDAPS) konfigurálása Azure ad Domain Services felügyelt tartományhoz](../active-directory-domain-services/tutorial-configure-ldaps.md)című témakörben leírtak szerint.
+    1. Töltse fel az Azure-témakörben leírtak szerint a biztonságos LDAP- [hez](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)készült tanúsítványt a Secure LDAP használatára vonatkozó tanúsítvány beszerzése érdekében.  A CloudSimple azt javasolja, hogy a hitelesítésszolgáltató által kiadott aláírt tanúsítványt használja, hogy a vCenter megbízható legyen a tanúsítványban.
+    2. A biztonságos LDAP engedélyezése a [Azure ad Domain Services felügyelt tartomány biztonságos LDAP (LDAPS) engedélyezése](../active-directory-domain-services/tutorial-configure-ldaps.md)című részében leírtak szerint.
     3. Mentse a tanúsítvány nyilvános részét (a titkos kulcs nélkül). cer formátumban a vCenter való használathoz az Identity forrás konfigurálásakor.
     4. Ha az Azure AD tartományi szolgáltatásokhoz való internet-hozzáférésre van szükség, engedélyezze a biztonságos hozzáférés engedélyezése az interneten keresztül lehetőséget.
     5. Adja hozzá a bejövő biztonsági szabályt az Azure AD tartományi szolgáltatások NSG a 636-as TCP-porthoz.

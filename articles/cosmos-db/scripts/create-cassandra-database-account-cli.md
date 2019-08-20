@@ -1,5 +1,5 @@
 ---
-title: Az Azure CLI-szkript – létrehozása egy Azure Cosmos DB Cassandra API-fiókot, adatbázist és táblát
+title: Azure CLI-szkript – Azure Cosmos DB Cassandra API fiók, adatbázis és tábla létrehozása
 description: Azure CLI-példaszkript – Azure Cosmos DB Cassandra API-fiók, -adatbázis és -táblázat létrehozása
 author: markjbrown
 ms.author: mjbrown
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 10/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 89d43d8fc956d747de885f69017ed79f49670858
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dfb661ef4e33ee69692d1b7f7fa2c5869507741f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66154741"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614869"
 ---
-# <a name="azure-cosmos-db-create-a-cassandra-api-account-using-azure-cli"></a>Az Azure Cosmos DB: Azure CLI-vel a Cassandra API-fiók létrehozása
+# <a name="azure-cosmos-db-create-a-cassandra-api-account-using-azure-cli"></a>Az Azure Cosmos DB: Cassandra API-fiók létrehozása az Azure CLI-vel
 
 Ez a CLI-példaszkript létrehoz egy Azure Cosmos DB Cassandra API-fiókot, -adatbázist és -táblázatot.
 
@@ -46,7 +46,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Létrehoz egy Azure Cosmos DB-fiókot. |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Létrehoz egy Azure Cosmos DB-adatbázist. |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Létrehoz egy Azure Cosmos-adatbázist. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések

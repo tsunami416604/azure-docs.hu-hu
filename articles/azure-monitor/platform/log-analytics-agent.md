@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/17/2019
 ms.author: magoedte
-ms.openlocfilehash: 6c8f9c98d645f60ea9281d1ca2aa15731c9c1e80
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 576a44663518343a9132af468a0f1c1fb8e4de50
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954992"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575390"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>A Log Analytics ügynökkel gyűjti a naplózási adatokat
 
@@ -148,7 +148,7 @@ Az Azure-előfizetésben vagy a hibrid környezetben lévő gépek közvetlen cs
 
 |Forrás | Módszer | Leírás|
 |-------|-------------|-------------|
-|Azure VM| -Log Analytics Virtuálisgép-bővítmény [Windows](../../virtual-machines/extensions/oms-windows.md) vagy [Linux](../../virtual-machines/extensions/oms-linux.md) Azure CLI-vel vagy egy Azure Resource Manager-sablonnal<br>- [Az Azure Portalról manuálisan](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json). | A bővítmény a Log Analytics-ügynököket telepíti az Azure-beli virtuális gépeken, és regisztrálja őket egy meglévő Azure Monitor-munkaterületet.|
+|Azure VM| -Log Analytics Virtuálisgép-bővítmény [Windows](../../virtual-machines/extensions/oms-windows.md) vagy [Linux](../../virtual-machines/extensions/oms-linux.md) Azure CLI-vel vagy egy Azure Resource Manager-sablonnal<br>- [Manuálisan a Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)<br>- [Automatikus kiépítés Azure Security Center](../../security-center/security-center-enable-data-collection.md)| – A bővítmény telepíti a Log Analytics ügynököt az Azure Virtual Machines szolgáltatásban, és regisztrálja őket egy meglévő Azure Monitor-munkaterületen.<br>– Azure Security Center kiépítheti a Log Analytics ügynököt az összes támogatott Azure-beli virtuális gépre és a létrehozott újakra, ha engedélyezi a biztonsági rések és fenyegetések figyelését. Ha engedélyezve van, a telepített ügynök nélküli új vagy meglévő virtuális gépek kiépítve lesznek.|
 | Windows rendszerű hibrid számítógép|- [Manuális telepítés](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Az Azure Stack Resource Manager-sablon](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |A Microsoft Monitoring agent telepítése a parancssorból vagy egy Azure Automation DSC, például automatikus módszer használatával [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications), vagy ha telepítette a Microsoft Azure Resource Manager-sablonnal Az Azure Stack az adatközpontban.| 
 | Linux rendszerű hibrid számítógép| [Manuális telepítés](../../azure-monitor/learn/quick-collect-linux-computer.md)|Telepítse az ügynököt a Linux rendszerre, a Githubon található burkoló-parancsfájl hívása során. | 
 | System Center Operations Manager|[Az Operations Manager integrálása a Log Analytics használatával](../../azure-monitor/platform/om-agents.md) | Konfigurálja a Operations Manager és Azure Monitor naplók közötti integrációt, hogy továbbítsa az összegyűjtött adatokat a felügyeleti csoportnak jelentő Windows rendszerű számítógépekről.|  

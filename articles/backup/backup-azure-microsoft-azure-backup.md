@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: eb9908fc7b2d4ecd8af8c2b4a65ab43352035ec5
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 18eacc914a30dc6004bef71e9d3910e170c43d9b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018898"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575143"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
 > [!div class="op_single_selector"]
@@ -176,11 +176,10 @@ Ha a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet, hogy 
     Ha az SQL 2017 saját példányát használja, manuálisan kell konfigurálnia az SSRS-t. Az SSRS konfigurálása után ellenőrizze, hogy az SSRS *IsInitialized* tulajdonsága *true*értékre van-e állítva. Ha igaz értékre van állítva, a MABS feltételezi, hogy az SSRS már konfigurálva van, és kihagyja az SSRS-konfigurációt.
 
     Az SSRS konfigurálásához használja a következő értékeket: 
-
-        - Service Account: ‘Use built-in account’ should be Network Service
-        - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>
-        - Database: DatabaseName should be ReportServer$<SQLInstanceName>
-        - Web Portal URL: ‘Virtual Directory’ should be Reports_<SQLInstanceName>
+    - Szolgáltatásfiók: A "beépített fiók használata" hálózati szolgáltatásnak kell lennie
+    - Webszolgáltatás URL-címe: A "virtuális könyvtár" ReportServer_ kell lennie<SQLInstanceName>
+    - Adatbázis A DatabaseName ReportServer $<SQLInstanceName>
+    - Webes portál URL-címe: A "virtuális könyvtár" Reports_ kell lennie<SQLInstanceName>
 
     [További](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) információ az SSRS-konfigurációról.
 

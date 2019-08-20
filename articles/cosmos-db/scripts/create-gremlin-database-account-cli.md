@@ -1,5 +1,5 @@
 ---
-title: Az Azure CLI-szkript – létrehozása egy Azure Cosmos DB Gremlin API-fiókot, adatbázist és gráfot
+title: Azure CLI-szkript – hozzon létre egy Azure Cosmos DB Gremlin API-fiókot, adatbázist és gráfot
 description: Azure CLI-példaszkript – Azure Cosmos DB Gremlin API-fiók, adatbázis és gráf létrehozása
 author: markjbrown
 ms.author: mjbrown
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 10/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 1be21c0d468a4fca9b8c5f5d734a755c413bf999
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 72a0b0f1a2dfce33531c6d93f22b7774b8d17356
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66154700"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616721"
 ---
-# <a name="azure-cosmos-db-create-a-gremlin-api-account-using-azure-cli"></a>Az Azure Cosmos DB: Azure CLI-vel a Gremlin API-fiók létrehozása
+# <a name="azure-cosmos-db-create-a-gremlin-api-account-using-azure-cli"></a>Az Azure Cosmos DB: Gremlin API-fiók létrehozása az Azure CLI-vel
 
 Ez a CLI-példaszkript létrehoz egy Azure Cosmos DB Gremlin API-fiókot, adatbázist és gráfot.
 
@@ -43,7 +43,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Létrehoz egy Azure Cosmos DB-fiókot. |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Létrehoz egy Azure Cosmos DB-adatbázist. |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Létrehoz egy Azure Cosmos-adatbázist. |
 | [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Létrehoz egy Azure Cosmos DB-gráfot a Gremlinhez. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 

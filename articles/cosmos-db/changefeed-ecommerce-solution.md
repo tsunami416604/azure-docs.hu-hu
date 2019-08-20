@@ -7,16 +7,16 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 7923ce10912ebb6f09c1c3d8390dd51b4f876bea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 86d4dd706b097891db155214e4edb7e85e054858
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68551997"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616950"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Használja az Azure Cosmos DB módosításcsatornáját valós idejű adatelemzés megjelenítése
 
-Az Azure Cosmos DB-módosítási hírcsatorna egy olyan mechanizmus, a rekordok és a folyamatos növekményes hírcsatorna lekérése egy Azure Cosmos DB-tárolók, azokat a rekordokat a rendszer éppen létrehozott vagy módosított. Módosítási hírcsatorna támogatása működését úgy tároló nem változott. Majd megjeleníti a dokumentumok a sorrendben, amelyben a módosítás módosult a listán. Módosítási hírcsatorna kapcsolatos további információkért lásd: [dolgozik a változáscsatorna](change-feed.md) cikk. 
+A Azure Cosmos DB változási hírcsatorna egy olyan mechanizmus, amely egy Azure Cosmos-tárolóból származó rekordok folyamatos és növekményes adatcsatornájának beolvasását végzi el a rekordok létrehozásakor vagy módosításakor. Módosítási hírcsatorna támogatása működését úgy tároló nem változott. Majd megjeleníti a dokumentumok a sorrendben, amelyben a módosítás módosult a listán. Módosítási hírcsatorna kapcsolatos további információkért lásd: [dolgozik a változáscsatorna](change-feed.md) cikk. 
 
 Ez a cikk bemutatja, hogyan módosítási hírcsatorna használhatja egy e-kereskedelmi cég felhasználói mintákról, hajtsa végre a valós idejű adatok elemzését és megjelenítését. Esemény, például egy felhasználó egy elem megtekintése, felvesz egy elemet a bevásárlókocsihoz vagy elemeire vásárlási elemzi. Esetén ezek az események közül egy új bejegyzést hoznak létre, és a módosítási hírcsatorna rögzítő. Módosítási hírcsatorna majd eseményindítók lépések metrikák elemzéséhez, a vállalati teljesítmény és a tevékenység Vizualizáció eredményez. Mintametrikák, amelyek segítségével megjelenítheti például bevétel, a látogató egyedi, népszerű cikkek, és tekinthetők meg és és a egy bevásárlókocsihoz hozzáadott elem átlagár vásárolt. Minta metrikák segítségével egy e-kereskedelmi cég kiértékelése a hely népszerűsége, a reklám- és árképzési stratégiák kidolgozásában és milyen támogatásán készletre vonatkozó döntéseket.
 
@@ -41,9 +41,9 @@ Az alábbi ábrán az adatfolyam és a következő összetevők kapnak szerepet 
    }
    ```
 
-2. **Cosmos DB:** A generált adathalmazt egy Azure Cosmos DB gyűjtemény tárolja.  
+2. **Cosmos DB:** A generált adattároló egy Azure Cosmos-tárolóban tárolódik.  
 
-3. **Csatorna módosítása:** A módosítási hírcsatorna figyeli a Azure Cosmos DB gyűjtemény módosításait. Minden alkalommal, amikor a gyűjtemény (esemény következik be, például egy felhasználó megtekintése egy elemet, amikor felvesz egy elemet a bevásárlókocsihoz, vagy elemeire vásárlási) adnak hozzá egy új dokumentumot, a módosítási hírcsatorna fogja elindítani egy [Azure-függvény](../azure-functions/functions-overview.md).  
+3. **Csatorna módosítása:** A változási hírcsatorna figyeli az Azure Cosmos-tároló módosításait. Minden alkalommal, amikor a gyűjtemény (esemény következik be, például egy felhasználó megtekintése egy elemet, amikor felvesz egy elemet a bevásárlókocsihoz, vagy elemeire vásárlási) adnak hozzá egy új dokumentumot, a módosítási hírcsatorna fogja elindítani egy [Azure-függvény](../azure-functions/functions-overview.md).  
 
 4. **Azure-függvény:** Az Azure-függvény feldolgozza az új adatokat, és elküldi azt egy [Azure Event hub](../event-hubs/event-hubs-about.md)-nak.  
 
@@ -143,7 +143,7 @@ Az Azure Event Hub kap az eseményadatokat, a tárolók, a folyamatokat, és tov
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>Olvassa el a módosítási hírcsatorna beállítása Azure-függvény
 
-Amikor létrejön egy új dokumentumot, vagy egy dokumentumot egy Cosmos DB-gyűjtemények módosul, a módosítási hírcsatorna automatikusan ad hozzá a módosított dokumentumok gyűjtemény módosításait annak előzményeit. Rendszer most felépíti és futtatja az Azure-függvény, amely feldolgozza a változáscsatorna. Ha egy dokumentum létrehozásakor vagy módosításakor a létrehozott gyűjtemény, az Azure-függvény a változáscsatorna aktiválódik. Ezután az Azure-függvény a módosított dokumentumok küld az Event Hubs.
+Amikor új dokumentumot hoznak létre, vagy egy aktuális dokumentumot módosítanak egy Cosmos-tárolóban, a módosítási hírcsatorna automatikusan hozzáadja a módosított dokumentumot a gyűjtemény változásainak előzményeihez. Rendszer most felépíti és futtatja az Azure-függvény, amely feldolgozza a változáscsatorna. Ha egy dokumentum létrehozásakor vagy módosításakor a létrehozott gyűjtemény, az Azure-függvény a változáscsatorna aktiválódik. Ezután az Azure-függvény a módosított dokumentumok küld az Event Hubs.
 
 1. Térjen vissza a tárház, amely klónozta az eszközön.  
 
@@ -318,7 +318,7 @@ Power BI egy üzleti elemzési eszközök az adatok elemzése és elemzéseket o
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Nem kötelező: Megjelenítés E-kereskedelmi hellyel
 
-Mostantól megfigyelheti hogyan használhatja az új adatok eszköz valódi e-kereskedelmi webhely kapcsolódni. Az e-kereskedelmi webhely készítéséhez használni egy Azure Cosmos DB-adatbázis (nők, férfi, Uniszex) termékkategóriák listája, a termékkatalógus és a legnépszerűbb elemek listáját.
+Mostantól megfigyelheti hogyan használhatja az új adatok eszköz valódi e-kereskedelmi webhely kapcsolódni. Az e-kereskedelmi webhely létrehozásához használjon egy Azure Cosmos-adatbázist a termékkategóriák (nők, férfiak, Unisex), a termékkatalógus és a legnépszerűbb elemek listájának tárolásához.
 
 1. Lépjen vissza a [az Azure Portal](https://portal.azure.com/), majd a **Cosmos DB-fiók**, majd a **adatkezelő**.  
 

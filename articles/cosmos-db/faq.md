@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 5cbbd507352471f5e093ef018de4b0c849aad442
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 93b00aec868cf947b67329934c703f5d1b774426
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000798"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615382"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Az Azure Cosmos DB API kapcsolatos gyakori kérdések
 
@@ -123,7 +123,7 @@ Igen Azure cosmos DB támogatja az idősoros elemzés, a következő egy minta [
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Hogyan kezdhetem meg az SQL API fejlesztését?
 
-Először, jelentkezzen Azure-előfizetésre. Regisztrációt követően az Azure-előfizetéssel, hozzáadhat egy SQL API-tárolót az Azure-előfizetéshez. Az Azure Cosmos DB-fiók hozzáadására vonatkozó utasításokért lásd: [hozzon létre egy Azure Cosmos DB-adatbázisfiók](create-sql-api-dotnet.md#create-account).
+Először, jelentkezzen Azure-előfizetésre. Regisztrációt követően az Azure-előfizetéssel, hozzáadhat egy SQL API-tárolót az Azure-előfizetéshez. Azure Cosmos DB fiók hozzáadásával kapcsolatos útmutatásért lásd: [Azure Cosmos Database-fiók létrehozása](create-sql-api-dotnet.md#create-account).
 
 [SDK-k](sql-api-sdk-dotnet.md) a .NET, Python, Node.js, JavaScript és Java esetében érhetők el. A fejlesztők is használhatja a [RESTful HTTP API-k](/rest/api/cosmos-db/) kommunikál a különböző platformok és nyelvek az Azure Cosmos DB erőforrásokat.
 
@@ -203,7 +203,7 @@ A descendants (például dokumentumok, a mellékletek) és a tároló szintű en
 
 ### <a name="what-is-the-azure-cosmos-dbs-api-for-mongodb"></a>Mi a Azure Cosmos DB API-MongoDB?
 
-A Azure Cosmos DB API-MongoDB egy olyan huzal-protokoll kompatibilitási réteg, amely lehetővé teszi az alkalmazások számára, hogy a meglévő, Közösség által támogatott SDK-k és illesztőprogramok használatával könnyedén és transzparens módon kommunikáljanak a natív Azure Cosmos DB MongoDB. A fejlesztők mostantól a meglévő MongoDB eszközlánccal és képességeiket is használhatják olyan alkalmazások készítéséhez, amelyek kihasználják a Azure Cosmos DB. A fejlesztők a Azure Cosmos DB egyedi képességeivel részesülnek, amelyek globális elosztást biztosítanak a több főkiszolgálós replikációval, az automatikus indexeléssel, a biztonsági mentési karbantartással, a pénzügyi támogatással rendelkező szolgáltatói szerződésekkel (SLA) stb.
+A MongoDB-hez készült Azure Cosmos DB API-protokoll kompatibilitási réteg, amely lehetővé teszi az alkalmazások számára, hogy a meglévő, Közösség által támogatott SDK-k és illesztőprogramok használatával könnyedén és transzparens módon kommunikáljanak a natív Azure Cosmos-adatbázis-motorral. A fejlesztők mostantól a meglévő MongoDB eszközlánccal és képességeiket is használhatják olyan alkalmazások készítéséhez, amelyek kihasználják a Azure Cosmos DB. A fejlesztők a Azure Cosmos DB egyedi képességeivel részesülnek, amelyek globális elosztást biztosítanak a több főkiszolgálós replikációval, az automatikus indexeléssel, a biztonsági mentési karbantartással, a pénzügyi támogatással rendelkező szolgáltatói szerződésekkel (SLA) stb.
 
 ### <a name="how-do-i-connect-to-my-database"></a>Hogyan csatlakozni az adatbázishoz?
 
@@ -453,7 +453,7 @@ A tábla API ugyanazokat a lekérdezési funkciókat, mint az Azure Table storag
 TableThroughput akkor kell megváltoztatnia, ha érvényes a következő feltételek valamelyike:
 
 * Egy kinyerési, átalakítási és betöltési (ETL) az adatok hajt végre, vagy rövid időn belül nagy mennyiségű adatot feltölteni kívánt.
-* További átviteli sebesség a tárolóból vagy egy készletből, a tárolók, a háttéralkalmazás van szüksége. Például láthatja, hogy a használt átviteli sebesség több, mint a kiosztott átviteli sebesség, és Ön éppen első szabályozott. További információkért lásd: [teljesítmény beállítása az Azure Cosmos DB-tárolók](set-throughput.md).
+* További átviteli sebesség a tárolóból vagy egy készletből, a tárolók, a háttéralkalmazás van szüksége. Például láthatja, hogy a használt átviteli sebesség több, mint a kiosztott átviteli sebesség, és Ön éppen első szabályozott. További információ: [az átviteli sebesség beállítása az Azure Cosmos-tárolók számára](set-throughput.md).
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>Vertikális felskálázás vagy leskálázás átviteli sebességének Table API táblázat?
 
@@ -720,7 +720,7 @@ Az Apache Cassandra API olyan platformszolgáltatás, amely lehetővé teszi a k
 
 Azure Cosmos DB biztosítja a rendelkezésre állás és a közel valós idejű okokból kulcsrakész globális disztribúciót. Nem kell telepítő replikák vagy egyebek. Minden írás mindig tartósan a kvórumot minden olyan régióban, ahol a teljesítményre vonatkozó garanciákat ír.
 
-### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gcgrace-compression-memtableflushperiod-and-more"></a>Olvassa el vonatkozóan különböző beállításait tábla metaadatainak virágzó szűrőt, például a gyorsítótárazás, mi történik, javítás módosítása, gc_grace, tömörítés memtable_flush_period és egyéb?
+### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gc_grace-compression-memtable_flush_period-and-more"></a>Olvassa el vonatkozóan különböző beállításait tábla metaadatainak virágzó szűrőt, például a gyorsítótárazás, mi történik, javítás módosítása, gc_grace, tömörítés memtable_flush_period és egyéb?
 
 Az Azure Cosmos DB olvasási/írási műveleteket és kell foglalkoznia a konfigurációs beállításait, és véletlenül kezelésére szolgáló őket átviteli teljesítményt nyújt.
 

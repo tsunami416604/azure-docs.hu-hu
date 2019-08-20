@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: bffb92e37ccddd43c2a64466282084bb6226c338
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 24e7e67145b789737484fcb594f48127c41eafe9
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570568"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575219"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban
 
@@ -107,12 +107,16 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    > RHEL 7,6: Fence-Agents-4.2.1 -11. el7 _ 6.8  
    > RHEL 7,5: Fence-Agents-4.0.11 -86. el7 _ 5.8  
    > RHEL 7,4: Fence-Agents-4.0.11 -66. el7 _ 4.12  
-   > További információ: a [magas rendelkezésre állású RHEL futó Azure-beli virtuális gép, amely nagyon hosszú időt vesz igénybe, vagy ha a virtuális gép leáll, a kerítés leáll](https://access.redhat.com/solutions/3408711)
+   > További információkért tekintse meg a [magas rendelkezésre állású RHEL futó Azure-beli virtuális gépeket, ha a virtuális gép leáll, vagy a kerítés sikertelen/időtúllépést](https://access.redhat.com/solutions/3408711)okoz.
 
    Keresse meg az Azure kerítés ügynökének verzióját. Ha szükséges, frissítse a fent megadott vagy újabb verzióra.
+
    <pre><code># Check the version of the Azure Fence Agent
     sudo yum info fence-agents-azure-arm
    </code></pre>
+
+   > [!IMPORTANT]
+   > Ha frissítenie kell az Azure kerítés-ügynököt, és ha egyéni szerepkört használ, ügyeljen arra, hogy frissítse az egyéni szerepkört a következő művelettel:. További részletekért lásd: [Egyéni szerepkör létrehozása a kerítési ügynökhöz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent).  
 
 1. **[A]**  Állomásnév-feloldás beállítása
 

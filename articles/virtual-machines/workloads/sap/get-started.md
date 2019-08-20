@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ecf3ec6ba9c71f3d7624b541ba0618645ab14f4
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: da7b9c44d15ac0ca16afe15e429a6fe2cf89e366
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535087"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575238"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -49,7 +49,7 @@ A dokumentumok egy sorozata az Azure-ban (nagyméretű példányokon), vagy röv
 - [A SAP HANA magas rendelkezésre állása és vész-helyreállítása az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
 - [Az Azure-beli SAP HANA hibakeresése és figyelése (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
 
-További lépések:
+Következő lépések:
 
 - [A SAP HANA áttekintése és architektúrája az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 
@@ -122,6 +122,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 08/16/2019: A [pacemaker beállítása Red Hat Enterprise Linux az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) című részében szereplő változások emlékeztetik az ügyfeleket az egyéni szerepkör műveleteinek frissítésére, ha az Azure kerítési ügynök új verziójára frissítenek.  
 - 08/15/2019: [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjának](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) változásai az ultra Disk (korábban Ultra SSD) általánosan elérhetővé tételének tükrözéséhez
 - 08/01/2019: Változások az [Azure-beli SUSE Linux Enterprise Server pacemaker beállításához](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) a módosítások integrálásához a SLES 15 esetében 
 - 07/23/2019: Változások a [fürtben egy SAP ASCS/SCS-példány egy Windows feladatátvevő fürtön egy Azure-beli fájlmegosztás használatával](sap-high-availability-guide-wsfc-file-share.md) , amely a közvetlen tárolóhelyek Azure site Recovery szolgáltatások általi támogatását tükrözi

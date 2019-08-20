@@ -1,5 +1,5 @@
 ---
-title: Az Azure CLI-szkript – létrehozása egy Azure Cosmos DB Table API-fiókot, adatbázist és táblát
+title: Azure CLI-szkript – Azure Cosmos DB Table API fiók, adatbázis és tábla létrehozása
 description: Azure CLI-példaszkript – Azure Cosmos DB Table API-fiók, -adatbázis és -táblázat létrehozása
 author: markjbrown
 ms.author: mjbrown
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 10/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: afb92b34db00f9294b03dc096f72c698a44b30da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3beeb701c20e0721adeb1e17e6d653f0cbb9f803
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60448486"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616711"
 ---
-# <a name="azure-cosmos-db-create-a-table-api-account-using-azure-cli"></a>Az Azure Cosmos DB: Azure CLI-vel a Table API-fiók létrehozása
+# <a name="azure-cosmos-db-create-a-table-api-account-using-azure-cli"></a>Az Azure Cosmos DB: Table API-fiók létrehozása az Azure CLI-vel
 
 Ez a CLI-példaszkript létrehoz egy Azure Cosmos DB Table API-fiókot, -adatbázist és -táblázatot.
 
@@ -43,7 +43,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Létrehoz egy Azure Cosmos DB-fiókot. |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Létrehoz egy Azure Cosmos DB-adatbázist. |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Létrehoz egy Azure Cosmos-adatbázist. |
 | [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Létrehoz egy Azure Cosmos DB-táblázatot. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 

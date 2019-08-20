@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: e321091f2abcff4c385b442ac6474c0592845e2e
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: f2e01e42a53f6f099191c03f45d6521668ea73a1
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602031"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616670"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Biztonságos hozzáférés a Azure Cosmos DB lévő adateléréshez
 
@@ -74,7 +74,7 @@ Database database = await client.CreateDatabaseAsync(
 
 Az erőforrás-tokenek hozzáférést biztosítanak az adatbázison belüli alkalmazás-erőforrásokhoz. Erőforrás-tokenek:
 - Hozzáférés biztosítása bizonyos tárolók, partíciós kulcsok, dokumentumok, mellékletek, tárolt eljárások, eseményindítók és UDF számára.
-- Akkor jön létre, [](#users) amikor egy felhasználó [engedélyt kap egy](#permissions) adott erőforráshoz.
+- Akkor jön létre, amikor egy [felhasználó](#users) engedélyt kap egy adott erőforráshoz. [](#permissions)
 - Akkor jön létre újra, amikor egy engedélyezési erőforrást POST, GET vagy PUT hívás után végeznek el.
 - Használjon olyan kivonatoló erőforrás-tokent, amelyet kifejezetten a felhasználóhoz, erőforráshoz és engedélyhez alakítottak ki.
 - Az idő egy testreszabható érvényességi időtartammal van kötve. Az alapértelmezett érvényes TimeSpan egy óra. A jogkivonat élettartama azonban explicit módon megadható, legfeljebb öt órára.
@@ -105,7 +105,7 @@ Az erőforrás-tokenek létrehozásához vagy közvetítéséhez használt köz�
 <a id="users"></a>
 
 ## <a name="users"></a>Felhasználók
-Cosmos DB felhasználók Cosmos DB-adatbázishoz vannak társítva.  Minden adatbázis nulla vagy több Cosmos DB felhasználót tartalmazhat.  Az alábbi mintakód bemutatja, hogyan hozható létre Cosmos DB felhasználói erőforrás.
+Cosmos DB felhasználók egy Cosmos-adatbázishoz vannak társítva.  Minden adatbázis nulla vagy több Cosmos DB felhasználót tartalmazhat.  Az alábbi mintakód bemutatja, hogyan hozható létre Cosmos DB felhasználói erőforrás.
 
 ```csharp
 //Create a user.
@@ -193,5 +193,5 @@ Azure Cosmos DB lehetővé teszi, hogy az adatbázisban vagy gyűjteményekben t
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>További lépések
-* Az Cosmos db adatbázis-biztonsággal kapcsolatos további tudnivalókért [lásd: Cosmos db: Adatbázis-](database-security.md)biztonság.
+* A Cosmos Database biztonságával kapcsolatos további tudnivalókért tekintse [meg a Cosmos db: Adatbázis-](database-security.md)biztonság.
 * A Azure Cosmos DB engedélyezési jogkivonatok létrehozásával kapcsolatos további információkért lásd: [Access Control Azure Cosmos db erőforrásokon](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).

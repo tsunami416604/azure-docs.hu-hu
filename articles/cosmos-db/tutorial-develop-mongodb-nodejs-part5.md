@@ -1,7 +1,7 @@
 ---
-title: Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez – csatlakozás Cosmos DB-hez a Mongoose használata
+title: Szögletes alkalmazás létrehozása Azure Cosmos DB API-jával a MongoDB-hoz való kapcsolódáshoz a mongúz használatával Cosmos DB
 titleSuffix: Azure Cosmos DB
-description: Ez az oktatóanyag ismerteti a Node.js-alkalmazás létrehozása az Angular és az Express használatával az, Cosmos DB-ben tárolt adatok kezeléséhez. Ez a rész a Mongoose használhatja Azure Cosmos DB-hez való kapcsolódáshoz.
+description: Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy Node. js-alkalmazást szögletes és expressz használatával a Cosmos DBban tárolt adat kezeléséhez. Ebben a részben az mongúz használatával csatlakozik Azure Cosmos DBhoz.
 author: johnpapa
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -12,54 +12,54 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: c8cab3c723b7e507b0f3b05b933cca9e2c24fb39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 626015e2aac5eb09dfd271a139dbc5eb49a088fc
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60767301"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616423"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez – csatlakozás Cosmos DB-hez a Mongoose használata
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-jával a MongoDB-hoz való kapcsolódáshoz a mongúz használatával Cosmos DB
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy Node.js-alkalmazást az Express és az Angular, és csatlakoztassa azt a [Cosmos DB API a mongodb-hez konfigurált Cosmos-fiók](mongodb-introduction.md). Ez a cikk azt ismerteti, az oktatóanyag 5. rész és épül [4. rész](tutorial-develop-mongodb-nodejs-part4.md).
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre a Node. js-alkalmazásokat expressz és szögletes módon, és hogyan csatlakoztatható hozzá a [Cosmos db API-MongoDB konfigurált Cosmos](mongodb-introduction.md)-fiókhoz. Ez a cikk az oktatóanyag 5. részét ismerteti, és a [4](tutorial-develop-mongodb-nodejs-part4.md). részre épül.
 
-Az oktatóanyag ezen részében tartalma:
+Az oktatóanyag ezen részében a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
-> * Csatlakozás a Cosmos DB-hez a Mongoose használata.
-> * A Cosmos DB kapcsolati sztring lekérése.
-> * A főképmodell létrehozása.
-> * A Főképszolgáltatás létrehozása főképadatok lekéréséhez.
+> * Cosmos DBhoz való kapcsolódáshoz használjon mongúzt.
+> * Szerezze be Cosmos DB a kapcsolatok karakterláncát.
+> * Hozza létre a Hero modellt.
+> * Hozza létre a Hero szolgáltatást a Hero-adatlekérdezéshez.
 > * Futtassa helyben az alkalmazást.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ebben az oktatóanyagban a Kezdés előtt hajtsa végre a [4. rész](tutorial-develop-mongodb-nodejs-part4.md).
+* Az oktatóanyag elkezdése előtt végezze el a [4. rész](tutorial-develop-mongodb-nodejs-part4.md)lépéseit.
 
-* Ehhez az oktatóanyaghoz az Azure CLI helyi futtatása. Az Azure CLI 2.0-s vagy újabb verzióját kell telepíteni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné az Azure CLI, lásd: kell [az Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Ehhez az oktatóanyaghoz helyileg kell futtatnia az Azure CLI-t. Az Azure CLI 2.0-s vagy újabb verzióját kell telepíteni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure cli 2,0 telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
-* Ez az oktatóanyag végigvezeti a lépéseken, az alkalmazás lépésről lépésre. Ha le szeretné tölteni a kész projektet, a kész alkalmazást az [angular-cosmosdb adattárból](https://github.com/Azure-Samples/angular-cosmosdb) töltheti le a GitHubról.
+* Ez az oktatóanyag végigvezeti az alkalmazás lépésről lépésre történő felépítésének lépésein. Ha le szeretné tölteni a kész projektet, a kész alkalmazást az [angular-cosmosdb adattárból](https://github.com/Azure-Samples/angular-cosmosdb) töltheti le a GitHubról.
 
-## <a name="use-mongoose-to-connect"></a>Csatlakozás a Mongoose használata
+## <a name="use-mongoose-to-connect"></a>Az mongúz használata a kapcsolódáshoz
 
-A mongoose-objektum adatmodellezési (eszközgyártók általi) könyvtár MongoDB-hez és Node.js. A Mongoose használhatja az Azure Cosmos DB-fiókhoz való csatlakozáshoz. A következő lépések segítségével telepítse a Mongoose és csatlakozás az Azure Cosmos DB:
+A mongúz egy Object adatmodellezési (ODM) függvénytár a MongoDB és a Node. js-hez. Az Azure Cosmos DB-fiókhoz való kapcsolódáshoz a mongúzt használhatja. Az alábbi lépéseket követve telepítse a mongúzt, és kapcsolódjon a Azure Cosmos DBhoz:
 
-1. Telepítse a mongoose npm modult, amely egy felvenni a kapcsolatot a mongodb-hez használt API.
+1. Telepítse a mongúz NPM modult, amely a MongoDB való kommunikációhoz használt API.
 
     ```bash
     npm i mongoose --save
     ```
 
-1. Az a **kiszolgáló** mappában hozzon létre egy fájlt **mongo.js**. A kapcsolat részleteit az Azure Cosmos DB-fiókot fogja hozzáadni ehhez a fájlhoz.
+1. A **Server** mappában hozzon létre egy **Mongo. js**nevű fájlt. A Azure Cosmos DB-fiók kapcsolati adatait hozzáadja a fájlhoz.
 
-1. Másolja az alábbi kódot a **mongo.js** fájlt. A kód a következő szolgáltatásokat nyújtja:
+1. Másolja az alábbi kódot a **Mongo. js** fájlba. A kód a következő funkciókat biztosítja:
 
    * A Mongoose használatát igényli.
-   * Felülbírálja a Mongo az ES6/ES2015 és újabb verziók épített alap ígéretet használja.
-   * Meghív egy env fájlt, amely lehetővé teszi bizonyos dolgokat alapján van-e az átmeneti, éles vagy fejlesztői beállítása. Ezt a fájlt a következő szakaszban fog létrehozni.
-   * A MongoDB kapcsolati karakterláncot, amely be van állítva az env fájlban tartalmazza.
+   * Felülbírálja a Mongo ígéretet, hogy a ES6/ES2015 és újabb verziókban beépített alapszintű ígéretet használja.
+   * Olyan env-fájl hívása, amely lehetővé teszi bizonyos dolgok beállítását, attól függően, hogy az előkészítés, a gyártás vagy a fejlesztés van-e. Ezt a fájlt a következő szakaszban fogja létrehozni.
+   * Tartalmazza a MongoDB-kapcsolatok karakterláncát, amely az ENV fájlban van beállítva.
    * Létrehoz egy connect függvényt, amely meghívja a Mongoose-t.
 
      ```javascript
@@ -86,9 +86,9 @@ A mongoose-objektum adatmodellezési (eszközgyártók általi) könyvtár Mongo
      };
      ```
     
-1. Az Explorer panelen alatt **kiszolgáló**, hozza létre a **környezet**. Az a **környezet** mappában hozzon létre egy fájlt **environment.js**.
+1. Az Explorer ablaktábla **kiszolgáló**területén hozzon létre egy **környezet**nevű mappát. A **környezet** mappában hozzon létre egy **Environment. js**nevű fájlt.
 
-1. A mongo.js fájlból értékeinek tartalmaznia kell a `dbName`, a `key`, és a `cosmosPort` paramétereket. Másolja az alábbi kódot a **environment.js** fájlt:
+1. A Mongo. js fájlból meg kell adnia a `dbName`, a `key`és a `cosmosPort` paraméterek értékeit. Másolja a következő kódot a **Environment. js** fájlba:
 
     ```javascript
     // TODO: replace if yours are different
@@ -102,17 +102,17 @@ A mongoose-objektum adatmodellezési (eszközgyártók általi) könyvtár Mongo
 
 ## <a name="get-the-connection-string"></a>A kapcsolati sztring lekérése
 
-Az alkalmazás Azure Cosmos DB-hez csatlakozni szeretne az alkalmazás-konfigurációs beállításainak frissítése. A következő lépések segítségével frissítse a beállításokat: 
+Az alkalmazás Azure Cosmos DBhoz való összekapcsolásához frissítenie kell az alkalmazás konfigurációs beállításait. A beállítások frissítéséhez kövesse az alábbi lépéseket: 
 
-1. Az Azure Portalon szerezze be a port számát, az Azure Cosmos DB-fiók nevét és elsődleges kulcs értékeit az Azure Cosmos DB-fiókot.
+1. A Azure Portal adja meg a portszámot, Azure Cosmos DB a fiók nevét és az elsődleges kulcs értékeit a Azure Cosmos DB-fiókhoz.
 
-1. Az a **environment.js** fájl, módosítsa az értéket a `port` 10255-re. 
+1. A **Environment. js** fájlban módosítsa a értéket a 10255 értékre `port` . 
 
     ```javascript
     const port = 10255;
     ```
 
-1. Az a **environment.js** fájl, módosítsa az értéket a `accountName` neve lesz az Azure Cosmos DB-fiókot, amelyet [4. rész](tutorial-develop-mongodb-nodejs-part4.md) az oktatóanyag. 
+1. A **Environment. js** fájlban módosítsa a értékét `accountName` az oktatóanyag 4. [részében](tutorial-develop-mongodb-nodejs-part4.md) létrehozott Azure Cosmos db fiók nevére. 
 
 1. Kérje le az Azure Cosmos DB-fiók elsődleges kulcsát az alábbi parancssori paranccsal a terminálablakban: 
 
@@ -120,25 +120,25 @@ Az alkalmazás Azure Cosmos DB-hez csatlakozni szeretne az alkalmazás-konfigur�
     az cosmosdb list-keys --name <cosmosdb-name> -g myResourceGroup
     ```    
     
-    \<cosmosdb-name > a létrehozott Azure Cosmos DB-fiók neve [4. rész](tutorial-develop-mongodb-nodejs-part4.md) az oktatóanyag.
+    \<a cosmosdb neve > az oktatóanyag [4](tutorial-develop-mongodb-nodejs-part4.md) . részében létrehozott Azure Cosmos db fiók neve.
 
-1. Másolja az elsődleges kulcs értékét a **environment.js** fájlt úgy a `key` értéket.
+1. Másolja az elsődleges kulcsot a **Environment. js** fájlba `key` az értékként.
 
-Az alkalmazás most már rendelkezik a csatlakozás az Azure Cosmos DB összes szükséges információt. 
+Most az alkalmazás minden szükséges információt tartalmaz a Azure Cosmos DBhoz való kapcsolódáshoz. 
 
 ## <a name="create-a-hero-model"></a>Főképmodell létrehozása
 
-Ezután meg kell a sémájának meghatározása egy modellfájl megadásával az Azure Cosmos DB tárolja az adatokat. Az alábbi lépések segítségével hozzon létre egy _főképmodell_ , amely meghatározza, hogy az adatok a séma:
+Ezután meg kell határoznia a Azure Cosmos DB tárolni kívánt adatsémát egy modellel definiálva. A következő lépésekkel hozhat létre egy olyan _hős-modellt_ , amely meghatározza az adatsémát:
 
-1. Az Explorer panelen alatt a **kiszolgáló** mappában hozzon létre egy fájlt **hero.model.js**.
+1. Az Explorer ablaktábla **kiszolgáló** mappájában hozzon létre egy **Hero. Model. js**nevű fájlt.
 
-1. Másolja az alábbi kódot a **hero.model.js** fájlt. A kód a következő szolgáltatásokat nyújtja:
+1. Másolja az alábbi kódot a **Hero. Model. js** fájlba. A kód a következő funkciókat biztosítja:
 
    * A Mongoose használatát igényli.
    * Egy új sémát hoz létre egy azonosítóval, egy névvel és egy üzenettel.
    * Létrehoz egy modellt a séma használatával.
    * Exportálja a modellt. 
-   * A gyűjtemény neve **fő képek** (helyett **heros név**, amely a Mongoose többes számú elnevezési szabályai alapján a gyűjtemény alapértelmezett neve).
+   * A gyűjteményhez tartozó **hősök** neve (a **heros**helyett a gyűjtemény alapértelmezett neve, amely a többes számú mongúz-elnevezési szabályok alapján).
 
    ```javascript
    const mongoose = require('mongoose');
@@ -163,18 +163,18 @@ Ezután meg kell a sémájának meghatározása egy modellfájl megadásával az
 
 ## <a name="create-a-hero-service"></a>Főképszolgáltatás létrehozása
 
-Miután létrehozta a főképmodell, meg kell határozhat meg az adatokat, és hajtsa végre a listában, létrehozása, törlése és frissítési műveletek. Az alábbi lépések segítségével hozzon létre egy _főképszolgáltatás_ , amely lekéri az adatokat az Azure Cosmos DB:
+A Hero modell létrehozása után meg kell határoznia egy szolgáltatást az adatok olvasásához, valamint a lista, a létrehozás, a törlés és a frissítési művelet végrehajtásához. A következő lépésekkel hozhat létre egy olyan _Hero-szolgáltatást_ , amely a Azure Cosmos DBból lekérdezi az adatait:
 
-1. Az Explorer panelen alatt a **kiszolgáló** mappában hozzon létre egy fájlt **hero.service.js**.
+1. Az Explorer ablaktábla **kiszolgáló** mappájában hozzon létre egy **Hero. Service. js**nevű fájlt.
 
-1. Másolja az alábbi kódot a **hero.service.js** fájlt. A kód a következő szolgáltatásokat nyújtja:
+1. Másolja az alábbi kódot a **Hero. Service. js** fájlba. A kód a következő funkciókat biztosítja:
 
    * Lekéri a létrehozott modellt.
-   * Csatlakozás az adatbázishoz.
-   * Létrehoz egy `docquery` változót, amely a `hero.find` meghatároz egy lekérdezést, amely visszaadja az összes fő módszert.
-   * A lekérdezést a `docquery.exec` egy beváltja az összes fő listájának beolvasása, ahol a válasz állapota 200 függvényt. 
-   * Küld vissza a hibaüzenet, ha az állapot 500.
-   * Mivel modulokat használunk, lekéri a fő képeket. 
+   * Csatlakozik az adatbázishoz.
+   * Egy olyan `docquery` változót hoz létre `hero.find` , amely a metódus használatával definiál egy lekérdezést, amely az összes hősöket visszaadja.
+   * Futtat egy lekérdezést `docquery.exec` a függvénnyel, és megígéri, hogy beolvassa az összes olyan hősök listáját, ahol a válasz állapota 200. 
+   * A hibaüzenetet küldi vissza, ha az állapota 500.
+   * Beolvassa a hősöket, mert modulokat használunk. 
 
    ```javascript
    const Hero = require('./hero.model');
@@ -201,9 +201,9 @@ Miután létrehozta a főképmodell, meg kell határozhat meg az adatokat, és h
 
 ## <a name="configure-routes"></a>Útvonalak beállítása
 
-Ezután kell kezelni az URL-címek a get, útvonalak beállítása létrehozni, olvasni, és törlési kérelmek. Az útválasztási metódusok adja meg a visszahívási függvényekben (más néven _eseménykezelési funkciókat_). Ezek a függvények nevezzük, amikor az alkalmazás a megadott végponton, és a HTTP-metódus kérést kap. A főképszolgáltatás hozzáadása és definiálni az útvonalakat, kövesse az alábbi lépéseket:
+Ezután be kell állítania az útvonalakat a Get, a Create, az olvasás és a DELETE kérelmek URL-címeinek kezeléséhez. Az útválasztási módszerek a visszahívási függvényeket (más néven _kezelő függvények_) adják meg. Ezeket a függvényeket akkor hívja meg a rendszer, amikor az alkalmazás egy kérést kap a megadott végpont és HTTP-metódus számára. A következő lépésekkel adhatja hozzá a Hero szolgáltatást, és meghatározhatja az útvonalakat:
 
-1. A Visual Studio Code-a a **routes.js** fájlt, tegye megjegyzésbe a `res.send` -függvény, amely a minta fő kép adatait küldi. Adjon hozzá egy sort hívja a `heroService.getHeroes` inkább működik.
+1. A Visual Studio Code-ban a **Routes. js** fájlban tegye megjegyzésbe `res.send` a minta Hero-adatokat küldő függvényt. Ehelyett adjon hozzá egy sort a `heroService.getHeroes` függvény meghívásához.
 
     ```javascript
     router.get('/heroes', (req, res) => {
@@ -214,43 +214,43 @@ Ezután kell kezelni az URL-címek a get, útvonalak beállítása létrehozni, 
     });
     ```
 
-1. Az a **routes.js** fájl `require` a főképszolgáltatás:
+1. A **Routes. js** fájlban `require` a Hero szolgáltatás:
 
     ```javascript
     const heroService = require('./hero.service'); 
     ```
 
-1. Az a **hero.service.js** fájlt, frissítse a `getHeroes` függvényt, hogy a `req` és `res` paramétereket az alábbiak szerint:
+1. A **Hero. Service. js** fájlban frissítse a `getHeroes` függvényt, hogy a és `req` `res` a paramétereket az alábbiak szerint végezze el:
 
     ```javascript
     function getHeroes(req, res) {
     ```
 
-Szánjunk néhány percet, és körbejárja az előző kód. Először nézzük az index.js fájlba, amely beállítja a csomópont-kiszolgálót. Figyelje meg, hogy állít be, és határozza meg az útvonalakat. Ezután a routes.js fájl a főképszolgáltatás műsorgazdája, és utasítja, hogy az első az funkciók, például **getheroes függvényt**, és továbbítsa a kérést és választ. A hero.service.js fájl lekérdezi a modellt, és csatlakozik a Mongo. Ezután végrehajtása **getheroes függvényt** amikor nevezik, és adja vissza biztonsági 200-as választ. 
+Egy perc alatt áttekintheti az előző kódot, és elvégezheti az átjárást. Először is bekerülünk az index. js fájlba, amely beállítja a csomópont-kiszolgálót. Figyelje meg, hogy beállítja és meghatározza az útvonalakat. Ezután a Routes. js fájl beszélget a Hero szolgáltatással, és azt jelzi, hogy a függvényeket, például a **getHeroes**, és továbbítja a kérést és a választ. A Hero. Service. js fájl lekéri a modellt, és csatlakozik a Mongo. Ezt követően végrehajtja a **getHeroes** , amikor meghívjuk, és visszaadja a 200-es választ. 
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-Ezután futtassa az alkalmazást az alábbi lépések segítségével:
+Ezután futtassa az alkalmazást az alábbi lépések végrehajtásával:
 
-1. A Visual Studio Code-ban mentse az összes módosítást. A bal oldalon válassza ki a **Debug** gomb ![hibakeresés ikon a Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png), majd válassza ki a **hibakeresés indítása** gomb ![hibakeresés ikon a Visual Studio Code-ban ](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png).
+1. A Visual Studio Code-ban mentse az összes módosítást. A bal oldalon válassza a hibakeresés gomb ![hibakeresés ikonját a Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png)-ban, majd kattintson a **hibakeresés indítása** gombra ![hibakeresés ikon a Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png)-ban.
 
-1. Most váltson a böngészőben. Nyissa meg a **fejlesztői eszközök** és a **hálózati lap**. Lépjen a `http://localhost:3000`, és nem látja az alkalmazást.
+1. Most váltson a böngészőre. Nyissa meg a **fejlesztői eszközöket** és a **hálózat lapot**. `http://localhost:3000`Itt láthatja az alkalmazást.
 
     ![Új Azure Cosmos DB-fiók az Azure Portalon](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 
-Nincsenek nem tárol még az alkalmazás fő képeket. Ez az oktatóanyag következő részében, hozzáadjuk a put, push és törlési funkciót. Ezután azt is hozzáadása, frissítése és törölhet fő képeket a felhasználói felület az Azure Cosmos DB-adatbázishoz a Mongoose-kapcsolatokon keresztül. 
+Az alkalmazásban még nincsenek hősök tárolva. Az oktatóanyag következő részében a Put, a push és a DELETE funkciókat vesszük fel. Ezt követően hozzáadhat, frissíthet és törölhet hősöket a felhasználói felületen az Azure Cosmos-adatbázishoz tartozó mongúz-kapcsolatok használatával. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az erőforrásokat, törölheti az erőforráscsoportot, az Azure Cosmos DB-fiók és minden kapcsolódó erőforrás. A következő lépések használatával törölje az erőforráscsoportot:
+Ha már nincs szüksége az erőforrásokra, törölheti az erőforráscsoportot, Azure Cosmos DB fiókot és az összes kapcsolódó erőforrást. Az erőforráscsoport törléséhez kövesse az alábbi lépéseket:
 
- 1. Nyissa meg az erőforráscsoport, amelyben létrehozta az Azure Cosmos DB-fiókot.
+ 1. Keresse meg azt az erőforráscsoportot, amelyben létrehozta a Azure Cosmos DB fiókot.
  1. Válassza az **Erőforráscsoport törlése** elemet.
- 1. Erősítse meg az erőforráscsoport törléséhez, és válassza ki a nevét **törlése**.
+ 1. Erősítse meg a törölni kívánt erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa a 6. rész az oktatóanyag hozzáadása a Post, Put és Delete függvényeket az alkalmazáshoz:
+Folytassa az oktatóanyag 6. részével, hogy hozzáadja a post, Put és DELETE függvényeket az alkalmazáshoz:
 
 > [!div class="nextstepaction"]
-> [6. rész: Adja hozzá a Post, Put és Delete függvényeket az alkalmazáshoz](tutorial-develop-mongodb-nodejs-part6.md)
+> [6. rész: Post, Put és DELETE függvények hozzáadása az alkalmazáshoz](tutorial-develop-mongodb-nodejs-part6.md)

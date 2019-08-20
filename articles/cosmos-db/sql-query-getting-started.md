@@ -1,33 +1,33 @@
 ---
-title: Ismerkedés az Azure Cosmos DB SQL-lekérdezések
-description: Bevezetés az SQL-lekérdezések használatába
+title: Az SQL-lekérdezések első lépései a Azure Cosmos DBban
+description: Az SQL-lekérdezések bemutatása
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
-ms.openlocfilehash: 87b275806c06443e37e9e92c35a38b4cde378322
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5537133b31bb63c9fa6ac3a52b344f7f1d9c4c8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342566"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614343"
 ---
-# <a name="getting-started-with-sql-queries"></a>Ismerkedés az SQL-lekérdezések
+# <a name="getting-started-with-sql-queries"></a>SQL-lekérdezések – első lépések
 
-Azure Cosmos DB SQL API-fiókok lekérdezését elemek Structured Query Language (SQL) használatával, egy JSON-lekérdezési nyelvet támogatja. Az Azure Cosmos DB lekérdezési nyelv a a céljai a következők:
+Azure Cosmos DB SQL API-fiókok az Structured Query Language (SQL) használatával JSON-lekérdezési nyelvet használó elemek lekérdezését támogatják. A Azure Cosmos DB lekérdezési nyelv tervezési céljai a következők:
 
-* Támogatja az SQL, ismerős és a népszerű lekérdezés helyett egy új lekérdezési nyelvre inventing nyelvek valamelyikével. SQL formális programozási modellt biztosít részletes lekérdezéseket a JSON-elemek keresztül.  
+* Támogassa az SQLot, amely az egyik legismertebb és legnépszerűbb lekérdezési nyelv, és nem egy új lekérdezési nyelvet talál. Az SQL egy formális programozási modellt biztosít a JSON-elemek részletes lekérdezéséhez.  
 
-* JavaScript a programozási modellt használjuk alapját a lekérdezési nyelv. JavaScript típus system, kifejezés kiértékelése függvény meghívási jsou az SQL API gyökeréhez. Ezek gyökerek természetes programozási modell leképezések relációs, hierarchikus navigációs JSON-elemek között Önillesztések, térinformatikai lekérdezéseket, és hívja meg a felhasználó által definiált függvények (UDF), teljes mértékben javascriptben írt, funkciókat biztosítanak.
+* A JavaScript programozási modelljét a lekérdezési nyelv alapjaként használhatja. A JavaScript típusú rendszer, a kifejezés kiértékelése és a függvény meghívása az SQL API gyökerei. Ezek a gyökerek természetes programozási modellt biztosítanak olyan funkciókhoz, mint például a kapcsolatok kivetítése, a hierarchikus Navigálás a JSON-elemek, az önillesztések, a térbeli lekérdezések és a teljes mértékben JavaScriptben írt felhasználói függvények meghívása (UDF) számára.
 
 ## <a name="upload-sample-data"></a>Mintaadatok feltöltése
 
-Az SQL API Cosmos DB-fiók létrehozása egy nevű tárolóban `Families`. Két egyszerű JSON-elemek létrehozása a tárolóban. Az Azure Cosmos DB lekérdezési docs Ez az adatkészlet használatával is futtathatja a mintalekérdezések a legtöbb.
+Az SQL API Cosmos DB fiókjában hozzon létre egy nevű `Families`tárolót. Hozzon létre két egyszerű JSON-elemet a tárolóban. Az Azure Cosmos DB lekérdezési docs legtöbb lekérdezését futtathatja ezen adathalmaz használatával.
 
-### <a name="create-json-items"></a>Hozzon létre JSON-elemek
+### <a name="create-json-items"></a>JSON-elemek létrehozása
 
-Az alábbi kód létrehoz két egyszerű JSON-elemek családok kapcsolatban. Az Andersen és Wakefield családhoz egyszerű JSON-elemek közé tartozik a szüleinek, gyermekek és a kisállatok, cím és regisztrációs adatok. Az első elem van a karakterláncokat, számok, logikai értékek, tömbök és beágyazott tulajdonságok.
+A következő kód két egyszerű JSON-elemet hoz létre a családokról. Az Andersen és a Wakefield család egyszerű JSON-elemei közé tartoznak a szülők, a gyermekek és a hozzájuk tartozó háziállatok, a címek és a regisztrációs adatok. Az első elem sztringeket, számokat, logikai elemeket, tömböket és beágyazott tulajdonságokat tartalmaz.
 
 
 ```json
@@ -52,7 +52,7 @@ Az alábbi kód létrehoz két egyszerű JSON-elemek családok kapcsolatban. Az 
 }
 ```
 
-A második elemet használja `givenName` és `familyName` helyett `firstName` és `lastName`.
+A második tétel a `givenName` és `familyName` a helyett `firstName` a `lastName`és a értéket használja.
 
 ```json
 {
@@ -86,9 +86,9 @@ A második elemet használja `givenName` és `familyName` helyett `firstName` é
 
 ### <a name="query-the-json-items"></a>A JSON-elemek lekérdezése
 
-Próbálja ki néhány lekérdezést elleni megérteni a legfontosabb szempontok az Azure Cosmos DB SQL lekérdezési nyelv a JSON-adatokat.
+Próbáljon ki néhány lekérdezést a JSON-adaton, hogy megértse a Azure Cosmos DB SQL-lekérdezési nyelvének főbb szempontjait.
 
-Az alábbi lekérdezés azon elemeit adja vissza. Ha a `id` egyezések mezőben `AndersenFamily`. Mivel ez egy `SELECT *` lekérdezést, a lekérdezés kimenete a teljes JSON-elem. SELECT szintaxissal kapcsolatos további információkért lásd: [SELECT utasítás](sql-query-select.md). 
+A következő lekérdezés azokat az elemeket adja vissza `id` , amelyekben a mező megfelel. `AndersenFamily` Mivel ez egy `SELECT *` lekérdezés, a lekérdezés kimenete a teljes JSON-elem. A SELECT szintaxissal kapcsolatos további információkért lásd: [SELECT utasítás](sql-query-select.md). 
 
 ```sql
     SELECT *
@@ -96,7 +96,7 @@ Az alábbi lekérdezés azon elemeit adja vissza. Ha a `id` egyezések mezőben 
     WHERE f.id = "AndersenFamily"
 ```
 
-A lekérdezés eredményeit a következők: 
+A lekérdezés eredményei a következők: 
 
 ```json
     [{
@@ -118,7 +118,7 @@ A lekérdezés eredményeit a következők:
     }]
 ```
 
-A következő lekérdezés újraformázza a JSON-kimenet egy másik formázásához. A lekérdezés egy új JSON-projektek `Family` objektumot két kiválasztott mezőkkel `Name` és `City`, ha a cím, város ugyanaz, mint az állapot. "NY, NY" Ebben az esetben megegyezik.
+A következő lekérdezés újraformázza a JSON-kimenetet egy másik alakzatba. A lekérdezés egy új JSON `Family` -objektumot választ ki két kiválasztott mezővel, `Name` és `City`ha a városi város megegyezik az állapottal. "NY, NY" megfelel ebben az esetben.
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family
@@ -126,7 +126,7 @@ A következő lekérdezés újraformázza a JSON-kimenet egy másik formázásá
     WHERE f.address.city = f.address.state
 ```
 
-A lekérdezés eredményeit a következők:
+A lekérdezés eredményei a következők:
 
 ```json
     [{
@@ -137,7 +137,7 @@ A lekérdezés eredményeit a következők:
     }]
 ```
 
-A következő lekérdezés a család adja vissza a megadott nevek a gyermekek amelynek `id` megegyezik `WakefieldFamily`, város szerint rendezett.
+A következő lekérdezés az összes olyan gyermek nevét adja vissza a családban, `id` amelyek `WakefieldFamily`egyezéseit város szerint rendezi.
 
 ```sql
     SELECT c.givenName
@@ -158,18 +158,18 @@ Az eredmények a következők:
 
 ## <a name="remarks"></a>Megjegyzések
 
-Az előző példák bemutatják a Cosmos DB lekérdezési nyelv számos aspektusát:  
+Az előző példák a Cosmos DB lekérdezési nyelvének számos aspektusát mutatják be:  
 
-* Mivel az SQL API a JSON-értékeit működik, entitások fa alakú sorok és oszlopok helyett foglalkozik. Olvassa el a fa csomópontjai bármilyen tetszőleges mélységben például `Node1.Node2.Node3…..Nodem`, hasonlóan ahhoz, hogy a két részből hivatkozását `<table>.<column>` ANSI SQL-ben.
+* Mivel az SQL API JSON-értékeken működik, sorok és oszlopok helyett faszerkezetű entitásokkal foglalkozik. A facsomópontok tetszőleges részletességgel, `Node1.Node2.Node3…..Nodem`például az ANSI SQL- `<table>.<column>` ben lévő kétrészes hivatkozáshoz hasonlóan is megtekinthetők.
 
-* A lekérdezési nyelv a séma nélküli adatokkal dolgozik, mert a típusa rendszer dinamikusan kell kötni. Egyazon kifejezésre sikerült eddig is számtalan előnyét eltérő konfigurációs elemeket a különböző típusú. A lekérdezés eredménye egy érvényes JSON-értéket, de nem valószínű, hogy a rögzített sémát.  
+* Mivel a lekérdezési nyelv a séma nélküli adatmennyiséggel működik, a típusrendszer számára dinamikusan kell kötni. Egyazon kifejezésre sikerült eddig is számtalan előnyét eltérő konfigurációs elemeket a különböző típusú. A lekérdezés eredménye egy érvényes JSON-érték, de nem garantált, hogy rögzített séma legyen.  
 
-* Az Azure Cosmos DB támogatja a szigorú JSON-elemek csak. A rendszer típusa és -kifejezések korlátozódnak JSON típusú foglalkozik. További információkért lásd: a [JSON-specifikáció](https://www.json.org/).  
+* Az Azure Cosmos DB támogatja a szigorú JSON-elemek csak. A Type rendszer és a kifejezések kizárólag JSON-típusokkal való kezelésre korlátozódnak. További információ: [JSON-specifikáció](https://www.json.org/).  
 
-* A Cosmos DB-tárolók gyűjteménye sémamentes JSON-elemek. Belül és azok tároló elemek között kapcsolatok implicit módon nem az elsődleges kulcs-idegen kulcs kapcsolatokat által rögzített, tartalmazási. Ez a funkció fontos a cikkben később tárgyalt intra-cikk illesztéseket.
+* A Cosmos-tároló a JSON-elemek séma nélküli gyűjteménye. A tároló elemein belüli és azok közötti kapcsolatok implicit módon vannak rögzítve az adattárolással, nem az elsődleges kulcs és a idegenkulcs-kapcsolatok esetében. Ez a funkció fontos a cikk későbbi részében tárgyalt elemekhez tartozó illesztések esetében.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Cosmos DB bemutatása](introduction.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)
 - [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmosdb-dotnet)
 - [SELECT záradék](sql-query-select.md)

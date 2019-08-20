@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: 2af65dbae59774ed718d58f055158e61f15e2198
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ee63f7aae70e93dfbe857b8680d2b4a477600d72
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557489"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575112"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amire alkalmas a Windows Data Science virtuális gépen
 
@@ -54,7 +54,7 @@ Ebben a cikkben megtudhatja hogyan használható a dsvm-hez különböző adattu
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1. Adatok feltárása és fejlesztése a Microsoft ML Server vagy a Python használatával
+## <a name="1-explore-data--develop-models-with-microsoft-ml-server"></a>1. Ismerje meg az adat& modelleket a Microsoft ML Server
 Például az R és Python nyelvek használatával az adatok elemzését közvetlenül a dsvm-hez.
 
 Az R például az RStudio, amely megtalálható a start menüből vagy az asztal vagy R Tools for Visual Studio IDE is használhatja. A Microsoft közzétett további kódtárak pedig felül a nyílt-forrás/CRAN-R méretezhető elemzéseket és nagyobb, mint a memória méretét engedélyezett módon párhuzamos darabolt elemzési adatok elemzéséhez. 
@@ -73,7 +73,7 @@ Tekintse meg a [PVTS dokumentációban](https://aka.ms/ptvsdocs) további részl
 
 Most hozzon létre egy új Python-projektet állíthatók be. Navigáljon a **fájl** -> **új** -> **projekt** -> **Python** és típusának kiválasztása Python-alkalmazást hoz létre. A kívánt verziót (Python 2.7-es és 3.6) az aktuális projekt Python-környezetet a jobb gombbal kattintva állíthatja a **Python-környezetek**lehetőségre kattint **hozzáadása/eltávolítása Python-környezetek**, majd kiválasztotta a kívánt környezetre. A termék-projektek készítése PTVS használatáról további információkat talál [dokumentáció](https://aka.ms/ptvsdocs).
 
-## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2. Ismerje meg, és modellezheti az adatokat, a Python vagy R Jupyter Notebook használata
+## <a name="2-use-jupyter-notebooks"></a>2. Jupyter-jegyzetfüzetek használata
 A Jupyter Notebook egy hatékony környezetet biztosít, a böngésző alapú "IDE" adatáttekintés és modellezés a rendszer. A Jupyter Notebook Python 2, a Python 3 vagy az R (nyílt forráskódú és a Microsoft R Server) használhatja.
 
 A Jupyter Notebook indításához kattintson a start menü ikonra / asztali ikonra nevű **Jupyter Notebook**. A DSVM-parancssorban is futtathatja a parancsot ```jupyter notebook``` a címtárból, ha van meglévő jegyzetfüzeteket, vagy létre szeretné hozni az Új jegyzetfüzet.  
@@ -92,7 +92,7 @@ Jupyter megkezdése után megjelenik egy könyvtárat, amely tartalmazza, amelye
 
 Miután a notebook feltárhatja az adatokat, a modell, a teszteli a modellt, a választott kódtárak használatával.
 
-## <a name="3-build-models-using-r-or-python-and-operationalize-them-using-azure-machine-learning"></a>3. A R vagy Python és elindítható őket az Azure Machine Learning modellek készítése
+## <a name="3-train--deploy-models-with-azure-machine-learning"></a>3. Betanítás & modellek üzembe helyezése a Azure Machine Learning
 Miután létrehozott és a modell érvényesítése a következő lépés az általában éles üzembe helyezés. Ez lehetővé teszi az ügyfél alkalmazásokat kell elindítani a modell-előrejelzéseket, a valós idejű és kötegelt módban történik. Az Azure Machine Learning lehetővé teszi a beépített R vagy Python modell üzembe helyezése.
 
 Ha Ön a modell, az Azure Machine Learning üzembe helyezése, egy webszolgáltatás, amely lehetővé teszi az ügyfelek, amelyek a bemeneti paraméterek átadása, illetve a modell kimenetként előrejelzéseket fogadhat REST-hívásokat van közzétéve.   
@@ -210,19 +210,19 @@ ans = consume(ep, sleepstudy)$ans
 
 További információ az Azure Machine Learning R-könyvtár ismertetése található [Itt](https://cran.r-project.org/web/packages/AzureML/AzureML.pdf).
 
-## <a name="4-administer-your-azure-resources-using-azure-portal-or-powershell"></a>4. Felügyelheti az Azure-erőforrások Azure portal vagy a Powershell használatával
+## <a name="4-manage-azure-resources"></a>4. Azure-erőforrások kezelése
 A dsvm-hez nem csak lehetővé teszi, hogy helyileg hozhat létre egy elemzési megoldást a virtuális gépen, de lehetővé teszi, hogy hozzáférjen olyan szolgáltatásokhoz a Microsoft Azure-felhőben. Az Azure biztosít több számítási, tárolási, elemzési adatszolgáltatások és más szolgáltatások felügyelete és érheti el a dsvm-hez a.
 
-Felügyelheti az Azure-előfizetés és a felhőbeli erőforrások a böngészőjében, és mutasson a [az Azure portal](https://portal.azure.com). Azure Powershell segítségével is felügyelheti az Azure-előfizetés és a egy parancsfájl erőforrásai.
-Azure Powershell egy parancsikont az asztalon vagy a start menü "Microsoft Azure Powershell." című futtathatók Tekintse meg [a Microsoft Azure Powershell-dokumentáció](../../powershell-azure-resource-manager.md) hogyan felügyelete az Azure-előfizetés és a Windows Powershell-parancsfájlok használatával erőforrások további tájékoztatást.
+Az Azure-előfizetések és a felhőalapú erőforrások felügyeletéhez két lehetőség közül választhat:
++ **Azure Portal**: használja a böngészőt, és mutasson a [Azure Portal](https://portal.azure.com)
 
-## <a name="5-extend-your-storage-space-with-a-shared-file-system"></a>5. A tárolóhely egy megosztott fájlrendszert a kiterjesztése
++ **Azure PowerShell**: Windows PowerShell-parancsfájlok használata. Futtassa az Azure PowerShellt az asztalon található parancsikonról vagy a "Microsoft Azure PowerShell" nevű Start menüből. A részletekért tekintse meg a [Microsoft Azure PowerShell dokumentációját](../../powershell-azure-resource-manager.md) . 
+
+## <a name="5-extend-storage-with-shared-file-systems"></a>5. Tárterület kiterjesztése megosztott fájlrendszerrel
 Az adatszakértők megoszthatja a nagyméretű adathalmazok, kódok vagy egyéb erőforrások a csapaton belüli. A DSVM magát körülbelül 45GB-nyi szabad terület van. Kiterjeszti a storage, használhatja az Azure File Storage-szolgáltatás, és vagy csatlakoztassa azt egy vagy több DSVM-példányt, vagy elérheti azokat egy REST API-n keresztül.  Is [az Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) vagy [Azure PowerShell-lel](../../virtual-machines/windows/attach-disk-ps.md) külön dedikált adatlemezek hozzáadása. 
 
 > [!NOTE]
 > Az Azure File Service fájlmegosztás maximális lemezterület 5 TB-os, az egyes fájlok maximális mérete pedig 1 TB-ot. 
-> 
-> 
 
 Azure Powershell segítségével hozzon létre egy Azure File Service-megosztást. Íme a szkript futtatásához az Azure-szolgáltatás fájlmegosztás létrehozása az Azure PowerShell-lel.
 
@@ -258,7 +258,7 @@ net use z:  \\<mydatadisk>.file.core.windows.net\<<teamsharename>>
 
 Most már hozzáférhet a meghajtó, mint bármilyen normál meghajtó a virtuális gépen.
 
-## <a name="6-share-code-with-your-team-using-github"></a>6. Kód megosztásra a csapatával GitHub használatával
+## <a name="6-share-code-in-github"></a>6. Kód megosztása a GitHubban
 A GitHub az egy megkeresésének számos mintakód és források a különböző eszközök használatával különböző technológiákkal, a fejlesztői Közösség által megosztott kódtárban. Használ a Git, a technológia nyomon követheti, és tárolja a kódot fájlok verzióival. A GitHub az is platform, amellyel hozható létre a saját tárház tárolására, a csoport megosztott kód és dokumentáció, megvalósítása a verziókezeléshez, és azt is szabályozzák, megtekintése és közreműködés kód hozzáféréssel. Látogasson el a [GitHub súgóoldalak](https://help.github.com/) a Git használatával kapcsolatban bővebb információt. A módszerek együttműködhet a csapatával, a Közösség által fejlesztett kóddal és kód vissza hozzájárulnak a Közösség egyik GitHub is használhatja.
 
 A dsvm-hez már származik az ügyféleszközök elől betöltött egyaránt jól grafikus felhasználói felület GitHub-adattár eléréséhez, parancssori. A Git és a GitHub parancssori eszköz a Git Bash nevezzük. A dsvm-hez telepítve a Visual Studio a Git-bővítmények rendelkezik. Ezekkel az eszközökkel a start menüben, és a desktop indítási-ikonokat találhat meg.
@@ -273,7 +273,7 @@ A Visual Studióban érdemes ugyanazt a Klónozási műveletet. Az alábbi képe
 
 További információ a Git segítségével dolgozhat a GitHub-adattárban több erőforrás elérhető a github.com találja. A [adatlap](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) hasznos hivatkozás.
 
-## <a name="7-access-various-azure-data-and-analytics-services"></a>7. Különböző Azure adat- és elemzési szolgáltatások eléréséhez.
+## <a name="7-access-many-azure-data--analytics-services"></a>7. Számos Azure-beli adat& Analytics-szolgáltatás elérése
 ### <a name="azure-blob"></a>Azure-blob
 Az Azure blob egy megbízható, gazdaságos felhőalapú tárolás, a kis- és big Data típusú adatok. Ez a szakasz ismerteti, hogyan viheti át adatok Azure Blob- és hozzáférés, egy Azure-blobban tárolt adatok.
 
@@ -851,8 +851,8 @@ Az alábbi lépések az Előfeltételek – Azure Cosmos DB érhetnek el a dsvm-
 
 Az importált adatokat, ugorjon a Jupyter, és nyissa meg a notebook nevű *DocumentDBSample* , amely tartalmazza a python-kód Azure Cosmos DB eléréséhez, és néhány alapszintű lekérdezést. További információ a Cosmos DB a szolgáltatás felkeresésével [dokumentációs oldalon](https://docs.microsoft.com/azure/cosmos-db/).
 
-## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8. Hozhat létre jelentéseket és irányítópultokat a Power BI Desktop használatával
-A Mexikói JSON-fájlt az előző Cosmos DB példából visual elemezheti az adatokat a Power BI-ban jelenítheti meg. Részletes lépéseket érhetők el a [Power BI-cikk](../../cosmos-db/powerbi-visualize.md). Magas szintű lépései a következők:
+## <a name="8-power-bi-reports--dashboards"></a>8. Power BI jelentések & irányítópultok 
+Megjelenítheti a vulkáni JSON-fájlt az előző Cosmos DB például Power BI Desktopban, hogy vizuális elemzéseket nyerjen az adatokból. Részletes lépéseket érhetők el a [Power BI-cikk](../../cosmos-db/powerbi-visualize.md). Magas szintű lépései a következők:
 
 1. Nyissa meg a Power BI Desktop és az "adatok lekérése." Adja meg az URL-cím: https://cahandson.blob.core.windows.net/samples/volcano.json
 2. Megjelenik a lista importált JSON-bejegyzések
@@ -884,7 +884,7 @@ Megkezdheti a jelentések és Vizualizációk használata az adatmodell létreho
 
 ![A Power BI Desktop jelentés nézet – Power BI-összekötő](./media/vm-do-ten-things/power_bi_connector_pbireportview2.png)
 
-## <a name="9-dynamically-scale-your-dsvm-to-meet-your-project-needs"></a>9. A dsvm-hez projekt igény szerint dinamikusan méretezhető
+## <a name="9-dynamic-dsvm-scaling"></a>9. Dinamikus DSVM skálázás 
 Felfelé és a DSVM projekt igény szerint méretezhető. Ha nem szeretné használni a virtuális gép az esténként vagy hétvégeken, akkor csak leállíthatja a virtuális gépről a [az Azure portal](https://portal.azure.com).
 
 > [!NOTE]
@@ -898,10 +898,23 @@ Hasonlóképpen ha csökkenti a virtuális gép feldolgozási kapacitást szüks
 
 ![Virtuális gép példány beállításai](./media/vm-do-ten-things/VMScaling.PNG)
 
-## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10. További eszközök telepítése a virtuális gépen
+## <a name="10-add-more-tools"></a>10. További eszközök hozzáadása
 A dsvm-hez, amely a common data analytics kell számos előre beépített több eszköz közül. Ezzel időt takarít idő lehetőleg ne kelljen telepítése és konfigurálása a környezetek egyenként valamint pénzt takaríthat meg, csak azért kell fizetnie erőforrások használatát.
 
 Használhat más az elemzési környezet növelése érdekében ez a cikk a profilkészítés során létrehozott Azure data és analitikai szolgáltatásokat. Bizonyos esetekben az igényeinek további eszközöket, beleértve néhány harmadik fél szellemi tulajdont képező eszköz lehet szükség. A virtuális gépen telepíteni kell az új eszközök teljes rendszergazdai hozzáféréssel rendelkezik. A Python és előre nem telepített R további csomagokat is telepíthet. Pythonhoz készült használhat ```conda``` vagy ```pip```. Az R használata a ```install.packages()``` az R-konzol vagy használni az IDE, és válassza a "**csomagok** -> **csomagok telepítése...** ".
+
+## <a name="deep-learning"></a>Mély tanulás
+
+A keretrendszer-alapú minták mellett forgatókönyvek átfogó készlete is tartalmaz a DLVM a érvényesítve. Ezek az útmutatók segítségével gyorsan elindíthatja a tartományokban, mint például a lemezkép és a szöveg/language understanding deep learning-alkalmazások fejlesztését. További végpontok közötti oktatóanyagok között különböző tartományokban, és a technológia továbbra is hozzá kell adni.   
+
+
+- [Neurális hálózatok futtatása különböző keretrendszerek között](https://github.com/ilkarman/DeepLearningFrameworks): Átfogó útmutató, amely bemutatja, hogyan telepíthet át kódokat egyik keretrendszerről a másikra. Azt is bemutatja, hogyan modell összehasonlítására, és futtathatja időt keretrendszereket. 
+
+- [Útmutató egy teljes körű megoldás](https://github.com/Azure/cortana-intelligence-product-detection-from-images)létrehozásához a képeken belüli termékek észleléséhez: A képészlelés olyan módszer, amellyel objektumokat lehet megkeresni és osztályozni a képeken belül. Ez a technológia potenciálisan hatalmas jutalmakat beemelhet számos valós üzleti tartományok. A kiskereskedők például használhatja ezt a módszert meghatározni, melyik terméket olyan rendelkezik felülettől a kereskedelmi. Ez az információ viszonzásul segíti a Termékleltár kezelése tárolók. 
+
+- [Deep learning-Audio](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) Ez az oktatóanyag bemutatja, hogyan számára audiotartalmak esemény észlelése egy deep learning-modell betanításához az a [városi hangok adatkészlet](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) , és adja meg a hang adatok áttekintése.
+
+- [Szöveges dokumentumok besorolása](https://github.com/anargyri/lstm_han): Ez az útmutató bemutatja, hogyan hozhat létre és taníthat két különböző neurális hálózati architektúrát: Hierarchikus figyelmet igényel a hálózat és a hosszú távú memória (LSTM) hálózata. Ezeket a Neurális hálózatokat a deep learninghez a Keras API használatával szöveges dokumentumok besorolását. A kerasz a legelterjedtebb mély tanulási keretrendszerek közül három: Microsoft Cognitive Toolkit, TensorFlow és theano.
 
 ## <a name="summary"></a>Összegzés
 Ezek a mindössze néhány a lehetőség a Microsoft Data Science virtuális gépen. Nincsenek számos további lehetőség legyen a hatékony elemzési környezet.

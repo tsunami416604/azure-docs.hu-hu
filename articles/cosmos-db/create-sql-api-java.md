@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
 ms.custom: seo-java-august2019
-ms.openlocfilehash: 5f8555d23a43a3ca391ec03f827b0d81ac3c4698
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a7e2089b8dfff1f021c31d2b13591b54dcd9c4ac
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933960"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616986"
 ---
 # <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók használatával
 
@@ -26,7 +26,7 @@ ms.locfileid: "68933960"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-Ez a rövid útmutató azt mutatja be, hogyan hozhatja létre és kezelheti Java-alkalmazással egy Azure Cosmos DB [SQL API](sql-api-introduction.md)-fiók erőforrásait. Először létrehoz egy Azure Cosmos DB SQL API-fiókot az Azure Portallal, majd létrehoz egy Java-alkalmazást az [SQL Java SDK](sql-api-sdk-async-java.md)-val, végül pedig erőforrásokat ad hozzá a Cosmos DB-fiókhoz a Java-alkalmazással. A rövid útmutatóban lévő utasítások bármilyen, Java-programok futtatására alkalmas operációs rendszeren végrehajthatók. A rövid útmutató elvégzése után megismerheti a Cosmos DB adatbázisok, tárolók létrehozását és módosítását a felhasználói felületen vagy programozott módon, attól függően, hogy melyik a beállítás.
+Ez a rövid útmutató azt mutatja be, hogyan hozhatja létre és kezelheti Java-alkalmazással egy Azure Cosmos DB [SQL API](sql-api-introduction.md)-fiók erőforrásait. Először létrehoz egy Azure Cosmos DB SQL API-fiókot az Azure Portallal, majd létrehoz egy Java-alkalmazást az [SQL Java SDK](sql-api-sdk-async-java.md)-val, végül pedig erőforrásokat ad hozzá a Cosmos DB-fiókhoz a Java-alkalmazással. A rövid útmutatóban lévő utasítások bármilyen, Java-programok futtatására alkalmas operációs rendszeren végrehajthatók. A rövid útmutató elvégzése után megismerheti a Cosmos-adatbázisok, a felhasználói felületen vagy programozott módon létrehozott tárolók létrehozását és módosítását, attól függően, hogy melyik a beállítás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

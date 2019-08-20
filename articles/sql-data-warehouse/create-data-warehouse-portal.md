@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: sqlfreshmay19
-ms.openlocfilehash: 2864acca443e3135ea0023070da95accf97fe2e9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b7b7d4cfe699ffdef3a8f736f5656d0b0067453a
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479434"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575192"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Gyors útmutató: Azure SQL Data Warehouse létrehozása és lekérdezése az Azure Portalon
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Gyors útmutató: Azure SQL Data Warehouse létrehozása és lekérdezése a Azure Portal
 
-Gyorsan létrehozhat és lekérdezheti az Azure SQL-adattárházat a Azure Portal használatával.
+Azure SQL Data Warehouse gyors létrehozása és lekérdezése a Azure Portal használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -37,9 +37,9 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-data-warehouse"></a>Adattárház létrehozása
 
-Az Azure SQL Data Warehouse [számítási erőforrások](memory-and-concurrency-limits.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-logical-servers.md) jön létre. 
+Egy Azure SQL Data Warehouse [számítási erőforrások](memory-and-concurrency-limits.md)meghatározott készletével jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-logical-servers.md) jön létre. 
 
-Az alábbi lépéseket követve létrehozhat egy SQL-adattárházat az AdventureWorksDW mintaadatok tárolásához. 
+Kövesse az alábbi lépéseket egy olyan SQL Data Warehouse létrehozásához, amely tartalmazza a AdventureWorksDW. 
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
@@ -207,4 +207,4 @@ Kövesse az alábbi lépéseket a már nem szükséges erőforrások törléséh
 Létrehozott egy adattárházat, létrehozott egy tűzfalszabályot, kapcsolódott az adattárházhoz, és futtat néhány lekérdezést. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Adatok betöltése az SQL Data Warehouse-okba](load-data-from-azure-blob-storage-using-polybase.md)
+> [Az adatSQL Data Warehouseba való betöltés](load-data-from-azure-blob-storage-using-polybase.md)

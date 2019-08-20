@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB teljesítményre vonatkozó tippek aszinkron Javához
-description: Az ügyfél-konfigurációs beállítások megismerése Azure Cosmos DB adatbázis teljesítményének növeléséhez
+description: Az ügyfél-konfigurációs beállítások megismerése az Azure Cosmos Database teljesítményének növeléséhez
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 2c2d776012e702469be4fd3217fb89be0ad419bf
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 7a470193110fda0bb675e56e17a8f5647ebda5ab
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261622"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614969"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB és aszinkron Java-hoz
 
@@ -30,7 +30,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
    <a id="same-region"></a>
 1. **Rézvezetékes végezhet-ügyfelek ugyanabban az Azure-régióban a teljesítmény érdekében**
 
-    Ha lehetséges, helyezzen minden olyan alkalmazást, amely a Azure Cosmos DBt hívja meg ugyanabban a régióban, mint a Azure Cosmos DB-adatbázist. A hozzávetőleges összehasonlításhoz az azonos régióban lévő Azure Cosmos DB a 1-2 MS-on belül fejeződik be, de az USA nyugati és keleti partja közötti késés > 50 MS. Ez a késés valószínűleg a kérelemtől függ attól függően, hogy a kérés milyen útvonalon halad át az ügyféltől az Azure Datacenter-határig. A lehető legalacsonyabb késést úgy érheti el, hogy a hívó alkalmazás ugyanabban az Azure-régióban található, mint a kiépített Azure Cosmos DB végpont. Az elérhető régiók listáját az [Azure-régiók](https://azure.microsoft.com/regions/#services)című részben tekintheti meg.
+    Ha lehetséges, helyezzen minden olyan alkalmazást, amely a Azure Cosmos DBt hívja meg ugyanabban a régióban, mint az Azure Cosmos Database. A hozzávetőleges összehasonlításhoz az azonos régióban lévő Azure Cosmos DB a 1-2 MS-on belül fejeződik be, de az USA nyugati és keleti partja közötti késés > 50 MS. Ez a késés valószínűleg a kérelemtől függ attól függően, hogy a kérés milyen útvonalon halad át az ügyféltől az Azure Datacenter-határig. A lehető legalacsonyabb késést úgy érheti el, hogy a hívó alkalmazás ugyanabban az Azure-régióban található, mint a kiépített Azure Cosmos DB végpont. Az elérhető régiók listáját az [Azure-régiók](https://azure.microsoft.com/regions/#services)című részben tekintheti meg.
 
     ![A Azure Cosmos DB-kapcsolatok házirendjének ábrája](./media/performance-tips/same-region.png)
 
@@ -82,7 +82,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
 9. **A megfelelő ütemező használata (az Event loop IO-szálak kilopásának elkerülése)**
 
-    Az aszinkron Java SDK nem blokkoló IO- [t használ.](https://netty.io/) Az SDK az i/o-műveletekhez rögzített számú i/o-t használ (a gép számos CPU-magja). Az API által visszaadott megfigyelhető érték a megosztott i/o-eseményekhez tartozó többoldalas szálakat eredményezi. Ezért fontos, hogy ne tiltsa le a megosztott IO-esemény hurkos szálait. Ha CPU-igényes munkahelyi vagy letiltási műveletet hajt végre az IO-esemény hurkos szál szálán, a holtpontot okozhat, vagy jelentősen csökkentheti az SDK átviteli sebességét.
+    Az aszinkron Java SDK nem [](https://netty.io/) blokkoló IO-t használ. Az SDK az i/o-műveletekhez rögzített számú i/o-t használ (a gép számos CPU-magja). Az API által visszaadott megfigyelhető érték a megosztott i/o-eseményekhez tartozó többoldalas szálakat eredményezi. Ezért fontos, hogy ne tiltsa le a megosztott IO-esemény hurkos szálait. Ha CPU-igényes munkahelyi vagy letiltási műveletet hajt végre az IO-esemény hurkos szál szálán, a holtpontot okozhat, vagy jelentősen csökkentheti az SDK átviteli sebességét.
 
     Például az alábbi kód egy CPU-igényes munkát hajt végre az Event loop IO-szálon:
 

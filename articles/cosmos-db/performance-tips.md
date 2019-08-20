@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB teljesítményre vonatkozó tippek a .NET-hez
-description: Az ügyfél-konfigurációs beállítások megismerése Azure Cosmos DB adatbázis teljesítményének növeléséhez
+description: Az ügyfél-konfigurációs beállítások megismerése az Azure Cosmos Database teljesítményének növeléséhez
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: 21886c11bea6ff09cf97362e06c6d304aaa0d8cc
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3c4dbd38edaf36461578e087010d978a25450d06
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250055"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614930"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>A Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
 
@@ -48,8 +48,8 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
      |Csatlakoztatási mód  |Támogatott protokoll  |Támogatott SDK-k  |API/szolgáltatás portja  |
      |---------|---------|---------|---------|
      |Átjáró  |   HTTPS    |  Minden SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Direct    |    HTTPS     |  .NET és Java SDK    |   10 000 000 tartományon belüli portok    |
-     |Direct    |     TCP    |  .NET SDK    | 10 000 000 tartományon belüli portok |
+     |Közvetlen    |    HTTPS     |  .NET és Java SDK    |   10 000 000 tartományon belüli portok    |
+     |Közvetlen    |     TCP    |  .NET SDK    | 10 000 000 tartományon belüli portok |
 
      Azure Cosmos DB egy egyszerű és nyitott, REST-alapú programozási modellt biztosít a HTTPS-en keresztül. Emellett hatékony TCP protokollt is biztosít, amely a kommunikációs modellben is elérhető, és a .NET Client SDK-n keresztül érhető el. A közvetlen TCP és a HTTPS egyaránt SSL-t használ a kezdeti hitelesítéshez és a forgalom titkosításához. A legjobb teljesítmény érdekében a TCP protokollt használja, ha lehetséges.
 
@@ -78,7 +78,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
    <a id="same-region"></a>
 3. **Rézvezetékes végezhet-ügyfelek ugyanabban az Azure-régióban a teljesítmény érdekében**
 
-    Ha lehetséges, helyezzen minden olyan alkalmazást, amely a Azure Cosmos DBt hívja meg ugyanabban a régióban, mint a Azure Cosmos DB-adatbázist. A hozzávetőleges összehasonlításhoz az azonos régióban lévő Azure Cosmos DB a 1-2 MS-on belül fejeződik be, de az USA nyugati és keleti partja közötti késés > 50 MS. Ez a késés valószínűleg a kérelemtől függ attól függően, hogy a kérés milyen útvonalon halad át az ügyféltől az Azure Datacenter-határig. A lehető legalacsonyabb késést úgy érheti el, hogy a hívó alkalmazás ugyanabban az Azure-régióban található, mint a kiépített Azure Cosmos DB végpont. Az elérhető régiók listáját az [Azure-régiók](https://azure.microsoft.com/regions/#services)című részben tekintheti meg.
+    Ha lehetséges, helyezzen minden olyan alkalmazást, amely a Azure Cosmos DBt hívja meg ugyanabban a régióban, mint az Azure Cosmos Database. A hozzávetőleges összehasonlításhoz az azonos régióban lévő Azure Cosmos DB a 1-2 MS-on belül fejeződik be, de az USA nyugati és keleti partja közötti késés > 50 MS. Ez a késés valószínűleg a kérelemtől függ attól függően, hogy a kérés milyen útvonalon halad át az ügyféltől az Azure Datacenter-határig. A lehető legalacsonyabb késést úgy érheti el, hogy a hívó alkalmazás ugyanabban az Azure-régióban található, mint a kiépített Azure Cosmos DB végpont. Az elérhető régiók listáját az [Azure-régiók](https://azure.microsoft.com/regions/#services)című részben tekintheti meg.
 
     ![A Azure Cosmos DB-kapcsolatok házirendjének ábrája](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
@@ -162,11 +162,11 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     - A végrehajtható alkalmazások esetében ez az **előnyben részesített 32-bites** lehetőség törlésével végezhető el a **Projekt tulajdonságai** ablakban a **Build** lapon.
 
-    - A VSTest-alapú tesztelési projektek esetében **Ehhez válassza**->a tesztelési**Beállítások**->**alapértelmezett processzor-architektúra x64-ként**lehetőséget a **Visual Studio test** menüpontban.
+    - A VSTest-alapú tesztelési projektek->esetében ehhez válassza a tesztelési**Beállítások**->**alapértelmezett processzor-architektúra x64-ként**lehetőséget a **Visual Studio test** menüpontban.
 
     - Helyileg telepített ASP.NET-webalkalmazások esetén ezt a webhelyekhez **és projektekhez készült IIS Express a 64 bites verziójának használata**a következő eszközökhöz: az **eszközök**->**beállítási**->**projektjei és megoldásai** szakaszban **Webes projektek**. ->
 
-    - Az Azure-on üzembe helyezett webalkalmazások esetében ez a **Platform 64 bitesként** való kiválasztásával végezhető el  a Azure Portal ASP.net.
+    - Az Azure-on üzembe helyezett webalkalmazások esetében ez a **Platform 64 bitesként** való kiválasztásával végezhető el a Azure Portal ASP.net.
 
 ## <a name="indexing-policy"></a>Indexelési házirend
  

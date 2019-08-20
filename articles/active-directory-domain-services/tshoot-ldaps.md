@@ -1,6 +1,6 @@
 ---
-title: Biztonságos LDAP (LDAPS) az Azure AD Domain Services hibaelhárítása |} A Microsoft Docs
-description: Biztonságos LDAP (LDAPS) elhárítása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
+title: A (z) Azure AD Domain Services Secure LDAP (LDAPs) hibáinak megoldása | Microsoft Docs
+description: Azure AD Domain Services felügyelt tartomány Secure LDAP (LDAPs) hibáinak megoldása
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,36 +15,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: a194919a488f6cb59c76315c9d8a3db1e9c1feb1
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 285af0e5e5d5ab03027fc29064a5f3623ed10e2f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472200"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617052"
 ---
-# <a name="troubleshoot-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Biztonságos LDAP (LDAPS) elhárítása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
+# <a name="troubleshoot-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services felügyelt tartomány Secure LDAP (LDAPs) hibáinak megoldása
 
 ## <a name="connection-issues"></a>Kapcsolódási problémák
-Ha nem lehet csatlakozni a felügyelt tartomány secure LDAP használatával:
+Ha a biztonságos LDAP használatával nem sikerül csatlakozni a felügyelt tartományhoz:
 
-* A secure LDAP-tanúsítványt kiállító láncában az ügyfélen megbízhatónak kell lennie. Választhatja a legfelső szintű hitelesítésszolgáltató hozzáadása a megbízható főtanúsítvány-tárolóba az ügyfélen, a bizalmi kapcsolat létrehozásához.
-* Győződjön meg arról, hogy az LDAP-ügyfél (például az ldp.exe) csatlakozik a biztonságos LDAP-végpont DNS-név, nem az IP-cím használatával.
-* Ellenőrizze a DNS-név, az LDAP-ügyfél csatlakozik. A nyilvános IP-cím azt kell hozzárendelni, a felügyelt tartomány secure LDAP számára.
-* Ellenőrizze, hogy a felügyelt tartomány secure LDAP-tanúsítványt tartalmaz, a DNS-név, a tulajdonos vagy a tulajdonos alternatív neve attribútum.
-* Az NSG-beállításait a virtuális hálózatnak engedélyeznie kell a forgalmat a 636-os portot az internetről. Ez a lépés csak akkor, ha engedélyezte a secure LDAP-hozzáférését az interneten keresztül vonatkozik.
+* A biztonságos LDAP-tanúsítvány kiállítói láncának megbízhatónak kell lennie az ügyfélen. Dönthet úgy, hogy hozzáadja a legfelső szintű hitelesítésszolgáltatót a megbízható főtanúsítvány-tárolóhoz az ügyfélen a megbízhatósági kapcsolat létrehozásához.
+* Győződjön meg arról, hogy az LDAP-ügyfél (például az Ldp. exe) a biztonságos LDAP-végponthoz csatlakozik a DNS-név használatával, nem az IP-címmel.
+* Keresse meg azt a DNS-nevet, amelyhez az LDAP-ügyfél csatlakozik. A felügyelt tartományon a biztonságos LDAP-t a nyilvános IP-címen kell feloldani.
+* Ellenőrizze, hogy a felügyelt tartományhoz tartozó biztonságos LDAP-tanúsítvány rendelkezik-e a DNS-névvel a tulajdonos vagy a tulajdonos alternatív nevek attribútumában.
+* A virtuális hálózathoz tartozó NSG-beállításoknak engedélyeznie kell a forgalmat az internetről a 636-es portra. Ez a lépés csak akkor érvényes, ha az interneten keresztül engedélyezte a biztonságos LDAP-hozzáférést.
 
 
 ## <a name="need-help"></a>Segítség
-Ha még nem lehet csatlakozni a felügyelt tartomány secure LDAP használatával [lépjen kapcsolatba a termékcsoport](contact-us.md) segítséget. Az alábbi információkat, amelyek segítenek a probléma diagnosztizálásában jobban:
-* Képernyőkép az ldp.exe a kapcsolatot és működik.
-* Az Azure AD-bérlő azonosítója, és a felügyelt tartomány DNS-tartomány nevét.
-* Kötés kívánt felhasználói név.
+Ha továbbra sem sikerül csatlakozni a felügyelt tartományhoz biztonságos LDAP használatával, [forduljon a termék csapatához](contact-us.md) segítségért. A probléma diagnosztizálásához vegye fel a következő információkat:
+* Az Ldp. exe képernyőképe, amely a kapcsolatokat és a feladatátvételt hajtja végre.
+* Az Azure AD-bérlő azonosítója és a felügyelt tartomány DNS-tartományneve.
+* Annak a felhasználónévnek a pontos felhasználóneve, amelyet szeretne kötni.
 
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
-* [Az Azure AD tartományi szolgáltatások – első lépések útmutató](create-instance.md)
-* [Az Azure AD Domain Services tartomány kezelése](manage-domain.md)
-* [LDAP-lekérdezés alapjai](https://technet.microsoft.com/library/aa996205.aspx)
-* [A Csoportházirend kezelése az Azure AD tartományi szolgáltatásokhoz](manage-group-policy.md)
+* [Azure AD Domain Services – Első lépések útmutató](tutorial-create-instance.md)
+* [Azure AD Domain Services tartomány kezelése](tutorial-create-management-vm.md)
+* [Az LDAP-lekérdezés alapjai](https://technet.microsoft.com/library/aa996205.aspx)
+* [Azure AD Domain Services Csoportházirend kezelése](manage-group-policy.md)
 * [Hálózati biztonsági csoportok](../virtual-network/security-overview.md)
 * [Hálózati biztonsági csoport létrehozása](../virtual-network/tutorial-filter-network-traffic.md)

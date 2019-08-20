@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67566064"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611921"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Meglévő Azure Service Bus standard névterek migrálása a prémium szintre
 Korábban csak a standard szinten Azure Service Bus felkínált névtereket. A névterek több-bérlős telepítések, amelyek alacsony átviteli sebességre és fejlesztői környezetekre vannak optimalizálva. A prémium szint az egyes névterekhez tartozó dedikált erőforrásokat kínálja a kiszámítható késéshez és a megnövekedett átviteli sebességhez rögzített áron. A prémium szint nagy teljesítményű és éles környezetekhez van optimalizálva, amelyek további vállalati funkciókat igényelnek.
@@ -115,7 +115,8 @@ A Azure Portal használatával végzett Migrálás ugyanazzal a logikai folyamat
    1. A szinkronizálás befejeződése után kattintson a **Tovább gombra** a lap alján.
 
 1. Tekintse át a módosításokat az összefoglalás lapon. Válassza az **áttelepítés befejezése** lehetőséget a névterek váltásához és az áttelepítés befejezéséhez.
-    ![Névtér váltása – a][] kapcsoló menü a megerősítő lap jelenik meg, amikor az áttelepítés befejeződött.
+    ![Névtér váltása – váltás menü][]  
+    A megerősítő lap az áttelepítés befejezésekor jelenik meg.
     ![Névtér váltása – sikeres][]
 
 ## <a name="caveats"></a>Figyelmeztetések
