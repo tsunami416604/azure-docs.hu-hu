@@ -92,9 +92,9 @@ Az alábbi táblázat áttekintést nyújt azokról a fő JSON-elemekről, amely
 
 | JSON-elem | Leírás | Type | Megengedett értékek | Kötelező |
 |:--- |:--- |:--- |:--- |:--- |
-| **type** | Az trigger típusa. A típus a "TumblingWindowTrigger" rögzített érték. | Sztring | "TumblingWindowTrigger" | Igen |
-| **runtimeState** | Az trigger futási idejének jelenlegi állapota.<br/>**Megjegyzés**: Ez az elem \<ReadOnly >. | Sztring | "Started", "leállítva", "Letiltva" | Igen |
-| **frequency** | Az a gyakorisági egység (perc vagy óra) jelölő sztring, amelynél az trigger ismétlődik. Ha a **kezdő** időpontok értékének részletessége nagyobb, mint a **gyakoriság** értéke, a rendszer a **kezdő** időpontokat veszi figyelembe az ablak határainak kiszámításakor. Ha például a **gyakoriság** értéke óránként, a **kezdő időpont** pedig 2017-09-01T10:10:10Z, az első ablak a következő: (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Sztring | "minute", "Hour"  | Igen |
+| **type** | Az trigger típusa. A típus a "TumblingWindowTrigger" rögzített érték. | String | "TumblingWindowTrigger" | Igen |
+| **runtimeState** | Az trigger futási idejének jelenlegi állapota.<br/>**Megjegyzés**: Ez az elem \<ReadOnly >. | String | "Started", "leállítva", "Letiltva" | Igen |
+| **frequency** | Az a gyakorisági egység (perc vagy óra) jelölő sztring, amelynél az trigger ismétlődik. Ha a **kezdő** időpontok értékének részletessége nagyobb, mint a **gyakoriság** értéke, a rendszer a **kezdő** időpontokat veszi figyelembe az ablak határainak kiszámításakor. Ha például a **gyakoriság** értéke óránként, a **kezdő időpont** pedig 2017-09-01T10:10:10Z, az első ablak a következő: (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | String | "minute", "Hour"  | Igen |
 | **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Ha például az **intervallum** 3, és a **gyakoriság** értéke "Hour", az trigger 3 óránként ismétlődik. | Egész szám | Pozitív egész szám. | Igen |
 | **startTime**| Az első előfordulás, amely múltbeli lehet. Az első trigger időköze a következő **: (Kezdés**, **kezdő** + **időköz**). | Datetime | Egy DateTime érték. | Igen |
 | **endTime**| A legutóbbi előfordulás, amely múltbeli lehet. | Datetime | Egy DateTime érték. | Igen |
@@ -102,7 +102,7 @@ Az alábbi táblázat áttekintést nyújt azokról a fő JSON-elemekről, amely
 | **maxConcurrency** | Azon egyidejű trigger-futtatások száma, amelyek készen állnak a Windows rendszerre. Például a tegnapi értékre való kitöltés óránkénti futtatásához 24 Windowson. Ha a **maxConcurrency** = 10, az aktiválási események csak az első 10 Windows rendszerre (00:00-01:00-09:00-10:00) vannak kirúgva. Az első 10 aktivált folyamat befejezése után a trigger-futtatások a következő 10 Windows rendszerre (10:00-11:00-19:00-20:00) lesznek kirúgva. Ha a **maxConcurrency** = 10 esetében ebben a példában 10 Windows áll rendelkezésre, 10 teljes folyamat fut. Ha csak 1 ablak áll készen, csak 1 folyamat fut. | Egész szám | 1 és 50 közötti egész szám. | Igen |
 | **RetryPolicy Count** | Az újrapróbálkozások száma, mielőtt a folyamat futása "sikertelen" állapotúként van megjelölve.  | Egész szám | Egész szám, ahol az alapértelmezett érték 0 (nincs újrapróbálkozás). | Nem |
 | **retryPolicy: intervalInSeconds** | A másodpercben megadott újrapróbálkozási kísérletek közötti késleltetés. | Egész szám | Azon másodpercek száma, amelyekben az alapértelmezett érték 30. | Nem |
-| **dependsOn: típus** | A TumblingWindowTriggerReference típusa. Kötelező, ha függőség van beállítva. | Sztring |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | Nem |
+| **dependsOn: típus** | A TumblingWindowTriggerReference típusa. Kötelező, ha függőség van beállítva. | String |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | Nem |
 | **dependsOn: méret** | A függőséget jelző ablak mérete | Timespan<br/>(óó: PP: SS)  | Pozitív TimeSpan érték, amelynél az alapértelmezett érték a gyermek trigger ablakának mérete  | Nem |
 | **dependsOn: eltolás** | A függőségi trigger eltolása. | Timespan<br/>(óó: PP: SS) |  Egy TimeSpan érték, amelynek negatívnak kell lennie az önfüggőségben. Ha nincs megadva érték, az ablak ugyanaz, mint maga az trigger. | Önálló függőség: Igen<br/>Egyéb: Nem  |
 
