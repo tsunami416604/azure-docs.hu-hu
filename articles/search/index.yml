@@ -7,9 +7,8 @@ metadata:
   description: 'Megtudhatja, hogyan hozható létre vállalati keresési megoldás különféle személyes tartalmakhoz az Azure Search használatával. Az oktatóanyagok, API-hivatkozások és más dokumentumok bemutatják, hogyan egyesíthetők a kereshető tartalmak egyetlen gyors indexbe, amely az alkalmazási helyzetek széles körében lekérdezhető egyszerű vagy összetett szintaxissal.'
   services: search
   author: HeidiSteen
-  manager: cgronlun
+  manager: nitinme
   ms.service: search
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/12/2019
   ms.author: heidist

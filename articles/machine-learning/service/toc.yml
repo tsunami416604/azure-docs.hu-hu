@@ -148,9 +148,6 @@
         - name: Adathalmazok hozzáadása és regisztrálása
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
-        - name: Adatok megismerése
-          displayName: 'data, eda, exploratory, analysis, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
-          href: how-to-explore-prepare-data.md
         - name: Előkészítés az azureml.dataprep használatával
           items:
             - name: Adatok betöltése

@@ -216,9 +216,6 @@
         - name: Virtuális gép módosításainak hibaelhárítása
           href: automation-tutorial-troubleshoot-changes.md
           displayName: inventory
-        - name: Virtuális gépek kezelése leltár használatával
-          href: automation-vm-inventory.md
-          displayName: inventory
     - name: Hibaelhárítás
       items:
         - name: Előkészítés

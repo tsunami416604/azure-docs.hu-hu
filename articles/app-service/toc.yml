@@ -170,7 +170,7 @@
     - name: Az alkalmazás méretezése
       items:
         - name: Kiszolgálókapacitás vertikális felskálázása
-          href: web-sites-scale.md
+          href: manage-scale-up.md
         - name: PremiumV2 szintű csomag konfigurálása
           href: app-service-configure-premium-tier.md
         - name: Horizontális felskálázás több példányra

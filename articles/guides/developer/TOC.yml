@@ -127,7 +127,7 @@
     - name: Méretezés
       items:
         - name: Web- és mobilalkalmazások
-          href: 'https://docs.microsoft.com/azure/app-service/web-sites-scale'
+          href: 'https://docs.microsoft.com/azure/app-service/manage-scale-up'
         - name: Virtual machines (Virtuális gépek)
           href: 'https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview'
         - name: Mikroszolgáltatások alkalmazásai

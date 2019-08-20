@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3d45defa9ff8e7b2e03d550b76c0e18192c58c4a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881595"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626345"
 ---
 A memóriára optimalizált virtuálisgép-méretek magas memória-CPU arányt kínálnak, amely kiválóan használható a kapcsolódó adatbázis-kiszolgálók, a közepes és a nagy gyorsítótárak, valamint a memóriabeli elemzések számára. Ez a cikk a vCPU, az adatlemezek és a hálózati adapterek számával, valamint a tárolási teljesítményével és a hálózati sávszélességgel kapcsolatos információkat tartalmaz ebben a csoportosításban.
 
 * A Ev3 sorozat az E5-2673 v4 2,3 GHz-es (Broadwell) processzorát egy Hyper-threaded konfigurációban tartalmazza, ami jobb értéket biztosít a legtöbb általános célú számítási feladathoz, és a Ev3 a legtöbb más felhőben lévő általános célú virtuális gépekre hangolja.  A memória ki lett bővítve (7 GiB/vCPU – 8 GiB/vCPU), míg a lemez-és hálózati korlátokat a rendszer alapszintű módon igazította ki, hogy illeszkedjen a feleznie-re való áttéréshez.  A Ev3 a D/Dv2 családok nagy memóriabeli virtuálisgép-méretének követése.
 
-* A Eav3 sorozat és a Easv3 sorozat az AMD 2.35 GHz EPYC<sup>TM</sup> 7452V processzorát egy többszálas konfigurációban, akár 256GB L3 gyorsítótárral, a legtöbb memóriára optimalizált számítási feladatok futtatásához szükséges lehetőségek növelésével használja fel.  A Eav3-sorozat és a Easv3-sorozat ugyanazokkal a memória-és lemez-konfigurációval rendelkezik, mint a Ev3 & Esv3 sorozat.
+* A Eav3 sorozat és a Easv3 sorozat az AMD 2.35 GHz EPYC<sup>TM</sup> 7452V processzorát egy többszálas konfigurációban, akár 256mb L3 gyorsítótárral, a legtöbb memóriára optimalizált számítási feladatok futtatására szolgáló lehetőségek növelésével teszi elérhetővé.  A Eav3-sorozat és a Easv3-sorozat ugyanazokkal a memória-és lemez-konfigurációval rendelkezik, mint a Ev3 & Esv3 sorozat.
 
 * A Mv2 sorozat a legmagasabb vCPU (legfeljebb 208 vCPU) és a legnagyobb (legfeljebb 5,7 TiB) memóriával rendelkezik a felhőben. Ideális a rendkívül nagy méretű adatbázisokhoz vagy olyan egyéb alkalmazásokhoz, amelyek ki tudják használni a nagy vCPU-számot és a nagy memóriamennyiséget.
 
