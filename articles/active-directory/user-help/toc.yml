@@ -4,8 +4,16 @@
   items:
     - name: Áttekintés
       href: user-help-two-step-verification-overview.md
-    - name: Saját fiók beállítása
-      href: multi-factor-authentication-end-user-first-time.md
+    - name: Kétfaktoros hitelesítési módok beállítása
+      items:
+        - name: Áttekintés
+          href: multi-factor-authentication-end-user-first-time.md
+        - name: Hitelesítő alkalmazás beállítása
+          href: multi-factor-authentication-setup-auth-app.md
+        - name: Mobileszköz beállítása
+          href: multi-factor-authentication-setup-phone-number.md
+        - name: Irodai telefon beállítása
+          href: multi-factor-authentication-setup-office-phone.md
     - name: Beállítások kezelése
       href: multi-factor-authentication-end-user-manage-settings.md
     - name: Segítségkérés

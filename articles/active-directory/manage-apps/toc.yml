@@ -29,6 +29,8 @@
           items:
             - name: Az alkalmazásintegráció első lépései
               href: plan-an-application-integration.md
+            - name: Hozzáférési panel üzembe helyezésének megtervezése
+              href: access-panel-deployment-plan.md
             - name: Útmutatás fejlesztőknek
               href: developer-guidance-for-integrating-applications.md
         - name: Egyszeri bejelentkezés

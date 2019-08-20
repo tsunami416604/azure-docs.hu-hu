@@ -11,12 +11,12 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a6908a26e1d513261094be28620c3c9a2d86b48
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: a065f275321d16b9eaf82a02cb7da45c15aa82cc
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383108"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616311"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Felhasználói súgó a hitelesítéshez, az alkalmazásokhoz és az eszközkezeléshez
 
@@ -92,8 +92,11 @@ Ezeket a tartalmakat azért hoztuk létre, hogy segítséget nyújtsunk a bizton
                     <div class="cardText">
                         <h3>Kétlépéses ellenőrzés súgója</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time">Kétlépéses ellenőrzés beállítása</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-auth-app">Hitelesítő alkalmazás beállítása</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-phone-number">Mobileszköz beállítása</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-office-phone">Irodai telefon beállítása</a><br/>
                         <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-manage-settings">Beállítások kezelése</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-troubleshoot">Segítségkérés gyakori problémákkal kapcsolatban</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-sign-in">A bejelentkezés menete</a>
                         </p>
                     </div>

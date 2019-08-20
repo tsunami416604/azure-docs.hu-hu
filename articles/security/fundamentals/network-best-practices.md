@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: a821ce5d9e545db2dee2adbe942eab5edcfdb01f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 09caffcfdad4b132858b6ec52b36fe037f488b3a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726949"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934709"
 ---
 # <a name="azure-best-practices-for-network-security"></a>A hálózati biztonságra vonatkozó Azure ajánlott eljárások
 Ez a cikk az Azure ajánlott eljárásainak gyűjteményét ismerteti a hálózati biztonság növelése érdekében. Ezek az ajánlott eljárások az Azure hálózatkezelési tapasztalataiból és az ügyfelek, például saját tapasztalataiból származnak.
@@ -35,7 +35,7 @@ Ebben a cikkben minden ajánlott eljáráshoz a következőket ismertetjük:
 Ezek az ajánlott eljárások konszenzusos véleményt, valamint az Azure platform képességeit és funkcióit ismertetik, mivel azok a cikk írásának időpontjában szerepelnek. A vélemények és technológiák idővel változnak, és ez a cikk rendszeresen frissül, hogy tükrözze ezeket a módosításokat.
 
 ## <a name="use-strong-network-controls"></a>Erős hálózati vezérlők használata
-Az Azure Virtual [Machines (VM)](https://azure.microsoft.com/services/virtual-machines/) és a készülékek más hálózati eszközökhöz is csatlakoztathatók az [Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/)szolgáltatásba való helyezéssel. Ez azt is lehetővé teszi, hogy virtuális hálózati adaptereket csatlakoztasson egy virtuális hálózathoz, hogy engedélyezze a TCP/IP-alapú kommunikációt a hálózatra képes eszközök között. Az Azure-beli virtuális hálózathoz csatlakoztatott virtuális gépek csatlakozhatnak ugyanazon a virtuális hálózaton, különböző virtuális hálózatokon, az interneten vagy a saját helyszíni hálózatokban lévő eszközökhöz.
+Az Azure Virtual [Machines (VM)](https://azure.microsoft.com/services/virtual-machines/) és a készülékek más hálózati eszközökhöz is csatlakoztathatók az [Azure Virtual Networks](../../virtual-network/index.yml)szolgáltatásba való helyezéssel. Ez azt is lehetővé teszi, hogy virtuális hálózati adaptereket csatlakoztasson egy virtuális hálózathoz, hogy engedélyezze a TCP/IP-alapú kommunikációt a hálózatra képes eszközök között. Az Azure-beli virtuális hálózathoz csatlakoztatott virtuális gépek csatlakozhatnak ugyanazon a virtuális hálózaton, különböző virtuális hálózatokon, az interneten vagy a saját helyszíni hálózatokban lévő eszközökhöz.
 
 A hálózat és a hálózat biztonságának tervezése során javasoljuk, hogy központosítsa a következőket:
 
@@ -114,7 +114,7 @@ Az Azure hálózati biztonsági berendezések jobb biztonságot biztosíthatnak,
 Az elérhető Azure Virtual Network biztonsági berendezések kereséséhez nyissa meg az [Azure Marketplace](https://azure.microsoft.com/marketplace/) -t, és keressen rá a "biztonság" és a "hálózati biztonság" kifejezésre.
 
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>Peremhálózati hálózatok üzembe helyezése biztonsági zónákhoz
-A [peremhálózat](https://docs.microsoft.com/azure/best-practices-network-security) (más néven DMZ) egy fizikai vagy logikai hálózati szegmens, amely további biztonsági réteget biztosít az eszközök és az internet között. A peremhálózat szélén lévő speciális hálózati hozzáférés-vezérlési eszközök csak a virtuális hálózatra irányuló kívánt forgalmat teszik lehetővé.
+A [peremhálózat](./https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (más néven DMZ) egy fizikai vagy logikai hálózati szegmens, amely további biztonsági réteget biztosít az eszközök és az internet között. A peremhálózat szélén lévő speciális hálózati hozzáférés-vezérlési eszközök csak a virtuális hálózatra irányuló kívánt forgalmat teszik lehetővé.
 
 A peremhálózati hálózatok hasznosak, mert a hálózati hozzáférés-vezérlési felügyeletet, a figyelést, a naplózást és a jelentéskészítést az Azure-beli virtuális hálózat peremén lévő eszközökön helyezheti át. A peremhálózaton általában lehetővé teszi az elosztott szolgáltatásmegtagadási (DDoS) megelőzés, a behatolás-észlelés/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek), a tűzfalszabályok és a házirendek, a webes szűrés, a hálózati antimalware és egyéb szolgáltatások. A hálózati biztonsági eszközök az Internet és az Azure-beli virtuális hálózat között ülnek, és mindkét hálózaton rendelkeznek illesztőfelülettel.
 

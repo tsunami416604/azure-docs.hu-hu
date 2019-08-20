@@ -19,6 +19,10 @@
 - name: Alapelvek
   expanded: false
   items:
+    - name: Feltételes hozzáférés bevezetése
+      href: howto-conditional-access-adoption-kit.md
+    - name: Gyakori feltételes hozzáférési szabályzatok
+      href: concept-conditional-access-policy-common.md
     - name: Feltételek
       href: conditions.md
     - name: Helyfeltételek
@@ -38,6 +42,22 @@
       href: plan-conditional-access.md
     - name: Ajánlott eljárások
       href: best-practices.md
+    - name: Gyakori szabályzatsablonok
+      items:
+        - name: MFA megkövetelése a rendszergazdáktól
+          href: howto-conditional-access-policy-admin-mfa.md
+        - name: MFA megkövetelése az Azure-beli felügyelethez
+          href: howto-conditional-access-policy-azure-management.md
+        - name: Régi hitelesítési folyamat letiltása
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: Kockázatalapú feltételes hozzáférés
+          href: howto-conditional-access-policy-risk.md
+        - name: Megbízható helyek megkövetelése az MFA-regisztrációhoz
+          href: howto-conditional-access-policy-registration.md
+        - name: Hozzáférés letiltása hely alapján
+          href: howto-conditional-access-policy-location.md
+        - name: Megfelelő eszközök megkövetelése
+          href: howto-conditional-access-policy-compliant-device.md
     - name: Régi hitelesítési folyamat letiltása
       href: block-legacy-authentication.md
     - name: Feltételes hozzáférés MFA-regisztrációhoz

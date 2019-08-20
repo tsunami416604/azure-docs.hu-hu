@@ -111,15 +111,19 @@
         - name: VMware rendszerű virtuális gépek beállítása magánfelhőhöz
           items:
             - name: Virtuális gép létrehozása az Azure-ban
-              href: 'https://docs.azure.cloudsimple.com/azure-create-vm/'
+              href: azure-create-vm.md
+            - name: Virtuális gépek kezelése az Azure-ban
+              href: azure-manage-vm.md
     - name: Útmutatók
       items:
         - name: A környezet védelme
           href: 'https://docs.azure.cloudsimple.com/private-cloud-secure/'
         - name: Magánfelhő-felügyelet
           items:
+            - name: Magánfelhőre vonatkozó jogosultságok eszkalálása
+              href: escalate-privileges.md
             - name: A tevékenységprofilhoz tartozó DNS és DHCP beállítása
-              href: 'https://docs.azure.cloudsimple.com/dns-dhcp-setup/'
+              href: dns-dhcp-setup.md
             - name: NSX 2. rétegbeli VPN migráláshoz
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
         - name: Magánfelhő-hálózat
@@ -133,11 +137,11 @@
         - name: VMware-platform
           items:
             - name: A magánfelhő engedélymodelljének megismerése
-              href: 'https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/'
+              href: learn-private-cloud-permissions.md
             - name: vCenter-identitásforrások
               href: set-vcenter-identity.md
             - name: Azure Application Gateway és VMware rendszerű virtuális gépek
-              href: 'https://docs.azure.cloudsimple.com/azure-application-gateway/'
+              href: azure-application-gateway.md
             - name: Magánfelhő vCenter-kiszolgálójának konfigurálása vRealize automatizálási végpontként
               href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
             - name: Számítási feladatot futtató virtuális gépek migrálása magánfelhőbe
@@ -147,7 +151,7 @@
         - name: VMware-ökoszisztéma
           items:
             - name: Számítási feladatot futtató virtuális gépek biztonsági mentése
-              href: 'https://docs.azure.cloudsimple.com/backup-workloads-veeam/'
+              href: backup-workloads-veeam.md
             - name: A VMware Horizon megoldási útmutatója
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: vSAN-titkosítás konfigurálása magánfelhőhöz

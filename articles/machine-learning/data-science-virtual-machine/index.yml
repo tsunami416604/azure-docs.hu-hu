@@ -3,41 +3,37 @@ documentType: LandingData
 title: Az Azure Data Science Virtual Machine dokumentációja
 metadata:
   title: A Data Science Virtual Machine dokumentációja – Azure
-  description: 'Útmutató a Data Science Virtual Machine használatához, amely egy kísérleti környezet az Azure-felhőben kifejezetten adatelemzéshez. Számos népszerű adatelemzési és egyéb eszköz található meg rajta előre telepítve és konfigurálva, amelyek jelentősen felgyorsítják az intelligens alkalmazások fejlett elemzésekhez történő összeállítását.'
+  description: 'Útmutató a Data Science Virtual Machine használatához, amely egy kísérleti környezet az Azure-felhőben adatelemzéshez. Népszerű adatelemzési és egyéb eszközök találhatók meg rajta előre telepítve és konfigurálva, amelyek jelentősen felgyorsítják az intelligens alkalmazások fejlett elemzésekhez történő összeállítását.'
   services: machine-learning
   author: vijetajo
-  manager: cgronlun
   ms.service: machine-learning
   ms.subservice: data-science-vm
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/18/2018
+  ms.date: 08/19/2019
   ms.author: vijetaj
 abstract:
-  description: 'Az adatelemzési és a mélytanulási virtuális gépek testre szabott Azure VM-rendszerképek, rengeteg beépített adatelemzési eszközzel, amelyek fejlett elemzésre tervezett, intelligens alkalmazások létrehozására használhatók.'
+  description: 'Az Azure Data Science Virtual Machine (DSVM) egy személyre szabott virtuálisgép-lemezkép adatelemzési és gépi tanulási eszközökkel. Ezzel a virtuális géppel intelligens, fejlett analitikai alkalmazásokat hozhat létre. <a href="overview.md">További információ...</a>'
 sections:
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph
         text: 'Útmutató a Windows- vagy Linux-alapú adatelemzési virtuális gépek üzembe helyezéséhez:'
+      - type: paragraph
+        text: <b>Windowsos DSVM</b>
       - type: list
         style: unordered
         items:
-          - html: <a href="provision-vm.md">Windows</a>
-          - html: <a href="linux-dsvm-intro.md">Linux CentOS</a>
-          - html: <a href="dsvm-ubuntu-intro.md">Linux Ubuntu</a>
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Útmutató az adatelemzési virtuális gépek (DSVM) kiépítéséről és használatához:'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="provision-vm">Windowsos DSVM kiépítése</a>
+          - html: <a href="provision-vm">Windowsos DSVM beállítása</a>
           - html: <a href="vm-do-ten-things">Windowsos DSVM használata</a>
-          - html: <a href="linux-dsvm-intro">Linux CentOS-alapú DSVM kiépítése</a>
-          - html: <a href="dsvm-ubuntu-intro">Linux Ubuntu-alapú DSVM kiépítése</a>
+      - type: paragraph
+        text: <b>Linuxos DSVM (Ubuntu | CentOS)</b>
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="linux-dsvm-intro">Linux CentOS rendszerű DSVM beállítása</a>
+          - html: <a href="dsvm-ubuntu-intro">Linux Ubuntu rendszerű DSVM beállítása</a>
           - html: <a href="linux-dsvm-walkthrough">Linuxos DSVM használata</a>
   - title: További Azure Machine Learning-technológiák
     items:
@@ -47,7 +43,7 @@ sections:
         style: cards
         className: cardsFTitle
         items:
-          - title: Azure Machine Learning szolgáltatás (előzetes verzió)
+          - title: Azure Machine Learning szolgáltatás
             href: /azure/machine-learning/service/
             image:
               src: media/index/i_machine-learning.svg

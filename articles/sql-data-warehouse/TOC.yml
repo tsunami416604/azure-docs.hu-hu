@@ -273,6 +273,8 @@
       items:
         - name: Frissítés 2. generációs verzióra
           href: upgrade-to-latest-generation.md
+        - name: A Compute kezelése
+          href: manage-compute-with-azure-functions.md
         - name: A számítási feladatok monitorozása – portál
           href: sql-data-warehouse-monitor-workload-portal.md
         - name: A számítási feladatok monitorozása – DMV-k

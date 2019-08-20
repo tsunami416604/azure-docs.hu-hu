@@ -64,7 +64,7 @@ sections:
               src: media/index/spark-logo.png
             title: Beépített elemzések az Apache Sparkkal
           - href: /azure/cosmos-db/change-feed/
-            html: <p>A változáscsatornával valós idejű elemzést végezhet az Azure Cosmos DB-tárolóban található dokumentumok rendezett listájának a módosításuk sorrendjében való beolvasásával. </p>
+            html: <p>A változáscsatornával valós idejű elemzést végezhet az Azure Cosmos-tárolóban található dokumentumok rendezett listájának a módosításuk sorrendjében való beolvasásával. </p>
             image:
               src: media/index/change-feed-logo.png
             title: Csatorna módosítása

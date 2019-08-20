@@ -1,96 +1,100 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Az Azure AD Domain Services dokumentációja
+summary: Megismerheti, hogy az Azure Active Directory Domain Services hogyan használható alkalmazások Kerberos- vagy NTLM-hitelesítéséhez, illetve az Azure-beli virtuális gépek felügyelt tartományhoz való csatlakoztatásához.
 metadata:
   title: Az Azure AD Domain Services dokumentációja
-  description: 'Ismerje meg, hogy az Active Directory Domain Services hogyan használható az Azure virtuális gépek tartományhoz csatlakoztatására tartományvezérlő nélkül. Az oktatóanyagok és egyéb dokumentációk bemutatják a virtuális gépek csoportházirendekkel végzett kezelését.'
-  keywords: 'Azure AD, Azure, tartományhoz való csatlakozás, csoportházirend, LDAP, Kerberos, tartományvezérlő, DC, átemelés'
+  description: Megismerheti, hogy az Azure Active Directory Domain Services hogyan használható alkalmazások Kerberos- vagy NTLM-hitelesítéséhez, illetve az Azure-beli virtuális gépek felügyelt tartományhoz való csatlakoztatásához.
+  services: service
+  ms.service: active-directory
+  ms.subservice: domain-services
+  ms.topic: landing-page
+  ms.collection: collection
   author: iainfoulds
   ms.author: iainfou
   manager: daveba
-  ms.date: 05/22/2019
-  ms.topic: landing-page
-  ms.devlang: na
-  ms.service: active-directory
-  ms.subservice: domain-services
-sections:
-  - items:
-      - type: markdown
-        text: 'Ismerje meg, hogy az Active Directory Domain Services hogyan használható az Azure virtuális gépek tartományhoz csatlakoztatására tartományvezérlő nélkül. Az oktatóanyagok és egyéb dokumentációk bemutatják a virtuális gépek csoportházirendekkel végzett kezelését.'
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: overview.md
-            html: '<p>Tudjon meg többet arról, hogy miben segíthet Önnek az Azure AD Domain Services.</p>'
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_investigate.svg'
-            title: Mi az Azure AD tartományi szolgáltatások?
-          - href: create-instance.md
-            html: <p>Hozza létre a saját felügyelt tartományát egy egyszerű útmutató segítségével.</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_deploy.svg'
-            title: Bevezetés
-          - href: contact-us.md
-            html: <p>Szükség esetén segítséget is kaphat.</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_support.svg'
-            title: Támogatás kérése
-          - href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
-            html: <p>Ismerje meg az Azure AD Domain Services új funkcióit.</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_whats-new.svg'
-            title: Újdonságok
-  - title: Videók
-    items:
-      - type: markdown
-        text: '>[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]'
-  - title: Tervezési cikkek
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="comparison.md">Döntse el, hogy megfelelő-e az Ön számára a szolgáltatás</a>'
-          - html: <a href="active-directory-ds-features.md">Az Azure AD Domain Services jellemzői</a>
-          - html: <a href="scenarios.md">Hogyan tudja használni a szolgáltatást?</a>
-          - html: <a href="synchronization.md">Ismerje meg a szinkronizálás működését az Azure AD Domain Servicesben</a>
-          - html: '<a href="https://azure.microsoft.com/pricing/details/active-directory-ds/">Az Azure AD Domain Services díjszabása</a>'
-  - title: Alkalmazások és az Azure AD Domain Services
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="deploy-azure-app-proxy.md">Az Azure AD-alkalmazásproxy üzembe helyezése</a>
-          - html: <a href="deploy-sp-profile-sync.md">Profilszinkronizálás a SharePoint-kiszolgálóhoz</a>
-          - html: <a href="deploy-kcd.md">A Kerberos által korlátozott delegálás konfigurálása</a>
-  - title: Útmutatók
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="check-health.md">Felügyelt tartomány állapotának ellenőrzése </a>
-          - html: <a href="csp.md">Azure CSP-előfizetések és az Azure AD Domain Services</a>
-          - html: <a href="manage-dns.md">DNS kezelése</a>
-          - html: <a href="network-considerations.md">Virtuális hálózat kiválasztása</a>
-          - html: <a href="configure-ldaps.md">Biztonságos LDAP konfigurálása</a>
-          - html: <a href="create-ou.md">OU létrehozása</a>
-          - html: <a href="manage-group-policy.md">Csoportházirend kezelése</a>
-  - title: Hibaelhárítási cikkek
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="troubleshoot.md">Hibaelhárítási útmutató</a>
-          - html: <a href="troubleshoot-alerts.md">A felügyelt tartományra vonatkozó riasztások hibaelhárítása</a>
-          - html: <a href="faqs.md">Gyakori kérdések</a>
-          - html: '<a href="https://azure.microsoft.com/support/options/">Támogatás kérése</a>'
-  - title: Egyéb erőforrások
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://feedback.azure.com/forums/169401-azure-active-directory/">Visszajelzés küldése az Azure AD Domain Servicesről a UserVoice-on</a>'
-          - html: '<a href="https://azure.microsoft.com/roadmap/?category=security-identity">Azure-ütemterv</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-contact-us">Kapcsolatfelvétel</a>'
+  ms.date: 08/01/2019
+  ms.openlocfilehash: 3c97b7bbb652fd26e5c8fdb6d20576a3c9e70421
+  ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/19/2019
+  ms.locfileid: "69612869"
+landingContent:
+- title: Tudnivalók az Azure AD Domain Servicesről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure AD tartományi szolgáltatások?
+      url: overview.md
+    - text: Identitáskezelési megoldások összehasonlítása
+      url: compare-identity-solutions.md
+    - text: Hogyan működik a szinkronizálás?
+      url: synchronization.md
+    - text: Gyakori kérdések
+      url: faqs.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Felügyelt tartomány létrehozása
+      url: tutorial-create-instance.md
+  - linkListType: tutorial
+    links:
+    - text: Windows Server rendszerű virtuális gép csatlakoztatása tartományhoz
+      url: join-windows-vm.md
+    - text: Felügyeleti eszközök telepítése
+      url: tutorial-create-management-vm.md
+- title: Konfigurálás
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Biztonságos LDAP konfigurálása
+      url: tutorial-configure-ldaps.md
+  - linkListType: how-to-guide
+    links:
+    - text: Jelszókivonat szinkronizálásának engedélyezése
+      url: active-directory-ds-getting-started-password-sync-synced-tenant.md
+    - text: Szervezeti egység (OU) létrehozása
+      url: create-ou.md
+    - text: A Kerberos által korlátozott delegálás konfigurálása
+      url: deploy-kcd.md
+    - text: Felügyelt tartomány védelme
+      url: secure-your-domain.md
+- title: Kezelés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Csoportszabályzat-felügyelet
+      url: manage-group-policy.md
+    - text: DNS kezelése
+      url: manage-dns.md
+    - text: Állapot ellenőrzése
+      url: check-health.md
+    - text: E-mail-értesítések konfigurálása
+      url: notifications.md
+    - text: Biztonsági naplózás engedélyezése (előzetes verzió)
+      url: security-audit-events.md
+- title: Virtuális gépek csatlakoztatása tartományhoz
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Windows Server
+      url: join-windows-vm.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ubuntu Server
+      url: join-ubuntu-linux-vm.md
+    - text: Red Hat Enterprise Linux
+      url: join-rhel-linux-vm.md
+- title: Hibaelhárítás
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Gyakori problémák
+      url: troubleshoot.md
+    - text: Gyakori riasztási üzenetek
+      url: troubleshoot-alerts.md
+    - text: Hálózati biztonsági csoportokkal kapcsolatos problémák
+      url: alert-nsg.md
+    - text: A biztonságos LDAP problémái
+      url: alert-ldaps.md

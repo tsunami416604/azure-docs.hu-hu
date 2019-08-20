@@ -1,93 +1,80 @@
 - name: Az Azure AD Domain Services dokumentációja
   href: index.yml
 - name: Áttekintés
-  expanded: true
   items:
     - name: Mi az Azure AD tartományi szolgáltatások?
       href: overview.md
-    - name: Összehasonlítás a Windows Server AD-vel
-      href: comparison.md
-    - name: Összehasonlítás az Azure AD-csatlakozással
-      href: active-directory-ds-compare-with-azure-ad-join.md
-    - name: Szolgáltatások
-      href: active-directory-ds-features.md
+    - name: Identitáskezelési szolgáltatások összehasonlítása
+      href: compare-identity-solutions.md
+- name: Oktatóanyagok
+  expanded: true
+  items:
+    - name: Felügyelt tartomány létrehozása
+      href: tutorial-create-instance.md
+    - name: Windows Server rendszerű virtuális gép csatlakoztatása tartományhoz
+      href: join-windows-vm.md
+    - name: Felügyeleti eszközök telepítése
+      href: tutorial-create-management-vm.md
+    - name: Biztonságos LDAP konfigurálása
+      href: tutorial-configure-ldaps.md
 - name: Példák
   items:
     - name: Azure AD DS-példány létrehozása az Azure PowerShell használatával
       href: powershell-create-instance.md
 - name: Alapelvek
   items:
-    - name: A szinkronizálás működése
+    - name: Az Azure AD DS szinkronizálásának működése
       href: synchronization.md
+    - name: A jelszókivonat-szinkronizálás működése
+      href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: Mi az az Azure Active Directory?
+      href: ../active-directory/fundamentals/active-directory-whatis.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: Az Azure Active Directory architektúrája
+      href: ../active-directory/fundamentals/active-directory-architecture.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: A minimális jogosultságon alapuló adminisztrációs modellek megvalósítása
+      href: /windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
 - name: Útmutató
   items:
-    - name: Azure AD DS-példány létrehozása
+    - name: Általános beállítások konfigurálása
       items:
-        - name: '1. feladat: alapvető beállítások konfigurálása'
-          href: create-instance.md
-        - name: '2. feladat: hálózati beállítások konfigurálása'
-          href: active-directory-ds-getting-started-network.md
-        - name: '3. feladat: rendszergazdai csoport konfigurálása és az Azure AD Domain Services engedélyezése'
-          href: active-directory-ds-getting-started-admingroup.md
-        - name: '4. feladat: virtuális hálózat DNS-beállításainak frissítése'
-          href: active-directory-ds-getting-started-dns.md
-        - name: '5. feladat: jelszókivonatok szinkronizálásának engedélyezése'
-          href: active-directory-ds-getting-started-password-sync.md
+        - name: Jelszókivonat szinkronizálásának engedélyezése
+          href: active-directory-ds-getting-started-password-sync-synced-tenant.md
+        - name: Hatókörön belüli szinkronizálás konfigurálása az Azure AD-ből
+          href: scoped-synchronization.md
+        - name: Szervezeti egység (OU) létrehozása
+          href: create-ou.md
+        - name: Csoportosan felügyelt szolgáltatásfiók (gMSA) létrehozása
+          href: create-gmsa.md
     - name: Azure AD DS tervezése
       items:
-        - name: Forgatókönyvek
+        - name: Gyakori forgatókönyvek
           href: scenarios.md
-        - name: Virtuális hálózat tervezése
+        - name: Virtuális hálózatokkal kapcsolatos szempontok
           href: network-considerations.md
     - name: Azure AD DS kezelése
       items:
-        - name: Biztonsági naplózási események engedélyezése (előzetes verzió)
-          href: security-audit-events.md
-        - name: Felügyelt tartomány állapotának az ellenőrzése
-          href: check-health.md
-        - name: Hatókörön belüli szinkronizálás konfigurálása az Azure AD-ből egy felügyelt tartományra
-          href: scoped-synchronization.md
-        - name: Felügyelt tartomány védelme
-          href: secure-your-domain.md
-        - name: OU létrehozása egy felügyelt tartományon
-          href: create-ou.md
-        - name: Csoportosan felügyelt szolgáltatásfiók létrehozása felügyelt tartományon
-          href: create-gmsa.md
-        - name: Az Azure AD Domain Services csoportházirendjének kezelése
+        - name: Csoportházirend-felügyelet
           href: manage-group-policy.md
-        - name: Jelszószabályzatok konfigurálása felügyelt tartományon
-          href: password-policy.md
+        - name: DNS kezelése
+          href: manage-dns.md
+        - name: Állapot ellenőrzése
+          href: check-health.md
+        - name: E-mail-értesítések konfigurálása
+          href: notifications.md
         - name: Felügyelt tartomány törlése
           href: delete-aadds.md
-        - name: Adminisztratív virtuális gép létrehozása az Azure AD DS-hez
-          href: manage-domain.md
-        - name: Azure AD Domain Services DNS-ének kezelése
-          href: manage-dns.md
-        - name: E-mail-értesítések frissítése
-          href: notifications.md
-        - name: Biztonságos LDAP (LDAPS) konfigurálása Azure AD Domain Services-beli tartományban
-          href: configure-ldaps.md
-          items:
-            - name: '2. feladat: Biztonságos LDAP-tanúsítvány exportálása'
-              href: active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md
-            - name: '3. feladat: Biztonságos LDAP engedélyezése a felügyelt tartományhoz az Azure Portallal'
-              href: active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md
-            - name: '4. feladat: A DNS konfigurálása a felügyelt tartomány internetről való elérésére'
-              href: active-directory-ds-ldaps-configure-dns.md
-            - name: '5. feladat: Kötés létrehozása a felügyelt tartománnyal és a biztonságos LDAP-hozzáférés zárolása'
-              href: active-directory-ds-ldaps-bind-lockdown.md
-    - name: Alkalmazások üzembe helyezése az Azure AD DS-ben
+    - name: Az Azure AD DS védelme
       items:
-        - name: Profilszinkronizálás támogatásának beállítása SharePoint-kiszolgálóhoz
-          href: deploy-sp-profile-sync.md
+        - name: Felügyelt tartomány védelme
+          href: secure-your-domain.md
         - name: A Kerberos által korlátozott delegálás konfigurálása
           href: deploy-kcd.md
-        - name: Üzembe helyezés az Azure AD-alkalmazásproxyval
-          href: deploy-azure-app-proxy.md
-    - name: Virtuális gépek csatlakoztatása az Azure AD DS-hez
+        - name: Jelszó- és fiókzárolási házirendek konfigurálása
+          href: password-policy.md
+        - name: Biztonsági naplózási események engedélyezése (előzetes verzió)
+          href: security-audit-events.md
+    - name: Virtuális gépek csatlakoztatása tartományhoz
       items:
-        - name: Windows Server rendszerű virtuális gép
-          href: join-windows-vm.md
         - name: Windows Server rendszerű virtuális gép sablonból
           href: join-windows-vm-template.md
         - name: CentOS
@@ -98,24 +85,31 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
-    - name: Az Azure AD DS hibaelhárítása
+    - name: Alkalmazások üzembe helyezése az Azure AD DS-ben
       items:
-        - name: Hibaelhárítási útmutató
+        - name: Üzembe helyezés az Azure AD-alkalmazásproxyval
+          href: deploy-azure-app-proxy.md
+        - name: Profilszinkronizálás támogatásának beállítása SharePoint-kiszolgálóhoz
+          href: deploy-sp-profile-sync.md
+    - name: Hibaelhárítás
+      items:
+        - name: Gyakori hibák
           href: troubleshoot.md
-        - name: Riasztások hibaelhárítása
-          href: troubleshoot-alerts.md
+        - name: Gyakori riasztások
           items:
-            - name: Hálózati biztonsági csoportok hibás konfigurációinak javítása
+            - name: Gyakori riasztások
+              href: troubleshoot-alerts.md
+            - name: Hibás hálózati konfiguráció javítása
               href: alert-nsg.md
             - name: Hiányzó szolgáltatásnevek visszaállítása
               href: alert-service-principal.md
-            - name: A biztonságos LDAP hibái
+            - name: Biztonságos LDAP-riasztások
               href: alert-ldaps.md
-        - name: Eltérő bérlők hibáinak megoldása
+        - name: Eltérő bérlők hibái
           href: mismatched-tenant-error.md
         - name: Felfüggesztett tartományok
           href: suspension.md
-        - name: A biztonságos LDAP hibaelhárítása
+        - name: Biztonságos LDAP
           href: tshoot-ldaps.md
 - name: További források
   items:
