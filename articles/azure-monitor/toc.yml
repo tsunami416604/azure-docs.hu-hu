@@ -930,6 +930,8 @@
               href: platform/alerts-understand-migration.md
             - name: A migrálási eszköz használata
               href: platform/alerts-using-migration-tool.md
+            - name: Automatikus migrálási folyamat
+              href: platform/alerts-automatic-migration.md
             - name: Klasszikus metrikariasztások kezelése
               href: platform/alerts-classic-portal.md
             - name: Klasszikus metrikariasztás Resource Manager-sablonnal

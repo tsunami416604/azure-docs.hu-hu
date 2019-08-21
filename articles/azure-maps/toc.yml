@@ -149,6 +149,8 @@
           href: display-feature-information-android.md
         - name: Mozaikréteg hozzáadása
           href: how-to-add-tile-layer-android-map.md
+    - name: Adatokkal kapcsolatos visszajelzés küldése
+      href: how-to-use-feedback-tool.md
 - name: Referencia
   items:
     - name: API- és paraméterbővítmények

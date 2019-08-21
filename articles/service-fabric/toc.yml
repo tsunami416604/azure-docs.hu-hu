@@ -108,7 +108,7 @@
 - name: Példák
   items:
     - name: Kódminták
-      href: 'https://azure.microsoft.com/resources/samples/?service=service-fabric'
+      href: 'https://docs.microsoft.com/samples/browse/'
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric parancssori felület
@@ -354,7 +354,7 @@
       href: service-fabric-api-management-overview.md
     - name: Alkalmazáserőforrás-modell
       href: service-fabric-concept-resource-model.md
-    - name: Felügyelt identitás
+    - name: Felügyelt identitás (előzetes verzió)
       href: concepts-managed-identity.md
 - name: Útmutatók
   items:
@@ -747,7 +747,7 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: A helyi fürt hibaelhárítása
           href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: Felügyelt identitás használata a Service Fabric-alkalmazásokhoz
+    - name: Felügyelt identitás használata a Service Fabric-alkalmazásokhoz (előzetes verzió)
       items:
         - name: Fürtbeállítás
           items:

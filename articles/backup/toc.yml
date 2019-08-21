@@ -114,6 +114,8 @@
               href: backup-mabs-system-state-and-bmr.md
         - name: Adatok helyreállítása az Azure Backup Serverről
           href: backup-azure-alternate-dpm-server.md
+        - name: VMware virtuális gépek visszaállítása az Azure Backup Server használatával
+          href: restore-azure-backup-server-vmware.md
     - name: Azure Backup Server az Azure Stacken
       items:
         - name: Azure Backup Server telepítése
