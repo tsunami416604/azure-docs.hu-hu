@@ -130,7 +130,7 @@ A Azure Backup Server egy olyan felhasználói fiókra van szüksége, amely jog
     ![Szerepkör hozzáadása](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
 
-4. A **szerepkör** > -szerepkör létrehozása mezőben adja meg a *BackupAdminRole***nevet**. A szerepkör neve lehet bármilyen hasonló, de felismerhetőnek kell lennie a szerepkör céljához.
+4. A **szerepkör** > -szerepkör létrehozása mezőben adja meg a *BackupAdminRole* **nevet**. A szerepkör neve lehet bármilyen hasonló, de felismerhetőnek kell lennie a szerepkör céljához.
 
 5. Válassza ki az alábbi táblázatban összefoglalt jogosultságokat, majd kattintson az **OK**gombra.  Az új szerepkör megjelenik a **szerepkörök** panel listájában.
    - A szülő címke melletti ikonra kattintva bontsa ki a szülőt, és tekintse meg a gyermek jogosultságokat.
