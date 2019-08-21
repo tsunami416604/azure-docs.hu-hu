@@ -1,6 +1,6 @@
 ---
-title: Az Azure tevékenységnapló exportálása
-description: Az Azure tevékenységnapló exportálása tárolóba archiválás vagy az Azure Event hubs az Azure-on kívül.
+title: Az Azure-tevékenység naplójának exportálása
+description: Exportálja az Azure-beli tevékenység naplóját archiválásra vagy Azure-Event Hubsre az Azure-on kívüli exportáláshoz.
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,118 +8,120 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: acf2526e79519e610614dc5217efbfe5e327b90f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d34040722ac8793fd4bbb02f2d3fa59247f8267c
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66248144"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639631"
 ---
-# <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>A storage vagy az Azure Event Hubs Azure tevékenységnapló exportálása
-A [Azure-tevékenységnapló](activity-logs-overview.md) előfizetés-szintű eseményeit, amelyek az Azure-előfizetésében történt betekintést nyújt. A tevékenységnapló megtekintése az Azure Portalon, vagy másolja a Log Analytics-munkaterületet, ahol azok elemezhetők az Azure Monitor által összegyűjtött egyéb adatok, valamint egy Azure storage-fiók a tevékenységnaplót archiválhatja, vagy adatfolyamként való naplóprofil hozhat létre egy  Eseményközpont.
+# <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-Tevékenységnaplók exportálása a Storage-ba vagy az Azure Event Hubsba
+Az [Azure-tevékenység naplója](activity-logs-overview.md) betekintést nyújt az Azure-előfizetésében bekövetkezett előfizetési szintű eseményekre. Amellett, hogy megtekinti a tevékenység naplóját a Azure Portal, vagy átmásolja egy Log Analytics-munkaterületre, ahol az a Azure Monitor által gyűjtött egyéb adatokkal is elemezhető, létrehozhat egy log-profilt, amely archiválja a műveletnapló egy Azure Storage-fiókba, vagy továbbíthatja azt egy  Event hub.
 
-## <a name="archive-activity-log"></a>Tevékenységnapló archiválása
-A tárfiókhoz a tevékenységnapló archiválása akkor hasznos, ha szeretné megőrizni a naplózási, statikus elemzési és biztonsági mentés (, teljes körűen felügyelve az adatmegőrzési) 90 napnál hosszabb ideig naplóadatokat. Ha csak szeretné megőrizni az események 90 napig, vagy kisebb, nem kell állítania archiválás tárfiókba, mivel a tevékenységnapló eseményei vannak az Azure platformon 90 napig őrizzük meg.
+## <a name="archive-activity-log"></a>Archiválási tevékenység naplója
+A műveletnapló a Storage-fiókba való archiválása akkor lehet hasznos, ha a naplózási adatok megmaradnak a 90 napnál hosszabb ideig (az adatmegőrzési szabályzat teljes körű ellenőrzése) a naplózás, a statikus elemzés vagy a biztonsági mentés számára. Ha csak 90 napig vagy kevesebb ideig kell megőriznie az eseményeket, nincs szükség a Storage-fiók archiválására, mivel a tevékenység-naplózási események az Azure-platformon maradnak meg a 90 napig.
 
-## <a name="stream-activity-log-to-event-hub"></a>Stream tevékenység naplózás az Eseményközpontba
-[Az Azure Event Hubs](/azure/event-hubs/) egy adatstreamelési platform és Eseményfeldolgozási szolgáltatás, amely képes fogadni, és másodpercenként több millió folyamatán. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Két módon használható a tevékenységnaplóban a streamelési funkciót a következők:
-* **Külső naplózás és a telemetriai rendszer Stream**: Idővel az Azure Event Hubs streamelési lesz a mechanizmus, amellyel a Tevékenységnaplót kanálu be külső siem-EK és a log analytics-megoldások.
-* **Hozhat létre egy egyéni telemetriát és a naplózás platform**: Ha már rendelkezik egy személyre szabott telemetriai platform vagy szem előtt tartva létrehozására, rugalmasan skálázható közzétételi és előfizetési jellege az Event Hubs lehetővé teszi, hogy rugalmasan a tevékenységnaplóban. 
+## <a name="stream-activity-log-to-event-hub"></a>Stream-tevékenység naplója az Event hub-ba
+Az [Azure Event Hubs](/azure/event-hubs/) egy adatstreaming platform-és esemény-betöltési szolgáltatás, amely másodpercenként több millió eseményt képes fogadni és feldolgozni. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. A következő két módszer használható a tevékenységi napló folyamatos átviteli funkciójának használatára:
+* **Stream harmadik féltől származó naplózási és telemetria rendszerekre**: Idővel az Azure Event Hubs streaming lesz az a mechanizmus, amellyel a tevékenység bejelentkezik harmadik féltől származó SIEM-és log Analytics-megoldásokba.
+* **Hozzon létre egy egyéni telemetria és naplózási platformot**: Ha már rendelkezik egy egyéni kialakítású telemetria-platformmal, vagy gondolkodik az első kiépítésében, akkor a Event Hubs rugalmasan méretezhető közzétételi-előfizetési természete lehetővé teszi a tevékenység naplójának rugalmas betöltését. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="storage-account"></a>Tárfiók
-A Tevékenységnaplót vagyunk archiválása, ha szeretné [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md) Ha még nem rendelkezik. Ne használjon egy meglévő tárfiókot, amely a benne tárolt, így jobban szabályozhatja a hozzáférést a figyelési adatok más, nem figyelési adatokat tartalmaz. Ha meg is archiválni diagnosztikai naplók és mérőszámok tárfiókhoz azonban semmi ok, dönthet úgy, hogy ugyanazt a tárfiókot használja, hogy az összes monitorozási adat egy központi helyen.
+Ha archiválja a tevékenység naplóját, létre kell hoznia [egy Storage-fiókot](../../storage/common/storage-quickstart-create-account.md) , ha még nem rendelkezik ilyennel. Ne használjon olyan meglévő Storage-fiókot, amely más, nem figyelési adattárolási információkkal rendelkezik, így hatékonyabban vezérelheti a figyeléshez való hozzáférést. Ha a diagnosztikai naplókat és mérőszámokat is archiválja egy Storage-fiókba, akkor dönthet úgy, hogy ugyanazt a Storage-fiókot használja, hogy az összes figyelési adat központi helyen maradjon.
 
-A storage-fiók nem rendelkezik a mindaddig, amíg a beállítást konfiguráló felhasználónak mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik a naplókat kibocsátó előfizetésnek az azonos előfizetésben kell.
+A Storage-fióknak nem kell ugyanabban az előfizetésben lennie, mint az előfizetéshez tartozó naplókat, ha a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik.
 > [!NOTE]
->  Jelenleg nem archiválhatja egy tárfiókot, amelyet mögött egy biztonságos virtuális hálózaton található adatokat.
+>  Jelenleg nem archiválhatja az adatok egy biztonságos virtuális hálózat mögött található Storage-fiókba.
 
 ### <a name="event-hubs"></a>Event Hubs
-A Tevékenységnaplót küld egy eseményközpontnak, akkor a kell [létrehoz egy eseményközpontot](../../event-hubs/event-hubs-create.md) Ha még nem rendelkezik. Ha korábban streamelt Event Hubs-névtér a tevékenységnapló eseményei, ennek az eseményközpontnak fogja használni.
+Ha egy Event hubhoz küldi a tevékenység naplóját, akkor létre kell hoznia [egy Event hub](../../event-hubs/event-hubs-create.md) -t, ha még nem rendelkezik ilyennel. Ha korábban naplózta a tevékenység naplózási eseményeit erre a Event Hubs névtérre, az Event hub újra fel lesz használva.
 
-A megosztott elérési házirend határozza meg az engedélyeket, a streamelési mechanizmussal rendelkezik. Streamelés az Event Hubs és a kezelés, küldési és figyelési engedélyekkel kell rendelkeznie. Létrehozhat vagy módosíthat az Event Hubs-névtér az Azure Portalon, a konfigurálás lapot a megosztott elérési házirendeket az Event Hubs-névtér.
+A megosztott hozzáférési házirend határozza meg a folyamatos átviteli mechanizmus által biztosított engedélyeket. A Event Hubs való folyamatos átvitelhez a kezelés, a Küldés és a figyelés engedélyek szükségesek. A Event Hubs névtérhez tartozó megosztott hozzáférési házirendeket Azure Portal a Event Hubs névtér configure (Konfigurálás) lapján lehet létrehozni vagy módosítani.
 
-A tevékenységnapló naplóprofil tartalmazza a folyamatos átviteli frissítéséhez a ListKey engedéllyel kell rendelkeznie az adott Event Hubs engedélyezési szabályt. Az Event Hubs-névtér nem kell ugyanabban az előfizetésben kell az előfizetést, amelyhez a naplókat, a kibocsátó, mindaddig, amíg a beállítást konfiguráló felhasználónak megfelelő RBAC rendelkezik mindkét előfizetés való hozzáférést, és mindkét előfizetés az ugyanahhoz az AAD-bérlőhöz vannak.
+Ha frissíteni szeretné a tevékenység naplójának profilját a folyamatos átvitelhez, rendelkeznie kell a ListKey engedéllyel az adott Event Hubs engedélyezési szabályhoz. A Event Hubs névtérnek nem kell ugyanabban az előfizetésben lennie, mint a naplókat kibocsátó előfizetésnek, feltéve, hogy a beállítást konfiguráló felhasználó RBAC-hozzáféréssel rendelkezik mindkét előfizetéshez, és mindkét előfizetés ugyanahhoz a HRE-bérlőhöz tartozik.
 
-A tevékenységnapló egy eseményközpontba által Stream [Log-profil létrehozásakor](#create-a-log-profile).
+[Egy log-profil létrehozásával](#create-a-log-profile)továbbítsa a tevékenység naplóját egy Event hubhoz.
 
-## <a name="create-a-log-profile"></a>-Log-profil létrehozása
-Meghatározhatja, hogyan történik a az Azure-tevékenységnapló segítségével exportálja egy **naplóprofil**. Minden Azure-előfizetés legfeljebb egy naplóprofil. Ezek a beállítások segítségével konfigurálható a **exportálása** lehetőség a tevékenységnapló panel a portálon. Akkor is konfigurálható programozott módon [az Azure Monitor REST API használatával](https://msdn.microsoft.com/library/azure/dn931927.aspx), PowerShell-parancsmagok vagy a parancssori felület.
+## <a name="create-a-log-profile"></a>Log-profil létrehozása
+Megadhatja, hogyan exportálja az Azure-tevékenység naplóját a **log profil**használatával. Minden Azure-előfizetés csak egyetlen log-profillal rendelkezhet. Ezek a beállítások az **Exportálás** lehetőséggel konfigurálhatók a portál tevékenység napló paneljén. [A Azure Monitor REST API, a](https://msdn.microsoft.com/library/azure/dn931927.aspx)PowerShell-parancsmagok vagy a parancssori felület használatával is konfigurálhatók.
 
-A napló-profil az alábbiakat határozza meg.
+A napló profilja a következőket határozza meg.
 
-**Ha a tevékenységnapló küldendő adattípusokat.** Az elérhető lehetőségek jelenleg Storage-fiók vagy az Event Hubs.
+**Hová kell elküldeni a tevékenység naplóját.** Jelenleg az elérhető lehetőségek a Storage-fiók vagy a Event Hubs.
 
-**Mely kategóriák küldendő adattípusokat.** Szerinti *kategória* Naplóprofilok és a tevékenységnaplóhoz az események nem egyezik. A napló-profilban *kategória* művelet típusát adja meg (írás, törlés, a művelet). A tevékenységnapló-esemény a *kategória*"* a tulajdonság adja meg a forrás- vagy típusú eseményeket (például felügyeleti ServiceHealth és a riasztás).
+**Mely esemény-kategóriákat kell elküldeni.** A naplózási profilok és a műveletnapló eseményeinek jelentése eltérő. A log profilban a *Kategória* a művelet típusát jelöli (írás, törlés, művelet). Egy tevékenység naplójában a (z) "* tulajdonság az esemény forrását vagy típusát jelöli (például adminisztráció, ServiceHealth és riasztás).
 
-**Mely régiókban (helyeken) exportálja.** Mivel a tevékenységnaplóban sok eseményt globális események tartalmaznia kell az összes hely.
+**Az exportálandó régiókat (helyszíneket) exportálni kell.** Minden helyet fel kell vennie, mivel a tevékenység naplójában számos esemény globális esemény.
 
-**Mennyi ideig a tevékenységnapló fenn kell tartani a Storage-fiókban.** Egy nulla napnyi adatmegőrzéshez azt jelenti, hogy naplókat tartják örökre. Ellenkező esetben az érték lehet minden olyan 1 és 2147483647 között eltelt napok számát.
+**Mennyi ideig kell megőrizni a tevékenység naplóját egy Storage-fiókban.** Egy nulla napnyi adatmegőrzéshez azt jelenti, hogy naplókat tartják örökre. Ellenkező esetben az érték lehet minden olyan 1 és 2147483647 között eltelt napok számát.
 
-Ha a megőrzési házirend-beállításokat, de a naplók tárolása a storage-fiók le van tiltva, majd adatmegőrzési szabályzatok nem hatása. Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén törli a házirendet. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet.
+Ha adatmegőrzési házirend van beállítva, de a naplófájlok tárolása egy Storage-fiókban le van tiltva, akkor a megőrzési szabályzatok nem lépnek érvénybe. Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén törli a házirendet. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet.
 
 
 
 > [!WARNING]
-> A naplóadatok JSON sorok 2018. november 1-től változik a tárfiókban formátumát. [Ebben a cikkben olvashat ennek hatásairól, valamint arról, hogy hogyan frissítheti eszközeit az új formátum kezeléséhez.](diagnostic-logs-append-blobs.md)
->
->
-
-### <a name="create-log-profile-using-the-azure-portal"></a>Az Azure portal használatával log-profil létrehozása
-
-Létrehozásához vagy szerkesztéséhez a napló-profilt a **exportálás eseményközpontba** lehetőség az Azure Portalon.
-
-1. Az a **figyelő** az Azure Portalon, válassza a menü **exportálás eseményközpontba**.
-
-    ![A portál Exportálás gomb](media/activity-log-export/portal-export.png)
-
-3. A megjelenő panelen adja meg a következőket:
-   * Régió, exportálhatja az eseményeket. Győződjön meg arról, hogy ne hagyja a fontos eseményeket, mivel a tevékenységnapló egy globális (nem régióhoz kötött) naplót, és így a legtöbb kapcsolódóan nem történik meg a hozzájuk társított régió az összes régióban kell választania. 
-   * Ha szeretne írni a storage-fiók:
-       * A Storage-fiók, amelyhez szeretné menteni az eseményeket.
-       * nap meg szeretné őrizni a storage-ban ezek az események száma. 0 napra beállítását örökre megőrzi a naplókat.
-   * Ha szeretne írni az event hubs:
-       * a Service Bus Namespace, amelyben szeretné létrehozni a streamelési ezeket az eseményeket egy Eseményközpontba.
-
-     ![Tevékenységnapló panel exportálása](./media/activity-logs-overview/activity-logs-portal-export-blade.png)
+> A Storage-fiókban lévő naplófájlok formátuma JSON-sorokra módosult november 1. és 2018. között. [Ebben a cikkben olvashat ennek hatásairól, valamint arról, hogy hogyan frissítheti eszközeit az új formátum kezeléséhez.](diagnostic-logs-append-blobs.md)
 
 
-4. Kattintson a **mentése** ezek a beállítások mentéséhez. A rendszer azonnal alkalmazni fogja a beállításokat az előfizetésére.
+> [!IMPORTANT]
+> Ha a Microsoft. ininsights erőforrás-szolgáltató nincs regisztrálva, hibaüzenetet kaphat a log-profil létrehozásakor. A szolgáltató regisztrálásához tekintse meg az [Azure erőforrás-szolgáltatókat és-típusokat](../../azure-resource-manager/resource-manager-supported-services.md) .
+
+### <a name="create-log-profile-using-the-azure-portal"></a>Log-profil létrehozása a Azure Portal használatával
+
+Hozzon létre vagy szerkesszen egy log-profilt a Azure Portal **Exportálás az Event hub** -be lehetőségével.
+
+1. A Azure Portal **figyelés** menüjében válassza az Exportálás az **Event hubhoz**lehetőséget.
+
+    ![Exportálás gomb a portálon](media/activity-log-export/portal-export.png)
+
+3. A megjelenő panelen a következőt kell megadnia:
+   * Az exportálandó eseményekkel rendelkező régiók. Válassza ki az összes régiót, hogy ne hagyja ki a legfontosabb eseményeket, mivel a tevékenység naplója globális (nem regionális) napló, így a legtöbb eseményhez nem tartozik régió társítva. 
+   * Ha a Storage-fiókba szeretne írni:
+       * Az a Storage-fiók, amelyre az eseményeket menteni szeretné.
+       * Azon napok száma, amelyekben meg szeretné őrizni ezeket az eseményeket a tárolóban. A 0 nap beállítása örökre megőrzi a naplókat.
+   * Ha az Event hub-ba szeretne írni:
+       * Az a Service Bus névtér, amelyben az események továbbításához létre kell hozni egy Event hub-t.
+
+     ![Exportálási tevékenység naplójának panelje](./media/activity-logs-overview/activity-logs-portal-export-blade.png)
 
 
-### <a name="configure-log-profile-using-powershell"></a>PowerShell-lel naplóprofil konfigurálása
+4. A beállítások mentéséhez kattintson a **Mentés** gombra. A rendszer azonnal alkalmazni fogja a beállításokat az előfizetésére.
+
+
+### <a name="configure-log-profile-using-powershell"></a>A log profil konfigurálása a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ha már létezik egy naplóprofil, először távolítsa el a meglévő log-profilt, majd hozzon létre egy újat.
+Ha már létezik egy bejelentkezési profil, először el kell távolítania a meglévő log-profilt, majd létre kell hoznia egy újat.
 
-1. Használat `Get-AzLogProfile` azonosítását, ha egy napló-profil létezik.  Ha egy napló profil létezik, vegye figyelembe a *neve* tulajdonság.
+1. A `Get-AzLogProfile` használatával azonosíthatja, hogy létezik-e egy log-profil.  Ha egy log-profil létezik, jegyezze fel a *Name (név* ) tulajdonságot.
 
-1. Használat `Remove-AzLogProfile` , távolítsa el a napló profilt származó értékkel a *neve* tulajdonság.
+1. A `Remove-AzLogProfile` használatával távolítsa el a napló profilt a Name ( *név* ) tulajdonság értéke alapján.
 
     ```powershell
     # For example, if the log profile name is 'default'
     Remove-AzLogProfile -Name "default"
     ```
 
-3. Használat `Add-AzLogProfile` egy új naplófájl-profil létrehozása:
+3. Új `Add-AzLogProfile` naplózási profil létrehozásához használja a következőt:
 
     ```powershell
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Tulajdonság | Szükséges | Leírás |
+    | Tulajdonság | Kötelező | Leírás |
     | --- | --- | --- |
-    | Name (Név) |Igen |A napló-profil neve. |
-    | StorageAccountId |Nem |Erőforrás-azonosító a tárfiók, ahol a tevékenységnapló menteni. |
-    | serviceBusRuleId |Nem |Service Bus Szabályazonosító a Service Bus-névtér szeretné, hogy a létrehozott event hubs. Ez a karakterlánc a következő formátumban: `{service bus resource ID}/authorizationrules/{key name}`. |
-    | Location |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. |
-    | RetentionInDays |Igen |Amely események kell megtartani a tárfiókban, 1 és 2147483647 között eltelt napok száma. A nulla érték határozatlan ideig tárolja a naplókat. |
-    | Category |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek a következők _írási_, _törlése_, és _művelet_. |
+    | Name (Név) |Igen |A napló profiljának neve. |
+    | StorageAccountId |Nem |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni kell a tevékenység naplóját. |
+    | serviceBusRuleId |Nem |Service Bus a Service Bus névtérhez tartozó szabály AZONOSÍTÓját, amelybe az Event hub-t létre szeretné hozni. Ez a következő formátumú karakterlánc: `{service bus resource ID}/authorizationrules/{key name}`. |
+    | Location |Igen |Azoknak a régióknak a vesszővel tagolt listája, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. |
+    | RetentionInDays |Igen |Ennyi nap elteltével kell megőrizni az eseményeket a Storage-fiókban 1 és 2147483647 között. A nulla érték határozatlan ideig tárolja a naplókat. |
+    | Category |Nem |Az összegyűjteni kívánt események kategóriáinak vesszővel tagolt listája. A lehetséges értékek a következők: _írás_, _Törlés_és _művelet_. |
 
 ### <a name="example-script"></a>Példaszkript
-Következő egy minta PowerShell-parancsfájlt, amely mindkét a tárolási fiók és az eseményközpont ír a tevékenységnapló-log-profil létrehozása.
+A következő példa egy PowerShell-szkriptet hoz létre egy olyan log-profil létrehozásához, amely a tevékenység naplóját a Storage-fiókra és az Event hub-ra írja.
 
    ```powershell
    # Settings needed for the new log profile
@@ -140,31 +142,31 @@ Következő egy minta PowerShell-parancsfájlt, amely mindkét a tárolási fió
    ```
 
 
-### <a name="configure-log-profile-using-azure-cli"></a>Azure CLI-vel naplóprofil konfigurálása
+### <a name="configure-log-profile-using-azure-cli"></a>A log profil konfigurálása az Azure CLI használatával
 
-Ha egy napló-profilja már létezik, akkor először távolítsa el a meglévő log-profilt, és hozzon létre egy új naplóprofil.
+Ha már létezik egy naplózási profil, először el kell távolítania a meglévő log-profilt, majd létre kell hoznia egy új napló-profilt.
 
-1. Használat `az monitor log-profiles list` azonosítását, ha egy napló-profil létezik.
-2. Használat `az monitor log-profiles delete --name "<log profile name>` , távolítsa el a napló profilt származó értékkel a *neve* tulajdonság.
-3. Használat `az monitor log-profiles create` egy új naplófájl-profil létrehozása:
+1. A `az monitor log-profiles list` használatával azonosíthatja, hogy létezik-e egy log-profil.
+2. A `az monitor log-profiles delete --name "<log profile name>` használatával távolítsa el a napló profilt a Name ( *név* ) tulajdonság értéke alapján.
+3. Új `az monitor log-profiles create` naplózási profil létrehozásához használja a következőt:
 
    ```azurecli-interactive
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Tulajdonság | Szükséges | Leírás |
+    | Tulajdonság | Kötelező | Leírás |
     | --- | --- | --- |
-    | name |Igen |A napló-profil neve. |
-    | storage-account-id |Igen |Erőforrás-azonosító, amelyhez tevékenységeket tartalmazó naplók menteni a tárfiók. |
-    | locations |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő szóközzel elválasztott listáját. Megtekintheti összes régiók listáját az előfizetéshez a `az account list-locations --query [].name`. |
-    | days |Igen |Mely eseményeket meg kell őrizni, 1 és 365 közötti napok számát. A nulla érték határozatlan ideig tárolja a naplók (végtelen).  Ha nulla, majd az engedélyezett paramétert meg kell igaz értékre. |
-    |enabled | Igen |IGAZ vagy hamis.  Engedélyezi vagy letiltja a megtartási házirend segítségével.  Igaz értéke esetén a nap paraméter 0-nál nagyobb számnak kell lennie.
-    | categories |Igen |Eseménykategóriák, érdemes gyűjtik szóközzel elválasztott listáját. Lehetséges értékek: írási, törlési és művelet. |
+    | name |Igen |A napló profiljának neve. |
+    | storage-account-id |Igen |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni szeretné a tevékenység naplóit. |
+    | locations |Igen |Szóközzel tagolt lista azoknak a régióknak a listájához, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. Az előfizetéshez tartozó összes régió listáját megtekintheti a `az account list-locations --query [].name`használatával. |
+    | days |Igen |Azon napok száma, amelyekhez meg kell őrizni az eseményeket 1 és 365 között. A nulla érték a naplókat határozatlan ideig (Forever) tárolja.  Ha nulla, akkor az engedélyezett paraméter értéke TRUE (igaz) lehet. |
+    |enabled | Igen |IGAZ vagy hamis.  Az adatmegőrzési szabály engedélyezésére vagy letiltására szolgál.  Ha az értéke igaz, akkor a Days paraméternek 0-nál nagyobbnak kell lennie.
+    | categories |Igen |Az összegyűjteni kívánt események kategóriáinak szóközzel tagolt listája. A lehetséges értékek a következők: írás, törlés és művelet. |
 
 
 
-## <a name="activity-log-schema"></a>Műveletnapló-séma
-E küldi el az Azure storage- vagy Event Hub, a tevékenységnapló adatainak lesz írva JSON-ná, az alábbi formátumban.
+## <a name="activity-log-schema"></a>Tevékenységi napló sémája
+Függetlenül attól, hogy az Azure Storage-ba vagy az Event hub-ba küldi a rendszer, a műveletnapló-adatnaplóba a következő formátumot fogja írni.
 
 ``` JSON
 {
@@ -221,31 +223,31 @@ E küldi el az Azure storage- vagy Event Hub, a tevékenységnapló adatainak le
     ]
 }
 ```
-A JSON-elemek az alábbi táblázatban ismertetett.
+A JSON elemeit az alábbi táblázat ismerteti.
 
 | Elem neve | Leírás |
 | --- | --- |
-| time |Időbélyeg, ha az esemény jött létre az Azure-szolgáltatás a megfelelő esemény kérelem feldolgozása. |
-| resourceId |Erőforrás-azonosító az érintett erőforrás. |
+| time |Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
+| resourceId |Az érintett erőforrás erőforrás-azonosítója. |
 | operationName |A művelet neve. |
-| category |A művelet kategória működtek az adatbázisok. Írás, Olvasás, a műveletet. |
-| resultType |Az eredmény típusú működtek az adatbázisok. Sikeres, sikertelen, Start |
+| category |A művelet kategóriája, például: Írás, olvasás, művelet. |
+| resultType |Az eredmény típusa, például: Sikeres, sikertelen, Kezdés |
 | resultSignature |Az erőforrás típusától függ. |
 | durationMs |Ennyi ezredmásodpercig tart a művelet időtartama |
-| callerIpAddress |IP-cím a felhasználó hajtott végre a műveletet, egyszerű Felhasználónévi jogcím vagy egyszerű szolgáltatásnév jogcímet rendelkezésre állása alapján. |
-| correlationId |Általában egy GUID Azonosítót a karakterláncként. Ugyanaz a uber művelet eseményeket, amelyek megosztása a korrelációs azonosító tartozik. |
-| identity |Az engedélyezési és a jogcímek leíró JSON-blobját. |
-| authorization |Az esemény tulajdonságainak RBAC-blobját. Általában tartalmazza az "action", "szerepkör" és "hatókör" tulajdonság. |
-| level |Az esemény szintjét. A következő értékek egyikét: _Kritikus fontosságú_, _hiba_, _figyelmeztetés_, _tájékoztató_, és _részletes_ |
-| location |Régió, a helyét történt (vagy globális). |
-| properties |Állítsa be a `<Key, Value>` párok (azaz szótár), az esemény részleteit leíró. |
+| callerIpAddress |Annak a felhasználónak az IP-címe, aki a műveletet, UPN-jogcímet vagy SPN-jogcímet végrehajtotta a rendelkezésre állás alapján. |
+| correlationId |Általában egy GUID formátumú karakterlánc. A correlationId osztozó események ugyanahhoz az Über-művelethez tartoznak. |
+| identity |Az engedélyezést és a jogcímeket leíró JSON-blob. |
+| authorization |Az esemény RBAC-tulajdonságainak blobja. Általában a "művelet", a "szerepkör" és a "hatókör" tulajdonságokat tartalmazza. |
+| level |Az esemény szintje. A következő értékek egyike: _Kritikus_, _hiba_, _Figyelmeztetés_, _tájékoztatás_és _részletes_ |
+| location |Az a régió, amelyben a hely bekövetkezett (vagy globális). |
+| properties |Az esemény részleteit leíró párok(azazaszótár)halmaza.`<Key, Value>` |
 
 > [!NOTE]
-> A tulajdonságok és a használati ezeket a tulajdonságokat az erőforrás függvényében.
+> A tulajdonságok tulajdonságai és használata az erőforrástól függően eltérő lehet.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a tevékenységnaplóban](../../azure-resource-manager/resource-group-audit.md)
-* [Az Azure Monitor naplók gyűjtése a tevékenységnaplóban](activity-log-collect.md)
+* [További információ a tevékenység naplóról](../../azure-resource-manager/resource-group-audit.md)
+* [Begyűjti a tevékenység naplóját Azure Monitor naplókba](activity-log-collect.md)
