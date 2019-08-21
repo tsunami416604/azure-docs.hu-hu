@@ -10,18 +10,88 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
-ms.translationtype: MT
+ms.openlocfilehash: 684a84431c8348ddafab8cefbe831c2b58c3cee6
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828618"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639929"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
 Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](https://aka.ms/aml-sdk) -referenciát tartalmazó oldalt.
 
 Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismert hibák és a lehetséges megoldások megismeréséhez.
+
+## <a name="2019-08-19"></a>2019-08-19
+
+### <a name="azure-machine-learning-sdk-for-python-v1057"></a>Azure Machine Learning SDK a Python v 1.0.57
++ **Új funkciók**
+  + Engedélyezve `TabularDataset` , hogy az AutomatedML felhasználható legyen. Ha többet szeretne megtudni `TabularDataset`a szolgáltatásról https://aka.ms/azureml/howto/createdatasets, látogasson el ide.
+  
++ **Hibajavítások és javítások**
+  + **automl-Client-Core-nativeclient**
+    + Kijavítva a hiba, amely akkor következik be, amikor a betanítási és/vagy ellenőrzési címkék (y és y_valid) a pandák dataframe, de NumPy tömb formájában vannak megadva.
+    + Frissített illesztőfelület a létrehozásához `RawDataContext` , hogy csak az adatértéket `AutoMLBaseSettings` és az objektumot kelljen megadni.
+    +  Annak engedélyezése, hogy a AutoML-felhasználók eldobják a betanítási sorozatot, amely nem elég hosszú az előrejelzés során. – Lehetővé teszi, hogy a AutoML-felhasználók eldobják a betanítási készletben nem szereplő tesztelési készletből származó gabonákat.
+  + **azure-cli-ml**
+    + Most már frissítheti a Microsoft által generált és az ügyfél-tanúsítványhoz az AK-fürtökön üzembe helyezett pontozási végpont SSL-tanúsítványát is.
+  + **azureml-automl-Core**
+    + Javítva lett egy probléma a AutoML, ahol a hiányzó címkékkel rendelkező sorok nem lettek megfelelően eltávolítva.
+    + Javított hibák naplózása a AutoML-ben; a rendszer mindig a naplófájlba írja a teljes hibaüzeneteket.
+    + A AutoML frissítette a csomagjának rögzítését `azureml-explain-model`, amely `azureml-dataprep`tartalmazza `azureml-defaults`a, a és a. A AutoML nem fog figyelmeztetni a csomagok eltérésére (kivéve a `azureml-train-automl` csomagot).
+    + Javítva lett egy probléma a idősor, ahol az önéletrajz-felosztás nem egyenlő, mert a Raktárhelyek kiszámításának sikertelensége sikertelen.
+    + Ha a többellenőrzéses képzéshez a teljes adatkészletre betanított modellek letöltése során nem sikerül a Ensemble-iteráció futtatása, a modell súlyozása és a szavazásban bekövetkező modellek között inkonzisztens volt. együttes.
+    + Kijavítva a hiba, amely akkor következik be, amikor a betanítási és/vagy ellenőrzési címkék (y és y_valid) a pandák dataframe, de NumPy tömb formájában vannak megadva.
+    + Kijavítva az előrejelzési feladatokkal kapcsolatos problémát, ha a bemeneti táblák logikai oszlopaiban sem történt a hiba.
+    + Annak engedélyezése, hogy a AutoML-felhasználók eldobják a betanítási sorozatot, amely nem elég hosszú az előrejelzés során. – Lehetővé teszi, hogy a AutoML-felhasználók eldobják a betanítási készletben nem szereplő tesztelési készletből származó gabonákat.
+  + **azureml-core**
+    + Kijavítva a blob_cache_timeout paraméter megrendelésével kapcsolatos probléma.
+    + A külső illesztési és átalakítási kivételek rendszerhibákhoz lettek adva.
+    + Key Vault-titkok támogatása távoli futtatásokhoz. Vegyen fel egy azureml. Core. kulcstartó. kulcstartó osztályt a munkaterülethez társított kulcstartók hozzáadásához, beolvasásához és listázásához. A támogatott műveletek a következők:
+      + azureml. Core. Workspace. Workspace. Get _default_keyvault ()
+      + azureml. Core. kulcstartó. kulcstartó. set _secret (név, érték)
+      + azureml. Core. kulcstartó. kulcstartó. set _secrets (secrets_dict)
+      + azureml. Core. kulcstartó. kulcstartó. Get _secret (név)
+      + azureml. Core. kulcstartó. kulcstartó. Get _secrets (secrets_list)
+      + azureml. Core. kulcstartó. kulcstartó. list_secrets ()
+    + További módszerek az alapértelmezett kulcstartó beszerzéséhez és a titkos kulcsok lekéréséhez a távoli futtatás során:
+      + azureml. Core. Workspace. Workspace. Get _default_keyvault ()
+      + azureml. Core. Run. Run. Get _secret (név)
+      + azureml. Core. Run. Run. Get _secrets (secrets_list)
+    + További felülbírálási paraméterek lettek hozzáadva a Submit-HyperDrive CLI-parancshoz.
+    + Az API-hívások megbízhatóságának növelése a gyakori kérések könyvtárbeli kivételekre való ismételt próbálkozások kiterjesztése.
+    + A futtatások küldésének támogatása egy elküldött futtatásból.
+    + Rögzített lejáró SAS-jogkivonat hibája a FileWatcher-ben, amely a kezdeti jogkivonat lejárta után a fájlok feltöltésének leállását okozta.
+    + Támogatott a HTTP CSV/TSV fájlok importálása a DataSet Python SDK-ban.
+    + A munkaterület. Setup () metódus elavult. A felhasználók számára megjelenő figyelmeztető üzenet azt javasolja, hogy a Create () vagy a Get ()/from_config () függvényt használja.
+    + Hozzáadott környezet. adja hozzá a _private_pip_wheel ()-t, amely lehetővé teszi privát egyéni Python-csomagok (. WHL) feltöltését a munkaterületre, és biztonságosan használja őket a környezet összeállításához és megvalósulása érdekében.
+    + Most már frissítheti a Microsoft által generált és az ügyfél-tanúsítványhoz az AK-fürtökön üzembe helyezett pontozási végpont SSL-tanúsítványát is.
+  + **azureml-explain-model**
+    + Paraméter hozzáadva a modell AZONOSÍTÓjának a feltöltéshez való hozzáadásához.
+    + A `is_raw` címkézés a memóriában és a feltöltésben szereplő magyarázatokhoz lett hozzáadva.
+    + Pytorch-támogatás és-tesztek hozzáadva a azureml-magyarázza-Model csomaghoz.
+  + **azureml-opendatasets**
+    + Az automatikus tesztelési környezet észlelése és naplózása.
+    + Osztályok hozzáadásával az Egyesült államokbeli lakosságot a megye és a zip alapján szerezheti be.
+  + **azureml-pipeline-core**
+    + A Label tulajdonság hozzáadva a bemeneti és a kimeneti port definícióhoz.
+  + **azureml – telemetria**
+    + Helytelen telemetria-konfiguráció lett kijavítva.
+  + **azureml-train-automl**
+    + Kijavítva a hiba, ahol a telepítési hiba miatt nem sikerült bejelentkezni a "hibák" mezőbe a telepítési futtatáshoz, ezért a rendszer nem a szülő "errors" (hibák) alatt tárolja a hibát.
+    + Javítva lett egy probléma a AutoML, ahol a hiányzó címkékkel rendelkező sorok nem lettek megfelelően eltávolítva.
+    + Annak engedélyezése, hogy a AutoML-felhasználók eldobják a betanítási sorozatot, amely nem elég hosszú az előrejelzés során.
+    + Annak engedélyezése, hogy a AutoML-felhasználók eldobják azokat a tesztelési készletből, amelyek nem szerepelnek az előrejelzés során a betanítási készletben.
+    + A AutoMLStep mostantól áthalad a automl config-n keresztül, hogy elkerülje az új konfigurációs paraméterek módosításainak vagy kiegészítéseinek esetleges problémáit.
+  + **azureml-train-core**
+    + A Torch 1,2-támogatás hozzáadva a PyTorch kalkulátorhoz.
+  + **azureml – widgetek**
+    + Továbbfejlesztett összetéveszthető mátrix-diagramok a besorolási képzéshez.
+
+### <a name="azure-portal"></a>Azure Portal
++ **Előzetes verzió funkció**
+  + A log és a output file streaming mostantól elérhető a futtatási részletek oldalain. A fájlok valós időben továbbítják a frissítéseket, amikor bekapcsolják az előnézeti kapcsolót.
 
 ## <a name="2019-08-05"></a>2019-08-05
 

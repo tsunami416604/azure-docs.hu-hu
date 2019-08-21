@@ -2,20 +2,18 @@
 title: A szintek és az SKU-Azure Search szolgáltatási korlátai
 description: A kapacitás megtervezésére, valamint a kérelmek és a Azure Searchre adott válaszok maximális korlátaira vonatkozó szolgáltatási korlátok.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 35beb55d7326b954a568a377b73696fe598742c5
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 9ddc7ad8882b30a17be5820116da72c5ab32fad9
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348293"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640613"
 ---
 # <a name="service-limits-in-azure-search"></a>Szolgáltatási korlátozások a Azure Search
 A tárterületre, a munkaterhelésekre és az indexek, dokumentumok és egyéb objektumok mennyiségére vonatkozó maximális korlátok attól függnek, hogy a Azure Search **ingyenes**, alapszintű, **standard**vagy **Storage optimalizált** árképzési szinteken van-e kiépítve. [](search-create-service-portal.md)

@@ -7,14 +7,14 @@ manager: paulyuk
 editor: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: 3f5196c81550446221a4524330e355c595b65c6a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934371"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639483"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Titkos alkalmazás-beállítások biztonságos mentése webalkalmazásokhoz
 
@@ -45,12 +45,12 @@ Ha projektet fejleszt, és a forráskódot biztonságosan kell megosztania, hasz
 
     ![Key Vault hozzáférési szabályzat hozzáadása](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-3. Adja hozzá a titkot a Azure Portal Key Vaultához. A beágyazott konfigurációs beállításoknál cserélje le a ":" és a "--" kifejezésre, hogy a Key Vault titkos név érvényes legyen. a (z) ":" nem szerepelhet Key Vault titkos kód nevében.
+3. Adja hozzá a titkot, hogy Key Vault a Azure Portal. A beágyazott konfigurációs beállításoknál cserélje le a ":" és a "--" kifejezésre, hogy a Key Vault titkos név érvényes legyen. a (z) ":" nem szerepelhet Key Vault titkos kód nevében.
 
     ![Key Vault titkos kód hozzáadása](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
     > [!NOTE] 
-    > A Visual Studio 2017 V 15,6 előtt javasoljuk, hogy telepítse a Visual studióhoz készült Azure Services-alapú hitelesítési bővítményt. Ez azonban elavult, mivel a funcionality integrálva van a Visual Studióban. Ezért ha a Visual Studio 2017 egy régebbi verzióját használja, javasoljuk, hogy frissítsen legalább VS 2017 15,6-ra vagy akár úgy, hogy ezt a funkciót natív módon használhassa, és a Key-vaultot a Visual Studio bejelentkezési identitásának használatával is elérheti.
+    > A Visual Studio 2017 V 15,6 előtt javasoljuk, hogy telepítse a Visual studióhoz készült Azure Services-alapú hitelesítési bővítményt. Ez azonban már elavult, mivel a funkció integrálva van a Visual Studióban. Ezért ha a Visual Studio 2017 egy régebbi verzióját használja, javasoljuk, hogy frissítsen legalább VS 2017 15,6-ra vagy akár úgy, hogy ezt a funkciót natív módon használhassa, és a Key-vaultot a Visual Studio bejelentkezési identitásának használatával is elérheti.
     >
  
 4. Adja hozzá a következő NuGet-csomagokat a projekthez:
@@ -97,10 +97,10 @@ Ha gyors prototípust ír, és nem szeretné kiépíteni az Azure-erőforrásoka
 
 1. Telepítse a következő NuGet-csomagot a projektbe
     ```
-    Microsoft.Configuration.ConfigurationBuilders.Basic
+    Microsoft.Configuration.ConfigurationBuilders.Base
     ```
 
-2. Hozzon létre egy, az alábbihoz hasonló fájlt. Mentse azt a projekt mappáján kívüli helyre.
+2. Hozzon létre egy, a következőhöz hasonló fájlt. Mentse azt a projekt mappáján kívüli helyre.
 
     ```xml
     <root>
@@ -123,7 +123,7 @@ Ha gyors prototípust ír, és nem szeretné kiépíteni az Azure-erőforrásoka
     </configBuilders>
     ```
 
-4. A appSettings szakasz megadásával a titkos konfigurációs szerkesztőt használja. Győződjön meg arról, hogy a titkos beállításnak van-e bejegyzése egy dummy értékkel.
+4. A appSettings szakasz megadásával a titkos konfigurációs szerkesztőt használja. Ellenőrizze, hogy van-e bejegyzés a titkos beállításhoz egy dummy értékkel.
 
     ```xml
         <appSettings configBuilders="Secrets">

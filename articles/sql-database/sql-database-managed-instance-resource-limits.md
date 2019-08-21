@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 961c0de6856a9791f76be1ec609f176f1fbbf8fb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 412a3cb32663f5bd3bfad2d565b6797f92e26b75
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567330"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641113"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -42,7 +42,7 @@ Azure SQL Database felügyelt példány két hardveres generáción is üzembe h
 | Példányok maximálisan fenntartott tárterülete |  Általános célú: 8 TB<br/>Üzletileg kritikus: 1 TB | Általános célú: 8 TB<br/> Üzletileg kritikus 1 TB, 2 TB vagy 4 TB a magok számától függően |
 
 > [!IMPORTANT]
-> Az új Gen4-adatbázisok már nem támogatottak a AustraliaEast régióban.
+> Az új Gen4-adatbázisok már nem támogatottak a Kelet-Ausztrália vagy Brazília déli régiójában.
 
 ### <a name="service-tier-characteristics"></a>Szolgáltatási szintek jellemzői
 
@@ -128,7 +128,7 @@ Nagyobb kvóta beszerzési folyamatának kezdeményezése:
 4. Az új támogatási kérelem **probléma lapján** :
    - A **Súlyosság**beállításnál válassza ki a probléma súlyossági szintjét.
    - **Részletekért**adja meg a hibával kapcsolatos további információkat, beleértve a hibaüzeneteket is.
-   - Fájlfeltöltés **esetén**csatoljon egy fájlt további információkkal (legfeljebb 4 MB).
+   - Fájlfeltöltésesetén csatoljon egy fájlt további információkkal (legfeljebb 4 MB).
 
      ![Probléma részletei](media/sql-database-managed-instance-resource-limits/problem-details.png)
 

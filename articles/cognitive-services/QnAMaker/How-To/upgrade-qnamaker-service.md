@@ -1,7 +1,7 @@
 ---
-title: A QnA Maker szolgáltatás – QnA Maker frissítése
+title: QnA Maker szolgáltatás frissítése – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Ossza meg, vagy a QnA Maker szolgáltatás frissítése annak érdekében, hogy az erőforrások jobb kezelése.
+description: Megoszthatja vagy frissítheti QnA Maker szolgáltatásait, hogy jobban kezelhesse az erőforrásokat.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,83 +10,83 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: 2fdbb245f838d92e84d1247faa610a2f1a66c532
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: df4aa2d6a3c4690fb1fc38b0f4f7d49afccdd657
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439754"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640486"
 ---
-# <a name="share-or-upgrade-your-qna-maker-service"></a>Megosztás vagy a QnA Maker szolgáltatás frissítése
-Ossza meg, vagy a QnA Maker szolgáltatás frissítése annak érdekében, hogy az erőforrások jobb kezelése. 
+# <a name="share-or-upgrade-your-qna-maker-service"></a>QnA Maker szolgáltatás megosztása vagy frissítése
+Megoszthatja vagy frissítheti QnA Maker szolgáltatásait, hogy jobban kezelhesse az erőforrásokat. 
 
-A QnA Maker verem egyes összetevőinek frissítésére a kezdeti létrehozás után kiválaszthatja. A részletek a függő összetevők és a termékváltozat [Itt](https://aka.ms/qnamaker-docs-capacity).
+Megadhatja, hogy a kezdeti létrehozás után a QnA Maker verem egyes összetevőit frissítse. Tekintse meg a függő összetevők és az SKU-kiválasztás részleteit [itt](https://aka.ms/qnamaker-docs-capacity).
 
-## <a name="share-existing-services-with-qna-maker"></a>A QnA Maker meglévő szolgáltatások megosztása
+## <a name="share-existing-services-with-qna-maker"></a>Meglévő szolgáltatások megosztása QnA Maker
 
-A QnA Maker több Azure-erőforrásokat hoz létre. Annak érdekében, hogy csökkentse a felügyeleti és a költségek megosztását, az alábbi táblázat segítségével megismerheti, hogy és mit nem oszthat meg:
+QnA Maker több Azure-erőforrást hoz létre. A felügyelet és a költségmegosztás előnyeinek csökkentése érdekében az alábbi táblázat segítségével megismerheti, hogy mit tehet és nem oszthat meg:
 
 |Szolgáltatás|Megosztás|
 |--|--|
 |Cognitive Services|X|
-|App service-csomag|✔|
+|App Service-csomag|✔|
 |App Service-ben|X|
 |Application Insights|✔|
 |Keresési szolgáltatás|✔|
 
-## <a name="upgrade-qna-maker-management-sku"></a>A QnA Maker felügyeleti Termékváltozat frissítése
+## <a name="upgrade-qna-maker-management-sku"></a>QnA Maker felügyeleti SKU frissítése
 
-Szüksége lesz a további kérdéseit és válaszait a Tudásbázisban, ha az aktuális szint feletti a QnA Maker szolgáltatást a tarifacsomag frissítése. 
+Ha további kérdésekkel és válaszokkal kell rendelkeznie a Tudásbázisban, az aktuális szinten túlmutatva frissítse a QnA Maker Service díjszabási szintjét. 
 
-A QnA Maker felügyeleti Termékváltozat frissítése:
+A QnA Maker felügyeleti SKU frissítése:
 
-1. Nyissa meg a QnA Maker erőforrást az Azure Portalon, és válassza ki **tarifacsomag**.
+1. Nyissa meg a QnA Maker erőforrást a Azure Portal, és válassza az **árképzési szintet**.
 
-    ![A QnA Maker erőforrás](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
+    ![Erőforrás QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
 
-2. Válassza ki a megfelelő Termékváltozat és nyomja le a **kiválasztása**.
+2. Válassza ki a megfelelő SKU-t, majd kattintson a **kiválasztás**gombra.
 
-    ![A QnA Maker – díjszabás](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
+    ![Díjszabás QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-## <a name="upgrade-app-service"></a>Az App service frissítése
+## <a name="upgrade-app-service"></a>Az App Service frissítése
 
- Ha az ügyfél alkalmazásából további kérések kiszolgálására kell a Tudásbázis, frissítse az app service-tarifacsomag.
+ Ha a Tudásbázisban több kérést kell kiszolgálni az ügyfélalkalmazástól, frissítse az App Service díjszabási szintjét.
 
-Is [vertikális felskálázás](https://docs.microsoft.com/azure/app-service/web-sites-scale) - vagy leskálázás az App Service-ben.
+Az App Service vertikális [fel](https://docs.microsoft.com/azure/app-service/manage-scale-up) -vagy leskálázást végez.
 
-1. Nyissa meg az App service-erőforrást az Azure Portalon, és válassza ki **vertikális felskálázás** vagy **vertikális leskálázás** szükség szerint lehetőség.
+1. Nyissa meg az App Service-erőforrást a Azure Portalban , és szükség szerint válassza a vertikális felskálázás vagy a leskálázás lehetőséget.
 
-    ![A QnA Maker alkalmazás szolgáltatásskálázás](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
+    ![QnA Maker app Service-méretezés](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-## <a name="upgrade-azure-search-service"></a>Az Azure Search szolgáltatás frissítése
+## <a name="upgrade-azure-search-service"></a>Azure Search szolgáltatás frissítése
 
-Ha azt tervezi, szeretné, hogy sok tudásbázisok, frissítse az Azure Search szolgáltatás tarifacsomag. 
+Ha sok tudásbázist tervez, frissítse a Azure Search Service díjszabási szintjét. 
 
-Jelenleg nem hajtható végre egy a hely frissítését az Azure keresési Termékváltozat. Azonban az Azure search új erőforrás létrehozása a kívánt Termékváltozat, állítsa vissza az adatokat az új erőforráshoz, és összekapcsolása a QnA Maker verem.
+Jelenleg nem végezhető el az Azure Search SKU helyben történő frissítése. Létrehozhat azonban egy új Azure Search-erőforrást a kívánt SKU-val, visszaállíthatja az új erőforrást, majd csatolhatja azt a QnA Maker veremhez.
 
-1. Az Azure search új erőforrás létrehozása az Azure Portalon, és válassza ki a kívánt Termékváltozatot.
+1. Hozzon létre egy új Azure Search-erőforrást a Azure Portalban, és válassza ki a kívánt SKU-t.
 
-    ![A QnA Maker Azure search-erőforrás](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
+    ![Azure Search-erőforrás QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-2. Az indexek visszaállítása az eredeti az Azure search-erőforrás az újat. Tekintse meg a biztonsági mentés visszaállítási mintakód [Itt](https://github.com/pchoudhari/QnAMakerBackupRestore).
+2. Állítsa vissza az indexeket az eredeti Azure Search-erőforrásból az újat. Tekintse meg a biztonsági másolat-visszaállítási mintakód [itt](https://github.com/pchoudhari/QnAMakerBackupRestore).
 
-3. Az adatok visszaállítása után nyissa meg az új Azure search erőforrás válassza **kulcsok**, és jegyezze fel a **neve** és a **adminisztrációs kulcsot**.
+3. Az adatvisszaállítás után nyissa meg az új Azure Search-erőforrást, válassza a **kulcsok**lehetőséget, és jegyezze fel a **nevet** és a **rendszergazdai kulcsot**.
 
-    ![A QnA Maker Azure search-kulcsok](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
+    ![Azure Search-kulcsok QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
 
-4. Az új Azure search-erőforrás összekapcsolása a QnA Maker vermet, nyissa meg a QnA Maker App Service-ben.
+4. Ha az új Azure Search-erőforrást az QnA Maker veremhöz szeretné kapcsolni, lépjen a QnA Maker app Service weboldalára.
 
-    ![Az App Service a QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
+    ![QnA Maker appservice](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
 
-5. Válassza ki **Alkalmazásbeállítások** , és cserélje le a **AzureSearchName** és **AzureSearchAdminKey** mezőket a 3. lépés.
+5. Válassza az **Alkalmazásbeállítások** lehetőséget, és cserélje le a **AzureSearchName** és a **AzureSearchAdminKey** mezőket a 3. lépésből.
 
-    ![A QnA Maker az App Service-beállítás](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
+    ![QnA Maker appservice-beállítás](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
 
 6. Indítsa újra az App Service-ben.
 
-    ![A QnA Maker az App Service-újraindítás](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
+    ![QnA Maker appservice újraindítása](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A QnA Maker API használata](../Quickstarts/csharp.md)
+> [QnA Maker API használata](../Quickstarts/csharp.md)

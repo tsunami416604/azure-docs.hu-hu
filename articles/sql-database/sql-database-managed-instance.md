@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 94035fda6b1dff491a69c0f0001019ccd753d4e8
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ebf4f516b8f90ce2ba8b277281300ae3239821c5
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816621"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640805"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Mi Azure SQL Database felügyelt példány?
 
@@ -82,7 +82,7 @@ A virtuális mag modellben a hardver generációi közül választhat.
 További információk a [felügyelt példányok erőforrás](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)-korlátaiban található hardveres generációk közötti különbségről.
 
 > [!IMPORTANT]
-> Az új Gen4-adatbázisok már nem támogatottak a AustraliaEast régióban.
+> Az új Gen4-adatbázisok már nem támogatottak a Kelet-Ausztrália vagy Brazília déli régiójában.
 
 ## <a name="managed-instance-service-tiers"></a>Felügyelt példányok szolgáltatási szintjei
 

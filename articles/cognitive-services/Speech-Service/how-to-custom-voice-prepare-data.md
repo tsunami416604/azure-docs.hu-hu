@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6a29117ff6e5173063bc2aced87f08f1a6aea425
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8b4b5553605042499a9a8f3343ac4e6678e7006f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559585"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640427"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Az adatelőkészítés egyéni hang létrehozásához
 
@@ -104,7 +104,7 @@ Bizonyos esetekben előfordulhat, hogy nem érhető el szegmentált hang. Az egy
 
 Kövesse az alábbi irányelveket a hanganyagok szegmentálására való felkészülés során.
 
-| Tulajdonság | Érték |
+| Tulajdonság | Value |
 | -------- | ----- |
 | Fájl formátuma | A RIFF (. wav) mintavételezési sebessége legalább 16 kHz – 16 bit a PCM vagy a. mp3 esetében legalább 256 KBps, a. zip fájlba csoportosítva |
 | Fájlnév | Csak ASCII-karakterek. A névben található Unicode-karakterek sikertelenek lesznek (például a kínai karakterek, vagy a "–" szimbólum). Nem engedélyezettek az ismétlődő nevek. |
@@ -118,13 +118,13 @@ Az összes hangfájlt zip-fájlba kell csoportosítani. A. wav fájlok és az. m
 
 Az átiratokat fel kell készülnie az ebben a táblázatban szereplő specifikációba. Minden hangfájlnak meg kell egyeznie egy átirattal.
 
-| Tulajdonság | Érték |
+| Tulajdonság | Value |
 | -------- | ----- |
 | Fájl formátuma | Egyszerű szöveg (. txt), egy. zip-fájlba csoportosítva |
 | Fájlnév | Ugyanazt a nevet használja, mint a megfelelő hangfájl |
 | Kódolási formátum | UTF-8 – csak ANYAGJEGYZÉK |
 | Kimondott szövegek száma soronként | Korlátlan |
-| Maximális fájlméret | 50M |
+| Maximális fájlméret | 50 MB |
 
 Az adattípusban található összes átirat fájlnak egy zip-fájlba kell csoportosítva lennie. A zip-fájlban nem szerepelhet almappa. Például feltöltött egy "kingstory. wav" nevű hangfájlt tartalmazó zip-fájlt, a 45 másodpercet, és egy másikat, a "queenstory. mp3" nevet, 200 másodpercet. Fel kell töltenie egy másik, két átiratot tartalmazó zip-fájlt, amely egy "kingstory. txt" nevű, a másik pedig "queenstory. txt". Minden egyszerű szövegfájlon belül meg kell adnia a megfelelő hang teljes átírását.
 

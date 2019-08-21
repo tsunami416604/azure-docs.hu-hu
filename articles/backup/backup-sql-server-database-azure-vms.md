@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6a929359c0e4e0a5c64eadbf41f565dfeb56a233
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e18d6519d1ee3c1750757af5c59157de8bdde80c
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854118"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637916"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -51,22 +51,29 @@ Kapcsolat létesítése a következő lehetőségek egyikének használatával:
 
 - **Engedélyezze az Azure-adatközpont IP-tartományait**. Ez a beállítás engedélyezi az [IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653) letöltését. Hálózati biztonsági csoport (NSG) eléréséhez használja a set-AzureNetworkSecurityRule parancsmagot. Ha a biztonságos címzettek csak a régióra jellemző IP-címeket sorolja fel, akkor a hitelesítés engedélyezéséhez is frissítenie kell a biztonságos címzettek listáját a Azure Active Directory (Azure AD) szolgáltatás címkével.
 
-- **Hozzáférés engedélyezése NSG-címkék használatával**. Ha a NSG-t használja a kapcsolat korlátozására, ez a beállítás egy olyan szabályt ad hozzá a NSG, amely lehetővé teszi a kimenő hozzáférést a Azure Backuphoz a AzureBackup címke használatával. Ezen a címkén kívül az Azure AD és az Azure [](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) Storage megfelelő szabályaira is szüksége lesz a hitelesítéshez és az adatátvitelhez való csatlakozás engedélyezéséhez. A AzureBackup címke jelenleg csak a PowerShellben érhető el. Szabály létrehozása a AzureBackup címke használatával:
+- **Hozzáférés engedélyezése NSG-címkék használatával**.  Ha a NSG-t használja a kapcsolat korlátozására, akkor a AzureBackup szolgáltatás címkével kell rendelkeznie, hogy lehetővé tegye a kimenő hozzáférést a Azure Backuphoz. Emellett az Azure AD-hez és az Azure Storage-hoz kapcsolódó [szabályok](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) használatával is engedélyeznie kell a hitelesítést és az adatátvitelt. Ezt a portálról vagy a PowerShellből teheti meg.
 
-    - Azure-fiók hitelesítő adatainak hozzáadása és az országos felhők frissítése<br/>
-    `Add-AzureRmAccount`
+    Szabály létrehozása a portál használatával:
+    
+    - A **minden szolgáltatás**területen lépjen a **hálózati biztonsági csoportok** elemre, és válassza ki a hálózati biztonsági csoportot.
+    - A **Beállítások**területen válassza a **kimenő biztonsági szabályok** lehetőséget.
+    - Válassza a **Hozzáadás** lehetőséget. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a **Service tag** és a **cél szolgáltatás** címkéje **AzureBackup**értékre van állítva.
+    - Kattintson a **Hozzáadás**gombra az újonnan létrehozott kimenő biztonsági szabály mentéséhez.
+    
+   Szabály létrehozása a PowerShell használatával:
 
-    - Válassza ki a NSG-előfizetést<br/>
-    `Select-AzureRmSubscription "<Subscription Id>"`
-
-     - Válassza ki a NSG<br/>
-    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
-
-    - Azure Backup szolgáltatási címke engedélyezése Kimenő szabály hozzáadása<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
-
+   - Azure-fiók hitelesítő adatainak hozzáadása és az országos felhők frissítése<br/>
+    ``Add-AzureRmAccount``
+  - Válassza ki a NSG-előfizetést<br/>
+    ``Select-AzureRmSubscription "<Subscription Id>"``
+  - Válassza ki a NSG<br/>
+    ```$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"```
+  - Azure Backup szolgáltatási címke engedélyezése Kimenő szabály hozzáadása<br/>
+   ```Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"```
   - A NSG mentése<br/>
-    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+    ```Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg```
+
+   
 - **Hozzáférés engedélyezése Azure Firewall címkék használatával**. Ha Azure Firewall használ, hozzon létre egy szabályt a AzureBackup [FQDN-címke](https://docs.microsoft.com/azure/firewall/fqdn-tags)használatával. Ez lehetővé teszi a kimenő hozzáférést Azure Backuphoz.
 - **Http-proxykiszolgáló üzembe helyezése a forgalom irányításához**. Ha egy Azure-beli virtuális gépen SQL Server adatbázisról készít biztonsági másolatot, a virtuális gépen futó biztonsági mentési bővítmény a HTTPS API-k használatával küldi el a felügyeleti parancsokat az Azure Storage-ba való Azure Backup és az adattároláshoz. A biztonsági mentési bővítmény az Azure AD-t is használja a hitelesítéshez. Irányítsa a biztonsági mentési bővítmény forgalmát a három szolgáltatáshoz a HTTP-proxyn keresztül. A bővítmények az egyetlen olyan összetevő, amely a nyilvános internethez való hozzáférésre van konfigurálva.
 

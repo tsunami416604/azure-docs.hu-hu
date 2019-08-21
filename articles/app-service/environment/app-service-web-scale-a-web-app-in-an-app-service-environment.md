@@ -1,6 +1,6 @@
 ---
-title: Alkalmazások méretezése App Service Environment-környezetben – Azure
-description: Alkalmazások méretezése App Service Environment-környezetben
+title: Alkalmazások méretezése egy App Service Environmentban – Azure
+description: Alkalmazás méretezése App Service Environment
 services: app-service
 documentationcenter: ''
 author: ccompy
@@ -15,58 +15,58 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6e683eb07b690d7d5680b7a4d429d1150f22f67e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 452c3b9aac58e1eca25b6417eb891fed7180ada7
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60767691"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636641"
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>Alkalmazások méretezése App Service-környezetben
-Az Azure App Service-ben nincsenek megfelelően skálázhatja három dolgot:
+A Azure App Service általában három dolgot lehet méretezni:
 
-* Díjszabási csomag
-* feldolgozó mérete 
+* díjszabási csomag
+* feldolgozói méret 
 * példányok száma.
 
-Az ASE környezetben van, nem szükséges, válassza ki, vagy módosítsa a tarifacsomagot.  Képességek tekintetében már meghatározhat képesség szint díjszabása.  
+Egy szakadásban nem szükséges kiválasztani vagy módosítani a díjszabási tervet.  A képességek tekintetében már a prémium szintű díjszabási szinten is elérhető.  
 
-Megállapodást feldolgozókkal az ASE-rendszergazda rendelhet hozzá minden feldolgozói készlethez használható a számítási erőforrás méretét.  Ez azt jelenti, feldolgozói készlethez 1 rendelkező P4 szintű számítási erőforrások és a feldolgozói készlethez 2 P1 a számítási erőforrásokat, ha szükséges.  Nem rendelkeznek mérete sorrendben kell.  A méretek és a díjszabási részleteket itt a dokumentum [Azure App Service díjszabását][AppServicePricing].  Ennek következtében a méretezési lehetőségeket biztosít a web apps és az App Service-csomagban kell App Service Environment-környezetben:
+A feldolgozói méretek tekintetében a beosztotti rendszergazda hozzárendelheti az egyes munkakészletekhez használandó számítási erőforrás méretét.  Ez azt jelenti, hogy az 1. munkavégző készletet P4 számítási erőforrásokkal és 2. munkavégző készlettel rendelkezik, ha szükséges, P1 számítási erőforrásokkal.  Nem kell megadniuk a méret sorrendjét.  A méretek és díjszabásuk részletes ismertetését itt tekintheti meg [Azure app Service díjszabásban][AppServicePricing].  Ezzel a beállítással a Web Apps és a App Service csomagok skálázási beállításai megmaradnak a App Service Environment:
 
-* feldolgozó készlet kiválasztása
+* munkavégző készlet kiválasztása
 * példányok száma
 
-Módosítása vagy elem látható, az ASE az App Service-csomagokban üzemeltetett megfelelő felhasználói felületen keresztül történik.  
+Bármelyik tétel módosítása a szolgáltatott App Service-csomagokhoz tartozó megfelelő felhasználói felületen történik.  
 
 ![][1]
 
-A feldolgozó készlet, amely az ASP elérhető számítási erőforrások száma meghaladja az ASP nem vertikális.  Ha a szükséges számítási erőforrásokért, hogy feldolgozókészletben kell az ASE-rendszergazda adja hozzá őket beolvasása.  Az ASE információk újrakonfigurálása olvassa el az adatok itt: [App Service environment konfigurálása][HowtoConfigureASE].  Érdemes kapacitás alapján ütemezés vagy metrikák hozzáadása az ASE automatikus skálázási funkciókat is.  Konfigurálásáról további információért lásd az ASE környezetben magát az automatikus skálázási [konfigurálása az automatikus méretezés App Service-környezet][ASEAutoscale].
+Az ASP nem méretezhető fel az ASP-ben lévő munkavégző készletben elérhető számítási erőforrások számánál túl.  Ha számítási erőforrásokra van szüksége az adott munkavégző készletben, akkor hozzá kell adnia a beszerzéshez a beküldés-rendszergazdát.  A következő témakörben talál információt a betekintő szolgáltatás újrakonfigurálásával kapcsolatban: [App Service környezet konfigurálása][HowtoConfigureASE].  Érdemes lehet kihasználnia a kisegítő lehetőségekkel, hogy kihasználhassa a kapacitást az ütemterv vagy a mérőszámok alapján.  Ha további részleteket szeretne megtudni arról, hogyan konfigurálhatja az autoskálázást a beadási környezettel kapcsolatban, tekintse meg, [hogyan kell konfigurálni][ASEAutoscale]az autoskálázást app Service Environment
 
-Több app service-csomagok különböző feldolgozókészletek a számítási erőforrások használatával is létrehozhat, vagy használhatja ugyanazt a feldolgozó készletet.  Például ha rendelkezik (10) elérhető számítási erőforrások feldolgozói készlethez 1, ha szeretné, hozzon létre egy app service-csomag (6) a számítási erőforrások használatával, és egy másik app service-csomag (4) használó számítási erőforrásokat.
+Több app Service-csomagot is létrehozhat különböző munkavégző készletekből származó számítási erőforrásokkal, vagy használhatja ugyanazt a munkavégző készletet.  Ha például (10) elérhető számítási erőforrások találhatók az 1. munkavégző készletben, dönthet úgy, hogy létrehoz egy app Service-csomagot (6) számítási erőforrásokkal, és egy második app Service-csomagot, amely (4) számítási erőforrásokat használ.
 
-### <a name="scaling-the-number-of-instances"></a>Példányok számának méretezése
-Ha a webes alkalmazás létrehozása az App Service Environment 1 példány kezdődik.  Majd horizontálisan, további példányokat, adja meg az alkalmazás további számítási erőforrásokat.   
+### <a name="scaling-the-number-of-instances"></a>A példányok számának méretezése
+Amikor először hozza létre a webalkalmazást egy App Service Environment, akkor 1 példánnyal kezdődik.  Ezután további példányokat is kibővítheti, hogy további számítási erőforrásokat biztosítson az alkalmazáshoz.   
 
-Ha az ASE elegendő a kapacitása akkor viszonylag egyszerű.  Nyissa meg az App Service-csomag vertikális felskálázás, és válassza ki a méretet a helyek társításához.  Ekkor megnyílik a felhasználói felület, ahol manuálisan beállítására szolgál az ASP és a ASP automatikus skálázási szabályok konfigurálása.  Alkalmazás manuális skálázása egyszerűen állítsa ***a skálázás*** való ***manuálisan megadott példányszám***.  Innen húzza a csúszkát a megfelelő mennyiségre, vagy adja meg azt a csúszka melletti mezőbe.  
+Ha a beszerzett eszköz kapacitása elegendő, akkor ez elég egyszerű.  Nyissa meg a App Service tervet, amely a vertikálisan felskálázást és a méretezést választja.  Ekkor megnyílik a felhasználói felület, amelyen manuálisan állíthatja be az ASP méretezési szabályait, vagy konfigurálhatja az ASP-re vonatkozó autoskálázási szabályokat.  Az alkalmazás manuális méretezéséhez egyszerűen állítsa be a skálázást a ***manuálisan***megadott példányszámra.  Innen húzza a csúszkát a kívánt mennyiségre, vagy írja be a csúszkát a csúszka melletti mezőbe.  
 
 ![][2] 
 
-Az automatikus méretezési szabályok egy ASP, az ASE környezetben működni, mint általában.  Kiválaszthatja ***processzorhasználat*** alatt ***a skálázás*** és automatikus méretezési szabályokat létrehozni a Processzorhasználat (%), vagy alapján az ASP használatával összetett szabályokat hozhat létre ***ütemezési és teljesítményszabályok*** .  További részleteket konfigurálásáról az automatikus méretezés használja az útmutató Itt [Skálázhatja őket egy Azure App Service-ben][AppScale]. 
+Egy olyan ASP-ben lévő ASP-re vonatkozó autoskálázási szabályok ugyanúgy működnek, mint a szokásos módon.  Kiválaszthatja a ***CPU százalékos arányát*** a ***méretezési*** lehetőség alatt, és létrehozhat az ASP-hez a CPU százalékán alapuló autoskálázási szabályokat, vagy az ***ütemterv és a teljesítmény szabályok***használatával összetettebb szabályokat is létrehozhat.  Az autoscale konfigurálásával kapcsolatos további részletekért tekintse meg az [alkalmazás méretezése Azure app Serviceban][AppScale]című útmutatót. 
 
-### <a name="worker-pool-selection"></a>Feldolgozó készlet kiválasztása
-Korábban feljegyzett a feldolgozói készlethez kijelölt az ASP felhasználói felületen érhető el.  Az ASP, amelyet szeretne méretezni, és válassza ki a feldolgozókészlet panel megnyitásához.  Megjelenik a feldolgozókészletek, amelyek az App Service-környezet be vannak állítva.  Ha csak egy munkavégző készletét ezután csak látni fogja a felsorolt egy készletet.  Milyen szerepel-e az ASP feldolgozókészlet módosításához, egyszerűen válassza ki a feldolgozókészletet szeretne az App Service-csomagra szeretne váltani.  
+### <a name="worker-pool-selection"></a>Munkavégző készlet kiválasztása
+Ahogy azt korábban említettük, a munkavégző készlet kiválasztása az ASP felhasználói felületéről érhető el.  Nyissa meg a méretezni kívánt ASP panelt, és válassza a munkavégző készlet lehetőséget.  Megjelenik az összes munkavégző készlet, amelyet a App Service Environment konfigurált.  Ha csak egy munkavégző készlettel rendelkezik, akkor csak a felsorolt készlet jelenik meg.  Ha módosítani szeretné a munkavégző készletet az ASP-ben, egyszerűen válassza ki azt a munkavégző készletet, amelyre a App Service tervet szeretné áthelyezni.  
 
 ![][3]
 
-Az ASP áthelyezése egy feldolgozó készletből a másikba előtt fontos, hogy az ASP megfelelő kapacitást kell.  Feldolgozókészletek listájában nem csak a worker-készlet neve szerepel, de hány feldolgozók érhetők el, hogy feldolgozókészlet is látható.  Győződjön meg arról, hogy nincsenek-e elegendő példányig tartalmazzák az App Service-csomagra.  Ha több szükséges számítási erőforrásokért az áthelyezni kívánt feldolgozókészletben, kérje le az ASE-rendszergazda adja hozzá őket.  
+Mielőtt áthelyezi az ASP-t az egyik munkavégző készletből a másikba, fontos, hogy elegendő kapacitással rendelkezzen az ASP-hez.  A munkavégző készletek listáján nem csak a Worker Pool neve szerepel, de azt is láthatja, hogy hány alkalmazott áll rendelkezésre a munkavégző készletben.  Győződjön meg arról, hogy elegendő példány áll rendelkezésre a App Service tervének tárolására.  Ha több számítási erőforrásra van szüksége a munkavégző készletben, amelyet át szeretne helyezni, akkor adja hozzá a betöltési rendszergazdát.  
 
 > [!NOTE]
-> Az, hogy az ASP-alkalmazások áthelyezése egy feldolgozó készletből egy ASP következtében offline elindul.  Emiatt lassan futnak, mivel az alkalmazás offline indult el az új számítási erőforrásoknak a kérelmeket.  A hidegindítás használatával elkerülhető az [alkalmazás mentése funkció meleg] [ AppWarmup] Azure App Service-ben.  Az alkalmazásinicializálás modul, a cikkben ismertetett kiküszöbölik az is működik, mert az inicializálási folyamatot is akkor aktiválódnak, ha az alkalmazások olyan ritkán használt új számítási erőforrásoknak a következőn:. 
+> Ha egy ASP-t egy munkavégző készletből helyez át, akkor az ASP-ben lévő alkalmazások hidegen indulnak.  Ez a kérelmek lassú futását okozhatja, mivel az alkalmazás az új számítási erőforrásokon hidegen indult el.  A hidegindítás elkerülhető a Azure App Service [alkalmazás bemelegítő funkciójának][AppWarmup] használatával.  A cikkben ismertetett alkalmazás-inicializálási modul is működik, mert az inicializálási folyamatot akkor is meghívja a rendszer, ha az alkalmazások az új számítási erőforrásokon is hidegen kezdődnek. 
 > 
 > 
 
 ## <a name="getting-started"></a>Első lépések
-Első lépések az App Service Environment-környezetek, lásd: [hogyan, hozzon létre egy App Service-környezet][HowtoCreateASE]
+App Service környezetek megismeréséhez tekintse meg a [app Service Environment létrehozása][HowtoCreateASE] című témakört.
 
 <!--Image references-->
 [1]: ./media/app-service-web-scale-a-web-app-in-an-app-service-environment/aseappscale-aspblade.png
@@ -75,12 +75,12 @@ Első lépések az App Service Environment-környezetek, lásd: [hogyan, hozzon 
 
 <!--Links-->
 [WhatisASE]: app-service-app-service-environment-intro.md
-[ScaleWebapp]: ../web-sites-scale.md
+[ScaleWebapp]: ../manage-scale-up.md
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [CreateWebappinASE]: app-service-web-how-to-create-a-web-app-in-an-ase.md
 [Appserviceplans]: ../overview-hosting-plans.md
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 [ASEAutoscale]: app-service-environment-auto-scale.md
-[AppScale]: ../web-sites-scale.md
+[AppScale]: ../manage-scale-up.md
 [AppWarmup]: https://ruslany.net/2015/09/how-to-warm-up-azure-web-app-during-deployment-slots-swap/

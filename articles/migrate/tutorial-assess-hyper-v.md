@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 08/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 60e1db913336cc9f9e355c2e8f8466854de20389
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: b93d9ee65850749e79714b632584f1977ca88c81
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828325"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639987"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>A Hyper-V virtuális gépek felmérése Azure Migrate kiszolgáló értékelésével
 
@@ -128,13 +128,17 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 
 Importálja a letöltött fájlt, és hozza létre a virtuális gépet.
 
-1. Bontsa ki a tömörített VHD-fájlt egy olyan mappába a Hyper-V-gazdagépen, amely a készülék virtuális gépét fogja üzemeltetni. Három mappa van kibontva.
+1. Miután letöltötte a tömörített VHD-fájlt arra a Hyper-V-gazdagépre, amelyre a készülék virtuális gépe kerül, bontsa ki a tömörített fájlt.
+    - A kinyert helyen a fájl kibontható egy **AzureMigrateAppliance_VersionNumber**nevű mappába.
+    - Ez a mappa tartalmaz egy almappát, más néven **AzureMigrateAppliance_VersionNumber**.
+    - Ez az almappa három további almappát tartalmaz: Pillanatképek, **virtuális merevlemezek**és **Virtual Machines**.
+
 2. Nyissa meg a Hyper-V kezelőjét. A **műveletek**területen kattintson a **virtuális gép importálása**elemre.
 
     ![VHD üzembe helyezése](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. A virtuális gép importálása varázslóban > a **Kezdés előtt**kattintson a **tovább**gombra.
-3. A **mappában keresse**meg a kibontott virtuális merevlemezt tartalmazó mappát. Ezután kattintson a **Next** (Tovább) gombra.
+3. A **mappa keresése**területen válassza a **Virtual Machines** mappát. Ezután kattintson a **Next** (Tovább) gombra.
 1. A **virtuális gép kiválasztása lapon**kattintson a **tovább**gombra.
 2. Az **importálási típus kiválasztása**területen kattintson **a virtuális gép másolása (új egyedi azonosító létrehozása)** elemre. Ezután kattintson a **Next** (Tovább) gombra.
 3. A **cél kiválasztása**területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább** gombra.

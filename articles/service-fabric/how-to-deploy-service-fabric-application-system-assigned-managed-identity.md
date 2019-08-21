@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: c225971675557ba9bc98aafa25d17a3ef95a594a
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 9f6f3d43f80b3c69b0c1106b8e395b4d8f5d32ab
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624951"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640705"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Service Fabric alkalmazás üzembe helyezése rendszer által hozzárendelt felügyelt identitással (előzetes verzió)
 
@@ -92,7 +92,7 @@ Ez a tulajdonság deklarálja (Azure Resource Manager, valamint a felügyelt ide
     ```
     Ez egy, a fentiekben leírtak szerint a szolgáltatás azonosságának megfelelő leképezése, de a szolgáltatás definíciójának szemszögéből. Az identitást itt tekintheti meg az alkalmazás jegyzékfájljában deklarált rövid névvel (`WebAdmin`).
 
-## <a name="related-articles"></a>Kapcsolódó cikkek
+## <a name="next-steps"></a>További lépések
 
 * [Felügyelt identitások támogatásának](./concepts-managed-identity.md) áttekintése az Azure Service Fabric
 

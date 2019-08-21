@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bb4ac9953bcadd9e49cee5b7b99e853705b6567c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9609a886bdcbf093cffaf888f9aeaff0d61acec1
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990273"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636653"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service alkalmazás konfigurálása a Azure Portal
 
@@ -167,7 +167,7 @@ A [Azure Portal]navigáljon az alkalmazás felügyeleti lapjára. Az alkalmazás
 
 ![Általános beállítások](./media/configure-common/open-general.png)
 
-Itt konfigurálhatja az alkalmazás egyes gyakori beállításait. Néhány beállításhoz a [magasabb díjszabású](web-sites-scale.md)csomagok skálázása szükséges.
+Itt konfigurálhatja az alkalmazás egyes gyakori beállításait. Néhány beállításhoz a [magasabb díjszabású](manage-scale-up.md)csomagok skálázása szükséges.
 
 - **Verem beállításai**: Az alkalmazás futtatásához használt szoftver-verem, beleértve a nyelv és az SDK verzióját is. A Linux-alkalmazások és az egyéni tárolós alkalmazások esetében opcionális indítási parancsot vagy fájlt is beállíthat.
 - **Platform beállításai**: Lehetővé teszi a üzemeltetési platform beállításainak konfigurálását, beleértve a következőket:
@@ -268,4 +268,4 @@ Lásd: [Egyéni Linux-tároló konfigurálása Azure app Servicehoz](containers/
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
 [A Azure App Service figyelésének alapjai]: ./web-sites-monitor.md
 [folyamat mód]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Alkalmazás méretezése Azure App Service]: ./web-sites-scale.md
+[Alkalmazás méretezése Azure App Service]: ./manage-scale-up.md

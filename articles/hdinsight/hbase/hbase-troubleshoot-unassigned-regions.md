@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/07/2019
-ms.openlocfilehash: e75f2fdd0530b92e8c8405b74c2a364ff9e9e28e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 08/16/2019
+ms.openlocfilehash: 6e734a661557b024257fcd1b9d9c2da6a3bc8f85
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935431"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640225"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>A régióbeli kiszolgálókkal kapcsolatos problémák az Azure HDInsight
 
@@ -27,7 +27,7 @@ A parancs `hbase hbck` futtatásakor a következőhöz hasonló hibaüzenet jele
 multiple regions being unassigned or holes in the chain of regions
 ```
 
-Az Apache HBase Master felhasználói felületén láthatja, hogy a régiók száma az összes régió-kiszolgáló között kiegyensúlyozatlan lesz.
+Az Apache HBase Master felhasználói felületén megtekintheti az összes régió kiszolgálójának kiegyensúlyozatlan régiói számát. Ezután a parancs futtatásával `hbase hbck` megtekintheti a lyukakat a régió láncában.
 
 ### <a name="cause"></a>Ok
 
@@ -39,13 +39,13 @@ Javítsa ki a hozzárendeléseket. Az alábbi lépések végrehajtásával vissz
 
 1. Jelentkezzen be a HDInsight HBase-fürtbe SSH használatával.
 
-1. Futtassa `hbase zkcli` a parancsot a Zookeeper-rendszerhéjhoz való kapcsolódáshoz.
+1. Futtassa `hbase zkcli` a parancsot a ZooKeeper-rendszerhéjhoz való kapcsolódáshoz.
 
 1. Futtatás `rmr /hbase/regions-in-transition` vagy`rmr /hbase-unsecure/regions-in-transition` parancs.
 
 1. Lépjen ki a Zookeeper- `exit` rendszerhéjból a paranccsal.
 
-1. Nyissa meg a Ambari felhasználói felületét, és indítsa újra az aktív HBase Master szolgáltatást a Ambari.
+1. Nyissa meg az Apache Ambari felhasználói felületét, majd indítsa újra az aktív HBase Master szolgáltatást.
 
 1. Futtassa `hbase hbck` újra a parancsot (további beállítások nélkül). Ellenőrizze a kimenetet, és győződjön meg arról, hogy az összes régió hozzá van rendelve.
 
@@ -61,7 +61,7 @@ A régió-kiszolgálók nem indulnak el.
 
 Több felosztó WAL-könyvtár.
 
-1. Aktuális Wals listájának beolvasása: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
+1. Aktuális WALs listájának beolvasása: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
 
 1. Vizsgálja meg `wals.out` a fájlt. Ha túl sok felosztó könyvtár van (a *-felosztástól kezdve), akkor a régió-kiszolgáló valószínűleg sikertelen lesz a könyvtárak miatt.
 

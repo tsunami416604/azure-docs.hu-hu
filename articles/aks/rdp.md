@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/04/2019
 ms.author: mlearned
-ms.openlocfilehash: 0238278b81255d735f8a950ca307d0e05100cfec
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e3a4ea2e81e6c428b51d164336282f8f929d414b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614564"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639793"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Kapcsolódás RDP-vel az Azure Kubernetes Service (ak) fürthöz Windows Server-csomópontok karbantartáshoz vagy hibaelhárításhoz
 
@@ -63,6 +63,27 @@ A következő példa kimenete azt mutatja, hogy a virtuális gép sikeresen lét
 ```
 
 Jegyezze fel a virtuális gép nyilvános IP-címét. Ezt a címeket egy későbbi lépésben fogja használni.
+
+## <a name="allow-access-to-the-virtual-machine"></a>A virtuális géphez való hozzáférés engedélyezése
+
+Az AK Node-készlet alhálózatai alapértelmezés szerint a NSG (hálózati biztonsági csoportok) védelemmel vannak ellátva. A virtuális gép eléréséhez engedélyezni kell a hozzáférést a NSG.
+
+> [!NOTE]
+> A NSG az AK szolgáltatás vezérli. A NSG végzett módosításokat a vezérlési síkon bármikor felülírja a rendszer.
+>
+
+Először kérje le a NSG erőforráscsoport-és NSG-nevét, és adja hozzá a szabályt a következőhöz:
+
+```azurecli-interactive
+CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+NSG_NAME=$(az network nsg list -g $CLUSTER_RG --query [].name -o tsv)
+```
+
+Ezután hozza létre a NSG szabályt:
+
+```azurecli-interactive
+az network nsg rule create --name tempRDPAccess --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --priority 100 --destination-port-range 3389 --protocol Tcp --description "Temporary RDP access to Windows nodes"
+```
 
 ## <a name="get-the-node-address"></a>A csomópont-címek beolvasása
 
@@ -117,6 +138,17 @@ Ha elkészült, lépjen ki az RDP-kapcsolattal a Windows Server-csomópontra, ma
 
 ```azurecli-interactive
 az vm delete --resource-group myResourceGroup --name myVM
+```
+
+És a NSG szabály:
+
+```azurecli-interactive
+CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+NSG_NAME=$(az network nsg list -g $CLUSTER_RG --query [].name -o tsv)
+```
+
+```azurecli-interactive
+az network nsg rule delete --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --name tempRDPAccess
 ```
 
 ## <a name="next-steps"></a>További lépések

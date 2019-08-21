@@ -3,25 +3,25 @@ title: Azure VMware-megoldás CloudSimple – vSAN-titkosítás konfigurálása 
 description: Leírja, hogy miként konfigurálható a vSAN szoftveres titkosítási funkciója, hogy a CloudSimple saját felhője az Azure-beli virtuális hálózaton futó Kulcskezelő kiszolgálóval is működjön.
 author: sharaths-cs
 ms.author: b-shsury
-ms.date: 08/15/2019
+ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a00cce852878d65ca08927d937f5a0f1f37c1b87
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 288a05fc09e0c59a01a8d4c9940c0d51cabdd28f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544473"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640965"
 ---
-# <a name="configure-vsan-encryption-for-your-cloudsimple-private-cloud"></a>VSAN-titkosítás konfigurálása a saját CloudSimple-felhőben
+# <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>VSAN-titkosítás konfigurálása a CloudSimple privát felhőhöz
 
 A vSAN titkosító funkciója beállítható úgy, hogy a CloudSimple saját felhője az Azure-beli virtuális hálózaton futó Kulcskezelő kiszolgálóval is működjön.
 
-A VMware egy külső KMIP 1,1-kompatibilis, harmadik féltől származó kulcskezelő kiszolgáló (KMS) eszközt használ a vSAN-titkosítás használatakor. A VMware által hitelesített bármely támogatott KMS-t használhat, és az Azure-hoz is elérhető.
+A VMware egy külső KMIP 1,1-kompatibilis, harmadik féltől származó kulcskezelő kiszolgáló (KMS) eszközt használ a vSAN-titkosítás használatakor. Kihasználhatja a VMware által hitelesített, támogatott KMS-t, és az Azure-hoz is elérhető. 
 
-Az alábbi útmutató az Azure-beli virtuális hálózaton futó HyTrust kulcskezelő KMS használatát ismerteti. Hasonló módszer használható bármilyen más, harmadik féltől származó, vSAN-alapú KMS-megoldáshoz.
+Ez az útmutató ismerteti, hogyan használható az Azure Virtual Networkben futó HyTrust kulcskezelő KMS. Hasonló módszer használható bármilyen más, harmadik féltől származó, vSAN-alapú KMS-megoldáshoz.
 
 Ehhez a KMS-megoldáshoz a következőket kell tennie:
 
@@ -33,20 +33,20 @@ Ehhez a KMS-megoldáshoz a következőket kell tennie:
 
 A KMS-kiszolgáló fürtje az Azure Virtual Networkben fut, és az IP-cím elérhető a saját felhő vCenter a konfigurált Azure ExpressRoute-kapcsolaton keresztül.
 
-![KMS-fürt az Azure Virtual Networkben](media/vsan-kms-cluster.png)
+![.. /media/KMS-fürt az Azure Virtual Networkben](media/vsan-kms-cluster.png)
 
 ## <a name="how-to-deploy-the-solution"></a>A megoldás üzembe helyezése
 
 Az üzembe helyezési folyamat a következő lépésekből áll:
 
-1. [Ellenőrizze, hogy teljesülnek-e az Előfeltételek](#verify-that-prerequisites-are-met)
+1. [Ellenőrizze, hogy teljesülnek-e az Előfeltételek](#verify-prerequisites-are-met)
 2. [CloudSimple-portál: ExpressRoute-társítási adatok beszerzése](#cloudsimple-portal-obtain-expressroute-peering-information)
 3. [Azure Portal: A virtuális hálózat összekötése a saját felhővel](#azure-portal-connect-your-virtual-network-to-your-private-cloud)
 4. [Azure Portal: HyTrust-távvezérlési fürt üzembe helyezése a virtuális hálózaton](#azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network)
 5. [HyTrust WebUI: KMIP-kiszolgáló konfigurálása](#hytrust-webui-configure-the-kmip-server)
 6. [vCenter felhasználói felülete: VSAN-titkosítás konfigurálása KMS-fürt használatára az Azure-beli virtuális hálózaton](#vcenter-ui-configure-vsan-encryption-to-use-kms-cluster-in-your-azure-virtual-network)
 
-### <a name="verify-that-prerequisites-are-met"></a>Ellenőrizze, hogy teljesülnek-e az Előfeltételek
+### <a name="verify-prerequisites-are-met"></a>Előfeltételek ellenőrzése
 
 Ellenőrizze a következőket az üzembe helyezés előtt:
 
@@ -58,7 +58,7 @@ Ellenőrizze a következőket az üzembe helyezés előtt:
 
 ### <a name="cloudsimple-portal-obtain-expressroute-peering-information"></a>CloudSimple-portál: ExpressRoute-társítási adatok beszerzése
 
-A telepítés folytatásához szüksége lesz az engedélyezési kulcsra és a ExpressRoute, valamint az Azure-előfizetéshez való hozzáférésre. Ezek az információk a CloudSimple-portál Virtual Network kapcsolatok lapján érhetők el. Útmutatásért lásd: [virtuális hálózati kapcsolatok beállítása a privát felhőhöz](virtual-network-connection.md). Ha bármilyen problémája van az információ beszerzésével, nyisson meg egy <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">támogatási kérést</a>.
+A telepítés folytatásához szüksége lesz az engedélyezési kulcsra és a ExpressRoute, valamint az Azure-előfizetéshez való hozzáférésre. Ezek az információk a CloudSimple-portál Virtual Network kapcsolatok lapján érhetők el. Útmutatásért lásd: [virtuális hálózati kapcsolatok beállítása a privát felhőhöz](virtual-network-connection.md). Ha bármilyen problémája van az információ beszerzésével, nyisson meg egy [támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ### <a name="azure-portal-connect-your-virtual-network-to-your-private-cloud"></a>Azure Portal: A virtuális hálózat összekötése a saját felhővel
 
@@ -67,30 +67,30 @@ A telepítés folytatásához szüksége lesz az engedélyezési kulcsra és a E
 3. Az üdvözlő e-mailben kapott CloudSimple ExpressRoute-áramköri információinak használatával a CloudSimple-ből összekapcsolhatja a virtuális hálózatot az Azure-beli CloudSimple ExpressRoute-áramkörrel.
 4. Adja meg az engedélyezési kulcsot és a társ-áramköri URI-t, adjon nevet a kapcsolatnak, majd kattintson **az OK**gombra.
 
-![Adja meg a CS társközi áramköri URI-t a virtuális hálózat létrehozásakor](media/vsan-azureportal01.png)
+![Adja meg a CS társközi áramköri URI-t a virtuális hálózat létrehozásakor](media/vsan-azureportal01.png) 
 
 ### <a name="azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network"></a>Azure Portal: HyTrust-távvezérlési fürt üzembe helyezése a virtuális hálózat Azure Resource Managerban
 
-Ha HyTrust-vezérlő fürtöt szeretne üzembe helyezni a virtuális hálózat Azure Resource Managerban, hajtsa végre a következő feladatokat. A részletekért tekintse meg a <a href="https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0" target="_blank">HyTrust dokumentációját</a> .
+Ha HyTrust-vezérlő fürtöt szeretne üzembe helyezni a virtuális hálózat Azure Resource Managerban, hajtsa végre a következő feladatokat. A részletekért tekintse meg a [HyTrust dokumentációját](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0) .
 
 1. Hozzon létre egy Azure hálózati biztonsági csoportot (NSG-hytrust) a megadott bejövő szabályokkal a HyTrust dokumentációjának utasításait követve.
 2. SSH kulcspár létrehozása az Azure-ban.
 3. Telepítse a kezdeti távvezérlési csomópontot a lemezképből az Azure Marketplace-en.  Használja a generált kulcspár nyilvános kulcsát, és válassza a **NSG-hytrust** lehetőséget a kulcstartó csomóponthoz tartozó hálózati biztonsági csoportként.
 4. Alakítsa át a vezérlő magánhálózati IP-címét statikus IP-címmé.
 5. SSH-t a kulcstartó virtuális géphez a nyilvános IP-címe és a korábban említett kulcspár titkos kulcsa használatával.
-6. Amikor a rendszer rákérdez az SSH- ```No``` rendszerhéjra, válassza a csomópont beállítása kezdeti vezérlő csomópontként lehetőséget.
-7. További vezérlő-csomópontok hozzáadásához ismételje meg az eljárás 3-5. ```Yes``` lépéseit, és válassza ki, hogy mikor kér be egy meglévő fürthöz való hozzáadást.
+6. Amikor a rendszer rákérdez az SSH- `No` rendszerhéjra, válassza a csomópont beállítása kezdeti vezérlő csomópontként lehetőséget.
+7. További vezérlő-csomópontok hozzáadásához ismételje meg az eljárás 3-5. `Yes` lépéseit, és válassza ki, hogy mikor kér be egy meglévő fürthöz való hozzáadást.
 
 ### <a name="hytrust-webui-configure-the-kmip-server"></a>HyTrust WebUI: A KMIP-kiszolgáló konfigurálása
 
-Nyissa meg a https://*Public-IP*címet, ahol a *Public-IP* a távvezérlési csomópont virtuális gépe nyilvános IP-címe. Kövesse az alábbi lépéseket a <a href="https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0" target="_blank">HyTrust dokumentációjában</a>.
+Nyissa meg a https://*Public-IP*címet, ahol a *Public-IP* a távvezérlési csomópont virtuális gépe nyilvános IP-címe. Kövesse az alábbi lépéseket a [HyTrust dokumentációjában](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0).
 
-1. <a href="https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/configuring-kmip-server.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____2" target="_blank">KMIP-kiszolgáló konfigurálása</a>
-2. <a href="https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-user-for-vmcrypt.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____3" target="_blank">Tanúsítványfájl létrehozása VMware-titkosításhoz</a>
+1. [KMIP-kiszolgáló konfigurálása](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/configuring-kmip-server.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____2)
+2. [Tanúsítványfájl létrehozása VMware-titkosításhoz](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-user-for-vmcrypt.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____3)
 
 ### <a name="vcenter-ui-configure-vsan-encryption-to-use-kms-cluster-in-your-azure-virtual-network"></a>vCenter felhasználói felülete: VSAN-titkosítás konfigurálása KMS-fürt használatára az Azure-beli virtuális hálózaton
 
-A HyTrust utasításait követve <a href="https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-KMS-Cluster.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____4" target="_blank">hozzon létre egy KMS-fürtöt a vCenter-ben</a>.
+A HyTrust utasításait követve [hozzon létre egy KMS-fürtöt a vCenter-ben](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-KMS-Cluster.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____4).
 
 ![KMS-fürt részleteinek hozzáadása a vCenter-ben](media/vsan-config01.png)
 

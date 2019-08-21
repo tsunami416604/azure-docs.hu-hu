@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4ea983255463080592181cda321ef6b6d1ff147f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: be391f2aa9ee5d94ffc36a6e03d3af8881346520
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932341"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636556"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service terv áttekintése
 
@@ -100,7 +100,7 @@ Megkezdheti például a webalkalmazás tesztelését egy **ingyenes** app Servic
 
 Ugyanez fordítva is működik. Ha úgy érzi, hogy már nincs szüksége egy magasabb szintű kapacitásra vagy funkcióra, lekicsinyítheti az alacsonyabb szintet, ami pénzt takarít meg.
 
-Az App Service terv méretezésével kapcsolatos információkért lásd: alkalmazás felskálázása [Az Azure-ban](web-sites-scale.md).
+Az App Service terv méretezésével kapcsolatos információkért lásd: alkalmazás felskálázása [Az Azure-ban](manage-scale-up.md).
 
 Ha az alkalmazás ugyanabban a App Service csomagban van, és más alkalmazásokkal is rendelkezik, érdemes lehet javítani az alkalmazás teljesítményét a számítási erőforrások elkülönítésével. Ezt úgy teheti meg, hogy áthelyezi az alkalmazást egy külön App Service tervbe. További információ: [alkalmazás áthelyezése másik app Service tervbe](app-service-plan-manage.md#move).
 

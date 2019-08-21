@@ -5,18 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 316cfb228050030b15e791e1d890c9048eadc109
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 57dd8e47d44248270920e44268b99c98d399504d
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841092"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69635879"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>Elavult kognitív keresési képességek
 
@@ -25,7 +24,7 @@ Ez a dokumentum az elavultnak tekintett kognitív képességeket ismerteti. Hasz
 * Szakértelem neve: Az elavult képesség neve, amely le lesz képezve @odata.type az attribútumhoz.
 * Utolsó elérhető API-verzió: Az Azure Search nyilvános API utolsó verziója, amely a megfelelő elavult képességet tartalmazó szakértelmével hozható létre/frissíthető.
 * Támogatás vége: Az utolsó nap, amely után a megfelelő képesség nem támogatottnak minősül. A korábban létrehozott szakértelmével továbbra is működőképesnek kell lennie, de a felhasználókat ajánlott áttelepíteni egy elavult képességből.
-* Javaslatok: A Migrálás útvonala egy támogatott képesség használatára van továbbítva. A felhasználóknak javasoljuk, hogy kövessék az ajánlásokat, hogy továbbra is megkapják a támogatást.
+* Javaslatok A Migrálás útvonala egy támogatott képesség használatára van továbbítva. A felhasználóknak javasoljuk, hogy kövessék az ajánlásokat, hogy továbbra is megkapják a támogatást.
 
 ## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
 

@@ -9,12 +9,12 @@ ms.date: 08/02/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f33193e3102afca73344fcd640d14d9af9c1d46e
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 2607e09e6b8428c2aacc8ee7c6be42f54284a1ce
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775341"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641090"
 ---
 # <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Azure-blobok és-várólisták hozzáférésének engedélyezése Azure Active Directory használatával
 
@@ -54,7 +54,7 @@ További információ arról, hogy az Azure Storage beépített szerepkörei hog
 
 ### <a name="access-permissions-for-data-operations"></a>Az adatműveletek hozzáférési engedélyei
 
-Az adott blob vagy Queue szolgáltatás műveletek meghívásához szükséges engedélyekkel kapcsolatos részletekért lásd: [a blob-és üzenetsor-műveletek meghívására vonatkozó engedélyek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Az adott blob vagy Queue szolgáltatás műveletek meghívásához szükséges engedélyekkel kapcsolatos részletekért lásd: [a blob-és üzenetsor-műveletek meghívására vonatkozó engedélyek](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
 
 ## <a name="resource-scope"></a>Erőforrás hatóköre
 
@@ -85,5 +85,5 @@ Azure Files támogatja az Azure AD-t az SMB protokollon keresztül a tartományh
 ## <a name="next-steps"></a>További lépések
 
 - [Blobok és várólisták hozzáférésének engedélyezése Azure Active Directory és felügyelt identitásokkal az Azure-erőforrásokhoz](storage-auth-aad-msi.md)
-- [Hitelesítés az Azure Active Directoryval egy alkalmazásból blobok és üzenetsorok eléréséhez](storage-auth-aad-app.md)
+- [Engedélyezés Azure Active Directory alkalmazásból a blobokhoz és várólistákhoz való hozzáféréshez](storage-auth-aad-app.md)
 - [Általánosan elérhető az Azure Storage-támogatás a Azure Active Directory-alapú hozzáférés-vezérléshez](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/)

@@ -1,6 +1,6 @@
 ---
-title: – Az Azure App Service-alkalmazás visszaállítása
-description: Útmutató az alkalmazás visszaállítása biztonsági másolatból.
+title: Alkalmazás visszaállítása – Azure App Service
+description: Ismerje meg, hogyan állíthatja vissza az alkalmazást biztonsági másolatból.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -15,81 +15,81 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1e8bebdb3f54ac59ec19ef798cc3e794473bbec0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2289ef81785520b81c7d69a97cb20196015fe802
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60832463"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637743"
 ---
 # <a name="restore-an-app-in-azure"></a>Alkalmazás visszaállítása az Azure-ban
-Ez a cikk bemutatja, hogyan állíthatja vissza egy alkalmazás a [Azure App Service](../app-service/overview.md) , amely korábban már készített biztonsági másolatot (lásd: [biztonsági mentése az Azure-ban az alkalmazás](manage-backup.md)). Az alkalmazás és annak csatolt adatbázisait igény szerinti visszaállítása egy korábbi állapotába, vagy hozzon létre egy új alkalmazást, az alkalmazás eredeti biztonsági másolatok alapján. Az Azure App Service támogatja a következő adatbázisok biztonsági mentése és visszaállítása:
+Ebből a cikkből megtudhatja, hogyan állíthatja [](../app-service/overview.md) vissza az alkalmazást olyan Azure app Serviceban, amelyekről korábban készített biztonsági mentést (lásd: [az alkalmazás biztonsági mentése az Azure-ban](manage-backup.md)). Az alkalmazást visszaállíthatja a csatolt adatbázisaival egy korábbi állapotba, vagy létrehozhat egy új alkalmazást az eredeti alkalmazás biztonsági másolatai alapján. A Azure App Service a következő adatbázisokat támogatja a biztonsági mentéshez és visszaállításhoz:
 - [SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
-- [– Alkalmazáson belüli MySQL](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
+- [MySQL in-app](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
-Futó alkalmazások számára elérhető biztonsági másolatokból való visszaállítással **Standard** és **prémium** szint. Az alkalmazás vertikális felskálázásával kapcsolatos további információkért lásd: [az Azure-beli alkalmazás vertikális felskálázása](web-sites-scale.md). **Prémium szintű** szint lehetővé teszi, hogy a napi biztonsági mentések hajtható végre, mint a nagyobb számú **Standard** szint.
+A biztonsági másolatokból történő visszaállítás a **standard** és a **prémium** szinten futó alkalmazások számára érhető el. Az alkalmazás skálázásával kapcsolatos további információkért lásd: alkalmazás vertikális felskálázása [Az Azure-ban](manage-scale-up.md). A **prémium** szint nagyobb számú napi biztonsági mentést tesz lehetővé, mint a **standard** szint.
 
 <a name="PreviousBackup"></a>
 
-## <a name="restore-an-app-from-an-existing-backup"></a>Alkalmazás visszaállítása egy meglévő biztonsági mentésből
-1. A a **beállítások** oldalon az alkalmazás az Azure Portalon, kattintson a **biztonsági mentések** megjelenítéséhez a **biztonsági mentések** lap. Kattintson a **visszaállítása**.
+## <a name="restore-an-app-from-an-existing-backup"></a>Alkalmazás visszaállítása meglévő biztonsági másolatból
+1. Az alkalmazás **Beállítások** lapján a Azure Portalban kattintson a **biztonsági** mentések elemre a **biztonsági mentések** lap megjelenítéséhez. Ezután kattintson a **visszaállítás**gombra.
    
-    ![Válassza ki a visszaállítási most][ChooseRestoreNow]
-2. Az a **visszaállítása** lapon, először válassza ki a biztonsági mentési forrását.
+    ![Válassza a Visszaállítás most lehetőséget][ChooseRestoreNow]
+2. A **visszaállítás** lapon először válassza ki a biztonsági mentés forrását.
    
     ![](./media/web-sites-restore/021ChooseSource1.png)
    
-    A **alkalmazás biztonsági másolatának** beállítást választja, megjelenik az összes a meglévő biztonsági másolatok az aktuális alkalmazás, és egyszerűen kiválaszthatja az egyik.
-    A **tárolási** beállítás lehetővé teszi bármilyen biztonsági másolat ZIP-fájlt választhat a meglévő Azure Storage-fiók és tároló az előfizetésében.
-    Ha szeretne egy másik alkalmazás biztonsági másolatának visszaállítása, használja a **tárolási** lehetőséget.
-3. Ezután adja meg az alkalmazás visszaállításához való **visszaállítási célhelyének**.
+    Az **alkalmazás biztonsági mentése** lehetőség megjeleníti az aktuális alkalmazás összes meglévő biztonsági mentését, és egyszerűen kiválaszthat egyet.
+    A **Storage (tárolás** ) beállítással bármely meglévő Azure Storage-fiókból és-tárolóból kiválaszthatja a Backup zip-fájlokat az előfizetésében.
+    Ha egy másik alkalmazás biztonsági másolatát kísérli meg visszaállítani, használja a **Storage (tárolás** ) beállítást.
+3. Ezután adja meg az alkalmazás visszaállításának célját a **visszaállítási célhelyen**.
    
     ![](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
-   > Ha úgy dönt, **felülírás**, az összes meglévő adatok az aktuális alkalmazás törölve lesz, és felül. Gombra való kattintás előtt **OK**, győződjön meg arról, hogy pontosan mit szeretne tenni.
+   > Ha a **felülírás**lehetőséget választja, a rendszer törli az aktuális alkalmazás összes meglévő adatát, és felülírja azt. Mielőtt rákattintott **az OK**gombra, győződjön meg arról, hogy pontosan mit szeretne tenni.
    > 
    > 
    
    > [!WARNING]
-   > Az App Service-ben írja az adatokat az adatbázisban, amíg vissza, ha azt eredményezheti jelenségeket, például az elsődleges kulcs és az adatvesztést megsértése. Az App Service-ben az adatbázis visszaállítása előtt először állítsa le. javasolt.
+   > Ha a App Service a visszaállítás során az adatbázisba írja az adatírást, az olyan tüneteket eredményezhet, mint például az elsődleges kulcs és az adatvesztés megsértése. Azt javasoljuk, hogy először állítsa le a App Servicet az adatbázis visszaállítása előtt.
    > 
    > 
    
-    Választhat **meglévő alkalmazás** az alkalmazás biztonsági másolatának visszaállítása egy másik alkalmazásnak ugyanabban az erőforráscsoportban. Ezt a beállítást használja, mielőtt kell már létrehozott egy másik alkalmazás tükrözési adatbázis konfigurációja egy meghatározott az alkalmazás biztonsági másolatának az erőforráscsoportban. Ezenkívül létrehozhat egy **új** alkalmazást a tartalom visszaállításához.
+    A **meglévő alkalmazás** lehetőség kiválasztásával visszaállíthatja az alkalmazás biztonsági másolatát egy másik alkalmazásba ugyanabban az erőforráscsoporthoz. Ennek a lehetőségnek a használata előtt létre kell hoznia egy másik alkalmazást az erőforráscsoporthoz, amely az adatbázis konfigurációját tükrözte az alkalmazás biztonsági másolatában meghatározottak szerint. Létrehozhat egy **új** alkalmazást is, amellyel visszaállíthatja a tartalmat a szolgáltatásba.
 
 4. Kattintson az **OK** gombra.
 
 <a name="StorageAccount"></a>
 
-## <a name="download-or-delete-a-backup-from-a-storage-account"></a>Töltse le, vagy egy biztonsági másolat törlése egy storage-fiókból
-1. A fő **Tallózás** az Azure Portalon, válassza az oldal **tárfiókok**. A meglévő tárfiókok listája jelenik meg.
-2. Válassza ki a letölteni vagy törölni szeretné a biztonsági másolatot tartalmazó tárfiókot. A tárfiók az oldal jelenik meg.
-3. A storage-fiók oldalon válassza a kívánt tároló
+## <a name="download-or-delete-a-backup-from-a-storage-account"></a>Biztonsági másolat letöltése vagy törlése egy Storage-fiókból
+1. A Azure Portal fő **Tallózás** lapján válassza a **Storage-fiókok**lehetőséget. Megjelenik a meglévő Storage-fiókok listája.
+2. Válassza ki azt a Storage-fiókot, amely a letölteni vagy törölni kívánt biztonsági másolatot tartalmazza. Megjelenik a Storage-fiók lapja.
+3. A Storage-fiók lapon válassza ki a kívánt tárolót
    
     ![Tárolók megtekintése][ViewContainers]
-4. Válassza ki a biztonságimásolat-fájl letöltése vagy törölni szeretné.
+4. Válassza ki a letölteni vagy törölni kívánt biztonságimásolat-fájlt.
    
     ![ViewContainers](./media/web-sites-restore/03ViewFiles.png)
-5. Kattintson a **letöltése** vagy **törlése** függően, hogy mit szeretne tenni.  
+5. Kattintson a **Letöltés** vagy a **Törlés** lehetőségre attól függően, hogy mit szeretne tenni.  
 
 <a name="OperationLogs"></a>
 
-## <a name="monitor-a-restore-operation"></a>A figyelő a visszaállítási művelet
-A sikeres vagy sikertelen az alkalmazás-visszaállítási művelet részleteinek megtekintéséhez lépjen a **tevékenységnapló** oldal az Azure Portalon.  
+## <a name="monitor-a-restore-operation"></a>Visszaállítási művelet figyelése
+Ha szeretné megtekinteni az alkalmazás-visszaállítási művelet sikerességét vagy sikertelenségét, lépjen a Azure Portal **tevékenység napló** lapjára.  
  
 
-Megtekintéséhez görgessen le a kívánt visszaállítási műveletet, és kattintással jelölje ki azt.
+Görgessen le a kívánt visszaállítási művelet megkereséséhez, majd kattintson rá a kijelöléshez.
 
-A Részletek lap megjeleníti a rendelkezésre álló információkat a visszaállítási művelethez kapcsolódó.
+A Részletek lapon a visszaállítási művelettel kapcsolatos rendelkezésre álló információk láthatók.
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
-Automatizálhat biztonsági másolatokat kezelő szkriptekkel, a a [Azure CLI-vel](/cli/azure/install-azure-cli) vagy [Azure PowerShell-lel](/powershell/azure/overview).
+A parancsfájlok segítségével automatizálhatja a biztonsági mentési felügyeletet az [Azure CLI](/cli/azure/install-azure-cli) vagy a [Azure PowerShell](/powershell/azure/overview)használatával.
 
-Minták lásd:
+Példákat a következő témakörben talál:
 
 - [Azure CLI-minták](samples-cli.md)
 - [Azure PowerShell-minták](samples-powershell.md)

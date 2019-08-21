@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2adb2928772f97c2dc14b8ebe9eb2072cbc4a36d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 49e15964ba370cc6dc18491507b906764f1f882c
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985362"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640108"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure Storage-fiók áttekintése
 
@@ -148,7 +148,7 @@ A következő módszerek bármelyikével biztosíthat hozzáférést a Storage-f
 > [!NOTE]
 > Az Azure AD-beli hitelesítő adatokkal rendelkező felhasználók vagy alkalmazások hitelesítése kiváló biztonságot és könnyű használatot biztosít más engedélyezési módokon. Habár továbbra is használhatja a megosztott kulcsos engedélyezést az alkalmazásokkal, az Azure AD megkerülésével megkerüli a fiók hozzáférési kulcsának a kóddal való tárolásának szükségességét. Továbbra is használhatja a közös hozzáférésű aláírásokat (SAS) a Storage-fiók erőforrásaihoz való részletes hozzáférés biztosításához, de az Azure AD hasonló képességeket kínál, anélkül, hogy az SAS-tokeneket kellene kezelnie, vagy nem kell aggódnia a sérült SAS visszavonásával kapcsolatban. 
 >
-> A Microsoft az Azure AD-hitelesítés használatát javasolja az Azure Storage-blobok és-üzenetsor-alkalmazások számára, ha lehetséges.
+> A Microsoft az Azure AD-hitelesítés használatát javasolja az Azure Storage blob-és üzenetsor-alkalmazásaihoz, ha lehetséges.
 
 ## <a name="copying-data-into-a-storage-account"></a>Adatok másolása egy Storage-fiókba
 
@@ -173,7 +173,7 @@ Az Azure Storage REST APIával kapcsolatos további információkért lásd: az 
 > [!IMPORTANT]
 > Az ügyféloldali titkosítással titkosított blobok a titkosítással kapcsolatos metaadatokat a blobbal együtt tárolják. Ha ügyféloldali titkosítással titkosított blobot másol, ügyeljen arra, hogy a másolási művelet megőrizze a blob metaadatait, különös tekintettel a titkosítással kapcsolatos metaadatokra. Ha a blobokat a titkosítási metaadatok nélkül másolja, a blob tartalma nem kérhető le újból. További információt a titkosítással kapcsolatos metaadatokról [az Azure Storage ügyféloldali titkosítását](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ismertető szakaszban talál.
 
-### <a name="azure-importexport-service"></a>Azure Import/Export szolgáltatás
+### <a name="azure-importexport-service"></a>Azure import/export szolgáltatás
 
 Ha nagy mennyiségű adattal szeretne importálni a Storage-fiókjába, vegye figyelembe az Azure import/export szolgáltatást. Az import/export szolgáltatás segítségével nagy mennyiségű adatmennyiséget importálhat az Azure Blob Storage-ba, és Azure Files a lemezmeghajtók Azure-adatközpontba való szállításával. 
 

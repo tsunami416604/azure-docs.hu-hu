@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6b127738d4be79c30d1791d7313c0f8f7eacaf36
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: 60b3d1dcc7d60b25319b3fa5dd740541a457927f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985140"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640093"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AZCopy használatába
 
@@ -65,9 +65,9 @@ A táblázat használata útmutatóként:
 |**BLOB Storage (hierarchikus névtér)** | Azure AD & SAS |
 |**File Storage** | Csak SAS |
 
-### <a name="option-1-use-azure-ad"></a>1\. lehetőség: Az Azure AD használata
+### <a name="option-1-use-azure-active-directory"></a>1\. lehetőség: Azure Active Directory használata
 
-Az Azure AD használatával a hitelesítő adatokat megadhatja, ahelyett, hogy SAS-tokent kellene hozzáfűzni az egyes parancsokhoz.  
+Azure Active Directory használatával hitelesítő adatokat adhat meg, ahelyett, hogy SAS-tokent kellene hozzáfűzni az egyes parancsokhoz.  
 
 > [!NOTE]
 > Ha a jelenlegi kiadásban Blobok másolását tervezi a Storage-fiókok között, akkor minden forrás URL-címhez hozzá kell fűzni egy SAS-jogkivonatot. Az SAS-tokent csak a cél URL-címről hagyhatja ki. Példák: Blobok [másolása a Storage-fiókok között](storage-use-azcopy-blobs.md).
@@ -149,7 +149,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 ```
 
 > [!NOTE]
-> Érdemes lehet egy parancssort használni, ahogy az ebben a példában is látható. Így az ügyfél titkos kulcsa nem jelenik meg a konzolon a parancs előzményeiben. 
+> Érdemes lehet egy parancssort használni, ahogy az ebben a példában is látható. Így a jelszó nem jelenik meg a konzolon a parancs előzményeiben.  
 
 Ezután írja be a következő parancsot, majd nyomja le az ENTER billentyűt.
 
@@ -170,7 +170,7 @@ Ezután állítsa a `AZCOPY_SPA_CERT_PASSWORD` környezeti változót a tanúsí
 > [!NOTE]
 > Ügyeljen rá, hogy ezt az értéket adja meg a parancssorból, és ne az operációs rendszer környezeti változó beállításait. Így az érték csak az aktuális munkamenet számára érhető el.
 
-Ez a példa bemutatja, hogyan teheti ezt meg a PowerShellben.
+Ebből a példából megtudhatja, hogyan teheti ezt a feladatot a PowerShellben.
 
 ```azcopy
 $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c749f090cbb0aeb036a53a01e6cd516617c3186d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 77d5e4ace14fb0071b6e01a01edbad0128382303
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953881"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639743"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>App Service-csomag kezelése az Azure-ban
 
@@ -97,7 +97,7 @@ A klónozási **alkalmazást** a menü **fejlesztői eszközök** szakaszában t
 
 ## <a name="scale-an-app-service-plan"></a>App Service terv méretezése
 
-Az App Service csomag díjszabási szintjeinek vertikális felskálázásához tekintse meg az alkalmazás vertikális felskálázása [Az Azure-ban](web-sites-scale.md)című témakört.
+Az App Service csomag díjszabási szintjeinek vertikális felskálázásához tekintse meg az alkalmazás vertikális felskálázása [Az Azure-ban](manage-scale-up.md)című témakört.
 
 Az alkalmazások példányszámának felskálázásához tekintse meg a [Példányszám manuális vagy automatikus skálázása](../monitoring-and-diagnostics/insights-how-to-scale.md)című témakört.
 
@@ -113,7 +113,7 @@ Ha el szeretné kerülni a nem várt díjakat, akkor a App Service csomag utols�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Alkalmazások vertikális felskálázása az Azure-ban](web-sites-scale.md)
+> [Alkalmazások vertikális felskálázása az Azure-ban](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

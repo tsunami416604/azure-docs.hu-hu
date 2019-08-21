@@ -1,6 +1,6 @@
 ---
-title: A biztonságot az Azure Security Center javaslatokat |} A Microsoft Docs
-description: " Ismerje meg a biztonsági szabályzatok és javaslatok az Azure Security Center használata a biztonsági támadások történésekről. "
+title: Azure Security Center javaslatok használata a biztonság növelése érdekében | Microsoft Docs
+description: " Megtudhatja, hogyan használhatók a biztonsági szabályzatok és javaslatok a Azure Security Centerban a biztonsági támadások enyhítése érdekében. "
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -14,67 +14,67 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/26/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 60bb1c3b81ef990993a2ce659a2b189c9d8a0eba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79a5f9a1269bdfc63d9d0b6fffd8458d011b777b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967971"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640876"
 ---
-# <a name="use-azure-security-center-recommendations-to-enhance-security"></a>A biztonságot az Azure Security Center-javaslatok
-Jelentős biztonsági esemény esélyét csökkentheti biztonsági szabályzat konfigurálásával, majd az Azure Security Center által nyújtott ajánlások megvalósítása. Ez a cikk bemutatja, hogyan biztonsági szabályzatok és javaslatok használata a Security Centerben a biztonsági támadások történésekről. 
+# <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center javaslatok használata a biztonság növelése érdekében
+A biztonsági szabályzat konfigurálásával, majd a Azure Security Center által biztosított javaslatok végrehajtásával csökkentheti a jelentős biztonsági események esélyét. Ebből a cikkből megtudhatja, hogyan használhatja a biztonsági házirendeket és javaslatokat a Security Center a biztonsági támadások enyhítése érdekében. 
 
-A Security Center automatikusan futtatja a folyamatos vizsgálatok elemzése az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges biztonsági vezérlők konfigurálásának folyamatán hoz létre. A Security Center javaslatait frissíti a 24 órán belül, a következő kivételekkel:
+Security Center automatikusan folyamatos vizsgálatokat futtat az Azure-erőforrások biztonsági állapotának elemzéséhez. Ha a Security Center felismeri a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges biztonsági vezérlők konfigurálásának folyamatán. Security Center 24 órán belül frissíti javaslatait, a következő kivételekkel:
 
-- Operációs rendszer biztonsági konfigurációs javaslatokat frissülnek 48 órán belül
-- Az Endpoint Protection problémák javaslatai frissülnek 8 órán belül
+- Az operációs rendszer biztonsági konfigurációs javaslatai 48 órán belül frissülnek
+- A Endpoint Protection kapcsolatos javaslatok 8 órán belül frissülnek
 
 ## <a name="scenario"></a>Forgatókönyv
-A forgatókönyv bemutatja, hogyan használhatja a Security Center csökkentik a biztonsági incidensek és a műveletek figyelése a Security Center javaslatait. A forgatókönyv használja a fiktív vállalat, a Contoso és a szerepkörök a Security Center megjelenő [tervezéséhez és útmutató](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). Ebben a forgatókönyvben arra összpontosítunk, az alábbi szerepkörök:
+Ebből a forgatókönyvből megtudhatja, Security Center Hogyan csökkentheti a biztonsági incidensek esélyét a Security Center javaslatok figyelésével és a műveletek elvégzésével. A forgatókönyv a Security Center [tervezési és üzemeltetési útmutatóban](security-center-planning-and-operations-guide.md#security-roles-and-access-controls)ismertetett fiktív vállalatot, contosot és szerepköröket használja. Ebben a forgatókönyvben a következő personák szerepköreire koncentrálunk:
 
-![A forgatókönyv-szerepkörök](./media/security-center-using-recommendations/scenario-roles.png)
+![Forgatókönyv szerepkörei](./media/security-center-using-recommendations/scenario-roles.png)
 
-A Contoso nemrég áttelepített néhány, a helyszíni erőforrások az Azure-bA. A Contoso biztosítani szeretné, hogy erőforrások megfelelő védelméhez és a felhőbeli erőforrások sebezhetőség csökkentése.
+A contoso nemrég áttelepített néhány helyszíni erőforrást az Azure-ba. A contoso szeretné megóvni erőforrásaikat, és csökkenti a felhőben lévő erőforrásaik sebezhetőségét.
 
 ## <a name="use-azure-security-center"></a>Az Azure Security Center használata
-David, a Contoso a számítástechnikai biztonsági, úgy döntött, hogy az Azure Security Center biztonsági rések észlelése és a Contoso-előfizetések felvétele a Security Center már. 
+David, a contoso informatikai biztonsága már kiválasztotta a Security Center a contoso előfizetéseit, hogy Azure Security Center a biztonsági rések megelőzése és észlelése érdekében. 
 
-A Security Center automatikusan elemzi a Contoso Azure-erőforrások biztonsági állapotát, és alkalmazza a alapértelmezett biztonsági szabályzatokat. A Security Center azonosítja a potenciális biztonsági réseket, amikor létrehozza **javaslatok** a vezérlőket, állítsa be a biztonsági szabályzat alapján. 
+Security Center automatikusan elemzi a contoso Azure-erőforrásainak biztonsági állapotát, és alkalmazza az alapértelmezett biztonsági házirendeket. Ha Security Center felismeri a lehetséges biztonsági réseket, a biztonsági házirendben beállított vezérlők alapján **javaslatokat** hoz létre. 
 
-David fut az Azure Security standard szintű, a javaslatok és biztonsági funkciók rendelkezésre álló teljes csomag beolvasni az összes saját előfizetés. Jeff is támogatja az előkészítő minden a meglévő helyszíni kiszolgálók, amely még nincs áttelepítve a felhőbe, hogy ő kihasználhatják a Security Center hibrid között annak [Windows](quick-onboard-windows-computer.md) és [Linux](quick-onboard-linux-computer.md) a kiszolgálók.
+David az Azure Security Standard szintű csomagot futtatja az összes előfizetésében, hogy megkapja a rendelkezésre álló javaslatok és biztonsági funkciók teljes csomagját. Jeff az összes olyan meglévő helyszíni kiszolgálót is bevezeti, amely még nem lett áttelepítve a felhőbe, így kihasználhatja Security Center hibrid támogatását a [Windows](quick-onboard-windows-computer.md) -és [Linux](quick-onboard-linux-computer.md) -kiszolgálókon.
 
-Jeff a felhőbeli munkaterhelés tulajdonosával. Jeff felelős biztonsági ellenőrzések megfelelően a Contoso biztonsági házirendek alkalmazása. 
+Jeff egy Felhőbeli számítási feladatok tulajdonosa. Jeff feladata, hogy a contoso biztonsági házirendjeinek megfelelően alkalmazza a biztonsági ellenőrzéseket. 
 
 Jeff a következő feladatokat hajtja végre:
 
-- Monitorozása a Security Center által biztosított biztonsági javaslatok
-- Biztonsági javaslatok értékeli, és döntse el, ha azt kell alkalmazni, vagy hagyja figyelmen kívül
+- A Security Center által biztosított biztonsági javaslatok figyelése
+- Értékelje ki a biztonsági javaslatokat, és döntse el, hogy kell-e alkalmaznia vagy elvetni a javaslatokat.
 - Biztonsági javaslatok alkalmazása
 
-### <a name="remediate-threats-using-recommendations"></a>Javaslatok használata elhárításban
-Napi figyelési tevékenysége részeként a Jeff jelentkezik be az Azure-ba, és megnyílik a Security Center. 
+### <a name="remediate-threats-using-recommendations"></a>Fenyegetések szervizelése javaslatok használatával
+A napi megfigyelési tevékenységük részeként Jeff bejelentkezik az Azure-ba, és megnyitja Security Center. 
 
-1. Jeff a számítási feladatok előfizetések választja ki.
+1. Jeff kiválasztja a munkaterhelések előfizetéseit.
 
-2. Jeff ellenőrzi annak **pontszám biztonságos** beolvasni a teljes kép az előfizetések, mennyire vannak biztonságban vannak, és azt látja, hogy ő pontszám 548-e.
+2. Jeff ellenőrzi a **biztonságos pontszámot** , hogy átfogó képet kapjon arról, hogy az előfizetések hogyan biztonságosak, és hogy a pontszám 548.
 
-3. Jeff rendelkezik dönthet arról, hogy mely ajánlások kezeléséhez először. Így Jeff biztonságos pontszám kattint, és akkor indul, milyen mértékben javítja a alapuló kezelésére [pontszám hatás biztonságos](security-center-secure-score.md).
+3. Jeffnek el kell döntenie, hogy mely ajánlásokat kell először kezelni. Így Jeff a biztonságos pontszámra kattint, és megkezdi a javaslatok kezelését annak alapján, hogy mennyire javítja a [biztonságos pontszám hatását](security-center-secure-score.md).
 
-4. Jeff vonása a sok csatlakoztatott virtuális gépek és kiszolgálók, mert Jeff úgy dönt, hogy arra koncentrálhasson, **számítási és az alkalmazások**.
+4. Mivel Jeff számos csatlakoztatott virtuális géppel és kiszolgálóval rendelkezik, Jeff úgy dönt, hogy a **számítási és**az alkalmazásokra koncentrál.
 
-5. Amikor rákattint a Jeff **számítási és az alkalmazások**, ő javaslatok listáját látja, és a biztonságos megfelelően kezeli őket hatás pontozása.
+5. Amikor Jeff a **számítás és az alkalmazások**elemre kattint, megtekinti a javaslatok listáját, és a biztonságos pontszám hatásának megfelelően kezeli őket.
 
-6. Jeff számos olyan internetkapcsolattal rendelkező virtuális gépeket, és a portok érhetők el, mert tudja, hogy egy támadó a kiszolgálók felett. Jeff használatát választja, így (**just-in-time VM access**) [biztonsági-center-just-a-time.md].
+6. Jeff számos internetkapcsolattal rendelkező virtuális gépet tartalmaz, és mivel a portok ki vannak téve, aggódnak amiatt, hogy a támadók megszerezhetik a kiszolgálók feletti irányítást. Így Jeff a következőt használja: (**a virtuális**gépek igény szerinti elérése) [Security-Center-just-in-time.MD].
 
-Jeff továbbra is a magas prioritású és a közepes prioritású javaslatok haladjon át, és a megvalósítás döntéseket. Az egyes javaslatok Jeff megvizsgálja a részletes adatokat a megadott tudni, hogy mely erőforrásokat érintő eseményekről a Security Center, milyen hatással van a biztonságos pontszám, milyen minden javaslat azt jelenti, és minden egyes probléma szervizelés lépései.
+Jeff továbbra is a magas prioritású és közepes prioritású ajánlásokon halad át, és döntéseket hoz a megvalósítással kapcsolatban. Jeff minden ajánláshoz a Security Center által biztosított részletes információkat tekinti át, hogy megtudja, mely erőforrások érintettek, milyen hatással van a biztonsági pontszámra, mit jelent az egyes javaslatok, és hogyan lehet elhárítani az egyes problémák enyhítésének lépéseit.
 
 ## <a name="conclusion"></a>Összegzés
-Figyelési javaslatok a Security Center segítségével ki a biztonsági réseket, mielőtt a támadás akkor fordul elő. Hibajavítási javaslatok, amikor a biztonságos pontszám és a számítási feladatok biztonsági állapotáról javítása. A Security Center automatikusan felderíti az új erőforrások üzembe helyezése, valamint a biztonsági szabályzat alapján értékeli őket és az őket az új javaslatot is tartalmaz.
+A Security Center figyelési javaslatai segítenek a biztonsági rések megszüntetésében a támadás előtt. A javaslatok szervizelése során a biztonságos pontszám és a számítási feladatok biztonsági helyzete javul. Security Center automatikusan felfedi a telepített új erőforrásokat, felméri azokat a biztonsági szabályzattal, és új javaslatokat biztosít számukra a biztosításához.
 
 
 ## <a name="next-steps"></a>További lépések
-Ellenőrizze, hogy a monitorozási folyamat helyen, ahol rendszeresen ellenőrzi a javaslatok a Security Center így biztos lehet benne, az erőforrások biztonságának megőrzéséhez idővel rendelkezik.
+Győződjön meg arról, hogy van egy figyelési folyamat, amelyben rendszeresen ellenőrzi a Security Center található javaslatokat, így biztosíthatja, hogy az erőforrások az idő múlásával biztonságosak legyenek.
 
-Ebben a forgatókönyvben a biztonsági szabályzatok és javaslatok használata a Security Centerben a biztonsági támadások történésekről mutatott. Tekintse meg a [incidensmegoldási forgatókönyvhöz](security-center-incident-response.md) megtudhatja, hogyan lehet egy incidensmegoldási terv támadás megtörténése előtt.
+Ez a forgatókönyv azt mutatja be, hogyan használhatók a biztonsági szabályzatok és javaslatok a Security Centerban a biztonsági támadások enyhítése érdekében. Tekintse [](security-center-incident-response.md) meg az incidensek válaszának forgatókönyvét, amelyből megtudhatja, hogy a támadás megkezdése előtt milyen incidensekre van szüksége.
 
-Ismerje meg, hogyan háríthatja el a fenyegetéseket a [incidensmegoldási](security-center-incident-response.md).
+Ismerje meg, hogyan reagálhat a fenyegetésekre az [incidensekre adott válasz](security-center-incident-response.md)alapján.

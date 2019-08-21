@@ -1,11 +1,9 @@
 ---
-title: Twilio használata Hanghívási és SMS (Python) |} A Microsoft Docs
-description: Útmutató a telefonhívás, és a Twilio API-szolgáltatással egy SMS-üzenet küldése az Azure-ban. Python nyelven írt kódmintákat.
+title: A Twilio használata a Voice és az SMS (Python) használatához | Microsoft Docs
+description: Megtudhatja, hogyan készíthet telefonhívást, és hogyan küldhet SMS-üzenetet a Twilio API szolgáltatással az Azure-ban. Pythonban írt példák a kódokra.
 services: ''
 documentationcenter: python
-author: devinrader
-manager: twilio
-editor: ''
+author: georgewallace
 ms.assetid: 561bc75b-4ac4-40ba-bcba-48e901f27cc3
 ms.service: multiple
 ms.workload: na
@@ -13,110 +11,110 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
-ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 3b9022dd2b5998f95179ee3dfabe6706b55036bc
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61457668"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636012"
 ---
-# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Hogyan lehet a Twilio használata Hanghívási és SMS-funkciókhoz a Pythonban
-Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a Twilio API-t szolgáltatással az Azure-ban. Az ismertetett forgatókönyvek között megtalálható, így a telefonhívás, és a egy rövid üzenetet szolgáltatást (SMS) üzenetet küld. A Twilio és az alkalmazások használata hanghívási és SMS további információkért lásd: a [lépések](#NextSteps) szakaszban.
+# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>A Twilio használata a hang-és SMS-funkciókhoz a Pythonban
+Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure Twilio API szolgáltatásával. A tárgyalt forgatókönyvek közé tartozik a telefonhívás kezdeményezése és egy rövid üzenetküldési szolgáltatás (SMS) üzenet küldése. A Twilio és a hang-és SMS-alkalmazások alkalmazásokban való használatáról további információt a [következő lépések](#NextSteps) című szakaszban talál.
 
-## <a id="WhatIs"></a>Mit jelent a Twilio?
-A Twilio jövőjének vállalati kommunikáció, így a fejlesztők hang, a VoIP és a üzenetkezelési alkalmazásokba történő beágyazása van. A Twilio API kommunikációs platformon keresztül adatokhoz hozzáférést biztosító felhőalapú, a globális környezetben szükséges összes infrastruktúra virtualizálása azokat. Alkalmazásokat hozhat létre egyszerű és méretezhető. Használja ki a rugalmasan használatalapú – mint-akkor lépjen a díjszabás, és kihasználhatják a felhő megbízhatóságát.
+## <a id="WhatIs"></a>Mi az a Twilio?
+A Twilio az üzleti kommunikáció jövőjét fejleszti, és lehetővé teszi, hogy a fejlesztők hang-, VoIP-és üzenetkezelési adatokat ágyaznak be alkalmazásokba. Minden szükséges infrastruktúra virtualizálása egy felhőalapú, globális környezetben, amely a Twilio Communications API platformon keresztül teszi elérhetővé. Az alkalmazások egyszerűen létrehozhatók és méretezhetők. Az utólagos elszámolású díjszabás és a Felhőbeli megbízhatóság előnyeit élvezheti.
 
-**A twilio használata Hanghívási** lehetővé teszi, hogy telefonhívásokat fogadja, és az alkalmazások.
-**A Twilio SMS** lehetővé teszi, hogy az alkalmazás szöveges üzeneteket küldjön és fogadjon.
-**A Twilio-ügyfél** lehetővé teszi bármely telefonon, táblagépen vagy böngészőben VoIP hívásait, és támogatja a WebRTC.
+A **Twilio Voice** lehetővé teszi az alkalmazások számára telefonhívások készítését és fogadását.
+A **TWILIO SMS** lehetővé teszi, hogy az alkalmazás szöveges üzeneteket küldjön és fogadjon.
+A **Twilio-ügyfél** lehetővé teszi, hogy bármilyen telefonról, táblaszámítógépről vagy böngészőből kezdeményezheti a VoIP-hívásokat, és támogatja a WebRTC.
 
-## <a id="Pricing"></a>A Twilio-díjszabás és ajánlatok küldésére
-Az Azure-ügyfelek kap egy [a különleges ajánlat] [ special_offer] 10 USD kredit Twilio, a Twilio-fiók frissítésekor. A Twilio-Kredit bármely Twilio-használati (10 USD kredit egyenértékű, akár 1000 SMS-üzenetek küldése vagy fogadása legfeljebb 1000 bejövő hangalapú perc, a telefon száma és az üzenet vagy hívás cél helyétől függően) is alkalmazható. Ez beváltása [Twilio kredit] [ special_offer] és az első lépések.
+## <a id="Pricing"></a>A Twilio díjszabása és különleges ajánlataink
+Az Azure-ügyfelek a Twilio-fiók frissítésekor a Twilio-kreditek $10-es [különleges ajánlatát][special_offer] kapják meg. Ez a Twilio-kredit bármely Twilio-felhasználásra alkalmazható ($10 kredit, amely akár több mint 1 000 SMS-üzenetet küld, akár 1000 bejövő hang-percet is igénybe vehet, a telefonszám és az üzenet vagy a hívás célhelyének helyétől függően). Váltsa be ezt a [Twilio][special_offer] -kreditet, és kezdje el.
 
-A Twilio szolgáltatás használatalapú fizetést biztosító. Nincsenek díjak sincsenek beállítás, és a fiókot bármikor bezárhatja. További információt talál [Twilio díjszabás][twilio_pricing].
+A Twilio az utólagos elszámolású szolgáltatás. Nincsenek beállított díjak, és bármikor lezárhatja a fiókját. További részleteket a [Twilio díjszabását][twilio_pricing]ismertető webhelyen talál.
 
 ## <a id="Concepts"></a>Fogalmak
-A Twilio API egy RESTful API-t hanghívási és SMS-funkciókat biztosító alkalmazások. Ügyfélkódtárai több nyelven érhetők el egy listát lásd: [Twilio API függvénytárai][twilio_libraries].
+A Twilio API egy REST-alapú API, amely hang-és SMS-funkciókat biztosít az alkalmazásokhoz. Az ügyféloldali kódtárak több nyelven is elérhetők; a listákat lásd: [TWILIO API][twilio_libraries]-kódtárak.
 
-Fontos szempontjai a Twilio API-t a, Twilio-műveletek és a Twilio Markup Language (TwiML).
+A Twilio API legfontosabb szempontjai a Twilio-műveletek és a Twilio Markup Language (TwiML).
 
-### <a id="Verbs"></a>A Twilio-műveletek
-Az API-t felhasznál Twilio műveleteket; Ha például a **&lt;Say&gt;** művelet arra utasítja a Twilio hallhatóan kézbesíteni az üzenetet hívás.
+### <a id="Verbs"></a>Twilio-műveletek
+Az API a Twilio-műveletek használatát teszi lehetővé; például a **&lt;Say&gt;** művelet arra utasítja a Twilio, hogy hallhatóan kézbesítse az üzenetet egy híváson.
 
-Az alábbiakban látható egy Twilio-műveletek listájához. Ismerje meg az egyéb műveletek és funkciókat [Twilio Markup Language dokumentáció][twiml].
+A következő lista az Twilio-műveletek listáját tartalmazza. Ismerje meg a többi műveletet és képességeket a [Twilio Markup Language dokumentációján][twiml]keresztül.
 
-* **&lt;Tárcsázás&gt;** : A hívó csatlakozik egy másik telefonon.
-* **&lt;Gyűjtse össze&gt;** : Gyűjti a telefon billentyűzeten beírt számjegyeket.
-* **&lt;Vonalbontás&gt;** : A hívás véget ér.
-* **&lt;Felfüggesztés&gt;** : A megadott számú másodperc vár beavatkozás nélkül.
-* **&lt;Play&gt;** : Hang lejátszása.
-* **&lt;Queue&gt;** : Adja hozzá a hívók egy üzenetsorba.
-* **&lt;Rekord&gt;** : A hang, a hívó rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
-* **&lt;Redirect&gt;** : Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
-* **&lt;Elutasítás&gt;** : A Twilio-számra bejövő hívás elutasítja, számlázási nélkül.
-* **&lt;Tegyük fel, hogy&gt;** : Szöveg-beszéd átalakítás, amely egy hívást történő alakítja.
-* **&lt;SMS&gt;** : SMS üzenetet küld.
+* Tárcsázás:  **&lt;&gt;** Csatlakoztatja a hívót egy másik telefonhoz.
+* Gyűjtés:  **&lt;&gt;** A telefon billentyűzetén megadott numerikus számjegyeket gyűjti.
+* Vonalbontás:  **&lt;&gt;** Egy hívást ér véget.
+* Szüneteltetés:  **&lt;&gt;** Csendes várakozás a megadott számú másodpercre.
+* Lejátszás:  **&lt;&gt;** Hangfájl lejátszása.
+* Üzenetsor:  **&lt;&gt;** Adja hozzá a-t a hívók várólistához.
+* Rekord:  **&lt;&gt;** A hívó hangját rögzíti, és egy, a rögzítést tartalmazó fájl URL-címét adja vissza.
+* Átirányítás:  **&lt;&gt;** Egy másik URL-címen keresztül továbbítja a hívást vagy SMS-t a TwiML.
+* Elutasítás:  **&lt;&gt;** Elutasítja a Twilio-szám bejövő hívását a számlázás nélkül.
+* Például:  **&lt;&gt;** Átalakítja a szöveget a híváson végrehajtott beszédre.
+* SMS:  **&lt;&gt;** SMS-üzenet küldése.
 
 ### <a id="TwiML"></a>TwiML
-TwiML XML-alapú utasítások alapján a Twilio-műveleteket tartalmazó tájékoztatja a hívás feldolgozása Twilio vagy SMS.
+A TwiML XML-alapú utasításokat tartalmaz a Twilio műveletek alapján, amelyek tájékoztatják a Twilio, hogy hogyan dolgozzák fel a hívást vagy az SMS-t.
 
-Tegyük fel, a következő TwiML konvertálná szöveg **Hello World** át.
+Példaként a következő TwiML konvertálja a szöveget **"Helló világ!" alkalmazás** beszédre.
 
     <?xml version="1.0" encoding="UTF-8" ?>
     <Response>
       <Say>Hello World</Say>
     </Response>
 
-Amikor az alkalmazás meghívja a Twilio API-t, az API-paraméterek egyik az URL-cím, amely a TwiML választ ad vissza. Fejlesztési célokra a Twilio által megadott URL-címek segítségével az alkalmazások által használt TwiML visszajelzést. Akkor is elhelyezheti, a saját URL-címek a TwiML válaszok előállításához, és a egy másik lehetőség a `TwiMLResponse` objektum.
+Amikor az alkalmazás meghívja a Twilio API-t, az egyik API-paraméter az a URL-cím, amely a TwiML választ adja vissza. A Twilio által biztosított URL-címek segítségével megadhatja az alkalmazások által használt TwiML-válaszokat. Saját URL-címeket is tárolhat a TwiML-válaszok létrehozásához, és egy másik lehetőség az `TwiMLResponse` objektum használata.
 
-A Twilio műveletek, az attribútumokat és TwiML kapcsolatos további információkért lásd: [TwiML][twiml]. A Twilio API-val kapcsolatos további információkért lásd: [Twilio API-t][twilio_api].
+A Twilio-műveletekkel, azok attribútumaival és TwiML kapcsolatos további információkért lásd: [TwiML][twiml]. A Twilio API-val kapcsolatos további információkért lásd: [TWILIO API][twilio_api].
 
 ## <a id="CreateAccount"></a>Twilio-fiók létrehozása
-Amikor készen áll a Twilio-fiók létrehozása, regisztráció: [próbálja meg Twilio][try_twilio]. Kezdje egy ingyenes fiókot, és később frissítse a fiókját.
+Ha készen áll egy Twilio-fiók beszerzésére, regisztráljon a [Twilio kipróbálása][try_twilio]gombra. Elindíthat egy ingyenes fiókot, és később is frissítheti a fiókját.
 
-Amikor regisztrál egy Twilio-fiók, kap egy fiók biztonsági azonosítója és a egy hitelesítési tokent. Mindkét lesz szükség a Twilio API-hívásokat. Fiókja a jogosulatlan hozzáférés megakadályozása érdekében, hogy a hitelesítési jogkivonat biztonságának megőrzése. A fiók SID azonosítója és a hitelesítési jogkivonat megtekinthető a [Twilio-konzol][twilio_console], a címkével ellátott mezőket **fiók SID** és **hitelesítési JOGKIVONATÁT**, illetve.
+Amikor regisztrál egy Twilio-fiókra, megkapja a fiók biztonsági azonosítóját és egy hitelesítési jogkivonatot. Mindkettőre szükség lesz a Twilio API-hívások létrehozásához. A fiókjához való jogosulatlan hozzáférés megakadályozása érdekében őrizze meg biztonságos hitelesítési tokenjét. A fiók biztonsági azonosítója és hitelesítési jogkivonata a [Twilio][twilio_console]-konzolon, a **fiók SID** és **hitelesítési jogkivonat**mezőjében látható.
 
 ## <a id="create_app"></a>Python-alkalmazás létrehozása
-Egy Python-alkalmazás, amely a Twilio szolgáltatás használja, és az Azure-ban fut-e semmiben nem különbözik bármely egyéb Python-alkalmazás, amely a Twilio szolgáltatás használ. Bár a Twilio szolgáltatás REST-alapú, és nem hívható meg a Python többféle módon, ez a cikk a Twilio-szolgáltatások használata összpontosítanak [Twilio kódtára a Pythonhoz a Githubról][twilio_python]. A Pythonhoz készült a Twilio-könyvtár használatával kapcsolatos további információkért lásd: [ https://www.twilio.com/docs/libraries/python ] [ twilio_lib_docs].
+A Twilio szolgáltatást használó és az Azure-ban futó Python-alkalmazások nem különböznek a Twilio szolgáltatást használó más Python-alkalmazástól. Habár a Twilio-szolgáltatások REST-alapúak, és a Python számos módon hívhatók meg, ez a cikk a Twilio-szolgáltatások a GitHubról a [Pythonhoz készült Twilio-kódtár][twilio_python]használatával történő használatát ismerteti. További információ a Pythonhoz készült Twilio-függvénytár használatáról: [https://www.twilio.com/docs/libraries/python][twilio_lib_docs].
 
-Első, [új Azure Linux virtuális gép beállítás] [azure_vm_setup] való működésre gazdagépként, az új Python-webalkalmazás számára. Ha a virtuális gép fut, tegye elérhetővé alkalmazását egy nyilvános portot, az alább ismertetett kell.
+Első lépésként [új Azure Linux VM-t] [azure_vm_setup] hozzon létre egy gazdagépként az új Python-webalkalmazáshoz. A virtuális gép futása után közzé kell tennie az alkalmazást egy nyilvános porton az alább leírtak szerint.
 
-### <a name="add-an-incoming-rule"></a>Add An Incoming Rule
-  1. Nyissa meg az [a hálózati biztonsági csoport] [azure_nsg] oldalát.
-  2. Válassza ki a hálózati biztonsági csoportot, amely megfelel a virtuális géppel.
-  3. Adja hozzá és **kimenő szabály** a **80-as port**. Ügyeljen arra, hogy engedélyezi a bejövő bármilyen címről.
+### <a name="add-an-incoming-rule"></a>Bejövő szabály hozzáadása
+  1. Nyissa meg a [hálózati biztonsági csoport] [azure_nsg] lapot.
+  2. Válassza ki azt a hálózati biztonsági csoportot, amely megfelel a virtuális gépnek.
+  3. A **80**-es porthoz tartozó hozzáadási és **Kimenő szabály** . Ügyeljen arra, hogy bármely címről engedélyezze a bejövő adatforrást.
 
-### <a name="set-the-dns-name-label"></a>Állítsa be a DNS-névcímke
-  1. Nyissa meg az [a nyilvános IP-címek] [azure_ips] lapját.
-  2. Válassza ki a nyilvános IP-cím, amely megfelel a virtuális géppel.
-  3. Állítsa be a **DNS-névcímke** a a **konfigurációs** szakaszban. Esetén ebben a példában ez lesz a következőhöz hasonló *your tartománycímkéjét*. centralus.cloudapp.azure.com
+### <a name="set-the-dns-name-label"></a>A DNS-név címke beállítása
+  1. Lépjen a [Nyilvános IP-címek] [azure_ips] lapra.
+  2. Válassza ki azt a nyilvános IP-címet, amely megfelel a virtuális gépnek.
+  3. Állítsa be a **DNS-név címkéjét** a **konfiguráció** szakaszban. Ebben a példában a következőhöz hasonlóan fog kinézni: *a-domain-Label*. CentralUS.cloudapp.Azure.com
 
-Miután a virtuális gép ssh-n keresztül kapcsolódni tud a webes keretrendszer, a választott telepítheti (a legtöbb jól ismert Python folyamatban lévő két [Flask](http://flask.pocoo.org/) és [Django](https://www.djangoproject.com)). Bármelyiket csak futtatásával telepítheti a `pip install` parancsot.
+Ha SSH-kapcsolaton keresztül tud csatlakozni a virtuális géphez, telepítheti az Ön által választott webes keretrendszert (a két legismertebb Pythonban a [lombikot](http://flask.pocoo.org/) és a [Django](https://www.djangoproject.com)is). Ezek közül bármelyiket telepítheti a `pip install` parancs futtatásával.
 
-Ne feledje, hogy a virtuális gép csak a 80-as port forgalmát engedélyező konfiguráltuk. Ezért ügyeljen arra, hogy ezt a portot használja az alkalmazás konfigurálása.
+Ne feledje, hogy a virtuális gépet úgy konfiguráltuk, hogy csak a 80-es porton engedélyezze a forgalmat. Ügyeljen arra, hogy az alkalmazást a port használatára konfigurálja.
 
-## <a id="configure_app"></a>Az alkalmazás használhatja a Twilio szalagtárak konfigurálása
-Az alkalmazás használhatja a Twilio-könyvtár a Pythonhoz készült kétféleképpen konfigurálhatja:
+## <a id="configure_app"></a>Az alkalmazás konfigurálása Twilio-kódtárak használatára
+Az alkalmazás két módon konfigurálható a Pythonhoz készült Twilio-függvénytár használatára:
 
-* Telepítse a Twilio-tár Python Pip csomagként. Az alábbi parancsokkal telepíthető:
+* Telepítse a Python Twilio-kódtárat pip-csomagként. A következő parancsokkal telepíthető:
    
         $ pip install twilio
 
     -VAGY-
 
-* A Twilio-kódtár letöltése a Githubról a Pythonhoz készült ([https://github.com/twilio/twilio-python][twilio_python]), és ehhez hasonló telepítse:
+* Töltse le a Pythonhoz készült Twilio-kódtárat a githubról ([https://github.com/twilio/twilio-python][twilio_python]), és telepítse a következőhöz hasonló módon:
 
         $ python setup.py install
 
-A Twilio-könyvtár a Python telepítése után használhatja majd `import` , a Python-fájlokban:
+Miután telepítette a Pythonhoz készült Twilio-kódtárat, a `import` Python-fájlokban is elvégezheti a következőket:
 
         import twilio
 
-További információkért lásd: [twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.rst).
+További információ: [twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.rst).
 
-## <a id="howto_make_call"></a>kézikönyv: Végezhet
-A következő bemutatja, hogyan végezhet. Ez a kód is egy Twilio által biztosított helyet használ a Twilio Markup Language (TwiML) választ adja vissza. Helyettesítse be a saját értékeit a **from_number** és **to_number** telefonszámai, és győződjön meg arról, hogy ellenőrizte a **from_number** telefonszám a Twilio-fiók Mielőtt futtatná a kódot.
+## <a id="howto_make_call"></a>kézikönyv: Kimenő hívás létrehozása
+A következő ábrán látható, hogyan lehet kimenő hívást kezdeményezni. Ez a kód egy Twilio által biztosított helyet is használ a Twilio Markup Language (TwiML) válaszának visszaadásához. Helyettesítse be az értékeket a **from_number** és a **to_number** , és ellenőrizze, hogy a kód futtatása előtt ellenőrizte-e a Twilio-fiók **from_number** -telefonszámát.
 
     from urllib.parse import urlencode
 
@@ -149,10 +147,10 @@ A következő bemutatja, hogyan végezhet. Ez a kód is egy Twilio által biztos
                                url=url + urlencode({'Message': message}))
     print(call.sid)
 
-Ahogy már említettük, ez a kód egy Twilio által biztosított hely használatával TwiML a választ adja. Ehelyett használhatja a saját hely adja meg a TwiML válasz; További információkért lásd: [hogyan TwiML válaszokat biztosít a saját webhelyről](#howto_provide_twiml_responses).
+Ahogy említettük, ez a kód egy Twilio által biztosított helyet használ a TwiML válasz visszaadásához. Ehelyett használhatja a saját webhelyét, hogy megadja a TwiML választ; További információkért lásd: [TwiML-válaszok megadása a saját](#howto_provide_twiml_responses)webhelyéről.
 
-## <a id="howto_send_sms"></a>kézikönyv: Küldjön SMS-t
-A következő példa használatával SMS üzenet küldése a `TwilioRestClient` osztály. A **from_number** száma az SMS-üzenetek küldéséhez a próbafiókokon Twilio által biztosított. A **to_number** szám ellenőrizni kell a Twilio-fiók a kód futtatása előtt.
+## <a id="howto_send_sms"></a>kézikönyv: SMS-üzenet küldése
+A következő bemutatja, hogyan küldhet SMS-üzenetet a `TwilioRestClient` osztály használatával. A **from_number** az SMS-üzenetek küldéséhez a Twilio által biztosított próbaverziók számát adja meg. A kód futtatása előtt ellenőrizni kell a Twilio-fiók **to_number** számát.
 
     # Import the Twilio Python Client.
     from twilio.rest import TwilioRestClient
@@ -173,14 +171,14 @@ A következő példa használatával SMS üzenet küldése a `TwilioRestClient` 
                                      from_=from_number,
                                      body=message)
 
-## <a id="howto_provide_twiml_responses"></a>kézikönyv: Adja meg a saját webhelyén TwiML válaszok
-Amikor az alkalmazás a Twilio API-hívást kezdeményez, Twilio, küldjön TwiML választ vár egy URL-címet a kérelmet küld. A fenti példában a Twilio-megadott URL-címet használ [ https://twimlets.com/message ] [ twimlet_message_url]. (Amíg TwiML használatra szolgál a Twilio, megtekintheti azt a böngészőben. Kattintson például [ https://twimlets.com/message ] [ twimlet_message_url] megtekintéséhez egy üres `<Response>` elem; másik példaként kattintson [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ] [ twimlet_message_url_hello_world]megtekintéséhez egy `<Response>` elem, amely tartalmazza a `<Say>` elem.)
+## <a id="howto_provide_twiml_responses"></a>kézikönyv: TwiML-válaszok megadása a saját webhelyéről
+Amikor az alkalmazás kezdeményez egy hívást a Twilio API-hoz, a Twilio egy olyan URL-címre küldi a kérést, amely egy TwiML-válasz visszaadására vár. A fenti példa a Twilio által megadott URL- [https://twimlets.com/message][twimlet_message_url]címet használja. (Míg a TwiML a Twilio általi használatra készült, megtekintheti a böngészőben. [https://twimlets.com/message][twimlet_message_url] Ha például `<Say>` egy üres `<Response>` elemet szeretne megtekinteni, egy másik példaként kattintson [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] ide egy `<Response>` elemet tartalmazó elem megjelenítéséhez.)
 
-Így nem kell hagyatkoznia a Twilio-megadott URL-címet, a saját hely által visszaadott HTTP-válaszok is létrehozhat. A hely bármilyen nyelven, amely visszaadja az XML-válaszok; hozhat létre Ez a témakör azt feltételezi, hogy a TwiML létrehozása Python használni.
+Ahelyett, hogy a Twilio által megadott URL-címet kellene megadnia, létrehozhat egy saját helyet, amely visszaadja a HTTP-válaszokat. A helyet bármilyen nyelven létrehozhatja, amely az XML-válaszokat adja vissza; Ez a témakör azt feltételezi, hogy a Python használatával hozza létre a TwiML.
 
-Az alábbi példákban arról, hogy a TwiML választ kimenete **Hello World** hívásakor.
+Az alábbi példákban egy TwiML választ fog kiadni, amely a híváson **"Helló világ!" alkalmazás** .
 
-A flask segítségével:
+Lombiktal:
 
     from flask import Response
     @app.route("/")
@@ -188,14 +186,14 @@ A flask segítségével:
         xml = '<Response><Say>Hello world.</Say></Response>'
         return Response(xml, mimetype='text/xml')
 
-A django segítségével:
+A Django:
 
     from django.http import HttpResponse
     def hello(request):
         xml = '<Response><Say>Hello world.</Say></Response>'
         return HttpResponse(xml, content_type='text/xml')
 
-Ahogy a fenti példában látható, a TwiML válasz egyszerűen egy XML-dokumentumot. A Twilio-kódtára a Pythonhoz osztályokat, amelyek TwiML fog létrehozni, tartalmazza. Az alábbi példa hoz létre a megfelelő választ, ahogy fent látható, de használ a `twiml` modul Python a Twilio-könyvtárban:
+Ahogy a fenti példában is látható, a TwiML válasz egyszerűen egy XML-dokumentum. A Pythonhoz készült Twilio-könyvtár olyan osztályokat tartalmaz, amelyek a TwiML-t fogják előállítani. Az alábbi példa a fentiekben látható egyenértékű választ állítja elő, de a `twiml` Pythonhoz készült Twilio-kódtár modulját használja:
 
     from twilio import twiml
 
@@ -203,9 +201,9 @@ Ahogy a fenti példában látható, a TwiML válasz egyszerűen egy XML-dokument
     response.say("Hello world.")
     print(str(response))
 
-TwiML kapcsolatos további információkért lásd: [ https://www.twilio.com/docs/api/twiml ] [ twiml_reference].
+További információ a TwiML: [https://www.twilio.com/docs/api/twiml][twiml_reference].
 
-Miután a Python-alkalmazás állított TwiML válaszokat nyújt, használja az alkalmazás URL-CÍMÉT az átadott URL-CÍMÉT a `client.calls.create` metódust. Például, ha rendelkezik egy nevű webalkalmazást **MyTwiML** üzembe helyezett egy Azure-ban üzemeltetett szolgáltatást, használhatja az URL-címét, webhookot, az alábbi példában látható módon:
+Ha már beállította a Python-alkalmazást a TwiML-válaszok biztosításához, használja az alkalmazás URL-címét a `client.calls.create` metódusnak átadott URL-címként. Ha például egy **MyTwiML** nevű webalkalmazást telepít egy Azure-beli üzemeltetett szolgáltatásra, az URL-címet webhookként használhatja az alábbi példában látható módon:
 
     from twilio.rest import TwilioRestClient
 
@@ -225,16 +223,16 @@ Miután a Python-alkalmazás állított TwiML válaszokat nyújt, használja az 
     print(call.sid)
 
 ## <a id="AdditionalServices"></a>kézikönyv: További Twilio-szolgáltatások használata
-Itt látható példák, mellett Twilio kínál a webes API-kat használhatja az Azure-alkalmazásból további Twilio funkciói kihasználhatók. További részletek: a [Twilio API-dokumentáció][twilio_api].
+Az itt bemutatott példákon kívül a Twilio webalapú API-kat kínál, amelyek segítségével további Twilio funkciókat alkalmazhat az Azure-alkalmazásból. További részletekért tekintse meg a [TWILIO API dokumentációját][twilio_api].
 
 ## <a id="NextSteps"></a>Következő lépések
-Most, hogy megismerte a Twilio szolgáltatás alapjait, kövesse az alábbi hivatkozások további:
+Most, hogy megismerte a Twilio szolgáltatás alapjait, kövesse az alábbi hivatkozásokat, ahol további információt talál:
 
-* [A Twilio szolgáltatásra vonatkozó biztonsági irányelvek][twilio_security_guidelines]
-* [A Twilio HowTo útmutatók és példakód][twilio_howtos]
-* [A Twilio-Gyorsútmutatók][twilio_quickstarts]
-* [Twilio a Githubon][twilio_on_github]
-* [Beszéljen a Twilio-támogatás][twilio_support]
+* [Twilio biztonsági irányelvek][twilio_security_guidelines]
+* [Twilio útmutatók és mintakód][twilio_howtos]
+* [Twilio gyors útmutatók][twilio_quickstarts]
+* [Twilio a GitHubon][twilio_on_github]
+* [Beszéljen a Twilio-támogatásról][twilio_support]
 
 [special_offer]: https://ahoy.twilio.com/azure
 [twilio_python]: https://github.com/twilio/twilio-python

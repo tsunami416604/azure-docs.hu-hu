@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: b84e317745b7bd20f4862bd04584e42254a660d1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: aa35cb1ae0ad035bdef6ff8e19cf115188ba7f3a
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566201"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640858"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Rugalmas készletek erőforrás-korlátai a virtuális mag-alapú vásárlási modell korlátaival
 
@@ -37,7 +37,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Általános célú szolgáltatási szintet: Tárolási méretek és számítási méretek
 
 > [!IMPORTANT]
-> Az új Gen4-adatbázisok már nem támogatottak a AustraliaEast régióban.
+> Az új Gen4-adatbázisok már nem támogatottak a Kelet-Ausztrália vagy Brazília déli régiójában.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Általános célú szolgáltatási szintet: 4. generációs számítási platform (1. rész)
 
@@ -153,7 +153,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Üzletileg kritikus szolgáltatási szintet: Tárolási méretek és számítási méretek
 
 > [!IMPORTANT]
-> Az új Gen4-adatbázisok már nem támogatottak a AustraliaEast régióban.
+> Az új Gen4-adatbázisok már nem támogatottak a Kelet-Ausztrália vagy Brazília déli régiójában.
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Üzletileg kritikus szolgáltatási szintet: 4. generációs számítási platform (1. rész)
 

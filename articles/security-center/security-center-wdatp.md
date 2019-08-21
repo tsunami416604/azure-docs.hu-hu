@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: v-mohabe
-ms.openlocfilehash: 87f5a14bcd6003ad81b663ed97e5349dcbff2a30
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 597670803514fa59faaafdad73786cdb745a0976
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296517"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640901"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender komplex veszélyforrások elleni védelem Azure Security Center
 
@@ -51,7 +51,7 @@ A riasztást a Windows Defender ATP-re való Rámutatás révén tovább vizsgá
 
 ## <a name="platform-support"></a>Platformtámogatás
 
-A Security Center a Windows Defender ATP támogatja az észlelést a Windows Server 2012 R2 és a Windows Server 2016 operációs rendszerekben, amelyek a standard szintű szolgáltatás előfizetéséhez tartoztak.
+A Windows Defender ATP a Security Center támogatja a Windows Server 2016, 2012 R2 és 2008 R2 SP1 operációs rendszerek észlelését a standard szintű szolgáltatás előfizetésében.
 
 > [!NOTE]
 > Ha Azure Security Centert használ a kiszolgálók figyelésére, a rendszer automatikusan létrehoz egy Windows Defender ATP-bérlőt, és a Windows Defender ATP-adatvédelmet alapértelmezés szerint Európában tárolja. Ha át kell helyeznie az adatait egy másik helyre, kapcsolatba kell lépnie Microsoft ügyfélszolgálata a bérlő alaphelyzetbe állításához.

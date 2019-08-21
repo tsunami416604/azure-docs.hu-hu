@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 21a42b2986b52282fbab914fa702d8c4a323ed35
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1f5a144728614ee13bf4f08bb594f0546d446880
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611950"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640786"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>A Azure Security Center által támogatott platformok és szolgáltatások
 
@@ -111,7 +111,7 @@ További információ az egyes védelemekhez kapcsolódó javaslatok létrehozá
 |------|------|-----|-----|
 | Windows Defender (Microsoft-kártevőirtó)| Windows Server 2016| Nincs, az operációs rendszerbe van beépítve| Igen |
 | System Center Endpoint Protection (Microsoft-kártevőirtó) | Windows Server 2012 R2, 2012, 2008 R2 (lásd az alábbi megjegyzést) | Bővítmény útján | Igen |
-| Trend Micro – Összes verzió | Windows Server termékcsalád  | Nem | Igen |
+| Trend Micro – minden verzió * | Windows Server termékcsalád  | Nem | Igen |
 | Symantec v12.1.1100+| Windows Server termékcsalád  | Nem | Igen |
 | McAfee v10+ | Windows Server termékcsalád  | Nem | Igen |
 | McAfee v10+ | Linux Server termékcsalád  | Nem | igen **\*** |
@@ -121,6 +121,7 @@ További információ az egyes védelemekhez kapcsolódó javaslatok létrehozá
 
 > [!NOTE]
 > - A System Center Endpoint Protection (SCEP) Windows Server 2008 R2 rendszerű virtuális gépen való észleléséhez a PowerShell 3,0 (vagy egy felső verzió) után telepíteni kell a SCEP.
+> - A Trend Micro Protection észlelése a mély biztonsági ügynökök esetében támogatott.  A OfficeScan-ügynökök nem támogatottak.
 
 ## <a name="supported-paas-features"></a>Támogatott Pásti-funkciók
 

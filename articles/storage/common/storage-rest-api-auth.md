@@ -1,24 +1,24 @@
 ---
-title: Azure Storage-szolgáltatások meghívása REST API műveletekkel, beleértve a hitelesítést | Microsoft Docs
-description: Azure Storage-szolgáltatások meghívása REST API műveletekkel, beleértve a hitelesítést
+title: Az Azure Storage Services meghívása a megosztott kulcsos hitelesítéssel REST API műveletekkel | Microsoft Docs
+description: Használja az Azure Storage REST APIt a blob Storage-hoz való kérelem megosztott kulcsos hitelesítéssel történő elvégzésére.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 08/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2149bfb68697129680c45f15c6cce359863fbc59
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1463a470c84d38ebc30e32cf539aa9d6f64a6854
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989945"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640666"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Az Azure Storage REST API használata
 
-Ez a cikk bemutatja, hogyan használhatja a Blob Storage Service REST API-kat, és hogyan hitelesítheti a szolgáltatás hívását. Egy olyan fejlesztő szemszögéből íródott, aki semmit sem tud a REST-ről, és nincs ötlete, hogyan lehet REST-hívást készíteni. Megvizsgáljuk a REST-hívások dokumentációját, és megtudhatjuk, hogyan lehet lefordítani a tényleges REST-hívásokra – mely mezők hol találhatók? A REST-hívások beállításának megismerése után ezt az ismeretet használhatja a többi Storage szolgáltatás REST API-jának használatára.
+Ez a cikk bemutatja, hogyan használható a Blob Storage szolgáltatás REST API-jai és hogyan lehet engedélyezni a szolgáltatás hívását. Egy olyan fejlesztő szemszögéből íródott, aki semmit sem tud a REST-ről, és nincs ötlete, hogyan lehet REST-hívást készíteni. Megvizsgáljuk a REST-hívások dokumentációját, és megtudhatjuk, hogyan lehet lefordítani a tényleges REST-hívásokra – mely mezők hol találhatók? A REST-hívások beállításának megismerése után ezt az ismeretet használhatja a többi Storage szolgáltatás REST API-jának használatára.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -267,9 +267,10 @@ Most, hogy megértette, hogyan hozza létre a kérést, hívja meg a szolgáltat
 ## <a name="creating-the-authorization-header"></a>Az engedélyezési fejléc létrehozása
 
 > [!TIP]
-> Az Azure Storage mostantól támogatja a blobok és a várólisták Azure Active Directory (Azure AD) integrációját. Az Azure AD sokkal egyszerűbben használható az Azure Storage-ba irányuló kérések engedélyezéséhez. Az Azure AD a REST-műveletek engedélyezéséhez való használatáról további információt a [hitelesítés a Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory)használatával című témakörben talál. Az Azure AD-integráció Azure Storage-nal való áttekintését lásd: az [Azure Storage hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md).
+> Az Azure Storage mostantól támogatja a blobok és a várólisták Azure Active Directory (Azure AD) integrációját. Az Azure AD sokkal egyszerűbben használható az Azure Storage-ba irányuló kérések engedélyezéséhez. Az Azure AD a REST-műveletek engedélyezéséhez való használatával kapcsolatos további információkért lásd: [Engedélyezés a Azure Active Directory](/rest/api/storageservices/authorize-with-azure-active-directory). Az Azure AD-integráció Azure Storage-nal való áttekintését lásd: az [Azure Storage hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md).
 
-Az [Azure Storage-szolgáltatások hitelesítésének](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services)elvégzésére szolgáló cikk fogalmilag (nincs kód) ismerteti.
+Van egy cikk, amely részletesen ismerteti az [Azure Storage](/rest/api/storageservices/authorize-requests-to-azure-storage)-ba irányuló kérések engedélyezésének módját (nincs kód).
+
 Nézzük meg, hogy a cikk pontosan szükség van-e, és mutassa be a kódot.
 
 Először használjon megosztott kulcsos hitelesítést. Az engedélyezési fejléc formátuma a következőképpen néz ki:
@@ -360,7 +361,7 @@ Az aláírási karakterlánc ezen része a kérelem által megadott tárolási f
 
 Ha lekérdezési paraméterekkel rendelkezik, akkor a példa ezeket a paramétereket is tartalmazza. Itt látható a kód, amely további lekérdezési paramétereket és lekérdezési paramétereket is kezel több értékkel. Ne feledje, hogy ezt a kódot a REST API-k működéséhez kell felépíteni. Az összes lehetőséget fel szeretné venni, még akkor is, ha a ListContainers metódusnak nincs szüksége rájuk.
 
-```csharp 
+```csharp
 private static string GetCanonicalizedResource(Uri address, string storageAccountName)
 {
     // The absolute path will be "/" because for we're getting a list of containers.
@@ -376,7 +377,7 @@ private static string GetCanonicalizedResource(Uri address, string storageAccoun
         sb.Append('\n').Append(item).Append(':').Append(values[item]);
     }
 
-    return sb.ToString();
+    return sb.ToString().ToLower();
 }
 ```
 
@@ -571,3 +572,4 @@ Ebből a cikkből megtudhatta, hogyan lehet kérelmet készíteni a blob Storage
 * [Blob Service REST API](/rest/api/storageservices/blob-service-rest-api)
 * [Fájlszolgáltatások REST API](/rest/api/storageservices/file-service-rest-api)
 * [Üzenetsor-szolgáltatás REST API](/rest/api/storageservices/queue-service-rest-api)
+* [Table Service REST API](/rest/api/storageservices/table-service-rest-api)
