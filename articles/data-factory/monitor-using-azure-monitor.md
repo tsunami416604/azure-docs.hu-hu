@@ -105,13 +105,13 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Tulajdonság | Típus | Leírás |
 | --- | --- | --- |
-| storageAccountId |Karakterlánc | Annak a Storage-fióknak az erőforrás-azonosítója, amelyre a diagnosztikai naplókat el szeretné küldeni |
-| serviceBusRuleId |Sztring | A Service Bus-névtér Service Bus-szabályának azonosítója, amelyben Event Hubs létrehozni a folyamatos átviteli diagnosztikai naplókhoz. A szabály azonosítója a következő formátumú: "{Service Bus erőforrás-azonosító}/authorizationrules/{Key neve}".|
+| storageAccountId |String | Annak a Storage-fióknak az erőforrás-azonosítója, amelyre a diagnosztikai naplókat el szeretné küldeni |
+| serviceBusRuleId |String | A Service Bus-névtér Service Bus-szabályának azonosítója, amelyben Event Hubs létrehozni a folyamatos átviteli diagnosztikai naplókhoz. A szabály azonosítója a következő formátumú: "{Service Bus erőforrás-azonosító}/authorizationrules/{Key neve}".|
 | workspaceId | Összetett típus | Metrikus idő típusú gabona és adatmegőrzési szabályzatok tömbje. Jelenleg ez a tulajdonság üres. |
 |metrics| A folyamat által a meghívott folyamatnak átadni kívánt folyamat paramétereinek értéke| Egy JSON-objektum-hozzárendelési paraméter neve az argumentum értékéhez |
 | logs| Összetett típus| Az erőforrástípus diagnosztikai naplójának kategóriája. Az erőforráshoz tartozó diagnosztikai naplók listájának beszerzéséhez először végezze el a diagnosztikai beállítások beolvasása műveletet. |
-| category| Karakterlánc| A naplózási kategóriák és a megőrzési szabályzatok tömbje |
-| timeGrain | Sztring | Az ISO 8601-es időtartamú formátumban rögzített mérőszámok részletessége. PT1M kell lennie (egy perc)|
+| category| String| A naplózási kategóriák és a megőrzési szabályzatok tömbje |
+| timeGrain | String | Az ISO 8601-es időtartamú formátumban rögzített mérőszámok részletessége. PT1M kell lennie (egy perc)|
 | enabled| Logikai | Meghatározza, hogy engedélyezve van-e az adott metrika vagy naplózási kategória gyűjteménye ehhez az erőforráshoz|
 | retentionPolicy| Összetett típus| A metrika vagy a napló kategóriájának adatmegőrzési szabályát ismerteti. Csak a Storage-fiók beállítására szolgál.|
 | days| Int| A metrikák vagy naplók megőrzésére szolgáló napok száma. A 0 érték határozatlan ideig megőrzi a naplókat. Csak a Storage-fiók beállítására szolgál. |
