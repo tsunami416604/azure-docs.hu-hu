@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 08/20/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 76111c6a35408ce73e0e2b8a6a6e0ca41bf72065
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 2b2879a1ebcf01a0433873e8da77c4ce55a078cd
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640443"
+ms.locfileid: "69647014"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>A QnA Maker telepítés kapacitás kiválasztása
 
 A QnA Maker szolgáltatást függőséget vesz fel három Azure-erőforrások:
 1.  App Service (a a modul)
-2.  Az Azure Search (a QnA-tudásbázisok tárolása)
+2.  Azure Search (QnAs tárolásához és kereséséhez)
 3.  Az App Insights (nem kötelező, csevegési naplók és a telemetriai adatok tárolása)
 
 A QnA Maker szolgáltatást hoz létre, mielőtt, meg kell határoznia, melyik szint a fenti szolgáltatások az Ön számára megfelelő. 
