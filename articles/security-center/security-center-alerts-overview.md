@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 8/20/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 91dd397095718b3b43e41767af422801fd50b7f1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 25fb94afdfe68510c66cff130a3abc8b74d7311d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295684"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647312"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Biztonsági riasztások Azure Security Center
 
@@ -50,7 +50,7 @@ A következő témakörök azt ismertetik, hogy Security Center milyen módon ha
 
 ## <a name="what-are-alert-incidents"></a>Mik azok a riasztási incidensek?
 
-A biztonsági incidensek a kapcsolódó riasztások gyűjteményei, az egyes riasztások egyenkénti listázása helyett. A Security Center a Fusion segítségével korrelálja a különböző riasztásokat és az alacsony megbízhatósági jeleket a biztonsági incidensekben.
+A biztonsági incidensek a kapcsolódó riasztások gyűjteményei, az egyes riasztások egyenkénti listázása helyett. A Security Center a [Felhőbeli intelligens riasztások korrelációját](security-center-alerts-cloud-smart.md) használja a különböző riasztások és az alacsony megbízhatósági jelzések biztonsági incidensekre való összekapcsolásához.
 
 Az incidensek használatával a Security Center egyetlen nézetet biztosít a támadási kampányokról és az összes kapcsolódó riasztásról. Ez a nézet lehetővé teszi, hogy gyorsan megértse, milyen műveleteket végeztek a támadó, és milyen erőforrásokra volt hatással. További információ: [felhőalapú intelligens riasztás korrelációja](security-center-alerts-cloud-smart.md).
 

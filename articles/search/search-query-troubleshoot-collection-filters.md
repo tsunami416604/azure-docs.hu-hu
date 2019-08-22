@@ -1,13 +1,13 @@
 ---
-title: OData-fájlgyűjtési szűrők – Azure Search hibaelhárítása
-description: -Hibáinak megoldásáról OData gyűjtemény szűrő az Azure Search-lekérdezéseket.
+title: OData-gyűjtési szűrők hibaelhárítása – Azure Search
+description: A OData-gyűjtési szűrés hibáinak elhárítása Azure Search lekérdezésekben.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,58 +19,58 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: c7fa00c82eea03a50bae22fcb1ad16e230aa5bcb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fbd43cc13d3b7377668aad2fadc874ae47422ee1
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079625"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647954"
 ---
-# <a name="troubleshooting-odata-collection-filters-in-azure-search"></a>Hibaelhárítás az Azure Search szolgáltatásban az OData-fájlgyűjtési szűrők
+# <a name="troubleshooting-odata-collection-filters-in-azure-search"></a>OData-gyűjtési szűrők hibaelhárítása Azure Search
 
-A [szűrő](query-odata-filter-orderby-syntax.md) gyűjtemény mezők az Azure Search szolgáltatásban, használhatja a [ `any` és `all` operátorok](search-query-odata-collection-operators.md) együtt **lambda-kifejezésekkel**. Lambda kifejezésnek a alkalmazni egy gyűjtemény összes eleme alárendelt szűrő.
+A [](query-odata-filter-orderby-syntax.md) Azure Search gyűjtemény mezőinek szűréséhez a [ `any` és `all` ](search-query-odata-collection-operators.md) a operátort **lambda kifejezésekkel**együtt használhatja. A lambda kifejezés a gyűjtemények egyes elemeire alkalmazott alszűrő.
 
-Nem minden funkciója szűrési kifejezésekben nem lambda kifejezésnek belül elérhető. Mely funkciók érhetők el a gyűjtemény mezőt, amely a szűrni kívánt adatok típusától függően eltérő. Emiatt a hibát próbál használni egy szolgáltatást egy lambda kifejezés, amely nem támogatott ebben a környezetben. Gyűjtemény mezők keresztül egy összetett szűrési írása közben az ilyen hibák lépnek fel, ha ez a cikk segítséget nyújt a probléma elhárítását.
+A szűrési kifejezések nem minden funkciója érhető el lambda kifejezésen belül. A rendelkezésre álló szolgáltatások eltérőek lehetnek attól függően, hogy milyen adattípust szeretne szűrni a begyűjtési mező. Ez hibát okozhat, ha olyan lambda kifejezésben lévő szolgáltatást próbál használni, amely nem támogatott ebben a környezetben. Ha ilyen hibákba ütközik, miközben összetett szűrőt próbál meg gyűjteni a gyűjtemény mezőin, ez a cikk segítséget nyújt a probléma elhárításához.
 
-## <a name="common-collection-filter-errors"></a>Gyakori hibák a gyűjtemény szűrése
+## <a name="common-collection-filter-errors"></a>Gyakori gyűjtemény-szűrési hibák
 
-Az alábbi táblázat egy Gyűjteményszűrő végrehajtása közben előforduló hibákat. Ezek a hibák történik, ha a szűrőkifejezésekben egyik funkciója, amely nem támogatott a lambda kifejezésnek belül használhatja. Minden egyes hibához meg, hogyan módosíthatja a szűrőt, hogy a hiba elkerüléséhez útmutatást biztosít. A tábla egy hivatkozást is tartalmaz a megfelelő szakaszt az ebben a cikkben további információt nyújt az adott hiba elkerülése érdekében.
+A következő táblázat felsorolja azokat a hibákat, amelyek a gyűjteményi szűrő végrehajtásakor előfordulhatnak. Ezek a hibák akkor fordulnak elő, ha olyan szűrési kifejezéseket használ, amelyek nem támogatottak lambda kifejezésben. Az egyes hibákkal kapcsolatos útmutatást ad a szűrő újraírásához a hiba elkerüléséhez. A táblázat a jelen cikk vonatkozó szakaszának hivatkozását is tartalmazza, amely további információkat nyújt a hiba elkerüléséről.
 
-| Hibaüzenet | A helyzet | További információkért lásd: |
+| Hibaüzenet | Helyzet | További információkért lásd: |
 | --- | --- | --- |
-| A függvény "ismatch" nincs kötve a tartomány változót paraméterekkel rendelkezik ". Lambda-kifejezésekkel ("bármely" vagy "all") belüli hivatkozások támogatottak a mező csak kötve. Módosítsa a szűrőt úgy, hogy a "ismatch" függvény kívül a lambda kifejezésnek, és próbálkozzon újra. | Használatával `search.ismatch` vagy `search.ismatchscoring` lambda kifejezésnek belül | [Gyűjtemények összetett szűrési szabályok](#bkmk_complex) |
-| Érvénytelen lambda kifejezésnek. Található egy teszt egyenlőség vagy mutassa, ahol a rendszer ennek az ellenkezője várta, amely Collection(Edm.String) típusú mező ismétel lambda kifejezésnek. Az "összes" használja az űrlap "x eq y" vagy "search.in(...)" kifejezéseket. Az "all", használja az űrlap "x ne y", "nem (x y eq)" vagy "nem search.in(...)" kifejezéseket. | Szűrés egy mező típusa `Collection(Edm.String)` | [Karakterlánc gyűjtemények szűrési szabályok](#bkmk_strings) |
-| Érvénytelen lambda kifejezésnek. Egy összetett logikai kifejezés nem támogatott típusú található. Az "összes" kifejezéseket, amelyek "ORs, Equal", más néven diszjunkt normál űrlapot használja. Például: '(a and b) vagy (c a és d) ", ha a, b c d jsou összehasonlító vagy egyenlőségi az alkifejezések. Az "all", használja a kifejezéseket, amelyek az "Equal, ORs", más néven Conjunctive normál űrlap. Például: '(a or b) és (c vagy d) ", ha a, b c d jsou összehasonlító vagy egyenlótlenség az alkifejezések. Példák az összehasonlítási kifejezésekben: "x gt 5', ' le 2 x. A példában egy egyenlőségi kifejezés: "x eq 5'. A példában egy egyenlótlenség kifejezés: "x ne 5'. | Szűrés típusú mezők `Collection(Edm.DateTimeOffset)`, `Collection(Edm.Double)`, `Collection(Edm.Int32)`, vagy `Collection(Edm.Int64)` | [Hasonló gyűjtemények szűrési szabályok](#bkmk_comparables) |
-| Érvénytelen lambda kifejezésnek. Egy nem támogatott használatát geo.distance() vagy geo.intersects() található, amely Collection(Edm.GeographyPoint) típusú mező ismétel lambda kifejezésnek. "Bármely" Ellenőrizze, hogy, hasonlítsa össze az "lt" vagy "le" operátorok használatával geo.distance(), és győződjön meg arról, hogy a rendszer nem negated geo.intersects() használatáért. Az "all", győződjön meg arról, hasonlítsa össze az "gt" vagy "ge" operátorok használatával geo.distance(), és győződjön meg arról, hogy negated van-e a geo.intersects() használatáért. | Szűrés egy mező típusa `Collection(Edm.GeographyPoint)` | [GeographyPoint gyűjtemények szűrési szabályok](#bkmk_geopoints) |
-| Érvénytelen lambda kifejezésnek. Logikai összetett kifejezések nem támogatottak a Collection(Edm.GeographyPoint) típusú mezők ciklustevékenység lambda-kifejezésekkel. A "bármely", csatlakozzon az alkifejezések "vagy"; "és" nem támogatott. Az "all", csatlakozzon az alkifejezések 'és'; "vagy" nem támogatott. | Szűrés típusú mezők `Collection(Edm.String)` vagy `Collection(Edm.GeographyPoint)` | [Karakterlánc gyűjtemények szűrési szabályok](#bkmk_strings) <br/><br/> [GeographyPoint gyűjtemények szűrési szabályok](#bkmk_geopoints) |
-| Érvénytelen lambda kifejezésnek. Egy összehasonlító operátor (egyik "lt", "le", "gt" vagy "ge") található. Csak egyenlőségi operátorok Collection(Edm.String) típusú mezők ciklustevékenység lambda-kifejezésekkel engedélyezettek. Az "bármely" használja az űrlap "x eq y" kifejezéseket. Az "all", használja az űrlap "x ne y" vagy "nem (x y eq)" kifejezéseket. | Szűrés egy mező típusa `Collection(Edm.String)` | [Karakterlánc gyűjtemények szűrési szabályok](#bkmk_strings) |
+| A "ismatch" függvényhez nem tartozik paraméterek a (z) "" tartomány változóhoz. Csak a kötött mezőkre mutató hivatkozások támogatottak lambda kifejezésekben ("any" vagy "all"). Módosítsa a szűrőt úgy, hogy az "ismatch" függvény kívül legyen a lambda kifejezésen, és próbálkozzon újra. | Lambda `search.ismatch` kifejezés `search.ismatchscoring` használata vagy belül | [Az összetett gyűjtemények szűrésének szabályai](#bkmk_complex) |
+| Érvénytelen lambda kifejezés. Megtalálta az egyenlőség vagy az egyenlőtlenség tesztelését, ha a rendszer egy olyan lambda kifejezésben várta az ellenkező értéket, amely egy gyűjtemény (EDM. String) típusú mező fölé kerül. Az "any" esetében használja az "x EQ y" vagy a "search.in (...)" formátumú kifejezéseket. Az "all" (összes) esetében használja az "x ne y", "not (x EQ y)" vagy "not search.in (...)" formátumú kifejezéseket. | Szűrés egy típusú mezőben`Collection(Edm.String)` | [Szabályok a karakterlánc-gyűjtemények szűréséhez](#bkmk_strings) |
+| Érvénytelen lambda kifejezés. Az összetett logikai kifejezés nem támogatott formáját találta. Az "any" esetében használjon "and" típusú kifejezéseket, más néven diszjunkt kötelezőségi normál alakot. Például: "(a és b), vagy (c és d)", ahol a, b, c és d összehasonlítási vagy egyenlőségi alkifejezések. Az "all" (összes) esetében használjon "and" típusú kifejezéseket, más néven Conjunctive normál formát. Például: "(a vagy b) és (c vagy d)", ahol a, b, c és d az összehasonlítási vagy egyenlőtlenségi alkifejezések. Példák az összehasonlító kifejezésekre: "x gt 5", "x le 2". Példa egy egyenlőségi kifejezésre: "x EQ 5". Példa az egyenlőtlenségi kifejezésre: "x ne 5". | A (z), `Collection(Edm.DateTimeOffset)`, `Collection(Edm.Double)`vagy `Collection(Edm.Int32)`típusú mezők szűrése`Collection(Edm.Int64)` | [Az összehasonlítható gyűjtemények szűrésének szabályai](#bkmk_comparables) |
+| Érvénytelen lambda kifejezés. A Geo. Distance () vagy a Geo. metszetek () nem támogatott használatát észlelte egy olyan lambda kifejezésben, amely egy gyűjtemény (EDM. Geographypoint adattípuson) típusú mezőn keresztül ismétli meg. Az "any" esetében ügyeljen arra, hogy hasonlítsa össze a Geo. Distance () műveletet a "lt" vagy a "le" operátorral, és ügyeljen arra, hogy a Geo. metszetek () használata ne legyen megtagadva. Az "all" (összes) esetében ügyeljen arra, hogy összehasonlítsa a Geo. Distance () t a "gt" vagy a "GE" operátorral, és győződjön meg arról, hogy a Geo. metszetek () bármely használata meg lett tagadva. | Szűrés egy típusú mezőben`Collection(Edm.GeographyPoint)` | [Geographypoint adattípuson-gyűjtemények szűrésének szabályai](#bkmk_geopoints) |
+| Érvénytelen lambda kifejezés. Az összetett logikai kifejezések nem támogatottak olyan lambda-kifejezésekben, amelyek a következő típusú mezőket ismétlik meg: Collection (EDM. Geographypoint adattípuson). Az "any" esetében csatlakozzon az alkifejezésekhez a következővel: "vagy"; a "és a" nem támogatott. Az "all" (összes) esetében kérjük, csatlakozzon az alkifejezésekhez a következővel: "és"; a "vagy" nem támogatott. | Szűrés típus vagy típusú `Collection(Edm.String)` mezőknél`Collection(Edm.GeographyPoint)` | [Szabályok a karakterlánc-gyűjtemények szűréséhez](#bkmk_strings) <br/><br/> [Geographypoint adattípuson-gyűjtemények szűrésének szabályai](#bkmk_geopoints) |
+| Érvénytelen lambda kifejezés. Összehasonlító operátor található (az egyik "lt", "le", "gt" vagy "GE"). Csak az esélyegyenlőségi operátorok engedélyezettek olyan lambda kifejezésekben, amelyek a types (EDM. String) mezőket használják. Az "any" esetében használjon "x EQ y" formátumú kifejezéseket. Az "all" (összes) esetében használja az "x ne y" vagy a "not (x EQ y)" formátumú kifejezéseket. | Szűrés egy típusú mezőben`Collection(Edm.String)` | [Szabályok a karakterlánc-gyűjtemények szűréséhez](#bkmk_strings) |
 
 <a name="bkmk_examples"></a>
 
-## <a name="how-to-write-valid-collection-filters"></a>Hogyan írhat érvényes fájlgyűjtési szűrők
+## <a name="how-to-write-valid-collection-filters"></a>Érvényes gyűjteményi szűrők írása
 
-Érvényes fájlgyűjtési szűrők írására szolgáló szabályok eltérőek az egyes adattípusokhoz. A következő szakaszok ismertetik a szabályok szerint mely szűrő szolgáltatások támogatottak, és amelyek nem mutat be példát:
+Az érvényes gyűjtési szűrők írásának szabályai különbözőek az egyes adattípusok esetében. A következő szakaszok ismertetik a szabályokat, ha példákat mutatnak arra, hogy mely szűrési funkciók támogatottak, és melyek nem:
 
-- [Karakterlánc gyűjtemények szűrési szabályok](#bkmk_strings)
-- [Logikai gyűjtemények szűrési szabályok](#bkmk_bools)
-- [GeographyPoint gyűjtemények szűrési szabályok](#bkmk_geopoints)
-- [Hasonló gyűjtemények szűrési szabályok](#bkmk_comparables)
-- [Gyűjtemények összetett szűrési szabályok](#bkmk_complex)
+- [Szabályok a karakterlánc-gyűjtemények szűréséhez](#bkmk_strings)
+- [A logikai gyűjtemények szűrésének szabályai](#bkmk_bools)
+- [Geographypoint adattípuson-gyűjtemények szűrésének szabályai](#bkmk_geopoints)
+- [Az összehasonlítható gyűjtemények szűrésének szabályai](#bkmk_comparables)
+- [Az összetett gyűjtemények szűrésének szabályai](#bkmk_complex)
 
 <a name="bkmk_strings"></a>
 
-## <a name="rules-for-filtering-string-collections"></a>Karakterlánc gyűjtemények szűrési szabályok
+## <a name="rules-for-filtering-string-collections"></a>Szabályok a karakterlánc-gyűjtemények szűréséhez
 
-Lambda-kifejezésekkel karakterlánc gyűjtemények, belül a csak összehasonlító operátorok használható vannak `eq` és `ne`.
+A sztring-gyűjtemények esetében a lambda kifejezéseken belül csak a `eq` és `ne`a használható összehasonlítási operátorokat lehet használni.
 
 > [!NOTE]
-> Az Azure Search nem támogatja a `lt` / `le` / `gt` / `ge` operátorokat karakterláncok, belül vagy kívül lambda kifejezésnek-e.
+> A Azure Search nem támogatja a `lt` / `le` karakterláncok/ operátorait, akár lambda kifejezésen belül, akár kívül is. `gt` / `ge`
 
-Törzse egy `any` hasonlítania az egyezés keresésekor törzse közben csak tesztelheti egy `all` egyenlótlenség csak tesztelheti.
+Az a törzse `any` csak az egyenlőség tesztelését végezheti el, míg `all` a törzse csak az egyenlőtlenségek tesztelésére használható.
 
-Akkor is úgy, hogy több kifejezésének keresztül `or` törzsében egy `any`, és keresztül `and` törzsében egy `all`. Mivel a `search.in` függvény kombinálva egyenlőség ellenőrzi az egyenértékű `or`, törzsében is betölthet egy `any`. Ezzel szemben `not search.in` törzsében engedélyezett egy `all`.
+Több kifejezést `or` is össze lehet kapcsolni egy `any`, a törzsében, és az a törzsén `and` `all`keresztül. Mivel a `search.in` függvény egyenértékű az esélyegyenlőségi ellenőrzések és `or`a együttes kombinálásával, a törzsében `any`is engedélyezett. Ezzel szemben az a törzsében `all`engedélyezett. `not search.in`
 
-Például ezek a kifejezések engedélyezettek:
+Ezek a kifejezések engedélyezettek például:
 
 - `tags/any(t: t eq 'books')`
 - `tags/any(t: search.in(t, 'books, games, toys'))`
@@ -80,7 +80,7 @@ Például ezek a kifejezések engedélyezettek:
 - `tags/any(t: t eq 'books' or t eq 'games')`
 - `tags/all(t: t ne 'books' and not (t eq 'games'))`
 
-Bár ezek a kifejezések nem engedélyezett:
+Ezek a kifejezések nem engedélyezettek:
 
 - `tags/any(t: t ne 'books')`
 - `tags/any(t: not search.in(t, 'books, games, toys'))`
@@ -91,11 +91,11 @@ Bár ezek a kifejezések nem engedélyezett:
 
 <a name="bkmk_bools"></a>
 
-## <a name="rules-for-filtering-boolean-collections"></a>Logikai gyűjtemények szűrési szabályok
+## <a name="rules-for-filtering-boolean-collections"></a>A logikai gyűjtemények szűrésének szabályai
 
-A típus `Edm.Boolean` csak támogatja a `eq` és `ne` operátorok. Mint ilyen, akkor nem értelme, az ilyen feltételek, amelyek ellenőrzik a ugyanazon tartomány változót kombinálásának engedélyezése `and` / `or` óta, amely mindig tautologies vagy ellentmondások vezet.
+A típus `Edm.Boolean` csak a `eq` és `ne` operátorokat támogatja. Ezért nem sok értelme van az olyan záradékok egyesítésére, amelyek ugyanazt a Range változót `and` / `or` ellenőrizzük, mivel ez mindig tautologies vagy ellentmondásokat eredményez.
 
-Íme néhány példa a szűrők a logikai a gyűjteményeket, amelyek használata engedélyezett:
+Íme néhány példa a megengedett logikai gyűjtemények szűrésére:
 
 - `flags/any(f: f)`
 - `flags/all(f: f)`
@@ -104,9 +104,9 @@ A típus `Edm.Boolean` csak támogatja a `eq` és `ne` operátorok. Mint ilyen, 
 - `flags/all(f: not f)`
 - `flags/all(f: not (f eq true))`
 
-Karakterlánc-gyűjtemények, ellentétben a logikai gyűjtemények nem operátor használható korlátokkal rendelkeznek a lambda kifejezésnek milyen típusú. Mindkét `eq` és `ne` törzsében használható `any` vagy `all`.
+A karakterlánc-gyűjteményektől eltérően a logikai gyűjtemények nem korlátozzák, hogy melyik operátor használható a lambda kifejezésben. Mindkettő `eq`használható a vagy`all`atörzsébenis. `any` `ne`
 
-Kifejezések, például a következő logikai gyűjtemények esetében nem engedélyezett:
+A logikai gyűjtemények esetében a következő kifejezések nem engedélyezettek:
 
 - `flags/any(f: f or not f)`
 - `flags/any(f: f or f)`
@@ -115,25 +115,25 @@ Kifejezések, például a következő logikai gyűjtemények esetében nem enged
 
 <a name="bkmk_geopoints"></a>
 
-## <a name="rules-for-filtering-geographypoint-collections"></a>GeographyPoint gyűjtemények szűrési szabályok
+## <a name="rules-for-filtering-geographypoint-collections"></a>Geographypoint adattípuson-gyűjtemények szűrésének szabályai
 
-Típusú értékek `Edm.GeographyPoint` egy gyűjtemény nem hasonlíthatók össze közvetlenül egymással. Ehelyett azok kell használni, a paramétereket a `geo.distance` és `geo.intersects` funkciók. A `geo.distance` függvény viszont össze kell hasonlítani a összehasonlító operátorok segítségével távolság értékre `lt`, `le`, `gt`, vagy `ge`. Ezek a szabályok nem gyűjtemény Edm.GeographyPoint mezők is vonatkozik.
+Egy gyűjteményben `Edm.GeographyPoint` lévő típusú értékek nem hasonlíthatók össze közvetlenül egymással. Ehelyett paramétereket kell használni a és `geo.distance` `geo.intersects` a függvények számára. A `geo.distance` függvényt úgy kell összehasonlítani, hogy a távolság értéke a következő összehasonlító `le`operátorok `lt` `gt`egyikét használja:, `ge`, vagy. Ezek a szabályok a nem gyűjteményes EDM. Geographypoint adattípuson mezőkre is érvényesek.
 
-Karakterlánc-gyűjtemények, például `Edm.GeographyPoint` a gyűjteményeknél hogyan a térinformatikai függvények használhatók és a lambda-kifejezésekkel a különböző típusú kombinált bizonyos szabályokat:
+A karakterlánc-gyűjtemények `Edm.GeographyPoint` esetében a gyűjtemények bizonyos szabályokkal rendelkeznek a Geo-térbeli függvények használatáról és a különböző típusú lambda-kifejezésekhez való összevonásáról:
 
-- Melyik összehasonlítási operátor használata a `geo.distance` függvény lambda kifejezésnek típusától függ. A `any`, csak `lt` vagy `le`. A `all`, csak `gt` vagy `ge`. Akkor is magában foglaló kifejezések negálandó `geo.distance`, de kell módosítani az összehasonlító operátor (`geo.distance(...) lt x` válik `not (geo.distance(...) ge x)` és `geo.distance(...) le x` válik `not (geo.distance(...) gt x)`).
-- Törzsében egy `all`, a `geo.intersects` függvény negated kell lennie. Ezzel szemben a törzse egy `any`, a `geo.intersects` függvény nem kell negated.
-- Törzsében egy `any`, térinformatikai kifejezések használatával egyesíthető `or`. Törzsében egy `all`, ezek a kifejezések használatával egyesíthető `and`.
+- A `geo.distance` függvény által használható összehasonlító operátorok a lambda kifejezés típusától függenek. A `any`esetében csak `lt` a vagy `le`a használható. A `all`esetében csak `gt` a vagy `ge`a használható. Megtagadhatja a kifejezéseket `geo.distance`, de meg kell változtatnia az összehasonlító operátort `not (geo.distance(...) ge x)` (`geo.distance(...) lt x` és `geo.distance(...) le x` `not (geo.distance(...) gt x)`válik).
+- Az a törzsében `all`a `geo.intersects` függvényt meg kell tagadni. Ezzel szemben az a törzsében `any`a `geo.intersects` függvényt nem szabad megtagadni.
+- Egy `any`földrajzi térbeli kifejezés törzsében a használatával `or`kombinálhatók. Az a törzsében `all`ilyen kifejezések kombinálhatók a használatával `and`.
 
-A fenti korlátozások, a karakterlánc-gyűjtemények egyenlőség korlátozást létezik hasonló okok miatt. Lásd: [ismertetése OData fájlgyűjtési szűrők az Azure Search](search-query-understand-collection-filters.md) az alábbi okok miatt alaposabban.
+A fenti korlátozások hasonló okokból léteznek, mint a karakterlánc-gyűjtemények egyenlőségi/egyenlőtlenségi korlátozása. Tekintse meg részletesebben a [OData-gyűjtési szűrők ismertetése a Azure Searchban](search-query-understand-collection-filters.md) című témakört.
 
-Íme néhány példa a szűrők a `Edm.GeographyPoint` gyűjteményeket, amelyek használata engedélyezett:
+Íme néhány példa a szűrőkre `Edm.GeographyPoint` az engedélyezett gyűjteményeknél:
 
 - `locations/any(l: geo.distance(l, geography'POINT(-122 49)') lt 10)`
 - `locations/any(l: not (geo.distance(l, geography'POINT(-122 49)') ge 10) or geo.intersects(l, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))`
 - `locations/all(l: geo.distance(l, geography'POINT(-122 49)') ge 10 and not geo.intersects(l, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))`
 
-Például a következő kifejezések használata nem engedélyezett a `Edm.GeographyPoint` gyűjtemények:
+A gyűjtemények esetében `Edm.GeographyPoint` a következő kifejezések nem engedélyezettek:
 
 - `locations/any(l: l eq geography'POINT(-122 49)')`
 - `locations/any(l: not geo.intersects(l, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))`
@@ -145,88 +145,88 @@ Például a következő kifejezések használata nem engedélyezett a `Edm.Geogr
 
 <a name="bkmk_comparables"></a>
 
-## <a name="rules-for-filtering-comparable-collections"></a>Hasonló gyűjtemények szűrési szabályok
+## <a name="rules-for-filtering-comparable-collections"></a>Az összehasonlítható gyűjtemények szűrésének szabályai
 
-Ebben a szakaszban a következőkre vonatkozik az összes alábbi adattípusok:
+Ez a szakasz a következő adattípusokra vonatkozik:
 
 - `Collection(Edm.DateTimeOffset)`
 - `Collection(Edm.Double)`
 - `Collection(Edm.Int32)`
 - `Collection(Edm.Int64)`
 
-Például típusokat `Edm.Int32` és `Edm.DateTimeOffset` támogatja mind a hat az összehasonlító operátorok: `eq`, `ne`, `lt`, `le`, `gt`, és `ge`. Ilyen típusú gyűjtemények keresztül lambda-kifejezésekkel ezen operátorok bármelyikével egyszerű kifejezést tartalmazhat. Ez egyaránt vonatkozik `any` és `all`. Például ezek a szűrők engedélyezettek:
+`ne` `gt` `ge` Azösszehasonlítóoperátorok`eq`közül mind a hat, a, a, a, a és a támogatotttípusok:,,,,és.`le` `Edm.DateTimeOffset` `Edm.Int32` `lt` Az ilyen típusú gyűjtemények lambda kifejezései tartalmazhatnak egyszerű kifejezéseket ezen operátorok bármelyikének használatával. Ez a és `all`a `any` rendszerre egyaránt vonatkozik. Ezek a szűrők például engedélyezettek:
 
 - `ratings/any(r: r ne 5)`
 - `dates/any(d: d gt 2017-08-24T00:00:00Z)`
 - `not margins/all(m: m eq 3.5)`
 
-Vannak azonban az ilyen összehasonlítási kifejezésekben kombinálására belül lambda kifejezésnek összetettebb kifejezésekre vonatkozó korlátozások:
+Az ilyen összehasonlító kifejezések azonban korlátozásokkal kombinálhatók egy lambda kifejezésen belüli összetettebb kifejezésekkel:
 
-- A szabályok `any`:
-  - Egyszerű egyenlótlenség kifejezések hasznos nem kombinálható más kifejezéseket. Ha például a kifejezés engedélyezett:
+- A következő `any`szabályai:
+  - Egyszerű egyenlőtlenségi kifejezések nem kombinálhatók más kifejezésekkel. Ez a kifejezés például engedélyezett:
     - `ratings/any(r: r ne 5)`
 
-    azonban ez a kifejezés nem:
+    Ez a kifejezés azonban nem:
     - `ratings/any(r: r ne 5 and r gt 2)`
 
-    és ez a kifejezés használata engedélyezett, amíg nem hasznos, mert feltételek átfedik egymást:
+    Ez a kifejezés azonban a megengedettnél nem hasznos, mert a feltételek átfedésben vannak:
     - `ratings/any(r: r ne 5 or r gt 7)`
-  - Egyszerű összehasonlítási kifejezésekben érintő `eq`, `lt`, `le`, `gt`, vagy `ge` kombinálva `and` / `or`. Példa:
+  - `eq`A `gt` `lt` `le` ,,`ge` ,, vagy kombinálható egyszerű összehasonlító kifejezések. `and` / `or` Példa:
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - Összehasonlítási kifejezésekben kombinálva `and` (kötőszavak) további kombinálható is használatával `or`. Az űrlap ismert logikai, az "[diszjunkt normál űrlap](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF). Példa:
+  - Az `and` összehasonlítási kifejezések (együttesen) kombinálhatók a használatával `or`. Ez az űrlap a logikai logikában ismert "[diszjunkt kötelezőségi normál formában](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF). Példa:
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
-- A szabályok `all`:
-  - Egyszerű egyenlőségi kifejezés hasznos nem kombinálható más kifejezéseket. Ha például a kifejezés engedélyezett:
+- A következő `all`szabályai:
+  - Az egyszerű egyenlőségi kifejezések nem kombinálhatók más kifejezésekkel. Ez a kifejezés például engedélyezett:
     - `ratings/all(r: r eq 5)`
 
-    azonban ez a kifejezés nem:
+    Ez a kifejezés azonban nem:
     - `ratings/all(r: r eq 5 or r le 2)`
 
-    és ez a kifejezés használata engedélyezett, amíg nem hasznos, mert feltételek átfedik egymást:
+    Ez a kifejezés azonban a megengedettnél nem hasznos, mert a feltételek átfedésben vannak:
     - `ratings/all(r: r eq 5 and r le 7)`
-  - Egyszerű összehasonlítási kifejezésekben érintő `ne`, `lt`, `le`, `gt`, vagy `ge` kombinálva `and` / `or`. Példa:
+  - `ne`A `gt` `lt` `le` ,,`ge` ,, vagy kombinálható egyszerű összehasonlító kifejezések. `and` / `or` Példa:
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - Összehasonlítási kifejezésekben kombinálva `or` (disjunctions) további kombinálható is használatával `and`. Az űrlap ismert logikai, az "[Conjunctive normál űrlap](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (használható cnf Paraméterrel). Példa:
+  - A `or` (leválasztással együtt) összevont összehasonlító kifejezések tovább kombinálhatók a `and`használatával. Ez az űrlap a logikai logikában ismert "[Conjunctive normál formában](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (cnf). Példa:
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>
 
-## <a name="rules-for-filtering-complex-collections"></a>Gyűjtemények összetett szűrési szabályok
+## <a name="rules-for-filtering-complex-collections"></a>Az összetett gyűjtemények szűrésének szabályai
 
-Lambda-kifejezésekkel összetett gyűjtemények keresztül, mint a lambda-kifejezésekkel jóval rugalmasabb szintaxist támogathatóak típusokban gyűjteményei. Használhat bármilyen szűrő szerkezet belül egy külső egy, két kivétellel használható lambda kifejezésnek.
+Az összetett gyűjteményeknél a lambda kifejezések sokkal rugalmasabb szintaxist támogatnak, mint a lambda kifejezéseket a primitív típusú gyűjteményeknél. Egy olyan szűrő-összeállítást is használhat, amely egy olyan lambda kifejezésen belül használható, amelyet az egyiken kívül használhat, és csak két kivételt tartalmaz.
 
-First, a függvények `search.ismatch` és `search.ismatchscoring` lambda-kifejezésekkel belül nem támogatottak. További információkért lásd: [ismertetése OData fájlgyűjtési szűrők az Azure Search](search-query-understand-collection-filters.md).
+Először a függvények `search.ismatch` és `search.ismatchscoring` nem támogatottak lambda kifejezéseken belül. További információ: [a OData-gyűjtési szűrők ismertetése a Azure Searchban](search-query-understand-collection-filters.md).
 
-A második, a mezők, amelyek nem hivatkozik *kötött* , a tartomány változót (úgynevezett *változók ingyenes*) nem engedélyezett. Vegyük példaként az alábbi két egyenértékű OData szűrési kifejezés:
+Másodszor, a tartomány változóhoz (ún. *ingyenes változók*) nem *kötött* mezőkre mutató hivatkozás nem engedélyezett. Vegyük például a következő két egyenértékű OData-szűrési kifejezést:
 
 1. `stores/any(s: s/amenities/any(a: a eq 'parking')) and details/margin gt 0.5`
 1. `stores/any(s: s/amenities/any(a: a eq 'parking' and details/margin gt 0.5))`
 
-Az első kifejezés engedélyezett lesz, míg a második képernyő lesz utasítva, mert az `details/margin` nincs kötve a tartomány változót `s`.
+Az első kifejezés engedélyezett lesz, míg a második űrlap el lesz utasítva, mert `details/margin` nincs kötve a tartomány változóhoz `s`.
 
-Ez a szabály van kötve egy külső hatókörben található változók kifejezések is kiterjeszti. Az ilyen változók használata ingyenes szerepelnek a hatókör vonatkozóan. Ha például az első kifejezés engedélyezett, míg a második egyenértékű kifejezés nem engedélyezett, mert `s/name` ingyenes garanciát a tartomány változót hatókörének `a`:
+Ez a szabály olyan kifejezésekre is kiterjed, amelyek egy külső hatókörben kötött változókkal rendelkeznek. Ezek a változók ingyenesen használhatók azon hatókör tekintetében, amelyben megjelennek. Például az első kifejezés engedélyezett, míg a második egyenértékű kifejezés nem engedélyezett, mert `s/name` az a tartomány változó `a`hatókörére vonatkozó ingyenes:
 
 1. `stores/any(s: s/amenities/any(a: a eq 'parking') and s/name ne 'Flagship')`
 1. `stores/any(s: s/amenities/any(a: a eq 'parking' and s/name ne 'Flagship'))`
 
-Ez a korlátozás nem lehet a gyakorlatban egy probléma, mivel mindig lehetséges olyan szűrőket úgy, hogy a lambda-kifejezésekkel csak kötött változókat tartalmaz.
+Ez a korlátozás nem jelent problémát a gyakorlatban, mert mindig lehetséges szűrőket létrehozni, például a lambda kifejezések csak kötött változókat tartalmaznak.
 
-## <a name="cheat-sheet-for-collection-filter-rules"></a>Gyorsreferencia gyűjtemény Állapotszűrő szabályok
+## <a name="cheat-sheet-for-collection-filter-rules"></a>A gyűjtési szűrő szabályainak Cheat lapja
 
-A következő táblázat összefoglalja a szabályokat hozhat létre, mindegyik gyűjteményt adattípus érvényes szűrőket.
+A következő táblázat összefoglalja az egyes gyűjteményi adattípusokhoz tartozó érvényes szűrők összeállításának szabályait.
 
 [!INCLUDE [Limitations on OData lambda expressions in Azure Search](../../includes/search-query-odata-lambda-limitations.md)]
 
-Példák érvényes szűrők minden esetben a létrehozására: [hogyan írhat érvényes fájlgyűjtési szűrők](#bkmk_examples).
+Példák az érvényes szűrők összeállítására az egyes esetekben: az [érvényes gyűjteményi szűrők írása](#bkmk_examples).
 
-Ha gyakran írási szűrőket, és a szabályokat az első elvek megismerése segíthet, több mint csak megjegyezni a őket, lásd: [ismertetése OData fájlgyűjtési szűrők az Azure Search](search-query-understand-collection-filters.md).
+Ha gyakran ír szűrőket, és megértette, hogy az első alapelvek szabályai többek között könnyebben megjegyeznünk, tekintse meg a [OData-gyűjtési szűrők ismertetése a Azure Search](search-query-understand-collection-filters.md).
 
 ## <a name="next-steps"></a>További lépések  
 
-- [OData-fájlgyűjtési szűrők az Azure Search ismertetése](search-query-understand-collection-filters.md)
-- [Szűrők az Azure Search szolgáltatásban](search-filters.md)
-- [Az Azure Search OData kifejezés nyelvi – áttekintés](query-odata-filter-orderby-syntax.md)
-- [Az Azure Search OData kifejezés szintaxisának referenciája](search-query-odata-syntax-reference.md)
-- [Dokumentumok keresése &#40;az Azure Search szolgáltatás REST API-ja&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [A OData-gyűjtési szűrők ismertetése a Azure Searchban](search-query-understand-collection-filters.md)
+- [Szűrők a Azure Searchban](search-filters.md)
+- [A OData kifejezés nyelvének áttekintése Azure Search](query-odata-filter-orderby-syntax.md)
+- [Azure Search OData-kifejezés szintaxisának referenciája](search-query-odata-syntax-reference.md)
+- [Dokumentumok &#40;keresése Azure Search szolgáltatás REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

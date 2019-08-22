@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: 81b2145e6107558f2d9698c7e5d03658f1129b00
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 63534260e042a1b47ca5e635c48123672d663a9b
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667931"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873303"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Feladatok ütemezett és szórása (Python)
 
@@ -47,15 +47,17 @@ Az oktatóanyag végén két Python-alkalmazás áll rendelkezésére:
 
 a **scheduleJobService.py**, amely közvetlen metódust hív meg a szimulált eszköz alkalmazásban, és feladatokkal frissíti az eszközhöz tartozó dupla kívánt tulajdonságokat.
 
-[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
-
-Az előfeltételek a következő telepítési utasításokkal rendelkeznek.
-
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
 > [!NOTE]
 > A **Pythonhoz készült Azure IOT SDK** nem támogatja közvetlenül a **feladatok** funkcióit. Ehelyett ez az oktatóanyag egy alternatív megoldást kínál, amely aszinkron szálakat és időzítőket használ. További frissítésekért tekintse meg az [Azure IOT SDK for Python](https://github.com/Azure/azure-iot-sdk-python) -oldal **szolgáltatás ügyféloldali SDK** -szolgáltatásainak listáját.
 >
+
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -74,6 +76,10 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a felh
     ```cmd/sh
     pip install azure-iothub-device-client
     ```
+
+   > [!NOTE]
+   > Az Azure-iothub-Service-Client és az Azure-iothub-Device-Client pip-csomagjai jelenleg csak Windows operációs rendszer esetén érhetők el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) a Pythonhoz című témakörben.
+   >
 
 2. Egy szövegszerkesztővel hozzon létre egy új **simDevice.py** -fájlt a munkakönyvtárában.
 
@@ -158,9 +164,27 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a felh
 
 ## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
-[!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
+Ebben a cikkben egy háttér-szolgáltatást hoz létre, amely egy közvetlen metódust hív meg egy eszközön, és frissíti az eszközt. A szolgáltatásnak szüksége van a **szolgáltatás csatlakozási** engedélyére, hogy közvetlen metódust hívjon az eszközön. A szolgáltatásnak szüksége van a **beállításjegyzék olvasási** és **beállításjegyzék-írási** engedélyeire is az azonosító beállításjegyzékének olvasásához és írásához. Nincs olyan alapértelmezett megosztott hozzáférési szabályzat, amely csak ezeket az engedélyeket tartalmazza, ezért létre kell hoznia egyet.
 
-[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+Ha olyan megosztott hozzáférési szabályzatot szeretne létrehozni, amely a **szolgáltatás kapcsolódását**, a **beállításjegyzék olvasási**és **beállításjegyzék-írási** engedélyeit, valamint a szabályzat kapcsolati karakterláncának lekérését kéri, kövesse az alábbi lépéseket:
+
+1. Nyissa meg az IoT hubot a [Azure Portal](https://portal.azure.com). Az IoT hub kiválasztásának legegyszerűbb módja az **erőforráscsoportok**kiválasztása. Válassza ki azt az erőforráscsoportot, ahol az IoT hub található, majd válassza ki az IoT hubot az erőforrások listájából.
+
+2. Az IoT hub bal oldali ablaktábláján válassza a **megosztott hozzáférési házirendek**elemet.
+
+3. A szabályzatok listájának felső menüjében válassza a **Hozzáadás**lehetőséget.
+
+4. A **megosztott hozzáférési házirend hozzáadása** panelen adjon meg egy leíró nevet a szabályzatnak; például: *serviceAndRegistryReadWrite*. Az **engedélyek**területen válassza a **szolgáltatás kapcsolódása** és a **beállításjegyzék írása** lehetőséget (a**beállításjegyzék olvasása** beállítás automatikusan kiválasztásra kerül a beállításjegyzék **írásakor**). Ezután kattintson a **Létrehozás** elemre.
+
+    ![Új megosztott elérési házirend hozzáadásának megjelenítése](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
+
+5. A **megosztott hozzáférési szabályzatok** panelen válassza ki az új házirendet a házirendek listájából.
+
+6. A **megosztott elérési kulcsok**területen válassza a **kapcsolati sztring – elsődleges kulcs** másolási ikonját, és mentse az értéket.
+
+    ![A kapcsolati karakterlánc lekérésének megjelenítése](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
+
+További információ a IoT Hub megosztott hozzáférési szabályzatokról és engedélyekről: [hozzáférés-vezérlés és engedélyek](./iot-hub-devguide-security.md#access-control-and-permissions).
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Feladatok ütemezhetnek közvetlen metódus hívásához és az eszközök Twin tulajdonságainak frissítéséhez
 
@@ -172,9 +196,13 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely egy k�
     pip install azure-iothub-service-client
     ```
 
+   > [!NOTE]
+   > Az Azure-iothub-Service-Client és az Azure-iothub-Device-Client pip-csomagjai jelenleg csak Windows operációs rendszer esetén érhetők el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) a Pythonhoz című témakörben.
+   >
+
 2. Egy szövegszerkesztővel hozzon létre egy új **scheduleJobService.py** -fájlt a munkakönyvtárában.
 
-3. Adja hozzá a `import` következő utasításokat és változókat a **scheduleJobService.py** fájl elejéhez:
+3. Adja hozzá a `import` következő utasításokat és változókat a **scheduleJobService.py** fájl elejéhez. Cserélje le `{IoTHubConnectionString}` a helyőrzőt arra a IoT hub-IoT, amelyet korábban átmásolt a beolvasás [az hub-kapcsolatok karakterláncában](#get-the-iot-hub-connection-string). Cserélje le `{deviceId}` a helyőrzőt az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítójával:
 
     ```python
     import sys

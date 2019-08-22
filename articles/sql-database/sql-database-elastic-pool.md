@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 305a35d1d40d94d1ce8e463b4af51eb84278bc3f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510254"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876402"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>A rugalmas készletek segítségével több Azure SQL Database-adatbázist kezelhet és méretezheti
 
@@ -155,8 +155,14 @@ A rugalmas készletbe helyezett adatbázisok általánosságban ugyanazokat [az 
 
 Kétféle módon hozhat létre rugalmas készletet a Azure Portal.
 
-1. Rugalmas készletet úgy hozhat létre, ha az **SQL rugalmas készletet** keresi a **piactéren** , vagy a **+ Hozzáadás** lehetőségre kattint az SQL rugalmas készletek Tallózás paneljén. Egy új vagy egy meglévő kiszolgálót is meg tud adni a készlet üzembe helyezési munkafolyamatán keresztül.
-2. Vagy létrehozhat egy rugalmas készletet úgy, hogy egy meglévő SQL Server-kiszolgálóra navigál, és a **készlet létrehozása** lehetőségre kattint, hogy közvetlenül a kiszolgálóra hozzon létre egy készletet. Az egyetlen különbség, hogy kihagyja azt a lépést, ahol a kiszolgálót a készlet üzembe helyezési munkafolyamata során meg kell adnia.
+1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az Azure SQL nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az *Azure SQL* kifejezést a keresőmezőbe.
+2. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A rugalmas készletekre vonatkozó további információkat az **adatbázisok** csempén látható **Részletek megjelenítése** lehetőség kiválasztásával tekintheti meg.
+3. Az **adatbázisok** csempén válassza a **rugalmas készlet** lehetőséget az **Erőforrás típusa** legördülő menüben, majd válassza a **Létrehozás**lehetőséget:
+
+   ![Rugalmas készlet létrehozása](./media/sql-database-elastic-pool/create-elastic-pool.png)
+
+
+1. Vagy létrehozhat egy rugalmas készletet egy meglévő Azure SQL Server-kiszolgálóhoz való navigálással, majd az **+ új készlet** lehetőségre kattintva közvetlenül a kiszolgálóra hozhat létre készletet.
 
 > [!NOTE]
 > Egy kiszolgálón több készlet is létrehozható, de nem adhat hozzá különböző kiszolgálókon lévő adatbázisokat ugyanahhoz a készlethez.

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 05/11/2018
+ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb35cc99164cc8da047e8309d63bf7909abf4815
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 50297147d371898c35259bf4be59337eaa716579
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846031"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877856"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Gyors útmutató: SQL Server 2017-et futtató, Windows rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -42,16 +42,15 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) a fiók használatával.
 
-1. Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget. 
+1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az *Azure SQL* kifejezést a keresőmezőbe.
+1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. További információkat az **SQL Virtual Machines** csempén a **Részletek megjelenítése** lehetőség kiválasztásával tekinthet meg.
+1. Válassza ki **az ingyenes SQL Server licencet: SQL Server 2017 fejlesztő a Windows Server 2016** rendszerképet a legördülő menüből.
 
-1. A Keresés mezőbe írja be `SQL Server 2017 Developer on Windows Server 2016`a kifejezést, majd nyomja le az ENTER billentyűt. Bontsa ki a SQL Server 2017 elemet a Windows Server 2016 lehetőségnél. 
-
-1. Válassza ki **az ingyenes SQL Server licencet: SQL Server 2017 fejlesztő a Windows Server 2016** rendszerképet. Ez az oktatóanyag azért a Developer kiadást alkalmazza, mert az az SQL Server teljes körű verziója, amely fejlesztési-tesztelési célokra ingyenesen használható. Csak a virtuális gép futtatásával járó költségeket kell kifizetni. A díjszabással kapcsolatos teljes körű információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
-
-   ![Új keresési ablak](./media/quickstart-sql-vm-create-portal/newsearch.png)
-
+   ![Új keresési ablak](./media/quickstart-sql-vm-create-portal/select-sql-2017-vm-image.png)
 
 1. Kattintson a **Létrehozás** gombra.
+
+   ![Új keresési ablak](./media/quickstart-sql-vm-create-portal/create-sql-2017-vm-image.png)
 
 ## <a id="configure"></a> Az alapvető adatok megadása
 
@@ -62,7 +61,7 @@ Az **alapvető beállítások** lapon adja meg a következő információkat:
    ![Subscription](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
 1. A **példány részletei**területen:
-    1. Írja  be a SQLVM **nevet a virtuális gépnek**. 
+    1. Írja be a SQLVM **nevet a virtuális gépnek**. 
     1. Válasszon egy helyet a **régió**számára. 
     1. Ebben a rövid útmutatóban hagyja, hogy a **rendelkezésre állási beállítások** ne legyenek _infrastruktúra_-redundancia megadása. További információ a rendelkezésre állási lehetőségekről: [rendelkezésre állás](../../windows/availability.md). 
     1. A **rendszerkép** listában válassza _az ingyenes SQL Server licenc: SQL Server 2017 fejlesztői Windows Server 2016_rendszeren. 

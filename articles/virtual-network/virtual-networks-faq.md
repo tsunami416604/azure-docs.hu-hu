@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ebb9028aab8626554d0f5fede15129c141d441cb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 7ec731c6b75ff556c9e00f7041fea32f807fe5f4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035340"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892024"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -29,9 +29,11 @@ Az Azure Virtual Network (VNet) a saját hálózatának ábrázolása a felhőbe
 
 Virtuális hálózatok használata a következőhöz:
 
-* Hozzon létre egy dedikált privát felhőalapú VNet, esetenként nem szükséges létesítmények közötti konfigurációt létrehozni a megoldáshoz. VNet létrehozásakor a VNet belüli szolgáltatásai és virtuális gépei közvetlenül és biztonságosan kommunikálhatnak egymással a felhőben. A megoldás részeként továbbra is konfigurálhat végponti kapcsolatokat a virtuális gépekhez és az internetes kommunikációt igénylő szolgáltatásokhoz.
-* Az adatközpontok biztonságosan bővíthetők a virtuális hálózatok, így a hagyományos helyek közötti (S2S) VPN-ek segítségével biztonságosan méretezheti az adatközpont kapacitását. A S2S VPN-ek az IPSEC használatával biztonságos kapcsolatot biztosítanak a vállalati VPN-átjáró és az Azure között.
-* A hibrid Felhőbeli forgatókönyvek lehetővé teszik, hogy a hibrid felhőalapú forgatókönyvek széles választékát virtuális hálózatok. Biztonságosan csatlakoztathatók a felhőalapú alkalmazások bármilyen típusú helyszíni rendszerhez, például nagyszámítógépekhez és UNIX rendszerekhez.
+* Hozzon létre egy dedikált privát felhőalapú VNet. Előfordulhat, hogy a megoldáshoz nem szükséges a létesítmények közötti konfiguráció. VNet létrehozásakor a VNet belüli szolgáltatásai és virtuális gépei közvetlenül és biztonságosan kommunikálhatnak egymással a felhőben. A megoldás részeként továbbra is konfigurálhat végponti kapcsolatokat a virtuális gépekhez és az internetes kommunikációt igénylő szolgáltatásokhoz.
+
+* Biztonságosan kiterjesztheti az adatközpontot. A virtuális hálózatok segítségével hagyományos, helyek közötti (S2S) VPN-eket hozhat létre az adatközpont kapacitásának biztonságos skálázásához. A S2S VPN-ek az IPSEC használatával biztonságos kapcsolatot biztosítanak a vállalati VPN-átjáró és az Azure között.
+
+* Hibrid Felhőbeli forgatókönyvek engedélyezése. A virtuális hálózatok révén rugalmasan támogathatja a hibrid felhőalapú forgatókönyvek széles körét. Biztonságosan csatlakoztathatók a felhőalapú alkalmazások bármilyen típusú helyszíni rendszerhez, például nagyszámítógépekhez és UNIX rendszerekhez.
 
 ### <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
 A kezdéshez látogasson el a [virtuális hálózat dokumentációjában](https://docs.microsoft.com/azure/virtual-network/) . Ez a tartalom áttekintést nyújt az összes VNet-szolgáltatásról, és a központi telepítési információkat tartalmazza.

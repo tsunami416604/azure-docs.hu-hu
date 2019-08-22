@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 3d3fc1541fb99d8d1219392158c3b87cd6ff99aa
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: MT
+ms.openlocfilehash: 37624c79a345f956de9a289c672340e391199e2f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033532"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650689"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -225,7 +225,7 @@ Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni. További tippekért t
 
 #### <a name="description"></a>**Leírás**
 
-A mező kitöltése kötelező. A leírásban szerepeltetni kívánt elemek: 
+Ez egy kötelező mező. A leírásban szerepeltetni kívánt elemek: 
 
 * A Leírás első néhány mondatában egyértelműen ismertesse ajánlata értékét.  
 * Ne feledje, hogy az első néhány mondat a keresőmotor eredményei között jelenhet meg.  
@@ -302,12 +302,7 @@ Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címk�
 
     A fentiek így néznek ki:
 
-    <h1>Ez az 1. címsor</h1> 
-    <h2>Ez a 2. fejléc</h2> 
-    <h3>Ez a 3. címsor</h3> 
-    <h4>Ez a 4. címsor</h4> 
-    <h5>Ez az 5. címsor</h5> 
-    <h6>Ez a 6. címsor</h6> 
+    ![Minta fejlécek](./media/heading.png)
 
 #### <a name="links"></a>Hivatkozások
 

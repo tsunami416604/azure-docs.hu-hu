@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 08/19/2019
 ms.author: v-adgera
-ms.openlocfilehash: 64a980ba8ed581b3cad369951220d47baf9e17ab
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: f211206bc2408fe55f6742622b5b0e56d1ab4d90
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849290"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656525"
 ---
 # <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
 
@@ -26,6 +26,9 @@ Ez a cikk a követendő ajánlott eljárásokat foglalja össze.
 > [!IMPORTANT]
 > A IoT-terület maximális biztonságának biztosításához tekintse át a további biztonsági forrásokat. Ügyeljen rá, hogy tartalmazza az eszközök gyártóit.
 
+> [!TIP]
+> A IoT biztonsági fenyegetések és biztonsági rések észleléséhez használja [a IoT Azure Security Center](https://docs.microsoft.com/azure/asc-for-iot/) .
+
 ## <a name="iot-security-best-practices"></a>Ajánlott biztonsági eljárások az IoT-hez
 
 Néhány kulcsfontosságú eljárás a IoT-eszközök biztonságos biztonságossá tételéhez a következők:
@@ -36,6 +39,7 @@ Néhány kulcsfontosságú eljárás a IoT-eszközök biztonságos biztonságoss
 > * Vegye figyelembe az eszközök IP-címek szűrésének és a portok korlátozásának lehetséges használatát.
 > * A teljesítmény javítása érdekében korlátozza az I/O és az eszköz sávszélességét. A díjszabási korlátozás a szolgáltatásmegtagadási támadások megakadályozásával növelheti a biztonságot.
 > * Az eszköz belső vezérlőprogramja naprakészen tartása.
+> * Az eszközök, a hálózat és az átjáró biztonsági eljárásainak rendszeres időközönkénti ellenőrzése és áttekintése, mivel azok továbbra is javítják és fejlődnek.
 
 A IoT-területek biztonságos biztonságossá tételéhez szükséges alapvető eljárások a következők:
 
@@ -43,6 +47,7 @@ A IoT-területek biztonságos biztonságossá tételéhez szükséges alapvető 
 > * Mentett, tárolt vagy állandó adattitkosítás.
 > * A jelszavak vagy kulcsok rendszeres módosításának vagy frissítésének megkövetelése.
 > * A hozzáférés és az engedélyek körültekintő korlátozása szerepkör alapján. Tekintse meg az alábbi, [szerepköralapú hozzáférés-vezérléssel kapcsolatos ajánlott eljárásokat](#rbac) .
+> * Vegye fontolóra egy megosztott hálózati topológiát, hogy az egyes hálózatokon lévő eszközök el legyenek különítve a többitől.
 > * Hatékony titkosítás használata. Hosszú jelszavak megkövetelése és biztonságos protokollok és kétfaktoros hitelesítés használata.
 
 [Figyelő](./how-to-configure-monitoring.md) A IoT a szokásos művelet tartományán kívül eső kiugró adatokat, fenyegetéseket vagy erőforrás-paramétereket figyeli. Az Azure Analytics használata figyelési felügyelethez.

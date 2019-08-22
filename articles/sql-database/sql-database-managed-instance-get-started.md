@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 646a602d7e6c47454f039a5f4f1981a60b56fa56
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cacd67e26b13df8ef456ac8f1391e4396f5bdd96
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567519"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873870"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Azure SQL Database felügyelt példány létrehozása
 
@@ -35,11 +35,11 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 A következő lépések bemutatják, hogyan hozhat létre felügyelt példányt.
 
-1. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában.
-2. Keresse meg a **felügyelt példányt**, majd válassza az **Azure SQL felügyelt példány**lehetőséget.
-3. Kattintson a **Létrehozás** gombra.
+1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az Azure SQL nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az *Azure SQL* kifejezést a keresőmezőbe.
+2. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. Azure SQL Database felügyelt példányra vonatkozó további információkat a felügyelt példányok csempén látható **Részletek megjelenítése** lehetőség választásával tekintheti meg.
+3. Válassza a **Létrehozás**lehetőséget:
 
-   ![Felügyelt példány létrehozása](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
+   ![Felügyelt példány létrehozása](./media/sql-database-managed-instance-get-started/create-managed-instance.png)
 
 4. Töltse ki az **SQL felügyelt példány** űrlapját a kért információkkal a következő táblázatban található információk alapján.
 

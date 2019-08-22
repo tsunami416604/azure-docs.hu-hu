@@ -4,14 +4,14 @@ description: A funkciók az Azure Resource Manager-sablon használatával lekér
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 08/06/2019
+ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2ec6e58438e7be953e1f672fb815ff3f68a7f252
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2cd37405176eefa8f4445942b9fbf1afc2a7404a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839256"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650417"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Erőforrás-funkciók az Azure Resource Manager-sablonok
 
@@ -634,7 +634,7 @@ Az előző példában egy objektumot ad vissza a következő formátumban:
 
 ## <a name="resourceid"></a>resourceId
 
-`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
+`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
 
 Adja vissza egy adott erőforrás egyedi azonosítója. A függvény akkor használható, ha az erőforrás neve nem egyértelmű vagy ugyanabban a sablonban nincs kiépítve. 
 
@@ -646,43 +646,46 @@ Adja vissza egy adott erőforrás egyedi azonosítója. A függvény akkor haszn
 | resourceGroupName |Nem |sztring |Alapértelmezett érték az aktuális erőforráscsoportban. Adja meg ezt az értéket, amikor szüksége van egy másik erőforráscsoportban található egy erőforrás lekérése. |
 | resourceType |Igen |sztring |Felhasznált erőforrás típusa, beleértve az erőforrás-szolgáltató névtere. |
 | resourceName1 |Igen |sztring |Erőforrás neve. |
-| resourceName2 |Nem |sztring |Következő erőforrás neve szegmens Ha erőforrás van beágyazva. |
+| resourceName2 |Nem |Karakterlánc |A következő erőforrás neve szegmens, ha szükséges. |
+
+Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
 ### <a name="return-value"></a>Vrácená hodnota
 
 Az azonosító a következő formátumban adja vissza:
 
-```json
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-```
+**/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}**
+
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ha [előfizetés szintű központi telepítéssel](deploy-to-subscription.md)használja, a `resourceId()` függvény csak az adott szinten üzembe helyezett erőforrások azonosítóját tudja beolvasni. Lekérheti például a házirend-definíció vagy a szerepkör-definíció AZONOSÍTÓját, de nem a Storage-fiók AZONOSÍTÓját. Az erőforráscsoporthoz való központi telepítések esetén az ellenkező érték igaz. Nem lehet lekérni az előfizetés szintjén üzembe helyezett erőforrások erőforrás-AZONOSÍTÓját.
+Az Ön által megadott paraméterek száma attól függően változik, hogy az erőforrás szülő-vagy gyermek erőforrás-e, és hogy az erőforrás ugyanabban az előfizetésben vagy erőforráscsoporthoz van-e.
 
-Az erőforrás-e az azonos előfizetésben és erőforráscsoportban tartozik, mint a jelenlegi üzemelő példány a megadott paraméterértékek függenek. Egy tárfiók ugyanabban az előfizetésben és erőforráscsoportban található az erőforrás-azonosító lekéréséhez használja:
-
-```json
-"[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
-```
-
-A tárfiók ugyanahhoz az előfizetéshez, de egy másik erőforráscsoportban található az erőforrás-azonosító lekéréséhez használja:
+Az azonos előfizetésben és erőforráscsoporthoz tartozó szülő erőforráshoz tartozó erőforrás-azonosító lekéréséhez adja meg az erőforrás típusát és nevét.
 
 ```json
-"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
+"[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-Az erőforrás-azonosítója egy storage-fiók egy másik előfizetésben és erőforráscsoportban, amelyet:
+Egy alárendelt erőforrás erőforrás-AZONOSÍTÓjának lekéréséhez figyeljen az erőforrástípus szegmensek számára. Adja meg az erőforrástípus minden szegmensének erőforrás-nevét. A szegmens neve a hierarchia adott részéhez tartozó erőforrásnak felel meg.
+
+```json
+"[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
+```
+
+Ha egy erőforrás erőforrás-AZONOSÍTÓját szeretné lekérni ugyanabba az előfizetésbe, de más erőforráscsoporthoz, adja meg az erőforráscsoport nevét.
+
+```json
+"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
+```
+
+Egy másik előfizetéshez és erőforráscsoporthoz tartozó erőforrás-azonosító lekéréséhez adja meg az előfizetés AZONOSÍTÓját és az erőforráscsoport nevét.
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Egy adatbázis egy másik erőforráscsoportban található az erőforrás-azonosító lekéréséhez használja:
-
-```json
-"[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
-```
+Ha [előfizetés szintű központi telepítéssel](deploy-to-subscription.md)használja, a `resourceId()` függvény csak az adott szinten üzembe helyezett erőforrások azonosítóját tudja beolvasni. Lekérheti például a házirend-definíció vagy a szerepkör-definíció AZONOSÍTÓját, de nem a Storage-fiók AZONOSÍTÓját. Az erőforráscsoporthoz való központi telepítések esetén az ellenkező érték igaz. Nem lehet lekérni az előfizetés szintjén üzembe helyezett erőforrások erőforrás-AZONOSÍTÓját.
 
 Az előfizetési szintű erőforrások erőforrás-AZONOSÍTÓjának lekéréséhez az előfizetés hatókörében való üzembe helyezéskor használja a következőt:
 

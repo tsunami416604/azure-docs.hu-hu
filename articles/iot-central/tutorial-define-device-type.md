@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 54884728533aeff0472ed99660be00478227fbcd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fd3ec276fdc95ad326d14a5b21e8ab793b154080
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056779"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875780"
 ---
-# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Az Azure IoT Central alkalmazásban egy új eszköztípus definiálása
+# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Új eszköz típusának meghatározása az Azure IoT Central alkalmazásban
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan definiálhat új eszköztípust egy eszközsablon használatával a Microsoft Azure IoT Central alkalmazásban. Az eszközsablon határozza meg az eszköztípus telemetriáját, állapotát, tulajdonságait és beállításait.
 
@@ -25,7 +27,7 @@ A valós eszköz csatlakoztatása előtt az alkalmazás teszteléséhez az IoT C
 Ebben az oktatóanyagban egy **Csatlakoztatott légkondicionáló** eszközsablont hoz létre. Egy csatlakoztatott légkondicionáló eszköz:
 
 * Telemetriát küld, például a hőmérsékletet és a páratartalmat.
-* Például, hogy be- vagy kikapcsolása állapotot jelez.
+* A jelentések állapota, például az, hogy be van-e kapcsolva.
 * Olyan eszköztulajdonságokkal rendelkezik, mint a belső vezérlőprogram verziója és a sorozatszám.
 * Olyan beállításokkal rendelkezik, mint a célhőmérséklet.
 
@@ -53,7 +55,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazá
 
     ![Lépjen a céges fiókjába](./media/tutorial-define-device-type/sign-in.png)
 
-3. Egy új Azure IoT központi alkalmazás létrehozásának megkezdéséhez válassza **új alkalmazás**:
+3. Új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassza az **új alkalmazás**lehetőséget:
 
     ![Azure IoT Central Alkalmazáskezelő oldal](./media/tutorial-define-device-type/iotcentralhome.png)
 
@@ -73,50 +75,50 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazá
 
      További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 
-## <a name="create-a-device-template"></a>Egy eszköz-sablon létrehozása
+## <a name="create-a-device-template"></a>Eszköz sablonjának létrehozása
 
-Szerkesztőként létrehozhatja és szerkesztheti az alkalmazásban lévő eszközsablonokat. Egy eszközsablon létrehozásakor az Azure IoT Central létrehoz egy szimulált eszközt a sablonból. A szimulált eszköz, amely lehetővé teszi, hogy tesztelje az alkalmazás viselkedésének valós eszköz csatlakoztatása előtt telemetriát hoz létre.
+Szerkesztőként létrehozhatja és szerkesztheti az alkalmazásban lévő eszközsablonokat. Egy eszközsablon létrehozásakor az Azure IoT Central létrehoz egy szimulált eszközt a sablonból. A szimulált eszköz olyan telemetria hoz létre, amely lehetővé teszi az alkalmazás viselkedésének tesztelését a valódi eszköz csatlakoztatása előtt.
 
-Csatlakoznia kell egy új eszköz sablon hozzáadása az alkalmazáshoz, a **eszközsablonok** lapot. Ehhez tehát válassza ki a **eszközsablonok** a bal oldali navigációs menüben.
+Új sablon az alkalmazáshoz való hozzáadásához nyissa meg az **eszközök sablonjai** lapot. Ehhez válassza ki az **eszközök sablonjait** a bal oldali navigációs menüben.
 
-![Eszköz sablonok lap](./media/tutorial-define-device-type/devicetemplates.png)
+![Eszközök sablonjai lap](./media/tutorial-define-device-type/devicetemplates.png)
 
-## <a name="add-a-device-template"></a>Egy eszköz sablon hozzáadása
+## <a name="add-a-device-template"></a>Eszköz sablonjának hozzáadása
 
 A következő lépések bemutatják, hogyan hozhat létre egy új **Csatlakoztatott légkondicionáló** eszközsablont olyan eszközökhöz, amelyek hőmérsékleti telemetriát küldenek az alkalmazásra:
 
-1. Az a **eszközsablonok** lapon jelölje be **+ új**:
+1. Az **eszközök sablonjai** lapon válassza az **+ új**lehetőséget:
 
-    ![Sablonok oldaláról, eszköz-sablon létrehozása](./media/tutorial-define-device-type/newtemplate.png)
+    ![Eszközök sablonjai lap, eszköz sablonjának létrehozása](./media/tutorial-define-device-type/newtemplate.png)
 
-2. Az oldal mutatja a sablonok közül választhat.
+2. A lapon a választható sablonok láthatók.
 
-    ![Eszköz könyvtár](./media/tutorial-define-device-type/devicetemplatelibrary.png)
+    ![Eszköz sablonjának könyvtára](./media/tutorial-define-device-type/devicetemplatelibrary.png)
 
-3. Válassza ki a **egyéni**, adja meg **Légkondicionálóját csatlakoztatott** , az eszköz sablont, és válassza ki a neveként **létrehozás**. Az eszköz képét is feltöltheti, amelyet az operátorok láthatnak az Eszközkeresőben:
+3. Válassza az **Egyéni**lehetőséget, írja be a **csatlakoztatott légkondicionáló** nevet az eszköz sablonjának neveként, majd válassza a **Létrehozás**lehetőséget. Az eszköz képét is feltöltheti, amelyet az operátorok láthatnak az Eszközkeresőben:
 
     ![Egyéni eszköz](./media/tutorial-define-device-type/createcustomdevice.png)
 
-4. Az a **Légkondicionálóját csatlakoztatott** eszköz sablon, ellenőrizze, hogy nekik a **mérések** lapra, ahol megadhatja a telemetriát. Minden eszköz sablon határoz meg, hogy külön lapokon rendelkezik:
+4. A **csatlakoztatott légkondicionáló** eszköz sablonjában ellenőrizze, hogy a mérések lapon a telemetria határozza meg. Minden egyes definiált sablon külön lapokkal rendelkezik a következő eszközökhöz:
 
-   * Adja meg a _mérések_, például a telemetriai esemény és állapotáról, az eszköz által küldött.
+   * Adja megaz eszköz által eljuttatott mértékeket, például a telemetria, az eseményt és az állapotot.
 
-   * Adja meg a _beállítások_ használja az eszköz vezérlésére.
+   * Az eszköz vezérléséhez használt _Beállítások_ megadása.
 
-   * Adja meg a _tulajdonságok_ , amelyek az eszköz metaadatait.
+   * Adja meg az eszköz metaadatainak _tulajdonságait_ .
 
-   * Adja meg a _parancsok_ közvetlenül az eszközön futtatható.
+   * A közvetlenül az eszközön futtatandó _parancsok_ megadása.
 
-   * Adja meg a _szabályok_ az eszközhöz társított.
+   * Az eszközhöz társított _szabályok_ megadása.
 
-   * Az eszköz testre szabásához _irányítópult_ az operátorok számára.
+   * Szabja testre az eszköz irányítópultját a kezelők számára.
 
      ![A légkondicionáló mérései](./media/tutorial-define-device-type/airconmeasurements.png)
 
      > [!NOTE]
-     > Ha módosítani szeretné az eszköz-sablon nevét, válassza ki a sablon nevét az oldal tetején.
+     > Ha módosítani szeretné az eszköz sablonjának nevét, válassza ki a sablon nevét az oldal tetején.
 
-5. A hőmérsékleti telemetria mérték hozzáadásához válassza **+ új mérték**. Ezután válassza a **Telemetriát** a mérés típusaként:
+5. A hőmérséklet telemetria mértékének hozzáadásához válassza az **+ új mérték**lehetőséget. Ezután válassza a **Telemetriát** a mérés típusaként:
 
     ![A csatlakoztatott légkondicionáló mérései](./media/tutorial-define-device-type/airconmeasurementsnew.png)
 
@@ -130,23 +132,23 @@ A következő lépések bemutatják, hogyan hozhat létre egy új **Csatlakoztat
 
      A **Hőmérséklet** telemetria konfigurálásához használja a következő táblázatban lévő információkat:
 
-     | Beállítás              | Érték         |
+     | Beállítás              | Value         |
      | -------------------- | -----------   |
-     | Megjelenített név         | Hőmérséklet   |
+     | Megjelenítendő név         | Hőmérséklet   |
      | Mezőnév           | hőmérséklet   |
-     | Egység                | F             |
+     | Mértékegységek                | P             |
      | Min                  | 60            |
      | Max                  | 110           |
      | Tizedeshelyek       | 0             |
 
-     A telemetria megjelenítésének színét is kiválaszthatja. A telemetria-definíció mentéséhez válassza **mentése**:
+     A telemetria megjelenítésének színét is kiválaszthatja. A telemetria-definíció mentéséhez válassza a **Mentés**lehetőséget:
 
      ![Hőmérsékleti szimuláció konfigurálása](./media/tutorial-define-device-type/temperaturesimulation.png)
 
-7. Rövid idővel a **mérések** lapon látható a csatlakoztatott légkondicionálóját szimulált eszközről hőmérsékleti telemetria. A vezérlőkkel kezelheti a láthatóságot, az összesítést, vagy szerkesztheti a telemetria definícióját:
+7. Rövid idő elteltével a mérések lap a szimulált csatlakoztatott légkondicionáló eszköz hőmérsékleti telemetria diagramját jeleníti meg. A vezérlőkkel kezelheti a láthatóságot, az összesítést, vagy szerkesztheti a telemetria definícióját:
  
     > [!NOTE]
-    > A telemetriai adatokat **átlagos** van beállítva, az alapértelmezett összesítés. 
+    > A telemetria esetében az **átlag** az alapértelmezett összesítésként van beállítva. 
 
     ![Hőmérsékleti szimuláció megtekintése](./media/tutorial-define-device-type/viewsimulation.png)
 
@@ -154,11 +156,11 @@ A következő lépések bemutatják, hogyan hozhat létre egy új **Csatlakoztat
 
     ![A diagram testreszabása](./media/tutorial-define-device-type/customizechart.png)
 
-## <a name="add-an-event-measurement"></a>Egy esemény mérték felvétele
+## <a name="add-an-event-measurement"></a>Esemény mértékének megadása
 
-Események segítségével határozza meg, amely az eszköz küld, amikor nincs hiba vagy összetevőhiba például időponthoz adatok. Az Azure IoT Central szimulálhatja eszköz események ahhoz, hogy tesztelje az alkalmazás viselkedésének valós eszköz csatlakoztatása előtt. Az eszköz-sablon esemény mértékek definiálása a **mérések** megtekintése.
+Az események segítségével meghatározhatja az adott időponthoz tartozó adatokat, amelyeket az eszköz akkor küld, amikor egy esemény, például egy hiba vagy egy összetevő meghibásodik. Az Azure IoT Central képes szimulálni az eszköz eseményeit, hogy a valódi eszköz csatlakoztatása előtt tesztelje az alkalmazás viselkedését. Adja meg az eszköz sablonjának mérőszámait a **mérések** nézetben.
 
-1. Hozzáadása a **ventilátor Motor hiba** esemény mérési válassza **+ új mérték**. Ezután válassza az **Eseményt** a mérés típusaként:
+1. A **ventilátor motoros hiba** eseményének méréséhez válassza az **+ új mérték**lehetőséget. Ezután válassza az **Eseményt** a mérés típusaként:
 
     ![A csatlakoztatott légkondicionáló mérései](./media/tutorial-define-device-type/eventnew.png)
 
@@ -172,33 +174,33 @@ Események segítségével határozza meg, amely az eszköz küld, amikor nincs 
 
      A **Ventilátormotor-hiba** esemény konfigurálásához használja a következő táblázatban lévő információkat:
 
-     | Beállítás              | Érték             |
+     | Beállítás              | Value             |
      | -------------------- | -----------       |
-     | Megjelenített név         | Ventilátormotor-hiba   |
+     | Megjelenítendő név         | Ventilátormotor-hiba   |
      | Mezőnév           | fanmotorerr       |
-     | Severity             | Hiba             |
+     | severity             | Hiba             |
 
-     Az esemény-definíció mentéséhez válassza **mentése**:
+     Az esemény definíciójának mentéséhez válassza a **Mentés**lehetőséget:
 
      ![Esemény mérésének konfigurálása](./media/tutorial-define-device-type/eventconfiguration.png)
 
-3. Rövid idővel a **mérések** lapon látható a csatlakoztatott légkondicionálóját szimulált eszközről véletlenszerűen létrehozott eseményeket. A vezérlőkkel kezelheti a láthatóságot, vagy szerkesztheti az esemény definícióját:
+3. Rövid idő elteltével a mérések lap a szimulált csatlakoztatott légkondicionáló eszközből véletlenszerűen generált események diagramját jeleníti meg. A vezérlőkkel kezelheti a láthatóságot, vagy szerkesztheti az esemény definícióját:
 
     ![Esemény szimulációjának megtekintése](./media/tutorial-define-device-type/eventview.png)
 
-1. Az esemény további részleteit, jelölje ki a diagramon az esemény:
+1. Az esemény további részleteinek megtekintéséhez válassza ki az eseményt a diagramon:
 
     ![Eseményadatok megtekintése](./media/tutorial-define-device-type/eventviewdetail.png)
 
-## <a name="define-a-state-measurement"></a>Állapot a mérés definiálása
+## <a name="define-a-state-measurement"></a>Állapot mértékének meghatározása
 
-Állapot segítségével határozza meg, és az eszköz vagy az összetevő állapotának megjelenítése egy időszakon belül. Az Azure IoT Central szimulálhatja ahhoz, hogy tesztelje az alkalmazás viselkedését, mielőtt valós eszköz csatlakoztatása az eszköz állapotát. A **Mérések** nézetben határozhatja meg az eszköztípusa állapotméréseit.
+Az állapot használatával meghatározhatja és megjelenítheti az eszköz vagy az összetevő állapotát egy adott időszakban. Az Azure IoT Central képes szimulálni az eszköz állapotát, hogy a valódi eszköz csatlakoztatása előtt tesztelje az alkalmazás viselkedését. A **Mérések** nézetben határozhatja meg az eszköztípusa állapotméréseit.
 
-1. Hozzáadása egy **ventilátor mód** állapot mérési, jelölje be **+ új mérték**. Ezután válassza az **Állapotot** a mérés típusaként:
+1. **Ventilátoros üzemmód** állapotának méréséhez válassza az **+ új mérték**lehetőséget. Ezután válassza az **Állapotot** a mérés típusaként:
 
     ![Csatlakoztatott légkondicionáló állapotának mérései](./media/tutorial-define-device-type/statenew.png)
 
-2. Megadhat egy eszköz sablon tartalmazza állapota minden típusú [konfigurációs beállítások](howto-set-up-template.md) például:
+2. Az adott eszközhöz definiált minden egyes állapot olyan [konfigurációs beállításokat](howto-set-up-template.md) tartalmaz, mint például a következő:
 
    * Megjelenítendő név.
 
@@ -210,38 +212,38 @@ Események segítségével határozza meg, amely az eszköz küld, amikor nincs 
 
      A **Ventilátor mód** állapot konfigurálásához használja a következő táblázatban lévő információkat:
 
-     | Beállítás              | Érték             |
+     | Beállítás              | Value             |
      | -------------------- | -----------       |
-     | Megjelenített név         | Ventilátor mód          |
+     | Megjelenítendő név         | Ventilátor mód          |
      | Mezőnév           | fanmode           |
-     | Érték                | 1                 |
+     | Value                | 1                 |
      | Felirat megjelenítése        | Üzemel         |
-     | Érték                | 0                 |
+     | Value                | 0                 |
      | Felirat megjelenítése        | Leállítva           |
 
-     Az állapot mérési definíció mentéséhez válassza **mentése**:
+     Az állapot-mérési definíció mentéséhez válassza a **Mentés**lehetőséget:
 
      ![Állapot mérésének konfigurálása](./media/tutorial-define-device-type/stateconfiguration.png)
 
-3. Rövid idővel a **mérések** lapon látható a véletlenszerűen előállított a csatlakoztatott légkondicionálóját szimulált eszközről az államok. A vezérlőkkel kezelheti a láthatóságot, vagy szerkesztheti az állapot definícióját:
+3. Rövid idő elteltével a mérések lap a szimulált csatlakoztatott légkondicionáló eszközből véletlenszerűen generált állapotok diagramját jeleníti meg. A vezérlőkkel kezelheti a láthatóságot, vagy szerkesztheti az állapot definícióját:
 
     ![Állapot szimulációjának megtekintése](./media/tutorial-define-device-type/stateview.png)
 
-4. Az eszköz által küldött belül egy kis időtartam túl sok adatpont esetén az állapot mértéket egy másik vizualizációval rendelkező jelenik meg. Válassza ki a diagram összes adatponttal adott időtartamon belül időrendi sorrendben jelennek meg. Le is szűkítheti az időtartományt, hogy részletesebben lássa a méréseket.
+4. Ha túl sok adatpontot küld az eszköz egy kis időtartamon belül, az állapot mérése egy másik vizualizációval jelenik meg. Válassza ki a diagramot, hogy az adott időszakon belül az összes adatpont megjelenjen időrendi sorrendben. Le is szűkítheti az időtartományt, hogy részletesebben lássa a méréseket.
 
 ## <a name="settings-properties-and-commands"></a>Beállítások, tulajdonságok és parancsok
 
 A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatározott különböző értékek, és az egyes eszközökhöz vannak társítva:
 
-* _Beállítások_ használatával küldhet konfigurációs adatokat egy eszközre az alkalmazásból. Egy operátor például egy beállítás használatával módosíthatja az eszköz telemetriai időközét két másodpercről öt másodpercre. Módosításakor az operátornak egy beállítást, a beállítás mindig "folyamatban" van megjelölve a felhasználói felületen, amíg az eszköz egy visszaigazoló fűzi hozzá.
+* _Beállítások_ használatával küldhet konfigurációs adatokat egy eszközre az alkalmazásból. Egy operátor például egy beállítás használatával módosíthatja az eszköz telemetriai időközét két másodpercről öt másodpercre. Amikor egy operátor megváltoztatja a beállítást, a beállítás a felhasználói felületen függőben van megjelölve, amíg az eszköz nem válaszol a nyugtára.
 
 * _Tulajdonságok_ használatával határozhatja meg az eszközzel társított metaadatokat. Két tulajdonságkategória érhető el:
     
-  * Az _alkalmazástulajdonságok_ használatával rögzítheti az eszközzel kapcsolatos információkat az alkalmazásban. Az alkalmazástulajdonságokkal rögzítheti például egy eszköz helyét és utolsó szervizelési dátumát. Ezek a tulajdonságok vannak tárolva az alkalmazást, és nem szinkronizálja az eszközzel. Egy operátor értékeket rendelhet a tulajdonságokhoz.
+  * Az _alkalmazástulajdonságok_ használatával rögzítheti az eszközzel kapcsolatos információkat az alkalmazásban. Az alkalmazástulajdonságokkal rögzítheti például egy eszköz helyét és utolsó szervizelési dátumát. Ezek a tulajdonságok az alkalmazásban tárolódnak, és nem szinkronizálhatók az eszközzel. Egy operátor értékeket rendelhet a tulajdonságokhoz.
 
   * _Eszköztulajdonságok_ használatával engedélyezheti, hogy egy eszköz tulajdonságértékeket küldjön az alkalmazásnak. Ezeket a tulajdonságokat csak az eszköz módosíthatja. Az operátorok számára az eszköztulajdonságok írásvédettek. A csatlakoztatott légkondicionáló forgatókönyvében a belső vezérlőprogram verziója és az eszköz sorozatszáma az eszköz által jelentett eszköztulajdonság.
     
-    További információkért lásd: [tulajdonságok](howto-set-up-template.md#properties) az eszköz sablon beállításával kapcsolatos útmutatója.
+    További információkért lásd az eszköz sablonjának beállítását ismertető útmutató [Tulajdonságok](howto-set-up-template.md#properties) részében.
 
 * A _parancsok_ használatával távoli helyszínről kezelheti az eszközét az alkalmazáson keresztül. Közvetlenül futtathat parancsokat az eszközön a felhőből az eszközök vezérléséhez. Az operátor olyan parancsokat futtathat, mint például az újraindítás, amellyel azonnal újraindíthatja az eszközt.
 
@@ -249,46 +251,46 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
 *Beállítások* használatával engedélyezheti, hogy egy operátor konfigurációs adatokat küldjön egy eszközre. Ebben a szakaszban egy olyan beállítást adhat a **Csatlakoztatott légkondicionáló** eszközsablonhoz, amely lehetővé teszi, hogy egy operátor beállítsa a csatlakoztatott légkondicionáló célhőmérsékletét.
 
-1. Keresse meg a **beállítások** lapján a **csatlakoztatott Légkondicionálóját** eszköz sablont.
+1. Navigáljon a **Beállítások** lapra a **csatlakoztatott légkondicionáló** eszköz sablonja számára.
 
-2. Különböző típusokhoz, például számokhoz vagy szövegekhez hozhat létre beállításokat. Válassza ki **szám** száma beállítás az eszköz hozzáadásához.
+2. Különböző típusokhoz, például számokhoz vagy szövegekhez hozhat létre beállításokat. A **szám** lehetőség kiválasztásával adhat hozzá egy számsorozatot az eszközhöz.
 
 3. A **Megadott hőmérséklet** beállítás konfigurálásához használja a következő táblázatban lévő információkat:
 
-    | Mező                | Érték           |
+    | Mező                | Value           |
     | -------------------- | -----------     |
-    | Megjelenített név         | Megadott hőmérséklet |
+    | Megjelenítendő név         | Megadott hőmérséklet |
     | Mezőnév           | setTemperature  |
-    | Mértékegység      | F               |
+    | Mértékegység      | P               |
     | Tizedesjegyek       | 1               |
     | Minimális érték        | 20              |
     | Maximális érték        | 200             |
     | Kezdeti érték        | 80              |
     | Leírás          | A légkondicionáló célhőmérsékletének beállítása |
 
-    Válassza ki **mentése**:
+    Ezután válassza a **Mentés**lehetőséget:
 
     ![A Megadott hőmérséklet beállítás konfigurálása](./media/tutorial-define-device-type/configuresetting.png)
 
     > [!NOTE]
     > Amikor az eszköz elfogadja a beállítás módosítását, a beállítás **szinkronizálva** állapotra változik.
 
-4. Elrendezésének testre szabhatja a **beállítások** áthelyezésével és a beállítások csempék átméretezése lapon:
+4. A beállítások lap elrendezését a beállítások csempék áthelyezésével és átméretezésével szabhatja testre:
 
     ![A beállítások elrendezésének testreszabása](./media/tutorial-define-device-type/settingslayout.png)
 
 ## <a name="use-properties"></a>Tulajdonságok használata
 
-*Alkalmazástulajdonságok* használatával tárolhatja az eszközzel kapcsolatos információkat az alkalmazásban. Ebben a szakaszban alkalmazástulajdonságokat adhat hozzá a **Csatlakoztatott légkondicionáló** eszközsablonhoz az eszköz helyének és az utolsó szervizelés dátumának tárolásához. Ezek a tulajdonságok akkor szerkeszthető az alkalmazásban. Az eszköz azt is jelenti, például a sorozatszámot és a belső vezérlőprogram verziója, az alkalmazás írásvédett tulajdonságok.
+*Alkalmazástulajdonságok* használatával tárolhatja az eszközzel kapcsolatos információkat az alkalmazásban. Ebben a szakaszban alkalmazástulajdonságokat adhat hozzá a **Csatlakoztatott légkondicionáló** eszközsablonhoz az eszköz helyének és az utolsó szervizelés dátumának tárolásához. Ezek a tulajdonságok szerkeszthetők az alkalmazásban. Az eszköz olyan tulajdonságokat is jelent, mint például a sorozatszám és a belső vezérlőprogram verziója, amely csak olvasható az alkalmazásban.
 
-1. Keresse meg a **tulajdonságok** lapján a **csatlakoztatott Légkondicionálóját** eszköz sablont.
+1. Navigáljon a **csatlakoztatott légkondicionáló** eszközéhez tartozó **Tulajdonságok** lapra.
 
 1. Különböző típusú eszköztulajdonságokat hozhat létre, például számokat vagy szöveget. Ha hely tulajdonságot szeretne adni az eszközsablonhoz, válassza a **Hely** lehetőséget. A hely tulajdonság konfigurálásához használja a következő táblázatban lévő információkat:
 
-    | Mező                | Érték                |
+    | Mező                | Value                |
     | -------------------- | -------------------- |
-    | Megjelenített név         | Location egység             |
-    | Mezőnév           | location             |
+    | Megjelenítendő név         | Location             |
+    | Mező neve           | location             |
     | Kezdeti érték        | Seattle, WA          |
     | Leírás          | Eszközhely      |
 
@@ -302,10 +304,10 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
 1. Az utolsó szervizelés dátuma tulajdonság konfigurálásához használja a következő táblázatban lévő információkat:
 
-    | Mező                | Érték                   |
+    | Mező                | Value                   |
     | -------------------- | ----------------------- |
-    | Megjelenített név         | Utolsó szervizelés dátuma       |
-    | Mezőnév           | serviceDate             |
+    | Megjelenítendő név         | Utolsó szervizelés dátuma       |
+    | Mező neve           | serviceDate             |
     | Kezdeti érték        | 1/1/2019                |
     | Leírás          | Utolsó szervizelés           |
 
@@ -313,17 +315,17 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
     Kattintson a **Mentés** gombra.
 
-1. Elrendezésének testre szabhatja a **tulajdonságok** áthelyezése és átméretezése tulajdonság csempék lapon.
+1. A **Tulajdonságok** lap elrendezését a tulajdonságlapok áthelyezésével és átméretezésével szabhatja testre.
 
 1. Ha egy eszköztulajdonságot, például a belső vezérlőprogram verzióját szeretné hozzáadni az eszközsablonhoz, válassza az **Eszköztulajdonság** lehetőséget.
 
 1. A belső vezérlőprogram verziójának konfigurálásához használja a következő táblázatban lévő információkat:
 
-    | Mező                | Érték                   |
+    | Mező                | Value                   |
     | -------------------- | ----------------------- |
-    | Megjelenített név         | Belső vezérlőprogram verziója        |
+    | Megjelenítendő név         | Belső vezérlőprogram verziója        |
     | Mezőnév           | firmwareVersion         |
-    | Adattípus            | szöveg                    |
+    | Adattípus            | text                    |
     | Leírás          | A légkondicionáló belső vezérlőprogramjának verziója |
 
     ![Belső vezérlőprogram verziójának konfigurálása](./media/tutorial-define-device-type/configureproperties3.png)
@@ -334,11 +336,11 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
 1. A sorozatszám konfigurálásához használja a következő táblázatban lévő információkat:
 
-    | Mező                | Érték                   |
+    | Mező                | Value                   |
     | -------------------- | ----------------------- |
-    | Megjelenített név         | Sorozatszám           |
+    | Megjelenítendő név         | Sorozatszám           |
     | Mezőnév           | serialNumber            |
-    | Adattípus            | szöveg                    |
+    | Adattípus            | text                    |
     | Leírás          | A légkondicionáló sorozatszáma  |
 
     ![Sorozatszám konfigurálása](./media/tutorial-define-device-type/configureproperties4.png)
@@ -352,90 +354,90 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
 A _parancsok_ használatával engedélyezheti, hogy az operátor közvetlenül az eszközön futtasson parancsokat. Ebben a szakaszban egy olyan parancsot adhat a **Csatlakoztatott légkondicionáló** eszközsablonhoz, amely lehetővé teszi, hogy egy operátor a csatlakoztatott légkondicionálón adhasson vissza egy bizonyos üzenetet.
 
-1. Keresse meg a **parancsok** lapján a **csatlakoztatott Légkondicionálóját** eszköz sablon a sablon szerkesztésével.
+1. A sablon szerkesztéséhez navigáljon a **csatlakoztatott légkondicionáló** eszköz sablonjának **parancsok** lapjára.
 
-1. Válassza ki **+ új parancs** parancs hozzáadása az eszköz és az új parancs konfigurálásának megkezdéséhez.
+1. Válassza az **+ új parancs** lehetőséget az eszközhöz tartozó parancs hozzáadásához és az új parancs konfigurálásának megkezdéséhez.
 
 1. Az új parancs konfigurálásához használja a következő táblázatban lévő információkat:
 
-    | Mező                | Érték           |
+    | Mező                | Value           |
     | -------------------- | -----------     |
-    | Megjelenített név         | Echo parancs    |
-    | Mezőnév           | echo            |
-    | Alapértelmezett időtúllépés      | 30              |
-    | Megjelenítés típusa         | szöveg            |
+    | Megjelenítendő név         | Echo parancs    |
+    | Mező neve           | echo            |
+    | Alapértelmezett határidő-túllépés      | 30              |
+    | Megjelenítés típusa         | text            |
     | Leírás          | Eszközparancs  |  
 
-    A következő paranccsal további bemenetek kiválasztásával adhat hozzá **+** a **beviteli mezők**.
+    További bemeneteket is hozzáadhat a parancshoz a **+** **beviteli mezők**kiválasztásával.
 
     ![Felkészülés beállítás hozzáadására](./media/tutorial-define-device-type/commandsecho1.png)
 
      Kattintson a **Mentés** gombra.
 
-1. Elrendezésének testre szabhatja a **parancsok** áthelyezése és átméretezése a parancs csempék lapon.
+1. A **parancsok** lap elrendezését úgy szabhatja testre, hogy áthelyezi és átméretezi a parancs csempéit.
 
 ## <a name="view-your-simulated-device"></a>A szimulált eszköz megtekintése
 
-Most már meghatározta a **Légkondicionálóját csatlakoztatott** eszköz-sablon testre szabhatja a **irányítópult** a mérések, beállítások és tulajdonságok meghatározott tartalmazza. Ezután operátorként megtekintheti az irányítópult előnézetét:
+Most, hogy meghatározta a **csatlakoztatott légkondicionáló** eszköz sablonját, testreszabhatja az **irányítópultját** , hogy tartalmazza a definiált mértékeket, beállításokat és tulajdonságokat. Ezután operátorként megtekintheti az irányítópult előnézetét:
 
-1. Válassza ki a **irányítópult** lapján a **csatlakoztatott Légkondicionálóját** eszköz sablont.
+1. Válassza az **irányítópult** fület a **csatlakoztatott légkondicionáló** eszköz sablonhoz.
 
-1. Válassza ki **vonaldiagram** alakzatot a összetevő hozzáadása a **irányítópult**.
+1. Válassza ki a diagramot, és adja hozzá az összetevőt az **irányítópulthoz**.
 
 1. Konfigurálja a **Vonaldiagram** összetevőt a következő táblázatban lévő információk használatával:
 
-    | Beállítás      | Érték       |
+    | Beállítás      | Value       |
     | ------------ | ----------- |
     | Beosztás        | Hőmérséklet |
     | Időtartomány   | Az elmúlt 30 perc |
-    | Mértékek     | Hőmérséklet (válasszon **láthatósági** melletti **hőmérséklet**) |
+    | Mértékek     | Hőmérséklet ( **láthatóság** kijelölése a **hőmérséklet**mellett) |
 
     ![Vonaldiagram beállításai](./media/tutorial-define-device-type/linechartsettings.png)
 
     Ezután válassza a **Save** (Mentés) lehetőséget.
 
-1. Válassza ki a **Eseményelőzmények** összetevő az alábbi táblázatban szereplő információk segítségével:
+1. Válassza ki az **esemény előzményei** összetevőt az alábbi táblázatban szereplő információk alapján:
 
-    | Beállítás      | Érték       |
+    | Beállítás      | Value       |
     | ------------ | ----------- |
-    | Beosztás        | Motor események ventilátor |
+    | Beosztás        | Ventilátoros motoros események |
     | Időtartomány   | Az elmúlt 30 perc |
-    | Mértékek     | Motor hiba ventilátor (válasszon **látható-e** melletti **ventilátor Motor hiba**) |
+    | Mértékek     | Ventilátoros motor hibája (a **ventilátoros motor hibája**melletti **láthatóság** kiválasztása) |
 
-    ![Esemény diagram beállításai](./media/tutorial-define-device-type/dashboardeventchartsetting.png)
+    ![Az események diagramjának beállításai](./media/tutorial-define-device-type/dashboardeventchartsetting.png)
 
     Ezután válassza a **Save** (Mentés) lehetőséget.
 
 1. Konfigurálja az **Állapotelőzmények** összetevőt a következő táblázatban lévő információk használatával:
 
-    | Beállítás      | Érték       |
+    | Beállítás      | Value       |
     | ------------ | ----------- |
     | Beosztás        | Ventilátor mód |
     | Időtartomány   | Az elmúlt 30 perc |
-    | Mértékek | Mód ventilátor (válasszon **látható-e** melletti **ventilátor mód**) |
+    | Mértékek | Ventilátor mód (válassza a **láthatóság** lehetőséget a **ventilátor mód**mellett) |
 
     ![Vonaldiagram beállításai](./media/tutorial-define-device-type/dashboardstatechartsetting.png)
 
     Ezután válassza a **Save** (Mentés) lehetőséget.
 
-1. Az Eszközbeállítások, illetve a Tulajdonságok hozzáadása az irányítópulthoz, válassza a **beállításait és tulajdonságait**. Válassza ki **hozzáadása/eltávolítása** , adja meg a beállításokat, vagy a tulajdonságok, adja meg az irányítópult megtekintéséhez.
+1. Az eszközbeállítások és a tulajdonságok az irányítópulthoz való hozzáadásához válassza a **beállítások és tulajdonságok**lehetőséget. Válassza a **Hozzáadás/Eltávolítás** lehetőséget az irányítópulton megjeleníteni kívánt beállítások vagy tulajdonságok hozzáadásához.
 
 1. Konfigurálja a **Beállítások és tulajdonságok** összetevőt a következő táblázatban lévő információk használatával:
 
-    | Beállítás                 | Érték         |
+    | Beállítás                 | Value         |
     | ----------------------- | ------------- |
     | Beosztás                   | Eszköztulajdonságok |
     | Beállítások és tulajdonságok | Megadott hőmérséklet<br/>Sorozatszám<br/>Belső vezérlőprogram verziója |
 
-    Beállítások és a korábban definiált tulajdonságok a **beállításait és tulajdonságait** lapok láthatók **elérhető oszlopok**.
+    A **beállítások és tulajdonságok** lapon korábban definiált beállítások és tulajdonságok a **rendelkezésre álló oszlopokban**jelennek meg.
 
     ![A hőmérséklet-tulajdonság beállításainak megadása](./media/tutorial-define-device-type/propertysettings4.png)
 
     Ezután válassza a **Save** (Mentés) lehetőséget.
 
-1. Most már megtekintheti szimulált adatok számára a csatlakoztatott Légkondicionálóját az irányítópulton. A csempék és az irányítópult elrendezése szerkesztheti:
+1. Most már megtekintheti a csatlakoztatott klíma szimulált adatait az irányítópulton. Az irányítópult csempéit és elrendezését az alábbiak szerint szerkesztheti:
 
-    ![Az irányítópult megtekintése](./media/tutorial-define-device-type/dashboard.png)
+    ![Irányítópult megtekintése](./media/tutorial-define-device-type/dashboard.png)
 
 ## <a name="next-steps"></a>További lépések
 
@@ -454,7 +456,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Parancsok használata
 > * A szimulált eszköz megtekintése az irányítópulton
 
-Most, hogy egy eszköz sablont az Azure IoT Central alkalmazásban definiált, Íme a javasolt következő lépések:
+Most, hogy meghatározta az eszköz sablonját az Azure IoT Central-alkalmazásban, a következő lépéseket ajánljuk:
 
 * [Az eszközre vonatkozó szabályok és műveletek konfigurálása](tutorial-configure-rules.md)
 * [Operátori nézetek testreszabása](tutorial-customize-operator.md)

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: c4ba2269003c9d401982b83f4e66c8caf45a0073
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
-ms.translationtype: MT
+ms.openlocfilehash: a8d36e48558432edfaa242b9db13c59adacf5619
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624704"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876357"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Funkciók összehasonlítása: Azure SQL Database versus SQL Server
 
@@ -102,8 +102,6 @@ A következő táblázat felsorolja a SQL Server főbb funkcióit, és informác
 | [OPENXML](https://docs.microsoft.com/sql/t-sql/functions/openxml-transact-sql)|Igen|Igen|
 | [Operátorok](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | A legtöbb esetben – lásd az egyes operátorokat |Igen – lásd: a [T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md) |
 | [Particionálás](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | Igen | Igen |
-| Nyilvános IP-cím | Igen. A hozzáférés tűzfal vagy szolgáltatási végpontok használatával korlátozható.  | Igen. Explicit módon engedélyezni kell, és engedélyezni kell a 3342-es portot a NSG-szabályokban. Ha szükséges, a nyilvános IP-cím is letiltható. További részletekért tekintse meg a [nyilvános végpontot](sql-database-managed-instance-public-endpoint-securely.md) . | 
-| [Időponthoz tartozó adatbázis-visszaállítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével – lásd: [SQL Database helyreállítás](sql-database-recovery-using-backups.md#point-in-time-restore) | Igen – lásd: [SQL Database helyreállítás](sql-database-recovery-using-backups.md#point-in-time-restore) |
 | [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nem. Az Azure Blob Storageban elhelyezett fájlokban tárolt adatlekérdezéseket a `OPENROWSET` függvény használatával kérdezheti le. | Nem. Az Azure Blob Storageban elhelyezett fájlokban tárolt adatlekérdezéseket a `OPENROWSET` függvény használatával kérdezheti le. |
 | [Predikátumok](https://docs.microsoft.com/sql/t-sql/queries/predicates) | Igen | Igen |
 | [Lekérdezési értesítések](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | Nem | Igen |
@@ -147,39 +145,47 @@ Az Azure platform számos olyan, a szabványos adatbázis-funkciókhoz hozzáado
 | --- | --- | --- |
 | [Aktív georeplikáció](sql-database-active-geo-replication.md) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével | Nem, lásd: [automatikus feladatátvételi csoportok (előzetes verzió)](sql-database-auto-failover-group.md) Alternatív megoldásként |
 | [Automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével | Igen, a [nyilvános előzetes](sql-database-auto-failover-group.md) verzióban|
+| Automatikus méretezés | Igen, [kiszolgáló](sql-database-serverless.md) nélküli modellben | Nem, a fenntartott számítási és tárolási kapacitást kell választania. |
+| [Azure Active Directory (HRE) hitelesítés](sql-database-aad-authentication.md) | Igen. Csak HRE felhasználók. | Igen. Beleértve a kiszolgálói szintű HRE-bejelentkezéseket is. |
 | [Azure Resource Health](/azure/service-health/resource-health-overview) | Igen | Nem |
+| Biztonsági mentés megőrzése | Igen. 7 nap alapértelmezett, max. 35 nap. | Igen. 7 nap alapértelmezett, max. 35 nap. |
 | [Adatáttelepítési szolgáltatás (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | Igen | Igen |
 | Fájlrendszer-hozzáférés | Nem. Alternatív megoldásként [bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) vagy [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) használatával férhet hozzá és tölthet be az Azure Blob Storageból. | Nem. Alternatív megoldásként [bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) vagy [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) használatával férhet hozzá és tölthet be az Azure Blob Storageból. |
 | [Geo-restore](sql-database-recovery-using-backups.md#geo-restore) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével | Igen – [Azure PowerShell](https://medium.com/azure-sqldb-managed-instance/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa)használatával. |
 | [Nagy kapacitású architektúra](sql-database-service-tier-hyperscale.md) | Igen | Nem |
 | [Biztonsági másolatok hosszú távú megőrzése – LTR](sql-database-long-term-retention.md) | Igen, az automatikusan megtarthatja a biztonsági mentéseket akár 10 évig. | még nem. A `COPY_ONLY` [manuális biztonsági mentések](sql-database-managed-instance-transact-sql-information.md#backup) ideiglenes megkerülő megoldásként használhatók. |
-| [Házirend alapú felügyelet](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nem | Nem |
-| Erőforrás-készletek | Igen, [rugalmas készletekként](sql-database-elastic-pool.md) | A beépített egyetlen felügyelt példány több olyan adatbázissal is rendelkezhet, amelyek ugyanazt az erőforrás-készletet használják |
-| Vertikális fel-vagy leskálázás (online) | Igen, a minimális állásidővel módosíthatja a DTU vagy a fenntartott virtuális mag vagy a maximális tárterületet. | Igen, a minimális állásidővel módosíthatja a fenntartott virtuális mag vagy a maximális tárterületet. | 
-| Automatikus méretezés | Igen, [kiszolgáló](sql-database-serverless.md) nélküli modellben | Nem, a fenntartott számítási és tárolási kapacitást kell választania. |
 | Szüneteltetés/folytatás | Igen, [kiszolgáló](sql-database-serverless.md) nélküli modellben | Nem | 
-| [SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [Igen](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) | Igen, 150-es [verzió](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) |
+| [Házirend alapú felügyelet](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nem | Nem |
+| Nyilvános IP-cím | Igen. A hozzáférés tűzfal vagy szolgáltatási végpontok használatával korlátozható.  | Igen. Explicit módon engedélyezni kell, és engedélyezni kell a 3342-es portot a NSG-szabályokban. Ha szükséges, a nyilvános IP-cím is letiltható. További részletekért tekintse meg a [nyilvános végpontot](sql-database-managed-instance-public-endpoint-securely.md) . | 
+| [Időponthoz tartozó adatbázis-visszaállítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével – lásd: [SQL Database helyreállítás](sql-database-recovery-using-backups.md#point-in-time-restore) | Igen – lásd: [SQL Database helyreállítás](sql-database-recovery-using-backups.md#point-in-time-restore) |
+| Erőforrás-készletek | Igen, [rugalmas készletekként](sql-database-elastic-pool.md) | Nem. Egyetlen felügyelt mnstance több adatbázissal is rendelkezhet, amelyek ugyanazt a készletet használják. A felügyelt példányok nem oszthatnak meg erőforrásokat. |
+| Vertikális fel-vagy leskálázás (online) | Igen, a minimális állásidővel módosíthatja a DTU vagy a fenntartott virtuális mag vagy a maximális tárterületet. | Igen, a minimális állásidővel módosíthatja a fenntartott virtuális mag vagy a maximális tárterületet. |
 | [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Igen | Igen |
 | [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Igen | Nem |
-| [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Igen | Igen |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nem, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) egy különálló Azure Cloud Service. | Nem, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) egy különálló Azure Cloud Service. |
 | [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Igen, felügyelt SSIS Azure Data Factory (ADF) környezetben, ahol a csomagok tárolása a Azure SQL Database által futtatott és az Azure SSIS Integration Runtime (IR) szolgáltatásban futtatott SSISDB történik, lásd: [Azure-SSIS IR létrehozása ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>A SQL Database-kiszolgáló és a felügyelt példány SSIS-szolgáltatásainak összehasonlítását lásd: [Azure SQL Database önálló adatbázisok/rugalmas készletek és felügyelt példányok összehasonlítása](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). | Igen, felügyelt SSIS Azure Data Factory (ADF) környezetben, ahol a csomagok tárolása a felügyelt példány által üzemeltetett SSISDB történik, és az Azure SSIS-Integration Runtime (IR) hajtja végre, lásd: [Azure-SSIS IR létrehozása ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>A SQL Database és a felügyelt példány SSIS funkcióinak összehasonlítását lásd: [Azure SQL Database önálló adatbázisok/rugalmas készletek és felügyelt példányok összehasonlítása](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nem – [lásd Power bi](https://docs.microsoft.com/power-bi/) | Nem – [lásd Power bi](https://docs.microsoft.com/power-bi/) |
 | [Teljesítménytesztek lekérdezése (QPI)](sql-database-query-performance.md) | Igen | Nem. SQL Server Management Studio és Azure Data Studio beépített jelentéseinek használata. |
 | [VNet](../virtual-network/virtual-networks-overview.md) | Részleges, lehetővé teszi a korlátozott hozzáférést a [VNet](sql-database-vnet-service-endpoint-rule-overview.md) -végpontok használatával | Igen, a felügyelt példány az ügyfél VNet van befecskendezve. Lásd: [alhálózat](sql-database-managed-instance-transact-sql-information.md#subnet) és [VNet](sql-database-managed-instance-transact-sql-information.md#vnet) |
+| VNet szolgáltatás végpontja | [Igen](sql-database-vnet-service-endpoint-rule-overview.md) | Nem |
 
 ## <a name="tools"></a>Eszközök
 Az Azure SQL Database különféle adateszközöket támogat, amelyek segítségével kezelheti adatait.
 
-| **SQL-eszköz** | **Önálló adatbázisok és rugalmas készletek** | **Felügyelt példányok** |
+| **Eszköz** | **Önálló adatbázisok és rugalmas készletek** | **Felügyelt példányok** |
 | --- | --- | --- |
+| Azure Portal | Igen | Igen |
+| Azure CLI | Igen | Igen|
 | [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) | Igen | Igen |
+| Azure PowerShell | Igen | Igen |
 | [BACPAC-fájl (Exportálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Igen – lásd [SQL Database exportálás](sql-database-export.md) | Igen – lásd [SQL Database exportálás](sql-database-export.md) |
 | [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Igen – lásd [SQL Database importálás](sql-database-import.md) | Igen – lásd [SQL Database importálás](sql-database-import.md) |
 | [Adatminőségi szolgáltatások (DQS)](https://docs.microsoft.com/sql/data-quality-services/data-quality-services) | Nem | Nem |
 | [Master Data Services (MDS)](https://docs.microsoft.com/sql/master-data-services/master-data-services-overview-mds) | Nem | Nem |
+| [SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [Igen](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) | Igen, 150-es [verzió](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) |
 | [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Igen | Igen |
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Igen | Igen [, 18,0-es és újabb verzió](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
+| [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Igen | Igen |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nem – lásd a [kiterjesztett eseményeket](sql-database-xevent-db-diff-from-svr.md) | Igen |
 | [System Center Operations Manager – SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Igen](https://www.microsoft.com/download/details.aspx?id=38829) | Nem |
 

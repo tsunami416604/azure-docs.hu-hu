@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 786c5725046885a0321696e95703c53081e96979
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b731d8000e748813649ea32c91b9566a8bc245a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560325"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648605"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Oktatóanyag: Nevek kinyerése egyszerű entitással és egy kifejezés listával
 
@@ -99,7 +99,7 @@ Miután megjelöli az entitásokat a példaszövegekben, fontos lépés a kifeje
 
     ![Job (állás) nevű és simple (egyszerű) típusú egyszerű entitás modális előugró párbeszédpaneljének létrehozása](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-1. A fennmaradó hosszúságú kimondott szöveg jelölje meg a feladattal kapcsolatos szavakat a  feladattal együtt a szó vagy kifejezés kiválasztásával, majd a felugró menüből válassza a feladat lehetőséget. 
+1. A fennmaradó hosszúságú kimondott szöveg jelölje meg a feladattal kapcsolatos szavakat a feladattal együtt a szó vagy kifejezés kiválasztásával, majd a felugró menüből válassza a feladat lehetőséget. 
 
     [![Képernyőkép a LUIS kiemelt feladat entitás címkézés](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "képernyőképe, a LUIS címkézés feladat entitás kiemelésével")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
@@ -137,7 +137,7 @@ Az egyszerű entitásoknak számos példát kell megadniuk ahhoz, hogy magas szi
 
 1. A példában szereplő hosszúságú kimondott szöveg feladatok címkézése
 
-    Ha a hosszúságú kimondott szöveg több példája van, mint egy másik szándék, akkor ez a szándék nagyobb valószínűséggel van a legmagasabb előre jelzett szövegben. 
+    Ha a hosszúságú kimondott szöveg több példája van, mint egy másik szándék, ez a szándék nagyobb valószínűséggel éri el a legmagasabb várható szándékot. 
 
 ## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanítása, hogy tesztelni lehessen a szándék változásait 
 
@@ -233,7 +233,7 @@ Nyissa meg a [Jobs-phrase-list. csv](https://github.com/Azure-Samples/cognitive-
 
     [![Képernyőkép a hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Képernyőkép az új kifejezést tartalmazó párbeszédpanelen előugró létrehozása")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    Ha további szavakat szeretne felvenni a kifejezés listára, válassza az újraellenőrzés **lehetőséget,** majd tekintse át az új **kapcsolódó értékeket** , és adja hozzá a megfelelőt. 
+    Ha további szavakat szeretne felvenni a kifejezés listára, válassza az újraellenőrzés lehetőséget, majd tekintse át az új **kapcsolódó értékeket** , és adja hozzá a megfelelőt. 
 
     Ügyeljen arra, hogy az **alábbi értékek** legyenek felcserélhetők, mert ezeket az értékeket mind a feladatok szinonimájának kell tekinteni. További információ a megváltoztathatatlan és nem cserélhető [kifejezések listájának fogalmakról](luis-concept-feature.md#how-to-use-phrase-lists).
 

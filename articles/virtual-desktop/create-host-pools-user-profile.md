@@ -1,71 +1,71 @@
 ---
-title: Hozzon létre egy felhasználói profil megosztást egy Windows virtuális asztal előzetes gazdagép készlet – Azure
-description: Hogyan állítható be egy Windows virtuális asztal előzetes gazdagép készlet FSLogix profil tárolója.
+title: FSLogix-profil tároló létrehozása egy gazdagép-készlethez virtuálisgép-alapú fájlmegosztás használatával – Azure
+description: FSLogix-profil tároló beállítása egy Windows rendszerű virtuális asztali előzetes verziójú gazdagéphez egy virtuálisgép-alapú fájlmegosztás használatával.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 692902c28b336dd46a7c6f00d5cf5a61ee9f7328
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: cf3d682e4d0c68822267a4e63846d80b632cbdcc
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619108"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876794"
 ---
-# <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Felhasználói profil megosztásának beállítása a gazdagépcsoporton
+# <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Profil tároló létrehozása a gazdagéphez fájlmegosztás használatával
 
-A Windows Virtual Desktop előzetes verziójú szolgáltatások FSLogix profil tárolók a javasolt felhasználói profil megoldás kínál. Nem ajánlott, a felhasználói profil lemezre (UPD) megoldást, amely lesz, és elavult későbbi Windows virtuális asztali verzióiban.
+A Windows rendszerű virtuális asztali előnézet szolgáltatás az ajánlott felhasználói profil-megoldásként kínál FSLogix-profilok tárolókat. Nem javasoljuk a felhasználói profil lemez (UPD) megoldás használatát, amely a Windows rendszerű virtuális asztal jövőbeli verzióiban elavulttá válik.
 
-Ebben a szakaszban megtudhatja, hogyan állítható be a gazdagép-készletben FSLogix profil tároló megosztást. FSLogix kapcsolatos általános dokumentációjáért lásd: a [FSLogix hely](https://docs.fslogix.com/).
+Ebből a cikkből megtudhatja, hogyan állíthat be egy FSLogix-profil tároló-megosztást egy gazdagép-készlethez egy virtuálisgép-alapú fájlmegosztás használatával. További FSLogix dokumentációt a [FSLogix webhelyen](https://docs.fslogix.com/)talál.
 
-## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Hozzon létre egy új virtuális gépet, amely úgy működik, mivel a fájlmegosztás
+## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Hozzon létre egy új virtuális gépet, amely fájlmegosztásként fog működni
 
-A virtuális gép létrehozásakor ügyeljen arra, helyezze el, vagy az azonos virtuális hálózatban, mint a gazdagép-készlet virtuális gépek vagy egy virtuális hálózatot, amely kapcsolódik a készlet virtuális gépek futtatásához. Többféle módon is létrehozhat egy virtuális gépet:
+A virtuális gép létrehozásakor ügyeljen arra, hogy ugyanazt a virtuális hálózatot helyezze el, mint a gazdagép-készlet virtuális gépei vagy egy virtuális hálózat, amely a gazdagép-készlet virtuális gépekhez kapcsolódik. Több módon is létrehozhat egy virtuális gépet:
 
-- [Virtuális gép létrehozása az Azure-katalógus-lemezkép](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
+- [Virtuális gép létrehozása Azure Gallery-rendszerképből](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
 - [Virtuális gép létrehozása felügyelt rendszerképből](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
-- [A virtuális gépek nem felügyelt rendszerkép létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+- [Virtuális gép létrehozása nem felügyelt rendszerképből](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
-Miután létrehozta a virtuális gépet, csatlakoztassa a tartományhoz tegye az alábbiakat:
+A virtuális gép létrehozása után csatlakoztassa azt a tartományhoz a következő műveletek végrehajtásával:
 
-1. [Csatlakozzon a virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
-2. Indítsa el a virtuális gépen **Vezérlőpult** válassza **rendszer**.
-3. Válassza ki **számítógépnév**válassza **beállításainak módosítása**, majd válassza ki **módosítása...**
-4. Válassza ki **tartomány** és írja be az Active Directory-tartomány a virtuális hálózaton.
-5. Hitelesítés a tartományhoz csatlakozó gépek jogosultságokkal rendelkező tartományi fiókkal.
+1. [Kapcsolódjon a virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
+2. A virtuális gépen indítsa el a **Vezérlőpultot** , és válassza a **rendszer**elemet.
+3. Válassza ki a **számítógép nevét**, válassza a **beállítások módosítása**lehetőséget, majd válassza a **módosítás...** lehetőséget.
+4. Válassza a **tartomány** lehetőséget, majd adja meg a Active Directory tartományt a virtuális hálózaton.
+5. A hitelesítést olyan tartományi fiókkal végezze el, amely jogosultságokkal rendelkezik a tartományhoz csatlakozó gépekhez.
 
-## <a name="prepare-the-virtual-machine-to-act-as-a-file-share-for-user-profiles"></a>A virtuális gépet ügyfélgépként felhasználói profilok fájlmegosztás előkészítése
+## <a name="prepare-the-virtual-machine-to-act-as-a-file-share-for-user-profiles"></a>A virtuális gép előkészítése a felhasználói profilok fájlmegosztásként való elvégzésére
 
-Általános útmutatás segítségével történő virtuális gép előkészítése a felhasználói profilok fájlmegosztás-kiszolgálóként a következők:
+A virtuális gépeknek a felhasználói profilok fájlmegosztásként való előkészítésére vonatkozó általános utasítások a következők:
 
-1. A Windows virtuális asztal Active Directory-felhasználók hozzáadása egy [Active Directory biztonsági csoportban](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups). Ez a biztonsági csoport a fájl megosztási újonnan létrehozott virtuális géphez a Windows virtuális asztali felhasználók hitelesítéséhez használható.
-2. [A fájl megosztási virtuális géphez csatlakozni](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine).
-3. A fájl megosztási virtuális gépen, hozzon létre egy mappát a **C meghajtó** , hogy a profil megosztás szolgál.
-4. Kattintson a jobb gombbal az új mappára, válassza ki **tulajdonságok**válassza **megosztási**, majd **Speciális megosztás...** .
-5. Válassza ki **a mappa megosztása**válassza **engedélyek...** , majd **hozzáadása...** .
-6. Keresse meg a biztonsági csoportot, amelyhez hozzáadta a Windows virtuális asztal felhasználói, és győződjön meg arról, hogy a csoport **teljes hozzáférés**.
-7. Után adja hozzá a biztonsági csoporthoz, kattintson a jobb gombbal a mappára, válassza ki **tulajdonságok**válassza **megosztási**, majd másolja le a **hálózati elérési út** való későbbi használatra.
+1. Adja hozzá a Windows rendszerű virtuális asztali Active Directory felhasználókat egy [Active Directory biztonsági csoporthoz](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups). Ez a biztonsági csoport fogja használni a Windows rendszerű virtuális asztali felhasználókat az imént létrehozott fájlmegosztás virtuális gépre.
+2. [Kapcsolódjon a fájlmegosztás virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine).
+3. A fájlmegosztás virtuális gépen hozzon létre egy mappát a **C meghajtón** , amelyet a rendszer a profil megosztásaként fog használni.
+4. Kattintson a jobb gombbal az új mappára, válassza a **Tulajdonságok**lehetőséget, válassza a **megosztás**, majd a **speciális megosztás**lehetőséget.
+5. Jelölje be **a mappa megosztása**jelölőnégyzetet, majd válassza az **engedélyek...** lehetőséget, majd kattintson a **Hozzáadás...** elemre.
+6. Keresse meg azt a biztonsági csoportot, amelyhez hozzáadta a Windows rendszerű virtuális asztali felhasználókat, majd győződjön meg arról, hogy a csoport **teljes hozzáféréssel**rendelkezik.
+7. A biztonsági csoport hozzáadása után kattintson a jobb gombbal a mappára, válassza a **Tulajdonságok parancsot**, válassza a **megosztás**lehetőséget, majd másolja le a **hálózati elérési utat** későbbi használatra.
 
-Engedélyekkel kapcsolatos további információkért lásd: a [FSLogix dokumentáció](https://docs.fslogix.com/display/20170529/Requirements%2B-%2BProfile%2BContainers).
+Az engedélyekkel kapcsolatos további információkért tekintse meg a [FSLogix dokumentációját](https://docs.microsoft.com/fslogix/fslogix-storage-config-ht).
 
-## <a name="configure-the-fslogix-profile-container"></a>A profil FSLogix tároló konfigurálása
+## <a name="configure-the-fslogix-profile-container"></a>A FSLogix-profil tárolójának konfigurálása
 
-Konfigurálja a virtuális gépek a FSLogix szoftverrel, tegye a következőt az összes olyan számítógépen, a gazdagép-készlethez regisztrálva:
+A virtuális gépek FSLogix-szoftverrel való konfigurálásához tegye a következőket a gazdagépen regisztrált összes gépen:
 
-1. [Csatlakozzon a virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
-2. Indítsa el egy webböngészőt, és navigáljon a [ezt a hivatkozást](https://go.microsoft.com/fwlink/?linkid=2084562) a FSLogix ügynök letöltéséhez. A Windows virtuális asztal nyilvános előzetes verzió része egy licenckulcs aktiválásához FSLogix fog kapni. A kulcs a a LicenseKey.txt fájlt a FSLogix ügynök .zip-fájlban.
-3. Keresse meg vagy \\ \\Win32\\kiadás vagy \\ \\X64\\a .zip-fájlt, és futtassa a kiadási **FSLogixAppsSetup** FSLogix-ügynök telepítése.
-4. Navigáljon a **Program Files** > **FSLogix** > **alkalmazások** ellenőrizze az ügynök telepítve van.
-5. Futtassa a start menüből **RegEdit** rendszergazdaként. Navigáljon a **számítógép\\HKEY_LOCAL_MACHINE\\szoftver\\FSLogix**.
-6. Hozzon létre egy kulcsot nevű **profilok**.
-7. Hozza létre a profilok kulcs a következő értékeket:
+1. [Kapcsolódjon a virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
+2. Nyisson meg egy webböngészőt, és navigáljon [erre a hivatkozásra](https://go.microsoft.com/fwlink/?linkid=2084562) a FSLogix-ügynök letöltéséhez.
+3. \\ \\ Navigáljon\\a. zip fájl Win32 vagyx64\\kiadására, és futtassa a FSLogixAppsSetup-t a FSLogix-ügynök telepítéséhez. \\ \\  További információ a FSLogix telepítéséről: a [FSLogix letöltése és telepítése](https://docs.microsoft.com/fslogix/install-ht).
+4. Navigáljon a **Program Files** > **FSLogix** > **alkalmazásokhoz** , és erősítse meg az ügynök telepítését.
+5. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként. Navigáljon **a\\számítógép\\HKEY_LOCAL_MACHINE\\szoftver FSLogix**.
+6. Hozzon létre egy **profilok**nevű kulcsot.
+7. Hozza létre a következő értékeket a profilok kulcshoz:
 
-| Name (Név)                | Type               | Data/Value                        |
+| Name (Név)                | Type               | Az adatértékek/értékek                        |
 |---------------------|--------------------|-----------------------------------|
 | Enabled             | DWORD              | 1                                 |
-| VHDLocations        | Karakterláncsoros érték | "A fájlmegosztás hálózati elérési út"     |
+| VHDLocations        | Több karakterláncos érték | "Fájlmegosztás hálózati elérési útja"     |
 
 >[!IMPORTANT]
->Védelme érdekében az Azure-ban, a Windows virtuális asztali környezetben ajánlott ne nyissa meg a 3389-es porton bejövő a virtuális gépeken. Windows virtuális asztal nyílt bejövő port felhasználók számára hozzáférést a gazdagép-készlet virtuális gépek a 3389-es nem igényel. Ha a 3389-es port hibaelhárítás céljából kell megnyitni, azt javasoljuk, használja [just-in-time VM access](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
+>A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára. Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja a [virtuális](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)gépek igény szerinti elérését.

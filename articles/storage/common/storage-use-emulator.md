@@ -7,12 +7,12 @@ ms.date: 08/10/2018
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 9e0e024a5bd3c9cf16879bb9ea93727a338ddbf4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: ee8dd9da186013dc168e20e6b8b842cca85de172
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986410"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877630"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure Storage Emulator használata fejlesztéshez és teszteléshez
 
@@ -221,9 +221,21 @@ Nincsenek eltérések az emulátorban található üzenetsor-tároláshoz.
 
 ## <a name="storage-emulator-release-notes"></a>A Storage Emulator kibocsátási megjegyzései
 
+### <a name="version-510"></a>5,10-es verzió
+
+* A Storage Emulator nem utasítja el a blob-, üzenetsor-és Table service-végpontok tárolási szolgáltatásainak 2019-07-07-es verzióját.
+
+### <a name="version-59"></a>5,9-es verzió
+
+* A Storage Emulator nem utasítja el a blob-, üzenetsor-és Table service-végpontok tárolási szolgáltatásainak 2019-02-02-es verzióját.
+
+### <a name="version-58"></a>5,8-es verzió
+
+* A Storage Emulator nem utasítja el a blob-, üzenetsor-és Table service-végpontok tárolási szolgáltatásainak 2018-11-09-es verzióját.
+
 ### <a name="version-57"></a>5,7-es verzió
 
-Kijavítva egy olyan hibát, amely összeomlást okoz, ha a naplózás engedélyezve volt.
+* Kijavítva egy olyan hibát, amely összeomlást okoz, ha a naplózás engedélyezve volt.
 
 ### <a name="version-56"></a>5,6-es verzió
 
@@ -236,11 +248,11 @@ Kijavítva egy olyan hibát, amely összeomlást okoz, ha a naplózás engedély
 
 ### <a name="version-54"></a>5,4-es verzió
 
-A telepítési stabilitás javítása érdekében az emulátor már nem próbálkozik a portok lefoglalására a telepítési időpontban. Ha a portok fenntartására van szükség, használja az **init** parancs *-reserveports* kapcsolóját a megadásához.
+* A telepítési stabilitás javítása érdekében az emulátor már nem próbálkozik a portok lefoglalására a telepítési időpontban. Ha a portok fenntartására van szükség, használja az **init** parancs *-reserveports* kapcsolóját a megadásához.
 
 ### <a name="version-53"></a>5,3-es verzió
 
-A Storage Emulator mostantól támogatja a blob-, üzenetsor-és Table service-végpontok tárolási szolgáltatásainak 2017-07-29-os verzióját.
+* A Storage Emulator mostantól támogatja a blob-, üzenetsor-és Table service-végpontok tárolási szolgáltatásainak 2017-07-29-os verzióját.
 
 ### <a name="version-52"></a>5,2-es verzió
 
@@ -249,7 +261,7 @@ A Storage Emulator mostantól támogatja a blob-, üzenetsor-és Table service-v
 
 ### <a name="version-51"></a>5,1-es verzió
 
-Kijavítva egy olyan hibát, amelyben a Storage Emulator `DataServiceVersion` a fejlécet olyan válaszokban adta vissza, amelyekben a szolgáltatás nem volt elérhető.
+* Kijavítva egy olyan hibát, amelyben a Storage Emulator `DataServiceVersion` a fejlécet olyan válaszokban adta vissza, amelyekben a szolgáltatás nem volt elérhető.
 
 ### <a name="version-50"></a>5,0-es verzió
 

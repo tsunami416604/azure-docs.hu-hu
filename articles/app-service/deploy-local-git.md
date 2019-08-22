@@ -15,12 +15,12 @@ ms.date: 06/18/2019
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 4b2934c8b93ffb247661886cb2791c0719996aeb
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 47db310f6affa6317a74020d182c521d65cd32f3
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297191"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875233"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi git üzembe helyezése Azure App Service
 
@@ -156,7 +156,7 @@ A következő gyakori hibaüzenetek jelenhetnek meg, ha a git használatával te
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|Nem adott meg ágat a alatt `git push`, vagy nem állította be a `push.default` értéket `.gitconfig`.|Futtassa `git push` újra a főág megadását: `git push azure master`.|
 |`src refspec [branchname] does not match any.`|A főkiszolgálón kívül más ágat próbált meg elküldeni az "Azure" távoli gépen.|Futtassa `git push` újra a főág megadását: `git push azure master`.|
 |`RPC failed; result=22, HTTP code = 5xx.`|Ez a hiba akkor fordulhat elő, ha egy nagyméretű git-tárházat próbál leküldeni HTTPS-kapcsolaton keresztül.|Módosítsa a git-konfigurációt a helyi gépen, hogy `postBuffer` minél nagyobb legyen. Például: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|A Node. js-alkalmazások üzembe helyezése egy _Package. JSON_ fájllal, amely további szükséges modulokat határoz meg.|A hiba `npm ERR!` előtt tekintse át a hibaüzeneteket, hogy a probléma további kontextusban legyen. A hiba ismert okai és a hozzájuk tartozó `npm ERR!` üzenetek a következők:<br /><br />**Helytelen formátumú Package. JSON fájl**:`npm ERR! Couldn't read dependencies.`<br /><br />A **natív modul nem rendelkezik bináris terjesztéssel a Windows rendszerhez**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />vagy <br />' NPM ERR! [modulename@version] telepítés előtt: \make || gmake\`|
+|`Error - Changes committed to remote repository but your web app not updated.`|A Node. js-alkalmazások üzembe helyezése egy _Package. JSON_ fájllal, amely további szükséges modulokat határoz meg.|A hiba `npm ERR!` előtt tekintse át a hibaüzeneteket, hogy a probléma további kontextusban legyen. A hiba ismert okai és a hozzájuk tartozó `npm ERR!` üzenetek a következők:<br /><br />**Helytelen formátumú Package. JSON fájl**:`npm ERR! Couldn't read dependencies.`<br /><br />A **natív modul nem rendelkezik bináris terjesztéssel a Windows rendszerhez**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />or <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>További források
 

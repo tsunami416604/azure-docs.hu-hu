@@ -1,7 +1,7 @@
 ---
 title: 'Python-oktatóanyag: Cognitive Services hívása AI-dúsítási folyamatban – Azure Search'
 description: A Jupyter Python notebook használatával bemutatjuk a Azure Search az adatok kinyerésének, természetes nyelvének és a képek mesterséges intelligenciának feldolgozásának példáját. A kinyert adatértékek indexelve vannak, és a lekérdezés könnyen elérhető.
-manager: cgronlun
+manager: nitinme
 author: LisaLeib
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: af355ec353e12c30723597927883cb23dfa31e71
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2cde1fe258d2caf7e7dc9d8ede582364f42c676b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840923"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648886"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python-oktatóanyag: Cognitive Services API-k hívása egy Azure Search indexelési folyamatban
 

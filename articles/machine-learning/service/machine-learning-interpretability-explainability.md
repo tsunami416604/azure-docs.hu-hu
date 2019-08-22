@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: 1e742c278b9356c7501964541802e0c96dc74b09
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2e8eb79c4baebebb1974a977394215545ef944db
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358650"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872388"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>A modell értelmezése Azure Machine Learning szolgáltatással
 
@@ -69,7 +69,7 @@ A __közvetlen magyarázatok__ az integrált könyvtárakból származnak. Az SD
 * A **permutáció funkció fontossági magyarázata**: A permutáció funkció fontossága egy olyan módszer, amely a [Breiman véletlenszerű erdőkkel](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) kapcsolatos tanulmányai által ihletett besorolási és regressziós modellek magyarázatára szolgál (lásd: 10. szakasz). Magas szinten a működésének módja az, hogy a teljes adatkészlet esetében véletlenszerűen végzi el az adatok egy funkciójának a kiszámítását, és kiszámítja, hogy mekkora a kamat teljesítményének mérőszáma. Minél nagyobb a változás, annál fontosabb a funkció.
 
 * **Lime-magyarázat** (`contrib`): A lime-alapú, LIME-elmagyarázó a helyi helyettesítő modellek létrehozásához használja a modern helyi, értelmezhető modell-(LIME-) algoritmust. A globális helyettesítő modellektől eltérően a LIME a helyi helyettesítő modellek betanítására összpontosít az egyes előrejelzések elmagyarázása érdekében.
-* **Han Text-magyarázat** (`contrib`): A HAN Text demagyarázó egy hierarchikus hanghálózatot használ a modell magyarázatának beszerzéséhez egy adott fekete Box Text-modell szöveges adatainak használatával. Betanítjuk a HAN helyettes modelljét egy adott tanári modell előre jelzett kimenetén. Miután globálisan betanított a Text corpusba, a magyarázatok pontosságának javítása érdekében egy adott dokumentumhoz is kibővítettük a megfelelő lépéseket. A HAN kétirányú RNN használ két figyelmet a mondatok és a szó figyelemmel. Ha a DNN betanítják a tanári modellre, és egy adott dokumentumra finomítják őket, kinyerheti a szó fontosságát a figyelmet tartalmazó rétegekből. A HAN-t úgy találtuk, hogy pontosabbak legyenek, mint az olyan MÉSZek, mint a szöveges adatmennyiség, de költségesebb a képzési idő szempontjából is. Azonban javítottuk a betanítási időt azáltal, hogy a felhasználó számára lehetőséget biztosít a hálózat és a kesztyűs Word-beágyazások inicializálására, bár ez még mindig lassú. A betanítási idő jelentősen növelhető a HAN távoli Azure GPU virtuális gépen való futtatásával. A HAN megvalósítását "hierarchikus figyelmet igénylő hálózatok a dokumentumok besorolásához (Yang et al., 2016)" ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)) című cikk írja le.
+* **Han Text-magyarázat** (`contrib`): A HAN Text demagyarázó egy hierarchikus hanghálózatot használ a modell magyarázatának beszerzéséhez egy adott fekete Box Text-modell szöveges adatainak használatával. Betanítjuk a HAN helyettes modelljét egy adott tanári modell előre jelzett kimenetén. Miután globálisan betanított a Text corpusba, a magyarázatok pontosságának javítása érdekében egy adott dokumentumhoz is kibővítettük a megfelelő lépéseket. A HAN kétirányú RNN használ két figyelmet a mondatok és a szó figyelemmel. Ha a DNN betanítják a tanári modellre, és egy adott dokumentumra finomítják őket, kinyerheti a szó fontosságát a figyelmet tartalmazó rétegekből. A HAN-t úgy találtuk, hogy pontosabbak legyenek, mint az olyan MÉSZek, mint a szöveges adatmennyiség, de költségesebb a képzési idő szempontjából is. Azonban javítottuk a betanítási időt azáltal, hogy a felhasználó számára lehetőséget biztosít a hálózat és a kesztyűs Word-beágyazások inicializálására, bár ez még mindig lassú. A betanítási idő jelentősen növelhető a HAN távoli Azure GPU virtuális gépen való futtatásával. A HAN megvalósítását ["hierarchikus figyelmet igénylő hálózatok a dokumentumok besorolásához (Yang et al., 2016)"](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification)című cikk írja le.
 
 
 A __meta__ -magyarázatok automatikusan kiválasztják a megfelelő közvetlen magyarázatot, és az adott modell és adatkészletek alapján létrehozzák a legjobb magyarázati információkat. A meta-magyarázatok kihasználják az általunk integrált vagy fejlesztett kódtárakat (SHAP, LIME, utánozza stb.). Az SDK-ban a következő meta-magyarázatok érhetők el:
@@ -143,7 +143,7 @@ A `explain` csomag úgy van kialakítva, hogy a helyi és távoli számítási c
                                  classes=classes)
     ```
 
-    vagy
+    or
 
     ```python
     from azureml.explain.model.mimic.mimic_explainer import MimicExplainer
@@ -166,7 +166,7 @@ A `explain` csomag úgy van kialakítva, hogy a helyi és távoli számítási c
                                features=breast_cancer_data.feature_names, 
                                classes=classes)
     ```
-   vagy
+   or
 
     ```python
     from azureml.explain.model.permutation.permutation_importance import PFIExplainer 

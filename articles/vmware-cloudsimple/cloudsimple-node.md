@@ -1,40 +1,40 @@
 ---
-title: A VMware-megoldás csomópontjainak áttekintése CloudSimple szerint – Azure
+title: Azure VMware-megoldás CloudSimple – a csomópontok áttekintése
 description: Ismerje meg a CloudSimple-csomópontokat és-fogalmakat.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 346bd046810ebae5142bc23400419857000d0c8e
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 58af69b401400c7b2f663a91de8bf38bc9a296a3
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812569"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877703"
 ---
 # <a name="cloudsimple-nodes-overview"></a>A CloudSimple-csomópontok áttekintése
 
-Csomópont:
+A csomópontok a privát felhő építőelemei. Csomópont:
 
-* Dedikált operációs rendszer nélküli számítási gazdagép, ahol a VMware ESXi hypervisor telepítve van  
-* Saját felhők létrehozásához vagy lefoglalásához használható számítási egység  
-* Elérhető egy olyan régióban való üzembe helyezéshez vagy fenntartáshoz, ahol a CloudSimple szolgáltatás elérhető
+* Dedikált operációs rendszer nélküli számítási gazdagép, amelyen telepítve van egy VMware ESXi hypervisor  
+* Saját felhők létrehozásához megvásárolt vagy fenntartott számítástechnikai egység
+* Megvásárolható vagy foglalható egy olyan régióban, ahol a CloudSimple szolgáltatás elérhető
 
-A csomópontok egy privát felhő építőelemei.  Privát felhő létrehozásához legalább három csomópontra van szükség ugyanahhoz az SKU-hoz.  Privát felhő kibontásához adjon hozzá további csomópontokat.  Csomópontokat adhat hozzá egy meglévő fürthöz. Másik lehetőségként létrehozhat egy új fürtöt a Azure Portal csomópontjainak kiépítés, és társíthatja azokat a CloudSimple szolgáltatáshoz.  Az összes kiépített csomópont látható a CloudSimple szolgáltatás alatt.  A CloudSimple-portál kiépített csomópontjaiból hozzon létre egy privát felhőt.
+Hozzon létre egy privát felhőt a megvásárolt csomópontokból. Privát felhő létrehozásához legalább három csomópontra van szükség ugyanahhoz az SKU-hoz. Privát felhő kibontásához adjon hozzá további csomópontokat.  Csomópontokat adhat hozzá egy meglévő fürthöz, vagy létrehozhat egy új fürtöt, ha megvásárolja a csomópontokat a Azure Portalban, és társítja őket a CloudSimple szolgáltatáshoz.  Az összes megvásárolt csomópont látható a CloudSimple szolgáltatás alatt.  
 
-## <a name="provisioned-nodes"></a>Kiépített csomópontok
+## <a name="purchased-nodes"></a>Megvásárolt csomópontok
 
-A kiépített csomópontok utólagos elszámolású kapacitást biztosítanak. A kiépítési csomópontok segítségével gyorsan méretezheti igény szerint a VMware-fürtöt. Szükség szerint csomópontokat adhat hozzá, vagy törölhet egy kiépített csomópontot a VMware-fürt méretezéséhez. a kiépített csomópontok havi rendszerességgel kerülnek kiszámlázásra, és a kiépített előfizetésért kell fizetni:
+A megvásárolt csomópontok utólagos elszámolású kapacitást biztosítanak. A csomópontok megvásárlásával gyorsan méretezheti igény szerint a VMware-fürtöt. Szükség szerint csomópontokat adhat hozzá, vagy törölhet egy megvásárolt csomópontot a VMware-fürt méretezéséhez. A megvásárolt csomópontok számlázása havonta történik, és a megvásárolt előfizetés után kell fizetni.
 
 * Ha hitelkártyával fizet az Azure-előfizetésért, a kártyát azonnal kiszámlázzák.
 * Ha számlán számlázunk, a díjak a következő számlán jelennek meg.
 
 ## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>VMware-megoldás CloudSimple-csomópontok SKU-ban
 
-A következő típusú csomópontok érhetők el a kiépítés vagy a foglalás számára.
+A következő típusú csomópontok vásárolhatók meg vagy foglalhatók le.
 
 | SKU | CS28 – csomópont | CS36 – csomópont |
 |-----|-------------|-------------|
@@ -57,5 +57,5 @@ A következő csomópont-korlátok a privát felhőkre vonatkoznak.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [csomópontok](create-nodes.md) kiépítéséről
-* A [Private Cloud](cloudsimple-private-cloud.md) megismerése
+* Ismerje meg, hogyan [vásárolhat csomópontokat](create-nodes.md)
+* További információ a [privát felhőkről](cloudsimple-private-cloud.md)

@@ -2,7 +2,7 @@
 title: A keresési eredmények használata – Azure Search
 description: A keresési eredmények strukturálása és rendezése, a dokumentumok számának beolvasása, valamint a tartalom navigációjának hozzáadása a Azure Search keresési eredményeihez.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: ''
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bb86a75be464cb78a16170626bc96778d43bb8b6
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 9fa2baf64dbb35d85c55635d7522075d61bfc17d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67974626"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647707"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Keresési eredmények használata Azure Search
 Ez a cikk útmutatást nyújt a keresési eredmények oldalának szabványos elemeinek megvalósításához, például az összesített számokhoz, a dokumentumok lekéréséhez, a rendezési sorrendekhez és a navigáláshoz. Az oldalhoz kapcsolódó olyan beállítások, amelyek a keresési eredményeknek megfelelő adatokat vagy információkat járulnak hozzá, a Azure Search szolgáltatásnak küldött [keresési dokumentumok](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) között adhatók meg. 
@@ -50,7 +50,7 @@ Az oldalszámozási eredményekhez `$top` a `$skip`és a `$top` is szükség van
 
     GET /indexes/online-catalog/docs?search=*&$top=15&$skip=30&$count=true
 
-## <a name="layout"></a>Layout
+## <a name="layout"></a>Elrendezés
 
 A keresési eredmények lapon lehet, hogy meg szeretné jeleníteni a miniatűr képét, a mezők egy részhalmazát, valamint egy teljes termékre mutató hivatkozást.
 

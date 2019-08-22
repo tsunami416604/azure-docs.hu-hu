@@ -2,17 +2,17 @@
 title: SaaS-teljesítési API v2 | Azure piactér
 description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet SaaS-ajánlatokat a AppSource és az Azure Marketplace-en a társított teljesítési v2 API-k használatával.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 276699b9316a0c4fd428038f2c967bdf934f449c
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: a2041aefcfdcb1746e64f50c7cb53b3bfaec3299
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016049"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872805"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS-teljesítési API-k, 2-es verzió 
 
@@ -116,7 +116,7 @@ A feloldási végpont lehetővé teszi, hogy a közzétevő a Piactéri tokent e
 
 *Reagálási kódok:*
 
-Kód: 200<br>
+Kód 200<br>
 Az átlátszatlan token feloldása SaaS-előfizetéshez. Válasz törzse:
  
 
@@ -130,16 +130,16 @@ Az átlátszatlan token feloldása SaaS-előfizetéshez. Válasz törzse:
 }
 ```
 
-Kód: 400<br>
+Kód 400<br>
 Hibás kérelem. x-MS-Marketplace-token hiányzik, helytelenül formázott vagy lejárt.
 
-Kód: 403<br>
-Nem engedélyezett. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Kód 403<br>
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
-Kód: 404<br>
+Kód 404<br>
 Nem található.
 
-Kód: 500<br>
+Kód 500<br>
 Belső kiszolgálóhiba.
 
 ```json
@@ -179,7 +179,7 @@ Felsorolja a közzétevőhöz tartozó összes SaaS-előfizetést.
 
 *Reagálási kódok:*
 
-Kód: 200 <br/>
+Kód 200 <br/>
 Lekéri a közzétevőt és a hozzá tartozó előfizetéseket a közzétevő összes ajánlatához a hitelesítési jogkivonat alapján.
 Válasz hasznos adatai:<br>
 
@@ -218,10 +218,10 @@ Válasz hasznos adatai:<br>
 
 A folytatási token csak akkor jelenik meg, ha a lekérdezni kívánt csomagok további "lapjai" vannak. 
 
-Kód: 403 <br>
-Nem engedélyezett. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz. 
+Kód 403 <br>
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz. 
 
-Kód: 500<br>
+Kód 500<br>
 Belső kiszolgálóhiba.
 
 ```json
@@ -257,7 +257,7 @@ Lekéri a megadott SaaS-előfizetést. Ezzel a hívással kérheti le a licencek
 
 *Reagálási kódok:*
 
-Kód: 200<br>
+Kód 200<br>
 Az SaaS-előfizetés beolvasása az azonosítóból. Válasz hasznos adatai:<br>
 
 ```json
@@ -287,13 +287,13 @@ Response Body:
 }
 ```
 
-Kód: 403<br>
-Nem engedélyezett. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Kód 403<br>
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
-Kód: 404<br>
+Kód 404<br>
 Nem található.<br> 
 
-Kód: 500<br>
+Kód 500<br>
 Belső kiszolgálóhiba.<br>
 
 ```json
@@ -327,7 +327,7 @@ Ezzel a hívással megtudhatja, hogy vannak-e olyan magán-vagy nyilvános aján
 
 *Reagálási kódok:*
 
-Kód: 200<br>
+Kód 200<br>
 Lekéri az ügyfél számára elérhető csomagok listáját. Válasz törzse:
 
 ```json
@@ -340,13 +340,13 @@ Lekéri az ügyfél számára elérhető csomagok listáját. Válasz törzse:
 }
 ```
 
-Kód: 404<br>
+Kód 404<br>
 Nem található.<br> 
 
-Kód: 403<br>
-Nem engedélyezett. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz. <br> 
+Kód 403<br>
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz. <br> 
 
-Kód: 500<br>
+Kód 500<br>
 Belső kiszolgálóhiba.<br>
 
 ```json
@@ -388,19 +388,19 @@ Belső kiszolgálóhiba.<br>
 
 *Reagálási kódok:*
 
-Kód: 200<br>
+Kód 200<br>
 Aktiválja az előfizetést.<br>
 
-Kód: 400<br>
+Kód 400<br>
 Hibás kérelem: érvényesítési hibák.
 
-Kód: 403<br>
-Nem engedélyezett. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Kód 403<br>
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
-Kód: 404<br>
+Kód 404<br>
 Nem található.
 
-Kód: 500<br>
+Kód 500<br>
 Belső kiszolgálóhiba.
 
 ```json
@@ -451,19 +451,19 @@ Request Body:
 
 *Reagálási kódok:*
 
-Kód: 202<br>
+Kód 202<br>
 A terv módosítására irányuló kérelmet elfogadták. A partnernek a művelet helye alapján kell lekérdezni a sikerességet vagy a hibát. <br>
 
-Kód: 400<br>
+Kód 400<br>
 Hibás kérelem: érvényesítési hibák.
 
-Kód: 403<br>
-Nem engedélyezett. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Kód 403<br>
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
-Kód: 404<br>
+Kód 404<br>
 Nem található.
 
-Kód: 500<br>
+Kód 500<br>
 Belső kiszolgálóhiba.
 
 ```json
@@ -517,20 +517,20 @@ Request Body:
 
 *Reagálási kódok:*
 
-Kód: 202<br>
+Kód 202<br>
 A mennyiség módosítására vonatkozó kérés el lett fogadva. A partnernek a művelet helye alapján kell lekérdezni a sikerességet vagy a hibát. <br>
 
-Kód: 400<br>
+Kód 400<br>
 Hibás kérelem: érvényesítési hibák.
 
 
-Kód: 403<br>
-Nem engedélyezett. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Kód 403<br>
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
-Kód: 404<br>
+Kód 404<br>
 Nem található.
 
-Kód: 500<br>
+Kód 500<br>
 Belső kiszolgálóhiba.
 
 ```json
@@ -569,19 +569,19 @@ Leiratkozás és a megadott előfizetés törlése.
 
 *Reagálási kódok:*
 
-Kód: 202<br>
+Kód 202<br>
 A partner egy SaaS-előfizetés lemondására irányuló hívást kezdeményezett.<br>
 
-Kód: 400<br>
+Kód 400<br>
 Törlés nem `allowedCustomerOperations`a (z) **törlésével** rendelkező előfizetésre.
 
-Kód: 403<br>
-Nem engedélyezett. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Kód 403<br>
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
-Kód: 404<br>
+Kód 404<br>
 Nem található.
 
-Kód: 500<br>
+Kód 500<br>
 Belső kiszolgálóhiba.
 
 ```json
@@ -622,7 +622,7 @@ Felsorolja az aktuális közzétevőre vonatkozó függőben lévő műveleteket
 
 *Reagálási kódok:*
 
-Kód: 200<br> A függőben lévő műveletek listájának beolvasása egy előfizetésen. Válasz hasznos adatai:
+Kód 200<br> A függőben lévő műveletek listájának beolvasása egy előfizetésen. Válasz hasznos adatai:
 
 ```json
 [{
@@ -640,16 +640,16 @@ Kód: 200<br> A függőben lévő műveletek listájának beolvasása egy előfi
 ```
 
 
-Kód: 400<br>
+Kód 400<br>
 Hibás kérelem: érvényesítési hibák.
 
-Kód: 403<br>
-Nem engedélyezett. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Kód 403<br>
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
-Kód: 404<br>
+Kód 404<br>
 Nem található.
 
-Kód: 500<br>
+Kód 500<br>
 Belső kiszolgálóhiba.
 
 ```json
@@ -685,7 +685,7 @@ Lehetővé teszi a közzétevő számára a megadott `subscribe`aktivált aszink
 
 *Reagálási kódok:*<br>
 
-Kód: 200<br> Lekéri a megadott függőben lévő SaaS-műveletet. Válasz hasznos adatai:
+Kód 200<br> Lekéri a megadott függőben lévő SaaS-műveletet. Válasz hasznos adatai:
 
 ```json
 Response body:
@@ -704,16 +704,16 @@ Response body:
 
 ```
 
-Kód: 400<br>
+Kód 400<br>
 Hibás kérelem: érvényesítési hibák.
 
-Kód: 403<br>
-Nem engedélyezett. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Kód 403<br>
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
  
-Kód: 404<br>
+Kód 404<br>
 Nem található.
 
-Kód: 500<br> Belső kiszolgálóhiba.
+Kód 500<br> Belső kiszolgálóhiba.
 
 ```json
 {
@@ -760,21 +760,21 @@ Egy művelet állapotának frissítése a megadott értékekkel való sikeres va
 
 *Reagálási kódok:*
 
-Kód: 200<br> Egy műveletnek a partner oldalon való befejezését jelző hívás. Ez a válasz például jelezheti az ülések vagy a csomagok változását.
+Kód 200<br> Egy műveletnek a partner oldalon való befejezését jelző hívás. Ez a válasz például jelezheti az ülések vagy a csomagok változását.
 
-Kód: 400<br>
+Kód 400<br>
 Hibás kérelem: érvényesítési hibák.
 
-Kód: 403<br>
-Nem engedélyezett. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Kód 403<br>
+Jogosulatlan. A hitelesítési jogkivonat nem lett megadva vagy érvénytelen, vagy a kérelem olyan akvizícióhoz próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
-Kód: 404<br>
+Kód 404<br>
 Nem található.
 
-Kód: 409<br>
+Kód 409<br>
 Ütközés. Egy újabb tranzakció például már teljesül.
 
-Kód: 500<br> Belső kiszolgálóhiba.
+Kód 500<br> Belső kiszolgálóhiba.
 
 ```json
 {
@@ -790,7 +790,6 @@ Kód: 500<br> Belső kiszolgálóhiba.
 
 A közzétevőnek be kell vezetnie egy webhookot ebben az SaaS-szolgáltatásban, hogy proaktívan értesítse a felhasználókat a szolgáltatás változásairól. Az SaaS szolgáltatásnak meg kell hívnia az operatív API-t az ellenőrzéshez és az engedélyezéshez, mielőtt lépéseket hozna a webhook értesítésére.
 
-A biztonságos kommunikáció biztosítása érdekében a Microsoft a hívás részeként tartalmazza a Azure Active Directory JWT tokent az engedélyezési fejlécben. Az SaaS-szolgáltatókat arra javasoljuk, hogy ellenőrizze a JWT tokent a [Microsoft Identity platform hozzáférési](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) jogkivonatok című cikkben leírtak szerint, hogy csak az érvényes hívásokat fogadják el.
 
 ```json
 {

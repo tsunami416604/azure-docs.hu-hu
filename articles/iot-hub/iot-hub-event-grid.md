@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 0f8942d92958ee8add9645239cc5664a4a96bb33
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f411771fbf39a99642506253fc025d6b29840423
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533355"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648642"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>IoT Hub eseményekre való reagálás Event Grid használatával a műveletek elindításához
 
@@ -72,7 +72,7 @@ Az alábbi példa egy csatlakoztatott eszköz sémáját mutatja be:
 
 ### <a name="device-telemetry-schema"></a>Eszköz telemetria sémája
 
-Az eszköz telemetria érvényes JSON-formátumúnak kell lennie, és a contentType JSON-ra, a contentEncoding pedig UTF-8 értékre kell állítani az üzenetrendszer [tulajdonságaiban](iot-hub-devguide-routing-query-syntax.md#system-properties). Ha a beállítás nincs megadva, akkor a IoT Hub a 64 kódolású formátumban fogja írni az üzeneteket.
+Az eszköz telemetria érvényes JSON formátumúnak kell lennie, és a contentType az **Application/JSON** és a contentEncoding értékre kell állítani az üzenetrendszer [tulajdonságai](iot-hub-devguide-routing-query-syntax.md#system-properties)között. Mindkét tulajdonság nem megkülönbözteti a kis-és nagybetűket. Ha nincs beállítva a tartalom kódolása, akkor a IoT Hub az üzeneteket az alap 64 kódolású formátumban fogja írni.
 
 Az eszközök telemetria az Event Grid közzétételük előtt bővítheti, ha a végpontot Event Gridként kiválasztja. További információ: üzenet- [gazdagítás áttekintése](iot-hub-message-enrichments-overview.md).
 
@@ -174,9 +174,9 @@ A IoT-események tárgya a formátumot használja:
 devices/{deviceId}
 ```
 
-A Event Grid az egyes események attribútumain is lehetővé teszi a szűrést, beleértve az adattartalmat is. Így kiválaszthatja, hogy milyen események érkeznek a telemetria üzenet alapján. A példák megtekintéséhez tekintse meg a [speciális szűrést](../event-grid/event-filtering.md#advanced-filtering) ismertető témakört. A telemetria-üzenet törzsének szűréséhez a contentType a JSON és a contentEncoding értékre kell állítani az üzenetrendszer [tulajdonságai](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)között.
+A Event Grid az egyes események attribútumain is lehetővé teszi a szűrést, beleértve az adattartalmat is. Így kiválaszthatja, hogy milyen események érkeznek a telemetria üzenet alapján. A példák megtekintéséhez tekintse meg a [speciális szűrést](../event-grid/event-filtering.md#advanced-filtering) ismertető témakört. A telemetria **-** üzenet törzsének szűréséhez a ContentType az **Application/JSON** és a contentEncoding értékre kell állítani az üzenetrendszer [tulajdonságai](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)között. Mindkét tulajdonság nem megkülönbözteti a kis-és nagybetűket.
 
-A nem telemetria események, például a DeviceConnected, a DeviceDisconnected, a DeviceCreated és a DeviceDeleted esetében az előfizetés létrehozásakor az Event Grid szűrés használható. A telemetria-események esetében a Event Grid szűrésén kívül a felhasználók az üzenet-útválasztási lekérdezésen keresztül is szűrhetik az eszközön az ikreket, az üzenet tulajdonságait és a törzsét. Egy alapértelmezett [útvonalat](iot-hub-devguide-messages-d2c.md) hozunk létre IoT hub, az eszköz telemetria Event Grid-előfizetése alapján. Ez az egyetlen útvonal képes kezelni az összes Event Grid-előfizetését. Az üzenetek telemetria az adatküldés előtt frissítheti az [útválasztási lekérdezést](iot-hub-devguide-routing-query-syntax.md). Vegye figyelembe, hogy az útválasztási lekérdezés csak akkor alkalmazható az üzenet törzsére, ha a törzs JSON. A contentType a JSON és a contentEncoding értékre kell állítania az üzenetrendszer [tulajdonságai](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)között az UTF-8 értékre.
+A nem telemetria események, például a DeviceConnected, a DeviceDisconnected, a DeviceCreated és a DeviceDeleted esetében az előfizetés létrehozásakor az Event Grid szűrés használható. A telemetria-események esetében a Event Grid szűrésén kívül a felhasználók az üzenet-útválasztási lekérdezésen keresztül is szűrhetik az eszközön az ikreket, az üzenet tulajdonságait és a törzsét. Egy alapértelmezett [útvonalat](iot-hub-devguide-messages-d2c.md) hozunk létre IoT hub, az eszköz telemetria Event Grid-előfizetése alapján. Ez az egyetlen útvonal képes kezelni az összes Event Grid-előfizetését. Az üzenetek telemetria az adatküldés előtt frissítheti az [útválasztási lekérdezést](iot-hub-devguide-routing-query-syntax.md). Vegye figyelembe, hogy az útválasztási lekérdezés csak akkor alkalmazható az üzenet törzsére, ha a törzs JSON. Az contentType az **Application/JSON** és a contentEncoding értékre kell állítania az üzenetrendszer [tulajdonságai](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)között.
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Az eszköz csatlakoztatott és leválasztott eseményeinek korlátai
 

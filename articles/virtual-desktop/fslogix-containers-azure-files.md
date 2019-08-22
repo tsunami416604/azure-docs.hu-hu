@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 6bb3be3805243bba4d11037b180e7f8418a84014
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
-ms.translationtype: MT
+ms.openlocfilehash: 54d3f175e74b9f94c7845725e3d8f4531750df57
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947223"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877553"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
@@ -86,7 +86,7 @@ A Windows rendszerű virtuális asztali szolgáltatás teljes körű vezérlést
 Annak biztosítása érdekében, hogy a Windows rendszerű virtuális asztali környezet az ajánlott eljárásokat követi:
 
 - Azure Files Storage-fióknak ugyanabban a régióban kell lennie, mint a munkamenet-gazdagép virtuális gépei.
-- Azure Files engedélyeknek meg kell egyezniük a [követelmények – profil tárolók](https://docs.fslogix.com/display/20170529/Requirements+-+Profile+Containers)című cikkben ismertetett engedélyekkel.
+- Azure Files engedélyeknek meg kell egyezniük a [követelmények – profil tárolók](https://docs.microsoft.com/fslogix/overview#requirements)című cikkben ismertetett engedélyekkel.
 - Mindegyik gazdagépnek azonos típusú és méretű virtuális gépről kell kiépíteni, ugyanazon fő rendszerkép alapján.
 - Minden egyes gazdagép-készlet virtuális gépnek ugyanabban az erőforráscsoporthoz kell tartoznia, hogy segítse a felügyeletet, a skálázást és a frissítést.
 - Az optimális teljesítmény érdekében a tárolási megoldásnak és a FSLogix-profil tárolójának ugyanabban az adatközpont-helyen kell lennie.
@@ -99,6 +99,6 @@ A következő útmutatók segítségével állíthatja be a Windows rendszerű v
 - Az asztali virtualizálási megoldás létrehozásának megkezdéséhez lásd: [bérlő létrehozása a Windows rendszerű virtuális asztalon](tenant-setup-azure-active-directory.md).
 - A Windows rendszerű virtuális asztali bérlőn belüli gazdagépek létrehozásával kapcsolatban lásd: [állomáslista létrehozása az Azure Marketplace-szel](create-host-pools-azure-marketplace.md).
 - A teljes körűen felügyelt fájlmegosztás felhőben való beállításával kapcsolatban lásd: [Azure Files megosztás beállítása](/articles/storage/files/storage-files-active-directory-enable.md).
-- A FSLogix-profilok tárolóinak konfigurálásával kapcsolatban lásd: [felhasználói profil megosztásának beállítása egy gazdagéphez](create-host-pools-user-profile.md).
+- A FSLogix-profilok tárolók konfigurálásáról további információt a [fájlmegosztás létrehozása a címkészlet számára](create-host-pools-user-profile.md)című témakörben talál.
 - A felhasználók egy gazdagéphez való hozzárendelésével kapcsolatban lásd: [Manage app groups for Windows Virtual Desktop](manage-app-groups.md).
 - A Windows rendszerű virtuális asztali erőforrások webböngészőből való eléréséhez tekintse meg a [Kapcsolódás a Windows rendszerű virtuális asztalhoz](connect-web.md)című témakört.

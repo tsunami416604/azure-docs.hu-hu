@@ -1,6 +1,6 @@
 ---
-title: Létrehozása és kezelése az Azure IoT központi alkalmazás eseményszabályok |} A Microsoft Docs
-description: Az Azure IoT Central esemény szabályok lehetővé teszik az eszközök, közel valós időben figyelheti és automatikusan követve indíthatók el műveletek, például egy e-mailt küldhet a szabály aktiválásakor.
+title: Eseményvezérelt szabályok létrehozása és kezelése az Azure IoT Central alkalmazásban | Microsoft Docs
+description: Az Azure IoT Central eseményvezérelt szabályai lehetővé teszik az eszközök közel valós idejű figyelését és a műveletek automatikus meghívását, például e-mailek küldését a szabály indításakor.
 author: ankitscribbles
 ms.author: ankitgup
 ms.date: 06/09/2019
@@ -8,110 +8,112 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4754e6b571845d286ef22014f87b86fae2f6633d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c931cfbcff750d96828641669c4aaa15e7932970
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053033"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877408"
 ---
-# <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Hozzon létre egy esemény szabályt és az Azure IoT központi alkalmazás-értesítések beállítása
+# <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Eseményvezérelt szabály létrehozása és értesítések beállítása az Azure IoT Central alkalmazásban
 
 *Ez a cikk operátorokra, fejlesztőkre és rendszergazdákra vonatkozik.*
 
-Azure IoT Central használatával távolról figyeli a csatlakoztatott eszközök. Az Azure IoT Central szabályok lehetővé teszik az eszközök, közel valós időben figyelheti és automatikusan hajthatók végre műveletek, például e-mail küldése vagy Microsoft Flow-trigger. Mindössze pár kattintással megadhatja a feltételt, amelynek az adatok figyelésére, és konfigurálja a megfelelő műveletet. Ez a cikk bemutatja, hogyan hozhat létre szabályokat az eszköz által küldött események figyelésére.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-Eszközök esemény mérési segítségével eszköz fontos vagy tájékoztató eseményeket küldeni. Egy esemény szabály aktivál, hogy a kiválasztott eszköz esemény az eszköz által jelentett.
+Az Azure IoT Central használatával távolról is figyelheti a csatlakoztatott eszközöket. Az Azure IoT Central szabályai lehetővé teszik az eszközök közel valós idejű figyelését és a műveletek automatikus meghívását, például e-mailek vagy triggerek Microsoft Flowának elküldését. Néhány kattintással megadhatja azt a feltételt, amelynél figyelni szeretné az eszköz adatait, és konfigurálnia kell a megfelelő műveletet. Ez a cikk azt ismerteti, hogyan hozhatók létre szabályok az eszköz által eljuttatott események figyelésére.
+
+Az eszközök az esemény mérésével fontos vagy tájékoztató jellegű eseményeket küldhetnek. Az eseményvezérelt szabály akkor aktiválódik, ha az eszköz a kiválasztott eszköz eseményét jelzi.
 
 ## <a name="create-an-event-rule"></a>Eseményszabály létrehozása
 
-Esemény szabály létrehozása esetén az eszköz sablon legalább egy eseményt mérési definiálva kell rendelkeznie. Ebben a példában egy hűtött Eladóautomata eszköz által jelentett motor hibaesemény ventilátor. A szabály az eseményt, az eszköz által jelentett figyeli, és a egy e-mailt küld, amikor az eseményt jelentett.
+Eseményvezérelt szabály létrehozásához az eszköz sablonjának meg kell határoznia legalább egy esemény mértékét. Ez a példa egy olyan hűtött automatából készült eszközt használ, amely egy ventilátoros motorral kapcsolatos hibát jelez. A szabály figyeli az eszköz által jelentett eseményt, és e-mailt küld az esemény jelentésekor.
 
-1. Használatával a **eszközsablonok** lapon, keresse meg az eszköz sablon, amelynek a szabályt ad hozzá.
+1. Az **eszközök sablonjai** lapon Navigáljon arra az eszköz-sablonra, amelyhez hozzá kívánja hozzáadni a szabályt.
 
-1. Szabályok még nem hozta létre, ha a következő képernyő jelenik meg:
+1. Ha még nem hozott létre szabályokat, a következő képernyő jelenik meg:
 
-    ![Még nincsenek szabályai](media/howto-create-event-rules/rules_landing_page1.png)
+    ![Még nincsenek szabályok](media/howto-create-event-rules/rules_landing_page1.png)
 
-1. Az a **szabályok** lapon jelölje be **+ új szabály** , milyen típusú szabályokat hozhat létre.
+1. A **szabályok** lapon válassza az **+ új szabály** lehetőséget a létrehozandó szabályok típusának megtekintéséhez.
 
-1. Válassza ki a **esemény** csempére kattintva hozzon létre egy esemény figyelési szabály.
+1. Válassza ki az **esemény** csempét egy esemény-figyelési szabály létrehozásához.
 
-    ![Szabály típusa](media/howto-create-event-rules/rule_types1.png)
+    ![Szabályok típusai](media/howto-create-event-rules/rule_types1.png)
 
-1. Adjon meg egy nevet, amely segít azonosítani a szabály az eszköz sablonban.
+1. Adjon meg egy nevet, amely segít a szabály azonosításában az eszköz sablonjában.
 
-1. Váltsa át a szabály a sablon alapján létrehozott összes eszköz azonnal engedélyezéséhez **engedélyezése a szabály az összes eszközt, ez a sablon**.
+1. A sablonból létrehozott összes eszközre vonatkozó szabály azonnali engedélyezéséhez kapcsolja be az **Engedélyezés szabályt a sablon összes eszközén**.
 
     ![Szabály részletei](media/howto-create-event-rules/rule_detail1.png)
 
-    Eszköz sablon alapján az eszközök automatikusan alkalmazza a szabályt.
+    A szabály automatikusan az eszköz sablonja alatt lévő összes eszközre vonatkozik.
 
 ### <a name="configure-the-rule-conditions"></a>A szabály feltételeinek konfigurálása
 
-A feltétel a feltételeknek, a szabály által figyelt határozza meg.
+A feltétel határozza meg a szabály által figyelt feltételeket.
 
-1. Válassza ki a **+** melletti **feltételek** új feltétel hozzáadása.
+1. Új feltétel **+** hozzáadásához válassza a **feltételek** melletti lehetőséget.
 
-1. Válassza ki azt az eseményt, amely szeretné figyelni a mérési legördülő listából. Ebben a példában **ventilátor Motor hiba** esemény lett kiválasztva.
+1. Válassza ki a figyelni kívánt eseményt a mérték legördülő listából. Ebben a példában a **ventilátor motoros hiba** esemény van kiválasztva.
 
    ![Állapot](media/howto-create-event-rules/condition_filled_out1.png)
 
-1. Igény szerint is beállíthat **száma** , **összesítési** , és adja meg a megfelelő küszöbértéket.
+1. Igény szerint a **Count** összesítésként is beállítható , és megadhatja a vonatkozó küszöbértéket.
 
-   - Nélkül összesítés, a szabály aktiválásakor adatpontok esemény, amely megfelel a feltételnek. Például, ha a szabály feltétel az indítási feltétel egy **ventilátor Motor hiba** esemény következik be, akkor a szabály gondoskodik arról, szinte azonnal amikor az eszköz jelenti a kapcsolódó eseményre.
-   - Száma aggregátumfüggvényt használja, akkor meg kell adnia egy **küszöbérték** és a egy **összesített időtartomány** keresztül, amelyet a feltétel ki kell értékelni kell. Ebben az esetben az események száma összesített értéket jelenít meg, és csak akkor, ha az összesített száma a küszöbérték megegyezik a szabály aktiválásakor.
+   - Összesítés nélkül a szabály a feltételnek megfelelő összes esemény-adatpontra elindítja a szabályt. Ha például úgy konfigurálja a szabály feltételét, hogy a ventilátoros **motor hibájának** bekövetkezésekor aktiválódik, a szabály szinte azonnal elindul, amikor az eszköz jelentést küld az eseményről.
+   - Ha a Count összesítő függvényként van használatban, meg kell adnia egy **küszöbértéket** és egy **összesített** időablakot, amely felett a feltételt ki kell értékelni. Ebben az esetben a rendszer összesíti az események számát, és a szabály csak akkor aktiválódik, ha az összesített események száma megegyezik a küszöbértékkel.
 
-     Például ha azt szeretné, a riasztás, ha háromnál több eszköz események 5 percen belül, válassza ki az esemény, és állítsa "count", az aggregate függvényt, operátort, "nagyobb, mint" és "küszöbértéket" 3. Állítsa be a "Összesítési időszak", "5 perc". A szabály akkor aktiválódik, ha több mint három eseménynek az eszköz által küldött 5 percen belül. A szabály a kiértékelés gyakorisága pedig ugyanaz, mint a **összesített időtartomány**, ami azt jelenti, hogy ebben a példában a szabály kiértékelése történik az 5 percenként egyszer.
+     Ha például akkor szeretne riasztást kapni, ha több mint három eszköz-esemény van 5 percen belül, válassza ki az eseményt, és állítsa az összesítő függvényt "Count", operátorként "nagyobb, mint", a "küszöbérték" pedig a 3 értékre. Állítsa be az "összesítési időszak" kifejezést "5 perc" értékre. A szabály akkor aktiválódik, ha az eszköz több mint három eseményt továbbít 5 percen belül. A szabály kiértékelésének gyakorisága megegyezik az **összesített**időintervallummal, ami azt jelenti, hogy ebben a példában a szabály 5 percenként lesz kiértékelve.
 
-     ![Feltétel hozzáadása](media/howto-create-event-rules/aggregate_condition_filled_out1.png)
+     ![Esemény feltételének hozzáadása](media/howto-create-event-rules/aggregate_condition_filled_out1.png)
 
      >[!NOTE]
-     >Egynél több esemény mérték alapján is hozzáadhatók **feltétel**. Ha több feltétel van megadva, minden feltételeknek teljesülniük kell elindítani a szabályhoz. Minden egyes feltétel lekérdezi csatlakozott egy "És" záradék által implicit módon. Összesítés használatakor minden mérték összesíteni kell.
+     >A **feltétel**több esemény-mérést is hozzáadhat. Ha több feltétel van megadva, az összes feltételnek teljesülnie kell a szabály működésének elindításához. Minden feltétel implicit módon csatlakozik egy "és" záradékhoz. Összesítés használatakor minden mérést összesíteni kell.
 
-### <a name="configure-actions"></a>Művelet konfigurálása
+### <a name="configure-actions"></a>Műveletek konfigurálása
 
-Ez a szakasz bemutatja, hogyan állíthatja be a műveleteket, ha a szabály lesz elindítva. Műveletek beolvasása aktiválódnak, ha az a szabályban megadott feltételek kiértékelése igaz értékre.
+Ebből a szakaszból megtudhatja, hogyan állíthatja be, hogy milyen műveleteket kell végrehajtani a szabály indításakor. A rendszer meghívja a műveleteket, ha a szabályban megadott összes feltétel igaz értékre van kiértékelve.
 
-1. Válassza ki a **+** melletti **műveletek**. Itt láthatja az elérhető műveletek listáját.
+1. Válassza ki **+** a műveletek melletti **műveletet**. Itt láthatja az elérhető műveletek listáját.
 
     ![Művelet hozzáadása](media/howto-create-event-rules/add_action1.png)
 
-1. Válassza ki a **E-mail** művelet, adjon meg egy érvényes e-mail-címmel a **való** mezőben, és ügyeljen arra, hogy a szabály aktiválásakor jelennek meg az e-mail törzsét adja meg.
+1. Válassza ki az **e-mail** műveletet, adjon meg egy érvényes e-mail-címet a **to** mezőben, és adjon meg egy megjegyzést, amely az e-mail törzsében jelenik meg a szabály indításakor.
 
     > [!NOTE]
-    > Csak hozzá az alkalmazáshoz, és legalább egyszer bejelentkezett felhasználók kapnak e-mailt. Tudjon meg többet [felhasználókezelés](howto-administer.md) az Azure IoT Central.
+    > Az e-maileket csak az alkalmazáshoz hozzáadott felhasználóknak küldi el a rendszer, és legalább egyszer bejelentkezett. További információ az Azure IoT Central [felhasználói kezeléséről](howto-administer.md) .
 
    ![Művelet konfigurálása](media/howto-create-event-rules/configure_action1.png)
 
-1. A szabály mentéséhez válasszon **mentése**. A szabály élesíti néhány percen belül, és elindítja az alkalmazásnak küldött események figyelését. Megegyezik a feltételt a szabályban megadott, a szabály eseményindítók a beállított e-mail-művelet.
+1. A szabály mentéséhez válassza a **Mentés**lehetőséget. A szabály néhány percen belül életbe lép, és megkezdi az alkalmazásnak küldött események figyelését. Ha a szabályban megadott feltétel megegyezik, a szabály elindítja a konfigurált e-mail műveletet.
 
-A szabály például a Microsoft Flow és a webhookok más műveleteket is hozzáadhat. Szabályonként legfeljebb 5 műveleteket is hozzáadhat.
+További műveleteket is hozzáadhat a szabályhoz, például a Microsoft Flowhoz és a webhookokhoz. Szabályként legfeljebb 5 műveletet adhat hozzá.
 
-- [Microsoft Flow művelet](howto-add-microsoft-flow.md) elindít egy munkafolyamatot a Microsoft Flow, amikor egy szabály akkor lesz kiváltva 
-- [Webhook művelettel](howto-create-webhooks.md) más szolgáltatások értesíti, amikor egy szabály akkor lesz kiváltva
+- [Microsoft flow művelet](howto-add-microsoft-flow.md) Microsoft flow munkafolyamat kiindítására egy szabály indításakor 
+- [Webhook-művelet](howto-create-webhooks.md) , amely értesíti a többi szolgáltatást, amikor egy szabály aktiválódik
 
-## <a name="parameterize-the-rule"></a>A szabály paraméterezése
+## <a name="parameterize-the-rule"></a>A szabály parametrizálja
 
-Műveletek használatával is konfigurálhatók **Eszköztulajdonság** paraméterként. Ha egy e-mail-cím egy adott eszköztulajdonság van tárolva, akkor meghatározása során is használható a **való** címet.
+A műveletek az **eszköz tulajdonságával** is konfigurálhatók paraméterként. Ha egy e-mail-cím eszköz tulajdonságként van tárolva, akkor a cím megadásakor is használható.
 
 ## <a name="delete-a-rule"></a>Szabály törlése
 
-Ha már nincs szüksége egy szabályt, törölje azt a szabály megnyitásával, majd válassza a **törlése**. A szabály törlése eltávolítja az eszköz sablon és a kapcsolódó eszközöket.
+Ha már nincs szüksége egy szabályra, törölje azt a szabály megnyitásával, és válassza a **Törlés**lehetőséget. A szabály törlése eltávolítja azt az eszköz sablonból és az összes kapcsolódó eszközről.
 
-## <a name="enable-or-disable-a-rule-for-a-device-template"></a>Engedélyezi vagy letiltja az eszköz sablon szabály
+## <a name="enable-or-disable-a-rule-for-a-device-template"></a>Eszközhöz tartozó szabály engedélyezése vagy letiltása
 
-Keresse meg az eszközt, és válassza ki az engedélyezni vagy letiltani kívánt szabályt. Váltás a **engedélyezése a szabály az összes eszközt, ez a sablon** gombra kattintva engedélyezheti vagy tilthatja le a szabályt, amelyek az eszköz-sablonhoz társított összes eszköz.
+Navigáljon az eszközhöz, és válassza ki az engedélyezni vagy letiltani kívánt szabályt. A **sablon összes eszközének engedélyezés szabályának** váltása az eszköz sablonhoz társított összes eszköz szabályának engedélyezéséhez vagy letiltásához.
 
-## <a name="enable-or-disable-a-rule-for-a-device"></a>Engedélyezi vagy letiltja az eszköz szabály
+## <a name="enable-or-disable-a-rule-for-a-device"></a>Eszköz szabályának engedélyezése vagy letiltása
 
-Keresse meg az eszközt, és válassza ki az engedélyezni vagy letiltani kívánt szabályt. Váltás a **engedélyezése a szabály az eszköz** gombra kattintva engedélyezheti vagy letilthatja a szabály az eszközön.
+Navigáljon az eszközhöz, és válassza ki az engedélyezni vagy letiltani kívánt szabályt. Az eszközhöz tartozó szabály engedélyezéséhez vagy letiltásához kapcsolja be a **szabály engedélyezése** ehhez a gombhoz beállítást.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulhatta, hogyan hozhat létre szabályokat az Azure IoT Central alkalmazáshoz, az alábbiakban néhány következő lépés:
+Most, hogy megismerte, hogyan hozhat létre szabályokat az Azure IoT Central alkalmazásban, néhány további lépés:
 
-- [A szabályok a Microsoft Flow művelet hozzáadása](howto-add-microsoft-flow.md)
-- [A szabályokban Webhook művelet hozzáadása](howto-create-webhooks.md)
-- [Több művelet futtatható egy vagy több szabályt a csoporthoz](howto-use-action-groups.md)
+- [Microsoft Flow művelet hozzáadása a szabályokban](howto-add-microsoft-flow.md)
+- [Webhook-művelet hozzáadása a szabályokban](howto-create-webhooks.md)
+- [Több művelet csoportosítása egy vagy több szabályból való futtatáshoz](howto-use-action-groups.md)
 - [Az eszközök kezelése](howto-manage-devices.md)

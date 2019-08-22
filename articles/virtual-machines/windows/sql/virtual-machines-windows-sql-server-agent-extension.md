@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d95760745dc3554bc63271cedc63dcf3bf017c5c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 59b5138950e0fb94ea0051fa9cfe9aa75cd7d770
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855220"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877794"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Felügyeleti feladatok automatizálása Azure-beli virtuális gépeken a SQL Server IaaS-ügynök bővítmény használatával
 > [!div class="op_single_selector"]
@@ -88,14 +88,17 @@ Az alábbi követelmények vonatkoznak a SQL Server IaaS-ügynök bővítmény h
 A SQL Server IaaS-ügynök aktuális módja a PowerShell használatával tekinthető meg: 
 
   ```powershell-interactive
-     //Get the SqlVirtualMachine
+     #Get the SqlVirtualMachine
      $sqlvm = Get-AzResource -Name $vm.Name  -ResourceGroupName $vm.ResourceGroupName  -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines
      $sqlvm.Properties.sqlManagement
   ```
 
-Azon SQL Server virtuális gépeken, amelyeken telepítve van a főügynök vagy a Lightweight IaaS-bővítmény, a Azure Portal használatával teljes mértékben frissítheti a módot. Nem lehetséges a visszalépés. Ehhez teljesen el kell távolítania a SQL Server IaaS bővítményt, és újra kell telepítenie. 
+SQL Server a *Lightweight* IaaS-bővítményt futtató virtuális gépek a Azure Portal használatával _teljes mértékben_ frissíthetik a módot. A _nem ügynök_ módban lévő virtuális gépek SQL Server az operációs rendszer Windows 2008 R2 vagy újabb verzióra való frissítése után _teljes egészében_ frissíthetnek. Nem lehetséges a visszalépés – ehhez teljesen el kell távolítania az SQL IaaS-bővítményt, és újra kell telepítenie. 
 
 Az ügynök üzemmódjának teljes frissítése: 
+
+
+# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Nyissa meg az SQL-alapú [virtuális gépek](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) erőforrását. 
@@ -108,8 +111,33 @@ Az ügynök üzemmódjának teljes frissítése:
 
     ![A virtuális gépen SQL Server szolgáltatás újraindítását kérő jelölőnégyzet](media/virtual-machines-windows-sql-server-agent-extension/enable-full-mode-iaas.png)
 
+# <a name="az-clitabbash"></a>[AZ PARANCSSORI FELÜLET](#tab/bash)
+
+Futtassa a következőt a CLI Code kódrészlettel:
+
+  ```azurecli-interactive
+  # Update to full mode
+
+  az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
+  ```
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+Futtassa a következő PowerShell-kódrészletet:
+
+  ```powershell-interactive
+  # Update to full mode
+
+  $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
+  $SqlVm.Properties.sqlManagement="Full"
+  $SqlVm | Set-AzResource -Force
+  ```
+
+---
+
+
 ##  <a name="installation"></a>Telepítés
-A SQL Server IaaS bővítmény akkor települ, amikor regisztrálja az SQL Server VM az [SQL VM erőforrás](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-the-sql-vm-resource-provider)-szolgáltatóval. Ha szükséges, a SQL Server IaaS-ügynököt manuálisan is telepítheti teljes vagy könnyű mód használatával. 
+A SQL Server IaaS bővítmény akkor települ, amikor regisztrálja az SQL Server VM az [SQL VM erőforrás](virtual-machines-windows-sql-register-with-resource-provider.md)-szolgáltatóval. Ha szükséges, a SQL Server IaaS-ügynököt manuálisan is telepítheti teljes vagy könnyű mód használatával. 
 
 A SQL Server IaaS-ügynök bővítményét a teljes módban automatikusan telepíti a rendszer, ha a Azure Portal használatával kiépíti az egyik SQL Server virtuális gép Azure Marketplace-lemezképét. 
 
@@ -119,10 +147,10 @@ A SQL Server IaaS bővítmény teljes módja teljes kezelhetőséget biztosít a
 Telepítse a SQL Server IaaS-ügynököt teljes módban a PowerShell használatával:
 
   ```powershell-interactive
-     // Get the existing compute VM
+     #Get the existing compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     // Register the SQL Server VM with 'Full' SQL Server IaaS agent
+     #Register the SQL Server VM with 'Full' SQL Server IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='Full'}  
@@ -158,10 +186,10 @@ Telepítse a SQL Server IaaS-ügynököt egyszerűsített módban a PowerShell h
 
 
   ```powershell-interactive
-     // Get the existing  Compute VM
+     /#Get the existing  Compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     // Register the SQL Server VM with the 'Lightweight' SQL IaaS agent
+     #Register the SQL Server VM with the 'Lightweight' SQL IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='LightWeight'}  

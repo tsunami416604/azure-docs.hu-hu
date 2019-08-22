@@ -5,18 +5,18 @@ author: rkmanda
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 08/21/2019
 ms.author: philmea
-ms.openlocfilehash: 32caebf8ea216050427f4400102cf56ffc657b55
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f1944e06989844528a55c89f82c3db3b3a28dca1
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875249"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876892"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Magas rendelkezésre állás és vész-helyreállítás IoT Hub
 
-A rugalmas IoT-megoldások megvalósításának első lépéseként az építészeknek, fejlesztőknek és üzlettulajdonosoknak meg kell határozniuk a kiépített megoldásokhoz szükséges üzemidői célokat. Ezeket a célokat elsősorban az egyes forgatókönyvek konkrét üzleti céljai alapján lehet meghatározni. Ebben a kontextusban az [Azure üzletmenet-folytonossági műszaki útmutatója](https://docs.microsoft.com/azure/architecture/resiliency/) egy általános keretrendszert ismertet, amely segítséget nyújt az üzletmenet folytonosságának és a vész-helyreállításnak. Az [Azure-alkalmazások vész-helyreállítási és magas rendelkezésre állása](https://msdn.microsoft.com/library/dn251004.aspx) az Azure-alkalmazások magas rendelkezésre állást (ha) és a vész-helyreállítást (Dr) biztosító stratégiákra vonatkozó architektúrával kapcsolatos útmutatást nyújt.
+A rugalmas IoT-megoldások megvalósításának első lépéseként az építészeknek, fejlesztőknek és üzlettulajdonosoknak meg kell határozniuk a kiépített megoldásokhoz szükséges üzemidői célokat. Ezeket a célokat elsősorban az egyes forgatókönyvek konkrét üzleti céljai alapján lehet meghatározni. Ebben a kontextusban az [Azure üzletmenet-folytonossági műszaki útmutatója](https://docs.microsoft.com/azure/architecture/resiliency/) egy általános keretrendszert ismertet, amely segítséget nyújt az üzletmenet folytonosságának és a vész-helyreállításnak. Az [Azure-alkalmazások vész-helyreállítási és magas rendelkezésre állása](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery) az Azure-alkalmazások magas rendelkezésre állást (ha) és a vész-helyreállítást (Dr) biztosító stratégiákra vonatkozó architektúrával kapcsolatos útmutatást nyújt.
 
 Ez a cikk a IoT Hub szolgáltatás által kifejezetten kínált HA és DR funkciókat ismerteti. A cikkben tárgyalt általános területek a következők:
 
@@ -41,7 +41,7 @@ A IoT Hub szolgáltatás a régión belüli e-mailben biztosítja a redundancia 
 
 Előfordulhat, hogy az adatközpontok olyan ritka helyzetekben fordulnak elő, amikor áramkimaradások vagy fizikai eszközöket érintő egyéb hibák miatt kibővített kimaradások vannak. Ezek az események ritkán fordulnak elő, amikor a fent ismertetett régióbeli HA-képesség nem mindig segít. IoT Hub több megoldást kínál az ilyen kibővített kimaradások helyreállításához. 
 
-Az ilyen helyzetben lévő ügyfelek számára elérhető helyreállítási lehetőségek a következők: "Microsoft által kezdeményezett feladatátvétel" és "manuális feladatátvétel". A kettő közötti alapvető különbség az, hogy a Microsoft kezdeményezi a korábbit, és a felhasználó kezdeményezi az utóbbit. Emellett a manuális feladatátvétel a Microsoft által kezdeményezett feladatátvételi lehetőséggel összehasonlítva alacsonyabb helyreállítási időcélkitűzést (RTO) biztosít. Az egyes beállításokhoz kínált konkrét RTOs az alábbi szakaszokban tárgyaljuk. Ha a IoT hub elsődleges régiójából feladatátvételt hajt végre, akkor a hub a megfelelő [Azure-beli földrajzi régióban](../best-practices-availability-paired-regions.md)teljesen működőképes lesz.
+Az ilyen helyzetben lévő ügyfelek számára elérhető helyreállítási lehetőségek a [Microsoft által kezdeményezett feladatátvétel](#microsoft-initiated-failover) és a [manuális feladatátvétel](#manual-failover). A kettő közötti alapvető különbség az, hogy a Microsoft kezdeményezi a korábbit, és a felhasználó kezdeményezi az utóbbit. Emellett a manuális feladatátvétel a Microsoft által kezdeményezett feladatátvételi lehetőséggel összehasonlítva alacsonyabb helyreállítási időcélkitűzést (RTO) biztosít. Az egyes beállításokhoz kínált konkrét RTOs az alábbi szakaszokban tárgyaljuk. Ha a IoT hub elsődleges régiójából feladatátvételt hajt végre, akkor a hub a megfelelő [Azure-beli földrajzi régióban](../best-practices-availability-paired-regions.md)teljesen működőképes lesz.
 
 Mindkét feladatátvételi beállítás a következő helyreállítási pontok célkitűzéseit (RPO) kínálja:
 
@@ -55,24 +55,22 @@ Mindkét feladatátvételi beállítás a következő helyreállítási pontok c
 | Műveletek figyelési üzenetei |Az összes olvasatlan üzenet elvész |
 | A felhőből az eszközre irányuló visszajelzési üzenetek |Az összes olvasatlan üzenet elvész |
 
-<sup>1</sup> A felhőből az eszközre irányuló üzenetek és a fölérendelt feladatok nem állíthatók helyre a manuális feladatátvétel részeként a funkció előzetes verziójában.
+<sup>1</sup> A felhőből az eszközre irányuló üzenetek és a fölérendelt feladatok nem állíthatók helyre a manuális feladatátvétel részeként.
 
-Miután az IoT hub feladatátvételi művelete befejeződött, az eszközről és a háttérbeli alkalmazásokról érkező összes művelet manuális beavatkozás nélkül is működni fog.
+Miután az IoT hub feladatátvételi művelete befejeződött, az eszközről és a háttérbeli alkalmazásokról érkező összes művelet manuális beavatkozás nélkül is működni fog. Ez azt jelenti, hogy az eszközről a felhőbe irányuló üzenetek továbbra is működőképesek maradnak, és a teljes eszköz beállításjegyzéke érintetlen. A Event Grid használatával kibocsátott események a korábban konfigurált előfizetéseken keresztül is felhasználhatók, feltéve, hogy a Event Grid-előfizetések továbbra is elérhetők.
 
 > [!CAUTION]
 > - A IoT Hub beépített események végpontjának az Event hub-kompatibilis neve és végpontja módosult a feladatátvétel után. Ha az Event hub-ügyfél vagy az esemény-feldolgozó gazdagép használatával fogad telemetria üzeneteket a beépített végpontról, az [IoT hub kapcsolati karakterláncát](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) kell használnia a kapcsolat létrehozásához. Ez biztosítja, hogy a háttérbeli alkalmazások a feladatátvétel utáni manuális beavatkozás nélkül is működjenek. Ha az Event hub-kompatibilis nevet és végpontot használja közvetlenül a háttérbeli alkalmazásban, újra kell konfigurálnia az alkalmazást úgy, hogy a feladatátvételt követően beolvassa [az új Event hub-kompatibilis nevet és végpontot](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a műveletek folytatásához.
 >
-> - A feladatátvételt követően a Event Gridon keresztül kibocsátott események a korábban konfigurált előfizetéseken keresztül is felhasználhatók, feltéve, hogy a Event Grid-előfizetések továbbra is elérhetők lesznek.
->
 > - A blob Storage-hoz való útválasztás esetén javasoljuk a Blobok bekapcsolását és az azokhoz való iterációt, hogy minden tárolót beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a Microsoft által kezdeményezett feladatátvétel vagy manuális feladatátvétel során. A Blobok listájának enumerálásával kapcsolatos információkért lásd: [Útválasztás a blob Storage-](iot-hub-devguide-messages-d2c.md#azure-blob-storage)ba.
 
-### <a name="microsoft-initiated-failover"></a>Microsoft által kezdeményezett feladatátvétel
+## <a name="microsoft-initiated-failover"></a>Microsoft által kezdeményezett feladatátvétel
 
 A Microsoft által kezdeményezett feladatátvételt ritka helyzetekben a Microsoft gyakorolja, hogy az érintett régióból származó összes IoT-csomópontot a megfelelő geo-párosítású régióba lehessen átadni. Ez a folyamat egy alapértelmezett beállítás (nincs lehetőség a felhasználók letiltására), és nem igényel beavatkozást a felhasználótól. A Microsoft fenntartja a jogot arra, hogy meghatározza, hogy a rendszer mikor gyakorolja ezt a lehetőséget. Ez a mechanizmus nem tartalmaz felhasználói beleegyező engedélyt, mielőtt a felhasználó központja feladatátvételre kerül. A Microsoft által kezdeményezett feladatátvétel 2-26 óra helyreállítási időcélkitűzéssel (RTO) rendelkezik. 
 
 A nagyméretű RTO azért van, mert a Microsoft számára a feladatátvételi műveletet az adott régióban lévő összes érintett ügyfél nevében kell végrehajtania. Ha olyan kevésbé kritikus IoT-megoldást futtat, amely nagyjából egy nap állásidőt tart fenn, akkor ez a lehetőség attól függ, hogy a IoT-megoldáshoz tartozó teljes vész-helyreállítási célokat kielégítse. A folyamat elindítása után teljes mértékben működőképes futásidejű műveletek teljes ideje a "helyreállítás ideje" című szakaszban olvasható.
 
-### <a name="manual-failover-preview"></a>Manuális feladatátvétel (előzetes verzió)
+## <a name="manual-failover"></a>Manuális feladatátvétel
 
 Ha a Microsoft által kezdeményezett feladatátvétel által biztosított RTO nem teljesítik a rendelkezésre álló üzleti célokat, érdemes lehet manuális feladatátvételt használni a feladatátvételi folyamat elindításához. A kapcsolót használó RTO 10 perc és néhány óra között lehet. A RTO jelenleg a feladatátvétel során a IoT hub-példányon regisztrált eszközök számának függvénye. Számíthat arra, hogy a RTO körülbelül 100 000 eszközt üzemeltető hubhoz 15 perces stadionban kell lennie. A folyamat elindítása után teljes mértékben működőképes futásidejű műveletek teljes ideje a "helyreállítás ideje" című szakaszban olvasható.
 
@@ -83,18 +81,18 @@ A manuális feladatátvételi lehetőség mindig használható, függetlenül at
 >
 > - A manuális feladatátvételt nem szabad olyan mechanizmusként használni, amellyel véglegesen áttelepítheti az elosztót az Azure geo párosított régiói között. Ennek hatására a rendszer nagyobb késést okoz a hub-on a régi elsődleges régióban lévő eszközökön végrehajtott műveleteknél.
 
-### <a name="failback"></a>Feladat-visszavétel
+## <a name="failback"></a>Feladat-visszavétel
 
 A régi elsődleges régióba való visszalépést úgy érheti el, ha egy másik alkalommal aktiválja a feladatátvételi műveletet. Ha az eredeti feladatátvételi műveletet az eredeti elsődleges régióban lévő kibővített kimaradásból való helyreállításra hajtották végre, javasoljuk, hogy a hubot az eredeti helyre kell visszaadnia, miután a hely helyreállt a leállás állapotból.
 
 > [!IMPORTANT]
 > - A felhasználók csak két sikeres feladatátvételt és 2 sikeres feladat-visszavétel műveletet hajthatnak végre naponta.
 >
-> - A feladatátvételi/feladat-visszavételi műveletek nem engedélyezettek vissza. A felhasználóknak a műveletek között 1 órára kell várniuk.
+> - A feladatátvételi/feladat-visszavételi műveletek nem engedélyezettek vissza. Meg kell várnia a műveletek közötti 1 órát.
 
-### <a name="time-to-recover"></a>Helyreállítás ideje
+## <a name="time-to-recover"></a>Helyreállítás ideje
 
-Míg a IoT hub-példány teljes tartományneve (és így a kapcsolódási karakterlánc) változatlan marad, a mögöttes IP-cím módosul. Ezért az IoT hub-példányon végrehajtott futásidejű műveletek teljes működési ideje a feladatátvételi folyamat elindítása után a következő függvény használatával fejezhető ki.
+Míg a IoT hub-példány teljes tartományneve (és így a kapcsolódási sztring) változatlan marad, a mögöttes IP-cím megváltozik. Ezért az IoT hub-példányon végrehajtott futásidejű műveletek teljes működési ideje a feladatátvételi folyamat elindítása után a következő függvény használatával fejezhető ki.
 
 Helyreállítás ideje = RTO [10 perc – 2 óra a manuális feladatátvételhez | 2-26 óra a Microsoft által kezdeményezett feladatátvételhez] + DNS-propagálási késleltetés + az ügyfélalkalmazás által a gyorsítótárazott IoT Hub IP-címek frissítéséhez szükséges idő.
 
@@ -125,15 +123,14 @@ Ennek a lépésnek a leegyszerűsítése érdekében idempotens műveleteket kel
 
 Íme egy összefoglaló az ebben a cikkben bemutatott HA/DR lehetőségről, amely a megoldáshoz használható megfelelő lehetőség kiválasztására szolgál.
 
-| HA/DR beállítás | RTO | RPO | Manuális beavatkozásra van szüksége? | Implementáció bonyolultsága | További költséghatékonyság|
+| HA/DR beállítás | RTO | Helyreállítási időkorlát | Manuális beavatkozásra van szüksége? | Implementáció bonyolultsága | További költséghatékonyság|
 | --- | --- | --- | --- | --- | --- |
 | Microsoft által kezdeményezett feladatátvétel |2-26 óra|Tekintse át a fenti RPO-táblázatot|Nem|Nincsenek|Nincsenek|
-| Manuális feladatátvétel |10 perc – 2 óra|Tekintse át a fenti RPO-táblázatot|Igen|Nagyon alacsony. Ezt a műveletet csak a portálról kell elindítania.|None|
+| Manuális feladatátvétel |10 perc – 2 óra|Tekintse át a fenti RPO-táblázatot|Igen|Nagyon alacsony. Ezt a műveletet csak a portálról kell elindítania.|Nincsenek|
 | Régión átívelő HA |< 1 perc|Az egyéni HA-megoldás replikációs gyakoriságának függvénye|Nem|Magas|> 1 IoT hub díja|
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure IoT Hubról:
-
-* [Ismerkedés a IoT Hubokkal (gyors útmutató)](quickstart-send-telemetry-dotnet.md)
 * [Mi az Azure IoT Hub?](about-iot-hub.md)
+* [Ismerkedés a IoT Hubokkal (gyors útmutató)](quickstart-send-telemetry-dotnet.md)
+* [Oktatóanyag: Manuális feladatátvétel végrehajtása egy IoT hub esetében](tutorial-manual-failover.md)

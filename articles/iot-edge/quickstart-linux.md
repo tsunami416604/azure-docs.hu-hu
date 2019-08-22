@@ -9,27 +9,27 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a3d2b51824f4293dc790979ca2513d011b60fd9c
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 70d0f5b28f769617b16b2ae8c71bc5b3e90d5dfe
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414441"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877252"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>Gyors útmutató: Az első IoT Edge-modul üzembe helyezése Linux-eszközön
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Gyors útmutató: Az első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön
 
-Az Azure IoT Edge kiterjeszti a felhő képességeit IoT-eszközeire. Ebben a rövid útmutatóban megismerheti, hogyan helyezhet üzembe előre összeállított kódot távolról egy IoT Edge-eszközön a felhőalapú felület használatával.
+Kipróbálhatja Azure IoT Edge ebben a rövid útmutatóban, ha egy virtuális IoT Edge eszközre helyez üzembe tároló kódot. IoT Edge lehetővé teszi a kódok távoli kezelését az eszközökön, így több számítási feladatot is elküldhet a peremhálózat számára. Ebben a rövid útmutatóban azt javasoljuk, hogy használjon egy Azure-beli virtuális gépet a IoT Edge eszközhöz, amely lehetővé teszi, hogy gyorsan hozzon létre egy tesztelési gépet a telepített előfeltételekkel, majd törölje azt, ha elkészült. 
 
 Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
 
 1. IoT Hub létrehozása
 2. IoT Edge-eszköz regisztrálása az IoT Hubon
-3. Az IoT Edge-futtatókörnyezet telepítése és elindítása az eszközén.
+3. Telepítse és indítsa el a IoT Edge futtatókörnyezetet a virtuális eszközön.
 4. Modul távoli üzembe helyezése IoT Edge-eszközön.
 
 ![Diagram – rövid útmutató architektúra eszközhöz és a felhő](./media/quickstart-linux/install-edge-full.png)
 
-Ez a rövid útmutató végigvezeti egy olyan Azure-beli virtuális gép létrehozásán, amely IoT Edge eszközre van konfigurálva. Ezután egy modult helyezhet üzembe az eszközén az Azure Portalról. A jelen rövid útmutatóban üzembe helyezett modul egy szimulált érzékelő, amely hőmérséklet-, páratartalom- és nyomásadatokat állít elő. A további Azure IoT Edge-oktatóanyagok az itt elvégzett munkára építkeznek olyan modulok üzembe helyezésével, amelyek a szimulált adatok elemzésével üzleti megállapításokat hoznak létre.
+Ez a rövid útmutató végigvezeti egy olyan linuxos virtuális gép létrehozásán, amely IoT Edge eszközre van konfigurálva. Ezután egy modult helyezhet üzembe az eszközén az Azure Portalról. A jelen rövid útmutatóban üzembe helyezett modul egy szimulált érzékelő, amely hőmérséklet-, páratartalom- és nyomásadatokat állít elő. A további Azure IoT Edge-oktatóanyagok az itt elvégzett munkára építkeznek olyan modulok üzembe helyezésével, amelyek a szimulált adatok elemzésével üzleti megállapításokat hoznak létre.
 
 Ha nem rendelkezik aktív Azure-előfizetéssel, kezdetnek hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
 

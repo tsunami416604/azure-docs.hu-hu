@@ -1,6 +1,6 @@
 ---
-title: Ellenőrzőpontok és a visszajátszás a Durable Functions – Azure
-description: Ismerje meg az ellenőrzőpontok létrehozása és a válasz működését a Durable Functions bővítmény az Azure Functions.
+title: Ellenőrzőpontok és visszajátszás a Durable Functions-ben – Azure
+description: Ismerje meg, hogyan működik az ellenőrzőpontok és a válasz a Azure Functions Durable Functions-bővítményében.
 services: functions
 author: ggailey777
 manager: jeconnoc
@@ -10,22 +10,22 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b1fd31a758501620129fdbbc532b8defcf927045
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ed9e4aced7983cce10a577b38c1c170474cf83d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648499"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876860"
 ---
-# <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Ellenőrzőpontok és a visszajátszás a tartós függvények (az Azure Functions)
+# <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Ellenőrzőpontok és visszajátszás Durable Functions (Azure Functions)
 
-Egyik legfőbb attribútumai a Durable Functions **megbízható végrehajtását**. Tevékenység és az orchestrator függvények futnak különböző virtuális gépek egy adatközponton belül, és ezeken a virtuális gépeken vagy a mögöttes hálózati infrastruktúra nem megbízható 100 %-os.
+Durable Functions egyik fő attribútuma a **megbízható végrehajtás**. Az Orchestrator functions és a Activity functions az adatközponton belüli különböző virtuális gépeken, illetve ezeknél a virtuális gépeknél vagy a mögöttes hálózati infrastruktúránál nem 100%-os megbízható.
 
-Durable Functions értéket, ez biztosítja a vezénylések megbízható végrehajtását. Ezt úgy valósítja meg a meghajtó függvény meghívási tároló-üzenetsorok használatával, és rendszeres időközönként az ellenőrzőpontok használata futtatási előzményei szerint tárolási táblákba (más néven felhőalapú tervezési minta használatával [Event Sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)). Adott előzmények is majd játssza vissza automatikusan újraépítheti a memórián belüli állapotát egy orchestrator-függvényt.
+Ennek ellenére Durable Functions biztosítja a munkafolyamatok megbízható végrehajtását. Ezt úgy végzi el, hogy a tárolási várólisták használatával hajtja végre a függvény meghívását, és rendszeres időközönként lekéri a végrehajtási előzményeket a tárolási táblákba (az [esemény forrásának](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)nevezett Felhőbeli tervezési minta használatával). Az előzmények ezután újra lejátszhatók, így automatikusan újraépíthető egy Orchestrator-függvény memóriában tárolt állapota.
 
-## <a name="orchestration-history"></a>Vezénylési előzmények
+## <a name="orchestration-history"></a>Előkészítési előzmények
 
-Tegyük fel, a következő orchestrator függvényt:
+Tegyük fel, hogy rendelkezik a következő Orchestrator-függvénnyel:
 
 ### <a name="c"></a>C#
 
@@ -45,7 +45,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
 ```javascript
 const df = require("durable-functions");
@@ -61,75 +61,75 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Minden egyes `await` (C#) vagy `yield` (JavaScript) utasítás, a tartós feladat keretrendszer ellenőrzőpontokat a table storage-bA a függvény végrehajtási állapotát. Ebben az állapotban, hogy mi a neve a *vezénylési előzmények*.
+Az állandó `await` feladatC#-keretrendszer `yield` minden () vagy (JavaScript) utasításban a függvény végrehajtási állapotát táblázatos tárolóba helyezi. Ezt az állapotot nevezzük a megszervezési *előzményeknek*.
 
-## <a name="history-table"></a>Előzménytáblához
+## <a name="history-table"></a>Előzmények táblázat
 
-Általánosan fogalmazva tartós feladat keretében hajtja végre a következő parancsot minden egyes ellenőrzőpont:
+Általánosságban elmondható, hogy az állandó feladathoz tartozó keretrendszer minden ellenőrzőponton a következőket végzi el:
 
-1. Azure Storage-táblába menti a futtatási előzményei.
-2. Functions Enqueues üzeneteket az orchestrator szeretne meghívni.
-3. Az orchestrator maga Enqueues üzenetek &mdash; például tartós időzítő üzeneteket.
+1. Elmenti a végrehajtási előzményeket az Azure Storage-táblákba.
+2. A Orchestrator által meghívott függvények Enqueues üzenetei.
+3. A Orchestrator &mdash; Enqueues üzenetei, például tartós időzítő üzenetek.
 
-Az ellenőrzőpont után az orchestrator függvény díjmentes segítségével eltávolítható memória addig, amíg nincs több munkát rá.
+Az ellenőrzőpont befejezését követően a Orchestrator függvény szabadon eltávolítható a memóriából, amíg még nem működik.
 
 > [!NOTE]
-> Az Azure Storage nem tartalmaz minden tranzakciós garanciák adatok mentése a table storage és az üzenetsorok között. Hibáinak a kezelése, használja a Durable Functions-tároló társzolgáltatót *végleges konzisztencia* mintákat. Ezek a minták győződjön meg arról, hogy nem történik adatvesztés egy összeomlás vagy közepén ellenőrzőpont kapcsolat megszakadása esetén.
+> Az Azure Storage nem biztosít tranzakciós garanciát az adatmentés a Table Storage-ba és a várólistákba. A hibák kezelése érdekében a Durable Functions Storage-szolgáltató *végleges konzisztencia* -mintákat használ. Ezek a minták biztosítják, hogy az ellenőrzőpontok közepén lévő kapcsolat összeomlása vagy elvesztése esetén ne vesszenek el az adatvesztés.
 
-Befejezéskor előzményeit, a korábban bemutatott függvény a következőhöz hasonló lesz a következő az Azure Table Storage (az illusztráció rövidítése):
+Ha végzett, a korábban bemutatott függvény előzményei a következőhöz hasonlóan néznek ki az Azure Table Storageban (illusztrációs célokra rövidítve):
 
-| PartitionKey (InstanceId)                     | EventType             | Időbélyeg               | Input (Bemenet) | Name (Név)             | Eredmény                                                    | Állapot |
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | Input (Bemenet) | Name (Név)             | Eredmény                                                    | State |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | NULL  | E1_HelloSequence |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | "" "Hello Tokió!" ""                                        |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | "" "Hello Tokyo!" "                                        |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | "" "Hello Seattle!" ""                                      |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | "" "Helló Seattle!" "                                      |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" "Hello London!" ""                                       |                     |
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Helló Tokió!" ",""Hello Seattle!" ",""Hello London!" "]" | Befejeződött           |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" "Helló Londonban!" "                                       |                     |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[" "Hello Tokyo!" "," "Helló Seattle!" "," "Hello London!" "]" | Befejeződött           |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
 
-Néhány megjegyzés a kötegműveletekkel kapcsolatban az oszlopértékeket:
+Néhány megjegyzés az oszlop értékeihez:
 
-* **PartitionKey**: A vezénylési példány Azonosítóját tartalmazza.
-* **Esemény típusa**: Az esemény típusát jelzi. Előfordulhat, hogy a következők egyike lehet:
-  * **OrchestrationStarted**: Az orchestrator függvény egy await újra, vagy az első alkalommal fut-e. A `Timestamp` oszlop determinisztikus értéke feltöltésére szolgál a [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API-t.
-  * **ExecutionStarted**: Az orchestrator függvény lépések végrehajtása az első alkalommal. Ez az esemény is tartalmazza, a függvény bemeneti a `Input` oszlop.
-  * **TaskScheduled**: Egy tevékenység függvény lett ütemezve. A tevékenység függvény neve van rögzítve a `Name` oszlop.
-  * **TaskCompleted**: Egy tevékenység függvény befejeződött. A függvény eredménye a `Result` oszlop.
-  * **TimerCreated**: Tartós időzítő jött létre. A `FireAt` oszlop tartalmazza a megadott (UTC) időpont, amikor az időzítő lejár.
-  * **TimerFired**: Tartós időzítő lép működésbe.
-  * **EventRaised**: Egy külső eseményre lett elküldve a vezénylési példányhoz. A `Name` oszlop rögzíti az esemény nevét, és a `Input` oszlop rögzíti a az esemény hasznos.
-  * **OrchestratorCompleted**: Az orchestrator függvény várni.
-  * **ContinueAsNew**: Az orchestrator függvény befejeződött, és magát az új állapot újraindul. A `Result` oszlop tartalmazza az értéket, amely a-példány újraindítása sikeresen megtörtént a bemenetként szolgál.
-  * **ExecutionCompleted**: Az orchestrator függvény lefutott befejezését (vagy sikertelen). A függvény vagy a hiba részleteit a kimenetek vannak tárolva a `Result` oszlop.
-* **Időbélyeg**: Az előzmények eseményt UTC-időbélyeg.
-* **Név**: A függvény meghívása neve.
-* **Bemeneti**: A JSON-formátumú bemeneti a függvény.
-* **Eredmény**: A kimenet a függvény; Ez azt jelenti, hogy a visszaadott érték.
+* **PartitionKey**: A koordinálás példányának AZONOSÍTÓját tartalmazza.
+* **EventType**: Az esemény típusát jelöli. A következő típusok egyike lehet:
+  * **OrchestrationStarted**: A Orchestrator függvény újraindul egy várakozási időszakból, vagy első alkalommal fut. Az `Timestamp` oszlop a [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API determinisztikus értékének feltöltésére szolgál.
+  * **ExecutionStarted**: A Orchestrator függvény első alkalommal indította el a végrehajtást. Ez az esemény az `Input` oszlop függvény bemenetét is tartalmazza.
+  * **TaskScheduled**: Egy tevékenység-függvény ütemezése megtörtént. A tevékenység-függvény neve az `Name` oszlopban van rögzítve.
+  * **TaskCompleted**: Egy tevékenység-függvény befejeződött. A függvény `Result` eredménye az oszlopban található.
+  * **TimerCreated**: Egy tartós időzítő lett létrehozva. Az `FireAt` oszlop azt az ütemezett UTC-időt tartalmazza, amelyen az időzítő lejár.
+  * **TimerFired**: Tartós időzítő.
+  * **EventRaised**: A rendszer egy külső eseményt kapott a rendszerelőkészítési példánynak. Az `Name` oszlop rögzíti az esemény nevét, és az `Input` oszlop rögzíti az esemény hasznos adatait.
+  * **OrchestratorCompleted**: A Orchestrator függvény vár.
+  * **ContinueAsNew**: A Orchestrator függvény befejeződött, és új állapottal indult újra. Az `Result` oszlop tartalmazza azt az értéket, amelyet a rendszer az újraindított példány bemenetként használ.
+  * **ExecutionCompleted**: A Orchestrator függvény befejeződött (vagy sikertelen). A függvény kimeneteit vagy a hiba részleteit az `Result` oszlopban tárolja a rendszer.
+* **Időbélyeg**: Az előzmények eseményének UTC-időbélyege
+* **Név**: A meghívott függvény neve.
+* **Bemenet**: A függvény JSON formátumú bemenete.
+* **Eredmény**: A függvény kimenete; Ez a visszatérési értéke.
 
 > [!WARNING]
-> Bár a hasznos hibakeresési eszköz, a tábla nem kell minden olyan függőséget. Mivel a Durable Functions bővítmény haladásával is megváltoztathatja.
+> Habár hibakeresési eszközként hasznos, ne tegyen függőséget ezen a táblán. Előfordulhat, hogy a Durable Functions bővítmény fejlődése megváltozhat.
 
-Minden alkalommal, amikor a függvény visszatér az egy `await` (C#) vagy `yield` (JavaScript), a tartós feladat keretrendszer Újrafuttatja a teljesen új orchestrator-függvény. Az egyes ismétlés meghatározhatja, hogy az aktuális aszinkron művelet rendelkezik, végrehajtási előzményeinek consults szintűre frissül, helyezze el.  A művelet került sor, ha a keretrendszer azonnal visszajátssza a művelet kimenetét, és áthelyezi a következő `await` (C#) vagy `yield` (JavaScript). Ez a folyamat folytatódik, amíg a teljes előzmények rendelkezik lett játssza vissza, mely a helyi változókat az orchestrator függvényben visszaállnak az előző értékekre.
+Minden alkalommal, amikor a függvény egy `await` (C#) vagy `yield` (JavaScript) állapotból tér vissza, a tartós feladat-keretrendszer újra lefuttatja a Orchestrator függvényt. Minden újrafuttatáskor a végrehajtási előzmények alapján dönti el, hogy az aktuális aszinkron művelet megtörtént-e.  Ha a művelet lezajlott, a keretrendszer azonnal visszajátssza a művelet kimenetét, és továbblép a következőre `await` (C#) vagy `yield` (JavaScript). Ez a folyamat addig folytatódik, amíg a teljes előzmények újra le lettek állítva, ekkor a Orchestrator függvényben lévő összes helyi változó visszaállítható a korábbi értékekre.
 
-## <a name="orchestrator-code-constraints"></a>Az orchestrator kód megkötései
+## <a name="orchestrator-code-constraints"></a>Orchestrator-kód megkötései
 
-A visszajátszás viselkedését a kódot, amely az orchestrator függvényben csak írható típusú megkötéseket hoz létre:
+Az újrajátszás viselkedése korlátozásokat hoz létre a Orchestrator függvényben írható kód típusától függően:
 
-* Az orchestrator-kódot kell **determinisztikus**. Ez lesz többszöri megismétlését és a kell ugyanaz az eredmény minden alkalommal, amikor. Például nincs közvetlen hívások lekérése az aktuális dátumot és időpontot, véletlenszerű szám lekérése, véletlenszerű GUID azonosítókat létrehozni vagy hívásokat indítani olyan távoli végpontok.
+* A Orchestrator kódnak **determinisztikus**kell lennie. Többször is le lesz játszva, és minden alkalommal ugyanazt az eredményt kell létrehoznia. Például nincs közvetlen hívás az aktuális dátum/idő lekéréséhez, véletlenszerű számok beszerzéséhez, véletlenszerű GUID azonosítók létrehozásához vagy távoli végpontok hívásához.
 
-  Ha az orchestrator-kódot kell lekérni az aktuális dátumot és időpontot, azt kell használnia a [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.NET) vagy `currentUtcDateTime` (JavaScript) API-t, a visszajátszás biztonságos.
+  Ha a Orchestrator-kódnak le kell kérnie az aktuális dátumot és időpontot, akkor a [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) ( `currentUtcDateTime` .net) vagy a (JavaScript) API-t kell használnia, amely biztonságos az újrajátszás számára.
 
-  Ha az orchestrator-kódot kell létrehozni a véletlenszerű GUID, azt kell használnia a [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.NET) API-t, amely ebben a példában a visszajátszás, vagy delegált GUID generációs tevékenység függvény (JavaScript), biztonságos:
+  Ha a Orchestrator-kódnak véletlenszerű GUID-azonosítót kell létrehoznia, akkor a [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.net) API-t kell használnia, amely biztonságos az újrajátszás számára, vagy delegálja a GUID-generációt egy Activity függvénynek (JavaScript), ahogy az a következő példában is látható:
 
   ```javascript
   const uuid = require("uuid/v1");
@@ -139,37 +139,37 @@ A visszajátszás viselkedését a kódot, amely az orchestrator függvényben c
   }
   ```
 
-  A tevékenység függvények nem determinisztikus műveleteket kell elvégezni. Ez magában foglalja a más bemeneti vagy kimeneti kötések végzett minden művelet. Ez biztosítja, hogy nem determinisztikus értéket az első végrehajtás után hozza létre és menti a futtatási előzményei. Az azt követő végrehajtások fogja használni, a mentett érték automatikusan.
+  A nem determinisztikus műveleteket tevékenységi funkciókban kell elvégezni. Ez magában foglalja a más bemeneti vagy kimeneti kötésekkel való interakciót is. Ez biztosítja, hogy az első végrehajtáskor és a végrehajtási előzményekbe való mentés után minden nem determinisztikus értéket generáljon a rendszer. A következő végrehajtások ezt követően automatikusan a mentett értéket fogják használni.
 
-* Az orchestrator-kód legyen **nem blokkoló**. Ha például azt jelenti, hogy nem I/O- és a hívások nem `Thread.Sleep` (.NET) vagy ezzel egyenértékű API-k.
+* A Orchestrator kód **nem blokkolható**. Ez azt jelenti például, hogy nincs I/O, és nem `Thread.Sleep` a (.net) vagy az egyenértékű API-k hívása.
 
-  Ha az orchestrator késleltetésre van szüksége, használhat a [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET) vagy `createTimer` (JavaScript) API-t.
+  Ha egy Orchestrator késleltetésre van szüksége, használhatja a [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.net) vagy `createTimer` a (JavaScript) API-t.
 
-* Az orchestrator-kódot kell **soha nem kezdeményez bármilyen aszinkron művelet** használatával, kivéve a [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API vagy `context.df` objektum API. Például nem `Task.Run`, `Task.Delay` vagy `HttpClient.SendAsync` a .NET-ben, vagy `setTimeout()` és `setInterval()` javascriptben. Tartós feladat keretében hajtja végre az orchestrator-kódot egyetlen szálon, és bármely más olyan hozzászólásláncot, amelyet más API-k aszinkron sikerült ütemezni nem kezelheti.
+* A Orchestrator-kódnak **soha nem kell aszinkron műveletet kezdeményeznie** , kivéve a [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API vagy `context.df` az objektum API-ját. `Task.Run`Például: nem ,`setTimeout()` .net `Task.Delay` vagy`setInterval()` JavaScript esetén. `HttpClient.SendAsync` A tartós feladat-keretrendszer egyetlen szálon hajtja végre a Orchestrator-kódot, és nem tud kommunikálni más aszinkron API-k által ütemezhető más szálakkal. Ha ez történik, `InvalidOperationException` a kivételt a rendszer kidobja.
 
-* **Végtelen hurkok el kell kerülni** az orchestrator-kódban. Mivel a tartós feladat keretrendszer futtatási előzményei a vezénylési függvény előrehaladtával, végtelen ciklust eredményezheti egy orchestrator-példány futtatásához nincs elég memória. Végtelen ciklust esetekhez használhatja API-k például [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.NET) vagy `continueAsNew` (JavaScript) indítsa újra a függvény végrehajtási és előző futtatási előzményei.
+* A **végtelen hurkokat el kell kerülni** a Orchestrator-kódban. Mivel a tartós feladatok keretrendszere menti a végrehajtási előzményeket, mivel a folyamat előrehaladtával egy végtelen hurok miatt előfordulhat, hogy egy Orchestrator-példány elfogyott a memóriából. Végtelen hurkos forgatókönyvek esetén használjon API-kat (például [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) ( `continueAsNew` .net) vagy (JavaScript)) a függvény végrehajtásának újraindításához és a korábbi végrehajtási előzmények elvetéséhez.
 
-* Az orchestrator JavaScript-függvények nem lehet `async`. Ezek a szinkron funkciók értékűként kell deklarálni.
+* A JavaScript Orchestrator functions `async`nem lehet. Ezeket szinkron létrehozó függvényekként kell deklarálni.
 
-Bár ezek a korlátozások előfordulhat, hogy tűnhet, először a gyakorlatban nem nehéz kövesse. Tartós feladat keretében megkísérli a fenti szabályok megsértésének észlelése és jelez egy `NonDeterministicOrchestrationException`. Azonban ez a viselkedés észlelését a legjobb, és Ön nem függnek tőle.
+Habár ezek a megkötések először is ijesztőnek tűnhet, a gyakorlatban nem nehéz követni őket. A tartós feladat-keretrendszer megkísérli a fenti szabályok megsértésének észlelését, és egy `NonDeterministicOrchestrationException`. Ez az észlelési viselkedés azonban a legjobb erőfeszítés, és nem függ tőle.
 
 > [!NOTE]
-> Ezek a szabályok mindegyike csak érvényes által aktivált függvények a `orchestrationTrigger` kötést. Tevékenység függvények váltott a `activityTrigger` kötést, és a Funkciók, amelyek használják a `orchestrationClient` kötés esetén nincs ilyen korlátozásokkal rendelkezik.
+> Az összes szabály csak a `orchestrationTrigger` kötés által aktivált függvényekre vonatkozik. A `activityTrigger` kötés által aktivált tevékenység-függvények, valamint a `orchestrationClient` kötést használó függvények nem rendelkeznek ilyen korlátozásokkal.
 
 ## <a name="durable-tasks-net"></a>Tartós feladatok (.NET)
 
 > [!NOTE]
-> Ez a szakasz ismerteti a tartós feladat keretrendszer belső megvalósítási részletei. Durable Functions ezt az információt ismerete nélkül is használhatja. Célja, hogy csak a segítségével megismerheti a visszajátszás viselkedését.
+> Ez a szakasz a tartós feladatok keretrendszerének belső megvalósítási részleteit ismerteti. A Durable Functions az információk ismerete nélkül is használhatja. Ez csak az újrajátszás viselkedésének megismerésére szolgál.
 
-Az orchestrator functions biztonságosan várni feladatok alkalmanként nevezzük *tartós feladatok*. Ezek a feladatok létrehozása és a tartós feladat keretrendszer által kezelt. Példák a tevékenységek által visszaadott `CallActivityAsync`, `WaitForExternalEvent`, és `CreateTimer`.
+A Orchestrator függvényekben biztonságosan megtekinthető feladatok időnként *tartós*feladatoknak is nevezik. Ezek olyan feladatok, amelyeket a tartós feladatok keretrendszere hozott létre és felügyel. Ilyenek például a, `CallActivityAsync` `WaitForExternalEvent`a és `CreateTimer`a által visszaadott feladatok.
 
-Ezek *tartós feladatok* belsőleg listájának használatával kezelt `TaskCompletionSource` objektumokat. Ezeket a feladatokat, ismétlés során jön létre az orchestrator kódfuttatás részeként, és végezhető el, mert a kézbesítő enumerálása a kapcsolódó előzmények eseményekre. Ez az összes történik szinkron módon használatával egyetlen szálból, mindaddig, amíg az összes előzményét rendelkezik lett játssza vissza. Bármely tartós feladatokat, és nem fejeződtek be az előzmények visszajátszását végéig rendelkezik a megfelelő műveleteket végrehajtani. Például az üzenet sorba helyezték az eseményközpontban meghívhat egy függvényt, tevékenység is lehet.
+Ezek a *tartós feladatok* belsőleg kezelhetők `TaskCompletionSource` objektumok listájának használatával. Az újrajátszás során ezek a feladatok a Orchestrator-kód végrehajtásának részeként jönnek létre, és a kiosztók a megfelelő előzmény-események enumerálásával lesznek végrehajtva. Mindez szinkron módon történik egyetlen szál használatával, amíg az összes előzmény újra nem lett játszva. Minden olyan tartós feladat, amelyet az előzmények végén nem végez el, a megfelelő műveleteket hajtja végre. Előfordulhat például, hogy egy várólistán lévő hívni egy üzenetet.
 
-Az itt leírtak szerint végrehajtási viselkedésének kell segítségével megismerheti, hogy miért érdemes az orchestrator függvénykód soha nem kell `await` nem tartós feladat: dispatcher szál nem várja meg, amíg az befejeződik, és bármely visszahívási szerint ezt a feladatot sikerült eredményezhet a nyomon követés az orchestrator függvény állapotát. Ennek elkerülése érdekében tett érvényben vannak bizonyos modul ellenőrzi.
+Az itt leírt végrehajtási viselkedésnek meg kell ismernie, hogy miért nem tartós `await` feladat a Orchestrator funkció kódjának: a diszpécser szál nem várja meg, amíg befejeződik, és az adott feladat által visszaadott visszahívások esetleg megsértik a követést a Orchestrator függvény állapota. A rendszer bizonyos futásidejű ellenőrzéseket végez, hogy elkerülje ennek elkerülését.
 
-Ha szeretne további információ a hogyan tartós feladat keretében hajtja végre az orchestrator-funkciók, az ajánlott teendő, tekintse meg a [tartós feladat forráskód a Githubon](https://github.com/Azure/durabletask). Mindenekelőtt tekintse [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) és [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
+Ha további információra van szüksége arról, hogy az állandó feladati keretrendszer hogyan hajtja végre a Orchestrator functions szolgáltatást, a [](https://github.com/Azure/durabletask)legjobb megoldás, ha az állandó feladathoz tartozó forráskódot a githubon tekinti át. Különösen lásd: [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) és [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Instance management ismertetése](durable-functions-instance-management.md)
+> [A példányok kezelésének megismerése](durable-functions-instance-management.md)

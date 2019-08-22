@@ -1,6 +1,6 @@
 ---
-title: Single-page application (alkalmazás kód konfiguráció) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazás (az alkalmazás kódja konfigurációját)
+title: Egyoldalas alkalmazás (az alkalmazás kódjának konfigurációja) – Microsoft Identity platform
+description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazást (az alkalmazás kódjának konfigurációja)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,31 +15,31 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b71454fc553a0f81c26426a6a9588f15d5311e38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a7b4fba03f9edf8a3f4e42b23c6a1b5e06518863
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65406424"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891529"
 ---
-# <a name="single-page-application---code-configuration"></a>Egyoldalas alkalmazás - konfigurációs kódot
+# <a name="single-page-application---code-configuration"></a>Egyoldalas alkalmazás-kód konfiguráció
 
-Ismerje meg, hogyan konfigurálhatja a kódot az egyoldalas alkalmazás (SPA).
+Megtudhatja, hogyan konfigurálhatja az egyoldalas alkalmazás (SPA) kódját.
 
-## <a name="msal-libraries-supporting-implicit-flow"></a>Implicit folyamat támogató MSAL kódtárak
+## <a name="msal-libraries-supporting-implicit-flow"></a>Az implicit folyamatot támogató MSAL-kódtárak
 
-A Microsoft identity platform biztosít MSAL.js szalagtár támogatása az implicit folyamat segítségével az iparág ajánlott biztonságos eljárásokat.  
+A Microsoft Identity platform MSAL. js függvénytárat biztosít az implicit folyamat támogatásához az iparág ajánlott biztonsági eljárásainak használatával.  
 
 Az implicit folyamatot támogató kódtárak a következők:
 
-| Az MSAL könyvtár | Leírás |
+| MSAL-könyvtár | Leírás |
 |--------------|--------------|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | JavaScript kódtár egyszerű bármely ügyféloldali webes alkalmazás például az Angular, oldalon a Vue.js, React.js JavaScript SPA- vagy keretrendszerek használatával jönnek létre a használatra. |
-| ![MSAL Angular](media/sample-v2-code/logo_angular.png) <br/> [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | A core MSAL.js könyvtár egyszerűsítése érdekében használja az Angular keretében létrehozott egyoldalas alkalmazások burkolót. Ez a kódtár előzetes verzióban érhető el, és rendelkezik [ismert problémák](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues?q=is%3Aopen+is%3Aissue+label%3Aangular) bizonyos Angular verziók és böngészők. |
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Egyszerű JavaScript-függvénytár bármely olyan ügyféloldali webalkalmazásban, amely JavaScript vagy SPA keretrendszerek használatával készült, például szögletes, Vue. js, reakciós. js stb. |
+| ![MSAL Angular](media/sample-v2-code/logo_angular.png) <br/> [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | A Core MSAL. js függvénytár burkolója, amely egyszerűbbé teszi a szögletes keretrendszerrel létrehozott egyoldalas alkalmazásokban való használatát. Ez a könyvtár előzetes verzióban érhető el, és [ismert hibákat](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues?q=is%3Aopen+is%3Aissue+label%3Aangular) tartalmaz bizonyos szögletes verziók és böngészők esetében. |
 
-## <a name="application-code-configuration"></a>Kód Alkalmazáskonfiguráció
+## <a name="application-code-configuration"></a>Alkalmazás kódjának konfigurálása
 
-A MSAL könyvtárban az alkalmazás regisztrációs adatok van át configuration kódtár inicializálása során.
+A MSAL-könyvtárban az alkalmazás regisztrációs adatai a könyvtár inicializálásakor a konfigurációnak megfelelően lettek átadva.
 
 ### <a name="javascript"></a>JavaScript
 
@@ -55,15 +55,17 @@ const config = {
 // create UserAgentApplication instance
 const userAgentApplication = new UserAgentApplication(config);
 ```
-A rendelkezésre álló konfigurálható beállításokkal kapcsolatos további részletekért lásd: [MSAL.js alkalmazás inicializálása](msal-js-initializing-client-applications.md).
+Az elérhető konfigurálható beállításokkal kapcsolatos további információkért lásd: [alkalmazás inicializálása a MSAL. js-szel](msal-js-initializing-client-applications.md).
 
 ### <a name="angular"></a>Angular
 
 ```javascript
 //In app.module.ts
+import { MsalModule } from '@azure/msal-angular';
+
 @NgModule({
   imports: [ MsalModule.forRoot({
-                clientId: 'your_app_id'
+                clientID: 'your_app_id'
             })]
          })
 

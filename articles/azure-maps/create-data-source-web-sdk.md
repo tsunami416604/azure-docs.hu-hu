@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c225aa5f821925247d27890e9ee75f3eac4d9eb9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 36c06182d0807ce3d255477a865023ae7b74e2cb
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977351"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874924"
 ---
 # <a name="create-a-data-source"></a>Adatforrás létrehozása
 
@@ -22,7 +22,11 @@ A Azure Maps web SDK olyan adatforrásokban tárolja az adatforrásokat, amelyek
 
 **GeoJSON-adatforrás**
 
-A GeoJSON-alapú adatforrások helyileg is betölthetik és `DataSource` tárolhatják az adataikat a osztály használatával. A GeoJSON adatai manuálisan hozhatók létre vagy hozhatók létre az [Atlas.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) adatnévtérben található segítő osztályok használatával. Az `DataSource` osztály a helyi vagy távoli GeoJSON-fájlok importálására szolgáló funkciókat biztosít. A távoli GeoJSON-fájlokat egy CORs-kompatibilis végponton kell tárolni. Az `DataSource` osztály a fürtszolgáltatási pontokra vonatkozó adatgyűjtési funkciókat biztosít. 
+A GeoJSON-alapú adatforrások helyileg is betölthetik és `DataSource` tárolhatják az adataikat a osztály használatával. A GeoJSON adatai manuálisan hozhatók létre vagy hozhatók létre az [Atlas.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) adatnévtérben található segítő osztályok használatával. Az `DataSource` osztály a helyi vagy távoli GeoJSON-fájlok importálására szolgáló funkciókat biztosít. A távoli GeoJSON-fájlokat egy CORs-kompatibilis végponton kell tárolni. Az `DataSource` osztály a fürtszolgáltatási pontokra vonatkozó adatgyűjtési funkciókat biztosít. Az adatkészletek könnyen hozzáadhatók, eltávolíthatók és frissíthetők az `DataSource` osztály használatával.
+
+
+> [!TIP]
+> Ha az a `DataSource`-ben lévő összes adat felülírására van szükség, és a `clear` rendszer hívásokat `add` hajt végre, akkor a Térkép kétszer próbálkozik, ami egy kis késleltetést eredményezhet. Ehelyett használja `setShapes` azt a függvényt, amely eltávolítja és lecseréli az adatforrásban lévő összes adatát, és csak egyszeres leképezést indít el.
 
 **Vektoros csempe forrása**
 

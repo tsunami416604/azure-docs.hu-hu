@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: d50acc50880229626c847d41d9abe9a9e13d9c6e
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 58d03d80c82fbf58803f7fefa8ef60c19f99bced
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736118"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876886"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studio használatával – Azure App Service
 
@@ -37,7 +37,7 @@ A webjobs 3. x verziójának használatakor a webjobs-t .NET Core Console-alkalm
 > [!NOTE]
 > A .NET Core webjobs-feladatok nem csatolhatók webes projektekhez. Ha a Webjobs egy webalkalmazással kell központilag telepítenie, akkor [a webjobs-et .NET Framework Console](#webjobs-as-net-framework-console-apps)-alkalmazásként kell létrehoznia.  
 
-### <a name="deploy-to-azure-app-service"></a>Üzembe helyezés Azure App Service
+### <a name="deploy-to-azure-app-service"></a>Üzembe helyezés az Azure App Service-ben
 
 A .NET Core-Webjobs a Visual studióból való App Service való közzététele ugyanazokat az eszközöket használja, mint a ASP.NET Core alkalmazás közzététele.
 
@@ -90,7 +90,7 @@ Saját maga is üzembe helyezhet egy projektet Webjobs, vagy összekapcsolhatja 
 
 Ha a Visual Studio 2015-at használja, telepítse a [.net-hez készült Azure SDK-t (Visual studio 2015)](https://azure.microsoft.com/downloads/).
 
-Ha a Visual Studio 2019-et használja, telepítse az [Azure-fejlesztési](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)számítási feladatot.
+Ha a Visual Studio 2017-et használja, telepítse az [Azure-fejlesztési](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)számítási feladatot.
 
 ### <a id="convert"></a>Webjobs-telepítés engedélyezése meglévő konzolos alkalmazás projekthez
 

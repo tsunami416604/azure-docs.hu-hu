@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e8e9b737676b2695b7b88430f59b0b0e79bc477a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d667588cea5902700c225dd7b597d8f03d93d200
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883865"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650045"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Lucene lekérdezési szintaxisa Azure Search
 A lekérdezéseket a részletes [Lucene lekérdezés-elemző](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) szintaxisa alapján is írhat Azure Search a speciális lekérdezési űrlapokhoz: helyettesítő karakter, fuzzy keresés, közelségi keresés, reguláris kifejezések pedig néhány példa. A Lucene lekérdezés-elemző szintaxisának nagy része [érintetlenül](search-lucene-query-architecture.md)van megvalósítva Azure Searchban, kivéve a tartományon belüli, Azure Search a kifejezéseken `$filter` keresztül létrehozott *kereséseket* . 

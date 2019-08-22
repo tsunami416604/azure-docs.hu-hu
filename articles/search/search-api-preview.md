@@ -3,7 +3,7 @@ title: Előzetes verzió REST API Azure Search 2019-05-06 – előzetes verzió 
 description: A Azure Search Service REST API 2019-05-06-es verziója – az előzetes verzió olyan kísérleti funkciókat tartalmaz, mint például a Knowledge Store és az ügyfél által felügyelt titkosítási kulcsok.
 services: search
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.workload: search
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 29d079c4e21352ced5fdcde44acaee66b79f6af9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 7fa280742556b7bc42d2c7fb30c880f836eef62b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876661"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649978"
 ---
 # <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Azure Search szolgáltatás REST API-verziója 2019-05-06 – előzetes verzió
 Ez a cikk a `api-version=2019-05-06-Preview` Azure Search Service REST API verzióját ismerteti, amely még nem általánosan elérhető kísérleti funkciókat kínál.

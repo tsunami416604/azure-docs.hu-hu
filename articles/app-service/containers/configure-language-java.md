@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 07d44bb54c288202d571f8e664822ecf9b4998be
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 428c470eb633c7727f65c5a9a3afa76bce50b177
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639764"
+ms.locfileid: "69647246"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Linuxos Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -423,7 +423,7 @@ Erről a témakörről a [Spring boot dokumentációjában](https://docs.spring.
 ## <a name="configure-java-ee-wildfly"></a>Configure Java EE (WildFly)
 
 > [!NOTE]
-> A Java Enterprise Edition App Service Linux rendszeren jelenleg előzetes verzióban érhető el. Ez a verem éles munkához **nem** ajánlott. a Java SE-és tomcat-veremmel kapcsolatos információk.
+> A Java Enterprise Edition App Service Linux rendszeren jelenleg előzetes verzióban érhető el. Ez a verem éles munkához **nem** ajánlott.
 
 A Linuxon Azure App Service lehetővé teszi a Java-fejlesztők számára a Java Enterprise-(Java EE-) alkalmazások kiépítését, üzembe helyezését és méretezését egy teljes mértékben felügyelt Linux-alapú szolgáltatáson.  A mögöttes Java Enterprise Runtime-környezet a nyílt forráskódú [WildFly](https://wildfly.org/) alkalmazáskiszolgáló.
 
@@ -434,7 +434,6 @@ Ez a szakasz a következő alszakaszokat tartalmazza:
 - [Modulok és függőségek telepítése](#install-modules-and-dependencies)
 - [Adatforrások konfigurálása](#configure-data-sources)
 - [Üzenetkezelési szolgáltatók engedélyezése](#enable-messaging-providers)
-- [Munkamenet-kezelés gyorsítótárazásának konfigurálása](#configure-session-management-caching)
 
 ### <a name="scale-with-app-service"></a>Méretezés App Service
 
@@ -652,14 +651,121 @@ Az üzenet-vezérelt bab engedélyezése a Service Bus használatával üzenetk�
 
 4. Kövesse a modulok és függőségek telepítése szakasz lépéseit a modul XML-leírójának,. jar-függőségeinek, JBoss CLI-parancsainak és az JMS-szolgáltató indítási parancsfájljának használatával. A négy fájlon kívül létre kell hoznia egy XML-fájlt is, amely meghatározza a JMS-várólista és a témakör JNDI nevét. Tekintse meg [ezt](https://github.com/JasonFreeberg/widlfly-server-configs/tree/master/appconfig) a tárházat a hivatkozási konfigurációs fájlokhoz.
 
-### <a name="configure-session-management-caching"></a>Munkamenet-kezelés gyorsítótárazásának konfigurálása
+## <a name="use-redis-as-a-session-cache-with-tomcat"></a>A Redis használata munkamenet-gyorsítótárként a Tomcat használatával
 
-Alapértelmezés szerint a Linuxon App Service a munkamenet-affinitási cookie-k használatával biztosíthatja, hogy a meglévő munkamenetekkel rendelkező ügyfélalkalmazások az alkalmazás ugyanazon példányára legyenek irányítva. Ez az alapértelmezett viselkedés nem igényel konfigurációt, de bizonyos korlátozásokkal rendelkezik:
+A Tomcat úgy is beállítható, hogy külső munkamenet-tárolót használjon, például az [Azure cache-t a Redis](/azure/azure-cache-for-redis/). Így megőrizheti a felhasználói munkamenet állapotát (például a bevásárlókocsi adatait), amikor a felhasználó átkerül az alkalmazás egy másik példányára, például ha automatikus skálázás, újraindítás vagy feladatátvétel történik.
 
-- Ha egy alkalmazás-példány újraindul vagy le van méretezve, az alkalmazáskiszolgáló felhasználói munkamenet-állapota elvész.
-- Ha az alkalmazások hosszú munkamenet-időtúllépési beállításokkal vagy rögzített számú felhasználóval rendelkeznek, eltarthat egy ideig, amíg az Automatikus méretezéssel rendelkező új példányok betöltést kapnak, mivel csak az újonnan indított példányok lesznek átirányítva az új munkamenetek.
+A Tomcat és a Redis használatához konfigurálnia kell az alkalmazást egy [PersistentManager](http://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) -implementáció használatára. A következő lépések ismertetik ezt a folyamatot a [Pivotal Session Manager használatával: Redis-Store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) példaként.
 
-A WildFly-t úgy is beállíthatja, hogy külső munkamenet-tárolót használjon, például az [Azure cache-t a Redis](/azure/azure-cache-for-redis/). A munkamenet-cookie-alapú útválasztás kikapcsolásához [le kell tiltania a meglévő ARR-példány](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) -affinitási konfigurációt, és a konfigurált WildFly-munkamenet-tároló beavatkozás nélkül is működhet.
+1. Nyisson meg egy bash-terminált, és használja `export <variable>=<value>` a következő környezeti változók beállításához.
+
+    | Változó                 | Value                                                                      |
+    |--------------------------|----------------------------------------------------------------------------|
+    | RESOURCEGROUP_NAME       | Az App Service példányt tartalmazó erőforráscsoport neve.       |
+    | WEBAPP_NAME              | Az App Service-példány neve.                                     |
+    | WEBAPP_PLAN_NAME         | A App Service terv neve                                          |
+    | RÉGIÓ                   | Annak a régiónak a neve, ahol az alkalmazás üzemeltetve van.                           |
+    | REDIS_CACHE_NAME         | A Redis-példány Azure-gyorsítótárának neve.                           |
+    | REDIS_PORT               | A Redis cache által figyelt SSL-port.                             |
+    | REDIS_PASSWORD           | A példány elsődleges hozzáférési kulcsa.                                  |
+    | REDIS_SESSION_KEY_PREFIX | Az alkalmazásból érkező munkamenetkulcsok azonosítására megadott érték. |
+
+    A Azure Portal nevét, portját és hozzáférési kulcsát a szolgáltatási példány **Tulajdonságok** vagy **hozzáférési kulcsok** szakaszában tekintheti meg.
+
+2. Hozza létre vagy frissítse az alkalmazás *src/Main/WebApp/META-INF/Context. XML* fájlját a következő tartalommal:
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Context path="">
+        <!-- Specify Redis Store -->
+        <Valve className="com.gopivotal.manager.SessionFlushValve" />
+        <Manager className="org.apache.catalina.session.PersistentManager">
+            <Store className="com.gopivotal.manager.redis.RedisStore"
+                   connectionPoolSize="20"
+                   host="${REDIS_CACHE_NAME}.redis.cache.windows.net"
+                   port="${REDIS_PORT}"
+                   password="${REDIS_PASSWORD}"
+                   sessionKeyPrefix="${REDIS_SESSION_KEY_PREFIX}"
+                   timeout="2000"
+            />
+        </Manager>
+    </Context>
+    ```
+
+    Ez a fájl megadja és konfigurálja a munkamenet-kezelő megvalósítását az alkalmazáshoz. Az előző lépésben beállított környezeti változókat használja a fiókadatok megtartásához a forrásfájlok közül.
+
+3. Az FTP használatával töltse fel a munkamenet-kezelő JAR-fájlját a App Service-példányba, és helyezze a */Home/tomcat/lib* könyvtárba. További információ: [az alkalmazás üzembe helyezése Azure app Service FTP/S használatával](https://docs.microsoft.com/azure/app-service/deploy-ftp).
+
+4. Tiltsa le a [munkamenet-affinitás cookie](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) -t a app Service példányhoz. Ezt megteheti a Azure Portal az alkalmazásra való navigálással, majd a **konfiguráció > az általános beállítások > az ARR-affinitás** beállítás kikapcsolásával. Másik lehetőségként a következő parancsot használhatja:
+
+    ```azurecli
+    az webapp update -g <resource group> -n <webapp name> --client-affinity-enabled false
+    ```
+
+    Alapértelmezés szerint a App Service munkamenet-affinitási cookie-kat használ annak biztosítására, hogy a meglévő munkamenetekkel rendelkező ügyfélalkalmazások az alkalmazás ugyanazon példányára legyenek irányítva. Ez az alapértelmezett viselkedés nem igényel konfigurációt, de nem tudja megőrizni a felhasználói munkamenet állapotát az alkalmazás újraindításakor, vagy ha egy másik példányra irányítja át a forgalmat. Ha letiltja a munkamenet cookie-alapú útválasztásának kikapcsolásához a [meglévő ARR-példány affinitási](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) konfigurációját, a konfigurált munkamenet-tároló beavatkozás nélkül is működhet.
+
+5. Keresse meg a App Service példány **Tulajdonságok** szakaszát, és keresse meg a **további kimenő IP-címeket**. Ezek az alkalmazás összes lehetséges kimenő IP-címét képviselik. Másolja ezeket a következő lépésben való használatra.
+
+6. Az egyes IP-címekhez hozzon létre egy tűzfalszabályot az Azure cache-ben a Redis-példányhoz. Ezt a Redis-példány **tűzfal** szakaszának Azure Portal teheti meg. Adjon egyedi nevet az egyes szabályoknak, és állítsa be a **kezdő IP-cím** és a **záró IP-cím** értékeket ugyanahhoz az IP-címhez.
+
+7. Nyissa meg a Redis-példány **Speciális beállítások** szakaszát, és állítsa a **hozzáférés engedélyezése csak SSL-kapcsolaton keresztül** beállítást. Ez lehetővé teszi, hogy az App Service-példány kommunikáljon a Redis cache-vel az Azure-infrastruktúrán keresztül.
+
+8. Frissítse az `azure-webapp-maven-plugin` alkalmazás *Pom. XML* fájljának konfigurációját, hogy a Redis-fiók adataira hivatkozzon. Ez a fájl a korábban beállított környezeti változókat használja, hogy a fiókadatok a forrásfájlok adatain kívül maradjanak.
+
+    Ha szükséges, váltson `1.7.0` a [Maven beépülő modul](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)aktuális verziójára Azure app Service.
+
+    ```xml
+    <plugin>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.7.0</version>
+        <configuration>
+
+            <!-- Web App information -->
+            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
+            <appServicePlanName>${WEBAPP_PLAN_NAME}-${REGION}</appServicePlanName>
+            <appName>${WEBAPP_NAME}-${REGION}</appName>
+            <region>${REGION}</region>
+            <linuxRuntime>tomcat 9.0-jre8</linuxRuntime>
+
+            <appSettings>
+                <property>
+                    <name>REDIS_CACHE_NAME</name>
+                    <value>${REDIS_CACHE_NAME}</value>
+                </property>
+                <property>
+                    <name>REDIS_PORT</name>
+                    <value>${REDIS_PORT}</value>
+                </property>
+                <property>
+                    <name>REDIS_PASSWORD</name>
+                    <value>${REDIS_PASSWORD}</value>
+                </property>
+                <property>
+                    <name>REDIS_SESSION_KEY_PREFIX</name>
+                    <value>${REDIS_SESSION_KEY_PREFIX}</value>
+                </property>
+                <property>
+                    <name>JAVA_OPTS</name>
+                    <value>-Xms2048m -Xmx2048m -DREDIS_CACHE_NAME=${REDIS_CACHE_NAME} -DREDIS_PORT=${REDIS_PORT} -DREDIS_PASSWORD=${REDIS_PASSWORD} IS_SESSION_KEY_PREFIX=${REDIS_SESSION_KEY_PREFIX}</value>
+                </property>
+
+            </appSettings>
+
+        </configuration>
+    </plugin>
+    ```
+
+9. Építse újra és telepítse újra az alkalmazást.
+
+    ```bash
+    mvn package
+    mvn azure-webapp:deploy
+    ```
+
+Az alkalmazás mostantól a Redis cache-t fogja használni a munkamenet-kezeléshez.
+
+Az utasítások tesztelésére használható minta: [Méretezés – állapot-nyilvántartó – Java-Web-App-on-Azure](https://github.com/Azure-Samples/scaling-stateful-java-web-app-on-azure) -tárház a githubon.
 
 ## <a name="docker-containers"></a>Docker-tárolók
 

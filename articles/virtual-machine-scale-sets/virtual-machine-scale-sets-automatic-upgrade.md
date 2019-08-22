@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: manayar
-ms.openlocfilehash: ac754acd61700dc39ebc633da4274c74d8463824
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a9829f380200e616d242f5406b72593014f0efc2
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884180"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656553"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure virtuálisgép-méretezési csoport automatikus operációsrendszer-rendszerképének frissítése
 
@@ -69,6 +69,7 @@ A következő SKU-EK jelenleg támogatottak (és a továbbiak rendszeresen bőv�
 | Microsoft Corporation   | WindowsServer | 2019 – Datacenter |
 | Microsoft Corporation   | WindowsServer | 2019-Datacenter-Smalldisk |
 | Microsoft Corporation   | WindowsServer | 2019-Datacenter-with-Containers |
+| Microsoft Corporation   | WindowsServer | Datacenter-Core-1903-with-containers-smalldisk |
 
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Az operációsrendszer-rendszerkép automatikus frissítésének konfigurálására vonatkozó követelmények

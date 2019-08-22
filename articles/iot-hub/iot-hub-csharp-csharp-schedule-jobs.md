@@ -6,14 +6,14 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/06/2018
+ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: c4f2994413fca07f4a168cf12ba7967b00b6b0e2
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3594828ff3a79242e1cfd4663c415d8de502a329
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668106"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872765"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Feladatok ütemezett és szórása (.NET)
 
@@ -47,9 +47,12 @@ Az IoT hub-hoz csatlakozó **SimulateDeviceMethods** és a **LockDoor** Direct m
 
 **ScheduleJob** , amely feladatokkal hívja meg a **LockDoor** Direct metódust, és frissíti az eszköz két kívánt tulajdonságát több eszközön.
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+## <a name="prerequisites"></a>Előfeltételek
 
-* Visual Studio.
+Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+
+* Visual Studio. Ez az oktatóanyag a Visual Studio 2017-et használja.
+
 * Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
@@ -64,18 +67,18 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a megoldás hátterében meghívott közvetlen metódusra válaszol.
 
-1. A Visual Studióban adjon hozzá egy Visual C# nyelvű Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. Nevezze el a projekt **SimulateDeviceMethods**.
-   
+1. A Visual Studióban adjon hozzá egy C# Visual Windows klasszikus asztali projektet egy új vagy meglévő megoldáshoz a **Console Application** Project sablon használatával. Nevezze el a projekt **SimulateDeviceMethods**.
+
     ![Új Visual C# Windows klasszikus eszköz alkalmazás](./media/iot-hub-csharp-csharp-schedule-jobs/create-device-app.png)
-    
-2. Megoldáskezelő kattintson a jobb gombbal a **SimulateDeviceMethods** projektre, majd kattintson a **NuGet-csomagok kezelése..** . elemre.
+
+2. Megoldáskezelő kattintson a jobb gombbal a **SimulateDeviceMethods** projektre, majd válassza a **NuGet-csomagok kezelése...** lehetőséget.
 
 3. A **NuGet csomagkezelő** ablakban válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza a **telepítés** lehetőséget a **Microsoft. Azure. Devices. Client** csomag telepítéséhez, és fogadja el a használati feltételeket. Ez az eljárás letölti, telepíti és hozzáadja az [Azure IoT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet csomagra és annak függőségeire mutató hivatkozást.
-   
+
     ![NuGet csomagkezelő ablak ügyfélalkalmazás](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 
 4. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
-   
+
     ```csharp
     using Microsoft.Azure.Devices.Client;
     using Microsoft.Azure.Devices.Shared;
@@ -97,7 +100,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a megold
         Console.WriteLine();
         Console.WriteLine("Locking Door!");
         Console.WriteLine("\nReturning response for method {0}", methodRequest.Name);
-            
+
         string result = "'Door was locked.'";
         return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
     }
@@ -115,7 +118,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a megold
     ```
 
 8. Végül adja hozzá a következő kódot a **Main** metódushoz a IoT hub-hoz való kapcsolódás megnyitásához és a metódus-figyelő inicializálásához:
-   
+
     ```csharp
     try
     {
@@ -140,12 +143,12 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a megold
         Console.WriteLine("Error in sample: {0}", ex.Message);
     }
     ```
-        
-9. Mentse a munkáját, és hozza létre a megoldását.         
+
+9. Mentse a munkáját, és hozza létre a megoldását.
 
 > [!NOTE]
 > Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban az újrapróbálkozási házirendeket (például a kapcsolatok újrapróbálkozását) kell végrehajtania, ahogy azt a cikkben is ismertetjük, az [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults).
-> 
+>
 
 ## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
@@ -161,14 +164,14 @@ Ebben a szakaszban olyan .NET-konzol alkalmazást hoz létre (a C#használatáva
 
     ![Új Visual C# Windows klasszikus asztalialkalmazás-projekt](./media/iot-hub-csharp-csharp-schedule-jobs/createnetapp.png)
 
-2. Megoldáskezelő kattintson a jobb gombbal a **ScheduleJob** projektre, majd kattintson a **NuGet-csomagok kezelése..** . elemre.
+2. Megoldáskezelő kattintson a jobb gombbal a **ScheduleJob** projektre, majd válassza a **NuGet-csomagok kezelése...** lehetőséget.
 
 3. A **NuGet csomagkezelő** ablakban válassza a **Tallózás**lehetőséget, keresse meg a **Microsoft. Azure. Devices**elemet, válassza a **telepítés** lehetőséget a **Microsoft. Azure. Devices** csomag telepítéséhez, és fogadja el a használati feltételeket. Ez a lépés letölti, telepíti és hozzáadja az [Azure IoT Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet csomagra és annak függőségeire mutató hivatkozást.
 
     ![NuGet Package Manager (NuGet-csomagkezelő) ablak](./media/iot-hub-csharp-csharp-schedule-jobs/servicesdknuget.png)
 
 4. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
-    
+
     ```csharp
     using Microsoft.Azure.Devices;
     using Microsoft.Azure.Devices.Shared;
@@ -213,7 +216,7 @@ Ebben a szakaszban olyan .NET-konzol alkalmazást hoz létre (a C#használatáva
         CloudToDeviceMethod directMethod = 
           new CloudToDeviceMethod("LockDoor", TimeSpan.FromSeconds(5), 
           TimeSpan.FromSeconds(5));
-       
+
         JobResponse result = await jobClient.ScheduleDeviceMethodAsync(jobId,
             $"DeviceId IN ['{deviceId}']",
             directMethod,
@@ -250,7 +253,7 @@ Ebben a szakaszban olyan .NET-konzol alkalmazást hoz létre (a C#használatáva
 
     > [!NOTE]
     > A lekérdezési szintaxissal kapcsolatos további információkért lásd: [IoT hub lekérdezési nyelv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language).
-    > 
+    >
 
 10. Végül adja a következő sorokat a **Main** metódushoz:
 
@@ -275,15 +278,15 @@ Ebben a szakaszban olyan .NET-konzol alkalmazást hoz létre (a C#használatáva
     Console.ReadLine();
     ```
 
-11. Mentse a munkáját, és hozza létre a megoldását. 
+11. Mentse a munkáját, és hozza létre a megoldását.
 
 ## <a name="run-the-apps"></a>Az alkalmazások futtatása
 
 Most már készen áll az alkalmazások futtatására.
 
-1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd kattintson a **Létrehozás**parancsra. **Több indítási projekt**. Győződjön meg `SimulateDeviceMethods` arról, hogy a lista tetején található, `ScheduleJob`majd a. Állítsa be mindkét műveletét a kezdéshez, majd kattintson **az OK**gombra.
+1. A Visual Studio Megoldáskezelőban kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget. Ezután válassza a **több indítási projekt**lehetőséget. Győződjön meg arról, hogy a **SimulateDeviceMethods** a lista tetején, majd a **ScheduleJob**. Állítsa be mindkét műveletét a kezdéshez, majd kattintson **az OK gombra**.
 
-2. A projektek futtatásához kattintson a **Start** gombra, vagy lépjen a **hibakeresés** menüre, és kattintson a **hibakeresés indítása**parancsra.
+2. Futtassa a projekteket úgy, hogy a **Start** gombra kattint, majd a hibakeresés menüre kattint, és kiválasztja a **hibakeresés indítása**lehetőséget.
 
 3. Az eszköz és a háttérbeli alkalmazások kimenete is megjelenik.
 

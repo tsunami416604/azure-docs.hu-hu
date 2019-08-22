@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a5ced51eabe708dc7883fc91e5b6fa67f9211381
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f2b95affd08c989a9d1cdee53c0a4e6df16af106
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559635"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892040"
 ---
 # <a name="what-is-custom-speech"></a>Mi az Custom Speech?
 
-A [Custom Speech](https://aka.ms/custom-speech) olyan online eszközöket biztosít, amelyek segítségével kiértékelheti és javíthatja a Microsoft beszéd-szöveg pontosságát alkalmazásai, eszközei és termékei számára. Minden, ami az első lépések elvégzéséhez szükséges, néhány teszt hangfájlt használ. Az alábbi hivatkozásokat követve hozzon létre egy egyéni beszéd – szöveg élményt.
+A [Custom Speech](https://aka.ms/customspeech) olyan online eszközöket biztosít, amelyek segítségével kiértékelheti és javíthatja a Microsoft beszéd-szöveg pontosságát alkalmazásai, eszközei és termékei számára. Minden, ami az első lépések elvégzéséhez szükséges, néhány teszt hangfájlt használ. Az alábbi hivatkozásokat követve hozzon létre egy egyéni beszéd – szöveg élményt.
 
 ## <a name="whats-in-custom-speech"></a>Mi a Custom Speech?
 
@@ -35,7 +35,7 @@ Ez a diagram kiemeli a Custom Speech portált alkotó elemeket. Az alábbi hivat
 
 3. A [felismerés minőségének vizsgálata](how-to-custom-speech-inspect-data.md) – a Custom Speech-portálon visszajátszhatja a feltöltött hangfelvételeket, és megvizsgálhatja a tesztelési adatok beszédfelismerési minőségét. A mennyiségi mérések esetében lásd: [az adatvizsgálat](how-to-custom-speech-inspect-data.md).
 
-4. [Pontosság](how-to-custom-speech-evaluate-data.md) kiértékelése – a beszédfelismerési modell pontosságának kiértékelése. A Custom Speech-portál egy *szó szerinti hibát jelez*, amellyel meghatározható, hogy szükség van-e további képzésre. Ha elégedett a pontossággal, a Speech Service API-jait közvetlenül is használhatja. Ha a pontosságot 5%-20%-os relatív átlagban szeretné növelni, a portálon  a betanítás lapon további betanítási adatok (például emberi feliratú átiratok és kapcsolódó szövegek) tölthetők fel.
+4. [Pontosság](how-to-custom-speech-evaluate-data.md) kiértékelése – a beszédfelismerési modell pontosságának kiértékelése. A Custom Speech-portál egy *szó szerinti hibát jelez*, amellyel meghatározható, hogy szükség van-e további képzésre. Ha elégedett a pontossággal, a Speech Service API-jait közvetlenül is használhatja. Ha a pontosságot 5%-20%-os relatív átlagban szeretné növelni, a portálon a betanítás lapon további betanítási adatok (például emberi feliratú átiratok és kapcsolódó szövegek) tölthetők fel.
 
 5. [A modell](how-to-custom-speech-train-model.md) betanítása – a beszédfelismerési modell pontosságának javítása írásos átiratokkal (10 – 1000 óra) és a kapcsolódó szöveggel (< 200 MB) és az audio-tesztelési adatokkal együtt. Ez az érték segít a beszéd – szöveg modell betanításában. Ha betanítást, újratesztelést végez, és ha elégedett az eredménnyel, üzembe helyezheti a modellt.
 
@@ -57,7 +57,7 @@ Miután létrehozott egy Azure-fiókot és egy Speech Services-előfizetést, be
 
 ## <a name="how-to-create-a-project"></a>Projekt létrehozása
 
-A tartalmak, például az adattípusok, a modellek, a tesztek  és a végpontok a Custom Speech portálon belüli projektekben vannak rendszerezve. Minden projekt egy tartományra és országra/nyelvre vonatkozik. Létrehozhat például egy olyan projektet a hívási központok számára, amelyek az angol nyelvet használják a Egyesült Államok.
+A tartalmak, például az adattípusok, a modellek, a tesztek és a végpontok a Custom Speech portálon belüli projektekben vannak rendszerezve. Minden projekt egy tartományra és országra/nyelvre vonatkozik. Létrehozhat például egy olyan projektet a hívási központok számára, amelyek az angol nyelvet használják a Egyesült Államok.
 
 Az első projekt létrehozásához válassza a **beszéd-szöveg/egyéni beszéd**lehetőséget, majd kattintson az **új projekt**elemre. A projekt létrehozásához kövesse a varázsló utasításait. A projekt létrehozása után négy lapot kell látnia: **Adatkezelés**, **tesztelés**, **képzés**és **üzembe helyezés**. Az egyes lapok használatának megismeréséhez használja a [következő lépések](#next-steps) hivatkozásait.
 

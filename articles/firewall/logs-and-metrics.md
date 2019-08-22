@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 08/22/2019
 ms.author: victorh
-ms.openlocfilehash: 8524c8f05a5d48755ab1ccca62f0fd53870190bb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fea00358fc21cf6f57673e14ebd0feafe532b620
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640244"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876559"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Naplók és mérőszámok Azure Firewall
 
@@ -95,6 +95,10 @@ A Azure Firewall a következő metrikák érhetők el:
 
     Egység: darabszám
 
+- **Hálózati szabályok találatok** száma – az a szám, amikor egy hálózati szabály találatot észlelt.
+
+    Egység: darabszám
+
 - **Feldolgozott adatforgalom** – a tűzfalon áthaladó adatmennyiség.
 
     Egység: bájtok
@@ -109,9 +113,7 @@ A Azure Firewall a következő metrikák érhetők el:
 
 
 
-- **Hálózati szabályok találatok** száma – az a szám, amikor egy hálózati szabály találatot észlelt.
 
-    Egység: darabszám
 
 - **SNAT-port kihasználtsága** – a tűzfal által használt SNAT-portok százalékos aránya.
 

@@ -3,18 +3,18 @@ title: 'Python rövid útmutató: Indexek létrehozása, betöltése és lekérd
 description: Ismerteti, hogyan hozhat létre indexet, tölthet be és futtathat lekérdezéseket Python, Jupyter notebookok és a Azure Search REST API használatával.
 ms.date: 07/11/2019
 author: heidisteen
-manager: cgronlun
+manager: nitinme
 ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.openlocfilehash: 9e12133179ca02c3474e768305feb8ae19a6178e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 308e296ba5306949e87e68f14c8c219b85825af4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840762"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656793"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Gyors útmutató: Azure Search index létrehozása a Pythonban Jupyter-jegyzetfüzetek használatával
 > [!div class="op_single_selector"]

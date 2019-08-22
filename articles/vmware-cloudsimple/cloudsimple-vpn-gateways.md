@@ -1,36 +1,36 @@
 ---
-title: VPN-átjárók VMware-megoldásban a CloudSimple által – Azure
+title: Azure VMware-megoldás CloudSimple-alapú VPN-átjárók használatával
 description: Tudnivalók a helyek közötti VPN-és pont – hely VPN-fogalmak CloudSimple
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d922f87e9a915bd5af9d2b1257dee8044773797e
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 88c27b920817da5edc2cefe780903c2b94695807
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816153"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877643"
 ---
 # <a name="vpn-gateways-overview"></a>VPN-átjárók – áttekintés
 
-A VPN-átjárók a CloudSimple-régió hálózata és a nyilvános interneten keresztüli számítógép közötti titkosított forgalom elküldésére szolgálnak.  Minden régiónak csak egy VPN-átjárója lehet. Egy VPN-átjáróhoz azonban létrehozhat több kapcsolatot is. Amikor többhelyes csatlakozást hoz létre egyetlen VPN-átjáróhoz, az összes VPN-alagút az elérhető sávszélességen osztozkodik.
+A VPN-átjárók a CloudSimple-régió hálózata és a nyilvános interneten keresztüli számítógép közötti titkosított forgalom elküldésére szolgálnak.  Minden régió rendelkezhet egy VPN-átjáróval, amely több kapcsolatot is képes támogatni. Amikor többhelyes csatlakozást hoz létre egyetlen VPN-átjáróhoz, az összes VPN-alagút az elérhető sávszélességen osztozkodik.
 
 A CloudSimple kétféle VPN-átjárót biztosít:
 
-* Helyek közötti VPN Gateway
-* Pont – hely VPN Gateway
+* Helyek közötti VPN-átjáró
+* Pont – hely típusú VPN-átjáró
 
 ## <a name="site-to-site-vpn-gateway"></a>Helyek közötti VPN-átjáró
 
-A helyek közötti VPN-átjárók a CloudSimple és a helyszíni adatközpontok közötti titkosított forgalom küldésére szolgálnak. Ezzel a kapcsolattal meghatározhatja az alhálózatok/CIDR tartományát a helyszíni hálózat és a CloudSimple régió hálózata közötti kommunikációhoz.
+A helyek közötti VPN-átjárók a CloudSimple és a helyszíni adatközpontok közötti titkosított forgalom küldésére szolgálnak. Ezzel a kapcsolattal meghatározhatja az alhálózatok/CIDR tartományát a helyszíni hálózat és a CloudSimple régió hálózata közötti hálózati forgalom számára.
 
-A VPN Gateway lehetővé teszi, hogy a helyszíni hálózatról a saját felhőben és a saját felhőben lévő szolgáltatásokat használja a helyszíni hálózaton.  A CloudSimple egy házirend-alapú VPN-kiszolgálót biztosít a helyszíni hálózattal létesített kapcsolat létesítéséhez.
+A VPN Gateway lehetővé teszi, hogy a helyszíni hálózatról származó szolgáltatásokat a saját felhőben és a saját felhőben lévő szolgáltatásokból is felhasználja.  A CloudSimple egy házirend-alapú VPN-kiszolgálót biztosít a helyszíni hálózattal létesített kapcsolat létrehozásához.
 
-Helyek közötti VPN-hez használható esetek:
+Helyek közötti VPN-re vonatkozó esetek használata:
 
 * A saját felhőalapú vCenter a helyszíni hálózat bármely munkaállomásáról elérhetővé teheti.
 * A helyszíni Active Directory használata vCenter-identitás forrásaként.
@@ -39,35 +39,30 @@ Helyek közötti VPN-hez használható esetek:
 
 ![Helyek közötti VPN-kapcsolat topológiája](media/cloudsimple-site-to-site-vpn-connection.png)
 
-> [!IMPORTANT]
-> A TCP MSS-t 1078 bájt vagy alacsonyabb értékre kell befogni. Ha a VPN-eszközök nem támogatják a MSS-befogást, akkor a bújtatási felületen lévő MTU-t 1118 bájtra is állíthatja. 
-
 ### <a name="cryptographic-parameters"></a>Titkosítási paraméterek
 
-A helyek közötti VPN-kapcsolat a következő alapértelmezett titkosítási paramétereket használja a biztonságos kapcsolat létrehozásához.  Ha a helyszíni VPN-eszközről hoz létre kapcsolatokat, használja a helyszíni VPN-átjáró által támogatott alábbi paramétereket.
+A helyek közötti VPN-kapcsolat a következő alapértelmezett titkosítási paramétereket használja a biztonságos kapcsolat létrehozásához.  Ha a helyszíni VPN-eszköz kapcsolatát hozza létre, használja a helyszíni VPN-átjáró által támogatott alábbi paramétereket.
 
 #### <a name="phase-1-proposals"></a>1\. fázis – javaslatok
 
-| Paraméter                       | 1\. javaslat     | 2\. javaslat     | 3\. javaslat     |
-|---------------------------------|----------------|----------------|----------------|
-| IKE verziószám                     | IKEv1          | IKEv1          | IKEv1          |
-| Encryption                      | AES 128        | AES 256        | AES 256        |
-| Kivonatoló algoritmus                  | SHA 256        | SHA 256        | SHA 1          |
-| Diffie Hellman-csoport (DH-csoport) | 2              | 2              | 2              |
-| Üzemidő                       | 28 800 másodperc | 28 800 másodperc | 28 800 másodperc |
-| Adatok mérete                       | 4 GB           | 4 GB           | 4 GB           |
-| Kapcsolat megszakadásának észlelése (DPD)       | Letiltva/kikapcsolva   | Letiltva/kikapcsolva   | Letiltva/kikapcsolva   |
+| Paraméter | 1\. javaslat | 2\. javaslat | 3\. javaslat |
+|-----------|------------|------------|------------|
+| IKE verziószám | IKEv1 | IKEv1 | IKEv1 |
+| Encryption | AES 128 | AES 256 | AES 256 |
+| Kivonatoló algoritmus| SHA 256 | SHA 256 | SHA 1 |
+| Diffie Hellman-csoport (DH-csoport) | 2 | 2 | 2 |
+| Üzemidő | 28 800 másodperc | 28 800 másodperc | 28 800 másodperc |
+| Adatok mérete | 4 GB | 4 GB | 4 GB |
 
+#### <a name="phase-2-proposals"></a>2\. fázis – javaslatok
 
-#### <a name="phase-2-proposals"></a>2\. fázis – javaslatok 
-
-| Paraméter                                 | 1\. javaslat    | 2\. javaslat    | 3\. javaslat    |
-|-------------------------------------------|---------------|---------------|---------------|
-| Encryption                                | AES 128       | AES 256       | AES 256       |
-| Kivonatoló algoritmus                            | SHA 256       | SHA 256       | SHA 1         |
-| Tökéletes továbbítási titoktartási csoport (PFS-csoport) | None          | Nincsenek          | Nincsenek          |
-| Üzemidő                                 | 1 800 másodperc | 1 800 másodperc | 1 800 másodperc |
-| Adatok mérete                                 | 4 GB          | 4 GB          | 4 GB          |
+| Paraméter | 1\. javaslat | 2\. javaslat | 3\. javaslat |
+|-----------|------------|------------|------------|
+| Encryption | AES 128 | AES 256 | AES 256 |
+| Kivonatoló algoritmus| SHA 256 | SHA 256 | SHA 1 |
+| Tökéletes továbbítási titoktartási csoport (PFS-csoport) | Nincsenek | Nincsenek | Nincsenek |
+| Üzemidő | 1 800 másodperc | 1 800 másodperc | 1 800 másodperc |
+| Adatok mérete | 4 GB | 4 GB | 4 GB |
 
 ## <a name="point-to-site-vpn-gateway"></a>Pont – hely típusú VPN-átjáró
 
@@ -75,4 +70,4 @@ A pont – hely típusú VPN a CloudSimple-régió hálózata és az ügyfélsz�
 
 ## <a name="next-steps"></a>További lépések
 
-* [VPN-átjáró beállítása](https://docs.azure.cloudsimple.com/vpn-gateway/)
+* [VPN-átjáró beállítása](vpn-gateway.md)

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72155e072acb8006b48f6951fc60081126c80691
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e73a64a9782535da31e2eacbaa2740007707c774
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990466"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872408"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak 
 
@@ -317,7 +317,7 @@ A munkaterülethez tartozó számítási célok megtekintéséhez kövesse az al
 1. Navigáljon a [Azure Portal](https://portal.azure.com) , és nyissa meg a munkaterületet. 
 1. Az __alkalmazások__területen válassza a __számítás__lehetőséget.
 
-    ![Nézet számítási lap](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
+    [![Számítás lap megtekintése](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>Számítási cél létrehozása
 
@@ -336,8 +336,6 @@ Az előző lépések végrehajtásával tekintheti meg a számítási célok lis
 
 1. Töltse ki az űrlapot. Adja meg a szükséges tulajdonságokat, különösen avirtuálisgép-családot, valamint a számítás felgyorsításához használni kívánt **csomópontok maximális** értékét.  
 
-    ![Űrlap kitöltése](./media/how-to-set-up-training-targets/add-compute-form.png) 
-
 1. Kattintson a __Létrehozás__ gombra.
 
 
@@ -348,8 +346,6 @@ Az előző lépések végrehajtásával tekintheti meg a számítási célok lis
 1. Ezután megtekintheti a számítási cél részleteit: 
 
     ![A számítógép céljának részleteinek megtekintése](./media/how-to-set-up-training-targets/compute-target-details.png) 
-
-
 
 ### <a id="portal-reuse"></a>Számítási célok csatolása
 

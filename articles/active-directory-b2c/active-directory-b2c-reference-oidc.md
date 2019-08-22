@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 36efdb7db57d3acfa7384d904e9be8faad4c6534
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 35abb84f92ed9a7295c45afc69b673a3be46be15
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622077"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874135"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webes bejelentkezés OpenID-kapcsolattal Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Azure AD B2C kiterjeszti a szabványos OpenID Connect protokollt, hogy több, mi
 
 Ha a webalkalmazásnak hitelesítenie kell a felhasználót, és futtatnia kell egy felhasználói folyamatot, akkor a felhasználó a `/authorize` végpontra irányíthatja a felhasználót. A felhasználó a felhasználói folyamattól függően végrehajtja a műveletet.
 
-Ebben a kérelemben az ügyfél a `scope` paraméterben szereplő felhasználótól beszerzett engedélyeket jelzi, és megadja a futtatandó felhasználói folyamatot. Három példát ismertetünk a következő fejezetekben (az olvashatóság érdekében), amelyek mindegyike egy másik felhasználói folyamatot használ. Az egyes kérések működésének megismeréséhez próbálja meg beilleszteni a kérést egy böngészőben, és futtassa azt. Ha rendelkezik ilyennel `fabrikamb2c` , és létrehozta a felhasználói folyamatot, a helyére a nevet használhatja. Le kell cserélnie `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`a t is. Cserélje le ezt az ügyfél-azonosítót a létrehozott alkalmazás-regisztráció alkalmazás-azonosítójával. Módosítsa a szabályzat nevét ()`{policy}`a bérlőben található szabályzat nevére (például `b2c_1_sign_in`:).
+Ebben a kérelemben az ügyfél a `scope` paraméterben szereplő felhasználótól beszerzett engedélyeket jelzi, és megadja a futtatandó felhasználói folyamatot. Ha úgy érzi, hogy a kérés hogyan működik, próbálja meg beilleszteni a kérést egy böngészőben, és futtassa azt. Cserélje `{tenant}` le a helyére a bérlő nevét. A `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` helyére írja be annak az alkalmazásnak az azonosítóját, amelyet korábban regisztrált a bérlőben. Módosítsa a szabályzat nevét ()`{policy}`a bérlőben található szabályzat nevére (például `b2c_1_sign_in`:).
 
 ```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
@@ -48,7 +48,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | Paraméter | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Bérlő | Igen | A Azure AD B2C bérlő neve |
-| politika | Igen | A futtatott felhasználói folyamat. Ez a Azure AD B2C bérlőben létrehozott felhasználói folyamat neve. A felhasználói folyamat nevének a (z `b2c_1_`) értékkel kell kezdődnie. Például: `b2c_1_sign_in`, `b2c_1_sign_up`, vagy `b2c_1_edit_profile`. |
+| politika | Igen | A futtatandó felhasználói folyamat. Adja meg a Azure AD B2C bérlőben létrehozott felhasználói folyamat nevét. Például: `b2c_1_sign_in`, `b2c_1_sign_up`, vagy `b2c_1_edit_profile`. |
 | client_id | Igen | Az alkalmazáshoz hozzárendelt [Azure Portal](https://portal.azure.com/) alkalmazás azonosítója. |
 | nonce | Igen | A kérelemben szereplő, az eredményül kapott azonosító jogkivonatban található (az alkalmazás által generált) érték. Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy randomizált egyedi karakterlánc, amely a kérelem forrásának azonosítására szolgál. |
 | response_type | Igen | Tartalmaznia kell egy azonosító jogkivonatot az OpenID Connecthez. Ha a webalkalmazásnak szüksége van a webes API-k meghívásához szükséges jogkivonatokra is, használhatja `code+id_token`a következőt:. |
@@ -274,14 +274,14 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | --------- | -------- | ----------- |
 | Bérlő | Igen | A Azure AD B2C bérlő neve |
 | politika | Igen | Az alkalmazásból a felhasználó aláírásához használni kívánt felhasználói folyamat. |
-| id_token_hint| Nem | Egy korábban kiállított azonosító token, amelyet a kijelentkezési végpontnak továbbít a végfelhasználó aktuálisan hitelesített munkamenetével kapcsolatban az ügyféllel. |
-| post_logout_redirect_uri | Nem | Az URL-cím, amelyet a felhasználónak át kell irányítani a sikeres kijelentkezés után. Ha nem tartalmazza, a Azure AD B2C általános üzenetet jelenít meg a felhasználó számára. |
+| id_token_hint| Nem | Egy korábban kiállított azonosító token, amelyet a kijelentkezési végpontnak továbbít a végfelhasználó aktuálisan hitelesített munkamenetével kapcsolatban az ügyféllel. Az `id_token_hint` biztosítja, hogy `post_logout_redirect_uri` a a regisztrált válasz URL-címe legyen a Azure ad B2C alkalmazás beállításaiban. |
+| post_logout_redirect_uri | Nem | Az URL-cím, amelyet a felhasználónak át kell irányítani a sikeres kijelentkezés után. Ha nem tartalmazza, a Azure AD B2C általános üzenetet jelenít meg a felhasználó számára. Ha nem ad `id_token_hint`meg, akkor ne regisztrálja az URL-címet válasz URL-címként a Azure ad B2C alkalmazás beállításaiban. |
 | state | Nem | Ha egy `state` paraméter szerepel a kérelemben, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, `state` hogy a kérelemben és a válaszban szereplő értékek azonosak-e. |
 
-### <a name="require-id-token-hint-in-logout-request"></a>AZONOSÍTÓ jogkivonat-emlékeztető megkövetelése a kijelentkezési kérelemben
+### <a name="secure-your-logout-redirect"></a>A kijelentkezési átirányítás biztonságossá tétele
 
 A kijelentkezés után a rendszer átirányítja a felhasználót a `post_logout_redirect_uri` paraméterben megadott URI-ra, az alkalmazáshoz megadott válasz URL-címektől függetlenül. Ha azonban érvényes `id_token_hint` `post_logout_redirect_uri` értéket ad meg, Azure ad B2C ellenőrzi, hogy az érték megegyezik-e az alkalmazás által konfigurált átirányítási URI-k egyikével az átirányítás végrehajtása előtt. Ha nincs beállítva egyező válasz URL-cím az alkalmazáshoz, a rendszer hibaüzenetet jelenít meg, és a felhasználót nem irányítja át.
 
-### <a name="external-identity-provider-session"></a>Külső identitás-szolgáltató munkamenete
+### <a name="external-identity-provider-sign-out"></a>Külső identitás-szolgáltató kijelentkezése
 
 A felhasználó a `end_session` végpontra történő átirányítása törli a felhasználó egyszeri bejelentkezési állapotát Azure ad B2C, de nem írja alá a felhasználót a közösségi identitásszolgáltató-munkamenetből. Ha a felhasználó ugyanazt a IDENTITÁSSZOLGÁLTATÓ választja egy későbbi bejelentkezés során, a rendszer a hitelesítő adatok megadása nélkül újra hitelesíti őket. Ha a felhasználó ki szeretne jelentkezni az alkalmazásból, nem feltétlenül jelenti azt, hogy ki szeretné jelentkezni a Facebook-fiókjából. Ha azonban helyi fiókokat használ, a felhasználó munkamenete megfelelően végződik.

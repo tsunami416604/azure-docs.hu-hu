@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 9f40ec658fc6725f381300d967c9d7cd61c3a218
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: a0c34fcc70d92f98a6d72e4cd2fc78d34d863d55
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624150"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650462"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Üzembe helyezési technológiák Azure Functions
 
@@ -60,7 +60,7 @@ Az eseményindítók módosításakor a functions infrastruktúrájának tisztá
 
 ### <a name="remote-build"></a>Távoli Build
 
-A Azure Functions automatikusan képes a zip-telepítések után kapott programkódra épülő buildek végrehajtására. Ezek a buildek némileg eltérően működnek attól függően, hogy az alkalmazás Windows vagy Linux rendszeren fut-e. A távoli buildek nem hajthatók végre, ha egy alkalmazás már a [csomag](run-functions-from-deployment-package.md) módból való futtatásra van beállítva. 
+A Azure Functions automatikusan képes a zip-telepítések után kapott programkódra épülő buildek végrehajtására. Ezek a buildek némileg eltérően működnek attól függően, hogy az alkalmazás Windows vagy Linux rendszeren fut-e. A távoli buildek nem hajthatók végre, ha egy alkalmazás már a [csomag](run-functions-from-deployment-package.md) módból való futtatásra van beállítva. A távoli Build használatának megismeréséhez navigáljon a [zip üzembe helyezéshez](#zip-deploy).
 
 > [!NOTE]
 > Ha problémák merülnek fel a távoli buildtel kapcsolatban, annak oka az lehet, hogy az alkalmazást a szolgáltatás elérhetővé tétele előtt hozták létre (2019. augusztus 1.). Próbálkozzon új Function-alkalmazás létrehozásával.
@@ -85,11 +85,11 @@ Az alkalmazások Linux rendszeren való létrehozásakor [a központi telepíté
 
 ##### <a name="consumption-preview-plan"></a>Felhasználási (előzetes verzió) csomag
 
-A használati tervben futó Linux-függvények alkalmazásai nem rendelkeznek SCM/kudu hellyel, ami korlátozza az üzembe helyezési lehetőségeket. Az alkalmazások a használati csomagban futó Linux rendszeren azonban támogatják a távoli buildeket. Ezek a távoli buildek a [Oryx](https://github.com/microsoft/Oryx)-t használják.
+A használati tervben futó Linux-függvények alkalmazásai nem rendelkeznek SCM/kudu hellyel, ami korlátozza az üzembe helyezési lehetőségeket. Az alkalmazások a használati csomagban futó Linux rendszeren azonban támogatják a távoli buildeket.
 
 ##### <a name="dedicated-and-premium-preview-plans"></a>Dedikált és Prémium csomag (előzetes verzió)
 
-A [dedikált (App Service) csomagon](functions-scale.md#app-service-plan) belül Linux rendszeren futtatott functions-alkalmazások és a [Prémium csomag](functions-scale.md#premium-plan) korlátozott SCM/kudu-hellyel is rendelkezik, amely maga is kihasználja a [Oryx](https://github.com/microsoft/Oryx).
+A [dedikált (App Service)](functions-scale.md#app-service-plan) csomagban Linux rendszeren futó alkalmazások funkcióinak, valamint a [prémium csomagnak](functions-scale.md#premium-plan) korlátozott SCM/kudu-hely is van.
 
 ## <a name="deployment-technology-details"></a>Üzembe helyezési technológia részletei
 
@@ -111,7 +111,7 @@ A zip-telepítés használatával leküldheti a Function alkalmazást az Azure-b
 
 >__Használat:__ Üzembe helyezés a kedvenc ügyfél-eszköz használatával: [Vs Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)vagy az [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Ha a. zip-fájlt manuálisan szeretné telepíteni a Function alkalmazásba, kövesse az [üzembe helyezés a. zip fájlból vagy URL-címről](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)című témakör utasításait.
 
-Egy távoli buildtel rendelkező zip-telepítés végrehajtásához használja a következő [alapvető eszközök](functions-run-local.md) parancsot:
+Egy [távoli buildtel](#remote-build)rendelkező zip-telepítés végrehajtásához használja a következő [alapvető eszközök](functions-run-local.md) parancsot:
 
 ```bash
 func azure functionapp publish <app name> --build remote

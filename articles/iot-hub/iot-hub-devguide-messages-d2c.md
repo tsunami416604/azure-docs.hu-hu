@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d2d4d39cc7b330794094745851856365ef54b42f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 6ee9e334c10bd2d0f291b5fd1bb547ba3ba83ddb
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828197"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877190"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával
 
@@ -39,7 +39,7 @@ Az eszközről a felhőbe irányuló üzenetek fogadásához a beépített végp
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-IoT Hub támogatja az Azure Blob Storageba való adatírást az [Apache Avro](https://avro.apache.org/) formátumban, valamint JSON formátumban. A JSON formátum kódolásának lehetősége általánosan elérhető minden olyan régióban, ahol IoT Hub elérhető. Az alapértelmezett érték a AVRO. A kódolás formátuma csak akkor állítható be, ha a blob Storage-végpont konfigurálva van. Egy meglévő végpont formátuma nem szerkeszthető. JSON-kódolás használatakor a contentType JSON-ra és contentEncoding-ra kell beállítania UTF-8 értékre az üzenetrendszer [tulajdonságaiban](iot-hub-devguide-routing-query-syntax.md#system-properties). Ha a beállítás nincs megadva, akkor a IoT Hub a 64 kódolású formátumban fogja írni az üzeneteket. A kódolási formátumot kiválaszthatja a IoT Hub létrehozás vagy frissítés REST API, konkrétan a [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), a Azure Portal, az [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)vagy az [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0)használatával. Az alábbi ábrán látható, hogyan választható ki a kódolás formátuma a Azure Portalban.
+IoT Hub támogatja az Azure Blob Storageba való adatírást az [Apache Avro](https://avro.apache.org/) formátumban, valamint JSON formátumban. A JSON formátum kódolásának lehetősége általánosan elérhető minden olyan régióban, ahol IoT Hub elérhető. Az alapértelmezett érték a AVRO. A kódolás formátuma csak akkor állítható be, ha a blob Storage-végpont konfigurálva van. Egy meglévő végpont formátuma nem szerkeszthető. JSON **-** kódolás használatakor az ContentType az **Application/JSON** és a contentEncoding értékre kell állítani az üzenetrendszer [tulajdonságai](iot-hub-devguide-routing-query-syntax.md#system-properties)között. Mindkét érték megkülönbözteti a kis-és nagybetűket. Ha nincs beállítva a tartalom kódolása, akkor a IoT Hub az üzeneteket az alap 64 kódolású formátumban fogja írni. A kódolási formátumot kiválaszthatja a IoT Hub létrehozás vagy frissítés REST API, konkrétan a [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), a Azure Portal, az [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)vagy az [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0)használatával. Az alábbi ábrán látható, hogyan választható ki a kódolás formátuma a Azure Portalban.
 
 ![BLOB Storage-végpont kódolása](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -53,7 +53,7 @@ IoT Hub a kötegek üzeneteit, és az adatot egy blobba írja, amikor a köteg e
 
 Bármilyen fájl elnevezési konvenciót használhat, azonban az összes felsorolt tokent kell használnia. A IoT Hub egy üres blobba ír, ha nincs írási adatként.
 
-A blob Storage-hoz való útválasztás esetén javasoljuk a Blobok bekapcsolását és az azokhoz való iterációt, hogy minden tárolót beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a [Microsoft által kezdeményezett feladatátvétel](iot-hub-ha-dr.md#microsoft-initiated-failover) vagy IoT hub [manuális feladatátvétel](iot-hub-ha-dr.md#manual-failover-preview)során. A Blobok listájának enumerálásához használhatja a Blobok listázása [API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) -t. Tekintse át a következő mintát útmutatásként.
+A blob Storage-hoz való útválasztás esetén javasoljuk a Blobok bekapcsolását és az azokhoz való iterációt, hogy minden tárolót beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a [Microsoft által kezdeményezett feladatátvétel](iot-hub-ha-dr.md#microsoft-initiated-failover) vagy IoT hub [manuális feladatátvétel](iot-hub-ha-dr.md#manual-failover)során. A Blobok listájának enumerálásához használhatja a Blobok listázása [API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) -t. Tekintse át a következő mintát útmutatásként.
 
    ```csharp
         public void ListBlobsInContainer(string containerName, string iothub)
@@ -103,7 +103,7 @@ Engedélyezheti vagy letilthatja a tartalék útvonalat a Azure Portal-> üzenet
 
 ## <a name="non-telemetry-events"></a>Nem telemetria események
 
-Az eszközök telemetria kívül az üzenet-útválasztás is lehetővé teszi az eszköz kettős módosítási eseményének és az eszköz életciklusa eseményeinek küldését. Ha például egy útvonal úgy jön létre, hogy az **eszköz kettős változási eseményre**van beállítva, akkor IoT hub üzeneteket küld a végpontnak, amely tartalmazza az eszköz kettős változását. Hasonlóképpen, ha egy útvonal az **eszköz életciklusára**beállított adatforrással jön létre, IoT hub üzenetet küld, amely jelzi, hogy az eszköz törölve lett vagy létrejött. 
+Az eszköz telemetria mellett az üzenet-útválasztás is lehetővé teszi az eszköz kettős változási eseményeinek, az eszköz életciklusa eseményeinek és a digitális kettős változási események küldését (nyilvános előzetes verzióban). Ha például egy útvonal úgy jön létre, hogy az **eszköz kettős változási eseményre**van beállítva, akkor IoT hub üzeneteket küld a végpontnak, amely tartalmazza az eszköz kettős változását. Hasonlóképpen, ha egy útvonal az **eszköz életciklusára**beállított adatforrással jön létre, IoT hub üzenetet küld, amely jelzi, hogy az eszköz törölve lett vagy létrejött. Végül, a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként a fejlesztő olyan útvonalakat hozhat létre, amelyek **digitális kettős változási eseményekre** vannak beállítva, és a digitális Twin [tulajdonság](../iot-pnp/iot-plug-and-play-glossary.md) beállításakor vagy módosításakor IoT hub üzeneteket küld. [ ](../iot-pnp/iot-plug-and-play-glossary.md)lecserélve, vagy ha változási esemény történik az alapul szolgáló eszköznél.
 
 A IoT Hub a Azure Event Grid-nal [is integrálva van](iot-hub-event-grid.md) az eszköz eseményeinek közzétételéhez, hogy támogassa a valós idejű integrációkat és a munkafolyamatok automatizálását ezen események alapján. Tekintse meg az [üzenet-útválasztás és a Event Grid közötti](iot-hub-event-grid-routing-comparison.md) fő különbségeket, amelyekből megtudhatja, melyik a legmegfelelőbb a forgatókönyvhöz.
 

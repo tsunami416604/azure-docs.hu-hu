@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 25275aeb6637d50379b7c71e87be9ecffce269db
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ea3779ce7d4d77e6b0a55b8a00374b701a073b66
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614691"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876444"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>.NET-konzolos alkalmazás létrehozása Azure Cosmos DB SQL API-fiókban tárolt adatkezeléshez
 
@@ -323,7 +323,7 @@ Az alkalmazás futtatásához nyomja le az **F5 billentyűt** .
 Gratulálunk! Sikeresen létrehozott két Azure Cosmos-elemet.  
 
 ## <a id="Query"></a>7. lépés: Azure Cosmos DB erőforrások lekérdezése
-Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](sql-api-sql-query.md). Az alábbi mintakód bemutatja, hogyan futtathat lekérdezést az előző lépésben beszúrt elemekhez.
+Azure Cosmos DB támogatja az [](sql-api-sql-query.md) egyes tárolókban tárolt JSON-dokumentumokon végzett részletes lekérdezéseket. Az alábbi mintakód bemutatja, hogyan futtathat lekérdezést az előző lépésben beszúrt elemekhez.
 
 1. Másolja és illessze be a **QueryItemsAsync** metódust a **AddItemsToContainerAsync** metódus alá.
 

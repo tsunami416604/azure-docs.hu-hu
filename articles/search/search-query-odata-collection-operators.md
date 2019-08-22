@@ -1,13 +1,13 @@
 ---
-title: OData-gyűjtemény operátor referencia – Azure Search
-description: OData gyűjtemény operátorok, minden, és az Azure Search lekérdezések lambda-kifejezésekkel.
+title: A OData-gyűjtemény operátorának referenciája – Azure Search
+description: A OData-gyűjtemény operátorai, a Azure Search-lekérdezések bármely és összes és lambda kifejezése.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 7afafe158732b14ebe314eeee5d015acddc55b72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e057d0b57162d10aab13d8b1f77e0eaddca2ec2a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079937"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647635"
 ---
-# <a name="odata-collection-operators-in-azure-search---any-and-all"></a>Az Azure Search - OData-gyűjtemény operátorok `any` és `all`
+# <a name="odata-collection-operators-in-azure-search---any-and-all"></a>OData-gyűjtési operátorok `any` a Azure Search-ben és`all`
 
-Írás esetén egy [OData szűrési kifejezés](query-odata-filter-orderby-syntax.md) szeretné használni az Azure Search szolgáltatással, gyakran hasznos mezők gyűjtemény szűrést. Ennek megvalósításával használatával a `any` és `all` operátorok.
+Ha egy [OData-szűrési kifejezést](query-odata-filter-orderby-syntax.md) ír a Azure Search használatával, gyakran hasznos a begyűjtési mezők szűrése. Ezt a és `any` `all` a operátorok használatával érheti el.
 
 ## <a name="syntax"></a>Szintaxis
 
-A következő EBNF ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) határozza meg, amely egy OData-kifejezésnek nyelvtani `any` vagy `all`.
+A következő EBNF ([bővített Naur-űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a vagy a által használt `any` OData- `all`kifejezés nyelvtanát határozza meg.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -45,56 +45,56 @@ collection_filter_expression ::=
 lambda_expression ::= identifier ':' boolean_expression
 ```
 
-Egy interaktív szintaxisdiagramja is érhető el:
+Az interaktív szintaxis diagram is elérhető:
 
 > [!div class="nextstepaction"]
-> [Azure Search OData szintaxisdiagramja](https://azuresearch.github.io/odata-syntax-diagram/#collection_filter_expression)
+> [Azure Search OData szintaxisának diagramja](https://azuresearch.github.io/odata-syntax-diagram/#collection_filter_expression)
 
 > [!NOTE]
-> Lásd: [OData kifejezés szintaxisának referenciája az Azure Search](search-query-odata-syntax-reference.md) a teljes EBNF számára.
+> A teljes EBNF [Azure Search a OData kifejezés szintaxisát](search-query-odata-syntax-reference.md) ismertető témakörben talál.
 
-Nincsenek kifejezés három formáját gyűjtemények szűréséhez.
+A gyűjtemények három formája létezik.
 
-- Az első két ciklustevékenység egy gyűjtemény mezőt, a gyűjtemény összes eleme a lambda kifejezésnek formájában megadott predikátum alkalmazásával.
-  - Egy kifejezés használatával `all` adja vissza `true` Ha a predikátum értéke igaz, a gyűjtemény minden eleméhez.
-  - Egy kifejezés használatával `any` adja vissza `true` a predikátum legalább egy elem a gyűjtemény teljesülése esetén.
-- A harmadik képernyő, gyűjtemény szűréséhez használt `any` nélkül lambda kifejezésnek annak megállapítására, hogy egy gyűjtemény mező értéke üres. Ha a gyűjtemény tartalmaz elemeket, akkor adja vissza `true`. Ha a gyűjtemény, az üres visszatérési `false`.
+- Az első két iteráció egy gyűjtemény mező fölé, amely egy lambda kifejezés formájában megadott predikátumot alkalmaz a gyűjtemény minden elemére.
+  - A visszatérést `all` `true` használó kifejezés, ha a predikátum a gyűjtemény minden eleme esetében igaz.
+  - A visszatérést `any` `true` használó kifejezés, ha a predikátum a gyűjtemény legalább egy eleménél igaz.
+- A gyűjtési szűrő harmadik formája lambda `any` kifejezés nélkül működik annak teszteléséhez, hogy egy gyűjtemény mező üres-e. Ha a gyűjteménynek bármilyen eleme van, a `true`függvény visszaadja. Ha a gyűjtemény üres, a függvény visszaadja `false`.
 
-A **lambda kifejezésnek** egy gyűjtemény szűrő olyan, mint a programnyelvek a hurok törzsébe. Azt határozza meg egy változót nevű a **tartomány változót**, amely tárolja a gyűjtemény iteráció során aktuálního prvku. Egy másik logikai kifejezés, amely a szűrési feltételeket a alkalmazni a gyűjtemény összes eleme a tartomány változót is meghatározza.
+A gyűjtemény szűrőben lévő **lambda kifejezés** olyan, mint egy programozási nyelvben lévő hurok törzse. Definiál egy változót, amelynek neve a **Range változó**, amely a gyűjtemény aktuális elemét tárolja az iteráció során. Egy másik logikai kifejezést is definiál, amely a gyűjtemény egyes elemeinél a tartomány változóra alkalmazandó szűrési feltétel.
 
 ## <a name="examples"></a>Példák
 
-Egyezés azon dokumentumok `tags` mezőben pontosan a "Wi-Fi" karakterláncot tartalmazza:
+Olyan dokumentumok egyeztetése, amelyek `tags` mezője pontosan a "WiFi" karakterláncot tartalmazza:
 
     tags/any(t: t eq 'wifi')
 
-Egyezés dokumentumok where minden eleme a `ratings` 3 és 5 között lehet közé esik mező:
+Olyan dokumentumok egyeztetése, amelyekben `ratings` a mező minden eleme 3 és 5 közé esik, beleértve a következőket:
 
     ratings/all(r: r ge 3 and r le 5)
 
-Ahol a földrajzi bármelyikét koordinálja az egyezés dokumentumok a `locations` belül az adott sokszög mező:
+Olyan dokumentumok egyeztetése, amelyekben a `locations` mező egyik földrajzi koordinátái a megadott sokszögen belül vannak:
 
     locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
 
-Egyezés dokumentálja a helyét a `rooms` mező értéke üres:
+Olyan dokumentumok egyeztetése `rooms` , amelyekben a mező üres:
 
     not rooms/any()
 
-Dokumentumok megfelelő, ha az összes termek a `rooms/amenities` mező tartalmazza a "tv" és a `rooms/baseRate` 100-nál kisebb van:
+A dokumentumok egyeztetése az összes szobában, `rooms/amenities` a mező a "TV" `rooms/baseRate` kifejezést tartalmazza, és kevesebb, mint 100:
 
     rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
 
 ## <a name="limitations"></a>Korlátozások
 
-Szűrési kifejezésekben nem minden funkciója nem érhető el, a törzsben lambda kifejezés. A korlátozások a gyűjtemény mezőt, amely a szűrni kívánt adatok típusától függően eltérőek. A következő táblázat összefoglalja a korlátozások.
+A szűrési kifejezések nem minden funkciója érhető el egy lambda kifejezés törzsében. A korlátozások a szűrni kívánt gyűjtési mező adattípusától függően eltérőek. Az alábbi táblázat a korlátozásokat foglalja össze.
 
 [!INCLUDE [Limitations on OData lambda expressions in Azure Search](../../includes/search-query-odata-lambda-limitations.md)]
 
-Ezeket a korlátozásokat, valamint a példák a további részletekért lásd: [hibáinak elhárítása az Azure Search szolgáltatásban a fájlgyűjtési szűrők](search-query-troubleshoot-collection-filters.md). További információt arról, hogy miért ezek a korlátozások létezik, lásd: [ismertetése az Azure Search szolgáltatásban a fájlgyűjtési szűrők](search-query-understand-collection-filters.md).
+További információ ezekről a korlátozásokról és példákról: [gyűjtési szűrők hibaelhárítása Azure Searchban](search-query-troubleshoot-collection-filters.md). További részletes információk a korlátozások létezéséről: a [gyűjtemény szűrőinek ismertetése a Azure Searchban](search-query-understand-collection-filters.md).
 
 ## <a name="next-steps"></a>További lépések  
 
-- [Szűrők az Azure Search szolgáltatásban](search-filters.md)
-- [Az Azure Search OData kifejezés nyelvi – áttekintés](query-odata-filter-orderby-syntax.md)
-- [Az Azure Search OData kifejezés szintaxisának referenciája](search-query-odata-syntax-reference.md)
-- [Dokumentumok keresése &#40;az Azure Search szolgáltatás REST API-ja&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Szűrők a Azure Searchban](search-filters.md)
+- [A OData kifejezés nyelvének áttekintése Azure Search](query-odata-filter-orderby-syntax.md)
+- [Azure Search OData-kifejezés szintaxisának referenciája](search-query-odata-syntax-reference.md)
+- [Dokumentumok &#40;keresése Azure Search szolgáltatás REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

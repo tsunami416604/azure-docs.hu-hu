@@ -8,13 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 10/06/2017
-ms.openlocfilehash: 243f4e63cc04bca018c2bf69492dccf163e92b73
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/16/2019
+ms.openlocfilehash: 0a89cd2c576a3539d7b1b6a282a2287551e8265a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780833"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877116"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Feladatok ütemezett és szórása (node. js)
 
@@ -48,9 +48,11 @@ Az oktatóanyag végén két Node. js-alkalmazás található:
 
 * **scheduleJobService. js**, amely egy közvetlen metódust hív meg a szimulált eszköz alkalmazásban, és feladatokkal frissíti az eszközhöz tartozó dupla kívánt tulajdonságokat.
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+## <a name="prerequisites"></a>Előfeltételek
 
-* A Node. js 10.0. x vagy újabb verziójának [előkészítése a fejlesztési környezet előkészítéséhez](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) leírja, hogyan telepítheti a Node. js-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
+Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+
+* Node. js 10.0. x vagy újabb verzió. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítheti a Node. js-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
 
 * Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
 
@@ -68,39 +70,39 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a felhő �
 
 1. Hozzon létre egy új, **simDevice**nevű üres mappát.  A **simDevice** mappában hozzon létre egy Package. JSON fájlt a következő parancs parancssorba való beírásával.  Fogadja el az összes alapértelmezett beállítást:
 
-   ```
+   ```console
    npm init
    ```
 
 2. A **simDevice** mappában a parancssorban futtassa a következő parancsot az **Azure-IOT-Device** eszközoldali SDK csomag és az **Azure-IOT-Device-mqtt** csomag telepítéséhez:
-   
-   ```
+
+   ```console
    npm install azure-iot-device azure-iot-device-mqtt --save
    ```
 
 3. Egy szövegszerkesztővel hozzon létre egy új **simDevice. js** fájlt a **simDevice** mappában.
 
 4. Adja hozzá a következő "require" utasítást a **simDevice. js** fájl elejéhez:
-   
-    ```
+
+    ```javascript
     'use strict';
-   
+
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre egy **Ügyfél** példányt.  
-   
-    ```
-    var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
+5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre egy **Ügyfél** példányt. Cserélje le `{yourDeviceConnectionString}` a helyőrző értékét a korábban átmásolt eszköz-összekapcsolási sztringre.
+
+    ```javascript
+    var connectionString = '{yourDeviceConnectionString}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
 6. Adja hozzá a következő függvényt a **lockDoor** metódus kezeléséhez.
-   
-    ```
+
+    ```javascript
     var onLockDoor = function(request, response) {
-   
+
         // Respond the cloud app for the direct method
         response.send(200, function(err) {
             if (err) {
@@ -109,14 +111,14 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a felhő �
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.');
             }
         });
-   
+
         console.log('Locking Door!');
     };
     ```
 
 7. Adja hozzá a következő kódot a kezelő **lockDoor** metódushoz való regisztrálásához.
 
-   ```
+   ```javascript
    client.open(function(err) {
         if (err) {
             console.error('Could not connect to IotHub client.');
@@ -145,30 +147,30 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely egy közve
 
 1. Hozzon létre egy új, **scheduleJobService**nevű üres mappát.  A **scheduleJobService** mappában hozzon létre egy Package. JSON fájlt a következő parancs parancssorba való beírásával.  Fogadja el az összes alapértelmezett beállítást:
 
-    ```
+    ```console
     npm init
     ```
 
 2. A **scheduleJobService** mappában a parancssorban futtassa a következő parancsot az **Azure-iothub** Device SDK csomag és az **Azure-IOT-Device-mqtt** csomag telepítéséhez:
-   
-    ```
+
+    ```console
     npm install azure-iothub uuid --save
     ```
 
 3. Egy szövegszerkesztővel hozzon létre egy új **scheduleJobService. js** fájlt a **scheduleJobService** mappában.
 
-4. Adja hozzá a következő "require" utasítást a **dmpatterns_gscheduleJobServiceetstarted_service. js** fájl elejéhez:
-   
-    ```
+4. Adja hozzá a következő "require" utasítást a **scheduleJobService. js** fájl elejéhez:
+
+    ```javascript
     'use strict';
-   
+
     var uuid = require('uuid');
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. Adja hozzá a következő változó deklarációkat, és cserélje le a helyőrző értékeket:
-   
-    ```
+5. Adja hozzá a következő változó deklarációkat. A helyőrző értékét cserélje le az [IoT hub-kapcsolatok karakterláncának](#get-the-iot-hub-connection-string)beolvasása elemre. `{iothubconnectionstring}` Ha a **myDeviceId**eltérő eszközt regisztrált, ne felejtse el módosítani a lekérdezési feltételben.
+
+    ```javascript
     var connectionString = '{iothubconnectionstring}';
     var queryCondition = "deviceId IN ['myDeviceId']";
     var startTime = new Date();
@@ -177,8 +179,8 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely egy közve
     ```
 
 6. Adja hozzá a következő függvényt, amely a feladat végrehajtásának figyelésére szolgál:
-   
-    ```
+
+    ```javascript
     function monitorJob (jobId, callback) {
         var jobMonitorInterval = setInterval(function() {
             jobClient.getJob(jobId, function(err, result) {
@@ -197,14 +199,14 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely egy közve
     ```
 
 7. Adja hozzá a következő kódot az eszköz metódusát meghívó feladatokhoz:
-   
-    ```
+  
+    ```javascript
     var methodParams = {
         methodName: 'lockDoor',
         payload: null,
         responseTimeoutInSeconds: 15 // Timeout after 15 seconds if device is unable to process method
     };
-   
+
     var methodJobId = uuid.v4();
     console.log('scheduling Device Method job with id: ' + methodJobId);
     jobClient.scheduleDeviceMethod(methodJobId,
@@ -228,8 +230,8 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely egy közve
     ```
 
 8. Adja hozzá a következő kódot a feladatok ütemezett frissítéséhez az eszköz kettős frissítése céljából:
-   
-    ```
+
+    ```javascript
     var twinPatch = {
        etag: '*',
        properties: {
@@ -239,9 +241,9 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely egy közve
            }
        }
     };
-   
+
     var twinJobId = uuid.v4();
-   
+
     console.log('scheduling Twin Update job with id: ' + twinJobId);
     jobClient.scheduleTwinUpdate(twinJobId,
                                 queryCondition,
@@ -270,18 +272,26 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely egy közve
 Most már készen áll az alkalmazások futtatására.
 
 1. A **simDevice** mappában a parancssorban futtassa a következő parancsot, hogy megkezdje az újraindítási közvetlen metódus figyelését.
-   
-    ```
+
+    ```console
     node simDevice.js
     ```
 
 2. A **scheduleJobService** mappában található parancssorban futtassa a következő parancsot a feladatok elindításához az ajtó zárolásához és a Twin frissítéséhez.
-   
-    ```
+
+    ```console
     node scheduleJobService.js
     ```
 
-3. Megjelenik az eszköz válasza a Direct metódusra a konzolon.
+3. Megjelenik az eszköz válasza a Direct metódusra és a feladatok állapotára a-konzolon.
+
+   Az alábbi ábrán látható az eszköz válasza a közvetlen metódusra:
+
+   ![Szimulált eszköz alkalmazás kimenete](./media/iot-hub-node-node-schedule-jobs/sim-device.png)
+
+   A következő táblázat a közvetlen metódus és az eszköz kettős frissítésének szolgáltatás-ütemezési feladatait, valamint a befejezésre futó feladatokat mutatja be:
+
+   ![A szimulált eszköz alkalmazásának futtatása](./media/iot-hub-node-node-schedule-jobs/schedule-job-service.png)
 
 ## <a name="next-steps"></a>További lépések
 

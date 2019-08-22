@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 9cd754b1810595c3ae82a7e4edfd9a3abe145b3f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4f325d9fc512fd9f6776fcd799b720aaf60ce472
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816411"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876758"
 ---
 # <a name="remote-desktop-client-connections"></a>Távoli asztali ügyfélkapcsolatok
 
@@ -135,7 +135,7 @@ Kövesse az alábbi általános hibaelhárítási útmutatót az ügyfélkapcsol
     Time              : <Timestampt>
     ```
 
-### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Hiba: O_ADD_USER_TO_GROUP_FAILED/nem sikerült hozzáadni a felhasználót = ≤ Felhasználónév ≥ a Group = Távoli asztal felhasználókhoz. Indoklás: Win32.ERROR_NO_SUCH_MEMBER
+### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Hiba: O_ADD_USER_TO_GROUP_FAILED/nem sikerült hozzáadni a felhasználót = ≤ Felhasználónév ≥ a Group = Távoli asztal felhasználókhoz. Ok Win32.ERROR_NO_SUCH_MEMBER
 
 **Okozhat** A virtuális gép nincs csatlakoztatva ahhoz a tartományhoz, ahol a felhasználói objektum található.
 
@@ -173,7 +173,7 @@ Ha a webes ügyfél használatban van, ellenőrizze, hogy nincsenek-e gyorsító
 - A bérlők és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [bérlői és az alkalmazáskészletek létrehozását](troubleshoot-set-up-issues.md)ismertető részt.
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
 - A PowerShell és a Windows virtuális asztal használatával kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali PowerShell](troubleshoot-powershell.md)című témakört.
-- Az előzetes verziójú szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Windows asztali előnézet környezetét](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?)ismertető témakört.
+- Az előzetes verziójú szolgáltatással kapcsolatos további tudnivalókért lásd: a [Windows rendszerű virtuális asztali előnézet környezete](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?).
 - A következő témakörben talál útmutatást [a hibakereséshez: oktatóanyag: Resource Manager-sablonok központi telepítésének](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)hibája.
 - További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 - Az üzembe helyezés során felmerülő hibák meghatározásával kapcsolatos további tudnivalókért lásd: [telepítési műveletek megtekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).

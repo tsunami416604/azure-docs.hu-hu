@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/13/2019
+ms.date: 08/20/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 38ed3b2e4b103e63d88b9ba3d250aa8c0b6bb9bf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc1863795161342c05a5538e8f7e40e789ce695d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072033"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647118"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>A QnA Maker REST API-t a Go használatával 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ Ez a cikk bemutatja, hogyan használható a [Microsoft QnA Maker API](../Overvie
 - [Tudásbázis törlése.](#Delete)
 - [A jelenlegi végponti kulcsok lekérése.](#GetKeys)
 - [A jelenlegi végponti kulcsok újbóli létrehozása.](#PutKeys)
-- [Kis-és word változtatások az aktuális készletét beolvasása.](#GetAlterations)
-- [Cserélje le a kis-és word változtatások az aktuális készletét.](#PutAlterations)
+- [Az aktuális kis-és nagybetűket nem megkülönböztető Word-változtatások beolvasása.](#GetAlterations)
+- [Cserélje le a kis-és nagybetűket megkülönböztető Word-változtatások aktuális készletét.](#PutAlterations)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

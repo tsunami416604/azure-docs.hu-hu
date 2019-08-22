@@ -9,33 +9,31 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 05/06/2019
-ms.openlocfilehash: cf35651f7dd839e8792029851b9bfe278036624c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: eb84dc1b5bf3f756e484ef27aaa998ab6b94cc51
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179736"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891625"
 ---
-Egy kísérletet futtat egy számítási célnak, egy olyan számítási erőforrásra, amely a munkaterülethez van csatolva.  Miután létrehozott egy számítási célnak, későbbi futtatások felhasználhatja azt.
+Egy kísérlet számítási célra, a munkaterülethez csatolt számítási erőforrásra fut.  A számítási cél létrehozása után újból felhasználhatja azt későbbi futtatásokhoz.
 
-1. Válassza ki **futtatása** alján futtathatja a kísérletet.
+1. A kísérlet futtatásához kattintson a lenti **Futtatás** gombra.
 
-     ![Kísérlet futtatása](./media/aml-ui-create-training-compute/run-experiment.png)
-
-1. Ha a **telepítő számítási céljainak** párbeszédpanel jelenik meg, ha a munkaterület már van egy olyan számítási erőforrásra, kiválaszthatja azt most.  Ellenkező esetben válassza **új létrehozása**.
+1. Ha megjelenik a **számítási célok beállítása** párbeszédpanel, ha a munkaterületen már van egy számítási erőforrás, kiválaszthatja most.  Ellenkező esetben válassza az **új létrehozása**lehetőséget.
 
     > [!NOTE]
-    > A vizuális felhasználói felületet csak a Machine Learning Compute célok kísérletek futnak. Más számítási célnak nem fognak megjelenni.
+    > A vizuális felület csak Machine Learning Compute-célokon futtathat kísérleteket. A többi számítási cél nem jelenik meg.
 
-1. Adjon meg egy nevet a számítási erőforrás.
+1. Adja meg a számítási erőforrás nevét.
 
 1. Válassza a **Futtatás** lehetőséget.
 
-    ![A telepítő számítási célnak](./media/aml-ui-create-training-compute/set-compute.png)
+    ![Számítási cél beállítása](./media/aml-ui-create-training-compute/set-compute.png)
 
-    Most jön létre a számítási erőforrás. A kísérlet jobb felső sarkában a állapotának megtekintéséhez. 
+    Ekkor létrejön a számítási erőforrás. Tekintse meg az állapotot a kísérlet jobb felső sarkában. 
 
     > [!NOTE]
-    > Számítási erőforrás létrehozása körülbelül 5 percet vesz igénybe. Az erőforrás létrehozása után újra felhasználhatja, és hagyja ki a későbbi futtatások várakozási idő.
+    > Számítási erőforrás létrehozásához körülbelül 5 percet vesz igénybe. Az erőforrás létrehozása után újra felhasználhatja azt, és kihagyhatja ezt a várakozási időt a jövőbeli futtatásokhoz.
     >
-    > A számítási erőforrás automatikus skálázási 0 csomópontra lesz, ha tétlen csökkenthetők a költségek.  Használatakor ez később újra tapasztalhat várakozási idő körülbelül 5 perc átméreteződik biztonsági közben.
+    > A számítási erőforrás automatikusan átméretezi a 0 csomópontot, amikor az üresjáratban van, hogy megőrizze a költségeket.  Ha a késést követően ismét felhasználja, előfordulhat, hogy a várakozási idő körülbelül 5 percet vesz igénybe.

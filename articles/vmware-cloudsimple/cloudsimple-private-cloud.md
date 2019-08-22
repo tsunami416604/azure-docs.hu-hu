@@ -1,55 +1,63 @@
 ---
-title: Privát felhők a VMware-megoldásban a CloudSimple által – Azure
+title: Azure VMware-megoldás CloudSimple – privát felhők
 description: Ismerje meg a privát felhők és fogalmak CloudSimple.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9885366d5987870fe2739083ff47abaae9ef6ed1
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4fb930603455ed1a5df5d357fcab669f41a0c28c
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816206"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877949"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>CloudSimple – a privát felhő áttekintése
 
 A CloudSimple percek alatt átalakítja és kiterjeszti a VMware-alapú számítási feladatokat a nyilvános felhőkbe. A CloudSimple szolgáltatás használatával natív módon telepítheti a VMware-et az Azure operációs rendszer nélküli számítógépek infrastruktúráján. Az üzembe helyezés az Azure-beli helyszíneken működik, és teljes mértékben integrálódik az Azure-felhő többi részébe.
 
-* A CloudSimple-megoldás teljes körű VMware működési folytonosságot biztosít. Ez a megoldás a következő nyilvános Felhőbeli előnyöket nyújtja:
-  * Rugalmasságát
-  * Innováció
-  * Hatékonyság
-* A CloudSimple a Felhőbeli fogyasztási modellek előnyeit kihasználva csökkenti a teljes tulajdonlási költségeket. Igény szerinti üzembe helyezést, utólagos elszámolást és kapacitás-optimalizálást is kínál.
-* A CloudSimple teljes mértékben kompatibilis az alábbiakkal:
-  * Meglévő eszközök
-  * Képességek
-  * Folyamatok
-* Ez a kompatibilitási funkció lehetővé teszi, hogy a csapatok az Azure-felhőben kezeljék a munkaterheléseket, a szabályzatok megszakítása nélkül:
-  * Network (Hálózat)
-  * Biztonság  
-  * Adatvédelem  
-  * Naplózás
-* A CloudSimple kezeli az infrastruktúrát és az összes szükséges hálózatkezelési és felügyeleti szolgáltatást. A CloudSimple szolgáltatás lehetővé teszi, hogy csapata a következőkre koncentráljon:
-  * Üzleti érték
-  * Alkalmazás kiépítés
-  * Az üzletmenet folytonossága
-  * Támogatás
-  * Szabályzat érvénybe léptetése
+A CloudSimple-megoldás teljes körű VMware működési folytonosságot biztosít. Ez a megoldás a következő nyilvános Felhőbeli előnyöket nyújtja:
+
+* Rugalmasságát
+* Innováció
+* Hatékonyság
+
+A CloudSimple a Felhőbeli fogyasztási modellek előnyeit kihasználva csökkenti a teljes tulajdonlási költségeket. Igény szerinti üzembe helyezést, utólagos elszámolást és kapacitás-optimalizálást is kínál.
+
+A CloudSimple teljes mértékben kompatibilis az alábbiakkal:
+
+* Meglévő eszközök
+* Képességek
+* Folyamatok
+
+Ez a kompatibilitási funkció lehetővé teszi, hogy a csapatok az Azure-felhőben kezeljék a munkaterheléseket, anélkül, hogy megzavarják az ilyen típusú szabályzatokat:
+
+* Network (Hálózat)
+* Biztonság  
+* Adatvédelem  
+* Naplózás
+
+A CloudSimple kezeli az infrastruktúrát és az összes szükséges hálózatkezelési és felügyeleti szolgáltatást. A CloudSimple szolgáltatás lehetővé teszi, hogy csapata a következőkre koncentráljon:
+
+* Üzleti érték
+* Alkalmazás kiépítés
+* Az üzletmenet folytonossága
+* Támogatás
+* Szabályzat érvénybe léptetése
 
 ## <a name="private-cloud-environment-overview"></a>A saját felhőalapú környezet áttekintése
 
-A privát felhő egy elszigetelt VMware-verem, például a következő környezetek:
+A privát felhő egy elszigetelt VMware-verem, amely a következőket támogatja:
 
 * ESXi-gazdagépek
 * vCenter
 * vSAN
 * NSX
 
-A privát felhőket a saját felügyeleti tartományában lévő vCenter-kiszolgáló kezeli.
+A privát felhők kezelése a CloudSimple-portálon keresztül történik. Saját vCenter-kiszolgálóval rendelkeznek a saját felügyeleti tartományában.
 
 A verem a következőn fut:
 
@@ -63,10 +71,7 @@ A felhasználók a natív VMware-eszközökön keresztül használják a veremet
 
 A dedikált csomópontok üzembe helyezése az Azure-beli helyszíneken végezhető el. Ezt követően kezelheti őket az Azure-ban és a CloudSimple-ban is. A privát felhő egy vagy több vSphere-fürtből áll, és minden fürt 3 – 16 csomópontot tartalmaz.
 
-Létrehozhat egy privát felhőt a kiépített csomópontok használatával:
-
-* Utólagos elszámolású csomópontok
-* Fenntartott, dedikált csomópontok
+Létrehozhat egy privát felhőt a megvásárolt, utólagos elszámolású csomópontok vagy fenntartott, dedikált csomópontok használatával.
 
 A privát felhő a következő kapcsolatok használatával csatlakoztatható a helyszíni környezethez és az Azure-hálózathoz:
 
@@ -74,50 +79,51 @@ A privát felhő a következő kapcsolatok használatával csatlakoztatható a h
 * Privát VPN
 * Azure ExpressRoute
 
-A privát felhőalapú környezet úgy lett kialakítva, hogy egyetlen meghibásodási ponttal ne legyenek kizárva:
+A privát felhőalapú környezet az egyes meghibásodási pontok eltávolítására szolgál:
 
 * Az ESXi-fürtök vSphere magas rendelkezésre állással vannak konfigurálva, és a rugalmasság érdekében a méretük legalább egy tartalék csomópontot tartalmaz.
 * a vSAN redundáns elsődleges tárterületet biztosít. a vSan legalább három csomópontot igényel az egyetlen hiba elleni védelem biztosításához. A vSAN konfigurálásával nagyobb rugalmasságot biztosíthat a nagyobb fürtök számára.
-* A vCenter, a PSC és a NSX Manager virtuális gépeket RAID-10 tárolási házirenddel is konfigurálhatja a tárolási hibák elleni védelem érdekében. Ezután a vSphere a csomópont-és hálózati hibák ellen védettek.
+* A vCenter, a PSC és a NSX Manager virtuális gépeket RAID-10 tárolási házirenddel is konfigurálhatja a tárolási hibák elleni védelem érdekében. a vSphere HA védelmet biztosít a csomópont-és hálózati hibák ellen.
 
 ## <a name="scenarios-for-deploying-a-private-cloud"></a>A privát felhő üzembe helyezésének forgatókönyvei
 
-* **Adatközpont-kivonulás vagy áttelepítés**
+Íme néhány példa a saját Felhőbeli üzembe helyezés használati eseteire.
 
-  * Ha eléri a meglévő adatközpont korlátait, vagy frissíti a hardvert, további kapacitást érhet el.
-  * Adja hozzá a szükséges kapacitást a felhőben, és távolítsa el a hardveres frissítések kezelésének fejfájását.
-  * Csökkentse a Felhőbeli áttelepítések kockázatát és költségeit, az időigényes átalakításokhoz vagy az újraarchitektúrához képest.
-  * A felhőbe történő Migrálás felgyorsításához használja a jól ismert VMware-eszközöket és-képességeket. A felhőben az Azure-szolgáltatások segítségével modernizálhatja alkalmazásait a tempóban.
+### <a name="data-center-retirement-or-migration"></a>Adatközpont-kivonulás vagy áttelepítés
 
-* **Kibontás igény szerint**
+* Ha eléri a meglévő adatközpont korlátait, vagy frissíti a hardvert, további kapacitást érhet el.
+* Adja hozzá a szükséges kapacitást a felhőben, és távolítsa el a hardveres frissítések kezelésének fejfájását.
+* Csökkentse a felhőbe való Migrálás kockázatát és költségeit az időigényes átalakítások vagy az újraarchitektúrák összehasonlításával.
+* A felhőbe történő Migrálás felgyorsításához használja a jól ismert VMware-eszközöket és-képességeket. A felhőben az Azure-szolgáltatások segítségével modernizálhatja alkalmazásait a tempóban.
 
-  * Bontsa ki a felhőt a nem várt igények kielégítéséhez, például az új fejlesztési környezetekhez vagy a szezonális kapacitások kitöréséhez.
-  * Igény szerint új kapacitást hozhat létre, és megtarthatja, amíg szüksége van rá.
-  * Csökkentse a kezdeti befektetéseket, gyorsítsa fel a kiépítés sebességét, és csökkentse a bonyolultságot ugyanazzal az architektúrával és házirenddel mind a helyszínen, mind a felhőben.
+### <a name="expand-on-demand"></a>Kibontás igény szerint
 
-* **Vész-helyreállítási és virtuális asztalok az Azure-felhőben**
+* Bontsa ki a felhőt a nem várt igények kielégítéséhez, például az új fejlesztési környezetekhez vagy a szezonális kapacitások kitöréséhez.
+* Igény szerint új kapacitást hozhat létre, és megtarthatja, amíg szüksége van rá.
+* Csökkentse a kezdeti befektetéseket, gyorsítsa fel a kiépítés sebességét, és csökkentse a bonyolultságot ugyanazzal az architektúrával és házirenddel mind a helyszínen, mind a felhőben.
 
-  * Távoli hozzáférés létrehozása az Azure-felhőben tárolt adatelemekhez, alkalmazásokhoz és asztali gépekhez. A nagy sávszélességű kapcsolatokkal gyorsan tölthet le/tölthet le adatokat az incidensekről. Az alacsony késleltetésű hálózatok gyors válaszidőt biztosítanak a felhasználók számára egy asztali alkalmazástól.
+### <a name="disaster-recovery-and-virtual-desktops-in-the-azure-cloud"></a>Vész-helyreállítási és virtuális asztalok az Azure-felhőben
 
-  * A CloudSimple-portál és a jól ismert VMware-eszközök használatával replikálhatja az összes szabályzatot és hálózatkezelést a felhőben. Ez a replikálás csökkenti a DR-és VDI-implementációk létrehozásának és kezelésének erőfeszítéseit és kockázatait.
+* Távoli hozzáférés létrehozása az Azure-felhőben tárolt adatelemekhez, alkalmazásokhoz és asztali gépekhez. A nagy sávszélességű kapcsolatokkal gyorsan tölthet le/tölthet le adatokat az incidensekről. Az alacsony késleltetésű hálózatok gyors válaszidőt biztosítanak a felhasználók számára egy asztali alkalmazástól.
 
-* **Nagy teljesítményű alkalmazások és adatbázisok**
+* A CloudSimple-portál és a jól ismert VMware-eszközök használatával replikálhatja az összes szabályzatot és hálózatkezelést a felhőben. A replikáció csökkenti a DR-és VDI-implementációk létrehozásának és kezelésének erőfeszítéseit és kockázatait.
 
-  * Futtassa a legigényesebb számítási feladatokat a CloudSimple által biztosított hiperkonvergens architektúrával.
-  * Az Oracle, a Microsoft SQL Server, a köztes rendszerek és a nagy teljesítményű, nem SQL-adatbázisok futtatása.
+### <a name="high-performance-applications-and-databases"></a>Nagy teljesítményű alkalmazások és adatbázisok
 
-  * A felhőt saját adatközpontként, nagy sebességű, 25 GB/s-os hálózati kapcsolattal tapasztalhatja. A nagy sebességű kapcsolatok lehetővé teszik, hogy olyan hibrid alkalmazásokat futtasson, amelyek a helyszíni, a VMware-en és az Azure-beli privát számítási feladatokon alapulnak, és nem veszélyeztethetik a teljesítményt.
+* Futtassa a legigényesebb számítási feladatokat a CloudSimple által biztosított hiperkonvergens architektúrával.
+* Az Oracle, a Microsoft SQL Server, a köztes rendszerek és a nagy teljesítményű, nem SQL-adatbázisok futtatása.
+* A felhőt saját adatközpontként, nagy sebességű, 25 GB/s-os hálózati kapcsolattal tapasztalhatja. A nagy sebességű kapcsolatok lehetővé teszik, hogy olyan hibrid alkalmazásokat futtasson, amelyek a helyszíni, a VMware-en és az Azure-beli privát számítási feladatokon alapulnak, és nem veszélyeztethetik a teljesítményt.
 
-* **Valódi hibrid**
+### <a name="true-hybrid"></a>Valódi hibrid
 
-  * A DevOps egyesítheti a VMware-és az Azure-szolgáltatások között.
-  * Optimalizálja a VMware-felügyeletet az Azure-szolgáltatásokhoz és-megoldásokhoz, amelyek az összes számítási feladatra alkalmazhatók.
-  * A nyilvános felhőalapú szolgáltatásokat anélkül érheti el, hogy kibővíti az adatközpontot, vagy újratervezi az alkalmazásokat.
-  * Az Azure-beli VMware-alkalmazások identitásának, hozzáférés-vezérlési házirendjeinek, naplózásának és figyelésének központosítása.
+* A DevOps egyesítheti a VMware-és az Azure-szolgáltatások között.
+* Optimalizálja a VMware-felügyeletet az Azure-szolgáltatásokhoz és-megoldásokhoz, amelyek az összes számítási feladatra alkalmazhatók.
+* A nyilvános felhőalapú szolgáltatásokat anélkül érheti el, hogy kibővíti az adatközpontot, vagy újratervezi az alkalmazásokat.
+* Az Azure-beli VMware-alkalmazások identitásának, hozzáférés-vezérlési házirendjeinek, naplózásának és figyelésének központosítása.
 
 ## <a name="limits"></a>Korlátok
 
-Az alábbi táblázat a privát felhő erőforrásaihoz tartozó csomópontokra vonatkozó korlátozásokat mutatja be.
+A következő táblázat felsorolja a privát felhő erőforrásaihoz tartozó csomópontok korlátozásait.
 
 | Resource | Korlát |
 |----------|-------|
@@ -128,5 +134,5 @@ Az alábbi táblázat a privát felhő erőforrásaihoz tartozó csomópontokra 
 
 ## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [hozhat létre saját felhőt](https://docs.azure.cloudsimple.com/create-private-cloud/)
+* Megtudhatja, hogyan [hozhat létre saját felhőt](create-private-cloud.md)
 * Ismerje meg, hogyan [konfigurálhatja a saját felhőalapú környezetét](quickstart-create-private-cloud.md)

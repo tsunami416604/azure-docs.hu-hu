@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: a874c8a1fe2e8a81e2f42b2c88447fd52b47f3ad
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1c86649a989b16d928a46d322af3d805b6fbf832
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611965"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647344"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon árképzési szintet Azure Search
 
@@ -53,10 +53,10 @@ További információt a [díjszabási oldalon](https://azure.microsoft.com/pric
 
 Azure Searchra épülő megoldás a következő módokon veheti igénybe a költségeket:
 
-+ A szolgáltatás alapdíja minimális konfiguráció alapján
++ A szolgáltatás alapdíja a minimális konfigurációnál (szolgáltatás létrehozása)
 + Növekményes díj a felskálázáskor (replikák vagy partíciók hozzáadása)
-+ A kimenő adatforgalom sávszélesség-díja
-+ Cognitive Services erőforrásokat hasznosító kognitív keresés
++ Sávszélességgel kapcsolatos díjak (kimenő adatforgalom) 
++ Kognitív keresés (Cognitive Services csatolása AI-bővítéshez, Azure Storage a Knowledge Store-hoz)
 
 ### <a name="service-costs"></a>Szolgáltatási költségek
 

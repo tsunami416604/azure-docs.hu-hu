@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: 13eef9beb6c86683c56efc744dc42b4614b84fe9
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: b813ef89bb1a55f769d0ea2391855ba5d671c140
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946487"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648797"
 ---
 # <a name="reacting-to-blob-storage-events"></a>A blob Storage eseményeire való reagálás
 
@@ -32,6 +32,8 @@ Ha most szeretné kipróbálni ezt a lehetőséget, tekintse meg az alábbi röv
 |Azure Portal    |[Rövid útmutató: BLOB Storage-események átirányítása webes végpontra a Azure Portal](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[Rövid útmutató: Tárolási események továbbítása webes végponthoz a PowerShell használatával](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure CLI    |[Rövid útmutató: Tárolási események továbbítása webes végponthoz az Azure CLI-vel](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+
+Ha a fiók hierarchikus névtérrel rendelkezik, az oktatóanyag bemutatja, hogyan lehet összekapcsolni egy Event Grid-előfizetést, egy Azure-függvényt és egy [feladatot](https://docs.azuredatabricks.net/user-guide/jobs.html) a Azure Databricksban: [Oktatóanyag Databricks-különbözeti tábla](data-lake-storage-events.md)frissítéséhez Azure Data Lake Storage Gen2 eseményeket használjon.
 
 ## <a name="the-event-model"></a>Az esemény modellje
 

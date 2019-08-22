@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf0c639dd5fb678af7fca9224292218331b10ee6
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: accd14446ab8f4a70336e3bd6787cbd8c93ff21d
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834759"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891519"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatások közötti hívások, amelyek delegált felhasználói identitást használnak a következő folyamat során:
 
@@ -196,7 +196,7 @@ A sikeres válasz egy JSON-OAuth 2,0-válasz a következő paraméterekkel:
 
 Az alábbi példa egy, a https://graph.windows.net webes API hozzáférési jogkivonatára vonatkozó kérelemre adott sikeres választ mutat be.
 
-```
+```json
 {
     "token_type":"Bearer",
     "scope":"User.Read",
@@ -215,7 +215,7 @@ Az alábbi példa egy, a https://graph.windows.net webes API hozzáférési jogk
 
 Az Azure AD jogkivonat-végpont olyan hibaüzenetet ad vissza, amely egy feltételes hozzáférési házirenddel (például többtényezős hitelesítéssel) beállított alsóbb rétegbeli API hozzáférési jogkivonatának beszerzésére tesz kísérletet. A középső rétegbeli szolgáltatásnak ezt a hibát fel kell vennie az ügyfélalkalmazás számára, hogy az ügyfélalkalmazás meg tudja adni a felhasználói beavatkozást a feltételes hozzáférési szabályzat teljesítése érdekében.
 
-```
+```json
 {
     "error":"interaction_required",
     "error_description":"AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access 'bf8d80f9-9098-4972-b203-500f535113b1'.\r\nTrace ID: b72a68c3-0926-4b8e-bc35-3150069c2800\r\nCorrelation ID: 73d656cf-54b1-4eb2-b429-26d8165a52d7\r\nTimestamp: 2017-05-01 22:43:20Z",

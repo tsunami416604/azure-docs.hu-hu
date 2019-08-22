@@ -1,23 +1,23 @@
 ---
-title: VMware-megoldás CloudSimple szerint – Azure nyilvános IP-cím
-description: Ismerje meg a nyilvános IP-címeket, valamint a VMware-megoldás előnyeit a CloudSimple
+title: Azure VMware-megoldás CloudSimple szerint – nyilvános IP-cím
+description: Ismerje meg a nyilvános IP-címeket és azok előnyeit az Azure VMware-megoldás CloudSimple
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 29d2bdb75a7f4409e6b3ffee2608cfe7adde6b1f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812522"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877682"
 ---
 # <a name="cloudsimple-public-ip-address-overview"></a>CloudSimple nyilvános IP-cím áttekintése
 
-A nyilvános IP-cím lehetővé teszi, hogy az internetes erőforrások a privát IP-címeken keresztül kommunikáljanak a belső felhőalapú erőforrásokkal. A magánhálózati IP-cím vagy egy virtuális gép, vagy egy szoftveres terheléselosztó. A magánhálózati IP-cím a saját felhőalapú vCenter van. A nyilvános IP-cím lehetővé teszi, hogy elérhetővé tegye a saját felhőben futó szolgáltatásokat az interneten.
+A nyilvános IP-cím lehetővé teszi az internetes erőforrások számára, hogy privát IP-címen keresztül kommunikáljanak a privát Felhőbeli erőforrásokkal. A magánhálózati IP-cím egy virtuális gép vagy egy szoftveres terheléselosztó a saját Felhőbeli vCenter. A nyilvános IP-cím lehetővé teszi, hogy elérhetővé tegye a saját felhőben futó szolgáltatásokat az interneten.
 
 A nyilvános IP-cím a magánhálózati IP-címhez van hozzárendelve, amíg meg nem rendeli a hozzárendelést. Egy nyilvános IP-cím csak egy magánhálózati IP-címhez rendelhető hozzá.
 
@@ -33,4 +33,4 @@ Nyilvános IP-cím használata a bejövő kommunikációhoz:
 
 ## <a name="next-steps"></a>További lépések
 
-* Útmutató [nyilvános IP-cím](https://docs.azure.cloudsimple.com/public-ips/) lefoglalásához
+* Útmutató [nyilvános IP-cím](public-ips.md) lefoglalásához

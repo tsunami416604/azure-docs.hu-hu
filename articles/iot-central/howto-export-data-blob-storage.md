@@ -8,18 +8,20 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 0fcce6bd6ee9461790ca7618f65be9a20a821afc
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7366072dbf6b000981899a56ca1c8cfe6af6f04a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360340"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876052"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Exportálja adatait az Azure Blob Storageba
 
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
 *Ez a témakör a rendszergazdákra vonatkozik.*
 
-Ez a cikk azt ismerteti, hogyan használható az Azure IoT Central folyamatos adatexportálás funkciója az **Azure Blob Storage**-fiókba való rendszeres adatexportáláshoz. Az Apache Avro formátumban is exportálhatja a mértékeket, **eszközöket**és az eszközök **sablonjait** . Az exportált adatokat felhasználhatja a ritkán használt módszerekhez, például a Azure Machine Learning vagy a Microsoft Power BI hosszú távú trendek elemzéséhez.
+Ez a cikk azt ismerteti, hogyan használható az Azure IoT Central folyamatos adatexportálás funkciója az **Azure Blob Storage**-fiókba való rendszeres adatexportáláshoz. Az Apache Avroformátumban is exportálhatja a mértékeket, **eszközöket**és az eszközök **sablonjait** . Az exportált adatokat felhasználhatja a ritkán használt módszerekhez, például a Azure Machine Learning vagy a Microsoft Power BI hosszú távú trendek elemzéséhez.
 
 > [!Note]
 > Ha ismét bekapcsolja a folyamatos adatexportálást, az adott pillanattól kezdve csak az adott adatot kapja meg. Jelenleg nem lehet lekérni az adatgyűjtési időt, amikor a folyamatos adatexportálás ki lett kapcsolva. Több korábbi adat megtartásához kapcsolja be a folyamatos adatexportálást.
@@ -38,7 +40,7 @@ Ha nem rendelkezik meglévő tárolóval az exportáláshoz, kövesse az alábbi
 
 1. Hozzon létre egy [új Storage-fiókot a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További információt az [Azure Storage docs](https://aka.ms/blobdocscreatestorageaccount)-ban olvashat.
 2. A fiók típusa területen válassza az **általános célú** vagy a **blob Storage**lehetőséget.
-3. Válasszon előfizetést. 
+3. Válasszon egy előfizetést. 
 
     > [!Note] 
     > Mostantól exportálhat más előfizetésekre is, amelyek **nem egyeznek** meg az utólagos elszámolású IoT Central alkalmazása során. Ebben az esetben kapcsolati sztringet fog használni.
@@ -83,7 +85,7 @@ Most, hogy van egy tárolási célhelye az adatexportáláshoz, kövesse az alá
  
 6. Válasszon egy tárolót a legördülő listából.
 
-7. Az **exportálni kívánt adat**területen adja meg az exportálandó adattípusokat, ha a típust be értékre **állítja.**
+7. Az **exportálni kívánt adat**területen adja meg az exportálandó adattípusokat, ha a típust be értékre állítja.
 
 6. A folyamatos adatexportálás bekapcsolásához ellenőrizze, hogy be van-e **kapcsolva**az adatexportálás. Kattintson a **Mentés** gombra.
 
@@ -104,7 +106,7 @@ A mérések, az eszközök és az eszközök sablonjainak adatai percenként egy
 Az exportált mérések adatainak minden olyan új üzenete van, amelyet az összes eszköz IoT Central fogadott az adott idő alatt. Az exportált fájlok ugyanazt a formátumot használják, mint a blob Storage-ba [IoT hub üzenet-útválasztás](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) által exportált üzenet-fájlok.
 
 > [!NOTE]
-> A méréseket küldő eszközöket az eszközök azonosítói jelölik (lásd a következő részeket). Az eszközök nevének lekéréséhez exportálja az eszköz pillanatképeit. Az egyes üzeneteket az **connectionDeviceId** megegyező, az eszközhöz tartozó rekordra **vonatkozó adatokkal** korrelálhatja.
+> A méréseket küldő eszközöket az eszközök azonosítói jelölik (lásd a következő részeket). Az eszközök nevének lekéréséhez exportálja az eszköz pillanatképeit. Az egyes üzeneteket az **connectionDeviceId** megegyező, az eszközhöz tartozó rekordra vonatkozó adatokkal korrelálhatja.
 
 A következő példa egy olyan rekordot mutat be a dekódolású Avro fájlban:
 

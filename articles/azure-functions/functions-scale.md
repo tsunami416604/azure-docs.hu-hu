@@ -1,24 +1,21 @@
 ---
 title: Azure Functions méretezés és üzemeltetés | Microsoft Docs
 description: Megtudhatja, hogyan választhat Azure Functions fogyasztási terv és a Prémium csomag között.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: Azure functions, functions, felhasználási terv, Prémium csomag, események feldolgozása, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdef1457254b6deb8a0b791b11c94154518b4301
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c39ee29b9a4449000d44e44bc6feae407cf4cd38
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636437"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874940"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Méretezés és üzemeltetés Azure Functions
 
@@ -143,9 +140,6 @@ További információ a Storage-fiókok típusairól: [Az Azure Storage szolgál
 A használat és a prémium csomagok esetében a Azure Functions infrastruktúra a funkciók gazdagépének további példányainak hozzáadásával méretezi a processzor-és memória-erőforrásokat a függvények által aktivált események száma alapján. A functions gazdagép összes példánya a használati tervben legfeljebb 1,5 GB memóriával és egy PROCESSZORral rendelkezik.  A gazdagép egy példánya a teljes Function alkalmazás, ami azt jelenti, hogy a Function app-ban található összes függvény egy adott példányon belül található, és egy időben méretezhető. Az azonos felhasználási csomaggal rendelkező alkalmazások egymástól függetlenül méretezhetők.  A Prémium csomag esetében a csomag mérete határozza meg az adott példányon lévő összes alkalmazás rendelkezésre álló memóriáját és PROCESSZORát.  
 
 A függvény kódjának fájljai a függvény fő Storage-fiókján Azure Files megosztásokon tárolódnak. Ha törli a Function alkalmazás fő Storage-fiókját, a rendszer törli a függvény kódjának fájljait, és nem állítható helyre.
-
-> [!NOTE]
-> Ha egy használati tervben blob-triggert használ, az új Blobok feldolgozására akár 10 perces késés is eltelhet. Ez a késleltetés akkor fordul elő, ha egy Function alkalmazás üresjáratban van. A Function app futtatása után a Blobok feldolgozása azonnal megtörténik. A hidegindító késleltetés elkerüléséhez használja a prémium csomagot, vagy használja a [Event Grid triggert](functions-bindings-event-grid.md). További információt [a blob-trigger kötési útmutatója című cikkben](functions-bindings-storage-blob.md#trigger)talál.
 
 ### <a name="runtime-scaling"></a>Futtatókörnyezet skálázása
 

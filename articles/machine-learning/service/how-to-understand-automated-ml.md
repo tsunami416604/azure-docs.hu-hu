@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: ea85a0906ce231312c491d31a33c331480d23812
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a5632767ef8230d16b47f350436fda53794efdf5
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68362154"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872571"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Az automatizált gépi tanulás eredményeinek megismerése
 
@@ -47,15 +47,15 @@ Az automatizált gépi tanulási kísérlet futtatása után a futtatások előz
 
 1. A kísérletek listájában válassza ki a felderíteni kívánt elemet.
 
-   ![Kísérlet listája](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)
+   [![Kísérletek listája](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
 
 1. Az alsó táblában válassza ki a **futtatási számot**.
 
-   ![Kísérlet futtatása](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)
+   [ Kísérletfuttatása![](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png))
 
 1. Az ismétlések táblázatban válassza ki a modell azon **iterációjának számát** , amelyet szeretne felderíteni.
 
-   ![Kísérlet modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)
+   [![Kísérleti modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 
 Ugyanezeket az eredményeket is láthatja a Futtatás során, amikor a `RunDetails` [Jupyter widgetet](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)használja.
 
@@ -192,7 +192,7 @@ Minden egyes futás után megjelenik egy előre jelzett és minden egyes regress
 
 1\. példa: Alacsony pontosságú regressziós modell előrejelzése ![egy regressziós modellt, amely alacsony pontossággal rendelkezik a jóslatokban](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-2\. példa Egy regressziós modell, amely nagy pontossággal ![van ellátva az előrejelzések szerint a regressziós modellben nagy pontossággal](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)
+2\. példa Egy regressziós modell, amely nagy pontossággal [ ![van ellátva az előrejelzések szerint a regressziós modellben nagy pontossággal](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
 
 
 

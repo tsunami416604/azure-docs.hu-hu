@@ -2,7 +2,7 @@
 title: 'Node. js gyors útmutató: Indexek létrehozása, betöltése és lekérdezése a Azure Search REST API-kkal – Azure Search'
 description: Node. js-minta a Azure Searchhoz, amely bemutatja, hogyan lehet a JavaScriptből létrehozni, betölteni a betöltést és a lekérdezést.
 author: lobrien
-manager: cgronlun
+manager: nitinme
 tags: azure-portal
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 07/30/2019
 ms.author: laobri
-ms.openlocfilehash: 41ad5aed975f30250d53d746e7590f88e375b6e9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: b22a6371522674895465afac88e68f556ab09bcb
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977214"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656307"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>Gyors útmutató: Azure Search index létrehozása a Node. js-ben
 > [!div class="op_single_selector"]

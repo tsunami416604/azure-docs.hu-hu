@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b7157cd58abc7f1fecf288e72b0232c8a67b7ee
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 4aa948a785153dd0d70a9af41ae0ed25036827f8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512581"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656269"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 
@@ -43,7 +43,7 @@ A [azureml. Core.](https://docs.microsoft.com/python/api/azureml-core/azureml.co
 * `auth_enabled`– Ha a kulcsos hitelesítés engedélyezve `True`van, `False`egyéb esetben.
 * `token_auth_enabled`– Ha engedélyezve van a jogkivonat- `True`hitelesítés, `False`más esetben.
 * `scoring_uri` – A REST API-cím.
-
+* `swagger_uri`– A OpenAPI-specifikáció címe. Ez az URI akkor érhető el, ha engedélyezte az automatikus séma létrehozását. További információ: [modellek üzembe helyezése a Azure Machine learning szolgáltatással](how-to-deploy-and-where.md#schema).
 
 Az üzembe helyezett webszolgáltatások ezen információk lekérése egy három módja van:
 
@@ -56,6 +56,7 @@ Az üzembe helyezett webszolgáltatások ezen információk lekérése egy háro
                                            image_config=image_config,
                                            workspace=ws)
     print(service.scoring_uri)
+    print(service.swagger_uri)
     ```
 
 * Használhat `Webservice.list` kérdezheti le az üzembe helyezett webszolgáltatások munkaterületét modellek esetén. Visszaadott adatok leszűkítése szűrőt is hozzáadhat. További információ arról, hogy mit lehet szűrni. a webszolgáltatások [listáját](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) ismertető dokumentációban talál további információt.
@@ -63,6 +64,7 @@ Az üzembe helyezett webszolgáltatások ezen információk lekérése egy háro
     ```python
     services = Webservice.list(ws)
     print(services[0].scoring_uri)
+    print(services[0].swagger_uri)
     ```
 
 * Ha ismeri a telepített szolgáltatás nevét, létrehozhat egy új példányt `Webservice`, és paraméterként megadhatja a munkaterület és a szolgáltatás nevét. Az új objektum tartalmazza a telepített szolgáltatással kapcsolatos információkat.
@@ -70,11 +72,12 @@ Az üzembe helyezett webszolgáltatások ezen információk lekérése egy háro
     ```python
     service = Webservice(workspace=ws, name='myservice')
     print(service.scoring_uri)
+    print(service.swagger_uri)
     ```
 
 ### <a name="authentication-for-services"></a>Szolgáltatások hitelesítése
 
-A Azure Machine Learning két módszert biztosít a webszolgáltatásokhoz való hozzáférés vezérlésére. 
+A Azure Machine Learning két módszert biztosít a webszolgáltatásokhoz való hozzáférés vezérlésére.
 
 |Hitelesítési módszer|ACI|AKS|
 |---|---|---|

@@ -1,6 +1,6 @@
 ---
-title: Biztonsági javaslatok az Azure IoT |} A Microsoft Docs
-description: Ez a cikk az Azure IoT Hub-megoldásban biztonsága érdekében további lépéseket foglalja össze.
+title: Biztonsági javaslatok az Azure IoT | Microsoft Docs
+description: Ez a cikk az Azure IoT Hub-megoldás biztonságának biztosításához szükséges további lépéseket foglalja össze.
 author: dsk-2015
 manager: philmea
 ms.service: iot-hub
@@ -9,60 +9,60 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dkshir
 ms.custom: security-recommendations
-ms.openlocfilehash: 4416f3149c33a0c9a437b2fbd6a48729a5a7f044
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 55ca189d5f4622a395ffe603d7f0d6764db82f3d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722870"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877226"
 ---
-# <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Biztonsági javaslatok az Azure Internet of Things (IoT) központi telepítés
+# <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Biztonsági javaslatok az Azure eszközök internetes hálózata (IoT) üzembe helyezéséhez
 
-Ez a cikk az Azure IoT-szolgáltatások biztonsági javaslatokat tartalmaz. Ezek az ajánlások megvalósítása súgó Microsoft Azure IoT, és a rendszer a biztonsági kötelezettségeit, teljesítése javítja az IoT-megoldások általános biztonságát. Az Azure IoT által biztosított belső biztonsági funkcióiról további információért olvassa el [IoT-biztonság létrehozása az alapoktól](iot-security-ground-up.md).
+Ez a cikk az Azure IoT-szolgáltatásokra vonatkozó biztonsági javaslatokat tartalmaz. A javaslatok megvalósítása segítséget nyújt az Azure IoT ügyfeleinek, és javítja az IoT-megoldások általános biztonságát. Az Azure IoT által biztosított belső biztonsági funkciókkal kapcsolatos további információkért olvassa el [a IoT-biztonság](iot-security-ground-up.md)című témakört az alapoktól kezdve.
 
 ## <a name="general"></a>Általános
 
 | Ajánlás | Megjegyzések |
 |-|-|
-| Naprakész | A támogatott platformok, programnyelvek, protokollok és keretrendszereket legfrissebb verzióit használja. |
-| Hitelesítési kulcsok biztonsága | Biztonságban az eszköz azonosítóját és a hitelesítési kulcsát ténylegesen üzembe helyezés után. Így elkerülhető, egy rosszindulatú eszköz helyettesítő regisztrált eszközként. |
-| Ha lehetséges eszközoldali SDK-k használata | Eszközoldali SDK-k megvalósítása a különféle biztonsági funkciókat, például titkosítással, hitelesítéssel és így tovább, segítségére lehetnek a robusztus és biztonságos eszköz alkalmazás fejlesztése. Lásd: [megismerése és használata az Azure IoT Hub SDK-k](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) további információt. |
+| Naprakész marad | A támogatott platformok, programozási nyelvek, protokollok és keretrendszerek legújabb verzióit használhatja. |
+| Hitelesítő kulcsok biztonságos megőrzése | Az eszköz azonosítóit és a hitelesítő kulcsokat a telepítés után fizikailag biztonságban tartsa. Ezzel a megoldással elkerülhető, hogy egy rosszindulatú eszköz regisztrálva legyen regisztrált eszközként. |
+| Az eszköz SDK-k használata, ha lehetséges | Az eszköz SDK-k számos különböző biztonsági funkciót implementálnak, például a titkosítást, a hitelesítést és így tovább, hogy segítséget nyújtson a robusztus és biztonságos eszközök alkalmazásának fejlesztéséhez. További információt az [Azure IoT hub SDK-k megismerése és használata](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) című témakörben talál. |
 
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Ajánlás | Megjegyzések |
 |-|-|
-| A hub hozzáférés-vezérlés meghatározása | [Megismerheti, és adja meg a hozzáférési](iot-security-deployment.md#securing-the-cloud) az egyes összetevők el fogja tudni az IoT Hub-megoldás a funkcionalitás alapján. Az engedélyezett engedélyek *beállításjegyzék olvasási*, *RegistryReadWrite*, *ServiceConnect*, és *DeviceConnect*. Alapértelmezett [megosztott hozzáférési házirendek az IoT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#access-control-and-permissions) is segít a szerepkör alapján egyes összetevők engedélyeinek megadásához. |
-| Hozzáférés-vezérlés a háttérszolgáltatások definiálása | Az IoT Hub-megoldás által betöltött adatok által felhasználható más Azure-szolgáltatások például [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/), [Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/), [App Service-ben](https://docs.microsoft.com/azure/app-service/), [Logic Apps](https://docs.microsoft.com/azure/logic-apps/), és [a Blob storage-](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction). Ügyeljen arra, hogy ismertetése, és lehetővé teszik a megfelelő hozzáférési engedélyekkel ezen szolgáltatások leírtak szerint. |
+| A hub hozzáférés-vezérlésének meghatározása | [Ismerje meg és határozza meg az](iot-security-deployment.md#securing-the-cloud) egyes összetevők hozzáférésének típusát a IoT hub-megoldásban a funkció alapján. Az engedélyezett engedélyek a *Registry Read*, a *RegistryReadWrite*, a *ServiceConnect*és a *DeviceConnect*. Az [IoT hub alapértelmezett megosztott elérési szabályzatai](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#access-control-and-permissions) az egyes összetevők engedélyeinek definiálásához is segítséget nyújtanak a szerepkörük alapján. |
+| A háttér-szolgáltatások hozzáférés-vezérlésének meghatározása | A IoT Hub-megoldás által betöltött adatmennyiség más Azure-szolgáltatások, például [Cosmos db](https://docs.microsoft.com/azure/cosmos-db/), [stream Analytics](https://docs.microsoft.com/azure/stream-analytics/), [app Service](https://docs.microsoft.com/azure/app-service/), [Logic apps](https://docs.microsoft.com/azure/logic-apps/)és [blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)használatával is felhasználható. Ügyeljen rá, hogy megértse és engedélyezze a megfelelő hozzáférési engedélyeket a szolgáltatások dokumentációjában. |
 
 
 ## <a name="data-protection"></a>Adatvédelem
 
 | Ajánlás | Megjegyzések |
 |-|-|
-| Biztonságos eszközhitelesítés | Az eszközök és az IoT hub közötti biztonságos kommunikáció biztosítása a [egy egyedi kulcs, vagy a biztonsági jogkivonat](iot-security-deployment.md#iot-hub-security-tokens), vagy [egy eszközre irányuló X.509 tanúsítvány](iot-security-deployment.md#x509-certificate-based-device-authentication) minden egyes eszközhöz. Használja a megfelelő módszert a [biztonsági jogkivonatokat a kiválasztott protokoll (MQTT, AMQP vagy HTTPS) használata](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security). |
-| Biztonságos kommunikáció | Az IoT Hub a kapcsolat biztonságossá tételére az eszközökön, használja a Transport Layer Security (TLS) standard, 1.0-s, 1.2-es és 1.2-es verziók támogatása. Használat [a TLS 1.2](https://tools.ietf.org/html/rfc5246) maximális biztonságának megteremtéséhez. |
-| A szolgáltatások közötti kommunikáció biztonságossá tétele | IoT Hub által biztosított, például a csatlakozás a Háttérszolgáltatásokhoz végpontok [Azure Storage](/azure/storage/) vagy [az Event Hubs](/azure/event-hubs) titkosítatlan csatornán csak a TLS protokoll és a nem figyelt olyan végpont használatával van közzétéve. Ha ezek az adatok ezeket a háttérszolgáltatásokat, tárolási és analitikai elérte, ügyeljen arra, hogy a alkalmazni, hogy a szolgáltatás megfelelő biztonsági és titkosítási módszereket, és a háttérrendszer a bizalmas adatok védelme. |
+| Biztonságos eszköz hitelesítése | Gondoskodjon arról, hogy az eszközök és az IoT hub biztonságos kommunikációt használjon [egyedi azonosító kulccsal vagy biztonsági](iot-security-deployment.md#iot-hub-security-tokens)jogkivonattal, vagy [egy eszköz X. 509 tanúsítvánnyal](iot-security-deployment.md#x509-certificate-based-device-authentication) az egyes eszközökhöz. Használja a megfelelő módszert a [biztonsági jogkivonatok használatára a választott protokoll alapján (MQTT, AMQP vagy https)](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security). |
+| Biztonságos eszközök kommunikációja | A IoT Hub a Transport Layer Security (TLS) szabvány, a 1,2-es és a 1,0-es verziókat támogató eszközök közötti kapcsolatokat biztosítja. A maximális biztonság érdekében a [TLS 1,2](https://tools.ietf.org/html/rfc5246) -et használja. |
+| Biztonságos szolgáltatás kommunikációja | A IoT Hub végpontokat biztosít a háttér-szolgáltatásokhoz, például az [Azure Storage](/azure/storage/) -hoz vagy a [Event HUBS](/azure/event-hubs) csak a TLS protokollal való kapcsolódáshoz, és a végpontok nem titkosított csatornán vannak kitéve. Ha ezek az adatok elérik ezeket a háttér-szolgáltatásokat a tároláshoz vagy az elemzéshez, ügyeljen arra, hogy a szolgáltatáshoz megfelelő biztonsági és titkosítási módszereket alkalmazzon, és megvédje a háttérbeli bizalmas adatokat. |
 
 
 ## <a name="networking"></a>Hálózat
 
 | Ajánlás | Megjegyzések |
 |-|-|
-| Az eszközök való hozzáférés védelme | Ne hardver portok az eszközök a nem kívánt hozzáférésnek elkerülése érdekében legalább. Emellett hozhat létre megakadályozza vagy fizikai illetéktelen módosítását az eszköz észlelése mechanizmusokat. Olvasási [IoT ajánlott biztonsági eljárások](iot-security-best-practices.md) részleteiről. |
-| Hozhat létre biztonságos hardver | Titkosított tárolást, vagy a platformmegbízhatósági modul (TPM), eszközök és infrastruktúra nagyobb biztonságban, biztonsági funkciókat építhetnek be. Az eszköz operációs rendszere és illesztőprogramok frissítése a legújabb verzióra, és lehetővé teszi a helyet, telepítse a víruskereső és kártevőirtó funkciókat. Olvasási [IoT biztonsági architektúra](iot-security-architecture.md) megérteni, hogyan Ez segíthet elhárítani a számos biztonsági fenyegetéseket. |
+| Az eszközökhöz való hozzáférés biztosítása | A nemkívánatos hozzáférés elkerülése érdekében tartsa meg a hardveres portokat az eszközökön. Emellett az eszköz fizikai illetéktelen módosításának megakadályozására vagy észlelésére szolgáló mechanizmusokat is létrehozhat. A részletekért olvassa el a [IoT biztonsági ajánlott eljárásait](iot-security-best-practices.md) . |
+| Biztonságos hardver létrehozása | Az eszközök és az infrastruktúra biztonságosabbá tételéhez olyan biztonsági funkciókat kell beépíteni, mint például a titkosított tárolás vagy a platformmegbízhatósági modul (TPM). Tartsa meg az eszköz operációs rendszerét és illesztőprogramját a legújabb verzióra, és ha a tárhely lehetővé teszi, telepítse a víruskereső és az antimalware funkciókat. Olvassa el a [IoT biztonsági architektúráját](iot-security-architecture.md) , hogy megtudja, hogyan segíthet enyhíteni a biztonsági fenyegetéseket. |
 
 
 ## <a name="monitoring"></a>Figyelés
 
 | Ajánlás | Megjegyzések |
 |-|-|
-| Az eszközök jogosulatlan hozzáférés figyelése |  Az eszköz operációs rendszerének a naplózási szolgáltatás használatával bármilyen biztonsági problémák vagy a fizikai illetéktelen módosítását az eszköz vagy a portok figyeli. |
-| A felhőben az IoT-megoldások monitorozása | Az IoT Hub megoldás használatával általános állapotának figyelése a [metrikák az Azure monitorban](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics). |
-| Diagnosztika beállítása | Szorosan tekintse meg a műveletek a megoldás az események naplózását, és elküldi a diagnosztikai naplók az Azure Monitor betekintést nyerhet a teljesítmény. Olvasási [figyelése és problémák diagnosztizálása az IoT hub a](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health) további információt. |
+| Jogosulatlan hozzáférés figyelése az eszközökhöz |  Az eszköz operációs rendszerének naplózási funkciója segítségével figyelheti az eszköz vagy a portok biztonsági megsértését vagy fizikai illetéktelen módosítását. |
+| A IoT-megoldás figyelése a felhőből | A IoT Hub-megoldás általános állapotát a [Azure monitor metrikáinak](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics)használatával figyelheti. |
+| Diagnosztika beállítása | Részletesen tekintse meg a műveleteit a megoldásban lévő események naplózásával, majd küldje el a diagnosztikai naplókat a Azure Monitor a teljesítmény láthatóságának megismeréséhez. További információért olvassa el a [figyelés és a problémák diagnosztizálása az IoT hub-ban](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health) című témakört. |
 
 ## <a name="next-steps"></a>További lépések
 
-Használata esetén az Azure IoT speciális forgatókönyvek esetén szükség lehet érdemes lehet további biztonsági követelményeket. Lásd: [IoT biztonsági architektúra](iot-security-architecture.md) további útmutatást.
+Az Azure IoT-t érintő speciális forgatókönyvek esetében előfordulhat, hogy további biztonsági követelményeket kell figyelembe vennie. További útmutatásért lásd: [IoT biztonsági architektúra](iot-security-architecture.md) .
 

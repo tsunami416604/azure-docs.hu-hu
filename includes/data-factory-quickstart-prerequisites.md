@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: dc12d77e9a57938051300277940b6e5107e45496
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 0a2bf306ccfa3a4a4fc80d0d55493f284185bba9
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234550"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648460"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,21 +38,17 @@ További információkért tekintse meg a következő cikkeket:
 ### <a name="azure-storage-account"></a>Azure Storage-fiók
 Ebben a rövid útmutatóban egy általános célú Azure Storage-fiókot (ebben az esetben blobtárolót) használunk *forrás-* és *céladattárként*. Ha még nem rendelkezik általános célú Azure Storage-fiókkal, a létrehozáshoz tekintse meg a [tárfiók létrehozását](../articles/storage/common/storage-quickstart-create-account.md) ismertető cikket. 
 
-#### <a name="get-the-storage-account-name-and-account-key"></a>Tárfióknév és fiókkulcs beszerzése
-Ebben a rövid útmutatóban az Azure Storage-fiók nevét és kulcsát használjuk. Az alábbi feladat bemutatja a tárfióknév és -kulcs beszerzéséhez szükséges lépéseket: 
+#### <a name="get-the-storage-account-name"></a>A Storage-fiók nevének beolvasása
+Ehhez a rövid útmutatóhoz szüksége lesz az Azure Storage-fiók nevére. A következő eljárás a Storage-fiók nevének beszerzéséhez nyújt lépéseket: 
 
 1. A böngészőben nyissa meg a [Azure Portal](https://portal.azure.com) , és jelentkezzen be az Azure-beli felhasználónevével és jelszavával.
 2. Válassza **a minden szolgáltatás** > **tároló** > **Storage-fiókok**lehetőséget.
 3. A **Storage-fiókok** lapon szűrje a Storage-fiókot (ha szükséges), majd válassza ki a Storage-fiókját. 
-4. A  *\<fiók neve >*  - a**Storage-fiók** lapja oldalsávján lépjen a **Beállítások** címkére, és válassza a **hozzáférési kulcsok**elemet. Megjelenik a  *\<fiók neve >*  - **hozzáférési kulcsok** .
-
-   ![Tárfióknév és -kulcs beszerzése](media/data-factory-quickstart-prerequisites/storage-account-name-key.png)
-5. Másolja a **Tárfiók neve** és az **1. kulcs** mező értékét a vágólapra. Illessze be őket a Jegyzettömbbe, vagy bármely más szerkesztőbe, majd mentse a fájlt. A rövid útmutató későbbi szakaszában fogja használni őket.   
 
 #### <a name="create-a-blob-container"></a>Blobtároló létrehozása
 Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure Blob Storage-ban.
 
-1. A -  >   *\<fiók neve >* **hozzáférési kulcsok** oldal oldalsávján válassza az Áttekintés**Blobok**lehetőséget.
+1. A Storage-fiók lapon válassza az > áttekintő**Blobok**lehetőséget.
 2. A  *\<fiók neve >*  - **Blobok** lap eszköztárán válassza a **tároló**elemet.
 3. Az **Új tároló** párbeszédablakban adja meg az **adftutorial** nevet, és kattintson az **OK** gombra.  -   *A\<fiók neve >* **Blobok** lap frissül, hogy tartalmazza a **adftutorial** a tárolók listájában.
 

@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 8/16/2019
+ms.date: 8/20/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 189d6d0030264590986d6fe2af47d35705cfb08b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: feaefef23b433a296d25cc11b5cd89d86acd280f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575806"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650180"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Gyors útmutató: Linuxos virtuális gép létrehozása a Azure Portalban
 
-Az Azure-beli virtuális gépek (VM-ek) létrehozhatók az Azure Portal segítségével. Az Azure Portal egy böngészőalapú felhasználói felület a virtuális gépek és a társított erőforrások létrehozására. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe az Azure Portal segítségével Ubuntu 16.04 LTS-en futó Linux rendszerű virtuális gépeket (VM-eket). A virtuális gép működésének megtekintéséhez hozzon létre SSH-kapcsolatot a virtuális géppel, és telepítse az NGINX-webkiszolgálót.
+Az Azure-beli virtuális gépek (VM-ek) létrehozhatók az Azure Portal segítségével. Az Azure Portal egy böngészőalapú felhasználói felület az Azure-erőforrások létrehozásához. Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal az Ubuntu 18,04 LTS-t futtató linuxos virtuális gép (VM) üzembe helyezéséhez. A virtuális gép működésének megtekintéséhez hozzon létre SSH-kapcsolatot a virtuális géppel, és telepítse az NGINX-webkiszolgálót.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -33,62 +33,29 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A rövid útmutató elvégzéséhez egy SSH-kulcspárra lesz szüksége. Ha már rendelkezésére áll egy SSH-kulcspár, kihagyhatja ezt a lépést.
 
-SSH-kulcspár létrehozásához nyissa meg a Bash-felületet, és használja az [ssh-keygen](https://www.ssh.com/ssh/keygen/) eszközt. Az alábbi parancs a lenti példában látható. Ha nincs Bash-felület a helyi számítógépén, használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
+SSH-kulcspár létrehozásához nyissa meg a Bash-felületet, és használja az [ssh-keygen](https://www.ssh.com/ssh/keygen/) eszközt. Ha nincs Bash-felület a helyi számítógépén, használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
 
-```bash
-ssh-keygen -t rsa -b 2048
-```
 
-A rendszer kérni fogja, hogy adjon meg egy fájlt, amelybe menteni szeretné a kulcspárt. Megadhat egy adott fájl helyét, vagy csak a "bevitel" gombra kattintva mentheti a szögletes zárójelben jelzett alapértelmezett helyet. Ekkor a rendszer kérni fogja a hozzáférési kód megadását. Megadhat egy hozzáférési kódot az SSH-kulcshoz, vagy megadhatja a "belépés" lehetőséget, ha hozzáférési kód nélkül szeretné folytatni a jelszót.
-
-```bash
-[root@linuxvm ~]$ ssh-keygen -t rsa -b 2048
-Enter the file in which to save the key (home/root/.ssh/id_rsa):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your public key has been saved in /home/root/.ssh/id_rsa.pub.
-The key fingerprint is: SHA256:kkQS13gbaxevy4ULH0mW6wLIkcFm0twx/rIlSo1fIqU
-The key's randomart image is:
-+---[RSA 2018]----+
-|   +oo=+         |
-|  . B=o.+ .      |
-|   + o+. + +     |
-|    o* o+ = .    |
-|   .EoB.S+ =     |
-|   .o+.O. * .    |
-|    . o. = =     |
-|        . *      |
-|         .       |
-+----[SHA256]-----+
-```
-A `ssh-keygen` parancs nyilvános és titkos kulcsokat hoz létre a (z `id_rsa` `~/.ssh directory`) alapértelmezett nevével. A parancs visszaadja a nyilvános kulcs teljes útvonalát. A nyilvános kulcs útvonalának használatával megjelenítheti annak tartalmát a következővel: `cat`.
-
-```bash
-cat ~/.ssh/id_rsa.pub
-```
-
->[!NOTE]
-> Ha úgy döntött, hogy az SSH-kulcsot az alapértelmezettnél eltérő helyen menti, akkor a futtatáskor ezt a helyet kell használnia`cat`
-
-Mentse a parancs kimenetét. Ez az Ön nyilvános kulcsa, és szüksége lesz rá, amikor konfigurálja a rendszergazdai fiókot a virtuális gépre való bejelentkezéshez.
-
-Az ssh-keygen paranccsal kapcsolatos további információkért látogasson el a [Man oldalára](https://linux.die.net/man/1/ssh-keygen).
-
-Ha Windows rendszerű számítógépet használ, és szeretne többet megtudni az SSH-kulcspár létrehozásáról, beleértve a PuTTY használatát, tekintse meg az [ssh-kulcsok használata](ssh-from-windows.md)a Windowsban című témakört.
-
-Ha a Cloud Shell használatával hozza létre az SSH-kulcspárt, az Azure File Share, amely [automatikusan csatlakozik a Cloud Shellhez](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage), eltárolja azt. Ne törölje ezt a fájlmegosztást vagy tárfiókot, amíg le nem kérte a kulcsokat, ellenkező esetben elveszíti a hozzáférést a virtuális géphez.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Az oldal tetején lévő menüben válassza ki a `>_` Cloud Shell megnyitására szolgáló ikont.
+1. Győződjön meg arról, hogy a Cloudshellben a bal felső sarokban található **bash** . Ha a PowerShell-t mondja, a legördülő menüből válassza a **bash** elemet, és válassza a **megerősítés** lehetőséget a bash rendszerhéjra való váltáshoz.
+1. Az `ssh-keygen -t rsa -b 2048` SSH-kulcs létrehozásához írja be a következőt:. 
+1. A rendszer kérni fogja, hogy adjon meg egy fájlt, amelybe menteni szeretné a kulcspárt. Csak nyomja le az **ENTER** billentyűt az alapértelmezett helyen való mentéshez, zárójelek között. 
+1. A rendszer megkéri, hogy adjon meg egy jelszót. Megadhatja az SSH-kulcshoz tartozó jelszót, vagy megnyomhatja az **ENTER** billentyűt a jelszó nélküli folytatáshoz.
+1. A `ssh-keygen` parancs nyilvános és titkos kulcsokat hoz létre a (z `id_rsa` `~/.ssh directory`) alapértelmezett nevével. A parancs visszaadja a nyilvános kulcs teljes útvonalát. A nyilvános kulcs elérési útját használva jelenítse meg a `cat` tartalmát a `cat ~/.ssh/id_rsa.pub`következő beírásával:.
+1. Másolja ki a parancs kimenetét, és mentse valahova a cikk későbbi részében való használatra. Ez az Ön nyilvános kulcsa, és szüksége lesz rá, amikor konfigurálja a rendszergazdai fiókot a virtuális gépre való bejelentkezéshez.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+Ha még nem tette [](https://portal.azure.com) meg, jelentkezzen be a Azure Portalba.
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
 1. Kattintson az Azure Portal bal felső sarkában az **Erőforrás létrehozása** gombra.
 
-1. Az Azure Marketplace-erőforrások listája fölötti keresőmezőben keressen az **Ubuntu Server 18,04** elemre, és válassza ki az Ubuntu 18,04 LTS-ajánlatot, majd válassza a **Létrehozás**lehetőséget.
+1. A **népszerű**területen válassza az **Ubuntu Server 18,04 LTS**lehetőséget.
 
-1. Az **Alapok** lap **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az **Erőforráscsoport** részen. Az előugró ablakban adja meg a *myResourceGroup* sztringet az erőforráscsoport neveként, majd kattintson az **OK** gombra.
+1. Az **Alapok** lap **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az **Erőforráscsoport** részen. Írja be az *myResourceGroup* nevet az erőforráscsoport neveként, majd kattintson **az OK gombra**. 
 
     ![Új erőforráscsoport létrehozása virtuális géphez](./media/quick-create-portal/project-details.png)
 
@@ -96,11 +63,11 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
     ![Példány részletei szakasz](./media/quick-create-portal/instance-details.png)
 
-1. A **rendszergazdai fiók**területen válassza a **nyilvános SSH-kulcs**elemet, írja be a felhasználónevét, majd illessze be a korábban mentett nyilvános kulcsot a szövegmezőbe. Távolítsa el a kezdő vagy záró szóközöket a nyilvános kulcsból.
+1. A **rendszergazdai fiók**területen válassza a **nyilvános SSH-kulcs**elemet, írja be a felhasználónevét, majd illessze be a nyilvános kulcsát. Távolítsa el a kezdő vagy záró szóközöket a nyilvános kulcsból.
 
     ![Rendszergazdai fiók](./media/quick-create-portal/administrator-account.png)
 
-1. A **Bejövőport-szabályok** > **Nyilvános bejövő portok** részen válassza a **Kijelölt portok engedélyezése** lehetőséget, majd az **SSH (22)** és a **HTTP (80)** elemet a legördülő listából.
+1. A **Bejövőport-szabályok** > **Nyilvános bejövő portok** részen válassza a **Kijelölt portok engedélyezése** lehetőséget, majd az **SSH (22)** és a **HTTP (80)** elemet a legördülő listából. 
 
     ![Az RDP- és a HTTP-portok megnyitása](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -110,22 +77,22 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 A virtuális gép üzembe helyezése eltarthat néhány percig. Az üzembe helyezés végeztével lépjen tovább a következő szakaszra.
 
-
+    
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
 
 Hozzon léte egy SSH-kapcsolatot a virtuális géppel.
 
-1. A virtuális gép áttekintő oldalán kattintson a **Csatlakozás** gombra.
+1. A virtuális gép áttekintő oldalán kattintson a **Csatlakozás** gombra. 
 
     ![Portál – 9](./media/quick-create-portal/portal-quick-start-9.png)
 
-2. A **Csatlakozás a virtuális géphez** oldalon tartsa meg az alapértelmezett beállításokat az IP-címmel való csatlakozáshoz a 22-es porton keresztül. A **Bejelentkezés a virtuális gép helyi fiókjával** területen egy csatlakozási parancs jelenik meg. Kattintson a gombra a parancs kimásolásához. Az SSH-kapcsolat parancsa az alábbi példához hasonlóan néz ki:
+2. A **Csatlakozás a virtuális géphez** oldalon tartsa meg az alapértelmezett beállításokat az IP-címmel való csatlakozáshoz a 22-es porton keresztül. A **Bejelentkezés a virtuális gép helyi fiókjával** területen egy csatlakozási parancs jelenik meg. A parancs másolásához kattintson a gombra. Az SSH-kapcsolat parancsa az alábbi példához hasonlóan néz ki:
 
     ```bash
     ssh azureuser@10.111.12.123
     ```
 
-3. Az SSH-kulcspár létrehozásához használt bash-rendszerhéj (például a [Azure Cloud Shell](https://shell.azure.com/bash) vagy a helyi bash-rendszerhéj) használatával illessze be az SSH-kapcsolati parancsot a rendszerhéjba egy SSH-munkamenet létrehozásához.
+3. Ugyanazzal a bash-rendszerhéjsal, amelyet az SSH-kulcspár létrehozásához használt (újra megnyithatja a Cloud Shell `>_` az újra vagy a https://shell.azure.com/bash) parancs kiválasztásával, illessze be az SSH-kapcsolati parancsot a rendszerhéjba egy SSH-munkamenet létrehozásához.
 
 ## <a name="install-web-server"></a>Webkiszolgáló telepítése
 
@@ -141,7 +108,7 @@ Ha elkészült, az SSH-munkamenetből való kilépéshez írja be a következőt
 
 ## <a name="view-the-web-server-in-action"></a>A webkiszolgáló működésének ellenőrzése
 
-Egy tetszőleges böngésző használatával megtekintheti az alapértelmezett NGINX-kezdőlapot. Webcímként adja meg a virtuális gép nyilvános IP-címét. A nyilvános IP-cím a virtuális gép áttekintő oldalán található, vagy a korábban használt SSH-kapcsolati sztring részeként.
+Egy tetszőleges böngésző használatával megtekintheti az alapértelmezett NGINX-kezdőlapot. Adja meg a virtuális gép nyilvános IP-címét a webes címként. A nyilvános IP-cím a virtuális gép áttekintő oldalán található, vagy a korábban használt SSH-kapcsolati sztring részeként.
 
 ![Alapértelmezett NGINX-webhely](./media/quick-create-cli/nginx.png)
 

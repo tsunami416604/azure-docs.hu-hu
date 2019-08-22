@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 412a3cb32663f5bd3bfad2d565b6797f92e26b75
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e5dc449dc51faccdd8c0e69337cc5f8ac19fa296
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641113"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874398"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -56,11 +56,13 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: Általános cél�
 | Adatbázisok maximális mérete | A példányok maximális tárolási mérete határozza meg. | A példányok maximális tárolási mérete határozza meg. |
 | Adatbázisok maximális száma egy példányon | 100 | 100 |
 | Adatbázisfájlok maximális száma egy példányban | Akár 280 | 32 767 fájl/adatbázis |
+| Maximális fájlméret | 8 TB | 4 TB |
 | Adat/napló IOPS (hozzávetőleges) | 500 – 7 500/fájl<br/>\*[A fájlméret növelésével további IOPS érhet el](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K - 110 K (1375/vCore)<br/>További virtuális mag hozzáadásával jobb i/o-teljesítményt érhet el. |
 | Napló írási átviteli korlátja | 3 MB/s/virtuális mag<br/>Legfeljebb 22 MB/s/példány | 4 MB/s/virtuális mag<br/>Maximális 48 MB/s/példány|
 | Adatátviteli sebesség (hozzávetőleges) | 100 – 250 MB/s/fájl<br/>\*[A fájlméret növelése jobb i/o-teljesítmény eléréséhez](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | – |
 | Tárolási IO-késés (hozzávetőleges) | 5-10 MS | 1-2 MS |
 | Maximális tempDB-méret | 192 – 1 920 GB (24 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további TempDB lemezterületet érhet el. | A példányok maximális tárolási mérete korlátozza. A TempDB-naplófájl mérete jelenleg a 24GB/virtuális mag értékre van korlátozva. |
+| Memóriabeli OLTP beállítása | Nem támogatott | Elérhető |
 | Munkamenetek maximális száma | 30000 | 30000 |
 
 > [!NOTE]

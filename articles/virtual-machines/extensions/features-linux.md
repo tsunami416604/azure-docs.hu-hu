@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 8227aa366c8f5149d4212e6cdd00e2745db84814
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f2397c67b71cc370a0a98d44bb02e5ee77551afb
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881956"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650653"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Virtuálisgép-bővítmények és-funkciók Linux rendszerhez
 
@@ -86,7 +86,7 @@ A következő módszerek használhatók a bővítmények egy meglévő virtuáli
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure virtuálisgép-bővítmények egy meglévő virtuális gépre is futtathatók az az [VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) paranccsal. A következő példa egy *myVM* nevű virtuális gépen futtatja az egyéni szkriptek bővítményét egy *myResourceGroup*nevű erőforráscsoporthoz. Cserélje le az erőforráscsoport nevét, a virtuális gép nevét és a parancsfájlt https://raw.githubusercontent.com/me/project/hello.sh) a futtatáshoz (a saját adataival. 
+Az Azure virtuálisgép-bővítmények egy meglévő virtuális gépre is futtathatók az az [VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) paranccsal. A következő példa egy *myVM* nevű virtuális gépen futtatja az egyéni szkriptek bővítményét egy *myResourceGroup*nevű erőforráscsoporthoz. Cserélje le az erőforráscsoport nevét, a virtuális gép nevét és a parancsfájlt a futtatáshoz (https:\//RAW.githubusercontent.com/Me/Project/Hello.sh) a saját adataival. 
 
 ```azurecli
 az vm extension set `

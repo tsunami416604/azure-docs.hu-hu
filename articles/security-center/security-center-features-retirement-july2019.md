@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 8e7456eff3062ef6667e7b0022ea9740c397a493
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 5ffa77a05e6019ee6b5e29c5af5ed0130e027cae
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679252"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876504"
 ---
 > [!NOTE]
 > Ez a dokumentum részletesen ismerteti a Azure Security Center által kivont szolgáltatások listáját a 2019. július 31-ig.
@@ -141,7 +141,7 @@ További információ az egyéni riasztások kivonásáról: [Azure Security Cen
 
 ![Biztonsági incidens][14]
 
-Amikor bejelöli a **vizsgálat gombot** egy **biztonsági incidens** képernyőjén, megnyithatja a vizsgálati irányítópultot (előzetes verzió) a log Analytics. Kihasználjuk a vizsgálati irányítópultot.  
+Amikor bejelöli a vizsgálat gombot egy **biztonsági incidens** képernyőjén, megnyithatja a vizsgálati irányítópultot (előzetes verzió) a log Analytics. Kihasználjuk a vizsgálati irányítópultot.  
 
 A meglévő adatai továbbra is elérhetők lesznek a Log Analytics biztonsági megoldásban, és nem lesznek módosítva és nem távolíthatók el.
 
@@ -160,7 +160,7 @@ Javasoljuk, hogy a részletes nyomozási élmény érdekében váltson át az [A
 - [Microsoft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
 - [Azure AD Identity Protection](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
 
-A kivonulás után nem fogja tudni felvenni vagy módosítani az előző listában említett megoldások egyikét sem a felhasználói felületen, sem az API-ban.
+A kivonulás után nem fogja tudni felvenni vagy módosítani az előző listában említett megoldások egyikét sem a felhasználói felületen, sem az API-ban. Azure Security Center többé nem fogja felderíteni a fent említett partneri megoldások új példányait.
 
 Ha már rendelkezik csatlakoztatott megoldásokkal, javasoljuk, hogy váltson az Azure Sentinelre.
 

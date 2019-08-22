@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/13/2019
+ms.date: 08/20/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5b410032004bce7b97e036216c922201e1ac80c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a6a8c0118e8179da570ce91b9fa7e3523bae1d3f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068295"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650564"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>A QnA Maker REST API használata a node.js használatával 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ Ez a cikk bemutatja, hogyan használható a [Microsoft QnA Maker API](../Overvie
 - [Tudásbázis törlése.](#Delete)
 - [A jelenlegi végponti kulcsok lekérése.](#GetKeys)
 - [A jelenlegi végponti kulcsok újbóli létrehozása.](#PutKeys)
-- [Kis-és word változtatások az aktuális készletét beolvasása.](#GetAlterations)
-- [Cserélje le a kis-és word változtatások az aktuális készletét.](#PutAlterations)
+- [Az aktuális kis-és nagybetűket nem megkülönböztető Word-változtatások beolvasása.](#GetAlterations)
+- [Cserélje le a kis-és nagybetűket megkülönböztető Word-változtatások aktuális készletét.](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 

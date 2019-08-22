@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 1d8b49b17698d3b527ceab88abdb1a37452f7a06
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 07de717865399f45a153f2a273c30d81c41944e3
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638339"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877479"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Eszköz csatlakoztatása az Azure IoT Central
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Ez a cikk a Microsoft Azure IoT Central eszközhöz való csatlakoztatásával kapcsolatos főbb fogalmakat ismerteti.
 

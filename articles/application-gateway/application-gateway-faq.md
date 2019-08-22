@@ -5,15 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 6/1/2019
+ms.date: 08/22/2019
 ms.author: victorh
-ms.openlocfilehash: 5bfb3a093cd101f30daf4439dc8f58b5b4f693ca
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: da8142ad035eec338a3c1ba1a23be7c2be470a04
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68740887"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891723"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -361,6 +360,13 @@ Olyan Resource Manager-sablont is használhat, amely a népszerű [GoAccess](htt
 ### <a name="what-could-cause-backend-health-to-return-an-unknown-status"></a>Mi okozhatja, hogy a háttér állapota ismeretlen állapotot ad vissza?
 
 Általában ismeretlen állapot jelenik meg, ha a háttérhez való hozzáférést egy hálózati biztonsági csoport (NSG), egyéni DNS vagy felhasználó által definiált útválasztás (UDR) blokkolja az Application Gateway alhálózaton. További információ: [a háttér állapota, a diagnosztika naplózása és a Application Gateway mérőszámai](application-gateway-diagnostics.md).
+
+### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>Van olyan eset, amikor a NSG-naplók nem jelenítik meg az engedélyezett forgalmat?
+
+Igen. Ha a konfiguráció megfelel a következő forgatókönyvnek, nem jelenik meg az engedélyezett forgalom a NSG flow naplóiban:
+- Telepítette Application Gateway v2-t
+- Rendelkezik egy NSG az Application Gateway alhálózaton
+- Engedélyezte a NSG folyamat naplóit az adott NSG
 
 ## <a name="next-steps"></a>További lépések
 

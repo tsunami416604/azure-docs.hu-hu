@@ -7,18 +7,23 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.author: bharathb
-ms.openlocfilehash: a4de902e51b101d14aac599c9aad8c4feb86a9c6
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6092b3aac2b0282a795d89730266e72179b34e8a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624608"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648900"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Több száz terabájtnyi adat migrálása az Azure Cosmos DB-be 
 
 Azure Cosmos DB képes terabájtos adattárolásra. Nagy léptékű adatáttelepítést hajthat végre az éles számítási feladatok Azure Cosmos DBre való áthelyezéséhez. Ez a cikk a nagy léptékű adatok Azure Cosmos DBba való áthelyezésével kapcsolatos kihívásokat ismerteti, és bemutatja azokat az eszközöket, amelyek segítik a kihívásokat, és az adatok áttelepíthetők a Azure Cosmos DBra. Ebben az esetben az ügyfél a Cosmos DB SQL API-t használta.  
 
 Mielőtt áttelepíti a teljes munkaterhelést Azure Cosmos DBre, áttelepítheti az adatok egy részhalmazát, hogy érvényesítse a különböző szempontokat, például a partíciós kulcs választását, a lekérdezési teljesítményt és az adatmodellezést. A koncepció ellenőrzése után áthelyezheti a teljes munkaterhelést Azure Cosmos DBra.  
+
+A Cosmos DB rendszerindítási [program](https://azurecosmosdb.github.io/CosmosBootstrap/) használatával felgyorsíthatja az alkalmazások Azure Cosmos db-on való létrehozását vagy áttelepítését. A program részeként a Azure Cosmos DB csapat mérnökei hozzá lesznek rendelve a projekthez, és segítséget nyújtanak az adatok áttelepítéséhez Azure Cosmos DBba. Az alábbi gombra kattintva regisztrálhat a Cosmos DB bootstrap programra:
+
+> [!div class="nextstepaction"]
+> [Rendszerindítási program Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ## <a name="tools-for-data-migration"></a>Adatmigrálás eszközei 
 
@@ -152,4 +157,7 @@ Bár a nagy méretű adathalmazok sikeres áttelepítésére a nagyméretű adat
 * További információ: a [.net](bulk-executor-dot-net.md) és a [Java](bulk-executor-java.md)szolgáltatásban a tömeges végrehajtó függvénytárat használó minta alkalmazások kipróbálása. 
 * A tömeges végrehajtó függvénytár integrálva van a Cosmos DB Spark-összekötőbe, és további információt a [Azure Cosmos db Spark-összekötő](spark-connector.md) című cikkben talál.  
 * A nagyméretű áttelepítéssel kapcsolatos további segítségért lépjen kapcsolatba a Azure Cosmos DB termék csapatával, és nyisson meg egy támogatási jegyet az "általános tanácsadó" probléma típusa és a "nagy (TB +) Migrálás" problémás altípusban. 
+* Az Cosmos DB rendszerindítási [program](https://azurecosmosdb.github.io/CosmosBootstrap/) használatával felgyorsíthatja az alkalmazások Azure Cosmos DBn való létrehozását vagy áttelepítését.
 
+> [!div class="nextstepaction"]
+> [Rendszerindítási program Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/)

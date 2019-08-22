@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 07/11/2019
-ms.openlocfilehash: 97f7393622311103d94d3067205f902e3eec6843
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a8dfe0db5277a995b6e6675381ebeb5aeb243c9b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567353"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647217"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány első lépései
 
@@ -55,8 +55,6 @@ Ezek a rövid útmutatók lehetővé teszik az adatbázis biztonsági másolatá
 ## <a name="customize-network-environment"></a>Hálózati környezet testreszabása
 
 Bár a VNet/alhálózat automatikusan konfigurálható, ha a példányt [a Azure Portal](sql-database-managed-instance-get-started.md)használatával hozza létre, érdemes lehet létrehozni a felügyelt példányok létrehozása előtt, mert beállíthatja a VNet és az alhálózat paramétereit. A hálózati környezet létrehozásának és konfigurálásának legegyszerűbb módja az [Azure Resource Deployment](sql-database-managed-instance-create-vnet-subnet.md) sablon használata, amely létrehozza és konfigurálja a hálózatot és az alhálózatot, ahol a példány el lesz helyezve. Csak a Azure Resource Manager üzembe helyezése gombot kell megnyomnia, és fel kell töltenie az űrlapot paraméterekkel.
-
-Alternatív megoldásként használhatja a PowerShell- [szkriptet](https://www.powershellmagazine.com/20../../configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) a hálózat létrehozásának automatizálására.
 
 Ezt a [PowerShell](https://www.powershellmagazine.com/2018/07/23/configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) -szkriptet is használhatja a hálózat létrehozásának automatizálására.
 

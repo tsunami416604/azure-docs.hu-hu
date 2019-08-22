@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 08/20/2019
 ms.author: v-adgera
-ms.openlocfilehash: 7ceb36d818c84642461372f0df70c8088908550c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 66dbfd09ef07740c07ddb010b73e33e783340e5a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965809"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873662"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>A Poster konfigurálása az Azure Digital Twins szolgáltatáshoz
 
@@ -53,7 +53,9 @@ Konfigurálja a Azure Active Directory alkalmazást az OAuth 2,0 implicit enged�
 
 ## <a name="obtain-an-oauth-20-token"></a>OAuth 2,0 token beszerzése
 
-Ezután állítsa be és konfigurálja a Poster-t Azure Active Directory token beszerzéséhez. Ezt követően hozzon végre egy hitelesített HTTP-kérést az Azure Digital Twins számára a beszerzett jogkivonat használatával:
+[!INCLUDE [digital-twins-management-api](../../includes/digital-twins-management-api.md)]
+
+A Poster beállítása és konfigurálása Azure Active Directory token beszerzéséhez. Ezt követően hozzon végre egy hitelesített HTTP-kérést az Azure Digital Twins számára a beszerzett jogkivonat használatával:
 
 1. Az alkalmazás letöltéséhez nyissa meg a [www.getpostman.com](https://www.getpostman.com/) .
 1. Ellenőrizze, hogy helyes-e az **engedélyezési URL-cím** . A formátum a következőket teszi:
@@ -75,7 +77,7 @@ Ezután állítsa be és konfigurálja a Poster-t Azure Active Directory token b
     | Hitelesítési URL-cím | Az **engedélyezési URL-cím** használata a 2. lépésből |
     | Ügyfél-azonosító | Az előző szakaszban létrehozott vagy repurposed Azure Active Directory **alkalmazás azonosítójának** használata |
     | Scope | Hagyja üresen |
-    | Állapot | Hagyja üresen |
+    | State | Hagyja üresen |
     | Ügyfél-hitelesítés | `Send as Basic Auth header` |
 
 1. Az ügyfélnek ekkor a következőképpen kell megjelennie:

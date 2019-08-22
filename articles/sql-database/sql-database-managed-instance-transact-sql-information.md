@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b792c0fc5d02a84d45b47ac68e0058144f31e673
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641010"
+ms.locfileid: "69644878"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Felügyelt példányok – T-SQL-különbségek, korlátozások és ismert problémák
 
@@ -545,15 +545,13 @@ Az adatbázisok közötti Service Broker párbeszédpanelek nem teszik elérhet�
 
 **Workaround** Állítson le minden olyan tevékenységet, amely több adatbázison Service Broker párbeszédet használ a szolgáltatási réteg frissítése előtt, majd újra inicializálja őket. Ha a szolgáltatási szintek változása után még nem elérhető üzenetek vannak, olvassa el a forrás-üzenetsor üzeneteit, és küldje el újra a cél várólistára.
 
-### <a name="impresonification-of-aad-login-types-is-not-supported"></a>A HRE-bejelentkezési típusok Impresonification nem támogatott
+### <a name="impersonification-of-aad-login-types-is-not-supported"></a>A HRE bejelentkezési típusok megszemélyesítése nem támogatott
 
 **Dátum** Július 2019
 
 A következő HRE- `EXECUTE AS USER` rendszerbiztonsági tag vagy `EXECUTE AS LOGIN` a használatával történő megszemélyesítés nem támogatott:
 -   Alias HRE-felhasználók. Ebben az esetben `15517`a következő hibaüzenetet adja vissza.
 - HRE-bejelentkezések és felhasználók HRE-alkalmazások vagy egyszerű szolgáltatások alapján. Ebben az esetben `15517` a következő hibákat adja vissza: `15406`és.
-
-### <a name="database-email"></a>Adatbázis e-mail-címe 
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querya paraméter nem támogatott a sp_send_db_mail
 

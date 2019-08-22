@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 99c4f0f99af61196cf1a12f2f68a7d10d8b2e6c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ece55cdad04e71d339944b5fcda5a16d35630c16
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477161"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877729"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az az Azure Virtual Machines szolgáltatásban futó SQL Server? (Windows)
 
@@ -69,12 +69,12 @@ A következő táblázat a használatalapú fizetéssel elérhető SQL Server-re
 A Linux rendszerhez elérhető SQL Server-virtuálisgépek rendszerképeivel kapcsolatban lásd [az SQL Server használatának áttekintését az Azure Virtual Machines szolgáltatásban (Linux rendszeren)](../../linux/sql/sql-server-linux-virtual-machines-overview.md).
 
 > [!NOTE]
-> Már lehetséges módosítani a licencelési egy használatalapú-per-használat az SQL Server virtuális gép saját licenc használata modellt. További információkért lásd: [SQL virtuális gép licencelési modelljét módosítása](virtual-machines-windows-sql-ahb.md). 
+> Mostantól lehetőség van a díjköteles használati SQL Server VM licencelési modelljének módosítására saját licenc használatára. További információ: [az SQL virtuális gép licencelési modelljének módosítása](virtual-machines-windows-sql-ahb.md). 
 
 ### <a id="BYOL"></a> Saját licenc használata
 Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépért kell fizetnie, az SQL Server licencelésével kapcsolatos egyéb költségek nélkül.  Saját licence használatával hosszú távon pénzt takaríthat meg a folyamatos éles számítási feladatok esetében. A lehetőség követelményeivel kapcsolatos információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md#byol).
 
-A saját licenc használata, vagy átalakíthatja a meglévő fizetési-per-használat az SQL virtuális gép, vagy telepíthet egy olyan rendszerképre a előtaggal rendelkező **{BYOL}** . Licencelési modelljének használatalapú-per-használat és a BYOL közötti váltás kapcsolatos további információkért lásd: [SQL virtuális gép licencelési modelljét módosítása](virtual-machines-windows-sql-ahb.md). 
+Ha saját licencet szeretne létrehozni, lehetősége van egy meglévő, fizetős SQL-alapú virtuális gép átalakítására, vagy telepítheti az előre meghatározott **{BYOL}** lemezképet is. A licencelési modellnek a használati és BYOL közötti váltásával kapcsolatos további információkért lásd: [az SQL-alapú virtuális gép licencelési modelljének módosítása](virtual-machines-windows-sql-ahb.md). 
 
 | Version | Operációs rendszer | Kiadás |
 | --- | --- | --- |
@@ -83,13 +83,13 @@ A saját licenc használata, vagy átalakíthatja a meglévő fizetési-per-hasz
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
 | **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
 
-Akkor lehet, amely nem érhető el az Azure Portal, PowerShell-lel az SQL Server egy régebbi rendszerképének üzembe helyezéséhez. Powershell-lel összes elérhető rendszerkép megtekintéséhez használja a következő parancsot:
+Olyan régebbi rendszerképek is telepíthetők, amelyek nem érhetők el a Azure Portal a PowerShell használatával SQL Server. Az összes elérhető rendszerkép a PowerShell használatával való megtekintéséhez használja a következő parancsot:
 
   ```powershell
   Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
   ```
 
-SQL Server virtuális gépek PowerShell-lel központi telepítésével kapcsolatos további információkért tekintse meg [hogyan építheti ki az SQL Servert futtató virtuális gépek az Azure PowerShell-lel](virtual-machines-windows-ps-sql-create.md).
+A SQL Server virtuális gépek PowerShell használatával történő üzembe helyezésével kapcsolatos további információkért tekintse meg, hogyan hozhat létre [SQL Server Virtual Machines-t a Azure PowerShell](virtual-machines-windows-ps-sql-create.md)használatával.
 
 
 ### <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
@@ -98,6 +98,30 @@ SQL Server virtuális gépe létrehozását követően csatlakozhat hozzá olyan
 ### <a name="migrate-your-data"></a>Adatok áttelepítése
 Ha van meglévő adatbázisa, érdemes áthelyeznie az újonnan kiépített SQL virtuális gépre. Az áttelepítési lehetőségekért és útmutatásért lásd: [Migrating a Database to SQL Server on an Azure VM](virtual-machines-windows-migrate-sql.md) (Adatbázis áttelepítése egy Azure virtuális gépen SQL Serverre).
 
+## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Azure SQL-erőforrások létrehozása és kezelése a Azure Portal
+
+A Azure Portal egyetlen oldalt biztosít, ahol kezelheti az [összes Azure SQL-erőforrást,](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql) beleértve az SQL-alapú virtuális gépeket is.
+
+Az **Azure SQL-erőforrások** oldal eléréséhez válassza az **Azure sql** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az *Azure SQL* kifejezést a keresőmezőbe.
+
+> [!NOTE]
+> Az **Azure SQL** gyors és egyszerű módot biztosít az SQL-adatbázisok, a rugalmas készletek, az adatbázis-kiszolgálók, az SQL-felügyelt példányok és az SQL-alapú virtuális gépek eléréséhez. Az Azure SQL nem szolgáltatás vagy erőforrás. 
+
+A meglévő erőforrások kezeléséhez válassza ki a kívánt elemet a listában. Új Azure SQL-erőforrások létrehozásához válassza a **+ Hozzáadás**lehetőséget. 
+
+![Azure SQL-portál lap](./media/quickstart-sql-vm-create-portal/azure-sql.png)
+
+A **+ Hozzáadás gombra**kattintva további információkat jeleníthet meg a különböző beállításokról a csempék **részleteinek megjelenítése** lehetőség kiválasztásával.
+
+![adatbázisok csempe részletei](./media/quickstart-sql-vm-create-portal/sql-vm-details.png)
+
+Részletes információ:
+
+- [Önálló adatbázis létrehozása](../../../sql-database/sql-database-single-database-get-started.md)
+- [Rugalmas készlet létrehozása](../../../sql-database/sql-database-elastic-pool.md#creating-a-new-sql-database-elastic-pool-using-the-azure-portal)
+- [Felügyelt példány létrehozása](../../../sql-database/sql-database-managed-instance-get-started.md)
+- [SQL-alapú virtuális gép létrehozása](quickstart-sql-vm-create-portal.md)
+
 ## <a id="lifecycle"></a> Az SQL virtuálisgép-rendszerképek frissítési szabályzata
 Az Azure csak egy virtuálisgép-rendszerképet tart fenn minden egyes támogatott operációs rendszer, verzió és kiadás kombináció számára. Ez azt jelenti, hogy a rendszer folyamatosan frissíti a rendszerképeket, a régebbi rendszerképek pedig el lesznek távolítva. További információkért tekintse meg az [SQL Server virtuális gépek GYIK](virtual-machines-windows-sql-server-iaas-faq.md#images) dokumentumának **Rendszerképek** című szakaszát.
 
@@ -105,7 +129,7 @@ Az Azure csak egy virtuálisgép-rendszerképet tart fenn minden egyes támogato
 A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint engedélyezve van. Ez a program rendszeres időközönként jelentéseket küld a Microsoftnak az SQL Server fejlesztése érdekében. A CEIP-pel nem kell felügyeleti feladatokat végezni, hacsak nem kívánja letiltani az üzembe helyezés után. A CEIP testreszabásához vagy letiltásához csatlakozzon a virtuális géphez a távoli asztalról. Ezután futtassa az **SQL Server hiba- és használatai jelentések** segédprogramot. A jelentések letiltásához kövesse az utasításokat. Az adatgyűjtésről további információért tekintse meg az [SQL Server adatvédelmi nyilatkozatát](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement).
 
 ## <a name="related-products-and-services"></a>Kapcsolódó termékek és szolgáltatások
-### <a name="windows-virtual-machines"></a>Windows rendszerű virtuális gépek
+### <a name="windows-virtual-machines"></a>Windows Virtual Machines
 * [Virtual Machines – áttekintés](../overview.md)
 
 ### <a name="storage"></a>Storage

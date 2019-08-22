@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7c331a4a7395069dc4dc3ab1dcfc89415be0898c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8827aa660d348ef9e42c617067c2837b8697ba6e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854457"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876780"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Mi a Windows rendszerű virtuális asztali előnézet? 
 
@@ -81,7 +81,7 @@ Az infrastruktúrának a következő dolgokra van szüksége a Windows rendszer�
 A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek a következőknek kell lenniük:
 
 * [Szabványos tartományhoz csatlakoztatott](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) vagy [hibrid ad-csatlakozás](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). A virtuális gépek nem csatlakoztathatók Azure AD-hez.
-* A következő [támogatott operációsrendszer](#supported-virtual-machine-os-image)-lemezképek egyikének futtatása.
+* A következő [támogatott operációsrendszer](#supported-virtual-machine-os-images)-lemezképek egyikének futtatása.
 
 >[!NOTE]
 >Ha Azure-előfizetésre van szüksége, [regisztrálhat egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). Ha az Azure ingyenes próbaverzióját használja, akkor a Azure AD Domain Services segítségével tartsa a Windows Server Active Directory szinkronizálását Azure Active Directory használatával.
@@ -101,7 +101,7 @@ A következő Távoli asztal-ügyfelek támogatják a Windows rendszerű virtuá
 * [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
 * [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
 
-## <a name="supported-virtual-machine-os-image"></a>A virtuális gép operációs rendszerének támogatott rendszerképe
+## <a name="supported-virtual-machine-os-images"></a>Támogatott virtuális gépek operációsrendszer-lemezképei
 
 A Windows virtuális asztal a következő operációsrendszer-lemezképeket támogatja:
 

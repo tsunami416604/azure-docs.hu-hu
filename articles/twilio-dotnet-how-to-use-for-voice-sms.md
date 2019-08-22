@@ -1,11 +1,9 @@
 ---
-title: Twilio használata Hanghívási és SMS (.NET) |} A Microsoft Docs
-description: Útmutató a telefonhívás, és a Twilio API-szolgáltatással egy SMS-üzenet küldése az Azure-ban. .NET-keretrendszerben írt kódmintákat.
+title: A Twilio használata a Voice és az SMS (.NET) szolgáltatáshoz | Microsoft Docs
+description: Megtudhatja, hogyan készíthet telefonhívást, és hogyan küldhet SMS-üzenetet a Twilio API szolgáltatással az Azure-ban. A .NET-ben írt mintakód-minták.
 services: ''
 documentationcenter: .net
-author: devinrader
-manager: twilio
-editor: ''
+author: georgewallace
 ms.assetid: 74d4f3c9-f1cb-4968-b744-36b32cd0e834
 ms.service: multiple
 ms.workload: na
@@ -13,52 +11,52 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
-ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 3b8b21de9664a969e8b1ce5699034aa9ab41d0f1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 22b33d7b4b0ff69a2e751cadff70453f73ed4f8e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60329487"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876806"
 ---
-# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Hogyan lehet a Twilio használata hanghívási és SMS-funkciókhoz az Azure-ból
-Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a Twilio API-t szolgáltatással az Azure-ban. Az ismertetett forgatókönyvek között megtalálható, így a telefonhívás, és a egy rövid üzenetet szolgáltatást (SMS) üzenetet küld. A Twilio és az alkalmazások használata hanghívási és SMS további információkért lásd: a [további lépések](#NextSteps) szakaszban.
+# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>A Twilio használata a hang-és SMS-funkciókhoz az Azure-ban
+Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure Twilio API szolgáltatásával. A tárgyalt forgatókönyvek közé tartozik a telefonhívás kezdeményezése és egy rövid üzenetküldési szolgáltatás (SMS) üzenet küldése. A Twilio és a hang-és SMS-alkalmazások alkalmazásokban való használatáról további információt a [következő lépések](#NextSteps) című szakaszban talál.
 
-## <a id="WhatIs"></a>Mit jelent a Twilio?
-A Twilio jövőjének vállalati kommunikáció, így a fejlesztők hang, a VoIP és a üzenetkezelési alkalmazásokba történő beágyazása van. A Twilio API kommunikációs platformon keresztül adatokhoz hozzáférést biztosító felhőalapú, a globális környezetben szükséges összes infrastruktúra virtualizálása azokat. Alkalmazásokat hozhat létre egyszerű és méretezhető. Használja ki a rugalmasan használatalapú díjszabás, és kihasználhatják a felhő megbízhatóságát.
+## <a id="WhatIs"></a>Mi az a Twilio?
+A Twilio az üzleti kommunikáció jövőjét fejleszti, és lehetővé teszi, hogy a fejlesztők hang-, VoIP-és üzenetkezelési adatokat ágyaznak be alkalmazásokba. Minden szükséges infrastruktúra virtualizálása egy felhőalapú, globális környezetben, amely a Twilio Communications API platformon keresztül teszi elérhetővé. Az alkalmazások egyszerűen létrehozhatók és méretezhetők. Élvezze az utólagos elszámolású díjszabást, és használja ki a felhő megbízhatóságát.
 
-**A twilio használata Hanghívási** lehetővé teszi, hogy telefonhívásokat fogadja, és az alkalmazások. **A Twilio SMS** lehetővé teszi az alkalmazások számára az SMS-üzenetek küldése és fogadása. **A Twilio-ügyfél** lehetővé teszi bármely telefonon, táblagépen vagy böngészőben VoIP hívásait, és támogatja a WebRTC.
+A **Twilio Voice** lehetővé teszi az alkalmazások számára telefonhívások készítését és fogadását. A **TWILIO SMS** lehetővé teszi az alkalmazások számára az SMS-üzenetek küldését és fogadását. A **Twilio-ügyfél** lehetővé teszi, hogy bármilyen telefonról, táblaszámítógépről vagy böngészőből kezdeményezheti a VoIP-hívásokat, és támogatja a WebRTC.
 
-## <a id="Pricing"></a>A Twilio-díjszabás és ajánlatok küldésére
-Az Azure-ügyfelek kap egy [a különleges ajánlat](https://www.twilio.com/azure): díjtalan 10 USD kredit Twilio, a Twilio-fiók frissítésekor. A Twilio-Kredit bármely Twilio-használati (10 USD kredit egyenértékű, akár 1000 SMS-üzenetek küldése vagy fogadása legfeljebb 1000 bejövő hangalapú perc, a telefon száma és az üzenet vagy hívás cél helyétől függően) is alkalmazható. A Twilio-kredit beváltásához, és látogasson el [twilio.com/azure](https://twilio.com/azure).
+## <a id="Pricing"></a>A Twilio díjszabása és különleges ajánlataink
+A Twilio-fiók frissítésekor az Azure-ügyfelek [különleges ajánlatot](https://www.twilio.com/azure)kapnak: ingyenes, $10-Twilio kreditet. Ez a Twilio-kredit bármely Twilio-felhasználásra alkalmazható ($10 kredit, amely akár több mint 1 000 SMS-üzenetet küld, akár 1000 bejövő hang-percet is igénybe vehet, a telefonszám és az üzenet vagy a hívás célhelyének helyétől függően). Váltsa be ezt a Twilio-kreditet, és ismerkedjen meg a [twilio.com/Azure](https://twilio.com/azure)-vel.
 
-A Twilio szolgáltatás használatalapú fizetést biztosító. Nincsenek díjak sincsenek beállítás, és a fiókot bármikor bezárhatja. További információt talál [Twilio díjszabás](https://www.twilio.com/voice/pricing).
+A Twilio az utólagos elszámolású szolgáltatás. Nincsenek beállított díjak, és bármikor lezárhatja a fiókját. További részleteket a [Twilio díjszabását](https://www.twilio.com/voice/pricing)ismertető webhelyen talál.
 
 ## <a id="Concepts"></a>Fogalmak
-A Twilio API egy RESTful API-t hanghívási és SMS-funkciókat biztosító alkalmazások. Ügyfélkódtárai több nyelven érhetők el egy listát lásd: [Twilio API függvénytárai][twilio_libraries].
+A Twilio API egy REST-alapú API, amely hang-és SMS-funkciókat biztosít az alkalmazásokhoz. Az ügyféloldali kódtárak több nyelven is elérhetők; a listákat lásd: [TWILIO API][twilio_libraries]-kódtárak.
 
-Fontos szempontjai a Twilio API-t a, Twilio-műveletek és a Twilio Markup Language (TwiML).
+A Twilio API legfontosabb szempontjai a Twilio-műveletek és a Twilio Markup Language (TwiML).
 
-### <a id="Verbs"></a>A Twilio-műveletek
-Az API-t felhasznál Twilio műveleteket; Ha például a **&lt;Say&gt;** művelet arra utasítja a Twilio hallhatóan kézbesíteni az üzenetet hívás.
+### <a id="Verbs"></a>Twilio-műveletek
+Az API a Twilio-műveletek használatát teszi lehetővé; például a **&lt;Say&gt;** művelet arra utasítja a Twilio, hogy hallhatóan kézbesítse az üzenetet egy híváson.
 
-Az alábbiakban látható egy Twilio-műveletek listájához.  Ismerje meg az egyéb műveletek és funkciókat [Twilio Markup Language dokumentáció](https://www.twilio.com/docs/api/twiml).
+A következő lista az Twilio-műveletek listáját tartalmazza.  Ismerje meg a többi műveletet és képességeket a [Twilio Markup Language dokumentációján](https://www.twilio.com/docs/api/twiml)keresztül.
 
-* `<Dial>`: A hívó csatlakozik egy másik telefonon.
-* `<Gather>`: Gyűjti a telefon billentyűzeten beírt számjegyeket.
-* `<Hangup>`: A hívás véget ér.
-* `<Play>`: Hang lejátszása.
-* `<Pause>`: A megadott számú másodperc vár beavatkozás nélkül.
-* `<Record>`: A hívó hangalapú rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
-* `<Redirect>`: Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
-* `<Reject>`: A Twilio-számra egy bejövő hívás elutasítása a számlázási, nélkül
-* `<Say>`: Szöveg-beszéd átalakítás, amely egy hívást történő alakítja.
-* `<Sms>`: SMS üzenetet küld.
+* `<Dial>`: Csatlakoztatja a hívót egy másik telefonhoz.
+* `<Gather>`: A telefon billentyűzetén megadott numerikus számjegyeket gyűjti.
+* `<Hangup>`: Egy hívást ér véget.
+* `<Play>`: Hangfájl lejátszása.
+* `<Pause>`: Csendes várakozás a megadott számú másodpercre.
+* `<Record>`: A hívó hangját rögzíti, és egy, a rögzítést tartalmazó fájl URL-címét adja vissza.
+* `<Redirect>`: Egy másik URL-címen keresztül továbbítja a hívást vagy SMS-t a TwiML.
+* `<Reject>`: Elutasítja a Twilio-szám bejövő hívását a számlázás nélkül
+* `<Say>`: Átalakítja a szöveget a híváson végrehajtott beszédre.
+* `<Sms>`: SMS-üzenet küldése.
 
 ### <a name="twiml"></a>TwiML
-TwiML XML-alapú utasítások alapján a Twilio-műveleteket tartalmazó tájékoztatja a hívás feldolgozása Twilio vagy SMS.
+A TwiML XML-alapú utasításokat tartalmaz a Twilio műveletek alapján, amelyek tájékoztatják a Twilio, hogy hogyan dolgozzák fel a hívást vagy az SMS-t.
 
-Tegyük fel, a következő TwiML konvertálná szöveg **Hello World** át.
+Példaként a következő TwiML konvertálja a szöveget **"Helló világ!" alkalmazás** beszédre.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -67,56 +65,56 @@ Tegyük fel, a következő TwiML konvertálná szöveg **Hello World** át.
 </Response>
 ```
 
-Amikor az alkalmazás meghívja a Twilio API-t, az API-paraméterek egyik az URL-cím, amely a TwiML választ ad vissza. Fejlesztési célokra a Twilio által megadott URL-címek segítségével az alkalmazások által használt TwiML visszajelzést. Akkor is elhelyezheti, a saját URL-címek a TwiML válaszok előállításához, és a egy másik lehetőség a **TwiMLResponse** objektum.
+Amikor az alkalmazás meghívja a Twilio API-t, az egyik API-paraméter az a URL-cím, amely a TwiML választ adja vissza. A Twilio által biztosított URL-címek segítségével megadhatja az alkalmazások által használt TwiML-válaszokat. Saját URL-címeket is tárolhat a TwiML-válaszok létrehozásához, és egy másik lehetőség a **TwiMLResponse** objektum használata.
 
-A Twilio műveletek, az attribútumokat és TwiML kapcsolatos további információkért lásd: [TwiML][twiml]. A Twilio API-val kapcsolatos további információkért lásd: [Twilio API-t][twilio_api].
+A Twilio-műveletekkel, azok attribútumaival és TwiML kapcsolatos további információkért lásd: [TwiML][twiml]. A Twilio API-val kapcsolatos további információkért lásd: [TWILIO API][twilio_api].
 
 ## <a id="CreateAccount"></a>Twilio-fiók létrehozása
-Amikor készen áll a Twilio-fiók létrehozása, regisztráció: [próbálja meg Twilio][try_twilio]. Kezdje egy ingyenes fiókot, és később frissítse a fiókját.
+Ha készen áll egy Twilio-fiók beszerzésére, regisztráljon a [Twilio kipróbálása][try_twilio]gombra. Elindíthat egy ingyenes fiókot, és később is frissítheti a fiókját.
 
-Amikor regisztrál egy Twilio-fiók, kap egy fiók Azonosítóját és a egy hitelesítési tokent. Mindkét lesz szükség a Twilio API-hívásokat. Fiókja a jogosulatlan hozzáférés megakadályozása érdekében, hogy a hitelesítési jogkivonat biztonságának megőrzése. A fiók Azonosítóját és a hitelesítési jogkivonat teljesítményobjektumok, a [Twilio-fiók oldalán][twilio_account], a címkével ellátott mezőket **fiók SID** és **hitelesítési JOGKIVONATÁT**, illetve.
+Amikor regisztrál egy Twilio-fiókra, megkapja a fiók AZONOSÍTÓját és a hitelesítési jogkivonatot. Mindkettőre szükség lesz a Twilio API-hívások létrehozásához. A fiókjához való jogosulatlan hozzáférés megakadályozása érdekében őrizze meg biztonságos hitelesítési tokenjét. A fiók-azonosító és a hitelesítési jogkivonat a [Twilio fiók lapján][twilio_account], a **fiók SID** és **hitelesítési jogkivonat**mezőjében látható.
 
-## <a id="create_app"></a>Azure-alkalmazások létrehozása
-Azure-alkalmazások a Twilio-kompatibilis alkalmazások üzemeltető nem különbözik bármely más Azure-alkalmazás. A Twilio .NET-kódtár hozzáadása, és konfigurálja a szerepkört a Twilio .NET-kódtárakra használatára.
-A kezdeti Azure-projekt létrehozása információkért lásd: [Azure-projekt létrehozása Visual studióval][vs_project].
+## <a id="create_app"></a>Azure-alkalmazás létrehozása
+Egy Twilio-kompatibilis alkalmazást futtató Azure-alkalmazás nem különbözik más Azure-alkalmazástól. Adja hozzá a Twilio .NET-függvénytárat, és konfigurálja a szerepkört a Twilio .NET-kódtárak használatára.
+A kezdeti Azure-projektek létrehozásával kapcsolatos információkért lásd: [Azure-projekt létrehozása a Visual Studióval][vs_project].
 
-## <a id="configure_app"></a>A Twilio-kódtárak használata az alkalmazás konfigurálása
-A Twilio .NET segítő-kódtárak együttese biztosít az egyszerű és könnyen módon kezelheti a Twilio REST API-t és a Twilio-ügyfél létrehozásához TwiML válaszok a Twilio különféle részeinek burkolása biztosít.
+## <a id="configure_app"></a>Az alkalmazás konfigurálása Twilio-kódtárak használatára
+A Twilio olyan .NET segéd-kódtárakat biztosít, amelyek a Twilio különböző szempontjait biztosítják, így egyszerű és egyszerű módszereket biztosítanak a Twilio-REST API és a Twilio-ügyféllel való interakcióhoz TwiML-válaszok létrehozásához.
 
-A Twilio öt kódtárak .NET-fejlesztők számára biztosít:
+A Twilio öt kódtárat biztosít a .NET-fejlesztőknek:
 
 | Erőforrástár | Leírás |
 | --- | --- |
-| Twilio.API | A Twilio Alapkönyvtár, amely egy egyszerű .NET-kódtárában Twilio REST API-t. A könyvtár a .NET, a Silverlight és a Windows Phone 7 érhető el. |
-| Twilio.TwiML | Lehetővé teszi .NET rövid TwiML jelölés létrehozásához. |
-| Twilio.MVC | A fejlesztők számára az ASP.NET MVC használatával ebben a könyvtárban egy TwilioController TwiML ActionResult és érvényesítési kérelemattribútum tartalmazza. |
-| Twilio.WebMatrix | A fejlesztők a Microsoft ingyenes WebMatrix fejlesztési eszköz használatával a könyvtárban a különböző Twilio Razor-szintaxis segítők. |
-| Twilio.Client.Capability | A Twilio ügyfelet JavaScript SDK-val képesség tokengenerátor tartalmazza. |
+| Twilio. API | A Twilio REST API egy felhasználóbarát .NET-könyvtárban lévő központi Twilio könyvtár. Ez a könyvtár a .NET, a Silverlight és a Windows Phone-telefon 7 rendszerhez érhető el. |
+| Twilio.TwiML | .NET-barát módszert biztosít a TwiML-jelölések létrehozásához. |
+| Twilio. MVC | A ASP.NET MVC-t használó fejlesztők számára ez a könyvtár egy TwilioController, egy TwiML-ActionResult és egy kérelem-ellenőrzési attribútumot tartalmaz. |
+| Twilio. WebMatrix | A Microsoft ingyenes WebMatrix-fejlesztői eszközét használó fejlesztők számára ez a könyvtár a különböző Twilio műveletekhez használható Razor szintaxisú segítőket tartalmaz. |
+| Twilio. Client. képesség | A Twilio-ügyfél JavaScript SDK-val használható képesség token generátort tartalmazza. |
 
 > [!Important]
-> Minden kódtárak .NET 3.5-ös verzióját, a Silverlight 4 vagy a Windows Phone 7 vagy újabb verzió szükséges.
+> Minden függvénytárhoz .NET 3,5, Silverlight 4 vagy Windows Phone-telefon 7 vagy újabb rendszer szükséges.
 
-A jelen útmutatóban ismertetett minták a Twilio.API könyvtár használata.
+Az útmutatóban megadott minták a Twilio. API függvénytárat használják.
 
-A szalagtárak lehet [a NuGet package manager bővítményének segítségével telepítve](https://www.twilio.com/docs/csharp/install) legfeljebb 2015 Visual Studio 2010-hez elérhető.  A forráskód lévő üzemeltetett [GitHub][twilio_github_repo], amely tartalmazza, amely tartalmazza a könyvtárak a teljes dokumentációját Wiki.
+A kódtárak [telepíthetők a NuGet csomagkezelő bővítménnyel](https://www.twilio.com/docs/csharp/install) , amely a Visual Studio 2010-ig elérhető a 2015-ig.  A forráskód a githubon fut [][twilio_github_repo], amely tartalmaz egy, a kódtárak használatára vonatkozó teljes dokumentációt tartalmazó wikit.
 
-Alapértelmezés szerint a Microsoft Visual Studio 2010 NuGet 1.2-es verzióját telepíti. A Twilio-kódtárak telepítéséhez az 1.6-os NuGet vagy újabb verzió. Információ a telepítésekor vagy frissítésekor NuGet: [ https://nuget.org/ ] [ nuget].
+Alapértelmezés szerint a Microsoft Visual Studio 2010 telepíti a NuGet 1,2-es verzióját. A Twilio-kódtárak telepítéséhez a NuGet vagy újabb 1,6 verzióra van szükség. A NuGet telepítésével vagy frissítésével kapcsolatos információkért [https://nuget.org/][nuget]lásd:.
 
 > [!NOTE]
-> A legújabb verzió telepítéséhez először el kell távolítania a betöltött verziója a Visual Studio-kiterjesztés kezelőjét használja. Ehhez futtatnia kell az Visual Studiót rendszergazdaként. Ellenkező esetben az Eltávolítás gomb le van tiltva.
+> A NuGet legújabb verziójának telepítéséhez először el kell távolítania a betöltött verziót a Visual Studio Extension Manager használatával. Ehhez a Visual studiót rendszergazdaként kell futtatnia. Ellenkező esetben az Eltávolítás gomb le van tiltva.
 >
 >
 
-### <a id="use_nuget"></a>A Visual Studio-projektben a Twilio-kódtárak hozzáadása:
+### <a id="use_nuget"></a>A Twilio-kódtárak hozzáadása a Visual Studio-projekthez:
 1. Nyissa meg a megoldást a Visual Studióban.
-2. Kattintson a jobb gombbal **hivatkozások**.
-3. Kattintson a **NuGet-csomagok kezelése...**
-4. Kattintson a **Online**.
-5. Az online be a keresőmezőbe írja be a *twilio*.
-6. Kattintson a **telepítése** a Twilio-csomag.
+2. Kattintson a jobbgombbal a referenciák elemre.
+3. Kattintson a **NuGet-csomagok kezelése...** lehetőségre.
+4. Kattintson az **online**lehetőségre.
+5. A Keresés az interneten mezőbe írja be a következőt: *twilio*.
+6. Kattintson a **telepítés** gombra a Twilio-csomagban.
 
-## <a id="howto_make_call"></a>kézikönyv: Végezhet
-A következőket mutatja be, hogy egy kimenő hívás használatával a **CallResource** osztály. Ez a kód is egy Twilio által biztosított helyet használ a Twilio Markup Language (TwiML) választ adja vissza. Helyettesítse be a saját értékeit a **való** és **a** telefonszámai, és győződjön meg arról, hogy ellenőrizze a **a** telefonszám a Twilio-fiók a kód futtatása előtt.
+## <a id="howto_make_call"></a>kézikönyv: Kimenő hívás létrehozása
+Az alábbiakban bemutatjuk, hogyan lehet kimenő hívást kezdeményezni a **CallResource** osztály használatával. Ez a kód egy Twilio által biztosított helyet is használ a Twilio Markup Language (TwiML) válaszának visszaadásához. Helyettesítse be az értékeket a és **a** telefonszámok között, és ellenőrizze, hogy a kód futtatása előtt a Twilio **-** fiókhoz tartozó telefonszámot kell-e ellenőrizni.
 
 ```csharp
 // Use your account SID and authentication token instead
@@ -141,12 +139,12 @@ var call = CallResource.Create(
     }
 ```
 
-További információ az átadott paraméterek a **CallResource.Create** metódus, lásd: [ https://www.twilio.com/docs/api/rest/making-calls ] [ twilio_rest_making_calls].
+További információ a **CallResource. Create** metódusban átadott paraméterekről: [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls].
 
-Ahogy már említettük, ez a kód egy Twilio által biztosított hely használatával TwiML a választ adja. Saját webhely segítségével adja meg a TwiML választ helyette. További információkért lásd: [hogyan: Adja meg a saját webhelyének TwiML parancsválaszait](#howto_provide_twiml_responses).
+Ahogy említettük, ez a kód egy Twilio által biztosított helyet használ a TwiML válasz visszaadásához. Ehelyett használhatja a saját webhelyét a TwiML-válasz megadásához. További információkért lásd: [hogyan: Adja meg a TwiML-válaszokat a](#howto_provide_twiml_responses)saját webhelyéről.
 
-## <a id="howto_send_sms"></a>kézikönyv: Küldjön SMS-t
-A következő képernyőképen látható használ egy SMS üzenet küldése a **MessageResource** osztály. A **a** száma az SMS-üzenetek küldéséhez a próbafiókokon Twilio által biztosított. A **való** szám ellenőrizni kell a Twilio-fiók a kód futtatása előtt.
+## <a id="howto_send_sms"></a>kézikönyv: SMS-üzenet küldése
+A következő képernyőfelvétel bemutatja, hogyan küldhet SMS-üzeneteket a **MessageResource** osztály használatával. Az SMS **-** üzenetek küldéséhez a Twilio által biztosított próbaverziót adja meg. A kódot a kód futtatása előtt ellenőrizni kell a Twilio **-** fiókhoz.
 
 ```csharp
 // Use your account SID and authentication token instead
@@ -172,16 +170,16 @@ catch (TwilioException ex)
 }
 ```
 
-## <a id="howto_provide_twiml_responses"></a>kézikönyv: Adja meg a saját webhelyén TwiML válaszok
-Ha az alkalmazás kezdeményezi keresztül a hívást a Twilio API - példában a **CallResource.Create** metódus - Twilio a kérést küld egy kell visszaadnia TwiML válasz URL-CÍMÉT. A példában a [hogyan: Végezhet](#howto_make_call) a Twilio által megadott URL-cím [ https://twimlets.com/message ] [ twimlet_message_url] , a választ adja vissza.
+## <a id="howto_provide_twiml_responses"></a>kézikönyv: TwiML-válaszok megadása a saját webhelyéről
+Amikor az alkalmazás kezdeményezi a Twilio API-t, például a **CallResource. Create** metódussal, a Twilio a kérelmet egy olyan URL-címre küldi, amely egy TwiML-válasz visszaadására vár. Példa a következőre [: A kimenő hívások](#howto_make_call) a Twilio által megadott URL-cím [https://twimlets.com/message][twimlet_message_url] használatával adják vissza a választ.
 
 > [!NOTE]
-> TwiML webszolgáltatások használatra szolgál, míg a TwiML tekintheti meg a böngészőben. Kattintson például [ https://twimlets.com/message ] [ twimlet_message_url] megtekintéséhez egy üres `<Response>` elem; másik példaként kattintson [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ](https://twimlets.com/message?Message%5B0%5D=Hello%20World) megtekintéséhez egy `<Response>` elem, amely tartalmazza a &lt; Say&gt; elemet.
+> Míg a TwiML a webszolgáltatások számára készült, megtekintheti a TwiML a böngészőben. Ha például [https://twimlets.com/message][twimlet_message_url] egy üres &lt; [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) &gt; `<Response>` elemet szeretne megtekinteni, kattintson ide egy olyan elem megjelenítéséhez, amely egy Say elemet tartalmaz. `<Response>`
 >
 
-Így nem kell hagyatkoznia a Twilio-megadott URL-címet, a saját URL-címet a hely által visszaadott HTTP-válaszok is létrehozhat. A hely által visszaadott HTTP-válaszok bármilyen nyelven hozhat létre. Ez a témakör azt feltételezi, hogy fogja üzemeltetni az URL-címet egy általános ASP.NET-kezelő.
+Ahelyett, hogy a Twilio által megadott URL-címet kellene megadnia, létrehozhat egy saját URL-helyet, amely a HTTP-válaszokat adja vissza. A helyet bármilyen nyelven létrehozhatja, amely a HTTP-válaszokat adja vissza. Ez a témakör feltételezi, hogy az URL-címet egy ASP.NET általános kezelője fogja üzemeltetni.
 
-A következő ASP.NET-kezelő TwiML választ, amely szerint létrehozza **Hello World** hívásakor.
+A következő ASP.NET-kezelő olyan TwiML választ, amely a híváson **"Helló világ!" alkalmazás** .
 
 ```csharp
 using System.Text;
@@ -217,7 +215,7 @@ namespace WebRole1
 }
 ```
     
-Ahogy a fenti példában látható, a TwiML válasz egyszerűen egy XML-dokumentumot. A Twilio.TwiML könyvtárban osztályokat, amelyek az Ön számára TwiML hoz létre. Az alábbi példa hoz létre a megfelelő választ, ahogy fent látható, de használ a **VoiceResponse** osztály.
+Ahogy a fenti példában is látható, a TwiML válasz egyszerűen egy XML-dokumentum. A Twilio. TwiML függvénytár olyan osztályokat tartalmaz, amelyek a TwiML-t fogják előállítani. Az alábbi példa a fentiekben látható egyenértékű választ állítja elő, de a **VoiceResponse** osztályt használja.
 
 ```csharp
 using System.Web;
@@ -253,9 +251,9 @@ namespace WebRole1
 }
 ```
 
-TwiML kapcsolatos további információkért lásd: [ https://www.twilio.com/docs/api/twiml ](https://www.twilio.com/docs/api/twiml).
+További információ a TwiML: [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml).
 
-Olyan megoldást nyújtanak TwiML válaszok beállítása után az URL-CÍMRE adhat át a **CallResource.Create** metódust. Például ha rendelkezik egy Azure-felhőszolgáltatásban üzembe helyezett MyTwiML nevű webalkalmazást, és az ASP.NET-kezelő nevét mytwiml.ashx, az URL-cím adható át **CallResource.Create** az alábbi kódmintában látható módon:
+Miután beállította a TwiML-válaszok megadásának módját, átadhatja ezt az URL-címet a **CallResource. Create** metódusnak. Ha például egy MyTwiML nevű webalkalmazást helyez üzembe egy Azure Cloud Service-ben, és a ASP.NET-kezelő neve MyTwiML. ashx, az URL-cím átadható a **CallResource. Create** néven az alábbi kódrészletben látható módon:
 
 ```csharp
 // This sample uses the sandbox number provided by Twilio to make the call.
@@ -267,7 +265,7 @@ var call = CallResource.Create(
     }
 ```
 
-A Twilio használatával az Azure-ban, az ASP.NET-tel kapcsolatos további információkért lásd: [biztosítása a Twilio használata az Azure-beli webes szerepkör telefonhívás][howto_phonecall_dotnet].
+További információ az Azure-beli Twilio az ASP.NET használatával történő használatáról: [telefonhívás kezdeményezése a Twilio használatával webes szerepkörben az Azure-ban][howto_phonecall_dotnet].
 
 [!INCLUDE [twilio-additional-services-and-next-steps](../includes/twilio-additional-services-and-next-steps.md)]
 

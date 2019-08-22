@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1196f3b186abcd914c409db06b52654f82f4158b
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: e3cc95c908ea81d21b6f32bed8b754feb5d724ff
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377320"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874163"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Egyoldalas bejelentkezés a OAuth 2,0 implicit flow használatával Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ Számos modern alkalmazás rendelkezik egy egyoldalas alkalmazás előtérrel, a
 
 Ezeknek az alkalmazásoknak a támogatásához a Azure Active Directory B2C (Azure AD B2C) a OAuth 2,0 implicit folyamatot használja. Az OAuth 2,0-hitelesítés implicit engedélyezési folyamatát a [OAuth 2,0 specifikáció 4,2](https://tools.ietf.org/html/rfc6749). szakasza ismerteti. Az implicit folyamat során az alkalmazás közvetlenül a Azure Active Directory (Azure AD) engedélyezi a végpontot, a kiszolgáló és a kiszolgáló közötti Exchange nélkül. Az összes hitelesítési logika és munkamenet-kezelés teljes egészében a JavaScript-ügyfélen történik, vagy egy oldal átirányítása vagy egy előugró ablak jelenik meg.
 
-Azure AD B2C kiterjeszti a standard OAuth 2,0 implicit folyamatot több mint egyszerű hitelesítésre és engedélyezésre. Azure AD B2C bevezeti a [házirend paramétert](active-directory-b2c-reference-policies.md). A Policy paraméterrel a OAuth 2,0 használatával szabályzatokat adhat hozzá az alkalmazáshoz, például a regisztráláshoz, a bejelentkezéshez és a profilokhoz tartozó felhasználói folyamatokhoz. A jelen cikkben szereplő HTTP-kérésekben a **fabrikamb2c.onmicrosoft.com** példaként szolgál. Ha rendelkezik ilyennel `fabrikamb2c` , és létrehozta a felhasználói folyamatot, a helyére a nevet használhatja.
+Azure AD B2C kiterjeszti a standard OAuth 2,0 implicit folyamatot több mint egyszerű hitelesítésre és engedélyezésre. Azure AD B2C bevezeti a [házirend paramétert](active-directory-b2c-reference-policies.md). A Policy paraméterrel a OAuth 2,0 használatával szabályzatokat adhat hozzá az alkalmazáshoz, például a regisztráláshoz, a bejelentkezéshez és a profilokhoz tartozó felhasználói folyamatokhoz. A jelen cikkben szereplő HTTP-kérelmekben a **{bérlő}. onmicrosoft. com** példaként van használatban. Cserélje `{tenant}` le a nevet a bérlő nevére, ha van ilyen, és létrehozta a felhasználói folyamatot is.
 
 Az implicit bejelentkezési folyamat az alábbi ábrához hasonlóan néz ki. Az egyes lépéseket a cikk későbbi részében részletesen ismertetjük.
 
@@ -37,12 +37,10 @@ Az implicit bejelentkezési folyamat az alábbi ábrához hasonlóan néz ki. Az
 
 Ha a webalkalmazásnak hitelesítenie kell a felhasználót, és futtatnia kell egy felhasználói folyamatot, akkor a felhasználó a `/authorize` végpontra irányíthatja a felhasználót. A felhasználó a felhasználói folyamattól függően végrehajtja a műveletet.
 
-Ebben a kérelemben az ügyfél a `scope` paraméterben szereplő felhasználótól beszerzett engedélyeket, valamint a `p` paraméterben futtatandó felhasználói folyamatot jelzi. Három példát ismertetünk a következő fejezetekben (az olvashatóság érdekében), amelyek mindegyike egy másik felhasználói folyamatot használ. Az egyes kérések működésének megismeréséhez próbálja meg beilleszteni a kérést egy böngészőben, és futtassa azt. Ha rendelkezik ilyennel `fabrikamb2c` , és létrehozta a felhasználói folyamatot, a helyére a nevet használhatja.
+Ebben a kérelemben az ügyfél a `scope` paraméterben és a felhasználói folyamat futtatásához szükséges engedélyeket jelzi. Ha úgy érzi, hogy a kérés hogyan működik, próbálja meg beilleszteni a kérést egy böngészőben, és futtassa azt. Cserélje le `{tenant}` az Azure AD B2C-bérlő nevével. A `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` helyére írja be annak az alkalmazásnak az azonosítóját, amelyet korábban regisztrált a bérlőben. Cserélje `{policy}` le a helyére a bérlőben létrehozott szabályzat nevét, például `b2c_1_sign_in`:.
 
-### <a name="use-a-sign-in-user-flow"></a>Bejelentkezési felhasználói folyamat használata
-
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+```HTTP
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=id_token+token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -50,37 +48,12 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &scope=openid%20offline_access
 &state=arbitrary_data_you_can_receive_in_the_response
 &nonce=12345
-&p=b2c_1_sign_in
-```
-
-### <a name="use-a-sign-up-user-flow"></a>Regisztrációs felhasználói folyamat használata
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
-&response_type=id_token+token
-&redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
-&response_mode=fragment
-&scope=openid%20offline_access
-&state=arbitrary_data_you_can_receive_in_the_response
-&nonce=12345
-&p=b2c_1_sign_up
-```
-
-### <a name="use-an-edit-profile-user-flow"></a>Szerkesztési profil felhasználói folyamatának használata
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
-&response_type=id_token+token
-&redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
-&response_mode=fragment
-&scope=openid%20offline_access
-&state=arbitrary_data_you_can_receive_in_the_response
-&nonce=12345
-&p=b2c_1_edit_profile
 ```
 
 | Paraméter | Kötelező | Leírás |
 | --------- | -------- | ----------- |
+|Bérlő| Igen | A Azure AD B2C bérlő neve|
+|politika| Igen| A futtatandó felhasználói folyamat. Adja meg a Azure AD B2C bérlőben létrehozott felhasználói folyamat nevét. Például: `b2c_1_sign_in`, `b2c_1_sign_up`, vagy `b2c_1_edit_profile`. |
 | client_id | Igen | Az alkalmazáshoz hozzárendelt [Azure Portal](https://portal.azure.com/) alkalmazás azonosítója. |
 | response_type | Igen | Tartalmaznia `id_token` kell az OpenID Connect bejelentkezést. Belefoglalhatja a válasz típusát `token`is. Ha használja `token`, az alkalmazás azonnal kap egy hozzáférési jogkivonatot az engedélyezési végponttól anélkül, hogy egy második kérést kellene benyújtani az engedélyezési végpontnak.  Ha a `token` válasz típusát használja, a `scope` paraméternek tartalmaznia kell egy hatókört, amely megadja, hogy melyik erőforrást kell kibocsátani a jogkivonat számára. |
 | redirect_uri | Nem | Az alkalmazás átirányítási URI-ja, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált átirányítási URI-k egyikével, azzal a különbséggel, hogy az URL-kódolásnak kell lennie. |
@@ -88,7 +61,6 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | scope | Igen | A hatókörök szóközzel tagolt listája. Egyetlen hatóköri érték azt jelzi, hogy az Azure AD-t mind a kért engedélyek jelentik. A `openid` hatókör a felhasználónak való bejelentkezéshez és az azonosító tokenek formájában kapott információk beszerzéséhez szükséges engedélyt jelöli. A `offline_access` hatókör a Web Apps esetében nem kötelező. Azt jelzi, hogy az alkalmazásnak frissítési jogkivonatra van szüksége az erőforrásokhoz való hosszú élettartamú hozzáféréshez. |
 | state | Nem | A kérelemben szereplő, a jogkivonat-válaszban is visszaadott érték. A használni kívánt tartalom karakterlánca lehet. A rendszer általában véletlenszerűen generált, egyedi értéket használ, hogy megakadályozza a helyek közötti kérelmek hamisítás elleni támadásait. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna, például a laphoz. |
 | nonce | Igen | A kérelemben szereplő, az eredményül kapott azonosító jogkivonatban található (az alkalmazás által generált) érték. Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy véletlenszerű, egyedi karakterlánc, amely a kérelem forrásának azonosítására szolgál. |
-| p | Igen | A végrehajtandó szabályzat. Ez a Azure AD B2C bérlőben létrehozott szabályzat (felhasználói folyamat) neve. A házirend nevének értékének a **B2C\_1\_** értékkel kell kezdődnie. |
 | gyors | Nem | A kötelező felhasználói beavatkozás típusa. Jelenleg az egyetlen érvényes érték `login`a. Ez a paraméter arra kényszeríti a felhasználót, hogy adja meg a kéréshez tartozó hitelesítő adatait. Az egyszeri bejelentkezés nem lép érvénybe. |
 
 Ekkor a rendszer megkéri a felhasználót, hogy fejezze be a szabályzat munkafolyamatát. Előfordulhat, hogy a felhasználónak meg kell adnia felhasználónevét és jelszavát, be kell jelentkeznie egy közösségi identitással, regisztrálnia kell a címtárban, vagy bármely más lépéssel. A felhasználói műveletek attól függnek, hogy a felhasználói folyamat hogyan van definiálva.
@@ -98,7 +70,7 @@ Miután a felhasználó befejezte a felhasználói folyamatot, az Azure AD egy v
 ### <a name="successful-response"></a>Sikeres válasz
 Sikeres válasz, amely az `response_mode=fragment` alábbihoz hasonló, és `response_type=id_token+token` az olvashatóság érdekében sortöréseket használ:
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &token_type=Bearer
@@ -120,7 +92,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 ### <a name="error-response"></a>Hiba válasza
 A rendszer a hibaüzeneteket is elküldheti az átirányítási URI-nak, hogy az alkalmazás megfelelően tudja kezelni őket:
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -141,11 +113,15 @@ Számos nyílt forráskódú kódtár elérhető a használni kívánt nyelvtől
 
 Azure AD B2C OpenID Connect metaadat-végponttal rendelkezik. Egy alkalmazás a végpont használatával adatokat tud beolvasni a Azure AD B2Cról. Ezek az adatok a végpontokat, a jogkivonat tartalmát és a jogkivonat-aláíró kulcsokat tartalmazzák. A Azure AD B2C-bérlő minden egyes felhasználói folyamatához JSON-metaadatokat tartalmazó dokumentum található. A fabrikamb2c.onmicrosoft.com-bérlőben lévő b2c_1_sign_in-felhasználói folyamat metaadat-dokumentuma például a következő helyen található:
 
-`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in`
+```HTTP
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/.well-known/openid-configuration
+```
 
 A konfigurációs dokumentum egyik tulajdonsága a `jwks_uri`. Az azonos felhasználói folyamat értéke a következő lesz:
 
-`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`
+```HTTP
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/discovery/v2.0/keys
+```
 
 Ha meg szeretné határozni, hogy melyik felhasználói folyamatot használták egy azonosító jogkivonat aláírására (és honnan szeretné beolvasni a metaadatokat), két lehetőség közül választhat. Először is a felhasználói folyamat neve szerepel a `acr` `id_token`jogcímben. További információ a jogcímek azonosító jogkivonat alapján történő elemzéséről: [Azure ad B2C jogkivonat-hivatkozás](active-directory-b2c-reference-tokens.md). A másik lehetőség, hogy a kérés kiadásakor a `state` paraméter értékében kódolja a felhasználói folyamatot. Ezután dekódolja a `state` paramétert annak meghatározásához, hogy melyik felhasználói folyamatot használta. Bármelyik metódus érvényes.
 
@@ -175,8 +151,8 @@ Most, hogy aláírta a felhasználót egy egyoldalas alkalmazásba, hozzáféré
 
 Egy tipikus webalkalmazás-folyamat esetében kérelmet kell benyújtani a `/token` végpontnak. A végpont azonban nem támogatja a CORS-kérelmeket, így az AJAX-hívások frissítési token beszerzése nem lehetséges. Ehelyett a rejtett HTML iframe-elemek implicit folyamatával új jogkivonatokat kérhet le más webes API-khoz. Íme egy példa, amely sortöréseket mutat be az olvashatóság érdekében:
 
-```
-https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+```HTTP
+https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -185,11 +161,12 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &state=arbitrary_data_you_can_receive_in_the_response
 &nonce=12345
 &prompt=none
-&p=b2c_1_sign_in
 ```
 
 | Paraméter | Kötelező? | Leírás |
 | --- | --- | --- |
+|Bérlő| Kötelező | A Azure AD B2C bérlő neve|
+politika| Kötelező| A futtatandó felhasználói folyamat. Adja meg a Azure AD B2C bérlőben létrehozott felhasználói folyamat nevét. Például: `b2c_1_sign_in`, `b2c_1_sign_up`, vagy `b2c_1_edit_profile`. |
 | client_id |Kötelező |Az alkalmazáshoz a [Azure Portal](https://portal.azure.com)hozzárendelt alkalmazás-azonosító. |
 | response_type |Kötelező |Tartalmaznia `id_token` kell az OpenID Connect bejelentkezést.  Előfordulhat, hogy a válasz típusát `token`is tartalmazza. Ha itt használja `token` , az alkalmazás azonnal kap egy hozzáférési jogkivonatot az engedélyezési végponttól anélkül, hogy egy második kérést kellene benyújtani az engedélyezési végpontnak. Ha a `token` válasz típusát használja, a `scope` paraméternek tartalmaznia kell egy hatókört, amely megadja, hogy melyik erőforrást kell kibocsátani a jogkivonat számára. |
 | redirect_uri |Ajánlott |Az alkalmazás átirányítási URI-ja, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan egyeznie kell a portálon regisztrált átirányítási URI-k egyikével, azzal a különbséggel, hogy az URL-kódolású. |
@@ -206,7 +183,7 @@ Ha a paramétert állítja be, akkor ez a `prompt=none` kérelem vagy azonnal me
 ### <a name="successful-response"></a>Sikeres válasz
 A következő példához hasonló `response_mode=fragment` módon választhatja ki a sikeres válaszokat:
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=arbitrary_data_you_sent_earlier
@@ -226,7 +203,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 ### <a name="error-response"></a>Hiba válasza
 A rendszer a hibaüzeneteket is elküldheti az átirányítási URI-nak, hogy az alkalmazás megfelelően tudja kezelni őket.  A `prompt=none`esetében a várt hiba a következő példához hasonlít:
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
@@ -247,16 +224,17 @@ Ha alá szeretné írni a felhasználót az alkalmazásból, a kijelentkezéshez
 
 Egyszerűen átirányíthatja a felhasználót `end_session_endpoint` az azonosító- [jogkivonat ellenőrzése](#validate-the-id-token)című témakörben ismertetett OpenID Connect metaadat-dokumentumban felsoroltra. Példa:
 
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
-p=b2c_1_sign_in
-&post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
+```HTTP
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| Paraméter | Kötelező? | Leírás |
-| --- | --- | --- |
-| p |Kötelező |Az alkalmazásból a felhasználó aláírására használt szabályzat. |
-| post_logout_redirect_uri |Ajánlott |Az URL-cím, amelyet a felhasználónak át kell irányítani a sikeres kijelentkezés után. Ha nem szerepel, Azure AD B2C egy általános üzenetet jelenít meg a felhasználónak. |
+| Paraméter | Kötelező | Leírás |
+| --------- | -------- | ----------- |
+| Bérlő | Igen | A Azure AD B2C bérlő neve |
+| politika | Igen | Az alkalmazásból a felhasználó aláírásához használni kívánt felhasználói folyamat. |
+| post_logout_redirect_uri | Nem | Az URL-cím, amelyet a felhasználónak át kell irányítani a sikeres kijelentkezés után. Ha nem tartalmazza, a Azure AD B2C általános üzenetet jelenít meg a felhasználó számára. |
+| state | Nem | Ha egy `state` paraméter szerepel a kérelemben, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, `state` hogy a kérelemben és a válaszban szereplő értékek azonosak-e. |
+
 
 > [!NOTE]
 > A felhasználó átirányítása az `end_session_endpoint` egyes felhasználók egyszeri bejelentkezési állapotának törlésére Azure ad B2C használatával. Azonban nem írja alá a felhasználót a felhasználó közösségi identitás-szolgáltatói munkamenetében. Ha a felhasználó ugyanazt az identitás-szolgáltatót választja egy későbbi bejelentkezéskor, a rendszer újra hitelesíti a felhasználót a hitelesítő adatok megadása nélkül. Ha a felhasználó ki szeretne jelentkezni a Azure AD B2C alkalmazásból, nem feltétlenül jelenti azt, hogy teljesen ki szeretné jelentkezni a Facebook-fiókjából, például:. Helyi fiókok esetében azonban a felhasználó munkamenete megfelelően fog megjelenni.

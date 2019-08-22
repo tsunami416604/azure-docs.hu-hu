@@ -2,7 +2,7 @@
 title: C#QuickStart Indexek létrehozása, betöltése és lekérdezése a .NET SDK használatával – Azure Search
 description: Ismerteti, hogyan hozhat létre indexet, tölthet be és hogyan futtathat lekérdezéseket a és a Azure Search .NET SDK használatával C# .
 author: heidisteen
-manager: cgronlun
+manager: nitinme
 ms.author: heidist
 tags: azure-portal
 services: search
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/11/2019
-ms.openlocfilehash: 6138df5b80f479a54683ec0408b832dd78bff8e4
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 6a77ecd91c0d04f0b449d25686578784921987bf
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847080"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649815"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>Gyors útmutató: Azure Search index létrehozása a .NET C# SDK használatával
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési ku
 
    Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
-![Http-végpont és elérési kulcs] beszerzése (media/search-get-started-postman/get-url-key.png "Http-végpont és elérési kulcs") beszerzése
+![Http-végpont és elérési kulcs](media/search-get-started-postman/get-url-key.png "Http-végpont és elérési kulcs") beszerzése
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
@@ -80,7 +80,7 @@ Ehhez a projekthez használja a `Microsoft.Azure.Search` NuGet csomag 9-es verzi
 
 ### <a name="add-azure-search-service-information"></a>Azure Search szolgáltatás adatainak hozzáadása
 
-1. Megoldáskezelő kattintson a jobb gombbal a projektre, és ****  > válassza az**új elem hozzáadása..** . lehetőséget. 
+1. Megoldáskezelő kattintson a jobb gombbal a projektre, és > válassza az**új elem hozzáadása..** . lehetőséget. 
 
 1. Az új elem hozzáadása lapon keressen rá a "JSON" kifejezésre, és adja vissza a JSON-hez kapcsolódó elemek listáját.
 
@@ -198,7 +198,7 @@ A Hotels index egyszerű és összetett mezőket tartalmaz, ahol egy egyszerű m
     > [!NOTE]
     > A .net SDK-ban [`IsSearchable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet)a mezőket explicit módon [`IsFilterable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) [`IsSortable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet)kell megadni,, és [`IsFacetable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet). Ez a viselkedés ellentétben áll azzal a REST APItel, amely implicit módon engedélyezi a kiosztást az adattípusok alapján (például az egyszerű karakterlánc mezők automatikusan kereshetők).
 
-    Az indexben `string` pontosan egy mezőnek kell lennie az *egyes* dokumentumok egyedi azonosítására szolgáló kulcsmező. Ebben a sémában a kulcs `HotelId`a következő:.
+    Az indexben `string` pontosan egy mezőnek kell lennie az egyes dokumentumok egyedi azonosítására szolgáló kulcsmező. Ebben a sémában a kulcs `HotelId`a következő:.
 
     Ebben az indexben a Description (Leírás [`analyzer`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) ) mezők a választható tulajdonságot használják, ha felül szeretné írni az alapértelmezett standard Lucene-elemzőt. A `description_fr` mező a francia Lucene Analyzert ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)) használja, mert francia nyelvű szöveget tárol. A `description` a választható Microsoft nyelvi analizátort ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)) használja.
 

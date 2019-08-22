@@ -1,13 +1,13 @@
 ---
-title: OData teljes szöveges keresési funkció referencia – Azure Search
-description: OData teljes szöveges keresési funkciókat, search.ismatch és search.ismatchscoring, az Azure Search-lekérdezéseket.
+title: OData teljes szöveges keresési függvény referenciája – Azure Search
+description: A OData teljes szöveges keresési függvények, keresés. ismatch és Search. ismatchscoring, Azure Search lekérdezésekben.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,23 +19,23 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 158312a7afe88e7b9885376c5d28b01958acbbfb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3b28c8799b09ddfe008df8539709c5a704ac6b4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079807"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648018"
 ---
-# <a name="odata-full-text-search-functions-in-azure-search---searchismatch-and-searchismatchscoring"></a>OData teljes szöveges keresési funkciók az Azure Search - `search.ismatch` és `search.ismatchscoring`
+# <a name="odata-full-text-search-functions-in-azure-search---searchismatch-and-searchismatchscoring"></a>OData teljes szöveges keresési függvények a Azure Search- `search.ismatch` és`search.ismatchscoring`
 
-Az Azure Search környezetében támogatja a teljes szöveges keresés [OData szűrési kifejezésekben](query-odata-filter-orderby-syntax.md) keresztül a `search.ismatch` és `search.ismatchscoring` funkciók. Ezek a függvények engedélyezése, hogy a teljes szöveges keresés kombinálva szigorú logikai szűrést, amelyek használatával a legfelső szintű nem lehetséges módokon `search` paraméterében a [Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Azure Search támogatja a `search.ismatch` teljes szöveges keresést a [OData-szűrési kifejezések](query-odata-filter-orderby-syntax.md) és `search.ismatchscoring` függvények használatával. Ezek a függvények lehetővé teszik, hogy a teljes szöveges keresést szigorú logikai szűréssel kombinálja olyan módokon, amelyek nem csak a `search` [Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents)legfelső szintű paraméterével használhatók.
 
 > [!NOTE]
-> A `search.ismatch` és `search.ismatchscoring` függvények csak a szűrők használata támogatott a [Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents). Ezek nem támogatottak a [javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions) vagy [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API-k.
+> A `search.ismatch` és`search.ismatchscoring` a függvények csak a [Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents)-ban lévő szűrőkben támogatottak. Az [ajánlott](https://docs.microsoft.com/rest/api/searchservice/suggestions) és az [automatikus kiegészítési](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API-k nem támogatják őket.
 
 ## <a name="syntax"></a>Szintaxis
 
-A következő EBNF ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) határozza meg a nyelvtani, a `search.ismatch` és `search.ismatchscoring` funkciók:
+A következő EBNF ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a `search.ismatch` és `search.ismatchscoring` a függvények nyelvtanát határozza meg:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -51,76 +51,76 @@ query_type ::= "'full'" | "'simple'"
 search_mode ::= "'any'" | "'all'"
 ```
 
-Egy interaktív szintaxisdiagramja is érhető el:
+Az interaktív szintaxis diagram is elérhető:
 
 > [!div class="nextstepaction"]
-> [Azure Search OData szintaxisdiagramja](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
+> [Azure Search OData szintaxisának diagramja](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
 
 > [!NOTE]
-> Lásd: [OData kifejezés szintaxisának referenciája az Azure Search](search-query-odata-syntax-reference.md) a teljes EBNF számára.
+> A teljes EBNF [Azure Search a OData kifejezés szintaxisát](search-query-odata-syntax-reference.md) ismertető témakörben talál.
 
-### <a name="searchismatch"></a>Search.ismatch
+### <a name="searchismatch"></a>Keresés. ismatch
 
-A `search.ismatch` függvény kiértékeli a teljes szöveges keresési lekérdezést a szűrőkifejezés részeként. Az eredményhalmaz a dokumentumokat, a keresési lekérdezésnek megfelelő lesznek visszaadva. Ez a függvény a következő túlterhelésekkel érhetők el:
+A `search.ismatch` függvény egy teljes szöveges keresési lekérdezést értékel ki egy szűrési kifejezés részeként. A keresési lekérdezésnek megfelelő dokumentumokat a rendszer az eredményhalmazban adja vissza. A függvény következő túlterhelései érhetők el:
 
 - `search.ismatch(search)`
 - `search.ismatch(search, searchFields)`
 - `search.ismatch(search, searchFields, queryType, searchMode)`
 
-Az alábbi táblázat a paraméterek vannak meghatározva:
+A paraméterek a következő táblázatban vannak meghatározva:
 
-| Paraméter neve | Típus | Leírás |
+| Paraméternév | Type | Leírás |
 | --- | --- | --- |
-| `search` | `Edm.String` | A keresési lekérdezés (akár [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) Lucene lekérdezési szintaxis). |
-| `searchFields` | `Edm.String` | A keresés; kereshető mezőket vesszővel elválasztott listája az alapértelmezett beállítás az összes kereshető mezőt az indexben. Használata esetén [keresési fielded](query-lucene-syntax.md#bkmk_fields) a a `search` paramétert, a Lucene-lekérdezésben a mező specifikátory felülbírálása ebben a paraméterben megadott mezőket. |
-| `queryType` | `Edm.String` | `'simple'` vagy `'full'`; az alapértelmezett `'simple'`. Itt adhatja meg, milyen lekérdezési nyelv használták a `search` paraméter. |
-| `searchMode` | `Edm.String` | `'any'` vagy `'all'`, alapértelmezés szerint a `'any'`. Azt jelzi, hogy a keresés egy részének vagy egészének a feltételek a `search` paraméterrel egyeztetni annak érdekében, hogy a dokumentum, amely száma. Használatakor a [Lucene logikai operátorok](query-lucene-syntax.md#bkmk_boolean) a a `search` paramétert, akkor elsőbbséget élveznek majd ezt a paramétert. |
+| `search` | `Edm.String` | A keresési lekérdezés ( [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) Lucene lekérdezési szintaxis). |
+| `searchFields` | `Edm.String` | A kereshető mezők vesszővel tagolt listája a kereséshez; az alapértelmezett érték az index összes kereshető mezőjénél. Ha a [](query-lucene-syntax.md#bkmk_fields) `search` paraméterben a mezőn belüli keresés szerepel, a Lucene lekérdezés mezőiben szereplő mezők felülbírálják az ebben a paraméterben megadott mezőket. |
+| `queryType` | `Edm.String` | `'simple'`vagy `'full'`; alapértelmezett érték `'simple'`:. Megadja, hogy melyik lekérdezési nyelvet használták `search` a paraméter. |
+| `searchMode` | `Edm.String` | `'any'`vagy `'all'`alapértelmezett értéke `'any'`:. Azt jelzi, hogy a `search` paraméterben szereplő keresési kifejezések bármelyike vagy mindegyike egyezik-e a dokumentum egyezésként való megszámlálásához. Az [Lucene logikai operátorok](query-lucene-syntax.md#bkmk_boolean) használatakor a `search` paraméter elsőbbséget élvez a paraméterrel szemben. |
 
-A fenti paraméterek egyenértékűek a megfelelő [kérelem paramétereinek keresni a Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+A fenti paraméterek a [keresési API megfelelő keresési kérelmi paramétereinek](https://docs.microsoft.com/rest/api/searchservice/search-documents)felelnek meg.
 
-A `search.ismatch` függvény típusú értéket ad vissza `Edm.Boolean`, amely lehetővé teszi, hogy az összeállítás, az egyéb szűrő alkifejezések használatával a logikai [logikai operátorokat](search-query-odata-logical-operators.md).
+A `search.ismatch` függvény egy típusú `Edm.Boolean`értéket ad vissza, amely lehetővé teszi, hogy más szűrő alkifejezésekkel kombinálja a logikai [logikai operátorok](search-query-odata-logical-operators.md)használatával.
 
 > [!NOTE]
-> Az Azure Search nem támogatja a használatával `search.ismatch` vagy `search.ismatchscoring` lambda-kifejezésekkel belül. Ez azt jelenti, nem lehet írni a szűrők tartozó objektumok, amelyek kapcsolhatja össze a teljes szöveges keresés egyezése szigorú a szűrő megfelel ugyanazon az objektumon keresztül. Ez a korlátozás, valamint a példák a további részletekért lásd: [hibáinak elhárítása az Azure Search szolgáltatásban a fájlgyűjtési szűrők](search-query-troubleshoot-collection-filters.md). Részletesebb információt arról, hogy miért van erre a korlátozásra, lásd: [ismertetése az Azure Search szolgáltatásban a fájlgyűjtési szűrők](search-query-understand-collection-filters.md).
+> A Azure Search nem támogatja a `search.ismatch` `search.ismatchscoring` lambda kifejezéseket. Ez azt jelenti, hogy nem lehet szűrőket írni olyan objektumok gyűjteményei között, amelyek összekapcsolhatók a teljes szöveges keresési egyezésekkel az azonos objektumon lévő szigorú szűrési egyezésekkel. A korlátozással és a példákkal kapcsolatos további részletekért lásd: [a gyűjtemény szűrőinek hibaelhárítása Azure Search](search-query-troubleshoot-collection-filters.md). A korlátozás létezésével kapcsolatos további információkért lásd: a [gyűjtemény szűrőinek ismertetése a Azure Searchban](search-query-understand-collection-filters.md).
 
 
-### <a name="searchismatchscoring"></a>Search.ismatchscoring
+### <a name="searchismatchscoring"></a>Keresés. ismatchscoring
 
-A `search.ismatchscoring` működni, mint a `search.ismatch` függvény visszaad `true` dokumentumok, a teljes szöveges keresési lekérdezésnek megfelelő paraméterként. Az egymás közötti különbség, hogy a relevancia alapján pontszámot rendelni az egyező dokumentumok a `search.ismatchscoring` lekérdezés hozzájárul a teljes dokumentum pontszám, a kis-és `search.ismatch`, a dokumentumok pontszámát nem módosítható. Ez a függvény a következő túlterhelésekkel érhetők el paraméterek azonosak `search.ismatch`:
+A `search.ismatchscoring` függvény, például a `search.ismatch` függvény, visszaadja `true` azokat a dokumentumokat, amelyek megfelelnek a paraméterként átadott teljes szöveges keresési lekérdezésnek. Ezek közötti különbség az, hogy a `search.ismatchscoring` lekérdezésnek megfelelő dokumentumok relevanciás pontszáma hozzájárul a teljes dokumentum pontszámához, míg a `search.ismatch`esetében a dokumentum pontszáma nem változik. A függvény alábbi túlterhelései a következőhöz hasonló `search.ismatch`paraméterekkel érhetők el:
 
 - `search.ismatchscoring(search)`
 - `search.ismatchscoring(search, searchFields)`
 - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
 
-Mind a `search.ismatch` és `search.ismatchscoring` funkciók is használható ugyanazon a szűrőkifejezést.
+A és `search.ismatch` `search.ismatchscoring` a függvények is ugyanabban a szűrő kifejezésben használhatók.
 
 ## <a name="examples"></a>Példák
 
-Keresse meg az "i partszakasz" szót tartalmazó dokumentumokat. Ez a szűrő-lekérdezés megegyezik egy [keresési kérelmet](https://docs.microsoft.com/rest/api/searchservice/search-documents) a `search=waterfront`.
+Keresse meg a "Waterfront" szót tartalmazó dokumentumokat. Ez a szűrési lekérdezés megegyezik egy [keresési](https://docs.microsoft.com/rest/api/searchservice/search-documents) kérelemmel `search=waterfront`a következővel:.
 
     search.ismatchscoring('waterfront')
 
-Keresse meg a dokumentumot a word "hostel" és a nagyobb vagy egyenlő "amelyben" szót tartalmazó dokumentumok vagy 4 minősítés és minősítés megegyezik az 5. Vegye figyelembe, a kérelem nem fejezik nélkül a `search.ismatchscoring` függvény.
+Keresse meg a "Hostel" szót tartalmazó dokumentumokat, vagy a 4-es vagy annál nagyobb minősítést, vagy a "Motel" szót tartalmazó dokumentumokat, valamint az 5 értékű minősítést. Megjegyzés: Ez a kérés nem fejezhető be a `search.ismatchscoring` függvény nélkül.
 
     search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
 
-Keresse meg a dokumentumok szó nélkül "engedélyezhető".
+Dokumentumok keresése a "luxus" szó nélkül.
 
     not search.ismatch('luxury')
 
-Keresse meg a dokumentumok minősítési értéknek 5 vagy "óceán view" kifejezés helyett szerepel. A `search.ismatchscoring` lekérdezés hajtani, csak a mező alapján `HotelName` és `Rooms/Description`.
+Megkeresheti az "Ocean View" kifejezéssel vagy 5 értékkel egyenlő minősítéssel rendelkező dokumentumokat. A `search.ismatchscoring` lekérdezés csak a mezőkre `HotelName` és a- `Rooms/Description`ra lesz végrehajtva.
 
-Dokumentumok, amely megfelel a vagy műveletet csak a második záradék visszaad túl – a "Hotels" `Rating` megegyezik az 5. Ahhoz, hogy ezeket a dokumentumokat bármely pontozott részei a kifejezés nem megfelelő, azok vissza kell adni a pontszám nullánál nem kisebb törlése.
+Azok a dokumentumok, amelyek megfelelnek a kivonásnak, csak a második záradékkal lesznek visszaadva `Rating` . Annak egyértelművé tétele érdekében, hogy ezek a dokumentumok nem egyeznek a kifejezés egyik pontján sem, a pontszám értéke nulla lesz.
 
     search.ismatchscoring('"ocean view"', 'Rooms/Description,HotelName') or Rating eq 5
 
-Dokumentumok keresése, ahol a feltételek "hotel" és "repülőtér" 5 szó egymástól Szálloda leírásában belül, és ahol fogyasztási nem engedélyezett, legalább a termek néhányat. Ez a lekérdezés használ a [teljes Lucene lekérdezési nyelv](query-lucene-syntax.md).
+Megkeresheti azokat a dokumentumokat, amelyekben a "Hotel" és a "repülőtér" kifejezés a szálloda leírásában szereplő 5 szóból áll, és ahol a dohányzás nem engedélyezett legalább néhány szobában. Ez a lekérdezés a [teljes Lucene lekérdezési nyelvet](query-lucene-syntax.md)használja.
 
     search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and Rooms/any(room: not room/SmokingAllowed)
 
 ## <a name="next-steps"></a>További lépések  
 
-- [Szűrők az Azure Search szolgáltatásban](search-filters.md)
-- [Az Azure Search OData kifejezés nyelvi – áttekintés](query-odata-filter-orderby-syntax.md)
-- [Az Azure Search OData kifejezés szintaxisának referenciája](search-query-odata-syntax-reference.md)
-- [Dokumentumok keresése &#40;az Azure Search szolgáltatás REST API-ja&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Szűrők a Azure Searchban](search-filters.md)
+- [A OData kifejezés nyelvének áttekintése Azure Search](query-odata-filter-orderby-syntax.md)
+- [Azure Search OData-kifejezés szintaxisának referenciája](search-query-odata-syntax-reference.md)
+- [Dokumentumok &#40;keresése Azure Search szolgáltatás REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

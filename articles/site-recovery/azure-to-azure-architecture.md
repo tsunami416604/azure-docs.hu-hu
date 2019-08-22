@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 2ed93846e0a1ab98b25bdfbe33b34779996da82b
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 6882476cabc3dc3a737f31eeeb4ccd92e5ea6ee0
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782645"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872748"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
@@ -95,13 +95,13 @@ A Site Recovery a következőképpen veszi fel a pillanatképeket:
 
 A következő táblázat a konzisztencia különböző típusait ismerteti.
 
-### <a name="crash-consistent"></a>Összeomlás-konzisztens
+### <a name="crash-consistent"></a>Összeomlás – konzisztens
 
 **Leírás** | **Részletek** | **Az ajánlás**
 --- | --- | ---
 Az összeomlás-konzisztens Pillanatképek rögzítik a lemezen lévő, a pillanatkép elkészítéséhez szükséges adatok mennyiségét. Nem tartalmaz semmit a memóriában.<br/><br/> Tartalmazza a lemezen lévő adatok megfelelőjét, amely akkor jelenik meg, ha a virtuális gép összeomlott vagy a tápkábelt a kiszolgálóról húzta le a pillanattól kezdve, hogy a pillanatkép elkészítése megtörtént.<br/><br/> Az összeomlás-konzisztens érték nem garantálja az operációs rendszer vagy a virtuális gépen futó alkalmazások adatkonzisztenciáját. | A Site Recovery alapértelmezés szerint öt percenként hoz létre összeomlás-konzisztens helyreállítási pontokat. Ez a beállítás nem módosítható.<br/><br/>  | Napjainkban a legtöbb alkalmazás jól helyreállítható az összeomlás-konzisztens pontokból.<br/><br/> Az összeomlás-konzisztens helyreállítási pontok általában elegendőek az operációs rendszerek és az alkalmazások, például a DHCP-kiszolgálók és a nyomtatókiszolgálók replikálásához.
 
-### <a name="app-consistent"></a>Alkalmazáskonzisztens
+### <a name="app-consistent"></a>Alkalmazás – konzisztens
 
 **Leírás** | **Részletek** | **Az ajánlás**
 --- | --- | ---
@@ -139,6 +139,7 @@ Ha a virtuális gépek kimenő hozzáférése URL-címekkel van vezérelve, enge
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
 
 Az IP-címeket használó virtuális gépek kimenő kapcsolatának vezérléséhez engedélyezze ezeket a címeket.
+Vegye figyelembe, hogy a hálózati kapcsolatra vonatkozó követelmények részletei a [hálózatkezelési dokumentumban](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) találhatók. 
 
 #### <a name="source-region-rules"></a>A forrásoldali régió szabályai
 

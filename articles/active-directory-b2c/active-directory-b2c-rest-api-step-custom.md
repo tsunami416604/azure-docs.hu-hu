@@ -1,51 +1,51 @@
 ---
-title: REST API-jogcímek cseréje – Azure Active Directory B2C-vel
-description: Adja hozzá az Active Directory B2C-vel egyéni szabályzatok REST API-val jogcím cseréje.
+title: REST API követelések cseréje – Azure Active Directory B2C
+description: REST API a jogcímeket a Active Directory B2C egyéni házirendjeihez adja hozzá.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0bdef508e12a3b11143149b330da73838b53f860
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 42129870c6ab2bb5e58bdf9aaa323a3d64b479f8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439015"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69644925"
 ---
-# <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Adja hozzá a REST API-val jogcím cseréje az Azure Active Directory B2C-vel egyéni szabályzatok
+# <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>REST API jogcímek hozzáadása egyéni házirendekhez Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-RESTful API-val való interakció is hozzáadhat a [egyéni szabályzatok](active-directory-b2c-overview-custom.md) Azure Active Directory (Azure AD) B2C-ben. Ez a cikk bemutatja, hogyan hozhat létre egy Azure AD B2C felhasználói interakciósorozat, együttműködő RESTful-szolgáltatásokat.
+A Azure Active Directory (Azure AD) B2C-ben a REST API-val is hozzáadhat interakciót az [Egyéni szabályzatokhoz](active-directory-b2c-overview-custom.md) . Ez a cikk bemutatja, hogyan hozhat létre olyan Azure AD B2C felhasználói utat, amely a REST-szolgáltatásokkal kommunikál.
 
-A kapcsolati a jogcímek az exchange között a REST API-jogcímek és az Azure AD B2C-vel is tartalmaz. Jogcím cseréje a következő jellemzőkkel rendelkeznek:
+Az interakció magában foglalja a jogcímek REST API jogcímek és Azure AD B2C közötti információcserét. A jogcímek cseréje a következő jellemzőkkel rendelkezik:
 
-- Megtervezhetők úgy, mint egy vezénylési lépés.
-- Egy külső műveletet is indíthat. Például a külső adatbázis azt is naplózhat egy eseményt.
-- Olyan érték beolvasása, és tárolja a felhasználói adatbázis használható.
-- Módosíthatja a folyamat végrehajtása.
+- Előkészítési lépésként is megtervezhető.
+- Külső műveletet indíthat el. Például naplózhat egy eseményt egy külső adatbázisban.
+- Egy érték beolvasására, majd a felhasználói adatbázisba való tárolására használható.
+- Módosíthatja a végrehajtás folyamatát.
 
-A forgatókönyv, amely ebben a cikkben szerepel az alábbi műveleteket tartalmazza:
+A cikkben szereplő forgatókönyv a következő műveleteket tartalmazza:
 
-1. Keresse meg a felhasználó egy külső rendszerben.
-2. A város, ahol regisztrálva van-e az adott felhasználó kaphat.
-3. Ezt az attribútumot térjen vissza az alkalmazás jogcímként.
+1. Keresse meg a felhasználót egy külső rendszeren.
+2. Szerezze be azt a várost, ahol a felhasználó regisztrálva van.
+3. Ezt az attribútumot jogcímként visszaküldi az alkalmazásnak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Hajtsa végre a [egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md).
-- REST API-végpont használatával kommunikálhat. A cikk használ egy egyszerű Azure-függvény példaként. Az Azure-függvény létrehozásához lásd: [az első függvény létrehozása az Azure Portalon](../azure-functions/functions-create-first-azure-function.md).
+- Hajtsa végre az [Ismerkedés az egyéni szabályzatokkal](active-directory-b2c-get-started-custom.md)című témakör lépéseit.
+- Egy REST API végpont, amely együttműködik a szolgáltatással. Ez a cikk egy egyszerű Azure-függvényt használ példaként. Az Azure-függvény létrehozásával kapcsolatban tekintse [meg az első függvény létrehozása a Azure Portalban](../azure-functions/functions-create-first-azure-function.md)című témakört.
 
-## <a name="prepare-the-api"></a>Készítse elő az API-hoz
+## <a name="prepare-the-api"></a>Az API előkészítése
 
-Ebben a szakaszban az Azure-függvény értéket kap előkészítése `email`, és visszaadja az érték `city` , amely használható az Azure AD B2C által jogcímként.
+Ebben a szakaszban előkészíti az Azure-függvényt `email`, hogy megkapja a értékét, majd visszaadja azt az `city` értéket, amelyet az Azure ad B2C jogcímként használhat.
 
-Módosítsa a run.csx fájlt az Azure-függvény, amely létrehozta a következő kóddal:
+Módosítsa a létrehozott Azure-függvény Run. CSX fájlját a következő kód használatára:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -82,11 +82,11 @@ public class ResponseContent
 }
 ```
 
-## <a name="configure-the-claims-exchange"></a>A jogcímek az exchange konfigurálása
+## <a name="configure-the-claims-exchange"></a>A jogcím-Exchange konfigurálása
 
-A technikai profil biztosít a konfiguráció a jogcím Exchange-hez.
+A technikai profil biztosítja a jogcím-Exchange konfigurációját.
 
-Nyissa meg a *TrustFrameworkExtensions.xml* fájlt, és adja hozzá a következő **ClaimsProvider** XML-elem található a **ClaimsProviders** elemet.
+Nyissa meg a *TrustFrameworkExtensions. XML* fájlt, és adja hozzá a következő **ClaimsProvider** XML-elemet a **ClaimsProviders** elemhez.
 
 ```XML
 <ClaimsProvider>
@@ -97,8 +97,10 @@ Nyissa meg a *TrustFrameworkExtensions.xml* fájlt, és adja hozzá a következ�
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
         <Item Key="ServiceUrl">https://myfunction.azurewebsites.net/api/HttpTrigger1?code=bAZ4lLy//ZHZxmncM8rI7AgjQsrMKmVXBpP0vd9smOzdXDDUIaLljA==</Item>
-        <Item Key="AuthenticationType">None</Item>
         <Item Key="SendClaimsIn">Body</Item>
+        <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+        <Item Key="AuthenticationType">None</Item>
+        <!-- REMOVE the following line in production environments -->
         <Item Key="AllowInsecureAuthInProduction">true</Item>
       </Metadata>
       <InputClaims>
@@ -113,11 +115,13 @@ Nyissa meg a *TrustFrameworkExtensions.xml* fájlt, és adja hozzá a következ�
 </ClaimsProvider>
 ```
 
-A **InputClaims** elem definiálja a jogcímeket, a REST-szolgáltatás küldött. Ebben a példában a jogcím értéke `givenName` a REST-szolgáltatás, mint a jogcím küldendő `email`. A **OutputClaims** elem definiálja a jogcímeket, amelyek várhatóan a REST-szolgáltatás.
+A **szabályzattípushoz** elem határozza meg a REST szolgáltatásnak eljuttatott jogcímeket. Ebben a példában a jogcím `givenName` értékét a rendszer elküldi a REST szolgáltatásnak jogcímként. `email` A **OutputClaims** elem határozza meg a REST szolgáltatástól várt jogcímeket.
 
-## <a name="add-the-claim-definition"></a>Adja hozzá a jogcím-definíció
+A fenti `AuthenticationType` megjegyzések és `AllowInsecureAuthInProduction` az éles környezetbe való áttéréskor végrehajtott módosítások megadása. A REST API-k éles környezetben történő biztonságossá tételéhez tekintse meg a [biztonságos REST API](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) -k alapszintű hitelesítéssel és [biztonságos REST API](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)-k hitelesítéssel című témakörét.
 
-Adja hozzá a definíciót a `city` belül a **BuildingBlocks** elemet. Ez az elem a TrustFrameworkExtensions.xml fájl elején annak.
+## <a name="add-the-claim-definition"></a>Jogcím-definíció hozzáadása
+
+Adjon hozzá egy definíciót `city` a **BuildingBlocks** elemen belül. Ezt az elemet a TrustFrameworkExtensions. xml fájl elején találja.
 
 ```XML
 <BuildingBlocks>
@@ -132,11 +136,11 @@ Adja hozzá a definíciót a `city` belül a **BuildingBlocks** elemet. Ez az el
 </BuildingBlocks>
 ```
 
-## <a name="add-an-orchestration-step"></a>Egy vezénylési lépés hozzáadása
+## <a name="add-an-orchestration-step"></a>Előkészítési lépés hozzáadása
 
-Nincsenek számos használati esetek, amikor egy vezénylési lépés használható a REST API-hívás. Egy vezénylési lépésként használat frissítés után a felhasználó sikeresen végrehajtotta egy feladat, például az első regisztráció külső rendszerre, vagy a profil frissítése, hogy az adatok szinkronizálását. Ebben az esetben szolgál, mivel megvédi a profil szerkesztése után az alkalmazásnak megadott információkat.
+Sok olyan felhasználási eset van, ahol a REST API hívást összehangoló lépésként lehet használni. Az előkészítési lépésként egy külső rendszer frissítéseként is használható, miután egy felhasználó sikeresen végrehajtotta a feladatot, például az első regisztrációt, vagy a profil frissítését, hogy szinkronizálva legyen az információ. Ebben az esetben a profil szerkesztése után az alkalmazásnak biztosított információk kiegészítésére kerül sor.
 
-Lépés hozzáadása a profil szerkesztése felhasználói interakciósorozat. Miután a felhasználó hitelesítése (vezénylési lépésekből 1 – 4 a következő XML formátumú), és a felhasználó megadta a frissített profil információkat (5. lépés). Másolás a profil felhasználói interakciósorozat XML-kódot a Szerkesztés a *TrustFrameworkBase.xml* fájlt a *TrustFrameworkExtensions.xml* belül fájlt a **UserJourneys** elem. Végezze el a módosítást, a 6. lépés.
+Adjon hozzá egy lépést a profil szerkesztése felhasználói útra. A felhasználó hitelesítése után (a 1-4-es lépések a következő XML-ben), és a felhasználó megadta a frissített profil adatait (5. lépés). Másolja a profil szerkesztése felhasználói út XML-kódját a *TrustFrameworkBase. XML* fájlból a *TrustFrameworkExtensions. XML* fájlba a **UserJourneys** elemen belül. Ezután végezze el a módosítást 6. lépésként.
 
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
@@ -146,7 +150,7 @@ Lépés hozzáadása a profil szerkesztése felhasználói interakciósorozat. M
 </OrchestrationStep>
 ```
 
-A felhasználói út tartalomdefinícióinak végső XML példához hasonlóan kell kinéznie:
+A felhasználói utazás utolsó XML-fájljának a következő példához hasonlóan kell kinéznie:
 
 ```XML
 <UserJourney Id="ProfileEdit">
@@ -204,11 +208,11 @@ A felhasználói út tartalomdefinícióinak végső XML példához hasonlóan k
 </UserJourney>
 ```
 
-## <a name="add-the-claim"></a>Az igényt hozzáadása
+## <a name="add-the-claim"></a>Jogcím hozzáadása
 
-Szerkessze a *ProfileEdit.xml* fájlt, és `<OutputClaim ClaimTypeReferenceId="city" />` , a **OutputClaims** elemet.
+Szerkessze a *ProfileEdit. XML* fájlt, `<OutputClaim ClaimTypeReferenceId="city" />` és adja hozzá a **OutputClaims** elemhez.
 
-Az új jogcímet ad hozzá, miután a technikai profil példához hasonlóan néz ki:
+Az új jogcím hozzáadása után a technikai profil a következő példához hasonlóan néz ki:
 
 ```XML
 <TechnicalProfile Id="PolicyProfile">
@@ -223,15 +227,15 @@ Az új jogcímet ad hozzá, miután a technikai profil példához hasonlóan né
 </TechnicalProfile>
 ```
 
-## <a name="upload-your-changes-and-test"></a>Töltse fel a módosításokat, és tesztelése
+## <a name="upload-your-changes-and-test"></a>A módosítások feltöltése és tesztelés
 
-1. (Nem kötelező:) Mentse a meglévő verziót (Letöltés) a fájlok folytatás előtt.
-2. Töltse fel a *TrustFrameworkExtensions.xml* és *ProfileEdit.xml* , és válassza ki a meglévő fájl felülírásához.
-3. Válassza ki **B2C_1A_ProfileEdit**.
-4. A **válassza ki az alkalmazás** az egyéni házirend áttekintése lapon válassza ki a nevű webalkalmazás *webapp1* , amely korábban regisztrálva. Győződjön meg arról, hogy a **válasz URL-cím** van `https://jwt.ms`.
-4. Válassza ki **Futtatás most**. Jelentkezzen be a fiók hitelesítő adatait, és kattintson a **Folytatás**.
+1. Választható A folytatás előtt mentse a fájlok meglévő verzióját (letöltéssel).
+2. Töltse fel a *TrustFrameworkExtensions. XML* és a *ProfileEdit. XML* fájlt, és jelölje be a meglévő fájl felülírásához.
+3. Válassza a **B2C_1A_ProfileEdit**lehetőséget.
+4. Az egyéni házirend áttekintés lapján jelölje ki az **alkalmazás kiválasztása** lehetőséget, majd válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. Győződjön meg arról, hogy a **Válasz URL-címe** `https://jwt.ms`:.
+4. Válassza a **Futtatás most**lehetőséget. Jelentkezzen be a fiókja hitelesítő adataival, majd kattintson a **Folytatás**gombra.
 
-Ha minden helyesen van beállítva, a jogkivonat tartalmazza-e az új jogcímet `city`, a következő értékkel `Redmond`.
+Ha minden helyesen van beállítva, a jogkivonat tartalmazza az új jogcímet `city`az értékkel `Redmond`együtt.
 
 ```JSON
 {
@@ -251,5 +255,13 @@ Ha minden helyesen van beállítva, a jogkivonat tartalmazza-e az új jogcímet 
 
 ## <a name="next-steps"></a>További lépések
 
-- A kapcsolati érvényesítési profil is tervezhet. További információkért lásd: [forgatókönyv: A felhasználói bevitel auditáló integrálása a REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő](active-directory-b2c-rest-api-validation-custom.md).
-- [További információkat kell gyűjteni a felhasználók a profilszerkesztés módosítása](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+Az interakciót érvényesítő profilként is megtervezheti. További információ [: útmutató: Integrálhatja REST API jogcímek cseréjét a Azure AD B2C felhasználói úton, a](active-directory-b2c-rest-api-validation-custom.md)felhasználói adatok érvényesítése során.
+
+[Módosítsa a profil szerkesztését, hogy további információkat gyűjtsön a felhasználóktól](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+
+[Referencia REST-technikai profil](restful-technical-profile.md)
+
+Az API-k védelméről a következő cikkekben tájékozódhat:
+
+* [A REST API biztonságossá tétele egyszerű hitelesítéssel (Felhasználónév és jelszó)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
+* [A REST API biztonságossá tétele Ügyféltanúsítványok használatával](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 92d6f005018040e20c2df72dbc608a47bc8d9f08
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: e7c0f0abdf4a96f4af904f76549bdebd62b803cd
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849021"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877321"
 ---
 # <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>Trigger Azure Functions az Azure-beli webhookok használatával IoT Central
 
 *Ez a témakör az építők és a rendszergazdákra vonatkozik.*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 A Azure Functions használatával kiszolgáló nélküli kódokat futtathat IoT Central szabályok webhook kimenetén. Nem kell létrehoznia egy virtuális gépet, vagy közzé kell tennie egy webalkalmazást a Azure Functions használatához, de ehelyett futtathatja ezt a kódot kiszolgáló nélkül. Az Azure Functions használatával alakítsa át a webhook hasznos adatait, mielőtt elküldi azt a végső célhelyre, például egy SQL-adatbázisra vagy Event Gridra.
 
