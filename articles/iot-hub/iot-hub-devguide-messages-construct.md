@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: 9a62001f168e0577ea07ad030923a4d0398e50af
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534975"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872488"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-üzenetek létrehozása és olvasása
 
@@ -73,7 +73,7 @@ További információ a különböző protokollok használatával elküldött ü
 
 ## <a name="message-size"></a>Üzenet mérete
 
-A IoT Hub az üzenetek méretét a protokolltól független módon méri, és csak a tényleges adattartalmat veszi figyelembe. A bájtban megadott méret kiszámítása a következők összegeként történik:
+A IoT Hub az üzenetek méretét a protokolltól független módon méri, és csak a tényleges adattartalmat veszi figyelembe. A bájtban megadott méret kiszámítása a következő értékek összegeként történik:
 
 * A törzs mérete bájtban megadva.
 * Az üzenetrendszer-tulajdonságok összes értékének bájtban kifejezett mérete.

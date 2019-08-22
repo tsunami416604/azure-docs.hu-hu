@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 184cdaddc638461d50f322292d5cfaf28ab93093
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 0e60607d50722a4496dc8f4ad7d609cdf9fd5792
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950532"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877166"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Hivatkozás – IoT Hub kvóták és szabályozás
 
@@ -25,6 +25,10 @@ Minden Azure-előfizetés legfeljebb 50 IoT-hubhoz és legfeljebb 1 ingyenes kö
 Üzembe helyezéskor minden IoT hub bizonyos számú egységet tartalmaz egy adott szinten. Az egységek szintje és száma határozza meg az elküldhető üzenetek maximális napi kvótáját. A napi kvóta kiszámításához használt üzenet mérete 0,5 KB az ingyenes szintű hub-hoz és az összes többi 4KB. További információ: [Azure IoT hub díjszabása](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 A (z) szinten meghatározza azokat a szabályozási korlátokat is, amelyek az összes műveletre IoT Hub érvényesítenek.
+
+### <a name="iot-plug-and-play"></a>IoT Plug and Play
+
+A nyilvános előzetes verzióban a IoT Plug and Play-eszközök külön üzeneteket küldenek egy felületen, ami növelheti az üzenetek számának az üzenet-kvótába való megszámlálását.
 
 ## <a name="operation-throttles"></a>Műveletek szabályozása
 

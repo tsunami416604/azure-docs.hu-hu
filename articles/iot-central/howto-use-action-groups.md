@@ -8,16 +8,18 @@ ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: d9d7b2d189c6a1533be2d1cae4989669787c3f2a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: ad5f660ff72eceecbb6db2e9557b023ed2c6ea99
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849008"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875813"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Több művelet csoportosítása egy vagy több szabályból való futtatáshoz
 
 *Ez a cikk az építők és a rendszergazdákra vonatkozik.*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Az Azure IoT Centralban szabályokat hozhat létre a műveletek futtatásához, ha egy feltétel teljesül. A szabályok az eszköz telemetria vagy eseményein alapulnak. Értesítheti például az operátort, ha az eszköz hőmérséklete meghaladja a küszöbértéket. Ez a cikk azt ismerteti, hogyan használhatók [Azure monitor](../azure-monitor/overview.md) *műveleti csoportok* több művelet egy IoT Central-szabályhoz való csatolásához. A műveleti csoportokat több szabályhoz is csatolhatja. A [műveleti csoport](../azure-monitor/platform/action-groups.md) az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye.
 
@@ -37,7 +39,7 @@ Egy műveleti csoport a következőket teheti:
 
 Az alábbi képernyőfelvételen egy olyan műveleti csoport látható, amely e-mailben és SMS-értesítéseket küld, és egy webhookot hív meg:
 
-![Műveleti csoport](media/howto-use-action-groups/actiongroup.png)
+![Műveletcsoport](media/howto-use-action-groups/actiongroup.png)
 
 Ha IoT Central szabályban szeretne műveleti csoportot használni, a műveleti csoportnak ugyanabban az Azure-előfizetésben kell lennie, mint a IoT Central alkalmazásnak.
 

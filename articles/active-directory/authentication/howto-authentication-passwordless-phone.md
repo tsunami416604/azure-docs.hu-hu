@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 164a71354423bebc1422ba94747f2daeec33909d
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e9c21ff5c4c94eecc7bb1a6643e46166df80edf4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828929"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648316"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)
 
@@ -92,7 +92,7 @@ Azok a végfelhasználók, akik az MFA számára engedélyezve vannak a szerveze
 
 ### <a name="device-registration"></a>Eszközregisztráció
 
-Az új, erős hitelesítő adatok létrehozásának egyik előfeltétele, hogy az eszköznek az Azure AD-bérlőn belül is regisztrálnia kell egy adott felhasználóra. Az eszközök aktuális regisztrációs korlátozásai miatt az eszközök csak egyetlen bérlőben regisztrálhatók. Ez a korlát azt jelenti, hogy a Microsoft Authenticator alkalmazásban csak egy munkahelyi vagy iskolai fiók engedélyezhető a telefonos bejelentkezéshez.
+Az új, erős hitelesítő adatok létrehozásának egyik előfeltétele, hogy az eszközön, ahol a Microsoft Authenticator alkalmazást telepítették, az Azure AD-bérlőn belül is regisztrálni kell egy adott felhasználóra. Az eszközök aktuális regisztrációs korlátozásai miatt az eszközök csak egyetlen bérlőben regisztrálhatók. Ez a korlát azt jelenti, hogy a Microsoft Authenticator alkalmazásban csak egy munkahelyi vagy iskolai fiók engedélyezhető a telefonos bejelentkezéshez.
 
 > [!NOTE]
 > Az eszköz regisztrálása nem ugyanaz, mint az Eszközkezelő vagy a "MDM". A szolgáltatás csak az eszköz AZONOSÍTÓját és egy felhasználói azonosítót társít az Azure AD-címtárban.  

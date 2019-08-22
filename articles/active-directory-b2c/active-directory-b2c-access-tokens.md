@@ -1,6 +1,6 @@
 ---
-title: Kérelem-hozzáférési jogkivonata – Azure Active Directory B2C |} A Microsoft Docs
-description: Útmutató az Azure Active Directory B2C hozzáférési jogkivonat kérése.
+title: Hozzáférési jogkivonat kérése – Azure Active Directory B2C | Microsoft Docs
+description: Megtudhatja, hogyan kérhet hozzáférési jogkivonatot a Azure Active Directory B2Cból.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,83 +10,83 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a545f1e0fd1360d9147280454fb8b75bf216152
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df47b4fc5b8048f76f94486e213285896dab9cb9
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507394"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874093"
 ---
-# <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C hozzáférési jogkivonat kérése
+# <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Hozzáférési jogkivonat igénylése Azure Active Directory B2C
 
-Egy *hozzáférési jogkivonat* használható az Azure Active Directory (Azure AD) B2C segítségével azonosítja az API-k a megadott engedélyek jogcímeket tartalmaz. Erőforrás-kiszolgáló meghívásakor egy hozzáférési jogkivonatot a HTTP-kérelem jelen kell lennie. Hozzáférési jogkivonat jelölése **access_token** a Azure AD B2C-ből a válaszokat. 
+A *hozzáférési* jogkivonatok olyan jogcímeket tartalmaznak, amelyeket Azure Active Directory (Azure ad) B2C-ben használhat az API-khoz megadott engedélyek azonosítására. Egy erőforrás-kiszolgáló meghívásakor a hozzáférési tokennek jelen kell lennie a HTTP-kérelemben. A hozzáférési jogkivonatot a Azure AD B2C válaszai **access_token** jelöli.
 
-Ez a cikk bemutatja, hogyan egy webalkalmazás és webes API hozzáférési jogkivonat kérése. Jogkivonatok az Azure AD B2C-vel kapcsolatos további információkért lásd: a [áttekintése az Azure Active Directory B2C a tokenek](active-directory-b2c-reference-tokens.md).
+Ez a cikk bemutatja, hogyan kérhet hozzáférési jogkivonatot egy webalkalmazáshoz és webes API-hoz. A Azure AD B2C jogkivonatokkal kapcsolatos további információkért tekintse meg a [Azure Active Directory B2C jogkivonatok áttekintése](active-directory-b2c-reference-tokens.md)című témakört.
 
 > [!NOTE]
-> **Webes API-láncok (a – meghatalmazásos) nem támogatja az Azure AD B2C-t.** -Számos architektúrában szerepelnek olyan webes API-t, amelyek egy másik alsóbb rétegbeli webes API egyaránt az Azure AD B2C által védett. Ez a forgatókönyv gyakori az ügyfelekről, amelyek egy webes API-k háttérrendszer meghívja a egy másik szolgáltatás, amely. Ez a láncolatba fűzött webes API-forgatókönyv az OAuth 2.0 JWT tulajdonosi hitelesítő adatok biztosítása, más néven az On-meghatalmazásos folyamat használatával támogatható. Azonban az On-meghatalmazásos folyamat még nem implementáltuk az Azure AD B2C-ben.
+> **Az Azure AD B2C nem támogatja a webes API-Láncok használatát.** – Számos architektúra tartalmaz egy webes API-t, amelynek egy másik, Azure AD B2C által védett webes API-t kell meghívnia. Ez a forgatókönyv gyakori a webes API-háttérrel rendelkező ügyfeleknél, ami viszont egy másik szolgáltatást hív meg. Ez a láncolt webes API-forgatókönyv a OAuth 2,0 JWT tulajdonosi hitelesítő adatok megadásával, más néven a meghatalmazott folyamattal támogatott. A folyamatban lévő folyamat azonban jelenleg nem Azure AD B2Cban van implementálva.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Felhasználói folyamat létrehozása](tutorial-create-user-flows.md) regisztráljon, és jelentkezzen be az alkalmazást használók.
-- Ha ezt még nem tette meg, [adjon hozzá egy webes API-alkalmazás az Azure Active Directory B2C-bérlő](add-web-application.md).
+- [Hozzon létre egy felhasználói folyamatot](tutorial-create-user-flows.md) , amely lehetővé teszi a felhasználók számára az alkalmazásba való regisztrációt és bejelentkezést.
+- Ha még nem tette meg, [adjon hozzá egy webes API-alkalmazást a Azure Active Directory B2C](add-web-application.md)-bérlőhöz.
 
 ## <a name="scopes"></a>Hatókörök
 
-Hatókörök adja meg a védett erőforrások kezeléséhez. Amikor egy hozzáférési jogkivonatot kér, az ügyfélalkalmazás kell adja meg a kívánt engedélyeket a a **hatókör** paraméter a kérelem. Adja meg például a **hatókör értéke** , `read` az API-hoz, amely rendelkezik a **Alkalmazásazonosító URI-t** , `https://contoso.onmicrosoft.com/api`, a hatókör lenne `https://contoso.onmicrosoft.com/api/read`.
+A hatókörök lehetővé teszik a védett erőforrásokra vonatkozó engedélyek kezelését. Hozzáférési jogkivonat kérése esetén az ügyfélalkalmazás a kérelem **hatókör** -paraméterében meg kell adnia a kívánt engedélyeket. Ha például meg szeretné határozni a **hatókör értékét** `read` azon API számára `https://contoso.onmicrosoft.com/api`, amelynek az **alkalmazás-azonosító URI-ja** , a hatókör `https://contoso.onmicrosoft.com/api/read`a következő lesz:.
 
-A hatóköröket a webes API a hatóköralapú hozzáférés-vezérlés megvalósításához használja. A webes API-k bizonyos felhasználói például rendelkezhetnek olvasási és írási hozzáféréssel is, míg mások csak olvasási hozzáféréssel. A kérésben több engedély beszerzéséhez, adhat hozzá több bejegyzés az egyetlen **hatókör** paramétert a kérés, szóközzel elválasztva.
+A hatóköröket a webes API a hatóköralapú hozzáférés-vezérlés megvalósításához használja. A webes API-k bizonyos felhasználói például rendelkezhetnek olvasási és írási hozzáféréssel is, míg mások csak olvasási hozzáféréssel. Ha több engedélyt szeretne beszerezni ugyanabban a kérésben, több bejegyzést is hozzáadhat a kérelem egyetlen hatókörű paraméteréhez, szóközzel elválasztva.
 
-Az alábbi példa bemutatja egy URL-CÍMBEN szereplő dekódolni hatókörök:
+Az alábbi példa egy URL-címben dekódolt hatóköröket mutatja be:
 
 ```
 scope=https://contoso.onmicrosoft.com/api/read openid offline_access
 ```
 
-Az alábbi példa bemutatja az URL-kódolású hatókörök:
+Az alábbi példában egy URL-címben kódolt hatókörök láthatók:
 
 ```
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-Ha több hatókört, mit kap az ügyfélalkalmazás számára, mint kér, a hívás sikeres lesz, abban az esetben, ha legalább egy engedélyt kapnak. A **scp** jogcím az eredményül kapott hozzáférési jogkivonatot a rendszer csak a sikeresen megadott engedélyek kitölti. Az OpenID Connect standard számos speciális hatókör értékeinek megadása A következő hatókörök mutatják be a profil hozzáférési engedélyt:
+Ha több hatókört kér az ügyfélalkalmazás számára, akkor a hívás sikeres lesz, ha legalább egy engedélyt megadtak. Az eredményül kapott hozzáférési jogkivonatban lévő **SCP** -jogcím csak a sikeresen megadott engedélyekkel van feltöltve. Az OpenID Connect standard több speciális hatókör-értéket ad meg. A következő hatókörök a felhasználó profiljához való hozzáférés engedélyét jelentik:
 
-- **openid** -kérelmek egy azonosító jogkivonat.
-- **offline_access** -kérelmek, a frissítési jogkivonat használatával [hitelesítési kód folyamatok](active-directory-b2c-reference-oauth-code.md).
+- **OpenID** – azonosító tokent kér.
+- **offline_access** – frissítési tokent kér az [Auth Code flow](active-directory-b2c-reference-oauth-code.md)használatával.
 
-Ha a **response_type** paramétert egy `/authorize` kérelemben `token`, a **hatókör** paraméternek tartalmaznia kell legalább egy erőforrás-hatókör nem `openid` és `offline_access`fog kapni. Ellenkező esetben a `/authorize` kérelem meghiúsul.
+Ha a `/authorize` kérelemben `token`szerepel a response_type paraméter, akkor a **hatókör** -paraméternek tartalmaznia kell legalább egy olyan erőforrás `openid` - `offline_access` hatókört, amely nem a és a lesz megadva. Ellenkező esetben a `/authorize` kérés meghiúsul.
 
-## <a name="request-a-token"></a>A jogkivonat kérése
+## <a name="request-a-token"></a>Jogkivonat igénylése
 
-Egy hozzáférési jogkivonatot kér, az engedélyezési kódot kell. Az alábbi példában a kérést, a `/authorize` végpontja egy engedélyezési kód. Egyéni tartományok használata nem támogatott a hozzáférési jogkivonatok segítségével. A kérelem URL-CÍMÉT a bérlő-name.onmicrosoft.com tartományához használható.
+Hozzáférési jogkivonat igényléséhez egy engedélyezési kódnak kell lennie. Az alábbi példa a `/authorize` végpontra irányuló kérést mutatja be egy engedélyezési kódhoz. A hozzáférési jogkivonatokkal való használat nem támogatja az egyéni tartományokat. Használja a tenant-name.onmicrosoft.com tartományt a kérelem URL-címében.
 
-A következő példában cserélje le ezeket az értékeket:
+Az alábbi példában a következő értékeket kell lecserélnie:
 
-- `<tenant-name>` -A az Azure AD B2C-bérlő neve.
-- `<policy-name>` – Az egyéni szabályzat vagy felhasználói folyamat nevét.
-- `<application-ID>` -A webalkalmazást, amely a felhasználói folyamat támogatásához regisztrált alkalmazás azonosítóját.
-- `<redirect-uri>` -A **átirányítási URI-t** ügyfélalkalmazás regisztrációja során megadott.
+- `<tenant-name>`– A Azure AD B2C bérlő neve.
+- `<policy-name>`– Az egyéni házirend vagy felhasználói folyamat neve.
+- `<application-ID>`– A felhasználói folyamat támogatásához regisztrált webalkalmazás alkalmazás-azonosítója.
+- `<redirect-uri>`– Az ügyfélalkalmazás regisztrálásakor megadott **átirányítási URI** .
 
-```
+```HTTP
 GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
 client_id=<application-ID>
 &nonce=anyRandomValue
 &redirect_uri=https://jwt.ms
 &scope=https://tenant-name>.onmicrosoft.com/api/read
-&response_type=code 
+&response_type=code
 ```
 
-A válasz az engedélyezési kód ebben a példában hasonló lesz:
+Az engedélyezési kóddal kapcsolatos válasznak a következő példához hasonlónak kell lennie:
 
 ```
 https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 ```
 
-Miután sikeresen kapott engedélyezési kód, a hozzáférési jogkivonat kérése használhatja azt:
+Az engedélyezési kód sikeres kézhezvételét követően a segítségével hozzáférési tokent igényelhet:
 
-```
+```HTTP
 POST <tenant-name>.onmicrosoft.com/oauth2/v2.0/token?p=<policy-name> HTTP/1.1
-Host: https://<tenant-name>.b2clogin.com
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code
@@ -97,9 +97,9 @@ grant_type=authorization_code
 &client_secret=2hMG2-_:y12n10vwH...
 ```
 
-A következő választ hasonló kell megjelennie:
+A következőhöz hasonló válasznak kell megjelennie:
 
-```
+```JSON
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrN...",
     "token_type": "Bearer",
@@ -111,9 +111,9 @@ A következő választ hasonló kell megjelennie:
 }
 ```
 
-Használata esetén https://jwt.ms a hozzáférési jogkivonat által eredményül adott vizsgálatához kell megjelennie a következő példához hasonló:
+Ha a https://jwt.ms használatával vizsgálja meg a visszaadott hozzáférési tokent, akkor az alábbi példához hasonlóan kell megjelennie:
 
-```
+```JSON
 {
   "typ": "JWT",
   "alg": "RS256",
@@ -137,4 +137,4 @@ Használata esetén https://jwt.ms a hozzáférési jogkivonat által eredmény�
 
 ## <a name="next-steps"></a>További lépések
 
-- Hogyan [jogkivonatok konfigurálása az Azure AD B2C-ben](configure-tokens.md)
+- Tudnivalók a jogkivonatok [konfigurálásáról a Azure ad B2C](configure-tokens.md)

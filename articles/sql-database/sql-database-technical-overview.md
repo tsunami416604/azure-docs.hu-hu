@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: e648f89a86d7d6064b883496f888cb27a4af27e4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1c4fae5c41f4f23c4a7fe3135b602133aa69aacd
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566395"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873733"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás?
 
@@ -197,6 +197,8 @@ Az SQL Database egyszerűbbé és hatékonyabbá teszi az alkalmazások létreho
   Ingyenes, letölthető, nyílt forráskódú, a Windows, macOS és Linux rendszerekhez használható, bővítményeket támogató, az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) , beleértve a Microsoft SQL Server, a Azure SQL Database és a SQL Data Warehouse lekérdezését.
 
 Az SQL Database támogatja a Python, Java, Node.js, PHP, Ruby, és .NET alkalmazásfejlesztést a MacOS, Linux, és Windows rendszeren. Az SQL Database az SQL Serverrel azonos [adatkapcsolattárakat](sql-database-libraries.md) támogat.
+
+[!INCLUDE [sql-database-create-manage-portal](includes/sql-database-create-manage-portal.md)]
 
 ## <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database gyakori kérdések (GYIK)
 

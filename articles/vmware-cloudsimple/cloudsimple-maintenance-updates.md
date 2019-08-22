@@ -3,25 +3,25 @@ title: Azure VMware-megoldás CloudSimple – CloudSimple-karbantartás és-fris
 description: Ismerteti a CloudSimple szolgáltatási folyamatát az ütemezett karbantartáshoz és frissítésekhez
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5d6eeecbecc89995c25e687cc6808ed3b0c5dc5c
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 92f02c0abef6755213d4c73189c7e0a593867ef6
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816217"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877936"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple-karbantartás és-frissítések
 
-A privát felhőalapú környezet úgy van kialakítva, hogy ne legyen egyetlen meghibásodási pontja:
+A privát felhőalapú környezet úgy van kialakítva, hogy ne legyen egyetlen meghibásodási pont.
 
-* Az ESXi-fürtök vSphere magas rendelkezésre állással vannak konfigurálva. A fürtök mérete legalább egy tartalék csomópont legyen a rugalmasság érdekében.
+* Az ESXi-fürtök vSphere magas rendelkezésre állással (HA) vannak konfigurálva. A fürtök mérete legalább egy tartalék csomópont legyen a rugalmasság érdekében.
 * A redundáns elsődleges tárterületet a vSAN biztosítja, amelynek legalább három csomóponttal kell rendelkeznie az egyetlen hiba elleni védelem biztosításához. a vSAN konfigurálható úgy, hogy magasabb rugalmasságot biztosítson a nagyobb fürtök számára.
-* a vCenter, a PSC és a NSX Manager virtuális gépek RAID-10 tárolási házirenddel vannak konfigurálva a tárolási hibák elleni védelemhez. A virtuális gépek a vSphere és a hálózati hibák ellen védettek.
+* a vCenter, a PSC és a NSX Manager virtuális gépek RAID-10 tárolóval vannak konfigurálva a tárolási hibák elleni védelemhez. A virtuális gépek a vSphere és a hálózati hibák ellen védettek.
 * Az ESXi-gazdagépek redundáns ventilátorokkal és hálózati adapterekkel rendelkeznek.
 * A TOR-és gerinc-kapcsolók a rugalmasság biztosításához a HA párokban vannak konfigurálva.
 
@@ -57,9 +57,9 @@ A CloudSimple biztonsági mentést készít, karbantartja és frissíti ezeket a
 A CloudSimple biztonsági mentése a következőket tartalmazza:
 
 * A vCenter, a PSC és a DVS szabályainak éjszakai növekményes biztonsági mentései.
-* Az vCenter natív API-k használata az összetevők biztonsági mentéséhez az alkalmazás rétegében.
+* natív API-kat vCenter az összetevők biztonsági mentéséhez az alkalmazás rétegében.
 * Automatikus biztonsági mentés a VMware felügyeleti szoftver frissítése vagy frissítése előtt.
-* Adattitkosítás a forrásban, vCenter szerint, mielőtt a TLS 1.2-es titkosított csatornán keresztül adatátvitel az Azure-ba. Az adattárolást egy olyan Azure-Blob tárolja, amelyben a régiókban replikálódik.
+* vCenter az adattitkosítást a forrásnál, mielőtt az adatátvitelt TLS 1.2 titkosított csatornán keresztül az Azure-ba viszi át. Az adattárolást egy olyan Azure-Blob tárolja, amelyben a régiókban replikálódik.
 
 A visszaállítást [support Request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)megnyitásával kérheti le.
 
@@ -105,4 +105,4 @@ A CloudSimple negyedévente karbantartási frissítéseket biztosít a VMware sz
 
 ## <a name="next-steps"></a>További lépések
 
-[A számítási feladatok virtuális gépei biztonsági mentése a Veeam használatával](https://docs.azure.cloudsimple.com/backup-workloads-veeam/).
+[Munkaterhelési virtuális gépek biztonsági mentése a Veeam használatával](backup-workloads-veeam.md)

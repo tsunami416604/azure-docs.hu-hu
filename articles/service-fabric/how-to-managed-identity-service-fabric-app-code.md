@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: f0944e9fddc0afb28f758ba7b16232330d3bc34d
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 5095e680eb7fd33d28acb2d187f83d86db1b46bf
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635530"
+ms.locfileid: "69656625"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Service Fabric alkalmazás felügyelt identitásának kihasználása az Azure-szolgáltatások eléréséhez (előzetes verzió)
 
@@ -60,7 +60,7 @@ ahol
 | `GET` | A HTTP-művelet, amely azt jelzi, hogy a végpontról kívánja beolvasni az adatait. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
 | `http://localhost:2377/metadata/identity/oauth2/token` | A felügyelt identitás végpontja Service Fabric alkalmazásokhoz, amelyeket a MSI_ENDPOINT környezeti változón keresztül biztosítanak. |
 | `api-version` | Egy lekérdezési karakterlánc paraméter, amely megadja a felügyelt Identity token szolgáltatás API-verzióját; jelenleg az egyetlen elfogadott érték `2019-07-01-preview`a, és a változás változhat. |
-| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Ez a kiállított jogkivonat `aud` (célközönség) jogcímeként jelenik meg. Ez a példa jogkivonatot kér a Azure Key Vault eléréséhez, amelynek az alkalmazás https://keyvault.azure.com/ -azonosító URI-ja. |
+| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Ez a kiállított jogkivonat `aud` (célközönség) jogcímeként jelenik meg. Ez a példa jogkivonatot kér a Azure Key Vault eléréséhez, amelynek az alkalmazás-azonosító\/URI-ja https:/keyvault.Azure.com/. |
 | `Secret` | Egy HTTP-kérelem fejlécének mezője, amelyet a Service Fabric felügyelt Identity jogkivonat szolgáltatás igényel Service Fabric-szolgáltatásokhoz a hívó hitelesítéséhez. Ezt az értéket az SF Runtime a MSI_SECRET környezeti változón keresztül írja elő. |
 
 

@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 41a9c87731dcb6a2cb31e9120a0170b892c58b6f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e6c5ea86534001e0e5de2b02c4151af70631e4ef
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884094"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650015"
 ---
 # <a name="simple-query-syntax-in-azure-search"></a>Egyszerű lekérdezési szintaxis a Azure Searchban
 Azure Search két Lucene-alapú lekérdezési nyelvet implementál: [Egyszerű lekérdezés-elemző](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) és a [Lucene lekérdezés-elemző](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Azure Search az egyszerű lekérdezési szintaxis kizárja a fuzzy/lejtő beállításait.  
