@@ -1,6 +1,6 @@
 ---
-title: Egy fejlesztői készlet eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz |} A Microsoft Docs
-description: Eszköz a fejlesztők megtudhatja, hogyan az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz.
+title: Fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz | Microsoft Docs
+description: A MXChip IoT fejlesztői készlet-eszközök Azure IoT Central-alkalmazáshoz való csatlakoztatását bemutató útmutató.
 author: dominicbetts
 ms.author: dobett
 ms.date: 03/22/2019
@@ -8,68 +8,70 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 130ca6bc946d44d80cddba5486d405bfb15523cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81a355cc7c0d1190ee86fac6ed155380e6e5c0d1
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235882"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877527"
 ---
-# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
+# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip-IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
 
-Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők az MXChip IoT fejlesztői készlet (DevKit) eszköz csatlakoztatása a Microsoft Azure IoT Central alkalmazáshoz.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+Ez a cikk a MXChip IoT fejlesztői készlet (fejlesztői készlet) eszköznek a Microsoft Azure IoT Central alkalmazáshoz való csatlakoztatását ismerteti.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A jelen cikkben ismertetett lépések végrehajtásához szüksége van az alábbi forrásanyagokat:
+A cikkben szereplő lépések végrehajtásához a következő erőforrásokra van szükség:
 
-1. A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
-1. Egy fejlesztői készlet eszköz. DevKit eszköz vásárol, a Microsoft [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/).
+1. A mintául szolgáló **Devkits** létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+1. Egy fejlesztői készlet-eszköz. Fejlesztői készlet-eszköz vásárlásához látogasson el a [MXChip IoT fejlesztői készlet](https://microsoft.github.io/azure-iot-developer-kit/).
 
-## <a name="sample-devkits-application"></a>Devkits mintaalkalmazás
+## <a name="sample-devkits-application"></a>Példa Devkits alkalmazásra
 
-A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz egy **MXChip** eszköz sablon, amely meghatározza a következő eszköz jellemzői:
+A mintául szolgáló **Devkits** létrehozott alkalmazás tartalmaz egy **MXChip** , amely meghatározza a következő eszköz jellemzőit:
 
-- A telemetriai adatok mérések **páratartalom**, **hőmérséklet**, **nyomás**, **magnetométer** (X, Y, mentén mért Z tengely), **Érzékelőből** (X, Y, mentén mért Z tengely), és **Giroszkóp** (X, Y, mentén mért Z tengelyen).
-- A mérési állapot **Eszközállapot**.
-- Esemény meghatározásáért **B bekapcsolva**.
-- A beállítások **feszültségérzékelő**, **aktuális**, **ventilátor sebesség**, és a egy **integrációs modul** be-vagy kikapcsolása.
-- Eszköztulajdonságok **die szám** és **eszköz helye**, vagyis a location tulajdonsághoz.
-- A felhő tulajdonság **gyártott a**.
-- Parancsok **Echo** és **visszaszámlálás**. Ha egy igazi eszközön kap egy **Echo** parancs azt jeleníti meg az elküldött érték felolvassa az eszköz képernyőjén. Ha egy igazi eszközön kap egy **visszaszámlálás** paranccsal, a LED Váltás egy olyan mintát, és az eszköz visszaszámlálás értékek küld vissza az IoT-központ.
+- Telemetria mérések a **páratartalom**, a **hőmérséklet**, a **nyomás**, a **Magnetometer** (x, y, z tengely mentén mérve), **gyorsulásmérő** (x, y, z tengely mentén mérve) és **giroszkóp** (x, y, z tengely mentén mérve).
+- Állapot mérése az **eszköz állapotához**.
+- A **B gomb**esemény-mérése megnyomva.
+- A **feszültség**, a **jelenlegi**, a **ventilátor sebessége**és az **IR** -váltás beállításai.
+- Az eszköz tulajdonságainak **száma** és az **eszköz helye**, amely egy Location tulajdonság.
+- **A-ben előállított**Cloud Property.
+- Parancsok visszhangjaés visszaszámlálása. Ha egy valós eszköz egy **echo** -parancsot kap, az elküldött érték jelenik meg az eszköz képernyőjén. Ha egy valós eszköz visszaszámlálási parancsot kap, a rendszer egy minta alapján a LED-ciklusokat, az eszköz pedig visszaszámlálási értékeket küld vissza IoT Central.
 
-A konfiguráció teljes kapcsolatban lásd: [MXChip eszköz sablon részletei](#mxchip-device-template-details)
+A konfiguráció részletes ismertetését lásd: [MXChip-eszköz sablonjának részletei](#mxchip-device-template-details)
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-### <a name="get-your-device-connection-details"></a>Az eszköz kapcsolat részleteinek beolvasása
+### <a name="get-your-device-connection-details"></a>Az eszköz kapcsolati adatainak beolvasása
 
-Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **MXChip** eszköz sablont, és jegyezze fel az eszköz kapcsolat részletei: **Hatókör azonosítója, az eszköz Azonosítóját és az elsődleges kulcs**:
+Az Azure IoT Central alkalmazásban vegyen fel egy valódi eszközt a **MXChip** -eszköz sablonból, és jegyezze fel az eszköz kapcsolatának részleteit: **Hatókör-azonosító, eszköz azonosítója és elsődleges kulcs**:
 
-1. Adjon hozzá egy **valós eszköz** Device Explorer, jelölje ki **+ új > valós** valós eszköz hozzáadásához.
+1. Valódi eszköz hozzáadásához vegyen fel egy **valós eszközt** a Device Explorerból, és válassza az **+ új > valós** lehetőséget.
 
-    * Adjon meg egy kisbetűs **Eszközazonosító**, vagy használja a javasolt **Eszközazonosító**.
-    * Adjon meg egy **eszköznév**, vagy használja a javasolt név
+    * Adja meg a kisbetűs **eszköz azonosítóját**, vagy használja a javasolt **eszköz azonosítóját**.
+    * Adja meg az **eszköz nevét**, vagy használja a javasolt nevet
 
     ![Eszköz hozzáadása](media/howto-connect-devkit/add-device.png)
 
-1. Kérheti le az eszköz kapcsolat adatait, **hatókör azonosítója**, **Eszközazonosító**, és **elsődleges kulcs**válassza **Connect** az eszköz oldalon.
+1. Az eszköz kapcsolati adatainak, a **hatókör azonosítójának**, az **eszköz azonosítójának**és az **elsődleges kulcsnak**a beszerzéséhez válassza a **Kapcsolódás** lehetőséget az eszköz oldalon.
 
-    ![Kapcsolat adatai](media/howto-connect-devkit/device-connect.png)
+    ![Kapcsolat részletei](media/howto-connect-devkit/device-connect.png)
 
-1. Jegyezze fel a kapcsolati adatok. Ideiglenesen megszakadt a kapcsolat az internetről a következő lépésben DevKit eszközét előkészítésekor.
+1. Jegyezze fel a kapcsolat részleteit. A következő lépésben a fejlesztői készlet-eszköz előkészítésekor átmenetileg le van választva az internetről.
 
 ### <a name="prepare-the-devkit-device"></a>A fejlesztői készlet eszköz előkészítése
 
-Ha korábban már használta az eszköz és a kívánt újrakonfigurálásának egy másik Wi-Fi hálózatot, a kapcsolati karakterlánc vagy a telemetriai mérési, nyomja le az mind a **A** és **B** gombok egyszerre. Ha nem működik, nyomja le az **alaphelyzetbe** gombra, és próbálkozzon újra.
+Ha korábban már használta az eszközt, és újra szeretné konfigurálni egy másik WiFi-hálózat, a kapcsolódási karakterlánc vagy a telemetria-mérés használatára, nyomja meg egyszerre az a és a **B** gombokat is. Ha nem működik, nyomja le az alaphelyzetbe **állítás** gombot, és próbálkozzon újra.
 
-#### <a name="to-prepare-the-devkit-device"></a>Az DevKit eszköz előkészítése
+#### <a name="to-prepare-the-devkit-device"></a>A fejlesztői készlet-eszköz előkészítése
 
-1. Az MXChip a a legújabb előregyártott Azure IoT Central belső vezérlőprogram letöltése a [kiadások](https://aka.ms/iotcentral-docs-MXChip-releases) lapját a githubon.
-1. A fejlesztői készlet eszköz csatlakoztatása a fejlesztői gépén, USB-kábel segítségével. Windows, a fájl explorer megnyílik egy ablak a tárolót a fejlesztői készlet eszközön leképezve meghajtón. Ha például a meghajtó neve lehet **AZ3166 (D:)** .
-1. Húzza a **iotCentral.bin** fájlt arra a meghajtóra ablakot. A másolás befejeződése után az eszköz újraindul, új belső vezérlőprogramját.
+1. Töltse le a legújabb, előre elkészített Azure IoT Central belső vezérlőprogramot a MXChip a GitHubon a [kiadások](https://aka.ms/iotcentral-docs-MXChip-releases) oldaláról.
+1. Csatlakoztassa a fejlesztői készlet eszközt a fejlesztői számítógéphez egy USB-kábellel. A Windowsban egy fájlkezelő ablak nyílik meg a fejlesztői készlet eszközön lévő tárolóhoz rendelt meghajtón. Előfordulhat például, hogy a meghajtó neve **AZ3166 (D:)** .
+1. Húzza a **iotCentral. bin** fájlt a meghajtó ablakára. A másolás befejezésekor az eszköz újraindul az új belső vezérlőprogram.
 
-1. A fejlesztői készlet eszköz újraindításakor a következő képernyő jelenik meg:
+1. A fejlesztői készlet-eszköz újraindításakor a következő képernyő jelenik meg:
 
     ```
     Connect HotSpot:
@@ -79,175 +81,175 @@ Ha korábban már használta az eszköz és a kívánt újrakonfigurálásának 
     ```
 
     > [!NOTE]
-    > A képernyőn megjelenik az bármi más, ha alaphelyzetbe az eszközt, majd kattintson a **A** és **B** gombok használatát az eszközön, az eszköz újraindítását egy időben.
+    > Ha a képernyőn bármilyen más látható, állítsa alaphelyzetbe az eszközt, és nyomja le az eszközön az **a** és **B** gombokat az eszköz újraindításához.
 
-1. Az eszköz most már hozzáférési pont (AP) módban van. A Wi-Fi hozzáférési pont a számítógép vagy mobileszköz csatlakozhat.
+1. Az eszköz most már hozzáférési pont (AP) módban van. Ehhez a Wi-Fi-elérési ponthoz csatlakozhat a számítógépről vagy mobileszközön.
 
-1. A számítógépen telefonon vagy táblagépen kapcsolódni a Wi-Fi hálózat nevét, az eszköz képernyőjén látható. Ehhez a hálózathoz való csatlakozáskor nincs internet-hozzáféréssel. Ebben az állapotban várható és csak csatlakozott a hálózathoz, rövid időre az eszköz konfigurálása közben.
+1. A számítógépén, telefonján vagy táblaszámítógépén az eszköz képernyőjén megjelenő WiFi-hálózat nevére kell csatlakoznia. Ha csatlakozik ehhez a hálózathoz, nem rendelkezik internet-hozzáféréssel. Ez az állapot várható, és az eszköz konfigurálásakor csak rövid idő alatt csatlakozik ehhez a hálózathoz.
 
-1. Nyissa meg a webböngészőjét, és navigáljon a [ http://192.168.0.1/start ](http://192.168.0.1/start). A következő weblapon megjelenik:
+1. Nyissa meg a webböngészőt [http://192.168.0.1/start](http://192.168.0.1/start), és navigáljon a címre. A következő weblap jelenik meg:
 
-    ![Eszköz konfigurációs lapján](media/howto-connect-devkit/configpage.png)
+    ![Eszköz konfigurációja lap](media/howto-connect-devkit/configpage.png)
 
-    Adja meg a weblap:
-    - A Wi-Fi-hálózat neve
-    - a Wi-Fi-hálózat jelszavát
-    - A PIN-kódot az eszköz képernyőjén megjelenő
-    - A kapcsolat adatai **hatókör azonosítója**, **Eszközazonosító**, és **elsődleges kulcs** eszköze (kell már mentette-e a következő lépéseket követve)
-    - Válassza ki az összes elérhető telemetriai adat mérések
+    A weblapon írja be a következőt:
+    - A WiFi-hálózat neve
+    - A WiFi hálózati jelszava
+    - Az eszköz képernyőjén megjelenő PIN-kód
+    - A kapcsolat részleteinek **hatókör-azonosítója**, az **eszköz azonosítója**és az eszköz **elsődleges kulcsa** (a lépéseket a következő lépésekkel kell elmentenie)
+    - Az összes rendelkezésre álló telemetria-mérés kiválasztása
 
-1. Miután kiválasztotta **konfigurálása eszköz**, ezt oldal jelenik meg:
+1. Az **eszköz konfigurálása**lehetőség kiválasztása után a következő oldal jelenik meg:
 
     ![Eszköz konfigurálva](media/howto-connect-devkit/deviceconfigured.png)
 
-1. Nyomja le az **alaphelyzetbe** gomb az eszközön.
+1. Nyomja meg az eszköz alaphelyzetbe állítása gombot.
 
-## <a name="view-the-telemetry"></a>A telemetriai adatok megtekintése
+## <a name="view-the-telemetry"></a>A telemetria megtekintése
 
-A fejlesztői készlet eszköz újraindításakor az eszközön a képernyőn látható:
+A fejlesztői készlet-eszköz újraindításakor az eszköz képernyője a következőt jeleníti meg:
 
-* A telemetriai adatokat küldött üzenetek száma.
-* Hibák száma.
-* A kapott kívánt tulajdonságok száma és a jelentett tulajdonságok számát.
+* Az elküldött telemetria-üzenetek száma.
+* A hibák száma.
+* A kapott kívánt tulajdonságok száma és az elküldött jelentett tulajdonságok száma.
 
 > [!NOTE]
-> Ha az eszköz megjelenik az iterációhoz való csatlakozás, ellenőrizze, hogy az eszköz e **letiltott** az IoT-központ és **feloldása** az eszköz így képes csatlakozni az alkalmazáshoz.
+> Ha az eszköz úgy tűnik, hogy a kapcsolódáshoz próbál csatlakozni, ellenőrizze, hogy az eszköz le van-e **tiltva** a IoT Centralban, és **oldja** fel az eszköz zárolását, hogy az alkalmazáshoz kapcsolódjon.
 
-Rázza meg az eszköz a jelentett tulajdonságok küldéséhez. Az eszköz küld egy véletlenszerű számot, a **Die szám** eszköztulajdonság.
+A jelentett tulajdonság elküldéséhez rázza meg az eszközt. Az eszköz véletlenszerűen kiválasztott számot küld a **Die Number** eszköz tulajdonságának.
 
-A telemetriai adatok mérések és a jelentett tulajdonságértékeket megtekintése, és a beállítások konfigurálása az Azure IoT Central:
+Megtekintheti a telemetria-méréseket és a jelentett tulajdonságértékeket, valamint konfigurálhatja a beállításokat az Azure IoT Centralban:
 
-1. Használat **Device Explorer** navigálhat a **mérések** lapját valós MXChip hozzáadott:
+1. A **Device Explorer** segítségével navigáljon a ténylegesen hozzáadott MXChip-eszköz mérések lapjára:
 
-    ![Navigáljon a valódi eszköz](media/howto-connect-devkit/realdevicenew.png)
+    ![Navigáljon a valódi eszközre](media/howto-connect-devkit/realdevicenew.png)
 
-1. Az a **mérések** lapon megtekintheti az MXChip eszközről érkező telemetriai adatok:
+1. A **mérések** lapon megtekintheti az MXChip-eszközről érkező telemetria:
 
-    ![Valódi eszköz telemetriájának megtekintése](media/howto-connect-devkit/devicetelemetrynew.png)
+    ![Valós eszközről származó telemetria megtekintése](media/howto-connect-devkit/devicetelemetrynew.png)
 
-1. Az a **tulajdonságok** lapon megtekintheti a legutóbbi száma és az eszköz helye, az eszköz által jelentett:
+1. A **Tulajdonságok** lapon megtekintheti a legutóbbi meghaló számot és az eszköz által jelentett helyet:
 
-    ![Az eszköz tulajdonságai](media/howto-connect-devkit/devicepropertynew.png)
+    ![Eszköz tulajdonságainak megtekintése](media/howto-connect-devkit/devicepropertynew.png)
 
-1. Az a **beállítások** lapon módosíthatja a beállításokat az MXChip eszközön:
+1. A **Beállítások** lapon frissítheti a MXChip eszköz beállításait:
 
-    ![Eszköz-beállítások megjelenítése](media/howto-connect-devkit/devicesettingsnew.png)
+    ![Eszközbeállítások megtekintése](media/howto-connect-devkit/devicesettingsnew.png)
 
-1. Az a **parancsok** lapon segítségével meghívhatja a **Echo** és **visszaszámlálás** parancsokat:
+1. A **parancsok** lapon meghívhatja az **echo** és a **Countdown** parancsokat:
 
-    ![Hívás-parancsok](media/howto-connect-devkit/devicecommands.png)
+    ![Hívási parancsok](media/howto-connect-devkit/devicecommands.png)
 
-1. Az a **irányítópult** lapon láthatja a hely hozzárendelése
+1. Az **irányítópult** lapon a hely leképezése látható
 
-    ![Eszköz-irányítópult megtekintése](media/howto-connect-devkit/devicedashboardnew.png)
+    ![Eszköz irányítópultjának megtekintése](media/howto-connect-devkit/devicedashboardnew.png)
 
-## <a name="download-the-source-code"></a>Letöltheti a forráskódot
+## <a name="download-the-source-code"></a>Forráskód letöltése
 
-Ha azt szeretné, és módosítsa az eszköz kódot, letöltheti a Githubról. Ha azt tervezi, a kód módosítása, kövesse ezeket az utasításokat [a fejlesztési környezet előkészítését](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/#step-5-prepare-the-development-environment) az asztali operációs rendszerének.
+Ha szeretné felderíteni és módosítani az eszköz kódját, letöltheti azt a GitHubról. Ha azt tervezi, hogy módosítja a kódot, kövesse az alábbi utasításokat, és [készítse elő a fejlesztési környezetet](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/#step-5-prepare-the-development-environment) az asztali operációs rendszer számára.
 
-Letöltheti a forráskódot, az asztali gépen futtassa a következő parancsot:
+A forráskód letöltéséhez futtassa a következő parancsot az asztali gépen:
 
 ```cmd/sh
 git clone https://github.com/Azure/iot-central-firmware
 ```
 
-Az előző parancs letölti a forráskód nevű mappába `iot-central-firmware`.
+Az előző parancs letölti a forráskódot egy nevű `iot-central-firmware`mappába.
 
 > [!NOTE]
-> Ha **git** nincs telepítve a fejlesztési környezet töltheti le a [ https://git-scm.com/download ](https://git-scm.com/download).
+> Ha a **git** nincs telepítve a fejlesztői környezetben, letöltheti azt a alkalmazásból [https://git-scm.com/download](https://git-scm.com/download).
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-A Visual Studio Code segítségével nyissa meg a `MXCHIP/mxchip_advanced` mappájában a `iot-central-firmware` mappa:
+A Visual Studio Code segítségével nyissa `MXCHIP/mxchip_advanced` meg a mappát `iot-central-firmware` a mappában:
 
 ![Visual Studio Code](media/howto-connect-devkit/vscodeview.png)
 
-Hogyan a telemetriája el lesz küldve az Azure IoT Central alkalmazásnak megtekintéséhez nyissa meg a **telemetry.cpp** fájlt a `src` mappa:
+Ha szeretné megtudni, hogyan küldik el az telemetria az Azure IoT Central alkalmazásnak, nyissa meg a **telemetria. cpp** fájlt a `src` mappában:
 
-- A függvény `TelemetryController::buildTelemetryPayload` hoz létre a telemetria hasznos JSON-az érzékelőkről származó adatok az eszközön.
+- A függvény `TelemetryController::buildTelemetryPayload` létrehozza a JSON telemetria adattartalmat az eszköz érzékelőkből származó adatok használatával.
 
-- A függvény `TelemetryController::sendTelemetryPayload` hívások `sendTelemetry` a a **AzureIOTClient.cpp** a JSON-adattartalom küldése az IoT hubra az Azure IoT központi alkalmazás használja.
+- A függvény `TelemetryController::sendTelemetryPayload` a `sendTelemetry` **AzureIOTClient. cpp** fájlban hívja meg a JSON-adattartalom küldését az Azure IoT Central-alkalmazás által használt IoT hubba.
 
-Hogyan jelentett tulajdonságértékeket az Azure IoT Central alkalmazásnak megtekintéséhez nyissa meg a **telemetry.cpp** fájlt a `src` mappa:
+Ha szeretné megtudni, hogyan történik a tulajdonságértékek jelentése az Azure IoT Central alkalmazásnak, nyissa meg a **telemetria. cpp** fájlt a `src` mappában:
 
-- A függvény `TelemetryController::loop` küld a **hely** jelentett tulajdonság körülbelül 30 másodpercenként. Használja a `sendReportedProperty` működni a **AzureIOTClient.cpp** forrásfájl.
+- A függvény `TelemetryController::loop` körülbelül 30 másodpercenként küldi el a **hely** jelentett tulajdonságát. A `sendReportedProperty` függvényt használja a **AzureIOTClient. cpp** forrásfájlban.
 
-- A függvény `TelemetryController::loop` küld a **dieNumber** jelentett tulajdonságot, ha az eszköz érzékelőből észlel olyan dupla koppintással. Használja a `sendReportedProperty` működni a **AzureIOTClient.cpp** forrásfájl.
+- A függvény `TelemetryController::loop` elküldi a **dieNumber** jelentett tulajdonságot, amikor az eszköz gyorsulásmérője dupla koppintást észlel. A `sendReportedProperty` függvényt használja a **AzureIOTClient. cpp** forrásfájlban.
 
-Az eszközt az IoT-központ alkalmazás nevű parancsok reakciója megtekintéséhez nyissa meg a **registeredMethodHandlers.cpp** fájlt a `src` mappa:
+Ha szeretné megtekinteni, hogy az eszköz hogyan válaszol a IoT Central alkalmazásban hívott parancsokra, nyissa meg a `src` **registeredMethodHandlers. cpp** fájlt a mappában:
 
-- A **dmEcho** feladata a kezelő a **echo** parancsot. Megjeleníti a **displayedValue** mezőjénél a hasznos adatok az eszköz képernyőjén.
+- A **dmEcho** függvény az **echo** parancs kezelője. Megjeleníti az eszköz képernyőjén található adattartalomban megadott **displayedValue** .
 
-- A **dmCountdown** feladata a kezelő a **visszaszámlálás** parancsot. Ez az eszköz LED színének módosítása és a jelentett tulajdonságok használ a visszaszámlálási értéknek küldésére az IoT Central alkalmazásnak. A jelentett tulajdonságnak a neve megegyezik a parancsot. A függvény használja a `sendReportedProperty` működni a **AzureIOTClient.cpp** forrásfájl.
+- A **dmCountdown** függvény a visszaszámlálási parancs kezelője. Megváltoztatja az eszköz LED-ének színét, és egy jelentett tulajdonságot használ a visszaszámlálási érték visszaküldéséhez a IoT Central alkalmazásnak. A jelentett tulajdonság neve megegyezik a paranccsal. A függvény a `sendReportedProperty` **AzureIOTClient. cpp** forrásfájl függvényét használja.
 
-A kód a **AzureIOTClient.cpp** forrásfájl funkciókat használ a [a Microsoft Azure IoT SDK-k és tárak a c nyelvhez készült](https://github.com/Azure/azure-iot-sdk-c) kommunikáljon az IoT Hub.
+A **AzureIOTClient. cpp** forrásfájl kódja a [Microsoft Azure IoT SDK-k és a C-könyvtárak](https://github.com/Azure/azure-iot-sdk-c) függvényeit használja a IoT hub való interakcióhoz.
 
-Módosítására, hozhat létre, és töltse fel a mintakódot az eszköz kapcsolatos információkért tekintse meg a **readme.md** fájlt a `MXCHIP/mxchip_advanced` mappát.
+A mintakód eszközre történő módosításával, létrehozásával és feltöltésével kapcsolatos információkért tekintse meg a **readme.MD** fájlt `MXCHIP/mxchip_advanced` a mappában.
 
-## <a name="mxchip-device-template-details"></a>Az MXChip eszköz sablon részletei
+## <a name="mxchip-device-template-details"></a>MXChip-eszköz sablonjának részletei
 
-A minta Devkits alkalmazást sablon alapján létrehozott alkalmazás tartalmaz egy MXChip eszköz sablont a következő jellemzőkkel:
+A mintául szolgáló Devkits létrehozott alkalmazás tartalmaz egy MXChip-eszközt, amely a következő tulajdonságokkal rendelkezik:
 
 ### <a name="measurements"></a>Mérések
 
 #### <a name="telemetry"></a>Telemetria
 
-| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
+| Mezőnév     | Mértékegységek  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | páratartalom       | %      | 0       | 100     | 0              |
-| TEMP           | °C     | -40     | 120     | 0              |
+| ideiglenes           | °C     | – 40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
-| accelerometerZ | mg     | -2000   | 2000    | 0              |
-| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+| accelerometerX | mg     | – 2000   | 2000    | 0              |
+| gyorsulásmérő | mg     | – 2000   | 2000    | 0              |
+| accelerometerZ | mg     | – 2000   | 2000    | 0              |
+| gyroscopeX     | mdps   | – 2000   | 2000    | 0              |
+| gyroscopeY     | mdps   | – 2000   | 2000    | 0              |
+| gyroscopeZ     | mdps   | – 2000   | 2000    | 0              |
 
 #### <a name="states"></a>Állapotok 
-| Name (Név)          | Display name   | NORMÁL | FIGYELMEZTETÉS | DANGER | 
+| Name (Név)          | Display name   | NORMÁL | VIGYÁZAT | VESZÉLY | 
 | ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | Eszköz állapota   | Zöld  | Narancssárga  | Piros    | 
+| DeviceState   | Eszközállapot   | Zöld  | Narancssárga  | Piros    | 
 
 #### <a name="events"></a>Events 
 | Name (Név)             | Display name      | 
 | ---------------- | ----------------- | 
-| ButtonBPressed   | B gomb megnyomásakor  | 
+| ButtonBPressed   | B gomb lenyomva  | 
 
 ### <a name="settings"></a>Beállítások
 
-Numerikus beállításai
+Numerikus beállítások
 
-| Display name | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
+| Display name | Mezőnév | Mértékegységek | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Jelenlegi      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
-| Sebesség ventilátor    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
+| Feszültség      | setVoltage | V | 0              | 0       | 240     | 0       |
+| Aktuális      | setCurrent | Erősítők  | 0              | 0       | 100     | 0       |
+| Ventilátor sebessége    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
-A beállítások ki-/ bekapcsolása
+Váltási beállítások
 
-| Display name | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
+| Display name | Mezőnév | Szövegen | Kikapcsolt szöveg | Kezdeti |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | ON      | KI      | Ki     |
+| IR           | activateIR | BE      | KI      | Ki     |
 
-### <a name="properties"></a>Tulajdonságok
+### <a name="properties"></a>properties
 
-| Típus            | Display name | Mező neve | Adattípus |
+| Type            | Display name | Mezőnév | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
-| Eszköztulajdonság | Die száma   | dieNumber  | szám    |
-| Eszköztulajdonság | Eszköz helye   | location  | location    |
-| Text            | Az előállított     | manufacturedIn   | –       |
+| Eszköz tulajdonsága | Die száma   | dieNumber  | szám    |
+| Eszköz tulajdonsága | Eszköz helye   | location  | location    |
+| Text            | Gyártás folyamatban     | manufacturedIn   | –       |
 
 ### <a name="commands"></a>Parancsok
 
-| Display name | Mező neve | Visszatérési típusa | A beviteli mező megjelenített neve | A beviteli mező neve | A beviteli mező típusa |
+| Display name | Mezőnév | Visszatérési típus | Beviteli mező megjelenítendő neve | Beviteli mező neve | Beviteli mező típusa |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
-| echo         | echo       | szöveg        | érték megjelenítése         | displayedValue   | szöveg             |
-| Visszaszámlálás    | Visszaszámlálás  | szám      | A darabszám               | countFrom        | szám           |
+| Echo         | echo       | text        | megjelenítendő érték         | displayedValue   | text             |
+| Visszaszámlálás    | visszaszámlálás  | szám      | Darabszám               | countFrom        | szám           |
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte a MXChip IoT DevKit csatlakoztatása az Azure IoT Central alkalmazáshoz, a javasolt következő lépésre megtudhatja, hogyan [állítson be egy egyéni sablont](howto-set-up-template.md) a saját IoT-eszköz.
+Most, hogy megtanulta, hogyan csatlakozhat egy MXChip IoT-fejlesztői készlet az Azure IoT Central-alkalmazáshoz, a javasolt következő lépés annak megismerése, hogyan [állíthat be egyéni eszközöket](howto-set-up-template.md) a saját IoT-eszközéhez.

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 3637676a330b324d5620885f0cbe50d4aa68ed51
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 2efeb37f8b98f4cf9a29ec8a6976146b81aab26b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779050"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641075"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database felügyelt példányok gyakran ismételt kérdései (GYIK)
 
@@ -36,8 +36,7 @@ A rendelkezésre álló szolgáltatási szintek és azok jellemzői a [szolgált
 
 ## <a name="where-can-i-find-known-issues-and-bugs"></a>Hol találhatók az ismert problémák és hibák?
 
-Hibák és ismert problémák esetén lásd: [viselkedési változások](sql-database-managed-instance-transact-sql-information.md#Changes) és [ismert problémák](sql-database-managed-instance-transact-sql-information.md#Issues).
-
+Hibák és ismert problémák esetén tekintse meg az [ismert problémákat](sql-database-managed-instance-transact-sql-information.md#Issues).
 
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>A felügyelt példányok neve megegyezik a helyszíni SQL Servervel?
 
