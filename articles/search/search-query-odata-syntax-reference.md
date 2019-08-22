@@ -1,13 +1,13 @@
 ---
-title: OData-kifejezés szintaxisának referenciája – Azure Search
-description: Formális szintaxis és a szintaxis leírás OData-kifejezések az Azure Search-lekérdezéseket.
+title: OData-kifejezés szintaxisának leírása – Azure Search
+description: A OData kifejezések formális nyelvtani és szintaxisi specifikációja Azure Search lekérdezésekben.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,29 +19,29 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ebe41ba61ac5136900328db9c35acb8551dcd5b2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5d7e6456cd6a6648ff2ca38ecbb4f2de5479d7c9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428662"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647495"
 ---
-# <a name="odata-expression-syntax-reference-for-azure-search"></a>Az Azure Search OData kifejezés szintaxisának referenciája
+# <a name="odata-expression-syntax-reference-for-azure-search"></a>Azure Search OData-kifejezés szintaxisának referenciája
 
-Használja az Azure Search [OData-kifejezések](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) paraméterként egész az API-t. Leggyakrabban, az OData-kifejezések használhatók a `$orderby` és `$filter` paramétereket. Ezek a kifejezések több szolgáló szerződéses klauzulák, függvényeket és operátorokat tartalmazó összetett lehet. Azonban, még akkor is egyszerű OData-kifejezések például elérési út szerepel az Azure Search REST API számos részein tulajdonság. Például elérésiút-kifejezésekben használhatók összetett mezők mindenhol az API-t, például amikor listaelem az optimálisnál mezők az alárendelt mezőkre hivatkozhatnak egy [javaslattevő](index-add-suggesters.md), amely egy [pontozó függvény](index-add-scoring-profiles.md), a `$select` paraméter , vagy akár [fielded keresés a Lucene-lekérdezésekre](query-lucene-syntax.md).
+A Azure Search [OData](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) -kifejezéseket használ paraméterként az API-ban. A és `$orderby` `$filter` a paraméterek leggyakrabban a OData kifejezéseket használják. Ezek a kifejezések bonyolultak lehetnek, amelyek több záradékot, funkciót és operátort tartalmaznak. Az Azure Search REST API számos részében azonban még az egyszerű OData kifejezések is használatosak, például a tulajdonságok elérési útjai. Az elérésiút-kifejezések például az összetett mezők almezőire hivatkoznak az API-ban mindenhol, például ha az almezőket egy javaslatban, egy [](index-add-suggesters.md) [pontozási függvényben](index-add-scoring-profiles.md), a `$select` paraméterben vagy akár a [Lucene lekérdezések](query-lucene-syntax.md).
 
-Ez a cikk ismerteti egy hivatalos szintaxis használatával az OData-kifejezések minden űrlapok. Emellett van egy [interaktív diagram](#syntax-diagram) vizuálisan Fedezze fel a szintaxis segítségével.
+Ez a cikk a OData kifejezések ezen formáit mutatja be formális nyelvtan használatával. Létezik egy [interaktív diagram](#syntax-diagram) is, amely a nyelvtan vizuális megismerését segíti.
 
-## <a name="formal-grammar"></a>Formális szintaxis
+## <a name="formal-grammar"></a>Formális nyelvtan
 
-Az Azure Search használatával egy EBNF által támogatott OData nyelv részhalmazát is ismertetünk ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) szintaxis. Szabály szerepel a listában "fentről lefelé", kezdve a legösszetettebb kifejezések és bontásához őket, több primitív kifejezésekre. Az oldal tetején a nyelvtani szabályokat, amelyek megfelelnek az Azure Search REST API-specifikus paramétereket a következők:
+A Azure Search által támogatott OData nyelv részhalmazát a EBNF ([bővített Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) nyelvtan használatával tudjuk leírni. A szabályok "felülről lefelé" vannak felsorolva, kezdve a legbonyolultabb kifejezésekkel, és az összetettebb kifejezéseket lebontva. A fent láthatók a Azure Search REST API adott paramétereinek megfelelő nyelvtani szabályok:
 
-- [`$filter`](search-query-odata-filter.md), határozzák meg a `filter_expression` szabály.
-- [`$orderby`](search-query-odata-orderby.md), határozzák meg a `order_by_expression` szabály.
-- [`$select`](search-query-odata-select.md), határozzák meg a `select_expression` szabály.
-- Az elérési utak által meghatározott mezőben a `field_path` szabály. A mező elérési út szerepel az API teljes. Az index vagy legfelső szintű mezők vagy az alárendelt mezők közül egy vagy több is hivatkozhatnak [összetett mező](search-howto-complex-data-types.md) elődei.
+- [`$filter`](search-query-odata-filter.md), amelyet a `filter_expression` szabály határoz meg.
+- [`$orderby`](search-query-odata-orderby.md), amelyet a `order_by_expression` szabály határoz meg.
+- [`$select`](search-query-odata-select.md), amelyet a `select_expression` szabály határoz meg.
+- A `field_path` szabály által definiált mezők elérési útjai. A mező elérési útjai a teljes API-ban használatosak. Az indexek legfelső szintű mezőire, illetve egy vagy több [összetett mező](search-howto-complex-data-types.md) őseire hivatkozó almezőket is hivatkozhatnak.
 
-Miután a EBNF egy tallózható [szintaxisdiagramja](https://en.wikipedia.org/wiki/Syntax_diagram) , amely lehetővé teszi, hogy meg a szintaxis és a kapcsolatokat a szabályok között.
+Miután a EBNF egy böngészhető [szintaxisú diagram](https://en.wikipedia.org/wiki/Syntax_diagram) , amely lehetővé teszi, hogy interaktív módon vizsgálja meg a nyelvtant és a szabályok közötti kapcsolatokat.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -207,16 +207,16 @@ query_type ::= "'full'" | "'simple'"
 search_mode ::= "'any'" | "'all'"
 ```
 
-## <a name="syntax-diagram"></a>Szintaxisdiagramja
+## <a name="syntax-diagram"></a>Szintaxis diagram
 
-Vizuálisan böngészhet az Azure Search által támogatott OData nyelvi szintaxis, próbálja ki interaktív szintaxisdiagramja:
+A Azure Search által támogatott nyelvi nyelvtan vizuális megismeréséhez próbálkozzon az interaktív OData:
 
 > [!div class="nextstepaction"]
-> [Azure Search OData szintaxisdiagramja](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Azure Search OData szintaxisának diagramja](https://azuresearch.github.io/odata-syntax-diagram/)
 
 ## <a name="see-also"></a>Lásd még  
 
-- [Szűrők az Azure Search szolgáltatásban](search-filters.md)
-- [Dokumentumok keresése &#40;az Azure Search szolgáltatás REST API-ja&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Szűrők a Azure Searchban](search-filters.md)
+- [Dokumentumok &#40;keresése Azure Search szolgáltatás REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene lekérdezési szintaxis](query-lucene-syntax.md)
-- [Az Azure Search egyszerű lekérdezési szintaxis](query-simple-syntax.md)
+- [Egyszerű lekérdezési szintaxis a Azure Searchban](query-simple-syntax.md)

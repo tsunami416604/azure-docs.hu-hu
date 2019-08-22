@@ -1,25 +1,25 @@
 ---
-title: CloudSimple VMware-megoldás – az Azure Virtual Machines áttekintése
+title: Azure VMware-megoldás CloudSimple – Virtual Machines – áttekintés
 description: Ismerje meg a CloudSimple virtuális gépeket és azok előnyeit.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0f4967bbd12107bf6a04cb80537d4425c75c5f46
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 213ab51dae20d281a1a0e0f8ea18f4bde888e64d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812494"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877898"
 ---
 # <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple Virtual Machines – áttekintés
 
-A CloudSimple lehetővé teszi a VMware virtuális gépek kezelését a Azure Portal.  A vSphere-fürtről származó fürt vagy erőforráskészlet az Azure-on keresztül felügyelhető az előfizetéshez való hozzárendeléssel.  A CloudSimple Virtual Machine a VMware virtuális gépek önkiszolgáló felügyeletét teszi lehetővé a Azure Portal.  
+A CloudSimple lehetővé teszi a VMware virtuális gépek (VM-EK) kezelését a Azure Portal.  A vSphere-fürtről származó fürt vagy erőforráskészlet az Azure-on keresztül felügyelhető az előfizetéshez való hozzárendeléssel.
 
-Ha CloudSimple virtuális gépet szeretne létrehozni az Azure-ból, egy virtuálisgép-sablonnak léteznie kell a saját Felhőbeli vCenter.  A sablon az operációs rendszer és az alkalmazások testreszabására szolgál.  A sablon virtuális gépe megerősíthető, hogy megfeleljen a vállalati biztonsági házirendeknek.  A sablonnal létrehozhat virtuális gépeket, és az önkiszolgáló modell használatával felhasználhatja őket a Azure Portalból.
+Ha CloudSimple virtuális gépet szeretne létrehozni az Azure-ból, egy virtuálisgép-sablonnak léteznie kell a saját Felhőbeli vCenter.  A sablon az operációs rendszer és az alkalmazások testreszabására szolgál.  A sablon virtuális gépe megerősíthető, hogy megfeleljen a vállalati biztonsági házirendeknek.  A sablon segítségével virtuális gépeket hozhat létre, majd önkiszolgáló modell használatával felhasználhatja azokat a Azure Portal.
 
 ## <a name="benefits"></a>Előnyök
 
@@ -37,4 +37,4 @@ A Azure Portal CloudSimple virtuális gépei olyan önkiszolgáló mechanizmust 
 ## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan használhatja [a VMWare virtuális gépeket az Azure](quickstart-create-vmware-virtual-machine.md) -ban
-* Ismerje meg, hogyan [képezhető le Azure](https://docs.azure.cloudsimple.com/azure-subscription-mapping/) -előfizetése
+* Ismerje meg, hogyan [képezhető le Azure](azure-subscription-mapping.md) -előfizetése

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: glenga
-ms.openlocfilehash: 183056d01146194b2854a70df790802e1a0bb839
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 498bb8c0f1e7bb674605d4a98f0be0f3e0b9a7c9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782237"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650498"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Függvények letiltása a Azure Functionsban
 
@@ -29,7 +29,7 @@ Ez a cikk azt ismerteti, hogyan lehet letiltani egy függvényt a Azure Function
 
 ## <a name="functions-2x---all-languages"></a>Functions 2. x – minden nyelv
 
-A 2. x függvényben letilthatja a függvényt, ha a formátumot `AzureWebJobs.<FUNCTION_NAME>.Disabled`egy alkalmazási beállítással letiltja. Ezt a beállítást programozott módon is létrehozhatja és módosíthatja az Azure CLI használatával. Ezt elvégezheti a függvény **kezelés** lapján is a [Azure Portal](https://portal.azure.com). 
+A 2. x függvényben letilthatja a függvényt, ha a formátumot `AzureWebJobs.<FUNCTION_NAME>.Disabled`egy alkalmazási beállítással letiltja. Az Alkalmazásbeállítások számos módon hozhatók létre és módosíthatók, például az [Azure CLI](/cli/azure/) használatával és a függvény **kezelés** lapjának [Azure Portal](https://portal.azure.com). 
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -77,7 +77,7 @@ A parancsfájlok, például a C# parancsfájlok és a JavaScriptek esetében has
     "disabled": true
 }
 ```
-vagy 
+or 
 
 ```json
     "bindings": [

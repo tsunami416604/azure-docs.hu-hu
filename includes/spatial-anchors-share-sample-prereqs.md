@@ -4,30 +4,30 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: bd7db1dd5d5fd6e19584e66a9af1523567d593bf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 0e81a9b6a91d2a9ed1af922dbbc53720022ff598
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178819"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69657800"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következőkkel:
 
-* Olvassa el a [Azure térbeli kapcsolatok alapjainak áttekintése](../articles/spatial-anchors/overview.md).
-* Befejeződött az egyik a [5 perces gyors útmutatók](../articles/spatial-anchors/index.yml).
-* Alapvető ismeretek C# és a Unity.
-* Alapvető ismeretek <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> Ha azt szeretné használni az Android- vagy <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a> Ha IOS-es használni kívánt.
-* Egy Windows-számítógépen, amelyre <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> vagy később együtt települ a **ASP.NET és webfejlesztési** számítási feladatot.
-* A [a .NET Core 2.2 SDK](https://dotnet.microsoft.com/download).
-* Egy vagy több eszközön (iOS vagy Android), amelyen helyezhet üzembe és futtathat egy alkalmazást.
-  * Android használja, ha szüksége van:
-    * <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3</a> vagy újabb, illetve <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> vagy újabb, és <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> telepítve a Windows-számítógépen.
-    * A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">developer-kompatibilis</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore képességgel</a> Android-eszközön.
-  * IOS-es használja, ha szüksége van:
-    * A macOS-számítógépre, amelyen <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a> vagy újabb, illetve <a href="https://cocoapods.org" target="_blank">CocoaPods</a>, és <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> vagy újabb van telepítve.
-    * Egy fejlesztői-kompatibilis <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit-kompatibilis</a> iOS-eszközön.
-    * A Git telepítve van a Homebrew-n keresztül. Adja meg a következő parancsot a terminálon ugyanabban a sorban: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` Ezután futtassa `brew install git`.
+* Olvassa el az [Azure térbeli horgonyok áttekintése című témakört](../articles/spatial-anchors/overview.md).
+* Az [5 perces rövid](../articles/spatial-anchors/index.yml)útmutatók egyikét fejezte be.
+* Alapszintű C# ismeretek és Unity.
+* A <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> alapszintű ismerete, ha androidos vagy <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a> -t szeretne használni, ha iOS-et szeretne használni.
+* Egy Windows rendszerű számítógép, amelyen a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> -es vagy újabb verziója telepítve van a **ASP.net és a webes fejlesztési** munkaterheléssel.
+* A [.net Core 2,2 SDK](https://dotnet.microsoft.com/download).
+* Egy vagy több eszköz (iOS vagy Android), amelyen üzembe helyezheti és futtathatja az alkalmazást.
+  * Android használata esetén a következőkre lesz szüksége:
+    * <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3,3</a> vagy újabb, <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1</a> vagy újabb, valamint a Windows rendszerű számítógépen telepített <a href="https://git-scm.com/download/win" target="_blank">git for Windows</a> .
+    * Egy <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">fejlesztői</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore-</a> kompatibilis Android-eszköz.
+  * Ha iOS-et használ, a következőkre lesz szüksége:
+    * Egy macOS rendszerű számítógép, amelyen a <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a> vagy újabb, a <a href="https://cocoapods.org" target="_blank">CocoaPods</a>és az <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1</a> vagy újabb rendszer van telepítve.
+    * A fejlesztők által engedélyezett <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit-kompatibilis iOS-</a> eszköz.
+    * A git telepítése a Homebrew használatával történik. Adja meg a következő parancsot a terminál egyetlen sorában: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`Ezután futtassa `brew install git`a parancsot.
 
 

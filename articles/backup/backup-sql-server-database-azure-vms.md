@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: e18d6519d1ee3c1750757af5c59157de8bdde80c
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 3c16d8b5f1611c6c05e60d65551f73eb2d395668
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637916"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872907"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -175,7 +175,7 @@ Virtuális gépen futó adatbázisok felderítése:
    A biztonsági mentési terhelések optimalizálásához Azure Backup egy biztonsági mentési feladatban lévő adatbázisok maximális számát 50-re állítja.
 
      * Több mint 50 adatbázis védelméhez több biztonsági mentést is konfigurálhat.
-     * A teljes [](#enable-auto-protection) példány vagy az Always On rendelkezésre állási csoport engedélyezése. Az **AUTOprotect** legördülő listában válassza **a**be lehetőséget, majd kattintson **az OK gombra**.
+     * A [](#enable-auto-protection) teljes példány vagy az Always On rendelkezésre állási csoport engedélyezéséhez az AutoProtect legördülő listában válassza **a**be lehetőséget, majd kattintson az **OK gombra**.
 
     > [!NOTE]
     > Az [automatikus védelem](#enable-auto-protection) funkció nem csak egyszerre engedélyezi a védelmet az összes meglévő adatbázison, de automatikusan védi az adott példányhoz vagy a rendelkezésre állási csoporthoz hozzáadott új adatbázisokat is.  

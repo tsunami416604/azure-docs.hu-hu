@@ -1,13 +1,13 @@
 ---
-title: OData nyelvi áttekintése – Azure Search
-description: OData nyelvi áttekintése szűrők, válassza ki, és rendezés az Azure Search-lekérdezéseket.
+title: A OData nyelvének áttekintése – Azure Search
+description: A OData nyelvének áttekintése a szűrők, a kiválasztás és a sorrend alapján Azure Search lekérdezésekhez.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: Brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,34 +19,34 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 166c23088fe0388199ca51efde05153bb5697e38
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0bd446b0ffa97a758f68a0f85889b13da6e3d8b0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063703"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650034"
 ---
-# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-search"></a>OData-nyelv áttekintés `$filter`, `$orderby`, és `$select` az Azure Search szolgáltatásban
+# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-search"></a>A `$filter`, `$orderby`a és`$select` a OData nyelvének áttekintése Azure Search
 
-Az Azure Search az OData-kifejezések szintaxisa a egy részét támogatja **$filter**, **$orderby**, és **$select** kifejezéseket. Szűrési kifejezésekben értékeli ki a lekérdezés-elemzés, search az egyes mezők neve vagy indexe vizsgálatok során használt egyezési feltételek hozzáadása során. Order by kifejezésnek alkalmazza a rendszer egy utólagos feldolgozási lépést az eredményhalmaz rendezze a visszaadott dokumentumok keresztül. Válassza kifejezések határozza meg, mely a dokumentum mezőket az eredményhalmaz tartalmazza. Ezek a kifejezések szintaxisát különbözik a [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) lekérdezési szintaxist használ a **keresési** paraméter, de nincs átfedés szintaxisának mezők hivatkozik.
+Azure Search támogatja a OData Expression szintaxisának egy részhalmazát **$Filter**, **$OrderBy**és **$Select** kifejezésekhez. A szűrési kifejezéseket a rendszer kiértékeli a lekérdezések elemzése során, megtiltja a keresést adott mezőkre, vagy az index vizsgálata során használt egyezési feltételeket ad hozzá. A sorrend szerinti kifejezéseket a rendszer utólagos feldolgozás utáni lépésként alkalmazza a visszaadott dokumentumok rendezéséhez. Válassza ki azokat a kifejezéseket, amelyek meghatározzák, hogy mely dokumentum mezők szerepeljenek az eredményhalmazban. Ezeknek a kifejezéseknek a szintaxisa különbözik a **keresési** paraméterben használt [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) lekérdezési szintaxistól, bár átfedésben van a mezők hivatkozó szintaxisa.
 
-Ez a cikk áttekintést OData kifejezés nyelve szűrőket, az order by és select kifejezéseket. A nyelv "alulról felfelé", kezdve a legalapvetőbb elemeket, és gyakorta jelennek meg. A legfelső szintű minden paraméter szintaxisa egy külön cikkben ismertetett:
+Ez a cikk áttekintést nyújt a Filters, Order by és Select kifejezésekben használt OData kifejezés nyelvéről. A nyelv "bottom-up" (alapszintű), a legalapvetőbb elemektől kezdve, és azokra épül. Az egyes paraméterek legfelső szintű szintaxisát külön cikk ismerteti:
 
 - [$filter szintaxis](search-query-odata-filter.md)
 - [$orderby szintaxis](search-query-odata-orderby.md)
 - [$select szintaxis](search-query-odata-select.md)
 
-OData kifejezések köre a egyszerű nagy mértékben összetett, megtekinthetik azonban az összes megosztása a szokványos elemeket. Az Azure Search egy OData-kifejezésnek legalapvetőbb részei a következők:
+A OData-kifejezések egyszerűen és nagyon összetettek, de minden közös elemet megosztanak. A Azure Search OData kifejezésének legalapvetőbb részei a következők:
 
-- **Mező elérési utak**, ami az index meghatározott mezőkre hivatkozhatnak.
-- **Állandók**, amely egy bizonyos adatok típusú konstans értékek.
+- A **mező elérési útja**, amely az index adott mezőire hivatkozik.
+- **Konstansok**, amelyek egy bizonyos adattípushoz tartozó literál értékeket tartalmaznak.
 
 > [!NOTE]
-> Különbözik terminológiai az Azure Search szolgáltatásban a [OData-szabványt](https://www.odata.org/documentation/) több módon is. Hívjuk a **mező** neve az Azure Search egy **tulajdonság** OData, és ehhez hasonlóan a **mező elérési útja** és **útvonal**. Egy **index** tartalmazó **dokumentumok** az Azure Search hivatkozik, amely általában a, az OData- **entitáskészlet** tartalmazó **entitások**. Az Azure Search-terminológia használja ezt a hivatkozást.
+> A Azure Search terminológiája néhány módon különbözik a [OData standardtól](https://www.odata.org/documentation/) . Az Azure Search egyik **mezőjét** nevezzük a OData tulajdonságának , és hasonlóképpen a **mező elérési** útja és a **tulajdonság elérési útja**között. A Azure Searchban lévő **dokumentumokat** tartalmazó **indexet** általában a OData-ben **entitásokat**tartalmazó **entitásként** említik. Ez a hivatkozás a Azure Search terminológiát használja.
 
-## <a name="field-paths"></a>A mező elérési utak
+## <a name="field-paths"></a>Mező elérési útjai
 
-A következő EBNF ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) határozza meg a nyelvtani, a mező elérési utak.
+A következő EBNF ([bővített Naur-űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a mezők elérési útjának nyelvtanát határozzák meg.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -56,60 +56,60 @@ field_path ::= identifier('/'identifier)*
 identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 ```
 
-Egy interaktív szintaxisdiagramja is érhető el:
+Az interaktív szintaxis diagram is elérhető:
 
 > [!div class="nextstepaction"]
-> [Azure Search OData szintaxisdiagramja](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
+> [Azure Search OData szintaxisának diagramja](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
 
 > [!NOTE]
-> Lásd: [OData kifejezés szintaxisának referenciája az Azure Search](search-query-odata-syntax-reference.md) a teljes EBNF számára.
+> A teljes EBNF [Azure Search a OData kifejezés szintaxisát](search-query-odata-syntax-reference.md) ismertető témakörben talál.
 
-A mező elérési útja épül fel egy vagy több **azonosítók** perjellel elválasztva. Minden azonosító, amely karaktersorozatot kell egy ASCII betűvel vagy aláhúzásjellel kezdődő, és csak ASCII betűket, számokat és aláhúzásjeleket tartalmazhat. A betűk a felső - és kisbetűs is lehetnek.
+A mező elérési útja egy vagy több, ferde vonallal elválasztott azonosítóból áll. Minden azonosító egy olyan karaktersorozat, amelynek egy ASCII betűvel vagy aláhúzással kell kezdődnie, és csak ASCII betűt, számjegyet vagy aláhúzást tartalmazhat. A betűk lehetnek a felső vagy a kisbetűs karakterek.
 
-Identifikátor. olvassa el, vagy a nevével, egy mezőt, és a egy **tartomány változót** kontextusában egy [gyűjtemény kifejezés](search-query-odata-collection-operators.md) (`any` vagy `all`) egy szűrő. A tartomány változót olyan, mintha egy változó, amely az aktuális elem a gyűjtemény jelöli. Összetett gyűjtemények esetében a változó jelöli a objektumot, ezért a mező elérési utak segítségével a változó alárendelt mezőkre hivatkozhatnak. Ez a hasonló számos programozási nyelvet a felépítését.
+Az azonosítók egy adott mező nevére vagy egy, a szűrőben lévő [gyűjtemény kifejezés](search-query-odata-collection-operators.md) (`any` vagy `all`) kontextusában lévő Range **változóra** is hivatkozhatnak. A tartomány változó a gyűjtemény aktuális elemét jelképező hurok-változóhoz hasonlít. Összetett gyűjtemények esetén ez a változó egy objektumot jelöl, ezért a mező elérési útjaival a változó almezőire hivatkozhat. Ez hasonló a dot-jelölésekhez számos programozási nyelven.
 
-Példák a mező elérési utak az alábbi táblázatban láthatók:
+A következő táblázat példákat mutat be a mezők elérési útjaira:
 
 | Mező elérési útja | Leírás |
 | --- | --- |
-| `HotelName` | Az index egy legfelső szintű mezőre hivatkozik |
-| `Address/City` | Hivatkozik az `City` az optimálisnál mezőt az indexben; egy összetett mező `Address` típusú `Edm.ComplexType` ebben a példában |
-| `Rooms/Type` | Hivatkozik az `Type` az optimálisnál mezőt az indexben; egy összetett gyűjtemény mező `Rooms` típusú `Collection(Edm.ComplexType)` ebben a példában |
-| `Stores/Address/Country` | Hivatkozik az `Country` az optimálisnál mezőjében a `Address` az optimálisnál mezőt az indexben; egy összetett gyűjtemény mező `Stores` típusú `Collection(Edm.ComplexType)` és `Address` típusú `Edm.ComplexType` ebben a példában |
-| `room/Type` | Hivatkozik az `Type` az optimálisnál mezőjében a `room` tartomány változót, például a szűrési kifejezés `Rooms/any(room: room/Type eq 'deluxe')` |
-| `store/Address/Country` | Hivatkozik az `Country` az optimálisnál mezőjében a `Address` az optimálisnál mezőjében a `store` tartomány változót, például a szűrőkifejezésben szereplő `Stores/any(store: store/Address/Country eq 'Canada')` |
+| `HotelName` | Az index legfelső szintű mezőjére hivatkozik. |
+| `Address/City` | `City` Az index összetett mezőjének almezőjét jelöli. Ebben a példában `Edm.ComplexType` szereplő típusú. `Address` |
+| `Rooms/Type` | `Type` Az index összetett gyűjtemény mezőjének almezőjét jelöli. Ebben a példában `Collection(Edm.ComplexType)` szereplő típusú. `Rooms` |
+| `Stores/Address/Country` | `Country` Azindexösszetettgyűjteménymezőjénekalmezőjét`Address` jelöli. `Stores` típusa `Collection(Edm.ComplexType)` és típusa`Address`ebbenapéldában `Edm.ComplexType` |
+| `room/Type` | `Type` A `room` tartomány változójának almezőjére hivatkozik, például a Filter kifejezésben.`Rooms/any(room: room/Type eq 'deluxe')` |
+| `store/Address/Country` | `Country` `store` A tartomány változó almezőjét jelöli, például a szűrő kifejezésben. `Address``Stores/any(store: store/Address/Country eq 'Canada')` |
 
-A mező elérési útja értelmében a környezettől függően eltérő. A szűrők, a mező elérési útja, értékére hivatkozik egy *egypéldányos* az aktuális dokumentumon belüli egy mező. Más környezetekben például **$orderby**, **$select**, vagy a [teljes Lucene szintaxisú fielded keresési](query-lucene-syntax.md#bkmk_fields), a mező elérési útja maga mezőre hivatkozik. Ez a különbség a mező elérési utak használatát szűrők néhány következményekkel jár.
+A mező elérési útjának jelentése a környezettől függően eltérő. A szűrők területen a mező elérési útja az aktuális dokumentumban lévő mező egy példányának értékére hivatkozik. Más környezetekben, például **$OrderBy**, **$Select**vagy a [teljes Lucene szintaxisban](query-lucene-syntax.md#bkmk_fields)található, mezőn belüli keresésben a mező elérési útja magára a mezőre hivatkozik. Ez a különbség bizonyos következményekkel jár, hogy miként használhatók a mezők elérési útjai a szűrőkben.
 
-Fontolja meg a mező elérési útja `Address/City`. A szűrőt Ez vonatkozik az aktuális dokumentumon, például a "San Francisco" egységes városát. Ezzel szemben a `Rooms/Type` hivatkozik a `Type` az optimálisnál mezőjét számos termek (például a "standard" az első hely, a "deluxe", a második hely, és így tovább). Mivel `Rooms/Type` nem hivatkozik egy *egypéldányos* alárendelt mező `Type`, közvetlenül a szűrő nem használható. Ehelyett szoba typu szűréséhez használja a [lambda kifejezésnek](search-query-odata-collection-operators.md) tartomány változó ehhez hasonló:
+Vegye figyelembe a mező `Address/City`elérési útját. Egy szűrőben ez az aktuális dokumentum egyetlen városára vonatkozik, például: "San Francisco". Ezzel szemben `Rooms/Type` a `Type` sok szoba (például a "standard", az első szoba, a "Deluxe" a második Teremnél stb.) almezőjét jelenti. Mivel `Rooms/Type` a nem az almező `Type` *egyetlen példányára* hivatkozik, nem használható közvetlenül szűrőben. Ehelyett a szobatípus szűréséhez egy tartomány-változót használó [lambda kifejezést](search-query-odata-collection-operators.md) kellene használni, például:
 
     Rooms/any(room: room/Type eq 'deluxe')
 
-Ebben a példában a tartomány változót `room` jelenik meg a `room/Type` mező elérési útja. Ezzel a módszerrel `room/Type` az aktuális dokumentumon belüli aktuális észlelnek a helyiségben típusára utal. Ez az egyetlen példánya a `Type` alárendelt mezőt, így közvetlenül a szűrőben is használható.
+Ebben a példában a tartomány változó `room` megjelenik a `room/Type` mező elérési útján. Így az aktuális dokumentumban található aktuális helyiség típusára hivatkozik.`room/Type` Ez az almező egyetlen példánya `Type` , így közvetlenül a szűrőben is használható.
 
-### <a name="using-field-paths"></a>A mező elérési utak használata
+### <a name="using-field-paths"></a>Mezők elérési útjának használata
 
-A mező elérési utak, sok paraméter szerepel a [Azure Search API](https://docs.microsoft.com/rest/api/searchservice/). A következő táblázat felsorolja minden olyan helyen, ahol is használhatók, valamint a használatuk korlátozások:
+A mező elérési útjait a [Azure Search API](https://docs.microsoft.com/rest/api/searchservice/)számos paramétere használja. A következő táblázat felsorolja az összes felhasználható helyet, valamint a használattal kapcsolatos korlátozásokat is:
 
-| API | Paraméter neve | Korlátozások |
+| API | Paraméternév | Korlátozások |
 | --- | --- | --- |
-| [Hozzon létre](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítés](https://docs.microsoft.com/rest/api/searchservice/update-index) Index | `suggesters/sourceFields` | None |
-| [Hozzon létre](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítés](https://docs.microsoft.com/rest/api/searchservice/update-index) Index | `scoringProfiles/text/weights` | Csak **kereshető** mezők |
-| [Hozzon létre](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítés](https://docs.microsoft.com/rest/api/searchservice/update-index) Index | `scoringProfiles/functions/fieldName` | Csak **szűrhető** mezők |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search` Amikor `queryType` van `full` | Csak **kereshető** mezők |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Csak **kategorizálható** mezők |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Csak **kereshető** mezők |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Csak **kereshető** mezők |
-| [Javasoljon](https://docs.microsoft.com/rest/api/searchservice/suggestions) és [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | Csak részét képező mezőkre hivatkozhatnak egy [javaslattevő](index-add-suggesters.md) |
-| [Keresés](https://docs.microsoft.com/rest/api/searchservice/search-documents), [javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions), és [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | Csak **szűrhető** mezők |
-| [Keresés](https://docs.microsoft.com/rest/api/searchservice/search-documents) és [javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Csak **rendezhető** mezők |
-| [Keresés](https://docs.microsoft.com/rest/api/searchservice/search-documents), [javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions), és [keresése](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Csak **lekérhető** mezők |
+| Index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Nincsenek |
+| Index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Csak **kereshető** mezőkre hivatkozhat |
+| Index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Csak **szűrhető** mezőkre hivatkozhat |
+| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`Ha `queryType` a`full` | Csak **kereshető** mezőkre hivatkozhat |
+| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Csak a **sokrétű** mezőkre hivatkozhat |
+| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Csak **kereshető** mezőkre hivatkozhat |
+| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Csak **kereshető** mezőkre hivatkozhat |
+| [Javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions) és [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | Csak a [javaslat](index-add-suggesters.md) részét képező mezőkre hivatkozhat. |
+| [Keresés](https://docs.microsoft.com/rest/api/searchservice/search-documents), [javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions)és [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | Csak **szűrhető** mezőkre hivatkozhat |
+| [Keresés](https://docs.microsoft.com/rest/api/searchservice/search-documents) és [javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Csak **rendezhető** mezőkre hivatkozhat |
+| [Keresés](https://docs.microsoft.com/rest/api/searchservice/search-documents), [javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions)és [Keresés](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Csak lekérhető mezőkre hivatkozhat |
 
 ## <a name="constants"></a>Állandók
 
-OData állandót a konstans értékek egy adott [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) típus. Lásd: [által támogatott adattípusokkal](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) az Azure Search szolgáltatásban a támogatott típusok listáját. Állandók gyűjtemény típusok nem támogatottak.
+A OData konstansai egy adott [entitás adatmodell](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) -(EDM-) típusának literális értékei. A Azure Search támogatott típusai listáját a [támogatott](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) adattípusok részben tekintheti meg. A gyűjteményi típusok állandói nem támogatottak.
 
-Az alábbi táblázat állandókat az Azure Search által támogatott adattípusokat mindegyike esetében:
+Az alábbi táblázat a Azure Search által támogatott adattípusok állandóit mutatja be:
 
 | Adattípus | Példa állandók |
 | --- | --- |
@@ -122,7 +122,7 @@ Az alábbi táblázat állandókat az Azure Search által támogatott adattípus
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
 
-A következő EBNF ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) határozza meg a szintaxis a fenti táblázatban szereplő állandókat többsége esetében. A térinformatikai típusok szintaxis található [OData térinformatikai funkciók az Azure Search](search-query-odata-geo-spatial-functions.md).
+A következő EBNF ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a fenti táblázatban látható állandók többségének nyelvtanát határozza meg. A Geo-térbeli típusok nyelvtana a [Azure Search OData geo-térbeli függvényeknél](search-query-odata-geo-spatial-functions.md)található.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -184,21 +184,21 @@ exponent ::= 'e' sign? integer_literal
 boolean_literal ::= 'true' | 'false'
 ```
 
-Egy interaktív szintaxisdiagramja is érhető el:
+Az interaktív szintaxis diagram is elérhető:
 
 > [!div class="nextstepaction"]
-> [Azure Search OData szintaxisdiagramja](https://azuresearch.github.io/odata-syntax-diagram/#constant)
+> [Azure Search OData szintaxisának diagramja](https://azuresearch.github.io/odata-syntax-diagram/#constant)
 
 > [!NOTE]
-> Lásd: [OData kifejezés szintaxisának referenciája az Azure Search](search-query-odata-syntax-reference.md) a teljes EBNF számára.
+> A teljes EBNF [Azure Search a OData kifejezés szintaxisát](search-query-odata-syntax-reference.md) ismertető témakörben talál.
 
-## <a name="building-expressions-from-field-paths-and-constants"></a>A mező elérési útja és konstansok épület kifejezések
+## <a name="building-expressions-from-field-paths-and-constants"></a>Kifejezések kiépítése a mezők elérési útjaiból és konstansokból
 
-Mező elérési útja és konstansok részei a legalapvetőbb egy OData-kifejezésnek, de már teljes kifejezések magukat. Valójában a **$select** az Azure Search paraméter nem semmi, de a mező elérési utak, vesszővel elválasztott listáját és **$orderby** nem sokkal bonyolultabb, mint **$select**. Ha rendelkezik típusú mező `Edm.Boolean` az indexben, még akkor is írhat egy szűrőt, amely nem, de az a mező elérési útja. Az állandókat `true` és `false` hasonlóképpen érvényes szűrők vannak.
+A mezők elérési útjai és állandói a OData egyik legalapvetőbb részét képezik, de már maguk a teljes kifejezések. Valójában a Azure Search **$Select** paramétere nem más, mint a mezők elérési útjai vesszővel tagolt listája, és a **$OrderBy** nem sokkal bonyolultabb, mint a **$Select**. Ha úgy látja, hogy van egy típusú `Edm.Boolean` mező az indexben, akkor is írhat egy olyan szűrőt, amely nem más, mint a mező elérési útja. Az állandók `true` és `false` a szűrők is érvényesek.
 
-Azonban a legtöbbször kell több összetett kifejezések, amelyek egynél több mező és állandó hivatkoznak. Ezek a kifejezések paraméter függően különböző módon épülnek.
+Azonban a legtöbb esetben összetettebb kifejezésekre lesz szüksége, amelyek egynél több mezőre és állandóra hivatkoznak. Ezek a kifejezések a paramétertől függően különböző módokon vannak felépítve.
 
-A következő EBNF ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) határozza meg a nyelvtani a **$filter**, **$orderby**, és **$select** paramétereket. Ezek épülnek fel, tekintse meg a mező elérési útja és konstansok egyszerűbb kifejezések:
+A következő EBNF ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a **$Filter**, **$OrderBy**és **$Select** paraméterek nyelvtanát határozza meg. Ezek az egyszerűbb kifejezésekből épülnek fel, amelyek a mező elérési útjaira és állandóra vonatkoznak:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -210,26 +210,26 @@ order_by_expression ::= order_by_clause(',' order_by_clause)*
 select_expression ::= '*' | field_path(',' field_path)*
 ```
 
-Egy interaktív szintaxisdiagramja is érhető el:
+Az interaktív szintaxis diagram is elérhető:
 
 > [!div class="nextstepaction"]
-> [Azure Search OData szintaxisdiagramja](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
+> [Azure Search OData szintaxisának diagramja](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
 
 > [!NOTE]
-> Lásd: [OData kifejezés szintaxisának referenciája az Azure Search](search-query-odata-syntax-reference.md) a teljes EBNF számára.
+> A teljes EBNF [Azure Search a OData kifejezés szintaxisát](search-query-odata-syntax-reference.md) ismertető témakörben talál.
 
-A **$orderby** és **$select** paraméterek a következők mindkét egyszerűbb kifejezések vesszővel tagolt listája. A **$filter** paramétere egy logikai kifejezés, amelyet az egyszerűbb az alkifejezések. Ezeket az alkifejezések kombinálják, mint például a logikai operátorral egymáshoz csatolt [ `and`, `or`, és `not` ](search-query-odata-logical-operators.md), mint például a összehasonlító operátorok [ `eq`, `lt`, `gt`, és így tovább](search-query-odata-comparison-operators.md), és a gyűjtemény operátorok például [ `any` és `all` ](search-query-odata-collection-operators.md).
+A **$OrderBy** és a **$Select** paraméterek az egyszerűbb kifejezések vesszővel tagolt listája. A **$Filter** paraméter egy egyszerű alkifejezésből álló logikai kifejezés. Ezek az alkifejezések olyan logikai operátorokkal [ `and` `or` `not` ](search-query-odata-logical-operators.md)vannak kombinálva, mint a, a, [ `eq`és az `lt`összehasonlító `gt`](search-query-odata-comparison-operators.md)operátorok, például,, stb. operátorok, [ `any` például `all`és ](search-query-odata-collection-operators.md).
 
-A **$filter**, **$orderby**, és **$select** paraméterek teljesítménykezelési részletesebben az alábbi cikkeket:
+A **$Filter**, **$OrderBy**és **$Select** paramétereket részletesebben ismertetjük a következő cikkekben:
 
-- [Az Azure Search OData $filter-szintaxis](search-query-odata-filter.md)
-- [Az Azure Search OData $orderby-szintaxis](search-query-odata-orderby.md)
-- [Az Azure Search OData $select-szintaxis](search-query-odata-select.md)
+- [OData $filter szintaxis Azure Search](search-query-odata-filter.md)
+- [OData $orderby szintaxis Azure Search](search-query-odata-orderby.md)
+- [OData $select szintaxis Azure Search](search-query-odata-select.md)
 
 ## <a name="see-also"></a>Lásd még  
 
-- [Jellemzőalapú navigáció az Azure Search szolgáltatásban](search-faceted-navigation.md)
-- [Szűrők az Azure Search szolgáltatásban](search-filters.md)
-- [Dokumentumok keresése &#40;az Azure Search szolgáltatás REST API-ja&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Sokoldalú Navigálás Azure Search](search-faceted-navigation.md)
+- [Szűrők a Azure Searchban](search-filters.md)
+- [Dokumentumok &#40;keresése Azure Search szolgáltatás REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene lekérdezési szintaxis](query-lucene-syntax.md)
-- [Az Azure Search egyszerű lekérdezési szintaxis](query-simple-syntax.md)
+- [Egyszerű lekérdezési szintaxis a Azure Searchban](query-simple-syntax.md)
