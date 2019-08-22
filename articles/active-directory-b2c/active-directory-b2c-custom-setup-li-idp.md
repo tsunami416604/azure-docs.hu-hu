@@ -76,7 +76,7 @@ Ha azt szeretné, hogy a felhasználók LinkedIn-fiókkal jelentkezzenek be, meg
 
 Definiáljon egy LinkedIn-fiókot jogcím-szolgáltatóként, ha hozzáadja azt a **ClaimsProviders** elemhez a szabályzat bővítmény fájljában.
 
-1. Nyissa meg a *SocialAndLocalAccounts/ **TrustFrameworkExtensions. XML** * fájlt a szerkesztőben. Ez a fájl az egyes előfeltételek egyikének részeként letöltött [egyéni házirend alapszintű csomagban][starter-pack] található.
+1. Nyissa meg a *SocialAndLocalAccounts/ **TrustFrameworkExtensions. XML*** fájlt a szerkesztőben. Ez a fájl az egyes előfeltételek egyikének részeként letöltött [egyéni házirend alapszintű csomagban][starter-pack] található.
 1. Keresse meg a **ClaimsProviders** elemet. Ha nem létezik, adja hozzá a gyökérelem elemhez.
 1. Vegyen fel egy új **ClaimsProvider** a következőképpen:
 
