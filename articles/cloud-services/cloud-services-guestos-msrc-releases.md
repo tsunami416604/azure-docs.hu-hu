@@ -10,17 +10,72 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/2/2019
+ms.date: 8/19/2019
 ms.author: raiye
-ms.openlocfilehash: 6f7fc27674ad26d8de8dd5d0c6c801b269b0e686
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c27438dbbeffc0837c3d71d9bb532803655538b8
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941710"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637535"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Microsoft Security Response Center (MSRC) frissítéseiket mutatják be. A cikkben megkeresve megállapíthatja, hogy egy adott frissítés a használt vendég operációs rendszerre vonatkozik-e. A frissítések mindig továbbítva lesznek az adott [család][family-explain] számára, melyeket a alkalmazásban bevezettek.
+
+
+## <a name="august-2019-guest-os"></a>Augusztus 2019 vendég operációs rendszer
+
+>[!NOTE]
+>Az augusztusi vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált Cloud Service virtuális gépekre van bevezetve. A bevezetés befejezésekor a rendszer ezt a verziót fogja elérhetővé tenni a Azure Portal és a konfigurációs fájlok manuális frissítéseihez. Az augusztusi vendég operációs rendszer a következő javításokat tartalmazza. A lista módosítása változhat.
+
+| Termék kategóriája | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| --- | --- | --- | --- | --- |
+|  Rel 19-08   |  [4512482]  |  Windows-Biztonság   |  3,76  |  Augusztus 13., 2019  |
+|  Rel 19-08   |  [4494175]  |  Programkód frissítése   |  5,34  |  Június 18., 2019  |
+|  Rel 19-08   |  [4512517]  |  Legújabb összesítő frissítés   |  5,34  |  Augusztus 13., 2019  |
+|  Rel 19-08   |  [4494174]  |  Programkód frissítése   |  6.1  |  Június 18., 2019  |
+|  Rel 19-08   |  [4511553]  |  Legújabb összesítő frissítés   |  6.1  |  Augusztus 13., 2019  |
+|  Rel 19-08   |  [4512486]  |  Windows-Biztonság   |  2,89  |  Augusztus 13., 2019  |
+|  Rel 19-08   |  [4512489]  |  Windows-Biztonság   |  4,69  |  Augusztus 13., 2019  |
+|  Rel 19-08   |  [4511872]  |  Internet Explorer    |  2,89, 3,76, 4,69  |  Augusztus 15., 2019  |
+|  Rel 19-08   |  [4507449]  |  Nem biztonsági   |  2,89  |  2019. július 9.  |
+|  Rel 19-08   |  [4507000]  |  .NET 4.5.2 nem biztonsági   |  3,76  |  Augusztus 12., 2019  |
+|  Rel 19-08   |  [4507002]  |  .NET 3,5 nem biztonsági   |  3,76  |  Augusztus 12., 2019  |
+|  Rel 19-08   |  [4507462]  |  Nem biztonsági   |  3,76  |  2019. július 9.  |
+|  Rel 19-08   |  [4506999]  |  .NET 4.5.2 nem biztonsági    |  4,69  |  Augusztus 12., 2019  |
+|  Rel 19-08   |  [4507005]  |  .NET 3,5 nem biztonsági    |  4,69  |  Augusztus 12., 2019  |
+|  Rel 19-08   |  [4507448]  |  Nem biztonsági   |  4,69  |  2019. július 9.  |
+|  Rel 19-08   |  [4509091]  |  Karbantartási verem frissítése   |  5,34  |  2019. július 9.  |
+|  Rel 19-08   |  [4509095]  |  Karbantartási verem frissítése   |  6.1  |  2019. július 9.  |
+|  Rel 19-08   |  [4512937]  |  Karbantartási verem frissítése   |  6.1  |  Július 29., 2019  |
+|  Rel 19-08   |  [4507004]  |  .NET 3.5.1 nem biztonsági    |  2,89  |  Augusztus 12., 2019  |
+|  Rel 19-08   |  [4504418]  |  Karbantartási verem frissítése   |  3,76, 4,69  |  2019. július 11.  |
+|  Rel 19-08   |  [4507001]  |  .NET 4.5.2 nem biztonsági   |  2,89  |  Augusztus 12., 2019  |
+|  Rel 19-08   |  [4507704]  |  DST-beállítás a Windowsban Brazíliában és Marokkóban   |  2,89, 3,76, 4,69, 5,34  |  Augusztus 13., 2019  |
+
+[4512482]: https://support.microsoft.com/kb/4512482
+[4494175]: https://support.microsoft.com/kb/4494175
+[4512517]: https://support.microsoft.com/kb/4512517
+[4494174]: https://support.microsoft.com/kb/4494174
+[4511553]: https://support.microsoft.com/kb/4511553
+[4512486]: https://support.microsoft.com/kb/4512486
+[4512489]: https://support.microsoft.com/kb/4512489
+[4511872]: https://support.microsoft.com/kb/4511872
+[4507449]: https://support.microsoft.com/kb/4507449
+[4507000]: https://support.microsoft.com/kb/4507000
+[4507002]: https://support.microsoft.com/kb/4507002
+[4507462]: https://support.microsoft.com/kb/4507462
+[4506999]: https://support.microsoft.com/kb/4506999
+[4507005]: https://support.microsoft.com/kb/4507005
+[4507448]: https://support.microsoft.com/kb/4507448
+[4509091]: https://support.microsoft.com/kb/4509091
+[4509095]: https://support.microsoft.com/kb/4509095
+[4512937]: https://support.microsoft.com/kb/4512937
+[4507004]: https://support.microsoft.com/kb/4507004
+[4504418]: https://support.microsoft.com/kb/4504418
+[4507001]: https://support.microsoft.com/kb/4507001
+[4507704]: https://support.microsoft.com/kb/4507704
+
 
 ## <a name="july-2019-guest-os"></a>Július 2019 vendég operációs rendszer
 
