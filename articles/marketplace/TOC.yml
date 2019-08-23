@@ -44,6 +44,8 @@
               href: ./appsource-offer-publishing-guide.md
             - name: AppSource- és Marketplace-termékoldal engedélyezése az Azure Active Directory használatával
               href: ./enable-appsource-marketplace-using-azure-ad.md
+            - name: Integrált megoldások
+              href: ./integrated-solutions-for-publishers.md
         - name: Marketingre vonatkozó ajánlott eljárások
           href: ./gtm-marketing-best-practices.md
           items:

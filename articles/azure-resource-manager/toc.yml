@@ -97,9 +97,6 @@
         - name: Sablonok modularizálása
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
-        - name: Titkos kulcsok kezelése
-          displayname: key vault
-          href: resource-manager-keyvault-parameter.md
         - name: Több példány létrehozása
           href: resource-group-create-multiple.md
         - name: Sablonbővítmények használata
@@ -124,6 +121,13 @@
           href: secure-template-with-sas-token.md
         - name: Üzembe helyezés több erőforráscsoporton vagy előfizetésben
           href: resource-manager-cross-resource-group-deployment.md
+    - name: Paraméterek megadása
+      items:
+        - name: Paraméterfájl létrehozása
+          href: resource-manager-parameter-files.md
+        - name: Bizalmas értékek átadása
+          displayname: key vault
+          href: resource-manager-keyvault-parameter.md
     - name: CI/CD
       items:
         - name: VS-projekt folyamatokkal

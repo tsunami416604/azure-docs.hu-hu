@@ -101,6 +101,22 @@
         - name: Az üzembe helyezés lépései
           displayName: 'standards, uk official, uk nhs'
           href: ./samples/ukofficial/deploy.md
+    - name: A felhőbevezetési keretrendszer alaprendszere
+      items:
+        - name: Áttekintés
+          displayName: 'caf, foundation'
+          href: ./samples/caf-foundation/index.md
+        - name: Az üzembe helyezés lépései
+          displayName: 'caf, foundation, deploy'
+          href: ./samples/caf-foundation/deploy.md
+    - name: A felhőbevezetési keretrendszer migrálási célzónája
+      items:
+        - name: Áttekintés
+          displayName: 'caf, migrate, landing zone'
+          href: ./samples/caf-migrate-landing-zone/index.md
+        - name: Az üzembe helyezés lépései
+          displayName: 'caf, migrate, landing zone, deploy'
+          href: ./samples/caf-migrate-landing-zone/deploy.md
 - name: Alapelvek
   items:
     - name: A tervek életciklusa

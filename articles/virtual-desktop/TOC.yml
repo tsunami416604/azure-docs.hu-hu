@@ -34,8 +34,10 @@
       href: create-host-pools-powershell.md
     - name: Windows-licenc alkalmazása Windows Virtual Desktop munkamenetgazdákra
       href: apply-windows-license.md
-    - name: Felhasználói profil megosztásának beállítása a gazdagépcsoporton
+    - name: Profiltároló létrehozása gazdagépkészlet számára fájlmegosztás használatával
       href: create-host-pools-user-profile.md
+    - name: Profiltároló létrehozása gazdagépkészlet számára az Azure NetApp Files használatával
+      href: create-fslogix-profile-container.md
     - name: A Windows Virtual Desktop terheléselosztási módjának beállítása
       href: configure-host-pool-load-balancing.md
     - name: Fő VHD-rendszerkép létrehozása és testreszabása

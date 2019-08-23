@@ -82,7 +82,7 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: Megosztott rendszerkép-katalógus csatolása vagy leválasztása
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-        - name: Osztályterem-tesztkörnyezetek létrehozása és konfigurálása (tanár)
+        - name: Osztályterem-tesztkörnyezetek létrehozása és konfigurálása (oktató)
           items:
             - name: Osztálytermi tesztkörnyezetek létrehozása és kezelése
               href: classroom-labs/how-to-manage-classroom-labs.md
@@ -104,6 +104,10 @@
           items:
             - name: Osztályterem-tesztkörnyezetek elérése
               href: classroom-labs/how-to-use-classroom-lab.md
+            - name: Távoli asztali kapcsolat használata Linux rendszerű virtuális gépeken
+              href: classroom-labs/how-to-use-remote-desktop-linux-student.md
+            - name: Virtuális gépek jelszavának beállítása vagy visszaállítása
+              href: classroom-labs/how-to-set-virtual-machine-passwords-student.md
     - name: DevTest Labs
       items:
         - name: Tesztkörnyezet konfigurálása

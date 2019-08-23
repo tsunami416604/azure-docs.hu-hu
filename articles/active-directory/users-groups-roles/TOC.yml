@@ -102,7 +102,9 @@
           items:
             - name: Dinamikus csoport létrehozása
               href: groups-create-rule.md
-            - name: Dinamikus csoportok szabályai
+            - name: Tagsági szabály frissítése
+              href: groups-update-rule.md
+            - name: Dinamikus csoportok szabályai és szintaxisa
               href: groups-dynamic-membership.md
             - name: Csoporttagság típusának módosítása
               href: groups-change-type.md

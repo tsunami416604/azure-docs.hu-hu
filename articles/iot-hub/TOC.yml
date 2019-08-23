@@ -406,14 +406,16 @@
   items:
     - name: Megoldások
       items:
-        - name: IoT-megoldásgyorsítók
-          href: /azure/iot-accelerators
         - name: IoT-központ
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT-megoldásgyorsítók
+          href: /azure/iot-accelerators
     - name: Platformszolgáltatások
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
         - name: IoT szolgáltatásoldali SDK-k

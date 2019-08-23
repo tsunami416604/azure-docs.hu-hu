@@ -251,6 +251,8 @@
           href: mitigate-se.md
         - name: Ütemezett események
           href: scheduled-events.md
+        - name: Ütemezett események monitorozása
+          href: scheduled-event-service.md
         - name: Metaadatok monitorozása
           href: instance-metadata-service.md
         - name: Beágyazott virtualizálás engedélyezése

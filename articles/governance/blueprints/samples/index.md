@@ -5,14 +5,15 @@ author: DCtheGeek
 manager: carmonm
 ms.service: blueprints
 ms.topic: sample
-ms.date: 06/26/2019
+ms.date: 08/20/2019
 ms.author: dacoulte
-ms.openlocfilehash: e1bafdaa2883afb44aa3c609c0ccba0ce9d0a4ab
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 884777bce761f6b16581a28038bf9a28ce6a3801
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934167"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650529"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-minták
 
@@ -22,14 +23,26 @@ A következő táblázat az Azure Blueprints szolgáltatáshoz használható min
 
 |  |  |
 |---------|---------|
-|[IRS 1075](./irs-1075/index.md)| Védőkorlátokat biztosít az IRS 1075 szabványnak való megfelelőséghez.|
+| [IRS 1075](./irs-1075/index.md) | Védőkorlátokat biztosít az IRS 1075 szabványnak való megfelelőséghez.|
 | [ISO 27001](./iso27001/index.md) | Védőkorlátokat biztosít az ISO 27001 szabványnak való megfelelőséghez. |
 | [ISO 27001 – Megosztott szolgáltatások](./iso27001-shared/index.md) | Szabványoknak megfelelő infrastruktúra-minták és szabályzati védőkorlátok együttesét biztosítja, amelyek segítséget nyújtanak az ISO 27001-tanúsítvány megszerzéséhez. |
 | [ISO 27001 App Service Environment/SQL Database-számításifeladat](./iso27001-ase-sql-workload/index.md) | Kiegészítő infrastruktúrát biztosít az [ISO 27001 Megosztott szolgáltatások](./iso27001-shared/index.md) tervmintához. |
 | [NIST SP 800-53 R4](./nist-sp-800-53-rev4/index.md) | Védőkorlátokat biztosít az NIST SP 800-53 R4 keretrendszernek való megfelelőséghez. |
 | [PCI-DSS 3.2.1](./pci-dss-3.2.1/index.md) | Szabályzatkészletet biztosít PCI-DSS 3.2.1 szabványnak való megfelelőséghez. |
 | [UK OFFICIAL és az Egyesült Királyság Nemzeti Egészségügyi Szolgálata – Szabályozás](./ukofficial/index.md) | Szabványoknak megfelelő infrastruktúra-minták és szabályzati védőkorlátok együttesét biztosítja, amelyek segítséget nyújtanak a UK OFFICIAL- és az Egyesült Királyság Nemzeti Egészségügyi Szolgálata által kiadott tanúsítvány megszerzéséhez. |
+| [A felhőbevezetési keretrendszer alaprendszere](./caf-foundation/index.md) | Vezérlőket biztosít a felhőtulajdon az [Azure-hoz készült Microsoft Cloud bevezetési keretrendszerrel (CAF)](/azure/architecture/cloud-adoption/governance/journeys/index.md) összhangban történő kezeléséhez. |
+| [A felhőbevezetési keretrendszer migrálási célzónája](./caf-migrate-landing-zone/index.md) | Vezérlőket biztosít az első számítási feladat migrálásához és a felhőtulajdon az [Azure-hoz készült Microsoft Cloud bevezetési keretrendszerrel (CAF)](/azure/architecture/cloud-adoption/migrate/index.md) összhangban történő kezeléséhez. |
 
+## <a name="samples-strategy"></a>Mintastratégia
+
+![Tervminta-stratégia](../media/blueprint-samples-strategy.png)
+
+A felhőbevezetési keretrendszer alaprendszere és a felhőbevezetési keretrendszer célzónájának terve azt feltételezi, hogy az ügyfél egy meglévő üres előfizetést készít elő a helyszíni objektumok vagy számítási feladatok Azure-ba történő migrálására.
+(Az A és B régió a fenti ábrán).  
+
+Lehetőség van a tervminták iterálására és az ügyfél által alkalmazott testreszabásokban történő mintakeresésre. Lehetőség van az olyan iparág-specifikus tervek proaktív kezelésére is, mint a pénzügyi szolgáltatások és az e-kereskedelem (a B régió felső része). Hasonlóképpen képzeljük el az olyan összetett architekturális szempontok terveinek létrehozását, mint a több előfizetés, a magas rendelkezésre állás, a régiók közötti erőforrások, valamint a vezérlőket meglévő előfizetésekben és erőforrásokban implementáló ügyfelek (C és D régió).
+
+Léteznek tervminták azon ügyfélforgatókönyvek kezelésére, amelyekben a megfelelőségi követelmények magasak és az architekturális összetettség is jelentős (a fenti ábra E régiója). A fenti F régiót az ügyfelek és a partnerek tervminták használatával és azok egyedi igényekre történő testreszabásával fogják kezelni.
 
 ## <a name="next-steps"></a>További lépések
 

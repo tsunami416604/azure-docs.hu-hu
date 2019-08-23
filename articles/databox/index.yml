@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 08/14/2019
-  ms.openlocfilehash: 03de9ceffe4495b1c3a39dad6617cc72d022fbbd
-  ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+  ms.date: 08/16/2019
+  ms.openlocfilehash: 2c42ee93804eb1e0e24b0b67925a092cc8517ceb
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 08/16/2019
-  ms.locfileid: "69557833"
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69650370"
 landingContent:
 - title: A Data Box-termékcsalád ismertetése
   linkLists:
@@ -53,75 +53,43 @@ landingContent:
     links:
     - text: A Data Boxhoz
       url: data-box-system-requirements.md
-    - text: A Data Box Blob Storage-hoz
-      url: data-box-system-requirements-rest.md
     - text: A Data Box Diskhez
       url: data-box-disk-system-requirements.md
     - text: A Data Box Heavyhez
       url: data-box-heavy-system-requirements.md
-- title: A Data Box üzembe helyezése
+- title: Megrendelés, beállítás, másolás, visszaküldés
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Rendelés
+    - text: Data Box
       url: data-box-deploy-ordered.md
-    - text: Kábel
-      url: data-box-deploy-set-up.md
-    - text: Csatlakozás és adatok másolása SMB-n keresztül
-      url: data-box-deploy-copy-data.md
-    - text: Azure-adatok visszaküldése, feltöltése és ellenőrzése
-      url: data-box-deploy-picked-up.md
-- title: A Data Box Disk üzembe helyezése
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Rendelés
+    - text: Data Box Disk
       url: data-box-disk-deploy-ordered.md
-    - text: Zárolás feloldása és csatlakozás
-      url: data-box-disk-deploy-set-up.md
-    - text: Adatok másolása, ellenőrzése
-      url: data-box-disk-deploy-copy-data.md
-    - text: Azure-adatok visszaküldése, feltöltése és ellenőrzése
-      url: data-box-disk-deploy-picked-up.md
-- title: A Data Box Heavy üzembe helyezése
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Rendelés
+    - text: Data Box Heavy
       url: data-box-heavy-deploy-ordered.md
-    - text: Kábel
-      url: data-box-heavy-deploy-set-up.md
-    - text: Csatlakozás és adatok másolása SMB-n keresztül
-      url: data-box-heavy-deploy-copy-data.md
-    - text: Azure-adatok visszaküldése, feltöltése és ellenőrzése
-      url: data-box-heavy-deploy-picked-up.md
 - title: Eszköz felügyelete
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box, Data Box Heavy az Azure-ban
+    - text: Data Box az Azure-ban
       url: data-box-portal-admin.md
-    - text: Data Box, Data Box Heavy a helyi felhasználói felületen keresztül
-      url: data-box-local-web-ui-admin.md
     - text: Data Box Disk az Azure-ban
       url: data-box-portal-ui-admin.md
-- title: Gyakori kérdések
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: GYIK – Data Box
-      url: data-box-faq.md
-    - text: GYIK – Data Box Disk
-      url: data-box-disk-faq.md
+    - text: Data Box Heavy az Azure-ban
+      url: data-box-portal-admin.md
 - title: Hibaelhárítás
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box, Data Box Heavy
+    - text: Data Box
       url: data-box-troubleshoot.md
-    - text: Data Box Blob Storage
-      url: data-box-troubleshoot-rest.md
     - text: Data Box Disk
       url: data-box-disk-troubleshoot.md
+    - text: Data Box Heavy
+      url: data-box-troubleshoot.md
+    - text: A Data Boxszon keresztül – GYIK
+      url: data-box-faq.md
+    - text: A Data Box Disken keresztül – GYIK
+      url: data-box-disk-faq.md
     - text: Támogatási jegy megnyitása
       url: data-box-disk-contact-microsoft-support.md

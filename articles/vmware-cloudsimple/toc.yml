@@ -105,7 +105,7 @@
             - name: Felhasználók listájának megtekintése
               href: users.md
             - name: Virtuális hálózati kapcsolat beállítása magánfelhőhöz
-              href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
+              href: virtual-network-connection.md
             - name: Saját felhasználói profil szerkesztése
               href: 'https://docs.azure.cloudsimple.com/editprofile/'
         - name: VMware rendszerű virtuális gépek beállítása magánfelhőhöz
@@ -124,8 +124,8 @@
               href: escalate-privileges.md
             - name: A tevékenységprofilhoz tartozó DNS és DHCP beállítása
               href: dns-dhcp-setup.md
-            - name: NSX 2. rétegbeli VPN migráláshoz
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
+            - name: Számítási feladatok migrálása a 2. rétegbeli kiterjesztett hálózatok használatával
+              href: migration-layer-2-vpn.md
         - name: Magánfelhő-hálózat
           items:
             - name: VPN-kapcsolat a helyszíni rendszer és a magánfelhő között
@@ -145,24 +145,28 @@
             - name: Magánfelhő vCenter-kiszolgálójának konfigurálása vRealize automatizálási végpontként
               href: configure-server-vrealize-automation-endpoint.md
             - name: Számítási feladatot futtató virtuális gépek migrálása magánfelhőbe
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
+              href: migrate-workloads.md
             - name: VMware-alkalmazások magas rendelkezésre állásának biztosítása az Azure-ban
               href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+            - name: Terheléselosztási megoldás kiválasztása
+              href: load-balancers.md
         - name: VMware-ökoszisztéma
           items:
             - name: Számítási feladatot futtató virtuális gépek biztonsági mentése
               href: backup-workloads-veeam.md
+            - name: Magánfelhő konfigurálása vészhelyreállítási helyként a Zerto használatával
+              href: disaster-recovery-zerto.md
             - name: A VMware Horizon megoldási útmutatója
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: vSAN-titkosítás konfigurálása magánfelhőhöz
               href: vsan-encryption.md
-            - name: Oracle RAC-környezet CloudSimple-magánfelhőben
-              href: 'https://docs.azure.cloudsimple.com/oracle-rac/'
+            - name: Magánfelhő optimalizálása az Oracle RAC-hez
+              href: oracle-real-application-clusters.md
         - name: Azure Core-integráció
           items:
             - name: Azure AD-identitásforrás magánfelhőbeli vCenterben
               href: azure-ad.md
             - name: Helyszíni hálózati kapcsolat ExpressRoute-tal
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: Azure virtuális hálózati kapcsolat ExpressRoute-tal
-              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'
+              href: azure-expressroute-connection.md
