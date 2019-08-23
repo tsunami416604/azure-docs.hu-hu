@@ -74,8 +74,6 @@
               items:
                 - name: Használat
                   href: ../azure-monitor/insights/service-map.md
-                - name: Konfigurálás
-                  href: ../azure-monitor/insights/service-map-configure.md
                 - name: Integrálás az Operations Managerrel
                   href: ../azure-monitor/insights/service-map-scom.md
             - name: SQL-felmérés

@@ -133,24 +133,8 @@
           href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
         - name: A sebezhetőségi felmérés nincs telepítve
           href: security-center-vulnerability-assessment-recommendations.md
-        - name: Webalkalmazási tűzfal hozzáadása
-          href: security-center-add-web-application-firewall.md
-        - name: Alkalmazásvédelem véglegesítése
-          href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
-        - name: Új generációs tűzfal hozzáadása
-          href: security-center-add-next-generation-firewall.md
         - name: Hálózati biztonsági csoportok engedélyezése
           href: security-center-enable-network-security-groups.md
-        - name: Az internetre kapcsolódó végpontok hozzáférésének korlátozása
-          href: security-center-restrict-access-through-internet-facing-endpoints.md
-        - name: Csak az újgenerációs tűzfalon keresztül haladjon a forgalom
-          href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
-        - name: Naplózás és fenyegetésészlelés engedélyezése az SQL-adatbázisokon
-          href: security-center-enable-auditing-on-sql-databases.md
-        - name: Naplózás és fenyegetésészlelés engedélyezése az SQL Servereken
-          href: security-center-enable-auditing-on-sql-servers.md
-        - name: Transzparens adattitkosítás engedélyezése
-          href: security-center-enable-transparent-data-encryption.md
         - name: Fenyegetésekkel kapcsolatos jelentések
           href: security-center-threat-report.md
         - name: Egyéni riasztások

@@ -42,7 +42,7 @@
       href: plan-conditional-access.md
     - name: Ajánlott eljárások
       href: best-practices.md
-    - name: Gyakori szabályzatsablonok
+    - name: Gyakori feltételes hozzáférési szabályzatok
       items:
         - name: MFA megkövetelése a rendszergazdáktól
           href: howto-conditional-access-policy-admin-mfa.md
