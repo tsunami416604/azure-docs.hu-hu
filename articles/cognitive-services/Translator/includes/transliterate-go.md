@@ -4,19 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b0150fc362f607a9622073492c7cd6b4d0513cb3
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 5510088925b7a628417c7f3c11bb89c5ce915381
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968530"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906635"
 ---
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [Prerequisites](prerequisites-go.md)]
 
-Ehhez a rövid útmutatóhoz a következőkre van szükség:
-
-* [Go](https://golang.org/doc/install)
-* Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
@@ -38,28 +35,33 @@ import (
 
 ## <a name="create-the-main-function"></a>A fő függvény létrehozása
 
-Ez a minta megpróbálja beolvasni a Translator Text-előfizetői azonosítót a `TRANSLATOR_TEXT_KEY` környezeti változóból. Ha még nem ismeri a környezeti változókat, beállíthatja a `subscriptionKey` sztringet, és megjegyzéssé teheti a feltételes utasítást.
+Ez a minta megpróbálja beolvasni a Translator Text előfizetési kulcsot és a végpontot ezekből `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` a `TRANSLATOR_TEXT_ENDPOINT`környezeti változókból: és. Ha nem ismeri a környezeti változókat, beállíthatja `subscriptionKey` és `endpoint` karakterláncként is megadhatja a feltételes utasításokat, és megjegyzéseket fűzhet hozzájuk.
 
 Másolja a projektbe a következő kódot:
 
 ```go
 func main() {
     /*
-     * Read your subscription key from an env variable.
-     * Please note: You can replace this code block with
-     * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
-     * want to use env variables. If so, be sure to delete the "os" import.
-     */
-    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
-    if subscriptionKey == "" {
-       log.Fatal("Environment variable TRANSLATOR_TEXT_KEY is not set.")
+    * Read your subscription key from an env variable.
+    * Please note: You can replace this code block with
+    * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
+    * want to use env variables. If so, be sure to delete the "os" import.
+    */
+    if "" == os.Getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY") {
+      log.Fatal("Please set/export the environment variable TRANSLATOR_TEXT_SUBSCRIPTION_KEY.")
     }
+    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY")
+    if "" == os.Getenv("TRANSLATOR_TEXT_ENDPOINT") {
+      log.Fatal("Please set/export the environment variable TRANSLATOR_TEXT_ENDPOINT.")
+    }
+    endpoint := os.Getenv("TRANSLATOR_TEXT_ENDPOINT")
+    uri := endpoint + "/transliterate?api-version=3.0"
     /*
-     * This calls our transliterate function, which we'll
+     * This calls our breakSentence function, which we'll
      * create in the next section. It takes a single argument,
      * the subscription key.
      */
-    transliterate(subscriptionKey)
+    transliterate(subscriptionKey, uri)
 }
 ```
 
@@ -68,7 +70,7 @@ func main() {
 Hozzunk létre egy függvényt a szöveg átbetűzés. Ez a függvény egyetlen argumentumot, a Translator Text előfizetési kulcsot fogja megtenni.
 
 ```go
-func transliterate(subscriptionKey string) {
+func transliterate(subscriptionKey string, uri string) {
     /*  
      * In the next few sections, we'll add code to this
      * function to make a request and handle the response.
@@ -82,7 +84,7 @@ Másolja ezt a kódot a `transliterate` függvénybe.
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
-u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0")
+u, _ := url.Parse(uri)
 q := u.Query()
 q.Add("language", "ja")
 q.Add("fromScript", "jpan")
@@ -100,9 +102,9 @@ Ezután hozzon létre egy névtelen struktúrát a kérelem törzse számára, �
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
 body := []struct {
-    Text string
+  Text string
 }{
-    {Text: "こんにちは"},
+  {Text: "こんにちは"},
 }
 b, _ := json.Marshal(body)
 ```

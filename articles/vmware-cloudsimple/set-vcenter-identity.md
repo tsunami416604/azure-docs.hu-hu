@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6229e78958fdc4995153d99ad02a15804330f1b
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: d314cc55096f681d1bcf66d33c4c30a4060751e9
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544564"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972654"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identitások beállítása a Active Directory használatára
 
@@ -63,7 +63,7 @@ A Active Directory tartományának beállításakor használja az alábbi tábl�
 Ha az előző táblázatban szereplő adatokkal rendelkezik, a helyszíni Active Directory egyszeri bejelentkezési identitásként adhatja hozzá a vCenter-on.
 
 > [!TIP]
-> A <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html" target="_blank">VMware dokumentációs oldalán</a>találhat további információt az egyszeri bejelentkezési azonosítók forrásairól.
+> A [VMware dokumentációs oldalán](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)találhat további információt az egyszeri bejelentkezési azonosítók forrásairól.
 
 ## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Új Active Directory beállítása privát felhőben
 
@@ -83,14 +83,14 @@ A részletes lépésekért lásd: [új Windows Server 2012 Active Directory erd�
 
 A Active Directory erdő és tartomány beállítása után az új Active Directoryhoz [hozzáadhat egy vCenter](#add-an-identity-source-on-vcenter) az azonosítóhoz.
 
-### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Új Active Directory-tartomány egy meglévő Active Directory erdőben
+### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Új Active Directory tartomány egy meglévő Active Directory erdőben
 
 Új Active Directory tartomány meglévő Active Directory erdőben való beállításához a következőkre lesz szüksége:
 
 * Helyek közötti VPN-kapcsolat a Active Directory erdő helyére.
 * DNS-kiszolgáló a meglévő Active Directory erdő nevének feloldásához.
 
-A részletes lépésekért lásd: [új Windows Server 2012 Active Directory gyermek-vagy Fatartomány telepítése](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-) .
+A részletes lépésekért lásd: [új Windows Server 2012 Active Directory gyermek-vagy fatartomány telepítése](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-) .
 
 A Active Directory tartomány beállítása után az új Active Directoryhoz [hozzáadhat egy vCenter az identitás forrásához](#add-an-identity-source-on-vcenter) .
 

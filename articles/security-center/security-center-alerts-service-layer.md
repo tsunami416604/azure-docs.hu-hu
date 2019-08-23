@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 70b43c65703316e5dee8e9cf2cf86fe982a49592
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: aae2270417e0bb3bdf0dd847e2e09e7cb1999d39
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624770"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972467"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Veszélyforrások észlelése az Azure szolgáltatási rétegében Azure Security Center
 
@@ -50,6 +50,10 @@ Security Center a hálózati rétegbeli elemzések a minta [IPFIX adatokon](http
 |**A rendszer kártékony címekkel rendelkező hálózati kommunikációt észlelt**|A mintavételen átvett hálózati forgalom elemzése egy lehetséges parancs-és vezérlési (C & C) kiszolgálóval való kommunikációt észlelt az üzemelő példányból származó erőforrásból. Megjegyzendő, hogy ez a tevékenység külső entitások számára rosszindulatúként sorolhatja be az Ön IP-címét is.|
 
 Annak megismeréséhez, hogy a Security Center hogyan használhatják a hálózattal kapcsolatos jeleket a veszélyforrások elleni védelem alkalmazására, tekintse [meg a Azure Security Center heurisztikus DNS-észleléseit](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)
+
+>[!NOTE]
+>Az Azure hálózati veszélyforrások észlelésére vonatkozó riasztások a virtuális gép létrehozása után az első órában nem jönnek létre Azure Security Centerban.
+
 ## Azure felügyeleti réteg (Azure Resource Manager) (előzetes verzió)<a name ="management-layer"></a>
 
 >[!NOTE]

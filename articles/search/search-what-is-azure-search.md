@@ -6,25 +6,20 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 08/13/2019
+ms.date: 08/21/2019
 ms.author: heidist
-ms.openlocfilehash: 1f3e4d69d3fdba8eba2e7d3cadc3c29703bffcaf
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 204951f725c2885fe9f8bf33fffe83e55628dd34
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558595"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899683"
 ---
 # <a name="what-is-azure-search"></a>Mi az az Azure Search?
 
-A Azure Search egy felhőalapú keresési megoldás, amely lehetővé teszi a fejlesztők számára API-k és eszközök számára, hogy a webes, mobil-és vállalati alkalmazásokban gazdag keresési élményt adjanak hozzá. Az egyéni kód meghívja az adatfeldolgozást (indexelést), lekérdezi a lekérdezési kérelmeket, és kezeli a válaszokat. A keresési élmény az ügyfél kódjában az Azure Search funkcióinak használatával van meghatározva, és a lekérdezés végrehajtása a saját maga által létrehozott, a saját tulajdonában lévő és a Azure Search tárolt index alapján történik.
+A Azure Search egy felhőalapú keresési megoldás, amely lehetővé teszi a fejlesztők számára API-k és eszközök számára, hogy a webes, mobil-és vállalati alkalmazásokban gazdag keresési élményt adjanak hozzá. Az egyéni kód meghívja az adatfeldolgozást (indexelést) egy index létrehozásához és betöltéséhez. A másik oldalon az alkalmazás kódja lekérdezi a kérelmeket, és kezeli a válaszokat. A keresési élmény az ügyfélen a Azure Search funkcióinak használatával van meghatározva, és a lekérdezés végrehajtása a saját maga által létrehozott, a saját, a saját és a Azure Search tárolt indexeken keresztül történik.
 
 ![Azure Search architektúra](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Search architektúra")
-
-<!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
-+ Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.
-+ Create intuitive search experiences with facet navigation and filters, synonyms, autocomplete, and text analysis for "did you mean" autocorrected search terms. Get relevance tuning through functions and boosting logic.
-+ Create search apps for specific use-cases. Geo-search supports a "find near me" experience. Multi-lingual search is supported through language analyzers for non-English full text search. -->
 
 A funkciókat egy egyszerű [REST API-n](/rest/api/searchservice/) vagy [.NET SDK-n](search-howto-dotnet-sdk.md) keresztül tudja elérni, mely elfedi az információk kiolvasásának mögöttes komplexitását. Az API-k mellett az Azure Portal is nyújt támogatást a felügyelethez és a tartalomkezeléshez, például eszközöket kínál prototípus-készítéshez és az indexek lekérdezéséhez. Mivel a szolgáltatás a felhőben fut, az infrastruktúrát és a rendelkezésre állást a Microsoft felügyeli.
 
@@ -36,7 +31,7 @@ A Azure Search a következő alkalmazási forgatókönyvek esetében kiválóan 
 
 + A kereséssel kapcsolatos szolgáltatások egyszerű implementálása. Azure Search API-k leegyszerűsítik a lekérdezések készítését, a sokoldalú navigációt, a szűrőket (beleértve a Geo-térbeli keresést), a szinonimák leképezését, a typeahead-lekérdezéseket és A beépített funkciók használatával a kereskedelmi webkeresőmotorokhoz hasonló keresési élményekhez is kielégítheti a végfelhasználói elvárásokat.
 
-+ Strukturálatlan szöveg indexelése vagy szöveg és információk kinyerése a képfájlokból. A Azure Search kognitív keresési funkciója az AI-feldolgozást egy indexelési folyamatba helyezi. Egyes gyakori használati esetek közé tartozik az OCR a beolvasott dokumentumon keresztül, az entitások felismerése és a legfontosabb mondatok kinyerése a nagyméretű dokumentumokkal, a nyelvfelismerés és a szöveg fordításával, valamint a
++ Strukturálatlan szöveg indexelése vagy szöveg és információk kinyerése a képfájlokból. A Azure Search [kognitív keresési](cognitive-search-concept-intro.md) funkciója az AI-feldolgozást egy indexelési folyamatba helyezi. Egyes gyakori használati esetek közé tartozik az OCR a beolvasott dokumentumon keresztül, az entitások felismerése és a legfontosabb mondatok kinyerése a nagyméretű dokumentumokkal, a nyelvfelismerés és a szöveg fordításával, valamint a
 
 + A nyelvi követelmények a Azure Search egyéni és nyelvi elemzői segítségével teljesülnek. Ha nem angol nyelvű tartalommal rendelkezik, a Azure Search a Lucene-elemzőket és a Microsoft természetes nyelvi processzorait is támogatja. Az elemzőket úgy is konfigurálhatja, hogy a nyers tartalom speciális feldolgozását, például a Mellékjelek kiszűrését is lehetővé teszi.
 
@@ -93,7 +88,9 @@ A lekéréses modell beszerzi az adatokat a külső adatforrásokból. Ezt olyan
 A küldéses modell az SDK-n vagy a REST API-kon keresztül vehető igénybe úgy, hogy elküldi a frissített dokumentumokat egy indexnek. Gyakorlatilag bármilyen adatkészletből küldhet adatokat JSON formátumban. Az adatok betöltéséről a [Dokumentumok hozzáadása, frissítése vagy törlése](/rest/api/searchservice/addupdate-or-delete-documents) és [A .NET SDK használata](search-howto-dotnet-sdk.md) című cikkben találhat útmutatást.
 
 ### <a name="step-4-search"></a>4\. lépés: Keresés
-Az index feltöltése után [bocsáthat ki keresési lekérdezéseket](/rest/api/searchservice/Search-Documents) a szolgáltatásvégpontjának egyszerű HTTP-kérések REST API-n vagy .NET SDK-n keresztüli küldésével.
+Az indexek feltöltése után a [keresési lekérdezéseket](search-query-overview.md) a szolgáltatás végpontján [REST API](/rest/api/searchservice/Search-Documents) vagy a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations)-val rendelkező egyszerű HTTP-kérelmek használatával teheti ki.
+
+Lépjen az [első keresőalkalmazás létrehozásához](tutorial-csharp-create-first-app.md) , majd terjesszen fel egy olyan weblapot, amely összegyűjti a felhasználói adatokat, és kezeli az eredményeket. Az [interaktív Rest](search-get-started-postman.md) -hívásokhoz vagy a Azure Portal beépített [keresési Explorerrel](search-explorer.md) is használhatja a meglévő indexek lekérdezéséhez.
 
 ## <a name="how-it-compares"></a>Összehasonlítás más keresési megoldásokkal
 

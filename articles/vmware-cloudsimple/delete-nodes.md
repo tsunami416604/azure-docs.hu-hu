@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9dbe1751ac77f370991af75ea161247c21700ff2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886987"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972822"
 ---
-# <a name="delete-nodes-from-vmware-solution-by-cloudsimple---azure"></a>Csomópontok törlése VMware-megoldásból a CloudSimple-Azure használatával
+# <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Csomópontok törlése az Azure VMware-megoldásból a CloudSimple használatával
 
-A CloudSimple-csomópontok a létrehozásuk után vannak mérten.  A csomópontok mérésének leállításához törölni kell a csomópontokat.  Törli a Azure Portal nem használt csomópontokat. 
+A CloudSimple-csomópontok a létrehozásuk után vannak mérten.  A csomópontok mérésének leállításához törölni kell a csomópontokat.  Törli a Azure Portal nem használt csomópontokat.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -25,7 +25,6 @@ Csomópontot csak a következő feltételekkel lehet törölni:
 
 * A csomópontokkal létrehozott privát felhő törlődik.  Privát felhő törléséhez tekintse meg a [CloudSimple privát felhőből származó Azure VMware-megoldás törlése](delete-private-cloud.md)című témakört.
 * A csomópont el lett távolítva a privát felhőből a privát felhő zsugorodása mellett.  A privát felhő csökkentése érdekében lásd: [Az Azure VMware-megoldás zsugorítása a CloudSimple privát felhővel](shrink-private-cloud.md).
-
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 07/29/2019
-ms.openlocfilehash: 78dff1b9d9db4e54ab1a8f7203088753e206c610
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 08/21/2019
+ms.openlocfilehash: 635b7adb8753b7e9490e8f14a0699c09297fdbbb
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641954"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899083"
 ---
 # <a name="scenario-apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Forgatókönyv: Apache Spark a feladatok lassan futnak, amikor az Azure Storage-tároló sok fájlt tartalmaz az Azure HDInsight
 
@@ -26,8 +26,6 @@ HDInsight-fürt futtatásakor az Azure Storage-tárolóba írást Apache Spark f
 Ez egy ismert Spark-probléma. A lassulás a Spark-feladatok `ListBlob` végrehajtása `GetBlobProperties` során a és a műveletből származik.
 
 A partíciók nyomon követéséhez a sparknak `FileStatusCache` egy olyan információt kell fenntartania, amely a címtár struktúrájáról tartalmaz információkat. Ezen gyorsítótár használatával a Spark elemezheti az elérési utakat, és tisztában lehet a rendelkezésre álló partíciókkal. A partíciók nyomon követésének előnye, hogy a Spark csak az adatolvasás során érinti a szükséges fájlokat. Az adatok naprakészen tartásához az új adatok írásakor a Sparknak fel kell sorolnia a könyvtár alatt lévő összes fájlt, és frissítenie kell a gyorsítótárat.
-
-A Spark 1,6-ben minden alkalommal, amikor frissíti a könyvtárat, (1) törölje a gyorsítótárat (2) rekurzív módon listázza az összes fájlt, és (3) frissítse a teljes gyorsítótárat. Ez számos listaelem-művelethez vezet.
 
 A Spark 2,1-es verziójában a Spark azt jelzi, hogy egy meglévő partíciós oszlop megegyezik-e a jelenlegi írási kérelemben szereplővel, és hogy a rendszer minden írási művelet után is a következő műveleteket fogja-e megtekinteni.
 

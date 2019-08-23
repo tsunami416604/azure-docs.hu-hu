@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: e21788dbf30b6fa3b37f84dd07d54b89bc91f17f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 64cf633d50fc81ae8d53f2b4ee2a9975a756f0c7
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935370"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972481"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>A kimenő SMTP-kapcsolati problémák elhárítása az Azure-ban
 
@@ -33,12 +33,12 @@ Az e-mailes kézbesítési szolgáltatások használata nem korlátozódik az Az
 ## <a name="enterprise-agreement"></a>Nagyvállalati szerződés
 Nagyvállalati Szerződés Azure-felhasználók esetében a technikai képesség nem változik, hogy hitelesített továbbító használata nélkül küldjön e-mailt. Az új és a meglévő Nagyvállalati Szerződés felhasználók is kipróbálhatják a kimenő e-mailek küldését az Azure-beli virtuális gépekről az Azure-platform korlátozásai nélkül. Habár nem garantált, hogy az e-mail-szolgáltatók elfogadják a bejövő e-maileket az adott felhasználótól, az Azure platform nem blokkolja a Nagyvállalati Szerződés előfizetéseken belüli virtuális gépekre vonatkozó kézbesítési kísérleteket. Az üzenetek kézbesítésével vagy a levélszemét szűrésével kapcsolatos olyan problémák megoldásához, amelyek bizonyos szolgáltatókra vonatkoznak, közvetlenül kell működnie az e-mail-szolgáltatókkal.
 
-## <a name="pay-as-you-go"></a>Használatalapú fizetés
+## <a name="pay-as-you-go"></a>Utólagos, használatalapú fizetés
 Ha az utólagos elszámolású vagy Microsoft Partner Network előfizetési ajánlatok esetében a 2017. november 15. előtt regisztrált, akkor a kimenő e-mailek kézbesítésének technikai lehetősége nem változik. Az Azure-beli virtuális gépekről a kimenő e-mailek kézbesítését továbbra is kipróbálhatja közvetlenül a külső e-mail-szolgáltatók számára, az Azure platform korlátozásai nélkül. Ismét nem garantált, hogy az e-mail-szolgáltatók elfogadják a bejövő e-maileket bármely adott felhasználótól, és a felhasználóknak közvetlenül kell dolgozniuk az e-mail szolgáltatókkal az üzenetek kézbesítési vagy levélszemét-szűrési problémáinak kijavításához.
 
 A 2017. november 15. után létrehozott utólagos elszámolású vagy Microsoft Partner Network előfizetésekhez technikai korlátozások vonatkoznak, amelyek letiltják a közvetlenül az előfizetésekben lévő virtuális gépekről küldött e-maileket. Ha azt szeretné, hogy az Azure-beli virtuális gépekről érkező e-mailek közvetlenül a külső e-mail-szolgáltatók számára is elküldhetők legyenek (nem hitelesített SMTP-továbbító használatával), a korlátozás eltávolítására vonatkozó kérést kérhet. A kérelmeket a Microsoft saját belátása szerint értékeli és hagyja jóvá, és a rendszer csak a további csalás elleni ellenőrzés után kapja meg őket. A kérelem elvégzéséhez nyisson meg egy támogatási esetet a következő probléma típusának használatával: **A technikai** > **Virtual Network** **kapcsolat** **nem tud e-mailt küldeni (SMTP/port 25).**  >  >  Győződjön meg arról, hogy a központi telepítésnek miért kell közvetlenül a levelezési szolgáltatónak küldenie a leveleket a hitelesített továbbító használata helyett.
 
-Az utólagos elszámolású vagy Microsoft Partner Network előfizetések kivételt képeznek, és a virtuális gépeket a Azure Portal leállították & "elindult", az előfizetésben lévő összes virtuális gépet mentesíti a rendszer. A kivétel csak a kért előfizetésre vonatkozik.
+Az utólagos elszámolású vagy Microsoft Partner Network előfizetések kivételt képeznek, és a virtuális gépeket a Azure Portal leállították & "elindult", az előfizetésben lévő összes virtuális gépet mentesíti a rendszer. A kivétel csak a kért előfizetésre érvényes, és csak a közvetlenül az internethez irányított virtuális gépek forgalmára vonatkozik. A 25-ös porton keresztüli forgalom az Azure Pásti-szolgáltatásokon keresztül, például a [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) nem támogatott.
 
 > [!NOTE]
 > A Microsoft fenntartja a jogot arra, hogy visszavonja ezt a kivételt, ha megállapítják, hogy a szolgáltatási feltételek megsértése történt.

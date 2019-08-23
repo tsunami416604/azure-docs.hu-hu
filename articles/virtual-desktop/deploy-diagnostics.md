@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: 356b430e0bb9170999398eb8eb68ad31f2d5eeb6
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: d5f0dbf916096b608495c0cc1017d919616653d4
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017308"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899707"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>A diagnosztikai eszköz üzembe helyezése
 
@@ -106,7 +106,7 @@ Az ajánlott teljesítményszámlálók manuális konfigurálását a következ�
     -   Processzor adatai (\*)\\processzoridő
     -   Felhasználói bemeneti késleltetés/munkamenet (\*)\\maximális bemeneti késleltetése
 
-További információ a teljesítményszámlálók a [Azure monitor Windows-és Linux](/articles/azure-monitor/platform/data-sources-performance-counters.md)-teljesítményű adatforrásaiban.
+További információ a teljesítményszámlálók a [Azure monitor Windows-és Linux](/azure/azure-monitor/platform/data-sources-performance-counters)-teljesítményű adatforrásaiban.
 
 >[!NOTE]
 >A konfigurált további számlálók nem jelennek meg a diagnosztikai eszközben. Ahhoz, hogy megjelenjen a diagnosztika eszközben, konfigurálnia kell az eszköz konfigurációs fájlját. A speciális felügyelettel kapcsolatos utasítások később a GitHubon lesznek elérhetők.
@@ -189,7 +189,7 @@ Az átirányítási URI beállítása:
 
 Mielőtt a diagnosztikai eszközt elérhetővé tenné a felhasználók számára, győződjön meg arról, hogy a következő engedélyek vannak:
 
-- A felhasználóknak olvasási hozzáféréssel kell rendelkezniük a log analyticshez. További információ: Ismerkedés [a szerepkörökkel, az engedélyekkel és a biztonsággal a Azure monitor](/articles/azure-monitor/platform/roles-permissions-security.md).
+- A felhasználóknak olvasási hozzáféréssel kell rendelkezniük a log analyticshez. További információ: Ismerkedés [a szerepkörökkel, az engedélyekkel és a biztonsággal a Azure monitor](/azure/azure-monitor/platform/roles-permissions-security).
 -  A felhasználóknak olvasási hozzáférésre is szükségük van a Windows rendszerű virtuális asztali bérlőhöz (RDS olvasó szerepkör). További információ: delegált [hozzáférés a Windows rendszerű virtuális asztal előzetes](delegated-access-virtual-desktop.md)verziójában.
 
 A következő információkat is meg kell adnia a felhasználóknak:
@@ -229,22 +229,22 @@ A munkamenet-gazdagépen lévő felhasználókkal is dolgozhat:
 - LogicalDisk (\*)\|% szabad terület:
 
     - A logikai lemez szabad területének teljes felhasználható területének százalékos arányát jeleníti meg.
-    - Küszöbérték: Kevesebb mint 20% van megjelölve sérültként.
+    - Küszöb Kevesebb mint 20% van megjelölve sérültként.
 
 - LogicalDisk (C:)\\átlag Lemezvezérlő-várólista hossza:
 
     - A tárolási rendszerfeltételeket jelöli.
-    - Küszöbérték: Az 5-nél nagyobb jelölés nem kifogástalan állapotú.
+    - Küszöb Az 5-nél nagyobb jelölés nem kifogástalan állapotú.
 
 - Memória (\*)\\rendelkezésre álló MB-ban:
 
     - A rendszer számára rendelkezésre álló memória.
-    - Küszöbérték: Kevesebb mint 500 megabájt van megjelölve sérültként.
+    - Küszöb Kevesebb mint 500 megabájt van megjelölve sérültként.
 
 - Processzor adatai (\*)\\processzoridő:
 
-    - Küszöbérték: A 80%-nál nagyobb érték van megjelölve sérültként.
+    - Küszöb A 80%-nál nagyobb érték van megjelölve sérültként.
 
 - [Felhasználói bemeneti késleltetés/munkamenet (\*)\\maximális bemeneti késleltetés](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
-    - Küszöbérték: Az 2000 MS-nál nagyobb érték nem megfelelőként van megjelölve.
+    - Küszöb Az 2000 MS-nál nagyobb érték nem megfelelőként van megjelölve.

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 7bfbec194733f2f8422eef45236a64e45bb553c7
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: acb3717f0e71ca1e67f1ddec79a259935f6cc539
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656363"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897691"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -723,7 +723,7 @@ Az [Azure DevOps](https://azure.microsoft.com/services/devops/)Machine learning-
 
 1. A __szolgáltatási kapcsolatok__ használatával állítson be egy egyszerű szolgáltatásnevet a Azure Machine learning szolgáltatási munkaterülethez az összes összetevő eléréséhez. Nyissa meg a projekt beállításait, kattintson a szolgáltatás kapcsolatai elemre, majd válassza a Azure Resource Manager lehetőséget.
 
-    ![nézet – szolgáltatás – kapcsolatok](media/how-to-deploy-and-where/view-service-connection.png) 
+    [![nézet – szolgáltatás – kapcsolatok](media/how-to-deploy-and-where/view-service-connection.png)](media/how-to-deploy-and-where/view-service-connection-expanded.png) 
 
 1. Adja meg a AzureMLWorkspace a __hatókör szintjén__ , és töltse ki a következő paramétereket.
 
@@ -731,11 +731,11 @@ Az [Azure DevOps](https://azure.microsoft.com/services/devops/)Machine learning-
 
 1. Ezután a gépi tanulási modell Azure-folyamatokkal való folyamatos üzembe helyezéséhez válassza a __kiadás__lehetőséget a folyamatok területen. Adjon hozzá egy új összetevőt, válassza ki a AzureML Model-összetevőt és a korábbi lépésben létrehozott szolgáltatási kapcsolatokat. Válassza ki a modellt és a verziót a központi telepítés elindításához. 
 
-    ![select-AzureMLmodel-artifact](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)
+    [![Select-AzureMLmodel-lelet](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)](media/how-to-deploy-and-where/enable-modeltrigger-artifact-expanded.png)
 
 1. Engedélyezze a modell-triggert a modell-összetevőn. Az trigger bekapcsolásával a megadott verzió (azaz a modell legújabb verziója a munkaterületen regisztrálva van, az Azure DevOps kiadási folyamata aktiválva lesz. 
 
-    ![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)
+    [![a Model-trigger engedélyezése](media/how-to-deploy-and-where/set-modeltrigger.png)](media/how-to-deploy-and-where/set-modeltrigger-expanded.png)
 
 További példákért tekintse meg a következő mintát:
 

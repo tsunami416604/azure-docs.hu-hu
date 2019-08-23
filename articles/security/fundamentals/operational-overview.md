@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 31e59f913fa29c92bc1b97029d8712bbd9b68ab8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 52d74983458a2c6a4de27ec91bc23a8dd9bee387
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934661"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899824"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – áttekintés
 
-[Azure Operational Security] (a/Azure/Security/Fundamentals/Operational-Security a felhasználók számára elérhető szolgáltatásokat, vezérlőket és szolgáltatásokat jelöli Microsoft Azure-ban lévő adatok, alkalmazások és egyéb eszközök védelmére. Ez egy keretrendszer, amely magában foglalja a Microsoft számára egyedülálló különböző funkciókkal szerzett ismereteket. Ezek a képességek közé tartozik a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response Center program, valamint a kiberbiztonsági fenyegetések tájképének alapos ismerete.
+Az [Azure Operational Security](/azure/security/fundamentals/operational-security) a felhasználók számára elérhető szolgáltatásokat, vezérlőket és szolgáltatásokat jelenti a Microsoft Azureban tárolt adatok, alkalmazások és egyéb eszközök védelmére. Ez egy keretrendszer, amely magában foglalja a Microsoft számára egyedülálló különböző funkciókkal szerzett ismereteket. Ezek a képességek közé tartozik a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response Center program, valamint a kiberbiztonsági fenyegetések tájképének alapos ismerete.
 
 ## <a name="azure-management-services"></a>Azure felügyeleti szolgáltatások
 

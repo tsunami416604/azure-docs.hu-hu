@@ -1,7 +1,7 @@
 ---
-title: Modellek üzembe helyezése egyéni Docker-rendszerkép használatával
+title: Modellek üzembe helyezése egyéni Docker-alapú rendszerképpel
 titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhat egyéni Docker-rendszerképet a Azure Machine Learning szolgáltatási modelljeinek üzembe helyezése során. A betanított modell telepítésekor a rendszer létrehoz egy Docker-rendszerképet, amely a szolgáltatás futtatásához szükséges lemezképet, webkiszolgálót és egyéb összetevőket tárolja. Míg Azure Machine Learning szolgáltatás alapértelmezett rendszerképet biztosít Önnek, saját rendszerkép is használható.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning Service-modelljeinek üzembe helyezéséhez egyéni Docker-alaplemezképet. A betanított modell üzembe helyezése során a rendszer alapszintű tároló-lemezképet helyez üzembe a modell következtetésre való futtatásához. Míg Azure Machine Learning szolgáltatás alapértelmezett alaprendszerképet biztosít Önnek, a saját alaprendszerképét is használhatja.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,23 +9,25 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/11/2019
-ms.openlocfilehash: f41ccef7803366e63247e6862c59ddb983527d26
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/22/2019
+ms.openlocfilehash: a86dd021d8f9cfe275b3af3f0cb71b99857c26d7
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990537"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971524"
 ---
-# <a name="deploy-a-model-by-using-a-custom-docker-image"></a>Modell üzembe helyezése egyéni Docker-rendszerkép használatával
+# <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Modell üzembe helyezése egyéni Docker-alapú rendszerkép használatával
 
-Megtudhatja, hogyan használhat egyéni Docker-rendszerképet a betanított modellek a Azure Machine Learning szolgáltatással történő telepítésekor.
+Megtudhatja, hogyan használhat egyéni Docker-alapképet a betanított modellek a Azure Machine Learning szolgáltatással való üzembe helyezése során.
 
-Ha egy webszolgáltatáshoz vagy IoT Edge eszközhöz helyez üzembe egy betanított modellt, a rendszer létrehoz egy Docker-rendszerképet. Ez a rendszerkép tartalmazza a modell, a Conda-környezet és a modell használatához szükséges eszközöket. Továbbá tartalmaz egy webkiszolgálót, amely a beérkező kérelmeket webszolgáltatásként való üzembe helyezéskor kezeli, és az Azure IoT Hub való együttműködéshez szükséges összetevőket.
+Ha egy webszolgáltatáshoz vagy IoT Edge eszközhöz helyez üzembe egy betanított modellt, a rendszer létrehoz egy csomagot, amely a bejövő kérelmek kezelésére szolgáló webkiszolgálót tartalmaz.
 
-Azure Machine Learning a szolgáltatás egy alapértelmezett Docker-rendszerképet biztosít, így nem kell aggódnia a létrehozásával kapcsolatban. Használhat egy alaprendszerképként létrehozott egyéni rendszerképet is. Alapszintű rendszerképet kell használni a központi telepítés rendszerképének létrehozásakor. A mögöttes operációs rendszert és összetevőket tartalmazza. Az üzembe helyezési folyamat ezután további összetevőket (például a modellt, a Conda-környezetet és más eszközöket) helyez el a lemezképbe a telepítés előtt.
+Azure Machine Learning a szolgáltatás egy alapértelmezett Docker-alaprendszerképet biztosít, így nem kell aggódnia a létrehozásával kapcsolatban. Használhat egy alaprendszerképként létrehozott egyéni alapképet is. 
 
-Általában egyéni rendszerképet kell létrehoznia, ha az összetevő-verziókat szeretné vezérelni, vagy időt takarít meg az üzembe helyezés során. Előfordulhat például, hogy a Python, a Conda vagy más összetevő egy adott verziójára szeretne szabványosítani. Előfordulhat, hogy a modellhez szükséges szoftvert is telepítenie kell, ahol a telepítési folyamat hosszú időt vesz igénybe. Ha az alaprendszerkép létrehozásakor telepíti a szoftvert, azt jelenti, hogy nem kell telepítenie az összes központi telepítéshez.
+Alapszintű rendszerképet kell használni a központi telepítés rendszerképének létrehozásakor. A mögöttes operációs rendszert és összetevőket tartalmazza. Az üzembe helyezési folyamat ezután további összetevőket (például a modellt, a Conda-környezetet és más eszközöket) helyez el a lemezképbe a telepítés előtt.
+
+Általában egyéni alapképet kell létrehoznia, ha a Docker használatával kezeli a függőségeket, megtarthatja az összetevő-verziók szigorúbb szabályozását, vagy időt takaríthat meg az üzembe helyezés során. Előfordulhat például, hogy a Python, a Conda vagy más összetevő egy adott verziójára szeretne szabványosítani. Előfordulhat, hogy a modellhez szükséges szoftvert is telepítenie kell, ahol a telepítési folyamat hosszú időt vesz igénybe. Ha az alaprendszerkép létrehozásakor telepíti a szoftvert, azt jelenti, hogy nem kell telepítenie az összes központi telepítéshez.
 
 > [!IMPORTANT]
 > Modell telepítésekor nem bírálhatja felül a fő összetevőket, például a webkiszolgálót vagy a IoT Edge összetevőket. Ezek az összetevők olyan ismert munkahelyi környezetet biztosítanak, amelyet a Microsoft tesztelt és támogat.
@@ -35,8 +37,8 @@ Azure Machine Learning a szolgáltatás egy alapértelmezett Docker-rendszerkép
 
 Ez a dokumentum két részre oszlik:
 
-* Egyéni rendszerkép létrehozása: Információt nyújt a rendszergazdáknak és a DevOps az Egyéni rendszerképek létrehozásáról és a hitelesítés konfigurálásáról egy Azure Container Registry az Azure CLI és a Machine Learning parancssori felület használatával.
-* Egyéni rendszerkép használata: Információt nyújt az adatszakértőknek és a DevOps/MLOps az Egyéni rendszerképek használatával, amikor betanított modellt telepít a Python SDK-ból vagy a ML CLI-ből.
+* Egyéni alaprendszerkép létrehozása: Információt nyújt a rendszergazdáknak és a DevOps az Egyéni rendszerképek létrehozásáról és a hitelesítés konfigurálásáról egy Azure Container Registry az Azure CLI és a Machine Learning parancssori felület használatával.
+* Modell üzembe helyezése egyéni alaprendszerkép használatával: Információt nyújt az adatszakértőknek és a DevOps/ML-mérnököknek az Egyéni rendszerképek használatával, amikor betanított modellt telepít a Python SDK-ból vagy a ML CLI-ből.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,7 +49,7 @@ Ez a dokumentum két részre oszlik:
 * Az interneten elérhető [Azure Container Registry](/azure/container-registry) vagy más Docker-beállításjegyzék.
 * A jelen dokumentum lépései azt feltételezik, hogy a modell üzembe helyezésének részeként már ismeri a __következtetési konfigurációs__ objektum létrehozását és használatát. További információ: a telepítésének előkészítése című rész, [ahol a üzembe helyezés és az útmutató](how-to-deploy-and-where.md#prepare-to-deploy).
 
-## <a name="create-a-custom-image"></a>Egyéni lemezkép létrehozása
+## <a name="create-a-custom-base-image"></a>Egyéni alaprendszerkép létrehozása
 
 Az ebben a szakaszban található információk azt feltételezik, hogy Azure Container Registry használ a Docker-rendszerképek tárolásához. A következő ellenőrzőlista használható egyéni rendszerképek létrehozásához Azure Machine Learning szolgáltatáshoz:
 
@@ -109,7 +111,7 @@ Ha már betanított vagy telepített modelleket a Azure Machine Learning szolgá
 
     Az `<registry_name>` érték a munkaterület Azure Container Registry neve.
 
-### <a name="build-a-custom-image"></a>Egyéni rendszerkép létrehozása
+### <a name="build-a-custom-base-image"></a>Egyéni alaprendszerkép létrehozása
 
 Az ebben a szakaszban ismertetett lépések végigvezetik az egyéni Docker-rendszerkép létrehozásán a Azure Container Registry.
 
@@ -162,7 +164,7 @@ A rendszerképek Azure Container Registry használatával történő létrehozá
 
 A meglévő lemezképek Azure Container Registryra való feltöltésével kapcsolatos további információkért lásd: [az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékbe](/azure/container-registry/container-registry-get-started-docker-cli).
 
-## <a name="use-a-custom-image"></a>Egyéni rendszerkép használata
+## <a name="use-a-custom-base-image"></a>Egyéni alaprendszerkép használata
 
 Egyéni rendszerkép használatához a következő információk szükségesek:
 
@@ -174,7 +176,7 @@ Egyéni rendszerkép használatához a következő információk szükségesek:
 
     Ha nem rendelkezik ezekkel az információkkal, beszéljen a rendszerképet tartalmazó Azure Container Registry rendszergazdájához.
 
-### <a name="publicly-available-images"></a>Nyilvánosan elérhető lemezképek
+### <a name="publicly-available-base-images"></a>Nyilvánosan elérhető alaplemezképek
 
 A Microsoft számos Docker-rendszerképet biztosít egy nyilvánosan elérhető adattáron, amely az ebben a szakaszban ismertetett lépésekkel használható:
 

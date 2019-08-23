@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: ebecb69e57c620b2eb84568757c8e3e6f1cb1663
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 510f58cc0b71fb75ac6f5e15fc883c3caf4a8f9a
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946406"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898000"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Vállalati biztonság Azure Machine Learning szolgáltatáshoz
 
@@ -31,7 +31,7 @@ A többtényezős hitelesítés akkor támogatott, ha a Azure Active Directory (
 * Az ügyfél jogkivonatot jelenít meg Azure Resource Manager & az összes Azure Machine Learning szolgáltatást
 * Azure Machine Learning szolgáltatás Azure Machine Learning tokent biztosít a felhasználó számítási feladatokhoz. Például Machine Learning Compute. Ezt a jogkivonatot a felhasználói számítás használja, hogy a Futtatás befejezése után visszahívja a Azure Machine Learning szolgáltatást (a hatókört a munkaterületre korlátozza).
 
-![Képernyőfelvétel a hitelesítés működéséről Azure Machine Learning szolgáltatásban](./media/enterprise-readiness/authentication.png)
+[![Képernyőfelvétel a hitelesítés működéséről Azure Machine Learning szolgáltatásban](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Hitelesítés a webszolgáltatások üzembe helyezéséhez
 
@@ -185,7 +185,7 @@ Minden munkaterülethez tartozik egy társított, rendszerhez rendelt felügyelt
 
 Azure Monitor metrikák használatával megtekintheti és figyelheti a Azure Machine Learning szolgáltatás munkaterületének mérőszámait. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet, majd használja a metrikák hivatkozást.
 
-![A munkaterület mérőszámait ábrázoló képernyőkép](./media/enterprise-readiness/workspace-metrics.png)
+[![A munkaterület mérőszámait ábrázoló képernyőkép](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
 A metrikák a futtatások, a központi telepítések és a regisztrációk információit tartalmazzák.
 
@@ -197,7 +197,7 @@ A munkaterületen a tevékenység naplójában megtekintheti a munkaterületen v
 
 A következő képernyőfelvételen a munkaterület tevékenységi naplója látható:
 
-![A munkaterület alatti tevékenység naplóját ábrázoló képernyőfelvétel](./media/enterprise-readiness/workspace-activity-log.png)
+[![A munkaterület alatti tevékenység naplóját ábrázoló képernyőfelvétel](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
 
 A pontozási kérelmek részleteit az alkalmazási betekintés tárolja, amely a felhasználó előfizetésében jön létre a munkaterület létrehozásakor. A naplózott adatok olyan mezőket tartalmaznak, mint a HTTPMethod, a UserAgent, a ComputeType, a RequestUrl, a StatusCode, a Kérelemazonosító, az időtartam stb.
 
@@ -220,14 +220,14 @@ A felhasználó bejelentkezik az Azure AD-be bármely támogatott Azure Machine 
 
 A munkaterülethez (Azure Kubernetes szolgáltatás, virtuális gép stb.) kapcsolódó egyéb számítások igény szerint az ügyfelek által is kiállíthatók.
 
-![A munkaterület-munkafolyamatot bemutató képernyőkép](./media/enterprise-readiness/create-workspace.png)
+[![A munkaterület-munkafolyamatot bemutató képernyőkép](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
 
 ### <a name="save-source-code-training-scripts"></a>Forráskód mentése (betanítási parancsfájlok)
 
 Az alábbi ábrán a kód pillanatkép-munkafolyamata látható.
 Egy Azure Machine Learning szolgáltatási munkaterülethez társított könyvtárak (kísérletek), amely tartalmazza a forráskódot (betanítási parancsfájlok).  Ezeket a parancsfájlokat az ügyfél helyi számítógépén és a felhőben (az Azure Blob Storage az ügyfél előfizetése alatt) tárolja. A kód pillanatképei a korábbi naplózás végrehajtásához vagy ellenőrzéséhez használatosak.
 
-![A munkaterület-munkafolyamatot bemutató képernyőkép](./media/enterprise-readiness/code-snapshot.png)
+[![A munkaterület-munkafolyamatot bemutató képernyőkép](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
 ### <a name="training"></a>Képzés
 
@@ -253,7 +253,7 @@ Az alábbi ábra a betanítási munkafolyamatot mutatja be.
 
 Ez a lépés jelenik meg a folyamatban, ahol a betanítási számítás a futtatási metrikákat a Azure Machine learning szolgáltatásba írja vissza, ahonnan a Cosmos db tárolja. Az ügyfelek meghívhatják Azure Machine Learning szolgáltatást, amely lekéri a metrikákat a Cosmos DBról, majd visszaküldi az ügyfélnek.
 
-![A munkaterület-munkafolyamatot bemutató képernyőkép](./media/enterprise-readiness/training-and-metrics.png)
+[![A munkaterület-munkafolyamatot bemutató képernyőkép](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
 ### <a name="creating-web-services"></a>Webszolgáltatások létrehozása
 
@@ -267,7 +267,7 @@ Tekintse meg az alábbi részleteket:
 * A pontozási kérelmek részleteit a felhasználó előfizetésében található alkalmazás-betekintés tárolja
 * A telemetria a Microsoft/Azure-előfizetésre is leküldve
 
-![A munkaterület-munkafolyamatot bemutató képernyőkép](./media/enterprise-readiness/inferencing.png)
+[![A munkaterület-munkafolyamatot bemutató képernyőkép](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
 
 ## <a name="next-steps"></a>További lépések
 

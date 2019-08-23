@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: bed95c070649785a701f9d08a98faf29c8ee1413
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 98ab93bbec8da17dde93c9c343703838b0279994
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990688"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900431"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz .NET-tel (előzetes verzió)
 
@@ -44,7 +44,7 @@ Ha az Azure AD-beli hitelesítő adatokkal szeretne hitelesítést végezni az A
 
 Ha egy egyszerű szolgáltatásnevet szeretne létrehozni az Azure CLI-vel, és hozzárendel egy RBAC-szerepkört, hívja meg az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancsot. Adjon meg egy Azure Storage-adathozzáférési szerepkört az új egyszerű szolgáltatáshoz való hozzárendeléshez. A szerepkörnek tartalmaznia kell a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. Az Azure Storage beépített szerepköreivel kapcsolatos további információkért lásd: [beépített szerepkörök az Azure](../../role-based-access-control/built-in-roles.md)-erőforrásokhoz.
 
-Továbbá adja meg a szerepkör-hozzárendelés hatókörét. Az egyszerű szolgáltatásnév létrehozza a felhasználói delegálási kulcsot, amely a Storage-fiók szintjén végrehajtott művelet, így a szerepkör-hozzárendelés hatókörét a Storage-fiók, az erőforráscsoport vagy az előfizetés szintjén kell végrehajtani. A felhasználói delegálási SAS létrehozásához szükséges engedélyekkel kapcsolatos további információkért tekintse meg a [felhasználói delegálási sas (REST API) létrehozása](/rest/api/storageservices/create-a-user-delegation-sas)a RBAC a **RBAC** című szakaszát.
+Továbbá adja meg a szerepkör-hozzárendelés hatókörét. Az egyszerű szolgáltatásnév létrehozza a felhasználói delegálási kulcsot, amely a Storage-fiók szintjén végrehajtott művelet, így a szerepkör-hozzárendelés hatókörét a Storage-fiók, az erőforráscsoport vagy az előfizetés szintjén kell végrehajtani. A felhasználói delegálási SAS létrehozásához szükséges engedélyekkel kapcsolatos további információkért tekintse meg a [felhasználói delegálási sas (REST API) létrehozása](/rest/api/storageservices/create-user-delegation-sas)a RBAC a **RBAC** című szakaszát.
 
 Ha nem rendelkezik megfelelő engedélyekkel ahhoz, hogy szerepkört rendeljen a szolgáltatáshoz, előfordulhat, hogy meg kell kérnie a fiók tulajdonosát vagy a rendszergazdát, hogy elvégezze a szerepkör-hozzárendelést.
 
@@ -276,4 +276,4 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 ## <a name="see-also"></a>Lásd még
 
 - [Felhasználói delegálási kulcs műveletének beolvasása](/rest/api/storageservices/get-user-delegation-key)
-- [Felhasználói delegálási SAS létrehozása (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)
+- [Felhasználói delegálási SAS létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08e27052c3583ddea7a2fb6fe96fa6b48cd6c372
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 5d2247aab872a71f250bd0b4b52714e402d2102d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333880"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905199"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Identity Protection kockázati események referenciája
 
@@ -61,10 +61,10 @@ Amikor a szolgáltatás felhasználói hitelesítő adatokat kér a sötét webh
 
 Ez a kockázati esemény típusa olyan IP-címekről származó bejelentkezéseket jelez, amelyekről ismert, hogy aktívan kommunikálnak egy bot-kiszolgálóval. Ezt úgy határozzák meg, hogy a felhasználó eszközének IP-címeit a bot-kiszolgálóval érintkező IP-címekről, míg a bot Server aktív volt.
 
-## <a name="unfamiliar-sign-in-properties"></a>Szokatlan bejelentkezési tulajdonságok
+## <a name="unfamiliar-sign-in-properties"></a>Ismeretlen bejelentkezési tulajdonságok
 
 **Észlelés típusa:** Valós idejű  
-**Régi név:** Ismeretlen helyekről történt bejelentkezések
+**Régi név:** Bejelentkezések ismeretlen helyekről
 
 Ez a kockázati eseménytípus a rendellenes bejelentkezések kereséséhez a korábbi bejelentkezési előzményeket (IP, szélesség/hosszúság és ASN) veszi figyelembe. A rendszer a felhasználó által használt korábbi helyszínekről tárol adatokat, és ezeket a "ismerős" helyet tekinti át. A kockázati esemény akkor aktiválódik, ha a bejelentkezés olyan helyről történik, amely még nem szerepel az ismerős helyek listáján. Az újonnan létrehozott felhasználók "tanulási módban" lesznek egy olyan időszakra, amelyben a nem ismerős bejelentkezési tulajdonságok kockázati eseményei ki lesznek kapcsolva, miközben az algoritmusok megismerhetik a felhasználó viselkedését. A tanulási mód időtartama dinamikus, és attól függ, hogy mennyi időt vesz igénybe az algoritmus, hogy elegendő információt gyűjtsön a felhasználó bejelentkezési mintáit illetően. A minimális időtartam öt nap. A felhasználók hosszú inaktivitás után visszatérhetnek a tanulási módba. A rendszer emellett figyelmen kívül hagyja a jól ismert eszközökről érkező bejelentkezéseket és a jól ismert helyhez földrajzilag közel lévő helyeket. 
 
@@ -76,3 +76,8 @@ Ezt az észlelést az alapszintű hitelesítéshez (vagy örökölt protokollokh
 **Régi név:** Ez az észlelés megjelenik az örökölt Azure AD Identity Protection jelentésekben (a kockázatoknak megjelölt felhasználók, kockázati események) a "kiszivárgott hitelesítő adatokkal rendelkező felhasználók"
 
 Ez a kockázati eseménytípus azt jelzi, hogy az adott felhasználó számára szokatlan felhasználói tevékenység van, vagy konzisztens a Microsoft belső és külső veszélyforrások elleni intelligencia-forrásaira épülő ismert támadási mintákkal.
+
+## <a name="admin-confirmed-user-compromised"></a>Rendszergazda megerősítette a felhasználói fiók feltörését
+
+**Észlelés típusa:** Offline <br>
+Ez az észlelés azt jelzi, hogy egy rendszergazda a kockázatos felhasználók felhasználói felületén vagy a riskyUsers API-val jelölte meg a "felhasználói biztonság megerősítése" beállítást. Annak megtekintéséhez, hogy mely rendszergazda erősítette meg ezt a felhasználót, ellenőrizze a felhasználó kockázati előzményeit (UI vagy API használatával).

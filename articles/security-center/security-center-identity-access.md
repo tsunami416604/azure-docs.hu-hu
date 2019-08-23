@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: v-mohabe
-ms.openlocfilehash: 73480c6e24ab13b7764c5b72280c19971eb3d039
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 1ef4d8e76b54b995a09decdfaf9974f0929c8ed9
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296491"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905343"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identitás és hozzáférés figyelése Azure Security Centerban (előzetes verzió)
 Ez a cikk útmutatást nyújt a felhasználók identitási és hozzáférési tevékenységeinek az Azure Security Center segítségével történő figyeléséhez.
@@ -79,7 +79,7 @@ Az **Áttekintés**területen a javaslatok listája szerepel. Az első oszlop a 
 1. További részletekért válasszon egy előfizetést a listában.
 
 ### <a name="subscriptions-section"></a>Előfizetések szakasz
-Az előfizetések alatt található az előfizetések listája. Az első oszlop felsorolja az előfizetéseket. A második oszlop az egyes előfizetésekhez tartozó javaslatok teljes számát jeleníti meg. A harmadik oszlop a problémák súlyosságát mutatja.
+Azelőfizetések alatt található az előfizetések listája. Az első oszlop felsorolja az előfizetéseket. A második oszlop az egyes előfizetésekhez tartozó javaslatok teljes számát jeleníti meg. A harmadik oszlop a problémák súlyosságát mutatja.
 
 ![Előfizetés lapja][4]
 
@@ -119,7 +119,7 @@ Az alábbi táblázat hivatkozásként használható, amely segít megérteni az
 |Subscription|5|Az elavult fiókokat el kell távolítani az előfizetésből|Az elavult fiókok eltávolítása az előfizetésből, hogy csak az aktuális felhasználók férhessenek hozzá. |
 |Subscription|5|Az előfizetéshez egynél több tulajdonos rendelhető hozzá|Egynél több előfizetés-tulajdonost jelölhet ki a rendszergazdai hozzáférés redundancia érdekében.|
 |Subscription|5|Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni|Kevesebb mint 3 előfizetés-tulajdonost jelölhet ki, hogy csökkentse a feltört tulajdonos általi illetéktelen behatolás lehetőségét.|
-|Key Vault|5|A Key Vault diagnosztikai naplóit engedélyezni kell|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Kulcstartó|5|A Key Vault diagnosztikai naplóit engedélyezni kell|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
 |Subscription|15|Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|A nem figyelt hozzáférés megakadályozása érdekében távolítsa el a külső fiókokat olvasási jogosultságokkal az előfizetésből.| 
 
 > [!NOTE]
@@ -128,7 +128,7 @@ Az alábbi táblázat hivatkozásként használható, amely segít megérteni az
 ## <a name="next-steps"></a>További lépések
 Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:
 
-- [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-recommendations.md)
+- [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-protection.md)
 - [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
 - [Az Azure SQL-szolgáltatás és-adatok védelme Azure Security Center](security-center-sql-service-recommendations.md)
 

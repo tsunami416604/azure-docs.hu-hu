@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: 89c56496ed1f356ffedf4df93f1728bd4acda323
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 4987c17eabf5d9e140352e3581b38a7d29049c5f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639957"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899976"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Mi a "kognitív keresés" a Azure Searchban?
 
@@ -51,7 +51,7 @@ Az előre elkészített ismeretekkel rendelkező kognitív keresés jól illeszk
 
   Emellett az előre elkészített képességek is használhatók a tartalom átstrukturálása a szöveg felosztása, egyesítése és alakja műveletekkel.
 
-Az egyéni képességek olyan összetettebb forgatókönyveket is támogatnak, mint például az űrlapok felismerése vagy az egyéni entitások észlelése az Ön által megadott és az [Egyéni szakértelem webes felületén](cognitive-search-custom-skill-interface.md)beburkolt modell használatával. Az egyéni képességek számos példája például az [űrlap-felismerő](), a [Bing Entity Search API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)integrációja és az [egyéni entitások felismerése](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
+Az egyéni képességek olyan összetettebb forgatókönyveket is támogatnak, mint például az űrlapok felismerése vagy az egyéni entitások észlelése az Ön által megadott és az [Egyéni szakértelem webes felületén](cognitive-search-custom-skill-interface.md)beburkolt modell használatával. Az egyéni képességek számos példája például az [űrlap-felismerő](/azure/cognitive-services/form-recognizer/overview), a [Bing Entity Search API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)integrációja és az [egyéni entitások felismerése](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
 
 ## <a name="component-pipeline-of-cognitive-search"></a>A kognitív keresés összetevő-folyamata
@@ -116,7 +116,7 @@ Az indexek olyan index-sémából jönnek létre, amely meghatározza az adott i
 
 **1. lépés: [Azure Search erőforrás létrehozása](search-create-service-portal.md)** 
 
-**2. lépés: Próbálja ki néhány rövid útmutatót és példát a gyakorlati tapasztalatokra**
+**2. lépés: Próbálja ki néhány rövid útmutatót és példát a gyakorlati tapasztalatokra**
 
 + [Gyors útmutató (portál)](cognitive-search-quickstart-blob.md)
 + [Oktatóanyag (HTTP-kérések)](cognitive-search-tutorial-blob.md)

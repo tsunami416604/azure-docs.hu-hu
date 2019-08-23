@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: overview
 ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: ee863b6003444ec099753a6488f3fe4078338e60
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 5e53a671c866b9482296622d19d4ad6bec46829d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384122"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905288"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -23,6 +23,11 @@ Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/tr
 
 > [!div class="nextstepaction"]
 > [Az Azure Cosmos DB ingyenes kipróbálása](https://azure.microsoft.com/try/cosmosdb/)
+
+A Cosmos DB rendszerindítási [program](https://azurecosmosdb.github.io/CosmosBootstrap/) használatával felgyorsíthatja az alkalmazások Azure Cosmos db-on való létrehozását vagy áttelepítését. Ha feliratkozik erre a programra, a Azure Cosmos DB mérnökök hozzá tudnak adni a projekthez, és segítséget nyújtanak az adatai áttelepítéséhez Azure Cosmos DB vagy új alkalmazások létrehozása a Azure Cosmos DB.
+
+> [!div class="nextstepaction"]
+> [Regisztráció a Cosmos DB bootstrap programra](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ![Az Azure Cosmos DB a Microsoft globálisan elosztott adatbázis-szolgáltatása rugalmas horizontális felskálázási képességgel, garantáltan alacsony késéssel, öt konzisztenciamodellel, valamint átfogó garantált SLA-kkal.](./media/introduction/azure-cosmos-db.png)
 

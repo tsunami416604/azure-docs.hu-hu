@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 08/21/2019
 ms.author: v-adgera
-ms.openlocfilehash: 66dbfd09ef07740c07ddb010b73e33e783340e5a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: a39663adedfdb9c00c4429f65ec1bd27286cb136
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873662"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904299"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>A Poster konfigurálása az Azure Digital Twins szolgáltatáshoz
 
@@ -35,9 +35,9 @@ A Poster-ügyfélen keresztül a megoldások fejlesztői megadhatják a HTTP-ké
 
 Konfigurálja a Azure Active Directory alkalmazást az OAuth 2,0 implicit engedélyezési folyamat használatára.
 
-1. Az [ebben](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) a rövid útmutatóban található lépéseket követve hozzon létre egy natív típusú Azure ad-alkalmazást. Vagy újból felhasználhat egy meglévő natív alkalmazás-regisztrációt is.
+1. Kövesse a rövid útmutató [](./quickstart-view-occupancy-dotnet.md) lépéseit egy Azure ad-alkalmazás létrehozásához. Vagy hozzon létre egy [natív alkalmazást a régi HRE panel használatával](./how-to-use-legacy-aad.md).
 
-1. A **szükséges engedélyek**területen válassza a **Hozzáadás** lehetőséget, majd adja meg az **Azure Digital Twins** elemet az **API-hozzáférés hozzáadása**területen. Ha a keresés nem találja meg az API-t, keressen inkább az **Azure Smart Spaces** kifejezésre. Ezután válassza az **engedélyek megadása > delegált engedélyek** és **kész**lehetőséget.
+1. Az **API-engedélyek**területen válassza **az engedély hozzáadása**elemet. Ezt követően az **Azure Digital ikrek** a **szervezet által használt API**-k alatt vannak. Ha a keresés nem találja meg az API-t, keressen inkább az **Azure Smart Spaces** kifejezésre. Ezután válassza a **delegált engedélyek**, **olvasás** >  **. írás**és **Hozzáadás engedélyt**.
 
     [![Azure Active Directory alkalmazás-regisztráció API hozzáadása](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
@@ -75,7 +75,7 @@ A Poster beállítása és konfigurálása Azure Active Directory token beszerz�
     | Engedélyezési típus | `Implicit` |
     | Visszahívási URL | `https://www.getpostman.com/oauth2/callback` |
     | Hitelesítési URL-cím | Az **engedélyezési URL-cím** használata a 2. lépésből |
-    | Ügyfél-azonosító | Az előző szakaszban létrehozott vagy repurposed Azure Active Directory **alkalmazás azonosítójának** használata |
+    | Ügyfél-azonosító | Az előző szakaszban létrehozott vagy újrafelhasznált Azure Active Directory **alkalmazás azonosítójának** használata |
     | Scope | Hagyja üresen |
     | State | Hagyja üresen |
     | Ügyfél-hitelesítés | `Send as Basic Auth header` |

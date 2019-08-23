@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: b99dbd403de0de948527fbe74b7e1205316822c0
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 848cfc96a7da4e69ff77d16a42226a983153ac63
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019679"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897003"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Azure Active Directory hitelesítés használata SQL-alapú hitelesítéshez
 
@@ -116,8 +116,9 @@ A Azure SQL Database, felügyelt példányban vagy SQL Data Warehouseban tárolt
 
 Azure Active Directory hitelesítés a következő módszereket támogatja az adatbázishoz való kapcsolódáshoz az Azure AD-identitások használatával:
 
-- Integrált Windows-hitelesítés használata
-- Azure AD egyszerű név és jelszó használata
+- Azure Active Directory jelszó
+- Integrált Azure Active Directory
+- Univerzális Azure Active Directory MFA-val
 - Alkalmazás-jogkivonat hitelesítésének használata
 
 Az Azure AD Server-rendszerbiztonsági tag (Logins) (**nyilvános előzetes**verzió) esetében az alábbi hitelesítési módszerek támogatottak:
@@ -125,7 +126,6 @@ Az Azure AD Server-rendszerbiztonsági tag (Logins) (**nyilvános előzetes**ver
 - Azure Active Directory jelszó
 - Integrált Azure Active Directory
 - Univerzális Azure Active Directory MFA-val
-- Interaktív Azure Active Directory
 
 
 ### <a name="additional-considerations"></a>Néhány fontos megjegyzés

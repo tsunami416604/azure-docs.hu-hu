@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: e169d7734776f9319685d97f941b3fc11eec8298
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 1e35baf24b59e7864982d131f44f79458e0d9015
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656248"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971493"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -89,9 +89,18 @@ Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismer
   + **azureml – widgetek**
     + Továbbfejlesztett összetéveszthető mátrix-diagramok a besorolási képzéshez.
 
+### <a name="azure-machine-learning-data-prep-sdk-v1112"></a>Azure Machine Learning adat-előkészítési SDK v 1.1.12
++ **Új funkciók**
+  + A sztringek listája mostantól a `read_*` metódusok bemenetként adható át.
+
++ **Hibajavítások és javítások**
+  + A teljesítménye `read_parquet` jelentősen javult a Sparkban való futás során.
+  + Kijavítva egy olyan `column_type_builder` hibát, amely nem egyértelmű dátumformátum esetén egyetlen oszlop esetében meghiúsult.
+
 ### <a name="azure-portal"></a>Azure Portal
 + **Előzetes verzió funkció**
   + A log és a output file streaming mostantól elérhető a futtatási részletek oldalain. A fájlok valós időben továbbítják a frissítéseket, amikor bekapcsolják az előnézeti kapcsolót.
+  + A kvóta megadásának lehetősége a munkaterület szintjén előzetes verzióban érhető el. A AmlCompute-kvóták az előfizetés szintjén vannak lefoglalva, de mostantól lehetővé tesszük, hogy az adott kvótát a munkaterületek között, és a méltányos megosztáshoz és irányításhoz ossza ki. A munkaterület bal oldali navigációs sávján kattintson a **használat + kvóták** panelre, és válassza a **kvóták konfigurálása** lapot. Vegye figyelembe, hogy az előfizetés rendszergazdájának kell lennie ahhoz, hogy kvótákat lehessen beállítani a munkaterület szintjén, mivel ez egy több-munkaterület művelet.
 
 ## <a name="2019-08-05"></a>2019-08-05
 

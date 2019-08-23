@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e87fc74b3fa989471f9074a33fc66d8cb8250aa0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2cc8f4f81ad95376dcbc10c2952c1b2ed95ffe42
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927841"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907909"
 ---
 # <a name="introduction-to-azure-security"></a>Az Azure Security bemutatása
 ## <a name="overview"></a>Áttekintés
@@ -270,6 +270,7 @@ A webalkalmazási tűzfal az [Azure Application Gateway](../../application-gatew
 
 
 A webes támadásokkal szembeni védelmet nyújtó központi webalkalmazási tűzfal egyszerűbbé teszi a biztonságfelügyeletet, és nagyobb biztonságot ad az alkalmazásnak a behatolások jelentette veszéllyel szemben. Emellett a WAF-megoldás gyorsabban képes kezelni a biztonsági fenyegetéseket azáltal, hogy kijavítja az ismert biztonsági réseket egy központi helyen, ahelyett hogy az egyes webalkalmazások védelmét biztosítaná. A meglévő alkalmazásátjárókat egyszerűen lehet átalakítani webalkalmazási tűzfallal rendelkező alkalmazásátjárókká.
+
 ### <a name="traffic-manager"></a>Traffic Manager
 A Microsoft [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) segítségével szabályozható a különböző adatközpontokban lévő szolgáltatási végpontok felhasználói forgalmának elosztása. A Traffic Manager által támogatott szolgáltatási végpontok közé tartoznak az Azure-beli virtuális gépek, a Web Apps és a Cloud Services. A Traffic Manager külső, nem Azure-végpontokkal együtt is használható. Traffic Manager a tartománynévrendszer (DNS) használatával irányítja az ügyfelek kérelmeit a legmegfelelőbb végpontra a [forgalmi útválasztási módszer](../../traffic-manager/traffic-manager-routing-methods.md) és a végpontok állapota alapján.
 
@@ -295,18 +296,8 @@ A következő diagnosztikai naplózási kategóriákat engedélyezheti a NSG:
 -   Szabályok számlálója: Azokat a bejegyzéseket tartalmazza, amelyekkel az egyes NSG-szabályok a forgalom megtagadására vagy engedélyezésére vonatkoznak.
 
 ### <a name="azure-security-center"></a>Azure Security Center
-A Security Center segít megakadályozni, észlelni és reagálni a fenyegetésekre, és az Azure-erőforrások jobb láthatóságát és felügyeletét teszi lehetővé. Integrált biztonsági monitorozást és házirend-kezelést biztosít az Azure-előfizetésekben, segít észlelni azokat a fenyegetéseket, amelyek egyébként észrevétlenek lehetnek, és a biztonsági megoldások széles körű ökoszisztémával működnek. Hálózati javaslatok központ tűzfalakon, hálózati biztonsági csoportokon, a bejövő forgalmi szabályok konfigurálásán és egyebeken.
 
-Az elérhető hálózati javaslatok a következők:
-
--   Új [generációs tűzfal hozzáadása](../../security-center/security-center-add-next-generation-firewall.md) Javasolja, hogy vegyen fel egy új generációs tűzfalat (NGFW) egy Microsoft-partnertől a biztonsági védelem növeléséhez
-
--   [Forgalom irányítása csak NGFW keresztül](../../security-center/security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only) Javasolja, hogy konfigurálja a hálózati biztonsági csoport (NSG) azon szabályait, amelyek a NGFW keresztül a virtuális gépre irányuló bejövő forgalmat kényszerítik.
-
--   [Hálózati biztonsági csoportok engedélyezése az alhálózatokon vagy virtuális gépeken](../../security-center/security-center-enable-network-security-groups.md) Javasolja, hogy engedélyezze a NSG az alhálózatokon vagy virtuális gépeken.
-
--   [Internet felé irányuló végponton keresztüli hozzáférés korlátozása](../../security-center/security-center-restrict-access-through-internet-facing-endpoints.md) Javasolja, hogy konfigurálja a NSG bejövő forgalmi szabályait.
-
+[Azure Security Center](../../security-center/security-center-intro.md) folyamatosan elemzi az Azure-erőforrások biztonsági állapotát a hálózati biztonsággal kapcsolatos ajánlott eljárásokhoz. Ha Security Center észleli a potenciális biztonsági réseket, [javaslatokat](../../security-center/security-center-recommendations.md) hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának lépésein az erőforrások megerősítéséhez és védelméhez.
 
 ## <a name="compute"></a>Compute
 
@@ -387,7 +378,7 @@ A [Azure Active Directory](https://azure.microsoft.com/services/active-directory
 - A [Azure Active Directory Application proxy](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-get-started/) egyszeri bejelentkezést és biztonságos távoli hozzáférést biztosít a helyszínen üzemeltetett webalkalmazásokhoz.
 
 ## <a name="next-steps"></a>További lépések
-- [Microsoft Azure biztonság – első lépések](./https://docs.microsoft.com/azure/security)
+- [Microsoft Azure biztonság – első lépések](https://docs.microsoft.com/azure/security)
 
 Azure-beli adatai és szolgáltatásai számára védelmet nyújtó Azure-szolgáltatások és funkciók
 

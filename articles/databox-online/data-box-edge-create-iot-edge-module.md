@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 734ad263356ab9f91c7cb92ab174a14e0c5dd867
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: daf7b01725a931b8fa76be14e06e2b32cffe5da6
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775181"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900632"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>C# IoT Edge modul fejlesztése a fájlok áthelyezéséhez Data Box Edge
 
@@ -127,8 +127,10 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
 2. A **FileCopyModule névtér**tetején adja hozzá a következő using utasításokat a később használt típusokhoz. A **Microsoft. Azure. Devices. Client. Transport. Mqtt** egy protokoll, amely üzeneteket küld IoT Edge hubhoz.
 
     ```
-    using Microsoft.Azure.Devices.Client.Transport.Mqtt;
-    using Newtonsoft.Json;
+    namespace FileCopyModule
+    {
+        using Microsoft.Azure.Devices.Client.Transport.Mqtt;
+        using Newtonsoft.Json;
     ```
 3. Adja hozzá a **InputFolderPath** és a **OutputFolderPath** változót a program osztályhoz.
 
@@ -140,7 +142,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
             private const string OutputFolderPath = "/home/output";
     ```
 
-4. Adja hozzá a **FileEvent** osztályt az üzenet törzsének definiálásához.
+4. Közvetlenül az előző lépés után adja hozzá a **FileEvent** osztályt az üzenet törzsének definiálásához.
 
     ```
     /// <summary>
@@ -156,7 +158,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
     }
     ```
 
-5. Az **Init** metódus használata esetén a kód létrehoz és konfigurál egy **ModuleClient** objektumot. Ez az objektum lehetővé teszi, hogy a modul az üzenetek küldéséhez és fogadásához a helyi Azure IoT Edge futtatókörnyezethez kapcsolódjon MQTT protokoll használatával. Az init metódusban használt kapcsolódási karakterláncot a IoT Edge futtatókörnyezet biztosítja a modulnak. A kód regisztrálja a FileCopy visszahívást, hogy üzeneteket fogadjon egy IoT Edge hubhoz az **input1** -végponton keresztül.
+5. Az **init metódusban**a kód egy **ModuleClient** objektumot hoz létre és konfigurál. Ez az objektum lehetővé teszi, hogy a modul az üzenetek küldéséhez és fogadásához a helyi Azure IoT Edge futtatókörnyezethez kapcsolódjon MQTT protokoll használatával. Az init metódusban használt kapcsolódási karakterláncot a IoT Edge futtatókörnyezet biztosítja a modulnak. A kód regisztrálja a FileCopy visszahívást, hogy üzeneteket fogadjon egy IoT Edge hubhoz az **input1** -végponton keresztül. Cserélje le az **init metódust** a következő kódra.
 
     ```
     /// <summary>
@@ -178,11 +180,11 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
     }
     ```
 
-6. Szúrja be a **FileCopy**kódját.
+6. Távolítsa el a **pipe Message metódus** kódját, és a helyére írja be a **FileCopy**kódját.
 
     ```
         /// <summary>
-        /// This method is called whenever the module is sent a message from the IoT Edge Hub. 
+        /// This method is called whenever the module is sent a message from the IoT Edge Hub.
         /// This method deserializes the file event, extracts the corresponding relative file path, and creates the absolute input file path using the relative file path and the InputFolderPath.
         /// This method also forms the absolute output file path using the relative file path and the OutputFolderPath. It then copies the input file to output file and deletes the input file after the copy is complete.
         /// </summary>
@@ -236,6 +238,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
     ```
 
 7. Mentse el ezt a fájlt.
+8. A projekthez [egy meglévő mintakód is letölthető](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) . Ezután érvényesítheti a minta **program.cs** fájljában mentett fájlt.
 
 ## <a name="build-your-iot-edge-solution"></a>Az IoT Edge-megoldás összeállítása
 
@@ -246,7 +249,7 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
 
     `docker login <ACR login server> -u <ACR username>`
 
-    Használja a tároló-beállításjegyzékből másolt bejelentkezési kiszolgálót és felhasználónevet. 
+    Használja a tároló-beállításjegyzékből másolt bejelentkezési kiszolgálót és felhasználónevet.
 
     ![IoT Edge-megoldás létrehozása és leküldése](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-1.png)
 

@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 1f06345995e30f4d7f165230f4292c560c89e2e8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 98bf38a6c293f6d339413b5395bb32d74bcb30c0
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68489772"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905721"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Service Map megoldás használata az Azure-ban
+
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map használatával a kiszolgálókat úgy tekintheti meg, ahogyan azt el szoktuk képzelni: egymással összekapcsolt rendszereket, amelyek kritikus fontosságú szolgáltatásokat tesznek elérhetővé. A Service Map megmutatja a kiszolgálók közötti kapcsolatokat, a folyamatokat, a bejövő és a kimenő kapcsolatok késéseit, valamint minden TCP-vel csatlakoztatott architektúra portjait, és ehhez konfigurációra sincs szükség, csupán telepíteni kell az ügynököt.
 
 Ez a cikk a Service Map bevezetésének és használatának részleteit ismerteti. További információ a megoldás előfeltételeinek konfigurálásáról: [a Azure monitor for VMS áttekintésének engedélyezése](vminsights-enable-overview.md#prerequisites). Az összegzéshez a következőkre lesz szüksége:
@@ -407,7 +408,7 @@ A *VMConnection* táblában lévő összes RemoteIp-tulajdonságot a rendszer az
 | `ReportReferenceLink` |Egy adott megfigyelhető jelentéshez kapcsolódó jelentések hivatkozásai. |
 | `AdditionalInformation` |További információkat biztosít a megfigyelt fenyegetésről. |
 
-### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
+### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL records
 
 A *ServiceMapComputer_CL* rendelkező rekordok a Service Map-ügynökökkel rendelkező kiszolgálók leltározási adataival rendelkeznek. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
 
@@ -433,7 +434,7 @@ A *ServiceMapComputer_CL* rendelkező rekordok a Service Map-ügynökökkel rend
 | `VirtualMachineName_s` | A virtuális gép neve |
 | `BootTime_t` | A rendszerindítási idő |
 
-### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL Type records
+### <a name="servicemapprocess_cl-type-records"></a>ServiceMapProcess_CL Type records
 
 A *ServiceMapProcess_CL* rendelkező rekordok a TCP-kapcsolattal rendelkező, Service Map ügynökökkel rendelkező kiszolgálókon tárolt folyamatokra vonatkozó leltározási adatokkal rendelkeznek. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
 
@@ -554,16 +555,57 @@ A Microsoft automatikusan gyűjt használatának és teljesítményének adatoka
 
 Az adatok gyűjtésével és használatával kapcsolatos további információkért tekintse meg a [Microsoft Online Services adatvédelmi nyilatkozata](https://go.microsoft.com/fwlink/?LinkId=512132).
 
-
 ## <a name="next-steps"></a>További lépések
 
 További információ a [](../../azure-monitor/log-query/log-query-overview.md) log Analytics naplóbeli keresésekről Service Map által összegyűjtött adatok lekéréséhez.
 
-
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Tekintse meg a [Service Map konfigurálása dokumentum hibaelhárítási szakaszát]( service-map-configure.md#troubleshooting).
+Ha problémába ütközik telepítését és futtatását a Service Map, ez a szakasz segítségével. Ha még mindig nem tudja megoldani a problémát, forduljon a Microsoft Support.
 
+### <a name="dependency-agent-installation-problems"></a>Függőségi ügynök telepítési problémák
+
+#### <a name="installer-prompts-for-a-reboot"></a>Telepítő kérni fogja a számítógép újraindítása
+A függőségi ügynök *általában* nem igényel újraindítást a telepítés vagy az eltávolítás után. Egyes ritka esetekben azonban a Windows Server-telepítés folytatásához újraindítás szükséges. Ez akkor fordulhat elő, ha egy függőség, általában C++ a Microsoft vizualizáció újraterjeszthető könyvtára egy zárolt fájl miatt újraindítást igényel.
+
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Üzenet: "nem sikerült telepíteni a függőségi ügynököt: A Visual Studio futásidejű kódtárai nem telepíthetők (code = [code_number])
+
+A Microsoft Dependency agent a Microsoft Visual Studio modul kódtárak épül. Egy üzenetet fog kapni, ha probléma van a kódtárak telepítése során. 
+
+A futásidejű kódtár telepítőcsomagokat %LOCALAPPDATA%\temp mappában hozzon létre naplókat. A `dd_vcredist_arch_yyyymmddhhmmss.log`fájl az, ahol az *Arch* `x86` vagy `amd64` a, a *yyyymmddhhmmss* pedig az a dátum és idő (24 órás óra), amikor a napló létrejött. A napló a probléma, amely blokkolja a telepítési részletesen ismerteti.
+
+Hasznos lehet először telepíteni a [legújabb futásidejű kódtárakat](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) .
+
+A következő táblázat felsorolja a kód számokat és a javasolt megoldások.
+
+| Kód | Leírás | Megoldás: |
+|:--|:--|:--|
+| 0x17 | A könyvtár telepítő szükséges a Windows update, amely nem lett telepítve. | Tekintse meg a legutóbbi könyvtár installer naplójának.<br><br>Ha egy hivatkozást `Windows8.1-KB2999226-x64.msu` egy olyan vonal `Error 0x80240017: Failed to execute MSU package,` követ, amely nem rendelkezik a KB2999226 telepítéséhez szükséges előfeltételekkel. Kövesse az [univerzális C futtatókörnyezet](https://support.microsoft.com/kb/2999226) előfeltételek szakaszának útmutatásait a Windows-cikkben. Szükség lehet, futtassa a Windows Update, és indítsa újra a többször annak érdekében, hogy telepítse az előfeltételeket.<br><br>Futtassa újra a Microsoft Dependency agent telepítő. |
+
+### <a name="post-installation-issues"></a>Telepítés utáni kapcsolatos problémák
+
+#### <a name="server-doesnt-appear-in-service-map"></a>Kiszolgáló nem jelenik meg a Service Map
+
+Ha a függőségi ügynök telepítése sikeres volt, de nem látja a gépet a Service Map megoldásban:
+* A függőségi ügynök sikeres telepítését? Ellenőrzi, hogy ha a szolgáltatás telepítve van és fut ellenőrizheti.<br><br>
+**Windows**: Keresse meg a **Microsoft függőségi ügynök**nevű szolgáltatást.
+**Linux**: Keresse meg a futó folyamatot a **Microsoft-függőség-ügynöknek**.
+
+* A [log Analytics ingyenes szintet](https://azure.microsoft.com/pricing/details/monitor/)választja? Az ingyenes csomag legfeljebb öt egyedi Service Map gépet tesz lehetővé. Minden további gép nem jelenik meg Service Mapban, még akkor sem, ha az előző öt már nem küld adatokat.
+
+* A kiszolgáló napló-és teljesítményadatok-adatokat küld Azure Monitor naplókba? Nyissa meg az Azure Monitor\Logs, és futtassa a következő lekérdezést a számítógépen: 
+
+    ```kusto
+    Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
+    ```
+
+Jutott el a különféle eseményekre az eredmények között? Az adatok legutóbbi? Ha igen, a Log Analytics ügynök megfelelően működik, és kommunikál a munkaterülettel. Ha nem, ellenőrizze az ügynököt a gépen: [Log Analytics ügynök a Windows hibaelhárításához](../platform/agent-windows-troubleshoot.md) vagy [log Analytics ügynök a Linux rendszerhez – hibaelhárítás](../platform/agent-linux-troubleshoot.md).
+
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Kiszolgáló megjelenik a Szolgáltatástérkép, de nincs folyamatokat
+
+Ha a gép Service Mapban jelenik meg, de nem rendelkezik folyamat-vagy adatforrással, az azt jelzi, hogy a függőségi ügynök telepítve van és fut, de a kernel-illesztőprogram nem töltődött be. 
+
+Győződjön meg `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` a (Windows) `/var/opt/microsoft/dependency-agent/log/service.log file` vagy (Linux) rendszerről. Az utolsó sort jeleznie kell, miért nem töltődtek be a kernelbe. Például a kernel előfordulhat, hogy nem támogatja a linuxon futó Ha frissítette a kernel.
 
 ## <a name="feedback"></a>Visszajelzés
 

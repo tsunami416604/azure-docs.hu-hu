@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 84738d9de880e09177ebb5c060fbd7bbd4613006
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f9223fdead9d22e8f58076b47502e71c06741e3f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036812"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900111"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Hozzon létre egy új Dynamics 365 for Operations ajánlatot
 
@@ -82,27 +82,11 @@ Válasszon a következő lehetőségek közül:
 
 ## <a name="connect-lead-management"></a>Az érdeklődők felügyeletének összekötése
 
-Az Ügyfélkapcsolat-kezelési (CRM) rendszer összekapcsolásával közvetlenül kapcsolódhat az ügyfelekhez. Ha így tesz, megkapja az ügyfél kapcsolattartási adatait, amikor az ügyfél kifejezi érdeklődését vagy üzembe helyezi a terméket.
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-A CRM-rendszer összekapcsolásához válassza a **Kapcsolódás**lehetőséget.
+További információ: az [érdeklődők kezelése – áttekintés](./commercial-marketplace-get-customer-leads.md) .
 
-### <a name="choose-a-lead-destination"></a>Érdeklődő célhelyének kiválasztása
-
-Miután kiválasztotta a **Csatlakoztatás**lehetőséget, megjelenik egy legördülő menü, amelyen kiválaszthatja a CRM-rendszert, majd megadhatja a kapcsolat részleteit.
-
-A partner Center a következő CRM-rendszereket támogatja az érdeklődők felügyeletéhez. Válassza ki a telepítési utasítások hivatkozását.
-
-- [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) – adja meg a Storage-fiókhoz tartozó kapcsolatok sztringjét. 
-- [Dynamics 365 for Customer engagement (korábbi nevén Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) – adja meg a Dynamics 365-példány URL-címét és a hitelesítési módot (Office 365 vagy Azure Active Directory).
-- [Https-végpont](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) – adja meg a https-végpont URL-címét. 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) – adja meg a kiszolgáló azonosítóját, a Munchkin-fiók azonosítóját és az űrlap azonosítóját.
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) – adja meg a SZERVEZETe azonosítóját.
-
-#### <a name="additional-lead-management-resources"></a>További érdeklődői felügyeleti erőforrások
-
-- [Az érdeklődők felügyeletével kapcsolatos gyakori kérdések](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Gyakori vezető konfigurációs hibák](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Az érdeklődők felügyelete – Áttekintés egy pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
 
 ## <a name="properties"></a>properties
 

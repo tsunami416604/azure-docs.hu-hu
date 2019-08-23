@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3946690b24ec4123df1bb19deb05143189fd5aa5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: def218564511b65809e776f97d0962b72f72adc2
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596044"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898136"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Oktatóanyag: Állapot-ellenőrzési funkció használata az Azure telepítéskezelő (nyilvános előzetes verzió)
 
@@ -36,7 +36,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A bevezetés központi telepítésének ellenőrzése
 > * Az erőforrások eltávolítása
 
-További erőforrások:
+További források:
 
 - Az [Azure telepítéskezelő REST API referenciája](https://docs.microsoft.com/rest/api/deploymentmanager/).
 - [Egy Azure Telepítéskezelő minta](https://github.com/Azure-Samples/adm-quickstart).
@@ -90,7 +90,7 @@ Az Azure-függvény ellenőrzése és tesztelése:
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/{healthStatus}?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    Cserélje `{healthStatus}` le az URL-címet egy állapotkód értékre. Ebben az oktatóanyagban a nem megfelelő állapotot **használja a** nem Kifogástalan állapot teszteléséhez, és az egészséges forgatókönyv teszteléséhez használja az **egészséges** vagy a **figyelmeztetést** . Hozzon létre két URL-címet, egyet a sérült állapottal, a másikat pedig kifogástalan állapottal. Példák:
+    Cserélje `{healthStatus}` le az URL-címet egy állapotkód értékre. Ebben az oktatóanyagban a nem megfelelő állapotot használja a nem Kifogástalan állapot teszteléséhez, és az egészséges forgatókönyv teszteléséhez használja az **egészséges** vagy a **figyelmeztetést** . Hozzon létre két URL-címet, egyet a sérült állapottal, a másikat pedig kifogástalan állapottal. Példák:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/unhealthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
@@ -235,8 +235,8 @@ Ennek a szakasznak a célja, hogy bemutassa a bevezetési sablon állapot-ellen�
 
 Az oktatóanyag leegyszerűsítése érdekében a topológia sablonja és összetevői a következő helyeken vannak megosztva, így nem kell előkészítenie a saját példányát. Ha sajátját kívánja használni, kövesse az oktatóanyagban található [utasításokat: Az Azure telepítéskezelő használata Resource Manager-](./deployment-manager-tutorial.md)sablonokkal.
 
-* Topológiai sablon: \ https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json
-* Összetevők tárolója: \ https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
+* Topológiai sablon:\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json)
+* Összetevők tárolója:\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
 
 A topológia üzembe helyezéséhez válassza a **kipróbálás** lehetőséget a Cloud Shell megnyitásához, majd illessze be a PowerShell-szkriptet.
 
@@ -265,8 +265,8 @@ Az erőforrások megjelenítéséhez be kell jelölnie a **Rejtett típusok megj
 
 Az oktatóanyag egyszerűsítése érdekében a felülvizsgált bevezetési sablon a következő helyeken van megosztva, így nem kell előkészítenie saját példányát. Ha sajátját kívánja használni, kövesse az oktatóanyagban található [utasításokat: Az Azure telepítéskezelő használata Resource Manager-](./deployment-manager-tutorial.md)sablonokkal.
 
-* Topológiai sablon: \ https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json
-* Összetevők tárolója: \ https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
+* Topológiai sablon:\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json)
+* Összetevők tárolója:\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
 
 Használja a nem megfelelő állapotú URL-címet, amelyet az [állapot-ellenőrzési szolgáltatás létrehozása szimulátorban](#create-a-health-check-service-simulator)hozott létre. A **managedIdentityID**a [felhasználó által hozzárendelt felügyelt identitás létrehozása](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity)című témakörben talál további információt.
 

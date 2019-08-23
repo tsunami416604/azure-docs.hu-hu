@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: ac3cb1d637eae1b4ee0a7db59efe631c7eb1ac6f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abff902dc62ad7ae48f2ecedfbd52aeb96719093
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815258"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970374"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Nyelvi és területi támogatás a Speech Serviceshez
 
@@ -24,40 +24,40 @@ A különböző Speech Services-függvények különböző nyelveket támogatnak
 
 ## <a name="speech-to-text"></a>Speech-to-text
 
-A Microsoft Speech Recognition SDK és a REST API egyaránt a következő nyelveket támogatja (területi beállítások). Az egyes nyelvekhez testreszabás szinteken érhetők el.
+A Microsoft Speech Recognition SDK és a REST API egyaránt a következő nyelveket támogatja (területi beállítások). A pontosság javítása érdekében a testreszabást a nyelvek egy részhalmaza számára ajánljuk a hang-és emberi címkével ellátott átiratok vagy a kapcsolódó szövegek feltöltésével: Mondatokat.  A kiejtés testreszabása jelenleg csak en-US és de-DE esetén érhető el. További információ a testreszabásról [itt](how-to-custom-speech.md).
 
-  Kód | Nyelv | [Akusztikai betanítás](how-to-customize-acoustic-models.md) | [Nyelvi órái](how-to-customize-language-model.md) | [Adaptációs kiejtése](how-to-customize-pronunciation.md)
- ------|----------|---------------------|---------------------|-------------------------
- ar – példa | Arab (Egyiptom), a modern standard | Nem | Igen | Nem
- CA-ES | katalán | Nem | Nem | Nem
- da-DK | dán (Dánia) | Nem | Nem | Nem
- de-DE | német (Németország) | Igen | Igen | Igen
- en-Ausztrália | angol (Ausztrália) | Nem | Igen | Nem
- en-hitelesítésszolgáltató | angol (Kanada) | Nem | Igen | Nem
- en-GB | angol (Egyesült Királyság) | Nem | Igen | Nem
- en-IN | Angol (India) | Igen | Igen | Nem
- en-NZ | angol (Új-Zéland) | Nem | Igen | Nem 
- en-US | angol (Egyesült Államok) | Igen | Igen | Igen
- es-ES | spanyol (spanyolországi) | Igen | Igen | Nem
- es-MX | spanyol (Mexikó) | Nem | Igen | Nem
- fi-FI | finn (Finnország) | Nem | Nem | Nem
- FR-hitelesítésszolgáltató | francia (Kanada) | Nem | Igen | Nem
- FR-FR | francia (Franciaország) | Igen | Igen | Nem
- Üdvözöljük – India | hindi (India) | Nem | Igen | Nem
- it-IT | olasz (Olaszország) | Igen | Igen | Nem
- ja-JP | japán (Japán) | Nem | Igen | Nem
- ko-KR | koreai (Korea) | Nem | Igen | Nem
- nb-NO | Norvég (bokmal) (Norvégia) | Nem | Nem | Nem
- NL-NL | holland (Hollandia) | Nem | Igen | Nem
- pl-PL | lengyel (Lengyelország) | Nem | Nem | Nem
- pt-BR | portugál (brazíliai) | Igen | Igen | Nem
- PT-PT | portugál (általános) | Nem | Igen | Nem
- ru-RU | orosz (Oroszország) | Igen | Igen | Nem
- SV-SE | svéd (Svédország) | Nem | Nem | Nem
- zh-CN | Kínai (Mandarin, egyszerűsített) | Igen | Igen | Nem
- zh-HK | Kínai (kantoni, hagyományos) | Nem | Igen | Nem
- zh-TW | Kínai (tajvani Mandarin) | Nem | Igen | Nem
- cs-EDIK | thai (Thaiföld) | Nem | Nem | Nem
+  Kód | Nyelv | Támogatott | Testre szabható
+ ------|----------|---------------------|---------------------
+ ar – példa | Arab (Egyiptom), a modern standard | Igen | Igen
+ CA-ES | katalán | Igen | Nem
+ da-DK | dán (Dánia) | Igen | Nem
+ de-DE | német (Németország) | Igen | Igen
+ en-Ausztrália | angol (Ausztrália) | Igen | Igen
+ en-hitelesítésszolgáltató | angol (Kanada) | Igen | Igen
+ en-GB | angol (Egyesült Királyság) | Igen | Igen
+ en-IN | Angol (India) | Igen | Igen
+ en-NZ | angol (Új-Zéland) | Igen | Igen
+ en-US | angol (Egyesült Államok) | Igen | Igen
+ es-ES | spanyol (spanyolországi) | Igen | Igen
+ es-MX | spanyol (Mexikó) | Igen | Igen
+ fi-FI | finn (Finnország) | Igen | Nem
+ FR-hitelesítésszolgáltató | francia (Kanada) | Igen | Igen
+ FR-FR | francia (Franciaország) | Igen | Igen
+ Üdvözöljük – India | hindi (India) | Igen | Igen
+ it-IT | olasz (Olaszország) | Igen | Igen
+ ja-JP | japán (Japán) | Igen | Igen
+ ko-KR | koreai (Korea) | Igen | Igen
+ nb-NO | Norvég (bokmal) (Norvégia) | Igen | Nem
+ NL-NL | holland (Hollandia) | Igen | Igen
+ pl-PL | lengyel (Lengyelország) | Igen | Nem
+ pt-BR | portugál (brazíliai) | Igen | Igen
+ PT-PT | portugál (általános) | Igen | Igen
+ ru-RU | orosz (Oroszország) | Igen | Igen
+ SV-SE | svéd (Svédország) | Igen | Nem
+ zh-CN | Kínai (Mandarin, egyszerűsített) | Igen | Igen
+ zh-HK | Kínai (kantoni, hagyományos) | Igen | Igen
+ zh-TW | Kínai (tajvani Mandarin) | Igen | Igen
+ cs-EDIK | thai (Thaiföld) | Igen | Nem 
 
 
 ## <a name="text-to-speech"></a>Szövegfelolvasás

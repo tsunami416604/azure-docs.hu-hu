@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 759422ea8c327ae67278354217dac4c60b32f7a9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c6b526cdd317e8b075d28e0fb9018501148c731c
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850322"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971296"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookok kapcsolatos hibák elhárítása
 
@@ -31,11 +31,23 @@ Ha a runbookok végrehajtása során hibák léptek fel Azure Automationban, a p
    - **Szintaktikai hibák**
    - **Logikai hibák**
 
-2. **Győződjön meg arról, hogy a csomópontok és az Automation-munkaterület rendelkezik a szükséges modulokkal:** Ha a runbook bármely modult importál, győződjön meg arról, hogy elérhetők-e az Automation-fiókjába az [importálási modulok](../shared-resources/modules.md#import-modules)részben ismertetett lépések segítségével. További információ: [modulok hibakeresése](shared-resources.md#modules).
+2. Vizsgálja meg a runbook [hibastreamjeiben](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output) az adott üzeneteket, és hasonlítsa össze őket az alábbi hibákkal.
+
+3. **Győződjön meg arról, hogy a csomópontok és az Automation-munkaterület rendelkezik a szükséges modulokkal:** Ha a runbook bármely modult importál, győződjön meg arról, hogy elérhetők-e az Automation-fiókjába az [importálási modulok](../shared-resources/modules.md#import-modules)részben ismertetett lépések segítségével. Frissítse a modulokat a legújabb verzióra a [Azure Automation Azure-modulok frissítése](..//automation-update-azure-modules.md)című részben található utasításokat követve. További hibaelhárítási információkért lásd: [modulok hibaelhárítása](shared-resources.md#modules).
+
+### <a name="if-the-runbook-is-suspended-or-unexpectedly-failed"></a>Ha a Runbook fel van függesztve vagy váratlanul meghiúsult
+
+A runbook felfüggesztésének vagy megszakításának több oka is lehet:
+
+* A [feladatok állapota](https://docs.microsoft.com/azure/automation/automation-runbook-execution#job-statuses) határozza meg a runbook állapotát és a lehetséges okokat.
+* [További kimenet hozzáadása](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#message-streams) a runbook annak azonosításához, hogy mi történjen a runbook felfüggesztése előtt.
+* [Kezelje](https://docs.microsoft.com/azure/automation/automation-runbook-execution#handling-exceptions) a feladatokban felmerülő kivételeket.
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Hitelesítési hibák Azure Automation runbookok használatakor
 
 ### <a name="login-azurerm"></a>Forgatókönyv A login-AzureRMAccount futtatása a bejelentkezéshez
+
+Ez a hiba akkor fordulhat elő, ha nem futtató fiókot használ, vagy a futtató fiók lejárt. Lásd: [Azure Automation futtató fiókok kezelése](https://docs.microsoft.com/azure/automation/manage-runas-account).
 
 #### <a name="issue"></a>Probléma
 
@@ -455,7 +467,7 @@ Ez a hiba akkor fordul elő, ha a feladatok végrehajtása meghaladja a fiókhoz
 
 Ha havonta több mint 500 perces feldolgozást szeretne használni, módosítania kell az előfizetést az ingyenes szintről az alapszintű csomagra. Az alapszintű csomagra az alábbi lépések végrehajtásával frissítheti:
 
-1. Bejelentkezés az Azure-előfizetésbe
+1. Jelentkezzen be az Azure-előfizetésébe
 2. Válassza ki a frissíteni kívánt Automation-előfizetést
 3. Kattintson a **Beállítások** > **díjszabása**lehetőségre.
 4. Kattintson az **Engedélyezés** elemre az oldal alján a fiók alapszintű szintre való frissítéséhez.
@@ -513,7 +525,7 @@ A gyermek runbook-forgatókönyvet engedélyező PowerShell-parancsmagok a köve
 
 [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob) – ha vannak olyan műveletek, amelyeket a gyermek runbook befejezése után kell végrehajtani, ez a parancsmag lehetővé teszi, hogy minden gyermeknél ellenőrizze a feladatok állapotát.
 
-### <a name="expired webhook"></a>Forgatókönyv Állapot: 400 hibás kérelem webhook meghívásakor
+### <a name="expired webhook"></a>Forgatókönyv Állapota 400 hibás kérelem webhook meghívásakor
 
 #### <a name="issue"></a>Probléma
 
@@ -574,6 +586,97 @@ A hiba kétféleképpen oldható fel:
 * Ha a runbook ez a hibaüzenet jelenik meg, futtassa azt egy hibrid Runbook-feldolgozón
 
 Ha többet szeretne megtudni erről a viselkedésről és a Azure Automation Runbookok egyéb viselkedéséről, tekintse meg a [Runbook viselkedését](../automation-runbook-execution.md#runbook-behavior)ismertető témakört.
+
+## <a name="other"></a>: A probléma nem szerepel a fenti felsorolásban
+
+Az alábbi részekben a probléma megoldásához segítséget nyújtó dokumentáción kívül más gyakori hibák is szerepelnek.
+
+### <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>A hibrid runbook-feldolgozó nem futtat feladatokat vagy nem válaszol
+
+Ha Azure Automation helyett hibrid feldolgozót használó feladatokat futtat, előfordulhat, hogy [a hibrid feldolgozót is](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker)le kell állítania.
+
+### <a name="runbook-fails-with-no-permission-or-some-variation"></a>A runbook „Nincs engedély” hibaüzenettel vagy annak valamelyik variációjával meghiúsul
+
+Előfordulhat, hogy a futtató fiókok nem a jelenlegi fiókjával megegyező engedélyekkel rendelkeznek az Azure-erőforrásokon. Győződjön meg arról, hogy a futtató fiók a szkriptben használt [bármilyen erőforrás elérésére jogosult](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>A runbookok működtek, de váratlanul leálltak
+
+* Ha a runbookok korábban már elvégezték, de leállították, [Győződjön meg arról, hogy a futtató fiók nem járt le](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
+* Ha webhookokat használ a runbook elindítására, akkor ellenőrizze, hogy [a webhook nem járt-e le](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook).
+
+### <a name="issues-passing-parameters-into-webhooks"></a>Paraméterek átadása webhookokra
+
+A paraméterek webhookokra való átadásával kapcsolatban lásd: [Runbook indítása](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)webhookból.
+
+### <a name="issues-using-az-modules"></a>Az az modulok használatával kapcsolatos problémák
+
+Az Az modulok és az AzureRM modulok használata ugyanabban az Automation-fiókban nem támogatott. További részletekért tekintse meg az [az modulok a runbookok](https://docs.microsoft.com/azure/automation/az-modules) című témakört.
+
+### <a name="runbook-job-completed-but-with-unexpected-results-or-errors"></a>A Runbook-feladatok befejeződtek, de váratlan eredményekkel vagy hibákkal
+
+Lent felsoroljuk az egyes problémákat és a hozzájuk tartozó megoldásokat, de nyomatékosan javasoljuk, hogy először próbálkozzon a következő két hibaelhárítási lépéssel:
+
+* Próbálja meg [helyileg futtatni a runbook](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#runbook-fails) , mielőtt futtatja Azure Automation. Ez segít tisztázni, hogy a runbookban van hiba, vagy az Azure Automationnel kapcsolatos a probléma.
+* Vizsgálja meg a runbook [hibastreamjeiben](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output) az adott üzeneteket, és hasonlítsa össze őket az alábbi hibákkal.
+* Adjon hozzá [további kimenetet](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#message-streams) a runbook a hiba előfordulási helyének azonosításához.
+
+### <a name="inconsistent-behavior-in-runbooks"></a>Következetlen viselkedés a runbookokban
+
+A párhuzamos feladatokkal, erőforrások többszöri létrehozásával vagy a runbookok egyéb, az időzítésre érzékeny logikáival kapcsolatos problémák elkerüléséhez kövesse a [Runbook végrehajtása](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior) szakasz utasításait.
+
+### <a name="switching-between-multiple-subscriptions-in-a-runbook"></a>Váltás több előfizetés között egy runbookban
+
+Kövesse a [több előfizetés használata](https://docs.microsoft.com/azure/automation/automation-runbook-execution#working-with-multiple-subscriptions)című témakör útmutatását.
+
+### <a name="runbook-fails-with-error-the-subscription-cannot-be-found"></a>A Runbook a következő hibával meghiúsul: Az előfizetés nem található
+
+Ez a probléma akkor jelentkezhet, ha a runbook nem RunAs-fiókot használ az Azure-erőforrásokhoz való hozzáféréshez. A megoldáshoz kövesse a [nem található Azure-előfizetés forgatókönyvével foglalkozó](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#unable-to-find-subscription) szakasz lépéseit.
+
+### <a name="error-your-azure-credentials-have-not-been-set-up-or-have-expired-please-run-connect-azurermaccount-to-set-up-your-azure-credentials"></a>Hiba: Az Azure-beli hitelesítő adatai nem lettek beállítva vagy lejártak, futtassa a azureRmAccount-t az Azure-beli hitelesítő adatok beállításához.
+
+Ez a hiba akkor fordulhat elő, ha nem futtató fiókot használ, vagy a futtató fiók lejárt. Lásd: [Azure Automation futtató fiókok kezelése](https://docs.microsoft.com/azure/automation/manage-runas-account).
+
+### <a name="error-run-login-azurermaccount-to-login"></a>Hiba: A login-AzureRmAccount futtatása a bejelentkezéshez
+
+Ez a hiba akkor fordulhat elő, ha nem futtató fiókot használ, vagy a futtató fiók lejárt. Lásd: [Azure Automation futtató fiókok kezelése](https://docs.microsoft.com/azure/automation/manage-runas-account).
+
+### <a name="runbook-fails-with-error-strong-authentication-enrollment-is-required"></a>A Runbook a következő hibával meghiúsul: Erős hitelesítési regisztráció szükséges
+
+Lásd: az [Azure-hitelesítés sikertelen, mert a többtényezős hitelesítés engedélyezve van](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#auth-failed-mfa) a Runbook hibaelhárítási útmutatójában.
+
+### <a name="runbook-fails-with-the-errors-no-permission-forbidden-403-or-some-variation"></a>A Runbook a hibákkal meghiúsul: Nincs engedélye, tiltott, 403 vagy valamilyen variáció
+
+Előfordulhat, hogy a futtató fiókok nem a jelenlegi fiókjával megegyező engedélyekkel rendelkeznek az Azure-erőforrásokon. Győződjön meg arról, hogy a futtató fiók rendelkezik a parancsfájlban használt [erőforrások eléréséhez szükséges engedélyekkel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) .
+
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>A runbookok működtek, de váratlanul leálltak
+
+* Ha a runbookok korábban már elvégezték, de leállították, győződjön meg arról, hogy a futtató fiók [nem járt le](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
+* Ha webhookokat használ a runbookok elindításához, győződjön meg arról, hogy a webhook [nem járt le](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook).
+
+### <a name="passing-parameters-into-webhooks"></a>Paraméterek átadása a webhookoknak
+
+A paraméterek webhookokra való átadásával kapcsolatban lásd: [Runbook indítása](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)webhookból.
+
+### <a name="error-the-term-is-not-recognized"></a>Hiba: A kifejezés nem ismerhető fel
+
+Kövesse a parancsmagban [](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#cmdlet-not-recognized) ismertetett lépéseket a runbook hibaelhárítási útmutatójában
+
+### <a name="errors-about-typedata"></a>TypeData kapcsolatos hibák
+
+Ha TypeData típusú hibaüzeneteket kap, olyan modulokkal futtat egy PowerShell-munkafolyamatot, amelyek nem támogatják azt. Módosítania kell a runbook típusát PowerShellre. További részletekért lásd: [Runbook-típusok](https://docs.microsoft.com/azure/automation/automation-runbook-types#powershell-runbooks) .
+
+### <a name="using-az-modules"></a>Az modulok használata
+
+Az Az modulok és az AzureRM modulok használata ugyanabban az Automation-fiókban nem támogatott. További részletekért tekintse meg az [az modulok a runbookok](https://docs.microsoft.com/azure/automation/az-modules) című témakört.
+
+### <a name="using-self-signed-certificates"></a>Önaláírt tanúsítványok használata
+
+Önaláírt tanúsítványok használatához kövesse az útmutatót az [új tanúsítvány létrehozásához](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate).
+
+## <a name="recommended-documents"></a>Ajánlott dokumentumok
+
+* [Runbook indítása az Azure Automationben](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
+* [Runbook végrehajtása az Azure Automationben](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
 
 ## <a name="next-steps"></a>További lépések
 

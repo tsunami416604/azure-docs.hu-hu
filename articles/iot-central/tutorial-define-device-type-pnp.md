@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a622aa85d1d0a9dcd5d5ad9b2b30e7a3120ea974
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d58cec644c75baaac37862f445477da92075c44d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878011"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907354"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-preview-features"></a>Oktatóanyag: Új eszköz típusának definiálása az Azure IoT Central alkalmazásban (előzetes verziójú funkciók)
 
@@ -90,11 +90,11 @@ A következő lépések bemutatják, hogyan importálhatja a képesség modellj�
 
 1. Új sablon hozzáadásához válassza az **+ új** lehetőséget az **eszközök sablonjai** lapon.
 
-1. Válassza az **Egyéni** lehetőséget az eszköz képességi modelljeinek listájából.
+1. Válassza az **Egyéni** lehetőséget a sablonok listájában.
 
 1. Adja meg a **környezeti érzékelőt** az eszköz sablonjának neveként.
 
-1. Válassza az **importálási képesség modell** lehetőséget, hogy új eszköz-képesség modellt hozzon létre egy JSON-fájlból. Navigáljon ahhoz a mappához, ahová a **EnvironmentalSensorInline. capabilitymodel. JSON** fájlt mentette a helyi gépen. Válassza ki a **EnvironmentalSensorInline. capabilitymodel. JSON** fájlt, majd válassza az importálás lehetőséget. A környezeti érzékelő képesség modellje tartalmazza a **környezeti érzékelőt** és az **eszköz információs** felületét:
+1. Válassza az **importálási képesség modell** lehetőséget, hogy új eszköz-képesség modellt hozzon létre egy JSON-fájlból. Navigáljon ahhoz a mappához, ahová a **EnvironmentalSensorInline. capabilitymodel. JSON** fájlt mentette a helyi gépen. Válassza ki a **EnvironmentalSensorInline. capabilitymodel. JSON** fájlt, majd kattintson a **Megnyitás**gombra. A környezeti érzékelő képesség modellje tartalmazza a **környezeti érzékelőt** és az **eszköz információs** felületét:
 
     ![Környezeti érzékelő eszköz képességének modellje](./media/tutorial-define-device-type-pnp/newdevicecapabilitymodel.png)
 
@@ -147,9 +147,9 @@ Miután kiválasztotta az **alapértelmezett nézetek létrehozása**lehetőség
 
 Az eszközök irányítópultja lehetővé teszi, hogy az operátor diagramok és metrikák használatával megjelenítse az eszközt. Szerkesztőként meghatározhatja, milyen információk jelenjenek meg egy eszköz irányítópultján. Több irányítópultot is megadhat az eszközökhöz. Ha létre szeretne hozni egy irányítópultot a környezeti érzékelők telemetria megjelenítéséhez, válassza a **nézetek** lehetőséget, majd jelenítse meg **az eszközt**:
 
-1. Az összes eszköz tulajdonságai, a felhő tulajdonságai, a telemetria és a statikus beállítások a jobb oldali panelen jelennek meg. Ezen elemek bármelyikét áthúzhatja a nézetbe. Húzzon egy tulajdonságot a nézetre. A csempét a fogaskerék ikon használatával konfigurálhatja.
+1. A **Tulajdonságok**területen megjelenik az összes eszköz tulajdonságai, a felhő tulajdonságai, a telemetria és a statikus beállítások. Ezen elemek bármelyikét áthúzhatja a nézetbe. Húzza a **fényerő szintje** tulajdonságot a nézetre. A csempét a fogaskerék ikon használatával konfigurálhatja.
 
-1. Telemetria ábrázoló diagram hozzáadásához válassza a **páratartalom** és **hőmérséklet**lehetőséget, majd kattintson az **összekapcsolás**elemre. Ha a diagramot bármilyen más formátumban szeretné megtekinteni, például egy tortadiagram vagy oszlopdiagram számára, akkor a csempe tetején kattintson a **vizualizáció módosítása** gombra.
+1. Telemetria ábrázoló diagram hozzáadásához válassza a **páratartalom** és **hőmérséklet**lehetőséget, majd kattintson az **összekapcsolás**elemre. Ha más formátumban szeretné megtekinteni a diagramot, például egy tortadiagram vagy oszlopdiagram, akkor a csempe tetején kattintson a **vizualizáció módosítása** gombra.
 
 1. A nézet mentéséhez válassza a **Mentés** lehetőséget:
 
@@ -161,7 +161,7 @@ Az eszközök űrlapja lehetővé teszi, hogy az operátor az írható eszköz t
 
 Űrlap létrehozása a környezeti érzékelő tulajdonságainak megtekintéséhez és szerkesztéséhez:
 
-1. Válassza ki az **eszköz és** a Felhőbeli Adatcsempe szerkesztését.
+1. Navigáljon a nézetekhez a **környezeti érzékelő** sablonban. Új nézet hozzáadásához válassza az **eszköz és** a Felhőbeli adatcsempe szerkesztése lehetőséget.
 
 1. Adja meg az űrlap neve **környezeti érzékelő tulajdonságait**.
 
@@ -169,10 +169,9 @@ Az eszközök űrlapja lehetővé teszi, hogy az operátor az írható eszköz t
 
 1. Válassza ki a **fényerő szintjét** és az **eszköz állapotára** szolgáló eszköz tulajdonságait. Ezután válassza a **Hozzáadás szakaszt**. Szerkessze a szakasz címét, hogy az **érzékelő tulajdonságai**legyenek. Kattintson az **Alkalmaz** gombra.
 
-1. Válassza ki a **fennmaradó elemet**, az **eszköz típusát**, a **belső vezérlőprogram verzióját**, a **gyártót**és a **sorozatszám** eszköz tulajdonságait. Ezután válassza a **Hozzáadás szakaszt**. Szerkessze a szakasz címét, hogy az **eszköz tulajdonságai**legyenek. Kattintson az **Alkalmaz** gombra.
+1. Válassza ki az **eszköz modelljét**, a **szoftver verzióját**, a **gyártót**és a **processzor gyártójának** eszközének tulajdonságait. Ezután válassza a **Hozzáadás szakaszt**. Szerkessze a szakasz címét, hogy az **eszköz tulajdonságai**legyenek. Kattintson az **Alkalmaz** gombra.
 
 1. A nézet mentéséhez válassza a **Mentés** lehetőséget.
-
 
 ## <a name="publish-device-template"></a>Eszköz sablonjának közzététele
 

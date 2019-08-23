@@ -4,19 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a56744173974b470999f846da49d144f2013fbb
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 55ad3591a8c2e7d5de6d1efe255e0f3a4b3c11bd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968642"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907033"
 ---
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
-* [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
-* [Json.NET NuGet csomag](https://www.nuget.org/packages/Newtonsoft.Json/)
-* [A Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), vagy kedvenc szövegszerkesztőjével
-* Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
+[!INCLUDE [Setup and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-net-core-project"></a>Egy .NET Core-projekt létrehozása
 
@@ -46,6 +43,31 @@ using System.Text;
 using Newtonsoft.Json;
 ```
 
+## <a name="get-subscription-information-from-environment-variables"></a>Előfizetési adatok beolvasása környezeti változókból
+
+Adja hozzá a következő sorokat a `Program` osztályhoz. Ezek a sorok beolvasják az előfizetési kulcsot és a végpontot a környezeti változókból, és hibát jeleznek, ha problémákba ütközik.
+
+```csharp
+private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
+private static readonly string subscriptionKey = Environment.GetEnvironmentVariable(key_var);
+
+private const string endpoint_var = "TRANSLATOR_TEXT_ENDPOINT";
+private static readonly string endpoint = Environment.GetEnvironmentVariable(endpoint_var);
+
+static Program()
+{
+    if (null == subscriptionKey)
+    {
+        throw new Exception("Please set/export the environment variable: " + key_var);
+    }
+    if (null == endpoint)
+    {
+        throw new Exception("Please set/export the environment variable: " + endpoint_var);
+    }
+}
+// The code in the next section goes here.
+```
+
 ## <a name="create-a-function-to-get-alternate-translations"></a>Függvény létrehozása alternatív fordítások beszerzéséhez
 
 Hozzon `Program` létre egy nevű `AltTranslation`függvényt a osztályon belül. Ez az osztály a szótári erőforrás meghívásához használt kódot tartalmazza, és kiírja az eredményt a konzolra.
@@ -60,14 +82,14 @@ static void AltTranslation()
 }
 ```
 
-## <a name="set-the-subscription-key-host-name-and-path"></a>Az előfizetési kulcs, az állomásnév és az elérési út beállítása
+## <a name="construct-the-uri"></a>Az URI kiépítése
 
-Adja hozzá ezeket a sorokat `AltTranslation` a függvényhez. Figyelje meg, hogy a `api-version`-val együtt két további paramétert fűzött hozzá a `route`következőhöz:. Ezek a paraméterek a fordítás bemenetének és kimenetének beállítására szolgálnak. Ebben a példában az angol (`en`) és a spanyol (`es`).
+Adja hozzá ezeket a sorokat `AltTranslation` a függvényhez. Figyelje meg, hogy a `api-version`-val együtt két további paraméter is be van jelentve. Ezek a paraméterek a fordítás bemenetének és kimenetének beállítására szolgálnak. Ebben a példában az angol (`en`) és a spanyol (`es`).
 
 ```csharp
-string host = "https://api.cognitive.microsofttranslator.com";
-string route = "/dictionary/lookup?api-version=3.0&from=en&to=es";
-string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+string route = "/dictionary/lookup?api-version=3.0";
+static string params_ = "from=en&to=es";
+static string uri = endpoint + path + params_;
 ```
 
 Ezután létre kell hoznia és szerializálnia kell a lefordítani kívánt szöveget tartalmazó JSON-objektumot. Ne feledje, hogy több objektumot is át tud adni a `body` tömbben.
@@ -76,8 +98,6 @@ Ezután létre kell hoznia és szerializálnia kell a lefordítani kívánt szö
 System.Object[] body = new System.Object[] { new { Text = @"Elephants" } };
 var requestBody = JsonConvert.SerializeObject(body);
 ```
-
-
 
 ## <a name="instantiate-the-client-and-make-a-request"></a>Az ügyfél példányának létrehozása és kérelem elkészítése
 
@@ -109,7 +129,7 @@ Adja hozzá ezt a kódot `HttpRequestMessage`a következőhöz:
 request.Method = HttpMethod.Post;
 
 // Construct the full URI
-request.RequestUri = new Uri(host + route);
+request.RequestUri = new Uri(uri);
 
 // Add the serialized JSON object to your request
 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
@@ -142,7 +162,8 @@ Az utolsó lépés a `AltTranslation()` `Main` függvény hívása. Keresse `sta
 
 ```csharp
 AltTranslation();
-Console.ReadLine();
+Console.WriteLine("Press any key to continue.");
+Console.ReadKey();
 ```
 
 ## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása

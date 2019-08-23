@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 09/15/2017
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 44dea072b9871d0be6e18549896456af2a4989f6
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 5a0be55df9be67fcf6ff5d53e18e3eb2b0e69d7f
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558797"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904479"
 ---
 # <a name="get-started-with-device-management-net"></a>Ismerkedés az eszközkezelés (.NET) szolgáltatással
 
@@ -34,7 +34,9 @@ Az oktatóanyag végén két .NET-konzolalkalmazással fog rendelkezni:
 
 * **TriggerReboot**. Ez az alkalmazás egy közvetlen metódust hív meg a szimulált eszköz alkalmazásban, megjeleníti a választ, és megjeleníti a frissített jelentett tulajdonságokat.
 
-Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
+## <a name="prerequisites"></a>Előfeltételek
+
+Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Visual Studio.
 
@@ -81,7 +83,7 @@ Ebben a szakaszban egy, a használatával C#létrehozott .net-konzol alkalmazás
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le a korábban a [IoT hub](#get-the-iot-hub-connection-string)-beli kapcsolatok karakterláncának lekérése során másolt IoT hubi kapcsolatok karakterlánccá.
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le a korábban a [IoT hub](#get-the-iot-hub-connection-string)-beli kapcsolatok karakterláncának lekérése során másolt IoT hubi kapcsolatok karakterlánccá. `{iot hub connection string}`
 
    ```csharp
    static RegistryManager registryManager;
@@ -133,7 +135,7 @@ Ebben a szakaszban egy, a használatával C#létrehozott .net-konzol alkalmazás
 
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 
-Ebben a szakaszban a következő műveleteket hajtja végre:
+Ebben a szakaszban:
 
 * Hozzon létre egy .NET-konzol alkalmazást, amely válaszol a felhő által meghívott közvetlen metódusra.
 
@@ -164,11 +166,10 @@ A szimulált eszköz alkalmazás létrehozásához kövesse az alábbi lépések
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a helyőrző értékét az előző szakaszban feljegyzett eszköz-összekapcsolási sztringre.
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le `{device connection string}` a helyőrző értékét a korábban feljegyzett eszköz-összekapcsolási sztringre az [IoT hub új eszköz regisztrálása](#register-a-new-device-in-the-iot-hub)részében.
 
     ```csharp
-    static string DeviceConnectionString = 
-      "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
+    static string DeviceConnectionString = "{device connection string}";
     static DeviceClient Client = null;
     ```
 
@@ -233,7 +234,7 @@ A szimulált eszköz alkalmazás létrehozásához kövesse az alábbi lépések
    }
    ```
 
-1. A Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget. 
+1. A Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget.
 
 1. A **gyakori tulajdonságok** > **indítási projekt**esetében válassza az **egyetlen indítási projekt**lehetőséget, majd válassza ki a **SimulateManagedDevice** projektet. Válassza ki **OK** a módosítások mentéséhez.
 

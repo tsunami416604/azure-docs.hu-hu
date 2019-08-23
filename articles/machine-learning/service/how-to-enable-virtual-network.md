@@ -10,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: 05c5d42d3c20948df4f42db50dd93abd60288c00
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 6e5ae4966a62c24594ec6efa9454d5e03f75c25b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639582"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971530"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit
 
-Ebből a cikkből megtudhatja, hogyan védheti meg az Azure-Virtual Network (vnet) Azure Machine Learning kísérletezési/betanítási feladatait és következtetéseit/pontozási feladatait. 
+Ebből a cikkből megtudhatja, hogyan védheti meg az Azure-Virtual Network (vnet) Azure Machine Learning kísérletezési/betanítási feladatait és következtetéseit/pontozási feladatait.
 
 A **virtuális hálózat** biztonsági határként működik, és az Azure-erőforrásokat a nyilvános internetről különíti el. Egy Azure-beli virtuális hálózatot is csatlakoztathat a helyszíni hálózathoz. A hálózatok összekapcsolásával biztonságosan betaníthatja a modelleket, és elérheti az üzembe helyezett modelleket a következtetésekhez.
 
@@ -29,25 +29,25 @@ Ez a cikk részletes információkat is tartalmaz a *speciális biztonsági beá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Egy Azure Machine Learning szolgáltatás [](how-to-manage-workspace.md)munkaterülete. 
++ Egy Azure Machine Learning szolgáltatás [](how-to-manage-workspace.md)munkaterülete.
 
-+ Az [Azure Virtual Network szolgáltatás](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) és az [IP-hálózatkezelés](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)általános munkaismerete. 
++ Az [Azure Virtual Network szolgáltatás](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) és az [IP-hálózatkezelés](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)általános munkaismerete.
 
-+ Meglévő virtuális hálózat és alhálózat a számítási erőforrásokkal való használathoz. 
++ Meglévő virtuális hálózat és alhálózat a számítási erőforrásokkal való használathoz.
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>A munkaterülethez tartozó Storage-fiók használata
 
 Ha Azure Storage-fiókot szeretne használni a virtuális hálózatban lévő munkaterülethez, tegye a következőket:
 
-1. Hozzon létre egy kísérletezési számítási példányt (például egy Machine Learning Compute példányt) egy virtuális hálózat mögött, vagy csatoljon egy kísérletezési számítási példányt a munkaterülethez (például egy HDInsight-fürthöz vagy egy virtuális géphez). 
+1. Hozzon létre egy kísérletezési számítási példányt (például egy Machine Learning Compute példányt) egy virtuális hálózat mögött, vagy csatoljon egy kísérletezési számítási példányt a munkaterülethez (például egy HDInsight-fürthöz vagy egy virtuális géphez).
 
    További információ: "Machine Learning Compute-példány használata" és "virtuális gép vagy HDInsight-fürt használata" című rész ebben a cikkben.
 
-1. A Azure Portal lépjen a munkaterülethez csatolt tárterületre. 
+1. A Azure Portal lépjen a munkaterülethez csatolt tárterületre.
 
-   ![A Azure Machine Learning szolgáltatás munkaterületéhez csatolt tárterület](./media/how-to-enable-virtual-network/workspace-storage.png)
+   [![A Azure Machine Learning szolgáltatás munkaterületéhez csatolt tárterület](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
-1. Az **Azure Storage** lapon válassza a __tűzfalak és virtuális hálózatok__lehetőséget. 
+1. Az **Azure Storage** lapon válassza a __tűzfalak és virtuális hálózatok__lehetőséget.
 
    ![A Azure Portal Azure Storage lapjának "tűzfalak és virtuális hálózatok" területén](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
@@ -56,7 +56,12 @@ Ha Azure Storage-fiókot szeretne használni a virtuális hálózatban lévő mu
     - A __virtuális hálózatok__területen válassza a __meglévő virtuális hálózati kapcsolat hozzáadása__ elemet. Ez a művelet hozzáadja azt a virtuális hálózatot, amelyben a kísérletezés számítási példánya található (lásd: 1. lépés).
     - Jelölje be a __megbízható Microsoft-szolgáltatások számára a Storage-fiók elérésének engedélyezése__ jelölőnégyzetet.
 
-   ![A Azure Portal tűzfalak és virtuális hálózatok panelje](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)
+    > [!IMPORTANT]
+    > Ha a Azure Machine Learning SDK-val dolgozik, a fejlesztési környezetnek képesnek kell lennie csatlakozni az Azure Storage-fiókhoz. Ha a Storage-fiók egy virtuális hálózaton belül van, a tűzfalnak engedélyeznie kell a hozzáférést a fejlesztői környezet IP-címéről.
+    >
+    > A Storage-fiókhoz való hozzáférés engedélyezéséhez keresse fel a Storage-fiókhoz tartozó __tűzfalakat és virtuális hálózatokat__ a *fejlesztői ügyfél*webböngészőjéből. Ezután használja az __ügyfél IP-címének hozzáadása__ jelölőnégyzetet az ügyfél IP-címének a __címtartományból__való hozzáadásához. A __címtartomány__ mező használatával manuálisan is megadhatja a fejlesztési környezet IP-címét. Miután hozzáadta az ügyfél IP-címét, az SDK-val elérheti a Storage-fiókot.
+
+   [![A Azure Portal tűzfalak és virtuális hálózatok panelje](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
 1. A kísérlet futtatásakor a kísérletezési kódban módosítsa a futtatási konfigurációt az Azure Blob Storage használatára:
 
@@ -65,9 +70,9 @@ Ha Azure Storage-fiókot szeretne használni a virtuális hálózatban lévő mu
     ```
 
 > [!IMPORTANT]
-> A Azure Machine Learning szolgáltatás _alapértelmezett Storage_ -fiókját a _kísérletezéshez_egy virtuális hálózaton helyezheti el.
+> A Azure Machine Learning szolgáltatás _alapértelmezett Storage_ -fiókját a _kísérletezéshez_egy virtuális hálózaton helyezheti el. A munkaterület létrehozásakor a rendszer automatikusan kiépíti az alapértelmezett Storage-fiókot.
 >
-> A virtuális hálózatokban _nem alapértelmezett tárolási fiókokat_ _csak kísérletezésre_helyezhet el.
+> A virtuális hálózatokban _nem alapértelmezett tárolási fiókokat_ _csak kísérletezésre_helyezhet el. `storage_account` [A `Workspace.create()` függvény](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) paraméterének segítségével egyéni Storage-fiókot adhat meg az Azure erőforrás-azonosító alapján.
 >
 > A _következtetéshez_ használt alapértelmezett és nem alapértelmezett tárolási fiókok esetében a _Storage-fiókhoz korlátlan hozzáférésre_van szükség.
 >
@@ -81,11 +86,11 @@ A munkaterülethez társított Key Vault-példányt a Azure Machine Learning szo
 * Adattárakhoz való kapcsolódási karakterláncok
 
 Ha Azure Machine Learning kísérletezési képességeket szeretne használni a virtuális hálózat mögötti Azure Key Vault, tegye a következőket:
-1. Nyissa meg a munkaterülethez társított kulcstartót. 
+1. Nyissa meg a munkaterülethez társított kulcstartót.
 
-   ![A Azure Machine Learning szolgáltatás munkaterületéhez társított kulcstartó](./media/how-to-enable-virtual-network/workspace-key-vault.png)
+   [![A Azure Machine Learning szolgáltatás munkaterületéhez társított kulcstartó](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
 
-1. A **Key Vault** oldalon, a bal oldali panelen válassza a __tűzfalak és virtuális hálózatok__lehetőséget. 
+1. A **Key Vault** oldalon, a bal oldali panelen válassza a __tűzfalak és virtuális hálózatok__lehetőséget.
 
    ![A Key Vault panel "tűzfalak és virtuális hálózatok" szakasza](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
 
@@ -94,31 +99,25 @@ Ha Azure Machine Learning kísérletezési képességeket szeretne használni a 
     - A __virtuális hálózatok__területen válassza a __meglévő virtuális hálózatok hozzáadása__ lehetőséget, és adja hozzá azt a virtuális hálózatot, amelyben a kísérletezés számítási példánya található.
     - A __megbízható Microsoft-szolgáltatások a tűzfal megkerülésének engedélyezése__területen válassza az __Igen__lehetőséget.
 
-   ![A Key Vault panel "tűzfalak és virtuális hálózatok" szakasza](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)
+   [![A Key Vault panel "tűzfalak és virtuális hálózatok" szakasza](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
 
 ## <a name="use-a-machine-learning-compute-instance"></a>Machine Learning Compute-példány használata
 
-Ha egy virtuális hálózaton Azure Machine Learning számítási példányt szeretne használni, vegye figyelembe a következő hálózati követelményeket:
+Ha Azure Machine Learning számítási példányt szeretne használni egy virtuális hálózaton, a következő hálózati követelményeknek kell teljesülniük:
 
-- A virtuális hálózatnak ugyanabban az előfizetésben és régióban kell lennie, mint a Azure Machine Learning szolgáltatás munkaterületének.
+> [!div class="checklist"]
+> * A virtuális hálózatnak ugyanabban az előfizetésben és régióban kell lennie, mint a Azure Machine Learning szolgáltatás munkaterületének.
+> * A számítási fürthöz megadott alhálózatnak elegendő nem hozzárendelt IP-címmel kell rendelkeznie a fürthöz rendelt virtuális gépek számának kielégítéséhez. Ha az alhálózat nem rendelkezik elegendő nem hozzárendelt IP-címmel, a fürt részlegesen le lesz foglalva.
+> * Ellenőrizze, hogy a virtuális hálózat előfizetése vagy erőforráscsoport biztonsági szabályzatai vagy zárolásai korlátozzák-e az engedélyeket a virtuális hálózat kezeléséhez. Ha a virtuális hálózat védelmét úgy tervezi, hogy korlátozza a forgalmat, hagyjon meg néhány portot a számítási szolgáltatás számára. További információ: a [szükséges portok](#mlcports) szakasz.
+> * Ha egy virtuális hálózatban több számítási fürtöt fog elhelyezni, előfordulhat, hogy egy vagy több erőforrásra vonatkozó kvóta-növelést kell kérnie.
 
-- A számítási fürthöz megadott alhálózatnak elegendő nem hozzárendelt IP-címmel kell rendelkeznie a fürthöz rendelt virtuális gépek számának kielégítéséhez. Ha az alhálózat nem rendelkezik elegendő nem hozzárendelt IP-címmel, a fürt részlegesen le lesz foglalva.
+A Machine Learning Compute-példány automatikusan további hálózati erőforrásokat foglal le a virtuális hálózatot tartalmazó erőforráscsoporthoz. A szolgáltatás minden számítási fürthöz a következő erőforrásokat foglalja le:
 
-- Ha a virtuális hálózat védelmét úgy tervezi, hogy korlátozza a forgalmat, hagyjon meg néhány portot a számítási szolgáltatás számára. További információ: a [szükséges portok](#mlcports) szakasz.
+* Egy hálózati biztonsági csoport
+* One public IP address
+* Egy Load Balancer
 
-- Ellenőrizze, hogy a virtuális hálózat előfizetése vagy erőforráscsoport biztonsági szabályzatai vagy zárolásai korlátozzák-e az engedélyeket a virtuális hálózat kezeléséhez.
-
-- Ha egy virtuális hálózatban több számítási fürtöt fog elhelyezni, előfordulhat, hogy egy vagy több erőforrásra vonatkozó kvóta-növelést kell kérnie.
-
-    A Machine Learning Compute-példány automatikusan további hálózati erőforrásokat foglal le a virtuális hálózatot tartalmazó erőforráscsoporthoz. A szolgáltatás minden számítási fürthöz a következő erőforrásokat foglalja le:
-
-    - Egy hálózati biztonsági csoport
-
-    - One public IP address
-
-    - Egy Load Balancer
-
-  Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](https://docs.microsoft.com/azure/azure-subscription-service-limits) vonatkoznak.
+Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](https://docs.microsoft.com/azure/azure-subscription-service-limits) vonatkoznak.
 
 ### <a id="mlcports"></a>Szükséges portok
 
@@ -140,7 +139,7 @@ Nem kell megadnia a NSG az alhálózat szintjén, mert a Azure Batch szolgáltat
 
 A Azure Portal NSG-szabályának konfigurációja az alábbi képeken látható:
 
-![A Machine Learning Computehoz tartozó bejövő NSG-szabályok](./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png)
+[![A Machine Learning Computehoz tartozó bejövő NSG-szabályok](./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png)](./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png#lightbox)
 
 ![A Machine Learning Compute kimenő NSG szabályai](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
 
@@ -157,7 +156,7 @@ Ha nem szeretné az alapértelmezett kimenő szabályokat használni, és korlá
 
 A Azure Portal NSG-szabályának konfigurációja a következő képen látható:
 
-![A Machine Learning Compute kimenő NSG szabályai](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)
+[![A Machine Learning Compute kimenő NSG szabályai](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 ### <a name="user-defined-routes-for-forced-tunneling"></a>A kényszerített bújtatáshoz tartozó felhasználó által megadott útvonalak
 
@@ -282,13 +281,13 @@ Ha egy virtuális gépet vagy Azure HDInsight-fürtöt szeretne használni a mun
 Ha AK-t szeretne hozzáadni egy virtuális hálózathoz a munkaterülethez, tegye a következőket:
 
 > [!IMPORTANT]
-> Az alábbi eljárás megkezdése előtt tekintse át az előfeltételeket, és tervezze meg az IP-címzést a fürt számára. További információ: [speciális hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)](https://docs.microsoft.com/azure/aks/configure-advanced-networking).
+> Az alábbi eljárás megkezdése előtt kövesse a [speciális hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)](https://docs.microsoft.com/azure/aks/configure-advanced-networking#prerequisites) – útmutató és a fürt IP-címzésének megtervezése című témakör előfeltételeit.
 >
 > Az AK-példánynak és az Azure-beli virtuális hálózatnak ugyanabban a régióban kell lennie.
 
 1. A [Azure Portal](https://portal.azure.com)ellenőrizze, hogy a virtuális hálózatot vezérlő NSG van-e olyan Bejövő szabály, amely engedélyezve van a Azure Machine learning szolgáltatás számára, ha a __AzureMachineLearning__ -thasználja forrásként.
 
-    ![A Azure Machine Learning szolgáltatás számítási paneljének hozzáadása](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)
+    [![A Azure Machine Learning szolgáltatás számítási paneljének hozzáadása](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png#lightbox)
 
 1. Válassza ki a Azure Machine Learning szolgáltatás munkaterületét.
 
@@ -315,8 +314,8 @@ Ha AK-t szeretne hozzáadni egy virtuális hálózathoz a munkaterülethez, tegy
 1. Győződjön meg arról, hogy a virtuális hálózatot vezérlő NSG-csoport rendelkezik egy bejövő biztonsági szabállyal, amely engedélyezi a pontozási végpontot, hogy a virtuális hálózaton kívülről is meghívható legyen.
    > [!IMPORTANT]
    > Tartsa meg a NSG alapértelmezett kimenő szabályait. További információ: [biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)alapértelmezett biztonsági szabályai.
-  
-   ![Egy bejövő biztonsági szabály](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
+
+   [![Egy bejövő biztonsági szabály](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
 
 A Azure Machine Learning SDK-val is hozzáadhatja az Azure Kubernetes szolgáltatást egy virtuális hálózatban. Ha már van egy AK-fürtje egy virtuális hálózaton, csatolja azt a munkaterülethez a következő témakörben leírtak szerint: [üzembe helyezés az AK](how-to-deploy-to-aks.md)-ban. A következő kód létrehoz egy új AK- `default` példányt egy nevű `mynetwork`virtuális hálózat alhálózatában:
 

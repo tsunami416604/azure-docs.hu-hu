@@ -1,21 +1,19 @@
 ---
 title: Azure Functions fejlesztése a Visual Studióval | Microsoft Docs
 description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functionseket a Visual Studio 2019 Azure Functions Tools használatával.
-services: functions
-documentationcenter: .net
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 6040552ccee5269e4a04d8b7a1ee072400a8506d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 10c356afc235494b00777561259190ae78b65482
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68593251"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905681"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure Functions fejlesztése a Visual Studióval  
 
@@ -98,7 +96,7 @@ A functions futtatókörnyezet belsőleg használ egy Azure Storage-fiókot. A H
 
 A Storage-fiók kapcsolódási karakterláncának beállítása:
 
-1. A Visual Studióban nyissa meg a **Cloud Explorer alkalmazást** **, bontsa** > ki a Storage-**fiók**elemet, majd a **Tulajdonságok** lapon másolja ki az **elsődleges kapcsolatok karakterláncának** értékét.
+1. A Visual Studióban nyissa meg a **Cloud Explorer alkalmazást**, bontsa ki a Storage- > **fiók**elemet, majd a **Tulajdonságok** lapon másolja ki az **elsődleges kapcsolatok karakterláncának** értékét.
 
 2. A projektben nyissa meg a local. Settings. JSON fájlt, és állítsa be a **AzureWebJobsStorage** kulcs értékét a másolt kapcsolódási karakterláncra.
 
@@ -212,6 +210,9 @@ Ez megjeleníti a Function **alkalmazás Alkalmazásbeállítások** párbeszéd
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
 A **Local** érték a local. Settings. JSON fájlban, a **távoli** pedig az Azure-beli Function alkalmazás jelenlegi beállítását jelöli.  Új Alkalmazásbeállítás létrehozásához válassza a **beállítás hozzáadása** lehetőséget. A beállítás értékének a **helyi** hivatkozásból történő másolásához használja a Setting értéket a **távoli** mezőre. A függőben lévő módosítások a helyi beállítások fájlba és a Function alkalmazásba íródnak, amikor az **OK gombra**kattint.
+
+> [!NOTE]
+> Alapértelmezés szerint a local. Settings. JSON fájl nincs bejelölve a verziókövetés számára. Ez azt jelenti, hogy amikor egy helyi functions-projektet klónozott a forrás vezérlőelemből, a projekthez nem tartozik helyi. Settings. JSON fájl. Ebben az esetben manuálisan kell létrehoznia a local. Settings. JSON fájlt a projekt gyökerében, hogy az **alkalmazás beállításai** párbeszédpanel a várt módon működjön. 
 
 Az alkalmazás beállításait az alábbi módokon is kezelheti:
 

@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/22/2019
+ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 52d7b84fe6210d8a4d46814ad6749bed0463478e
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: a0b0df9110f062b5f9c23840cb21308b634c9c81
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405643"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898152"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveleti csoportok létrehozása és kezelése a Azure Portal
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.
@@ -36,7 +36,7 @@ További információ arról, hogyan használhatók Azure Resource Manager sablo
 
     ![A "figyelő" szolgáltatás](./media/action-groups/home-monitor.png)
     
-1. Válassza  a riasztások lehetőséget, majd a **műveletek kezelése**lehetőséget.
+1. Válassza a riasztások lehetőséget, majd a **műveletek kezelése**lehetőséget.
 
     ![Műveletek kezelése gomb](./media/action-groups/manage-action-groups.png)
     
@@ -58,7 +58,7 @@ További információ arról, hogyan használhatók Azure Resource Manager sablo
 
     1. **Művelet típusa**: Válassza az E-mail/SMS/leküldés/hang, a Logic app, a webhook, a ITSM vagy az Automation Runbook lehetőséget.
 
-    1. **Részletek**: A Művelettípus alapján adja meg a telefonszámot, az e-mail-címet, a webhook URI-JÁT, az Azure-alkalmazást, a ITSM-kapcsolat vagy az Automation-runbook. A ITSM művelethez emellett adja  meg a munkaelemet és a ITSM eszköz által igényelt egyéb mezőket.
+    1. **Részletek**: A Művelettípus alapján adja meg a telefonszámot, az e-mail-címet, a webhook URI-JÁT, az Azure-alkalmazást, a ITSM-kapcsolat vagy az Automation-runbook. A ITSM művelethez emellett adja meg a munkaelemet és a ITSM eszköz által igényelt egyéb mezőket.
     
     1. **Gyakori riasztási séma**: Engedélyezheti a [közös riasztási sémát](https://aka.ms/commonAlertSchemaDocs), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
 
@@ -76,6 +76,11 @@ Miután létrehozta a műveleti csoportot, a **figyelő** ablaktábla **művelet
 > [!NOTE]
 > Az alábbi elemeken megtekintheti az [előfizetési szolgáltatás korlátozásait](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) a numerikus korlátok figyeléséhez.  
 
+### <a name="automation-runbook"></a>Automation-forgatókönyv
+Tekintse meg az [Azure-előfizetési szolgáltatási](../../azure-subscription-service-limits.md) korlátokat a Runbook-adattartalomra vonatkozó korlátozásokkal kapcsolatban.
+
+A műveleti csoportban korlátozott számú Runbook művelet lehet. 
+
 ### <a name="azure-app-push-notifications"></a>Azure-alkalmazás leküldéses értesítései
 Előfordulhat, hogy egy műveleti csoportban korlátozott számú Azure-alkalmazási művelet van.
 
@@ -87,6 +92,16 @@ A rendszer e-maileket küld a következő e-mail-címekről. Győződjön meg ar
 
 A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
 
+### <a name="email-azure-resource-manager-role"></a>Azure Resource Manager-szerepkör küldése e-mailben
+E-mail küldése az előfizetés szerepkörének tagjainak.
+
+A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
+
+### <a name="function"></a>Függvény
+A műveletként konfigurált functions-alkalmazások kulcsai a functions API-n keresztül olvashatók, amely jelenleg a v2 Function apps-alkalmazásokkal konfigurálja a "AzureWebJobsSecretStorageType" beállítást a "files" értékre. További információ: [változások a kulcskezelő szolgáltatásban a functions v2-ben]( https://aka.ms/funcsecrets).
+
+A műveleti csoportban korlátozott számú Function művelet lehet.
+
 ### <a name="itsm"></a>ITSM
 A ITSM művelethez ITSM-kapcsolat szükséges. Megtudhatja, hogyan hozhat létre [ITSM-kapcsolatokat](../../azure-monitor/platform/itsmc-overview.md).
 
@@ -95,51 +110,7 @@ A műveleti csoportban korlátozott számú ITSM művelet lehet.
 ### <a name="logic-app"></a>Logic App
 A műveleti csoportban korlátozott számú Logic app-művelet lehet.
 
-### <a name="function"></a>Függvény
-A műveletként konfigurált functions-alkalmazások kulcsai a functions API-n keresztül olvashatók, amely jelenleg a v2 Function apps-alkalmazásokkal konfigurálja a "AzureWebJobsSecretStorageType" beállítást a "files" értékre. További információ: [változások a kulcskezelő szolgáltatásban a functions v2-ben]( https://aka.ms/funcsecrets).
-
-A műveleti csoportban korlátozott számú Function művelet lehet.
-
-### <a name="automation-runbook"></a>Automation-forgatókönyv
-Tekintse meg az [Azure-előfizetési szolgáltatási](../../azure-subscription-service-limits.md) korlátokat a Runbook-adattartalomra vonatkozó korlátozásokkal kapcsolatban.
-
-A műveleti csoportban korlátozott számú Runbook művelet lehet. 
-
-### <a name="sms"></a>SMS
-További fontos információk: az információk és az [SMS](../../azure-monitor/platform/alerts-sms-behavior.md) -riasztások viselkedésének [korlátozása](./../../azure-monitor/platform/alerts-rate-limiting.md) .
-
-A műveleti csoportban korlátozott számú SMS-művelet lehet.  
-
-### <a name="voice"></a>Hang
-Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
-
-A műveleti csoportban korlátozott számú hangművelet lehet.
-
-### <a name="webhook"></a>Webhook
-A webhookok a következő szabályok alapján lesznek újrapróbálkozva. A webhook hívása a következő HTTP-állapotkódok visszaadásakor legfeljebb 2 alkalommal próbálkozik újra: 408, 429, 503, 504, illetve ha a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második újrapróbálkozás 100 másodperc után történik. Két hiba után a műveleti csoport 30 percig nem fogja hívni a végpontot. 
-
-Forrás IP-címtartományok
- - 13.72.19.232
- - 13.106.57.181
- - 13.106.54.3
- - 13.106.54.19
- - 13.106.38.142
- - 13.106.38.148
- - 13.106.57.196
- - 13.106.57.197
- - 52.244.68.117
- - 52.244.65.137
- - 52.183.31.0
- - 52.184.145.166
- - 51.4.138.199
- - 51.5.148.86
- - 51.5.149.19
-
-Ha frissítéseket szeretne kapni ezen IP-címek változásairól, javasoljuk, hogy állítson be egy Service Health riasztást, amely figyeli a műveleti csoportok szolgáltatással kapcsolatos tájékoztató értesítéseket.
-
-Előfordulhat, hogy egy műveleti csoportban korlátozott számú webhook-művelet van.
-
-#### <a name="secure-webhook"></a>Secure Webhook
+### <a name="secure-webhook"></a>Secure Webhook
 **A biztonságos webhook funkció jelenleg előzetes verzióban érhető el.**
 
 A műveleti csoportok webhook művelettel kihasználhatja a Azure Active Directory előnyeit a műveleti csoport és a védett webes API (webhook-végpont) közötti kapcsolat biztonságossá tételéhez. A funkció kihasználásának általános munkafolyamata alább olvasható. Az Azure AD-alkalmazások és-szolgáltatások áttekintését lásd: [Microsoft Identity platform (v 2.0) – áttekintés](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
@@ -156,12 +127,12 @@ A műveleti csoportok webhook művelettel kihasználhatja a Azure Active Directo
     - Módosítsa a PowerShell-parancsfájl változóját $myAzureADApplicationObjectId az Azure AD-alkalmazás objektumazonosítójának használatára
     - Futtassa a módosított parancsfájlt.
     
-1. A műveleti csoport webhook műveletének konfigurálása.
+1. Konfigurálja a műveleti csoport biztonságos webhook műveletét.
     - Másolja a $myApp. ObjectId értéket a parancsfájlból, és adja meg a webhook műveleti definíciójának Application Object ID mezőjében.
     
     ![Biztonságos webhook művelet](./media/action-groups/action-groups-secure-webhook.png)
 
-##### <a name="secure-webhook-powershell-script"></a>Webhook PowerShell-parancsfájl biztonságossá tétele
+#### <a name="secure-webhook-powershell-script"></a>Webhook PowerShell-parancsfájl biztonságossá tétele
 
 ```PowerShell
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
@@ -229,6 +200,41 @@ Write-Host "My Azure AD Application ($myApp.ObjectId): " + $myApp.ObjectId
 Write-Host "My Azure AD Application's Roles"
 Write-Host $myApp.AppRoles
 ```
+
+### <a name="sms"></a>SMS
+További fontos információk: az információk és az [SMS](../../azure-monitor/platform/alerts-sms-behavior.md) -riasztások viselkedésének [korlátozása](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+
+A műveleti csoportban korlátozott számú SMS-művelet lehet.  
+
+### <a name="voice"></a>Hang
+Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
+
+A műveleti csoportban korlátozott számú hangművelet lehet.
+
+### <a name="webhook"></a>Webhook
+A webhookok a következő szabályok alapján lesznek újrapróbálkozva. A webhook hívása a következő HTTP-állapotkódok visszaadásakor legfeljebb 2 alkalommal próbálkozik újra: 408, 429, 503, 504, illetve ha a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második újrapróbálkozás 100 másodperc után történik. Két hiba után a műveleti csoport 30 percig nem fogja hívni a végpontot. 
+
+Forrás IP-címtartományok
+ - 13.72.19.232
+ - 13.106.57.181
+ - 13.106.54.3
+ - 13.106.54.19
+ - 13.106.38.142
+ - 13.106.38.148
+ - 13.106.57.196
+ - 13.106.57.197
+ - 52.244.68.117
+ - 52.244.65.137
+ - 52.183.31.0
+ - 52.184.145.166
+ - 51.4.138.199
+ - 51.5.148.86
+ - 51.5.149.19
+
+Ha frissítéseket szeretne kapni ezen IP-címek változásairól, javasoljuk, hogy állítson be egy Service Health riasztást, amely figyeli a műveleti csoportok szolgáltatással kapcsolatos tájékoztató értesítéseket.
+
+Előfordulhat, hogy egy műveleti csoportban korlátozott számú webhook-művelet van.
+
 
 
 ## <a name="next-steps"></a>További lépések

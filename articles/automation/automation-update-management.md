@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 393c66f57cd4a7621ad660774a95502c0f5ad8c4
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: b9fcf06caf2abf116a2f2b99f26ead6277f7ad50
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534710"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970545"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
@@ -76,7 +76,7 @@ A következő táblázat a támogatott operációs rendszerek listáját tartalm
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | A csak a frissítési felméréseket támogatja.         |
-|Windows Server 2008 R2 SP1 és újabb verziók.  |A .NET-keretrendszer 4.5.1-es vagy újabb verziója szükséges. ([.NET-keretrendszer letöltése](/dotnet/framework/install/guide-for-developers))<br/> A Windows PowerShell 4,0-es vagy újabb verziójára van szükség. ([WMF 4,0 letöltése](https://www.microsoft.com/download/details.aspx?id=40855))<br/> A fokozott megbízhatóság érdekében ajánlott a Windows PowerShell 5,1.  ([WMF 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2019 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2008 R2 (RTM és SP1 standard)|A .NET-keretrendszer 4.5.1-es vagy újabb verziója szükséges. ([.NET-keretrendszer letöltése](/dotnet/framework/install/guide-for-developers))<br/> A Windows PowerShell 4,0-es vagy újabb verziójára van szükség. ([WMF 4,0 letöltése](https://www.microsoft.com/download/details.aspx?id=40855))<br/> A fokozott megbízhatóság érdekében ajánlott a Windows PowerShell 5,1.  ([WMF 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616))        |
 |CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz. A besoroláson alapuló javításhoz a "yum" utasítás szükséges ahhoz, hogy a CentOS ne legyen a dobozban. A CentOS besoroláson alapuló javításával kapcsolatos további információkért lásd: [frissítési besorolások Linux](#linux-2) rendszeren          |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
@@ -371,7 +371,7 @@ A következő címek megadása kifejezetten a Update Management. A címekkel fol
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*.azure-automation.us|
 
-Windows rendszerű gépek esetén a Windows Update által igényelt végpontokra is engedélyeznie kell a forgalmat.  A szükséges endoints frissített listáját a [http/proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)szolgáltatással kapcsolatos problémákban találja. Ha helyi [Windows Update](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)-kiszolgálóval rendelkezik, engedélyeznie kell a forgalmat a [WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)-kulcsban megadott kiszolgálóra is.
+Windows rendszerű gépek esetén a Windows Update által igényelt végpontokra is engedélyeznie kell a forgalmat.  A szükséges végpontok frissített listáját a [http/proxy szolgáltatással kapcsolatos problémák](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)között találja. Ha helyi [Windows Update](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)-kiszolgálóval rendelkezik, engedélyeznie kell a forgalmat a [WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)-kulcsban megadott kiszolgálóra is.
 
 A Red Hat Linux rendszerű gépek esetében tekintse meg a szükséges végpontok számára a [RHUI Content Delivery Servers IP](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers) -címei című témakört. Más Linux-disztribúciók esetében tekintse meg a szolgáltatói dokumentációt.
 

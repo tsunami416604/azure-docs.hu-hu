@@ -1,30 +1,30 @@
 ---
-title: Az Azure Database for postgresql-hez kapcsolati architektúra
-description: A témakör ismerteti a kapcsolati architektúra az Azure Database for PostgreSQL-kiszolgálóhoz.
+title: Kapcsolati architektúra a Azure Database for PostgreSQLban
+description: A Azure Database for PostgreSQL-kiszolgáló kapcsolati architektúráját ismerteti.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 0d91458c555c819c4bcf97215a712719ebc5eb71
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 92844f0fe3a851802836015a1340983eb4633ed2
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588958"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900550"
 ---
-# <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Az Azure Database for postgresql-hez kapcsolati architektúra
-Ez a cikk ismerteti az Azure Database for PostgreSQL csatlakozási architektúra, valamint, hogy hogyan a átirányítja a forgalmat az Azure Database for PostgreSQL-adatbázispéldány belül és kívül az Azure-ügyfelekről.
+# <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Kapcsolati architektúra a Azure Database for PostgreSQLban
+Ez a cikk ismerteti a Azure Database for PostgreSQL kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for PostgreSQL adatbázis-példányára az Azure-on belüli és kívüli ügyfelektől.
 
 ## <a name="connectivity-architecture"></a>Kapcsolati architektúra
-Az Azure Database for postgresql-hez kapcsolat jön létre, amely a kiszolgáló a fürtben használt fizikai helynek útválasztási bejövő kapcsolatokat az átjárón keresztül. A következő ábra szemlélteti a forgalom áramlását.
+A Azure Database for PostgreSQL kapcsolata egy olyan átjárón keresztül jön létre, amely felelős a bejövő kapcsolatok útválasztásához a fürtben lévő kiszolgáló fizikai helyén. A következő ábra a forgalmat mutatja be.
 
 ![A kapcsolati architektúra áttekintése](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 
-Ügyfél kapcsolódni az adatbázishoz, kapnak egy kapcsolati karakterláncot, amely az átjáró csatlakozik. Ez az átjáró van egy nyilvános IP-címet, amely az 5432-es porton figyel. Az adatbázisban clusterz forgalmat továbbítja a megfelelő Azure-adatbázis PostgreSQL-hez. Annak érdekében, hogy csatlakozni a kiszolgálóhoz, mint például a vállalati hálózatokra, ezért szükséges képes elérni az átjáró kimenő forgalom engedélyezésére az ügyfél oldalán tűzfalát megnyitnia. Az átjárók régiónként által használt IP-címek teljes listája az alábbiakban találja.
+Ahogy az ügyfél csatlakozik az adatbázishoz, egy kapcsolati karakterláncot kapnak, amely az átjáróhoz csatlakozik. Az átjáró egy nyilvános IP-címmel rendelkezik, amely a 5432-es portot figyeli. Az adatbázis-fürt forgalmát a megfelelő Azure Database for PostgreSQL továbbítja a rendszer. Ezért ahhoz, hogy csatlakozni tudjon a kiszolgálóhoz, például a vállalati hálózatokból, meg kell nyitnia az ügyféloldali tűzfalat, hogy a kimenő forgalom elérje az átjárókat. Az alábbiakban megtalálhatja az átjárók által régiónként használt IP-címek teljes listáját.
 
-## <a name="azure-database-for-postgresql-gateway-ip-addresses"></a>Azure Database for PostgreSQL-átjáró IP-címek
-Az alábbi táblázat az elsődleges és másodlagos IP-címek, az Azure Database for PostgreSQL átjáró adatok minden régió esetében az. Az elsődleges IP-cím az az aktuális IP-cím az átjáró, a második IP-cím pedig az elsődleges meghiúsulásának feladatátvételi IP-címet. Ahogy említettük, ügyfelek engedélyeznie kell a kimenő mindkét IP-címet. A második IP-cím nem figyel a függő szolgáltatások mindaddig, amíg aktívvá válik, amelyet, Azure Database for PostgreSQL-kapcsolatok fogadására.
+## <a name="azure-database-for-postgresql-gateway-ip-addresses"></a>Átjáró IP-címeinek Azure Database for PostgreSQL
+A következő táblázat felsorolja az Azure Database for PostgreSQL átjáró elsődleges és másodlagos IP-címeit az összes adatterülethez. Az elsődleges IP-cím az átjáró aktuális IP-címe, a második IP-cím pedig egy feladatátvételi IP-cím az elsődleges hiba esetén. Ahogy említettük, az ügyfeleknek engedélyezniük kell a kimenő forgalmat az IP-címekre is. A második IP-cím nem figyeli a szolgáltatásokat, amíg Azure Database for PostgreSQL nem aktiválja a kapcsolatokat.
 
 | **Régió neve** | **Elsődleges IP-cím** | **Másodlagos IP-cím** |
 |:----------------|:-------------|:------------------------|
@@ -39,7 +39,7 @@ Az alábbi táblázat az elsődleges és másodlagos IP-címek, az Azure Databas
 | Észak-Kína 1 | 139.219.15.17 | |
 | Észak-Kína 2 | 40.73.50.0 | |
 | Kelet-Ázsia | 191.234.2.139 | 52.175.33.150 |
-| 1 USA keleti régiója | 191.238.6.43 | 40.121.158.30 |
+| USA keleti régiója 1 | 191.238.6.43 | 40.121.158.30 |
 | USA 2. keleti régiója | 191.239.224.107 | 40.79.84.180 * |
 | Közép-Franciaország | 40.79.137.0 | 40.79.129.1 |
 | Közép-Németország | 51.4.144.100 | |
@@ -57,12 +57,12 @@ Az alábbi táblázat az elsődleges és másodlagos IP-címek, az Azure Databas
 | Az Egyesült Királyság déli régiója | 51.140.184.11 | |
 | Az Egyesült Királyság nyugati régiója | 51.141.8.11| |
 | Nyugat-Európa | 191.237.232.75 | 40.68.37.158 |
-| USA nyugati RÉGIÓJA 1 | 23.99.34.75 | 104.42.238.205 |
+| USA nyugati régiója 1 | 23.99.34.75 | 104.42.238.205 |
 | USA nyugati régiója, 2. | 13.66.226.202 | |
 ||||
 
 > [!NOTE]
-> *USA keleti RÉGIÓJA 2* is a harmadlagos IP-címmel rendelkezik `52.167.104.0`.
+> Az`52.167.104.0` *USA 2. keleti* régiója a harmadlagos IP-címmel is rendelkezik.
 
 ## <a name="next-steps"></a>További lépések
 

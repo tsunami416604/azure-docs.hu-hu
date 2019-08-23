@@ -1,100 +1,100 @@
 ---
-title: Az Azure Site Recovery folyamatkiszolgáló figyelése
-description: Ez a cikk ismerteti az Azure Site Recovery folyamatkiszolgáló figyelése.
+title: A Azure Site Recovery folyamat kiszolgálójának figyelése
+description: Ez a cikk a Azure Site Recovery Process Server figyelését ismerteti.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 4ff52e737438210296b8f2201d5e66e1d38b7bc9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d746385a034fdf742b8958b3d1fe51ea2a3c5cf
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418283"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972176"
 ---
-# <a name="monitor-the-process-server"></a>A folyamatkiszolgáló figyelése
+# <a name="monitor-the-process-server"></a>A folyamat kiszolgálójának figyelése
 
-Ez a cikk bemutatja, hogyan figyelheti a [Site Recovery](site-recovery-overview.md) folyamatkiszolgáló.
+Ez a cikk a [site Recovery](site-recovery-overview.md) Process Server figyelését ismerteti.
 
-- A folyamatkiszolgáló szolgál a helyszíni VMware virtuális gépek és fizikai kiszolgálók Azure-bA vész-helyreállítási beállításakor.
-- Alapértelmezés szerint a folyamatkiszolgáló a konfigurációs kiszolgálón fut. Telepíti a rendszer alapértelmezés szerint használt konfigurációs kiszolgáló telepítése.
-- Igény szerint méretezhetőség és leíró számtalan replikált gépek és a replikációs forgalom nagyobb mennyiségű telepíthet további, a horizontális felskálázási folyamatkiszolgáló.
+- A Process Server a helyszíni VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállításának beállításakor használatos.
+- Alapértelmezés szerint a Process Server fut a konfigurációs kiszolgálón. Alapértelmezés szerint telepítve van a konfigurációs kiszolgáló telepítésekor.
+- Ha nagyobb számú replikált gépet és nagyobb mennyiségű replikációs forgalmat szeretne méretezni és kezelni, további, kibővített folyamat-kiszolgálókat is telepíthet.
 
-[További](vmware-physical-azure-config-process-server-overview.md) a szerepkör és a folyamat kiszolgálók üzembe helyezésével kapcsolatos.
+[További](vmware-physical-azure-config-process-server-overview.md) információ a folyamat-kiszolgálók szerepköreiről és központi telepítéséről.
 
-## <a name="monitoring-overview"></a>Monitorozás áttekintése
+## <a name="monitoring-overview"></a>Figyelés áttekintése
 
-Mivel a folyamatkiszolgáló sok szerepkörök, különösen a replikált adatok gyorsítótárazását, tömörítését és átvitele az Azure-bA fontos folyamat kiszolgáló állapotának folyamatos figyelése.
+Mivel a Process Server számos szerepkörrel rendelkezik, különösen a replikált adatgyorsítótárazásban, a tömörítésben és az Azure-ba való átvitelben, fontos a folyamat-kiszolgáló állapotának folyamatos figyelése.
 
-Létezik néhány gyakran folyamat kiszolgáló teljesítményét befolyásoló helyzetben. Teljesítményt érintő problémákat egymásra épülő hatással lesz a virtuális gép állapota, végül a folyamat és a replikált gépek küld kritikus állapotba. Esetek a következők:
+Számos olyan helyzet áll fenn, amely gyakran befolyásolja a Process Server teljesítményét. A teljesítményt befolyásoló problémák a virtuális gép állapotára épülnek, és végül a folyamat-és a replikált gépek kritikus állapotba kerülnek. A helyzetek a következők:
 
-- Virtuális gépek nagy mennyiségű folyamatkiszolgáló, hamarosan eléri vagy meghaladja az ajánlott korlátozások használja.
-- A folyamatkiszolgáló virtuális gépek a nagy forgalom sebessége rendelkezik.
-- Virtuális gépek és a folyamatkiszolgáló közötti hálózati átviteli sebessége nem elegendő a replikációs adatok feltöltése a folyamatkiszolgálónak.
-- A folyamatkiszolgáló és az Azure közötti hálózati átviteli sebessége nem elegendő feltölteni a replikációs adatok a folyamatkiszolgálóról az Azure-bA.
+- A nagy számú virtuális gép egy folyamat-kiszolgálót használ, amely közeledik vagy meghaladja az ajánlott korlátozásokat.
+- A Process Servert használó virtuális gépek magas adatváltozási aránnyal rendelkeznek.
+- A virtuális gépek és a folyamat-kiszolgáló közötti hálózati átviteli sebesség nem elegendő a replikációs adatoknak a Process Server rendszerbe való feltöltéséhez.
+- A folyamat-kiszolgáló és az Azure közötti hálózati átviteli sebesség nem elegendő a replikációs adatok feltöltéséhez a Process Serverről az Azure-ba.
 
-Minden, a problémák hatással lehetnek a helyreállításipont-célkitűzés (RPO) virtuális gépek. 
+Ezen problémák mindegyike hatással lehet a virtuális gépek helyreállítási pontokra vonatkozó célkitűzésére (RPO). 
 
-**miért?** Mivel a virtuális gépen, hogy egy közös pont az összes lemez egy helyreállítási pont létrehozása egy virtuális géphez van szükség. Ha egyik lemezhez tartozik egy nagy forgalom sebessége, replikálás lassú, vagy a folyamatkiszolgáló nem optimális, a következőkre hat hatékonyan hogyan jönnek létre helyreállítási pontokat.
+**miért?** Mivel a virtuális gép helyreállítási pontjának generálása megköveteli, hogy a virtuális gép összes lemeze rendelkezzen közös ponttal. Ha az egyik lemez magas adatváltozási arányban van, a replikálás lassú, vagy a folyamat kiszolgálója nem optimális, akkor a helyreállítási pontok létrehozásának hatékonyságát is befolyásolja.
 
 ## <a name="monitor-proactively"></a>Proaktív monitorozás
 
-A folyamatkiszolgáló problémák elkerülése érdekében fontos:
+A folyamat-kiszolgálóval kapcsolatos problémák elkerüléséhez fontos, hogy:
 
-- Folyamatkiszolgálók segítségével konkrét követelmények megértéséhez [kapacitás és a méretezési útmutató](site-recovery-plan-capacity-vmware.md#capacity-considerations), és ellenőrizze, hogy a folyamat-kiszolgálókat azért helyezik üzembe, és futó javaslatainak megfelelő lépéseket.
-- Riasztások figyelése és hibáinak elhárítása a bekövetkezésük, hatékony működését folyamatkiszolgálók tartani.
+- A feldolgozási kiszolgálókkal kapcsolatos konkrét követelmények megértése a [kapacitás és a méretezési útmutató](site-recovery-plan-capacity-vmware.md#capacity-considerations)segítségével, valamint a folyamat-kiszolgálók üzembe helyezése és a javaslatok alapján történő futtatása.
+- Figyelje a riasztásokat, és hárítsa el a hibákat, hogy a folyamat-kiszolgálók hatékonyan fussanak.
 
 
-## <a name="process-server-alerts"></a>Folyamatkiszolgálói riasztások
+## <a name="process-server-alerts"></a>Kiszolgálói riasztások feldolgozása
 
-A folyamatkiszolgáló állapotriasztások, az alábbi táblázatban összefoglalt számos állít elő.
+A Process Server számos, az alábbi táblázatban összefoglalt állapot-riasztást hoz létre.
 
 **Riasztás típusa** | **Részletek**
 --- | ---
-![Kifogástalan][green] | A folyamatkiszolgáló csatlakoztatva és működik megfelelően.
-![Figyelmeztetés][yellow] | Processzor kihasználtsága > 80 % az elmúlt 15 percben
-![Figyelmeztetés][yellow] | Memória használati > 80 % az elmúlt 15 percben
-![Figyelmeztetés][yellow] | Gyorsítótár mappa szabad terület < 30 % az elmúlt 15 percben
-![Figyelmeztetés][yellow] | Folyamatkiszolgáló szolgáltatásai az elmúlt 15 percben nem fut
-![Kritikus][red] | Processzor kihasználtsága > 95 % az elmúlt 15 percben
-![Kritikus][red] | Memória használati > 95 % az elmúlt 15 percben
-![Kritikus][red] | Gyorsítótár mappa szabad terület < 25 %-os az elmúlt 15 percben
-![Kritikus][red] | Nem érkezett szívverés a folyamatkiszolgálóról 15 percig.
+![Kifogástalan][green] | A Process Server csatlakoztatva van és kifogástalan állapotú.
+![Figyelmeztetés][yellow] | CPU-kihasználtság > 80% az elmúlt 15 percben
+![Figyelmeztetés][yellow] | Memóriahasználat > 80% az elmúlt 15 percben
+![Figyelmeztetés][yellow] | Gyorsítótár-mappa szabad területe < 30% az elmúlt 15 percben
+![Figyelmeztetés][yellow] | A Process Server Services nem fut az elmúlt 15 percben
+![Kritikus][red] | CPU-kihasználtság > 95% az elmúlt 15 percben
+![Kritikus][red] | Memóriahasználat > 95% az elmúlt 15 percben
+![Kritikus][red] | Gyorsítótár-mappa szabad területe < 25% az elmúlt 15 percben
+![Kritikus][red] | 15 percig nem érhető el szívverés a folyamat-kiszolgálótól.
 
-![tábla kulcsa](./media/vmware-physical-azure-monitor-process-server/table-key.png)
+![Tábla kulcsa](./media/vmware-physical-azure-monitor-process-server/table-key.png)
 
 > [!NOTE]
-> A folyamatkiszolgáló általános állapotának a legrosszabb generált riasztások alapján történik.
+> A folyamat kiszolgálójának általános állapota a generált legrosszabb riasztáson alapul.
 
 
 
-## <a name="monitor-process-server-health"></a>A figyelő folyamat kiszolgáló állapota
+## <a name="monitor-process-server-health"></a>A folyamat kiszolgáló állapotának figyelése
 
-A folyamatkiszolgálók állapotát módon figyelheti: 
+A folyamat-kiszolgálók állapotát a következőképpen figyelheti: 
 
-1. A replikációs állapotot és a replikált gépről, és a folyamatkiszolgáló, a tárolóban állapotának monitorozásához > **replikált elemek**, kattintson a figyelni kívánt gépen.
-2. A **replikálás állapotának**, nyomon követheti a virtuális gép állapota. Kattintson az állapot részletes elemzést, a hiba részletei.
+1. Egy replikált gép replikálási állapotának és állapotának figyeléséhez, valamint a folyamat kiszolgálójának a tárolóban > **replikált elemek**területen kattintson a figyelni kívánt gépre.
+2. A **replikálás**állapota területen figyelheti a virtuális gép állapotának állapotát. A hiba részleteinek részletezéséhez kattintson az állapotra.
 
-    ![A virtuális gép irányítópult folyamat kiszolgáló állapota](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
+    ![Kiszolgáló állapotának feldolgozása a virtuális gép irányítópultján](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
 
-4. A **folyamat kiszolgáló állapota**, figyelheti a folyamatkiszolgáló állapotát. Részletezés részleteiről.
+4. A **Process Server Health**szolgáltatásban nyomon követheti a folyamat kiszolgálójának állapotát. Részletes részletezés.
 
-    ![Folyamatkiszolgáló adatait a virtuális gép irányítópult](./media/vmware-physical-azure-monitor-process-server/ps-summary.png)
+    ![Kiszolgáló adatainak feldolgozása a virtuális gép irányítópultján](./media/vmware-physical-azure-monitor-process-server/ps-summary.png)
 
-5. Egészségügyi is használatával figyelhetők a grafikus ábrázolását a virtuális gép oldalon.
-    - Horizontális felskálázási folyamatkiszolgáló lesz kiemelve a narancssárga, ha vannak társítva figyelmeztetéseket, és piros, ha bármely kritikus fontosságú problémáit. 
-    - Ha az alapértelmezett üzembe helyezés a folyamatkiszolgáló fut a konfigurációs kiszolgálón, majd a konfigurációs kiszolgáló kiemeli.
-    - Szeretne lehatolni, kattintson a konfigurációs kiszolgálón vagy folyamatkiszolgálón. Vegye figyelembe az esetleges problémákat, és szervizelési javaslatokkal szolgálni.
+5. Az állapot a virtuális gép oldalán található grafikus ábrázolással is figyelhető.
+    - A kibővített feldolgozási kiszolgáló a narancssárga színnel lesz kiemelve, ha figyelmeztetések vannak társítva, és piros, ha bármilyen kritikus probléma van. 
+    - Ha a Process Server az alapértelmezett központi telepítésben fut a konfigurációs kiszolgálón, a konfigurációs kiszolgáló ennek megfelelően lesz kiemelve.
+    - A részletezéshez kattintson a konfigurációs kiszolgálóra vagy a Process Server elemre. Jegyezze fel a problémákat és az esetleges szervizelési javaslatokat.
 
-Is figyelemmel kísérheti a tárban lévő kiszolgálók feldolgozni **Site Recovery-infrastruktúra**. A **a Site Recovery-infrastruktúra kezelése**, kattintson a **konfigurációs kiszolgálók**. Válassza ki a konfigurációs kiszolgáló társítva a folyamatkiszolgáló és a részletezés le be a folyamatkiszolgáló adatait.
+A **site Recovery infrastruktúra**alatt figyelheti a tárolóban lévő folyamat-kiszolgálókat is. A **site Recovery-infrastruktúra kezelése**területen kattintson a **konfigurációs kiszolgálók**elemre. Válassza ki a Process Serverhez társított konfigurációs kiszolgálót, és bontsa ki a folyamat kiszolgálójának adatait.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha rendelkezik ilyennel feldolgozni a kiszolgálók problémák, hajtsa végre a [hibaelhárítási útmutató](vmware-physical-azure-troubleshoot-process-server.md)
-- Ha további segítségre van szüksége, tegye közzé a kérdését a [Azure Site Recovery fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 
+- Ha problémái vannak a folyamatok kiszolgálóival, kövesse a [hibaelhárítási útmutatót](vmware-physical-azure-troubleshoot-process-server.md)
+- Ha további segítségre van szüksége, tegye fel kérdéseit a [Azure site Recovery fórumba](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png

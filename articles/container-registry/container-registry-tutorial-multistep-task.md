@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c78c2c8279972108aee12b9b386175d0f27b7fee
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 339b13201934b1ba5cd4f53c21d50b62814c36eb
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310413"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905380"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: Többlépéses tároló munkafolyamat futtatása a felhőben a forráskód elküldésekor
 
@@ -92,7 +92,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Ez a feladat azt adja meg, hogy a rendszer minden alkalommal véglegesíti a *főágat* az `--context`által megadott adattárban, az ACR-feladatok a több lépésből álló feladatot futtatják az adott ág kódjában. A tárház gyökerében megadott `--file` YAML-fájl határozza meg a lépéseket. 
+Ez a feladat azt adja meg, hogy a rendszer minden alkalommal véglegesíti a főágat az `--context`által megadott adattárban, az ACR-feladatok a több lépésből álló feladatot futtatják az adott ág kódjában. A tárház gyökerében megadott `--file` YAML-fájl határozza meg a lépéseket. 
 
 A sikeres az [ACR Task Create][az-acr-task-create] parancs kimenete az alábbihoz hasonló:
 
@@ -332,7 +332,7 @@ az acr task create \
     --name example2 \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
     --branch master \
-    --file taskmulti-image.yaml \
+    --file taskmulti-multiregistry.yaml \
     --git-access-token $GIT_PAT \
     --set regDate=mycontainerregistrydate.azurecr.io
 ```
@@ -363,7 +363,7 @@ Ahogy az előző példában is, a többlépéses feladat teszteléséhez indíts
 az acr task run --registry $ACR_NAME --name example2
 ```
 
-Alapértelmezés szerint az `az acr task run` a naplókimenetet a konzolra streameli a parancs végrehajtásakor. Ahogy korábban is, a kimenet a feladatok lépéseinek futtatási folyamatát mutatja. A kimenet a legfontosabb lépések megjelenítéséhez van tömörítve
+Alapértelmezés szerint az `az acr task run` a naplókimenetet a konzolra streameli a parancs végrehajtásakor. Ahogy korábban is, a kimenet a feladatok lépéseinek futtatási folyamatát mutatja. A kimenet a legfontosabb lépések megjelenítéséhez van tömörítve.
 
 Kimenet:
 

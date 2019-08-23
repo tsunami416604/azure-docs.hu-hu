@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f7afd3d4b03c55c6cd9878b7d22106eee371ba99
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 1a33e20ec540a05885eb13a3828d28ffc9923fff
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877924"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972839"
 ---
 # <a name="cloudsimple-security-overview"></a>A CloudSimple biztonsági áttekintése
 
@@ -81,7 +81,7 @@ A CloudSimple szolgáltatás logikailag elkülöníti a 2. rétegbeli hálózato
 
 A CloudSimple feladata a felügyelt VMware-szoftverek (ESXi, vCenter és NSX) rendszeres biztonsági javítása.
 
-## <a name="identity-and-access-management"></a>Identitáskezelés és hozzáférés-menedzsment (Identity and Access Management)
+## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 Az ügyfelek az Azure-fiókban (az Azure AD-ben) a többtényezős hitelesítést vagy az SSO-t használják előnyben részesítettként. A Azure Portal a hitelesítő adatok újbóli megadása nélkül is elindíthatja a CloudSimple-portált.
 

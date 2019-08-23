@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: e076d6fed8cb3baf6b62dc3ede6ddd34732ed7a2
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 95df72875338b6964f42075404cf9c30ba132f9d
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562081"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900209"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>A Azure Logic Apps korlátai és konfigurációs adatai
 
@@ -253,9 +253,11 @@ Amikor törli a logikai alkalmazást, a rendszer nem kezdeményez új futtatáso
 
 ## <a name="firewall-configuration-ip-addresses"></a>Tűzfal-konfiguráció: IP-címek
 
-Az ugyanabban a régióban található logikai alkalmazások ugyanazt az IP-címtartományt használják. A logikai alkalmazások által a [http](../connectors/connectors-native-http.md)-, [http + hencegő](../connectors/connectors-native-http-swagger.md)és egyéb http-kérésekkel közvetlenül elérhető hívások támogatásához állítsa be a tűzfalakat a Logic Apps szolgáltatás által használt *összes* [bejövő](#inbound) *és* [kimenő](#outbound) IP-címmel. , azon régiók alapján, ahol a logikai alkalmazások léteznek. Ezek a címek a jelen szakasz **bejövő** és **kimenő** fejlécei alatt jelennek meg, és régiónként vannak rendezve.
+Az ugyanabban a régióban található logikai alkalmazások ugyanazt az IP-címtartományt használják. A logikai alkalmazások által a [http](../connectors/connectors-native-http.md)-, [http + hencegő](../connectors/connectors-native-http-swagger.md)és egyéb http-kérésekkel közvetlenül elérhető hívások támogatásához állítsa be a tűzfalakat a Logic Apps szolgáltatás által használt *összes* [bejövő](#inbound) *és* [kimenő](#outbound) IP-címmel. , azon régiók alapján, ahol a logikai alkalmazások léteznek. Ezek a címek a jelen szakasz **bejövő** és **kimenő** fejlécei alatt jelennek meg, és régiónként vannak rendezve. 
 
 A [Microsoft által felügyelt összekötők](../connectors/apis-list.md) által kezdeményezett hívások támogatásához állítsa be a tűzfalat az összekötők által használt *összes* [kimenő](#outbound) IP-címmel azon régiók alapján, ahol a logikai alkalmazások léteznek. Ezek a címek a szakasz **kimenő** fejlécében jelennek meg, és régiónként vannak rendezve.
+
+Az integrációs szolgáltatási környezetben (ISE) futó Logic apps esetén győződjön meg arról, hogy megnyitotta [ezeket](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)a portokat.
 
 A [Azure Government](../azure-government/documentation-government-overview.md) és az [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)esetében jelenleg nem érhetők el az összekötők fenntartott IP-címei.
 

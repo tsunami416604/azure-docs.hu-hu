@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b1fa24f919888e4454096e1ef84d2ba2948b865a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
-ms.translationtype: MT
+ms.openlocfilehash: c316e55700fc8a28ed39bea960a9fe2b2bbd4df1
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774294"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900373"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Windows SQL Server virtuális gép kiépítése a Azure Portal
 
@@ -122,7 +122,7 @@ A **lemezek** lapon adja meg a lemez beállításait.
 * A **speciális**területen válassza az **igen** lehetőséget a **Managed Disks**használata elemnél.
 
    > [!NOTE]
-   > A Microsoft a Managed Disks használatát javasolja az SQL Server esetében. A Managed Disks szolgáltatás a háttérben kezeli a tárterületet. Emellett ha ugyanabban a rendelkezésre állási csoportban több, a Managed Diskset használó virtuális gép található, az Azure elosztja a tárolási erőforrásokat, hogy megfelelő redundanciát biztosítson. További információ: [Azure Managed Disks áttekintése] [.. /managed-disks-overview.md). A felügyelt lemezekkel kapcsolatos részletek a rendelkezésre állási csoportokban: [felügyelt lemezek használata a rendelkezésre állási csoportba tartozó virtuális gépekhez] (.. /manage-availability.md.
+   > A Microsoft a Managed Disks használatát javasolja az SQL Server esetében. A Managed Disks szolgáltatás a háttérben kezeli a tárterületet. Emellett ha ugyanabban a rendelkezésre állási csoportban több, a Managed Diskset használó virtuális gép található, az Azure elosztja a tárolási erőforrásokat, hogy megfelelő redundanciát biztosítson. További információ: [Azure Managed Disks áttekintése] [.. /managed-disks-overview.md). A felügyelt lemezek a rendelkezésre állási csoportokban való használatával kapcsolatos részletekért lásd: [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel](../manage-availability.md).
 
 ![Az SQL virtuális gép lemezének beállításai](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
@@ -275,7 +275,7 @@ További információk: [Automated Backup for SQL Server in Azure Virtual Machin
 Lehetősége van a [SQL Server R Services (fejlett Analitika)](/sql/advanced-analytics/r/sql-server-r-services/)engedélyezésére. Ez a beállítás lehetővé teszi a fejlett Analitika használatát a SQL Server 2017 használatával. Az **SQL Server beállítások** ablakban válassza az **Engedélyezés** lehetőséget.
 
 
-## <a name="4-review--create"></a>4. Áttekintés + létrehozás
+## <a name="4-review--create"></a>4. Felülvizsgálat + létrehozás
 
 A **felülvizsgálat + létrehozás** lapon tekintse át az összegzést, és válassza a **Létrehozás** lehetőséget a virtuális géphez megadott SQL Server, erőforráscsoport és erőforrások létrehozásához.
 

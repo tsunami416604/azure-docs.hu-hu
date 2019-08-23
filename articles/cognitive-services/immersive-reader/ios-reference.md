@@ -1,26 +1,26 @@
 ---
 title: Az olvasói iOS SDK-referenciája
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Útmutató a beolvasó iOS SDK-hoz
 services: cognitive-services
-author: MeganRoach
+author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
-ms.author: t-meroa
-ms.openlocfilehash: acdaaf0bf08644053e86343ae4b002002fee6a84
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.author: metan
+ms.openlocfilehash: 615c09dd8a7287918bb009ce11854278b21554c1
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966594"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899415"
 ---
 # <a name="immersive-reader-sdk-reference"></a>A részletes olvasó SDK-referenciája
 
 A lebilincselő olvasó iOS SDK egy gyors CocoaPod, amely lehetővé teszi, hogy az iOS-alkalmazásba integrálja a magával ragadó olvasót.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkciók
 
 Az SDK egyetlen függvényt `launchImmersiveReader(navController, token, subdomain, content, options, onSuccess, onFailure)`tesz elérhetővé.
 
@@ -40,7 +40,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 | `token` | Sztring | Az Azure AD hitelesítési jogkivonata. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
 | `subdomain` | Sztring | Az Azure-beli magától elolvasó erőforrás egyedi altartománya. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
 | `content` | [Tartalom](#content) | Egy objektum, amely a magába foglaló olvasóban megjelenítendő tartalmat tartalmazza. |
-| `options` | [Beállítások](#options) | Beállítások a magával ragadó olvasó bizonyos viselkedésének konfigurálásához. Választható. |
+| `options` | [Beállítások](#options) | Beállítások a magával ragadó olvasó bizonyos viselkedésének konfigurálásához. Nem kötelező. |
 | `onSuccess` | () – > Void | A magával ragadó olvasó sikeres elindítása után meghívott Bezárás. |
 | `onFailure` | (_ hiba: [Hiba](#error)) – > Void | Egy olyan Bezárás, amely akkor lép fel, amikor az olvasó nem töltődik be. Ez a Bezárás egy [`Error`](#error) olyan objektumot ad vissza, amely a hibához tartozó hibakódot és hibaüzenetet jelöli. További információ: hibakódok. [](#error-codes) |
 

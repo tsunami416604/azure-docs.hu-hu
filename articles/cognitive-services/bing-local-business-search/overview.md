@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: bing-local-business
 ms.topic: overview
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 6992c5c9a7ecc9cff5f56733b8b7e851d8cd7e42
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 8ee5dbe546b78557dde70868d01ec09ae33bee07
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839926"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906322"
 ---
 # <a name="what-is-bing-local-business-search"></a>Mi a Bing helyi üzleti keresés?
 A Bing local Business Search API egy REST-alapú szolgáltatás, amely lehetővé teszi az alkalmazások számára, hogy keresési lekérdezések alapján megtalálják a helyi vállalkozások adatait. Például `q=<business-name> in Redmond, Washington`:, vagy `q=Italian restaurants near me`. 

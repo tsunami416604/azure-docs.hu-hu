@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e1543d578e6812fd270bd76ec18bdfe8fe5ba6a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d4bf7b894a23f0054485ddb6dbb91c4df2122222
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324030"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907325"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
 
@@ -54,7 +54,7 @@ További ismereteket a Batch-fiókokról és -forgatókönyvekről a [funkciók 
 
       ![Tárfiók létrehozása][storage_account]
 
-    f. **Készlet lefoglalási módja**: A **speciális** beállítások lapon megadhatja a készlet lefoglalási módját **Batch szolgáltatásként** vagy felhasználói előfizetésként. **** A legtöbb esetben fogadja el az alapértelmezett **Batch szolgáltatást**.
+    f. **Készlet lefoglalási módja**: A **speciális** beállítások lapon megadhatja a készlet lefoglalási módját **Batch szolgáltatásként** vagy felhasználói előfizetésként. A legtöbb esetben fogadja el az alapértelmezett **Batch szolgáltatást**.
 
       ![Batch-készlet lefoglalási módja][pool_allocation]
 
@@ -115,7 +115,7 @@ Felhasználói előfizetés módban olyan Azure Key Vault szükséges, amely ugy
 
 A Batch-fiók felhasználói előfizetési módban való létrehozásakor használja a kulcstartóhoz tartozó erőforráscsoportot. Adja meg a **felhasználói** előfizetést készlet-kiosztási módban, jelölje ki a kulcstárolót, és jelölje be a jelölőnégyzetet, hogy Azure batch hozzáférést biztosítson a kulcstartóhoz. 
 
-Ha szeretné manuálisan megadni a kulcstartóhoz való hozzáférést, nyissa meg a Key Vault **hozzáférési szabályzatok** szakaszát, és válassza a **Microsoft Azure batch**lehetőséget. Állítsa be a **titkos engedélyeket** a legördülő menü használatával. Azure Batch legalább a **Get**, a **List**, a **set**és a **delete** engedélyeket kell megadni.
+Ha szeretné manuálisan megadni a kulcstartóhoz való hozzáférést, nyissa meg a Key Vault **hozzáférési szabályzatok** szakaszát, és válassza a **hozzáférési házirend hozzáadása** és a **Microsoft Azure batch**keresése lehetőséget. A kiválasztást követően a legördülő menüből kell konfigurálnia a **titkos engedélyeket** . Azure Batch legalább a **Get**, a **List**, a **set**és a **delete** engedélyeket kell megadni.
 
 ![A Azure Batchhoz tartozó titkos engedélyek](./media/batch-account-create-portal/secret-permissions.png)
 

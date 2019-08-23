@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 288a05fc09e0c59a01a8d4c9940c0d51cabdd28f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640965"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972334"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>VSAN-titkosítás konfigurálása a CloudSimple privát felhőhöz
 
 A vSAN titkosító funkciója beállítható úgy, hogy a CloudSimple saját felhője az Azure-beli virtuális hálózaton futó Kulcskezelő kiszolgálóval is működjön.
 
-A VMware egy külső KMIP 1,1-kompatibilis, harmadik féltől származó kulcskezelő kiszolgáló (KMS) eszközt használ a vSAN-titkosítás használatakor. Kihasználhatja a VMware által hitelesített, támogatott KMS-t, és az Azure-hoz is elérhető. 
+A VMware egy külső KMIP 1,1-kompatibilis, harmadik féltől származó kulcskezelő kiszolgáló (KMS) eszközt használ a vSAN-titkosítás használatakor. Kihasználhatja a VMware által hitelesített, támogatott KMS-t, és az Azure-hoz is elérhető.
 
 Ez az útmutató ismerteti, hogyan használható az Azure Virtual Networkben futó HyTrust kulcskezelő KMS. Hasonló módszer használható bármilyen más, harmadik féltől származó, vSAN-alapú KMS-megoldáshoz.
 

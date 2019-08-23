@@ -1,21 +1,21 @@
 ---
-title: További tudnivalók az Azure SQL Data Warehouse-műveletek |} A Microsoft Docs
+title: Tudnivalók a Azure SQL Data Warehouse műveletekről | Microsoft Docs
 description: 'Az SQL Data Warehouse rugalmassága lehetővé teszi, hogy növelje, csökkentse vagy szüneteltesse a számítási teljesítményt az adattárházegységek (DWU-k) csúszkájával. Ez a cikk az adatraktárak mérőszámait ismerteti, és azt, hogy azok milyen kapcsolatban vannak a DWU-kkal. '
 services: sql-data-warehouse
-author: kevinvngo
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: kevin
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: f0489d9c018abac380cd0f8b1aa51fa5bb81707a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 47e04cb6b58a185e84120fe73a8468834d2e57fd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531184"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907927"
 ---
 # <a name="data-warehouse-workload"></a>Adatraktár-számítási feladat
 Az adatraktár-számítási feladat minden olyan műveletre utal, amelyet egy adatraktárral végeznek. Az adatraktár-számítási feladat magában foglalja az adatok betöltését az adatraktárba, az elemzések végrehajtását, a jelentések készítését az adatraktárról, az adatraktárban lévő adatok kezelését és az adatok adatraktárból történő exportálását. Az összetevők terjedelme és mélysége gyakran arányos az adatraktár érettségi szintjével.
@@ -62,7 +62,7 @@ Az adatok jelentéskészítés és elemzés számára történő elérhetővé t
 * Az elemzéshez ki lehet építeni az adatraktáron egy elemzési adatkockát, és le lehet futtatni az elemzést az adatraktáron, vagy előre fel lehet dolgozni az adatokat és exportálni lehet őket az elemzési kiszolgálóra további elemzés céljából.
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy jobban megismerte az SQL Data Warehouse szolgáltatást, tudjon meg többet az [SQL Data Warehouse gyors létrehozásáról][create a SQL Data Warehouse] és a [mintaadatok betöltéséről][load sample data].
+Miután a fentiekben áttekintést kapott az SQL Data Warehouse használatáról, ismerje meg, hogyan hozhat létre gyorsan egy [SQL Data Warehouse létrehozása][create a SQL Data Warehouse] és hogyan [mintaadatokat tölthet be][load sample data].
 
 <!--Image references-->
 

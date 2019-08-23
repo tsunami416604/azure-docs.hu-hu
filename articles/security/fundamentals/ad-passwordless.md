@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 38c850f167287fe5e1a444c8670e359c4d2b6b90
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934836"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899950"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Jelszavak nélküli globális Azure Active Directory
 
@@ -226,7 +226,7 @@ Azt is javasoljuk, hogy minden szervezet hozzon létre egy protokollt a felhaszn
 
 #### <a name="user-sets-up-fido2-security-key"></a>A felhasználó beállítja a FIDO2 biztonsági kulcsát
 
-Habár a rendszergazdák [manuálisan](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable) is kiépíthetik a kulcsokat, és eloszthatják azokat a végfelhasználók számára, az [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods)-ban az FIDO2 hitelesítő adatok szolgáltatóját a Windows 10 zárolási képernyőjén fogja támogatni. A rendszergazdáknak a [Azure Portal](https://portal.azure.com/) használatával is engedélyeznie kell a hardveres jogkivonat-eszközöket a jelszóval nem rendelkező hitelesítési módszerként.
+Habár a rendszergazdák [manuálisan](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) is kiépíthetik a kulcsokat, és eloszthatják azokat a végfelhasználók számára, az [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods)-ban az FIDO2 hitelesítő adatok szolgáltatóját a Windows 10 zárolási képernyőjén fogja támogatni. A rendszergazdáknak a [Azure Portal](https://portal.azure.com/) használatával is engedélyeznie kell a hardveres jogkivonat-eszközöket a jelszóval nem rendelkező hitelesítési módszerként.
 
 A FIDO2 biztonsági kulcsainak telepítése azt is megköveteli, hogy a felhasználók a kulcsokat a [kombinált regisztráció](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)használatával regisztrálják. A kombinált regisztrációval a felhasználók egyszer regisztrálhatnak, és az Azure multi-Factor Authentication és az egyszeri bejelentkezési jelszó alaphelyzetbe állítása (SSPR) előnyeit élvezheti.
 
@@ -343,4 +343,4 @@ A modern, többtényezős hitelesítési technológiák, például a biometria �
 ## <a name="next-steps"></a>További lépések
 
 * A [jelszó](../../active-directory/authentication/concept-authentication-passwordless.md) nélküli tartalom áttekintése
-* [Jelszó engedélyezése az Azure AD-ben](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)
+* [Jelszó engedélyezése az Azure AD-ben](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)

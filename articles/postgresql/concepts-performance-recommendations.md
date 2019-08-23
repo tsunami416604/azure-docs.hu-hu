@@ -1,23 +1,23 @@
 ---
-title: Teljesítménnyel kapcsolatos javaslatok az Azure Database for PostgreSQL – egyetlen kiszolgáló
-description: Ez a cikk ismerteti a teljesítmény javaslat funkció az Azure Database for PostgreSQL – egyetlen kiszolgáló.
+title: Teljesítményre vonatkozó javaslatok Azure Database for PostgreSQL – egyetlen kiszolgálón
+description: Ez a cikk a Azure Database for PostgreSQL-Single Server teljesítmény-javaslati szolgáltatását ismerteti.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 31d8c0fdf1b4df3ee00f3652c933b4b738384bea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2019
+ms.openlocfilehash: e1e9e998c2ac4695d955a546d0f02fbc2b517d5e
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068843"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907479"
 ---
-# <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Teljesítménnyel kapcsolatos javaslatok az Azure Database for PostgreSQL – egyetlen kiszolgáló
+# <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Teljesítményre vonatkozó javaslatok Azure Database for PostgreSQL – egyetlen kiszolgálón
 
-**A következőkre vonatkozik:** Azure Database for PostgreSQL – egyetlen kiszolgáló 9.6 és 10
+**A következőkre vonatkozik:** Azure Database for PostgreSQL – egyetlen kiszolgáló 9,6 és 10
 
-A teljesítménnyel kapcsolatos javaslatok funkció elemzi az adatbázisokat hozhat létre személyre szabott javaslatok a jobb teljesítmény érdekében. Az ajánlások előállításához, különböző adatbázis jellemzőit, beleértve a sémát az elemzés megvizsgálja. Engedélyezése [Query Store](concepts-query-store.md) használja ki teljesen a teljesítménnyel kapcsolatos javaslatok a szolgáltatás a kiszolgálón. Után minden teljesítmény javaslat megvalósítása, tesztelnie kell a teljesítményt, ezek a módosítások hatásának vizsgálatában. 
+A teljesítményre vonatkozó javaslatok szolgáltatás elemzi az adatbázisokat, hogy testreszabott javaslatokat hozzon létre a jobb teljesítmény érdekében. A javaslatok létrehozásához az elemzés különböző adatbázis-jellemzőket vizsgál, beleértve a sémát. Engedélyezze [](concepts-query-store.md) a lekérdezési tárolót a kiszolgálón a teljesítményre vonatkozó javaslatok szolgáltatás teljes körű kihasználásához. A teljesítményre vonatkozó javaslat megvalósítása után tesztelje a teljesítményt a változások hatásának kiértékeléséhez. 
 
 ## <a name="permissions"></a>Engedélyek
 A Teljesítménnyel kapcsolatos javaslatok funkcióval futtatott elemzéshez **Tulajdonos** vagy **Közreműködő** jogosultság szükséges.
@@ -25,29 +25,30 @@ A Teljesítménnyel kapcsolatos javaslatok funkcióval futtatott elemzéshez **T
 ## <a name="performance-recommendations"></a>Teljesítménnyel kapcsolatos javaslatok
 A [Teljesítménnyel kapcsolatos javaslatok](concepts-performance-recommendations.md) funkció elemzi a szerveren futó számítási feladatokat a potenciálisan javítható teljesítményű indexek azonosításához.
 
-Nyissa meg **teljesítménnyel kapcsolatos javaslatok** származó a **intelligens teljesítmény** a menüsávon a PostgreSQL-kiszolgáló az Azure portál oldalán szakaszában.
+Nyissa meg a **teljesítményre vonatkozó javaslatokat** a PostgreSQL-kiszolgáló Azure Portal lapjának menüsorának **intelligens teljesítmény** szakaszában.
 
 ![A Teljesítménnyel kapcsolatos javaslatok kezdőlapja](./media/concepts-performance-recommendations/performance-recommendations-page.png)
 
-Válassza ki **elemzés** és a egy adatbázis, amely megkezdi az elemzés válassza. Attól függően, a számítási feladatok a th elemzés végrehajtásához több percig is eltarthat. Amikor az elemzés elkészült, a portálon megjelenik egy értesítés. Elemzés az adatbázis egy részletes vizsgálatot hajt végre. Ajánlott csúcsidőn kívüli időszakokban elemzését. 
+Válassza az elemzés lehetőséget, és válasszon egy adatbázist, amely megkezdi az elemzést. A számítási feladattól függően a th elemzés több percet is igénybe vehet. Amikor az elemzés elkészült, a portálon megjelenik egy értesítés. Az elemzés az adatbázis mélyreható vizsgálatát végzi. Javasoljuk, hogy az elemzést az időszakon kívüli időszakok alatt végezze el. 
 
-A **javaslatok** ablakban megjelennek a javaslatok listája, ha bármelyik találhatók.
+A **javaslatok** ablakban megjelennek a javaslatok listája, ha vannak ilyenek.
 
-![Teljesítmény javaslatok új lap](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+![Teljesítményre vonatkozó javaslatok – új oldal](./media/concepts-performance-recommendations/performance-recommendations-result.png)
 
-Javaslatok a rendszer nem alkalmazza automatikusan. A javaslat alkalmazása, a lekérdezés szövegének másolása, és futtassa azt az ügyfél által választott. Tesztelje a vágólapra, és értékelheti ki az ajánlás figyelése. 
+A javaslatok nem lesznek automatikusan alkalmazva. A javaslat alkalmazásához másolja a lekérdezés szövegét, és futtassa azt a választott ügyfélről. A javaslat kiértékeléséhez ne felejtse el tesztelni és figyelni. 
 
-## <a name="recommendation-types"></a>Az ajánlás típusok
+## <a name="recommendation-types"></a>Javaslatok típusai
 
-Jelenleg két típusú ajánlások támogatottak: *Index létrehozása* és *Drop Index*.
+Jelenleg két típusú javaslat támogatott: *Index* és *drop index*létrehozása
 
-### <a name="create-index-recommendations"></a>Ajánlott indexek létrehozása
-*Index létrehozása* ajánlások javaslatot a leggyakrabban a számítási feladat futtatható vagy időigényes lekérdezések felgyorsításához új indexeket. Ez az ajánlás típusához [Query Store](concepts-query-store.md) engedélyezni kell. Query Store lekérdezés adatokat gyűjt, és az elemzés segítségével győződjön meg arról, a javaslat részletes lekérdezési modul és a gyakoriság statisztikák biztosít.
+### <a name="create-index-recommendations"></a>Tárgymutató-javaslatok létrehozása
+Az indexelési javaslatok alapján új indexek *hozhatók létre* , amelyek felgyorsítják a számítási feladatok leggyakrabban futtatott vagy időigényes lekérdezéseit. Ehhez az ajánlási típushoz engedélyezni kell a [query Store](concepts-query-store.md) -t. A lekérdezési tároló gyűjti a lekérdezési adatokat, és megadja az elemzés által a javaslat végrehajtásához használt részletes lekérdezési futtatókörnyezetet és gyakorisági statisztikát.
 
-### <a name="drop-index-recommendations"></a>Drop Index javaslatok
-Amellett, hogy észlelni a hiányzó indexeket, Azure Database for PostgreSQL elemzi a meglévő indexeket teljesítményét. A ritkán használt vagy redundáns index esetén az elemző azt javasolja, eldobja.
+### <a name="drop-index-recommendations"></a>Tárgymutató-javaslatok eldobása
+A hiányzó indexek észlelése mellett Azure Database for PostgreSQL elemzi a meglévő indexek teljesítményét. Ha egy indexet ritkán használnak vagy redundánsak, az analizátor eldobását javasolja.
 
-
+## <a name="considerations"></a>Megfontolandó szempontok
+* A teljesítményre vonatkozó javaslatok [olvasási replikák](concepts-read-replicas.md)esetén nem érhetők el.
 ## <a name="next-steps"></a>További lépések
 - További információk az Azure Database for PostgreSQL [monitoringjához és finomhangolásához](concepts-monitoring.md).
 

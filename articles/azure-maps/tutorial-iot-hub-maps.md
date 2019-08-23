@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 853d7f7bf9950640a824eee4ae3e044265b518f7
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 5345bbf2514c8b06ab80d4563227725a398f9407
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016968"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898342"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>A IoT térbeli elemzés megvalósítása Azure Maps használatával
 
@@ -290,6 +290,10 @@ Az oktatóanyagban használt Azure Maps API-k megismeréséhez lásd:
 A Azure Maps REST API-k teljes listájáért lásd:
 
 * [Azure Maps REST API-k](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
+
+A IoT Plug and Play további tudnivalókért lásd:
+
+* [IoT Plug and Play](https://docs.microsoft.com/azure/iot-pnp)
 
 A IoT Azure minősítéssel rendelkező eszközök listájának lekéréséhez látogasson el a következő webhelyre:
 

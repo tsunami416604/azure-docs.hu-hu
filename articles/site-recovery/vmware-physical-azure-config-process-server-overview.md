@@ -1,55 +1,55 @@
 ---
-title: Az Azure Site Recovery konfigurációs, folyamat, és fő célkiszolgálók |} A Microsoft Docs
-description: Ez a cikk áttekintést a konfigurációt, a folyamat, valamint a fő célkiszolgálókat, ha állít be vészhelyreállítást helyszíni VMware virtuális gépek az Azure-bA az Azure Site Recovery használatával
+title: Tudnivalók a Azure Site Recovery konfigurációról, folyamatról és fő célkiszolgálóról | Microsoft Docs
+description: Ez a cikk áttekintést nyújt azokról a konfigurációs, feldolgozási és fő célkiszolgáló-kiszolgálókról, amelyek a helyszíni VMware virtuális gépek vész-helyreállításának beállításakor az Azure-ba Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 8b3815fc9dc44484779a70b51ebff4802265d53a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d835eda044c2a6d1e0e7c678073711e45fde7395
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417737"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972143"
 ---
-# <a name="about-site-recovery-components-configuration-process-master-target"></a>Tudnivalók a Site Recovery-összetevők (konfigurációs, folyamat, fő célkiszolgáló)
+# <a name="about-site-recovery-components-configuration-process-master-target"></a>Tudnivalók Site Recovery összetevőkről (konfiguráció, folyamat, fő cél)
 
-Ez a cikk ismerteti a konfiguráció, a folyamat, valamint a VMware virtuális gépek és fizikai kiszolgálók replikálása az Azure-ban használt fő célkiszolgálókat a [Site Recovery](site-recovery-overview.md) szolgáltatás.
+Ez a cikk a VMware virtuális gépek és fizikai kiszolgálók Azure-ba történő replikálásához használt konfigurációs, folyamat-és fő célkiszolgáló-kiszolgálókat ismerteti [site Recovery](site-recovery-overview.md) szolgáltatással.
 
 ## <a name="configuration-server"></a>Konfigurációs kiszolgáló
 
-A helyszíni VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása, szüksége lesz egy Site Recovery konfigurációs kiszolgáló üzembe helyezte a helyszínen.
+A helyszíni VMware virtuális gépek és fizikai kiszolgálók vész-helyreállításához a helyszínen üzembe helyezett Site Recovery konfigurációs kiszolgálóra van szükség.
 
-**Beállítás** | **Részletek** | **Hivatkozások**
+**Beállítás** | **Részletek** | **Linkek**
 --- | --- | ---
-**Összetevők**  | A konfigurációs kiszolgáló gép fut, a helyszíni Site Recovery minden összetevőjét, többek között a konfigurációs kiszolgáló, folyamatkiszolgáló és fő célkiszolgáló.<br/><br/> A konfigurációs kiszolgáló beállításakor a rendszer automatikusan telepíti az összetevők. | [Olvasási](vmware-azure-common-questions.md#configuration-server) a konfigurációs kiszolgáló gyakori kérdések.
-**Szerepkör** | A konfigurációs kiszolgáló koordinálja a helyszíni rendszer és az Azure közötti kommunikációt, és felügyeli az adatreplikációt. | További információ az architektúrát [VMware](vmware-azure-architecture.md) és [fizikai kiszolgáló](physical-azure-architecture.md) vészhelyreállítás az Azure-bA.
-**A VMware követelményeinek** | A helyszíni VMware virtuális gépek vész-helyreállítási telepítse és futtassa a konfigurációs kiszolgáló, egy helyszíni, magas rendelkezésre állású VMware virtuális gép. | [Ismerje meg](vmware-azure-deploy-configuration-server.md#prerequisites) az előfeltételeket.
-**VMware-telepítés** | Azt javasoljuk, hogy a konfigurációs kiszolgáló OVA letöltött sablon használatával helyezze üzembe. Ezzel a módszerrel egy egyszerűen állítható be a konfigurációs kiszolgáló, amely megfelel az összes követelmények és előfeltételek.<br/><br/> Ha valamilyen okból nem tud a VMware virtuális gép üzembe helyezése egy OVA-sablonnal, állíthat be a konfigurációs kiszolgáló gépek manuálisan, a fizikai gépek vészhelyreállítására alább leírt módon. | [Üzembe helyezése](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) OVA-sablonnal.
-**Fizikai kiszolgáló követelmények** | Vész-helyreállítási a helyszíni fizikai kiszolgálókon, akkor a konfigurációs kiszolgáló telepítése manuálisan. | [Ismerje meg](physical-azure-set-up-source.md#prerequisites) az előfeltételeket.
-**Fizikai kiszolgáló telepítése** | Ha VMware virtuális gépként nem telepíthető, telepítheti egy fizikai kiszolgálón. | [Üzembe helyezése](physical-azure-set-up-source.md#set-up-the-source-environment) a konfigurációs kiszolgálót manuálisan.
+**Összetevők**  | A konfigurációs kiszolgáló számítógép az összes helyszíni Site Recovery-összetevőt futtatja, amely tartalmazza a konfigurációs kiszolgálót, a feldolgozási kiszolgálót és a fő célkiszolgáló-kiszolgálót.<br/><br/> A konfigurációs kiszolgáló beállításakor a rendszer az összes összetevőt automatikusan telepíti. | [Olvassa el](vmware-azure-common-questions.md#configuration-server) a konfigurációs kiszolgálóval kapcsolatos gyakori kérdéseket.
+**Szerepkör** | A konfigurációs kiszolgáló koordinálja a helyszíni rendszer és az Azure közötti kommunikációt, és felügyeli az adatreplikációt. | További információ a [VMware](vmware-azure-architecture.md) és a [fizikai kiszolgáló](physical-azure-architecture.md) által az Azure-ba való vész-helyreállítás architektúráján.
+**VMware-követelmények** | A helyszíni VMware virtuális gépek vész-helyreállításához a konfigurációs kiszolgálót helyszíni, magasan elérhető VMware virtuális gépre kell telepítenie és futtatnia. | [További](vmware-azure-deploy-configuration-server.md#prerequisites) információ az előfeltételekről.
+**VMware üzemelő példány** | Javasoljuk, hogy a konfigurációs kiszolgálót egy letöltött PETESEJT-sablonnal telepítse. Ez a módszer egyszerűen beállítható egy olyan konfigurációs kiszolgáló beállítására, amely megfelel az összes követelménynek és előfeltételnek.<br/><br/> Ha valamilyen okból kifolyólag nem tudja telepíteni a VMware virtuális gépet egy PETESEJT-sablonnal, manuálisan is beállíthatja a konfigurációs kiszolgáló-gépeket, az alábbiakban leírtak szerint a fizikai gép vész-helyreállítási feladataihoz. | [Üzembe helyezés](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) petesejt-sablonnal.
+**Fizikai kiszolgáló követelmények** | A helyszíni fizikai kiszolgálókon a vész-helyreállításhoz manuálisan kell telepíteni a konfigurációs kiszolgálót. | [További](physical-azure-set-up-source.md#prerequisites) információ az előfeltételekről.
+**Fizikai kiszolgáló üzembe helyezése** | Ha nem telepíthető VMware virtuális gépként, akkor telepítheti azt egy fizikai kiszolgálóra. | [Telepítse](physical-azure-set-up-source.md#set-up-the-source-environment) manuálisan a konfigurációs kiszolgálót.
 
 
 ## <a name="process-server"></a>Folyamatkiszolgáló
 
-**Beállítás** | **Részletek** | **Hivatkozások**
+**Beállítás** | **Részletek** | **Linkek**
 --- | --- | ---
-**Üzembe helyezés**  | Vészhelyreállítás és a helyszíni VMware virtuális gépek és fizikai kiszolgálók replikálását, szüksége lesz a folyamatkiszolgálók a helyszínen. Alapértelmezés szerint a folyamatkiszolgáló telepítve van a konfigurációs kiszolgálón üzembe helyezésekor. | [További információk](vmware-azure-architecture.md?#architectural-components).
-**(Helyszíni szerepkör** | -A replikációs adatokat fogad a gépek engedélyezve van a replikáció.<br/> – Optimalizálja a gyorsítótárazás, tömörítés és titkosítás a replikációs adatokat, és elküldi azt az Azure Storage.<br/> -Hajt végre egy a Site Recovery mobilitási szolgáltatás leküldéses telepítéséhez a helyszíni VMware virtuális gépek és fizikai kiszolgálókon, amelyet replikálni szeretne.<br/> -Elvégzi a helyszíni gépek automatikus felderítését. | [További információk](vmware-physical-azure-config-process-server-overview.md#process-server). 
-**Szerepkör (feladat-visszavétel az Azure-ból)** | A helyszíni helyről a feladatátvételt követően akkor állíthatja be a folyamatkiszolgáló az Azure-ban, egy Azure virtuális gép feladat-visszavétel kezeléséhez a helyszíni helyre.<br/><br/> A folyamatkiszolgáló az Azure-ban csak átmenetileg létezik. Az Azure virtuális gép feladat-visszavétel befejezése után lehet törölni. | [További információk](vmware-azure-set-up-process-server-azure.md).
-**Méretezés** | Nagyobb telepítések esetén a helyszíni állíthat be további, a horizontális felskálázási folyamatkiszolgáló. További kiszolgálók horizontális felskálázás több replikáló gépek és a replikációs forgalom nagyobb mértékű kezeli a kapacitást.<br/><br/> Áthelyezheti a gépek folyamat két kiszolgáló, annak érdekében, hogy a replikációs forgalom között. | [További](vmware-azure-set-up-process-server-scale.md),
+**Üzembe helyezés**  | A helyszíni VMware virtuális gépek és fizikai kiszolgálók vészhelyzeti helyreállításához és replikálásához helyszíni folyamatra van szükség. Alapértelmezés szerint a rendszer telepíti a Process Servert a konfigurációs kiszolgálóra. | [További információk](vmware-azure-architecture.md?#architectural-components).
+**Szerepkör (helyszíni** | – A replikáláshoz engedélyezett gépekről érkező replikációs adatok fogadása.<br/> – A replikációs adatokat a gyorsítótárazással, tömörítéssel és titkosítással optimalizálja, és elküldi az Azure Storage-nak.<br/> – A Site Recovery mobilitási szolgáltatás leküldéses telepítését végzi a replikálni kívánt helyszíni VMware virtuális gépeken és fizikai kiszolgálókon.<br/> -A helyszíni gépek automatikus felderítését végzi. | [További információk](vmware-physical-azure-config-process-server-overview.md#process-server). 
+**Szerepkör (feladat-visszavétel az Azure-ból)** | A helyszíni helyről történő feladatátvétel után az Azure-beli Process Servert egy Azure-beli virtuális gépként állíthatja be a helyszíni helyre történő feladat-visszavétel kezeléséhez.<br/><br/> Az Azure-beli Process Server ideiglenes. Az Azure-beli virtuális gép a feladat-visszavétel befejezése után törölhető. | [További információk](vmware-azure-set-up-process-server-azure.md).
+**Méretezés** | A helyszíni nagyobb telepítések esetén további, kibővíthető folyamat-kiszolgálókat is beállíthat. A további kiszolgálók kibővítik a kapacitást, így nagyobb számú replikáló gépet kezelnek, és nagyobb mennyiségű replikációs forgalmat bonyolítanak le.<br/><br/> A gépeket áthelyezheti két folyamat kiszolgálója között a replikálási forgalom terheléselosztásához. | [További információ](vmware-azure-set-up-process-server-scale.md)
 
 
 ## <a name="master-target-server"></a>Fő célkiszolgáló
 
 A fő célkiszolgáló az Azure-ból történő feladat-visszavétel során kezeli a replikációs adatokat.
 
-- Ez a konfigurációs kiszolgálón alapértelmezés szerint telepítve van.
-- Nagyméretű környezetekben hozzáadhat egy további, különálló fő célkiszolgálót a feladat-visszavételhez.
+- Alapértelmezés szerint telepítve van a konfigurációs kiszolgálón.
+- Nagyméretű központi telepítések esetén további, különálló fő célkiszolgáló adható hozzá a feladat-visszavételhez.
 
 
 ## <a name="next-steps"></a>További lépések
-- Tekintse át a [architektúra](vmware-azure-architecture.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók.
-- Tekintse át a [követelmények és előfeltételek](vmware-physical-azure-support-matrix.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA. 
+- Tekintse [](vmware-azure-architecture.md) át a VMWare virtuális gépek és fizikai kiszolgálók vész-helyreállítási architektúráját.
+- Tekintse át a VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállításának [követelményeit és](vmware-physical-azure-support-matrix.md) előfeltételeit. 

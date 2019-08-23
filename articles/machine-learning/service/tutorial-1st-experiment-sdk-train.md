@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 17fee1f01bf883aa2a9845fe4f2817fb806056dd
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: aa3a9bdb51e1137cde2ca29e2b5db55ba621cf8c
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516239"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972510"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: Az első ML-modell betanítása
 
@@ -31,11 +31,13 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az egyetlen előfeltétel az előző oktatóanyag, a [telepítési környezet és a munkaterület](tutorial-1st-experiment-sdk-setup.md)futtatása.
+Az egyetlen előfeltétel az oktatóanyag, a [telepítési környezet és a munkaterület](tutorial-1st-experiment-sdk-setup.md)első részének futtatása.
+
+Az oktatóanyag ezen részében az első rész végén megnyitott minta Jupyter jegyzetfüzetben futtatja a kódot. Ez a cikk a jegyzetfüzetben található kódot mutatja be.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Munkaterület összekötése és kísérlet létrehozása
 
-Importálja `Workspace` az osztályt, és töltse be az előfizetési `config.json` adatokat a fájlból az aktuális könyvtárban található JSON-fájlhoz tartozó függvény `from_config().` használatával, de a fájlra mutató elérésiút-paramétert is megadhat. a `from_config(path="your/file/path")`használata. Ha ezt a jegyzetfüzetet a munkaterületen lévő felhőalapú jegyzetfüzet-kiszolgálón futtatja, a fájl automatikusan megjelenik a gyökérkönyvtárban.
+Importálja `Workspace` az osztályt, és töltse be az előfizetési `config.json` adatokat a fájlból az aktuális könyvtárban található JSON-fájlhoz tartozó függvény `from_config().` használatával, de a fájlra mutató elérésiút-paramétert is megadhat. a `from_config(path="your/file/path")`használata. A Felhőbeli jegyzetfüzet-kiszolgálókon a fájl automatikusan megjelenik a gyökérkönyvtárban.
 
 Ha a következő kód további hitelesítést kér, egyszerűen illessze be a hivatkozást egy böngészőben, és adja meg a hitelesítési jogkivonatot.
 

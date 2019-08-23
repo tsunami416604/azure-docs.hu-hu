@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 08/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 85c6ff59b5f73e88c82ee8b788bd9f35d18bc0ed
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b91adc9dd5f221a6d354a98bdc0f4a7fd4483ecb
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697955"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982351"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker hibaelhárítása
 
@@ -136,9 +136,25 @@ Lehet, hogy az App Service lemezterülete megtelt. A lemezterület kijavításá
 
 Nem, a [bot Framework](https://github.com/Microsoft/botbuilder-dotnet) -t nem kell használnia a QnA Maker. QnA Maker azonban a [Azure bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)számos sablonjának egyikét kínálja. Bot Service lehetővé teszi, hogy a gyors intelligens robotfejlesztést keresztül a Microsoft Bot Framework, és hogy fut egy kiszolgáló nélküli környezetben.
 
-### <a name="how-can-i-create-a-bot-with-qna-maker"></a>Hogyan hozhatnak létre a QnA Maker egy robot?
+### <a name="how-can-i-create-a-new-bot-with-qna-maker"></a>Hogyan hozhatok létre egy új robotot a QnA Maker használatával?
 
 Kövesse a [ez](./Tutorials/create-qna-bot.md) Robotjait létrehozása az Azure Bot Service dokumentációjában.
+
+### <a name="how-do-i-use-a-different-knowledge-base-with-an-existing-azure-bot-service"></a>Hogyan használhat egy másik tudásbázist egy meglévő Azure bot Service-szel?
+
+Az alábbi információkra van szüksége a Tudásbázisról:
+
+* Tudásbázis-azonosító.
+* Tudásbázis közzétett végpontjának állomásneve – a közzététel után a **Beállítások** lapon található.
+* A Tudásbázis közzétett végponti kulcsa – a **Beállítások** lapon, a közzététel után. 
+
+Ezekkel az információkkal a Azure Portal a robot app Service-t. A **Beállítások – > konfiguráció – > Alkalmazásbeállítások**területen módosítsa ezeket az értékeket.  
+
+A Tudásbázis Endpoint Key címkéje `QnAAuthkey` az ABS szolgáltatásban található. 
+
+### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>Két vagy több ügyfélalkalmazás is megoszthat egy tudásbázist? 
+
+Igen, a Tudásbázis tetszőleges számú ügyféltől kérdezhető le. Ha úgy tűnik, hogy a Tudásbázis válasza lassú vagy időtúllépést okoz, érdemes lehet frissíteni a tudásbázishoz társított app Service-szolgáltatási szintet.
 
 ### <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>Hogyan ágyazhatom be a QnA Maker szolgáltatást a honlapomba?
 

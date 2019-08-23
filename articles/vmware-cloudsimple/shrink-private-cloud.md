@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 67bb7e0cd8a800c2c2ba87c768739fd573ef6888
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 00d0067fe51efef8efffe31860e16f4530adf3ac
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812210"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972368"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>CloudSimple privát felhő zsugorítása
 
@@ -30,7 +30,7 @@ A privát felhő zsugorodása után a következő feltételeknek kell teljesüln
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="shrink-a-private-cloud"></a>Privát felhő zsugorítása 
+## <a name="shrink-a-private-cloud"></a>Privát felhő zsugorítása
 
 1. [Nyissa meg a CloudSimple portált](access-cloudsimple-portal.md).
 

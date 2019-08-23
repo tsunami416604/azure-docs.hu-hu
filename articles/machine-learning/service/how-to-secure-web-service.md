@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e730e1b5534c4c74734816f5481247e341436b08
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5a2cab9dff4a075545d919cb41e72cf6e446e9d2
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656341"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897316"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Webszolgáltatások biztonságossá tétele az SSL használatával Azure Machine Learning
 
@@ -149,9 +149,9 @@ Ezt követően frissítenie kell a DNS, a web Service mutasson.
   > [!WARNING]
   > Ha a *leaf_domain_label* használatával hozza létre a szolgáltatást a Microsofttól származó tanúsítvánnyal, ne frissítse manuálisan a fürt DNS-értékét. Az értéket automatikusan kell beállítani.
 
-  Frissítse a DNS-t az AK-fürt nyilvános IP-címének **konfiguráció** lapján. (Lásd az alábbi ábrát.) A nyilvános IP-cím olyan erőforrástípus, amely az AK-ügynök csomópontjait és egyéb hálózati erőforrásokat tartalmazó erőforráscsoport alatt jön létre.
+  Frissítse az AK-fürt nyilvános IP-címének DNS-címét a **konfiguráció** lapon a bal oldali ablaktábla **Beállítások** területén. (Lásd az alábbi ábrát.) A nyilvános IP-cím olyan erőforrástípus, amely az AK-ügynök csomópontjait és egyéb hálózati erőforrásokat tartalmazó erőforráscsoport alatt jön létre.
 
-  ![Azure Machine Learning szolgáltatás: Webszolgáltatások biztonságossá tétele SSL használatával](./media/how-to-secure-web-service/aks-public-ip-address.png)
+  [![Azure Machine Learning szolgáltatás: Webszolgáltatások biztonságossá tétele SSL használatával](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>Az SSL-tanúsítvány frissítése
 
@@ -230,9 +230,7 @@ További információkért tekintse meg a következő dokumentációs dokumentum
 
 ## <a name="disable-ssl"></a>SSL letiltása
 
-Az Azure Kubernetes Service-be központilag telepített modellekhez tartozó SSL letiltásához használhatja az SDK-t vagy a parancssori felületet:
-
-**Az SDK használata**
+Ha le szeretné tiltani az SSL-t az Azure Kubernetes szolgáltatásban üzembe helyezett `SslConfiguration` modellhez, hozzon létre egy-t `status="Disabled"`, majd hajtson végre egy frissítést:
 
 ```python
 from azureml.core.compute import AksCompute
@@ -246,12 +244,6 @@ aks_target = AksCompute(ws, clustername)
 ssl_configuration = SslConfiguration(status="Disabled")
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
-```
-
-**A parancssori felület (CLI) használata**
-
-```azurecli
- az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-disable True
 ```
 
 ## <a name="next-steps"></a>További lépések

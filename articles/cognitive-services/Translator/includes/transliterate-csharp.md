@@ -4,20 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f0cf167a391cb14c70edd51832ec83cdda7bab6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 81fb599ca4987adccdb91baa7a74c33ae3af48d4
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968537"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906573"
 ---
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
-* C#7,1 vagy újabb
-* [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
-* [Json.NET NuGet csomag](https://www.nuget.org/packages/Newtonsoft.Json/)
-* [A Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), vagy kedvenc szövegszerkesztőjével
-* Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-net-core-project"></a>Egy .NET Core-projekt létrehozása
 
@@ -76,12 +72,37 @@ public class TransliterationResult
 }
 ```
 
-## <a name="create-a-function-to-transliterate-text"></a>Függvény létrehozása szöveg átbetűzés
+## <a name="get-subscription-information-from-environment-variables"></a>Előfizetési adatok beolvasása környezeti változókból
 
-Hozzon `Program` létre egy nevű `TransliterateTextRequest()`aszinkron függvényt a osztályon belül. Ez a függvény négy argumentumot `subscriptionKey`vesz `host`igénybe: `inputText` `route`,, és.
+Adja hozzá a következő sorokat a `Program` osztályhoz. Ezek a sorok beolvasják az előfizetési kulcsot és a végpontot a környezeti változókból, és hibát jeleznek, ha problémákba ütközik.
 
 ```csharp
-static public async Task TransliterateTextRequest(string subscriptionKey, string host, string route, string inputText)
+private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
+private static readonly string subscriptionKey = Environment.GetEnvironmentVariable(key_var);
+
+private const string endpoint_var = "TRANSLATOR_TEXT_ENDPOINT";
+private static readonly string endpoint = Environment.GetEnvironmentVariable(endpoint_var);
+
+static Program()
+{
+    if (null == subscriptionKey)
+    {
+        throw new Exception("Please set/export the environment variable: " + key_var);
+    }
+    if (null == endpoint)
+    {
+        throw new Exception("Please set/export the environment variable: " + endpoint_var);
+    }
+}
+// The code in the next section goes here.
+```
+
+## <a name="create-a-function-to-transliterate-text"></a>Függvény létrehozása szöveg átbetűzés
+
+Hozzon `Program` létre egy nevű `TransliterateTextRequest()`aszinkron függvényt a osztályon belül. Ez a függvény négy argumentumot `subscriptionKey`vesz `endpoint`igénybe: `inputText` `route`,, és.
+
+```csharp
+static public async Task TransliterateTextRequest(string subscriptionKey, string endpoint, string route, string inputText)
 {
   /*
    * The code for your call to the translation service will be added to this
@@ -129,7 +150,7 @@ Adja hozzá ezt a kódot `HttpRequestMessage`a következőhöz:
 // Set the method to Post.
 request.Method = HttpMethod.Post;
 // Construct the URI and add headers.
-request.RequestUri = new Uri(host + route);
+request.RequestUri = new Uri(endpoint + route);
 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
 request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
@@ -159,15 +180,15 @@ static async Task Main(string[] args)
     // Output languages are defined in the route.
     // For a complete list of options, see API reference.
     // https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate
-    string subscriptionKey = "YOUR_TRANSLATOR_TEXT_KEY_GOES_HERE";
-    string host = "https://api.cognitive.microsofttranslator.com";
     string route = "/transliterate?api-version=3.0&language=ja&fromScript=jpan&toScript=latn";
     string textToTransliterate = @"こんにちは";
-    await TransliterateTextRequest(subscriptionKey, host, route, textToTransliterate);
+    await TransliterateTextRequest(subscriptionKey, endpoint, route, textToTransliterate);
+    Console.WriteLine("Press any key to continue.");
+    Console.ReadKey();
 }
 ```
 
-Megfigyelheti, hogy `Main`a-ben `subscriptionKey`deklarálja `host` `route`,, és a átbetűzés `textToTransliterate`szkriptet.
+Megfigyelheti, hogy `Main`a-ben `subscriptionKey`deklarálja `endpoint` `route`,, és a átbetűzés `textToTransliterate`szkriptet.
 
 ## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
 

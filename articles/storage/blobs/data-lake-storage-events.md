@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: ce132c6a6859156b209a26b5950eb6a509f446fc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5a85e3b16a5a93fedd6a2257f5601b0673f825ad
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657596"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904658"
 ---
 # <a name="tutorial-use-azure-data-lake-storage-gen2-events-to-update-a-databricks-delta-table"></a>Oktatóanyag: Databricks-különbözeti tábla frissítése Azure Data Lake Storage Gen2 események használatával
 
@@ -140,10 +140,9 @@ További információt a fürtök létrehozásáról a [Spark-fürtök az Azure 
 
     spark.conf.set("fs.azure.account.auth.type", "OAuth")
     spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-    spark.conf.set("fs.azure.account.oauth2.client.id", "<appId")
+    spark.conf.set("fs.azure.account.oauth2.client.id", "<appId>")
     spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
     spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant>/oauth2/token")
-    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
 
     adlsPath = 'abfss://data@contosoorders.dfs.core.windows.net/'
     inputPath = adlsPath + dbutils.widgets.get('source_file')
@@ -151,6 +150,9 @@ További információt a fürtök létrehozásáról a [Spark-fürtök az Azure 
     ```
 
     Ez a kód létrehoz egy **source_file**nevű widgetet. Később létrehoz egy Azure-függvényt, amely meghívja ezt a kódot, és átadja egy fájl elérési útját az adott widgetnek.  Ez a kód is hitelesíti a szolgáltatásnevet a Storage-fiókkal, és létrehoz néhány változót, amelyet más cellákban fog használni.
+
+    > [!NOTE]
+    > Éles környezetben érdemes megfontolni a hitelesítési kulcs tárolását Azure Databricks-ben. Ezután adjon hozzá egy megkeresési kulcsot a kódjához a hitelesítési kulcs helyett. <br><br>Például a következő kódrészlet használata helyett: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`, az alábbi kódrészletet fogja használni:. `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` <br><br>Az oktatóanyag elvégzése után tekintse meg a Azure Databricks webhelyén található [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket, ahol megtekintheti a megközelítés példáit.
 
 2. Nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához ebben a blokkban.
 
@@ -309,7 +311,7 @@ Hozzon létre egy Azure-függvényt, amely futtatja a feladatot.
         log.LogInformation(eventGridEvent.Data.ToString());
 
         if (eventGridEvent.EventType == "Microsoft.Storage.BlobCreated" | | eventGridEvent.EventType == "Microsoft.Storage.FileRenamed") {
-            var fileData = ((JObject)(eventGridEvent.Data)) .ToObject<StorageBlobCreatedEventData>();
+            var fileData = ((JObject)(eventGridEvent.Data)).ToObject<StorageBlobCreatedEventData>();
             if (fileData.Api == "FlushWithClose") {
                 log.LogInformation("Triggering Databricks Job for file: " + fileData.Url);
                 var fileUrl = new Uri(fileData.Url);
@@ -382,6 +384,27 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
    A visszaadott tábla a legújabb rekordot jeleníti meg.
 
    ![A legfrissebb rekord megjelenik a táblában](./media/data-lake-storage-events/final_query.png "A legfrissebb rekord megjelenik a táblában")
+
+6. A rekord frissítéséhez hozzon létre egy nevű `customer-order-update.csv`fájlt, illessze be a következő adatokat a fájlba, majd mentse a helyi számítógépre.
+
+   ```
+   InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
+   536371,99999,EverGlow Single,22,1/1/2018 9:01,33.85,20993,Sierra Leone
+   ```
+
+   Ez a CSV-fájl majdnem azonos az előzővel, kivéve, hogy a megrendelés mennyisége a- `228` ból `22`értékre módosult.
+
+7. A Storage Explorerban töltse fel ezt a fájlt a Storage-fiókja **bemeneti** mappájába.
+
+8. Futtassa újra `select` a lekérdezést a frissített különbözeti táblázat megtekintéséhez.
+
+   ```
+   %sql select * from customer_data
+   ```
+
+   A visszaadott tábla a frissített rekordot jeleníti meg.
+
+   ![A frissített rekord megjelenik a táblában](./media/data-lake-storage-events/final_query-2.png "A frissített rekord megjelenik a táblában")
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

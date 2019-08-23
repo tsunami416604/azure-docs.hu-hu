@@ -1,20 +1,20 @@
 ---
 title: 'Oktatóanyag: Hozzon létre egy olyan iOS-alkalmazást, amely egy fényképet készít, és elindítja azt a gördülékeny olvasóban (Swift)'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban létrehoz egy iOS-alkalmazást a semmiből, és hozzáadja a képet az olvasói funkciókhoz.
 services: cognitive-services
-author: MeganRoach
+author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.author: t-meroa
-ms.openlocfilehash: d0e6cf05043c82faa04d530571ad7cacb3a02854
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.author: metan
+ms.openlocfilehash: bdaee97c8c5d7e19076847c5f1f7c07c528c1747
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991070"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899375"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Oktatóanyag: Hozzon létre egy iOS-alkalmazást, amely egy fényképből származó tartalommal (Swift) indítja el a lebilincselő olvasót
 

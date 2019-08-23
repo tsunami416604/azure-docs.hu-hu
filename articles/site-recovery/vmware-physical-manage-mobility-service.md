@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 7cd555f66bb6f65f498f9b3e5db9bbeda0505a8f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0a8b3a8bcfc2aa8270d7be140a94e5b83973f3e5
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384976"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972129"
 ---
 # <a name="manage-mobility-agent-on-protected-machines"></a>A mobilitási ügynök kezelése a védett gépeken
 
@@ -61,7 +61,7 @@ Távolítsa el a felhasználói felületet vagy a parancssorból.
 
 ### <a name="on-a-linux-machine"></a>Linux rendszerű gépen
 1. A Linux rendszerű gépen jelentkezzen be **root** felhasználóként.
-2. A terminálban nyissa meg a/user/local/ASR.
+2. A terminálban nyissa meg a/usr/local/ASR
 3. Futtassa a következő parancsot:
     ```
     uninstall.sh -Y

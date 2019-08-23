@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7838fd30869629298c5b44cc4b3e5c1e5daa7051
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: ef5a605fb0190e67de8b2bb95bbccfd8fd3cf279
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69519996"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906036"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>Oktatóanyag: Signagelive konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -56,8 +56,7 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 Az Azure AD-vel való automatikus Signagelive konfigurálása előtt engedélyeznie kell a SCIM-létesítést a Signagelive-on.
 
-1.  A SCIM-kiépítés konfigurálásához szükséges titkos token beszerzéséhez [Signagelive](mailto:development@signagelive.com) el.
-
+  A SCIM-kiépítés konfigurálásához szükséges titkos token beszerzéséhez [Signagelive](mailto:development@signagelive.com) el.
 
 ## <a name="add-signagelive-from-the-gallery"></a>Signagelive hozzáadása a gyűjteményből
 
@@ -86,7 +85,7 @@ Az Azure AD-vel való automatikus Signagelive konfigurálásához hozzá kell ad
 Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy Signagelive alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
 > [!TIP]
->  Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a BitaBIZ számára, az [Signagelive egyszeri bejelentkezés oktatóanyagában](Signagelive-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+>  Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Signagelive számára, az [Signagelive egyszeri bejelentkezés oktatóanyagában](Signagelive-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
 ### <a name="to-configure-automatic-user-provisioning-for-signagelive--in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Signagelive az Azure AD-ben:
 
@@ -106,7 +105,8 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A rendszergazdai hitelesítő adatok szakaszban ` https://samlapi.signagelive.com/scim/v2` adja meg a **bérlői URL-címet**. A **titkos jogkivonat** mezőben adja meg a mérnöki fejlesztési csapat által megadott **tulajdonosi jogkivonat** értékét. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Signagelive. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Signagelive-fiókja ![rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra a bérlő URL + token](common/provisioning-testconnection-tenanturltoken.png)
+5. A rendszergazdai hitelesítő adatok szakaszban ` https://samlapi.signagelive.com/scim/v2` adja meg a **bérlői URL-címet**. A **titkos jogkivonat** mezőben adja meg a mérnöki fejlesztési csapat által megadott **tulajdonosi jogkivonat** értékét. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Signagelive. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Signagelive-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
 6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
@@ -144,9 +144,9 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz hatókörében meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Signagelive-on végrehajtott összes műveletet ismertetik.
+Ez a művelet elindítja a **Beállítások** szakasz hatókörében meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások. További információ arról, hogy mennyi ideig tart a felhasználók és/vagy csoportok kiépítése, hogy [mennyi ideig](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)tart a felhasználók kiépítése. 
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Signagelive-on végrehajtott összes műveletet ismertetik. További információ: [a felhasználó kiépítési állapotának ellenõrzése](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Az Azure AD-létesítési naplók olvasásához lásd: [jelentéskészítés az automatikus felhasználói fiók](../manage-apps/check-status-user-account-provisioning.md)kiépítés során.
 
 ## <a name="additional-resources"></a>További források
 

@@ -3,30 +3,31 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 06/19/2019
+ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: ffa48d55703347883edf96a0a27ee52d19189976
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935017"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69894127"
 ---
-Ebben a lépésben az erőforráscsoportot és egy Azure SQL Database önálló adatbázist fog létrehozni.
+Ebben a lépésben egy Azure SQL Database önálló adatbázist fog létrehozni. 
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy a tűzfalszabályok azon számítógép nyilvános IP-címének használatára legyenek beállítva, amelyen a jelen cikkben szereplő lépéseket végrehajtja. 
+> Ügyeljen arra, hogy a jelen cikk elvégzéséhez a használni kívánt számítógép nyilvános IP-címét használja a tűzfalszabályok beállításához.
 >
-> További információért lásd: [adatbázis-szintű tűzfalszabály létrehozása](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) vagy a kiszolgáló szintű tűzfalszabály által használt IP-cím meghatározása a számítógépen: [kiszolgáló szintű tűzfal létrehozása](../sql-database-server-level-firewall-rule.md).  
+> További információért lásd: [adatbázis-szintű tűzfalszabály létrehozása](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) vagy a számítógép kiszolgáló szintű tűzfalszabály által használt IP-cím meghatározása: [kiszolgálói szintű tűzfal létrehozása](../sql-database-server-level-firewall-rule.md).  
 
 # <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal használatával.
 
-1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
-2. Válassza az **adatbázisok** lehetőséget, majd válassza a **SQL Database** lehetőséget a **SQL Database létrehozása** lap megnyitásához.
+1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az *Azure SQL* kifejezést a keresőmezőbe.
+2. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A különböző adatbázisokkal kapcsolatos további információkat az **adatbázisok** csempén a **Részletek megjelenítése** lehetőség kiválasztásával tekintheti meg.
+3. Válassza a **Létrehozás**lehetőséget:
 
-   ![Önálló adatbázis létrehozása](../media/sql-database-get-started-portal/create-database-1.png)
+   ![Önálló adatbázis létrehozása](../media/sql-database-get-started-portal/create-single-database.png)
 
 3. Az **alapvető beállítások** lap **projekt részletei** területén írja be vagy válassza ki a következő értékeket:
 

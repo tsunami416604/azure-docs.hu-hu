@@ -16,12 +16,12 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: 7675a22b4b2d8b13524f06f45d6bb805c1e2fad1
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 8f55e2eb3ac7fe2e869b6b1061f6d45d11894ccf
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019137"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905940"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>SSL-tanúsítvány vásárlása és konfigurálása Azure App Servicehoz
 
@@ -139,7 +139,7 @@ Az újragenerálási művelet befejezése után kattintson a **szinkronizálás*
 
 ## <a name="renew-certificate"></a>Tanúsítvány megújítása
 
-Ha bármikor be szeretné kapcsolni a tanúsítvány automatikus megújítását, válassza ki a tanúsítványt a [app Service tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd a bal oldali navigációs menüben kattintson a **beállítások automatikus** megújítása elemre.
+Ha bármikor be szeretné kapcsolni a tanúsítvány automatikus megújítását, válassza ki a tanúsítványt a [app Service tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd a bal oldali navigációs menüben kattintson a **beállítások automatikus** megújítása elemre. Alapértelmezés szerint a App Service tanúsítványok 1 év érvényességi időtartammal rendelkeznek.
 
 Válassza **a** be lehetőséget, majd kattintson a **Mentés**gombra. A tanúsítványok automatikusan megújítják a 60 nappal a lejárat előtt, ha az automatikus megújítás be van kapcsolva.
 

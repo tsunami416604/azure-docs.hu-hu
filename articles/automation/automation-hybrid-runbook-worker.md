@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 015318b1695f76121662b82e94b37de1ddb63b1b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5573eea4e7a5322c762665d2db8e3fbed1f585a1
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952939"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970443"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Erőforrások automatizálása az adatközpontban vagy a felhőben hibrid Runbook-feldolgozók használatával
 
@@ -47,6 +47,7 @@ A Windows Hybrid Runbook Worker telepítéséhez és konfigurálásához két m�
 A hibrid Runbook-feldolgozók üzembe helyezésének megkezdése előtt tekintse át a [hálózat megtervezésével kapcsolatos információkat](#network-planning) . A feldolgozó sikeres üzembe helyezése után tekintse át a [Runbookok futtatása hibrid Runbook](automation-hrw-run-runbooks.md) -feldolgozón című témakört, amelyből megtudhatja, hogyan konfigurálhatja a runbookok a helyszíni adatközpontban vagy más felhőalapú környezetben lévő folyamatok automatizálásához.
 
 A számítógép hozzáadhatók az Automation-fiókban található hibrid Runbook Worker csoporthoz az Automation-runbookok támogatásához, ha ugyanazt a fiókot használja mind a megoldáshoz, mind a hibrid Runbook-feldolgozói csoport tagságához. Ez a funkció a hibrid runbook-feldolgozó 7.2.12024.0-s verziójától érhető el.
+
 ## <a name="remove-a-hybrid-runbook-worker"></a>Hibrid Runbook Worker eltávolítása
 
 Egy vagy több hibrid Runbook-feldolgozót eltávolíthat egy csoportból, vagy eltávolíthatja a csoportot a követelményektől függően. A hibrid Runbook-feldolgozó helyszíni számítógépről való eltávolításához kövesse az alábbi lépéseket:
@@ -106,7 +107,7 @@ Ha proxykiszolgálót használ az ügynök és a Azure Automation szolgáltatás
 
 A hibrid Runbook-feldolgozói szerepkörnek az Automation szolgáltatással való kommunikációhoz a következő portok és URL-címek szükségesek:
 
-* Port: A kimenő internet-hozzáféréshez csak TCP 443 szükséges.
+* Port A kimenő internet-hozzáféréshez csak TCP 443 szükséges.
 * Global URL: *.azure-automation.net
 * US Gov Virginia globális URL-címe: *. azure-automation.us
 * Ügynök szolgáltatás: https://\<munkaterület azonosítója\>. agentsvc.Azure-Automation.net

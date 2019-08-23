@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/02/2019
-ms.openlocfilehash: 0139b3471eb9117830180088498eb14efd6ab661
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 61b646ca1ec5a4826ac6418c1b80b88a89266012
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781304"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972550"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Előre fizetés SQL Database számítási erőforrásokhoz Azure SQL Database fenntartott kapacitással
 
@@ -70,6 +70,10 @@ Bizonyos korlátozásokkal megszakíthatja, átválthatja vagy visszaállíthatj
 ## <a name="vcore-size-flexibility"></a>Virtuális mag méretének rugalmassága
 
 a virtuális mag méretének rugalmassága segít a teljesítmény-és a régión belüli vertikális felskálázásban, a fenntartott kapacitási juttatás elvesztése nélkül. SQL Database fenntartott kapacitással rugalmasan helyezheti át a gyors adatbázisokat a készletek és az önálló adatbázisok között a normál működés (ugyanabban a régióban és teljesítményszint) részeként, a fenntartott kapacitás elvesztése nélkül. Benefit. Ha nem alkalmazott puffert tart fenn a foglalásban, a teljesítménybeli tüskéket hatékonyan kezelheti a költségkeret túllépése nélkül.
+
+## <a name="limitation"></a>Korlátozás
+
+Nem foglalhat le DTU-alapú (alapszintű, standard vagy prémium) SQL-adatbázisokat.
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolat
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 9053866b76ec1cc409c3f00d0af59bf3761d3936
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e5ed60ea59dc8cf19b8f9ca7e96777dbc6980171
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927977"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906061"
 ---
 # <a name="azure-database-security-overview"></a>Az Azure Database biztonsági áttekintése
 
@@ -206,7 +206,7 @@ A SQL Advanced Threat Protection (ATP) fejlett SQL biztonsági képességeket bi
 
 [Az Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) lehetővé teszi a fenyegetések megelőzését, észlelését és kezelését. Integrált biztonsági monitorozást és házirend-kezelést biztosít az Azure-előfizetések között. Segít felderíteni a fenyegetéseket, amelyek egyébként észrevétlenek lehetnek, és a biztonsági megoldások széles körű ökoszisztémával működnek.
 
-A [Security Center](../../security-center/security-center-sql-database.md) a SQL Database az adatvédelmet segíti az összes kiszolgáló és adatbázis biztonságának biztosításával. A Security Center a következőket teheti:
+A [Security Center](../../security-center/security-center-alerts-data-services.md) a SQL Database az adatvédelmet segíti az összes kiszolgáló és adatbázis biztonságának biztosításával. A Security Center a következőket teheti:
 
 - Szabályzatok meghatározása a SQL Database titkosításhoz és a naplózáshoz.
 - SQL Database erőforrások biztonságának figyelése az összes előfizetésében.

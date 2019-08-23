@@ -1,6 +1,6 @@
 ---
-title: Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) a rövid útmutató
-description: 'Gyors útmutató: létrehozása és lekérdezése elosztott táblák, Azure database for PostgreSQL, nagy kapacitású (Citus) (előzetes verzió).'
+title: Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) – gyors útmutató
+description: Gyors útmutató elosztott táblák létrehozásához és lekérdezéséhez Azure Database for PostgreSQL nagy kapacitású (Citus) (előzetes verzió).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,34 +8,34 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: efc3801ab03f739761a41bec754f975fe43dcd8e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6e9e7d884b7580d7655921134a7ab63b0b1b0dd6
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792008"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899991"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Gyors útmutató: Hozzon létre egy Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) az Azure Portalon
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Gyors útmutató: Hozzon létre egy Azure Database for PostgreSQL-nagy kapacitású (Citus) (előzetes verzió) a Azure Portal
 
-Az Azure Database for PostgreSQL egy felügyelt szolgáltatás, amely lehetővé teszi magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, felügyeletét és skálázását a felhőben. Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) kiszolgáló csoportot az Azure portal használatával. Vizsgáljuk meg, hogy elosztott adatokon: a horizontális skálázás táblák történik a csomópontokon, mintául szolgáló adatok bevitele, és több csomóponton végrehajtott lekérdezések futtatása.
+Az Azure Database for PostgreSQL egy felügyelt szolgáltatás, amely lehetővé teszi magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, felügyeletét és skálázását a felhőben. Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Database for PostgreSQL-nagy kapacitású (Citus) (előzetes verziójú) kiszolgálói csoportot a Azure Portal használatával. Tekintse át az elosztott adatmennyiségeket: a csomópontok közötti horizontális skálázást, a mintaadatok betöltését és a több csomóponton futtatott lekérdezések futtatását.
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
-## <a name="create-and-distribute-tables"></a>Létrehozása és terjesztése a táblák
+## <a name="create-and-distribute-tables"></a>Táblák létrehozása és terjesztése
 
-Miután csatlakozott a psql használatával nagy kapacitású koordinátor-csomóponton, néhány alapvető feladatot is elvégezheti.
+Miután csatlakozott a nagy kapacitású koordinátori csomóponthoz a psql használatával, elvégezhet néhány alapvető feladatot.
 
-Nagy kapacitású belüli kiszolgálók van háromféle táblák:
+A nagy kapacitású-kiszolgálókon belül háromféle tábla létezik:
 
-- Elosztott vagy horizontálisan particionált táblák (terjednek a teljesítmény és a párhuzamos feldolgozás méretezés segítségével)
-- Referencia táblák (több példányban karbantartása)
-- Helyi táblákkal (gyakran használt belső felügyeleti táblák)
+- Elosztott vagy felosztott táblák (a teljesítmény és a párhuzamos skálázásának elősegítése érdekében)
+- Hivatkozási táblák (több másolat is karbantartva)
+- Helyi táblák (gyakran használt belső felügyeleti táblákhoz)
 
-Ez a rövid útmutatóban elsősorban az fogunk összpontosítani elosztott táblák és az első ismeri azokat.
+Ebben a rövid útmutatóban elsősorban az elosztott táblákra koncentrálunk, és ismerkedjen meg velük.
 
-Az adatmodell fogunk dolgozni használata egyszerű: a GitHub felhasználói és az esemény adatait. Események közé az elágazásában létrehozása, a git véglegesíti az egy szervezet, és egyéb kapcsolódó.
+A következő adatmodell egyszerű: felhasználó-és esemény-adatok a GitHubról. Az események közé tartozik az elágazás létrehozása, a git-véglegesítés egy szervezettel kapcsolatban, és így tovább.
 
-Miután csatlakozott a psql-jén keresztül, hozzuk létre a táblázatok. A psql-konzol futtatása:
+Miután kapcsolódott a psql-on keresztül, hozzuk létre a táblázatokat. A psql-konzolon futtassa a következőket:
 
 ```sql
 CREATE TABLE github_events
@@ -62,30 +62,30 @@ CREATE TABLE github_users
 );
 ```
 
-A `payload` mezőjében `github_events` egy JSONB datatype adattípusa. JSONB a JSON-adattípus szerepel a Postgres bináris formátum. Az adattípus egyszerűen egy rugalmas séma tárolásához egy oszlopban.
+`payload` A`github_events` mezőhöz JSONB adattípus tartozik. A JSONB a postgres bináris formátumú JSON-adattípusa. Az adattípussal könnyedén tárolhat egy rugalmas sémát egyetlen oszlopban.
 
-Postgres hozhat létre egy `GIN` index, típus, amely indexeli-e minden kulcs és a benne lévő érték. Az index, válik a gyors és egyszerű lekérdezési rendelkező különböző körülmények között. Most pedig hozzon létre néhány indexek, hogy az adatok betöltése előtt. A psql-jének:
+Az postgres létrehozhat egy `GIN` indexet ezen a típuson, amely a benne található összes kulcsot és értéket indexeli. Az indextel gyorsan és egyszerűen lekérdezheti a hasznos adatokat különböző feltételekkel. Nézzük meg, és hozzon létre néhány indexet az adatbetöltése előtt. A psql-ben:
 
 ```sql
 CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-Ezután azt fogja Postgres táblák igénybe a koordinátor-csomóponton, és mondja el nagy kapacitású szegmensre azokat a feldolgozók között. Ehhez egy lekérdezést minden táblához, a kulcs szegmensre fogjuk futtatni azt az. Ebben a példában az események és a felhasználók tábla szegmens küldünk `user_id`:
+Ezután ezeket a postgres táblázatokat a koordinátori csomóponton fogjuk kiadni, és megmondjuk, hogy nagy kapacitású a feldolgozók között. Ehhez le kell futtatni egy lekérdezést minden olyan táblára vonatkozóan, amely megadja, hogy a kulcs a szegmensbe kerüljön. Az aktuális példában az eseményeket és a felhasználók táblát `user_id`is a következőre fogjuk bemutatni:
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
 SELECT create_distributed_table('github_users', 'user_id');
 ```
 
-Készen állunk betölteni az adatokat. A psql-jének továbbra is, rendszerhéj a fájlok letöltésére:
+Készen áll az betöltésre. A psql továbbra is kipróbálhatja a fájlok letöltését:
 
 ```sql
 \! curl -O https://examples.citusdata.com/users.csv
 \! curl -O https://examples.citusdata.com/events.csv
 ```
 
-Ezután az adatok betöltése az a fájlokat az elosztott táblák:
+Ezután töltse be az adatok a fájlokból az elosztott táblákba:
 
 ```sql
 \copy github_events from 'events.csv' WITH CSV
@@ -94,13 +94,13 @@ Ezután az adatok betöltése az a fájlokat az elosztott táblák:
 
 ## <a name="run-queries"></a>Lekérdezések futtatása
 
-Most a visszatöltött azt is, valójában a lekérdezések futtatásának részt. Kezdjük az egyszerű `count (*)` mennyi adatot betöltése sikerült megtekintéséhez:
+Itt az ideje, hogy a szórakoztató rész ténylegesen futtasson néhány lekérdezést. Kezdjük egy egyszerű `count (*)` megtekinteni a betöltött adatmennyiséget:
 
 ```sql
 SELECT count(*) from github_events;
 ```
 
-Szépen működőképes. Térjen vissza a rendezési kicsit az összesítés, egyelőre most nézzük meg néhány lekérdezést. A JSONB belül `payload` oszlop van egy jó kis adatokat, de, eseménytípus alapján változik. `PushEvent` események olyan méretnél, amely tartalmazza a leküldés egyedi véglegesítések számát tartalmazza. Véglegesítések száma óránként összesített számának használhatók:
+Ez szépen működött. Egy kicsit vissza fogunk térni erre a fajta összesítésre, de most nézzük meg néhány más lekérdezést. A JSONB `payload` oszlopon belül van egy jó kis mennyiség, de az esemény típusa alapján változhat. `PushEvent`az események olyan méretet tartalmaznak, amely tartalmazza a leküldés különböző véglegesítő feltételeit. A felhasználható, hogy megkeresse az óránkénti véglegesítés teljes számát:
 
 ```sql
 SELECT date_trunc('hour', created_at) AS hour,
@@ -111,29 +111,29 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Eddig vesz részt a lekérdezések rendelkezik a github\_események kizárólag, de hogy kombinálhatja ezeket az információkat github\_felhasználók. Óta, hogy horizontálisan skálázott felhasználóinak és események az azonos azonosítóval (`user_id`), az egyező felhasználói azonosítók mindkét tábla sorait lesz [védelmicsoport-készletek](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) ugyanazon adatbázis-csomópont, és könnyedén összekapcsolható a szabályzattípussal.
+Eddig a lekérdezések kizárólag a GitHub\_-eseményeket érintették, de ezeket az információkat a GitHub\_-felhasználókkal kombináljuk. Mivel a felhasználókat és az eseményeket ugyanazon az azonosítón (`user_id`) osztottuk fel, a megfelelő felhasználói azonosítókkal rendelkező táblák sorai ugyanazon adatbázis-csomópontokon [helyezkednek](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) el, és könnyedén csatlakoztathatók.
 
-Ha azt csatlakozzon `user_id`, nagy kapacitású is leküldhetik az illesztési végrehajtási párhuzamos végrehajtás szegmensekre munkavégző csomóponton. Például keressük meg felhasználók számára létrehozott tárházak legnagyobb száma:
+Ha csatlakozik a `user_id`szolgáltatáshoz, a nagy kapacitású a munkavégző csomópontokon párhuzamosan hajthatja végre a csatlakozás végrehajtását a szegmensekben. Például keresse meg a legtöbb tárházat létrehozó felhasználókat:
 
 ```sql
-SELECT login, count(*)
-FROM github_events ge
-JOIN github_users gu
-ON ge.user_id = gu.user_id
-WHERE event_type = 'CreateEvent' AND
-      payload @> '{"ref_type": "repository"}'
-GROUP BY login
-ORDER BY count(*) DESC;
+SELECT gu.login, count(*)
+  FROM github_events ge
+  JOIN github_users gu
+    ON ge.user_id = gu.user_id
+ WHERE ge.event_type = 'CreateEvent'
+   AND ge.payload @> '{"ref_type": "repository"}'
+ GROUP BY gu.login
+ ORDER BY count(*) DESC;
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az előző lépésekben létrehozott egy kiszolgálócsoport Azure-erőforrásokat. Ha várhatóan nincs ezekre az erőforrásokra a későbbiekben szüksége, a kiszolgálócsoport törlése. Nyomja le az **törlése** gombra a **áttekintése** a kiszolgálócsoport oldalán. Amikor a rendszer kéri, egy előugró oldalon, erősítse meg a kiszolgálói csoport nevére, majd kattintson az utolsó **törlése** gombra.
+Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsoport számára. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálót. A kiszolgálócsoport **Áttekintés** lapján kattintson a **Törlés** gombra. Amikor a rendszer rákérdez egy előugró oldalra, erősítse meg a kiszolgálócsoport nevét, és kattintson a végleges **Törlés** gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a gyors útmutatóból megtudhatta, hogyan lehet kiépíteni egy nagy kapacitású (Citus) kiszolgálócsoport. A psql-jének csatlakozik, létrehozott egy sémát és elosztott adatok.
+Ebből a rövid útmutatóból megtudhatta, hogyan építhet ki egy nagy kapacitású-(Citus-) kiszolgáló csoportot. Csatlakoztatta azt a psql-hoz, létrehozott egy sémát és egy elosztott adatkészletet.
 
-Ezután az oktatóanyag egy méretezhető, több-bérlős alkalmazások létrehozásához.
+Ezután kövessen egy oktatóanyagot a méretezhető több-bérlős alkalmazások létrehozásához.
 > [!div class="nextstepaction"]
-> [Több-Bérlős adatbázis tervezése](https://aka.ms/hyperscale-tutorial-multi-tenant)
+> [Több-bérlős adatbázis tervezése](https://aka.ms/hyperscale-tutorial-multi-tenant)

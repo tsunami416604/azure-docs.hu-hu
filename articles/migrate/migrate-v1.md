@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7cf87c3a146f51666a2c24c7cd0d6e9425159225
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228932"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905233"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>A Azure Migrate korábbi verziójának használata
 
@@ -78,7 +78,7 @@ Az értékelésben az Azure használatához szükséges állapotnézet az egyes 
 
 **Készenlét** | **Állapot** | **Részletek**
 --- | --- | ---
-Készen áll az Azure-beli használatra | Nincsenek kompatibilitási problémák. A gép áttelepíthető az Azure-ba, és az Azure-ban teljes körű Azure-támogatást fog betölteni. | A kész virtuális gépekhez az Azure Migrate javasol egy virtuálisgép-méretet az Azure-ban.
+Azure-beli használatra kész | Nincsenek kompatibilitási problémák. A gép áttelepíthető az Azure-ba, és az Azure-ban teljes körű Azure-támogatást fog betölteni. | A kész virtuális gépekhez az Azure Migrate javasol egy virtuálisgép-méretet az Azure-ban.
 Feltételesen készen áll az Azure-beli használatra | Előfordulhat, hogy a gép az Azure-ban indul el, de nem rendelkezik teljes körű Azure-támogatással. Például egy olyan gép, amelyen az Azure nem támogatja a Windows Server régebbi verzióját. | A Azure Migrate ismerteti a készültségi problémákat, és szervizelési lépéseket tesz lehetővé.
 Nem áll készen az Azure-beli használatra |  A virtuális gép nem indul el az Azure-ban. Ha például egy virtuális gépen 4 TB-nál több lemez található, az nem üzemeltethető az Azure-ban. | A Azure Migrate ismerteti a készültségi problémákat, és szervizelési lépéseket tesz lehetővé.
 A kompatibilitás ismeretlen | Azure Migrate nem tudja azonosítani az Azure-felkészültséget, általában azért, mert az adatforrások nem érhetők el.
@@ -107,11 +107,11 @@ A rendszer a következő logikát használja.
 
 **Operációs rendszer** | **Részletek** | **Készenlét**
 --- | --- | ---
-Windows Server 2016 és minden SPs | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
-Windows Server 2012 R2 és minden SPs | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
-Windows Server 2012 és minden SPs | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
-Windows Server 2008 R2 és minden SPs | Az Azure teljes körű támogatást biztosít.| Készen áll az Azure-beli használatra
-Windows Server 2008 (32 bites és 64 bites) | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
+Windows Server 2016 és minden SPs | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
+Windows Server 2012 R2 és minden SPs | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
+Windows Server 2012 és minden SPs | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
+Windows Server 2008 R2 és minden SPs | Az Azure teljes körű támogatást biztosít.| Azure-beli használatra kész
+Windows Server 2008 (32 bites és 64 bites) | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
 Windows Server 2003, 2003 R2 | Támogatás nélkül, és az Azure-támogatáshoz [egyéni támogatási szerződés (CSA)](https://aka.ms/WSosstatement) szükséges. | Feltételesen készen áll az Azure használatára, érdemes lehet frissíteni az operációs rendszert az Azure-ba való Migrálás előtt.
 Windows 2000, 98, 95, NT, 3.1, MS-DOS | Nem támogatott. Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. | Az Azure-ra feltételesen készen áll, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert.
 Windows-ügyfél 7, 8 és 10 | Az Azure csak a [Visual Studio](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) -előfizetéshez nyújt támogatást. | Feltételesen készen áll az Azure-beli használatra
@@ -119,7 +119,7 @@ Windows 10 Pro asztali verzió | Az Azure támogatást nyújt a több- [bérlős
 Windows Vista, XP Professional | Nem támogatott. Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. | Az Azure-ra feltételesen készen áll, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert.
 Linux | Az Azure támogatja ezeket a [Linux operációs rendszereket](../virtual-machines/linux/endorsed-distros.md). Más Linux operációs rendszerek is elindíthatók az Azure-ban, de javasoljuk, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert egy támogatott verzióra. | Készen áll az Azure-ra, ha a verziót jóváhagyták.<br/><br/>Feltételesen üzemkész, ha a verzió nincs támogatva.
 Egyéb operációs rendszerek<br/><br/> Például: Oracle Solaris, Apple Mac OS stb., FreeBSD stb. | Az Azure nem támogatja ezeket az operációs rendszereket. A gép elindítható az Azure-ban, de az Azure nem biztosít operációsrendszer-támogatást. | Az Azure-ban feltételesen készen áll arra, hogy az Azure-ba való Migrálás előtt telepítsen egy támogatott operációs rendszert.  
-Az operációs rendszer  vCenter Serverként van megadva | A Azure Migrate ebben az esetben nem tudja azonosítani az operációs rendszert. | Ismeretlen készültség. Győződjön meg arról, hogy a virtuális gépen futó operációs rendszer támogatott az Azure-ban.
+Az operációs rendszer vCenter Serverként van megadva | A Azure Migrate ebben az esetben nem tudja azonosítani az operációs rendszert. | Ismeretlen készültség. Győződjön meg arról, hogy a virtuális gépen futó operációs rendszer támogatott az Azure-ban.
 32 bites operációs rendszerek | Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem nyújt teljes körű támogatást. | Feltételesen készen áll az Azure használatára, érdemes lehet a gép operációs rendszerét 32 bites operációs rendszerről 64 bites operációs rendszerre frissíteni az Azure-ba való Migrálás előtt.
 
 
@@ -244,8 +244,7 @@ Az ügynök telepítése Linux rendszerű gépre:
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Az MMA-ügynök telepítése Operations Manager által figyelt gépre
 
-System Center Operations Manager 2012 R2 vagy újabb rendszer által figyelt gépek esetében nincs szükség az MMA-ügynök telepítésére. Service Map integrálódik a Operations Manager MMA-val a szükséges függőségi adatok összegyűjtéséhez. [További információk](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). A függőségi ügynököt telepíteni kell.
-
+A System Center Operations Manager 2012 R2 vagy újabb verziói által monitorozott gépek esetében nincs szükség az MMA-ügynök telepítésére. Service Map integrálódik a Operations Manager MMA-val a szükséges függőségi adatok összegyűjtéséhez. [További információk](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). A függőségi ügynököt telepíteni kell.
 
 ### <a name="install-the-dependency-agent"></a>A függőségi ügynök telepítése
 
@@ -254,15 +253,17 @@ System Center Operations Manager 2012 R2 vagy újabb rendszer által figyelt gé
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- További információ a [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) és [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) operációs rendszerek függőségi ügynökének támogatásáról.
-- [További](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) információ arról, hogyan használhatók a parancsfájlok a függőségi ügynök telepítéséhez.
+- További információ a Windows [](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) és Linux operációs rendszerek függőségi ügynökének támogatásáról.
+- [További](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) információ arról, hogyan használhatók a parancsfájlok a függőségi ügynök telepítéséhez.
 
+>[!NOTE]
+> A függőségi ügynök telepítéséhez szükséges rendszerkövetelmények és módszerek áttekintését ismertető Azure Monitor for VMs cikk a Service Map megoldásra is érvényes.
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Függőségi leképezést tartalmazó csoport létrehozása
 
 1. Az ügynökök telepítése után lépjen a portálra, és kattintson a**gépek** **kezelése** > lehetőségre.
 2. Keresse meg azt a gépet, amelyre az ügynököket telepítette.
-3. A  gép függőségek oszlopának ekkor a következőnek kell megjelennie: **View függőségei**. Az oszlopra kattintva megtekintheti a gép függőségeit.
+3. A gép függőségek oszlopának ekkor a következőnek kell megjelennie: **View függőségei**. Az oszlopra kattintva megtekintheti a gép függőségeit.
 4. A gép függőségi térképe a következő adatokat jeleníti meg:
     - Bejövő (ügyfelek) és kimenő (kiszolgálók) TCP-kapcsolatok a gépről/számítógépről
         - Azok a függő gépek, amelyeken nincs telepítve az MMA és a függőségi ügynök, a portszámok szerint vannak csoportosítva.

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 4130bb746a4faa4907353654d16f7c20c0cc7817
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c48323bb4c8798a0f36d3fda99a4c659187e0e81
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598947"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906373"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Függőségi vizualizáció beállítása az értékeléshez
 
@@ -37,9 +37,9 @@ A függőségi leképezés segítségével megjelenítheti a függőségeket a f
 **Szolgáltatások** | **Megjegyzés**
 --- | ---
 Rendelkezésre állás | A függőségi vizualizáció nem érhető el Azure Governmentban.
-Service Map | A függőségi vizualizáció Service Map megoldást használ Azure Monitor naplókban. [Service Map](../azure-monitor/insights/service-map-configure.md) automatikusan felfedi és megjeleníti a kiszolgálók közötti kapcsolatokat.
-Ügynökök | A függőségi vizualizáció használatához telepítsen néhány ügynököt a leképezni kívánt gépekre:<br/> - [Azure log Analytics](../azure-monitor/platform/log-analytics-agent.md) -ügynök (korábbi nevén Microsoft monitoring Agent (MMA).<br/> – Service Map függőségi ügynököt.<br/><br/> Az ügynök telepítésének automatizálásához használhat olyan központi telepítési eszközt, mint például a System Center Configuration Manager vagy egy partneri eszköz, például a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), amely rendelkezik ügynök-telepítési megoldással Azure Migratehoz.
-Dependency Agent | Tekintse át a [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) és a [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)függőségi ügynökének támogatását.<br/><br/> [További](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) információ a függőségi ügynök telepítéséhez szükséges parancsfájlok használatával.
+Service Map | A függőségi vizualizáció Azure Monitor Service Map megoldást használ. [Service Map](../azure-monitor/insights/service-map.md) automatikusan felfedi és megjeleníti a kiszolgálók közötti kapcsolatokat.
+Ügynökök | A függőségi vizualizáció használatához telepítse a következő ügynököket a leképezni kívánt gépekre:<br/> - [Log Analytics ügynök](../azure-monitor/platform/log-analytics-agent.md) ügynöke (korábbi nevén Microsoft monitoring Agent (MMA).<br/> - [Service Map függőségi ügynök](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent).<br/><br/> Az ügynök telepítésének automatizálásához használhat olyan központi telepítési eszközt, mint például a System Center Configuration Manager vagy egy partneri eszköz, például a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), amely rendelkezik ügynök-telepítési megoldással Azure Migratehoz.
+Dependency Agent | Tekintse át a Windows és a Linux [függőségi ügynökének támogatását](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent) .<br/><br/> [További](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) információ a függőségi ügynök telepítéséhez szükséges parancsfájlok használatával.
 Log Analytics ügynök (MMA) | [További](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent) információ az MMA telepítési módszereiről.<br/><br/> System Center Operations Manager 2012 R2 vagy újabb rendszer által figyelt gépek esetében nem kell telepítenie az MMA-ügynököt. A Service Map a Operations Managersal integrálódik. Az integrációt az [itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)található útmutatás használatával engedélyezheti. Vegye figyelembe azonban, hogy a függőségi ügynöknek telepítve kell lennie ezekre a gépekre.<br/><br/> [Tekintse át](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) a log Analytics ügynök által támogatott Linux operációs rendszereket.
 Értékelési csoportok | Azok a csoportok, amelyeknek a függőségeit szeretné megjeleníteni, nem tartalmazhatnak 10 rendszernél több gépet. Ha több mint 10 géppel rendelkezik, a függőségek megjelenítéséhez ossza fel őket kisebb csoportokba.
 

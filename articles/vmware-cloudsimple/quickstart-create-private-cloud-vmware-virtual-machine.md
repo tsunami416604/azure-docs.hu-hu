@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4e1642366d41906035e1ba1b7f75d0ad875c739b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8d4712ca57801c15510ffcaf54852ce9287d343b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574597"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972396"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>VMware virtuális gépek létrehozása a saját felhőben
 
@@ -143,7 +143,7 @@ A CloudSimple-portál hálózati lapjai lehetővé teszik a tűzfalak és a virt
 
     ![Nyilvános IP-cím](media/quick-create-pc-public-ip.png)
 
-A nyilvános IP-cím lefoglalásának feladata megkezdődik. A feladat állapotát a **tevékenység > feladatok** oldalon tekintheti meg. A foglalás befejezésekor az új bejegyzés megjelenik a nyilvános IP-címek lapon. 
+A nyilvános IP-cím lefoglalásának feladata megkezdődik. A feladat állapotát a **tevékenység > feladatok** oldalon tekintheti meg. A foglalás befejezésekor az új bejegyzés megjelenik a nyilvános IP-címek lapon.
 
 Azt a virtuális gépet, amelyhez meg kell feleltetni ezt az IP-címet, konfigurálni kell a fent megadott helyi címmel. Az IP-cím konfigurálására szolgáló eljárás a virtuális gép operációs rendszerére vonatkozik. A megfelelő eljáráshoz olvassa el a virtuális gép operációs rendszerének dokumentációját.
 
@@ -200,12 +200,12 @@ Indítsa el a 80-es portot figyelő http-kiszolgálót.
 python2.7 -m SimpleHTTPServer 80
 ```
 
-or
+vagy
 
 ```
 python3 -m http.server 80
 ```
-Nyisson meg egy böngészőt az asztalon, és mutasson a 80-es portra a nyilvános IP-cím megadásához a virtuális gépen található fájlok tallózásához. 
+Nyisson meg egy böngészőt az asztalon, és mutasson a 80-es portra a nyilvános IP-cím megadásához a virtuális gépen található fájlok tallózásához.
 
 ### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>Alapértelmezett CloudSimple tűzfalszabályok a nyilvános IP-címekhez
 

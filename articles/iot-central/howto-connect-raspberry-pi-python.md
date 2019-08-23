@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: bd506bf1210692feb017f3b526c3b6d4bca36004
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c8fd5309f50cfc024083cb8a05d679d04bf112dc
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877428"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972262"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Málna PI összekötése az Azure IoT Central-alkalmazással (Python)
 
@@ -29,6 +29,9 @@ A cikkben szereplő lépések végrehajtásához a következő összetevőkre va
 
 * A mintául szolgáló **Devkits** létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 * A Raspbian operációs rendszert futtató málna PI-eszköz. A málna PI-nek képesnek kell lennie az internethez való kapcsolódásra. További információ: [a málna PI beállítása](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
+
+> [!TIP]
+> A málna PI-eszközök beállításával és csatlakozásával kapcsolatos információkért látogasson el [a málna PI használatába](https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi)
 
 ## <a name="sample-devkits-application"></a>**Példa Devkits** alkalmazásra
 
@@ -63,12 +66,37 @@ A következő lépések azt ismertetik, hogyan töltheti le és konfigurálhatja
 * Telemetria és tulajdonságértékek küldése az Azure IoT Centralnak.
 * Válaszol az Azure IoT Centralban végrehajtott módosítások beállítására.
 
-Az eszköz konfigurálásához [kövesse a githubon a lépésenkénti útmutatót](https://github.com/Azure/iot-central-firmware/blob/master/RaspberryPi/README.md).
+1. Kapcsolódjon a málna PI-ből származó rendszerhéj-környezethez, akár a málna PI Desktopból, akár távolról SSH használatával.
 
-1. Az eszköz konfigurálásakor az eszköz elkezdi a telemetria-mérések küldését az Azure IoT Centralba.
+1. Futtassa a következő parancsot a IoT Central Python-ügyfél telepítéséhez:
+
+    ```sh
+    pip install iotc
+    ```
+
+1. Töltse le a Python-kód mintáját:
+
+    ```sh
+    curl -O https://raw.githubusercontent.com/Azure/iot-central-firmware/master/RaspberryPi/app.py
+    ```
+
+1. Szerkessze `app.py` a letöltött fájlt, és `DEVICE_ID`cserélje le `SCOPE_ID`a, `PRIMARY/SECONDARY device KEY` , és helyőrzőket a korábban feljegyzett kapcsolatok értékekre. Mentse a módosításokat.
+
+    > [!TIP]
+    > A málna PI-ben lévő rendszerhéjban a **Nano** vagy a **VI** szövegszerkesztőt is használhatja.
+
+1. A minta futtatásához használja a következő parancsot:
+
+    ```sh
+    python app.py
+    ```
+
+    A málna PI elkezdi telemetria-mérések küldését az Azure IoT Centralba.
+
 1. Az Azure IoT Central alkalmazásban láthatja, hogy a málna PI-on futó kód hogyan működik együtt az alkalmazással:
 
     * A valódi eszköz mérések lapján megtekintheti a málna PI-ból eljuttatott telemetria.
+    * A **Tulajdonságok** lapon megtekintheti a **Die Number** Device tulajdonságot.
     * A **Beállítások** lapon módosíthatja a málna PI beállításait, például a feszültséget és a ventilátor sebességét. Ha a málna PI felismeri a változást, a beállítás szinkronizált értékkéntjelenik meg.
 
 ## <a name="raspberry-pi-device-template-details"></a>Málna PI-eszköz sablonjának részletei

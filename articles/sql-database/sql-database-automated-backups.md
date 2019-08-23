@@ -10,13 +10,14 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 06/27/2019
-ms.openlocfilehash: 1afe8a2e9179c768fd639b4a208de98b0789a53f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+manager: craigg
+ms.date: 08/22/2019
+ms.openlocfilehash: 551c2c02af7b996a34a138586fd91a77a0455d92
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569454"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904324"
 ---
 # <a name="automated-backups"></a>Automatikus biztonsági mentések
 
@@ -32,10 +33,10 @@ Ezeket a biztonsági másolatokat a következő célra használhatja:
 
 - Egy **meglévő adatbázis visszaállítása** a Azure Portal, Azure PowerShell, Azure CLI vagy REST API használatával a megőrzési időszakon belül a korábbi időpontra. Az önálló adatbázisban és a rugalmas készletekben ez a művelet egy új adatbázist fog létrehozni az eredeti adatbázissal megegyező kiszolgálón. Felügyelt példányban ez a művelet létrehozhat egy másolatot az adatbázisról, vagy megegyező vagy eltérő felügyelt példányt ugyanahhoz az előfizetéshez.
   - A biztonsági mentési szabályzat konfigurálásához állítsa be a **[biztonsági mentés megőrzési időtartamát](#how-to-change-the-pitr-backup-retention-period)** 7 – 35 nap között.
-  - A **hosszú távú adatmegőrzési szabályzatot akár 10 évig is** megváltoztathatja önálló adatbázis és rugalmas készleteken [a Azure Portal vagy a](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups)használatával.
+  - A **hosszú távú adatmegőrzési szabályzatot akár 10 évig is** megváltoztathatja önálló adatbázis és rugalmas készleteken [a Azure Portal vagy a](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)használatával.
 - A **törölt adatbázis visszaállítása a törölt** vagy a megőrzési időn belül bármikor. A törölt adatbázis csak ugyanabban a logikai kiszolgálón vagy felügyelt példányban állítható vissza, amelyben az eredeti adatbázis létrejött.
 - **Adatbázis visszaállítása egy másik földrajzi régióba**. A Geo-visszaállítás lehetővé teszi a helyreállítást földrajzi katasztrófa esetén, ha nem fér hozzá a kiszolgálóhoz és az adatbázishoz. Egy új adatbázist hoz létre bármely meglévő kiszolgálón, bárhol a világon.
-- Egy **adott hosszú távú biztonsági másolatból származó adatbázis visszaállítása** önálló adatbázis vagy rugalmas készlet, ha az adatbázist hosszú távú adatmegőrzési HÁZIRENDDEL (ltr) konfigurálták. A LTR lehetővé teszi az adatbázis egy korábbi verziójának visszaállítását [a Azure Portal](sql-database-long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup-using-azure-portal) vagy [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups) segítségével, hogy megfeleljen a megfelelőségi kérésnek, vagy az alkalmazás egy régebbi verzióját futtassa. További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
+- Egy **adott hosszú távú biztonsági másolatból származó adatbázis visszaállítása** önálló adatbázis vagy rugalmas készlet, ha az adatbázist hosszú távú adatmegőrzési HÁZIRENDDEL (ltr) konfigurálták. A LTR lehetővé teszi az adatbázis egy korábbi verziójának visszaállítását [a Azure Portal](sql-database-long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup-using-azure-portal) vagy [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups) segítségével, hogy megfeleljen a megfelelőségi kérésnek, vagy az alkalmazás egy régebbi verzióját futtassa. További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
 - A visszaállítás végrehajtásához tekintse meg [az adatbázis biztonsági másolatokból](sql-database-recovery-using-backups.md)való visszaállítását ismertető témakört.
 
 > [!NOTE]
@@ -46,7 +47,7 @@ Az alábbi példákkal kipróbálhatja a következő műveleteket:
 | | Az Azure Portal | Azure PowerShell |
 |---|---|---|
 | Biztonsági másolatok megőrzésének módosítása | [önálló adatbázis](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-the-azure-portal) <br/> [Felügyelt példány](sql-database-automated-backups.md#change-pitr-for-a-managed-instance) | [önálló adatbázis](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| A biztonsági másolatok hosszú távú megőrzésének módosítása | [Önálló adatbázis](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Felügyelt példány – N/A  | [önálló adatbázis](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups)<br/>Felügyelt példány – N/A  |
+| A biztonsági másolatok hosszú távú megőrzésének módosítása | [Önálló adatbázis](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Felügyelt példány – N/A  | [önálló adatbázis](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Felügyelt példány – N/A  |
 | Adatbázis visszaállítása az adott időpontban | [Önálló adatbázis](sql-database-recovery-using-backups.md#point-in-time-restore) | [Önálló adatbázis](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | Törölt adatbázis visszaállítása | [Önálló adatbázis](sql-database-recovery-using-backups.md#deleted-database-restore-using-the-azure-portal) | [Önálló adatbázis](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Adatbázis visszaállítása az Azure Blob Storage | Önálló adatbázis – N/A <br/>Felügyelt példány – N/A  | Önálló adatbázis – N/A <br/>[Felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
@@ -81,7 +82,7 @@ A PITR hasonlóan a LTR biztonsági mentések földrajzilag redundánsak, és az
 További információ: a [biztonsági másolatok hosszú távú megőrzése](sql-database-long-term-retention.md).
 
 ## <a name="storage-costs"></a>Tárolási költségek
-Az adatbázisok 7 napi automatikus biztonsági másolata alapértelmezés szerint RA-GRS Standard blobtárolóra lesz másolva. A tárolót a heti teljes biztonsági mentésekhez, a napi differenciális biztonsági mentésekhez, illetve a tranzakciónaplók 5 percenként másolt biztonsági másolataihoz használja a rendszer. A tranzakciónapló mérete az adatbázis változásának mennyiségétől függ. Az adatbázis méretének 100%-ával egyenlő minimális tárhelyet többletdíj felszámolása nélkül biztosítjuk. A biztonsági mentési tár ezt meghaladó használata GB/hó díjszabási alapon történik.
+Az önálló adatbázisok esetében az adatbázis méretének 100%-ának megfelelő minimális biztonsági mentési tárterület külön díj nélkül elérhető. Rugalmas készletek esetén a készlethez lefoglalt tárterület 100%-ának megfelelő minimális biztonsági mentési tárterület külön díj nélkül elérhető. A biztonsági mentési tár ezt meghaladó használata GB/hó díjszabási alapon történik. Ez a további felhasználás az egyes adatbázisok munkaterhelésével és méretétől függ.
 
 A tárolási díjszabással kapcsolatos további információkért tekintse [](https://azure.microsoft.com/pricing/details/sql-database/single/) meg az árképzést ismertető oldalt. 
 

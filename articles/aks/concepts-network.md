@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 459c11448280b63bafdfd54c13a6cad5983ef1b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 967ca233169e2a2a213534d5b60bef2e3f44b6a9
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615880"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69969650"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek az AK-ban lévő alk
 
 Az alkalmazásokhoz való hozzáférés engedélyezéséhez, illetve az alkalmazás-összetevők közötti kommunikációhoz a Kubernetes egy absztrakt réteget biztosít a virtuális hálózat számára. A Kubernetes-csomópontok egy virtuális hálózathoz csatlakoznak, és a hüvelyek számára biztosítanak bejövő és kimenő kapcsolatokat. A *Kube-proxy* összetevő minden csomóponton fut, hogy megadja ezeket a hálózati szolgáltatásokat.
 
-A Kubernetes-ben a *szolgáltatások* logikailag csoportosítják a hüvelyeket, amelyek lehetővé teszik a közvetlen hozzáférést egy IP-cím vagy DNS-név és egy adott porton keresztül. A forgalom a terheléselosztó használatával is terjeszthető *.* Az alkalmazások forgalmának összetettebb útválasztási lehetőségeit a *bejövő vezérlőkkel*is megvalósíthatja. A hüvelyek hálózati forgalmának biztonsága és szűrése Kubernetes *hálózati házirendekkel* lehetséges (előzetes verzióban, AK-ban).
+A Kubernetes-ben a *szolgáltatások* logikailag csoportosítják a hüvelyeket, amelyek lehetővé teszik a közvetlen hozzáférést egy IP-cím vagy DNS-név és egy adott porton keresztül. A forgalom a terheléselosztó használatával is terjeszthető. Az alkalmazások forgalmának összetettebb útválasztási lehetőségeit a *bejövő vezérlőkkel*is megvalósíthatja. A hüvelyek hálózati forgalmának biztonsága és szűrése Kubernetes *hálózati házirendekkel* lehetséges (előzetes verzióban, AK-ban).
 
 Az Azure platform emellett segít leegyszerűsíteni az AK-fürtök virtuális hálózatkezelését. Kubernetes terheléselosztó létrehozásakor létrejön és konfigurálva lesz az alapul szolgáló Azure Load Balancer erőforrás. Amikor hálózati portokat nyit meg a hüvelyekhez, a megfelelő Azure hálózati biztonsági csoportra vonatkozó szabályokat konfigurálja a rendszer. A HTTP-alkalmazások útválasztásához az Azure a *külső DNS-* t is konfigurálhatja, mivel az új bejövő útvonalak vannak konfigurálva.
 
@@ -55,7 +55,7 @@ Az alkalmazások számítási feladatainak hálózati konfigurációjának leegy
 
 A terheléselosztó és szolgáltatások IP-címe dinamikusan rendelhető hozzá, vagy megadhat egy meglévő statikus IP-címet is. A belső és a külső statikus IP-címek is hozzárendelhetők. Ez a létező statikus IP-cím gyakran egy DNS-bejegyzéshez van kötve.
 
-A *belső* és *külső* terheléselosztó is létrehozható. A belső terheléselosztó csak privát IP-címet kap, ezért nem érhető el az internetről.
+A *belső* és *külső* terheléselosztó is létrehozható. A belső terheléselosztó csak privát IP-címet kap, ezért nem érhetők el az internetről.
 
 ## <a name="azure-virtual-networks"></a>Azure-alapú virtuális hálózatok
 

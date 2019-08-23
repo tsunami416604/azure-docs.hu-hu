@@ -3,16 +3,16 @@ title: Gyakori hibák elhárítása
 description: Ismerje meg, hogyan lehet elhárítani az Azure-erőforrások Azure Resource Graph használatával történő lekérdezésével kapcsolatos problémákat.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/24/2019
+ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 511d170f90e8ed34b00a3960d084223ec73d99dd
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3c59b5c4b580604c65572364d29d4e5d10a26820
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480552"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900010"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Hibák elhárítása az Azure Resource Graph használatával
 
@@ -60,6 +60,33 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 # View the completed results of the query on all subscriptions
 $response
 ```
+
+### <a name="rest-contenttype"></a>Forgatókönyv Nem támogatott tartalom típusú REST-fejléc
+
+#### <a name="issue"></a>Probléma
+
+Az Azure Resource Graph REST API lekérdező ügyfelek megkapják a _500_ (belső kiszolgálóhiba) kapott választ.
+
+#### <a name="cause"></a>Ok
+
+Az Azure Resource Graph REST API csak `Content-Type` az **alkalmazás-vagy JSON-** t támogatja. Néhány REST-eszköz vagy-ügynök alapértelmezett értéke **text/plain**, amelyet a REST API nem támogat.
+
+#### <a name="resolution"></a>Megoldás:
+
+Ellenőrizze, hogy az Azure Resource Graph lekérdezéséhez használt eszköz vagy ügynök rendelkezik-e az `Content-Type` alkalmazáshoz **/JSON-** hoz konfigurált REST API fejléctel.
+### <a name="rest-403"></a>Forgatókönyv Nincs olvasási engedélye a listában szereplő összes előfizetéshez
+
+#### <a name="issue"></a>Probléma
+
+Azok az ügyfelek, akik explicit módon átadják egy Azure Resource Graph-lekérdezéssel rendelkező előfizetések listáját, _403_ (tiltott) választ kapnak.
+
+#### <a name="cause"></a>Ok
+
+Ha az ügyfél nem rendelkezik olvasási engedéllyel az összes megadott előfizetéshez, a rendszer a megfelelő biztonsági jogosultságok hiánya miatt megtagadja a kérelmet.
+
+#### <a name="resolution"></a>Megoldás:
+
+Vegyen fel legalább egy előfizetést az előfizetések listájában, amelyet a lekérdezést futtató ügyfélnek legalább olvasási hozzáféréssel kell rendelkezniük. További információ: [engedélyek az Azure Resource Graph-ban](../overview.md#permissions-in-azure-resource-graph).
 
 ## <a name="next-steps"></a>További lépések
 

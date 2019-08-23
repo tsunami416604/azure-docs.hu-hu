@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5095e680eb7fd33d28acb2d187f83d86db1b46bf
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 8e535fc581e186abd032206c2bbf78623d95967f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656625"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899770"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Service Fabric alkalmazás felügyelt identitásának kihasználása az Azure-szolgáltatások eléréséhez (előzetes verzió)
 
@@ -23,7 +23,7 @@ Service Fabric alkalmazások a felügyelt identitásokat használhatják a Azure
 > A felügyelt identitás az erőforrást tartalmazó előfizetéshez társított Azure AD-bérlőben az Azure-erőforrás és egy egyszerű szolgáltatásnév közötti társítást jelöli. A Service Fabric kontextusában a felügyelt identitások csak az Azure-erőforrásként üzembe helyezett alkalmazások esetében támogatottak. 
 
 > [!IMPORTANT]
-> A Service Fabric alkalmazás felügyelt identitásának használata előtt az ügyfélalkalmazás számára hozzáférést kell biztosítani a védett erőforráshoz. Tekintse meg az Azure [ad-hitelesítést támogató Azure-szolgáltatások](/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources) listáját a támogatás megkereséséhez, majd a megfelelő szolgáltatás dokumentációjában, amely alapján az identitás hozzáférést biztosít a fontos erőforrásokhoz. 
+> A Service Fabric alkalmazás felügyelt identitásának használata előtt az ügyfélalkalmazás számára hozzáférést kell biztosítani a védett erőforráshoz. Tekintse meg az Azure [ad-hitelesítést támogató Azure-szolgáltatások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) listáját a támogatás megkereséséhez, majd a megfelelő szolgáltatás dokumentációjában, amely alapján az identitás hozzáférést biztosít a fontos erőforrásokhoz. 
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>Hozzáférési jogkivonat beszerzése REST API használatával
 A felügyelt identitáshoz engedélyezett fürtökön a Service Fabric futtatókörnyezet elérhetővé teszi a localhost végpontot, melyet az alkalmazások használhatnak a hozzáférési tokenek beszerzéséhez. A végpont a fürt minden csomópontján elérhető, és elérhető az adott csomóponton lévő összes entitás számára. A jogosult hívók a végpont meghívásával és egy hitelesítési kód bemutatásával kaphatnak hozzáférési jogkivonatokat. a kódot a Service Fabric futtatókörnyezet hozza létre az egyes különböző szervizcsomag-csomagok aktiválásakor, és a szolgáltatási kód csomagjait futtató folyamat élettartamára van kötve.

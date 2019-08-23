@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 2fa9db20554df813e5da94e2bbea122ac6cc9b60
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946534"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899947"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure Security and Compliance Blueprint-háromrétegű IaaS-webalkalmazás az Egyesült Királyság hivatalos tisztviselőjének
 
@@ -186,7 +186,7 @@ Ezeket a virtuális hálózatok a rendszer továbbra is külön erőforrásként
 
 [Irányelvek a Windows Server Active Directory Azure Virtual Machines történő telepítéséhez](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 
-**Active Directory integráció**: A dedikált AD DS architektúra alternatívájaként előfordulhat, hogy az ügyfelek [Azure Active Directory](/azure/architecture/reference-architectures/identity.md) integrációt vagy Active Directoryt szeretnének használni az [Azure-ban egy helyszíni erdőhöz csatlakoztatva](/azure/architecture/reference-architectures/identity.md).
+**Active Directory integráció**: A dedikált AD DS architektúra alternatívájaként előfordulhat, hogy az ügyfelek [Azure Active Directory](/azure/architecture/reference-architectures/identity) integrációt vagy Active Directoryt szeretnének használni az [Azure-ban egy helyszíni erdőhöz csatlakoztatva](/azure/architecture/reference-architectures/identity).
 
 ### <a name="security"></a>Biztonság
 
@@ -200,9 +200,9 @@ Az ügyfelek a felügyelet VNet és Jumpbox való csatlakozáskor is fontolóra 
 
 **IP-címtartományok**: Az architektúra IP-tartományai javasolt tartományok. Javasoljuk, hogy az ügyfelek saját környezetét vegyék figyelembe, és a megfelelő tartományokat használják.
 
-**Hibrid kapcsolat**: A felhőalapú munkaterhelések az Azure VPN Gateway használatával csatlakoznak a helyszíni adatközponthoz az IPSEC VPN-en keresztül. Az ügyfeleknek biztosítaniuk kell, hogy megfelelő VPN Gateway használják az Azure-hoz való kapcsolódásra. Példa – [VPN Gateway Resource Manager-sablon](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). A nagy léptékű, kritikus fontosságú számítási feladatokhoz big data követelményekkel rendelkező ügyfelek a Microsoft Cloud Services szolgáltatással való magánhálózati kapcsolat [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute.md) használatával fontolóra vehetik a hibrid hálózati architektúrát.
+**Hibrid kapcsolat**: A felhőalapú munkaterhelések az Azure VPN Gateway használatával csatlakoznak a helyszíni adatközponthoz az IPSEC VPN-en keresztül. Az ügyfeleknek biztosítaniuk kell, hogy megfelelő VPN Gateway használják az Azure-hoz való kapcsolódásra. Példa – [VPN Gateway Resource Manager-sablon](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). A nagy léptékű, kritikus fontosságú számítási feladatokhoz big data követelményekkel rendelkező ügyfelek a Microsoft Cloud Services szolgáltatással való magánhálózati kapcsolat [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) használatával fontolóra vehetik a hibrid hálózati architektúrát.
 
-**A problémáinak elkülönítése**: Ez a viszonyítási architektúra elkülöníti a virtuális hálózatok a felügyeleti műveletekhez és az üzleti műveletekhez. A különböző virtuális hálózatok és alhálózatok lehetővé teszik a forgalom kezelését, beleértve a bejövő és a kimenő forgalomra vonatkozó korlátozásokat, a [Microsoft Cloud Services és a hálózati biztonsággal kapcsolatos](/azure/architecture/vdc/networking-virtual-datacenter.md) ajánlott eljárások a hálózati szegmensek közötti NSG használatával.
+**A problémáinak elkülönítése**: Ez a viszonyítási architektúra elkülöníti a virtuális hálózatok a felügyeleti műveletekhez és az üzleti műveletekhez. A különböző virtuális hálózatok és alhálózatok lehetővé teszik a forgalom kezelését, beleértve a bejövő és a kimenő forgalomra vonatkozó korlátozásokat, a [Microsoft Cloud Services és a hálózati biztonsággal kapcsolatos](/azure/architecture/vdc/networking-virtual-datacenter) ajánlott eljárások a hálózati szegmensek közötti NSG használatával.
 
 **Erőforrás-kezelés**: Az Azure-erőforrásokat, például a virtuális gépeket, a virtuális hálózatok és a terheléselosztó-t az [Azure-erőforráscsoportok](../../azure-resource-manager/resource-group-overview.md)együttes használatával felügyelheti. Az erőforrás-alapú Access Control szerepkörök minden erőforráscsoport számára hozzárendelhetők, hogy csak a jogosult felhasználók hozzáférését korlátozzák.
 

@@ -4,14 +4,14 @@ description: Erőforrások üzembe helyezése az Azure-ban a Azure Resource Mana
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/12/2019
+ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 93b1b16776bac6cb24996d6fa08a547318802f32
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: bd43e919cc0b2bcf1d130c7e616b7da064abcc65
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853833"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971030"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével
 
@@ -31,7 +31,7 @@ Egy **erőforráscsoporthoz**való üzembe helyezéshez használja az [az Group 
 az group deployment create --resource-group <resource-group-name> --template-file <path-to-template>
 ```
 
-Az előfizetésre való központi telepítéshez használja az [az Deployment Create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create):
+Az előfizetésrevaló központi telepítéshez használja az [az Deployment Create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create):
 
 ```azurecli
 az deployment create --location <location> --template-file <path-to-template>
@@ -133,7 +133,7 @@ A megadott központi telepítésnek sikeresnek kell lennie.
 
 ## <a name="parameters"></a>Paraméterek
 
-A paraméterek értékének átadásához használhat beágyazott paramétereket vagy egy paraméter-fájlt. A cikk előző példái a beágyazott paramétereket mutatják be.
+A paraméterek értékének átadásához használhat beágyazott paramétereket vagy egy paraméter-fájlt.
 
 ### <a name="inline-parameters"></a>Beágyazott paraméterek
 
@@ -172,23 +172,7 @@ A arrayContent. JSON formátum:
 
 Ahelyett, hogy a paramétereket a parancsfájlba beágyazott értékként adja át, előfordulhat, hogy könnyebben használható egy JSON-fájl, amely tartalmazza a paraméter értékeit. A paraméter fájljának helyi fájlnak kell lennie. A külső paraméterek fájljai nem támogatottak az Azure CLI-vel.
 
-A paraméter fájljának a következő formátumúnak kell lennie:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-     "storageAccountType": {
-         "value": "Standard_GRS"
-     }
-  }
-}
-```
-
-Figyelje meg, hogy a parameters (paraméterek) szakasz egy olyan paraméter nevét tartalmazza, amely megegyezik a sablonban definiált paraméterrel (Tárfióktípus). A paraméter értéke tartalmazza a paraméter értékét. A rendszer ezt az értéket automatikusan átadja a sablonnak az üzembe helyezés során. Több paramétert is létrehozhat, majd átadhatja a megfelelő paramétert a forgatókönyvhöz. 
-
-Másolja az előző példát, és mentse egy nevű `storage.parameters.json`fájlként.
+További információ a paraméter fájlról: [Resource Manager-paraméter fájljának létrehozása](resource-manager-parameter-files.md).
 
 Helyi paraméterérték átadásához a paranccsal `@` adjon meg egy Storage. Parameters. JSON nevű helyi fájlt.
 
@@ -198,18 +182,6 @@ az group deployment create \
   --resource-group ExampleGroup \
   --template-file storage.json \
   --parameters @storage.parameters.json
-```
-
-### <a name="parameter-precedence"></a>Paraméter prioritása
-
-A beágyazott paramétereket és a helyi paramétereket is használhatja ugyanabban a telepítési műveletben. Megadhat például néhány értéket a helyi paraméter fájljában, és az üzembe helyezés során további értékeket is hozzáadhat. Ha a paraméter értékét a helyi paraméter fájljában és a beágyazott mezőben is megadja, a beágyazott érték elsőbbséget élvez.
-
-```azurecli
-az group deployment create \
-  --resource-group testgroup \
-  --template-file demotemplate.json \
-  --parameters @demotemplate.parameters.json \
-  --parameters exampleArray=@arrtest.json
 ```
 
 ## <a name="test-a-template-deployment"></a>Sablon központi telepítésének tesztelése

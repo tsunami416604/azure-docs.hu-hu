@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 570429a2d5332e7d951271b36b79d9d16df174c0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: b0345773956a0adc5c7f403195c496a3ea5e6fd6
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535206"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982328"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services és gépi tanulás
 
@@ -65,7 +65,7 @@ A célközönségek általában különbözőek:
 
 A kognitív szolgáltatás egy betanított modellt biztosít Önnek. Ez egy REST API (ok) vagy SDK által elérhetővé teszi az adatok és az algoritmus együttesét. A szolgáltatás a forgatókönyvtől függően percek alatt implementálható.  A kognitív szolgáltatás olyan általános problémákra ad választ, mint például a szöveges vagy az elemek azonosítása a képekben. 
 
-A gépi tanulás olyan folyamat, amely általában hosszabb ideig igényel a sikeres megvalósításhoz. Ez az idő az adatgyűjtés, a tisztítás, az átalakítás, az algoritmus kiválasztása, a modell betanítása és az üzembe helyezés során a kognitív szolgáltatás által biztosított azonos szintű funkciók elérésére szolgál. A gépi tanulás segítségével bármilyen típusú problémára választ kaphat, beleértve a különösen specializált vagy konkrét problémákat. Ezek a gépi tanulási problémák a következők közül egy vagy több ismeretét igénylik: a tárgy, a gépi tanulás és az adatelemzés.
+A gépi tanulás olyan folyamat, amely általában hosszabb ideig igényel a sikeres megvalósításhoz. Ez az idő az adatgyűjtés, a tisztítás, az átalakítás, az algoritmus kiválasztása, a modell betanítása és az üzembe helyezés során a kognitív szolgáltatás által biztosított azonos szintű funkciók elérésére szolgál. A gépi tanulással a nagymértékben specializált és/vagy konkrét problémákra lehet választ adni. A gépi tanulási problémákhoz szükség van a szóban forgó probléma konkrét tárgyára és adataira, valamint az adatelemzési szaktudásra.
 
 ## <a name="what-kind-of-data-do-you-have"></a>Milyen típusú adattípusok vannak?
 

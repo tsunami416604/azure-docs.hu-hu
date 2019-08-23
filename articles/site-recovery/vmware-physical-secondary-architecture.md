@@ -1,23 +1,23 @@
 ---
-title: A VMware-ről/fizikai kiszolgáló vészhelyreállítása az Azure Site Recovery egy másodlagos helyre architektúra |} A Microsoft Docs
-description: Ez a cikk a helyszíni VMware virtuális gépek vagy fizikai Windows/Linux kiszolgálók egy másodlagos VMware-helyről az Azure Site Recovery a vészhelyreállítás során használt összetevőkről és architektúráról áttekintést nyújt.
+title: A VMware/fizikai kiszolgáló vészhelyzeti helyreállításának architektúrája egy másodlagos helyre a Azure Site Recovery használatával | Microsoft Docs
+description: Ez a cikk áttekintést nyújt a helyszíni VMware virtuális gépek vagy fizikai Windows-/Linux-kiszolgálók vész-helyreállítási folyamata során használt összetevőkről és architektúráról egy másodlagos VMware-helyre Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 171a88045531f1fdc01d7046ef0ad8157859d28c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c00e26e6c12835db96c192400c3fe8652534dd4
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418267"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972112"
 ---
-# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>A VMware-ről/fizikai kiszolgáló replikálása egy másodlagos helyszíni helyre architektúra
+# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektúra a VMware/fizikai kiszolgálók replikálásához egy másodlagos helyszíni helyre
 
-Ez a cikk azt ismerteti, architektúrájának és folyamatainak használt mikor beállításához vész-helyreállítási replikációs, feladatátvétel és helyreállítás a helyszíni VMware virtuális gépek (VM) vagy egy másodlagos VMware webhely használja a fizikai Windows/Linux kiszolgálók [Azure Site Recovery](site-recovery-overview.md).
+Ez a cikk a vész-helyreállítási replikáció, a feladatátvétel és a helyszíni VMware virtuális gépek (VM-EK) vagy fizikai Windows-/Linux-kiszolgálók másodlagos VMware-helyre történő helyreállításának beállításakor használt architektúrát és folyamatokat ismerteti [Azure site Recovery ](site-recovery-overview.md).
 
 
 ## <a name="architectural-components"></a>Az architektúra összetevői
@@ -27,7 +27,7 @@ Ez a cikk azt ismerteti, architektúrájának és folyamatainak használt mikor 
 **Azure** | A forgatókönyv üzembe helyezéséhez használja az InMage Scout segédprogramot. | Az InMage Scout beszerzéséhez Azure-előfizetésre van szüksége.<br/><br/> Miután létrehozott egy Site Recovery-tárolót, töltse le az InMage Scoutot, és telepítse a legújabb frissítéseket az üzembe helyezés előkészítéséhez.
 **Folyamatkiszolgáló** | Az elsődleges helyen található | Helyezze üzembe a folyamatkiszolgálót, amely kezeli az adatok gyorsítótárazását, tömörítését és optimalizálását.<br/><br/> Ezenfelül ez az összetevő kezeli a Unified Agent ügynöknek a védeni kívánt gépekre történő leküldéses telepítését.
 **Konfigurációs kiszolgáló** | A másodlagos helyen található | A konfigurációs kiszolgáló végzi az üzemelő példány felügyeleti webhelyen vagy a vContinuum-konzolban végzett felügyeletét, konfigurálását és megfigyelését.
-**vContinuum-kiszolgáló** | Választható. Ugyanoda kell telepíteni, mint a konfigurációs kiszolgálót. | Ez az összetevő elérhetővé tesz egy konzolt, amelyről felügyelheti és figyelheti a védett környezetet.
+**vContinuum-kiszolgáló** | Nem kötelező. Ugyanoda kell telepíteni, mint a konfigurációs kiszolgálót. | Ez az összetevő elérhetővé tesz egy konzolt, amelyről felügyelheti és figyelheti a védett környezetet.
 **Fő célkiszolgáló** | A másodlagos helyen található | A fő célkiszolgáló tárolja a replikált adatokat. Ez fogadja a folyamatkiszolgáló által küldött adatokat, létrehozza a replika gépet a másodlagos helyen, és tárolja az adatmegőrzési pontokat.<br/><br/> Az, hogy hány fő célkiszolgálóra van szükség, attól függ, hogy hány gépnek kíván védelmet biztosítani.<br/><br/> Ha vissza szeretné adnia a feladatokat az elsődleges helynek, azon is szüksége lesz egy fő célkiszolgálóra. A Unified Agent ügynök nincs telepítve ezen a kiszolgálón.
 **VMware ESX/ESXi- és vCenter-kiszolgáló** |  A virtuális gépek ESX-/ESXi-gazdagépeken futnak. A gazdagépeket egy vCenter-kiszolgáló felügyeli | A VMware virtuális gépek replikálásához VMware-infrastruktúrára van szükség.
 **Virtuális gépek/fizikai kiszolgálók** |  A replikálni kívánt VMware virtuális gépeken és fizikai kiszolgálókon telepített Unified Agent. | Ez az ügynök valósítja meg az összetevők közötti kommunikációt.
@@ -38,7 +38,7 @@ Ez a cikk azt ismerteti, architektúrájának és folyamatainak használt mikor 
 2. A kezdeti replikációt követően a gépek ügynökei továbbítják a változásreplikálás módosításait a folyamatkiszolgálónak.
 3. A folyamatkiszolgáló optimalizálja az adatokat, majd átviszi őket a másodlagos hely fő célkiszolgálójára. A replikációs folyamatot a konfigurációs kiszolgáló kezeli.
 
-**6. ábra: VMware és VMware közötti replikáció**
+**6. ábra: VMware – VMware replikáció**
 
 ![VMware és VMware közötti replikáció](./media/site-recovery-components/vmware-to-vmware.png)
 
@@ -46,4 +46,4 @@ Ez a cikk azt ismerteti, architektúrájának és folyamatainak használt mikor 
 
 ## <a name="next-steps"></a>További lépések
 
-[Állítsa be a](vmware-physical-secondary-disaster-recovery.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre.
+A VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának [beállítása](vmware-physical-secondary-disaster-recovery.md) másodlagos helyre.

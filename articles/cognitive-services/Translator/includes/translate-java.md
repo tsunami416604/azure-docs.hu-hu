@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 993654f22e3eaec0758366b85501c4c93373f2bc
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 5a362d2610e6feb85de730c086070636f3afa2b9
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968670"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906661"
 ---
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [Prerequisites](prerequisites-java.md)]
 
-* [JDK 7-es vagy újabb verzió](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle](https://gradle.org/install/)
-* Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="initialize-a-project-with-gradle"></a>Projekt inicializálása a Gradle
 
@@ -89,11 +87,12 @@ public class Translate {
 }
 ```
 
-Adja hozzá ezeket a sorokat `Translate` a osztályhoz. Figyelje meg, hogy a `api-version`-val együtt két további paramétert fűzött hozzá a `url`következőhöz:. Ezek a paraméterek a fordítási kimenetek beállítására szolgálnak. Ebben a példában a német (`de`) és az olasz (`it`) értékre van beállítva. Győződjön meg arról, hogy frissíti az előfizetési kulcs értékét.
+Adja hozzá ezeket a sorokat `Translate` a osztályhoz. Először is az előfizetési kulcsot és a végpontot olvassa a rendszer környezeti változókból. Ezt követően láthatja, hogy a `api-version`-val együtt két további paraméter van hozzáfűzve a `url`következőhöz:. Ezek a paraméterek a fordítási kimenetek beállítására szolgálnak. Ebben a példában a német (`de`) és az olasz (`it`) értékre van beállítva. 
 
 ```java
-String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-String url = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=de,it";
+private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
+private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
+String url = endpoint + "/translate?api-version=3.0&to=de,it";
 ```
 
 Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek `Ocp-Apim-Subscription-Region` is szerepelnie kell. [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).

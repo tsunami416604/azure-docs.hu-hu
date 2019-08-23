@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/01/2019
-ms.openlocfilehash: a5fd376a6da70ed68baedf44fd4c2cc47e68d3cf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
-ms.translationtype: HT
+ms.openlocfilehash: ada2a19de12c2f3f6b23fcc3d759afb0c747d37d
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872376"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897403"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Gépi tanulási modell üzembe helyezése Azure App Service (előzetes verzió)
 
@@ -108,11 +108,11 @@ Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A f
 
 1. A [Azure Portal](https://portal.azure.com)válassza ki Azure Machine learning munkaterületét. Az __Áttekintés__ szakaszban a __beállításjegyzék__ -hivatkozás használatával férhet hozzá a munkaterülethez tartozó Azure Container Registryhoz.
 
-    ![A munkaterület áttekintését bemutató képernyőkép](media/how-to-deploy-app-service/workspace-overview.png)
+    [![A munkaterület áttekintését bemutató képernyőkép](media/how-to-deploy-app-service/workspace-overview.png)](media/how-to-deploy-app-service/workspace-overview-expanded.png)
 
 2. A Azure Container Registry válassza ki a __tárak__elemet, majd válassza ki a telepíteni kívánt __lemezkép nevét__ . A telepíteni kívánt verzióhoz válassza a __...__ bejegyzést, majd __telepítse__a webalkalmazásba.
 
-    ![Képernyőkép az ACR-ről egy webalkalmazásra való üzembe helyezésről](media/how-to-deploy-app-service/deploy-to-web-app.png)
+    [![Képernyőkép az ACR-ről egy webalkalmazásra való üzembe helyezésről](media/how-to-deploy-app-service/deploy-to-web-app.png)](media/how-to-deploy-app-service/deploy-to-web-app-expanded.png)
 
 3. A webalkalmazás létrehozásához adja meg a hely nevét, az előfizetést, az erőforráscsoportot, majd válassza ki az App Service-csomagot/-helyet. Végül válassza a __Létrehozás__lehetőséget.
 
@@ -122,7 +122,7 @@ Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A f
 
 A [Azure Portal](https://portal.azure.com)válassza ki az előző lépésben létrehozott webalkalmazást. Az __Áttekintés__ szakaszban másolja az __URL-címet__. Ez az érték a szolgáltatás __alap URL-címe__ .
 
-![A webalkalmazás áttekintését bemutató képernyőkép](media/how-to-deploy-app-service/web-app-overview.png)
+[![A webalkalmazás áttekintését bemutató képernyőkép](media/how-to-deploy-app-service/web-app-overview.png)](media/how-to-deploy-app-service/web-app-overview-expanded.png)
 
 A modellre irányuló kérelmeket továbbító webszolgáltatás a következő `{baseurl}/score`helyen található:. Például: `https://mywebapp.azurewebsites.net/score`. A következő Python-kód azt mutatja be, hogyan lehet beküldeni az adott URL-címet és megjeleníteni a választ:
 

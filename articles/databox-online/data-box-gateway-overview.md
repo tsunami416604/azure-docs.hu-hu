@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 07/16/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 1b749df7c5b3badbc6e7eccd885cb953ab3d0afa
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b8c6b4085f56bc12b67bf87177ba33b82c6a6db9
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277383"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900590"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Mi az Azure Data Box Gateway?
 
@@ -57,7 +57,6 @@ A Data Box Gateway az alábbi képességekkel rendelkezik:
 |Gyors hozzáférés     | Az eszközön helyi gyorsítótár található, amellyel gyorsabban elérhetők a legutóbb használt fájlok.|
 |Offline feltöltés     | A kapcsolat nélküli mód támogatja az offline feltöltési forgatókönyveket.|
 |Adatfrissítés     | Lehetőség van a helyi fájlok legújabb változatra való frissítésére a felhőből.|
-|Encryption    | A BitLocker támogatja az adatok helyi titkosítását és biztonságos átvitelét a felhőbe *https*-en keresztül.       |
 |Rugalmasság     | Beépített hálózati rugalmasság        |
 
 
@@ -71,7 +70,7 @@ A Data Box Gateway virtuális eszköz az alábbi műszaki adatokkal rendelkezik:
 | Memory (Memória)  |Minimum 8 GB|
 | Rendelkezésre állás|Egyetlen csomópont|
 | Lemezek|OPERÁCIÓSRENDSZER-lemez: 250 GB <br> Adatlemez: 2 TB minimális, dinamikus kiosztású, és SSD-k által támogatottnak kell lennie|
-| Hálózati illesztők |1 vagy több virtuális hálózati adapter|
+| Hálózati adapterek |1 vagy több virtuális hálózati adapter|
 | Natív fájlmegosztási protokollok|SMB és NFS  |
 | Biztonság|Hitelesítés az eszköz és az adatok hozzáférésének feloldásához <br> Átvitel alatt álló adatok titkosítása AES-256 bites titkosítás használatával|
 | Kezelés|Helyi webes felhasználói felület – kezdeti beállítás, diagnosztika és az eszköz energiagazdálkodása <br> Azure Portal – a Data Box Gateway-eszközök napi szintű felügyelete       |

@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 37624c79a345f956de9a289c672340e391199e2f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 584b9fdde33d14650c36c44b9b457a25f8a1d6f9
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650689"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900119"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -153,23 +153,9 @@ A test Drive engedélyezésével a rendszer arra kéri, hogy állítson be egy d
 
 ## <a name="connect-lead-management"></a>Az érdeklődők felügyeletének összekötése
 
-Közvetlenül kapcsolódhat az ügyfelekhez a piactéren kínált ajánlat listázásával, és összekapcsolhatja az Ügyfélkapcsolat-kezelési (CRM) rendszerét, hogy az ügyfelek kapcsolattartási adatait azonnal megkapja, miután az ügyfél kifejezte érdeklődését, vagy üzembe helyezi a termék.
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-- **Érdeklődő célhelyének kiválasztása** (legördülő menü): Adja meg a kapcsolati adatokat arra a CRM-rendszerre, amelyre az ügyfél-érdeklődőket szeretné küldeni. 
-
-A partner Center a következő CRM-rendszereket támogatja az érdeklődők felügyeletéhez. Válassza ki a telepítési utasítások hivatkozását.
-
-- Azure Blob – adja meg a kapcsolattartási e-maileket, a tároló nevét és a Storage-fiók kapcsolati karakterláncát. 
-- [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) – adja meg a kapcsolattartási e-mail és a Storage-fiók kapcsolati sztringjét. 
-- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) – adjon meg kapcsolattartási e-mailt, URL-címet és hitelesítési módot (Office 365 vagy Azure Active Directory).
-- [Https-végpont](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) – adja meg a kapcsolattartási e-mail és a https-végpont URL-címét. 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) – adja meg a kapcsolattartási e-mailt, az űrlap azonosítóját, a Munchkin-fiókot és a kiszolgáló azonosítóját.
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) – adja meg a kapcsolattartási e-mailt és a szervezet azonosítóját. 
-
-#### <a name="additional-lead-management-resources"></a>További érdeklődői felügyeleti erőforrások
-- [Az érdeklődők felügyeletével kapcsolatos gyakori kérdések](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Gyakori vezető konfigurációs hibák](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Az érdeklődők felügyelete – Áttekintés egy pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+További információ: az [érdeklődők kezelése – áttekintés](./commercial-marketplace-get-customer-leads.md) .
 
 Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
 

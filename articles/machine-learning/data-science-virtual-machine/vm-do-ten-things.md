@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: ee63f7aae70e93dfbe857b8680d2b4a477600d72
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
-ms.translationtype: MT
+ms.openlocfilehash: cd4acdd4009a94b51807a536c28b138b86d2aced
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575112"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971929"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amire alkalmas a Windows Data Science virtuális gépen
 
@@ -64,10 +64,6 @@ A Python például a Visual Studio Community Edition, amely rendelkezik a Python
 * Az egyéni környezet minden verzió létrehozása **eszközök** -> **Python Tools** -> **Python-környezetek** és kattintás a " **+ Egyéni**"az a Visual Studio Community Edition
 * Adjon meg egy leírást, és állítsa be a környezet előtag elérési, mert *c:\anaconda\envs\python2* Anaconda Python 2.7
 * Kattintson a **automatikus észlelése** , majd **alkalmaz** mentéséhez a környezetben.
-
-Itt látható, hogy az egyéni környezet beállítása néz ki a Visual Studióban.
-
-![A Visual Studio képernyőképe a Python Tools for Visual Studio kiválasztva](./media/vm-do-ten-things/PTVSSetup.png)
 
 Tekintse meg a [PVTS dokumentációban](https://aka.ms/ptvsdocs) további részleteket a Python-környezetek létrehozása.
 
@@ -219,7 +215,7 @@ Az Azure-előfizetések és a felhőalapú erőforrások felügyeletéhez két l
 + **Azure PowerShell**: Windows PowerShell-parancsfájlok használata. Futtassa az Azure PowerShellt az asztalon található parancsikonról vagy a "Microsoft Azure PowerShell" nevű Start menüből. A részletekért tekintse meg a [Microsoft Azure PowerShell dokumentációját](../../powershell-azure-resource-manager.md) . 
 
 ## <a name="5-extend-storage-with-shared-file-systems"></a>5. Tárterület kiterjesztése megosztott fájlrendszerrel
-Az adatszakértők megoszthatja a nagyméretű adathalmazok, kódok vagy egyéb erőforrások a csapaton belüli. A DSVM magát körülbelül 45GB-nyi szabad terület van. Kiterjeszti a storage, használhatja az Azure File Storage-szolgáltatás, és vagy csatlakoztassa azt egy vagy több DSVM-példányt, vagy elérheti azokat egy REST API-n keresztül.  Is [az Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) vagy [Azure PowerShell-lel](../../virtual-machines/windows/attach-disk-ps.md) külön dedikált adatlemezek hozzáadása. 
+Az adatszakértők megoszthatja a nagyméretű adathalmazok, kódok vagy egyéb erőforrások a csapaton belüli. A DSVM magát körülbelül 45GB-nyi szabad terület van. Kiterjeszti a storage, használhatja az Azure File Storage-szolgáltatás, és vagy csatlakoztassa azt egy vagy több DSVM-példányt, vagy elérheti azokat egy REST API-n keresztül.  A [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) vagy az [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) használatával további dedikált adatlemezeket is hozzáadhat. 
 
 > [!NOTE]
 > Az Azure File Service fájlmegosztás maximális lemezterület 5 TB-os, az egyes fájlok maximális mérete pedig 1 TB-ot. 
@@ -295,8 +291,6 @@ Adatok áthelyezése a helyi fájlok és a blob storage között, használhatja 
     AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
 
 Cserélje le **C:\myfolder** a elérési utat, ahová a fájlt tárolja, **mystorageaccount** a blob storage-fiók neve, a **mycontainer** a tároló nevének **tárfiókkulcs** , a blob storage hozzáférési kulccsal. Annak a tárfiók hitelesítő adatait a [az Azure portal](https://portal.azure.com).
-
-![Képernyőkép a Tárfiók kulcsait és a tároló adatainak az Azure Portalon](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
 
 AzCopy-parancs futtatása, a PowerShellben vagy a parancssorból. Íme néhány példa a használatra az AzCopy-parancsot:
 
@@ -393,9 +387,7 @@ Az Azure Data Lake Storage egy nagy kapacitású adattár a big data-elemzési s
 
 **Adatok áthelyezése a virtuális gépről Data Lakeba: Azure Data Lake Explorer**
 
-Használhat **Azure Data Lake Explorerrel** feltölthet adatokat a helyi fájlokat a virtuális gépen a Data Lake storage.
-
-![Képernyőkép a fájlok feltöltése a Data Lake Explorerrel használatával](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
+A **Azure Data Lake Explorer** segítségével feltöltheti [az adatait a virtuális gépen lévő helyi fájlokból Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)a tárolóba.
 
 Egy adatfolyamat üzembe helyezés az adatmozgás, vagy az Azure Data Lake használatával is létrehozható a [Azure Data Factory(ADF)](https://azure.microsoft.com/services/data-factory/). Ebben [cikk](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) folyamatok végigvezeti az adatok létrehozásának lépésein.
 
@@ -406,8 +398,6 @@ Ha az adatok Azure Blob storage-ban található, is közvetlenül beolvashatja a
 ![Adatforrás hozzáadása párbeszédpanel képernyőképe](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 A Visual Studióban olvassa el az adatokat blob storage-ból, hajtsa végre az egyes adatkezelés, Funkciók tervezése és kimeneti adatok vagy az Azure Data Lake, vagy az Azure Blob Storage. Ha az adatok blob storage-ban hivatkozik, használja **wasb: / /** ; Ha az adatokat az Azure Data Lake használata hivatkozik **swbhdfs: / /**
-
-![Képernyőkép a lekérdezés a WASB bejegyzéshez vannak kiemelve](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
 Az alábbi U-SQL-lekérdezéseket használhat a Visual Studióban:
 
@@ -486,7 +476,7 @@ Az Azure HDInsight egy felügyelt Apache Hadoop, Spark, HBase és Storm szolgál
 
 ![A HDInsight-fürt távoli hozzáférés engedélyezése](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
-* Az Azure Machine Learning-munkaterület létrehozása. A Machine Learning-kísérletek találhatók a Machine Learning-munkaterületet. A kiemelt lehetőségek kiválasztása a portálon, az alábbi képernyőképen látható módon:
+* Az Azure Machine Learning-munkaterület létrehozása. A Machine Learning-kísérletek találhatók a Machine Learning-munkaterületet. Válassza ki a Kiemelt beállításokat a portálon, az alábbi képernyőképen látható módon:
 
 ![Azure Machine Learning-munkaterület létrehozása](./media/vm-do-ten-things/Create_ML_Space.PNG)
 
@@ -880,9 +870,7 @@ Most már az adatok a Power BI-adatmodellben. A Power BI desktopban a következ�
 
 ![Power BI Desktop](./media/vm-do-ten-things/PowerBIVolcanoData.png)
 
-Megkezdheti a jelentések és Vizualizációk használata az adatmodell létrehozásához. A lépések a jelen [Power BI-cikk](../../cosmos-db/powerbi-visualize.md#build-the-reports) hozhat létre egy jelentést. A kimenet egy olyan jelentés, az alábbihoz hasonló.
-
-![A Power BI Desktop jelentés nézet – Power BI-összekötő](./media/vm-do-ten-things/power_bi_connector_pbireportview2.png)
+Megkezdheti a jelentések és Vizualizációk használata az adatmodell létrehozásához. A lépések a jelen [Power BI-cikk](../../cosmos-db/powerbi-visualize.md#build-the-reports) hozhat létre egy jelentést.
 
 ## <a name="9-dynamic-dsvm-scaling"></a>9. Dinamikus DSVM skálázás 
 Felfelé és a DSVM projekt igény szerint méretezhető. Ha nem szeretné használni a virtuális gép az esténként vagy hétvégeken, akkor csak leállíthatja a virtuális gépről a [az Azure portal](https://portal.azure.com).
@@ -894,9 +882,7 @@ Felfelé és a DSVM projekt igény szerint méretezhető. Ha nem szeretné haszn
 
 Ha szeretné kezelni a nagy méretű elemzést és nagyobb CPU-és/vagy memória-és/vagy lemez kapacitásra van szüksége annak CPU-magok, a példányok GPU-alapú Virtuálisgép-méretek széles választéka deep learning, a memória-kapacitás és a lemeztípusok (beleértve az SSD-meghajtókat) a számítási és költségvetési szükségleteinek megfelelő. Virtuális gépek teljes listáját és azok óránkénti számítási díjak érhető el a [Azure Virtual Machines díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/) lapot.
 
-Hasonlóképpen ha csökkenti a virtuális gép feldolgozási kapacitást szükség (például: egy nagyobb munkaterhelés helyezte át a Hadoop és Spark-fürt), a fürt vertikális a [az Azure portal](https://portal.azure.com) és a VM-példány a gépház. Íme egy képernyőkép.
-
-![Virtuális gép példány beállításai](./media/vm-do-ten-things/VMScaling.PNG)
+Hasonlóképpen ha csökkenti a virtuális gép feldolgozási kapacitást szükség (például: egy nagyobb munkaterhelés helyezte át a Hadoop és Spark-fürt), a fürt vertikális a [az Azure portal](https://portal.azure.com) és a VM-példány a gépház. 
 
 ## <a name="10-add-more-tools"></a>10. További eszközök hozzáadása
 A dsvm-hez, amely a common data analytics kell számos előre beépített több eszköz közül. Ezzel időt takarít idő lehetőleg ne kelljen telepítése és konfigurálása a környezetek egyenként valamint pénzt takaríthat meg, csak azért kell fizetnie erőforrások használatát.

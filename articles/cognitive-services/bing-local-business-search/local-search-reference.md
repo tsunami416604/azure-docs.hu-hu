@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 9030d85ff5bc83bb54f4a67a9f319a1670a6c2ad
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c9ebaeb66bc46132160c77c09f93fc2921dc8961
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881848"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906347"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>A Bing helyi üzleti keresési API v7-dokumentációja
 
@@ -75,7 +76,7 @@ A kérelem tartalmazhat a következő lekérdezési paramétereket. Tekintse meg
 |<a name="count" />száma|A visszaadni kívánt eredmények száma, a `offset` paraméterben megadott indextől kezdődően.|Sztring|Nem|   
 |<a name="localCategories" />localCategories|A keresés üzleti kategóriában definiált beállítások listája.  Lásd: [helyi üzleti kategóriák keresése](local-categories.md)|Sztring|Nem|  
 |<a name="mkt" />mkt|A piac, ahonnan az eredmények származnak. <br /><br />A lehetséges piaci értékek listáját a piaci kódok részben tekintheti meg.<br /><br /> **MEGJEGYZÉS:** A helyi üzleti keresési API jelenleg csak az en-us piacot és nyelvet támogatja.<br /><br />|Sztring|Igen|
-|<a name="offset"/>eltolás|A `count` paraméter által megadott eredmények elindítására szolgáló index.|Egész szám|Nem|  
+|<a name="offset"/>eltolás|A `count` paraméter által megadott eredmények elindítására szolgáló index.|Integer|Nem|  
 |<a name="query" />q|A felhasználó keresési kifejezése.|Sztring|Nem|  
 |<a name="responseformat" />responseFormat|A válaszhoz használandó adathordozó-típus. A következő a lehetséges kis-és nagybetűket megkülönböztető értékek.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Az alapértelmezett érték a JSON. A válasz által tartalmazott JSON-objektumokkal kapcsolatos információkért lásd: [Response Objects](#response-objects).<br /><br />  Ha JsonLd ad meg, a válasz törzse JSON-LD objektumokat tartalmaz, amelyek tartalmazzák a keresési eredményeket. A JSON-LD-vel kapcsolatos információkért lásd: [JSON-ld](https://json-ld.org/).|Sztring|Nem|  
 |<a name="safesearch" />safeSearch|Felnőtt tartalmak szűrésére szolgáló szűrő. A következők azok a lehetséges szűrőértékek, amelyek nem különböztetik meg a kis- és nagybetűket.<br /><ul><li>A&mdash;weblapok visszaküldése felnőtt szöveggel, képekkel vagy videókkal.<br /><br/></li><li>Közepes&mdash;hozamú weblapok felnőtt szöveggel, de nem felnőtt képekkel vagy videókkal.<br /><br/></li><li>A&mdash;szigorú nem ad vissza weblapokat felnőtt szöveggel, képpel vagy videókkal.</li></ul><br /> Az alapértelmezett érték a Moderate.<br /><br /> **MEGJEGYZÉS:** Ha a kérés olyan piacról származik, amelyet a Bing felnőtt házirendje `safeSearch` szigorú értékre van állítva, a Bing figyelmen `safeSearch` kívül hagyja az értéket, és szigorú értéket használ.<br/><br/>**MEGJEGYZÉS:** Ha a `site:` lekérdezési operátort használja, akkor előfordulhat, hogy a válasz felnőtt tartalmat is tartalmaz, függetlenül attól, hogy `safeSearch` a lekérdezési paraméter melyik értékre van beállítva. Csak akkor használja a `site:` operátort, ha ismeri a webhely tartalmát, és a felnőtteknek szóló tartalmak megjelenítése nem okoz problémát. |Sztring|Nem|  
@@ -190,7 +191,7 @@ Meghatározza a megjelenítendő keresési eredmény-elemeket.
 
 |Name (Név)|Value|Type|  
 |-------------|-----------------|----------|
-|resultIndex|A válaszban megjelenítendő elem nulla alapú indexe. Ha az elem nem tartalmazza ezt a mezőt, a válasz összes elemét megjeleníti. Például megjelenítheti a hírek válaszában szereplő összes újságcikket.|Egész szám|
+|resultIndex|A válaszban megjelenítendő elem nulla alapú indexe. Ha az elem nem tartalmazza ezt a mezőt, a válasz összes elemét megjeleníti. Például megjelenítheti a hírek válaszában szereplő összes újságcikket.|Integer|
 |answerType|A megjelenítendő tételt tartalmazó válasz. Például: Hírek.<br /><br />A típus használatával keresse meg a választ a SearchResponse objektumban. A típus a SearchResponse mező neve.<br /><br /> A válasz típusát azonban csak akkor használja, ha az objektum tartalmazza az érték mezőt; Ellenkező esetben hagyja figyelmen kívül.|Sztring|
 |textualIndex|A textualAnswers megjelenő válasz indexe.| Előjel nélküli egész szám|
 |value|Az az azonosító, amely a megjelenítendő választ vagy egy válasz elemét azonosítja. Ha az azonosító egy választ azonosít, a válasz összes elemét megjeleníti.|Azonosítható|
@@ -222,7 +223,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
   
 |Állapotkód|Leírás|  
 |-----------------|-----------------|  
-|200|Sikeres művelet.|  
+|200|Siker.|  
 |400|A lekérdezési paraméterek egyike hiányzik vagy érvénytelen.|  
 |401|Az előfizetési kulcs hiányzik vagy érvénytelen.|  
 |403|A felhasználó hitelesítése megtörtént (például egy érvényes előfizetési kulcsot használt), de nincs engedélye a kért erőforráshoz.<br /><br /> A Bing akkor is visszaállíthatja ezt az állapotot, ha a hívó havi kvótán túllépte a lekérdezéseket.|  

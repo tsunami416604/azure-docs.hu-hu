@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 1fd08efd12e723a16445eba1d341f017a86a212e
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e55b191e937b6c9f8183b3878b264eb50401b3f1
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68481465"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69903852"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Hálózati korlátok – Azure Resource Manager a következő korlátozások érvényesek csak a **Azure Resource Manager** /régiónként felügyelt hálózati erőforrásokra. Megtudhatja, hogyan tekintheti meg [az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
 
@@ -78,7 +78,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Resource | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
 | Virtuális hálózatok |100 |100 |
-| Helyi hálózati helyek |20 |Forduljon a támogatási szolgálathoz. |
+| Helyi hálózati helyek |20 |50 |
 | DNS-kiszolgálók száma virtuális hálózatonként |20 |20 |
 | Magánhálózati IP-címek száma virtuális hálózatonként |4 096 |4 096 |
 | Virtuális gép vagy szerepkör-példány hálózati adapterén egyidejű TCP-vagy UDP-forgalom |500 000, legfeljebb 1 000 000 kettő vagy több hálózati adapter számára. |500 000, legfeljebb 1 000 000 kettő vagy több hálózati adapter számára. |

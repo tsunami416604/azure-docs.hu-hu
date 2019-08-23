@@ -1,33 +1,33 @@
 ---
-title: Az Azure-erőforrások megtekintése
-description: Ismerje meg az Erőforrás-grafikon lekérdezési nyelv segítségével az erőforrások vizsgálata, és Fedezze fel, hogyan vannak csatlakoztatva.
+title: Az Azure-erőforrások megismerése
+description: Ismerje meg, hogyan használhatja az erőforrás-diagram lekérdezési nyelvét, és hogyan derítheti fel, hogyan kapcsolódnak egymáshoz.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/23/2019
+ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0b4a75558f5e82b707ae5d012acef4d2c5c4b7a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c6fdebad3cd84699e1ac7d06bb58a33d1522af1
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723808"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972316"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Az Azure-erőforrások felfedezése a Resource Graph használatával
 
-Az Azure Erőforrás-grafikon lehetővé teszi a vizsgálata, és Fedezze fel az Azure-erőforrások gyors és méretezhető. Fejthetők vissza a gyors válaszokat, egy remek lehetőséget nyújt a környezet és az Azure-erőforrások alkotó tulajdonságaival kapcsolatos tudnivalók.
+Az Azure Resource Graph lehetővé teszi az Azure-erőforrások gyors és méretezhető feltárását és felderítését. A gyors reagáláshoz nagyszerű lehetőség a környezet megismerésére és az Azure-erőforrások készítésére szolgáló tulajdonságokkal kapcsolatos információk megtervezésére.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
-## <a name="explore-virtual-machines"></a>A virtual machines felfedezése
+## <a name="explore-virtual-machines"></a>A virtuális gépek megismerése
 
-Az Azure-ban egy közös erőforráshoz egy virtuális gépet. Virtuális gépek egy erőforrás típusa van, hogy lekérdezhetők legyenek sok tulajdonságot. Minden egyes tulajdonság a szűrés vagy pontosan a keresett erőforrás keresése lehetőséget biztosít.
+Az Azure-ban egy közös erőforrás egy virtuális gép. Erőforrástípusként a virtuális gépek számos olyan tulajdonsággal rendelkeznek, amely lekérdezhető. Minden tulajdonság egy beállítást biztosít a keresett erőforrás szűréséhez vagy megkereséséhez.
 
-### <a name="virtual-machine-discovery"></a>Virtuális gép felderítése
+### <a name="virtual-machine-discovery"></a>Virtuális gépek felderítése
 
-Kezdjük az egyszerű lekérdezés egyetlen virtuális Gépet a környezetre, és tekintse meg a visszaadott tulajdonságait.
+Kezdjük egy egyszerű lekérdezéssel, amely egyetlen virtuális gépet kap a környezetből, és megtekintheti a visszaadott tulajdonságokat.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -43,9 +43,9 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit
 ```
 
 > [!NOTE]
-> Az Azure PowerShell `Search-AzGraph` parancsmag adja vissza egy **PSCustomObject** alapértelmezés szerint. A kimenet néznek ki, mi az Azure CLI-t, adja vissza, hogy a `ConvertTo-Json` parancsmag használható. Az alapértelmezett érték a **mélysége** van _2_. Értékre állítaná _100_ minden visszaadott szintek kell konvertálni.
+> A Azure PowerShell `Search-AzGraph` parancsmag alapértelmezés szerint egy **pscustomobject formájában kapja** ad vissza. Ahhoz, hogy a kimenet ugyanúgy nézzen ki, mint amit az Azure CLI ad vissza `ConvertTo-Json` , a rendszer a parancsmagot használja. A **mélység** alapértelmezett értéke _2_. A _100_ értékre állításával az összes visszaadott szintet át kell alakítani.
 
-A JSON-eredményeket struktúrája a következő példához hasonló:
+A JSON-eredmények a következő példához hasonló módon vannak strukturálva:
 
 ```json
 [
@@ -110,11 +110,11 @@ A JSON-eredményeket struktúrája a következő példához hasonló:
 ]
 ```
 
-A Tulajdonságok mondja el, további információ a virtuális gép típusú erőforrást, a Termékváltozat, az operációs rendszer, lemezek, címkék, és az erőforráscsoportban és előfizetésben tagja.
+A tulajdonságok további információkat közölnek a virtuális gépi erőforrásról, a SKU, az operációs rendszer, a lemezek, a címkék és az erőforráscsoport, valamint az előfizetés tagjaként.
 
 ### <a name="virtual-machines-by-location"></a>Virtuális gépek hely szerint
 
-Tart a virtuális gépek erőforrásra vonatkozó tanultakat, használja a **hely** tulajdonságot az összes virtuális gép hely alapján. Frissítse a lekérdezést, azt fogja távolítsa el a korlátot, és összefoglalója hely értékek száma.
+A Virtual Machines erőforrással kapcsolatos tudnivalókat a **Location (hely** ) tulajdonság használatával számítjuk fel. A lekérdezés frissítéséhez el fogjuk távolítani a korlátot, és összegezjük a hely értékeinek számát.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -129,7 +129,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | summarize
 Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location"
 ```
 
-A JSON-eredményeket struktúrája a következő példához hasonló:
+A JSON-eredmények a következő példához hasonló módon vannak strukturálva:
 
 ```json
 [
@@ -148,11 +148,11 @@ A JSON-eredményeket struktúrája a következő példához hasonló:
 ]
 ```
 
-Ekkor láthatja, hogy hány virtuális gépet minden egyes Azure-régióban van.
+Most láthatjuk, hogy hány virtuális gép van az egyes Azure-régiókban.
 
-### <a name="virtual-machines-by-sku"></a>Termékváltozat által a virtuális gépek
+### <a name="virtual-machines-by-sku"></a>Virtuális gépek SKU szerint
 
-Az eredeti virtuális gép tulajdonságainak visszatérve próbáljon található összes virtuális gépet, amely a Termékváltozat mérete **Standard_B2s**. A visszaadott JSON-t keresi, láthatjuk, hogy a tárolt **properties.hardwareprofile.vmsize**. Frissítjük a lekérdezésben található összes virtuális gépet, amely a méretét, és csak a virtuális gép és a régió nevét adja vissza.
+Lépjen vissza az eredeti virtuális gép tulajdonságaiba, és próbálja meg megkeresni az összes olyan virtuális gépet, amelynek a **STANDARD_B2S**SKU-mérete van. A visszaadott JSON-t láthatjuk, hogy az a **Properties. hardwareprofile. vmsize**fájlban van tárolva. A lekérdezés frissítésével megkeresheti az összes olyan virtuális gépet, amely megfelel az adott méretnek, és csak a virtuális gép és a régió nevét adja vissza.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
@@ -167,9 +167,9 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' and propert
 Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
 ```
 
-### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Virtuális gépek csatlakozni a prémium szintű managed Disks szolgáltatásba
+### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Prémium szintű felügyelt lemezekhez csatlakoztatott virtuális gépek
 
-Ha szerettünk volna a részletek a prémium szintű felügyelt lemezek ezek csatolt **Standard_B2s** virtuális gépeket, hogy kibontásával, a lekérdezést, hogy ossza meg velünk a felügyelt lemez az erőforrás-azonosítója.
+Ha a **Standard_B2s** virtuális gépekhez csatolt prémium szintű felügyelt lemezek részleteit szeretnénk beszerezni, kiterjesztjük a lekérdezést, hogy megadja nekünk a felügyelt lemezek erőforrás-azonosítóját.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
@@ -179,7 +179,7 @@ where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile
 ```
 
 > [!NOTE]
-> Egy másik módja a Termékváltozat használatával lett volna a **aliasok** tulajdonság **Microsoft.Compute/virtualMachines/sku.name**. Tekintse meg a [aliasok megjelenítése](../samples/starter.md#show-aliases) és [eltérő alias értékek megjelenítése](../samples/starter.md#distinct-alias-values) példákat.
+> Az SKU beszerzésének egy másik módja a **Microsoft. számítási/virtualMachines/SKU. name** **aliasok** tulajdonságának használata. Tekintse meg az [aliasok megjelenítése](../samples/starter.md#show-aliases) és a [különböző alias-értékek megjelenítése](../samples/starter.md#distinct-alias-values) példákat.
 
 ```azurecli-interactive
 az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
@@ -189,13 +189,13 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and propert
   Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
 ```
 
-Ez a lemez azonosítók listáját.
+Az eredmény a lemez-azonosítók listája.
 
-### <a name="managed-disk-discovery"></a>Felügyelt lemez felderítése
+### <a name="managed-disk-discovery"></a>Felügyelt lemezek felderítése
 
-Az első rekordja az előző lekérdezést azt vizsgáljuk meg a Tulajdonságok léteznek, a felügyelt lemez, amely az első virtuális gépen lett csatolva. A frissített lekérdezés a lemez Azonosítóját használja, és módosítja a típusát.
+Az előző lekérdezés első rekordjával megvizsgáljuk az első virtuális géphez csatolt felügyelt lemezen található tulajdonságokat. A frissített lekérdezés a lemez AZONOSÍTÓját használja, és megváltoztatja a típust.
 
-Például, például az előző lekérdezés kimenete:
+Példa az előző lekérdezés kimenetére például:
 
 ```json
 [
@@ -209,11 +209,11 @@ Például, például az előző lekérdezés kimenete:
 where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
-A lekérdezés futtatása előtt hogyan tette azt, hogy a **típus** kell **Microsoft.Compute/disks**?
-Ha a teljes azonosító tekinti meg, látni fogja **/providers/Microsoft.Compute/disks/** karakterlánc részeként. Ez a karakterlánc töredék feltárhatja, hogy milyen kereséséhez írjon be egy mutatót biztosítja. Egy alternatív módszer lenne, távolítsa el a korlát típusa szerint, és inkább csak keresési azonosító mező szerint. Mivel az azonosító egyedi, csak egy olyan rekorddal kellene visszaadnia és a **típus** tulajdonság rá, hogy részletesen.
+A lekérdezés futtatása előtt honnan tudtuk, hogy a **típusnak** most a **Microsoft. számítás/lemezek**?
+Ha megtekinti a teljes azonosítót, a **/providers/Microsoft.Compute/Disks/** a karakterlánc részeként fog megjelenni. Ez a karakterlánc-kódrészlet a keresendő típussal kapcsolatos célzást nyújt. Alternatív módszerként a korlátot a típus alapján távolíthatja el, ehelyett csak az azonosító mező alapján kereshet. Mivel az azonosító egyedi, a rendszer csak egy rekordot ad vissza, és a **Type (típus** ) tulajdonsága ezt a részletet adja meg.
 
 > [!NOTE]
-> Ebben a példában működéséhez le kell cserélnie az azonosító mező az eredmény a saját környezetének.
+> Ahhoz, hogy ez a példa működjön, a saját környezetből származó eredménnyel kell helyettesítenie az azonosító mezőt.
 
 ```azurecli-interactive
 az graph query -q "where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
@@ -223,7 +223,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/disks' and id == '/subscript
 Search-AzGraph -Query "where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
 ```
 
-A JSON-eredményeket struktúrája a következő példához hasonló:
+A JSON-eredmények a következő példához hasonló módon vannak strukturálva:
 
 ```json
 [
@@ -257,19 +257,27 @@ A JSON-eredményeket struktúrája a következő példához hasonló:
 ]
 ```
 
-## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>Ismerje meg a virtuális gépek nyilvános IP-címek keresése
+## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>A virtuális gépek megismerése nyilvános IP-címek kereséséhez
 
-Az Azure CLI-vel lekérdezések először megkeresi és tárolja a hálózati adapterek (NIC) erőforrások virtuális gépekhez csatlakoztatott összes. Ezután minden IP-cím erőforrás, amely egy nyilvános IP-cím megállapításához használja a hálózati adapterek listáját, és tárolja ezeket az értékeket. Végül biztosít a nyilvános IP-címek listáját.
+Ez a lekérdezés először megkeresi és tárolja a virtuális gépekhez csatlakozó összes hálózati adapter (NIC) erőforrását. Ezután a lekérdezések a hálózati adapterek listájának használatával keresik meg a nyilvános IP-címekhez tartozó IP-címek erőforrásait, és tárolják ezeket az értékeket. Végül a lekérdezések megadják a nyilvános IP-címek listáját.
 
 ```azurecli-interactive
-# Use Resource Graph to get all NICs and store in the 'nic' variable
+# Use Resource Graph to get all NICs and store in the 'nics.txt' file
 az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20" --output table | tail -n +3 > nics.txt
 
 # Review the output of the query stored in 'nics.txt'
 cat nics.txt
 ```
 
-Használja a `nics.txt` fájlt a következő lekérdezésben kérheti le a kapcsolódó hálózati adapter erőforrások adatait, ha egy nyilvános IP-cím csatolt hálózati adaptereken.
+```azurepowershell-interactive
+# Use Resource Graph to get all NICs and store in the $nics variable
+$nics = Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20"
+
+# Review the output of the query stored in the variable
+$nics.nic
+```
+
+A következő lekérdezésben a fájl (Azure CLI) vagy a változó (Azure PowerShell) segítségével lekérheti a kapcsolódó hálózati adapterek erőforrásait, és megtudhatja, hogy van-e nyilvános IP-cím a hálózati ADAPTERhez csatlakoztatva.
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file
@@ -279,15 +287,28 @@ az graph query -q="where type =~ 'Microsoft.Network/networkInterfaces' | where i
 cat ips.txt
 ```
 
-Utolsó, használja a nyilvános IP-cím erőforrások listáját tárolja `ips.txt` tényleges nyilvános IP-cím lekérése és megjelenítésére.
+```azurepowershell-interactive
+# Use Resource Graph  with the $nics variable to get all related public IP addresses and store in $ips variable
+$ips = Search-AzGraph -Query "where type =~ 'Microsoft.Network/networkInterfaces' | where id in ('$($nics.nic -join "','")') | project publicIp = tostring(properties['ipConfigurations'][0]['properties']['publicIPAddress']['id']) | where isnotempty(publicIp) | distinct publicIp"
+
+# Review the output of the query stored in the variable
+$ips.publicIp
+```
+
+Végül a fájlban (az Azure CLI-ben) vagy a változóban (Azure PowerShell) tárolt nyilvános IP-cím-erőforrások listáját használja a tényleges nyilvános IP-cím lekéréséhez a kapcsolódó objektumból és a megjelenítésből.
 
 ```azurecli-interactive
 # Use Resource Graph with the 'ips.txt' file to get the IP address of the public IP address resources
 az graph query -q="where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$(awk -vORS="','" '{print $0}' ips.txt | sed 's/,$//')') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip" --output table
 ```
 
+```azurepowershell-interactive
+# Use Resource Graph with the $ips variable to get the IP address of the public IP address resources
+Search-AzGraph -Query "where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
+```
+
 ## <a name="next-steps"></a>További lépések
 
 - További információk a [lekérdezés nyelvéről](query-language.md)
-- Tekintse meg a használt nyelv [alapszintű lekérdezések](../samples/starter.md)
-- Tekintse meg a speciális használ [összetettebb lekérdezésekhez](../samples/advanced.md)
+- Megtekintheti az alapszintű [lekérdezésekben](../samples/starter.md) használt nyelvet
+- Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md)

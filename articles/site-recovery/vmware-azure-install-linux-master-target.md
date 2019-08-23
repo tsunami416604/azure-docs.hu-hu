@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 062ed5e408317e95b36d6d0dfa395311ed4afe7f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261431"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904400"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Linuxos fő célkiszolgáló telepítése feladat-visszavételhez
 A virtuális gépek Azure-ba történő feladatátvétele után a virtuális gépeket a helyszíni helyre is visszaállíthatja. A feladat-visszavétel érdekében újra kell telepítenie a virtuális gépet az Azure-ból a helyszíni helyre. Ehhez a folyamathoz egy helyszíni fő célkiszolgáló szükséges a forgalom fogadásához. 
@@ -67,7 +67,7 @@ Tartsa meg az Ubuntu 16.04.2 minimális 64 bites ISO-t a DVD-meghajtón, és ind
 
 1.  Válassza az **angol** nyelvet előnyben részesített nyelvként, majd válassza az **ENTER billentyűt**.
     
-    ![Válasszon nyelvet](./media/vmware-azure-install-linux-master-target/image1.png)
+    ![Nyelv kiválasztása](./media/vmware-azure-install-linux-master-target/image1.png)
 1. Válassza az **Ubuntu Server telepítése**lehetőséget, majd válassza az **ENTER billentyűt**.
 
     ![Válassza az Ubuntu Server telepítése lehetőséget.](./media/vmware-azure-install-linux-master-target/image2.png)
@@ -214,12 +214,11 @@ A Linux használatával történő letöltéséhez írja be a következőt:
 
 ### <a name="apply-custom-configuration-changes"></a>Egyéni konfigurációs módosítások alkalmazása
 
-Az egyéni konfigurációs módosítások alkalmazásához kövesse az alábbi lépéseket:
-
+Az egyéni konfigurációs módosítások alkalmazásához használja a következő lépéseket ROOT felhasználóként:
 
 1. Futtassa a következő parancsot a bináris fájl untar.
 
-    `tar -zxvf latestlinuxmobsvc.tar.gz`
+    `tar -xvf latestlinuxmobsvc.tar.gz`
 
     ![A futtatandó parancs képernyőképe](./media/vmware-azure-install-linux-master-target/image16.png)
 
