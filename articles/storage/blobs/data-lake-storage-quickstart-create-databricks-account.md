@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.reviewer: jeking
-ms.openlocfilehash: a1e7ee4f81f2b40b804ee69c8366ca87c377e6ac
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4e4e4d250de823ae8fb78a306bae313f340e7ce9
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855499"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992298"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Gyors útmutató: Azure Data Lake Storage Gen2i adatelemzés Azure Databricks használatával
 
@@ -88,7 +88,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 További információt a fürtök létrehozásáról a [Spark-fürtök az Azure Databricks használatával történő létrehozását](https://docs.azuredatabricks.net/user-guide/clusters/create.html) ismertető szakaszban talál.
 
-## <a name="create-storage-account-file-system"></a>Tárfiók fájlrendszerének létrehozása
+## <a name="create-storage-account-container"></a>Storage-fiók tárolójának létrehozása
 
 Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterületen, majd kódrészleteket futtat a tárfiók konfigurálásához.
 
@@ -113,15 +113,15 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
    spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
-   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   dbutils.fs.ls("abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
 
     > [!NOTE]
-    > Ez a kódrészlet közvetlenül hozzáfér a Data Lake Gen2-végponthoz a OAuth használatával, de más módokon is csatlakozhat a Databricks-munkaterülethez a Data Lake Storage Gen2-fiókhoz. Például csatlakoztathatja a fájlrendszert a OAuth használatával, vagy közvetlen hozzáférést használhat megosztott kulccsal. <br>A módszerek példáinak megtekintéséhez tekintse meg a [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket a Azure Databricks webhelyén.
+    > Ez a kódrészlet közvetlenül hozzáfér a Data Lake Gen2-végponthoz a OAuth használatával, de más módokon is csatlakozhat a Databricks-munkaterülethez a Data Lake Storage Gen2-fiókhoz. Például csatlakoztathatja a tárolót a OAuth használatával, vagy közvetlen hozzáférést használhat megosztott kulccsal. <br>A módszerek példáinak megtekintéséhez tekintse meg a [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket a Azure Databricks webhelyén.
 
-5. A kód blokkban cserélje le a `storage-account-name` `password`, `appID`,, és `tenant-id` helyőrző értékeit a kódban az egyszerű szolgáltatásnév létrehozásakor összegyűjtött értékekre. Állítsa a `file-system-name` helyőrző értékét arra a névre, amelyet a fájlrendszerhez szeretne adni.
+5. A kód blokkban cserélje le a `storage-account-name` `password`, `appID`,, és `tenant-id` helyőrző értékeit a kódban az egyszerű szolgáltatásnév létrehozásakor összegyűjtött értékekre. A `container-name` helyőrző értékét állítsa a tárolóhoz adni kívánt névre.
 
     > [!NOTE]
     > Éles környezetben érdemes megfontolni a hitelesítési kulcs tárolását Azure Databricks-ben. Ezután adjon hozzá egy megkeresési kulcsot a kódjához a hitelesítési kulcs helyett. A rövid útmutató elvégzése után tekintse meg a Azure Databricks webhelyén található [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket, ahol megtekintheti a megközelítés példáit.
@@ -148,7 +148,7 @@ A cellában nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtat�
 
 A következő feladatok végrehajtásával futtathat Spark SQL-feladatot az adatokon.
 
-1. SQL-utasítás futtatásával hozzon létre egy ideiglenes táblát a JSON-mintaadatfájl, a **small_radio_json.json** adataiból. Az alábbi kódrészletben cserélje le a helyőrzőket a fájlrendszer és a tárfiók nevére. A korábban létrehozott jegyzetfüzet segítségével illessze be a kódrészletet a jegyzetfüzet egyik új kódcellájába, majd nyomja le a SHIFT + ENTER billentyűkombinációt.
+1. SQL-utasítás futtatásával hozzon létre egy ideiglenes táblát a JSON-mintaadatfájl, a **small_radio_json.json** adataiból. Az alábbi kódtöredékben cserélje le a helyőrzőket a tároló és a tárfiók nevére. A korábban létrehozott jegyzetfüzet segítségével illessze be a kódrészletet a jegyzetfüzet egyik új kódcellájába, majd nyomja le a SHIFT + ENTER billentyűkombinációt.
 
     ```sql
     %sql
@@ -156,7 +156,7 @@ A következő feladatok végrehajtásával futtathat Spark SQL-feladatot az adat
     CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
-     path  "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json"
+     path  "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json"
     )
     ```
 

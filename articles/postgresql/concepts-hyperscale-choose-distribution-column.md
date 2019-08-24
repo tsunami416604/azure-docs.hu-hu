@@ -1,78 +1,78 @@
 ---
-title: Terjesztési oszlopok kiválasztása az Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió)
-description: Jó lehetőségek a szokványos nagy kapacitású terjesztési oszlopok
+title: Terjesztési oszlopok kiválasztása Azure Database for PostgreSQL – nagy kapacitású (Citus)
+description: Jó választás a terjesztési oszlopokhoz az általános nagy kapacitású-forgatókönyvekben
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: e9fba14b8979f739fd29bc277e32fb544221d08a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0d1f343aa9b125ab0a5a9ab559d0788253037aa
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65078985"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998191"
 ---
-# <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Terjesztési oszlopok kiválasztása az Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió)
+# <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Terjesztési oszlopok kiválasztása Azure Database for PostgreSQL – nagy kapacitású (Citus)
 
-Minden tábla elosztási oszlop kiválasztása **a legfontosabb egyik** modellezési döntéseket hozhat. Nagy kapacitású sorok a sorok elosztási oszlop értéke alapján szegmenseket tárolja.
+Az egyes táblák terjesztési oszlopának kiválasztása a legfontosabb modellezési döntések egyike. Azure Database for PostgreSQL – a nagy kapacitású (Citus) előnézete a sorok eloszlás oszlopának értéke alapján a szegmensekben lévő sorokat tárolja.
 
-A legmegfelelőbb választás csoportokhoz kapcsolódó együtt ugyanazon fizikai csomóponton, így az adatok lekérdezése minden SQL-funkció gyors és hozzáadásának támogatása. Egy helytelen válasz teszi a rendszer lassabban futnak, és minden SQL-szolgáltatás nem támogatja a csomópontok között.
+A megfelelő választás a kapcsolódó adatokkal együtt ugyanazon fizikai csomópontokon csoportosítja a lekérdezéseket, így a lekérdezések gyorsak, és az összes SQL-funkció támogatását biztosítja. Helytelen választás miatt a rendszer lassan fut, és nem támogatja az összes csomóponton futó SQL-funkciót.
 
-Ez a szakasz biztosító terjesztési oszlop tippek a két leggyakoribb nagy kapacitású forgatókönyvek.
+Ez a cikk a két leggyakoribb nagy kapacitású (Citus) forgatókönyvekhez nyújt terjesztési oszlopokra vonatkozó tippeket.
 
-### <a name="multi-tenant-apps"></a>Több-Bérlős alkalmazások
+### <a name="multi-tenant-apps"></a>Több-bérlős alkalmazások
 
-A több-bérlős architektúra egy hierarchikus adatbázis-lekérdezések szét a csomópontok a kiszolgálócsoport a modellezési formáját használja.  Az adatokat hierarchia tetején más néven a *bérlőazonosító*, és a egy oszlopban minden táblában kell tárolni.
+A több-bérlős architektúra hierarchikus adatbázis-modellezési formát használ a lekérdezések a kiszolgálócsoport csomópontjai közötti elosztására. Az adathierarchia felső részét a bérlői AZONOSÍTÓnak nevezzük, és az egyes táblák oszlopaiban kell tárolni.
 
-Nagy kapacitású lekérdezi, hogy melyik Bérlőazonosító jár, és megkeresi a tábla megfelelő szegmenshez megvizsgálja. A lekérdezés, amely tartalmazza a szegmens egyetlen munkavégző csomópont irányítja. A lekérdezés futtatása ugyanazon a csomóponton elhelyezett minden vonatkozó adatokat tartalmazó a közös elhelyezés neve.
+A nagy kapacitású (Citus) megvizsgálja a lekérdezéseket, hogy megtudja, melyik bérlői AZONOSÍTÓval jár, és megkeresi a megfelelő tábla szegmensét. A lekérdezést egyetlen, a szegmenst tartalmazó munkavégző csomópontra irányítja. Egy lekérdezés futtatása az azonos csomóponton elhelyezett összes releváns adathoz közös elhelyezésű.
 
-A következő ábra szemlélteti a közös elhelyezést a több-bérlős data model szolgáltatásban. Fiókok és a kampányok két táblát tartalmaz, minden egyes által terjesztett `account_id`. A szürke mezők szegmensek, amelynek színét mindegyike jelöli, mely munkavégző csomópont tartalmazza az azt jelentik. A munkavégző csomópont és a egy másik kék zöld szegmensek együtt tárolják. Figyelje meg, hogyan kampányokat és -fiókok közötti illesztési lekérdezés lenne a szükséges adatok együtt az egyik csomóponton ugyanazt a fiókot a mindkét táblázatot korlátozása során\_azonosítója.
+A következő ábra a több-bérlős adatmodell közös elhelyezését szemlélteti. Két táblát, fiókot és kampányt tartalmaz, amelyeket `account_id`mindegyik terjeszt. Az árnyékolt mezők szegmenseket jelölnek. A zöld szegmensek tárolása egy munkavégző csomóponton történik, és a kék szegmensek egy másik munkavégző csomóponton vannak tárolva. Figyelje meg, hogy a fiókok és a kampányok közötti csatlakozási lekérdezés az összes szükséges adattal együttesen egy csomóponton található, ha mindkét tábla ugyanahhoz\_a fiók-azonosítóhoz van korlátozva.
 
-![több-bérlős közös elhelyezés](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
+![Több-bérlős közös elhelyezés](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
-Ez a kialakítás a saját séma a alkalmazni, mi számít egy bérlőt az alkalmazás azonosításához. Közös része a vállalati, a fiók, a szervezet vagy az ügyfél. Az oszlop neve lesz hasonló `company_id` vagy `customer_id`. Vizsgálja meg a lekérdezéseket, és tegye fel magának: lenne, működni akkor részt vevő összes tábla korlátozhatja a sorok ugyanazt bérlőhöz azonosítójú további WHERE záradék?
-A több-bérlős modellben lekérdezések hatóköre egy bérlőt, például értékesítési vagy a szoftverleltár-lekérdezéseket szeretne felvenni a hatókörbe egy adott tárolóban.
+Ha a kialakítást a saját sémájában szeretné alkalmazni, azonosítsa, hogy mi képezi a bérlőt az alkalmazásban. Gyakori példányok például a következők: vállalat, fiók, szervezet vagy ügyfél. Az oszlop neve a következőhöz hasonló `company_id` lesz `customer_id`: vagy. Vizsgálja meg az egyes lekérdezéseket, és kérdezzen rá, hogy működik-e, ha további WHERE záradékokkal szeretné korlátozni az összes olyan táblát, amely az azonos bérlői AZONOSÍTÓval rendelkező sorokra vonatkozik?
+A több-bérlős modellben lévő lekérdezések hatóköre egy bérlőre vonatkozik. Például az értékesítés vagy a leltár lekérdezése egy adott tárolón belül van hatókörben.
 
 #### <a name="best-practices"></a>Ajánlott eljárások
 
--   **Partíció elosztott táblákról egy közös bérlő által\_azonosító oszlop.** Például a bérlők amelyeknél cég, a bérlő SaaS-alkalmazás\_azonosító valószínűleg vállalati\_azonosítója.
--   **Több-bérlős kis táblák referencia táblák típusra konvertál.** Ha több bérlő osztozik a kis táblák információk, kioszthatja referencia táblázatként.
--   **Szűrés kérdezi le az összes bérlő korlátozása\_azonosítója.** Minden egyes lekérdezés egyszerre több bérlő információkat igényeljen.
+-   **Elosztott táblák particionálása közös bérlői\_azonosító oszlop szerint.** Például egy SaaS-alkalmazásban, ahol a bérlők a vállalatok, a\_bérlői azonosító valószínűleg a vállalat\_azonosítója lesz.
+-   **Kisméretű, több-bérlős táblák átalakítása táblázatokra.** Ha több bérlő is osztozik egy kis táblázatban, küldje el hivatkozási táblázatként.
+-   **Korlátozza a bérlői\_azonosító alapján az összes alkalmazás lekérdezésének szűrését.** Minden lekérdezésnek egyszerre egy bérlő adatait kell kérnie.
 
-Olvassa el a [több-bérlős oktatóanyag](./tutorial-design-database-hyperscale-multi-tenant.md) példa az ilyen típusú alkalmazás létrehozását.
+A [több-bérlős oktatóanyagban](./tutorial-design-database-hyperscale-multi-tenant.md) megtudhatja, hogyan építhet ki ilyen típusú alkalmazást.
 
 ### <a name="real-time-apps"></a>Valós idejű alkalmazások
 
-A több-bérlős architektúra hierarchikus és a lekérdezések útvonalának bérlőnkénti adatok közös elhelyezés használja. Valós idejű architektúrák ezzel szemben az adott terjesztésipont tulajdonságainak az adatok nagymértékben párhuzamos feldolgozási függenek.
+A több-bérlős architektúra egy hierarchikus struktúrát vezet be, és az adattárolást használja a lekérdezések átirányításához a bérlők számára. Ezzel szemben a valós idejű architektúrák az adataik konkrét terjesztési tulajdonságaitól függenek, hogy magas párhuzamos feldolgozást érjenek el.
 
-"Entitás azonosító" kifejezés a valós idejű modellben terjesztési oszlopok, használjuk. Tipikus entitások olyan felhasználók, a gazdagépek vagy eszközök.
+A valós idejű modellben az "Entity ID" kifejezést használjuk a terjesztési oszlopok kifejezésére. A jellemző entitások felhasználók, gazdagépek vagy eszközök.
 
-Valós idejű lekérdezéseket általában bekérése a numerikus összesítések dátum- és kategória szerint csoportosítva. Nagy kapacitású ezeket a lekérdezéseket küld minden egyes szegmens a részleges eredményeket, és több végső válasz a koordinátor-csomóponton. Lekérdezések futtatása leggyorsabb amikor sok csomóponton hozzájárul a lehető, és nem egyetlen csomópont kell ne aránytalanul nagy mennyiségű munka során.
-
-#### <a name="best-practices"></a>Ajánlott eljárások
-
--   **Válasszon egy oszlopot a nagy számosságú elosztási oszlopot.** Összehasonlításképpen egy \"állapot\" egy rendelés táblán értékekkel "új" mező "fizetős", és "tartalmazza a szükséges" elosztási oszlop gyenge közül választhat. Azt feltételezi, hogy csak néhány értékeket, amely korlátozza, amely képes tárolni az adatokat a szegmensek száma és a csomópontok, amely képes feldolgozni. A nagy számosságú oszlopot, többek között, fontos továbbá válassza ki azokat, amelyeket gyakran használnak a group by záradékban vagy illesztési kulcsok.
--   **Válassza ki egy oszlopot az egyenletes eloszlás.** Ha egy tábla bizonyos gyakori értékek torzítja oszlop terjeszt, majd a táblában lévő adatokat fog általában öszesítés az egyes szegmensek. A szegmenseket tárolja az azokban rendelkezés csomópontok más csomópontoknál több munkát végző lesz végül.
--   **A közös oszlopokat a tény- és dimenziótáblákból terjesztése.**
-    A ténytábla rendelkezhet csak egy terjesztési kulcs. Csatlakozzon egy másik kulcsot táblákhoz nem lesz a ténytáblára a közös elhelyezésű. Válassza ki egy dimenziót meg elhelyezése, milyen gyakran van csatlakoztatva, és a csatlakozó sor mérete alapján.
--   **Néhány dimenziótáblák parancssorán referencia táblák.** Ha egy táblát nem lehet a ténytáblára a közös elhelyezésű, javítja a lekérdezési teljesítményt osztja meg a dimenziótáblában a referenciatábla formájában a csomópontok minden példányát.
-
-Olvassa el a [valós idejű irányítópult oktatóanyag](./tutorial-design-database-hyperscale-realtime.md) példa az ilyen típusú alkalmazás létrehozását.
-
-### <a name="timeseries-data"></a>Adatok időrendben
-
-Egy idősorozat-számítási alkalmazások lekérdezik a közelmúltbeli információkat archiválni a régi adatok.
-
-A leggyakrabban előforduló hibát időrendben információk nagy kapacitású modellező terjesztési oszlopként történő küldés időbélyegzője legyen maga használ. Idő alapján kivonatoló terjesztést terjeszteni alkalommal látszólag véletlenszerű idő címtartományok együtt tartása szegmensekben helyett a különböző szegmensek be. Lekérdezések használata esetén általánosan idő hivatkozhat címtartományok idő (például a legfrissebb adatok), ezért az ilyen kivonatoló terjesztést vezet a hálózati terhelés.
+A valós idejű lekérdezések általában dátum vagy kategória szerint csoportosított numerikus összesítéseket kérnek. A nagy kapacitású (Citus) ezeket a lekérdezéseket az egyes szegmensekre küldi el részleges eredményekre, és a végső választ a koordinátor csomóponton állítja össze. A lekérdezések akkor futnak, amikor minél több csomópont járul hozzá, és ha egyetlen csomópontnak sem kell aránytalan mennyiségű munkát végrehajtania.
 
 #### <a name="best-practices"></a>Ajánlott eljárások
 
--   **Nem választott az elosztási oszlop egy időbélyegző.** Válasszon egy másik oszlopot. Egy több-bérlős alkalmazásban használja a bérlő Azonosítóját vagy a valós idejű app az entitás azonosítója.
--   **Használja a PostgreSQL tábla particionálásával alkalommal helyette.** Tábla particionálásával használatával egy nagy méretű tábla idő rendezett adatok felosztása több örökölt tábla az egyes különböző időtartományok tartalmazó.  Az örökölt táblák szegmensek terjesztése egy nagy kapacitású Postgres particionált táblára hoz létre.
+-   **Válasszon olyan oszlopot, amely a terjesztési oszlop magas fokú kardinálisa.** Az összehasonlításhoz az új, fizetős és szállított értékekkel rendelkező Order tábla állapot mezőjében a terjesztési oszlop rossz választás. Csak azokat a néhány értéket feltételezi, amelyek korlátozzák az adatok tárolására képes szegmensek számát, valamint a feldolgozni képes csomópontok számát. A nagy fokú kardinális oszlopok között érdemes kiválasztania azokat az oszlopokat, amelyek gyakran használatosak a Group By záradékokban vagy a csatlakozás kulcsaként.
+-   **Válasszon egy olyan oszlopot, amely egyenletes eloszlással rendelkezik.** Ha olyan oszlopot terjeszt egy oszlopra, amely bizonyos gyakori értékekre van kiválasztva, a táblázatban lévő adatok általában bizonyos szegmensekben gyűlnek össze. A szegmenseket tároló csomópontok a többi csomópontnál több munkát végeznek.
+-   **A tény-és dimenzió táblák terjesztése a közös oszlopokon.**
+    A Fact táblának csak egy terjesztési kulcsa lehet. Azok a táblák, amelyek egy másik kulcshoz csatlakoznak, nem lesznek közösen elhelyezve a Fact táblával. Válassza ki az egyik dimenziót, hogy a rendszer milyen gyakran csatlakozzon egymáshoz, és hogy mekkora a csatlakozás sorainak mérete.
+-   **Módosítsa a dimenzió táblázatokat a hivatkozási táblákba.** Ha egy dimenzió tábla nem helyezhető el a Fact táblával, javíthatja a lekérdezési teljesítményt úgy, hogy a dimenziós tábla másolatait az összes csomópontra terjeszti egy hivatkozási tábla formájában.
 
-Olvassa el a [időrendben oktatóanyag](https://aka.ms/hyperscale-tutorial-timeseries) példa az ilyen típusú alkalmazás létrehozását.
+Tekintse át a [valós idejű irányítópult-oktatóanyagot](./tutorial-design-database-hyperscale-realtime.md) , amely bemutatja, hogyan építhet ki ilyen típusú alkalmazásokat.
+
+### <a name="time-series-data"></a>Idősorozat-adatsorok
+
+Egy idősorozatos munkafolyamatban az alkalmazások a régi információk archiválása közben lekérdezik a legutóbbi információkat.
+
+A nagy kapacitású (Citus) modellezési idősorozat-információinak leggyakoribb hibája, hogy az időbélyeget terjesztési oszlopként használja. A kivonatok eloszlása az idő alapján látszólag véletlenszerűen, különböző szegmensekre osztja szét, és nem tartja meg a tartományokban lévő időt. Az időtartományokat tartalmazó lekérdezések, például a legfrissebbek. Ez a típusú kivonatoló eloszlás hálózati terhelést eredményez.
+
+#### <a name="best-practices"></a>Ajánlott eljárások
+
+-   **Ne válasszon időbélyeget a terjesztési oszlopként.** Válasszon másik terjesztési oszlopot. Egy több-bérlős alkalmazásban használja a bérlői azonosítót, vagy egy valós idejű alkalmazásban használja az entitás AZONOSÍTÓját.
+-   **A PostgreSQL-táblázat particionálását használja az idő függvényében.** A tábla particionálásával egy nagy méretű, időrendbe rendezett, különböző időtartományokat tartalmazó táblába tartozó, több örökölt táblába tartozó adattábla is megszakítható. A postgres-particionálású tábla nagy kapacitású (Citus) való terjesztése az örökölt táblákhoz hoz létre szegmenseket.
+
+Tekintse meg az [idősorozat-oktatóanyagot](https://aka.ms/hyperscale-tutorial-timeseries) , amely bemutatja, hogyan építhet ki ilyen típusú alkalmazást.
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg, hogyan [közös elhelyezés](concepts-hyperscale-colocation.md) között elosztott adatok segítséget nyújt a lekérdezések gyorsabban futnak
+- Ismerje meg [](concepts-hyperscale-colocation.md) , hogy az elosztott adattárolás hogyan segíti a lekérdezéseket a gyors futásban.

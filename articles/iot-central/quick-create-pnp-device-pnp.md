@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 152e373f3a340a8abe3d8bc54d6515296d95efba
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 48161f56a8885239525587b764c4a116ffc8539f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878319"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997732"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Gyors útmutató: Eszköz-képesség modell használata IoT Plug and Play eszköz létrehozásához és a IoT Central alkalmazáshoz csatlakoztatásához
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
-Az _eszköz képességi modellje_ (DCM) ismerteti a [IoT Plug and Play](https://aka.ms/iot-pnp-docs) eszköz képességeit. IoT Central a DCM használatával létrehozhat egy eszköz sablont és vizualizációkat az eszközhöz, amikor az eszköz az első alkalommal csatlakozik. Ez a rövid útmutató a következőket mutatja be:
+Az _eszköz képességi modellje_ (DCM) ismerteti a [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) eszköz képességeit. IoT Central a DCM használatával létrehozhat egy eszköz sablont és vizualizációkat az eszközhöz, amikor az eszköz az első alkalommal csatlakozik. Ez a rövid útmutató a következőket mutatja be:
 
 * A Visual Studio Code használatával hozzon létre egy IoT Plug and Play eszközt DCM használatával.
 * Futtassa az eszköz kódját a Windowsban, és tekintse meg a IoT Central alkalmazáshoz való kapcsolódást ismertető témakört.

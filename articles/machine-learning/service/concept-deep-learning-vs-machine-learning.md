@@ -1,5 +1,5 @@
 ---
-title: Bevezetés a Deep learning és a Machine learning szolgáltatásba
+title: Mélyreható tanulás és gépi tanulás
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg a Deep learning és a gépi tanulás közötti kapcsolatot, valamint azt, hogy azok hogyan illeszkednek a mesterséges intelligencia kategóriába. Ez a cikk azt ismerteti, Hogyan oldhatók meg a Deep learning olyan forgatókönyvek, mint például a csalások észlelése, a hang-és Arcfelismerés, a hangulat-elemzés és az idősorozat-előrejelzés.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 186ba03142e01c4b9340fc5b492621cc17575104
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5301be493ef22fc2d74cc337d88b04caf391fdaa
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934291"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982813"
 ---
-# <a name="introduction-to-deep-learning-vs-machine-learning"></a>A Deep learning és a Machine learning bemutatása
+# <a name="deep-learning-vs-machine-learning"></a>Mélyreható tanulás és gépi tanulás
 
 Ez a cikk segít megérteni a Deep learning és a Machine learning közötti kapcsolatot. Megtudhatja, hogyan hasonlítja össze a két fogalmat, és hogyan illeszkednek a mesterséges intelligencia tágabb kategóriába. Végül a cikk leírja, hogyan alkalmazhatók a mély tanulás a valós forgatókönyvekre, például a csalások észlelésére, a hang-és Arcfelismerés, a hangulat-elemzés és az idősorozat-előrejelzés alapján.
 

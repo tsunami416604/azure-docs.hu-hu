@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/25/2019
+ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: 27a675982711f8d8f0b36ea0cc2600de45e97a6e
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c96c8ef5e5bd9758cf270946da1e90bb12e8bca0
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348455"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998004"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker rendszerindítási hibák egy Azure-beli virtuális gépen
 
@@ -127,26 +127,27 @@ Ha ez a módszer nem oldja meg a problémát, kövesse az alábbi lépéseket a 
     ```
     Ebben a példában a csatlakoztatott operációsrendszer-lemez a meghajtó F. Ellenőrizze, hogy a megfelelő meghajtóbetűjelet használja-e. 
 
-    - Ha a lemez sikeresen fel lett oldva a BEK kulcs használatával. fontolóra vesszük a BitLocker-probléma megoldását. 
+8. Miután a lemez sikeresen fel lett oldva a BEK kulccsal, válassza le a lemezt a helyreállítási virtuális gépről, majd hozza létre újra a virtuális gépet az új operációsrendszer-lemez használatával.
 
-    - Ha a BEK-kulcs használata nem oldja fel a lemez zárolását, a védelem felfüggesztésével átmenetileg kikapcsolhatja a BitLockert a következő parancs futtatásával.
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - Ha a virtuális gépet a dytem-lemez használatával szeretné újraépíteni, akkor teljes mértékben vissza kell fejtenie a meghajtót. Ehhez futtassa a következő parancsot:
+    > [!NOTE]
+    > A lemezes titkosítást használó virtuális gépek nem támogatják az operációsrendszer-lemez cseréjét.
 
-        ```powershell
-        manage-bde -off F:
-        ```
-8.  Válassza le a lemezt a helyreállítási virtuális gépről, majd csatlakoztassa újra a lemezt az érintett virtuális géphez rendszerlemezként. További információ: Windows rendszerű [virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez való csatolásával](troubleshoot-recovery-disks-windows.md).
+9. Ha az új virtuális gép továbbra sem indul el rendesen, próbálja meg a következő lépések egyikét a meghajtó zárolásának feloldása után:
+
+    - A védelem felfüggesztésével ideiglenesen kapcsolja ki a BitLockert a következő futtatásával:
+
+                    manage-bde -protectors -disable F: -rc 0
+           
+    - Teljes mértékben visszafejtheti a meghajtót. Ehhez futtassa a következő parancsot:
+
+                    manage-bde -off F:
 
 ### <a name="key-encryption-key-scenario"></a>Kulcs titkosítási kulcsának forgatókönyve
 
 A kulcs titkosítási kulcsainak forgatókönyvéhez kövesse az alábbi lépéseket:
 
 1. Győződjön meg arról, hogy a bejelentkezett felhasználói fiók "nincs becsomagolt" engedélyre van szüksége a felhasználó Key Vault hozzáférési házirendjében **| Kulcs engedélyei | Titkosítási műveletek | Kulcs**kicsomagolása.
-2. Mentse a következő parancsfájlokat a-be. PS1-fájl:
+2. Mentse a következő szkriptet a-be. PS1-fájl:
 
     ```powershell
     #Set the Parameters for the script
@@ -184,6 +185,7 @@ A kulcs titkosítási kulcsainak forgatókönyvéhez kövesse az alábbi lépés
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
     $authResult = $authContext.AcquireTokenAsync($resourceAppIdURI, $clientId, $redirectUri, $platformParameters).result
     # Generate auth header 
     $authHeader = $authResult.CreateAuthorizationHeader()
@@ -231,7 +233,7 @@ A kulcs titkosítási kulcsainak forgatókönyvéhez kövesse az alábbi lépés
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
     ```
-3. Állítsa be a paramétereket. A szkript feldolgozza a KEK titkát a BEK-kulcs létrehozásához, majd a helyreállítási virtuális gép helyi mappájába menti azt.
+3. Állítsa be a paramétereket. A szkript feldolgozza a KEK titkát a BEK-kulcs létrehozásához, majd a helyreállítási virtuális gép helyi mappájába menti azt. Ha a parancsfájl futtatásakor hibaüzenetet kap, tekintse meg a [parancsfájl hibaelhárítása](#script-troubleshooting) szakaszt.
 
 4. A szkript elkezdése után a következő kimenet jelenik meg:
 
@@ -254,17 +256,38 @@ A kulcs titkosítási kulcsainak forgatókönyvéhez kövesse az alábbi lépés
     ```
     Ebben a példában a csatlakoztatott operációsrendszer-lemez a meghajtó F. Ellenőrizze, hogy a megfelelő meghajtóbetűjelet használja-e. 
 
-    - Ha a lemez sikeresen fel lett oldva a BEK kulcs használatával. fontolóra vesszük a BitLocker-probléma megoldását. 
+6. Miután a lemez sikeresen fel lett oldva a BEK kulccsal, válassza le a lemezt a helyreállítási virtuális gépről, majd hozza létre újra a virtuális gépet az új operációsrendszer-lemez használatával. 
 
-    - Ha a BEK-kulcs használata nem oldja fel a lemez zárolását, a védelem felfüggesztésével átmenetileg kikapcsolhatja a BitLockert a következő parancs futtatásával.
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - Ha a virtuális gépet a dytem-lemez használatával szeretné újraépíteni, akkor teljes mértékben vissza kell fejtenie a meghajtót. Ehhez futtassa a következő parancsot:
+    > [!NOTE]
+    > A lemezes titkosítást használó virtuális gépek nem támogatják az operációsrendszer-lemez cseréjét.
 
-        ```powershell
-        manage-bde -off F:
-        ```
+7. Ha az új virtuális gép továbbra sem indul el rendesen, próbálja meg a következő lépések egyikét a meghajtó zárolásának feloldása után:
 
-6. Válassza le a lemezt a helyreállítási virtuális gépről, majd csatlakoztassa újra a lemezt az érintett virtuális géphez rendszerlemezként. További információ: Windows rendszerű [virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez való csatolásával](troubleshoot-recovery-disks-windows.md).
+    - A védelem felfüggesztésével ideiglenesen kapcsolja ki a BitLockert a következő parancs futtatásával:
+
+             manage-bde -protectors -disable F: -rc 0
+           
+    - Teljes mértékben visszafejtheti a meghajtót. Ehhez futtassa a következő parancsot:
+
+                    manage-bde -off F:
+## <a name="script-troubleshooting"></a>Parancsfájlok hibaelhárítása
+
+**Hiba: Nem tölthető be a fájl vagy szerelvény**
+
+Ez a hiba azért fordul elő, mert a ADAL-szerelvények elérési útjai helytelenek. Ha az az modul csak az aktuális felhasználóhoz van telepítve, akkor a ADAL szerelvények a következő helyen `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`találhatók:.
+
+A megfelelő elérési utat `Az.Accounts` a mappa keresésével is megkeresheti.
+
+**Hiba: A Get-AzKeyVaultSecret vagy a Get-AzKeyVaultSecret nem ismerhető fel a parancsmag neveként**
+
+Ha a régi az PowerShell-modult használja, a `Get-AzureKeyVaultSecret` és `Get-AzureKeyVaultSecret`a két parancsot kell módosítania.
+
+**Paraméterek mintái**
+
+| Paraméterek  | Érték minta  |Megjegyzések   |
+|---|---|---|
+|  $keyVaultName | myKeyVault2112852926  | A kulcsot tároló kulcstároló neve |
+|$kekName   |Mykey   | A virtuális gép titkosításához használt kulcs neve|
+|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | A VM-kulcs titkának neve|
+|$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D. BEK |A BEK-fájl írásához használt elérési út.|
+|$adTenant  |contoso.onmicrosoft.com   | A Key vaultot tároló Azure Active Directory teljes tartományneve vagy GUID-azonosítója |

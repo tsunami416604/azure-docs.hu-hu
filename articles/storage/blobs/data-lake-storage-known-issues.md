@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 369069ef9a9c562ef6ba88a46dc0ef82c4debba1
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 951b1f3749807ac6aee78a96ae7eb38877ca6acc
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950685"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991814"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 ismert problémái
 
@@ -32,7 +32,7 @@ A blob Storage API-k le vannak tiltva, hogy megakadályozzák a funkciók műkö
 
 Ha ezek bármelyike blob API-kat használ, és azt szeretné használni, hogy az összes, a fiókjába feltöltött tartalommal működjön, akkor két lehetőség közül választhat.
 
-* **1. lehetőség**: Ne engedélyezzen hierarchikus névteret a blob Storage-fiókban, amíg a blob API-k nem tudnak együttműködni Azure Data Lake Gen2 API-kkal. Ha a Storage-fiókot hierarchikus névtér nélkül szeretné használni, akkor nem férhet hozzá Data Lake Storage Gen2 adott szolgáltatásokhoz, például a címtárhoz és a fájlrendszer hozzáférés-vezérlési listájához.
+* **1. lehetőség**: Ne engedélyezzen hierarchikus névteret a blob Storage-fiókban, amíg a blob API-k nem tudnak együttműködni Azure Data Lake Gen2 API-kkal. Ha a Storage-fiókot hierarchikus névtér nélkül szeretné használni, akkor nem férhet hozzá Data Lake Storage Gen2 adott szolgáltatásokhoz, például a címtárhoz és a tároló hozzáférés-vezérlési listájához.
 
 * **2. lehetőség**: Regisztráljon a [multi-Protocol hozzáférés](data-lake-storage-multi-protocol-access.md)nyilvános előzetes verziójára Data Lake Storageon. A blob API-kat meghívó eszközök és alkalmazások, valamint a blob Storage-funkciók, például a diagnosztikai naplók a hierarchikus névtérrel rendelkező fiókokkal is működhetnek.
 

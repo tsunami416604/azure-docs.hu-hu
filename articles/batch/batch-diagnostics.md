@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 63d0196609e432b081e91a49b5b1410431223632
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: MT
+ms.openlocfilehash: da5a71c75485f929ba9c4f510066df84d7a31996
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323629"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992172"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, a riasztások és a naplókat a további diagnosztikai kiértékeléséhez és figyeléséhez
 
@@ -48,6 +48,7 @@ Az összes Batch-fiók metrikákat tekinthet meg:
 1. Kattintson a portál **minden szolgáltatás** > **Batch-fiókok**, majd kattintson a Batch-fiók nevére.
 2. A **figyelés**, kattintson a **metrikák**.
 3. Válassza ki egy vagy több metrikákat. Ha azt szeretné, válassza a további erőforrás-mérőszámok segítségével a **előfizetések**, **erőforráscsoport**, **erőforrástípus**, és **erőforrás** a legördülő menük.
+    * A Count-alapú metrikák esetében (például a "dedikált mag darabszáma" vagy az "alacsony prioritású csomópontok száma") az "átlag" összesítést használja. Eseményvezérelt metrikák esetén (például "a készlet átméretezése kész események") használja a "Count" összesítést.
 
     ![Batch-metrikák](media/batch-diagnostics/metrics-portal.png)
 

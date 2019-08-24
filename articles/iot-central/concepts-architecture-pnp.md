@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: abc09ac1a13537c31fe96fae14edefd0d06b6aef
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: fab65828228bdea8f0367f8928b83934bf0a7a4f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880253"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995879"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central architektúra (előzetes verziójú funkciók)
 
@@ -73,7 +73,7 @@ Egy Azure IoT Central-alkalmazásban az eszközök sablonjai határozzák meg az
 
 IoT Central előnézet alkalmazás-eszköz sablonja:
 
-- Az **eszköz képességeinek modelljei** határozzák meg az eszköz képességeit, például az általa küldött telemetria, az eszköz állapotát meghatározó tulajdonságokat, valamint azokat a parancsokat, amelyekre az eszköz válaszol. Az eszköz képességei egy vagy több interfészbe vannak rendezve. Az eszköz képességeinek modelljeivel kapcsolatos további információkért tekintse meg a [IoT Plug and Play](https://aka.ms/iot-pnp-docs) dokumentációját.
+- Az **eszköz képességeinek modelljei** határozzák meg az eszköz képességeit, például az általa küldött telemetria, az eszköz állapotát meghatározó tulajdonságokat, valamint azokat a parancsokat, amelyekre az eszköz válaszol. Az eszköz képességei egy vagy több interfészbe vannak rendezve. Az eszköz képességeinek modelljeivel kapcsolatos további információkért tekintse meg a [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) dokumentációját.
 - A **felhő tulajdonságai** határozzák meg az adott eszközhöz tartozó tulajdonságokat IoT Central. Ezek a tulajdonságok csak IoT Central tárolódnak, és soha nem lesznek elküldve egy eszközre.
 - A **nézetek** határozzák meg azokat az irányítópultokat és űrlapokat, amelyeket a készítő hoz létre, hogy az operátor figyelje és felügyelje az eszközöket.
 - A testreszabások lehetővé teszik, hogy a szerkesztő felülbírálja az eszköz képességeinek modelljét, hogy azok jobban megfeleljenek a IoT Central alkalmazásnak.

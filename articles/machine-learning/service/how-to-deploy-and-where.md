@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: acb3717f0e71ca1e67f1ddec79a259935f6cc539
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a4146e20efae87287b77687e4a1d3b0196cb1c95
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897691"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997938"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -416,7 +416,20 @@ def run(request):
 
 A következtetési konfiguráció azt ismerteti, hogyan konfigurálható a modell az előrejelzések készítéséhez. Ez a konfiguráció nem része a belépési parancsfájlnak; Ez a bejegyzési parancsfájlra hivatkozik, és a telepítéshez szükséges összes erőforrás megkeresésére szolgál. Később, a modell tényleges üzembe helyezése során használják.
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy következtetési konfigurációt. Ez a konfiguráció határozza meg a futtatókörnyezetet, a bejegyzés parancsfájlját és (opcionálisan) a Conda környezeti fájlját:
+A következtetések konfigurálásával Azure Machine Learning környezetek határozzák meg az üzemelő példányhoz szükséges szoftver-függőségeket. A környezetek lehetővé teszik a képzéshez és a telepítéshez szükséges szoftver-függőségek létrehozását, kezelését és újrafelhasználását. Az alábbi példa bemutatja egy környezet betöltését a munkaterületről, majd használja a következtetések konfigurálásával:
+
+```python
+from azureml.core import Environment
+from azureml.core.model import InferenceConfig
+
+deploy_env = Environment.get(workspace=ws,name="myenv",version="1")
+inference_config = InferenceConfig(entry_script="x/y/score.py",
+                                   environment=deploy_env)
+```
+
+További információ a környezetekről: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md).
+
+A függőségeket közvetlenül is meghatározhatja környezet használata nélkül is. Az alábbi példa bemutatja, hogyan hozhat létre olyan következtetési konfigurációt, amely egy Conda-fájlból tölt be szoftver-függőségeket:
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -468,10 +481,40 @@ Ezen osztályok helyi, ACI és AK-alapú webszolgáltatásokhoz való importál�
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-> [!TIP]
-> A modell szolgáltatásként való üzembe helyezése előtt érdemes lehet profilt használni az optimális CPU-és memória-követelmények meghatározásához. A modellt az SDK-val vagy a parancssori felülettel is felhasználhatja. További információ: [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) és az [az ml Model Profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) Reference.
->
-> A modell profilkészítési eredményei `Run` objektumként vannak kibocsátva. További információ: a [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py) osztály referenciája.
+#### <a name="profiling"></a>Profilkészítés
+
+A modell szolgáltatásként való üzembe helyezése előtt érdemes lehet profilt használni az optimális CPU-és memória-követelmények meghatározásához. A modellt az SDK-val vagy a parancssori felülettel is felhasználhatja. Az alábbi példák bemutatják, hogyan használhatja a profilkészítést az SDK-ból:
+
+> [!IMPORTANT]
+> Profilkészítés használatakor az Ön által megadott következtetési konfiguráció nem hivatkozhat Azure Machine Learning környezetre. Ehelyett adja meg a szoftver függőségeit az `conda_file` `InferenceConfig` objektum paraméterének használatával.
+
+```python
+import json
+test_sample = json.dumps({'data': [
+    [1,2,3,4,5,6,7,8,9,10]
+]})
+
+profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
+profile.wait_for_profiling(true)
+profiling_results = profile.get_results()
+print(profiling_results)
+```
+
+Ez a kód az alábbi szöveghez hasonló eredményt jelenít meg:
+
+```python
+{'cpu': 1.0, 'memoryInGB': 0.5}
+```
+
+A modell profilkészítési eredményei `Run` objektumként vannak kibocsátva.
+
+További információ a parancssori felületről történő profilkészítésről: [az ml Model Profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
+
+További információt a következő dokumentációban talál:
+
+* [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
+* [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--model~s--inference-config--input-data-)
+* [A konfigurációs fájl sémájának következtetése](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Üzembe helyezés célhelyre
 
@@ -742,7 +785,136 @@ További példákért tekintse meg a következő mintát:
 * [https://github.com/Microsoft/MLOps](https://github.com/Microsoft/MLOps)
 * [https://github.com/Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 
+## <a name="package-models"></a>Csomagok modelljei
+
+Bizonyos esetekben érdemes lehet Docker-rendszerképet létrehozni a modell üzembe helyezése nélkül. Például, ha a [Azure app Service üzembe helyezését](how-to-deploy-app-service.md)tervezi. Vagy előfordulhat, hogy le szeretné tölteni a rendszerképet, és helyi Docker-telepítéssel kell futtatnia. Lehet, hogy le szeretné tölteni a rendszerkép létrehozásához használt fájlokat, megvizsgálhatja őket, módosíthatja őket, és manuálisan is létrehozhatja őket.
+
+A modell csomagolása lehetővé teszi mindkét funkció használatát. A modell webszolgáltatásként való üzemeltetéséhez szükséges összes eszközt becsomagolja, és lehetővé teszi egy teljesen felépített Docker-rendszerkép vagy a létrehozásához szükséges fájlok letöltését. A modell csomagolásának két módja van:
+
+* __Csomagolt modell letöltése__: Le kell töltenie egy olyan Docker-rendszerképet, amely tartalmazza a modellt és a webszolgáltatásként való üzemeltetéshez szükséges egyéb fájlokat.
+* __Docker-készítés__: A Docker-rendszerkép létrehozásához szükséges Docker, modell, bejegyzési parancsfájl és egyéb eszközök letöltése. Ezután megvizsgálhatja a fájlokat, vagy módosíthatja a módosításokat, mielőtt helyileg felépíti a rendszerképet.
+
+Mindkét csomag használható helyi Docker-rendszerkép lekérésére. 
+
+> [!TIP]
+> A csomagok létrehozása hasonló a modell üzembe helyezéséhez, mivel a regisztrált modellt és a következtetések konfigurációját használja.
+
+> [!IMPORTANT]
+> Az olyan funkciók, mint például a teljes mértékben létrehozott rendszerképek letöltése vagy a rendszerkép [](https://www.docker.com) helyi létrehozása a fejlesztői környezetben működő Docker-telepítést igényelnek.
+
+### <a name="download-a-packaged-model"></a>Csomagolt modell letöltése
+
+Az alábbi példa bemutatja, hogyan hozhat létre egy rendszerképet, amely a munkaterületének Azure Container Registry van regisztrálva:
+
+```python
+package = Model.package(ws, [model], inference_config)
+package.wait_for_creation(show_output=True)
+```
+
+A csomag létrehozása után a használatával `package.pull()` lekérheti a rendszerképet a helyi Docker-környezetbe. A parancs kimenete megjeleníti a rendszerkép nevét. Például: `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. A letöltés után a `docker images` paranccsal listázhatja a helyi rendszerképeket:
+
+```text
+REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
+myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43GB
+```
+
+Ha egy helyi tárolót szeretne elindítani a rendszerkép használatával, a következő parancs használatával indítson el egy nevesített tárolót a rendszerhéjból vagy a parancssorból. Cserélje le `<imageid>` az értéket a `docker images` parancs által visszaadott rendszerkép-azonosítóra:
+
+```bash
+docker run -p 6789:5001 --name mycontainer <imageid>
+```
+
+Ez a parancs elindítja a nevű `myimage`rendszerkép legújabb verzióját. Leképezi a 6789-es helyi portot a tárolóban lévő portra, amelyet a webszolgáltatás figyel (5001). Emellett a nevet `mycontainer` a tárolóhoz rendeli, amely megkönnyíti a leállítást. Az indítás után a kérelmeket a `http://localhost:6789/score`következőre küldheti:.
+
+### <a name="generate-dockerfile-and-dependencies"></a>Docker és függőségek előállítása
+
+Az alábbi példa bemutatja, hogyan töltheti le a rendszerképek helyi létrehozásához szükséges Docker, modellt és egyéb eszközöket. A `generate_dockerfile=True` paraméter azt jelzi, hogy a fájlokat, nem pedig egy teljesen felépített képet szeretnénk használni:
+
+```python
+package = Model.package(ws, [model], inference_config, generate_dockerfile=True)
+package.wait_for_creation(show_output=True)
+# Download the package
+package.save("./imagefiles")
+# Get the Azure Container Registry that the model/dockerfile uses
+acr=package.get_container_registry()
+print("Address:", acr.address)
+print("Username:", acr.username)
+print("Password:", acr.password)
+```
+
+Ez a kód letölti a rendszerképnek a `imagefiles` könyvtárba való felépítéséhez szükséges fájlokat. A fájlok mentése a Azure Container Registryban tárolt alaprendszerképre hivatkozik a Docker. A rendszerkép helyi Docker-telepítésre való létrehozásakor a címnek, a felhasználónevet és a jelszót kell használnia a beállításjegyzékben való hitelesítéshez. A következő lépésekkel hozhatja létre a rendszerképet egy helyi Docker-telepítés használatával:
+
+1. Egy rendszerhéjból vagy parancssori munkamenetből használja a következő parancsot a Docker hitelesítéséhez a Azure Container Registry. Cserélje `<address>`le `<username>`a, `<password>` a és a értéket a paranccsal `package.get_container_registry()`lekért értékekre:
+
+    ```bash
+    docker login <address> -u <username> -p <password>
+    ```
+
+2. A rendszerkép létrehozásához használja a következő parancsot. A `<imagefiles>` helyére írja be annak a könyvtárnak `package.save()` az elérési útját, amelyben a fájlokat mentette:
+
+    ```bash
+    docker build --tag myimage <imagefiles>
+    ```
+
+    Ezzel a paranccsal állítható be a rendszerkép `myimage`neve.
+
+A rendszerkép létrejöttének ellenőrzéséhez használja az `docker images` parancsot. A `myimage` képet a következő listában kell látni:
+
+```text
+REPOSITORY      TAG                 IMAGE ID            CREATED             SIZE
+<none>          <none>              2d5ee0bf3b3b        49 seconds ago      1.43GB
+myimage         latest              739f22498d64        3 minutes ago       1.43GB
+```
+
+Ha új tárolót szeretne elindítani a rendszerkép alapján, használja a következő parancsot:
+
+```bash
+docker run -p 6789:5001 --name mycontainer myimage:latest
+```
+
+Ez a parancs elindítja a nevű `myimage`rendszerkép legújabb verzióját. Leképezi a 6789-es helyi portot a tárolóban lévő portra, amelyet a webszolgáltatás figyel (5001). Emellett a nevet `mycontainer` a tárolóhoz rendeli, amely megkönnyíti a leállítást. Az indítás után a kérelmeket a `http://localhost:6789/score`következőre küldheti:.
+
+### <a name="example-client-to-test-the-local-container"></a>Példa az ügyfélre a helyi tároló teszteléséhez
+
+A következő kód egy olyan Python-ügyfélre mutat példát, amely a tárolóval használható:
+
+```python
+import requests
+import json
+
+# URL for the web service
+scoring_uri = 'http://localhost:6789/score'
+
+# Two sets of data to score, so we get two results back
+data = {"data":
+        [
+            [ 1,2,3,4,5,6,7,8,9,10 ],
+            [ 10,9,8,7,6,5,4,3,2,1 ]
+        ]
+        }
+# Convert to JSON string
+input_data = json.dumps(data)
+
+# Set the content type
+headers = {'Content-Type': 'application/json'}
+
+# Make the request and display the response
+resp = requests.post(scoring_uri, input_data, headers=headers)
+print(resp.text)
+```
+
+További példa az ügyfelekre más programozási nyelveken: [webszolgáltatásként üzembe helyezett modellek felhasználása](how-to-consume-web-service.md).
+
+### <a name="stop-the-docker-container"></a>A Docker-tároló leállítása
+
+A tároló leállításához használja a következő parancsot egy másik rendszerhéjból vagy parancssorból:
+
+```bash
+docker kill mycontainer
+```
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
 Az üzembe helyezett webszolgáltatáshoz törölheti `service.delete()`.
 A regisztrált modell törléséhez használja `model.delete()`.
 

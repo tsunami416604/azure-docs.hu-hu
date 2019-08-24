@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 07/23/2019
+ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: f2dab34ea0ef64f4062819e9b2d475e6a226856b
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: b67986fdc53a2b927f6481846ab179a826490c01
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405437"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995703"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 Ez a cikk azt ismerteti, hogyan használhatók a dinamikus felügyeleti nézetek (DMV) a számítási feladatok figyelésére. Ide tartozik a lekérdezés végrehajtásának vizsgálata Azure SQL Data Warehouseban.
@@ -63,7 +63,7 @@ ORDER BY total_elapsed_time DESC;
 
 A fenti lekérdezési eredményekből **jegyezze** fel a vizsgálni kívánt lekérdezés azonosítóját.
 
-A felfüggesztett  állapotú lekérdezések a nagy számú aktív futó lekérdezés miatt várólistára helyezhetők. Ezek a lekérdezések a [sys. DM _pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) is megjelennek a lekérdezés UserConcurrencyResourceType. A párhuzamossági korlátokkal kapcsolatos információkért lásd: [teljesítmény](performance-tiers.md) -és [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). A lekérdezések más okokat is várhatnak, például az objektumok zárolását.  Ha a lekérdezés egy erőforrásra vár, tekintse meg a jelen cikk további [erőforrásaira váró lekérdezések kivizsgálását][Investigating queries waiting for resources] ismertető cikket.
+A felfüggesztett állapotú lekérdezések a nagy számú aktív futó lekérdezés miatt várólistára helyezhetők. Ezek a lekérdezések a [sys. DM _pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) is megjelennek a lekérdezés UserConcurrencyResourceType. A párhuzamossági korlátokkal kapcsolatos információkért lásd: [teljesítmény](performance-tiers.md) -és [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). A lekérdezések más okokat is várhatnak, például az objektumok zárolását.  Ha a lekérdezés egy erőforrásra vár, tekintse meg a jelen cikk további [erőforrásaira váró lekérdezések kivizsgálását][Investigating queries waiting for resources] ismertető cikket.
 
 A [sys. DM _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) táblában lévő lekérdezések keresésének egyszerűbbé tételéhez a [label][LABEL] paranccsal rendeljen hozzá egy olyan megjegyzést a lekérdezéshez, amely a sys. DM _pdw_exec_requests nézetben kereshető.
 
@@ -168,7 +168,7 @@ WHERE waits.request_id = 'QID####'
 ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
-Ha a lekérdezés aktívan várakozik egy másik lekérdezés erőforrásaira, akkor az állapot **AcquireResources**válik.  Ha a lekérdezés rendelkezik az összes szükséges erőforrással, akkor a rendszer megadja az állapotot.
+Ha a lekérdezés aktívan várakozik egy másik lekérdezés erőforrásaira, akkor az állapot **AcquireResources**válik.  Ha a lekérdezés rendelkezik az összes szükséges erőforrással, akkor a rendszer megadjaaz állapotot.
 
 ## <a name="monitor-tempdb"></a>Tempdb figyelése
 A tempdb a közbenső eredmények tárolására szolgál a lekérdezés végrehajtása során. A tempdb-adatbázis magas kihasználtsága lassú lekérdezési teljesítményt eredményezhet. Azure SQL Data Warehouse minden csomópontja körülbelül 1 TB-nyi lemezterülettel rendelkezik a tempdb. Az alábbiakban a tempdb használatának figyelésére, valamint a lekérdezésekben a tempdb használatának csökkenésére vonatkozó tippek találhatók. 
@@ -206,9 +206,11 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-Ha olyan lekérdezéssel rendelkezik, amely nagy mennyiségű memóriát használ, vagy a tempdb kiosztásával kapcsolatos hibaüzenetet kapott, gyakran egy nagyon nagy méretű [CREATE TABLE a Select (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) vagy a [Insert Select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) utasítás futtatása, amely sikertelen a következőben: végső adatáthelyezési művelet. Ez általában ShuffleMove műveletként azonosítható az elosztott lekérdezési tervben közvetlenül a végső Beszúrás kiválasztása előtt.
+Ha olyan lekérdezéssel rendelkezik, amely nagy mennyiségű memóriát használ, vagy a tempdb kiosztásával kapcsolatos hibaüzenetet kapott, annak oka az lehet, hogy egy nagyon nagy [CREATE TABLE a Select (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) vagy a [Insert Select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) utasítás fut, amely nem a végső adatáthelyezési művelet. Ez általában ShuffleMove műveletként azonosítható az elosztott lekérdezési tervben közvetlenül a végső Beszúrás kiválasztása előtt.  A [sys. DM _pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) segítségével figyelje a ShuffleMove műveleteket. 
 
-A leggyakoribb megoldás a CTAS vagy a SELECT utasítás beillesztése több betöltési utasításba, így az adatmennyiség nem haladja meg az 1 TB/csomópont tempdb korlátot. A fürtöt nagyobb méretre is méretezheti, amely a tempdb méretét több csomóponton is eloszthatja, ami csökkenti az egyes csomópontok tempdb. 
+A leggyakoribb megoldás a CTAS vagy a SELECT utasítás beillesztése több betöltési utasításba, így az adatmennyiség nem haladja meg az 1 TB/csomópont tempdb korlátot. A fürtöt nagyobb méretre is méretezheti, amely a tempdb méretét több csomóponton is eloszthatja, ami csökkenti az egyes csomópontok tempdb.
+
+A CTAS és az INSERT SELECT utasítások mellett a nem elegendő memóriával futó nagyméretű, összetett lekérdezések a tempdb-sel való meghibásodást okozhatnak.  Érdemes lehet nagyobb erőforrás- [osztállyal](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) futtatni, hogy elkerülje a tempdb való kilépést.
 
 ## <a name="monitor-memory"></a>Memória figyelése
 

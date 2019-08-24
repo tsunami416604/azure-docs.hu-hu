@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 850d580d4eb1ca41932a28005d3375ced709db60
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 7c018ad15ee653bcdc903492028ec5ed058dbd14
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016377"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992236"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Frissítse big data Analytics-megoldásait Azure Data Lake Storage Gen1ról Azure Data Lake Storage Gen2
 
@@ -235,7 +235,7 @@ Vegye figyelembe, hogy vannak olyan külső felek, akik a fenti adatok/meta-adat
 
 * Ha egy eszköz, amely nem másolja át a hozzáférés-vezérlési listák használhatja, vagy másolja át a hozzáférés-vezérlési listák nem kívánja, majd szüksége a hozzáférés-vezérlési listák beállítása a cél a megfelelő legfelső szintű manuálisan. Megteheti a Storage Explorer használatával. Győződjön meg arról, hogy ezen ACL-ek az alapértelmezett ACL-EK, hogy a fájlokat és mappákat, másolja át őket öröklik.
 
-* A Data Lake Storage Gen1 is megadhatja a hozzáférés-vezérlési listák a legmagasabb szintű jelenleg a fiók gyökérmappájában. Data Lake Storage Gen2 azonban a legmagasabb szintű ACL-eket a fájlrendszer gyökérkönyvtárában, nem pedig a teljes fiókban lehet beállítani. Ezért ha azt szeretné, a fiók szintjén beállított alapértelmezett ACL-EK, a Data Lake Storage Gen2-fiókjában található összes fájl rendszer jeggyel ismétlődő kell.
+* A Data Lake Storage Gen1 is megadhatja a hozzáférés-vezérlési listák a legmagasabb szintű jelenleg a fiók gyökérmappájában. Data Lake Storage Gen2 azonban a legmagasabb szintű ACL-eket a tároló gyökérkönyvtárában, nem pedig a teljes fiókban lehet beállítani. Ezért ha azt szeretné, a fiók szintjén beállított alapértelmezett ACL-EK, a Data Lake Storage Gen2-fiókjában található összes fájl rendszer jeggyel ismétlődő kell.
 
 * Fájl vonatkozó elnevezési korlátozás különböznek a két tárolási rendszerek között. Ezek a különbségek vannak különösen érintő bemásolja a Data Lake Storage Gen2 Data Lake Storage Gen1 mivel ez utóbbi van több korlátozott korlátozások.
 

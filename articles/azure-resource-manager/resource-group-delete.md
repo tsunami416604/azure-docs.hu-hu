@@ -1,24 +1,86 @@
 ---
 title: Törölje az erőforráscsoportot és az erőforrások – Azure Resource Manager
-description: Ismerteti, hogyan Azure Resource Manager orders-e az erőforrások törlését Ha töröl egy erőforráscsoportot. Leírja a válaszkódot, valamint hogyan Resource Manager kezeli őket határozza meg, ha a törlés sikerült.
+description: Az erőforráscsoportok és erőforrások törlését ismerteti. Leírja, hogy a Azure Resource Manager hogyan rendeli az erőforrások törlését az erőforráscsoport törlésekor. Leírja a válaszkódot, valamint hogyan Resource Manager kezeli őket határozza meg, ha a törlés sikerült.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/09/2018
+ms.date: 08/22/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 18990b51b5ff2184197db48fd139d63750626663
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 75cdeb88a68dece59d6b037592f7212fa895e821
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204208"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991693"
 ---
-# <a name="azure-resource-manager-resource-group-deletion"></a>Az Azure Resource Manager erőforrás-csoport törlése
+# <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Erőforrás-csoport és erőforrás-törlés Azure Resource Manager
 
-Ez a cikk bemutatja, hogyan Azure Resource Manager orders-e az erőforrások törlését egy erőforráscsoport törlésekor.
+Ez a cikk az erőforráscsoportok és erőforrások törlését ismerteti. Leírja, hogy a Azure Resource Manager hogyan rendeli az erőforrások törlését az erőforráscsoport törlésekor.
 
-## <a name="determine-order-of-deletion"></a>Törlés sorrendjének meghatározása
+## <a name="delete-resource-group"></a>Erőforráscsoport törlése
+
+Az erőforráscsoport törléséhez használja az alábbi módszerek egyikét.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name <resource-group-name>
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az group delete --name <resource-group-name>
+```
+
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+
+1. A [portálon](https://portal.azure.com)válassza ki a törölni kívánt erőforráscsoportot.
+
+1. Válassza az **Erőforráscsoport törlése** elemet.
+
+   ![Erőforráscsoport törlése](./media/resource-group-delete/delete-group.png)
+
+1. A törlés megerősítéséhez írja be az erőforráscsoport nevét.
+
+---
+
+## <a name="delete-resource"></a>Erőforrás törlése
+
+Az erőforrások törléséhez használja az alábbi módszerek egyikét.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Remove-AzResource `
+  -ResourceGroupName ExampleResourceGroup `
+  -ResourceName ExampleVM `
+  -ResourceType Microsoft.Compute/virtualMachines
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az resource delete \
+  --resource-group ExampleResourceGroup \
+  --name ExampleVM \
+  --resource-type "Microsoft.Compute/virtualMachines"
+```
+
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+
+1. A [portálon](https://portal.azure.com)válassza ki a törölni kívánt erőforrást.
+
+1. Válassza a **Törlés** elemet. Az alábbi képernyőfelvételen egy virtuális gép felügyeleti lehetőségei láthatók.
+
+   ![Erőforrás törlése](./media/resource-group-delete/delete-resource.png)
+
+1. A rendszer kérésére erősítse meg a törlést.
+
+---
+
+## <a name="how-order-of-deletion-is-determined"></a>A törlés sorrendjének meghatározása
 
 Ha töröl egy erőforráscsoportot, a Resource Manager ahhoz, hogy törölje az erőforrást a határozza meg. Használja a következő sorrendben:
 
@@ -27,8 +89,6 @@ Ha töröl egy erőforráscsoportot, a Resource Manager ahhoz, hogy törölje az
 2. Erőforrások, amelyek egyéb erőforrások kezelése a következő törlődnek. Erőforrás rendelkezhet a `managedBy` tulajdonsága azt jelzik, hogy egy másik erőforrás kezeli azt. Ha ez a tulajdonság értéke, az erőforrást, amely kezeli a többi erőforrás törlődik, mielőtt a többi erőforrást.
 
 3. A további erőforrások az előző két kategóriába után törlődnek.
-
-## <a name="resource-deletion"></a>Erőforrás törlése
 
 A sorrend határozza meg, miután a Resource Manager problémák minden erőforrás egy törlési művelet. A folytatás előtt befejezéséhez függőségek vár.
 

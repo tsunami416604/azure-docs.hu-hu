@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2987f8fb116bfcbb1698335c3aca6f1fd8eb633e
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: f2f7e26e2f32ba02db9afc0676a99003717ff585
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717289"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991078"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Mi a Azure Active Directory Identity Protection (frissítve)?
 
@@ -50,9 +50,9 @@ Azure AD Identity Protection észleli a következő kockázati eseményeket:
 | --- | --- | --- |
 | Szokatlan útvonal | Jelentkezzen be egy atipikus helyről a felhasználó legutóbbi bejelentkezései alapján. | Offline |
 | Névtelen IP cím | Bejelentkezés névtelen IP-címről (például: Tor-böngésző, névtelenül VPN-ek). | Valós idejű |
-| Szokatlan bejelentkezési tulajdonságok | Jelentkezzen be a nemrégiben nem látott tulajdonságokkal az adott felhasználó számára. | Valós idejű |
+| Ismeretlen bejelentkezési tulajdonságok | Jelentkezzen be a nemrégiben nem látott tulajdonságokkal az adott felhasználó számára. | Valós idejű |
 | Kártevő szoftverrel összekapcsolt IP-cím | Bejelentkezés kártevővel összekapcsolt IP-címről | Offline |
-| Kiszivárgott hitelesítő adatok | Ez a kockázati esemény azt jelzi, hogy a felhasználó érvényes hitelesítő adatai kiszivárogtak | Offline |
+| Kiszivárgott hitelesítő adatok | Ez a kockázati esemény azt jelzi, hogy a felhasználó érvényes hitelesítő adatait kiszivárgott | Offline |
 
 ## <a name="types-of-risk"></a>Kockázati típusok 
 
@@ -145,13 +145,17 @@ További információ: [rendszergazdai szerepkörök hozzárendelésének Azure 
 >[!NOTE]
 > Az Identity Protection (frissítve) nyilvános előzetese során csak prémium szintű Azure AD P2-ügyfelek férhetnek hozzá a kockázatos felhasználók jelentéséhez és a kockázatos bejelentkezések jelentéséhez.
 
-| Képesség | Azure AD Premium P2 | Azure AD Premium P1 | Alapszintű Azure AD/ingyenes |
-| --- | --- | --- | --- |
-| Felhasználói kockázati házirend | Igen | Nem | Nem |
-| Bejelentkezési kockázati házirend | Igen | Nem | Nem |
-| Kockázatos felhasználók jelentés | Teljes hozzáférés | Korlátozott információ | Korlátozott információ |
-| Kockázatos bejelentkezési jelentések | Teljes hozzáférés | Korlátozott információ | Korlátozott információ |
-| MFA-regisztrációs szabályzat | Igen | Nem | Nem |
+| Képesség | Részletek | Azure AD Premium P2 | Azure AD Premium P1 | Alapszintű Azure AD/ingyenes |
+| --- | --- | --- | --- | --- |
+| Kockázati szabályzatok | Felhasználói kockázati házirend (Identity Protection használatával) | Igen | Nem | Nem |
+| Kockázati szabályzatok | Bejelentkezési kockázati szabályzat (Identity Protection vagy feltételes hozzáférés használatával) | Igen | Nem | Nem |
+| Biztonsági jelentések | Áttekintés | Igen | Nem | Nem |
+| Biztonsági jelentések | Kockázatos felhasználók | Teljes hozzáférés | Korlátozott információ | Korlátozott információ |
+| Biztonsági jelentések | Kockázatos bejelentkezések | Teljes hozzáférés | Korlátozott információ | Korlátozott információ |
+| Biztonsági jelentések | Kockázati észlelések | Teljes hozzáférés | Korlátozott információ | Nem |
+| Értesítések | Kockázatnak kitett felhasználók észlelt riasztásai | Igen | Nem | Nem |
+| Értesítések | Heti összefoglaló | Igen | Nem | Nem |
+| | MFA-regisztrációs szabályzat | Igen | Nem | Nem |
 
 ## <a name="next-steps"></a>További lépések 
 

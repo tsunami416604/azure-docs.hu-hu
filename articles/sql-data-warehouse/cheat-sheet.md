@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 04/17/2018
+ms.date: 08/23/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 38d353541b233f3cd9466e8dcf6c2b84083bd859
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 6c198b6d5e9ecfed3f36ddc3be831af85a913ca5
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515782"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995838"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Hasznos tanácsok az Azure SQL Data Warehouse-hoz
 Ez a témakör az Azure SQL Data Warehouse-megoldások összeállításával kapcsolatos hasznos tippeket és ajánlott eljárásokat tartalmaz. Mielőtt belekezdene, részletesen ismerje meg az egyes lépéseket az [Azure SQL Data Warehouse-munkaterhelési mintákat és kizárási mintákat](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns) ismertető témakör elolvasásával, amely leírja, mi az az SQL Data Warehouse.
@@ -96,9 +96,11 @@ További információk a [partíciókról].
 
 ## <a name="incremental-load"></a>Növekményes betöltés
 
-Ha növekményesen fogja betölteni az adatokat, először győződjön meg arról, hogy nagyobb méretű erőforrásosztályokat foglalt le az adatok betöltéséhez. A PolyBase és az ADF V2 használatát javasoljuk az ELT folyamatok SQL Data Warehouse-ban való automatizálásához.
+Ha növekményesen fogja betölteni az adatokat, először győződjön meg arról, hogy nagyobb méretű erőforrásosztályokat foglalt le az adatok betöltéséhez.  Ez különösen fontos a fürtözött oszlopcentrikus indexekkel rendelkező táblákba való betöltéskor.  További részletekért tekintse meg az [erőforrás-osztályok](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) című részt.  
 
-Az előzményadatokban lévő nagyméretű tömeges frissítéshez először törölje az érintett adatokat. Ezután végezze el az új adatok tömeges beszúrását. Ez a kétlépéses módszer hatékonyabb.
+A PolyBase és az ADF V2 használatát javasoljuk az ELT folyamatok SQL Data Warehouse-ban való automatizálásához.
+
+A korábbi adatain belüli nagy mennyiségű frissítéshez érdemes lehet egy [CTAS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) használni, hogy az INSERT, Update és DELETE helyett táblázatba írja a megőrizni kívánt adatmennyiséget.
 
 ## <a name="maintain-statistics"></a>Statisztikák karbantartása
  Az automatikus statisztikák általános elérhetővé válásáig az SQL Data Warehouse a statisztikák manuális karbantartását igényli. Fontos a statisztikák frissítése, mivel az adatokban *jelentős* változások történhetnek. Ez segít optimalizálni a lekérdezésterveket. Ha úgy gondolja, hogy túl sokáig tart az összes statisztika karbantartása, körültekintőbben válassza ki, mely oszlopok rendelkezzenek statisztikákkal. 
@@ -157,7 +159,7 @@ Egyetlen kattintással helyezhet üzembe küllőket az SQL-adatbázisokban az SQ
 <!--Other Web references-->
 [typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/
 [is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[adatok migrálásáról]:https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
+[adatok migrálásáról]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
 
 [Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
 [sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql

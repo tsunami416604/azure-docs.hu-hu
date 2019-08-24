@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 0e3803edd47c3589652b3fedecd12125e3ff40b7
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: b59bd7c7196ceb87da087967498eca6dda7c212b
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612799"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990602"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Red Hat Enterprise Linux 7 virtuális gépek csatlakoztatása felügyelt tartományokhoz
 Ez a cikk bemutatja, hogyan csatlakozhat egy Red Hat Enterprise Linux (RHEL) 7 virtuális géphez egy Azure AD Domain Services felügyelt tartományhoz.
@@ -84,7 +84,7 @@ Most, hogy a szükséges csomagok telepítve vannak a linuxos virtuális gépen,
 1. Fedezze fel a HRE Domain Services által felügyelt tartományt. Az SSH-terminálban írja be a következő parancsot:
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -100,7 +100,7 @@ Most, hogy a szükséges csomagok telepítve vannak a linuxos virtuális gépen,
     > * Adja meg a tartománynevet nagybetűvel, különben a kinit parancsot sikertelen lesz.
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. Csatlakoztassa a gépet a tartományhoz. Az SSH-terminálban írja be a következő parancsot:
@@ -111,7 +111,7 @@ Most, hogy a szükséges csomagok telepítve vannak a linuxos virtuális gépen,
     > Ha a virtuális gép nem tud csatlakozni a tartományhoz, győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoportja engedélyezi a kimenő Kerberos-forgalmat az 464-as TCP + UDP-porton az Azure AD DS felügyelt tartományának virtuális hálózati alhálózatán.
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM'
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM'
     ```
 
 Ha a gép sikeresen csatlakoztatva van a felügyelt tartományhoz, egy üzenetet kell kapnia ("a számítógép sikeres regisztrálása a tartományban").
@@ -120,10 +120,10 @@ Ha a gép sikeresen csatlakoztatva van a felügyelt tartományhoz, egy üzenetet
 ## <a name="verify-domain-join"></a>Tartományhoz való csatlakozás ellenőrzése
 Ellenőrizze, hogy a gép sikeresen csatlakozott-e a felügyelt tartományhoz. Kapcsolódjon a tartományhoz csatlakoztatott RHEL virtuális géphez egy másik SSH-kapcsolat használatával. Használjon tartományi felhasználói fiókot, és ellenőrizze, hogy a felhasználói fiók megfelelően van-e feloldva.
 
-1. Az SSH-terminálon írja be a következő parancsot a tartományhoz csatlakoztatott RHEL virtuális géphez való csatlakozáshoz az SSH használatával. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik (ebben azbob@contoso.COMesetben például "").
+1. Az SSH-terminálon írja be a következő parancsot a tartományhoz csatlakoztatott RHEL virtuális géphez való csatlakozáshoz az SSH használatával. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik (ebben azbob@CONTOSO.COMesetben például "").
     
     ```console
-    ssh -l bob@contoso.COM contoso-rhel.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-rhel.contoso.com
     ```
 
 2. Az SSH-terminálon írja be a következő parancsot annak ellenőrzéséhez, hogy a kezdőkönyvtár megfelelően lett-e inicializálva.

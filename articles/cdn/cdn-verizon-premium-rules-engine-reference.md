@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 5fc611af75a7f733576f9343a4375fb56cacc030
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: aab93204c850223756f28a56ea550f912e28e0d2
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67593146"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996756"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Azure CDN a Verizon Premium Rules motor referenciája
 
@@ -70,6 +70,8 @@ Speciális karakter | Leírás
 \* | A csillag lehetővé teszi, hogy az előző karakter nulla vagy több alkalommal legyen összepárosítva.
 Szóköz | A szóköz karaktert általában literál karakterként kezeli a rendszer.
 érték | Az aposztrófok literál karakterekként lesznek kezelve. Az idézőjelek halmaza nem rendelkezik speciális jelentéssel.
+
+A reguláris kifejezéseket támogató feltételek és funkciók egyeztetése a Perl-kompatibilis reguláris kifejezésekkel (PCRE) meghatározott mintákat fogad el.
 
 ## <a name="next-steps"></a>További lépések
 

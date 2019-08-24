@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 8/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 79a5f9a1269bdfc63d9d0b6fffd8458d011b777b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 13d6eb64b2089cf93f08c294cc9b6a2034b64fa0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640876"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990542"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center javaslatok használata a biztonság növelése érdekében
 A biztonsági szabályzat konfigurálásával, majd a Azure Security Center által biztosított javaslatok végrehajtásával csökkentheti a jelentős biztonsági események esélyét. Ebből a cikkből megtudhatja, hogyan használhatja a biztonsági házirendeket és javaslatokat a Security Center a biztonsági támadások enyhítése érdekében. 
@@ -75,6 +75,6 @@ A Security Center figyelési javaslatai segítenek a biztonsági rések megszün
 ## <a name="next-steps"></a>További lépések
 Győződjön meg arról, hogy van egy figyelési folyamat, amelyben rendszeresen ellenőrzi a Security Center található javaslatokat, így biztosíthatja, hogy az erőforrások az idő múlásával biztonságosak legyenek.
 
-Ez a forgatókönyv azt mutatja be, hogyan használhatók a biztonsági szabályzatok és javaslatok a Security Centerban a biztonsági támadások enyhítése érdekében. Tekintse [](security-center-incident-response.md) meg az incidensek válaszának forgatókönyvét, amelyből megtudhatja, hogy a támadás megkezdése előtt milyen incidensekre van szüksége.
+Ez a forgatókönyv azt mutatja be, hogyan használhatók a biztonsági szabályzatok és javaslatok a Security Centerban a biztonsági támadások enyhítése érdekében.
 
-Ismerje meg, hogyan reagálhat a fenyegetésekre az [incidensekre adott válasz](security-center-incident-response.md)alapján.
+Ismerje meg, hogyan reagálhat a fenyegetésekre a [biztonsági riasztások kezelésével és megválaszolásával](security-center-managing-and-responding-alerts.md).

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: efc721f7852d50e431be38f52e27d72ad7f3ae76
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 93f111eb4439b89ac367ad7e7b951e26cecb86e4
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877573"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981096"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
 
@@ -53,7 +53,7 @@ Nyers hiba – példa:
 
 **Okozhat** A bejelentkezett felhasználó nem rendelte hozzá a TenantCreator szerepkört a Azure Active Directory.
 
-**Javítsa ki** Kövesse a TenantCreator- [alkalmazás szerepkörének a Azure Active Directory-bérlőben](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant)lévő felhasználóhoz való hozzárendelésével kapcsolatos utasításokat. Az utasításokat követve egy felhasználó lesz hozzárendelve a TenantCreator szerepkörhöz.
+**Javítsa ki** Kövesse a TenantCreator- [alkalmazás szerepkörének a Azure Active Directory-bérlőben](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role)lévő felhasználóhoz való hozzárendelésével kapcsolatos utasításokat. Az utasításokat követve egy felhasználó lesz hozzárendelve a TenantCreator szerepkörhöz.
 
 ![Képernyőkép a hozzárendelt TenantCreator-szerepkörről.](media/TenantCreatorRoleAssigned.png)
 
@@ -324,7 +324,7 @@ Nyers hiba – példa:
 "message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
 ```
 
-**Okozhat** A megadott Windows virtuális asztali bérlői rendszergazdának az Azure multi-Factor Authentication (MFA) használatára van szüksége a bejelentkezéshez.
+**Okozhat** A megadott Windows virtuális asztali bérlői rendszergazdának az Azure Multi-Factor Authentication (MFA) használatára van szüksége a bejelentkezéshez.
 
 **Javítsa ki** Hozzon létre egy egyszerű szolgáltatásnevet, és rendeljen hozzá egy szerepkört a Windows rendszerű virtuális asztali [bérlőhöz az oktatóanyag lépéseinek követésével: Egyszerű szolgáltatások és szerepkör-hozzárendelések létrehozása a](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)PowerShell-lel. Miután meggyőződött arról, hogy be tud jelentkezni a Windows rendszerű virtuális asztalra az egyszerű szolgáltatással, futtassa újra az Azure Marketplace-ajánlatot vagy a GitHub-Azure Resource Manager sablont attól függően, hogy melyik módszert használja. A metódus helyes paramétereinek megadásához kövesse az alábbi utasításokat.
 

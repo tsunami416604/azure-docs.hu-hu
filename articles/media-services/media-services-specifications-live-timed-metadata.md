@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/2/2019
+ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 444d5ca996c014bdbf2e62cacf2563c7b63372e4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 19d3fe4285cf6bf316a0d445e49a398ed5d66a35
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69015717"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991786"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Időzített metaadatok jelzése élő adatfolyamban 
 
-Utolsó frissítés: 2019-07-02
+Utolsó frissítés: 2019-08-22
 
 ### <a name="conformance-notation"></a>Megfelelőségi jelölés
 
@@ -74,6 +74,7 @@ A következő dokumentumok olyan rendelkezéseket tartalmaznak, amelyek az ebben
 | [AMF0]            | ["A művelet üzenetének formátuma AMF0"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf) |
 | [DASH-IF-IOP]     | A DASH Industry Forum együttműködési útmutatója v 4,2[https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html) |
 | [HLS-TMD]         | HTTP Live Streaminghoz tartozó időzített metaadatok[https://developer.apple.com/streaming](https://developer.apple.com/streaming) |
+| [CMAF-ID3]         | [Időzített metaadatok a Common Media Application Format (CMAF) szolgáltatásban](https://aomediacodec.github.io/av1-id3/)
 | ID3v2           | ID3 tag verziója 2.4.0[http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure) |
 | [ISO-14496-12]    | ISO/IEC 14496-12: 12. rész ISO-alapú adathordozó-fájlformátum, FourthEdition 2012-07-15  |
 | [MPEGDASH]        | Information Technology – dinamikus adaptív átvitel HTTP-n keresztül (DASH) – 1. rész: A Media Presentation leírása és a szegmens formátuma. Május 2014. Közzétett. URL: https://www.iso.org/standard/65274.html |
@@ -95,21 +96,146 @@ A következő dokumentumok olyan rendelkezéseket tartalmaznak, amelyek az ebben
 
 ## <a name="2-timed-metadata-ingest"></a>2. Időzített metaadatok betöltése
 
-## <a name="21-rtmp-ingest"></a>2,1 RTMP betöltés
+Azure Media Services támogatja a valós idejű sávon belüli metaadatokat mind az [RTMP], mind a Smooth Streaming [MS-SSTR-betöltés] protokoll esetében. A valós idejű metaadatok egyéni események definiálására használhatók saját egyedi sémákkal (JSON, bináris, XML), valamint az iparág által definiált formátumokkal (például ID3 vagy SCTE-35) a szórásos streamekben. 
 
-Az [RTMP] lehetővé teszi, hogy az időzített metaadatok a [RTMP] streamben beágyazott [AMF0] Cue-üzenetekként legyenek elküldve. Előfordulhat, hogy a rendszer elküldte a Cue-üzeneteket a tényleges esemény vagy a [SCTE35] ad-összekötési jel előtt. Ennek a forgatókönyvnek a támogatásához a rendszer az esemény tényleges idejét küldi el a végszó üzenetben. További információ: [AMF0].
+Ez a cikk részletesen ismerteti, hogyan lehet a Media Services támogatott betöltési protokolljainak használatával egyéni időzített metaadatokat küldeni. A cikk azt is ismerteti, hogyan történik a HLS, a kötőjel és a Smooth Streaming jegyzékfájljának az időzített metaadatokkal való megjelenítése, valamint a sávon belüli átvitel módja, ha a tartalmat a rendszer a CMAF (MP4-töredékek) vagy a HLS Transport stream (TS) szegmensének használatával továbbítja. 
+
+Gyakori használati esetek az időzített metaadatok esetében:
+
+ - SCTE-35 ad-jelek az ad-megszakítások aktiválására élő vagy lineáris szórás esetén
+ - Egyéni ID3-metaadatok, amelyek aktiválják az eseményeket egy ügyfélalkalmazás (böngésző, iOS vagy Android)
+ - Egyéni JSON-, bináris vagy XML-metaadatok egy ügyfélalkalmazás eseményeinek elindításához
+ - Telemetria egy élő kódolóból, IP-kamerából vagy drone-ből
+ - Olyan IP-kamera eseményei, mint például a mozgás, az Arcfelismerés stb.
+ - A földrajzi helyzet információi egy művelet kamerából, a droneból vagy az eszköz áthelyezése
+ - Song lyrics
+ - A program határai a lineáris élő hírcsatornán
+ - Az élő hírcsatornán megjelenítendő képek vagy kibővített metaadatok
+ - Sportesemények vagy játék-óra információk
+ - Interaktív hirdetési csomagok a böngészőben megjelenített videó mellett
+ - Tesztek és lekérdezések
+  
+Azure Media Services az élő események és a csomagolók képesek fogadni ezeket az időzített metaadatokat, és olyan metaadatokba konvertálják őket, amelyek a szabványokon alapuló protokollok, például a HLS és a DASH használatával érik el az ügyfélalkalmazások elérését.
+
+
+## <a name="21-rtmp-timed-metadata"></a>2,1 RTMP időzített metaadatok
+
+Az [RTMP] protokoll lehetővé teszi, hogy a rendszer időzített metaadatokat küldjön a különböző forgatókönyvekhez, beleértve az egyéni metaadatokat és a SCTE-35 ad-jeleket. 
+
+A hirdetési jelek (Cue-üzenetek) az [RTMP] streamben beágyazott [AMF0] Cue-üzenetekként lesznek elküldve. Előfordulhat, hogy a rendszer elküldte a Cue-üzeneteket a tényleges esemény vagy a [SCTE35] ad-összekötési jel előtt. Ennek a forgatókönyvnek a támogatásához a rendszer az esemény tényleges idejét küldi el a végszó üzenetben. További információ: [AMF0].
+
+A következő [AMF0] parancsokat az RTMP betöltéséhez Azure Media Services támogatja:
+
+- **onUserDataEvent** – egyéni metaadatok vagy [ID3v2] időzített metaadatok használata
+- **onAdCue** – elsősorban az élő streamben a hirdetmények elhelyezésére szolgáló lehetőség jelzésére használatos. A Cue két formája támogatott, egy egyszerű mód és egy "SCTE-35" üzemmód. 
+- **onCuePoint** – bizonyos helyszíni hardveres kódolók, például az elemi élő kódoló által támogatott jelek [SCTE35] üzenetek. 
+  
 
 Az alábbi táblázatok ismertetik az AMF üzenet adattartalomának formátumát, amelyet a Media Services a "Simple" és a [SCTE35] üzenet módokon is betölt.
 
 A [AMF0] üzenet neve több, egyazon típusú esemény-adatfolyam megkülönböztetésére használható.  A [SCTE-35] és az "Simple" mód esetében az AMF-üzenet nevének "onAdCue" értékűnek kell lennie az [Adobe-főkiszolgálói] specifikációban leírtak szerint.  Az alább nem felsorolt mezőket figyelmen kívül kell hagyni a betöltéskor Azure Media Services.
 
-## <a name="211-rtmp-signal-syntax"></a>2.1.1 RTMP-jel szintaxisa
+## <a name="211-rtmp-with-custom-metadata-using-onuserdataevent"></a>2.1.1 RTMP egyéni metaadatokkal a "onUserDataEvent" használatával
+
+Ha a felsőbb rétegbeli kódolótól, az IP-kamerától, a drone-től vagy az eszköztől az RTMP protokollt használó egyéni metaadatokat szeretne biztosítani, használja a "onUserDataEvent" [AMF0] adatüzenet parancs típusát.
+
+A **"onUserDataEvent"** adatüzenet-parancsnak a következő definícióval ellátott üzenettel kell rendelkeznie a Media Services és a sávon belüli fájlformátumba való becsomagolással, valamint a HLS, a Dash és a Smooth kifejezésekkel való rögzítéshez.
+Azt javasoljuk, hogy az időzített metaadatokat legfeljebb 0,5 másodpercenként (500ms) többször küldje el. Minden üzenet több képkockából is összesítheti a metaadatokat, ha frame szintű metaadatokat kell megadnia. Ha a többszörös átviteli sebességű streameket küld, javasoljuk, hogy a metaadatokat csak egyetlen bitráta esetén adja meg, hogy csökkentse a sávszélességet, és ne zavarja a videó/hang feldolgozását. 
+
+A **"onUserDataEvent"** értékének a következőnek kell lennie: [MPEGDASH] EventStream XML Format üzenet. Ez megkönnyíti az olyan egyéni definiált sémák átadását, amelyek a sávon belüli "emsg" adattartalomban hajthatók végre a CMAF [MPEGCMAF] tartalmak esetében, amelyeket HLS vagy DASH protokollon keresztül továbbítanak. Minden DASH Event stream-üzenet tartalmaz egy schemeIdUri, amely URN-üzenet séma-azonosítóként működik, és meghatározza az üzenet hasznos adatait. Egyes sémák (például https://aomedia.org/emsg/ID3"" for [ID3v2], vagy **urn: SCTE: scte35:2013: bin** for [SCTE-35]) szabványosítva vannak az iparági konzorciumok közötti együttműködésre. Bármely alkalmazás-szolgáltató definiálhatja saját egyéni sémáját egy olyan URL-cím használatával, amelyet a vezérlő (a tulajdonában lévő tartomány) határoz meg, és az adott URL-címen megadhat egy specifikációt. Ha egy lejátszó rendelkezik kezelővel a definiált sémához, akkor ez az egyetlen olyan összetevő, amelynek ismernie kell a hasznos adatokat és a protokollt.
+
+Az [MPEG-DASH] EventStream XML-adattartalom sémája a következőképpen van definiálva: (kivonat a DASH ISO-IEC-23009-1-3rd Edition kiadásból). Vegye figyelembe, hogy jelenleg csak egy "EventType" adható meg "EventStream". A rendszer csak az első **esemény** elemét dolgozza fel, ha több esemény van megadva a **EventStream**.
+
+```xml
+  <!-- Event Stream -->
+  <xs:complexType name="EventStreamType">
+    <xs:sequence>
+      <xs:element name="Event" type="EventType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute ref="xlink:href"/>
+    <xs:attribute ref="xlink:actuate" default="onRequest"/>
+    <xs:attribute name="schemeIdUri" type="xs:anyURI" use="required"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="timescale" type="xs:unsignedInt"/>
+  </xs:complexType>
+  <!-- Event  -->
+  <xs:complexType name="EventType">
+    <xs:sequence>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="presentationTime" type="xs:unsignedLong" default="0"/>
+    <xs:attribute name="duration" type="xs:unsignedLong"/>
+    <xs:attribute name="id" type="xs:unsignedInt"/>
+    <xs:attribute name="contentEncoding" type="ContentEncodingType"/>
+    <xs:attribute name="messageData" type="xs:string"/>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+```
+
+
+### <a name="example-xml-event-stream-with-id3-schema-id-and-base64-encoded-data-payload"></a>Példa XML-eseményre az ID3 séma-AZONOSÍTÓval és a Base64 kódolású adattartalommal.  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="https://aomedia.org/emsg/ID3">
+         <Event contentEncoding="Base64">
+          -- base64 encoded ID3v2 full payload here per [CMAF-TMD] --
+         </Event>
+   <EventStream>
+```
+
+### <a name="example-event-stream-with-custom-schema-id-and-base64-encoded-binary-data"></a>Példa az esemény-adatfolyamra egyéni séma-AZONOSÍTÓval és Base64 kódolású bináris adattal  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="urn:example.org:custom:binary">
+         <Event contentEncoding="Base64">
+          -- base64 encoded custom binary data message --
+         </Event>
+   <EventStream>
+```
+
+### <a name="example-event-stream-with-custom-schema-id-and-custom-json"></a>Példa az Event Streamre egyéni séma-AZONOSÍTÓval és egyéni JSON-vel  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="urn:example.org:custom:JSON">
+         <Event>
+          [
+            {"key1" : "value1"},
+            {"key2" : "value2"}
+          ]
+         </Event>
+   <EventStream>
+```
+
+### <a name="built-in-supported-scheme-id-uris"></a>Beépített támogatott séma azonosító URI-k
+| Séma AZONOSÍTÓjának URI-ja                 |  Leírás                                             |
+|-------------------------------|----------------------------------------------------------|
+| https://aomedia.org/emsg/ID3   | Leírja, hogy a [ID3v2] metaadatok hogyan hajthatók végre időzített metaadatokként egy CMAF-kompatibilis [MPEGCMAF] darabolt MP4-ben. További információért lásd az [időzített metaadatokat a Common Media Application Format (CMAF) alkalmazásban.](https://aomediacodec.github.io/av1-id3/) |
+
+### <a name="event-processing-and-manifest-signaling"></a>Események feldolgozása és jegyzékfájlok jelzése
+
+Egy érvényes **"onUserDataEvent"** esemény kézhezvétele után a Azure Media Services egy érvényes XML-adattartalmat keres, amely megfelel a EventStreamType ([MPEGDASH]), elemezve az XML-adattartalmat, és átalakítja a [MPEGCMAF] MP4-töredék "emsg" 1. verziójára tárolás az élő archívumban és továbbítás a Media Services csomagolóhoz.   A csomagoló a "emsg" mezőt fogja felderíteni az élő streamben, és:
+
+- (a) "dinamikusan csomagolt" – a terminálszolgáltatási szegmensek számára történő kézbesítés a HLS-ügyfeleknek a HLS időzített metaadatok specifikációjának megfelelően [HLS-TMD], vagy
+- (b) továbbítsa azt a CMAF-töredékek HLS vagy KÖTŐJELen keresztül történő kézbesítéséhez, vagy 
+- (c) Smooth Streaming [MS-SSTR] használatával átalakíthatja a továbbítást egy ritka nyomon követési jelre.
+
+Amellett, hogy a sávon belüli "emsg" formátum CMAF vagy TS PES-csomagok a HLS-hez, a kötőjel (MPD) jegyzékfájlja, és Smooth Streaming tartalmazni fog egy hivatkozást a sávon belüli esemény-adatfolyamokra (más néven a Smooth Streaming). 
+
+Az egyes események vagy adattartalmaik nem közvetlenül a HLS, KÖTŐJELhez vagy simított jegyzékfájlokhoz tartoznak. 
+
+### <a name="additional-informational-constraints-and-defaults-for-onuserdataevent-events"></a>További tájékoztató megkötések és alapértékek a onUserDataEvent eseményeihez
+
+- Ha az időskála nincs beállítva a EventStream elemben, a rendszer alapértelmezés szerint az RTMP-1Khz időkeretét használja.
+- Egy onUserDataEvent-üzenet kézbesítése a 500ms-k maximális száma szerint van korlátozva. Ha gyakrabban küld eseményeket, az hatással lehet az élő csatorna sávszélességére és stabilitására.
+
+## <a name="212-rtmp-ad-cue-signaling-with-oncuepoint"></a>2.1.2 RTMP ad Cue-jelzés a "onCuePoint" kifejezéssel
 
 Azure Media Services több [AMF0] típusú üzenet figyelésére és reagálására is képes, amelyek különböző valós idejű szinkronizált metaadatokat jelezhetnek az élő adatfolyamban.  Az [Adobe-főkiszolgálói] specifikáció két, "Simple" és "SCTE-35" üzemmódú Cue-típust határoz meg. Az "egyszerű" mód esetében Media Services támogatja a "onAdCue" nevű egyetlen AMF Cue-üzenetet egy olyan adattartalom használatával, amely megfelel az "egyszerű mód" jel számára az alábbi táblázatnak.  
 
 A következő szakasz az RTMP "Simple" (egyszerű) üzemmódját mutatja be, amely a HLS, DASH és Microsoft Smooth Streaming ügyfél-jegyzékfájlján keresztül átvitt alapvető "spliceOut" ad-jel jelzésére használható. Ez olyan esetekben hasznos, amikor az ügyfél nem rendelkezik összetett SCTE-35-alapú ad-jelző üzembe helyezési vagy beszúrási rendszerrel, és egy alapszintű helyszíni kódolót használ, amely egy API-n keresztül küldi el a végszó-üzenetet. A helyszíni kódoló általában egy REST-alapú API-t támogat a jel elindításához, ami "összefonási feltételt" is biztosít a videó streamnek, ha beszúr egy IDR-keretet a videóba, és új GOP-t indít el.
 
-## <a name="212--simple-mode-ad-signaling-with-rtmp"></a>2.1.2 egyszerű üzemmódú ad-jelzés RTMP-vel
+## <a name="213--rtmp-ad-cue-signaling-with-oncuepoint---simple-mode"></a>2.1.3 RTMP ad Cue-jelzés "onCuePoint" – egyszerű mód
 
 | Mező neve | Mező típusa | Kötelező? | Leírások                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
@@ -121,7 +247,7 @@ A következő szakasz az RTMP "Simple" (egyszerű) üzemmódját mutatja be, ame
 
 ---
  
-## <a name="213-scte-35-mode-ad-signaling-with-rtmp"></a>2.1.3 SCTE-35 módú ad-jelzés RTMP-vel
+## <a name="214-rtmp-ad-cue-signaling-with-oncuepoint---scte-35-mode"></a>2.1.4 RTMP ad Cue-jelzés "onCuePoint"-SCTE-35 móddal
 
 Ha olyan speciális szórási üzemi munkafolyamattal dolgozik, amelyhez a teljes SCTE-35 adattartalom-üzenetet át kell vinni a HLS vagy a DASH jegyzékfájlba, érdemes az [Adobe-főkiszolgálói] specifikáció "SCTE-35" módszerét használni.  Ez a mód támogatja a sávon kívüli SCTE-35 jeleket, amelyek közvetlenül a helyszíni élő kódolóba kerülnek, amely ezután az [Adobe-főkiszolgálói] specifikációban megadott "SCTE-35 mód" használatával kódolja a jeleket az RTMP-adatfolyamba. 
 
@@ -139,7 +265,7 @@ Ebben az esetben a következő adattartalomot kell elküldeni a helyszíni kódo
 | time       | Number     | Kötelező | Az esemény vagy az ad összekötésének megjelenítési ideje.  A megjelenítési időt és az időtartamot az 1. és 2. típusú stream hozzáférési pontokkal (SAP) **kell** összehangolni az [ISO-14496-12] i. mellékletben meghatározottak szerint. A kimenő HLS esetében az időt és az időtartamot a szegmens határaihoz **kell** igazítani. Az azonos esemény-adatfolyamon belüli különböző események megjelenítési ideje és időtartama nem lehet átfedésben. Az egységek töredékes másodpercek.
 
 ---
-## <a name="214-elemental-live-oncuepoint-ad-markers-with-rtmp"></a>2.1.4 elemi élő "onCuePoint" ad-jelölők RTMP-vel
+## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>2.1.5 RTMP ad-jelzés a "onCuePoint" elemmel élő
 
 A helyszíni élő helyszíni kódoló az RTMP-jel ad-jelölőit támogatja. A Azure Media Services jelenleg csak a "onCuePoint" ad-jelölő típusát támogatja az RTMP-hez.  Ez a "**ad_markers**" érték "onCuePoint" értékre állításával engedélyezhető az Adobe RTMP-csoport beállításaiban az elemi média élő kódoló beállításaiban vagy API-ban.  A részletekért tekintse meg az Element Live dokumentációját. Ha engedélyezi ezt a funkciót az RTMP-csoportban, a SCTE-35 jeleket továbbít az Adobe RTMP-kimenetekre, amelyeket Azure Media Services fog feldolgozni.
 
@@ -156,7 +282,7 @@ Az "onCuePoint" típusú üzenet típusa az [Adobe-Flash-AS] értékben van defi
 
 Ha ezt az ad-jelölőt használja, a HLS jegyzékfájl kimenete az Adobe "Simple" (egyszerű) üzemmódhoz hasonló. 
 
-### <a name="215-cancellation-and-updates"></a>2.1.5 Törlés és frissítések
+### <a name="216-cancellation-and-updates"></a>2.1.6 törlése és frissítése
 
 Az üzenetek megvonhatók vagy frissíthetők úgy, hogy több üzenetet küldenek ugyanazzal a megjelenítési idővel és AZONOSÍTÓval. A megjelenítési idő és az azonosító egyedi módon azonosítja az eseményt, és egy adott bemutatási időre kapott utolsó üzenet, amely megfelel az előzetes korlátozásoknak, az az üzenet, amelyet a rendszer elvégez. A frissített esemény felülírja a korábban fogadott üzeneteket. A pre-roll korlátozás négy másodperc. A bemutató időpontja előtt legalább négy másodpercig fogadott üzenetek lesznek elvégezve.
 
@@ -465,6 +591,13 @@ Ha az üzenetek a fent ismertetett formátumban vannak megadva, a rendszer elkü
 Ha teszteli a megvalósítást a Azure Media Services platformmal, először a "pass-through" LiveEvent kell elkezdeni a tesztelést, mielőtt a kódolást LiveEvent.
 
 ---
+
+## <a name="change-history"></a>Módosítási előzmények
+
+| Date     | Módosítások                                                                            |
+|----------|------------------------------------------------------------------------------------|
+| 07/2/19  | Átdolgozott RTMP betöltés a SCTE35-támogatáshoz, új RTMP "onCuePoint" | 
+| 08/22/19 | Frissítve a OnUserDataEvent és az RTMP egyéni metaadatokhoz való hozzáadásához                         |
 
 ## <a name="next-steps"></a>További lépések
 Megtekintheti Media Services képzési útvonalakat.

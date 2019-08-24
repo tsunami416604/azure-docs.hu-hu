@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b7265f8d5ec4b7336253787e9cb881900a52b79
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 29a30e466e78c3a71764b36bf8337aaeae8981f7
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963449"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980495"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory
 
@@ -87,7 +87,9 @@ Minden bejelentkezéskor Azure Active Directory kiértékel minden házirendet, 
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Működik a feltételes hozzáférés az Exchange ActiveSync szolgáltatással?
 
-Igen, bizonyos korlátozásokkal használhatja az Exchange ActiveSync-t egy feltételes hozzáférési [](block-legacy-authentication.md)szabályzatban. 
+Igen, az Exchange ActiveSync használatát feltételes hozzáférési szabályzatban használhatja.
+
+Egyes felhőalapú alkalmazások, például a SharePoint Online és az Exchange Online is támogatják az örökölt hitelesítési protokollokat. Ha egy ügyfélalkalmazás örökölt hitelesítési protokollt használ egy felhőalapú alkalmazás eléréséhez, az Azure AD nem kényszerítheti ki a feltételes hozzáférési szabályzatot erre a hozzáférési kísérletre. Annak megakadályozása érdekében, hogy egy ügyfélalkalmazás megkerüljék a házirendek kényszerítését, ellenőriznie kell, hogy csak a modern hitelesítést lehet-e engedélyezni az érintett Felhőbeli alkalmazásokban.
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Hogyan konfigurálhatja a feltételes hozzáférést az Office 365-alkalmazásokkal?
 

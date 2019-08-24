@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: c1f3d1ec7bb9e9f449cea3f9aa36ca8f80348c6e
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: dc76d9a0d492d8ef0e37c0c34173216ff4c75164
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612817"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990564"
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>CoreOS Linux rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz
 Ez a cikk bemutatja, hogyan csatlakozhat egy CoreOS Linux rendszerű virtuális géphez az Azure-ban egy Azure AD Domain Services felügyelt tartományhoz.
@@ -79,9 +79,9 @@ Ezután frissítse a SSSD konfigurációs fájlját ("/etc/sssd/sssd.conf") a k�
 [sssd]
 config_file_version = 2
 services = nss, pam
-domains = contoso.COM
+domains = CONTOSO.COM
 
-[domain/contoso.COM]
+[domain/CONTOSO.COM]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad
@@ -99,17 +99,17 @@ ldap_force_upper_case_realm = true
 fallback_homedir = /home/%d/%u
 
 krb5_server = contoso.com
-krb5_realm = contoso.COM
+krb5_realm = CONTOSO.COM
 ```
 
-Cserélje le a contosot. COM "a felügyelt tartomány DNS-tartománynevével. Győződjön meg arról, hogy az conf fájlban a tartománynevet nagybetűvel adja meg.
+Cserélje le a CONTOSOt. COM "a felügyelt tartomány DNS-tartománynevével. Győződjön meg arról, hogy az conf fájlban a tartománynevet nagybetűvel adja meg.
 
 
 ## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>A linuxos virtuális gép csatlakoztatása a felügyelt tartományhoz
 Most, hogy a szükséges csomagok telepítve vannak a linuxos virtuális gépen, a következő feladat a virtuális gép csatlakoztatása a felügyelt tartományhoz.
 
 ```console
-sudo adcli join -D contoso.COM -U bob@contoso.COM -K /etc/krb5.keytab -H contoso-coreos.contoso.com -N coreos
+sudo adcli join -D CONTOSO.COM -U bob@CONTOSO.COM -K /etc/krb5.keytab -H contoso-coreos.contoso.com -N coreos
 ```
 
 
@@ -129,10 +129,10 @@ sudo systemctl start sssd.service
 ## <a name="verify-domain-join"></a>Tartományhoz való csatlakozás ellenőrzése
 Ellenőrizze, hogy a gép sikeresen csatlakozott-e a felügyelt tartományhoz. Kapcsolódjon a tartományhoz csatlakoztatott CoreOS virtuális géphez egy másik SSH-kapcsolat használatával. Használjon tartományi felhasználói fiókot, és ellenőrizze, hogy a felhasználói fiók megfelelően van-e feloldva.
 
-1. Az SSH-terminálon írja be a következő parancsot a tartományhoz csatlakoztatott CoreOS virtuális géphez való csatlakozáshoz az SSH használatával. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik (ebben azbob@contoso.COMesetben például "").
+1. Az SSH-terminálon írja be a következő parancsot a tartományhoz csatlakoztatott CoreOS virtuális géphez való csatlakozáshoz az SSH használatával. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik (ebben azbob@CONTOSO.COMesetben például "").
     
     ```console
-    ssh -l bob@contoso.COM contoso-coreos.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-coreos.contoso.com
     ```
 
 2. Az SSH-terminálon írja be a következő parancsot annak ellenőrzéséhez, hogy a kezdőkönyvtár megfelelően lett-e inicializálva.

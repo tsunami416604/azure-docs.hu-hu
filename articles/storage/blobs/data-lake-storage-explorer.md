@@ -1,6 +1,6 @@
 ---
 title: A Azure Storage Explorer használatával kezelheti az adatAzure Data Lake Storage Gen2
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre fájlrendszert egy Azure Data Lake Storage Gen2-fiókban, valamint egy könyvtárat és egy fájlt a Azure Storage Explorer használatával. Ezután megtudhatja, hogyan töltheti le a fájlt a helyi számítógépre, és hogyan tekintheti meg az összes fájlt egy címtárban.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre tárolót egy Azure Data Lake Storage Gen2-fiókban, valamint egy könyvtárat és egy fájlt a Azure Storage Explorer használatával. Ezután megtudhatja, hogyan töltheti le a fájlt a helyi számítógépre, és hogyan tekintheti meg az összes fájlt egy címtárban.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3450de26c12d91f4be00fe39bd5703564c786190
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 95d7a58c8188e8c6633f6be50af608aed437edff
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855614"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991419"
 ---
 # <a name="use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage Gen2-fiókban tárolt adatkezelés Azure Storage Explorer használata
 
@@ -41,13 +41,13 @@ A csatlakozás befejeztével az Azure Storage Explorer betöltést követően me
 
 ![Microsoft Azure Storage Explorer – Csatlakozás ablak](media/storage-quickstart-blobs-storage-explorer/mainpage.png)
 
-## <a name="create-a-file-system"></a>Fájlrendszer létrehozása
+## <a name="create-a-container"></a>Tároló létrehozása
 
 A Blobok mindig egy könyvtárba lesznek feltöltve. Így a blobok csoportjait ugyanúgy rendszerezheti, ahogy a fájlokat a számítógép mappáiban.
 
-A címtár létrehozásához bontsa ki a folytatás lépésben létrehozott Storage-fiókot. Válassza a **blob-tároló**elemet, kattintson a jobb gombbal, majd válassza a blob- **tároló létrehozása**lehetőséget. Adja meg a fájlrendszer nevét. Ha elkészült, nyomja le az **ENTER** billentyűt a fájlrendszer létrehozásához. A blob könyvtárának sikeres létrehozása után a rendszer a kiválasztott Storage-fiók **blob Container** mappájában jelenik meg.
+A címtár létrehozásához bontsa ki a folytatás lépésben létrehozott Storage-fiókot. Válassza a **blob-tároló**elemet, kattintson a jobb gombbal, majd válassza a blob- **tároló létrehozása**lehetőséget. Adja meg a tároló nevét. Ha elkészült, nyomja le az **ENTER** billentyűt a tároló létrehozásához. A blob könyvtárának sikeres létrehozása után a rendszer a kiválasztott Storage-fiók **blob Container** mappájában jelenik meg.
 
-![Microsoft Azure Storage Explorer-fájlrendszer létrehozása](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
+![Microsoft Azure Storage Explorer-tároló létrehozása](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
 
 ## <a name="upload-blobs-to-the-directory"></a>Blobok feltöltése a könyvtárba
 

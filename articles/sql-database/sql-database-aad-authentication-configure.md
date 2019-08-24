@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: b6414ac41b1bb43e3fe1470a7ae2b1358126003a
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a14926dea576e0331cb8c0f8010f060f47faa3e7
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68569682"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991166"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory hitelesítés konfigurálása és kezelése SQL-sel
 
@@ -327,7 +327,7 @@ Ha ellenőrizni szeretné, hogy az Azure AD-rendszergazda megfelelően van-e be�
 Egy Azure AD-alapú tárolt adatbázis-felhasználó (az adatbázist birtokló kiszolgáló rendszergazdája kivételével) kiépítéséhez kapcsolódjon az adatbázishoz egy olyan Azure AD-identitással, amely hozzáféréssel rendelkezik az adatbázishoz.
 
 > [!IMPORTANT]
-> Azure Active Directory hitelesítés támogatása [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) és a Visual Studio 2015 [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) érhető el. A SSMS augusztusi 2016-es kiadása a Active Directory univerzális hitelesítés támogatását is tartalmazza, amely lehetővé teszi a rendszergazdák számára a többtényezős hitelesítés megkövetelését telefonhívás, szöveges üzenet, intelligens kártya PIN-kóddal vagy a Mobile App Notification használatával.
+> Azure Active Directory hitelesítés támogatása [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) és a Visual Studio 2015 [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) érhető el. A SSMS augusztusi 2016-es kiadása a Active Directory univerzális hitelesítés támogatását is magában foglalja, amely lehetővé teszi, hogy a rendszergazdák telefonhívást, szöveges üzenetet, intelligens kártyákat PIN-kóddal vagy a mobil alkalmazások értesítésével megkövetelje Multi-Factor Authentication használatát.
 
 ## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Azure AD-identitás használata a SSMS vagy a SSDT használatával történő kapcsolódáshoz
 
@@ -412,6 +412,9 @@ További információ: [SQL Server biztonsági blog](https://blogs.msdn.microsof
 ### <a name="sqlcmd"></a>sqlcmd
 
 A következő utasítások az Sqlcmd 13,1-es verziójának használatával csatlakoznak, amely a [letöltőközpontból](https://go.microsoft.com/fwlink/?LinkID=825643)érhető el.
+
+> [!NOTE]
+> `sqlcmd`a paranccsal `-G` nem működik a rendszeridentitások használata, és a felhasználónak egyszerű felhasználónevet kell bejelentkeznie.
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  

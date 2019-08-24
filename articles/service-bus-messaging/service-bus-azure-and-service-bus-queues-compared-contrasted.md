@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 32c903e5d469a9a3e7b98bd406b5512d752bb210
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
-ms.translationtype: MT
+ms.openlocfilehash: 0ebf18fe2dc6906bc2c06d94388d126fb55c6024
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017794"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981419"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tárolási várólisták és Service Bus várólisták – összehasonlítás és kontrasztos
 Ez a cikk a Microsoft Azure ma által kínált két típusú várólista közötti különbségeket és hasonlóságokat elemzi: Tárolási várólisták és Service Bus várólisták. Ezekre az információkra alapozva összehasonlíthatók az egyes technológiák, és megfontoltabb döntéseket lehet hozni arról, hogy melyik megoldás felel meg leginkább az igényeknek.
@@ -68,7 +68,7 @@ Ez a szakasz összehasonlítja a tárolási várólisták és a Service Bus vár
 | Összehasonlítási feltételek | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
 | Megrendelés jótállása |**Nem** <br/><br>További információkért tekintse meg a "További információ" című szakasz első megjegyzését.</br> |**Igen – elsőként elsőként ki (FIFO)**<br/><br>(üzenetküldési munkamenetek használatával) |
-| Kézbesítési garancia |**At-Least-Once** |**At-Least-Once**<br/><br/>**At-Most-Once** |
+| Kézbesítési garancia |**At-Least-Once** |**Legalább egyszer** (PeekLock fogadási mód használata – ez az alapértelmezett beállítás) <br/><br/>Legfeljebb **egyszer** (ReceiveAndDelete fogadási mód használata) <br/> <br/> További információ a különböző [fogadási módokról](service-bus-queues-topics-subscriptions.md#receive-modes)  |
 | Atomi működés támogatása |**Nem** |**Igen**<br/><br/> |
 | Fogadások viselkedése |**Nem blokkoló**<br/><br/>(azonnal befejeződik, ha nem található új üzenet) |**Blokkolás/időkorlát nélkül**<br/><br/>(hosszú lekérdezéseket, vagy az ["Comet Technique"](https://go.microsoft.com/fwlink/?LinkId=613759)-t kínál)<br/><br/>**Nem blokkoló**<br/><br/>(csak .NET felügyelt API-k használatával) |
 | Leküldéses stílusú API |**Nem** |**Igen**<br/><br/>A [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) és a **OnMessage** munkamenetek .NET API-ját. |

@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e820ed25cae23a2dad37c807eb3e188161eaecbf
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 2063dd22e3253b0707f6920f3a5c0c7a6bb01126
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617696"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992326"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage Gen2 Storage-fiók létrehozása
 
-Azure Data Lake Storage Gen2 [támogatja a hierarchikus névteret](data-lake-storage-introduction.md) , amely a Hadoop-ELOSZTOTT fájlrendszer (HDFS) való együttműködésre szabott natív, címtáron alapuló fájlrendszert biztosít. A 2. generációs Data Lake Storage-adatok a HDFS-ből az [ABFS illesztőprogramon](data-lake-storage-abfs-driver.md) keresztül érhetők el.
+Azure Data Lake Storage Gen2 [támogatja a hierarchikus névteret](data-lake-storage-introduction.md) , amely a Hadoop-ELOSZTOTT fájlrendszer (HDFS) való együttműködésre szabott natív címtár-alapú tárolót biztosít. A 2. generációs Data Lake Storage-adatok a HDFS-ből az [ABFS illesztőprogramon](data-lake-storage-abfs-driver.md) keresztül érhetők el.
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre fiókot az [Azure Portal](https://portal.azure.com/), az [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) használatával.
 

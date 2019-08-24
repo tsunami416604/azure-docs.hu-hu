@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
-ms.date: 08/06/2019
-ms.openlocfilehash: c7092b2cbcef01ef71261b6f5498cde56a40c358
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 08/22/2019
+ms.openlocfilehash: 476b8cff23d09d81fe356a6445e27794b267d9a2
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857247"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998106"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight
 
@@ -29,7 +29,7 @@ A fürtök létrehozásával kapcsolatos hibák leggyakoribb kiváltó okai a k�
 
 ## <a name="permissions-issues"></a>Engedélyekkel kapcsolatos problémák
 
-Ha Data Lake Storage Gen 2-t használja, ügyeljen arra, hogy a HDInsight-fürthöz rendelt, felhasználó által hozzárendelt felügyelt identitás a **Storage blob adatközreműködői** szerepkörben vagy a **Storage blob-adatok tulajdonosi szerepkörében**legyen. Lásd: a [Azure Data Lake Storage Gen2 használata az Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) -fürtökkel a telepítési utasítások végrehajtásához.
+Ha a 2. generációs Azure Data Lake Storage használja, és a következő hibaüzenetet kapja: "Ez a kérelem nem jogosult a művelet végrehajtására ezen engedély használatával", nyissa meg a Azure Portal, lépjen a Storage-fiókjába, és a Access Control (IAM) területen ellenőrizze, hogy a **tárolási blob** Az adatközreműködő vagy a **Storage blob** -adattulajdonosi szerepkör-szerepkör hozzá van rendelve a **felhasználóhoz rendelt felügyelt identitáshoz** az előfizetéshez. Részletes utasításokért lásd: a felügyelt identitáshoz tartozó [engedélyek beállítása a Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) -fiókban.
 
 Ha az 1. generációs Data Lake Storage használja, tekintse meg a telepítési és konfigurációs utasításokat [itt](../hdinsight-hadoop-use-data-lake-store.md). A Data Lake Storage Gen 1 nem támogatja a HBase-fürtöket, és a HDInsight 4,0-es verziójában nem támogatott.
 
@@ -73,6 +73,8 @@ Győződjön meg arról, hogy az [Azure HDInsight támogatott verzióját](../hd
 ## <a name="storage-account-name-restrictions"></a>Storage-fiók nevének korlátozásai
 
 A Storage-fiókok neve nem lehet hosszabb 24 karakternél, és nem tartalmazhat speciális karaktert. Ezek a korlátozások az alapértelmezett tárolónévre is vonatkoznak a tárfiókban.
+
+Más elnevezési korlátozások is érvényesek a fürtök létrehozására. További információért lásd a [fürt nevének korlátozásait](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name).
 
 ## <a name="service-outages"></a>Szolgáltatások kimaradásai
 

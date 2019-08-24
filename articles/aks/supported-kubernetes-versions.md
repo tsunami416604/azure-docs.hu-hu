@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 0f2d3079de43767e61dfc1c8d77244da19f13a40
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
-ms.translationtype: HT
+ms.openlocfilehash: 0e26b9b5aee61f399a39c032cdbd2084884538c9
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898862"
+ms.locfileid: "69982714"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Támogatott Kubernetes-verziók az Azure Kubernetes szolgáltatásban (ak)
 
@@ -30,7 +30,6 @@ A Kubernetes a szabványos [szemantikai verziószámozási](https://semver.org/)
 Example:
   1.12.14
   1.12.15
-  1.13.7
 ```
 
 A verzióban lévő egyes számok általános kompatibilitást jeleznek az előző verzióval:
@@ -39,7 +38,7 @@ A verzióban lévő egyes számok általános kompatibilitást jeleznek az előz
 * Az alverziók akkor változnak, ha a funkcionalitás változása visszamenőlegesen kompatibilis a többi másodlagos kiadással.
 * A javítási verziók megváltoznak, ha visszamenőlegesen kompatibilis hibajavítás történik.
 
-Általánosságban elmondható, hogy a felhasználóknak futtatniuk kell a futtatott alverzió legújabb javítási kiadását, például ha az üzemi fürt a *1.13.6* -on található, és a *1.13.7* az *1,13* sorozat legújabb elérhető javítási verziója. frissítsen a *1.13.7* -re, amint biztos lehet abban, hogy a fürt teljes mértékben kijavított és támogatott.
+Általánosságban elmondható, hogy a felhasználóknak futtatniuk kell a futtatott alverzió legújabb javítását, például ha az üzemi fürt a *1.12.14* -on található, és a *1.12.15* az *1,12* sorozat legújabb elérhető javítási verziója. , a *1.12.15* -re kell frissítenie, amint biztos lehet abban, hogy a fürt teljes mértékben kijavított és támogatott.
 
 ## <a name="kubernetes-version-support-policy"></a>A Kubernetes verziótámogatási szabályzata
 

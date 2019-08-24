@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 151eb535e70bd485c978ac21539c784bbea0a532
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9331473402ddd22180df3b404824969360d48164
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973232"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995814"
 ---
 # <a name="opc-vault-architecture"></a>OPC-tár architektúrája
 
@@ -88,3 +88,10 @@ A gyári hálózat globális felderítési kiszolgálójának támogatásához a
 ## <a name="yet-unsupported-features"></a>Még nem támogatott funkciók
 
 a **(*)** még nem támogatott.
+
+## <a name="next-steps"></a>További lépések
+
+Most, hogy megismerte az OPC Vault architektúráját, itt látható a következő lépés:
+
+> [!div class="nextstepaction"]
+> [OPC-tároló létrehozása és üzembe helyezése](howto-opc-vault-deploy.md)

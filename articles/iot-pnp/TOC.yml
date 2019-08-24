@@ -12,7 +12,7 @@
     - name: Eszköz csatlakoztatása az IoT Hubhoz
       href: quickstart-connect-pnp-device.md
     - name: Eszköz csatlakoztatása az IoT Centralhoz
-      href: 'https://aka.ms/iot-central-connect-qs'
+      href: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Csatlakozás a megoldásban található eszközhöz
       href: quickstart-connect-pnp-device-solution.md
 - name: Oktatóanyagok
@@ -50,7 +50,7 @@
 - name: Referencia
   items:
     - name: REST
-      href: 'https://aka.ms/iot-pnp-rest'
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'
     - name: REST biztonsági jogkivonat létrehozása
       href: howto-generate-sas-token.md
 - name: Kapcsolódó témakörök
@@ -58,7 +58,7 @@
     - name: Megoldások
       items:
         - name: IoT-központ
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /azure/iot-central
         - name: IoT-megoldásgyorsítók
           href: /azure/iot-accelerators
     - name: Platformszolgáltatások

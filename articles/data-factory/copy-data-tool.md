@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása eszköz az Azure Data Factory |} A Microsoft Docs
-description: Ismerteti az Azure Data Factory felhasználói felületén az adatok másolása eszközzel
+title: Adatok másolása eszköz Azure Data Factory | Microsoft Docs
+description: Információt nyújt a Adatok másolása eszközről Azure Data Factory felhasználói felületen
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -11,76 +11,76 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: 107687c785433f81870449d1445136b5148a4d2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 144a991eb911fa6a337b6711515bd5760456fc10
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787695"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996389"
 ---
-# <a name="copy-data-tool-in-azure-data-factory"></a>Adatok másolása eszköz az Azure Data Factoryban
-Az Azure Data Factory az adatok másolása eszköz megkönnyíti a, és optimalizálja a folyamatot, az adatok feldolgozására, ami általában az első lépés az adatok végpontok közötti integrációs forgatókönyve a data lake-be.  Hogy időt takaríthat meg, különösen akkor használhatja az Azure Data Factory betölteni az adatokat egy adatforrásból az első alkalommal. Ez az eszköz használatának előnyei a következők:
+# <a name="copy-data-tool-in-azure-data-factory"></a>Adatok másolása eszköz a Azure Data Factory
+A Azure Data Factory Adatok másolása eszköz megkönnyíti és optimalizálja az adatfeldolgozás folyamatát egy adattóba, ami általában egy teljes körű adatintegrációs forgatókönyv első lépése.  Időt takaríthat meg, különösen akkor, ha a Azure Data Factory használatával tölti be az adatforrásból az adatok első alkalommal történő betöltését. Az eszköz használatának néhány előnye:
 
-- Az Azure Data Factory az adatok másolása eszköz használatakor nem kell ismernie a Data Factory társított szolgáltatásokat, adatkészleteket, folyamatokat, tevékenységek és eseményindítók definíciói. 
-- A folyamat az adatok másolása eszköz az adatok betöltését a data lake intuitív. Az eszköz automatikusan létrehozza a szükséges adat-előállító erőforrásokat adatokat másol a kiválasztott forrásadattár a kiválasztott cél/fogadó adattárba. 
-- Az adatok másolása eszközzel segít, időpontjában szerzői műveletek, amelyek elkerülheti a saját maga elején lehetséges hibákat betöltött adatok érvényesítése.
-- Az adatok betöltése egy data lake az összetett üzleti logikát kell, ha a Data Factory-erőforrások használatával a Data Factory felhasználói felületén szerzői tevékenység – adatok másolása eszköz által létrehozott továbbra is szerkeszthető. 
+- A Azure Data Factory Adatok másolása eszköz használatakor nincs szükség a társított szolgáltatások, adatkészletek, folyamatok, tevékenységek és eseményindítók Data Factory-definícióinak megismerésére. 
+- A Adatok másolása eszköz folyamata intuitív módon tölti be az adatbevitelt egy adattóba. Az eszköz automatikusan létrehozza az összes szükséges Data Factory erőforrást, hogy az adatok a kiválasztott forrás adattárból a kiválasztott célhelyre/fogadó adattárba másolva legyenek. 
+- A Adatok másolása eszköz segítségével érvényesítheti a szerzői műveletek során betöltött adatmennyiséget, ami segít elkerülni a lehetséges hibákat az elején.
+- Ha összetett üzleti logikát kell megvalósítani az adatgyűjtés egy adattóba való betöltéséhez, akkor továbbra is szerkesztheti a Adatok másolása eszköz által létrehozott Data Factory erőforrásokat a Data Factory felhasználói felületen a felhasználónkénti szerzői művelettel. 
 
-A következő táblázat nyújt útmutatást a mikor érdemes használni az adatok másolása eszközzel és a tevékenység szerinti szerzői műveletek a Data Factory felhasználói felületén: 
+Az alábbi táblázat útmutatást nyújt arra vonatkozóan, hogy mikor kell használni a Adatok másolása eszközt és a tevékenységhez tartozó szerzői műveleteket Data Factory felhasználói felületen: 
 
-| Adatok másolása eszköz | Egy (másolási) tevékenység készítése |
+| Adatok másolása eszköz | /Tevékenység (másolási tevékenység) készítése |
 | -------------- | -------------------------------------- |
-| Azt szeretné, amellyel egyszerűen készíthet egy Adatbetöltési feladat anélkül, hogy megismerkedett az Azure Data Factory-entitásokat (társított szolgáltatásokat, adatkészleteket, folyamatokat stb.) | A data lake való betöltésének összetett és rugalmas logikát szeretné. |
-| Szeretné gyorsan nagy mennyiségű adat összetevők betöltése a data lake. | Másolási tevékenységgel ellátott tisztító és feldolgozási adatok egymást követő tevékenységek láncolt szeretné. |
+| Az Azure Data Factory entitások (társított szolgáltatások, adatkészletek, folyamatok stb.) megismerése nélkül szeretne egyszerűen felépíteni egy betöltési feladatot. | Összetett és rugalmas logikát kíván megvalósítani az adatgyűjtés a Lake-be való betöltéséhez. |
+| Gyorsan nagy mennyiségű adatösszetevőt szeretne betölteni egy adattóba. | A másolási tevékenységet a következő tevékenységekkel szeretné átmásolni az adattisztításhoz vagy az adatfeldolgozáshoz. |
 
-Adatok másolása eszköz elindításához kattintson a **adatok másolása** csempére az adat-előállító kezdőlapja.
+Az Adatok másolása eszköz elindításához kattintson az adatgyár kezdőlapján található **adatok másolása** csempére.
 
-![Első lépéseket ismertető oldalon – adatok másolása eszköz mutató hivatkozás](./media/copy-data-tool/get-started-page.png)
+![Első lépések lap – hivatkozás Adatok másolása eszközre](./media/copy-data-tool/get-started-page.png)
 
 
-## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Az adatok betöltését a data lake intuitív folyamat
-Ez az eszköz lehetővé teszi, hogy könnyedén áthelyezheti az adatokat a különféle forrásokból származó célhelyre percek alatt egy intuitív folyamat:  
+## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Intuitív folyamat az adatbevitelhez egy adattóba
+Ez az eszköz lehetővé teszi, hogy a különböző forrásokból származó adatok könnyedén áthelyezhetők legyenek a célhelyekre egy intuitív folyamattal:  
 
-1. A beállítások konfigurálása a **forrás**.
-2. A beállítások konfigurálása a **cél**. 
-3. Konfigurálása **speciális beállítások** például oszlop-hozzárendelés, finomhangolása és tartalék tűrését másolási művelet. 
-4. Adjon meg egy **ütemezés** az adatok betöltése a feladatot. 
-5. Felülvizsgálat **összefoglaló** a Data Factory-entitásokat létrehozni. 
-6. **Szerkesztés** frissíteni a beállításokat a másolási tevékenység, igény szerint a folyamat. 
+1. Konfigurálja a **forrás**beállításait.
+2. Adja meg a **célhely**beállításait. 
+3. Konfigurálja a másolási művelet **speciális beállításait** , például az oszlopok leképezését, a teljesítmény beállításait és a hibatűrési beállításokat. 
+4. Az adatok betöltésére szolgáló feladat ütemtervének megadása. 
+5. Tekintse át a létrehozandó Data Factory entitások **összegzését** . 
+6. A folyamat **szerkesztésével módosítsa** a másolási tevékenység beállításait igény szerint. 
 
-   Az eszközt úgy tervezték, big Data típusú szem előtt a kezdetektől a változatos és -típusokat támogatja. Több száz mappákat, fájlokat vagy táblákat áthelyezése használhatja azt. Az eszköz automatikus adatelőnézet, séma rögzítése és automatikus hozzárendelés és az adatok szűrése, valamint támogatja.
+   Az eszközt úgy tervezték, hogy a kezdéstől big data szem előtt tartva a különböző adatok és objektumtípusok támogatását. Több száz mappa, fájl vagy tábla áthelyezésére is használható. Az eszköz támogatja az automatikus adatelőnézett, a sémák rögzítését és az automatikus leképezést, valamint az adatszűrést is.
 
 ![Adatok másolása eszköz](./media/copy-data-tool/copy-data-tool.png)
 
 ## <a name="automatic-data-preview"></a>Automatikus adatelőnézet
-Megtekintheti az adatokat a kiválasztott adattár, amely lehetővé teszi, hogy az adatok másolásakor ellenőrzése része. Emellett ha a forrásadatok egy szövegfájlba, az adatok másolása eszköz automatikusan észleli a sor- és elválasztó karakterek és séma a szövegfájl elemzi.
+Az adatok egy részét előzetesen megtekintheti a kiválasztott forrás adattárból, amely lehetővé teszi a másolt adatok érvényesítését. Emellett, ha a forrásadatok szövegfájlban találhatóak, a Adatok másolása eszköz elemzi a szövegfájlt, hogy automatikusan felderítse a sor-és oszlop-határolójeleket és a sémát.
 
-![Fájlbeállítások](./media/copy-data-tool/file-format-settings.png)
+![Fájl beállításai](./media/copy-data-tool/file-format-settings.png)
 
-Az észlelés: után
+Az észlelés után:
 
-![Észlelt beállítások és az előzetes verzió](./media/copy-data-tool/after-detection.png)
+![Észlelt fájl beállításai és előnézet](./media/copy-data-tool/after-detection.png)
 
-## <a name="schema-capture-and-automatic-mapping"></a>Séma rögzítése és automatikus hozzárendelés
-Az adatforrás sémája nem lehet ugyanaz, mint az adatokat a rendeltetési sok esetben a séma. Ebben a forgatókönyvben a forrás-séma oszlopait a célséma oszlopokat kell.
+## <a name="schema-capture-and-automatic-mapping"></a>Séma rögzítése és automatikus leképezése
+Előfordulhat, hogy az adatforrás sémája nem egyezik meg az adatforrások sémájának számos esetben. Ebben a forgatókönyvben a forrás sémából származó oszlopokat kell leképeznie a célként megadott sémából származó oszlopokra.
 
-Az adatok másolása eszközzel figyeli, és megtanulja a viselkedés, forrás-és cél között oszlopok leképezésekor. Után válasszon ki egy vagy több oszlop forrásadattár, és megfeleltet az a cél-sémát, az adatok másolása eszközzel elindul, a minta mindkét oldalról kiválasztott oszlop párokhoz elemzéséhez. Ezt követően ugyanezt a mintát vonatkozik a többi oszlopot. Ezért látja összes oly módon, ha azt szeretné, hogy csupán néhány kattintás után a cél az oszlopok van leképezve.  Ha nem elégedett a kiválasztott oszlop leképezése az adatok másolása eszköz által biztosított, figyelmen kívül hagyásához, és folytassa az oszlopok leképezése a manuálisan. Ugyanakkor az adatok másolása eszközzel folyamatosan tanul és frissíti a minta, és végső soron eléri az oszlopleképezéshez használatával kíván elérni a megfelelő minta. 
+A Adatok másolása eszköz figyeli és megtanulja a viselkedését, ha a forrás-és a célhelyek közötti oszlopokat térképezi fel. Miután kiválasztotta a forrás adattárból egy vagy több oszlopot, és leképezi őket a célként megadott sémába, a Adatok másolása eszköz elkezdi elemezni a két oldalról kiválasztott oszlop párok mintázatát. Ezt követően ugyanezt a mintát alkalmazza a többi oszlopra is. Ezért láthatja, hogy az összes oszlop hozzá van rendelve a célhoz úgy, ahogy azt több kattintás után szeretné.  Ha nem elégedett az Adatok másolása eszköz által biztosított oszlop-hozzárendelési lehetőséggel, akkor figyelmen kívül hagyhatja, és folytathatja az oszlopok manuális leképezését. Eközben a Adatok másolása eszköz folyamatosan megtanulja és frissíti a mintát, és végül eléri a megfelelő mintát a elérni kívánt oszlop-hozzárendeléshez. 
 
 > [!NOTE]
-> Ha az adatok másolása az SQL Server- vagy Azure SQL Database az Azure SQL Data Warehouse, ha a tábla nem létezik a cél-tárolóban, az adatok másolása eszköz támogatja a tábla létrehozása automatikusan a forrás-séma használatával. 
+> Ha az adatok másolása SQL Server vagy Azure SQL Database a Azure SQL Data Warehouse, ha a tábla nem létezik a célhelyen, Adatok másolása eszköz támogatja a tábla automatikus létrehozását a forrásoldali séma használatával. 
 
-## <a name="filter-data"></a>Adatok szűrése
-Szűrhet a forrásadatok csak kell másolni a fogadó adattárba adatok kiválasztásához. Szűrés csökkenti az adatmennyiséget a fogadó adattárba másolandó, és ezért növeli az átviteli sebességet, a másolási művelet. Copy Data eszköz egy relációs adatbázisban lévő adatok szűrése egy rugalmas módon biztosít az SQL lekérdezési nyelvet, vagy a fájlok használatával egy Azure blob-mappába. 
+## <a name="filter-data"></a>Adatszűrés
+A forrásadatok szűrésével kiválaszthatja azokat az adatforrásokat, amelyeket át kell másolni a fogadó adattárba. A szűrés csökkenti a fogadó adattárba másolandó adatok mennyiségét, így fokozza a másolási művelet átviteli sebességét. Az Adatok másolása eszköz rugalmas módot biztosít a kapcsolódó adatbázisok adatszűrésére az SQL-lekérdezési nyelv vagy egy Azure Blob mappában található fájlok használatával. 
 
-### <a name="filter-data-in-a-database"></a>Adatbázis adatainak szűrése
-Az alábbi képernyőképen látható szűrje az adatokat egy SQL-lekérdezést.
+### <a name="filter-data-in-a-database"></a>Adatszűrés egy adatbázisban
+Az alábbi képernyőfelvételen egy SQL-lekérdezés látható az adatszűréshez.
 
-![Adatbázis adatainak szűrése](./media/copy-data-tool/filter-data-in-database.png)
+![Adatszűrés egy adatbázisban](./media/copy-data-tool/filter-data-in-database.png)
 
-### <a name="filter-data-in-an-azure-blob-folder"></a>Adatok szűrése egy Azure blob-mappába
-A mappa elérési útjának változók használatával adatokat másol egy mappát. A támogatott értékek: **{year}** , **{month}** , **{day}** , **{hour}** , és **{minute}** . Például: inputfolder / {year} / {month} / {day}. 
+### <a name="filter-data-in-an-azure-blob-folder"></a>Az Azure Blob mappában lévő Adatszűrés
+A mappa elérési útja változóit használhatja az adatok mappából való másolásához. A támogatott változók a következők: **{Year}** , **{month}** , **{Day}** , **{Hour}** és **{minute}** . Például: inputfolder/{Year}/{month}/{Day}. 
 
-Tegyük fel, hogy a bemeneti mappa a következő formátumban: 
+Tegyük fel, hogy a bemeneti mappák a következő formátumban vannak: 
 
 ```
 2016/03/01/01
@@ -89,25 +89,25 @@ Tegyük fel, hogy a bemeneti mappa a következő formátumban:
 ...
 ```
 
-Kattintson a **Tallózás** gombot **fájl vagy mappa**, tallózással keresse meg az egyik mappát (például 2016 -> 03 -> 01-02 >), kattintson **válasszon**. 2016/03/01/02 a szövegmezőben kell megjelennie. 
+Kattintson a **fájl vagy mappa** **Tallózás** gombjára, keresse meg az egyik mappát (például 2016-> 03-> 01-> 02), és kattintson a **választás**gombra. A szövegmezőben a 2016/03/01/02 értéknek kell megjelennie. 
 
-Ezután cserélje le **2016** a **{year}** , **03** a **{month}** , **01** a **{day}** , és **02** a **{hour}** , és nyomja le a **lapon** kulcs. Válassza ki ezeket a változókat formátumát, legördülő listák kell megjelennie:
+Ezután cserélje le a **2016** -et **{Year}** , **03** és { **month}** , **01** és **{Day}** , valamint **02** és **{Hour}** értékűre, majd nyomja le a **Tab** billentyűt. A következő négy változó formátumának kiválasztásához le kell látnia a legördülő listát:
 
-![A szűrő fájl vagy mappa](./media/copy-data-tool/filter-file-or-folder.png)
+![Fájl vagy mappa szűrése](./media/copy-data-tool/filter-file-or-folder.png)
 
-Az adatok másolása eszközzel létrehoz paraméterek kifejezések, funkciók és rendszerváltozók használható, amelyek {year}, {month}, {day}, {hour}, {minute}, folyamat létrehozásakor és. További információkért lásd: a [olvasására vagy írására hogyan particionált adatok](how-to-read-write-partitioned-data.md) cikk.
+A Adatok másolása eszköz olyan kifejezésekkel, függvényekkel és rendszerváltozókkal rendelkező paramétereket hoz létre, amelyek az {Year}, a {month}, a {Day}, a {Hour} és a {Minutes} ábrázolására használhatók a folyamat létrehozásakor.
 
 ## <a name="scheduling-options"></a>Ütemezési beállítások
-Futtathatja a másolási művelet egyszer vagy ütemterv alapján (óránként, naponta, és így tovább). Ezek a beállítások az összekötők különböző környezetekben, beleértve a helyszíni, felhőbeli és helyi asztali használható. 
+A másolási műveletet egyszer vagy időpontban is futtathatja (óránként, naponta stb.). Ezek a lehetőségek különböző környezetekben, például a helyszíni, a Felhőbeli és a helyi asztali összekötők számára is használhatók. 
 
-Egy egyszeri másolási művelet csak egyszer lehetővé teszi adatok áthelyezése egy forrásból egy célhelyre. Bármilyen méretű és bármely támogatott formátumú adatok vonatkozik. Az ütemezett másolási lehetővé teszi egy Ön által megadott ismétlődési az adatok másolása. Gazdag beállítások (például az újrapróbálkozási, időtúllépés és riasztások) segítségével konfigurálhatja a ütemezett példányt.
+Az egyszeri másolási művelettel csak egyszer engedélyezhető az adatáthelyezés a forrásból a célhelyre. Bármilyen méretű és bármilyen támogatott formátumú adatmennyiségre vonatkozik. Az ütemezett másolás lehetővé teszi az Adatmásolást a megadott ismétlődési időpontra. Az ütemezett másolás konfigurálásához használhat gazdag beállításokat (például újrapróbálkozás, időtúllépés és riasztások).
 
 ![Ütemezési beállítások](./media/copy-data-tool/scheduling-options.png)
 
 
 ## <a name="next-steps"></a>További lépések
-Próbálja meg ezek az oktatóanyagok, amely az adatok másolása eszközzel:
+Próbálja ki ezeket az oktatóanyagokat, amelyek az Adatok másolása eszközt használják:
 
-- [Gyors útmutató: hozzon létre egy adat-előállítót az adatok másolása eszközzel](quickstart-create-data-factory-copy-data-tool.md)
-- [Oktatóanyag: adatok másolása az Azure-ban az adatok másolása eszközzel](tutorial-copy-data-tool.md) 
-- [Oktatóanyag: másolási a helyszíni adatok az Azure-ban az adatok másolása eszközzel](tutorial-hybrid-copy-data-tool.md)
+- [Gyors útmutató: adatelőállító létrehozása a Adatok másolása eszköz használatával](quickstart-create-data-factory-copy-data-tool.md)
+- [Oktatóanyag: az Azure-beli Adatmásolás az Adatok másolása eszköz használatával](tutorial-copy-data-tool.md) 
+- [Oktatóanyag: helyszíni adatai másolása az Azure-ba az Adatok másolása eszköz használatával](tutorial-hybrid-copy-data-tool.md)

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: bbbb570cc042d5faa16b66c42aef9792b24fdb12
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: dc9f59894da071e956283591cf7206bc371650b7
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854053"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991432"
 ---
 # <a name="pre-filtering-manifests-by-using-dynamic-packager"></a>A jegyzékfájlok előzetes szűrése dinamikus csomagoló használatával
 
@@ -107,7 +107,7 @@ Itt látható a szűrt eszköz:
 
 ## <a name="adjusting-the-presentation-window-dvr"></a>A bemutató ablak módosítása (DVR)
 
-A Azure Media Services jelenleg körkörös archiválási lehetőséget kínál, ahol az időtartam 5 perc és 25 óra között állítható be. A jegyzékfájlok szűrésével az Archívum felső részén, az adathordozó törlése nélkül hozhat létre egy gördülő DVR-ablakot. A műsorszolgáltatók számos szituációban szeretnék biztosítani, hogy az élő Edge-vel való áthelyezés és a nagyobb archiválási időszak megtartása mellett egy korlátozott DVR-ablakot is biztosítson. A műsorszolgáltató érdemes lehet a DVR ablakon kívüli adatmennyiséget használni a klipek kiemeléséhez, vagy különböző DVR-ablakokat szeretne biztosítani különböző eszközökhöz. A mobileszközök többsége például nem kezeli a nagyméretű DVR-ablakokat (a mobileszközök esetében 2 perces DVR-ablakot, az asztali ügyfelek esetében pedig 1 órát is igénybe vehet).
+A Azure Media Services jelenleg körkörös archívumot biztosít, ahol az időtartam 1 perc és 25 óra között konfigurálható. A jegyzékfájlok szűrésével az Archívum felső részén, az adathordozó törlése nélkül hozhat létre egy gördülő DVR-ablakot. A műsorszolgáltatók számos szituációban szeretnék biztosítani, hogy az élő Edge-vel való áthelyezés és a nagyobb archiválási időszak megtartása mellett egy korlátozott DVR-ablakot is biztosítson. A műsorszolgáltató érdemes lehet a DVR ablakon kívüli adatmennyiséget használni a klipek kiemeléséhez, vagy különböző DVR-ablakokat szeretne biztosítani különböző eszközökhöz. Előfordulhat például, hogy a mobileszközök többsége nem kezeli a nagyméretű DVR-ablakokat (a mobileszközök esetében 2 perces DVR-ablakot és asztali ügyfelek számára egy órát is igénybe vehet).
 
 ![DVR ablak][dvr_filter]
 

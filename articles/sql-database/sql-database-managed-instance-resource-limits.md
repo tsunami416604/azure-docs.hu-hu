@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: e5dc449dc51faccdd8c0e69337cc5f8ac19fa296
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 776a27ca0babfd7557bf4d16c449a8dfa5bceaf7
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874398"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998203"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -42,7 +42,8 @@ Azure SQL Database felügyelt példány két hardveres generáción is üzembe h
 | Példányok maximálisan fenntartott tárterülete |  Általános célú: 8 TB<br/>Üzletileg kritikus: 1 TB | Általános célú: 8 TB<br/> Üzletileg kritikus 1 TB, 2 TB vagy 4 TB a magok számától függően |
 
 > [!IMPORTANT]
-> Az új Gen4-adatbázisok már nem támogatottak a Kelet-Ausztrália vagy Brazília déli régiójában.
+> - A Gen4 hardvere folyamatban van. Ajánlott új felügyelt példányokat telepíteni a Gen5 hardveren.
+> - A Gen4 hardver jelenleg a következő régiókban érhető el: Észak-Európa, Nyugat-Európa, az USA keleti régiója, az USA déli középső régiója, az USA északi középső régiója, az USA nyugati régiója, USA középső régiója, Közép-Kanada, Dél-India, Délkelet-Ázsia
 
 ### <a name="service-tier-characteristics"></a>Szolgáltatási szintek jellemzői
 
@@ -80,8 +81,8 @@ A felügyelt példány jelenleg csak a következő típusú előfizetések eset�
 - [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 - [Utólagos elszámolás](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [Felhőalapú szolgáltató (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
-- [Enterprise dev/test](https://azure.microsoft.com/offers/ms-azr-0148p/)
-- [Utólagos elszámolású fejlesztési/tesztelési funkciók](https://azure.microsoft.com/offers/ms-azr-0023p/)
+- [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
+- [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Előfizetések havi Azure-Kredittel a Visual Studio-előfizetőknek](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
 
 ## <a name="regional-resource-limitations"></a>Regionális erőforrásokra vonatkozó korlátozások
@@ -106,7 +107,7 @@ A következő táblázat a támogatott előfizetések alapértelmezett regionál
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional és MSDN platformok|2|32|
 
-\*Az üzemelő példányok tervezésekor vegye figyelembe, hogy egy üzletileg kritikus (BC) virtuális mag (a hozzáadott redundancia miatt) több, mint egy általános célú (GP) virtuális mag kapacitást használ. Tehát a számítások esetében 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben a felügyelt példányok telepítve vannak, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával**.
+\*Az üzembe helyezések megtervezése során vegye figyelembe, hogy üzletileg kritikus (BC) szolgáltatási szintet négy (4) alkalommal kell virtuális mag, mint a általános célú (GP) szolgáltatási szintet. Példa: 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben a felügyelt példányok telepítve vannak, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával**.
 
 \*\*A nagyobb alhálózat-és virtuális mag korlátozások a következő régiókban érhetők el: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati régiója
 

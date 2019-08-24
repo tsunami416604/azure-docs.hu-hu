@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/28/2019
+ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ea247907aebc241fb8f1b266ad55bc2fc983607f
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: c971e84a12b23625326d63b3493395f1d1381937
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853988"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996898"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Python-alkalmazás létrehozása Azure App Service Linux rendszeren (előzetes verzió)
 
@@ -41,7 +41,7 @@ A Cloud Shellben hozzon létre egy quickstart könyvtárat, és lépjen a könyv
 ```bash
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 Ezután futtassa a következő parancsot a mintaalkalmazás-adattár a quickstart könyvtárba való klónozásához.
@@ -165,7 +165,7 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 ## <a name="next-steps"></a>További lépések
 
-A Linuxon futó App Service beépített Python rendszerképe jelenleg előzetes verzióban érhető el, és lehetőség van az alkalmazásindítási parancs testreszabására. Éles Python-alkalmazásokat egyéni tároló használatával is létrehozhat.
+A Linuxon futó App Service beépített Python-rendszerképe jelenleg előzetes verzióban érhető el, és testreszabhatja az alkalmazás indításához használt parancsot. Éles Python-alkalmazásokat egyéni tároló használatával is létrehozhat.
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Python-alkalmazás a PostgreSQL-sel](tutorial-python-postgresql-app.md)

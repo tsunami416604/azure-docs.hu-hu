@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: ce6fc5d32fc9e17499a56cec7f4db2849370a1ec
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d9d70444adee26eab77c0e3d256cd8f340a1b4c8
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566716"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981166"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Nagy kapacitású szolgáltatási szintet akár 100 TB-ig
 
@@ -110,7 +110,7 @@ A további írásvédett számítási csomópontok gyors üzembe helyezésének 
 
 Nagy kapacitású-adatbázis hozható létre a [Azure Portal](https://portal.azure.com), a [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), a [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) vagy a [parancssori](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)felület használatával. A nagy kapacitású-adatbázisok csak a [virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)használatával érhetők el.
 
-A következő T-SQL-parancs egy nagy kapacitású-adatbázist hoz létre. Az `CREATE DATABASE` utasításban meg kell adni a kiadás és a szolgáltatás célját is. Tekintse át az érvényes szolgáltatási célkitűzések listáját az [erőforrás-korlátok között](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier) .
+A következő T-SQL-parancs egy nagy kapacitású-adatbázist hoz létre. Az `CREATE DATABASE` utasításban meg kell adni a kiadás és a szolgáltatás célját is. Tekintse át az érvényes szolgáltatási célkitűzések listáját az [erőforrás-korlátok között](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) .
 
 ```sql
 -- Create a HyperScale Database
@@ -232,7 +232,7 @@ Ezek a nagy kapacitású szolgáltatási szintjére vonatkozó jelenlegi korlát
 | Rugalmas készletek |  A rugalmas készletek jelenleg nem támogatottak SQL Database nagy kapacitású.|
 | A nagy kapacitású-re történő áttelepítés jelenleg egyirányú művelet | Ha egy adatbázis át lett telepítve a nagy kapacitású-be, az nem telepíthető át közvetlenül egy nem nagy kapacitású szolgáltatási rétegre. Jelenleg az egyik lehetőség, hogy az adatbázist a nagy kapacitású-ről a nem nagy kapacitású-re telepítse át, egy BACPAC-fájl használatával exportálja/importálja.|
 | Adatbázisok áttelepítése állandó memóriában tárolt objektumokkal | A nagy kapacitású csak a nem állandó memóriabeli objektumokat támogatja (a táblák típusai, a natív SPs és a functions).  Az állandó memóriában lévő táblákat és egyéb objektumokat el kell dobni, és nem memóriában lévő objektumként kell újból létrehozni, mielőtt áttelepíti az adatbázist a nagy kapacitású szolgáltatási szintjére.|
-| Adatkövetés módosítása | A nagy kapacitású-adatbázisokkal nem fogja tudni használni az adatváltozások nyomon követését. |
+| Változások követése | Nem fogja tudni használni a Change Trackingt nagy kapacitású-adatbázisokkal. |
 | Georeplikáció  | Azure SQL Database nagy kapacitású esetében még nem konfigurálhatja a Geo-replikációt.  Elvégezheti a Geo-visszaállításokat (az adatbázis visszaállítása más földrajzi helyen, DR vagy más célra) |
 | TDE/AKV-integráció | A Azure Key Vault (általában saját kulcsú vagy BYOK) használatával történő transzparens adatbázis-titkosítás még nem támogatott Azure SQL Database nagy kapacitású, azonban a szolgáltatás által felügyelt kulcsokkal való TDE teljes mértékben támogatott. |
 |Intelligens adatbázis-funkciók | 1. Index létrehozása, a drop index tanácsadói modelljei nincsenek betanítva a nagy kapacitású-adatbázisok számára. <br/>2. Sémabeli probléma, DbParameterization – a közelmúltban hozzáadott tanácsadók nem támogatottak a nagy kapacitású-adatbázisokban.|

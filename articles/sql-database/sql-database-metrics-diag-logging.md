@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: a1475188d2e1ab0db3dfd9775fc37d3fc0a17158
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b35533eeb4c4a364588dbea11f74e8d6b76df3b
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567262"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998220"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrikák és diagnosztikai naplózás
 
@@ -94,7 +94,7 @@ A következő diagnosztikai telemetria gyűjtéséhez beállíthatja a rugalmas 
 | :------------------- | ------------------- |
 | **Rugalmas készlet** | [](sql-database-metrics-diag-logging.md#basic-metrics) Az alapszintű mérőszámok a EDTU/CPU-hányadot, a EDTU/CPU-korlátot, a fizikai adatok olvasási százalékos arányát, a napló írási arányát, a munkamenetek százalékos arányát, a feldolgozók százalékos arányát, a tárterületet, a tárolási |
 
-A rugalmas készletekben lévő rugalmas készletek és adatbázisok diagnosztikai telemetria folyamatos konfigurálásához külön **kell konfigurálnia** a következőket:
+A rugalmas készletekben lévő rugalmas készletek és adatbázisok diagnosztikai telemetria folyamatos konfigurálásához külön kell konfigurálnia a következőket:
 
 - A diagnosztikai telemetria egy rugalmas készlethez való közvetítésének engedélyezése, **valamint**
 - Diagnosztikai telemetria a rugalmas készletben lévő minden adatbázishoz való továbbításának engedélyezése
@@ -156,7 +156,7 @@ A következő diagnosztikai telemetria gyűjtéséhez beállíthat felügyelt p�
 | :------------------- | ------------------- |
 | **Felügyelt példány** | A [ResourceUsageStats](#resource-usage-stats-for-managed-instance) virtuális mag-darabszámot, átlagos CPU-százalékot, i/o-kérelmeket, írási/olvasási, foglalt tárolóhelyet és felhasznált tárolóhelyet tartalmaz. |
 
-A felügyelt példányok és példányok adatbázisaihoz tartozó diagnosztikai telemetria konfigurálásához külön **kell konfigurálnia** a következőket:
+A felügyelt példányok és példányok adatbázisaihoz tartozó diagnosztikai telemetria konfigurálásához külön kell konfigurálnia a következőket:
 
 - A diagnosztikai telemetria adatfolyam-továbbításának engedélyezése a felügyelt példányhoz, **és**
 - Diagnosztikai telemetria az egyes példány-adatbázisokhoz való továbbításának engedélyezése
@@ -344,9 +344,12 @@ A legkönnyebben konfigurálhatja, hogy az adatbázisok hol legyenek rögzítve 
 
 Ha rugalmas készleteket vagy felügyelt példányokat használ, ezen erőforrások diagnosztikai beállításait is be kell állítania ahhoz, hogy a diagnosztika telemetria a munkaterületre.
 
-### <a name="use-the-sql-analytics-solution"></a>Az SQL Analytics megoldás használata
+### <a name="use-the-sql-analytics-solution-for-monitoring-and-alerting"></a>Az SQL Analytics megoldás használata figyeléshez és riasztáshoz
 
-A SQL Database-erőforrások megtekintéséhez használhatja az SQL Analytics hierarchikus irányítópultját. Az SQL Analytics megoldás használatának megismeréséhez tekintse meg [a SQL Database figyelése az SQL Analytics megoldás használatával](../log-analytics/log-analytics-azure-sql.md)című témakört.
+A SQL Database-erőforrások megtekintéséhez használhatja az SQL Analytics hierarchikus irányítópultját.
+
+- Az SQL Analytics megoldás használatának megismeréséhez tekintse meg [a SQL Database figyelése az SQL Analytics megoldás használatával](../log-analytics/log-analytics-azure-sql.md)című témakört.
+- Ha szeretné megtudni, hogyan állíthat be riasztásokat SQL Database és felügyelt példányhoz az SQL Analytics alapján, tekintse meg a [riasztások létrehozása SQL Database és felügyelt példányhoz](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)című témakört.
 
 ## <a name="stream-into-event-hubs"></a>Streamelés az Event Hubsba
 
@@ -715,3 +718,7 @@ A Event Hubsről a következő témakörben olvashat bővebben:
 
 - [Mi az Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Bevezetés az Event Hubs használatába](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+
+Ha szeretné megtudni, hogyan állíthat be riasztásokat a log Analytics telemetria alapján, tekintse meg a következőt:
+
+- [Riasztások létrehozása SQL Database és felügyelt példányhoz](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)

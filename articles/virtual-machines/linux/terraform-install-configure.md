@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/19/2018
 ms.author: gwallace
-ms.openlocfilehash: 14bbbb6581d3e6d00db532e343f8362fc44d0044
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c7251b24ccd15971a704b6b47288f49168b27039
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876342"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980882"
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Terraform telepítése és konfigurálása a virtuális gépek és más infrastruktúra üzembe helyezéséhez az Azure-ban
  
@@ -47,10 +47,10 @@ Usage: terraform [--version] [--help] <command> [args]
 
 Ahhoz, hogy a Terraform erőforrásokat lehessen kiépíteni az Azure-ba, hozzon létre egy [Azure ad egyszerű szolgáltatásnevet](/cli/azure/create-an-azure-service-principal-azure-cli). Az egyszerű szolgáltatásnév az Azure-előfizetésében lévő erőforrások kiépítéséhez biztosít Terraform-parancsfájlokat.
 
-Ha több Azure-előfizetéssel rendelkezik, először kérdezze le a fiókját az [az Account show](/cli/azure/account#az-account-show) paranccsal az előfizetés-azonosító és a bérlői azonosító értékek listájának lekéréséhez:
+Ha több Azure-előfizetéssel rendelkezik, először kérdezze le fiókját az [az Account List](/cli/azure/account#az-account-list) paranccsal, és kérje le az előfizetés-azonosító és a bérlői azonosító értékeinek listáját:
 
 ```azurecli-interactive
-az account show --query "{subscriptionId:id, tenantId:tenantId}"
+az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 ```
 
 Ha a kiválasztott előfizetést szeretné használni, állítsa be ennek a munkamenetnek az előfizetését az [az Account set](/cli/azure/account#az-account-set)paranccsal. Állítsa be `SUBSCRIPTION_ID` úgy a környezeti változót, hogy a visszaadott mező értékét a használni kívánt előfizetésből kapja: `id`
@@ -59,7 +59,7 @@ Ha a kiválasztott előfizetést szeretné használni, állítsa be ennek a munk
 az account set --subscription="${SUBSCRIPTION_ID}"
 ```
 
-Most létrehozhat egy egyszerű szolgáltatásnevet a Terraform-hez való használatra. Használja az [az ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac), és állítsa  be a hatókört az előfizetésre a következőképpen:
+Most létrehozhat egy egyszerű szolgáltatásnevet a Terraform-hez való használatra. Használja az [az ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac), és állítsa be a hatókört az előfizetésre a következőképpen:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"

@@ -1,6 +1,6 @@
 ---
-title: Az Azure DevTest Labs szolgáltatásban virtuális gépként az összetevők hibáinak diagnosztizálása |} A Microsoft Docs
-description: Az Azure DevTest Labs szolgáltatásban az összetevők hibáinak elhárítását ismereti.
+title: Az összetevők hibáinak diagnosztizálása egy Azure DevTest Labs virtuális gépen | Microsoft Docs
+description: Ismerje meg, hogyan lehet elhárítani a Azure DevTest Labs az összetevők hibáit.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,51 +12,52 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2019
+ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 29af70a2713e7b4aebf611d8f2b547e38c6c5d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8b7a72c03d41d54aa80505e781b6f6d32cd2a2c0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60623109"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991365"
 ---
-# <a name="diagnose-artifact-failures-in-the-lab"></a>A lab-ben az összetevők hibáinak diagnosztizálása 
-Miután létrehozott egy összetevő, akkor ellenőrizheti, hogy akár sikeres, vagy sikertelen volt. Azure DevTest Labs-összetevő naplók segítségével diagnosztizálhatja az összetevő meghibásodása információkat tartalmaznak. Van egy néhány további lehetőség egy Windows virtuális gép összetevő naplózási adatok megtekintése:
+# <a name="diagnose-artifact-failures-in-the-lab"></a>Az összetevők hibáinak diagnosztizálása a laborban 
+Miután létrehozott egy összetevőt, megtekintheti, hogy sikeres vagy sikertelen volt-e. A Azure DevTest Labs található összetevők naplói olyan információkat tartalmaznak, amelyek segítségével diagnosztizálhatja az összetevő meghibásodását. A Windows rendszerű virtuális gépek esetében több lehetőség közül választhat:
 
-* Az Azure Portalon
+* A Azure Portal
 * A virtuális gépen
 
 > [!NOTE]
-> Győződjön meg arról, hogy hibák helyesen azonosítani és ismertetése, fontos, hogy rendelkezik-e a megfelelő struktúra az összetevőben. Megfelelően hozhat létre egy összetevő kapcsolatos információkért lásd: [egyéni összetevők létrehozása](devtest-lab-artifact-author.md). Egy példa a megfelelően felépített összetevő megtekintéséhez tekintse meg a [paramétertípusok tesztelése](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes) összetevő.
+> Annak érdekében, hogy a hibák azonosítása és magyarázata sikeres legyen, fontos, hogy az összetevő megfelelő struktúrával rendelkezik. Az összetevők megfelelő létrehozásával kapcsolatos információkért lásd: egyéni összetevők [létrehozása](devtest-lab-artifact-author.md). Ha egy megfelelően strukturált összetevőre vonatkozó példát szeretne látni, tekintse meg a [teszt paraméter típusait](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes) .
 
-## <a name="troubleshoot-artifact-failures-by-using-the-azure-portal"></a>Az összetevők hibáinak elhárítása az Azure portal használatával
+## <a name="troubleshoot-artifact-failures-by-using-the-azure-portal"></a>Az összetevők hibáinak elhárítása a Azure Portal használatával
 
-1. Az Azure Portalon, az erőforrások listájában válassza ki a labor.
-2. Válassza ki a Windows virtuális gép, amely tartalmazza a vizsgálni kívánt hitelesítendő entitások azonosítása.
-3. A bal oldali panel alatt **általános**, jelölje be **összetevők**. A virtuális gép társított összetevők listája jelenik meg. Neve az összetevő és az összetevő állapotát jelzi.
+1. A Azure Portal az erőforrások listájában válassza ki a labort.
+2. Válassza ki azt a Windows rendszerű virtuális gépet, amely tartalmazza a vizsgálni kívánt összetevőt.
+3. A bal oldali panelen az **általános**területen válassza azösszetevők elemet. Megjelenik az adott virtuális géphez társított összetevők listája. Az összetevő neve és az összetevő állapota jelezve.
 
-   ![Összetevő-állapot](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure.png)
+   ![Összetevő állapota](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure.png)
 
-4. Válasszon egy összetevő, amely megjeleníti a **sikertelen** állapotát. A lehívandó összetevő nyílik meg. Egy bővítmény üzenet, amely tartalmazza a lehívandó összetevő a hibával kapcsolatos részleteket jelenik meg.
+4. Olyan összetevőt válasszon, amely egy **sikertelen** állapotot mutat. Megnyílik az összetevő. Megjelenik egy olyan bővítményi üzenet, amely tartalmazza az összetevő hibájának részleteit.
 
-   ![Összetevő hibaüzenet](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error.png)
+   ![Összetevő hibaüzenete](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error.png)
 
 
-## <a name="troubleshoot-artifact-failures-from-within-the-virtual-machine"></a>A virtuális gépen az összetevők hibáinak elhárítása
+## <a name="troubleshoot-artifact-failures-from-within-the-virtual-machine"></a>Az összetevők hibáinak elhárítása a virtuális gépen
 
-1. Jelentkezzen be a virtuális gép, amely tartalmazza az összetevőben diagnosztizálása szeretné.
-2. Lépjen a C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\\*1.9*\Status, ahol *1.9* az Azure egyéni szkriptek futtatására szolgáló bővítmény verziószám.
+1. Jelentkezzen be a virtuális gépre, amely tartalmazza a diagnosztizálni kívánt összetevőt.
+2. Nyissa meg\\a C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension*1,9*\Status, ahol a *1,9* az Azure egyéni szkript bővítmény verziószáma.
 
-   ![Az állapot-fájl](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error-vm-status.png)
+   ![Az állapot fájlja](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error-vm-status.png)
 
-3. Nyissa meg a **állapot** fájlt.
+3. Nyissa meg az **állapot** fájlt.
 
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+A naplófájlok **Linux** rendszerű virtuális gépen való megtalálásával kapcsolatos utasításokért tekintse meg a következő cikket: [Az egyéni Azure script Extension 2. verziójának használata Linux rendszerű virtuális gépekkel](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
+
 
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
-* [Meglévő Active Directory-tartomány egy Resource Manager-sablon használatával a DevTest Labs szolgáltatásban létrehozott virtuális gépek csatlakoztatása](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [Virtuális gép csatlakoztatása meglévő Active Directory tartományhoz egy Resource Manager-sablonnal a DevTest Labs szolgáltatásban](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan [Git-adattár hozzáadása egy laborhoz](devtest-lab-add-artifact-repo.md).
+* Megtudhatja, hogyan [adhat hozzá git-tárházat](devtest-lab-add-artifact-repo.md)a laborhoz.
 

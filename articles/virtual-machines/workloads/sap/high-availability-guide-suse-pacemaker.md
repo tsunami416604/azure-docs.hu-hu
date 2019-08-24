@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 551f140c22677bea363ad5d8f43bf9670f783a1d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ec25abbdaa160976928a9ea0fea29a4d1fbf823a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725605"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992132"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása
 
@@ -532,7 +532,7 @@ A STONITH eszköz hitelesítéséhez, szemben a Microsoft Azure egy egyszerű sz
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Az időkorlát-ügynökhöz tartozó egyéni szerepkör létrehozása
 
-Az egyszerű szolgáltatás alapértelmezés szerint nem rendelkezik engedéllyel az Azure-erőforrások eléréséhez. Elindíthatja és leállíthatja a szolgáltatásnév-engedélyt kell (szabadítsa fel) a fürt összes virtuális gépet. Ha nem hozott már létre az egyéni szerepkör, létrehozhat használatával [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) vagy [Azure CLI-vel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+Az egyszerű szolgáltatás alapértelmezés szerint nem rendelkezik engedéllyel az Azure-erőforrások eléréséhez. Elindíthatja és leállíthatja a szolgáltatásnév-engedélyt kell (szabadítsa fel) a fürt összes virtuális gépet. Ha nem hozott már létre az egyéni szerepkör, létrehozhat használatával [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) vagy [Azure CLI-vel](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli)
 
 A bemeneti fájl használja az alábbi tartalommal. Szeretne az előfizetések a tartalmat, amely alkalmazkodik c276fc76-9cd4-44c9-99a7-4fd71546436e és e91d47c4-76f3-4271-a796-21b4ecfe3624 cserélje le az előfizetés azonosítóját. Ha több előfizetéssel rendelkezik, távolítsa el a második bejegyzés AssignableScopes.
 

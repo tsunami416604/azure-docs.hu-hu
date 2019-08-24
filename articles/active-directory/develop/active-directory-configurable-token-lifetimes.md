@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 08/22/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f6aa209b6e99be406634e01be47c6dd9572d62a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 95c337501c46dd9b30ff20d71a9363ab03fdb608
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853437"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980442"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurálható jogkivonat élettartama Azure Active Directory (előzetes verzió)
 
@@ -81,15 +81,15 @@ A jogkivonat élettartama házirend olyan házirend-objektum, amely a jogkivonat
 ### <a name="configurable-token-lifetime-properties"></a>Konfigurálható jogkivonat élettartamának tulajdonságai
 | Tulajdonság | Házirend tulajdonságának karakterlánca | Befolyásolja | Alapértelmezett | Minimális | Maximum |
 | --- | --- | --- | --- | --- | --- |
-| Hozzáférési jogkivonat élettartama |<sup>4</sup> . AccessTokenLifetime |Hozzáférési tokenek, azonosító tokenek, egy SAML2 tokenek |1 óra |10 perc |1 nap |
+| Hozzáférési jogkivonat élettartama |<sup>2</sup> . AccessTokenLifetime |Hozzáférési tokenek, azonosító tokenek, egy SAML2 tokenek |1 óra |10 perc |1 nap |
 | Frissítési jogkivonat maximális inaktív ideje |MaxInactiveTime |Tokenek frissítése |90 nap |10 perc |90 nap |
 | Egy tényező frissítési Tokenének maximális kora |MaxAgeSingleFactor |Tokenek frissítése (bármely felhasználó esetében) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
 | Multi-Factor refresh token Max Age |MaxAgeMultiFactor |Tokenek frissítése (bármely felhasználó esetében) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
-| Egy tényezős munkamenet-token maximális kora |MaxAgeSessionSingleFactor<sup>2</sup> |Munkamenet-tokenek (állandó és nem állandó) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
-| Többtényezős munkamenet-token maximális kora |MaxAgeSessionMultiFactor<sup>3</sup> |Munkamenet-tokenek (állandó és nem állandó) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
+| Egy tényezős munkamenet-token maximális kora |MaxAgeSessionSingleFactor |Munkamenet-tokenek (állandó és nem állandó) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
+| Többtényezős munkamenet-token maximális kora |MaxAgeSessionMultiFactor |Munkamenet-tokenek (állandó és nem állandó) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
 
 * <sup>1</sup>365 nappal az attribútumok maximális explicit hosszúsága adható meg.
-* <sup>4</sup> Ahhoz, hogy a Microsoft Teams Web Client működjön, javasoljuk, hogy 15 percnél nagyobb AccessTokenLifetime állítson be a Microsoft csapatainak.
+* <sup>2</sup> Ahhoz, hogy a Microsoft Teams Web Client működjön, javasoljuk, hogy 15 percnél nagyobb AccessTokenLifetime állítson be a Microsoft csapatainak.
 
 ### <a name="exceptions"></a>Kivételek
 | Tulajdonság | Befolyásolja | Alapértelmezett |

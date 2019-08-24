@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/19/2019
+ms.date: 08/22/2019
 ms.author: dalek
-ms.openlocfilehash: c3da37d89da8c70f6acdfb1b5ab9c5b10edb86f0
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 45a8f8a7ee4d887503aeaf8e0e285c45a21c4bcc
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624395"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982609"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>A Application Insights használatának és költségeinek kezelése
 
@@ -65,30 +65,43 @@ Application Insights díjak hozzáadódnak az Azure-számlához. Az Azure-száml
 
 ![A bal oldali menüben válassza a számlázás lehetőséget.](./media/pricing/02-billing.png)
 
-## <a name="data-rate"></a>Adatforgalmi díj
-A küldött adatmennyiség három módon van korlátozva:
+## <a name="managing-your-data-volume"></a>Adatmennyiség kezelése 
 
-* **Mintavételezés**: A mintavétel segítségével csökkentheti a kiszolgálóról és az ügyfélalkalmazások által eljuttatott telemetria mennyiségét, a metrikák minimális torzításával. A mintavétel az elsődleges eszköz, amellyel beállíthatja az elküldött adatmennyiséget. További információ a [mintavételezési funkciókról](../../azure-monitor/app/sampling.md). 
-* **Napi korlát**: Amikor Application Insights erőforrást hoz létre a Azure Portal, a napi korlát 100 GB/nap lesz. Ha Application Insights-erőforrást hoz létre a Visual Studióban, az alapértelmezett érték kicsi (csak 32,3 MB/nap). A napi korlát alapértelmezett értéke a tesztelés megkönnyítésére szolgál. A rendszer azt a célt szolgálja, hogy a felhasználó a napi korlátot az alkalmazás éles környezetben való üzembe helyezése előtt emelje fel. 
-
-    A maximális korlát 1 000 GB/nap, ha nagy forgalmú alkalmazás esetén magasabb maximális értéket kér. 
-
-    A napi korlát beállításakor legyen körültekintő. Az Ön szándéka, hogy *Soha ne nyomja meg a napi korlátot*. Ha eléri a napi korlátot, a nap hátralevő részében elveszíti az adatait, és nem tudja figyelni az alkalmazást. A napi korlát módosításához használja a **napi mennyiségi korlátot** . Ezt a beállítást a **használati és becsült költségek** ablaktáblán érheti el (a cikk későbbi részében részletesebben ismertetjük).
-    Eltávolítjuk a korlátozást olyan előfizetési típusoknál, amelyek olyan Kredittel rendelkeznek, amely nem használható Application Insightshoz. Korábban, ha az előfizetés költségkerettel rendelkezik, a napi korlátot tartalmazó párbeszédablak útmutatást tartalmaz a költségkeret eltávolításához, és lehetővé teszi, hogy a napi korlát 32,3 MB/nap-nál nagyobb legyen.
-* **Szabályozás**: A szabályozás korlátozza az adatátviteli sebességet másodpercenként 32 000 eseményre, átlagosan 1 percnél nagyobb kialakítási kulcsra.
-
-*Mi történik, ha az alkalmazásom túllépi a szabályozási sebességet?*
-
-* Az alkalmazás által küldött adatmennyiség percenként kerül értékelésre. Ha az érték meghaladja a percben mért másodpercenkénti arányt, a kiszolgáló elutasítja a kérelmeket. Az SDK pufferbe írja az adathalmazt, majd megpróbálja újból elküldeni. Több percet is igénybe vehet. Ha az alkalmazás a sávszélesség-szabályozásnál nagyobb mértékben küld adatokat, a rendszer bizonyos adatokat eldob. (A ASP.NET, a Java és a JavaScript SDK-k megpróbálnak ily módon újraküldeni az adatküldést. más SDK-k egyszerűen elhúzhatja a szabályozott adatátvitelt.) Ha a szabályozás bekövetkezik, a rendszer figyelmeztetést küld arról, hogy ez bekövetkezett.
-
-*Hogyan az alkalmazás által küldött adatok mennyiségét?*
-
-Az alábbi lehetőségek egyikével megtekintheti az alkalmazás által küldött adatok mennyiségét:
+Az alkalmazás által küldött adatok mennyiségének megismeréséhez a következőket teheti:
 
 * A napi adatmennyiség diagram megjelenítéséhez nyissa meg a **használati és becsült költségek** ablaktáblát. 
 * A Metrikaböngészőban adjon hozzá egy új diagramot. A diagram metrikájának kiválasztásához válassza az **adatpont kötete**elemet. Kapcsolja bea csoportosítást, majd az adattípus szerint csoportosítsa az **értéket**.
+* Használja az `systemEvents` adattípust. Például az elmúlt nap során betöltött adatmennyiség megtekintéséhez a lekérdezés a következő lesz:
 
-## <a name="reduce-your-data-rate"></a>Csökkentse adatforgalmi arányát
+```kusto
+systemEvents 
+| where timestamp >= ago(1d)
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
+| summarize sum(BillingTelemetrySizeInBytes)
+```
+
+Ez a lekérdezés egy [Azure log](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) -riasztásban használható az adatkötetek riasztásának beállításához. 
+
+A küldött adatmennyiség háromféle módon kezelhető:
+
+* **Mintavételezés**: A mintavétel segítségével csökkentheti a kiszolgálóról és az ügyfélalkalmazások által eljuttatott telemetria mennyiségét, a metrikák minimális torzításával. A mintavétel az elsődleges eszköz, amellyel beállíthatja az elküldött adatmennyiséget. További információ a [mintavételezési funkciókról](../../azure-monitor/app/sampling.md).
+ 
+* **Napi korlát**: Amikor Application Insights erőforrást hoz létre a Azure Portal, a napi korlát 100 GB/nap lesz. Ha Application Insights-erőforrást hoz létre a Visual Studióban, az alapértelmezett érték kicsi (csak 32,3 MB/nap). A napi korlát alapértelmezett értéke a tesztelés megkönnyítésére szolgál. A rendszer azt a célt szolgálja, hogy a felhasználó a napi korlátot az alkalmazás éles környezetben való üzembe helyezése előtt emelje fel. 
+
+    A maximális korlát 1 000 GB/nap, ha nagy forgalmú alkalmazás esetén magasabb maximális értéket kér. 
+    
+    A napi korláttal kapcsolatos figyelmeztető e-maileket a rendszer a Application Insights erőforrás ezen szerepköreinek tagjai számára küldi el: "ServiceAdmin", "AccountAdmin", "társtulajdonosa", "tulajdonos".
+
+    A napi korlát beállításakor legyen körültekintő. Az Ön szándéka, hogy *Soha ne nyomja meg a napi korlátot*. Ha eléri a napi korlátot, a nap hátralevő részében elveszíti az adatait, és nem tudja figyelni az alkalmazást. A napi korlát módosításához használja a **napi mennyiségi korlátot** . Ezt a beállítást a **használati és becsült költségek** ablaktáblán érheti el (a cikk későbbi részében részletesebben ismertetjük).
+    
+    Eltávolítjuk a korlátozást olyan előfizetési típusoknál, amelyek olyan Kredittel rendelkeznek, amely nem használható Application Insightshoz. Korábban, ha az előfizetés költségkerettel rendelkezik, a napi korlátot tartalmazó párbeszédablak útmutatást tartalmaz a költségkeret eltávolításához, és lehetővé teszi, hogy a napi korlát 32,3 MB/nap-nál nagyobb legyen.
+    
+* **Szabályozás**: A szabályozás korlátozza az adatátviteli sebességet másodpercenként 32 000 eseményre, átlagosan 1 percnél nagyobb kialakítási kulcsra. Az alkalmazás által küldött adatmennyiség percenként kerül értékelésre. Ha az érték meghaladja a percben mért másodpercenkénti arányt, a kiszolgáló elutasítja a kérelmeket. Az SDK pufferbe írja az adathalmazt, majd megpróbálja újból elküldeni. Több percet is igénybe vehet. Ha az alkalmazás a sávszélesség-szabályozásnál nagyobb mértékben küld adatokat, a rendszer bizonyos adatokat eldob. (A ASP.NET, a Java és a JavaScript SDK-k megpróbálnak ily módon újraküldeni az adatküldést. más SDK-k egyszerűen elhúzhatja a szabályozott adatátvitelt.) Ha a szabályozás bekövetkezik, a rendszer figyelmeztetést küld arról, hogy ez bekövetkezett.
+
+## <a name="reduce-your-data-volume"></a>Csökkentse adatmennyiségét
+
 Az alábbi műveleteket végezheti el az adatmennyiség csökkentése érdekében:
 
 * [Mintavétel](../../azure-monitor/app/sampling.md)használata. Ez a technológia csökkenti az adatforgalom mértékét a metrikák eldöntése nélkül. Nem veszíti el a keresést a kapcsolódó elemek között. A kiszolgálói alkalmazásokban a mintavételezés automatikusan működik.

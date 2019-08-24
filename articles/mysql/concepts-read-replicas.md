@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.openlocfilehash: 00cace13a1d3db2bca45791960ca9bf2fb9260bd
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.date: 08/21/2019
+ms.openlocfilehash: e0309ac70d39272bf045e49ca7ddecd258cc1f36
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976898"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992047"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
 
@@ -49,7 +49,7 @@ Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, Kelet-Ázsia
 
 
 ### <a name="paired-regions"></a>Párosított régiók
-Az univerzális replika régión kívül egy olvasási replikát is létrehozhat a főkiszolgáló Azure párosított régiójában. Ha nem ismeri a régió pár elemét, többet is megtudhat az [Azure párosított régiókról](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)szóló cikkből.
+Az univerzális replika régión kívül egy olvasási replikát is létrehozhat a főkiszolgáló Azure párosított régiójában. Ha nem ismeri a régió pár elemét, többet is megtudhat az [Azure párosított régiókról](../best-practices-availability-paired-regions.md)szóló cikkből.
 
 Ha régiók közötti replikákat használ a vész-helyreállítási tervezéshez, javasoljuk, hogy a többi régió helyett a párosított régióban hozza létre a replikát. A párosított régiók elkerülik az egyidejű frissítéseket, és rangsorolják a fizikai elkülönítést és az adattárolást.  
 
@@ -124,7 +124,7 @@ Az olvasási replika új Azure Database for MySQL-kiszolgálóként jön létre.
 A replikát ugyanazzal a kiszolgáló-konfigurációval hozza létre a rendszer, mint a főkiszolgálót. A replika létrehozása után több beállítás is módosítható a főkiszolgálótól függetlenül: számítási generáció, virtuális mag, tárterület, biztonsági mentés megőrzési ideje és MySQL-motor verziója. Az árképzési szint külön is módosítható, kivéve az alapszintű csomagból vagy abból.
 
 > [!IMPORTANT]
-> A főkiszolgálói konfiguráció új értékekre frissítése előtt frissítse a replika konfigurációját az értékekkel egyenlő vagy nagyobb értékre. Ez a művelet biztosítja, hogy a replika képes legyen lépést tartani a főkiszolgálón végrehajtott módosításokkal.
+> Mielőtt a főkiszolgálói konfigurációt új értékekre frissítené, frissítse a replika konfigurációját az értékekkel egyenlő vagy nagyobb értékekre. Ez a művelet biztosítja, hogy a replika összhangban lehessen a főkiszolgálón végrehajtott módosításokkal.
 
 ### <a name="stopped-replicas"></a>Leállított replikák
 

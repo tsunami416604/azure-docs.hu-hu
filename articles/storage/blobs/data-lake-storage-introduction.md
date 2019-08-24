@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 3dea4dfc58bf087b8f6bc0a3f45646da5cb597ad
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: de2dc5068dc454925744688a43f49a855aac42f3
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847226"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991844"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Bevezetés a Azure Data Lake Storage Gen2ba
 
@@ -64,7 +64,7 @@ Az alábbiakban az egyenértékű entitások leírtak szerint különböző foga
 | Fogalom                                | Felső szintű szervezeti | Alacsonyabb szintű szervezeti                                            | Adattároló |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
 | Blobok – általános célú tárolás | Tároló              | Virtuális könyvtár (SDK-t csak – ad atomi adatkezelési) | Blob           |
-| ADLS Gen2 – Analytics Storage          | Fájlrendszer             | Címtár                                                           | Fájl           |
+| ADLS Gen2 – Analytics Storage          | Tároló            | Címtár                                                           | Fájl           |
 
 ## <a name="supported-open-source-platforms"></a>Támogatja a nyílt forráskódú platformok
 

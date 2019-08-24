@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
-ms.openlocfilehash: 2f39678e9fa0ed665863a94767240e2e37eace39
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
-ms.translationtype: HT
+ms.openlocfilehash: f0d63b9e01b7e39b03e6a3b1e310b5fae0f8d25f
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906096"
+ms.locfileid: "69982860"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Gyors útmutató: Hozza létre első automatizált munkafolyamatát Azure Logic Apps-Azure Portal
 
@@ -43,7 +43,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja h
 
    | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
-   | **Name** | <*logic-app-name*> | A logikai alkalmazás neve, amely csak betűket, számokat vagy a `-` `)`, `(` `_` `.` ,,, karaktereket tartalmazhat. Ez a példa a "My-First-Logic-app" kifejezést használja. |
+   | **Name** | <*logic-app-name*> | A logikai alkalmazás neve, amely`-`csak betűket, számokat, kötőjeleket (), aláhúzásokat (`_`), zárójeleket (`(`, `)`) és pontokat (`.`) tartalmazhat. Ez a példa a "My-First-Logic-app" kifejezést használja. |
    | **Előfizetés** | <*Azure-előfizetés-neve*> | Az Azure-előfizetés neve |
    | **Erőforráscsoport** | <*Azure-resource-group-name*> | A kapcsolódó erőforrások rendszerezéséhez használt [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) neve. Ez a példa a "My-First-LA-RG" kifejezést használja. |
    | **Location** | <*Azure-régió*> | A logikai alkalmazás adatainak tárolására szolgáló régió. Ez a példa a "West US"-t használja. |

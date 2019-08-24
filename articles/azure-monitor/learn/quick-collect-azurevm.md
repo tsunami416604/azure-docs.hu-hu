@@ -1,5 +1,5 @@
 ---
-title: Adatgyűjtés Azure-beli virtuális gépekről | Microsoft Docs
+title: Adatok gyűjtése egy Azure-beli virtuális gépről Azure Monitorsal | Microsoft Docs
 description: Itt megtudhatja, hogyan engedélyezheti a Log Analytics-ügynök virtuálisgép-bővítményét, és ezzel az adatok összegyűjtését az Azure-beli virtuális gépekről a Log Analytics segítségével.
 services: log-analytics
 documentationcenter: log-analytics
@@ -14,16 +14,16 @@ ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 1a61c0f96f62712bbd2500b2e80fd08565990bbe
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8e44908baea506efa488899c90e9022acc6e30b8
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874886"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992152"
 ---
-# <a name="collect-data-about-azure-virtual-machines"></a>Adatok gyűjtése az Azure Virtual Machines szolgáltatásról
+# <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Adatok gyűjtése egy Azure-beli virtuális gépről Azure Monitor
 
-Az [Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md) képes rá, hogy közvetlenül gyűjtsön adatokat az Ön környezetében található Azure-beli virtuális gépekről és egyéb erőforrásokról egy adattárba, részletes elemzés és összehasonlítás céljából. Ez a rövid útmutató azt ismerteti, hogyan konfigurálhatja néhány egyszerű lépésben az Azure-beli Linux vagy Windows rendszerű virtuális gépekről történő adatgyűjtést.  
+A [Azure monitor](../overview.md) adatokat gyűjthet közvetlenül az Azure-beli virtuális gépekről egy log Analytics-munkaterületre a részletes elemzés és korreláció céljából. A [Windows](../../virtual-machines/extensions/oms-windows.md) és [Linux](../../virtual-machines/extensions/oms-linux.md) rendszerhez készült log Analytics virtuálisgép-bővítmény telepítése lehetővé teszi, hogy a Azure monitor adatokat gyűjtsön az Azure-beli virtuális gépekről. Ez a rövid útmutató bemutatja, hogyan konfigurálhat és gyűjthet adatokat az Azure Linux vagy Windows rendszerű virtuális gépekről a virtuálisgép-bővítmény használatával néhány egyszerű lépéssel.  
  
 A rövid útmutató feltételezi, hogy rendelkezik egy meglévő Azure-beli virtuális géppel. Ha nem, akkor virtuális gépekre vonatkozó rövid útmutatók alapján létrehozhat egy [Windows virtuális gépet](../../virtual-machines/windows/quick-create-portal.md) vagy egy [Linux virtuális gépet](../../virtual-machines/linux/quick-create-cli.md).
 
@@ -33,7 +33,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-1. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
+1. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics**munkaterületek lehetőséget.
 
     ![Azure Portal](media/quick-collect-azurevm/azure-portal-01.png)<br>  
 
@@ -55,7 +55,7 @@ Az **Értesítések** menüpontot kiválasztva nyomon követheti, hogyan ellenő
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Az Azure-ban már üzembe helyezett Windows és Linux rendszerű virtuális gépekhez a Log Analytics-ügynököt a virtuálisgép-bővítménnyel kell telepíteni. A bővítmény használata leegyszerűsíti a telepítés folyamatát és automatikusan konfigurálja az ügynököt, hogy elküldje az adatokat a megadott Log Analytics-munkaterületre. Az ügynök automatikusan frissül, hogy mindig a legújabb funkciókkal és javításokkal bővüljön. A folytatás előtt ellenőrizze a virtuális gép fut-e ellenkező esetben sikertelen lesz a folyamat sikeresen befejeződik.  
+Az Azure-ban már üzembe helyezett Windows és Linux rendszerű virtuális gépekhez a Log Analytics-ügynököt a virtuálisgép-bővítménnyel kell telepíteni. A bővítmény használata leegyszerűsíti a telepítés folyamatát és automatikusan konfigurálja az ügynököt, hogy elküldje az adatokat a megadott Log Analytics-munkaterületre. Az ügynököt a rendszer automatikusan frissíti, ha újabb verziót bocsátanak ki, amely biztosítja, hogy a legújabb funkciókkal és javításokkal rendelkezzen. A folytatás előtt ellenőrizze a virtuális gép fut-e ellenkező esetben sikertelen lesz a folyamat sikeresen befejeződik.  
 
 >[!NOTE]
 >A Linuxhoz készült Log Analytics-ügynököt nem lehet úgy konfigurálni, hogy egynél több Log Analytics-munkaterületre is jelentsen. 
@@ -74,7 +74,7 @@ Az Azure-ban már üzembe helyezett Windows és Linux rendszerű virtuális gép
 
 ## <a name="collect-event-and-performance-data"></a>Esemény- és teljesítményadatok gyűjtése
 
-A Log Analytics képes események gyűjtésére a Windows eseménynaplókból vagy Linux rendszernaplóból, illetve a hosszabb távú elemzésekhez és jelentéskészítéshez megadott teljesítményszámlálókból, és valamilyen művelettel reagálni arra, ha észleli egy adott feltétel meglétét. A következő lépésekkel konfigurálhatja az események gyűjtését a Windows vagy Linux rendszernaplókból, illetve (kezdetnek) egyes gyakran használt teljesítményszámlálókból.  
+A Azure Monitor a hosszabb távú elemzésekhez és jelentéskészítéshez megadott Windows-eseménynaplók, illetve a Linux syslog és a teljesítményszámlálók adatait gyűjthetik, és a rendszer egy adott feltétel észlelésekor hajt végre műveleteket. A következő lépésekkel konfigurálhatja az események gyűjtését a Windows vagy Linux rendszernaplókból, illetve (kezdetnek) egyes gyakran használt teljesítményszámlálókból.  
 
 ### <a name="data-collection-from-windows-vm"></a>Adatgyűjtés Windows rendszerű virtuális gépekről
 
@@ -124,15 +124,15 @@ A Log Analytics képes események gyűjtésére a Windows eseménynaplókból va
 
 Most, hogy engedélyezte az adatgyűjtést, futtasson le egy egyszerű naplóbeli keresést, hogy megtekinthessen néhány, a cél virtuális gépekről származó adatot.  
 
-1. Az Azure Portalon lépjen a Log Analytics felületre, és válassza ki a korábban létrehozott munkaterületet.
+1. A kiválasztott munkaterületen, a bal oldali ablaktáblán válassza a **naplók**lehetőséget.
 
-2. Válassza ki a **naplóbeli keresés** csempét, és a naplók keresése ablaktáblán a lekérdezés `Perf` szövegmezőbe írja be az ENTER billentyűt, vagy kattintson a lekérdezés mezőtől jobbra található Keresés gombra.
+2. A naplók lekérdezése lapon írja be `Perf` a lekérdezés-szerkesztőt, és válassza a **Futtatás**lehetőséget.
 
-    ![Példa Log Analytics-naplókeresési lekérdezésre](./media/quick-collect-azurevm/log-analytics-portal-perf-query.png) 
+    ![Példa Log Analytics-naplókeresési lekérdezésre](./media/quick-collect-windows-computer/log-analytics-portal-queryexample.png) 
 
-A következő képen látható lekérdezés 735 teljesítményrekordot adott vissza.  Ön ennél sokkal kevesebb találatot fog kapni.
+    A következő képen szereplő lekérdezés például 10 000 teljesítményadatokat adott vissza. Ön ennél sokkal kevesebb találatot fog kapni.
 
-![Log Analytics naplóbeli keresés eredménye](media/quick-collect-azurevm/log-analytics-search-perf.png)
+    ![Log Analytics naplóbeli keresés eredménye](media/quick-collect-azurevm/log-analytics-search-perf.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

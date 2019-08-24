@@ -3,17 +3,17 @@ title: A Resource Manager-alapú és a klasszikus üzemi modell | Microsoft Docs
 description: A cikk a Resource Manager-alapú és a klasszikus (vagy szolgáltatásfelügyeleti) üzemi modellek közötti különbségeket ismerteti.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: overview
-ms.date: 11/15/2017
+ms.topic: conceptual
+ms.date: 08/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: 773d369f23154a510624169b9329555a1f865320
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 9356a1603a39f2ac4d18b27445bf0f8d3a555d7e
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206312"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982474"
 ---
-# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Az Azure Resource Manager és klasszikus üzembe helyezési: Üzembe helyezési modellek és az erőforrások állapotának ismertetése
+# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager és klasszikus üzembe helyezés: Az üzembe helyezési modellek és az erőforrások állapotának ismertetése
 
 > [!NOTE]
 > A cikkben ismertetett információ arra vonatkozik, ha a klasszikusból az Azure Resource Manager-alapú üzemi modellbe migrál.
@@ -68,7 +68,7 @@ Location          : westus
 SubscriptionId    : {guid}
 ```
 
-Azonban a Resource Manager parancsmag **Get-azvm parancsmag** csak a Resource Managerrel üzembe helyezett virtuális gépeket adja vissza. A következő parancs nem adja vissza a klasszikus modellben üzembe helyezett virtuális gépet.
+A Resource Manager **-parancsmag Get-AzVM** azonban csak a Resource Manageren keresztül üzembe helyezett virtuális gépeket adja vissza. A következő parancs nem adja vissza a klasszikus modellben üzembe helyezett virtuális gépet.
 
 ```powershell
 Get-AzVM -ResourceGroupName ExampleGroup

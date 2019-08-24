@@ -8,18 +8,15 @@ ms.author: spelluru
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: 003e68b36ff71fb2991cf087ef33f72aba73a8be
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233955"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991952"
 ---
-# <a name="process-data-from-your-event-hub-using-azure-stream-analytics-preview"></a>Adatok feldolgozása az Event hub Azure Stream Analytics használatával (előzetes verzió)
+# <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Az Event hub adatainak feldolgozása Azure Stream Analytics használatával 
 A Azure Stream Analytics szolgáltatással könnyedén betöltheti, feldolgozhatja és elemezheti az Azure Event Hubs adatfolyamait, így hatékony elemzéseket készíthet a valós idejű műveletek elvégzéséhez. Ez az integráció lehetővé teszi, hogy gyorsan létrehozzon egy gyors elérésű elemzési folyamatot. A Azure Portal használatával megjelenítheti a bejövő és a Stream Analytics lekérdezéseket. Ha a lekérdezés elkészült, csak néhány kattintással áthelyezheti az éles környezetbe. 
-
-> [!NOTE]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. 
 
 ## <a name="key-benefits"></a>Főbb előnyök
 Az Azure Event Hubs és a Azure Stream Analytics integráció legfőbb előnyei: 
@@ -31,7 +28,7 @@ Az Azure Event Hubs és a Azure Stream Analytics integráció legfőbb előnyei:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 1. Navigáljon a **Event Hubs névtérhez** , majd navigáljon az **Event hubhoz**, amely a bejövő adataival rendelkezik. 
-1. Válassza  az adatfeldolgozás lehetőséget az Event hub lapon.  
+1. Válassza az adatfeldolgozás lehetőséget az Event hub lapon.  
 
     ![Adatcsempe feldolgozása](./media/process-data-azure-stream-analytics/process-data-tile.png)
 1. Válassza a **Tallózás** lehetőséget a **valós idejű bepillantást az események** csempén. 
@@ -52,7 +49,7 @@ Az Azure Event Hubs és a Azure Stream Analytics integráció legfőbb előnyei:
     - A bejövő adatértékeket táblázatos formátumban vagy nyers formátumban is megtekintheti. 
     - Ha a megjelenített adatai nem aktuálisak, válassza a **frissítés** lehetőséget a legújabb események megtekintéséhez. 
 
-        Íme egy példa a táblázatos formátumra :   ![Eredmények táblázatos formátumban](./media/process-data-azure-stream-analytics/snapshot-results.png)
+        Íme egy példa a táblázatos formátumra:   ![Eredmények táblázatos formátumban](./media/process-data-azure-stream-analytics/snapshot-results.png)
 
         Íme egy példa a **nyers formátumban**tárolt adatmennyiségre: 
 
@@ -69,7 +66,7 @@ Az Azure Event Hubs és a Azure Stream Analytics integráció legfőbb előnyei:
       >  Javasoljuk, hogy hozzon létre egy fogyasztói csoportot és egy szabályzatot minden olyan új Azure Stream Analytics feladatokhoz, amelyet a Event Hubs lapról hoz létre. A fogyasztói csoportok csak öt egyidejű olvasót engedélyeznek, így az egyes feladatokhoz egy dedikált fogyasztói csoportot biztosítanak, így elkerülhetők a korlátot meghaladó hibák. A dedikált szabályzat lehetővé teszi a kulcs elforgatását vagy az engedélyek visszavonását anélkül, hogy ez hatással lenne más erőforrásokra. 
 1. Ekkor létrejön a Stream Analytics-feladata, ahol a lekérdezés ugyanaz, mint amit tesztelt, és a bemenet az Event hub. 
 
-9.  A folyamat befejezéséhez állítsa be a  lekérdezés kimenetét, majd az **Indítás** gombra kattintva indítsa el a feladatot.
+9.  A folyamat befejezéséhez állítsa be a lekérdezés kimenetét, majd az **Indítás** gombra kattintva indítsa el a feladatot.
 
     > [!NOTE]
     > A művelet megkezdése előtt ne felejtse el lecserélni a outputalias az Azure Stream Analyticsban létrehozott kimeneti név alapján.

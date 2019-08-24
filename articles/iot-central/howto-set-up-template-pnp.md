@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 982ebf28a0f99a6eace2448676c934855cd99d1f
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: fd7cd8f73f602953573b7e6edab32bf2a6aecc05
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879733"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998123"
 ---
 # <a name="set-up-and-manage-a-device-template-preview-features"></a>Eszköz sablonjának beállítása és kezelése (előzetes verziójú szolgáltatások)
 
@@ -36,7 +36,7 @@ Az eszköz sablonja alapján a kezelők valódi ventilátoros eszközöket hozha
 > [!NOTE]
 > Csak az építők és a rendszergazdák hozhatnak létre, szerkeszthetnek és törölhetnek eszközöket. Bármely felhasználó létrehozhat eszközöket az **eszközök** lapon a meglévő eszközök sablonjaiból.
 
-A [IoT Plug and Play](https://aka.ms/iot-pnp-docs) lehetővé teszi, hogy a IoT Central beágyazott eszköz kódjának írása nélkül integrálja az eszközöket. A IoT Plug and Play a Device képesség modell sémája, amely leírja az eszközök képességeit. IoT Central előnézeti alkalmazásban az eszközök sablonjai ezeket a IoT Plug and Play eszköz-képesség modelleket használják.
+A [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) lehetővé teszi, hogy a IoT Central beágyazott eszköz kódjának írása nélkül integrálja az eszközöket. A IoT Plug and Play a Device képesség modell sémája, amely leírja az eszközök képességeit. IoT Central előnézeti alkalmazásban az eszközök sablonjai ezeket a IoT Plug and Play eszköz-képesség modelleket használják.
 
 A Builder számos lehetőséget kínál az eszközök sablonjainak létrehozására:
 

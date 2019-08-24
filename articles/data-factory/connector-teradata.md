@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 134302bffdadc27cf202a43e7dc4cc94704bb5b3
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: ddce94cab0067c34ad056a40251d79c5470ba460
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69557864"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996566"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Adatok másolása a Teradata a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -189,7 +189,7 @@ Ez a szakasz a Teradata forrás által támogatott tulajdonságok listáját tar
 ### <a name="teradata-as-source"></a>Teradata forrásként
 
 >[!TIP]
->Az adatok Teradata történő hatékony betöltéséhez az adatparticionálás használatával tekintse meg a [Teradata párhuzamos másolását](#parallel-copy-from-teradata) ismertető szakaszt.
+>Az adatok Teradata történő hatékony betöltéséhez az adatparticionálás használatával tudjon meg többet a [párhuzamos másolásról a Teradata](#parallel-copy-from-teradata) szakaszból.
 
 Az adatok Teradata történő másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
@@ -245,9 +245,9 @@ A Data Factory Teradata-összekötő beépített adatparticionálást biztosít 
 
 ![Képernyőfelvétel a partíciós beállításokról](./media/connector-teradata/connector-teradata-partition-options.png)
 
-A particionált másolás engedélyezésekor a Data Factory párhuzamos lekérdezéseket futtat a Teradata-forráson az adatpartíciók betöltéséhez. A párhuzamos mértéket a másolási [`parallelCopies`](copy-activity-performance.md#parallel-copy) tevékenység beállításai vezérlik. Ha például négyre van állítva `parallelCopies` , Data Factory egyidejűleg létrehoz és futtat négy lekérdezést a megadott partíciós beállítás és beállítások alapján. Mindegyik lekérdezés a Teradata-adatbázisból származó adatok egy részét kérdezi le.
+A particionált másolás engedélyezésekor a Data Factory párhuzamos lekérdezéseket futtat a Teradata-forráson az adatpartíciók betöltéséhez. A párhuzamos mértéket a másolási [`parallelCopies`](copy-activity-performance.md#parallel-copy) tevékenység beállításai vezérlik. Ha például a négy értékre `parallelCopies` van állítva, Data Factory egyidejűleg létrehoz és futtat négy lekérdezést a megadott partíciós beállítás és beállítások alapján, és mindegyik lekérdezés a Teradata-adatbázisból származó adatok egy részét kéri le.
 
-Célszerű engedélyezni a párhuzamos másolást az adatparticionálással, különösen akkor, ha nagy mennyiségű adattal tölt be a Teradata-adatbázisból. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek:
+Célszerű engedélyezni a párhuzamos másolást az adatparticionálással, különösen akkor, ha nagy mennyiségű adattal tölt be a Teradata-adatbázisból. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek. Az adatok file-alapú adattárba való másolása során a rendszer úgy helyezi át, hogy több fájlként írjon egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájl írásakor.
 
 | Forgatókönyv                                                     | Javasolt beállítások                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

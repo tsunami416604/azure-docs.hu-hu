@@ -8,24 +8,24 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 91cde6965f3635d6d2acfaf581f570779020f8ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0aa70e591c7aac977fe13ed638f8ee56b88e4bd1
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445297"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982912"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Az Azure IoT Edge-tanúsítvány felhasználási részletek
 
-IoT Edge számára tanúsítványokra van szükség a modulok és az alsóbb rétegbeli IoT-eszközök az identitás- és eredetiségének ellenőrzése a [IoT Edge hubot](iot-edge-runtime.md#iot-edge-hub) futásidőben hívható modulra, amelyekhez csatlakoznak. Ezeknek az ellenőrzéseknek engedélyezze a TLS (transport layer security) biztonságos kapcsolatot a futtatókörnyezet, a modulok és az IoT-eszközök között. Például magát az IoT Hub IoT Edge szükséges egy biztonságos és aktiválásához IoT-kapcsolat titkosítva (vagy levél) eszközök és az IoT Edge-modulok. TLS biztonságos kapcsolatot létesíteni, az IoT Edge hubot modul kapcsolódó ügyfelek számára arra a tanúsítványlánc mutat be egy kiszolgálót.
+IoT Edge tanúsítványokat használ a modulokhoz és az alsóbb rétegbeli IoT eszközökhöz, hogy ellenőrizze az [IoT Edge hub](iot-edge-runtime.md#iot-edge-hub) Runtime-modul identitását és törvényességét, amelyhez csatlakoznak. Ezeknek az ellenőrzéseknek engedélyezze a TLS (transport layer security) biztonságos kapcsolatot a futtatókörnyezet, a modulok és az IoT-eszközök között. Például magát az IoT Hub IoT Edge szükséges egy biztonságos és aktiválásához IoT-kapcsolat titkosítva (vagy levél) eszközök és az IoT Edge-modulok. A biztonságos TLS-kapcsolat létrehozásához az IoT Edge hub modul egy kiszolgálói tanúsítványláncot jeleníti meg az ügyfelek csatlakoztatásához, hogy azok személyazonosságát ellenőrizzék.
 
-Ez a cikk bemutatja, hogyan IoT Edge-tanúsítványok fejlesztői, éles környezetben működnek és tesztelési forgatókönyvek. A parancsfájlok különböző (Powershell és a bash), amelyek fogalmak ugyanazok, Linux és a Windows szolgáltatásai között.
+Ez a cikk azt ismerteti, hogy IoT Edge tanúsítványok hogyan működhetnek üzemi, fejlesztési és tesztelési helyzetekben. A parancsfájlok különböző (Powershell és a bash), amelyek fogalmak ugyanazok, Linux és a Windows szolgáltatásai között.
 
 ## <a name="iot-edge-certificates"></a>IoT Edge-tanúsítványok
 
-A gyártók általában nem az adott IoT Edge-eszköz végfelhasználói. Néha az egyetlen kapcsolat, a kettő között akkor, ha a végfelhasználó, vagy a kezelő, a gyártó által készített általános eszköz vásárol. Más alkalmakkor a gyártó hozhat létre egy egyéni eszköz nevében az operátor szerződés alapján működik. Az IoT Edge-tanúsítvány tervezési próbál meg mindkét forgatókönyvet figyelembe véve.
+A gyártók általában nem a IoT Edge eszköz végfelhasználói. Előfordulhat, hogy az egyetlen kapcsolat a kettő között, amikor a végfelhasználó vagy a kezelő a gyártó által készített általános eszközt vásárol. Máskor a gyártó szerződéses úton működik, hogy az operátor nevében hozzon létre egy egyéni eszközt. Az IoT Edge-tanúsítvány tervezési próbál meg mindkét forgatókönyvet figyelembe véve.
 
-Az alábbi ábra tanúsítványok IoT Edge használatának. Nulla, egy vagy több köztes aláíró tanúsítványok között a legfelső szintű Hitelesítésszolgáltatói tanúsítvány és az érintett entitások számától függően az eszköz Hitelesítésszolgáltatói tanúsítvány lehet. Itt bemutatjuk egyetlen esetet tartalmaz.
+Az alábbi ábra tanúsítványok IoT Edge használatának. A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány és az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa között nulla, egy vagy több köztes aláíró tanúsítvány lehet az érintett entitások számától függően. Itt egy esetet mutatunk be.
 
 ![Tipikus tanúsítvány kapcsolatokat bemutató ábra](./media/iot-edge-certs/edgeCerts-general.png)
 
@@ -35,11 +35,11 @@ A hitelesítésszolgáltató vagy a "CA" röviden, nem minden entitás, amely a 
 
 ### <a name="root-ca-certificate"></a>Legfelső szintű hitelesítésszolgáltató tanúsítványa
 
-A legfelső szintű Hitelesítésszolgáltatói tanúsítványt a teljes folyamat bizalomforrásánál. Éles forgatókönyvekben a CA-tanúsítvány általában Baltimore, a Verisign vagy a DigiCert megbízható kereskedelmi hitelesítésszolgáltatótól vásárolt. Kell rendelkeznie az eszközök csatlakoztatása az IoT Edge-eszközök teljes körű, lehetőség a vállalati szintű hitelesítésszolgáltató használata. Mindkét esetben a teljes tanúsítványlánccal fel IoT Edge-központból összesíti, így a levél IoT-eszközök meg kell bíznia a legfelső szintű tanúsítványát. A legfelső szintű Hitelesítésszolgáltatói tanúsítvány tárolására, vagy a megbízható legfelső szintű tanúsítványtárolóban szolgáltató, vagy adja meg a tanúsítvány adatait az alkalmazás kódjában.
+A legfelső szintű Hitelesítésszolgáltatói tanúsítványt a teljes folyamat bizalomforrásánál. Éles környezetben Ez a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány általában megbízható kereskedelmi hitelesítésszolgáltatótól vásárolható, például Baltimore, VeriSign vagy DigiCert. Ha teljes körű vezérléssel rendelkezik a IoT Edge eszközökhöz csatlakozó eszközök felett, vállalati szintű hitelesítésszolgáltató is használható. Mindkét esetben a IoT Edge hub teljes tanúsítványlánc felfelé görget, így a Leaf IoT-eszközöknek meg kell bízniuk a főtanúsítványban. A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt a megbízható legfelső szintű hitelesítésszolgáltató tárolóban tárolhatja, vagy megadhatja a tanúsítvány részleteit az alkalmazás kódjában.
 
 ### <a name="intermediate-certificates"></a>Köztes tanúsítványok
 
-Egy tipikus gyártási folyamat létrehozásához a biztonságos eszközök legfelső szintű Hitelesítésszolgáltatói tanúsítványok ritkán használt közvetlenül, elsősorban kiszivárgását vagy felfedését kockázata miatt. A legfelső szintű Hitelesítésszolgáltatói tanúsítványt hoz létre, és a egy vagy több köztes Hitelesítésszolgáltatói tanúsítványok digitális aláírással. Előfordulhat, hogy csak akkor egyetlen, vagy előfordulhat, hogy ezek a köztes tanúsítványok láncolata. Köztes tanúsítványok láncolatától igénylő forgatókönyvek a következők:
+Egy tipikus gyártási folyamat létrehozásához a biztonságos eszközök legfelső szintű Hitelesítésszolgáltatói tanúsítványok ritkán használt közvetlenül, elsősorban kiszivárgását vagy felfedését kockázata miatt. A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehoz és digitálisan aláír egy vagy több köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt. Előfordulhat, hogy csak akkor egyetlen, vagy előfordulhat, hogy ezek a köztes tanúsítványok láncolata. Köztes tanúsítványok láncolatától igénylő forgatókönyvek a következők:
 
 * Egy gyártó belüli szervezeti egységek hierarchiájának.
 
@@ -51,27 +51,27 @@ Minden esetben a gyártó egy köztes Hitelesítésszolgáltatói tanúsítvány
 
 ### <a name="device-ca-certificate"></a>Eszköz Hitelesítésszolgáltatói tanúsítvány
 
-Az eszköz Hitelesítésszolgáltatói tanúsítvány által létrehozott és a folyamat utolsó köztes Hitelesítésszolgáltatói tanúsítvány aláírásával. Ez a tanúsítvány telepítve van az IoT Edge-eszköz, lehetőleg a biztonsági tároló, például a hardveres biztonsági modul (HSM). Ezenkívül egy eszköz Hitelesítésszolgáltatói tanúsítvány egyedileg azonosítja az IoT Edge-eszköz. Az IoT Edge-hez az eszköz Hitelesítésszolgáltatói tanúsítványát is tanúsítványokat más. Például az eszköz hitelesítésszolgáltató tanúsítványát tanúsítványokat levél eszköz, amely segítségével hitelesíti az eszközöket, a [Azure IoT Device Provisioning Service](../iot-dps/about-iot-dps.md).
+Az eszköz Hitelesítésszolgáltatói tanúsítvány által létrehozott és a folyamat utolsó köztes Hitelesítésszolgáltatói tanúsítvány aláírásával. Ez a tanúsítvány a IoT Edge eszközre van telepítve, lehetőleg biztonságos tárolóban, például hardveres biztonsági modulban (HSM). Ezenkívül egy eszköz Hitelesítésszolgáltatói tanúsítvány egyedileg azonosítja az IoT Edge-eszköz. IoT Edge esetén az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa más tanúsítványokat is kiadhat. Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa például az eszközök az [Azure IoT Device kiépítési szolgáltatásba](../iot-dps/about-iot-dps.md)való hitelesítéséhez használt levél-eszköz tanúsítványokat bocsát ki.
 
 ### <a name="iot-edge-workload-ca"></a>Az IoT Edge munkaterhelés hitelesítésszolgáltató
 
-A [IoT Edge-biztonságkezelő](iot-edge-security-manager.md) hoz létre a számítási feladatok Hitelesítésszolgáltatói tanúsítvány, a "operátor" oldalon, a folyamat az első IoT Edge első indításakor. Ez a tanúsítvány által létrehozott és az "eszköz CA tanúsítványát" alá. Ez a tanúsítvány, amely egy másik köztes aláíró tanúsítványt, hozza létre, és bármely más, az IoT Edge-futtatókörnyezete által használt tanúsítványok aláírására szolgál. Most, amely elsősorban az IoT Edge hubot kiszolgálói tanúsítvány a következő szakaszban tárgyalt, de a jövőben tartalmazhatnak egyéb tanúsítványok hitelesítésére az IoT Edge-összetevők.
+A [IoT Edge Security Manager](iot-edge-security-manager.md) létrehozza a munkaterhelés hitelesítésszolgáltatói tanúsítványát, amely a folyamat "operátor" oldalának első indításakor IoT Edge először elindul. Ez a tanúsítvány által létrehozott és az "eszköz CA tanúsítványát" alá. Ez a tanúsítvány, amely egy másik köztes aláíró tanúsítványt, hozza létre, és bármely más, az IoT Edge-futtatókörnyezete által használt tanúsítványok aláírására szolgál. Napjainkban ez elsősorban az IoT Edge hub-kiszolgáló tanúsítványa, amelyet a következő szakaszban tárgyaltak, de a jövőben más tanúsítványokat is tartalmazhatnak IoT Edge összetevők hitelesítéséhez.
 
-### <a name="iot-edge-hub-server-certificate"></a>IoT Edge hubot kiszolgálói tanúsítvány
+### <a name="iot-edge-hub-server-certificate"></a>IoT Edge hub-kiszolgáló tanúsítványa
 
-A tanúsítvány az IoT Edge hub az a tényleges tanúsítvány levéleszközök és az IoT Edge által megkövetelt TLS-kapcsolat létrehozása során a személyazonosság-modulokat jelenik meg. Ez a tanúsítvány-aláíró tanúsítványok, akár a legfelső szintű Hitelesítésszolgáltatói tanúsítványt, amely meg kell bíznia a levél IoT-eszköz létrehozásához használt a teljes tanúsítványlánccal mutat be. Manager által generált az IoT Edge biztonsági, a köznapi név (CN), amikor az IoT Edge-központ tanúsítvány értéke a "állomásnév" tulajdonság a config.yaml fájlban kisbetűsre átalakítás után. Ez a keverhetők össze az IoT Edge gyakori forrását.
+Az IoT Edge hub-kiszolgáló tanúsítványa az a tényleges tanúsítvány, amelyet a rendszer a leküldési eszközök és modulok számára biztosít a hitelesítéshez a IoT Edge által igényelt TLS-kapcsolatok létrehozása során. Ez a tanúsítvány-aláíró tanúsítványok, akár a legfelső szintű Hitelesítésszolgáltatói tanúsítványt, amely meg kell bíznia a levél IoT-eszköz létrehozásához használt a teljes tanúsítványlánccal mutat be. Ha a IoT Edge Security Manager létrehozta, akkor ennek az IoT Edge hub-tanúsítványnak a köznapi neve (CN) a config. YAML fájlban a "hostname" tulajdonságra van állítva, a kisbetűvé alakítás után. Ez a keverhetők össze az IoT Edge gyakori forrását.
 
 ## <a name="production-implications"></a>Gyártás – következmények
 
-Egy ésszerű kérdés lehet, hogy "Miért IoT Edge kell a"számítási feladat CA"extra tanúsítványt? Nem sikerült, használja az eszköz Hitelesítésszolgáltatói tanúsítványt közvetlenül a az IoT Edge hub-tanúsítvány előállításához? ". Technikailag sikerült. Azonban a a "számítási feladat" köztes tanúsítvány célja, hogy az eszköz gyártója és az eszköz operátor közötti aggályokat külön. Képzelje el egy forgatókönyvet, ahol IoT Edge-eszköz értékesített vagy egy ügyfél a forráscsomópontról a másikra. Ekkor érdemes a eszköz Hitelesítésszolgáltatói tanúsítvány, nem módosítható a gyártó által biztosított. Azonban a "számítási feladat" tanúsítványok adott működésével, az eszköz törlése kell, és újra létre kell hozni az új központi telepítés kapcsán.
+Egy ésszerű kérdés lehet, hogy "Miért IoT Edge kell a"számítási feladat CA"extra tanúsítványt? Nem tudta használni az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát az IoT Edge hub-kiszolgáló tanúsítványának közvetlen létrehozásához? ". Technikailag sikerült. Azonban a a "számítási feladat" köztes tanúsítvány célja, hogy az eszköz gyártója és az eszköz operátor közötti aggályokat külön. Képzelje el egy forgatókönyvet, ahol IoT Edge-eszköz értékesített vagy egy ügyfél a forráscsomópontról a másikra. Ekkor érdemes a eszköz Hitelesítésszolgáltatói tanúsítvány, nem módosítható a gyártó által biztosított. Azonban a "számítási feladat" tanúsítványok adott működésével, az eszköz törlése kell, és újra létre kell hozni az új központi telepítés kapcsán.
 
-Gyártási és művelet folyamatok el vannak különítve, mert ha éles eszközök előkészítése vegye figyelembe a következő szempontokat:
+Mivel a gyártási és üzemeltetési folyamatok el vannak különítve, a következő szempontokat kell figyelembe venni a termelési eszközök előkészítésekor:
 
 * Az ügyféltanúsítvány-alapú folyamatokhoz a legfelső szintű Hitelesítésszolgáltatói tanúsítvány és az összes köztes Hitelesítésszolgáltatói tanúsítványt kell biztonságossá tehetők és az IoT Edge-eszköz bevezetést a teljes folyamat során. Az IoT Edge-eszköz gyártója hatékony folyamatoknak kell rendelkeznie azon megfelelő tároló és a köztes tanúsítványok használatát. Emellett az eszköz Hitelesítésszolgáltatói tanúsítványt kell tárolni, amennyire csak lehetséges, magán az eszközön, lehetőleg egy hardveres biztonsági modul biztonságos tárolóként.
 
-* A tanúsítvány az IoT Edge hub az IoT Edge hub az csatlakozó ügyféleszközök és a modulok által jelennek meg. Az eszköz Hitelesítésszolgáltatói tanúsítvány köznapi név (CN) **nem lehet** ugyanaz, mint az "állomásnév", amely az IoT Edge-eszközön config.yaml használja. A nevét (például a kapcsolati karakterlánc vagy a csatlakozás parancs az MQTT GatewayHostName paraméterében) keresztül csatlakozni az IoT Edge-ügyfelek által használt **nem lehet** ugyanaz, mint az eszköz Hitelesítésszolgáltatói tanúsítványban használt köznapi név. Ez a korlátozás azért, hogy az IoT Edge hub az ellenőrzéshez az ügyfelek által a teljes tanúsítványlánccal mutat be. Ha az IoT Edge hub-tanúsítvány és az eszköz Hitelesítésszolgáltatói tanúsítvány is rendelkezik, az azonos CN, kap egy ellenőrző hurokba került, és a tanúsítvány érvényteleníti.
+* Az IoT Edge hub-kiszolgáló tanúsítványát IoT Edge hub mutatja be a csatlakoztatott ügyféleszközök és modulok számára. Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának köznapi neve (CN) **nem** egyezhet meg a "hostname" értékkel, amelyet a IoT Edge-eszköz config. YAML használ. Az ügyfelek által a IoT Edgehoz való kapcsolódáshoz használt név (például a kapcsolati karakterlánc GatewayHostName paraméterén vagy a MQTT CSATLAKOZTATÁSi parancsán keresztül) **nem egyezhet** meg az eszköz hitelesítésszolgáltatói tanúsítványában használt köznapi névvel. Ez a korlátozás azért van, mert az IoT Edge hub a teljes tanúsítványláncot mutatja be az ügyfelek általi ellenőrzéshez. Ha a IoT Edge hub-kiszolgáló tanúsítványa és az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa azonos KN-val rendelkezik, a rendszer egy ellenőrzési hurkot kap, és a tanúsítvány érvénytelenné válik.
 
-* Mert az eszköz Hitelesítésszolgáltatói tanúsítvány használja az IoT Edge biztonsági démon a végső IoT Edge-tanúsítványok előállításához, magának kell egy aláíró tanúsítványt, ami azt jelenti, tanúsítvány-aláírási képességekkel rendelkezik. Alkalmazása "V3 alapvető típusmegkötések kiegészítő CA:True" az eszköz hitelesítésszolgáltató tanúsítványa automatikusan úgy állítja be a szükséges kulcshasználat tulajdonságai.
+* Mivel az IoT Edge biztonsági démon az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát használja a végső IoT Edge tanúsítványok előállításához, akkor magát aláíró tanúsítványnak kell lennie, ami azt jelenti, hogy tanúsítvány-aláírási képességekkel rendelkezik. A "v3 alapkorlátozások CA: true" alkalmazása az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa automatikusan beállítja a szükséges kulcshasználat tulajdonságokat.
 
 >[!Tip]
 > Ha Ön már mintajelentéshez IoT Edge beállítása "kényelmi szkriptjeit" használatával fejlesztési-Tesztelési forgatókönyvek esetében transzparens átjáróként (lásd a következő szakaszban), és ugyanazt az állomásnevet használja, az eszköz Hitelesítésszolgáltatói tanúsítvány létrehozásakor, az állomásnév a config.yaml, mint , miért működött értéksorokkal. Annak érdekében, hogy a fejlesztői élmény egyszerűsítése érdekében a felhasználók kényelme érdekében parancsfájlok hozzáfűzi a ".ca" a parancsprogramhoz adja át a név végén. Így például, "mygateway" mindkét az eszköz nevét a szkriptek és config.yaml az állomásnevet használja, ha a korábbi lesz kapcsolva mygateway.ca be előtt használt a CN, az eszköz Hitelesítésszolgáltatói tanúsítvány.
@@ -93,21 +93,21 @@ New-CACertsCertChain rsa
 Hasonlóképpen ezek a parancsok készítése az "eszköz CA tanúsítványát".
 
 ```bash
-./certGen.sh create_edge_device_certificate "<gateway device name>"
+./certGen.sh create_edge_device_ca_certificate "<gateway device name>"
 ```
 
 ```Powershell
-New-CACertsEdgeDevice "<gateway device name>"
+New-CACertsEdgeDeviceCA "<gateway device name>"
 ```
 
-* A **\<átjáró eszköznév\>** ezeket a szkripteket átadott **nem kell** lehet ugyanaz, mint a config.yaml "állomásnév" paramétert. A parancsfájlok segítségével bármely problémák elkerülése érdekében a ".ca" karakterláncnak, amelyeket a **\<átjáró eszköznév\>** , hogy a névütközést, abban az esetben, ha a felhasználó beállította az IoT Edge mindkét helyen azonos névvel. Azonban hasznos lehet, kerülje a ugyanazzal a névvel.
+* Az adott parancsfájlba átadott **\> átjáró-eszköznév nem egyezhet meg a config. YAML "hostname" paraméterével. \<** A parancsfájlok segítségével elkerülhetők a hibák, ha a ". ca" karakterláncot az **\<átjáró-eszköz nevére\>** fűzi, hogy a név ne legyen ütközés abban az esetben, ha egy felhasználó a két helyen azonos névvel állítja be IoT Edge. Azonban érdemes elkerülni ugyanazt a nevet.
 
 >[!Tip]
 > Csatlakozhat az eszköz IoT "levél" eszközök és az IoT Edge segítségével a c IoT eszközoldali SDK-t használó alkalmazásokat, hozzá kell adnia a választható GatewayHostName paraméter be az eszköz kapcsolati karakterláncának végén. Az Edge Hub kiszolgálói tanúsítvány jön létre, amikor, a gazdanevet erről config.yaml alacsonyabb kisbetűsek verzióján alapul, ezért a nevek egyezés és a TLS-tanúsítvány ellenőrzése sikeres, kell megadnia a GatewayHostName paraméter kisbetű szerepel.
 
 ## <a name="example-of-iot-edge-certificate-hierarchy"></a>A tanúsítvány-hierarchia IoT Edge – példa
 
-A tanúsítvány elérési útjának példáján mutatja be, az alábbi képernyőképen az IoT Edge-eszköz beállítása a transzparens átjáróként működő van. OpenSSL csatlakoztatása az IoT Edge-központhoz, ellenőrzésének és írassa ki a tanúsítványok segítségével.
+A tanúsítvány elérési útjának példáján mutatja be, az alábbi képernyőképen az IoT Edge-eszköz beállítása a transzparens átjáróként működő van. Az OpenSSL az IoT Edge hubhoz való kapcsolódásra, a tanúsítványok érvényesítésére és kiírására szolgál.
 
 ![A tanúsítvány-hierarchia minden szintjére képernyőképe](./media/iot-edge-certs/iotedge-cert-chain.png)
 
@@ -118,7 +118,7 @@ Láthatja, hogy megjelenjen a képernyőképen tanúsítvány mélysége hierarc
 | Köztes Hitelesítésszolgáltatói tanúsítvány | Az Azure IoT Hub köztes tanúsítvány csak tesztelési                                                                 |
 | Eszköz Hitelesítésszolgáltatói tanúsítvány       | iotgateway.CA ("iotgateway" lett átadva a állomásnévként < átjáró > kényelem és parancsfájlok)      |
 | Számítási feladatok Hitelesítésszolgáltatói tanúsítvány     | iotedge munkaterhelés hitelesítésszolgáltató                                                                                       |
-| IoT Edge Hub Server Certificate | (az állomásnév megegyezik a config.yaml) iotedgegw.local                                                |
+| IoT Edge hub-kiszolgáló tanúsítványa | (az állomásnév megegyezik a config.yaml) iotedgegw.local                                                |
 
 ## <a name="next-steps"></a>További lépések
 

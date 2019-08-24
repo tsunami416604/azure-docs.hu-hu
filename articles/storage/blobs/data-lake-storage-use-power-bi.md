@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: cb82d47be11570baf7865468c804162a20a7685f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 59574f0a07f4ecc145f2b0efd430e65cbdebcc65
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855467"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991573"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Azure Data Lake Storage Gen2i adatelemzés Power BI használatával
 
@@ -39,7 +39,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
     ![Adatlekérdezés lap](media/data-lake-storage-use-power-bi/get-data-page.png)
 
-4. A **Azure Data Lake Storage Gen2** párbeszédpanelen megadhatja az Azure Data Lake Storage Gen2-fiók, a fájlrendszer vagy az almappa URL-címét a fájlrendszer végpontjának formátuma segítségével. A Data Lake Storage Gen2 URL-címei rendelkeznek a `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` következő mintával, majd az **OK**gombra.
+4. A **Azure Data Lake Storage Gen2** párbeszédpanelen megadhatja az Azure Data Lake Storage Gen2-fiók, a fájlrendszer vagy az almappa URL-címét a tároló végpontjának formátuma alapján. A Data Lake Storage Gen2 URL-címei rendelkeznek a `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` következő mintával, majd az **OK**gombra.
 
     ![URL](media/data-lake-storage-use-power-bi/adls-url.png)
 

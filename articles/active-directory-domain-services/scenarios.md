@@ -1,90 +1,115 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: Központi telepítési forgatókönyv |} A Microsoft Docs'
-description: Az Azure AD Domain Services központi telepítési forgatókönyvei
+title: Gyakori üzembe helyezési forgatókönyvek Azure AD Domain Serviceshoz | Microsoft Docs
+description: Ismerkedjen meg a gyakori forgatókönyvekkel és a Azure Active Directory Domain Services az üzleti igények kielégítéséhez szükséges példákkal.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: c5216ec9-4c4f-4b7e-830b-9d70cf176b20
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/21/2017
+ms.date: 08/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 9e8ac5e83fa3cc9b1e266a9009bad86f41233ed8
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6f81bc2ccf11cbcc3621dc1149879864c88cf0cf
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472666"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980517"
 ---
-# <a name="deployment-scenarios-and-use-cases"></a>Központi telepítési forgatókönyvek és példák
-Ebben a szakaszban áttekintjük, néhány forgatókönyvek és példák, amelyek az Azure Active Directory (AD) Domain Servicesben.
+# <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Gyakori használati esetek és forgatókönyvek Azure Active Directory Domain Services
 
-## <a name="secure-easy-administration-of-azure-virtual-machines"></a>Azure-beli virtuális gépek felügyelete biztonságos, könnyen
-Az Azure Active Directory Domain Services segítségével kezelheti az Azure-beli virtuális gépek zökkenőmentes módon. A felügyelt tartományba, ezáltal lehetővé téve, hogy a vállalati AD hitelesítő adataival jelentkezzen be Azure-beli virtuális gépek lehet csatlakoztatni. Ezzel a módszerrel elkerülhetők a biztonsági hitelesítő adatok kezelése és például a helyi rendszergazdai fiókok, az Azure-beli virtuális gépek mindegyike karbantartása.
+A Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományi szolgáltatásokat biztosít, például a tartományhoz való csatlakozást, a csoportházirendet, az LDAP-t és a Kerberos/NTLM-hitelesítést. Az Azure AD DS integrálható a meglévő Azure AD-Bérlővel, ami lehetővé teszi a felhasználók számára, hogy a meglévő hitelesítő adataikkal jelentkezzenek be. Ezeket a tartományi szolgáltatásokat a tartományvezérlők üzembe helyezése, kezelése és javítása nélkül használhatja a felhőben, ami zökkenőmentesebb átállást biztosít a helyszíni erőforrások számára az Azure-ba.
 
-A felügyelt tartományhoz csatlakoztatott kiszolgáló virtuális gépek is felügyelt és biztonságos csoportházirend használatával. Szükséges biztonsági előírások vonatkoznak az Azure-beli virtuális gépek és a vállalati biztonsági irányelveknek megfelelően őket zárolását. Például szabályzat csoportkezelési képességeinek használatával korlátozza az alkalmazásokat, amelyek a két virtuális gép indíthatja el.
+Ez a cikk néhány olyan gyakori üzleti forgatókönyvet mutat be, ahol az Azure AD DS értékkel rendelkezik, és megfelel ezeknek az igényeknek.
 
-![Az Azure-beli virtuális gépek egyszerűsített felügyelet](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
+## <a name="secure-administration-of-azure-virtual-machines"></a>Azure-beli virtuális gépek biztonságos felügyelete
 
-Ahogy a kiszolgálók és az egyéb infrastruktúrát eléri a teljes életciklusa, Contoso mozgatása jelenleg a felhőbe helyszíni környezetben üzemelő számos alkalmazás. A jelenlegi informatikai standard előírásoknak, hogy a vállalati alkalmazásokat üzemeltető kiszolgálók tartományhoz csatlakoztatott és a felügyelt csoportházirend használatával kell lennie. A Contoso tartományhoz való csatlakozás virtuális gépekhez az Azure-ban üzembe helyezett felügyeleti könnyebben részesíti előnyben IT-rendszergazdához. Ennek eredményeképpen a rendszergazdák és felhasználók is jelentkezzen be vállalati hitelesítői adataikkal. Egy időben a gépek csoportházirenddel szükséges biztonsági alapterveket ahhoz, hogy konfigurálhatók. Contoso nem szeretné történő üzembe helyezése, figyelheti és kezelheti a tartományvezérlőket az Azure-beli virtuális gépek védelméhez az Azure-ban. Az Azure AD Domain Services ezért egy kiválóan alkalmas a ezt a használati esetet.
+Az Active Directory-beli hitelesítő adatok egyetlen készletének használatához az Azure Virtual Machines (VM) csatlakoztatható egy Azure AD DS felügyelt tartományhoz. Ez a megközelítés csökkenti a hitelesítő adatok kezelésével kapcsolatos problémákat, például a helyi rendszergazdai fiókok karbantartását minden virtuális gépen, illetve a különböző fiókokat és jelszavakat.
 
-**Üzembe helyezésével kapcsolatos megjegyzések**
+Az Azure AD DS felügyelt tartományhoz csatlakoztatott virtuális gépeket Csoportházirend használatával is felügyelheti és biztonságossá teheti. A szükséges biztonsági alaptervek alkalmazhatók a virtuális gépekre, hogy a vállalati biztonsági irányelveknek megfelelően zárolják őket. A Csoportházirend kezelése funkció segítségével például korlátozhatja a virtuális gépen indítható alkalmazások típusát.
 
-Vegye figyelembe az alábbi fontos szempontokat a központi telepítési forgatókönyv:
+![Azure-beli virtuális gépek egyszerűbb felügyelete](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
 
-* Az Azure AD Domain Services által kínált felügyelt tartományok alapértelmezés szerint biztosít egy egyetlen egybesimított (szervezeti egység) Szervezetiegység-struktúrára. Minden tartományhoz csatlakoztatott gépeket egy adott egybesimított szervezeti egység található. Előfordulhat, hogy azonban szeretne létrehozni az egyéni szervezeti egységekhez.
-* Az Azure AD Domain Services egyszerű csoportházirend támogatja a beépített csoportházirend-objektumok egyes a felhasználók és számítógépek formájában tárolók. Egyéni csoportházirend-objektumok létrehozásához, és továbbíthatja azokat az egyéni szervezeti egységekhez.
-* Az Azure AD tartományi szolgáltatások az alapvető AD számítógép objektum séma támogatja. A számítógép-objektum sémája nem terjeszthetők ki.
+Nézzük meg egy gyakori példát. Mivel a kiszolgálók és más infrastruktúra eléri a teljes élettartamot, a contoso a helyileg üzemeltetett alkalmazásokat szeretné áthelyezni a felhőbe. Az aktuális IT standard megbízatása szerint a vállalati alkalmazásokat üzemeltető kiszolgálóknak tartományhoz kell csatlakozniuk, és a csoportházirend használatával kell felügyelni őket. A contoso informatikai rendszergazdája szívesebben szeretné az Azure-ban üzembe helyezett virtuális gépeket csatlakozni a felügyelet megkönnyítéséhez, mivel a felhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be. A tartományhoz csatlakoztatott virtuális gépek a Csoportházirend használatával is konfigurálhatók a szükséges biztonsági alapterveknek való megfeleléshez. A contoso szívesebben nem helyezheti üzembe, figyelheti és felügyelheti saját tartományvezérlőit az Azure-ban.
 
-## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-bind-authentication-to-azure-infrastructure-services"></a>Lift-and-shift LDAP-kötés hitelesítéséhez az Azure infrastruktúra-szolgáltatásokat használó helyszíni alkalmazások
+Az Azure AD DS kiválóan alkalmas ehhez a használati esethez. Az Azure AD DS felügyelt tartományok lehetővé teszi a tartományhoz való csatlakozást, a hitelesítő adatok egyetlen készletének használatát és a csoportházirend alkalmazását. Felügyelt tartományként nem szükséges a tartományvezérlők konfigurálása és karbantartása.
+
+### <a name="deployment-notes"></a>Üzembe helyezési megjegyzések
+
+A következő üzembe helyezési szempontok vonatkoznak erre a példa használatára:
+
+* Az Azure AD DS felügyelt tartományok alapértelmezés szerint egyetlen, lapos szervezeti egység (OU) struktúrát használnak. Minden tartományhoz csatlakoztatott virtuális gép egyetlen szervezeti egységben található. Ha szükséges, létrehozhat egyéni szervezeti egységeket is.
+* Az Azure AD DS egy beépített csoportházirend-objektumot használ a felhasználók és számítógépek tárolók számára. További szabályozáshoz létrehozhat egyéni csoportházirend-objektumokat, és megcélozhatja azokat egyéni szervezeti egységekre.
+* Az Azure AD DS támogatja az alapszintű AD számítógép-objektum sémáját. A számítógép-objektum sémája nem terjeszthető ki.
+
+## <a name="lift-and-shift-on-premises-applications-that-use-ldap-bind-authentication"></a>LDAP-kötési hitelesítést használó helyszíni alkalmazások átemelése és átirányítása
+
+Példaként a contoso egy olyan helyszíni alkalmazást tartalmaz, amelyet számos éve vásárolt egy ISV-ben. Az alkalmazás jelenleg karbantartási módban van az ISV számára, és az alkalmazás módosításainak kérelmezése megfizethetetlenül drága. Az alkalmazás webes felülettel rendelkezik, amely webes űrlap használatával gyűjti a felhasználói hitelesítő adatokat, majd a helyszíni AD DS környezethez LDAP-kötést hajt végre.
+
 ![LDAP-kötés](./media/active-directory-domain-services-scenarios/ldap-bind.png)
 
-Contoso egy helyszíni alkalmazás, a független Szoftverszállító vásárolt sok éve rendelkezik. Az alkalmazás jelenleg karbantartási módban a független szoftvergyártó, és módosításokat igénylő contoso elfogadhatatlanul magas-e. Ez az alkalmazás rendelkezik egy webes előtér, amely egy webes űrlap használata felhasználói hitelesítő adatokat gyűjt, és ezután hitelesíti a felhasználókat egy LDAP-kötés a vállalati Active Directoryhoz elvégzésével. Contoso, ha az alkalmazást az Azure infrastruktúra-szolgáltatások áttelepítése. Célszerű, hogy az alkalmazás formájában is működik, bármilyen módosítása nélkül. Ezenkívül felhasználók hitelesítéséhez a meglévő vállalati hitelesítő adataikkal képesnek kell lennie felhasználókat szeretne előtérként dolgot újratanítás kellene. Más szóval lehet, hogy a végfelhasználók oblivious, ahol az alkalmazás fut, és az áttelepítés transzparens hozzájuk kell lennie.
+A contoso szeretné áttelepíteni az alkalmazást az Azure-ba. Az alkalmazásnak továbbra is működőképesnek kell lennie, és nincs szükség módosításra. Emellett a felhasználóknak a meglévő vállalati hitelesítő adataikkal és további képzés nélkül kell tudniuk hitelesíteni magukat. Transzparensnek kell lennie az alkalmazást futtató végfelhasználók számára.
 
-**Üzembe helyezésével kapcsolatos megjegyzések**
+Ebben az esetben az Azure AD DS lehetővé teszi, hogy az alkalmazások LDAP-kötéseket végezzenek a hitelesítési folyamat részeként. A régi helyszíni alkalmazások a konfiguráció vagy a felhasználói élmény módosítása nélkül is elvégezhetik az Azure-ba való áttérést és a felhasználók zökkenőmentes hitelesítését.
 
-Vegye figyelembe az alábbi fontos szempontokat a központi telepítési forgatókönyv:
+### <a name="deployment-notes"></a>Üzembe helyezési megjegyzések
 
-* Győződjön meg arról, hogy az alkalmazás nem kell módosítani írható a könyvtárba. Az Azure AD Domain Services által kínált felügyelt tartományok LDAP írási hozzáférés nem támogatott.
-* Jelszavak közvetlenül a felügyelt tartomány szemben nem módosítható. A végfelhasználók vagy módosíthatja a jelszavát az Azure AD önkiszolgáló jelszó-módosítási mechanizmus segítségével vagy a helyszíni címtár alapján. Ezek a változások automatikusan szinkronizálja, és elérhető a felügyelt tartományban.
+A következő üzembe helyezési szempontok vonatkoznak erre a példa használatára:
 
-## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-read-to-access-the-directory-to-azure-infrastructure-services"></a>Lift-and-shift LDAP használó helyszíni alkalmazások olvasási hozzáférés a címtárhoz az Azure infrastruktúra-szolgáltatások
-Contoso egy helyszíni üzletági (LOB) alkalmazás kifejlesztett csaknem egy évtizede ezelőtt rendelkezik. Ez az alkalmazás tudomása könyvtára, és a Windows Server AD-hez készült. Az alkalmazás LDAP (Lightweight Directory Access Protocol) használatával olvassa el a felhasználókra vonatkozó információk/attribútumok az Active Directoryból. Az alkalmazás nem attribútumainak módosítása, vagy ellenkező esetben a könyvtárba írást. Contoso, ha az alkalmazást az Azure infrastruktúra-szolgáltatások áttelepítése, és jelenleg a ezt az alkalmazást üzemeltető elévülési a helyszíni hardver kivonása. Az alkalmazás modern directory API-k, például a REST-alapú Azure AD Graph API használatához nem kell írni. Ezért egy lift-and-shift lehetőség van szükség, amellyel az alkalmazás futtatását a felhőben, a kód módosítása vagy az alkalmazás újraírását nélkül telepíthető át.
+* Győződjön meg arról, hogy az alkalmazásnak nem kell módosítania/írnia a könyvtárat. Az Azure AD DS felügyelt tartományhoz való LDAP írási hozzáférés nem támogatott.
+* A jelszavakat nem lehet közvetlenül egy Azure AD DS felügyelt tartományon módosítani. A végfelhasználók módosíthatják a jelszavukat az Azure AD önkiszolgáló jelszó-módosítási mechanizmusával vagy a helyszíni címtárral. Ezeket a módosításokat a rendszer automatikusan szinkronizálja és elérhetővé válik az Azure AD DS felügyelt tartományában.
 
-**Üzembe helyezésével kapcsolatos megjegyzések**
+## <a name="lift-and-shift-on-premises-applications-that-use-ldap-read-to-access-the-directory"></a>Az LDAP-t használó helyszíni alkalmazások átemelése a címtár eléréséhez
 
-Vegye figyelembe az alábbi fontos szempontokat a központi telepítési forgatókönyv:
+Az előző példához hasonlóan tegyük fel, hogy a contoso egy olyan helyszíni üzletági (LOB) alkalmazással rendelkezik, amelyet majdnem egy évtizeden át fejlesztettünk ki. Ez az alkalmazás a címtárral tisztában van, és úgy lett kialakítva, hogy a Lightweight Directory Access Protocol (LDAP) használatával olvassa el a felhasználókra vonatkozó információkat és attribútumokat AD DS. Az alkalmazás nem módosítja az attribútumokat, vagy más módon ír a könyvtárba.
 
-* Győződjön meg arról, hogy az alkalmazás nem kell módosítani írható a könyvtárba. Az Azure AD Domain Services által kínált felügyelt tartományok LDAP írási hozzáférés nem támogatott.
-* Győződjön meg arról, hogy az alkalmazás nem kell egyéni bővített Active Directory-sémát. Sémakiterjesztések nem támogatottak az Azure AD tartományi szolgáltatásokban.
+A contoso szeretné áttelepíteni ezt az alkalmazást az Azure-ba, és kivonni az alkalmazást futtató, a helyszíni helyi hardvert. Az alkalmazás nem írható át olyan modern címtár-API-k használatára, mint például a REST-alapú Azure AD Graph API. A rendszer egy emelt szintű váltási lehetőséget választ arra az esetre, ha az alkalmazás a felhőben való futtatásra, kód módosítása vagy az alkalmazás átírása nélkül telepíthető.
 
-## <a name="migrate-an-on-premises-service-or-daemon-application-to-azure-infrastructure-services"></a>Az Azure Infrastruktúraszolgáltatások a helyszíni szolgáltatás- vagy démonalkalmazásban alkalmazások migrálása
-Egyes alkalmazások több réteget, amelyben a csomagok valamelyikére kell végrehajtania a hitelesített hívásokat indítson a háttérrendszer szintet, például az adatbázis-rétegből állnak. Active Directory-fiókok esetében ezek használati esetek gyakran használják. Lift-and-shift is az ilyen alkalmazások az Azure infrastruktúra-szolgáltatások és identitás igényeinek megfelelően, ezeket az alkalmazásokat az Azure AD tartományi szolgáltatások használata. Ha szeretné, az Azure ad-hez a helyszíni címtárból szinkronizált ugyanazt a fiókot használja. Azt is megteheti először hozzon létre egy egyéni szervezeti Egységet, és majd hozzon létre egy különálló szolgáltatásfiókhoz a szervezeti egységre, az ilyen alkalmazások központi telepítése.
+Ebben az esetben az Azure AD DS lehetővé teszi, hogy az alkalmazások LDAP-olvasási műveleteket végezzenek a felügyelt tartományon, hogy megkapják a szükséges attribútum-információkat. Az alkalmazást nem kell újraírni, így az Azure-ba való átállással a felhasználók továbbra is használhatják az alkalmazást anélkül, hogy megtörtént a futtatásuk.
 
-![A szolgáltatásfiók WIA használatával](./media/active-directory-domain-services-scenarios/wia-service-account.png)
+### <a name="deployment-notes"></a>Üzembe helyezési megjegyzések
 
-Contoso egy személyre szabott tároló szoftveralkalmazás, amely tartalmaz egy web front end, egy SQL server és a háttérkiszolgáló FTP rendelkezik. Windows-hitelesítést szolgáltatásfiókok segítségével hitelesíti a webes előtér az FTP-kiszolgálóhoz. A webes előtér-szolgáltatás fiókként történő futtatására van beállítva. A háttérkiszolgáló van konfigurálva, hogy engedélyezze a hozzáférést a szolgáltatásfiók számára a webes kezelőfelület. Contoso részesíti előnyben, hogy nem kell telepítenie egy tartomány tartományvezérlő virtuális gép áthelyezése az alkalmazást az Azure infrastruktúra-szolgáltatások a felhőben. A Contoso rendszergazdája telepítheti az előtér-webkiszolgáló, az SQL server és az FTP-kiszolgálóhoz az Azure-beli virtuális gépek üzemeltető kiszolgálók. Ezek a gépek majd csatlakoznak az Azure AD tartományi szolgáltatásokkal felügyelt tartományban. Ezt követően használhatják ugyanazt a fiókot a helyszíni címtárban az alkalmazás hitelesítési célra. Ez a szolgáltatás fiók automatikusan szinkronizálja az Azure AD tartományi szolgáltatásokkal felügyelt tartományban, és használható.
+A következő üzembe helyezési szempontok vonatkoznak erre a példa használatára:
 
-**Üzembe helyezésével kapcsolatos megjegyzések**
+* Győződjön meg arról, hogy az alkalmazásnak nem kell módosítania/írnia a könyvtárat. Az Azure AD DS felügyelt tartományhoz való LDAP írási hozzáférés nem támogatott.
+* Győződjön meg arról, hogy az alkalmazásnak nincs szüksége egyéni/kiterjesztett Active Directory sémára. A séma-bővítmények nem támogatottak az Azure AD DSban.
 
-Vegye figyelembe az alábbi fontos szempontokat a központi telepítési forgatókönyv:
+## <a name="migrate-an-on-premises-service-or-daemon-application-to-azure"></a>Helyszíni szolgáltatás vagy Daemon-alkalmazás migrálása az Azure-ba
 
-* Győződjön meg arról, hogy az alkalmazás használ-e a hitelesítéshez felhasználónév/jelszó. Tanúsítvány/intelligens kártya-alapú hitelesítés az Azure AD tartományi szolgáltatások által nem támogatott.
-* Jelszavak közvetlenül a felügyelt tartomány szemben nem módosítható. A végfelhasználók vagy módosíthatja a jelszavát az Azure AD önkiszolgáló jelszó-módosítási mechanizmus segítségével vagy a helyszíni címtár alapján. Ezek a változások automatikusan szinkronizálja, és elérhető a felügyelt tartományban.
+Néhány alkalmazás több szintet is tartalmaz, amelyekben az egyik rétegnek hitelesített hívásokat kell végrehajtania egy háttérrendszer-réteghez, például egy adatbázishoz. Az AD-szolgáltatásfiókok általában ezekben a forgatókönyvekben használatosak. Ha az Azure-ba emelt szintű alkalmazásokat helyez át, az Azure AD DS lehetővé teszi, hogy a szolgáltatásfiókok ugyanúgy működjenek. Azt is megteheti, hogy ugyanazt a szolgáltatásfiókot használja, amelyet a helyszíni címtárból az Azure AD-ba Szinkronizál, vagy létrehozhat egy egyéni szervezeti egységet, majd létrehoz egy külön szolgáltatásfiókot a szervezeti egységben. Mindkét módszer esetében az alkalmazások továbbra is ugyanúgy működnek, mint a hitelesített hívásokat más rétegekbe és szolgáltatásokra.
 
-## <a name="windows-server-remote-desktop-services-deployments-in-azure"></a>A Windows Server távoli asztali szolgáltatások az Azure-ban üzemelő példányok
-Az Azure AD Domain Services segítségével adja meg a felügyelt AD tartományi szolgáltatások a távoli asztali kiszolgálókra, az Azure-ban üzembe helyezett.
+![Szolgáltatásfiók a WIA használatával](./media/active-directory-domain-services-scenarios/wia-service-account.png)
 
-Ebben a telepítési forgatókönyvben kapcsolatos további információkért lásd: hogyan [integrálása az Azure AD tartományi szolgáltatásokat a távoli asztali szolgáltatások üzemelő példány](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-azure-adds).
+Ebben a példában a contoso egy egyéni kialakítású, a webes kezelőfelülettel, egy SQL Server-kiszolgálóval és egy háttérbeli FTP-kiszolgálóval elkészített szoftver-tároló alkalmazást tartalmaz. A Windows-alapú hitelesítés a szolgáltatásfiókok használatával hitelesíti a webes előtért az FTP-kiszolgáló felé. A webes kezelőfelület úgy van beállítva, hogy szolgáltatásfiókként fusson. A háttér-kiszolgáló úgy van konfigurálva, hogy engedélyezze a hozzáférést a webes kezelőfelülethez tartozó szolgáltatásfiók számára. A contoso nem szeretné telepíteni és felügyelni a saját tartományvezérlő virtuális gépeket a felhőben az alkalmazás Azure-ba való áthelyezéséhez.
 
+Ebben az esetben a webes előtért, az SQL Servert és az FTP-kiszolgálót futtató kiszolgálók áttelepíthetők az Azure-beli virtuális gépekre, és egy Azure AD DS felügyelt tartományhoz csatlakoznak. A virtuális gépek ezután ugyanazt a szolgáltatásfiókot használhatják a helyszíni címtárban az alkalmazás hitelesítési céljaihoz, amelyet az Azure AD-val szinkronizál a Azure AD Connect használatával.
+
+### <a name="deployment-notes"></a>Üzembe helyezési megjegyzések
+
+A következő üzembe helyezési szempontok vonatkoznak erre a példa használatára:
+
+* Győződjön meg arról, hogy az alkalmazások felhasználónevet és jelszót használnak a hitelesítéshez. Az Azure AD DS nem támogatja a tanúsítvány-vagy intelligenskártya-alapú hitelesítést.
+* A jelszavakat nem lehet közvetlenül egy Azure AD DS felügyelt tartományon módosítani. A végfelhasználók módosíthatják a jelszavukat az Azure AD önkiszolgáló jelszó-módosítási mechanizmusával vagy a helyszíni címtárral. Ezeket a módosításokat a rendszer automatikusan szinkronizálja és elérhetővé válik az Azure AD DS felügyelt tartományában.
+
+## <a name="windows-server-remote-desktop-services-deployments-in-azure"></a>Windows Server Távoli asztali szolgáltatások üzembe helyezése az Azure-ban
+
+Az Azure AD DS használatával felügyelt tartományi szolgáltatásokat biztosíthat az Azure-ban üzembe helyezett távoli asztali kiszolgálókhoz. További információ erről az üzembe helyezési forgatókönyvről: [Azure ad Domain Services integrálása az RDS][windows-rds]-környezettel.
 
 ## <a name="domain-joined-hdinsight-clusters-preview"></a>Tartományhoz csatlakoztatott HDInsight-fürtök (előzetes verzió)
-Beállíthat egy Azure HDInsight-fürtöt, amely az Apache Ranger engedélyezve van az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz csatlakozik. Hozzon létre, és az Apache Ranger Hive-házirendeket a alkalmazni engedélyezése a felhasználók (például adatelemzők) való csatlakozáshoz Hive ODBC-alapú eszközökkel, például az Excel, a Tableau stb. Más számítási feladatok, például a HBase, Spark- és Storm, tartományhoz csatlakoztatott HDInsight hamarosan hozzáadása a Microsoft dolgozik.
 
-Ebben a telepítési forgatókönyvben kapcsolatos további információkért lásd: hogyan [tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](../hdinsight/domain-joined/apache-domain-joined-configure.md)
+Beállíthat olyan Azure HDInsight-fürtöt, amely egy Azure AD DS felügyelt tartományhoz csatlakozik, és engedélyezve van az Apache Ranger. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az Apache Ranger segítségével hozhat létre és alkalmazhat kaptár-házirendeket, és lehetővé teheti a felhasználók, például az adatszakértők számára, hogy az ODBC-alapú eszközök, például az Excel vagy a tabló használatával csatlakozzanak a Kaptárhoz. Továbbra is dolgozunk további munkaterhelések, például a HBase, a Spark és a Storm hozzáadásával a tartományhoz csatlakoztatott HDInsight.
+
+További információ erről az üzembe helyezési forgatókönyvről: [tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása][hdinsight]
+
+## <a name="next-steps"></a>További lépések
+
+Első lépésként [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services példányt][tutorial-create-instance]
+
+<!-- INTERNAL LINKS -->
+[hdinsight]: ../hdinsight/domain-joined/apache-domain-joined-configure.md
+[tutorial-create-instance]: tutorial-create-instance.md
+
+<!-- EXTERNAL LINKS -->
+[windows-rds]: /windows-server/remote/remote-desktop-services/rds-azure-adds

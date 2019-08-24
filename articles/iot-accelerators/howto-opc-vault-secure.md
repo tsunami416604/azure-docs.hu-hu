@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a819e0b5a0da92137451eedbf84fe06d22879568
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: ae10bb3488c21b6637163e333231e95a18c652bf
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973778"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996132"
 ---
-# <a name="how-to-use-the-opc-ua-certificate-management-service"></a>Az OPC UA Certificate Management szolgáltatás használata
+# <a name="how-to-use-the-opc-vault-certificate-management-service"></a>Az OPC Vault Certificate Management szolgáltatás használata
 
 Ez a cikk azt ismerteti, hogyan regisztrálhatók az alkalmazások, és hogyan adhatók hozzá aláírt alkalmazások tanúsítványainak az OPC UA-eszközökhöz.
 

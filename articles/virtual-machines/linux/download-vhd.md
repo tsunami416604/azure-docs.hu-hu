@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 5639571739f3eb6263f62444e7ab02186e2ca945
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 21720ead788a505f86c4d35eb5a39943ff4a2e12
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742586"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981005"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Linuxos virtuális merevlemez letöltése az Azure-ból
 
@@ -58,9 +58,9 @@ Ha a virtuális merevlemezt képként szeretné használni más virtuális gépe
 Ha a virtuális merevlemezt lemezként szeretné használni egy meglévő virtuális gép vagy adatlemez új példánya számára, hajtsa végre a következő lépéseket:
 
 1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2.  A központi menüben kattintson a **Virtuális gépek** elemre.
+2.  A bal oldali menüben válassza a **Virtual Machines**lehetőséget.
 3.  Válassza ki a virtuális gépet a listából.
-4.  A virtuális gép paneljén kattintson a **Leállítás**gombra.
+4.  A virtuális gép lapján válassza a **Leállítás**lehetőséget.
 
     ![Virtuális gép leállítása](./media/download-vhd/export-stop.png)
 
@@ -68,21 +68,21 @@ Ha a virtuális merevlemezt lemezként szeretné használni egy meglévő virtu�
 
 A VHD-fájl letöltéséhez egy [közös hozzáférési aláírás (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL-címét kell létrehoznia. Az URL-cím létrehozásakor a rendszer lejárati időt rendel az URL-címhez.
 
-1.  A virtuális gép paneljének menüjében kattintson a **lemezek**elemre.
-2.  Válassza ki a virtuális gép operációsrendszer-lemezét, majd kattintson a **lemez exportálása**lehetőségre.
-3.  Kattintson az **URL-cím**előállítása gombra.
+1.  A virtuális gép oldalának menüjében válassza a **lemezek**lehetőséget.
+2.  Válassza ki a virtuális gép operációsrendszer-lemezét, majd válassza a **lemez exportálása**lehetőséget.
+3.  Válassza az **URL-cím**előállítása lehetőséget.
 
     ![URL-cím generálása](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>VHD letöltése
 
-1.  A létrehozott URL-cím alatt kattintson a VHD-fájl letöltése elemre.
-
+1.  A létrehozott URL-cím alatt válassza **a VHD-fájl letöltése**lehetőséget.
+**
     ![VHD letöltése](./media/download-vhd/export-download.png)
 
-2.  Előfordulhat, hogy a letöltés indításához a böngésző **Mentés** gombjára kell kattintania. A VHD-fájl alapértelmezett neve *ABCD*.
+2.  Előfordulhat, hogy a letöltés indításához a böngésző **Mentés** elemét kell választania. A VHD-fájl alapértelmezett neve *ABCD*.
 
-    ![Kattintson a Mentés gombra a böngészőben](./media/download-vhd/export-save.png)
+    ![Válassza a mentés lehetőséget a böngészőben](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>További lépések
 

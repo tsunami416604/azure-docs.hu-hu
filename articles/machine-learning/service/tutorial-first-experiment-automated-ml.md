@@ -10,39 +10,38 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 08/14/2019
-ms.openlocfilehash: e53cd92a9dfd8f823918fb38e14c2b73c2ce071f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 01228dc01b8006a0a2476ddbbd6fa8ff430e280a
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534426"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982760"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: Az első besorolási modell létrehozása automatizált gépi tanulással
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhatja létre első automatizált gépi tanulási kísérletét a Azure Portalban (előzetes verzió) anélkül, hogy egyetlen sor kódot kellene írnia. Ez a példa egy besorolási modellt hoz létre, amely azt jelzi, hogy az ügyfél egy pénzügyi intézmény által rögzített értékű letétbe kerül.
 
-A Azure Machine Learning szolgáltatás és a Azure Portal automatizált gépi tanulási képességeinek használatával megkezdheti az automatizált gépi tanulási folyamatot. Az algoritmus kiválasztása és a hiperparaméter finomhangolása az Ön számára történik. Az automatizált gépi tanulási módszer az algoritmusok és a hiperparaméterek beállítása számos kombinációjára támaszkodik, amíg meg nem találja a legjobb modellt a feltétele alapján.
+Az automatizált gépi tanulás segítségével automatizálhatja az időigényes feladatokat. Az automatizált gépi tanulás gyorsan megismétli az algoritmusok és hiperparaméterek beállítása számos kombinációját, így könnyebben megtalálhatja a legjobb modellt a választott sikerességi mérőszám alapján.
 
-Ez az oktatóanyag a következő feladatokat ismerteti:
+Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő feladatokat:
 
 > [!div class="checklist"]
-> * Azure Machine Learning szolgáltatás munkaterületének konfigurálása.
-> * Hozzon létre egy kísérletet.
-> * Egy besorolási modell automatikus betanítása.
-> * Tekintse meg a tanítási Futtatás részleteit.
+> * Hozzon létre egy Azure Machine Learning szolgáltatás munkaterületet.
+> * Futtasson automatizált gépi tanulási kísérletet.
+> * A kísérlet részleteinek megtekintése.
 > * A modell üzembe helyezése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
 
-* Töltse le az [ **bankmarketing_train. csv** ](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) adatfájlt. Az **y** oszlop azt jelzi, hogy az ügyfél egy rögzített lejáratú befizetésre fizetett-e, amelyet később a jelen oktatóanyagban megjelenő előrejelzések céljának oszlopa azonosítottak. 
+* Töltse le az [**bankmarketing_train. csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) adatfájlt. Az **y** oszlop azt jelzi, hogy az ügyfél egy rögzített lejáratú befizetésre fizetett-e, amelyet később a jelen oktatóanyagban megjelenő előrejelzések céljának oszlopa azonosítottak. 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-an-experiment"></a>Kísérlet létrehozása
+## <a name="create-and-run-the-experiment"></a>A kísérlet létrehozása és futtatása
 
 Ezek a lépések végigvezetik az adatok kiválasztásának beállításán az elsődleges metrika és a modell típusának kiválasztásához. 
 
@@ -50,8 +49,6 @@ Ezek a lépések végigvezetik az adatok kiválasztásának beállításán az e
 Ekkor megjelenik az **automatikus Machine learning** képernyő, mivel ez az első kísérlet az automatizált Machine learning.
 
     ![Azure Portal navigációs ablaktábla](media/tutorial-1st-experiment-automated-ml/nav-pane.png)
-
-
 
 1. Válassza a **kísérlet létrehozása**lehetőséget. Ezután írja be a **My-1st-automl-Experiment** nevet a kísérlet neveként.
 
@@ -72,14 +69,11 @@ Ekkor megjelenik az **automatikus Machine learning** képernyő, mivel ez az els
 
 1. Válassza a **feltöltés** lehetőséget, és válassza ki a **bankmarketing_train. csv** fájlt a helyi számítógépről, hogy feltöltse az alapértelmezett tárolóba. A nyilvános előzetes verzió csak a helyi fájlok feltöltését és az Azure Blob Storage-fiókokat támogatja. Ha a feltöltés befejeződött, válassza ki a fájlt a listából. 
 
-    [![Adatfájl kiválasztása](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
-
 1. Az **előnézet** lapon további beállítások konfigurálhatók a kísérlethez.
 
     Az **előnézet** lapon jelezze, hogy az adatai fejléceket tartalmaznak. A szolgáltatás alapértelmezés szerint tartalmazza a betanítás összes funkcióját (oszlopát). Ebben a példában görgessen jobbra, és **hagyja figyelmen kívül** a **day_of_week** funkciót.
 
     ![Előnézet lap konfigurációja](media/tutorial-1st-experiment-automated-ml/preview-tab-config.gif)
-
 
     >[!NOTE]
     > Az adatprofilkészítés nem érhető el olyan számítási feladatokkal, amelyek nulla minimális csomóponttal rendelkeznek.
@@ -103,9 +97,7 @@ Ekkor megjelenik az **automatikus Machine learning** képernyő, mivel ez az els
 
 1. A kísérlet futtatásához kattintson a **Start** gombra.
 
-   A kísérlet elindulásakor megjelenik egy üres **futtatási részlet** képernyő, amelyen felül a következő állapot látható. 
-
-      ![Előkészítés futtatása](media/tutorial-1st-experiment-automated-ml/run-preparing.png)
+   A kísérlet elindulásakor megjelenik egy üres **futtatási részlet** képernyő, amelyen felül a következő állapot látható.
       
 A kísérlet előkészítési folyamata néhány percet vesz igénybe. Ha a folyamat befejeződik, a **rendszer**futtatja az állapotjelző üzenet futtatását.
 
@@ -137,11 +129,9 @@ Ebben a kísérleti kontextusban a **VotingEnsemble** a **AUC_weighted** metrika
     
 1. Válassza az **Üzembe helyezés** lehetőséget.
 
-    Az üzembe helyezés sikeres befejeződése után a következő üzenet jelenik meg:
-
-    ![Az üzembe helyezés befejeződött](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png)
+    Az üzembe helyezés sikeres befejeződése után megjelenik egy üzembe helyezési teljes üzenet.
     
-    Most már rendelkezik egy operatív webszolgáltatással előrejelzések létrehozásához.
+Most már rendelkezik egy operatív webszolgáltatással előrejelzések létrehozásához.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -167,7 +157,6 @@ Ebben az automatizált gépi tanulási oktatóanyagban a Azure Portal használat
 
 > [!div class="nextstepaction"]
 > [Webszolgáltatás felhasználása](how-to-consume-web-service.md)
-
 
 + További információ az [](how-to-create-portal-experiments.md#preprocess)előfeldolgozásról.
 + További információ az [](how-to-create-portal-experiments.md#profile)adatprofilkészítésről.

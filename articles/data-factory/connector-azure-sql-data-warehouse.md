@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/24/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 3b50b0e81103f0b4c8ffa757673c9ec0ef652fc0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 45f7db943499b8a722b8e203d676d1d80eb5091e
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614119"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996679"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -431,12 +431,14 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
 2. A **forrásadatok formátuma** a következő konfigurációkkal rendelkező **parketta**, **ork**vagy **tagolt szöveg**:
 
    1. A mappa elérési útja nem tartalmaz helyettesítő szűrőt.
-   2. A fájlnév egyetlen fájlba mutat, vagy `*` `*.*`a következő:.
-   3. `rowDelimiter` meg kell **\n**.
-   4. `nullValue` vagy értékre van állítva **üres karakterlánc** ("") vagy alapértelmezett, balra, és `treatEmptyAsNull` alapértelmezett, balra, vagy állítsa true.
-   5. `encodingName` értéke **utf-8**, amelynek alapértelmezett értéke.
+   2. A fájl neve üres, vagy egyetlen fájlra mutat. Ha a helyettesítő fájl nevét adja meg a másolási tevékenységben, az `*` csak `*.*`a vagy a lehet.
+   3. `rowDelimiter`**alapértelmezett**, **\n**, **\r\n**vagy **\r**.
+   4. `nullValue`Alapértelmezés szerint marad, vagy **üres karakterláncra** ("") van állítva, `treatEmptyAsNull` és az alapértelmezett érték, vagy igaz értékre van állítva.
+   5. `encodingName`Alapértelmezés szerint marad, vagy az **UTF-8**értékre van állítva.
    6. `quoteChar`, `escapeChar` és`skipLineCount` nincs megadva. A PolyBase támogatási kihagyása fejlécsort, amely konfigurálható `firstRowAsHeader` az ADF-ben.
    7. `compression` lehet **tömörítés nélküli**, **GZip**, vagy **Deflate**.
+
+3. Ha a forrás mappa, `recursive` a másolási tevékenységben igaz értékre kell állítani.
 
 ```json
 "activities":[
@@ -445,7 +447,7 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "BlobDataset",
+                "referenceName": "ParquetDataset",
                 "type": "DatasetReference"
             }
         ],
@@ -457,7 +459,11 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
         ],
         "typeProperties": {
             "source": {
-                "type": "BlobSource",
+                "type": "ParquetSource",
+                "storeSettings":{
+                    "type": "AzureBlobStorageReadSetting",
+                    "recursive": true
+                }
             },
             "sink": {
                 "type": "SqlDWSink",

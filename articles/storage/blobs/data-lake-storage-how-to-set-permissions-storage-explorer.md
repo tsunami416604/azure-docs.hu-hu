@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 530e37400881ace2de603aed6875ed236e45f2c7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2cc93ad9ae1d9d6d21064a2a80c3d62bf661dabc
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847422"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992280"
 ---
 # <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Fájl-és könyvtár-szintű engedélyek beállítása Azure Storage Explorer és Azure Data Lake Storage Gen2 használatával
 
@@ -28,11 +28,11 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Azure Storage Explorer:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A folyamat legjobb ábrázolásához a [Azure Storage Explorer](data-lake-storage-Explorer.md)gyors üzembe helyezést kell végrehajtania. Ez biztosítja, hogy a Storage-fiók a legmegfelelőbb állapotban legyen (a létrehozott fájlrendszer és a hozzá feltöltött adatfájl).
+A folyamat legjobb ábrázolásához a [Azure Storage Explorer](data-lake-storage-Explorer.md)gyors üzembe helyezést kell végrehajtania. Ez biztosítja, hogy a Storage-fiók a legmegfelelőbb állapotban legyen (a létrehozott tárolók és az azokhoz feltöltött adattárolók).
 
 ## <a name="managing-access"></a>Hozzáférés-kezelés
 
-A fájlrendszer gyökerén is beállíthat engedélyeket. Ehhez be kell jelentkeznie Azure Storage Explorerba az egyéni fiókjával (a kapcsolódási karakterlánccal ellentétben). Kattintson a jobb gombbal a fájlrendszerre, és válassza az **engedélyek kezelése**lehetőséget, és hozza létre az **engedély kezelése** párbeszédpanelt.
+A tároló gyökerén is beállíthat engedélyeket. Ehhez be kell jelentkeznie Azure Storage Explorerba az egyéni fiókjával (a kapcsolódási karakterlánccal ellentétben). Kattintson a jobb gombbal a tárolóra, és válassza az **engedélyek kezelése**lehetőséget, és hozza létre az **engedély kezelése** párbeszédpanelt.
 
 ![Microsoft Azure Storage Explorer – címtár-hozzáférés kezelése](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 

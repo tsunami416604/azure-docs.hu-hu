@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 945d123c0901722a527e7cc8181c91f09e4e95ec
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 71e08f00600bebcc21eba32d991353c9bcaeaa97
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014507"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991921"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Adatfolyam-hibakeresési mód leképezése
 
@@ -53,7 +53,14 @@ Ha a hibakeresés be van kapcsolva, az adatelőnézet lap az alsó panelen jelen
 
 ![Adatelőnézet](media/data-flow/datapreview.png "Adatelőnézet")
 
+> [!NOTE]
+> A fájlok forrása csak a megjelenő sorokra korlátozza a beolvasott sorokat. A nagyon nagy adatkészletek esetében ajánlott a fájl egy kis részének elvégzése, és a teszteléshez használni. Egy ideiglenes fájlt is kijelölhet a hibakeresési beállításokban minden olyan forrás esetében, amely egy fájl-adatkészlet típusú.
+
 Ha hibakeresési módban fut az adatfolyamban, az adatai nem lesznek beírva a fogadó átalakítóba. A hibakeresési munkamenetek célja, hogy tesztelési hámként szolgáljon az átalakításokhoz. A rendszer nem igényel mosogatót a hibakeresés során, és figyelmen kívül hagyja az adatfolyamban. Ha szeretné tesztelni a fogadóban lévő adatok írását, hajtsa végre az adatfolyamatot egy Azure Data Factory folyamatból, és használja egy folyamat hibakeresési végrehajtását.
+
+### <a name="testing-join-conditions"></a>Csatlakozási feltételek tesztelése
+
+Ha a mértékegység-tesztelés összekapcsolását, létezését vagy keresési átalakítását végzi, ügyeljen arra, hogy a teszthez egy kis mennyiségű ismert adat legyen használatban. A fenti hibakeresési beállítások lehetőséggel megadhat egy ideiglenes fájlt, amelyet a teszteléshez használhat. Erre azért van szükség, mert egy nagyméretű adatkészletből származó sorok korlátozása vagy mintavételezése esetén nem lehet megjósolni, hogy mely sorok és milyen kulcsok lesznek beolvasva a folyamatba a teszteléshez. Az eredmény nem determinisztikus, ami azt jelenti, hogy az illesztési feltételek sikertelenek lehetnek.
 
 ### <a name="quick-actions"></a>Gyorsműveletek
 

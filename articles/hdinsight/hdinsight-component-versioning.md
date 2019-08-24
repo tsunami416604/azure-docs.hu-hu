@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: 30eb922e17810ddd53166a702b5fc513684f2140
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: b451769f5f98bf64ca340504c983f16d1db36647
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742377"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991555"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Milyen Apache Hadoop-összetevők és-verziók érhetők el a HDInsight-ben?
 
@@ -178,6 +178,9 @@ A szakasz hivatkozásokat tartalmaz a Hortonworks adatplatform-disztribúciók �
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>A csomópontok alapértelmezett konfigurációja és a virtuális gépek méretei a fürtökhöz
 
 A következő táblázatok felsorolják a HDInsight-fürtök alapértelmezett virtuálisgép-méretét.  Ez a diagram a HDInsight-fürtök telepítéséhez szükséges PowerShell-vagy Azure CLI-parancsfájlok létrehozásához használandó virtuálisgép-méretek megismerésére szolgál.
+
+> [!NOTE]
+> A csak az adatlemezeket tartalmazó fürtök a Kafka és a HBase fürtök, amelyeken engedélyezve van a gyorsított írási funkció. A HDInsight ezekben a forgatókönyvekben támogatja a P30 és a S30 lemez méretét.
 
 > [!IMPORTANT]  
 > Ha a fürtben több mint 32 feldolgozó csomópontra van szüksége, ki kell választania egy fő csomópont-méretet legalább 8 maggal és 14 GB RAM-mal.

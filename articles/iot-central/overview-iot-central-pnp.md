@@ -9,19 +9,19 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 0675be988e7e9560560dd07338563c9fa22fcb4c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: af5b16448a39e0106dbc04724607ff603483484c
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878291"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997746"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Mi az Azure IoT Central (előzetes verziójú funkciók)?
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
 > [!WARNING]
-> Az Azure IoT Central [IoT Plug and Play](https://aka.ms/iot-pnp-docs) képességei jelenleg nyilvános előzetes verzióban érhetők el. Ne használjon IoT Plug and Play engedélyezett IoT Central alkalmazást az éles számítási feladatokhoz. Éles környezetekhez használjon egy aktuális, általánosan elérhető IoT-alapú központi alkalmazást.
+> Az Azure IoT Central [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) képességei jelenleg nyilvános előzetes verzióban érhetők el. Ne használjon IoT Plug and Play engedélyezett IoT Central alkalmazást az éles számítási feladatokhoz. Éles környezetekhez használjon egy aktuális, általánosan elérhető IoT-alapú központi alkalmazást.
 
 Az Azure IoT Central egy teljes körűen felügyelt IoT-szolgáltatás, amely megkönnyíti a fizikai és a digitális világok összekapcsolására szolgáló termékek létrehozását. A csatlakoztatott termékre vonatkozó elképzelését a következőképpen valósíthatja meg:
 
@@ -95,7 +95,7 @@ Ez az eszköz a következőket tartalmazza:
 
 ### <a name="create-device-templates"></a>Eszközök sablonjainak létrehozása
 
-A [IoT Plug and Play](https://aka.ms/iot-pnp-docs) lehetővé teszi, hogy a IoT Central beágyazott eszköz kódjának írása nélkül integrálja az eszközöket. A IoT Plug and Play a Device képesség modell sémája, amely leírja az eszközök képességeit. IoT Central előnézeti alkalmazásban az eszközök sablonjai ezeket a IoT Plug and Play eszköz-képesség modelleket használják.
+A [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) lehetővé teszi, hogy a IoT Central beágyazott eszköz kódjának írása nélkül integrálja az eszközöket. A IoT Plug and Play a Device képesség modell sémája, amely leírja az eszközök képességeit. IoT Central előnézeti alkalmazásban az eszközök sablonjai ezeket a IoT Plug and Play eszköz-képesség modelleket használják.
 
 A Builder számos lehetőséget kínál az eszközök sablonjainak létrehozására:
 
@@ -151,4 +151,4 @@ Most, hogy áttekintette az Azure IoT Central jellemzőit, tekintse meg a javaso
   - [Szerkesztőként: Szabályok hozzáadása a megoldás automatizálásához](tutorial-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
   - [Operátorként: Eszközök monitorozása](tutorial-monitor-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
   - [Kezelőként adjon hozzá egy eszközt a megoldáshoz](tutorial-add-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
-- További információ a [IoT Plug and Play](https://aka.ms/iot-pnp-docs)
+- További információ a [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md)

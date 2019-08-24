@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: d726006d3ecce69f129b1576c7c6d12833582873
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12ea21a3f61404c2e031909adda28f8e1e768cd0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60612704"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992068"
 ---
-# <a name="tutorial-respond-to-security-incidents"></a>Oktatóanyag: Reagálás a biztonsági incidensekre
+# <a name="tutorial-respond-to-security-incidents"></a>Oktatóanyag: Válaszadás a biztonsági incidensekre
 A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segítségével folyamatosan elemzi a hibrid felhőbeli számítási feladatokat, hogy figyelmeztesse az esetleges rosszindulatú tevékenységekre. Ráadásul a Security Centerbe más biztonsági termékekből és szolgáltatásokból is integrálhat riasztásokat, és egyéni riasztásokat is létrehozhat a saját mutatói és intelligens forrásai alapján. Amikor valami kivált egy riasztást, gyors reagálásra van szükség a problémák kivizsgálásához és elhárításához. Az oktatóanyag során a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
@@ -33,7 +33,29 @@ A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segí
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyagban ismertetett funkciók végrehajtásához a Security Center Standard tarifacsomagjával kell rendelkeznie. Megpróbálhatja Security Center Standard költségek nélkül. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](security-center-get-started.md) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
+Az oktatóanyagban ismertetett funkciók végrehajtásához a Security Center Standard tarifacsomagjával kell rendelkeznie. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](security-center-get-started.md) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
+
+## <a name="scenario"></a>Forgatókönyv
+A Contoso vállalat nemrégiben áttelepítette egyes helyszíni erőforrásait az Azure-ba, beleértve egyes virtuális gépeken alapuló üzleti számítási feladatait és SQL-adatbázisait. A Contoso fő számítógépes biztonsági incidensmegoldó csapata, a Core Computer Security Incident Response Team (CSIRT) jelenleg nem tudja kivizsgálni a biztonsági problémákat, mivel a biztonsági intelligencia nem képezi jelenlegi incidensmegoldási eszközparkjuk szerves részét. Az integráció hiánya az észlelési szakasz során (túl sok téves riasztás), valamint a felmérési és a diagnosztikai szakaszok során is problémát jelent. Az áttelepítés részeként úgy döntöttek, hogy a probléma megoldásához igénybe veszik a Security Center segítségét.
+
+Az áttelepítés első szakasza azzal ért véget, hogy az összes erőforrást üzembe helyezték, és a Security Center összes biztonsági ajánlását feldolgozták. A Contoso CSIRT a számítógépes biztonsági incidensek kezelésének központi eleme. A csapatot olyan személyek alkotják, akik biztonsági incidensek kezelésével foglalkoznak. A csapat tagjainak feladatai egyértelműen meg vannak határozva annak érdekében, hogy ne maradjon lefedetlen felelősségi terület.
+
+A forgatókönyv szempontjából a Contoso CSIRT csapatának alábbi két tagjára fogunk összpontosítani:
+
+![Az incidensmegoldás életciklusa](./media/tutorial-security-incident/security-center-incident-response.png)
+
+Judit biztonsági üzemeltetéssel foglalkozik. Feladatai a következők:
+
+* A biztonsági fenyegetések non-stop figyelése és megoldása.
+* A problémák továbbítása szükség szerint a felhőbeli számítási feladat tulajdonosának vagy a biztonsági elemzőnek.
+
+A Sam egy biztonsági elemző, és feladatai közé tartoznak a következők:
+
+* A támadások kivizsgálása.
+* A riasztások javítása.
+* A számítási feladatok tulajdonosaival együttműködve a megoldások meghatározása és kivitelezése.
+
+Amint látható, Judit és Sándor feladatai eltérőek, azonban együtt kell működniük a Security Center adatainak megosztásában.
 
 ## <a name="triage-security-alerts"></a>Biztonsági riasztások osztályozása
 A Security Center segítségével minden biztonsági riasztást egy egyesített nézetben tekinthet meg. A biztonsági riasztások besorolása a súlyosságon alapul, és ahol lehetséges, a kapcsolódó riasztásokat a rendszer egyetlen biztonsági incidensben egyesíti. A riasztások és események osztályozásakor a következő feladatai vannak:

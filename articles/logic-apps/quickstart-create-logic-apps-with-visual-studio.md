@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 04/25/2019
-ms.openlocfilehash: 51d1af24a22f7ed86b01b1c7c79b204cd552a7ea
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 29ad95e33381aa03dc647e077cea56022f35a8db
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385422"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982841"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Gyors útmutató: Automatizált feladatok, folyamatok és munkafolyamatok létrehozása a Azure Logic Apps-Visual Studióval
 
@@ -82,6 +82,8 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
    ![Azure erőforráscsoport-projekt létrehozása](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
    > [!NOTE]
+   > Az erőforráscsoportok nevei csak`.`betűket, számokat, pontokat (), aláhúzást (`_`), kötőjelet (`-`) és zárójeleket`(`(, `)`) tartalmazhatnak, de nem *végződhet* pontokkal (`.`).
+   >
    > Ha a **felhő** vagy az **Azure-erőforráscsoport** nem jelenik meg, győződjön meg róla, hogy telepíti a Visual studióhoz készült Azure SDK-t.
 
    Ha a Visual Studio 2019-et használja, kövesse az alábbi lépéseket:
@@ -119,12 +121,12 @@ Ha rendelkezik az Azure erőforráscsoport-projekttel, hozzon létre egy logikai
    | Beállítás | Példaérték | Leírás |
    | ------- | ------------- | ----------- |
    | Felhasználói profilok listája | Contoso <br> jamalhartnett@contoso.com | Alapértelmezés szerint a bejelentkezéshez használt fiók |
-   | **Előfizetés** | Használatalapú fizetés <br> (jamalhartnett@contoso.com) | Az Azure-előfizetés és a társított fiók neve |
+   | **Előfizetés** | Utólagos, használatalapú fizetés <br> (jamalhartnett@contoso.com) | Az Azure-előfizetés és a társított fiók neve |
    | **Erőforráscsoport** | MyLogicApp-RG <br> (USA nyugati régiója) | A logikai alkalmazás erőforrásainak tárolásához és üzembe helyezéséhez használt Azure-erőforráscsoport és-hely |
    | **Location** | MyLogicApp-RG2 <br> (USA nyugati régiója) | Egy másik hely, ha nem az erőforráscsoport helyét szeretné használni |
    ||||
 
-1. A Logic Apps Designer egy olyan oldalt nyit meg, amely bemutatja a bemutató videót és a gyakran használt eseményindítókat. Görgessen le a videó és az eseményindítók **között, és**válassza az **üres logikai alkalmazás**lehetőséget.
+1. A Logic Apps Designer egy olyan oldalt nyit meg, amely bemutatja a bemutató videót és a gyakran használt eseményindítókat. Görgessen le a videó és az eseményindítók között, és válassza az **üres logikai alkalmazás**lehetőséget.
 
    ![„Üres logikai alkalmazás” kiválasztása](./media/quickstart-create-logic-apps-with-visual-studio/choose-blank-logic-app-template.png)
 

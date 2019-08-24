@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9073e00f5c3702e43665541bd8ff9e66c2bc505b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: ca2b7f2b0e20e85e1e62f8efabb81eddd5f901f2
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968500"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991117"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Távoli hozzáférés engedélyezése Power BI Mobile Azure-AD Application Proxy
 
@@ -103,25 +103,28 @@ Most már készen áll az Azure AD Application Proxy konfigurálására.
 
 Az alkalmazás beállításának befejezéséhez nyissa meg **a felhasználók és csoportok** szakaszt, és rendelje hozzá a felhasználókat az alkalmazás eléréséhez.
 
-## <a name="step-3-register-the-native-app-and-grant-access-to-the-api"></a>3\. lépés: A natív alkalmazás regisztrálása és az API-hoz való hozzáférés biztosítása
+## <a name="step-3-grant-power-bi-mobile-access-to-report-services"></a>3\. lépés: Power BI Mobile hozzáférés biztosítása a jelentési szolgáltatásokhoz
 
-A natív alkalmazások platformon vagy eszközön való használatra fejlesztett programok. Ahhoz, hogy a Power BI Mobile alkalmazás csatlakozhasson és hozzáférhessen egy API-hoz, regisztrálnia kell az Azure AD-ben.  
+Ahhoz, hogy a Power BI Mobile alkalmazás csatlakozhasson és hozzáférhessen a jelentési szolgáltatásokhoz, megfelelően regisztrálnia kell az Azure AD-ben.  
 
-1. Regisztrálja az alkalmazást az Azure AD-ben a [2. lépéssel, amely lehetővé teszi a natív ügyfélalkalmazások számára a proxy alkalmazásokkal való interakciót](application-proxy-configure-native-client-application.md#step-2-register-your-native-application).
+1. Az Azure Active Directory **áttekintése** lapon válassza a **Alkalmazásregisztrációk**lehetőséget.
+2. A **minden alkalmazás** lapon keresse meg a 2. lépésben létrehozott alkalmazást.
+3. Válassza ki az alkalmazást, majd válassza a **hitelesítés**lehetőséget.
+4. Adja hozzá a következő átirányítási URI-ket a használt platform alapján.
 
-   Power BI Mobile **iOS**-alkalmazás regisztrálásakor adja hozzá a következő átirányítási URI-ket:
+   Power BI Mobile **iOS**-hez készült alkalmazás regisztrálásakor adja hozzá a következő átirányítási URI-k nyilvános ügyfélként (Mobile & Desktop):
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
    
-   A Power BI Mobile **Android**rendszerhez készült alkalmazás regisztrálásakor adja hozzá a következő átirányítási URI-ket:
+   A Power BI Mobile **Android**rendszerhez készült alkalmazás regisztrálásakor adja hozzá a következő átirányítási URI-t a nyilvános ügyfél (Mobile & Desktop) típushoz:
    - `urn:ietf:wg:oauth:2.0:oob`
 
    > [!IMPORTANT]
-   > Az alkalmazás megfelelő működéséhez hozzá kell adni az átirányítási URI-azonosítókat.
+   > Az alkalmazás megfelelő működéséhez hozzá kell adni az átirányítási URI-azonosítókat. Ha az iOS-hez és az Androidhoz is konfigurálja ezt, csak **egyetlen** alkalmazást kell regisztrálnia, és az átirányítási URI-t is hozzá kell adnia az iOS és az Android rendszerhez. Ha külön alkalmazásokra van szüksége az egyes platformokhoz, az átirányítási URI-t is `mspbi-adal://com.microsoft.powerbimobile` tartalmaznia kell: mindkét alkalmazáshoz.
 
-Most, hogy regisztrálta a natív alkalmazását, hozzáférést biztosíthat más alkalmazásokhoz a címtárban, ebben az esetben az alkalmazásproxy használatával közzétett jelentéskészítő szolgáltatások eléréséhez. Kövesse a 3. [lépésben leírt lépéseket: Hozzáférés biztosítása a proxy alkalmazáshoz](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application).
+2. Most, hogy regisztrálta a natív alkalmazását, hozzáférést biztosíthat más alkalmazásokhoz a címtárban, ebben az esetben az alkalmazásproxy használatával közzétett jelentéskészítő szolgáltatások eléréséhez. Kövesse a 3. [lépésben leírt lépéseket: Hozzáférés biztosítása a proxy alkalmazáshoz](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application).
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>4\. lépés: Kapcsolódjon a Power BI Mobile alkalmazásból
 

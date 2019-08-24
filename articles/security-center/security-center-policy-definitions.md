@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/19/2019
+ms.date: 8/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: db7811a925846337487801a63e0f0c4584179c06
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 56e6285501529f26e3622e2f773dbd373c169c10
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295521"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990507"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>Security Center által figyelt Azure biztonsági szabályzatok
 Ez a cikk azokat a Azure Policy-definíciókat sorolja fel, amelyeket a Azure Security Center figyelheti. További információ a biztonsági házirendekről: [a biztonsági házirendek használata](tutorial-security-policy.md).

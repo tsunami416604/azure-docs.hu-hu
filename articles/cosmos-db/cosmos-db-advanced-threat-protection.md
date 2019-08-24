@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: 0504da45cbbd60629954d3e3ca3230e05761c1d6
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e22e05618c8b8977ba8b03afd3b654d27d4fa6bd
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640370"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981739"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Komplex veszélyforrások elleni védelem Azure Cosmos DB
 
 A Azure Cosmos DB komplex veszélyforrások elleni védelme további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel Azure Cosmos DB fiókok eléréséhez vagy kihasználásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelésére, akár biztonsági szakértő nélkül, akár a központi biztonsági figyelő rendszerekkel való integrációhoz.
 
-A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a biztonsági riasztások integrálva vannak  [Azure Security Centerekkel](https://azure.microsoft.com/services/security-center/), és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és szervizelésével kapcsolatos ajánlásokkal együtt.
+A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a biztonsági riasztások integrálva vannak [Azure Security Centerekkel](https://azure.microsoft.com/services/security-center/), és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és szervizelésével kapcsolatos ajánlásokkal együtt.
 
 > [!NOTE]
 >
@@ -31,16 +31,16 @@ A biztonsági riasztások teljes körű vizsgálatához javasolt a [diagnosztika
 
 ### <a name="set-up-atp-using-the-portal"></a>ATP beállítása a portál használatával
 
-1. Indítsa el a Azure Portal  [https://portal.azure.com](https://portal.azure.com/)a következő helyen:.
+1. Indítsa el a Azure Portal [https://portal.azure.com](https://portal.azure.com/)a következő helyen:.
 
 2. A Azure Cosmos DB fiók **Beállítások** menüjében válassza a **fokozott biztonság**lehetőséget.
 
     ![ATP beállítása](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png)
 
-3. A **speciális biztonsági** beállítások panelen:
+3. A **speciális biztonsági** beállítások panelen:
 
-    * Kattintson a komplex **veszélyforrások elleni védelem** lehetőségre a **beállításához.**
-    * Kattintson a **Save (Mentés** ) gombra az új vagy frissített összetett veszélyforrások elleni védelmi szabályzat mentéséhez.   
+    * Kattintson a komplex **veszélyforrások elleni védelem** lehetőségre abeállításához.
+    * Kattintson a **Save (Mentés** ) gombra az új vagy frissített összetett veszélyforrások elleni védelmi szabályzat mentéséhez.   
 
 ### <a name="set-up-atp-using-rest-api"></a>ATP beállítása REST API használatával
 
@@ -75,5 +75,5 @@ A rendszer a riasztás részleteivel és a javasolt műveletekkel kapcsolatos e-
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [diagnosztikai naplózásról Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal)
-* További információ a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* További információ a [diagnosztikai naplózásról Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal)
+* További információ a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

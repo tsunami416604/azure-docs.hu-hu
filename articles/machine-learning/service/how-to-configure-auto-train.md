@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6e29e0f89d9270a143d48cf6e85b479813e19d9d
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: a73d048a66c70eaf22caf6b33c4a495df6d730dd
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013647"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997915"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
 
@@ -207,6 +207,8 @@ A három különböző `task` paraméter értéke határozza meg az alkalmazand�
 ### <a name="primary-metric"></a>Elsődleges metrika
 Az elsődleges metrika; ahogy az a fenti példákban is látható, az optimalizálásra szolgáló modell képzése során használandó mérőszámot határozza meg. A kiválasztható elsődleges metrikát a választott feladattípus határozza meg. Alább látható az elérhető metrikák listája.
 
+Ismerje meg ezeket a definíciókat a [gépi tanulási eredmények megismeréséhez](how-to-understand-automated-ml.md).
+
 |Besorolás | Regresszió | Idősorozat-előrejelzés
 |-- |-- |--
 |accuracy| spearman_correlation | spearman_correlation
@@ -377,7 +379,7 @@ A beszerelt modell első lépéseként használja ezt a 2 API-t, hogy jobban meg
 
 + 1\. API `get_engineered_feature_names()` : a meglevő szolgáltatások neveinek listáját adja vissza.
 
-  Használat:
+  Használat
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -393,7 +395,7 @@ A beszerelt modell első lépéseként használja ezt a 2 API-t, hogy jobban meg
 
 + 2\. API `get_featurization_summary()` : a bemeneti funkciók featurization összegzését adja vissza.
 
-  Használat:
+  Használat
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```

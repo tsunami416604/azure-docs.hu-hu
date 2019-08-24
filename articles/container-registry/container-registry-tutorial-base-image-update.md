@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 1a6f73841550c64e93fa09fe0a1b033f840c9752
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
-ms.translationtype: HT
+ms.openlocfilehash: 7cd278143ffe482cb51f76b1019413e97a777a3a
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971387"
+ms.locfileid: "69981815"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Oktatóanyag: A tároló rendszerképének automatizálása, ha alaprendszerkép frissül egy Azure Container registryben 
 
@@ -82,7 +82,7 @@ Az alapként szolgáló rendszerképek frissítésekor újra össze kell állít
 
 * Egy ACR-feladat engedélyezéséhez, amely meghatározza és nyomon követheti a tárolók rendszerképének függőségeit – amely tartalmazza az alaprendszerképét –, először **legalább egyszer**aktiválnia kell a feladatot. Például a feladat manuális elindításához használja az az [ACR Task Run][az-acr-task-run] parancsot.
 
-* Az alaprendszerkép frissítésére vonatkozó feladat elindításához a kiindulási képnek *stabil* címkével kell rendelkeznie `node:9-alpine`, például:. Ez a címkézés jellemző olyan alaplemezképek esetében, amelyek az operációs rendszer és a keretrendszer javításával frissítve lettek egy legújabb stabil kiadásra. Ha az alaprendszerkép új verzió címkével frissül, nem indít el feladatot. A képcímkézéssel kapcsolatos további információkért tekintse meg az [ajánlott eljárásokat ismertető útmutatót](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/). 
+* Az alaprendszerkép frissítésére vonatkozó feladat elindításához a kiindulási képnek *stabil* címkével kell rendelkeznie `node:9-alpine`, például:. Ez a címkézés jellemző olyan alaplemezképek esetében, amelyek az operációs rendszer és a keretrendszer javításával frissítve lettek egy legújabb stabil kiadásra. Ha az alaprendszerkép új verzió címkével frissül, nem indít el feladatot. A képcímkézéssel kapcsolatos további információkért tekintse meg az [ajánlott eljárásokat ismertető útmutatót](container-registry-image-tag-version.md). 
 
 ### <a name="base-image-update-scenario"></a>Az alapként szolgáló rendszerkép frissítése forgatókönyv
 

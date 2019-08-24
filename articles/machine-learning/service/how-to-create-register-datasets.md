@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/21/2019
-ms.openlocfilehash: 67dda1ab56c6a706a9fdbef45fabdae9167ffe2b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 08/22/2019
+ms.openlocfilehash: 497a00570d85ab83f71416e979e485db4685b64a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616337"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992116"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Adatkészletek létrehozása és elérése (előzetes verzió) Azure Machine Learning
 
@@ -26,7 +26,7 @@ Azure Machine Learning adatkészletek esetében a következőket teheti:
 
 * Az adatkészletek által hivatkozott **tárolóban lévő adatokat egyetlen példányban tárolja** . 
 
-* A **modell betanítása során könnyedén férhet hozzá az** adatforrásokhoz a kapcsolati sztring vagy az adatelérési út miatt.
+* **Egyszerűen férhet hozzá az adatmodell** -képzésekhez a kapcsolati karakterláncok vagy az adatelérési utak miatti gond nélkül.
 
 * Az adatmegosztással **& dolgozhat** más felhasználókkal.
 
@@ -44,7 +44,8 @@ Az adatkészletek létrehozásához és működéséhez a következőkre lesz sz
 > Egyes adatkészlet-osztályok (előzetes verzió) függőségei vannak a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomagon. A Linux-felhasználók esetében ezek az osztályok csak a következő disztribúciókban támogatottak:  Red Hat Enterprise Linux, Ubuntu, Fedora és CentOS.
 
 ## <a name="dataset-types"></a>Adathalmazok típusai
-Az adatkészletek különböző típusokra vannak kategorizálva, attól függően, hogy a felhasználók hogyan használják őket a képzésben. Jelenleg az adatokat táblázatos formátumban ábrázoló TabularDatasets támogatjuk a megadott fájl vagy fájlok listájának elemzésével. Ez lehetővé teszi, hogy egy Panda DataFrame megvalósuljon az információ. TabularDataset létrehozhatók a CSV, a TSV, a Parquet Files, az SQL-lekérdezések eredményei stb. A teljes listát a dokumentációban találhatja meg.
+
+Az adatkészletek különböző típusokra vannak kategorizálva, attól függően, hogy a felhasználók hogyan használják őket a képzésben. Jelenleg az adatokat táblázatos formátumban ábrázoló [TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) támogatjuk a megadott fájl vagy fájlok listájának elemzésével. Ez lehetővé teszi, hogy egy Panda DataFrame megvalósuljon az információ. Létrehozhat `TabularDataset` egy objektumot a CSV, a TSV, a Parquet Files, az SQL-lekérdezési eredmények stb. alapján. A teljes listát a dokumentációban találhatja meg.
 
 További információt a közelgő API-változásokról a [Mi az Azure Machine learning szolgáltatás?](https://aka.ms/tabular-dataset) című témakörben talál. 
 
@@ -136,7 +137,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="access-your-data-during-training"></a>Az adatai elérése a betanítás során
 
-A regisztrált adatkészletek helyileg és távolról is elérhetők a számítási fürtökön, például a Azure Machine Learning számítási feladatokhoz. A regisztrált adatkészletek kísérletek közötti eléréséhez használja a következő kódot a munkaterület és a regisztrált adatkészlet név szerinti beszerzéséhez. Az `get_by_name` `Dataset` osztály metódusa alapértelmezés szerint a munkaterületen regisztrált adatkészlet legújabb verzióját adja vissza.
+A regisztrált adatkészletek helyileg és távolról is elérhetők a számítási fürtökön, például a Azure Machine Learning számítási feladatokhoz. A regisztrált adatkészletek kísérletek közötti eléréséhez használja a következő kódot a munkaterület és a regisztrált adatkészlet név szerinti beszerzéséhez. Az [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) `Dataset` osztály metódusa alapértelmezés szerint a munkaterületen regisztrált adatkészlet legújabb verzióját adja vissza.
 
 ```Python
 %%writefile $script_folder/train.py

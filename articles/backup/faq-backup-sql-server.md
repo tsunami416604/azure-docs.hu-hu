@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: a600c50e97f0d069443112a59d529c0d6f6fecad
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6e3ce21419e131ceef65939202eb70a98f10b040
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737067"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982436"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
 
@@ -37,9 +37,10 @@ Bizonyos körülmények között a Azure Backup szolgáltatás elindítja a jav�
 Automatikus gyógyulás, mivel a funkció alapértelmezés szerint engedélyezve van az összes felhasználó számára; Ha azonban úgy dönt, hogy kikapcsolja, akkor hajtsa végre az alábbi műveleteket:
 
   * A SQL Server példányon a *C:\Program Files\Azure munkaterhelés Backup\bin* mappában hozza létre vagy szerkessze a **ExtensionSettingsOverrides. JSON** fájlt.
-  * A **ExtensionSettingsOverrides. JSON**fájlban állítsa be a *{"EnableAutoHealer": false}* értéket.
+  * A **ExtensionSettingsOverrides. JSON**fájlban állítsa be a *{"EnableAutoHealer": false}* értéket.
   * Mentse a módosításokat, és zárjuk be a fájlt.
-  * A SQL Server-példányon nyissa meg a **feladat kezelése** , majd a **AzureWLBackupCoordinatorSvc** szolgáltatás újraindítása műveletet.  
+  * A SQL Server-példányon nyissa meg a **feladat kezelése** , majd a **AzureWLBackupCoordinatorSvc** szolgáltatás újraindítása műveletet.
+   
 
 ## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>Szabályozható, hogy hány párhuzamos biztonsági mentés fut az SQL Serveren?
 
@@ -71,12 +72,12 @@ Nem. A sikeres biztonsági mentési feladatok nem hoznak fel riasztásokat. A re
 A **biztonsági mentési feladat** menü csak az alkalmi biztonsági mentési feladatokat jeleníti meg. Ütemezett feladatokhoz [Azure monitor használatával](backup-azure-monitoring-use-azuremonitor.md)történő figyelést használhat.
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>A jövőbeli adatbázisok automatikusan hozzáadódnak a biztonsági mentéshez?
-Igen, az [automatikus védelem](backup-sql-server-database-azure-vms.md#enable-auto-protection)révén elérheti ezt a képességet.  
+Igen, az [automatikus védelem](backup-sql-server-database-azure-vms.md#enable-auto-protection)révén elérheti ezt a képességet.  
 
 ## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Ha törölek egy adatbázist egy automatikusan védett példányból, mi fog történni a biztonsági másolatokban?
 Ha egy adatbázis eldobása egy, a védett példányból történik, a rendszer továbbra is megkísérli az adatbázis biztonsági mentését. Ez azt jelenti, hogy a törölt adatbázis nem Kifogástalan állapotba kerül, a **biztonsági mentési elemek** alatt, és továbbra is védve van.
 
-Az adatbázis védelmének leállítására szolgáló helyes módszer a **biztonsági mentés leállítása** az adatbázisban lévő **adatok törlésével** .  
+Az adatbázis védelmének leállítására szolgáló helyes módszer a **biztonsági mentés leállítása** az adatbázisban lévő **adatok törlésével** .  
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>Ha leállítom egy automatikusan védett adatbázis biztonsági mentési műveletét, mi lesz a viselkedése?
 Ha nem állítja be a **biztonsági mentést az**adatmegőrzéssel, a rendszer nem hajtja végre a jövőbeli biztonsági mentéseket, és a meglévő helyreállítási pontok érintetlenek maradnak. Az adatbázist továbbra is védettnek tekinti a rendszer, és a **biztonsági mentési elemek**alatt jelenik meg.

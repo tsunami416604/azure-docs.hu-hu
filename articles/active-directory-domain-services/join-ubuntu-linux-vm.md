@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: c782629d422eb8846b209fed7ab6b5a5c015de25
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80dbb4f3d0c8b993beab5f6344d6034d6c2b6895
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612298"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990579"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Ubuntu virtuális gép csatlakoztatása az Azure-ban egy felügyelt tartományhoz
 Ez a cikk bemutatja, hogyan csatlakozhat egy Ubuntu Linux virtuális géphez egy Azure AD Domain Services felügyelt tartományhoz.
@@ -88,7 +88,7 @@ Ezután telepítse a virtuális gépen a tartományhoz való csatlakozáshoz sz�
 3. A Kerberos-telepítés során egy rózsaszín képernyő jelenik meg. A "krb5-user" csomag telepítése kéri a tartománynevet (minden nagybetűs). A telepítés a [Realm] és a [domain_realm] szakaszt írja a/etc/krb5.conf.-ben.
 
     > [!TIP]
-    > Ha a felügyelt tartomány neve contoso.com, adja meg a contoso.COM tartományt. Ne feledje, hogy a tartománynevet nagybetűvel kell megadni.
+    > Ha a felügyelt tartomány neve contoso.com, adja meg a CONTOSO.COM tartományt. Ne feledje, hogy a tartománynevet nagybetűvel kell megadni.
 
 
 ## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Az NTP (Network Time Protocol) beállításainak konfigurálása a Linux rendszerű virtuális gépen
@@ -121,7 +121,7 @@ Most, hogy a szükséges csomagok telepítve vannak a linuxos virtuális gépen,
 1. Fedezze fel a HRE Domain Services által felügyelt tartományt. Az SSH-terminálban írja be a következő parancsot:
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -138,7 +138,7 @@ Most, hogy a szükséges csomagok telepítve vannak a linuxos virtuális gépen,
     >
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. Csatlakoztassa a gépet a tartományhoz. Az SSH-terminálban írja be a következő parancsot:
@@ -149,7 +149,7 @@ Most, hogy a szükséges csomagok telepítve vannak a linuxos virtuális gépen,
     > Ha a virtuális gép nem tud csatlakozni a tartományhoz, győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoportja engedélyezi a kimenő Kerberos-forgalmat az 464-as TCP + UDP-porton az Azure AD DS felügyelt tartományának virtuális hálózati alhálózatán.
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM' --install=/
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM' --install=/
     ```
 
 Ha a gép sikeresen csatlakoztatva van a felügyelt tartományhoz, egy üzenetet kell kapnia ("a számítógép sikeres regisztrálása a tartományban").
@@ -192,10 +192,10 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ## <a name="verify-domain-join"></a>Tartományhoz való csatlakozás ellenőrzése
 Ellenőrizze, hogy a gép sikeresen csatlakozott-e a felügyelt tartományhoz. Kapcsolódjon a tartományhoz csatlakoztatott Ubuntu virtuális géphez egy másik SSH-kapcsolat használatával. Használjon tartományi felhasználói fiókot, és ellenőrizze, hogy a felhasználói fiók megfelelően van-e feloldva.
 
-1. Az SSH-terminálon írja be a következő parancsot a tartományhoz csatlakoztatott Ubuntu virtuális géphez való csatlakozáshoz az SSH használatával. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik (ebben azbob@contoso.COMesetben például "").
+1. Az SSH-terminálon írja be a következő parancsot a tartományhoz csatlakoztatott Ubuntu virtuális géphez való csatlakozáshoz az SSH használatával. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik (ebben azbob@CONTOSO.COMesetben például "").
     
     ```console
-    ssh -l bob@contoso.COM contoso-ubuntu.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-ubuntu.contoso.com
     ```
 
 2. Az SSH-terminálon írja be a következő parancsot annak ellenőrzéséhez, hogy a kezdőkönyvtár megfelelően lett-e inicializálva.

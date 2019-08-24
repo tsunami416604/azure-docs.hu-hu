@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 344dddb4e16f23ae40028c090c499d210adb8837
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f58785b17a1e6236636744c32dac07a6c9ed138d
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855459"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992251"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight Apache Hive használatával
 
@@ -92,26 +92,26 @@ Ebben a szakaszban az adatok feltöltése a HDInsight-fürtbe, majd az adatok m�
 
    A parancs kibont egy **. csv** fájlt.
 
-4. A Data Lake Storage Gen2 fájlrendszer létrehozásához használja a következő parancsot.
+4. A Data Lake Storage Gen2 tároló létrehozásához használja a következő parancsot.
 
    ```bash
-   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   Cserélje le `<file-system-name>` a helyőrzőt arra a névre, amelyet a fájlrendszerben szeretne megadni.
+   Cserélje le `<container-name>` a helyőrzőt arra a névre, amelyet meg szeretne adni a tárolónak.
 
    Cserélje le `<storage-account-name>` a helyőrzőt a Storage-fiók nevére.
 
 5. A következő parancs használatával hozzon létre egy könyvtárat.
 
    ```bash
-   hdfs dfs -mkdir -p abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
+   hdfs dfs -mkdir -p abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
    ```
 
 6. Az alábbi parancs használatával másolja a *. csv* fájlt a könyvtárba:
 
    ```bash
-   hdfs dfs -put "<file-name>.csv" abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
+   hdfs dfs -put "<file-name>.csv" abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
    ```
 
    Ha a fájlnév szóközöket vagy speciális karaktereket tartalmaz, használja az idézőjeleket a fájlnév köré.
@@ -128,7 +128,7 @@ A Apache Hive feladatsor részeként importálja az adatait a. csv-fájlból egy
    nano flightdelays.hql
    ```
 
-2. Módosítsa a következő szöveget úgy, hogy `<file-system-name>` lecseréli a és `<storage-account-name>` a helyőrzőket a fájlrendszer és a Storage-fiók nevével. Ezután másolja és illessze be a szöveget a nano Console-ba a SHIFT billentyű lenyomásával és a jobb egérgombos kattintás gomb használatával.
+2. Módosítsa a következő szöveget úgy, hogy `<container-name>` lecseréli a és `<storage-account-name>` a helyőrzőket a tároló-és a Storage-fiók nevére. Ezután másolja és illessze be a szöveget a nano Console-ba a SHIFT billentyű lenyomásával és a jobb egérgombos kattintás gomb használatával.
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -160,14 +160,14 @@ A Apache Hive feladatsor részeként importálja az adatait a. csv-fájlból egy
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
-    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
+    LOCATION 'abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
 
     -- Drop the delays table if it exists
     DROP TABLE delays;
     -- Create the delays table and populate it with data
     -- pulled in from the CSV file (via the external table defined previously)
     CREATE TABLE delays
-    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
+    LOCATION 'abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
     AS
     SELECT YEAR AS year,
         FL_DATE AS flight_date,
@@ -218,7 +218,7 @@ A Apache Hive feladatsor részeként importálja az adatait a. csv-fájlból egy
     GROUP BY origin_city_name;
     ```
 
-   Ez a lekérdezés lekéri azon városok listáját, ahol időjárás miatti késések történtek, valamint a késések átlagos idejét, és menti ezeket az adatokat a következő helyen: `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`. Később a Sqoop erről a helyről olvassa be az adatokat, amelyeket exportál az Azure SQL Database-be.
+   Ez a lekérdezés lekéri azon városok listáját, ahol időjárás miatti késések történtek, valamint a késések átlagos idejét, és menti ezeket az adatokat a következő helyen: `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`. Később a Sqoop erről a helyről olvassa be az adatokat, amelyeket exportál az Azure SQL Database-be.
 
 7. A Beeline-ból való kilépéshez írja be a parancssorba a `!quit` parancsot.
 
@@ -300,7 +300,7 @@ Ehhez a művelethez szüksége lesz az SQL-adatbázis kiszolgálójának nevére
 
 ## <a name="export-and-load-the-data"></a>Az adatexportálás és-betöltés
 
-Az előző részekben a helyről `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`másolta az átalakított adatterületet. Ebben a szakaszban a Sqoop használatával exportálja az adatait `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` az Azure SQL Database-ben létrehozott táblába.
+Az előző részekben a helyről `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`másolta az átalakított adatterületet. Ebben a szakaszban a Sqoop használatával exportálja az adatait `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` az Azure SQL Database-ben létrehozott táblába.
 
 1. A következő paranccsal ellenőrizze, hogy a Sqoop látja-e az SQL-adatbázist:
 
@@ -313,7 +313,7 @@ Az előző részekben a helyről `abfs://<file-system-name>@<storage-account-nam
 2. A következő paranccsal exportálhatja az adatait a **hivesampletable** táblából a **késések** táblájába:
 
    ```bash
-   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<file-system-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
+   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<container-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
    ```
 
    A Sqoop a **késések** táblát tartalmazó adatbázishoz csatlakozik, és a `/tutorials/flightdelays/output` címtárból exportálja az adatait a **késések** táblájába.

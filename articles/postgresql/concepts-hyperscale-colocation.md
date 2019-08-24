@@ -1,32 +1,32 @@
 ---
-title: Az Azure Database for PostgreSQL kiszolgáló fogalmak
-description: Ez a cikk a szempontokat és irányelveket konfigurálása és kezelése az Azure Database for PostgreSQL-kiszolgálók tartalmaz.
+title: A kiszolgálói fogalmak a Azure Database for PostgreSQL
+description: Ez a cikk a Azure Database for PostgreSQL-kiszolgálók konfigurálásával és kezelésével kapcsolatos szempontokat és irányelveket ismerteti.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: d03cfd49887adf1f6a4650e374d3e13eeca735a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 533958221898b620500b7363f3710f75f155934a
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077470"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998048"
 ---
-# <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Tábla közös elhelyezés az Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió)
+# <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Táblázatos elhelyezés Azure Database for PostgreSQLban – nagy kapacitású (Citus)
 
-A közös elhelyezés azt jelenti, hogy kapcsolódó adatok tárolására együtt ugyanazon a csomóponton. Lekérdezések meg gyors, ha minden szükséges adatot hálózati forgalmat nélkül érhető el. Kapcsolódó adatok közös elhelyezése a különböző csomópontokon lehetővé teszi, hogy a lekérdezések futtatására párhuzamosan minden egyes csomóponton.
+A közös elhelyezés azt jelenti, hogy a kapcsolódó információk tárolása ugyanazon csomópontokon történik. A lekérdezések gyorsak lehetnek, ha az összes szükséges adatok hálózati forgalom nélkül elérhetők. A különböző csomópontokon található kapcsolódó adat-elhelyezés lehetővé teszi, hogy a lekérdezések hatékonyan, párhuzamosan fussanak az egyes csomópontokon.
 
-## <a name="data-colocation-for-hash-distributed-tables"></a>Adatok közös elhelyezés kivonatoló elosztott táblák
+## <a name="data-colocation-for-hash-distributed-tables"></a>Adattárolási helyek kivonatoláshoz – elosztott táblák
 
-A nagy kapacitású egy sor tárolt bérlőtartomány Ha kivonatát a terjesztési oszlopban lévő értéknek a szegmens kivonatoló tartományba esik. Szegmens ugyanazzal a tartománnyal kivonat mindig kerülnek ugyanazon a csomóponton. Az egyenlő leosztáshoz oszlopértékek sorok olyan mindig ugyanazon a csomóponton táblákat.
+Azure Database for PostgreSQL – nagy kapacitású (Citus) előzetes verzióban a sor egy szegmensben tárolódik, ha a terjesztési oszlopban lévő érték kivonata a szegmens kivonatoló tartományán belülre esik. Az ugyanazzal a kivonatoló tartománnyal rendelkező szegmensek mindig ugyanarra a csomópontra kerülnek. Az egyenlő terjesztési oszlop értékekkel rendelkező sorok mindig ugyanazon a csomóponton vannak a táblák között.
 
-![A szegmensek](media/concepts-hyperscale-colocation/colocation-shards.png)
+![Szilánkok](media/concepts-hyperscale-colocation/colocation-shards.png)
 
-## <a name="a-practical-example-of-colocation"></a>A közös elhelyezés gyakorlati példa
+## <a name="a-practical-example-of-colocation"></a>Gyakorlati példa az egyhelyes elhelyezésre
 
-Vegye figyelembe a következő táblázatok, amelyek egy több-bérlős webes elemzési SaaS része lehet:
+Vegye figyelembe a következő, több-bérlős webes elemzési SaaS részét képező táblázatokat:
 
 ```sql
 CREATE TABLE event (
@@ -45,9 +45,9 @@ CREATE TABLE page (
 );
 ```
 
-Most szeretnénk választ ki a ügyfél felé irányuló irányítópult, például a lekérdezések: "Látogatások számának visszaadása az elmúlt héten kezdve minden lap" / blog "hat-bérlőben."
+Most szeretnénk megválaszolni azokat a lekérdezéseket, amelyeket egy ügyfélhez kapcsolódó irányítópulton lehet kibocsátani. Egy példa a "/blog" kezdetű oldalról a hatodik bérlőn "a látogatások számának visszaadása az elmúlt héten" kifejezésre.
 
-Az adatok egy egyetlen kiszolgálós telepítéshez lehetőség volt, a lekérdezést, számos SQL által kínált relációs műveletek használatával egyszerűen azt sikerült express:
+Ha az adatok egykiszolgálós üzembe helyezési lehetőséggel voltak, könnyedén kihasználhatjuk a lekérdezését az SQL által kínált, széles körű kapcsolatok használatával:
 
 ```sql
 SELECT page_id, count(event_id)
@@ -62,13 +62,13 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-Amíg a [munkakészletének](https://en.wikipedia.org/wiki/Working_set) esetében ez a lekérdezés elfér a memóriában, egy egyetlen kiszolgálós táblában egy megfelelő megoldással. Azonban vegyünk a méretezés az adatmodellt, nagy kapacitású központi telepítési beállítással a lehetőségeket.
+Amíg a lekérdezés munkakészlete elfér a memóriában, egy egykiszolgálós tábla megfelelő megoldás. [](https://en.wikipedia.org/wiki/Working_set) Tekintsük át az adatmodell méretezésének lehetőségeit a nagy kapacitású (Citus) telepítési lehetőséggel.
 
-### <a name="distributing-tables-by-id"></a>Definíciófrissítés-terjesztés táblák azonosító alapján
+### <a name="distribute-tables-by-id"></a>Táblák elosztása azonosító alapján
 
-Egyetlen kiszolgálóból álló lekérdezések indítsa el a bérlők számának és az egyes bérlők számára tárolt adatok növekedésével lelassul. A munkakészlet a memóriában igyekeznek leáll, és a Processzor szűk keresztmetszetté válik.
+Az egykiszolgálós lekérdezések lelassulnak, mivel a bérlők száma és az egyes bérlők által tárolt adatmennyiség növekszik. A munkakészlet leáll a memóriában, és a CPU szűk keresztmetszetet eredményez.
 
-Az adatok szegmensek ebben az esetben nagy kapacitású használatával több csomópont is. Az első és legfontosabb választás, győződjön meg arról, ha horizontális skálázási az elosztási oszlop kell. Kezdjük használatával natív többféle `event_id` esemény táblához és `page_id` számára a `page` tábla:
+Ebben az esetben a nagy kapacitású (Citus) segítségével több csomóponton is eloszthatja az adatmennyiséget. Az első és legfontosabb választás, amikor a szegmensre dönt, a terjesztési oszlop. Kezdjük egy naiv választási lehetőséggel `event_id` az Event tábla és `page_id` a `page` táblázat számára:
 
 ```sql
 -- naively use event_id and page_id as distribution columns
@@ -77,7 +77,7 @@ SELECT create_distributed_table('event', 'event_id');
 SELECT create_distributed_table('page', 'page_id');
 ```
 
-Adatokat a rendszer különböző feldolgozók összes adatát, ha most nem lehet elvégezni az illesztés, mint hogy egy PostgreSQL-csomóponton. Ehelyett azt kell kiadása két lekérdezést:
+Ha az adatok különböző munkatársak között oszlanak el, nem tudunk olyan illesztést végezni, mint egy PostgreSQL-csomóponton. Ehelyett két lekérdezést kell kiadnia:
 
 ```sql
 -- (Q1) get the relevant page_ids
@@ -92,24 +92,24 @@ WHERE page_id IN (/*…page IDs from first query…*/)
 GROUP BY page_id ORDER BY count DESC LIMIT 10;
 ```
 
-Ezt követően a két lépésből származó eredmények kell az alkalmazás által kombinálhatók.
+Ezt követően a két lépés eredményeit össze kell kapcsolni az alkalmazással.
 
-A lekérdezések futtatásának kell tekintse meg a többi részén Elszórva csomópont között szegmensekre adatokat.
+A lekérdezések futtatásához a csomópontokon elszórt szegmensekben lévő adatszegmensekben kell megkeresni az adategységeket.
 
-![hatékony lekérdezések](media/concepts-hyperscale-colocation/colocation-inefficient-queries.png)
+![Nem hatékony lekérdezések](media/concepts-hyperscale-colocation/colocation-inefficient-queries.png)
 
-Ebben az esetben az adatok terjesztési jelentős hátrányokkal hoz létre:
+Ebben az esetben az adateloszlás jelentős hátrányait hozza létre:
 
--   Többletterhelést az egyes szegmensek több lekérdezés futtatása lekérdezése
--   Sok sor visszaadása az ügyfél Q1 gyűjteményértékelést kelljen végezni
--   2\. negyedévi nagy lenni
--   A kell lekérdezéseket írni több lépésben kell módosítani az alkalmazásban
+-   Az egyes szegmensek lekérdezésével és több lekérdezés futtatásával járó terhelés.
+-   A Q1 terhelése sok sort ad vissza az ügyfélnek.
+-   A Q2 nagy méretűvé válik.
+-   A lekérdezéseknek több lépésben való írásához szükség van az alkalmazás változásaira.
 
-Az adatokat a rendszer szétosztja között, mivel a lekérdezések párhuzamosíthatók a is. Azt azonban csak előnyös-e munkamennyiség, amelyet a lekérdezés lényegesen nagyobb, mint a terhelés több horizontális partícióra lekérdezését.
+Az adateloszlás megoszlik, így a lekérdezések párhuzamosak lehetnek. Ez csak akkor hasznos, ha a lekérdezés által végzett munka mennyisége jelentősen meghaladja a sok szegmens lekérdezésének terhelését.
 
-### <a name="distributing-tables-by-tenant"></a>Bérlő által táblák terjesztése
+### <a name="distribute-tables-by-tenant"></a>Táblák terjesztése bérlő szerint
 
-A nagy kapacitású azonos elosztási oszlop értékű sorok garantáltan ugyanazon a csomóponton. Kezdje újra, létrehozhatjuk a táblák `tenant_id` elosztási oszlopot.
+A nagy kapacitású (Citus) esetében az azonos terjesztési oszlop értékével rendelkező sorok garantáltan ugyanazon a csomóponton lehetnek. A kezdéshez a táblázatokat `tenant_id` a terjesztési oszlopként is létrehozhatja.
 
 ```sql
 -- co-locate tables by using a common distribution column
@@ -117,7 +117,7 @@ SELECT create_distributed_table('event', 'tenant_id');
 SELECT create_distributed_table('page', 'tenant_id', colocate_with => 'event');
 ```
 
-Most már nagy kapacitású segítségével választ kaphat az eredeti egyetlen kiszolgálóból álló lekérdezés (V1) módosítás nélkül:
+A now nagy kapacitású (Citus) az eredeti egykiszolgálós lekérdezést módosítás nélkül válaszolja meg (Q1):
 
 ```sql
 SELECT page_id, count(event_id)
@@ -132,12 +132,12 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-Szűrő és tenant_id összekapcsolását nagy kapacitású tudja, hogy a teljes lekérdezést választ, amelyek tartalmazzák az adatokat, hogy az adott bérlő ugyanarra a szalagra szegmensek használatával. Egyetlen PostgreSQL csomópont segítségével választ kaphat a lekérdezés egyetlen lépésben.
+A szűrés és a tenant_id-hez való csatlakozás miatt a nagy kapacitású (Citus) tudja, hogy a teljes lekérdezés válaszolhat az adott bérlő adatait tartalmazó, közösen elhelyezett szegmensek készletével. Egyetlen PostgreSQL-csomópont egyetlen lépésben válaszolhat a lekérdezésre.
 
-![jobb lekérdezési](media/concepts-hyperscale-colocation/colocation-better-query.png)
+![Jobb lekérdezés](media/concepts-hyperscale-colocation/colocation-better-query.png)
 
-Bizonyos esetekben lekérdezések és táblasémákat meg kell változtatni a bérlői azonosító egyedi korlátozások és a feltételek csatlakozzon. Ez azonban általában egy egyszerű módosítást.
+Bizonyos esetekben a lekérdezéseket és a táblázatos sémákat úgy kell módosítani, hogy a bérlői azonosítót egyedi korlátozásokkal és csatlakozási feltételekkel tartalmazzák. Ez a módosítás általában egyszerű.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg, hogyan bérlő adatai a felhőátjárónak-e a [több-bérlős oktatóanyag](tutorial-design-database-hyperscale-multi-tenant.md)
+- Tekintse meg, hogyan találhatók a bérlői információk a [több-bérlős oktatóanyagban](tutorial-design-database-hyperscale-multi-tenant.md).
