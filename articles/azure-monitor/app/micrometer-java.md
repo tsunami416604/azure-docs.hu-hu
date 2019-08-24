@@ -1,6 +1,6 @@
 ---
-title: Használata esetén az Azure Application Insights Java SDK |} A Microsoft Docs
-description: 'Lépésenkénti útmutató, esetén használja az Application Insights Spring Boot és a Spring Boot alkalmazásokkal. '
+title: A Mikrométer használata az Azure Application Insights Java SDK-val | Microsoft Docs
+description: 'Részletes útmutató a Mikrométerek használatáról Application Insights Spring boot-és nem tavaszi rendszerindító alkalmazásaival. '
 services: application-insights
 documentationcenter: java
 author: lgayhardt
@@ -12,26 +12,26 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 778690fb2796cea3154b3acbb662341fdaea87da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1074495f5ac9112b6ce4f67ad2d81ee57b28e720
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699138"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012696"
 ---
-# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Használata esetén az Azure Application Insights Java SDK
-Esetén figyelési mértékek alkalmazásmetrikák JVM-alapú alkalmazás code, és exportálja az adatokat a kívánt rendszerek figyelése. Ez a cikk használata esetén az Application insights segítségével a Spring Boot és a Spring Boot-alkalmazások hogyan meg.
+# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>A Mikrométer használata az Azure Application Insights Java SDK-val
+A Mikrométer alkalmazás-figyelési mérőszámai a JVM-alapú alkalmazás kódjára vonatkoznak, és lehetővé teszi az adatok exportálását kedvenc megfigyelési rendszerbe. Ez a cikk bemutatja, hogyan használható a Mikrométer a Application Insights a Spring boot és a nem rugós rendszerindítási alkalmazásokhoz.
 
-## <a name="using-spring-boot-15x"></a>1,5 x Spring használatával rendszerindító
-Adja hozzá a következő függőségeket a build.gradle vagy a pom.xml fájlba: 
-* [Application Insights spring-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)1.1.0-BETA vagy újabb
-* Esetén az Azure Registry 1.1.0-ás vagy újabb
-* [Örökölt esetén Spring](https://micrometer.io/docs/ref/spring/1.5) 1.1.0-ás vagy újabb (Ez a hálózat automatikus beállítása kódot a Spring keretrendszer portolások).
+## <a name="using-spring-boot-15x"></a>Spring boot 1.5 x használata
+Adja hozzá a következő függőségeket a Pom. XML vagy Build. gradle fájlhoz: 
+* [Application Insights Spring-boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)1.1.0-Beta vagy újabb verzió
+* Mikrométer Azure Registry 1.1.0 vagy újabb
+* A [mikrométer rugó örökölt](https://micrometer.io/docs/ref/spring/1.5) 1.1.0-es vagy újabb (ez a backports az automatikus konfigurációs kód a Spring Framework-ben).
 * [ApplicationInsights erőforrás](../../azure-monitor/app/create-new-resource.md )
 
 Lépések
 
-1. Frissítse a pom.xml fájlt a Spring Boot-alkalmazás, és adja hozzá a következő függőségeket benne:
+1. Frissítse a Spring boot-alkalmazás Pom. XML fájlját, és adja hozzá az alábbi függőségeket:
 
     ```XML
     <dependency>
@@ -53,84 +53,84 @@ Lépések
     </dependency>
 
     ```
-2. Frissítse a application.properties vagy yml fájlt az Application Insights-kialakítási kulcsot a következő tulajdonságot:
+2. Frissítse az Application. properties vagy a YML fájlt a Application Insights rendszerállapot-kulcs használatával a következő tulajdonsággal:
 
      `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
 1. Az alkalmazás létrehozása és futtatása
-2. A fenti kell, és az Azure Monitor összegyűjtött előre összesített mérőszámok automatikus futtatása. Application Insights Spring Boot starter finomhangolásához részleteiért tekintse meg a [a GitHub információs](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/README.md).
+2. A fenti lépésekkel a Azure Monitorba automatikusan összegyűjtött, előre összevont metrikákkal kezdheti meg a szolgáltatást. A Application Insights Spring boot Starter finomhangolásával kapcsolatos részletekért tekintse meg a [githubon található Readme](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/README.md)című témakört.
 
-## <a name="using-spring-2x"></a>A Spring 2.x használatával
+## <a name="using-spring-2x"></a>A Spring 2. x használata
 
-Adja hozzá a következő függőségeket a build.gradle vagy a pom.xml fájlba:
+Adja hozzá a következő függőségeket a Pom. XML vagy Build. gradle fájlhoz:
 
-* Application Insights Spring boot-starter 2.1.2 vagy újabb
-* Az Azure-spring-rendszerindítás-mérőszámok – például 2.0.7 vagy újabb  
-* [Application Insights-erőforrás](../../azure-monitor/app/create-new-resource.md )
+* Application Insights Spring-boot-Starter 2.1.2 vagy újabb verzió
+* Azure-Spring-boot-metrikák – 2.1.5 vagy újabb verzió  
+* [Erőforrás Application Insights](../../azure-monitor/app/create-new-resource.md )
 
 Lépések:
 
-1. Frissítse a pom.xml fájlt a Spring Boot-alkalmazás, és adja hozzá a következő függőséget benne:
+1. Frissítse a Spring boot-alkalmazás Pom. XML fájlját, és adja hozzá a következő függőséget:
 
     ```XML
     <dependency> 
           <groupId>com.microsoft.azure</groupId>
           <artifactId>azure-spring-boot-metrics-starter</artifactId>
-          <version>2.0.7</version>
+          <version>2.1.6</version>
     </dependency>
     ```
-1. Frissítse a application.properties vagy yml fájlt az Application Insights-kialakítási kulcsot a következő tulajdonságot:
+1. Frissítse az Application. properties vagy a YML fájlt a Application Insights rendszerállapot-kulcs használatával a következő tulajdonsággal:
 
-     `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
+     `management.metrics.export.azuremonitor.instrumentation-key=<your-instrumentation-key-here>`
 3. Az alkalmazás létrehozása és futtatása
-4. A fenti szerezheti be, az Azure Monitor összegyűjtött előre összesített mérőszámok automatikus futtatása. Application Insights Spring Boot starter finomhangolásához részleteiért tekintse meg a [a GitHub információs](https://github.com/Microsoft/azure-spring-boot/releases/latest).
+4. A fentiekben a Azure Monitorba automatikusan összegyűjtött, előre összevont metrikákkal kell futnia. A Application Insights Spring boot Starter finomhangolásával kapcsolatos részletekért tekintse meg a [githubon található Readme](https://github.com/Microsoft/azure-spring-boot/releases/latest)című témakört.
 
-Alapértelmezett metrikák:
+Alapértelmezett mérőszámok:
 
-*    Tomcat, a JVM, a Logback metrikák, a Log4J mérőszámokat, hasznos üzemidőt metrikák, processzor-metrikák, FileDescriptorMetrics automatikusan konfigurálva metrikákat.
-*    Például ha a netflix hystrix osztály elérési úton található kapunk is ezeket a metrikákat. 
-*    Lehet, hogy a következő metrikák megfelelő bab hozzáadásával érhető el. 
+*    A rendszer automatikusan konfigurálta a Tomcat, a JVM, a Logback metrikák, a Log4J metrikák, a üzemidő Metrikái, a processzor Metrikái és a FileDescriptorMetrics metrikáit.
+*    Ha például a Netflix Hystrix jelen van az osztály elérési útján, akkor ezeket a mérőszámokat is megkapjuk. 
+*    A következő mérőszámok elérhetők a megfelelő bab hozzáadásával. 
         - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcaseCache, Jcache)     
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
         - OkHttp3 metrikák 
-        - A Kafka-metrikák 
+        - Kafka-metrikák 
 
  
 
-Útmutató az automatikus metrikák gyűjtésének kikapcsolása: 
+Az automatikus metrikák gyűjtésének kikapcsolása: 
  
-- JVM-metrikák: 
+- JVM metrikák: 
     - management.metrics.binders.jvm.enabled=false 
 - Logback metrikák: 
     - management.metrics.binders.logback.enabled=false
-- Hasznos üzemidő metrikák: 
+- Üzemidő mérőszámai: 
     - management.metrics.binders.uptime.enabled=false 
-- Processzor-metrikák:
+- Processzor Metrikái:
     -  management.metrics.binders.processor.enabled=false 
 - FileDescriptorMetrics:
     - management.metrics.binders.files.enabled=false 
-- Hystrix metrikák Ha osztályútvonal könyvtárában: 
+- Hystrix metrikák, ha a osztályútvonal lévő könyvtár: 
     - management.metrics.binders.hystrix.enabled=false 
-- AspectJ metrikák Ha osztályútvonal könyvtárában: 
+- AspectJ metrikák, ha a osztályútvonal lévő könyvtár: 
     - spring.aop.enabled=false 
 
 > [!NOTE]
-> A Spring Boot-alkalmazás application.properties vagy application.yml fájlban a fenti tulajdonságainak megadása
+> Adja meg a fenti tulajdonságokat a Spring boot-alkalmazás Application. properties vagy Application. YML fájljában.
 
-## <a name="use-micrometer-with-non-spring-boot-web-applications"></a>Spring Boot-webalkalmazásokkal való használata esetén
+## <a name="use-micrometer-with-non-spring-boot-web-applications"></a>A Mikrométer használata nem rugós rendszerindító webalkalmazásokkal
 
-Adja hozzá a következő függőségeket a build.gradle vagy a pom.xml fájlba:
+Adja hozzá a következő függőségeket a Pom. XML vagy Build. gradle fájlhoz:
  
 * [Application Insight Core 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.2.0) vagy újabb
-* [Az Application Insights webalkalmazás-2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/2.2.0) vagy újabb
-* [Register Web Filter](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
-* Esetén az Azure Registry 1.1.0-ás vagy újabb
-* [Application Insights-erőforrás](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights Web 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/2.2.0) vagy újabb
+* [Webes szűrő regisztrálása](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
+* Mikrométer Azure Registry 1.1.0 vagy újabb
+* [Erőforrás Application Insights](../../azure-monitor/app/create-new-resource.md )
 
 Lépések:
 
-1. Adja hozzá a következő függőségeket a pom.xml vagy build.gradle fájlban:
+1. Adja hozzá a következő függőségeket a Pom. XML vagy Build. gradle fájlhoz:
 
     ```XML
         <dependency>
@@ -146,9 +146,9 @@ Lépések:
         </dependency
      ```
 
-2. Alkalmazás Insights.xml helyezze az erőforrások mappában
+2. Helyezze a Application Insights. xml fájlt az erőforrások mappába.
 
-    Minta servletosztályra (bocsát ki egy időzítő metrika):
+    Példa servlet-osztályra (időzítő metrikát bocsát ki):
 
     ```Java
         @WebServlet("/hello")
@@ -187,7 +187,7 @@ Lépések:
     
     ```
 
-      Minta konfigurációs osztályt:
+      Minta konfigurációs osztály:
 
     ```Java
          @WebListener
@@ -226,15 +226,15 @@ Lépések:
          }
     ```
 
-További információk a metrikákról, tekintse meg a [esetén dokumentáció](https://micrometer.io/docs/).
+A metrikákkal kapcsolatos további tudnivalókért tekintse meg a [mikrométer dokumentációját](https://micrometer.io/docs/).
 
-Más mintakód létrehozásával különböző típusú metrikák található[a hivatalos esetén GitHub-adattárat](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples).
+A különböző típusú metrikák létrehozásával kapcsolatos további mintakód[a hivatalos mikrométer GitHub](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples)-tárházában található.
 
-## <a name="how-to-bind-additional-metrics-collection"></a>Hogyan köthet további metrikák gyűjtési
+## <a name="how-to-bind-additional-metrics-collection"></a>További mérőszámok gyűjtésének kötése
 
 ### <a name="springbootspring"></a>SpringBoot/Spring
 
-Hozzon létre egy, a megfelelő metrikakategória bean. Tegyük fel például, hogy guajáva kell gyorsítótár-metrikák:
+Hozzon létre egy megfelelő metrikai kategóriába tartozó Bean-osztályt. Tegyük fel például, hogy a guava gyorsítótár Metrikái vannak:
 
 ```Java
     @Bean
@@ -242,15 +242,15 @@ Hozzon létre egy, a megfelelő metrikakategória bean. Tegyük fel például, h
         Return new GuavaCacheMetrics();
     }
 ```
-Nincsenek alapértelmezés szerint nincs engedélyezve, de a fenti módon köthető több metrikát. Teljes listáját, tekintse meg [a hivatalos esetén GitHub-adattárat](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder ).
+Több mérőszám is van, amelyek alapértelmezés szerint nem engedélyezettek, de a fenti módon kötve lehet. A teljes listát [a hivatalos mikrométer GitHub](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder )-tárházban találja.
 
-### <a name="non-spring-apps"></a>Nem Spring alkalmazások
-Adja hozzá a következő kötőkódot a konfigurációs fájl:
+### <a name="non-spring-apps"></a>Nem rugós alkalmazások
+Adja hozzá a következő kötési kódot a konfigurációs fájlhoz:
 ```Java 
     New GuavaCacheMetrics().bind(registry);
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a esetén tekintse meg a hivatalos további [esetén dokumentáció](https://micrometer.io/docs).
-* Spring megismerheti az Azure-ban tekintse meg a hivatalos [Spring on Azure dokumentációja](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable).
+* Ha többet szeretne megtudni a mikrométerről, tekintse meg a hivatalos [mikrométer dokumentációját](https://micrometer.io/docs).
+* Ha szeretne többet megtudni az Azure-ról, tekintse meg az [Azure hivatalos tavaszi dokumentációját](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable).

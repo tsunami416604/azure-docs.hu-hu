@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d9d6dc8a980c543aa1a94c0ed4e9ae845769567
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
-ms.translationtype: HT
+ms.openlocfilehash: b1ee18abfab2cf286ee010bd6d25dfbc5a38cebb
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997905"
+ms.locfileid: "70011563"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak 
 
@@ -432,6 +432,8 @@ Vagy a következőket teheti:
 * A kísérletet egy `Estimator` olyan objektummal küldje el, amely az [ml modellek becslések-vel való](how-to-train-ml-models.md)betanítását mutatja.
 * Kísérlet küldése [a CLI bővítmény használatával](reference-azure-machine-learning-cli.md#experiments).
 * Kísérlet küldése a [vs Code bővítmény](how-to-vscode-tools.md#train-and-tune-models)használatával.
+
+<a id="gitintegration"></a>
 
 ## <a name="git-tracking-and-integration"></a>Git-követés és-integráció
 

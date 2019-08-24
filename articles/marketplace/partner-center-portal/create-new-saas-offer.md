@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 584b9fdde33d14650c36c44b9b457a25f8a1d6f9
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7dd57e41144ec33aec6eb716716d0794d92071f5
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900119"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013090"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -79,25 +79,29 @@ Ha a Service (SaaS) szolgáltatást a partner Center kereskedelmi piactérről s
 - Az ajánlatnak [SaaS-megvalósítási API-kat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) kell használnia az Azure Marketplace-szel való integrációhoz.
 - Részletesebb követelmények: [SaaS-ajánlat közzétételi útmutatója](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
-#### <a name="saas-on-azure-billing-infrastructure-costs"></a>SaaS Azure számlázási infrastruktúra-költségekkel
-Ha az SaaS-ajánlat az Azure-ban üzemel, akkor a közzétevőnek az Azure-infrastruktúra használati díjait és a szoftverlicenc-díjat egyetlen költségként kell eltárolnia. Ez a költség az ügyfél számára átalányösszegű havi díj formájában jelenik meg. Az Azure-infrastruktúra használatának felügyelete és számlázása Önnek, a partnernek közvetlenül történik. Az ügyfél nem látja a tényleges infrastruktúra-használati díjakat. A kiadók általában az Azure-infrastruktúra használati díjait az szoftverlicenc díjszabása szerint csomagolják. 
+#### <a name="saas-pricing-and-billing-options"></a>SaaS-díjszabás és számlázási lehetőségek
+A kiadó Azure-előfizetésében futó SaaS-megoldásokkal az ügyfelek által kifizetett licencek a szoftver üzembe helyezéséhez használt infrastruktúra díját is tartalmazzák. Az Azure-infrastruktúra használatának felügyelete és számlázása Önnek, a partnernek közvetlenül történik. Az ügyfél nem látja a tényleges infrastruktúra-használati díjakat. A kiadóknak az Azure-infrastruktúra használati díját kell megfizetniük a szoftverlicenc-díjszabásban. 
 
-A szoftver licencelési díjait havi, ismétlődő, a telephelyen alapuló előfizetés átalánydíjas díjaként mutatjuk be.
+Az SaaS a mért számlázási szolgáltatással havi vagy éves számlázási támogatást biztosít, amely átalány, felhasználónkénti vagy használati díj alapján történik. A Microsoft kereskedelmi piactére egy ügynökségi modellen működik, amelynek során a kiadók díjszabást, Microsoft-számlákat és Microsoft-számlázást fizetnek a kiadónak, miközben az ügynökség díját is megtartják.
+
+Az alábbi táblázat egy példát mutat be a költségek és a kifizetések lebontására az Ügynökség modelljének bemutatására.
 
 |**A licenc díja**|**$100/hó**|
 |:---|:---|
 |Azure-használati díj (D1/1-Core)|A számlázás közvetlenül a közzétevőre történik, nem az ügyfél|
 |Az ügyfelet a Microsoft számlázza|$100,00/hó (a kiadónak az összes felmerült vagy továbbított infrastruktúra-költséget kell figyelembe vennie a licenc díja alapján)|
 
-- Ebben az esetben a Microsoft $100,00-es számlát küld a szoftverlicenc számára, és kifizeti a $80,00-et a közzétevőnek.
+|**Microsoft-számlák**|**$100/hó**|
+|:---|:---|
+|A Microsoft a licencelési díj 80%-ában fizet <br>**A minősített SaaS-alkalmazások esetében a Microsoft a licencelési díj 90%-ában fizet*|$80,00/hó <br>*$* 90,00/hó *|
+
+- Ebben a példában a Microsoft $100,00-es számlát küld az ügyfélnek a szoftverlicenc számára, és kifizeti a $80,00-et a közzétevőnek.
 - Azok a partnerek, akik a **kedvezményes Piactéri szolgáltatási díjjal** rendelkeznek, csökkentett tranzakciós díjat kapnak az SaaS-ajánlatokról, a május 2019-ig, 2020-ig. Ebben az esetben a Microsoft $100,00-es számlát küld a szoftverlicenc számára, és kifizeti a $90,00-et a közzétevőnek.
 
 > [!NOTE]
 > **Csökkentett Piactéri szolgáltatási díj**: A kereskedelmi piactéren közzétett egyes SaaS-ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Ahhoz, hogy az ajánlat megfelelő legyen, legalább az egyik ajánlatát a Microsoftnak kell kijelölnie, mint az IP-címek közös értékesítésének vagy az IP-címek közös értékesítésének prioritása.  A jogosultságot az egyes naptári hónapok végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkaphassa a Marketplace szolgáltatási díját a hónapra.  A Piactéri szolgáltatási díj nem vonatkozik a kereskedelmi Piactéren keresztül elérhető virtuális gépekre, felügyelt alkalmazásokra vagy más termékekre.  A csökkentett Piactéri szolgáltatási díj csak a Microsoft által a 2019 és a 2020. június 30. között gyűjtött licencek díjaihoz érhető el.  Ezt követően a Piactéri szolgáltatási díj visszaáll a normál mennyiségre. 
 
-|**Microsoft-számlák**|**$100/hó**|
-|:---|:---|
-|A Microsoft a licencelési díj 80%-ában fizet <br>**A minősített SaaS-alkalmazások esetében a Microsoft a licencelési díj 90%-ában fizet*|$80,00/hó <br>*$* 90,00/hó *|
+
 
 
 #### <a name="csp-program-opt-in"></a>CSP-program – opt-in
@@ -153,9 +157,23 @@ A test Drive engedélyezésével a rendszer arra kéri, hogy állítson be egy d
 
 ## <a name="connect-lead-management"></a>Az érdeklődők felügyeletének összekötése
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+Közvetlenül kapcsolódhat az ügyfelekhez a piactéren kínált ajánlat listázásával, és összekapcsolhatja az Ügyfélkapcsolat-kezelési (CRM) rendszerét, hogy az ügyfelek kapcsolattartási adatait azonnal megkapja, miután az ügyfél kifejezte érdeklődését, vagy üzembe helyezi a termék.
 
-További információ: az [érdeklődők kezelése – áttekintés](./commercial-marketplace-get-customer-leads.md) .
+- **Érdeklődő célhelyének kiválasztása** (legördülő menü): Adja meg a kapcsolati adatokat arra a CRM-rendszerre, amelyre az ügyfél-érdeklődőket szeretné küldeni. 
+
+A partner Center a következő CRM-rendszereket támogatja az érdeklődők felügyeletéhez. Válassza ki a telepítési utasítások hivatkozását.
+
+- Azure Blob – adja meg a kapcsolattartási e-maileket, a tároló nevét és a Storage-fiók kapcsolati karakterláncát. 
+- [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) – adja meg a kapcsolattartási e-mail és a Storage-fiók kapcsolati sztringjét. 
+- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) – adjon meg kapcsolattartási e-mailt, URL-címet és hitelesítési módot (Office 365 vagy Azure Active Directory).
+- [Https-végpont](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) – adja meg a kapcsolattartási e-mail és a https-végpont URL-címét. 
+- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) – adja meg a kapcsolattartási e-mailt, az űrlap azonosítóját, a Munchkin-fiókot és a kiszolgáló azonosítóját.
+- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) – adja meg a kapcsolattartási e-mailt és a szervezet azonosítóját. 
+
+#### <a name="additional-lead-management-resources"></a>További érdeklődői felügyeleti erőforrások
+- [Az érdeklődők felügyeletével kapcsolatos gyakori kérdések](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
+- [Gyakori vezető konfigurációs hibák](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Az érdeklődők felügyelete – Áttekintés egy pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
 Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
 

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8987c14fab141a71ba2dd9f1ed228a56ce419bce
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: b7cb4f1a106d8caa2c43f5f17c5efa16a3ee6df2
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982821"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011644"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
@@ -151,7 +151,7 @@ Példaként tekintse [meg az oktatóanyagot: Rendszerkép-besorolási modell bet
 
 ### <a name="runs"></a>Futtatások
 
-Futtatás a következő egy rekordot, amely a következő információkat tartalmazza:
+A Futtatás egy képzési parancsfájl egyetlen végrehajtása. Azure Machine Learning rögzíti az összes futtatást, és a következő információkat tárolja:
 
 * A futtatással kapcsolatos metaadatok (timestamp, időtartam stb.)
 * A parancsfájl által naplózott metrikák

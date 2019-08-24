@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22d1da4c194b392993b37b16ab20673120c3362e
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 160be4224e31793b5bb172f5b913c364ae2c8a59
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951798"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013046"
 ---
 # <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Mik a Azure Machine Learning-szolgáltatásban található ML-folyamatok?
 
@@ -69,7 +69,7 @@ A gépi tanulási munkafolyamatok folyamatainak használatának fő előnyei a k
 
 ## <a name="the-python-sdk-for-pipelines"></a>A Python SDK folyamatok
 
-A [PYTHON SDK használatával](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) hozza létre a ml-folyamatokat az előnyben részesített ide-vagy Jupyter-jegyzetfüzetekben. Az Azure Machine Learning SDK alkalmazás-előkészítés és-folyamatok lépéseit párhuzamosan futtatni, amikor nincs függőség nem található imperatív szerkezeteket kínál. 
+A [PYTHON SDK használatával](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) hozza létre a ml-folyamatokat a kívánt integrált fejlesztői környezetben (ide) vagy Jupyter-jegyzetfüzetekben. Az Azure Machine Learning SDK alkalmazás-előkészítés és-folyamatok lépéseit párhuzamosan futtatni, amikor nincs függőség nem található imperatív szerkezeteket kínál. 
 
 Deklaratív adatok-függőségek használatával, optimalizálhatja a feladatokat. Az SDK a gyakori feladatokhoz, például az adatátvitelhez és a modell-közzétételhez készült előre összeállított modulok keretrendszerét tartalmazza. A keretrendszert kiterjesztheti úgy, hogy saját konvenciókat modellez, és a folyamatokon belül egyéni lépéseket is felhasználhat. A számítási célokat és a tárolási erőforrásokat közvetlenül az SDK-ból is kezelheti.
 

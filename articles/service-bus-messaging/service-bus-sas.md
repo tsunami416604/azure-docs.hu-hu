@@ -4,7 +4,6 @@ description: A Service Bus hozzáférés-vezérlésének áttekintése a közös
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
@@ -12,20 +11,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2018
+ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: d2cd7c8e24571f66fa73ceaa9a70ce33d6105e9c
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: ac240fee9a71714f2c7368b43e60f4e6c5d7093d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017740"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013051"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 
 *Közös hozzáférésű aláírások* A (SAS) az Service Bus üzenetkezelés elsődleges biztonsági mechanizmusa. Ez a cikk az SAS-t, a működésük módját és a platform-független módon való használatát ismerteti.
 
 Az SAS az engedélyezési szabályokon alapuló Service Bushoz fér hozzá. Ezek a névterek vagy üzenetküldési entitások (Relay, üzenetsor vagy témakör) szerint vannak konfigurálva. Az engedélyezési szabályok névvel rendelkeznek, bizonyos jogokkal vannak társítva, és egy pár titkosítási kulcsot is végrehajt. A szabály nevét és kulcsát a Service Bus SDK-n vagy a saját kódjában használhatja SAS-token létrehozásához. Az ügyfél ezután átadhatja a jogkivonatot a Service Busnak, hogy igazolja a kért művelet engedélyezését.
+
+> [!NOTE]
+> Azure Service Bus támogatja a Service Bus névterek és az entitások hozzáférésének engedélyezését Azure Active Directory (Azure AD) használatával. Az Azure AD által visszaadott OAuth 2,0 tokent használó felhasználók vagy alkalmazások engedélyezése kiváló biztonságot és egyszerű használatot biztosít a közös hozzáférésű aláírások (SAS) számára. Az Azure AD-ben nincs szükség a jogkivonatok tárolására a kódban, és kockázatos biztonsági réseket.
+>
+> A Microsoft azt javasolja, hogy ha lehetséges, az Azure AD-t használja a Azure Service Bus alkalmazásaihoz. További információkért tekintse át a következő cikkeket:
+> - [Azure Active Directory használatával hitelesítheti és engedélyezheti az alkalmazást Azure Service Bus entitások eléréséhez](authenticate-application.md).
+> - [Felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások eléréséhez](service-bus-managed-service-identity.md)
 
 ## <a name="overview-of-sas"></a>SAS áttekintése
 
@@ -57,7 +63,7 @@ Service Bus névtér létrehozásakor a rendszer automatikusan létrehoz egy **R
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>A közös hozzáférésű aláírások hitelesítésének konfigurációja
 
-A [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) szabályt Service Bus névterek, várólisták vagy témakörök esetében is konfigurálhatja. A [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) Service Bus-előfizetésre való konfigurálása jelenleg nem támogatott, de a névtéren vagy témakörben konfigurált szabályokkal biztonságossá teheti az előfizetésekhez való hozzáférést. Az eljárást bemutató munkamintaért tekintse meg a Azure Service Bus- [várólisták kezelése](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule) mintát.
+A [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) szabályt Service Bus névterek, várólisták vagy témakörök esetében is konfigurálhatja. A [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) Service Bus-előfizetésre való konfigurálása jelenleg nem támogatott, de a névtéren vagy témakörben konfigurált szabályokkal biztonságossá teheti az előfizetésekhez való hozzáférést. Az eljárást bemutató munkaminta esetében tekintse meg a [közös hozzáférésű aláírás (SAS) hitelesítés használata Service Bus](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) előfizetések mintáját.
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
@@ -88,7 +94,7 @@ A jogkivonat a nem kivonatos értékeket tartalmazza, így a címzett újra kisz
 
 Az erőforrás URI-ja annak a Service Bus-erőforrásnak a teljes URI azonosítója, amelyhez hozzáférést igényelnek. Például `http://<namespace>.servicebus.windows.net/<entityPath>` : vagy `sb://<namespace>.servicebus.windows.net/<entityPath>`;, azaz, `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. 
 
-**Az URI-nak [százalékos kódolással](/dotnet/api/system.web.httputility.urlencode?view=netframework-4.8)kell rendelkeznie.**
+**Az URI-nak [százalékos kódolással](https://msdn.microsoft.com/library/4fkewx0t.aspx)kell rendelkeznie.**
 
 Az aláíráshoz használt megosztott hozzáférés-engedélyezési szabályt az URI által megadott entitáson vagy annak egyik hierarchikus szülője szerint kell konfigurálni. `http://contoso.servicebus.windows.net/contosoTopics/T1` Például vagy `http://contoso.servicebus.windows.net` az előző példában.
 
@@ -104,8 +110,8 @@ Ha ismeri vagy gyanítja, hogy a kulcs biztonsága sérül, és vissza kell vonn
 
 Az alábbi forgatókönyvek az engedélyezési szabályok konfigurálását, az SAS-jogkivonatok létrehozását és az ügyfél-engedélyezést tartalmazzák.
 
-A konfigurációt bemutató és SAS-hitelesítést használó Service Bus alkalmazás teljes munkamintája a következő példában található meg a GitHub-tárházban: [Azure Service Bus várólisták kezelése](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule).
- 
+A konfigurációt bemutató és SAS-hitelesítést használó Service Bus alkalmazás teljes munkamintája: a [közös hozzáférésű aláírások hitelesítése Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)használatával. A névtéreken konfigurált SAS-engedélyezési szabályok és a Service Bus-előfizetések biztonságossá tételére szolgáló kapcsolódó minta itt érhető el: [Közös hozzáférésű aláírási (SAS-) hitelesítés használata Service Bus](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)előfizetésekkel.
+
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Megosztott hozzáférés engedélyezési szabályainak elérése egy entitáson
 
 A Service Bus .NET-keretrendszer könyvtáraival elérheti egy Service Bus-várólistán vagy-témakörön konfigurált [Microsoft. ServiceBus. Messaging. SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) objektumot [](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) a megfelelő [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) vagy [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription).

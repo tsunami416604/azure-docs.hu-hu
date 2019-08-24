@@ -1,6 +1,6 @@
 ---
-title: Az Azure monitorban egyéni mezők |} A Microsoft Docs
-description: Az egyéni mezők funkcióval az Azure monitor lehetővé teszi, hogy a rekordok a Log Analytics-munkaterületen gyűjtött rekord tulajdonságaira hozzáadott a saját kereshető mezőket hozhat létre.  Ez a cikk azt ismerteti, hogyan hozhat létre egy egyéni mezőt, és a egy minta eseménnyel részletes bemutatóját tartalmazza.
+title: Egyéni mezők a Azure Monitorban | Microsoft Docs
+description: A Azure Monitor egyéni mezők funkciója lehetővé teszi, hogy saját kereshető mezőket hozzon létre egy olyan Log Analytics-munkaterületen lévő rekordokból, amelyek egy összegyűjtött rekord tulajdonságaihoz vannak hozzáadva.  Ez a cikk az egyéni mezők létrehozásának folyamatát ismerteti, és részletes útmutatót nyújt egy adott eseményről.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,127 +11,127 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2019
+ms.date: 08/23/2019
 ms.author: bwren
-ms.openlocfilehash: 974a3391c592a1caf7bdcc6d9e01032f0c73aaa6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6b9c21a3d65e75abe11e705eba058b1d1fb17ff
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61461816"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012735"
 ---
-# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Egyéni mezőket hozhat létre a Log Analytics-munkaterületet az Azure monitorban
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Egyéni mezők létrehozása Log Analytics munkaterületen Azure Monitor
 
 > [!NOTE]
-> Ez a cikk ismerteti, hogyan kell elemezni a szöveges adatokat a Log Analytics-munkaterületen, a begyűjtésük. Számos előnnyel jár a lekérdezés szöveges adatok elemzése a begyűjtésük után [elemzése az Azure monitorban szöveges adatok](../log-query/parse-text.md).
+> Ez a cikk azt ismerteti, hogyan elemezheti a szöveges adatokat egy Log Analytics-munkaterületen a gyűjtött adatok alapján. Azt javasoljuk, hogy a szöveges adatok elemzését a lekérdezési szűrőben a következő témakörben ismertetett útmutatást követve olvassa el: [Azure monitor](../log-query/parse-text.md). Számos előnyt biztosít az egyéni mezők használata során.
 
-A **egyéni mezők** Azure monitor szolgáltatás lehetővé teszi, hogy terjessze ki a meglévő rekordjainak a Log Analytics-munkaterülethez adja hozzá a saját kereshető mezőket.  Egyéni mezők automatikusan tölti be más tulajdonságokat ugyanazt a rekordot a kinyert adatokkal.
+A Azure Monitor **Egyéni mezők** funkciója lehetővé teszi, hogy a saját kereshető mezőinek hozzáadásával kiterjessze a log Analytics munkaterületen meglévő rekordokat.  Az egyéni mezők automatikusan ki lesznek töltve az ugyanabban a rekordban lévő más tulajdonságokból kinyert adatokból.
 
 ![Áttekintés](media/custom-fields/overview.png)
 
-Például a minta az alábbi rekordnak az esemény leírása feltárásával hasznos adatokat. Csomagolja ki ezeket az adatokat egy külön tulajdonság tesz elérhetővé olyan műveleteket, mint a rendezési és szűrési számára.
+Az alábbi minta rekord például hasznos adatokkal van elárasztva az esemény leírásában. Az adatok egy külön tulajdonságba való kinyerése lehetővé teszi, hogy a rendezési és szűrési műveletekhez elérhető legyen.
 
-![Bontsa ki a minta](media/custom-fields/sample-extract.png)
-
-> [!NOTE]
-> Az előzetes verzióban érhető el Ön legfeljebb 100 egyéni mezőket a munkaterületén.  Ez a korlátozás kibontásra váró, amikor ez a funkció eléri elérhetőség.
-
-## <a name="creating-a-custom-field"></a>Egyéni mezők létrehozása
-Amikor létrehoz egy egyéni mezőt, a Log Analytics ismernie kell adatok tölti ki az értékét.  A Microsoft Research nevű FlashExtract technológia használatával gyorsan azonosíthatja ezeket az adatokat.  Ahelyett, hogy, hogy explicit utasításokkal, az Azure Monitor értesül az Ön által megadott példákból kiolvasni kívánt adatokat.
-
-A következő szakaszok az eljárás az egyéni mezőt hoz létre.  Ez a cikk alján van egy minta kivonása bemutató.
+![Minta kibontása](media/custom-fields/sample-extract.png)
 
 > [!NOTE]
-> Az egyéni mező fel van töltve, mert a megadott feltételnek megfelelő rekordok kerülnek a Log Analytics-munkaterülethez, így csak megjelenik egyéni mező létrehozása után összegyűjtött rekordokkal.  Az egyéni mező nem lehet hozzáadni rekordokat, amelyek már szerepel az adattárban a létrehozásakor.
+> Az előzetes verzióban a munkaterületen legfeljebb 100 egyéni mező lehet.  Ezt a korlátot a rendszer kibontja, ha a funkció eléri az általános elérhetőséget.
+
+## <a name="creating-a-custom-field"></a>Egyéni mező létrehozása
+Egyéni mező létrehozásakor Log Analytics meg kell értenie, hogy mely adatokat kell használni az érték feltöltéséhez.  A FlashExtract nevű Microsoft Research technológiáját használja az adatok gyors azonosítására.  Ahelyett, hogy explicit utasításokat kellene megadnia, Azure Monitor megismerheti az Ön által megadott példákból kinyerni kívánt adatokkal kapcsolatos információkat.
+
+A következő szakaszokban megtekintheti az egyéni mezők létrehozásának eljárását.  A cikk alján egy minta-kinyerési útmutató látható.
+
+> [!NOTE]
+> Az egyéni mező a megadott feltételeknek megfelelő rekordokkal van feltöltve a Log Analytics munkaterületre, így csak az egyéni mező létrehozása után gyűjtött rekordokban fog megjelenni.  Az egyéni mező nem lesz hozzáadva olyan rekordokhoz, amelyek már szerepelnek az adattárban a létrehozásakor.
 > 
 
-### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>1\. lépés – azonosíthatja a bejegyzéseket, amelyek az egyéni mező
-Az első lépéseként azonosítani az egyéni mező lekéri a rekordokat.  Kezdjen egy [standard naplólekérdezés](../log-query/log-query-overview.md) és a egy rekordot, hogy működjön a modellt, amely az Azure Monitor megtudhatja, majd válassza.  Megadhatja, hogy fog adatokat nyerhet ki az egyéni mezők, amikor a **mező kinyerése varázsló** van megnyitva, ahol ellenőrzése és finomítsa a feltétel.
+### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>1\. lépés – az egyéni mezőt tartalmazó rekordok azonosítása
+Az első lépés az egyéni mezőt lekérdező rekordok azonosítása.  Első lépésként egy [standard szintű log-lekérdezést](../log-query/log-query-overview.md) kell választania, majd ki kell választania egy olyan rekordot, amely a Azure monitor által megtanulni kívánt modell.  Ha megadja, hogy az adatok kinyerése egy egyéni mezőbe történik, megnyílik a **mező kibontása varázsló** , ahol érvényesítheti és pontosíthatja a feltételeket.
 
-1. Lépjen a **naplók** , és egy [lekérdezése a rekordok](../log-query/log-query-overview.md) , amely lesz az egyéni mező.
-2. Válassza ki egy rekordot, amely a Log Analytics segítségével egy modellt használ az adatok feltöltése az egyéni mező kinyerése fogja használni.  Az adatok kinyerése a rekord kívánt határozható meg, és a Log Analytics ezt az információt fogja használni, töltse ki az egyéni mező összes hasonló rekordok logikát meghatározni.
-3. Bontsa ki a rekord tulajdonságait, kattintson a három pontra, a bal felső tulajdonság a rekord, és válassza ki **mezők kinyerése a következőből**.
-4. A **mező kinyerése varázsló** meg van nyitva, és a kiválasztott rekord jelenik meg a **fő példa** oszlop.  Az egyéni mező azokat a rekordokat, ugyanazokat az értékeket a tulajdonságokat, amelyeket kiválasztott a meghatározva.  
-5. Ha az érték nem pontosan mit szeretne, válassza ki a szűkítheti a feltételek további mezőket.  Annak érdekében, hogy módosítja a mezőt a feltételek pontos értékeit, szakítsa meg és válassza ki a kívánt feltételeknek megfelelő másik rekordot.
+1. Nyissa meg a naplókat, és használjon egy lekérdezést az egyéni mezőt tartalmazó [rekordok](../log-query/log-query-overview.md) lekéréséhez.
+2. Válassza ki azt a rekordot, amelyet a Log Analytics az adatok kinyerésére szolgáló modellként fog működni az egyéni mező feltöltéséhez.  Azonosíthatja a rekordból kiolvasni kívánt adatokat, és a Log Analytics ezeket az információkat fogja használni az egyéni mezőnek az összes hasonló rekordhoz való feltöltéséhez.
+3. Bontsa ki a rekord tulajdonságait, kattintson a rekord legfelső tulajdonságának bal oldalán található ellipszisre, majd válassza a **mezők**kinyerése a következőből lehetőséget.
+4. Megnyílik a **mező kibontása varázsló** , és a kiválasztott rekord a **fő példa** oszlopban jelenik meg.  Az egyéni mező a kiválasztott tulajdonságok azonos értékeivel lesz definiálva.  
+5. Ha a kijelölés nem pontosan az, amit szeretne, válassza a további mezők lehetőséget a feltételek szűkítéséhez.  Ha módosítani szeretné a feltételekhez tartozó mezőértékeket, meg kell szakítania, és ki kell választania egy másik, a kívánt feltételeknek megfelelő rekordot.
 
-### <a name="step-2---perform-initial-extract"></a>2\. lépés – kezdeti kinyerési végrehajtani.
-A rekordokat, amelyek az egyéni mező azonosítása, után meg kell határoznia a kinyerni kívánt adatok.  A log Analytics ezen információk használatával hasonló rekordok a hasonló minták azonosításához.  Ezt követően az lépésben lesz ellenőrzik az eredményeket, és további részleteket az elemzés használata a Log Analytics nyújt.
+### <a name="step-2---perform-initial-extract"></a>2\. lépés – kezdeti Kibontás végrehajtása.
+Miután azonosította az egyéni mezőt tartalmazó rekordokat, azonosítsa a kiolvasni kívánt adatokat.  A Log Analytics ezeket az információkat a hasonló rekordokban lévő hasonló minták azonosítására fogja használni.  A lépés után érvényesítheti az eredményeket, és további részleteket adhat meg a Log Analytics számára az elemzésében való használathoz.
 
-1. Jelölje ki a minta-rekordot, amely az egyéni mező feltölteni kívánt szöveg.  Ezután megjelenik egy párbeszédablak, a mezőben adja meg a nevét és adattípusát, és a kezdeti kivonat végrehajtásához.  A karakterek  **\_CF** automatikusan hozzá lesznek fűzve.
-2. Kattintson a **kinyerése** összegyűjtött rekordok elemzés végrehajtásához.  
-3. A **összefoglalás** és **keresési eredmények** szakaszok a kivonatot eredményeinek megjelenítéséhez, így vizsgálhatja meg az adatok pontosságát.  **Összefoglalás** jeleníti meg a rekordok és a egy száma az egyes azonosított az adatértékek azonosításához használt feltételeket.  **Keresési eredmények** részletes listáját a feltételeknek megfelelő rekordokat tartalmazza.
+1. Jelölje ki a minta rekordban azt a szöveget, amelyet fel szeretne tölteni az egyéni mezővel.  Ekkor megjelenik egy párbeszédpanel, ahol megadhatja a mező nevét és adattípusát, és elvégezheti a kezdeti kinyerést.  A rendszer automatikusan hozzáfűzi a  **\_CF** karaktereket.
+2. Az összegyűjtött rekordok elemzéséhez kattintson a Kibontás elemre.  
+3. Az **Összefoglalás** és a **keresési eredmények** szakaszban a kivonat eredményei láthatók, így ellenőrizheti annak pontosságát.  Az **Összefoglalás** megjeleníti a rekordok azonosítására szolgáló feltételeket és az azonosított adatértékek számát.  A **keresési eredmények** a feltételnek megfelelő rekordok részletes listáját jelenítik meg.
 
-### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>3\. lépés – a kinyerés pontosságának ellenőrzéséhez és egyéni mező létrehozása
-Miután elvégezte a kezdeti kivonat, a Log Analytics megjeleníti az eredményeket, amely már begyűjtött adatok alapján.  Ha az eredmények pontos keresés majd is létrehozhat az egyéni mező nincs további munkahelyi.  Ha nem, majd pontosíthatja az eredményeket, hogy a Log Analytics javíthatja a saját logikáját.
+### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>3\. lépés – a kinyerés pontosságának ellenőrzése és egyéni mező létrehozása
+Miután elvégezte a kezdeti kibontást, Log Analytics megjeleníti az eredményeket a már összegyűjtött adatok alapján.  Ha az eredmények pontosak, akkor a további munka nélkül hozhatja létre az egyéni mezőt.  Ha nem, akkor pontosíthatja az eredményeket, így a Log Analytics javíthatja a logikáját.
 
-1. Ha bármilyen érték szerepel a kezdeti kivonat nem megfelelőek, majd kattintson a **szerkesztése** rekord, és válassza ki egy pontatlan melletti ikonra **kiemelés módosítása** annak érdekében, hogy módosítsa a kijelölést.
-2. A bejegyzés kerül a **további példákat** szakasz alatt a **fő példa**.  A kiemelés Itt módosíthatja a kijelölt végzett kell megérteni a Log Analytics segítségével.
-3. Kattintson a **kinyerése** az új információk használatáról a meglévő rekordok kiértékeléséhez.  Az eredmények rekordok nem az imént módosította az új elemzéseket alapján módosítható.
-4. Folyamatosan javításokat mindaddig, amíg a kivonatot összes rekordja helyesen azonosítani az adatok feltöltése az új egyéni mező.
-5. Kattintson a **mentése kinyerése** Ha elégedett az eredményeket.  Az egyéni mező már definiálva van, de azt nem lehet hozzáadni azokat a rekordokat még.
-6. Várjon, amíg gyűjthetők össze és futtassa újra a naplóbeli keresés a megadott feltételeknek megfelelő új rekordokat. Új rekordok rendelkeznie kell az egyéni mező.
-7. Használja az egyéni mezőt, mint bármely más rekord tulajdonság.  Segítségével, összesített és csoport az adatokat, és akkor is, amellyel új elemzéseket készít.
+1. Ha a kezdeti kivonat bármely értéke nem megfelelő, kattintson a nem pontos rekord melletti **Szerkesztés** ikonra, és válassza a **kiemelés módosítása** lehetőséget a kijelölés módosításához.
+2. A bejegyzést a rendszer a **fő példa**alatti **További példák** szakaszra másolja.  A kiemelés itt állítható be, hogy könnyebben Log Analytics a kiválasztást.
+3. Kattintson a Kibontás elemre az új információk használatához az összes meglévő rekord kiértékeléséhez.  Az eredmények módosíthatók az új intelligencián alapuló, az imént módosított rekordokon kívül is.
+4. Folytassa a javítások hozzáadását, amíg a kivonat összes rekordja helyesen azonosítja az adatokat az új egyéni mező feltöltéséhez.
+5. Kattintson a **Kibontás mentése** gombra, ha elégedett az eredményekkel.  Az egyéni mező már definiálva van, de még nem lesz hozzáadva a rekordokhoz.
+6. Várjon, amíg a megadott feltételeknek megfelelő új rekordok begyűjthetők, majd futtassa újra a naplóbeli keresést. Az új rekordoknak az egyéni mezővel kell rendelkezniük.
+7. Használja az egyéni mezőt, mint bármely más rekord tulajdonságot.  Felhasználhatja az adatokat összesíteni és csoportosítani, és még az új elemzések létrehozásához is használhatja azt.
 
 ## <a name="viewing-custom-fields"></a>Egyéni mezők megtekintése
-A felügyeleti csoportban az összes egyéni mezők listáját megtekintheti a **speciális beállítások** a Log Analytics-munkaterületet az Azure Portal menüjében.  Válassza ki **adatok** , majd **egyéni mezők** a munkaterület összes egyéni mezők listája.  
+A felügyeleti csoport összes egyéni mezőjének listáját a Azure Portal Log Analytics munkaterület **Speciális beállítások** menüjében tekintheti meg.  Válassza az **adat** , majd az **Egyéni mezők** lehetőséget a munkaterület összes egyéni mezőjének listájához.  
 
 ![Egyéni mezők](media/custom-fields/list.png)
 
 ## <a name="removing-a-custom-field"></a>Egyéni mező eltávolítása
-Kétféleképpen egyéni mező eltávolítása.  Az első a **eltávolítása** lehetőséget az egyes mezőkhöz, amikor a teljes lista megtekintése a fent leírtak szerint.  A más módon, hogy egy rekord lekérése, és kattintson a gombra a mező balra.  A menüben a egyéni mező eltávolítása lehetőség lesz.
+Az egyéni mezők két módon távolíthatók el.  Az első az **Eltávolítás** lehetőség az egyes mezőknél a teljes lista megtekintésekor a fent leírtak szerint.  A másik módszer egy rekord beolvasása, majd a mező bal oldalán lévő gombra kattintva.  A menüben lehetősége lesz eltávolítani az egyéni mezőt.
 
 ## <a name="sample-walkthrough"></a>Mintaútmutató
-A következő szakasz bemutatja egy egyéni mezőt hoz létre teljes példát.  Ebben a példában kibontja a szolgáltatás nevének a Windows-eseményeket, amelyek jelzik a szolgáltatás állapotának módosítása.  Ez a Windows-számítógépeken a rendszer indításakor Service Control Manager által létrehozott események támaszkodik.  Ha azt szeretné, kövesse az ebben a példában, kell lennie [rendszernapló információk események gyűjtése a](data-sources-windows-events.md).
+Az alábbi szakasz végigvezeti az egyéni mezők létrehozásának teljes példáján.  Ez a példa Kinyeri a szolgáltatás nevét a Windows eseményeiben, amelyek a szolgáltatás változó állapotát jelzik.  Ez a Windows rendszerű számítógépek indításakor a szolgáltatásvezérlő által létrehozott eseményekre támaszkodik.  Ha ezt a példát szeretné követni, a rendszernaplóhoz kapcsolódó [információs eseményeket](data-sources-windows-events.md)kell összegyűjtenie.
 
-Azt adja meg a következő lekérdezés az összes esemény vissza a szolgáltatásvezérlő 7036-esemény azonosítója, amelyre az esemény azt jelzi, hogy a szolgáltatás indítása vagy leállítása rendelkező.
+A következő lekérdezéssel adja vissza az összes olyan eseményt a szolgáltatásvezérlő kezelőjéből, amelynek 7036-as AZONOSÍTÓJÚ eseménye a szolgáltatás elindítását vagy leállítását jelző esemény.
 
 ![Lekérdezés](media/custom-fields/query.png)
 
-Majd kiválasztunk és bontsa ki az event ID 7036 rendelkező rekordot.
+Ezután kiválasztunk minden olyan rekordot, amely a 7036-es AZONOSÍTÓJÚ eseménnyel rendelkezik.
 
-![Source record](media/custom-fields/source-record.png)
+![Forrásoldali rekord](media/custom-fields/source-record.png)
 
-Egyéni mezők meghatározzuk a felső tulajdonság melletti három pontra kattintva.
+Az egyéni mezőket a Top tulajdonság melletti ellipszisre kattintva definiáljuk.
 
 ![Mezők kinyerése](media/custom-fields/extract-fields.png)
 
-A **mező kinyerése varázsló** meg van nyitva, és a **EventLog** és **eseményazonosító** mezők vannak kijelölve a a **fő példa** oszlop.  Ez azt jelzi, hogy az egyéni mező határozza meg a rendszer naplóból 7036 Eseményazonosítóval rendelkező eseményeket.  Ez a megfelelő, így nem szükséges egyéb mezők kiválasztásához.
+Megnyílik a **mező kibontása varázsló** , és az **Eseménynapló** és a **Napszállta** mezők ki vannak választva a **fő példa** oszlopban.  Ez azt jelzi, hogy az egyéni mező a rendszernaplóban az 7036-es azonosítójú eseményekhez lesz definiálva.  Ez elegendő, ezért nem kell kijelölni más mezőket.
 
 ![Fő példa](media/custom-fields/main-example.png)
 
-Hogy jelölje ki a szolgáltatás nevére a **RenderedDescription** tulajdonság és -felhasználási **szolgáltatás** azonosíthatja a szolgáltatás nevét.  Az egyéni mező neve lesz **Service_CF**. A mező típusa ebben az esetben egy karakterláncérték, így is hagyjuk változatlan marad.
+Kiemeljük a szolgáltatás nevét a **RenderedDescription** tulajdonságban, és a szolgáltatás használatával azonosítjuk a szolgáltatás nevét.  Az egyéni mező neve **Service_CF**lesz. Ebben az esetben a mező típusa karakterlánc, így változatlan marad.
 
-![Mező neve](media/custom-fields/field-title.png)
+![Mező címe](media/custom-fields/field-title.png)
 
-Láthatjuk, hogy a szolgáltatás neve azonosítja megfelelően az egyes bejegyzések, de nem a mások.   A **keresési eredmények** megjelenítése neve része a **WMI Teljesítmény Adapter** nem lett kiválasztva.  A **összefoglalás** jeleníti meg, hogy egy rekord **modulok telepítő** helyett **Windows modulok telepítő**.  
+Láthatjuk, hogy a szolgáltatás neve megfelelően van azonosítva egyes rekordokhoz, de mások számára nem.   A **keresési eredmények** azt mutatják, hogy a **WMI-teljesítmény adapter** neve nem lett kiválasztva.  Az **Összefoglalás** azt mutatja, hogy egy rekordban azonosított **modulok telepítője** a **Windows-modulok telepítője**helyett.  
 
 ![Keresési eredmények](media/custom-fields/search-results-01.png)
 
-A kezdődik a **WMI Teljesítmény Adapter** rekord.  A Szerkesztés ikonra kattint, majd **kiemelés módosítása**.  
+Először a **WMI Performance adapter** rekordját használjuk.  A Szerkesztés ikonra kattintunk, majd **módosítjuk ezt a**kiemelést.  
 
 ![Kiemelés módosítása](media/custom-fields/modify-highlight.png)
 
-Hogy növelje a kiemelés, a keresőkifejezésben **WMI** , majd futtassa újból a kivonatot.  
+Növeljük a kiemelést, hogy belefoglalja a Word **WMI** -t, majd futtassa újra a kinyerést.  
 
 ![További példa](media/custom-fields/additional-example-01.png)
 
-Láthatjuk, hogy a bejegyzéseket **WMI Teljesítmény Adapter** javítását, és a Log Analytics adatokat is használják a rekordok kijavításához **Windows modul telepítője**.
+Láthatjuk, hogy a **WMI-teljesítmény adapterhez** tartozó bejegyzések ki lettek javítva, és log Analytics is használták ezeket az információkat, hogy javítsa a **Windows-modul telepítőjének**rekordjait.
 
 ![Keresési eredmények](media/custom-fields/search-results-02.png)
 
-Most futtassa a lekérdezést, amely ellenőrzi a **Service_CF** hoz létre, de még nem adja hozzá azokat a rekordokat. Ennek oka az, az egyéni mező ellen a meglévő rekordok nem működik, ezért ellenőriznünk kell a gyűjtendő új rekordok várja.
+Most már futtathatunk egy lekérdezést, amely ellenőrzi, hogy létrejött-e a **Service_CF** , de még nincs hozzáadva a rekordokhoz. Ennek az az oka, hogy az egyéni mező nem működik a meglévő rekordokkal szemben, ezért meg kell várni az új rekordok gyűjtését.
 
-![Kezdeti száma](media/custom-fields/initial-count.png)
+![Kezdeti darabszám](media/custom-fields/initial-count.png)
 
-Új így már eltelt némi idő után gyűjtött eseményeket, láthatjuk, hogy a **Service_CF** mező most ad hozzá a feltételeknek megfelelő rekordokat.
+Némi idő elteltével a rendszer begyűjti az új eseményeket, láthatjuk, hogy a **Service_CF** mező most már hozzá van adva a feltételnek megfelelő rekordokhoz.
 
-![A végeredmény](media/custom-fields/final-results.png)
+![Végső eredmények](media/custom-fields/final-results.png)
 
-Mi most már használhatja az egyéni mező, mint bármely más rekord tulajdonság.  Ennek szemléltetésére hozunk létre egy lekérdezést, amely által az új csoportok **Service_CF** vizsgálata, melyek a legaktívabb mező.
+Mostantól az egyéni mezőt is használhatja, mint bármely más rekord tulajdonságot.  Ennek szemléltetéséhez hozzunk létre egy lekérdezést, amely az új **Service_CF** mező alapján csoportosítja a legaktívabb szolgáltatásokat.
 
-![Lekérdezés csoportosítás](media/custom-fields/query-group.png)
+![Csoportosítás lekérdezés szerint](media/custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) építhetők fel lekérdezések egyéni mezők feltétel használatával.
-* A figyelő [egyéni naplófájlok](data-sources-custom-logs.md) , amely elemezni a egyéni mezőkkel.
+* További információ [](../log-query/log-query-overview.md) a lekérdezések létrehozásáról a lekérdezésekhez egyéni mezők használatával a feltételekhez.
+* Egyéni mezők használatával elemzett [Egyéni naplófájlok](data-sources-custom-logs.md) figyelése.
 

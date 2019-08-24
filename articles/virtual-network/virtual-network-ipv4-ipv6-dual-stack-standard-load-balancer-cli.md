@@ -1,5 +1,5 @@
 ---
-title: IPv6 Dual stack-alkalmazás üzembe helyezése az Azure Virtual Network standard Load Balancerával – parancssori felület
+title: IPv6 Dual stack-alkalmazás üzembe helyezése az Azure Virtual Networkben – parancssori felület
 titlesuffix: Azure Virtual Network
 description: Ez a cikk bemutatja, hogyan helyezhet üzembe egy IPv6-alapú Dual stack-alkalmazást az Azure Virtual Networkben az Azure CLI használatával.
 services: virtual-network
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 7b231ded3fdae7553e101beff2ee77d82fe27e6e
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: f67494b229a14b66b593950903184e54e4a8ab8c
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269623"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013698"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-standard-load-balancer-in-azure-virtual-network---cli-preview"></a>IPv6 Dual stack-alkalmazás üzembe helyezése az Azure Virtual Network standard Load Balancer használatával – CLI (előzetes verzió)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>IPv6 Dual stack-alkalmazás üzembe helyezése az Azure Virtual Networkben – CLI (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy kettős stack-alhálózattal rendelkező kettős verem-(IPv4-és IPv6-) alkalmazást az Azure-ban, amely kettős (IPv4 + IPv6-alapú) előtér-konfigurációkat, valamint kettős IP-konfigurációval rendelkező virtuális gépeket tartalmaz. kettős hálózati biztonsági csoportra vonatkozó szabályok és kettős nyilvános IP-címek.
+Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy kettős verem-(IPv4-és IPv6-) alkalmazást az Azure-ban standard Load Balancer használatával standard Load Balancer, amely egy kettős veremből álló alhálózattal rendelkező kettős stack-alapú virtuális hálózatot tartalmaz, amely kettős (IPv4 + IPv6) előtér-konfigurációk, virtuális gépek és A kettős IP-konfigurációval, a kettős hálózati biztonsági csoporttal és a kettős nyilvános IP-címekkel rendelkező hálózati adapterek.
 
 > [!Important]
 > Az Azure Virtual Networkhez készült IPv6 Dual stack jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

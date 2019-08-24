@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager-sablon használatával a Service Bus-engedélyezési szabály létrehozása |} A Microsoft Docs
-description: Hozzon létre egy Service Bus-engedélyezési szabály névtérhez és üzenetsorhoz Azure Resource Manager-sablon használatával
+title: Service Bus engedélyezési szabály létrehozása Azure Resource Manager sablon használatával | Microsoft Docs
+description: Service Bus engedélyezési szabály létrehozása a névtérhez és a várólistához Azure Resource Manager sablon használatával
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: f2c82c8ff353889f06dfc1c2ff5c3f316013c54b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8769979fe3e5107e4ca788f65ff1e721b266776b
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171236"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013078"
 ---
-# <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Hozzon létre egy Service Bus-engedélyezési szabály névtérhez és üzenetsorhoz, egy Azure Resource Manager-sablon használatával
+# <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Service Bus engedélyezési szabály létrehozása a névtérhez és a várólistához Azure Resource Manager sablon használatával
 
-Ez a cikk bemutatja, hogyan használható az Azure Resource Manager-sablon, amely létrehoz egy [engedélyezési szabály](service-bus-authentication-and-authorization.md#shared-access-signature-authentication) egy Service Bus-névtér és üzenetsor. A cikk azt ismerteti, hogyan adja meg, hogy mely erőforrások vannak telepítve, és hogyan adhat meg a paramétereket, amelyek a megadott az üzembe helyezés végrehajtása esetén. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
+Ez a cikk bemutatja, hogyan használható Azure Resource Manager-sablon, amely létrehoz egy [engedélyezési szabályt](service-bus-authentication-and-authorization.md#shared-access-signature) egy Service Bus névtérhez és a várólistához. A cikk azt ismerteti, hogyan határozható meg, hogy mely erőforrások legyenek telepítve, és Hogyan határozható meg a központi telepítés végrehajtásakor megadott paraméterek. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
-Sablonok létrehozásával kapcsolatos további információkért tekintse meg [Azure Resource Manager-sablonok készítése][Authoring Azure Resource Manager templates].
+További információ a sablonok létrehozásáról: Azure Resource Manager- [sablonok készítése][Authoring Azure Resource Manager templates].
 
-A teljes sablont, tekintse meg a [a Service Bus-engedélyezési jogcímszabály-sablont] [ Service Bus auth rule template] a Githubon.
+A teljes sablonhoz tekintse meg a [Service Bus engedélyezési szabály sablonját][Service Bus auth rule template] a githubon.
 
 > [!NOTE]
-> Az alábbi Azure Resource Manager-sablonok letöltése és központi telepítési érhetők el.
+> A következő Azure Resource Manager sablonok tölthetők le és üzemelő példányban.
 > 
-> * [Service Bus-névtér létrehozása](service-bus-resource-manager-namespace.md)
-> * [Service Bus-névtér létrehozása az üzenetsorhoz](service-bus-resource-manager-namespace-queue.md)
-> * [Service Bus-névtér létrehozása témakörrel és előfizetéssel](service-bus-resource-manager-namespace-topic.md)
-> * [Service Bus-névtér létrehozása témakörrel, előfizetéssel és szabály](service-bus-resource-manager-namespace-topic-with-rule.md)
+> * [Service Bus névtér létrehozása](service-bus-resource-manager-namespace.md)
+> * [Service Bus névtér létrehozása a várólistával](service-bus-resource-manager-namespace-queue.md)
+> * [Service Bus névtér létrehozása témakörrel és előfizetéssel](service-bus-resource-manager-namespace-topic.md)
+> * [Service Bus névtér létrehozása témakörrel, előfizetéssel és szabállyal](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> A legújabb sablonokat keressen, látogasson el a [Azure gyorsindítási sablonok] [ Azure Quickstart Templates] katalógusban, és keresse meg a **a Service Bus**.
+> A legújabb sablonok kereséséhez látogasson el az [Azure Gyorsindítás sablonok][Azure Quickstart Templates] galériába, és keressen rá **Service Bus**.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-will-you-deploy"></a>Mit fog üzembe helyezni?
 
-A sablon üzembe helyezése egy Service Bus-engedélyezési szabály a névtér és üzenetküldési entitások (az ebben az esetben a várólista).
+Ezzel a sablonnal Service Bus engedélyezési szabályt helyez üzembe a névtér és az üzenetküldési entitás (ebben az esetben egy üzenetsor) számára.
 
-Ez a sablon által [közös hozzáférésű Jogosultságkód (SAS)](service-bus-sas.md) a hitelesítéshez. SAS lehetővé teszi az alkalmazások a Service Bus konfigurálva a névtérhez vagy az üzenetkezelési entitás (üzenetsor vagy témakör), amellyel az adott jogosultságok tartoznak a hozzáférési kulcs használatával hitelesíteni. Ezután használhatja ezt a kulcsot, amellyel az ügyfelek ezután hitelesítéséhez a Service Bus egy SAS-token létrehozásához.
+Ez a sablon [közös hozzáférésű aláírást (SAS)](service-bus-sas.md) használ a hitelesítéshez. Az SAS lehetővé teszi, hogy az alkalmazások a névtérben konfigurált hozzáférési kulccsal vagy az üzenetküldési entitás (Üzenetsor vagy témakör) használatával hitelesítsék Service Bus a megadott jogokkal társított jogosultságokkal. Ezt a kulcsot használhatja arra, hogy olyan SAS-tokent állítson elő, amelyet az ügyfelek a Service Bus való hitelesítéshez használhatnak.
 
 Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
@@ -53,12 +53,12 @@ Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
 ## <a name="parameters"></a>Paraméterek
 
-Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz nevű szakaszban `Parameters` , amely tartalmazza az összes paraméter értékét. Meg kell határozni egy paramétere ezeket az értékeket, amelyek alapján a projekt telepítésekor, vagy telepíti, akkor a környezet alapján változhatnak. Nem határoznak meg paramétereket olyan értékhez, amely mindig érintetlen marad. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
+Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz egy nevű `Parameters` szakaszt, amely tartalmazza az összes paraméter értékét. Meg kell határoznia a paramétert azokhoz az értékekhez, amelyek a telepített projekttől függően változnak, vagy amely az Ön által telepített környezet alapján változik. Ne definiáljon paramétereket olyan értékekhez, amelyek mindig azonosak maradnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
 
 A sablon a következő paramétereket adja meg.
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-A Service Bus-névtér létrehozása neve.
+A létrehozandó Service Bus névtér neve.
 
 ```json
 "serviceBusNamespaceName": {
@@ -67,7 +67,7 @@ A Service Bus-névtér létrehozása neve.
 ```
 
 ### <a name="namespaceauthorizationrulename"></a>namespaceAuthorizationRuleName
-Az engedélyezési szabályt a névtér neve.
+A névtérhez tartozó engedélyezési szabály neve.
 
 ```json
 "namespaceAuthorizationRuleName ": {
@@ -76,7 +76,7 @@ Az engedélyezési szabályt a névtér neve.
 ```
 
 ### <a name="servicebusqueuename"></a>serviceBusQueueName
-A Service Bus-névtér az üzenetsor nevére.
+A várólista neve a Service Bus névtérben.
 
 ```json
 "serviceBusQueueName": {
@@ -85,7 +85,7 @@ A Service Bus-névtér az üzenetsor nevére.
 ```
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
-A Service Bus API verzióját a sablont.
+A sablon Service Bus API-verziója.
 
 ```json
 "serviceBusApiVersion": { 
@@ -97,7 +97,7 @@ A Service Bus API verzióját a sablont.
 ```
 
 ## <a name="resources-to-deploy"></a>Üzembe helyezendő erőforrások
-Létrehoz egy standard szintű Service Bus-névtér típusú **üzenetkezelés**, és a egy Service Bus-engedélyezési szabály a névtér és az entitás.
+Létrehoz egy **üzenetküldés**típusú standard Service Bus névteret, valamint egy Service Bus engedélyezési szabályt a névtérhez és az entitáshoz.
 
 ```json
 "resources": [
@@ -149,7 +149,7 @@ Létrehoz egy standard szintű Service Bus-névtér típusú **üzenetkezelés**
     ]
 ```
 
-JSON-szintaxist és a Tulajdonságok [névterek](/azure/templates/microsoft.servicebus/namespaces), [üzenetsorok](/azure/templates/microsoft.servicebus/namespaces/queues), és [szabályok](/azure/templates/microsoft.servicebus/namespaces/authorizationrules).
+A JSON szintaxis és tulajdonságok esetében lásd [](/azure/templates/microsoft.servicebus/namespaces): névterek, [várólisták](/azure/templates/microsoft.servicebus/namespaces/queues)és [engedélyezési szabályok](/azure/templates/microsoft.servicebus/namespaces/authorizationrules).
 
 ## <a name="commands-to-run-deployment"></a>Az üzembe helyezést futtató parancsok
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
@@ -167,11 +167,11 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy létrehozta és erőforrások Azure Resource Managerrel üzembe helyezett, megtudhatja, hogyan kezelhetők ezek a cikkek alapján:
+Most, hogy Azure Resource Manager használatával hozta létre és telepítette az erőforrásokat, megtudhatja, hogyan kezelheti ezeket az erőforrásokat a következő cikkek megtekintésével:
 
 * [A Service Bus kezelése a PowerShell használatával](service-bus-powershell-how-to-provision.md)
-* [A Service Bus-erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
-* [A Service Bus-hitelesítés és engedélyezés](service-bus-authentication-and-authorization.md)
+* [Service Bus erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [Hitelesítés és engedélyezés Service Bus](service-bus-authentication-and-authorization.md)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Automation szolgáltatással az Azure virtuális gépek vertikális skálázása |} A Microsoft Docs
-description: Függőleges méretezése a Linux rendszerű virtuális gép a figyelési riasztásokat az Azure Automation szolgáltatással a választ
+title: Azure-beli virtuális gép vertikális méretezése Azure Automationsal | Microsoft Docs
+description: A Linux rendszerű virtuális gépek vertikális skálázása a riasztásokra adott válaszként Azure Automation
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
@@ -16,46 +16,47 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e0317344fd8ee1eb415b61d4f5035219e649b18d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f4f49030d479e85b749db28c59fd2e2462ff405f
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695483"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013583"
 ---
-# <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Vertikális skálázása az Azure-beli Linuxos virtuális gép az Azure Automationnel
-Vertikális skálázás az a folyamat növelésével vagy csökkentésével az erőforrásokat a gép számítási feladatokra válaszul. Az Azure-ban a lehet elvégezni a virtuális gép méretének módosításával. Ez segít a következő esetekben
+# <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Azure Linux rendszerű virtuális gép vertikális skálázása Azure Automation
+A vertikális skálázás az a folyamat, amellyel a gép erőforrásainak növelése vagy csökkentése a számítási feladatokra reagál. Az Azure-ban ez a virtuális gép méretének módosításával végezhető el. Ez a következő helyzetekben nyújt segítséget.
 
-* A virtuális gép nem gyakran használja, átméretezheti, a havi költségek csökkentése érdekében kisebb méretet lefelé
-* Ha a virtuális gép a csúcsterhelés között kapja, átméretezhetők egy nagyobb méretű a kapacitás növelése érdekében
+* Ha a virtuális gépet nem gyakran használják, a havi költségek csökkentése érdekében átméretezheti kisebb méretre.
+* Ha a virtuális gép eléri a maximális terhelést, nagyobb méretre lehet méretezni, hogy növelje a kapacitását
 
-A körvonal ehhez további van, mint alatt
+A megvalósításához szükséges lépések vázlata az alábbi:
 
-1. A telepítő az Azure Automation eléréséhez a virtuális gépek
-2. Az előfizetés az Azure Automation függőleges méretezés runbookok importálása
-3. Webhook hozzáadása a forgatókönyvhöz
+1. A telepítő Azure Automation a Virtual Machines eléréséhez
+2. A Azure Automation vertikális skálázási runbookok importálása az előfizetésbe
+3. Webhook hozzáadása a runbook
 4. Riasztás hozzáadása a virtuális géphez
+
 
 ## <a name="scale-limitations"></a>Skálázási korlátozások
 
-Az első virtuális gépen, az méretezhetők, méretek mérete miatt előfordulhat, hogy korlátozva lesz, mert a rendelkezésre állási, a további méretek a fürt jelenlegi virtuális gép üzemel. A cikk ezt használja a közzétett automation-runbookok hozunk ebben az esetben a gondoskodik, és csak méretezésre a virtuális gép mérete párok alatt. Ez azt jelenti, hogy Standard_D1v2 virtuális gép fog hirtelen nem lehet Standard_G5 skálázható vertikálisan leskálázni Basic_A0 való. Korlátozott virtuálisgép-méretek felfelé és lefelé méretezését is nem támogatott. 
+Az első virtuális gép mérete miatt a méretezhető méretre korlátozható, mert a fürt aktuális virtuális gépe más méreteinek rendelkezésre állása is a-ben települ. A cikkben használt közzétett Automation-runbookok ezt az esetet vesszük figyelembe, és csak az alábbi virtuálisgép-méret párokon belül méretezhetők. Ez azt jelenti, hogy a Standard_D1v2 virtuális gépeket nem lehet hirtelen méretezni a standard G5, vagy a Basic_A0-ra méretezni. A virtuálisgép-méretek vertikális fel-és leskálázása is korlátozott, és nem támogatott. 
 
-Választhat, hogy skálázni a következő párok méretek között:
+A következő méretek közül választhat:
 
-* [Az a sorozat](#a-series)
+* [A sorozat](#a-series)
 * [B-Series](#b-series)
-* [A D-sorozat](#d-series)
+* [D sorozat](#d-series)
 * [E sorozat](#e-series)
 * [F sorozat](#f-series)
 * [G-Series](#g-series)
 * [H-Series](#h-series)
-* [Az L sorozat](#l-series)
-* [M-Series](#m-series)
-* [Az N-sorozat](#n-series)
+* [L sorozat](#l-series)
+* [M sorozat](#m-series)
+* [N sorozat](#n-series)
 
 ### <a name="a-series"></a>A sorozat
 
-| Kezdeti méret | Vertikális felskálázás mérete | 
+| Kezdeti méret | Vertikális Felskálázási méret | 
 | --- | --- |
 | Basic_A0 | Basic_A1 |
 | Basic_A1 | Basic_A2 |
@@ -77,7 +78,7 @@ Választhat, hogy skálázni a következő párok méretek között:
 
 ### <a name="b-series"></a>B sorozat
 
-| Kezdeti méret | Vertikális felskálázás mérete | 
+| Kezdeti méret | Vertikális Felskálázási méret | 
 | --- | --- |
 | Standard_B1s | Standard_B2s |
 | Standard_B1ms | Standard_B2ms |
@@ -86,7 +87,7 @@ Választhat, hogy skálázni a következő párok méretek között:
 
 ### <a name="d-series"></a>D sorozat
 
-| Kezdeti méret | Vertikális felskálázás mérete | 
+| Kezdeti méret | Vertikális Felskálázási méret | 
 | --- | --- |
 | Standard_D1 | Standard_D2 |
 | Standard_D2 | Standard_D3 |
@@ -128,7 +129,7 @@ Választhat, hogy skálázni a következő párok méretek között:
 
 ### <a name="e-series"></a>E sorozat
 
-| Kezdeti méret | Vertikális felskálázás mérete | 
+| Kezdeti méret | Vertikális Felskálázási méret | 
 | --- | --- |
 | Standard_E2_v3 | Standard_E4_v3 |
 | Standard_E4_v3 | Standard_E8_v3 |
@@ -145,7 +146,7 @@ Választhat, hogy skálázni a következő párok méretek között:
 
 ### <a name="f-series"></a>F sorozat
 
-| Kezdeti méret | Vertikális felskálázás mérete | 
+| Kezdeti méret | Vertikális Felskálázási méret | 
 | --- | --- |
 | Standard_F1 | Standard_F2 |
 | Standard_F2 | Standard_F4 |
@@ -164,7 +165,7 @@ Választhat, hogy skálázni a következő párok méretek között:
 
 ### <a name="g-series"></a>G sorozat
 
-| Kezdeti méret | Vertikális felskálázás mérete | 
+| Kezdeti méret | Vertikális Felskálázási méret | 
 | --- | --- |
 | Standard_G1 | Standard_G2 |
 | Standard_G2 | Standard_G3 |
@@ -173,18 +174,18 @@ Választhat, hogy skálázni a következő párok méretek között:
 | Standard_GS1 | Standard_GS2 |
 | Standard_GS2 | Standard_GS3 |
 | Standard_GS3 | Standard_GS4 |
-| Standard_GS4 | Például a Standard_GS5 |
+| Standard_GS4 | Standard_GS5 |
 
 ### <a name="h-series"></a>H-sorozat
 
-| Kezdeti méret | Vertikális felskálázás mérete | 
+| Kezdeti méret | Vertikális Felskálázási méret | 
 | --- | --- |
 | Standard_H8 | Standard_H16 |
 | Standard_H8m | Standard_H16m |
 
 ### <a name="l-series"></a>L sorozat
 
-| Kezdeti méret | Vertikális felskálázás mérete | 
+| Kezdeti méret | Vertikális Felskálázási méret | 
 | --- | --- |
 | Standard_L4s | Standard_L8s |
 | Standard_L8s | Standard_L16s |
@@ -196,20 +197,20 @@ Választhat, hogy skálázni a következő párok méretek között:
 
 ### <a name="m-series"></a>M sorozat
 
-| Kezdeti méret | Vertikális felskálázás mérete | 
+| Kezdeti méret | Vertikális Felskálázási méret | 
 | --- | --- |
 | Standard m8ms | Standard_M16ms |
 | Standard_M16ms | Standard m32ms |
 | Standard m32ms | Standard_M64ms |
-| Standard_M64ms | Standard m 128 MS |
+| Standard_M64ms | Standard m128ms |
 | Standard m32ls | Standard m64ls |
-| Standard m64s | Standard_M128s |
+| Standard m64s | Standard m128s |
 | Standard_M64 | Standard_M128 |
 | Standard_M64m | Standard_M128m |
 
 ### <a name="n-series"></a>N-sorozat
 
-| Kezdeti méret | Vertikális felskálázás mérete | 
+| Kezdeti méret | Vertikális Felskálázási méret | 
 | --- | --- |
 | Standard_NC6 | Standard_NC12 |
 | Standard_NC12 | Standard_NC24 |
@@ -217,45 +218,47 @@ Választhat, hogy skálázni a következő párok méretek között:
 | Standard_NC12s_v2 | Standard_NC24s_v2 |
 | Standard_NC6s_v3 | Standard_NC12s_v3 |
 | Standard_NC12s_v3 | Standard_NC24s_v3 |
-| Standard_ND6 | Standard_ND12 |
-| Standard_ND12 | Standard_ND24 |
+| Standard nd6 | Standard nd12 |
+| Standard nd12 | Standard nd24 |
 | Standard_NV6 | Standard_NV12 |
 | Standard_NV12 | Standard_NV24 |
 | Standard_NV6s_v2 | Standard_NV12s_v2 |
 | Standard_NV12s_v2 | Standard_NV24s_v2 |
+| Standard_NV12s_v3 |Standard_NV48s_v3 |
 
-## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>A telepítő az Azure Automation eléréséhez a virtuális gépek
-Először is szüksége, hozzon létre egy Azure Automation-fiók, amely üzemelteti a runbookokat, a méretezés a Virtuálisgép-méretezési példányra használt. Az Automation szolgáltatás vezettünk be az "Futtató fiók" funkció, amely lehetővé teszi a beállítás mentése az egyszerű szolgáltatás automatikusan a runbookok futtatásáért a felhasználó nevében nagyon egyszerű. Tudjon meg többet erről az alábbi cikkben szerepel:
+
+## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>A telepítő Azure Automation a Virtual Machines eléréséhez
+Először létre kell hoznia egy Azure Automation fiókot, amely a virtuálisgép-méretezési csoport példányainak méretezéséhez használt runbookok fogja tárolni. A közelmúltban az Automation szolgáltatás bemutatta a "futtató fiók" funkciót, amely lehetővé teszi az egyszerű szolgáltatás beállítását a runbookok automatikus futtatásához a felhasználó nevében. Erről további információt az alábbi cikkben talál:
 
 * [Runbookok hitelesítése Azure-beli futtató fiókkal](../../automation/automation-sec-configure-azure-runas-account.md)
 
-## <a name="import-the-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Az előfizetés az Azure Automation függőleges méretezés runbookok importálása
-A runbookokat, amelyek a szükséges ahhoz, hogy a virtuális gépek függőleges méretezése az Azure Automation forgatókönyv-katalógusában a már közzétett. Szüksége lesz az előfizetés importálja azokat. Runbookok importálása a következő cikk elolvasásával tudhat meg.
+## <a name="import-the-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>A Azure Automation vertikális skálázási runbookok importálása az előfizetésbe
+A virtuális gép vertikális skálázásához szükséges runbookok már közzé van téve a Azure Automation Runbook-galériában. Ezeket importálnia kell az előfizetésbe. A runbookok importálásáról a következő cikkben olvashat bővebben.
 
 * [Runbook- és modulkatalógusok az Azure Automationhöz](../../automation/automation-runbook-gallery.md)
 
-A runbookokat, amelyek importálni kell az alábbi képen látható
+Az importálni kívánt runbookok az alábbi képen láthatók.
 
 ![Runbookok importálása](./media/vertical-scaling-automation/scale-runbooks.png)
 
-## <a name="add-a-webhook-to-your-runbook"></a>Webhook hozzáadása a forgatókönyvhöz
-Importálása után kell a runbookok hozzáadása egy webhookot a runbookhoz úgy is elindítható a virtuális gépről egy riasztást. Egy webhookot hoz létre a Runbook részletei itt olvashatók
+## <a name="add-a-webhook-to-your-runbook"></a>Webhook hozzáadása a runbook
+A runbookok importálása után fel kell vennie egy webhookot a runbook, hogy egy virtuális gépről származó riasztás aktiválható legyen. A Runbook webhook létrehozásával kapcsolatos részletek itt olvashatók
 
-* [Az Azure Automation-webhookok](../../automation/automation-webhooks.md)
+* [Webhookok Azure Automation](../../automation/automation-webhooks.md)
 
-Ellenőrizze, hogy a webhook a webhook párbeszédpanel bezárása, szüksége lesz a következő szakaszban előtt másolja.
+Győződjön meg arról, hogy a webhookot a webhook párbeszédpanel bezárása előtt másolja, mivel erre a következő szakaszban lesz szükség.
 
 ## <a name="add-an-alert-to-your-virtual-machine"></a>Riasztás hozzáadása a virtuális géphez
-1. Válassza ki a virtuális gép beállításai
-2. Válassza ki a "Riasztási szabályok"
-3. "Riasztás hozzáadása" kiválasztása
-4. A riasztás triggerfuttatáskor aktiválandó metrika kijelölése
-5. Válassza ki azt a feltételt, amikor teljesül fog riasztást üzenetszám
-6. Válassza ki a feltétel egy küszöbértéket 5. lépés. teljesítendő
-7. Válassza ki egy időszak, amely fölött a figyelési szolgáltatás ellenőrzi, a feltétel és a küszöbérték a lépések 5 és 6
-8. Illessze be a webhookot, az előző szakaszban kimásolt.
+1. Virtuális gép beállításainak kiválasztása
+2. "Riasztási szabályok" kiválasztása
+3. Válassza a "riasztás hozzáadása" lehetőséget.
+4. Válassza ki a metrikát a riasztás bekapcsolásához
+5. Válasszon ki egy olyan feltételt, amely akkor jelenik meg, ha a beteljesülés során a riasztás tüzet okoz
+6. Válasszon küszöbértéket az 5. lépésben feltételhez. teljesítendő
+7. Válassza ki azt az időszakot, ameddig a figyelési szolgáltatás ellenőrizni fogja a feltételt és a küszöbértéket az 5 & 6. lépésben
+8. Illessze be az előző szakaszból másolt webhookot.
 
-![Riasztás hozzáadása virtuális géphez 1](./media/vertical-scaling-automation/add-alert-webhook-1.png)
+![Riasztás hozzáadása a virtuális géphez 1](./media/vertical-scaling-automation/add-alert-webhook-1.png)
 
-![Riasztás hozzáadása a virtuális gép 2](./media/vertical-scaling-automation/add-alert-webhook-2.png)
+![Riasztás hozzáadása a virtuális géphez 2](./media/vertical-scaling-automation/add-alert-webhook-2.png)
 

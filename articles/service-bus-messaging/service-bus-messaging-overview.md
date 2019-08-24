@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 0ab658b26a44e98b073c477c1aaeeb683372ee46
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f3995e8904396dbb0bcbeeea1f993913d68587e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988490"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013124"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 
-A Microsoft Azure Service Bus egy teljes körűen felügyelt vállalati [integrációs](https://azure.com/integration) közvetítő. A Service Bust leggyakrabban az alkalmazások és szolgáltatások egymástól való elkülönítésére használják, továbbá az aszinkron adat- és állapotátvitel biztonságos platformjaként is alkalmazható. Az adatok különböző alkalmazások és szolgáltatások közötti átvitele az *üzenetek* segítségével történik. Bináris formátum, JSON, XML vagy csupán szöveget tartalmazó üzenet van. 
+A Microsoft Azure Service Bus egy teljes körűen [](https://azure.com/integration) felügyelt Enterprise Integration Message Broker. A Service Bust leggyakrabban az alkalmazások és szolgáltatások egymástól való elkülönítésére használják, továbbá az aszinkron adat- és állapotátvitel biztonságos platformjaként is alkalmazható. Az adatok különböző alkalmazások és szolgáltatások közötti átvitele az *üzenetek* segítségével történik. Egy üzenet bináris formátumú, amely JSON-, XML-vagy csak szövegeket tartalmazhat. 
 
 Néhány gyakori üzenetküldési forgatókönyv:
 
@@ -37,9 +37,9 @@ A névtér egy hatókörkezelési tároló az üzenetkezelés összes összetev�
 
 Az üzenetek az *üzenetsorokba* érkeznek be, és onnan küldi ki őket a rendszer. Az üzenetsorok segítségével addig tárolhatja az üzeneteket, amíg a fogadó alkalmazás elérhetővé nem válik a fogadásra és feldolgozásra.
 
-![Üzenetsor](./media/service-bus-messaging-overview/about-service-bus-queue.png)
+![Várólista](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-Az üzenetsorok üzenetek vannak rendezve, és a beérkezéskor időbélyegzővel. Az üzenet elfogadása után azt a rendszer egy redundáns tárolóban helyezi biztonságba. Üzenetek kézbesítése *lekéréses* üzemmódot, amely a kérést továbbítja az üzeneteket.
+A várólistákban lévő üzenetek megrendelése és időbélyege az érkezéskor. Az üzenet elfogadása után azt a rendszer egy redundáns tárolóban helyezi biztonságba. Az üzenetek lekéréses módban lesznek kézbesítve, amely kérésre kézbesíti az üzeneteket.
 
 ## <a name="topics"></a>Témakörök
 
@@ -93,17 +93,17 @@ Az [Automatikus törlés tétlenség esetén](/dotnet/api/microsoft.servicebus.m
 
 ### <a name="duplicate-detection"></a>Duplikálás észlelése
 
-Ha hiba lép fel, amelyek hatására az ügyfél-küldési művelet eredményéről kétségei vannak [észlelési ismétlődő](duplicate-detection.md) vesz igénybe a bizonytalan kívül ezekben a helyzetekben a küldőt, hogy küldje újra ugyanazt az üzenetet, és az üzenetsor vagy témakör engedélyezésével minden ismétlődő példánya elveti.
+Ha olyan hiba fordul elő, amely miatt az ügyfél kétségbe vonja a küldési művelet eredményét, a [duplikált elemek észlelése](duplicate-detection.md) az ilyen helyzetek miatt nem teszi lehetővé, hogy a küldő újra elküldje ugyanazt az üzenetet, és a várólista vagy a témakör duplikált másolatok.
 
 ### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>SAS, RBAC és az Azure-erőforrások felügyelt identitásai
 
-A Service Bus támogatja az olyan biztonsági protokollokat, mint a [közös hozzáférésű jogosultságkód](service-bus-sas.md) (SAS), a [szerepköralapú hozzáférés-vezérlés](service-bus-role-based-access-control.md) (RBAC) és az [Azure-erőforrások felügyelt identitásai](service-bus-managed-service-identity.md).
+A Service Bus támogatja az olyan biztonsági protokollokat, mint a [közös hozzáférésű jogosultságkód](service-bus-sas.md) (SAS), a [szerepköralapú hozzáférés-vezérlés](authenticate-application.md) (RBAC) és az [Azure-erőforrások felügyelt identitásai](service-bus-managed-service-identity.md).
 
 ### <a name="geo-disaster-recovery"></a>Geo-vészhelyreállítás
 
 Az Azure-régiók vagy adatközpontok leállása esetében a [Geo-vészhelyreállítás](service-bus-geo-dr.md) lehetővé teszi az adatfeldolgozási művelet folytatását egy másik régióban vagy adatközpontban.
 
-### <a name="security"></a>Biztonsági
+### <a name="security"></a>Biztonság
 
 A Service Bus támogatja a szabványos [AMQP 1.0](service-bus-amqp-overview.md) és [HTTP/REST](/rest/api/servicebus/) protokollokat.
 
@@ -129,4 +129,4 @@ A Service Bus-üzenetküldéssel való megismerkedéshez tekintse meg a követke
 * További tudnivalók az Azure Service Bus [Standard és Prémium](https://azure.microsoft.com/pricing/details/service-bus/) szintjeiről és azok díjszabásáról
 * [Az Azure Service Bus Prémium szintű csomag teljesítménye és késése](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)
 * Próbálja ki a [.NET-hez](service-bus-dotnet-get-started-with-queues.md), [Javához](service-bus-java-how-to-use-queues.md) vagy [JMS-hez](service-bus-java-how-to-use-jms-api-amqp.md) készült gyors útmutatókat
-* [A Service Bus-erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [Service Bus erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

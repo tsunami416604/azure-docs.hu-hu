@@ -1,5 +1,5 @@
 ---
-title: Standard Load Balancert használó IPv6 Dual stack-alkalmazás üzembe helyezése az Azure Virtual Network-Resource Manger-sablonban (előzetes verzió)
+title: IPv6-os Dual stack-alkalmazás üzembe helyezése az Azure Virtual Network-Resource Manger-sablonban (előzetes verzió)
 titlesuffix: Azure Virtual Network
 description: Ez a cikk bemutatja, hogyan helyezhet üzembe egy IPv6-alapú kettős verem alkalmazást az Azure Virtual Network standard Load Balancer használatával Azure Resource Manager virtuálisgép-sablonokkal.
 services: virtual-network
@@ -12,16 +12,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: fa39285eea14856db1bceba9e90f92b19afabfd0
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 8f2c6bc7fb7ab0939da20932fd531c158549ce7a
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295407"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012851"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-standard-load-balancer-in-azure---template-preview"></a>IPv6-alapú Dual stack-alkalmazás üzembe helyezése az Azure-sablonok standard Load Balancerával (előzetes verzió)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>IPv6 Dual stack-alkalmazás üzembe helyezése az Azure Virtual Networkben – sablon (előzetes verzió)
 
-Ez a cikk a Azure Resource Manager virtuálisgép-sablon részét képező IPv6-konfigurációs feladatok listáját tartalmazza. A cikkben ismertetett sablon használatával helyezzen üzembe egy kettős verem (IPv4 + IPv6) alkalmazást az Azure-ban, amely egy IPv4-és IPv6-alhálózattal rendelkező kettős veremből álló virtuális hálózatot tartalmaz, egy kettős (IPv4 + IPv6) előtér-konfigurációval rendelkező, kettős IP-címmel rendelkező virtuális gépeket tartalmazó terheléselosztó. konfiguráció, hálózati biztonsági csoport és nyilvános IP-címek. 
+Ez a cikk a Azure Resource Manager virtuálisgép-sablon részét képező IPv6-konfigurációs feladatok listáját tartalmazza. Az ebben a cikkben ismertetett sablon használatával helyezzen üzembe egy Dual stack (IPv4 + IPv6) alkalmazást az Azure-ban standard Load Balancer használatával, amely egy IPv4-és IPv6-alhálózattal rendelkező, kettős veremből álló virtuális hálózatot tartalmaz, egy standard Load Balancer kettős (IPv4 + IPv6) előtérrel konfigurációk, virtuális gépek, amelyek kettős IP-konfigurációval, hálózati biztonsági csoporttal és nyilvános IP-címekkel rendelkeznek. 
 
 ## <a name="required-configurations"></a>Szükséges konfigurációk
 
@@ -107,7 +107,7 @@ Ha hálózati virtuális készüléket használ, adja hozzá az IPv6-útvonalaka
             }
 ```
 
-## <a name="optional-configuration"></a>Választható konfiguráció
+## <a name="optional-configuration"></a>Választható beállítások
 
 ### <a name="ipv6-internet-access-for-the-virtual-network"></a>IPv6-alapú internet-hozzáférés a virtuális hálózathoz
 
@@ -179,7 +179,7 @@ Ha hálózati virtuális készüléket használ, adja hozzá az IPv6-útvonalaka
 ```
 
 ## <a name="sample-vm-template-json"></a>Minta virtuálisgép-sablon JSON
-Ha Azure Resource Manager sablonnal szeretne IPv6 Dual stack alkalmazást üzembe helyezni az Azure Virtual Networkben, tekintse meg a [minta sablont.](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-stdlb/)
+Ha Azure Resource Manager sablonnal szeretne IPv6 Dual stack alkalmazást üzembe helyezni az Azure Virtual Networkben, tekintse [](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-stdlb/)meg a minta sablont.
 
 ## <a name="next-steps"></a>További lépések
 

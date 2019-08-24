@@ -149,7 +149,7 @@
       items:
         - name: Áttekintés
           href: media-services-apis-overview.md
-          displayName: 'accessing, naming, long-running'
+          displayName: 'accessing, naming, long-running, invalid character'
         - name: 'Lapozás, szűrés, entitások rendezése'
           href: entities-overview.md
         - name: RBAC

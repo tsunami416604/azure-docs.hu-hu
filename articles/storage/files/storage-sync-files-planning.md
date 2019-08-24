@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f89e7307d75b159886cb47bde3e1fceb5ed557f5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: bd587bfed7fcfea8e8cd99ca155ee9d86222ae3d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699345"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013539"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
-A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Azure File Sync átalakítja a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárba. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
+A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
 
 Ez a cikk Azure File Sync központi telepítésének fontos szempontjait ismerteti. Javasoljuk, hogy olvassa el [a Azure Files központi telepítésének](storage-files-planning.md)megtervezését is. 
 
@@ -149,7 +149,7 @@ Az eredmények CSV-ben való megjelenítéséhez:
 | \\SyncShareState | A szinkronizáláshoz használt mappa |
 
 ### <a name="failover-clustering"></a>Feladatátvételi fürtszolgáltatás
-A Windows Server feladatátvételi fürtszolgáltatást Azure File Sync támogatja a "fájlkiszolgáló az általános használatra" telepítési lehetőség. A feladatátvételi fürtszolgáltatás nem támogatott a "kibővített fájlkiszolgáló az alkalmazásadatok számára" (SOFS) vagy fürtözött megosztott köteteken (CSV).
+A Windows Server feladatátvételi fürtszolgáltatást Azure File Sync támogatja a "fájlkiszolgáló az általános használatra" telepítési lehetőség. A feladatátvételi fürtszolgáltatás nem támogatott az alkalmazásadatok Kibővíthető fájlkiszolgáló (SOFS) vagy fürtözött megosztott köteteken (CSV).
 
 > [!Note]  
 > A Azure File Sync ügynöknek telepítve kell lennie a feladatátvevő fürt minden csomópontján a szinkronizálás megfelelő működéséhez.
@@ -254,12 +254,15 @@ Azure File Sync csak a következő régiókban érhető el:
 | East US | Virginia |
 | USA 2. keleti régiója | Virginia |
 | Közép-Franciaország | Párizs |
-| Korea középső régiója| Szöul |
-| Korea déli régiója| Busan |
+| Dél-Franciaország * | Marseille |
+| Korea középső régiója | Szöul |
+| Korea déli régiója | Busan |
 | Kelet-Japán | Tokió, Szaitama |
 | Nyugat-Japán | Oszaka |
 | USA északi középső régiója | Illinois |
 | Észak-Európa | Írország |
+| Dél-Afrika északi régiója | Johannesburg |
+| Dél-Afrika nyugati régiója * | Fokváros |
 | USA déli középső régiója | Texas |
 | Dél-India | Csennai |
 | Délkelet-Ázsia | Szingapúr |
@@ -274,6 +277,8 @@ Azure File Sync csak a következő régiókban érhető el:
 | USA nyugati régiója, 2. | Washington |
 
 A Azure File Sync csak olyan Azure-fájlmegosztás szinkronizálását támogatja, amely ugyanabban a régióban található, mint a Storage Sync szolgáltatás.
+
+A csillaggal jelölt régiók esetében kapcsolatba kell lépnie az Azure támogatási szolgálatával, hogy az ezekben a régiókban hozzáférést kérjen az Azure Storage-hoz. A folyamat [ebben a dokumentumban](https://azure.microsoft.com/global-infrastructure/geographies/)található.
 
 ### <a name="azure-disaster-recovery"></a>Azure vész-helyreállítás
 Egy Azure-régió elvesztése elleni védelem érdekében Azure File Sync integrálódik a [geo-redundáns tárolási redundancia](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) lehetőséggel. A GRS-tároló az elsődleges régió tárterületének aszinkron blokkos replikálásával működik, amellyel a szokásos módon kommunikál, és a tároló a párosított másodlagos régióban történik. Abban az esetben, ha egy Azure-régió átmenetileg vagy véglegesen offline állapotba kerül, a Microsoft feladatátvételi tárterületet küld a párosított régiónak. 
@@ -296,12 +301,15 @@ A földrajzi redundáns tárolás és a Azure File Sync közötti feladatátvét
 | East US             | USA nyugati régiója            |
 | USA 2. keleti régiója           | USA középső régiója         |
 | Közép-Franciaország      | Dél-Franciaország       |
+| Dél-Franciaország        | Közép-Franciaország     |
 | Kelet-Japán          | Nyugat-Japán         |
 | Nyugat-Japán          | Kelet-Japán         |
 | Korea középső régiója       | Korea déli régiója        |
 | Korea déli régiója         | Korea középső régiója      |
 | Észak-Európa        | Nyugat-Európa        |
 | USA északi középső régiója    | USA déli középső régiója   |
+| Dél-Afrika északi régiója  | Dél-Afrika nyugati régiója  |
+| Dél-Afrika nyugati régiója   | Dél-Afrika északi régiója |
 | USA déli középső régiója    | USA északi középső régiója   |
 | Dél-India         | Közép-India      |
 | Délkelet-Ázsia      | Kelet-Ázsia          |

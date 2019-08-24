@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 347e7c2aa2ff4fb4f188847b81d03006c1909166
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
-ms.translationtype: HT
+ms.openlocfilehash: 1625f0e6f9bfe8297cae2770e63107bf4f19f95e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997648"
+ms.locfileid: "70012981"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Az OPC Vault Certificate Management szolgáltatás létrehozása és üzembe helyezése
 
@@ -86,7 +86,7 @@ Az is lehetséges, hogy csak a webalkalmazás bináris fájljait telepíti újra
 
 A sikeres üzembe helyezést követően bátran elkezdheti a szolgáltatások használatát: [Az OPC Vault tanúsítványkezelő szolgáltatás kezelése](howto-opc-vault-manage.md)
 
-## <a name="delete-the-certificate-management-service-from-the-subscription"></a>A Tanúsítványkezelő szolgáltatás törlése az előfizetésből
+## <a name="delete-the-services-from-the-subscription"></a>Szolgáltatások törlése az előfizetésből
 
 1. Jelentkezzen be a Azure Portalba `https://portal.azure.com`:.
 2. Keresse meg azt az erőforráscsoportot, amelyben a szolgáltatást telepítették.

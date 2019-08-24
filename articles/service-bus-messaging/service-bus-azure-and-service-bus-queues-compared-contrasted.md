@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 0ebf18fe2dc6906bc2c06d94388d126fb55c6024
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: bf2b83725f8ce8e712974c182c9a11e8ed0d04f0
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981419"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013225"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tárolási várólisták és Service Bus várólisták – összehasonlítás és kontrasztos
 Ez a cikk a Microsoft Azure ma által kínált két típusú várólista közötti különbségeket és hasonlóságokat elemzi: Tárolási várólisták és Service Bus várólisták. Ezekre az információkra alapozva összehasonlíthatók az egyes technológiák, és megfontoltabb döntéseket lehet hozni arról, hogy melyik megoldás felel meg leginkább az igényeknek.
@@ -52,7 +52,9 @@ Megoldás-építészként/fejlesztőként érdemes **megfontolni Service Bus vá
 * Azt szeretné, hogy az alkalmazás párhuzamos, hosszan futó adatfolyamként dolgozza fel az üzeneteket (az üzenetek az üzenetben található [munkamenet](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) -tulajdonsággal vannak társítva). Ebben a modellben a felhasználó alkalmazás minden csomópontja verseng a streamek számára, az üzenetek helyett. Ha egy adatfolyamot egy felhasználó csomóponthoz adnak, a csomópont a tranzakciók használatával megvizsgálhatja az alkalmazás-adatfolyam állapotát.
 * A megoldás tranzakciós viselkedést és atomi kezelést igényel, ha több üzenetet küld vagy fogad egy várólistából.
 * Az alkalmazás kezeli az 64 KB-nál nagyobb méretű üzeneteket, de a 256 KB-os korlátot valószínűleg nem fogja megközelíteni.
-* A szerepkör-alapú hozzáférési modellnek a várólistákhoz való biztosításához, valamint a küldők és a fogadók számára a különböző jogokkal/engedélyekkel kell foglalkoznia. További információ: [Active Directory szerepköralapú Access Control (előzetes verzió)](service-bus-role-based-access-control.md)
+* A szerepkör-alapú hozzáférési modellnek a várólistákhoz való biztosításához, valamint a küldők és a fogadók számára a különböző jogokkal/engedélyekkel kell foglalkoznia. További információkért tekintse át a következő cikkeket:
+    - [Hitelesítés felügyelt identitásokkal](service-bus-managed-service-identity.md)
+    - [Hitelesítés alkalmazásból](authenticate-application.md)
 * A várólista mérete nem növekszik 80 GB-nál nagyobb mértékben.
 * A AMQP 1,0 szabványokon alapuló üzenetküldési protokollt kívánja használni. További információ a AMQP: [Service Bus AMQP áttekintése](service-bus-amqp-overview.md).
 * A várólista-alapú pont-pont típusú kommunikációból egy olyan üzenetváltási mintára vonatkozó végleges áttelepítést készíthet, amely lehetővé teszi a további fogadók (előfizetők) zökkenőmentes integrálását, amelyek mindegyike független másolatokat fogad a várólistába küldött üzenetek. Az utóbbi a Service Bus által natív módon nyújtott közzétételi/előfizetési képességre hivatkozik.

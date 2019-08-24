@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: ea8f3f1860223e102aeccf81f72b5294283b83f6
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ad512baad86133cc1aad80438a6b68d2a31a6cc6
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640760"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013592"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linuxos virtuális gép optimalizálása az Azure-ban
 A linuxos virtuális gép (VM) létrehozása a parancssorból vagy a portálról egyszerű. Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a teljesítményét a Microsoft Azure platform teljesítményének optimalizálása érdekében. Ez a témakör egy Ubuntu Server-alapú virtuális gépet használ, de [a saját rendszerképeit sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használva is létrehozhatja.  
@@ -53,7 +53,7 @@ Ha magas IOps számítási feladatokra van szükség, és a lemezek esetében a 
 ## <a name="your-vm-temporary-drive"></a>A virtuális gép ideiglenes meghajtója
 Alapértelmezés szerint a virtuális gépek létrehozásakor az Azure egy operációsrendszer-lemezt ( **/dev/sda**) és egy ideiglenes lemezt ( **/dev/sdb**) biztosít Önnek.  A hozzáadott további lemezek a **/dev/SDC**, a **/dev/SDD**, a **/dev/Sde** és így tovább jelennek meg. Az ideiglenes lemezen ( **/dev/sdb**) lévő összes érték nem tartós, és elvész, ha adott események, például a virtuális gépek átméretezése, újratelepítése vagy karbantartása kényszeríti a virtuális gép újraindítását.  Az ideiglenes lemez mérete és típusa az üzembe helyezéskor kiválasztott virtuálisgép-mérethez kapcsolódik. A prémium szintű virtuális gépek (DS, G és DS_V2 sorozatok) mindegyike az ideiglenes meghajtót egy helyi SSD-vel támogatja a 48k IOps további teljesítményének növeléséhez. 
 
-## <a name="linux-swap-file"></a>Linux-swap fájl
+## <a name="linux-swap-partition"></a>Linux-swap partíció
 Ha az Azure-beli virtuális gép Ubuntu-vagy CoreOS-rendszerképből származik, a CustomData használatával felhő-konfigurációt küldhet a Cloud-init számára. Ha [olyan egyéni Linux-rendszerképet töltött](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) fel, amely a Cloud-init szolgáltatást használja, a Cloud-init használatával is konfigurálhatja a swap-partíciókat.
 
 Ubuntu Cloud images esetén a Cloud-init használatával kell konfigurálnia a swap partíciót. További információ: [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
@@ -127,6 +127,8 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>A szoftveres RAID használata nagyobb I/Ops eléréséhez
 Ha a számítási feladatok több IOps igényelnek, mint amennyit csak egyetlen lemez tud biztosítani, több lemez szoftveres RAID-konfigurációját kell használnia. Mivel az Azure már elvégezte a lemezes rugalmasságot a helyi háló rétegben, a legmagasabb szintű teljesítményt érheti el egy RAID-0 csíkozási konfigurációból.  Lemezeket építhet ki és hozhat létre az Azure-környezetben, és csatlakoztathatja őket a linuxos virtuális géphez a meghajtók particionálása, formázása és csatlakoztatása előtt.  A szoftveres RAID-beállítás Azure-beli Linux rendszerű virtuális gépen való konfigurálásáról további részleteket a **[szoftveres RAID konfigurálása Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** -dokumentumban talál.
+
+A hagyományos RAID-konfiguráció alternatívájaként azt is megteheti, hogy a logikai kötet-kezelőt (LVM) is telepíti úgy, hogy több fizikai lemezt is konfiguráljon egyetlen csíkozott logikai tárolási kötetre. Ebben a konfigurációban az olvasások és írások elosztása a mennyiségi csoportban található több lemezre történik (a RAID0-hez hasonlóan). A teljesítmény szempontjából valószínű, hogy a logikai kötetek csíkozását szeretné használni, így az olvasás és az írás az összes csatlakoztatott adatlemezt felhasználja.  A csíkozott logikai kötetek Azure-beli Linux rendszerű virtuális gépen való konfigurálásával kapcsolatos további részleteket az **[LVM konfigurálása az Azure-ban linuxos virtuális gépen](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** című témakörben találhat.
 
 ## <a name="next-steps"></a>További lépések
 Ne feledje, ahogy az összes optimalizálási vitafórumhoz hasonlóan az egyes módosítások előtt és után is végre kell hajtania a teszteket, hogy mérjék a változás hatását.  Az optimalizálás egy lépésről lépésre haladó folyamat, amely különböző eredményekkel rendelkezik a környezet különböző gépei között.  Előfordulhat, hogy az egyik konfiguráció működése nem működik mások számára.

@@ -6,25 +6,26 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
+ms.localizationpriority: high
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 65bf4e973ce33b2898abf585fe306a8bc85c64a0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 983edcc19a27b91599ea1e312268934b37f8b0ca
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477802"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012879"
 ---
 ::: zone target="docs"
 
-# <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>Gyors útmutató: Üzembe helyezése az Azure Data Box-lemezek az Azure portal használatával
+# <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>Gyors útmutató: Azure Data Box Disk üzembe helyezése a Azure Portal használatával
 
 ::: zone-end
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Ismerkedés az Azure Data Box-lemezek az Azure portal használatával
+# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Ismerkedés a Azure Data Box Disk használatával Azure Portal
 
 ::: zone-end
 
@@ -32,7 +33,7 @@ ms.locfileid: "67477802"
 
 A rövid útmutató az Azure Data Box Disk az Azure Portal használatával való üzembe helyezését írja le. A lépések bemutatják, hogyan hozhat gyorsan létre rendeléseket, hogyan kaphatja kézhez, csomagolhatja ki és csatlakoztathatja a meghajtókat, majd másolhatja rájuk az adatokat azok az Azure-ba való feltöltéséhez.
 
-Részletes részletes üzembe helyezés és a nyomkövetési utasításokat, keresse fel [oktatóanyag: Az Azure Data Box-lemezek ORDER](data-box-disk-deploy-ordered.md). 
+A részletes üzembe helyezési és követési utasításokért keresse fel az [oktatóanyagot: Megrendelés Azure Data Box Disk](data-box-disk-deploy-ordered.md). 
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -40,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ::: zone target="chromeless"
 
-A rövid útmutató az Azure Data Box Disk az Azure Portal használatával való üzembe helyezését írja le. A lépések tartalmazzák az előfeltételek áttekintése, a lemez zárolásának feloldásához, csatlakozás és másolja az adatokat a lemezeket, így, amely feltölti az Azure-bA.
+A rövid útmutató az Azure Data Box Disk az Azure Portal használatával való üzembe helyezését írja le. A lépések közé tartozik az előfeltételek áttekintése, a lemezek zárolásának feloldása, az adatok lemezek közötti összekapcsolásának és másolásának az Azure-ba való feltöltése.
 
 ::: zone-end
 
@@ -62,12 +63,12 @@ Jelentkezzen be az Azure Portalra a [https://aka.ms/azuredataboxfromdiskdocs](ht
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A sorrend a Data Box-lemezek használatával helyezi el a [oktatóanyag: Az Azure Data Box-lemezek ORDER](data-box-disk-deploy-ordered.md).
+- A [következő oktatóanyag használatával helyezte el Data Box Disk sorrendjét: Megrendelés Azure Data Box Disk](data-box-disk-deploy-ordered.md).
 - Megkapta a meghajtókat, és a portálon a feldolgozás **Kézbesítve** állapotra frissül.
-- Rendelkezik egy ügyfélszámítógép érhető el, amelyről az adatokat másolja. Az ügyfélszámítógépen:
+- Van olyan ügyfélszámítógép, amelyről másolatot készíthet az adatokról. Az ügyfélszámítógépen:
 
-    - Futtassa a [támogatott operációs rendszert](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
-    - Rendelkezik [szükséges szoftverek](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) telepítve van, ha egy Windows-ügyfelet.
+    - Futtasson egy [támogatott operációs rendszert](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
+    - Ha ez egy Windows-ügyfél, telepítenie kell [más szükséges szoftvereket](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) .
 
 ::: zone-end
 
@@ -103,24 +104,24 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
 
     1. Az Azure Portalon lépjen az **Általános > Eszköz adatai** menüpontra, és kérje le a hozzáférési kulcsot.
     2. Töltse le és csomagolja ki a megfelelő operációs rendszerhez tartozó Data Box Disk zárolását feloldó eszközt az adatok a meghajtókra való másolásához használt számítógépen. 
-    3. Futtassa a Data Box Disk lemezzárolás-feloldó eszközt és adja meg a hozzáférési kulcsot. Új lemezek behelyezésekor futtassa újra a zárolást feloldó eszközt, és adja meg a hozzáférési kulcsot. **Ne használja a BitLocker párbeszédpanelt vagy a BitLocker kulcsot a lemez zárolásának feloldására.** További tájékoztatást a lemez zárolásának feloldásához lépjen a [zárolásának feloldása a lemezek a Windows ügyfél](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) vagy [Linux-ügyfél a lemez zárolásának feloldásához](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client).
+    3. Futtassa a Data Box Disk lemezzárolás-feloldó eszközt és adja meg a hozzáférési kulcsot. Új lemezek behelyezésekor futtassa újra a zárolást feloldó eszközt, és adja meg a hozzáférési kulcsot. **Ne használja a BitLocker párbeszédpanelt vagy a BitLocker kulcsot a lemez zárolásának feloldására.** A lemezek feloldásával kapcsolatos további információkért nyissa meg a [lemezek zárolásának feloldása Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) -ügyfélen vagy [a lemezek feloldása Linux](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client)-ügyfélen című témakört.
     4. A meghajtóhoz rendelt betűjelet az eszköz mutatja. Jegyezze fel az egyes meghajtók betűjelét. Ezt majd a következő lépésekben fogjuk felhasználni.
 
 ## <a name="copy-data-and-validate"></a>Adatok másolása és ellenőrzés
 
 A művelet végrehajtásának időtartama az adatok mennyiségétől függ.
 
-1. A meghajtó tartalmaz *PageBlob*, *BlockBlob*, *AzureFile*, *ManagedDisk*, és *DataBoxDiskImport* mappákat. A blokkblobokként importálandó adatokat húzással másolja a *BlockBlob* mappába. Ehhez hasonlóan áthúzása adatok, például VHD/VHDX-re *PageBlob* mappát, és a megfelelő adatok *AzureFile*. Másolja a VHD-k, felügyelt lemezeket kell egy mappába a feltölteni kívánt *ManagedDisk*.
+1. A meghajtó *PageBlob*, *BlockBlob*, *AzureFile*, *ManagedDisk*és *DataBoxDiskImport* mappákat tartalmaz. A blokkblobokként importálandó adatokat húzással másolja a *BlockBlob* mappába. Ehhez hasonlóan húzza át és dobja el az adatfájlokat, például a VHD-t/VHDX-t a *PageBlob* mappába, és a megfelelő *AzureFile*-fájlokat. Másolja a felügyelt lemezként feltölteni kívánt virtuális merevlemezeket egy mappába a *ManagedDisk*alatt.
 
-    A rendszer a *BlockBlob* és a *PageBlob* mappa alatt található minden almappához létrehoz egy tárolót az Azure-tárfiókban. Egy fájlmegosztás jön létre egy olyan almappa is alatt *AzureFile*.
+    A rendszer a *BlockBlob* és a *PageBlob* mappa alatt található minden almappához létrehoz egy tárolót az Azure-tárfiókban. A rendszer létrehoz egy fájlmegosztást a *AzureFile*alatti almappákhoz.
 
-    A *BlockBlob* és a *PageBlob* mappa alatt található összes fájl az Azure Storage-fiók alatti alapértelmezett `$root` tárolóba lesz átmásolva. Fájlok másolása egy mappába belül *AzureFile*. Összes másolt fájl közvetlenül a *AzureFile* mappában fellépő hibák és a feltöltött blokkblobok formájában.
+    A *BlockBlob* és a *PageBlob* mappa alatt található összes fájl az Azure Storage-fiók alatti alapértelmezett `$root` tárolóba lesz átmásolva. Fájlok másolása egy mappába a *AzureFile*belül. A közvetlenül a *AzureFile* mappába másolt fájlok sikertelenek lesznek, és a rendszer blokk blobként feltölti őket.
 
     > [!NOTE]
-    > - A tárolók, blobok és fájlok meg kell felelnie [elnevezési konvenciók Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Ha a szabályok nem teljesülnek, az adatok az Azure-ba való feltöltése meghiúsul.
-    > - Győződjön meg arról, hogy a fájlok nem haladhatja meg ~4.75 Tib-ra a blokkblobok, lapblobok esetében ~ 8 Tib-ra és a ~ 1 Tib-ra az Azure Files számára.
+    > - Minden tárolónak, blobnak és fájlnak meg kell felelnie az [Azure elnevezési konvencióinak](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Ha a szabályok nem teljesülnek, az adatok az Azure-ba való feltöltése meghiúsul.
+    > - Ügyeljen arra, hogy a fájlok ne lépjék túl a ~ 4,75 TiB-ot a blokkos Blobok esetében, ~ 8 TiB az oldal Blobok esetében, és ~ 1 TiB a Azure Files.
 
-2. **(Nem kötelező, de ajánlott)**  a másolás után erősen javasoljuk, hogy legalább futtassa a `DataBoxDiskValidation.cmd` megadott a *DataBoxDiskImport* mappára, és válassza lehetőséget 1 és érvényesítheti a fájlokat. Azt javasoljuk, hogy időt lehetővé tevő, 2. lehetőség használatával is létrehozhat az ellenőrzőösszegek érvényesítéshez (időt is igénybe vehet attól függően, hogy az adatok mérete). Ezeket a lépéseket az esetleges hibák esélyét minimalizálása érdekében, amikor az adatok feltöltése az Azure-bA.
+2. **(Nem kötelező, de ajánlott)** A másolás befejezése után javasoljuk, hogy legalább a `DataBoxDiskValidation.cmd` *DataBoxDiskImport* mappában adja meg a megadott beállítást, és válassza az 1. lehetőséget a fájlok ellenőrzéséhez. Javasoljuk továbbá, hogy a 2. lehetőséget is használja az érvényesítéshez (az adatmérettől függően időt is igénybe vehet). Ezek a lépések az Azure-ba történő adatfeltöltés során fellépő hibák esélyét csökkenthetik.
 3. Biztonságosan távolítsa el a meghajtót.
 
 ## <a name="ship-to-azure"></a>Elküldés az Azure-nak

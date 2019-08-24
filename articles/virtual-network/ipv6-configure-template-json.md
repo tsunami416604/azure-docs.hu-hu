@@ -12,16 +12,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/26/2019
 ms.author: kumud
-ms.openlocfilehash: e97a5a478871d94e074b59558a11df1ec752b0f9
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: b397c874045a89f5992aeadacfbbd4434a486977
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249849"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012837"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template-preview"></a>IPv6 Dual stack-alkalmazás üzembe helyezése alapszintű Load Balancer az Azure-ban – sablon (előzetes verzió)
 
-Ez a cikk a Azure Resource Manager virtuálisgép-sablon részét képező IPv6-konfigurációs feladatok listáját tartalmazza. A cikkben ismertetett sablon használatával helyezzen üzembe egy kettős verem (IPv4 + IPv6) alkalmazást az Azure-ban, amely egy IPv4-és IPv6-alhálózattal rendelkező kettős veremből álló virtuális hálózatot tartalmaz, egy kettős (IPv4 + IPv6) előtér-konfigurációval rendelkező, kettős IP-címmel rendelkező virtuális gépeket tartalmazó terheléselosztó. konfiguráció, hálózati biztonsági csoport és nyilvános IP-címek. 
+Ez a cikk a Azure Resource Manager virtuálisgép-sablon részét képező IPv6-konfigurációs feladatok listáját tartalmazza. Az ebben a cikkben ismertetett sablon használatával helyezzen üzembe egy olyan alapszintű Load Balancer, amely egy IPv4-és IPv6-alhálózattal rendelkező kettős Veremes virtuális hálózatot tartalmaz, egy alapszintű Load Balancer kettős (IPv4 + IPv6) előtér-konfigurációkkal, valamint virtuális gépekkel A kettős IP-konfigurációval, a hálózati biztonsági csoporttal és a nyilvános IP-címekkel rendelkező hálózati adapterek.
+
+A kettős verem (IPV4 + IPv6) alkalmazás standard Load Balancer használatával történő üzembe helyezését lásd: [IPv6 kettős verem alkalmazás üzembe helyezése standard Load Balancer sablonnal](ipv6-configure-standard-load-balancer-template-json.md).
 
 ## <a name="required-configurations"></a>Szükséges konfigurációk
 
@@ -107,7 +109,7 @@ Ha hálózati virtuális készüléket használ, adja hozzá az IPv6-útvonalaka
             }
 ```
 
-## <a name="optional-configuration"></a>Választható konfiguráció
+## <a name="optional-configuration"></a>Választható beállítások
 
 ### <a name="ipv6-internet-access-for-the-virtual-network"></a>IPv6-alapú internet-hozzáférés a virtuális hálózathoz
 
@@ -176,7 +178,7 @@ Ha hálózati virtuális készüléket használ, adja hozzá az IPv6-útvonalaka
 ```
 
 ## <a name="sample-vm-template-json"></a>Minta virtuálisgép-sablon JSON
-Ha Azure Resource Manager sablonnal szeretne IPv6 Dual stack alkalmazást üzembe helyezni az Azure Virtual Networkben, tekintse meg a [minta sablont.](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/)
+Ha Azure Resource Manager sablonnal szeretne üzembe helyezni egy IPv6-alapú kettős verembeli alkalmazást, amely alapszintű Load Balancer az [](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/)Azure Virtual Network szolgáltatásban, tekintse meg a minta sablont.
 
 ## <a name="next-steps"></a>További lépések
 

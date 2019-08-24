@@ -15,12 +15,12 @@ ms.date: 08/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 09551eb2620349fa2445c1da3a7e0d66062ebaf0
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 776b8303e3454b40979691ea32fdcca11be4fa71
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899736"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013370"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Beépített szerepkörök az Azure-erőforrásokhoz
 
@@ -54,15 +54,15 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 | [Automation Runbook operátor](#automation-runbook-operator) | A Runbook tulajdonságainak olvasása – a Runbook feladatai létrehozásához. |
 | [Avere közreműködője](#avere-contributor) | Létrehozhat és kezelhet egy avere vFXT-fürtöt. |
 | [Avere operátor](#avere-operator) | A avere vFXT-fürt által használt fürt kezelése |
-| [Azure Event Hubs adattulajdonos (előzetes verzió)](#azure-event-hubs-data-owner-preview) | Lehetővé teszi az Azure Event Hubs-erőforrások teljes hozzáférését. |
-| [Azure Event Hubs adatfogadó (előzetes verzió)](#azure-event-hubs-data-receiver-preview) | Engedélyezi az Azure Event Hubs-erőforrások elérését. |
-| [Azure Event Hubs adatfeladó (előzetes verzió)](#azure-event-hubs-data-sender-preview) | Engedélyezi az Azure Event Hubs-erőforrásokhoz való hozzáférés küldését. |
+| [Az Azure Event Hubs adattulajdonos](#azure-event-hubs-data-owner) | Lehetővé teszi az Azure Event Hubs-erőforrások teljes hozzáférését. |
+| [Azure Event Hubs adatfogadó](#azure-event-hubs-data-receiver) | Engedélyezi az Azure Event Hubs-erőforrások elérését. |
+| [Azure Event Hubs adatfeladó](#azure-event-hubs-data-sender) | Engedélyezi az Azure Event Hubs-erőforrásokhoz való hozzáférés küldését. |
 | [Azure Kubernetes Service-fürt rendszergazdai szerepköre](#azure-kubernetes-service-cluster-admin-role) | A fürt rendszergazdai hitelesítő adatainak listázása művelet. |
 | [Azure Kubernetes Service-fürt felhasználói szerepköre](#azure-kubernetes-service-cluster-user-role) | Fürt felhasználói hitelesítő adatainak listázása. |
 | [Azure Maps Adatolvasó (előzetes verzió)](#azure-maps-data-reader-preview) | Hozzáférést biztosít egy Azure Maps-fiókból az olvasási leképezéssel kapcsolatos adatokhoz. |
-| [Azure Service Bus adattulajdonos (előzetes verzió)](#azure-service-bus-data-owner-preview) | Teljes hozzáférés engedélyezése Azure Service Bus erőforrásokhoz. |
-| [Azure Service Bus adatfogadó (előzetes verzió)](#azure-service-bus-data-receiver-preview) | Engedélyezi a hozzáférést Azure Service Bus erőforrásokhoz. |
-| [Azure Service Bus adatfeladó (előzetes verzió)](#azure-service-bus-data-sender-preview) | Lehetővé teszi a Azure Service Bus erőforrásokhoz való hozzáférés küldését. |
+| [Azure Service Bus adattulajdonos](#azure-service-bus-data-owner) | Teljes hozzáférés engedélyezése Azure Service Bus erőforrásokhoz. |
+| [Adatfogadó Azure Service Bus](#azure-service-bus-data-receiver) | Engedélyezi a hozzáférést Azure Service Bus erőforrásokhoz. |
+| [Adatfeladó Azure Service Bus](#azure-service-bus-data-sender) | Lehetővé teszi a Azure Service Bus erőforrásokhoz való hozzáférés küldését. |
 | [Azure Stack regisztrációs tulajdonos](#azure-stack-registration-owner) | Lehetővé teszi Azure Stack regisztrációk kezelését. |
 | [Biztonsági mentési közreműködő](#backup-contributor) | Lehetővé teszi a Backup szolgáltatás kezelését, de nem hozhat létre tárolókat, és hozzáférést biztosíthat másoknak |
 | [Biztonságimásolat-felelős](#backup-operator) | Lehetővé teszi a biztonsági mentési szolgáltatások kezelését, kivéve a biztonsági mentés eltávolítását, a tár létrehozását és a másokhoz való hozzáférést. |
@@ -556,7 +556,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="azure-event-hubs-data-owner-preview"></a>Azure Event Hubs adattulajdonos (előzetes verzió)
+## <a name="azure-event-hubs-data-owner"></a>Az Azure Event Hubs adattulajdonos
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -571,7 +571,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="azure-event-hubs-data-receiver-preview"></a>Azure Event Hubs adatfogadó (előzetes verzió)
+## <a name="azure-event-hubs-data-receiver"></a>Azure Event Hubs adatfogadó
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -586,7 +586,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="azure-event-hubs-data-sender-preview"></a>Azure Event Hubs adatfeladó (előzetes verzió)
+## <a name="azure-event-hubs-data-sender"></a>Azure Event Hubs adatfeladó
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -646,7 +646,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="azure-service-bus-data-owner-preview"></a>Azure Service Bus adattulajdonos (előzetes verzió)
+## <a name="azure-service-bus-data-owner"></a>Azure Service Bus adattulajdonos
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -661,7 +661,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="azure-service-bus-data-receiver-preview"></a>Azure Service Bus adatfogadó (előzetes verzió)
+## <a name="azure-service-bus-data-receiver"></a>Adatfogadó Azure Service Bus
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -678,7 +678,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="azure-service-bus-data-sender-preview"></a>Azure Service Bus adatfeladó (előzetes verzió)
+## <a name="azure-service-bus-data-sender"></a>Adatfeladó Azure Service Bus
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

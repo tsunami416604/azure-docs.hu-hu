@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: c4339aa8548ef66c862200ad61b6aaca90332ad0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f478956c3a220ea4435c4f6e8b1096a1e9fdcadf
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178838"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70014774"
 ---
-A figyelő létrehozása után a `AnchorLocated` esemény esetében minden kért forráshorgony aktiválódnak. Ez az esemény akkor következik be, található horgonyra esetén, vagy ha a horgony nem található. Ez a helyzet akkor fordul elő, ha az OK állapotát ismerteti. Miután a figyelő minden horgonyok lesz feldolgozva, található, vagy nem található, akkor a `LocateAnchorsCompleted` események aktiválódnak.
+A figyelő létrehozása után az `AnchorLocated` esemény minden kért horgonyra kigyullad. Ez az esemény akkor következik be, amikor egy horgony található, vagy ha a horgony nem található. Ha ez a helyzet történik, az ok az állapotban szerepel. Ha egy figyelőhöz tartozó összes horgonyt feldolgozták, megtalálták vagy nem `LocateAnchorsCompleted` találják, akkor az esemény tüzet fog eredményezni. A figyelők száma legfeljebb 35 azonosító lehet. 

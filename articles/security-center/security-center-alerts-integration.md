@@ -1,6 +1,6 @@
 ---
 title: Az Azure biztonsági termékek integrálása a Azure Security Centerban | Microsoft Docs
-description: Ez a témakör a Azure Security Center integrált Azure biztonsági termékeket mutatja be.
+description: Ez a témakör a Azure Security Center integrált Azure biztonsági termékeket ismerteti.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 847748d1c56221119d8f74a2aee716ee08448e28
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: beac7d08a973dd8dc7e450840669bfd5687e76ed
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335816"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013308"
 ---
 # <a name="integration-of-azure-security-products-in-azure-security-center"></a>Az Azure biztonsági termékek integrálása a Azure Security Centerban
 
-A Security Center további Microsoft-licencekkel rendelkező ügyfeleket kínál a megállapításaik bevezetéséhez Security Center és megtekintheti őket konszolidált módon.
+A Azure Security Center további Microsoft-licenceket biztosít a következő biztonsági termékekkel való együttműködéshez:
 
 * [Azure WAF](#azure-waf)
-* [Azure DDoS](#azure-ddos)
+* [Azure DDoS Protection](#azure-ddos)
 
 ## Azure-WAF<a name="azure-waf"></a>
 
 Az Azure Application Gateway egy olyan webalkalmazási tűzfalat (WAF) nyújt, amely központi védelmet biztosít a webalkalmazások számára a biztonsági rések és az azokat kihasználó támadások ellen.
 
-A webalkalmazások egyre inkább a gyakran ismert biztonsági réseket kihasználó rosszindulatú támadásokra irányulnak. A Application Gateway WAF az Open Web Application Security Project (OWASP) alapszintű szabálykészlet (CRS) 3,0-es vagy 2.2.9 alapul. A WAF automatikusan frissül az új biztonsági rések elleni védelem érdekében, és nincs szükség további konfigurálásra. A WAF által generált riasztások a Security Center felé áramlanak. A WAF által generált riasztásokkal kapcsolatos további információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/application-gateway/application-gateway-crs-rulegroups-rules?tabs=owasp3#crs911).
+A webalkalmazások egyre inkább a gyakran ismert biztonsági réseket kihasználó rosszindulatú támadásokra irányulnak. A Application Gateway WAF a 3,0-es alapszintű szabálykészlet alapján, vagy az Open Web Application biztonsági projekt 2.2.9 alapul. A WAF automatikusan frissül az új biztonsági rések elleni védelem érdekében, és nincs szükség további konfigurálásra. A WAF-riasztások adatfolyamként való továbbítása Security Center. A WAF által generált riasztásokkal kapcsolatos további információkért lásd: a webalkalmazási [TŰZFAL CRS-szabályait tartalmazó csoportok és szabályok](https://docs.microsoft.com/azure/application-gateway/application-gateway-crs-rulegroups-rules?tabs=owasp3#crs911).
 
-## Azure DDoS<a name="azure-ddos"></a>
+## Azure DDoS Protection<a name="azure-ddos"></a>
 
-Az elosztott szolgáltatásmegtagadási (DDoS) támadások könnyen végrehajthatók. Ezért nagy biztonságot jelentenek azok az ügyfelek, akik az alkalmazásaikat a felhőbe helyezik át. 
+Az elosztott szolgáltatásmegtagadási (DDoS) támadások könnyen végrehajthatók. Nagyszerű biztonsági szempontot jelentenek, különösen akkor, ha az alkalmazásokat a felhőbe helyezi át. 
 
 A DDoS-támadások megpróbálják kimeríteni az alkalmazás erőforrásait, elérhetetlenné téve az alkalmazást a jogosult felhasználók számára. A DDoS-támadások az interneten keresztül elérhető végpontokat is megcélozhatja.
 
-Az Azure DDoS Protection az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva védelmet nyújt a DDoS-támadások ellen. Az Azure DDoS Protection különböző szolgáltatási szinteket biztosít. További információ: [Azure DDoS Protection Overview (áttekintés](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)).
+Azure DDoS Protection az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva védelmet nyújt a DDoS-támadásokkal szemben. A DDoS Protection különböző szolgáltatási szinteket biztosít. További információ: [Azure DDoS Protection Overview (áttekintés](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)).
 
 DDoS Protection a standard a következő típusú támadásokat csökkentheti:
 
@@ -48,6 +48,6 @@ DDoS Protection a standard a következő típusú támadásokat csökkentheti:
 
 |Riasztás|Leírás|
 |---|---|
-|**Térfogatos támadás észlelhető**|Ennek a támadásnak a célja, hogy elárasztsa a hálózati réteget, amely jelentős mennyiségű látszólag megbízható adatforgalommal rendelkezik. Ide tartozik az UDP-árvizek, az erősítési árvizek és a hamis csomagokra vonatkozó egyéb áradások. DDoS Protection standard az Azure globális hálózati skálázásával automatikusan felhasználhatja ezeket a lehetséges több gigabájtos támadásokat.|
-|**A protokoll támadása észlelve**|Ezek a támadások nem hozzáférhetővé teszik a célt, mert a 3. rétegbeli és a 4. rétegbeli protokollbeli verem gyengeségét kihasználva. Ez magában foglalja a SYN FLOOD támadásokat, a reflexiós támadásokat és más protokollok elleni támadásokat. A DDoS Protection standard csökkenti ezeket a támadásokat, megkülönbözteti a kártékony és a legitim forgalmat, az ügyféllel való interakcióval és a rosszindulatú forgalom blokkolásával.|
-|**Az erőforrás (alkalmazás) rétegbeli támadás észlelhető**|Ezek a támadások a webalkalmazási csomagokat célozzák meg a gazdagépek közötti adatátvitel megzavarásához. A támadások közé tartoznak a HTTP-protokollok megsértése, az SQL-injektálás, a helyközi parancsfájlkezelés és a 7. rétegbeli támadások. Használja az Azure Application Gateway webalkalmazási tűzfalat DDoS Protection standard szintű használatával a támadások elleni védelemhez. Az Azure Marketplace-en a harmadik féltől származó webalkalmazási tűzfalak is elérhetők.|
+|**Térfogatos támadás észlelhető**|Ennek a támadásnak a célja, hogy elárasztsa a hálózati réteget, amely jelentős mennyiségű látszólag megbízható adatforgalommal rendelkezik. Ide tartozik az UDP-árvizek, az erősítési árvizek és a hamis csomagokra vonatkozó egyéb áradások. A DDoS Protection standard csökkenti ezeket a lehetséges többgigabájtos támadásokat azáltal, hogy a globális hálózati méretezéssel automatikusan befogadja és súrolja őket.|
+|**A protokoll támadása észlelve**|Ezek a támadások nem hozzáférhetővé teszik a célt, ha kihasználják a 3. és a 4. rétegbeli protokollok gyenge pontjait. A szolgáltatás magában foglalja az SYN FLOOD támadásokat, a reflexiós támadásokat és más protokollok elleni támadásokat. A DDoS Protection standard csökkenti ezeket a támadásokat, megkülönbözteti a kártékony és a legitim forgalmat, az ügyféllel való interakcióval és a rosszindulatú forgalom blokkolásával.|
+|**Az erőforrás (alkalmazás) rétegbeli támadás észlelhető**|Ezek a támadások a webalkalmazási csomagokat célozzák meg a gazdagépek közötti adatátvitel megzavarásához. A támadások közé tartoznak a HTTP-protokollok megsértése, az SQL-injektálás, a helyközi parancsfájlkezelés és a 7. rétegbeli támadások. Az Azure Application Gateway WAF DDoS Protection standard szintű használatával védekezhet a támadásokkal szemben. Az Azure Marketplace-en elérhetők a harmadik féltől származó WAF ajánlatok is.|

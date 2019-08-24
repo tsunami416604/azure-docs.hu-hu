@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8987a22d4546fe887d1dda9adff8f46afe667618
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 8d3d08c772c28ff4e3a32e736253ba69b03684f0
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644986"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012297"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Hozzáférés osztályterem-tesztkörnyezethez az Azure Lab Servicesben
 Ez a cikk bemutatja, hogyan regisztrálhat egy osztályterem laborba, megtekintheti az összes elérni kívánt labort, elindíthatja vagy leállíthatja a virtuális gépet a laborban, és csatlakozhat a virtuális géphez. 
@@ -55,6 +55,33 @@ Ez a cikk bemutatja, hogyan regisztrálhat egy osztályterem laborba, megtekinth
 2. Hajtsa végre az alábbi lépések egyikét: 
     1. **Windows rendszerű** virtuális gépek esetén mentse az **RDP** -fájlt a merevlemezre. Nyissa meg az RDP-fájlt a virtuális géphez való kapcsolódáshoz. Használja az oktató/professzor által a gépre való bejelentkezéshez kapott felhasználónevet és **jelszót** . 
     3. **Linux** rendszerű virtuális gépek esetén az **SSH** vagy az **RDP** (ha engedélyezve van) használatával csatlakozhat hozzájuk. További információ: [Távoli asztali kapcsolat engedélyezése Linux rendszerű gépekhez](how-to-enable-remote-desktop-linux.md). 
+    1. Ha **Mac** -t használ a tesztkörnyezet virtuális géphez való kapcsolódáshoz, kövesse a következő szakaszban található utasításokat. 
+
+## <a name="connect-to-a-vms-ui-using-rdp-on-a-mac"></a>Kapcsolódás virtuális gép felhasználói felületéhez RDP használatával Mac gépen
+Ez a szakasz azt mutatja be, hogy egy tanuló hogyan tud csatlakozni a virtuális gép felhasználói felületéhez a Mac rendszerből RDP használatával. Az alábbi lépéseket követve részletesen ismertetjük a részleteket: 
+
+1. Telepítse a Microsoft Távoli asztalt a Mac számítógépen.
+2. Kapcsolódjon a Mac rendszerű virtuális gép felhasználói felületéhez RDP használatával. 
+
+### <a name="install-microsoft-remote-desktop-on-a-mac"></a>Microsoft Távoli asztal telepítése Mac gépen
+1. Nyissa meg az App Store-t a Mac számítógépen, és keressen rá **Microsoft távoli asztal**.
+
+    ![Microsoft Távoli asztal](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
+1. Telepítse a Microsoft Távoli asztal legújabb verzióját. 
+
+### <a name="access-the-vms-ui-from-your-mac-using-rdp"></a>A virtuális gép felhasználói felületének elérése Mac-ről RDP használatával
+1. Nyissa meg a számítógépen letöltött **RDP** -fájlt, **Microsoft távoli asztal** telepítve van. Meg kell kezdenie a virtuális géphez való csatlakozást. 
+
+    ![Kapcsolódás virtuális géphez felhasználói felülethez](../media/how-to-use-classroom-lab/connect-linux-vm.png)
+1. Ha a következő hibaüzenetet kapja, válassza a **Continue (folytatás** ) lehetőséget. 
+
+    ![Tanúsítvány hibája](../media/how-to-use-classroom-lab/certificate-error.png)
+1. Ekkor meg kell jelennie a virtuális gép felhasználói felületének. 
+
+    > [!NOTE]
+    > Az alábbi példa egy CentOS Linux rendszerű virtuális gép. 
+
+    ![VIRTUÁLIS GÉP FELHASZNÁLÓI FELÜLETE](../media/how-to-use-classroom-lab/vm-ui.png)
 
 ## <a name="progress-bar"></a>Folyamatjelző 
 A csempe folyamatjelzője megjeleníti az órák számát, amelyet a rendszer az Ön által hozzárendelt [kvóta-órák](how-to-configure-student-usage.md#set-quotas-for-users) száma alapján használ. Ez az idő az a további időpont, amelyet a tesztkörnyezet ütemezett ideje mellett is kiosztottak. Az állapotjelző sáv színe és a folyamatjelző alatti szöveg a következő esetekben változik:

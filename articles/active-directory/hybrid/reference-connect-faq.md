@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/03/2019
+ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6b551ee9a0a9c7ef9a8f5ff1bd7452a24dc04b7
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 0442b987c502533bfbd55990f201a5c02b119804
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014200"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011297"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect – gyakori kérdések
 
@@ -270,3 +270,7 @@ Ha segítségre van szüksége a Azure AD Connect újabb verziójára való fris
 * [Az Azure ad](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)-Közösségre kattintva technikai kérdéseket és válaszokat kereshet, vagy megteheti a saját kérdéseit.
 
 [Támogatás kérése az Azure AD-hez](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+
+**K: Miért jelentkeznek a 6311-es és a 6401-es események a szinkronizálási lépés hibái után?**
+
+A 6311-as események – **a kiszolgáló váratlan** hibát észlelt a visszahívás és a 6401 végrehajtása során – **a felügyeleti ügynök vezérlő váratlan hibát észlelt** – a szinkronizálási lépés hibája után mindig naplózva lesz. A hibák elhárításához törölnie kell a szinkronizálási lépés hibáit.  További információ: hibaelhárítási [hibák a szinkronizálás során](tshoot-connect-sync-errors.md) és az [objektumok szinkronizálásának hibaelhárítása Azure ad Connect szinkronizálással](/tshoot-connect-objectsync.md)

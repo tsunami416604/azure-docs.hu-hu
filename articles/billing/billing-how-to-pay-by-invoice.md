@@ -9,22 +9,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 08/23/2019
 ms.author: banders
-ms.openlocfilehash: 90c7014e3c22ac7186854d5c01b911aa630d20dd
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 9e4e05acd88e9b0f0c17d4dd4caf5eb5a883d63d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774661"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012597"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Az Azure-előfizetés számlán való kifizetése
 
-Ha számlára vált, az azt jelenti, hogy a számlázást a számla dátumától számított 30 napon belül fizeti be. Ahhoz, hogy az Azure-előfizetését a számla alapján fizesse, küldjön egy Azure-támogatási kérést. Ha jóváhagyta a kérelmét, átválthat a számla fizetése (ellenőrzések/átvitel) lehetőségre a [Azure Portal](https://portal.azure.com).
+Ha számlára vált, az azt jelenti, hogy a számlázást a számla dátumától számított 30 napon belül fizeti be. Ahhoz, hogy jogosult legyen Azure-előfizetését számlás fizetéssel kifizetni, küldjön egy kérést az Azure ügyfélszolgálatának. Ha jóváhagyta a kérelmét, átválthat a számla fizetése (ellenőrzések/átvitel) lehetőségre a [Azure Portal](https://portal.azure.com).
 
 > [!IMPORTANT]
 > * A számla fizetése (ellenőrzések/átvitel) csak üzleti fiókok esetében érhető el.
-> * A számlán való fizetésre való áttérés előtt minden esedékes díjat ki kell fizetnie.
+> * A számlán való fizetésre való áttérés előtt az összes esedékes díjat kell fizetnie.
+> * Jelenleg a számla fizetése nem támogatja a globális Azure-t Kínában.
 
 ## <a name="request-to-pay-by-invoice"></a>Fizetési kérelem számla alapján
 
@@ -64,7 +65,7 @@ Ha számlára vált, az azt jelenti, hogy a számlázást a számla dátumától
          Specific region & series of Subscription:
 
     - A **vállalat nevének** és a **vállalat címnek** meg kell egyeznie az Azure-fiókhoz megadott adatokkal. Az információk megtekintéséhez vagy frissítéséhez tekintse [meg az Azure-fiók profiljának adatainak módosítása](billing-how-to-change-azure-account-profile.md)című témakört.
-    - A hitelkeret jóváhagyása előtt fel kell vennie a számlázási kapcsolattartási adatait a Azure Portalba. A kapcsolattartási adatoknak a vállalat számlájára vagy pénzügyi részlegére kell kapcsolódniuk. A számlázási kapcsolattartási adatok frissítéséhez lépjen a [Azure Fiókközpontra](https://account.azure.com/Profile).
+    - A hitelkeret jóváhagyása előtt adja hozzá a számlázási kapcsolattartási adatait a Azure Portal. A kapcsolattartási adatoknak a vállalat számlájára vagy pénzügyi részlegére kell kapcsolódniuk. A számlázási kapcsolattartási adatok frissítéséhez lépjen a [Azure Fiókközpontra](https://account.azure.com/Profile).
 
 6. Ellenőrizze a kapcsolattartási adatokat és a kívánt kapcsolatfelvételi módot, majd kattintson a **Létrehozás** lehetőségre.
 
@@ -72,20 +73,20 @@ Ha hitelkeret-ellenőrzését kell futtatnia a szükséges kreditek mennyisége 
 
 ## <a name="switch-to-invoice-pay-checkwire-transfer"></a>Váltás számlás fizetésre (ellenőrzések/átvitel)
 
-Miután jóváhagyta a számlázást, átválthat a számla fizetése (ellenőrzés/átvitel) lehetőségre a Azure Portal.
+Miután jóváhagyta a számlázást, átválthatja a számlás fizetést (ellenőrzés/átvitel) a Azure Portal.
 
-Ha rendelkezik Microsoft Online Services program-fiókkal, átválthatja az Azure-előfizetését az ellenőrzések/átvitel lehetőségre. Ha rendelkezik Microsoft-ügyféli szerződéssel, átválthatja a számlázási profilt az ellenőrzések és a huzalok átvitele érdekében. [Útmutató a fiók típusának](#check-access-to-a-microsoft-customer-agreement)megadásához.
+Ha rendelkezik Microsoft Online Services Program-fiókkal, Azure-előfizetését átválthatja csekkel/banki átutalással történő fizetésre. A Microsoft ügyfél-szerződéssel átválthatja a számlázási profilt az ellenőrzések és a huzalok átvitele érdekében. [Útmutató a fiók típusának](#check-access-to-a-microsoft-customer-agreement)megadásához.
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Az Azure-előfizetés átváltása az ellenőrzések és a huzalok átvitelére
 
-Kövesse az alábbi lépéseket az Azure-előfizetés számlázására való váltáshoz (ellenőrzési/átviteli forgalom). **Ha átvált a számla kifizetésére (ellenőrzések/átvitel), nem válthat vissza a hitelkártyára**.
+Kövesse az alábbi lépéseket az Azure-előfizetés számlázására való váltáshoz (ellenőrzési/átviteli forgalom). Ha **átvált a számla kifizetésére (ellenőrzések/átvitel), nem válthat vissza hitelkártyára**.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) a fiók rendszergazdájaként.
 1. Keressen rá **Cost Management + számlázásra**.
 
     ![A keresést bemutató képernyőkép](./media/billing-how-to-pay-by-invoice/search.png)
 
-1. Válassza ki azt az előfizetést, amelynek a számlázását át szeretné váltani.
+1. Válassza ki azt az előfizetést, amelyet számlás fizetésre kíván átváltani.
 1. Válassza a **Fizetési módok** elemet.
 1. A parancssorban kattintson a **fizetés számla alapján** gombra.
 
@@ -93,7 +94,7 @@ Kövesse az alábbi lépéseket az Azure-előfizetés számlázására való vá
 
 ### <a name="switch-billing-profile-to-checkwire-transfer"></a>Számlázási profil váltása az ellenőrzések/huzalok átadásához
 
-Az alábbi lépéseket követve válthat egy számlázási profilt az ellenőrzések és a huzalok átvitele érdekében. Vegye figyelembe, hogy csak az Azure-ra regisztrált személy módosíthatja a számlázási profil alapértelmezett fizetési módját.
+Az alábbi lépéseket követve válthat egy számlázási profilt az ellenőrzések és a huzalok átvitele érdekében. Csak az Azure-ra regisztrált személy módosíthatja a számlázási profil alapértelmezett fizetési módját.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A Keresés **Cost Management és számlázás**.
@@ -106,7 +107,7 @@ Az alábbi lépéseket követve válthat egy számlázási profilt az ellenőrz�
 
    ![A fizetési módokat bemutató képernyőkép a menüben](./media/billing-how-to-pay-by-invoice/billing-profile-payment-methods.png)
 
-1. Kattintson a kék szalagcímre, amely szerint az ellenőrzés/átvitel lehetőséggel fizethet.
+1. Kattintson arra a kék szalagcímre, amely szerint jogosult a fizetésre az ellenőrzés/átvitel során.
 
     ![Képernyőkép, amely a kék szalagcímet jeleníti meg az ellenőrzések és a huzalok közötti váltáshoz](./media/billing-how-to-pay-by-invoice/customer-led-switch-to-invoice.png)
 

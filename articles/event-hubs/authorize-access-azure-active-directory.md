@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 569399b2b5f676e11cd6540126e0b26dc0d26198
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
-ms.translationtype: HT
+ms.openlocfilehash: 1a42843cc81070cc284863b3736549576e32cb17
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992860"
+ms.locfileid: "70011877"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Hozzáférés engedélyezése Event Hubs erőforrásokhoz a Azure Active Directory használatával
 Az Azure Event Hubs támogatja a Azure Active Directory (Azure AD) használatát, hogy engedélyezze a kérelmeket Event Hubs erőforrásoknak. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) használatával adhat meg engedélyeket egy rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű szolgáltatásnév. További információ a szerepkörökről és a szerepkör-hozzárendelésekről: [a különböző szerepkörök megismerése](../role-based-access-control/overview.md).
@@ -38,9 +38,9 @@ Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az A
 ## <a name="built-in-rbac-roles-for-azure-event-hubs"></a>Az Azure Event Hubs beépített RBAC szerepkörei
 Az Azure a következő beépített RBAC-szerepköröket biztosítja az Azure AD-vel és OAuth-vel Event Hubs való hozzáférés engedélyezéséhez:
 
-- [Az Azure Event Hubs adattulajdonos](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview): Ezzel a szerepkörrel teljes hozzáférést biztosíthat Event Hubs erőforrásaihoz.
-- [Azure Event Hubs adatfeladó](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver-preview): Ezzel a szerepkörrel biztosíthatja a küldési hozzáférést Event Hubs erőforrásaihoz.
-- [Azure Event Hubs adatfogadó](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender-preview): Ennek a szerepkörnek a használatával biztosíthatja a Event Hubs erőforrásainak felhasználását/fogadását.
+- [Az Azure Event Hubs adattulajdonos](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): Ezzel a szerepkörrel teljes hozzáférést biztosíthat Event Hubs erőforrásaihoz.
+- [Azure Event Hubs adatfeladó](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Ezzel a szerepkörrel biztosíthatja a küldési hozzáférést Event Hubs erőforrásaihoz.
+- [Azure Event Hubs adatfogadó](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Ennek a szerepkörnek a használatával biztosíthatja a Event Hubs erőforrásainak felhasználását/fogadását.
 
 ## <a name="resource-scope"></a>Erőforrás hatóköre 
 Mielőtt RBAC-szerepkört rendeljen egy rendszerbiztonsági tag számára, határozza meg a rendszerbiztonsági tag hozzáférésének hatókörét. Az ajánlott eljárások azt diktálják, hogy mindig csak a lehető legszűkebb hatókört adja meg.

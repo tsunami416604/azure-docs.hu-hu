@@ -1,5 +1,5 @@
 ---
-title: IPv6 Dual stack-alkalmazás üzembe helyezése az Azure Virtual Network standard Load Balancerával – PowerShell
+title: IPv6 Dual stack-alkalmazás üzembe helyezése az Azure Virtual Networkben – PowerShell
 titlesuffix: Azure Virtual Network
 description: Ez a cikk bemutatja, hogyan helyezhet üzembe egy IPv6-alapú Dual stack-alkalmazást az Azure Virtual Network standard Load Balancer az Azure PowerShell használatával.
 services: virtual-network
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 99e01aa611eea3d6379e2a250cc99d121e41aa82
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 05794cfaf6a550d32acdfb731a5f477111e65606
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269675"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011419"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-standard-load-balancer-in-azure---powershell-preview"></a>IPv6-os Dual stack-alkalmazás üzembe helyezése az Azure-ban standard Load Balancer használatával – PowerShell (előzetes verzió)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>IPv6 Dual stack-alkalmazás üzembe helyezése az Azure-ban – PowerShell (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy Dual stack (IPv4 + IPv6) alkalmazást az Azure-ban, amely egy kettős veremből álló virtuális hálózatot és alhálózatot, egy kettős (IPv4 + IPv6-alapú) előtér-konfigurációkat, a kettős IP-konfigurációval rendelkező virtuális gépeket, valamint a hálózati adaptereket tartalmazza. biztonsági csoport és nyilvános IP-címek.
+Ez a cikk bemutatja, hogyan helyezhet üzembe egy kettős verem-(IPv4-és IPv6-) alkalmazást az Azure-ban standard Load Balancer használatával, amely egy kettős veremből álló virtuális hálózatot és alhálózatot tartalmaz, valamint standard Load Balancer egy kettős (IPv4 + IPv6) előtér-konfigurációval rendelkező virtuális gépeket, valamint a kettős IP-konfiguráció, hálózati biztonsági csoport és nyilvános IP-címek.
 
 > [!Important]
 > Az Azure Virtual Network IPv6-támogatása jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
