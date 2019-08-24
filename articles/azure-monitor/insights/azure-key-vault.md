@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: bwren
-ms.openlocfilehash: b7d9ff760bac06602d8d770a358c8a2e22a72c81
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1e0e9a0d76e644ec48ecd423a105dd89629d290c
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849197"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997692"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault elemzési megoldás a Azure Monitor
 
@@ -103,28 +103,28 @@ Miután rákattintott a **Key Vault Analytics** csempére, megtekintheti a napl�
 ## <a name="azure-monitor-log-records"></a>Naplóbejegyzések Azure Monitor
 A Azure Key Vault megoldás elemzi azokat a rekordokat, amelyek a Azure Diagnostics [AuditEvent](../../key-vault/key-vault-logging.md) -naplóiból gyűjtött típusú kulcstartókkal rendelkeznek.  A rekordok tulajdonságai a következő táblázatban találhatók:  
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 |:--- |:--- |
-| Type |*AzureDiagnostics* |
-| SourceSystem |*Azure* |
-| CallerIpAddress |A kérést küldő ügyfél IP-címe |
-| Category | *AuditEvent* |
-| CorrelationId |Egy nem kötelező GUID, amelyet az ügyfél alkalmazhat az ügyféloldali és a szolgáltatásoldali (Key Vault) naplók egyeztetéséhez. |
-| Átl |A REST API-kérelem végrehajtásának ideje ezredmásodpercben. Ez az idő nem tartalmazza a hálózati késést, így előfordulhat, hogy az ügyfél oldalán mért idő nem egyezik meg ezzel az idővel. |
-| httpStatusCode_d |A kérelem által visszaadott HTTP-állapotkód (például *200*) |
-| id_s |A kérelem egyedi azonosítója |
-| identity_claim_appid_g | Az alkalmazás AZONOSÍTÓjának GUID azonosítója |
-| OperationName |A művelet neve [Azure Key Vault naplózásban](../../key-vault/key-vault-logging.md) dokumentálva |
-| OperationVersion |Az ügyfél által kért REST API-verzió (például *2015-06-01*) |
-| requestUri_s |A kérelem URI-ja |
-| Resource |A Key Vault neve |
-| Erőforráscsoport |A Key Vault erőforráscsoport |
-| ResourceId |Az Azure Resource Manager szerinti erőforrás-azonosító. Key Vault naplók esetében ez a Key Vault erőforrás-azonosító. |
-| ResourceProvider |*MICROSOFT.KEYVAULT* |
-| Erőforrástípus | *VAULTS* |
-| ResultSignature |HTTP-állapot (például *OK*) |
-| ResultType |REST API kérelem eredménye (például *sikeres*) |
-| SubscriptionId |Az Key Vaultt tartalmazó előfizetés Azure-előfizetési azonosítója |
+| `Type` |*AzureDiagnostics* |
+| `SourceSystem` |*Azure* |
+| `CallerIpAddress` |A kérést küldő ügyfél IP-címe |
+| `Category` | *AuditEvent* |
+| `CorrelationId` |Egy nem kötelező GUID, amelyet az ügyfél alkalmazhat az ügyféloldali és a szolgáltatásoldali (Key Vault) naplók egyeztetéséhez. |
+| `DurationMs` |A REST API-kérelem végrehajtásának ideje ezredmásodpercben. Ez az idő nem tartalmazza a hálózati késést, így előfordulhat, hogy az ügyfél oldalán mért idő nem egyezik meg ezzel az idővel. |
+| `httpStatusCode_d` |A kérelem által visszaadott HTTP-állapotkód (például *200*) |
+| `id_s` |A kérelem egyedi azonosítója |
+| `identity_claim_appid_g` | Az alkalmazás AZONOSÍTÓjának GUID azonosítója |
+| `OperationName` |A művelet neve [Azure Key Vault naplózásban](../../key-vault/key-vault-logging.md) dokumentálva |
+| `OperationVersion` |Az ügyfél által kért REST API-verzió (például *2015-06-01*) |
+| `requestUri_s` |A kérelem URI-ja |
+| `Resource` |A Key Vault neve |
+| `ResourceGroup` |A Key Vault erőforráscsoport |
+| `ResourceId` |Az Azure Resource Manager szerinti erőforrás-azonosító. Key Vault naplók esetében ez a Key Vault erőforrás-azonosító. |
+| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
+| `ResourceType` | *VAULTS* |
+| `ResultSignature` |HTTP-állapot (például *OK*) |
+| `ResultType` |REST API kérelem eredménye (például *sikeres*) |
+| `SubscriptionId` |Az Key Vaultt tartalmazó előfizetés Azure-előfizetési azonosítója |
 
 ## <a name="migrating-from-the-old-key-vault-solution"></a>Áttelepítés a régi Key Vault megoldásból
 Január 2017-án a naplók Key Vaultból való küldésének támogatott módja Log Analytics megváltozott. Ezek a változások a következő előnyöket nyújtják:

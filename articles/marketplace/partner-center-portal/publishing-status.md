@@ -1,146 +1,146 @@
 ---
-title: A kereskedelmi Piactéri ajánlat közzétételi állapotának ellenőrzése
-description: Ellenőrizze a Microsoft Partner Centeren kereskedelmi piactéren keresztüli ajánlat közzétételének szükséges az érvényesítést, minősítési és előzetes lépések állapotát.
+title: A kereskedelmi piactér ajánlat közzétételi állapotának megtekintése
+description: Tekintse át az ajánlat közzétételéhez szükséges ellenőrzési, minősítési és előzetes lépések állapotát a Microsoft partner Center kereskedelmi Piactéren keresztül.
 author: mattwojo
 manager: evansma
 ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: ae4840877ae461244a76984ed8ac3edc82d57a38
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: c547ad256e6ba44da4ef81aa2a3aa2c77ba24815
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653982"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982732"
 ---
-# <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>A kereskedelmi Piactéri ajánlat közzétételi állapotának ellenőrzése
+# <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>A kereskedelmi piactér ajánlat közzétételi állapotának megtekintése
 
-Megtekintheti az aktuális **közzétételi állapota** a a **ajánlat áttekintése** lapján a [kereskedelmi piactér portálján](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) a Partner Center.
+Az aktuális **közzétételi állapotát** a partner Center [kereskedelmi piactér portáljának](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) **ajánlat áttekintése** lapján tekintheti meg.
 
-Az alábbi Állapotjelzők egyik ajánlatok üzenet.
+Az egyes ajánlatokhoz a következő állapotmutatók egyikét kell megjeleníteni.
 
 | **Állapot**    | **Leírás**  |
 | :---------- | :-------------------|
-| **Vázlat** | Az ajánlat létre lett hozva, de nincs folyamatban van közzétéve. |
-| **A közzététel folyamatban** | Ajánlat/csomag működik a módja a közzétételi folyamat lépéseit. |
-| **Figyelmet szükséges** | Egy kritikus problémát, vagy a közzétételi műveletek közül a Microsoft által felderített minősítés során. |
-| **Előzetes verzió** | Az ajánlat volt minősítésre a Microsoftnak, és most várja a végső ellenőrzés a közzétevő. Válassza ki, hogy az ajánlat élesben élő. |
-| **Live** | Az ajánlat nem élő a piactéren, és is láthatók és ügyfelek által igényelt. |
-| **Függőben lévő stop értékesítési** | Közzétevő ki van jelölve "értékesítési stop" ajánlat vagy a csomag, de a művelet még nem fejeződtek be. |
-| **A piactéren nem érhető el.** | A Marketplace-en korábban közzétett ajánlat/terv el lett távolítva. |
+| **Tervezet** | Az ajánlat létre lett hozva, de nincs közzétéve. |
+| **Közzététel folyamatban** | Az ajánlat/csomag a közzétételi folyamat lépésein dolgozik. |
+| **Figyelem szükséges** | A Microsoft vagy a közzétételi lépések bármelyike miatt kritikus problémát észlelt a rendszer. |
+| **Előzetes verzió** | Az ajánlatot a Microsoft tanúsította, és most a közzétevő végső ellenőrzésre vár. Válassza az élő indítás lehetőséget az ajánlat élő megjelenítéséhez. |
+| **Live** | Az ajánlat a piactéren érhető el, és az ügyfelek megtekinthetik és megszerezhetik azokat. |
+| **Leállításra váró eladás** | A kiadó az ajánlat vagy a csomag "értékesítés leállítása" elemét választotta, de a művelet még nem fejeződött be. |
+| **Nem érhető el a piactéren** | A piactéren korábban közzétett ajánlat/csomag el lett távolítva. |
 
-## <a name="automated-validation"></a>Az automatikus ellenőrzés
+## <a name="automated-validation"></a>Automatikus ellenőrzés
 
-A közzétételi folyamat az első lépés egy olyan automatikus ellenőrzések. Minden egyes ellenőrzési lépés felel meg egyik funkciója, úgy döntött, hogy engedélyezze az előfizetési csomag létrehozása. A funkció nincs engedélyezve, ha az érvényesítés azokat, amelyek a következő közzétételi lépéssel kihagyja. A közzétételi állapot jóváhagyása előtt minden ellenőrzés kell végezni.
+A közzétételi folyamat első lépése az automatikus érvényesítések halmaza. Minden ellenőrzési lépés megfelel az ajánlat létrehozásában az engedélyezéshez kiválasztott szolgáltatásnak. Ha ez a szolgáltatás nem volt engedélyezve, az érvényesítés a következő közzétételi lépésre ugrik. A közzétételi állapot jóváhagyása előtt minden ellenőrzési ellenőrzést végre kell hajtani.
 
-- **Vásárlási folyamat telepítő ajánlat (< 10 perc)**
+- **Ajánlat-megvásárlási folyamat beállítása (< 10 perc)**
 
-Ebben a lépésben azt győződjön meg arról, hogy az ajánlat teljesíthetők, ha ügyfelek az Azure Portalon keresztül vásárolta meg. Ez a lépés csak akkor alkalmazható Microsoft értékesített ajánlatok.
+Ebben a lépésben biztosítjuk, hogy az Ön ajánlata teljesíthető legyen, ha az ügyfelek megvásárolták a Azure Portalon keresztül. Ez a lépés csak a Microsofton keresztül eladott ajánlatokra vonatkozik.
 
-- **Tesztelje a meghajtó adatellenőrzésen (~ 5 perc)**
+- **Tesztvezetés adatellenőrzése (~ 5 perc)**
 
-Ebben a lépésben azt a test drive az ajánlat technikai konfigurációs szakaszban megadott adatok érvényesítése. Teszt meghajtó funkció tesztelt és jóváhagyott. A lépés csak akkor alkalmazható, amelyek próbálja ki az engedélyezve van a.
+Ebben a lépésben érvényesítjük az ajánlat Test Drive technikai konfiguráció szakaszában megadott adatmennyiséget. A test Drive funkció tesztelése és jóváhagyása megtörténik. Ez a lépés csak olyan ajánlatokra alkalmazható, amelyeken engedélyezve van a tesztelési meghajtó.
 
-- **Tesztelje a meghajtó kiépítése (KB. 30 perc)**
+- **Tesztelési meghajtó üzembe helyezése (~ 30 perc)**
 
-Ebben a lépésben az adatok és az előző lépésben, a test drive működésének ellenőrzése után azt üzembe helyezése és replikálja a test drive példányát, hogy az ügyfél használatra készen állnak a.  A lépés csak akkor alkalmazható, amelyek próbálja ki az engedélyezve van a.
+Ebben a lépésben az előző lépésben a tesztelési meghajtó adatai és funkcióinak ellenőrzése után a rendszer üzembe helyezi és replikálja a tesztvezetés példányait, hogy azok használatra készek legyenek az ügyfelek számára.  Ez a lépés csak olyan ajánlatokra alkalmazható, amelyeken engedélyezve van a tesztelési meghajtó.
 
-- **Felügyeleti érvényesítése és a regisztrációs vezethet (< 15 perc)**
+- **Vezető felügyelet ellenőrzése és regisztráció (< 15 perc)**
 
-Ebben a lépésben azt győződjön meg arról, hogy a vezető felügyeleti rendszer fogadhat ügyfélérdeklődések az ajánlat beállításában megadott adatok alapján. Ez a lépés csak akkor alkalmazható, amelyek Lead felügyelet engedélyezve van a.
+Ebben a lépésben megerősítjük, hogy a vezető felügyeleti rendszer az ajánlat beállítása során megadott adatok alapján fogadja az ügyfeleket. Ez a lépés csak az érdeklődők felügyeletét engedélyező ajánlatokra alkalmazható.
 
 ## <a name="certification"></a>Tanúsítvány
 
-A közzététel előtt a kereskedelmi Partnerközpont-piactér elküldött ajánlatok minősítéssel kell rendelkezniük. Elküldött ajánlatok rendelkezéseinknek szigorú tesztelése, bizonyos automatizált és mások manuális, beleértve a-ellenőrzést futtat a [Azure Marketplace-en hitelesítési házirendek](https://docs.microsoft.com/legal/marketplace/general-policies). Ajánlat jelentkezés kell megjelölni jogosult hitelesítő előtt, lépjen tovább a következő lépés a közzétételi folyamat.
+Közzététel előtt a partner Centerben a kereskedelmi Piactérnek küldött ajánlatokat hitelesíteni kell. Az elküldött ajánlatok szigorú tesztelésen mennek keresztül, néhány automatizált és egyéb kézikönyvtel, beleértve az [Azure Marketplace minősítési szabályzatok](https://docs.microsoft.com/legal/marketplace/general-policies)ellenőrzését is. A közzétételi folyamat következő lépésének megkezdése előtt meg kell jelölni az ajánlati beadványok minősítését.
 
-### <a name="types-of-validation-that-take-place-during-certification"></a>Minősítés során végrehajtott érvényesítési típusai
+### <a name="types-of-validation-that-take-place-during-certification"></a>A minősítés során megkerülő érvényesítési típusok
 
-Nincsenek elküldött ajánlatok a minősítési folyamat szereplő érvényesítési három szintje.
+Az egyes beküldött ajánlatok esetében három ellenőrzési szint szerepel a minősítési folyamatban.
 
-- Közzétevő üzleti való jogosultság
-- Tartalomérvényesítés
-- Műszaki érvényesítést
+- Kiadói üzleti jogosultság
+- Tartalom érvényesítése
+- Technikai ellenőrzés
 
-#### <a name="publisher-business-eligibility"></a>Közzétevő üzleti való jogosultság
+#### <a name="publisher-business-eligibility"></a>Kiadói üzleti jogosultság
 
-Minden ajánlat alapszintű megfelelőségi feltételeket, amelyek a közzétevő meg kell felelnie egy készletét ellenőrzi. Megfelelőségi feltételeket tartalmazhat, a közzétevő MPN állapota, kompetenciák tárolt, kompetencia szintek, stb.
+Minden ajánlat típusa ellenőrzi, hogy a közzétevőnek milyen alapszintű jogosultsági feltételeket kell teljesítenie. A jogosultsági feltételek magukban foglalhatják a közzétevő MPN-állapotát, a kompetenciákat, a kompetenciás szinteket stb.
 
-#### <a name="content-validation"></a>Tartalomérvényesítés
+#### <a name="content-validation"></a>Tartalom érvényesítése
 
-Az adatokat, az ajánlat létrehozásakor megadott tartalom érvényesítése során minőség és a relevancia alapján végzett ellenőrzi. Ezeket az ellenőrzéseket fog tekintse át a bejegyzéseket a Marketplace-en listaelem részletei, díjszabás, elérhetőség, társított csomagokat, stb. Megfelel az Azure Marketplace-en és/vagy az appsource-ban ajánlati feltételek, a Microsoft ellenőrzi, hogy az ajánlat tartalmazza:
+A tartalom ellenőrzése során a rendszer az ajánlat létrehozásakor megadott adatokat ellenőrzi a minőség és a relevancia szempontjából. Ezek az ellenőrzések áttekintik a piactér-lista részleteit, a díjszabást, a rendelkezésre állást, a társított terveket stb. Az Azure Marketplace és/vagy a AppSource listázási feltételeinek teljesítése érdekében a következőket érvényesítjük:
 
-- az ajánlat; pontosabban leíró címet
-- Adjon meg egy alapos áttekintése és értékajánlat; jól megírt tájékoztatókat
-- minőségi képernyőképeket, valamint a hozzájuk kapcsolódó videók; és
-- hogyan használja az ajánlat a Microsoft-platformokat, eszközöket részéből.
+- az ajánlatot pontosan leíró cím;
+- jól megírt leírások, amelyek átfogó áttekintést és értéket biztosítanak.
+- minőségi képernyőképek és kapcsolódó videók; és
+- annak magyarázata, hogy az ajánlat hogyan használja a Microsoft platformokat és eszközöket.
 
-További a tartalomérvényesítés feltételek kapcsolatban olvassa el a [általános házirendek ajánlati](https://docs.microsoft.com/legal/marketplace/certification-policies#100-general-policies).
+A tartalom-ellenőrzési feltételekkel kapcsolatos további információkért olvassa el az [általános listázási szabályzatot](https://docs.microsoft.com/legal/marketplace/certification-policies#100-general).
 
-#### <a name="technical-validation"></a>Műszaki érvényesítést
+#### <a name="technical-validation"></a>Technikai ellenőrzés
 
-Technikai érvényesítése során (csomag vagy bináris) az ajánlat az alábbi ellenőrzéseket megy keresztül.
+A technikai ellenőrzés során az ajánlat (csomag vagy bináris) a következő ellenőrzéseken megy keresztül.
 - Kártevő szoftverek vizsgálata
 - Figyelt hálózati hívások
 - Elemzett csomag
-- Az ajánlat tényleges funkció alapos vizsgálata
+- Az ajánlat tényleges funkcióinak alapos vizsgálata
 
-Az ajánlat érdekében, hogy robusztus különféle platformok és verziók között lett tesztelve.
+Az ajánlat a különböző platformokon és verziókon tesztelve biztosítható a robusztus működés biztosítása érdekében.
 
-Tekintse át az ajánlat a műszaki konfigurációs szakasz ebben a dokumentumban a szükséges konfigurációs adatokat.
+Tekintse át az ajánlathoz szükséges konfigurációs adatokat a jelen dokumentum technikai konfiguráció szakaszában.
 
-### <a name="certification-failure-report"></a>Hitelesítési hiba jelentése
+### <a name="certification-failure-report"></a>Sikertelen minősítési jelentés
 
-A felülvizsgálat befejezésekor az ajánlat már eltelt hitelesítő majd áthelyezi a közzétételi folyamat a következő lépéssel. Ha ajánlata nem sikerült minden listázása, a technikai vagy a házirend-ellenőrzést, vagy ha Ön nem jogosult egy ajánlatot az adott típusú elküldeni, a minősítési hiba jelentés jön létre, e-mailben.
+A felülvizsgálat befejezésekor, ha az ajánlata megfelelt a minősítésnek, akkor a közzétételi folyamat következő lépéseként halad át. Ha az ajánlata nem felelt meg a tőzsdei, műszaki vagy házirend-ellenőrzéseknek, vagy ha nem jogosult ilyen típusú ajánlat beküldésére, akkor a rendszer egy tanúsítvány-hibajelentést generál és e-mailben elküldi Önnek.
 
-Ez a jelentés a házirendekben, amelyek nem sikerült, valamint a felülvizsgálati feljegyzések leírását tartalmazza. Tekintse át ezt az e-mail jelentés, a problémák elhárítása, az ajánlat frissítéseket végez, ha szükséges, és küldje el újra, az ajánlat használatával a [kereskedelmi piactér portálján](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) a Partner Center. (Az ajánlatra, ahányszor szükséges, amíg megadásának hitelesítő van újraküldeni).
+Ez a jelentés a sikertelen házirendek leírásait tartalmazza, valamint a felülvizsgálati megjegyzéseket. Tekintse át az e-mail-jelentést, a problémák megoldását, az ajánlat frissítését, ahol szükséges, majd küldje el újra az ajánlatot a partner Center [kereskedelmi piactér portáljának](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) használatával. (A minősítés átadása előtt többször is elküldheti az ajánlatot.
 
-## <a name="preview-creation"></a>Előzetes létrehozása
+## <a name="preview-creation"></a>Előnézet létrehozása
 
-Során a **előzetes verzió létrehozása** lépésben hozunk létre az Ön ajánlatát a verzió csak az ajánlat az előzetes verziókat tartalmazó szakaszában megadott körben.
+Az **előzetes** verziójú létrehozási lépés során az ajánlat egy verzióját csak az ajánlat előzetes verzió szakaszában megadott célközönség számára elérhetővé tesszük.
 
 ## <a name="publisher-approval"></a>Közzétevő jóváhagyása
 
-Ebben a lépésben lesz küldve az, hogy tekintse át és hagyja jóvá az ajánlat előzetes közzététel utolsó lépése előtt egy kéréssel.
+Ebben a lépésben e-mailben küldünk egy kérést, amellyel áttekintheti és jóváhagyhatja az ajánlat előzetes verzióját a végső közzétételi lépés előtt.
 
-Ha be van jelölve, hogy az ajánlat keretében a Microsoft, tudják, tesztelje a beszerzési és üzembe helyezés az Ön ajánlatát, annak érdekében, hogy ezen előzetes jóváhagyási szakasz során megfelel a követelményeknek. Az ajánlat még nem érhető el az összeköttetés Marketplace-en. Tesztelése, és ez az előzetes verzió jóváhagyása után kell kiválasztása **éles** a a [ **ajánlat áttekintése** ](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) irányítópultot.
+Ha úgy döntött, hogy az ajánlatot a Microsofton keresztül értékesíti, tesztelheti az ajánlat beszerzését és üzembe helyezését annak érdekében, hogy megfeleljen az előfizetésre vonatkozó előírásoknak. Ajánlata még nem lesz elérhető a ágyéki piactéren. Az előzetes verzió tesztelése és jóváhagyása után válassza a **Go-Live** lehetőséget az [**ajánlat áttekintése**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) irányítópulton.
 
-Ha azt szeretné, módosíthatja az ebben a szakaszban előzetes ajánlat, szerkesztheti, és küldje el újra egy új előnézetet közzététele. Tekintse meg a cikket [meglévő piactéren frissítés](#update-existing-marketplace-offers) további módosításokat részleteiért.
+Ha az előnézeti fázisban módosítani kívánja az ajánlatot, szerkesztheti és újból elküldheti az új előzetes verzió közzétételét. További részletekért tekintse meg a [meglévő Piactéri ajánlatok frissítése](#update-existing-marketplace-offers) című cikket.
 
-Ha az ajánlat már élő és a Marketplace-en a nyilvánosan elérhető, végrehajtott kapcsolódhatunk élő kiválasztást követően **éles** a a [ **ajánlat áttekintése** ](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) Az irányítópult.
+Ha az ajánlata már él és elérhető a piactéren, akkor az Ön által végzett frissítések csak akkor lépnek életbe, ha a **Go-Live** lehetőséget választja az [**ajánlat áttekintése**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) irányítópulton.
 
-### <a name="publish-offer-to-the-public"></a>A nyilvános ajánlat közzététele
+### <a name="publish-offer-to-the-public"></a>Ajánlat közzététele nyilvánosként
 
-Jelentkezzen be a Partner Center és az ajánlat eléréséhez. A rendszer átirányítja a **ajánlat áttekintése** lapot. Ez a lap tetején látni fogja a beállítás a **élesben**. Válassza ki **élesben,** , és miután meggyőződött arról, az ajánlat nyilvános első közzé. E-mail-értesítést fog kapni, amikor az ajánlat élő.
+Jelentkezzen be a partner Centerbe, és nyissa meg az ajánlatot. A rendszer átirányítja az **ajánlat áttekintése** oldalra. A lap tetején megjelenik a **Go Live**lehetőség. Válassza az **élő indítás** lehetőséget, és miután megerősítette, az ajánlat megkezdi a közzétételt a nyilvánosság számára. E-mailben értesítést fog kapni, ha az ajánlat élőben működik.
 
 ## <a name="publish"></a>Közzététel
 
-Most, hogy a kiválasztott **élesben** az ajánlat keretében elérhetővé teszi a Marketplace-en vannak, győződjön meg arról, hogy az élő ajánlat hasonlóan az előzetes verzió van-e konfigurálva keresztül lépcsőzetes végső érvényesség-ellenőrzések sorozatának az ajánlat verziója.
+Most, hogy úgy döntött, hogy az ajánlatával **él** , így elérhetővé válik a piactéren, a végső ellenőrzési ellenőrzések számos lépéssel megtalálhatók, amelyekkel biztosítható, hogy az élő ajánlat az ajánlat előzetes verziójához hasonlóan legyen konfigurálva.
 
-- **Vásárlási folyamat telepítő ajánlat (> 10 perc)**
+- **Ajánlat-megvásárlási folyamat beállítása (> 10 perc)**
 
-Ebben a lépésben azt győződjön meg arról, hogy az ajánlat teljesíthetők, ha ügyfelek az Azure Portalon keresztül vásárolta meg. Ez a lépés csak akkor alkalmazható Microsoft értékesített ajánlatok.
+Ebben a lépésben biztosítjuk, hogy az Ön ajánlata teljesíthető legyen, ha az ügyfelek megvásárolták a Azure Portalon keresztül. Ez a lépés csak a Microsofton keresztül eladott ajánlatokra vonatkozik.
 
-- **Tesztelje a meghajtó adatellenőrzésen (~ 5 perc)**
+- **Tesztvezetés adatellenőrzése (~ 5 perc)**
 
-Ebben a lépésben azt a test drive az ajánlat technikai konfigurációs szakaszban megadott adatok érvényesítése. Teszt meghajtó funkció tesztelt és jóváhagyott. A lépés csak akkor alkalmazható, amelyek próbálja ki az engedélyezve van a.
+Ebben a lépésben érvényesítjük az ajánlat Test Drive technikai konfiguráció szakaszában megadott adatmennyiséget. A test Drive funkció tesztelése és jóváhagyása megtörténik. Ez a lépés csak olyan ajánlatokra alkalmazható, amelyeken engedélyezve van a tesztelési meghajtó.
 
-- **Tesztelje a meghajtó kiépítése (KB. 30 perc)**
+- **Tesztelési meghajtó üzembe helyezése (~ 30 perc)**
 
-Ebben a lépésben azt üzembe helyezése és replikálja a test drive példányát, hogy az ügyfél használatra készen állnak a.  A lépés csak akkor alkalmazható, amelyek próbálja ki az engedélyezve van a.
+Ebben a lépésben üzembe helyezi és replikálja a tesztvezetés példányait, hogy azok használatra készek legyenek az ügyfelek számára.  Ez a lépés csak olyan ajánlatokra alkalmazható, amelyeken engedélyezve van a tesztelési meghajtó.
 
-- **Felügyeleti érvényesítése és a regisztrációs vezethet (> 15 perc)**
+- **Vezető felügyelet ellenőrzése és regisztráció (> 15 perc)**
 
-Ebben a lépésben azt győződjön meg arról, hogy a vezető felügyeleti rendszer fogadhat ügyfélérdeklődések az ajánlat beállításában megadott adatok alapján. Ez a lépés csak akkor alkalmazható, amelyek Lead felügyelet engedélyezve van a.
+Ebben a lépésben megerősítjük, hogy a vezető felügyeleti rendszer az ajánlat beállítása során megadott adatok alapján fogadja az ügyfeleket. Ez a lépés csak az érdeklődők felügyeletét engedélyező ajánlatokra alkalmazható.
 
-- **Utolsó közzététel (> 30 perc)**
+- **Végső közzététel (> 30 perc)**
 
-Ebben a lépésben azt győződjön meg arról, hogy az ajánlatot a piactéren nyilvánosan elérhetővé válik.
+Ebben a lépésben biztosítjuk, hogy az ajánlat nyilvánosan elérhetővé válik a piactéren.
 
-## <a name="update-existing-marketplace-offers"></a>Marketplace-ajánlat frissítése
+## <a name="update-existing-marketplace-offers"></a>Meglévő Piactéri ajánlatok frissítése
 
-Ha azt szeretné, módosíthatja a korábban közzétett egy ajánlatot, először frissítse a meglévő ajánlat, és tegye közzé ismét szüksége.
+Ha módosítani szeretné egy már közzétett ajánlatot, először frissítenie kell a meglévő ajánlatot, majd újra közzé kell tennie.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A kereskedelmi piactéren egy létező ajánlat frissítése](./update-existing-offer.md)
+- [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 8d90d71b8d29d26f09ef617ddd56ce91eb4e5e2e
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 632b23a726b8e006152662ef7814aa4b7ef887fc
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541481"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69984542"
 ---
 Ez a szakasz a virtuálisgép-méretek előző generációinak adatait tartalmazza. Ezek a méretek továbbra is használhatók, de újabb generációk is elérhetők. 
 
@@ -61,7 +61,7 @@ MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt.
 
 ## <a name="nvv2-series"></a>NVv2 sorozat
 
-**Újabb méretre vonatkozó javaslat**: [NVv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series-preview-1)
+**Újabb méretre vonatkozó javaslat**: [NVv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
 
 A NVv2 sorozatú virtuális gépeket az [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU-k és az NVIDIA Grid Technology működteti az Intel Broadwell CPU-val. Ezek a virtuális gépek a GPU-gyorsított grafikus alkalmazásokat és virtuális asztalokat célozzák meg, ahol az ügyfelek szeretnék megjeleníteni az adatokat, szimulálni az eredményeket a megtekintésre, a CAD-re való munkavégzésre vagy a tartalmak megjelenítésére és továbbítására. Ezenkívül egyszeres pontosságú számítási feladatok is futtathatók az ilyen gépeken, például kódolás és renderelés. A NVv2 Virtual Machines támogatja a Premium Storaget, és a korábbi NV-sorozattal összehasonlítva kétszer a rendszermemóriát (RAM) is elérheti.  
 

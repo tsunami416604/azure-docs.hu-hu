@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b08358680793ccdadca27c5f2aa57fbffe89b53a
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: f35836f60fae11c0955c128e96a4cea188681942
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973791"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997664"
 ---
-# <a name="how-to-run-the-opc-ua-certificate-management-service-securely"></a>Az OPC UA Certificate Management szolgáltatás biztonságos futtatása
+# <a name="how-to-run-the-opc-vault-certificate-management-service-securely"></a>Az OPC Vault Certificate Management szolgáltatás biztonságos futtatása
 
-Ez a cikk azt ismerteti, hogyan lehet biztonságosan futtatni az OPC UA tanúsítványkezelő szolgáltatást az Azure-ban, és más biztonsági irányelveket is figyelembe kell venni.
+Ez a cikk azt ismerteti, hogyan futtathatja biztonságosan az OPC-tár tanúsítványkezelő szolgáltatását az Azure-ban, és más biztonsági irányelveket is figyelembe kell vennie.
 
 ## <a name="roles"></a>Szerepkörök
 
@@ -32,7 +32,7 @@ Az OPC-tár szolgáltatás úgy van konfigurálva, hogy a különböző szerepk�
 
 ### <a name="certificate-management-service-roles"></a>Tanúsítványkezelő szolgáltatás szerepkörei
 
-A Service a következő szerepköröket határozza meg:
+Az OPC-tár webszolgáltatás a következő szerepköröket határozza meg:
 
 - **Olvasó**: Alapértelmezés szerint a bérlő bármely hitelesített felhasználója rendelkezik olvasási hozzáféréssel. 
   - Olvasási hozzáférés az alkalmazásokhoz és tanúsítványkérelmek. Listázhatja és lekérdezheti az alkalmazásokat és a tanúsítványokra vonatkozó kérelmeket. Az eszköz felderítési információi és a nyilvános tanúsítványok olvasási hozzáféréssel is elérhetők.
@@ -132,14 +132,14 @@ A IoT Edge eszközökön a gazdagépeket és az IP-címeket dokumentálni kell.
 
 A HITELESÍTÉSSZOLGÁLTATÓI hierarchia dokumentációjának tartalmaznia kell minden olyan működő hitelesítésszolgáltatót, amely tartalmazza az összes kapcsolódó alárendelt hitelesítésszolgáltatót, a szülő hitelesítésszolgáltatót és a legfelső szintű hitelesítésszolgáltatót, még akkor is, ha azokat nem a szolgáltatás kezeli. A formális dokumentáció helyett az összes nem lejárt HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány teljes készletét lehet megadni.
 
-> [!IMPORTANT]
+> [!NOTE]
 > Az OPC-tár minta alkalmazása a szolgáltatásban felhasznált és a szolgáltatásban előállított összes tanúsítvány letöltését teszi lehetővé a dokumentációban.
 
 ### <a name="document-the-issued-certificates-by-all-certification-authorities-cas"></a>A kiállított tanúsítványok dokumentálása minden hitelesítésszolgáltató (CAs) szerint
 
 Az elmúlt 12 hónapban kiállított összes tanúsítvány teljes készletét meg kell adni a dokumentációhoz.
 
-> [!IMPORTANT]
+> [!NOTE]
 > Az OPC-tár minta alkalmazása a szolgáltatásban felhasznált és a szolgáltatásban előállított összes tanúsítvány letöltését teszi lehetővé a dokumentációban.
 
 ### <a name="document-the-sop-for-securely-deleting-cryptographic-keys"></a>Az SOP dokumentálása a titkosítási kulcsok biztonságos törléséhez
@@ -220,7 +220,7 @@ Az OPC-tár Service SOP-t az [Áttekintés](overview-opc-vault-architecture.md) 
 
 A tanúsítvány-visszavonási folyamatot az [Áttekintés](overview-opc-vault-architecture.md) és a dokumentumok [kezelése](howto-opc-vault-manage.md) című témakör ismerteti.
     
-### <a name="document-certification-authority-key-generation-ceremony"></a>Dokumentum-hitelesítésszolgáltató kulcsának generálási ünnepsége 
+### <a name="document-certification-authority-ca-key-generation-ceremony"></a>Dokumentum hitelesítésszolgáltató (CA) kulcsának generálási ünnepsége 
 
 Az OPC-tárolóban a kiállító HITELESÍTÉSSZOLGÁLTATÓ kulcsának generálását az Azure kulcstartó biztonságos tárterülete okozza, amelyet a dokumentáció [kezelése](howto-opc-vault-manage.md) című témakörben talál.
 

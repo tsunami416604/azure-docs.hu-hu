@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 23ae7b5cfec26fb2483a3e4ac13a1220888d76ee
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 59ac4b36a4bc2b3ff454b3a2ae98ce60f6bfcb5f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614269"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996605"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory másolási tevékenysége
 
@@ -263,9 +263,6 @@ Ebben a példában a másolás futtatása során az ADF azt jelzi, hogy a fogad�
 
 ## <a name="incremental-copy"></a>A növekményes másolási
 A Data Factory olyan forgatókönyveket támogat, amelyekkel növekményes módon másolhat különbözeti adattárakat a fogadó adattárba. Lásd: [oktatóanyag: adatok növekményes másolása az](tutorial-incremental-copy-overview.md).
-
-## <a name="read-and-write-partitioned-data"></a>Olvasási és írási particionált adatok
-Azure Data Factory 1-es verzió támogatott SliceStart/SliceEnd/WindowStart WindowEnd rendszerváltozók használatával particionált adatok írása és olvasása. A jelenlegi verzióban a paraméter értékeként egy folyamat paraméter és a trigger kezdő időpontja és ütemezett időpontja használatával érheti el ezt a viselkedést. További információkért lásd: [olvasására vagy írására hogyan particionált adatok](how-to-read-write-partitioned-data.md).
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a következő útmutatóink, oktatóanyagaink és példáink segítségével:

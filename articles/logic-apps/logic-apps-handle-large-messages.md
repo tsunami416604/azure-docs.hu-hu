@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: 4a37345cf33cbb02a6bd9a70b0253a55ee4c9478
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ed086c4c36711f92ba654a64856b43a5fdaadf5f
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035598"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69989926"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Nagy méretű üzenetek kezelése Azure Logic Apps
 
@@ -128,7 +128,7 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
    | Végpont válaszának fejléce mező | Type | Kötelező | Leírás |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | Nem | A javasolt adathalmaz mérete bájtban |
-   | **Location** | Sztring | Nem | A HTTP-javítási üzenetek küldésének helye |
+   | **Location** | Sztring | Igen | A HTTP-javítási üzenetek küldésének helye |
    ||||
 
 3. A logikai alkalmazás a következő adatokat tartalmazó HTTP-javítási üzeneteket hozza létre és küldi el:

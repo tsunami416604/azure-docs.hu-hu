@@ -1,23 +1,20 @@
 ---
 title: Útmutató a Azure Functions fejlesztéséhez | Microsoft Docs
 description: Ismerkedjen meg az Azure-ban a függvények fejlesztéséhez szükséges Azure Functions fogalmakkal és technikákkal az összes programozási nyelv és kötés között.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: Fejlesztői útmutató, Azure functions, functions, Event Processing, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 2715aeae5d10241703fa876557d1edcea1723874
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c60fedfe855cc803ee2f4b1c463e2b0614239c04
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874959"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982637"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions fejlesztői útmutató
 Azure Functions az egyes függvények a használt nyelvtől vagy kötéstől függetlenül megosztanak néhány alapvető műszaki fogalmat és összetevőt. Mielőtt beolvassa az adott nyelvre vagy kötésre vonatkozó tanulási adatokat, olvassa el ezt az áttekintést, amely az összesre vonatkozik.
@@ -44,7 +41,7 @@ A function. JSON fájl határozza meg a függvény triggerét, kötéseit és eg
 }
 ```
 
-További Példákért lásd: [function. JSON wiki oldal](https://github.com/Azure/azure-functions-host/wiki/function.json).
+További információ: [Azure functions triggerek és kötések fogalmai](functions-triggers-bindings.md).
 
 A `bindings` tulajdonság az eseményindítók és kötések konfigurálására szolgál. Az egyes kötések néhány gyakori beállítást és néhány olyan beállítást is megosztanak, amelyek egy adott típusú kötésre vonatkoznak. Minden kötéshez a következő beállítások szükségesek:
 
@@ -55,7 +52,7 @@ A `bindings` tulajdonság az eseményindítók és kötések konfigurálására 
 | `name` |Karakterlánc |A függvényben a kötött adathoz használt név. Esetében C#ez egy argumentum neve; JavaScript esetén a kulcs/érték lista kulcsa. |
 
 ## <a name="function-app"></a>Függvényalkalmazás
-A Function alkalmazás végrehajtási környezetet biztosít az Azure-ban, amelyben a függvények futnak. A Function alkalmazás egy vagy több olyan önálló függvényből áll, amelyek kezelése, üzembe helyezése és méretezése együtt történik. A functions-alkalmazás összes funkciója ugyanazzal az árképzési csomaggal, a folyamatos üzembe helyezéssel és a futásidejű verzióval rendelkezik. Úgy képzelheti el, hogy egy Function-alkalmazás a függvények rendszerezésére és közös kezelésére szolgál. 
+A Function alkalmazás végrehajtási környezetet biztosít az Azure-ban, amelyben a függvények futnak. Ennek megfelelően a függvények üzembe helyezésének és felügyeletének egysége. A Function alkalmazás egy vagy több olyan önálló függvényből áll, amelyek kezelése, üzembe helyezése és méretezése együtt történik. A functions-alkalmazás összes funkciója ugyanazzal az árképzési csomaggal, telepítési módszerrel és futtatókörnyezet-verzióval rendelkezik. Úgy képzelheti el, hogy egy Function-alkalmazás a függvények rendszerezésére és közös kezelésére szolgál. További információt a [Function app kezelése](functions-how-to-use-azure-function-app-settings.md)című témakörben talál. 
 
 > [!NOTE]
 > A Function app összes függvényét ugyanabba a nyelvre kell létrehozni. A Azure Functions futtatókörnyezet [korábbi verzióiban](functions-versions.md) ez nem volt szükséges.

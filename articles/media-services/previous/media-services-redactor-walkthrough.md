@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 3f40c69900b0d7f1c3bf446c1153e21dd7fd4d1b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014944"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997681"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Arcok kivonása Azure Media Analytics bemutatóval
 
@@ -40,7 +40,7 @@ A redactor első lépéseinek legegyszerűbb módja a nyílt forráskódú AMSE 
 
 ### <a name="download-and-setup"></a>Letöltés és telepítés
 
-1. Töltse le a AMSE eszközt [innen](https://github.com/Azure/Azure-Media-Services-Explorer).
+1. Töltse le a AMSE for AMS v2 eszközt [innen](https://aka.ms/amseforv2).
 1. Jelentkezzen be Media Services-fiókjába a szolgáltatás kulcsa alapján.
 
     A fiók neve és a legfontosabb információk beszerzéséhez látogasson el az [Azure-portálra](https://portal.azure.com/), és válassza ki AMS-fiókját. Ezután válassza a beállítások > kulcsok elemet. A Kulcsok kezelése ablakban megtalálja a fiók nevét, valamint az elsődleges és másodlagos kulcsot. Másolja ki a fióknév és az elsődleges kulcs értékeit.

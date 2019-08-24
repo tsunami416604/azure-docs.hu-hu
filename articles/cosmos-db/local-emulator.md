@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 90a9c67a11b54490b801ec65f691b4ae853ab4f2
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 4c26431ee0d506dda547fb4027845baa15c9a134
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972219"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997886"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -254,11 +254,11 @@ A beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.ex
 |EnableTableEndpoint | Az Azure Table API engedélyezése | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |TablePort | Az Azure Table végponthoz használandó portszám Az alapértelmezett érték a 8902. | CosmosDB.Emulator.exe /TablePort=\<port\> | \<port\>: Egyetlen portszám|
 | KeyFile | Az engedélyezési kulcs olvasása a megadott fájlból. A/GenKeyFile kapcsoló használata a keyfile létrehozásához | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<fájlnév\>: A fájl elérési útja |
-| ResetDataPath | A megadott elérési úton lévő összes fájl rekurzív eltávolítása. Ha nem ad meg elérési utat, az alapértelmezett érték a%LOCALAPPDATA%\CosmosDbEmulator | CosmosDB.Emulator.exe /ResetDataPath[=\<path>] | \<elérési út\>: Fájl elérési útja  |
+| ResetDataPath | A megadott elérési úton lévő összes fájl rekurzív eltávolítása. Ha nem ad meg elérési utat, az alapértelmezett érték a%LOCALAPPDATA%\CosmosDbEmulator | CosmosDB. Emulator. exe/ResetDataPath =\<elérési út > | \<elérési út\>: Fájl elérési útja  |
 | StartTraces  |  Hibakeresési nyomkövetési naplók gyűjtésének megkezdése. | CosmosDB. Emulator. exe/StartTraces | |
 | StopTraces     | A hibakeresési nyomkövetési naplók gyűjtésének leállítása. | CosmosDB. Emulator. exe/StopTraces  | |
 |FailOnSslCertificateNameMismatch | Alapértelmezés szerint az emulátor újragenerálta az önaláírt SSL-tanúsítványt, ha a tanúsítvány SAN nem tartalmazza az emulátor tartományának nevét, a helyi IPv4-címeket, a "localhost" és a "127.0.0.1" értéket. Ha ezt a lehetőséget választja, az emulátor indításkor sikertelen lesz. Ezután a/GenCert lehetőség használatával hozzon létre és telepítsen egy új önaláírt SSL-tanúsítványt. | CosmosDB. Emulator. exe/FailOnSslCertificateNameMismatch  | |
-| GenCert | Új önaláírt SSL-tanúsítvány létrehozása és telepítése. szükség esetén a további DNS-nevek vesszővel tagolt listáját is megadhatja az emulátor hálózaton keresztüli eléréséhez. | CosmosDB. Emulator. exe/GenCert [ \<további DNS-nevek\>vesszővel tagolt listája] | |
+| GenCert | Új önaláírt SSL-tanúsítvány létrehozása és telepítése. szükség esetén a további DNS-nevek vesszővel tagolt listáját is megadhatja az emulátor hálózaton keresztüli eléréséhez. | CosmosDB. Emulator. exe/GenCert =\<DNS-nevek\> |\<DNS-nevek\>: További DNS-nevek választható vesszővel tagolt listája  |
 | DirectPorts |A közvetlen kapcsolódáshoz használni kívánt portokat határozza meg. Az alapértelmezett értékek: 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<közvetlen portok\> | \<directports\>: 4 Port vesszővel tagolt listája |
 | Kulcs |Az emulátor engedélyezési kulcsa. A kulcsnak 64 bites vektor base-64 kódolásának kell lennie. | CosmosDB.Emulator.exe /Key:\<kulcs\> | \<kulcs\>: A kulcsnak egy 64 bájtos vektor Base-64 kódolásának kell lennie|
 | EnableRateLimiting | Megadja, hogy a kérelmek sebességét korlátozó viselkedés engedélyezve van. |CosmosDB.Emulator.exe /EnableRateLimiting | |

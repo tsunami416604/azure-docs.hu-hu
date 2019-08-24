@@ -11,12 +11,12 @@ manager: carmonm
 ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: cffcfe53cf30d8fc34fdb27e50ef74e71700125a
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 55843f9acaafa0c5963cfac735fdb92eeeacdc02
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607009"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982930"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-by-using-azure-logic-apps"></a>B2B-megoldások integrációs fiókjainak létrehozása és kezelése Azure Logic Apps használatával
 
@@ -60,7 +60,7 @@ Ehhez a feladathoz a Azure Portal az ebben a szakaszban, [Azure PowerShell](http
 
    | Tulajdonság | Kötelező | Value | Leírás |
    |----------|----------|-------|-------------|
-   | **Name** | Igen | <*integration-account-name*> | Az integrációs fiók neve, például "Fabrikam-Integration" |
+   | **Name** | Igen | <*integration-account-name*> | Az`-`integrációs fiók neve, amely csak betűket, számokat, kötőjeleket (), aláhúzásokat (`_`), zárójeleket (`(`, `)`) és pontokat (`.`) tartalmazhat. Ez a példa a "Fabrikam-Integration" szolgáltatást használja. |
    | **Előfizetés** | Igen | <*Azure-előfizetés-neve*> | Az Azure-előfizetés neve |
    | **Erőforráscsoport** | Igen | <*Azure-resource-group-name*> | A kapcsolódó erőforrások rendszerezéséhez használni kívánt [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) neve. Ebben a példában hozzon létre egy "FabrikamIntegration-RG" nevű új erőforráscsoportot. |
    | **Tarifacsomag** | Igen | <*díjszabás – szint*> | Az integrációs fiók díjszabási szintje, amelyet később módosíthat. Ebben a példában válassza az **ingyenes**lehetőséget. További információkért tekintse meg a következő témaköröket: <p>- [Logic Apps díjszabási modell](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Díjszabás Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) |
@@ -193,7 +193,7 @@ Ha a logikai alkalmazást egy másik integrációs fiókhoz szeretné kapcsolni,
 
    ![Olvasási/írási mód bekapcsolása](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-select-read-write.png)
 
-1. Az **adatlapon válassza** a **Szerkesztés**lehetőséget.
+1. Az adatlapon válassza a **Szerkesztés**lehetőséget.
 
    ![Az "Adatvédelem" lapon válassza a "szerkesztés" lehetőséget.](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-select-edit.png)
 
@@ -213,7 +213,7 @@ Ha a logikai alkalmazást egy másik integrációs fiókhoz szeretné kapcsolni,
 
    !["IntegrationAccount" objektum keresése](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
 
-1. Az **adatlapon válassza** a **put** lehetőséget a módosítások mentéséhez.
+1. Az adatlapon válassza a **put** lehetőséget a módosítások mentéséhez.
 
    ![A módosítások mentéséhez válassza a "put" lehetőséget.](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-save-changes.png)
 

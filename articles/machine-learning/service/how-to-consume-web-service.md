@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4aa948a785153dd0d70a9af41ae0ed25036827f8
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 03579d75ad9cbaceca1a5d42913ff546088f6cfe
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656269"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982795"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 
@@ -497,7 +497,7 @@ A következő JSON-dokumentumot kapott eredmények hasonlók:
 
 A Power BI támogatja a Azure Machine Learning webszolgáltatások felhasználását, hogy az előrejelzésekkel gazdagítsa Power BI az adatmennyiséget. 
 
-Ha olyan webszolgáltatást szeretne előállítani, amelyet a Power BIban való használathoz támogat, a sémának támogatnia kell a Power BI számára szükséges formátumot. [Megtudhatja, hogyan hozhat létre Power bi által támogatott sémát](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-script-with-dictionary-input-support-consumption-from-power-bi).
+Ha olyan webszolgáltatást szeretne előállítani, amelyet a Power BIban való használathoz támogat, a sémának támogatnia kell a Power BI számára szükséges formátumot. [Megtudhatja, hogyan hozhat létre Power bi által támogatott sémát](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-entry-script).
 
 A webszolgáltatás üzembe helyezése után Power BI adatfolyamok. [Megtudhatja, hogyan használhat Azure Machine learning](https://docs.microsoft.com/power-bi/service-machine-learning-integration)webszolgáltatást Power BIból.
 

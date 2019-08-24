@@ -6,23 +6,23 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.openlocfilehash: a77310d0e45f095260d77ead0cfe14a3ce0ebd8e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.date: 08/22/2019
+ms.openlocfilehash: 03bea7b9df929914e25ca97b382dc5c120b5a769
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623844"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983034"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
-Néhány fontos módosítást vezetünk be, hogy a bizalmas adatok beszerzése érdekében részletesebb szerepköralapú hozzáférést lehessen támogatni. A változások részeként szükség lehet némi **beavatkozásra** , ha az [érintett entitások/forgatókönyvek](#am-i-affected-by-these-changes)valamelyikét használja.
+Néhány fontos módosítást vezetünk be, hogy a bizalmas adatok beszerzése érdekében részletesebb szerepköralapú hozzáférést lehessen támogatni. A változtatások részeként előfordulhat, hogy a 2019. **szeptember 3-án** kell végrehajtania egy műveletet, ha az [érintett entitások/forgatókönyvek](#am-i-affected-by-these-changes)valamelyikét használja.
 
 ## <a name="what-is-changing"></a>Mi változik?
 
 Korábban a titkos kulcsokat a HDInsight API-n keresztül lehet megszerezni a tulajdonos, közreműködő vagy olvasó [RBAC szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)rendelkező felhasználók számára, mivel azok mindenki számára elérhetővé válnak `*/read` az engedéllyel. A titkos kulcs olyan értékként van meghatározva, amely a felhasználó szerepkörének magasabb szintű hozzáférésének megszerzéséhez használható. Ezek közé tartoznak például a fürt átjárójának HTTP-hitelesítő adatai, a Storage-fiók kulcsainak és az adatbázis hitelesítő adatai.
 
-A `Microsoft.HDInsight/clusters/configurations/action` jövőben a titkos kulcsokhoz való hozzáféréshez engedély szükséges, ami azt jelenti, hogy a felhasználók már nem férhetnek hozzá az olvasó szerepkörrel rendelkező felhasználókhoz. Az ezzel az engedéllyel rendelkező szerepkörök a közreműködők, a tulajdonosok és az új HDInsight-fürt szerepkör (továbbiak az alább láthatók).
+2019. szeptember 3-ától a `Microsoft.HDInsight/clusters/configurations/action` titkos kulcsokhoz való hozzáféréshez engedély szükséges, ami azt jelenti, hogy a felhasználók már nem férhetnek hozzá az olvasó szerepkörrel rendelkező felhasználókhoz. Az ezzel az engedéllyel rendelkező szerepkörök a közreműködők, a tulajdonosok és az új HDInsight-fürt szerepkör (továbbiak az alább láthatók).
 
 Egy új [HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) -fürtszolgáltatási szerepkört is bevezetünk, amely lehetővé teszi a titkok beolvasását anélkül, hogy a közreműködő vagy a tulajdonos rendszergazdai engedélyeit kellene megadnia. Összefoglalás:
 
@@ -59,13 +59,13 @@ A következő API-k módosulnak vagy elavultak lesznek:
 
 - [ **/Configurations/{configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) beolvasása (bizalmas adatok eltávolítva)
     - Korábban az egyes konfigurációs típusok (például titkok) beszerzésére használták.
-    - Ez az API-hívás mostantól olyan egyedi konfigurációs típusokat ad vissza, amelyekben a titkos kódok el vannak hagyva. Az összes konfiguráció, köztük a titkok beszerzéséhez használja az új POST/configurations hívást. Az átjáró beállításainak beszerzéséhez használja az új POST/getGatewaySettings hívást.
+    - Az API-hívás 2019 szeptember 3-ától kezdődően az egyes konfigurációs típusokat is visszaadja a titkos kulcsokkal. Az összes konfiguráció, köztük a titkok beszerzéséhez használja az új POST/configurations hívást. Az átjáró beállításainak beszerzéséhez használja az új POST/getGatewaySettings hívást.
 - [ **/Configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) beolvasása elavult
     - Korábban az összes konfiguráció beszerzésére használták (beleértve a titkokat is)
-    - Ez az API-hívás többé nem lesz támogatott. Az összes elérhető konfiguráció beszerzéséhez használja az új POST/configurations hívást. A bizalmas paraméterekkel rendelkező konfigurációk beszerzéséhez használja a GET/configurations/{configurationName} hívást.
+    - A 2019. szeptember 3-ától kezdődően ez az API-hívás elavult lesz, és már nem támogatott. Az összes elérhető konfiguráció beszerzéséhez használja az új POST/configurations hívást. A bizalmas paraméterekkel rendelkező konfigurációk beszerzéséhez használja a GET/configurations/{configurationName} hívást.
 - [ **/Configurations/{configurationName} közzététele**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) elavult
     - Korábban az átjáró hitelesítő adatainak frissítésére használták.
-    - Az API-hívás elavulttá válik, és már nem támogatott. Ehelyett használja az új POST/updateGatewaySettings.
+    - A 2019. szeptember 3-ától kezdődően ez az API-hívás elavult lesz, és már nem támogatott. Ehelyett használja az új POST/updateGatewaySettings.
 
 A következő helyettesítő API-k lettek hozzáadva:</span>
 
@@ -201,7 +201,7 @@ Ha ez továbbra sem működik, forduljon a HRE rendszergazdájához, és szerezz
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Mi történik, ha nem végezek műveletet?
 
-A `GET /configurations` `GET /configurations/{configurationName}` és `POST /configurations/gateway` a hívások többé nem adnak vissza semmilyen információt, és a hívás többé nem ad vissza bizalmas paramétereket, például a Storage-fiók kulcsait vagy a fürt jelszavát. Ugyanez vonatkozik a megfelelő SDK-módszerekre és a PowerShell-parancsmagokra is.
+A 2019 `GET /configurations` `GET /configurations/{configurationName}` szeptember 3-ától kezdődően a hívásoknemadnakvisszasemmilyeninformációt,ésahívástöbbénemadvisszabizalmasparamétereket,példáulaStorage-fiókkulcsaitvagyafürtjelszavát.`POST /configurations/gateway` Ugyanez vonatkozik a megfelelő SDK-módszerekre és a PowerShell-parancsmagokra is.
 
 Ha a fent említett Visual Studio-, VSCode-, IntelliJ-vagy Eclipse-eszközök valamelyikének egy régebbi verzióját használja, a továbbiakban nem fog működni, amíg nem frissíti.
 

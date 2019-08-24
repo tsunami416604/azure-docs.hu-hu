@@ -7,12 +7,12 @@ ms.date: 08/07/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d7419f6133ab32cdea3f44a8def1f736f48c1c4e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1f12545bce29d0ca32c7c7a62c56b8c9604c4268
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934145"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983139"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>Az IRS 1075 tervrajzi minta leképezésének vezérlése
 
@@ -49,17 +49,17 @@ Az igény szerinti (JIT) virtuálisgép-hozzáférés lezárja az Azure-beli vir
 A több eredetű erőforrás-megosztás (CORS) lehetővé teszi App Services-erőforrások kérését egy külső tartományból. A Microsoft azt javasolja, hogy csak a szükséges tartományokat engedélyezze az API-val, a funkcióval és a webalkalmazásokkal való interakcióhoz. Ez a terv egy [Azure Policy](../../../policy/overview.md) definíciót rendel hozzá, amely segít a CORS-erőforrások hozzáférési korlátozásának figyelésében Azure Security Centerban.
 A CORS-implementációk ismertetése segít ellenőrizni, hogy az információáramlási vezérlők implementálva vannak-e.
 
-- A CORS nem teheti lehetővé minden erőforrásnak a webalkalmazáshoz való hozzáférést
+- A CORS nem engedheti meg, hogy minden erőforrás hozzáférjen a webalkalmazáshoz
 
 ## <a name="9315-ac-5-separation-of-duties"></a>9.3.1.5 AC-5 – a feladatok elkülönítése
 
 Csak egy Azure-előfizetéshez tartozó tulajdonos nem engedélyez felügyeleti redundanciát. Ezzel szemben az Azure-előfizetések tulajdonosai is növelhetik a biztonsági réseket egy sérült tulajdonosi fiókon keresztül. Ez a tervezet segítséget nyújt a megfelelő számú Azure-előfizetési tulajdonos fenntartásához olyan [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével, amelyek az Azure-előfizetések tulajdonosainak számát naplózzák. A terv emellett Azure Policy definíciókat is hozzárendel, amelyek segítenek a rendszergazdák csoport tagságának vezérlésében a Windows rendszerű virtuális gépeken. Az előfizetés tulajdonosa és a virtuális gép rendszergazdai engedélyeinek kezelése segíthet a feladatok megfelelő elkülönítésének megvalósításában.
 
 - Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni
-- Azon Windows rendszerű virtuális gépek naplózása, amelyeken a Rendszergazdák csoport tartalmazza a megadott tagok bármelyikét
-- Azon Windows rendszerű virtuális gépek naplózása, amelyeken a Rendszergazdák csoport nem tartalmaz minden megadott tagot
-- A követelmények telepítése azon Windows rendszerű virtuális gépek naplózásához, amelyeken a Rendszergazdák csoport tartalmazza a megadott tagok bármelyikét
-- A követelmények telepítése azon Windows rendszerű virtuális gépek naplózásához, amelyeken a Rendszergazdák csoport nem tartalmaz minden megadott tagot
+- Windows rendszerű virtuális gépek naplózása, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza
+- Windows rendszerű virtuális gépek naplózása, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
+- Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza
+- Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
 - Az előfizetéshez egynél több tulajdonos rendelhető hozzá
 
 ## <a name="9316-ac-6-7-least-privilege--review-of-user-privileges"></a>9.3.1.6 AC-6 (7) legalacsonyabb jogosultság | Felhasználói jogosultságok áttekintése
@@ -67,10 +67,10 @@ Csak egy Azure-előfizetéshez tartozó tulajdonos nem engedélyez felügyeleti 
 Az Azure [szerepköralapú hozzáférés-vezérlést](../../../../role-based-access-control/overview.md) (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá a naplózási fiókokhoz, amelyeket érdemes áttekinteni. A fiókokra vonatkozó mutatók áttekintésével meggyőződhet arról, hogy a minimális jogosultsági szintű vezérlők implementálva vannak.
 
 - Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni
-- Azon Windows rendszerű virtuális gépek naplózása, amelyeken a Rendszergazdák csoport tartalmazza a megadott tagok bármelyikét
-- Azon Windows rendszerű virtuális gépek naplózása, amelyeken a Rendszergazdák csoport nem tartalmaz minden megadott tagot
-- A követelmények telepítése azon Windows rendszerű virtuális gépek naplózásához, amelyeken a Rendszergazdák csoport tartalmazza a megadott tagok bármelyikét
-- A követelmények telepítése azon Windows rendszerű virtuális gépek naplózásához, amelyeken a Rendszergazdák csoport nem tartalmaz minden megadott tagot
+- Windows rendszerű virtuális gépek naplózása, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza
+- Windows rendszerű virtuális gépek naplózása, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
+- Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza
+- Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
 - Az előfizetéshez egynél több tulajdonos rendelhető hozzá
 
 ## <a name="93112-ac-17-1-remote-access--automated-monitoring--control"></a>9.3.1.12 AC-17 (1) távoli hozzáférés | Automatikus figyelés/vezérlés
@@ -79,9 +79,9 @@ Ez a terv segít a távelérés figyelésében és vezérlésében azáltal, hog
 
 - \[Előzetes\]verzió: A jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózása
 - \[Előzetes\]verzió: Követelmények telepítése a jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózásához
-- Tárfiókokhoz való korlátlan hálózati hozzáférés naplózása
-- A távoli hibakeresést ki kell kapcsolni az API-alkalmazásban
-- A távoli hibakeresést ki kell kapcsolni a függvényalkalmazásban
+- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
+- A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz
+- A távoli hibakeresést ki kell kapcsolni függvényalkalmazás
 - Távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
 
 ## <a name="9313-au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>9.3.1.3 AU-3 (2) a naplózási rekordok tartalma | Tervezett auditálási rekordok központosított kezelése
@@ -101,7 +101,7 @@ A Azure Monitor által gyűjtött adatok naplózása egy Log Analytics munkater�
 Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendeli hozzá, amelyek figyelik a naplózási és eseménynaplózási konfigurációkat. Ezeknek a konfigurációknak a figyelése a rendszerhiba vagy a helytelen konfiguráció jelzését, valamint a javítási műveletek elvégzését is lehetővé teszi.
 
 - Diagnosztikai beállítás naplózása
-- SQL-kiszolgálói szintű naplózási beállítások naplózása
+- Az SQL Server szintű naplózási beállítások naplózása
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
 - A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
 
@@ -129,10 +129,10 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erő
 - \[Előzetes\]verzió: A Windows VM Scale Sets (VMSS) Log Analytics ügynökének üzembe helyezése
 - \[Előzetes\]verzió: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
 - Diagnosztikai beállítás naplózása
-- SQL-kiszolgálói szintű naplózási beállítások naplózása
+- Az SQL Server szintű naplózási beállítások naplózása
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
 - A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
-- Advanced Data Security üzembe helyezése SQL-kiszolgálókon
+- Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
 - Naplózás üzembe helyezése SQL-kiszolgálókon
 - Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése
 
@@ -158,7 +158,7 @@ A Azure Security Center adaptív alkalmazás-vezérlése intelligens, automatiz�
 
 Azure Site Recovery replikálja a virtuális gépeken futó munkaterheléseket egy elsődleges helyről a másodlagos helyre. Ha áramkimaradás fordul elő az elsődleges helyen, a munkaterhelés feladatátvétele a másodlagos helyen történik. Ez a tervrajz olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely a virtuális gépeket a vész-helyreállítási beállítások nélkül naplózza. A kijelző figyelése segít biztosítani a szükséges készenléti ellenőrzéseket.
 
-- Vész-helyreállítási konfigurációval nem rendelkező virtuális gépek naplózása
+- Virtuális gépek naplózása vész-helyreállítás nélkül konfigurálva
 
 ## <a name="9372-ia-2-1-identification-and-authentication-organizational-users--network-access-to-privileged-accounts"></a>9.3.7.2 IA-2 (1) azonosítás és hitelesítés (szervezeti felhasználók) | Hálózati hozzáférés a Kiemelt jogosultságú fiókokhoz
 
@@ -207,7 +207,7 @@ Ez a terv segítséget nyújt az információs rendszer biztonsági réseinak ke
 
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
 - A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
-- Advanced Data Security üzembe helyezése SQL-kiszolgálókon
+- Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
 - A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
 - A virtuális gépek biztonsági konfigurációjában lévő biztonsági réseket szervizelni kell
 - Az SQL-adatbázisok biztonsági réseit szervizelni kell
@@ -227,7 +227,7 @@ Emellett a terv a nem védett végpontokat, alkalmazásokat és tárolási fiók
 - Az internetre irányuló virtuális gépek hálózati biztonsági csoportjának szabályait meg kell szigorítani
 - Korlátozni kell az internet felé irányuló végponton keresztüli hozzáférést
 - A IaaS lévő webalkalmazások NSG-szabályait meg kell erősíteni
-- Tárfiókokhoz való korlátlan hálózati hozzáférés naplózása
+- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 
 ## <a name="93165-sc-7-3-boundary-protection--access-points"></a>9.3.16.5 SC-7 (3) határ védelme | Hozzáférési pontok
 
@@ -245,9 +245,9 @@ Az igény szerinti (JIT) virtuálisgép-hozzáférés lezárja az Azure-beli vir
 
 Ez a terv segít a továbbított adatok bizalmas és integritásának védelmében [Azure Policy](../../../policy/overview.md) definíciók kiosztásával, amelyek segítségével figyelheti a kommunikációs protokollok által megvalósított titkosítási mechanizmusokat. A kommunikáció megfelelő titkosítása segíthet a szervezet követelményeinek teljesítésében, illetve az információk jogosulatlan közzétételtől és módosítástól való védelmében.
 
-- Az API-alkalmazás elérése csak HTTPS protokollon keresztül történhet
-- Azon Windows rendszerű webkiszolgálók naplózása, amelyek nem biztonságos kommunikációs protokollokat használnak
-- A követelmények telepítése azon Windows rendszerű virtuális gépek naplózásához, amelyek nem biztonságos kommunikációs protokollokat használnak
+- Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
+- A biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózása
+- Követelmények telepítése a biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózásához
 - Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
 - Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve
 - A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell
@@ -259,8 +259,8 @@ Ebből a tervből megtudhatja, hogyan kényszerítheti ki a szabályzatot a titk
 
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
 - A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
-- Advanced Data Security üzembe helyezése SQL-kiszolgálókon
-- SQL-adatbázisok transzparens adattitkosításának üzembe helyezése
+- Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
+- Az SQL DB transzparens adattitkosításának üzembe helyezése
 - A lemezes titkosítást a virtuális gépeken kell alkalmazni
 - Titkosítás megkövetelése Data Lake Store fiókokon
 - Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
@@ -281,7 +281,7 @@ Ez a terv a hiányzó rendszerfrissítéseket, az operációs rendszer biztonsá
 
 Ez a terv segít az Endpoint Protection kezelésében, beleértve a kártékony programkódok védelmét is, ha olyan [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek figyelik a Azure Security Center virtuális gépei hiányzó Endpoint Protection szolgáltatását, és kikényszerítik a Microsoftot antimalware megoldás a Windows rendszerű virtuális gépeken.
 
-- A Windows Serverhez készült alapértelmezett Microsoft IaaSAntimalware bővítmény központi telepítése
+- A Windows Serverhez készült alapértelmezett Microsoft IaaSAntimalware-bővítmény telepítése
 - Az Endpoint Protection-megoldást a virtuálisgép-méretezési csoportokra kell telepíteni
 - Hiányzó Endpoint Protection figyelése Azure Security Center
 
@@ -305,20 +305,20 @@ Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli n
 - \[Előzetes\]verzió: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
 - A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
-- Advanced Data Security üzembe helyezése SQL-kiszolgálókon
-- Az Advanced Threat Protection üzembe helyezése tárfiókokban
+- Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
+- Komplex veszélyforrások elleni védelem üzembe helyezése a Storage-fiókokon
 - Naplózás üzembe helyezése SQL-kiszolgálókon
 - A Network Watcher üzembe helyezése virtuális hálózatok létrehozásakor
-- Fenyegetésészlelés üzembe helyezése SQL-kiszolgálókon
+- Veszélyforrások észlelésének üzembe helyezése SQL-kiszolgálókon
 
 ## <a name="93174-si-4-18-information-system-monitoring--analyze-traffic--covert-exfiltration"></a>9.3.17.4 SI-4 (18) információs rendszer figyelése | Traffic/Covert kiszűrése elemzése
 
 Az Azure Storage komplex veszélyforrások elleni védelme szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. A védelmi riasztások közé tartoznak a rendellenes hozzáférési minták, a rendellenes kibontások/feltöltések és a gyanús tárolási tevékenységek. Ezek a mutatók segítséget nyújtanak a további kiszűrése észlelésében.
 
-- Az Advanced Threat Protection üzembe helyezése tárfiókokban
+- Komplex veszélyforrások elleni védelem üzembe helyezése a Storage-fiókokon
 
 > [!NOTE]
-> Az adott Azure Policy defintions rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
+> Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
 ## <a name="next-steps"></a>További lépések
 

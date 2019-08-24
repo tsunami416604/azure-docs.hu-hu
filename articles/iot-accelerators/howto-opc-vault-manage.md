@@ -1,5 +1,5 @@
 ---
-title: Az OPC Vault tanúsítványkezelő szolgáltatás kezelése – Azure | Microsoft Docs
+title: Az OPC-tár tanúsítvány-szolgáltatásának kezelése – Azure | Microsoft Docs
 description: Az OPC-tároló legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványainak és felhasználói engedélyeinek kezelése.
 author: mregen
 ms.author: mregen
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6e53914b16bc126cdab7300d918dbb7b6b868728
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 4420e5b0d895f8ea30dbd39fc50dd7480d57d086
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973804"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995997"
 ---
-# <a name="how-to-manage-the-opc-ua-certificate-service"></a>Az OPC UA-tanúsítvány szolgáltatásának kezelése
+# <a name="how-to-manage-the-opc-vault-certificate-service"></a>Az OPC-tár tanúsítvány-szolgáltatásának kezelése
 
-Ez a cikk ismerteti az OPC UA tanúsítványkezelő szolgáltatás Azure-beli felügyeleti feladatait, a kiállító HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok megújítását, a visszavont tanúsítványok listájának (CRL) megújítását, valamint a felhasználói hozzáférés engedélyezésének és visszavonásának módját.
+Ez a cikk ismerteti az Azure-beli OPC Vault tanúsítványkezelő szolgáltatás felügyeleti feladatait, a kiállító HITELESÍTÉSSZOLGÁLTATÓ tanúsítványainak megújítását, a visszavont tanúsítványok listájának (CRL) megújítását, valamint a felhasználói hozzáférés engedélyezésének és visszavonásának módját.
 
 ## <a name="create-or-renew-the-root-ca-certificate"></a>A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozása vagy megújítása
 

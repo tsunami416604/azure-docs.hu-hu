@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e73a64a9782535da31e2eacbaa2740007707c774
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
-ms.translationtype: MT
+ms.openlocfilehash: 7d9d6dc8a980c543aa1a94c0ed4e9ae845769567
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872408"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997905"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak 
 
@@ -433,7 +433,7 @@ Vagy a következőket teheti:
 * Kísérlet küldése [a CLI bővítmény használatával](reference-azure-machine-learning-cli.md#experiments).
 * Kísérlet küldése a [vs Code bővítmény](how-to-vscode-tools.md#train-and-tune-models)használatával.
 
-## <a name="github-tracking-and-integration"></a>GitHub-követés és-integráció
+## <a name="git-tracking-and-integration"></a>Git-követés és-integráció
 
 Ha olyan képzést indít el, ahol a forrás könyvtára helyi git-tárház, a rendszer a tárház adatait a futtatási előzményekben tárolja. Az adattár aktuális véglegesítő AZONOSÍTÓját például az előzmények részeként naplózza a rendszer.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: aa2cfbee6feeacf46003fdc244f0aeea5df0f41a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 51a51e63f1d45d67cda63d4491a3bac572434dc0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847341"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991911"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés Azure Data Lake Storage Gen2
 
@@ -31,7 +31,7 @@ Ha szeretné megtudni, hogyan rendeljen hozzá szerepköröket rendszerbiztonsá
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>A szerepkör-hozzárendelések hatása a fájl-és könyvtár szintű hozzáférés-vezérlési listára
 
-A RBAC szerepkör-hozzárendelések használata egy hatékony mechanizmus a hozzáférési engedélyek szabályozására, ez egy nagyon durva módszer a hozzáférés-vezérlési listákhoz képest. A RBAC legkisebb részletessége a fájlrendszer szintjén történik, és ezt a rendszer magasabb prioritással értékeli, mint az ACL-ek. Ezért ha egy szerepkört egy rendszerbiztonsági tag számára társít egy fájlrendszer hatókörében, akkor az adott rendszerbiztonsági tag az adott fájlrendszer összes könyvtárához és fájljához tartozó engedélyezési szinttel rendelkezik, függetlenül az ACL-hozzárendeléstől.
+A RBAC szerepkör-hozzárendelések használata egy hatékony mechanizmus a hozzáférési engedélyek szabályozására, ez egy nagyon durva módszer a hozzáférés-vezérlési listákhoz képest. A RBAC legkisebb részletessége a tároló szintjén van, ezért a rendszer az ACL-ekkel magasabb prioritással értékeli. Ezért ha egy szerepkört egy rendszerbiztonsági tag számára rendel hozzá egy tároló hatókörében, a rendszerbiztonsági tag az adott szerepkörhöz tartozó összes könyvtárra és fájlra vonatkozó engedélyezési szinttel rendelkezik, függetlenül az ACL-hozzárendeléstől.
 
 Ha egy rendszerbiztonsági tag egy [beépített szerepkörön](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)vagy egy egyéni szerepkörön keresztül kap RBAC-adatengedélyeket, akkor ezeket az engedélyeket először a kérelem engedélyezése után értékeli ki a rendszer. Ha a kért műveletet a rendszerbiztonsági tag RBAC-hozzárendelései engedélyezik, akkor az engedélyezés azonnal megoldódik, és a rendszer nem végez további ACL-ellenőrzéseket. Ha a rendszerbiztonsági tag nem rendelkezik RBAC-hozzárendeléssel, vagy a kérelem művelete nem felel meg a hozzárendelt engedélynek, akkor az ACL-ellenőrzések végrehajtásával megállapíthatja, hogy a rendszerbiztonsági tag jogosult-e a kért művelet végrehajtására.
 
@@ -81,7 +81,7 @@ A hozzáférési ACL-ek és az alapértelmezett ACL-ek azonos struktúrával ren
 
 ### <a name="levels-of-permission"></a>Engedélyek szintjei
 
-A fájlrendszer-objektum engedélyei a következők: **olvasás**, **írás**és **végrehajtás**, és a fájlokon és könyvtárakon is használhatók az alábbi táblázatban látható módon:
+A Container objektumokra vonatkozó engedélyek a következők: **olvasás**, **írás**és **végrehajtás**, és a fájlokon és könyvtárakon is használhatók az alábbi táblázatban látható módon:
 
 |            |    Fájl     |   Címtár |
 |------------|-------------|----------|
@@ -90,7 +90,7 @@ A fájlrendszer-objektum engedélyei a következők: **olvasás**, **írás**és
 | **Végrehajtás (X)** | Nem jelent semmit a Data Lake Storage Gen2 kontextusában | Egy könyvtár alárendelt elemeinek bejárásához szükséges. |
 
 > [!NOTE]
-> Ha csak ACL-ek (nem RBAC) használatával ad meg engedélyeket, az egyszerű szolgáltatásnak olvasási vagy írási jogosultságot kell adnia egy fájlhoz, meg kell adnia a szolgáltatásnév számára a fájlrendszert, valamint a mappák hierarchiájában lévő minden olyan mappát, amely a fájlhoz vezethet.
+> Ha csak ACL-ek (nem RBAC) használatával ad meg engedélyeket, az egyszerű szolgáltatásnév eléréséhez olvasási vagy írási hozzáférést kell biztosítania a szolgáltatásnak a tárolóhoz, valamint a mappák hierarchiájának minden mappájához, amely a fájlhoz vezethet.
 
 #### <a name="short-forms-for-permissions"></a>Az engedélyek rövid alakjai
 
@@ -154,7 +154,7 @@ A POSIX ACL-ekben minden felhasználó egy *elsődleges csoporttal*van társítv
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>A tulajdonos csoport kiosztása új fájlhoz vagy könyvtárhoz
 
-* **1. eset**: A gyökérkönyvtár "/". Ezt a könyvtárat akkor hozza létre a rendszer, amikor létrejön egy Data Lake Storage Gen2 fájlrendszer. Ebben az esetben a tulajdonos csoport arra a felhasználóra van beállítva, aki létrehozta a fájlrendszert, ha az a OAuth használatával történt. Ha a fájlrendszer megosztott kulccsal, egy fiók SAS vagy egy szolgáltatás SAS-vel lett létrehozva, akkor a tulajdonos és a tulajdonos csoport a **$superuser**értékre van állítva.
+* **1. eset**: A gyökérkönyvtár "/". Ez a könyvtár akkor jön létre, amikor létrejön egy Data Lake Storage Gen2 tároló. Ebben az esetben a tulajdonos csoport arra a felhasználóra van beállítva, aki létrehozta a tárolót, ha az a OAuth használatával történt. Ha a tároló megosztott kulccsal, a fiók SAS-vel vagy egy szolgáltatás SAS-vel lett létrehozva, akkor a tulajdonos és a tulajdonoscsoport $superuserra van állítva.
 * **2. eset** (Minden egyéb eset): Új elem létrehozásakor a rendszer átmásolja a tulajdonos csoportot a szülő könyvtárából.
 
 ##### <a name="changing-the-owning-group"></a>A tulajdonos csoport módosítása
@@ -216,13 +216,13 @@ return ( (desired_perms & perms & mask ) == desired_perms)
 Ahogy az a hozzáférés-ellenőrzési algoritmusban is látható, a maszk korlátozza a megnevezett felhasználók, a tulajdonos csoport és a nevesített csoportok hozzáférését.  
 
 > [!NOTE]
-> Új Data Lake Storage Gen2 fájlrendszer esetén a gyökérkönyvtár ("/") hozzáférési ACL-jéhez tartozó maszk alapértelmezett értéke 750, a könyvtárak és a 640 esetében pedig a fájlok. A fájlok nem kapják meg az X bitet, mert nem relevánsak a csak tárolót tartalmazó rendszer fájljaiban.
+> Új Data Lake Storage Gen2 tároló esetén a gyökérkönyvtár ("/") hozzáférési ACL-jéhez tartozó maszk alapértelmezés szerint 750 a könyvtárakhoz és a 640 fájlokhoz. A fájlok nem kapják meg az X bitet, mert nem relevánsak a csak tárolót tartalmazó rendszer fájljaiban.
 >
 > A maszk hívásos alapon adható meg. Ez lehetővé teszi, hogy a különböző fogyasztási rendszerek, például a fürtök különböző hatékony maszkokkal rendelkezzenek a fájl műveleteihez. Ha egy adott kérelemhez maszk van megadva, az teljesen felülbírálja az alapértelmezett maszkot.
 
 #### <a name="the-sticky-bit"></a>Ragadós bit
 
-A ragadós bit a POSIX fájlrendszer fejlettebb funkciója. Data Lake Storage Gen2 kontextusában nem valószínű, hogy a Sticky bit szükséges. Összefoglalva, ha a ragadós bit engedélyezve van egy címtárban, a gyermek elem csak törölhető vagy átnevezhető az alárendelt elem tulajdonos felhasználója számára.
+A ragadós bit egy POSIX-tároló fejlettebb funkciója. Data Lake Storage Gen2 kontextusában nem valószínű, hogy a Sticky bit szükséges. Összefoglalva, ha a ragadós bit engedélyezve van egy címtárban, a gyermek elem csak törölhető vagy átnevezhető az alárendelt elem tulajdonos felhasználója számára.
 
 A Sticky bit nem jelenik meg a Azure Portalban.
 
@@ -291,7 +291,7 @@ Vagy
 
 ### <a name="who-is-the-owner-of-a-file-or-directory"></a>Ki a fájl vagy könyvtár tulajdonosa?
 
-Egy fájl vagy könyvtár létrehozója lesz a tulajdonos. A gyökérkönyvtár esetében ez a fájlrendszert létrehozó felhasználó identitása.
+Egy fájl vagy könyvtár létrehozója lesz a tulajdonos. A gyökérkönyvtár esetében ez annak a felhasználónak az identitása, aki létrehozta a tárolót.
 
 ### <a name="which-group-is-set-as-the-owning-group-of-a-file-or-directory-at-creation"></a>Melyik csoport van beállítva egy fájl vagy könyvtár tulajdonosi csoportjaként a létrehozáskor?
 
@@ -320,7 +320,7 @@ Ha a szolgáltatásnév helyes OID-je van, lépjen a Storage Explorer a **hozzá
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Támogatja Data Lake Storage Gen2 az ACL-ek öröklését?
 
-Az Azure RBAC-hozzárendelések öröklik. A hozzárendelések az előfizetés, az erőforráscsoport és a Storage-fiók erőforrásairól a fájlrendszer erőforrására vannak lebontva.
+Az Azure RBAC-hozzárendelések öröklik. A hozzárendelések az előfizetés, az erőforráscsoport és a Storage-fiók erőforrásaiból származnak a tároló-erőforráshoz.
 
 Az ACL-ek nem öröklik az öröklést. Az alapértelmezett ACL-ek azonban az alárendelt alkönyvtárakhoz és a szülő könyvtár alatt létrehozott fájlokhoz tartozó ACL-ek beállítására is használhatók. 
 

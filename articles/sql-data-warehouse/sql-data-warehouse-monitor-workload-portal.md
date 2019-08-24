@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 73e7312eacd11fbec052d2b0b7781528c3b3d50f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 176762e0d1c007f924d779a1b77dd52c7ed56e01
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575382"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981488"
 ---
 # <a name="monitor-workload---azure-portal"></a>Munkaterhelés figyelése – Azure Portal
 
@@ -36,7 +36,7 @@ Navigáljon Log Analytics munkaterületek Tallózás paneljére, és hozzon lét
 
 ![Elemzési munkaterület hozzáadása](media/sql-data-warehouse-monitor/add_analytics_workspace_2.png)
 
-A munkaterületekkel kapcsolatos további információkért tekintse meg [](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#create-a-workspace)az alábbi dokumentációt.
+A munkaterületekkel kapcsolatos további információkért tekintse meg [](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace#create-a-workspace)az alábbi dokumentációt.
 
 ## <a name="turn-on-diagnostic-logs"></a>Diagnosztikai naplók bekapcsolása 
 

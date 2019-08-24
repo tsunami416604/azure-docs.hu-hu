@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/21/2019
 ms.author: jingwang
-ms.openlocfilehash: 1baa28dd1c9cc323e3dc7ca6fc5fbe2eac54652a
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 0cc7313531e92aa0f57b09a9252902848297bdbf
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829150"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996664"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Adatok másolása Azure SQL Database felügyelt példányról a Azure Data Factory használatával
 
@@ -126,31 +126,33 @@ Különböző hitelesítési típus tekintse meg a következő szakaszok az Elő
 
 A szolgáltatás egyszerű Azure AD-alapú hitelesítésének használatához kövesse az alábbi lépéseket:
 
-1. [Hozzon létre egy Azure Active Directory alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) a Azure Portal. Jegyezze fel az alkalmazás nevét és a következő értékeket, amelyek meghatározzák a társított szolgáltatást:
+1. A [felügyelt példányok Azure Active Directory rendszergazdájának](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)üzembe helyezéséhez kövesse az alábbi lépéseket.
+
+2. [Hozzon létre egy Azure Active Directory alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) a Azure Portal. Jegyezze fel az alkalmazás nevét és a következő értékeket, amelyek meghatározzák a társított szolgáltatást:
 
     - Alkalmazásazonosító
     - Alkalmazáskulcs
     - Bérlőazonosító
 
-2. [Hozzon létre bejelentkezési adatokat](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) a Azure Data Factory felügyelt identitáshoz. SQL Server Management Studio (SSMS) alkalmazásban kapcsolódjon a felügyelt példányhoz egy rendszergazdaként szolgáló SQL Server-fiókkal. A **Master** adatbázisban futtassa a következő T-SQL-T:
+3. [Hozzon létre bejelentkezési adatokat](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) a Azure Data Factory felügyelt identitáshoz. SQL Server Management Studio (SSMS) alkalmazásban kapcsolódjon a felügyelt példányhoz egy rendszergazdaként szolgáló SQL Server-fiókkal. A **Master** adatbázisban futtassa a következő T-SQL-T:
 
     ```sql
     CREATE LOGIN [your application name] FROM EXTERNAL PROVIDER
     ```
 
-2. [Hozzon létre tárolt adatbázis-felhasználókat](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) a Azure Data Factory felügyelt identitáshoz. Kapcsolódjon az adatbázishoz a vagy a rendszerből, amelyről másolni kívánja az adatait, futtassa a következő T-SQL-T: 
+4. [Hozzon létre tárolt adatbázis-felhasználókat](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) a Azure Data Factory felügyelt identitáshoz. Kapcsolódjon az adatbázishoz a vagy a rendszerből, amelyről másolni kívánja az adatait, futtassa a következő T-SQL-T: 
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER
     ```
 
-3. Adja meg a Data Factory felügyelt identitáshoz szükséges engedélyeket, ahogyan az SQL-felhasználók és mások számára általában nem. Futtassa a következő kódot. További lehetőségekért tekintse meg [ezt a dokumentumot](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
+5. Adja meg a Data Factory felügyelt identitáshoz szükséges engedélyeket, ahogyan az SQL-felhasználók és mások számára általában nem. Futtassa a következő kódot. További lehetőségekért tekintse meg [ezt a dokumentumot](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your application name]
     ```
 
-4. Azure SQL Database felügyelt példány társított szolgáltatásának konfigurálása Azure Data Factoryban.
+6. Azure SQL Database felügyelt példány társított szolgáltatásának konfigurálása Azure Data Factoryban.
 
 **Példa: egyszerű szolgáltatásnév hitelesítésének használata**
 
@@ -185,25 +187,27 @@ Az adatok előállítója felügyelt identitással társítható az [Azure-erőf
 
 A felügyelt identitásos hitelesítés használatához kövesse az alábbi lépéseket.
 
-1. [Hozzon létre bejelentkezési adatokat](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) a Azure Data Factory felügyelt identitáshoz. SQL Server Management Studio (SSMS) alkalmazásban kapcsolódjon a felügyelt példányhoz egy rendszergazdaként szolgáló SQL Server-fiókkal. A **Master** adatbázisban futtassa a következő T-SQL-T:
+1. A [felügyelt példányok Azure Active Directory rendszergazdájának](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)üzembe helyezéséhez kövesse az alábbi lépéseket.
+
+2. [Hozzon létre bejelentkezési adatokat](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) a Azure Data Factory felügyelt identitáshoz. SQL Server Management Studio (SSMS) alkalmazásban kapcsolódjon a felügyelt példányhoz egy rendszergazdaként szolgáló SQL Server-fiókkal. A **Master** adatbázisban futtassa a következő T-SQL-T:
 
     ```sql
     CREATE LOGIN [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-2. [Hozzon létre tárolt adatbázis-felhasználókat](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) a Azure Data Factory felügyelt identitáshoz. Kapcsolódjon az adatbázishoz a vagy a rendszerből, amelyről másolni kívánja az adatait, futtassa a következő T-SQL-T: 
+3. [Hozzon létre tárolt adatbázis-felhasználókat](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) a Azure Data Factory felügyelt identitáshoz. Kapcsolódjon az adatbázishoz a vagy a rendszerből, amelyről másolni kívánja az adatait, futtassa a következő T-SQL-T: 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-3. Adja meg a Data Factory felügyelt identitáshoz szükséges engedélyeket, ahogyan az SQL-felhasználók és mások számára általában nem. Futtassa a következő kódot. További lehetőségekért tekintse meg [ezt a dokumentumot](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
+4. Adja meg a Data Factory felügyelt identitáshoz szükséges engedélyeket, ahogyan az SQL-felhasználók és mások számára általában nem. Futtassa a következő kódot. További lehetőségekért tekintse meg [ezt a dokumentumot](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your Data Factory name]
     ```
 
-4. Azure SQL Database felügyelt példány társított szolgáltatásának konfigurálása Azure Data Factoryban.
+5. Azure SQL Database felügyelt példány társított szolgáltatásának konfigurálása Azure Data Factoryban.
 
 **Példa: felügyelt identitásos hitelesítés használata**
 

@@ -1,6 +1,6 @@
 ---
-title: Összegyűjtheti és elemezheti a Windows-eseménynaplók az Azure Monitor |} A Microsoft Docs
-description: Ismerteti, hogyan konfigurálhatja a gyűjtemény Azure figyelő Windows Eseménynapló és hozhatnak létre a rekordok részleteit.
+title: Windows-eseménynaplók összegyűjtése és elemzése a Azure Monitorban | Microsoft Docs
+description: Ismerteti, hogyan konfigurálható a Windows-eseménynaplók gyűjteménye Azure Monitor és a létrehozott rekordok részleteivel.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,66 +13,69 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 8fcab1ead4ab6135e715dc173829178e43f8af2a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cc81a8d8023d0724f4ecb71c157e8f575aa9edc8
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236916"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997474"
 ---
-# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Windows Eseménynapló-adatforrások az Azure monitorban
-Windows-eseménynaplók közé tartoznak a leggyakoribb [adatforrások](agent-data-sources.md) Windows-ügynökök használata, mivel számos alkalmazásban a Windows eseménynaplójába írhatja az adatok gyűjtéséhez.  Események, például a rendszer- és standard szintű naplók is összegyűjtheti a bármely kell figyelnie alkalmazások által létrehozott egyéni naplók megadása mellett.
+# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Windows Eseménynapló-adatforrások a Azure Monitor-ban
+A Windows-eseménynaplók a leggyakoribb adatforrások, amelyek a Windows-ügynökökkel való adatgyűjtéshez használják, mivel számos alkalmazás ír a Windows-eseménynaplóba. [](agent-data-sources.md)  Az eseményeket összegyűjtheti a szabványos naplókból, például a rendszerből és az alkalmazásból is, és megadhatja a figyelni kívánt alkalmazások által létrehozott egyéni naplókat.
 
 ![Windows-események](media/data-sources-windows-events/overview.png)     
 
-## <a name="configuring-windows-event-logs"></a>Windows eseménynaplók konfigurálása
-A Windows eseménynaplók konfigurálása a [adatok menü a Speciális beállítások](agent-data-sources.md#configuring-data-sources).
+## <a name="configuring-windows-event-logs"></a>Windows-eseménynaplók konfigurálása
+Konfigurálja a Windows-eseménynaplókat a [Speciális beállítások adatok menüjéből](agent-data-sources.md#configuring-data-sources).
 
-Az Azure Monitor csak a Windows Eseménynapló beállításaiban megadott eseményeket gyűjti.  Írja be a napló nevét, majd kattintson az Eseménynapló is hozzáadhat **+** .  Az egyes naplókhoz csak a kiválasztott súlyossági szint esetén csak az események összegyűjtése.  Ellenőrizze a súlyossági szint esetén csak az adott napló, amely szeretne gyűjteni.  További feltételeket az események szűrése nem tud biztosítani.
+Azure Monitor csak a beállításokban megadott Windows-eseménynaplókban lévő eseményeket gyűjti.  Eseménynapló hozzáadásához írja be a napló nevét, majd kattintson a elemre **+** .  Minden napló esetében csak a kijelölt megszakításokkal rendelkező események lesznek összegyűjtve.  Tekintse át a gyűjteni kívánt naplóhoz tartozó megszakításokat.  Az események szűréséhez nem adhat meg további feltételeket.
 
-Írja be az Eseménynapló nevét, az Azure Monitor közös Eseménynapló nevének javaslatokat biztosít. Ha a hozzáadni kívánt napló nem jelenik meg a listában, továbbra is hozzáadhat, írja be a naplófájl teljes neve. Az Eseménynapló használatával is megtalálhatja a naplófájl teljes neve. Nyissa meg az eseménynaplóban a *tulajdonságok* a napló lapjáról, és másolja a karakterláncot, a *teljes fájlvisszaállítási név* mező.
+Amikor beírja az Eseménynapló nevét, Azure Monitor a gyakori Eseménynapló-nevekre vonatkozó javaslatokat is tartalmaz. Ha a hozzáadni kívánt napló nem jelenik meg a listában, akkor a napló teljes nevének beírásával továbbra is hozzáadhatja azt. A napló teljes nevét az Eseménynapló használatával találja. Az eseménynaplóban nyissa meg a napló *Tulajdonságok* lapját, és másolja a karakterláncot a *teljes név* mezőből.
 
 ![Windows-események konfigurálása](media/data-sources-windows-events/configure.png)
 
+> [!NOTE]
+> A Windows-Eseménynapló kritikus eseményeinek súlyossága "Error" lesz a Azure Monitor naplókban.
+
 ## <a name="data-collection"></a>Adatgyűjtés
-Az Azure Monitor gyűjt minden eseményt, amely megfelel a kiválasztott súlyossági egy figyelt az eseménynaplóból, az esemény jön létre.  Az ügynök a helyére az összegyűjtő minden eseménynaplóban rögzíti.  Ha az ügynököt egy ideig offline állapotba kerül, majd azt eseményeit gyűjti, ahol utolsó abbamaradtak, akkor is, ha az események jöttek létre, miközben az ügynök offline állapotban volt.  Lehetőség van, nem lesznek összegyűjtve, ha az ügynök nélküli állapotában felülírásra elveszne eseményekkel rendelkező burkolja az Eseménynapló ezeket az eseményeket.
+Azure Monitor gyűjt minden olyan eseményt, amely megfelel egy figyelt eseménynaplóból származó kiválasztott súlyosságnak, mivel az esemény létrejön.  Az ügynök rögzíti a helyét minden olyan eseménynaplóban, amelyről gyűjt.  Ha az ügynök egy ideig offline állapotba kerül, akkor akkor is gyűjti az eseményeket, amikor az ügynök offline állapotba került, még akkor is, ha ezek az események létre lettek hozva.  Ezek az események nem gyűjthetők össze, ha az Eseménynapló az ügynök offline állapotában felülírt, nem gyűjtött eseményekkel van becsomagolva.
 
 >[!NOTE]
->Az Azure Monitor nem gyűjt be a forrás SQL-kiszolgáló által létrehozott események naplózása *MSSQLSERVER* , amely tartalmazza a kulcsszavak - azonosítójú 18453 *klasszikus* vagy *naplózási sikeres* és kulcsszó *0xa0000000000000*.
+>A Azure Monitor nem gyűjti az SQL Server által létrehozott naplózási eseményeket a 18453-as azonosítójú azonosítójú eseménnyel, amely kulcsszavakat tartalmaz – a *klasszikus* vagy a *naplózási sikerességet* és a kulcsszavak *0xa0000000000000*.
 >
 
-## <a name="windows-event-records-properties"></a>Windows-esemény rekordok tulajdonságai
-Windows eseményrekordok rendelkezik olyan típusú **esemény** , és a tulajdonságok a következő táblázatban:
+## <a name="windows-event-records-properties"></a>Windows-események rekordjainak tulajdonságai
+A Windows-események rekordjainak típusa **esemény** , és a tulajdonságok a következő táblázatban láthatók:
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Computer |Az esemény gyűjtötte a program a számítógép nevét. |
+| Számítógép |Annak a számítógépnek a neve, amelyre az eseményt gyűjtötték. |
 | EventCategory |Az esemény kategóriája. |
-| EventData |Összes esemény adatai fájlt nyers formátumban. |
-| EventID |Az esemény számát. |
-| eventLevel |A numerikus formában esemény súlyosságát. |
-| EventLevelName |A szöveges formátumú esemény súlyosságát. |
-| Eseménynapló |Az összegyűjtött az eseményt az Eseménynapló neve. |
-| ParameterXml |Esemény paraméterértékek XML formátumban. |
-| ManagementGroupName |A System Center Operations Manager-ügynököket a felügyeleti csoport neve.  Más ügynökök esetén ez az érték van. `AOI-<workspace ID>` |
-| RenderedDescription |A paraméterértékek esemény leírása |
-| source |Az esemény forrását. |
-| SourceSystem |Az esemény gyűjtötte a program az ügynök típusa. <br> Csatlakozás OpsManager – Windows-ügynök, közvetlenül vagy Operations Manager által felügyelt <br> Linux – az összes Linux-ügynökök  <br> AzureStorage – az Azure Diagnostics |
-| TimeGenerated |Dátum és a Windows az esemény létrehozásának ideje. |
-| UserName |Az esemény naplózójának a fiók felhasználóneve. |
+| EventData |Az összes eseményvezérelt érték nyers formátumban. |
+| EventID |Az esemény száma. |
+| EventLevel |Az esemény súlyossága numerikus formában. |
+| EventLevelName |Az esemény súlyossága szöveges formában. |
+| EventLog |Annak az Eseménynaplónak a neve, amelyből az eseményt gyűjtötték. |
+| ParameterXml |Az esemény paramétereinek értékei XML formátumban. |
+| ManagementGroupName |System Center Operations Manager ügynökök felügyeleti csoportjának neve.  Más ügynökök esetében ez az érték`AOI-<workspace ID>` |
+| RenderedDescription |Esemény leírása paraméter-értékekkel |
+| Source |Az esemény forrása. |
+| SourceSystem |Az a típusú ügynök, amelyből az eseményt gyűjtötték. <br> OpsManager – Windows-ügynök, közvetlen kapcsolat vagy Operations Manager felügyelt <br> Linux – minden Linux-ügynök  <br> AzureStorage – Azure Diagnostics |
+| TimeGenerated |Az esemény Windowsban történő létrehozásának dátuma és időpontja. |
+| UserName |Az eseményt naplózó fiók felhasználóneve. |
 
-## <a name="log-queries-with-windows-events"></a>Windows-események log lekérdezéseket.
-Az alábbi táblázat példákat különböző Windows-esemény lekérő log lekérdezéseket.
+## <a name="log-queries-with-windows-events"></a>Lekérdezések naplózása Windows-eseményekkel
+Az alábbi táblázat a Windows-események rekordjait lekérő lekérdezések különböző példáit ismerteti.
 
 | Lekérdezés | Leírás |
 |:---|:---|
-| Esemény |Minden Windows-eseményt. |
-| Esemény &#124; ahol Error == "error" |Minden Windows események hiba súlyosságát. |
-| Esemény &#124; forrás count() összegzése |Események száma a Windows forrás. |
-| Esemény &#124; ahol Error == "error" &#124; forrás count() összegzése |Hiba történt események száma a Windows forrás. |
+| Esemény |Minden Windows-esemény. |
+| Esemény &#124; , ahol EventLevelName = = "hiba" |Minden Windows-esemény, amelynek súlyossága a hiba. |
+| Esemény &#124; összegzésének száma () forrás szerint |Windows-események száma forrás szerint. |
+| Esemény &#124; , ahol a EventLevelName = = " &#124; Error" összefoglalók száma () forrás szerint |Windows-hibák száma forrás szerint. |
 
 
 ## <a name="next-steps"></a>További lépések
-* Konfigurálja a gyűjtendő más Log Analytics [adatforrások](agent-data-sources.md) elemzés céljából.
+* A Log Analytics konfigurálásával más [](agent-data-sources.md) adatforrásokat is gyűjthet az elemzéshez.
 * Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
-* Konfigurálása [teljesítményszámláló-gyűjtemény](data-sources-performance-counters.md) a Windows-ügynököktől.
+* [Teljesítményszámlálók gyűjteményének](data-sources-performance-counters.md) konfigurálása a Windows-ügynökökből.

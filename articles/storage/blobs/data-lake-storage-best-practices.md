@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: a5bfc664c412c93bbf3e522b01528e8247be3291
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 1f1db1c347709ed7c8587ed8b5523a231e373999
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016055"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991873"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Ajánlott eljárások Azure Data Lake Storage Gen2 használatához
 
@@ -31,11 +31,11 @@ Ha a biztonsági csoporthoz engedélyek vannak rendelve, a csoportba tartozó fe
 
 ### <a name="security-for-groups"></a>Csoportok biztonsága
 
-Ha vagy a felhasználóknak olyan Storage-fiókban lévő adatelérésre van szükségük, amelyen engedélyezve van a hierarchikus névtér, érdemes Azure Active Directory biztonsági csoportokat használni. Előfordulhat, hogy egyes ajánlott csoportok a fájlrendszer gyökeréhez **ReadOnlyUsers**, **WriteAccessUsers**és **FullAccessUsers** , és a fő alkönyvtárak esetében is elkülönítik azokat. Ha a felhasználók más várható felhasználói csoportjai is hozzáadhatók, de még nincsenek azonosítva, érdemes lehet olyan dummy biztonsági csoportokat létrehozni, amelyek bizonyos mappákhoz férnek hozzá. A biztonsági csoport használatával gondoskodhat arról, hogy a hosszú feldolgozási idő elkerülhető legyen, amikor új engedélyeket rendel több ezer fájlhoz.
+Ha vagy a felhasználóknak olyan Storage-fiókban lévő adatelérésre van szükségük, amelyen engedélyezve van a hierarchikus névtér, érdemes Azure Active Directory biztonsági csoportokat használni. Előfordulhat, hogy egyes ajánlott csoportok a tároló gyökeréhez **ReadOnlyUsers**, **WriteAccessUsers**és **FullAccessUsers** , és a fő alkönyvtárak esetében is elkülönítik azokat. Ha a felhasználók más várható felhasználói csoportjai is hozzáadhatók, de még nincsenek azonosítva, érdemes lehet olyan dummy biztonsági csoportokat létrehozni, amelyek bizonyos mappákhoz férnek hozzá. A biztonsági csoport használatával gondoskodhat arról, hogy a hosszú feldolgozási idő elkerülhető legyen, amikor új engedélyeket rendel több ezer fájlhoz.
 
 ### <a name="security-for-service-principals"></a>Az egyszerű szolgáltatások biztonsága
 
-Azure Active Directory egyszerű szolgáltatásokat általában olyan szolgáltatások használják, mint a Azure Databricks a Data Lake Storage Gen2 lévő adateléréshez. Sok ügyfél esetében előfordulhat, hogy egy Azure Active Directory egyszerű szolgáltatás megfelelő, és teljes körű jogosultsággal rendelkezik a Data Lake Storage Gen2 fájlrendszer gyökerében. Más ügyfeleknél több olyan fürtre lehet szükség, amely különböző egyszerű szolgáltatásokkal rendelkezik, ahol az egyik fürt teljes hozzáféréssel rendelkezik az adathoz, és egy másik fürt, amely csak olvasási hozzáféréssel rendelkezik. 
+Azure Active Directory egyszerű szolgáltatásokat általában olyan szolgáltatások használják, mint a Azure Databricks a Data Lake Storage Gen2 lévő adateléréshez. Sok ügyfél esetében előfordulhat, hogy egy Azure Active Directory egyszerű szolgáltatás megfelelő, és teljes körű engedélyekkel rendelkezik a Data Lake Storage Gen2 tároló gyökerében. Más ügyfeleknél több olyan fürtre lehet szükség, amely különböző egyszerű szolgáltatásokkal rendelkezik, ahol az egyik fürt teljes hozzáféréssel rendelkezik az adathoz, és egy másik fürt, amely csak olvasási hozzáféréssel rendelkezik. 
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>A Data Lake Storage Gen2 tűzfal engedélyezése az Azure-szolgáltatás elérésével
 

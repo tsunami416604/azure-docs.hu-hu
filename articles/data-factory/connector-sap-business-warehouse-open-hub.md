@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: e94c4f179174a3957aef8828687ebf1fbb299903
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 0c4a70f337166a304bd8664da2180fcda29ca8ac
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967423"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996643"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból az Open hub használatával Azure Data Factory
 
@@ -174,7 +174,7 @@ Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját l
 
 SAP BW Open hub adatainak másolásához állítsa a forrás típusát a másolás tevékenység **SapOpenHubSource**. A másolási tevékenység **forrása** szakaszban nem szükségesek további Type-specifikus tulajdonságok.
 
-Az adatok betöltésének felgyorsításához beállíthatja [`parallelCopies`](copy-activity-performance.md#parallel-copy) , hogy a másolási tevékenység a SAP BW Open hub adatainak párhuzamosan történő betöltéséhez. Ha például a négy értékre `parallelCopies` van állítva, Data Factory egyszerre négy RFC-hívást hajt végre, és mindegyik RFC-hívás lekéri az adatok egy részét a SAP BW Open hub táblából, particionálva a DTP-kérés azonosítója és a csomag azonosítója alapján. Ez akkor érvényes, ha az egyedi DTP-kérések és-csomagok AZONOSÍTÓjának száma nagyobb, `parallelCopies`mint a értéke.
+Az adatok betöltésének felgyorsításához beállíthatja [`parallelCopies`](copy-activity-performance.md#parallel-copy) , hogy a másolási tevékenység a SAP BW Open hub adatainak párhuzamosan történő betöltéséhez. Ha például a négy értékre `parallelCopies` van állítva, Data Factory egyszerre négy RFC-hívást hajt végre, és mindegyik RFC-hívás lekéri az adatok egy részét a SAP BW Open hub táblából, particionálva a DTP-kérés azonosítója és a csomag azonosítója alapján. Ez akkor érvényes, ha az egyedi DTP-kérések és-csomagok AZONOSÍTÓjának száma nagyobb, `parallelCopies`mint a értéke. Az adatok file-alapú adattárba másolásakor a rendszer úgy is Újrafuttatja, hogy több fájlként is ír egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájlba írás.
 
 **Példa:**
 

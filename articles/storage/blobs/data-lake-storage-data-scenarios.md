@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: cafe761d2b566a7bddce503765c11bf9f8e00f2a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2954f0bfcfe78243c2df12182f45034f46c8391d
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847455"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991895"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>A Azure Data Lake Storage Gen2 használata big data követelményekhez
 
@@ -25,7 +25,7 @@ A big data feldolgozásának négy fő szakasza van:
 > * Az adatletöltés
 > * Az adatmegjelenítés
 
-Először hozzon létre egy Storage-fiókot és egy fájlrendszert. Ezután adjon hozzáférést az adathoz. Ennek a cikknek az első néhány része segít ezeknek a feladatoknak a megvalósításában. A többi szakaszban kiemeljük az egyes feldolgozási fázisok beállításait és eszközeit.
+Először hozzon létre egy Storage-fiókot és egy tárolót. Ezután adjon hozzáférést az adathoz. Ennek a cikknek az első néhány része segít ezeknek a feladatoknak a megvalósításában. A többi szakaszban kiemeljük az egyes feldolgozási fázisok beállításait és eszközeit.
 
 ## <a name="create-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2 fiók létrehozása
 
@@ -33,16 +33,16 @@ A Data Lake Storage Gen2 fiók olyan Storage-fiók, amely hierarchikus névtérr
 
 A létrehozáshoz tekintse [meg a gyors útmutató: Hozzon létre egy Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)Storage-fiókot.
 
-## <a name="create-a-file-system"></a>Fájlrendszer létrehozása
+## <a name="create-a-container"></a>Tároló létrehozása
 
-A *fájlrendszer* a mappák és fájlok tárolója. Legalább az egyiknek szüksége van arra, hogy megkezdje az adatbevitelt a Storage-fiókban.  Az alábbi lista felsorolja azokat az eszközöket, amelyeket a létrehozásához használhat.
+Itt találja azokat az eszközöket, amelyek segítségével tárolót hozhat létre a fájlokhoz.
 
 |Eszköz | Útmutatás |
 |---|--|
-|Azure Storage Explorer | [Fájlrendszer létrehozása Storage Explorer használatával](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-file-system) |
+|Azure Storage Explorer | [Tároló létrehozása Storage Explorer használatával](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-file-system) |
 |AzCopy | [BLOB-tároló vagy fájlmegosztás létrehozása a AzCopyV10 használatával](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
-|Hadoop File System (HDFS) parancssori felület (CLI) és HDInsight |[Fájlrendszer létrehozása a HDFS és a HDInsight használatával](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-hdfs-data-lake-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system) |
-|Kód Azure Databricks jegyzetfüzetben|[Storage-fiók fájlrendszerének (Scala) létrehozása](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-storage-account-file-system) <br><br> [Fájlrendszer létrehozása és csatlakoztatása (Python)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-databricks-spark?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system-and-mount-it)|
+|Hadoop-tároló (HDFS) parancssori felület (CLI) és HDInsight |[Tároló létrehozása a HDFS és a HDInsight használatával](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-hdfs-data-lake-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system) |
+|Kód Azure Databricks jegyzetfüzetben|[Storage-fiók tárolójának (Scala) létrehozása](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-storage-account-file-system) <br><br> [Tároló létrehozása és csatlakoztatása (Python)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-databricks-spark?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system-and-mount-it)|
 
 A legegyszerűbben Storage Explorer vagy AzCopy használatával hozhat létre fájlrendszereket. A HDInsight és a Databricks használatával a fájlrendszerek létrehozásához valamivel több munka szükséges. Ha azonban HDInsight-vagy Databricks-fürtöket kíván használni az adatfeldolgozáshoz, akkor először létre kell hoznia a fürtöket, és a HDFS CLI-vel kell használnia a fájlrendszerek létrehozásához.  
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 090c229c5e97ede8eb7a397ce8f4d13d8735a346
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404608"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992355"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -117,6 +117,10 @@ Erre az ikonra kattintva megjelenik az adatfolyam végrehajtási terve és az az
 * Megadhatja, hogy az ADF hány partíciót fog használni. Az egyes forrásokon & a fogadó transzformációk, valamint az egyes átalakítások esetében beállíthatja a particionálási sémát. Kisebb fájlok esetében előfordulhat, hogy a "single Partition" (egyetlen partíció) lehetőség kiválasztásával jobb és gyorsabb lehet a kis méretű fájlok particionálását kérő Spark használata.
 * Ha nem rendelkezik elegendő információval a forrás adatairól, válassza a "ciklikus multiplexelés" particionálás lehetőséget, és állítsa be a partíciók számát.
 * Ha megkeresi az adatokat, és úgy találja, hogy van olyan oszlopa, amely jó kivonatoló kulcs lehet, használja a kivonatoló particionálási lehetőséget.
+* Ha az adatelőnézet és a folyamat hibakeresése során hibakeresést végez, vegye figyelembe, hogy a fájl alapú forrás-adatkészletek korlát-és mintavételezési mérete csak a visszaadott sorok számára vonatkozik, nem pedig az olvasott sorok száma. Ez azért fontos, mert ez hatással lehet a hibakeresési végrehajtás teljesítményére, és valószínűleg a folyamat meghibásodását okozza.
+* Ne feledje, hogy a hibakeresési fürtök alapértelmezésben kisméretű egycsomópontos fürtök, ezért a hibakereséshez használjon ideiglenes kis fájlokat. Nyissa meg a hibakeresési beállításokat, és mutasson az adatai egy kis részhalmazára egy ideiglenes fájl használatával.
+
+![Hibakeresési beállítások](media/data-flow/debugsettings3.png "Hibakeresési beállítások")
 
 ### <a name="file-naming-options"></a>Fájl elnevezési beállításai
 

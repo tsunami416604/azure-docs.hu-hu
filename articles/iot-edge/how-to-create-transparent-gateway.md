@@ -4,17 +4,17 @@ description: Az Azure IoT Edge-eszköz használata, amely képes feldolgozni az 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 08/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a91860e9ec8d503a01d079925466093d19bbbccf
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e61ddd6cb51795fad564b6246fb24ea4ce48f028
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698606"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982960"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>A transzparens átjáróként működő IoT Edge-eszköz konfigurálása
 
@@ -52,8 +52,6 @@ A következő lépések végigvezetik a tanúsítványok létrehozásának és t
 Az Azure IoT Edge-eszköz konfigurálásához átjáróként. A következő operációs rendszerek egyikének IoT Edge telepítési lépéseit használhatja:
   * [Windows](how-to-install-iot-edge-windows.md)
   * [Linux](how-to-install-iot-edge-linux.md)
-
-Ez a cikk az *átjáró állomásneve* több ponton is hivatkozik. Az átjáró állomásneve deklarálva van a config. YAML fájl **hostname** paraméterében a IoT Edge Gateway eszközön. Ez a cikk a tanúsítványok létrehozásához használatos, és az alsóbb rétegbeli eszközök kapcsolódási karakterláncában hivatkozik rá. Az átjáró állomásneve feloldhatónak kell lennie egy IP-címhez, vagy a DNS-t vagy egy gazdagépet tartalmazó bejegyzést kell használnia.
 
 ## <a name="generate-certificates-with-windows"></a>Windows-tanúsítványok létrehozása
 
@@ -142,15 +140,18 @@ Ebben a szakaszban három tanúsítványokat hoznak létre, és csatlakoztassa �
    Ez a parancsfájl több tanúsítványt és kulcsot hoz létre, de a cikk későbbi részében a következőkre fogunk hivatkozni:
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-2. Hozza létre a IoT Edge-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát és titkos kulcsát a következő paranccsal. Adja meg az átjáró gazdagépét, amely az átjáró eszköz iotedge\config.YAML fájljában található. Az átjáró állomásneve a fájlok elnevezésére és a tanúsítvány létrehozása során használatos. 
+2. Hozza létre a IoT Edge-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát és titkos kulcsát a következő paranccsal. Adja meg a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány nevét, például **MyEdgeDeviceCA**. A név a fájlok elnevezésére és a tanúsítvány létrehozása során használható. 
 
    ```powershell
-   New-CACertsEdgeDevice "<gateway hostname>"
+   New-CACertsEdgeDeviceCA "MyEdgeDeviceCA"
    ```
 
    Ez a parancsfájl több tanúsítványt és kulcsot hoz létre, beleértve azt is, hogy a jelen cikk későbbi részében fogunk hivatkozni:
-   * `<WRKDIR>\certs\iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * `<WRKDIR>\private\iot-edge-device-<gateway hostname>.key.pem`
+   * `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
+
+   >[!TIP]
+   >Ha a **MyEdgeDeviceCA**eltérő nevet ad meg, akkor a parancs által létrehozott tanúsítványok és kulcsok ezt a nevet fogják tükrözni. 
 
 Most, hogy rendelkezik a tanúsítványokkal, ugorjon a [tanúsítványok telepítése az átjárón](#install-certificates-on-the-gateway) című lépésre.
 
@@ -193,6 +194,8 @@ Ebben a szakaszban három tanúsítványokat hoznak létre, és csatlakoztassa �
 
 1. Hozza létre a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt és egy köztes tanúsítványt. Ezek a tanúsítványok vannak elhelyezve  *\<WRKDIR >* .
 
+   Ha már létrehozott egy gyökérszintű és köztes tanúsítványokat ebben a munkakönyvtárban, ne futtassa újra ezt a parancsfájlt. A parancsfájl újrafuttatása felülírja a meglévő tanúsítványokat. Ehelyett folytassa a következő lépéssel. 
+
    ```bash
    ./certGen.sh create_root_and_intermediate
    ```
@@ -200,15 +203,18 @@ Ebben a szakaszban három tanúsítványokat hoznak létre, és csatlakoztassa �
    A szkript több tanúsítványt és kulcsot hoz létre. Jegyezze fel az egyiket, amelyet a következő szakaszban fogunk megtekinteni:
    * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`
 
-2. Hozza létre a IoT Edge-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát és titkos kulcsát a következő paranccsal. Adja meg az átjáró állomásnevét, amely az átjáró eszköz iotedge/config. YAML fájljában található. Az átjáró állomásneve a fájlok elnevezésére és a tanúsítvány létrehozása során használatos. 
+2. Hozza létre a IoT Edge-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát és titkos kulcsát a következő paranccsal. Adja meg a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány nevét, például **MyEdgeDeviceCA**. A név a fájlok elnevezésére és a tanúsítvány létrehozása során használható. 
 
    ```bash
-   ./certGen.sh create_edge_device_certificate "<gateway hostname>"
+   ./certGen.sh create_edge_device_ca_certificate "MyEdgeDeviceCA"
    ```
 
    A szkript több tanúsítványt és kulcsot hoz létre. Jegyezze fel a kettőt, amelyet a következő szakaszban fogunk megtekinteni: 
-   * `<WRKDIR>/certs/iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * `<WRKDIR>/private/iot-edge-device-<gateway hostname>.key.pem`
+   * `<WRKDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * `<WRKDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
+
+   >[!TIP]
+   >Ha a **MyEdgeDeviceCA**eltérő nevet ad meg, akkor a parancs által létrehozott tanúsítványok és kulcsok ezt a nevet fogják tükrözni. 
 
 ## <a name="install-certificates-on-the-gateway"></a>Az átjáró tanúsítványok telepítése
 
@@ -216,8 +222,8 @@ Most, hogy egy tanúsítványlánc végrehajtott, szüksége az IoT Edge-átjár
 
 1. A következő fájlokat másolja  *\<WRKDIR >* . Mentse ezeket bárhol az IoT Edge-eszközön. A cél könyvtárát, az IoT Edge-eszköz használata a kifejezés  *\<CERTDIR >* . 
 
-   * Eszköz CA-tanúsítvány –  `<WRKDIR>\certs\iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * Eszköz CA titkos kulcs- `<WRKDIR>\private\iot-edge-device-<gateway hostname>.key.pem`
+   * Eszköz CA-tanúsítvány –  `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * Eszköz CA titkos kulcs- `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
    * Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ –`<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
    Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.  Ha saját maga hozta létre a tanúsítványokat a IoT Edge eszközön, kihagyhatja ezt a lépést, és használhatja a munkakönyvtár elérési útját.
@@ -233,16 +239,16 @@ Most, hogy egy tanúsítványlánc végrehajtott, szüksége az IoT Edge-átjár
 
       ```yaml
       certificates:
-        device_ca_cert: "<CERTDIR>\\certs\\iot-edge-device-<gateway hostname>-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>\\private\\iot-edge-device-<gateway hostname>.key.pem"
+        device_ca_cert: "<CERTDIR>\\certs\\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>\\private\\iot-edge-device-ca-MyEdgeDeviceCA.key.pem"
         trusted_ca_certs: "<CERTDIR>\\certs\\azure-iot-test-only.root.ca.cert.pem"
       ```
    
    * Linux: 
       ```yaml
       certificates:
-        device_ca_cert: "<CERTDIR>/certs/iot-edge-device-<gateway hostname>-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>/private/iot-edge-device-<gateway hostname>.key.pem"
+        device_ca_cert: "<CERTDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem"
         trusted_ca_certs: "<CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem"
       ```
 

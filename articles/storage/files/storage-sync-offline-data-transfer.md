@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b0c9d55846a0240dde92de16ea17e9403a112c3e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9264aa6d24256b991abefe35b41045caa2e76d67
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699222"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997779"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Tömeges adatáttelepítés Azure File Syncba
 A tömeges adatmennyiségeket kétféleképpen is áttelepítheti Azure File Syncba:
@@ -22,9 +22,10 @@ A tömeges adatmennyiségeket kétféleképpen is áttelepítheti Azure File Syn
 
 Ez a cikk azt ismerteti, hogyan lehet a fájlokat offline módon áttelepíteni úgy, hogy az kompatibilis legyen Azure File Syncával. A fájlok ütközésének elkerüléséhez és a fájl-és mappa-hozzáférés-vezérlési listák (ACL-ek) és időbélyegek megőrzéséhez kövesse az alábbi utasításokat.
 
-## <a name="online-migration-tools"></a>Online áttelepítési eszközök
-A cikkben ismertetett folyamat nem csak Data Box, hanem más offline áttelepítési eszközök esetében is működik. Emellett olyan online eszközökre is használható, mint a AzCopy, a Robocopy vagy a partneri eszközök és szolgáltatások. Azonban a kezdeti feltöltési kihívás leküzdése érdekében kövesse a cikkben ismertetett lépéseket, hogy azok a Azure File Syncsal kompatibilis módon használhassák ezeket az eszközöket.
+## <a name="migration-tools"></a>Migrálási eszközök
+A cikkben ismertetett folyamat nem csak Data Box, hanem más offline áttelepítési eszközök esetében is működik. Olyan eszközökre is használható, mint például a AzCopy, a Robocopy vagy a partneri eszközök és szolgáltatások, amelyek közvetlenül az interneten keresztül működnek. A kezdeti feltöltési kihívás leküzdéséhez azonban kövesse a jelen cikkben ismertetett lépéseket, hogy azok a Azure File Syncrel kompatibilis módon használhassák ezeket az eszközöket.
 
+Bizonyos esetekben a Azure File Sync elfogadása előtt át kell térnie az egyik Windows-kiszolgálóról egy másikra. [Storage áttelepítési szolgáltatás](https://aka.ms/storagemigrationservice) (SMS) segítségére lehet. Szükség van-e arra, hogy az Azure File Sync által támogatott kiszolgálói operációsrendszer-verzióra kell áttérnie (Windows Server 2012R2 és fel), vagy egyszerűen csak át kell telepítenie, mert új rendszert vásárol a Azure File Synchoz, az SMS számos funkciót és előnyt biztosít, amelyek segítenek a migr az elvégzett működés zökkenőmentes.
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>Az adatok offline átvitelére szolgáló eszköz használatának előnyei
 Az alábbi fő előnyökkel jár az olyan átviteli eszközök használata, mint a Data Box az offline áttelepítéshez:

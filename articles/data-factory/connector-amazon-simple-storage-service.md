@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 7b47aadc28a5e2ea6dbf2a7a8a23cdb713a0b981
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ecdd560997391a4dfed8b01f30825eb9b3845792
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839884"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996705"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Adatok másolása az Amazon Simple Storage szolgáltatásból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -24,6 +24,8 @@ ms.locfileid: "68839884"
 > * [Aktuális verzió](connector-amazon-simple-storage-service.md)
 
 Ez a cikk az Amazon Simple Storage Service (Amazon S3) adatainak másolását ismerteti. Azure Data Factory szolgáltatásról, olvassa el a [bevezető cikk](introduction.md).
+
+Az Amazon S3-ból az Azure Storage-ba irányuló adatáttelepítési forgatókönyv esetén további információ a [használat Azure Data Factory az Amazon S3-ból az Azure Storage-ba](data-migration-guidance-s3-azure-storage.md)való Migrálás során.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 

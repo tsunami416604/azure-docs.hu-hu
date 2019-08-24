@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ba9cda5aeebaf0764068a463cdb55f3ef5542ea3
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928033"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997819"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz 
 
@@ -67,6 +67,9 @@ A következő szakasz segítségével eldöntheti, hogy melyik hitelesítési m�
 
 ## <a name="decision-tree"></a>Döntési fa
 
+> [!NOTE]
+> A PTA csak alternatív AZONOSÍTÓval működik, ha a UserPrincipalName másik AZONOSÍTÓként van kiválasztva. Csak ezután szinkronizálja a helyszíni UserPrincipalName az AD-ből a HRE-be. További információ: [az áteresztő hitelesítés támogatása "alternatív azonosító" néven felhasználónévként a "userPrincipalName" helyett?](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname).
+
 ![Azure AD-hitelesítés döntési fája](./media/choose-ad-authn/azure-ad-authn-image1.png)
 
 A döntéssel kapcsolatos kérdések részletei:
@@ -118,7 +121,7 @@ Tekintse át a [jelszó-kivonatok szinkronizálásának megvalósítása](../../
 
 * **Speciális forgatókönyvek**. Az átmenő hitelesítés a bejelentkezés időpontjában kényszeríti a helyszíni fiók házirendjét. A hozzáférés megtagadható például akkor, ha egy helyszíni felhasználó fiókjának állapota le van tiltva, ki van zárva, vagy a [jelszó lejárt](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) , vagy az órákon kívül esik, amikor a felhasználó bejelentkezhet. 
 
-    Az átmenő hitelesítéssel többtényezős hitelesítést igénylő szervezeteknek az Azure multi-Factor Authentication (MFA) vagy a [feltételes hozzáférés egyéni vezérlőit](../../active-directory/conditional-access/controls.md#custom-controls-preview)kell használniuk. Ezek a szervezetek nem használhatnak olyan harmadik féltől származó vagy helyszíni többtényezős hitelesítési módszert, amely az összevonásra támaszkodik. A speciális funkciók megkövetelik, hogy a jelszó-kivonat szinkronizálása telepítve legyen, függetlenül attól, hogy az áteresztő hitelesítést választja-e. Ilyen például az Identity Protection kiszivárgott hitelesítő adatairól szóló jelentés.
+    Az átmenő hitelesítéssel többtényezős hitelesítést igénylő szervezeteknek az Azure Multi-Factor Authentication (MFA) vagy a [feltételes hozzáférés egyéni vezérlőit](../../active-directory/conditional-access/controls.md#custom-controls-preview)kell használniuk. Ezek a szervezetek nem használhatnak olyan harmadik féltől származó vagy helyszíni többtényezős hitelesítési módszert, amely az összevonásra támaszkodik. A speciális funkciók megkövetelik, hogy a jelszó-kivonat szinkronizálása telepítve legyen, függetlenül attól, hogy az áteresztő hitelesítést választja-e. Ilyen például az Identity Protection kiszivárgott hitelesítő adatairól szóló jelentés.
 
 * Az **üzletmenet folytonossága**. Javasoljuk, hogy két további áteresztő hitelesítési ügynököt helyezzen üzembe. Ezek az Extrák a Azure AD Connect-kiszolgáló első ügynökén kívül vannak. Ez a további üzemelő példány biztosítja a hitelesítési kérések magas rendelkezésre állását. Ha három ügynök van telepítve, az egyik ügynök továbbra is meghiúsulhat, ha egy másik ügynök karbantartás alatt áll. 
 
@@ -176,7 +179,7 @@ Az alábbi ábrák az Azure AD Hybrid Identity megoldással használható, az eg
 
 |Figyelembe|Jelszó-kivonat szinkronizálása + zökkenőmentes SSO|Átmenő hitelesítés + zökkenőmentes egyszeri bejelentkezés|Összevonás az AD FS-sel|
 |:-----|:-----|:-----|:-----|
-|Hol történik a hitelesítés?|A felhőben|A felhőben a biztonságos jelszó-ellenőrzési csere után a helyszíni hitelesítési ügynökkel|Helyszíni|
+|Hol történik a hitelesítés?|A felhőben|A felhőben a biztonságos jelszó-ellenőrzési csere után a helyszíni hitelesítési ügynökkel|Helyszíni követelmények|
 |A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|Nincsenek|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
 |Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|Nincsenek|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
 |Van SSL-tanúsítványra vonatkozó követelmény?|Nem|Nem|Igen|

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b626f906738e3a6e65053408cfdc2002d459a6e2
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
-ms.translationtype: MT
+ms.openlocfilehash: 347e7c2aa2ff4fb4f188847b81d03006c1909166
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973856"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997648"
 ---
-# <a name="build-and-deploy-the-opc-ua-certificate-management-service"></a>Az OPC UA tanúsítványkezelő szolgáltatás létrehozása és üzembe helyezése
+# <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Az OPC Vault Certificate Management szolgáltatás létrehozása és üzembe helyezése
 
-Ez a cikk azt ismerteti, hogyan helyezhető üzembe az OPC UA tanúsítványkezelő szolgáltatás az Azure-ban.
+Ez a cikk bemutatja, hogyan helyezheti üzembe az OPC Vault tanúsítványkezelő szolgáltatást az Azure-ban.
 
 > [!NOTE]
 > További információ a központi telepítés részleteiről és az utasításokról: GitHub [OPC Vault adattár](https://github.com/Azure/azure-iiot-opc-vault-service).
@@ -59,20 +59,20 @@ vagy adjon meg egy teljes parancssort:
 7. Ha ezt az üzembe helyezést tervezi, a Hozzáadás `-development 1` gombra kattintva engedélyezheti a hencegő felületet és telepítheti a hibakeresési buildeket.
 6. A parancsfájl utasításait követve jelentkezzen be az előfizetésbe, és adjon meg további információkat.
 9. Sikeres felépítési és üzembe helyezési művelet után a következő üzenetnek kell megjelennie:
+   ```
+   To access the web client go to:
+   https://myResourceGroup.azurewebsites.net
 
-```
-To access the web client go to:
-https://myResourceGroup.azurewebsites.net
+   To access the web service go to:
+   https://myResourceGroup-service.azurewebsites.net
 
-To access the web service go to:
-https://myResourceGroup-service.azurewebsites.net
+   To start the local docker GDS server:
+   .\myResourceGroup-dockergds.cmd
 
-To start the local docker GDS server:
-.\myResourceGroup-dockergds.cmd
+   To start the local dotnet GDS server:
+   .\myResourceGroup-gds.cmd
+   ```
 
-To start the local dotnet GDS server:
-.\myResourceGroup-gds.cmd
-```
 Ha problémákba ütközik, kövesse az [alábbi](#troubleshooting-deployment-failures)lépéseket.
 
 8. Nyissa meg a kedvenc böngészőjét, és nyissa meg az alkalmazás lapját:`https://myResourceGroup.azurewebsites.net`
@@ -86,7 +86,7 @@ Az is lehetséges, hogy csak a webalkalmazás bináris fájljait telepíti újra
 
 A sikeres üzembe helyezést követően bátran elkezdheti a szolgáltatások használatát: [Az OPC Vault tanúsítványkezelő szolgáltatás kezelése](howto-opc-vault-manage.md)
 
-## <a name="delete-the-certificate-management-services-from-the-subscription"></a>A Tanúsítványkezelő szolgáltatások törlése az előfizetésből
+## <a name="delete-the-certificate-management-service-from-the-subscription"></a>A Tanúsítványkezelő szolgáltatás törlése az előfizetésből
 
 1. Jelentkezzen be a Azure Portalba `https://portal.azure.com`:.
 2. Keresse meg azt az erőforráscsoportot, amelyben a szolgáltatást telepítették.

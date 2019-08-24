@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 2fd9ccff68eb368107a299af02a54ae6fc6cc0e2
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: edb9e50cceed95d8ca77567e7c1228704b5f177d
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946147"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982364"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Gyors útmutató: Rendszerkép-besorolási projekt létrehozása a Custom Vision Node. js SDK-val
 
@@ -45,7 +45,7 @@ Hozzon létre egy *sample. js* nevű új fájlt a kívánt Project-címtárban.
 
 ### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
 
-Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba.
+Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Szúrja be az előfizetési kulcsokat a megfelelő definíciók között, és állítsa a sampleDataRoot Path értéket a rendszerkép mappájának elérési útjára. Győződjön meg arról, hogy a végpont értéke megegyezik a [Customvision.ai](https://www.customvision.ai/)címen létrehozott betanítási és előrejelzési végpontokkal.
 
 ```javascript
 const util = require('util');

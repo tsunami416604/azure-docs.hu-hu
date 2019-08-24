@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 7f43507566109a52b914f27e37e5392345ec2eaf
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6e3bf7b4fb60d81ff8883c2592de3739572bf2fa
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946169"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997797"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Gyors útmutató: Objektum-észlelési projekt létrehozása a Custom Vision Node. js SDK-val
 
@@ -26,20 +26,19 @@ Ez a cikk a Custom Vision SDK és a Node. js használatával való ismerkedéshe
 - A [Node. js 8](https://www.nodejs.org/en/download/) vagy újabb verziója telepítve van.
 - a [NPM](https://www.npmjs.com/) telepítve van.
 
+[!INCLUDE [get-keys](includes/get-keys.md)]
+
+[!INCLUDE [node-get-images](includes/node-get-images.md)]
+
+
 ## <a name="install-the-custom-vision-sdk"></a>A Custom Vision SDK telepítése
 
-A Node. js-hez készült Custom Vision Service SDK-k telepítéséhez futtassa a következő parancsokat:
+A (z) Node. js-hez készült Custom Vision Service SDK-k a projektben való telepítéséhez futtassa a következő parancsokat:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
-
-A képeket a [Node. js-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)használatával töltheti le.
-
-[!INCLUDE [get-keys](includes/get-keys.md)]
-
-[!INCLUDE [node-get-images](includes/node-get-images.md)]
 
 ## <a name="add-the-code"></a>A kód hozzáadása
 
@@ -47,9 +46,10 @@ Hozzon létre egy *sample. js* nevű új fájlt a kívánt Project-címtárban.
 
 ### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
 
-Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. Ne feledje, hogy az objektumészlelési és a képosztályozási projekt létrehozásánál a különbség a **create_project** hívásban megadott tartományban rejlik.
+Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Szúrja be az előfizetési kulcsokat a megfelelő definíciók között, és állítsa a sampleDataRoot Path értéket a rendszerkép mappájának elérési útjára. Győződjön meg arról, hogy a végpont értéke megegyezik a [Customvision.ai](https://www.customvision.ai/)címen létrehozott betanítási és előrejelzési végpontokkal. Ne feledje, hogy az objektumészlelési és a képosztályozási projekt létrehozásánál a különbség a **create_project** hívásban megadott tartományban rejlik.
 
 ```javascript
+const fs = require('fs');
 const util = require('util');
 const TrainingApi = require("@azure/cognitiveservices-customvision-training");
 const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");

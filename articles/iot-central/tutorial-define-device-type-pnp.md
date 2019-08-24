@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d58cec644c75baaac37862f445477da92075c44d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 877769041d1587c6c1b0f4dbaff51d5a1a7924b5
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907354"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997710"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-preview-features"></a>Oktatóanyag: Új eszköz típusának definiálása az Azure IoT Central alkalmazásban (előzetes verziójú funkciók)
 
@@ -70,7 +70,7 @@ Előzetes funkciókat használó új Azure IoT Central-alkalmazás létrehozása
 
     További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
 
-Szükség van a **EnvironmentalSensorInline. capabilitymodel. JSON** fájl helyi példányára is, amely tartalmazza a [IoT Plug and Play](https://aka.ms/iot-pnp-docs) eszköz képességének modelljét. [Innen](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json)töltheti le. Kattintson a jobb gombbal az oldalra, és válassza a **Mentés másként**lehetőséget.
+Szükség van a **EnvironmentalSensorInline. capabilitymodel. JSON** fájl helyi példányára is, amely tartalmazza a [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) eszköz képességének modelljét. [Innen](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json)töltheti le. Kattintson a jobb gombbal az oldalra, és válassza a **Mentés másként**lehetőséget.
 
 Miután letöltötte a fájlt, nyissa meg egy szövegszerkesztőben, és cserélje le a két példányát `<YOUR_COMPANY_NAME_HERE>` a névre. Csak az a – z, A-Z, 0-9 és aláhúzás karaktereket használja.
 

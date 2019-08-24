@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: e4b7de3931c0d3508e5af6aa6bf85dfa18641aee
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 059a614dff7fc0eab5419e3e2ffdeaeecb79ad99
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624985"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981388"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL Database felügyelt példány hozzáadása feladatátvételi csoporthoz
 
@@ -47,7 +47,7 @@ Ebben a lépésben létrehozza az erőforráscsoportot és a feladatátvételi c
 1. Válassza a **Létrehozás** lehetőséget az **SQL felügyelt példány** létrehozási oldalának elindításához. 
 1. A **Azure SQL Database felügyelt példány létrehozása** lap **alapok** lapján
     1. A **Project Details (projekt részletei**) területen válassza ki az előfizetését a legördülő menüből, majd válassza az **Új erőforráscsoport létrehozása** lehetőséget. Írja be az erőforráscsoport nevét, például `myResourceGroup`:. 
-    1. A **felügyelt példány részletei**területen adja meg a felügyelt példány nevét, valamint azt a régiót, ahol a felügyelt példányt telepíteni szeretné. Ügyeljen arra, hogy egy [párosított régióval](/azure/best-practices-availability-paired-regions)rendelkező régiót válasszon ki. Hagyja meg a számítási és a **tárolási** értékeket az alapértelmezett értékeken. 
+    1. A **felügyelt példány részletei**területen adja meg a felügyelt példány nevét, valamint azt a régiót, ahol a felügyelt példányt telepíteni szeretné. Hagyja meg a számítási és a **tárolási** értékeket az alapértelmezett értékeken. 
     1. A **rendszergazdai fiók**területen adjon meg egy rendszergazdai bejelentkezési azonosítót, `azureuser`például, és egy összetett rendszergazdai jelszót. 
 
     ![Elsődleges MI létrehozása](media/sql-database-managed-instance-failover-group-tutorial/primary-sql-mi-values.png)
@@ -79,7 +79,7 @@ Virtuális hálózat létrehozásához kövesse az alábbi lépéseket:
     | **Name** |  A másodlagos felügyelt példány által használandó virtuális hálózat neve, például `vnet-sql-mi-secondary`:. |
     | **Címtér** | A virtuális hálózat címterület, például `10.128.0.0/16`:. | 
     | **Előfizetés** | Az az előfizetés, amelyben az elsődleges felügyelt példány és az erőforráscsoport található. |
-    | **Régió** | A másodlagos felügyelt példány üzembe helyezésének helye; Ennek egy [párosított régióban](/azure/best-practices-availability-paired-regions) kell lennie az elsődleges felügyelt példányhoz.  |
+    | **Régió** | Az a hely, ahová a másodlagos felügyelt példányt telepíteni fogja. |
     | **Alhálózat** | Az alhálózat neve. `default`Alapértelmezés szerint meg van biztosítva. |
     | **Címtartomány**| Az alhálózat címtartomány. Ennek eltérőnek kell lennie, mint az elsődleges felügyelt példány virtuális hálózata által használt alhálózat-címtartomány, `10.128.0.0/24`például:.  |
     | &nbsp; | &nbsp; |
@@ -92,7 +92,6 @@ Ebben a lépésben egy másodlagos felügyelt példányt fog létrehozni a Azure
 
 A második felügyelt példánynak a következőket kell tennie:
 - Üresnek kell lennie. 
-- Egy [párosított régión](/azure/best-practices-availability-paired-regions) belül, az elsődleges felügyelt példányával. 
 - Az elsődleges felügyelt példánytól eltérő alhálózattal és IP-tartománnyal rendelkezik. 
 
 A másodlagos felügyelt példány létrehozásához kövesse az alábbi lépéseket: 
@@ -108,7 +107,7 @@ A másodlagos felügyelt példány létrehozásához kövesse az alábbi lépés
     | **Előfizetés** |  Az az előfizetés, amelyben az elsődleges felügyelt példánya. |
     | **Erőforráscsoport**| Az az erőforráscsoport, amelyben az elsődleges felügyelt példánya. |
     | **Felügyelt példány neve** | Az új másodlagos felügyelt példány neve, például`sql-mi-secondary`  | 
-    | **Régió**| A másodlagos felügyelt példányhoz tartozó [párosított régió](/azure/best-practices-availability-paired-regions) helye.  |
+    | **Régió**| A másodlagos felügyelt példány helye.  |
     | **Felügyelt példány rendszergazdai bejelentkezési neve** | Az új másodlagos felügyelt példányhoz használni kívánt bejelentkezési azonosító, például `azureuser`:. |
     | **Jelszó** | Összetett jelszó, amelyet az új másodlagos felügyelt példányhoz tartozó rendszergazdai bejelentkezés fog használni.  |
     | &nbsp; | &nbsp; |

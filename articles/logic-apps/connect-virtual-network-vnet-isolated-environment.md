@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 5991aec681b00583a9c66328aed601593c864c63
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: ce663dec47f99b6ba4751e23e7ac7f13de866a5d
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517205"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982981"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás Azure-beli virtuális hálózatokhoz Azure Logic Appsból integrációs szolgáltatási környezet (ISE) használatával
 
@@ -117,7 +117,7 @@ A keresőmezőbe írja be szűrőként az "integrációs szolgáltatási környe
    |----------|----------|-------|-------------|
    | **Előfizetés** | Igen | <*Azure-előfizetés-neve*> | A környezetéhez használni kívánt Azure-előfizetés |
    | **Erőforráscsoport** | Igen | <*Azure-resource-group-name*> | Az Azure-erőforráscsoport, amelyben létre szeretné hozni a környezetet |
-   | **integrációs szolgáltatási környezet neve** | Igen | <*környezet – név*> | A környezetnek megfelelő név |
+   | **Integrációs szolgáltatási környezet neve** | Igen | <*környezet – név*> | Az ISE neve, amely csak betűket, számokat, kötőjeleket`-`(), aláhúzásokat (`_`) és pontokat (`.`) tartalmazhat. |
    | **Location** | Igen | <*Azure-datacenter-region*> | Az Azure-adatközpont régiója, ahol üzembe helyezheti a környezetet |
    | **Termékváltozat** | Igen | **Prémium** vagy **fejlesztői (SLA nélkül)** | A létrehozandó és használandó ISE SKU. Az adatsku-változatok közötti különbségekért lásd: [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)-i. <p><p>**Fontos**: Ez a beállítás csak az ISE létrehozásakor érhető el, és később nem módosítható. |
    | **További kapacitás** | Prémium szintű <br>Igen <p><p>Developer: <br>Nem alkalmazható | Prémium szintű <br>0 – 10 <p><p>Developer: <br>Nem alkalmazható | Az ISE-erőforráshoz használandó további feldolgozási egységek száma. A kapacitás létrehozás utáni hozzáadásával kapcsolatban lásd: [ISE-kapacitás hozzáadása](#add-capacity). |
@@ -136,7 +136,7 @@ A keresőmezőbe írja be szűrőként az "integrációs szolgáltatási környe
 
    * Az [osztály nélküli Inter-domain Routing (CIDR) formátumot](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) és egy B osztályú címtartományt használ.
 
-   * Legalább egy `/27` címet használ a Címterület számára, mert minden alhálózatnak *legalább 32-* es címnek kell lennie *.* Példa:
+   * Legalább egy `/27` címet használ a Címterület számára, mert minden alhálózatnak legalább 32-es címnek kelllennie. Példa:
 
      * `10.0.0.0/27`32-es címmel rendelkezik, mert 2<sup>(32-27)</sup> 2<sup>5</sup> vagy 32.
 
