@@ -75,8 +75,8 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | Karakterlánc |
-| type | NvidiaGpuDriverWindows | Karakterlánc |
+| publisher | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
 
