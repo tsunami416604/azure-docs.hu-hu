@@ -41,6 +41,7 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/security/develop/secure-web-app">Webalkalmazás egy Linux-tárolóban</a>
+          - html: <a href="/azure/security/develop/secure-pci-web-app">Bankkártyaágazat</a>
   - title: Alapelvek
     items:
       - type: list

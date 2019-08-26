@@ -193,6 +193,8 @@
           href: api-management-howto-create-groups.md
         - name: Üzembe helyezés több Azure-régióban
           href: api-management-howto-deploy-multi-region.md
+        - name: IP-címek lekérése
+          href: api-management-howto-ip-addresses.md
         - name: Eseménynaplózás az Azure Event Hubs segítségével
           href: api-management-howto-log-event-hubs.md
         - name: Kérések naplózása az Azure Application Insights segítségével

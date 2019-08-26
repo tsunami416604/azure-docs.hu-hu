@@ -95,8 +95,10 @@
               href: data-box-disk-deploy-set-up.md
             - name: 3 – Másolás és ellenőrzés
               href: data-box-disk-deploy-copy-data.md
-            - name: '4 – Visszaküldés, feltöltés, ellenőrzés'
+            - name: 4 – Visszaküldés
               href: data-box-disk-deploy-picked-up.md
+            - name: 5 – Feltöltés ellenőrzése
+              href: data-box-disk-deploy-upload-verify.md
         - name: Alapelvek
           items:
             - name: Követelmények áttekintése

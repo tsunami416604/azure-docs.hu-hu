@@ -3,8 +3,14 @@
 - name: Mintaalkalmazások
   expanded: true
   items:
-    - name: Webalkalmazás egy Linux-tárolóban
-      href: secure-web-app.md
+    - name: Kezdő a biztonságos fejlesztés terén
+      items:
+        - name: Webalkalmazás egy Linux-tárolóban
+          href: secure-web-app.md
+    - name: Iparági megfelelőségi megoldások
+      items:
+        - name: Bankkártyaágazat
+          href: secure-pci-web-app.md
 - name: Alapelvek
   expanded: true
   items:

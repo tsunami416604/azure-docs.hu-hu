@@ -17,12 +17,16 @@
       href: tutorial-create-management-vm.md
     - name: Biztonságos LDAP konfigurálása
       href: tutorial-configure-ldaps.md
+    - name: Jelszókivonat szinkronizálásának konfigurálása
+      href: tutorial-configure-password-hash-sync.md
 - name: Példák
   items:
     - name: Azure AD DS-példány létrehozása az Azure PowerShell használatával
       href: powershell-create-instance.md
 - name: Alapelvek
   items:
+    - name: Gyakori üzembehelyezési forgatókönyvek
+      href: scenarios.md
     - name: Az Azure AD DS szinkronizálásának működése
       href: synchronization.md
     - name: A jelszókivonat-szinkronizálás működése
@@ -37,8 +41,6 @@
   items:
     - name: Általános beállítások konfigurálása
       items:
-        - name: Jelszókivonat szinkronizálásának engedélyezése
-          href: active-directory-ds-getting-started-password-sync-synced-tenant.md
         - name: Hatókörön belüli szinkronizálás konfigurálása az Azure AD-ből
           href: scoped-synchronization.md
         - name: Szervezeti egység (OU) létrehozása
@@ -47,8 +49,6 @@
           href: create-gmsa.md
     - name: Azure AD DS tervezése
       items:
-        - name: Gyakori forgatókönyvek
-          href: scenarios.md
         - name: Virtuális hálózatokkal kapcsolatos szempontok
           href: network-considerations.md
     - name: Azure AD DS kezelése

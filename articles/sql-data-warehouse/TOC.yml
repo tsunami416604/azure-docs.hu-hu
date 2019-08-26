@@ -253,14 +253,20 @@
           href: sql-data-warehouse-connect-overview.md
         - name: Kapcsolati sztringek
           href: sql-data-warehouse-connection-strings.md
-        - name: A Visual Studio SSDT telepítése
-          href: sql-data-warehouse-install-visual-studio.md
-        - name: Lekérdezés a Visual Studio SSDT használatával
-          href: sql-data-warehouse-query-visual-studio.md
-        - name: Lekérdezés az SSMS használatával
-          href: sql-data-warehouse-query-ssms.md
-        - name: Csatlakozás és lekérdezés az sqlcmd segédprogrammal
-          href: sql-data-warehouse-get-started-connect-sqlcmd.md
+        - name: Változáskezelés és üzembe helyezés
+          items:
+            - name: A Visual Studio SSDT telepítése
+              href: sql-data-warehouse-install-visual-studio.md
+            - name: Verziókövetés integrálása
+              href: sql-data-warehouse-source-control-integration.md
+        - name: Csatlakozás és lekérdezés
+          items:
+            - name: Visual Studio SSDT
+              href: sql-data-warehouse-query-visual-studio.md
+            - name: SSMS
+              href: sql-data-warehouse-query-ssms.md
+            - name: sqlcmd
+              href: sql-data-warehouse-get-started-connect-sqlcmd.md
     - name: Számítási feladatok kezelése
       items:
         - name: A számítási feladatok elemzése

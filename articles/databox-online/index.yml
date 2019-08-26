@@ -1,39 +1,95 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Data Box-dokumentáció – Online adatátvitel
+summary: Az Azure Data Box Gateway- és az Azure Data Box Edge-eszközöket hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja. A Data Box Gateway használatával elküldheti az adatokat a felhőben történő archiválásra, vészhelyreállításra vagy felhőszintű feldolgozásra. A Data Box Edge használatával szűrheti, elemezheti és átalakíthatja az adatokat az Azure-ba való átvitelük előtt.
 metadata:
-  title: A Data Box Gateway és a Data Box Edge dokumentációja az Azure-ba történő hálózati adatátvitelhez
-  description: 'A Data Box Edge-et és a Data Box Gatewayt hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja, amellyel gyorsan, olcsón és megbízható módon vihet át adatokat az Azure-ba.'
+  title: Azure Data Box-dokumentáció – Online adatátvitel
+  description: A Data Box Gateway és a Data Box Edge dokumentációja az Azure-ba történő nagy teljesítményű hálózati adatátvitelhez.
   services: databox
-  author: alkohli
-  manager: twooley
   ms.service: databox
   ms.subservice: edge
   ms.topic: landing-page
-  ms.date: 03/25/2019
+  ms.collection: collection
+  author: alkohli
   ms.author: alkohli
-abstract:
-  description: 'Az Azure Data Box termékcsaláddal gyorsan, olcsón és megbízható módon vihet át több száz terabájtnyi adatot az Azure-ba. A Data Box Edge- és Data Box Gateway-eszközöket hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja.<p>A Data Box Gateway használatával elküldheti az adatokat a felhőben történő archiválásra, vészhelyreállításra vagy felhőszintű feldolgozásra.  A Data Box Edge használatával szűrheti, elemezheti és átalakíthatja az adatokat az Azure-ba való átvitelük során.</p><p>Útmutatóinkból megismerheti, hogyan használhatja a Data Box Gateway és a Data Box Edge szolgáltatást hálózatalapú adatátvitelhez.</p>'
-sections:
-  - title: Oktatóanyagok
-    items:
-      - type: paragraph
-        text: <b>A Data Box Gatewayhez</b>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="data-box-gateway-deploy-prep">Az Azure Data Box Gateway üzembe helyezésének előkészítése</a>
-          - html: <a href="data-box-gateway-deploy-provision-hyperv">Az Azure Data Box Gateway üzembe helyezése a Hyper-V-ben</a>
-          - html: <a href="data-box-gateway-deploy-provision-vmware">Az Azure Data Box Gateway üzembe helyezése a VMware-ben</a>
-          - html: '<a href="data-box-gateway-deploy-connect-setup-activate">Az Azure Data Box Gateway csatlakoztatása, konfigurálása és aktiválása</a>'
-          - html: <a href="data-box-gateway-deploy-add-shares">Adatok átvitele az Azure Data Factory Gatewayjel</a>
-      - type: paragraph
-        text: <b>A Data Box Edge-hez</b>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="data-box-edge-deploy-prep">Az Azure Data Box Edge üzembe helyezésének előkészítése</a>
-          - html: <a href="data-box-edge-deploy-install">Az Azure Data Box Edge telepítése</a>
-          - html: '<a href="data-box-edge-deploy-connect-setup-activate">Az Azure Data Box Edge csatlakoztatása, konfigurálása és aktiválása</a>'
-          - html: <a href="data-box-edge-deploy-add-shares">Adatok átvitele az Azure Data Box Edge-el</a>
-          - html: <a href="data-box-edge-deploy-configure-compute">Adatok átalakítása az Azure Data Box Edge-el</a>
+  ms.date: 08/15/2019
+  ms.openlocfilehash: f1b3c4f8473807b7bbffa2b40f1d3a89b6acff5a
+  ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/23/2019
+  ms.locfileid: "70012866"
+landingContent:
+- title: A Data Box-termékcsalád ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi a Data Box Gateway?
+      url: data-box-gateway-overview.md
+    - text: Mi a Data Box Edge?
+      url: data-box-edge-overview.md
+  - linkListType: architecture
+    links:
+    - text: Azure adatátviteli lehetőségek kiválasztása
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+    - text: Hálózati vagy offline átvitel használata
+      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+  - linkListType: whats-new
+    links:
+    - text: 1905 kibocsátási megjegyzések
+      url: data-box-gateway-1905-release-notes.md
+- title: Követelmények és korlátok
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: A Data Box Gateway követelményei
+      url: data-box-gateway-system-requirements.md
+    - text: A Data Box Edge követelményei
+      url: data-box-edge-system-requirements.md
+    - text: A Data Box Gateway korlátai
+      url: data-box-gateway-limits.md
+    - text: A Data Box Edge korlátai
+      url: data-box-edge-limits.md
+- title: Üzembe helyezés
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Data Box Gateway
+      url: data-box-gateway-deploy-prep.md
+    - text: Data Box Edge
+      url: data-box-edge-deploy-prep.md
+- title: Fejlesztés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: C# peremhálózati számítási modul
+      url: data-box-edge-create-iot-edge-module.md
+  - linkListType: download
+    links:
+    - text: Minták – C# a Data Box Edge-hez
+      url: https://docs.microsoft.com/samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
+- title: Kezelés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A Data Box Gateway megosztásai
+      url: data-box-gateway-manage-shares.md
+    - text: A Data Box Edge megosztásai
+      url: data-box-edge-manage-shares.md
+    - text: Peremhálózati számítás
+      url: data-box-edge-manage-compute.md
+    - text: Peremhálózati számítási hálózat
+      url: data-box-edge-extend-compute-access-modules.md
+- title: Hibaelhárítás
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Data Box Gateway
+      url: data-box-gateway-troubleshoot.md
+    - text: Data Box Edge
+      url: data-box-edge-troubleshoot.md
+    - text: Peremhálózati számítási modulok
+      url: data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
+    - text: A Data Box Edge visszaküldése vagy cseréje
+      url: data-box-edge-return-device.md
+    - text: Támogatási jegy megnyitása
+      url: data-box-edge-contact-microsoft-support.md

@@ -71,12 +71,24 @@
           href: event-hubs-geo-dr.md
     - name: Biztonság
       items:
-        - name: Az Azure-erőforrásokhoz készült felügyelt identitások
-          href: event-hubs-managed-service-identity.md
-        - name: Szerepköralapú hozzáférés-vezérlés (előzetes verzió)
-          href: event-hubs-role-based-access-control.md
-        - name: A hitelesítési és biztonsági modell áttekintése
-          href: event-hubs-authentication-and-security-model-overview.md
+        - name: Engedélyezés
+          items:
+            - name: Az Azure Event Hubshoz való hozzáférés engedélyezése
+              href: authorize-access-event-hubs.md
+            - name: Azure Active Directoryval való hozzáférés engedélyezése
+              href: authorize-access-azure-active-directory.md
+            - name: Közös hozzáférésű jogosultságkóddal való hozzáférés engedélyezése
+              href: authorize-access-shared-access-signature.md
+        - name: Hitelesítés
+          items:
+            - name: Hitelesítés az Azure Active Directoryval
+              items:
+                - name: Hitelesítés felügyelt identitással
+                  href: authenticate-managed-identity.md
+                - name: Hitelesítés egy alkalmazásból
+                  href: authenticate-application.md
+            - name: Hitelesítés közös hozzáférésű jogosultságkóddal
+              href: authenticate-shared-access-signature.md
         - name: Biztonsági attribútumok
           href: event-hubs-security-attributes.md
     - name: AMQP 1.0 protokoll – útmutató
@@ -166,6 +178,8 @@
           href: event-hubs-service-endpoints.md
         - name: Virtuális hálózati integráció és a tűzfalak engedélyezése Event Hubs-névtérben
           href: event-hubs-tutorial-virtual-networks-firewalls.md
+        - name: Ügyfél által kezelt kulcsok konfigurálása inaktív adatok titkosításához
+          href: configure-customer-managed-key.md
     - name: Hibaelhárítás
       items:
         - name: Kivételek

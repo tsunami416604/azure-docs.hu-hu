@@ -1,6 +1,6 @@
 ---
-title: Az aktuális Verizon POP listájának letöltése az Azure CDN |} A Microsoft Docs
-description: Ismerje meg, hogyan kérheti le az aktuális Verizon POP-listát a REST API-val.
+title: 'Az aktuális POP IP-lista beolvasása a következőhöz: Azure CDN | Microsoft Docs'
+description: Megtudhatja, hogyan kérheti le az aktuális POP-listát.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -12,26 +12,39 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2018
-ms.author: kumud
+ms.date: 08/22/2019
+ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: c8316b994dac6b859f019bea1aac6b6a5c2c5b2d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: bc8e8219c8f8de75b01c584a2a5ce13cc1429fec
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593561"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991778"
 ---
-# <a name="retrieve-the-current-verizon-pop-list-for-azure-cdn"></a>Az Azure CDN aktuális Verizon POP listájának beolvasása
+# <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>A jelenlegi Verizon POP IP-lista lekérése a Azure CDN
 
-A REST API segítségével az IP-címek készletét, a Verizon pont jelenléti (POP) kiszolgálók beolvasása. Ezek a jelenléti pontra Irányíthatja a kiszolgálók kéréseket küld az Azure Content Delivery Network (CDN) végpontok a Verizon profilok rendelt szerverek (**Azure CDN Standard verizon** vagy **Azure CDN Premiumhoz a Verizontól**). Vegye figyelembe, hogy az IP-címek készlete különbözik az IP-címek, amelyek ügyfél-kre történő propagálása kérések küldésekor jelennének meg. 
+A REST API segítségével lekérheti az IP-címek készletét a Verizon jelenléti pontjának (POP) kiszolgálóihoz. Ezek a POP-kiszolgálók kérelmeket küldenek az Azure Content Delivery Network-(CDN-) végpontokkal társított forrás-kiszolgálóknak a Verizon-profilokon**Azure CDN** (a verizontól vagy a **Azure CDN Premiumtól**a verizontól). Vegye figyelembe, hogy ez az IP-címek különböznek azoktól az IP-címektől, amelyeket az ügyfél a pop-kérelmek küldésekor lát. 
 
-A szintaxist a REST API-művelet a POP-lista lekérése, lásd: [Élcsomópontok - lista](https://docs.microsoft.com/rest/api/cdn/edgenodes/list).
+A POP-lista lekérésére szolgáló REST API művelet szintaxisát lásd: [Edge Nodes-List](https://docs.microsoft.com/rest/api/cdn/edgenodes/list).
+
+# <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>Az aktuális Microsoft POP IP-lista beolvasása a Azure CDN
+
+Ha úgy szeretné zárolni az alkalmazást, hogy csak a Microsofttól származó Azure CDN fogadjon forgalmat, be kell állítania a háttér IP-ACL-jeit. A Microsofttól Azure CDN által küldött "X-Forwarded-host" fejlécre vonatkozóan is korlátozhatja az elfogadott értékek készletét. Ezeket a lépéseket az alábbiak szerint részletezjük:
+
+Konfigurálja az IP-hozzáférés a háttérrendszer számára, hogy fogadja a forgalmat a Microsoft háttérbeli IP-címtartomány és az Azure infrastruktúra-szolgáltatásai Azure CDNból. 
+
+* Azure CDN a Microsoft IPv4-háttér IP-területéről: 147.243.0.0/16
+* Azure CDN a Microsoft IPv6-háttér IP-területéről: 2a01:111:2050::/44
+
+Az IP-címtartományok és a Microsoft-szolgáltatásokhoz tartozó szolgáltatási címkék [itt](https://www.microsoft.com/download/details.aspx?id=56519) találhatók
+
+A Microsoft által Azure CDN által küldött "X-Forwarded-host" bejövő fejléc értékeinek szűrése. A fejléc csak a CDN-konfigurációban definiált összes végpont-gazdagépre engedélyezett. Valójában még pontosabban csak azok az állomásnevek szerepelnek, amelyekről el szeretné fogadni a forgalmat.
 
 ## <a name="typical-use-case"></a>Tipikus használati eset
 
-Biztonsági okokból az IP-lista segítségével kényszerítéséhez, hogy forráskiszolgálóra kérések csak a Verizon POP érvényes. Például ha valaki észlelhető, az állomásnév vagy IP-címét a forráskiszolgáló egy CDN-végpont, egy sikerült kérést erre a forráskiszolgálóra, így megkerüli a skálázás és az Azure CDN által biztosított biztonsági funkciókkal. A visszaadott listában az IP-címek állít be, az egyetlen engedélyezett IP-címek egy forrás kiszolgálón, ez a forgatókönyv nem történik meg. Győződjön meg arról, hogy rendelkezik-e a legújabb POP-lista, lekérésére, naponta legalább egyszer. 
+Biztonsági okokból ezt az IP-listát használhatja arra, hogy kikényszerítse, hogy a forráskiszolgáló iránti kérések csak egy érvényes Verizon-POP-ból legyenek elvégezve. Ha például valaki felderíti a CDN-végpont forrás-kiszolgálójának állomásnevét vagy IP-címét, akkor a kérést közvetlenül a forráskiszolgáló számára teheti meg, így megkerüli a Azure CDN által biztosított méretezési és biztonsági képességeket. Ha úgy állítja be az IP-címeket a visszaadott listában, hogy az csak az engedélyezett IP-címek legyenek a forráskiszolgálón, akkor ez a forgatókönyv megelőzhető. Győződjön meg arról, hogy rendelkezik a legújabb POP-listával, és legalább egyszer lekéri azt. 
 
 ## <a name="next-steps"></a>További lépések
 
-A REST API-val kapcsolatos további információkért lásd: [Azure CDN – REST API](https://docs.microsoft.com/rest/api/cdn/).
+További információ a REST APIről: [Azure CDN REST API](https://docs.microsoft.com/rest/api/cdn/).

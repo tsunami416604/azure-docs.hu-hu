@@ -79,10 +79,6 @@
       href: service-bus-samples.md
 - name: Alapelvek
   items:
-    - name: Azure-erőforrások felügyelt identitásai
-      href: service-bus-managed-service-identity.md
-    - name: Szerepköralapú hozzáférés-vezérlés (előzetes verzió)
-      href: service-bus-role-based-access-control.md
     - name: Prémium szintű üzenettovábbítás
       href: service-bus-premium-messaging.md
     - name: Azure-üzenetsorok és Azure Service Bus-üzenetsorok összehasonlítása
@@ -95,8 +91,25 @@
       href: service-bus-async-messaging.md
     - name: Leállások és katasztrófák kezelése
       href: service-bus-outages-disasters.md
-    - name: Gyakori Azure-beli biztonsági attribútumok
-      href: service-bus-messaging-security-attributes.md
+    - name: Biztonság
+      items:
+        - name: Hitelesítés és engedélyezés
+          href: service-bus-authentication-and-authorization.md
+          items:
+            - name: Közös hozzáférésű jogosultságkódok használata
+              items:
+                - name: Migrálás ACS-ről SAS rendszerre
+                  href: service-bus-migrate-acs-sas.md
+                - name: Hitelesítés közös hozzáférésű jogosultságkódokkal
+                  href: service-bus-sas.md
+            - name: Az Azure Active Directory használata
+              items:
+                - name: Hitelesítés az Azure-erőforrások felügyelt identitásaival
+                  href: service-bus-managed-service-identity.md
+                - name: Hitelesítés egy alkalmazásból
+                  href: authenticate-application.md
+        - name: Gyakori Azure-beli biztonsági attribútumok
+          href: service-bus-messaging-security-attributes.md
 - name: Útmutatók
   items:
     - name: Névtér létrehozása
@@ -119,13 +132,6 @@
               href: service-bus-to-event-grid-integration-concept.md
             - name: Azure Event Grid-példák
               href: service-bus-to-event-grid-integration-example.md
-        - name: Hitelesítés és engedélyezés
-          href: service-bus-authentication-and-authorization.md
-          items:
-            - name: Migrálás ACS-ről SAS rendszerre
-              href: service-bus-migrate-acs-sas.md
-            - name: Hitelesítés közös hozzáférésű jogosultságkódokkal
-              href: service-bus-sas.md
         - name: Témakörszűrők és -műveletek
           href: topic-filters.md
         - name: Migrálás standard névterekről prémium névterekre

@@ -751,6 +751,10 @@
           href: cosmosdb-sql-api-migrate-data-striim.md
         - name: Adatok migrálása a Cassandra API-ba a Striim használatával
           href: cosmosdb-cassandra-api-migrate-data-striim.md
+        - name: Migrálás – Az Oracle DB-ről a Cassandra API-ba a Blitzz használatával
+          href: oracle-migrate-cosmos-db-blitzz.md
+        - name: Migrálás – Az Apache Cassandrából a Cassandra API-ba a Blitzz használatával
+          href: cassandra-migrate-cosmos-db-blitzz.md
         - name: Több száz terabájtnyi adat migrálása az Azure Cosmos DB-be
           href: migrate-cosmosdb-data.md
     - name: Tömeges végrehajtói könyvtár

@@ -13,12 +13,12 @@ metadata:
   ms.author: iainfou
   manager: daveba
   ms.date: 08/01/2019
-  ms.openlocfilehash: 3c97b7bbb652fd26e5c8fdb6d20576a3c9e70421
-  ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+  ms.openlocfilehash: f5fa27e19da6bb64b7e214ec32cbfbf0a417118e
+  ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 08/19/2019
-  ms.locfileid: "69612869"
+  ms.lasthandoff: 08/23/2019
+  ms.locfileid: "70010562"
 landingContent:
 - title: Tudnivalók az Azure AD Domain Servicesről
   linkLists:
@@ -28,6 +28,8 @@ landingContent:
       url: overview.md
     - text: Identitáskezelési megoldások összehasonlítása
       url: compare-identity-solutions.md
+  - linkListType: concept
+    links:
     - text: Hogyan működik a szinkronizálás?
       url: synchronization.md
     - text: Gyakori kérdések
@@ -53,7 +55,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Jelszókivonat szinkronizálásának engedélyezése
-      url: active-directory-ds-getting-started-password-sync-synced-tenant.md
+      url: tutorial-configure-password-hash-sync.md
     - text: Szervezeti egység (OU) létrehozása
       url: create-ou.md
     - text: A Kerberos által korlátozott delegálás konfigurálása
