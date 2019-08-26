@@ -3,15 +3,14 @@ documentType: LandingData
 title: A Bing Visual Search API dokumentációja
 metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
-  title: 'A Bing Visual Search API dokumentációja – oktatóanyagok, rövid útmutatók, API-referencia | Microsoft Docs'
+  title: 'A Bing Visual Search API dokumentációja – oktatóanyagok, gyorsútmutatók, API-referenciák'
+  titleSuffix: Azure Cognitive Services
   description: 'Útmutató a Bing Visual Search API használatához, amellyel egy képpel kapcsolatos információkat jeleníthet meg.'
   services: cognitive-services
   author: swhite-msft
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-visual-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/16/2019
   ms.author: scottwhi

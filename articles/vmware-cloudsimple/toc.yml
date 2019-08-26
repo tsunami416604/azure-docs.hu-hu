@@ -54,7 +54,7 @@
           href: cloudsimple-faq.md
     - name: Oktatóanyagok
       items:
-        - name: CloudSimple-szolgáltatás létrehozása
+        - name: A CloudSimple-szolgáltatás létrehozása
           href: create-cloudsimple-service.md
         - name: Hozzáférés a CloudSimple portáljához
           href: access-cloudsimple-portal.md
@@ -106,8 +106,6 @@
               href: users.md
             - name: Virtuális hálózati kapcsolat beállítása magánfelhőhöz
               href: virtual-network-connection.md
-            - name: Saját felhasználói profil szerkesztése
-              href: 'https://docs.azure.cloudsimple.com/editprofile/'
         - name: VMware rendszerű virtuális gépek beállítása magánfelhőhöz
           items:
             - name: Virtuális gép létrehozása az Azure-ban
@@ -147,7 +145,7 @@
             - name: Számítási feladatot futtató virtuális gépek migrálása magánfelhőbe
               href: migrate-workloads.md
             - name: VMware-alkalmazások magas rendelkezésre állásának biztosítása az Azure-ban
-              href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+              href: ensuring-high-availability.md
             - name: Terheléselosztási megoldás kiválasztása
               href: load-balancers.md
         - name: VMware-ökoszisztéma
@@ -156,8 +154,10 @@
               href: backup-workloads-veeam.md
             - name: Magánfelhő konfigurálása vészhelyreállítási helyként a Zerto használatával
               href: disaster-recovery-zerto.md
+            - name: Magánfelhő konfigurálása vészhelyreállítási helyként a VMware SRM használatával
+              href: disaster-recovery-site-recovery-manager.md
             - name: A VMware Horizon megoldási útmutatója
-              href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
+              href: horizon-guide.md
             - name: vSAN-titkosítás konfigurálása magánfelhőhöz
               href: vsan-encryption.md
             - name: Magánfelhő optimalizálása az Oracle RAC-hez

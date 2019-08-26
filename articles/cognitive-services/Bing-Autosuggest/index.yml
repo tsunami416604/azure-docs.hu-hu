@@ -3,15 +3,14 @@ documentType: LandingData
 title: A Bing Autosuggest dokumentációja
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: 'A Bing Autosuggest dokumentációja – oktatóanyagok, rövid útmutatók és API-referencia | Microsoft Docs'
+  title: 'A Bing Autosuggest dokumentációja – oktatóanyagok, gyors útmutatók és API-referenciák'
+  titleSuffix: Azure Cognitive Services
   description: 'Útmutató a Bing Autosuggest API használatához, amellyel javasolt lekérdezéseket jeleníthet meg egy részleges lekérdezés alapján. Az oktatóanyagok bemutatják, hogyan hozhat létre a szolgáltatást használó alkalmazásokat.'
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

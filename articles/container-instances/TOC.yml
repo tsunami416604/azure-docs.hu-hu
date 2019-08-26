@@ -121,6 +121,8 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: Összekötő
+      href: /connectors/aci
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

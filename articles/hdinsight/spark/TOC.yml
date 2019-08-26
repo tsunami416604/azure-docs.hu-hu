@@ -327,6 +327,8 @@
           href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
         - name: Apache Spark-eseménynapló – RequestBodyTooLarge
           href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
+        - name: Az Apache Zookeeper kvóruma helytelen
+          href: ./zookeeper-troubleshoot-quorum-fails.md
 - name: Referencia
   items:
     - name: Kódminták

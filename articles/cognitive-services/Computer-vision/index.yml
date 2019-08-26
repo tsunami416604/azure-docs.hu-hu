@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Computer Vision API-dokumentáció
 metadata:
-  title: API-dokumentáció – Computer Vision – Azure Cognitive Services | Microsoft Docs
+  title: API-dokumentáció – Computer Vision
+  titleSuffix: Azure Cognitive Services
   description: 'Ismerje meg, hogyan használható a Computer Vision képek feldolgozására és információ visszaadására. Az oktatóanyagok bemutatják, hogyan hozhat létre az API-t használó alkalmazásokat.'
   services: cognitive-services
   author: nitinme
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: computer-vision
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 02/26/2019
   ms.author: nitinme

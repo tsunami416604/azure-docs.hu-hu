@@ -2,15 +2,14 @@
 documentType: LandingData
 title: A Form Recognizer dokumentációja
 metadata:
-  title: API-dokumentáció – Form Recognizer – Azure Cognitive Services | Microsoft Docs
+  title: API-dokumentáció – Form Recognizer
+  titleSuffix: Azure Cognitive Services
   description: 'Megtudhatja, hogyan használhatja a Form Recognizert a kulcs-érték típusú adatok az űrlapdokumentumokból való intelligens kinyeréséhez.'
   services: cognitive-services
   author: PatrickFarley
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/16/2019
   ms.author: pafarley

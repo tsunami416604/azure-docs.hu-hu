@@ -2,15 +2,15 @@
 documentType: LandingData
 title: A Bing Custom Search dokumentációja
 metadata:
-  title: 'A Bing Custom Search API dokumentációja – oktatóanyagok, rövid útmutatók és API-referencia – Microsoft Cognitive Services | Microsoft Docs'
+  title: 'A Bing Image Search API dokumentációja – oktatóanyagok, gyorsútmutatók és API-referencia'
+  titleSuffix: Azure Cognitive Services
   description: 'Megtudhatja, hogyan hozhat létre egyéni keresést a Bing Custom Search portál és API használatával'
   services: cognitive-services
   author: v-deken
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: bing-custom-search
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: v-deken

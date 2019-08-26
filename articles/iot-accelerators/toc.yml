@@ -149,6 +149,8 @@
       items:
         - name: OPC-ikerarchitektúra
           href: overview-opc-twin-architecture.md
+        - name: OPC-tárolóarchitektúra
+          href: overview-opc-vault-architecture.md
     - name: Útmutatók
       items:
         - name: Csatlakoztatott gyár
@@ -169,14 +171,14 @@
               href: howto-opc-twin-deploy-dependencies.md
         - name: OPC-tároló
           items:
-            - name: OPC-tároló hozzáadása meglévő projekthez
-              items:
-                - name: Az OPC-ügyfél és az OPC PLC kommunikációjának biztonságossá tétele
-                  href: howto-opc-vault-deploy-existing-client-plc-communication.md
-                - name: Az OPC UA-ügyfél és az OPC UA-kiszolgálóalkalmazások biztonságossá tétele
-                  href: howto-opc-vault-deploy-existing-client-server-communication.md
-            - name: OPC-tároló létrehozása az alapoktól
-              href: howto-opc-vault-deploy-scratch.md
+            - name: OPC-tárolószolgáltatás üzembe helyezése
+              href: howto-opc-vault-deploy.md
+            - name: OPC-tárolószolgáltatás kezelése
+              href: howto-opc-vault-manage.md
+            - name: Az OPC UA-eszköz és az OPC-tároló közötti kommunikáció védelme
+              href: howto-opc-vault-secure.md
+            - name: Az OPC-tárolószolgáltatás biztonságos működtetése
+              href: howto-opc-vault-secure-ca.md
         - name: OPC Publisher
           items:
             - name: Az OPC Publisher konfigurálása

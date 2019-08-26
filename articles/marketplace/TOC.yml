@@ -473,6 +473,21 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: SaaS Fulfillment API-k – GYIK
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
+        - name: Érdeklődők kezelése – áttekintés
+          href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
+          items:
+            - name: Azure-blob
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-blob.md
+            - name: Azure-tábla
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md
+            - name: Dynamics 365 for Customer Engagement
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md
+            - name: Https-végpont
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md
+            - name: Marketo
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
+            - name: Salesforce
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Az ajánlat kipróbálása
           href: ./partner-center-portal/test-drive.md
     - name: Közzététel állapota

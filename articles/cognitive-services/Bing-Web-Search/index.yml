@@ -3,15 +3,14 @@ documentType: LandingData
 title: A Bing Web Search API dokumentációja
 metadata:
   document_id: 6111ada8-aec2-11e7-abc4-cec278b6b50a
-  title: 'A Bing Web Search API dokumentációja – Oktatóanyagok, rövid útmutatók, API-referencia | Microsoft Docs'
+  title: 'A Bing Web Search API dokumentációja – oktatóanyagok, gyorsútmutatók, API-referenciák'
+  titleSuffix: Azure Cognitive Services
   description: 'Megismerheti, hogyan kereshet az interneten webhelyeket, képeket, videókat, híreket és más tartalmakat a Bing Web Search API használatával.'
   services: cognitive-services
   author: nitinme
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-web-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 7/25/2019
   ms.author: nitinme

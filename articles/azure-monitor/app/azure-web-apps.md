@@ -60,7 +60,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 
     ![Beállítások kiválasztása platformon](./media/azure-web-apps/choose-options-new.png)
 
-   * A **** .net alapszintű gyűjtési szintje alapvető, egypéldányos APM-funkciókat kínál.
+   * A .net alapszintű gyűjtési szintje alapvető, egypéldányos APM-funkciókat kínál.
 
    * .NET **ajánlott gyűjtési** szintje:
        * CPU-, memória-és I/O-használati trendek hozzáadására szolgál.
@@ -92,7 +92,7 @@ A .NET Core, az önálló üzemelő példányok és a ASP.NET Core 3,0 közötti
 
      ![Webapp kialakítása](./media/azure-web-apps/create-resource-01.png)
 
-2. Miután meghatározta, hogy melyik erőforrást szeretné használni, kiválaszthatja, hogy a Application Insights hogyan gyűjtsön adatokat egy platformon az alkalmazás számára. A .NET Core a .NET Core **** 2,0, 2,1 és 2,2 rendszerekhez **ajánlott gyűjteményt** vagy letiltottat kínál.
+2. Miután meghatározta, hogy melyik erőforrást szeretné használni, kiválaszthatja, hogy a Application Insights hogyan gyűjtsön adatokat egy platformon az alkalmazás számára. A .NET Core a .NET Core 2,0, 2,1 és 2,2 rendszerekhez **ajánlott gyűjteményt** vagy letiltottat kínál.
 
     ![Beállítások kiválasztása platformon](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -356,7 +356,7 @@ Az alábbi táblázat részletesen ismerteti, hogy mit jelentenek ezek az érté
 |`AppContainsDiagnosticSourceAssembly**:true`|Ez az érték azt jelzi, hogy a `System.Diagnostics.DiagnosticSource` bővítmény az alkalmazásra hivatkozik, és vissza fog térni.| Távolítsa el a hivatkozást.
 |`IKeyExists:false`|Ez az érték azt jelzi, hogy a kialakítási kulcs nem szerepel a Alkalmazásbeállítás `APPINSIGHTS_INSTRUMENTATIONKEY`. Lehetséges okok: Lehetséges, hogy az értékek véletlenül el lettek távolítva, elfelejtette az értékek beállítását az Automation-parancsfájlban stb. | Győződjön meg arról, hogy a beállítás szerepel a App Service alkalmazás beállításai között.
 
-### <a name="appinsightsjavascriptenabled-and-urlcompression-is-not-supported"></a>A APPINSIGHTS_JAVASCRIPT_ENABLED és a urlCompression nem támogatott
+### <a name="appinsights_javascript_enabled-and-urlcompression-is-not-supported"></a>A APPINSIGHTS_JAVASCRIPT_ENABLED és a urlCompression nem támogatott
 
 Ha a APPINSIGHTS_JAVASCRIPT_ENABLED = True értéket használja a tartalom kódolása esetén, a következőhöz hasonló hibák jelenhetnek meg: 
 

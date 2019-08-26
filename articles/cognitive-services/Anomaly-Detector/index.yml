@@ -2,15 +2,15 @@
 documentType: LandingData
 title: Az Anomaly Detector API dokumentációja
 metadata:
-  title: 'Anomaly Detector API – Oktatóanyagok, rövid útmutatók, API-referencia – Azure Cognitive Services | Microsoft Docs'
+  title: 'Anomaly Detector API – oktatóanyagok, gyorsútmutatók és API-referencia'
+  titleSuffix: Azure Cognitive Services
   description: 'Az Anomaly Detector API használatával gondoskodhat az adatok az idő függvényében történő figyeléséről, valamint észlelheti a gépi tanulással kapcsolatos rendellenességeket. Betekintést nyerhet adataiba, a mennyiségtől, az iparágtól vagy a forgatókönyvtől függetlenül.'
   services: cognitive-services
   author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: anomaly-detector
   ms.topic: landing-page
   ms.date: 03/26/2019
   ms.author: aahi
