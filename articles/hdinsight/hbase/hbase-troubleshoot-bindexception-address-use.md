@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/08/2019
-ms.openlocfilehash: 8851a4dfb7deafab7ad77ef80619dd49ca46ed71
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.date: 08/16/2019
+ms.openlocfilehash: c2f7575dca5432d90bf421afa5a39a4a4cd79744
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947850"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983048"
 ---
 # <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>Forgatókönyv: BindException – az Azure HDInsight már használatban van a címe
 
@@ -31,23 +31,23 @@ Caused by: java.net.BindException: Address already in use
 
 ## <a name="cause"></a>Ok
 
-A HBase-régió kiszolgálóinak újraindítása a nagy számítási feladatok tevékenysége során. Az alábbiakban látható, hogy mi történik a jelenetek mögött, amikor egy felhasználó elindítja az újraindítási műveletet a HBase-régió kiszolgálójának Ambari felhasználói felületéről:
+Az Apache HBase-régió kiszolgálóinak újraindítása a munkaterhelés-tevékenységek során. Az alábbiakban látható, hogy mi történik a jelenetek mögött, amikor egy felhasználó elindítja az újraindítási műveletet a HBase-régió kiszolgálójának Apache Ambari felhasználói felületéről:
 
-1. A Ambari-ügynök leállítási kérelmet küld a régió-kiszolgálónak.
+1. A Ambari ügynök leállítási kérelmet küld a régió-kiszolgálónak.
 
-1. A Ambari-ügynök ezután 30 másodpercig várakozik, hogy a régió kiszolgálója szabályosan leálljon.
+1. A Ambari-ügynök 30 másodpercig várakozik, hogy a régió kiszolgálója szabályosan leálljon
 
-1. Ha az alkalmazás továbbra is a régió-kiszolgálóval csatlakozik, az nem fog azonnal leállni, és így a 30 másodperces időkorlát hamarabb lejár.
+1. Ha az alkalmazás továbbra is kapcsolódik a régió-kiszolgálóhoz, a kiszolgáló nem fog azonnal leállni. A 30 másodperces időtúllépés lejár a leállítás előtt.
 
-1. 30 másodperc lejárta után a Ambari-ügynök kényszerített kill (kill-9) értéket küld a régió-kiszolgálónak.
+1. 30 másodperc elteltével a Ambari-ügynök kényszerített kill (`kill -9`) parancsot küld a régió-kiszolgálónak.
 
 1. A hirtelen leállás miatt, bár a régió-kiszolgáló folyamata leállt, előfordulhat, hogy a folyamathoz társított port nem jelenik meg `AddressBindException`, ami végül a következőhöz vezet:.
 
 ## <a name="resolution"></a>Megoldás:
 
-Az újraindítás megkezdése előtt csökkentse a HBase-régió kiszolgálóinak terhelését.
+Az újraindítás megkezdése előtt csökkentse a HBase-régió kiszolgálóinak terhelését. Emellett érdemes kiüríteni az összes táblát. A táblák kiürítésével kapcsolatban lásd [: HDInsight HBase: Az Apache HBase-fürt újraindítási idejének javítása táblák](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)kiürítésével.
 
-Azt is megteheti, hogy a következő parancsokkal próbálja meg manuálisan újraindítani a régió kiszolgálóit a munkavégző csomópontokon:
+Azt is megteheti, hogy manuálisan szeretné újraindítani a régió-kiszolgálókat a munkavégző csomópontokon a következő parancsok használatával:
 
 ```bash
 sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"

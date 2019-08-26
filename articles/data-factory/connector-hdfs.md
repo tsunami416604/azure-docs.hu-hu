@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: e1b8da52870af80b2f9e34ee26d80d9b71d39851
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c25a1deb08c816088e9d5811a73bb19890657a43
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839817"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966514"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Adatok másolása a HDFS a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -41,7 +41,7 @@ Ez a HDFS-összekötő a következőket támogatja:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha olyan HDFS szeretne adatok másolása, amely nem nyilvánosan elérhető, be kell állítania egy saját üzemeltetésű Integration Runtime. A részletekért tekintse meg a saját üzemeltetésű [Integration Runtime](concepts-integration-runtime.md) cikket.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 > [!NOTE]
 > Győződjön meg arról, hogy a Integration Runtime hozzáférhet az **összes** [név csomópont-kiszolgálóhoz]: [name Node port] és [adatcsomópont-kiszolgálók]: [adatcsomópont-port] a Hadoop-fürthöz. Az alapértelmezett [name Node port] a 50070, és az alapértelmezett [adatcsomópont-port] a 50075.
@@ -63,7 +63,7 @@ A HDFS társított szolgáltatás a következő tulajdonságokat támogatja:
 | authenticationType | Engedélyezett értékek a következők: **Névtelen**vagy **Windows**. <br><br> Ha **Kerberos-hitelesítést** kíván használni a HDFS-összekötőhöz, tekintse meg [ezt a szakaszt](#use-kerberos-authentication-for-hdfs-connector) , és ennek megfelelően állítsa be a helyszíni környezetet. |Igen |
 | userName |Felhasználónév a Windows-hitelesítéshez. Kerberos-hitelesítés esetén válassza `<username>@<domain>.com`a következőt:. |Igen (Windows-hitelesítéshez) |
 | password |Jelszó a Windows-hitelesítéshez. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen (Windows-hitelesítéshez) |
-| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa: Névtelen hitelesítés használata**
 
