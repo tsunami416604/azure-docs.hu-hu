@@ -176,7 +176,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót az Azure Portalon.
 
     1. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    1. Az a **felhasználónév** írja be a következőt **brittasimon @* yourcompanydomain.extension* **. Adja meg például  **BrittaSimon@contoso.<i> </i>com**.
+    1. Az a **felhasználónév** írja be a következőt **brittasimon@* yourcompanydomain.extension* **. Adja meg például  **BrittaSimon@contoso.<i> </i>com**.
 
     1. Válassza ki a **Show jelszó** jelölőnégyzetet. Jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 

@@ -65,7 +65,7 @@ A társított szolgáltatás egy adattárhoz csatol egy adattárolót egy adatgy
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| accessKeyID |A titkos hozzáférési kulcs azonosítója. |Karakterlánc |Igen |
+| accessKeyID |A titkos hozzáférési kulcs azonosítója. |string |Igen |
 | secretAccessKey |A titkos hívóbetűje magát. |Titkosított titkos karakterlánc |Igen |
 
 >[!NOTE]
@@ -94,10 +94,10 @@ A struktúra, a rendelkezésre állás és a házirend többek között az össz
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| bucketName |Az S3 gyűjtő neve. |Sztring |Igen |
-| key |Az S3-objektum kulcsa. |Sztring |Nem |
-| prefix |Az S3-objektum kulcs előtag. Ezzel az előtaggal start amelynek kulcsok objektum van kijelölve. Csak akkor érvényes, ha a kulcs üres. |Sztring |Nem |
-| version |Az S3-objektum, ha engedélyezve van a S3 versioning verziója. |Sztring |Nem |
+| bucketName |Az S3 gyűjtő neve. |String |Igen |
+| key |Az S3-objektum kulcsa. |String |Nem |
+| prefix |Az S3-objektum kulcs előtag. Ezzel az előtaggal start amelynek kulcsok objektum van kijelölve. Csak akkor érvényes, ha a kulcs üres. |String |Nem |
+| version |Az S3-objektum, ha engedélyezve van a S3 versioning verziója. |String |Nem |
 | format | A következő formátumú típusok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: a [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum ](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszokat. <br><br> Ha fájlokat szeretne másolni a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban. | |Nem |
 | compression | Adja meg a típus és az adatok tömörítési szintje. A támogatott típusok a következők: **Gzip**,deflate, **BZip2**és **ZipDeflate**. A támogatott szintek a következők: **Optimális** és **leggyorsabb**. További információ: [fájl-és Tömörítési formátumok Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). | |Nem |
 
