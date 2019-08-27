@@ -11,16 +11,16 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: a606364503172d5cb1ddcf00262eb81b9423b55b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f2b57aa517c1518929b857eff6aed2ef4e0d8ca1
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569053"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018970"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Adatfelderítési & besorolása Azure SQL Database és SQL Data Warehouse
 
-Az adatfelderítési & besorolása (jelenleg előzetes verzióban érhető el) olyan speciális képességeket biztosít, amelyek a Azure SQL Database beépítettek a bizalmas adatok **felderítéséhez**, **besorolásához**  & , **címkézéséhez** adatbázisok.
+Az adatfelderítési & besorolása olyan speciális képességeketbiztosít & , amelyek aAzure SQL Databaseba illeszkednek, és a bizalmas adatoknak az adatbázisokban való**védelmét** is lehetővé teszi.
 A legérzékenyebb adatok (üzleti, pénzügyi, egészségügyi, személyazonosításra alkalmas adatok) felfedése és besorolása kulcsfontosságú szerepet játszik a szervezeti adatok védelmében. A következő infrastruktúrát nyújtja:
 
 - Az adatvédelmi szabványoknak és a szabályozási megfelelőségi követelményeknek való megfelelés elősegítése.
@@ -76,7 +76,7 @@ Miután meghatározta a bérlőre kiterjedő házirendet, folytathatja az egyén
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 
-2. A Azure SQL Database panel biztonsági fejléce alatt navigáljon a **speciális adatbiztonság** elemre. Kattintson ide a speciális adatbiztonság engedélyezéséhez, majd kattintson az **adatfelderítési & besorolás (előzetes verzió)** kártyára.
+2. A Azure SQL Database panel biztonsági fejléce alatt navigáljon a **speciális adatbiztonság** elemre. Kattintson ide a speciális adatbiztonság engedélyezéséhez, majd kattintson az **adatfelderítési & besorolási** kártyára.
 
    ![Adatbázis vizsgálata](./media/sql-data-discovery-and-classification/data_classification.png)
 

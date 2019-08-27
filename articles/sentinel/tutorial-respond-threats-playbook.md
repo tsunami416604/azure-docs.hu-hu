@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/25/2019
+ms.date: 8/21/2019
 ms.author: rkarlin
-ms.openlocfilehash: cd3288e308308729cf9b97e3c699d489857840a8
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 08c88df2f8ccc69f213687209d1d003f3bb1c7b8
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780373"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018802"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Oktatóanyag: Automatizált veszélyforrásokkal kapcsolatos válaszok beállítása az Azure Sentinel Preview-ban
 
@@ -105,8 +105,6 @@ A riasztások többsége – ha nem a legtöbb esetben – megfelel az ismétlő
 Válaszok automatizálása:
 
 1. Válassza ki azt a riasztást, amelynek a válaszát automatizálni szeretné.
-1. Az Azure Sentinel munkaterület navigációs menüjében válassza az **elemzés**lehetőséget.
-1. Válassza ki az automatizálni kívánt riasztást. 
 1. A **riasztási szabály szerkesztése** lap **valós idejű automatizálás**területén válassza ki azt az **aktivált** forgatókönyvet, amelyet futtatni szeretne a riasztási szabály egyeztetése során.
 1. Kattintson a **Mentés** gombra.
 

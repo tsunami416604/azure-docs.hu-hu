@@ -1,77 +1,77 @@
 ---
-title: Az Azure Migrate támogatási mátrix
-description: Támogatási beállításainak és az Azure Migrate szolgáltatás korlátozásai összegzését tartalmazza.
+title: Azure Migrate támogatási mátrix
+description: Összefoglalja a Azure Migrate szolgáltatás támogatási beállításait és korlátozásait.
 services: backup
 author: rayne-wiselman
 manager: carmonm
-ms.service: backup
+ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: raynew
-ms.openlocfilehash: b2ca1b9118ecc3d112a49bb4c79b413c46fe67cb
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 49bd193303255cdf7d18fd5da9dec8d84c50a829
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811556"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019188"
 ---
-# <a name="azure-migrate-support-matrix"></a>Az Azure Migrate támogatási mátrix
+# <a name="azure-migrate-support-matrix"></a>Azure Migrate támogatási mátrix
 
-Használhatja a [Azure Migrate szolgáltatás](migrate-overview.md) segítségével mérheti fel, és a gépek áttelepítése a Microsoft Azure felhőbe. Ez a cikk általános támogatási beállításait és a korlátozások az Azure Migrate-forgatókönyveinek és a központi telepítések foglalja össze.
+A [Azure Migrate szolgáltatással](migrate-overview.md) a gépeket kivizsgálhatja és áttelepítheti a Microsoft Azure felhőbe. Ez a cikk a Azure Migrate forgatókönyvek és központi telepítések általános támogatási beállításait és korlátozásait foglalja össze.
 
 
-## <a name="azure-migrate-versions"></a>Az Azure Migrate-verziók
+## <a name="azure-migrate-versions"></a>Azure Migrate verziók
 
-Nincsenek az Azure Migrate szolgáltatás két verziója:
+A Azure Migrate szolgáltatásnak két verziója van:
 
-- **Aktuális verzió**: Ezen verziójával új Azure Migrate projekteket hozhat létre, ismerje meg a helyszíni értékeli, és megszervezhető értékelések és áttelepítések. [További információk](whats-new.md#azure-migrate-new-version).
-- **Előző verzió**: Az ügyfél az Azure Migrate (csak a helyszíni VMware virtuális gépek értékelése támogatta) előző verzióját használja most már a jelenlegi verzióját kell használni. Az előző verzió nem hozható létre új Azure Migrate, és hajtsa végre az új felderítések.
+- **Aktuális verzió**: Ezzel a verzióval új Azure Migrate projekteket hozhat létre, felderítheti a helyszíni értékeléseket, és összehangolhatja az értékeléseket és áttelepítéseket. [További információk](whats-new.md#azure-migrate-new-version).
+- **Előző verzió**: Az Azure Migrate korábbi verzióját használó ügyfelek esetében (csak a helyszíni VMware virtuális gépek felmérése támogatott), most a jelenlegi verziót kell használnia. Az előző verzióban nem hozhat létre új Azure Migrate projekteket, és nem végezhet új felfedezéseket.
 
 ## <a name="supported-migration-scenarios"></a>Támogatott áttelepítési forgatókönyvek
 
-A táblázat összefoglalja a támogatott áttelepítési forgatókönyvek.
+A táblázat összefoglalja a támogatott áttelepítési forgatókönyveket.
 
 **Üzembe helyezés** | **Részletek*** 
 --- | --- 
-**A helyszíni értékelése** | Felmérheti a helyszíni számítási feladatok és a VMware virtuális gépek és a Hyper-V virtuális gépeken futó adatokat. Mérje fel az Azure Migrate Server Assessment és a Microsoft Data Migration Assistant (DMA), valamint a külső eszközöket, amelyek tartalmazzák a Cloudamize Corent Tech és Turbonomic kiszolgáló használatával.
-**Helyszíni áttelepítés az Azure-bA** | Számítási feladatok és az adatok fizikai kiszolgálókon vagy VMware virtuális gépeket, Hyper-V virtuális gépeket, és az AWS/GCP-példányokon, az Azure-bA migrálása. Áttelepítés az Azure Migrate Server Assessment és az Azure Database Migration Service (DMS), és csakúgy, mint például Carbonite és CorentTech külső eszközök használatával.
+**Helyszíni Értékelés** | A VMware virtuális gépeken és a Hyper-V virtuális gépeken futó helyszíni munkaterhelések és adatok értékelése. Értékelje Azure Migrate Server Assessment és Microsoft Data Migration Assistant (DMA) használatát, valamint a Cloudamize, a kölcsönzési technológiát és a Turbonomic kiszolgálót is tartalmazó külső eszközöket.
+**Helyszíni áttelepítés az Azure-ba** | Áttelepítheti a fizikai kiszolgálókon, a VMware virtuális gépeken, a Hyper-V virtuális gépeken és az AWS/GCP-példányokon futó munkaterheléseket és az Azure-ba. Migrálás Azure Migrate Server Assessment és Azure Database Migration Service (DMS) használatával, valamint a harmadik féltől származó, a Carbonite-és a CorentTech tartalmazó eszközök használatával.
 
-Adott eszköz támogatja a következőképpen foglalhatók össze.
+Az eszközök adott támogatását az alábbiak szerint összegzi a rendszer.
 
-**Eszköz** | **Értékelés és a Migrálás** | **Részletek**
+**Eszköz** | **Értékelés/áttelepítés** | **Részletek**
 --- | --- | ---
-Az Azure Migrate Server Assessment | Értékelés | Próbálja ki a kiszolgáló értékelési [Hyper-V](tutorial-prepare-hyper-v.md) és [VMware](tutorial-prepare-vmware.md).
+Azure Migrate kiszolgáló értékelése | Értékelés | Próbálja ki a [Hyper-V](tutorial-prepare-hyper-v.md) és a [VMware](tutorial-prepare-vmware.md)kiszolgáló értékelését.
 Cloudamize | Értékelés | [További információk](https://www.cloudamize.com/platform#tab-0).
 CorentTech | Értékelés | [További információk](https://www.corenttech.com/).
-A Turbonomic | Értékelés | [További információk](https://turbonomic.com/solutions/technologies/azure-cloud/).
-Az Azure Migrate-kiszolgáló áttelepítése | Áttelepítés | Próbálja ki a kiszolgáló-áttelepítési [Hyper-V](tutorial-migrate-hyper-v.md) és [VMware](tutorial-migrate-vmware.md).
+Turbonomic | Értékelés | [További információk](https://turbonomic.com/solutions/technologies/azure-cloud/).
+Azure Migrate kiszolgáló áttelepítése | Áttelepítés | Próbálja ki a kiszolgáló áttelepítését a [Hyper-V](tutorial-migrate-hyper-v.md) és a [VMware](tutorial-migrate-vmware.md)rendszerhez.
 Carbonite | Áttelepítés | [További információk](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure).
 CorentTech | Áttelepítés | [További információk](https://www.corenttech.com/).
 
 
-## <a name="azure-migrate-projects"></a>Az Azure Migrate-projekt
+## <a name="azure-migrate-projects"></a>Azure Migrate projektek
 
 **Támogatás** | **Részletek**
 --- | ---
-Subscription | Egy adott előfizetés akkor is egyetlen Azure Migrate-projekt.
-Azure-engedélyeket | Az Azure Migrate-projekt létrehozása az előfizetés közreműködő vagy tulajdonos engedélyek szükségesek.
-VMware virtuális gépek  | Mérje fel, akár 35,000 VMware virtuális gépek, egyetlen projekt.
-Hyper-V virtuális gépek | Mérje fel, legfeljebb 10 000 Hyper-V virtuális gépek, egyetlen projekt.
+Subscription | Egy előfizetéshez egyetlen Azure Migrate projekt tartozhat.
+Azure-engedélyek | Azure Migrate projekt létrehozásához közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az előfizetésben.
+VMware virtuális gépek  | Egyetlen projektben akár 35 000 VMware virtuális gépet is megvizsgálhat.
+Hyper-V virtuális gépek | Akár 10 000 Hyper-V virtuális gépet is kivizsgálhat egyetlen projektben.
 
-A projekt tartalmazhatnak VMware virtuális gépek és a Hyper-V virtuális gépek, egészen az értékelés korlátjáig.
+A projektek tartalmazhatják a VMware virtuális gépeket és a Hyper-V virtuális gépeket is, az értékelési korlátokig.
 
 
-## <a name="vmware-assessment-and-migration"></a>VMware-elemzésekhez és migráláshoz
+## <a name="vmware-assessment-and-migration"></a>VMware Assessment és Migration
 
-[Felülvizsgálat](migrate-support-matrix-vmware.md) az Azure Migrate Server Assessment és a kiszolgáló áttelepítése a VMware virtuális gépek támogatási mátrixa.
+[Tekintse át](migrate-support-matrix-vmware.md) a Azure Migrate Server Assessment and Server áttelepítési támogatási mátrixot a VMWare virtuális gépekhez.
 
-## <a name="hyper-v-assessment-and-migration"></a>A Hyper-V elemzésekhez és migráláshoz
+## <a name="hyper-v-assessment-and-migration"></a>Hyper-V felmérése és migrálása
 
-[Felülvizsgálat](migrate-support-matrix-hyper-v.md) az Azure Migrate Server Assessment és a kiszolgáló áttelepítése a Hyper-V virtuális gépek támogatási mátrixa.
+[Tekintse át](migrate-support-matrix-hyper-v.md) a Hyper-V virtuális gépek Azure Migrate kiszolgáló-értékelési és kiszolgáló-áttelepítési támogatási mátrixát.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Felmérheti a VMware virtuális gépek](tutorial-assess-vmware.md) az áttelepítéshez.
-- [A Hyper-V virtuális gépek értékelése](tutorial-assess-hyper-v.md) az áttelepítéshez.
+- A [VMWare virtuális gépek](tutorial-assess-vmware.md) kiértékelése áttelepítéshez.
+- [Vizsgálja át a Hyper-V virtuális gépeket](tutorial-assess-hyper-v.md) az áttelepítéshez.
 

@@ -311,8 +311,6 @@
           href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
         - name: Meghiúsult Apache Spark-feladat – InvalidClassException
           href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
-        - name: Lassú Apache Spark-feladatok – listStatus
-          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
         - name: Lassú Apache Spark-feladatok – tároló
           href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: IllegalArgumentException kivétel

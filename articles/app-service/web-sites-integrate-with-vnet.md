@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8321a9dd779406b2d1de44bd4c9313e4d855548d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 7246a0223e156abd866594c65542069944601b01
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68740900"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018255"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása Azure-Virtual Network
 Ez a dokumentum ismerteti a Azure App Service Virtual Network Integration funkciót, valamint azt, hogyan állíthatja be az [](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazásokkal a Azure app Serviceban. [Azure-beli virtuális hálózatok][VNETOverview] A (virtuális hálózatok) lehetővé teszi, hogy számos Azure-erőforrást egy nem internetes útválasztású hálózaton helyezzen el.  
@@ -84,8 +84,9 @@ Ez a funkció előzetes verzióban érhető el, de a Windows-alkalmazások éles
 * Az alkalmazásnak és a VNet ugyanabban a régióban kell lennie
 * Integrált alkalmazással nem törölhet VNet. Először el kell távolítania az integrációt 
 * App Service-csomag esetében csak egy regionális VNet-integráció lehet. Ugyanazon a App Service csomagon belül több alkalmazás is használhatja ugyanazt a VNet. 
+* Egy alkalmazás vagy egy App Service csomag előfizetése nem módosítható, amíg van olyan alkalmazás, amely regionális VNet-integrációt használ
 
-Az egyes App Service-példányok esetében egy-egy-egy-egy-egy-egy Ha az alkalmazást 5 példányra méretezi, a rendszer 5 címet használ. Mivel az alhálózat mérete nem módosítható a hozzárendelés után, olyan alhálózatot kell használnia, amely elég nagy ahhoz, hogy megfeleljen az alkalmazásnak. A/27 32-es címmel az ajánlott méret, mivel a prémium App Service-csomag 20 példányra van méretezve.
+Az egyes App Service-példányok esetében egy-egy-egy-egy-egy-egy Ha 5 példányra méretezi az alkalmazást, akkor a rendszer 5 címet használ. Mivel az alhálózat mérete nem módosítható a hozzárendelés után, olyan alhálózatot kell használnia, amely elég nagy ahhoz, hogy megfeleljen az alkalmazásnak. Az ajánlott méret a/26, 64 címmel. A/27 32-es címmel a prémium szintű App Service 20 példányban, ha nem módosította a App Service terv méretét. Ha felfelé vagy lefelé méretezi a App Service tervet, a rövid ideig kétszer annyi címet kell használnia. 
 
 Ha azt szeretné, hogy alkalmazásai egy másik App Service tervben olyan VNet érjenek el, amely már egy másik App Service-csomagban található alkalmazáshoz csatlakozik, akkor a korábban létező VNet-integráció által használttól eltérő alhálózatot kell választania.  
 
@@ -102,6 +103,8 @@ A szolgáltatás előzetes verzióban is elérhető Linux rendszeren. A VNet-int
    ![Válassza ki a VNet és az alhálózatot][7]
 
 Miután az alkalmazása integrálva van a VNet, ugyanazt a DNS-kiszolgálót fogja használni, amelyhez a VNet konfigurálva van. 
+
+A regionális VNet-integrációhoz az integrációs alhálózat delegálása szükséges a Microsoft. Web számára.  A VNet-integráció felhasználói felülete automatikusan delegálja az alhálózatot a Microsoft. Web számára. Ha a fiókja nem rendelkezik megfelelő hálózati engedélyekkel a beállításához, szüksége lesz egy olyan személyre, aki az integrációs alhálózaton attribútumokat állíthat be az alhálózat delegálásához. Az integrációs alhálózat manuális delegálásához nyissa meg az Azure Virtual Network alhálózat felhasználói felületét, és állítsa be a Microsoft. Web delegálását.
 
 Ha le szeretné bontani az alkalmazást a VNet,válassza a leválasztás lehetőséget. Ezzel újraindítja a webalkalmazást. 
 
@@ -249,7 +252,7 @@ Az átjáró szükséges VNet-integrációs funkciója három kapcsolódó díjj
 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Habár a funkció egyszerűen beállítható, ez nem jelenti azt, hogy a probléma ingyenes lesz. Ha problémák merülnek fel a kívánt végpont elérésekor, néhány segédprogram használható az alkalmazás-konzolról való kapcsolat tesztelésére. Két konzolt használhat. Az egyik a kudu-konzol, a másik pedig a Azure Portal konzolja. A kudu-konzol alkalmazásból való eléréséhez nyissa meg az eszközök-> kudu. Ez megegyezik a következővel: [sitename]. SCM. azurewebsites. net. A megnyitása után lépjen a Debug konzol lapra. Az Azure Portal üzemeltetett konzoljának eléréséhez nyissa meg az eszközök-> konzolt. 
+Habár a funkció egyszerűen beállítható, ez nem jelenti azt, hogy a probléma ingyenes lesz. Ha problémák merülnek fel a kívánt végpont elérésekor, néhány segédprogram használható az alkalmazás-konzolról való kapcsolat tesztelésére. Két konzolt használhat. Az egyik a kudu-konzol, a másik pedig a Azure Portal konzolja. A kudu-konzol alkalmazásból való eléréséhez nyissa meg az eszközök-> kudu. A Kudo-konzolt a következő helyen is elérheti: [sitename]. SCM. azurewebsites. net. A webhely betöltése után lépjen a Debug konzol lapra. Az Azure Portal üzemeltetett konzoljának eléréséhez nyissa meg az eszközök-> konzolt. 
 
 #### <a name="tools"></a>Eszközök
 Az eszközök **pingelése**, az **nslookup** és a **tracert** a biztonsági korlátozások miatt nem fog működni a konzolon. Az üresség kitöltéséhez két különálló eszköz lett hozzáadva. A DNS-funkciók teszteléséhez hozzáadott egy nameresolver. exe nevű eszközt. A szintaxis a következő:

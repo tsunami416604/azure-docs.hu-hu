@@ -1,59 +1,59 @@
 ---
-title: Egy eszköz kapcsolati karakterláncának létrehozása az Azure IoT Central |} A Microsoft Docs
-description: Eszköz a fejlesztők hogyan do I létre eszköz, amelyet szeretne csatlakozni az IoT Central alkalmazáshoz tartozó kapcsolati karakterláncot?
+title: Eszköz-kapcsolatok karakterláncának létrehozása az Azure IoT Centralhoz | Microsoft Docs
+description: Hogyan lehet létrehozni egy IoT Central alkalmazáshoz csatlakozni kívánó eszközhöz tartozó kapcsolati sztringet?
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/09/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f302cbfa7152ae30be434f560c0c39056d40f9f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97c0332656b75c3c8d0cddecb41c7a15ac2f218c
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60885644"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019780"
 ---
-# <a name="generate-a-device-connection-string-to-connect-to-an-azure-iot-central-application"></a>Csatlakozhat egy Azure IoT Central alkalmazáshoz eszköz kapcsolati karakterláncának létrehozása
+# <a name="generate-a-device-connection-string-to-connect-to-an-azure-iot-central-application"></a>Eszköz kapcsolati karakterlánc létrehozása Azure IoT Central-alkalmazáshoz való kapcsolódáshoz
 
-Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők, eszköz, amelyet szeretne csatlakozni az IoT Central alkalmazáshoz tartozó kapcsolati karakterláncot létrehozni. Az ebben a cikkben leírt eljárás bemutatja, hogyan gyorsan csatlakozhat egy közös hozzáférésű jogosultságkód (SAS) használatával egyetlen eszközhöz. Ez a megközelítés akkor hasznos, amikor kísérleteztek az IoT-központ vagy a tesztelési eszközök. Alternatív módszerek az éles környezetben használni, lásd: [eszköz csatlakoztatása az Azure IoT Central](concepts-connectivity.md).
+Ez a cikk azt ismerteti, hogyan lehet egy eszköz fejlesztőként létrehozni egy kapcsolati karakterláncot olyan eszközhöz, amelynek IoT Central alkalmazáshoz kell csatlakoznia. A cikkben ismertetett eljárás azt mutatja be, hogyan lehet gyorsan összekapcsolást egyetlen eszközt közös hozzáférésű aláírással (SAS). Ez a megközelítés akkor lehet hasznos, ha IoT Central vagy tesztelési eszközökkel kísérletezik. Az éles környezetben használható alternatív módszerekért lásd: [az eszközök csatlakoztatása az Azure IoT Centralban](concepts-connectivity.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-- Azure IoT Central alkalmazáshoz. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
-- A fejlesztői gépen való [Node.js](https://nodejs.org/) 8.0.0 verzió vagy újabb verziója szükséges. Futtathat `node --version` a parancssorban a verzió ellenőrzéséhez. A Node.js az operációs rendszerek széles körében elérhető.
+- Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+- A [Node. js](https://nodejs.org/) 8.0.0 vagy újabb verzióját futtató fejlesztői gép. A parancssorban `node --version` futtatva ellenőrizhető a verzió. A Node.js az operációs rendszerek széles körében elérhető.
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
-Az alábbi lépések bemutatják, hogyan tehet szert az adatokat, létre kell hoznia egy SAS-kapcsolati karakterláncot egy eszközhöz:
+A következő lépések bemutatják, hogyan kérheti le a SAS-kapcsolódási karakterlánc létrehozásához szükséges információkat az eszközhöz:
 
-1. Az a **Device Explorer**, keresse meg az igazi eszközön, amelyhez csatlakozni szeretne az alkalmazáshoz:
+1. A **Device Explorer**keresse meg a valódi eszközt, amelyhez csatlakozni szeretne az alkalmazáshoz:
 
-    ![Valós eszközök kiválasztása](media/howto-generate-connection-string/real-devices.png)
+    ![Valódi eszköz kiválasztása](media/howto-generate-connection-string/real-devices.png)
 
-1. Az a **eszköz** lapon jelölje be **Connect**:
+1. Az **eszköz** lapon válassza a **Csatlakoztatás**lehetőséget:
 
-    ![Válassza ki a csatlakozáshoz](media/howto-generate-connection-string/connect.png)
+    ![Válassza a kapcsolat lehetőséget.](media/howto-generate-connection-string/connect.png)
 
-1. Jegyezze fel a kapcsolati adatok **hatókör azonosítója**, **Eszközazonosító**, és **eszköz elsődleges kulcs**ahhoz, hogy a következő lépésekben:
+1. Jegyezze fel a kapcsolat részleteit, a **hatókör azonosítóját**, az **eszköz azonosítóját**és az **eszköz elsődleges kulcsát**a következő lépésekben való használatra:
 
-    ![Kapcsolat adatai](media/howto-generate-connection-string/device-connect.png)
+    ![Kapcsolat részletei](media/howto-generate-connection-string/device-connect.png)
 
-    Ezen az oldalon mentéséhez másolhatja az értékeket.
+    Az ezen a lapon található értékeket a mentéshez másolhatja.
 
-## <a name="generate-the-connection-string"></a>A kapcsolati karakterlánc létrehozása
+## <a name="generate-the-connection-string"></a>A kapcsolatok karakterláncának létrehozása
 
 [!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy már létrehozott egy valós eszköz csatlakozhat az Azure IoT Central alkalmazáshoz tartozó kapcsolati karakterláncot, Íme a javasolt következő lépések:
+Most, hogy létrehozta a kapcsolati karakterláncot egy valódi eszközhöz az Azure IoT Central-alkalmazáshoz való kapcsolódáshoz, a következő lépések javasoltak:
 
-* [Készítse elő és (C) eszköz DevKit csatlakoztatása](howto-connect-devkit.md)
-* [Készítse elő, és csatlakozzon a Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
-* [Készítse elő és a Raspberry Pi csatlakoztatása (C#)](howto-connect-raspberry-pi-csharp.md)
-* [Készítse elő és a egy Windows 10 IoT core-eszköz csatlakoztatása (C#)](howto-connect-windowsiotcore.md)
+* [Fejlesztői készlet-eszköz előkészítése és csatlakoztatása (C)](howto-connect-devkit.md)
+* [Málna PI (Python) előkészítése és összekötése](howto-connect-raspberry-pi-python.md)
+* [Málna PI (C#) előkészítése és összekapcsolása](howto-connect-raspberry-pi-csharp.md)
+* [Windows 10 IoT Core-eszköz előkészítése és csatlakoztatásaC#()](howto-connect-windowsiotcore.md)
 * [Általános Node.js-ügyfél csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-nodejs.md)

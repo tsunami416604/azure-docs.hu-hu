@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2019
+ms.date: 08/22/2019
 ms.author: shants
-ms.openlocfilehash: c82bacfdff1c9d939016b48735f7917e7d34b47f
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 347df9567817cdaea731e06646196142885757b1
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849682"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018824"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>A Linux rendszerű virtuális gépek tervezett karbantartási értesítéseinek kezeléséhez
 
@@ -27,13 +27,13 @@ Az Azure rendszeresen végez frissítéseket a virtuális gépeket futtató infr
 
 - Ha a karbantartás nem igényel újraindítást, az Azure helyben történő áttelepítés használatával szünetelteti a virtuális gépet a gazdagép frissítése közben. Ezek a nem újraindításra alkalmas karbantartási műveletek tartalék tartományt adnak a tartalék tartománynak, és a rendszer leállítja a folyamatot, ha figyelmeztetési állapot érkezik.
 
-- Ha a karbantartás újraindítást igényel, a karbantartás megtervezése után értesítést kap. Ezekben az esetekben egy olyan időablakot kap, amely általában 30 nap, ahol elindíthatja a karbantartást, ha Ön is működik.
+- Ha a karbantartás újraindítást igényel, a karbantartás megtervezése után értesítést kap. Ezekben az esetekben egy olyan időablakot kap, amely általában 35 nap, ahol elindíthatja a karbantartást, ha Ön is működik.
 
 
 Az újraindítást igénylő tervezett karbantartás hullámokban van ütemezve. Minden egyes hullám különböző hatókörrel (régiókkal) rendelkezik.
 
 - A Wave az ügyfeleknek küldött értesítésekkel kezdődik. Alapértelmezés szerint a rendszer értesítést küld az előfizetés tulajdonosának és a közös tulajdonosoknak. Hozzáadhat további címzetteket és üzenetküldési lehetőségeket, például az e-maileket, az SMS-t és a webhookokat az Azure- [Tevékenységnaplók riasztásait](../../azure-monitor/platform/activity-logs-overview.md)használó értesítésekhez.  
-- Az értesítés időpontjában elérhetővé válik egy *önkiszolgáló ablak* . Ez az ablak általában 30 nap alatt megkeresi, hogy a virtuális gépek mely részét foglalja magában ebben a hullámban, és proaktív módon elkezdheti a karbantartást a saját ütemezési igényei szerint.
+- Az értesítés időpontjában elérhetővé válik egy *önkiszolgáló ablak* . Ebben az ablakban általában 35 nap alatt megtalálhatja, hogy a virtuális gépek mely részét foglalja magában ebben a hullámban, és proaktív módon kezdje el a karbantartást a saját ütemezési igényei szerint.
 - Az önkiszolgáló ablak után megkezdődik az *ütemezett karbantartási* időszak. Ezen az időszakon belül az Azure ütemezni fogja a szükséges karbantartást a virtuális gépen. 
 
 Ahhoz, hogy az Azure automatikusan megkezdje a karbantartást, a két Windows rendszernek kell megadnia a karbantartási és a virtuális gépek újraindítását.
@@ -84,7 +84,7 @@ az vm get-instance-view -g rgName -n vmName
 
 A MaintenanceRedeployStatus a következő értékeket adja vissza: 
 
-| Érték | Leírás   |
+| Value | Leírás   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Azt jelzi, hogy most elindítható-e a virtuális gép karbantartása. |
 | PreMaintenanceWindowStartTime         | A karbantartás önkiszolgáló ablakának kezdete, ha a virtuális gépen karbantartást kezdeményezhet |
@@ -177,7 +177,7 @@ További információ a magas rendelkezésre állásról: [virtuális gépek ren
 
 **V:** Több felhasználási eset van, amikor a virtuális gép a karbantartás utáni ismételt üzembe helyezés után is karbantartásra ütemezettként jelenik meg:
 1.  Megszakítottuk a karbantartási hullámot, és egy másik hasznos adattartalommal újraindítottuk. Lehetséges, hogy hibás adattartalmat észlelt, ezért egyszerűen üzembe kell helyezni egy további hasznos adatot.
-2.  A virtuális gép  egy hardverhiba miatt meggyógyult egy másik csomópontra.
+2.  A virtuális gép egy hardverhiba miatt meggyógyult egy másik csomópontra.
 3.  Azt választotta, hogy leállítja (felszabadítja), majd újraindítja a virtuális gépet.
 4.  A virtuális gép **automatikus leállítása** be van kapcsolva.
 

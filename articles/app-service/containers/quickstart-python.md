@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
-ms.openlocfilehash: 2ff4364fdb0f24ca08a77279d569c0f03de9bb24
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: c7306de4af7f958ef8f89dac41a5e08209916432
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996841"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020213"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Python-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -37,7 +37,7 @@ A gyorsútmutató elvégzéséhez:
 
 ## <a name="download-the-sample-locally"></a>Minta helyi letöltése
 
-Futtassa a következő parancsokat egy terminálablakban. Ezzel klónozza a mintaalkalmazást a helyi gépre, és a mintakódot tartalmazó könyvtárba lép.
+Egy terminál-ablakban futtassa a következő parancsokat a minta alkalmazás helyi gépre történő klónozásához, majd nyissa meg a könyvtárat a mintakód használatával.
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
@@ -65,7 +65,7 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-Nyisson meg egy webböngészőt, majd keresse meg a mintaalkalmazást a `http://localhost:5000/` címen.
+Nyisson meg egy webböngészőt, és nyissa meg a `http://localhost:5000/`minta alkalmazást a következő címen:.
 
 Az oldalon látható mintaalkalmazáson ekkor a **Hello World!** üzenet jelenik meg.
 
@@ -158,7 +158,7 @@ A Python-mintakód App Service Linux rendszeren fut, beépített képpel.
 
 ## <a name="update-locally-and-redeploy-the-code"></a>A kód frissítése helyileg és ismételt üzembe helyezése
 
-A Cloud Shell a Cloud Shell szerkesztő `code application.py` megnyitásához írja be a következőt:.
+A Cloud Shell a Cloud Shell- `code application.py` szerkesztő megnyitásához írja be a következőt:.
 
 ![Application.py kód](media/quickstart-python/code-applicationpy.png)
 
@@ -184,7 +184,7 @@ Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás m
 
 A létrehozott alkalmazás kezeléséhez lépjen a <a href="https://portal.azure.com" target="_blank">Azure Portal</a> .
 
-A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
+A bal oldali menüben válassza a **app Services**lehetőséget, majd válassza ki az Azure-alkalmazás nevét.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/quickstart-python/app-service-list.png)
 

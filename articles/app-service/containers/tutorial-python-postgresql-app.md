@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1cb9cd72908dc88ef2890764bc8d3fad88a82707
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: b5a21bd144558459ac60ae2da405f9ea57ca2fd1
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951909"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020188"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Python-(Django-) Webalkalmazás létrehozása a PostgreSQL-sel Azure App Service
 
@@ -140,13 +140,13 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-Egy böngészőben nyissa meg a `http://localhost:8000` oldalt. Ekkor megjelenik az üzenet `No polls are available.`. 
+`http://localhost:8000` Ugrás a böngészőben. Ekkor megjelenik az üzenet `No polls are available.`. 
 
-Navigáljon `http://localhost:8000/admin` a gombra, és jelentkezzen be az utolsó lépésben létrehozott rendszergazdai felhasználó használatával. Kattintson a **Hozzáadás** elemre a **kérdések** mellett, és hozzon létre egy lekérdezési kérdést néhány lehetőséggel.
+Nyissa `http://localhost:8000/admin` meg a t, és jelentkezzen be az utolsó lépésben létrehozott rendszergazdai felhasználó használatával. Válassza a **Hozzáadás** lehetőséget a **kérdések** mellett, és hozzon létre egy lekérdezési kérdést néhány lehetőséggel.
 
 ![Helyileg futó Python Django-alkalmazás](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-Navigáljon `http://localhost:8000` újra, és tekintse meg a megjelenő lekérdezési kérdést.
+`http://localhost:8000` Lépjen újra, és tekintse meg a megjelenő lekérdezési kérdést.
 
 A Django-minta alkalmazás az adatbázisban tárolja a felhasználói adatbázisokat. Ha sikeres a lekérdezési kérdés hozzáadásakor, az alkalmazás az adatait a helyi PostgreSQL-adatbázisba írja.
 
@@ -269,13 +269,13 @@ A rendszergazda felhasználó létrehozása után futtassa a Django-kiszolgáló
 python manage.py runserver
 ```
 
-`http://localhost:8000` Navigáljon újra. Ekkor újra meg kell jelennie `No polls are available.` az üzenetnek. 
+`http://localhost:8000` Ugrás újra. Ekkor újra meg kell jelennie `No polls are available.` az üzenetnek. 
 
-Navigáljon `http://localhost:8000/admin` , és jelentkezzen be a létrehozott rendszergazda felhasználóval, és hozzon létre egy lekérdezési kérdést, mint korábban.
+Nyissa `http://localhost:8000/admin` meg a t, és jelentkezzen be a létrehozott rendszergazda felhasználóval, és hozzon létre egy lekérdezési kérdést, mint korábban.
 
 ![Helyileg futó Python Django-alkalmazás](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-Navigáljon `http://localhost:8000` újra, és tekintse meg a megjelenő lekérdezési kérdést. Az alkalmazás most már az Azure-adatbázisba írja az adatait.
+`http://localhost:8000` Lépjen újra, és tekintse meg a megjelenő lekérdezési kérdést. Az alkalmazás most már az Azure-adatbázisba írja az adatait.
 
 ## <a name="deploy-to-azure"></a>Üzembe helyezés az Azure-ban
 
@@ -386,7 +386,7 @@ Ekkor meg kell jelennie a korábban létrehozott lekérdezési kérdésnek.
 
 A app Service egy Django-projektet észlel a tárházban úgy, hogy megkeresi az egyes alkönyvtárakban található `manage.py startproject` WSGI.py, amelyet alapértelmezés szerint hoz létre. Amikor megkeresi a fájlt, betölti a Django-webalkalmazást. További információ a App Service Python-alkalmazások betöltéséről: a [beépített Python-rendszerkép konfigurálása](how-to-configure-python.md).
 
-Navigáljon `<app-name>.azurewebsites.net` , és jelentkezzen be ugyanazzal a rendszergazda felhasználóval, amelyet Ön hozott létre. Ha szeretné, próbálkozzon még több lekérdezési kérdés létrehozásával.
+Nyissa `<app-name>.azurewebsites.net` meg a t, és jelentkezzen be ugyanazzal a rendszergazda felhasználóval, amelyet Ön hozott létre. Ha szeretné, próbálkozzon még több lekérdezési kérdés létrehozásával.
 
 ![Helyileg futó Python Django-alkalmazás](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
@@ -400,7 +400,7 @@ Navigáljon `<app-name>.azurewebsites.net` , és jelentkezzen be ugyanazzal a re
 
 A létrehozott alkalmazás megjelenítéséhez nyissa meg a [Azure Portal](https://portal.azure.com) .
 
-A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
+A bal oldali menüben válassza a **app Services**lehetőséget, majd válassza ki az Azure-alkalmazás nevét.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/tutorial-python-postgresql-app/app-resource.png)
 

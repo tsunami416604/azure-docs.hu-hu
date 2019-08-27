@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 6bafd5ed5f2d7080b0f2a2db71ac96e4f97a1f76
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 64649c86dbd3c3469247308bfc4dd0ed12e06949
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774941"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018239"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management-példány frissítése és méretezése  
 
@@ -53,8 +53,11 @@ A **prémium** szint lehetővé teszi egyetlen Azure API Management-példány te
 
 Bármely szintre frissítheti és visszaléphet. Vegye figyelembe, hogy a verziófrissítés vagy a visszalépési művelettel eltávolíthat bizonyos funkciókat – például a virtuális hálózatok vagy a többrégiós telepítést, ha a prémium szintről standard vagy alapszintű értékre vált.
 
->[!NOTE]
->A frissítés vagy a méretezési csoport folyamat is igénybe vehet a 15-45 percre a alkalmazni. Értesítést kap, ha elkészült.
+> [!NOTE]
+> A frissítés vagy a méretezési csoport folyamat is igénybe vehet a 15-45 percre a alkalmazni. Értesítést kap, ha elkészült.
+
+> [!NOTE]
+> API Management szolgáltatás a használati szinten automatikusan méretezi a forgalmat a forgalom alapján.
 
 ## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>A Azure Portal használata a frissítéshez és a méretezéshez
 

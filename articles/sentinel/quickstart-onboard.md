@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2019
+ms.date: 08/22/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0c37d6167012af46204cbca29397f5d226b9649b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: b609dc70c45941ec1132c7cdf614cf9bec8119ff
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611896"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019022"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>A fedélzeti Azure Sentinel előzetes verziója
 
@@ -59,7 +59,8 @@ Az adatforrások összekapcsolását követően válassza ki a szakszerűen lét
 
    >[!NOTE] 
    > - A Azure Security Center által létrehozott alapértelmezett munkaterületek nem jelennek meg a listában; Az Azure Sentinel nem telepíthető rajtuk.
-   > - Az Azure Sentinel a következő régiókban üzembe helyezett munkaterületeken is futtatható:  Délkelet-Ausztrália, Közép-India, USA keleti régiója, USA 2. keleti régiója, – EUAP (Kanári), Kelet-Japán, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati régiója.
+   > - Az Azure Sentinel a következő régiókban üzembe helyezett munkaterületeken is futtatható: Kelet-Ausztrália, Délkelet-Ausztrália, Közép-India, USA keleti régiója, USA 2. keleti régiója, – EUAP (Kanári), Kelet-Japán, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati középső régiója, Közép-Kanada, Közép-Korea, Észak-Európa, USA Kelet-Ázsia 2. keleti régiója, USA nyugati régiója, USA középső régiója USA déli középső régiója.
+
 
 6. Kattintson az **Azure Sentinel hozzáadása**lehetőségre.
   

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 19d3fe4285cf6bf316a0d445e49a398ed5d66a35
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d2fec29c96639d21db362f6982b88a90bd6c319f
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991786"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019085"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Időzített metaadatok jelzése élő adatfolyamban 
 
@@ -98,7 +98,7 @@ A következő dokumentumok olyan rendelkezéseket tartalmaznak, amelyek az ebben
 
 Azure Media Services támogatja a valós idejű sávon belüli metaadatokat mind az [RTMP], mind a Smooth Streaming [MS-SSTR-betöltés] protokoll esetében. A valós idejű metaadatok egyéni események definiálására használhatók saját egyedi sémákkal (JSON, bináris, XML), valamint az iparág által definiált formátumokkal (például ID3 vagy SCTE-35) a szórásos streamekben. 
 
-Ez a cikk részletesen ismerteti, hogyan lehet a Media Services támogatott betöltési protokolljainak használatával egyéni időzített metaadatokat küldeni. A cikk azt is ismerteti, hogyan történik a HLS, a kötőjel és a Smooth Streaming jegyzékfájljának az időzített metaadatokkal való megjelenítése, valamint a sávon belüli átvitel módja, ha a tartalmat a rendszer a CMAF (MP4-töredékek) vagy a HLS Transport stream (TS) szegmensének használatával továbbítja. 
+Ez a cikk részletesen ismerteti, hogyan küldhet egyéni időzített metaadatokat a Azure Media Services támogatott betöltési protokollok használatával. A cikk azt is ismerteti, hogyan történik a HLS, a kötőjel és a Smooth Streaming jegyzékfájljának az időzített metaadatokkal való megjelenítése, valamint a sávon belüli átvitel módja, ha a tartalmat a rendszer a CMAF (MP4-töredékek) vagy a HLS Transport stream (TS) szegmensének használatával továbbítja. 
 
 Gyakori használati esetek az időzített metaadatok esetében:
 
@@ -122,7 +122,7 @@ Azure Media Services az élő események és a csomagolók képesek fogadni ezek
 
 Az [RTMP] protokoll lehetővé teszi, hogy a rendszer időzített metaadatokat küldjön a különböző forgatókönyvekhez, beleértve az egyéni metaadatokat és a SCTE-35 ad-jeleket. 
 
-A hirdetési jelek (Cue-üzenetek) az [RTMP] streamben beágyazott [AMF0] Cue-üzenetekként lesznek elküldve. Előfordulhat, hogy a rendszer elküldte a Cue-üzeneteket a tényleges esemény vagy a [SCTE35] ad-összekötési jel előtt. Ennek a forgatókönyvnek a támogatásához a rendszer az esemény tényleges idejét küldi el a végszó üzenetben. További információ: [AMF0].
+A hirdetési jelek (Cue-üzenetek) az [RTMP] streamben beágyazott [AMF0] Cue-üzenetekként lesznek elküldve. Előfordulhat, hogy a rendszer elküldte a Cue-üzeneteket a tényleges esemény vagy a [SCTE35] ad-összekötési jel előtt. Ennek a forgatókönyvnek a támogatásához a rendszer az esemény tényleges bemutató időbélyegét küldi el a végszó üzenetben. További információ: [AMF0].
 
 A következő [AMF0] parancsokat az RTMP betöltéséhez Azure Media Services támogatja:
 
@@ -139,8 +139,8 @@ A [AMF0] üzenet neve több, egyazon típusú esemény-adatfolyam megkülönböz
 
 Ha a felsőbb rétegbeli kódolótól, az IP-kamerától, a drone-től vagy az eszköztől az RTMP protokollt használó egyéni metaadatokat szeretne biztosítani, használja a "onUserDataEvent" [AMF0] adatüzenet parancs típusát.
 
-A **"onUserDataEvent"** adatüzenet-parancsnak a következő definícióval ellátott üzenettel kell rendelkeznie a Media Services és a sávon belüli fájlformátumba való becsomagolással, valamint a HLS, a Dash és a Smooth kifejezésekkel való rögzítéshez.
-Azt javasoljuk, hogy az időzített metaadatokat legfeljebb 0,5 másodpercenként (500ms) többször küldje el. Minden üzenet több képkockából is összesítheti a metaadatokat, ha frame szintű metaadatokat kell megadnia. Ha a többszörös átviteli sebességű streameket küld, javasoljuk, hogy a metaadatokat csak egyetlen bitráta esetén adja meg, hogy csökkentse a sávszélességet, és ne zavarja a videó/hang feldolgozását. 
+A **"onUserDataEvent"** adatüzenet-parancsnak a következő definícióval ellátott üzenettel kell rendelkeznie a Media Services és a sávon belüli fájlformátumba való becsomagolással, valamint a HLS, DASH és Smooth streaming jegyzékfájlokkal együtt.
+Azt javasoljuk, hogy az időzített metaadatokat legalább 0,5 másodpercenként (500ms), vagy az élő streamtel kapcsolatos stabilitási problémák esetén ne kelljen gyakrabban elküldeni. Minden üzenet több képkockából is összesítheti a metaadatokat, ha frame szintű metaadatokat kell megadnia. Ha a többszörös átviteli sebességű streameket küld, javasoljuk, hogy a metaadatokat csak egyetlen bitráta esetén adja meg, hogy csökkentse a sávszélességet, és ne zavarja a videó/hang feldolgozását. 
 
 A **"onUserDataEvent"** értékének a következőnek kell lennie: [MPEGDASH] EventStream XML Format üzenet. Ez megkönnyíti az olyan egyéni definiált sémák átadását, amelyek a sávon belüli "emsg" adattartalomban hajthatók végre a CMAF [MPEGCMAF] tartalmak esetében, amelyeket HLS vagy DASH protokollon keresztül továbbítanak. Minden DASH Event stream-üzenet tartalmaz egy schemeIdUri, amely URN-üzenet séma-azonosítóként működik, és meghatározza az üzenet hasznos adatait. Egyes sémák (például https://aomedia.org/emsg/ID3"" for [ID3v2], vagy **urn: SCTE: scte35:2013: bin** for [SCTE-35]) szabványosítva vannak az iparági konzorciumok közötti együttműködésre. Bármely alkalmazás-szolgáltató definiálhatja saját egyéni sémáját egy olyan URL-cím használatával, amelyet a vezérlő (a tulajdonában lévő tartomány) határoz meg, és az adott URL-címen megadhat egy specifikációt. Ha egy lejátszó rendelkezik kezelővel a definiált sémához, akkor ez az egyetlen olyan összetevő, amelynek ismernie kell a hasznos adatokat és a protokollt.
 
@@ -226,7 +226,7 @@ Az egyes események vagy adattartalmaik nem közvetlenül a HLS, KÖTŐJELhez va
 
 ### <a name="additional-informational-constraints-and-defaults-for-onuserdataevent-events"></a>További tájékoztató megkötések és alapértékek a onUserDataEvent eseményeihez
 
-- Ha az időskála nincs beállítva a EventStream elemben, a rendszer alapértelmezés szerint az RTMP-1Khz időkeretét használja.
+- Ha az időskála nincs beállítva a EventStream elemben, a rendszer alapértelmezés szerint az RTMP 1 kHz-es időkeretét használja.
 - Egy onUserDataEvent-üzenet kézbesítése a 500ms-k maximális száma szerint van korlátozva. Ha gyakrabban küld eseményeket, az hatással lehet az élő csatorna sávszélességére és stabilitására.
 
 ## <a name="212-rtmp-ad-cue-signaling-with-oncuepoint"></a>2.1.2 RTMP ad Cue-jelzés a "onCuePoint" kifejezéssel

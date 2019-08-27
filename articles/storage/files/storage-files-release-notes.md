@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/14/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 45f383691a52d841f35ed9b67d4658341de18afc
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f4ea820eb116c4efe550997cbe7c9ed69713c965
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036262"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019117"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>A Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -23,7 +23,7 @@ A jelen cikk az Azure File Sync ügynök támogatott verzióinak kibocsátási m
 ## <a name="supported-versions"></a>Támogatott verziók
 Az Azure File Sync ügynök alábbi verziói támogatottak:
 
-| Mérföldkő | Az ügynök verziószáma | Kiadás dátuma | Állapot |
+| Mérföldkő | Az ügynök verziószáma | Kiadás dátuma | State |
 |----|----------------------|--------------|------------------|
 | 2019. júliusi kumulatív frissítés – [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019. július 24. | Támogatott |
 | 2019. júliusi kumulatív frissítés – [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019. július 12. | Támogatott |
@@ -71,6 +71,12 @@ A következő kibocsátási megjegyzések a Azure File Sync ügynök verzióján
 
 - Nagyobb fájlmegosztás-méretek támogatása
     - A nagyobb Azure-fájlmegosztás előzetes verziójával a fájl-szinkronizálás támogatásának korlátai is növekednek. Ebben az első lépésben Azure File Sync mostantól támogatja a 25TB-és 50million-fájlokat egyetlen, szinkronizált névtérben. A nagyméretű fájlmegosztás előzetes verziójának alkalmazásához töltse ki ezt az űrlapot https://aka.ms/azurefilesatscalesurvey. 
+- A tűzfal és a virtuális hálózat beállításainak támogatása a Storage-fiókoknál
+    - Azure File Sync mostantól támogatja a Storage-fiókok tűzfal-és virtuális hálózati beállításait. A tűzfal és a virtuális hálózat beállításának konfigurálásához tekintse meg a [tűzfal és a virtuális hálózat beállításainak konfigurálása](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)című témakört.
+- PowerShell-parancsmag a fájlok azonnali szinkronizálásához az Azure-fájlmegosztás esetében
+    - Az Azure-fájlmegosztás által módosított fájlok azonnali szinkronizálásához a Meghívási AzStorageSyncChangeDetection PowerShell-parancsmag használatával manuálisan indíthatja el az Azure-fájlmegosztás változásainak észlelését. Ez a parancsmag olyan forgatókönyvekhez készült, amelyekben bizonyos típusú automatizált folyamatok módosítják az Azure-fájlmegosztást, vagy ha a rendszergazda módosítja a módosításokat (például fájlokat és címtárakat helyez át a megosztásba). A végfelhasználók általi változások érdekében javasoljuk, hogy telepítse a Azure File Sync ügynököt egy IaaS virtuális gépre, és a végfelhasználók hozzáférhessenek a fájlmegosztást a IaaS virtuális gépen keresztül. Így az összes módosítás gyorsan szinkronizálva lesz más ügynökökkel anélkül, hogy a Meghívási-AzStorageSyncChangeDetection parancsmagot kellene használnia. További információért lásd a Meghívási [AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) dokumentációját.
+- Továbbfejlesztett portál-élmény, ha olyan fájlokat észlel, amelyek nem szinkronizálhatók
+    - Ha vannak olyan fájlok, amelyek nem szinkronizálhatók, mostantól különbséget teszünk az átmeneti és az állandó hibák között a portálon. Az átmeneti hibák általában a rendszergazda beavatkozása nélkül oldhatók meg. Például egy jelenleg használatban lévő fájl nem fog szinkronizálni, amíg a fájlleíró be nem zárul. Állandó hibák esetén az egyes hibák által érintett fájlok száma látható. Az állandó hibák száma a szinkronizálási csoportban lévő összes kiszolgáló-végpont oszlopának nem szinkronizált fájljaiban is megjelenik.
 - Továbbfejlesztett Azure Backup fájl szintű visszaállítás
     - A rendszer mostantól a Azure Backup használatával visszaállított egyedi fájlokat észleli és szinkronizálja a kiszolgálói végponttal.
 - Továbbfejlesztett felhő-rétegek visszahívás-parancsmagjának megbízhatósága 

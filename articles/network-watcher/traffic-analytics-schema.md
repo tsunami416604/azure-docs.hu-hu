@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: efa8a92ca9861c0280237ba07f4304b5c7dbbb88
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: bd83d915b51ab44d4287987e3da7113722910262
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609992"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020241"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Sémák és adatösszesítések Traffic Analytics
 
@@ -32,7 +32,7 @@ Traffic Analytics egy felhőalapú megoldás, amely láthatóságot biztosít a 
 
 ### <a name="data-aggregation"></a>Adatösszesítés
 
-1. A (z) "FlowIntervalStartTime_t" és "FlowIntervalEndTime_t" közötti NSG lévő összes folyamat naplója a Storage-fiókban blobként van rögzítve a Traffic Analytics általi feldolgozás előtt. 
+1. A (z) "FlowIntervalStartTime_t" és "FlowIntervalEndTime_t" közötti NSG lévő összes folyamat naplója a Storage-fiókban blobként van rögzítve a Traffic Analytics általi feldolgozás előtt.
 2. Traffic Analytics alapértelmezett feldolgozási időköze 60 perc. Ez azt jelenti, hogy minden 60 perc Traffic Analytics a blobokat a tárolóból az összesítéshez. Ha a kiválasztott feldolgozási intervallum 10 perc, Traffic Analytics minden 10 percen belül kiválaszthatja a Storage-fiókból a blobokat.
 3. Azonos forrás IP-címmel, célként megadott IP-címmel, Célportmal, NSG-névvel, NSG-szabállyal, flow irányával és átviteli réteg protokollal (TCP vagy UDP) rendelkező folyamatok (Megjegyzés: A forrásport ki van zárva az összesítéshez) egyetlen folyamatba van beépítve Traffic Analytics
 4. Ezt az egyetlen rekordot rendezi a rendszer (részletek az alábbi szakaszban), és Traffic Analytics Log Analytics betöltötte. Ez a folyamat legfeljebb 1 órát vehet igénybe.
@@ -85,6 +85,12 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 ```
 
 ### <a name="fields-used-in-traffic-analytics-schema"></a>Traffic Analytics sémában használt mezők
+  > [!IMPORTANT]
+  > A Traffic Analytics séma a 2019. augusztus 22-én frissült. Az új séma a forrás-és cél IP-címek külön eltávolítását is lehetővé teszi, hogy a lekérdezések egyszerűbben FlowDirection az elemzést. </br>
+  > A FASchemaVersion_s 1 és 2 között frissült. </br>
+  > Elavult mezők: VMIP_s, Subscription_s, Region_s, NSGRules_s, Subnet_s, VM_s, NIC_s, PublicIPs_s, FlowCount_d </br>
+  > Új mezők: SrcPublicIPs_s, DestPublicIPs_s, NSGRule_s </br>
+  > Az elavult mezők 2019 november 22-én lesznek elérhetők.
 
 A Traffic Analytics Log Analyticsra épül, így egyéni lekérdezéseket futtathat a Traffic Analytics által díszített és a riasztásokat is beállíthatja.
 
@@ -94,7 +100,7 @@ Alább láthatók a séma mezői és azok
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | Traffic Analytics-adathalmazok táblázata
 | SubType_s | FlowLog | A folyamat naplófájljainak altípusa. Csak "FlowLog" használata esetén a SubType_s egyéb értékei a termék belső munkájára vonatkoznak |
-| FASchemaVersion_s |   1   | Séma verziója. Nem tükrözi a NSG folyamat naplójának verzióját |
+| FASchemaVersion_s |   2   | Séma verziója. Nem tükrözi a NSG folyamat naplójának verzióját |
 | TimeProcessed_t   | Dátum és idő (UTC)  | Az az idő, amikor a Traffic Analytics feldolgozta a nyers folyamat naplóit a Storage-fiókból |
 | FlowIntervalStartTime_t | Dátum és idő (UTC) |  A folyamat naplójának feldolgozási intervallumának kezdési időpontja. Ez az idő, amelyből a flow intervalluma mérhető |
 | FlowIntervalEndTime_t | Dátum és idő (UTC) | A folyamat naplójának feldolgozási időközének befejezési időpontja |
@@ -111,7 +117,8 @@ Alább láthatók a séma mezői és azok
 | FlowDirection_s | * I = bejövő<br> * O = kimenő | A folyamat iránya a NSG-ben/folyamatban |
 | FlowStatus_s  | * A = engedélyezett NSG-szabály szerint <br> * D = NSG szabály által megtagadva  | A flow által engedélyezett/nblocked állapota NSG szerint |
 | NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | A folyamathoz társított hálózati biztonsági csoport (NSG) |
-| NSGRules_s | \<0. index érték) > < NSG_RULENAME\<> flow irány\<> folyamat állapota\<> FlowCount ProcessedByRule > |  A folyamatot engedélyező vagy megtagadó NSG-szabály |
+| NSGRules_s | \<0. index érték)\|>\<NSG_RULENAME\|>\<flow iránya >\|\<flow\|állapota >\<FlowCount ProcessedByRule > |  A folyamatot engedélyező vagy megtagadó NSG-szabály |
+| NSGRule_s | NSG_RULENAME |  A folyamatot engedélyező vagy megtagadó NSG-szabály |
 | NSGRuleType_s | * Felhasználó által definiált * alapértelmezett |   A folyamat által használt NSG-szabály típusa |
 | MACAddress_s | MAC-cím | Azon hálózati adapter MAC-címe, amelyen a folyamat rögzített |
 | Subscription_s | Az Azure virtuális hálózat/hálózati adapter/virtuális gép előfizetése fel van töltve ebben a mezőben | Csak a FlowType = S2S, a P2S, a AzurePublic, a ExternalPublic, a MaliciousFlow és a UnknownPrivate flow típusokra vonatkozik (a flow típusai, ahol csak az egyik oldal az Azure) |
@@ -151,6 +158,8 @@ Alább láthatók a séma mezői és azok
 | OutboundBytes_d | Rögzített bájtok a NSG-szabály alkalmazási helyéül szolgáló hálózati adapteren | Ez csak a NSG flow-napló sémájának 2. verziójára van feltöltve |
 | CompletedFlows_d  |  | Ez a nullától eltérő értékkel van feltöltve, csak a NSG flow-napló sémájának 2. verziójára |
 | PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Oszlopok által elválasztott bejegyzések |
+| SrcPublicIPs_s | < SOURCE_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_PACKETS\|\<\< >\|OUTBOUND_BYTES\<>\|INBOUND_BYTES>\< | Oszlopok által elválasztott bejegyzések |
+| DestPublicIPs_s | < DESTINATION_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_\|\<\< CSOMAGOK >\|\<OUTBOUND_BYTES >\|INBOUND_BYTES\<> | Oszlopok által elválasztott bejegyzések |
 
 ### <a name="notes"></a>Megjegyzések
 
@@ -165,7 +174,7 @@ Alább láthatók a séma mezői és azok
 1. MaliciousFlow – az IP-címek egyike az Azure Virtual Network szolgáltatáshoz tartozik, míg a másik IP-cím egy olyan nyilvános IP-cím, amely nem az Azure-ban található, és a rendszer rosszindulatúként jelenti az olyan ASC-hírcsatornákban, amelyeket a Traffic Analytics a " FlowIntervalStartTime_t "és" FlowIntervalEndTime_t ".
 1. UnknownPrivate – az IP-címek egyike az Azure Virtual Networkhoz tartozik, míg a másik IP-cím a 1918-as számú RFC-dokumentumban meghatározott magánhálózati IP-tartományhoz tartozik, és nem képezhető le Traffic Analytics egy ügyfél tulajdonában lévő webhelyhez vagy Azure-Virtual Network.
 1. Ismeretlen – a folyamatokban lévő IP-címek egyikét nem lehet leképezni az Azure-beli ügyfél-topológiával, valamint a helyszínen (hely).
-1. Néhány mezőnév a _S vagy a _D utótaggal van hozzáfűzve. Ezek nem jelzik a forrást és a célt.
+1. Egyes mezők neve a \_következővel van hozzáfűzve: s vagy \_d. Ezek nem jelentik a forrás és a cél jelölését, hanem az adattípusokat, illetve a decimális karakterláncot.
 
 ### <a name="next-steps"></a>További lépések
 A gyakori kérdésekre adott válaszokért lásd: [Traffic Analytics – gyakori](traffic-analytics-faq.md) kérdések a funkciók részleteiről: [Traffic Analytics – dokumentáció](traffic-analytics.md)

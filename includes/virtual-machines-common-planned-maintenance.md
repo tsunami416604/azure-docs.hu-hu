@@ -5,83 +5,83 @@ services: virtual-machines
 author: shants123
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 4/30/2019
+ms.date: 8/22/2019
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: c2931fa410cf92755a5df5b7129dcf93de900930
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b2a7bbef2c421281780c0191fa32381468899bbf
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179099"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020335"
 ---
-Azure rendszeres időközönként frissíti a megbízhatóságának, teljesítményének és a gazda-infrastruktúrát, a virtuális gépek biztonságának javítása érdekében platformja. Ezek a frissítések célját címtartományok a javítás az üzemeltetési környezetben frissítése hálózati összetevők vagy hardver leszerelése szoftverösszetevőket. 
+Az Azure rendszeresen frissíti a platformját a virtuális gépek gazdagép-infrastruktúrájának megbízhatóságának, teljesítményének és biztonságának javítása érdekében. Ezeknek a frissítéseknek az a célja, hogy az üzemeltetési környezetben lévő, a hálózati összetevők vagy a hardver leszerelését javító szoftver-összetevőkből kiterjedően frissítse a frissítéseket. 
 
-Frissítések ritkán érintik az üzemeltetett virtuális gépeket. Frissítések egy hatása, ha az Azure úgy dönt, a frissítések legalább hatásos módszer:
+A frissítések ritkán érintik az üzemeltetett virtuális gépeket. Ha a frissítések hatással vannak, az Azure kiválasztja a legkevésbé hatásos módszert a frissítésekhez:
 
-- A frissítés nem igényel újraindítást, ha a virtuális gép fel van függesztve, amíg frissül a gazdagépet, vagy a virtuális gép élő áttelepített egy már frissített gazdagépre.
+- Ha a frissítés nem igényel újraindítást, a rendszer szünetelteti a virtuális gépet a gazdagép frissítésekor, vagy a virtuális gép egy már frissített gazdagépre van áttelepítve.
 
-- Karbantartási újraindítás szükséges, ha, értesítést kap a tervezett karbantartás. Az Azure is biztosít egy olyan időkeretet, ahol elkezdheti a karbantartási saját maga is az Önnek legmegfelelőbb egyszerre. Az önkiszolgáló – karbantartási időszak van általában 30 nap, kivéve, ha a karbantartási sürgős. Azure fektet technológiákban esetek, amelyben platform tervezett karbantartási szükséges újra kell indítani a virtuális gépek számának csökkentése érdekében. 
+- Ha a karbantartás újraindítást igényel, értesítést kap a tervezett karbantartásról. Az Azure egy időablakot is biztosít, amelyben saját maga is elindíthatja a karbantartást. Az önkarbantartási időszak általában 35 nap, kivéve, ha a karbantartás nem sürgős. Az Azure olyan technológiákat fektet be, amelyek csökkentik azon esetek számát, amelyekben a tervezett platform karbantartásához szükség van a virtuális gépek újraindítására. 
 
-Ez az oldal ismerteti, hogyan végez az Azure-karbantartási mindkét típusú. Nem tervezett események (leállások) kapcsolatos további információkért lásd: [a Windows virtuális gépek rendelkezésre állásának kezelése](../articles/virtual-machines/windows/manage-availability.md) vagy a megfelelő számú cikk [Linux](../articles/virtual-machines/linux/manage-availability.md).
+Ez a lap leírja, hogy az Azure hogyan hajtja végre mindkét típusú karbantartást. További információ a nem tervezett eseményekről (kimaradások): [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](../articles/virtual-machines/windows/manage-availability.md) , illetve a megfelelő [Linux](../articles/virtual-machines/linux/manage-availability.md)-cikk.
 
-Egy virtuális gépen, beszerezheti a közeledő karbantartással kapcsolatban küldött [használata a Windows ütemezett események](../articles/virtual-machines/windows/scheduled-events.md) vagy [Linux](../articles/virtual-machines/linux/scheduled-events.md).
+A virtuális gépeken belül a Windows vagy [Linux](../articles/virtual-machines/linux/scheduled-events.md)rendszerhez [készült Scheduled Events használatával](../articles/virtual-machines/windows/scheduled-events.md) értesítéseket kaphat a közelgő karbantartásról.
 
-Tervezett karbantartás kezelésével kapcsolatos utasításokért lásd: [tervezett karbantartásával kapcsolatos értesítések Linux kezelése](../articles/virtual-machines/linux/maintenance-notifications.md) vagy a megfelelő számú cikk [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
+A tervezett karbantartás kezelésével kapcsolatos útmutatásért lásd: a [tervezett karbantartási értesítések kezelése a Linux](../articles/virtual-machines/linux/maintenance-notifications.md) rendszerhez [](../articles/virtual-machines/windows/maintenance-notifications.md)vagy a kapcsolódó cikk a Windowshoz.
 
-## <a name="maintenance-that-doesnt-require-a-reboot"></a>Karbantartás, és nem igényel újraindítást
+## <a name="maintenance-that-doesnt-require-a-reboot"></a>Újraindítást nem igénylő karbantartás
 
-Ahogyan korábban hangsúlyoztuk, a legtöbb platformon frissítés ügyfél virtuális gépei nem befolyásolják. A következmények nélkül frissítése nem lehetséges, ha az Azure úgy dönt, a frissítési mechanizmust, amely legalább impactful ügyfél virtuális gépekhez. 
+Ahogy korábban már említettük, a legtöbb platform frissítései nem érintik az ügyfél virtuális gépeket. Ha egy nem befolyásoló frissítés nem lehetséges, az Azure kiválasztja a legkevésbé érintett frissítési mechanizmust az ügyfél virtuális gépei számára. 
 
-A legtöbb nullától eltérő hatás karbantartási kevesebb mint 10 másodpercet a virtuális gép felfüggesztése. Bizonyos esetekben az Azure memóriamegőrző karbantartási mechanizmusokat használ. Ezek a mechanizmusok a virtuális gép felfüggesztése legfeljebb 30 másodpercet, és őrizze meg a memóriát RAM-ban. A virtuális gép majd helyreáll, és a rendszeróra automatikusan szinkronizálódik. 
+A legtöbb nem nulla hatású karbantartás kevesebb, mint 10 másodpercig szünetelteti a virtuális gépet. Bizonyos esetekben az Azure memóriát használ, és megőrzi a karbantartási mechanizmusokat. Ezek a mechanizmusok akár 30 másodpercig szüneteltetik a virtuális gépet, és megőrzik a memóriát a memóriában. A virtuális gép ezután folytatódik, és az órája automatikusan szinkronizálva lesz. 
 
-A memóriamegőrző karbantartási Azure virtuális gépek több mint 90 %-os működik. G, M, N és H-sorozat nem működik. Az Azure egyre élő áttelepítés technológiákat használ, és javítja a karbantartási mechanizmusok memóriamegőrző csökkentése érdekében a szünet időtartama.  
+Memória – a karbantartási munkálatok az Azure-beli virtuális gépek több mint 90 százalékára is használhatók. A G, M, N és H sorozat esetében nem működik. Az Azure egyre inkább élő áttelepítési technológiákat használ, és javítja a memória-megőrzést biztosító karbantartási mechanizmusokat a szüneteltetési időtartam csökkentése érdekében.  
 
-E karbantartási műveletek, amelyek nem igényelnek újraindítást egyszerre alkalmazott egy tartalék tartományban. Leáll, ha bármilyen figyelmeztetés állapot jelek kapnak. 
+Az újraindítást nem igénylő karbantartási műveletek egyszerre csak egy tartalék tartományt alkalmaznak. Ezek akkor állnak le, ha figyelmeztetési állapotra utaló jeleket kapnak. 
 
-Az ilyen típusú frissítések hatással lehetnek egyes alkalmazások. Ha a virtuális gép élő áttelepített egy másik gazdagépre, az egyes bizalmas számítási feladatokhoz enyhe teljesítménycsökkenés előfordulhat, hogy a néhány perc alatt a virtuális gép felfüggesztése vezető megjelenítése. Virtuális gép karbantartásának készítheti elő, és hatást Azure karbantartás során, próbálja meg [használata a Windows ütemezett események](../articles/virtual-machines/windows/scheduled-events.md) vagy [Linux](../articles/virtual-machines/linux/scheduled-events.md) az ilyen alkalmazásokhoz. Azure karbantartási-vezérlés funkcióival ezek érzékeny alkalmazások esetén működik. 
+Az ilyen típusú frissítések hatással lehetnek egyes alkalmazásokra. Ha a virtuális gép élő áttelepítése egy másik gazdagépre történik, egyes érzékeny munkaterhelések némi teljesítménybeli romlást jelezhetnek néhány perc alatt, ami a virtuális gép szüneteltetését eredményezi. A virtuális gépek karbantartásának előkészítéséhez és az Azure-karbantartás során felmerülő hatás csökkentéséhez próbálkozzon az [Scheduled Events Windows](../articles/virtual-machines/windows/scheduled-events.md) vagy [Linux](../articles/virtual-machines/linux/scheduled-events.md) rendszerű alkalmazásokkal való használatával. Az Azure az [Azure dedikált gazdagépeken](../articles/virtual-machines/windows/dedicated-hosts.md) és az [elkülönített virtuális gépeken](../articles/security/fundamentals/isolation-choices.md)is teljes körűen szabályozhatja az ilyen nem nulla platform-karbantartást. A karbantartási vezérlés funkció előzetes verzióban érhető el, és a [regisztrációs űrlap](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)elküldésével kérhet hozzáférést. Lehetőség van a nem nulla hatású platform frissítéseinek kihagyása és a frissítések batchként való alkalmazására egy 35 napos időszakon belül.
 
-### <a name="live-migration"></a>Az élő áttelepítés
+### <a name="live-migration"></a>Élő áttelepítés
 
-Egy művelet, amely nincs szükség újraindításra és a memória, amely megőrzi a virtuális gép élő áttelepítés. Azt eredményezi, a felfüggesztés vagy rögzíteni, általában tartó legfeljebb 5 másodperc. Kivéve G M, N és a H-sorozat, az összes infrastruktúra-szolgáltatás (IaaS) virtuális gépek jogosultak az élő áttelepítés. Jogosult virtuális gépek több mint 90 %-a az Azure készletünket üzembe helyezett IaaS virtuális gépek jelentik. 
+Az élő áttelepítés olyan művelet, amely nem igényel újraindítást, és megőrzi a virtuális gép memóriáját. Szüneteltető vagy befagyasztást okoz, ami általában legfeljebb 5 másodperc. A G, M, N és H sorozat kivételével az összes infrastruktúra-szolgáltatási (IaaS) virtuális gép jogosult az élő áttelepítésre. A jogosult virtuális gépek az Azure-flottába telepített IaaS-alapú virtuális gépek több mint 90 százalékát képviselik. 
 
-Az Azure-platform élő áttelepítés indítása a következő esetekben:
+Az Azure platform a következő helyzetekben elindítja az élő áttelepítést:
 - Tervezett karbantartás
 - Hardverhiba
-- Foglalási optimalizálási lehetőségek
+- Foglalási optimalizálások
 
-Néhány tervezett karbantartási helyzetekre élő migrálás használata, és használhatja az ütemezett eseményekről előre tudni, amikor élő indul el áttelepítési műveleteket.
+Egyes tervezett karbantartási forgatókönyvek élő áttelepítést használnak, és az élő áttelepítési műveletek elindulásakor a Scheduled Events segítségével előre is tájékozódhat.
 
-Az élő áttelepítés is használható áthelyezi a virtuális gépeket, amikor az Azure Machine Learning-algoritmusok előrejelzésére egy közelgő hardverhiba vagy ha azt szeretné, optimalizálhatja a virtuális gép értékesítjük. Prediktív modellezés, hogy az észlelt példányait csökkentett teljesítményű hardverre kapcsolatos további információkért lásd: [javítása Azure virtuális gép rugalmasságát prediktív gépi tanulással és az élő áttelepítés](https://azure.microsoft.com/blog/improving-azure-virtual-machine-resiliency-with-predictive-ml-and-live-migration/?WT.mc_id=thomasmaurer-blog-thmaure). Ha használja ezeket a szolgáltatásokat az Azure Portalon, a figyelő és a Service Health naplókat, valamint ütemezett események hasonlóan az élő áttelepítés értesítések jelennek meg.
+Az élő áttelepítés a virtuális gépek áthelyezésére is használható, ha Azure Machine Learning algoritmusok egy közelgő hardverhiba előrejelzését vagy a virtuálisgép-foglalások optimalizálását szeretnék. A csökkentett teljesítményű hardvereket észlelő prediktív modellezéssel kapcsolatos további információkért lásd: [Az Azure-beli virtuális gépek rugalmasságának növelése a prediktív gépi tanulással és az élő](https://azure.microsoft.com/blog/improving-azure-virtual-machine-resiliency-with-predictive-ml-and-live-migration/?WT.mc_id=thomasmaurer-blog-thmaure)áttelepítéssel. Az élő áttelepítési értesítések megjelennek a figyelő Azure Portalban, valamint a Service Health naplók és a Scheduled Events esetén, ha ezeket a szolgáltatásokat használja.
 
-## <a name="maintenance-that-requires-a-reboot"></a>Karbantartási, amely újraindítást igényel
+## <a name="maintenance-that-requires-a-reboot"></a>Újraindítást igénylő karbantartás
 
-A ritka eset, ahol virtuális gépeket újra kell indítani a tervezett karbantartás értesítést is előre. Tervezett karbantartás két fázisból áll: az önkiszolgáló fázis és a egy ütemezett karbantartás.
+Azon ritka esetekben, amikor a virtuális gépeket újra kell indítani a tervezett karbantartáshoz, a rendszer előzetes értesítést küld. A tervezett karbantartásnak két fázisa van: az önkiszolgáló fázis és egy ütemezett karbantartási fázis.
 
-Során a *önkiszolgáló fázis*, általában négy héttel tartó, a karbantartás megkezdése a virtuális gépeken. Az önkiszolgáló részeként lekérdezheti, ha minden virtuális gép állapotát és az utolsó karbantartási kérelem eredményét.
+Az *önkiszolgáló fázisban*, amely általában négy hétig tart, elindítja a karbantartást a virtuális gépeken. Az önkiszolgáló szolgáltatás részeként lekérdezheti az egyes virtuális gépek állapotát, és megtekintheti az utolsó karbantartási kérelem eredményét.
 
-Ha önkiszolgáló karbantartást indítja el, a virtuális gép újratelepítése van egy már frissített csomópontoknak. A virtuális gép újraindul, mert az ideiglenes lemez elvesztését, és a dinamikus IP-címek a virtuális hálózati adapterhez társított frissülnek.
+Az önkiszolgáló karbantartás indításakor a virtuális gép egy már frissített csomópontra lesz telepítve. Mivel a virtuális gép újraindul, az ideiglenes lemez elvész, és a virtuális hálózati adapterhez társított dinamikus IP-címek frissülnek.
 
-Ha hiba merül fel, önkiszolgáló karbantartási, a művelet leállítja a virtuális gép nem frissül, és ismételje meg az önkiszolgáló karbantartás lehetőséget kap. 
+Ha hiba merül fel az önkiszolgáló karbantartás során, a művelet leáll, a virtuális gép nem frissül, és a lehetőséggel megpróbálkozhat az önkiszolgáló karbantartással. 
 
-Amikor befejeződik az önkiszolgáló fázis, a *ütemezett karbantartás* kezdődik. Ebben a fázisban továbbra is lekérdezheti az karbantartás számára, de saját magának a karbantartás nem lehet elindítani.
+Az önkiszolgáló fázis végén az *ütemezett karbantartási fázis* kezdődik. Ebben a fázisban továbbra is lekérdezhető a karbantartási fázis, de a karbantartás nem indítható el.
 
-Karbantartási újraindítását igénylő kezeléséről további információkért lásd: [tervezett karbantartásával kapcsolatos értesítések Linux kezelése](../articles/virtual-machines/linux/maintenance-notifications.md) vagy a megfelelő számú cikk [Windows](../articles/virtual-machines/windows/maintenance-notifications.md). 
+Az újraindítást igénylő karbantartás kezelésével kapcsolatos további információkért lásd: a [tervezett karbantartási értesítések kezelése a Linux](../articles/virtual-machines/linux/maintenance-notifications.md) rendszerhez vagy a [Windows](../articles/virtual-machines/windows/maintenance-notifications.md)megfelelő cikke. 
 
-### <a name="availability-considerations-during-scheduled-maintenance"></a>Az ütemezett karbantartás során a rendelkezésre állási szempontok 
+### <a name="availability-considerations-during-scheduled-maintenance"></a>A rendelkezésre állással kapcsolatos megfontolások az ütemezett karbantartás során 
 
-Ha úgy dönt, megvárni az ütemezett karbantartás, nincsenek néhány dolgot, érdemes lehet a lehető legmagasabb rendelkezésre állásának a virtuális gépek fenntartásához. 
+Ha úgy dönt, hogy megvárja az ütemezett karbantartási szakaszt, néhány dolgot figyelembe kell vennie a virtuális gépek legmagasabb rendelkezésre állásának fenntartása érdekében. 
 
 #### <a name="paired-regions"></a>Párosított régiók
 
-Minden egyes Azure-régió párban áll egy másik az ugyanazon földrajzi környék belül. Együtt akkor győződjön meg arról, régió párban. Az ütemezett karbantartás során az Azure csak a futó virtuális gépeket a régiópárra az egyetlen régióban frissíti. Például frissítésekor a virtuális gép az USA északi középső Régiója, az Azure nem frissíti USA déli középső Régiójában lévő összes virtuális gép egyszerre. Azonban más régiók (például Észak-Európa) karbantarthatók ugyanabban az időben, mint az USA keleti régiója. Ismertetése, hogyan működnek a régiópárok segítségével jobban elosztása a virtuális gépek régiók között elosztva. További információkért lásd: [Azure régiópárok](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanazon a földrajzi helyen található. Együttesen egy régió párokat alkotnak. Az ütemezett karbantartási fázisban az Azure csak a régió pár egyetlen régiójában frissíti a virtuális gépeket. Ha például az USA északi középső régiójában frissíti a virtuális gépet, akkor az Azure nem frissíti az USA déli középső régiójában lévő virtuális gépeket. Azonban más régiók (például Észak-Európa) karbantarthatók ugyanabban az időben, mint az USA keleti régiója. Annak megértése, hogy a régió-párok hogyan segíthetnek a virtuális gépek régiók közötti jobb elosztásában. További információ: [Azure region Pairs](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-#### <a name="availability-sets-and-scale-sets"></a>A rendelkezésre állási csoportok és a méretezési csoportok
+#### <a name="availability-sets-and-scale-sets"></a>Rendelkezésre állási készletek és méretezési csoportok
 
-Az Azure virtuális gépeken futó számítási feladatok üzembe helyezésekor, a virtuális gépeket hozhat létre egy *rendelkezésre állási csoport* az alkalmazás magas rendelkezésre állást biztosít. Rendelkezésre állási csoportokat használ, biztosíthatja, hogy az újraindítást igénylő egy szolgáltatáskimaradás vagy a karbantartási események során legalább egy virtuális gép érhető el.
+Az Azure-beli virtuális gépeken futó számítási feladatok üzembe helyezésekor létrehozhatók a *rendelkezésre állási csoporton* belüli virtuális gépek, amelyek magas rendelkezésre állást biztosítanak az alkalmazás számára. A rendelkezésre állási csoportok használata esetén gondoskodhat arról, hogy az újraindítást igénylő leállás vagy karbantartási események során legalább egy virtuális gép elérhető legyen.
 
-Egy rendelkezésre állási csoporton belül az egyes virtuális gépek akár 20 frissítési tartományig (frissítési) vannak elosztva. Ütemezett karbantartás során az UD csak egy adott időpontban frissül. Frissítési tartománnyal nem feltétlenül egymás után kell frissíteni. 
+Egy rendelkezésre állási csoporton belül az egyes virtuális gépek akár 20 frissítési tartományon (frissítési) keresztül oszlanak meg. Az ütemezett karbantartás során egy adott időpontban csak egy UD frissül. A frissítési nem feltétlenül frissülnek egymás után. 
 
-Virtuális gép *méretezési csoportok* az Azure-beli számítási erőforrások, amelyek segítségével üzembe helyezése és azonos virtuális gépek egyetlen erőforrásként kezelheti. A méretezési automatikusan különböző frissítési tartománnyal, például a virtuális gépet egy rendelkezésre állási csoportban van telepítve. Mint rendelkezésre állási csoportokkal, használhatja a méretezési csoportokat, ha csak egy UD frissül egy adott időpontban az ütemezett karbantartás során.
+A virtuálisgép -méretezési csoportok egy olyan Azure-beli számítási erőforrás, amellyel azonos virtuális gépek egyetlen erőforrásként való üzembe helyezésére és kezelésére használhatók. A méretezési csoport automatikusan települ a frissítési között, például a virtuális gépeket egy rendelkezésre állási csoportba. A rendelkezésre állási csoportokhoz hasonlóan a méretezési csoportok használatakor a rendszer az ütemezett karbantartás során egy adott időpontban csak egy UD frissítést végez.
 
-A magas rendelkezésre állású virtuális gépek beállításával kapcsolatos további információkért lásd: [számára a Windows virtuális gépek rendelkezésre állásának kezelése](../articles/virtual-machines/windows/manage-availability.md) vagy a megfelelő számú cikk [Linux](../articles/virtual-machines/linux/manage-availability.md).
+A virtuális gépek magas rendelkezésre állásra való beállításával kapcsolatos további információkért lásd: a [Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](../articles/virtual-machines/windows/manage-availability.md) , vagy a megfelelő [Linux](../articles/virtual-machines/linux/manage-availability.md)-cikk.
