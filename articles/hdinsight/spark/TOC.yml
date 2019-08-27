@@ -49,6 +49,8 @@
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Fürtök rendelkezésre állásának monitorozása az Ambarival és az Azure Monitor-naplókkal
       href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+    - name: Tárolási lehetőségek összehasonlítása
+      href: ../hdinsight-hadoop-compare-storage-options.md
 - name: Útmutató
   items:
     - name: Fürttároló használata

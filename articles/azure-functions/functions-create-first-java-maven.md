@@ -12,15 +12,15 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
-ms.custom: mvc, devcenter, seo-java-july2019
-ms.openlocfilehash: 116d211e366e17ba667baf1e1deae719b56dc3ee
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 52cbb6ef97459c6c3fafc6df5794c91a9274b4ff
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542747"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051770"
 ---
-# <a name="create-your-first-function-with-java-and-maven"></a>Az első függvény létrehozása a Java és a Maven használatával
+# <a name="quickstart-use-java-to-create-and-publish-a-function-to-azure-functions"></a>Gyors útmutató: A Java használatával hozzon létre és tegyen közzé egy függvényt Azure Functions
 
 Ez a cikk végigvezeti a Maven parancssori eszköz használatával a Java-függvények Azure Functions való létrehozásához és közzétételéhez. Ha elkészült, a függvény kódja az Azure-beli [felhasználási terven](functions-scale.md#consumption-plan) fut, és HTTP-kérelem használatával indítható el.
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 22a27ba19670344f351205b6a4865bf85daf0bab
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8fd3aedd2e371e511730fd98751ae3214545c489
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900258"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034583"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB table .NET Standard API: Megjegyzések letöltése és kibocsátási megjegyzései
 > [!div class="op_single_selector"]
@@ -33,7 +33,14 @@ ms.locfileid: "69900258"
 |**Aktuális támogatott keretrendszer**|[Microsoft .NET Standard 2,0](https://www.nuget.org/packages/NETStandard.Library)|
 |**Probléma jelentése**|[Probléma jelentése](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
-## <a name="release-notes"></a>Kibocsátási megjegyzések
+## <a name="release-notes-for-200-series"></a>A 2.0.0 sorozat kibocsátási megjegyzései
+a 2.0.0 sorozat a [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)függőségét, a teljesítmény javítását és a névtér összevonását Cosmos db végpontra.
+
+### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
+* a 2.0.0 Table SDK kezdeti előzetes verziója, amely a [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)függőségét veszi igénybe, a teljesítmény javításával és a névtér-konszolidációval Cosmos db végpontra. A nyilvános API-k változatlanok maradnak.
+
+## <a name="release-notes-for-100-series"></a>A 1.0.0 sorozat kibocsátási megjegyzései
+a 1.0.0-sorozat a [Microsoft. Azure. DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)fájltól függ.
 
 ### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5 – előzetes verzió
 * Hibajavítások
@@ -77,6 +84,12 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 
 Ez a platformfüggetlen .NET Standard könyvtár a [Microsoft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) a [Microsoft. Azure. CosmosDB. table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table).NET-keretrendszer könyvtárát fogja cserélni.
 
+### <a name="200-series"></a>2.0.0 sorozat
+| Version | Kiadás dátuma | Visszavonás dátuma |
+| --- | --- | --- |
+| [2.0.0 – előzetes verzió](#2.0.0-preview) |Auguest 22, 2019 |--- |
+
+### <a name="100-series"></a>1.0.0-sorozat
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
 | [1.0.5 – előzetes verzió](#1.0.5-preview) |Auguest 20, 2019 |--- |

@@ -6,16 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.localizationpriority: high
-ms.date: 02/26/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 983edcc19a27b91599ea1e312268934b37f8b0ca
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 9664fd35462ab6084b203fe4ccd3c10435d64991
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012879"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035641"
 ---
 ::: zone target="docs"
 
@@ -65,6 +64,7 @@ Jelentkezzen be az Azure Portalra a [https://aka.ms/azuredataboxfromdiskdocs](ht
 
 - A [következő oktatóanyag használatával helyezte el Data Box Disk sorrendjét: Megrendelés Azure Data Box Disk](data-box-disk-deploy-ordered.md).
 - Megkapta a meghajtókat, és a portálon a feldolgozás **Kézbesítve** állapotra frissül.
+- Ellenőrizte a fogadott lemezek számát, és lemezenként egy csatlakoztatott kábellel rendelkezik.
 - Van olyan ügyfélszámítógép, amelyről másolatot készíthet az adatokról. Az ügyfélszámítógépen:
 
     - Futtasson egy [támogatott operációs rendszert](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).

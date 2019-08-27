@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: ee4551f6a31436ef2322fcea3a0c479b45036993
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 8c5df8461c74d48c0712ab1947e29813e7e1ea3f
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697613"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032678"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Mi a Text Analytics API?
 
@@ -81,7 +81,7 @@ Ez a szakasz egy külön cikkbe lett áthelyezve a jobb átláthatóság érdek�
 
 ## <a name="data-limits"></a>Adatkorlátok
 
-A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. Az aktuális korlát az egyes dokumentumok 5 120 karaktere. Ha nagyobb dokumentumokat kell elemezni, akkor a kisebb adattömbökbe lehet bontani. Ha mégis magasabb korlátra van szüksége, [lépjen velünk kapcsolatba](https://azure.microsoft.com/overview/sales-number/), hogy megbeszélhessük a követelményeit.
+A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. Az aktuális korlát az egyes dokumentumok 5 120 karaktere. Ha nagyobb dokumentumokat kell elemezni, akkor a kisebb adattömbökbe lehet bontani.
 
 | Korlát | Value |
 |------------------------|---------------|
@@ -93,7 +93,7 @@ A díjszabási korlátja az Ön díjszabási szintjétől függ.
 
 | Szint          | Kérelmek/másodperc | Percenkénti kérelmek |
 |---------------|---------------------|---------------------|
-| Több szolgáltatás | 1000                | 1000                |
+| S/több szolgáltatás | 1000                | 1000                |
 | S0/F0         | 100                 | 300                 |
 | S1            | 200                 | 300                 |
 | S2            | 300                 | 300                 |

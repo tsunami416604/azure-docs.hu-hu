@@ -1,5 +1,5 @@
 ---
-title: Azure IoT-Plug and Play előnézeti eszköz létrehozása, amely készen áll a minősítésre | Microsoft Docs
+title: IoT-Plug and Play előnézeti eszköz létrehozása, amely készen áll a minősítésre | Microsoft Docs
 description: Az eszköz fejlesztőinek megtudhatja, hogyan hozhat létre olyan IoT-Plug and Play előnézeti eszközt, amely készen áll a minősítésre.
 author: tbhagwat3
 ms.author: tanmayb
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: bfa611eba8e7a990626fbace8b930962615e0594
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 151f6609375063a68a848f4c799af0b459124f23
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878095"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047907"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>IoT Plug and Play előnézeti eszköz létrehozása, amely készen áll a minősítésre
 
@@ -124,7 +124,7 @@ Az eszköz hitelesítéséhez engedélyeznie kell az üzembe helyezést az [Azur
 
 #### <a name="implement-the-model-information-and-sdk-information-interfaces"></a>A modell információinak és az SDK-információs felületek implementálása
 
-Az Azure IoT eszközoldali SDK implementálja a modell információit és az SDK információs felületeit. Ha a Code generálási függvényt használja a VS Code-ban, az eszköz kódja az Azure IoT Plug and Play Device SDK-t használja.
+Az Azure IoT eszközoldali SDK implementálja a modell információit és az SDK információs felületeit. Ha a Code generálási függvényt használja a VS Code-ban, az eszköz kódja a IoT Plug and Play Device SDK-t használja.
 
 Ha úgy döntött, hogy nem használja az Azure IoT eszközoldali SDK-t, a saját megvalósításához használhatja az SDK forráskódját is.
 

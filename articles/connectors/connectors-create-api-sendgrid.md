@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás a Sendgridhez az Azure Logic Apps |} A Microsoft Docs
-description: Automatizálhatja a feladatokat és a munkafolyamatok, amelyek e-mailek küldése és a SendGrid levelezőlistáit kezelése az Azure Logic Apps használatával
+title: Kapcsolódás a SendGrid-hez Azure Logic Appsról | Microsoft Docs
+description: Automatizálja az e-maileket küldő feladatokat és munkafolyamatokat, és kezelje a SendGrid található levelezési listát Azure Logic Apps használatával
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,64 +11,64 @@ ms.assetid: bc4f1fc2-824c-4ed7-8de8-e82baff3b746
 ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 7eecd3908883b195b52755d03e70872afe9180bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f5efd73ef2a08069e3b9f2c7d60be99c209ddca
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105734"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050810"
 ---
-# <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>E-mailek küldése és a SendGrid levelezőlistáit kezelése az Azure Logic Apps használatával
+# <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>E-mailek küldése és a SendGrid lévő levelezőlisták kezelése a Azure Logic Apps használatával
 
-Az Azure Logic Apps és a sendgrid szolgáltatás összekötőjével létrehozhat automatikus feladatokkal és munkafolyamatokkal, amely e-mailek küldése és a címzettlisták kezelésére például:
+A Azure Logic Apps és a SendGrid-összekötővel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek e-maileket küldenek és kezelhetik a címzettek listáját, például:
 
 * E-mail küldése.
-* A listák adja hozzá a címzetteket.
-* GET, hozzáadása és kezelése a globális Mellőzés.
+* Címzettek hozzáadása a listához.
+* Globális letiltások beolvasása, hozzáadása és kezelése.
 
-A SendGrid műveleteket használhat a logic Apps ezeket a feladatokat. A kimenet a SendGrid-műveletek használata más műveletek is rendelkezhet. 
+A logikai alkalmazásokban a feladatok végrehajtásához SendGrid műveleteket is használhat. Más műveletek is használhatók a SendGrid műveletek kimenetének használatával. 
 
-Ez az összekötő biztosít csak műveletek, így a logikai alkalmazás indítására használjon egy külön eseményindító, például egy **ismétlődési** eseményindító. Például ha rendszeresen címzettek hozzá a listákat, elküldheti e-mail címzettek és listák az Office 365 Outlook-összekötőt, vagy Outlook.com-összekötő használatával.
-Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Ez az összekötő csak műveleteket biztosít, ezért a logikai alkalmazás indításához használjon egy külön eseményindítót, például egy **ismétlődési** eseményindítót. Ha például rendszeresen ad hozzá címzetteket a listához, az Office 365 Outlook Connector vagy a Outlook.com-összekötő használatával küldhet e-mailt a címzettekről és a listáról.
+Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* A [SendGrid-fiók](https://www.sendgrid.com/) és a egy [SendGrid API-kulcs](https://sendgrid.com/docs/ui/account-and-settings/api-keys/)
+* Egy [SendGrid-fiók](https://www.sendgrid.com/) és egy [SendGrid API-kulcs](https://sendgrid.com/docs/ui/account-and-settings/api-keys/)
 
-   Az API-kulcsot engedélyezi a logikai alkalmazás, hozzon létre egy kapcsolatot, és a SendGrid-fiók eléréséhez.
+   Az API-kulcs engedélyezi a logikai alkalmazás számára a kapcsolat létrehozását és a SendGrid-fiók elérését.
 
-* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* A logikai alkalmazás, ahol szeretné a SendGrid-fiók eléréséhez. A SendGrid műveletet használja, indítsa el a logikai alkalmazás egy másik eseményindítóval, például a **ismétlődési** eseményindító.
+* Az a logikai alkalmazás, amelyhez el szeretné érni a SendGrid-fiókját. Ha SendGrid műveletet szeretne használni, indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
 
-## <a name="connect-to-sendgrid"></a>Csatlakozás a Sendgridhez
+## <a name="connect-to-sendgrid"></a>Kapcsolódás a SendGrid
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Válassza ki az elérési utat: 
+1. Válasszon egy elérési utat: 
 
-   * Válassza ki az utolsó lépésnél, ahová a művelet hozzáadása, **új lépés**. 
+   * Az utolsó lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés**lehetőséget. 
 
      – vagy –
 
-   * A lépéseket, ahol szeretné művelet hozzáadása, között helyezze az egérmutatót a nyíl lépések között. 
-   Válassza a plusz jelre ( **+** ), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+   * A művelethez hozzáadni kívánt lépések között vigye az egérmutatót a lépések közötti nyíl fölé. 
+   Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. A Keresés mezőbe írja be szűrőként "sendgrid". Műveletek listája alatt válassza ki a kívánt művelet.
+1. A keresőmezőbe írja be szűrőként a "sendgrid" kifejezést. A műveletek listában válassza ki a kívánt műveletet.
 
 1. Adja meg a kapcsolat nevét. 
 
-1. Adja meg a SendGrid API-kulcsát, és válassza a **létrehozás**.
+1. Adja meg a SendGrid API-kulcsát, majd kattintson a **Létrehozás**gombra.
 
-1. Adja meg a szükséges adatokat a kiválasztott művelet, és továbbra is használhatja a logic app-munkafolyamatot.
+1. Adja meg a kiválasztott művelethez szükséges adatokat, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részletek korlátok, eseményindítók és műveletek, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő [referencialapja](/connectors/sendgrid/).
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/sendgrid/).
 
 ## <a name="get-support"></a>Támogatás kérése
 
@@ -77,4 +77,4 @@ További technikai részletek korlátok, eseményindítók és műveletek, amely
 
 ## <a name="next-steps"></a>További lépések
 
-* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

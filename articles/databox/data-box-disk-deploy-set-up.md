@@ -6,16 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.localizationpriority: high
-ms.date: 07/23/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 483288869e0eda20010108b8293c5964ff9571c2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: b062f484a48d8376bbbb8fa9dd5bd3e39bbba14f
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012906"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049974"
 ---
 ::: zone target="docs"
 
@@ -30,6 +29,16 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Csatlakozás lemezekhez és a hozzáférési kulcs lekérése
 > * Lemezek zárolásának feloldása Windows-ügyfélen
 > * Lemezek zárolásának feloldása Linux-ügyfélen
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Azure Data Box Disk kicsomagolása, összekötése és feloldása
+
+::: zone-end
+
+::: zone target="docs"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -283,7 +292,7 @@ Ha a lemezek feloldása során problémákba ütközik, tekintse meg a feloldás
         ``` 
         .\DataBoxDiskUnlock.exe
         ```
-    -  Adja meg a Azure Portal **általános > eszközének adataiból** beszerzett hozzáférési kulcsot. Megjelenik a meghajtóhoz rendelt betűjel. 
+    -  Szerezze be a hitelesítő **adatokat az > eszköz részletes adatai** között a Azure Portalban, és adja meg itt. Megjelenik a meghajtóhoz rendelt betűjel. 
 4. A Linux-ügyfélen lévő lemezek zárolásának feloldásához nyisson meg egy terminált. Lépjen arra a mappára, ahová letöltötte a szoftvert. Írja be a következő parancsokat a fájlok engedélyeinek módosításához, hogy végre tudja hajtani ezeket a fájlokat: 
 
     ```
@@ -295,7 +304,7 @@ Ha a lemezek feloldása során problémákba ütközik, tekintse meg a feloldás
     ```
     sudo ./DataBoxDiskUnlock_Prep.sh
     ```
-    Futtassa a Data Box Disk lemezzárolás-feloldó eszközt. Adja meg a hitelesítő adatokat a Azure Portal az **általános > eszköz részleteivel**. Nem kötelezően megadhatja a BitLocker által titkosított kötetek listáját egy idézőjelek között a zárolás feloldásához.
+    Futtassa a Data Box Disk lemezzárolás-feloldó eszközt. Szerezze be a hitelesítő **adatokat az > eszköz részletes adatai** között a Azure Portalban, és adja meg itt. Nem kötelezően megadhatja a BitLocker által titkosított kötetek listáját egy idézőjelek között a zárolás feloldásához.
 
     ```
     sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’

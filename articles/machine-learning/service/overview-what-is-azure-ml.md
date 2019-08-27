@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dea5e174c66685f889595ab15b3edf57dd02493
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: a8e19c89cec00bba05eb74e752268e1da43a1ac0
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018231"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035853"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
 
@@ -108,8 +108,9 @@ Azure-szolgáltatásokra elkölthető krediteket kap. A kreditek felhasználása
 - A kezdéshez [hozzon létre egy Machine learning szolgáltatás](how-to-manage-workspace.md) -munkaterületet.
 
 - Kövesse a teljes hosszúságú oktatóanyagokat:
+  + [Munkaterület létrehozása és az első ML-modell betanítása](tutorial-1st-experiment-sdk-setup.md)
   + [Rendszerkép-besorolási modell betanítása Azure Machine Learning szolgáltatással](tutorial-train-models-with-aml.md)
-  + [Az adatelőkészítés és az automatizált gépi tanulás használata a regressziós modell automatikus betanításához](tutorial-data-prep.md)
+
 
 - Ismerje meg a [gépi tanulási folyamatokat](/azure/machine-learning/service/concept-ml-pipelines) a gépi tanulási forgatókönyvek létrehozásához, optimalizálásához és felügyeletéhez.
 

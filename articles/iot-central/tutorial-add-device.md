@@ -3,18 +3,18 @@ title: Valós eszköz hozzáadása Azure IoT Central-alkalmazáshoz | Microsoft 
 description: Operátorként valós eszközt adhat az Azure IoT Central-alkalmazáshoz.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 04/23/2019
+ms.date: 08/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 03fd31333a97290a5e8a00029867fc4e73a0cdd7
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8731d66c9d2dca0043307ac2f6a0d1828aeaa275
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875609"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050514"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
@@ -47,7 +47,7 @@ Telepítse a [Node. js](https://nodejs.org/) -verziót 8.0.0 vagy újabb verzió
 
 Ha valós eszközt szeretne hozzáadni az alkalmazáshoz, használja az [Új eszköztípus definiálása](tutorial-define-device-type.md) című oktatóanyagban létrehozott **Csatlakoztatott légkondicionáló** eszközsablont.
 
-1. Ha új eszközt szeretne hozzáadni operátorként, válassza a bal oldali navigációs menüben lévő **Eszközkereső** elemet:
+1. Új eszköz hozzáadása operátorként a bal oldali navigációs menüben válassza az **eszközök** lehetőséget:
 
    ![Csatlakoztatott légkondicionálót megjelenítő Eszközkereső oldal](media/tutorial-add-device/explorer.png)
 

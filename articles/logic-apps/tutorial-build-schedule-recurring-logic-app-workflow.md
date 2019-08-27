@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: ebc6388f1ebc7546ffda07095ead50797bde4e8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec29eef7e733155b205d4feda844883bbc4496c9
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60507404"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051743"
 ---
 # <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>Ütemezés szerinti forgalom ellenőrzése az Azure Logic Apps használatával
 
@@ -35,17 +36,17 @@ Az elkészült logikai alkalmazás nagyjából a következő munkafolyamathoz ha
 
 ![Magas szintű logikai alkalmazás](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
-Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztrálhat egy ingyenes Azure-fiókra</a> az eljárás megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/) az eljárás megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A Logic Apps által támogatott e-mail-szolgáltató (például Office 365 Outlook, Outlook.com vagy Gmail) által üzemeltetett e-mail-fiók. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](https://docs.microsoft.com/connectors/). Ez a rövid útmutató egy Outlook.com-fiókot használ. Ha más e-mail-fiókot használ, az általános lépések ugyanazok, a felhasználói felület azonban némiképp eltérhet.
 
-* Az útvonal megtételéhez szükséges idő lekéréséhez szükség van a Bing Térképek API hozzáférési kulcsára. A kulcs lekéréséhez kövesse a <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">Bing Térképek-kulcs lekérése</a> lépéseit. 
+* Az útvonal megtételéhez szükséges idő lekéréséhez szükség van a Bing Térképek API hozzáférési kulcsára. A kulcs lekéréséhez kövesse a [Bing Térképek-kulcs lekérése](https://msdn.microsoft.com/library/ff428642.aspx) lépéseit. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a> az Azure-fiókja hitelesítő adataival.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
 
 ## <a name="create-your-logic-app"></a>A logikai alkalmazás létrehozása
 
@@ -57,12 +58,12 @@ Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Port
 
    ![Logikai alkalmazás adatainak megadása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | Beállítás | Value (Díj) | Leírás | 
+   | Beállítás | Érték | Leírás | 
    | ------- | ----- | ----------- | 
-   | **Name (Név)** | LA-TravelTime | A logikai alkalmazás neve | 
+   | **Name** | LA-TravelTime | A logikai alkalmazás neve | 
    | **Előfizetés** | <*your-Azure-subscription-name*> | Az Azure-előfizetés neve | 
    | **Erőforráscsoport** | LA-TravelTime-RG | A kapcsolódó erőforrások rendezéséhez használt [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) neve | 
-   | **Hely** | USA 2. keleti régiója | A logikai alkalmazással kapcsolatos információk tárolására szolgáló régió | 
+   | **Location** | USA 2. keleti régiója | A logikai alkalmazással kapcsolatos információk tárolására szolgáló régió | 
    | **Log Analytics** | Ki | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. | 
    |||| 
 
@@ -74,11 +75,11 @@ Adja hozzá az ismétlődési [eseményindítót](../logic-apps/logic-apps-overv
 
 ## <a name="add-scheduler-trigger"></a>Ütemező eseményindító hozzáadása
 
-1. A tervezőben írja be az „ismétlődés” kifejezést a keresőmezőbe. Ez az eseményindító kiválasztása: **Ütemezés – ismétlődés**
+1. A tervezőben írja be az „ismétlődés” kifejezést a keresőmezőbe. Válassza ki ezt az triggert: **Ütemterv – ismétlődés**
 
    ![Az „Ütemezés-Ismétlődés” eseményindító megkeresése és hozzáadása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
-2. Az **Ismétlődés** alakzaton válassza a **három pont** (**...**) gombot, majd az **Átnevezés** lehetőséget. Nevezze át az eseményindítót a következő leírásra: ```Check travel time every weekday morning```
+2. Az **Ismétlődés** alakzaton válassza a **három pont** ( **...** ) gombot, majd az **Átnevezés** lehetőséget. Nevezze át az eseményindítót a következő leírásra: ```Check travel time every weekday morning```
 
    ![Az eseményindító átnevezése](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
@@ -88,12 +89,12 @@ Adja hozzá az ismétlődési [eseményindítót](../logic-apps/logic-apps-overv
 
    ![Az ütemezés és az ismétlődés részleteinek megadása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/schedule-recurrence-trigger-settings.png)
 
-   | Beállítás | Value (Díj) | Leírás | 
+   | Beállítás | Érték | Leírás | 
    | ------- | ----- | ----------- | 
    | **Intervallum** | 1 | Az ellenőrzések között kivárt intervallumok száma | 
    | **Gyakoriság** | Hét | Az ismétlődéshez használni kívánt időegység | 
-   | **Időzóna** | None | Csak akkor érvényes, ha megadja a kezdési időt. Akkor hasznos, ha nem helyi időzónát ad meg. | 
-   | **Kezdési idő** | None | Késlelteti az ismétlődést a megadott dátumig és időpontig. További információkért lásd: [Rendszeresen futó feladatok és a munkafolyamatok ütemezése](../connectors/connectors-native-recurrence.md). | 
+   | **Időzóna** | Nincsenek | Csak akkor érvényes, ha megadja a kezdési időt. Akkor hasznos, ha nem helyi időzónát ad meg. | 
+   | **Kezdési idő** | Nincsenek | Késlelteti az ismétlődést a megadott dátumig és időpontig. További információkért lásd: [Rendszeresen futó feladatok és a munkafolyamatok ütemezése](../connectors/connectors-native-recurrence.md). | 
    | **Ezeken a napokon** | Hétfő, kedd, szerda, csütörtök, péntek | Csak akkor érhető el, ha a **Gyakoriság** értéke „Hét” | 
    | **Ezekben az órákban** | 7, 8, 9 | Csak akkor érhető el, ha a **Gyakoriság** értéke „Hét” vagy „Nap”. Válassza ki, hogy a nap melyik órájában fusson az ismétlődés. Ez a példa 7, 8 és 9 órakor fut. | 
    | **Ezekben a percekben** | 0, 15, 30, 45 | Csak akkor érhető el, ha a **Gyakoriság** értéke „Hét” vagy „Nap”. Válassza ki, hogy a nap melyik percében fusson az ismétlődés. Ez a példa óra egésztől kezdve 15 percenként fut. | 
@@ -117,16 +118,16 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
 1. A Logic App Designerben az eseményindító területén válassza a **+ Új lépés** > **Művelet hozzáadása** elemet.
 
-2. Keresse meg a "térképek", és válassza a következő műveletet: **A Bing térképek – útvonal lekérése**
+2. Keressen rá a "Maps" kifejezésre, és válassza ki a következő műveletet: **Bing Maps – útvonal lekérése**
 
 3. Ha nem rendelkezik Bing Térképek-kapcsolattal, a rendszer arra kéri, hogy hozzon létre egyet. Adja meg az alábbi kapcsolati adatokat, majd válassza a **Létrehozás** lehetőséget.
 
    ![A „Bing Térképek – Útvonal lekérése” művelet kiválasztása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | Beállítás | Value (Díj) | Leírás |
+   | Beállítás | Érték | Leírás |
    | ------- | ----- | ----------- |
    | **Kapcsolat neve** | BingMapsConnection | Adja meg a kapcsolat nevét. | 
-   | **API-kulcs** | <*saját-Bing-Térképek-kulcsa*> | Adja meg a korábban kapott Bing Térképek-kulcsot. Ha nem rendelkezik Bing Térképek-kulccsal, tudja meg, <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">hogyan kérhet le kulcsot</a>. | 
+   | **API-kulcs** | <*saját-Bing-Térképek-kulcsa*> | Adja meg a korábban kapott Bing Térképek-kulcsot. Ha nem rendelkezik Bing Térképek-kulccsal, tudja meg, [hogyan kérhet le kulcsot](https://msdn.microsoft.com/library/ff428642.aspx). | 
    | | | |  
 
 4. Nevezze át a műveletet a következő leírásra: ```Get route and travel time with traffic```
@@ -135,16 +136,16 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
    ![A „Bing Térképek – Útvonal lekérése” művelet adatainak megadása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | Beállítás | Value (Díj) | Leírás |
+   | Beállítás | Érték | Leírás |
    | ------- | ----- | ----------- |
    | **1. útvonalpont** | <*kiindulási-hely*> | Az útvonal kiindulópontja | 
    | **2. útvonalpont** | <*érkezési-hely*> | Az útvonal célállomása | 
-   | **Elkerülés** | None | Az útvonal elkerülni kívánt elemei, például autópályák, útdíjak stb. | 
+   | **Elkerülés** | Nincsenek | Az útvonal elkerülni kívánt elemei, például autópályák, útdíjak stb. | 
    | **Optimalizálás** | timeWithTraffic | Az útvonal optimalizálására szolgáló paraméter (például távolság, utazási idő a jelenlegi forgalom mellett stb.). Válassza ki a következő paramétert: „timeWithTraffic” | 
-   | **Távolság mértékegysége** | <*igény-szerint*> | Az útvonalhoz használt távolság-mértékegység. Ez a cikk a következő egységet használja: "Mérföld"  | 
-   | **Közlekedési mód** | Vezetés | Az útvonalhoz használt közlekedési mód. Ez a mód kiválasztása: "Vezetés" | 
-   | **Tranzit dátuma és időpontja** | None | Csak a tranzit módra vonatkozik | 
-   | **Dátum és időpont típusa** | None | Csak a tranzit módra vonatkozik | 
+   | **Távolság mértékegysége** | <*igény-szerint*> | Az útvonalhoz használt távolság-mértékegység. Ez a cikk a következő egységet használja: Mérföld  | 
+   | **Közlekedési mód** | Vezetés | Az útvonalhoz használt közlekedési mód. Válassza ki ezt a módot: Vezetés | 
+   | **Tranzit dátuma és időpontja** | Nincsenek | Csak a tranzit módra vonatkozik | 
+   | **Dátum és időpont típusa** | Nincsenek | Csak a tranzit módra vonatkozik | 
    |||| 
 
    További információk ezekről a paraméterekről: [Útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx).
@@ -161,7 +162,7 @@ Alapértelmezés szerint az előző **Útvonal lekérése** művelet a jelenlegi
 
 1. Az **Útvonal lekérése** művelet alatt válassza a **+ Új lépés** > **Művelet hozzáadása** elemet.
 
-2. Keresse meg a "változók", és válassza a következő műveletet: **Változók – változó inicializálása**
+2. Keressen rá a "változók" kifejezésre, és válassza ki a következő műveletet: **Változók – változó inicializálása**
 
    ![A „Változók – Változó inicializálása” művelet kiválasztása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
 
@@ -169,10 +170,10 @@ Alapértelmezés szerint az előző **Útvonal lekérése** művelet a jelenlegi
 
 4. Adja meg a változó részleteit az itt leírt módon:
 
-   | Beállítás | Value (Díj) | Leírás | 
+   | Beállítás | Érték | Leírás | 
    | ------- | ----- | ----------- | 
-   | **Name (Név)** | travelTime | A változó neve | 
-   | **Típus** | Egész szám | A változó adattípusa | 
+   | **Name** | travelTime | A változó neve | 
+   | **Típus** | Integer | A változó adattípusa | 
    | **Érték** | Egy kifejezés, amely átalakítja a jelenlegi utazási időt másodpercekből percekké (lásd a táblázat alatti lépéseket). | A változó kezdeti értéke | 
    |||| 
 
@@ -194,7 +195,7 @@ Alapértelmezés szerint az előző **Útvonal lekérése** művelet a jelenlegi
 
       ![Írja be a következő kifejezést: „div(,60)”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-2.png)
 
-   3. Vigye az egérmutatót a kifejezésre, a bal oldali zárójel (**(**) és a vessző (**,**) közé. 
+   3. Vigye az egérmutatót a kifejezésre, a bal oldali zárójel ( **(** ) és a vessző ( **,** ) közé. 
    Válassza ki a **Dinamikus tartalom** elemet.
 
       ![Az egérmutató elhelyezése és a „Dinamikus tartalom” kiválasztása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-3.png)
@@ -283,7 +284,7 @@ Ezután adjon hozzá egy műveletet, amely e-mailt küld, ha az utazási idő me
 
       ![Írja be a kifejezést az utazási idő többletperceinek kiszámításához](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-2.png)
 
-   4. Vigye az egérmutatót a kifejezésre, a bal oldali zárójel (**(**) és a vessző (**,**) közé. Válassza ki a **Dinamikus tartalom** elemet.
+   4. Vigye az egérmutatót a kifejezésre, a bal oldali zárójel ( **(** ) és a vessző ( **,** ) közé. Válassza ki a **Dinamikus tartalom** elemet.
 
       ![Folytassa az utazási idő többletperceit kiszámító kifejezés létrehozását](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-3.png)
 

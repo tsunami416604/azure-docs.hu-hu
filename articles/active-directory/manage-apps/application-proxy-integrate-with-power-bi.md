@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca2b7f2b0e20e85e1e62f8efabb81eddd5f901f2
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: eb4486c889dec29f81b57605c3ccee510242f832
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991117"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035143"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Távoli hozzáférés engedélyezése Power BI Mobile Azure-AD Application Proxy
 
@@ -103,28 +103,27 @@ Most már készen áll az Azure AD Application Proxy konfigurálására.
 
 Az alkalmazás beállításának befejezéséhez nyissa meg **a felhasználók és csoportok** szakaszt, és rendelje hozzá a felhasználókat az alkalmazás eléréséhez.
 
-## <a name="step-3-grant-power-bi-mobile-access-to-report-services"></a>3\. lépés: Power BI Mobile hozzáférés biztosítása a jelentési szolgáltatásokhoz
+## <a name="step-3-modify-the-reply-uris-for-the-application"></a>3\. lépés: A válasz URI-azonosítójának módosítása az alkalmazáshoz
 
-Ahhoz, hogy a Power BI Mobile alkalmazás csatlakozhasson és hozzáférhessen a jelentési szolgáltatásokhoz, megfelelően regisztrálnia kell az Azure AD-ben.  
+Mielőtt a Power BI Mobile App csatlakozhat és hozzáférhessen a Report Services szolgáltatáshoz, konfigurálnia kell az alkalmazás regisztrációját, amelyet a 2. lépésben automatikusan hozott létre. 
 
 1. Az Azure Active Directory **áttekintése** lapon válassza a **Alkalmazásregisztrációk**lehetőséget.
 2. A **minden alkalmazás** lapon keresse meg a 2. lépésben létrehozott alkalmazást.
 3. Válassza ki az alkalmazást, majd válassza a **hitelesítés**lehetőséget.
 4. Adja hozzá a következő átirányítási URI-ket a használt platform alapján.
 
-   Power BI Mobile **iOS**-hez készült alkalmazás regisztrálásakor adja hozzá a következő átirányítási URI-k nyilvános ügyfélként (Mobile & Desktop):
+   Power BI Mobile **iOS**-hez készült alkalmazás konfigurálásakor adja hozzá a következő átirányítási URI-k nyilvános ügyfélként (Mobile & Desktop):
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
    
-   A Power BI Mobile **Android**rendszerhez készült alkalmazás regisztrálásakor adja hozzá a következő átirányítási URI-t a nyilvános ügyfél (Mobile & Desktop) típushoz:
+   Power BI Mobile **Androidhoz**készült alkalmazás konfigurálásakor adja hozzá a következő átirányítási URI-k nyilvános ügyfélként (Mobile & Desktop):
    - `urn:ietf:wg:oauth:2.0:oob`
+   - `mspbi-adal://com.microsoft.powerbimobile`
 
    > [!IMPORTANT]
-   > Az alkalmazás megfelelő működéséhez hozzá kell adni az átirányítási URI-azonosítókat. Ha az iOS-hez és az Androidhoz is konfigurálja ezt, csak **egyetlen** alkalmazást kell regisztrálnia, és az átirányítási URI-t is hozzá kell adnia az iOS és az Android rendszerhez. Ha külön alkalmazásokra van szüksége az egyes platformokhoz, az átirányítási URI-t is `mspbi-adal://com.microsoft.powerbimobile` tartalmaznia kell: mindkét alkalmazáshoz.
-
-2. Most, hogy regisztrálta a natív alkalmazását, hozzáférést biztosíthat más alkalmazásokhoz a címtárban, ebben az esetben az alkalmazásproxy használatával közzétett jelentéskészítő szolgáltatások eléréséhez. Kövesse a 3. [lépésben leírt lépéseket: Hozzáférés biztosítása a proxy alkalmazáshoz](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application).
+   > Az alkalmazás megfelelő működéséhez hozzá kell adni az átirányítási URI-azonosítókat. Ha az alkalmazást Power BI Mobile iOS és Android rendszerhez is konfigurálja, adja hozzá a nyilvános ügyfél (Mobile & Desktop) típusú átirányítási URI-t az iOS-hez konfigurált átirányítási URI- `urn:ietf:wg:oauth:2.0:oob`k listájához:.
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>4\. lépés: Kapcsolódjon a Power BI Mobile alkalmazásból
 

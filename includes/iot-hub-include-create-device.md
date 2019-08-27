@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e93f78cf07cd4815e5b17ffd3953db121adb6535
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 7b022f71e197c5695876f2049ee376c3616afc6d
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558745"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049030"
 ---
 <!-- put the ## header in the file that includes this file -->
 
-Ebben a szakaszban egy eszköz identitását hozza létre az IoT hub identitás-beállításjegyzékében. Egy eszköz nem tud csatlakozni a központhoz, hacsak nem rendelkezik bejegyzéssel az Identity registryben. További információkért tekintse meg a [IoT hub fejlesztői útmutató](../articles/iot-hub/iot-hub-devguide-identity-registry.md)"Identity Registry" című szakaszát.
+Ebben a szakaszban egy eszköz identitását hozza létre az IoT hub identitás-beállításjegyzékében. Egy eszköz nem tud csatlakozni a központhoz, hacsak nem rendelkezik bejegyzéssel az Identity registryben. További információ: [IoT hub fejlesztői útmutató](../articles/iot-hub/iot-hub-devguide-identity-registry.md#identity-registry-operations).
 
 1. Az IoT hub navigációs menüjében nyissa meg a **IoT eszközöket**, majd válassza az **új** lehetőséget az eszköz hozzáadásához az IoT hub-ban.
 

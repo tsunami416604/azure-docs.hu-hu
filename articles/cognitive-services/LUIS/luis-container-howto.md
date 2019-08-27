@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: 2b87f9bcbaa0fd9d8a23d774e0765e1eb5b56633
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eaf689ecb8fd64dca15570179733b7d7539a352e
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563905"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050073"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS Docker-tárolók telepítése és futtatása
  
@@ -90,7 +90,7 @@ Miután a tároló a gazdagépen [](#the-host-computer)található, a következ�
 1. Ha végzett a tárolóval, importálja [a végponti naplókat](#import-the-endpoint-logs-for-active-learning) a Luis-portál kimeneti csatlakoztatásáról, és [állítsa le](#stop-the-container) a tárolót.
 1. Az alkalmazás fejlesztéséhez használja a LUIS Portal [aktív tanulását](luis-how-to-review-endpoint-utterances.md) a **végpontok áttekintése hosszúságú kimondott szöveg** oldalon.
 
-A tárolóban futó alkalmazás nem módosítható. A tárolóban lévő alkalmazás módosításakor a Luis [-portálon](https://www.luis.ai) , vagy a Luis [authoring API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)-k használatával módosítania kell az alkalmazást a Luis szolgáltatásban. Ezután végezze el a betanítást és/vagy közzétételt, majd töltsön le egy új csomagot, majd futtassa újra a tárolót.
+A tárolóban futó alkalmazás nem módosítható. A tárolóban lévő alkalmazás módosításakor a Luis-portálon, vagy a LUIS [authoring API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)-k használatával [](https://www.luis.ai) módosítania kell az alkalmazást a Luis szolgáltatásban. Ezután végezze el a betanítást és/vagy közzétételt, majd töltsön le egy új csomagot, majd futtassa újra a tárolót.
 
 A tárolón belüli LUIS-alkalmazás nem exportálható vissza a LUIS szolgáltatásba. Csak a lekérdezési naplók tölthetők fel. 
 
@@ -187,7 +187,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Helyőrző | Érték |
+| Helyőrző | Value |
 |-------------|-------|
 |{APPLICATION_ID} | A betanított LUIS alkalmazás alkalmazás-azonosítója. |
 |{APPLICATION_VERSION} | A betanított LUIS alkalmazás alkalmazásának verziója. |
@@ -200,7 +200,7 @@ A betanított csomag letöltéséhez tekintse meg az [API-dokumentációt itt][d
 
 A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A parancs a következő paramétereket használja:
 
-| Helyőrző | Érték |
+| Helyőrző | Value |
 |-------------|-------|
 |{API_KEY} | Ez a kulcs a tároló elindítására szolgál. Ne használja az alapszintű kulcsot. |
 |{ENDPOINT_URI} | A végpont értéke a Azure Portal `Cognitive Services` áttekintés lapján érhető el. |
@@ -248,7 +248,7 @@ Az API v2 és [v3 (előzetes verzió)](luis-migration-api-v3.md) verziója is el
 
 A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat biztosít. A közzétett (átmeneti vagy éles) alkalmazások végpontjai _eltérő_ útvonalon rendelkeznek, mint a betanított alkalmazások végpontja. 
 
-A tároló API `https://localhost:5000`-k esetében használja a gazdagépet. 
+A tároló API `http://localhost:5000`-k esetében használja a gazdagépet. 
 
 |Csomag típusa|Módszer|Útválasztás|Lekérdezési paraméterek|
 |--|--|--|--|
@@ -259,7 +259,7 @@ A lekérdezési paraméterek a lekérdezési válaszban megadhatják, hogy hogya
 
 |Lekérdezési paraméter|Type|Cél|
 |--|--|--|
-|`q`|sztring|A felhasználó megnyilatkozása.|
+|`q`|Karakterlánc|A felhasználó megnyilatkozása.|
 |`timezoneOffset`|szám|A timezoneOffset lehetővé teszi az [](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) előre elkészített entitások datetimeV2 által használt időzóna módosítását.|
 |`verbose`|boolean|Az összes leképezést és azok pontszámát adja vissza, ha igaz értékre van állítva. Az alapértelmezett érték a False (hamis), amely csak a felső leképezést adja vissza.|
 |`staging`|boolean|Az átmeneti környezet eredményeiből származó lekérdezést adja vissza, ha igaz értékre van állítva. |

@@ -1,45 +1,48 @@
 ---
-title: Csatlakozhat a Facebookhoz – Azure Logic Apps |} A Microsoft Docs
-description: Kezelheti a határidőt és a Facebook REST API-k és az Azure Logic Apps-lap
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 11/07/2016
-ms.topic: article
-ms.service: logic-apps
+title: Kapcsolódás a Facebookhoz – Azure Logic Apps
+description: Az ütemterv és az oldal kezelése a Facebook REST API-kkal és Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+manager: carmonm
+ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 25595127d913d3cd093e0af3d7916e33fc7cb352
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83431184d7e9c5970ece6af143ee9b5166da96d5
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105975"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050954"
 ---
-# <a name="get-started-with-the-facebook-connector"></a>A Facebook-összekötő használatának első lépései
-Csatlakozhat a Facebookhoz, és közzé az idővonalon, laptartalmakat és egyéb beolvasása. A Facebook, a következőket teheti:
+# <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>Facebook-ütemterv és-oldal kezelése Azure Logic Apps használatával
 
-* Az adatok facebookról kap az üzleti folyamatot hozhat létre. 
-* Trigger akkor használja, ha új hozzászólás érkezik.
-* Használható műveletek közzé az idővonalon, laptartalmakat és egyéb beolvasása. Ezek a műveletek válaszol, és végezze el a kimenetet más műveletek esetében érhető el. Például ha új bejegyzés van az eseményeket egy idővonalon megjelenítve, elvégezhető a szükséges, hogy a post és küldje le a Twitter-hírcsatornát. 
+Csatlakozhat a Facebookhoz, és közzéteheti az ütemtervet, beolvashatja az oldal hírcsatornáját és egyebeket. A Facebook használatával a következőket teheti:
 
-Hozzon létre egy logikai alkalmazás most már megkezdheti, lásd: [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Hozza létre üzleti folyamatát a Facebookból kapott adatok alapján. 
+* Trigger használata új bejegyzés érkezésekor.
+* Az ütemtervre felvenni kívánt műveletek, az oldal hírcsatornáinak beszerzése és egyebek. Ezek a műveletek választ kapnak, majd elérhetővé teszik a kimenetet más műveletekhez. Ha például egy új bejegyzés van az idővonalon, akkor ezt a bejegyzést követheti, és leküldheti a Twitter-hírcsatornába. 
 
-## <a name="create-a-connection-to-facebook"></a>Hozzon létre egy kapcsolatot a Facebookon
-Ha ezt az összekötőt a logic apps hozzáad, engedélyeznie kell a logic apps szeretne csatlakozni a Facebookhoz.
+A logikai alkalmazások létrehozásának első lépéseiről a [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakörben olvashat.
 
-1. Jelentkezzen be a Facebook-fiókban
-2. Válassza ki **engedélyezés**, és lehetővé teszi a logic apps való csatlakozáshoz és a Facebook. 
+## <a name="create-a-connection-to-facebook"></a>Facebook-kapcsolódás létrehozása
+
+Ha hozzáadja ezt az összekötőt a logikai alkalmazásokhoz, engedélyezni kell a Logic apps-t a Facebookhoz való csatlakozáshoz.
+
+1. Jelentkezzen be a Facebook-fiókjába.
+
+2. Válassza az **Engedélyezés**lehetőséget, és engedélyezze a logikai alkalmazások számára a kapcsolódást és a Facebook használatát. 
 
 > [!INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
 > 
 
+## <a name="connector-reference"></a>Összekötő-referencia
 
-## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
+A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő OpenAPI (korábban hencegő) fájljában leírtak szerint tekintse [meg az összekötő hivatkozási oldalát](/connectors/facebook/).
 
-Megtekintheti a valamennyi eseményindítót és műveletet a swaggerben meghatározott, és emellett a korlátozott a [összekötő részletei](/connectors/facebook/).
+## <a name="next-steps"></a>További lépések
 
-## <a name="more-connectors"></a>További összekötők
-Lépjen vissza a [API-k listája](apis-list.md).
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

@@ -1,97 +1,114 @@
 ---
-title: Az Azure IoT-Eszközfelügyelet a Cloud Explorer a Visual Studióhoz |} A Microsoft Docs
-description: A Cloud Explorer használata Visual Studióhoz készült Azure IoT Hub eszközfelügyeleti közvetlen módszerek és lehetőségek az Ikereszköz kívánt tulajdonságait.
+title: Azure IoT-Eszközkezelés a Cloud Explorer for Visual Studio segítségével | Microsoft Docs
+description: Használja a Cloud Explorer for Visual Studio for Azure IoT Hub eszközkezelés szolgáltatást, amely a közvetlen metódusokat és a Twin kívánt tulajdonságok kezelési lehetőségeit is felhasználja.
 author: shizn
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: 87a0847f5d42e014f3b2691c96446892176b481b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e05ba421a4535e6e424e65a1f2271d19f9d9abf4
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399556"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048679"
 ---
-# <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>A Visual Studio Cloud Explorer használata az Azure IoT Hub-Eszközfelügyelet
+# <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>A Cloud Explorer használata az Azure-hoz készült Visual Studio IoT Hub-eszközök kezeléséhez
 
 ![Végpontok közötti diagram](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
 
-[A cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) egy hasznos, a Visual Studio-bővítmény, amely lehetővé teszi az Azure-erőforrások megtekintése, azok tulajdonságait megvizsgálhatja és műveleteket kulcs Fejlesztőeszközök a Visual Studión belül. Felügyeleti lehetőségeket, amelyek segítségével különböző feladatok elvégzésére, tartalmaz.
+A [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) egy hasznos Visual Studio-bővítmény, amely lehetővé teszi, hogy megtekintse az Azure-erőforrásokat, megvizsgálják a tulajdonságaikat, és a Visual studióból is elvégezzenek kulcsfontosságú fejlesztői műveleteket. Olyan felügyeleti lehetőségeket tartalmaz, amelyek különböző feladatok elvégzésére használhatók.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Lehetőséget          | Tevékenység                    |
+| Felügyeleti lehetőség          | Tevékenység                    |
 |----------------------------|--------------------------------|
-| Közvetlen metódusok             | Hogy egy eszköz, például indítása vagy leállítása üzeneteket küldjenek vagy az eszköz újraindítása jár el.                                        |
-| Olvasási ikereszköz           | Az eszköz a jelentett állapot beolvasása. Például az eszköz jelenti a LED most villogó-e.                                    |
-| Ikereszköz frissítése         | Egy eszköz egyes állapotok, például a LED zöld vagy a telemetriai adatok küldési időköz – 30 percet kell helyezni.         |
-| Felhőből az eszközre irányuló üzenetek   | Értesítések küldése egy eszközt. Például "nagyon valószínű, eső még ma. Ne felejtse el ahhoz, hogy egy szolgáltatáscsaládnak."              |
+| Közvetlen metódusok             | Hajtson végre olyan eszközt, amely elindítja vagy leállítja az üzenetek küldését vagy az eszköz újraindítását.                                        |
+| Írásvédett eszköz – Twin           | Egy eszköz jelentett állapotának beolvasása. Az eszköz például azt jelenti, hogy a LED azonnal villog.                                    |
+| Eszköz dupla frissítése         | Helyezzen egy eszközt bizonyos állapotba, például állítsa be a LED-et zöldre, vagy állítsa a telemetria küldési intervallumát 30 percre.         |
+| Felhőből az eszközre irányuló üzenetek   | Értesítések küldése egy eszközre. Például: "nagyon valószínű, hogy még ma is esik az eső. Ne felejtsen el egy esernyőt bevinni. "              |
 
-A különbségek ismertetése és útmutató az ezek a beállítások használatával, lásd: [eszközről a felhőbe való kommunikáció útmutatást](iot-hub-devguide-d2c-guidance.md) és [felhőből az eszközre irányuló kommunikáció útmutatást](iot-hub-devguide-c2d-guidance.md).
+További információ az ilyen beállításokkal kapcsolatos különbségekről és útmutatásról: az eszközről a felhőbe irányuló [kommunikációs útmutató](iot-hub-devguide-d2c-guidance.md) és a [felhőből az eszközre irányuló kommunikációs útmutató](iot-hub-devguide-c2d-guidance.md).
 
-Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációit (metaadatokat, konfigurációkat és állapotokat) tárolják. Az IoT Hub továbbra is fennáll, az eszközök ikereszköze a minden eszközön, amelyhez kapcsolódik hozzá. Ikereszközök kapcsolatos további információkért lásd: [ikereszközök – első lépések](iot-hub-node-node-twin-getstarted.md).
+Az ikrek olyan JSON-dokumentumok, amelyek az eszköz állapotával kapcsolatos információkat tárolnak, beleértve a metaadatokat, a konfigurációkat és a feltételeket. A IoT Hub minden olyan eszközön megtartja a különálló eszközt, amely csatlakozik hozzá. További információ az eszközök Twins-ról: Ismerkedés [az eszközök ikrekkel](iot-hub-node-node-twin-getstarted.md).
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-Megismerheti a Cloud Explorer for Visual Studio használata a fejlesztési számítógépén különböző felügyeleti lehetőségek.
+Ebből a cikkből megtudhatja, hogyan használhatja a Cloud Explorer for Visual Studio alkalmazást a fejlesztői számítógép különböző felügyeleti lehetőségeivel.
 
-## <a name="what-you-do"></a>TEENDŐ
+## <a name="what-you-do"></a>Teendők
 
-A Visual Studio Cloud Explorer futtatási különböző felügyeleti lehetőségekkel.
+Ebből a cikkből megtudhatja, hogyan futtathatja a Cloud Explorer for Visual Studio alkalmazást különböző felügyeleti lehetőségekkel.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-- Aktív Azure-előfizetéssel
-- Az előfizetéshez tartozó Azure IoT Hub
-- A Microsoft Visual Studio 2017 Update 8 vagy újabb
-- Cloud Explorer összetevő a Visual Studio telepítőjének (az Azure számítási feladatok alapértelmezés szerint kiválasztva)
+A következő előfeltételek szükségesek:
 
-## <a name="update-cloud-explorer-to-latest-version"></a>Cloud Explorer legújabb verziójára való frissítéséhez
+- Aktív Azure-előfizetés.
 
-A Cloud Explorer az összetevőt a Visual Studio telepítőjének csak támogatja az eszközről a felhőbe és a felhőből az eszközre irányuló üzenetek monitorozását. Töltse le és telepítse a legújabb kell [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) a kezelési lehetőségek eléréséhez.
+- Az előfizetéshez tartozó Azure-IoT Hub.
 
-## <a name="sign-in-to-access-your-iot-hub"></a>Jelentkezzen be az IoT Hub eléréséhez
+- Microsoft Visual Studio 2017 Update 9-es vagy újabb verzió. Ez a cikk a [Visual studio 2017 vagy a Visual studio 2019](https://www.visualstudio.com/vs/)használatát ismerteti.
 
-1. A Visual Studióban **Cloud Explorer** ablakban kattintson a felhasználóifiók-kezelés ikonra. Megnyithatja a Cloud Explorer ablakot **nézet** > **Cloud Explorer** menü.
+- A Visual Studio Installer Cloud Explorer összetevője, amely alapértelmezés szerint az Azure számítási feladattal van kiválasztva.
 
-    ![Kattintson a fiók kezelése](media/iot-hub-visual-studio-cloud-device-messaging/click-account-management.png)
+## <a name="update-cloud-explorer-to-latest-version"></a>A Cloud Explorer frissítése a legújabb verzióra
 
-1. Kattintson a **fiókok kezelése** a Cloud Explorerben.
-1. Kattintson a **-fiók hozzáadása...**  az Azure-ban először jelentkezzen be az új ablakban.
-1. Miután bejelentkezett, megjelenik az Azure-előfizetési lista. Válassza ki az Azure-előfizetések megtekintése, és kattintson a kívánt **alkalmaz**.
-1. Bontsa ki a **az előfizetés** > **IoT-központok** > **az IoT Hub**, az IoT Hub csomópont alatt megjelenik az eszközlista. Kattintson a jobb gombbal a felügyeleti beállítások egy eszköz.
+A Visual Studio 2017-es verziójának Cloud Explorer összetevője csak az eszközről a felhőbe irányuló és a felhőből az eszközre irányuló üzenetek figyelését támogatja. A Visual Studio 2017 használatához töltse le és telepítse a legújabb [Cloud Explorer böngészőt](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS).
 
-    ![Felügyeleti beállítások](media/iot-hub-device-management-visual-studio/management-options.png)
+## <a name="sign-in-to-access-your-hub"></a>Bejelentkezés a hub eléréséhez
+
+1. A Visual Studióban kattintson a**Cloud** Explorer **megtekintése** > elemre a Cloud Explorer megnyitásához.
+
+1. Az előfizetések megjelenítéséhez válassza az Account Management (Fiókkezelés) ikont.
+
+    ![Fiókkezelés ikon](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
+
+1. Ha bejelentkezett az Azure-ba, a fiókok megjelennek. Ha első alkalommal szeretne bejelentkezni az Azure-ba, válassza a **fiók hozzáadása**lehetőséget.
+
+1. Válassza ki a használni kívánt Azure-előfizetéseket, majd válassza az **alkalmaz**lehetőséget.
+
+1. Bontsa ki az előfizetést, majd bontsa ki az **IoT hubok**elemet.  Az egyes központokban megtekintheti az adott hubhoz tartozó eszközöket. Kattintson a jobb gombbal egy eszközre a felügyeleti lehetőségek eléréséhez.
+
+    ![Felügyeleti beállítások](media/iot-hub-device-management-visual-studio/management-options-vs2019.png)
 
 ## <a name="direct-methods"></a>Közvetlen metódusok
 
-1. Kattintson a jobb gombbal az eszközt, és válassza ki **eszköz közvetlen metódus meghívása**.
-1. Adja meg a metódus nevét és az adattartalom beviteli mezőbe.
-1. Az eredmények megjelennek a **az IoT Hub** tesztkimenet ablaktáblán.
+A közvetlen módszerek használatához hajtsa végre a következő lépéseket:
 
-## <a name="read-device-twin"></a>Olvasási ikereszköz
+1. Kattintson a jobb gombbal az eszközre, és válassza a **közvetlen eszköz metódusának**meghívása lehetőséget.
 
-1. Kattintson a jobb gombbal az eszközt, és válassza ki **Ikereszköz szerkesztése**.
-1. Egy **azure-iot-device-twin.json** fájlt fogja megnyitni az ikereszköz tartalmát.
+1. Adja meg a metódus nevét és a hasznos adatokat a **közvetlen hívási metódusban**, majd kattintson **az OK gombra**.
 
-## <a name="update-device-twin"></a>Ikereszköz frissítése
+    Az eredmények megjelenneka kimenetben.
 
-1. Bizonyos szerkesztések, **címkék** vagy **properties.desired** mezőt a **azure-iot-device-twin.json** fájlt.
-1. Nyomja meg **Ctrl + S** az ikereszköz frissíteni.
-1. Az eredmények megjelennek a **az IoT Hub** tesztkimenet ablaktáblán.
+## <a name="update-device-twin"></a>Eszköz dupla frissítése
+
+Az eszközök kettős szerkesztéséhez hajtsa végre a következő lépéseket:
+
+1. Kattintson a jobb gombbal az eszközre, és válassza az **eszközök dupla szerkesztése**lehetőséget.
+
+   Megnyílik egy **Azure-IOT-Device-Twin. JSON** fájl, amely az eszköz Twin tartalmának tartalmát nyitja meg.
+
+1. Végezze el a **címkék** vagy tulajdonságok szerkesztését **. a kívánt** mezők az **Azure-IOT-Device-Twin. JSON** fájlba kerülnek.
+
+1. Nyomja le a **CTRL + S** billentyűkombinációt az eszköz dupla frissítéséhez.
+
+   Az eredmények megjelenneka kimenetben.
 
 ## <a name="send-cloud-to-device-messages"></a>Üzenetküldés a felhőből az eszközökre
 
-Küldjön üzenetet az IoT hubhoz az eszközt, kövesse az alábbi lépéseket:
+Ha üzenetet szeretne küldeni a IoT Hub az eszközére, kövesse az alábbi lépéseket:
 
-1. Kattintson a jobb gombbal az eszközt, és válassza ki **C2D-üzenet küldése**.
-1. Adja meg a beviteli mezőbe.
-1. Az eredmények megjelennek a **az IoT Hub** tesztkimenet ablaktáblán.
+1. Kattintson a jobb gombbal az eszközre, és válassza a **C2D-üzenet küldése**lehetőséget.
+
+1. Adja meg az üzenetet a **C2D küldése üzenetben** , majd kattintson **az OK gombra**.
+
+   Az eredmények megjelenneka kimenetben.
 
 ## <a name="next-steps"></a>További lépések
 
-Bemutattuk, hogyan lehet a Visual Studio Cloud Explorer használata különböző felügyeleti lehetőségek.
+Megtanulta, hogyan használhatja a Cloud Explorer for Visual Studio különböző felügyeleti lehetőségeket.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

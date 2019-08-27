@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: 2b28c38d2444f227d26df1f9ca2d70876ff41064
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 016d004a538a1313ca31f36b46e961098051785c
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260599"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051709"
 ---
 # <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Levelezőlistára vonatkozó kérelmek kezelése az Azure Logic Apps használatával
 
@@ -37,17 +38,17 @@ Az elkészült logikai alkalmazás nagyjából a következő munkafolyamathoz ha
 
 ![Magas szintű befejezett logikai alkalmazás](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-overview.png)
 
-Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztrálhat egy ingyenes Azure-fiókra</a> az eljárás megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/) az eljárás megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy MailChimp-fiók. Hozzon létre egy „test-members-ML” nevű listát, amelyhez a logikai alkalmazás hozzáadhatja a jóváhagyott tagok e-mail-címeit. Ha nincs fiókja, [hozzon létre egy ingyenes fiókot](https://login.mailchimp.com/signup/), és tekintse meg a [lista létrehozásáról](https://us17.admin.mailchimp.com/lists/#) szóló oktatóanyagot. 
 
-* Egy e-mail-fiók az Office 365 Outlookban vagy Outlook.com-ban, amely támogatja a jóváhagyási munkafolyamatokat. Ez a cikk az Office 365 Outlookot használja. Ha más e-mail-fiókot használ, az általános lépések ugyanazok, a felhasználói felület azonban némiképp eltérhet.
+* Egy Office 365 Outlook-vagy Outlook.com-alapú e-mail-fiók, amely támogatja a jóváhagyási munkafolyamatokat. Ez a cikk az Office 365 Outlookot használja. Ha más e-mail-fiókot használ, az általános lépések ugyanazok, a felhasználói felület azonban némiképp eltérhet.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a> az Azure-fiókja hitelesítő adataival.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
 
 ## <a name="create-your-logic-app"></a>A logikai alkalmazás létrehozása
 
@@ -79,7 +80,7 @@ Minden logikai alkalmazást egy eseményindítónak kell indítania, amely akkor
 
 1. A tervezőben írja be az „e-mail érkezésekor” kifejezést a keresőmezőbe. Válassza ki a triggert az e-mail-szolgáltatóhoz: **<*az-e-mail-szolgáltatója*> - Új e-mail érkezésekor**.
    
-   ![Válassza ki ezt az eseményindítót az e-mail-szolgáltatónál: "Új e-mail érkezésekor"](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
+   ![Válassza ki ezt az triggert az e-mail szolgáltató számára: "Új e-mail érkezésekor"](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
 
    * Munkahelyi vagy iskolai Azure-fiókok esetében válassza az Office 365 Outlookot.
    * Személyes Microsoft-fiókok esetében válassza az Outlook.com-összekötőt.
@@ -183,7 +184,7 @@ Ezután adja meg a műveletet, amelyet a logikai alkalmazás végrehajt, amikor 
 Ezután adjon hozzá egy műveletet, amely hozzáadja a jóváhagyott tagot a levelezőlistához.
 
 1. A feltétel **Ha igaz** ágában válassza a **Művelet hozzáadása** lehetőséget.
-Keresse meg a "mailchimp", és válassza a következő műveletet: **MailChimp – tag hozzáadása listához**
+Keressen rá a "MailChimp" kifejezésre, és válassza ki a következő műveletet: **MailChimp – tag hozzáadása a listához**
 
    ![A MailChimp – Tag hozzáadása a listához lehetőség kiválasztása](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
@@ -196,7 +197,7 @@ Keresse meg a "mailchimp", és válassza a következő műveletet: **MailChimp �
    | Beállítás | Érték | Leírás | 
    | ------- | ----- | ----------- | 
    | **Listaazonosító** | test-members-ML | A MailChimp-levelezőlista neve | 
-   | **Állapot** | feliratkozva | Az új tag feliratkozási állapota. További információ: <a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">Feliratkozók kezelése a MailChimp API-val</a>. | 
+   | **Állapot** | feliratkozva | Az új tag feliratkozási állapota. További információ: [Feliratkozók kezelése a MailChimp API-val](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). | 
    | **E-mail-cím** | <*new-member-email-address*> | A paraméterek vagy a dinamikus tartalmak listájából válassza ki a **Feladó** mezőt az **Új e-mail érkezésekor** területen, hogy a rendszer átadja az új tag e-mail-címét. 
    |  |  |  | 
 
@@ -248,8 +249,8 @@ Ezután állítsa be az elküldendő e-maileket, amelyek arról értesítik, hog
    | Beállítás | Érték | Leírás | 
    | ------- | ----- | ----------- | 
    | **To** | <*your-email-address*> | Az e-mail-cím, amelyre a sikeres műveletet jelző e-mail érkezik. Tesztelési célokra használhatja a saját e-mail-címét. | 
-   | **Subject** | <*subject-for-success-email*> | A sikeres műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget, és válassza ki a megadott mezőt a paraméterlista vagy a dinamikus tartalomlista **Tag hozzáadása listához** részén: <p>„Sikerült! A tag hozzáadva a "test-members-ml"listához: **E-mail-cím**" | 
-   | **Törzs** | <*body-for-success-email*> | A sikeres műveletet jelző e-mail szövegtörzse. Ebben az oktatóanyagban adja meg a következő szöveget, és válassza ki a megadott mezőket a paraméterlista vagy a dinamikus tartalomlista **Tag hozzáadása listához** részén:  <p>"Új tag csatlakozott a"test-members-ml listához": **E-mail-cím**"</br>"Tag jóváhagyás állapota: **Állapot**" | 
+   | **Subject** | <*subject-for-success-email*> | A sikeres műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget, és válassza ki a megadott mezőt a paraméterlista vagy a dinamikus tartalomlista **Tag hozzáadása listához** részén: <p>„Sikerült! Tag hozzáadva a "test-Members-ML" elemhez: **E-mail-cím**" | 
+   | **Törzs** | <*body-for-success-email*> | A sikeres műveletet jelző e-mail szövegtörzse. Ebben az oktatóanyagban adja meg a következő szöveget, és válassza ki a megadott mezőket a paraméterlista vagy a dinamikus tartalomlista **Tag hozzáadása listához** részén:  <p>"Az új tag csatlakozott a" test-Members-ML "kifejezéshez: **E-mail-cím**"</br>"Tag opt-in Status: **Állapot**" | 
    | | | | 
 
 5. Mentse a logikai alkalmazást.
@@ -273,7 +274,7 @@ Ezután állítsa be az elküldendő e-maileket, amelyek arról értesítik, hog
    | Beállítás | Érték | Leírás | 
    | ------- | ----- | ----------- | 
    | **To** | <*your-email-address*> | Az e-mail-cím, amelyre a sikertelen műveletet jelző e-mail érkezik. Tesztelési célokra használhatja a saját e-mail-címét. | 
-   | **Subject** | <*subject-for-failure-email*> | A sikertelen műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget, és válassza ki a megadott mezőt a paraméterlista vagy a dinamikus tartalomlista **Tag hozzáadása listához** részén: <p>"Nem sikerült, tag nem lett hozzáadva a"test-members-ml "listához: **E-mail-cím**" | 
+   | **Subject** | <*subject-for-failure-email*> | A sikertelen műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget, és válassza ki a megadott mezőt a paraméterlista vagy a dinamikus tartalomlista **Tag hozzáadása listához** részén: <p>"Sikertelen, a tag nem lett hozzáadva a" test-Members-ML "kifejezéshez: **E-mail-cím**" | 
    | **Törzs** | <*body-for-failure-email*> | A sikertelen műveletet jelző e-mail szövegtörzse. Ebben az oktatóanyagban adja meg a következő szöveget: <p>„Lehet, hogy a tag már létezik. Ellenőrizze a MailChimp-fiókját.” | 
    | | | | 
 

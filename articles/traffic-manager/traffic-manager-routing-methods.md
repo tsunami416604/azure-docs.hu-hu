@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: allensu
-ms.openlocfilehash: 305f24fc274ad48f5c60762223b7bf4e970fe083
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 06ce7fb5d18920be6f71821b034dc13061c60032
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333739"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051458"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager útválasztási módszerek
 
@@ -27,8 +27,8 @@ A következő forgalom-útválasztási módszerek érhetők el Traffic Managerba
 * **[Súlyozott](#weighted):** Válassza ki a **súlyozott** értéket, ha a forgalmat végpontok között szeretné terjeszteni, akár egyenletesen, akár súlyok szerint, amelyet Ön határoz meg.
 * **[Teljesítmény](#performance):** Válassza a **teljesítmény** lehetőséget, ha különböző földrajzi helyekről származó végpontokkal rendelkezik, és azt szeretné, hogy a végfelhasználók a legalacsonyabb hálózati késés szempontjából használják a "legközelebbi" végpontot.
 * **[Földrajzi](#geographic):** Válassza a **földrajzi** beállítást, hogy a felhasználók a DNS-lekérdezéstől származó adott végpontokra (Azure, External vagy nested) legyenek irányítva. Ez arra hatalmazza fel Traffic Manager ügyfeleket, hogy olyan forgatókönyveket engedélyezzenek, amelyekben a felhasználó földrajzi régiójának ismerete és a fontos alapján történő útválasztás. Ilyenek például az adatszuverenitási megbízatásoknak való megfelelés, a tartalmak honosítása & a felhasználói élmény és a különböző régiókból érkező forgalom mérése.
-* **[](#multivalue)Többértékű:** Válassza **a** többértékű lehetőséget Traffic Manager olyan profiloknál, amelyek csak IPv4/IPv6-címeket tartalmazhatnak végpontként. Ha a profilhoz lekérdezés érkezik, az összes kifogástalan állapotú végpontot adja vissza.
-* **[Alhálózat](#subnet):** Válassza  az alhálózati forgalom – útválasztási módszer lehetőséget a VÉGFELHASZNÁLÓi IP-címtartományok készletének leképezésére egy Traffic Manager profilban lévő adott végpontra. A kérés fogadásakor a visszaadott végpont lesz az adott kérelem forrás IP-címéhez hozzárendelve. 
+* **[](#multivalue)Többértékű:** Válassza a többértékű lehetőséget Traffic Manager olyan profiloknál, amelyek csak IPv4/IPv6-címeket tartalmazhatnak végpontként. Ha a profilhoz lekérdezés érkezik, az összes kifogástalan állapotú végpontot adja vissza.
+* **[Alhálózat](#subnet):** Válassza az alhálózati forgalom – útválasztási módszer lehetőséget a VÉGFELHASZNÁLÓi IP-címtartományok készletének leképezésére egy Traffic Manager profilban lévő adott végpontra. A kérés fogadásakor a visszaadott végpont lesz az adott kérelem forrás IP-címéhez hozzárendelve. 
 
 
 Az összes Traffic Manager profil tartalmazza a végpont állapotának figyelését és az automatikus végpont feladatátvételét. További információ: [Traffic Manager Endpoint monitoring](traffic-manager-monitoring.md). Egyetlen Traffic Manager profil csak egy forgalom-útválasztási módszert használhat. Bármikor kiválaszthat egy másik forgalom-útválasztási módszert a profiljához. A módosítások egy percen belül érvénybe lépnek, és nem merül fel leállás. A forgalom-útválasztási módszerek beágyazott Traffic Manager profilok használatával kombinálhatók. A beágyazás olyan kifinomult és rugalmas forgalom-útválasztási konfigurációkat tesz lehetővé, amelyek megfelelnek a nagyobb, összetett alkalmazások igényeinek. További információ: [beágyazott Traffic Manager profilok](traffic-manager-nested-profiles.md).
@@ -117,9 +117,9 @@ Traffic Manager beolvassa a DNS-lekérdezés forrás IP-címét, és eldönti, h
 
     >[!IMPORTANT]
     >Erősen ajánlott, hogy a földrajzi útválasztási módszert használó ügyfelek társítsa azokat a beágyazott típusú végpontokkal, amelyekben legalább két végpontot tartalmazó alárendelt profilok találhatók.
-- Ha a végpont egyezést talál, és a végpont leállított  állapotban van, akkor Traffic Manager egy nem adatválaszú választ ad vissza. Ebben az esetben a földrajzi régió hierarchiájában nem végeznek további kereséseket. Ez a viselkedés a beágyazott végpontok típusai esetében is alkalmazható, ha a gyermek profil **leállított** vagy letiltott állapotban van.
-- Ha egy végpont letiltott  állapotot jelez, nem kerül bele a régió-egyeztetési folyamatba. Ez a viselkedés a beágyazott végpontok típusai esetében is alkalmazható, ha a végpont **letiltott** állapotban van.
-- Ha egy olyan földrajzi régióból érkezik lekérdezés, amely nem rendelkezik leképezéssel a profilban, Traffic Manager egy nem adatválaszú választ ad vissza. Ezért erősen ajánlott, hogy az ügyfelek a földrajzi útválasztást egy végponttal használják, ideális esetben legalább két végpontot ágyaznak be a gyermek profilba, és a hozzájuk **rendelt** régiót. Ez biztosítja azt is, hogy minden olyan IP-cím, amely nem egy régióra van leképezve, kezelhető.
+- Ha a végpont egyezést talál, és a végpont leállított állapotban van, akkor Traffic Manager egy nem adatválaszú választ ad vissza. Ebben az esetben a földrajzi régió hierarchiájában nem végeznek további kereséseket. Ez a viselkedés a beágyazott végpontok típusai esetében is alkalmazható, ha a gyermek profil **leállított** vagy letiltott állapotban van.
+- Ha egy végpont letiltott állapotot jelez, nem kerül bele a régió-egyeztetési folyamatba. Ez a viselkedés a beágyazott végpontok típusai esetében is alkalmazható, ha a végpont **letiltott** állapotban van.
+- Ha egy olyan földrajzi régióból érkezik lekérdezés, amely nem rendelkezik leképezéssel a profilban, Traffic Manager egy nem adatválaszú választ ad vissza. Ezért erősen ajánlott, hogy az ügyfelek a földrajzi útválasztást egy végponttal használják, ideális esetben legalább két végpontot ágyaznak be a gyermek profilba, és a hozzájuk rendelt régiót. Ez biztosítja azt is, hogy minden olyan IP-cím, amely nem egy régióra van leképezve, kezelhető.
 
 Ahogy azt a [Traffic Manager működése című témakör](traffic-manager-how-it-works.md)ismerteti, Traffic Manager nem kap DNS-lekérdezéseket közvetlenül az ügyfelektől. Ehelyett a DNS-lekérdezések a rekurzív DNS szolgáltatásból származnak, amelyet az ügyfelek a használatára konfiguráltak. Ezért a régió meghatározásához használt IP-cím nem az ügyfél IP-címe, hanem a rekurzív DNS szolgáltatás IP-címe. A gyakorlatban ez az IP-cím az ügyfél számára megfelelő proxy.
 
@@ -146,7 +146,7 @@ Ahogy azt a [Traffic Manager működése című témakör](traffic-manager-how-i
 * [Van olyan korlátozás az API-verzióra, amely támogatja ezt az útválasztási típust?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
 
 ## <a name = "multivalue"></a>Többértékű forgalom – útválasztási módszer
-A többértékű **forgalom –** útválasztási módszer lehetővé teszi, hogy több kifogástalan állapotú végpontot KAPJON egyetlen DNS-lekérdezési válaszban. Ez lehetővé teszi, hogy a hívó az ügyféloldali újrapróbálkozásokat más végpontokkal hajtsa végre, ha a visszaadott végpont nem válaszol. Ez a minta növelheti a szolgáltatás rendelkezésre állását, és csökkentheti az új DNS-lekérdezéshez kapcsolódó késést egy kifogástalan végpont beszerzéséhez. A többértékű útválasztási módszer csak akkor működik, ha az összes "External" típusú végpontot IPv4-vagy IPv6-címként adja meg. Ha egy lekérdezés érkezik ehhez a profilhoz, a rendszer minden kifogástalan állapotú végpontot visszaadott, és egy konfigurálható maximális visszaküldési számra vonatkozik.
+A többértékű forgalom – útválasztási módszer lehetővé teszi, hogy több kifogástalan állapotú végpontot KAPJON egyetlen DNS-lekérdezési válaszban. Ez lehetővé teszi, hogy a hívó az ügyféloldali újrapróbálkozásokat más végpontokkal hajtsa végre, ha a visszaadott végpont nem válaszol. Ez a minta növelheti a szolgáltatás rendelkezésre állását, és csökkentheti az új DNS-lekérdezéshez kapcsolódó késést egy kifogástalan végpont beszerzéséhez. A többértékű útválasztási módszer csak akkor működik, ha az összes "External" típusú végpontot IPv4-vagy IPv6-címként adja meg. Ha egy lekérdezés érkezik ehhez a profilhoz, a rendszer minden kifogástalan állapotú végpontot visszaadott, és egy konfigurálható maximális visszaküldési számra vonatkozik.
 
 ### <a name="faqs"></a>Gyakori kérdések
 

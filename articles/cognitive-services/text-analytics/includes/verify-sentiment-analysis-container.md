@@ -1,27 +1,27 @@
 ---
-title: Az érzelmek elemzése tároló példányának ellenőrzése
+title: A Hangulatelemzés tároló példányának ellenőrzése
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan ellenőrizheti az érzelmek elemzése tároló példányát.
+description: Megtudhatja, hogyan ellenőrizheti a Hangulatelemzés tároló példányát.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 08/21/2019
 ms.author: dapine
-ms.openlocfilehash: 1303d753b1cbfabe7ddd3442e0880b0bffe089b3
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: cbc5ad63dd944eb53d3a8052e75744cb5c3709ea
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377393"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051171"
 ---
-## <a name="verify-the-sentiment-analysis-container-instance"></a>Az érzelmek elemzése tároló példányának ellenőrzése
+## <a name="verify-the-sentiment-analysis-container-instance"></a>A Hangulatelemzés tároló példányának ellenőrzése
 
 1. Válassza az **Áttekintés** lapot, és másolja ki az IP-címet.
 1. Nyisson meg egy új böngésző fület, és adja meg az IP-címet. Írja be `http://<IP-address>:5000 (http://55.55.55.55:5000`például a következőt:). Megjelenik a tároló kezdőlapja, amelyből megtudhatja, hogy fut-e a tároló.
 
-    ![A tároló kezdőlapjának megtekintése annak ellenőrzéséhez, hogy fut-e](../media/how-tos/container-instance/swagger-docs-on-container.png).
+    ![A tároló kezdőlapjának megtekintése annak ellenőrzéséhez, hogy fut-e](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
 1. Válassza ki a **szolgáltatás API leírása** hivatkozást, hogy megnyissa a tároló hencegő lapját.
 
@@ -63,11 +63,11 @@ ms.locfileid: "68377393"
     }
     ```
 
-1. Állítsa a **showStats** igaz értékre.
+1. **ShowStats** beállítása a `true`következőre:.
 
 1. A szöveg hangulatának meghatározásához válassza a **végrehajtás** lehetőséget.
 
-    A tárolóban csomagolt modell egy 0 és 1 közötti értéket generál, ahol a 0 negatív, az 1 pedig pozitív.
+    A tárolóban csomagolt modell egy 0 és 1 közötti értéket generál, ahol a 0 negatív hangulat, az 1 pedig pozitív hangulat.
 
     A visszaadott JSON-válasz magában foglalja a frissített szövegbeviteli adatok hangulatát:
 
@@ -93,4 +93,4 @@ ms.locfileid: "68377393"
     }
     ```
 
-Most már összekapcsolhatja a `id` válasz adattartalom JSON-adatainak dokumentumát az eredeti kérelem adattartalma `id`dokumentumával. A pontszáma nagyobb, `.98` mint egy erősen pozitív hangulat.
+Most már összekapcsolhatja a `id` válasz adattartalom JSON-adatainak dokumentumát az eredeti kérelem adattartalma `id`dokumentumával. A pontszám több, mint `0.98` egy nagyon pozitív hangulat.

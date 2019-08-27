@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 338ceef8ce94e97f7569f85b0079f75aed033612
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 18bbeb2b4936b1c8a03ffdc7eade8dc92d094fde
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558635"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050609"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure Virtual Networks (virtuális hálózatok) lehetővé teszi, hogy az Azure-erőforrások bármelyikét olyan, nem internetes útválasztású hálózatba helyezze, amelynek hozzáférését szabályozhatja. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: Az [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -140,7 +140,7 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 
 + **SMTP-továbbító**: Az SMTP-továbbító kimenő hálózati kapcsolata, amely a `smtpi-co1.msn.com`gazdagép `smtpi-db3.msn.com`, `smtpi-ch1.msn.com` `smtpi-sin.msn.com` a, és a`ies.global.microsoft.com`
 
-+ **Fejlesztői portál CAPTCHA**: A fejlesztői portál KAPITÁNYának kimenő hálózati kapcsolata, amely a gazdagép `client.hip.live.com`alatt oldódik fel.
++ **Fejlesztői portál CAPTCHA**: A fejlesztői portál kapitányának kimenő hálózati kapcsolata, amely a gazdagépeken `client.hip.live.com` és a- `partner.hip.live.com`ben oldható fel.
 
 + **Azure Portal diagnosztika**: Ha a API Management bővítményt a Virtual Networkon belülről kívánja engedélyezni a diagnosztikai naplók Azure Portal, akkor a 443- `dc.services.visualstudio.com` as porton való kimenő hozzáférésre van szükség. Ez segít a bővítmények használata során felmerülő problémák elhárításában.
 

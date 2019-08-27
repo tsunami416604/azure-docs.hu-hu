@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 54fc87f02ca058e17de3a65627bc76fd7d9cac11
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 7ed81375912613995d573b110607e7913adfd10f
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971551"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051661"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Oktatóanyag: Ismerkedés az első ML-kísérlet létrehozásával
 
@@ -73,7 +73,10 @@ A virtuális gép futása után a **notebook virtuális gépek** szakasz haszná
     > [!TIP]
     > Ez a mappa a saját munkaterületén található [Storage](concept-workspace.md#resources) -tárolóban, és nem a notebook virtuális gépen van.  Törölheti a notebook virtuális gépet, és továbbra is megőrizheti a munkáját.  Amikor később hoz létre egy új jegyzetfüzet virtuális gépet, a rendszer ezt a mappát fogja betölteni. Ha a munkaterületet másokkal is megosztja, látni fogja a mappát, és látni fogja a sajátját.
 
-1. Nyissa `samples-*` meg az alkönyvtárat, majd nyissa meg a`tutorials/tutorial-1st-experiment-sdk-train.ipynb` 
+1. Nyissa `samples-*` meg az alkönyvtárat, majd nyissa meg a`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
+
+> [!Warning]
+> Győződjön meg arról, `tutorial-1st-experiment-sdk-train.ipynb` hogy megnyitotta `.yml` a fájlt, és **nem** a > azonos nevű fájlt. 
 
 Az oktatóanyag **második részében** futtatja a kódot a Machine `tutorial-1st-experiment-sdk-train.ipynb` learning-modellek betanításához.
 

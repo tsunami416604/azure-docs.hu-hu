@@ -3,19 +3,20 @@ title: Oktatóanyag – az e-mailek és mellékletek feldolgozásának automatiz
 description: Oktatóanyag – e-maileket és mellékleteket kezelő automatizált munkafolyamatok létrehozása Azure Logic Apps, Azure Storage és Azure Functions
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
-manager: carmonm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: d203f5f10c7a24b63693a7fe5d6387be284d5034
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: e7c27d284ef93d15c5ac9a6228205e79518f2ffa
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983001"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051788"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Oktatóanyag: E-mailek és mellékletek kezelése a Azure Logic Apps
 

@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az Outlook.com-ra – Azure Logic Apps |} A Microsoft Docs
-description: E-mailt, naptárak és az Outlook.com-os REST API-k és az Azure Logic Apps névjegyek kezelése
+title: Kapcsolódás a Outlook.com-Azure Logic Appshoz | Microsoft Docs
+description: E-mailek, naptárak és névjegyek kezelése a Outlook.com REST API-kkal és Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -11,34 +11,34 @@ ms.topic: article
 ms.date: 08/18/2016
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: fd6836451a73551487b8f97903594154a2efc894
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4586255e96647267bc913f2bc054610163e16bd3
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105802"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050884"
 ---
-# <a name="manage-email-calendars-and-contacts-in-outlookcom-with-azure-logic-apps"></a>E-mailt, naptárak és névjegyeit, állítsa be az Azure Logic Apps Outlook.com-os kezelése
+# <a name="manage-email-calendars-and-contacts-in-outlookcom-with-azure-logic-apps"></a>E-mailek, naptárak és névjegyek kezelése a Outlook.com-ben Azure Logic Apps
 
-Ez a cikk bemutatja, hogyan hozzon létre és kezelheti az Outlook.com-fiókjából belül egy logikai alkalmazást, a Box-összekötővel. Ezzel a módszerrel hozhat létre a logic apps, feladatok és automatizáló munkafolyamatokat az Outlook.com-fiókjából, például:
+Ez a cikk bemutatja, hogyan hozhatja létre és kezelheti a Outlook.com-fiókját egy logikai alkalmazásban a Box Connector használatával. Így olyan logikai alkalmazásokat hozhat létre, amelyek automatizálják a Outlook.com-fiókhoz tartozó feladatokat és munkafolyamatokat, például:
 
 * E-mail küldése. 
-* Értekezletek ütemezését.
-* Adja hozzá a névjegyekhez. 
+* Értekezletek beosztása.
+* Névjegyek hozzáadása. 
 
-Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md).
+Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps](../logic-apps/logic-apps-overview.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy [Outlook.com-fiókjából](https://outlook.live.com/owa/)
+* Egy [Outlook.com-fiók](https://outlook.live.com/owa/)
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* A logikai alkalmazás, ahol szeretné elérni az Outlook.com-fiókjából. A logikai alkalmazás elindításához egy Outlook-eseményindítóval kell egy [üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* Az a logikai alkalmazás, amelyhez el szeretné érni a Outlook.com-fiókját. A logikai alkalmazás Outlook-triggerrel való elindításához [üres logikai alkalmazásra](../logic-apps/quickstart-create-first-logic-app-workflow.md)van szükség. 
 
-* Alapvető ismeretek szerezhetők [létrehozása a logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="connect-to-outlookcom"></a>Csatlakozás az Outlook.com-ra
+## <a name="connect-to-outlookcom"></a>Kapcsolódás a Outlook.com
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
@@ -46,7 +46,7 @@ Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részleteket, például a triggereket, műveletek és -korlátok, az összekötő Swagger-fájl által leírt: a [összekötő referencialapja](/connectors/outlook/). 
+A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő hencegő fájlja ismerteti, lásd az [összekötő hivatkozási oldalát](/connectors/outlook/). 
 
 ## <a name="get-support"></a>Támogatás kérése
 
@@ -55,4 +55,4 @@ További technikai részleteket, például a triggereket, műveletek és -korlá
 
 ## <a name="next-steps"></a>További lépések
 
-* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

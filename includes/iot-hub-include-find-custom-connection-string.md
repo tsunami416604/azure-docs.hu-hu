@@ -8,30 +8,30 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 55dc712d323c43849fa3de23c83e29fc348a0f1e
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 6f43bbcd83861f7d39de2aa89bbe035c2ff5b809
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68403962"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050411"
 ---
 <!-- This tells how to create a custom shared access policy for your IoT hub and get the connection string for it-->
 
 Ha olyan megosztott hozzáférési szabályzatot szeretne létrehozni, amely biztosítja a **szolgáltatás kapcsolódását** és a **beállításjegyzék olvasási** engedélyeit, és lekéri a Szabályzathoz tartozó kapcsolati karakterláncot, kövesse az alábbi lépéseket:
 
-1. Nyissa meg az IoT hubot a [Azure Portal](https://portal.azure.com). Az IoT hub kiválasztásának legegyszerűbb módja az **erőforráscsoportok**kiválasztása. Válassza ki azt az erőforráscsoportot, ahol az IoT hub található, majd válassza ki az IoT hubot az erőforrások listájából.
+1. A [Azure Portal](https://portal.azure.com)válassza az **erőforráscsoportok**lehetőséget. Válassza ki azt az erőforráscsoportot, amelyben a hub található, majd válassza ki az elosztót az erőforrások listájából.
 
-2. Az IoT hub bal oldali ablaktábláján válassza a **megosztott hozzáférési házirendek**elemet.
+1. A központ bal oldali ablaktábláján válassza a **megosztott elérési szabályzatok**elemet.
 
-3. A szabályzatok listájának felső menüjében válassza a **Hozzáadás**lehetőséget.
+1. A szabályzatok listájának felső menüjében válassza a **Hozzáadás**lehetőséget.
 
-4. A **megosztott hozzáférési házirend hozzáadása** panelen adjon meg egy leíró nevet a szabályzatnak; például: *serviceAndRegistryRead*. Az **engedélyek**területen válassza a **beállításjegyzék olvasási** és **szolgáltatás-csatlakozási**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
+1. A **megosztott elérési házirend hozzáadása**területen adjon meg egy leíró nevet a szabályzatnak, például *serviceAndRegistryRead*. Az **engedélyek**területen válassza a **beállításjegyzék olvasási** és **szolgáltatás-csatlakozási**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
 
     ![Új megosztott elérési házirend hozzáadásának megjelenítése](./media/iot-hub-include-find-custom-connection-string/iot-hub-add-custom-policy.png)
 
-5. A **megosztott hozzáférési szabályzatok** panelen válassza ki az új házirendet a házirendek listájából.
+1. Válassza ki az új szabályzatot a házirendek listájából.
 
-6. A **megosztott elérési kulcsok**területen válassza a **kapcsolati sztring – elsődleges kulcs** másolási ikonját, és mentse az értéket.
+1. A **megosztott elérési kulcsok**területen válassza a **kapcsolati sztring – elsődleges kulcs** másolási ikonját, és mentse az értéket.
 
     ![A kapcsolati karakterlánc lekérésének megjelenítése](./media/iot-hub-include-find-custom-connection-string/iot-hub-get-connection-string.png)
 

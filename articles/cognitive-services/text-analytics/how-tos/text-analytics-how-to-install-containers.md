@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: dapine
-ms.openlocfilehash: ff0be2e9dada758cce96ba7c5eebbf03b00f56c6
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 8664d0f727c47da1b70b8060f879a49fbbd8c7c5
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971447"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051260"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics tárolók telepítése és futtatása
 
@@ -48,54 +48,38 @@ Szövegelemzés tárolók használata előtt a következő előfeltételeknek ke
 
 A következő táblázat ismerteti a minimális és ajánlott, processzormagot legalább 2.6-os gigahertz (GHz) vagy gyorsabb, és a memória (gigabájtban), minden egyes Szövegelemzés tároló lefoglalása.
 
-| Tároló | Minimális | Ajánlott | TPS<br>(Minimum, maximum)|
-|-----------|---------|-------------|--|
-|Kulcskifejezések kinyerése | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
-|Nyelvfelismerés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
-|Véleményelemzés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Kulcskifejezések kinyerése](#tab/keyphrase)
+
+[!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
+
+#### <a name="language-detectiontablanguage"></a>[Nyelvfelismerés](#tab/language)
+
+[!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
+
+#### <a name="sentiment-analysistabsentiment"></a>[Hangulatelemzés](#tab/sentiment)
+
+[!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
+
+***
 
 * Minden mag legalább 2,6 gigahertz (GHz) vagy gyorsabb lehet.
 * TPS – tranzakció/másodperc
 
 Az alap és a memória a `--cpus` `docker run` parancs `--memory` részeként használt és beállításoknak felel meg.
 
-## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének beolvasása a`docker pull`
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Kulcskifejezések kinyerése](#tab/keyphrase)
 
-Tárolórendszerképek szövegelemzési Microsoft Tárolóregisztrációs adatbázisból érhetők el.
+[!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-| Tároló | Tárház |
-|-----------|------------|
-|Kulcskifejezések kinyerése | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
-|Nyelvfelismerés | `mcr.microsoft.com/azure-cognitive-services/language` |
-|Véleményelemzés| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
+#### <a name="language-detectiontablanguage"></a>[Nyelvfelismerés](#tab/language)
 
-A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal tölthet le egy tároló rendszerképet a Microsoft Container Registryból.
+[!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
-A Text Analytics tárolók rendelkezésre álló címkék teljes leírását lásd a következő tárolókat a Docker hub:
+#### <a name="sentiment-analysistabsentiment"></a>[Hangulatelemzés](#tab/sentiment)
 
-* [Kulcskifejezések kinyerése](https://go.microsoft.com/fwlink/?linkid=2018757)
-* [Nyelvfelismerés](https://go.microsoft.com/fwlink/?linkid=2018759)
-* [Hangulatelemzés](https://go.microsoft.com/fwlink/?linkid=2018654)
+[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
-A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) parancs használatával töltse le a tárolók rendszerképét.
-
-### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>A Docker lekéri a Key kifejezés kinyerésének tárolóját
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
-```
-
-### <a name="docker-pull-for-the-language-detection-container"></a>Docker-lekérés a nyelvfelismerés tárolóhoz
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
-```
-
-### <a name="docker-pull-for-the-sentiment-container"></a>Docker-lekérés az érzelmek tárolója számára
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
-```
+***
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -112,23 +96,19 @@ A három tároló bármelyikének futtatásához használja a [Docker Run](https
 
 [](../text-analytics-resource-container-config.md#example-docker-run-commands) A`docker run` parancs például elérhető.
 
-### <a name="run-container-example-of-docker-run-command"></a>Tároló futtatása példa a Docker Run parancsra
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Kulcskifejezések kinyerése](#tab/keyphrase)
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/keyphrase \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
+[!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-Ez a parancs:
+#### <a name="language-detectiontablanguage"></a>[Nyelvfelismerés](#tab/language)
 
-* Egy Key mondat tárolót futtat a tároló rendszerképből.
-* Egy CPU mag és 4 gigabájt (GB) memóriát foglal le
-* Elérhetővé teszi az 5000-es TCP-porton és a egy pszeudo-TTY lefoglalja a tároló
-* A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
+[!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
+#### <a name="sentiment-analysistabsentiment"></a>[Hangulatelemzés](#tab/sentiment)
+
+[!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
+
+***
 
 > [!IMPORTANT]
 > A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](#billing).

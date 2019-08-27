@@ -1,94 +1,103 @@
 ---
-title: Azure IoT Hub for Visual Studio Cloud Explorer üzenetküldés felhőből az eszközre kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan eszköz a felhőbe irányuló üzenetek figyeléséhez és a felhő küldhet üzeneteket az Azure IoT Hub for Visual Studio Cloud Explorer használatával.
+title: Azure IoT Hub felhőalapú eszközök üzenetkezelésének kezelése a Cloud Explorer for Visual Studio használatával | Microsoft Docs
+description: Megtudhatja, hogyan figyelheti a Cloud Explorer for Visual Studio eszközt az eszköz Felhőbeli üzeneteinek figyelésére és Felhőbeli üzenetek küldésére az Azure IoT Hubban.
 author: shizn
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/07/2018
+ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: ab3c02d7207bca70a90df8aa08c73c1484cd635d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8ea705b55c1485cab2e1478d2d455f1d4a427d3
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61440631"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050267"
 ---
-# <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>A Visual Studio Cloud Explorer használatával az eszközön, és az IoT Hub közötti üzenetek küldése és fogadása
+# <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Üzenetek küldése és fogadása az eszköz és a IoT Hub között a Cloud Explorer for Visual Studio használatával
 
 ![Végpontok közötti diagram](./media/iot-hub-visual-studio-cloud-device-messaging/e-to-e-diagram.png)
 
-[A cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) egy hasznos, a Visual Studio-bővítmény, amely lehetővé teszi az Azure-erőforrások megtekintése, azok tulajdonságait megvizsgálhatja és műveleteket kulcs Fejlesztőeszközök a Visual Studión belül. Ez a cikk a Cloud Explorer használata az eszköz és az IoT Hub közötti üzenetek küldése és fogadása az összpontosít.
+A [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) egy hasznos Visual Studio-bővítmény, amely lehetővé teszi, hogy megtekintse az Azure-erőforrásokat, megvizsgálják a tulajdonságaikat, és a Visual studióból is elvégezzenek kulcsfontosságú fejlesztői műveleteket. Ez a cikk azt ismerteti, hogyan használható a Cloud Explorer üzenetek küldése és fogadása az eszköz és a központ között.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="what-you-will-learn"></a>Amiről tanulni fog
+## <a name="what-you-learn"></a>Ismertetett témák
 
-Megtudhatja, hogyan használható a Visual Studio Cloud Explorer eszköz a felhőbe irányuló üzenetek figyeléséhez és a felhőből az eszközre irányuló üzenetek küldéséhez. Eszköz – felhő üzeneteket lehet, hogy az eszköz gyűjt, és ezután küld az IoT Hub érzékelőktől kapott adatok. Felhőből az eszközre irányuló üzenetek lehet parancsokat, amelyek az eszközt az IoT Hub küldi. Ha például kurzorvillogás LED, amely az eszköz csatlakozik.
+Ebből a cikkből megtudhatja, hogyan használhatja a Cloud Explorer for Visual Studio eszközt az eszközről a felhőbe irányuló üzenetek figyeléséhez és a felhőből az eszközre irányuló üzenetek küldéséhez. Az eszközről a felhőbe irányuló üzenetek lehetnek az eszköz által gyűjtött, majd a IoT Hubnak küldött érzékelők adatai. A felhőből az eszközre irányuló üzenetek lehetnek a IoT Hub által az eszközre küldött parancsok. Tegyük fel például, hogy az eszközhöz csatlakozó LED villog.
 
-## <a name="what-you-will-do"></a>Mit fog
+## <a name="what-you-do"></a>Teendők
 
-- Használja a Visual Studio Cloud Explorer eszköz a felhőbe irányuló üzenetek figyeléséhez.
-- A Visual Studio Cloud Explorer használatával üzenetküldés a felhőből az eszközre.
+Ebben a cikkben a következő feladatokat hajtja végre:
+
+- Az eszközről a felhőbe irányuló üzenetek figyeléséhez használja a Cloud Explorer for Visual Studio eszközt.
+
+- Felhőből az eszközre irányuló üzenetek küldéséhez használja a Cloud Explorer for Visual Studio alkalmazást.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
+A következő előfeltételek szükségesek:
+
 - Aktív Azure-előfizetés.
-- Az Azure IoT Hub az előfizetéséhez.
-- A Microsoft Visual Studio 2017 Update 8 vagy újabb
-- Cloud Explorer összetevő a Visual Studio telepítőjének (az Azure számítási feladatok alapértelmezés szerint kiválasztva)
 
-## <a name="update-cloud-explorer-to-latest-version"></a>Cloud Explorer legújabb verziójára való frissítéséhez
+- Az előfizetéshez tartozó Azure-IoT Hub.
 
-A Cloud Explorer az összetevőt a Visual Studio telepítőjének csak támogatja az eszközről a felhőbe és a felhőből az eszközre irányuló üzenetek monitorozását. Annak érdekében, hogy üzeneteket küld az eszköz vagy a felhőben, töltse le és telepítse a legújabb [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS).
+- Microsoft Visual Studio 2017 Update 9-es vagy újabb verzió. Ez a cikk a [Visual Studio 2019](https://www.visualstudio.com/vs/)-et használja.
 
-## <a name="sign-in-to-access-your-iot-hub"></a>Jelentkezzen be az IoT Hub eléréséhez
+- A Visual Studio telepítőből származó Cloud Explorer összetevő, amely alapértelmezés szerint az Azure munkaterhelés használatával van kiválasztva.
 
-1. A Visual Studióban **Cloud Explorer** ablakban kattintson a felhasználóifiók-kezelés ikonra. Megnyithatja a Cloud Explorer ablakot **nézet** > **Cloud Explorer** menü.
+## <a name="update-cloud-explorer-to-latest-version"></a>A Cloud Explorer frissítése a legújabb verzióra
 
-    ![Kattintson a fiók kezelése](media/iot-hub-visual-studio-cloud-device-messaging/click-account-management.png)
+A Visual Studio 2017-es verziójának Cloud Explorer összetevője csak az eszközről a felhőbe irányuló és a felhőből az eszközre irányuló üzenetek figyelését támogatja. A Visual Studio 2017 használatához töltse le és telepítse a legújabb [Cloud Explorer böngészőt](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS).
 
+## <a name="sign-in-to-access-your-hub"></a>Bejelentkezés a hub eléréséhez
 
-2. Kattintson a **fiókok kezelése** a Cloud Explorerben.
+A hub eléréséhez kövesse az alábbi lépéseket:
 
-3. Kattintson a **-fiók hozzáadása...**  az Azure-ban először jelentkezzen be az új ablakban.
+1. A Visual Studióban kattintson a**Cloud** Explorer **megtekintése** > elemre a Cloud Explorer megnyitásához.
 
-4. Miután bejelentkezett, megjelenik az Azure-előfizetési lista. Válassza ki az Azure-előfizetések megtekintése, és kattintson a kívánt **alkalmaz**.
+1. Az előfizetések megjelenítéséhez válassza az Account Management (Fiókkezelés) ikont.
 
-5. Bontsa ki a **az előfizetés** > **IoT-központok** > **az IoT Hub**, az IoT Hub csomópont alatt megjelenik az eszközlista.
+    ![Fiókkezelés ikon](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
 
-    ![Eszközök listája](media/iot-hub-visual-studio-cloud-device-messaging/device-list.png)
+1. Ha bejelentkezett az Azure-ba, a fiókok megjelennek. Ha első alkalommal szeretne bejelentkezni az Azure-ba, válassza a **fiók hozzáadása**lehetőséget.
 
-## <a name="monitor-device-to-cloud-messages"></a>Eszköz a felhőbe irányuló üzenetek figyeléséhez
+1. Válassza ki a használni kívánt Azure-előfizetéseket, majd válassza az **alkalmaz**lehetőséget.
 
-Az eszközről az IoT hubnak küldött üzenetek monitorozásához kövesse az alábbi lépéseket:
+1. Bontsa ki az előfizetést, majd bontsa ki az **IoT hubok**elemet.  Az egyes központokban megtekintheti az adott hubhoz tartozó eszközöket.
 
-1. Kattintson a jobb gombbal az IoT Hub vagy az eszköz, és válassza ki **figyelési D2C üzenet Start**.
+    ![Eszközök listája](media/iot-hub-visual-studio-cloud-device-messaging/hub-device-list.png)
 
-    ![D2C üzenet Monitorozásának megkezdése](media/iot-hub-visual-studio-cloud-device-messaging/start-monitoring-d2c-message.png)
+## <a name="monitor-device-to-cloud-messages"></a>Az eszközről a felhőbe irányuló üzenetek figyelése
 
-2. A figyelt üzenetek megjelennek a **az IoT Hub** tesztkimenet ablaktáblán.
+Az eszközről a IoT Hub küldött üzenetek figyeléséhez kövesse az alábbi lépéseket:
 
-    ![Figyelési D2C állapotüzenetének eredménye](media/iot-hub-visual-studio-cloud-device-messaging/monitor-d2c-message-result.png)
+1. Kattintson a jobb gombbal a IoT Hub vagy az eszközre, és válassza a **figyelés D2C üzenet**lehetőséget.
 
-3. Leállíthatja a figyelést, kattintson a jobb gombbal az IoT Hub-vagy eszközt, és válassza ki **Stop Monitoring D2C üzenet**.
+    ![D2C-üzenet figyelésének megkezdése](media/iot-hub-visual-studio-cloud-device-messaging/start-monitoring-d2c-message-vs2019.png)
+
+1. A figyelt üzenetek a **kimenet**területen jelennek meg.
+
+    ![Figyelési D2C üzenetének eredménye](media/iot-hub-visual-studio-cloud-device-messaging/monitor-d2c-message-result-vs2019.png)
+
+1. A figyelés leállításához kattintson a jobb gombbal bármelyik IoT Hubra vagy eszközre, és válassza a **figyelés D2C üzenet**lehetőséget.
 
 ## <a name="send-cloud-to-device-messages"></a>Üzenetküldés a felhőből az eszközökre
 
-Küldjön üzenetet az IoT hubhoz az eszközt, kövesse az alábbi lépéseket:
+Ha üzenetet szeretne küldeni a IoT Hub az eszközére, kövesse az alábbi lépéseket:
 
-1. Kattintson a jobb gombbal az eszközt, és válassza ki **C2D-üzenet küldése**.
+1. Kattintson a jobb gombbal az eszközre, és válassza a **C2D-üzenet küldése**lehetőséget.
 
-    ![C2D üzenet küldése](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message.png)
+1. Adja meg az üzenetet a beviteli mezőben.
 
-2. Adja meg a beviteli mezőbe.
+    ![C2D-üzenet küldése](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-test.png)
 
-3. Az eredmények megjelennek a **az IoT Hub** tesztkimenet ablaktáblán.
+    Az eredmények a **kimenet**területen jelennek meg.
 
-    ![Küldés C2D állapotüzenetének eredménye](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-result.png)
+    ![C2D-üzenet eredményének küldése](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-result-vs2019.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Bemutattuk, hogyan lehet az eszköz a felhőbe irányuló üzenetek figyeléséhez és a felhőből az eszközre irányuló üzenetküldés az IoT-eszköz és az Azure IoT Hub között.
+Megtanulta, hogyan figyelheti az eszközről a felhőbe irányuló üzeneteket, és hogyan küldhet a felhőből az eszközre irányuló üzeneteket a IoT-eszköz és az Azure IoT Hub között.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

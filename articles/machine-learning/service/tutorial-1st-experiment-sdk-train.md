@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: aa3a9bdb51e1137cde2ca29e2b5db55ba621cf8c
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972510"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051630"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: Az első ML-modell betanítása
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 
 Az egyetlen előfeltétel az oktatóanyag, a [telepítési környezet és a munkaterület](tutorial-1st-experiment-sdk-setup.md)első részének futtatása.
 
-Az oktatóanyag ezen részében az első rész végén megnyitott minta Jupyter jegyzetfüzetben futtatja a kódot. Ez a cikk a jegyzetfüzetben található kódot mutatja be.
+Az oktatóanyag ezen részében az első rész végén megnyitott minta Jupyter jegyzetfüzetben `tutorials/tutorial-1st-experiment-sdk-train.ipynb` futtatja a kódot. Ez a cikk a jegyzetfüzetben található kódot mutatja be.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Munkaterület összekötése és kísérlet létrehozása
 
@@ -41,6 +41,8 @@ Importálja `Workspace` az osztályt, és töltse be az előfizetési `config.js
 
 Ha a következő kód további hitelesítést kér, egyszerűen illessze be a hivatkozást egy böngészőben, és adja meg a hitelesítési jogkivonatot.
 
+> [!TIP]
+> Ha most ismerkedik a jegyzetfüzetek Jupyter, futtasson kódot a kód cellára kattintva, és a **SHIFT + ENTER** billentyűkombinációval futtassa a cellákat egyszerre. Ha a teljes jegyzetfüzetet egyszerre szeretné futtatni, kattintson a felső menüsorban található **cella** elemre, majd az **összes futtatása**parancsra.
 
 ```python
 from azureml.core import Workspace

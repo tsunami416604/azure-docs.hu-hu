@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: fef551c254eb4fa212333a55bde3d642645a16b6
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 0d47c3f0838e22ad8c5185a42f5f0c748335dfa8
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489809"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049490"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Oktatóanyag: Tweetek feldolgozása az Azure Event Hubs és a HDInsight-Apache Spark használatával
 
@@ -135,7 +135,7 @@ Hozzon létre egy Jupyter-jegyzetfüzetet, és nevezze el **SendTweetsToEventHub
 
     ```
     %%configure
-    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0,org.twitter4j:twitter4j-core:4.0.6"}}
+    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
 2. Szerkessze az alábbi kódot a `<Event hub name>`megfelelő `<Event hub namespace connection string>`értékekkel `<CONSUMER SECRET>`: `<ACCESS TOKEN>` `<CONSUMER KEY>`,, `<TOKEN SECRET>` ,, és. A szerkesztett kód futtatásával tweeteket küldhet az Event hubhoz:
@@ -217,7 +217,7 @@ Hozzon létre egy másik Jupyter-jegyzetfüzetet, és nevezze el **ReadTweetsFro
 
     ```
     %%configure -f
-    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0"}}
+    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13"}}
     ```
 
 2. Szerkessze az alábbi kódot a `<Event hub name>`helyére, `<Event hub namespace connection string>` és a megfelelő értékekkel. A szerkesztett kód futtatásával olvashatja a tweeteket az Event hub-ból:

@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: fd1be6e2354a87bfb0de87b85fe46a1feb42100c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 56a73449c69010bc97122023f7dcbc9e3a9df154
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878256"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048005"
 ---
-# <a name="what-is-azure-iot-plug-and-play-preview"></a>Mi az Azure IoT Plug and Play előzetes verzió?
+# <a name="what-is-iot-plug-and-play-preview"></a>Mi a IoT Plug and Play előzetes verzió?
 
 A IoT Plug and Play Preview lehetővé teszi, hogy a megoldások fejlesztői bármilyen beágyazott kód írása nélkül integrálják az eszközöket a megoldásaikkal. A IoT Plug and Play a Device _képesség modell_ sémája, amely leírja az eszközök képességeit. Ez a séma egy olyan JSON-dokumentum, amely illesztőfelület-készletként van strukturálva, amely a következő definíciókat tartalmazza:
 
