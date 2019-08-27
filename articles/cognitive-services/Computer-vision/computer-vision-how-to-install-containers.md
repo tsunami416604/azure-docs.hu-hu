@@ -11,16 +11,17 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: afccce5ca9101ed1e30f69264abae7ad85b4902b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cbf199c391b49518bb595d7d1a0ed47147903a85
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564582"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034498"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>szövegfelismerés tárolók telepítése és futtatása
 
-A Computer Vision ismeri fel a szöveg részét is egy Docker-tárolóként érhető el. Lehetővé teszi, és nyomtatott szöveg kinyerése a különféle objektumokat a különféle felületekkel és hátterek, például a visszaigazolások és poszterek vagy tájékoztató névjegykártyák képét.  
+A Computer Vision ismeri fel a szöveg részét is egy Docker-tárolóként érhető el. Lehetővé teszi, és nyomtatott szöveg kinyerése a különféle objektumokat a különféle felületekkel és hátterek, például a visszaigazolások és poszterek vagy tájékoztató névjegykártyák képét.
+
 > [!IMPORTANT]
 > A szöveg felismerése tároló jelenleg csak angol nyelven használható.
 
@@ -38,7 +39,7 @@ Szövegfelismerés tárolók használata előtt meg kell felelnie a következő 
 
 ## <a name="request-access-to-the-private-container-registry"></a>A privát tárolóregisztrációs hozzáférés kérése
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>A gazdaszámítógép
 
@@ -46,16 +47,7 @@ Szövegfelismerés tárolók használata előtt meg kell felelnie a következő 
 
 ### <a name="container-requirements-and-recommendations"></a>Tároló-követelményeket és javaslatokat
 
-A következő táblázat az egyes szövegfelismerés tárolók számára lefoglalható minimális és ajánlott CPU-magokat és memóriát ismerteti.
-
-| Tároló | Minimális | Ajánlott |TPS<br>(Minimum, maximum)|
-|-----------|---------|-------------|--|
-|szövegfelismerés|1 mag, 8 GB memória, 0,5 TPS|2 mag, 8 GB memória, 1 TPS|0,5, 1|
-
-* Minden mag legalább 2,6 gigahertz (GHz) vagy gyorsabb lehet.
-* TPS – tranzakció/másodperc
-
-Az alap és a memória a `--cpus` `docker run` parancs `--memory` részeként használt és beállításoknak felel meg.
+[!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
 ## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének beolvasása a`docker pull`
 

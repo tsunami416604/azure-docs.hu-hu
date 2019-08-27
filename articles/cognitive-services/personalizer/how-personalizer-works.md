@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: diberry
-ms.openlocfilehash: e55ccb508760c4473f71245c183948219f31985c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663916"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034373"
 ---
 # <a name="how-personalizer-works"></a>A Personalizer működése
 
@@ -163,7 +163,7 @@ A személyre szabott ajánlási motorokat használhatja:
 
 ## <a name="adding-content-safeguards-to-your-application"></a>Tartalmi óvintézkedések hozzáadása az alkalmazáshoz
 
-Ha az alkalmazás lehetővé teszi a nagy eltérések használatát a felhasználók számára megjelenített tartalomban, és előfordulhat, hogy bizonyos tartalmak nem biztonságosak vagy nem megfelelőek egyes felhasználók számára, előre meg kell terveznie, hogy a megfelelő védelmet biztosítson a felhasználók számára, hogy ne láthassák elfogadhatatlannak tartalom. A védelem megvalósításának legjobb mintája a következő: A védelem megvalósításának legjobb mintája a következő:
+Ha az alkalmazás lehetővé teszi a nagy eltérések használatát a felhasználók számára megjelenített tartalomban, és előfordulhat, hogy bizonyos tartalmak nem biztonságosak vagy nem megfelelőek egyes felhasználók számára, előre meg kell terveznie, hogy a megfelelő védelmet biztosítson a felhasználók számára, hogy ne láthassák elfogadhatatlannak tartalom. A védelem megvalósításának legjobb mintája a következő:
     * A rangsorolni kívánt műveletek listájának beszerzése.
     * Szűrje ki azokat, amelyek nem életképesek a közönség számára.
     * Csak a következő életképes műveletek rangsorolása.

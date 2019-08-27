@@ -105,13 +105,13 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Tulajdonság | Típus | Leírás |
 | --- | --- | --- |
-| storageAccountId |String | Annak a Storage-fióknak az erőforrás-azonosítója, amelyre a diagnosztikai naplókat el szeretné küldeni |
+| storageAccountId |Karakterlánc | Annak a Storage-fióknak az erőforrás-azonosítója, amelyre a diagnosztikai naplókat el szeretné küldeni |
 | serviceBusRuleId |Sztring | A Service Bus-névtér Service Bus-szabályának azonosítója, amelyben Event Hubs létrehozni a folyamatos átviteli diagnosztikai naplókhoz. A szabály azonosítója a következő formátumú: "{Service Bus erőforrás-azonosító}/authorizationrules/{Key neve}".|
 | workspaceId | Összetett típus | Metrikus idő típusú gabona és adatmegőrzési szabályzatok tömbje. Jelenleg ez a tulajdonság üres. |
 |metrics| A folyamat által a meghívott folyamatnak átadni kívánt folyamat paramétereinek értéke| Egy JSON-objektum-hozzárendelési paraméter neve az argumentum értékéhez |
 | logs| Összetett típus| Az erőforrástípus diagnosztikai naplójának kategóriája. Az erőforráshoz tartozó diagnosztikai naplók listájának beszerzéséhez először végezze el a diagnosztikai beállítások beolvasása műveletet. |
-| category| String| A naplózási kategóriák és a megőrzési szabályzatok tömbje |
-| timeGrain | Sztring | Az ISO 8601-es időtartamú formátumban rögzített mérőszámok részletessége. PT1M kell lennie (egy perc)|
+| category| Karakterlánc| A naplózási kategóriák és a megőrzési szabályzatok tömbje |
+| timeGrain | String | Az ISO 8601-es időtartamú formátumban rögzített mérőszámok részletessége. PT1M kell lennie (egy perc)|
 | enabled| Logikai | Meghatározza, hogy engedélyezve van-e az adott metrika vagy naplózási kategória gyűjteménye ehhez az erőforráshoz|
 | retentionPolicy| Összetett típus| A metrika vagy a napló kategóriájának adatmegőrzési szabályát ismerteti. Csak a Storage-fiók beállítására szolgál.|
 | days| Int| A metrikák vagy naplók megőrzésére szolgáló napok száma. A 0 érték határozatlan ideig megőrzi a naplókat. Csak a Storage-fiók beállítására szolgál. |
@@ -280,16 +280,16 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | Szint |Sztring | A diagnosztikai naplók szintje. A 4. szint mindig a tevékenység-futtatási naplók esetében használható. | `4`  |
 | correlationId |Sztring | Egy adott kérelem végpontok közötti nyomon követésére szolgáló egyedi azonosító | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | Sztring | Az esemény időpontja TimeSpan, UTC formátumban`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|activityRunId| String| A tevékenység futtatásának azonosítója | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
-|pipelineRunId| String| A folyamat futtatásának azonosítója | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|activityRunId| Karakterlánc| A tevékenység futtatásának azonosítója | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
+|pipelineRunId| Karakterlánc| A folyamat futtatásának azonosítója | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| Sztring | Társított erőforrás-azonosító a (z) adatfeldolgozó erőforráshoz | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| String | A diagnosztikai naplók kategóriája. A tulajdonság beállítása "ActivityRuns" értékre | `ActivityRuns` |
+|category| Karakterlánc | A diagnosztikai naplók kategóriája. A tulajdonság beállítása "ActivityRuns" értékre | `ActivityRuns` |
 |level| Sztring | A diagnosztikai naplók szintje. A tulajdonság "tájékoztató" értékre állítása | `Informational` |
 |operationName| Sztring |Az állapottal rendelkező tevékenység neve. Ha az állapot a kezdő szívverés, akkor `MyActivity -`a. Ha az állapot a záró szívverés, `MyActivity - Succeeded` a végső állapotú. | `MyActivity - Succeeded` |
 |pipelineName| Sztring | A folyamat neve | `MyPipeline` |
-|activityName| String | A tevékenység neve | `MyActivity` |
+|activityName| Karakterlánc | A tevékenység neve | `MyActivity` |
 |start| Sztring | A TimeSpan, UTC formátumban futtatott tevékenység kezdete | `2017-06-26T20:55:29.5007959Z`|
-|end| String | A tevékenység vége TimeSpan, UTC formátumban fut. Ha a tevékenység még nem fejeződött be (a tevékenységhez tartozó diagnosztikai naplóban), az alapértelmezett érték `1601-01-01T00:00:00Z` van beállítva.  | `2017-06-26T20:55:29.5007959Z` |
+|end| Karakterlánc | A tevékenység vége TimeSpan, UTC formátumban fut. Ha a tevékenység még nem fejeződött be (a tevékenységhez tartozó diagnosztikai naplóban), az alapértelmezett érték `1601-01-01T00:00:00Z` van beállítva.  | `2017-06-26T20:55:29.5007959Z` |
 
 #### <a name="pipeline-run-logs-attributes"></a>Folyamat futtatási naplóinak attribútumai
 
@@ -325,7 +325,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | --- | --- | --- | --- |
 | Szint |Sztring | A diagnosztikai naplók szintje. A 4-es szint a tevékenység-futtatási naplók esetében használható. | `4`  |
 | correlationId |Sztring | Egy adott kérelem végpontok közötti nyomon követésére szolgáló egyedi azonosító | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | String | Az esemény időpontja TimeSpan, UTC formátumban`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| time | Karakterlánc | Az esemény időpontja TimeSpan, UTC formátumban`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |runId| Sztring| A folyamat futtatásának azonosítója | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| Sztring | Társított erőforrás-azonosító a (z) adatfeldolgozó erőforráshoz | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| Sztring | A diagnosztikai naplók kategóriája. A tulajdonság beállítása "PipelineRuns" értékre | `PipelineRuns` |
@@ -334,7 +334,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |pipelineName| Sztring | A folyamat neve | `MyPipeline` |
 |start| Sztring | A TimeSpan, UTC formátumban futtatott tevékenység kezdete | `2017-06-26T20:55:29.5007959Z`|
 |end| Sztring | A tevékenység vége TimeSpan, UTC formátumban fut. Ha a tevékenység még nem fejeződött be (a tevékenységhez tartozó diagnosztikai naplóban), az alapértelmezett érték `1601-01-01T00:00:00Z` van beállítva.  | `2017-06-26T20:55:29.5007959Z` |
-|status| String | A folyamat futásának végső állapota (sikeres vagy sikertelen) | `Succeeded`|
+|status| Karakterlánc | A folyamat futásának végső állapota (sikeres vagy sikertelen) | `Succeeded`|
 
 #### <a name="trigger-run-logs-attributes"></a>Trigger futtatási naplók attribútumai
 
@@ -367,14 +367,14 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Tulajdonság | Típus | Leírás | Példa |
 | --- | --- | --- | --- |
-| Szint |String | A diagnosztikai naplók szintje. Állítsa a 4-es szintre a tevékenység futtatási naplóihoz. | `4`  |
-| correlationId |String | Egy adott kérelem végpontok közötti nyomon követésére szolgáló egyedi azonosító | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| Szint |Karakterlánc | A diagnosztikai naplók szintje. Állítsa a 4-es szintre a tevékenység futtatási naplóihoz. | `4`  |
+| correlationId |Karakterlánc | Egy adott kérelem végpontok közötti nyomon követésére szolgáló egyedi azonosító | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | Sztring | Az esemény időpontja TimeSpan, UTC formátumban`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |triggerId| Sztring| Az trigger futtatásának azonosítója | `08587023010602533858661257311` |
 |resourceId| Sztring | Társított erőforrás-azonosító a (z) adatfeldolgozó erőforráshoz | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| Sztring | A diagnosztikai naplók kategóriája. A tulajdonság beállítása "PipelineRuns" értékre | `PipelineRuns` |
 |level| Sztring | A diagnosztikai naplók szintje. A tulajdonság "tájékoztató" értékre állítása | `Informational` |
-|operationName| String |A végleges állapotú trigger neve, függetlenül attól, hogy sikeresen kirúgták-e. "MyTrigger – sikeres", ha a szívverés sikeres volt| `MyTrigger - Succeeded` |
+|operationName| Karakterlánc |A végleges állapotú trigger neve, függetlenül attól, hogy sikeresen kirúgták-e. "MyTrigger – sikeres", ha a szívverés sikeres volt| `MyTrigger - Succeeded` |
 |triggerName| Sztring | Az trigger neve | `MyTrigger` |
 |triggerType| Sztring | Az trigger típusa (manuális trigger vagy Schedule trigger) | `ScheduleTrigger` |
 |triggerEvent| Sztring | Az eseményindító eseménye | `ScheduleTime - 2017-07-06T01:50:25Z` |
@@ -396,7 +396,7 @@ Log Analytics örökli a sémát a Azure Monitortól a következő kivételekkel
     | $. properties. Bemeneti | Input (Bemenet) | Dinamikus |
     | $. properties. Kimeneti | Output | Dinamikus |
     | $. properties. Hiba. errorCode | Hibakód | int |
-    | $. properties. Hiba. üzenet | ErrorMessage | String |
+    | $. properties. Hiba. üzenet | ErrorMessage | Karakterlánc |
     | $. properties. Hiba | Hiba | Dinamikus |
     | $. properties. Korábbi verzióknál | Korábbi verzióknál | Dinamikus |
     | $. properties. Paraméterek | Paraméterek | Dinamikus |
@@ -501,7 +501,7 @@ Megjelenítheti a fenti mérőszámokat, megtekintheti a mérőszámok mögötti
 
 ## <a name="alerts"></a>Riasztások
 
-Jelentkezzen be a Azure Portalba,  > és kattintson a**riasztások** figyelése lehetőségre a riasztások létrehozásához.
+Jelentkezzen be a Azure Portalba, > és kattintson a**riasztások** figyelése lehetőségre a riasztások létrehozásához.
 
 ![Riasztások a portál menüjében](media/monitor-using-azure-monitor/alerts_image3.png)
 
@@ -511,7 +511,7 @@ Jelentkezzen be a Azure Portalba,  > és kattintson a**riasztások** figyelése 
 
     ![Új riasztási szabály](media/monitor-using-azure-monitor/alerts_image4.png)
 
-2.  Adja meg a riasztási feltételt.
+2.  Adja mega riasztási feltételt.
 
     > [!NOTE]
     > Ügyeljen rá, hogy a **szűrés erőforrás típusa szerint**válassza az **összes** lehetőséget.
