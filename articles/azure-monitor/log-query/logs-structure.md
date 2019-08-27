@@ -5,14 +5,14 @@ services: log-analytics
 author: bwren
 ms.service: log-analytics
 ms.topic: conceptual
-ms.date: 06/16/2019
+ms.date: 08/22/2019
 ms.author: bwren
-ms.openlocfilehash: 6f5ae426018c9e7fa2ac586a2886c8e5e609069b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b1d22729724c2d1a8e3705e017762dcef588245e
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813844"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034874"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor naplók szerkezete
 A Azure Monitor hatékony funkciója, hogy gyorsan betekintést nyerjen az adataiba a [log lekérdezés](log-query-overview.md) használatával. Hatékony és hasznos lekérdezések létrehozásához ismernie kell néhány olyan alapfogalmakat, mint például a keresett adatok, valamint a strukturált adatok. Ez a cikk az első lépésekhez szükséges alapvető fogalmakat ismerteti.
@@ -46,7 +46,7 @@ union withsource = table *
 A létrehozott táblák részleteit az egyes adatforrások dokumentációja tartalmazza. Ilyenek például az [ügynök](../platform/agent-data-sources.md)adatforrásaira, a [diagnosztikai naplókra](../platform/diagnostic-logs-schema.md)és a [figyelési megoldásokra](../insights/solutions-inventory.md)vonatkozó cikkek.
 
 ### <a name="workspace-permissions"></a>Munkaterület engedélyei
-A munkaterület adataihoz való hozzáférés biztosításával kapcsolatos részletekért tekintse meg a [munkaterület engedélyei és hatóköre](../platform/manage-access.md#manage-accounts-and-users) című témakört. A munkaterülethez való hozzáférés biztosítása mellett a [tábla szintű RBAC](../platform/manage-access.md#table-level-rbac)használatával korlátozhatja az egyes táblákhoz való hozzáférést.
+Tekintse meg a munkaterületen lévő információk elérését biztosító hozzáférés-vezérlési stratégiát és javaslatokat a [Azure monitor naplók üzembe helyezésének](../platform/design-logs-deployment.md) megtervezése című témakörben. A munkaterülethez való hozzáférés biztosítása mellett a [tábla szintű RBAC](../platform/manage-access.md#table-level-rbac)használatával korlátozhatja az egyes táblákhoz való hozzáférést.
 
 ## <a name="application-insights-application"></a>Application Insights alkalmazás
 Amikor Application Insightsban hoz létre alkalmazást, a rendszer automatikusan létrehoz egy megfelelő alkalmazást Azure Monitor-naplókból. Az adatok gyűjtéséhez nincs szükség konfigurációra, és az alkalmazás automatikusan írási adatokat (például oldalletöltések, kérések és kivételek) fog írni.

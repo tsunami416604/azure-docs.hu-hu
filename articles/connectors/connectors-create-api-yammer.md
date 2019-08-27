@@ -1,6 +1,6 @@
 ---
-title: Csatlakozhat a Yammerhez az Azure Logic Apps |} A Microsoft Docs
-description: Automatizálhatja a feladatokat és a munkafolyamatok, amelyek figyelése, közzététel és üzenetek, hírcsatornák és más, a Yammer kezelése az Azure Logic Apps használatával
+title: Kapcsolódás a Yammer-hez Azure Logic Appsról | Microsoft Docs
+description: Automatizálhatja az üzeneteket, a hírcsatornákat és a Yammer figyelését, közzétételét és kezelését a Azure Logic Apps használatával
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,67 +11,67 @@ ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: ca2d28f3438fd166fa282488206662c95777bf3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9228a94dcf27d8987b16e2caa2681cf973db0657
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104731"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050637"
 ---
-# <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>Figyelheti, és a Yammer-fiók kezelése az Azure Logic Apps használatával
+# <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>A Yammer-fiók figyelése és kezelése Azure Logic Apps használatával
 
-Az Azure Logic Apps és a Yammer-összekötő hozhat létre automatizált feladatokat és a munkafolyamatok, amelyek figyelése és felügyelete üzeneteket, hírcsatornák és további részében a Yammer-fiókjába, és más műveletek, például:
+A Azure Logic Apps és a Yammer-összekötővel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek az üzenetek, a hírcsatornák és egyebek figyelését és kezelését végzik a Yammer-fiókban, valamint más műveleteket is, például:
 
-* Amikor új üzenetek megjelennek a követett hírcsatornák és csoportok figyelése
-* Üzenetek, csoportokat, hálózatok, felhasználók részleteit és további beolvasása.
-* Közzététel és hasonló üzenetek.
+* Figyelje meg, hogy mikor jelenjenek meg új üzenetek a követett hírcsatornák és csoportok között.
+* Üzenetek, csoportok, hálózatok, felhasználók részleteinek beolvasása.
+* Post és Like üzenetek.
 
-Választ kaphat a Yammer-fiókjából, és egyéb műveleteket hajthat végre elérhetővé a kimeneti eseményindítók is használhatja. Használhatja a végrehajtandó feladatokat a Yammer-fiókjához. A kimenet a Yammer-műveletek használata más műveletek is rendelkezhet. Például ha új üzenet jelenik meg hírcsatornák vagy csoportokat, megoszthatja azokat az üzeneteket a Slack-összekötő. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Használhat olyan eseményindítókat, amelyek válaszokat kapnak a Yammer-fiókjából, és más műveletek számára elérhetővé teszik a kimenetet. A Yammer-fiókkal feladatokat végrehajtó műveleteket is használhat. Más műveletek is használhatók a Yammer műveletek kimenetének használatával. Ha például új üzenetek jelennek meg a hírcsatornákban vagy a csoportokban, megoszthatja ezeket az üzeneteket a Slack-összekötővel. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* A Yammer és a felhasználói fiók hitelesítő adatait
+* A Yammer-fiók és a felhasználói hitelesítő adatok
 
-   A hitelesítő adatok engedélyezik a logikai alkalmazás, hozzon létre egy kapcsolatot, és a Yammer-fiókjába.
+   A hitelesítő adatai engedélyezik a logikai alkalmazásnak, hogy kapcsolatot hozzon létre, és hozzáférhessen a Yammer-fiókhoz.
 
-* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* A logikai alkalmazás, ahol szeretné a Yammer-fiókjába. Egy Yammer-trigger indít el a [hozzon létre egy üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). Egy Yammer-műveletet használja, indítsa el a logikai alkalmazás egy másik eseményindítóval, például a **ismétlődési** eseményindító.
+* Az a logikai alkalmazás, amelyhez el szeretné érni a Yammer-fiókját. Egy Yammer triggerrel való kezdéshez [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha Yammer műveletet szeretne használni, indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
 
-## <a name="connect-to-yammer"></a>Csatlakozhat a Yammerhez
+## <a name="connect-to-yammer"></a>Kapcsolódás a Yammer
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Válassza ki az elérési utat: 
+1. Válasszon egy elérési utat: 
 
-   * Üres logikai alkalmazás, a keresőmezőbe írja be "yammer" szűrőként. 
-   Eseményindítók listája alatt válassza ki a kívánt az eseményindító. 
+   * Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként a "yammer" kifejezést. 
+   Válassza ki a kívánt eseményindítót az eseményindítók listából. 
 
      – vagy –
 
-   * A meglévő logic apps: 
+   * Meglévő Logic apps esetén: 
    
-     * Válassza ki az utolsó lépésnél, ahová a művelet hozzáadása, **új lépés**. 
+     * Az utolsó lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés**lehetőséget. 
 
        – vagy –
 
-     * A lépéseket, ahol szeretné művelet hozzáadása, között helyezze az egérmutatót a nyíl lépések között. 
-     Válassza a plusz jelre ( **+** ), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+     * A művelethez hozzáadni kívánt lépések között vigye az egérmutatót a lépések közötti nyíl fölé. 
+     Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
      
-       A Keresés mezőbe írja be "yammer" szűrőként. 
-       Műveletek listája alatt válassza ki a kívánt művelet.
+       A keresőmezőbe írja be szűrőként a "yammer" kifejezést. 
+       A műveletek listában válassza ki a kívánt műveletet.
 
-1. Ha kéri, jelentkezzen be a Yammeren, jelentkezzen be most Jelentkezzen most így is engedélyezi a hozzáférést.
+1. Ha a rendszer felszólítja, hogy jelentkezzen be a Yammer-be, jelentkezzen be most, hogy engedélyezze a hozzáférést.
 
-1. Adja meg a szükséges adatokat a kijelölt eseményindítót vagy műveletet, és továbbra is használhatja a logic app-munkafolyamatot.
+1. Adja meg a kiválasztott trigger vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részletek korlátok, eseményindítók és műveletek, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő [referencialapja](/connectors/yammer/).
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/yammer/).
 
 ## <a name="get-support"></a>Támogatás kérése
 
@@ -80,4 +80,4 @@ További technikai részletek korlátok, eseményindítók és műveletek, amely
 
 ## <a name="next-steps"></a>További lépések
 
-* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

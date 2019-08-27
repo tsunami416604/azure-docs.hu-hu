@@ -1,6 +1,6 @@
 ---
-title: Biztonsági riasztások kezelése az Azure Security Centerben | Microsoft Docs
-description: Ebből a dokumentumból elsajátíthatja az Azure Security Center a biztonsági incidensek kezeléséhez szükséges képességeinek alkalmazását.
+title: Biztonsági incidensek kezelése a Azure Security Centerban | Microsoft Docs
+description: Ez a dokumentum segít a biztonsági incidensek kezeléséhez Azure Security Center használatával.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -12,53 +12,62 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2018
+ms.date: 8/27/2019
 ms.author: rkarlin
-ms.openlocfilehash: 68bcd2b1916ccdf68eaa31ed251661a6b7e1bca0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df487b5d16568605544fb69111579bd4a9fb045f
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60704084"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047599"
 ---
-# <a name="handling-security-incidents-in-azure-security-center"></a>Biztonsági incidensek kezelése az Azure Security Centerben
-A biztonsági riasztások osztályba sorolása és kivizsgálása még a legképzettebb biztonsági elemzők számára is időigényes feladat lehet, sokak számára pedig már annak megtalálása is nehézséget okoz, hogy hol kezdjenek hozzá. A különálló [biztonsági riasztások](security-center-managing-and-responding-alerts.md) adatait összekapcsoló [elemzési szolgáltatások](security-center-detection-capabilities.md) alkalmazásával a Security Center a támadássorozatot és az összes kapcsolódó riasztást egyetlen nézetben jeleníti meg, így gyorsan áttekinthetővé válnak a támadó által végrehajtott műveletek és az érintett erőforrások.
+# <a name="manage-security-incidents-in-azure-security-center"></a>Biztonsági incidensek kezelése Azure Security Center
 
-Ebben a dokumentumban megismerkedhet a Security Center biztonságiriasztás-kezelési funkcióinak használatával.
+A biztonsági riasztások osztályozása és kivizsgálása időigényes lehet a legképzettebb biztonsági elemzők számára is, és sokak számára nehéz megismerni, hogy hol kell kezdeni. A különálló [biztonsági riasztások](security-center-managing-and-responding-alerts.md) adatait összekapcsoló [elemzési szolgáltatások](security-center-detection-capabilities.md) alkalmazásával a Security Center a támadássorozatot és az összes kapcsolódó riasztást egyetlen nézetben jeleníti meg, így gyorsan áttekinthetővé válnak a támadó által végrehajtott műveletek és az érintett erőforrások.
+
+Ez a témakör a Security Center incidenseit, valamint a riasztások szervizelését ismerteti.
 
 ## <a name="what-is-a-security-incident"></a>Mi az a biztonsági incidens?
-A Security Centerben egy biztonsági incidens az adott erőforráshoz tartozó összes olyan riasztás együttese, amelyek egy [támadási folyamatba](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/) illeszthetők. Ezek az incidensek megjelennek a [Security Alerts](security-center-managing-and-responding-alerts.md) (Biztonsági riasztások) csempén és panelen is. Az incidensek megnyitásakor megjelenik a kapcsolódó riasztások listája, amelyből további információkat kaphat az egyes riasztásokról.
+
+A Security Centerben egy biztonsági incidens az adott erőforráshoz tartozó összes olyan riasztás együttese, amelyek egy [támadási folyamatba](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/) illeszthetők. Az incidensek megjelennek a [biztonsági riasztások](security-center-managing-and-responding-alerts.md) listájában. A kapcsolódó riasztások megtekintéséhez kattintson az incidensek Ona elemre. Ez lehetővé teszi, hogy az egyes előfordulásokról további információkat kapjon.
 
 ## <a name="managing-security-incidents"></a>Biztonsági incidensek kezelése
-A Biztonsági riasztások csempén áttekintheti az aktuális biztonsági incidenseket. Nyissa meg az Azure Portalt, és kövesse az alábbi lépéseket az egyes biztonsági incidensek részleteinek megtekintéséhez:
 
-1. A Security Center irányítópultján található a **Biztonsági riasztások** csempe.
+1. A Security Center irányítópulton kattintson a **biztonsági riasztások** csempére. Az incidensek és a riasztások szerepelnek a felsorolásban. A biztonsági incidensek leírásának a többi riasztástól eltérő ikonja van.
 
-    ![Biztonsági riasztások csempe a Security Centerben](./media/security-center-incident/security-center-incident-fig1.png)
+    ![Biztonsági incidensek megtekintése](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-2. A csempére kattintva bontsa ki azt, ha pedig a rendszer biztonsági incidenst észlel, az a biztonsági riasztások diagram alatt jelenik meg, ahogyan az az alábbi ábrán látható:
+1. A részletek megtekintéséhez kattintson egy incidensre. A **biztonsági incidens észlelve** panel további részleteket jelenít meg. Az **általános információ** szakasz betekintést nyújt a biztonsági riasztás kiváltott részébe. Olyan információkat jelenít meg, mint például a cél erőforrás, a forrás IP-címe (ha van ilyen), ha a riasztás még aktív, és javaslatokat tesz a megoldására.  
 
-    ![Biztonsági incidens](./media/security-center-incident/security-center-incident-fig2.png)
+    ![Válaszadás a Azure Security Center biztonsági incidensekre](./media/security-center-managing-and-responding-alerts/security-center-alert-incident.png)
 
-3. A biztonsági incidensek leírásának a többi riasztástól eltérő ikonja van. Kattintson erre az ikonra az incidens részleteinek megtekintéséhez.
+1. Ha további információt szeretne kapni az egyes riasztásokról, kattintson a riasztásra. A Security Center által javasolt elhárítási műveletek a biztonsági riasztástól függően eltérők lehetnek. A Security Center által javasolt elhárítási műveletek a biztonsági riasztástól függően eltérők lehetnek. 
 
-    ![Biztonsági incidens](./media/security-center-incident/security-center-incident-fig3.png)
+   > [!NOTE]
+   > Ugyanez a riasztás egy incidens részeként is létezhet, valamint önálló riasztásként is látható.
 
-4. Az **incidens** panelen további részleteket tekinthet meg az adott biztonsági incidensről, többek között annak teljes leírását, súlyosságát (ez esetben magas), aktuális állapotát (ez esetben továbbra is *aktív*, ami azt jelenti, hogy a felhasználó még nem hajtott végre rajta műveletet – ezt úgy teheti meg, ha a jobb gombbal a **Biztonsági riasztások** panelen látható incidensre kattint), a megtámadott erőforrást (amely ez esetben a *VM1*), az incidens elhárításához szükséges lépéseket, az alsó panelen pedig az incidens során előfordult riasztásokat. Ha további információkat kíván megtudni az egyes riasztásokról, egyszerűen kattintson rájuk. Ekkor egy újabb panel nyílik meg, ahogy az az alábbi képen is látható:
+    ![Riasztás részletei](./media/security-center-incident/security-center-incident-alert.png)
 
-    ![Biztonsági incidens](./media/security-center-incident/security-center-incident-fig4.png)
+1. Kövesse az egyes riasztásokhoz megadott szervizelési lépéseket.
 
-A panelen megjelenő információk a riasztástól függően változnak. Ezen riasztások kezelésével kapcsolatos további információkért olvassa el a [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) című cikket. Ezzel a képességgel kapcsolatos fontos szempontok:
+További információ a riasztásokról, a [biztonsági riasztások kezeléséről és reagálásáról](security-center-managing-and-responding-alerts.md).
 
-* Egy új szűrő alkalmazásával testre szabhatja a nézetet csak incidensek, csak riasztások vagy mindkettő megjelenítésére.
-* Egy adott riasztás kezelhető egy incidens (ha van) részeként, valamint önálló riasztásként is.
+Az alábbi témakörök a különböző riasztásokat ismertetik az erőforrástípusok szerint:
+
+* [IaaS virtuális gépek és kiszolgálók riasztásai](security-center-alerts-iaas.md)
+* [Natív számítási riasztások](security-center-alerts-compute.md)
+* [Adatszolgáltatási riasztások](security-center-alerts-data-services.md)
+
+A következő témakörök azt ismertetik, hogyan használják a Security Center az Azure-infrastruktúrával való integrálás során gyűjtött különböző telemetria, hogy az Azure-ban üzembe helyezett erőforrások további védelmi rétegeit is alkalmazni lehessen:
+
+* [Szolgáltatási réteggel kapcsolatos riasztások](security-center-alerts-service-layer.md)
+* [Integráció az Azure Security-termékekkel](security-center-alerts-integration.md)
 
 ## <a name="see-also"></a>Lásd még
 Ebben a dokumentumban megismerkedhetett a Security Center biztonságiincidens-kezelési képességeinek használatával. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)
-* [Az Azure Security Center észlelési funkciói](security-center-detection-capabilities.md)
+* [Azure Security Center biztonsági riasztások](security-center-alerts-overview.md).
+* [Biztonsági riasztások kezelése](security-center-managing-and-responding-alerts.md)
 * [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md)
-* [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)
-* [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
+* [Azure Security Center: gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

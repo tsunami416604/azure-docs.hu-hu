@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 6fe2e63138ce9e0f4e8980e4f37330228ac2bdb6
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: bd5ec1e75fa1669b0ca33e4cb4629793b09a9bad
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369559"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036124"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -82,7 +82,7 @@ A ThinPrint egy Windows rendszerű virtuális asztali értéknövelt szolgáltat
 A ThinPrint ezeep-megoldása a meglévő vállalati nyomtatási infrastruktúrához való kapcsolódás engedélyezésével kiterjeszti a Windowsos virtuális asztal értékét. a ezeep lehetővé teszi a felhasználók számára a nyomtatást a vállalaton belül, függetlenül attól, hogy hol vannak. A ezeep használatával a felhasználók áthidalják a Windows rendszerű virtuális asztal és a nyomtató hardvere közötti szakadékot.
 
 - [Tekintse meg röviden a közös megoldást.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas)
-- [Lépjen a partner webhelyére.](http://www.ezeep.com/wvd-printing)
+- [Lépjen a partner webhelyére.](https://www.ezeep.com/wvd-printing)
 
 ## <a name="workspot"></a>Workspot
 

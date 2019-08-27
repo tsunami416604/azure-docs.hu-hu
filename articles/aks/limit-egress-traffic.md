@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 369729f10de4a55cd14bb866795ea1aa15b3d9da
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 9476290669606f6eb6c56b51497f3026b9613698
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639784"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034948"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürtcsomópontok kimenő forgalmának korlátozása és a szükséges portokhoz és szolgáltatásokhoz való hozzáférés szabályozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -85,15 +85,13 @@ A következő teljes tartománynév/alkalmazás szabályok szükségesek:
 |----------------------------|-----------|----------|
 | *. HCP. \<Location\>. azmk8s.IO | HTTPS:443, TCP:22, TCP:9000 | Ez a címe az API-kiszolgáló végpontja. Cserélje  *\<le\> a helyet* azzal a régióval, ahol az AK-fürtöt üzembe helyezi. |
 | *.tun.\<location\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Ez a címe az API-kiszolgáló végpontja. Cserélje  *\<le\> a helyet* azzal a régióval, ahol az AK-fürtöt üzembe helyezi. |
-| aksrepos.azurecr.io        | HTTPS:443 | Ez a címe Azure Container Registry (ACR) rendszerképeinek eléréséhez szükséges. |
+| aksrepos.azurecr.io        | HTTPS:443 | Ez a címe Azure Container Registry (ACR) rendszerképeinek eléréséhez szükséges. Ez a beállításjegyzék külső gyártótól származó lemezképeket/diagramokat (például metrikai kiszolgálót, alapszintű DNS-t stb.) tartalmaz a fürt működéséhez a frissítés és a fürt skálázása során.|
 | *.blob.core.windows.net    | HTTPS:443 | Ez a címe az ACR-ben tárolt rendszerképek háttér-tárolója. |
-| mcr.microsoft.com          | HTTPS:443 | Ez a címe szükséges a rendszerképek eléréséhez a Microsoft Container Registryban (MCR). |
+| mcr.microsoft.com          | HTTPS:443 | Ez a címe szükséges a rendszerképek eléréséhez a Microsoft Container Registryban (MCR). Ez a beállításjegyzék tartalmazza a fürt működéséhez szükséges, az első féltől származó lemezképeket és diagramokat (például a Moby stb.). |
 | *.cdn.mscr.io              | HTTPS:443 | Ez a címe az Azure Content Delivery Network (CDN) által támogatott MCR tároláshoz szükséges. |
 | management.azure.com       | HTTPS:443 | Ez a címe a Kubernetes GET/PUT műveletekhez szükséges. |
 | login.microsoftonline.com  | HTTPS:443 | Ez a címe Azure Active Directory hitelesítéshez szükséges. |
-| api.snapcraft.io           | HTTPS:443, HTTP:80 | Ez a címnek a Linux-csomópontokon a Snap-csomagok telepítéséhez szükséges. |
 | ntp.ubuntu.com             | UDP:123   | Ez a címe a Linux-csomópontok NTP-időszinkronizálásához szükséges. |
-| *. docker.io                | HTTPS:443 | Ez a címe szükséges ahhoz, hogy lekérje a szükséges tárolók lemezképeit az alagút elejére. |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Választható ajánlott címek és portok az AK-fürtökhöz
 
@@ -103,7 +101,7 @@ A következő teljes tartománynév/alkalmazás-szabályok javasoltak az AK-für
 
 | TELJES TARTOMÁNYNÉV                                    | Port      | Használat      |
 |-----------------------------------------|-----------|----------|
-| *.ubuntu.com                            | HTTP:80   | Ez a címe lehetővé teszi, hogy a Linux-fürtcsomópontok letöltsék a szükséges biztonsági javításokat és frissítéseket. |
+| security.ubuntu.com, azure.archive.ubuntu.com, changelogs.ubuntu.com                           | HTTP:80   | Ez a címe lehetővé teszi, hogy a Linux-fürtcsomópontok letöltsék a szükséges biztonsági javításokat és frissítéseket. |
 | packages.microsoft.com                  | HTTPS:443 | Ez a címe a Microsoft Packages adattárat használja a gyorsítótárazott *apt-get* műveletekhez. |
 | dc.services.visualstudio.com            | HTTPS:443 | Ajánlott a megfelelő metrikák és figyelési Azure Monitor használatával. |
 | *.opinsights.azure.com                  | HTTPS:443 | Ajánlott a megfelelő metrikák és figyelési Azure Monitor használatával. |

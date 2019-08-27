@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/16/2019
-ms.openlocfilehash: 69a3b4fc966b6dd506d91e52b33967a2e001367f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 6357b5a477390f484a47167a0b9d2e524d37c9ac
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575790"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035772"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 
@@ -279,6 +279,9 @@ Ha az elsődleges és a másodlagos felügyelt példányok közötti feladatátv
    > Helytelenül konfigurált NSG biztonsági szabályok vezetnek az adatbázis-másolási műveletek elakadása érdekében.
 
 7. A másodlagos példány a helyes DNS-zóna azonosítójával van konfigurálva. A DNS-zóna felügyelt példányok egyik tulajdonsága, az azonosítója pedig szerepel az állomásnév címe között. A zóna azonosítója véletlenszerű karakterláncként jön létre, ha az első felügyelt példány létrejön az egyes VNet, és ugyanaz az azonosító az ugyanazon alhálózaton lévő összes többi példányhoz van rendelve. Hozzárendelés után a DNS-zóna nem módosítható. Az ugyanabban a feladatátvételi csoportban található felügyelt példányoknak meg kell osztaniuk a DNS-zónát. Ezt úgy érheti el, ha a másodlagos példány létrehozásakor a DnsZonePartner paraméter értékeként átadja az elsődleges példány zónájának AZONOSÍTÓját. 
+
+   > [!NOTE]
+   > A feladatátvételi csoportok felügyelt példánnyal való konfigurálásával kapcsolatos részletes oktatóanyagért lásd: [felügyelt példány hozzáadása feladatátvételi csoporthoz](sql-database-managed-instance-failover-group-tutorial.md).
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Elsődleges adatbázis frissítése vagy visszaminősítése
 

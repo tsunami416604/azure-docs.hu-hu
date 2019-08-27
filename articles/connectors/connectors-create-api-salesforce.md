@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás a Salesforce-hoz az Azure Logic Apps |} A Microsoft Docs
-description: Automatizálhatja a feladatokat és a munkafolyamatok, amelyek figyelése, létrehozása és kezelése a Salesforce-rekordok és -feladatokat az Azure Logic Apps használatával
+title: Kapcsolódás a Salesforce-hez Azure Logic Appsról | Microsoft Docs
+description: Salesforce-rekordok és-feladatok figyelésére, létrehozására és kezelésére szolgáló feladatok és munkafolyamatok automatizálása Azure Logic Apps használatával
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,56 +11,56 @@ ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
 ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 292d517f2c99974f4674a4c94472a0a320320ce4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3e9f7c841d25fa988ae7e0c97adf64a51d8ef87
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62106015"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050823"
 ---
-# <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Figyelheti, létrehozása és a Salesforce-erőforrások kezelése az Azure Logic Apps használatával
+# <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Salesforce-erőforrások figyelése, létrehozása és kezelése Azure Logic Apps használatával
 
-Az Azure Logic Apps és a Salesforce-összekötő hozhat létre automatizált feladatok és a munkafolyamatok a Salesforce-erőforrások, többek között a rekordokat, feladatok és objektumok, például:
+A Azure Logic Apps és a Salesforce-összekötővel automatizált feladatokat és munkafolyamatokat hozhat létre a Salesforce-erőforrásokhoz, például a rekordokhoz, a feladatokhoz és az objektumokhoz, például a következő módon:
 
-* Ez a figyelő rekordok létrehozott vagy módosított. 
-* Hozzon létre, beolvasása, és kezelheti a feladatok és -rekordok, többek között insert, update, és törlési műveleteket.
+* A rekordok létrehozásának vagy módosításának figyelése. 
+* Feladatok és rekordok létrehozása, beolvasása és kezelése, beleértve a beszúrási, frissítési és törlési műveleteket.
 
-Salesforce-eseményindítók választ kaphat a Salesforce-ból, és egyéb műveleteket hajthat végre elérhetővé a kimeneti is használhatja. Műveletek a logic Apps segítségével feladatokat a Salesforce-erőforrásokkal. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Használhat olyan Salesforce eseményindítókat, amelyek válaszokat kapnak a Salesforce, és elérhetővé teszik a kimenetet más műveletek számára. A logikai alkalmazásokban lévő műveletek használatával Salesforce-erőforrásokkal kapcsolatos feladatokat végezhet el. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* A [Salesforce-fiókban](https://salesforce.com/)
+* Egy [Salesforce-fiók](https://salesforce.com/)
 
-* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* A logikai alkalmazás, ahol szeretné a Salesforce-fiókjába. Salesforce eseményindítóval elindításához [hozzon létre egy üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). A Salesforce műveletet használja, indítsa el a logikai alkalmazás egy másik eseményindítóval, például a **ismétlődési** eseményindító.
+* Az a logikai alkalmazás, amelyhez el szeretné érni a Salesforce-fiókját. Egy Salesforce triggerrel való kezdéshez [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha Salesforce műveletet szeretne használni, indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
 
-## <a name="connect-to-salesforce"></a>Csatlakozás a Salesforce-hoz
+## <a name="connect-to-salesforce"></a>Kapcsolódás a Salesforce
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Válassza ki az elérési utat: 
+1. Válasszon egy elérési utat: 
 
-   * Üres logic Apps a keresőmezőbe, írja be szűrőként "salesforce". 
-   Eseményindítók listája alatt válassza ki a kívánt az eseményindító. 
+   * Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként a "Salesforce" kifejezést. 
+   Válassza ki a kívánt eseményindítót az eseményindítók listából. 
 
      – vagy –
 
-   * Meglévő logic Apps alkalmazások, feladatütemezésekben adjon hozzá egy műveletet, amelyre a válasszon **új lépés**. A keresőmezőbe írja be szűrőként "salesforce". Műveletek listája alatt válassza ki a kívánt művelet.
+   * A meglévő Logic apps esetében azon a lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés**lehetőséget. A keresőmezőbe írja be szűrőként a "Salesforce" kifejezést. A műveletek listában válassza ki a kívánt műveletet.
 
-1. Ha kéri, jelentkezzen be a Salesforce-hoz, jelentkezzen be most, és engedélyezi a hozzáférést.
+1. Ha a rendszer felszólítja, hogy jelentkezzen be a Salesforce-be, jelentkezzen be most, és engedélyezze a hozzáférést.
 
-   A hitelesítő adatok engedélyezik a logikai alkalmazás, hozzon létre egy kapcsolatot a Salesforce-hoz, és az adatok eléréséhez.
+   A hitelesítő adataival engedélyezheti a logikai alkalmazásnak, hogy kapcsolatot hozzon létre a Salesforce, és hozzáférjen az adataihoz.
 
-1. Adja meg a szükséges adatokat a kijelölt eseményindítót vagy műveletet, és továbbra is használhatja a logic app-munkafolyamatot.
+1. Adja meg a kiválasztott trigger vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részletek korlátok, eseményindítók és műveletek, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő [referencialapja](/connectors/salesforce/).
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/salesforce/).
 
 ## <a name="get-support"></a>Támogatás kérése
 
@@ -69,4 +69,4 @@ További technikai részletek korlátok, eseményindítók és műveletek, amely
 
 ## <a name="next-steps"></a>További lépések
 
-* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

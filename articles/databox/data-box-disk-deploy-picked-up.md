@@ -6,17 +6,22 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.localizationpriority: high
-ms.date: 08/23/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 6dcd55cc2c269024179e450d789df544bb8ff9a9
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 1c102d05d4c570f9415fad18c004847de11d50cc
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012921"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035705"
 ---
+::: zone target="chromeless"
+
+# <a name="return-azure-data-box-disk"></a>Visszatérési Azure Data Box Disk 
+
+::: zone-end
+
 ::: zone target="docs"
 
 # <a name="tutorial-return-azure-data-box-disk"></a>Oktatóanyag: Visszatérési Azure Data Box Disk 
@@ -29,13 +34,14 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 > * A Data Box Disk elküldése a Microsoftnak
 > * Data Box Disk különböző régiókban való kiválasztása
 
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt elkezdené, győződjön meg arról, hogy végrehajtotta az [oktatóanyagot: Másolja az adatAzure Data Box Disk és ellenőrizze](data-box-disk-deploy-copy-data.md)a következőt:.
 
 
 ## <a name="ship-data-box-disk-back"></a>Data Box Disk visszaküldése
+
+::: zone-end
 
 1. Miután az adatok érvényesítése befejeződött, válassza le a lemezeket. Távolítsa el a csatlakoztatott kábeleket.
 2. Csomagolja be az összes lemezt és kábelt buborékfóliába, és helyezze őket a szállítási dobozba. Ha a tartozékok hiányoznak, díjkötelesek lehetnek.
@@ -45,15 +51,25 @@ Mielőtt elkezdené, győződjön meg arról, hogy végrehajtotta az [oktatóany
 
 A következő lépéseket az eszköz visszaadása határozza meg.
 
+
+
+- [Ha az eszközt az Egyesült Államokban és Kanadában](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada)küldi el, a UPS-be ütemezhet.
+- Regisztráljon a [DHL for Europe szolgáltatásra](data-box-disk-deploy-picked-up.md#pick-up-in-europe) a webhelyének meglátogatásával és a légúti számla számának megadásával.
+- [Egy pickup beosztása Ausztráliában](data-box-disk-deploy-picked-up.md#pick-up-in-australia).
+- Bemutatjuk [az ázsiai országok](data-box-disk-deploy-picked-up.md#pick-up-in-asia) , például Japán, Korea és Szingapúr országainak felvételét.
+
+::: zone target="chromeless"
+
+Miután a szállító bevette a lemezeket, a portál frissítései és a nyomkövetési azonosító megjelenik.
+
+::: zone-end
+
 ## <a name="pick-up-in-us-canada"></a>Vegye fel velünk a kapcsolatot Kanadában
 
 Ha az eszközt az USA-ban vagy Kanadában adja vissza, hajtsa végre a következő lépéseket.
 
 1. Helyezze fel a fuvarlevélcímkét, amelyet a dobozhoz rögzített átlátszó műanyagzsebben talál. Ha a címke sérült vagy elveszett:
     - Nyissa meg az **áttekintés > a szállítási címke letöltése** és a visszaszállítási címke letöltése lehetőséget.
-
-        ![Levélcímke letöltése](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - A címke elhelyezése az eszközön.
 
 2. Zárja le a szállítási dobozt, és győződjön meg arról, hogy a visszaküldési fuvarlevélcímke jól látható.
@@ -64,33 +80,20 @@ Ha az eszközt az USA-ban vagy Kanadában adja vissza, hajtsa végre a következ
     - Ha a nyomkövetési szám nem található, a UPS-nek további díjat kell fizetnie a felvétel során.
     - A pickup ütemezése helyett a Data Box Disk a legközelebbi legördülő helyen is elvégezheti.
 
-
 ## <a name="pick-up-in-europe"></a>Felvétel Európában
 
 Ha az eszközt Európa-ban adja vissza, hajtsa végre a következő lépéseket.
 
 1. Helyezze fel a fuvarlevélcímkét, amelyet a dobozhoz rögzített átlátszó műanyagzsebben talál. Ha a címke sérült vagy elveszett:
     - Nyissa meg az **áttekintés > a szállítási címke letöltése** és a visszaszállítási címke letöltése lehetőséget.
-
-        ![Levélcímke letöltése](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - A címke elhelyezése az eszközön.
 
 2. Zárja le a szállítási dobozt, és győződjön meg arról, hogy a visszaküldési fuvarlevélcímke jól látható.
 3. Ha az eszközt Európán belül, DHL-lel szeretné visszaküldeni, látogasson el a DHL webhelyére, kérjen csomagfelvételt, és adja meg a légi fuvarlevél számát.
-4. Nyissa meg az ország/régió DHL Express webhelyét, és válassza **a Courier Collection > EReturn szállítás**lehetőséget.
-
-    ![DHL visszáru-szállítólevél](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
-    
+4. Nyissa meg az ország/régió DHL Express webhelyét, és válassza **a Courier Collection > EReturn szállítás**lehetőséget.    
 3. Adja meg a fuvarlevél számát, és kattintson a **Futárrendelés** gombra a csomagfelvétel lefoglalásához.
 
-      ![Átvétel ütemezése](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
-
-## <a name="pick-up-in-asia-pacific"></a>Felvétel Ázsiában – csendes-óceáni térség
-
-Ez a régió a japán, Korea, Ausztrália és Szingapúr felvételére vonatkozó utasításokat tartalmazza.
-
-### <a name="pick-up-in-australia"></a>Felvétel Ausztráliában
+## <a name="pick-up-in-australia"></a>Felvétel Ausztráliában
 
 Az Ausztráliában található Azure-adatközpontok további biztonsági értesítésekkel rendelkeznek. Az összes bejövő szállítmánynak speciális értesítéssel kell rendelkeznie. Kövesse az alábbi lépéseket az Ausztráliában való felvételhez.
 
@@ -100,6 +103,10 @@ Az Ausztráliában található Azure-adatközpontok további biztonsági értes�
     - Rendelés neve
     - Cím
     - Kapcsolattartó neve
+
+## <a name="pick-up-in-asia"></a>Felvétel Ázsiában
+
+A felvételi utasítások a japán, Korea és Szingapúr esetében eltérőek.
 
 ### <a name="pick-up-in-japan"></a>Felvétel Japánban
 
@@ -159,6 +166,8 @@ Ha szükséges, lépjen kapcsolatba a Quantium-megoldás támogatásával (Japá
 3. Adja át a futárnak. 
 
 
+::: zone target="docs"
+
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box Diskkel kapcsolatos alábbi témakörökkel ismerkedett meg:
@@ -175,24 +184,5 @@ Folytassa a következő útmutatóval, amelyből megtudhatja, hogyan ellenőrizh
 ::: zone-end
 
 
-::: zone target="chromeless"
-
-# <a name="return-the-disk-to-azure"></a>Lemez visszaküldése az Azure-ba
-
-1. Az adatellenőrzés befejezése után húzza ki a lemezeket. Távolítsa el a csatlakoztatott kábeleket.
-2. Csomagolja be az összes lemezt és kábelt buborékfóliába, és helyezze őket a szállítási dobozba. Ha a tartozékok hiányoznak, díjkötelesek lehetnek.
-    - A csomagolás újrafelhasználása a kezdeti szállítólevélből.  
-    - Javasoljuk, hogy a lemezeket jól biztonságos, buborékokkal védett körbefuttatással csomagolja.
-    - Győződjön meg arról, hogy a megfelelő illeszkedés a dobozon belüli mozgások csökkentése érdekében.
-
-3. A következő lépéseket az eszköz visszaadása határozza meg.
-
-    - [Ha az eszközt az Egyesült Államokban és Kanadában](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada)küldi el, a UPS-be ütemezhet.
-    - Regisztráljon a [DHL for Europe szolgáltatásra](data-box-disk-deploy-picked-up.md#pick-up-in-europe) a webhelyének meglátogatásával és a légúti számla számának megadásával.
-    - Az ausztráliai, csendes-óceáni régióban, például Ausztráliában, Japánban, Koreában és Szingapúrban [található országok számára is ütemezhet egy felvételt](data-box-disk-deploy-picked-up.md#pick-up-in-asia-pacific) .
-
-Miután a szállító bevette a lemezeket, a portál frissítései és a nyomkövetési azonosító megjelenik.
-
-::: zone-end
 
 

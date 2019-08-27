@@ -1,6 +1,6 @@
 ---
-title: Gyakori riasztási sémadefinícióinak Webhookok/Logic Apps vagy az Azure Functions/Automation-Runbookok
-description: Webhookok és Logic Apps vagy az Azure Functions/Automation-Runbookok számára a gyakori riasztási sémadefiníciók ismertetése
+title: Gyakori riasztási séma-definíciók webhookokhoz/Logic Apps/Azure Functions/Automation Runbookok
+description: A webhookok/Logic Apps/Azure Functions/Automation Runbookok általános riasztási sémájának definícióinak ismertetése
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: c37ecfbadd7345fea347ff488895f16ba505c818
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 94938358bc4e4782e91401e24a01a3688c6a51ba
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594378"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034802"
 ---
 # <a name="common-alert-schema-definitions"></a>Gyakori riasztásiséma-definíciók
 
-Ez a cikk ismerteti a [gyakori riasztási sémadefiníciók](https://aka.ms/commonAlertSchemaDocs) Webhookok/Logic Apps vagy az Azure Functions/Automation-Runbookok számára. 
+Ez a cikk a webhookok/Logic Apps/Azure Functions/Automation Runbookok [általános riasztási sémájának definícióit](https://aka.ms/commonAlertSchemaDocs) ismerteti. 
 
 ## <a name="overview"></a>Áttekintés
 
-Minden riasztási eseményről ismerteti **érintett erőforrás** és **a riasztás okának**, és ezek a példányok a közös séma a következő szakaszokban ismertetett:
-* **Essentials**: Egy **szabványos mezők**közös összes riasztás típusa, amelyek leírják **milyen erőforrás** a riasztás mellett további gyakori riasztási metaadatokat (például súlyosság vagy leírása) be van kapcsolva. 
-* **Riasztási környezet**: Egy készlet a mezők, amelyek leírják a **a riasztás okának**, mezőkkel, amelyek **a riasztási típus alapján**. Metrikariasztás például kellene mezőket is, például a metrika neve és a riasztási környezetben metrikaérték, mivel a tevékenységnapló-riasztás lenne a riasztást kiváltó eseménnyel kapcsolatos adatokat. 
+Minden riasztási példány leírja **az érintett erőforrást** , valamint **a riasztás okát**, és ezeket a példányokat az alábbi szakaszokban ismertetett általános séma ismerteti:
+* **Alapvető**erőforrások: Az összes riasztási típussal közös **szabványosított mezők**összessége, amelyek leírják, hogy a riasztás **milyen erőforrást** tartalmaz, valamint a további gyakori riasztási metaadatokat (például a súlyosságot vagy a leírást). 
+* **Riasztási környezet**: A riasztás **okát**leíró mezők halmaza, a **riasztás típusától**függően változó mezőkkel. Egy metrikai riasztás például olyan mezőkkel rendelkezhet, mint a metrika neve és a metrika értéke a riasztási környezetben, míg a tevékenység naplójának riasztása a riasztást kiváltó eseményről tartalmaz információt. 
 
-##### <a name="sample-alert-payload"></a>Riasztási hasznosadat-minta
+##### <a name="sample-alert-payload"></a>Példa riasztási adattartalomra
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -78,21 +78,21 @@ Minden riasztási eseményről ismerteti **érintett erőforrás** és **a riasz
 
 | Mező | Leírás|
 |:---|:---|
-| alertId | GUID azonosítója, amely egyedileg azonosítja a riasztási eseményről. |
-| alertRule | A riasztási szabály által generált riasztás a példány neve. |
-| Severity | A riasztás súlyosságát. Lehetséges értékek: Sev0, Sev1, Sev2, Sev3, Sev4 |
-| signalType | Azonosítja a jel, amelyre a riasztási szabály definiálva lett. Lehetséges értékek: Metrika, Log, tevékenységnapló |
-| monitorCondition | Egy riasztás akkor aktiválódik, ha a riasztást figyelő feltétel értéke "Fired". Ha törli az alapul szolgáló a riasztást kiváltó üzenetszám, a figyelési feltétel értéke "Megoldva".   |
-| monitoringService | A monitorozási szolgáltatás vagy megoldás, amely a riasztást előidézte. A figyelési szolgáltatás által eseménysablon mezőjét a riasztás környezetét. |
-| alertTargetIds | Az ARM azonosítók minden érintett tárolók, a riasztások listája. A riasztás egy Log Analytics-munkaterület és Application Insights-példány a megadott az adott munkaterület/alkalmazásra. |
-| originAlertId | A riasztási eseményről, létrehozása, a figyelési szolgáltatás által létrehozott azonosítója. |
-| firedDateTime | Ha a riasztási eseményről lett aktiválva, (UTC) dátuma és időpontja |
-| resolvedDateTime | Dátum-idő, ha a figyelési feltétel, a riasztás példány beállítása "Megoldva" (UTC). Jelenleg csak a metrikákhoz kapcsolódó riasztások vonatkozik.|
-| description | A riasztási szabályban meghatározott leírása |
-|essentialsVersion| Az essentials szakaszban verziószámát.|
-|alertContextVersion | A alertContext szakaszának verziószám |
+| alertId | A riasztási példány egyedi azonosítására szolgáló GUID. |
+| alertRule | A riasztási példányt létrehozó riasztási szabály neve. |
+| severity | A riasztás súlyossága. Lehetséges értékek: Sev0, Sev1, Sev2, Sev3, Sev4 |
+| signalType | Meghatározza azt a jelet, amelyen a riasztási szabályt meghatározták. Lehetséges értékek: Metrika, napló, műveletnapló |
+| monitorCondition | Riasztás esetén a riasztás figyelési feltétele "tüzelt". Ha az alapul szolgáló feltétel, amely miatt a riasztás tüzet töröl, a figyelő feltétele "megoldva" értékűre van állítva.   |
+| monitoringService | A riasztást létrehozó figyelési szolgáltatás vagy megoldás. A riasztási környezet mezőit a figyelési szolgáltatás diktálja. |
+| alertTargetIds | Az ARM-azonosítók listája a riasztások összes érintett célpontja számára. Log Analytics munkaterületen vagy Application Insights példányon megadott naplózási riasztás esetén ez a megfelelő munkaterület/alkalmazás. |
+| originAlertId | A riasztási példány azonosítója, amelyet a figyelő szolgáltatás generál. |
+| firedDateTime | A riasztási példány elindításának dátuma és időpontja (UTC) |
+| resolvedDateTime | Az a dátum, amikor a riasztási példány figyelési feltétele "feloldva" értékre van állítva UTC-ben. Jelenleg csak metrikus riasztásokra alkalmazható.|
+| description | A riasztási szabályban meghatározott Leírás |
+|essentialsVersion| Az Essentials szakasz verziószáma.|
+|alertContextVersion | A alertContext szakasz verziószáma |
 
-##### <a name="sample-values"></a>Mintaértékek
+##### <a name="sample-values"></a>Mintavételezési értékek
 ```json
 {
   "essentials": {
@@ -114,13 +114,13 @@ Minden riasztási eseményről ismerteti **érintett erőforrás** és **a riasz
 }
 ```
 
-## <a name="alert-context-fields"></a>"Riasztás környezet" mezők
+## <a name="alert-context-fields"></a>"Riasztási környezet" mezői
 
-### <a name="metric-alerts"></a>Metrikákhoz kapcsolódó riasztások
+### <a name="metric-alerts"></a>Metrikariasztások
 
-#### <a name="monitoringservice--platform"></a>monitoringService = 'Platform'
+#### <a name="monitoringservice--platform"></a>monitoringService = "platform"
 
-##### <a name="sample-values"></a>Mintaértékek
+##### <a name="sample-values"></a>Mintavételezési értékek
 ```json
 {
   "alertContext": {
@@ -151,15 +151,15 @@ Minden riasztási eseményről ismerteti **érintett erőforrás** és **a riasz
 }
 ```
 
-### <a name="log-alerts"></a>Naplóriasztások
+### <a name="log-alerts"></a>Riasztások naplózása
 
 > [!NOTE]
-> + A naplóriasztások, ahol egy egyéni JSON-adattartalom definiálva van engedélyezi a közös séma visszaáll az adattartalom-sémát, hogy az alábbiakban egy.
-> + Riasztások engedélyezve van a közös sémával rendelkezik egy felső maximális mérete 256 KB-os riasztásonként. **Keresési eredmények nem beágyazott a napló riasztások hasznos adatainak, a riasztás mérete a küszöbérték keresztszűrést okoznak.** Ez a jelző "IncludedSearchResults" ellenőrzésével lehet meghatározni. Olyan esetekben, ahol a keresési eredmények között nem szerepelnek, javasolt a keresési lekérdezés használja együtt a [Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
+> + Olyan naplózási riasztások esetén, amelyeknél egyéni JSON-adattartalom lett meghatározva, az általános séma engedélyezésével visszaállíthatja a hasznos adatokat tartalmazó sémát az alább ismertetett módon.
+> + A közös sémával rendelkező riasztások esetében a riasztások felső korlátja 256 kb. **A keresési eredmények nincsenek beágyazva a napló riasztási hasznos adataiba, ha a riasztás mérete miatt a rendszer átlépi a küszöbértéket.** Ezt a "IncludedSearchResults" jelzővel lehet meghatározni. Olyan helyzetekben, ahol a keresési eredmények nem szerepelnek, javasoljuk, hogy használja a keresési lekérdezést a [log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get)-val együtt. 
 
-#### <a name="monitoringservice--log-analytics"></a>monitoringService = "Log Analytics"
+#### <a name="monitoringservice--log-analytics"></a>monitoringService = ' Log Analytics '
 
-##### <a name="sample-values"></a>Mintaértékek
+##### <a name="sample-values"></a>Mintavételezési értékek
 ```json
 {
   "alertContext": {
@@ -224,9 +224,9 @@ Minden riasztási eseményről ismerteti **érintett erőforrás** és **a riasz
 }
 ```
 
-#### <a name="monitoringservice--application-insights"></a>monitoringService = "Application Insights"
+#### <a name="monitoringservice--application-insights"></a>monitoringService = ' Application Insights '
 
-##### <a name="sample-values"></a>Mintaértékek
+##### <a name="sample-values"></a>Mintavételezési értékek
 ```json
 {
   "alertContext": {
@@ -289,9 +289,9 @@ Minden riasztási eseményről ismerteti **érintett erőforrás** és **a riasz
 
 ### <a name="activity-log-alerts"></a>Tevékenységnapló-riasztások
 
-#### <a name="monitoringservice--activity-log---administrative"></a>monitoringService = 'Activity Log - Administrative'
+#### <a name="monitoringservice--activity-log---administrative"></a>monitoringService = ' Activity napló – felügyelet '
 
-##### <a name="sample-values"></a>Mintaértékek
+##### <a name="sample-values"></a>Mintavételezési értékek
 ```json
 {
   "alertContext": {
@@ -316,22 +316,118 @@ Minden riasztási eseményről ismerteti **érintett erőforrás** és **a riasz
 }
 ```
 
-#### <a name="monitoringservice--servicehealth"></a>monitoringService = 'ServiceHealth'
+#### <a name="monitoringservice--activity-log---policy"></a>monitoringService = ' Activity log-Policy '
 
-##### <a name="sample-values"></a>Mintaértékek
+##### <a name="sample-values"></a>Mintavételezési értékek
+```json
+{
+  "alertContext": {
+    "authorization": {
+      "action": "Microsoft.Resources/checkPolicyCompliance/read",
+      "scope": "/subscriptions/<GUID>"
+    },
+    "channels": "Operation",
+    "claims": "{\"aud\":\"https://management.azure.com/\",\"iss\":\"https://sts.windows.net/<GUID>/\",\"iat\":\"1566711059\",\"nbf\":\"1566711059\",\"exp\":\"1566740159\",\"aio\":\"42FgYOhynHNw0scy3T/bL71+xLyqEwA=\",\"appid\":\"<GUID>\",\"appidacr\":\"2\",\"http://schemas.microsoft.com/identity/claims/identityprovider\":\"https://sts.windows.net/<GUID>/\",\"http://schemas.microsoft.com/identity/claims/objectidentifier\":\"<GUID>\",\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier\":\"<GUID>\",\"http://schemas.microsoft.com/identity/claims/tenantid\":\"<GUID>\",\"uti\":\"Miy1GzoAG0Scu_l3m1aIAA\",\"ver\":\"1.0\"}",
+    "caller": "<GUID>",
+    "correlationId": "<GUID>",
+    "eventSource": "Policy",
+    "eventTimestamp": "2019-08-25T11:11:34.2269098+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Warning",
+    "operationName": "Microsoft.Authorization/policies/audit/action",
+    "operationId": "<GUID>",
+    "properties": {
+      "isComplianceCheck": "True",
+      "resourceLocation": "eastus2",
+      "ancestors": "<GUID>",
+      "policies": "[{\"policyDefinitionId\":\"/providers/Microsoft.Authorization/policyDefinitions/<GUID>/\",\"policySetDefinitionId\":\"/providers/Microsoft.Authorization/policySetDefinitions/<GUID>/\",\"policyDefinitionReferenceId\":\"vulnerabilityAssessmentMonitoring\",\"policySetDefinitionName\":\"<GUID>\",\"policyDefinitionName\":\"<GUID>\",\"policyDefinitionEffect\":\"AuditIfNotExists\",\"policyAssignmentId\":\"/subscriptions/<GUID>/providers/Microsoft.Authorization/policyAssignments/SecurityCenterBuiltIn/\",\"policyAssignmentName\":\"SecurityCenterBuiltIn\",\"policyAssignmentScope\":\"/subscriptions/<GUID>\",\"policyAssignmentSku\":{\"name\":\"A1\",\"tier\":\"Standard\"},\"policyAssignmentParameters\":{}}]"
+    },
+    "status": "Succeeded",
+    "subStatus": "",
+    "submissionTimestamp": "2019-08-25T11:12:46.1557298+00:00"
+  }
+}
+```
+
+#### <a name="monitoringservice--activity-log---autoscale"></a>monitoringService = ' Activity napló – autoscale '
+
+##### <a name="sample-values"></a>Mintavételezési értékek
+```json
+{
+  "alertContext": {
+    "channels": "Admin, Operation",
+    "claims": "{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn\":\"Microsoft.Insights/autoscaleSettings\"}",
+    "caller": "Microsoft.Insights/autoscaleSettings",
+    "correlationId": "<GUID>",
+    "eventSource": "Autoscale",
+    "eventTimestamp": "2019-08-21T16:17:47.1551167+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Informational",
+    "operationName": "Microsoft.Insights/AutoscaleSettings/Scaleup/Action",
+    "operationId": "<GUID>",
+    "properties": {
+      "description": "The autoscale engine attempting to scale resource '/subscriptions/d<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS' from 9 instances count to 10 instances count.",
+      "resourceName": "/subscriptions/<GUID>/resourceGroups/voiceassistancedemo/providers/Microsoft.Compute/virtualMachineScaleSets/alexademo",
+      "oldInstancesCount": "9",
+      "newInstancesCount": "10",
+      "activeAutoscaleProfile": "{\r\n  \"Name\": \"Auto created scale condition\",\r\n  \"Capacity\": {\r\n    \"Minimum\": \"1\",\r\n    \"Maximum\": \"10\",\r\n    \"Default\": \"1\"\r\n  },\r\n  \"Rules\": [\r\n    {\r\n      \"MetricTrigger\": {\r\n        \"Name\": \"Percentage CPU\",\r\n        \"Namespace\": \"microsoft.compute/virtualmachinescalesets\",\r\n        \"Resource\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"ResourceLocation\": \"eastus\",\r\n        \"TimeGrain\": \"PT1M\",\r\n        \"Statistic\": \"Average\",\r\n        \"TimeWindow\": \"PT5M\",\r\n        \"TimeAggregation\": \"Average\",\r\n        \"Operator\": \"GreaterThan\",\r\n        \"Threshold\": 0.0,\r\n        \"Source\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"MetricType\": \"MDM\",\r\n        \"Dimensions\": [],\r\n        \"DividePerInstance\": false\r\n      },\r\n      \"ScaleAction\": {\r\n        \"Direction\": \"Increase\",\r\n        \"Type\": \"ChangeCount\",\r\n        \"Value\": \"1\",\r\n        \"Cooldown\": \"PT1M\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "lastScaleActionTime": "Wed, 21 Aug 2019 16:17:47 GMT"
+    },
+    "status": "Succeeded",
+    "submissionTimestamp": "2019-08-21T16:17:47.2410185+00:00"
+  }
+}
+```
+
+#### <a name="monitoringservice--activity-log---security"></a>monitoringService = ' Activity napló – biztonság
+
+##### <a name="sample-values"></a>Mintavételezési értékek
+```json
+{
+  "alertContext": {
+    "channels": "Operation",
+    "correlationId": "<GUID>",
+    "eventSource": "Security",
+    "eventTimestamp": "2019-08-26T08:34:14+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Informational",
+    "operationName": "Microsoft.Security/locations/alerts/activate/action",
+    "operationId": "<GUID>",
+    "properties": {
+      "threatStatus": "Quarantined",
+      "category": "Virus",
+      "threatID": "2147519003",
+      "filePath": "C:\\AlertGeneration\\test.eicar",
+      "protectionType": "Windows Defender",
+      "actionTaken": "Blocked",
+      "resourceType": "Virtual Machine",
+      "severity": "Low",
+      "compromisedEntity": "testVM",
+      "remediationSteps": "[\"No user action is necessary\"]",
+      "attackedResourceType": "Virtual Machine"
+    },
+    "status": "Active",
+    "submissionTimestamp": "2019-08-26T09:28:58.3019107+00:00"
+  }
+}
+```
+
+#### <a name="monitoringservice--servicehealth"></a>monitoringService = ' ServiceHealth '
+
+##### <a name="sample-values"></a>Mintavételezési értékek
 ```json
 {
   "alertContext": {
     "authorization": null,
-    "channels": "Admin",
+    "channels": 1,
     "claims": null,
     "caller": null,
     "correlationId": "f3cf2430-1ee3-4158-8e35-7a1d615acfc7",
-    "eventSource": "ServiceHealth",
+    "eventSource": 2,
     "eventTimestamp": "2019-06-24T11:31:19.0312699+00:00",
     "httpRequest": null,
     "eventDataId": "<GUID>",
-    "level": "Informational",
+    "level": 3,
     "operationName": "Microsoft.ServiceHealth/maintenance/action",
     "operationId": "<GUID>",
     "properties": {
@@ -355,13 +451,14 @@ Minden riasztási eseményről ismerteti **érintett erőforrás** és **a riasz
     },
     "status": "Active",
     "subStatus": null,
-    "submissionTimestamp": "2019-06-24T11:31:31.7147357+00:00"
+    "submissionTimestamp": "2019-06-24T11:31:31.7147357+00:00",
+    "ResourceType": null
   }
 }
 ```
-#### <a name="monitoringservice--resource-health"></a>monitoringService = 'Resource Health'
+#### <a name="monitoringservice--resource-health"></a>monitoringService = ' Resource Health '
 
-##### <a name="sample-values"></a>Mintaértékek
+##### <a name="sample-values"></a>Mintavételezési értékek
 ```json
 {
   "alertContext": {
@@ -390,6 +487,6 @@ Minden riasztási eseményről ismerteti **érintett erőforrás** és **a riasz
 
 ## <a name="next-steps"></a>További lépések
 
-- [További információ a gyakori riasztási séma](https://aka.ms/commonAlertSchemaDocs)
-- [Ismerje meg, hogyan hozhat létre egy logikai alkalmazást, amely minden riasztás kezelése közös riasztási sémát.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
+- [További információ a közös riasztási sémáról](https://aka.ms/commonAlertSchemaDocs)
+- [Megtudhatja, hogyan hozhat létre egy logikai alkalmazást, amely a gyakori riasztási sémát használja az összes riasztás kezeléséhez.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
 

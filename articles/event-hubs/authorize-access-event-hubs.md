@@ -1,5 +1,5 @@
 ---
-title: Hozzáférés engedélyezése az Azure Event Hubs
+title: Az Azure Event Hubshoz való hozzáférés engedélyezése
 description: Ez a cikk az Azure Event Hubs-erőforrásokhoz való hozzáférés engedélyezésének különböző lehetőségeiről nyújt információt.
 services: event-hubs
 ms.service: event-hubs
@@ -8,14 +8,14 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 9847f2f51da57526f84a7fcb3929e95ae267546c
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: f01758c70e52f96fcd22a94e9b83f910cbf200c9
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992548"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035871"
 ---
-# <a name="authorize-access-to-azure-event-hubs"></a>Hozzáférés engedélyezése az Azure Event Hubs
+# <a name="authorize-access-to-azure-event-hubs"></a>Az Azure Event Hubshoz való hozzáférés engedélyezése
 Minden alkalommal, amikor egy Event hub-ből tesz közzé vagy használ eseményeket/információkat, az ügyfél megpróbál hozzáférni Event Hubs erőforrásokhoz. A biztonságos erőforrásokra vonatkozó minden kérést engedélyezni kell, hogy a szolgáltatás biztosítsa, hogy az ügyfél rendelkezik a szükséges engedélyekkel az adatközzétételhez/felhasználáshoz. 
 
 Az Azure Event Hubs a következő lehetőségeket kínálja a biztonságos erőforrásokhoz való hozzáférés engedélyezéséhez:
@@ -23,7 +23,10 @@ Az Azure Event Hubs a következő lehetőségeket kínálja a biztonságos erőf
 ## <a name="azure-active-directory"></a>Azure Active Directory
 A Azure Active Directory (Azure AD) integrációja Event Hubs erőforrásokhoz szerepköralapú hozzáférés-vezérlést (RBAC) biztosít az ügyfelek erőforrásaihoz való hozzáférés részletes szabályozásához. A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyeket biztosíthat a rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű alkalmazás. A rendszerbiztonsági tag hitelesítése az Azure AD által OAuth 2,0 token visszaküldésével történik. A token használatával engedélyezhető egy Event Hubs erőforrás elérésére irányuló kérés.
 
-Az Azure AD-val végzett hitelesítéssel kapcsolatos további információkért lásd: [kérelmek hitelesítése az azure Event Hubs Azure Active Directory használatával](authenticate-application.md). Az Azure AD-vel való engedélyezéssel kapcsolatos további információkért lásd: [hozzáférés engedélyezése Event Hubs erőforrásokhoz Azure Active Directory használatával](authorize-access-azure-active-directory.md).
+Az Azure AD-vel történő hitelesítéssel kapcsolatos további információkért tekintse meg a következő cikkeket:
+
+- [Az Azure Event Hubs-kérelmek hitelesítése a Azure Active Directory használatával](authenticate-application.md)
+- [Azure Active Directory használatával engedélyezze a hozzáférést Event Hubs erőforrásokhoz](authorize-access-azure-active-directory.md).
 
 ## <a name="share-access-signatures"></a>Hozzáférési aláírások megosztása 
 A Event Hubs erőforrásokhoz tartozó közös hozzáférésű aláírások (SAS) korlátozott delegált hozzáférést biztosítanak Event Hubs erőforrásaihoz. Megkötések hozzáadása olyan időintervallumhoz, amely esetében az aláírás érvényes, vagy az általa nyújtott engedélyekkel az erőforrások kezelése rugalmasságot biztosít. További információ: a [hitelesítés közös hozzáférésű aláírásokkal (SAS)](authenticate-shared-access-signature.md). 

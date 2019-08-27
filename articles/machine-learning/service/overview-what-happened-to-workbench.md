@@ -11,18 +11,18 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1bac6a2ec5657f3304e52fb328895a4f5aa94529
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 40a2f8716b438837cf3efe300286ab9053fc8b07
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996779"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035819"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
-A Azure Machine Learning Workbench alkalmazást és néhány más korai szolgáltatást elavultak, és lecserélték a szeptember 2018-es kiadásban, hogy a fejlettebb [architektúra](concept-azure-machine-learning-architecture.md)legyen. 
+A Azure Machine Learning Workbench alkalmazást és néhány más korai szolgáltatást elavultak, és lecserélték a szeptember 2018-es kiadásban, hogy a fejlettebb [architektúra](concept-azure-machine-learning-architecture.md)legyen.
 
-Az élmény javítása érdekében a kiadás számos jelentős frissítést tartalmaz, amelyeket az ügyfél visszajelzése kér. A kísérlet alapfunkciói a modell üzembe helyezése során nem változtak. Most azonban használhatja a robusztus <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> -t és az [Azure CLI](reference-azure-machine-learning-cli.md) -t a gépi tanulási feladatok és folyamatok elvégzéséhez.  
+Az élmény javítása érdekében a kiadás számos jelentős frissítést tartalmaz, amelyeket az ügyfél visszajelzése kér. A kísérlet alapfunkciói a modell üzembe helyezése során nem változtak. Most azonban használhatja a robusztus <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> -t és az [Azure CLI](reference-azure-machine-learning-cli.md) -t a gépi tanulási feladatok és folyamatok elvégzéséhez.
 
 A Azure Machine Learning szolgáltatás korábbi verziójában létrehozott összetevők többsége a saját helyi vagy Felhőbeli tárolójában van tárolva. Ezek a munkadarabok sohasem fognak eltűnni.
 
@@ -48,13 +48,13 @@ Bár új továbbfejlesztett CLI-és SDK-ügyfelek találhatók a jelenlegi kiad�
 
 ## <a name="support-timeline"></a>Támogatási idővonal
 
-Január 9 2019-én a Machine Learning Workbench, Azure Machine Learning-kísérletezés és modellkezelés fiókok, valamint a hozzájuk tartozó SDK-és CLI-támogatás megszűnt. 
+Január 9 2019-én a Machine Learning Workbench, Azure Machine Learning-kísérletezés és modellkezelés fiókok, valamint a hozzájuk tartozó SDK-és CLI-támogatás megszűnt.
 
 Az <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>, a [CLI](reference-azure-machine-learning-cli.md)és a [portál](how-to-manage-workspace.md)használatával minden legújabb funkció elérhető.
 
 ## <a name="what-about-run-histories"></a>Mi a helyzet a futtatási előzményekkel?
 
-A régebbi futtatási előzmények már nem érhetők el, így továbbra is megtekintheti a futtatásokat a legújabb verzióban. 
+A régebbi futtatási előzmények már nem érhetők el, így továbbra is megtekintheti a futtatásokat a legújabb verzióban.
 
 A futtatási előzmények mostantól **kísérletek**. A modell kísérleteit összegyűjtheti, és az SDK, a CLI vagy a Azure Portal használatával is megismerheti azokat.
 
@@ -66,11 +66,9 @@ Indítsa el a modellek betanítása és nyomon követése a futtatási előzmén
 
 ## <a name="can-i-still-prep-data"></a>Továbbra is előkészíthetem az adatokat?
 
-A meglévő adatelőkészítési fájlok nem a legújabb kiadásba kerülnek, mert már nem rendelkezünk Machine Learning Workbench szolgáltatással. Azonban továbbra is előkészítheti a modellezéshez szükséges bármilyen méretű adatkészletet.   
+A meglévő adatelőkészítési fájlok nem a legújabb kiadásba kerülnek, mert már nem rendelkezünk Machine Learning Workbench szolgáltatással. Azonban továbbra is előkészítheti a modellezéshez szükséges bármilyen méretű adatkészletet.
 
-Ha bármilyen méretű adatkészletet használ, a [Azure Machine learning adatelőkészítési csomag](https://aka.ms/data-prep-sdk) használatával gyorsan elő tudja készíteni az adatait a modellezés előtt a Python-kód írásával. 
-
-[Ezt](tutorial-data-prep.md) az oktatóanyagot követve többet is megtudhat a Azure Machine learning adat-előkészítési SDK használatáról.
+Ha bármilyen méretű adatkészletet használ, a [Azure Machine learning adatelőkészítési csomag](https://aka.ms/data-prep-sdk) használatával gyorsan elő tudja készíteni az adatait a modellezés előtt a Python-kód írásával.
 
 ## <a name="will-projects-persist"></a>Megmaradnak a projektek?
 
@@ -86,7 +84,7 @@ run = exp.submit(source_directory=script_folder,
 
 ## <a name="what-about-my-registered-models-and-images"></a>Mi a helyzet a regisztrált modellekkel és képekkel?
 
-Ha azt szeretné, hogy továbbra is használhatja őket a régi modellben beállításjegyzék regisztrált modellek kell áttelepíteni az új munkaterülethez. A modellek áttelepítéséhez töltse le a modelleket, majd regisztrálja újra az új munkaterületen. 
+Ha azt szeretné, hogy továbbra is használhatja őket a régi modellben beállításjegyzék regisztrált modellek kell áttelepíteni az új munkaterülethez. A modellek áttelepítéséhez töltse le a modelleket, majd regisztrálja újra az új munkaterületen.
 
 A régi rendszerkép beállításjegyzékében létrehozott rendszerképeket nem lehet közvetlenül áttelepíteni az új munkaterületre. A legtöbb esetben a modell lemezkép létrehozása nélkül is üzembe helyezhető. Ha szükséges, létrehozhat egy rendszerképet a modellhez az új munkaterületen. További információkért lásd: [gépi tanulási modellek kezelése, regisztrálása, üzembe helyezése és figyelése](concept-model-management-and-deployment.md).
 
@@ -94,7 +92,7 @@ A régi rendszerkép beállításjegyzékében létrehozott rendszerképeket nem
 
 A régi CLI támogatásának befejezése után már nem telepíthet újra modelleket, és nem felügyelheti a modellkezelés-fiókkal eredetileg telepített webszolgáltatásokat. Azonban ezeket a szolgáltatásokat továbbra is működni fog a mindaddig, amíg az Azure Container Service (ACS) továbbra is támogatott.
 
-A legújabb verzióra, a modellek webszolgáltatásként az Azure Container Instances (ACI) vagy az Azure Kubernetes Service (AKS)-fürtöket üzembe helyezve. A FPGA és a Azure IoT Edge is üzembe helyezhető. 
+A legújabb verzióra, a modellek webszolgáltatásként az Azure Container Instances (ACI) vagy az Azure Kubernetes Service (AKS)-fürtöket üzembe helyezve. A FPGA és a Azure IoT Edge is üzembe helyezhető.
 
 További tudnivalók az alábbi cikkeket:
 + [A modellek üzembe helyezésének helye és módja](how-to-deploy-and-where.md)
@@ -118,10 +116,10 @@ A számítógép-és a szöveges Analitika tartományi csomagjai nem használhat
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg [Azure Machine learning szolgáltatás legújabb architektúráját](concept-azure-machine-learning-architecture.md). 
+Ismerje meg [Azure Machine learning szolgáltatás legújabb architektúráját](concept-azure-machine-learning-architecture.md).
 
 A szolgáltatás áttekintéséhez olvassa el a [Mi az Azure Machine learning Service?](overview-what-is-azure-ml.md)című témakört.
 
 Hozza létre első kísérletét a kétrészes oktatóanyaggal a [környezet és a munkaterület beállításához](tutorial-1st-experiment-sdk-setup.md) és [az első modell](tutorial-1st-experiment-sdk-train.md) betanításához
 
-A munkafolyamat részletesebb megismeréséhez kövesse a [teljes hosszúságú oktatóanyagot](tutorial-train-models-with-aml.md) , amely részletesen ismerteti a modellek betanítását és üzembe helyezését Azure Machine learning szolgáltatással. 
+A munkafolyamat részletesebb megismeréséhez kövesse a [teljes hosszúságú oktatóanyagot](tutorial-train-models-with-aml.md) , amely részletesen ismerteti a modellek betanítását és üzembe helyezését Azure Machine learning szolgáltatással.

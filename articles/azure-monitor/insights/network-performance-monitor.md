@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
-ms.openlocfilehash: c350ca3cd8cbfb5e550fccd0bae0df53168de178
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 80bca606a2b06d85afc8a2115133f44d738f7e0a
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312074"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035250"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -71,7 +71,7 @@ Az alapfolyamatok segítségével ügynököket telepíthet a [Windows rendszer�
 
 * **Szolgáltatás-kapcsolódási figyelő**: Telepítsen egy Log Analytics-ügynököt minden olyan csomópontra, amelyről figyelni szeretné a szolgáltatás-végponttal létesített hálózati kapcsolatot. Ilyen például, ha az Office 365 hálózati kapcsolatát az O1, az O2 és az O3 címkével rendelkező Office-helyekről szeretné figyelni. Telepítse a Log Analytics-ügynököt legalább egy csomópontra az O1, O2 és O3 nyelven. 
 
-* **ExpressRoute-figyelő**: Telepítsen legalább egy Log Analytics-ügynököt az Azure-beli virtuális hálózatban. Telepítsen legalább egy ügynököt a helyszíni alhálózaton is, amely a ExpressRoute-alapú privát kapcsolaton keresztül csatlakozik.  
+* **ExpressRoute-figyelő**: Telepítsen legalább egy Log Analytics-ügynököt az Azure-beli virtuális hálózatban. Telepítsen legalább egy ügynököt a helyszíni alhálózaton is, amely a ExpressRoute-alapú privát kapcsolaton keresztül csatlakozik.  
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>Log Analytics-ügynökök konfigurálása figyeléshez 
 
@@ -105,7 +105,7 @@ A Network Performance Monitor szintetikus tranzakciókat használ a forrás-és 
 
 1. Adja hozzá a Network Performance Monitor megoldást a munkaterülethez az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Használhatja a [Solutions Gallery Azure monitor megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című témakörben ismertetett eljárást is. 
 2. Nyissa meg Log Analytics munkaterületét, és válassza az **Áttekintés** csempét. 
-3. Válassza ki a **Network Performance monitor** csempét az üzenet *megoldásához további konfiguráció szükséges*.
+3. Válassza ki a **Network Performance monitor** csempét az üzenet *megoldásához további konfiguráció szükséges*.
 
    ![Network Performance Monitor csempe](media/network-performance-monitor/npm-config.png)
 
@@ -129,11 +129,11 @@ A Network Performance Monitor szintetikus tranzakciókat használ a forrás-és 
     
 Az ilyen áramkörök és a társítások figyelése kezdetben letiltott állapotban van. Válassza ki a figyelni kívánt erőforrásokat, és konfigurálja a figyelést a jobb oldali részletek nézetből. A konfiguráció mentéséhez kattintson a **Mentés** gombra. További információt a "ExpressRoute-figyelés konfigurálása" című cikkben talál. 
 
-A telepítés befejezése után 30 percet vesz igénybe az adatok feltöltése. Míg a megoldás összesíti az adatokat a hálózatról, az üzenet *megoldásához további konfigurációra van szükség* a Network Performance monitor **Áttekintés** csempén. Az adatok összegyűjtése és indexelése után az **** áttekintő csempék megváltoznak, és egy összefoglalóban tájékoztatják a hálózati állapotáról. Ezután szerkesztheti azon csomópontok figyelését, amelyeken a Log Analytics ügynökök telepítve vannak, valamint a környezetből felderített alhálózatokat is.
+A telepítés befejezése után 30 percet vesz igénybe az adatok feltöltése. Míg a megoldás összesíti az adatokat a hálózatról, az üzenet *megoldásához további konfigurációra van szükség* a Network Performance monitor **Áttekintés** csempén. Az adatok összegyűjtése és indexelése után az áttekintő csempék megváltoznak, és egy összefoglalóban tájékoztatják a hálózati állapotáról. Ezután szerkesztheti azon csomópontok figyelését, amelyeken a Log Analytics ügynökök telepítve vannak, valamint a környezetből felderített alhálózatokat is.
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>Alhálózatok és csomópontok figyelési beállításainak szerkesztése 
 
-A konfiguráció lap alhálózatok ****  lapján minden olyan alhálózat szerepel, amelyen legalább egy ügynök telepítve van. 
+A konfiguráció lap alhálózatok lapján minden olyan alhálózat szerepel, amelyen legalább egy ügynök telepítve van. 
 
 
 Adott alhálózatok figyelésének engedélyezése vagy letiltása:
@@ -144,7 +144,7 @@ Adott alhálózatok figyelésének engedélyezése vagy letiltása:
 
 #### <a name="choose-nodes-to-monitor"></a>Figyelni kívánt csomópontok kiválasztása
 
-A csomópontok lapon az összes olyan csomópont szerepel, amelyen telepítve van az **** ügynök. 
+A csomópontok lapon az összes olyan csomópont szerepel, amelyen telepítve van az ügynök. 
 
 1. Válassza ki vagy törölje azokat a csomópontokat, amelyek figyelését vagy leállítását meg szeretné szüntetni. 
 2. A figyeléshez válassza a használat lehetőséget, vagy törölje a jelölést, **Ha**szükséges. 
@@ -203,9 +203,9 @@ A Network Performance Monitor megoldás engedélyezése után a megoldás csemp�
 
 ### <a name="drill-down-for-depth"></a>Részletes részletezés 
 
-A megoldás irányítópultján különféle hivatkozásokat is kiválaszthat, amelyekkel mélyebben megtekintheti az összes fontos területét. Ha például egy riasztás vagy egy nem megfelelő állapotú hálózati hivatkozás jelenik meg az irányítópulton, válassza ki azt a további vizsgálathoz. A lap felsorolja az adott hálózati kapcsolat alhálózati kapcsolatait. Megtekintheti az egyes alhálózati kapcsolatok elvesztésének, késésének és állapotának állapotát. Gyorsan megtudhatja, hogy melyik alhálózati kapcsolat okozza a problémákat. Válassza ****  a csomópontok megtekintése lehetőséget a nem megfelelő állapotú alhálózat hivatkozásához tartozó összes csomópont megjelenítéséhez. Ezután megtekintheti az egyes csomópontok közötti hivatkozásokat, és megkeresheti a nem megfelelő állapotú csomópontokra mutató hivatkozásokat. 
+A megoldás irányítópultján különféle hivatkozásokat is kiválaszthat, amelyekkel mélyebben megtekintheti az összes fontos területét. Ha például egy riasztás vagy egy nem megfelelő állapotú hálózati hivatkozás jelenik meg az irányítópulton, válassza ki azt a további vizsgálathoz. A lap felsorolja az adott hálózati kapcsolat alhálózati kapcsolatait. Megtekintheti az egyes alhálózati kapcsolatok elvesztésének, késésének és állapotának állapotát. Gyorsan megtudhatja, hogy melyik alhálózati kapcsolat okozza a problémákat. Válassza a **csomópontok megtekintése** lehetőséget a nem megfelelő állapotú alhálózat hivatkozásához tartozó összes csomópont megjelenítéséhez. Ezután megtekintheti az egyes csomópontok közötti hivatkozásokat, és megkeresheti a nem megfelelő állapotú csomópontokra mutató hivatkozásokat. 
 
-Válassza a **topológia** megtekintése lehetőséget a forrás-és a cél-csomópontok közötti útvonalakon a hop-by-ugrás topológiájának megtekintéséhez. A nem megfelelő állapotú útvonalak piros színnel jelennek meg. Megtekintheti az egyes ugrások által biztosított késést, így gyorsan azonosíthatja a problémát a hálózat egy adott részében.
+Válassza a **topológia megtekintése** lehetőséget a forrás-és a cél-csomópontok közötti útvonalakon a hop-by-ugrás topológiájának megtekintéséhez. A nem megfelelő állapotú útvonalak piros színnel jelennek meg. Megtekintheti az egyes ugrások által biztosított késést, így gyorsan azonosíthatja a problémát a hálózat egy adott részében.
 
  
 
@@ -245,7 +245,7 @@ A térképen látható topológia 3. rétegbeli topológia, és nem tartalmaz 2.
 
 ## <a name="log-queries-in-azure-monitor"></a>Lekérdezések naplózása Azure Monitor
 
-Az Network Performance Monitor-irányítópulton és-részletezésen keresztül elérhetővé tett összes adat natív módon, a [napló lekérdezésekben](../log-query/log-query-overview.md)is elérhető. A tárházban lévő adatok interaktív elemzését elvégezheti, és különböző forrásokból származó adatokhoz kapcsolhatók. Létrehozhat egyéni riasztásokat és nézeteket is, és exportálhatja az adatfájlokat az Excelbe, Power BIba vagy egy megosztható hivatkozásba. Az irányítópult **gyakori lekérdezések** területén néhány hasznos lekérdezés található, amelyeket kiindulási pontként használhat a saját lekérdezések és jelentések létrehozásához. 
+Az Network Performance Monitor-irányítópulton és-részletezésen keresztül elérhetővé tett összes adat natív módon, a [napló lekérdezésekben](../log-query/log-query-overview.md)is elérhető. A tárházban lévő adatok interaktív elemzését elvégezheti, és különböző forrásokból származó adatokhoz kapcsolhatók. Létrehozhat egyéni riasztásokat és nézeteket is, és exportálhatja az adatfájlokat az Excelbe, Power BIba vagy egy megosztható hivatkozásba. Az irányítópult **gyakori lekérdezések** területén néhány hasznos lekérdezés található, amelyeket kiindulási pontként használhat a saját lekérdezések és jelentések létrehozásához. 
 
 ## <a name="alerts"></a>Riasztások
 
@@ -277,7 +277,7 @@ A díjszabással kapcsolatos információk [online állapotban](network-performa
 
 * **UserVoice** Ötleteit felteheti Network Performance Monitor olyan funkciókkal kapcsolatban, amelyeken dolgozni szeretne. Látogasson el a [UserVoice oldalára](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
 
-* **Csatlakozzon a kohorszhoz:** Mindig érdeklik, hogy az új ügyfelek csatlakozzanak a kohorszhoz. Ennek részeként korai hozzáférést kap az új funkciókhoz, és lehetőséget nyújt a Network Performance Monitor javítására. Ha érdekli a csatlakozás, töltse ki ezt a [gyors kérdőívet](https://aka.ms/npmcohort). 
+* **Csatlakozzon a kohorszhoz:** Mindig érdeklik, hogy az új ügyfelek csatlakozzanak a kohorszhoz. Ennek részeként korai hozzáférést kap az új funkciókhoz, és lehetőséget nyújt a Network Performance Monitor javítására. Ha érdekli a csatlakozás, töltse ki ezt a [gyors kérdőívet](https://aka.ms/npmcohort). 
 
 ## <a name="next-steps"></a>További lépések 
 További információ a [Teljesítményfigyelőről](network-performance-monitor-performance-monitor.md), a [szolgáltatás-csatlakozási figyelőről](network-performance-monitor-performance-monitor.md)és a ExpressRoute- [figyelőről](network-performance-monitor-expressroute.md). 

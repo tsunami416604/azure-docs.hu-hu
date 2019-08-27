@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/08/2019
+ms.date: 08/22/2019
 ms.author: atsenthi
-ms.openlocfilehash: 2e19a7c267131de845143b681457966ed884a565
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 0bc8a5bbecc4e7d58265e9c10c2c8a3351fcc312
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775304"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036014"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 > [!div class="op_single_selector"]
@@ -69,8 +69,8 @@ Ha csak az SDK-ra van szükség, telepítse a következő csomagot:
 * [Telepítse a Microsoft Azure Service Fabric SDK-t][core-sdk]
 
 Az aktuális verziók a következők:
-* Service Fabric SDK és eszközök 3.4.658
-* Service Fabric futtatókörnyezet 6.5.658
+* Service Fabric SDK és eszközök 3.4.664
+* Service Fabric futtatókörnyezet 6.5.664
 * Service Fabric Tools for Visual Studio 2015 2.5.20615.1
 * A Visual Studio 2017 15,9 Service Fabric Tools for Visual Studio 2.4.11024.1 tartalmaz 
 * A Visual Studio 2019 16,1 Service Fabric Tools for Visual Studio 2.5.20423.3 tartalmaz

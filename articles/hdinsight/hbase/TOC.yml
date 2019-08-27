@@ -17,6 +17,8 @@
       href: apache-hbase-tutorial-get-started-linux.md
 - name: Alapelvek
   items:
+    - name: Tárolási lehetőségek összehasonlítása
+      href: ../hdinsight-hadoop-compare-storage-options.md
     - name: HDInsight-alkalmazások telepítése
       href: ../hdinsight-apps-install-applications.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: A fürtök kapacitástervezése

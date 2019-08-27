@@ -4,14 +4,14 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 39bb75a6f834789f91cb590ffebb72f45624eb25
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c7b9e3a9eb5c906fa598da9c8c547cb542ecb719
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179672"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036716"
 ---
-# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(ELAVULT) Az Azure Container Service Docker-tárolók védelme
+# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>ELAVULT Docker-tárolók biztonságossá tétele Azure Container Service
 
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
@@ -34,7 +34,7 @@ A vállalatok számára rendkívül fontos a biztonság, és annak érdekében, 
 
 Még privát beállításjegyzékek használata esetén is érdemes rendszerkép-ellenőrzési megoldásokat alkalmazni további biztonsági ellenőrzés céljából. A tárolórendszerképek minden egyes szoftverrétegében az adott tárolórendszerkép többi rétegétől függetlenül potenciálisan előfordulhatnak biztonsági rések. A vállalatok egyre inkább tárolótechnológiákra alapozzák éles számítási feladataikat, emiatt pedig a rendszerképek ellenőrzése is egyre fontosabb a szervezetek elleni biztonsági fenyegetések megelőzése érdekében. 
 
-A biztonsági monitorozási és ellenőrzési megoldásokkal, többek között a [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry) és az [Aqua Security](http://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) segítségével ellenőrizhetőek a privát beállításjegyzékben lévő tárolórendszerképek, és azonosíthatóak a potenciális biztonsági rések. Fontos tudni, hogy a különféle megoldások milyen részletességű ellenőrzést biztosítanak. Egyes megoldások például csak az ismert biztonsági résekkel szemben ellenőrzik a rendszerképek rétegeit. Előfordulhat, hogy az ilyen megoldások nem képesek ellenőrizni egyes csomagkezelő szoftverekkel készített rendszerképréteg-szoftvereket. Más megoldások azonban részletesebb ellenőrzésre képesek, és bármely csomagolt szoftverben képesek megtalálni a biztonsági réseket.
+A biztonsági monitorozási és ellenőrzési megoldásokkal, többek között a [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry) és az [Aqua Security](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) segítségével ellenőrizhetőek a privát beállításjegyzékben lévő tárolórendszerképek, és azonosíthatóak a potenciális biztonsági rések. Fontos tudni, hogy a különféle megoldások milyen részletességű ellenőrzést biztosítanak. Egyes megoldások például csak az ismert biztonsági résekkel szemben ellenőrzik a rendszerképek rétegeit. Előfordulhat, hogy az ilyen megoldások nem képesek ellenőrizni egyes csomagkezelő szoftverekkel készített rendszerképréteg-szoftvereket. Más megoldások azonban részletesebb ellenőrzésre képesek, és bármely csomagolt szoftverben képesek megtalálni a biztonsági réseket.
 
 ### <a name="production-deployment-rules-and-audit"></a>Éles rendszerek üzembe helyezésének szabályai és ellenőrzése
 Alkalmazások éles környezetben való üzembe helyezésekor fontos beállítani néhány szabályt annak érdekében, hogy az éles környezetben használt rendszerképek biztonságosak legyenek, és ne tartalmazzanak biztonsági réseket.
@@ -58,11 +58,11 @@ Az Azure Container Service-ben elérhető egyes vezénylőkre más-más biztons�
 
 Az egyes vezénylőkre vonatkozó további biztonsági információkat a következő forrásanyagokban talál:
 
-* **Kubernetes**: [Ajánlott biztonsági eljárások a Kubernetes-telepítéshez](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/)
+* **Kubernetes**: [Ajánlott biztonsági eljárások a Kubernetes üzembe helyezéséhez](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/)
 
-* **DC/OS**: [A fürt védelmének biztosítása](http://docs.mesosphere.com/1.12/administering-clusters/securing-your-cluster)
+* **DC/OS**: [A fürt biztonságossá tétele](http://docs.mesosphere.com/1.12/administering-clusters/securing-your-cluster)
 
-* **A docker Swarm**: [Docker-biztonság](https://www.docker.com/docker-security)
+* **Docker Swarm**: [Docker-biztonság](https://www.docker.com/docker-security)
 
 ## <a name="next-steps"></a>További lépések
 

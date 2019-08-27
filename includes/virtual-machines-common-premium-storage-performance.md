@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abee645f8929c10856f662b1504b163b58d953a5
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817222"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036032"
 ---
 ## <a name="application-performance-indicators"></a>Alkalmazás-teljesítménymutatók
 
@@ -111,7 +111,7 @@ További információ a [iostat](https://linux.die.net/man/1/iostat) és a [perf
 
 Az Premium Storage-on futó alkalmazások teljesítményét befolyásoló fő tényezők az IO-kérések, a virtuális gépek mérete, a lemez mérete, a lemezek száma, a lemezes gyorsítótárazás, a többszálú működés és a várólista mélysége. Ezeket a tényezőket a rendszeren keresztül megadott gombokkal szabályozhatja. Előfordulhat, hogy a legtöbb alkalmazás nem ad lehetőséget az IO-méret és a várólista-mélység módosítására. Ha például SQL Server használ, az IO-méret és a várólista mélysége nem választható ki. SQL Server kiválasztja az optimális i/o-méretet és a várólista mélységi értékeit a legtöbb teljesítmény eléréséhez. Fontos megérteni mindkét típusú tényező hatását az alkalmazás teljesítményére, így a megfelelő erőforrásokat kiépítheti a teljesítményre vonatkozó igények kielégítése érdekében.
 
-Ebben a szakaszban a létrehozott alkalmazás-követelmények ellenőrzőlistáján tájékozódhat az alkalmazás teljesítményének optimalizálásához szükséges mennyiségről. Ennek alapján meghatározhatja, hogy a szakasz mely tényezőit kell hangolni. Ha meg szeretné tudni, hogy az egyes tényezők milyen hatással vannak az alkalmazás teljesítményére, futtassa a teljesítményteszt-eszközöket az alkalmazás beállításán. Tekintse át a cikk végén található, a Windows és a Linux rendszerű virtuális gépekre vonatkozó általános teljesítményteszt-eszközök futtatásához szükséges lépéseket ismertető szakaszt.
+Ebben a szakaszban a létrehozott alkalmazás-követelmények ellenőrzőlistáján tájékozódhat az alkalmazás teljesítményének optimalizálásához szükséges mennyiségről. Ennek alapján meghatározhatja, hogy a szakasz mely tényezőit kell hangolni. Ha meg szeretné tudni, hogy az egyes tényezők milyen hatással vannak az alkalmazás teljesítményére, futtassa a teljesítményteszt-eszközöket az alkalmazás beállításán. A Windows-és Linux-alapú virtuális gépeken a gyakori teljesítményteszt-eszközök futtatásának lépéseiért tekintse meg a következő témakört:.
 
 ### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>IOPS, átviteli sebesség és késés optimalizálása egy pillantással
 
@@ -166,7 +166,7 @@ Ahhoz, hogy a IOPS és a sávszélesség nagyobb legyen, mint egy prémium szint
 > [!NOTE]
 > Ahogy a IOPS vagy az átviteli sebesség is növekszik, ügyeljen arra, hogy ne elérje a lemez vagy a virtuális gép átviteli sebességét vagy IOPS korlátját, amikor eggyel nő.
 
-Ha meg szeretné tudni, hogy az IO-méret milyen hatással van az alkalmazás teljesítményére, a virtuális gépre és a lemezekre is futtathat teljesítményteszt-eszközöket. Hozzon létre több tesztet, és használja az egyes futtatások esetén az i/o-méretet, hogy láthassa a hatását. További részletekért tekintse meg a cikk végén található benchmarking szakaszt.
+Ha meg szeretné tudni, hogy az IO-méret milyen hatással van az alkalmazás teljesítményére, a virtuális gépre és a lemezekre is futtathat teljesítményteszt-eszközöket. Hozzon létre több tesztet, és használja az egyes futtatások esetén az i/o-méretet, hogy láthassa a hatását. További részletekért tekintse meg a befejezéshez csatolt teljesítményteszt-cikket.
 
 ## <a name="high-scale-vm-sizes"></a>Nagy léptékű virtuális gépek méretei
 
@@ -256,7 +256,7 @@ Az adatlemezek ajánlott lemezgyorsítótár-beállításai a következők:
 
 | **Lemezes gyorsítótárazási beállítás** | **a beállítás használatára vonatkozó javaslat** |
 | --- | --- |
-| None |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
+| Nincsenek |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
 | ReadOnly |A gazdagép-gyorsítótár írásvédettként való konfigurálása írásvédett és írható lemezekhez. |
 | ReadWrite |Konfigurálja a gazdagép-gyorsítótárat úgy, hogy csak akkor ReadWrite, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatlemezek írását, ha szükséges. |
 
@@ -387,11 +387,3 @@ Az Azure Premium Storage a kiválasztott virtuálisgép-mérettől és a válasz
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a rendelkezésre álló lemezek típusairól:
-
-* [Lemez típusának kiválasztása](../articles/virtual-machines/windows/disks-types.md)  
-
-SQL Server felhasználók esetében olvassa el a SQL Server teljesítményére vonatkozó ajánlott eljárásokat ismertető cikket:
-
-* [Az Azure-beli SQL Server teljesítményének bevált eljárásai Virtual Machines](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)
-* [Az Azure Premium Storage a legmagasabb teljesítményt nyújtja az Azure-beli virtuális gépek SQL Server számára](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)

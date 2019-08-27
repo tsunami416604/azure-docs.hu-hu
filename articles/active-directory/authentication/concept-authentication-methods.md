@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d18c74e908f6d5c4c3d2eefb0518add380fa1324
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 3b0c91357e5ab15b88c92b04fd0896b989e83953
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561316"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051448"
 ---
-# <a name="what-are-authentication-methods"></a>Mik azok a hitelesítési módszerek?
+# <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
-Rendszergazdaként válassza az Azure multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) hitelesítési módszerei lehetőséget, ha a felhasználóknak több hitelesítési módszert kell regisztrálniuk. Ha egy felhasználó hitelesítési módszere nem érhető el, dönthet úgy, hogy egy másik módszerrel végez hitelesítést.
+Rendszergazdaként válassza az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) hitelesítési módszerei lehetőséget, ha a felhasználóknak több hitelesítési módszert kell regisztrálniuk. Ha egy felhasználó hitelesítési módszere nem érhető el, dönthet úgy, hogy egy másik módszerrel végez hitelesítést.
 
-A rendszergazdák meghatározhatják a szabályzatban, hogy mely hitelesítési módszerek érhetők el a SSPR és az MFA felhasználói számára. Előfordulhat, hogy egyes hitelesítési módszerek nem állnak rendelkezésre az összes szolgáltatás számára. A szabályzatok konfigurálásával kapcsolatos további információkért tekintse meg a cikk az [önkiszolgáló jelszó-visszaállítás sikeres](howto-sspr-deployment.md) kiszámítását és [a felhőalapú Azure multi-Factor Authentication tervezését](howto-mfa-getstarted.md) ismertető cikket.
+A rendszergazdák meghatározhatják a szabályzatban, hogy mely hitelesítési módszerek érhetők el a SSPR és az MFA felhasználói számára. Előfordulhat, hogy egyes hitelesítési módszerek nem állnak rendelkezésre az összes szolgáltatás számára. A szabályzatok konfigurálásával kapcsolatos további információkért tekintse meg a cikk az önkiszolgáló [jelszó-visszaállítás sikeres](howto-sspr-deployment.md) elindítását és [a felhőalapú Azure-multi-Factor Authentication tervezését](howto-mfa-getstarted.md) ismertető cikket.
 
 A Microsoft nagymértékben javasolja a rendszergazdáknak, hogy a minimálisan szükséges számú hitelesítési módszer közül többet válasszanak, ha nem férnek hozzájuk.
 
@@ -60,41 +60,41 @@ Ha biztonsági kérdéseket használ, azt javasoljuk, hogy más módszerekkel eg
 
 ### <a name="predefined-questions"></a>Előre meghatározott kérdések
 
-* Melyik városban ismerkedett meg az első házastársával/párjával?
-* Melyik településen találkoztak a szülei?
-* Melyik városban lakik a legközelebbi rokona?
-* Az édesapja melyik városban született?
-* Melyik városban volt az első munkahelye?
-* Melyik városban született az édesanyja?
-* Hol töltötte a 2000. év újévét?
-* Mi a vezetékneve és az utóneve a kedvenc középiskolai tanárának?
-* Milyen felsőoktatási intézménybe jelentkezett, de nem vették fel?
-* Hogy hívták a helyet, ahol az első lakodalmát tartották?
-* Mi az apja második utóneve?
+* Melyik városban teljesítette az első házastársa/partnerét?
+* Milyen városokban felelt meg a szülei?
+* Melyik városban él a legközelebbi testvér?
+* Melyik városban született az apja?
+* Melyik városban volt az első feladata?
+* Melyik városban született az anyja?
+* Mi a város a New Year 's 2000-ben?
+* Mi a vezetékneve kedvenc tanárának a középiskolában?
+* Mi a neve annak a Főiskolának, amelyet alkalmazott, de nem vett részt?
+* Mi a neve annak a helynek, amelyben az első esküvői fogadást megtartotta?
+* Mi az apád középső neve?
 * Mi a kedvenc étele?
-* Anyai nagyanyja vezeték- és keresztneve?
-* Mi az édesanyja második utóneve?
+* Mi az anyai nagymama első és vezetékneve?
+* Mi az anyja középső neve?
 * Mi a legrégebbi testvére születésnapjának hónapja és éve? (például 1985. november)
-* Mi a második utóneve a legidősebb testvérének?
-* Mi a vezetékneve és az utóneve az apai nagyapjának?
-* Mi a második utóneve a legfiatalabb testvérének?
-* Melyik iskolában végezte el a hatodik osztályt?
-* Mi volt a vezetékneve és az utóneve a legjobb gyerekkori barátjának?
-* Mi volt a vezetékneve és az utóneve az első szerelmének?
-* Mi volt a kedvenc általános iskolai tanárának vezetékneve?
-* Mi volt az első autója vagy motorkerékpárja márkája és típusa?
-* Hogy hívták az első iskoláját?
-* Mi a neve annak a kórháznak, ahol született?
-* Milyen utcában lakott gyermekkorában?
-* Hogy hívják a gyermekkori példaképét?
-* Kedvenc plüssállatának neve?
-* Mi volt az első háziállatának neve?
-* Mi volt a beceneve gyerekkorában?
+* Mi a legrégebbi testvérének középső neve?
+* Apai nagyapa vezetékneve és keresztneve?
+* Mi a legfiatalabb testvér középső neve?
+* Milyen iskolát vett részt a hatodik osztályban?
+* Mi volt az első és az utolsó név a gyermekkori legjobb barátodnak?
+* Mi volt az első és az utolsó név, ami az első jelentős?
+* Mi volt a vezetékneve kedvenc iskolai tanárának?
+* Mi volt az első autójának vagy motorkerékpárjának gyártmánya és modellje?
+* Mi volt az első iskolájának neve?
+* Mi volt a kórház neve, amelyben született?
+* Mi volt az első gyermekkori kezdőlapjának neve?
+* Mi volt a gyermekkori hős neve?
+* Mi volt a kedvenc töltött állatának neve?
+* Mi volt az első kisállat neve?
+* Mi volt a gyerekkori beceneve?
 * Mi volt a kedvenc sportja a középiskolában?
-* Mi volt az első munkaköre?
-* Mi volt a gyerekkori telefonszámának utolsó négy számjegye?
-* Gyerekkorában mi szeretett volna lenni, ha majd felnő?
-* Ki a leghíresebb ember, akivel életében találkozott?
+* Mi volt az első feladata?
+* Mi volt a gyermekkori telefonszámának utolsó négy számjegye?
+* Ha fiatal volt, mit szeretne, amikor felnőtt?
+* Ki a leghíresebb személy, akivel valaha is találkozott?
 
 Az előre definiált biztonsági kérdések mindegyike le van fordítva és honosítva van az Office 365 teljes készletében, a felhasználó böngésző területi beállítása alapján.
 
@@ -195,6 +195,8 @@ A megfelelő működéshez a telefonszámoknak a *+ országhívószám telefonsz
 >
 > A jelszó-visszaállítás nem támogatja a telefonos bővítményeket. A rendszer a hívás elhelyezése előtt is eltávolítja a bővítményeket a + 1 4255551234X12345 formátumban.
 
+A Microsoft nem garantálja a konzisztens SMS-és hangalapú Multi-Factor Authentication kérések kézbesítését ugyanazzal a számmal. A felhasználók érdekében a Microsoft bármikor hozzáadhat vagy eltávolíthat rövid kódokat, ahogyan az útvonal-kiigazításokat az SMS-kézbesítés javítása érdekében. A Microsoft nem támogatja a rövid kódokat a Egyesült Államok és Kanadában kívüli országok/régiók számára.
+
 #### <a name="text-message"></a>Szöveges üzenet
 
 A rendszer SMS-t továbbít az ellenőrző kódot tartalmazó mobil telefonszámra. A folytatáshoz adja meg a bejelentkezési felületen megadott ellenőrző kódot.
@@ -245,7 +247,7 @@ A hitelesítési módszerekkel kapcsolatos gyakori problémák telefonszám hasz
 
 Bizonyos böngészőn kívüli alkalmazások nem támogatják a többtényezős hitelesítést, ha a felhasználó számára engedélyezve van a többtényezős hitelesítés, és a nem böngészőbeli alkalmazások használatát kísérli meg, nem tudnak hitelesíteni. Az alkalmazás jelszava lehetővé teszi, hogy a felhasználók továbbra is hitelesítsék magukat
 
-Ha a többtényezős hitelesítést a feltételes hozzáférési szabályzatok és nem a felhasználónkénti MFA alapján kényszeríti ki, nem hozhat létre alkalmazás-jelszavakat. A feltételes hozzáférési házirendeket használó alkalmazások hozzáférés-vezérléséhez nem szükségesek az alkalmazás jelszavai.
+Ha a feltételes hozzáférési szabályzatok segítségével kényszeríti Multi-Factor Authentication, és nem a felhasználónkénti MFA-n keresztül, nem hozhat létre alkalmazás-jelszavakat. A feltételes hozzáférési házirendeket használó alkalmazások hozzáférés-vezérléséhez nem szükségesek az alkalmazás jelszavai.
 
 Ha a szervezete az Azure AD-vel történő egyszeri bejelentkezéshez készült, és az Azure MFA-t fogja használni, vegye figyelembe a következő adatokat:
 
@@ -259,7 +261,7 @@ Ha a szervezete az Azure AD-vel történő egyszeri bejelentkezéshez készült,
 
 [Önkiszolgáló jelszó-visszaállítás engedélyezése a szervezet számára](quickstart-sspr.md)
 
-[Az Azure multi-Factor Authentication engedélyezése a szervezet számára](howto-mfa-getstarted.md)
+[Azure-Multi-Factor Authentication engedélyezése a szervezet számára](howto-mfa-getstarted.md)
 
 [Kombinált regisztráció engedélyezése a bérlőben](howto-registration-mfa-sspr-combined.md)
 

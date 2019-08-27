@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8d3d08c772c28ff4e3a32e736253ba69b03684f0
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: a7d1249d68ddd4a161d1c0476e5f56e80c4d32f9
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012297"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032019"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Hozzáférés osztályterem-tesztkörnyezethez az Azure Lab Servicesben
 Ez a cikk bemutatja, hogyan regisztrálhat egy osztályterem laborba, megtekintheti az összes elérni kívánt labort, elindíthatja vagy leállíthatja a virtuális gépet a laborban, és csatlakozhat a virtuális géphez. 
@@ -57,31 +57,28 @@ Ez a cikk bemutatja, hogyan regisztrálhat egy osztályterem laborba, megtekinth
     3. **Linux** rendszerű virtuális gépek esetén az **SSH** vagy az **RDP** (ha engedélyezve van) használatával csatlakozhat hozzájuk. További információ: [Távoli asztali kapcsolat engedélyezése Linux rendszerű gépekhez](how-to-enable-remote-desktop-linux.md). 
     1. Ha **Mac** -t használ a tesztkörnyezet virtuális géphez való kapcsolódáshoz, kövesse a következő szakaszban található utasításokat. 
 
-## <a name="connect-to-a-vms-ui-using-rdp-on-a-mac"></a>Kapcsolódás virtuális gép felhasználói felületéhez RDP használatával Mac gépen
-Ez a szakasz azt mutatja be, hogy egy tanuló hogyan tud csatlakozni a virtuális gép felhasználói felületéhez a Mac rendszerből RDP használatával. Az alábbi lépéseket követve részletesen ismertetjük a részleteket: 
+## <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>Kapcsolódás virtuális géphez RDP használatával Mac gépen
+Ez a szakasz azt mutatja be, hogy egy tanuló hogyan tud csatlakozni a virtuális géphez Mac-ből RDP használatával.
 
-1. Telepítse a Microsoft Távoli asztalt a Mac számítógépen.
-2. Kapcsolódjon a Mac rendszerű virtuális gép felhasználói felületéhez RDP használatával. 
-
-### <a name="install-microsoft-remote-desktop-on-a-mac"></a>Microsoft Távoli asztal telepítése Mac gépen
+### <a name="step-1-install-microsoft-remote-desktop-on-a-mac"></a>1\. lépés: Microsoft Távoli asztal telepítése Mac gépen
 1. Nyissa meg az App Store-t a Mac számítógépen, és keressen rá **Microsoft távoli asztal**.
 
     ![Microsoft Távoli asztal](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
 1. Telepítse a Microsoft Távoli asztal legújabb verzióját. 
 
-### <a name="access-the-vms-ui-from-your-mac-using-rdp"></a>A virtuális gép felhasználói felületének elérése Mac-ről RDP használatával
+### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>2\. lépés: A virtuális gép elérése Mac-kiszolgálóról RDP használatával
 1. Nyissa meg a számítógépen letöltött **RDP** -fájlt, **Microsoft távoli asztal** telepítve van. Meg kell kezdenie a virtuális géphez való csatlakozást. 
 
-    ![Kapcsolódás virtuális géphez felhasználói felülethez](../media/how-to-use-classroom-lab/connect-linux-vm.png)
-1. Ha a következő hibaüzenetet kapja, válassza a **Continue (folytatás** ) lehetőséget. 
+    ![Kapcsolódás egy virtuális géphez](../media/how-to-use-classroom-lab/connect-linux-vm.png)
+1. Válassza a **Folytatás** lehetőséget, ha a következő figyelmeztetést kapja. 
 
-    ![Tanúsítvány hibája](../media/how-to-use-classroom-lab/certificate-error.png)
-1. Ekkor meg kell jelennie a virtuális gép felhasználói felületének. 
+    ![Tanúsítványra vonatkozó figyelmeztetés](../media/how-to-use-classroom-lab/certificate-error.png)
+1. A virtuális gépet látnia kell. 
 
     > [!NOTE]
     > Az alábbi példa egy CentOS Linux rendszerű virtuális gép. 
 
-    ![VIRTUÁLIS GÉP FELHASZNÁLÓI FELÜLETE](../media/how-to-use-classroom-lab/vm-ui.png)
+    ![VM](../media/how-to-use-classroom-lab/vm-ui.png)
 
 ## <a name="progress-bar"></a>Folyamatjelző 
 A csempe folyamatjelzője megjeleníti az órák számát, amelyet a rendszer az Ön által hozzárendelt [kvóta-órák](how-to-configure-student-usage.md#set-quotas-for-users) száma alapján használ. Ez az idő az a további időpont, amelyet a tesztkörnyezet ütemezett ideje mellett is kiosztottak. Az állapotjelző sáv színe és a folyamatjelző alatti szöveg a következő esetekben változik:

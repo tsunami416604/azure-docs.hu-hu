@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62496aceb1454283449e952c0ed86623597e9e66
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 1431a46bf0981ee7ca3ecd06be9d7ebc35f05982
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011667"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032727"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory-csatlakozás megvalósításának megtervezése
 
@@ -35,7 +35,7 @@ Ha helyszíni Active Directory (AD) környezettel rendelkezik, és az AD-tartom�
 Ez a cikk azt feltételezi, hogy ismeri a [Azure Active Directory eszköz-identitások kezelésének](../device-management-introduction.md)bevezetését.
 
 > [!NOTE]
-> A Windows 10 hibrid Azure AD JOIN minimálisan szükséges tartományi működési és erdő működési szintjei a Windows Server 2008 R2.
+> A Windows 10 hibrid Azure AD JOIN minimálisan szükséges tartományvezérlői verziója a Windows Server 2008 R2.
 
 ## <a name="plan-your-implementation"></a>A megvalósítás tervezése
 

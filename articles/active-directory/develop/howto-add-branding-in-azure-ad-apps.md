@@ -3,26 +3,27 @@ title: Védjegyzési útmutató az alkalmazásokhoz | Microsoft Docs
 description: Átfogó útmutató az Azure Active Directory fejlesztőknek készített erőforrásairól
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 6edcd5b3df7c3c58c6568434f82fbc52cb9e28df
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: HT
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 92770acb19bf95d6a19507184bd8bea10806d5b7
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47068730"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "70053246"
 ---
 # <a name="branding-guidelines-for-applications"></a>Védjegyzési útmutató az alkalmazásokhoz
 
@@ -59,9 +60,9 @@ Az irányelvek korábbi verziójában a „kék jelvény” piktogram használat
 
 Az alkalmazása eltérően működhet regisztráció és bejelentkezés esetén. A következő szakaszokban vizuális útmutatást talál mindkét esethez.
 
-**Ha az alkalmazás támogatja a végfelhasználói regisztrációt (például „free to trial” vagy „freemium” modellek)**: Megjeleníthet egy **Bejelentkezés** gombot, amelyen keresztül a felhasználók a munkahelyi vagy személyes fiókjukkal elérhetik az alkalmazást. Az Azure AD az alkalmazásba való első bejelentkezéskor a jóváhagyásukat fogja kérni.
+**Ha az alkalmazás támogatja a végfelhasználói regisztrációt (például ingyenes próbaverziós vagy freemium modell)** : Megjelenítheti a **bejelentkezési** gombot, amely lehetővé teszi a felhasználók számára, hogy munkahelyi fiókjával vagy személyes fiókjával férhessenek hozzá az alkalmazáshoz. Az Azure AD az alkalmazásba való első bejelentkezéskor a jóváhagyásukat fogja kérni.
 
-**Ha az alkalmazás kizárólag rendszergazdák által hozzáférhető engedélyeket, vagy szervezeti licencet igényel**: Különítse el a rendszergazdai beszerzést a felhasználói bejelentkezéstől. Az **„Alkalmazás beszerzése” gomb** átirányítja a rendszergazdákat a bejelentkezéshez, majd a hozzájárulásukat kéri a szervezet felhasználói nevében, aminek az a további előnye, hogy megszünteti a végfelhasználóktól az alkalmazáshoz érkező hozzájárulási kérelmeket.
+**Ha az alkalmazásnak olyan engedélyekre van szüksége, amelyekhez csak a rendszergazdák adhatnak engedélyt, vagy ha az alkalmazáshoz szervezeti licencelés szükséges**: A rendszergazdai beszerzések elkülönítése a felhasználói bejelentkezéstől. Az **„Alkalmazás beszerzése” gomb** átirányítja a rendszergazdákat a bejelentkezéshez, majd a hozzájárulásukat kéri a szervezet felhasználói nevében, aminek az a további előnye, hogy megszünteti a végfelhasználóktól az alkalmazáshoz érkező hozzájárulási kérelmeket.
 
 ## <a name="visual-guidance-for-app-acquisition"></a>Vizuális útmutató az alkalmazásbeszerzéshez
 
@@ -69,9 +70,9 @@ Az „Alkalmazás beszerzése” hivatkozás átirányítja a felhasználót az 
 
 Miután a rendszergazda engedélyezi az alkalmazást, eldöntheti, hogy hozzáadja-e a felhasználó Office 365 alkalmazásindító élményéhez (elérhető a gofri alkalmazásindítóból és innen: [https://portal.office.com/myapps](https://portal.office.com/myapps)). Ha hirdetni szeretné ezt a képességet, használja az „Adja a szervezetéhez ezt az alkalmazást” vagy egy hasonló kifejezést, és jelenítsen meg egy, a példához hasonló gombot:
 
-![Alkalmazástípusok és forgatókönyvek](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
+![A Microsoft emblémát és a "Hozzáadás a saját szervezethez" szöveget megjelenítő gomb](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Gombok használata helyett inkább magyarázó szövegek írását ajánljuk. Például:
+Gombok használata helyett inkább magyarázó szövegek írását ajánljuk. Példa:
 
 > *Ha már használja az Office 365-öt vagy a Microsoft más üzleti szolgáltatását, engedélyezheti a(z) <alkalmazás_neve> alkalmazásnak, hogy hozzáférjen a szervezet adataihoz. Így a felhasználók elérhetik a(z) <alkalmazás_neve> alkalmazást a már létező munkahelyi fiókjukkal.*
 
@@ -79,7 +80,7 @@ A hivatalos Microsoft embléma letöltéséhez az alkalmazáshoz kattintson a jo
 
 | Objektum                                | PNG formátum | SVG formátum |
 | ------------------------------------ | ---------- | ---------- |
-| Microsoft embléma  | ![Microsoft embléma PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Microsoft embléma SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
+| Microsoft embléma  | ![Letölthető Microsoft-embléma PNG formátumban](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Letölthető Microsoft-embléma SVG formátumban](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
 
 ## <a name="visual-guidance-for-sign-in"></a>Vizuális útmutató a bejelentkezéshez
 
@@ -91,16 +92,16 @@ A Microsoft embléma és a „Bejelentkezés Microsofttal” kifejezés együtte
 
 Az alábbi diagramok mutatják a Microsoft által ajánlott korlátozásokat az objektumok alkalmazással való használata esetén. A „Bejelentkezés Microsofttal” vagy a rövidebb „Bejelentkezés” verzióra vonatkozó korlátozások.
 
-![„Bejelentkezés Microsofttal” korlátozások](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
+![A "Bejelentkezés Microsoft-fiókkal" javítási ábrákat jeleníti meg](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
 
 Ha hivatalos képeket szeretne letölteni az alkalmazáshoz, kattintson a jobb gombbal a választott képre, majd mentse a számítógépére.
 
 | Objektum                                | PNG formátum | SVG formátum |
 | ------------------------------------ | ---------- | ---------- |
-| Bejelentkezés Microsofttal (sötét téma)  | ![Bejelentkezés gomb (sötét téma, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![Bejelentkezés Microsofttal gomb (sötét téma, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
-| Bejelentkezés Microsofttal (világos téma) | ![Bejelentkezés gomb (világos téma, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Bejelentkezés Microsofttal gomb (világos téma, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
-| Bejelentkezés (sötét téma)                 | ![Rövid Bejelentkezés gomb (sötét téma, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Rövid Bejelentkezés gomb (sötét téma, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
-| Bejelentkezés (világos téma)                | ![Rövid Bejelentkezés gomb (világos téma, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Rövid Bejelentkezés gomb (világos téma, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
+| Bejelentkezés Microsofttal (sötét téma)  | ![Letölthető "Bejelentkezés Microsoft-fiókkal" gomb sötét téma PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![Letölthető "Bejelentkezés Microsoft-fiókkal" gomb sötét téma SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
+| Bejelentkezés Microsofttal (világos téma) | ![Letölthető "Bejelentkezés Microsoft-fiókkal" gomb Light téma PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Letölthető "Bejelentkezés Microsoft-fiókkal" gomb Light téma SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
+| Bejelentkezés (sötét téma)                 | ![Letölthető "Bejelentkezés" rövid gomb sötét téma PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Letölthető "Bejelentkezés" rövid gomb sötét téma SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
+| Bejelentkezés (világos téma)                | ![Letölthető "Bejelentkezés" rövid gombos világos téma PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Letölthető "Bejelentkezés" rövid gomb – világos téma SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
 
 ## <a name="branding-dos-and-donts"></a>Ajánlott és kerülendő műveletek a védjegyzéssel kapcsolatban
 

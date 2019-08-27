@@ -8,7 +8,7 @@ metadata:
   manager: carmonm
   ms.service: blueprints
   ms.topic: landing-page
-  ms.date: 03/26/2019
+  ms.date: 06/14/2019
   ms.author: dacoulte
 abstract:
   description: 'Az Azure Blueprints lehetővé teszi felhőkörnyezetek megismételhető üzembe helyezését és frissítését összeállítható összetevők, például erőforrás-kiosztásra szolgáló Azure Resource Manager-sablonok, szerepköralapú hozzáférés-vezérlők és szabályzatok használatával.'
@@ -25,6 +25,11 @@ sections:
               src: ./media/portal.svg
             text: Azure Portal
             href: create-blueprint-portal.md
+          - image:
+              alt: Azure PowerShell
+              src: ./media/powershell.svg
+            text: Azure PowerShell
+            href: create-blueprint-powershell.md
           - image:
               alt: REST
               src: ./media/rest.svg

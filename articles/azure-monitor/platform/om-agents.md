@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: a559fe86850ee9c1378876bc5ed8f2d0ddfb2d99
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 4b426fbc1d1b3eeed2321f86bb51c9c5d705adb4
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543049"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035616"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager összekötése a Azure Monitor
 
@@ -47,8 +47,8 @@ A Kezdés előtt tekintse át az alábbi követelményeket.
 * A Azure Monitor csak a 2016-es vagy újabb System Center Operations Manager, Operations Manager 2012 SP1 UR6 vagy újabb, illetve Operations Manager 2012 R2 UR2 vagy újabb verziókat támogatja. A proxytámogatás az Operations Manager 2012 SP1 UR 7-es és az Operations Manager 2012 R2 UR 3-as verziójában jelent meg.
 * A System Center Operations Manager 2016 az USA kormányzati felhővel való integrálásához a 2. kumulatív frissítéssel vagy újabb verzióval rendelkező frissített Advisor felügyeleti csomag szükséges. System Center Operations Manager 2012 R2 esetében a 3. vagy újabb kumulatív frissítéshez mellékelt frissített Advisor felügyeleti csomag szükséges.
 * Minden Operations Manager-ügynöknek meg kell felelnie a minimális támogatási feltételeknek. Győződjön meg arról, hogy az ügynökök a minimális frissítéssel rendelkeznek, ellenkező esetben előfordulhat, hogy a Windows-ügynök kommunikációja meghiúsul, és hibákat eredményez a Operations Manager eseménynaplóban.
-* Egy Log Analytics-munkaterület. További információkért tekintse át [log Analytics munkaterület áttekintését](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json).   
-* Az Azure-ban olyan fiókkal végez hitelesítést, amely tagja a [log Analytics közreműködő szerepkörnek](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users).
+* Egy Log Analytics-munkaterület. További információkért tekintse át [log Analytics munkaterület áttekintését](design-logs-deployment.md). 
+* Az Azure-ban olyan fiókkal végez hitelesítést, amely tagja a [log Analytics közreműködő szerepkörnek](manage-access.md#manage-access-using-azure-permissions).
 
 * Támogatott régiók – a System Center Operations Manager csak a következő Azure-régiókat támogatja Log Analytics munkaterülethez való kapcsolódáshoz:
     - USA nyugati középső régiója

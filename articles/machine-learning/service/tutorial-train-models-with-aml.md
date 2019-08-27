@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 05/08/2019
+ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 90f745d3ef5fd4442a184a51d82cd61b12828e15
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534805"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036195"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Oktatóanyag: Képosztályozási modellek betanítása MNIST-adatokkal és scikit – további tudnivalók a Azure Machine Learning használatával
 
@@ -96,11 +96,11 @@ experiment_name = 'sklearn-mnist'
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-or-attach-an-existing-compute-resource"></a>Meglévő számítási erőforrás létrehozása vagy csatolása
+### <a name="create-or-attach-an-existing-compute-target"></a>Meglévő számítási cél létrehozása vagy csatolása
 
 A felügyelt Azure Machine Learning számítási szolgáltatással az adatszakértők a gépi tanulási modelleket az Azure-beli virtuális gépek fürtjén is betanítják. Ilyenek például a GPU-támogatással rendelkező virtuális gépek. Ebben az oktatóanyagban Azure Machine Learning számítást hoz létre képzési környezetként. Az alábbi kód létrehozza a számítási fürtöket, ha azok még nem léteznek a munkaterületen.
 
- **A számítás létrehozása körülbelül öt percet vesz igénybe.** Ha a számítás már szerepel a munkaterületen, a kód ezt használja, és kihagyja a létrehozási folyamatot.
+ **A számítási cél létrehozása körülbelül öt percet vesz igénybe.** Ha a számítási erőforrás már szerepel a munkaterületen, a kód ezt használja, és kihagyja a létrehozási folyamatot.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -211,9 +211,9 @@ Most már van elképzelése arról, hogy néznek ki ezek a képek, és milyen el
 
 ### <a name="upload-data-to-the-cloud"></a>Adatok feltöltése a felhőbe
 
-Most tegye elérhetővé az adatok távoli elérését a helyi gépről származó adatok Azure-ba való feltöltésével. Ezt követően a távoli betanításhoz is elérhető. Az adattár a munkaterülethez tartozó, az adatok feltöltésére és letöltésére szolgáló kényelmes szerkezet. A távoli számítási célokból is használhatja azt. Ezt egy Azure Blob Storage-fiók támogatja.
+Letöltötte és használta a betanítási adatait azon a számítógépen, amelyen a jegyzetfüzet fut.  A következő szakaszban egy modellt fog képezni a távoli Azure Machine Learning számítási feladatokhoz.  A távoli számítási erőforráshoz emellett hozzá kell férnie az adatokhoz. A hozzáférés biztosításához töltse fel az adatait egy, a munkaterülethez társított központosított adattárba. Ez az adattár gyors hozzáférést biztosít az adatokhoz, amikor távoli számítási célokat használ a felhőben, mivel az az Azure-adatközpontban található.
 
-A rendszer feltölti a MNIST-fájlokat az `mnist` adattár gyökerében elnevezett könyvtárba:
+Töltse fel a MNIST-fájlokat egy nevű `mnist` könyvtárba az adattár gyökerében. További információért lásd [Az adattárolók adatainak elérését](how-to-access-data.md) ismertető témakört.
 
 ```python
 ds = ws.get_default_datastore()

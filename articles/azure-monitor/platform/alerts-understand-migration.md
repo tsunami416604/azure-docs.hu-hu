@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: f981c14e26c51c427dab6b418cab8df46b1bb026
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 5257724add570be480063ab776248a8fd1d944c7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302248"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034749"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Az áttelepítési eszköz működésének megismerése
 
@@ -76,8 +76,8 @@ Cosmos DB metrikákkal kapcsolatos klasszikus riasztások áttelepíthetők, kiv
 - Másodpercenkénti átlagos kérelmek
 - Konzisztenciaszint
 - Http 2xx
-- Http-3xx
-- Http 400
+- HTTP 3xx
+- HTTP 400
 - HTTP 401
 - Belső kiszolgálóhiba
 - Percenként felhasznált maximális RUPM
@@ -205,7 +205,7 @@ Cosmos DB esetén az egyenértékű mérőszámok az alábbiak szerint jelennek 
 | Metrika klasszikus riasztásokban | Egyenértékű metrika az új riasztásokban | Megjegyzések|
 |--------------------------|---------------------------------|---------|
 | AvailableStorage     |AvailableStorage|   |
-| Adatméret | DataUsage| |
+| Adatok mérete | DataUsage| |
 | Dokumentumok száma | DocumentCount||
 | Index mérete | IndexUsage||
 | Mongo száma – kérelem díja| MongoRequestCharge a "CommandName" = "Count" dimenzióval||
@@ -217,7 +217,7 @@ Cosmos DB esetén az egyenértékű mérőszámok az alábbiak szerint jelennek 
 | Mongo-lekérdezési kérelem díja | MongoRequestCharge a "CommandName" = "Find" dimenzióval||
 | Mongo-lekérdezési kérelmek gyakorisága | MongoRequestsCount a "CommandName" = "Find" dimenzióval||
 | Mongo frissítési kérelmének díja | MongoRequestCharge a "CommandName" = "Update" dimenzióval||
-| A szolgáltatás nem érhető el| ServiceAvailability||
+| Elérhetetlen szolgáltatás| ServiceAvailability||
 | TotalRequestUnits | TotalRequestUnits||
 
 ### <a name="how-equivalent-action-groups-are-created"></a>Az egyenértékű műveleti csoportok létrehozása
@@ -256,13 +256,20 @@ Minden olyan felhasználó, aki rendelkezik az előfizetés szintjén a figyelé
 
 Miután elindította [az](alerts-using-migration-tool.md)áttelepítést, e-mailt fog kapni a megadott címekről, hogy értesítést kapjon arról, hogy a Migrálás befejeződött, vagy ha bármilyen műveletre szükség van. Ez a szakasz néhány gyakori problémát és azok kezelését ismerteti.
 
-### <a name="validation-failed"></a>Az érvényesítés sikertelen
+### <a name="validation-failed"></a>Az érvényesítés nem sikerült
 
 Az előfizetés klasszikus riasztási szabályainak legutóbbi változásai miatt az előfizetés nem telepíthető át. Ez a probléma ideiglenes. Újraindíthatja az áttelepítést, miután az áttelepítés állapota néhány nap múlva újra **készen áll** az áttelepítésre.
 
-### <a name="policy-or-scope-lock-preventing-us-from-migrating-your-rules"></a>Házirend vagy hatókör-zárolás megakadályozza a szabályok áttelepítését
+### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>A hatókör-zárolás megakadályozza a szabályok áttelepítését
 
-A Migrálás részeként új metrikai riasztások és új műveleti csoportok jönnek létre, és a rendszer törli a klasszikus riasztási szabályokat. Van azonban egy házirend vagy hatókör-zárolás, amely megakadályozza, hogy erőforrásokat hozzon létre. A házirend vagy a hatókör zárolása alapján előfordulhat, hogy egy vagy több szabály nem telepíthető át. A probléma megoldásához távolítsa el ideiglenesen a hatókör-zárolást vagy a házirendet, és indítsa el újra az áttelepítést.
+A Migrálás részeként új metrikai riasztások és új műveleti csoportok jönnek létre, és a rendszer törli a klasszikus riasztási szabályokat. A hatókör-zárolás azonban megakadályozhatja az erőforrások létrehozását és törlését. A hatókör-zárolástól függően előfordulhat, hogy egy vagy több szabály nem telepíthető át. A probléma megoldásához távolítsa el az áttelepítési eszközben felsorolt előfizetés, erőforráscsoport vagy erőforrás hatókör-zárolását, és [](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)indítsa el újra az áttelepítést. A hatókör-zárolás nem tiltható le, és az áttelepítési folyamat időtartama alatt el kell távolítani. [További információ a hatóköri zárolások kezeléséről](../../azure-resource-manager/resource-group-lock-resources.md#portal).
+
+### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>A "megtagadás" hatású szabályzat megakadályozza a szabályok áttelepítését
+
+A Migrálás részeként új metrikai riasztások és új műveleti csoportok jönnek létre, és a rendszer törli a klasszikus riasztási szabályokat. Egy házirend azonban megakadályozza, hogy erőforrásokat hozzon létre. A házirendtől függően előfordulhat, hogy egy vagy több szabályt nem lehetett migrálni. A folyamatot blokkoló házirendek megjelennek az áttelepítési [eszközben](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel). Oldja meg a problémát a következők bármelyikével:
+
+- Az előfizetések vagy erőforráscsoportok kizárása az áttelepítési folyamat időtartamára a szabályzat-hozzárendelésből. [További információ a házirendek Kizárási hatókörének kezeléséről](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion).
+- A "naplózás" vagy a "Hozzáfűzés" effektus eltávolítása vagy módosítása (ami például a hiányzó címkékkel kapcsolatos problémák megoldására szolgál). [További információ a házirendek hatásának kezeléséről](../../governance/policy/concepts/definition-structure.md#policy-rule).
 
 ## <a name="next-steps"></a>További lépések
 

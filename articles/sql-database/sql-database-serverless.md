@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
+author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 07/05/2019
-ms.openlocfilehash: 67e877609eec98e7100b34ab477dbab7c5577772
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 08/26/2019
+ms.openlocfilehash: 418ca6f8d6258b826bb126252d7cf7b1c5fee299
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515282"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035726"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Kiszolgáló nélküli Azure SQL Database (előzetes verzió)
 
@@ -136,7 +136,7 @@ Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltétel
 |Adatbázis másolása|Adatbázis létrehozása másolásként.<br>Exportálás BACPAC-fájlba.|
 |SQL-adatszinkronizálás|Az olyan központi és tag adatbázisok közötti szinkronizálás, amelyek konfigurálható ütemterv szerint futnak, vagy manuálisan végeznek műveleteket|
 |Bizonyos adatbázis-metaadatok módosítása|Új adatbázis-Címkék hozzáadása.<br>A maximális virtuális mag, a minimális virtuális mag vagy az automatikus szüneteltetés késleltetésének módosítása.|
-|SQL Server Management Studio (SSMS)|A SSMS 18-as és újabb lekérdezési ablakának megnyitása a kiszolgáló bármely adatbázisa esetében folytatja az automatikusan szüneteltetett adatbázisokat ugyanazon a kiszolgálón. Ez a viselkedés nem fordul elő, ha a SSMS-verzió 17.9.1 az IntelliSense kikapcsolásával használja.|
+|SQL Server Management Studio (SSMS)|A 18,1-nál korábbi SSMS-verziók használata és a kiszolgáló bármely adatbázisához tartozó új lekérdezési ablak megnyitása folytatja az automatikusan szüneteltetett adatbázist ugyanabban a kiszolgálón. Ez a viselkedés nem fordul elő, ha a SSMS 18,1-es vagy újabb verzióját használja.|
 
 Az automatikusan folytatott művelet az egyes szolgáltatási frissítések központi telepítése során is aktiválódik, amelyekhez az adatbázisnak online állapotra van szüksége.
 
@@ -165,7 +165,7 @@ Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló n
    |Paraméter|Értékek megválasztása|Alapértelmezett érték|
    |---|---|---|---|
    |Virtuális magok min. száma|{0,5, 1, 2, 4} nem haladhatja meg a maximális virtuális mag|0,5 virtuális mag|
-   |Automatikus szüneteltetés késleltetése|Minimum: 60 perc (1 óra)<br>Maximum: 10080 perc (7 nap)<br>Lépésekben 60 perc<br>Automatikus szüneteltetés letiltása:-1|60 perc|
+   |Automatikus szüneteltetés késleltetése|Minimális 60 perc (1 óra)<br>Maximális 10080 perc (7 nap)<br>Lépésekben 60 perc<br>Automatikus szüneteltetés letiltása:-1|60 perc|
 
 > [!NOTE]
 > A T-SQL használatával egy meglévő adatbázist kiszolgáló nélkülire helyezhet át, vagy megváltoztathatja a számítási méretet, de a Azure Portal vagy a PowerShell segítségével végezhető el.

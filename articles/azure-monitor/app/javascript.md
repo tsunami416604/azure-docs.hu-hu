@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 77c5285462c4368badd63d7cdbf6589c7ad03c8d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f72feeefeb896c9006f767f8724d9ca3b3640c1e
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534575"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035230"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -36,7 +36,7 @@ Az Application Insights bármely weblappal használható – csak egy rövid Jav
 > [!IMPORTANT]
 > Az alábbi módszerek egyikét kell használnia ahhoz, hogy hozzáadja a Application Insights JavaScript SDK-t az alkalmazáshoz. Ha a NPM-alapú telepítést használja, ne használja a kódrészlet-alapú telepítőt. Ugyanez vonatkozik a fordított forgatókönyvre, ha a kódrészlet-alapú megközelítést használja, ne használja a NPM-alapú telepítőt is. 
 
-### <a name="npm-based-setup"></a>NPM-alapú telepítés 
+### <a name="npm-based-setup"></a>NPM-alapú telepítés
 
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -198,7 +198,7 @@ A kivétel telemetria minified hívási verem lehet unminified a Azure Portal. A
 2. Azonosítsa, hogy mely forrás-térképek felelnek meg ehhez a hívási veremnek. A forrás-hozzárendelésnek egyeznie kell egy verem-keret forrásfájljait, de utótagja`.map`
 3. Húzza át a forrást a hívási verembe a Azure Portal![](https://i.imgur.com/Efue9nU.gif)
 
-## <a name="application-insights-web-basic"></a>Application Insights webes alapszintű
+### <a name="application-insights-web-basic"></a>Application Insights webes alapszintű
 
 A könnyű használhatóság érdekében telepítheti az Application Insights alapszintű verzióját is
 ```

@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 0d6721c2ef24665035cc4a99c9bf3804b312fe75
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/26/2019
+ms.openlocfilehash: e127d937dfaeb8afaad6b9a95383f0008f5ea898
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900157"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033264"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Új Dynamics 365 Business Central-ajánlat létrehozása
 
@@ -354,7 +354,7 @@ A **piactér lapon található Marketplace** listázási lehetőség megjelenít
 
 ## <a name="supplemental-content"></a>Kiegészítő tartalom
 
-Ezen a lapon további szükséges információkat adhat meg az ajánlatról.
+Ezen az oldalon további információkat adhat meg az ajánlatáról, hogy segítsen az ajánlat érvényesítésében. Ezek az információk nem jelennek meg az ügyfelek számára, és nem jelennek meg a piactéren.
 
 ### <a name="target-release"></a>Cél kiadása
 
@@ -362,19 +362,19 @@ Adja meg a Microsoft Dynamics Business Central a megoldás célkitűzéseinek a 
 
 ### <a name="supported-editions"></a>Támogatott kiadások
 
-Jelezze, hogy a megoldás támogatja-e a Microsoft Dynamics 365 Business Central Essentials és/vagy Premium kiadását. Legalább egy értéket ki kell jelölni.
+Ha az ajánlata a Microsoft Dynamics 365 Business Central Premium kiadását igényli, válassza a **prémium** szintű lehetőséget. Ellenkező esetben válassza a mind az **Essentials** , mind a **prémium**lehetőséget.
 
 ### <a name="key-usage-scenario"></a>Kulcshasználat forgatókönyv
 
-Töltsön fel `.pdf` egy fájlt, amely felsorolja az ajánlat legfontosabb használati forgatókönyveit egy dokumentumban (. PDF formátumban). Az itt felsorolt összes forgatókönyvet ellenőrizni kell az ellenőrzési csapatnál, mielőtt jóváhagyjuk ajánlatát a piactéren.
+Meg kell eltöltése egy `.pdf` olyan fájlt, amely felsorolja az ajánlat kulcsfontosságú használati forgatókönyveit egy dokumentumban (. PDF formátumban). Az itt felsorolt összes forgatókönyvet ellenőrizni kell az ellenőrzési csapatnál, mielőtt jóváhagyjuk ajánlatát a piactéren.
 
 ### <a name="app-tests-automation"></a>Alkalmazás-tesztek automatizálása
 
-Töltse fel az **alkalmazás-tesztelési Automation** -fájlt (. app) is.
+Igény szerint feltölthet egy **alkalmazás-tesztelési Automation** -fájlt (. app).
 
 ### <a name="test-accounts"></a>Fiókok tesztelése
 
-Ha tesztelési fiókra van szükség ahhoz, hogy a minősítési csapat megfelelően áttekintse az ajánlatát, töltsön fel egy. pdf,. doc vagy. docx fájlt a **teszt fiókjainak** adataival.
+Ha tesztelési fiókra van szükség ahhoz, hogy a minősítési csapat megfelelően áttekintse az ajánlatát, töltsön fel egy. pdf,. doc vagy. docx fájlt a tesztelési fiókokkal kapcsolatos információkkal.
 
 ## <a name="publish"></a>Közzététel
 

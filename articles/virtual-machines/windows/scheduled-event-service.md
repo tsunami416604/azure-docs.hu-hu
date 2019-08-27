@@ -1,6 +1,6 @@
 ---
-title: Karbantartási értesítések beállítása a Windows rendszerű virtuális gépekhez az Azure-ban | Microsoft Docs
-description: Ismerje meg, hogyan állíthatja be az ütemezett karbantartási értesítéseket az Azure-beli virtuális gépekhez.
+title: Windows rendszerű virtuális gépek ütemezett eseményeinek figyelése az Azure-ban | Microsoft Docs
+description: Ismerje meg, hogyan figyelheti meg az Azure-beli virtuális gépeket az ütemezett eseményekhez.
 services: virtual-machines-windows
 documentationcenter: ''
 author: mysarn
@@ -10,14 +10,14 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: 18b46b848946bb2450604bdf0650a004e21778d9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657410"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051855"
 ---
-# <a name="set-up-notifications-about-maintenance-affecting-your-vm"></a>Értesítéseket állíthat be a virtuális gépet érintő karbantartásról
+# <a name="monitoring-scheduled-events"></a>Figyelés Scheduled Events
 
 A frissítések minden nap különböző Azure-részekre érvényesek, így a szolgáltatások biztonságban és naprakészen tarthatók. A tervezett frissítések mellett a nem tervezett események is előfordulhatnak. Ha például valamilyen hardveres romlást vagy hibát észlel, előfordulhat, hogy az Azure-szolgáltatásoknak nem tervezett karbantartást kell végezniük. Az élő áttelepítés, a memóriában lévő frissítések és a frissítések hatására általában szigorú sáv tart fenn, a legtöbb esetben ezek az események szinte transzparensek az ügyfeleknek, és a virtuális gépek lefagyása nem befolyásolja a legtöbb esetet. Egyes alkalmazások esetében azonban a virtuális gépek befagyasztásának néhány másodperce is hatással lehet. Fontos tudni, hogy a közelgő Azure-karbantartási feladatok a lehető legjobb élményt biztosítják az alkalmazások számára. A [Scheduled Events szolgáltatás](scheduled-events.md) egy programozott felületet biztosít a közelgő karbantartásról, és lehetővé teszi a karbantartás zökkenőmentes kezelését. 
 

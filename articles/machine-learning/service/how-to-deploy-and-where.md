@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: a4146e20efae87287b77687e4a1d3b0196cb1c95
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 7f856c0b69788c3d0b711d567777aba6cb4c6918
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997938"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036094"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -78,12 +78,29 @@ Az ebben a szakaszban szereplő kódrészletek bemutatják, hogyan regisztrálha
 
 + **Az SDK használata**
 
-  ```python
-  model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
-  print(model.name, model.id, model.version, sep='\t')
-  ```
+  Ha az SDK-t egy modell betanítására használja, a modell kiképzésének módjától függően [futtathat](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master) vagy [AutoMLRun](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master) -objektumot is kaphat. Minden objektum használható a kísérlet futtatásával létrehozott modellek regisztrálására.
 
-  A `model_path` a modell Felhőbeli helyét jelöli. Ebben a példában egyetlen fájl elérési útját használjuk. Ha több fájlt szeretne felvenni a modell-regisztrációba, állítsa `model_path` a fájlokat tartalmazó könyvtárba.
+  + Modell regisztrálása egy `azureml.core.Run` objektumból:
+ 
+    ```python
+    model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
+    print(model.name, model.id, model.version, sep='\t')
+    ```
+
+    A `model_path` a modell Felhőbeli helyét jelöli. Ebben a példában egyetlen fájl elérési útját használjuk. Ha több fájlt szeretne felvenni a modell-regisztrációba, állítsa `model_path` a fájlokat tartalmazó könyvtárba. További információt a [Run. register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-) dokumentációjában talál.
+
+  + Modell regisztrálása egy `azureml.train.automl.run.AutoMLRun` objektumból:
+
+    ```python
+        description = 'My AutoML Model'
+        model = run.register_model(description = description)
+
+        print(run.model_id)
+    ```
+
+    Ebben a példában a `metric` és `iteration` paraméterek nincsenek megadva, ami miatt az iteráció a legjobb elsődleges metrikával lesz regisztrálva. A rendszer a futtatásból visszaadott értékethasználjaamodellnevehelyett.`model_id`
+
+    További információ: [AutoMLRun. register_model](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master#register-model-description-none--tags-none--iteration-none--metric-none-) -hivatkozás.
 
 + **A parancssori felület használata**
 
@@ -184,6 +201,9 @@ A parancsfájl két olyan függvényt tartalmaz, amelyek betöltik és futtatjá
 Modell regisztrálása esetén meg kell adnia a modellnek a beállításjegyzékben való kezeléséhez használt modell nevét. Ezt a nevet használja a [modellhez. szerezze be a _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) , hogy lekérje a modell fájljának elérési útját a helyi fájlrendszeren. Ha egy mappát vagy fájl-gyűjteményt regisztrál, az API a fájlokat tartalmazó könyvtár elérési útját adja vissza.
 
 A modell regisztrálása esetén a rendszer egy olyan nevet ad neki, amely a modell elhelyezésének helyét adja meg helyileg vagy a szolgáltatás telepítése során.
+
+> [!IMPORTANT]
+> Ha automatizált gépi tanulást használó modellt oktatott, a `model_id` modell neveként egy értéket kell használni. Az automatikus ml-vel betanított modellek regisztrálásával és üzembe helyezésével kapcsolatos példát [https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment)a következő témakörben talál:.
 
 Az alábbi példa egy (a névvel `sklearn_mnist_model.pkl` `sklearn_mnist`regisztrált) nevű fájl elérési útját adja vissza:
 

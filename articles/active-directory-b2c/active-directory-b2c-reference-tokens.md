@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c347a5740a13d071d4bb06daf43463f974198e5d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 2b33c35b1e4f83c30e2efdf64aed0b5f2035c79b
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980801"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032075"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C jogkivonatok áttekintése
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD) B2C számos különböző típusú biztonsági jogkivonatot bocsát ki az egyes [hitelesítési](active-directory-b2c-apps.md)folyamatok feldolgozásához. Ez a dokumentum az egyes típusú tokenek formátumát, biztonsági jellemzőit és tartalmát ismerteti.
+Azure Active Directory B2C (Azure AD B2C) számos különböző típusú biztonsági jogkivonatot bocsát ki, mivel az egyes [hitelesítési](active-directory-b2c-apps.md)folyamatokat dolgozza fel. Ez a dokumentum az egyes típusú tokenek formátumát, biztonsági jellemzőit és tartalmát ismerteti.
 
 ## <a name="token-types"></a>Token-típusok
 
@@ -40,7 +40,7 @@ A [regisztrált alkalmazások](tutorial-register-applications.md) jogkivonatokat
 - `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/authorize`
 - `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token`
 
-Az alkalmazástól a Azure ad B2Ctól kapott biztonsági jogkivonatok származhatnak a `/authorize` vagy `/token` végpontokból. Ha azonosító tokeneket szereznek be a `/authorize` végpontból, a rendszer ezt használja az [implicit folyamat](active-directory-b2c-reference-spa.md)használatával, amelyet gyakran használnak a JavaScript-alapú webalkalmazásba való bejelentkezéshez. Ha azonosító tokeneket szereznek be a `/token` végpontból, akkor a rendszer a [bizalmas kód folyamatát](active-directory-b2c-reference-oidc.md)használja, amely megtartja a tokent a böngészőből.
+Az alkalmazástól a Azure ad B2Ctól kapott biztonsági jogkivonatok származhatnak a `/authorize` vagy `/token` végpontokból. Ha azonosító tokeneket szereznek be a `/authorize` végpontból, az [implicit folyamat](active-directory-b2c-reference-spa.md)használatával történik, amelyet gyakran használnak a JavaScript-alapú webalkalmazásokhoz való bejelentkezéshez. Ha azonosító tokeneket szereznek be a `/token` végpontból, az [engedélyezési kód folyamatával](active-directory-b2c-reference-oidc.md#get-a-token)történik, amely megtartja a tokent a böngészőből.
 
 ## <a name="claims"></a>Igénylések
 

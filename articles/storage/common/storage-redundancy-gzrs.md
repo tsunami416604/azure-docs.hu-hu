@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c6c070012db0857759c63603072b8321896398b4
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516134"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036340"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Hosszú rendelkezésre állású Azure Storage-alkalmazások kiépítése a Geo-Zone-redundáns tárolással (GZRS) (előzetes verzió)
 
@@ -70,7 +70,7 @@ Ha egy rendelkezésre állási zóna elérhetetlenné válik, az Azure hálózat
 Ha a hiba a teljes elsődleges régióra hatással van, akkor a Microsoft először megkísérli visszaállítani az elsődleges régiót. Ha a visszaállítás nem lehetséges, a Microsoft feladatátvételt hajt végre a másodlagos régióba, így a másodlagos régió lesz az új elsődleges régió. Ha a Storage-fiókhoz engedélyezve van az RA-GZRS, akkor a forgatókönyvhöz tervezett alkalmazások a másodlagos régióból is beolvashatók a feladatátvételre való várakozás közben. Ha a Storage-fióknak nincs engedélyezve az RA-GZRS, akkor az alkalmazások nem lesznek képesek a másodlagosról olvasni, amíg a feladatátvétel be nem fejeződik.
 
 > [!NOTE]
-> A GZRS és az RA-GZRS jelenleg csak előzetes verzióban érhető el az USA 2. keleti régiójában. A felhasználó által felügyelt fiók feladatátvétele (előzetes verzió) még nem érhető el az USA 2. keleti régiójában, így az ügyfelek jelenleg nem kezelhetik a GZRS és az RA-GZRS fiókkal rendelkező fiók feladatátvételi eseményeit. Az előzetes verzióban a Microsoft minden olyan feladatátvételi eseményt kezel, amely hatással van a GZRS és az RA-GZRS fiókokra.
+> A GZRS és az RA-GZRS jelenleg csak előzetes verzióban érhető el az USA keleti régiójában. A felhasználó által felügyelt fiók feladatátvétele (előzetes verzió) még nem érhető el az USA 2. keleti régiójában, így az ügyfelek jelenleg nem kezelhetik a GZRS és az RA-GZRS fiókkal rendelkező fiók feladatátvételi eseményeit. Az előzetes verzióban a Microsoft minden olyan feladatátvételi eseményt kezel, amely hatással van a GZRS és az RA-GZRS fiókokra.
 
 Mivel az adatreplikáció a másodlagos régióba aszinkron módon történik, az elsődleges régiót érintő hibák adatvesztést okozhatnak, ha az elsődleges régió nem állítható helyre. Az elsődleges régióba irányuló legutóbbi írások és a másodlagos régió utolsó írása közötti intervallum a helyreállítási pont célkitűzése (RPO). A RPO azt az időpontot jelöli, ameddig az Adathelyreállítás visszaállítható. Az Azure Storage szolgáltatásnak jellemzően 15 percnél rövidebb RPO van, bár jelenleg nem áll rendelkezésre SLA, hogy mennyi ideig tart az adatreplikálás a másodlagos régióba.
 

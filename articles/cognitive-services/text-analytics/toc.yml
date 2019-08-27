@@ -69,15 +69,9 @@
         - name: Tárolók konfigurálása
           href: text-analytics-resource-container-config.md
         - name: A Container Instances használata
-          items:
-            - name: Hangulatelemzés
-              href: how-tos/deploy-sentiment-analysis-on-container-instances.md
+          href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Kubernetes Service (AKS) használata
-          items:
-            - name: Nyelvfelismerés
-              href: how-tos/use-language-detection-on-aks.md
-            - name: Hangulatelemzés
-              href: how-tos/use-sentiment-analysis-on-aks.md
+          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
     - name: A Text Analytics csatlakoztatott szolgáltatás használata
       href: vs-text-connected-service.md
 - name: Referencia

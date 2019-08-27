@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe2b4ed91969248bc0818f98306a108555eac424
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 77309a73f3c5641aa8a7667015ed02808e376348
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853057"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032876"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>A szervezet helytelen jelszavainak eltávolítása
 
@@ -39,7 +39,7 @@ Valahányszor új jelszót módosítanak vagy állítanak alaphelyzetbe bármely
 > [!NOTE]
 > A Cyber-bűnözők hasonló stratégiákat is használnak a támadások során. Ezért a Microsoft nem teszi közzé nyilvánosan a lista tartalmát.
 
-## <a name="custom-banned-password-list"></a>Egyéni tiltott jelszavak listája
+## <a name="custom-banned-password-list"></a>Letiltott jelszavak egyéni listája
 
 Előfordulhat, hogy egyes szervezetek még tovább szeretnék javítani a biztonságot azáltal, hogy hozzáadják a saját testreszabásokat a globálisan tiltott jelszavak listájához, amit a Microsoft meghívja az egyéni tiltott jelszavak listáját. A Microsoft azt javasolja, hogy a listához hozzáadott feltételek elsősorban a szervezeti feltételekre összpontosítanak, például a következőkre:
 
@@ -121,7 +121,7 @@ A rendszer a normalizált jelszóval azonosítja a fuzzy megfeleltetést, hogy a
 
 Példa: tegyük fel, hogy a "ABCDEF" jelszó tiltott, és a felhasználó megpróbálja módosítani a jelszavát a következők egyikére:
 
-"abcdeg"    *(az utolsó karakter módosult "f" értékről "g"-re)* "abcdefg"   *(g* ) "ABCDE" (a záró     *"f"* a végéről törölve)
+"abcdeg" *(az utolsó karakter módosult "f" értékről "g"-re)* "abcdefg" *(g* ) "ABCDE" (a záró *"f"* a végéről törölve)
 
 A fenti jelszavak mindegyike nem felel meg kifejezetten a betiltott "ABCDEF" jelszónak. Mivel azonban mindegyik példa a "ABCDEF" betiltott kifejezés 1. részén található, a "ABCDEF" értéknek megfelelőnek számít.
 

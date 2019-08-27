@@ -1,6 +1,6 @@
 ---
-title: Vertikális skálázása az Azure-beli virtuálisgép-méretezési csoportok |} A Microsoft Docs
-description: Függőleges méretezése egy virtuális gépet a figyelési riasztásokat az Azure Automation szolgáltatással a választ
+title: Azure-beli virtuálisgép-méretezési csoportok vertikális skálázása | Microsoft Docs
+description: A virtuális gépek vertikális skálázása a riasztások figyelésére válaszul Azure Automation
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,37 +15,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: manayar
-ms.openlocfilehash: 3846815dabdc9e351f3d8449feb88affb9c6efdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d12fde33ec9d55c891c801f1b89143b4db6f8ae7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803529"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035756"
 ---
-# <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikális automatikus méretezés a virtuálisgép-méretezési csoportok
+# <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikális automata méretezés a virtuálisgép-méretezési csoportokkal
 
-Ez a cikk bemutatja, hogyan vertikális skálázása az Azure [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/) vagy reprovisioning nélkül. Virtuális gépek, amelyek nem szerepelnek a méretezési csoportok vertikális skálázás, tekintse meg [vertikális skálázása az Azure virtuális gépen az Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ez a cikk azt ismerteti, hogyan lehet [](https://azure.microsoft.com/services/virtual-machine-scale-sets/) vertikálisan méretezni az Azure Virtual Machine Scale Setst az Újraépítés nélkül vagy anélkül. A nem méretezési csoportokban lévő virtuális gépek vertikális skálázásához tekintse meg az Azure-beli [virtuális gép vertikális](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)skálázását Azure Automation.
 
-Vertikális skálázás, más néven *vertikális felskálázás* és *vertikális leskálázás*, az azt jelenti, hogy növelésével vagy csökkentésével válaszul, munkaterhelés számára virtuális gépek (VM) méretét. Hasonlítsa össze ezt a viselkedést az [horizontális skálázást](virtual-machine-scale-sets-autoscale-overview.md), más néven *horizontális felskálázása* és *alatt*, ahol a virtuális gépek száma úgy módosul, a terheléstől függően.
+A vertikális skálázás, más néven vertikális *fel* -ésleskálázás, a virtuális gépek (VM) méretének növelését és csökkentését jelenti a számítási feladatokra válaszul. Hasonlítsa össze ezt a viselkedést [horizontális skálázással](virtual-machine-scale-sets-autoscale-overview.md), más néven kibővíthető és *méretezhető*, ahol a virtuális gépek száma a munkaterheléstől függően módosul.
 
-Egy meglévő virtuális gép eltávolítása és cseréje a egy új reprovisioning azt jelenti. Ha növeli vagy csökkenti a virtuálisgép-méretezési csoportot a virtuális gépek méretének beállítása, bizonyos esetekben a meglévő virtuális gépek átméretezése, és az adatok megőrzése, míg más esetben meg kell üzembe helyeznie a új virtuális gépeket az új méretű. Ez a dokumentum áttekint mindkét esetben.
+Az Újraépítés azt jelenti, hogy egy meglévő virtuális gépet eltávolítanak, és egy újat cserélnek. A virtuálisgép-méretezési csoportokban lévő virtuális gépek méretének növelésével vagy csökkentésével bizonyos esetekben a meglévő virtuális gépeket szeretné átméretezni, és megőrizni az adatait, míg más esetekben új virtuális gépeket kell telepítenie az új méretre. Ez a dokumentum mindkét esetet magában foglalja.
 
-Vertikális skálázás esetekben lehet hasznos:
+A vertikális skálázás akkor lehet hasznos, ha:
 
-* Egy szolgáltatás, amely a virtuális gépek a kevésbé használt (például a hétvégéket). Virtuális gép méretének csökkentését, csökkentheti a havi költségeket.
-* Növelje a virtuális gép méretét méretezhetők a nagyobb igény szerint további virtuális gépek létrehozása nélkül.
+* A virtuális gépekre épülő szolgáltatások kihasználtsága (például hétvégén) használatban van. A virtuális gép méretének csökkentése csökkentheti a havi költségeket.
+* A virtuális gép méretének növelése a nagyobb igények kielégítése érdekében további virtuális gépek létrehozása nélkül.
 
-Beállíthat is vertikális skálázás aktivált alapján alapján metrikariasztásokat kell a virtuális gép méretezési csoportból. A riasztás aktiválásakor, aktiválódik egy webhook adott eseményindítók egy runbookot, amely a méretezési csoport méretezhetők felfelé vagy lefelé beállítása. Vertikális skálázás konfigurálható az alábbi lépéseket:
+Beállíthatja a vertikális skálázást úgy, hogy a virtuálisgép-méretezési csoport mérőszám-alapú riasztásai alapján induljon el. A riasztás aktiválása után egy webhookot indít el, amely elindítja a méretezési csoport felfelé vagy lefelé skálázására képes runbook. A vertikális skálázás a következő lépésekkel konfigurálható:
 
-1. Hozzon létre egy Azure Automation-fiók futtató képesség.
-2. Virtuálisgép-méretezési csoportokhoz az Azure Automation függőleges méretezés runbookok importálhatók az előfizetés.
-3. Webhook hozzáadása a forgatókönyvhöz.
-4. A virtuálisgép-méretezési csoportot egy webhook értesítést a riasztás hozzáadásához.
+1. Hozzon létre egy Azure Automation fiókot futtató képességgel.
+2. Importálja Azure Automation vertikális méretezési runbookok a virtuálisgép-méretezési csoportokhoz az előfizetésében.
+3. Vegyen fel egy webhookot a runbook.
+4. Hozzon létre egy riasztást a virtuálisgép-méretezési csoportba egy webhook-értesítés használatával.
 
 > [!NOTE]
-> Az első virtuális gépen, az méretezhetők, méretek mérete miatt előfordulhat, hogy korlátozva lesz, mert a rendelkezésre állási, a további méretek a fürt jelenlegi virtuális gép üzemel. A cikk ezt használja a közzétett automation-runbookok hozunk ebben az esetben a gondoskodik, és csak méretezésre a virtuális gép mérete párok alatt. Ez azt jelenti, hogy Standard_D1v2 virtuális gép fog hirtelen nem lehet Standard_G5 skálázható vertikálisan leskálázni Basic_A0 való. Korlátozott virtuálisgép-méretek felfelé és lefelé méretezését is nem támogatott. Választhat, hogy skálázni a következő párok méretek között:
+> Az első virtuális gép mérete miatt a méretezhető méretre korlátozható, mert a fürt aktuális virtuális gépe más méreteinek rendelkezésre állása is a-ben települ. A cikkben használt közzétett Automation-runbookok ezt az esetet vesszük figyelembe, és csak az alábbi virtuálisgép-méret párokon belül méretezhetők. Ez azt jelenti, hogy a Standard_D1v2 virtuális gépeket nem lehet hirtelen méretezni a standard G5, vagy a Basic_A0-ra méretezni. A virtuálisgép-méretek vertikális fel-és leskálázása is korlátozott, és nem támogatott. A következő méretek közül választhat:
 > 
-> | Pár skálázás Virtuálisgép-méretek |  |
+> | VM-méretek méretezési pár |  |
 > | --- | --- |
 > | Basic_A0 |Basic_A4 |
 > | Standard_A0 |Standard_A4 |
@@ -73,14 +73,14 @@ Beállíthat is vertikális skálázás aktivált alapján alapján metrikariasz
 > | Standard_F1s |Standard_F16s |
 > | Standard_F2sv2 |Standard_F72sv2 |
 > | Standard_G1 |Standard G5 |
-> | Standard_GS1 |Például a Standard_GS5 |
+> | Standard_GS1 |Standard_GS5 |
 > | Standard_H8 |Standard_H16 |
 > | Standard_H8m |Standard_H16m |
 > | Standard_L4s |Standard_L32s |
 > | Standard_L8s_v2 |Standard_L80s_v2 |
-> | Standard m8ms  |Standard m 128 MS |
+> | Standard m8ms  |Standard m128ms |
 > | Standard m32ls  |Standard m64ls |
-> | Standard m64s  |Standard_M128s |
+> | Standard m64s  |Standard m128s |
 > | Standard_M64  |Standard_M128 |
 > | Standard_M64m  |Standard_M128m |
 > | Standard_NC6 |Standard_NC24 |
@@ -89,42 +89,42 @@ Beállíthat is vertikális skálázás aktivált alapján alapján metrikariasz
 > | Standard_ND6s |Standard_ND24s |
 > | Standard_NV6 |Standard_NV24 |
 > | Standard_NV6s_v2 |Standard_NV24s_v2 |
-> 
+> | Standard_NV12s_v3 |Standard_NV48s_v3 |
 > 
 
-## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Hozzon létre egy Azure Automation-fiók futtató képesség
-Először is szüksége, hozzon létre egy Azure Automation-fiók, amely futtatja a runbookokat, a virtuális gép méretezési csoport példányaihoz skálázására. Nemrég [Azure Automation](https://azure.microsoft.com/services/automation/) a "Futtatás mint fiók" gondoskodunk, amely beállítás mentése az egyszerű szolgáltatás révén a runbookok automatikus futtatása egy felhasználó nevében. További információkért lásd:
+## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Futtatási képességgel rendelkező Azure Automation fiók létrehozása
+Először létre kell hoznia egy Azure Automation fiókot, amely a virtuálisgép-méretezési csoport példányainak méretezéséhez használt runbookok tárolja. A közelmúltban [Azure Automation](https://azure.microsoft.com/services/automation/) bemutatta a "futtató fiók" funkciót, amely lehetővé teszi az egyszerű szolgáltatás beállítását a runbookok automatikus futtatásához a felhasználó nevében. További információkért lásd:
 
 * [Runbookok hitelesítése Azure-beli futtató fiókkal](../automation/automation-sec-configure-azure-runas-account.md)
 
-## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Azure Automation függőleges méretezés runbookok importálása az előfizetés
+## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Azure Automation vertikális skálázási runbookok importálása az előfizetésbe
 
-A runbookok szükséges a virtuális gép méretezési csoportjai vertikális skálázása az Azure Automation forgatókönyv-katalógusában a már közzétett. Importálja őket az előfizetés kövesse a cikkben ismertetett lépések:
+A virtuálisgép-méretezési csoportok vertikális skálázásához szükséges runbookok már közzé van téve a Azure Automation Runbook-galériában. Az előfizetésbe való importáláshoz kövesse a cikkben ismertetett lépéseket:
 
 * [Runbook- és modulkatalógusok az Azure Automationhöz](../automation/automation-runbook-gallery.md)
 
-Válassza a Tallózás a katalógusban a beállítás a Runbookok menüjében:
+Válassza a tallózási katalógus lehetőséget a Runbookok menüben:
 
-![A Runbookok importálhatók][runbooks]
+![Importálandó runbookok][runbooks]
 
-A runbookokat, amelyek importálandó jelennek meg. Válassza ki a runbookot, hogy a vertikális skálázás vagy anélkül reprovisioning alapján:
+Az importálni kívánt runbookok láthatók. Válassza ki a runbook annak alapján, hogy a vertikális skálázást szeretné-e Újraépítés nélkül:
 
-![Runbookkatalógus][gallery]
+![Runbookok-gyűjtemény][gallery]
 
-## <a name="add-a-webhook-to-your-runbook"></a>Webhook hozzáadása a forgatókönyvhöz
+## <a name="add-a-webhook-to-your-runbook"></a>Webhook hozzáadása a runbook
 
-Runbookok importálása után hozzáadása egy webhookot a runbookhoz, úgy is elindítható a figyelőről érkező egy virtuálisgép-méretezési csoportot. Ebben a cikkben ismertetett egy webhookot hoz létre a Runbook részletei:
+Miután importálta a runbookok, vegyen fel egy webhookot a runbook, hogy egy virtuálisgép-méretezési csoport riasztása aktiválható legyen. A Runbook webhook létrehozásának részleteit a cikk ismerteti:
 
-* [Az Azure Automation-webhookok](../automation/automation-webhooks.md)
+* [Webhookok Azure Automation](../automation/automation-webhooks.md)
 
 > [!NOTE]
-> Ellenőrizze, hogy a webhook párbeszédpanel bezárása, mert szüksége lesz a következő szakaszban Ez a cím előtt másolja a webhook URI-t.
+> Győződjön meg arról, hogy a webhook URI-JÁT a webhook párbeszédpanel bezárása előtt másolja, mivel a következő szakaszban erre a címnek szüksége lesz.
 > 
 > 
 
-## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Riasztás hozzáadása a virtuálisgép-méretezési csoporton
+## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Riasztás hozzáadása a virtuálisgép-méretezési csoporthoz
 
-Alább egy PowerShell-parancsprogram bemutatja, hogyan riasztás hozzáadása egy virtuálisgép-méretezési csoport beállítása. Tekintse meg a mérőszám a riasztás triggerfuttatáskor aktiválandó nevét a következő cikket: [Gyakori metrikák az Azure Monitor automatikus skálázás](../azure-monitor/platform/autoscale-common-metrics.md).
+Az alábbiakban egy PowerShell-szkript látható, amely bemutatja, hogyan adhat hozzá riasztást a virtuálisgép-méretezési csoportokhoz. A következő cikkből megtudhatja, hogyan kérheti le a metrika nevét a riasztás bekapcsolásához: [Azure monitor általános mérőszámok](../azure-monitor/platform/autoscale-common-metrics.md)automatikus skálázása.
 
 ```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
@@ -153,18 +153,18 @@ Add-AzMetricAlertRule  -Name  $alertName `
 ```
 
 > [!NOTE]
-> Javasoljuk, hogy a riasztás ésszerű időn időkeretet konfigurálni ahhoz, hogy kerülje a vertikális skálázás, és minden kapcsolódó szolgáltatás megszakadása, túl gyakran elindítása. Fontolja meg egy legalább 20 – 30 perc vagy több ablakot. Fontolja meg a horizontális skálázás, ha bármely megszakadásának elkerülése érdekében van szüksége.
+> Javasoljuk, hogy a riasztáshoz egy ésszerű időablakot állítson be, hogy elkerülje a vertikális skálázást és a kapcsolódó szolgáltatások megszakítását. Vegyünk egy legalább 20-30 percet tartalmazó ablakot. Ha el szeretné kerülni a megszakítást, vegye figyelembe a horizontális skálázást.
 > 
 > 
 
-Riasztások létrehozásával kapcsolatos további információkért tekintse meg a következő cikkeket:
+A riasztások létrehozásával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Az Azure Monitor PowerShell rövid minták](../azure-monitor/platform/powershell-quickstart-samples.md)
-* [Az Azure platformfüggetlen parancssori figyelő rövid minták](../azure-monitor/platform/cli-samples.md)
+* [Azure Monitor PowerShell-gyors példák](../azure-monitor/platform/powershell-quickstart-samples.md)
+* [Többplatformos CLI gyors üzembe helyezési minták Azure Monitor](../azure-monitor/platform/cli-samples.md)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
-Ez a cikk bemutatta, egyszerű vertikális méretezési példákat. Ezek építőelemei – Automation-fiók, runbookok, a webhookok, riasztások - az egyéni műveletek egy csoportját, gazdag különféle eseményekre is kapcsolódni.
+Ez a cikk egyszerű vertikális skálázási példákat mutat be. Ilyen építőelemek – Automation-fiók, runbookok, webhookok, riasztások – számos különböző eseményt kapcsolhat össze testreszabott műveletekkel.
 
 [runbooks]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png
 [gallery]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks-gallery.png

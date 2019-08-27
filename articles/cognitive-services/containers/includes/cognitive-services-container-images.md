@@ -1,31 +1,35 @@
 ---
-ms.openlocfilehash: 2c0a93e9e8a45285ee24562d8272175d62490d31
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: fe9879f9574fe1496ebdf20ac76fe5b759d4ea6a
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717299"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051233"
 ---
-### <a name="container-repositories-and-images"></a>Tároló adattárak és rendszerképek
+### <a name="container-repositories-and-images"></a>Tárolók és lemezképek
 
-Az alábbi táblázat az Azure Cognitive Services által kínált elérhető tárolórendszerképek átfogó listája is.
+Az alábbi táblázat az Azure Cognitive Services által kínált elérhető tároló-lemezképek átfogó listáját tartalmazza.
 
-#### <a name="public-container-registry-mcrmicrosoftcom"></a>Nyilvános (tároló-beállításjegyzék: `mcr.microsoft.com`)
+#### <a name="public-container-registry-mcrmicrosoftcom"></a>Nyilvános (Container Registry: `mcr.microsoft.com`)
 
-| Szolgáltatás | Tároló | Tárház/kép neve |
+A Microsoft Container Registry a Cognitive Services összes általánosan elérhető (GA) tárolóját üzemelteti.
+
+| Szolgáltatás | Tároló | Container Registry/adattár/rendszerkép neve |
 |--|--|--|
-| [LUIS](../../LUIS/luis-container-howto.md) | LUIS | `azure-cognitive-services/luis` |
-| [Szövegelemzés](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Kulcskifejezések kinyerése | `azure-cognitive-services/keyphrase` |
-| [Szövegelemzés](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Nyelvfelismerés  | `azure-cognitive-services/language` |
-| [Szövegelemzés](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Véleményelemzés | `azure-cognitive-services/sentiment` |
+| [LUIS](../../LUIS/luis-container-howto.md) | LUIS | `mcr.microsoft.com/azure-cognitive-services/luis` |
+| [Szövegelemzés](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Kulcskifejezések kinyerése | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
+| [Szövegelemzés](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Nyelvfelismerés | `mcr.microsoft.com/azure-cognitive-services/language` |
+| [Szövegelemzés](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Véleményelemzés | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-#### <a name="public-preview-container-registry-containerpreviewazurecrio"></a>Nyilvános előzetes verziója (tároló-beállításjegyzék: `containerpreview.azurecr.io`)
+#### <a name="public-preview-container-registry-containerpreviewazurecrio"></a>Nyilvános előzetes (Container Registry: `containerpreview.azurecr.io`)
 
-| Szolgáltatás | Tároló | Tárház/kép neve |
+A tároló előzetes verziójának beállításjegyzéke tartalmazza az összes "nyilvános előzetes" tárolót a Cognitive Services számára, amelyek még nem haladták meg az általános elérhetőséget (GA). Ezeknek a tárolóknak formális kérelemre van szükségük ahhoz, hogy használni lehessen őket.
+
+| Szolgáltatás | Tároló | Container Registry/adattár/rendszerkép neve |
 |--|--|--|
-| [Anomáliadetektálási detector használatával](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomaly Detector | `microsoft/cognitive-services-anomaly-detector` |
-| [Computer Vision](../../Computer-vision/computer-vision-how-to-install-containers.md) | Szövegének felismerése | `microsoft/cognitive-services-recognize-text` |
-| [Arcfelismerés](../../face/face-how-to-install-containers.md) | Arcfelismerés | `microsoft/cognitive-services-face` |
-| [Űrlap felismerő](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Form Recognizer | `microsoft/cognitive-services-form-recognizer` |
-| [Speech Service API](../../speech-service/speech-container-howto.md) | Speech-to-text | `microsoft/cognitive-services-speech-to-text` |
-| [Speech Service API](../../speech-service/speech-container-howto.md) | Szövegfelolvasás | `microsoft/cognitive-services-text-to-speech` |
+| [Anomália detektor](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomáliadetektor | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
+| [Computer Vision](../../Computer-vision/computer-vision-how-to-install-containers.md) | szövegfelismerés | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text` |
+| [Arcfelismerés](../../face/face-how-to-install-containers.md) | Face | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
+| [Űrlap-felismerő](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Form Recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
+| [Speech Service API](../../speech-service/speech-container-howto.md) | Speech-to-text | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |
+| [Speech Service API](../../speech-service/speech-container-howto.md) | Szövegfelolvasás | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` |
