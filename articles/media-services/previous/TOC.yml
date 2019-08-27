@@ -49,6 +49,15 @@
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
 - name: Útmutató
   items:
+    - name: Örökölt összetevők
+      href: legacy-components.md
+      items:
+        - name: Migrálás az Azure Media Encoderből
+          href: migrate-azure-media-encoder.md
+          displayName: AME
+        - name: Migrálás a Windows Azure Media Encoderből
+          href: migrate-windows-azure-media-encoder.md
+          displayName: WAME
     - name: Kezelés
       items:
         - name: Fiókok

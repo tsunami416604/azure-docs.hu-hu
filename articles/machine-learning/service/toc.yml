@@ -179,6 +179,9 @@
         - name: Hiperparaméterek hangolása
           displayName: parameter
           href: how-to-tune-hyperparameters.md
+        - name: A Key Vault használata betanításhoz
+          displayName: secrets keyvault
+          href: how-to-use-secrets-in-runs.md
     - name: Kísérletek nyomon követése és monitorozása
       items:
         - name: 'Futtatások indítása, monitorozása vagy megszakítása'
