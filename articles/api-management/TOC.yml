@@ -207,6 +207,8 @@
           href: api-management-configuration-repository-git.md
         - name: Szerepköralapú hozzáférés-vezérlés alkalmazása
           href: api-management-role-based-access-control.md
+        - name: API Management-példányok migrálása
+          href: api-management-howto-migrate.md
         - name: Felügyelt identitások használata Azure-erőforrások eléréséhez
           href: api-management-howto-use-managed-service-identity.md
         - name: Integrálás a Service Fabric platformmal

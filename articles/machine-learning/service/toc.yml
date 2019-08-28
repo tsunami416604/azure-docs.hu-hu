@@ -28,10 +28,7 @@
               href: tutorial-deploy-models-with-aml.md
         - name: Regresszió (NYC Taxi adatai)
           items:
-            - name: 1. Adatok előkészítése modellezéshez
-              displayName: data prep
-              href: tutorial-data-prep.md
-            - name: 2. Automatizált gépi tanulási modellek betanítása
+            - name: Automatizált gépi tanulási modellek betanítása
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
     - name: Vizuális felület
@@ -260,7 +257,7 @@
     - name: Újrahasználható munkafolyamatok létrehozása
       displayName: pipelines
       items:
-        - name: Gépi tanulási folyamatok
+        - name: Gépi tanulási folyamatok létrehozása Pythonban
           href: how-to-create-your-first-pipeline.md
         - name: Azure Pipelines a CI/CD-hez
           displayName: 'continuous, integration, delivery'

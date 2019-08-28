@@ -90,6 +90,10 @@
           href: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Dedikált privát kapcsolat létrehozása (ExpressRoute)
           href: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: Nyilvánosfelhő-kapcsolat
+      items:
+        - name: Kapcsolódás nyilvános felhőkhöz az Azure-ból
+          href: ../expressroute/expressroute-connect-azure-to-public-cloud.md?toc=%2fazure%2fnetworking%2ftoc.json
     - name: Kezelés
       items:
         - name: A hálózatmonitorozás áttekintése

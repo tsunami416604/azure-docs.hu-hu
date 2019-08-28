@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Azure-támogatási lehetőségek dokumentációja
+summary: Ismerteti a támogatási kérések az Azure Portalon történő létrehozását és kezelését az Azure-ügyfeleknek.
+metadata:
+  title: Azure-támogatási lehetőségek dokumentációja
+  description: Ismerteti a támogatási kérések az Azure Portalon történő létrehozását és kezelését az Azure-ügyfeleknek.
+  services: azure supportability
+  ms.service: azure-supportability
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: 
+  author: arob98
+  ms.author: angrobe
+  ms.date: 08/24/2019
+  ms.openlocfilehash: 4ee8de0f591618be7eb3a08c04f5820faeebaf4a
+  ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70052137"
+landingContent:
+- title: Támogatási kérelem létrehozása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure-támogatáskérések létrehozása
+      url: how-to-create-azure-support-request.md
+  - linkListType: get-started
+    links:
+    - text: Támogatási kérés létrehozása az Azure Portalon
+      url: https://portal.azure.com/#create/Microsoft.Support
+- title: Kvóta növelésére irányuló kérések
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Virtuálisgép-sorozatok vCPU-korlátjának növelése
+      url: per-vm-quota-requests.md
+    - text: A teljes regionális vCPU-korlát növelése
+      url: regional-quota-requests.md
+    - text: Hálózatkezelési korlát növelése
+      url: networking-quota-requests.md
+- title: Hibaelhárítás
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Nem elérhető régió vagy termékváltozat
+      url: sku-series-unavailable.md

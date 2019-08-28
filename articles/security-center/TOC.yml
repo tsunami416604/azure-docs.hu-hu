@@ -33,18 +33,16 @@
       href: security-center-data-security.md
     - name: Javaslatok használata a biztonság növelése érdekében
       href: security-center-using-recommendations.md
-    - name: Fenyegetésészlelés
-      href: security-center-detection-capabilities.md
-    - name: Biztonsági riasztások kezelése
-      href: security-center-managing-and-responding-alerts.md
-    - name: Biztonsági incidensek
-      href: security-center-incident.md
     - name: Bérlők közötti felügyelet
       href: security-center-cross-tenant-management.md
-    - name: Fenyegetésészlelési riasztások
+    - name: Fenyegetésészlelési riasztások és incidensek
       items:
         - name: Biztonsági riasztások áttekintése
           href: security-center-alerts-overview.md
+        - name: Biztonsági riasztások kezelése
+          href: security-center-managing-and-responding-alerts.md
+        - name: Biztonsági incidensek kezelése
+          href: security-center-incident.md
         - name: Virtuális gépek és kiszolgálók fenyegetéseinek észlelése
           href: security-center-alerts-iaas.md
         - name: Natív felhőalapú számítások fenyegetéseinek észlelése
