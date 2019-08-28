@@ -9,19 +9,18 @@ editor: ramankum
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: f0a1184daa41a30bb0c47764a3a47af68a6a9251
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b0f0a5ea7be482ffe1509f7a610a8075bf124356
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58442801"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081231"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell"></a>Virtuális gép létrehozása meglévő felügyelt operációsrendszer-lemezből a PowerShell használatával
 
@@ -32,7 +31,7 @@ Ez a szkript úgy hoz létre egy virtuális gépet, hogy operációsrendszer-lem
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -60,7 +59,7 @@ A szkript a következő parancsokat használja a felügyelt lemez tulajdonságai
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Virtuális gépet hoz létre. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-Marketplace-rendszerképek használata [Set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) a terv adatainak beállításához.
+A Piactéri rendszerképekhez a [set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) használatával állíthatja be a csomag információit.
 
 ```powershell
 Set-AzVMPlan -VM $VirtualMachine -Publisher $Publisher -Product $Product -Name $Bame

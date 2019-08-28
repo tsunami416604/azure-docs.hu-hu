@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: da88c6d0195236a6f93f81d3296e4624228125f2
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0aa4286d8cb630f221613bebd13f7ea722224ac6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624265"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068846"
 ---
 # <a name="what-are-the-speech-services"></a>Mi az a Speech Services?
 
@@ -84,12 +84,10 @@ A mintakód minden Azure Speech Services esetében elérhető a GitHubon. Ezek a
 
 Az Azure Speech Services jól működik a beépített modellekkel, azonban érdemes lehet tovább testreszabni és hangolni a termék vagy a környezet élményét. A testreszabási lehetőségek köre az akusztikus modell finomhangolása és a márka egyedi hangbetűkészletei között. Miután létrehozott egy egyéni modellt, használhatja azt bármelyik Azure Speech Services-szolgáltatással.
 
-| Beszédszolgáltatás | Modell | Leírás |
-|----------------|-------|-------------|
-| Diktálás | [Akusztikai modell](how-to-customize-acoustic-models.md) | Hozzon létre egy egyéni akusztikai modellt olyan alkalmazásokhoz, eszközökhöz vagy eszközökhöz, amelyeket az adott környezetben, például autóban vagy gyári szinten használnak, és amelyek külön rögzítési feltételekkel rendelkeznek. Ilyenek például az ékezetes beszédek, a konkrét háttérzajok, vagy egy adott mikrofon használata a rögzítéshez. |
-| | [Nyelvi modell](how-to-customize-language-model.md) | Hozzon létre egy egyéni nyelvi modellt, amellyel javítható a mező-specifikus szókincs és nyelvtan, például az orvosi terminológia vagy az informatikai zsargon átirata. |
-| | [Kiejtési modell](how-to-customize-pronunciation.md) | Egyéni kiejtési modellel megadhatja egy szó vagy kifejezés fonetikus formáját és megjelenítését. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. A kezdéshez szüksége egy írásmódja fájlnevével – egy egyszerű .txt fájlt. |
-| Szövegfelolvasás | [Hangtípusok](how-to-customize-voice-font.md) | Az egyéni hangbetűkészletek lehetővé teszik a márka felismerhető, egyfajta hangjának létrehozását. A kezdéshez csak kis mennyiségű adat szükséges. Minél több, az Ön által megadott információ, annál természetesebb és emberi – például a hangbetűkészletek is megszólalnak. |
+| Beszédszolgáltatás | Platform | Leírás |
+|----------------|-------------|-------------|
+| Diktálás | [Egyéni beszédfelismerés](https://aka.ms/customspeech) | Testreszabhatja a beszédfelismerési modelleket igényeihez és rendelkezésre álló adataihoz. Kiküszöbölheti a beszédfelismerést akadályozó tényezőket, például a különféle beszédstílusok, a háttérzaj vagy a szókincs által okozott problémákat. |
+| Szövegfelolvasás | [Egyéni hang](https://aka.ms/customvoice) | Felismerhető, egyfajta hangfelismerést készíthet a szöveg-beszéd alkalmazások számára, és elérhetővé teheti azokat. A hangkimeneteket tovább finomíthatja a hangparaméterek készletének módosításával. |
 
 ## <a name="reference-docs"></a>Segédanyagok
 

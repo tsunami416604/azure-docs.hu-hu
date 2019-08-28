@@ -1,5 +1,5 @@
 ---
-title: 'Példa: A nagy méretű szolgáltatás – Face API használata'
+title: 'Példa: A nagyméretű szolgáltatás használata – Face API'
 titleSuffix: Azure Cognitive Services
 description: Nagy léptékű funkció használata a Face API-ban.
 services: cognitive-services
@@ -10,29 +10,29 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: dcbec817f771324219a68de96eb5dd262a887fc1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d8ecfb53b78277e4b0e4a85d60fb6712d0bc2292
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449042"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114842"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Példa: A nagy léptékű funkció használata
 
-Ez az útmutató olyan vertikális meglévő is lehet PersonGroup és FaceList objektumokból LargePersonGroup és LargeFaceList objektumokra, illetve egy speciális cikkünket. Ez az útmutató azt ismerteti, hogy az áttelepítési folyamat. Azt is lehet PersonGroup és FaceList objektumok alapszintű ismeretét feltételezi, hogy a [Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4) művelet, és az arcok felismerése funkciók. Az e kapcsolatos további információkért tekintse meg a [Arcfelismerési](../concepts/face-recognition.md) fogalmi útmutató.
+Ez az útmutató egy speciális cikk, amely bemutatja, hogyan méretezhető fel a meglévő PersonGroup és FaceList objektumok a LargePersonGroup és a LargeFaceList objektumokra. Ez az útmutató az áttelepítési folyamatot mutatja be. Feltételezi, hogy alapszintű ismerettel rendelkezik a PersonGroup és a FaceList objektumokkal, a [vonatok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4) működésével és az Arcfelismerés funkcióival. Ha többet szeretne megtudni ezekről a témákról, tekintse meg a [Face Recognition](../concepts/face-recognition.md) fogalmi útmutatót.
 
-LargePersonGroup és LargeFaceList együttesen nevezzük nagyméretű műveleteket. LargePersonGroup akár 1 millió személyek, minden egyes 248 arcok legfeljebb is tartalmazhat. LargeFaceList arcok legfeljebb 1 millió is tartalmazhat. A nagy méretű műveletek hasonlóak a hagyományos is lehet PersonGroup és FaceList, de van néhány különbség miatt az új architektúrával. 
+A LargePersonGroup és a LargeFaceList közösen nagy léptékű műveleteknek nevezzük. A LargePersonGroup legfeljebb 1 000 000 személyt tartalmazhat, amelyek mindegyike legfeljebb 248 arcot tartalmaz. A LargeFaceList akár 1 000 000 arcot is tartalmazhat. A nagyméretű műveletek hasonlóak a hagyományos PersonGroup és FaceList, de az új architektúra miatt néhány különbség van. 
 
-A minták nyelven írták C# az Azure Cognitive Services Face API ügyféloldali kódtár használatával.
+A mintákat az Azure Cognitive Services C# Face API ügyféloldali kódtár használatával kell beírni.
 
 > [!NOTE]
-> Ahhoz, hogy a Face keresési teljesítményének azonosítása és FindSimilar nagy méretű, vezessen be egy Train műveletet, hogy a LargeFaceList és LargePersonGroup előfeldolgozása. Képzési függ a másodperc, a tényleges kapacitási alapján körülbelül fél óra. A képzési időszakban azonosítása és FindSimilar végrehajtani, ha egy sikeres képzési működő elkészítése előtt. A hátránya, hogy az új hozzáadott személyek és arcok nem jelennek meg az eredmény nagyobb méretű betanítási új bejegyzés az áttelepítés befejeződéséig.
+> Ha nagy léptékben szeretné engedélyezni az arc-keresési teljesítményt az azonosításhoz és a FindSimilar, vezessen be egy vonat-műveletet a LargeFaceList és a LargePersonGroup előfeldolgozásához. A betanítási idő másodperctől körülbelül fél órára változik a tényleges kapacitás alapján. A betanítási időszak alatt az azonosítást és a FindSimilar is elvégezheti, ha a sikeres betanítás már megtörtént. A hátránya az, hogy az új hozzáadott személyek és arcok nem jelennek meg az eredményben, amíg a nagy léptékű képzésbe való új áttelepítés be nem fejeződik.
 
 ## <a name="step-1-initialize-the-client-object"></a>1\. lépés: Az ügyfél objektum inicializálása
 
-A Face API-ügyfélkódtárát használatakor az előfizetési kulcs és az előfizetési végpont keresztül átadott FaceClient osztály a konstruktor. Példa:
+Az Face API ügyféloldali kódtár használatakor az előfizetési kulcsot és az előfizetési végpontot a FaceClient osztály konstruktorán keresztül adja át a rendszer. Példa:
 
-```CSharp
+```csharp
 string SubscriptionKey = "<Subscription Key>";
 // Use your own subscription endpoint corresponding to the subscription key.
 string SubscriptionEndpoint = "https://westus.api.cognitive.microsoft.com";
@@ -42,38 +42,38 @@ private readonly IFaceClient faceClient = new FaceClient(
 faceClient.Endpoint = SubscriptionEndpoint
 ```
 
-Az előfizetési kulcsot a megfelelő végponttal, keresse fel az Azure Marketplace-en az Azure Portalról.
-További információkért lásd: [előfizetések](https://azure.microsoft.com/services/cognitive-services/directory/vision/).
+Az előfizetési kulcs megfelelő végponthoz való beszerzéséhez nyissa meg az Azure Marketplace-t a Azure Portal.
+További információ: előfizetések. [](https://azure.microsoft.com/services/cognitive-services/directory/vision/)
 
-## <a name="step-2-code-migration"></a>2\. lépés: Kód áttelepítése
+## <a name="step-2-code-migration"></a>2\. lépés: Kód áttelepítése
 
-Ez a szakasz is lehet PersonGroup vagy FaceList megvalósítási áttelepítése LargePersonGroup vagy LargeFaceList összpontosít. Bár a LargePersonGroup vagy LargeFaceList eltér az is lehet PersonGroup vagy FaceList a tervezési és megvalósítási belső, az API-felületek hasonlóak a visszamenőleges kompatibilitás érdekében.
+Ez a szakasz a PersonGroup vagy a FaceList implementációjának LargePersonGroup vagy LargeFaceList való áttelepítését ismerteti. Bár a LargePersonGroup vagy a LargeFaceList eltér a tervezési és belső megvalósítási PersonGroup vagy FaceList, az API-felületek a visszamenőleges kompatibilitáshoz hasonlóak.
 
-Adatok migrálása nem támogatott. Újra létrehozza a LargePersonGroup vagy LargeFaceList helyette.
+Az adatáttelepítés nem támogatott. Ehelyett hozza létre újra a LargePersonGroup vagy a LargeFaceList.
 
-### <a name="migrate-a-persongroup-to-a-largepersongroup"></a>Egy is lehet PersonGroup át egy LargePersonGroup
+### <a name="migrate-a-persongroup-to-a-largepersongroup"></a>PersonGroup migrálása LargePersonGroup
 
-Áttelepítés egy LargePersonGroup egy is lehet PersonGroup használata egyszerű. Pontosan ugyanaz-szintű műveletek osztoznak.
+A PersonGroup-ről LargePersonGroup-re történő áttelepítés egyszerű. Pontosan ugyanazokat a csoport szintű műveleteket osztják meg.
 
-Megvalósítás is lehet PersonGroup vagy személy kapcsolatos fontos módosítása csak az API elérési utak vagy az SDK osztály/modul LargePersonGroup és LargePersonGroup személy.
+A PersonGroup vagy a személyekkel kapcsolatos megvalósításhoz csak az API-útvonalakat vagy SDK-osztályokat vagy-modulokat kell módosítani LargePersonGroup és LargePersonGroup.
 
-Adja hozzá az arcokat és személyek az is lehet PersonGroup, az új LargePersonGroup. További információkért lásd: [adja hozzá az arcok](how-to-add-faces.md).
+Adja hozzá az összes arcot és személyt a PersonGroup az új LargePersonGroup. További információ: Faces [hozzáadása](how-to-add-faces.md).
 
-### <a name="migrate-a-facelist-to-a-largefacelist"></a>Egy FaceList át egy LargeFaceList
+### <a name="migrate-a-facelist-to-a-largefacelist"></a>FaceList migrálása LargeFaceList
 
 | FaceList API-k | LargeFaceList API-k |
 |:---:|:---:|
 | Hozzon létre | Hozzon létre |
 | Törlés | Törlés |
-| Lekérés | Lekérés |
-| Lista | Lista |
+| Beolvasás | Beolvasás |
+| List | List |
 | frissítés | frissítés |
 | - | Betanítás |
 | - | Betanítási állapot lekérdezése |
 
-Az előző táblázat a FaceList és a LargeFaceList listaszintű műveleteinek összehasonlítása. Amint látható, LargeFaceList tartalmaz új művelet, tanítási és képzési állapotának beolvasása FaceList képest. A LargeFaceList képzési előfeltétele, a [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) műveletet. Képzési nem szükséges a FaceList. Az alábbi kódrészlet egy kell várni egy LargeFaceList képzése segítőfüggvény:
+Az előző táblázat a FaceList és a LargeFaceList listaszintű műveleteinek összehasonlítása. Ahogy az ábrán látható, a LargeFaceList új műveletekkel, betanítással és betanítási állapottal rendelkezik a FaceList képest. A LargeFaceList betanítása a [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) művelet előfeltétele. Nem szükséges betanítás a FaceList. A következő kódrészlet egy segítő függvény, amely a LargeFaceList betanítására vár:
 
-```CSharp
+```csharp
 /// <summary>
 /// Helper function to train LargeFaceList and wait for finish.
 /// </summary>
@@ -121,9 +121,9 @@ private static async Task TrainLargeFaceList(
 }
 ```
 
-Korábban hozzáadott arcokat és FindSimilar tipikus felhasználása FaceList kikeresi a következőhöz hasonló:
+Korábban a FaceList és a FindSimilar egy tipikus használata a következőhöz hasonlóan néz ki:
 
-```CSharp
+```csharp
 // Create a FaceList.
 const string FaceListId = "myfacelistid_001";
 const string FaceListName = "MyFaceListDisplayName";
@@ -154,9 +154,9 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 }
 ```
 
-Ha az áttelepítés LargeFaceList, válik a következő:
+A LargeFaceList-re való áttelepítéskor a következő lesz:
 
-```CSharp
+```csharp
 // Create a LargeFaceList.
 const string LargeFaceListId = "mylargefacelistid_001";
 const string LargeFaceListName = "MyLargeFaceListDisplayName";
@@ -191,49 +191,49 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 }
 ```
 
-Ahogy korábban az adatok kezelését és a FindSimilar rész szinte azonosak. Az egyetlen kivétel, hogy egy friss előfeldolgozási Train műveletet meg kell végeznie a LargeFaceList, mielőtt FindSimilar működik.
+Ahogy az előzőekben is látható, az adatkezelés és a FindSimilar rész majdnem ugyanaz. Az egyetlen kivétel az, hogy egy friss előfeldolgozási műveletnek a FindSimilar működése előtt végre kell hajtania a LargeFaceList.
 
 ## <a name="step-3-train-suggestions"></a>3\. lépés: Javaslatok betanítása
 
-Bár a vonat művelet felgyorsítja [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) és [azonosító](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), romlik a betanítási idő, különösen akkor, ha a várható a nagy méretű. A különböző skálákkal becsült képzési időpontja az alábbi táblázatban szerepel.
+Bár a betanítási művelet felgyorsítja a [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) és az [azonosítást](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), a képzési idő szenved, különösen akkor, ha nagy léptékben érkezik. A következő táblázat felsorolja a becsült tanítási időt különböző léptékekben.
 
-| Nagy számú arcok vagy személyek | Becsült képzési idő |
+| Méretezés arcokhoz vagy személyekhez | Becsült betanítási idő |
 |:---:|:---:|
-| 1,000 | 1 – 2 mp-ben |
-| 10,000 | 5 – 10 másodperc |
-| 100,000 | 1 – 2 perc |
-| 1,000,000 | 10-30 min |
+| 1,000 | 1-2 MP |
+| 10,000 | 5-10 mp |
+| 100,000 | 1-2 perc |
+| 1,000,000 | 10-30 perc |
 
-Jobban tudják használni a nagy méretű funkciót, javasoljuk a következő stratégiák.
+A nagyméretű funkciók jobb kihasználásához a következő stratégiákat javasoljuk.
 
-### <a name="step-31-customize-time-interval"></a>3\.1. lépés: Időintervallum testreszabása
+### <a name="step-31-customize-time-interval"></a>3,1. lépés: Időintervallum testreszabása
 
-Amint azt `TrainLargeFaceList()`, adott idő alatt ezredmásodpercben késleltetheti a végtelen képzési állapotának ellenőrzése folyamatban van. A több arcot tartalmazó LargeFaceList esetén nagyobb időköz választása csökkenti a meghívások számát és költségét. Testre szabhatja az időintervallum szerint a LargeFaceList várt kapacitását.
+Ahogy az a- `TrainLargeFaceList()`ben is látható, a végtelen betanítási állapot-ellenőrzési folyamat késleltethető ezredmásodpercben. A több arcot tartalmazó LargeFaceList esetén nagyobb időköz választása csökkenti a meghívások számát és költségét. Szabja testre az időintervallumot a LargeFaceList várt kapacitásának megfelelően.
 
-Az azonos stratégia LargePersonGroup is vonatkozik. Például ha, betanításához egy LargePersonGroup 1 millió személyekkel `timeIntervalInMilliseconds` lehet 60 000, egy 1 perces időszak, amely.
+Ugyanez a stratégia a LargePersonGroup is vonatkozik. Ha például 1 000 000 személyt tartalmazó LargePersonGroup-t tanít be, `timeIntervalInMilliseconds` akkor az a 60 000, amely egy 1 perces intervallum.
 
-### <a name="step-32-small-scale-buffer"></a>3\.2. lépés: Semmibe puffer
+### <a name="step-32-small-scale-buffer"></a>3,2. lépés: Kisméretű puffer
 
-Azok a személyek vagy egy LargePersonGroup vagy egy LargeFaceList arcok csak azután betanítása kereshetők meg. A dinamikus forgatókönyvekben új személyek, illetve az arcok folyamatosan kerülnek, és azonnal kereshető kell lennie, de képzési hosszabb, mint a kívánt is igénybe vehet. 
+A LargePersonGroup vagy LargeFaceList lévő személyek vagy arcok csak a képzés után kereshetők. Dinamikus forgatókönyv esetén az új személyeket vagy arcokat folyamatosan hozzá kell adni, és azonnal kereshetőnek kell lenniük, de a képzés hosszabb időt is igénybe vehet. 
 
-A probléma mérséklése érdekében használjon egy extra semmibe LargePersonGroup vagy LargeFaceList pufferként csak az újonnan hozzáadott bejegyzéseket. Ezt a puffert miatt a kisebb méretet taníthat be rövidebb ideig tart. A közvetlen keresési funkció az átmeneti tárolóba a működnie kell. A fő LargePersonGroup vagy LargeFaceList képzési együtt használja ezt a puffert a fő képzési sparser időközönként futtatásával. Példák az éjszakai és napi közepén.
+A probléma megoldásához használjon egy extra kis méretű LargePersonGroup-vagy LargeFaceList-puffert csak az újonnan hozzáadott bejegyzésekhez. A puffer kevesebb időt vesz igénybe a kisebb méret miatt. Az átmeneti puffer azonnali keresési funkciójának működnie kell. Használja ezt a puffert a Master LargePersonGroup vagy a LargeFaceList képzésével együtt azáltal, hogy a főképzést egy ritka intervallumban futtatja. Ilyenek például az éjszaka közepén és naponta.
 
 Példa munkafolyamat:
 
-1. Hozzon létre egy fő LargePersonGroup vagy LargeFaceList, azaz a fő gyűjtemény. Hozzon létre egy puffer LargePersonGroup vagy LargeFaceList puffer gyűjteményéhez. A puffer gyűjteménye csak az újonnan hozzáadott személyek vagy arcokat.
-1. Új személyek, illetve az arcok hozzáadása a buffer-gyűjtemény és a fő gyűjtésére.
-1. A puffer gyűjtemény adott rövid idő alatt, győződjön meg arról, hogy az újonnan felvett bejegyzések érvénybe csak betanításához.
-1. Hívja meg az azonosító vagy FindSimilar ellen a fő gyűjtemény és a puffer gyűjteményben is. Egyesíti az eredményeket.
-1. A gyűjtemény pufferméret küszöbértékre vagy inaktív rendszer egyszerre növekszik, amikor új puffer gyűjtemény létrehozása. A fő gyűjtemény Train művelet indítása.
-1. A fő gyűjteményen a vonat művelet végeztével, törölje a régi puffer gyűjtemény.
+1. Hozzon létre egy fő LargePersonGroup vagy LargeFaceList, amely a fő gyűjtemény. Hozzon létre egy puffert LargePersonGroup vagy LargeFaceList, amely a puffer gyűjteménye. A pufferek gyűjteménye csak újonnan felvett személyekhez vagy arcokhoz használható.
+1. Vegyen fel új személyeket vagy arcokat a fő gyűjteménybe és a puffer-gyűjteménybe.
+1. Csak rövid időintervallummal betaníthatja a puffer gyűjteményét, így biztosítva, hogy az újonnan hozzáadott bejegyzések érvénybe lépnek.
+1. Az azonosítás vagy a FindSimilar a fő gyűjteményre és a puffer-gyűjteményre vonatkozóan hívható meg. Egyesítse az eredményeket.
+1. Ha a puffer-gyűjtemény mérete egy küszöbértékre vagy egy rendszertétlen időpontra nő, hozzon létre egy új puffer-gyűjteményt. Aktiválja a betanítási műveletet a fő gyűjteményen.
+1. Törölje a régi puffer-gyűjteményt, miután a Train művelet befejeződik a fő gyűjteményen.
 
-### <a name="step-33-standalone-training"></a>3\.3. lépés: Önálló képzés
+### <a name="step-33-standalone-training"></a>3,3. lépés: Önálló képzés
 
-Egy viszonylag hosszú várakozási ideje fogadható el, ha nem szükséges a megfelelő műveletet a Train eseményindító hozzáadása új adatok után. Ehelyett a betanítás művelet a fő működésről leválasztva indítható rendszeresen. Ez a stratégia akkor dinamikus szituációkra elfogadható késése mellett. További Train gyakoriságának csökkentése érdekében statikus forgatókönyvek alkalmazhatók.
+Ha a viszonylag hosszú késés elfogadható, nem szükséges a vonat működésének elindításához közvetlenül az új adatértékek hozzáadása után. Ehelyett a betanítás művelet a fő működésről leválasztva indítható rendszeresen. Ez a stratégia alkalmas olyan dinamikus forgatókönyvekhez, amelyek elfogadható késéssel rendelkeznek. A vonatok gyakoriságának további csökkentése érdekében statikus forgatókönyvekre is alkalmazható.
 
-Tegyük fel, hogy van egy `TrainLargePersonGroup` funkcióhoz hasonló `TrainLargeFaceList`. A különálló képzés a figyelőn egy LargePersonGroup tipikus megvalósításában a [ `Timer` ](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) osztály `System.Timers` van:
+Tegyük fel, `TrainLargePersonGroup` hogy `TrainLargeFaceList`a függvény hasonló a következőhöz:. A LargePersonGroup [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) önálló betanításának tipikus megvalósítása a következő osztály meghívásával `System.Timers` :
 
-```CSharp
+```csharp
 private static void Main()
 {
     // Create a LargePersonGroup.
@@ -259,18 +259,18 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 }
 ```
 
-Adatkezelési és -implementációk azonosító kapcsolatos további információ: [adja hozzá az arcok](how-to-add-faces.md) és [Arcazonosítás képen egy](HowtoIdentifyFacesinImage.md).
+További információ az adatkezelésről és az azonosítással kapcsolatos megvalósításokról: [arcok hozzáadása](how-to-add-faces.md) és [arcok azonosítása egy képben](HowtoIdentifyFacesinImage.md).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
-Ebben az útmutatóban megtanulta, hogyan telepítheti át a meglévő is lehet PersonGroup vagy FaceList kód, nem adatokat, a LargePersonGroup vagy LargeFaceList:
+Ebben az útmutatóban megtanulta, hogyan telepítheti át a meglévő PersonGroup-vagy FaceList-kódot a LargePersonGroup vagy a LargeFaceList:
 
-- LargePersonGroup és LargeFaceList működik is lehet PersonGroup vagy FaceList, hasonló, azzal a különbséggel, hogy a vonat művelet LargeFaceList van szüksége.
-- A nagy méretű adatkészletek dinamikus frissítése a megfelelő Train stratégia igénybe vehet.
+- A LargePersonGroup és a LargeFaceList hasonló módon működnek, mint a PersonGroup vagy a FaceList, azzal a különbséggel, hogy a LargeFaceList a vonatok műveletét igényli.
+- A nagyméretű adathalmazok dinamikus adatfrissítéséhez végezze el a megfelelő betanítási stratégiát.
 
 ## <a name="next-steps"></a>További lépések
 
-Hajtsa végre az arcok ad hozzá egy is lehet PersonGroup vagy hajtsa végre a műveletet egy is lehet PersonGroup azonosítása megismeréséhez használati útmutatója.
+A következő útmutatóból megtudhatja, hogyan adhat hozzá arcokat egy PersonGroup, vagy hogyan hajthatja végre az azonosítási műveletet egy PersonGroup.
 
 - [Arcok hozzáadása](how-to-add-faces.md)
-- [Arcazonosítás képen egy](HowtoIdentifyFacesinImage.md)
+- [Képeken lévő arcok azonosítása](HowtoIdentifyFacesinImage.md)

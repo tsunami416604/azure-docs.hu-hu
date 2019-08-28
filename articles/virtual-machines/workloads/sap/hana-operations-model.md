@@ -1,72 +1,71 @@
 ---
-title: SAP Hana az Azure-ban (nagyméretű példányok) működési modellt |} A Microsoft Docs
-description: SAP Hana az Azure-ban (nagyméretű példányok) működési modellt.
+title: Azure-beli SAP HANA operatív modellje (nagyméretű példányok) | Microsoft Docs
+description: SAP HANA operatív modellje az Azure-ban (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: da033232209c304e82f3fbe7dac164bd7222f557
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9a8ea845dd53048766abc337a1351a408ea7f1bb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707354"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099695"
 ---
 # <a name="operations-model-and-responsibilities"></a>Működési modell és feladatok
 
-A szolgáltatás az SAP HANA az Azure-ban (nagyméretű példányok) a megadott Azure IaaS-szolgáltatások igazodik. Kap egy nagyméretű HANA-példány, az SAP HANA-hoz optimalizált telepített operációs rendszer egy példánya. Mint az Azure IaaS virtuális gépeket, műveletek, az operációs rendszer korlátozására, valamilyen más szoftvert telepítenie, HANA telepítése, az operációs rendszer és a HANA operációs és frissítése az operációs rendszer és a HANA feladata a. A Microsoft nem érvényben lévő, az operációs rendszer és a HANA-frissítéseket.
+Az Azure-ban (nagyméretű példányok) SAP HANA által biztosított szolgáltatás az Azure IaaS-szolgáltatásokkal van összhangban. A HANA nagyméretű példány egy példánya egy telepített operációs rendszerrel rendelkezik, amely SAP HANAre van optimalizálva. Csakúgy, mint az Azure IaaS virtuális gépek esetében, az operációs rendszer megerősítő feladatai, a további szoftverek telepítése, a HANA telepítése, az operációs rendszer és a HANA működtetése, valamint az operációs rendszer és a HANA az Ön felelőssége. A Microsoft nem kényszeríti az operációs rendszer frissítéseit és a HANA-frissítéseket.
 
-![Az SAP HANA az Azure-ban (nagyméretű példányok) feladatai](./media/hana-overview-architecture/image2-responsibilities.png)
+![Az Azure-beli SAP HANA feladatai (nagyméretű példányok)](./media/hana-overview-architecture/image2-responsibilities.png)
 
-Ahogy az ábrán látható, az SAP HANA az Azure-ban (nagyméretű példányok) egy több-bérlős IaaS ajánlat. Többségében az osztálynak a feladata az operációsrendszer-infrastruktúra határ van. A Microsoft felelős a sor az operációs rendszer alatt a szolgáltatás minden aspektusát. Ön felelős a sor fölé a szolgáltatás minden aspektusát. Az operációs rendszer az Ön felelőssége. Továbbra is lehet alkalmazni a legújabb helyszíni módszerek megfelelőségi, biztonsági, felügyelet, alapja és az operációs rendszer felügyeleti használandó. A rendszerek jelennek meg, mintha azok a hálózaton lévő összes Üdvözlettel.
+Ahogy az ábrán látható, a SAP HANA az Azure-ban (nagyméretű példányok) egy több-bérlős IaaS ajánlat. A felelősség megosztásának a legtöbb esetben az operációs rendszer-infrastruktúra határa. A Microsoft felelős a szolgáltatás minden aspektusa számára az operációs rendszer sorában. A szolgáltatás a sorban lévő összes aspektusa felelős. Az operációs rendszer az Ön felelőssége. Továbbra is használhatja a legtöbb aktuális helyszíni módszert, amelyet a megfelelőség, a biztonság, az alkalmazások kezelése, az alap és az operációs rendszer kezelése során alkalmazhat. A rendszerek úgy jelennek meg, mintha a hálózatban vannak.
 
-Ez a szolgáltatás így területek, ahol kell dolgozni a mögöttes infrastruktúra-funkciók használata a legjobb eredmények elérése érdekében a Microsoft az SAP Hana-hoz optimalizáltuk.
+Ez a szolgáltatás SAP HANAre van optimalizálva, ezért vannak olyan területek, ahol a Microsofttal kell együttműködni a legjobb eredmények érdekében a mögöttes infrastruktúra-funkciók használatához.
 
-Az alábbi lista részletesen az egyes réteget és az Ön feladatkörei biztosítja:
+Az alábbi lista részletesen ismerteti az egyes rétegeket és a felelősségi köröket:
 
-**Hálózatkezelés**: A belső hálózatok számára a futó SAP HANA nagyméretű szolgáltatáspéldányban. A felhasználó felelőssége hozzáférést biztosít a tárolás, a példányhoz (például a horizontális felskálázást és egyéb funkciók), a kapcsolat a fekvő és a kapcsolatokat az Azure-bA az SAP alkalmazásrétegre üzemeltető közötti kapcsolatot a virtuális gépek. Is tartalmaz a WAN-kapcsolatra vész helyreállítási célokra replikáció az Azure adatközpontok között. Minden hálózatból elérhető a bérlői szerint vannak particionálva, és rendelkezik a alkalmazni szolgáltatás-minőségi.
+**Hálózatkezelés**: A SAP HANAt futtató nagyméretű példányok Stamp összes belső hálózata. Az Ön felelőssége magában foglalja a tároláshoz való hozzáférést, a példányok közötti kapcsolatot (a kibővíthető és egyéb funkciókhoz), a környezethez való kapcsolódást és az Azure-beli kapcsolódást, ahol az SAP-alkalmazás rétege a virtuális gépeken található Az Azure-adatközpontok közötti WAN-kapcsolatot is magában foglalja a vész-helyreállítási célú replikációhoz. Az összes hálózatot a bérlő particionálja, és minőségi szolgáltatást alkalmaz.
 
-**Tárolási**: A virtualizált particionálni az SAP HANA-kiszolgáló számára szükséges összes kötetet, valamint a pillanatképek tárolási. 
+**Tárterület**: A SAP HANA-kiszolgálók és a pillanatképek számára szükséges összes kötet virtualizált particionált tárolója. 
 
-**Kiszolgálók**: A dedikált fizikai kiszolgálók az SAP HANA-adatbázisok futtatását hozzárendelt a bérlők számára. A kiszolgálók típusú I osztályhoz termékváltozatok a hardver emeli ki. Az ilyen kiszolgálók a kiszolgáló konfigurációs van gyűjtött és karbantartása a profilok, amelyek egy másik fizikai hardveren egyetlen fizikai hardverről helyezheti át. Az ilyen (manuális) áttért a profil által végrehajtott műveletek az Azure-szolgáltatás javítása egy kicsit hasonlítható. A kiszolgálók, II. típusú osztály SKU-ja nem érhető el az ilyen képességet.
+**Kiszolgálók**: A dedikált fizikai kiszolgálók, amelyek a bérlők számára hozzárendelt SAP HANA adatbázisok futtatására szolgálnak. Az I. típusú SKU-I osztályba tartozó kiszolgálók hardveres absztraktak. Az ilyen típusú kiszolgálók esetében a kiszolgálói konfiguráció összegyűjtése és karbantartása a profilokban történik, amelyek az egyik fizikai hardverről egy másik fizikai hardverre helyezhetők át. A profilok műveleteinek ilyen (manuális) áthelyezése egy kicsit az Azure-szolgáltatások gyógyítására is hasonlítható. A II kategóriájú SKU-i kiszolgálók nem nyújtanak ilyen képességet.
 
-**SDDC**: A felügyeleti szoftver adatok kezelésére szolgáló szoftver-meghatározott entitásokként erőforrások. A Microsoft lehetővé teszi az adatbáziskészlet erőforrásainak méretezés, a rendelkezésre állás és a teljesítmény javítása érdekében.
+**SDDC**: Az adatközpontok szoftver által definiált entitásként való kezeléséhez használt felügyeleti szoftver. Lehetővé teszi a Microsoft számára az erőforrások méretezési, rendelkezésre állási és teljesítménybeli kiosztását.
 
-**O/S**: Az operációs rendszer választja (SUSE Linux vagy Red Hat Linux) futtató kiszolgálókon. A rendszer a megadott operációsrendszer-lemezképek megadva az egyes Linux-gyártó által a Microsoftnak az SAP HANA futtatásához. A Linux-gyártó az SAP HANA-ra optimalizált adott rendszerkép rendelkező előfizetés kell rendelkeznie. Ön felelős a képek rögzítése az operációs rendszer szállítójához. 
+**O/S**: A kiszolgálókon futó operációs rendszer (SUSE Linux vagy Red Hat Linux). A megadott operációsrendszer-lemezképeket az egyes linuxos gyártók adták ki a Microsoftnak a SAP HANA futtatásához. Az adott SAP HANA-re optimalizált rendszerképekhez előfizetéssel kell rendelkeznie a linuxos gyártónál. Ön felelős a lemezképeknek az operációs rendszer gyártójával való regisztrálásához. 
 
-Készenléti feladat átadása a Microsoft által a pontról Ön felelős minden olyan további javítása, a Linux operációs rendszert. További csomagok, amelyek egy SAP HANA sikeres telepítéséhez szükséges lehet, és, amely nem tartalmazza az SAP HANA-ban az adott Linux-gyártó által a javításokat tartalmaz operációsrendszer-lemezképek optimalizált. (További információkért lásd az SAP HANA-telepítési dokumentációt és SAP-megjegyzések) 
+A Microsoft által átadott időpontban Ön felelős a Linux operációs rendszer további javításával. Ez a javítás olyan további csomagokat tartalmaz, amelyek a sikeres SAP HANA telepítéséhez szükségesek, és amelyeket az adott linuxos gyártó nem tartalmazott a SAP HANA optimalizált operációsrendszer-lemezképekben. (További információ: az SAP HANA telepítési dokumentációja és SAP-megjegyzések.) 
 
-Ön felelős operációs rendszer javításait hibásan működik, vagy az operációs rendszer optimalizálás és az illesztőprogramok az adott kiszolgálói hardver viszonyítva. Is Ön felelős biztonsági és funkcionális javítás az operációs rendszer. 
+Az operációs rendszer javításának felelőssége az operációs rendszer és a hozzá tartozó illesztőprogramok az adott kiszolgálói hardverhez képest történő meghibásodása vagy optimalizálása miatt. Az operációs rendszer biztonsági vagy funkcionális javításának felelőssége is. 
 
-Ön felelőssége a figyelés és a kapacitástervezés is tartalmazza:
+Az Ön felelőssége a következők figyelését és kapacitásának megtervezését is magában foglalja:
 
-- Erőforrás-használat Processzor.
-- Memóriahasználatát.
-- Kötetek szabad terület, az IOPS és a késleltetés kapcsolódik.
-- A hálózati forgalomnak nagyméretű HANA-példány és az SAP alkalmazásrétegre között.
+- CPU-erőforrások felhasználása.
+- Memóriahasználat.
+- A szabad területtel, a IOPS és a késéssel kapcsolatos lemezes kötetek.
+- Hálózati kötet forgalma a HANA nagyméretű példánya és az SAP-alkalmazás rétege között.
 
-Az alapul szolgáló infrastruktúrát, a nagyméretű HANA-példányt a biztonsági mentés és az operációsrendszer-kötet visszaállítása funkciót biztosít. Ez a funkció használata is a felhasználó felelőssége.
+A HANA nagyméretű példány mögöttes infrastruktúrája az operációs rendszer kötetének biztonsági mentésére és visszaállítására szolgáló funkciókat biztosít. A funkció használata is az Ön felelőssége.
 
-**Közbenső**: Az SAP HANA példányok, elsősorban. Felügyeleti, műveleti és figyelési az Ön felelőssége. A megadott funkció segítségével tárolási pillanatfelvételeket kíván használni a biztonsági mentési és visszaállítási és vész-helyreállítási céllal. Ezek a képességek az infrastruktúra által biztosított. Az Ön feladatkörei is magas rendelkezésre állású és vész-helyreállítási ezekkel a lehetőségekkel kihasználva őket, és a figyelés meghatározni, hogy storage pillanatképek sikeresen végrehajtva tervezése.
+**Middleware**: A SAP HANA példány, elsődlegesen. Az adminisztráció, a műveletek és a monitorozás az Ön felelőssége. A megadott funkciókkal tárolási pillanatképeket használhat a biztonsági mentéshez és helyreállításhoz, valamint a vész-helyreállítási célokra. Ezeket a képességeket az infrastruktúra biztosítja. A feladatai közé tartozik a magas rendelkezésre állás vagy a vész-helyreállítás megtervezése ezekkel a képességekkel, a kihasználása és a figyelés annak megállapítása, hogy a tárolási Pillanatképek végrehajtása sikeres volt
 
-**Adatok**: Az SAP HANA által kezelt adatok és az egyéb adatok, például a biztonsági mentések köteteken található fájlt vagy fájlt oszt meg. Az Ön feladatkörei közé tartozik a szabad lemezterület figyelése és kezelése a tartalom a köteteken. Is Ön felelős lemezkötetek és a pillanatképek tárolási, biztonsági mentések sikeres végrehajtásának figyelése. A Microsoft feladata a vész-helyreállítási helyek az adatok replikálása sikeres végrehajtását.
+Adatértékek: A SAP HANA által kezelt adatokat és más adatokat, például a kötetek vagy fájlmegosztás biztonsági másolatait tartalmazó fájlokat. A feladatai közé tartozik a lemez szabad területének figyelése és a kötetek tartalmának kezelése. A lemezes kötetek és a tárolási Pillanatképek biztonsági mentéseinak sikeres végrehajtásának figyelésére is felelős. Az adatreplikáció a vész-helyreállítási helyekre való sikeres végrehajtása a Microsoft feladata.
 
-**Alkalmazások:** Az SAP alkalmazás példányai vagy az SAP alkalmazások, ezeknek az alkalmazásoknak az alkalmazásrétegre. Az Ön feladatkörei közé tartozik a központi telepítési, felügyeleti, műveleti és ezen alkalmazások figyelését. Ön felelős hasznosan Processzor-erőforrás-használat, memóriahasználat, az Azure-tárhelyhasználat és hálózati sávszélességet a virtuális hálózatokon belül. Is Ön felelős kapacitás megtervezése a SAP Hana-hoz a virtuális hálózatok erőforrás-használat az Azure-ban (nagyméretű példányok).
+**Alkalmazások** Az SAP-alkalmazás példányai vagy nem SAP-alkalmazások esetében az alkalmazások alkalmazási rétege. Feladatai közé tartoznak az alkalmazások üzembe helyezése, felügyelete, működtetése és figyelése. Ön felelős a CPU-erőforrások felhasználásának, a memóriahasználat, az Azure Storage-felhasználás és a virtuális hálózatokon belüli hálózati sávszélesség-használat megtervezésének. Az Azure-ban (nagyméretű példányok) SAP HANA virtuális hálózatok erőforrás-felhasználásának megtervezéséhez is felelős.
 
-**WAN-OK**: A kapcsolatok létrehozása a helyszíni számítási feladatok Azure-környezetek. Minden, a nagyméretű HANA-példány ügyfél számára a csatlakozást az Azure ExpressRoute használata. Ez a kapcsolat nem az SAP HANA az Azure-ban (nagyméretű példányok) megoldás része. Ön felelős a beállítás a kapcsolat.
+**WAN**: A helyszíni környezetből az Azure-ba történő munkaterhelések számára létrehozott kapcsolatok. A HANA nagyméretű példánnyal rendelkező ügyfelek az Azure ExpressRoute-t használják a kapcsolódáshoz. Ez a kapcsolat nem része az Azure-beli (nagyméretű példányok) megoldás SAP HANAjának. Ön felelős ennek a hálózatnak a beállításaiért.
 
-**Archív**: Előfordulhat, hogy inkább az archív adatok másolatát a saját módszerrel a storage-fiókok. Archiválás szükséges felügyeleti, megfelelőségi, költségeket és műveleteket. Ön felelős létrehozni archívum másolatot és biztonsági másolatokat az Azure és a egy megfelelő módon tárolja őket.
+**Archiválás**: Érdemes lehet archiválni az adatok másolatait a Storage-fiókokban lévő saját metódusok használatával. Az archiváláshoz a felügyelet, a megfelelőség, a költségek és a műveletek szükségesek. Ön felelős az Azure-beli archív másolatok és biztonsági másolatok létrehozásában, és megfelelő módon tárolja őket.
 
-Tekintse meg a [SLA-t, az SAP Hana az Azure-ban (nagyméretű példányok)](https://azure.microsoft.com/support/legal/sla/sap-hana-large/).
+Tekintse [meg az Azure-beli SAP HANA SLA-t (nagyméretű példányok)](https://azure.microsoft.com/support/legal/sla/sap-hana-large/).
 
 **Következő lépések**
-- Tekintse meg [Azure-beli SAP HANA (nagyméretű példányok) architektúra](hana-architecture.md)
+- Tekintse át [SAP HANA (nagyméretű példányok) architektúráját az Azure-](hana-architecture.md) ban

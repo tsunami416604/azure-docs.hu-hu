@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 444e64488b185b1ff2aa7cc63fbeffafc591dbfe
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: 69c63d4eb2e0bfd04bb232cb0cf39965a5b77193
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68319984"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70104257"
 ---
 ## <a name="benefits-of-managed-disks"></a>A felügyelt lemezek előnyei
 
@@ -53,7 +53,7 @@ Az [Azure Storage Service encryption](../articles/storage/common/storage-service
 
 ### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
 
-Azure Disk Encryption lehetővé teszi a IaaS virtuális gépek által használt operációs rendszer és adatlemezek titkosítását. Ez a titkosítás felügyelt lemezeket tartalmaz. A Windows rendszerben a meghajtók titkosítása az iparági szabványnak megfelelő BitLocker titkosítási technológiával történik. A Linux rendszerben a lemezek titkosítása a DM-Crypt technológiával történik. A titkosítási folyamat integrálva van Azure Key Vault, hogy lehetővé tegye a lemezes titkosítási kulcsok vezérlését és kezelését. További információ: [Azure Disk Encryption IaaS virtuális gépekhez](../articles/security/azure-security-disk-encryption-overview.md).
+Azure Disk Encryption lehetővé teszi a IaaS virtuális gépek által használt operációs rendszer és adatlemezek titkosítását. Ez a titkosítás felügyelt lemezeket tartalmaz. A Windows rendszerben a meghajtók titkosítása az iparági szabványnak megfelelő BitLocker titkosítási technológiával történik. A Linux rendszerben a lemezek titkosítása a DM-Crypt technológiával történik. A titkosítási folyamat integrálva van az Azure Key Vaulttal, így vezérelheti és felügyelheti a lemeztitkosítási kulcsokat. További információ: [Azure Disk Encryption IaaS virtuális gépekhez](../articles/security/azure-security-disk-encryption-overview.md).
 
 ## <a name="disk-roles"></a>Lemez szerepkörei
 
@@ -77,7 +77,9 @@ Minden virtuális gép tartalmaz egy ideiglenes lemezt, amely nem felügyelt lem
 
 ## <a name="managed-disk-snapshots"></a>Felügyelt lemezek pillanatképei
 
-A felügyelt lemez pillanatfelvétele egy felügyelt lemez írásvédett, alapértelmezés szerint a standard szintű felügyelt lemezként tárolt teljes másolata. A pillanatképekkel bármikor készíthet biztonsági mentést a felügyelt lemezekről. Ezek a pillanatképek függetlenek a forrásoldali lemeztől, és új felügyelt lemezek létrehozásához használhatók. A díjak a felhasznált méret alapján lesznek kiszámlázva. Ha például létrehoz egy pillanatképet egy felügyelt lemezről, amely 64 GiB kiépített kapacitással rendelkezik, és a tényleges felhasznált adatok mérete 10 GiB, a pillanatkép számlázása csak a 10 GiB felhasznált adatméretre történik.  
+A felügyelt lemez pillanatfelvétele egy felügyelt lemez írásvédett, alapértelmezés szerint a standard szintű felügyelt lemezként tárolt teljes másolata. A pillanatképekkel bármikor készíthet biztonsági mentést a felügyelt lemezekről. Ezek a pillanatképek függetlenek a forrásoldali lemeztől, és új felügyelt lemezek létrehozásához használhatók. 
+
+A pillanatképek számlázása a felhasznált méret alapján történik. Ha például létrehoz egy pillanatképet egy felügyelt lemezről, amely 64 GiB kiépített kapacitással rendelkezik, és a tényleges felhasznált adatok mérete 10 GiB, a pillanatkép számlázása csak a 10 GiB felhasznált adatméretre történik. A pillanatképek használt mérete az [Azure használati jelentésének](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill)megtekintésével tekinthető meg. Ha például egy pillanatkép által használt adatméret 10 GiB, a használati jelentés 10 GiB/(31 nap x 24 óra) = 0,013441 GiB-t jelenít meg a felhasznált mennyiségnek megfelelően.
 
 Ha szeretne többet megtudni arról, hogyan hozhat létre pillanatképeket a felügyelt lemezekkel, tekintse meg a következő forrásokat:
 

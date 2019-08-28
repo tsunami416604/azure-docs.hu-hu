@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: f893e417420b26dcb56e0d84551fbad3577b8fdb
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c597bb47ba6d075523b2eb2ca4d146fa22a97a2e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874876"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083079"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2-pureScale az Azure-ban
 
@@ -41,7 +40,7 @@ Ez a cikk nem fedi le az IBM DB2 for z/OS adatbázisnak a Linux rendszeren futó
 A környezet legjobb DB2 pureScale architektúrájának meghatározásához javasoljuk, hogy teljes mértékben becsülje meg a méretezést, és hozzon ki egy hipotézist. A forrásrendszer esetében ügyeljen arra, hogy a DB2 z/OS párhuzamos Sysplex az adatmegosztási architektúra, a csatlakozási lehetőség konfigurációja és az elosztott adatközpont (DDF) használati statisztikái alapján vegye figyelembe.
 
 > [!NOTE]
-> Ez a cikk az DB2-Migrálás egyik módszerét ismerteti, de mások is vannak. A DB2-pureScale például virtualizált helyszíni környezetekben is futhatnak. Az IBM számos konfigurációban támogatja a DB2 használatát a Microsoft Hyper-V-ben. További információ: [DB2 pureScale Virtualization Architecture](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/r0061462.html) az IBM Knowledge Centerben.
+> Ez a cikk az DB2-Migrálás egyik módszerét ismerteti, de mások is vannak. A DB2-pureScale például virtualizált helyszíni környezetekben is futhatnak. Az IBM számos konfigurációban támogatja a DB2 használatát Microsoft Hyper-V. További információ: [DB2 pureScale Virtualization Architecture](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/r0061462.html) az IBM Knowledge Centerben.
 
 ## <a name="architecture"></a>Architektúra
 

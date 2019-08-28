@@ -1,6 +1,6 @@
 ---
-title: ILB App Service Environment-környezet integrálható az Application Gateway – Azure
-description: Az ILB App Service-környezet az alkalmazások integrálása egy Application Gateway a forgatókönyv
+title: ILB-App Service Environment integrálása Application Gateway-Azure-val
+description: Útmutató az alkalmazások ILB App Service Environment való integrálásához Application Gateway
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -9,117 +9,116 @@ ms.assetid: a6a74f17-bb57-40dd-8113-a20b50ba3050
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ea46b5e57e4e508a3311de8633ae61d346b574eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 090952a065b8c3b2b25ad737992b68b9bc9aa9ec
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764847"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069472"
 ---
-# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Az ILB App Service-környezet integrálható az Azure Application Gateway #
+# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Environment integrálása az Azure Application Gateway #
 
-A [App Service Environment-környezet](./intro.md) üzembe helyezése az Azure App Service egy ügyfél az Azure virtuális hálózat alhálózatában van. Is üzembe helyezhető egy nyilvános vagy privát végponttal az alkalmazás eléréséhez. Az App Service Environment egy privát végponttal (azaz egy belső terheléselosztót) telepítése egy ILB App Service Environment-környezet neve.  
+Az [app Service Environment](./intro.md) a Azure app Service központi telepítése az ügyfél Azure-beli virtuális hálózatának alhálózatában. Nyilvános vagy privát végponton is üzembe helyezhető az alkalmazás eléréséhez. A App Service Environment egy privát végponttal (azaz belső terheléselosztó) való üzembe helyezése ILB App Service Environment.  
 
-Webalkalmazás-tűzfalak biztonságos súgó a webes alkalmazások vizsgálatával szerezheti be a bejövő webes forgalmat blokkolja az SQL-injektálások, a Webhelyközi, parancsfájl-kezelési rosszindulatú feltöltéseket és DDoS-alkalmazásokat és egyéb támadások. Szintén átvizsgálja a válaszokat a háttér-kiszolgálókról az adatok adatveszteség-megelőzési (DLP). A WAF-eszközzel megtekintheti az Azure marketplace-ről, vagy használhatja a [Azure Application Gateway][appgw].
+A webalkalmazási tűzfalak biztosítják a webalkalmazások védelmét azáltal, hogy megvizsgálják a bejövő webes forgalmat az SQL-injektálások, a helyek közötti parancsfájlok, a kártevő-feltöltések & az Application DDoS és más támadások ellen. Emellett megvizsgálja a háttér-webkiszolgálók válaszait az adatveszteség-megelőzési (DLP) szolgáltatáshoz. WAF-eszközt az Azure Marketplace-en szerezhet be, vagy használhatja az [azure Application Gatewayt][appgw]is.
 
-Az Azure Application Gateway-példány virtuális berendezés által biztosított 7. rétegbeli terheléselosztást, SSL-kiürítés és webes alkalmazások tűzfal (WAF) védelmét. Figyelheti, hogy az egy nyilvános IP-cím és útvonal forgalmat az alkalmazás-végponthoz. A következő információkat ismerteti, hogyan lehet egy konfigurált WAF application gateway integrálása egy alkalmazást egy ILB App Service-környezetben.  
+Az Azure Application Gateway egy virtuális készülék, amely 7. rétegbeli terheléselosztást, SSL-kiszervezést és webalkalmazási tűzfal (WAF) védelmet biztosít. Egy nyilvános IP-cím figyelésére és az alkalmazás-végpontra irányuló forgalom irányítására is képes. Az alábbi információk azt ismertetik, hogyan integrálható egy WAF-konfigurált Application Gateway egy ILB App Service Environment alkalmazással.  
 
-Az application gateway az ILB App Service Environment-integrációjának van az alkalmazás szintjén. Az application gateway az ILB App Service-környezet konfigurál, amikor végzett, konkrét alkalmazások esetén az ILB App Service-környezetben. Ez a módszer lehetővé teszi, hogy egy ILB App Service-környezet a biztonságos több-bérlős alkalmazások üzemeltetése.  
+Az Application Gateway integrációja a ILB App Service Environment az alkalmazás szintjén van. Ha az Application Gateway-t a ILB App Service Environment konfigurálja, akkor a ILB App Service Environment adott alkalmazásaihoz. Ez a módszer lehetővé teszi a biztonságos több-bérlős alkalmazások üzemeltetését egyetlen ILB App Service Environment.  
 
-![Az Application gateway ILB App Service Environment-alkalmazás mutató][1]
+![Application Gateway, amely az alkalmazásra mutat egy ILB App Service Environment][1]
 
 A bemutató keretében a következő lépéseket fogja végrehajtani:
 
-* Az Azure Application Gateway létrehozása.
-* Konfigurálja az Application Gateway, mutasson az ILB App Service-környezet alkalmazásban.
-* Az alkalmazás, tartsa tiszteletben az egyéni tartománynév konfigurálása.
-* Szerkessze a nyilvános DNS-állomás neve, amely az application gateway mutat.
+* Hozzon létre egy Azure-Application Gateway.
+* Konfigurálja úgy a Application Gateway, hogy az ILB App Service Environment alkalmazásra mutasson.
+* Konfigurálja az alkalmazást az Egyéni tartománynév tiszteletben tartására.
+* Szerkessze a nyilvános DNS-állomásnevet, amely az Application gatewayre mutat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Application Gateway integrálása az ILB App Service-környezet, az alábbiak szükségesek:
+Ahhoz, hogy a Application Gateway integrálása a ILB App Service Environment, a következőkre lesz szüksége:
 
-* Egy ILB App Service-környezet.
-* Az ILB App Service Environment-ban futó alkalmazás.
-* Az internetes irányítható tartománynév az ILB App Service-környezetben az alkalmazással használandó.
-* Az ILB-címmel, amely az ILB App Service-környezetben használja. Ez az információ van az App Service Environment-környezet portál **beállítások** > **IP-címek**:
+* Egy ILB App Service Environment.
+* A ILB App Service Environment futó alkalmazás.
+* A ILB App Service Environmentban az alkalmazáshoz használandó Internet-útválasztós tartománynév.
+* A ILB App Service Environment által használt ILB-címe. Ez az információ a app Service Environment-portál **Beállítások** > **IP-címei**területen található:
 
-    ![Példa listája az ILB App Service-környezet által használt IP-címek][9]
+    ![A ILB által használt IP-címek példáinak listája App Service Environment][9]
     
-* Egy nyilvános DNS-neve, amellyel később az Application Gateway mutasson. 
+* Egy nyilvános DNS-név, amelyet később a Application Gatewayre mutatnak. 
 
-Egy ILB App Service Environment-környezet létrehozásával kapcsolatos részletekért lásd: [létrehozása és a egy ILB App Service Environment-környezet használatával][ilbase].
+A ILB-App Service Environment létrehozásával kapcsolatos további információkért lásd: [ILB-app Service Environment létrehozása és használata][ilbase].
 
-Ez a cikk feltételezi, hogy az azonos Azure virtuális hálózat, ahol telepíti az App Service-környezetben lévő Application Gateway. Az Application Gateway létrehozása előtt válasszon ki vagy hozzon létre egy alhálózatot az átjáró üzemeltetéséhez használt. 
+Ez a cikk azt feltételezi, hogy egy Application Gateway ugyanabban az Azure-beli virtuális hálózaton kívánja használni, ahol a App Service Environment telepítve van. Mielőtt megkezdené a Application Gateway létrehozását, válasszon ki vagy hozzon létre egy alhálózatot, amelyet az átjáró üzemeltetéséhez fog használni. 
 
-Használjon egy alhálózatot, amely nem az egyik nevű átjáró-alhálózat. Ha az Application Gateway átjáró-alhálózat helyezi, nem hozható létre egy virtuális hálózati átjáró később fogja. 
+Olyan alhálózatot használjon, amely nem a GatewaySubnet nevű. Ha a GatewaySubnet-ben helyezi el a Application Gateway, akkor később nem hozhat létre virtuális hálózati átjárót. 
 
-Az átjáró, amely az ILB App Service-környezetben használja az alhálózat nem állítható. Az App Service-környezet, hogy az alhálózat is lehet.
+Nem helyezheti el az átjárót abban az alhálózatban, amelyet a ILB App Service Environment használ. A App Service Environment az egyetlen dolog, ami ebben az alhálózatban lehet.
 
 ## <a name="configuration-steps"></a>Konfigurációs lépések ##
 
-1. Az Azure Portalon lépjen a **új** > **hálózati** > **Application Gateway**.
+1. A Azure Portal lépjen az **új** > **hálózati** > **Application Gateway**elemre.
 
-2. Az a **alapjai** terület:
+2. Az **alapok** területén:
 
-   a. A **neve**, adja meg az Application Gateway neve.
+   a. A **név**mezőben adja meg a Application Gateway nevét.
 
-   b. A **szint**válassza **WAF**.
+   b. A **rétegek**területen válassza a **WAF**lehetőséget.
 
-   c. A **előfizetés**, válassza ki az App Service Environment-környezet virtuális hálózat által használt ugyanahhoz az előfizetéshez.
+   c. Az **előfizetés**mezőben válassza ki azt az előfizetést, amelyet a app Service Environment virtuális hálózat használ.
 
-   d. A **erőforráscsoport**, hozzon létre vagy válassza ki az erőforráscsoportot.
+   d. **Erőforráscsoport**esetében hozza létre vagy válassza ki az erőforráscsoportot.
 
-   e. A **hely**, válassza ki az App Service Environment-környezet virtuális hálózat helyén.
+   e. A **hely**mezőben válassza ki a app Service Environment virtuális hálózat helyét.
 
-   ![Új Application Gateway létrehozása alapjai][2]
+   ![Új Application Gateway létrehozási alapjai][2]
 
-3. Az a **beállítások** terület:
+3. A **Beállítások** területén:
 
-   a. A **virtuális hálózati**, válassza ki az App Service Environment-környezet virtuális hálózatot.
+   a. A **Virtual Network (virtuális hálózat**) területen válassza ki a app Service Environment virtuális hálózatot.
 
-   b. A **alhálózati**, válassza ki az alhálózatot, ahol az Application Gateway kell telepíteni. Ne használjon GatewaySubnet, mert megakadályozza, hogy a VPN-átjárók létrehozása.
+   b. Az **alhálózat**területen válassza ki azt az alhálózatot, ahol a Application Gateway telepíteni kell. Ne használja a GatewaySubnet-t, mert megakadályozza a VPN-átjárók létrehozását.
 
-   c. A **IP-cím típusa**válassza **nyilvános**.
+   c. Az **IP-cím típusa**beállításnál válassza a **nyilvános**lehetőséget.
 
-   d. A **nyilvános IP-cím**, válassza ki a nyilvános IP-címet. Ha nem rendelkezik ilyennel, hozzon létre egyet most.
+   d. **Nyilvános IP-cím**esetén válasszon egy nyilvános IP-címet. Ha még nem rendelkezik ilyennel, hozzon létre egyet most.
 
-   e. A **protokoll**válassza **HTTP** vagy **HTTPS**. HTTPS konfigurálása esetén, meg kell adnia egy PFX-tanúsítvány.
+   e. A **protokoll**beállításnál válassza a **http** vagy a **https**lehetőséget. Ha HTTPS-re konfigurálja, meg kell adnia egy PFX-tanúsítványt.
 
-   f. A **webalkalmazási tűzfal**, engedélyezheti a tűzfalat, és is állíthatja ezt a **észlelési** vagy **megelőzési** tetszés szerint.
+   f. A **webalkalmazási tűzfal**esetében engedélyezheti a tűzfalat, és beállíthatja az **észleléshez** vagy a **megelőzéshez** is, ahogy azt látja.
 
-   ![Új Application Gateway-létrehozási beállítások][3]
+   ![Új Application Gateway létrehozási beállításai][3]
     
-4. Az a **összefoglalás** részen tekintse át a beállításokat, és válassza ki **OK**. Az Application Gateway is igénybe vehet egy kicsit több mint 30 perc a telepítés befejezéséhez.  
+4. Az **Összefoglalás** szakaszban tekintse át a beállításokat, majd kattintson az **OK gombra**. A telepítés befejezéséhez a Application Gateway akár 30 percet is igénybe vehet.  
 
-5. Az Application Gateway telepítés befejezése után nyissa meg az Application Gateway-portálról. Válassza ki **háttérkészlet**. ILB-címét adja meg az ILB App Service-környezet.
+5. Miután a Application Gateway befejezte a telepítést, lépjen a Application Gateway portálra. Válassza a **háttér-készlet**lehetőséget. Adja hozzá a ILB App Service Environment ILB-címeit.
 
-   ![Háttérkészlet konfigurálása][4]
+   ![Háttérbeli készlet konfigurálása][4]
 
-6. A háttérkészlet konfigurálása a folyamat befejezése után jelölje ki a **állapotadat-mintavételek**. Hozzon létre egy állapotmintát az alkalmazáshoz használni kívánt tartománynév esetében. 
+6. Miután befejezte a háttér-készlet konfigurálásának folyamatát, válassza az **állapot**-mintavétel lehetőséget. Hozzon létre egy állapot-mintavételt az alkalmazáshoz használni kívánt tartománynévhez. 
 
    ![Állapotminták konfigurálása][5]
     
-7. Az állapot-mintavételei konfigurálásának folyamatán befejezése után jelölje ki a **HTTP-beállítások**. Válassza ki a meglévő beállítások szerkesztése **az egyéni mintavétel**, és válassza ki a mintavételt, amelyet a konfigurált.
+7. Miután befejezte az állapot-mintavételek konfigurálását, válassza a **http-beállítások**lehetőséget. Szerkessze a meglévő beállításokat, válassza az **Egyéni mintavétel használata**lehetőséget, és válassza ki a konfigurált mintavételt.
 
    ![HTTP-beállítások konfigurálása][6]
     
-8. Nyissa meg az Application Gateway **áttekintése** szakaszt, és másolja a nyilvános IP-címet, amely az Application Gateway használja. Állítsa be az IP-cím, egy A rekordot az alkalmazás tartománynevet, vagy egy CNAME rekordot a DNS-név arra a címre használata. Válassza ki a nyilvános IP-címet, és másolja a nyilvános IP-cím felhasználói felületről helyett másolja azt a hivatkozásból az Application Gateway az egyszerűbb **áttekintése** szakaszban. 
+8. Nyissa meg a Application Gateway **Áttekintés** szakaszát, és másolja a Application Gateway által használt nyilvános IP-címet. Állítsa be az IP-címet az alkalmazás tartománynevéhez tartozó rekordként, vagy használja az adott cím DNS-nevét egy CNAME-rekordban. Könnyebben kiválaszthatja a nyilvános IP-címet, és átmásolhatja a nyilvános IP-cím KEZELŐFELÜLETéről ahelyett, hogy átmásolja a hivatkozást a Application Gateway **Áttekintés** szakaszának hivatkozására. 
 
-   ![Application Gateway-portál][7]
+   ![Application Gateway portál][7]
 
-9. Állítsa be az alkalmazás számára az egyéni tartománynév az ILB App Service Environment környezetben. Nyissa meg az alkalmazás a portálon, és a **beállítások**válassza **egyéni tartományok**.
+9. Állítsa be az alkalmazás egyéni tartománynevét a ILB App Service Environment. Nyissa meg az alkalmazást a portálon, és a **Beállítások**területen válassza az **Egyéni tartományok**elemet.
 
    ![Egyéni tartománynév beállítása az alkalmazásban][8]
 
-Nincs információ a web apps számára egyéni tartománynevek beállítása a cikkben a [a webalkalmazás egyéni tartománynevek beállítása][custom-domain]. Azonban az alkalmazás egy ILB App Service-környezetben, a tartománynévnek minden olyan érvényesítése nem áll rendelkezésre. Mivel Ön a tulajdonosa, amely az alkalmazás végpontok kezeli a DNS-ben, bármilyen kívánt meg ott helyezheti. Ebben az esetben adja hozzá az egyéni tartománynév nem kell lennie a DNS-ben, de azt is konfigurálni kell az alkalmazását. 
+A webalkalmazásokhoz tartozó egyéni tartománynevek beállítására vonatkozó információk a webalkalmazás [Egyéni tartománynevének beállítása][custom-domain]című cikkben találhatók. Egy ILB App Service Environment alkalmazás esetében azonban nincs érvényesítés a tartománynévben. Mivel Ön az alkalmazás-végpontokat kezelő DNS-t birtokolja, bármit is igénybe vehet. Az ebben az esetben hozzáadott egyéni tartománynévnek nem kell a DNS-ben lennie, de még be kell állítania az alkalmazással. 
 
-Miután befejeződik a telepítés, és engedélyezte, hogy egy rövid ideig a DNS módosításainak propagálása, elérheti az alkalmazás az Ön által létrehozott egyéni tartománynév használatával. 
+Miután a telepítés befejeződött, és a DNS-módosítások propagálásához szükséges rövid idő, az alkalmazáshoz az Ön által létrehozott egyéni tartománynév használatával férhet hozzá. 
 
 
 <!--IMAGES-->

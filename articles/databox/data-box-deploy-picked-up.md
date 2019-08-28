@@ -1,21 +1,33 @@
 ---
-title: Az oktatóanyag az Azure Data Box való visszaküldésére |} A Microsoft Docs
+title: Oktatóanyag a Azure Data Box visszaszállításához | Microsoft Docs
 description: Megtudhatja, hogyan küldheti vissza az Azure Data Boxot a Microsofthoz.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 7/08/2019
+ms.date: 8/27/2019
 ms.author: alkohli
-ms.openlocfilehash: db0f0ac3073687b7c1cd8ca60e459e4bb3aa03f4
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 368439d6e15d6c94bbb96d67fcb48ab006234c95
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626360"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098830"
 ---
-# <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Oktatóanyag: Vissza az Azure Data Box, és ellenőrizze az adatok feltöltése az Azure-bA
+::: zone target="docs"
+
+# <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Oktatóanyag: Az Azure-ba való adatfeltöltés Azure Data Boxának visszaküldése és ellenőrzése
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="return-data-box-and-verify-data-upload-to-azure"></a>Az Azure-ba való adatfeltöltés Data Boxának visszaküldése és ellenőrzése
+
+::: zone-end
+
+::: zone target="docs"
 
 Az oktatóanyagból megtudhatja, hogyan küldheti vissza az Azure Data Boxot, és ellenőrizheti az adatok az Azure-ba való feltöltését.
 
@@ -23,55 +35,74 @@ Ebben az oktatóanyagban az alábbi témaköröket ismerheti meg:
 
 > [!div class="checklist"]
 > * Előfeltételek
-> * A szállítás előkészítése
+> * Szállításra való előkészítés
 > * A Data Box elküldése a Microsoftnak
 > * Az Azure-ba történő adatfeltöltés ellenőrzése
 > * Adatok törlése a Data Boxról
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg arról, hogy:
+Mielőtt elkezdené, győződjön meg róla, hogy:
 
-- Már elvégezte a [oktatóanyag: Adatok másolása az Azure Data Box, és ellenőrizze](data-box-deploy-copy-data.md). 
-- Másolás feladatok elkészültek. Szállításra való nem futtatható, ha a másolási feladat folyamatban van.
+- Elvégezte az [oktatóanyagot: Másolja az adatAzure Data Box és ellenőrizze](data-box-deploy-copy-data.md)a következőt:. 
+- A másolási feladatok készek. A szállításra való előkészítés nem futtatható, ha a másolási feladatok folyamatban vannak.
 
-## <a name="prepare-to-ship"></a>A szállítás előkészítése
+## <a name="prepare-to-ship"></a>Szállításra való előkészítés
 
 [!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
+::: zone-end
+
+::: zone target="chromeless"
+
+Az Adatmásolás befejezése után előkészíti és elszállítja az eszközt. Amikor az eszköz eléri az Azure-adatközpontot, az automatikusan feltölti az Azure-ba.
+
+## <a name="prepare-to-ship"></a>Szállításra való előkészítés
+
+A szállítás előkészítése előtt győződjön meg arról, hogy a másolási feladatok készek.
+
+1. Nyissa meg a helyi webes kezelőfelület **Prepare to ship** (Szállítás előkészítése) lapját, és kezdje meg az előkészületeket a szállításra. 
+2. Kapcsolja ki az eszközt a helyi webes kezelőfelületen. Válassza le a kábeleket az eszközről. 
+
+A következő lépéseket az eszköz visszaadása határozza meg.
+
+::: zone-end
+
+::: zone target="docs"
+
 ## <a name="ship-data-box-back"></a>Data Box visszaküldése
 
-Győződjön meg arról, hogy helyesek-e az adatok másolása eszköz és **szállításra való** Futtatás sikeres. A régió, ahol az eszköz szállítja alapján, az eljárás eltér.
+Győződjön meg arról, hogy az eszközön lévő Adatmásolás befejeződött, és a **szállításra való előkészítés** futtatása sikeres. Az eljárás különbözik attól függően, hogy az eszköz melyik régióból szállítja az eszközt.
 
+::: zone-end
 
-### <a name="ship-in-us-canada-europe"></a>Szállításra, Kanada, USA Európában
+## <a name="ship-in-us-canada-europe"></a>USA, Kanada és Európa szállítása
 
-Ha az eszköz visszaadása az USA, Kanada vagy Európában, tegye a következőket.
+Hajtsa végre az alábbi lépéseket, ha az eszközt az Egyesült Államokban, Kanadában vagy Európában adja vissza.
 
-1. Győződjön meg arról, hogy az eszköz be van kapcsolva, és kábelek el lesznek távolítva. 
+1. Győződjön meg arról, hogy az eszköz ki van kapcsolva, és a kábelek el lesznek távolítva. 
 2. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
-3. Győződjön meg arról, hogy a fuvarlevélcímke látható az E-ink kijelzőn, és egyeztesse a csomagfelvételt a szállítóval. Ha a címke megsérült vagy elveszett vagy nem jelenik meg az E-ink megjelenő, forduljon a Microsoft Support. A támogatási javasol, akkor elvégezheti **áttekintés > levélcímke letöltése** az Azure Portalon. Töltse le a szállítási címkét, és elhelyezi az eszközön. 
-4. Ha az eszközök visszatérő, ütemezhet a UPS begyűjtést. Ütemezhet begyűjtést:
+3. Győződjön meg arról, hogy a fuvarlevélcímke látható az E-ink kijelzőn, és egyeztesse a csomagfelvételt a szállítóval. Ha a címke sérült vagy elveszett, vagy nem jelenik meg az E-Ink megjelenítésnél, forduljon a Microsoft ügyfélszolgálatahoz. Ha a támogatás azt sugallja, az Áttekintés > a Azure Portal a **szállítási címke letöltése** lehetőségre. Töltse le a szállítási címkét, és helyezze el az eszközön. 
+4. Ha az eszközt visszaküldi, a UPS-sel ütemezhet egy felvételt. Felvételi ütemterv:
 
-    - Hívja meg a helyi UPS (ország/régió-specifikus díjmentesen ingyenes szám).
-    - A hívás az ajánlat a fordított szállítmány követési szám az E-ink megjelenítési vagy a nyomtatott felirat látható módon.
-    - A nyomkövetési azonosító szám není uveden v uvozovkách, ha a UPS kell, hogy külön díj fizessen a begyűjtés során.
+    - Hívja meg a helyi UPS-t (ország/régió-specifikus díjmentes szám).
+    - A hívásban adja meg a fordított szállítólevél nyomon követésének számát az E-Ink-megjelenítésben vagy a nyomtatott címkén látható módon.
+    - Ha a nyomkövetési szám nem található, a UPS-nek további díjat kell fizetnie a felvétel során.
 
-    Ahelyett, hogy a begyűjtés ütemezés is húzhatja a Data Box, a legközelebbi gyűjtőhely ki.
+    A pickup ütemezése helyett a Data Box a legközelebbi legördülő helyen is elvégezheti.
 4. Miután a futár felvette és beolvasta a Data Boxot, a rendelés állapota a portálon **Szállítás alatt** állapotra módosul. A nyomkövetési azonosító is megjelenik.
 
-### <a name="ship-in-asia-pacific-region"></a>Ázsia és csendes-óceáni régióban szállításra
 
-#### <a name="ship-in-australia"></a>Az ausztráliai szállításra
+## <a name="ship-in-australia"></a>Szállítás Ausztráliában
 
-Az ausztráliai Azure-adatközpontok rendelkezik egy kiegészítő biztonsági értesítést. A bejövő szállítmányok rendelkeznie kell egy speciális értesítést. Az alábbi lépéseket az ausztráliai szállításra.
+Az Ausztráliában található Azure-adatközpontok további biztonsági értesítésekkel rendelkeznek. Az összes bejövő szállítmánynak speciális értesítéssel kell rendelkeznie. Végezze el az alábbi lépéseket Ausztráliában való szállításhoz.
 
 
-1. Az eredeti mezőben használja a visszaszállításhoz az eszköz szállításra való megőrzése.
-2. Győződjön meg arról, hogy helyesek-e az adatok eszközre való másolását, és **Futtatás szállításra való** sikeres volt.
-3. Kapcsolja ki az eszközt, és távolítsa el a kábelek.
-4. Várólistában hozzá tartozó, és biztonságosan helyezze el a tápkábelt az eszközhöz hátulján az eszköz a megadott.
-5. E-mailek Quantium megoldások kérni. Tekintse meg a referencia az Azure Portalon megadott száma. A következő e-mail-sablont használja:- *fordított levélcímke TAU kódra vonatkozó kérelem*. Ügyeljen arra, hogy az e-mailben a következő részleteket tartalmazza: 
+1. Őrizze meg az eszköz a visszaszállításra való szállításához használt eredeti mezőt.
+2. Győződjön meg arról, hogy az eszközön lévő Adatmásolás befejeződött, és a **szállításra való előkészítés futtatása** sikeres.
+3. Kapcsolja ki az eszközt, és távolítsa el a kábeleket.
+4. A nyomtatásisor-kezelő és az eszköz hátulján lévő eszközzel biztosított tápkábelt helyezze el biztonságosan.
+5. E-mail-Quantium-megoldások pickup igényléséhez. Tekintse át a Azure Portal megadott szolgáltatási hivatkozási számot. Használja a következő e-mail-sablont:- *Request for visszirányú Shipping címke a Tau-kóddal*. Ügyeljen arra, hogy a következő adatokat tartalmazza az e-mailben: 
 
     ```
     To: Azure@quantiumsolutions.com
@@ -83,28 +114,27 @@ Az ausztráliai Azure-adatközpontok rendelkezik egy kiegészítő biztonsági �
     - Contact number:
     - Requested pickup date: mm/dd
     ```
-6. Quantium megoldások Ausztrália fog e-mailben egy visszaszállítási címkét.
-7. A visszaadott címke a nyomtató- és elhelyezi azt a a szállítás mezőbe.
-8. Kézi keresztül a csomag, a courier.
+6. A Quantium Solutions Ausztrália e-mailben küldi el a visszaküldött szállítási címkéket.
+7. Nyomtassa ki a visszatérési címkét, és helyezze el a szállítás mezőben.
+8. Adja át a csomagot a futárnak.
 
-Ha szükséges, írhat e-mailt Quantium megoldás támogatását Azure@quantiumsolutions.com vagy telefonszámát.
+Ha szükséges, e-mailben Quantium a megoldás támogatását a Azure@quantiumsolutions.com vagy telefonon.
 
+A telefonon keresztüli rendeléssel kapcsolatos lekérdezés:
 
-Lekérdezési telefonon keresztül a rendelés vonatkozóan:
-
-- Először a felvételre e-mail küldése.
+- Először küldjön egy e-mailt a felvételhez.
 - Adja meg a rendelés nevét a telefonon.
 
-#### <a name="ship-in-japan"></a>A japán szállításra 
+## <a name="ship-in-japan"></a>Szállítás Japánban 
 
-1. Az eredeti mezőben használja a visszaszállításhoz az eszköz szállításra való megőrzése.
-2. Kapcsolja ki az eszközt, és távolítsa el a kábelek.
-3. Várólistában hozzá tartozó, és biztonságosan helyezze el a tápkábelt az eszközhöz hátulján az eszköz a megadott.
-4. A küldő adatai, a kísérő a nevét és címét adatokat írnak a vállalata.
-5. Az e-mail-Quantium megoldás az alábbi e-mail-sablon használatával.
+1. Őrizze meg az eszköz a visszaszállításra való szállításához használt eredeti mezőt.
+2. Kapcsolja ki az eszközt, és távolítsa el a kábeleket.
+3. A nyomtatásisor-kezelő és az eszköz hátulján lévő eszközzel biztosított tápkábelt helyezze el biztonságosan.
+4. Adja meg a cég nevét és a címadatokat a küldeményre vonatkozó információként a küldő adatai alapján.
+5. E-mail-Quantium-megoldás a következő e-mail-sablon használatával.
 
-    - Ha a japán Post Chakubarai kísérő nem tartalmaz, vagy nincs megadva, vegye figyelembe, hogy az e-mail tartalma. Quantium megoldások japán japán Post ahhoz, hogy a kísérő felvétel után fog igényelni.
-    - Ha több megrendelések, az e-mailben, győződjön meg, hogy az egyes begyűjtést.
+    - Ha a Japan post Chakubarai-fuvarlevél nem tartalmazott vagy hiányzik, jegyezze fel ezt az e-mailt. A Quantium-megoldások Japán a postán kérik a küldeményt, hogy vegye fel a figyelmét a felvételre.
+    - Ha több megrendelés is van, e-mailben gondoskodhat az egyéni felvételről.
 
     ```
     To: Customerservice.JP@quantiumsolutions.com
@@ -118,13 +148,14 @@ Lekérdezési telefonon keresztül a rendelés vonatkozóan:
     d. 17：00-19：00 
     ```
 
-3. Egy megerősítő e-mailt kap a Quantium megoldások után, de már begyűjtést. A megerősítő e-mailt a Chakubarai kísérő információkat is biztosít.
+3. A Quantium-megoldásoktól kapott e-mail-visszaigazolást, miután elkönyvelt egy felvételt. Az e-mail-visszaigazolás a Chakubarai-szállítmány megjegyzésével kapcsolatos információkat is tartalmaz.
 
-Szükség esetén is ügyfélszolgálatot Quantium megoldás (japán nyelv), a következő információkat: 
+Ha szükséges, lépjen kapcsolatba a Quantium-megoldás támogatásával (Japán nyelvvel) a következő információkkal: 
 
-- E-mail cím:Customerservice.JP@quantiumsolutions.com 
+- E-mailCustomerservice.JP@quantiumsolutions.com 
 - Telefon: 03-5755-0150 
 
+::: zone target="docs"
 
 ## <a name="verify-data-upload-to-azure"></a>Az Azure-ba történő adatfeltöltés ellenőrzése
 
@@ -134,30 +165,42 @@ Az ellenőrzés végeztével a Data Boxot csatlakoztatjuk a hálózatra az Azure
 
 A másolás végeztével a rendelés állapota **Befejezve** értéke vált.
 
-Győződjön meg arról, hogy az adatok feltöltése az Azure-ba, a forrás-törlés előtt. Az adatok lehetnek:
+Győződjön meg arról, hogy az adatok fel vannak töltve az Azure-ba, mielőtt törölné a forrásból. Az adatai a következőket vehetik fel:
 
-- Az Azure Storage-fiókok. A Data Boxra másolt adatok a típusuktól függően a következő elérési utak egyikére lesznek feltöltve az Azure Storage-fiókban.
+- Azure Storage-fiókja (ke) t. A Data Boxra másolt adatok a típusuktól függően a következő elérési utak egyikére lesznek feltöltve az Azure Storage-fiókban.
 
   - Blokkblobok és lapblobok esetében: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
   - Azure Files esetében: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
     Alternatív megoldásként navigálhat az Azure Storage-fiókjából is az Azure Portalon.
 
-- A felügyelt lemez erőforráscsoport(ok). Felügyelt lemezek létrehozásakor a virtuális merevlemezeket lapblobként feltöltött és majd a felügyelt lemezekké való konvertálása. A felügyelt lemezek vannak csatolva az erőforráscsoportok, a megadott sorrendben létrehozásának időpontjában. 
+- A felügyelt lemez erőforrás-csoportja (i). A felügyelt lemezek létrehozásakor a virtuális merevlemezeket blobként kell feltölteni, majd felügyelt lemezekre konvertáljuk. A felügyelt lemezek a rendelés létrehozásakor megadott erőforráscsoporthoz vannak csatolva. 
 
-    - Ha a példány az Azure-ban felügyelt lemezekre sikeres volt, megnyithatja a **rendelés részletei** az Azure Portalon, és jegyezze fel az erőforráscsoportokat a felügyelt lemezek megadott ügyeljen.
+    - Ha az Azure-beli felügyelt lemezekre történő másolás sikeres volt, lépjen a Azure Portal **rendelés részleteibe** , és jegyezze fel a felügyelt lemezekhez megadott erőforráscsoportokat.
 
-        ![Felügyelt lemez az erőforrás-csoportok azonosítása](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
+        ![Felügyelt lemezes erőforráscsoportok azonosítása](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
 
-        Nyissa meg a feljegyzett erőforráscsoportot, és keresse meg a felügyelt lemezek.
+        Nyissa meg a feljegyzett erőforráscsoportot, és keresse meg a felügyelt lemezeket.
 
-        ![Felügyelt erőforráscsoport csatlakoztatott lemez](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
+        ![Erőforráscsoporthoz csatolt felügyelt lemez](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
 
-    - Ha egy dinamikus vagy különbséglemez VHD vagy vhdx-fájlt másolja, majd a VHDX-/ VHD töltenek fel egy lapblob, de a virtuális merevlemez átalakítása felügyelt lemez meghibásodik, az előkészítési tárfiókból. Nyissa meg az átmeneti **tárfiók > Blobok** , és válassza ki a megfelelő tárolót – Standard SSD, Standard HDD vagy prémium SSD-re. A virtuális merevlemezeket lapblobként az átmeneti tárfiókban lesznek feltöltve.
+    - Ha egy VHDX vagy egy dinamikus/különbséglemezek VHD-t másolt, akkor a VHDX/VHD-t oldal blobként kell feltölteni az átmeneti tárolóba, de a VHD-t felügyelt lemezre való átalakítás meghiúsul. Nyissa meg az átmeneti **tárolási fiókot > blobokat** , majd válassza ki a megfelelő tároló-standard SSD, standard HDD vagy prémium SSD. A virtuális merevlemezeket a rendszer az átmeneti tárolási fiókban lévő blobként töltse fel.
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Az Azure-ba történő adatfeltöltés ellenőrzése
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+::: zone-end
 
 ## <a name="erasure-of-data-from-data-box"></a>Adatok törlése a Data Boxról
  
 Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box törli a lemezeken található adatokat a [NIST SP 800-88 Revision 1 útmutatásainak](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) megfelelően.
+
+::: zone target="docs"
 
 ## <a name="next-steps"></a>További lépések
 
@@ -165,7 +208,7 @@ Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a köv
 
 > [!div class="checklist"]
 > * Előfeltételek
-> * A szállítás előkészítése
+> * Szállításra való előkészítés
 > * A Data Box elküldése a Microsoftnak
 > * Az Azure-ba történő adatfeltöltés ellenőrzése
 > * Adatok törlése a Data Boxról
@@ -174,5 +217,7 @@ A következő cikk a Data Box a helyi webes felületen keresztül történő fel
 
 > [!div class="nextstepaction"]
 > [Az Azure Data Box felügyelete a helyi webes felhasználói felülettel](./data-box-local-web-ui-admin.md)
+
+::: zone-end
 
 

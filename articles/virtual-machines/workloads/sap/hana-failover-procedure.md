@@ -7,19 +7,18 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad7cfbac1dffdab4af7afc26c98c0582bc376c99
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: c2c8483948deae41edbe3922dc77361ba2c58a94
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494339"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099870"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Vészhelyreállítási feladatátvételi eljárás
 
@@ -43,7 +42,7 @@ Ha több SAP HANA példány feladatátvételét szeretné végrehajtani, többsz
 A DR feladatátvételt is tesztelheti a tényleges replikációs kapcsolat befolyásolása nélkül. A feladatátvételi teszt végrehajtásához kövesse az Azure-beli SAP HANAhoz készült [Microsoft pillanatkép-eszközök](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)"teszt készítése Dr feladatátvétel-azure_hana_test_dr_failover" című szakaszának lépéseit. 
 
 >[!IMPORTANT]
->Ne *futtasson* üzemi tranzakciókat a Dr-helyen a **feladatátvétel tesztelésének**folyamatán keresztül létrehozott példányon. Az azure_hana_test_dr_failover parancs olyan kötetek készletét hozza létre, amelyek nem rendelkeznek kapcsolattal az elsődleges hellyel. Ennek eredményeképpen az elsődleges helyhez való szinkronizálás *nem* lehetséges. 
+>Ne futtasson üzemi tranzakciókat a Dr-helyen a **feladatátvétel tesztelésének**folyamatán keresztül létrehozott példányon. Az azure_hana_test_dr_failover parancs olyan kötetek készletét hozza létre, amelyek nem rendelkeznek kapcsolattal az elsődleges hellyel. Ennek eredményeképpen az elsődleges helyhez való szinkronizálás *nem* lehetséges. 
 
 Ha több SAP HANA-példányt szeretne tesztelni, futtassa többször a parancsfájlt. Ha a rendszer kéri, adja meg a feladatátvételi teszthez használni kívánt példány SAP HANA SID-azonosítóját. 
 

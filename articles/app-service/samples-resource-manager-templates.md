@@ -1,53 +1,52 @@
 ---
 title: Azure Resource Manager-sablonminták – App Service | Microsoft Docs
-description: Az Azure Resource Manager-sablonminták az App Service-ben
+description: Azure Resource Manager sablon minták a App Service
 services: app-service
 documentationcenter: app-service
 author: tfitzmac
 tags: azure-service-management
 ms.service: app-service
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: app-service
 ms.date: 01/04/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 842ec98245522095334b9f17e8c12292b7c1dda8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83bb357544d9069da1c86f583eaca5a470953ce8
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835430"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066473"
 ---
-# <a name="azure-resource-manager-templates-for-app-service"></a>App Service-ben az Azure Resource Manager-sablonokkal
+# <a name="azure-resource-manager-templates-for-app-service"></a>App Service Azure Resource Manager sablonjai
 
-A következő táblázat Azure Resource Manager-sablonokra mutató hivatkozásokat tartalmaz az Azure App Service-ben. Javaslatok a sablonok létrehozásakor előforduló gyakori hibák, lásd: [útmutatójában alkalmazások az Azure Resource Manager-sablonok](deploy-resource-manager-template.md).
+Az alábbi táblázat a Azure App Service Azure Resource Manager sablonjaira mutató hivatkozásokat tartalmaz. Az alkalmazás-sablonok létrehozásakor előforduló gyakori hibák elkerülésével kapcsolatos javaslatokért tekintse [meg az alkalmazások Azure Resource Manager-sablonokkal való üzembe helyezésének útmutatását](deploy-resource-manager-template.md).
 
-A JSON-szintaxist és a tulajdonságokat App Services-erőforrások kapcsolatos további információkért lásd: [Microsoft.Web erőforrástípusok](/azure/templates/microsoft.web/allversions).
+A App Services erőforrások JSON-szintaxisával és tulajdonságaival kapcsolatos további információkért lásd: [Microsoft. Web Resource types](/azure/templates/microsoft.web/allversions).
 
 | | |
 |-|-|
 |**Alkalmazás üzembe helyezése**||
-| [App Service-csomag és az alapszintű Linux-alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-linux) | Üzembe helyez egy App Service-alkalmazás, amely Linux van konfigurálva. |
-| [App Service-csomag és az alapszintű Windows-alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-windows) | Üzembe helyez egy App Service-alkalmazás, amely Windows van konfigurálva. |
-| [Egy GitHub-adattárhoz kapcsolódó alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-github-deploy)| Üzembe helyez egy App Service-alkalmazást, amely a githubról kér le kódokat. |
-| [Egyéni üzembehelyezési pontokat használó alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots)| Az egyéni üzembehelyezési pontok/környezetek egy App Service alkalmazást helyezünk üzembe. |
+| [App Service csomag és alapszintű Linux-alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-linux) | Üzembe helyez egy Linux rendszerhez konfigurált App Service alkalmazást. |
+| [App Service csomag és alapszintű Windows-alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-windows) | Központilag telepíti a Windows rendszerhez konfigurált App Service alkalmazást. |
+| [GitHub-adattárhoz csatolt alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-github-deploy)| Üzembe helyez egy App Service alkalmazást, amely kódot húz le a GitHubról. |
+| [Alkalmazás egyéni üzembe helyezési pontokkal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots)| Üzembe helyez egy App Service alkalmazást egyéni üzembe helyezési pontokkal/környezetekkel. |
 |**Alkalmazás konfigurálása**||
-| [Tanúsítvány a Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Üzembe helyez egy App Service-ben tanúsítvány a az Azure Key Vault titkos kulcsából, és SSL-kötés létrehozásához használja. |
-| [Egyéni tartományt használó alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain)| Üzembe helyez egy App Service-alkalmazás, amely egyéni gazdagépnévvel rendelkezik. |
-| [Alkalmazás és a egy egyéni tartományt és SSL](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Üzembe helyez egy App Service-alkalmazás, amely egyéni gazdagépnévvel rendelkezik, és lekér egy tanúsítványt a Key Vault SSL-kötés létrehozásához. |
-| [Alkalmazás GoLang bővítménnyel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Üzembe helyez egy App Service alkalmazást a Golang webhelybővítménnyel. Ezután futtathatja a Golangben fejlesztett webalkalmazásokat az Azure-ban. |
-| [Java 8- és Tomcat 8-alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| Üzembe helyez egy App Service-alkalmazást Java 8-és Tomcat 8-támogatással. Ezután Java-alkalmazásokat futtathat az Azure-ban. |
+| [Alkalmazás-tanúsítvány Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Üzembe helyez egy App Service alkalmazás-tanúsítványt egy Azure Key Vault titkos kulcsból, és az SSL-kötéshez használja azt. |
+| [Alkalmazás egyéni tartománnyal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain)| Üzembe helyez egy App Service alkalmazást egyéni állomásnévvel. |
+| [Alkalmazás egyéni tartománnyal és SSL-lel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Üzembe helyez egy App Service alkalmazást egyéni állomásnévvel, és beolvassa az alkalmazás tanúsítványát az Key Vaultból az SSL-kötéshez. |
+| [Alkalmazás GoLang bővítménnyel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Üzembe helyez egy App Service alkalmazást a Golang hely bővítménnyel. Ezután futtathatja a Golangben fejlesztett webalkalmazásokat az Azure-ban. |
+| [Alkalmazás Java 8 és tomcat 8](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| Üzembe helyez egy App Service alkalmazást a Java 8 és a Tomcat 8 használata esetén. Ezután Java-alkalmazásokat futtathat az Azure-ban. |
 |**Linux-alkalmazás csatlakoztatott erőforrásokkal**||
-| [Alkalmazás Linux rendszeren és MySQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-mysql) | Üzembe helyez egy App Service-alkalmazás Linux rendszeren az Azure Database for MySQL-hez. |
-| [Alkalmazás Linux rendszeren és PostgreSQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-postgresql) | Üzembe helyez egy App Service-alkalmazás Linux rendszeren az Azure Database for postgresql-hez. |
+| [Alkalmazás Linuxon MySQL-vel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-mysql) | Központilag telepít egy App Service alkalmazást Linux rendszeren, Azure Database for MySQL. |
+| [Alkalmazás Linuxon a PostgreSQL használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-postgresql) | Központilag telepít egy App Service alkalmazást Linux rendszeren, Azure Database for PostgreSQL. |
 |**Alkalmazás csatlakoztatott erőforrásokkal**||
-| [Alkalmazás és MySQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-mysql)| Üzembe helyez App Service-alkalmazások, a Windows az Azure Database for MySQL-hez. |
-| [Alkalmazás-és PostgreSQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-postgresql)| Üzembe helyez App Service-alkalmazások, a Windows az Azure Database for postgresql-hez. |
-| [Alkalmazás és a egy SQL-adatbázis](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| Üzembe helyez egy App Service-alkalmazás és a egy alapszintű szolgáltatási szintű SQL database. |
-| [Az alkalmazás egy Blob storage-kapcsolattal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Üzembe helyez egy App Service-alkalmazás egy Azure Blob tárolási kapcsolati karakterlánccal. Ezután használhatja a Blob storage-az alkalmazást. |
-| [Alkalmazás és az Azure Cache Redis](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| Üzembe helyez egy App Service-alkalmazás az Azure Cache redis. |
+| [Alkalmazás MySQL-sel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-mysql)| Üzembe helyez egy App Service alkalmazást a Windows rendszeren Azure Database for MySQL. |
+| [Alkalmazás PostgreSQL-sel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-postgresql)| Üzembe helyez egy App Service alkalmazást a Windows rendszeren Azure Database for PostgreSQL. |
+| [Alkalmazás SQL-adatbázissal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| Üzembe helyez egy App Service alkalmazást és egy SQL-adatbázist az alapszintű szolgáltatási szinten. |
+| [Alkalmazás blob Storage-kapcsolatban](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Üzembe helyez egy App Service alkalmazást egy Azure Blob Storage-beli kapcsolatok karakterláncával. Ezután használhatja a blob Storage-t az alkalmazásból. |
+| [Alkalmazás egy Azure cache for Redis](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| Üzembe helyez egy App Service alkalmazást a Redis készült Azure cache-sel. |
 |**App Service-környezet a PowerApps alkalmazáshoz**||
 | [App Service Environment v2-környezet létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | Létrehoz egy App Service Environment v2-környezetet a virtuális hálózaton. |
 | [App Service Environment v2-környezet létrehozása ILB-címmel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | Létrehoz egy App Service Environment v2-környezetet a virtuális hálózaton egy privát belső terheléselosztó címmel. |

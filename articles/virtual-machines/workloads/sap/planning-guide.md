@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11a54dee653bcfa6c94a861e483183ac39f465bf
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: e87ea28f2454ec3c969574b21ef383e81b3148c2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "67710182"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098768"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -1780,7 +1779,7 @@ Az Azure-ban található SAP-példányoknak a vállalati helyszínen lévő fáj
 
 Az Azure-beli kritikus fontosságú SAP-rendszerek monitorozásának engedélyezéséhez az SAP monitoring Tools SAPOSCOL vagy az SAP-állomás ügynöke az Azure-beli virtuálisgép-szolgáltatásból származó adatmennyiséget az SAP-hez készült Azure monitoring bővítménnyel érheti el. Mivel az SAP igényei az SAP-alkalmazásokhoz voltak jellemzőek, a Microsoft úgy döntött, hogy nem általános módon implementálja a szükséges funkciókat az Azure-ban, de hagyja, hogy az ügyfelek a szükséges monitorozási összetevőket és konfigurációkat a virtuális helyükre telepítsék. Az Azure-ban futó gépek. A figyelési összetevők üzembe helyezését és életciklus-felügyeletét azonban többnyire az Azure fogja automatizálni.
 
-#### <a name="solution-design"></a>Megoldás kialakítása
+#### <a name="solution-design"></a>Megoldásterv
 
 Az SAP-figyelés engedélyezéséhez kifejlesztett megoldás az Azure virtuálisgép-ügynök és a kiterjesztési keretrendszer architektúráján alapul. Az Azure-beli virtuálisgép-ügynök és-bővítmény keretrendszerének ötlete az Azure virtuálisgép-bővítmények katalógusában elérhető szoftveres alkalmazás (ok) telepítésének engedélyezése a virtuális gépen belül. A koncepció mögött az elv az, hogy lehetővé tegye a speciális funkciók üzembe helyezését egy virtuális gépre, valamint az ilyen szoftverek konfigurálását az üzembe helyezéskor.
 

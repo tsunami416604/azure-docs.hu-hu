@@ -7,19 +7,18 @@ author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b303a18d481ae1a682d81d87e7c14060ffdfaf14
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 256aaf94175394fd737e53c6281f2d8b45e8af41
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869182"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099644"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (nagyméretű példányok) tárolási architektúrája
 
@@ -79,7 +78,7 @@ Több aktív SAP HANA példány is üzemeltethető HANA nagyméretű példány-e
 
 Néhány példa több SAP HANA-példány futtatására a következőhöz hasonló lehet.
 
-| SKU | Memória mérete | Tárterület mérete | Méretek több adatbázissal |
+| SKU | Memóriaméret | Tároló mérete | Méretek több adatbázissal |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | 1x768 – GB HANA-példány<br /> vagy 1x512-GB példány + 1x256-GB példány<br /> vagy 3x256-GB példányok | 
 | S72m | 1,5 TB | 6 TB | 3x512GB HANA-példányok<br />vagy 1x512-GB példány + 1x1-TB példány<br />vagy 6x256-GB példányok<br />vagy 1x 1.5 TB-példány | 
@@ -89,7 +88,7 @@ Néhány példa több SAP HANA-példány futtatására a következőhöz hasonl�
 
 Más változatok is vannak. 
 
-## <a name="encryption-of-data-at-rest"></a>A tárolt adatok titkosítása
+## <a name="encryption-of-data-at-rest"></a>Inaktív adatok titkosítása
 A HANA nagyméretű példányhoz használt tárterület transzparens titkosítást használ az adatlemezeken, mivel az a 2018-as év vége óta a lemezen tárolódik. A korábbi telepítések esetében a kötetek titkosítását is választhatja. Ha ezt a lehetőséget választja, kérheti a kötetek online titkosítását. A nem titkosítottról titkosított kötetekre való áthelyezés átlátható, és nem igényel állásidőt. 
 
 Az I. típusú SKU-I osztály használata esetén a rendszer titkosítja a rendszerindító LUN-t tároló kötetet. A 3. változat HANA nagyméretű példányú bélyegek, a HANA nagyméretű példányának II. típusának használatával a rendszerindító LUN-t az operációs rendszer módszereivel kell titkosítani. 4\. változat HANA nagy példányszámú bélyegzők, a II. típusú adategységek használatával a rendszerindító LUN tárolja a kötetet, és alapértelmezés szerint titkosítva van a nyugalmi állapotban. 

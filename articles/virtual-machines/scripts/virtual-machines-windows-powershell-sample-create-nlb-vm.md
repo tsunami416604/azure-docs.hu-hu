@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7c345d95af1167d0f6c99fdb3d438962a13242d6
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2238f223f22ee43e7afd8b5162fb16cb16a2adf4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67696034"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090756"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>Magas rendelkezésre állású virtuális gépek közötti forgalom terheléselosztása
 
@@ -69,9 +68,9 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Virtuális gépet hoz létre. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-A virtuális gépek, a saját egyéni felügyelt rendszerkép használatával is létrehozhat. A Virtuálisgép-konfiguráció a `Set-AzVMSourceImage` használja a `-Id` és `-VM` helyett paraméterek `-PublisherName`, `-Offer`, `-Skus`, és `-Version`.
+A virtuális gépeket saját, egyéni felügyelt rendszerkép használatával is létrehozhatja. A virtuális gép konfigurációjában `Set-AzVMSourceImage` a, a, a `-Offer`és `-VM` a `-PublisherName`paraméterek helyett `-Skus`használja a `-Version`, a `-Id` és a paramétereket.
 
-Ha például a VM-konfiguráció létrehozása a következő lesz:
+A virtuális gép konfigurációjának létrehozása például a következő lesz:
 
 ```powershell
 $vmConfig = New-AzVMConfig -VMName 'myVM3' -VMSize Standard_DS1_v2 -AvailabilitySetId $as.Id | `

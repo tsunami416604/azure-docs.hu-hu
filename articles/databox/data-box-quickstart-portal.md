@@ -6,21 +6,43 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 08/27/2019
 ms.author: alkohli
-ms.openlocfilehash: bd591ff30755fd68bb2dc673899d0ac993215e68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6e9854bf46de40cc288a04ac67beb48e8a4fb959
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405563"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098788"
 ---
-# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Gyors útmutató: Üzembe helyezése az Azure Data Box az Azure portal használatával
+::: zone target="docs"
+
+# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Gyors útmutató: Azure Data Box üzembe helyezése a Azure Portal használatával
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Ismerkedés a Azure Data Box Disk használatával Azure Portal
+
+::: zone-end
+
+::: zone target="docs"
 
 A rövid útmutató az Azure Data Box az Azure Portal használatával való üzembe helyezését írja le. A lépések bemutatják, hogyan csatlakoztathatja a kábelekkel, és hogyan konfigurálhatja a Data Boxot, majd másolhatja rá az adatokat az Azure-ba való feltöltésükhöz. A rövid útmutató az Azure Portalon és az eszköz helyi webes felületén hajtható végre.
 
-Részletes részletes üzembe helyezés és a nyomkövetési utasításokat, keresse fel [oktatóanyag: Az Azure Data Box sorrend](data-box-deploy-ordered.md)
+A részletes üzembe helyezési és követési utasításokért keresse fel az [oktatóanyagot: Megrendelés Azure Data Box](data-box-deploy-ordered.md)
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+Ez az útmutató ismerteti, hogyan helyezheti üzembe a Azure Data Box a Azure Portal használatával. A lépések közé tartozik az előfeltételek áttekintése, a kábel és az eszköz csatlakoztatása, valamint az adatok másolása az eszközre, hogy feltöltve legyen az Azure-ba.
+
+::: zone-end
+
+::: zone target="docs"
+ 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Előkészületek:
@@ -41,6 +63,31 @@ Előkészületek:
     - Egy RJ-45 CAT 6 hálózati kábel (az MGMT hálózati adapterhez)
     - Egy RJ-45 CAT 6A VAGY egy RJ-45 CAT 6 hálózati kábel (a DATA 3 hálózati adapterhez 10 Gb/s vagy 1 Gb/s sebességre konfigurálva)
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Mielőtt elkezdené, győződjön meg róla, hogy:
+
+1. Az [oktatóanyag befejezése: Megrendelés Azure Data Box](data-box-deploy-ordered.md).
+2. A rendszer megkapta a Data Box, és a portálonmegjelenő megrendelés állapota kézbesítve. 
+3. Tekintse át a [Data Box biztonsági irányelveit](data-box-safety.md).
+4. A rendszer a 100 TB-os tárolóeszközhöz való használatra egy megalapozott tápkábelt kapott.
+5. Hozzáférés egy olyan gazdagéphez, amely a Data Boxba másolni kívánt adattal rendelkezik. A gazdaszámítógépen:
+    - egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
+    - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha 10 GbE sebességű kapcsolat nem áll rendelkezésre, egy 1 GbE sebességű adatkapcsolat is használható, azonban ez csökkenti a másolási sebességet. 
+6. Egy sík felülethez való hozzáférés a Data Box elhelyezéséhez. Ahhoz, hogy az eszköz sima vagy egyenesen egy standard rack-polcon legyen elhelyezve, szüksége van egy 7U-tárolóhelyre a rackben.
+7. A következő kábelek beszerzésével csatlakoztathatja a Data Boxt a gazdagéphez.
+    - Egy vagy több 10 GbE SFP + Twinax réz vagy SFP + száloptikai kábel (az 1. és 2. adatkapcsolatú hálózati adapterekkel használható). További információkért tekintse meg a [támogatott kábelek és kapcsolók listáját a Mellanox-ből](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf) , amelyek kompatibilisek a Mellanox ConnectX®-3 Pro en Dual-port 10GBASE-T adapterek w/PCI Express 3,0 hálózati adapterrel.
+    - Egy RJ-45 CAT 6 hálózati kábel (az MGMT hálózati adapterhez)
+    - Egy RJ-45 CAT 6A VAGY egy RJ-45 CAT 6 hálózati kábel (a DATA 3 hálózati adapterhez 10 Gb/s vagy 1 Gb/s sebességre konfigurálva)
+
+::: zone-end
+
+::: zone target="docs"
+
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
@@ -55,6 +102,8 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
 4. Adja meg a rendelés részleteit és a szállítási adatokat. Ha a szolgáltatás elérhető az Ön régiójában, adja meg az értesítési e-mail-címeket, tekintse át az összefoglalót, és hozza létre a rendelést.
 
 A rendelés létrehozását követően megtörténik az eszköz a szállításra való előkészítése.
+
+
 
 ## <a name="cable"></a>Kábel 
 
@@ -132,5 +181,7 @@ Ebben a rövid útmutatóban egy Azure Data Boxot helyezett üzembe az adatok az
 
 > [!div class="nextstepaction"]
 > [A Data Box az Azure Portal használatával történő kezelése](data-box-portal-admin.md)
+
+::: zone-end
 
 

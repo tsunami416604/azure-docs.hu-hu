@@ -1,6 +1,6 @@
 ---
-title: Az Azure virtuális gépi bővítmények és szolgáltatások |} A Microsoft Docs
-description: Ismerje meg az Azure Virtuálisgép-bővítmények és azok használatát az Azure-beli virtuális gépekkel
+title: Azure-beli virtuálisgép-bővítmények és-funkciók | Microsoft Docs
+description: Ismerje meg, hogy milyen Azure-beli virtuálisgép-bővítmények és hogyan használhatók az Azure Virtual Machines szolgáltatással
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
@@ -9,51 +9,50 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 3a8c571d3c6bb55fdd8b2d097b71b83afab5ca00
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8c63df2d9a7e398fb9b67edd3b57a3ba06cbe7a1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705922"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084331"
 ---
-# <a name="azure-virtual-machine-extensions-and-features"></a>Az Azure virtuális gépi bővítmények és szolgáltatások
-Az Azure virtuális gép (VM) a bővítmények olyan kisebb alkalmazásoknál, amelyek az üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosít az Azure virtuális gépeken, majd testre szabhatja őket a központi telepítések részeként lekérdezése a business, az egyéni tartományon kívül és használhatja a meglévő rendszerképek rendszerkép létrehozása.
+# <a name="azure-virtual-machine-extensions-and-features"></a>Azure-beli virtuálisgép-bővítmények és-funkciók
+Az Azure virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációt és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken, meglévő lemezképeket használhat, majd az üzembe helyezés részeként testreszabhatja azokat, így az egyéni tevékenységek rendszerkép kiépítése.
 
-Az Azure platform számos olyan bővítmény, a Virtuálisgép-konfiguráció, biztonsági és megfigyelési segédprogram alkalmazásokat üzemelteti. A kiadók igénybe vehet egy alkalmazást, majd tegye azokat egy bővítmény be, és egyszerűsítése érdekében a telepítés, így ehhez mindössze meg a kötelező paramétereket. 
+Az Azure platform számos olyan bővítményt üzemeltet, amely a virtuálisgép-konfigurációtól, a figyelési, a biztonsági és a segédprogram-alkalmazásokból származik. A kiadók egy alkalmazást futtatnak, majd becsomagolják egy bővítménybe, és leegyszerűsítik a telepítést, ezért mindössze annyit kell tennie, hogy megadja a kötelező paramétereket. 
 
- Az első és harmadik féltől származó bővítményeket, nagy választási lehetőség van, ha az alkalmazás a bővítménytárban nem létezik, majd használja az egyéni szkriptek bővítménye, és konfigurálja a virtuális gép saját parancsprogramok és parancsok.
+ Az első és a harmadik féltől származó bővítmények széles választéka van, ha a bővítmény-tárházban lévő alkalmazás nem létezik, akkor használhatja az egyéni szkriptek bővítményét, és konfigurálhatja a virtuális gépet a saját parancsfájljaival és parancsaival.
 
-Főbb alkalmazási helyzetek bővítmények használt példák:
-* Virtuálisgép-konfiguráció segítségével (a Desired State Configuration) Powershell DSC, Chef, Puppet és egyéni parancsfájl-kiterjesztés Virtuálisgép-konfiguráció ügynökök telepítése és konfigurálása a virtuális gép. 
-* AV-termékek, például a Symantec, ESET.
-* Virtuális gép biztonsági rés eszközre, például a Qualys, Rapid7, HPE.
-* Virtuális gép és alkalmazás figyelési eszközök, például a dynatrace-szel, az Azure Network Watcher, Site24x7 és Stackify.
+Példák a bővítmények által használt főbb forgatókönyvekre:
+* Virtuálisgép-konfiguráció, a PowerShell DSC (a kívánt állapot konfigurációja), a Chef, a Puppet és az egyéni parancsfájlok bővítmények segítségével telepítheti a virtuálisgép-konfigurációs ügynököket, és konfigurálhatja a virtuális gépet. 
+* AV-termékek, például Symantec, ESET.
+* VM sebezhetőségi eszköz, például Qualys, Rapid7, HPE.
+* VIRTUÁLIS gépek és alkalmazások figyelésére szolgáló eszközök, például DynaTrace, Azure Network Watcher, Site24x7 és Stackify.
 
-Egy új virtuális gép üzembe helyezésének bővítményeket is telepíthet. Például ezek lehet része egy nagyobb üzembe helyezés, a virtuális gép kiépítéséhez, alkalmazások konfigurálása, vagy bármely támogatott bővítmény üzemeltetett rendszerek post üzemelő futtassa.
+A bővítmények a virtuális gépek új üzembe helyezésével is elhelyezhetők. Lehetnek például egy nagyobb üzembe helyezések, a virtuális gépek üzembe helyezése, illetve a támogatott bővítmények által a telepítés után futtatott alkalmazások.
 
-## <a name="how-can-i-find-what-extensions-are-available"></a>Hogyan találhatja meg, hogy mely bővítmények érhetők el?
-Extensions alatt a portálon a virtuális gép paneljén megtekintheti az elérhető bővítmények, ez jelenti, hogy csak egy kis összeget, a teljes listát a CLI-eszközök használata, hogy [Virtuálisgép-bővítmények felfedezése Linux](features-linux.md) és [ A Windows Virtuálisgép-bővítmények felderítése](features-windows.md).
+## <a name="how-can-i-find-what-extensions-are-available"></a>Hogyan találhatom meg a rendelkezésre álló bővítményeket?
+Az elérhető bővítmények a portál virtuálisgép-paneljén tekinthetők meg, a bővítmények alatt ez csupán kis mennyiségű, a teljes listához használhatja a CLI-eszközöket, lásd: a virtuálisgép-bővítmények felfedése [Linuxra](features-linux.md) és a [Windows rendszerhez](features-windows.md)készült virtuálisgép-bővítmények felfedése.
 
-## <a name="how-can-i-install-an-extension"></a>Hogyan telepíthetem egy bővítmény?
-Az Azure Virtuálisgép-bővítmények használatával vagy az Azure CLI, Azure PowerShell-lel, az Azure Resource Manager-sablonokkal és az Azure Portalon kezelhetők. Megismétli a bővítményekhez, is nyissa meg az Azure Portalon, válassza az egyéni szkriptek futtatására szolgáló bővítmény, ezután adja át a parancs / script és futtathat a bővítmények.
+## <a name="how-can-i-install-an-extension"></a>Hogyan telepíthetek bővítményt?
+Az Azure virtuálisgép-bővítmények az Azure CLI, Azure PowerShell, Azure Resource Manager sablonok és a Azure Portal használatával kezelhetők. A bővítmény kipróbálásához lépjen a Azure Portalra, válassza ki az egyéni parancsfájl-bővítményt, majd adjon át egy parancsot/parancsfájlt, és futtassa a bővítményeket.
 
-Ha szeretné a CLI vagy a Resource Manager-sablon által hozzáadott a portálon kiterjesztése, lásd másik kiterjesztést dokumentációját, például [Windows egyéni szkriptek futtatására szolgáló bővítmény](custom-script-windows.md) és [Linux egyéni szkriptek futtatására szolgáló bővítmény](custom-script-linux.md).
+Ha azt szeretné, hogy a CLI-vagy Resource Manager-sablon a portálon is felvette a bővítményt, tekintse meg a különböző bővítmények dokumentációját, például a [Windows egyéni szkriptek bővítményét](custom-script-windows.md) és a [Linux Custom script bővítményt](custom-script-linux.md).
 
-## <a name="how-do-i-manage-extension-application-lifecycle"></a>Hogyan kezelhetem a bővítmény alkalmazás-életciklus során?
-Nem kell közvetlenül telepíteni vagy törölni a bővítményt a virtuális Géphez való csatlakozáshoz. Az Azure-bővítmény alkalmazás-életciklus a VM-en kívül kezeli, és az Azure platform integrált, érhet el a bővítményt integrált állapotát.
+## <a name="how-do-i-manage-extension-application-lifecycle"></a>Hogyan a bővítmény alkalmazási életciklusának kezelése?
+A bővítmény telepítéséhez és törléséhez nem kell közvetlenül csatlakoznia a virtuális géphez. Mivel az Azure-bővítmény alkalmazás-életciklusát felügyeli a virtuális gépen kívül, és integrálva van az Azure-platformba, a bővítmény integrált állapotát is megkapja.
 
-## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Bármi más I kell lennie virtualizációról szeretne tájékozódni-bővítmények
-Bővítmények telepíthet alkalmazásokat, például nincsenek alkalmazások néhány követelményt, ott a bővítmények támogatott Windows és Linux rendszerű OSE-kre listáját, és kell rendelkeznie az Azure-beli Virtuálisgép-ügynököt telepíteni. Előfordulhat, hogy az egyes egyes VM-bővítmény alkalmazások saját környezeti Előfeltételek, például az a végpont a hozzáférést.
+## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Bármi mást érdemes meggondolni a bővítményekhez?
+A bővítmények telepítik az alkalmazásokat, például az alkalmazások bizonyos követelményeit, a bővítmények esetében a támogatott Windows-és Linux-alapú operációs rendszerek listája szerepel, és telepítenie kell az Azure virtuálisgép-ügynököket. A virtuálisgép-bővítmények egyes alkalmazásai rendelkezhetnek saját környezeti előfeltételekkel, például egy végponthoz való hozzáféréssel.
 
 ## <a name="next-steps"></a>További lépések
-* Hogyan működik a Linux-ügynök és a bővítmények kapcsolatos további információkért lásd: [Azure-beli Virtuálisgép-bővítmények és szolgáltatások Linux](features-linux.md).
-* Hogyan működik a Windows Vendégügynöke és bővítmények kapcsolatos további információkért lásd: [Azure-beli Virtuálisgép-bővítmények és szolgáltatások Windows](features-windows.md).  
-* A Windows-Vendégügynök telepítése: [Azure Windows virtuális gép Agent áttekintése](agent-windows.md).  
-* A Linux-ügynök telepítése: [Azure Linux virtuálisgép-ügynök áttekintése](agent-linux.md).  
+* A Linux-ügynök és-bővítmények működésével kapcsolatos további információkért lásd: Azure virtuálisgép- [bővítmények és-szolgáltatások Linux rendszerhez](features-linux.md).
+* További információ a Windows Guest Agent és a bővítmények működéséről: Azure-beli virtuálisgép- [bővítmények és-szolgáltatások a Windows rendszerhez](features-windows.md).  
+* A Windows Guest Agent telepítéséhez tekintse meg az [Azure Windows rendszerű virtuális gépek ügynökének áttekintése](agent-windows.md)című témakört.  
+* A Linux-ügynök telepítéséhez tekintse meg az Azure-beli [linuxos virtuális gépek ügynökének áttekintése](agent-linux.md)című témakört.  
 

@@ -1,6 +1,6 @@
 ---
-title: Linux rendszerű Azure virtuális gépek biztonsági mentési beállításainak áttekintése |} A Microsoft Docs
-description: A Linux rendszerű Azure virtuális gépek biztonsági mentési beállításainak áttekintése.
+title: A Linux Azure-beli virtuális gépek biztonsági mentési lehetőségei | Microsoft Docs
+description: A Linux Azure-beli virtuális gépekre vonatkozó biztonsági mentési lehetőségek áttekintése.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,21 +9,20 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/13/2017
 ms.author: cynthn
-ms.openlocfilehash: f1bed81ecca20d07eb1f3d7262af94d622c630c2
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: b5f698510a40de127340746fd2f5327e8934ac27
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671811"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092121"
 ---
-# <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Az Azure-ban Linux rendszerű virtuális gépek biztonsági mentési és helyreállítási lehetőségek
+# <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>A Linux rendszerű virtuális gépek biztonsági mentési és visszaállítási lehetőségei az Azure-ban
 
-Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Nincsenek elérhető virtuális gépek esetében, attól függően, a használatieset-több biztonsági mentési beállítások.
+Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. A virtuális gépekhez több biztonsági mentési lehetőség is rendelkezésre áll, a használati esettől függően.
 
 [!INCLUDE [virtual-machines-common-backup-recovery](../../../includes/virtual-machines-common-backup-recovery.md)]

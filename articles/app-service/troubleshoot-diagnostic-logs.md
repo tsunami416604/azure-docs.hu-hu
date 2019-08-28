@@ -1,6 +1,6 @@
 ---
-title: Az Azure App Service-alkalmazások – diagnosztikai célú naplózásának engedélyezése
-description: További információk a diagnosztikai naplózás engedélyezése és az üzemállapot-alkalmazását, valamint hogyan lehet hozzáférni azokhoz az információkhoz, amelyeket az Azure naplóz.
+title: Diagnosztikai naplózás engedélyezése alkalmazások számára – Azure App Service
+description: Megtudhatja, hogyan engedélyezheti a diagnosztikai naplózást, és hogyan adhat hozzá rendszerállapotot az alkalmazáshoz, valamint hogyan érheti el az Azure által naplózott információkat.
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -10,226 +10,225 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c21a923f06a768c0a9a0f2843a24583df7a7821d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af6d8b61c5d49ae219e90513abb93185f957222e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059647"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074056"
 ---
-# <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Az Azure App Service-alkalmazások diagnosztikai célú naplózásának engedélyezése
+# <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnosztikai naplózás engedélyezése a Azure App Serviceban lévő alkalmazásokhoz
 ## <a name="overview"></a>Áttekintés
-Az Azure biztosít beépített diagnosztikai funkciókkal, amelyek segítik a hibakeresést egy [App Service-alkalmazás](https://go.microsoft.com/fwlink/?LinkId=529714). Ebből a cikkből megtudhatja, hogyan diagnosztikai naplózás engedélyezése és az üzemállapot-alkalmazását, valamint hogyan lehet hozzáférni azokhoz az információkhoz, amelyeket az Azure naplóz.
+Az Azure beépített diagnosztika segítségével segíti az [app Service-alkalmazások](https://go.microsoft.com/fwlink/?LinkId=529714)hibakeresését. Ebből a cikkből megtudhatja, hogyan engedélyezheti a diagnosztikai naplózást, és hogyan adhat hozzá rendszerállapotot az alkalmazáshoz, valamint hogyan érheti el az Azure által naplózott információkat.
 
-Ez a cikk a [az Azure portal](https://portal.azure.com) és az Azure CLI-vel való együttműködéshez a diagnosztikai naplók. Diagnosztikai naplók a Visual Studio használatával való munka információkért lásd: [Azure hibaelhárítása a Visual Studióban](troubleshoot-dotnet-visual-studio.md).
+Ez a cikk a [Azure Portal](https://portal.azure.com) és az Azure CLI-t használja a diagnosztikai naplókhoz való együttműködéshez. További információ a diagnosztikai naplók használatáról a Visual Studióban: [Az Azure hibaelhárítása a Visual Studióban](troubleshoot-dotnet-visual-studio.md).
 
-## <a name="whatisdiag"></a>Web server diagnostics és az application diagnostics
-App Service-ben diagnosztikai funkciókat biztosít a naplózási információk a webalkalmazás-kiszolgáló és a webes alkalmazás. Ezek logikailag elkülönített **kiszolgálódiagnosztika webes** és **az application diagnostics**.
+## <a name="whatisdiag"></a>Webkiszolgáló-diagnosztika és Application Diagnostics
+A App Service diagnosztikai funkciókat biztosít a webkiszolgálóról és a webalkalmazásból származó adatok naplózásához. Ezeket a rendszer logikailag elkülöníti a webkiszolgáló- **diagnosztika** és az **Application Diagnostics**szolgáltatásban.
 
-### <a name="web-server-diagnostics"></a>Webes kiszolgálódiagnosztika
-Engedélyezheti vagy letilthatja a naplók a következő típusú:
+### <a name="web-server-diagnostics"></a>Webkiszolgáló-diagnosztika
+Engedélyezheti vagy letilthatja a következő típusú naplókat:
 
-* **Részletes hibanaplózás** – részletes információk minden kéréshez, amely HTTP-állapotkód: 400 vagy nagyobb eredményez. Tartalmazhat, amelyek segíthetnek meghatározni, miért érdemes a kiszolgáló a következő hibakódot adta vissza információt. Egy HTML-fájl jön létre minden egyes hibához, az alkalmazás fájlrendszerében, és legfeljebb 50 hibák (fájlok) megmaradnak. A HTML-fájlok száma meghaladja az 50, amikor a rendszer automatikusan töröl a legrégebbi 26 fájlokat.
-* **Sikertelen kérelmek nyomkövetésére vonatkozó** – részletes információk a sikertelen kérelmek, beleértve a nyomkövetés feldolgozni a kérelmet, és az egyes összetevőkben ideje használja az IIS-összetevőt. Ez akkor hasznos, ha a webhely teljesítményének javítása vagy különíteni egy adott HTTP hiba. Egy mappa jön létre minden egyes hibához az alkalmazás fájlrendszerében. Fájl adatmegőrzési szabályzatok ugyanazok, mint a részletes hibanaplózást felett.
-* **Webalkalmazás-kiszolgáló naplózási** – HTTP-tranzakciót használatával kapcsolatos információkat a [W3C bővített naplófájlformátum](/windows/desktop/Http/w3c-logging). Ez hasznos, teljes webhelymetrikák például kezelt kérések, vagy hogy hány kérésnek egy adott IP-címről számának meghatározásakor.
+* **Részletes hiba naplózása** – a 400-as vagy annál nagyobb HTTP-állapotkódot eredményező kérésekre vonatkozó részletes információk. Tartalmazhat olyan információkat, amelyek segíthetnek meghatározni, hogy a kiszolgáló miért adta vissza a hibakódot. A rendszer egy HTML-fájlt hoz létre az alkalmazás fájlrendszerében előforduló hibákhoz, és legfeljebb 50 hibát (fájlt) tart fenn. Ha a HTML-fájlok száma meghaladja az 50-as értéket, a rendszer a legrégebbi 26 fájlt automatikusan törli.
+* **Sikertelen** kérelmek nyomkövetése – részletes információk a sikertelen kérésekről, beleértve a kérés feldolgozásához és az egyes összetevőkben használt IIS-összetevők nyomkövetését. Ez akkor hasznos, ha javítani szeretné a hely teljesítményét, vagy egy adott HTTP-hibát szeretne elkülöníteni. A rendszer létrehoz egy mappát az alkalmazás fájlrendszerében fellépett hibákhoz. A fájl-megőrzési házirendek ugyanazok, mint a fenti részletes naplózási hiba.
+* **Webkiszolgáló-naplózás** – a [W3C bővített naplófájl formátumával](/windows/desktop/Http/w3c-logging)http-tranzakciókra vonatkozó információk. Hasznos lehet a helyek általános metrikáinak, például a kezelt kérelmek számának vagy egy adott IP-címről érkező kérések meghatározásakor.
 
-### <a name="application-diagnostics"></a>Az Application diagnostics
-Az Application diagnostics lehetővé teszi egy webalkalmazás által létrehozott adatok rögzítését. ASP.NET-alkalmazások használhatják a [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) osztályt az alkalmazásnaplóba diagnosztikai információk naplózása. Példa:
+### <a name="application-diagnostics"></a>Alkalmazásdiagnosztika
+Az Application Diagnostics lehetővé teszi egy webalkalmazás által létrehozott információk rögzítését. A ASP.NET-alkalmazások a [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) osztály használatával naplózzák az adatokat az Application Diagnostics-naplóba. Példa:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
-Futásidőben a naplók segíthetnek a hibaelhárításban kérheti le. További információkért lásd: [hibaelhárítása az Azure App Service a Visual Studióban](troubleshoot-dotnet-visual-studio.md).
+Futásidőben lekérheti ezeket a naplókat, hogy segítséget nyújtson a hibaelhárításhoz. További információ: hibaelhárítási [Azure app Service a Visual Studióban](troubleshoot-dotnet-visual-studio.md).
 
-App Service-ben is naplózza telepítési információkat, amikor tartalmat tesz közzé egy alkalmazást. Automatikusan megtörténik, és nem a központi telepítési naplózáshoz konfigurációs beállításokat. Üzembe helyezés naplózás lehetővé teszi, hogy meghatározhatja, miért érdemes a központi telepítés nem sikerült. Egy egyéni üzembehelyezési szkript használ, előfordulhat, hogy meghatározni, miért nem működik a parancsfájl például használjon központi telepítési naplózást.
+A App Service is naplózza a telepítési adatokat, amikor tartalmat tesz közzé egy alkalmazásban. Ez automatikusan megtörténik, és nincsenek konfigurációs beállítások az üzembe helyezés naplózásához. Az üzembe helyezés naplózása lehetővé teszi annak meghatározását, hogy miért nem sikerült a központi telepítés. Ha például egyéni telepítési parancsfájlt használ, a központi telepítés naplózásával határozhatja meg, hogy miért sikertelen a parancsfájl.
 
 ## <a name="enablediag"></a>Diagnosztika engedélyezése
-Diagnosztika engedélyezése a a [az Azure portal](https://portal.azure.com), nyissa meg az alkalmazás lapját, és kattintson a **beállítások > diagnosztikai naplók**.
+Ha engedélyezni szeretné a diagnosztikát [](https://portal.azure.com)a Azure Portalban, nyissa meg az alkalmazás lapját, és kattintson a **Beállítások > diagnosztikai naplók**elemre.
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
-![Rész-naplók](./media/web-sites-enable-diagnostic-log/logspart.png)
+![Naplók része](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-Amikor engedélyezi a **az application diagnostics**, azt is választhatja a **szint**. Az alábbi táblázat tartalmazza az egyes fenyegetési naplók kategóriáit mutatja:
+Az **Application Diagnostics**engedélyezésekor a **szintet**is kiválaszthatja. A következő táblázat az egyes szinteken található naplók kategóriáit tartalmazza:
 
-| Szint| Belefoglalt naplókategóriák |
+| Szint| Belefoglalt naplózási kategóriák |
 |-|-|
-|**Letiltva** | None |
-|**Hiba történt** | Kritikus hiba |
-|**Figyelmeztetés** | Figyelmeztetés, kritikus hiba|
-|**Információ** | Info, figyelmeztetés, kritikus hiba|
-|**részletes** | Nyomkövetési, hibakeresési, adatok, figyelmeztetés, hiba, kritikus (az összes kategória) |
+|**Letiltva** | Nincsenek |
+|**Hiba** | Hiba, kritikus |
+|**Figyelmeztetés** | Figyelmeztetés, hiba, kritikus|
+|**Információk** | Információ, figyelmeztetés, hiba, kritikus|
+|**Részletes** | Nyomkövetés, hibakeresés, információ, figyelmeztetés, hiba, kritikus (minden kategória) |
 |-|-|
 
-A **alkalmazásnaplózás**, bekapcsolhatja a hibakeresési célokra az ideiglenes fájl helyrendszer-beállítást. 12 óra múlva automatikusan kikapcsolja ezt a beállítást. A blob beállítást válassza ki a naplók írhat egy blob-tárolóba is bekapcsolhatja.
+Az **alkalmazások naplózása**esetén a fájlrendszeri lehetőség ideiglenesen bekapcsolható hibakeresési célokra. Ez a beállítás 12 órán belül automatikusan kikapcsol. A blob Storage lehetőség bekapcsolásával kiválaszthatja a BLOB-tárolót a naplók írásához.
 
 > [!NOTE]
-> A blob storage .NET-alkalmazás jelenleg csak naplók csak írható. A Java, PHP, Node.js, Python, az alkalmazásnaplókat csak a fájlrendszeren (nélkül naplók írni a külső tárhelyen) kell tárolni.
+> Jelenleg csak a .NET-alkalmazások naplói írhatók a blob Storage-ba. Java, PHP, Node. js, Python alkalmazás-naplók csak a fájlrendszerben tárolhatók (kód módosítása nélkül, hogy a rendszer a naplókat külső tárolóba írja).
 >
 >
 
-A **webkiszolgálói naplózás**, választhat **tárolási** vagy **fájlrendszer**. Kiválasztásával **tárolási** lehetővé teszi, hogy válasszon egy tárfiókot, és egy blobtárolót a naplók írt. 
+A **webkiszolgáló naplózása**esetében kiválaszthatja a **tárolót** vagy a **fájlrendszert**. A **Storage** lehetőség kiválasztásával kiválaszthatja a Storage-fiókot, majd egy BLOB-tárolót, amelyre a naplók íródnak. 
 
-Ha a naplók tárolása a fájlrendszer, a fájlok elérhető FTP, és letöltött Zip-archívumot, Azure parancssori felület használatával.
+Ha a naplófájlokat a fájlrendszerben tárolja, a fájlok FTP-n keresztül is elérhetők, vagy zip-archívumként tölthetők le az Azure CLI használatával.
 
-Alapértelmezés szerint naplók nem törlődnek automatikusan (kivéve a **Application Logging (fájlrendszer)** ). Naplók automatikus törléséhez állítsa be a **megőrzési ideje (nap)** mező.
+Alapértelmezés szerint a rendszer nem törli automatikusan a naplókat (az **alkalmazás naplózása (filesystem)** kivételével). A naplók automatikus törléséhez állítsa be a **megőrzési időtartam (nap)** mezőt.
 
 > [!NOTE]
-> Ha Ön [a tárfiók hozzáférési kulcsainak újragenerálása](../storage/common/storage-create-storage-account.md), alaphelyzetbe kell állítania a megfelelő naplózási konfiguráció frissített kulcsok használatához. Ehhez tegye a következőket:
+> Ha újragenerálja a [Storage-fiók hozzáférési kulcsait](../storage/common/storage-create-storage-account.md), a frissített kulcsok használatához vissza kell állítania a megfelelő naplózási konfigurációt. Ehhez tegye a következőket:
 >
-> 1. Az a **konfigurálása** lapon, a megfelelő naplózási szolgáltatás beállítása **ki**. A beállítás mentéséhez.
-> 2. Engedélyezze a naplózást, a storage-fiók blob újra. A beállítás mentéséhez.
+> 1. A **configure (Konfigurálás** ) lapon állítsa be a megfelelő naplózási funkciót a kikapcsoláshoz. Mentse a beállítást.
+> 2. Engedélyezze újra a naplózást a Storage-fiók blobján. Mentse a beállítást.
 >
 >
 
-A file system vagy a blob storage bármilyen kombinációját is engedélyezhető egyszerre, és egyes naplózási szintekhez rendelkezik. Például érdemes a hibák és figyelmeztetések naplózása hosszú távú megoldás, miközben a rendszer naplózását részletes szintű blob storage-bA.
+A fájlrendszer vagy a blob Storage bármely kombinációja engedélyezhető egyszerre, és egyéni naplózási szintű konfigurációval is rendelkezhet. Előfordulhat például, hogy a blob Storage-ban a hibákat és a figyelmeztetéseket hosszú távú naplózási megoldásként kívánja naplózni, miközben a fájlrendszer naplózását a részletes részletességgel teszi lehetővé.
 
-Mindkét tárolási helyek naplózott események az ugyanazon alapvető adatok megadása közben **a blob storage-** naplózza a további információk, például a Példányazonosító Szálazonosító és részletesebb időbélyeg (osztásjelek formátum), mint a naplózást, és **fájlrendszer**.
+Noha mindkét tárolóhely ugyanazokat az alapvető információkat adja meg a naplózott eseményekhez, a **blob Storage** további információkat naplóz, például a példány azonosítóját, a szál azonosítóját, és egy részletesebb időbélyeg (Tick formátum), mint a **fájlrendszer**naplózása.
 
 > [!NOTE]
-> A tárolt adatok **a blob storage-** csak érhetők el a storage-kliens vagy olyan alkalmazás, amely közvetlenül is dolgozhat a tárolórendszerek használatával. Például a Visual Studio 2013 tartalmaz, amelyek segítségével ismerje meg a blob storage a Storage Explorer, és a HDInsight érhessék el az a blob storage-ban tárolt adatokat. Egy alkalmazás, amely hozzáfér az Azure Storage egyikének használatával is kiírhatja a [Azure SDK-k](https://azure.microsoft.com/downloads/).
+> A **blob Storage** -ban tárolt adatok csak Storage-ügyféllel vagy olyan alkalmazásokkal érhetők el, amelyek közvetlenül használhatók ezekkel a tárolási rendszerekkel. A Visual Studio 2013 például tartalmaz egy Storage Explorer, amely a blob Storage felderítésére használható, a HDInsight pedig hozzáférhet a blob Storage-ban tárolt adatszolgáltatásokhoz. Olyan alkalmazást is írhat, amely hozzáfér az Azure Storage-hoz az egyik [Azure SDK](https://azure.microsoft.com/downloads/)-val.
 >
 
-## <a name="download"></a> kézikönyv: Naplók letöltése
-Diagnosztikai adatokat tárolni az alkalmazáshoz fájlrendszerben közvetlenül az FTP használatával is elérhetők. Le is tölthetők, egy Zip-archívumot az Azure CLI használatával.
+## <a name="download"></a>kézikönyv: Letöltési naplók
+Az alkalmazás fájlrendszerében tárolt diagnosztikai adatok közvetlenül az FTP használatával érhetők el. Az Azure CLI használatával zip-archívumként is letölthető.
 
-A könyvtárstruktúra, a naplók vannak tárolva a következőképpen történik:
+A naplókat tároló címtár-struktúra a következő:
 
-* **Protokoly aplikací** -/LogFiles/alkalmazás /. Ez a mappa tartalmaz egy vagy több, az alkalmazásadatok naplózása által előállított adatokat tartalmazó szöveges fájlok.
-* **Sikertelen kérelmek nyomkövetési** -/ LogFiles/W3SVC ### /. Ez a mappa tartalmaz egy XSL-fájl és a egy vagy több XML-fájlt. Győződjön meg arról, le kell tölteni a XSL-fájl ugyanabban a könyvtárban való, az XML-fájl fájl, mert a XSL-fájl formázására és az Internet Explorer megtekintve XML fájl(ok) tartalmát szűrés funkciót biztosít.
-* **Részletes hibanaplókat** -/LogFiles/DetailedErrors /. Ez a mappa tartalmaz egy vagy több HTTP-hibaüzeneteket előfordult széleskörű információkat biztosító .htm fájlt.
-* **Webalkalmazás-naplók** -/LogFiles/http/RawLogs. Ez a mappa tartalmaz egy vagy több szöveges fájlok formázva a [W3C bővített naplófájlformátum](/windows/desktop/Http/w3c-logging).
-* **Telepítési naplók** -/ LogFiles/Git. Ez a mappa tartalmazza az Azure App Service által használt belső üzembe helyezési folyamat által létrehozott naplók, valamint-naplókban a Git-telepítéseket. Telepítési naplók D:\home\site\deployments alapján is megtalálhatja.
+* **Alkalmazás-naplók** –/LogFiles/Application/. Ez a mappa egy vagy több szövegfájlt tartalmaz, amelyek az alkalmazás naplózása által létrehozott információkat tartalmazzák.
+* **Sikertelen kérelmek nyomkövetése** -/logfiles/W3SVC # # # # # # # # #/. Ez a mappa egy XSL-fájlt és egy vagy több XML-fájlt tartalmaz. Győződjön meg arról, hogy az XSL-fájlt ugyanabba a könyvtárba tölti le, mint az XML-fájl (oka) t, mert az XSL-fájl az Internet Explorerben megtekintett XML-fájl (ok) tartalmának formázására és szűrésére szolgáló funkciókat biztosít.
+* **Részletes hibanapló** –/LogFiles/DetailedErrors/. Ez a mappa egy vagy több. htm fájlt tartalmaz, amelyek részletes információkat biztosítanak a bekövetkezett HTTP-hibákról.
+* **Webkiszolgáló-naplók** –/LogFiles/http/RawLogs. Ez a mappa egy vagy több, a [W3C bővített naplófájl formátumával](/windows/desktop/Http/w3c-logging)formázott szövegfájlt tartalmaz.
+* **Üzembe helyezési naplók** –/LogFiles/git. Ez a mappa a Azure App Service által használt belső üzembe helyezési folyamatok által létrehozott naplókat, valamint a git-telepítésekhez tartozó naplókat tartalmazza. Az üzembe helyezési naplók a D:\home\site\deployments. területen is megtalálhatók
 
 ### <a name="ftp"></a>FTP
 
-Tekintse meg az alkalmazás FTP-kiszolgálóhoz FTP-kapcsolat megnyitásához [alkalmazás üzembe helyezése az Azure App Service-ben FTP/S használatával](deploy-ftp.md).
+Az alkalmazás FTP-kiszolgálójával létesített FTP-kapcsolat megnyitásával kapcsolatban lásd: [az alkalmazás telepítése Azure app Service FTP/s használatával](deploy-ftp.md).
 
-Ha csatlakoztatva van az alkalmazás FTP/S-kiszolgálóra, nyissa meg a **LogFiles** a naplófájlokat tároló mappa.
+Miután csatlakozott az alkalmazás FTP/S kiszolgálójához, nyissa meg a naplófájlok mappát, ahol a naplófájlok vannak tárolva.
 
-### <a name="download-with-azure-cli"></a>Töltse le az Azure CLI-vel
-Töltse le a naplófájlok, az Azure parancssori felülettel, nyisson meg egy új parancssort, PowerShell, a Bash vagy a terminál-munkamenetet, és adja meg a következő parancsot:
+### <a name="download-with-azure-cli"></a>Letöltés az Azure CLI-vel
+A naplófájlok Azure parancssori felületen való letöltéséhez nyisson meg egy új parancssort, egy PowerShell-, bash-vagy terminál-munkamenetet, és írja be a következő parancsot:
 
     az webapp log download --resource-group resourcegroupname --name appname
 
-Ez a parancs menti a naplókat az alkalmazás neve a "appname" nevű **webapp_logs.zip** az aktuális könyvtárban található.
+Ez a parancs menti a "AppName" nevű alkalmazás naplóit egy **webapp_logs. zip** nevű fájlba az aktuális könyvtárban.
 
 > [!NOTE]
-> Ha még nem telepítette az Azure CLI-vel, vagy még nem konfigurálta, hogy az Azure-előfizetéssel, lásd: [hogyan használja az Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+> Ha még nem telepítette az Azure CLI-t, vagy nem konfigurálta az Azure-előfizetésének használatára, tekintse meg az [Azure CLI használatát](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)ismertető témakört.
 >
 >
 
-## <a name="how-to-view-logs-in-application-insights"></a>Útmutató: Naplók megtekintése az Application insights szolgáltatásban
-A Visual Studio Application Insights a szűréshez és a naplók keresése, és a kérésekkel és más eseményekkel való korreláláshoz a naplók eszközöket biztosít.
+## <a name="how-to-view-logs-in-application-insights"></a>Útmutató: Naplók megtekintése Application Insights
+A Visual Studio Application Insights a naplók szűrésére és keresésére, valamint a naplók a kérelmekkel és más eseményekkel való összevonására szolgáló eszközöket biztosít.
 
-1. Az Application Insights SDK hozzáadása a projekthez a Visual Studióban.
-   * A Megoldáskezelőben kattintson jobb gombbal a projektre, és válassza ki az Application Insights hozzáadása. Az interface végigvezeti lépéseket, amelyek tartalmazzák az Application Insights-erőforrás létrehozása. [További információ](../azure-monitor/app/asp-net.md)
-2. A nyomkövetés-figyelő csomag hozzáadása a projekthez.
-   * Kattintson jobb gombbal a projektre, és válassza a NuGet-csomagok kezelése. Válassza ki `Microsoft.ApplicationInsights.TraceListener` [további](../azure-monitor/app/asp-net-trace-logs.md)
-3. Töltse fel a projektet, majd futtassa készítése a naplózási adatokat.
-4. Az a [az Azure portal](https://portal.azure.com/), keresse meg az új Application Insights-erőforrást, és nyissa meg a **keresési**. A naplózási adatokat, és a kérést, használatának és egyéb telemetriát kell megjelennie. Valamennyi telemetria is igénybe vehet néhány percet késik: a frissítés parancsra. [További információ](../azure-monitor/app/diagnostic-search.md)
+1. Adja hozzá a Application Insights SDK-t a projekthez a Visual Studióban.
+   * A Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza az Add Application Insights (Hozzáadás) lehetőséget. Az interfész végigvezeti a Application Insights erőforrás létrehozásához szükséges lépéseken. [További információ](../azure-monitor/app/asp-net.md)
+2. Adja hozzá a nyomkövetési figyelő csomagját a projekthez.
+   * Kattintson a jobb gombbal a projektre, és válassza a NuGet-csomagok kezelése lehetőséget. Válassza `Microsoft.ApplicationInsights.TraceListener` a [továbbiak](../azure-monitor/app/asp-net-trace-logs.md)
+3. Töltse fel a projektet, és futtassa a naplózási adatok létrehozásához.
+4. A [Azure Portal](https://portal.azure.com/)tallózással keresse meg az új Application Insights-erőforrást, és nyissa meg a **keresést**. A naplózási adatokat a kéréssel, a használattal és más telemetria együtt kell megtekinteni. Néhány telemetria néhány percet is igénybe vehet: kattintson a frissítés gombra. [További információ](../azure-monitor/app/diagnostic-search.md)
 
-[További tudnivalók a teljesítmény nyomon követése az Application insights segítségével](../azure-monitor/app/azure-web-apps.md)
+[További információ a teljesítmény-követésről Application Insights](../azure-monitor/app/azure-web-apps.md)
 
-## <a name="streamlogs"></a> kézikönyv: Naplók streamelése
-Az alkalmazások fejlesztése során hasznos gyakran közel valós idejű naplóinformációkat tekinthet. Naplózási információk streamelheti a fejlesztői környezetbe az Azure CLI használatával.
+## <a name="streamlogs"></a>kézikönyv: Naplók streamelése
+Az alkalmazások fejlesztése során gyakran hasznos a naplózási információk megjelenítése a közel valós időben. Az Azure CLI használatával továbbíthatja a naplózási információkat a fejlesztői környezetbe.
 
 > [!NOTE]
-> Bizonyos típusú naplózási puffer írni a naplófájlt, amely a Stream üzemen kívüli események eredményezhet. Például egy alkalmazás naplóbejegyzést, amikor egy felhasználó meglátogat egy oldal előfordulhat, hogy megjelenik a Stream a megfelelő HTTP-naplóbejegyzés az oldal kérelem előtt.
+> A naplózási puffer bizonyos típusai a naplófájlba írhatók, ami miatt az adatfolyamban megrendelési események is megtekinthetők. Például egy olyan alkalmazási naplóbejegyzés, amely akkor fordul elő, amikor egy felhasználó meglátogat egy oldalt az adatfolyamban, mielőtt megkezdené a megfelelő HTTP-naplóbejegyzés megadását az oldal kéréséhez.
 >
 > [!NOTE]
-> Bármilyen szöveges fájlba, a tárolt adatokat is a naplózási adatfolyam streameli az **D:\\otthoni\\LogFiles\\**  mappát.
+> A log streaming emellett a **D:\\\\ Home\\LogFiles** mappában tárolt szövegfájlba írt adatokat is továbbítja.
 >
 >
 
-### <a name="streaming-with-azure-cli"></a>Streamelés az Azure CLI-vel
-Az adatfolyam adatok naplózása, nyisson meg egy új parancssort, PowerShell, a Bash vagy a terminál-munkamenetet, és adja meg a következő parancsot:
+### <a name="streaming-with-azure-cli"></a>Folyamatos átvitel az Azure CLI-vel
+A naplózási információk továbbításához nyisson meg egy új parancssort, egy PowerShell-, bash-vagy terminál-munkamenetet, és írja be a következő parancsot:
 
     az webapp log tail --name appname --resource-group myResourceGroup
 
-Ez a parancs a "appname" nevű alkalmazás csatlakozik, és elkezdeni a streamelést az ablak információk alkalmazásnapló-események bekövetkezésekor az alkalmazást. Minden olyan információt írni a .txt, .log vagy .htm végződésű (d:/home/logfiles) /LogFiles a címtárban tárolt fájlok a helyi konzol adatfolyamként.
+Ez a parancs csatlakozik a "AppName" nevű alkalmazáshoz, és megkezdi a folyamatos átvitelt az ablakba, ahogy az alkalmazásban naplózási események történnek. A rendszer a/LogFiles könyvtárban (d:/Home/LogFiles) tárolt,. txt,. log vagy. htm kiterjesztésű fájlokba írt információkat továbbítja a helyi konzolra.
 
-Adott események, hibák, például szűréséhez használja a **– szűrő** paraméter. Példa:
+Adott események, például hibák szűréséhez használja a **--Filter** paramétert. Példa:
 
     az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 
-Szűrés konkrét naplófájlokból típusok, például a HTTP, használja a **– elérési út** paraméter. Példa:
+Adott típusú naplók (például HTTP) szűréséhez használja a **--path** paramétert. Példa:
 
     az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 > [!NOTE]
-> Ha még nem telepítette az Azure CLI-vel, vagy még nem konfigurálta, hogy az Azure-előfizetéssel, lásd: [hogyan használja az Azure CLI](../cli-install-nodejs.md).
+> Ha még nem telepítette az Azure CLI-t, vagy nem konfigurálta az Azure-előfizetésének használatára, tekintse meg az [Azure CLI használatát](../cli-install-nodejs.md)ismertető témakört.
 >
 >
 
-## <a name="understandlogs"></a> kézikönyv: Diagnosztikai naplók megértése
-### <a name="application-diagnostics-logs"></a>Application diagnostics-naplók
-Az Application diagnostics adatait tárolja egy megadott formátumban, a .NET-alkalmazásokban, attól függően, hogy naplókat a file system vagy a blob Storage tárolja. 
+## <a name="understandlogs"></a>kézikönyv: Diagnosztikai naplók ismertetése
+### <a name="application-diagnostics-logs"></a>Application Diagnostics-naplók
+Az Application Diagnostics a .NET-alkalmazások adott formátumában tárolja az adatokat, attól függően, hogy a naplófájlokat a fájlrendszer vagy a blob Storage tárolóba tárolja-e a rendszer. 
 
-A alapkészlete, tárolt adatok esetében azonos mindkét tárolási típusok – a dátum és idő az esemény történt, az eseményt, az esemény típusa (információk, figyelmeztetés, hiba) és az eseményüzenet előállított ID procesu. Naplók tárolásához a fájlrendszer használata akkor hasznos, ha egy probléma elhárításához, mert a naplófájlok frissítés közel azonnali közvetlen hozzáférésre van szüksége. A BLOB storage archiválási célokat szolgál, mert a fájlok a gyorsítótárba, és majd a storage-tárolóba, ütemezés szerint kiürített.
+A tárolt adatok alapkészlete ugyanaz, mint a tárolási típusok között – az esemény dátuma és időpontja, az eseményt előkészítő folyamat azonosítója, az esemény típusa (információ, figyelmeztetés, hiba) és az esemény üzenete. Ha azonnali hozzáférésre van szüksége egy probléma megoldásához, a fájlrendszer a log Storage szolgáltatáshoz való használata akkor hasznos, ha a naplófájlok azonnal frissülnek. A blob Storage archiválási célokra szolgál, mert a fájlok gyorsítótárazva vannak, majd egy ütemezett tárolóba vannak ürítve.
 
 **Fájlrendszer**
 
-Az egyes sorok naplózza a fájlrendszer vagy fogadott streamelési használatával a következő formátumban kell megadni:
+A fájlrendszerbe bejelentkezett vagy a streaming használatával fogadott sorok formátuma a következő:
 
     {Date}  PID[{process ID}] {event type/level} {message}
 
-Ha például egy hibaesemény a következőképpen fog a következő mintához hasonló:
+Egy hibaüzenet például a következő mintához hasonlóan jelenik meg:
 
     2014-01-30T16:36:59  PID[3096] Error       Fatal error on the page!
 
-A fájlrendszer naplózás legalapvetőbb információkat talál a három elérhető módszerek, csak az idő, Folyamatazonosító, Eseményszint, és üzenet megadása.
+A fájlrendszerbe való naplózás a három elérhető módszer legalapvetőbb információit biztosítja, amely csak az időt, a folyamat AZONOSÍTÓját, az esemény szintjét és az üzenetet biztosítja.
 
 **Blob Storage**
 
-Blob storage-ba történő bejelentkezéskor adatok vesszővel elválasztott értékeket (CSV) formátum van tárolva. További mezők naplózza az esemény kapcsolatos részletesebb információkat biztosít. A következő tulajdonságokat a fürt megosztott kötetei szolgáltatás minden egyes sorára használhatók:
+A blob Storage-ba való naplózáskor az adatok vesszővel tagolt (CSV) formátumban tárolódnak. A rendszer további mezőket naplóz, hogy részletesebb információkat szolgáltasson az eseményről. A CSV-sorok a következő tulajdonságokat használják:
 
-| Tulajdonság neve | / Formátumban |
+| Tulajdonság neve | Érték/formátum |
 | --- | --- |
-| Dátum |A dátum és időpont, amikor az esemény történt |
-| Szint |Eseményszint (például hiba, figyelmeztetés, információ) |
-| Alkalmazásnév |Az alkalmazás neve |
-| InstanceId |Az esemény történt az alkalmazás példánya |
-| EventTickCount |A dátum és időpont, amikor az esemény történt, osztásjelek formátumban (nagyobb pontosság) |
-| EventId |Ez az esemény esemény azonosítója<p><p>Az alapértelmezett érték 0, ha nincs megadva |
-| Pid |Folyamat azonosítója |
-| TID |Az esemény előállított szál hozzászóláslánc azonosítója |
-| Message |Eseménynapló-üzenet részletei |
+| Date |Az esemény dátuma és időpontja |
+| Szint |Esemény szintje (például hiba, figyelmeztetés, információ) |
+| ApplicationName |Az alkalmazás neve |
+| InstanceId |Az alkalmazás azon példánya, amelyen az esemény bekövetkezett |
+| EventTickCount |Az esemény dátuma és időpontja, Tick formátumban (nagyobb pontosság) |
+| EventId |Az esemény eseményazonosító<p><p>Alapértelmezett értéke 0, ha nincs megadva |
+| PID |Folyamat azonosítója |
+| TID |Az eseményt gyártó szálhoz tartozó szál azonosítója |
+| Message |Esemény részletei üzenet |
 
-A blob tárolt adatokat ehhez hasonlóan néz ki az alábbi példához:
+A blobokban tárolt adatértékek az alábbi példához hasonlóan jelennek meg:
 
     date,level,applicationName,instanceId,eventTickCount,eventId,pid,tid,message
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> ASP.NET Core, a naplózás használatával valósítható meg a [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) szolgáltató a szolgáltatói betétek további naplófájlok a blobtárolóba. További információkért lásd: [ASP.NET Core-naplózás az Azure-ban](/aspnet/core/fundamentals/logging).
+> ASP.NET Core esetében a naplózás a [Microsoft. Extensions. Logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) szolgáltató használatával történik, ez a szolgáltató további naplófájlokat helyez el a blob-tárolóba. További információ: [ASP.net Core naplózás az Azure-ban](/aspnet/core/fundamentals/logging).
 >
 >
 
-### <a name="failed-request-traces"></a>Sikertelen kérelmek nyomkövetési
-Sikertelen kérelmek nyomkövetési nevű XML-fájlokban van tárolva **fr ### .xml**. A naplózott információk megkönnyítése XSL stíluslapok nevű **freb.xsl** megtalálható az XML-fájlok könyvtárába. Ha megnyit egy XML-fájlt az Internet Explorer, az Internet Explorer a XSL stíluslap egy formázott megjelenítése a nyomkövetési adatok, az alábbi példához hasonló biztosításához használt:
+### <a name="failed-request-traces"></a>Sikertelen kérelmek nyomkövetése
+A sikertelen kérelmek nyomkövetését a **fr # # # # # # #. XML**nevű XML-fájlban tárolja a rendszer. Ahhoz, hogy könnyebb legyen megtekinteni a naplózott adatokat, a **Sikertelen kérelmek eseménytárolási. xsl** nevű XSL-stíluslap ugyanabban a könyvtárban van megadva, mint az XML-fájlok. Ha az Internet Explorerben megnyit egy XML-fájlt, az Internet Explorer az XSL-stíluslapot használva megadja a nyomkövetési adatok formázott megjelenítését, az alábbi példához hasonlóan:
 
-![sikertelen kérelmek, a böngészőben](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
+![a böngészőben megtekintett sikertelen kérelem](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
 > [!NOTE]
-> A formázott sikertelen kérelmek nyomkövetési megtekintéséhez egyszerűen, hogy nyissa meg az alkalmazás lapot a portálon. A bal oldali menüben válassza ki a **diagnosztizálása és a problémák megoldásában**, majd keresse meg az **sikertelen kérelmek nyomkövetési naplók**, majd kattintson a ikonra tallózása és megtekintése a nyomkövetést szeretne.
+> Egy egyszerű módszer a formázott sikertelen kérelmek nyomkövetésének megtekintésére, hogy megkeresse az alkalmazás lapját a portálon. A bal oldali menüben válassza a **diagnosztizálás és megoldás problémák**elemet, majd keresse meg a **Sikertelen kérelmek nyomkövetésére**vonatkozó naplókat, majd kattintson a ikonra a kívánt nyomkövetés megkereséséhez és megtekintéséhez.
 >
 
-### <a name="detailed-error-logs"></a>Részletes hibanaplókat
-Részletes hibanaplókat olyan HTML-dokumentumok, amelyek előfordult HTTP-hibák részletes információkat biztosítanak. Egyszerűen csak a HTML-dokumentumok, mivel azok tekinthet meg webböngészővel.
+### <a name="detailed-error-logs"></a>Részletes hibák naplói
+A részletes naplófájlok olyan HTML-dokumentumok, amelyek részletesebb információkat biztosítanak a bekövetkezett HTTP-hibákról. Mivel ezek egyszerűen HTML-dokumentumok, webböngészővel is megtekinthetők.
 
-### <a name="web-server-logs"></a>Webkiszolgáló-naplókkal
-A webkiszolgáló-naplók használatával formázott a [W3C bővített naplófájlformátum](/windows/desktop/Http/w3c-logging). Ez az információ egy szövegszerkesztő használatával olvashatja, vagy segédprogramok használatával például elemzett [naplóelemző](https://go.microsoft.com/fwlink/?LinkId=246619).
+### <a name="web-server-logs"></a>Webkiszolgáló naplói
+A webkiszolgáló naplófájljai a [W3C bővített naplófájl formátumával](/windows/desktop/Http/w3c-logging)vannak formázva. Ezek az információk egy szövegszerkesztővel olvashatók be, vagy a segédprogramok, például a [log Parser](https://go.microsoft.com/fwlink/?LinkId=246619)használatával elemezhetők.
 
 > [!NOTE]
-> Az Azure App Service által előállított naplók nem támogatják a **s-computername**, **s-ip**, vagy **cs-version** mezőket.
+> A Azure App Service által létrehozott naplók nem támogatják az **s-számítógépnév**, az **s-IP**vagy a **cs-Version** mezőket.
 >
 >
 
 ## <a name="nextsteps"></a> Következő lépések
-* [Az Azure App Service figyelése](web-sites-monitor.md)
-* [Hibaelhárítás az Azure App Service a Visual Studióban](troubleshoot-dotnet-visual-studio.md)
-* [A HDInsight-alkalmazás naplók elemzése](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+* [A Azure App Service figyelése](web-sites-monitor.md)
+* [Hibaelhárítási Azure App Service a Visual Studióban](troubleshoot-dotnet-visual-studio.md)
+* [Alkalmazás-naplók elemzése a HDInsight-ben](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

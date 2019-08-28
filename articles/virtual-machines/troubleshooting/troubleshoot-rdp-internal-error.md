@@ -1,5 +1,5 @@
 ---
-title: Belső hiba akkor fordul elő, ha létrehoz egy RDP-kapcsolatot az Azure Virtual Machines |} A Microsoft Docs
+title: Belső hiba történik, amikor RDP-kapcsolattal csatlakozik az Azure Virtual Machineshoz | Microsoft Docs
 description: Ismerje meg a Microsoft Azure-ban RDP belső kapcsolatos hibák elhárítása. |} A Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
@@ -7,24 +7,23 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 4476e4732dfcf8d79c9678a7ff4719eba10e48f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fa00a5b65b0e337c47ca1fa892b8958f0bd2232
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60319428"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089811"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Belső hiba akkor fordul elő, amikor próbál csatlakozni egy Azure virtuális géphez a távoli asztalon keresztül
 
 Ez a cikk ismerteti, amikor megpróbál kapcsolódni egy virtuális géphez (VM) a Microsoft Azure-ban tapasztalható hiba.
 > [!NOTE]
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell, amely az új központi telepítéseknél helyett a klasszikus üzemi modell használatát javasoljuk.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell, amely az új központi telepítéseknél helyett a klasszikus üzemi modell használatát javasoljuk.
 
 ## <a name="symptoms"></a>Probléma
 
@@ -55,7 +54,7 @@ A probléma elhárításához, használja a soros konzol vagy [javítsa ki a vir
 Csatlakozás [soros konzolon és a PowerShell-példány megnyitása](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Ha a soros konzol nincs engedélyezve a virtuális Gépen, nyissa meg a [javítsa ki a virtuális Gépet offline](#repair-the-vm-offline) szakaszban.
 
-#### <a name="step-1-check-the-rdp-port"></a>. Lépés: 1. Ellenőrizze az RDP-port
+#### <a name="step-1-check-the-rdp-port"></a>. Lépés 1 az RDP-port ellenõrzése
 
 1. Egy PowerShell-példányban, használja a [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
 ) ellenőrizze, hogy más alkalmazások által használt-e a 8080-as porton:
@@ -87,7 +86,7 @@ Csatlakozás [soros konzolon és a PowerShell-példány megnyitása](./serial-co
 
     3. [Frissítse a hálózati biztonsági csoportot az új portot](../../virtual-network/security-overview.md) az Azure portal RDP-portjára.
 
-#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>2\. lépés: Az RDP-önaláírt tanúsítvány a megfelelő engedélyek beállítása
+#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>2\. lépés: Helyes engedélyek beállítása az RDP önaláírt tanúsítványhoz
 
 1.  Egy PowerShell-példány futtassa a következő parancsokat egyenként az RDP-önaláírt tanúsítvány megújítása:
 

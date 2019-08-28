@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69894127"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099152"
 ---
 Ebben a lépésben egy Azure SQL Database önálló adatbázist fog létrehozni. 
 
@@ -23,7 +23,7 @@ Ebben a lépésben egy Azure SQL Database önálló adatbázist fog létrehozni.
 
 Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal használatával.
 
-1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az *Azure SQL* kifejezést a keresőmezőbe.
+1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az *Azure SQL* kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
 2. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A különböző adatbázisokkal kapcsolatos további információkat az **adatbázisok** csempén a **Részletek megjelenítése** lehetőség kiválasztásával tekintheti meg.
 3. Válassza a **Létrehozás**lehetőséget:
 
@@ -43,7 +43,7 @@ Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal
        - **Kiszolgáló neve**: Írja `mysqlserver`be a típust, és adjon meg néhány számot az egyediséghez.
        - **Kiszolgáló-rendszergazdai bejelentkezés**: Gépelje be: `azureuser`.
        - **Jelszó**: Írjon be egy olyan összetett jelszót, amely megfelel a jelszó követelményeinek.
-       - **Hely**: Válasszon egy helyet a legördülő menüből, például `West US 2`:.
+       - **Hely**: Válasszon egy helyet a legördülő menüből, például `West US`:.
 
          ![Új kiszolgáló](../media/sql-database-get-started-portal/new-server.png)
 
@@ -86,7 +86,7 @@ Hozzon létre egy erőforráscsoportot és egy önálló adatbázist a PowerShel
    # Set variables for your server and database
    $subscriptionId = '<SubscriptionID>'
    $resourceGroupName = "myResourceGroup-$(Get-Random)"
-   $location = "West US 2"
+   $location = "West US"
    $adminLogin = "azureuser"
    $password = "PWD27!"+(New-Guid).Guid
    $serverName = "mysqlserver-$(Get-Random)"

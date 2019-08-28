@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/01/2019
-ms.openlocfilehash: ada2a19de12c2f3f6b23fcc3d759afb0c747d37d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/27/2019
+ms.openlocfilehash: 889158aeb40cfcbc69291845acfee833af0930b6
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897403"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114299"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Gépi tanulási modell üzembe helyezése Azure App Service (előzetes verzió)
 
@@ -38,6 +38,7 @@ A Azure App Service által nyújtott szolgáltatásokkal kapcsolatos további in
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az Azure Machine Learning szolgáltatás munkaterületén. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
+* A [az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * A munkaterületen regisztrált, betanított gépi tanulási modell. Ha nem rendelkezik modellel, használja a képbesorolási [oktatóanyagot:](tutorial-train-models-with-aml.md) a betanítási modell betanítása és regisztrálása.
 
     > [!IMPORTANT]
@@ -97,34 +98,151 @@ További információ a konfigurációról: [modellek üzembe helyezése a Azure
 
 A Azure App Service üzembe helyezett Docker-rendszerkép létrehozásához használja a [Model. package csomagot](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-). A következő kódrészlet bemutatja, hogyan hozhat létre egy új rendszerképet a modellből és a következtetések konfigurálásával:
 
+> [!NOTE]
+> A kódrészlet feltételezi, hogy `model` egy regisztrált modellt tartalmaz, amely `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése a Azure Machine learning szolgáltatással](how-to-deploy-and-where.md).
+
 ```python
+from azureml.core import Model
+
 package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
+# Display the package location/ACR path
+print(package.location)
 ```
 
-Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A folyamat befejeződése után a rendszerkép a munkaterülethez tartozó Azure Container Registryban lett létrehozva.
+Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A folyamat befejeződése után a rendszerkép a munkaterülethez tartozó Azure Container Registryban lett létrehozva. A rendszerkép felépítése után megjelenik a Azure Container Registry helye. A visszaadott hely formátuma `<acrinstance>.azurecr.io/package:<imagename>`. Például: `myml08024f78fd10.azurecr.io/package:20190827151241`.
+
+> [!IMPORTANT]
+> Mentse a hely adatait, ahogy azt a lemezkép telepítésekor használják.
 
 ## <a name="deploy-image-as-a-web-app"></a>Rendszerkép üzembe helyezése webalkalmazásként
 
-1. A [Azure Portal](https://portal.azure.com)válassza ki Azure Machine learning munkaterületét. Az __Áttekintés__ szakaszban a __beállításjegyzék__ -hivatkozás használatával férhet hozzá a munkaterülethez tartozó Azure Container Registryhoz.
+1. Használja az alábbi parancsot a rendszerképet tartalmazó Azure Container Registry bejelentkezési hitelesítő adatainak beszerzéséhez. Cserélje `<acrinstance>` le a elemet `package.location`a korábban visszaadott értékre: 
 
-    [![A munkaterület áttekintését bemutató képernyőkép](media/how-to-deploy-app-service/workspace-overview.png)](media/how-to-deploy-app-service/workspace-overview-expanded.png)
+    ```azurecli-interactive
+    az acr credential show --name <myacr>
+    ```
 
-2. A Azure Container Registry válassza ki a __tárak__elemet, majd válassza ki a telepíteni kívánt __lemezkép nevét__ . A telepíteni kívánt verzióhoz válassza a __...__ bejegyzést, majd __telepítse__a webalkalmazásba.
+    A parancs kimenete a következő JSON-dokumentumhoz hasonló:
 
-    [![Képernyőkép az ACR-ről egy webalkalmazásra való üzembe helyezésről](media/how-to-deploy-app-service/deploy-to-web-app.png)](media/how-to-deploy-app-service/deploy-to-web-app-expanded.png)
+    ```json
+    {
+    "passwords": [
+        {
+        "name": "password",
+        "value": "Iv0lRZQ9762LUJrFiffo3P4sWgk4q+nW"
+        },
+        {
+        "name": "password2",
+        "value": "=pKCxHatX96jeoYBWZLsPR6opszr==mg"
+        }
+    ],
+    "username": "myml08024f78fd10"
+    }
+    ```
 
-3. A webalkalmazás létrehozásához adja meg a hely nevét, az előfizetést, az erőforráscsoportot, majd válassza ki az App Service-csomagot/-helyet. Végül válassza a __Létrehozás__lehetőséget.
+    Mentse a __Felhasználónév__ és az egyik __jelszó__értékét.
 
-    ![Az új webalkalmazás párbeszédpanel képernyőképe](media/how-to-deploy-app-service/web-app-for-containers.png)
+1. Ha még nem rendelkezik erőforráscsoport-vagy app Service-csomaggal a szolgáltatás telepítéséhez, a következő parancsok azt mutatják be, hogyan hozható létre egyszerre:
+
+    ```azurecli-interactive
+    az group create --name myresourcegroup --location "West Europe"
+    az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
+    ```
+
+    Ebben a példában egy alapszintű árképzési`--sku B1`szintet () használunk.
+
+    > [!IMPORTANT]
+    > A Azure Machine learning szolgáltatás által létrehozott rendszerképek Linux-t használnak, ezért a `--is-linux` paramétert kell használnia.
+
+1. A webalkalmazás létrehozásához használja a következő parancsot. Cserélje `<app-name>` le a nevet a használni kívánt névre. Cserélje `<acrinstance>` le `<imagename>` a és a értéket a `package.location` korábban visszaadott értékek közül:
+
+    ```azurecli-interactive
+    az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
+    ```
+
+    Ez a parancs a következő JSON-dokumentumhoz hasonló adatokat ad vissza:
+
+    ```json
+    { 
+    "adminSiteName": null,
+    "appServicePlanName": "myplanname",
+    "geoRegion": "West Europe",
+    "hostingEnvironmentProfile": null,
+    "id": "/subscriptions/0000-0000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myplanname",
+    "kind": "linux",
+    "location": "West Europe",
+    "maximumNumberOfWorkers": 1,
+    "name": "myplanname",
+    < JSON data removed for brevity. >
+    "targetWorkerSizeId": 0,
+    "type": "Microsoft.Web/serverfarms",
+    "workerTierName": null
+    }
+    ```
+
+    > [!IMPORTANT]
+    > Ezen a ponton a webalkalmazás létrejött. Mivel azonban nem biztosította a hitelesítő adatokat a rendszerképet tartalmazó Azure Container Registry számára, a webalkalmazás nem aktív. A következő lépésben megadja a tároló-beállításjegyzék hitelesítési adatait.
+
+1. A következő parancs használatával biztosíthatja a webalkalmazásnak a tároló-beállításjegyzék eléréséhez szükséges hitelesítő adatokat. Cserélje `<app-name>` le a nevet a használni kívánt névre. Cserélje `<acrinstance>` le `<imagename>` a és a értéket a `package.location` korábban visszaadott értékekre. Cserélje `<username>` le `<password>` a és a értékét a korábban beolvasott ACR bejelentkezési adatokra:
+
+    ```azurecli-interactive
+    az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
+    ```
+
+    Ez a parancs a következő JSON-dokumentumhoz hasonló adatokat ad vissza:
+
+    ```json
+    [
+    {
+        "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+        "slotSetting": false,
+        "value": "false"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_URL",
+        "slotSetting": false,
+        "value": "https://myml08024f78fd10.azurecr.io"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+        "slotSetting": false,
+        "value": "myml08024f78fd10"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+        "slotSetting": false,
+        "value": null
+    },
+    {
+        "name": "DOCKER_CUSTOM_IMAGE_NAME",
+        "value": "DOCKER|myml08024f78fd10.azurecr.io/package:20190827195524"
+    }
+    ]
+    ```
+
+Ezen a ponton a webalkalmazás elkezdi betölteni a rendszerképet.
+
+> [!IMPORTANT]
+> A rendszerkép betöltése előtt több percet is igénybe vehet. A folyamat figyeléséhez használja a következő parancsot:
+>
+> ```azurecli-interactive
+> az webapp log tail --name <app-name> --resource-group myresourcegroup
+> ```
+>
+> Miután betöltötte a rendszerképet, és a hely aktív, a napló megjeleníti az állapotot `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`jelző üzenetet.
+
+A lemezkép központi telepítése után a következő paranccsal keresheti meg a gazdagépet:
+
+```azurecli-interactive
+az webapp show --name <app-name> --resource-group myresourcegroup
+```
+
+Ez a parancs a következő állomásnévhez `<app-name>.azurewebsites.net`hasonló adatokat ad vissza:. Használja ezt az értéket a szolgáltatás __alap URL-címének__ részeként.
 
 ## <a name="use-the-web-app"></a>A webalkalmazás használata
 
-A [Azure Portal](https://portal.azure.com)válassza ki az előző lépésben létrehozott webalkalmazást. Az __Áttekintés__ szakaszban másolja az __URL-címet__. Ez az érték a szolgáltatás __alap URL-címe__ .
-
-[![A webalkalmazás áttekintését bemutató képernyőkép](media/how-to-deploy-app-service/web-app-overview.png)](media/how-to-deploy-app-service/web-app-overview-expanded.png)
-
-A modellre irányuló kérelmeket továbbító webszolgáltatás a következő `{baseurl}/score`helyen található:. Például: `https://mywebapp.azurewebsites.net/score`. A következő Python-kód azt mutatja be, hogyan lehet beküldeni az adott URL-címet és megjeleníteni a választ:
+A modellre irányuló kérelmeket továbbító webszolgáltatás a következő `{baseurl}/score`helyen található:. Például: `https://<app-name>.azurewebsites.net/score`. A következő Python-kód azt mutatja be, hogyan lehet beküldeni az adott URL-címet és megjeleníteni a választ:
 
 ```python
 import requests
@@ -134,8 +252,6 @@ scoring_uri = "https://mywebapp.azurewebsites.net/score"
 
 headers = {'Content-Type':'application/json'}
 
-print(headers)
-    
 test_sample = json.dumps({'data': [
     [1,2,3,4,5,6,7,8,9,10],
     [10,9,8,7,6,5,4,3,2,1]
