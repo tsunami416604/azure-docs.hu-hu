@@ -9,23 +9,22 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 3934dbb01c3b9f3219c5e649d97371850b8daadc
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230624"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073430"
 ---
 # <a name="about-api-management"></a>Az API Management ismertetése
 
-API Management (APIM) hozhat létre egységes és modern API-átjárókat meglévő Háttérszolgáltatásokhoz – módja.
+A API Management (APIM) segítségével konzisztens és modern API-átjárókat hozhat létre a meglévő háttér-szolgáltatásokhoz.
 
-Az API Management segít a szervezeteknek közzétenni az API-kat külső, partneri és belső fejlesztők bontakoztatni az adataikban és szolgáltatásaikban. A vállalkozások világszerte digitális platformon szeretnék bővíteni a működésüket, új csatornákat szeretnének létrehozni, új ügyfeleket szeretnének találni és mélyíteni szeretnék a meglévő ügyfelekkel kialakított kapcsolatot. Az API Management a fejlesztők bevonásán, az üzleti elemzéseken, a biztonságon és a védelmen keresztül biztosítja az alapvető kompetenciákat az API-program sikeressé tételéhez. Az Azure API Management szolgáltatással bármely háttérrendszer alapján elindíthat egy teljes értékű API-programot.
+API Management segítségével a szervezetek API-kat tehetnek közzé külső, partneri és belső fejlesztők számára, hogy feloldják az adataikat és szolgáltatásaikat. A vállalkozások világszerte digitális platformon szeretnék bővíteni a működésüket, új csatornákat szeretnének létrehozni, új ügyfeleket szeretnének találni és mélyíteni szeretnék a meglévő ügyfelekkel kialakított kapcsolatot. Az API Management a fejlesztők bevonásán, az üzleti elemzéseken, a biztonságon és a védelmen keresztül biztosítja az alapvető kompetenciákat az API-program sikeressé tételéhez. Az Azure API Management szolgáltatással bármely háttérrendszer alapján elindíthat egy teljes értékű API-programot.
 
 Ez a cikk áttekintést nyújt az APIM-ot érintő gyakori forgatókönyvekről.  Emellett rövid áttekintést ad az APIM rendszer főbb összetevőiről. A cikk ezután részletesebben mutatja be az egyes összetevőket.
 
@@ -61,7 +60,7 @@ A rendszer az alábbi összetevőkből áll:
   * Létrehozhatnak egy fiókot és előfizethetnek, hogy API-kulcsokat szerezzenek.
   * Hozzáférhetnek a használat adataikról készült elemzésekhez.
 
-További információkért lásd: a [Cloud-based API Management: Az API-k Power harnessing](https://j.mp/ms-apim-whitepaper) PDF tanulmányt. A CITO Research által írt, az API Management szolgáltatást bemutató tanulmány az alábbiakat tárgyalja: 
+További információkért tekintse meg a [felhőalapú API Management: Az API](https://j.mp/ms-apim-whitepaper) -k hatékonyságának kiaknázása PDF-tanulmány. A CITO Research által írt, az API Management szolgáltatást bemutató tanulmány az alábbiakat tárgyalja: 
  
  * Gyakori API-követelmények és kihívások
  * Az API-k leválasztása és a homlokzatok bemutatása

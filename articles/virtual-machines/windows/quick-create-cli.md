@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Windows rendszerű virtuális gép létrehozása az Azure PowerShell használatával | Microsoft Docs
-description: Ebből a rövid útmutatóból elsajátíthatja, hogyan használható az Azure PowerShell Windows rendszerű virtuális gépek létrehozásra
+title: Rövid útmutató – Windows rendszerű virtuális gép létrehozása az Azure CLI használatával | Microsoft Docs
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Windows rendszerű virtuális gépet az Azure CLI használatával
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d50c3cc59bffba1c9124c59bbd6ed197025dabc8
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: e6709a6efff80df01d7504db8b39f8ff5c2c5e49
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723000"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088840"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Gyors útmutató: Windowsos virtuális gép létrehozása az Azure parancssori felülettel
 
@@ -33,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/bash](https://shell.azure.com/bash) cím megnyitásával. Válassza ki **másolási** szeretné másolni a kódblokkok, illessze be a Cloud Shellben, majd nyomja le **Enter** a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/bash](https://shell.azure.com/bash) cím megnyitásával. Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd nyomja le az **ENTER** billentyűt a futtatásához.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -45,10 +44,10 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Az alábbi példában egy *myVM* nevű virtuális gépet hoz létre. Ez a példa *azureuser* egy rendszergazda felhasználó neve. 
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Az alábbi példában egy *myVM* nevű virtuális gépet hoz létre. Ez a példa egy rendszergazdai felhasználónévhez tartozó azureuser-t használ. 
 
-Módosítania kell a értéke `--admin-password` vagy sikertelen lesz. Módosítsa a jelszót, amely megfelel a [az Azure virtuális gépek jelszókövetelményeinek](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-). A felhasználónév és jelszó használható később, amikor a virtuális Géphez csatlakozik.
+Meg kell változtatnia a értékét `--admin-password` , vagy sikertelen lesz. Módosítsa olyan jelszóra, amely megfelel az [Azure-beli virtuális gépek](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+)jelszavára vonatkozó követelményeknek. A felhasználónevet és a jelszót később fogja használni a rendszer a virtuális géphez való csatlakozáskor.
 
 ```azurecli-interactive
 az vm create \
