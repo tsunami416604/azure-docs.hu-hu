@@ -4,18 +4,18 @@ hide_bc: false
 title: Az Azure IoT dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
 description: Az Azure IoT (eszközök internetes hálózata) a Microsoft által felügyelt felhőszolgáltatások gyűjteménye, amelyek az IoT-hez csatlakozó eszközök millióit kötik össze, monitorozzák és irányítják. Egyszerűbben fogalmazva egy IoT-megoldás egy vagy több IoT-eszközből és egy vagy több, a felhőben futó háttérszolgáltatásból áll, amelyek kommunikálnak egymással.
 services: azure-iot
-author: dsk-2015
+author: philmea
 manager: philmea
 ms.service: azure-iot
-ms.topic: landing-page
-ms.date: 02/12/2019
-ms.author: dkshir
-ms.openlocfilehash: d19b6fff3bf2b43ecb692bd8d8e33a202e969570
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: hub-page
+ms.date: 08/27/2019
+ms.author: philmea
+ms.openlocfilehash: 7ea66c873d6ba70c2a7b3907a83a466117b56190
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61216543"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074329"
 ---
 <div id="main" class="v2">
     <div class="container">

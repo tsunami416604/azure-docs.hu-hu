@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre C# ASP.NET Framework webalkalmazás – az Azure App Service |} A Microsoft Docs
+title: ASP.NET C# -keretrendszer Webalkalmazás létrehozása – Azure app Service | Microsoft Docs
 description: Az alapértelmezett C# ASP.NET-webalkalmazás üzembe helyezésével megtudhatja, hogy miként futtathat webalkalmazásokat az Azure App Service-ben.
 services: app-service\web
 documentationcenter: ''
@@ -10,21 +10,20 @@ ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8dc062a1c9490a03aa5369dc103db750d7531140
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 6c32415e750964e94129a4a6f9cf3812fe9117b5
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117801"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067281"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>ASP.NET Framework webalkalmazás létrehozása az Azure-ban
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  A rövid útmutató bemutatja, hogyan helyezhet üzembe az első ASP.NET-webalkalmazását az Azure App Service-ben. Ha elkészült, egy erőforráscsoportot, App Service-csomag és a egy üzembe helyezett webalkalmazással rendelkező App Service-alkalmazás lesz.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe az első ASP.NET-webalkalmazását Azure App Service. Ha elkészült, egy olyan erőforráscsoporthoz fog rendelkezni, amely egy App Service csomagot és egy App Service alkalmazást tartalmaz egy telepített webalkalmazással.
 
 ![](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
@@ -101,8 +100,8 @@ A **Szolgáltatási csomag konfigurálása** párbeszédpanelen a képernyőkép
 | Beállítás | Ajánlott érték | Leírás |
 |-|-|-|
 |App Service-csomag| myAppServicePlan | Az App Service-csomag neve. |
-| Location egység | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
-| Méret | Ingyenes | A [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) meghatározza az üzemeltetési funkciókat. |
+| Location | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
+| Size | Ingyenes | A [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) meghatározza az üzemeltetési funkciókat. |
 
 Kattintson az **OK** gombra.
 
@@ -148,7 +147,7 @@ Miután a közzététel befejeződött, a Visual Studio tallózza a webalkalmaz�
 
 Ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>, és felügyelje a létrehozott webalkalmazást.
 
-A bal oldali menüben válassza ki a **App Services**, majd válassza ki az Azure-alkalmazás neve.
+A bal oldali menüben válassza a **app Services**lehetőséget, majd válassza ki az Azure-alkalmazás nevét.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-dotnet-framework/access-portal.png)
 

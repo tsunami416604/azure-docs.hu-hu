@@ -7,21 +7,20 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 941a35084ba811e3bf9224087336db9abbd5b5d5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 9cd09349ae37d11e4d01bc308162512ebfa03dfc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104391"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086351"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB által aktivált függvény létrehozása
 
-Megismerheti, hogyan hozhat létre egy olyan függvényt, amelyet az aktivál, ha adatokat ad hozzá az Azure Cosmos DB-hez, illetve abban található adatokat módosít. Azure Cosmos DB kapcsolatos további információkért lásd: [Azure Cosmos DB: Az Azure Functions szolgáltatással kiszolgáló nélküli adatbázis-használat](../cosmos-db/serverless-computing-database.md).
+Megismerheti, hogyan hozhat létre egy olyan függvényt, amelyet az aktivál, ha adatokat ad hozzá az Azure Cosmos DB-hez, illetve abban található adatokat módosít. További információ a Azure Cosmos DBről [: Azure Cosmos db: Kiszolgáló nélküli adatbázis-számítástechnika Azure Functions](../cosmos-db/serverless-computing-database.md)használatával.
 
 ![Tekintse meg a naplókban található üzeneteket.](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
 
@@ -60,7 +59,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 1. A keresőmezőbe írja be a `cosmos` kifejezést, majd válassza ki az **Azure Cosmos DB trigger** sablont.
 
-1. Ha a rendszer kéri, válassza ki a **telepítése** a függvényalkalmazáshoz az Azure Cosmos DB-bővítmény telepítése. A telepítést követően válassza a **Folytatás** gombot.
+1. Ha a rendszer kéri, válassza a **telepítés** lehetőséget a Azure Cosmos db bővítmény telepítéséhez a Function alkalmazásban. A telepítést követően válassza a **Folytatás** gombot.
 
     ![Kötési bővítmények telepítése](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
@@ -70,7 +69,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
     | Beállítás      | Ajánlott érték  | Leírás                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **Name (Név)** | Alapértelmezett | Használja a sablonban javasolt alapértelmezett függvénynevet.|
+    | **Name** | Alapértelmezett | Használja a sablonban javasolt alapértelmezett függvénynevet.|
     | **Azure Cosmos DB-fiók kapcsolata** | Új beállítás | Válassza ki az **Új** gombot, majd válassza ki az **előfizetését**, a korábban létrehozott **adatbázisfiókot**, és a **Kiválasztás** lehetőséget. Ezzel létrehoz egy alkalmazásbeállítást a fiókkapcsolathoz. Ezt a beállítást használja a kötés, hogy kapcsolódjon az adatbázishoz. |
     | **Gyűjtemény neve** | Elemek | A monitorozni kívánt gyűjtemény neve. |
     | **A bérletek gyűjteményének létrehozása, ha az nem létezik** | Bejelölve | A gyűjtemény még nem létezik, hozza létre. |

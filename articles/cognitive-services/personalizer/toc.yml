@@ -72,8 +72,8 @@
       items:
         - name: .NET
           items:
-            - name: .NET SDK-referencia
-              href: 'https://go.microsoft.com/fwlink/?linkid=2092353'
+            - name: Referencia
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet'
             - name: NuGet-csomag
               href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
         - name: Indítás

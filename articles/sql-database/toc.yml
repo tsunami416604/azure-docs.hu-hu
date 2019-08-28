@@ -238,7 +238,7 @@
     - name: Szolgáltatásként nyújtott platform
       items:
         - name: A szolgáltatásként nyújtott platform dokumentációja
-          href: sql-database-paas.yml
+          href: sql-database-paas-index.yml
         - name: Az üzletmenet folytonossága
           href: sql-database-business-continuity.md
         - name: Magas rendelkezésre állás

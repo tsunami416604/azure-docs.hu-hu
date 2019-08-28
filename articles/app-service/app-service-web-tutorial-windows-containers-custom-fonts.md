@@ -1,6 +1,6 @@
 ---
-title: ASP.NET-alkalmazás létrehozása Windows-tárolók (előzetes verzió) – az Azure App Service |} A Microsoft Docs
-description: 'Útmutató: egyéni Windows-tárolók üzembe helyezését az Azure App Service és a tárolóban lévő egyéni szoftver központi telepítése.'
+title: ASP.NET-alkalmazás létrehozása Windows-tárolóval (előzetes verzió) – Azure App Service | Microsoft Docs
+description: Megtudhatja, hogyan helyezhet üzembe egyéni Windows-tárolókat Azure App Service és hogyan helyezhet üzembe egyéni szoftvereket a tárolóban.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 15a1e388b17a66bf22fc0fd51744cb0aaa1b36d4
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: f44c7a66b6d8fe7ed6ad114ea176c84351ac6493
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415522"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071518"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>ASP.NET-alkalmazás áttelepítése az Azure App Service szolgáltatásba egy Windows-tároló (előzetes verzió) használatával
 
@@ -34,7 +33,7 @@ Az oktatóanyag elvégzéséhez:
 - <a href="https://hub.docker.com/" target="_blank">Regisztráció Docker Hub-fiókra</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows rendszerhez készült Docker telepítése</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">A Docker átváltása Windows-tárolók futtatására</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Telepítse a Visual Studio 2019</a> az a **ASP.NET és webfejlesztési** és **Azure-fejlesztési** számítási feladatokhoz. Ha már telepítette a Visual Studio 2019:
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Telepítse a Visual Studio 2019</a> -et a **ASP.net, valamint a webes fejlesztési** és az **Azure-fejlesztési** számítási feladatokkal. Ha már telepítette a Visual Studio 2019-et:
     - Telepítse a legújabb frissítéseket a Visual Studióban a **Help** > **Check for Updates** (Súgó, Frissítések keresése) lehetőségre kattintva.
     - Adja hozzá a számítási feladatokat a Visual Studióban a **Tools** (Eszközök) >  **Get Tools and Features** (Eszközök és funkciók beszerzése) elemre kattintva.
 
@@ -117,7 +116,7 @@ A **Create a new Azure Container Registry** (Új Azure Container Registry létre
 
 Konfigurálja az új Container Registryt a következő táblázatban javasolt értékek alapján. Ha végzett, kattintson a **Létrehozás** gombra.
 
-| Beállítás  | Ajánlott érték | További információ |
+| Beállítás  | Ajánlott érték | További tudnivalók |
 | ----------------- | ------------ | ----|
 |**DNS-előtag**| Megtarthatja a beállításjegyzék létrehozott nevét, vagy módosíthatja egy másik egyedi névre. |  |
 |**Erőforráscsoport**| Kattintson a **New** (Új) lehetőségre, írja be a **myResourceGroup** kifejezést, majd kattintson az **OK** gombra. |  |
@@ -140,7 +139,7 @@ A bal oldali menüben válassza az **Erőforrás létrehozása** > **Web** > **W
 
 A létrehozási felületen konfigurálja a beállításokat a következő táblázat szerint:
 
-| Beállítás  | Ajánlott érték | További információ |
+| Beállítás  | Ajánlott érték | További tudnivalók |
 | ----------------- | ------------ | ----|
 |**Alkalmazás neve**| Írjon be egy egyedi nevet. | A webalkalmazás URL-címe `http://<app_name>.azurewebsites.net`, amelyben az `<app_name>` az alkalmazás neve. |
 |**Erőforráscsoport**| Válassza a **Meglévő használata** lehetőséget, majd írja be, hogy **myResourceGroup**. |  |
