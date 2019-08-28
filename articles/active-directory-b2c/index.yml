@@ -1,89 +1,123 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Az Azure Active Directory B2C dokumentációja
+summary: Az Azure Active Directory B2C (Azure AD B2C) egy identitáskezelő szolgáltatás, amely lehetővé teszi az ügyfelek regisztrációjának és bejelentkezésének testreszabott felügyeletét, valamint a profiljuk kezelését az iOS-, Android-, .NET-, egyoldalas (SPA) és egyéb alkalmazások használatakor. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure AD B2C használatával.
 metadata:
   title: Az Azure Active Directory B2C dokumentációja
-  meta.description: 'Learn how to use Azure Active Directory B2C to customize and control how customers sign up, sign in, and manage their profiles when using your applications.'
+  description: Ismerkedjen meg az Azure Active Directory B2C használatával az ügyfelek regisztrációjának és bejelentkezésének felügyeletéhez és a profiljuk kezeléséhez az alkalmazások használatakor.
   services: active-directory-b2c
-  author: mmacy
-  manager: daveba
   ms.service: active-directory
   ms.subservice: B2C
   ms.topic: landing-page
-  ms.date: 03/29/2018
+  ms.collection: collection
+  author: mmacy
   ms.author: marsma
-abstract:
-  description: 'Az Azure Active Directory (Azure AD) B2C egy identitáskezelő szolgáltatás, amely lehetővé teszi az ügyfelek regisztrációjának és bejelentkezésének testreszabását és felügyeletét, valamint a profiljuk kezelését az alkalmazások használatakor. Ez az iOS, Android, .NET és más rendszerekre fejlesztett alkalmazásokra is vonatkozik. Az Azure AD B2C az ügyfelei identitásainak védelme mellett teszi lehetővé e műveletek végrehajtását. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure AD B2C használatával.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/active-directory-b2c-video.PNG
-      width: 250
-    title: 'Ügyfélidentitás kezelése az Azure AD B2C-vel (20:56)'
-    href: 'https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/active-directory-b2c/active-directory-b2c-overview
-            html: '<p>További tudnivalók az Azure AD B2C-ről, illetve annak szolgáltatásairól és funkcióiról.</p>'
-            image:
-              src: ./media/index/i_get-started.svg
-            title: Tudnivalók az Azure AD B2C-ről
-          - href: /azure/active-directory-b2c/solution-articles
-            html: <p>A megoldások és betanítási lehetőségek vizsgálata az Azure AD B2C használatával.</p>
-            image:
-              src: ./media/index/i_advanced.svg
-            title: Megoldások és betanítás
-          - href: /azure/active-directory-b2c/trustframeworkpolicy
-            html: <p>Speciális regisztrációs és bejelentkezési forgatókönyvek létrehozása egyéni szabályzatokkal az Azure AD B2C-ben.</p>
-            image:
-              src: ./media/index/i_investigate.svg
-            title: Identity Experience Framework
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Itt megtudhatja, hogyan állíthatja be az alkalmazását használó ügyfelek identitáskezelését:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_NET.svg'
-            text: .NET
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app'
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_windows.svg'
-            text: Asztal
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-desktop-app'
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_nodejs.svg'
-            text: Egyoldalas
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-spa'
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan kezelheti a regisztrációt, a bejelentkezést és az ügyfélprofilokat az ASP.NET, asztali vagy egyoldalas Node.js-alkalmazásaiban.'
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: ASP.NET
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Bérlő létrehozása</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">Felhasználók hitelesítése</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">API-hozzáférés biztosítása</a></p>
-          - title: Asztal
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Bérlő létrehozása</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">Felhasználók hitelesítése</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">API-hozzáférés biztosítása</a></p>
-          - title: Egyoldalas
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Bérlő létrehozása</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">Felhasználók hitelesítése</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">API-hozzáférés biztosítása</a></p>
-  - title: Példák
-    items:
-      - type: paragraph
-        text: 'Itt olyan példákat talál, amelyek bemutatják az ügyfélidentitások kezelését az alkalmazásokban.'
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="/azure/active-directory-b2c/code-samples">Mobil, asztali, webes és egyoldalas alkalmazások</a>'
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 445e3bf68b3ce75ca2d9e51dc6f69c638f2f6b44
+  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70061351"
+landingContent:
+- title: Az alapok elsajátítása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure AD B2C?
+      url: active-directory-b2c-overview.md
+  - linkListType: get-started
+    links:
+    - text: Azure AD B2C bérlő létrehozása
+      url: tutorial-create-tenant.md
+    - text: Egy alkalmazás regisztrálása
+      url: tutorial-register-applications.md
+    - text: Felhasználói folyamatok beállítása
+      url: tutorial-create-user-flows.md
+  - linkListType: learn
+    links:
+    - text: 'Videó: Ügyfélidentitás kezelése az Azure AD B2C-vel'
+      url: https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C
+- title: Identitás hozzáadása az ASP.NET-alkalmazásokhoz
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Bejelentkezés beállítása
+      url: active-directory-b2c-quickstarts-web-app.md
+  - linkListType: tutorial
+    links:
+    - text: Felhasználók hitelesítése .NET-webalkalmazások esetén
+      url: active-directory-b2c-tutorials-web-app.md
+    - text: API-hozzáférés biztosítása .NET-webalkalmazásokhoz
+      url: active-directory-b2c-tutorials-web-api.md
+    - text: Vállalati és közösségi bejelentkezés engedélyezése
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: Kódminták webalkalmazásokhoz és API-khoz
+      url: code-samples.md#web-apps-and-apis
+- title: Identitás hozzáadása az egyoldalas alkalmazásokhoz
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Bejelentkezés beállítása
+      url: active-directory-b2c-quickstarts-desktop-app.md
+  - linkListType: tutorial
+    links:
+    - text: Felhasználók hitelesítése az egyoldalas alkalmazásokban
+      url: active-directory-b2c-tutorials-spa.md
+    - text: API-hozzáférés biztosítása egyoldalas alkalmazásokhoz
+      url: active-directory-b2c-tutorials-spa-webapi.md
+    - text: Vállalati és közösségi bejelentkezés engedélyezése
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: Kódminták egyoldalas alkalmazásokhoz
+      url: code-samples.md#single-page-apps
+- title: Identitás hozzáadása asztali alkalmazásokhoz
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Bejelentkezés beállítása
+      url: active-directory-b2c-quickstarts-desktop-app.md
+  - linkListType: tutorial
+    links:
+    - text: Felhasználók hitelesítése a natív ügyfelekben
+      url: active-directory-b2c-tutorials-desktop-app.md
+    - text: API-hozzáférés biztosítása a natív ügyfeleknek
+      url: active-directory-b2c-tutorials-desktop-app-webapi.md
+    - text: Vállalati és közösségi bejelentkezés engedélyezése
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: Kódminták mobil- és asztali alkalmazásokhoz
+      url: code-samples.md
+- title: Gyakori identitáskezelési forgatókönyvek konfigurálása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: A felhasználói folyamatok bemutatása
+      url: active-directory-b2c-reference-policies.md
+  - linkListType: how-to-guide
+    links:
+    - text: Felhasználók regisztrációja és bejelentkezése
+      url: tutorial-create-user-flows.md
+    - text: A kezelőfelület testreszabása
+      url: customize-ui-overview.md
+    - text: Facebook-fiókkal történő bejelentkezés engedélyezése
+      url: active-directory-b2c-setup-fb-app.md
+- title: Speciális identitáskezelési forgatókönyvek létrehozása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az egyéni szabályzatok bemutatása
+      url: active-directory-b2c-overview-custom.md
+  - linkListType: how-to-guide
+    links:
+    - text: Felhasználók regisztrációja és bejelentkezése
+      url: active-directory-b2c-get-started-custom.md
+    - text: A kezelőfelület testreszabása
+      url: active-directory-b2c-ui-customization-custom.md
+    - text: Több-bérlős Azure AD-bejelentkezés engedélyezése
+      url: active-directory-b2c-setup-commonaad-custom.md
+    - text: Saját üzleti logika hozzáadása REST API-kkal
+      url: active-directory-b2c-rest-api-validation-custom.md

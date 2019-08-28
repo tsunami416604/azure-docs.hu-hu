@@ -7,12 +7,12 @@ ms.service: governance
 ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: 6ca8351e7294c5a9cdd9f594eb4524d04a27b5c1
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c9bc02959c64baecf11e2d1651051cd9bdda61d7
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516976"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060615"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Erőforrások rendszerezése az Azure Management Groups segítségével
 
@@ -26,9 +26,9 @@ A felügyeleti csoportok és előfizetések rugalmas szerkezetének létrehozás
 
 ![Példa egy felügyeleti csoport hierarchiafájára](./media/tree.png)
 
-Hozzon létre egy hierarchiát, amelyre alkalmazhat egy szabályzatot, például a virtuális gépek helyének az USA nyugati régiójára való korlátozására a „Production” csoporton. Ezt a szabályzatot a felügyeleti csoport alá tartozó mindkét EA-előfizetés örökli, és az előfizetések alá tartozó összes virtuális gépre érvényes lesz. Ezt a biztonsági szabályzatot az erőforrás vagy az előfizetés tulajdonosa nem módosíthatja, ez pedig hatékonyabb kontrollt biztosít.
+Létrehozhat egy hierarchiát, amelyre szabályzatot alkalmazhat, például a virtuális gépek helyének az USA nyugati régiójára való korlátozását a „Production” csoporton. Ezt a szabályzatot a felügyeleti csoport alá tartozó mindkét EA-előfizetés örökli, és az előfizetések alá tartozó összes virtuális gépre érvényes lesz. Ezt a biztonsági szabályzatot az erőforrás vagy az előfizetés tulajdonosa nem módosíthatja, ez pedig hatékonyabb kontrollt biztosít.
 
-A felügyeleti csoportok használatának másik esete, amikor egyszerre több előfizetéshez szeretne felhasználói hozzáférést biztosítani. Ha több előfizetést helyez a felügyeleti csoport alá, mindössze egy [szerepköralapú hozzáférés-vezérlési](../../role-based-access-control/overview.md) (RBAC) hozzárendelést kell létrehoznia a felügyeleti csoporthoz, amelytől az összes előfizetés örökli a hozzáférést.
+A felügyeleti csoportok használatának másik esete, amikor egyszerre több előfizetés számára szeretne felhasználói hozzáférést biztosítani. Ha több előfizetést helyez a felügyeleti csoport alá, mindössze egy [szerepköralapú hozzáférés-vezérlési](../../role-based-access-control/overview.md) (RBAC) hozzárendelést kell létrehoznia a felügyeleti csoporthoz, amelytől az összes előfizetés örökli a hozzáférést.
 Ahelyett, hogy különböző előfizetésekre szkriptelne RBAC-hozzárendeléseket, a felügyeleti csoporton egyetlen hozzárendeléssel biztosíthatja a szükséges hozzáférést a felhasználóknak.
 
 ### <a name="important-facts-about-management-groups"></a>A felügyeleti csoportok fontosabb jellemzői
@@ -55,7 +55,7 @@ Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy m
   - Az újonnan létrehozott előfizetések alapértelmezés szerint a gyökérszintű felügyeleti csoporthoz tartoznak.
 - A gyökérszintű felügyeleti csoport az összes Azure-ügyfél számára látható, de nem mindegyikük rendelkezik hozzáféréssel a kezeléséhez.
   - Bárki, aki hozzáféréssel rendelkezik egy adott előfizetéshez, láthatja, hogy az hol helyezkedik el a hierarchiában.  
-  - Senki nem kap alapértelmezés szerint hozzáférést a gyökérszintű felügyeleti csoporthoz. Kizárólag az Azure AD globális rendszergazdái emelhetik meg jogosultsági szintjüket, hogy hozzáférést kapjanak.  Ezt követően bármilyen RBAC-szerepkört hozzárendelhetnek a címtár felhasználóihoz.  
+  - Senki nem kap alapértelmezés szerint hozzáférést a gyökérszintű felügyeleti csoporthoz. Kizárólag az Azure AD globális rendszergazdái emelhetik meg jogosultsági szintjüket, hogy hozzáférést kapjanak.  Ha már rendelkeznek hozzáféréssel a gyökérfelügyeleti csoporthoz, bármilyen RBAC-szerepkört hozzárendelhetnek a címtár felhasználóihoz.  
 
 > [!IMPORTANT]
 > A gyökérszintű felügyeleti csoporton végrehajtott felhasználóihozzáférés- és szabályzat-hozzárendelések **a címtárban lévő valamennyi erőforrásra érvényesek lesznek**.
