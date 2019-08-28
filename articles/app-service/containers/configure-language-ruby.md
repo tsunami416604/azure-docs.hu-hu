@@ -10,18 +10,17 @@ ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 222ded620610957e752e2081bda638d78eba4867
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 71734396e90987fb1e318f3d8bb01d957fc0fda1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619437"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071288"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Linux Ruby-alkalmazás konfigurálása a Azure App Servicehoz
 
@@ -58,7 +57,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > ```
 > Your Ruby version is 2.3.3, but your Gemfile specified 2.3.1
 > ```
-> vagy
+> or
 > ```
 > rbenv: version `2.3.1' is not installed
 > ```
@@ -122,7 +121,7 @@ Az indítási folyamatot a következő módokon szabhatja testre:
 A Ruby-tárolóban lévő Rails-kiszolgáló alapértelmezés szerint éles módban fut, és [azt feltételezi, hogy az eszközök előre le vannak fordítva, és a webkiszolgáló szolgálja ki őket](https://guides.rubyonrails.org/asset_pipeline.html#in-production). Ha a Rails-kiszolgálóról szeretne statikus eszközöket kiszolgálni, két dolgot kell tennie:
 
 - **Az eszközök** - előfordítása a[statikus eszközök helyi](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation) előfordítására és manuális üzembe helyezésére. Vagy hagyja, hogy az üzembe helyezési motor kezeli a helyet (lásd: [eszközök](#precompile-assets)előfordítása.
-- **Statikus fájlok** kiszolgálása – lehetővé teszi `true` [, `RAILS_SERVE_STATIC_FILES` hogy](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) a a Ruby-tárolóban lévő statikus eszközöket szolgálja ki. Példa:
+- **Statikus fájlok** kiszolgálása – lehetővé teszi, [ `RAILS_SERVE_STATIC_FILES` ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) `true`hogy a a Ruby-tárolóban lévő statikus eszközöket szolgálja ki. Példa:
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true

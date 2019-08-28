@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: d5213ff21d92bf811b05802e4cb2ffab9b9a29c6
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 5baa8c78ad581a00a3601706f31cf815359120c7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648377"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70077049"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Gyors útmutató: Adat-előállító létrehozása az Azure Data Factory felhasználói felületén
 
@@ -71,7 +71,7 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 ## <a name="create-a-linked-service"></a>Társított szolgáltatás létrehozása
 A feladat részeként létrehoz egy társított szolgáltatást, hogy az adat-előállítóhoz kapcsolja az Azure Storage-fiókot. A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket a Data Factory szolgáltatás használ futtatáskor a hozzá való kapcsolódáshoz.
 
-1. Kattintson a **Kapcsolatok** elemre, majd az eszköztáron kattintson az **Új** gombra. 
+1. Válassza a **kapcsolatok**lehetőséget, majd az eszköztáron kattintson az **új** gombra (a**kapcsolatok** gomb a bal oldali oszlop alján található a **gyári erőforrások**alatt). 
 
 1. Az **Új társított szolgáltatás** lapon válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Folytatás** gombra. 
 

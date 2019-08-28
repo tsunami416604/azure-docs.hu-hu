@@ -1,79 +1,78 @@
 ---
 title: Durable Functions áttekintése – Azure
-description: Az Azure Functions szolgáltatáshoz a Durable Functions bővítmény bemutatása.
+description: A Azure Functions Durable Functions bővítményének bemutatása.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: overview
 ms.date: 12/22/2018
 ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 6e1acf5f605d7f6fb42d24e6e7ec624a317b0e31
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 323ab530d8199dd154e5d3568c09f86f6f52d702
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612860"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087198"
 ---
-# <a name="what-are-durable-functions"></a>Mik a Durable Functions?
+# <a name="what-are-durable-functions"></a>Mi a Durable Functions?
 
-*Durable Functions* bővítménye, [Azure Functions](../functions-overview.md) , amellyel írási állapot-nyilvántartó functions egy kiszolgáló nélküli környezetben. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat.
+*Durable functions* a [Azure functions](../functions-overview.md) kiterjesztése, amely lehetővé teszi, hogy állapot-nyilvántartó függvények írhatók legyenek kiszolgáló nélküli környezetben. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat.
 
 ## <a name="benefits"></a>Előnyök
 
-A bővítmény lehetővé teszi, hogy állapot-nyilvántartó munkafolyamatok használatával meghatározhatja egy [ *vezérlőfüggvény*](durable-functions-types-features-overview.md#orchestrator-functions), lehet, amely a következő előnyöket nyújtják:
+A bővítmény lehetővé teszi az állapot-nyilvántartó munkafolyamatok definiálását egy [*Orchestrator függvénnyel*](durable-functions-types-features-overview.md#orchestrator-functions), amely a következő előnyöket nyújtja:
 
-* A munkafolyamatok meghatározhatja a kódban. JSON-sémáinak vagy tervezők nem szükségesek.
-* Más funkciók nem hívható meg mindkét szinkron és aszinkron módon történik. Meghívott függvényeken kimenete melyekbe menthetők a helyi változókhoz.
-* Folyamat automatikusan alkulcsaihoz, ha a függvény várja. Helyi állapot soha nem elvész, amikor a folyamat újrahasznosítási eljárásának végrehajtásával vagy a virtuális gép újraindul.
+* Megadhatja a munkafolyamatokat a kódban. Nem szükségesek JSON-sémák vagy-tervezők.
+* Más függvények szinkron és aszinkron módon is hívhatók. Az úgynevezett függvényekből származó kimenet menthető a helyi változókba.
+* Az előrehaladás automatikusan ellenőrzőpontra kerül, amikor a függvény megvárja. A folyamat újraindításakor vagy a virtuális gép újraindításakor a helyi állapot soha nem vész el.
 
 ## <a name="application-patterns"></a>Alkalmazásminták
 
-Durable Functions elsődleges használati eset van egyszerűsítse összetett, állapot-nyilvántartó koordinációs követelményeket, a kiszolgáló nélküli alkalmazásokat. Az alábbiakban néhány tipikus alkalmazásminták, amelyek Durable Functions is:
+Durable Functions elsődleges használati esete az összetett, állapot-nyilvántartó koordinációs követelmények leegyszerűsítése a kiszolgáló nélküli alkalmazásokban. Az alábbiakban néhány olyan jellemző alkalmazási mintát láthat, amelyek hasznosak lehetnek a Durable Functions:
 
-* [-Láncolás](durable-functions-concepts.md#chaining)
-* [Fan-out/fan-in](durable-functions-concepts.md#fan-in-out)
-* [Az aszinkron HTTP API-k](durable-functions-concepts.md#async-http)
+* [Láncolására](durable-functions-concepts.md#chaining)
+* [Ventilátor kijelentkezése/ventilátor](durable-functions-concepts.md#fan-in-out)
+* [Aszinkron HTTP API-k](durable-functions-concepts.md#async-http)
 * [Monitorozás](durable-functions-concepts.md#monitoring)
-* [Emberi beavatkozást igényel](durable-functions-concepts.md#human)
+* [Emberi interakció](durable-functions-concepts.md#human)
 
 ## <a name="language-support"></a>Támogatott nyelvek
 
-Durable Functions jelenleg a következő nyelveket támogatja:
+A Durable Functions jelenleg a következő nyelveket támogatja:
 
-* **C#** : mindkét [előre lefordított osztálykódtárakat](../functions-dotnet-class-library.md) és [ C# parancsfájl](../functions-reference-csharp.md).
-* **F#** : előre lefordított osztálykódtárakat és F# parancsfájlt. F#parancsfájl csak a támogatott verziója az Azure Functions futtatókörnyezet 1.x.
-* **A JavaScript**: csak az verzió támogatott 2.x verzióját az Azure Functions futtatókörnyezettel. Durable Functions bővítmény 1.7.0-ás verzió vagy újabb verzió szükséges. 
+* **C#** : mindkét előre [lefordított osztály kódtára](../functions-dotnet-class-library.md) és [ C# parancsfájl](../functions-reference-csharp.md).
+* **F#** : előre lefordított osztály kódtárak és F# szkriptek. F#a parancsfájl csak az Azure Functions futtatókörnyezet 1. x verziója esetén támogatott.
+* **JavaScript**: csak az Azure functions futtatókörnyezet 2. x verziójára támogatott. A Durable Functions-bővítmény vagy újabb verzió 1.7.0 szükséges. 
 
-Durable Functions rendelkezik az összes igazoló cél [Azure Functions nyelvek](../supported-languages.md). Tekintse meg a [Durable Functions problémák listája](https://github.com/Azure/azure-functions-durable-extension/issues) munkák további nyelveket támogatja a legújabb állapot.
+Durable Functions célja az összes [Azure functions nyelv](../supported-languages.md)támogatása. További nyelvek támogatásához tekintse meg a [Durable functions problémák listáját](https://github.com/Azure/azure-functions-durable-extension/issues) a legújabb munkaállapotról.
 
-Például az Azure Functions, vannak olyan sablonok segítenek tartós függvények használatával [Visual Studio 2019](durable-functions-create-first-csharp.md), [Visual Studio Code](quickstart-js-vscode.md), és a [az Azure portal](durable-functions-create-portal.md).
+A Azure Functionshoz hasonlóan a [Visual studio 2019](durable-functions-create-first-csharp.md), a [Visual Studio Code](quickstart-js-vscode.md)és a [Azure Portal](durable-functions-create-portal.md)használatával is készíthet durable Functionseket.
 
 ## <a name="billing"></a>Számlázás
 
-Durable Functions számlázása ugyanaz, mint az Azure Functions. További információkért lásd: [Azure Functions árképzése](https://azure.microsoft.com/pricing/details/functions/).
+Durable Functions számlázása ugyanaz, mint Azure Functions. További információkért lásd: [Azure Functions árképzése](https://azure.microsoft.com/pricing/details/functions/).
 
-## <a name="jump-right-in"></a>Ugrani
+## <a name="jump-right-in"></a>Ugrás közvetlenül a
 
-Akkor is Functions használatának első lépései tartós 10 percen belül ezeket a nyelvspecifikus rövid útmutatókat egyikének végrehajtásával:
+A következő, a nyelvfüggő gyors útmutatók egyikének elvégzésével megkezdheti a Durable Functions használatának megkezdését 10 perc alatt:
 
-* [C#a Visual Studio 2019 használatával](durable-functions-create-first-csharp.md)
+* [C#a Visual Studio 2019 használata](durable-functions-create-first-csharp.md)
 * [JavaScript a Visual Studio Code használatával](quickstart-js-vscode.md)
 
-Mindkét gyors útmutatók és helyileg létrehozhat, és egy "hello world" tartós függvény teszteléséhez. Ezután közzéteheti a függvénykódot az Azure-ban. A függvény létrehozása hangolja össze, és kapcsolódik egymáshoz hívások egyéb funkciók.
+Mindkét rövid útmutatóban helyileg létrehozhatja és tesztelheti a "Hello World" tartós funkciót. Ezután közzéteheti a függvénykódot az Azure-ban. Az Ön által létrehozott függvény összehangolja és láncokba rendezi a más függvények hívásait.
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
 
-Az alábbi videó kiemeli Durable Functions előnyei:
+Az alábbi videó a Durable Functions előnyeit mutatja be:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Durable-Functions-in-Azure-Functions/player] 
 
-Mivel Durable Functions-speciális bővítmény [Azure Functions](../functions-overview.md), nem megfelelő összes alkalmazáshoz. Durable Functions kapcsolatos további információkért lásd: [Durable Functions-minták és technikai kulcsfogalmak](durable-functions-concepts.md). És a többi Azure vezénylési technológia összehasonlításáért lásd: [hasonlítsa össze az Azure Functions és az Azure Logic Apps](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-azure-functions-and-azure-logic-apps).
+Mivel a Durable Functions a [Azure functions](../functions-overview.md)speciális bővítménye, az összes alkalmazás esetében nem megfelelő. További információ a Durable Functionsről: [Durable functions minták és műszaki fogalmak](durable-functions-concepts.md). Az egyéb Azure-előkészítési technológiákkal való összehasonlításért lásd: [Azure functions és Azure Logic apps összehasonlítása](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-azure-functions-and-azure-logic-apps).
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Durable Functions-minták és technikai kulcsfogalmak](durable-functions-concepts.md)
+> [Durable Functions minták és technikai fogalmak](durable-functions-concepts.md)

@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre C# ASP.NET Core-webalkalmazás – az Azure App Service |} A Microsoft Docs
-description: Ismerje meg, hogyan futtathat webalkalmazásokat az Azure App Service-ben az alapértelmezett üzembe helyezésével C# ASP.NET Core-webalkalmazást.
+title: ASP.NET Core C# Webalkalmazás létrehozása – Azure app Service | Microsoft Docs
+description: Megtudhatja, hogyan futtathat webalkalmazásokat Azure App Service az alapértelmezett C# ASP.net Core-webalkalmazás üzembe helyezésével.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -10,17 +10,16 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2762a81c9f366ad4a5d0d6d87cf04490fc10b23c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b64fd653a737201921ad481c50e2a72dc00cd912
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60854523"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071753"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>ASP.NET Core-webalkalmazás létrehozása az Azure-ban
 
@@ -28,7 +27,7 @@ ms.locfileid: "60854523"
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A _Linuxon_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [.NET Core-webalkalmazás létrehozása Linuxon futó App Service-ben](./containers/quickstart-dotnetcore.md). 
 >
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan az első ASP.NET Core üzembe helyezése az Azure App Service-webalkalmazás. Ha elkészült, egy erőforráscsoportot, App Service-csomag és a egy üzembe helyezett webalkalmazással rendelkező App Service-alkalmazás lesz.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe az első ASP.NET Core webalkalmazását Azure App Service. Ha elkészült, egy olyan erőforráscsoporthoz fog rendelkezni, amely egy App Service csomagot és egy App Service alkalmazást tartalmaz egy telepített webalkalmazással.
 
 ![](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
 
@@ -104,8 +103,8 @@ A **Szolgáltatási csomag konfigurálása** párbeszédpanelen a képernyőkép
 | Beállítás | Ajánlott érték | Leírás |
 |-|-|-|
 |App Service-csomag| myAppServicePlan | Az App Service-csomag neve. |
-| Location egység | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
-| Méret | Ingyenes | A [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) meghatározza az üzemeltetési funkciókat. |
+| Location | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
+| Size | Ingyenes | A [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) meghatározza az üzemeltetési funkciókat. |
 
 Kattintson az **OK** gombra.
 
@@ -151,7 +150,7 @@ Miután a közzététel befejeződött, a Visual Studio tallózza a webalkalmaz�
 
 Ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>, és felügyelje a létrehozott webalkalmazást.
 
-A bal oldali menüben válassza ki a **App Services**, majd válassza ki az Azure-alkalmazás neve.
+A bal oldali menüben válassza a **app Services**lehetőséget, majd válassza ki az Azure-alkalmazás nevét.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-dotnet/access-portal.png)
 
