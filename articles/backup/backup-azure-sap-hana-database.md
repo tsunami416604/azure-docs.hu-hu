@@ -5,21 +5,21 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: a11d454feb965907f3bd4e994c0916eeb7236fa7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6ac15e042f93befe406553d622c790eeabad7c2c
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034565"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060710"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA-adatbázis biztonsági mentése az Azure-ba
 
 A [Azure Backup](backup-overview.md) támogatja SAP HANA adatbázisok biztonsági mentését az Azure-ba.
 
 > [!NOTE]
-> Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. Jelenleg nem áll készen a gyártásra, és nem rendelkezik garantált SLA-val. 
+> Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. Jelenleg nem áll készen a gyártásra, és nem rendelkezik garantált SLA-val.
 
 ## <a name="scenario-support"></a>Forgatókönyvek támogatása
 
@@ -32,8 +32,11 @@ A [Azure Backup](backup-overview.md) támogatja SAP HANA adatbázisok biztonság
 ### <a name="current-limitations"></a>Aktuális korlátozások
 
 - Csak Azure-beli virtuális gépeken futó SAP HANA-adatbázisok biztonsági mentését végezheti el.
-- A Azure Portalban csak SAP HANA biztonsági mentést lehet konfigurálni. A szolgáltatás nem konfigurálható a PowerShell, a CLI vagy a REST API használatával.
-- Az adatbázisok biztonsági mentését csak Felskálázási módban végezheti el.
+- Csak egyetlen Azure-beli virtuális gépen futó SAP HANA példány készíthető biztonsági mentésre. Ugyanabban az Azure-beli virtuális gépen jelenleg több HANA-példány nem támogatott.
+- Az adatbázisok biztonsági mentését csak Felskálázási módban végezheti el. A kibővíthető, azaz A több Azure-beli virtuális gépen található HANA-példány jelenleg nem támogatott a biztonsági mentéshez.
+- Nem lehet biztonsági másolatot készíteni SAP HANA példányról a dinamikus, a kiterjesztett kiszolgálón, azaz a dinamikus rétegek jelennek meg egy másik csomóponton. Ez lényegében kibővíthető, ami nem támogatott.
+- Nem lehet biztonsági másolatot készíteni SAP HANA példányról, ha a dinamikus rétegek engedélyezve vannak ugyanazon a kiszolgálón. A dinamikus rétegek jelenleg nem támogatottak.
+- A Azure Portalban csak SAP HANA biztonsági mentést lehet konfigurálni. A szolgáltatás nem konfigurálható a PowerShell-lel, a parancssori felülettel.
 - Az adatbázis-naplók biztonsági mentését 15 percenként végezheti el. A naplók biztonsági mentései csak az adatbázis sikeres teljes biztonsági mentésének befejeződése után kezdődnek.
 - Teljes és különbözeti biztonsági másolatokat készíthet. A növekményes biztonsági mentés jelenleg nem támogatott.
 - A biztonsági mentési szabályzatot a SAP HANA biztonsági mentések alkalmazása után nem módosíthatja. Ha más beállításokkal szeretne biztonsági mentést készíteni, hozzon létre egy új szabályzatot, vagy rendeljen hozzá egy másik szabályzatot.
@@ -44,23 +47,16 @@ A [Azure Backup](backup-overview.md) támogatja SAP HANA adatbázisok biztonság
 
 A biztonsági mentések konfigurálása előtt győződjön meg arról, hogy a következőket végzi el:
 
-1. A SAP HANA adatbázist futtató virtuális gépen telepítse a Microsoft [.net Core Runtime 2,1](https://dotnet.microsoft.com/download/linux-package-manager/sles/runtime-current) csomagot. Vegye figyelembe:
-    - Csak a **DotNet-Runtime-2,1** csomagra van szükség. Nincs szüksége **aspnetcore-Runtime-2,1-** re.
-    - Ha a virtuális gép nem rendelkezik internet-hozzáféréssel, tükrözött vagy offline gyorsítótárat biztosít a DotNet-Runtime-2,1 (és az összes függő RPMs) számára a lapon megadott Microsoft-csomag hírcsatornában.
-    - A csomag telepítése során előfordulhat, hogy meg kell adnia egy beállítást. Ha igen, a **2. megoldás**megadásával.
-
-        ![Csomag telepítési beállítása](./media/backup-azure-sap-hana-database/hana-package.png)
-
-2. A virtuális gépen telepítse és engedélyezze az ODBC-illesztőprogram csomagjait a hivatalos SLES-csomagból/adathordozóról a Zypper használatával, az alábbiak szerint:
+1. A SAP HANA adatbázist futtató virtuális gépen telepítse és engedélyezze az ODBC-illesztőprogram csomagjait a hivatalos SLES-csomagból/adathordozóról a Zypper használatával, az alábbiak szerint:
 
     ```unix
     sudo zypper update
     sudo zypper install unixODBC
     ```
 
-3. Az [alábbi](#set-up-network-connectivity)eljárásban leírtak alapján engedélyezze a kapcsolatot a virtuális gépről az internetre, hogy az elérhető legyen az Azure-ban.
+2. Az [alábbi](#set-up-network-connectivity)eljárásban leírtak alapján engedélyezze a kapcsolatot a virtuális gépről az internetre, hogy az elérhető legyen az Azure-ban.
 
-4. Futtassa az előzetes regisztrációs parancsfájlt a virtuális gépen, ahol a HANA a root felhasználóként van telepítve. A parancsfájl a folyamat [portálján](#discover-the-databases) található, és a [megfelelő engedélyek](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions)beállításához szükséges.
+3. Futtassa az előzetes regisztrációs parancsfájlt a virtuális gépen, ahol a HANA a root felhasználóként van telepítve. A parancsfájl a folyamat [portálján](#discover-the-databases) található, és a [megfelelő engedélyek](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions)beállításához szükséges.
 
 ### <a name="set-up-network-connectivity"></a>Hálózati kapcsolat beállítása
 
@@ -68,6 +64,7 @@ Az SAP HANA virtuális gépnek minden művelethez kapcsolódnia kell az Azure ny
 
 - Letöltheti az Azure-adatközpontok [IP-](https://www.microsoft.com/download/details.aspx?id=41653) címtartományt, majd engedélyezheti a hozzáférést ezekhez az IP-címekhez.
 - Hálózati biztonsági csoportok (NSG) használata esetén a AzureCloud [szolgáltatás címkével](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) engedélyezheti az összes Azure-beli nyilvános IP-címet. A NSG szabályok módosításához a [set-AzureNetworkSecurityRule parancsmag](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0) használható.
+- az 443-as portot az átvitel HTTPS-kapcsolaton keresztül kell engedélyezni.
 
 ## <a name="onboard-to-the-public-preview"></a>Bevezetés a nyilvános előzetes verzióba
 
@@ -79,8 +76,6 @@ A nyilvános előzetes verzióra az alábbiak szerint kell bejelentkezni:
     ```powershell
     PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
-
-
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -182,6 +177,15 @@ Ha egy olyan adatbázis helyi biztonsági másolatát kívánja használni, amel
     - Állítsa a log_backup_using_backint **igaz**értékre.
 
 
+## <a name="upgrading-protected-10-dbs-to-20"></a>Védett 1,0-adatbázisok frissítése 2,0-re
+
+Ha SAP HANA 1,0-es adatbázisok védelmét kívánja biztosítani, és a 2,0-re kíván frissíteni, hajtsa végre az alábbi lépéseket.
+
+- A védelem leállítása a régi SDC-adatbázis megőrzése érdekében.
+- Futtassa újra az előzetes regisztrációs parancsfájlt a (SID és MDC) helyes részleteivel. 
+- A bővítmény újbóli regisztrálása (Backup-> nézet részletei – > Válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja). 
+- Kattintson az azonos virtuális géphez tartozó adatbázisok újbóli felderítése elemre. Ennek megfelelően a 2. lépésben szereplő új adatbázisok helyes részletekkel (SYSTEMDB és bérlői ADATBÁZISsal, nem SDC) jelennek meg. 
+- Az új adatbázisok védelméhez.
 
 ## <a name="next-steps"></a>További lépések
 

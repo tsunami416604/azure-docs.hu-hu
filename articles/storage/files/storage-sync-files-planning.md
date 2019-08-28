@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd587bfed7fcfea8e8cd99ca155ee9d86222ae3d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 9c46181d5ab449d28c2e2e93cc583a3551f114bc
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013539"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061737"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -245,7 +245,7 @@ Azure File Sync csak a következő régiókban érhető el:
 |--------|---------------------|
 | Kelet-Ausztrália | Új-Dél-Wales |
 | Délkelet-Ausztrália | Victoria |
-| Dél-Brazília | Sao Paolo State |
+| Dél-Brazília | Sao Paulo állam |
 | Közép-Kanada | Toronto |
 | Kelet-Kanada | Quebec város |
 | Közép-India | Pune |

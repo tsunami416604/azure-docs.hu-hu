@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 06/26/2019
-ms.openlocfilehash: 776a27ca0babfd7557bf4d16c449a8dfa5bceaf7
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.date: 08/27/2019
+ms.openlocfilehash: 921a14243bc50651358f0df42b88857ab227916d
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998203"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060635"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -51,7 +51,7 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: Általános cél�
 
 | **Funkció** | **általános célú** | **üzletileg kritikus** |
 | --- | --- | --- |
-| Virtuális mag száma\* | Gen4 8, 16, 24<br/>Gen5 4, 8, 16, 24, 32, 40, 64, 80 | Gen4 8, 16, 24, 32 <br/> Gen5 4, 8, 16, 24, 32, 40, 64, 80 |
+| Virtuális mag száma\* | Gen4 8, 16, 24<br/>Gen5 4, 8, 16, 24, 32, 40, 64, 80 | Gen4 8, 16, 24 <br/> Gen5 4, 8, 16, 24, 32, 40, 64, 80 |
 | Maximális memória | Gen4 56 GB - 168 GB (7GB/vCore)<br/>Gen5 40,8 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. | Gen4 56 GB - 168 GB (7GB/vCore)<br/>Gen5 40,8 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
 | Példányok maximálisan fenntartott tárolási mérete | -2 TB 4 virtuális mag (csak Gen5)<br/>– 8 TB más méretekben | Gen4 1 TB <br/> Gen5 <br/>-1 TB 4, 8, 16 virtuális mag<br/>-2 TB 24 virtuális mag<br/>-4 TB 32, 40, 64, 80 virtuális mag |
 | Adatbázisok maximális mérete | A példányok maximális tárolási mérete határozza meg. | A példányok maximális tárolási mérete határozza meg. |
@@ -65,10 +65,12 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: Általános cél�
 | Maximális tempDB-méret | 192 – 1 920 GB (24 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további TempDB lemezterületet érhet el. | A példányok maximális tárolási mérete korlátozza. A TempDB-naplófájl mérete jelenleg a 24GB/virtuális mag értékre van korlátozva. |
 | Memóriabeli OLTP beállítása | Nem támogatott | Elérhető |
 | Munkamenetek maximális száma | 30000 | 30000 |
+| Olvasható replikák | 0 | 1 |
 
 > [!NOTE]
 > - A felhasználói és a rendszeradatbázisokban lévő adatfájlok és a naplófájlok mérete is szerepel a tárolók maximális méretével összehasonlítva. A <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> rendszernézet használatával határozza meg az adatbázisok által felhasznált teljes területet. A hibanapló nem marad meg, és nem szerepel a méretben. A tárolók mérete nem tartalmazza a biztonsági mentéseket.
 > - Az átviteli sebesség és a IOPS a felügyelt példányok által kifejezetten nem korlátozott oldalméret is függ.
+> Az automatikus feladatátvételi csoportok használatával egy másik Azure-régióban is létrehozhat egy olvasható replikát.
 
 ## <a name="supported-regions"></a>Támogatott régiók
 

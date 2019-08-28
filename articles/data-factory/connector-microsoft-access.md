@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: 2010799dd590808a2c5be7d9e2330bd60e2c7913
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 79a960b106cc9de4116e8e59b2fa17f48c896221
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842490"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061454"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Adatok másolása a és a rendszerből a Microsoft Access-adattárakba Azure Data Factory használatával
 
@@ -33,6 +33,9 @@ A Microsoft Access Connector használatához a következőket kell tennie:
 
 - Saját üzemeltetésű Integration Runtime beállítása. Lásd: [helyi Integration Runtime](create-self-hosted-integration-runtime.md) részleteivel.
 - Telepítse a Microsoft Access ODBC-illesztőt az adattárhoz a Integration Runtime gépen.
+
+>[!NOTE]
+>Az ODBC-illesztőprogram Microsoft Access 2016-es verziója nem működik ezzel az összekötővel. Használja helyette az 2013-es vagy 2010-os illesztőprogramot.
 
 ## <a name="getting-started"></a>Első lépések
 

@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 5a09b8e589b0d4ae9daa3bbd32c38f4946d16d0e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 133110d015ac7a26f18f14f6ff957729a4f079b5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567620"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060652"
 ---
-# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Csatlakoztassa az alkalmazását az Azure SQL Database felügyelt példányához
+# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Az alkalmazás összekötése Azure SQL Database felügyelt példánnyal
 
 Ma már több lehetőség áll rendelkezésére az alkalmazás üzemeltetésének és helyének meghatározásakor.
 
@@ -69,8 +69,8 @@ Az ügyfelek által megvalósított egy másik forgatókönyv, amelyben a VPN-á
 
 Miután beállította az alapszintű infrastruktúrát, módosítania kell néhány beállítást, hogy a VPN Gateway láthassa a felügyelt példányt futtató virtuális hálózat IP-címeit. Ehhez végezze el a következő nagyon specifikus módosításokat a társítási **Beállítások**alatt.
 
-1. A VPN-átjárót futtató VNet válassza a társítások **, majd**a felügyelt példányhoz tartozó VNet-kapcsolat lehetőséget, majd kattintson az **átjáró-átvitel engedélyezése**lehetőségre.
-2. A felügyelt példányt futtató VNet válassza a társítások, **majd**a VPN Gateway társ VNet-kapcsolatot, majd kattintson a **távoli átjárók használata**elemre.
+1. A VPN-átjárót futtató VNet válassza a társítások, majd a felügyelt példányhoz tartozó VNet-kapcsolat lehetőséget, majd kattintson az **átjáró-átvitel engedélyezése**lehetőségre.
+2. A felügyelt példányt futtató VNet válassza a társítások,majd a VPN Gateway társ VNet-kapcsolatot, majd kattintson a **távoli átjárók használata**elemre.
 
 ## <a name="connect-an-azure-app-service-hosted-application"></a>Azure App Service üzemeltetett alkalmazás összekötése
 
@@ -141,10 +141,10 @@ Az eszközök és illesztőprogramok következő minimális verziói ajánlottak
 | --- | --- |
 |.NET-keretrendszer | 4.6.1 (vagy .NET Core) |
 |ODBC-illesztő| v17 |
-|PHP-illesztőprogram| 5.2.0 |
-|JDBC-illesztőprogram| 6.4.0 |
-|Node. js-illesztőprogram| 2.1.1 |
-|OLEDB-illesztőprogram| 18.0.2.0 |
+|PHP-illesztő| 5.2.0 |
+|JDBC-illesztő| 6.4.0 |
+|Node.js-illesztő| 2.1.1 |
+|OLEDB-illesztő| 18.0.2.0 |
 |SSMS| 18,0 vagy [újabb](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 |[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) vagy újabb |
 

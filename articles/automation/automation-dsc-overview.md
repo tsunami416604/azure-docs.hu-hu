@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dd898397b4aaec2e62558d12a3547f7b61d6d3fd
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533465"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061384"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation állapot konfigurációjának áttekintése
 
@@ -58,16 +58,11 @@ A Windows rendszert futtató csomópontok esetében a következő verziók támo
 - Windows 8.1
 - Windows 7
 
-A [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) önálló termék SKU nem tartalmazza a kívánt állapot konfigurációja megvalósítását, így nem felügyelhető a PowerShell DSC-vel vagy Azure Automation állapot-konfigurációval.
+Az [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) önálló termék SKU nem tartalmazza a kívánt állapot konfigurációja megvalósítását, így nem felügyelhető a PowerShell DSC-vel vagy Azure Automation állapot-konfigurációval.
 
 A Linux rendszerű csomópontok esetében a következő disztribúciók/verziók támogatottak:
 
-A DSC Linux-bővítmény támogatja az Azure-ban [támogatott](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) összes Linux-disztribúciót, kivéve a következőket:
-
-Disztribúció | Version
--|-
-Debian  | minden verzió
-Ubuntu  | 18,04
+A DSC Linux-bővítmény támogatja a [támogatott Linux](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)-disztribúciók alatt felsorolt Linux-disztribúciókat.
 
 ### <a name="dsc-requirements"></a>DSC-követelmények
 
@@ -79,7 +74,7 @@ Az Azure-ban futó összes Linux-csomópont esetében a [POWERSHELL DSC for Linu
 
 Ha a csomópontok egy magánhálózaton belül találhatók, a következő portok és URL-címek szükségesek az állapot konfigurálásához (DSC) az automatizálással való kommunikációhoz:
 
-* Port: A kimenő internet-hozzáféréshez csak TCP 443 szükséges.
+* Port A kimenő internet-hozzáféréshez csak TCP 443 szükséges.
 * Global URL: *.azure-automation.net
 * US Gov Virginia globális URL-címe: *. azure-automation.us
 * Ügynök szolgáltatás: https://\<munkaterület azonosítója\>. agentsvc.Azure-Automation.net

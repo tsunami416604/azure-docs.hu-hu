@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: bf28fb69d35256d65fdfd2c092ad48d0ad1281f9
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5920fe4a1addd2188f53a15c1d2232f505009087
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986003"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061493"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Adatok másolása az Azure Table Storage-ba és onnan az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -221,10 +221,8 @@ Az adatok Azure-táblába való másolásához állítsa az adatkészlet Type (t
 
 A séma nélküli adattárak, például az Azure Table Data Factory a következő módszerek egyikével következtetik ki a sémát:
 
-* Ha az adatok struktúráját használatával adja meg a **struktúra** tulajdonságot az adatkészlet-definícióban, adat-előállító figyelembe veszi a sémát, ez a struktúra. Ebben az esetben, ha egy sor nem tartalmaz értéket egy oszlophoz, a rendszer null értéket ad meg.
-* Ha nem határozza meg az adatszerkezetet az adatkészlet definíciójának **struktúra** tulajdonságával, Data Factory kikövetkezteti a sémát az adat első sorának használatával. Ebben az esetben, ha az első sor nem tartalmazza a teljes sémát, egyes oszlopok kimaradnak a másolási művelet eredményében.
-
-A séma nélküli adatforrások esetében az ajánlott eljárás az adatszerkezetek meghatározása a **Structure** tulajdonság használatával.
+* Ha a másolási tevékenységben megadja az oszlop leképezését, Data Factory a forrás oldali oszlopok listáját használja az adat lekéréséhez. Ebben az esetben, ha egy sor nem tartalmaz értéket egy oszlophoz, a rendszer null értéket ad meg.
+* Ha nem ad meg oszlop-hozzárendelést a másolási tevékenységben, Data Factory a séma kikövetkezteti a sémát az adathalmaz első sorának használatával. Ebben az esetben, ha az első sor nem tartalmazza a teljes sémát (például egyes oszlopokban Null érték van), a másolási művelet eredményeképpen egyes oszlopok kimaradnak.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 

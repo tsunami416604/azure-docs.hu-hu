@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: d50b3ab68b406db47a4cc8fec081b2fc076071d1
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 3818547eee05a1d6f8cf84ccb0f5f4ecb44a9ab3
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741661"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061605"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -72,7 +72,7 @@ Az Log Analytics munkaterületről:
 
 Az Office 365-előfizetésből:
 
-- Felhasználónév: Egy rendszergazdai fiók e-mail-címe.
+- Username Egy rendszergazdai fiók e-mail-címe.
 - Bérlő azonosítója: Az Office 365-előfizetés egyedi azonosítója.
 - Ügyfél-azonosító: 16 karakterből álló karakterlánc, amely az Office 365-ügyfelet jelöli.
 - Ügyfél titkos kulcsa: A hitelesítéshez szükséges titkosított karakterlánc.
@@ -83,45 +83,46 @@ Első lépésként létre kell hoznia egy alkalmazást Azure Active Directory, a
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com/) címen.
 1. Válassza ki **Azure Active Directory** majd **Alkalmazásregisztrációk**.
-1. Kattintson az **Új alkalmazásregisztráció** elemre.
+1. Kattintson az **új regisztráció**elemre.
 
     ![Alkalmazás regisztrációjának hozzáadása](media/solution-office-365/add-app-registration.png)
-1. Adja meg az alkalmazás **nevét** és **a bejelentkezési URL-címet**.  A névnek leírónak kell lennie.  Használja `http://localhost` az URL-címet, és tartsa meg a _Web App/API_ -t az **alkalmazás típusaként**
+1. Adja meg az alkalmazás **nevét**. Válassza a **fiókok lehetőséget bármely szervezeti címtárban (bármely Azure ad-címtár – több-bérlő)** a **támogatott fiókok típusaihoz**.
     
     ![Alkalmazás létrehozása](media/solution-office-365/create-application.png)
-1. Kattintson a **Létrehozás** gombra, és ellenőrizze az alkalmazás adatait.
+1. Kattintson a **regisztrálás** gombra, és ellenőrizze az alkalmazás adatait.
 
     ![Regisztrált alkalmazás](media/solution-office-365/registered-app.png)
 
 ### <a name="configure-application-for-office-365"></a>Az Office 365 alkalmazás konfigurálása
 
-1. Kattintson a **Beállítások** elemre a **Beállítások** menü megnyitásához.
-1. Válassza ki **tulajdonságok**. Módosítsa a **több-** bérlős _beállítást igen_értékre.
+1. Válassza a **hitelesítés** lehetőséget, és győződjön meg arról, hogy a **fiókok bármelyik szervezeti címtárban (bármely Azure ad-címtár – több-bérlő)** a **támogatott fióktípus**területen van kiválasztva.
 
     ![Beállítások több-bérlős](media/solution-office-365/settings-multitenant.png)
 
-1. A **Beállítások** menüben válassza a **szükséges engedélyek** lehetőséget, majd kattintson a **Hozzáadás**gombra.
-1. Kattintson **az API kiválasztása** , majd az **Office 365 Management API**-k elemre. kattintson az **Office 365 felügyeleti API**-k elemre. Kattintson a **Kiválasztás** gombra.
+1. Válassza az **API-engedélyek** lehetőséget, majd **adjon hozzá egy engedélyt**.
+1. Kattintson az **Office 365 felügyeleti API**-k elemre. 
 
     ![API kiválasztása](media/solution-office-365/select-api.png)
 
-1. Az **engedélyek kiválasztása** területen válassza a következő beállításokat az **alkalmazás engedélyei** és a **delegált engedélyek**esetében:
-   - A munkahelyhez tartozó szolgáltatásállapot-adatok olvasása
-   - A munkahelyi tevékenységadatok olvasása
-   - A munkahelyre vonatkozó tevékenységjelentések olvasása
+1. **Milyen típusú engedélyek szükségesek az alkalmazáshoz?** az **alkalmazás engedélyei** és a **delegált engedélyek**esetében válassza az alábbi beállításokat:
+   - A szervezethez tartozó szolgáltatás állapotával kapcsolatos információk olvasása
+   - A szervezet tevékenységi adatai olvasása
+   - Tevékenységgel kapcsolatos jelentések olvasása a szervezet számára
 
-     ![API kiválasztása](media/solution-office-365/select-permissions.png)
+     ![API kiválasztása](media/solution-office-365/select-permissions-01.png)![API kiválasztása](media/solution-office-365/select-permissions-02.png)
 
-1. Kattintson a **kiválasztás** , majd a **kész**lehetőségre.
-1. Kattintson az **engedélyek megadása** elemre, majd kattintson az **Igen** gombra, amikor a rendszer ellenőrzést kér.
+1. Kattintson az **engedélyek hozzáadása**lehetőségre.
+1. Kattintson a **rendszergazdai jóváhagyás megadása** lehetőségre, majd kattintson az **Igen** gombra, amikor a rendszer ellenőrzést kér.
 
-    ![Engedélyek megadása](media/solution-office-365/grant-permissions.png)
 
-### <a name="add-a-key-for-the-application"></a>Kulcs hozzáadása az alkalmazáshoz
+### <a name="add-a-secret-for-the-application"></a>Titkos kód hozzáadása az alkalmazáshoz
 
-1. A **Beállítások** menüben válassza a **kulcsok** lehetőséget.
+1. Válassza a **tanúsítványok & titkok** , majd az **új ügyfél titka**lehetőséget.
+
+    ![Kulcsok](media/solution-office-365/secret.png)
+ 
 1. Adja meg az új kulcs leírását és **időtartamát** .
-1. Kattintson a **Save (Mentés** ) gombra, és másolja ki a generált **értéket** .
+1. Kattintson a **Hozzáadás** elemre, majd másolja ki a generált **értéket** .
 
     ![Kulcsok](media/solution-office-365/keys.png)
 

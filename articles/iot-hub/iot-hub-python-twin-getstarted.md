@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 62385f4bd07f4b80dc3d571d409e16c7e0dca205
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: c720dfe7aeaa39a1717362b040b5548e116cc246
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667830"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70062076"
 ---
 # <a name="get-started-with-device-twins-python"></a>Ismerkedés a Device Twins (Python) eszközzel
 
@@ -49,11 +49,15 @@ Az előfeltételek a következő telepítési utasításokkal rendelkeznek.
 
 Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely hely metaadatainak hozzáadását teszi elérhetővé a **{Device ID}** szolgáltatáshoz hozzárendelt eszközökhöz. Ezután lekérdezi az IoT hub eszközben tárolt ikreket, és kiválasztja a Redmondban található eszközöket, majd azokat, amelyek a mobil kapcsolatokat jelentik.
 
-1. Nyisson meg egy parancssort, és telepítse a **Pythonhoz készült Azure IoT Hub szolgáltatási SDK-t**. Az SDK telepítése után zárja be a parancssort.
+1. Nyisson meg egy parancssort a munkakönyvtárában, és telepítse a Pythonhoz készült **Azure IoT hub Service SDK**-t.
 
-   ```
+   ```cmd/sh
    pip install azure-iothub-service-client
    ```
+
+   > [!NOTE]
+   > Az Azure-iothub-Service-Client és az Azure-iothub-Device-Client pip-csomagjai jelenleg csak Windows operációs rendszer esetén érhetők el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) a Pythonhoz című témakörben.
+   >
 
 2. Egy szövegszerkesztővel hozzon létre egy új **AddTagsAndQuery.py** -fájlt.
 
@@ -66,7 +70,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely hely m
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. Adja hozzá a következő kódot, `[IoTHub Connection String]` és `[Device Id]` cserélje le a helyőrzőt az IoT hub és az előző szakaszban létrehozott eszköz azonosítójának helyére.
+4. Adja hozzá a következő kódot. A `[IoTHub Connection String]` helyére írja be az IoT hub-beli, a [IoT hub-kapcsolatok karakterláncának](#get-the-iot-hub-connection-string)beolvasása során másolt karakterláncot. Cserélje `[Device Id]` le a helyére az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítóját.
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -80,7 +84,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely hely m
 
 5. Adja hozzá a következő kódot a **AddTagsAndQuery.py** -fájlhoz:
 
-     ```python
+    ```python
     def iothub_service_sample_run():
         try:
             iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
@@ -143,7 +147,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely hely m
 
     A lekérdezés eredményei között egy eszközt kell látnia, amely a **Redmond43** -ban található összes eszközt kéri, a nem pedig a lekérdezést, amely a mobil hálózatot használó eszközökre korlátozza az eredményeket.
 
-    ![első lekérdezés, amely a Redmondban lévő összes eszközt megjeleníti](./media/iot-hub-python-twin-getstarted/1-device-twins-python-service-sample.png)
+    ![első lekérdezés, amely a Redmondban lévő összes eszközt megjeleníti](./media/iot-hub-python-twin-getstarted/service-1.png)
 
 A következő szakaszban létrehoz egy olyan eszközt, amely jelentést készít a kapcsolati adatokról, és megváltoztatja a lekérdezés eredményét az előző szakaszban.
 
@@ -151,11 +155,15 @@ A következő szakaszban létrehoz egy olyan eszközt, amely jelentést készít
 
 Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a következőhöz csatlakozik a központhoz: **{Device ID}** , majd frissíti az eszköz Twin által jelentett tulajdonságait, hogy tartalmazza a mobil hálózaton keresztül csatlakoztatott adatokat.
 
-1. Nyisson meg egy parancssort, és telepítse a **Pythonhoz készült Azure IoT Hub szolgáltatási SDK-t**. Az SDK telepítése után zárja be a parancssort.
+1. A munkakönyvtárban található parancssorból telepítse a Pythonhoz készült **Azure IoT hub Service SDK**-t:
 
-    ```
+    ```cmd/sh
     pip install azure-iothub-device-client
     ```
+
+   > [!NOTE]
+   > Az Azure-iothub-Service-Client és az Azure-iothub-Device-Client pip-csomagjai jelenleg csak Windows operációs rendszer esetén érhetők el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) a Pythonhoz című témakörben.
+   >
 
 2. Egy szövegszerkesztővel hozzon létre egy új **ReportConnectivity.py** -fájlt.
 
@@ -167,7 +175,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a köv
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError
     ```
 
-4. Adja hozzá a következő kódot, és cserélje le `[IoTHub Device Connection String]` a helyőrzőt az előző szakaszban létrehozott IoT hub-eszközhöz tartozó kapcsolatok karakterláncra.
+4. Adja hozzá a következő kódot. Cserélje le `[IoTHub Device Connection String]` a helyőrző értékét az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban elemre másolt eszköz-összekapcsolási karakterlánccal.
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -227,7 +235,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a köv
             return
         except KeyboardInterrupt:
             print ( "IoTHubClient sample stopped" )
-     ```
+    ```
 
     Az **ügyfél** -objektum minden olyan módszert feltesz, amely az eszközön található ikrekkel való interakcióhoz szükséges. Az előző kód azt követően, hogy inicializálta az **ügyféltanúsítványt** , lekéri az eszközhöz tartozó Twin eszközt, és frissíti a jelentett tulajdonságot a kapcsolati információkkal.
 
@@ -248,7 +256,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a köv
 
     Ekkor meg kell jelennie az eszközhöz tartozó ikrek frissítésének.
 
-    ![ikrek frissítése](./media/iot-hub-python-twin-getstarted/2-python-client-sample.png)
+    ![ikrek frissítése](./media/iot-hub-python-twin-getstarted/device-1.png)
 
 8. Most, hogy az eszköz bejelentette a kapcsolati adatait, mindkét lekérdezésben szerepelnie kell. Lépjen vissza, és futtassa újra a lekérdezéseket:
 
@@ -258,7 +266,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a köv
 
     Ekkor a **{Device ID}** értéknek mindkét lekérdezési eredményben szerepelnie kell.
 
-    ![második lekérdezés](./media/iot-hub-python-twin-getstarted/3-device-twins-python-service-sample.png)
+    ![második lekérdezés](./media/iot-hub-python-twin-getstarted/service-2.png)
 
 ## <a name="next-steps"></a>További lépések
 

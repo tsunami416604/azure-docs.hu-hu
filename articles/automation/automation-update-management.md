@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b9fcf06caf2abf116a2f2b99f26ead6277f7ad50
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 6f23a1f8e60567e1c2ed89b27f0eb2bab4ca5912
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970545"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061813"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
@@ -378,6 +378,8 @@ A Red Hat Linux rendszerű gépek esetében tekintse meg a szükséges végponto
 További információ a hibrid Runbook Worker által igényelt portokról: [hibrid feldolgozói szerepkör portjai](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 
 A kivételek meghatározásakor a felsorolt címek használatát javasoljuk. IP-címek esetén letöltheti az [Microsoft Azure adatközpont IP-tartományait](https://www.microsoft.com/download/details.aspx?id=41653). A fájl hetente frissül, és tükrözi a jelenleg üzembe helyezett tartományokat és az IP-címtartományok közelgő változásait.
+
+Az Internet-hozzáférés [nélküli számítógépek](../azure-monitor/platform/gateway.md) összekapcsolására vonatkozó utasításokat követve konfigurálja azokat a gépeket, amelyek nem rendelkeznek interneteléréssel.
 
 ## <a name="search-logs"></a>Keresés naplókban
 

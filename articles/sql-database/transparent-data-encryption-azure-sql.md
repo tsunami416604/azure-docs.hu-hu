@@ -10,19 +10,20 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 08/12/2019
-ms.openlocfilehash: 07fcd0f1ec33aa9a7520e35eb7e53a76295009ba
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 08/27/2019
+ms.openlocfilehash: 9261bae0d2bee990a5048cb87a863d96e1854d00
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967907"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061935"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás a SQL Database és az adattárházban
 
 A transzparens adattitkosítás (TDE) segít megvédeni Azure SQL Database, az Azure SQL felügyelt példányát és az Azure-adattárházat a rosszindulatú offline tevékenységek fenyegetésével szemben az inaktív adatok titkosításával. Az adatbázis, a társított biztonsági másolatok és a tranzakciós naplófájlok valós idejű titkosítását és visszafejtését hajtja végre, anélkül, hogy az alkalmazás módosítására lenne szükség. Alapértelmezés szerint a TDE engedélyezve van minden újonnan telepített Azure SQL-adatbázishoz. A TDE nem használható a logikai **Master** adatbázis SQL Database-ben történő titkosítására.  A főadatbázis olyan objektumokat tartalmaz, amelyek szükségesek a TDE műveletek végrehajtásához a felhasználói adatbázisokon.
 
-A TDE manuálisan kell engedélyezni az Azure SQL felügyelt példányaihoz, a Azure SQL Database régebbi adatbázisaihoz vagy Azure SQL Data Warehousehoz.  
+A TDE manuálisan kell engedélyezni a Azure SQL Database, Azure SQL felügyelt példány vagy Azure SQL Data Warehouse régebbi adatbázisaihoz.
+A visszaállítással létrehozott felügyelt példány-adatbázisok a forrás-adatbázisból öröklik a titkosítási állapotot.
 
 Az transzparens adattitkosítás titkosítja egy teljes adatbázis tárterületét az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával. Ezt az adatbázis-titkosítási kulcsot a transzparens adattitkosítási védő védi. A védő vagy egy szolgáltatás által felügyelt tanúsítvány (szolgáltatás által kezelt transzparens adattitkosítás) vagy Azure Key Vault (Bring Your Own Key) által tárolt aszimmetrikus kulcs. Az átlátszó adattitkosítási védőt a Azure SQL Database és az adatraktár kiszolgálói szintjén, valamint az Azure SQL felügyelt példányának példányi szintjén állíthatja be. A *kiszolgáló* kifejezés a jelen dokumentumon belül a kiszolgáló és a példányra is vonatkozik, kivéve, ha másként van megadva.
 

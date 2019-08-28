@@ -15,16 +15,16 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bdf9210eb88b2057cf861b208f19d3e6f562e9a
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 8ebf524d932322fa08729f229a451afe656900d5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414849"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061407"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó mobil alkalmazás – kód konfigurálása
 
-Miután létrehozta az alkalmazást, megtudhatja, hogyan konfigurálhatja a kódot az alkalmazás regisztrációjában kapott paraméterekből. A mobil alkalmazások is rendelkeznek néhány összetett sajátossággal, amelyek az alkalmazások összeállításához használt keretrendszerbe illeszkednek.
+Az alkalmazás létrehozása után megtudhatja, hogyan konfigurálhatja a kódot az alkalmazás regisztrációs paramétereinek használatával. A mobil alkalmazások is rendelkeznek néhány összetett sajátossággal, amelyek az alkalmazások összeállításához használt keretrendszerbe illeszkednek.
 
 ## <a name="msal-libraries-supporting-mobile-apps"></a>Mobile apps-t támogató MSAL-kódtárak
 
@@ -38,7 +38,7 @@ A Mobile Apps szolgáltatást támogató Microsoft-kódtárak a következők:
 
 ## <a name="configuring-the-application"></a>Az alkalmazás konfigurálása
 
-A Mobile Applications a MSAL `PublicClientApplication` osztályát használja. A következő módon hozhatja létre:
+A Mobile Applications `PublicClientApplication` az osztályt használja. A következő módon hozhatja létre:
 
 ### <a name="android"></a>Android
 
@@ -68,7 +68,7 @@ A következő bekezdés ismerteti, hogyan konfigurálhatja az alkalmazás kódj�
 
 #### <a name="instantiating-the-application"></a>Az alkalmazás példányának példánya
 
-A Xamarin vagy UWP az alkalmazás létrehozásának legegyszerűbb módja a következő, ahol a `ClientId` az alkalmazás GUID-azonosítója a regisztráltként.
+A Xamarin vagy UWP az alkalmazás létrehozásának legegyszerűbb módja a következő, ahol a `ClientId` a regisztrált alkalmazás GUID-azonosítója.
 
 ```CSharp
 var app = PublicClientApplicationBuilder.Create(clientId)
@@ -87,7 +87,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
   .Build();
 ```
 
-Androidon az `CurrentActivityPlugin` [itt](https://github.com/jamesmontemagno/CurrentActivityPlugin)ajánlott.  Ezt követően `PublicClientApplication` a Builder-kód így fog kinézni:
+Az Androidon az `CurrentActivityPlugin` [itt](https://github.com/jamesmontemagno/CurrentActivityPlugin)ajánlott használni.  Ezt követően `PublicClientApplication` a Builder-kód így fog kinézni:
 
 ```CSharp
 // Requires MSAL.NET 4.2 or above
@@ -128,7 +128,7 @@ Végül pedig van néhány sajátosság arról, hogy az androidos böngészőkr�
 
 #### <a name="uwp-specific-considerations"></a>UWP-specifikus megfontolások
 
-A UWP-on vállalati hálózatokat használhat. További információ a UWP-specifikus tudnivalókról: [univerzális Windows-platform-specifikus megfontolások a MSAL.net](msal-net-uwp-considerations.md).
+A UWP-on vállalati hálózatokat használhat. A MSAL-kódtár UWP-vel való használatával kapcsolatos további információkért lásd: [univerzális Windows-platform-specifikus megfontolások a MSAL.net](msal-net-uwp-considerations.md).
 
 ## <a name="configuring-the-application-to-use-the-broker"></a>Az alkalmazás konfigurálása a közvetítő használatára
 
@@ -186,7 +186,7 @@ Ezt a metódust az alkalmazás minden indításakor meghívja a rendszer, és le
 
 #### <a name="step-3-set-a-uiviewcontroller"></a>3\. lépés: UIViewController () beállítása
 
-A Xamarin iOS esetében általában nem kell beállítania egy objektum-ablakot, ebben az esetben azonban a brókertől küldhet és fogadhat válaszokat. Még mindig `AppDelegate.cs`a-ben állítson be egy ViewController.
+A Xamarin iOS esetében általában nem kell beállítania egy objektum-ablakot, ebben az esetben azonban a brókertől érkező válaszok küldésére és fogadására van szükség. Még mindig `AppDelegate.cs`a-ben állítson be egy ViewController.
 
 Az objektum ablakának beállításához tegye a következőket:
 

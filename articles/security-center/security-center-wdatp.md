@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2018
+ms.date: 08/21/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 597670803514fa59faaafdad73786cdb745a0976
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 5342ec14e32b87c5cccdb36206122ce1168aeb56
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640901"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061415"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender komplex veszélyforrások elleni védelem Azure Security Center
 
@@ -117,6 +117,7 @@ Jóindulatú Windows Defender ATP-teszt riasztás létrehozása:
 
 ## <a name="next-steps"></a>További lépések
 
+- [Az Azure Security Center által támogatott platformok és szolgáltatások](security-center-os-coverage.md)
 - [Biztonsági szabályzatok beállítása a Azure Security Centerban](tutorial-security-policy.md): Ismerje meg, hogyan konfigurálhatja az Azure-előfizetések és-erőforráscsoportok biztonsági szabályzatait.
 - [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md): Ismerje meg, hogy a javaslatok Hogyan segítenek az Azure-erőforrások védelmében.
 - [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md): Az Azure-erőforrások állapotának figyelését ismertető útmutató.

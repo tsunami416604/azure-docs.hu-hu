@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c84f68a9af855f61523919069e1947e051b130b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622262"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061371"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Gyakori kérdések (GYIK)
 
@@ -43,11 +43,9 @@ Az alkalmazásokhoz tartozó felhasználói fiókokat mindig létre kell hozni e
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Mely közösségi identitás-szolgáltatókat támogatja most? Melyeket tervezi a jövőben támogatni?
 
-Jelenleg a Facebook, a Google +, a LinkedIn, az Amazon, a Twitter (előzetes verzió), a WeChat (előzetes verzió), a WeiBo (előzetes verzió) és a QQ (előzetes verzió) támogatott. Az ügyfelek igényei alapján további népszerű közösségi identitás-szolgáltatókat is támogatunk.
+Jelenleg számos közösségi identitást támogatunk, többek között az Amazon, a Facebook, a GitHub (előzetes verzió), a Google, a LinkedIn, a Microsoft account (MSA), a QQ (előzetes verzió), a Twitter, a WeChat (előzetes verzió) és a WeiBo (előzetes verzió Az ügyfelek igénye alapján kiértékeljük, hogy további népszerű közösségi identitás-szolgáltatók támogatását vesszük fel.
 
-A Azure AD B2C az [Egyéni házirendek](active-directory-b2c-overview-custom.md)támogatását is felvette. Ezek az egyéni szabályzatok lehetővé teszik a fejlesztők számára, hogy saját szabályzatot hozzanak létre bármely olyan identitás-szolgáltatónál, amely támogatja az [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) vagy az SAML
-
-Ismerkedjen meg az egyéni házirendekkel, és tekintse meg az [Egyéni](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)szabályzatok alapszintű csomagját.
+A Azure AD B2C az [egyéni házirendeket](active-directory-b2c-overview-custom.md)is támogatja. Az egyéni házirendek lehetővé teszik saját szabályzat létrehozását bármely olyan identitás-szolgáltató számára, amely támogatja az [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) vagy az SAML használatát. Ismerkedjen meg az egyéni házirendekkel, és tekintse meg az [Egyéni](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)szabályzatok alapszintű csomagját.
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Beállíthat hatóköröket, hogy további információkat gyűjtsön a különböző közösségi identitású szolgáltatók fogyasztóiról?
 

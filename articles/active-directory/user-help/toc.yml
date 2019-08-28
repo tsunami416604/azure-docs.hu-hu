@@ -1,5 +1,5 @@
 - name: Felhasználói súgódokumentáció
-  href: index.md
+  href: index.yml
 - name: Kétlépéses ellenőrzés súgója
   items:
     - name: Áttekintés

@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 08/25/2017
+ms.date: 08/26/2019
 ms.author: elioda
-ms.openlocfilehash: edbeffebd1f4ee41d8a2bdaddcdc7d84cbe1affe
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 02ff65b27e03db9e9a48910e23d8ebf46de905a5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780929"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060732"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Ismerkedés az eszközökhöz tartozó ikrekkel (node. js)
 
@@ -28,6 +28,8 @@ Az oktatóanyag végén két Node. js-konzollal rendelkező alkalmazás lesz:
 > [!NOTE]
 > Az [Azure IoT SDK](iot-hub-devguide-sdks.md) -k cikke olyan Azure IoT SDK-kat tartalmaz, amelyek segítségével mind az eszközök, mind a háttérbeli alkalmazások készíthetők.
 >
+
+## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
@@ -53,28 +55,28 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a hely metaadatainak hozzáadását adja a **myDeviceId**-hez társított eszközökhöz. Ezután lekérdezi az IoT hub-ban tárolt, az USA-ban található eszközöket, majd a mobil kapcsolatot jelentő eszközöket.
 
-1. Hozzon létre egy új, **addtagsandqueryapp**nevű üres mappát. A **addtagsandqueryapp** mappában hozzon létre egy új Package. JSON fájlt a következő parancs használatával a parancssorban. Fogadja el az összes alapértelmezett beállítást:
+1. Hozzon létre egy új, **addtagsandqueryapp**nevű üres mappát. A **addtagsandqueryapp** mappában hozzon létre egy új Package. JSON fájlt a következő parancs használatával a parancssorban. A `--yes` paraméter fogadja az összes alapértelmezett értéket.
 
-    ```
-    npm init
+    ```cmd/sh
+    npm init --yes
     ```
 
 2. A **addtagsandqueryapp** mappában a parancssorban futtassa a következő parancsot az **Azure-iothub** csomag telepítéséhez:
-   
-    ```
+
+    ```cmd/sh
     npm install azure-iothub --save
     ```
 
 3. Egy szövegszerkesztővel hozzon létre egy új **AddTagsAndQuery. js** fájlt a **addtagsandqueryapp** mappában.
 
-4. Adja hozzá a következő kódot a **AddTagsAndQuery. js** fájlhoz, és cserélje le a **{IOT hub kapcsolódási karakterlánc}** helyőrző értékét a korábban a [IOT hub kapcsolódási karakterláncának](#get-the-iot-hub-connection-string)lekérése során másolt IoT hub kapcsolódási karakterláncra:
+4. Adja hozzá a következő kódot a **AddTagsAndQuery. js** fájlhoz. A `{iot hub connection string}` helyére írja be az [IoT hub-kapcsolatok karakterláncának](#get-the-iot-hub-connection-string)lekérése során másolt IoT hubi kapcsolatok karakterláncát.
 
    ``` javascript
         'use strict';
         var iothub = require('azure-iothub');
         var connectionString = '{iot hub connection string}';
         var registry = iothub.Registry.fromConnectionString(connectionString);
-   
+
         registry.getTwin('myDeviceId', function(err, twin){
             if (err) {
                 console.error(err.constructor.name + ': ' + err.message);
@@ -87,7 +89,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a hely met
                       }
                     }
                 };
-   
+
                 twin.update(patch, function(err) {
                   if (err) {
                     console.error('Could not update twin: ' + err.constructor.name + ': ' + err.message);
@@ -116,7 +118,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a hely met
                     console.log("Devices in Redmond43: " + results.map(function(twin) {return twin.deviceId}).join(','));
                 }
             });
-   
+
             query = registry.createQuery("SELECT * FROM devices WHERE tags.location.plant = 'Redmond43' AND properties.reported.connectivity.type = 'cellular'", 100);
             query.nextAsTwin(function(err, results) {
                 if (err) {
@@ -130,17 +132,17 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a hely met
 
     Az előző kód két lekérdezést hajt végre: az első csak a **Redmond43** -üzemben található eszközökhöz tartozó ikreket választja ki, a második pedig csak azokat az eszközöket jelöli ki, amelyek a mobil hálózaton keresztül is csatlakoztatva vannak.
 
-    A korábbi kód a **lekérdezési** objektum létrehozásakor megadja a visszaadott dokumentumok maximális számát. A **lekérdezési** objektum egy **hasMoreResults** logikai tulajdonságot tartalmaz, amelyet a **nextAsTwin** metódusok többszöri meghívására használhat az összes eredmény lekéréséhez. A **következő** nevű metódus elérhető az olyan eredmények esetében, amelyek nem az eszközök ikrek, például az összesítési lekérdezések eredményei.
+    Amikor a kód létrehozza a **lekérdezési** objektumot, megadja a visszaadott dokumentumok maximális számát a második paraméterben. A **lekérdezési** objektum egy **hasMoreResults** logikai tulajdonságot tartalmaz, amelyet a **nextAsTwin** metódusok többszöri meghívására használhat az összes eredmény lekéréséhez. A **következő** nevű metódus elérhető olyan eredmények esetében, amelyek nem az eszközök ikrek, például az összesítési lekérdezések eredményei.
 
 6. Futtassa az alkalmazást az alábbiakkal:
 
-    ```
+    ```cmd/sh
         node AddTagsAndQuery.js
     ```
 
    A lekérdezés eredményei között egy eszközt kell látnia, amely a **Redmond43** -ban található összes eszközt kéri, a nem pedig a lekérdezést, amely a mobil hálózatot használó eszközökre korlátozza az eredményeket.
-   
-    ![A lekérdezés eredményei között található egyetlen eszköz megtekintése](media/iot-hub-node-node-twin-getstarted/service1.png)
+
+   ![A lekérdezés eredményei között található egyetlen eszköz megtekintése](media/iot-hub-node-node-twin-getstarted/service1.png)
 
 A következő szakaszban létrehoz egy olyan eszközt, amely jelentést készít a kapcsolati adatokról, és megváltoztatja a lekérdezés eredményét az előző szakaszban.
 
@@ -148,36 +150,36 @@ A következő szakaszban létrehoz egy olyan eszközt, amely jelentést készít
 
 Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a **myDeviceId**-hez csatlakozik a központhoz, majd frissíti az eszköz két jelentett tulajdonságát, hogy tartalmazza a mobil hálózaton keresztül csatlakoztatott adatokat.
 
-1. Hozzon létre egy új, **reportconnectivity**nevű üres mappát. A **reportconnectivity** mappában hozzon létre egy új Package. JSON fájlt a következő parancs használatával a parancssorban. Fogadja el az összes alapértelmezett beállítást:
-   
-    ```
-    npm init
+1. Hozzon létre egy új, **reportconnectivity**nevű üres mappát. A **reportconnectivity** mappában hozzon létre egy új Package. JSON fájlt a következő parancs használatával a parancssorban. A `--yes` paraméter fogadja az összes alapértelmezett értéket.
+
+    ```cmd/sh
+    npm init --yes
     ```
 
-2. A **reportconnectivity** mappában a parancssorban futtassa a következő parancsot az **Azure-IOT-Device**és az **Azure-IOT-Device-mqtt** csomag telepítéséhez:
-   
-    ```
+2. A **reportconnectivity** mappában a parancssorban futtassa a következő parancsot az **Azure-IOT-Device**és az **Azure-IOT-Device-mqtt** csomagok telepítéséhez:
+
+    ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
 3. Egy szövegszerkesztővel hozzon létre egy új **ReportConnectivity. js** fájlt a **ReportConnectivity** mappában.
 
-4. Adja hozzá a következő kódot a **ReportConnectivity. js** fájlhoz, és cserélje le a **{Device kapcsolódási karakterlánc}** helyőrzőt az **myDeviceId** -eszköz identitásának létrehozásakor másolt eszköz-kapcsolódási karakterláncra:
+4. Adja hozzá a következő kódot a **ReportConnectivity. js** fájlhoz. Cserélje `{device connection string}` le a szöveget a **myDeviceId** -eszköz identitásának létrehozásakor a [IoT hub új eszköz regisztrálása](#register-a-new-device-in-the-iot-hub)során másolt eszköz-kapcsolódási karakterláncra.
 
-    ```
+    ```javascript
         'use strict';
         var Client = require('azure-iot-device').Client;
         var Protocol = require('azure-iot-device-mqtt').Mqtt;
-   
+
         var connectionString = '{device connection string}';
         var client = Client.fromConnectionString(connectionString, Protocol);
-   
+
         client.open(function(err) {
         if (err) {
             console.error('could not open IotHub client');
         }  else {
             console.log('client opened');
-   
+
             client.getTwin(function(err, twin) {
             if (err) {
                 console.error('could not get twin');
@@ -187,7 +189,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a **myDevi
                         type: 'cellular'
                     }
                 };
-   
+
                 twin.properties.reported.update(patch, function(err) {
                     if (err) {
                         console.error('could not update twin');
@@ -206,7 +208,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a **myDevi
 
 5. Az eszköz alkalmazás futtatása
 
-    ```   
+    ```cmd/sh
         node ReportConnectivity.js
     ```
 
@@ -214,7 +216,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a **myDevi
 
 6. Most, hogy az eszköz bejelentette a kapcsolati adatait, mindkét lekérdezésben szerepelnie kell. Lépjen vissza a **addtagsandqueryapp** mappába, és futtassa újra a lekérdezéseket:
 
-    ```   
+    ```cmd/sh
         node AddTagsAndQuery.js
     ```
 

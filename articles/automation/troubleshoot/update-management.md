@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 024cc18f537334a4e9fb260864b13ac027af582f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: aaeaed22b1e09556452a49d7fc63c15ef0c7fcdb
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982690"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061334"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Hibák elhárítása Update Management
 
@@ -278,6 +278,7 @@ Kattintson duplán a piros színnel megjelenő kivételre, és tekintse meg a te
 |`0x8024001E`| A frissítési művelet nem fejeződött be, mert a szolgáltatás vagy a rendszer leállítása megtörtént.|
 |`0x8024002E`| Windows Update szolgáltatás le van tiltva.|
 |`0x8024402C`     | Ha WSUS-kiszolgálót használ, győződjön meg arról `WUServer` , hogy a beállításjegyzék-kulcs `WUStatusServer` `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` és a beállításkulcs alatt a megfelelő WSUS-kiszolgáló található.        |
+|`0x80072EE2`|Hálózati kapcsolati probléma vagy a konfigurált WSUS-kiszolgálóval való kommunikációra adott probléma. Ellenőrizze a WSUS beállításait, és győződjön meg arról, hogy az az ügyféltől elérhető.|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Győződjön meg arról, hogy a Windows Update szolgáltatás (wuauserv) fut, és nincs letiltva.        |
 |Bármely más általános kivétel     | Végezzen keresést az interneten a lehetséges megoldásokhoz, és működjön együtt a helyi informatikai támogatással.         |
 

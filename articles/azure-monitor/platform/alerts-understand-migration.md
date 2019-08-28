@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 5257724add570be480063ab776248a8fd1d944c7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c3d5bb58989fe87ddf9a185dbae926a71edf1590
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034749"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061554"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Az áttelepítési eszköz működésének megismerése
 
@@ -36,7 +36,7 @@ Bár az eszköz szinte az összes [klasszikus riasztási szabályt](monitoring-c
 - A klasszikus riasztási szabályok egyes Cosmos DB metrikák esetében. A [részleteket](#cosmos-db-metrics) a cikk későbbi részében találja.
 - Klasszikus riasztási szabályok a klasszikus virtuális gépek és a Cloud Services-metrikák (Microsoft. ClassicCompute/virtualMachines és Microsoft. ClassicCompute/tartománynév/bővítőhely/szerepkörök) esetében. A [részleteket](#classic-compute-metrics) a cikk későbbi részében találja.
 
-Ha az előfizetése klasszikus szabályokkal rendelkezik, azokat manuálisan kell áttelepítenie. Mivel nem tudunk automatikus áttelepítést biztosítani, az ilyen típusú meglévő, klasszikus metrikai riasztások továbbra is a 2020 júniusáig fognak működni. Ez a bővítmény időt biztosít az új riasztásokra való áttérésre. Azonban nem hozhatók létre új klasszikus riasztások augusztus 2019. után.
+Ha az előfizetése klasszikus szabályokkal rendelkezik, azokat manuálisan kell áttelepítenie. Mivel nem tudunk automatikus áttelepítést biztosítani, az ilyen típusú meglévő, klasszikus metrikai riasztások továbbra is a 2020 júniusáig fognak működni. Ez a bővítmény időt biztosít az új riasztásokra való áttérésre. Továbbra is létrehozhat új klasszikus riasztásokat a fentiekben felsorolt kivételek szerint, 2020-ig. Azonban minden más esetben nem hozhatók létre új klasszikus riasztások augusztus 2019. után.
 
 > [!NOTE]
 > A fent felsorolt kivételek mellett, ha a klasszikus riasztási szabályok érvénytelenek, azaz [elavult metrikákkal](#classic-alert-rules-on-deprecated-metrics) vagy törölt erőforrásokkal rendelkeznek, nem lesznek áttelepítve az önkéntes áttelepítés során. Minden ilyen érvénytelen klasszikus riasztási szabályt töröl a rendszer, ha az automatikus áttelepítés történik.
