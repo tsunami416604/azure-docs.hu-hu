@@ -259,6 +259,8 @@
               href: sql-data-warehouse-install-visual-studio.md
             - name: Verziókövetés integrálása
               href: sql-data-warehouse-source-control-integration.md
+            - name: Folyamatos integráció és üzembe helyezés
+              href: sql-data-warehouse-continuous-integration-and-deployment.md
         - name: Csatlakozás és lekérdezés
           items:
             - name: Visual Studio SSDT

@@ -127,8 +127,6 @@
           href: security-center-install-endpoint-protection.md
         - name: A sebezhetőségi felmérés nincs telepítve
           href: security-center-vulnerability-assessment-recommendations.md
-        - name: Hálózati biztonsági csoportok engedélyezése
-          href: security-center-enable-network-security-groups.md
         - name: Fenyegetésekkel kapcsolatos jelentések
           href: security-center-threat-report.md
         - name: Egyéni riasztások
@@ -143,8 +141,6 @@
           href: security-center-investigation-user-data.md
         - name: Logic Apps-forgatókönyvek
           href: security-center-playbooks.md
-        - name: Események megtekintése
-          href: security-center-events-dashboard.md
         - name: Keresés
           href: security-center-search.md
         - name: Tervezés és műveletek
