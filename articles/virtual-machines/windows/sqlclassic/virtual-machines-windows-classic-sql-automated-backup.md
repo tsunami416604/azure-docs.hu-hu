@@ -1,6 +1,6 @@
 ---
-title: Automatikus biztonsági mentése az SQL Server virtuális gépek (klasszikus) |} A Microsoft Docs
-description: 'Ismerteti az automatikus biztonsági mentés szolgáltatás az SQL Server Azure Virtual Machines szolgáltatásban futó Resource Manager használatával. '
+title: SQL Server Virtual Machines automatikus biztonsági mentése (klasszikus) | Microsoft Docs
+description: 'Az Azure Virtual Machines-ben futtatott SQL Server automatizált biztonsági mentési funkciója a Resource Manager használatával. '
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -9,34 +9,33 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 3333e830-8a60-42f5-9f44-8e02e9868d7b
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: aeb97d661d330ed6afb3ca5e5e1eb924dacc4024
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: da40b635b0fc094275d8d46b8c5ad6d3d90bea24
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607702"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101828"
 ---
-# <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatikus biztonsági mentés az SQL Server Azure-beli virtuális gépeken (klasszikus)
+# <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>SQL Server automatikus biztonsági mentése az Azure Virtual Machines (klasszikus)
 > [!div class="op_single_selector"]
 > * [Resource Manager](../sql/virtual-machines-windows-sql-automated-backup.md)
 > * [Klasszikus](../classic/sql-automated-backup.md)
 > 
 > 
 
-Automatikus biztonsági mentés automatikusan konfigurálja a [Managed Backup a Microsoft Azure-bA](https://msdn.microsoft.com/library/dn449496.aspx) az összes meglévő és új adatbázis egy SQL Server 2014 Standard vagy Enterprise rendszert futtató Azure virtuális gépen. Ez lehetővé teszi, hogy az adatbázis rendszeres biztonsági mentések, amelyek ténylegesen használják a tartós az Azure blob storage-bA konfigurálása. Automatikus biztonsági mentés függ a [SQL Server IaaS-ügynök bővítmény](../classic/sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Az automatikus biztonsági mentés automatikusan [úgy konfigurálja a felügyelt biztonsági mentést, hogy](https://msdn.microsoft.com/library/dn449496.aspx) az Azure-beli virtuális gépen lévő összes meglévő és új adatbázisra Microsoft Azure a SQL Server 2014 standard vagy Enterprise rendszert futtató Azure Ez lehetővé teszi, hogy az Azure Blob Storage-t használó normál adatbázis-biztonsági mentéseket konfigurálja. Az automatikus biztonsági mentés a [SQL Server IaaS-ügynök bővítménytől](../classic/sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)függ.
 
 > [!IMPORTANT] 
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ez a cikk Resource Managerre vonatkozó verziójának megtekintéséhez lásd: [automatikus biztonsági mentés az SQL Server az Azure Virtual Machines Resource Manager](../sql/virtual-machines-windows-sql-automated-backup.md).
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. A cikk Resource Manager-verziójának megtekintéséhez lásd: a [SQL Server automatikus biztonsági mentése az Azure Virtual Machines Resource Managerben](../sql/virtual-machines-windows-sql-automated-backup.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
-Automatikus biztonsági mentés használ, fontolja meg a következő előfeltételek vonatkoznak:
+Az automatikus biztonsági mentés használatához vegye figyelembe a következő előfeltételeket:
 
 **Operációs rendszer**:
 
@@ -44,41 +43,41 @@ Automatikus biztonsági mentés használ, fontolja meg a következő előfeltét
 * Windows Server 2012 R2
 * Windows Server 2016
 
-**Az SQL Server-verzióval vagy-kiadással**:
+**SQL Server verzió/kiadás**:
 
 * SQL Server 2014 Standard
 * SQL Server 2014 Enterprise
 
 > [!NOTE]
-> Automatikus biztonsági mentés az SQL Server 2016 Resource Manager virtuális gépeken támogatott. További információkért lásd: [automatikus biztonsági mentés v2 az SQL Server 2016 az Azure Virtual Machines (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2).
+> A SQL Server 2016 automatizált biztonsági mentése a Resource Manager virtuális gépeken támogatott. További információ: [SQL Server 2016 Azure Virtual Machines (Resource Manager) automatizált Backup v2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2).
 
 **Adatbázis-konfiguráció**:
 
-* Céladatbázis a teljes helyreállítási modellt kell használnia.
+* A célként megadott adatbázisoknak a teljes helyreállítási modellt kell használniuk.
 
 **Azure PowerShell**:
 
-* [Telepítse a legújabb Azure PowerShell-parancsok](/powershell/azure/overview).
+* [Telepítse a legújabb Azure PowerShell-parancsokat](/powershell/azure/overview).
 
-**SQL Server IaaS Extension**:
+**SQL Server IaaS-bővítmény**:
 
-* [Telepítse az SQL Server IaaS-bővítményt](../classic/sql-server-agent-extension.md).
+* [Telepítse a SQL Server IaaS bővítményt](../classic/sql-server-agent-extension.md).
 
 ## <a name="settings"></a>Beállítások
-A következő táblázat ismerteti a beállításokat, amelyeket az automatikus biztonsági mentés állítható be. Klasszikus virtuális gépeket, a PowerShell kell használnia, ezek a beállítások konfigurálása.
+Az alábbi táblázat az automatikus biztonsági mentéshez konfigurálható beállításokat ismerteti. A klasszikus virtuális gépek esetében a PowerShell használatával kell konfigurálni ezeket a beállításokat.
 
-| Beállítás | Címtartomány (alapértelmezett) | Leírás |
+| Beállítás | Tartomány (alapértelmezett) | Leírás |
 | --- | --- | --- |
-| **Automatikus biztonsági mentés** |Engedélyezés/letiltás (letiltva) |Engedélyezi vagy letiltja az automatikus biztonsági mentés az SQL Server 2014 Standard vagy Enterprise rendszert futtató Azure virtuális gép. |
-| **Megőrzési idő** |1 – 30 napig (30 nap) |A biztonsági másolatok megőrzése (nap) száma. |
-| **Tárfiók** |Az Azure storage-fiók (a storage-fiók létrehozása a megadott virtuális gép) |Blob storage-ban automatikus biztonsági mentés fájlok tárolására szolgáló Azure storage-fiókkal. Ezen a helyen tárolja az összes biztonsági mentési fájlokat tároló jön létre. Elnevezési szabálya a biztonságimásolat-fájl tartalmazza a dátum, idő és a gép neve. |
-| **Titkosítás** |Engedélyezés/letiltás (letiltva) |Engedélyezi vagy letiltja a titkosítást. Ha engedélyezve van a titkosítás, a biztonsági mentés visszaállításához használt tanúsítványok találhatók a megadott tárfiók ugyanabban a tárolóban automaticbackup ugyanazt az elnevezési konvenciót használ. A jelszó is módosul, ha egy új tanúsítvány hozza létre ezt a jelszót, de a régi tanúsítvány továbbra is a korábbi biztonsági másolatok visszaállításához. |
-| **Jelszó** |Jelszó szöveg (nincs) |A titkosítási kulcsok jelszava. Ez csak akkor szükséges, ha engedélyezve van-e a titkosítás. Annak érdekében, hogy a titkosított biztonsági másolat visszaállítása, rendelkeznie kell a helyes jelszót és a kapcsolódó az időben, a biztonsági mentéshez használt tanúsítvány. |
-| **Rendszeradatbázisok biztonsági mentése** | Engedélyezés/letiltás (letiltva) | A Master, Model és MSDB teljes biztonsági másolat készítése |
-| **Biztonsági mentés ütemezésének konfigurálása** | Manuális vagy automatikus (automatikus) | Válassza ki **automatikus** számára automatikusan teljes és a napló növekedése alapján biztonsági másolataihoz. Válassza ki **manuális** , adja meg a teljes ütemezését és biztonsági másolataihoz. |
+| **Automatikus biztonsági mentés** |Engedélyezés/letiltás (letiltva) |Engedélyezheti vagy letilthatja a SQL Server 2014 standard vagy Enterprise rendszert futtató Azure-beli virtuális gépek automatizált biztonsági mentését. |
+| **Megőrzési időtartam** |1-30 nap (30 nap) |A biztonsági másolat megőrzésének napjainak száma. |
+| **Tárfiók** |Azure Storage-fiók (a megadott virtuális géphez létrehozott Storage-fiók) |Egy Azure Storage-fiók, amelyet a blob Storage-ban lévő automatizált biztonságimásolat-fájlok tárolására használ. Ezen a helyen létrejön egy tároló az összes biztonságimásolat-fájl tárolásához. A biztonságimásolat-fájl elnevezési konvenciója tartalmazza a dátumot, az időt és a gép nevét. |
+| **Titkosítás** |Engedélyezés/letiltás (letiltva) |Engedélyezheti vagy letilthatja a titkosítást. Ha engedélyezve van a titkosítás, a biztonsági mentés visszaállításához használt tanúsítványok az azonos elnevezési konvenciót használó azonos automaticbackup-tárolóban található megadott Storage-fiókban találhatók. Ha a jelszó megváltozik, új tanúsítvány jön létre ezzel a jelszóval, de a régi tanúsítvány továbbra is a korábbi biztonsági mentéseket állítja vissza. |
+| **Jelszó** |Jelszó szövege (nincs) |A titkosítási kulcsok jelszava. Erre csak akkor van szükség, ha engedélyezve van a titkosítás. A titkosított biztonsági mentés visszaállításához a biztonsági másolat készítésének időpontjában használt jelszóval és kapcsolódó tanúsítvánnyal kell rendelkeznie. |
+| **Rendszeradatbázisok biztonsági mentése** | Engedélyezés/letiltás (letiltva) | Teljes biztonsági másolatok készítése a Master, a Model és a MSDB |
+| **Biztonsági mentési ütemterv konfigurálása** | Manuális/automatizált (automatizált) | Az **automatizált** lehetőség kiválasztásával automatikusan elvégezheti a biztonsági mentést, és naplózhatja a naplóbeli növekedést. Válassza a **manuális** lehetőséget a teljes és naplózott biztonsági másolatok ütemezésének megadásához. |
 
-## <a name="configuration-with-powershell"></a>PowerShell-konfiguráció
-A következő PowerShell-példa az automatikus biztonsági mentés konfigurálva van egy meglévő SQL Server 2014 rendszerű virtuális gép. A **New-AzureVMSqlServerAutoBackupConfig** parancsot a $storageaccount változó által megadott Azure storage-fiókban lévő biztonsági másolatok tárolására automatikus biztonsági mentés beállításait konfigurálja. Ezeket a biztonsági másolatokat 10 napig lesznek megőrizve. A **Set-AzureVMSqlServerExtension** parancs frissíti a megadott Azure virtuális gép ezekkel a beállításokkal.
+## <a name="configuration-with-powershell"></a>Konfigurálás a PowerShell-lel
+A következő PowerShell-példában az automatikus biztonsági mentés egy meglévő SQL Server 2014 virtuális gépre van konfigurálva. A **New-AzureVMSqlServerAutoBackupConfig** parancs az automatikus biztonsági mentési beállításokat konfigurálja úgy, hogy az $storageaccount változó által megadott Azure Storage-fiókban tárolja a biztonsági másolatokat. Ezeket a biztonsági mentéseket 10 napig őrzi meg a rendszer. A **set-AzureVMSqlServerExtension** parancs frissíti a megadott Azure-beli virtuális gépet ezekkel a beállításokkal.
 
     $storageaccount = "<storageaccountname>"
     $storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary
@@ -87,9 +86,9 @@ A következő PowerShell-példa az automatikus biztonsági mentés konfigurálva
 
     Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoBackupSettings $autobackupconfig | Update-AzureVM
 
-Telepítse és konfigurálja az SQL Server IaaS-ügynök több percet igénybe vehet.
+A SQL Server IaaS-ügynök telepítése és konfigurálása több percet is igénybe vehet.
 
-Titkosítás engedélyezéséhez módosítsa az előző parancsfájlt és egy jelszót (biztonságos karakterlánc) CertificatePassword paraméter EnableEncryption paraméter átadására. A következő parancsfájl lehetővé teszi, hogy az előző példában az automatikus biztonsági mentés beállításait, és hozzáadja a titkosítás.
+A titkosítás engedélyezéséhez módosítsa az előző szkriptet, hogy átadja a EnableEncryption paramétert a CertificatePassword paraméterhez tartozó jelszóval (Secure string) együtt. A következő parancsfájl lehetővé teszi az előző példában szereplő automatizált biztonsági mentési beállításokat, és titkosítja a titkosítást.
 
     $storageaccount = "<storageaccountname>"
     $storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary
@@ -100,19 +99,19 @@ Titkosítás engedélyezéséhez módosítsa az előző parancsfájlt és egy je
 
     Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoBackupSettings $autobackupconfig | Update-AzureVM
 
-Automatikus biztonsági mentés letiltása, futtassa ugyanezt a szkriptet nélkül a **-engedélyezése** paramétert a **New-AzureVMSqlServerAutoBackupConfig**. Csakúgy, mint a telepítés, automatikus biztonsági mentés letiltása több percig is eltarthat.
+Az automatikus biztonsági mentés letiltásához futtassa ugyanazt a parancsfájlt anélkül, hogy a **-enable** paramétert a **New-AzureVMSqlServerAutoBackupConfig**. A telepítéshez hasonlóan több percet is igénybe vehet, hogy letiltsa az automatizált biztonsági mentést.
 
 > [!NOTE]
-> Letiltás és az SQL Server IaaS-ügynök eltávolítása nem távolítja el a korábban konfigurált felügyelt biztonsági mentési beállítások. Automatikus biztonsági mentés letiltása, vagy az SQL Server IaaS-ügynök eltávolítása előtt tiltsa le.
+> A SQL Server IaaS-ügynök letiltása és eltávolítása nem távolítja el a korábban konfigurált felügyelt biztonsági mentési beállításokat. Az SQL Server IaaS-ügynök letiltása vagy eltávolítása előtt tiltsa le az automatikus biztonsági mentést.
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-Automatikus biztonsági mentés konfigurálása Azure virtuális gépek felügyelt biztonsági mentési. Ezért fontos, hogy [felügyelt biztonsági mentés a dokumentációban](https://msdn.microsoft.com/library/dn449496.aspx) viselkedését és következményeiről.
+Az automatikus biztonsági mentés az Azure-beli virtuális gépeken felügyelt biztonsági mentést konfigurál. Ezért fontos, hogy áttekintse [a felügyelt biztonsági mentés dokumentációját](https://msdn.microsoft.com/library/dn449496.aspx) a viselkedés és a következmények megismerése érdekében.
 
-Keresse meg a további biztonsági mentést, és állítsa vissza az SQL Server Azure virtuális gépeken a következő témakörben található útmutatást: [Biztonsági mentés és visszaállítás Azure-beli virtuális gépeken az SQL Serverhez](../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+A következő témakörben további biztonsági mentési és visszaállítási útmutatást talál az Azure-beli virtuális gépek SQL Serverához: [SQL Server biztonsági mentése és visszaállítása az Azure Virtual Machinesban](../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 
-Más elérhető automation-feladatokkal kapcsolatos további információkért lásd: [SQL Server IaaS-ügynök bővítmény](../classic/sql-server-agent-extension.md).
+További információ az egyéb rendelkezésre álló automatizálási feladatokról: [SQL Server IaaS-ügynök bővítmény](../classic/sql-server-agent-extension.md).
 
-További információ az Azure virtuális gépeken futó SQL Server: [SQL Server on Azure Virtual Machines – áttekintés](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további információkért lásd: [SQL Server az azure Virtual Machines áttekintése](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
 

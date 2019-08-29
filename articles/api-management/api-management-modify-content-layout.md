@@ -10,23 +10,22 @@ ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
-ms.openlocfilehash: fd9902a83a813daffc52e089e6e8bfc4137c5b8f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0a333b1fac78889b61829b869c23efea5e312adf
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60656631"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072263"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Oldalak tartalmának és elrendezésének módosítása a fejlesztői portálon az Azure API Managementben
 A fejlesztői portál három alapvető módon szabható testre az Azure API Managementben:
 
-* [A statikus oldalak tartalmának és oldalelrendezési elemeinek szerkesztése][modify-content-layout] (magyarázat az útmutatóban)
-* [A teljes fejlesztői portál oldalelemeihez használt stílusok frissítése][customize-styles]
-* [A portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például API-dokumentáció, termékek, felhasználói hitelesítés stb.)
+* [A statikus lapok és a lapelrendezés elemek tartalmának szerkesztése][modify-content-layout] (magyarázat az útmutatóban)
+* [Az oldal elemeihez használt stílusok frissítése a fejlesztői portálon][customize-styles]
+* A [portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például API-dokumentumok, termékek, felhasználói hitelesítés stb.)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -56,8 +55,8 @@ A fejlesztői portál elérhető az Azure Portalról.
 Most már a fejlesztői portál mindegyik oldalán az új fejléc fog megjelenni.
 
 ## <a name="next-steps"></a>Következő lépések
-* [A teljes fejlesztői portál oldalelemeihez használt stílusok frissítése][customize-styles]
-* [A portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például API-dokumentáció, termékek, felhasználói hitelesítés stb.)
+* [Az oldal elemeihez használt stílusok frissítése a fejlesztői portálon][customize-styles]
+* A [portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például API-dokumentumok, termékek, felhasználói hitelesítés stb.)
 
 [Structure of developer portal pages]: #page-structure
 [Modifying the contents of a layout widget]: #modify-layout-widget

@@ -1,6 +1,6 @@
 ---
-title: Értesítések és e-mail sablonok az Azure API Management konfigurálása |} A Microsoft Docs
-description: Ismerje meg, hogyan értesítések és e-mail sablonok az Azure API Management konfigurálása.
+title: Értesítések és e-mail sablonok konfigurálása az Azure API Managementban | Microsoft Docs
+description: Ismerje meg, hogyan konfigurálhatja az értesítéseket és az e-mail-sablonokat az Azure API Managementban.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,80 +9,79 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 2a959c9d131c6aa0bdc99450cf2b6f09a5d8bfa7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d49e861a529f3b2265f65c53cc0ee2f6feb151da
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60528372"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072483"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Az értesítések és e-mail sablonok konfigurálása az Azure API Management szolgáltatásban
-Az API Management lehetővé teszi bizonyos események értesítéseinek konfigurálásához, és konfigurálhatja az e-mail-sablonok, amelyek segítségével a rendszergazdák és a egy API Management-példány a fejlesztők kommunikálni. Ez a cikk bemutatja, hogyan konfigurálja a rendelkezésre álló események értesítéseket, és ezek az események használt e-mail sablonok konfigurálása az nyújt áttekintést.
+API Management lehetővé teszi az értesítések konfigurálását adott eseményekhez, valamint a API Management-példányok rendszergazdájával és fejlesztőivel folytatott kommunikációhoz használt e-mail-sablonok konfigurálását. Ez a cikk bemutatja, hogyan konfigurálhatja az értesítéseket az elérhető eseményekhez, és áttekintést nyújt az eseményekhez használt e-mail sablonok konfigurálásáról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik az API Management szolgáltatáspéldányt, hajtsa végre a következő rövid útmutatót: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
+Ha nem rendelkezik API Management Service-példánnyal, hajtsa végre a következő rövid útmutatót: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="publisher-notifications"> </a>Értesítések konfigurálása
 
-1. Válassza ki a **az API MANAGEMENT** példány.
-2. Kattintson a **értesítések** az elérhető értesítések megtekintéséhez.
+1. Válassza ki az **API Management** -példányt.
+2. Kattintson az **értesítések** elemre az elérhető értesítések megtekintéséhez.
 
-    ![Közzétevő értesítések][api-management-publisher-notifications]
+    ![Közzétevői értesítések][api-management-publisher-notifications]
 
-    Az alábbi listában szereplő események értesítések konfigurálhatók.
+    Az alábbi események listáját beállíthatja az értesítésekhez.
 
-   * **(Jóváhagyásra van szükség) feliratkozási kérelmeket** – a megadott e-mail-címzettek és a felhasználók e-mailes feliratkozási kérelmeket jóváhagyásra van szükség API-termékekre vonatkozó értesítést fog kapni.
-   * **Új előfizetések** – a megadott e-mail-címzettek és a felhasználók kapnak e-mailes értesítést az új API termékhez előfizetések.
-   * **Alkalmazáskérések katalógus** – a megadott e-mail-címzettek és a felhasználók e-mail értesítéseket kap, amikor új kérelmeket az alkalmazás-katalógusba.
-   * **Titkos másolat** – a megadott e-mail-címzettek és a felhasználók e-mail titkos másolatot a fejlesztők számára küldött összes e-mailt fog kapni.
-   * **Új probléma, vagy amelyekhez megjegyzést** – a megadott e-mail-címzettek és a felhasználók e-mail értesítéseket, amikor új problémát kap, vagy a fejlesztői portál küldése megjegyzést.
-   * **Fiók bezárása üzenet** – a megadott e-mail-címzettek és a felhasználók e-mail értesítéseket kap, ha a fiók le van zárva.
-   * **Közelgő előfizetési kvótája korlátjának** – a következő e-mailek címzettjeinek és a felhasználók e-mail értesítéseket kap, ha közeli használati kvóta lekérdezi előfizetés használata.
+   * **Előfizetési kérelmek (jóváhagyást igénylő)** – a megadott e-mail-címzettek és felhasználók e-mail-értesítéseket kapnak a jóváhagyást igénylő API-termékek előfizetési kéréseiről.
+   * **Új** előfizetések – a megadott e-mail-címzettek és felhasználók e-mailben értesítést kapnak az új API-termékek előfizetéséről.
+   * **Application Gallery-kérelmek** – a megadott e-mail-címzettek és felhasználók e-mail-értesítéseket kapnak, amikor új alkalmazások kerülnek be az alkalmazás-katalógusba.
+   * **Titkos másolat** – a megadott e-mail-címzettek és felhasználók e-mailben megkapják a fejlesztők számára küldött e-mailek vak széndioxid-másolatait.
+   * **Új probléma vagy Megjegyzés** – a megadott e-mail-címzettek és felhasználók kapnak e-mail-értesítéseket, amikor új probléma vagy megjegyzés érkezik a fejlesztői portálra.
+   * **Fiók üzenetének bezárása** – a megadott e-mail-címzettek és felhasználók e-mail-értesítéseket kapnak a fiókok bezárásakor.
+   * Az **előfizetési kvóta korlátja** – a következő e-mail-címzettek és felhasználók kapnak e-mail-értesítéseket, amikor a használati kvóta közel lesz a használati kvótához.
 
-     Az egyes eseményekhez is megadhat, az e-mail cím beviteli mező használatával e-mailek címzettjeinek, vagy kiválaszthatja a felhasználók listájából.
+     Minden eseménynél megadhatja az e-mail-címzetteket az e-mail-cím szövegmező használatával, vagy kijelölhet felhasználókat a listából.
 
-3. Adja meg az e-mail-címeket, értesítést kapjon, adja meg azokat az e-mail cím szövegmezőbe. Ha az e-mail címeket, külön azokat vesszőkkel válassza el egymástól.
+3. Az értesítési e-mail címek megadásához írja be őket az e-mail-cím szövegmezőbe. Ha több e-mail-címmel rendelkezik, vesszővel válassza el őket.
 
-    ![Értesítés címzettjeinek][api-management-email-addresses]
+    ![Értesítés címzettjei][api-management-email-addresses]
 4. Nyomja meg az **Add** (Hozzáadás) gombot.
 
 ## <a name="email-templates"> </a>Értesítési sablonok konfigurálása
-Az API Management biztosítja értesítési sablonok felügyelete és a szolgáltatás használata során küldött e-mail üzenetekhez. Az alábbi e-mail-sablonok találhatók.
+A API Management értesítési sablonokat biztosít a szolgáltatás felügyelete és használata során elküldött e-mail-üzenetekhez. A következő e-mail-sablonokat kell megadnia.
 
-* Jóváhagyott alkalmazás katalógus beküldése
-* Fejlesztői farewell betűjele
-* Hamarosan eléri az értesítési fejlesztői kvótahatárát
+* Az Application Gallery beküldése jóváhagyva
+* Fejlesztői Búcsús levél
+* A fejlesztői kvóta korlátja értesítés
 * Felhasználó meghívása
-* Új megjegyzés hozzáadása egy problémához
-* Új problémát észlelt
-* Új előfizetés aktiválása
-* Előfizetés megújítása megerősítése
-* Előfizetési kérést elutasítja.
-* Előfizetési kérés érkezett
+* Új Megjegyzés hozzáadva egy hibához
+* Új probléma érkezett
+* Új előfizetés aktiválva
+* Előfizetés megújított megerősítése
+* Előfizetési kérelem elutasítása
+* Előfizetési kérelem érkezett
 
-Ezeket a sablonokat is módosítható igény szerint.
+Ezek a sablonok igény szerint módosíthatók.
 
-Tekintheti meg és konfigurálhatja az e-mail-sablonok, az API Management-példány számára, kattintson a **értesítések sablonok**.
+Az API Management példányhoz tartozó e-mail-sablonok megtekintéséhez és konfigurálásához kattintson az **értesítések sablonok**elemre.
 
 ![E-mail-sablonok][api-management-email-templates]
 
-Minden e-mail-sablon egy egyszerű szöveges tárgy és a egy választörzs definíciójához HTML formátumban van. Minden elem testre szabható igény szerint.
+Minden e-mail-sablonhoz tartozik egy egyszerű szöveg, a törzs definíciója pedig HTML formátumban. Az egyes elemek tetszés szerint testreszabhatók.
 
-![E-mail sablon szerkesztő][api-management-email-template]
+![E-mail-sablon szerkesztője][api-management-email-template]
 
-A **paraméterek** lista felsorolja azokat a paramétereket, amikor beszúrja, a tárgya és törzse fogja cserélni a kijelölt érték, ha az e-mailt küld. Paraméter beszúrása, vigye a kurzort, ahol szeretne, nyissa meg a paramétert, és kattintson a nyílra a bal oldalon, a paraméter neve.
+A **Parameters (paraméterek** ) lista a tulajdonos vagy a törzsbe beszúrt paraméterek listáját tartalmazza, és az e-mail elküldésekor a rendszer lecseréli a kijelölt értéket. Egy paraméter beszúrásához vigye a kurzort oda, ahová a paramétert el szeretné helyezni, majd kattintson a paraméter nevétől balra található nyílra.
 
 > [!NOTE] 
-> A paraméterek nem cserélhető le tényleges értékekre megtekintés vagy küldése egy tesztet.
+> A rendszer nem cseréli le a paramétereket a tényleges értékekkel egy teszt megtekintésekor vagy küldésekor.
 
-Az e-mail-sablont, a módosítások mentéséhez kattintson az **mentése**, vagy kattintson a módosítások visszavonásához **elveti**.
+Az e-mail sablon módosításainak mentéséhez kattintson a **Mentés**gombra, vagy a módosítások megszakításához kattintson az **Elvetés**gombra.
  
 
 [api-management-management-console]: ./media/api-management-howto-configure-notifications/api-management-management-console.png

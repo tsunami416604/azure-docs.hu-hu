@@ -3,7 +3,7 @@ documentType: LandingData
 title: Az Azure Data Science Virtual Machine dokumentációja
 metadata:
   title: A Data Science Virtual Machine dokumentációja – Azure
-  description: 'Útmutató a Data Science Virtual Machine használatához, amely egy kísérleti környezet az Azure-felhőben adatelemzéshez. Népszerű adatelemzési és egyéb eszközök találhatók meg rajta előre telepítve és konfigurálva, amelyek jelentősen felgyorsítják az intelligens alkalmazások fejlett elemzésekhez történő összeállítását.'
+  description: 'Útmutató a Data Science Virtual Machine használatához, amely egy adatelemzésre szolgáló kísérleti környezet az Azure-felhőben. A rendszer részét népszerű, előre telepített és konfigurált adatelemzési és gép tanulási eszközök képezik, és jelentős mértékben felgyorsítja a fejlett elemzésekhez használható intelligens alkalmazások összeállítását.'
   services: machine-learning
   author: vijetajo
   ms.service: machine-learning
@@ -14,12 +14,12 @@ metadata:
   ms.date: 08/19/2019
   ms.author: vijetaj
 abstract:
-  description: 'Az Azure Data Science Virtual Machine (DSVM) egy személyre szabott virtuálisgép-lemezkép adatelemzési és gépi tanulási eszközökkel. Ezzel a virtuális géppel intelligens, fejlett analitikai alkalmazásokat hozhat létre. <a href="overview.md">További információ...</a>'
+  description: 'Az Azure Data Science Virtual Machine (DSVM) egy személyre szabott virtuálisgép-lemezkép adatelemzési és gépi tanulási eszközökkel. Ezzel a virtuális géppel intelligens, fejlett analitikai alkalmazásokat hozhat létre. <a href="overview.md">További információk</a>.'
 sections:
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph
-        text: 'Útmutató a Windows- vagy Linux-alapú adatelemzési virtuális gépek üzembe helyezéséhez:'
+        text: 'Útmutató a Windows- vagy Linux-alapú Data Science Virtual Machine-példány üzembe helyezéséhez:'
       - type: paragraph
         text: <b>Windowsos DSVM</b>
       - type: list

@@ -8,74 +8,81 @@ manager: gwallace
 ms.assetid: ''
 ms.service: virtual-machines
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: 1db5829abd52a1b010d38dd8e9151ab2df3f1de5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ed1873fa8e74b2af5734411dc80aeb9089b61a7e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854411"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080455"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>Azure-beli virtuális gépek hibaelhárítása
 
-- Foglalási hibák
-    - [Foglalási hibák](allocation-failure.md)
-    - [Klasszikus üzemi modellek foglalási hibái](allocation-failure-classic.md)
+## <a name="tools-for-troubleshooting"></a>Hibaelhárítási eszközök
+
+- [Soros konzol](serial-console-windows.md)
 - [Rendszerindítási diagnosztika](boot-diagnostics.md)
-- RDP
-    - [Az RDP alaphelyzetbe állítása](reset-rdp.md)
-    - [Az RDP hibaelhárítása](troubleshoot-rdp-connection.md)
-    - [Az RDP részletes hibaelhárítása](detailed-troubleshoot-rdp.md)
-    - [Konkrét hibák elhárítása](troubleshoot-specific-rdp-errors.md)
-- SSH 
-    - [Az SSH hibaelhárítása](troubleshoot-ssh-connection.md)
-    - [Az SSH részletes hibaelhárítása](detailed-troubleshoot-ssh-connection.md)
-    - [Gyakori hibaüzenetek](error-messages.md)
-- [A Windows rendszerű virtuálisgép-ügynök offline telepítése](install-vm-agent-offline.md)
-- Virtuális gép teljesítményproblémáinak elhárítása
-    - [Virtuális gépek teljesítményproblémái](performance-diagnostics.md)
-    - Windows
-        - [A PerfInsights használata](how-to-use-perfinsights.md)
-        - [Teljesítménydiagnosztikai bővítmény](performance-diagnostics-vm-extension.md)
-    - Linux
-        - [A PerfInsights használata](how-to-use-perfinsights-linux.md)
+- [Windows rendszerű virtuális gép: Csatlakoztassa az operációsrendszer-lemezt egy másik virtuális géphez a hibaelhárításhoz.](troubleshoot-recovery-disks-portal-windows.md)
+- [Linux rendszerű virtuális gép: Csatlakoztassa az operációsrendszer-lemezt egy másik virtuális géphez a hibaelhárításhoz.](troubleshoot-recovery-disks-portal-linux.md)
+
+## <a name="cant-connect-to-the-vm"></a>Nem lehet csatlakozni a virtuális géphez
+
+### <a name="windows"></a>Windows
+
+**Gyakran használt megoldások**
+
+- [Az RDP alaphelyzetbe állítása](reset-rdp.md)
+- [Az RDP hibaelhárítása](troubleshoot-rdp-connection.md)
+- [Az RDP részletes hibaelhárítása](detailed-troubleshoot-rdp.md)
+
+**RDP-hibák**
+
+- [Nincs licenckiszolgáló](troubleshoot-rdp-no-license-server.md)
+- [Belső ](Troubleshoot-rdp-internal-error.md)
+- [hitelesítési hibák](troubleshoot-authentication-error-rdp-vm.md)
+- [Konkrét hibák elhárítása](troubleshoot-specific-rdp-errors.md)
+
+**Virtuális gép rendszerindítási hibái**
+
+* [BitLocker rendszerindítási hibái](troubleshoot-bitlocker-boot-error.md) 
+* [A Windows „A fájlrendszer ellenőrzése” üzenetet jeleníti meg a rendszerindítás során](troubleshoot-check-disk-boot-error.md)
+* [Kék képernyős hibák](troubleshoot-common-blue-screen-error.md)
+* [A virtuális gép indítása elakadt „A Windows előkészítése.](troubleshoot-vm-boot-configure-update.md)
+* [EGY KULCSFONTOSSÁGÚ SZOLGÁLTATÁS MEGHIÚSULT” hibával a kék képernyőn](troubleshoot-critical-service-failed-boot-error.md)
+* [Újraindítási hurokkal kapcsolatos probléma](troubleshoot-reboot-loop.md)
+* [A virtuális gép indítása elakadt a Windows frissítési szakaszánál](troubleshoot-stuck-updating-boot-error.md)
+* [A virtuális gép csökkentett üzemmódban indul el](troubleshoot-rdp-safe-mode.md)
+
+**Egyéb**
+- [Kapcsolat nélküli üzemmódban működő Windows rendszerű virtuális gép jelszavának alaphelyzetbe állítása](reset-local-password-without-agent.md)
+- [Hálózati adapter visszaállítása hibás konfigurációt követően](reset-network-interface.md)
+
+### <a name="linux"></a>Linux
+
+- [Az SSH hibaelhárítása](troubleshoot-ssh-connection.md)
+- [Az SSH részletes hibaelhárítása](detailed-troubleshoot-ssh-connection.md)
+- [Gyakori hibaüzenetek](error-messages.md)
+- [Kapcsolat nélküli üzemmódban működő Linux rendszerű virtuális gép jelszavának alaphelyzetbe állítása](reset-password.md)
+
+## <a name="vm-deployment-issues"></a>Virtuális gép üzembehelyezési problémái
+
+- [Foglalási hibák](allocation-failure.md)
 - Virtuális gép ismételt üzembe helyezése
     - [Linux](redeploy-to-new-node-linux.md)
     - [Windows](redeploy-to-new-node-windows.md)
-- Virtuális gép jelszavának alaphelyzetbe állítása
-    - [Windows](reset-local-password-without-agent.md)
-    - [Linux](reset-password.md)
-- [Hálózati adapter alaphelyzetbe állítása](reset-network-interface.md)
-- [Virtuális gép újraindítása vagy átméretezése](restart-resize-error-troubleshooting.md)
-- A soros konzol használata
-    - [Linux rendszerű virtuális gép](serial-console-linux.md)
-        - [Soros konzolos GRUB/egyfelhasználós mód](serial-console-grub-single-user-mode.md)
-        - [Soros konzolos NMI/SysRq](serial-console-nmi-sysrq.md)
-    - [Windows rendszerű virtuális gép](serial-console-windows.md)
-        - [A CMD és a PowerShell parancsai](serial-console-cmd-ps-commands.md)
-- [Tárerőforrások törlésekor jelentkező hibák](storage-resource-deletion-errors.md      )
-- [Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása](unexpected-reboots-attached-vhds.md)
-- [A Windows aktiválásával kapcsolatos problémák](troubleshoot-activation-problems.md)
-- [Alkalmazás-hozzáféréssel kapcsolatos problémák](troubleshoot-app-connection.md)
 - Üzemelő példányok hibaelhárítása
     - [Linux](troubleshoot-deploy-vm-linux.md)
     - [Windows](troubleshoot-deploy-vm-windows.md)
 - [Az eszköznevek módosultak](troubleshoot-device-names-problems.md)
-- Virtuálisgép-helyreállítási hozzáférés
-    - Windows
-        - [PowerShell](troubleshoot-recovery-disks-windows.md)
-        - [Azure Portal](troubleshoot-recovery-disks-portal-windows.md)
-    - Linux
-        - [Parancssori felület](troubleshoot-recovery-disks-linux.md)
-    - [Azure Portal](troubleshoot-recovery-disks-portal-linux.md)
-- [Rendszerindítási hibák](boot-error-troubleshoot.md)
-- [BitLocker-hibák](troubleshoot-bitlocker-boot-error.md)
-- [Fájlrendszer hibáinak keresése](troubleshoot-check-disk-boot-error.md)
-- [Kék képernyős hibák](troubleshoot-common-blue-screen-error.md)
-- [Szabályozási hibák](troubleshooting-throttling-errors.md)
-- [Beágyazott virtualizálás használata](troubleshoot-vm-by-use-nested-virtualization.md)
-- [Rendszer-újraindítás ismertetése](understand-vm-reboot.md)
+- [A Windows rendszerű virtuálisgép-ügynök offline telepítése](install-vm-agent-offline.md)
+- [Virtuális gép újraindítása vagy átméretezése](restart-resize-error-troubleshooting.md)
 
+## <a name="vm-performance-issue"></a>Virtuális gép teljesítményével kapcsolatos problémák
+- [Virtuális gépek teljesítményproblémái](performance-diagnostics.md)
+- Windows
+    - [A PerfInsights használata](how-to-use-perfinsights.md)
+    - [Teljesítménydiagnosztikai bővítmény](performance-diagnostics-vm-extension.md)
+- Linux
+    - [A PerfInsights használata](how-to-use-perfinsights-linux.md)

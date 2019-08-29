@@ -10,7 +10,7 @@
     - name: Üzembe helyezés és konfigurálás
       href: tutorial-firewall-deploy-portal.md
     - name: Üzembe helyezés hibrid hálózatban
-      href: tutorial-hybrid-ps.md
+      href: tutorial-hybrid-portal.md
     - name: Bejövő forgalom szűrése DNAT használatával
       href: tutorial-firewall-dnat.md
     - name: Diagnosztikai naplók monitorozása
@@ -39,6 +39,8 @@
   items:
     - name: Üzembe helyezés az Azure PowerShell-lel
       href: deploy-ps.md
+    - name: Üzembe helyezés hibrid hálózatban – PowerShell
+      href: tutorial-hybrid-ps.md
     - name: Üzembe helyezés az Azure CLI-vel
       href: deploy-cli.md
     - name: Üzembe helyezés sablon használatával

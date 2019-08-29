@@ -1,6 +1,6 @@
 ---
-title: OpenShift az Azure-telepítés utáni feladatok |} A Microsoft Docs
-description: Az OpenShift fürt után további feladatai lett telepítve.
+title: OpenShift az Azure-beli üzembe helyezés utáni feladatokhoz | Microsoft Docs
+description: További feladatok a OpenShift-fürt üzembe helyezését követően.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -9,49 +9,48 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: fba29cd55f2d765faa107de3a8961032ef44deec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac93f08a5e93fefaa1de82a7d86a2cfdf3e6aa6d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771343"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091756"
 ---
 # <a name="post-deployment-tasks"></a>Üzembe helyezés utáni feladatok
 
-Miután az OpenShift fürtöt telepít, konfigurálhatja úgy a további elemek. Ez a cikk ismerteti:
+OpenShift-fürt üzembe helyezése után további elemeket is beállíthat. Ez a cikk a következőket ismerteti:
 
-- Az Azure Active Directory (Azure AD) használatával az egyszeri bejelentkezés konfigurálása
-- OpenShift figyelése az Azure Monitor konfigurálásáról
+- Egyszeri bejelentkezés konfigurálása Azure Active Directory (Azure AD) használatával
+- Azure Monitor naplók konfigurálása a OpenShift figyeléséhez
 - Metrikák és naplózás konfigurálása
-- Open Service Broker for Azure (OSBA) telepítése
+- Az Open Service Broker for Azure (OSBA) telepítése
 
-## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Az Azure Active Directoryval egyszeri bejelentkezés konfigurálása
+## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Az egyszeri bejelentkezés konfigurálása Azure Active Directory használatával
 
-Azure Active Directory-hitelesítéshez használandó, először hozzon létre egy Azure AD-alkalmazás regisztrációjának. Ez a folyamat két lépésből áll: az alkalmazás regisztrációját létrehozását és engedélyek konfigurálását.
+Ha Azure Active Directoryt szeretne használni a hitelesítéshez, először létre kell hoznia egy Azure AD-alkalmazás regisztrációját. Ez a folyamat két lépést foglal magában: az alkalmazás regisztrációjának létrehozása és az engedélyek konfigurálása.
 
-### <a name="create-an-app-registration"></a>Hozzon létre egy alkalmazásregisztráció
+### <a name="create-an-app-registration"></a>Alkalmazás-regisztráció létrehozása
 
-Ezeket a lépéseket az Azure CLI használatával hozzon létre az alkalmazás regisztrációját, és a grafikus felhasználói Felülettel (portál) állítsa be az engedélyeket. Szeretne létrehozni az alkalmazás regisztrációját, az alábbi öt adatokra van szükség:
+Ezek a lépések az Azure CLI használatával hozhatják létre az alkalmazás regisztrációját és a grafikus felhasználói felületet (portál) az engedélyek megadásához. Az alkalmazás regisztrációjának létrehozásához a következő öt információra van szüksége:
 
-- Megjelenített név: Alkalmazás regisztrálása nevét (például OCPAzureAD)
-- Kezdőlap: OpenShift konzol URL-címe (például https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Identifier URI: OpenShift konzol URL-címe (például https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Válasz URL-címe: Nyilvános URL-CÍMÉT és az alkalmazás regisztrációs nevét (például fő https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
-- Jelszó: Biztonságos jelszó (erős jelszó használata)
+- Megjelenítendő név: Alkalmazás regisztrációs neve (például OCPAzureAD)
+- Kezdőlap: OpenShift-konzol URL-címe (például: https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- Azonosító URI-ja: OpenShift-konzol URL-címe (például: https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- Válasz URL-címe: A fő nyilvános URL-cím és az alkalmazás regisztrációs neve (például: https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
+- Jelszó Biztonságos jelszó (erős jelszó használata)
 
-A következő példában létrehozunk egy alkalmazásregisztráció az előző információk alapján:
+Az alábbi példa az előző információk alapján létrehoz egy alkalmazást:
 
 ```azurecli
 az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.westus.cloudapp.azure.com/console --reply-urls https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/hwocpadint --identifier-uris https://masterdns343khhde.westus.cloudapp.azure.com/console --password {Strong Password}
 ```
 
-Ha a parancs végrehajtása sikeres, megjelenik egy JSON-kimenetet hasonló:
+Ha a parancs sikeres, a következőhöz hasonló JSON-kimenetet kap:
 
 ```json
 {
@@ -71,39 +70,39 @@ Ha a parancs végrehajtása sikeres, megjelenik egy JSON-kimenetet hasonló:
 }
 ```
 
-Jegyezze fel az appId-tulajdonság az egy későbbi lépésben a parancs által visszaadott.
+Jegyezze fel a parancs által visszaadott appId tulajdonságot egy későbbi lépéshez.
 
 Az Azure Portalon:
 
-1. Válassza ki **az Azure Active Directory** > **Alkalmazásregisztráció**.
+1. Válassza ki **Azure Active Directory** > az**alkalmazás regisztrációját**.
 2. Keresse meg az alkalmazás regisztrációját (például OCPAzureAD).
-3. Az eredmények között kattintson az alkalmazás regisztrációját.
-4. A **beállítások**válassza **szükséges engedélyek**.
-5. A **szükséges engedélyek**válassza **Hozzáadás**.
+3. Az eredmények között kattintson az alkalmazás regisztrációja elemre.
+4. A **Beállítások**területen válassza a **szükséges engedélyek**lehetőséget.
+5. A **szükséges engedélyek**területen válassza a **Hozzáadás**lehetőséget.
 
-   ![Alkalmazásregisztráció](media/openshift-post-deployment/app-registration.png)
+   ![Alkalmazás regisztrálása](media/openshift-post-deployment/app-registration.png)
 
-6. Kattintson az 1. lépés: Válassza ki az API-t, és kattintson a **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)** . Kattintson a **kiválasztása** alján.
+6. Kattintson az 1. lépés: Válassza az API lehetőséget, majd kattintson a **Windows Azure Active Directory (Microsoft. Azure. ActiveDirectory)** elemre. Kattintson a lenti **kijelölés** gombra.
 
-   ![Alkalmazásregisztráció kijelölt API](media/openshift-post-deployment/app-registration-select-api.png)
+   ![Alkalmazás regisztrálása API kiválasztása](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. On Step 2: Jelölje be az engedélyeket, jelölje be **jelentkezzen be és felhasználói profil olvasása** alatt **delegált engedélyek**, és kattintson a **válassza**.
+7. A 2. lépés: Válassza az engedélyek lehetőséget, válassza **a bejelentkezés lehetőséget, és olvassa el a felhasználói profilt** a **delegált engedélyek**területen, majd kattintson a **kiválasztás**gombra.
 
-   ![Alkalmazásregisztráció-hozzáférés](media/openshift-post-deployment/app-registration-access.png)
+   ![Alkalmazás-regisztrálási hozzáférés](media/openshift-post-deployment/app-registration-access.png)
 
 8. Válassza a **Done** (Kész) lehetőséget.
 
-### <a name="configure-openshift-for-azure-ad-authentication"></a>OpenShift az Azure AD-hitelesítés konfigurálása
+### <a name="configure-openshift-for-azure-ad-authentication"></a>OpenShift konfigurálása az Azure AD-hitelesítéshez
 
-OpenShift az Azure AD-hitelesítési szolgáltató használatára konfigurálja, hogy a /etc/origin/master/master-config.yaml fájlt az összes fő csomóponttal kell szerkeszteni.
+Ahhoz, hogy a OpenShift az Azure AD hitelesítési szolgáltatóként való használatára konfigurálja, a/etc/Origin/Master/Master-config.YAML-fájlt minden főcsomóponton szerkeszteni kell.
 
-Keresse meg a bérlő Azonosítóját a következő CLI-parancs használatával:
+Keresse meg a bérlő AZONOSÍTÓját az alábbi CLI-parancs használatával:
 
 ```azurecli
 az account show
 ```
 
-A yaml-fájlt keresse meg a következő sorokat:
+A YAML fájlban keresse meg a következő sorokat:
 
 ```yaml
 oauthConfig:
@@ -121,7 +120,7 @@ oauthConfig:
       kind: HTPasswdPasswordIdentityProvider
 ```
 
-Illessze be a következő sorokat a megelőző sorok után azonnal:
+Szúrja be a következő sorokat közvetlenül az előző sorok után:
 
 ```yaml
   - name: <App Registration Name>
@@ -147,37 +146,37 @@ Illessze be a következő sorokat a megelőző sorok után azonnal:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-Ellenőrizze, hogy a szöveg igazítja megfelelően identityProviders alatt. Keresse meg a bérlő Azonosítóját a következő CLI-parancs használatával: ```az account show```
+Győződjön meg arról, hogy a szöveg helyesen van igazítva a identityProviders alatt. Keresse meg a bérlő AZONOSÍTÓját az alábbi CLI-parancs használatával:```az account show```
 
-Indítsa újra az összes fő csomóponton az OpenShift fő szolgáltatások:
+Indítsa újra a OpenShift Master Servicest az összes főcsomóponton:
 
 ```bash
 sudo /usr/local/bin/master-restart api
 sudo /usr/local/bin/master-restart controllers
 ```
 
-Az OpenShift-konzolon, most már két lehetőség jelenik meg a hitelesítéshez: htpasswd_auth és [Alkalmazásregisztráció].
+A OpenShift-konzolon most két hitelesítési lehetőség látható: a htpasswd_auth és az [alkalmazás regisztrálása].
 
-## <a name="monitor-openshift-with-azure-monitor-logs"></a>OpenShift monitorozása az Azure Monitor naplóira
+## <a name="monitor-openshift-with-azure-monitor-logs"></a>OpenShift figyelése Azure Monitor naplókkal
 
-A Log Analytics-ügynök hozzáadása az OpenShift három módja van.
-- A Linuxhoz készült Log Analytics-ügynök telepítése minden egyes OpenShift csomóponton közvetlenül
-- Az Azure Monitor Virtuálisgép-bővítmény engedélyezése a OpenShift csomópontokon
-- A Log Analytics-ügynököket telepítse az OpenShift démon beállított
+Az Log Analytics-ügynök három módon adható hozzá a OpenShift.
+- A Linux rendszerhez készült Log Analytics-ügynök telepítése közvetlenül az egyes OpenShift-csomópontokon
+- Azure Monitor virtuálisgép-bővítmény engedélyezése az egyes OpenShift-csomópontokon
+- A Log Analytics-ügynök telepítése OpenShift Daemon-set
 
-Olvassa el a teljes [utasításokat](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift) további részletekért.
+További részletekért [](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift) olvassa el a teljes útmutatást.
 
 ## <a name="configure-metrics-and-logging"></a>Metrikák és naplózás konfigurálása
 
-Az ág alapján, az Azure Resource Manager-sablonok az OpenShift Tárolóplatform és OKD rendelkezhetnek mérőszámainak engedélyezése és a telepítés részeként naplózási bemeneti paramétereit.
+Az ág alapján a OpenShift-tároló platform és a OKD Azure Resource Manager sablonjai a telepítés részeként adhatnak bemeneti paramétereket a metrikák és a naplózás engedélyezéséhez.
 
-Az OpenShift Container Platform Marketplace-ajánlat is lehetőséget biztosít, hogy engedélyezze a metrikák és naplózás fürt telepítése során.
+A OpenShift Container platform Marketplace ajánlat emellett lehetőséget biztosít a metrikák és a naplózás engedélyezésére a fürt telepítése során.
 
-Ha a metrikák / naplózás nincs engedélyezve a fürt telepítésekor, azok egyszerűen engedélyezhető bekövetkeztek.
+Ha a rendszer nem engedélyezte a metrikákat vagy a naplózást a fürt telepítése során, az a tény után egyszerűen engedélyezhető.
 
-### <a name="azure-cloud-provider-in-use"></a>Használja az Azure Felhőszolgáltató
+### <a name="azure-cloud-provider-in-use"></a>Használatban lévő Azure Cloud Provider
 
-Ssh-KAPCSOLATOT a megerősített vagy első fő csomópontot (a sablon és a használatban lévő ág alapján) a telepítés során megadott hitelesítő adatok használatával. A következő parancs kiadásával:
+Az üzembe helyezés során megadott hitelesítő adatok használatával SSH-t használhat a megerősített csomóponthoz vagy az első főcsomóponthoz (a használatban lévő sablon és ág alapján). Adja ki a következő parancsot:
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -189,7 +188,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 -e openshift_logging_es_pvc_dynamic=true
 ```
 
-### <a name="azure-cloud-provider-not-in-use"></a>Az Azure Cloud-szolgáltató nincs használatban
+### <a name="azure-cloud-provider-not-in-use"></a>Az Azure Cloud Provider nincs használatban
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -199,14 +198,14 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 -e openshift_logging_install_logging=True
 ```
 
-## <a name="install-open-service-broker-for-azure-osba"></a>Az Open Service Broker for Azure (OSBA) telepítése
+## <a name="install-open-service-broker-for-azure-osba"></a>A nyílt Service Broker telepítése az Azure-hoz (OSBA)
 
-Nyissa meg a Service Broker for Azure-ban vagy az OSBA, lehetővé teszi, hogy közvetlenül az OpenShift az Azure Cloud Services üzembe helyezi. Az Azure Open Service Broker API megvalósítása az OSBA. Az Open Service Broker API egy specifikációja, amelyek egy közös nyelvvel felhő szolgáltatókat, felhőbeli natív alkalmazásokat nélkül zár a felhőszolgáltatások kezelésére használható.
+Az Azure-ban vagy a OSBA-ben megnyitott Service Broker lehetővé teszi, hogy közvetlenül a OpenShift hozzon létre Azure-Cloud Services. A OSBA egy nyílt Service Broker API-implementáció az Azure-hoz. A nyílt Service Broker API egy spec, amely közös nyelvet definiál a felhőalapú szolgáltatók számára, amelyekkel a Felhőbeli natív alkalmazások kezelhetik a felhőalapú szolgáltatásokat a zárolás nélkül.
 
-Az OpenShift OSBA telepítéséhez kövesse az itt található utasításokat: https://github.com/Azure/open-service-broker-azure#openshift-project-template. 
+A OSBA a OpenShift-on való telepítéséhez kövesse az itt található https://github.com/Azure/open-service-broker-azure#openshift-project-template utasításokat:. 
 > [!NOTE]
-> Csak a lépéseket az OpenShift projektsablon és nem a teljes telepítése szakaszban.
+> Csak a OpenShift-projekt sablonjának lépéseit kell végrehajtania, nem a teljes telepítés szakaszt.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Ismerkedés az OpenShift Tárolóplatform](https://docs.openshift.com/container-platform)
+- [OpenShift-tároló platform – első lépések](https://docs.openshift.com/container-platform)

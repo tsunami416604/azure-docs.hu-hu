@@ -60,6 +60,8 @@
         - name: A Marketplace-ből származó előnyei
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: Együttes értékesítési partnerek bevonása
+              href: ./marketplace-co-sell.md
             - name: Előnyben részesített megoldások
               href: ./preferred-solutions.md
             - name: Integrált megoldások
@@ -490,6 +492,13 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Az ajánlat kipróbálása
           href: ./partner-center-portal/test-drive.md
+        - name: Együttes értékesítési lehetőség
+          href: ./partner-center-portal/commercial-marketplace-co-sell.md
+          items:
+            - name: Ország- és régiókódok
+              href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
+            - name: Államkódok
+              href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
     - name: Közzététel állapota
       href: ./partner-center-portal/publishing-status.md
     - name: Létező ajánlatok frissítése
