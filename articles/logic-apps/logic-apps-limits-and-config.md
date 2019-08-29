@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 95df72875338b6964f42075404cf9c30ba132f9d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 891273a98c61b59e08b4a15f3b0892e6828a2a47
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900209"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099434"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>A Azure Logic Apps korlátai és konfigurációs adatai
 
@@ -105,6 +105,8 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 
 ### <a name="integration-service-environment-ise"></a>Integrációs szolgáltatási környezet (ISE)
 
+A prémium SKU átviteli sebességének korlátai:
+
 | Name (Név) | Korlát | Megjegyzések |
 |------|-------|-------|
 | Alapegység végrehajtási korlátja | Rendszer által szabályozott, ha az infrastruktúra kapacitása eléri a 80%-ot | Percenként ~ 4 000 művelet-végrehajtást biztosít, ami ~ 160 000 000 művelet-végrehajtás havonta | |
@@ -113,6 +115,9 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 ||||
 
 Ha a határértékeket a normál feldolgozás során szeretné megtenni, vagy olyan terheléses tesztelést kell futtatnia, amely túllépheti ezeket a korlátokat, a követelményekkel kapcsolatos segítségért [forduljon a Logic apps csapatához](mailto://logicappsemail@microsoft.com) .
+
+> [!NOTE]
+> A [fejlesztői SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) nem rendelkezik közzétett korlátozásokkal, mivel ez az SKU nem rendelkezik szolgáltatói szerződéssel (SLA) vagy a vertikális Felskálázási képességekkel. Ezt az SKU-t csak kísérletezéshez, fejlesztéshez és teszteléshez használja, nem éles környezetben, sem pedig a teljesítmény teszteléséhez.
 
 <a name="request-limits"></a>
 
@@ -181,10 +186,10 @@ Az egyes Azure-előfizetések az alábbi integrációs fiókra korlátozzák:
 
 * Minden ISE – akár [fejlesztő](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), akár prémium – 5 teljes integrációs fiókra korlátozódik:
 
-  | ISE SKU | Korlát |
-  |---------|-------|
-  | **Prémium** | 5 teljes [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) – csak, ingyenes vagy alapszintű |
-  | **Fejlesztői** | 5 összesen – ingyenes (legfeljebb 1), standard vagy mindkettő, de nem alapszintű |
+  | ISE SKU | Integrációs fiók korlátai |
+  |---------|----------------------------|
+  | **Prémium** | 5 teljes [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) fiók, beleértve az ingyenes egy standard fiókot is. Ingyenes vagy alapszintű fiókok használata nem engedélyezett. |
+  | **Fejlesztői** | 5 összesen – [ingyenes](../logic-apps/logic-apps-pricing.md#integration-accounts) (legfeljebb 1 fiók) és [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) kombinált, vagy az összes szabványos fiók. Nem engedélyezett alapszintű fiók. A [fejlesztői SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) -t a kísérletezéshez, fejlesztéshez és teszteléshez használhatja, az éles környezetben való teszteléshez azonban nem. |
   |||
 
 A további költségek azokra az integrációs fiókokra vonatkoznak, amelyeket az ISE részét képező integrációs fiókokon kívül hozzáadott. A ISEs díjszabásának és számlázásának megismeréséhez tekintse meg a [Logic apps díjszabási modelljét](../logic-apps/logic-apps-pricing.md#fixed-pricing). A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/).

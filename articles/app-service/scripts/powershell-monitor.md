@@ -1,6 +1,6 @@
 ---
-title: Az Azure PowerShell-Példaszkript – webalkalmazás webkiszolgáló-naplókkal monitorozása |} A Microsoft Docs
-description: Az Azure PowerShell-Példaszkript – webalkalmazás webkiszolgáló-naplókkal monitorozása
+title: Azure PowerShell szkript minta-webalkalmazások figyelése webkiszolgáló-naplókkal | Microsoft Docs
+description: Azure PowerShell parancsfájl-minta – webalkalmazás figyelése webkiszolgáló-naplókkal
 services: app-service\web
 documentationcenter: ''
 author: syntaxc4
@@ -9,21 +9,20 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 5805d7cd-9e56-4eba-bd85-75b013690ff5
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: ac503c4408432da4e2c0c9281ee5cdd6e5d9e984
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e9e376de3356a23df648f77738fd2c84cb26d97f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198604"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098300"
 ---
-# <a name="monitor-a-web-appwith-web-server-logs"></a>Webkiszolgáló-naplókkal-WebApp figyelése
+# <a name="monitor-a-web-appwith-web-server-logs"></a>Webalkalmazás figyelése webkiszolgáló-naplókkal
 
 Ebben a forgatókönyvben létrehoz egy erőforráscsoportot, egy App Service-csomagot és egy webalkalmazást, továbbá a webalkalmazást a webkiszolgáló-naplók engedélyezésére konfigurálja. Ezután letölti a naplófájlokat áttekintésre.
 

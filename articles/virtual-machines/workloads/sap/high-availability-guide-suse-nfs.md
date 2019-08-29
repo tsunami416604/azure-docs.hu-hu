@@ -1,6 +1,6 @@
 ---
-title: A SUSE Linux Enterprise Server Azure virtuális gépeken az NFS magas rendelkezésre állású |} A Microsoft Docs
-description: Magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken
+title: Magas rendelkezésre állás az NFS-hez az Azure-beli virtuális gépeken SUSE Linux Enterprise Serveron | Microsoft Docs
+description: Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 93644b9a3487906a27db70bfe82cceccdc7ab45c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7af5663b399556d66f86213310858780369215af
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707228"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101055"
 ---
-# <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken
+# <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -51,150 +50,150 @@ ms.locfileid: "67707228"
 
 [sap-hana-ha]:sap-hana-high-availability.md
 
-Ez a cikk ismerteti a virtuális gépek üzembe helyezése, konfigurálja a virtuális gépek, a fürt keretrendszer telepítése és a magas rendelkezésre állású SAP-rendszer a megosztott adatok tárolására szolgáló magas rendelkezésre állású NFS-kiszolgáló telepítése.
-Ez az útmutató azt ismerteti, hogyan állítható be a magas rendelkezésre állású NFS-kiszolgáló két SAP-rendszereit, NW1 és NW2 által használt. Az erőforrások (például virtuális gépek, virtuális hálózatok) a példában nevei azt feltételezik, hogy használja a [SAP fájl kiszolgálói sablon][template-file-server] erőforrás előtaggal **prod**.
+Ez a cikk leírja, hogyan telepítheti a virtuális gépeket, konfigurálhatja a virtuális gépeket, telepítheti a fürtöt, és telepíthet egy olyan, magasan rendelkezésre álló NFS-kiszolgálót, amely egy magasan elérhető SAP-rendszer megosztott adattárolására használható.
+Ez az útmutató bemutatja, hogyan állíthat be egy olyan, magasan elérhető NFS-kiszolgálót, amelyet két SAP-rendszer, a NW1 és a NW2 használ. A példában szereplő erőforrások nevei (például a virtuális gépek, a virtuális hálózatok) feltételezik, hogy az [SAP fájlkiszolgáló sablonját][template-file-server] használta a következő előtaggal: **Prod**.
 
-Olvassa el először a következő SAP-megjegyzések és tanulmányok
+Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat
 
-* SAP-Jegyzetnek [1928533], amely rendelkezik:
-  * SAP szoftver központi telepítése által támogatott Azure-beli Virtuálisgép-méretek
-  * Azure-beli Virtuálisgép-méretek esetében fontos kapacitásadatok
-  * Támogatott SAP-szoftverek és operációs rendszer (OS) és adatbázis-kombinációk
-  * Szükséges SAP kernel verziója a Windows és Linux a Microsoft Azure
+* SAP-Megjegyzés [1928533], amely a következőket tartalmazta:
+  * Az SAP-szoftverek üzembe helyezéséhez támogatott Azure-beli virtuálisgép-méretek listája
+  * Fontos kapacitási információk Azure-beli virtuális gépek méreteihez
+  * Támogatott SAP-szoftverek és operációs rendszerek (OS) és adatbázis-kombinációk
+  * A Windows és a Linux rendszerhez szükséges SAP kernel verziója Microsoft Azure
 
-* SAP-Jegyzetnek [2015553] az Azure-beli SAP az SAP által támogatott szoftverek központi telepítéséhez szükséges előfeltételeket ismerteti.
-* SAP-Jegyzetnek [2205917] ajánlott az operációs rendszer beállításait a SUSE Linux Enterprise Server SAP-alkalmazások
-* SAP-Jegyzetnek [1944799] SUSE Linux Enterprise Server SAP HANA-irányelvek rendelkezik az SAP-alkalmazások
-* SAP-Jegyzetnek [2178632] részletes jelentett az Azure-beli SAP-figyelési metrikákat kapcsolatos információkat tartalmaz.
-* SAP-Jegyzetnek [2191498] rendelkezik a szükséges SAP gazdagép-ügynök verziója Linux az Azure-ban.
-* SAP-Jegyzetnek [2243692] SAP linuxon az Azure-beli licenceléssel kapcsolatos információkat tartalmaz.
-* SAP-Jegyzetnek [1984787] SUSE Linux Enterprise Server 12 vonatkozó általános információkat tartalmaz.
-* SAP-Jegyzetnek [1999351] további információkat talál az Azure Enhanced Monitoring bővítményt az SAP rendelkezik.
-* [Az SAP közösségi WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) rendelkezik az összes szükséges SAP-megjegyzések Linux rendszeren.
-* [Az Azure virtuális gépek tervezése és megvalósítása az SAP, Linux rendszeren][planning-guide]
-* [Az Azure virtuális gépek üzembe helyezése, az SAP, Linux (Ez a cikk)][deployment-guide]
-* [Az Azure Virtual Machines DBMS üzembe helyezése, az SAP, Linux rendszeren][dbms-guide]
-* [SUSE Linux Enterprise magas rendelkezésre állási bővítmény 12 SP3 ajánlott eljárások][sles-hae-guides]
-  * Az NFS magas rendelkezésre állású tárolási DRBD és támasztja
-* [SUSE Linux Enterprise Server SAP alkalmazások 12 SP3 ajánlott eljárások][sles-for-sap-bp]
-* [SUSE magas rendelkezésre állású bővítmény 12 SP3 kibocsátási megjegyzései][suse-ha-12sp3-relnotes]
+* Az SAP Note [2015553] az SAP által támogatott SAP-szoftverek Azure-beli üzembe helyezésének előfeltételeit sorolja fel.
+* Az SAP Megjegyzés [2205917] ajánlott operációsrendszer-beállításokkal SUSE Linux Enterprise Server SAP-alkalmazásokhoz
+* A [1944799] -es SAP-Megjegyzés SAP HANA irányelvek az SAP-alkalmazásokhoz SUSE Linux Enterprise Server
+* Az [2178632] -es SAP-Megjegyzés részletes információkat tartalmaz az Azure-beli SAP-ban jelentett összes figyelési mérőszámról.
+* A [2191498] -es SAP-Megjegyzés a szükséges SAP-gazdagép ügynökének verziója az Azure-ban linuxos.
+* Az [2243692] -es SAP-Megjegyzés az Azure-beli Linuxon futó SAP-licenceléssel kapcsolatos információkat tartalmaz.
+* Az [1984787] -es SAP-Megjegyzés általános információkat tartalmaz a SUSE Linux Enterprise Server 12.
+* Az SAP Megjegyzés [1999351] további hibaelhárítási információkat tartalmaz az SAP-hez készült Azure Enhanced monitoring bővítménnyel kapcsolatban.
+* Az [SAP Community wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) rendelkezik minden szükséges SAP-megjegyzéssel a Linux rendszerhez.
+* [Azure Virtual Machines tervezése és implementálása Linux rendszeren az SAP-ban][planning-guide]
+* [Azure Virtual Machines üzembe helyezés az SAP-hez Linux rendszeren (ez a cikk)][deployment-guide]
+* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hez Linux rendszeren][dbms-guide]
+* [SUSE Linux Enterprise magas rendelkezésre állású bővítmény 12 SP3 ajánlott eljárások útmutatók][sles-hae-guides]
+  * A DRBD és a pacemaker szolgáltatással rendelkező, magasan elérhető NFS-tárolók
+* [SUSE Linux Enterprise Server for SAP Applications 12 SP3 – ajánlott eljárások útmutatók][sles-for-sap-bp]
+* [SUSE magas rendelkezésre állású bővítmény – 12 SP3 kibocsátási megjegyzések][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>Áttekintés
 
-Magas rendelkezésre állás, az SAP NetWeaver NFS-kiszolgáló szükséges. Az NFS-kiszolgáló egy külön fürtben lett konfigurálva, és több SAP-rendszerek által használható.
+A magas rendelkezésre állás eléréséhez az SAP NetWeaver használatához NFS-kiszolgáló szükséges. Az NFS-kiszolgáló külön fürtben van konfigurálva, és több SAP-rendszer is használható.
 
-![SAP NetWeaver magas rendelkezésre állás – Áttekintés](./media/high-availability-guide-nfs/ha-suse-nfs.png)
+![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-nfs/ha-suse-nfs.png)
 
-Az NFS-kiszolgáló minden SAP-rendszerhez, az NFS-kiszolgálót használó virtuális IP-címek és a egy dedikált virtuális állomásnevet használja. Az Azure-ban a terheléselosztó virtuális IP-cím szükséges. Az alábbi lista a terheléselosztó konfigurációját jeleníti meg.        
+Az NFS-kiszolgáló egy dedikált virtuális gazdagépet és virtuális IP-címet használ minden olyan SAP-rendszerhez, amely ezt az NFS-kiszolgálót használja. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. A következő lista a terheléselosztó konfigurációját mutatja be.        
 
-* Előtér-konfigurációjához
-  * IP-címe 10.0.0.4 NW1
-  * IP-cím 10.0.0.5 NW2
+* Előtér-konfiguráció
+  * NW1 IP-10.0.0.4
+  * NW2 IP-10.0.0.5
 * Háttér-konfiguráció
-  * Minden virtuális gépnek kell lennie a NFS-fürt elsődleges hálózati adaptere csatlakozik
-* Mintavételi Port
-  * NW1 61000 portja
-  * NW2 61001 portja
-* Terheléselosztás szabályok
-  * 2049-es TCP NW1 használata
-  * 2049-es UDP NW1
-  * 2049-es TCP NW2 használata
-  * 2049-es UDP NW2
+  * Az NFS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
+* Mintavételi port
+  * A NW1 61000-es portja
+  * A NW2 61001-es portja
+* Terheléselosztás-szabályok
+  * 2049 TCP a NW1
+  * 2049 UDP a NW1
+  * 2049 TCP a NW2
+  * 2049 UDP a NW2
 
-## <a name="set-up-a-highly-available-nfs-server"></a>Egy magas rendelkezésre állású NFS-kiszolgáló beállítása
+## <a name="set-up-a-highly-available-nfs-server"></a>Egy magasan elérhető NFS-kiszolgáló beállítása
 
-Minden szükséges Azure-erőforrások, például a virtuális gépek üzembe helyezéséhez vagy használhatja az Azure-sablont a Githubból, rendelkezésre állási beállítása és terheléselosztó vagy manuálisan telepítheti az erőforrásokat.
+A GitHubon található Azure-sablonok használatával üzembe helyezheti az összes szükséges Azure-erőforrást, beleértve a virtuális gépeket, a rendelkezésre állási készletet és a terheléselosztó-t, vagy manuálisan is üzembe helyezheti az erőforrásokat.
 
-### <a name="deploy-linux-via-azure-template"></a>Linux-n keresztül az Azure-sablon üzembe helyezése
+### <a name="deploy-linux-via-azure-template"></a>Linux telepítése Azure-sablon használatával
 
-Az Azure Marketplace-en SUSE Linux Enterprise Server SAP alkalmazások 12, amelyek új virtuális gépek telepítéséhez használhatja a kép tartalmazza.
-Használhatja a gyorsindítási sablonok egyikét a Githubon üzembe helyezéséhez szükséges összes erőforrást. A sablon üzembe helyezi a virtuális gépek, a terheléselosztó, a rendelkezésre állási csoport stb. Kövesse az alábbi lépéseket a sablon üzembe helyezéséhez:
+Az Azure Marketplace lemezképet tartalmaz a SUSE Linux Enterprise Server for SAP Applications for 12 szolgáltatáshoz, amely az új virtuális gépek üzembe helyezésére használható.
+Az összes szükséges erőforrás üzembe helyezéséhez használhatja a GitHubon a rövid útmutató sablonjait. A sablon üzembe helyezi a virtuális gépeket, a terheléselosztó-t, a rendelkezésre állási készletet stb. A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [SAP file server sablon][template-file-server] az Azure Portalon   
-1. Adja meg a következő paraméterek
-   1. Resource Prefix  
-      Adja meg a használni kívánt előtagot. Az érték előtagjaként is szolgál az üzembe helyezett erőforrásokat.
-   2. Az SAP-rendszer száma  
-      Adja meg az SAP-rendszereit, hogy a fájlkiszolgáló fogja használni. Ez telepíti a szükséges méretű előtér-konfigurációk terheléselosztási szabályok, mintavételi port lemezek stb.
+1. Nyissa meg az [SAP fájlkiszolgáló sablonját][template-file-server] a Azure Portal   
+1. Adja meg a következő paramétereket
+   1. Erőforrás-előtag  
+      Adja meg a használni kívánt előtagot. Az értéket a rendszer az üzembe helyezett erőforrások előtagjaként használja.
+   2. SAP-rendszerek száma  
+      Adja meg, hogy hány SAP-rendszer fogja használni ezt a kiszolgálót. Ekkor a rendszer telepíti a szükséges méretű előtér-konfigurációkat, a terheléselosztási szabályokat, a mintavételi portokat, a lemezeket stb.
    3. Operációs rendszer típusa  
-      Válasszon ki egy Linux-disztribúció. Ebben a példában válassza ki a SLES 12 rendszert
-   4. Admin Username and Admin Password  
-      Egy új felhasználót hoz létre, amely segítségével jelentkezzen be a számítógépen.
-   5. Alhálózati azonosító  
-      Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában néz ki: /subscriptions/ **&lt;előfizetés-azonosító&gt;** /resourceGroups/ **&lt;erőforráscsoport-név&gt;** /szolgáltatók/ Microsoft.Network/virtualNetworks/ **&lt;virtuálishálózat-nevet&gt;** /subnets/ **&lt;alhálózat neve&gt;**
+      Válassza ki a Linux-disztribúciók egyikét. Ebben a példában válassza a 12. SLES
+   4. Rendszergazdai Felhasználónév és rendszergazdai jelszó  
+      Létrejön egy új felhasználó, amely használható a gépre való bejelentkezéshez.
+   5. Alhálózat azonosítója  
+      Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint az/Subscriptions/ **&lt;előfizetés-azonosítója&gt;** /resourceGroups/ **&lt;erőforráscsoport-neve&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt; virtuális hálózat neve&gt;** /Subnets/ **&lt;alhálózati&gt; neve**
 
-### <a name="deploy-linux-manually-via-azure-portal"></a>Manuálisan üzembe helyezése Linux rendszerű Azure-portálon
+### <a name="deploy-linux-manually-via-azure-portal"></a>A Linux telepítése manuálisan Azure Portal használatával
 
-Először a virtuális gépek az NFS-fürt létrehozásához. Ezt követően hozzon létre egy terheléselosztó, és a virtuális gépek használata a háttérkészletek.
+Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt követően hozzon létre egy terheléselosztó-t, és használja a virtuális gépeket a háttér-készletekben.
 
 1. Erőforráscsoport létrehozása
-1. Virtuális hálózat létrehozása
-1. Egy rendelkezésre állási csoport létrehozása  
+1. Virtual Network létrehozása
+1. Rendelkezésre állási csoport létrehozása  
    Maximális frissítési tartomány beállítása
-1. Hozzon létre legalább a virtuális gép 1 használata SLES4SAP 12 SP3, ebben a példában a SLES4SAP 12 SP3 saját rendszerkép SLES For SAP alkalmazások 12 SP3 (saját) használatos  
-   Válassza ki a korábban létrehozott rendelkezésre állási  
-1. Hozzon létre legalább a virtuális gép 2 használata SLES4SAP 12 SP3, ebben a példában a SLES4SAP 12 SP3 saját kép  
-   SLES For SAP alkalmazások 12 SP3 (saját) használatos.  
-   Válassza ki a korábban létrehozott rendelkezésre állási  
-1. Minden egyes SAP-rendszerhez egy adatlemez hozzá virtuális gépeket is.
+1. 1\. virtuális gép létrehozása legalább SLES4SAP 12 SP3, ebben a példában a SLES4SAP 12 SP3 BYOS rendszerkép SLES SAP-alkalmazásokhoz 12 SP3 (BYOS) használata  
+   Válassza ki a korábban létrehozott rendelkezésre állási készletet  
+1. A 2. virtuális gép létrehozása legalább SLES4SAP 12 SP3, ebben a példában a SLES4SAP 12 SP3 BYOS rendszerkép  
+   SLES for SAP Applications for 12 SP3 (BYOS) használata  
+   Válassza ki a korábban létrehozott rendelkezésre állási készletet  
+1. Mindegyik SAP-rendszerhez adjon hozzá egy adatlemezt mindkét virtuális géphez.
 1. Load Balancer létrehozása (belső)  
-   1. Hozzon létre az előtérbeli IP-címek
-      1. IP-címe 10.0.0.4 NW1
-         1. Nyissa meg a terheléselosztó, válassza ki az előtérbeli IP-címkészlet, kattintson a Hozzáadás gombra
-         1. Adja meg az új előtérbeli IP-címkészlet nevét (például **nw1-frontend**)
-         1. A hozzárendelés Static értékre, és adja meg az IP-címet (például **10.0.0.4**)
+   1. Az előtérbeli IP-címek létrehozása
+      1. NW1 IP-10.0.0.4
+         1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új előtér-IP-készlet nevét (például **NW1-frontend**)
+         1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **10.0.0.4**).
          1. Kattintson az OK gombra
-      1. IP-cím 10.0.0.5 NW2
-         * Ismételje meg a fenti lépéseket NW2
-   1. Hozzon létre a háttérkészletek
-      1. Az NFS-fürtöt NW1 részének kell lennie az összes virtuális gépek elsődleges hálózati adaptere csatlakozik
-         1. Nyissa meg a terheléselosztó, válassza ki a háttérkészletek, és kattintson a Hozzáadás gombra
-         1. Adja meg az új háttérkészlet nevét (például **nw1-háttérrendszer**)
-         1. Kattintson a Hozzáadás gombra a virtuális gépek
-         1. Válassza ki a korábban létrehozott rendelkezésre állási csoport
-         1. Válassza ki a virtuális gépeket az NFS-fürt
+      1. NW2 IP-10.0.0.5
+         * Ismételje meg a fenti lépéseket a NW2
+   1. A háttér-készletek létrehozása
+      1. A NW1 NFS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
+         1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új háttérbeli készlet nevét (például **NW1-backend**)
+         1. Kattintson a virtuális gép hozzáadása elemre.
+         1. Válassza ki a korábban létrehozott rendelkezésre állási készletet
+         1. Az NFS-fürt virtuális gépei kiválasztása
          1. Kattintson az OK gombra
-      1. Az NFS-fürtöt NW2 részének kell lennie az összes virtuális gépek elsődleges hálózati adaptere csatlakozik
-         * Ismételje meg a fenti lépéseket, és hozzon létre egy háttérkészlet NW2 a
-   1. Az állapotminták létrehozása
-      1. NW1 61000 portja
-         1. Nyissa meg a terheléselosztó, válassza ki az állapotmintákat, kattintson a Hozzáadás gombra
-         1. Adja meg az új állapotadat-mintavétel nevét (például **nw1-hp**)
-         1. Válassza ki a TCP protokoll, port 610**00**, időköz 5 és a nem kifogástalan állapot küszöbértéke 2
+      1. A NW2 NFS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
+         * A fenti lépések megismétlésével hozzon létre egy háttér-készletet a NW2 számára
+   1. Az állapot-mintavételek létrehozása
+      1. A NW1 61000-es portja
+         1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új állapot-mintavétel nevét (például **NW1-HP**)
+         1. Válassza a TCP protokollt, a 610**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
          1. Kattintson az OK gombra
-      1. NW2 61001 portja
-         * Ismételje meg a fenti lépéseket, és hozzon létre egy állapotmintát NW2
-   1. Terheléselosztás szabályok
-      1. 2049-es TCP NW1 használata
-         1. Nyissa meg a terheléselosztó, terheléselosztási szabályok kiválasztása, és kattintson a Hozzáadás gombra
-         1. Adja meg az új terheléselosztó-szabályt nevét (például **nw1-lb-2049**)
-         1. Válassza ki az előtérbeli IP-cím, a háttérkészlet és a korábban létrehozott állapotadat-mintavétel (például **nw1-frontend**)
-         1. Tartsa protokoll **TCP**, adja meg a port **2049**
-         1. Üresjárati időkorlát akár 30 percig növelése
-         1. **Ügyeljen arra, hogy Floating IP engedélyezése**
+      1. A NW2 61001-es portja
+         * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a NW2
+   1. Terheléselosztás-szabályok
+      1. 2049 TCP a NW1
+         1. Nyissa meg a terheléselosztó-t, válassza a terheléselosztási szabályok lehetőséget, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új terheléselosztó-szabály nevét (például **NW1-LB-2049**)
+         1. Válassza ki a korábban létrehozott előtérbeli IP-címet, a háttér-készletet és az állapot-mintavételt (például **NW1-frontend**)
+         1. Tartsa meg a protokoll **TCP**-t, írja be a **2049** portot
+         1. Üresjárati időkorlát 30 percre növelve
+         1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
          1. Kattintson az OK gombra
-      1. 2049-es UDP NW1
-         * Ismételje meg a fenti lépéseket a 2049-es port- és UDP NW1
-      1. 2049-es TCP NW2 használata
-         * Ismételje meg a fenti lépéseket a 2049-es port és a TCP NW2
-      1. 2049-es UDP NW2
-         * Ismételje meg a fenti lépéseket a 2049-es port- és UDP NW2
+      1. 2049 UDP a NW1
+         * Ismételje meg a fenti lépéseket a 2049-es és a NW1-es porton.
+      1. 2049 TCP a NW2
+         * Ismételje meg a fenti lépéseket a 2049-es és a TCP-es porton a NW2
+      1. 2049 UDP a NW2
+         * Ismételje meg a fenti lépéseket a 2049-es és a NW2-es porton.
 
 > [!IMPORTANT]
-> Ne engedélyezze a TCP időbélyegeket Azure Load Balancer mögé helyezett Azure virtuális gépeken. Sikertelen állapotadat-mintavételek engedélyezése TCP időbélyegek miatt. A paramétert **net.ipv4.tcp_timestamps** való **0**. További részletekért lásd: [Load Balancer állapot-mintavételei](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. TCP** paramétert **0-ra**_timestamps. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
 
-### <a name="create-pacemaker-cluster"></a>Támasztja fürt létrehozása
+### <a name="create-pacemaker-cluster"></a>Pacemaker-fürt létrehozása
 
-Kövesse a [támasztja a SUSE Linux Enterprise Server az Azure-beli beállítása](high-availability-guide-suse-pacemaker.md) az NFS-kiszolgáló alapszintű támasztja fürt létrehozásához.
+Kövesse az Azure-beli [SUSE Linux Enterprise Server a pacemaker beállítása az Azure-ban](high-availability-guide-suse-pacemaker.md) című témakör lépéseit az NFS-kiszolgáló alapszintű pacemaker-fürtjének létrehozásához.
 
-### <a name="configure-nfs-server"></a>NFS-kiszolgáló konfigurálása
+### <a name="configure-nfs-server"></a>Az NFS-kiszolgáló konfigurálása
 
 A következő elemek van fűzve előtagként vagy **[A]** – az összes csomópont alkalmazandó **[1]** – 1. csomópont csak érvényes vagy **: [2]** – 2. csomópont csak érvényes.
 
 1. **[A]**  Állomásnév-feloldás beállítása
 
    DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
-   Cserélje le az IP-cím és a következő parancsokat az állomásnevet
+   Cserélje le az IP-címet és a gazdagépet a következő parancsokra
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
@@ -206,53 +205,53 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    <b>10.0.0.5 nw2-nfs</b>
    </code></pre>
 
-1. **[A]**  Engedélyezése NFS-kiszolgáló
+1. **[A]** NFS-kiszolgáló engedélyezése
 
-   A legfelső szintű NFS exportálási bejegyzés létrehozása
+   A root NFS-exportálási bejegyzés létrehozása
 
    <pre><code>sudo sh -c 'echo /srv/nfs/ *\(rw,no_root_squash,fsid=0\)>/etc/exports'
    
    sudo mkdir /srv/nfs/
    </code></pre>
 
-1. **[A]**  Drbd összetevőinek telepítése
+1. **[A]** DRBD-összetevők telepítése
 
    <pre><code>sudo zypper install drbd drbd-kmp-default drbd-utils
    </code></pre>
 
-1. **[A]**  Hozzon létre egy partíciót a drbd eszközökhöz
+1. **[A]** partíció létrehozása a DRBD-eszközökhöz
 
-   Rendelkezésre álló adatok minden lemez felsorolása
+   Az összes elérhető adatlemez listázása
 
    <pre><code>sudo ls /dev/disk/azure/scsi1/
    </code></pre>
 
-   Példa a kimenetre
+   Példa kimenetre
    
    ```
    lun0  lun1
    ```
 
-   Minden adatlemez partíciók létrehozása
+   Partíciók létrehozása minden adatlemezhez
 
    <pre><code>sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun0'
    sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun1'
    </code></pre>
 
-1. **[A]**  Létrehozása LVM-konfigurációk
+1. **[A]** LVM-konfigurációk létrehozása
 
-   Az összes rendelkezésre álló partíciók listázása
+   Az összes rendelkezésre álló partíció listázása
 
    <pre><code>ls /dev/disk/azure/scsi1/lun*-part*
    </code></pre>
 
-   Példa a kimenetre
+   Példa kimenetre
    
    ```
    /dev/disk/azure/scsi1/lun0-part1  /dev/disk/azure/scsi1/lun1-part1
    ```
 
-   Minden partíciójának LVM kötetek létrehozása
+   LVM-kötetek létrehozása minden partícióhoz
 
    <pre><code>sudo pvcreate /dev/disk/azure/scsi1/lun0-part1  
    sudo vgcreate vg-<b>NW1</b>-NFS /dev/disk/azure/scsi1/lun0-part1
@@ -263,23 +262,23 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    sudo lvcreate -l 100%FREE -n <b>NW2</b> vg-<b>NW2</b>-NFS
    </code></pre>
 
-1. **[A]**  Drbd konfigurálása
+1. **[A]** DRBD konfigurálása
 
    <pre><code>sudo vi /etc/drbd.conf
    </code></pre>
 
-   Győződjön meg arról, hogy a drbd.conf fájl tartalmaz-e az alábbi két sort
+   Győződjön meg arról, hogy a DRBD. conf fájl a következő két sort tartalmazza
 
    <pre><code>include "drbd.d/global_common.conf";
    include "drbd.d/*.res";
    </code></pre>
 
-   A globális drbd konfigurációjának módosítása
+   A globális DRBD-konfiguráció módosítása
 
    <pre><code>sudo vi /etc/drbd.d/global_common.conf
    </code></pre>
 
-   Adja hozzá a következő bejegyzéseket a kezelő és a nettó szakaszt.
+   Adja hozzá a következő bejegyzéseket a kezelő és a net szakaszhoz.
 
    <pre><code>global {
         usage-count no;
@@ -318,12 +317,12 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    }
    </code></pre>
 
-1. **[A]**  Az NFS drbd eszközök létrehozása
+1. **[A]** NFS DRBD-eszközök létrehozása
 
    <pre><code>sudo vi /etc/drbd.d/<b>NW1</b>-nfs.res
    </code></pre>
 
-   A konfiguráció az új drbd eszköz és a kilépési beszúrása
+   Helyezze be az új DRBD-eszköz konfigurációját, és lépjen ki
 
    <pre><code>resource <b>NW1</b>-nfs {
         protocol     C;
@@ -348,7 +347,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    <pre><code>sudo vi /etc/drbd.d/<b>NW2</b>-nfs.res
    </code></pre>
 
-   A konfiguráció az új drbd eszköz és a kilépési beszúrása
+   Helyezze be az új DRBD-eszköz konfigurációját, és lépjen ki
 
    <pre><code>resource <b>NW2</b>-nfs {
         protocol     C;
@@ -370,7 +369,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    }
    </code></pre>
 
-   A drbd eszköz létrehozásához, majd indítsa el
+   Hozza létre a DRBD eszközt, és indítsa el
 
    <pre><code>sudo drbdadm create-md <b>NW1</b>-nfs
    sudo drbdadm create-md <b>NW2</b>-nfs
@@ -378,25 +377,25 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    sudo drbdadm up <b>NW2</b>-nfs
    </code></pre>
 
-1. **[1]**  Kihagyása a kezdeti szinkronizálás
+1. **[1]** a kezdeti szinkronizálás kihagyása
 
    <pre><code>sudo drbdadm new-current-uuid --clear-bitmap <b>NW1</b>-nfs
    sudo drbdadm new-current-uuid --clear-bitmap <b>NW2</b>-nfs
    </code></pre>
 
-1. **[1]**  Állítsa be az elsődleges csomópont
+1. **[1]** az elsődleges csomópont beállítása
 
    <pre><code>sudo drbdadm primary --force <b>NW1</b>-nfs
    sudo drbdadm primary --force <b>NW2</b>-nfs
    </code></pre>
 
-1. **[1]**  Várjon, amíg a rendszer szinkronizálja az új drbd eszközök
+1. **[1]** várjon, amíg az új DRBD-eszközök nincsenek szinkronizálva
 
    <pre><code>sudo drbdsetup wait-sync-resource NW1-nfs
    sudo drbdsetup wait-sync-resource NW2-nfs
    </code></pre>
 
-1. **[1]**  Fájlrendszerek létrehozása a drbd eszközökön
+1. **[1]** fájlrendszerek létrehozása a DRBD-eszközökön
 
    <pre><code>sudo mkfs.xfs /dev/drbd0
    sudo mkdir /srv/nfs/NW1
@@ -425,17 +424,17 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    sudo umount /srv/nfs/NW2
    </code></pre>
 
-1. **[A]**  Drbd maszkolt észlelés beállítása
+1. **[A]** beállítás DRBD – az agy észlelése
 
-   Szinkronizálhatja az egyik gazdagépről a másikra adatait drbd használatakor egy úgynevezett maszkolt fordulhat elő. Egy maszkolt egy forgatókönyvet, ahol mindkét fürtcsomópont támogatni az drbd eszköz az elsődleges és a történt szinkronizálva. A ritka esetben lehet, de továbbra is szeretné kezelni, és hárítsa el a lehető leghamarabb maszkolt. Ezért fontos lehet szeretne értesítést kapni, amikor egy maszkolt történt.
+   Ha a DRBD használatával szinkronizálja az adatokat az egyik gazdagépről a másikra, az úgynevezett felosztott agy is megjelenhet. A felosztott agy olyan forgatókönyv, amelyben mindkét fürtcsomópont előléptette a DRBD-eszközt elsődlegesnek, és nem volt szinkronban. Lehet, hogy ritka helyzetben van, de továbbra is a lehető leggyorsabban szeretné kezelni és megoldani a felosztott agyat. Ezért fontos, hogy értesítést kapjon, ha egy megosztott agy történt.
 
-   Olvasási [a hivatalos drbd dokumentáció](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification) való felosztása agy értesítés beállítása.
+   A Split Brain-értesítések beállításával kapcsolatban olvassa el [a hivatalos DRBD dokumentációját](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification) .
 
-   Akkor is split agy forgatókönyv automatikus helyreállításán. További információkért olvassa el [automatikus split agy helyreállítási házirendek](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)
+   Az is lehetséges, hogy automatikusan helyreállítható egy megosztott agyi forgatókönyvből. További információért olvassa el az [automatikus felosztott agyi helyreállítási szabályzatok](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration) című témakört.
    
-### <a name="configure-cluster-framework"></a>Konfigurálja a fürt keretrendszer
+### <a name="configure-cluster-framework"></a>A fürt keretrendszerének konfigurálása
 
-1. **[1]**  NW1 SAP-rendszerhez, az NFS drbd eszközök hozzáadása a fürt konfigurálása
+1. **[1]** adja hozzá az NFS-DRBD eszközöket az SAP rendszer NW1 a fürt konfigurációjához
 
    <pre><code>sudo crm configure rsc_defaults resource-stickiness="200"
 
@@ -486,7 +485,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
      g-<b>NW1</b>_nfs ms-drbd_<b>NW1</b>_nfs:Master
    </code></pre>
 
-1. **[1]**  NW2 SAP-rendszerhez, az NFS drbd eszközök hozzáadása a fürt konfigurálása
+1. **[1]** adja hozzá az NFS-DRBD eszközöket az SAP rendszer NW2 a fürt konfigurációjához
 
    <pre><code># Enable maintenance mode
    sudo crm configure property maintenance-mode=true
@@ -531,16 +530,16 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
      g-<b>NW2</b>_nfs ms-drbd_<b>NW2</b>_nfs:Master
    </code></pre>
 
-1. **[1]**  Tiltsa le a karbantartási mód
+1. **[1]** a karbantartási mód letiltása
    
    <pre><code>sudo crm configure property maintenance-mode=false
    </code></pre>
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az SAP ASCS és adatbázisának telepítése](high-availability-guide-suse.md)
-* [Az Azure virtuális gépek tervezése és megvalósítása SAP][planning-guide]
-* [Az SAP az Azure virtuális gépek üzembe helyezése][deployment-guide]
-* [Az SAP az Azure Virtual Machines DBMS üzembe helyezése][dbms-guide]
-* Magas rendelkezésre állást és az Azure-ban (nagyméretű példányok) SAP Hana vész-helyreállítási terv létrehozásához, lásd: [SAP HANA (nagyméretű példányok) magas rendelkezésre állás és vészhelyreállítás recovery az Azure-ban](hana-overview-high-availability-disaster-recovery.md).
-* Magas rendelkezésre állást és az Azure virtuális gépeken SAP Hana vész-helyreállítási terv létrehozásához, lásd: [magas rendelkezésre állás az SAP HANA Azure-beli virtuális gépeken (VM)][sap-hana-ha]
+* [Az SAP-ASCS és-adatbázis telepítése](high-availability-guide-suse.md)
+* [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
+* [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]
+* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz][dbms-guide]
+* Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és hogyan tervezheti meg az Azure-beli SAP HANA vész-helyreállítását (nagyméretű példányok), tekintse meg [a SAP HANA (nagyméretű példányok) magas rendelkezésre állását és a](hana-overview-high-availability-disaster-recovery.md)
+* A magas rendelkezésre állás és a SAP HANA Azure-beli virtuális gépeken történő vész-helyreállítási tervének megismeréséhez lásd: [Az Azure-beli SAP HANA magas rendelkezésre állása Virtual Machines (VM)][sap-hana-ha]

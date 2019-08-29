@@ -1,5 +1,5 @@
 ---
-title: Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe Oracle |} A Microsoft Docs
+title: Oracle Azure Virtual Machines adatbázis-kezelői üzembe helyezés SAP-munkaterheléshez | Microsoft Docs
 description: Oracle Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -9,21 +9,20 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5182b621779cf31f3c7da99674ab24fe6efe702d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b912743c758f33173b568944341fab4e815300ed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835260"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099990"
 ---
-# <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure virtuális gépek DBMS üzembe helyezési SAP számítási feladatok
+# <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -308,221 +307,221 @@ ms.locfileid: "60835260"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-Ez a dokumentum figyelembe kell venni az Azure IaaS SAP számítási telepít az Oracle Database számos különböző területekre terjed ki. Ez a dokumentum elolvasásához ajánlott elolvasni [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md). Azt javasoljuk, hogy elolvasta-e lévő többi útmutató a [SAP számítási feladatok Azure-dokumentáció a](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+Ez a dokumentum több különböző területet ölel fel, amelyeket figyelembe kell venni, amikor az Azure IaaS-ben üzembe helyezi az SAP-munkaterhelések Oracle Databaseét. A dokumentum elolvasása előtt javasoljuk, hogy olvassa el [Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésével](dbms_guide_general.md)kapcsolatos szempontokat az SAP-munkaterheléshez. Azt is javasoljuk, hogy olvassa el az Azure- [dokumentáció SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)-munkaterhelésével kapcsolatos egyéb útmutatókat is. 
 
-Oracle-verziók és az SAP futtatása az Azure-beli SAP-Jegyzetnek az Oracle által támogatott megfelelő operációsrendszer-verziók információt annak [2039619].
+Az SAP az Azure-on való futtatásához támogatott Oracle-verziókról és a megfelelő operációsrendszer-verziókról a [2039619]-es SAP-megjegyzésekben talál információt.
 
-Általános információk az SAP Business Suite futó Oracle található [SAP, Oracle](https://www.sap.com/community/topic/oracle.html).
-Oracle-szoftverek futtatása Microsoft Azure-on Oracle támogatja. A Windows Hyper-V és az Azure általános támogatási kapcsolatos további információkért ellenőrizze a [Oracle és a Microsoft Azure – gyakori kérdések](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
+Az SAP Business Suite Oracle-on való futtatásával kapcsolatos általános információk az [SAP on Oracle](https://www.sap.com/community/topic/oracle.html)webhelyen találhatók.
+Az Oracle támogatja az Oracle-szoftverek futtatását Microsoft Azureon. A Windows Hyper-V és az Azure általános támogatásával kapcsolatos további információkért olvassa el az [Oracle és a Microsoft Azure gyakori kérdések](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)című témakört. 
 
-## <a name="sap-notes-relevant-for-oracle-sap-and-azure"></a>Releváns, az Oracle, SAP és az Azure SAP-megjegyzések 
+## <a name="sap-notes-relevant-for-oracle-sap-and-azure"></a>Az Oracle, az SAP és az Azure fontos SAP-megjegyzései 
 
-Az alábbi SAP-megjegyzések kapcsolódó Azure-beli SAP.
+A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak.
 
 | Megjegyzés száma | Beosztás |
 | --- | --- |
-| [1928533] |SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure-beli Virtuálisgép-típusok |
-| [2015553] |A Microsoft Azure-beli SAP: Támogatás előfeltételei |
-| [1999351] |Továbbfejlesztett Azure monitoring for SAP hibaelhárítási |
-| [2178632] |Főbb figyelési metrikákat az SAP a Microsoft Azure |
-| [2191498] |SAP használata Linux az Azure-ral: Speciális figyelés |
-| [2039619] |SAP-alkalmazások a Microsoft Azure-ban, az Oracle-adatbázishoz: Támogatott termékek és termékverziók |
-| [2243692] |A Microsoft Azure (IaaS) virtuális gép Linux: Az SAP-licenccel kapcsolatos problémák |
-| [2069760] |Oracle Linux 7.x SAP telepítése és frissítése |
-| [1597355] |Linux-lapozóterület javaslat |
-| [2171857] |Oracle Database 12c - fájlrendszer Linux-támogatás |
-| [1114181] |Oracle Database 11g - fájlrendszer Linux-támogatás |
+| [1928533] |SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure-beli virtuális gépek típusai |
+| [2015553] |SAP on Microsoft Azure: Támogatási előfeltételek |
+| [1999351] |Az SAP-hez készült bővített Azure monitoring hibaelhárítása |
+| [2178632] |Az SAP-hez Microsoft Azure legfontosabb monitorozási metrikák |
+| [2191498] |SAP Linuxon az Azure-ban: Továbbfejlesztett figyelés |
+| [2039619] |SAP-alkalmazások Microsoft Azure az Oracle Database használatával: Támogatott termékek és verziók |
+| [2243692] |Linux on Microsoft Azure (IaaS) virtuális gép: SAP-licencekkel kapcsolatos problémák |
+| [2069760] |Oracle Linux 7. x SAP telepítése és frissítése |
+| [1597355] |A Linux rendszerhez készült swap-space-javaslat |
+| [2171857] |Oracle Database 12c – Linux rendszeren támogatott fájlrendszer-támogatás |
+| [1114181] |Oracle Database 11g – Linux rendszeren támogatott fájlrendszer-támogatás |
 
-A pontos konfigurációkat és funkciókat által Oracle és az SAP az Azure-on támogatott SAP-Jegyzetnek vannak dokumentálva [#2039619](https://launchpad.support.sap.com/#/notes/2039619).
+Az Oracle és az SAP által az Azure-ban támogatott pontos konfigurációkat és funkciókat az SAP Megjegyzés [#2039619](https://launchpad.support.sap.com/#/notes/2039619)dokumentálja.
 
-Windows- és Oracle Linux rendszer Oracle- és Azure-beli SAP által támogatott operációs rendszerek. A SLES és a RHEL Linux széles körben használt disztribúciók üzembe helyezéséhez az Azure-ban Oracle-összetevők nem támogatottak. Oracle összetevők közé tartoznak az Oracle Database-ügyfelet, amely csatlakozni az Oracle-adatbázis-kezelő elleni SAP-alkalmazások használják. 
+A Windows és a Oracle Linux az Azure-ban az Oracle és az SAP által támogatott operációs rendszerek. A széles körben használt SLES és RHEL Linux-disztribúciók nem használhatók Oracle-összetevők Azure-beli üzembe helyezéséhez. Az Oracle-összetevők közé tartozik az Oracle Database-ügyfél, amelyet az SAP-alkalmazások használnak az Oracle adatbázis-kezelői szolgáltatáshoz való kapcsolódáshoz. 
 
-Kivételek, SAP-Jegyzetnek megfelelően [#2039619](https://launchpad.support.sap.com/#/notes/2039619), SAP-összetevőket, amelyek nem használják az Oracle Database-ügyfél. Az ilyen SAP összetevői SAP önálló sorba, üzenetkiszolgáló, sorba replikációs szolgáltatásokat, WebDispatcher és SAP-átjáróhoz.  
+A kivételek az SAP-Megjegyzés [#2039619](https://launchpad.support.sap.com/#/notes/2039619)szerint olyan SAP-összetevők, amelyek nem használják a Oracle Database ügyfelet. Ilyen SAP-összetevők az SAP önálló sorba helyezni, az üzenetküldési kiszolgáló, a sorba helyezni replikációs szolgáltatások, a webfeladó és az SAP-átjáró.  
 
-Akkor is, ha az Oracle-adatbázis-kezelő és az SAP alkalmazáspéldányok Oracle Linux rendszert használ, az SAP Central Services futtathat a SLES- vagy RHEL, és azt egy támasztja-alapú fürt védelme. Magas rendelkezésre állású keretet másként támasztja Oracle Linux rendszeren nem támogatott.
+Akkor is futtathatja az SAP központi szolgáltatásait SLES vagy RHEL, ha az Oracle adatbázis-kezelő és az SAP-alkalmazások példányait is futtatja a Oracle Linuxon, és egy pacemaker-alapú fürtön is megóvja azt. A pacemaker magas rendelkezésre állási keretrendszerként nem támogatott Oracle Linuxon.
 
-## <a name="specifics-for-oracle-database-on-windows"></a>Oracle Database, a Windows-adatait
+## <a name="specifics-for-oracle-database-on-windows"></a>A Windows Oracle Database vonatkozó sajátosságai
 
-### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-windows"></a>A Windows Azure virtuális gépeken futó SAP-telepítések Oracle-beállítási útmutatója
+### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-windows"></a>Oracle-konfigurációs irányelvek az SAP-telepítésekhez az Azure-beli virtuális gépeken Windows rendszeren
 
-A SAP telepítési manuális megfelelően Oracle kapcsolatos fájlok nem telepíteni vagy a virtuális gép operációsrendszer-lemez (c: meghajtó) illesztőprogram található. Különböző méretű virtuális gépeket is támogatja a csatlakoztatott lemezek különböző számú. Kisebb virtuálisgép-típusok is támogatja a csatlakoztatott lemezek kevesebb. 
+Az SAP telepítési kézikönyvének megfelelően az Oracle-hez kapcsolódó fájlokat nem kell telepíteni vagy a rendszermeghajtón elhelyezni a virtuális gép operációsrendszer-lemezén (c meghajtó:). A különböző méretű virtuális gépek különböző számú csatlakoztatott lemezt tudnak támogatni. A kisebb virtuálisgép-típusok kisebb számú csatlakoztatott lemezt is támogatnak. 
 
-Ha kisebb méretű virtuális gépet, ajánlott telepítése/megkeresése Oracle kezdőlap, fázis, "saptrace", "saparch", "sapbackup", "sapcheck" vagy "sapreorg" azokat az operációsrendszer-lemez. Ezek a részek Oracle adatbázis-kezelő összetevők nem intenzív i/o-és i/o-teljesítményt. Ez azt jelenti, hogy az operációsrendszer-lemez képes kezelni az i/o-követelményeket. Az operációsrendszer-lemez alapértelmezett mérete 127 GB. 
+Ha kisebb virtuális gépekkel rendelkezik, javasoljuk, hogy az operációsrendszer-lemezre telepítse vagy keresse meg az Oracle Home, Stage, "saptrace", "saparch", "sapbackup", "sapcheck" vagy "sapreorg" kifejezést. Az Oracle adatbázis-kezelői összetevőinek ezen részei nem intenzívek az I/O-és az I/O-átviteli sebességnél. Ez azt jelenti, hogy az operációsrendszer-lemez képes kezelni az I/O-követelményeket. Az operációsrendszer-lemez alapértelmezett mérete 127 GB. 
 
-Ha nincs elegendő szabad terület, a lemez lehet [átméretezett](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk) 2048 GB-ra. Oracle Database és az ismét jelentkezzen fájlokat kell külön lemezeken tárolja. Nincs az Oracle ideiglenes táblaterületre kivételt. Ideiglenesfájlok hozható létre a D: / (nem állandó meghajtó). A nem állandó D:\ meghajtóra a jobb i/o-késés és az átviteli sebesség (kivéve A-sorozatú virtuális gépek) is kínál. 
+Ha nincs elegendő szabad terület, a lemez átméretezhető 2048 GB [](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk) -ra. A naplófájlokat Oracle Database és újra külön adatlemezeken kell tárolni. Kivételt jelent az Oracle ideiglenes tablespace-je. Ideiglenesfájlok hozható létre a D:/-n (nem állandó meghajtó). A nem állandó D:\ a meghajtó jobb I/O-késést és átviteli sebességet is biztosít (az a sorozatú virtuális gépek kivételével). 
 
-Annak megállapításához, a hely a ideiglenesfájlok a megfelelő mennyiségű, ellenőrizheti a meglévő rendszerek ideiglenesfájlok méretét.
+A ideiglenesfájlok megfelelő mennyiségének meghatározásához megtekintheti a ideiglenesfájlok méretét a meglévő rendszereken.
 
 ### <a name="storage-configuration"></a>Tároló konfigurálása
-Csak egy példányban – Oracle, az NTFS Fájlrendszerrel formázott lemezek használata támogatott. Adatbázis összes fájlja az NTFS fájlrendszer, a Managed Disks (ajánlott) vagy a virtuális merevlemezeken kell tárolni. Ezeket a lemezeket az Azure virtuális géphez csatlakoztatva vannak, és alapuló [oldala az Azure blob storage-bA](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) vagy [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+Csak az NTFS fájlrendszerű lemezeket használó egypéldányos Oracle támogatott. Az összes adatbázisfájlt a Managed Disks NTFS fájlrendszerén (ajánlott) vagy virtuális merevlemezeken kell tárolni. Ezek a lemezek az Azure-beli virtuális géphez vannak csatlakoztatva, és az [Azure-oldal blob Storage](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) vagy az [Azure Managed Diskson](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)alapulnak. 
 
-Kifejezetten javasoljuk [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Emellett javasoljuk, hogy használatával [prémium szintű SSD-k](../../windows/disks-types.md) az Oracle Database üzemelő példányok.
+Erősen ajánlott az [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)használata. Javasoljuk továbbá a [prémium SSD](../../windows/disks-types.md) -k használatát a Oracle Database üzemelő példányokhoz.
 
-Hálózati meghajtók vagy az Azure-szolgáltatásokhoz hasonlóan távoli megosztások Oracle Database-fájlok nem támogatottak. További információkért lásd:
+A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információkért lásd:
 
 - [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
 - [Persisting connections to Microsoft Azure Files (A Microsoft Azure Files-kapcsolatok megőrzése)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
 
-Ha oldala az Azure blob storage-bA alapuló lemezek vagy a Managed Disks parancsfájlblokkokban lévő utasítások használ [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) telepítések az Oracle Database, valamint a alkalmazni.
+Ha az Azure-beli blob Storage-on vagy a Managed Disks-on alapuló lemezeket használ, akkor az [azure Virtual Machines adatbázis-kezelő rendszerbe](dbms_guide_general.md) állítása az SAP-munkaterhelésre című szakaszban szereplő utasítások a Oracle Database is érvényesek az üzemelő példányokra.
 
-Az Azure-lemezek IOPS átviteli kvótái létezik. A koncepció ismertetése [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md). A pontos kvóták használt VM-típustól függnek. Saját kvótával rendelkező virtuális gépek típusainak listáját található [méretek a Windows virtuális gépek az Azure-ban][virtual-machines-sizes-windows].
+Az Azure-lemezek IOPS átviteli sebességére vonatkozó kvóták léteznek. Ezt a koncepciót az [Azure Virtual Machines adatbázis-kezelői szolgáltatás SAP](dbms_guide_general.md)-munkaterheléshez való üzembe helyezésének szempontjai ismertetik. A pontos kvóták a használt virtuális gép típusától függenek. A kvótákkal rendelkező virtuálisgép-típusok listáját az [Azure-beli Windows rendszerű virtuális gépek méreteiben][virtual-machines-sizes-windows]találja.
 
-A támogatott Azure-beli Virtuálisgép-típusok azonosításához tekintse meg az SAP-Jegyzetnek [1928533].
+A támogatott Azure-beli virtuálisgép-típusok azonosításához lásd: SAP-Megjegyzés [1928533].
 
-A minimális konfiguráció a következőképpen történik: 
+A minimális konfiguráció a következő: 
 
-| Összetevő | Lemez | Gyorsítótárazás | Tárolókészlet |
+| Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
 | --- | ---| --- | --- |
-| \oracle\<SID > \origlogaA & mirrlogB | Prémium | None | Nem szükséges |
-| \oracle\<SID > \origlogaB & mirrlogA | Prémium | None | Nem szükséges |
-| \oracle\<SID>\sapdata1...n | Prémium | Csak olvasás | Használható |
-| \oracle\<SID>\oraarch | Standard | None | Nem szükséges |
-| Oracle-kezdőlap, saptrace... | Operációsrendszer-lemez | | Nem szükséges |
+| \oracle\<SID > \origlogaA & mirrlogB | Prémium | Nincsenek | Nem szükséges |
+| \oracle\<SID > \origlogaB & mirrlogA | Prémium | Nincsenek | Nem szükséges |
+| \oracle\<SID > \sapdata1... n | Prémium | Csak olvasás | Használható |
+| \oracle\<SID > \oraarch | Standard | Nincsenek | Nem szükséges |
+| Oracle Home, saptrace,... | Operációsrendszer-lemez | | Nem szükséges |
 
 
-Lemezek kiválasztása online visszaállítási naplók tárolásához IOPs követelmények szerint kell meghatározni. Lehetséges tárolja az összes sapdata1... n (táblahelyeket) több egyetlen csatlakoztatott lemez, amíg a mérete, IOPS és átviteli sebesség megfelelnek-e. 
+Az online visszaállítási naplók futtatásához szükséges lemezeket IOPs követelményekkel kell vezérelni. Az összes sapdata1 tárolhatók... n (tablespaces) egyetlen csatlakoztatott lemezen, ha a méret, a IOPS és az átviteli sebesség megfelel a követelményeknek. 
 
-A teljesítmény-konfiguráció a következőképpen történik:
+A teljesítmény konfigurációja a következő:
 
-| Összetevő | Lemez | Gyorsítótárazás | Tárolókészlet |
+| Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA | Prémium | None | Használható  |
-| \oracle\<SID>\origlogaB | Prémium | None | Használható |
-| \oracle\<SID>\mirrlogAB | Prémium | None | Használható |
-| \oracle\<SID>\mirrlogBA | Prémium | None | Használható |
-| \oracle\<SID>\sapdata1...n | Prémium | Csak olvasás | Ajánlott  |
-| \oracle\SID\sapdata(n+1)* | Prémium | None | Használható |
-| \oracle\<SID>\oraarch* | Prémium | None | Nem szükséges |
-| Oracle-kezdőlap, saptrace... | Operációsrendszer-lemez | Nem szükséges |
+| \oracle\<SID > \origlogaA | Prémium | Nincsenek | Használható  |
+| \oracle\<SID > \origlogaB | Prémium | Nincsenek | Használható |
+| \oracle\<SID > \mirrlogAB | Prémium | Nincsenek | Használható |
+| \oracle\<SID > \mirrlogBA | Prémium | Nincsenek | Használható |
+| \oracle\<SID > \sapdata1... n | Prémium | Csak olvasás | Ajánlott  |
+| \oracle\SID\sapdata(n+1)* | Prémium | Nincsenek | Használható |
+| \oracle\<SID > \oraarch * | Prémium | Nincsenek | Nem szükséges |
+| Oracle Home, saptrace,... | Operációsrendszer-lemez | Nem szükséges |
 
-\* (n + 1): rendszer, a TEMP és a visszavonás táblahelyeket üzemeltetése. Rendszer- és visszavonási táblahelyeket i/o minta más alkalmazás adatait tartalmazó táblahelyeket eltérnek. Nincs gyorsítótárazás nem a rendszer- és visszavonási táblahelyeket teljesítményét leginkább megfelelő opció kiválasztásához.
+\* (n + 1): üzemeltetési rendszerek, TEMP és visszavonás tablespaces. A rendszer és a visszavonási eszközök I/O-mintája eltér más, az alkalmazásadatok futtatására szolgáló tablespace-modelltől. A rendszer teljesítményének és az tablespace-EK visszavonásának legjobb lehetősége a gyorsítótárazás.
 
-\* oraarch: a tárolókészletben nem feltétlenül szükséges a teljesítmény szempontjából. A hely bővítése használható.
+\* oraarch: a tárolási készlet nem szükséges a teljesítmény szempontjából. Több tárhelyet is felhasználhat.
 
-Ha további IOPS szükség, hozhat létre egy nagy méretű logikai eszköz több csatlakoztatott lemez Windows Tárolókészletek (csak Windows Server 2012 és újabb verziói) használatát javasoljuk. Ez a megközelítés leegyszerűsíti a terhelés kezelése a lemezterület felügyeletét, és elkerülheti a munka, amelyet manuálisan elosztása több csatlakoztatott lemezek között fájlokat.
+Ha további IOPS van szükség, javasoljuk, hogy a Windows Storage-készleteket (csak a Windows Server 2012-es és újabb verzióiban érhető el) hozzon létre egy nagyméretű logikai eszközt több csatlakoztatott lemezen. Ez a megközelítés leegyszerűsíti az adminisztrációs terhelést a lemezterület kezeléséhez, és segít elkerülni a fájlok manuális terjesztését több csatlakoztatott lemez között.
 
 
 #### <a name="write-accelerator"></a>Írásgyorsító
-Az Azure M sorozatú virtuális gépek a késés, az online visszaállítási naplók írása csökkenthető tényezők befolyásolják az Azure Premium Storage képest. Engedélyezze az Azure Írásgyorsító lemezek (VHD-k) alapján az Azure Premium Storage által használt online visszaállítási fájlok. További információkért lásd: [Írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
+Az Azure M sorozatú virtuális gépek esetében az Azure-Premium Storagehoz képest az online ismétlési naplókba való írás késése is csökkenhet. Engedélyezze az Azure-írásgyorsító a lemezekhez (VHD-k) az Azure-Premium Storage alapján, amelyek online visszaállítási naplófájlokhoz használatosak. További információ: [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
 
 
 ### <a name="backuprestore"></a>Biztonsági mentés/visszaállítás
-Biztonsági mentési és visszaállítási funkciójának, az SAP BR * Oracle eszközöket támogat ugyanúgy, mint a standard szintű Windows Server operációs rendszereken azok. Oracle Recovery Manager (RMAN) használata is támogatott a lemezes biztonsági mentések, és visszaállítja a lemez.
+A biztonsági mentési/visszaállítási funkciók esetében az SAP BR * Tools for Oracle ugyanúgy támogatott, mint a szabványos Windows Server operációs rendszereken. Az Oracle Recovery Manager (Oláh Anna) szintén támogatott a lemezre történő biztonsági mentéshez és a lemezről történő visszaállításhoz.
 
-Használhatja az Azure Backup egy virtuális gép alkalmazáskonzisztens biztonsági mentés futtatása. A cikk [az Azure-beli virtuális gép biztonsági infrastruktúrájának megtervezése](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) azt ismerteti, hogyan Azure Backup használja, a Windows VSS alkalmazáskonzisztens biztonsági mentések végrehajtásához. Az SAP által támogatott Azure-on Oracle adatbázis-kezelő kiadásokban a VSS-funkciót, a biztonsági mentések használhatnak. További információkért tekintse meg az Oracle-dokumentáció [alapvető fogalmait, az adatbázis biztonsági mentés és helyreállítás a VSS segítségével](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701).
+Az alkalmazással konzisztens virtuális gépek biztonsági mentésének futtatásához Azure Backup is használhatja. A [virtuális gépek biztonsági mentési infrastruktúrájának megtervezése az Azure-ban](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) című cikk azt ismerteti, hogyan használja a Azure Backup a Windows VSS funkciót az alkalmazás-konzisztens biztonsági mentések végrehajtásához. Az SAP által az Azure által támogatott Oracle-adatbázis-kiadások kihasználhatják a VSS funkcióit a biztonsági mentésekhez. További információ: az Oracle dokumentációja az [adatbázisok biztonsági mentésével és helyreállításával kapcsolatos alapvető fogalmakról a VSS-vel](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701).
 
 
 ### <a name="high-availability"></a>Magas rendelkezésre állás
-Oracle Data Guard támogatott magas rendelkezésre állású és vész-helyreállítási céllal. A Data Guard, a gyors induláshoz feladatátvétel (FSFA) használatára kell az Automatikus feladatátvétel érdekében. A megfigyelő (FSFA) elindítja a feladatátvételt. Ha FSFA nem használja, csak kézi feladatátvételi konfiguráció használhatja.
+A magas rendelkezésre állás és a vész-helyreállítási célú Oracle-adatőr támogatott. Ha automatikus feladatátvételt szeretne elérni az adatvédelemben, a gyors indítási feladatátvételt (FSFA) kell használnia. A megfigyelő (FSFA) elindítja a feladatátvételt. Ha nem használja a FSFA-t, akkor csak manuális feladatátvételi konfigurációt használhat.
 
-Az Azure-ban Oracle-adatbázisok a vész-helyreállítási kapcsolatos további információkért lásd: [az Azure-környezet egy Oracle Database 12c adatbázis vészhelyreállítása](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
+Az Azure-beli Oracle-adatbázisok vész-helyreállításával kapcsolatos további információkért lásd: vész- [helyreállítás egy Oracle Database 12c-adatbázishoz egy Azure-környezetben](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
-### <a name="accelerated-networking"></a>Gyorsított hálózatkezelés
-A Windows az Oracle-környezetek, javasoljuk, hogy gyorsított hálózatkezelés leírtak szerint [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Is vegye figyelembe a javaslatokat, a módosítások fényében, amelyek [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md). 
+### <a name="accelerated-networking"></a>Felgyorsított hálózat
+Az Oracle-környezetek Windows rendszeren való üzembe helyezéséhez erősen ajánlott a gyorsított hálózatkezelés az [Azure gyorsított hálózatkezelésben](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)leírtak szerint. Tekintse át az [Azure Virtual Machines adatbázis-kezelői szolgáltatás SAP](dbms_guide_general.md)-munkaterheléshez való üzembe helyezésének szempontjaival kapcsolatos javaslatokat is. 
 ### <a name="other"></a>Egyéb
-[Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) más virtuális gépek, az Oracle Database, többek között az Azure rendelkezésre állási csoportok és az SAP-figyelés központi telepítései kapcsolatos lényeges fogalmakat ismerteti.
+[Az azure Virtual Machines adatbázis-kezelői szolgáltatás SAP](dbms_guide_general.md) -alapú üzembe helyezésével kapcsolatos megfontolások a virtuális gépek Oracle Database-vel való üzembe helyezésével kapcsolatos egyéb fontos fogalmakat, például az Azure rendelkezésre állási készleteit és az SAP
 
-## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Oracle Database, Oracle Linux-adatait
-Oracle-szoftverek futtatásához a Microsoft Azure, az Oracle Linux, a vendég operációs rendszer Oracle támogatja. További információ a Windows Hyper-V és az Azure általános támogatása: a [Azure és az Oracle – gyakori kérdések](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
+## <a name="specifics-for-oracle-database-on-oracle-linux"></a>A Oracle Linux Oracle Database vonatkozó sajátosságai
+Az Oracle olyan Oracle-szoftvereket támogat, amelyeken a Microsoft Azure Oracle Linux vendég operációs rendszerként fut. A Windows Hyper-V és az Azure általános támogatásával kapcsolatos további információkért tekintse meg az [Azure és az Oracle gyakori kérdések](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)című témakört. 
 
-Az adott forgatókönyvtől az Oracle-adatbázisok felhasználásával SAP-alkalmazások használata is támogatott. A dokumentum tovább részében részleteket ismertetik.
+Az Oracle-adatbázisokat hasznosító SAP-alkalmazások adott forgatókönyve is támogatott. A részleteket a dokumentum következő részében tárgyaljuk.
 
-### <a name="oracle-version-support"></a>Oracle-verzió támogatása
-Milyen Oracle kapcsolatos verziók és megfelelő operációsrendszer-verziók támogatottak az SAP futtatása az Azure virtuális gépeken futó Oracle információkért lásd: SAP-Jegyzetnek [2039619].
+### <a name="oracle-version-support"></a>Oracle-verziók támogatása
+További információ arról, hogy az Oracle-verziók és a hozzá tartozó operációsrendszer-verziók milyen támogatottak a SAP Azure-beli Virtual Machines való futtatásához: SAP-Megjegyzés [2039619].
 
-SAP Business Suite futó Oracle kapcsolatos általános adatok megtalálhatók a [SAP, Oracle-közösségi oldalon](https://www.sap.com/community/topic/oracle.html).
+Az SAP Business Suite Oracle-on való futtatásával kapcsolatos általános információk az [SAP on Oracle Community oldalon](https://www.sap.com/community/topic/oracle.html)találhatók.
 
-### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux"></a>Oracle-beállítási útmutatója a linuxon futó Azure virtuális gépeken futó SAP-telepítések
+### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux"></a>Oracle-konfigurációs irányelvek az SAP-telepítésekhez az Azure-beli virtuális gépeken Linux rendszeren
 
-SAP telepítési kézikönyvek, megfelelően Oracle kapcsolatos fájlok nem lehet telepítve, vagy, a rendszer-illesztőprogramok a virtuális gép rendszerindító lemez található. Különböző méretű virtuális gépek támogatják a csatlakoztatott lemezek különböző számú. Kisebb virtuálisgép-típusok is támogatja a csatlakoztatott lemezek kevesebb. 
+Az SAP-telepítési kézikönyvek szerint az Oracle-hez kapcsolódó fájlokat nem kell telepíteni, vagy a virtuális gép rendszermeghajtóján kell elhelyezni. A különböző méretű virtuális gépek különböző számú csatlakoztatott lemezt támogatnak. A kisebb virtuálisgép-típusok kisebb számú csatlakoztatott lemezt is támogatnak. 
 
-Ebben az esetben javasoljuk, hogy telepítése/Oracle kezdőlap, fázis, saptrace, saparch, sapbackup, sapcheck vagy megkeresése a rendszerindító lemez sapreorg. Ezek a részek Oracle adatbázis-kezelő összetevők nem intenzív i/o-és i/o-teljesítményt. Ez azt jelenti, hogy az operációsrendszer-lemez képes kezelni az i/o-követelményeket. Az alapértelmezett operációsrendszer-lemez mérete 30 GB. A rendszerindító lemez kiterjesztheti az Azure portal, PowerShell vagy parancssori felület használatával. A rendszerindító lemez ki lett bővítve, miután Oracle bináris fájlok egy további partíciót is hozzáadhat.
+Ebben az esetben javasoljuk, hogy az Oracle Home, a Stage, a saptrace, a saparch, a sapbackup, a sapcheck vagy a sapreorg telepítését/elhelyezését rendszerindító lemezre telepítse. Az Oracle adatbázis-kezelői összetevőinek ezen részei nem intenzívek az I/O-és az I/O-átviteli sebességnél. Ez azt jelenti, hogy az operációsrendszer-lemez képes kezelni az I/O-követelményeket. Az operációsrendszer-lemez alapértelmezett mérete 30 GB. A rendszerindító lemezt kibonthatja a Azure Portal, a PowerShell vagy a parancssori felület használatával. A rendszerindító lemez kibontása után további partíciót is hozzáadhat az Oracle bináris fájljaihoz.
 
 
 ### <a name="storage-configuration"></a>Tároló konfigurálása
 
-A fájlrendszerek ext4, xfs vagy Oracle ASM támogatja az Azure-ban Oracle-adatbázis fájlok. Ezekhez a fájlrendszerekhez VHD-k vagy a Managed Disks-alapú adatbázis összes fájlja kell tárolni. Ezeket a lemezeket az Azure virtuális géphez csatlakoztatva vannak, és alapuló [oldala az Azure blob storage-bA](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) vagy [Azure Managed Disks](../../windows/managed-disks-overview.md).
+Az ext4, a xfs vagy az Oracle ASM fájlrendszerei az Azure-ban Oracle Database-fájlok esetén támogatottak. Az összes adatbázisfájlt a VHD-k vagy Managed Disks-k alapján kell tárolni ezeken a fájlrendszereken. Ezek a lemezek az Azure-beli virtuális géphez vannak csatlakoztatva, és az [Azure-oldal blob Storage](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) vagy az [Azure Managed Diskson](../../windows/managed-disks-overview.md)alapulnak.
 
-Az Oracle Linux UEK kernelekkel, UEK 4-es verzió legalább támogatásához szükséges [Azure prémium szintű SSD-k](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-caching).
+Oracle Linux UEK kernelek esetében az [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-caching)-k támogatásához legalább 4 UEK 4-es verzió szükséges.
 
-Ajánlott használandó [Azure managed disks](../../windows/managed-disks-overview.md). Azt is javasoljuk használatával [Azure prémium szintű SSD-k](../../windows/disks-types.md) az Oracle Database üzemelő példányok.
+Erősen ajánlott az [Azure Managed Disks](../../windows/managed-disks-overview.md)használata. Azt is javasoljuk, hogy az [Azure Premium SSD](../../windows/disks-types.md) -ket a Oracle Database üzemelő példányokhoz is használja.
 
-Hálózati meghajtók vagy az Azure-szolgáltatásokhoz hasonlóan távoli megosztások Oracle Database-fájlok nem támogatottak. További információkért tekintse meg a következőket: 
+A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információt a következő témakörben talál: 
 
 - [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
 - [Persisting connections to Microsoft Azure Files (A Microsoft Azure Files-kapcsolatok megőrzése)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-A oldala az Azure blob storage vagy a felügyelt lemezek mérete alapján használja, ha a kimutatások végzett [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) telepítések az Oracle Database, valamint a alkalmazni.
+Ha az Azure-beli blob Storage vagy a Managed Disks alapján lemezeket használ, az [azure Virtual Machines adatbázis-kezelői szolgáltatás az SAP-munkaterheléshez való üzembe helyezésével kapcsolatos megfontolások](dbms_guide_general.md) a Oracle Database is érvényesek.
 
- Az Azure-lemezek IOPS átviteli kvótái létezik. A koncepció ismertetése [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md). A pontos kvóták használt Virtuálisgép-típustól függnek. Saját kvótával rendelkező virtuális gépek típusai listáját lásd: [az Azure-ban Linux rendszerű virtuális gépek méretei][virtual-machines-sizes-linux].
+ Az Azure-lemezek IOPS átviteli sebességére vonatkozó kvóták léteznek. Ezt a koncepciót az [Azure Virtual Machines adatbázis-kezelői szolgáltatás SAP](dbms_guide_general.md)-munkaterheléshez való üzembe helyezésének szempontjai ismertetik. A pontos kvóták a használt virtuális gép típusától függenek. A kvótákkal rendelkező virtuálisgép-típusok listáját lásd: [a Linux rendszerű virtuális gépek méretei az Azure-ban][virtual-machines-sizes-linux].
 
-A támogatott Azure-beli Virtuálisgép-típusok azonosításához tekintse meg az SAP-Jegyzetnek [1928533].
+A támogatott Azure-beli virtuálisgép-típusok azonosításához lásd: SAP-Megjegyzés [1928533].
 
-Minimális konfigurációt:
+Minimális konfiguráció:
 
-| Összetevő | Lemez | Gyorsítótárazás | Ezért * |
+| Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/\<SID > / origlogaA & mirrlogB | Prémium | None | Nem szükséges |
-| /Oracle/\<SID > / origlogaB & mirrlogA | Prémium | None | Nem szükséges |
-| /Oracle/\<SID > / sapdata1... n | Prémium | Csak olvasás | Használható |
-| /Oracle/\<SID > / oraarch | Standard | None | Nem szükséges |
-| Oracle-kezdőlap, saptrace... | Operációsrendszer-lemez | | Nem szükséges |
+| /Oracle/\<SID >/origlogaA & mirrlogB | Prémium | Nincsenek | Nem szükséges |
+| /Oracle/\<SID >/origlogaB & mirrlogA | Prémium | Nincsenek | Nem szükséges |
+| /Oracle/\<SID >/sapdata1... n | Prémium | Csak olvasás | Használható |
+| /Oracle/\<SID >/oraarch | Standard | Nincsenek | Nem szükséges |
+| Oracle Home, saptrace,... | Operációsrendszer-lemez | | Nem szükséges |
 
-\* Ezért: LVM stripe vagy MDADM RAID0 használatával
+Csíkot LVM-sáv vagy MDADM a RAID0 használatával
 
-Az Oracle online visszaállítási naplók tárolásához lemezkiválasztás IOPS követelmények szerint kell meghatározni. Minden sapdata1... tárolására lehetséges, amíg a kötet, az IOPS és átviteli sebesség megfelelnek-e egyetlen csatlakoztatott lemez (táblahelyeket) n. 
+Az Oracle online visszaállítási naplóinak üzemeltetéséhez szükséges lemezeket IOPS követelményekkel kell ellátni. Az összes sapdata1 tárolhatók... n (tablespaces) egyetlen csatlakoztatott lemezen, ha a kötet, a IOPS és az átviteli sebesség megfelel a követelményeknek. 
 
-Teljesítmény-konfigurációkat:
+Teljesítmény konfigurációja:
 
-| Összetevő | Lemez | Gyorsítótárazás | Ezért * |
+| Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/\<SID > / origlogaA | Prémium | None | Használható  |
-| /Oracle/\<SID > / origlogaB | Prémium | None | Használható |
-| /Oracle/\<SID > / mirrlogAB | Prémium | None | Használható |
-| /Oracle/\<SID > / mirrlogBA | Prémium | None | Használható |
-| /Oracle/\<SID > / sapdata1... n | Prémium | Csak olvasás | Ajánlott  |
-| /oracle/\<SID>/sapdata(n+1)* | Prémium | None | Használható |
-| /Oracle/\<SID > / oraarch * | Prémium | None | Nem szükséges |
-| Oracle-kezdőlap, saptrace... | Operációsrendszer-lemez | Nem szükséges |
+| /Oracle/\<SID >/origlogaA | Prémium | Nincsenek | Használható  |
+| /Oracle/\<SID >/origlogaB | Prémium | Nincsenek | Használható |
+| /Oracle/\<SID >/mirrlogAB | Prémium | Nincsenek | Használható |
+| /Oracle/\<SID >/mirrlogBA | Prémium | Nincsenek | Használható |
+| /Oracle/\<SID >/sapdata1... n | Prémium | Csak olvasás | Ajánlott  |
+| /Oracle/\<SID >/sapdata (n + 1) * | Prémium | Nincsenek | Használható |
+| /Oracle/\<SID >/oraarch * | Prémium | Nincsenek | Nem szükséges |
+| Oracle Home, saptrace,... | Operációsrendszer-lemez | Nem szükséges |
 
-\* Ezért: LVM stripe vagy MDADM RAID0 használatával
+Csíkot LVM-sáv vagy MDADM a RAID0 használatával
 
-\* (n + 1): rendszer, a TEMP és a visszavonás táblahelyeket üzemeltető: Rendszer- és visszavonási táblahelyeket i/o minta más alkalmazás adatait tartalmazó táblahelyeket eltérnek. Nincs gyorsítótárazás nem a rendszer- és visszavonási táblahelyeket teljesítményét leginkább megfelelő opció kiválasztásához.
+\* (n + 1): üzemeltetési rendszerek, ideiglenes és visszavonási tablespace-k: A rendszer és a visszavonási eszközök I/O-mintája eltér más, az alkalmazásadatok futtatására szolgáló tablespace-modelltől. A rendszer teljesítményének és az tablespace-EK visszavonásának legjobb lehetősége a gyorsítótárazás.
 
-\* oraarch: a tárolókészletben nem feltétlenül szükséges a teljesítmény szempontjából.
+\* oraarch: a tárolási készlet nem szükséges a teljesítmény szempontjából.
 
 
-Ha további IOPS szükség, egy nagy méretű logikai kötet létrehozása több csatlakoztatott lemez keresztül LVM (a Logical Volume Manager) vagy MDADM használatát javasoljuk. További információkért lásd: [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) vonatkozó irányelvek és mutatók LVM vagy MDADM módjáról. Ez a megközelítés leegyszerűsíti az adminisztratív terhelés kezelésére a lemezterület, és elkerülheti a munka, amelyet manuálisan elosztása több csatlakoztatott lemezek között fájlokat.
+Ha további IOPS van szükség, javasoljuk, hogy az LVM (logikai kötet-kezelő) vagy a MDADM használatával hozzon létre egy nagy logikai kötetet több csatlakoztatott lemezen. További információkért lásd: [Az Azure Virtual Machines adatbázis-kezelő rendszerbeli üzembe helyezésének szempontjai az SAP](dbms_guide_general.md) -számítási feladatokhoz, valamint az LVM vagy a MDADM kihasználása az irányelvek és mutatók alapján. Ez a megközelítés leegyszerűsíti a lemezterület kezelésének adminisztrációs terhelését, és segít elkerülni a fájlok manuális terjesztését több csatlakoztatott lemez között.
 
 
 #### <a name="write-accelerator"></a>Írásgyorsító
-Az Azure M sorozatú virtuális gépek Azure Write Accelerator használatánál írása az online visszaállítási naplókat, a késés csökkenthető tényezők befolyásolják az Azure Premium Storage teljesítmény képest. Engedélyezze az Azure Írásgyorsító lemezek (VHD-k) alapján az Azure Premium Storage által használt online visszaállítási fájlok. További információkért lásd: [Írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
+Az Azure M sorozatú virtuális gépek esetében az Azure írásgyorsító használatakor az Azure Premium Storage teljesítményéhez képest faktorok csökkenthetik az online ismétlési naplókba való írás késleltetését. Engedélyezze az Azure-írásgyorsító a lemezekhez (VHD-k) az Azure-Premium Storage alapján, amelyek online visszaállítási naplófájlokhoz használatosak. További információ: [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
 
 
 ### <a name="backuprestore"></a>Biztonsági mentés/visszaállítás
-Biztonsági mentési és visszaállítási funkciójának, az SAP BR * Nástroje Pro Oracle ugyanúgy támogatottak, mivel ezek az operációs rendszer nélküli és a Hyper-V. Oracle Recovery Manager (RMAN) használata is támogatott a lemezes biztonsági mentések, és visszaállítja a lemez.
+A biztonsági mentési/visszaállítási funkciók esetében az SAP BR * Tools for Oracle ugyanúgy támogatott, mint az operációs rendszer nélküli és a Hyper-V. Az Oracle Recovery Manager (Oláh Anna) szintén támogatott a lemezre történő biztonsági mentéshez és a lemezről történő visszaállításhoz.
 
-További információ arról, hogyan használja az Azure biztonsági mentési és helyreállítási szolgáltatások biztonsági mentése és Oracle-adatbázisok helyreállítását lásd [biztonsági mentése és helyreállítása, az Oracle Database 12c adatbázis egy Azure-beli Linuxos virtuális gépen](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-backup-recovery).
+Az Oracle-adatbázisok biztonsági mentésére és helyreállítására szolgáló Azure Backup és Recovery Services használatával kapcsolatos további információkért lásd: [Oracle Database 12c-adatbázis biztonsági mentése és helyreállítása Azure Linux rendszerű virtuális gépen](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-backup-recovery).
 
 ### <a name="high-availability"></a>Magas rendelkezésre állás
-Oracle Data Guard támogatott magas rendelkezésre állású és vész-helyreállítási céllal. Data Guard az Automatikus feladatátvétel érdekében, hogy szeretné használni a gyors induláshoz feladatátvétel (FSFA). A megfigyelő funkciót (FSFA) elindítja a feladatátvételt. Ha FSFA nem használja, csak kézi feladatátvételi konfiguráció használhatja. További információkért lásd: [megvalósítása Oracle Data Guard egy Azure-beli Linuxos virtuális gépen](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard).
+A magas rendelkezésre állás és a vész-helyreállítási célú Oracle-adatőr támogatott. Ha automatikus feladatátvételt szeretne elérni az adatvédelemben, a gyors indítási feladatátvételt (FSFA) kell használnia. A megfigyelő funkció (FSFA) elindítja a feladatátvételt. Ha nem használja a FSFA-t, akkor csak manuális feladatátvételi konfigurációt használhat. További információ: Oracle- [Adatvédelem megvalósítása Azure Linux rendszerű virtuális gépen](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard).
 
 
-Az Azure-ban Oracle-adatbázisok vész helyreállítási szempontjai jelennek meg a cikk [az Azure-környezet egy Oracle Database 12c adatbázis vészhelyreállítása](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
+Az Azure-beli Oracle-adatbázisok vész-helyreállítási szempontjait az Azure- [környezetben egy Oracle Database 12c-adatbázis](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)vész-helyreállítását ismertető cikk ismerteti.
 
-### <a name="accelerated-networking"></a>Gyorsított hálózatkezelés
-Az Oracle Linux 7 Update 5 (Oracle Linux 7.5) biztosítunk támogatást az Azure gyorsított hálózatkezelés Oracle Linux rendszeren. Ha nem tudja frissíteni a legújabb Oracle Linux 7.5 verziót, lehet egy megkerülő megoldás a RedHat kompatibilis Kernel (RHCK) helyett az Oracle UEK kernel. 
+### <a name="accelerated-networking"></a>Felgyorsított hálózat
+Az Azure-ban gyorsított hálózatkezelés támogatása a Oracle Linuxban Oracle Linux 7 Update 5 (Oracle Linux 7,5). Ha nem tudja frissíteni a legújabb Oracle Linux 7,5 kiadásra, lehet, hogy megkerülő megoldás a RedHat kompatibilis kernel (RHCK) használatával, az Oracle UEK kernel helyett. 
 
-Az RHEL-kernelt belül Oracle Linux támogatott SAP-Jegyzetnek megfelelően [#1565179](https://launchpad.support.sap.com/#/notes/1565179). Az Azure gyorsított hálózatkezelés a minimális RHCKL kernel kiadás kell lennie a 3.10.0-862.13.1.el7. Ha használja a UEK kernel, az Oracle Linux együtt [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/), kell használnia az Oracle UEK 5 kernelverzióját.
+A Oracle Linuxon belüli RHEL kernel használata az SAP-Megjegyzés [#1565179](https://launchpad.support.sap.com/#/notes/1565179)szerint támogatott. Az Azure-beli gyorsított hálózatkezeléshez a minimális RHCKL kernel-kiadásnak 3.10.0-862.13.1. el7 kell lennie. Ha a UEK kernelt az [Azure gyorsított hálózatkezeléssel](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)együtt Oracle Linux használja, akkor az Oracle UEK kernel 5-ös verzióját kell használnia.
 
-Ha a virtuális gépek nem Azure Marketplace-en alapuló egy rendszerképből telepíti, majd szüksége további konfigurációs fájlok másolása a virtuális Gépet a következő kód futtatásával: 
+Ha olyan lemezképből helyez üzembe virtuális gépeket, amely nem az Azure Marketplace-en alapul, akkor további konfigurációs fájlokat kell átmásolnia a virtuális gépre a következő kód futtatásával: 
 <pre><code># Copy settings from GitHub to the correct place in the VM
 sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.githubusercontent.com/LIS/lis-next/master/hv-rhel7.x/hv/tools/68-azure-sriov-nm-unmanaged.rules 
 </code></pre>
 
 
 ### <a name="other"></a>Egyéb
-[Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) más virtuális gépek, az Oracle Database, többek között az Azure rendelkezésre állási csoportok és az SAP-figyelés központi telepítései kapcsolatos lényeges fogalmakat ismerteti.
+[Az azure Virtual Machines adatbázis-kezelői szolgáltatás SAP](dbms_guide_general.md) -alapú üzembe helyezésével kapcsolatos megfontolások a virtuális gépek Oracle Database-vel való üzembe helyezésével kapcsolatos egyéb fontos fogalmakat, például az Azure rendelkezésre állási készleteit és az SAP

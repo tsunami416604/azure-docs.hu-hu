@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI-Példaszkript – alkalmazás biztonsági mentése |} A Microsoft Docs
-description: Az Azure CLI-Példaszkript – alkalmazás biztonsági mentése
+title: Azure CLI-parancsfájl mintája – alkalmazás biztonsági mentése | Microsoft Docs
+description: Azure CLI-parancsfájl minta – alkalmazás biztonsági mentése
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -9,22 +9,21 @@ editor: ''
 tags: azure-service-management
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4fb44440e68f8205b18eba3a3418e5a498e6b2ba
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 07ca1a167a2c7bf2f2946772b97cca4d2c1bd9c9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613526"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098512"
 ---
-# <a name="back-up-an-app-using-cli"></a>CLI-vel alkalmazás biztonsági mentése
+# <a name="back-up-an-app-using-cli"></a>Alkalmazás biztonsági mentése a parancssori felületről
 
-Ez a példaszkript létrehoz egy alkalmazást az App Service-ben a kapcsolódó erőforrásokkal együtt, és a egy egyszeri biztonsági mentést hoz. 
+Ez a példa egy alkalmazást hoz létre App Service a kapcsolódó erőforrásokkal együtt, majd létrehoz egy egyszeri biztonsági mentést. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -49,9 +48,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [`az storage container create`](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) | Létrehoz egy Azure Storage-tárolót. |
 | [`az storage container generate-sas`](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-generate-sas) | Létrehoz egy SAS-tokent egy Azure Storage-tárolóhoz.  |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
-| [`az webapp config backup create`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-create) | App Service-alkalmazások biztonsági másolatot készít. |
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Az App Service-alkalmazások biztonsági másolatok listáját kéri le. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
+| [`az webapp config backup create`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-create) | Biztonsági másolatot készít egy App Service alkalmazásról. |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Lekéri egy App Service alkalmazás biztonsági másolatainak listáját. |
 
 ## <a name="next-steps"></a>További lépések
 

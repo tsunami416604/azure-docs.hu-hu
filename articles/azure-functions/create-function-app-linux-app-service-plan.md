@@ -1,26 +1,25 @@
 ---
-title: Függvényalkalmazás létrehozása Linux rendszeren az Azure Portalról |} A Microsoft Docs
+title: Function-alkalmazás létrehozása Linux rendszeren a Azure Portalból | Microsoft Docs
 description: Ismerje meg, hogyan hozhatja létre az első Azure-függvényét kiszolgáló nélküli végrehajtáshoz az Azure Portalon.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: f7fa1d58c21ea0ed457cc5987d7823fad68d554f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a612505acdc37591377eebf290365b65cc3836cd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153814"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098293"
 ---
-# <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Egy függvényalkalmazás létrehozása a linuxon futó Azure App Service-csomag
+# <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Function-alkalmazás létrehozása Linux rendszeren egy Azure App Service tervben
 
-Az Azure Functions lehetővé teszi, hogy a függvényeit Linux rendszerben egy alapértelmezett Azure App Service-tárolóban üzemeltesse. Ez a cikk bemutatja, hogyan használata a [az Azure portal](https://portal.azure.com) egy futó Linux-ban üzemeltetett függvényalkalmazás létrehozásához egy [App Service-csomag](functions-scale.md#app-service-plan). [Használhatja saját egyéni tárolóját](functions-create-function-linux-custom-image.md) is.
+Az Azure Functions lehetővé teszi, hogy a függvényeit Linux rendszerben egy alapértelmezett Azure App Service-tárolóban üzemeltesse. Ez a cikk bemutatja, hogyan használható a [Azure Portal](https://portal.azure.com) egy olyan Linux-alapú Function-alkalmazás létrehozásához, amely egy [app Service](functions-scale.md#app-service-plan)-csomagban fut. [Használhatja saját egyéni tárolóját](functions-create-function-linux-custom-image.md) is.
 
 ![Függvényalkalmazás létrehozása az Azure Portalon](./media/create-function-app-linux-app-service-plan/function-app-in-portal-editor.png)
 
@@ -32,9 +31,9 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com> webhelyen az Azur
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-Rendelkeznie kell egy függvényalkalmazással a függvények Linux rendszerben való végrehajtásának biztosításához. A függvényalkalmazás szolgáltat környezetet a függvénykód végrehajtásához. Lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások egyszerűbb kezelése, üzembe helyezése és megosztása érdekében. Ebben a cikkben létrehozott App Service-csomag a függvényalkalmazás létrehozásakor.
+Rendelkeznie kell egy függvényalkalmazással a függvények Linux rendszerben való végrehajtásának biztosításához. A függvényalkalmazás szolgáltat környezetet a függvénykód végrehajtásához. Lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások egyszerűbb kezelése, üzembe helyezése és megosztása érdekében. Ebben a cikkben egy App Service tervet hoz létre a Function-alkalmazás létrehozásakor.
 
-1. Válassza ki a **erőforrás létrehozása** gomb megtalálható az Azure portal bal felső sarkában majd válassza ki **számítási** > **Függvényalkalmazás**.
+1. Válassza a Azure Portal bal felső sarkában található **erőforrás létrehozása** gombot, majd válassza a > számítási**függvényalkalmazás**lehetőséget.
 
     ![Függvényalkalmazás létrehozása az Azure Portalon](./media/create-function-app-linux-app-service-plan/function-app-create-flow.png)
 
@@ -47,13 +46,13 @@ Rendelkeznie kell egy függvényalkalmazással a függvények Linux rendszerben 
     | **Alkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Érvényes karakterek: `a-z`, `0-9` és `-`.  | 
     | **Előfizetés** | Az Ön előfizetése | Az előfizetés, amelyben létrehozta az új függvényalkalmazást. | 
     | **[Erőforráscsoport](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
-    | **OS** | Linux | A függvényalkalmazás a Linux rendszeren futó. |
-    | **Közzététel** | Kód | Az alapértelmezett Linux-tárolót a **futtatókörnyezeti verem** szolgál. Meg kell adnia az összes, a függvény projekt kódját. Egy másik lehetőség az, hogy közzététele egy egyéni [Docker-rendszerkép](functions-create-function-linux-custom-image.md). |
-    | **[Szolgáltatási csomag](functions-scale.md)** | App Service-csomag | Szolgáltatási csomag, amely meghatározza az erőforrások lefoglalását a függvényalkalmazáshoz. Az App Service-csomag futtatásakor szabályozhatja a [méretezése a függvényalkalmazás](functions-scale.md).  |
-    | **Az App Service-csomag/hely** | Csomag létrehozása | Válasszon **új létrehozása** , és adja meg egy **App Service-csomag** nevét. Válasszon egy **hely** a egy [régió](https://azure.microsoft.com/regions/) Önhöz vagy más szolgáltatások közelében a függvények által elért. Válassza ki a kívánt  **[tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/linux/)**. <br/>Az App Service-csomag Linux- és Windows függvényalkalmazások nem futtatható. |
-    | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. Válassza a **.NET** lehetőséget a C# és az F# függvényekhez. [Podpora Pythonu](functions-reference-python.md) jelenleg előzetes verzióban érhető el. |
+    | **OS** | Linux | A Function alkalmazás Linux rendszeren fut. |
+    | **Közzététel** | Kód | A **futásidejű verem** alapértelmezett Linux-tárolóját használja a rendszer. Csak a Function app-projekt kódját kell megadnia. Egy másik lehetőség egy egyéni Docker- [rendszerkép](functions-create-function-linux-custom-image.md)közzététele. |
+    | **[Szolgáltatási csomag](functions-scale.md)** | App Service-csomag | Szolgáltatási csomag, amely meghatározza az erőforrások lefoglalását a függvényalkalmazáshoz. Ha App Service csomagot futtat, akkor szabályozhatja a [Function alkalmazás skálázását](functions-scale.md).  |
+    | **App Service csomag/hely** | Csomag létrehozása | Válassza az **új létrehozása** elemet, és adjon meg egy **app Service-csomag** nevét. Válasszon egy **helyet** az Ön közelében lévő [régióban](https://azure.microsoft.com/regions/) vagy a funkciókhoz hozzáférő egyéb szolgáltatások közelében. Válassza ki a kívánt **[árképzési szintet](https://azure.microsoft.com/pricing/details/app-service/linux/)** . <br/>A Linux és a Windows rendszerű függvények alkalmazásai nem futtathatók ugyanabban a App Service tervben. |
+    | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. Válassza a **.NET** lehetőséget a C# és az F# függvényekhez. A [Python-támogatás](functions-reference-python.md) jelenleg előzetes verzióban érhető el. |
     | **[Tárolás](../storage/common/storage-quickstart-create-account.md)** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amennyiben az megfelel a [tárfiókokra vonatkozó követelményeknek](functions-scale.md#storage-account-requirements). |
-    | **[Application Insights](functions-monitoring.md)** | Enabled | Az Application Insights alapértelmezés szerint le van tiltva. Javasoljuk, hogy most már az Application Insights-integráció engedélyezése és az App Service-csomag hely közelében üzemeltetési hely kiválasztása. Ha később szeretné, tekintse meg [figyelése az Azure Functions](functions-monitoring.md).  |
+    | **[Application Insights](functions-monitoring.md)** | Enabled | A Application Insights alapértelmezés szerint le van tiltva. Javasoljuk, hogy most engedélyezze a Application Insights integrációt, és válasszon egy üzemeltetési helyet a App Service-csomag helyének közelében. Ha ezt később szeretné elvégezni, tekintse meg a [Azure functions figyelése](functions-monitoring.md)című témakört.  |
 
 3. Kattintson a **Létrehozás** elemre a függvényalkalmazás kiépítéséhez és üzembe helyezéséhez.
 
@@ -63,22 +62,22 @@ Rendelkeznie kell egy függvényalkalmazással a függvények Linux rendszerben 
 
 5. Az új függvényalkalmazás megtekintéséhez válassza az **Erőforrás megnyitása** lehetőséget.
 
-Ezután létrehozhat egy függvényt az új függvényalkalmazásban. Érhető el a függvényalkalmazást, után is igénybe vehet néhány percet a teljes inicializálására.
+Ezután létrehozhat egy függvényt az új függvényalkalmazásban. Még a Function app elérhetővé tétele után is eltarthat néhány percig, hogy teljesen inicializálható legyen.
 
 ## <a name="create-function"></a>HTTP által aktivált függvény létrehozása
 
-Ez a szakasz bemutatja, hogyan hozhat létre olyan függvényt a portálon az új függvényalkalmazásban.
+Ebből a szakaszból megtudhatja, hogyan hozhat létre függvényt az új Function alkalmazásban a portálon.
 
 > [!NOTE]
-> A portál fejlesztési környezetet biztosít az Azure Functions kipróbálásához hasznos lehet. A legtöbb esetben érdemes lehet a függvények helyi fejlesztés és a projekt közzététele a függvényalkalmazáshoz segítségével [Visual Studio Code](functions-create-first-function-vs-code.md#create-an-azure-functions-project) vagy a [Azure Functions Core Tools](functions-run-local.md#create-a-local-functions-project).  
+> A portál fejlesztői felülete hasznos lehet a Azure Functions kipróbálásához. A legtöbb esetben érdemes lehet helyileg fejleszteni a függvényeket, és a [Visual Studio Code](functions-create-first-function-vs-code.md#create-an-azure-functions-project) vagy a [Azure functions Core Tools](functions-run-local.md#create-a-local-functions-project)használatával közzétenni a projektet a Function alkalmazásban.  
 
-1. Az új függvényalkalmazást, válassza a **áttekintése** lapra, és teljesen betölti után válassza **+ új funkció**.
+1. Az új függvény alkalmazásban válassza az **Áttekintés** fület, majd a teljes kiválasztást követően válassza az **+ új függvény**lehetőséget.
 
-    ![Új függvény létrehozása az Áttekintés lap](./media/create-function-app-linux-app-service-plan/overview-create-function.png)
+    ![Új függvény létrehozása az Áttekintés lapról](./media/create-function-app-linux-app-service-plan/overview-create-function.png)
 
-1. Az a **rövid** lapra, majd **a portálon**, és válassza ki **Folytatás**.
+1. A rövid útmutató lapon válassza **a portálon**, majd a **Folytatás**lehetőséget.
 
-    ![Válassza ki a függvény fejlesztési platform.](./media/create-function-app-linux-app-service-plan/function-app-quickstart-choose-portal.png)
+    ![Válassza ki a Function Development platformot.](./media/create-function-app-linux-app-service-plan/function-app-quickstart-choose-portal.png)
 
 1. Válassza a **WebHook + API**, majd a **Létrehozás** lehetőséget.
 

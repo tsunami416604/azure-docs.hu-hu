@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: a562630ef19c134c227ef44b944c1dd921ff2e46
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: d20ea4a6e86bb889615d3ab9bfcac5aedf838ceb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726812"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098626"
 ---
 # <a name="securing-paas-deployments"></a>PaaS üzemelő példányainak biztonságossá tétele
 
@@ -96,14 +96,14 @@ Az alábbi ajánlott eljárások az identitás peremhálózati kezeléséhez sz�
 **Ajánlott eljárás**: A virtuálisgép-kezelési felületek a hibrid Pásti és a IaaS szolgáltatásokban való ellátásához olyan felügyeleti felületet használhat, amely lehetővé teszi a virtuális gépek távoli felügyeletét közvetlenül.   
 **Részletek**: A távoli felügyeleti protokollok, például az [SSH](https://en.wikipedia.org/wiki/Secure_Shell), az [RDP](https://support.microsoft.com/kb/186607)és a [PowerShell-távelérés](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) használhatók. Általánosságban azt javasoljuk, hogy ne engedélyezze a közvetlen távoli hozzáférést az internetről érkező virtuális gépekhez.
 
-Ha lehetséges, alternatív megközelítéseket használhat, például virtuális magánhálózatok használatát egy Azure-beli virtuális hálózaton. Ha az alternatív megoldások nem érhetők el, győződjön meg arról, hogy összetett hozzáférési kódok és kétfaktoros hitelesítés (például az [Azure multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)) használata szükséges.
+Ha lehetséges, alternatív megközelítéseket használhat, például virtuális magánhálózatok használatát egy Azure-beli virtuális hálózaton. Ha az alternatív megoldások nem érhetők el, győződjön meg arról, hogy összetett hozzáférési kódok és kétfaktoros hitelesítés (például [Azure multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)) használata szükséges.
 
 **Ajánlott eljárás**: Használjon erős hitelesítési és engedélyezési platformokat.   
 **Részletek**: Összevont identitások használata az Azure AD-ben egyéni felhasználói tárolók helyett. Összevont identitások használata esetén kihasználhatja a platform-alapú megközelítést, és delegálhatja a meghatalmazott identitások kezelését a partnerei számára. Az összevont identitások megközelítése különösen fontos az alkalmazottak leállításakor, és az információt több identitás-és engedélyezési rendszeren keresztül kell megjeleníteni.
 
 Egyéni kód helyett platform által biztosított hitelesítési és engedélyezési mechanizmusokat használhat. Ennek az az oka, hogy az egyéni hitelesítési kód fejlesztése hibás lehet. A fejlesztők többsége nem rendelkezik biztonsági szakértőkkel, és nem valószínű, hogy tisztában van a finomságokkal, valamint a hitelesítés és az engedélyezés legújabb fejleményeivel. A kereskedelmi kódokat (például a Microsofttól) gyakran széles körű biztonsági felülvizsgálatnak tekintjük.
 
-Használjon kétfaktoros hitelesítést. A kétfaktoros hitelesítés a hitelesítéshez és az engedélyezéshez használt jelenlegi szabvány, mivel elkerüli a Felhasználónév és jelszó típusú hitelesítéssel kapcsolatos biztonsági gyengeségeket. Az Azure felügyeleti (portál/távoli PowerShell) interfészekhez és az ügyfelek felé irányuló szolgáltatásokhoz való hozzáférést az [Azure multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)használatára kell tervezni és konfigurálni.
+Használjon kétfaktoros hitelesítést. A kétfaktoros hitelesítés a hitelesítéshez és az engedélyezéshez használt jelenlegi szabvány, mivel elkerüli a Felhasználónév és jelszó típusú hitelesítéssel kapcsolatos biztonsági gyengeségeket. Az Azure felügyeleti (portál/távoli PowerShell) interfészekhez és az ügyfelek felé irányuló szolgáltatásokhoz való hozzáférést az [azure multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)használatára kell tervezni és konfigurálni.
 
 Használjon szabványos hitelesítési protokollokat, például a OAuth2 és a Kerberost. Ezek a protokollok széles körben áttekintve lettek, és valószínűleg a platform könyvtárainak részeként valósulnak meg a hitelesítéshez és engedélyezéshez.
 
@@ -116,7 +116,7 @@ A következő táblázat felsorolja a Stride-fenyegetéseket, és példákat tar
 | --- | --- | --- |
 | Hamisítási | Authentication | HTTPS-kapcsolatok megkövetelése. |
 | Módosítás | Integritás | Ellenőrizze az SSL-tanúsítványokat. |
-| Letagadhatóság | Letagadhatatlanság | Az Azure [monitorozásának és diagnosztizálásának](/azure/architecture/best-practices/monitoring)engedélyezése. |
+| Letagadhatóság | Nem megtagadási | Az Azure [monitorozásának és diagnosztizálásának](/azure/architecture/best-practices/monitoring)engedélyezése. |
 | Információk közzététele | Titoktartási | Bizalmas adatok titkosítása a [szolgáltatás tanúsítványainak](/rest/api/appservice/certificates)használatával. |
 | Szolgáltatásmegtagadás | Rendelkezésre állás | Teljesítmény-mérőszámok figyelése a lehetséges szolgáltatásmegtagadási feltételekhez. A kapcsolatok szűrőinek implementálása. |
 | Jogok kiterjesztése | Authorization | [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements)használata. |
@@ -139,7 +139,7 @@ A App Service használatának ajánlott eljárásai a következők:
 **Részletek**: A [app Service Environment](/azure/app-service/environment/intro) virtuális hálózati integrációs funkciójával a bejövő forrás IP-címeket hálózati biztonsági csoportokon keresztül korlátozhatja. A virtuális hálózatok lehetővé teszik az Azure-erőforrások olyan nem internetes, irányítható hálózatban való elhelyezését, amellyel a hozzáférését szabályozhatja. További információ: [az alkalmazás integrálása egy Azure](/azure/app-service/web-sites-integrate-with-vnet)-beli virtuális hálózattal.
 
 **Ajánlott eljárás**: App Service környezetek biztonsági állapotának figyelése.   
-**Részletek**: A App Service-környezetek figyeléséhez használja a Azure Security Center. Ha a Security Center felismeri a lehetséges biztonsági réseket, [javaslatokat](/azure/security-center/security-center-virtual-machine-recommendations) hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán.
+**Részletek**: A App Service-környezetek figyeléséhez használja a Azure Security Center. Ha a Security Center felismeri a lehetséges biztonsági réseket, [javaslatokat](../../security-center/security-center-virtual-machine-protection.md) hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán.
 
 > [!NOTE]
 > A figyelési App Service előzetes verzióban érhető el, és csak a Security Center [standard szintjére](/azure/security-center/security-center-pricing) használható.

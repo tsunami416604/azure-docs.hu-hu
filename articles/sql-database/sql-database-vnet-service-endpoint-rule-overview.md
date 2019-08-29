@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
-ms.date: 03/12/2019
-ms.openlocfilehash: 9b28a8efcc09954d9046ad1dda3ba5f10f45bdfa
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
-ms.translationtype: HT
+ms.date: 08/27/2019
+ms.openlocfilehash: 8948a0fe6112df0d29c0f04685dadbd379a4a382
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840475"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098924"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Virtuális hálózati szolgáltatási végpontok és az adatbázis-kiszolgálók szabályainak használata
 
@@ -31,44 +31,7 @@ Virtuális hálózati szabály létrehozásához először egy [virtuális hál�
 
 Ha csak virtuális hálózati szabályt hoz létre, ugorjon a [cikk későbbi részében](#anchor-how-to-by-using-firewall-portal-59j)ismertetett lépésekre és magyarázatra.
 
-<a name="anch-terminology-and-description-82f" />
-
-## <a name="terminology-and-description"></a>Terminológia és leírás
-
-**Virtuális hálózat:** Az Azure-előfizetéshez társított virtuális hálózatokat is használhat.
-
-**Alhálózat** Egy virtuális hálózat alhálózatokat tartalmaz. Az alhálózatokhoz társított bármely Azure-beli virtuális gép (VM). Egy alhálózat több virtuális gépet vagy más számítási csomópontot is tartalmazhat. A virtuális hálózatán kívüli számítási csomópontok nem férnek hozzá a virtuális hálózathoz, kivéve, ha úgy konfigurálja a biztonságot, hogy engedélyezze a hozzáférést.
-
-**Virtual Network szolgáltatási végpont:** A [Virtual Network szolgáltatási végpont][vm-virtual-network-service-endpoints-overview-649d] olyan alhálózat, amelynek tulajdonságértékek egy vagy több formális Azure-szolgáltatástípus nevét tartalmazzák. Ebben a cikkben a **Microsoft. SQL**típus neve érdekli, amely az SQL Database nevű Azure-szolgáltatásra hivatkozik.
-
-**Virtuális hálózati szabály:** A SQL Database-kiszolgáló virtuális hálózati szabálya egy alhálózat, amely a SQL Database-kiszolgáló hozzáférés-vezérlési listájában (ACL) szerepel. Ahhoz, hogy a SQL Database hozzáférés-vezérlési listájában legyen, az alhálózatnak tartalmaznia kell a **Microsoft. SQL** típus nevét.
-
-Egy virtuális hálózati szabály közli a SQL Database-kiszolgálóval, hogy fogadja a kommunikációt az alhálózaton lévő összes csomópontról.
-
-<a name="anch-benefits-of-a-vnet-rule-68b" />
-
-## <a name="benefits-of-a-virtual-network-rule"></a>Virtuális hálózati szabály előnyei
-
-Amíg el nem végzi a műveletet, az alhálózatokon lévő virtuális gépek nem tudnak kommunikálni a SQL Databaseával. A kommunikációt létrehozó egyik művelet egy virtuális hálózati szabály létrehozása. A VNet szabály megközelítésének indoklása egy összehasonlítási és kontrasztos vitát igényel, amely magában foglalja a tűzfal által kínált versengő biztonsági beállításokat.
-
-### <a name="a-allow-access-to-azure-services"></a>A. Azure-szolgáltatásokhoz való hozzáférés engedélyezése
-
-A tűzfal ablaktáblán egy **be-és** kikapcsoló gomb látható, amely **lehetővé teszi az Azure-szolgáltatásokhoz való hozzáférést**. A **on** beállítás lehetővé teszi az összes Azure IP-cím és az összes Azure-alhálózat kommunikációját. Előfordulhat, hogy ezek az Azure-beli IP-címek vagy alhálózatok nem tulajdonosai. Ez **a** beállítás valószínűleg nyitottabb, mint amennyire szeretné, hogy a SQL Database. A virtuális hálózati szabály funkció sokkal finomabb, részletesebb szabályozást biztosít.
-
-### <a name="b-ip-rules"></a>B. IP-szabályok
-
-A SQL Database tűzfal lehetővé teszi olyan IP-címtartományok megadását, amelyekről a rendszer a kommunikációt SQL Databaseba fogadja. Ez a megközelítés az Azure-magánhálózaton kívüli stabil IP-címekre is kiváló. Az Azure-magánhálózat számos csomópontja azonban *dinamikus* IP-címekkel van konfigurálva. Előfordulhat, hogy a dinamikus IP-címek változhatnak, például a virtuális gép újraindításakor. Az éles környezetben nem lehet dinamikus IP-címet megadni egy tűzfalszabály számára.
-
-Az IP-címet a virtuális gép *statikus* IP-címének beszerzésével lehet megmenteni. Részletekért lásd: [a virtuális gép magánhálózati IP-címeinek konfigurálása a Azure Portal használatával][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
-
-A statikus IP-cím azonban nehezen kezelhető, és költséges, ha nagy léptékben történik. A virtuális hálózati szabályok könnyebben hozhatók létre és kezelhetők.
-
-> [!NOTE]
-> Még nem rendelkezhet SQL Database alhálózaton. Ha a Azure SQL Database-kiszolgáló a virtuális hálózat egyik alhálózatának csomópontja volt, a virtuális hálózaton belüli összes csomópont kommunikálhat a SQL Databaseval. Ebben az esetben a virtuális gépek kommunikálhatnak a SQL Database anélkül, hogy virtuális hálózati szabályokat vagy IP-szabályokat kellene megadnia.
-
-Szeptember 2017 azonban a Azure SQL Database szolgáltatás még nem tartozik az alhálózathoz hozzárendelhető szolgáltatások közé.
-
-<a name="anch-details-about-vnet-rules-38q" />
+<!--<a name="anch-details-about-vnet-rules-38q"/> -->
 
 ## <a name="details-about-virtual-network-rules"></a>A virtuális hálózati szabályok részletei
 
@@ -141,27 +104,7 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
-## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>Az "Azure-szolgáltatások elérésének engedélyezése a kiszolgálóhoz" művelet következményeinek eltávolítása
 
-Sok felhasználó szeretné eltávolítani az **Azure-szolgáltatások számára, hogy hozzáférjenek a kiszolgálóhoz** az Azure SQL Server-kiszolgálóról, és lecserélik azt egy VNet tűzfalszabály segítségével.
-Az Eltávolítás azonban a következő funkciókat érinti:
-
-### <a name="import-export-service"></a>Exportálási szolgáltatás importálása
-
-Azure SQL Database importálási exportálási szolgáltatás az Azure-beli virtuális gépeken fut. Ezek a virtuális gépek nem a VNet találhatók, ezért Azure-beli IP-címet kapnak az adatbázishoz való csatlakozáskor. Ha eltávolítja az **Azure-szolgáltatások elérésének engedélyezése kiszolgálót,** ezek a virtuális gépek nem fognak tudni hozzáférni az adatbázisokhoz.
-Megkerülheti a problémát. Futtassa a BACPAC importálását, vagy exportálja közvetlenül a kódban a DACFx API használatával. Győződjön meg arról, hogy ez a VNet-alhálózatban található virtuális gépen van telepítve, amelyhez a tűzfalszabály be lett állítva.
-
-### <a name="sql-database-query-editor"></a>SQL Database lekérdezés-szerkesztő
-
-A Azure SQL Database lekérdezés-szerkesztő üzembe helyezése az Azure-beli virtuális gépeken történik. Ezek a virtuális gépek nem a VNet találhatók. Ezért a virtuális gépek Azure-beli IP-címet kapnak az adatbázishoz való csatlakozáskor. Ha eltávolítja az **Azure-szolgáltatások elérésének engedélyezése kiszolgálót**, ezek a virtuális gépek nem fognak tudni hozzáférni az adatbázisokhoz.
-
-### <a name="table-auditing"></a>Tábla naplózása
-
-Jelenleg két módon engedélyezheti a naplózást a SQL Databaseon. A tábla naplózása meghiúsul, miután engedélyezte a szolgáltatási végpontokat az Azure-SQL Server. Az itt található megoldás a Blobok naplózására való áttérés.
-
-### <a name="impact-on-data-sync"></a>Az adatszinkronizálás hatása
-
-Azure SQL Database rendelkezik az adatszinkronizálási funkcióval, amely az Azure IP-címek használatával csatlakozik az adatbázisokhoz. A szolgáltatási végpontok használatakor valószínű, hogy kikapcsolja az **Azure-szolgáltatások számára, hogy hozzáférjen a kiszolgálóhoz** a SQL Database-kiszolgálóhoz. Ezzel megtöri az adatszinkronizálási funkciót.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Az VNet szolgáltatásbeli végpontok használatának következményei az Azure Storage-ban
 
@@ -174,6 +117,7 @@ A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseb
 #### <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
 > Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
@@ -182,12 +126,12 @@ A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseb
 3.  Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage** -fiókhoz az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .
  
 #### <a name="steps"></a>Lépések
-1. A PowerShellben **regisztrálja SQL Database** -kiszolgálóját Azure Active Directory (HRE) használatával:
+1. A PowerShellben **regisztrálja Azure-SQL Server** a Azure SQL Data Warehouse-példány üzemeltetése Azure Active Directory (HRE) használatával:
 
    ```powershell
    Connect-AzAccount
    Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
     
    1. Hozzon létre egy **általános célú v2 Storage-fiókot** az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)segítségével.
@@ -196,7 +140,7 @@ A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseb
    > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re** kell frissítenie az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)segítségével.
    > - Azure Data Lake Storage Gen2 kapcsolatos ismert problémák esetén tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendeljen hozzá **Storage blob** -adatközreműködői RBAC szerepkört a SQL Database-kiszolgálóhoz.
+1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendelje hozzá a **Storage blob** -adatközreműködői RBAC szerepkört az azure-SQL Server, amely az 1. lépésben az Azure Active DIRECOTORY (HRE) szolgáltatásban regisztrált Azure SQL Data Warehouse.
 
    > [!NOTE] 
    > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).

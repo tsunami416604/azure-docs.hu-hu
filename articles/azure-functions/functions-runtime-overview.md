@@ -1,56 +1,55 @@
 ---
-title: Azure Functions Runtime áttekintése |} A Microsoft Docs
-description: Az Azure Functions Runtime előzetes verziójának áttekintése
+title: Azure Functions-futtatókörnyezet áttekintése | Microsoft Docs
+description: A Azure Functions-futtatókörnyezet előzetes verziójának áttekintése
 services: functions
 author: apwestgarth
 manager: stefsch
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 2af9575c50ee522d6330ddf46c75b666132b7a84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e67041ca78ba328fad132cc556b12d780eb9b318
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61021208"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095978"
 ---
-# <a name="azure-functions-runtime-overview-preview"></a>Az Azure Functions Runtime áttekintése (előzetes verzió)
+# <a name="azure-functions-runtime-overview-preview"></a>Azure Functions-futtatókörnyezet áttekintése (előzetes verzió)
 
 [!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
-Az Azure Functions Runtime (előzetes verzió), hogy az egyszerűség és rugalmasság az Azure Functions egy új módon biztosít a programozási modell helyszíni. Az Azure Functions, az azonos nyílt forráskódú gyökerek épülő Azure Functions Runtime üzembe helyezett helyszíni majdnem azonos fejlesztési élmény érdekében a felhőszolgáltatáshoz.
+A Azure Functions-futtatókörnyezet (előzetes verzió) új módszert kínál a Azure Functions programozási modell egyszerűségének és rugalmasságának kihasználására a helyszínen. A Azure Functionsra épülő, ugyanazon a nyílt forráskódú gyökereken alapuló Azure Functions-futtatókörnyezet üzembe helyezése a helyszínen történik, hogy közel azonos fejlesztési élményt nyújtson a Cloud Service-nek.
 
-![Az Azure Functions Runtime betekintő portálon][1]
+![Azure Functions-futtatókörnyezet betekintő portál][1]
 
-Az Azure Functions Runtime biztosítja, hogy az Azure Functions élményt a felhőben véglegesítése előtt. Ezzel a módszerrel a kód eszközök létrehozhat majd elvégezhet, a felhőbe áttelepítésekor.  A futtatókörnyezet új beállítások, például a kötegelt folyamatok éjszaka futtatni a tartalék számítási teljesítményt a helyszíni számítógépek használatával is megnyílik. Is használhatja eszközök a szervezeten belüli más rendszerekre, mind a helyszíni és felhőbeli feltételesen adatküldéshez.
+A Azure Functions-futtatókörnyezet a felhőbe való véglegesítés előtt lehetővé teszi a Azure Functions élményét. Így a létrehozott kód eszközei a felhőbe való áttelepítéskor is megadhatók.  A futtatókörnyezet emellett új lehetőségeket is nyit meg, például a helyszíni számítógépek tartalék számítási teljesítményének használatával, hogy egy egynapos kötegelt feldolgozást futtasson. A szervezeten belüli eszközöket is használhatja arra, hogy a helyszíni és a felhőben egyaránt más rendszerekre is küldje az adatküldés feltételeit.
 
-Az Azure Functions Runtime két részből áll:
+A Azure Functions-futtatókörnyezet két darabból áll:
 
-* Azure Functions Runtime Management Role
-* Az Azure Functions Runtime feldolgozói szerepkör
+* Felügyeleti szerepkör Azure Functions-futtatókörnyezet
+* Feldolgozói szerepkör Azure Functions-futtatókörnyezet
 
-## <a name="azure-functions-management-role"></a>Az Azure Functions felügyeleti szerepkör
+## <a name="azure-functions-management-role"></a>Felügyeleti szerepkör Azure Functions
 
-Az Azure Functions felügyeleti szerepkör biztosít egy gazdagépet a függvények helyi felügyeletéhez. Ez a szerepkör az alábbi feladatokat hajtja végre:
+A Azure Functions felügyeleti szerepkör egy gazdagépet biztosít a helyszíni függvények felügyeletéhez. Ez a szerepkör a következő feladatokat hajtja végre:
 
-* Az Azure Functions felügyeleti portálján, amely megegyezik egy jelenik meg, a üzemeltetési a [az Azure portal](https://portal.azure.com). A portál, amely lehetővé teszi a függvények fejlesztése ugyanúgy, mint az Azure Portalon az egységes élményt nyújt.
-* Definíciófrissítés-terjesztés funkciók feldolgozó funkciók között.
-* A közzététel végpontja biztosít, így közzéteheti a függvényeket közvetlenül a Microsoft Visual Studio letöltésével és a közzétételi profil importálása.
+* A Azure Functions felügyeleti portál, amely ugyanaz, mint amit a [Azure Portal](https://portal.azure.com)láthat. A portál egységes felhasználói élményt nyújt, amellyel ugyanúgy fejlesztheti a függvényeket, mint a Azure Portal.
+* A függvények elosztása több functions-feldolgozón keresztül.
+* Közzétételi végpont biztosítása, hogy a közzétételi profil letöltésével és importálásával közvetlenül a Microsoft Visual studióból teheti közzé a funkcióit.
 
-## <a name="azure-functions-worker-role"></a>Az Azure Functions feldolgozói szerepkör
+## <a name="azure-functions-worker-role"></a>Feldolgozói szerepkör Azure Functions
 
-Az Azure Functions feldolgozói szerepkörök Windows-tárolók üzemelnek, és, ahol a függvénykódban hajt végre.  Több feldolgozói szerepkört telepítheti a szervezetben, és ezt a beállítást, amelyben tehetik legfontosabb úgy tartalék számítási teljesítményt használja.  Egy tartalék számítási számos szervezet esetén például a gépek folyamatosan bekapcsolt, de nem használt nagy e-mail-címen.
+A Azure Functions feldolgozói szerepkörök Windows-tárolókban vannak telepítve, és a függvény kódját hajtja végre.  A szervezeten belül több feldolgozói szerepkört is üzembe helyezhet, és ez a lehetőség olyan kulcsfontosságú módszer, amelyben az ügyfelek igénybe vehetik a tartalék számítási teljesítményt.  Az egyik példa arra, hogy hol található a tartalék számítási szolgáltatás számos szervezeten belül, és a gépeket folyamatosan, de nagy ideig nem használják.
 
 ## <a name="minimum-requirements"></a>Minimális követelmények
 
-Ismerkedés az Azure Functions Runtime, egy gép Windows Server 2016 vagy Windows 10 alkotói frissítés az SQL Server-példányra hozzáféréssel kell rendelkeznie.
+A Azure Functions-futtatókörnyezet első lépéseihez rendelkeznie kell egy, a SQL Server-példányhoz hozzáféréssel rendelkező Windows Server 2016 vagy Windows 10 alkotói frissítéssel rendelkező géppel.
 
 ## <a name="next-steps"></a>További lépések
 
-Telepítse a [Azure Functions Runtime előzetes verziója](https://aka.ms/azafrdoc)
+A [Azure functions-futtatókörnyezet előzetes](https://aka.ms/azafrdoc) verziójának telepítése
 
 <!--Image references-->
 [1]: ./media/functions-runtime-overview/AzureFunctionsRuntime_Portal.png

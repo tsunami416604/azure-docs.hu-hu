@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 17ae6dc8d1d583e5223a64ee079731fa5d9dc63c
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 03d67249ef1d74844a7e9019e90f6331ecfdf0c3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902311"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102979"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Az érdeklődők felügyeletének konfigurálása a Dynamics 365-hez ügyfél-engagement esetén
 
@@ -97,7 +97,7 @@ Az alábbi lépésekkel konfigurálhatja a Dynamics 365-hez készült Azure Acti
 
     ![Engedélyek hozzáadása](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
-14. Miután elvégezte a 1-13-es lépéseket a Azure Portalon, navigáljon a Dynamics 365 for Customer engagement-példányhoz az URL https://tenant.crm.dynamics.com) -címhez való navigálással (például:).
+14. Miután befejezte a 1-13-es lépéseket a Azure Portalon, navigáljon a Dynamics 365 for Customer engagement-példányhoz az URL- `https://tenant.crm.dynamics.com`cím (például:) eléréséhez.
 15. Hozzáférési beállítások a fogaskerék ikonra kattintva és a **Speciális beállítások** a felső navigációs sávon.
 16. A beállítások lapon kattintson a felső navigációs sávon a beállítás menüre, és válassza a **Biztonság**elemet.
 17. A biztonság lapon válassza a **felhasználók**lehetőséget.  A felhasználók lapon válassza az "engedélyezett felhasználók" legördülő menüt az **alkalmazás felhasználóinak**való átváltáshoz.

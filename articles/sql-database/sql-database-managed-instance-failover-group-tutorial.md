@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 5169fe5eef416812c399b421f59305f6cb1e7b62
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 3e5b96cf4227e933aa99b37469410276a775dbed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035788"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103104"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL Database felügyelt példány hozzáadása feladatátvételi csoporthoz
 
@@ -40,13 +40,15 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 - Egy Azure-előfizetés, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) , ha még nem rendelkezik ilyennel. 
 
 
-## <a name="1----create-resource-group-and-primary-managed-instance"></a>1 – erőforráscsoport és elsődleges felügyelt példány létrehozása
+## <a name="1---create-resource-group-and-primary-managed-instance"></a>1 – erőforráscsoport és elsődleges felügyelt példány létrehozása
 Ebben a lépésben létrehozza az erőforráscsoportot és a feladatátvételi csoport elsődleges felügyelt példányát a Azure Portal használatával. 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-1. Válassza a Azure Portal bal felső sarkában található **erőforrás létrehozását** . 
-1. Írja `managed instance` be a keresőmezőbe a kifejezést, és válassza az Azure SQL felügyelt példányának lehetőséget. 
-1. Válassza a **Létrehozás** lehetőséget az **SQL felügyelt példány** létrehozási oldalának elindításához. 
+1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
+1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A különböző adatbázisokkal kapcsolatos további információkat az adatbázisok csempén a Részletek megjelenítése lehetőség kiválasztásával tekintheti meg.
+1. Válassza a **Létrehozás** lehetőséget a **felügyelt SQL** -példányok csempén. 
+
+    ![Felügyelt példány kiválasztása](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. A **Azure SQL Database felügyelt példány létrehozása** lap **alapok** lapján
     1. A **Project Details (projekt részletei**) területen válassza ki az előfizetését a legördülő menüből, majd válassza az **Új erőforráscsoport létrehozása** lehetőséget. Írja be az erőforráscsoport nevét, például `myResourceGroup`:. 
     1. A **felügyelt példány részletei**területen adja meg a felügyelt példány nevét, valamint azt a régiót, ahol a felügyelt példányt telepíteni szeretné. Hagyja meg a számítási és a **tárolási** értékeket az alapértelmezett értékeken. 
@@ -98,8 +100,12 @@ A második felügyelt példánynak a következőket kell tennie:
 
 A másodlagos felügyelt példány létrehozásához kövesse az alábbi lépéseket: 
 
-1. A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozása** és a *felügyelt Azure SQL-példány*keresése lehetőséget. 
-1. Válassza ki a Microsoft által közzétett **Azure SQL felügyelt példány** lehetőséget, majd a következő oldalon válassza a **Létrehozás** elemet.
+1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
+1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A különböző adatbázisokkal kapcsolatos további információkat az adatbázisok csempén a Részletek megjelenítése lehetőség kiválasztásával tekintheti meg.
+1. Válassza a **Létrehozás** lehetőséget a **felügyelt SQL** -példányok csempén. 
+
+    ![Felügyelt példány kiválasztása](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. A **Azure SQL Database felügyelt példány létrehozása** lap **alapok** lapján töltse ki a szükséges mezőket a másodlagos felügyelt példány konfigurálásához. 
 
    A következő táblázat a másodlagos felügyelt példányhoz szükséges értékeket tartalmazza:
@@ -209,9 +215,8 @@ A kapcsolat konfigurálásához kövesse az alábbi lépéseket:
 ## <a name="7---create-a-failover-group"></a>7 – feladatátvételi csoport létrehozása
 Ebben a lépésben létrehozza a feladatátvételi csoportot, és hozzáadja a felügyelt példányokat is. 
 
-1. A [Azure Portal](https://portal.azure.com)lépjen a **minden szolgáltatás** elemre, `managed instance` és írja be a kifejezést a keresőmezőbe. 
-1. Választható Válassza ki az SQL- **felügyelt példányok** melletti csillagot a felügyelt példányok hozzáadásához a bal oldali navigációs sávra mutató hivatkozásként. 
-1. Válassza az **SQL felügyelt példányok** lehetőséget, és válassza ki az `sql-mi-primary`elsődleges felügyelt példányt, például:. 
+1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
+1. Válassza ki az első szakaszban létrehozott elsődleges felügyelt példányt, például `sql-mi-primary`:. 
 1. A **Beállítások**területen navigáljon a **példány feladatátvételi csoportok** elemre, majd válassza a **Csoport hozzáadása** lehetőséget a **példány feladatátvételi csoport** lap megnyitásához. 
 
    ![Feladatátvételi csoport hozzáadása](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)

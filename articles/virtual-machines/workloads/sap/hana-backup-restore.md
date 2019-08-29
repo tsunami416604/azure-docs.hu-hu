@@ -7,19 +7,18 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27f7a9b576263b97c251306c9817b85c31041739
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 705dfb0b62327d9675fe9bf3e5860b1396e2fab9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312229"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101305"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
@@ -132,7 +131,7 @@ Az Azure-on SAP HANA telepített Linux operációs rendszer (nagyméretű péld�
 
 Az Ön felelőssége, hogy a SAP HANA HDB-ügyfelet a HANA nagyméretű példányok egységére telepítse a SAP HANA telepítésekor.
 
-### <a name="step-2-change-the-etcsshsshconfig"></a>2\. lépés: A/etc/ssh/SSH\_konfigurációjának módosítása
+### <a name="step-2-change-the-etcsshssh_config"></a>2\. lépés: A/etc/ssh/SSH\_konfigurációjának módosítása
 
 Ez a lépés a [Microsoft Snapshot Tools for SAP HANA on Azure-on](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)való kommunikáció engedélyezése a Storage szolgáltatással című témakörben található.
 
@@ -303,7 +302,7 @@ A pillanatképekkel kapcsolatos további részletekért használja a parancsfáj
    * Egy kötet összes pillanatképének mérete
    * Az alábbi részletek az adott kötet minden pillanatképében: 
       - Pillanatkép neve 
-      - Létrehozás ideje 
+      - Létrehozás időpontja 
       - A pillanatkép mérete
       - A pillanatkép gyakorisága
       - Az adott pillanatképhez társított HANA biztonsági mentési azonosító, ha van ilyen

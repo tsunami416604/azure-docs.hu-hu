@@ -9,12 +9,12 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: e1285f6bc3bd081eae03cf1e5a124a86cac7a2ae
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 62b96fa8722408aed81e87cb31218140fa4f5da8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335987"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099411"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>A Azure Logic Apps díjszabási modellje
 
@@ -33,7 +33,7 @@ A műveletek például a következők:
 * A [felügyelt összekötők](../connectors/apis-list.md##managed-connectors) , például az Outlook 365, a Dropbox stb. meghívása
 * Vezérlési folyamat lépései, például hurkok, feltételes utasítások stb.
 
-[](../connectors/apis-list.md#managed-connectors) A standard szintű összekötőket a [standard szintű összekötő](https://azure.microsoft.com/pricing/details/logic-apps)díja alapján számítjuk fel. Az általánosan [elérhető](../connectors/apis-list.md#managed-connectors) nagyvállalati összekötőket a [vállalati összekötők díjszabása](https://azure.microsoft.com/pricing/details/logic-apps)alapján számítjuk fel, míg a nyilvános előzetes verziójú vállalati összekötők díját a [standard szintű összekötő](https://azure.microsoft.com/pricing/details/logic-apps)díja alapján számítjuk fel
+[](../connectors/apis-list.md#managed-connectors) A standard szintű összekötőket a [standard szintű összekötő](https://azure.microsoft.com/pricing/details/logic-apps)díja alapján számítjuk fel. Az általánosan [](../connectors/apis-list.md#managed-connectors) elérhető nagyvállalati összekötőket a [vállalati összekötők díjszabása](https://azure.microsoft.com/pricing/details/logic-apps)alapján számítjuk fel, míg a nyilvános előzetes verziójú vállalati összekötők [díját a standard szintű összekötő](https://azure.microsoft.com/pricing/details/logic-apps)díja alapján számítjuk fel
 
 További információ a számlázás működéséről [Eseményindítók](#triggers) és [műveletek](#actions)esetén.
 
@@ -61,12 +61,12 @@ Az [ *integrációs szolgáltatási környezet* (ISE)](../logic-apps/connect-vir
 
   * **Fejlesztői SKU**: Akár 4 további standard fiók, vagy akár 5 teljes standard fiók. Nincsenek alapszintű fiókok.
 
-További információ az integrációs fiók korlátairól: [Logic apps korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Az [integrációs fiók szintjeiről és azok díjszabási modelljéről](#integration-accounts) a jelen témakör későbbi részében olvashat bővebben. 
+További információ az integrációs fiók korlátairól: [Logic apps korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Az [integrációs fiók szintjeiről és azok díjszabási modelljéről](#integration-accounts) a jelen témakör későbbi részében olvashat bővebben.
 
 A prémium ISE SKU esetében az alapegység rögzített kapacitással rendelkezik, így ha több átviteli sebességre van szüksége, akkor akár a létrehozáskor, akár a későbbiekben [több skálázási egységet is hozzáadhat](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity). A fejlesztői ISE SKU nem képes további skálázási egységek hozzáadására. Az ISE-ben futó logikai alkalmazások nem vállalnak adatmegőrzési költségeket.
 
 > [!NOTE]
-> Az ISE-ben a beépített eseményindítók és műveletek megjelenítik az **alapcímkét** , és UGYANABBAN az ISE-ben futnak, mint a Logic apps. A standard és a vállalati összekötők, amelyek megjelenítik az **ISE** -címkét, UGYANABBAN az ISE-ben futnak, mint a Logic apps. Az ISE-címkét nem megjelenítő összekötők a globális Logic Apps szolgáltatásban futnak.
+> Az ISE-ben a beépített eseményindítók és műveletek megjelenítik az alapcímkét, és UGYANABBAN az ISE-ben futnak, mint a Logic apps. A standard és a vállalati összekötők, amelyek megjelenítik az **ISE** -címkét, UGYANABBAN az ISE-ben futnak, mint a Logic apps. Az ISE-címkét nem megjelenítő összekötők a globális Logic Apps szolgáltatásban futnak.
 
 A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps).
 
@@ -162,7 +162,7 @@ A logikai alkalmazás tárterület-felhasználásának figyeléséhez a követke
 
 1. Válassza ki a megtekinteni kívánt műveletet a **logikai alkalmazás futtatása részletek** panelen, a műveletek táblában, amely felsorolja az egyes műveletek állapotát és időtartamát.
 
-1. A **logikai alkalmazás műveleti** ablaktábláján keresse meg a művelet bemeneteit és kimeneteit a bemenetek és kimenetek  **hivatkozás**alatt.
+1. A **logikai alkalmazás műveleti** ablaktábláján keresse meg a művelet bemeneteit és kimeneteit a bemenetek és kimenetek **hivatkozás**alatt.
 
 ## <a name="next-steps"></a>További lépések
 

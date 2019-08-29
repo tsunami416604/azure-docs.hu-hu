@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 7a3cdab8e05a873e67788a72350d1bf3fde3cd18
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4865a2b3b02a1e7a6db19418122b66aeb79dd332
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018202"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099466"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás Azure-beli virtuális hálózatokhoz Azure Logic Appsból integrációs szolgáltatási környezet (ISE) használatával
 
@@ -88,7 +88,8 @@ Ez a táblázat a virtuális hálózat azon portjait ismerteti, amelyeket az ISE
 | Kommunikáció az Azure Traffic Manager | Bejövő | 443 | AzureTrafficManager | VirtualNetwork | |
 | Logic Apps Designer – dinamikus tulajdonságok | Bejövő | 454 | Internet | VirtualNetwork | A kérelmek az [adott régióban a Logic apps hozzáférési végpont bejövő IP-címeiből](../logic-apps/logic-apps-limits-and-config.md#inbound)származnak. |
 | App Service felügyeleti függőség | Bejövő | 454, 455 | AppServiceManagement | VirtualNetwork | |
-| Összekötő üzembe helyezése | Bejövő | 454, 3443 | Internet | VirtualNetwork | Összekötők üzembe helyezéséhez és frissítéséhez szükséges. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
+| Összekötő üzembe helyezése | Bejövő | 454 | AzureConnectors | VirtualNetwork | Összekötők üzembe helyezéséhez és frissítéséhez szükséges. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
+| Összekötő-házirend üzembe helyezése | Bejövő | 3443 | Internet | VirtualNetwork | Összekötők üzembe helyezéséhez és frissítéséhez szükséges. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
 | Azure SQL-függőség | Kimenő | 1433 | VirtualNetwork | SQL | |
 | Azure Resource Health | Kimenő | 1886 | VirtualNetwork | AzureMonitor | Állapot közzétételének Resource Health |
 | API Management felügyeleti végpont | Bejövő | 3443 | APIManagement | VirtualNetwork | |
