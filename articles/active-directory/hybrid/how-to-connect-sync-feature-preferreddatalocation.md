@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff74db14a1621cdcea1b1ae082d351ce6a3a52f6
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 13beafe9a6937b0404a58d3508a9aba9892ac04d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227409"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073878"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect szinkronizálás: Az Office 365-erőforrások előnyben részesített adatelérési helyének konfigurálása
 Ennek a témakörnek a célja, hogy megtudja, hogyan konfigurálhatja az attribútumot az előnyben részesített adathelyhez az Azure Active Directory (Azure AD) kapcsolódási szinkronizálásban. Ha valaki multi-geo képességeket használ az Office 365-ben, ezzel az attribútummal jelölheti meg a felhasználó Office 365-beli adatmennyiségének földrajzi helyét. (A feltételek régiója és a *földrajzi* *terület* szinonimaként használható.)
@@ -32,7 +32,7 @@ Alapértelmezés szerint a felhasználók Office 365-erőforrásai ugyanabban a 
 A **preferredDataLocation**attribútum beállításával megadhatja a felhasználó földrajzi elhelyezkedését. A felhasználó Office 365-erőforrásait, például a postaládát és a OneDrive a felhasználóval megegyező földrajzi tartományba helyezheti, és továbbra is rendelkezik egy Bérlővel a teljes szervezet számára.
 
 > [!IMPORTANT]
-> A multi-geo jelenleg a legalább 500 Office 365 Services-előfizetéssel rendelkező ügyfelek számára érhető el. A részletekért forduljon a Microsoft képviselőjéhez.
+> A multi-geo jelenleg aktív Nagyvállalati Szerződés és legalább 500 Office 365 Services-előfizetéssel rendelkező ügyfelek számára érhető el. A részletekért forduljon a Microsoft képviselőjéhez.
 >
 >
 
@@ -91,7 +91,7 @@ Ha el szeretné kerülni az Azure AD-ba való nem kívánt módosítások elker�
 
 1. Indítsa el a PowerShell-munkamenetet a Azure AD Connect-kiszolgálón.
 2. Az ütemezett szinkronizálás letiltása a következő parancsmag futtatásával: `Set-ADSyncScheduler -SyncCycleEnabled $false`.
-3. A**szinkronizálási szolgáltatás**elindításával  > indítsa el a **synchronization Service Manager** .
+3. A**szinkronizálási szolgáltatás**elindításával > indítsa el a **synchronization Service Manager** .
 4. Válassza az **Operations (műveletek** ) fület, és ellenőrizze, hogy nincs *-e folyamatban*állapotú művelet.
 
 ![Képernyőkép a Synchronization Service Managerról](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
@@ -99,7 +99,7 @@ Ha el szeretné kerülni az Azure AD-ba való nem kívánt módosítások elker�
 ## <a name="step-2-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>2\. lépés: A forrás attribútum hozzáadása a helyszíni Active Directory összekötő sémához
 Nem minden Azure AD-attribútum importálható a helyszíni Active Directory-összekötő területére. Ha olyan attribútumot jelölt ki, amely alapértelmezés szerint nincs szinkronizálva, akkor importálnia kell azt. A forrás attribútum hozzáadása az importált attribútumok listájához:
 
-1. Válassza a  synchronization Service Manager összekötők lapját.
+1. Válassza a synchronization Service Manager összekötők lapját.
 2. Kattintson a jobb gombbal a helyszíni Active Directory összekötőre, majd válassza a **Tulajdonságok**lehetőséget.
 3. Az előugró párbeszédpanelen lépjen az **attribútumok kiválasztása** lapra.
 4. Győződjön meg arról, hogy a használni kívánt forrásoldali attribútum be van jelölve az attribútumok listájában. Ha nem látja az attribútumot, jelölje be az **összes megjelenítése** jelölőnégyzetet.
@@ -110,7 +110,7 @@ Nem minden Azure AD-attribútum importálható a helyszíni Active Directory-ös
 ## <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>3\. lépés: **PreferredDataLocation** hozzáadása az Azure ad Connector sémához
 Alapértelmezés szerint a **preferredDataLocation** attribútum nem lett importálva az Azure ad-összekötő területére. Hozzáadás az importált attribútumok listájához:
 
-1. Válassza a  synchronization Service Manager összekötők lapját.
+1. Válassza a synchronization Service Manager összekötők lapját.
 2. Kattintson a jobb gombbal az Azure AD-összekötőre, és válassza a **Tulajdonságok**lehetőséget.
 3. Az előugró párbeszédpanelen lépjen az **attribútumok kiválasztása** lapra.
 4. Válassza ki a **preferredDataLocation** attribútumot a listában.
@@ -121,8 +121,8 @@ Alapértelmezés szerint a **preferredDataLocation** attribútum nem lett import
 ## <a name="step-4-create-an-inbound-synchronization-rule"></a>4\. lépés: Bejövő szinkronizálási szabály létrehozása
 A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum értéke a helyszíni Active Directory Forrás attribútumáról a metaverse-ba kerüljön.
 
-1. Indítsa el a **szinkronizálási szabályok szerkesztőjét** a szinkronizálási**szabályok szerkesztőjének**elindításával.  > 
-2. Állítsa be a keresési  szűrő irányát **bejövő**értékre.
+1. Indítsa el a **szinkronizálási szabályok szerkesztőjét** a szinkronizálási**szabályok szerkesztőjének**elindításával. > 
+2. Állítsa be a keresési szűrő irányát **bejövő**értékre.
 3. Új bejövő szabály létrehozásához válassza az **új szabály hozzáadása**lehetőséget.
 4. A **Leírás** lapon adja meg a következő konfigurációt:
 
@@ -139,9 +139,9 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért
 5. Az összes objektum belefoglalásához hagyja üresen a **hatókör-szűrőt** . Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.
 6. Nyissa meg az **átalakítás lapot**, és hajtsa végre a következő átalakítási szabályt:
 
-    | Folyamat típusa | Cél attribútum | Source | Egyszeri alkalmazás | Egyesítés típusa |
+    | Folyamat típusa | Célattribútum | Source | Egyszeri alkalmazás | Egyesítés típusa |
     | --- | --- | --- | --- | --- |
-    |Direct | preferredDataLocation | A forrás attribútum kiválasztása | Nincs bejelölve | frissítés |
+    |Közvetlen | preferredDataLocation | A forrás attribútum kiválasztása | Nincs bejelölve | frissítés |
 
 7. A Bejövő szabály létrehozásához válassza a **Hozzáadás**lehetőséget.
 
@@ -167,7 +167,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
 5. Nyissa meg a **hatókör-szűrő** lapot, és adjon hozzá egyetlen hatókörű szűrőt két záradékkal:
 
-    | Attribútum | Operator | Érték |
+    | Attribútum | Operator | Value |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | Felhasználó |
     | cloudMastered | NOTEQUAL | True |
@@ -176,9 +176,9 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
 6. Nyissa meg az **átalakítás** lapot, és hajtsa végre a következő átalakítási szabályt:
 
-    | Folyamat típusa | Cél attribútum | Source | Egyszeri alkalmazás | Egyesítés típusa |
+    | Folyamat típusa | Célattribútum | Source | Egyszeri alkalmazás | Egyesítés típusa |
     | --- | --- | --- | --- | --- |
-    | Direct | preferredDataLocation | preferredDataLocation | Nincs bejelölve | frissítés |
+    | Közvetlen | preferredDataLocation | preferredDataLocation | Nincs bejelölve | frissítés |
 
 7. Zárja be a **Hozzáadás** lehetőséget a Kimenő szabály létrehozásához.
 

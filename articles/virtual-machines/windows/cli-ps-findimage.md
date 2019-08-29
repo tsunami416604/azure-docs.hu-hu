@@ -1,6 +1,6 @@
 ---
-title: Válassza ki a Windows VM-rendszerképek az Azure-ban |} A Microsoft Docs
-description: Azure PowerShell használatával a közzétevő, ajánlat, Termékváltozat és verzió Marketplace Virtuálisgép-rendszerképek határozza meg.
+title: Windowsos VM-rendszerképek kiválasztása az Azure-ban | Microsoft Docs
+description: A Azure PowerShell segítségével meghatározhatja a Piactéri virtuálisgép-rendszerképek közzétevőjét, ajánlatát, SKU-jának és verziószámát.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -9,39 +9,38 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 188b8974-fabd-4cd3-b7dc-559cbb86b98a
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: eb8feb13caebc938d9b56a985c07ceb06e211b24
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 645d969d71a0b8707d7969f4bf68a07ab0211d0a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719171"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080026"
 ---
-# <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Az Azure Marketplace-en az Azure PowerShell használatával Windows Virtuálisgép-rendszerképek keresése
+# <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Windows rendszerű virtuális gépek rendszerképeinek keresése az Azure Marketplace-en Azure PowerShell
 
-Ez a cikk ismerteti az Azure piactéren Virtuálisgép-rendszerképek keresése az Azure PowerShell használatával. Ezt követően megadhatja a Piactéri rendszerkép programozott módon létrehozott egy virtuális Gépet a PowerShell-lel, Resource Manager-sablonok vagy más eszközök.
+Ez a cikk azt ismerteti, hogyan használhatók a Azure PowerShell a virtuálisgép-rendszerképek megkereséséhez az Azure Marketplace-en. Ezt követően megadhatja a piactér rendszerképét, ha programozott módon hoz létre virtuális gépet a PowerShell, a Resource Manager-sablonok vagy más eszközök használatával.
 
-Elérhető lemezképek és ajánlatok használatával is megkeresheti a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/) kirakat, a [az Azure portal](https://portal.azure.com), vagy a [Azure CLI-vel](../linux/cli-ps-findimage.md). 
+Az elérhető lemezképek és ajánlatok az [Azure Marketplace](https://azuremarketplace.microsoft.com/) kirakat, a [Azure Portal](https://portal.azure.com)vagy az [Azure CLI](../linux/cli-ps-findimage.md)használatával is tallózhatók. 
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
-## <a name="table-of-commonly-used-windows-images"></a>A gyakran használt Windows-rendszerképek táblája
+## <a name="table-of-commonly-used-windows-images"></a>A gyakran használt Windows-rendszerképek táblázata
 
-Ez a táblázat bemutatja a rendelkezésre álló SKU-k egy részét a jelzett közzétevők és ajánlatokat.
+Ez a táblázat a jelzett közzétevők és ajánlatok számára elérhető SKU-ket mutatja.
 
-| Kiadó | Ajánlat | SKU |
+| Kiadó | Ajánlat | Termékváltozat |
 |:--- |:--- |:--- |
-| MicrosoftWindowsServer |WindowsServer |A 2019-Datacenter |
+| MicrosoftWindowsServer |WindowsServer |2019 – Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2019-Datacenter-Core |
 | MicrosoftWindowsServer |WindowsServer |2019-Datacenter-with-Containers |
-| MicrosoftWindowsServer |WindowsServer |2016-Datacenter |
+| MicrosoftWindowsServer |WindowsServer |2016 – Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2016-Datacenter-Server-Core |
 | MicrosoftWindowsServer |WindowsServer |2016-Datacenter-with-Containers |
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
@@ -51,47 +50,47 @@ Ez a táblázat bemutatja a rendelkezésre álló SKU-k egy részét a jelzett k
 | MicrosoftSQLServer |SQL2019-WS2016 |Vállalati |
 | MicrosoftRServer |RServer-WS2016 |Vállalati |
 
-## <a name="navigate-the-images"></a>Keresse meg a képek
+## <a name="navigate-the-images"></a>A képek navigálása
 
-Futtassa a kép egy helyen található egyik módja a [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher), [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer), és [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) parancsmagok sorrendben:
+Az egyik lehetőség, hogy egy helyen található rendszerképet keres, a [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher), a [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer)és a [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) parancsmagokat a következő sorrendben futtassa:
 
 1. Listázza a rendszerkép-közzétevőket.
 2. Listázza egy adott közzétevő ajánlatait.
 3. Listázza egy adott ajánlathoz tartozó termékváltozatokat.
 
-Ezután a kiválasztott termékváltozat futtassa [Get-AzVMImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimage) üzembe helyezéséhez a verziók listázásához.
+Ezután a kiválasztott SKU-hoz futtassa a [Get-AzVMImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimage) parancsot a telepítendő verziók listázásához.
 
-1. A közzétevők listázása:
+1. Közzétevők listázása:
 
     ```powershell
     $locName="<Azure location, such as West US>"
     Get-AzVMImagePublisher -Location $locName | Select PublisherName
     ```
 
-2. Adja meg a kiválasztott közzétevő nevét, és az ajánlatok listázása:
+2. Adja meg a választott közzétevő nevét, és sorolja fel az ajánlatokat:
 
     ```powershell
     $pubName="<publisher>"
     Get-AzVMImageOffer -Location $locName -PublisherName $pubName | Select Offer
     ```
 
-3. Adja meg a kiválasztott ajánlat nevét, és a termékváltozatok listázása:
+3. Adja meg a választott ajánlat nevét, és sorolja fel az SKU-ket:
 
     ```powershell
     $offerName="<offer>"
     Get-AzVMImageSku -Location $locName -PublisherName $pubName -Offer $offerName | Select Skus
     ```
 
-4. Adja meg a kiválasztott Termékváltozat nevét, és a lemezkép-verzió beolvasása:
+4. Adja meg a választott SKU-nevet, és szerezze be a rendszerkép verzióját:
 
     ```powershell
     $skuName="<SKU>"
     Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
     ```
     
-Kimenetéből származó a `Get-AzVMImage` parancsot, kiválaszthatja, hogy egy új virtuális gép üzembe helyezéséhez lemezképe.
+A `Get-AzVMImage` parancs kimenetében kiválaszthatja az új virtuális gép üzembe helyezéséhez használt lemezképet.
 
-Az alábbi példa bemutatja a parancsok és a kibocsátásukra teljes folyamata:
+Az alábbi példa a parancsok és azok kimenetének teljes sorát mutatja be:
 
 ```powershell
 $locName="West US"
@@ -122,7 +121,7 @@ advantys
 ...
 ```
 
-Az a *MicrosoftWindowsServer* közzétevő:
+A *MicrosoftWindowsServer* -közzétevő esetében:
 
 ```powershell
 $pubName="MicrosoftWindowsServer"
@@ -139,7 +138,7 @@ WindowsServer
 WindowsServerSemiAnnual
 ```
 
-Az a *WindowsServer* kínálnak:
+A *windowsserver* ajánlathoz:
 
 ```powershell
 $offerName="WindowsServer"
@@ -170,24 +169,24 @@ Skus
 ...
 ```
 
-Ezután a *2019-Datacenter* Termékváltozat:
+Ezután az *2019-Datacenter* SKU esetében:
 
 ```powershell
 $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-Most a kijelölt közzétevő, ajánlat, Termékváltozat és verzió URN kombinálható (a következővel határolt értékekkel:). Ezt az URN adja át a `--image` paraméterrel rendelkező virtuális gép létrehozásakor a [New-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag. Igény szerint lecserélheti a verziószámot a URN "legutóbbi" beolvasni a rendszerkép legújabb verzióját.
+Most már egyesítheti a kiválasztott közzétevőt, ajánlatot, SKU-t és verziót egy URN (:) által elválasztott értékekkel). Ha a `--image` [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmaggal hoz létre egy virtuális gépet, adja át ezt az urn-t a paraméterrel. A lemezkép legújabb verziójának lekéréséhez igény szerint lecserélheti az URN verziószámát a "legutóbbi" értékre.
 
-Resource Manager-sablonnal rendelkező virtuális Gépet telepít, akkor a beállításokat a lemezkép paraméterek a külön-külön az `imageReference` tulajdonságait. Tekintse meg a [sablonreferenciát](/azure/templates/microsoft.compute/virtualmachines).
+Ha Resource Manager-sablonnal helyez üzembe egy virtuális gépet, akkor a `imageReference` tulajdonságok paramétereit egyenként kell beállítania. Tekintse meg a [sablonreferenciát](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
-### <a name="view-plan-properties"></a>Csomag tulajdonságainak megtekintése
+### <a name="view-plan-properties"></a>Terv tulajdonságainak megtekintése
 
-Egy rendszerkép beszerzési terv adatainak megtekintéséhez futtassa a `Get-AzVMImage` parancsmagot. Ha a `PurchasePlan` a kimenetben tulajdonság nem `null`, a rendszerképre feltételeket el kell fogadnia a programozott telepítés előtt.  
+Ha meg szeretné tekinteni a rendszerkép vásárlási tervének adatait, `Get-AzVMImage` futtassa a parancsmagot. Ha a kimenetben szereplő `null` tulajdonságnem,arendszerképnekaprogramozottüzembehelyezéselőttelkellfogadniaafeltételeket.`PurchasePlan`  
 
-Például a *Windows Server 2016 Datacenter* lemezkép nem rendelkezik további feltételeket, ezért a `PurchasePlan` információk `null`:
+Például a *Windows Server 2016 Datacenter* -rendszerkép nem rendelkezik további feltételekkel, így az `PurchasePlan` információ: `null`
 
 ```powershell
 $version = "2016.127.20170406"
@@ -213,7 +212,7 @@ DataDiskImages   : []
 
 ```
 
-Az alábbi példában látható a hasonló parancsot a *adatelemző virtuális gép – Windows 2016* lemezképet, amely rendelkezik a következő `PurchasePlan` tulajdonságai: `name`, `product`, és `publisher`. Bizonyos képek is, hogy egy `promotion code` tulajdonság. A lemezkép központi telepítése, lásd a következő szakaszok fogadja el a feltételeket és a programozott telepítés engedélyezése.
+Az alábbi példa egy hasonló parancsot mutat be a *Data Science Virtual Machine-Windows 2016* rendszerképhez, amely a következő `PurchasePlan` tulajdonságokkal rendelkezik `name`: `product`, és `publisher`. Néhány rendszerkép is rendelkezik egy `promotion code` tulajdonsággal. A rendszerkép üzembe helyezéséhez tekintse át a következő részeket a feltételek elfogadásához és a programozott telepítés engedélyezéséhez.
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
@@ -242,9 +241,9 @@ DataDiskImages   : []
 
 ```
 
-### <a name="accept-the-terms"></a>A feltételek elfogadása
+### <a name="accept-the-terms"></a>Feltételek elfogadása
 
-A licencszerződés megtekintéséhez használja a [Get-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms) parancsmagot, és adja meg a vásárlás megtervezése paramétereket. A kimenet egy hivatkozást kínál a feltételeket, a Piactéri lemezképhez a, és bemutatja, hogy Ön korábban elfogadta a használati. Győződjön meg arról, csak kisbetűk használata a paraméterértékek megadásához.
+A licencfeltételek megtekintéséhez használja a [Get-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms) parancsmagot, és adja meg a vásárlási terv paramétereit. A kimenet a Piactéri rendszerkép feltételeire mutató hivatkozást tartalmaz, és megjeleníti, hogy korábban elfogadta-e a feltételeket. Ügyeljen arra, hogy az összes kisbetűs betűt használja a paraméterek értékeiben.
 
 ```powershell
 Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -263,7 +262,7 @@ Accepted          : False
 Signdate          : 1/25/2019 7:43:00 PM
 ```
 
-Használja a [Set-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms) parancsmag elfogadja vagy elutasítja a feltételeket. Csak egyszer előfizetésenként elfogadására a lemezképhez kell. Győződjön meg arról, csak kisbetűk használata a paraméterértékek megadásához. 
+Használja a [set-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms) parancsmagot a feltételek elfogadásához vagy elutasításához. A rendszerképhez csak egyszer kell elfogadnia a feltételeket. Ügyeljen arra, hogy az összes kisbetűs betűt használja a paraméterek értékeiben. 
 
 ```powershell
 $agreementTerms=Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -285,9 +284,9 @@ Accepted          : True
 Signdate          : 2/23/2018 7:49:31 PM
 ```
 
-### <a name="deploy-using-purchase-plan-parameters"></a>Üzembe helyezés beszerzési terv paraméterei
+### <a name="deploy-using-purchase-plan-parameters"></a>Üzembe helyezés a vásárlási terv paramétereinek használatával
 
-Után elfogadja a feltételeket a lemezkép, telepíthet egy virtuális Gépet, az adott előfizetésben. Ahogy az alábbi kódrészletben látható módon, a [Set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) -parancsmaggal beállítható a Marketplace-en csomagadatokat a VM-objektumhoz. Teljes szkript létrehozása a virtuális gép hálózati beállításait, és a telepítés befejezéséhez, lásd: a [PowerShell-példaszkriptek](powershell-samples.md).
+A rendszerkép feltételeinek elfogadása után üzembe helyezhet egy virtuális gépet az előfizetésben. Ahogy az az alábbi kódrészletben is látható, a [set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) parancsmaggal állíthatja be a virtuálisgép-objektumhoz tartozó Piactéri terv adatait. A virtuális gép hálózati beállításainak létrehozásához és a telepítés befejezéséhez teljes parancsfájlt a PowerShell- [szkriptek példái](powershell-samples.md)című témakörben talál.
 
 ```powershell
 ...
@@ -319,13 +318,13 @@ $version = "19.01.14"
 $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
 ...
 ```
-Majd fogja adja át a hálózati konfigurációs objektumot és a Virtuálisgép-konfigurációt a `New-AzVM` parancsmagot.
+Ezután továbbítja a virtuális gép konfigurációját a hálózati konfigurációs objektumokkal együtt a `New-AzVM` parancsmaghoz.
 
 ## <a name="next-steps"></a>További lépések
 
-A virtuális gép gyors létrehozása a `New-AzVM` futtatásával alapvető információkat, lásd: [Windows virtuális gép létrehozása a PowerShell-lel](quick-create-powershell.md).
+A virtuális gép egyszerű rendszerkép-információkkal `New-AzVM` történő gyors létrehozásával kapcsolatban lásd: [Windows rendszerű virtuális gép létrehozása a PowerShell](quick-create-powershell.md)használatával.
 
 
-Tekintse meg a PowerShell-példaszkript [teljes konfigurációjú virtuális gép létrehozása](../scripts/virtual-machines-windows-powershell-sample-create-vm.md).
+A [teljes mértékben konfigurált virtuális gépek létrehozásához](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)tekintse meg a PowerShell-parancsfájl példáját.
 
 

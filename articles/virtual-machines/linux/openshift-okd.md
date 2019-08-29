@@ -1,6 +1,6 @@
 ---
-title: Az Azure-ban OKD üzembe helyezése |} A Microsoft Docs
-description: Helyezze üzembe az Azure-ban OKD.
+title: OKD üzembe helyezése az Azure-ban | Microsoft Docs
+description: OKD üzembe helyezése az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -9,41 +9,40 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: 7db50007dd32c84a360eaec25bf860709272437b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fccb77110eafa131733ecea70fb209b2a168436c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60542509"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082503"
 ---
-# <a name="deploy-okd-in-azure"></a>Az Azure-ban OKD üzembe helyezése
+# <a name="deploy-okd-in-azure"></a>OKD üzembe helyezése az Azure-ban
 
-Kétféle módon telepíthet az Azure-ban (korábbi nevén az OpenShift Origin) OKD egyikét használhatja:
+Az Azure-ban kétféleképpen helyezhet üzembe OKD (korábban OpenShift Origin):
 
-- Manuálisan telepítheti az összes szükséges az Azure infrastruktúra-összetevőket, és kövesse a [OKD dokumentáció](https://docs.okd.io).
-- Használhatja egy meglévő [Resource Manager-sablon](https://github.com/Microsoft/openshift-origin) , amely leegyszerűsíti a OKD fürt központi telepítése.
+- Manuálisan telepítheti az összes szükséges Azure-infrastruktúra-összetevőt, majd követheti a [OKD dokumentációját](https://docs.okd.io).
+- Használhat egy meglévő [Resource Manager-sablont](https://github.com/Microsoft/openshift-origin) is, amely leegyszerűsíti a OKD-fürt üzembe helyezését.
 
-## <a name="deploy-using-the-okd-template"></a>Üzembe helyezés a OKD-sablonnal
+## <a name="deploy-using-the-okd-template"></a>Üzembe helyezés a OKD sablon használatával
 
-Használatával a Resource Manager-sablon üzembe helyezéséhez használhatja egy paraméterfájl adja meg a bemeneti paraméterek. További testreszabását az üzembe helyezés, a GitHub-tárház elágaztatását, és módosítsa a megfelelő elemeket.
+A Resource Manager-sablonnal történő üzembe helyezéshez egy Parameters-fájl segítségével adja meg a bemeneti paramétereket. Az üzembe helyezés további testreszabásához a GitHub-tárházat kell megváltoztatnia, és módosítani a megfelelő elemeket.
 
-Néhány gyakori testreszabási lehetőségek közé tartozik, de nem korlátozódik:
+Néhány gyakori testreszabási lehetőség, de nem korlátozódik a következőkre:
 
-- Megerősített Virtuálisgép-méret (az azuredeploy.json változó)
-- Elnevezési konvenciók (az azuredeploy.json változók)
-- OpenShift fürt tulajdonságairól, módosítani állomásleíró fájlhoz (deployOpenShift.sh)
+- Megerősített VM-méret (változó a azuredeploy. JSON fájlban)
+- Elnevezési konvenciók (változók a azuredeploy. JSON fájlban)
+- OpenShift-fürtök, a Hosts fájlon keresztül módosítva (deployOpenShift.sh)
 
-A [OKD sablon](https://github.com/Microsoft/openshift-origin) OKD különböző verzióihoz elérhető ágak rendelkezik.  Igényei alapján telepítheti közvetlenül a tárházból vagy elágaztassa a példatárt és egyéni módosításokat üzembe helyezése előtt.
+A [OKD sablonban](https://github.com/Microsoft/openshift-origin) több ág is elérhető a OKD különböző verzióihoz.  Igény szerint közvetlenül a tárházból is üzembe helyezhető, vagy a tárházat leválaszthatja, és egyéni módosításokat hajthat végre az üzembe helyezés előtt.
 
-Használja a `appId` értékét a korábban létrehozott szolgáltatásnevet a `aadClientId` paraméter.
+Használja a `aadClientId` paraméterhez korábban létrehozott egyszerű szolgáltatásnév értékét.`appId`
 
-Az alábbiakban látható egy példa egy nevű azuredeploy.parameters.json az összes szükséges bemeneti paramétereket tartalmazó fájlt.
+A következő példa egy azuredeploy. Parameters. JSON nevű paramétereket tartalmazó fájlt mutat be az összes szükséges bemenettel.
 
 ```json
 {
@@ -117,17 +116,17 @@ Az alábbiakban látható egy példa egy nevű azuredeploy.parameters.json az ö
 }
 ```
 
-Cserélje le a paramétereket a jellemző információk.
+Cserélje le a paramétereket a megadott adatokra.
 
-Különböző kiadások úgy lehet különböző paraméterek ellenőrizze a szükséges paramétereket az ágat használja.
+A különböző kiadások különböző paraméterekkel rendelkezhetnek, ezért kérjük, ellenőrizze a használt ág szükséges paramétereit.
 
-### <a name="deploy-using-azure-cli"></a>Üzembe helyezés az Azure CLI használatával
+### <a name="deploy-using-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
 
 > [!NOTE] 
-> A következő parancs használatához az Azure CLI-vel 2.0.8 vagy újabb. Az a parancssori felület verziójának ellenőrzéséhez az `az --version` parancsot. A parancssori felület verziójának frissítéséhez lásd [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> A következő parancshoz Azure CLI-2.0.8 vagy újabb verzió szükséges. A CLI-verziót a `az --version` paranccsal ellenőrizheti. A CLI verziójának frissítéséhez lásd: az [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Az alábbi példa a OKD fürt és az összes kapcsolódó erőforrást helyez üzembe helyezzen egy erőforráscsoportban openshiftrg, nevű myOpenShiftCluster központi telepítés nevét. A sablon közvetlenül a GitHub-adattárat a hivatkozott azuredeploy.parameters.json nevű helyi paraméterfájl használata során.
+A következő példa a OKD-fürtöt és az összes kapcsolódó erőforrást egy openshiftrg nevű erőforráscsoporthoz helyezi üzembe a myOpenShiftCluster központi telepítési nevével. A sablon közvetlenül a GitHub-tárházból van hivatkozva a azuredeploy. Parameters. JSON nevű helyi paraméterek fájljának használatakor.
 
 ```azurecli 
 az group deployment create -g openshiftrg --name myOpenShiftCluster \
@@ -135,7 +134,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-Az üzembe helyezés legalább 30 percet vesz igénybe fejeződik be, az üzembe helyezett csomópontok száma alapján. Az OpenShift fő megrendelése a terminálon az üzembe helyezést, a DNS-nevét és a OpenShift-konzol URL-címe. Azt is megteheti a kimeneti szakasz az üzembe helyezés az Azure Portalon is megtekintheti.
+Az üzembe helyezés legalább 30 percet vesz igénybe, a telepített csomópontok teljes száma alapján. A OpenShift-konzol URL-címe és a OpenShift-főkiszolgáló DNS-neve a terminálra nyomtatódik a telepítés befejeződése után. Másik lehetőségként megtekintheti a központi telepítés kimenetek szakaszát is a Azure Portal.
 
 ```json
 {
@@ -144,11 +143,11 @@ Az üzembe helyezés legalább 30 percet vesz igénybe fejeződik be, az üzembe
 }
 ```
 
-Ha nem szeretné a parancssorból, Várakozás a telepítés befejeződik, adja hozzá a lefoglalhatnak `--no-wait` , a csoport központi telepítésének a lehetőségek közül. Az üzembe helyezés kimenete az erőforráscsoport az üzembe helyezés szakaszban az Azure Portalról kérhető.
+Ha nem szeretné összekapcsolni a parancssort, amíg a telepítés befejeződik, adja hozzá `--no-wait` a csoport központi telepítésének egyik beállítását. A központi telepítés kimenete az erőforráscsoport telepítési szakaszában található Azure Portalból kérhető le.
 
-## <a name="connect-to-the-okd-cluster"></a>Csatlakozzon a OKD fürthöz
+## <a name="connect-to-the-okd-cluster"></a>Kapcsolódás a OKD-fürthöz
 
-Az üzembe helyezést követően az OpenShift konzolhoz a böngésző használatával csatlakozik a `OpenShift Console Url`. Lehetőségként SSH a OKD fő. Következő egy példa, amely használja az üzembe helyezés kimenete:
+Az üzembe helyezés befejezésekor kapcsolódjon a OpenShift-konzolhoz a böngésző használatával `OpenShift Console Url`. Azt is megteheti, hogy SSH-t használ a OKD-főkiszolgálóval. Az alábbi példa az üzemelő példány kimenetét használja:
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
@@ -156,7 +155,7 @@ $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Használja a [az csoport törlése](/cli/azure/group) paranccsal eltávolítható az erőforráscsoport, az OpenShift fürt, és az összes kapcsolódó erőforrást, amikor azok már nincs szükség van.
+Az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot, a OpenShift-fürtöt és az összes kapcsolódó erőforrást, ha már nincs rájuk szükség.
 
 ```azurecli 
 az group delete --name openshiftrg
@@ -165,5 +164,5 @@ az group delete --name openshiftrg
 ## <a name="next-steps"></a>További lépések
 
 - [Üzembe helyezés utáni feladatok](./openshift-post-deployment.md)
-- [OpenShift telepítés hibaelhárítása](./openshift-troubleshooting.md)
-- [OKD – első lépések](https://docs.okd.io)
+- [OpenShift-telepítés hibáinak megoldása](./openshift-troubleshooting.md)
+- [A OKD első lépései](https://docs.okd.io)

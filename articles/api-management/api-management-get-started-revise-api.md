@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: dd591f18ad2abb8603270f4c570c7ef311bdadae
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203602"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072562"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Változatok használata a nem kompatibilitástörő változások biztonságos elvégzéséhez
 Amikor az API készen áll, és a fejlesztők elkezdik a használatát, előbb-utóbb módosításokat kell végeznie az API-n, miközben nem akadályozza az API hívóit. Emellett az is hasznos, ha a fejlesztők értesülnek az elvégzett módosításokról. Az Azure API Managementben ez a **változatok** használatával valósítható meg. További információ: [Verziók és változatok](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) és [API-k verziókezelése az Azure API Managementtel](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
@@ -37,8 +36,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
-+ Hajtsa végre a következő rövid útmutatót: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
-+ Ezenkívül hajtsa végre a következő oktatóanyaggal: [Az első API importálása és közzététele](import-and-publish.md).
++ Hajtsa végre a következő rövid útmutatót: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
++ Továbbá hajtsa végre a következő oktatóanyagot: [Az első API importálása és közzététele](import-and-publish.md).
 
 ## <a name="add-a-new-revision"></a>Új változat hozzáadása
 
@@ -84,7 +83,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 2. Nyissa meg a **2. változat** helyi menüjét ( **...** ).
 3. Kattintson a **Legyen ez az aktuális** elemre.
-4. Jelölje be a **Közzététel az API nyilvános módosításnaplójában** beállítást, ha megjegyzéseket kíván közzétenni erről a módosításról. Adjon meg egy leírást, a módosítás a fejlesztőknek, például: **Változatok tesztelése. Új „test” művelet hozzáadva.**
+4. Jelölje be a **Közzététel az API nyilvános módosításnaplójában** beállítást, ha megjegyzéseket kíván közzétenni erről a módosításról. Adja meg a változás leírását, amelyet a fejlesztők látnak, például: **Tesztelési változatok. Új „test” művelet hozzáadva.**
 5. Most már a **2. változat** az aktuális.
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>A fejlesztői portál tallózása a módosítások és a módosítási napló megtekintéséhez

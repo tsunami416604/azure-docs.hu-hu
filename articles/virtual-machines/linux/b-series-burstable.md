@@ -1,6 +1,6 @@
 ---
-title: Azure Linux Virtuálisgép-méretet a B sorozat |} A Microsoft Docs
-description: A B sorozat – adatlöket-kezelés az Azure Virtuálisgép-méretek ismerteti.
+title: B sorozatú Azure Linux VM-méretek | Microsoft Docs
+description: Ismerteti a feltört Azure-beli VM-méretek B sorozatát.
 services: virtual-machines-linux
 documentationcenter: ''
 author: ayshakeen
@@ -9,25 +9,24 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/25/2019
 ms.author: ayshak
-ms.openlocfilehash: 2445ad4804755fb2bdc013f7ea819ed51a2f6480
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 01da424872cdfde6c7e035cadd2b948117fb996c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671824"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084005"
 ---
-# <a name="b-series-burstable-virtual-machine-sizes"></a>A B sorozat – adatlöket-kezelés virtuálisgép-méretek
+# <a name="b-series-burstable-virtual-machine-sizes"></a>B sorozatú virtuális gépek méretei
 
 [!INCLUDE [virtual-machines-common-b-series-burstable](../../../includes/virtual-machines-common-b-series-burstable.md)]
 
 
-## <a name="other-sizes"></a>További méretek
+## <a name="other-sizes"></a>Egyéb méretek
 - [Általános célú](sizes-general.md)
 - [Számításra optimalizált](sizes-compute.md)
 - [Memóriaoptimalizált](../virtual-machines-windows-sizes-memory.md)
@@ -36,4 +35,4 @@ ms.locfileid: "67671824"
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 
 ## <a name="next-steps"></a>További lépések
-Tudjon meg többet [Azure számítási egységek (ACU)](acu.md) Azure-termékváltozatok hasonlítsa össze a számítási teljesítményt nyújt segítséget.
+További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

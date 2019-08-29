@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
-ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bead5f0bec6d57c0f4aaddc6537e00c466d987f1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 96ba829ffaadb6bc792c2d859e1e6766ab3ee394
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68323876"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095587"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -287,7 +286,7 @@ Ezeken felül azonban szerepelhetnek az indítási tevékenységben a számítá
 
 Ha egy indítási tevékenység meghiúsul egy számítási csomóponton, akkor a csomópont állapota úgy frissül, hogy tükrözze a hibát, és a csomóponthoz nem lesz hozzárendelve egyetlen tevékenység sem. Az indítási tevékenység meghiúsulhat, ha hiba történik az erőforrásfájloknak a tárterületről való másolásakor, illetve ha a parancssor által futtatott folyamat nullától eltérő kilépési kódot ad vissza.
 
-Egy meglévő készlet kezdő tevékenységének felvétele vagy frissítése esetén újra kell indítania a készlet számítási csomópontjait ahhoz, hogy a kezdő tevékenységet alkalmazni lehessen a csomópontokra.
+Amikor meglévő készlethez ad indítási tevékenységet, vagy ilyen készlethez tartozó tevékenységet frissít, újra kell indítania a számítási csomópontokat, hogy a rendszer az összes csomópontra alkalmazza az indítási tevékenységet.
 
 >[!NOTE]
 > A Batch korlátozza az indítási tevékenységek méretét, amibe az erőforrásfájlok és a környezeti változók is beletartoznak. Ha csökkentenie kell egy indítási tevékenység méretét, a következő két megoldás közül választhat:
@@ -500,7 +499,7 @@ Olyan esetekben, ahol néhány tevékenység meghiúsul, a Batch ügyfélalkalma
     Ez tulajdonképpen offline állapotba helyezi a csomópontot, így ahhoz nem rendel további tevékenységeket, de engedélyezi, hogy a csomópont továbbra is fusson a készletben. Ez lehetővé teszi, hogy tovább vizsgálja a hibák okait a meghiúsult tevékenység adatainak elvesztése nélkül, és anélkül, hogy a csomópont további tevékenységhibákat okozna. Letilthatja például a tevékenységütemezést a csomóponton, majd [távolról bejelentkezhet](#connecting-to-compute-nodes) a csomópont eseménynaplóinak megvizsgálása vagy egyéb hibaelhárítás elvégzése érdekében. A vizsgálat befejezése után visszaállíthatja a csomópontot online állapotba, ha engedélyezi a Feladatütemezőt ([Rest][rest_online] | [.net][net_online]), vagy elvégezheti a korábban tárgyalt egyéb műveletek egyikét.
 
 > [!IMPORTANT]
-> A fejezetben leírt műveletekkel (újraindítás, rendszerkép alaphelyzetbe állítása, eltávolítás, tevékenységütemezés letiltása) meghatározhatja, hogy a rendszer hogyan kezelje a csomópontokon aktuálisan futó tevékenységeket a művelet elvégzésekor. Ha például letiltja a Feladatütemezőt egy csomóponton a Batch .NET ügyféloldali kódtár használatával, megadhat egy [DisableComputeNodeSchedulingOption][net_offline_option] enumerálási értéket annak megadásához, hogy a **futó feladatok** le legyenek-e **állítva** . ütemezés más csomópontokon, vagy a művelet végrehajtása előtt engedélyezze a futó feladatok befejezését (**TaskCompletion**).
+> A fejezetben leírt műveletekkel (újraindítás, rendszerkép alaphelyzetbe állítása, eltávolítás, tevékenységütemezés letiltása) meghatározhatja, hogy a rendszer hogyan kezelje a csomópontokon aktuálisan futó tevékenységeket a művelet elvégzésekor. Ha például letiltja a Feladatütemezőt egy csomóponton a Batch .NET ügyféloldali kódtár használatával, megadhat egy [DisableComputeNodeSchedulingOption][net_offline_option] enumerálási értéket annak megadásához, hogy a futó feladatok le legyenek-e **állítva** . ütemezés más csomópontokon, vagy a művelet végrehajtása előtt engedélyezze a futó feladatok befejezését (**TaskCompletion**).
 >
 >
 

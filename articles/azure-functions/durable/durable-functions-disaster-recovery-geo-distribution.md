@@ -1,93 +1,92 @@
 ---
-title: Vészhelyreállítás és földrajzi elosztás a Durable Functions – Azure
-description: Ismerje meg a vészhelyreállítás és földrajzi elosztás Durable Functions szolgáltatásban.
+title: Vész-helyreállítás és geo-eloszlás a Durable Functionsban – Azure
+description: Ismerje meg a vész-helyreállítást és a Geo-eloszlást Durable Functionsban.
 services: functions
 author: MS-Santi
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1363dd3c620789b9f3c8ce1dbe0892ee61d66051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f242a16bc89e6b229efa42b88ebd20ca174e2516
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60741349"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098066"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>Vészhelyreállítás és földrajzi elosztás
 
 ## <a name="overview"></a>Áttekintés
 
-Durable Functions, az összes állapot rendszer megőrzi az Azure Storage-ban. A [feladat hub](durable-functions-task-hubs.md) vezénylések használt Azure Storage-erőforrások logikai tárolója. Orchestrator, illetve a tevékenység funkciók tartoznak, a tevékenység egy központban csak is kapcsolatba egymással.
-Az ismertetett forgatókönyvek javaslatot a központi telepítési beállítások növeli a rendelkezésre állás és a vész-helyreállítási tevékenység közbeni állásidő minimálisra csökkentése.
+A Durable Functionsban az összes állapot az Azure Storage-ban marad. A [Task hub](durable-functions-task-hubs.md) olyan Azure Storage-erőforrások logikai tárolója, amelyeket a rendszer az előkészítéshez használ. A Orchestrator és a Activity függvények csak akkor kommunikálhatnak egymással, ha ugyanahhoz a feladathoz tartozó hubhoz tartoznak.
+Az ismertetett forgatókönyvek javaslatot tesznek a rendelkezésre állás növelésére és az állásidő minimalizálására a vész-helyreállítási tevékenységek során.
 
-Fontos, és figyelje meg, hogy ezek a forgatókönyvek alapulnak aktív-passzív konfigurációt igényelnek, mivel azok megismerheti az Azure Storage használatát által. Ez a minta áll egy biztonsági mentési (passzív) függvény alkalmazások üzembe helyezése egy másik régióban. A TRAFFIC Manager figyelni fogja az elsődleges (aktív) függvényalkalmazást a rendelkezésre állás érdekében. Azt feladatátvételt hajt végre a biztonsági mentési függvényalkalmazás, ha az elsődleges meghibásodik. További információkért lásd: [Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)a [prioritású forgalom-útválasztási módszer.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
+Fontos megjegyezni, hogy ezek a forgatókönyvek az aktív-passzív konfigurációkon alapulnak, mivel ezeket az Azure Storage használata vezérli. Ez a minta egy biztonsági mentési (passzív) függvény alkalmazásának egy másik régióba való telepítését jelenti. A Traffic Manager az elsődleges (aktív) function alkalmazást fogja figyelni a rendelkezésre álláshoz. Ha az elsődleges művelet meghiúsul, a rendszer átadja a feladatokat a Backup Function alkalmazásnak. További információ: [Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) [prioritású forgalom – útválasztási módszer.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
 
 >[!NOTE]
 >
-> - A javasolt aktív / passzív konfigurációt biztosítja, hogy egy ügyfél mindig tudni új vezénylések HTTP Protokollon keresztül aktiválhat. Következtében rendelkező megosztási ugyanazt a tárolót két függvényalkalmazások, azonban a háttérbeli feldolgozás őket, az azonos üzenetsorok üzeneteit versengő között szétosztani. Ez a konfiguráció a hozzáadott kimenő forgalmi költségek a másodlagos függvényalkalmazás tekintetében.
-> - Az alapul szolgáló tárolási fiók és a feladat hub jönnek létre az elsődleges régióban, és mindkét függvényalkalmazások által megosztott.
-> - Minden függvény üzembe helyezett alkalmazások redundantly, meg kell osztania az azonos függvény hozzáférési kulcsok esetén a HTTP Protokollon keresztül aktiválása folyamatban. A Functions futtatókörnyezete tesz közzé egy [felügyeleti API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) , amely lehetővé teszi, hogy a felhasználó számára, hogy programozott módon hozzáadása, törlése és frissítése funkcióbillentyűk.
+> - A javasolt aktív-passzív konfiguráció biztosítja, hogy az ügyfél mindig képes legyen új, HTTP-n keresztül kiváltani a folyamatokat. Ha azonban két Function apps azonos tárterületet használ, a háttérben történő feldolgozás a kettő között oszlik meg egymás között, és az ugyanazon a várólistán lévő üzenetek versengenek egymással. Ez a konfiguráció a másodlagos függvény alkalmazásának kimenő költségeinek kilépését eredményezi.
+> - Az alapul szolgáló Storage-fiók és a Task hub az elsődleges régióban jön létre, és mindkét Function-alkalmazásban meg van osztva.
+> - A redundánsan telepített összes Function apps esetében ugyanazt a függvény-hozzáférési kulcsokat kell megosztania, ha HTTP-n keresztül aktiválva van. A functions futtatókörnyezet olyan [felügyeleti API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) -t tesz elérhetővé, amely lehetővé teszi a felhasználóknak a funkcióbillentyűk programozott hozzáadását, törlését és frissítését.
 
-## <a name="scenario-1---load-balanced-compute-with-shared-storage"></a>1\. forgatókönyv – elosztott terhelésű számítási megosztott tárolóval
+## <a name="scenario-1---load-balanced-compute-with-shared-storage"></a>1\. eset – elosztott terhelésű számítás megosztott tárolóval
 
-Ha nem sikerül a számítási infrastruktúra Azure-ban, a függvényalkalmazás elérhetetlenné válhat. Az ilyen lehetőségét minimalizálása érdekében ebben a forgatókönyvben két, különböző régióban üzembe helyezett függvényalkalmazás használja.
-A TRAFFIC Manager van beállítva, észlelheti a problémákat az elsődleges függvényalkalmazást, és automatikusan átirányítja a forgalmat a másodlagos régió a függvényalkalmazáshoz. A függvényalkalmazás a ugyanazt az Azure Storage-fiókot és a feladat Hub fájlmegosztások. Ezért a függvényalkalmazások állapota nem vesznek el, és általában folytathatja a munkát. Miután állapotának visszaállítása az elsődleges régióba az Azure Traffic Manager a függvényalkalmazás érkező kérések útválasztására automatikusan elindul.
+Ha az Azure-beli számítási infrastruktúra meghibásodik, előfordulhat, hogy a Function alkalmazás elérhetetlenné válik. Ha csökkenteni szeretné az ilyen állásidők lehetőségét, ez a forgatókönyv két, különböző régiókban üzembe helyezett függvény alkalmazást használ.
+Traffic Manager úgy van konfigurálva, hogy észlelje a problémákat az elsődleges Function alkalmazásban, és automatikusan átirányítsa a forgalmat a másodlagos régióban található Function alkalmazásba. Ez a Function-alkalmazás ugyanazt az Azure Storage-fiókot és-feladatot osztja meg. Ezért a Function apps állapota nem vész el, és a munka a szokásos módon folytatódik. Ha az állapotot visszaállítja az elsődleges régióba, az Azure Traffic Manager automatikusan elindítja az útválasztási kérelmeket az adott függvény alkalmazásnak.
 
-![1\. forgatókönyv ábrázoló diagram.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario01.png)
+![Az 1. forgatókönyvet ábrázoló diagram](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario01.png)
 
-Több előnye is van a központi telepítési forgatókönyv használata esetén:
+Ennek a telepítési forgatókönyvnek a használata számos előnnyel jár:
 
-- Ha nem sikerül a számítási infrastruktúra, munkahelyi folytathatja a nem a keresztül régió állapot elvesztése nélkül.
-- A TRAFFIC Manager automatikusan az automatikus feladatátvételt a kifogástalan állapotú függvényalkalmazáshoz gondoskodik.
-- A TRAFFIC Manager automatikusan újra létrehozza az elsődleges függvényalkalmazás-forgalom javítva lett a szolgáltatáskiesés megszüntetése után.
+- Ha a számítási infrastruktúra meghibásodik, a feladat az állami adatvesztés nélkül folytathatja a feladatátvételt a régióban.
+- A Traffic Manager automatikusan átveszi az automatikus feladatátvételt az egészséges Function alkalmazásba.
+- Traffic Manager automatikusan újra létrehozza a forgalmat az elsődleges Function alkalmazásnak a leállás kijavítása után.
 
-Azonban ez a forgatókönyv segítségével figyelembe vennie:
+Ebben a forgatókönyvben azonban a következőket érdemes figyelembe venni:
 
-- A függvényalkalmazás egy dedikált App Service-csomag használatával lett telepítve, ha replikál a feladatátvétel a számítási infrastruktúra adatközpont keresztül növeli a költségeket.
-- Ebben a forgatókönyvben a kimaradások, a számítási infrastruktúra ismerteti, de a storage-fiók továbbra is az a függvény alkalmazás meghibásodási pont lehet. Ha a Társzolgáltatás kimaradása, az alkalmazás romlik egy állásidőt.
-- Ha a függvényalkalmazás feladatátvétel alatt áll, kell késések óta, hozzá fog férni a tárfiók régióját.
-- A storage szolgáltatás eléréséhez egy másik régióban, ahol a szolgáltatás található a hálózati kimenő forgalom miatt költségesebb tekintetében.
-- Ebben a forgatókönyvben a Traffic Manager függ. Figyelembe véve [Traffic Manager működése](../../traffic-manager/traffic-manager-how-it-works.md), lehet, amíg egy ügyfélalkalmazás, amely egy tartós függvény kell kérdeznie újra a függvény alkalmazás címe Traffic Managerből.
+- Ha a Function alkalmazást dedikált App Service-csomag használatával telepíti, a számítási infrastruktúra replikálása a feladatátvételi adatközpontban növeli a költségeket.
+- Ez a forgatókönyv a számítási infrastruktúra leállásait fedi le, de a Storage-fiók továbbra is a Function alkalmazás egyetlen meghibásodási pontja. Ha van tárolási leállás, az alkalmazás leállást szenved.
+- Ha a Function alkalmazás feladatátvételt végez, a rendszer megnöveli a késést, mivel a több régióban is hozzáfér a Storage-fiókjához.
+- A Storage szolgáltatást egy másik régióból érheti el, ahol a hálózati forgalom miatt magasabb költségekkel jár.
+- Ez a forgatókönyv a Traffic Managertól függ. Tekintettel arra, [hogy Traffic Manager működik](../../traffic-manager/traffic-manager-how-it-works.md)-e, lehet, hogy egy olyan ügyfélalkalmazás, amely nem használ tartós függvényt, újra le kell kérdezni a Function app-címeket a Traffic Managerról.
 
-## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>2\. forgatókönyv – elosztott terhelésű számítási regionális tárolóval
+## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>2\. forgatókönyv – elosztott terhelésű számítás regionális tárterülettel
 
-A fenti forgatókönyv csak a kis-és a számítási infrastruktúra hibája foglalkozik. Ha a társzolgáltatás nem sikerül, azt a függvényalkalmazás kimaradás eredményez.
-A tartós függvények folyamatos működésének biztosítása érdekében ebben a forgatókönyvben minden régiótól, amelyhez a függvényalkalmazások telepített helyi tárfiókot használ.
+Az előző forgatókönyv csak a számítási infrastruktúra meghibásodásának esetét tárgyalja. Ha a tárolási szolgáltatás meghibásodik, akkor a függvény alkalmazás leállás miatt leáll.
+A tartós függvények folyamatos működésének biztosítása érdekében ez a forgatókönyv egy helyi Storage-fiókot használ minden olyan régióban, amelyhez a Function apps telepítve van.
 
-![2\. forgatókönyv ábrázoló diagram.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario02.png)
+![A 2. forgatókönyvet bemutató diagram](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario02.png)
 
-Ez a megközelítés az előző forgatókönyvben a fejlesztéseket:
+Ez a megközelítés javítja az előző forgatókönyvet:
 
-- Ha a függvényalkalmazás nem sikerül, a Traffic Manager gondoskodik irányuló feladatátvétel a másodlagos régióba. Azonban mivel a függvényalkalmazás a saját tárfiók alapul, a tartós függvények továbbra is működni.
-- Egy feladatátvétele során nincs további késleltetés a nem a keresztül régió, mivel a függvényalkalmazást, és a storage-fiókban elhelyezve.
-- Hiba a tárolási réteg hibák miatt a tartós függvények, amelyek, viszont aktiválják a feladatátvétel átirányítás keresztül régióban található. Újra mivel a függvényalkalmazás és -tárolás régiónként elkülönített, a tartós függvények továbbra is működni fog.
+- Ha a Function alkalmazás meghibásodik, Traffic Manager gondoskodik a másodlagos régióba való feladatátvételről. Mivel azonban a Function alkalmazás a saját Storage-fiókjára támaszkodik, a tartós függvények továbbra is működőképesek maradnak.
+- A feladatátvétel során nincs további késés a feladatátvételi régióban, mivel a Function alkalmazás és a Storage-fiók közös helyen található.
+- A tárolási réteg meghibásodása hibát okoz a tartós függvényeknél, ami viszont egy átirányítást indít a feladatátvételi régióba. Mivel a Function app és a Storage régiónként elkülönített, a tartós függvények továbbra is működni fognak.
 
-Ebben a forgatókönyvben fontos szempontjai:
+A forgatókönyvhöz kapcsolódó fontos szempontok:
 
-- A függvényalkalmazás egy dedikált App Service-csomag használatával lett telepítve, ha replikál a feladatátvétel a számítási infrastruktúra adatközpont keresztül növeli a költségeket.
-- Jelenlegi állapotában nem átadta a feladatait, ami azt jelenti, hogy végrehajtása és alkulcsaihoz funkciók sikertelen lesz. Az ügyfélalkalmazásnak újrapróbálkozási/újraindítja a számítógépet a munka van.
+- Ha a Function alkalmazás egy dedikált AppService-csomag használatával van üzembe helyezve, a számítási infrastruktúra replikálása a feladatátvételi adatközpontban növeli a költségeket.
+- A jelenlegi állapot nem halad át, ami azt jelenti, hogy a végrehajtás és az ellenőrzőponttal nem rendelkező függvények sikertelenek lesznek. Az ügyfélalkalmazás a feladat újrapróbálkozására/újraindítására használható.
 
-## <a name="scenario-3---load-balanced-compute-with-grs-shared-storage"></a>3\. forgatókönyv – elosztott terhelésű számítási megosztott GRS tárolóval
+## <a name="scenario-3---load-balanced-compute-with-grs-shared-storage"></a>3\. forgatókönyv – elosztott terhelésű számítás GRS megosztott tárolóval
 
-Ebben a forgatókönyvben az első forgatókönyv, egy megosztott tárfiókot végrehajtási keresztül módosítás. A fő különbség az, hogy a tárfiók létrejött-e a georeplikáció engedélyezve van.
-Funkcionálisan ebben a forgatókönyvben, 1. forgatókönyv ugyanazokat az előnyöket biztosít, de lehetővé teszi a további adatok helyreállítási előnyei:
+Ez a forgatókönyv az első forgatókönyv módosítása, egy megosztott Storage-fiók implementálása. A fő különbség, hogy a Storage-fiók a Geo-replikáció engedélyezve beállítással jön létre.
+Funkcionálisan ez a forgatókönyv ugyanazokat az előnyöket biztosítja, mint az 1. forgatókönyv, de lehetővé teszi a további adat-helyreállítási előnyöket:
 
-- Georedundáns tárolás (GRS) és az írásvédett GRS (RA-GRS) tárfiók rendelkezésre állás maximalizálása érdekében.
-- Ha egy régió szolgáltatáskimaradás, a storage szolgáltatás, a lehetőségek egyike, hogy az Adatközpont műveletei határozza meg, hogy storage kell végrehajtani a feladatátvételt a másodlagos régióba. Ebben az esetben hozzáférés irányítja transzparens módon georeplikált példányt, a storage-fiókot, felhasználói beavatkozás nélkül.
-- Ebben az esetben a tartós függvények állapotának megőrzi az utolsó replikáció, a storage-fiók, néhány percenként legfeljebb.
+- A Geo-redundáns tárolás (GRS) és az olvasási hozzáférésű GRS (RA-GRS) teljes körű rendelkezésre állást biztosít a Storage-fiók számára.
+- Ha a tárolási szolgáltatás a régió meghibásodása miatt leáll, az egyik lehetőség az, hogy az adatközpont műveletei azt határozzák meg, hogy a tárolónak feladatátvételt kell végrehajtania a másodlagos régióba. Ebben az esetben a Storage-fiók hozzáférését a rendszer a felhasználói beavatkozás nélkül átirányítja a Storage-fiók geo-replikált példányára.
+- Ebben az esetben a tartós függvények állapotát a Storage-fiók utolsó replikálásával fogja megőrizni, ami néhány percenként történik.
 
-Csakúgy, mint az egyéb forgatókönyvek a következők fontos szempontok:
+A többi forgatókönyvhöz hasonlóan fontos szempontokat is figyelembe kell venni:
 
-- A replika feladatátvételről adatközponti operátor végzi el, és ez eltarthat egy ideig. Csak ezen idő a függvényalkalmazás romlani fog kimaradás.
-- Nincs egy nagyobb költséget georeplikált tárfiókok használata esetében.
-- GRS aszinkron módon történik. A legutóbbi tranzakciók némelyike elveszhet miatt a késés, a replikációs folyamat.
+- A replika feladatátvételét az adatközpont-kezelők végzik, és ez eltarthat egy ideig. A Function alkalmazás addig nem fog kiesést szenvedni.
+- A földrajzilag replikált Storage-fiókok használatának megnövelt díja.
+- A GRS aszinkron módon történik. A replikálási folyamat késése miatt előfordulhat, hogy a legújabb tranzakciók némelyike elvész.
 
-![3\. forgatókönyv ábrázoló diagram.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario03.png)
+![A 3. forgatókönyvet bemutató diagram.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario03.png)
 
 ## <a name="next-steps"></a>További lépések
 
-További információ [tervezése magas rendelkezésre álló alkalmazások RA-GRS használatával](../../storage/common/storage-designing-ha-apps-with-ragrs.md)
+További információk a [magasan elérhető alkalmazások a ra-GRS használatával történő tervezéséről](../../storage/common/storage-designing-ha-apps-with-ragrs.md)

@@ -1,6 +1,6 @@
 ---
-title: SAP HANA rendelkezésre állási egy Azure-régión belüli |} A Microsoft Docs
-description: Az Azure natív, egy Azure-régióban található virtuális gépein az SAP HANA operations ismerteti.
+title: SAP HANA rendelkezésre állás egy Azure-régión belül | Microsoft Docs
+description: Ismerteti SAP HANA műveleteket az Azure natív virtuális gépeken egy Azure-régióban.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -9,124 +9,123 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 687012e73b4b0c869b491ac1c9ea128662b23510
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c5b4904419af1fe86e43dc2f781ef43ce8dd762
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64680877"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078790"
 ---
-# <a name="sap-hana-availability-within-one-azure-region"></a>SAP HANA rendelkezésre állási egy Azure-régióban
-Ez a cikk bemutatja egy Azure-régión belül több rendelkezésre állási forgatókönyvek esetén. Az Azure számos régióban, az egész világon elosztva rendelkezik. Az Azure-régiók listáját lásd: [Azure-régiók](https://azure.microsoft.com/regions/). A Microsoft SAP HANA-beli virtuális gépek üzembe helyezése egy Azure-régióban elérhető az egyetlen virtuális gép a HANA-példány telepítését. A magasabb rendelkezésre állás érdekében két virtuális gépet a két HANA példányok telepíthet egy [Azure rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) , amely a HANA-rendszerreplikálást használja a rendelkezésre állás érdekében. 
+# <a name="sap-hana-availability-within-one-azure-region"></a>SAP HANA rendelkezésre állás egy Azure-régión belül
+Ez a cikk számos rendelkezésre állási forgatókönyvet ismertet egy Azure-régión belül. Az Azure számos régióval rendelkezik, és a világ minden pontján elterjedt. Az Azure-régiók listájáért lásd: [Azure-régiók](https://azure.microsoft.com/regions/). Az Azure-régión belüli virtuális gépeken való SAP HANA üzembe helyezéséhez a Microsoft egy HANA-példánnyal rendelkező egyetlen virtuális gép üzembe helyezését kínálja. A rendelkezésre állás érdekében két, HANA-példánnyal rendelkező virtuális gépet telepíthet egy olyan [Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) -beli rendelkezésre állási csoporton belül, amely HANA rendszerreplikációt használ a rendelkezésre álláshoz. 
 
-Jelenleg Azure kínál [Azure-beli rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview). Ez a cikk nem foglalkozik a rendelkezésre állási zónák részletesen. Azonban a rendelkezésre állási zónák és a rendelkezésre állási csoportok használatával kapcsolatos általános vita tartalmazza.
+Az Azure jelenleg [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview)kínál. Ez a cikk részletesen ismerteti a Availability Zones. Ez azonban általános vitát tartalmaz a rendelkezésre állási készletek és a Availability Zones használatával kapcsolatban.
 
-Hol érhetők el rendelkezésre állási zónák Azure-régióban van több adatközpontban. Az adatközpontokban a ellátás áramforrásról, hűtéssel és hálózati függetlenek egymástól. Ajánlat egy adott Azure-régión belül különböző zónákhoz tartozhatnak az az oka, hogy helyezzen üzembe alkalmazásokat érhetők el két vagy három rendelkezésre állási zónák között. Zónákban telepítése problémák a power és a hálózat csak egy Azure rendelkezésre állási zónában infrastruktúrát érintő, az alkalmazás központi telepítése egy Azure-régióban továbbra is működőképes. Néhány csökkentett kapacitás fordulhatnak elő. Például egy zónában lévő virtuális gépek elveszhetnek, de a két zónában lévő virtuális gépek továbbra is lenne, helyezheti üzembe. 
+Azok az Azure-régiók, amelyekben a Availability Zones több adatközpont is rendelkezésre áll. Az adatközpontok függetlenek az áramforrás, a hűtés és a hálózat kínálatában. A különböző zónák egyetlen Azure-régión belüli felajánlásának oka az alkalmazások telepítése két vagy három Availability Zones. A zónákon belüli üzembe helyezés, az energiagazdálkodással és a hálózatkezeléssel kapcsolatos problémák csak egy Azure-beli rendelkezésre állási zónára épülő infrastruktúrát érintenek, az alkalmazások üzembe helyezése az Azure-régióban Bizonyos kisebb kapacitás előfordulhat. Előfordulhat például, hogy egy zónában lévő virtuális gépek elvesznek, de a másik két zónában lévő virtuális gépek továbbra is futnak. 
  
-Az Azure rendelkezésre állási csoportban egy logikai csoportosítási funkció, amelynek segítségével, győződjön meg arról, hogy, amelyet a rendelkezésre állási csoportban lévő Virtuálisgép-erőforrások hiba logikailag egymástól legyenek üzembe helyezve az Azure-adatközpont. Az Azure biztosítja, hogy a rendelkezésre állási csoportba helyezett virtuális gépek több fizikai kiszolgálón, számítási rackszekrényen, tárolási egységben és hálózati kapcsolón fussanak. Az egyes Azure dokumentációja, ez a konfiguráció nevezzük Elhelyezés a különböző [frissítési és tartalék tartományok](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability). Ezek a gyakorlatok általában az Azure-adatközpont. Feltételezve, hogy power tápforrással és hálózati problémák hatással lenne az Adatközpont végzi, a kapacitás egy Azure-régióban az összes befolyásolhat.
+Az Azure-beli rendelkezésre állási csoport egy logikai csoportosítási funkció, amely segít biztosítani, hogy a rendelkezésre állási csoportban lévő virtuálisgép-erőforrások meghibásodása elkülöníthető legyen egymástól, amikor egy Azure-adatközpontban üzembe helyezik őket. Az Azure biztosítja, hogy a rendelkezésre állási csoportba helyezett virtuális gépek több fizikai kiszolgálón, számítási rackszekrényen, tárolási egységben és hálózati kapcsolón fussanak. Néhány Azure-dokumentációban ezt a konfigurációt a különböző [frissítési és](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)tartalék tartományokban lévő elhelyezéseknek nevezzük. Ezek az elhelyezések általában egy Azure-adatközponton belül találhatók. Feltételezve, hogy az áramforrás és a hálózati problémák hatással lennének az üzembe helyezett adatközpontra, az egyik Azure-régióban az összes kapacitása érintett lesz.
 
-Azure-beli rendelkezésre állási zónák képviselő adatközpontok elhelyezését továbbítása elfogadható hálózati késés különböző zónák és a egy adatközpontok közötti távolságot a telepített szolgáltatások közötti kompromisszumot. Természeti katasztrófa ideális esetben nem lenne hatással power, hálózati ellátási, és infrastruktúra minden rendelkezésre állási zónák ebben a régióban. Azonban mint emlékművi természeti katasztrófa rendelkezik, a rendelkezésre állási zónák esetleg nem mindig nyújt a rendelkezésre állási, amelyeket szeretne egy régión belül. Gondolja át, amely 2017. szeptember 20. elérte a Puerto Rico sziget Hurrikán Maria. A Hurrikán alapvetően az okozza, közel 100 %-os kieső a 90 kiterjedő mérföld sziget a.
+Az Azure Availability Zonest jelképező adatközpontok elhelyezése a különböző zónákban üzembe helyezett szolgáltatások és az adatközpontok közötti távolság között fennálló elfogadható hálózati késések miatti kompromisszum. A természeti katasztrófák ideális esetben nem befolyásolják a régió összes Availability Zonesának áramellátását, hálózati kínálatát és infrastruktúráját. Azonban a természetes természeti katasztrófák láthatók, Availability Zones lehet, hogy nem mindig adja meg a rendelkezésre állást, amelyet egyetlen régióban szeretne használni. Gondoljon arra, hogy a Mária hurrikán a Puerto Rico-sziget 2017-es szeptember 20-án eltelik. A Hurricane alapvetően közel 100%-os áramszünetet okozott a 90-mérföld széles szigetén.
 
-## <a name="single-vm-scenario"></a>Egyetlen virtuális forgatókönyv
+## <a name="single-vm-scenario"></a>Egy VM-forgatókönyv
 
-Egyetlen virtuális forgatókönyvekben hozzon létre egy Azure virtuális Gépen, az SAP HANA-példány. Az Azure Premium Storage segítségével az operációsrendszer-lemez és az adatlemezek. Az Azure üzemidő 99,9 %-os garantált szolgáltatási SZINTJÉTŐL és az SLA-k a többi Azure-összetevőket is használhatók, hogy az ügyfelek számára a rendelkezésre állási SLA-k teljesítése. Ebben a forgatókönyvben nem használhatja az Azure rendelkezésre állási csoport a DBMS réteget futtató virtuális gépekhez szükséges van. Ebben a forgatókönyvben, két különböző szolgáltatásait használják:
+Egy VM-forgatókönyv esetén létre kell hoznia egy Azure-beli virtuális gépet a SAP HANA példányhoz. Az Azure Premium Storage az operációs rendszer lemezének és az összes adatlemezének üzemeltetésére használható. Az Azure rendelkezésre állási SLA-ja 99,9%-os, az egyéb Azure-összetevők SLA-ja pedig elegendő ahhoz, hogy az ügyfelek számára elérhető SLA-kat teljesítse. Ebben az esetben nem kell kihasználnia egy Azure-beli rendelkezésre állási készletet az adatbázis-kezelő réteget futtató virtuális gépek számára. Ebben a forgatókönyvben két különböző funkcióra támaszkodhat:
 
-- Az Azure virtuális gép automatikus újraindítás letiltása (más néven Azure felültelepítés)
-- SAP HANA automatikus újraindítás
+- Azure-beli virtuális gép automatikus újraindítása (más néven az Azure Service gyógyulása)
+- Automatikus újraindítás SAP HANA
 
-Az Azure virtuális gép automatikus újraindítása, vagy felültelepítés, egy funkciót az Azure-ban, amely két szinten működik:
+Az Azure-beli virtuális gépek automatikus újraindítása vagy szolgáltatás-javító funkciója az Azure-ban két szinten működik:
 
-- Az Azure-kiszolgáló állomás a server-gazdagépen futó virtuális gép állapotát ellenőrzi.
-- Az Azure fabric controller állapotát és a kiszolgáló gazdagépet elérhetőségét figyeli.
+- Az Azure Server-gazdagép ellenőrzi a kiszolgáló gazdagépén üzemeltetett virtuális gépek állapotát.
+- Az Azure Fabric-vezérlő figyeli a kiszolgáló gazdagépének állapotát és rendelkezésre állását.
 
-Állapot ellenőrzése funkcionalitást minden az Azure-kiszolgáló gazdagépeken futó virtuális gép állapotát figyeli. Ha egy virtuális gép nem Kifogástalan állapotba esik, a virtuális gép újraindítása elindíthatóak az Azure-beli gazdagéppel ügynök, amely a virtuális gép állapotát ellenőrzi. A hálóvezérlő számos különböző paraméterek, amelyek esetleg jelzik a gazdagép hardverének problémák ellenőrzésével a gazdagép állapotát ellenőrzi. Azt is ellenőrzi a a kisegítő lehetőségek az állomás a hálózaton keresztül. A következő események vezethet arra utalhat, hogy a gazdagép problémáit:
+Az állapot-ellenőrzési funkció figyeli az Azure-kiszolgálón üzemeltetett virtuális gépek állapotát. Ha egy virtuális gép nem Kifogástalan állapotba esik, a virtuális gép újraindítását az Azure-gazdagép ügynöke kezdeményezheti, amely ellenőrzi a virtuális gép állapotát. A háló vezérlő ellenőrzi a gazdagép állapotát úgy, hogy számos különböző paramétert ellenőriz, amelyek a gazdagép hardverével kapcsolatos problémákat jelezhetik. Emellett ellenőrzi a gazdagép elérhetőségét a hálózaton keresztül. A gazdagéptel kapcsolatos problémák jelzése a következő eseményekhez vezethet:
 
-- A gazdagép hibás állapotot jelez, ha a gazdagép újraindítását és a gazdagépen futó virtuális gépek újraindítását aktiválódik.
-- Ha a gazdagép nem kifogástalan állapotban sikeres újraindítás után, a rendszer kezdeményezi a újbóli üzembe helyezés, a virtuális gépek, amelyek eredetileg egy kifogástalan állapotú gazdagépre szerveren most már nem megfelelő állapotú a csomóponton. Ebben az esetben az eredeti gazdára nem kifogástalan állapotúként van megjelölve. Ez nem használható további telepítések amíg nem törlik vagy cseréje.
-- Ha a hibás állapotú gazdagép meghibásodik az újraindítás során, akkor aktiválódik, azonnal újraindítja a virtuális gépek az kifogástalan állapotú gazdagépeken. 
+- Ha a gazdagép rossz állapotot jelzi, a rendszer újraindítja a gazdagépet, és újraindítja a gazdagépen futó virtuális gépeket.
+- Ha a sikeres újraindítás után a gazdagép nem kifogástalan állapotban van, a rendszer kezdeményezi a virtuális gépek olyan újratelepítését, amelyik eredetileg a nem kifogástalan állapotú csomóponton található. Ebben az esetben az eredeti gazdagép nem kifogástalanként van megjelölve. Nem lesz használatban további központi telepítésekhez, amíg meg nem történik a törlés vagy a lecserélés.
+- Ha a nem kifogástalan állapotú gazdagép problémát észlelt az újraindítási folyamat során, a rendszer elindítja a virtuális gépek azonnali újraindítását. 
 
-A gazdagép és virtuális gép figyelése az Azure által biztosított Azure virtuális gépek, hogy a gazdagéppel kapcsolatos problémákat automatikusan újraindulnak, egy megfelelő Azure-gazdagépen. 
+Az Azure által biztosított gazdagép-és virtuálisgép-figyeléssel az Azure-beli virtuális gépek automatikusan újraindulnak egy kifogástalan Azure-gazdagépen. 
 
 >[!IMPORTANT]
->Az Azure felültelepítés nem indítja újra Linux rendszerű virtuális gépek, ahol a vendég operációs rendszer kernelén Pánik állapotban van. A gyakran használt Linux-kiadások, az alapértelmezett beállítások nem automatikusan újraindítása folyamatban van virtuális gépeket vagy a kiszolgálóra, amelyen a Linux kernel Pánik állapotban. Ehelyett az alapértelmezett úgy rendelkezik, hogy az operációs rendszer rendszermag Pánik állapotban kell tudni csatolni a kernel-hibakereső elemzéséhez. Az Azure automatikusan újraindítja a vendég operációs rendszer virtuális gép állapotban egy ilyen van érvényesítenie ezt a viselkedést. Feltételezzük, rendkívül ritka ilyen esemény biztosítják. Ahhoz, hogy a virtuális gép újraindítását az alapértelmezett viselkedést felülírhatja. Módosíthatja az alapértelmezett viselkedés engedélyezéséhez /etc/sysctl.conf "kernel.panic" paraméter. Ez a paraméter beállított időtartam másodpercen belül van. Közös javasolt értékek: 20-30 másodpercen keresztül ezt a paramétert az újraindítás elindítása előtt várja. Lásd még: <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>.
+>Az Azure-szolgáltatások gyógyulása nem indítja újra a Linux rendszerű virtuális gépeket, ahol a vendég operációs rendszer kernel pánik állapotban van. A gyakran használt Linux-kiadások alapértelmezett beállításai nem indítják el automatikusan a virtuális gépeket vagy a kiszolgálót, ahol a Linux-kernel pánik állapotban van. Ehelyett az alapértelmezett beállítás szerint az operációs rendszernek a kernel pánik állapotban kell lennie ahhoz, hogy egy kernel-hibakeresőt csatoljon az elemzéshez. Az Azure tiszteletben tartja ezt a viselkedést azáltal, hogy nem indítja automatikusan újra a virtuális gépet egy ilyen állapotban lévő vendég operációs rendszerrel. Feltételezi, hogy az ilyen események rendkívül ritkák. Az alapértelmezett viselkedést felülírhatja a virtuális gép újraindításának engedélyezéséhez. Az alapértelmezett viselkedés módosításához engedélyezze a "kernel. Panic" paramétert a/etc/sysctl.conf. A paraméterhez megadott idő másodpercben. Gyakori ajánlott értékek: várjon 20-30 másodpercig, mielőtt aktiválja az újraindítást ezen a paraméteren. Lásd még:. <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>
 
-A második szolgáltatása, amely ebben a forgatókönyvben támaszkodnak, az a tény, hogy újraindítja a HANA-szolgáltatás, amely után a virtuális gép automatikusan elindul, fut a virtuális gép újraindítása sikeresen megtörtént. Beállíthat [HANA szolgáltatás automatikus újraindítás](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html) HANA szolgáltatások különböző figyelő-szolgáltatásokon keresztül.
+Az ebben a forgatókönyvben használt második funkció az a tény, hogy az újraindított virtuális gépen futó HANA szolgáltatás automatikusan elindul a virtuális gép újraindítása után. A [Hana szolgáltatás automatikus](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html) újraindítását a különböző HANA-szolgáltatások watchdog szolgáltatásain keresztül állíthatja be.
 
-Ebben a forgatókönyvben egy virtuális javíthatja a ritkán használt feladatátvevő csomópont hozzáadása az SAP HANA-konfigurációjához. Az SAP HANA-dokumentáció a beállítás neve [gazdagép automatikus feladatátvétele](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/ae60cab98173431c97e8724856641207.html). Ebben a konfigurációban előfordulhat, hogy van értelme egy helyszíni üzembe helyezési helyzetben, ahol a Kiszolgálóhardver korlátozva, és a gazdagépként egyetlen kiszolgálóból álló csomópont dedikált üzemi gazdagépekhez több automatikus feladatátvételi csomópontra. De az Azure-ban, ahol az alapul szolgáló infrastruktúra az Azure biztosít a megfelelő célkiszolgáló sikeres virtuális gép újraindítását, hogy értelmetlen üzembe helyezéséhez SAP HANA gazdagép automatikus feladatátvétele. Azure-szolgáltatás javítása, mert nem nincs referenciaarchitektúra a készenléti csomópontokat a HANA gazdagép automatikus feladatátvétele úgy rendelkezik. 
+Előfordulhat, hogy ezt az egyvirtuális virtuálisgép-forgatókönyvet úgy javítja, hogy egy SAP HANA konfigurációhoz hozzáad egy hideg feladatátvételi csomópontot. A SAP HANA dokumentációjában a telepítő neve [gazdagép automatikus feladatátvétele](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/ae60cab98173431c97e8724856641207.html). Ez a konfiguráció hasznos lehet egy helyszíni üzembe helyezési helyzetben, ahol a kiszolgáló hardvere korlátozott, és egy egykiszolgálós csomópontot kell kiszolgálni a gazdagép automatikus feladatátvételi csomópontja számára az üzemi gazdagépek készlete számára. Az Azure-ban azonban, ahol az Azure mögöttes infrastruktúrája egy kifogástalan cél kiszolgálót biztosít a virtuális gépek sikeres újraindításához, nem érdemes üzembe helyeznie SAP HANA gazdagép automatikus feladatátvételét. Az Azure Service gyógyulása miatt nincs olyan hivatkozási architektúra, amely a HANA-gazdagép automatikus feladatátvételének készenléti csomópontját előre látja. 
 
-### <a name="special-case-of-sap-hana-scale-out-configurations-in-azure"></a>Különleges eset az SAP HANA kibővített konfigurációkhoz az Azure-ban
-Azure virtuális gépek és az újraindítás, a SAP HANA-példány javítása, a virtuális gép működik, és újra futtatni a szolgáltatás magas rendelkezésre állás az SAP HANA kibővített konfigurációkhoz van szüksége. Magas rendelkezésre állású architektúra alapján a HANA-Rendszerreplikálást szeretnék bevezetni egy későbbi időpontban. 
+### <a name="special-case-of-sap-hana-scale-out-configurations-in-azure"></a>Az Azure-SAP HANA kibővíthető konfigurációinak speciális esete
+A SAP HANA kibővíthető konfigurációinak magas rendelkezésre állása az Azure-beli virtuális gépek szolgáltatás-gyógyítására és a SAP HANA példány újraindítására támaszkodik, mivel a virtuális gép újra működik. A HANA rendszer Replikálásán alapuló magas rendelkezésre állású architektúrákat később fogjuk bevezetni. 
 
 
-## <a name="availability-scenarios-for-two-different-vms"></a>Két különböző virtuális gépek rendelkezésre állási forgatókönyvek
+## <a name="availability-scenarios-for-two-different-vms"></a>Két különböző virtuális gép rendelkezésre állási forgatókönyvei
 
-Belüli Azure rendelkezésre állási csoport két Azure virtuális gépek használatakor, növelheti a hasznos üzemidő között ezek két virtuális gépet, ha egy Azure rendelkezésre állási csoportot egy Azure-régióban helyezi. Az Alapszintű telepítés az Azure-ban jelenne meg:
+Ha két Azure-beli virtuális gépet használ egy Azure-beli rendelkezésre állási csoporton belül, megnövelheti a két virtuális gép közötti üzemidőt, ha egy Azure-régióban található Azure-beli rendelkezésre állási csoportba kerülnek. Az Azure-beli alapkonfiguráció a következőképpen fog kinézni:
 
-![Két virtuális gép összes rétege ábrája](./media/sap-hana-availability-one-region/two_vm_all_shell.PNG)
+![Két virtuális gép diagramja az összes réteggel](./media/sap-hana-availability-one-region/two_vm_all_shell.PNG)
 
-A különböző rendelkezésre állási forgatókönyvek bemutatják, hogy az ábrán a rétegek néhány nincs megadva. Az ábrán csak olyan rétegek, amelyek jelzik a virtuális gépek, gazdagépek, a rendelkezésre állási csoportok és Azure-régióban. Azure Virtual Network-példányok, erőforráscsoportok és előfizetések nem szerepet játszanak az ebben a szakaszban leírt forgatókönyveket.
+A különböző rendelkezésre állási forgatókönyvek szemléltetése érdekében a diagram néhány rétege ki van hagyva. A diagramon csak a virtuális gépeket, gazdagépeket, rendelkezésre állási csoportokat és az Azure-régiókat ábrázoló rétegek láthatók. Az Azure Virtual Network-példányok, erőforráscsoportok és előfizetések nem játszanak szerepet az ebben a részben ismertetett forgatókönyvekben.
 
-### <a name="replicate-backups-to-a-second-virtual-machine"></a>Biztonsági mentések egy második virtuális gép replikálása
+### <a name="replicate-backups-to-a-second-virtual-machine"></a>Biztonsági másolatok replikálása egy második virtuális gépre
 
-A legtöbb kezdetleges mátrixok egyik biztonsági másolatok használatához. Különösen lehetséges, hogy tranzakciós naplók biztonsági mentését egy virtuális gépről egy másik Azure virtuális géphez rendszerrel szállított. Az Azure Storage-típust választhat. Ez a beállítás Ön felelős scripting kell elvégezni, a második virtuális gép az első virtuális gép ütemezett biztonsági mentések másolatát. Ha a második Virtuálisgép-példányok használatára van szüksége, vissza kell állítania a teljes, a növekményes/differenciális és tranzakciónapló biztonsági mentései a pont, amely van szüksége. 
+Az egyik legkezdetlegesebb beállítás a biztonsági másolatok használata. Különösen előfordulhat, hogy az egyik virtuális gépről egy másik Azure-beli virtuális gépre szállított tranzakciós naplóba tartozó biztonsági másolatok vannak. Kiválaszthatja az Azure Storage típusát. Ebben a beállításban az első virtuális gépen a második virtuális gépre irányuló ütemezett biztonsági mentések másolatát kell elvégeznie. Ha a második virtuálisgép-példányt kell használnia, vissza kell állítania a teljes, növekményes/különbözeti és tranzakciós napló biztonsági mentését arra a pontra, amelyre szüksége van. 
 
-Az architektúra hasonlít:
+Az architektúra a következőképpen néz ki:
 
-![Két virtuális gépet a tárreplikáció ábrája](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
+![Két virtuális gép diagramja tárolási replikálással](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
 
-A telepítés még nem kiválóan alkalmas a nagyszerű helyreállítási időkorlátot (RPO) és a helyreállítási időre vonatkozó célkitűzés (RTO) időpont eléréséhez. RTO alkalommal különösen csökkenne az teljes mértékben a teljes adatbázis visszaállítása a másolt biztonsági másolatok használatával szükségessége miatt. Azonban ez a beállítás akkor hasznos, a fő-példányokon nem kívánt adatok törlése. Ezzel a beállítással tetszőleges időpontban egy bizonyos ponton visszaállítása, az adatok kinyerése és a törölt adatok importálása a fő példányt. Ezért célszerű biztonsági másolatot metódus használata egyéb magas rendelkezésre állású funkciókkal. 
+Ez a beállítás nem alkalmas a helyreállítási időkorlát (RPO) és a helyreállítási idő célkitűzés (RTO) idejének elérésére. A RTO idő különösen a teljes adatbázisnak a másolt biztonsági másolatok használatával történő teljes visszaállításának szükségessége miatt csökkenhet. Ez a beállítás azonban hasznos lehet a fő példányok nem szándékolt adattörlésének helyreállításához. Ezzel a beállítással bármikor visszaállíthat egy adott időpontra, kinyerheti az adatait, és importálhatja a törölt adatait a fő példányba. Ezért érdemes lehet egy biztonsági másolati módszert használni más magas rendelkezésre állású funkciókkal kombinálva. 
 
-Miközben a biztonsági másolatok másolódnak, lehet, mint a fő virtuális gép, amelyen az SAP HANA-példány fut, kisebb méretű virtuális Gépet használ. Ne feledje, hogy csatlakoztathat egy kevesebb VHD-k kisebb méretű virtuális gépet. Az egyes Virtuálisgép-típusok a korlátozásokkal kapcsolatos további információkért lásd: [az Azure-ban Linux rendszerű virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+A biztonsági másolatok másolásakor előfordulhat, hogy a SAP HANA példányán futó fő virtuális géppel kisebb virtuális gépet használ. Ne feledje, hogy kisebb számú virtuális merevlemezt is csatolhat kisebb virtuális gépekhez. További információ az egyes virtuálisgép-típusok korlátairól: a [Linux rendszerű virtuális gépek méretei az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 
-### <a name="sap-hana-system-replication-without-automatic-failover"></a>SAP HANA rendszerreplikáció nélkül Automatikus feladatátvétel
+### <a name="sap-hana-system-replication-without-automatic-failover"></a>Rendszer-replikálás SAP HANA automatikus feladatátvétel nélkül
 
-Ebben a szakaszban leírt forgatókönyveket az SAP HANA-rendszerreplikálást használja. Az SAP dokumentációjában talál [replikációs](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html). Automatikus feladatátvétel nélkül forgatókönyvek nem állnak közös konfigurációk egy Azure-régióban. A konfiguráció automatikus feladatátvétellel, anélkül, ha a telepítés pedig támasztja, elkerülve gazdálkodót figyelheti és feladatátvételi manuálisan. Óta a vesz igénybe, és erőfeszítéseket is a legtöbb ügyfél hagyatkoznia ehelyett javítási Azure-szolgáltatás. Vannak bizonyos szélsőséges eseteket, ahol ez a konfiguráció segíthet meghibásodási helyzet tekintetében. Vagy bizonyos esetekben egy ügyfél több hatékonyságának kihasználására – érdemes.
+Az ebben a szakaszban ismertetett forgatókönyvek SAP HANA rendszerreplikációt használnak. Az SAP dokumentációja: [rendszerreplikáció](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html). Az automatikus feladatátvétel nélküli forgatókönyvek nem általánosak az egyes Azure-régiókban található konfigurációk esetében. Automatikus feladatátvétel nélküli konfiguráció, bár a pacemaker telepítése elkerülhető, ha manuálisan ellenőrzi és feladatátvételt végez. Mivel ez a megoldás és az erőfeszítések is, a legtöbb ügyfél az Azure-szolgáltatások gyógyítására támaszkodik. Vannak olyan Edge-esetek, amikor ez a konfiguráció segíthet a meghibásodási forgatókönyvek szempontjából. Vagy bizonyos esetekben előfordulhat, hogy az ügyfél nagyobb hatékonyságot szeretne megvalósítani.
 
-#### <a name="sap-hana-system-replication-without-auto-failover-and-without-data-preload"></a>SAP HANA rendszerreplikáció automatikus feladatátvétel és preload adatok nélkül
+#### <a name="sap-hana-system-replication-without-auto-failover-and-without-data-preload"></a>SAP HANA rendszer-replikáció automatikus feladatátvétel nélkül és adattovábbítás nélkül
 
-Ebben a forgatókönyvben a SAP HANA rendszerreplikáció adatok áthelyezése a 0-RPO eléréséhez szinkron módon használhatja. Másrészről van egy elég hosszú, nem kell feladatátvevő vagy a HANA-példány gyorsítótárba konfigurálások adatok RTO. Ebben az esetben is lehet elérése érdekében további a konfiguráció a következő műveletek végrehajtásával:
+Ebben a forgatókönyvben SAP HANA rendszer-replikálást használ az adatátvitelhez szinkron módon, hogy RPO a 0 értéket. Másfelől azonban elég hosszú RTO, hogy nincs szüksége feladatátvételre vagy az adatelőre való betöltésre a HANA-példány gyorsítótárába. Ebben az esetben lehetséges, hogy a következő műveletek végrehajtásával további gazdaságot érhet el a konfigurációban:
 
-- A második virtuális gép egy másik SAP HANA-példány futtatása. Az SAP HANA-példány, a második virtuális gépen a virtuális gép memóriájának a legtöbb vesz igénybe. Abban az esetben, ha a második virtuális géphez feladatátvétel esetén kell állítsa le a futó SAP HANA-példány, amely rendelkezik az adatok, a második virtuális gép teljes mértékben beöltődött, hogy a replikált adatok tölthetők az a második virtuális gép a célként megadott HANA-példányok a gyorsítótárba.
-- A második virtuális gép egy kisebb Virtuálisgép-méretet használja. Ha feladatátvétel történik, hogy egy további lépést a manuális feladatátvétel előtt. Ebben a lépésben méretezze át a virtuális Gépet a forrásoldali virtuális gép méretét. 
+- Futtasson egy másik SAP HANA példányt a második virtuális gépen. A második virtuális gép SAP HANA példánya a virtuális gép memóriáját veszi át. Ha a második virtuális gép feladatátvételét hajtja végre, le kell állítania a futó SAP HANA példányt, amely a második virtuális gépen teljesen betöltődött, így a replikált adatai betölthetők a célként megadott HANA-példány gyorsítótárba a második virtuális gépen.
+- Használjon kisebb méretű virtuálisgép-méretet a második virtuális gépen. Ha feladatátvétel történik, további lépésre van szüksége a manuális feladatátvétel előtt. Ebben a lépésben átméretezi a virtuális gépet a forrásként szolgáló virtuális gép méretére. 
  
-A forgatókönyv hasonlít:
+A forgatókönyv a következőképpen néz ki:
 
-![Két virtuális gépet a tárreplikáció ábrája](./media/sap-hana-availability-one-region/two_vm_HSR_sync_nopreload.PNG)
+![Két virtuális gép diagramja tárolási replikálással](./media/sap-hana-availability-one-region/two_vm_HSR_sync_nopreload.PNG)
 
 > [!NOTE]
-> Akkor is, ha az adatok előzetes betöltés végén a HANA system replikációs cél nem használja, szüksége van legalább 64 GB memóriával. Elegendő memória 64 GB-os tartani a célpéldány memóriájának sortárindex adatok mellett is szükséges.
+> Akkor is, ha nem használja a HANA rendszerreplikálási célhelyen a betöltést, legalább 64 GB memóriát kell használnia. Az sortárindex létrehozását-adatoknak a cél példány memóriájában való megtartásához a 64 GB-nál is elegendő memória szükséges.
 
-#### <a name="sap-hana-system-replication-without-auto-failover-and-with-data-preload"></a>SAP HANA rendszerreplikáció nélkül Automatikus feladatátvétel és preload adatok
+#### <a name="sap-hana-system-replication-without-auto-failover-and-with-data-preload"></a>SAP HANA rendszer-replikáció automatikus feladatátvétel nélkül és adattovábbítással
 
-Ebben a forgatókönyvben előre feltölti a második virtuális gép a HANA-példány a replikált adatokat. Ezzel elkerülhető, hogy az adatok nem konfigurálások két előnyeit. Ebben az esetben a második virtuális gép egy másik SAP HANA-rendszeren nem futtatható. Még nem használható a kisebb Virtuálisgép-mérettel. Ezért ügyfelek ritkán a forgatókönyv megvalósításához.
+Ebben az esetben a második virtuális gépen a HANA-példányba replikált adathalmazok előre be vannak töltve. Ez kiküszöböli a két előnyt az adatvesztés hiányában. Ebben az esetben nem futtathat másik SAP HANA rendszer a második virtuális gépen. Nem használhat kisebb virtuálisgép-méretet is. Ezért az ügyfelek ritkán alkalmazzák ezt a forgatókönyvet.
 
-### <a name="sap-hana-system-replication-with-automatic-failover"></a>SAP HANA rendszerreplikáció automatikus feladatátvétellel
+### <a name="sap-hana-system-replication-with-automatic-failover"></a>Rendszer-replikálás SAP HANA automatikus feladatátvételsel
 
-A standard és a leggyakrabban használt a rendelkezésre állási konfiguráció egy Azure-régión belüli, két Azure virtuális gépek, SLES Linux operációs rendszert futtató rendelkezik definiált feladatátvevő fürtben. A SLES Linux-fürt alapul a [támasztja](http://www.linux-ha.org/wiki/Pacemaker) keretrendszer együtt egy [STONITH](http://linux-ha.org/wiki/STONITH) eszköz. 
+Egy Azure-régióban a standard és a leggyakoribb rendelkezésre állási konfigurációban két SLES Linux rendszerű Azure-beli virtuális gépen van definiálva feladatátvevő fürt. A SLES Linux-fürt a [pacemaker](http://www.linux-ha.org/wiki/Pacemaker) keretrendszeren alapul, a [STONITH](http://linux-ha.org/wiki/STONITH) -eszközzel együtt. 
 
-Az SAP HANA szempontból a használt replikációs módjának szinkronizálva van, és az Automatikus feladatátvétel van beállítva. A második virtuális Gépet az SAP HANA-példány meleg készenléti csomópontként működik. A készenléti csomópont változásrekordokat szinkron adatfolyamot fogad az elsődleges SAP HANA-példány. Tranzakció véglegesítve lett az alkalmazás a HANA elsődleges csomópontban, az elsődleges HANA csomópont vár, az alkalmazásnak a véglegesítés megerősítéséhez, mindaddig, amíg a másodlagos SAP HANA-csomópont megerősíti, hogy érkezett-e a végrehajtási rekord. SAP HANA két szinkron replikáció módot kínál. Részletek, valamint e két szinkron replikáció mód közötti különbségek leírását lásd: az SAP-cikk [replikációs mód az SAP HANA-rendszerreplikálást](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html).
+SAP HANA szempontból a használt replikációs mód szinkronizálva van, és az automatikus feladatátvétel konfigurálva van. A második virtuális gépen a SAP HANA példány gyors készenléti csomópontként működik. A készenléti csomópont az elsődleges SAP HANA példány változási rekordjainak szinkron streamjét kapja. Mivel az alkalmazás a HANA elsődleges csomóponton hajtja végre a tranzakciókat, az elsődleges HANA-csomópont megvárja, hogy erősítse meg a véglegesítést az alkalmazásnak, amíg a másodlagos SAP HANA csomópont megerősíti, hogy megkapta a véglegesítési rekordot. SAP HANA két szinkron replikációs módot kínál. További részletekért és a két szinkron replikációs mód közötti különbségek leírásához tekintse meg az SAP-cikkben [SAP HANA rendszer replikálásának replikációs módjait](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html).
 
-A teljes konfiguráció hasonlóan néz ki:
+A teljes konfiguráció a következőképpen néz ki:
 
-![Két virtuális gépet tároló replikációs és feladatátvételi ábrája](./media/sap-hana-availability-one-region/two_vm_HSR_sync_auto_pre_preload.PNG)
+![Két virtuális gép diagramja, tárolási replikálással és feladatátvételsel](./media/sap-hana-availability-one-region/two_vm_HSR_sync_auto_pre_preload.PNG)
 
-Ez a megoldás választhatja azt is, mivel lehetővé teszi az elérése a helyreállítási Időkorlátot = 0 és a egy alacsony RTO. Állítsa az SAP HANA-ügyfélkapcsolat, hogy az SAP HANA-ügyfelek csatlakozhat a virtuális IP-cím a HANA system replikációs konfiguráció. Ilyen konfiguráció nincs szükség, ha egy feladatátvételt a másodlagos csomópontra, konfigurálja újra az alkalmazást. Ebben a forgatókönyvben ugyanazt az elsődleges és másodlagos virtuális gépek az Azure virtuális gépek Termékváltozatait kell lennie.
+Dönthet úgy, hogy ezt a megoldást választja, mert lehetővé teszi egy RPO = 0 és egy alacsony RTO elérését. Konfigurálja a SAP HANA ügyfélkapcsolatot úgy, hogy a SAP HANA-ügyfelek a virtuális IP-címet használják a HANA rendszerreplikálási konfigurációhoz való csatlakozáshoz. Ilyen konfiguráció esetén nincs szükség az alkalmazás újrakonfigurálására, ha a másodlagos csomópontra feladatátvétel történik. Ebben az esetben az elsődleges és másodlagos virtuális gépekhez tartozó Azure VM SKU-nak azonosnak kell lennie.
 
 ## <a name="next-steps"></a>További lépések
 
-Ezek a konfigurációk, az Azure-ban való beállításának részletes útmutatásért lásd:
+A konfigurációk Azure-beli beállításával kapcsolatos részletes útmutatásért lásd:
 
-- [Azure virtuális gépeken futó SAP HANA rendszerreplikáció beállítása](sap-hana-high-availability.md)
-- [Magas rendelkezésre állás az SAP Hana rendszerreplikáció használatával](https://blogs.sap.com/2018/01/08/your-sap-on-azure-part-4-high-availability-for-sap-hana-using-system-replication/)
+- [Rendszerreplikáció beállítása SAP HANA Azure-beli virtuális gépeken](sap-hana-high-availability.md)
+- [SAP HANA magas rendelkezésre állása rendszerreplikáció használatával](https://blogs.sap.com/2018/01/08/your-sap-on-azure-part-4-high-availability-for-sap-hana-using-system-replication/)
 
-SAP HANA rendelkezésre állása az Azure-régiók kapcsolatos további információkért lásd:
+Az Azure-régiók SAP HANA rendelkezésre állásával kapcsolatos további információkért lásd:
 
-- [SAP HANA rendelkezésre állása az Azure-régiók](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
+- [SAP HANA rendelkezésre állás Azure-régiók között](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
 

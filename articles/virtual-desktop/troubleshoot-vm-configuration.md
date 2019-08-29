@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 0e32c81f37a8b81511cd009dfddbcc546aee1797
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f797d3ee525806d8002b19edb1378d0376508b08
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876748"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073934"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
 
@@ -34,39 +34,45 @@ Kövesse ezeket az utasításokat, ha problémákat tapasztal a virtuális gépe
 
 **Okozhat** A hitelesítő adatoknak a Azure Resource Manager sablon felületén megjelenő javításokban való megadásának elírása történt.
 
-**Javítsa ki** Kövesse ezeket az utasításokat a hitelesítő adatok kijavítani.
+**Javítsa ki** A megoldáshoz hajtsa végre az alábbi műveletek egyikét.
 
-1. Manuálisan adja hozzá a virtuális gépeket egy tartományhoz.
-2. A hitelesítő adatok megerősítését követően újra üzembe helyezhető. Lásd: [állomáslista létrehozása a PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)-lel.
-3. Csatlakoztassa a virtuális gépeket egy tartományhoz egy olyan sablonnal, amely egy [meglévő Windows-alapú virtuális GÉPET ad tartományhoz csatlakozik](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
+- Manuálisan adja hozzá a virtuális gépeket egy tartományhoz.
+- A sablon újbóli üzembe helyezése a hitelesítő adatok megerősítése után. Lásd: [állomáslista létrehozása a PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)-lel.
+- Csatlakoztassa a virtuális gépeket egy tartományhoz egy olyan sablonnal, amely egy [meglévő Windows-alapú virtuális GÉPET ad tartományhoz csatlakozik](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 
 ### <a name="error-timeout-waiting-for-user-input"></a>Hiba: Felhasználói bevitelre való várakozás időtúllépése
 
 **Okozhat** A tartományhoz való csatlakozás végrehajtásához használt fiók többtényezős hitelesítéssel (MFA) rendelkezhet.
 
-**Javítsa ki** Kövesse ezeket az utasításokat a tartományhoz való csatlakozás befejezéséhez.
+**Javítsa ki** A megoldáshoz hajtsa végre az alábbi műveletek egyikét.
 
-1. Ideiglenesen távolítsa el az MFA-t a fiókhoz.
-2. Használjon egy szolgáltatásfiókot.
+- Ideiglenesen távolítsa el az MFA-t a fiókhoz.
+- Használjon egy szolgáltatásfiókot.
 
 ### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Hiba: A kiépítés során használt fiók nem rendelkezik a művelet végrehajtásához szükséges engedélyekkel
 
 **Okozhat** A használt fióknak nincs engedélye a virtuális gépek tartományhoz való csatlakoztatására a megfelelőség és a szabályozások miatt.
 
-**Javítsa ki** Kövesse ezeket az utasításokat.
+**Javítsa ki** A megoldáshoz hajtsa végre az alábbi műveletek egyikét.
 
-1. Olyan fiókot használjon, amely a rendszergazda csoport tagja.
-2. Adja meg a szükséges engedélyeket a használt fiókhoz.
+- Olyan fiókot használjon, amely a rendszergazda csoport tagja.
+- Adja meg a szükséges engedélyeket a használt fiókhoz.
 
 ### <a name="error-domain-name-doesnt-resolve"></a>Hiba: A tartománynév nem oldható fel
 
-**1. ok:** A virtuális gépek olyan erőforráscsoporthoz tartoznak, amely nincs társítva a virtuális hálózathoz (VNET), ahol a tartomány található.
+**1. ok:** A virtuális gépek olyan virtuális hálózaton vannak, amely nincs társítva a virtuális hálózathoz (VNET), ahol a tartomány található.
 
 **1. javítás:** Hozzon létre VNET-társítást a virtuális gépek kiépített VNET és a tartományvezérlőt (DC) futtató VNET között. Lásd: [virtuális hálózati társ-erőforrás-kezelő létrehozása, különböző](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions)előfizetések.
 
-**2. ok:** A AadService (AADS) használatakor a DNS-bejegyzések nincsenek beállítva.
+**2. ok:** Azure Active Directory Domain Services (Azure AD DS) használata esetén a virtuális hálózat nem frissült a DNS-kiszolgáló beállításaival, hogy azok a felügyelt tartományvezérlőkre mutassanak.
 
-**2. javítás:** A tartományi szolgáltatások beállításával kapcsolatban tekintse meg a [Azure Active Directory Domain Services engedélyezése](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns)című témakört.
+**2. javítás:** Az Azure AD DSt tartalmazó virtuális hálózat DNS-beállításainak frissítéséhez tekintse meg [Az Azure-beli virtuális hálózat DNS-beállításainak frissítése](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network)című témakört.
+
+**3. ok:** A hálózati adapter DNS-kiszolgálójának beállításai nem a virtuális hálózaton lévő megfelelő DNS-kiszolgálóra mutatnak.
+
+**3. javítás:** Hajtsa végre a következő műveletek egyikét a megoldáshoz a [DNS-kiszolgálók módosítása] című témakörben leírtak szerint.
+- Módosítsa a hálózati adapter DNS-kiszolgálójának beállításait **Egyéni** értékre a [DNS-kiszolgálók módosítása](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) lépésekkel, és a virtuális hálózaton lévő DNS-kiszolgálók magánhálózati IP-címeinek megadásával.
+- Módosítsa a hálózati adapter DNS-kiszolgálójának beállításait úgy, hogy azok a **virtuális hálózatról öröklik** a [DNS-kiszolgálók módosításának](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers)lépéseit, majd módosítsa a virtuális hálózat DNS-KISZOLGÁLÓJÁNAK beállításait a [DNS-kiszolgálók módosítása](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers)című témakör lépéseit követve.
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Nincs telepítve a Windows rendszerű virtuális asztali ügynök és a Windows rendszerű virtuális asztali rendszerindító betöltő
 

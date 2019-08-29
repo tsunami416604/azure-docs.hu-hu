@@ -12,17 +12,16 @@ ms.assetid: 8baa30c8-d40e-41ac-93d0-74e96fe18d4c
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: ad512baad86133cc1aad80438a6b68d2a31a6cc6
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: eb5ef067d4c9be4debd1bdc98ac4eb57a89d1100
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013592"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091683"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linuxos virtuális gép optimalizálása az Azure-ban
 A linuxos virtuális gép (VM) létrehozása a parancssorból vagy a portálról egyszerű. Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a teljesítményét a Microsoft Azure platform teljesítményének optimalizálása érdekében. Ez a témakör egy Ubuntu Server-alapú virtuális gépet használ, de [a saját rendszerképeit sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használva is létrehozhatja.  

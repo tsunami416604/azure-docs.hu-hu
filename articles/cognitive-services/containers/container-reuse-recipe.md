@@ -1,7 +1,7 @@
 ---
-title: A Docker-tárolók készült receptek között
+title: A Docker-tárolók receptjei
 titleSuffix: Azure Cognitive Services
-description: A tároló receptek használatával, amelyek felhasználhatók a Cognitive Services-tárolók létrehozása. Tárolók néhány vagy az összes konfigurációs beállításokkal épül fel, hogy nincs rájuk szükség, amikor a tároló elindult. Ha úgy, hogy ez a tároló új réteg (beállítások), és helyileg tesztelt, a tároló a tárolóregisztrációs tárolhatja. Ha a tároló elindult, csak kell ezeket a beállításokat, amelyek jelenleg nem tárolja a tárolót.
+description: Ezekkel a tároló receptek használatával Cognitive Services tárolókat hozhat létre, amelyeket újra felhasználhat. A tárolók egy vagy több konfigurációs beállítással is létrehozhatók, így nem szükségesek a tároló indításakor. Ha ezt az új réteget (a beállításokkal), és helyileg tesztelte, akkor a tárolót egy tároló-beállításjegyzékben tárolhatja. A tároló indításakor csak azokat a beállításokat kell megadnia, amelyek jelenleg nincsenek tárolva a tárolóban.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,52 +10,52 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 37fa972d52c564c4d61e5923c2b3dc48bde9d2ee
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a8162f96051a73b9f6e6a6fe3ece020e0a94f08f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445812"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068824"
 ---
-# <a name="create-containers-for-reuse"></a>Ismételt használata a tárolók létrehozása
+# <a name="create-containers-for-reuse"></a>Tárolók létrehozása újbóli használatra
 
-A tároló receptek használatával, amelyek felhasználhatók a Cognitive Services-tárolók létrehozása. Tárolók építhetők fel néhány vagy az összes konfigurációs beállításokat, hogy azok _nem_ van szükség, amikor a tároló elindult.
+Ezekkel a tároló receptek használatával Cognitive Services tárolókat hozhat létre, amelyeket újra felhasználhat. A tárolók egy vagy több konfigurációs beállítással is létrehozhatók, így _nem_ szükségesek a tároló indításakor.
 
-Ha úgy, hogy ez a tároló új réteg (beállítások), és helyileg tesztelt, a tároló a tárolóregisztrációs tárolhatja. Ha a tároló elindult, csak kell ezeket a beállításokat, amelyek jelenleg nem tárolja a tárolót. A privát tárolójegyzék tároló itt konfigurációs adnia ezeket a beállításokat.
+Ha ezt az új réteget (a beállításokkal), és helyileg tesztelte, akkor a tárolót egy tároló-beállításjegyzékben tárolhatja. A tároló indításakor csak azokat a beállításokat kell megadnia, amelyek jelenleg nincsenek tárolva a tárolóban. A privát beállításjegyzék-tároló konfigurációs helyet biztosít a beállításoknak a alkalmazásban való átadásához.
 
-## <a name="docker-run-syntax"></a>Docker, futtassa a szintaxis
+## <a name="docker-run-syntax"></a>Docker-futtatási szintaxis
 
-Bármely `docker run` ebben a dokumentumban szereplő példák feltételezik egy Windows konzolon egy `^` folytatási karakter. sor. Vegye figyelembe a következőket saját használatra:
+A jelen dokumentumban szereplő `^` példákegysorfolytatásikarakterrelrendelkezőWindows-konzoltfeltételeznek.`docker run` Saját használatra a következőket vegye figyelembe:
 
 * Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
-* Ha Windows operációs rendszert, vagy egy eltérő Windows konzol konzolt használ, használja a megfelelő konzol/terminálon, a mappa szintaxis csatlakoztatása és a konzol és a rendszer folytatási jelző karakter.  A Cognitive Services-tároló egy olyan Linux operációs rendszer, mert a célként megadott csatlakoztatási szintaxissal egy Linux-stílusú mappát.
-* `docker run` Példák a könyvtárat használja ki a `c:` meghajtón a Windows-engedély ütközések elkerülése érdekében. Ha szeretné használni a bemeneti könyvtár egy adott címtárhoz, előfordulhat, hogy kell biztosítania a docker szolgáltatás engedéllyel.
+* Ha a Windows rendszertől eltérő operációs rendszert használ, vagy a Windows-konzoltól eltérő konzolt használ, használja a megfelelő konzolt/terminált, a csatlakoztatások mappa szintaxisát, valamint a konzol és a rendszer vonal folytatási karakterét.  Mivel a Cognitive Services tároló egy Linux operációs rendszer, a cél csatlakoztatása a Linux-stílusú mappa szintaxisát használja.
+* `docker run`a következő példák a `c:` meghajtón lévő könyvtárat használják, hogy elkerülje az engedélyek ütközését a Windowson. Ha szeretné használni a bemeneti könyvtár egy adott címtárhoz, előfordulhat, hogy kell biztosítania a docker szolgáltatás engedéllyel.
 
-## <a name="store-no-configuration-settings-in-image"></a>Nincsenek konfigurációs beállítások Store kép
+## <a name="store-no-configuration-settings-in-image"></a>A rendszerkép nem tárolja a konfigurációs beállításokat
 
-A példában `docker run` parancsokat minden egyes szolgáltatás ne tárolja a konfigurációs beállítások a tárolóban. Amikor a tároló-konzol vagy a beállításjegyzék szolgáltatásból, ezeket a konfigurációs beállításokat kell megadni. A privát tárolójegyzék tároló itt konfigurációs adnia ezeket a beállításokat.
+Az egyes `docker run` szolgáltatásokra vonatkozó példák nem tárolnak konfigurációs beállításokat a tárolóban. Amikor a tárolót egy konzolról vagy egy beállításjegyzék-szolgáltatásból indítja el, ezeket a konfigurációs beállításokat át kell adni. A privát beállításjegyzék-tároló konfigurációs helyet biztosít a beállításoknak a alkalmazásban való átadásához.
 
-## <a name="reuse-recipe-store-all-configuration-settings-with-container"></a>Újból felhasználhatja a recept: a tároló összes konfigurációs beállítások tárolására
+## <a name="reuse-recipe-store-all-configuration-settings-with-container"></a>Recept újrafelhasználása: az összes konfigurációs beállítás tárolása tárolóval
 
-Annak érdekében, hogy minden beállítást tárol, hozzon létre egy `Dockerfile` ezekkel a beállításokkal.
+Az összes konfigurációs beállítás tárolásához hozzon létre egy `Dockerfile` -t ezekkel a beállításokkal.
 
-Ezzel a módszerrel problémák:
+Az ezzel a módszerrel kapcsolatos problémák:
 
-* Az új tároló rendelkezik, külön nevét és az eredeti tároló-címke.
-* Annak érdekében, hogy ezek a beállítások módosíthatók, akkor módosítsa az értékeket, a docker-fájlban, a rendszerkép újraépítése és ismételt közzététele a beállításjegyzékbe.
-* Ha valaki megszerzi a tárolóregisztrációs adatbázis vagy a helyi gazdagép a hozzáférést, a tároló futtatásához, és a Cognitive Services-végpontok használata.
-* A Cognitive Services-szolgáltatás bemeneti csatlakoztatása nem igényel, ha nem adja hozzá a `COPY` sorokat, a docker-fájlban.
+* Az új tároló külön névvel és címkével rendelkezik az eredeti tárolóban.
+* Ezeknek a beállításoknak a módosításához módosítania kell a Docker értékeit, újra kell építenie a rendszerképet, és újra közzé kell tennie a beállításjegyzékben.
+* Ha valaki hozzáfér a tároló-beállításjegyzékhez vagy a helyi gazdagéphez, akkor futtathatja a tárolót, és használhatja a Cognitive Services-végpontokat.
+* Ha a kognitív szolgáltatás nem igényel bemeneti csatlakoztatásokat, ne adja hozzá `COPY` a sorokat a Docker.
 
-Hozzon létre jogosultak-e a meglévő Cognitive Services-tárolót szeretne használni, a docker-fájlban, majd használja a docker-parancsokat a docker-fájlban vagy információkat lekérni a tároló van szüksége.
+Hozzon létre Docker, húzza a használni kívánt meglévő Cognitive Services-tárolóból, majd a tároló által igényelt információk beállításához és lekéréséhez használja a Docker Docker-parancsait.
 
-Ebben a példában:
+Példa:
 
-* Beállítja a számlázási végpont `{BILLING_ENDPOINT}` a gazdagépről a környezet kulcs használatával `ENV`.
-* A számlázási API-kulcsot, csoportok `{ENDPOINT_KEY}` a gazdagépről a környezet kulcs használata "ENV.
+* Beállítja a számlázási végpontot `{BILLING_ENDPOINT}` a gazdagép környezeti kulcsának használatával. `ENV`
+* Beállítja a számlázási API-kulcsot `{ENDPOINT_KEY}` a gazdagép környezeti kulcsáról a "env" használatával.
 
-### <a name="reuse-recipe-store-billing-settings-with-container"></a>Újból felhasználhatja a recept: a tároló számlázási beállítások tárolásához
+### <a name="reuse-recipe-store-billing-settings-with-container"></a>Recept újrafelhasználása: számlázási beállítások tárolása tárolóval
 
-Ez a példa bemutatja, hogyan hozhat létre a Text Analytics sentiment tárolót egy Docker-fájlból.
+Ez a példa bemutatja, hogyan hozhatja létre a Text Analytics "hangulati tárolót egy Docker.
 
 ```Dockerfile
 FROM mcr.microsoft.com/azure-cognitive-services/sentiment:latest
@@ -64,15 +64,15 @@ ENV apikey={ENDPOINT_KEY}
 ENV EULA=accept
 ```
 
-Hozza létre és futtassa a tároló [helyileg](#how-to-use-container-on-your-local-host) vagy a [privát regisztrációs adatbázis tároló](#how-to-add-container-to-private-registry) igény szerint.
+Igény szerint hozza létre és futtassa a tárolót [helyileg](#how-to-use-container-on-your-local-host) vagy a [saját beállításjegyzék](#how-to-add-container-to-private-registry) -tárolójában.
 
-### <a name="reuse-recipe-store-billing-and-mount-settings-with-container"></a>Újból felhasználhatja a recept: számlázási tárolja, és a csatlakoztatási beállítások tárolóval
+### <a name="reuse-recipe-store-billing-and-mount-settings-with-container"></a>Recept újrafelhasználása: a számlázás és a csatlakoztatási beállítások tárolása tárolóval
 
-Ez a példa bemutatja, hogyan használható a Language Understanding, számlázás és a modellek a docker-fájl mentésekor.
+Ez a példa bemutatja, hogyan használhatók a Language Understanding, hogyan mentheti a számlázást és a modelleket a Docker.
 
-* A fájl a Language Understanding (LUIS) modellben a szolgáltató beágyazható fájlt másolja rendszer használatával `COPY`.
-* A LUIS-tárolót egy modellt támogatja. Ha minden modell ugyanabban a mappában találhatók, az összes van szüksége egy `COPY` utasítást.
-* Futtassa a docker-fájlt a modell bemeneti könyvtár relatív szülője. Futtassa a következő példában a `docker build` és `docker run` relatív szülőjének parancsokat `/input`. Az első `/input` a a `COPY` parancs a gazdaszámítógép könyvtár. A második `/input` a tároló könyvtár.
+* Az Language Understanding (LUIS) modell fájljának másolása a gazdagép fájlrendszeréről a használatával `COPY`.
+* A LUIS-tároló több modellt is támogat. Ha az összes modell ugyanabban a mappában van tárolva, csak egy `COPY` utasítást kell megadnia.
+* Futtassa a Docker-fájlt a modell bemeneti könyvtárának relatív szülőjének. Az alábbi példához futtassa a `docker build` és `docker run` a parancsot a relatív szülőtől `/input`. A `COPY` parancs `/input` első értéke a gazdaszámítógép könyvtára. A második `/input` a tároló könyvtára.
 
 ```Dockerfile
 FROM <container-registry>/<cognitive-service-container-name>:<tag>
@@ -82,67 +82,67 @@ ENV EULA=accept
 COPY /input /input
 ```
 
-Hozza létre és futtassa a tároló [helyileg](#how-to-use-container-on-your-local-host) vagy a [privát regisztrációs adatbázis tároló](#how-to-add-container-to-private-registry) igény szerint.
+Igény szerint hozza létre és futtassa a tárolót [helyileg](#how-to-use-container-on-your-local-host) vagy a [saját beállításjegyzék](#how-to-add-container-to-private-registry) -tárolójában.
 
-## <a name="how-to-use-container-on-your-local-host"></a>A helyi gazdagépen tároló használata
+## <a name="how-to-use-container-on-your-local-host"></a>A tároló használata a helyi gazdagépen
 
-Hozhat létre a Docker-fájlt, cserélje le a `<your-image-name>` a rendszerkép új nevére, majd használja:
+A Docker-fájl létrehozásához cserélje `<your-image-name>` le a nevet a rendszerkép új nevére, majd használja a következőt:
 
 ```console
 docker build -t <your-image-name> .
 ```
 
-A lemezkép futtatásához, és távolítsa el, ha a tároló leáll (`--rm`):
+A rendszerkép futtatásához és a tároló leállításakor (`--rm`) való eltávolításához:
 
 ```console
 docker run --rm <your-image-name>
 ```
 
-## <a name="how-to-add-container-to-private-registry"></a>Tároló privát regisztrációs adatbázis hozzáadása
+## <a name="how-to-add-container-to-private-registry"></a>Tároló hozzáadása a privát beállításjegyzékhez
 
-Kövesse az alábbi lépéseket, használhatja a docker-fájlban, és helyezze az új rendszerképet a privát tárolóregisztrációs adatbázis.  
+Az alábbi lépéseket követve használhatja a Docker, és elhelyezheti az új rendszerképet a privát tároló beállításjegyzékében.  
 
-1. Hozzon létre egy `Dockerfile` újbóli recept szöveggel. A `Dockerfile` bővítmény nem rendelkezik.
+1. Hozzon `Dockerfile` létre egy szöveget az újrahasznosítási receptből. A `Dockerfile` nem rendelkezik bővítménysel.
 
-1. Cserélje le a csúcsos zárójeleket értékeket a saját értékeire.
+1. A szögletes zárójelben lévő összes értéket cserélje le a saját értékeire.
 
-1. A fájl beépítheti egy rendszerképet a parancssor vagy a terminálon, a következő paranccsal. Cserélje le a csúcsos zárójeleket értékei `<>`, a saját tároló nevét és címkéjét.  
+1. A következő parancs használatával hozza létre a fájlt egy rendszerképre a parancssorban vagy a terminálon. Cserélje le az értékeket a szögletes zárójelben `<>`, a saját tároló nevével és címkéjével együtt.  
 
-    A címke lehetőségnél `-t`, mi módosította a tároló kapcsolatos információval módja. Például a tároló nevére `modified-LUIS` azt jelzi, hogy az eredeti tároló szintekre épülő már megtörtént. A címke neve `with-billing-and-model` hogyan a Language Understanding (LUIS) tároló módosult.
+    A címke lehetőség, `-t`amely a tárolóban megváltoztatott adatok hozzáadását teszi lehetővé. A tároló neve `modified-LUIS` például azt jelzi, hogy az eredeti tároló rétegben van. A címke neve jelzi `with-billing-and-model` , hogy a Language Understanding (Luis) tároló hogyan lett módosítva.
 
     ```Bash
     docker build -t <your-new-container-name>:<your-new-tag-name> .
     ```
 
-1. Jelentkezzen be az Azure CLI-konzolról. Ez a parancs egy böngészőablakban megnyitja, és megköveteli a hitelesítést. A hitelesítést követően zárja be a böngészőt, és folytatni a munkát a konzolon.
+1. Jelentkezzen be az Azure CLI-be egy konzolról. Ez a parancs egy böngészőt nyit meg, és hitelesítést igényel. A hitelesítés után lezárhatja a böngészőt, és folytathatja a munkát a konzolon.
 
-    ```azure-cli
+    ```azurecli
     az login
     ```
 
-1. Jelentkezzen be az Azure CLI-vel a privát tárolójegyzék konzolról.
+1. Jelentkezzen be a privát beállításjegyzékbe az Azure CLI-vel egy konzolról.
 
-    Cserélje le a csúcsos zárójeleket értékei `<my-registry>`, a saját beállításjegyzék nevére.  
+    A szögletes zárójelben `<my-registry>`lévő értékeket cserélje le a saját beállításjegyzékbeli nevére.  
 
-    ```azure-cli
+    ```azurecli
     az acr login --name <my-registry>
     ```
 
-    Docker-bejelentkezési is jelentkezik, ha hozzá van rendelve egy egyszerű szolgáltatást.
+    Ha egy egyszerű szolgáltatásnevet rendel hozzá, akkor is bejelentkezhet a Docker-bejelentkezéssel.
 
     ```Bash
     docker login <my-registry>.azurecr.io
     ```
 
-1. A címke a tárolóhoz, az a privát beállításjegyzék-helyhez. Cserélje le a csúcsos zárójeleket értékei `<my-registry>`, a saját beállításjegyzék nevére. 
+1. Címkézze fel a tárolót a privát beállításjegyzék helyén. A szögletes zárójelben `<my-registry>`lévő értékeket cserélje le a saját beállításjegyzékbeli nevére. 
 
     ```Bash
     docker tag <your-new-container-name>:<your-new-tag-name> <my-registry>.azurecr.io/<your-new-container-name-in-registry>:<your-new-tag-name>
     ```
 
-    Ha nem használja a címke nevét `latest` implicit.
+    Ha nem használja a címke nevét, `latest` a feltételes.
 
-1. Az új rendszerkép leküldése a privát tárolóregisztrációs adatbázisba. Megtekintheti a privát tárolóregisztrációs adatbázisba, a következő CLI-parancsot a tároló név lesz a tárház nevét.
+1. Küldje le az új rendszerképet a saját tároló-beállításjegyzékbe. Ha megtekinti a saját tároló beállításjegyzékét, az alábbi CLI-parancsban használt tároló neve lesz a tárház neve.
 
     ```Bash
     docker push <my-registry>.azurecr.io/<your-new-container-name-in-registry>:<your-new-tag-name>
@@ -151,7 +151,7 @@ Kövesse az alábbi lépéseket, használhatja a docker-fájlban, és helyezze a
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Létrehozása és használata az Azure-Tárolópéldányon](azure-container-instance-recipe.md)
+> [Az Azure Container instance létrehozása és használata](azure-container-instance-recipe.md)
 
 <!--
 ## Store input and output configuration settings

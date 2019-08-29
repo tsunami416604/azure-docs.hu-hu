@@ -1,88 +1,87 @@
 ---
-title: Az Azure Functions – folyamatos üzembe helyezés |} A Microsoft Docs
-description: Az Azure App Service folyamatos üzembe helyezés funkcióit használja a függvények közzétételéhez.
+title: Azure Functions folyamatos üzembe helyezése | Microsoft Docs
+description: A függvények közzétételéhez használja a Azure App Service folyamatos üzembe helyezési funkcióit.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: dd1605aa2f5fc9e0b4bc790bae2a1c20cb3ea048
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: fb3cd885c0a16b3dc3a79150043b25cb271040bd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594537"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097098"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions – folyamatos üzembe helyezés
 
-Az Azure Functions segítségével folyamatos üzembe helyezés a kód használatával [verziókövetés integrálása](functions-deployment-technologies.md#source-control). Forráskezelés integrálása tesz lehetővé, amelyben a kód frissítése aktivál az üzembe helyezés az Azure-bA. Ha most ismerkedik az Azure Functions, első lépésként tekintse át a [Azure Functions áttekintő](functions-overview.md).
+A Azure Functions segítségével folyamatosan üzembe helyezheti a kódot a [verziókövetés integrációjának](functions-deployment-technologies.md#source-control)használatával. A verziókövetés integrációja lehetővé teszi egy olyan munkafolyamat használatát, amelyben a kód frissítése elindítja az Azure-ba történő üzembe helyezést. Ha még nem Azure Functions, az első lépésekhez tekintse át az [Azure functions áttekintését](functions-overview.md).
 
-Folyamatos üzembe helyezés egy jó választás, több integrálása és a hozzájárulások gyakran használják. Folyamatos üzembe helyezés használatakor a kódban, amely lehetővé teszi, hogy a munkacsoportok számára könnyen karbantartása egy egyetlen hiteles forrásaként. Folyamatos üzembe helyezés az Azure Functions a következő forrás kód helyekről konfigurálható:
+A folyamatos üzembe helyezés jó választás olyan projektekhez, ahol több és gyakori hozzájárulásokat is integrálhat. Ha folyamatos üzembe helyezést használ, a kód egyetlen forrását őrzi meg, amely lehetővé teszi a csapatok számára, hogy egyszerűen működjenek együtt. A folyamatos üzembe helyezést Azure Functions a következő forráskód-helyekről állíthatja be:
 
-* [Az Azure-Adattárakkal](https://azure.microsoft.com/services/devops/repos/)
+* [Azure-repók](https://azure.microsoft.com/services/devops/repos/)
 * [GitHubon](https://github.com)
 * [Bitbucket](https://bitbucket.org/)
 
-Az Azure functions üzembe helyezés mértékegysége a függvényalkalmazást. A függvényalkalmazás a függvények egy időben vannak telepítve. Miután engedélyezte a folyamatos üzembe helyezés, a függvény kódját az Azure Portalon való hozzáférés van konfigurálva, *csak olvasható* , mert a forrás hiteles van beállítva, máshol.
+Az Azure-beli függvények üzembe helyezési egysége a Function alkalmazás. Egy Function alkalmazás összes funkciója egyszerre van üzembe helyezve. Miután engedélyezte a folyamatos üzembe helyezést, a Azure Portalhoz való hozzáférés *csak olvashatóként* van konfigurálva, mert az igazság forrása máshol van beállítva.
 
-## <a name="requirements-for-continuous-deployment"></a>Folyamatos üzembe helyezési követelményei
+## <a name="requirements-for-continuous-deployment"></a>A folyamatos üzembe helyezésre vonatkozó követelmények
 
-A folyamatos üzembe helyezés befejeződik a könyvtárstruktúra, amelyeket az Azure Functions vár alapszintű mappastruktúra kompatibilisnek kell lennie.
+A sikeres üzembe helyezéshez a címtár struktúrájának kompatibilisnek kell lennie a Azure Functions várt alapszintű mappastruktúrát.
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
 ## <a name="credentials"></a>Folyamatos üzembe helyezés beállítása
 
-Folyamatos üzembe helyezés egy meglévő függvényalkalmazás konfigurálásához hajtsa végre ezeket a lépéseket. A lépések bemutatják egy GitHub-adattár-integráció, de hasonló lépéseket követve az Azure-Adattárakkal vagy más forráskódtárházak érvényesek.
+Egy meglévő Function alkalmazás folyamatos üzembe helyezésének konfigurálásához végezze el a következő lépéseket. A lépések bemutatják a GitHub-adattárral való integrációt, de a hasonló lépések érvényesek az Azure Repos vagy más forráskód-Tárházak esetében.
 
-1. A függvényalkalmazásban, az a [az Azure portal](https://portal.azure.com)válassza **platformfunkciók** > **Telepítőközpontot**.
+1. A [Azure Portal](https://portal.azure.com)a Function alkalmazásban válassza a **platform szolgáltatások** > **központi telepítési központ**elemet.
 
-    ![Üzembe helyezési központ megnyitása](./media/functions-continuous-deployment/platform-features.png)
+    ![Központi telepítési központ megnyitása](./media/functions-continuous-deployment/platform-features.png)
 
-2. A **üzembe helyezési központ**válassza **GitHub**, majd válassza ki **engedélyezés**. Ha a GitHub már Ön által engedélyezett, jelölje be **Folytatás**. 
+2. A **központi telepítési központban**válassza a **GitHub**lehetőséget, majd válassza az **Engedélyezés**lehetőséget. Ha már engedélyezte a GitHubot, válassza a **Folytatás**lehetőséget. 
 
-    ![Azure App Service Deployment Center](./media/functions-continuous-deployment/github.png)
+    ![Azure App Service központi telepítési központ](./media/functions-continuous-deployment/github.png)
 
-3. A github webhelyen, jelölje ki a **engedélyezése AzureAppService** gombra. 
+3. A GitHubon kattintson a **AzureAppService engedélyezése** gombra. 
 
-    ![Engedélyezze az Azure App Service-ben](./media/functions-continuous-deployment/authorize.png)
+    ![Engedélyezés Azure App Service](./media/functions-continuous-deployment/authorize.png)
     
-    A **üzembe helyezési központ** az Azure Portalon válassza ki a **Folytatás**.
+    A Azure Portal **központi telepítési központjában** válassza a **Folytatás**lehetőséget.
 
-4. A következő build szolgáltatók közül választhat:
+4. Válasszon egyet a következő Build-szolgáltatók közül:
 
-    * **Az App Service-szolgáltatás készítése**: Ajánlott, ha már nincs szükség a build, vagy ha egy általános hozhat létre.
-    * **Az Azure folyamatok (előzetes verzió)** : Ha a build több kell szabályozhatóbbá ajánlott. Ez a szolgáltató jelenleg előzetes verzióban érhető el.
+    * **App Service Build szolgáltatás**: A legjobb, ha nincs szüksége buildre, vagy ha általános buildre van szüksége.
+    * **Azure-folyamatok (előzetes verzió)** : A legjobb, ha nagyobb mértékű vezérlésre van szüksége a Build felett. Ez a szolgáltató jelenleg előzetes verzióban érhető el.
 
-    ![Válasszon ki egy build-szolgáltatót](./media/functions-continuous-deployment/build.png)
+    ![Build szolgáltató kiválasztása](./media/functions-continuous-deployment/build.png)
 
-5. A megadott forrásvezérlési lehetőségét-re vonatkozó információk konfigurálása. A GitHub, adja meg vagy válassza ki az értékeket **szervezet**, **tárház**, és **ág**. Az értékeket a kód helyét alapulnak. Ezután válassza ki **Folytatás**.
+5. Konfigurálja a megadott verziókövetés-beállításra vonatkozó adatokat. A GitHub esetében meg kell adnia vagy ki kell választania a **szervezet**, a **tárház**és az **ág**értékeit. Az értékek a kód helyétől függenek. Ezután válassza a **Folytatás**lehetőséget.
 
-    ![Konfigurálja a Githubon](./media/functions-continuous-deployment/github-specifics.png)
+    ![GitHub konfigurálása](./media/functions-continuous-deployment/github-specifics.png)
 
-6. Tekintse át az összes részletes adatait, és válassza ki **Befejezés** az üzembe helyezési konfiguráció befejezéséhez.
+6. Tekintse át az összes adatot, majd a **Befejezés** gombra kattintva fejezze be a telepítési konfigurációt.
 
     ![Összegzés](./media/functions-continuous-deployment/summary.png)
 
-Amikor a folyamat befejeződött, a megadott forrás minden kód üzembe helyezése az alkalmazáshoz. Ezen a ponton a módosításokat a központi telepítési forrás aktiválása ezeket a módosításokat a függvényalkalmazáshoz az Azure-beli üzembe helyezése.
+A folyamat befejezésekor a rendszer a megadott forrásból származó összes kódot telepíti az alkalmazásba. Ezen a ponton a központi telepítési forrás változásai elindítják ezeket a módosításokat az Azure-beli Function alkalmazásban.
 
 ## <a name="deployment-scenarios"></a>Üzembe helyezési forgatókönyvek
 
 <a name="existing"></a>
 
-### <a name="move-existing-functions-to-continuous-deployment"></a>Helyezze át a meglévő funkciók folyamatos üzembe helyezés
+### <a name="move-existing-functions-to-continuous-deployment"></a>Meglévő függvények áthelyezése a folyamatos üzembe helyezéshez
 
-Ha korábban már beírt funkciók a [az Azure portal](https://portal.azure.com) szeretne, folyamatos üzembe helyezés, mielőtt, töltse le az alkalmazás tartalmát, és nyissa meg a **áttekintése** a függvényalkalmazás lapján. Válassza ki a **alkalmazás tartalmának letöltése** gombra.
+Ha már írt függvényeket a Azure Portalban [](https://portal.azure.com) , és szeretné letölteni az alkalmazás tartalmát, mielőtt a folyamatos üzembe helyezésre vált, lépjen a Function alkalmazás **Áttekintés** lapjára. Válassza az **alkalmazás tartalmának letöltése** gombot.
 
 ![Alkalmazás tartalmának letöltése](./media/functions-continuous-deployment/download.png)
 
 > [!NOTE]
-> Miután beállította a folyamatos integráció, a forrásfájlokat, a Functions portálon már nem szerkesztheti.
+> A folyamatos integráció konfigurálása után már nem szerkesztheti a forrásfájlokat a functions portálon.
 
 ## <a name="next-steps"></a>További lépések
 

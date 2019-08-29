@@ -1,6 +1,6 @@
 ---
-title: Az Azure Functions kapcsolatok kezelése
-description: Megtanulhatja, hogyan teljesítményproblémákat okozhat az Azure Functions ügyfelek statikus kapcsolat használatával.
+title: Kapcsolatok kezelése Azure Functionsban
+description: Megtudhatja, hogyan kerülheti el a teljesítménnyel kapcsolatos problémákat a Azure Functions a statikus kapcsolódási ügyfelek használatával.
 services: functions
 author: ggailey777
 manager: jeconnoc
@@ -8,43 +8,43 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 69425129d5f049254a60032283ddc6ca2ab84d5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26702ae63dcb7aadb96b5bf77f96a44f7d6776f5
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65872693"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114327"
 ---
-# <a name="manage-connections-in-azure-functions"></a>Az Azure Functions kapcsolatok kezelése
+# <a name="manage-connections-in-azure-functions"></a>Kapcsolatok kezelése Azure Functionsban
 
-A függvényalkalmazás függvénye ossza meg erőforrásait. Megosztott erőforrások közötti kapcsolatok a következők: HTTP-kapcsolatokat, adatbázis-kapcsolatok és például az Azure Storage-szolgáltatásokhoz való kapcsolatot. Számos függvényt egy időben futnak, esetén lehetséges, hogy elfogy a rendelkezésre álló kapcsolatok. Ez a cikk bemutatja, hogyan lehet, kerülje a több kapcsolat van szükségük, mint a functions-kód.
+Functions-alkalmazásokban lévő függvények erőforrásainak megosztása. Ezek a megosztott erőforrások között kapcsolatok: HTTP-kapcsolatok, adatbázis-kapcsolatok és olyan szolgáltatásokhoz való kapcsolódások, mint például az Azure Storage. Ha egyszerre több függvény fut, lehetséges, hogy elfogynak az elérhető kapcsolatok. Ez a cikk ismerteti a függvények kódolását, hogy elkerülje a szükségesnél több kapcsolat használatát.
 
-## <a name="connection-limit"></a>Kapcsolathoz megadott korlátot
+## <a name="connection-limit"></a>Kapcsolatok korlátja
 
-A rendelkezésre álló kapcsolatok száma korlátozva, részben mivel a függvényalkalmazás egy [próbakörnyezetben](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). A korlátozásokat, amelyek a tesztkörnyezet a kódot ír elő egyik, a kimenő kapcsolatok száma korlátlan amelyre jelenleg példányonként 600 aktív (összesen 1200) kapcsolatokat. Ha eléri a korlátot, a functions futtatókörnyezetének a következő üzenetet írja a naplókba: `Host thresholds exceeded: Connections`. További információkért lásd: a [funkciók szolgáltatási korlátozásaival](functions-scale.md#service-limits).
+A rendelkezésre álló kapcsolatok száma részben korlátozott, mert egy Function alkalmazás egy sandbox- [környezetben](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)fut. Az egyik korlátozás, amelyet a homokozó a kódban kiszab, korlátozza a kimenő kapcsolatok számát, amely jelenleg 600 aktív (1 200 összesen) kapcsolatra vonatkozik. Ha eléri ezt a korlátot, a functions futtatókörnyezet a következő üzenetet írja a naplókba: `Host thresholds exceeded: Connections`. További információt a [functions szolgáltatás korlátai](functions-scale.md#service-limits)című témakörben talál.
 
-Ezt a határt egy példány van. Ha a [méretezési vezérlő hozzáad függvény alkalmazáspéldány](functions-scale.md#how-the-consumption-and-premium-plans-work) további kérések kezelésére, mindegyik példány rendelkezik egy független kapcsolathoz megadott korlátot. Azt jelenti, hogy a nem globális kapcsolat korlátozott, és sokkal több mint 600 aktív kapcsolatok is rendelkezik az összes aktív példányok között.
+Ez a korlát/példány. Ha a méretezési vezérlő felvette a több kérés kezelésére szolgáló [Function app](functions-scale.md#how-the-consumption-and-premium-plans-work) -példányokat, minden példányhoz tartozik egy független kapcsolódási korlát. Ez azt jelenti, hogy nincs globális kapcsolati korlát, és az összes aktív példányon több mint 600 aktív kapcsolat lehet.
 
-Amikor hibaelhárítás, győződjön meg arról, hogy a függvényalkalmazás számára engedélyezte az Application Insights. Az Application Insights lehetővé teszi a funkció alkalmazásokhoz, például végrehajtások metrikákat tekinthet meg. További információkért lásd: [telemetriai adatok megtekintése az Application Insights](functions-monitoring.md#view-telemetry-in-application-insights).  
+Hibaelhárítás esetén győződjön meg arról, hogy engedélyezte a Application Insights használatát a Function alkalmazáshoz. Application Insights segítségével megtekintheti a függvények alkalmazásainak (például a végrehajtások) mérőszámait. További információ: [telemetria megtekintése Application Insightsban](functions-monitoring.md#view-telemetry-in-application-insights).  
 
 ## <a name="static-clients"></a>Statikus ügyfelek
 
-Rendelkezés a szükségesnél több kapcsolatot elkerüléséhez ügyfélpéldányok helyett az egyes függvény meghívási újakat hozna létre újból. Azt javasoljuk, hogy szakember újból felhasználja az ügyfélkapcsolatokat, bármely nyelven, előfordulhat, hogy a függvény az írást. Ha például a .NET-ügyfelek például a [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-), és az Azure Storage-ügyfelek kapcsolatok kezelése egyetlen, statikus ügyfél használatakor.
+Ha el szeretné kerülni, hogy a szükségesnél több kapcsolat ne legyen használatban, ne hozzon létre újakat az egyes függvények meghívásával. Javasoljuk, hogy az ügyfélkapcsolatokat minden olyan nyelven újra használja, amelyet a függvényének megírásával használhat. Például a .net-ügyfelek, például [](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)a HttpClient [,](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+)a DocumentClient és az Azure Storage-ügyfelek kezelhetik a kapcsolatokat, ha egyetlen, statikus ügyfelet használ.
 
-Az alábbiakban néhány irányelv szükséges a következő szolgáltatásspecifikus ügyfél használ az Azure Functions-alkalmazások:
+Az alábbiakban néhány útmutatást talál, ha a szolgáltatásra jellemző ügyfelet használ egy Azure Functions alkalmazásban:
 
-- *Ne* hozzon létre egy új ügyfél minden függvény meghívási együtt.
-- *Tegye* hozzon létre statikus ügyfél, amely minden függvény meghívási használhatja.
-- *Érdemes lehet* statikus ügyfél létrehozása a megosztott segítőosztály, ha a különböző függvényeket használja ugyanazt a szolgáltatást.
+- Ne hozzon létre új ügyfelet minden függvény meghívásával.
+- Hozzon létre egyetlen, statikus ügyfelet, amelyet minden funkció használhat.
+- Ha a különböző függvények ugyanazt a szolgáltatást használják, *érdemes lehet* egyetlen, statikus ügyfelet létrehozni egy megosztott segítő osztályban.
 
-## <a name="client-code-examples"></a>Ügyfél hitelesítésikód-példák
+## <a name="client-code-examples"></a>Példák az ügyfél kódjára
 
-Ez a szakasz azt ismerteti, létrehozása és használata az ügyfelek a függvénykódot egy ajánlott eljárásai.
+Ez a szakasz az ügyfelek a függvény kódjából történő létrehozásához és használatához ajánlott eljárásokat mutatja be.
 
-### <a name="httpclient-example-c"></a>Példa HttpClient (C#)
+### <a name="httpclient-example-c"></a>HttpClient példa (C#)
 
-Íme egy példa C# kódot, amely létrehozza egy statikus függvényt [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) példány:
+Az alábbi példa egy statikus C# [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) -példányt létrehozó függvény kódját:
 
 ```cs
 // Create a single, static HttpClient
@@ -57,19 +57,19 @@ public static async Task Run(string input)
 }
 ```
 
-Általános kérdése [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) a .NET-ben a "Kell I tud megszabadulni fejlesztek?" Általában az objektumok megvalósító eldobásakor `IDisposable` befejezése használja őket. Meg nem dobható el a statikus ügyfél, mert nem kész, de amikor befejeződik a függvényt használja. Azt szeretné, hogy a statikus ügyfél élő az alkalmazás időtartamára.
+A .NET-beli [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) kapcsolatos gyakori kérdés, hogy "érdemes megsemmisíteni az ügyfelem?" Általánosságban elmondható, hogy olyan objektumokat távolít el `IDisposable` , amelyek a használat közben lépnek érvénybe. Azonban nem távolítja el a statikus ügyfelet, mert a függvény befejeződése után nem használja. Azt szeretné, hogy a statikus ügyfél az alkalmazás időtartamára éljünk.
 
-### <a name="http-agent-examples-javascript"></a>HTTP-ügynök példák (JavaScript)
+### <a name="http-agent-examples-javascript"></a>HTTP-ügynökre vonatkozó példák (JavaScript)
 
-Jobb kapcsolat felügyeleti lehetőségeket biztosít, mivel a natív használata javasolt [ `http.agent` ](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) osztály helyett nem natív módszerek, például a `node-fetch` modul. A lehetőségek között vannak konfigurálva a kapcsolat paramétereit a `http.agent` osztály. A részletes lehetőségekről elérhető HTTP-ügynökkel rendelkező [új ügynök (\[beállítások\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
+Mivel jobb ügyfélkapcsolat-kezelési lehetőségeket biztosít, a natív [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) osztályt kell használnia a nem natív metódusok helyett, például a `node-fetch` modult. A kapcsolatok paramétereinek beállítása az `http.agent` osztály beállításain keresztül történik. A http-ügynökkel elérhető részletes beállításokért lásd: [új ügynök\[(\]beállítások)](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
 
-A globális `http.globalAgent` osztály által használt `http.request()` összes ezeket az értékeket saját értékeit. Az ajánlott módszer a kapcsolat korlátai funkciók konfigurálására, hogy globálisan állítson be maximális számot. Az alábbi példa állítja be a függvényalkalmazás sockets maximális száma:
+A által `http.globalAgent` `http.request()` használt globális osztály mindegyik értéke a megfelelő alapértelmezett értékre van állítva. A függvényekben a kapcsolatok korlátainak konfigurálásához ajánlott módszer a maximális szám megadása globálisan. A következő példa a függvény alkalmazáshoz tartozó szoftvercsatornák maximális számát állítja be:
 
 ```js
 http.globalAgent.maxSockets = 200;
 ```
 
- Az alábbi példa egy egyéni HTTP-ügynök csak az adott kérelmet hoz létre egy új HTTP-kérelem:
+ Az alábbi példa egy új HTTP-kérést hoz létre egyéni HTTP-ügynökkel a kérelemhez:
 
 ```js
 var http = require('http');
@@ -79,10 +79,10 @@ options.agent = httpAgent;
 http.request(options, onResponseCallback);
 ```
 
-### <a name="documentclient-code-example-c"></a>DocumentClient példakód (C#)
+### <a name="documentclient-code-example-c"></a>DocumentClient – példa (C#)
 
-[DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) egy Azure Cosmos DB-példányhoz csatlakozik. Az Azure Cosmos DB-dokumentáció azt javasolja, hogy Ön [egyedülálló Azure Cosmos DB-ügyfél használata az alkalmazás teljes élettartama](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). Az alábbi példa bemutatja egy függvény adatelemzésre, amely egy minta:
+[A](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) DocumentClient egy Azure Cosmos db-példányhoz csatlakozik. Az Azure Cosmos DB dokumentációja azt javasolja, hogy [az alkalmazás élettartama során egy egyedi Azure Cosmos db ügyfelet használjon](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). Az alábbi példa egy függvényt ábrázol egy mintát:
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
@@ -110,35 +110,35 @@ public static async Task Run(string input)
 }
 ```
 
-### <a name="cosmosclient-code-example-javascript"></a>CosmosClient példakód (JavaScript)
-[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) egy Azure Cosmos DB-példányhoz csatlakozik. Az Azure Cosmos DB-dokumentáció azt javasolja, hogy Ön [egyedülálló Azure Cosmos DB-ügyfél használata az alkalmazás teljes élettartama](../cosmos-db/performance-tips.md#sdk-usage). Az alábbi példa bemutatja egy függvény adatelemzésre, amely egy minta:
+### <a name="cosmosclient-code-example-javascript"></a>CosmosClient – példa (JavaScript)
+A [CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) egy Azure Cosmos db-példányhoz csatlakozik. Az Azure Cosmos DB dokumentációja azt javasolja, hogy [az alkalmazás élettartama során egy egyedi Azure Cosmos db ügyfelet használjon](../cosmos-db/performance-tips.md#sdk-usage). Az alábbi példa egy függvényt ábrázol egy mintát:
 
 ```javascript
 const cosmos = require('@azure/cosmos');
 const endpoint = process.env.COSMOS_API_URL;
-const masterKey = process.env.COSMOS_API_KEY;
+const key = process.env.COSMOS_API_KEY;
 const { CosmosClient } = cosmos;
 
-const client = new CosmosClient({ endpoint, auth: { masterKey } });
+const client = new CosmosClient({ endpoint, key });
 // All function invocations also reference the same database and container.
 const container = client.database("MyDatabaseName").container("MyContainerName");
 
 module.exports = async function (context) {
-    const { result: itemArray } = await container.items.readAll().toArray();
+    const { resources: itemArray } = await container.items.readAll().fetchAll();
     context.log(itemArray);
 }
 ```
 
-## <a name="sqlclient-connections"></a>SqlClient kapcsolatok
+## <a name="sqlclient-connections"></a>SqlClient-kapcsolatok
 
-A függvénykód használhatja a .NET-keretrendszer adatszolgáltatója az SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) relációs SQL-adatbázishoz való csatlakozást. Ez egyben az alapul szolgáló szolgáltató által használt, ADO.NET, például a data-keretrendszerek [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Ellentétben [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) és [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) kapcsolatkészletezést alapértelmezés szerint valósítja meg az ADO.NET-kapcsolatok esetén. De kívül kapcsolatok továbbra is futtathatja, mert az adatbázishoz való csatlakozás, optimalizálja. További információkért lásd: [SQL Server készletezési (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
+A függvény kódja a .NET-keretrendszer adatszolgáltatóját használhatja SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) számára, hogy kapcsolatot hozzon egy SQL-alapú kapcsolati adatbázissal. Ez a ADO.NET alapuló adatkeretrendszerek alapjául szolgáló szolgáltató is, például [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). A [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) és [a](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) DocumentClient kapcsolattól eltérően a ADO.NET alapértelmezés szerint implementálja a kapcsolatok készletezését. Mivel azonban továbbra is kifogyhat a kapcsolatok, érdemes optimalizálni a kapcsolatokat az adatbázissal. További információ: [SQL Server kapcsolatok készletezése (ADO.net)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 > [!TIP]
-> Bizonyos adatok keretrendszerek, például Entity Framework, általában a kapcsolati karakterláncok beolvasása a **kapcsolati Sztringjei** szakasz egy konfigurációs fájl. Ebben az esetben explicit módon kell hozzáadnia az SQL adatbázis-kapcsolati karakterláncok a **kapcsolati karakterláncok** a függvényalkalmazás-beállításokat, majd a gyűjteményt a [local.settings.json fájljában](functions-run-local.md#local-settings-file) a helyi projektben. Ha hoz létre egy példányát [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) a függvénykódban, tárolja a kapcsolati karakterlánc értékét a **Alkalmazásbeállítások** a kapcsolatokkal.
+> Egyes adatkeretrendszerek (például a Entity Framework) általában a konfigurációs fájl **ConnectionStrings** szakaszából kapják meg a kapcsolatok karakterláncait. Ebben az esetben explicit módon fel kell vennie az SQL Database-kapcsolódási karakterláncokat a Function app-beállítások és a helyi projekt [Local. Settings. JSON fájljának](functions-run-local.md#local-settings-file) **kapcsolatok karakterlánc** -gyűjteményéből. Ha a [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) egy példányát hozza létre, a kapcsolati sztring értékét a többi kapcsolattal együtt kell tárolnia az **Alkalmazásbeállítások** között.
 
 ## <a name="next-steps"></a>További lépések
 
-Miért javasoljuk, hogy az ügyfelek statikus kapcsolatos további információkért lásd: [nem megfelelő példányosítás kizárási minta](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
+További információ arról, hogy a statikus ügyfelek miért javasoltak: [helytelen példány-létrehozási minta](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
 
-További Azure Functions teljesítményének tippek: [teljesítményének és megbízhatóságának az Azure Functions optimalizálása](functions-best-practices.md).
+További Azure Functions teljesítménnyel kapcsolatos tippeket a [Azure functions teljesítményének és megbízhatóságának optimalizálása](functions-best-practices.md)című témakörben talál.

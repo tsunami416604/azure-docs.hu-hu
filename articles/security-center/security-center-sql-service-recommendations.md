@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 0704db7444756fb44c5587ae8e8e743f671c9dcc
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 5f34f5e0c622ff107da880d9a4a77c63568b63b0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907943"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100942"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Az Azure-beli adatkezelési és-tárolási szolgáltatások védelme Azure Security Center
 Ebből a témakörből megtudhatja, hogyan tekintheti meg és implementálhatja az adatkezelési és a tárolási erőforrások biztonsági javaslatait. A Azure Security Center az Azure-erőforrások biztonsági állapotának elemzésekor találta meg ezeket az ajánlásokat.
@@ -78,7 +78,6 @@ Ezen a lapon a következőket teheti:
 Ha többet szeretne megtudni a más Azure-erőforrásokra vonatkozó javaslatokról, tekintse meg a következő témaköröket:
 
 * [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-protection.md)
-* [Alkalmazások védelme az Azure Security Centerben](security-center-application-recommendations.md)
 * [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
 
 Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő témaköröket:

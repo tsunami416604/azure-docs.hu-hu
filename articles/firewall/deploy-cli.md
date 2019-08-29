@@ -1,31 +1,31 @@
 ---
-title: Telepítse és konfigurálja az Azure CLI használatával Azure-tűzfal
-description: Ebből a cikkből megismerheti, hogyan telepítheti és konfigurálhatja az Azure-tűzfal az Azure CLI használatával.
+title: Azure Firewall üzembe helyezése és konfigurálása az Azure CLI-vel
+description: Ebből a cikkből megtudhatja, hogyan helyezheti üzembe és konfigurálhatja Azure Firewall az Azure CLI használatával.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 7/10/2019
+ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 24954eecde58c978fa3e14bb3a2d411d708687a3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 94db17405457be91795d1588bee68a0deea68246
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707164"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114811"
 ---
-# <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Telepítse és konfigurálja az Azure CLI használatával Azure-tűzfal
+# <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure Firewall üzembe helyezése és konfigurálása az Azure CLI-vel
 
-A kimenő hálózati hozzáférés ellenőrzése az általános hálózati biztonsági terv fontos részét képezi. Például előfordulhat, hogy szeretné korlátozni a webhelyekhez való hozzáférést. Vagy előfordulhat, hogy szeretné korlátozni a kimenő IP-címek és portok elérhető.
+A kimenő hálózati hozzáférés ellenőrzése az általános hálózati biztonsági terv fontos részét képezi. Előfordulhat például, hogy korlátozni szeretné a webhelyekhez való hozzáférést. Az is előfordulhat, hogy korlátozni szeretné az elérhető kimenő IP-címeket és portokat.
 
 Az Azure-alhálózatok kimenő hálózati hozzáférése többek között az Azure Firewall használatával vezérelhető. Az Azure Firewall segítségével a következőket konfigurálhatja:
 
-* Alkalmazásszabályokat, amelyek egy alhálózatról elérhető teljes tartományneveket (FQDN) határoznak meg. A teljes Tartománynevet is [közé tartozik az SQL Server-példányok](sql-fqdn-filtering.md).
+* Alkalmazásszabályokat, amelyek egy alhálózatról elérhető teljes tartományneveket (FQDN) határoznak meg. A teljes tartománynév [tartalmazhat SQL](sql-fqdn-filtering.md)-példányokat is.
 * Hálózatszabályokat, amelyek forráscímet, protokollt, valamint célportot és célcímet határoznak meg.
 
 A hálózati forgalmat a konfigurált tűzfalszabályok irányítják, ha alapértelmezett alhálózati átjáróként irányítja a tűzfalhoz a forgalmat.
 
-Ebben a cikkben létrehoz egy egyszerűsített egyetlen virtuális hálózaton az egyszerű telepítés három alhálózatot. Éles környezetekben üzemelő példányok egy [küllős modell](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) ajánlott. A tűzfal az a saját virtuális hálózatában. A számítási feladatok kiszolgálók társviszonyban lévő virtuális hálózatok egy vagy több alhálózattal rendelkező ugyanabban a régióban találhatók.
+Ebben a cikkben egy egyszerűsített egyszeri VNet hoz létre három alhálózattal az egyszerű üzembe helyezéshez. Éles környezetekben javasolt a [hub és a küllős modell](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) használata. A tűzfal a saját VNet található. A munkaterhelés-kiszolgálók egy vagy több alhálózattal azonos régióban lévő, egymással azonos régióba tartozó virtuális hálózatok találhatók.
 
 * **AzureFirewallSubnet** – ezen az alhálózaton található a tűzfal.
 * **Workload-SN** – ezen az alhálózaton található a számítási feladat kiszolgálója. Ennek az alhálózatnak a hálózati forgalma a tűzfalon halad át.
@@ -39,11 +39,11 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Tesztelési hálózati környezet beállítása
 > * Tűzfal üzembe helyezése
 > * Alapértelmezett útvonal létrehozása
-> * Alkalmazás www.google.com való hozzáférés engedélyezése a szabály konfigurálása
+> * Alkalmazás-szabály konfigurálása a www.google.com való hozzáférés engedélyezéséhez
 > * Hálózatszabály konfigurálása külső DNS-kiszolgálókhoz való hozzáférés engedélyezéséhez
 > * A tűzfal tesztelése
 
-Ha szeretné, ez az eljárás használatával elvégezhető a [az Azure portal](tutorial-firewall-deploy-portal.md) vagy [Azure PowerShell-lel](deploy-ps.md).
+Ha szeretné, az eljárást a [Azure Portal](tutorial-firewall-deploy-portal.md) vagy [Azure PowerShell](deploy-ps.md)használatával végezheti el.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -53,9 +53,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Ha helyi telepítése és használata a parancssori Felületet, futtassa az Azure CLI 2.0.4-es vagy újabb. A verzió megkereséséhez futtassa **az--verzió**. Telepítésekor vagy verziófrissítésekor kapcsolatos információkért lásd: [Azure CLI telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, futtassa az Azure CLI 2.0.4 vagy újabb verzióját. A verzió megkereséséhez futtassa az **az--Version**parancsot. További információ a telepítéséről és frissítéséről: az [Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-Az Azure tűzfal-bővítményének telepítése:
+Telepítse a Azure Firewall bővítményt:
 
 ```azurecli-interactive
 az extension add -n azure-firewall
@@ -68,7 +68,7 @@ Először is hozzon létre egy erőforráscsoportot, amely a tűzfal üzembe hel
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az erőforráscsoport tartalmazza a központi telepítés összes erőforrást.
+Az erőforráscsoport az üzemelő példány összes erőforrását tartalmazza.
 
 ```azurecli-interactive
 az group create --name Test-FW-RG --location eastus
@@ -76,10 +76,10 @@ az group create --name Test-FW-RG --location eastus
 
 ### <a name="create-a-vnet"></a>Virtuális hálózat létrehozása
 
-Ez a virtuális hálózat rendelkezik három alhálózatot.
+Ez a virtuális hálózat három alhálózattal rendelkezik.
 
 > [!NOTE]
-> A AzureFirewallSubnet alhálózat minimális mérete/26-os.
+> A AzureFirewallSubnet-alhálózat mérete/26. További információ az alhálózat méretétől: [Azure Firewall GYIK](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
 ```azurecli-interactive
 az network vnet create \
@@ -88,7 +88,7 @@ az network vnet create \
   --location eastus \
   --address-prefix 10.0.0.0/16 \
   --subnet-name AzureFirewallSubnet \
-  --subnet-prefix 10.0.1.0/24
+  --subnet-prefix 10.0.1.0/26
 az network vnet subnet create \
   --name Workload-SN \
   --resource-group Test-FW-RG \
@@ -104,9 +104,9 @@ az network vnet subnet create \
 ### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
 Most hozza létre a helyettesítő és a számítási feladatokat futtató virtuális gépeket, és helyezze el őket a megfelelő alhálózatokon.
-Amikor a rendszer kéri, írja be a virtuális gép jelszavát.
+Ha a rendszer kéri, adjon meg egy jelszót a virtuális géphez.
 
-Az Srv-Jump virtuális gép létrehozása.
+Hozza létre az SRV-Jump virtuális gépet.
 
 ```azurecli-interactive
 az vm create \
@@ -122,7 +122,7 @@ az vm open-port --port 3389 --resource-group Test-FW-RG --name Srv-Jump
 
 
 
-Hozzon létre egy NIC-kiszolgáló IP-címek meghatározott DNS Srv-dolgozhat, és a nyilvános IP-cím tesztelése.
+Hozzon létre egy hálózati adaptert az SRV-hez, amely meghatározott DNS-kiszolgáló IP-címeivel működik, és nincs nyilvános IP-cím a teszteléshez.
 
 ```azurecli-interactive
 az network nic create \
@@ -134,8 +134,8 @@ az network nic create \
    --dns-servers 209.244.0.3 209.244.0.4
 ```
 
-Most hozzon létre a munkaterhelési virtuális gépet.
-Amikor a rendszer kéri, írja be a virtuális gép jelszavát.
+Most hozza létre a munkaterhelési virtuális gépet.
+Ha a rendszer kéri, adjon meg egy jelszót a virtuális géphez.
 
 ```azurecli-interactive
 az vm create \
@@ -149,7 +149,7 @@ az vm create \
 
 ## <a name="deploy-the-firewall"></a>A tűzfal üzembe helyezése
 
-Már üzembe helyezheti a tűzfal a virtuális hálózatban.
+Most telepítse a tűzfalat a virtuális hálózatba.
 
 ```azurecli-interactive
 az network firewall create \
@@ -181,7 +181,7 @@ Jegyezze fel a magánhálózati IP-címet. Később, az alapértelmezett útvona
 
 ## <a name="create-a-default-route"></a>Alapértelmezett útvonal létrehozása
 
-Hozzon létre egy tábla BGP-útvonalpropagálás le van tiltva
+Tábla létrehozása a BGP-útvonal propagálásával letiltva
 
 ```azurecli-interactive
 az network route-table create \
@@ -191,7 +191,7 @@ az network route-table create \
     --disable-bgp-route-propagation true
 ```
 
-Az útvonal létrehozása.
+Hozza létre az útvonalat.
 
 ```azurecli-interactive
 az network route-table route create \
@@ -203,7 +203,7 @@ az network route-table route create \
   --next-hop-ip-address $fwprivaddr
 ```
 
-Az útválasztási táblázatot az alhálózathoz való társítása
+Az útválasztási táblázat hozzárendelése az alhálózathoz
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -216,7 +216,7 @@ az network vnet subnet update \
 
 ## <a name="configure-an-application-rule"></a>Alkalmazásszabály konfigurálása
 
-Az alkalmazás a szabály lehetővé teszi, hogy a kimenő hozzáférést www.google.com.
+Az alkalmazási szabály lehetővé teszi a kimenő hozzáférést a www.google.com.
 
 ```azurecli-interactive
 az network firewall application-rule create \
@@ -235,7 +235,7 @@ Az Azure Firewall tartalmaz egy beépített szabálygyűjteményt az infrastrukt
 
 ## <a name="configure-a-network-rule"></a>Hálózatszabály konfigurálása
 
-A hálózati szabály lehetővé teszi, hogy a két IP-cím (DNS) 53-as porton a kimenő hozzáférést.
+A hálózati szabály lehetővé teszi a kimenő hozzáférést két IP-címhez a 53-as porton (DNS).
 
 ```azurecli-interactive
 az network firewall network-rule create \
@@ -253,9 +253,9 @@ az network firewall network-rule create \
 
 ## <a name="test-the-firewall"></a>A tűzfal tesztelése
 
-Most tesztelje le, a tűzfal, ellenőrizze, hogy az elvárt módon működik.
+Most tesztelje a tűzfalat, és ellenőrizze, hogy az a várt módon működik-e.
 
-1. Vegye figyelembe a magánhálózati IP-címét a **Srv-munkahelyi** virtuális gépet:
+1. Jegyezze fel az **SRV-Work** virtuális gép magánhálózati IP-címét:
 
    ```azurecli-interactive
    az vm list-ip-addresses \
@@ -263,16 +263,16 @@ Most tesztelje le, a tűzfal, ellenőrizze, hogy az elvárt módon működik.
    -n Srv-Work
    ```
 
-1. Csatlakozzon a távoli asztali **Srv-Jump** virtuális gépet, és jelentkezzen be. Itt, nyissa meg a távoli asztali kapcsolatot a **Srv-munkahelyi** magánhálózati IP-címet, és jelentkezzen be.
+1. Csatlakoztasson egy távoli asztalt a **SRV-Jump** virtuális géphez, és jelentkezzen be. Innen nyisson meg egy távoli asztali kapcsolattal az **SRV-Work** magánhálózati IP-címet, és jelentkezzen be.
 
-3. A **SRV-munkahelyi**, nyisson meg egy PowerShell-ablakot, és futtassa a következő parancsokat:
+3. Az **SRV-Work**lapon nyisson meg egy PowerShell-ablakot, és futtassa a következő parancsokat:
 
    ```
    nslookup www.google.com
    nslookup www.microsoft.com
    ```
 
-   Mindkét parancsot kell visszaadnia a válaszokat, megjelenítése, hogy a DNS-lekérdezések első vannak-e a tűzfalon keresztül.
+   Mindkét parancsnak válaszokat kell visszaadnia, ami azt mutatja, hogy a DNS-lekérdezések bekerülnek a tűzfalon.
 
 1. Futtassa az alábbi parancsot:
 
@@ -284,16 +284,16 @@ Most tesztelje le, a tűzfal, ellenőrizze, hogy az elvárt módon működik.
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   A www.google.com kérelmek sikeres legyen, és a www.microsoft.com kérelmek sikertelenek. Ez azt mutatja be, hogy a tűzfalszabályok vannak a várt módon működik.
+   A www.google.com kérelmeknek sikeresnek kell lenniük, és a www.microsoft.com kérelmeknek sikertelennek kell lenniük. Ez azt mutatja, hogy a tűzfalszabályok a várt módon működnek.
 
-Így most már ellenőrizte, hogy a tűzfalszabályok működnek:
+Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
 * Fel tudja oldani a DNS-neveket a konfigurált külső DNS-kiszolgálóval.
 * Az egyetlen engedélyezett FQDN-t el tudja érni, de másokat nem.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A tűzfal erőforrások megtarthatja a következő oktatóanyagra, vagy ha már nincs rá szükség, törölje a **Test-Keretrendszer-RG** tűzfal kapcsolódó összes erőforrást törölheti az erőforráscsoportot:
+A következő oktatóanyagban megtarthatja a tűzfal erőforrásait, vagy ha már nincs rá szükség, törölje a **test-FW-RG** erőforráscsoportot az összes tűzfalhoz kapcsolódó erőforrás törléséhez:
 
 ```azurecli-interactive
 az group delete \
@@ -302,4 +302,4 @@ az group delete \
 
 ## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: A figyelő Azure tűzfal-naplókon](./tutorial-diagnostics.md)
+* [Oktatóanyag: Azure Firewall naplók figyelése](./tutorial-diagnostics.md)

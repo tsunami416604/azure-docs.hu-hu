@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 65debc8c65752150651d00d84eeff469cefbc268
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1459b6fc45bb3d875b4869d1dcb4302dec21eb96
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68311873"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114805"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>A tárolók rendszerképének fejlesztése és karbantartása ACR-feladatokkal
 
@@ -56,7 +56,7 @@ Megtudhatja, hogyan használhatja a gyors feladatokat az első ACR-feladatok okt
 
 ## <a name="automatic-build-on-source-code-commit"></a>Automatikus Build a forráskód-végrehajtáshoz
 
-Az ACR-feladatok használatával automatikusan elindíthatja a tárolók rendszerképének felépítését, ha a kód a git-tárházban van véglegesítve. Felépítési feladatok, az Azure CLI-paranccsal konfigurálható az [ACR Task][az-acr-task], lehetővé teszi a git-tárház és opcionálisan egy ág-és Docker megadását. Amikor a csapata kódot hoz létre az adattárhoz, az ACR-feladatok által létrehozott webhook létrehozza a tárházban definiált tároló rendszerképét.
+Az ACR-feladatok használatával automatikusan elindíthatja a tárolók rendszerképének összeállítását, ha a kód elkötelezett a GitHubon vagy az Azure DevOps található git-tárházban. Felépítési feladatok, az Azure CLI-paranccsal konfigurálható az [ACR Task][az-acr-task], lehetővé teszi a git-tárház és opcionálisan egy ág-és Docker megadását. Amikor a csapata kódot hoz létre az adattárhoz, az ACR-feladatok által létrehozott webhook létrehozza a tárházban definiált tároló rendszerképét.
 
 > [!IMPORTANT]
 > Ha az előzetes `az acr build-task` verzióban korábban létrehozott feladatokat a paranccsal, ezeket a feladatokat az az [ACR Task][az-acr-task] paranccsal újra létre kell hozni.
@@ -67,16 +67,20 @@ Ismerje meg, hogyan indíthat triggert forráskód-végrehajtásra a második AC
 
 Az ACR-feladatok hatékonyságának növelése a tároló-Build munkafolyamattal való hatékony feladatokból származik, és képes az alaprendszerkép frissítésének észlelésére. Ha a frissített alaplemezképet leküldi a beállításjegyzékbe, vagy egy alaprendszerkép frissül egy nyilvános tárházban (például a Docker hub-ban), az ACR-feladatok automatikusan létrehoznak egy alkalmazás-lemezképet az alapján.
 
-A tárolók képei széles körben kategorizálva *lehetnek az* alapképekbe és az *alkalmazás* -lemezképbe. Az alaplemezképek jellemzően tartalmazzák az operációs rendszer és az alkalmazás által felépített keretrendszereket, valamint más testreszabásokat is. Ezek az alaplemezképek jellemzően nyilvános upstream lemezképeken alapulnak, például: [Alpine Linux][base-alpine], [Windows][base-windows], [.net][base-dotnet]vagy [Node. js][base-node]. Az alkalmazási lemezképek közül több is megoszthat egy közös alapképet.
+A tárolók képei széles körben kategorizálva lehetnek az alapképekbe és az *alkalmazás* -lemezképbe. Az alaplemezképek jellemzően tartalmazzák az operációs rendszer és az alkalmazás által felépített keretrendszereket, valamint más testreszabásokat is. Ezek az alaplemezképek jellemzően nyilvános upstream lemezképeken alapulnak, például: [Alpine Linux][base-alpine], [Windows][base-windows], [.net][base-dotnet]vagy [Node. js][base-node]. Az alkalmazási lemezképek közül több is megoszthat egy közös alapképet.
 
 Ha a felsőbb rétegbeli karbantartó az operációs rendszer vagy az alkalmazás-keretrendszer lemezképét frissíti, például kritikus operációsrendszer-biztonsági javítással, akkor az alaplemezképeket is frissítenie kell, hogy tartalmazza a kritikus javítást. Ezután az egyes alkalmazás-rendszerképeket is újra kell építeni, hogy az tartalmazza az alaprendszerkép részét képező felsőbb rétegbeli javításokat.
 
 Mivel az ACR-feladatok dinamikusan felderítik az alapszintű képfüggőségeket a tárolók rendszerképének létrehozásakor, az képes érzékelni az alkalmazás rendszerképe alaprendszerképének frissítésekor. Egy előre konfigurált [Build](container-registry-tutorial-base-image-update.md#create-a-task)feladattal az ACR-feladatok **automatikusan újraépítik az összes alkalmazás rendszerképét** . Ezzel az Automatikus észleléssel és újjáépítéssel az ACR-feladatok elmentik azt az időt és fáradságot, amelyet a rendszer általában a frissített alaprendszerképre hivatkozó minden egyes rendszerkép manuális nyomon követéséhez és frissítéséhez szükséges.
 
-Ismerkedjen meg az operációs rendszer és a keretrendszer javításával a harmadik ACR-feladatok oktatóanyagában, [amely automatizálja a rendszerképek frissítését Azure Container Registry](container-registry-tutorial-base-image-update.md)feladatokkal.
+Az ACR-feladatok nyomon követik az alaprendszerkép frissítését, ha az alaprendszerkép a következő helyekre esik:
 
-> [!NOTE]
-> Jelenleg az alaprendszerkép-frissítések trigger csak akkor épül fel, ha az alapszintű és az alkalmazás lemezképe ugyanabban az Azure Container registryben található, vagy az alap a nyilvános Docker hub-ban vagy a Microsoft Container Registry adattárában található.
+* Ugyanaz az Azure Container Registry, ahol a feladat fut
+* Egy másik Azure Container Registry ugyanabban a régióban 
+* Nyilvános tárház a Docker hub-ban
+* Nyilvános tárház a Microsoft Container Registryban
+
+További információ az operációs rendszerről és a keretrendszer javításáról: a harmadik ACR-feladatok oktatóanyaga, az alapszintű rendszerképek [frissítése Azure Container Registry](container-registry-tutorial-base-image-update.md)feladatokkal.
 
 ## <a name="multi-step-tasks"></a>Többlépéses feladatok
 

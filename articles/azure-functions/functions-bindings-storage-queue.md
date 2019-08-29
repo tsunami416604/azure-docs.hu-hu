@@ -7,17 +7,16 @@ author: craigshoemaker
 manager: gwallace
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: bf5219f8e147baba0e89a8c0e1fa6cb7b371473c
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 6c708bfd0f8e49e9a857b9f77fab6224354ff06a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774749"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097184"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure üzenetsor-tárolási kötések Azure Functionshoz
 
@@ -619,7 +618,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**type** | n/a | Meg kell `queue`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
 |**direction** | n/a | Meg kell `out`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
 |**name** | n/a | Annak a változónak a neve, amely a függvény kódjában a várólistát jelképezi. `$return` Állítsa a értékre a függvény visszatérési értékének hivatkozásához.|
-|**queueName** |**queueName** | Az üzenetsor neve. |
+|**queueName** |**queueName** | A várólista neve. |
 |**kapcsolat** | **kapcsolat** |Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a "MyStorage" `connection` értékre van állítva, a functions futtatókörnyezet egy "AzureWebJobsMyStorage" nevű alkalmazás-beállítást keres. Ha üresen `connection` hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű `AzureWebJobsStorage`alkalmazás-beállításban.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

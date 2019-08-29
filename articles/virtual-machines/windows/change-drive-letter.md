@@ -1,6 +1,6 @@
 ---
-title: 'Győződjön meg arról, a D: meghajtó, adatlemez virtuális gépek |} A Microsoft Docs'
-description: 'Ismerteti, hogyan módosíthat egy Windows virtuális gép meghajtóbetűjelet, így használhatja a D: meghajtó adatmeghajtóként való.'
+title: 'A D: virtuális gép meghajtójának elkészítése adatlemezre | Microsoft Docs'
+description: 'Útmutató a Windows rendszerű virtuális gépek meghajtóbetűjelének módosításához, hogy a D: meghajtót adatmeghajtóként használhassa.'
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,58 +11,57 @@ ms.assetid: 0867a931-0055-4e31-8403-9b38a3eeb904
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 12986068a761b92611c557a0dfcf08905283b8bd
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 846bb7a5ea6c3f363a2811cf3feb30e37ff30504
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719235"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079878"
 ---
-# <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Használja a D: meghajtó adatmeghajtóként egy Windows virtuális gépen
-Ha az alkalmazás a D meghajtó használata adatok tárolására van szüksége, kövesse ezeket az utasításokat az ideiglenes lemez egy másik meghajtóbetűjelet használja. Soha ne használja az ideiglenes lemez továbbra is szeretné adatokat tárolhat.
+# <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>A D: meghajtó használata adatmeghajtóként Windows-alapú virtuális gépen
+Ha az alkalmazásnak a D meghajtót kell használnia az adattároláshoz, kövesse az alábbi utasításokat, hogy az ideiglenes lemezhez egy másik meghajtóbetűjelet használjon. Soha ne használja az ideiglenes lemezt a megőrizni kívánt adatmennyiség tárolására.
 
-Ha átméretezi vagy **leállítása (felszabadítási)** virtuális gép, ez kezdeményezheti egy olyan új hipervizorra a virtuális gép elhelyezését. Egy tervezett vagy nem tervezett karbantartási esemény is kezdeményezheti az elhelyezést. Ebben a forgatókönyvben az első elérhető meghajtóbetűjel lesz(nek) az ideiglenes lemez. Ha az alkalmazás kifejezetten a D: meghajtó, kövesse az alábbi lépéseket ideiglenesen helyezze át a pagefile.sys, új adatlemez csatolása és azt a meghajtóbetűjelet rendelje D és ezután helyezze vissza a pagefile.sys az ideiglenes meghajtó szeretne. Miután elkészült, az Azure nem veszi vissza a D:, ha a virtuális gép áthelyezése egy másik hipervizor.
+Ha átméretezi vagy **leállítja (felszabadítja)** a virtuális gépet, akkor ez a virtuális gép új hypervisorba való elhelyezését eredményezheti. Előfordulhat, hogy a tervezett vagy nem tervezett karbantartási esemény is aktiválhatja ezt az elhelyezést. Ebben az esetben az ideiglenes lemezt az első elérhető meghajtóbetűjelhez rendeli hozzá a rendszer. Ha olyan alkalmazásra van szüksége, amely kifejezetten a D: meghajtót igényli, akkor az alábbi lépéseket követve ideiglenesen helyezze át a pagefile. sys fájlját, csatoljon egy új adatlemezt, és rendelje hozzá a D betűt, majd helyezze át a lapozófájlt. sys vissza az ideiglenes meghajtóra. Ha elkészült, az Azure nem veszi vissza a D-t: Ha a virtuális gép egy másik hypervisorba kerül.
 
-További információ arról, hogy az Azure hogyan használja az ideiglenes lemez: [az ideiglenes meghajtó a Microsoft Azure Virtual Machines ismertetése](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+További információ arról, hogy az Azure hogyan használja az ideiglenes lemezt: [az ideiglenes meghajtó ismertetése Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
 ## <a name="attach-the-data-disk"></a>Az adatlemez csatolása
-Először is kell az adatlemez csatolása a virtuális géphez. Ehhez a portál használatával lásd: [bemutatja, hogyan csatlakoztathat az Azure Portalon egy felügyelt adatlemezre](attach-managed-disk-portal.md).
+Először csatlakoztatnia kell az adatlemezt a virtuális géphez. Ha ezt a portálon szeretné elvégezni, tekintse meg a [felügyelt adatlemez csatolása a Azure Portal](attach-managed-disk-portal.md)című témakört.
 
-## <a name="temporarily-move-pagefilesys-to-c-drive"></a>Átmenetileg a C meghajtó pagefile.sys áthelyezése
+## <a name="temporarily-move-pagefilesys-to-c-drive"></a>A pagefile. sys fájl ideiglenes áthelyezése C meghajtóra
 1. Csatlakozzon a virtuális géphez. 
-2. Kattintson a jobb gombbal a **Start** menüre, majd válassza **rendszer**.
-3. A bal oldali menüben válassza ki a **Speciális rendszerbeállítások**.
-4. Az a **teljesítmény** szakaszban jelölje be **beállítások**.
-5. Válassza ki a **speciális** fülre.
-6. Az a **virtuális memória** szakaszban jelölje be **módosítás**.
-7. Válassza ki a **C** meghajtó, és kattintson a **rendszer kezeli a méretet** majd **beállítása**.
-8. Válassza ki a **D** meghajtó, és kattintson a **nincs lapozófájl** majd **beállítása**.
-9. Kattintson a alkalmazni. Megjelenik egy figyelmeztetés, hogy kell-e a számítógépet a módosítások érvénybe lépéséhez újra kell indítani.
-10. A virtuális gép újraindításához.
+2. Kattintson a jobb gombbal a **Start** menüre, és válassza a **System (rendszeren**) lehetőséget.
+3. A bal oldali menüben válassza a **Speciális rendszerbeállítások**lehetőséget.
+4. A **teljesítmény** szakaszban válassza a **Beállítások**lehetőséget.
+5. Válassza a **speciális** lapot.
+6. A **virtuális memória** szakaszban válassza a **módosítás**lehetőséget.
+7. Válassza ki a **C** meghajtót, majd kattintson a **rendszer által felügyelt méret** elemre, majd a **beállítás**elemre.
+8. Válassza ki a **D** meghajtót, majd kattintson a **nincs lapozófájl** elemre, majd a **beállítás**gombra.
+9. Kattintson az Alkalmaz gombra. A módosítások érvénybe lépéséhez figyelmeztetést kap, hogy a számítógépet újra kell indítani.
+10. Indítsa újra a virtuális gépet.
 
-## <a name="change-the-drive-letters"></a>Módosítsa a meghajtó betűjelei
-1. A virtuális gép újraindítása után jelentkezzen be újra a virtuális gép.
-2. Kattintson a **Start** menü és típusú **diskmgmt.msc** és nyomja le az ENTER billentyűt. Lemezkezelés indul el.
-3. Kattintson a jobb gombbal a **D**, az ideiglenes meghajtó, és válassza ki **meghajtóbetűjel és elérési utak**.
-4. A meghajtó betűjelét, válasszon ki egy új meghajtót például **T** majd **OK**. 
-5. Kattintson a jobb gombbal az adatlemezt, és válassza ki **módosítás meghajtóbetűjel és elérési utak**.
-6. A meghajtó betűjelét, válassza ki a meghajtót **D** majd **OK**. 
+## <a name="change-the-drive-letters"></a>A meghajtóbetűjelek módosítása
+1. A virtuális gép újraindítása után jelentkezzen be újra a virtuális gépre.
+2. Kattintson a **Start** menüre, és írja be a **diskmgmt. msc** parancsot, és nyomja le az ENTER billentyűt. A Lemezkezelés elindul.
+3. Kattintson a jobb gombbal a **D**, az ideiglenes tároló meghajtóra, majd válassza a meghajtóbetűjel **és elérési utak módosítása**lehetőséget.
+4. A meghajtóbetűjel területen válasszon egy új meghajtót, például **t** , majd kattintson **az OK gombra**. 
+5. Kattintson a jobb gombbal az adatlemezre, és válassza a meghajtóbetűjel **és elérési utak módosítása**lehetőséget.
+6. A meghajtóbetűjel területen válassza a **D** meghajtó lehetőséget, majd kattintson **az OK**gombra. 
 
-## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>Pagefile.sys lépjen vissza az ideiglenes meghajtó
-1. Kattintson a jobb gombbal a **Start** menüre, majd válassza **rendszer**
-2. A bal oldali menüben válassza ki a **Speciális rendszerbeállítások**.
-3. Az a **teljesítmény** szakaszban jelölje be **beállítások**.
-4. Válassza ki a **speciális** fülre.
-5. Az a **virtuális memória** szakaszban jelölje be **módosítás**.
-6. Válassza ki az operációs rendszer meghajtójának **C** kattintson **nincs lapozófájl** majd **beállítása**.
-7. Válassza ki az ideiglenes meghajtó **T** és kattintson a **rendszer kezeli a méretet** majd **beállítása**.
-8. Kattintson az **Alkalmaz** gombra. Megjelenik egy figyelmeztetés, hogy kell-e a számítógépet a módosítások érvénybe lépéséhez újra kell indítani.
-9. A virtuális gép újraindításához.
+## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>A pagefile. sys fájl áthelyezése az ideiglenes tárolóba
+1. Kattintson a jobb gombbal a **Start** menüre, és válassza a **System** lehetőséget.
+2. A bal oldali menüben válassza a **Speciális rendszerbeállítások**lehetőséget.
+3. A **teljesítmény** szakaszban válassza a **Beállítások**lehetőséget.
+4. Válassza a **speciális** lapot.
+5. A **virtuális memória** szakaszban válassza a **módosítás**lehetőséget.
+6. Válassza ki a **C** operációsrendszer-meghajtót, és kattintson a **nincs lapozófájl** elemre, majd a **beállítás**gombra.
+7. Válassza ki az ideiglenes tároló meghajtót, majd kattintson a **rendszer által felügyelt méret** elemre, majd a **beállítás**gombra.
+8. Kattintson az **Alkalmaz** gombra. A módosítások érvénybe lépéséhez figyelmeztetést kap, hogy a számítógépet újra kell indítani.
+9. Indítsa újra a virtuális gépet.
 
 ## <a name="next-steps"></a>További lépések
-* Növelheti a virtuális gép által elérhető tárhely [egy további adatlemez csatolása](attach-managed-disk-portal.md).
+* A virtuális gép számára elérhető tárterületet [további adatlemez csatolásával](attach-managed-disk-portal.md)növelheti.
 

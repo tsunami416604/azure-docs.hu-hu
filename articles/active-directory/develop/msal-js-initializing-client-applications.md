@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7df2f9aa56e22bd4060c823b02900fa914a0fd7f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 5d36def4faa98f4b8e42c93cf3e222c2ec7ca89a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532801"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073849"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Ügyfélalkalmazások inicializálása a MSAL. js használatával
 Ez a cikk a Microsoft hitelesítési függvénytárának a JavaScripthez (MSAL. js) való inicializálását ismerteti egy felhasználói ügynök alkalmazás egy példányával. A User-Agent alkalmazás a nyilvános ügyfélalkalmazás olyan formája, amelyben az ügyfél kódja egy felhasználói ügynökön, például egy böngészőben fut. Ezek az ügyfelek nem tárolják a titkos kulcsokat, mivel a böngésző környezete nyíltan elérhető. Az ügyfélalkalmazások típusairól és az alkalmazás konfigurációs lehetőségeiről az [Áttekintés](msal-client-applications.md)című témakörben olvashat bővebben.
@@ -123,7 +123,7 @@ Alább látható a konfigurációs objektumban jelenleg támogatott konfigurálh
 
 - **validateAuthority**: Nem kötelező.  A jogkivonatok kiállítójának ellenőrzése. Az alapértelmezett szint a `true`. A B2C-alkalmazások esetében, mivel a hatóság értéke ismert, és a szabályzatok eltérőek lehetnek, a hatóság ellenőrzése nem fog működni, és be `false`kell állítani a következőt:.
 
-- **redirectUri**: Nem kötelező.  Az alkalmazás átirányítási URI-ja, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált átirányítási URI-k egyikével, azzal a különbséggel, hogy az URL-címet kell kódolni. Alapértelmezés szerint a `window.location.href`.
+- **redirectUri**: Nem kötelező.  Az alkalmazás átirányítási URI-ja, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált átirányítási URI-k egyikével. Alapértelmezés szerint a `window.location.href`.
 
 - **postLogoutRedirectUri**: Nem kötelező.  A kijelentkezés `postLogoutRedirectUri` után átirányítja a felhasználót. A mező alapértelmezett értéke: `redirectUri`.
 

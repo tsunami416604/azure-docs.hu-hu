@@ -7,20 +7,21 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-ms.date: 03/22/2019
-ms.openlocfilehash: f2b57aa517c1518929b857eff6aed2ef4e0d8ca1
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.date: 08/22/2019
+ms.openlocfilehash: 5aaad8c44328e1cc2aeb7729e3e221665823a467
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018970"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073026"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Adatfelderítési & besorolása Azure SQL Database és SQL Data Warehouse
 
 Az adatfelderítési & besorolása olyan speciális képességeketbiztosít & , amelyek aAzure SQL Databaseba illeszkednek, és a bizalmas adatoknak az adatbázisokban való**védelmét** is lehetővé teszi.
+
 A legérzékenyebb adatok (üzleti, pénzügyi, egészségügyi, személyazonosításra alkalmas adatok) felfedése és besorolása kulcsfontosságú szerepet játszik a szervezeti adatok védelmében. A következő infrastruktúrát nyújtja:
 
 - Az adatvédelmi szabványoknak és a szabályozási megfelelőségi követelményeknek való megfelelés elősegítése.

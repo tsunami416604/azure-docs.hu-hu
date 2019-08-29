@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 6820b44309ac2b3dbeb5ad6f0beb460c8712e9af
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1be70d3eb74d3a8f0eddb1e5c22e4234987276b3
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203690"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073689"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Az API több verziójának közzététele 
 
@@ -38,8 +37,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
-+ Hajtsa végre a következő rövid útmutatót: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
-+ Ezenkívül hajtsa végre a következő oktatóanyaggal: [Az első API importálása és közzététele](import-and-publish.md).
++ Hajtsa végre a következő rövid útmutatót: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
++ Továbbá hajtsa végre a következő oktatóanyagot: [Az első API importálása és közzététele](import-and-publish.md).
 
 ## <a name="add-a-new-version"></a>Új verzió hozzáadása
 

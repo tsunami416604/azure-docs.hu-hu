@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: abe04a88f3337ed26b98815b5633fd5d719b7ce3
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 2d6170dead4e8577cea6883ffea25b90ebe39b88
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234226"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079008"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>SAP számítási feladatok az Azure tervezési és üzembe helyezési ellenőrzőlistáján 
 
@@ -159,7 +158,7 @@ A próbaüzem a projekt megtervezése és előkészítése előtt vagy párhuzam
    3.  Győződjön meg arról, hogy az összes titkosítani kívánt erőforrás titkosítva van. A tanúsítványok biztonsági mentésére, tárolására és elérésére szolgáló folyamatok meghatározása és végrehajtása, valamint a titkosított entitások visszaállítása. 
    4.  [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) és/vagy operációsrendszer-lemezek használata, ha lehetséges, az operációs rendszer támogatási pontjáról
    5.  Győződjön meg arról, hogy a rendszer nem használ túl sok titkosítási réteget. Az Azure Disk Encryption használatának korlátozott értelme, majd az adatbázis-kezelő rendszer átlátható adatbázis-titkosítási módszereinek egyike.
-6. Teljesítmény tesztelése
+6. Teljesítménytesztelés
    1.  SAP-nyomkövetés és-mérések alapján, az SAP-ben az első 10 online jelentés összevetése a jelenlegi megvalósításig 
    2.  SAP-nyomkövetés és-mérések alapján az SAP-ben az első 10 batch-feladat összehasonlítása az aktuális megvalósításig, ahol alkalmazható 
    3.  SAP-nyomkövetés és-mérések alapján, az SAP-rendszerbe való adatátvitelek összehasonlításával. Olyan felületekre koncentrálhat, amelyekkel biztos lehet abban, hogy az átvitel mostantól különböző helyszíneken zajlik, például a helyszínről az Azure-ba 

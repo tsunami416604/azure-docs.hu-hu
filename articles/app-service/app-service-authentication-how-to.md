@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b4b70a45758f697c469895bcef6ea8d203065e26
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: ee8d8c54bd618780e00d9975f2fc6950cd795d44
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853976"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098540"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és az engedélyezés speciális használata Azure App Service
 
@@ -186,7 +185,7 @@ Ha a szolgáltató hozzáférési jogkivonata (nem a [munkamenet](#extend-sessio
 - **Microsoft-fiók**: A [Microsoft-fiók hitelesítési beállításainak konfigurálásakor](configure-authentication-provider-microsoft.md)válassza `wl.offline_access` ki a hatókört.
 - **Azure Active Directory**: A [https://resources.azure.com](https://resources.azure.com)alkalmazásban hajtsa végre a következő lépéseket:
     1. Az oldal tetején válassza az **írás/írás**lehetőséget.
-    2. A bal oldali böngészőben navigáljon az ****  > előfizetések ** _\<előfizetés\_neve_**  > **resourceGroups** >  **_erőforráscsoporthoz\_\< név\_>_** **** **** **** **szolgáltatók Microsoft. Web**Sites > -alkalmazás >  **_neve>\_config\<_**  >  >  >  >  **authsettings elemre**. 
+    2. A bal oldali böngészőben navigáljon az > előfizetések **_\<előfizetés\_neve_**  > **resourceGroups** >  **_erőforráscsoporthoz\_\< név\_>_** **szolgáltatók Microsoft. Web**Sites > -alkalmazás >  **_neve>\_config\<_**  >  >  >  >  **authsettings elemre**. 
     3. Kattintson a **Szerkesztés** gombra.
     4. Módosítsa a következő tulajdonságot. Cserélje  _\<le\_az alkalmazás azonosítóját >_ az elérni kívánt szolgáltatás Azure Active Directory alkalmazás-azonosítójával.
 
@@ -233,7 +232,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 A Microsoft-fiók és a Azure Active Directory egyaránt lehetővé teszi több tartományból való bejelentkezést. A Microsoft-fiók például lehetővé teszi a _Outlook.com_, a _live.com_és a _hotmail.com_ fiók használatát. Azure Active Directory lehetővé teszi a bejelentkezési fiókok tetszőleges számú egyéni tartományának használatát. Előfordulhat, hogy ez a viselkedés egy belső alkalmazás esetében nem kívánatos, mert nem szeretné, hogy bárki _Outlook.com_ -fiókkal hozzáférhessen. A bejelentkezési fiókok tartománynevének korlátozásához kövesse az alábbi lépéseket.
 
-A [https://resources.azure.com](https://resources.azure.com)alkalmazásban >  navigáljon **az előfizetés**- ** _\_ előfizetésneve\<_**  >  **** resourceGroups >  **_erőforráshoz\<\_ Csoportnév\_ >_** **** **** **** **_szolgáltatók Microsoft.webhelyekalkalmazás\_ neve >\<_**  >  >  >  >  >  **konfiguráció**  >  **authsettings elemre**. 
+A [https://resources.azure.com](https://resources.azure.com)alkalmazásban navigáljon >  azelőfizetés >  - **_\_ előfizetésneve\<_** resourceGroups >  **_erőforráshoz\<\_ Csoportnév\_ >_** **_szolgáltatók Microsoft.webhelyekalkalmazás\_ neve >\<_**  >  >  >  >  >  **konfiguráció**  >  **authsettings elemre**. 
 
 Kattintson a **Szerkesztés**gombra, módosítsa a következő tulajdonságot, majd kattintson a **put**elemre. Ügyeljen arra, hogy  _\<a\_tartománynevet >_ a kívánt tartományra cserélje le.
 

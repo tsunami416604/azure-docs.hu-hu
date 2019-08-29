@@ -8,16 +8,15 @@ manager: gwallace
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 3d5b2afd642a7eb042b2e6e07ef93a505f6b9648
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: f2bdfab82e1b9fb05d74f69536ec672a4b18a4bf
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774699"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114382"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Az Azure Szolgáltatásbusz-kötések az Azure Functions szolgáltatáshoz
 
@@ -715,14 +714,19 @@ A kimeneti kötési C# és C#-szkript, használhatja a következő paraméter t�
 * `out T paramName` - `T` bármely JSON-szerializálható típusa lehet. Ha a paraméter értéke null értékű, ha a függvény kilép, Funkciók hoz létre az üzenet Objekt s hodnotou null.
 * `out string` – Ha a paraméter értéke null értékű, ha a függvény kilép, függvények nem hoz létre egy üzenetet.
 * `out byte[]` – Ha a paraméter értéke null értékű, ha a függvény kilép, függvények nem hoz létre egy üzenetet.
-* `out BrokeredMessage` – Ha a paraméter értéke null értékű, ha a függvény kilép, függvények nem hoz létre egy üzenetet.
+* `out BrokeredMessage`-Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet (az 1. x függvények esetében)
+* `out Message`– Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet (a 2. x függvényhez)
 * `ICollector<T>` vagy `IAsyncCollector<T>` – több üzenetet létrehozásához. Egy üzenet jön létre, amikor hívja a `Add` metódust.
 
-Az aszinkron funkciók, a visszaadott értékének használata vagy `IAsyncCollector` helyett egy `out` paraméter.
+A C# függvények használatakor:
 
-Az Azure Functions verziójára vonatkoznak ezek a paraméterek 1.x; a 2.x használja [ `Message` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) helyett `BrokeredMessage`.
+* Az aszinkron függvények visszatérési értékének `IAsyncCollector` vagy `out` paraméterének kell lennie.
 
-A JavaScript, az üzenetsor vagy témakör segítségével hozzáférni `context.bindings.<name from function.json>`. Rendelhet egy karakterlánc, egy bájttömböt vagy egy Javascript-objektumot (deszerializálni JSON formátumba) `context.binding.<name>`.
+* A munkamenet-azonosító eléréséhez kötést kell [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) kötnie egy típushoz, és a `sessionId` tulajdonságot kell használnia.
+
+A JavaScript, az üzenetsor vagy témakör segítségével hozzáférni `context.bindings.<name from function.json>`. Hozzárendelhet egy karakterláncot, egy bájt tömböt vagy egy JavaScript-objektumot (JSON-ként deszerializált) `context.binding.<name>`a következőhöz:.
+
+Ha nemC# nyelven szeretne üzenetet küldeni egy munkamenet-kompatibilis várólistához, használja a [Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) -t a beépített kimeneti kötés helyett.
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és a visszatérési kódok
 

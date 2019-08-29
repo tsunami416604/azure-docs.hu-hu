@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f97cce2d1a8b2de5634215629ddb997dc8f7196a
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 02dcb7174dd9cb2926ef2fafda4b521b939ae68a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68235196"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70077990"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure-beli közelségi elhelyezési csoportok az optimális hálózati késés érdekében SAP-alkalmazások használatával
 Az SAP NetWeaver vagy az SAP S/4HANA architektúrán alapuló SAP-alkalmazások érzékenyek az SAP-alkalmazási rétegek és az SAP-adatbázis szintjei közötti hálózati késésre. Ezen architektúrák érzékenységének oka az, hogy a legtöbb üzleti logikát az alkalmazási rétegben hajtják végre. Az üzleti logika végrehajtásának eredményeképpen az SAP-alkalmazás rétege nagy gyakorisággal kérdezi le az adatbázis-réteget. A legtöbb esetben a lekérdezések természete egyszerű. És gyakran az adatbázis-szinten is végrehajtható, kevesebb, mint 500 másodperc, vagy akár kevesebb is. A hálózaton töltött idő a lekérdezés az alkalmazás szintjéről az adatbázis szintjére való elküldéséhez, és az adatbázis-szinten visszaállított eredményhalmaz jelentős hatással van az üzleti folyamatok végrehajtásához szükséges idő szintjére. Ez a hálózati késésre való érzékenység az optimális hálózati késés eléréséhez szükséges idő az SAP-alapú üzembe helyezési projektekben. Az [SAP-Megjegyzés #1100926 – gyakori kérdések: Hálózati teljesítmény](https://launchpad.support.sap.com/#/notes/1100926/E), az SAP közzétett néhány iránymutatást a hálózati késés besorolásához.

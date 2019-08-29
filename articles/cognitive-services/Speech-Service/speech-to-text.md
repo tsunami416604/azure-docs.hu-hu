@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 435de6e6516256d350ad93b121dd5a38d1512ddc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fa80ebea93ae897ba01ff54bdb797ed4194665cd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558850"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068863"
 ---
 # <a name="what-is-speech-to-text"></a>Mi a beszéd – szöveg?
 
@@ -63,13 +63,7 @@ A Speech SDK mintakód a GitHubon érhető el. Ezek a minták olyan gyakori forg
 
 ## <a name="customization"></a>Testreszabás
 
-A Speech Services által használt univerzális modellen kívül egyéni akusztikai, nyelvi és kiejtési modelleket is létrehozhat a felhasználói élményhez. A testreszabási lehetőségek listája:
-
-| Modell | Leírás |
-|-------|-------------|
-| [Akusztikai modell](how-to-customize-acoustic-models.md) | Az egyéni akusztikai modell létrehozása akkor hasznos, ha az alkalmazás, az eszközök vagy az eszközök egy adott környezetben, például egy autóban vagy a gyárban, adott rögzítési feltételekkel vannak használatban. A példák közé tartozik az akcentussal való beszéd, a meghatározott háttérzajok vagy egy adott mikrofon használata a felvételhez. |
-| [Nyelvi modell](how-to-customize-language-model.md) | Hozzon létre egy egyéni nyelvi modellt, amellyel javítható az iparágra jellemző szókincs és nyelvtan, például az orvosi szakkifejezések vagy az informatikai szakzsargonk átírása. |
-| [Kiejtési modell](how-to-customize-pronunciation.md) | Egyéni kiejtési modellel megadhatja egy szó vagy kifejezés fonetikus formáját és megjelenítését. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. A kezdéshez szüksége egy írásmódja fájlnevével – egy egyszerű .txt fájlt. |
+A Speech Services által használt standard alapkonfiguráción kívül a modelleket a rendelkezésre álló adatokkal is testreszabhatja, így leküzdheti a beszédfelismerési korlátokat, például a beszéd stílusát, a szókincset és a háttérzajt, lásd: [Custom Speech](how-to-custom-speech.md)
 
 > [!NOTE]
 > A testreszabási lehetőségek nyelv/területi beállítás szerint változnak (lásd a [támogatott nyelveket](supported-languages.md)).

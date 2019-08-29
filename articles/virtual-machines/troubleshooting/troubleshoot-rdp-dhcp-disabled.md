@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: daddb859c6bfc6309ef833c6c6c3ea43c70f1889
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d16c5b6304f598440fe4d70648dd652f0dcf06ec
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362288"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089939"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nem lehet RDP az Azure Virtual Machines, mert a DHCP-ügyfél szolgáltatás le van tiltva
 
@@ -29,16 +28,16 @@ Ez a cikk ismerteti a problémát, amelyben nem lehet a távoli asztal az Azure 
 ## <a name="symptoms"></a>Probléma
 Nem lehet RDP-kapcsolatok egy virtuális Gépet az Azure-ban a DHCP-ügyfél szolgáltatás le van tiltva, a virtuális gépen. Amikor ellenőrizheti a képernyőképen a a [rendszerindítási diagnosztika](../troubleshooting/boot-diagnostics.md) az Azure Portalon, megjelenik a virtuális gép indul el megfelelően, és a hitelesítő adatokat a bejelentkezési képernyőn vár. Ön távolról tekintse meg az eseménynaplókat a virtuális gépen az Eseménynapló használatával. Láthatja, hogy a DHCP-ügyfél szolgáltatás nincs elindítva vagy nem indul el. A következő egy minta jelentkezzen be:
 
-**Naplófájl neve**: Rendszer </br>
-**forrás**: Szolgáltatásvezérlő kezelője </br>
-**Dátum**: 12/16/2015 11:19:36 AM </br>
+**Napló neve**: Rendszer </br>
+**Forrás**: Service Control Manager </br>
+**Dátum**: 12/16/2015 11:19:36 </br>
 **Eseményazonosító**: 7022 </br>
-**Feladat kategóriája**: None </br>
+**Feladat kategóriája**: Nincsenek </br>
 **Szint**: Hiba </br>
-**A kulcsszavak**: Klasszikus</br>
-**Felhasználói**: – </br>
+**Kulcsszavak**: Klasszikus</br>
+**Felhasználó**: – </br>
 **Számítógép**: myvm.cosotos.com</br>
-**Leírás**: A DHCP-ügyfél szolgáltatás indításkor lefagyott.</br>
+**Leírás**: A DHCP-ügyfélszolgáltatás lefagyott.</br>
 
 Resource Manager-beli virtuális gépek soros hozzáférés funkció lekérdezéséhez az esemény-naplókat 7022 használja az alábbi parancsot is használhatja:
 

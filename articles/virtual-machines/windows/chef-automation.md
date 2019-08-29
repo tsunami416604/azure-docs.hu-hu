@@ -1,6 +1,6 @@
 ---
-title: Az Azure virtuális gép üzembe helyezése a Cheffel |} A Microsoft Docs
-description: Ismerje meg, hogyan használható a Chef ehhez az automatikus virtuális gép központi telepítése és konfigurálása a Microsoft Azure
+title: Azure-beli virtuális gépek üzembe helyezése Chef segítségével | Microsoft Docs
+description: Ismerje meg, hogyan használható a Chef a virtuális gépek automatikus üzembe helyezéséhez és konfigurálásához Microsoft Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: diegoviso
@@ -11,56 +11,55 @@ ms.assetid: 0b82ca70-89ed-496d-bb49-c04ae59b4523
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: 74b92c277b1d6eaa0984e55a70459bad59c2bf84
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 5cbf53da5a0af0a511350b9f30153e2fefe72dcf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719274"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080087"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Azure-beli virtuális gépek üzembe helyezése a Cheffel
 
-Chef egy nagyszerű eszköz automation kidolgozását és a kívánt állapot konfigurációk.
+A Chef nagyszerű eszköz az automatizálás és a kívánt állapot-konfigurációk biztosításához.
 
-A legújabb felhőalapú API-verzió Chef biztosít zökkenőmentes integráció az Azure-ral, így és üzembe helyezéséhez konfigurációs állapotnak egyetlen parancs használatával.
+A Cloud API legújabb kiadásával a Chef zökkenőmentesen integrálható az Azure-nal, és lehetővé teszi a konfigurációs állapotok egyetlen paranccsal történő üzembe helyezését és telepítését.
 
-Ebben a cikkben, állítsa be a Chef környezetet az Azure-beli virtuális gépek kiépítése, és haladjon végig egy házirend vagy az "Útmutató" létrehozása és üzembe kell helyezni a útmutató Azure virtuális gépeken.
+Ebben a cikkben a Chef-környezetet úgy állíthatja be, hogy kiépítse az Azure-beli virtuális gépeket, és végigvezeti a szabályzatok vagy a "szakácskönyvek" létrehozásán, majd a szakácskönyv Azure-beli virtuális gépre való üzembe helyezésén.
 
 ## <a name="chef-basics"></a>Chef alapjai
-Mielőtt elkezdené, [tekintse át az alapvető fogalmait, Chef](https://www.chef.io/chef).
+Mielőtt elkezdené, [tekintse át a Chef](https://www.chef.io/chef)alapfogalmait.
 
-A következő ábra szemlélteti a Chef architektúrájának áttekintése.
+A következő ábra a magas szintű Chef architektúrát ábrázolja.
 
 ![][2]
 
-Chef három fő architekturális összetevőre van: Chef-kiszolgálót, a Chef ügyfél (node) és a Chef munkaállomás.
+A Chef három fő építészeti összetevővel rendelkezik: Chef-kiszolgáló, Chef-ügyfél (node) és Chef munkaállomás.
 
-A Chef-kiszolgálót a felügyeleti pont és a Chef kiszolgáló két lehetőség van: üzemeltetett megoldás vagy egy helyszíni megoldás.
+A Chef-kiszolgáló a felügyeleti pont, és két lehetőség közül választhat a Chef-kiszolgáló: egy üzemeltetett megoldás vagy egy helyszíni megoldás.
 
-A Chef ügyfél (node), akkor az ügynök, amely a kezelt kiszolgálókon.
+A Chef-ügyfél (node) a kezelt kiszolgálókon található ügynök.
 
-A Chef munkaállomás, amelynek a neve, mind a rendszergazdai munkaállomás, amelyen szabályzatokat hozhat létre, és hajtsa végre a felügyeleti parancsok és a Chef eszközök szoftvercsomagot.
+A Chef munkaállomás, amely a felügyeleti munkaállomás neve, ahol szabályzatokat hozhat létre, és felügyeleti parancsokat, valamint a Chef Tools szoftvercsomag használatát is végrehajthatja.
 
-Általában a láthatja _a munkaállomáson_ , a hely, ahol műveleteket végre és _Chef munkaállomás_ a szoftvercsomag.
-Például, töltse le a Kés parancs részeként _Chef munkaállomás_, de kés parancsok futtatása _a munkaállomáson_ infrastruktúra kezeléséhez.
+Általában a munkaállomást fogja látni a szoftvercsomag műveleteinek és _Chef_ -munkaállomásának helyeként.
+Például letöltheti a kés parancsot a _Chef munkaállomás_részeként, de a munkaállomásról származó kés parancsokat futtatva kezelheti az infrastruktúrát.
 
-Chef is használja az "Kézikönyvek" és "Receptek", ami lényegében azt határozza meg, és a kiszolgálók a alkalmazni a házirendeket.
+A Chef a "szakácskönyvek" és a "receptek" fogalmait is alkalmazza, amelyek gyakorlatilag az általunk definiált szabályzatok, és a kiszolgálókra érvényesek.
 
 ## <a name="preparing-your-workstation"></a>A munkaállomás előkészítése
 
-A munkaállomás először-előkészítési Chef konfigurációs fájlokat és kézikönyvek könyvtárat hoz létre.
+Először készítse elő a munkaállomást úgy, hogy létrehoz egy könyvtárat a Chef konfigurációs fájljainak és a szakácskönyveknek a tárolására.
 
-Hozzon létre egy C:\Chef nevű könyvtárat.
+Hozzon létre egy C:\Chef. nevű könyvtárat
 
-Töltse le és telepítse a legújabb [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) verzió be a munkaállomáson.
+Töltse le és telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) legújabb verzióját a munkaállomásra.
 
 ## <a name="configure-azure-service-principal"></a>Azure-szolgáltatásnév konfigurálása
 
-Az Azure egyszerű szolgáltatás a használati feltételek legegyszerűbb egy olyan szolgáltatásfiók.   Fogjuk használni egy egyszerű szolgáltatást segítenie az Azure-erőforrások létrehozása a Chef munkaállomásról.  A szükséges engedélyekkel a megfelelő egyszerű szolgáltatás létrehozásához futtassa az alábbi parancsokat a Powershellen belülről kell:
+A legegyszerűbb használati feltételek és az Azure szolgáltatásnév egy szolgáltatásfiók.   Egy egyszerű szolgáltatásnév segítségével hozunk létre Azure-erőforrásokat a Chef munkaállomásán.  Ahhoz, hogy a megfelelő szolgáltatásnevet a szükséges engedélyekkel hozza létre, a következő parancsokat a PowerShellen belül kell futtatnia:
  
 ```powershell
 Login-AzureRmAccount
@@ -71,46 +70,46 @@ New-AzureRmADServicePrincipal -ApplicationId $myApplication.ApplicationId
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $myApplication.ApplicationId
 ```
 
-Kérjük, szánjon jegyezze fel az előfizetés-azonosító, a TenantID, a ClientID és a titkos Ügyfélkód (a fent beállított jelszó), szüksége lesz később. 
+Jegyezze fel a SubscriptionID, a TenantID, a ClientID és az ügyfél titkos kulcsát (a fent megadott jelszót), amelyre később szüksége lesz. 
 
-## <a name="setup-chef-server"></a>Chef-kiszolgáló beállítása
+## <a name="setup-chef-server"></a>A Chef-kiszolgáló beállítása
 
-Ez az útmutató feltételezi, hogy lesz regisztrál üzemeltetett Chef.
+Ez az útmutató feltételezi, hogy regisztrálja az üzemeltetett Cheft.
 
-Ha még nem használja a Chef-kiszolgálót, akkor a következőket teheti:
+Ha még nem használ Chef-kiszolgálót, a következőket teheti:
 
-* Regisztráljon [üzemeltetett Chef](https://manage.chef.io/signup), ez az első lépések a Chef leggyorsabb módja.
-* Chef Server önálló telepítése linux-alapú gépen, a következő a [telepítési utasításokat](https://docs.chef.io/install_server.html) a [Chef Docs](https://docs.chef.io/).
+* Regisztráljon az [üzemeltetett chefre](https://manage.chef.io/signup), amely a Chef első lépéseinek leggyorsabb módja.
+* Telepítsen egy önálló Chef-kiszolgálót a Linux-alapú gépen, a [Chef docs](https://docs.chef.io/) [telepítési utasításait](https://docs.chef.io/install_server.html) követve.
 
 ### <a name="creating-a-hosted-chef-account"></a>Üzemeltetett Chef-fiók létrehozása
 
-A Chef üzemeltetett fiók [Itt](https://manage.chef.io/signup).
+Regisztráljon egy üzemeltetett Chef-fiókot [itt](https://manage.chef.io/signup).
 
-A regisztrációs folyamat során a rendszer felkéri, hozzon létre új szervezetet.
+A regisztrációs folyamat során meg kell adnia egy új szervezet létrehozását.
 
 ![][3]
 
-A szervezet létrehozása után töltse le a starter kit.
+A szervezet létrehozása után töltse le az alapszintű csomagot.
 
 ![][4]
 
 > [!NOTE]
-> Ha megjelenik egy figyelmeztetés, hogy a kulcsokat a rendszer visszaállítja kérdés, nem folytatható, mert nincs még konfigurálva meglévő infrastruktúrára van probléma.
+> Ha figyelmeztetés jelenik meg, hogy a kulcsok alaphelyzetbe lesznek állítva, akkor a folytatáshoz, mivel még nincs konfigurálva a meglévő infrastruktúra.
 >
 
-Az alapszintű csomag zip-fájl tartalmazza a szervezet konfigurációs fájlokat és a felhasználói kulcsot a `.chef` könyvtár.
+Ez a Starter Kit zip-fájl tartalmazza a szervezet konfigurációs fájljait és `.chef` a felhasználói kulcsot a címtárban.
 
-A `organization-validator.pem` le kell tölteni külön-külön, mert a titkos kulcsot és titkos kulcsok nem kell tárolni a Chef-kiszolgálót. A [Chef kezelése](https://manage.chef.io/), lépjen az Adminisztráció szakaszba, és válassza ki a "Alaphelyzetbe érvényesítési kulcs", amely külön letölthető egy fájl biztosít. Mentse a fájlt c:\chef.
+A `organization-validator.pem` fájlt külön kell letölteni, mert a titkos kulcs, és a titkos kulcsok nem tárolhatók a Chef-kiszolgálón. A [Chef-kezelés](https://manage.chef.io/)területen lépjen az adminisztráció szakaszra, és válassza az "érvényesítési kulcs alaphelyzetbe állítása" lehetőséget, amely egy fájlt biztosít, amely külön letölthető. Mentse a fájlt a c:\chef.
 
 ### <a name="configuring-your-chef-workstation"></a>A Chef munkaállomás konfigurálása
 
-Bontsa ki a chef-starter.zip c:\chef a tartalmát.
+A Chef-Starter. zip fájl tartalmának kibontása a c:\chef.
 
-Chef-starter\chef-adattárban található összes fájlt másolja\.chef a c:\chef címtárhoz.
+Másolja az összes fájlt a\.Chef-starter\chef-repo Chef alá a c:\chef könyvtárba.
 
-Másolás a `organization-validator.pem` c:\chef, ha a Mentés c:\Downloads fájlt
+Másolja a `organization-validator.pem` fájlt a c:\chef-be, ha az letöltések-ben lett mentve
 
-A címtár most hasonlóan kell kinéznie a következő példa.
+A címtárnak most az alábbi példához hasonlóan kell kinéznie.
 
 ```powershell
     Directory: C:\Users\username\chef
@@ -128,13 +127,13 @@ d-----    12/6/2018   5:38 PM           roles
 -a----    12/6/2018   5:38 PM      2341 README.md
 ```
 
-Most már öt fájlt, és négy könyvtárak (beleértve az üres chef-tárház könyvtár) c:\chef gyökerében.
+Most öt fájlra és négy könyvtárra van szüksége (beleértve az üres Chef-adattár könyvtárat) a c:\chef. gyökérkönyvtárában
 
-### <a name="edit-kniferb"></a>Knife.rb szerkesztése
+### <a name="edit-kniferb"></a>Kés. RB szerkesztése
 
-A PEM-fájlok tartalmazzák a szervezet és a kommunikációhoz felügyeleti titkos kulcsok és a knife.rb fájl tartalmazza a Kés konfigurációját. Szükségünk lesz a knife.rb fájl szerkesztéséhez.
+A PEM-fájlok tartalmazzák a szervezet és a titkos kulcsokat a kommunikációhoz, és a kés. RB fájl tartalmazza a kés konfigurációját. A kés. RB fájlt is szerkeszteni kell.
 
-Tetszőleges szövegszerkesztőben nyissa meg a knife.rb fájlt. A változatlan fájlt a következőhöz hasonlóan kell kinéznie:
+Nyissa meg a kés. RB fájlt a választott szerkesztőben. A nem módosított fájlnak a következőhöz hasonlónak kell kinéznie:
 
 ```rb
 current_dir = File.dirname(__FILE__)
@@ -146,24 +145,24 @@ chef_server_url     "https://api.chef.io/organizations/myorg"
 cookbook_path       ["#{current_dir}/cookbooks"]
 ```
 
-A knife.rb adja hozzá a következő információkat:
+Adja hozzá a következő adatokat a kés. RB-hez:
 
-validation_client_name "myorg-érvényesítő"
+validation_client_name "myorg-validator"
 
 validation_key           "#{current_dir}/myorg.pem"
 
-knife[:azure_tenant_id] =         "0000000-1111-aaaa-bbbb-222222222222"
+kés [: azure_tenant_id] = "0000000-1111-AAAA-bbbb-222222222222"
 
 knife[:azure_subscription_id] =   "11111111-bbbbb-cccc-1111-222222222222"
 
 knife[:azure_client_id] =         "11111111-bbbbb-cccc-1111-2222222222222"
 
-knife[:azure_client_secret] =     "#1234p$wdchef19"
+kés [: azure_client_secret] = "#1234p $wdchef 19"
 
 
-Ezek a sorok kés c:\chef\cookbooks kézikönyvek almappájába hivatkozik, és használja az Azure egyszerű szolgáltatás Azure üzemeltetése során létrehozott is biztosítja.
+Ezek a sorok biztosítják, hogy a kés a c:\chef\cookbooks alatti szakácskönyvek könyvtárára hivatkozik, valamint az Azure-műveletek során létrehozott Azure-szolgáltatásnevet is.
 
-A knife.rb fájl most a következő példához hasonlóan kell kinéznie:
+A kés. RB fájlnak most az alábbi példához hasonlóan kell kinéznie:
 
 ![][14]
 
@@ -189,14 +188,14 @@ knife[:azure_client_id] = "11111111-bbbbb-cccc-1111-2222222222222"
 knife[:azure_client_secret] = "#1234p$wdchef19"
 ```
 
-## <a name="install-chef-workstation"></a>Telepítse a Chef munkaállomás
+## <a name="install-chef-workstation"></a>Chef-munkaállomás telepítése
 
-Ezután [töltse le és telepítse](https://downloads.chef.io/chef-workstation/) Chef munkaállomás.
-Telepítse a Chef munkaállomás alapértelmezett helye. Ez a telepítés néhány percet is igénybe vehet.
+Ezután [töltse le és telepítse a](https://downloads.chef.io/chef-workstation/) Chef munkaállomást.
+Telepítse a Chef munkaállomás alapértelmezett helyét. A telepítés néhány percet is igénybe vehet.
 
-Az asztalon látni fog egy "tényleges súly PowerShell", amely betölti az eszközzel kell a Chef termékek folytatott interakcióra szolgáló környezet. A tényleges súly PowerShell elérhetővé új ad-hoc parancsokat, mint például `chef-run` , valamint hagyományos Chef CLI-parancsok, például `chef`. Tekintse meg a Chef munkaállomás és a Chef eszközökkel telepített verziója `chef -v`. A munkaállomás-verzió "Kapcsolatos Chef-munkaállomás" kiválasztásával a Chef munkaállomás alkalmazásból is ellenőrizheti.
+Az asztalon egy "CW PowerShell" jelenik meg, amely a Chef-termékekkel való interakcióhoz szükséges eszközzel betöltött környezet. A CW PowerShell új ad hoc parancsokat tesz elérhetővé, `chef-run` például a hagyományos Chef CLI-parancsokat is, `chef`például:. Megtekintheti a Chef munkaállomás és a Chef eszközeinek `chef -v`telepített verzióját. Azt is megteheti, hogy a munkaállomásának verzióját a Chef Workstation alkalmazás "a Chef munkaállomás névjegye" elemére kattintva is megtekintheti.
 
-`chef --version` térjen vissza az alábbihoz hasonló:
+`chef --version`a következőhöz hasonlót kell visszaadnia:
 
 ```
 Chef Workstation: 0.4.2
@@ -209,51 +208,51 @@ Chef Workstation: 0.4.2
 ```
 
 > [!NOTE]
-> Az elérési utat a sorrend fontos szerepet játszanak. Ha a opscode elérési utak nem a megfelelő sorrendben kell problémákat.
+> Az elérési út sorrendje fontos! Ha a opscode elérési útjai nem megfelelő sorrendben vannak, akkor problémákba ütközik.
 >
 
-Indítsa újra a munkaállomáson, a folytatás előtt.
+A folytatás előtt indítsa újra a munkaállomást.
 
-### <a name="install-knife-azure"></a>Kés Azure telepítése
+### <a name="install-knife-azure"></a>A kés Azure telepítése
 
-Ez az oktatóanyag feltételezi, hogy az Azure Resource Manager használ a virtuális gép kommunikál.
+Ez az oktatóanyag feltételezi, hogy a Azure Resource Manager használja a virtuális géppel való kommunikációhoz.
 
-A Kés Azure-bővítmény telepítése. Ez biztosítja, hogy az "Azure beépülő modullal" Kés.
+Telepítse a kés Azure-bővítményt. Ez a kés az "Azure beépülő modullal" rendelkezik.
 
 Futtassa a következő parancsot.
 
     chef gem install knife-azure ––pre
 
 > [!NOTE]
-> A – előtti argumentum biztosítja, hogy azért küldtük Önnek, a Kés Azure beépülő modult a legújabb API-k készlete hozzáférést biztosító RC legújabb verzióját.
+> A – pre argumentum biztosítja, hogy megkapja a kés Azure beépülő modul legújabb RC verzióját, amely hozzáférést biztosít a legújabb API-készletekhez.
 >
 >
 
-Valószínű, hogy több függőséggel is települ egy időben.
+Valószínű, hogy egyszerre több függőség is telepítve lesz.
 
 ![][8]
 
-Annak érdekében, hogy minden helyesen van-e konfigurálva, futtassa a következő parancsot.
+Annak biztosítása érdekében, hogy minden megfelelően legyen konfigurálva, futtassa a következő parancsot.
 
     knife azurerm server list
 
-Ha minden megfelelően konfigurálva, látni fogja az elérhető Azure-rendszerképek kezdje el végiggörgetni listáját.
+Ha minden megfelelően van konfigurálva, az elérhető Azure-rendszerképek listája görgethető.
 
-Gratulálunk! A munkaállomás be van állítva.
+Gratulálunk! A munkaállomás be van állítva!
 
-## <a name="creating-a-cookbook"></a>Egy könyv létrehozása
+## <a name="creating-a-cookbook"></a>Szakácskönyv létrehozása
 
-Egy könyv meghatározásához hajtsa végre a felügyelt ügyfél kívánt parancsokat Chef használják. Egy könyv létrehozása nagyon egyszerű, használja a **chef készítése cookbook** parancsot a könyv sablon létrehozásához. Ez az útmutató, amely automatikusan telepíti az IIS webkiszolgáló van.
+A Chef egy szakácskönyvet használ a felügyelt ügyfélen végrehajtani kívánt parancsok definiálásához. A szakácskönyv létrehozása egyszerű, csak a **Chef generált Cookbook** paranccsal hozhatja létre a szakácskönyv-sablont. Ez a szakácskönyv egy olyan webkiszolgálóra mutat, amely automatikusan telepíti az IIS-t.
 
-A C:\Chef könyvtárban futtassa a következő parancsot.
+Futtassa a következő parancsot a C:\Chef könyvtárában.
 
     chef generate cookbook webserver
 
-Ez a parancs létrehoz egy fájlok a könyvtárban C:\Chef\cookbooks\webserver. Ezt követően adja meg a felügyelt virtuális gépen hajtsa végre a Chef ügyfél parancsok készlete.
+Ez a parancs a könyvtár C:\Chef\cookbooks\webserver. tartozó fájlok készletét hozza létre. A következő lépésben adja meg a Chef-ügyfél által a felügyelt virtuális gépen végrehajtandó parancsok készletét.
 
-A parancsok a fájl default.rb vannak tárolva. Ebben a fájlban meghatározhatja egy adott parancsok, amely telepíti az IIS szolgáltatást, elindítja az IIS szolgáltatást, és egy sablon fájlt másolja a wwwroot mappája.
+A parancsok a default. RB fájlban tárolódnak. Ebben a fájlban adja meg az IIS-t telepítő parancsok készletét, elindítja az IIS-t, és átmásol egy sablonfájlt a WWWroot mappába.
 
-Módosítsa a C:\chef\cookbooks\webserver\recipes\default.rb fájlt, és adja hozzá a következő sorokat.
+Módosítsa a C:\chef\cookbooks\webserver\recipes\default.RB fájlt, és adja hozzá a következő sorokat.
 
     powershell_script 'Install IIS' do
          action :run
@@ -272,27 +271,27 @@ Módosítsa a C:\chef\cookbooks\webserver\recipes\default.rb fájlt, és adja ho
 Ha elkészült, mentse a fájlt.
 
 ## <a name="creating-a-template"></a>Sablon létrehozása
-Ebben a lépésben létre fog hozni egy sablon fájlt, mint a default.html oldal használt.
+Ebben a lépésben létrehoz egy sablonfájlt, amelyet az alapértelmezett. html-oldalként fog használni.
 
-Futtassa a következő parancsot a sablont létrehozni:
+Futtassa a következő parancsot a sablon létrehozásához:
 
     chef generate template webserver Default.htm
 
-Keresse meg a `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` fájlt. Szerkessze a fájlt néhány egyszerű "Hello World" HTML-kód hozzáadásával, és mentse a fájlt.
+Navigáljon a `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` fájlhoz. Szerkessze a fájlt egy egyszerű ""Helló világ!"alkalmazás" HTML-kód hozzáadásával, majd mentse a fájlt.
 
-## <a name="upload-the-cookbook-to-the-chef-server"></a>Töltse fel az útmutató a Chef-kiszolgáló
-Ebben a lépésben, győződjön meg arról, az útmutató egy példányát, amely a helyi gépen hozott létre, és töltse fel a Chef üzemeltetett kiszolgálóhoz. Feltöltése után a könyv alatt jelenik meg a **házirend** fülre.
+## <a name="upload-the-cookbook-to-the-chef-server"></a>A szakácskönyv feltöltése a Chef-kiszolgálóra
+Ebben a lépésben létrehoz egy másolatot a szakácskönyvről, amelyet a helyi gépen hozott létre, és feltölti azt a séf által üzemeltetett kiszolgálóra. A feltöltés után a szakácskönyv a **szabályzat** lapon jelenik meg.
 
     knife cookbook upload webserver
 
 ![][9]
 
-## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Virtuális gép üzembe helyezése az Azure-ral Kés
-Az Azure virtuális gép üzembe helyezése, és a alkalmazni az "Webkiszolgáló" Cookbook, amely telepíti az IIS szolgáltatást és az alapértelmezett webes weblap.
+## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Virtuális gép üzembe helyezése az Azure-beli késsel
+Helyezzen üzembe egy Azure-beli virtuális gépet, és alkalmazza a "webkiszolgáló" szakácskönyvet, amely telepíti az IIS-webszolgáltatást és az alapértelmezett weblapot.
 
-Használja ezt a **kés azurerm-kiszolgáló létrehozása** parancsot.
+Ennek elvégzéséhez használja a **kés azurerm Server Create** parancsot.
 
-Egy példát a parancs következő jelenik meg.
+Megjelenik egy példa a parancsra a Next (tovább) gombra.
 
     knife azurerm server create `
     --azure-resource-group-name rg-chefdeployment `
@@ -310,34 +309,34 @@ Egy példát a parancs következő jelenik meg.
     -r "recipe[webserver]"
 
 
-A fenti példa a Windows Server 2016-ot, az USA nyugati régiójában lévő Standard_DS2_v2 virtuális gépet hoz létre. Helyettesítse be az adott változókat, és futtassa.
+A fenti példa egy Standard_DS2_v2 virtuális gépet hoz létre az USA nyugati régiójában telepített Windows Server 2016-es verzióval. Helyettesítse be az adott változókat, és futtassa a parancsot.
 
 > [!NOTE]
-> A parancssor használatával szeretnék vagyok is automatizálása a végpont hálózati Állapotszűrő szabályok – tcp-végpontok paraméter használatával. Már megnyitott 80-as és hozzáférést biztosítanak a weblap és az RDP-munkamenetet a 3389-es portok.
+> A parancssorban a végpontok hálózati szűrési szabályait is automatizálom a – TCP-endpoints paraméter használatával. Megnyitottam a 80-es és 3389-es portokat, hogy hozzáférést biztosítson a weboldalhoz és az RDP-munkamenethez.
 >
 >
 
-A parancs futtatása után nyissa meg a gép kiépítésének megkezdéséhez tekintse meg az Azure Portalon.
+A parancs futtatása után nyissa meg a Azure Portal a számítógép kiépítésének megkezdéséhez.
 
 ![][15]
 
-A parancssor használatával tovább jelenik meg.
+A parancssorban megjelenik a következő üzenet.
 
 ![][16]
 
-Az üzembe helyezés befejezése után a központi telepítés befejezése után megjelenik az új virtuális gép nyilvános IP-címét, ezt másolhatja és beillesztheti egy webböngésző, és megtekintheti az üzembe helyezett webhelyét. Ha az üzembe helyezett virtuális gép azt nyitva 80-as porton, így elérhetők kívülről.   
+Az üzembe helyezés befejezését követően az új virtuális gép nyilvános IP-címe megjelenik a telepítés befejezésekor, és bemásolhatja azt egy webböngészőbe, és megtekintheti a telepített webhelyet. A virtuális gép üzembe helyezésekor megnyitottuk a 80-es portot, ezért külsőleg elérhetőnek kell lennie.   
 
 ![][11]
 
-Ebben a példában a creative HTML-kódot használ.
+Ez a példa kreatív HTML-kódot használ.
 
-A csomópont állapotát is megtekintheti [Chef kezelése](https://manage.chef.io/). 
+A csomópont status [Chef-kezelését](https://manage.chef.io/)is megtekintheti. 
 
 ![][17]
 
-Ne felejtse el egy RDP-munkamenetet a 3389-es porton keresztül az Azure Portalon keresztül is csatlakozhat.
+Ne feledje, hogy egy RDP-munkameneten keresztül is csatlakozhat a Azure Portal a 3389-es porton keresztül.
 
-Köszönjük! Nyissa meg, és az infrastruktúra mint kód világába az Azure-ral holnapig!
+Köszönjük! Az Azure-ban még ma is megkezdheti az infrastruktúra használatát.
 
 <!--Image references-->
 [2]: media/chef-automation/2.png

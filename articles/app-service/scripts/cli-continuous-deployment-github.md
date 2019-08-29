@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-Példaszkript – alkalmazás létrehozása a Githubról történő folyamatos üzembe helyezéssel |} A Microsoft Docs
-description: Azure CLI-Példaszkript – alkalmazás létrehozása és a Githubról történő folyamatos üzembe helyezés
+title: Azure CLI-szkript minta – alkalmazás létrehozása a GitHubról történő folyamatos üzembe helyezéssel | Microsoft Docs
+description: Azure CLI-szkript mintája – alkalmazás létrehozása és folyamatos üzembe helyezése a GitHubról
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -16,18 +16,18 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 43c070513f23564bd4679531e20b411f178920ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d9b9512df294b25fa73b890a646f29dfd0c3d88
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136759"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113622"
 ---
-# <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>App Service-alkalmazások létrehozása a GitHub parancssori felület használatával történő folyamatos üzembe helyezéssel
+# <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>App Service-alkalmazás létrehozása a GitHubról történő folyamatos üzembe helyezéssel a parancssori felület használatával
 
-Ez a példaszkript létrehoz egy alkalmazást az App Service-ben a kapcsolódó erőforrásokkal együtt, majd beállítja a folyamatos üzembe helyezés a GitHub-adattárból. Folyamatos üzembe helyezés nélkül GitHub-telepítést, lásd: [-alkalmazás létrehozása és kód üzembe helyezése a Githubról](cli-deploy-github.md). A példához a következők szükségesek:
+Ez a példa egy alkalmazást hoz létre App Service a kapcsolódó erőforrásokkal együtt, majd beállítja a folyamatos üzembe helyezést egy GitHub-adattárból. Ahhoz, hogy a GitHub üzembe helyezése folyamatos üzembe helyezés nélkül történjen, tekintse meg [az alkalmazás létrehozása és kód üzembe helyezése a githubról](cli-deploy-github.md) A példához a következők szükségesek:
 
-* Egy GitHub-adattár az alkalmazáskóddal, amelyhez rendszergazdai jogosultság szükséges.
+* Egy GitHub-adattár az alkalmazáskóddal, amelyhez rendszergazdai jogosultság szükséges. Az automatikus buildek beszerzéséhez strukturálja a tárházat az [adattár előkészítése](../deploy-continuous-deployment.md#prepare-your-repository) táblázat alapján.
 * Egy [személyes hozzáférési jogkivonat (PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use) a GitHub-fiókjához.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -50,8 +50,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Egy App Service-alkalmazást a Git vagy Mercurial-adattárhoz társít. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
+| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Egy App Service alkalmazást társít egy git-vagy Mercurial-tárházhoz. |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
-title: Bejövő/kimenő IP-címek – az Azure App Service |} A Microsoft Docs
-description: Ismerteti, hogyan bejövő és kimenő IP címeket használnak az App Service-ben, és hogyan találhatja meg az alkalmazás a rájuk vonatkozó információk.
+title: Bejövő/kimenő IP-címek – Azure App Service | Microsoft Docs
+description: Leírja, hogyan használják a bejövő és a kimenő IP-címeket a App Serviceban, és hogyan találhatják meg az alkalmazással kapcsolatos információkat.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -9,35 +9,34 @@ editor: ''
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: de9ae8e5c0cbf0997811db9624f6c6b92e03a5df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2508090fa8831c8fefb0e710c28e512ec0c94c6e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742941"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074140"
 ---
-# <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Bejövő és kimenő IP-címek az Azure App Service-ben
+# <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Bejövő és kimenő IP-címek Azure App Service
 
-[Az Azure App Service](overview.md) egy több-bérlős szolgáltatás, akkor az alábbiakat kivéve [App Service Environment-környezetek](environment/intro.md). Alkalmazások, amelyek nem találhatók App Service environment (nem a [izolált csomag](https://azure.microsoft.com/pricing/details/app-service/)) megosztás hálózati infrastruktúra egyéb alkalmazásokkal. Ennek eredményeképpen a bejövő és kimenő IP-címeket, alkalmazás eltérő lehet, és bizonyos esetekben is módosíthatja. 
+[Azure app Service](overview.md) egy több-bérlős szolgáltatás, a [app Service](environment/intro.md)-környezetek kivételével. Azok az alkalmazások, amelyek nem App Service-környezetben (az [elkülönített](https://azure.microsoft.com/pricing/details/app-service/)szinten nem) osztoznak a hálózati infrastruktúrában más alkalmazásokkal. Ennek eredményeképpen az alkalmazás bejövő és kimenő IP-címei eltérőek lehetnek, és bizonyos helyzetekben is változhatnak. 
 
-[App Service Environment-környezetek](environment/intro.md) használja a dedikált hálózati infrastruktúrákban üzemelő, így App Service environment-környezetben futó alkalmazások statikus, dedikált IP-címek mind a bejövő és kimenő kapcsolatokat.
+[App Service környezetek](environment/intro.md) dedikált hálózati infrastruktúrát használnak, így a app Service környezetben futó alkalmazások statikus, dedikált IP-címeket kapnak mind a bejövő, mind a kimenő kapcsolatokhoz.
 
-## <a name="when-inbound-ip-changes"></a>Amikor módosítja a bejövő IP
+## <a name="when-inbound-ip-changes"></a>Bejövő IP-változások esetén
 
-Horizontálisan felskálázott példányok számától függetlenül minden alkalmazás rendelkezik egy bejövő IP-címet. A bejövő IP-cím változhat, amikor hajt végre az alábbi műveletek egyikét:
+A kibővített példányok számától függetlenül minden alkalmazás egyetlen bejövő IP-címmel rendelkezik. A bejövő IP-cím a következő műveletek valamelyikének végrehajtásakor változhat:
 
-- Alkalmazás törlése, és hozza létre újra egy másik erőforráscsoportban található.
-- Az utolsó alkalmazás az erőforráscsoport törlése _és_ régió kombináció és hozza létre újra.
-- Törli a létező SSL-kötést, például tanúsítványának megújítása közben (lásd: [tanúsítványok megújítása](app-service-web-tutorial-custom-ssl.md#renew-certificates)).
+- Töröljön egy alkalmazást, és hozza létre újra egy másik erőforráscsoporthoz.
+- Törölje az erőforráscsoport _és_ a régió kombinációjában az utolsó alkalmazást, és hozza létre újból.
+- Töröljön egy meglévő SSL-kötést, például a tanúsítvány megújítása során (lásd: [tanúsítványok](app-service-web-tutorial-custom-ssl.md#renew-certificates)megújítása).
 
 ## <a name="find-the-inbound-ip"></a>A bejövő IP-cím keresése
 
-Csak a következő parancsot a helyi terminálban:
+Csak futtassa a következő parancsot egy helyi terminálon:
 
 ```bash
 nslookup <app-name>.azurewebsites.net
@@ -45,21 +44,21 @@ nslookup <app-name>.azurewebsites.net
 
 ## <a name="get-a-static-inbound-ip"></a>Statikus bejövő IP-cím beszerzése
 
-Néha érdemes egy dedikált, statikus IP-címet az alkalmazás számára. Egy bejövő statikus IP-címének lekéréséhez, konfigurálni kell egy [IP-alapú SSL-kötés](app-service-web-tutorial-custom-ssl.md#secure-a-custom-domain). Ha valójában nincs szüksége az alkalmazás biztonságossá tétele SSL funkció, még akkor is tölthet fel egy önaláírt tanúsítványt ehhez a kötéshez. IP-alapú SSL-kötést, a tanúsítvány van kötve az IP-cím, így az App Service rendelkezések egy statikus IP-címet már meg is valósult. 
+Előfordulhat, hogy az alkalmazáshoz dedikált, statikus IP-címet szeretne használni. Statikus bejövő IP-cím beszerzéséhez konfigurálnia kell egy [IP-alapú SSL-kötést](app-service-web-tutorial-custom-ssl.md#secure-a-custom-domain). Ha valójában nem igényel SSL-funkciót az alkalmazás biztonságossá tételéhez, akkor akár önaláírt tanúsítványt is feltölthet ehhez a kötéshez. Az IP-alapú SSL-kötésekben a tanúsítvány magához az IP-címhez van kötve, ezért a App Service statikus IP-címet tesz elérhetővé. 
 
-## <a name="when-outbound-ips-change"></a>Ha a kimenő IP-címek módosítása
+## <a name="when-outbound-ips-change"></a>A kimenő IP-címek változásakor
 
-Horizontálisan felskálázott példányok számától függetlenül minden alkalmazás rendelkezik beállítása a kimenő IP-címek száma egy adott időpontban. Minden kimenő adatforgalmat az App Service-alkalmazás, például egy háttér-adatbázis, a kimenő IP-címek valamelyikét használja, mint a forrás IP-cím. Nem tudja, hogy korábban melyik IP-címet egy adott példányt fogja használni, hogy a kimenő kapcsolatot, így a háttérszolgáltatás kell nyitnia a tűzfalat, hogy az összes kimenő IP-címet az alkalmazás.
+A kibővített példányok számától függetlenül az egyes alkalmazások megadott számú kimenő IP-címmel rendelkeznek. A App Service alkalmazásból, például egy háttér-adatbázisba irányuló kimenő kapcsolatok a kimenő IP-címek egyikét használják a forrás IP-címként. Nem tudja előre, hogy egy adott alkalmazás példánya milyen IP-címet fog használni a kimenő kapcsolat létrehozásához, így a háttér-szolgáltatásnak meg kell nyitnia a tűzfalát az alkalmazás összes kimenő IP-címére.
 
-A készletet, kimenő IP-címek esetében az alkalmazás szükségleteinek változásával az alacsonyabb rétegek közötti az alkalmazás horizontális (**alapszintű**, **Standard**, és **prémium**) és a  **A prémium V2** szint.
+Az alkalmazáshoz tartozó kimenő IP-címek készlete megváltozik, amikor az alsó szint (alapszintű, **standard**és **prémium**) és a **prémium v2** szint között méretezi az alkalmazást.
 
-Megtalálhatja az összes lehetséges kimenő IP-címet az alkalmazás használhatja, függetlenül tarifacsomagok felismerésével készletét a `possibleOutboundIPAddresses` tulajdonság vagy a **további kimenő IP-címek** mezőbe a **tulajdonságai**  panel az Azure Portalon. Lásd: [keresse meg a kimenő IP-címek](#find-outbound-ips).
+Az alkalmazás által használható kimenő IP-címek készletét az árképzési szintektől függetlenül, `possibleOutboundIPAddresses` a tulajdonság vagy a Azure Portal **Tulajdonságok** paneljének **további kimenő IP-címek** mezőjében találja. Lásd: [kimenő IP](#find-outbound-ips)-címek keresése.
 
 ## <a name="find-outbound-ips"></a>Kimenő IP-címek keresése
 
-Az alkalmazás az Azure Portal által jelenleg használt kimenő IP-címek megkereséséhez kattintson **tulajdonságok** az alkalmazás bal oldali navigációs panelen. Szerepelnek a **kimenő IP-címek** mező.
+Az alkalmazás által az Azure Portalban jelenleg használt kimenő IP-címek megkereséséhez kattintson a **Tulajdonságok** elemre az alkalmazás bal oldali navigációs sávján. Ezek a **kimenő IP-címek** mezőben vannak felsorolva.
 
-Ugyanazokat az információkat talál a következő parancs futtatásával a [Cloud Shell](../cloud-shell/quickstart.md).
+Ugyanezeket az információkat a következő parancs futtatásával is megtalálhatja [](../cloud-shell/quickstart.md)a Cloud Shellban.
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
@@ -69,9 +68,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-Található _összes_ lehetséges kimenő IP-címeket az alkalmazás tarifacsomagjaival, függetlenül kattintson **tulajdonságok** az alkalmazás bal oldali navigációs panelen. Szerepelnek a **további kimenő IP-címek** mező.
+Az alkalmazás _összes_ lehetséges kimenő IP-címének megkereséséhez, az árképzési szintektől függetlenül, kattintson a **Tulajdonságok** elemre az alkalmazás bal oldali navigációs sávján. Ezek a **további kimenő IP-címek** mezőben vannak felsorolva.
 
-Ugyanazokat az információkat talál a következő parancs futtatásával a [Cloud Shell](../cloud-shell/quickstart.md).
+Ugyanezeket az információkat a következő parancs futtatásával is megtalálhatja [](../cloud-shell/quickstart.md)a Cloud Shellban.
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
@@ -83,7 +82,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="next-steps"></a>További lépések
 
-Útmutató a bejövő forgalom korlátozására a forrás IP-cím alapján.
+Megtudhatja, hogyan korlátozhatja a bejövő forgalmat forrás IP-címek alapján.
 
 > [!div class="nextstepaction"]
 > [Statikus IP-korlátozások](app-service-ip-restrictions.md)
