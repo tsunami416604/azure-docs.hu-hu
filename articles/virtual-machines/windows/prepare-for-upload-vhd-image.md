@@ -11,16 +11,15 @@ ms.assetid: 7802489d-33ec-4302-82a4-91463d03887a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: ad30bd4f77c5f4314956e39f26a30b72d72a208a
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 903c5f31f5039270b1edc65f53b248cd0a5b1355
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361173"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088928"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltésre
 
@@ -214,7 +213,7 @@ Győződjön meg arról, hogy a következő beállítások megfelelően vannak k
 
 9. Ha a virtuális gép egy tartomány részévé válik, ellenőrizze a következő házirendeket, és győződjön meg arról, hogy a korábbi beállítások nem állnak-e újra. 
     
-    | Cél                                     | Szabályzat                                                                                                                                                       | Érték                                                                                    |
+    | Cél                                     | Szabályzat                                                                                                                                                       | Value                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | Az RDP engedélyezve van                           | Computer Configuration\Policies\Windows Settings\Administrative Templates\Components\Remote Desktop Services\Remote Desktop Session Host\Connections         | Távolról való kapcsolódás engedélyezése a felhasználók számára a Távoli asztal használatával                                  |
     | NLA csoportházirend                         | Settings\Administrative Templates\Components\Remote asztali Windows-összetevők asztali munkamenet biztonság csomópontban található                                                    | A távelérés felhasználói hitelesítésének megkövetelése a NLA használatával |
@@ -419,7 +418,7 @@ Nem minden Windows-alapú számítógépre telepített szerepkör vagy alkalmaz�
 > Miután a következő `sysprep.exe` lépésekben futtatta a parancsot, kapcsolja ki a virtuális gépet. Ne kapcsolja vissza, amíg létre nem hoz egy rendszerképet az Azure-ban.
 
 1. Jelentkezzen be a Windows rendszerű virtuális gépre.
-1. Futtassa  a parancssort rendszergazdaként. 
+1. Futtassa a parancssort rendszergazdaként. 
 1. Módosítsa a könyvtárat `%windir%\system32\sysprep`a következőre:. Ez után futtassa a `sysprep.exe` parancsot.
 1. A **Rendszer-előkészítő eszköz** párbeszédpanelen válassza **A kezdőélmény indítása** lehetőséget, és győződjön meg róla, hogy be van-e jelölve az **Általánosítás** jelölőnégyzet.
 

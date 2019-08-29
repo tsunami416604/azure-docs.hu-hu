@@ -1,6 +1,6 @@
 ---
-title: Felhasználói profil sablonok az Azure API Management |} A Microsoft Docs
-description: Ismerje meg, hogyan szabhatja testre a felhasználói profil az Azure API Management a fejlesztői portál oldalainak tartalmát.
+title: Felhasználói profil sablonjai az Azure API Managementban | Microsoft Docs
+description: Megtudhatja, hogyan szabhatja testre a felhasználói profil oldalain lévő tartalmat a fejlesztői portálon az Azure API Managementban.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,21 +10,20 @@ ms.assetid: 2e3b73ef-d223-44fe-9280-c3af3fd4a030
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 9d74cd3bd466578c61f8f12bf9b6e862c046e9bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f24b9c6ce2aeb318040b61c29d7e14c01886c46
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61074854"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073315"
 ---
-# <a name="user-profile-templates-in-azure-api-management"></a>Felhasználói profil sablonok az Azure API Management szolgáltatásban
-Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfigurálása a tartalom-sablonok használatával tartalmának testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxist és a szerkesztő szerkesztőprogramban, például [DotLiquid tervezők számára](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a egy megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [szimbóluma erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálhatja a lapok tartalmát, igény szerint ezek a sablonok használatával nagy rugalmasságot biztosít.  
+# <a name="user-profile-templates-in-azure-api-management"></a>Felhasználói profil sablonjai az Azure API Management
+Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxis és az Ön által választott szerkesztő használatával, például a [tervezők DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), a karakterjel- [erőforrások](api-management-template-resources.md#glyphs)és a [lapok vezérlőelemek](api-management-page-controls.md)széles választékával nagy rugalmasságot biztosíthat a konfiguráláshoz a lapok tartalmának megjelenítése, ahogy az a sablonok használatával illik.  
   
- Ebben a szakaszban a sablonok lehetővé teszik a felhasználói profil a fejlesztői portál oldalainak tartalmát testreszabása.  
+ Az ebben a szakaszban található sablonok segítségével testre szabhatja a felhasználói profil oldalain található tartalmat a fejlesztői portálon.  
   
 -   [Profil](#Profile)  
   
@@ -35,14 +34,14 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 -   [Fiókadatok frissítése](#UpdateAccountInfo)  
   
 > [!NOTE]
->  Alapértelmezett mintasablonokat a következő dokumentációban szerepelnek, de módosulhatnak, folyamatos fejlesztései miatt. A fejlesztői portálon az élő alapértelmezett sablont a kívánt egyéni sablonokat lépve tekintheti meg. Sablonok használatának ismertetését lásd: [testreszabása sablonok használatával, az API Management fejlesztői portálon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  A minta alapértelmezett sablonjai a következő dokumentációban szerepelnek, de a folyamatos fejlődés miatt változhatnak. Az élő alapértelmezett sablonokat a fejlesztői portálon tekintheti meg, ha a kívánt egyéni sablonokat navigálja. További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="Profile"></a> Profil  
- A **profil** a sablon lehetővé teszi, hogy a felhasználói profil szakasza a felhasználói profil oldalához a fejlesztői portál testreszabása.  
+##  <a name="Profile"></a>Profil  
+ A **profil** sablon lehetővé teszi a felhasználói profil lapjának testreszabását a fejlesztői portálon.  
   
- ![Felhasználói profil oldalához](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM felhasználói profil lap")  
+ ![Felhasználói profil lap](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM-felhasználói profil lapja")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -96,29 +95,29 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 </div>  
 ```  
   
-### <a name="controls"></a>Vezérlők  
- Ez a sablon nem használhatja bármelyik [vezérlők lapon](api-management-page-controls.md).  
+### <a name="controls"></a>Szabályzók  
+ A sablon nem használhat [oldal vezérlőelemeket](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Adatmodell  
   
 > [!NOTE]
->  A [profil](#Profile), [alkalmazások](#Applications), és [előfizetések](#Subscriptions) sablonok ugyanaz az adatmodell megosztani, és a sablon ugyanazon adatok fogadására.  
+>  A [profil](#Profile), az [alkalmazások](#Applications)és [](#Subscriptions) az előfizetések sablonjai ugyanazt az adatmodellt használják, és ugyanazokat a sablonokat kapják meg.  
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|`firstName`|string|Az aktuális felhasználó utóneve.|  
-|`lastName`|string|Az aktuális felhasználó vezetékneve.|  
-|`companyName`|string|Az aktuális felhasználó vállalat neve.|  
-|`addresserEmail`|string|Az aktuális felhasználó e-mail-cím.|  
-|`developersUsageStatisticsLink`|string|Relatív URL-cím elemzéseket az aktuális felhasználó.|  
-|`subscriptions`|A gyűjtemény [előfizetés](api-management-template-data-model-reference.md#Subscription) entitásokat.|Az előfizetéseket, az aktuális felhasználó.|  
-|`applications`|A gyűjtemény [alkalmazás](api-management-template-data-model-reference.md#Application) entitásokat.|Az alkalmazások, az aktuális felhasználó.|  
-|`changePasswordUrl`|string|A relatív URL-címe az aktuális felhasználó jelszavának módosítására.|  
-|`changeNameOrEmailUrl`|string|A relatív URL-cím neve és az aktuális felhasználó e-mail módosítása.|  
-|`canChangePassword`|logikai|Hogy az aktuális felhasználó módosíthatja a jelszavát.|  
-|`isSystemUser`|logikai|Hogy az aktuális felhasználó tagja egyik beépített [csoportok](api-management-key-concepts.md#groups).|  
+|`firstName`|Karakterlánc|Az aktuális felhasználó vezetékneve.|  
+|`lastName`|Karakterlánc|Az aktuális felhasználó vezetékneve.|  
+|`companyName`|Karakterlánc|Az aktuális felhasználó vállalatának neve.|  
+|`addresserEmail`|Karakterlánc|Az aktuális felhasználó e-mail-címe.|  
+|`developersUsageStatisticsLink`|Karakterlánc|Relatív URL-cím az aktuális felhasználó elemzésének megtekintéséhez.|  
+|`subscriptions`|Az [előfizetési](api-management-template-data-model-reference.md#Subscription) entitások gyűjteménye.|Az aktuális felhasználó előfizetései.|  
+|`applications`|[Alkalmazás](api-management-template-data-model-reference.md#Application) -entitások gyűjteménye.|Az aktuális felhasználó alkalmazásai.|  
+|`changePasswordUrl`|Karakterlánc|Az aktuális felhasználó jelszavának módosítására szolgáló relatív URL-cím.|  
+|`changeNameOrEmailUrl`|Karakterlánc|Az aktuális felhasználó nevének és e-mail-címének módosítására szolgáló relatív URL-cím.|  
+|`canChangePassword`|boolean|Azt határozza meg, hogy az aktuális felhasználó módosíthatja-e a jelszavát.|  
+|`isSystemUser`|boolean|Azt határozza meg, hogy az aktuális felhasználó tagja-e a beépített [csoportok](api-management-key-concepts.md#groups)egyikének.|  
   
-### <a name="sample-template-data"></a>Mintaadatok sablon  
+### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
 ```json  
 {  
@@ -184,10 +183,10 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 }  
 ```  
   
-##  <a name="Subscriptions"></a> Előfizetések  
- A **előfizetések** a sablon lehetővé teszi, hogy az előfizetések szakaszában a felhasználó profillapján a fejlesztői portál testreszabása.  
+##  <a name="Subscriptions"></a>Előfizetések  
+ Az **előfizetési** sablon lehetővé teszi a fejlesztői portál felhasználói profil oldalának előfizetések szakaszának testreszabását.  
   
- ![Felhasználói előfizetés lap](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM felhasználói előfizetés lap")  
+ ![Felhasználói előfizetés lapja](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM felhasználói előfizetés lapja")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -315,31 +314,31 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 </div>  
 ```  
   
-### <a name="controls"></a>Vezérlők  
- Ez a sablon előfordulhat, hogy használja a következő [vezérlők lapon](api-management-page-controls.md).  
+### <a name="controls"></a>Szabályzók  
+ Ez a sablon a következő [lap vezérlőit](api-management-page-controls.md)használhatja.  
   
--   [előfizetés-Mégse](api-management-page-controls.md#subscription-cancel)  
+-   [előfizetés – megszakítás](api-management-page-controls.md#subscription-cancel)  
   
 ### <a name="data-model"></a>Adatmodell  
   
 > [!NOTE]
->  A [profil](#Profile), [alkalmazások](#Applications), és [előfizetések](#Subscriptions) sablonok ugyanaz az adatmodell megosztani, és a sablon ugyanazon adatok fogadására.  
+>  A [profil](#Profile), az [alkalmazások](#Applications)és [](#Subscriptions) az előfizetések sablonjai ugyanazt az adatmodellt használják, és ugyanazokat a sablonokat kapják meg.  
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|`firstName`|string|Az aktuális felhasználó utóneve.|  
-|`lastName`|string|Az aktuális felhasználó vezetékneve.|  
-|`companyName`|string|Az aktuális felhasználó vállalat neve.|  
-|`addresserEmail`|string|Az aktuális felhasználó e-mail-cím.|  
-|`developersUsageStatisticsLink`|string|Relatív URL-cím elemzéseket az aktuális felhasználó.|  
-|`subscriptions`|A gyűjtemény [előfizetés](api-management-template-data-model-reference.md#Subscription) entitásokat.|Az előfizetéseket, az aktuális felhasználó.|  
-|`applications`|A gyűjtemény [alkalmazás](api-management-template-data-model-reference.md#Application) entitásokat.|Az alkalmazások, az aktuális felhasználó.|  
-|`changePasswordUrl`|string|A relatív URL-címe az aktuális felhasználó jelszavának módosítására.|  
-|`changeNameOrEmailUrl`|string|A relatív URL-cím neve és az aktuális felhasználó e-mail módosítása.|  
-|`canChangePassword`|logikai|Hogy az aktuális felhasználó módosíthatja a jelszavát.|  
-|`isSystemUser`|logikai|Hogy az aktuális felhasználó tagja egyik beépített [csoportok](api-management-key-concepts.md#groups).|  
+|`firstName`|Karakterlánc|Az aktuális felhasználó vezetékneve.|  
+|`lastName`|Karakterlánc|Az aktuális felhasználó vezetékneve.|  
+|`companyName`|Karakterlánc|Az aktuális felhasználó vállalatának neve.|  
+|`addresserEmail`|Karakterlánc|Az aktuális felhasználó e-mail-címe.|  
+|`developersUsageStatisticsLink`|Karakterlánc|Relatív URL-cím az aktuális felhasználó elemzésének megtekintéséhez.|  
+|`subscriptions`|Az [előfizetési](api-management-template-data-model-reference.md#Subscription) entitások gyűjteménye.|Az aktuális felhasználó előfizetései.|  
+|`applications`|[Alkalmazás](api-management-template-data-model-reference.md#Application) -entitások gyűjteménye.|Az aktuális felhasználó alkalmazásai.|  
+|`changePasswordUrl`|Karakterlánc|Az aktuális felhasználó jelszavának módosítására szolgáló relatív URL-cím.|  
+|`changeNameOrEmailUrl`|Karakterlánc|Az aktuális felhasználó nevének és e-mail-címének módosítására szolgáló relatív URL-cím.|  
+|`canChangePassword`|boolean|Azt határozza meg, hogy az aktuális felhasználó módosíthatja-e a jelszavát.|  
+|`isSystemUser`|boolean|Azt határozza meg, hogy az aktuális felhasználó tagja-e a beépített [csoportok](api-management-key-concepts.md#groups)egyikének.|  
   
-### <a name="sample-template-data"></a>Mintaadatok sablon  
+### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
 ```json  
 {  
@@ -405,10 +404,10 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 }  
 ```  
   
-##  <a name="Applications"></a> Alkalmazások  
- A **alkalmazások** a sablon lehetővé teszi, hogy az előfizetések szakaszában a felhasználó profillapján a fejlesztői portál testreszabása.  
+##  <a name="Applications"></a>Alkalmazások  
+ Az **alkalmazások** sablon lehetővé teszi a fejlesztői portál felhasználói profil oldalának előfizetések szakaszának testreszabását.  
   
- ![Felhasználói fiók alkalmazások lap](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM felhasználóifiók-alkalmazások lap")  
+ ![Felhasználói fiókok alkalmazásainak lapja](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM – felhasználói fiókok alkalmazásainak lapja")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -478,31 +477,31 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 </div>  
 ```  
   
-### <a name="controls"></a>Vezérlők  
- Ez a sablon előfordulhat, hogy használja a következő [vezérlők lapon](api-management-page-controls.md).  
+### <a name="controls"></a>Szabályzók  
+ Ez a sablon a következő [lap vezérlőit](api-management-page-controls.md)használhatja.  
   
 -   [app-actions](api-management-page-controls.md#app-actions)  
   
 ### <a name="data-model"></a>Adatmodell  
   
 > [!NOTE]
->  A [profil](#Profile), [alkalmazások](#Applications), és [előfizetések](#Subscriptions) sablonok ugyanaz az adatmodell megosztani, és a sablon ugyanazon adatok fogadására.  
+>  A [profil](#Profile), az [alkalmazások](#Applications)és [](#Subscriptions) az előfizetések sablonjai ugyanazt az adatmodellt használják, és ugyanazokat a sablonokat kapják meg.  
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|`firstName`|string|Az aktuális felhasználó utóneve.|  
-|`lastName`|string|Az aktuális felhasználó vezetékneve.|  
-|`companyName`|string|Az aktuális felhasználó vállalat neve.|  
-|`addresserEmail`|string|Az aktuális felhasználó e-mail-cím.|  
-|`developersUsageStatisticsLink`|string|Relatív URL-cím elemzéseket az aktuális felhasználó.|  
-|`subscriptions`|A gyűjtemény [előfizetés](api-management-template-data-model-reference.md#Subscription) entitásokat.|Az előfizetéseket, az aktuális felhasználó.|  
-|`applications`|A gyűjtemény [alkalmazás](api-management-template-data-model-reference.md#Application) entitásokat.|Az alkalmazások, az aktuális felhasználó.|  
-|`changePasswordUrl`|string|A relatív URL-címe az aktuális felhasználó jelszavának módosítására.|  
-|`changeNameOrEmailUrl`|string|A relatív URL-cím neve és az aktuális felhasználó e-mail módosítása.|  
-|`canChangePassword`|logikai|Hogy az aktuális felhasználó módosíthatja a jelszavát.|  
-|`isSystemUser`|logikai|Hogy az aktuális felhasználó tagja egyik beépített [csoportok](api-management-key-concepts.md#groups).|  
+|`firstName`|Karakterlánc|Az aktuális felhasználó vezetékneve.|  
+|`lastName`|Karakterlánc|Az aktuális felhasználó vezetékneve.|  
+|`companyName`|Karakterlánc|Az aktuális felhasználó vállalatának neve.|  
+|`addresserEmail`|Karakterlánc|Az aktuális felhasználó e-mail-címe.|  
+|`developersUsageStatisticsLink`|Karakterlánc|Relatív URL-cím az aktuális felhasználó elemzésének megtekintéséhez.|  
+|`subscriptions`|Az [előfizetési](api-management-template-data-model-reference.md#Subscription) entitások gyűjteménye.|Az aktuális felhasználó előfizetései.|  
+|`applications`|[Alkalmazás](api-management-template-data-model-reference.md#Application) -entitások gyűjteménye.|Az aktuális felhasználó alkalmazásai.|  
+|`changePasswordUrl`|Karakterlánc|Az aktuális felhasználó jelszavának módosítására szolgáló relatív URL-cím.|  
+|`changeNameOrEmailUrl`|Karakterlánc|Az aktuális felhasználó nevének és e-mail-címének módosítására szolgáló relatív URL-cím.|  
+|`canChangePassword`|boolean|Azt határozza meg, hogy az aktuális felhasználó módosíthatja-e a jelszavát.|  
+|`isSystemUser`|boolean|Azt határozza meg, hogy az aktuális felhasználó tagja-e a beépített [csoportok](api-management-key-concepts.md#groups)egyikének.|  
   
-### <a name="sample-template-data"></a>Mintaadatok sablon  
+### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
 ```json  
 {  
@@ -568,10 +567,10 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 }  
 ```  
   
-##  <a name="UpdateAccountInfo"></a> Fiókadatok frissítése  
- A **fiókadatok frissítése** testre szabhatja a sablon lehetővé teszi a **fiókadatok frissítése** a fejlesztői portál oldalán.  
+##  <a name="UpdateAccountInfo"></a>Fiókadatok frissítése  
+ A **fiók frissítése** sablon segítségével testre szabhatja a **frissítési fiók adatai** lapot a fejlesztői portálon.  
   
- ![Felhasználói fiók adatai lap fejlesztői portál sablonjainak](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM felhasználói fiók adatai lap fejlesztői portál sablonjainak")  
+ ![Felhasználói fiókadatok lap fejlesztői portál sablonjai] A (./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM felhasználói fiókadatok oldal fejlesztői portál sablonjai")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -605,13 +604,13 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 </a>  
 ```  
   
-### <a name="controls"></a>Vezérlők  
- Ez a sablon nem használhatja bármelyik [vezérlők lapon](api-management-page-controls.md).  
+### <a name="controls"></a>Szabályzók  
+ A sablon nem használhat [oldal vezérlőelemeket](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Adatmodell  
  [Felhasználói fiók adatai](api-management-template-data-model-reference.md#UserAccountInfo) entitás.  
   
-### <a name="sample-template-data"></a>Mintaadatok sablon  
+### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
 ```json  
 {  
@@ -626,4 +625,4 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 ```
 
 ## <a name="next-steps"></a>További lépések
-Sablonok használatának ismertetését lásd: [testreszabása sablonok használatával, az API Management fejlesztői portálon](api-management-developer-portal-templates.md).
+További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

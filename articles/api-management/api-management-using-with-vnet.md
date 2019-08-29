@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 18bbeb2b4936b1c8a03ffdc7eade8dc92d094fde
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 20577459e7dee2530efc17581bcc51b7d6bf2789
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050609"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073369"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure Virtual Networks (virtuális hálózatok) lehetővé teszi, hogy az Azure-erőforrások bármelyikét olyan, nem internetes útválasztású hálózatba helyezze, amelynek hozzáférését szabályozhatja. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: Az [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
