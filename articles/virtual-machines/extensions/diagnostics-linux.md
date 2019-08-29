@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 0627361fdd4f94a329b08b184dbd542e1927af39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 19aa0877c7c37083a6206e094aced40542d0ef72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871911"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092685"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>A Linux diagnosztikai bővítmény használata a metrikák és naplók figyelésére
 
@@ -131,13 +131,11 @@ Name (Név) | Value
 ---- | -----
 storageAccountName | Annak a Storage-fióknak a neve, amelybe az adatkiterjesztést írta.
 storageAccountEndPoint | választható A felhőt azonosító végpont, amelyben a Storage-fiók létezik. Ha ez a beállítás nem érhető el, a LAD alapértelmezett értéke az Azure nyilvános `https://core.windows.net`felhő. Ha Azure Germany-, Azure Government-vagy Azure China-beli Storage-fiókot szeretne használni, ennek megfelelően állítsa be ezt az értéket.
-storageAccountSasToken | Egy [fiók sas](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) -jogkivonata a blob és`ss='bt'`Table Services () számára, amely a`srt='co'`tárolók és objektumok () számára érvényes, amely a hozzáadási, létrehozási`sp='acluw'`, listázási, frissítési és írási engedélyeket () biztosítja. Ne *foglalja bele* a kezdő kérdőjelet (?).
+storageAccountSasToken | Egy [fiók sas](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) -jogkivonata a blob és`ss='bt'`Table Services () számára, amely a`srt='co'`tárolók és objektumok () számára érvényes, amely a hozzáadási, létrehozási`sp='acluw'`, listázási, frissítési és írási engedélyeket () biztosítja. Ne foglalja bele a kezdő kérdőjelet (?).
 mdsdHttpProxy | választható A HTTP-proxy azon adatai, amelyek lehetővé teszik a bővítménynek a megadott Storage-fiókhoz és végponthoz való csatlakozást.
 sinksConfig | választható Azon alternatív célhelyek részletei, amelyekhez mérőszámokat és eseményeket lehet továbbítani. A bővítmény által támogatott adattárolók konkrét részletei az alábbi szakaszokban találhatók.
 
-
-> [!NOTE]
-> A bővítmény Azure-beli telepítési sablonnal történő telepítésekor a Storage-fiókot és az SAS-jogkivonatot előre kell létrehozni, majd át kell adni a sablonnak. Egyetlen sablonban nem helyezhető üzembe a virtuális gép, a Storage-fiók, és konfigurálható a bővítmény. Az SAS-tokenek sablonon belüli létrehozása jelenleg nem támogatott.
+Ha SAS-tokent szeretne beolvasni egy Resource Manager-sablonon belül, használja a **listAccountSas** függvényt. Példa a sablonra: [példa a függvények listázására](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example).
 
 A szükséges SAS-tokent egyszerűen létrehozhatja a Azure Portalon keresztül.
 
@@ -257,7 +255,7 @@ Elem | Value
 eventVolume | választható A Storage-táblán belül létrehozott partíciók számának szabályozása. A (,) `"Large"`vagy `"Medium"` `"Small"`a () egyikének kell lennie. Ha nincs megadva, az alapértelmezett érték `"Medium"`:.
 sampleRateInSeconds | választható A nyers (nem aggregált) mérőszámok gyűjteménye közötti alapértelmezett időköz. A legkisebb támogatott mintavételi sebesség 15 másodperc. Ha nincs megadva, az alapértelmezett érték `15`:.
 
-#### <a name="metrics"></a>metrics
+#### <a name="metrics"></a>metrikák
 
 ```json
 "metrics": {
@@ -269,7 +267,7 @@ sampleRateInSeconds | választható A nyers (nem aggregált) mérőszámok gyűj
 }
 ```
 
-Elem | Érték
+Elem | Value
 ------- | -----
 resourceId | A virtuális gép vagy a virtuálisgép-méretezési csoport Azure Resource Manager erőforrás-azonosítója, amelyre a virtuális gép tartozik. Ezt a beállítást akkor is meg kell adni, ha a konfigurációban bármilyen JsonBlob-fogadó használatban van.
 scheduledTransferPeriod | Az összesített metrikák kiszámításának és az Azure-mérőszámokra való átadásának gyakorisága 8601-as Időintervallumként kifejezve. A legkisebb átvitel időtartama 60 másodperc, azaz PT1M. Legalább egy scheduledTransferPeriod meg kell adnia.
@@ -309,7 +307,7 @@ Ez a választható szakasz szabályozza a metrikák gyűjteményét. A nyers min
 * utolsó összegyűjtött érték
 * az Összesítés kiszámításához használt nyers minták száma
 
-Elem | Érték
+Elem | Value
 ------- | -----
 fogadóként | választható Egy vesszővel elválasztott lista azoknak a nyelőknek a neveiről, amelyekhez a LAD összesített metrikai eredményeket küld. Minden összesített metrika közzé lesz téve az egyes felsorolt fogadók számára. Lásd: [sinksConfig](#sinksconfig). Példa: `"EHsink1, myjsonsink"`.
 type | A metrika tényleges szolgáltatóját azonosítja.
@@ -355,7 +353,7 @@ Ez a választható szakasz a naplózási események a syslog-ből történő gy�
 
 A syslogEventConfiguration-gyűjtemény egyetlen bejegyzést tartalmaz minden olyan syslog-létesítményhez, amely az összes fontos eszközt felvette. Ha a minSeverity "nincs" egy adott létesítmény esetében, vagy ha a létesítmény egyáltalán nem jelenik meg az elemben, akkor a rendszer nem rögzíti az adott létesítményből származó eseményeket.
 
-Elem | Érték
+Elem | Value
 ------- | -----
 fogadóként | Vesszővel tagolt lista azoknak a fogadóknak a neveiről, amelyeken az egyes naplózási események közzé vannak téve. A syslogEventConfiguration korlátozásait egyeztető összes naplózási eseményt közzéteszi az egyes felsorolt fogadók. Példa: "EHforsyslog"
 kódban | A syslog-létesítmény neve (például "log\_user" vagy "log\_LOCAL0"). A teljes listához tekintse meg a [syslog man oldalának](http://man7.org/linux/man-pages/man3/syslog.3.html) "létesítmény" szakaszát.
@@ -370,7 +368,7 @@ Ilyenek például `LinuxSyslog20170609` `LinuxSyslog20170410` a és a.
 
 ### <a name="perfcfg"></a>perfCfg
 
-Ez a választható szakasz vezérli a [tetszőleges típusú](https://github.com/Microsoft/omi) adatlekérdezések végrehajtását.
+Ez a választható szakasz vezérli a [](https://github.com/Microsoft/omi) tetszőleges típusú adatlekérdezések végrehajtását.
 
 ```json
 "perfCfg": [

@@ -10,16 +10,15 @@ tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 2877fae66584ec24fb6e62b20d66ded36157b824
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8c0c8f5543af425091c821f28d08fcab01118fd4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990355"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090449"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>A Windows aktiválása sikertelen a kényszerített bújtatási forgatókönyvben
 
@@ -27,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan oldható meg a KMS-aktiválási probléma, amely
 
 ## <a name="symptom"></a>Jelenség
 
-A [kényszerített bújtatást](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) az Azure-beli virtuális hálózati alhálózatokon engedélyezheti, hogy az összes internetes forgalmat visszairányítsa a helyszíni hálózatra. Ebben a forgatókönyvben a Windows Server 2012 R2-t (vagy a Windows újabb verzióit) futtató Azure-beli virtuális gépek (VM-EK) sikeresen aktiválni tudják a Windowst. A Windows korábbi verzióját futtató virtuális gépek azonban nem tudják aktiválni a Windowst.
+A [kényszerített bújtatást](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) az Azure-beli virtuális hálózati alhálózatokon engedélyezheti, hogy az összes internetes forgalmat visszairányítsa a helyszíni hálózatra. Ebben az esetben a Windowst futtató Azure-beli virtuális gépek (VM-EK) nem aktiválják a Windowst.
 
 ## <a name="cause"></a>Ok
 

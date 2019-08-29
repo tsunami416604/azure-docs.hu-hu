@@ -1,6 +1,6 @@
 ---
-title: Állítsa be a Linux rendszerű virtuális gép PostgreSQL |} A Microsoft Docs
-description: Ismerje meg, hogyan PostgreSQL telepítése és konfigurálása az Azure-ban Linux rendszerű virtuális gépen
+title: A PostgreSQL beállítása Linux rendszerű virtuális gépen | Microsoft Docs
+description: Ismerje meg, hogyan telepítheti és konfigurálhatja a PostgreSQL-t egy Linux rendszerű virtuális gépen az Azure-ban
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -9,63 +9,62 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 1a747363-0cc5-4ba3-9be7-084dfeb04651
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 086b36b347f214e1e9cdf44e4fb5a29fe501fa8b
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 7fc8cb7c07dd27cd42dc4c6a7e0a576f0efe04e0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667105"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091723"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>A PostgreSQL telepítése és konfigurálása Azure-ban
-PostgreSQL az Oracle- és DB2 hasonlít egy speciális nyílt forráskódú adatbázis. Teljes ACID megfelelőségi, megbízható tranzakciós feldolgozást, és többverziós egyidejűségi vezérlésre nagyvállalati szintű funkciókat tartalmaz. Támogatja a szabványok – például az ANSI SQL és az SQL/MED (beleértve a külső adatok burkolókat az Oracle, MySQL, mongodb-hez és sok más) is. Fontos a nagy mértékben bővíthetők, a JSON és a kulcs-érték-alapú alkalmazások több mint 12 eljárási nyelvet, a GIN és GiST indexek, a térbeli adatok támogatása és a több NoSQL-hez hasonló funkciók támogatása.
+A PostgreSQL egy fejlett, nyílt forráskódú adatbázis, amely az Oracle és a DB2 számára is hasonló. Olyan nagyvállalati használatra kész funkciókat tartalmaz, mint például a teljes sav megfelelősége, a megbízható tranzakciós feldolgozás és a többverziós Egyidejűség-vezérlés. Emellett olyan szabványokat is támogat, mint például az ANSI SQL és az SQL/MED (beleértve az Oracle, a MySQL, a MongoDB és számos más adatburkolót is). A szolgáltatás nagyszámú, több mint 12 eljárási nyelv, a GIN és a lényegi indexek, a térbeli adattámogatás, valamint a JSON-vagy kulcs-érték alapú alkalmazások több NoSQL funkciójának támogatásával bővíthető.
 
-Ebből a cikkből megismerheti, hogyan a PostgreSQL telepítése és konfigurálása a Linux operációs rendszert futtató Azure virtuális gép lesz.
+Ebből a cikkből megtudhatja, hogyan telepítheti és konfigurálhatja a PostgreSQL-t egy Linux rendszerű Azure-beli virtuális gépen.
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="install-postgresql"></a>Install PostgreSQL
+## <a name="install-postgresql"></a>A PostgreSQL telepítése
 > [!NOTE]
-> Ez az oktatóanyag elvégzéséhez a Linux operációs rendszert futtató Azure virtuális gép már rendelkeznie kell. Hozhat létre, és állítsa be a Linux rendszerű virtuális gép a folytatás előtt, tekintse meg a [Azure Linux VM-oktatóanyag](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Az oktatóanyag elvégzéséhez már rendelkeznie kell Linux rendszerű Azure-beli virtuális géppel. Linux rendszerű virtuális gép létrehozásához és beállításához a továbblépés előtt tekintse meg az [Azure Linux VM oktatóanyagát](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 > 
 
-Ebben az esetben 1999-as port használható a PostgreSQL-port.  
+Ebben az esetben a 1999-as portot használja PostgreSQL-portként.  
 
-Csatlakozzon a PuTTY használatával létrehozott virtuális gép Linux. Ha első alkalommal használja az Azure Linux VM, lásd: [hogyan használja SSH használata Linuxon az Azure-ban](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) megtudhatja, hogyan használható a putty-t egy Linux rendszerű virtuális Géphez való csatlakozáshoz.
+Kapcsolódjon a PuTTY használatával létrehozott linuxos virtuális géphez. Ha első alkalommal használ Azure Linux rendszerű virtuális gépet, tekintse meg az [SSH és a Linux használata az Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) -ban című témakört, amelyből megtudhatja, hogyan használhatja a PuTTY-t Linux RENDSZERű virtuális gépekhez való kapcsolódáshoz.
 
-1. Futtassa a következő parancsot a legfelső szintű (rendszergazdai) váltani:
+1. Futtassa a következő parancsot a gyökérre való váltáshoz (rendszergazda):
    
         # sudo su -
-2. Néhány disztribúciók függőségeit, amelyek a PostgreSQL telepítése előtt telepítenie kell rendelkeznie. Ellenőrizze a disztribúció ebben a listában, és futtassa a megfelelő parancsot:
+2. Egyes eloszlások olyan függőségekkel rendelkeznek, amelyeket telepítenie kell a PostgreSQL telepítése előtt. Keresse meg a disztribúciót a listában, és futtassa a megfelelő parancsot:
    
-   * Red Hat base Linux:
+   * Red Hat Base Linux:
      
            # yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
-   * Debian alapszintű Linux:
+   * Debian Base Linux:
      
             # apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y  
    * SUSE Linux:
      
            # zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
-3. Töltse le a PostgreSQL a legfelső szintű könyvtárba, és ezután bontsa ki a csomagot:
+3. Töltse le a PostgreSQL-t a gyökérkönyvtárba, majd bontsa ki a csomagot:
    
         # wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
    
         # tar jxvf  postgresql-9.3.5.tar.bz2
    
-    A fent látható egy példa. A részletes letöltési címet annak a [/pub/forrás / Index](https://ftp.postgresql.org/pub/source/).
-4. A build indításához futtassa a következő parancsokat:
+    A fenti példa. A részletesebb letöltési címeket a [/pub/Source/indexében](https://ftp.postgresql.org/pub/source/)találja.
+4. A Build elindításához futtassa a következő parancsokat:
    
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. Ha szeretne létrehozni minden, amelyek létrehozhatók, beleértve a dokumentáció (HTML- és ember lapok) és a további modulok (contrib), futtassa a következő parancsot:
+5. Ha mindent felépíteni szeretne, beleértve a dokumentációt (HTML-és Man-lapokat) és a további modulokat is (például a következő parancsot), futtassa inkább az alábbi parancsot:
    
         # gmake install-world
    
@@ -73,14 +72,14 @@ Csatlakozzon a PuTTY használatával létrehozott virtuális gép Linux. Ha els�
    
         PostgreSQL, contrib, and documentation successfully made. Ready to install.
 
-## <a name="configure-postgresql"></a>Configure PostgreSQL
-1. (Nem kötelező) Hozzon létre egy szimbolikus hivatkozást, így rövidítve a PostgreSQL hivatkozást tartalmaz a verziószám:
+## <a name="configure-postgresql"></a>A PostgreSQL konfigurálása
+1. Választható Hozzon létre egy szimbolikus hivatkozást, amely lerövidíti a PostgreSQL-hivatkozást, hogy ne tartalmazza a verziószámot:
    
         # ln -s /opt/postgresql-9.3.5 /opt/pgsql
-2. Hozzon létre egy könyvtárat, az adatbázis számára:
+2. Hozzon létre egy könyvtárat az adatbázishoz:
    
         # mkdir -p /opt/pgsql_data
-3. Nem legfelső szintű felhasználó létrehozása és módosítása az adott felhasználó profilját. Ezután váltson az új felhasználóhoz (nevű *postgres* ebben a példában):
+3. Hozzon létre egy nem gyökérszintű felhasználót, és módosítsa a felhasználó profilját. Ezután váltson erre az új felhasználóra (a példában a *postgres* néven látható):
    
         # useradd postgres
    
@@ -89,10 +88,10 @@ Csatlakozzon a PuTTY használatával létrehozott virtuális gép Linux. Ha els�
         # su - postgres
    
    > [!NOTE]
-   > Biztonsági okokból PostgreSQL inicializálása, elindítani vagy leállítani az adatbázis nem legfelső szintű felhasználó használja.
+   > Biztonsági okokból a PostgreSQL egy nem root felhasználót használ az adatbázis inicializálására, indítására vagy leállítására.
    > 
    > 
-4. Szerkessze a *bash_profile* fájl az alábbi parancsok beírásával. Ezek a sorok végén megjelenik a *bash_profile* fájlt:
+4. Szerkessze a *bash_profile* fájlt az alábbi parancsok beírásával. Ezek a sorok a *bash_profile* -fájl végéhez lesznek hozzáadva:
    
         cat >> ~/.bash_profile <<EOF
         export PGPORT=1999
@@ -106,17 +105,17 @@ Csatlakozzon a PuTTY használatával létrehozott virtuális gép Linux. Ha els�
         alias rm='rm -i'
         alias ll='ls -lh'
         EOF
-5. Hajtsa végre a *bash_profile* fájlt:
+5. Futtassa a *bash_profile* fájlt:
    
         $ source .bash_profile
-6. A telepítés ellenőrzése a következő paranccsal:
+6. Ellenőrizze a telepítést a következő paranccsal:
    
         $ which psql
    
-    Ha a telepítés sikeres, a következő válasz jelenik meg:
+    Ha a telepítés sikeres, a következő választ fogja látni:
    
         /opt/pgsql/bin/psql
-7. A PostgreSQL-verzió is keresheti:
+7. A PostgreSQL-verziót is megtekintheti:
    
         $ psql -V
 
@@ -128,7 +127,7 @@ Csatlakozzon a PuTTY használatával létrehozott virtuális gép Linux. Ha els�
 
 ![image](./media/postgresql-install/no1.png)
 
-## <a name="set-up-postgresql"></a>Set up PostgreSQL
+## <a name="set-up-postgresql"></a>A PostgreSQL beállítása
 <!--    [postgres@ test ~]$ exit -->
 
 Futtassa az alábbi parancsot:
@@ -137,7 +136,7 @@ Futtassa az alábbi parancsot:
 
     # cp linux /etc/init.d/postgresql
 
-Módosítsa a /etc/init.d/postgresql fájlban két változót. Az előtag a telepítési útvonalat a PostgreSQL értékre van állítva: **/opt/pgsql**. PGDATA értéke PostgreSQL adatokat tároló elérési útja: **/opt/pgsql_data**.
+Módosítsa két változót a/etc/init.d/PostgreSQL fájlban. Az előtag a PostgreSQL: **/opt/pgsql**telepítési útvonalára van beállítva. A PGDATA a PostgreSQL: **/opt/pgsql_data**adattároló elérési útjára van beállítva.
 
     # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
@@ -145,7 +144,7 @@ Módosítsa a /etc/init.d/postgresql fájlban két változót. Az előtag a tele
 
 ![image](./media/postgresql-install/no2.png)
 
-Győződjön meg a végrehajtható fájl módosítása:
+Módosítsa a fájlt úgy, hogy végrehajtható legyen:
 
     # chmod +x /etc/init.d/postgresql
 
@@ -153,7 +152,7 @@ Start PostgreSQL:
 
     # /etc/init.d/postgresql start
 
-Ellenőrizze, hogy-e a PostgreSQL-végpont a:
+Ellenőrizze, hogy a PostgreSQL végpontja be van-e kapcsolva:
 
     # netstat -tunlp|grep 1999
 
@@ -161,51 +160,51 @@ A következő kimenetnek kell megjelennie:
 
 ![image](./media/postgresql-install/no3.png)
 
-## <a name="connect-to-the-postgres-database"></a>A Postgres-adatbázishoz
-A postgres-felhasználó ismét váltani:
+## <a name="connect-to-the-postgres-database"></a>Kapcsolódás a postgres-adatbázishoz
+Váltson újra a postgres-felhasználóra:
 
     # su - postgres
 
-A Postgres-adatbázis létrehozása:
+Hozzon létre egy postgres-adatbázist:
 
     $ createdb events
 
-Csatlakozzon az imént létrehozott események adatbázishoz:
+Kapcsolódjon az imént létrehozott Events adatbázishoz:
 
     $ psql -d events
 
-## <a name="create-and-delete-a-postgres-table"></a>Hozzon létre, és a egy Postgres tábla törlése
-Most, hogy csatlakozott az adatbázishoz, akkor azt táblákat hozhat létre.
+## <a name="create-and-delete-a-postgres-table"></a>Postgres-tábla létrehozása és törlése
+Most, hogy csatlakozott az adatbázishoz, létrehozhat táblákat.
 
-Például hozzon létre egy új példa Postgres tábla a következő paranccsal:
+Hozzon létre például egy új példa postgres táblázatot a következő parancs használatával:
 
     CREATE TABLE potluck (name VARCHAR(20),    food VARCHAR(30),    confirmed CHAR(1), signup_date DATE);
 
-Most már beállított egy négy táblát a következő oszlopok neveit és korlátozások:
+Most már beállított egy négy oszlopos táblázatot a következő oszlopnevek és korlátozásokkal:
 
-1. A "name" oszlopban rendelkezik lett korlátozzák a VARCHAR parancsot 20 karakter hosszú lehet.
-2. A "food" oszlop jelzi az élelmiszer elem, amely minden egyes személy tartalomtérkép érhető el. VARCHAR korlátozza ezt a szöveget 30 karakter lehet.
-3. A "megerősítve" oszlop rögzíti-e a személyt amelyeknél reagált a meghívásra, a piknik. Az elfogadható értékek: "Y" és "N".
-4. A "dátum" oszlopban látható, ha azok regisztrált esemény. Postgres megköveteli, hogy a dátumok kell megírni, éééé-hh-nn.
+1. A "Name" oszlopot a VARCHAR parancs csak 20 karakter hosszú lehet.
+2. Az "élelmiszer" oszlop azt az élelmiszeripari tételt jelzi, amelyet az egyes személyek el fognak juttatni. VARCHAR korlátozza ezt a szöveget, hogy 30 karakternél rövidebb legyen.
+3. A "megerősített" oszlop rögzíti, hogy a személynek van-e RSVP-Potluck. Az elfogadható értékek: "Y" és "N".
+4. A "date" oszlop azt mutatja be, hogy mikor jelentkezett be az eseményre. A postgres használatához a dátumoknak éééé-hh-nn formátumúnak kell lenniük.
 
-A következő kell megjelennie, ha a tábla sikeresen létrejött:
+Ha sikeresen létrejött a tábla, a következőnek kell megjelennie:
 
 ![image](./media/postgresql-install/no4.png)
 
-A táblázat szerkezetét ellenőrzéséhez a következő paranccsal:
+A tábla szerkezetét a következő parancs használatával is megtekintheti:
 
 ![image](./media/postgresql-install/no5.png)
 
-### <a name="add-data-to-a-table"></a>Adatok hozzáadása táblázathoz
-Első lépésként adatokat beszúrni egy sort:
+### <a name="add-data-to-a-table"></a>Az adattábla hozzáadása
+Először szúrjon be adatokat egy sorba:
 
     INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
 
-A kimenetnek kell megjelennie:
+A következő kimenetnek kell megjelennie:
 
 ![image](./media/postgresql-install/no6.png)
 
-Néhány további személyek adhat hozzá, valamint a táblában. Néhány lehetőség, vagy létrehozhat saját:
+Több személyt is hozzáadhat a táblához. Itt talál néhány lehetőséget, vagy létrehozhat saját:
 
     INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Sandy', 'Key Lime Tarts', 'N', '2012-04-14');
 
@@ -214,29 +213,29 @@ Néhány további személyek adhat hozzá, valamint a táblában. Néhány lehet
     INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Tina', 'Salad', 'Y', '2012-04-18');
 
 ### <a name="show-tables"></a>Táblák megjelenítése
-A következő paranccsal egy táblát jelenítsen meg:
+A következő parancs használatával jelenítheti meg a táblázatot:
 
     select * from potluck;
 
-A kimenet a következő:
+A kimenet a következőket eredményezi:
 
 ![image](./media/postgresql-install/no7.png)
 
-### <a name="delete-data-in-a-table"></a>Egy tábla adatainak törlése
-A következő parancs segítségével törölheti a táblákban tárolt adatokat:
+### <a name="delete-data-in-a-table"></a>Táblákban lévő adattörlés
+A következő paranccsal törölhet egy táblában lévő adatoszlopokat:
 
     delete from potluck where name=’John’;
 
-Ezzel törli a "János" sort található összes információt. A kimenet a következő:
+Ezzel törli a "János" sorban lévő összes információt. A kimenet a következőket eredményezi:
 
 ![image](./media/postgresql-install/no8.png)
 
-### <a name="update-data-in-a-table"></a>Egy tábla adatainak frissítése
-A következő parancsot használja egy tábla adatainak frissítéséhez. Ez egy Sandy megerősítette, hogy azok is részt vesz, így módosítjuk az RSVP "N", "Y":
+### <a name="update-data-in-a-table"></a>Tábla adatfrissítése
+A következő parancs használatával frissítheti a táblákban lévő adatfájlokat. A Sandy megerősítette, hogy részt vesznek, ezért az "N" értékről "Y"-re módosítjuk az RSVP-t:
 
      UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
 
 
-## <a name="get-more-information-about-postgresql"></a>További információ a PostgreSQL beolvasása
-Most, hogy a PostgreSQL elérhető az Azure Linux VM telepítése befejeződött, élvezheti, használja az Azure-ban. PostgreSQL kapcsolatos további információkért látogasson el a [PostgreSQL webhely](https://www.postgresql.org/).
+## <a name="get-more-information-about-postgresql"></a>További információ a PostgreSQL-ről
+Most, hogy befejezte a PostgreSQL telepítését egy Azure Linux rendszerű virtuális gépen, használhatja azt az Azure-ban. Ha többet szeretne megtudni a PostgreSQL-ről, látogasson el a [PostgreSQL](https://www.postgresql.org/)webhelyére.
 

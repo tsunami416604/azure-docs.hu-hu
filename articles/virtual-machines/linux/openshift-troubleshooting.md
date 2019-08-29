@@ -1,6 +1,6 @@
 ---
-title: OpenShift telepítés az Azure-ban – hibaelhárítás |} A Microsoft Docs
-description: Végezzen hibaelhárítást az OpenShift telepítés az Azure-ban.
+title: A OpenShift üzembe helyezésének hibája az Azure-ban | Microsoft Docs
+description: A OpenShift üzembe helyezésének hibája az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -9,44 +9,43 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: af6746e7246b8783e5bdbef34cf1b57427aa7ebb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31512bb264b5e998e5b6adc76d37c82c174933be
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771277"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091708"
 ---
-# <a name="troubleshoot-openshift-deployment-in-azure"></a>Az Azure-ban az OpenShift telepítés hibaelhárítása
+# <a name="troubleshoot-openshift-deployment-in-azure"></a>A OpenShift üzembe helyezésének hibája az Azure-ban
 
-Nem sikerült az OpenShift-fürt üzembe helyezése, ha az Azure portal nyújt hibakimenet. Lehet, hogy a kimenet nehezen olvasható, így nehéz a probléma meghatározásához. Ez a kimenet a kilépési kód 3, 4 vagy 5 gyors vizsgálat. A következő információkat tartalmazza az alábbi három kilépési kódot:
+Ha a OpenShift-fürt nem üzemel sikeresen, a Azure Portal hibaüzenetet küld. Nehéz lehet beolvasni a kimenetet, ami megnehezíti a probléma azonosítását. A 3, 4 vagy 5 kilépési kód gyors vizsgálata a kimenetben. A következő három kilépési kóddal kapcsolatos információkat tartalmaz:
 
-- 3\. kilépési kód: A Red Hat-előfizetés felhasználónév / jelszó vagy a szervezeti azonosító / aktiválási kulcs helytelen
-- 4\. kilépési kód: A Red Hat-készlet azonosítója nem megfelelő, vagy a jogosultságok nem állnak rendelkezésre
-- 5\. kilépési kód: Nem sikerült kiépíteni a Docker vékony tárolókészlet kötetét
+- 3\. kilépési kód: A Red Hat-előfizetés felhasználóneve/jelszava vagy a szervezet azonosítója/aktiválási kulcsa helytelen
+- 4\. kilépési kód: A Red Hat-készlet azonosítója helytelen, vagy nincsenek elérhető jogosultságok
+- 5\. kilépési kód: Nem sikerült kiépíteni a Docker vékony készletének kötetét
 
-Más kilépési kódok csatlakozni a állomásokkal keresztül az ssh naplófájljainak megtekintéséhez.
+Az összes többi kilépési kód esetében az SSH-n keresztül csatlakozhat a gazdagépekhez a naplófájlok megtekintéséhez.
 
-**OpenShift Container Platform**
+**OpenShift-tároló platform**
 
-Az ansible forgatókönyv állomás ssh-KAPCSOLATOT. A sablon vagy a Piactéri ajánlat használja a bástyagazdagép. A megerősített SSH lehetővé minden más csomópontokhoz a fürtben (master, infra, CNS, számítás). A naplófájlok megtekintése gyökérkönyvtára kell. Legfelső szintű ezért ne használjon más csomópontokhoz legfelső szintű ssh alapértelmezés szerint nem végezhető el SSH-hozzáférést.
+SSH-t a Ansible forgatókönyv-gazdagéphez. A sablonhoz vagy a Piactéri ajánlathoz használja a megerősített gazdagépet. A megerősített környezetből SSH-t használhat a fürt összes többi csomópontjára (Master, infra, CNS, számítási). A naplófájlok megtekintéséhez legfelső szintűnek kell lennie. A root alapértelmezés szerint le van tiltva az SSH-hozzáféréshez, ezért ne használja a root SSH-t más csomópontokhoz.
 
 **OKD**
 
-Az ansible forgatókönyv állomás ssh-KAPCSOLATOT. A OKD sablon (3.9 és korábbi verzió) a master-0 gazdagépet használnak. A OKD sablon (3.10 és újabb verzió) használata a bástyagazdagép. Az ansible forgatókönyv gazdagépről SSH minden más csomópontokhoz a fürtben (master, infra, CNS, számítás) is. Kell gyökérkönyvtára (sudo su-) megtekintéséhez a rendszernapló fájljaiban. Legfelső szintű ezért ne használjon más csomópontokhoz legfelső szintű ssh alapértelmezés szerint nem végezhető el SSH-hozzáférést.
+SSH-t a Ansible forgatókönyv-gazdagéphez. A OKD-sablonhoz (3,9-es és korábbi verziók) használja a Master-0 gazdagépet. A OKD-sablonhoz (3,10-es és újabb verzió) használja a megerősített gazdagépet. A Ansible forgatókönyv-gazdagépről SSH-t használhat a fürt összes többi csomópontjára (Master, infra, CNS, számítási). A naplófájlok megtekintéséhez root (sudo su-) értékűnek kell lennie. A root alapértelmezés szerint le van tiltva az SSH-hozzáféréshez, ezért ne használja a root SSH-t más csomópontokhoz.
 
 ## <a name="log-files"></a>Naplófájlok
 
-Az állomás előkészítő parancsfájlok naplófájlok (stderr és stdout) található `/var/lib/waagent/custom-script/download/0` minden gazdagépre. Ha hiba történt a gazdagép előkészítése során, tekintse meg a naplófájlok megállapítani a hiba.
+A gazdagép- `/var/lib/waagent/custom-script/download/0` előkészítési parancsfájlok naplófájljai (stderr és StdOut) az összes gazdagépen találhatók. Ha hiba történt a gazdagép előkészítése során, tekintse meg ezeket a naplófájlokat a hiba megállapításához.
 
-Ha az előkészítő parancsfájlok sikeresen lefutott, majd a naplófájlok a a `/var/lib/waagent/custom-script/download/1` a ansible-forgatókönyvek gazdagép directory kell vizsgálni. Ha a hiba történt az OpenShift tényleges telepítése során, a stdout fájlt a hiba jelenik meg. Ezen információk használatával további segítségért forduljon az ügyfélszolgálathoz.
+Ha az előkészítési parancsfájlok sikeresen futottak, akkor meg kell vizsgálni `/var/lib/waagent/custom-script/download/1` a naplófájlokat a Ansible ötletekbõl-gazdagép könyvtárában. Ha a hiba a OpenShift tényleges telepítése közben történt, akkor az stdout-fájl megjeleníti a hibát. Ezekkel az információkkal további segítségért forduljon az ügyfélszolgálathoz.
 
-Példa a kimenetre
+Példa kimenetre
 
 ```json
 TASK [openshift_storage_glusterfs : Load heketi topology] **********************
@@ -84,32 +83,32 @@ Failure summary:
      Message:  Failed without returning a message.
 ```
 
-A telepítés során a leggyakoribb hibák a következők:
+A telepítés során leggyakrabban előforduló hibák a következők:
 
-1. Titkos kulcs jelszava van
-2. A Key vault titkos kulcs és a titkos kulcs létrehozása nem lett megfelelően
-3. Egyszerű szolgáltatás hitelesítő adatai nem megfelelően megadott
-4. Egyszerű szolgáltatás nem rendelkezik az erőforráscsoporthoz közreműködői hozzáféréssel
+1. A titkos kulcs jelszava
+2. Nem megfelelően hozták létre a Key Vault titkos kulcsát.
+3. Az egyszerű szolgáltatásnév hitelesítő adatai helytelenül lettek megadva
+4. Az egyszerű szolgáltatásnév nem rendelkezik közreműködői hozzáféréssel az erőforráscsoporthoz
 
-### <a name="private-key-has-a-passphrase"></a>Titkos kulcsa jelszóval rendelkezik
+### <a name="private-key-has-a-passphrase"></a>A titkos kulcs jelszava
 
-Látni fogja, hogy az engedély megtagadva az ssh hiba. ssh az ansible forgatókönyv gazdagépre egy jelszót a titkos kulcs kereséséhez.
+Hibaüzenet jelenik meg, amely miatt a rendszer megtagadta az engedélyt az SSH-hoz. SSH-t a Ansible forgatókönyv-gazdagépre, hogy keressen egy jelszót a titkos kulcson.
 
-### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>A Key vault titkos kulcs és a titkos kulcs létrehozása nem lett megfelelően
+### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Nem megfelelően hozták létre a Key Vault titkos kulcsát.
 
-A titkos kulcs átmásolja az ansible forgatókönyv gazdagép - ~/.ssh/id_rsa. Ellenőrizze, hogy ez a fájl helyes-e. Tesztelje az SSH-munkamenetből a fürtcsomópontok egy az ansible forgatókönyv gazdagépről nyissa meg.
+A titkos kulcsot a rendszer átmásolja a Ansible ötletekbõl-gazdagépre – ~/.ssh/id_rsa. Győződjön meg arról, hogy a fájl helyes. Tesztelés: nyisson meg egy SSH-munkamenetet a Ansible forgatókönyv-gazdagép egyik fürtjén.
 
-### <a name="service-principal-credentials-were-entered-incorrectly"></a>Egyszerű szolgáltatás hitelesítő adatai nem megfelelően megadott
+### <a name="service-principal-credentials-were-entered-incorrectly"></a>Az egyszerű szolgáltatásnév hitelesítő adatai helytelenül lettek megadva
 
-Ha megadta a bemenetet a sablonból vagy a Piactéri ajánlat, a helytelen információt lett megadva. Ellenőrizze, hogy az egyszerű szolgáltatás a helyes appId (clientId) és a jelszót (clientSecret) használja. Ellenőrizze a következő azure cli-parancs kiadásával.
+A sablon vagy Marketplace-ajánlat bemenetének megadásakor a helytelen információ lett megadva. Győződjön meg arról, hogy az egyszerű szolgáltatásnév megfelelő appId (clientId) és jelszavát (clientSecret) használja. Ellenőrizze az alábbi Azure CLI-parancs kiadásával.
 
 ```bash
 az login --service-principal -u <client id> -p <client secret> -t <tenant id>
 ```
 
-### <a name="service-principal-doesnt-have-contributor-access-to-the-resource-group"></a>Egyszerű szolgáltatás nem rendelkezik az erőforráscsoporthoz közreműködői hozzáféréssel
+### <a name="service-principal-doesnt-have-contributor-access-to-the-resource-group"></a>Az egyszerű szolgáltatásnév nem rendelkezik közreműködői hozzáféréssel az erőforráscsoporthoz
 
-Ha az Azure-felhő szolgáltató engedélyezve van, a szolgáltatásnév az erőforráscsoport közreműködői hozzáféréssel kell rendelkeznie. Ellenőrizze a következő azure cli-parancs kiadásával.
+Ha az Azure Cloud Provider engedélyezve van, akkor a használt szolgáltatásnak közreműködői hozzáféréssel kell rendelkeznie az erőforráscsoporthoz. Ellenőrizze az alábbi Azure CLI-parancs kiadásával.
 
 ```bash
 az group update -g <openshift resource group> --set tags.sptest=test
@@ -117,7 +116,7 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 ## <a name="additional-tools"></a>További eszközök
 
-Néhány hiba a további információért is használhatja a következő parancsokat:
+Bizonyos hibák esetén az alábbi parancsokkal további információkat kaphat:
 
-1. systemctl állapot \<service >
-2. journalctl -xe
+1. systemctl állapot \<szolgáltatás >
+2. journalctl – XE

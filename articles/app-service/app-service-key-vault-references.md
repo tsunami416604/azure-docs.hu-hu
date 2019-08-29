@@ -1,86 +1,85 @@
 ---
-title: A Key Vault hivatkozások – az Azure App Service |} A Microsoft Docs
-description: Fogalmi referencia és beállítási útmutató az Azure Key Vault hivatkozik az Azure App Service és az Azure Functions
+title: Key Vault referenciák – Azure App Service | Microsoft Docs
+description: A Azure App Service és a Azure Functions Azure Key Vault referenciáinak fogalmi referenciája és beállítási útmutatója
 services: app-service
 author: mattchenderson
 manager: jeconnoc
 editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: e7a049c8def0a5014aeb8a0e7a16aaa8def28009
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 30bd7c68ae1c88aba288b515d0ec32581f90b868
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705701"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088189"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>A Key Vault hivatkozások használata az App Service és az Azure Functions (előzetes verzió)
+# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Key Vault referenciák használata App Service és Azure Functionshoz (előzetes verzió)
 
 > [!NOTE] 
-> A Key Vault hivatkozások jelenleg előzetes verzióban érhető el.
+> Key Vault referenciák jelenleg előzetes verzióban érhetők el.
 
-Ez a témakör bemutatja, hogyan használható a az App Service-ben vagy az Azure Functions-alkalmazás az Azure Key Vault titkos kulcsainak kódváltozások nélkül. [Az Azure Key Vault](../key-vault/key-vault-overview.md) egy szolgáltatás, amely titkok központosított kezelése, teljes körűen felügyelve hozzáférési házirendek és a naplózási előzmények.
+Ebből a témakörből megtudhatja, hogyan dolgozhat fel a titkokat a App Service vagy Azure Functions alkalmazásban Azure Key Vault a kód módosítása nélkül. A [Azure Key Vault](../key-vault/key-vault-overview.md) egy olyan szolgáltatás, amely központosított titkok felügyeletét teszi lehetővé a hozzáférési házirendek és a naplózási előzmények teljes körű szabályozásával.
 
-## <a name="granting-your-app-access-to-key-vault"></a>Az alkalmazás-hozzáférés biztosítása a Key Vaulthoz
+## <a name="granting-your-app-access-to-key-vault"></a>Az alkalmazás hozzáférésének biztosítása Key Vault
 
-Olvassa el a titkos kulcsok a Key Vaultból, kell rendelkeznie egy létrehozott és az alkalmazás engedélye az eléréséhez.
+A Key Vault titkainak beolvasásához létre kell hoznia egy tárolót, és engedélyt kell adni az alkalmazásnak az eléréséhez.
 
-1. Key vault létrehozása a következő a [Key Vault rövid](../key-vault/quick-create-cli.md).
+1. Hozzon létre egy kulcstartót a [Key Vault](../key-vault/quick-create-cli.md)rövid útmutató alapján.
 
-1. Hozzon létre egy [alapértelmezett felügyelt identitás](overview-managed-identity.md) az alkalmazáshoz.
+1. Hozzon létre egy [rendszerhez rendelt felügyelt identitást](overview-managed-identity.md) az alkalmazáshoz.
 
    > [!NOTE] 
-   > A Key Vault jelenleg csak a támogatási rendszer hozzárendelt felügyelt identitások hivatkozik. Felhasználó által hozzárendelt identitások nem használható.
+   > Key Vault referenciák jelenleg csak a rendszer által hozzárendelt felügyelt identitásokat támogatják. Felhasználó által hozzárendelt identitások nem használhatók.
 
-1. Hozzon létre egy [hozzáférési szabályzatot a Key Vaultban](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott identita aplikace. Engedélyezze ezt a házirendet a "Get" titkos engedélyt. Ne konfigurálja a "engedélyezett alkalmazás" vagy `applicationId` beállításai, mivel ezt, nem kompatibilis egy felügyelt identitás.
+1. Hozzon létre egy [hozzáférési szabályzatot](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) a Key Vaultban a korábban létrehozott alkalmazás-identitáshoz. A "Get" Secret engedély engedélyezése a szabályzathoz. Ne konfigurálja a "meghatalmazott alkalmazást" vagy `applicationId` a beállításokat, mivel ez nem kompatibilis a felügyelt identitással.
 
-    Hozzáférés biztosítása alkalmazásokhoz való identitás a key vaultban egy egyszeri művelet, és ugyanazt az összes Azure-előfizetésekre vonatkozó marad. Használhatja a kívánt számú tanúsítványok telepítéséhez. 
+    A Key vaultban való hozzáférés biztosítása egy egyszeri művelet, amely minden Azure-előfizetésnél azonos marad. Azt is megteheti, hogy tetszőleges számú tanúsítványt telepít. 
 
-## <a name="reference-syntax"></a>Hivatkozási szintaxisa
+## <a name="reference-syntax"></a>Hivatkozás szintaxisa
 
-Egy Key Vault-hivatkozást a rendszer az űrlap `@Microsoft.KeyVault({referenceString})`, ahol `{referenceString}` helyébe a következő lehetőségek közül:
+A Key Vault hivatkozás az űrlapra `@Microsoft.KeyVault({referenceString})`mutat, ahol `{referenceString}` a a következő lehetőségek egyikével helyettesíti:
 
 > [!div class="mx-tdBreakAll"]
-> | Hivatkozási karakterlánc                                                            | Leírás                                                                                                                                                                                 |
+> | Hivatkozási sztring                                                            | Leírás                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri=_secretUri_                                                       | A **SecretUri** az adatsík URI-ját egy titkos kulcsot a Key Vaultban, többek között például egy verziót kell lennie. https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | A **VaultName** kell a Key Vault-erőforrás nevét. A **SecretName** a céloldali titkos kód nevét kell megadni. A **SecretVersion** a használandó titkoskulcs-verziót kell lennie. |
+> | SecretUri=_secretUri_                                                       | A **SecretUri** az Key Vault titkos kulcsa teljes adatsík URI-ja, beleértve a verziószámot is, például: https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | A **VaultName** meg kell egyeznie a Key Vault erőforrás nevével. A **SecretName** a célként megadott titkos kód nevének kell lennie. A **titkoskulcsverziója** a használni kívánt titkos kulcs verziószámának kell lennie. |
 
 > [!NOTE] 
-> Az aktuális előzetes verziója is szükséges. Elforgatás titkos kulcsokat, ha az alkalmazás konfigurációjában a verzióra frissíteni kell.
+> Az aktuális előzetes verzióban a verziók megadása kötelező. A titkok elforgatásakor frissítenie kell a verziót az alkalmazás konfigurációjában.
 
-Például teljes lenne a következőhöz hasonló:
+A teljes hivatkozás például a következőhöz hasonló lesz:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
 
-Azt is megteheti:
+Vagylagosan
 
 ```
 @Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret;SecretVersion=ec96f02080254f109c51a1f14cdb1931)
 ```
 
 
-## <a name="source-application-settings-from-key-vault"></a>A Key Vault alkalmazás forrásbeállítások
+## <a name="source-application-settings-from-key-vault"></a>A forrásoldali Alkalmazásbeállítások Key Vault
 
-Key Vault hivatkozások használható értékeit [Alkalmazásbeállítások](configure-common.md#configure-app-settings), lehetővé téve, hogy a titkos kulcsok a Key Vaultban helykonfigurációjában helyett. Alkalmazásbeállítások biztonságosan titkosított inaktív, de a titkos kódok kezelése képességek van szüksége, ha azok kell lépjen be a Key Vault.
+Key Vault referenciák az [Alkalmazásbeállítások](configure-common.md#configure-app-settings)értékeiként használhatók, ami lehetővé teszi, hogy a titkokat a hely konfigurációja helyett Key Vault tartsa. Az Alkalmazásbeállítások biztonságosan titkosítva maradnak, de ha titkos felügyeleti képességekre van szüksége, a Key Vaultba kell lépniük.
 
-Alkalmazás-beállítás, a Key Vault hivatkozás használatához állítja be a hivatkozást a beállítás értékét. Az alkalmazás a szokásos módon keresztül is lehet hivatkozni a titkos kulcsot. Kódmódosítás nélkül szükség.
+Ha Key Vault hivatkozást szeretne használni egy alkalmazás-beállításhoz, állítsa a hivatkozást a beállítás értékeként. Az alkalmazás a szokásos módon hivatkozhat a titkos kulcsra. Nincs szükség kód módosítására.
 
 > [!TIP]
-> A legtöbb alkalmazás beállításokat a Key Vault hivatkozásokat kell megjelölve lennie tárolóhely-beállítások, mint minden környezethez külön tárolóra van szükség.
+> Key Vault hivatkozásokat használó legtöbb Alkalmazásbeállítások tárolóhely-beállításokként vannak megjelölve, mivel minden környezethez külön tárolókat kell megadni.
 
 ### <a name="azure-resource-manager-deployment"></a>Az Azure Resource Manager üzembe helyezése
 
-Amikor automatizálása az erőforrás üzembe helyezést az Azure Resource Manager-sablonok, szükség lehet előkészítéséhez a függőségek, hogy működik ez a funkció egy adott sorrendben. Vegye figyelembe, hogy a kell az alkalmazás-beállítások megadása a saját erőforrásként használata helyett egy `siteConfig` tulajdonságot a helydefiníció. Ennek az oka, hogy a rendszer által hozzárendelt identitás jön létre, és a hozzáférési házirendben használható először definiálni kell a hely.
+Az erőforrás-telepítések Azure Resource Manager sablonokon keresztüli automatizálásakor előfordulhat, hogy a funkció működéséhez egy adott sorrendben kell sorba rendeznie a függőségeket. Fontos megjegyezni, hogy az alkalmazás beállításait saját erőforrásként kell meghatároznia ahelyett, hogy egy `siteConfig` tulajdonságot kellene használnia a hely definíciójában. Ennek az az oka, hogy a helyet először meg kell határozni, hogy a rendszer által hozzárendelt identitás létre legyen hozva, és a hozzáférési házirendben is használható legyen.
 
-Egy példa psuedo-sablon egy függvényalkalmazáshoz előfordulhat, hogy a következőhöz hasonló:
+A psuedo-sablon például a következőhöz hasonló lehet:
 
 ```json
 {
@@ -184,4 +183,4 @@ Egy példa psuedo-sablon egy függvényalkalmazáshoz előfordulhat, hogy a köv
 ```
 
 > [!NOTE] 
-> Ebben a példában a forrás-vezérlő telepítése az alkalmazás beállításaitól függ. Ez a lehetőség általában nem biztonságos viselkedését, aszinkron módon viselkedik az alkalmazás-beállítás frissítése. Azonban mivel vannak megadva a `WEBSITE_ENABLE_SYNC_UPDATE_SITE` alkalmazás-beállításához, a frissítés tárreplikában. Ez azt jelenti, hogy a forrás-vezérlő telepítése csak után megkezdődik az alkalmazásbeállítások teljes körűen frissítve lett-e.
+> Ebben a példában a verziókövetés központi telepítése az alkalmazásbeállításoktől függ. Ez általában nem biztonságos viselkedés, mivel az Alkalmazásbeállítások frissítése aszinkron módon történik. Mivel azonban az `WEBSITE_ENABLE_SYNC_UPDATE_SITE` alkalmazás beállítása is megtörtént, a frissítés szinkronban van. Ez azt jelenti, hogy a verziókövetés központi telepítése csak akkor kezdődik el, ha az Alkalmazásbeállítások teljes mértékben frissültek.

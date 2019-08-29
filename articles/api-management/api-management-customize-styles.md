@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 4ea64b16a9a581683d3b7a44b4b331af435db22c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 047e724fe3e1c2e4738e5964326bf7719281f4af
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60658085"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073710"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>A fejlesztői portál oldalstílusának testreszabása
 
@@ -40,8 +39,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
-+ Hajtsa végre a következő rövid útmutatót: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
-+ Ezenkívül hajtsa végre a következő oktatóanyaggal: [Az első API importálása és közzététele](import-and-publish.md).
++ Hajtsa végre a következő rövid útmutatót: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
++ Továbbá hajtsa végre a következő oktatóanyagot: [Az első API importálása és közzététele](import-and-publish.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -57,11 +56,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     A **Stílusok** panellel testre szabható összes elem megjelenik az oldalon.
 5. Írja be a „headings-color” (fejléc színe) kifejezést a **Változó értékeinek módosítása a fejlesztői portál megjelenésének testreszabásához:** mezőbe.
 
-    A  **\@headings-color** elemet oldalon jelenik meg. Ez a változó szabályozza a szöveg színét.
+    A fejlécek  **–színelemjelenikmegazoldalon.\@** Ez a változó szabályozza a szöveg színét.
 
     ![stílus testreszabása](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Kattintson a mező a  **\@headings-color** változó. 
+6. Kattintson a  **\@fejlécek-Color** változó mezőre. 
     
     Megjelenik a színválasztó legördülő menü.
 7. A színválasztó legördülő menüben válassza ki az új színt.

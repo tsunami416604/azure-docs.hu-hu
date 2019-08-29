@@ -1,5 +1,5 @@
 ---
-title: Rendelkezésre állási beállítása az Azure Application insights segítségével |} A Microsoft Docs
+title: Rendelkezésre állási riasztások beállítása az Azure Application Insightskal | Microsoft Docs
 description: Webes teszteket állíthat be az Application Insightsban. Riasztásokat kaphat, ha egy webhely elérhetetlenné válik vagy lassan válaszol.
 services: application-insights
 documentationcenter: ''
@@ -13,66 +13,69 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: cc022f91d4b4fec42929769df8c979320548a1f9
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 1d7527d6f52235c6b95ad2e336ea9f9ba85d6344
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67305000"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114395"
 ---
-# <a name="availability-alerts"></a>Rendelkezésre állási riasztás
+# <a name="availability-alerts"></a>Rendelkezésre állási riasztások
 
-Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Azt is riasztást küld, ha az alkalmazás nem válaszol, vagy ha túl lassan válaszol.
+Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást küld, ha az alkalmazás nem válaszol, vagy ha túl lassan válaszol.
 
 ## <a name="enable-alerts"></a>Riasztások engedélyezése
 
-Riasztások most már automatikusan alapértelmezés szerint engedélyezve vannak, de annak érdekében, hogy teljes mértékben a riasztás konfigurálásához először azt kell először hozzon létre a rendelkezésre állási tesztet.
+Alapértelmezés szerint automatikusan engedélyezve vannak a riasztások, de a riasztás teljes konfigurálása érdekében először létre kell hoznia a rendelkezésre állási tesztet.
 
-![Hozzon létre felhasználói élményt](./media/availability-alerts/create-test.png)
+![Élmény létrehozása](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  Az a [új egyesített riasztások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), a riasztási szabály fontossága és értesítési beállításai [Műveletcsoportok](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) **kell** riasztásainak konfigurált. A következő lépések nélkül csak a portálon értesítések fog kapni.
+>  Az [új egyesített riasztásokkal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)a riasztási szabály súlyosságát és az értesítési beállításokat [műveleti csoportokkal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) kell konfigurálni a riasztások terén. A következő lépések nélkül csak a portálon belüli értesítéseket fogja kapni.
 
-1. A rendelkezésre állási teszt mentése, után a részleteinek lapon kattintson a három épp most módosította a teszt által. Kattintson a "riasztás szerkesztése".
+1. A rendelkezésre állási teszt mentése után a Részletek lapon kattintson a három pontra az imént létrehozott teszt alapján. Kattintson a "riasztás szerkesztése" elemre.
 
    ![Szerkesztés mentés után](./media/availability-alerts/edit-alert.png)
 
-2. Állítsa be a kívánt súlyossági szintet, a szabály leírását és ennél is fontosabb – a műveletcsoport, amely rendelkezik az értesítési beállításokat szeretné használni a riasztási szabály.
+2. Állítsa be a kívánt súlyossági szintet, a szabály leírását és a legfontosabb – a riasztási szabályhoz használni kívánt értesítési beállításokat tartalmazó műveleti csoportot.
 
    ![Szerkesztés mentés után](./media/availability-alerts/set-action-group.png)
 
-### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Riasztás x-en kívül Y helyek jelentéskészítési hibák
+### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Riasztás X-ből az Y-ben nem jelentett hibák
 
-Az X Y helyek alapértelmezés szerint engedélyezve van a riasztási szabály kívül a [új egyesített riasztások élmény](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), amikor létrehoz egy új rendelkezésre állási teszt. Kikapcsolhatja a "klasszikus" lehetőség kiválasztásával, vagy letiltani a riasztási szabály kiválasztása.
+Az X/Y helyek riasztási szabálya alapértelmezés szerint engedélyezve van az [új, egyesített riasztások felületén](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), amikor új rendelkezésre állási tesztet hoz létre. A "klasszikus" lehetőség kiválasztásával vagy a riasztási szabály letiltásával választhat.
 
 > [!NOTE]
-> A Műveletcsoportok, hogy értesítést kapjon, ha a riasztás aktiválásakor a fenti lépéseket követve konfigurálja. Ebben a lépésben nélkül csak értesítéseket fog kapni a portálon a szabály aktiválásakor.
+> Konfigurálja úgy a műveleti csoportokat, hogy értesítéseket kapjanak, amikor a riasztást a fenti lépések követésével indítja el. Ennek a lépésnek a megkezdése nélkül csak a portálon belüli értesítéseket fogja kapni a szabály indításakor.
 >
 
-### <a name="alert-on-availability-metrics"></a>Riasztás a rendelkezésre állási metrikák
+### <a name="alert-on-availability-metrics"></a>Riasztás a rendelkezésre állási metrikákkal kapcsolatban
 
-Használatával a [új egyesített riasztások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), szegmentált összesített rendelkezésre állási riasztás és a teszt időtartamának metrikákat is:
+Az [új egyesített riasztások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)használatával riasztást kaphat a szegmentált összesített rendelkezésre állási és tesztelési időtartam mérőszámokról is:
 
-1. Application Insights-erőforrás a metrikák felületen válassza ki és a egy rendelkezésre állási metrika:
+1. Válasszon ki egy Application Insights erőforrást a mérőszámok felületén, és válasszon ki egy rendelkezésre állási mérőszámot:
 
     ![Rendelkezésre állási metrikák kiválasztása](./media/availability-alerts/select-metric.png)
 
-2. Lehetőséget a menüből léphet az új felhasználói felület, amelyen kiválaszthatja meghatározott vizsgálatok vagy a riasztási szabály beállítása a riasztásokat konfigurálni. A Műveletcsoportok a riasztási szabály is konfigurálhatja.
+2. A riasztások beállítása lehetőség a menüben az új felületre kerül, ahol kiválaszthatja a riasztási szabály beállításához megadott teszteket vagy helyszíneket. Ehhez a riasztási szabályhoz itt is konfigurálhatja a műveleti csoportokat.
 
-### <a name="alert-on-custom-analytics-queries"></a>Riasztás egyéni elemzési lekérdezések
+### <a name="alert-on-custom-analytics-queries"></a>Riasztás egyéni elemzési lekérdezéseken
 
-Használatával a [új egyesített riasztások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), is riasztás [egyéni napló lekérdezések](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log). Az egyéni lekérdezések az minden olyan tetszőleges feltételt, amely segít a legmegbízhatóbb jel rendelkezésre állási problémák is riasztás. Ez akkor is különösen, ha a TrackAvailability SDK-val egyéni rendelkezésre állási eredmények küld. 
+Az [új egyesített riasztások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)használatával riasztást készíthet az [egyéni naplók lekérdezéséről](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log). Az egyéni lekérdezésekkel bármilyen tetszőleges feltételt megadhat, amely segít a legmegbízhatóbb rendelkezésre állási problémák megszerzésében. Ez akkor is alkalmazható, ha egyéni rendelkezésre állási eredményeket küld a TrackAvailability SDK használatával.
 
 > [!Tip]
-> A metrikák, a rendelkezésre állási adatokat tartalmaz, előfordulhat, hogy küldjön az TrackAvailability SDK meghívásával egyéni rendelkezésre állási eredményeket. A riasztási egyéni rendelkezésre állási eredmények riasztás metrikák támogatás is használhatja.
+> A rendelkezésre állási adatok metrikái tartalmazzák az egyéni rendelkezésre állási eredményeket, amelyeket az TrackAvailability SDK meghívásával lehet elküldeni. A metrikai riasztások támogatásával riasztást kaphat az egyéni rendelkezésre állási eredményekről.
 >
+
+## <a name="automate-alerts"></a>Riasztások automatizálása
+
+Ha Azure Resource Manager-sablonokkal szeretné automatizálni ezt a folyamatot, tekintse meg a [metrikák létrehozása a Resource Manager-sablonnal](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-availability-test-along-with-availability-test-alert) című dokumentumot.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Dedikált [hibaelhárításról szóló cikk](troubleshoot-availability.md).
+Dedikált [hibaelhárítási cikk](troubleshoot-availability.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Többlépéses webes tesztek](availability-multistep.md)
-* [URL-ping webes tesztek](monitor-web-app-availability.md)
-
+* [Több lépésből álló webes tesztek](availability-multistep.md)
+* [URL pingelése webes tesztek](monitor-web-app-availability.md)

@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8be42399d9919d0ed410f1503353568c86a75f5a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4446b92a8998f05aae47a3bab6a2cea4785fddf2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68322891"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094568"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Feladat-és tevékenységadatok megőrzése az Azure Storage-ban a Batch file Conventions Library for .NET
 
@@ -198,7 +197,7 @@ A Azure Portal megjeleníti a társított Azure Storage-fiókban megőrzött fel
 Ha engedélyezni szeretné a kimeneti fájlok megjelenítését a portálon, a következő követelményeknek kell megfelelnie:
 
 1. Egy Azure Storage-fiók összekapcsolása a Batch-fiókkal.
-1. Adja meg a tárolók és a fájlok előre meghatározott elnevezési konvencióit a kimenetek megőrzésekor. Ezen konvenciók definícióját a fájl-konvenciók könyvtárában találja [.][github_file_conventions_readme] Ha a [Azure batch fájl konvenciói][nuget_package] könyvtárat használja a kimenet megőrzéséhez, a fájlok a fájl-konvenciók standardnak megfelelően megmaradnak.
+1. Adja meg a tárolók és a fájlok előre meghatározott elnevezési konvencióit a kimenetek megőrzésekor. Ezen konvenciók definícióját a fájl-konvenciók könyvtárában találja [][github_file_conventions_readme]. Ha a [Azure batch fájl konvenciói][nuget_package] könyvtárat használja a kimenet megőrzéséhez, a fájlok a fájl-konvenciók standardnak megfelelően megmaradnak.
 
 Ha meg szeretné tekinteni a feladat kimeneti fájljait és naplóit a Azure Portalban, Navigáljon arra a feladatra, amelynek a kimenetét érdekli, majd kattintson a **mentett kimeneti fájlok** vagy a **Mentett naplók**elemre. Ez a kép a "007" AZONOSÍTÓJÚ feladat **mentett kimeneti fájljait** jeleníti meg:
 

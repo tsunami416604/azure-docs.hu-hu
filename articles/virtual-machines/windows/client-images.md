@@ -1,6 +1,6 @@
 ---
-title: Windows-ügyfélrendszerképek használata az Azure-ban |} A Microsoft Docs
-description: Hogyan használható a Visual Studio-előfizetés előnyeit üzembe helyezéséhez Windows 7, Windows 8 vagy az Azure-ban Windows 10-es fejlesztési és tesztelési célra
+title: Windows-rendszerképek használata az Azure-ban | Microsoft Docs
+description: A Visual Studio előfizetési előnyeinek használata a Windows 7, Windows 8 vagy Windows 10 Azure-ban való üzembe helyezéséhez fejlesztési és tesztelési helyzetekben
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -8,61 +8,60 @@ manager: gwallace
 editor: ''
 ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: fcd97b07416526d71d5bee9bc198eb0d912e1c55
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: dbb771351ee774a7fea33e5aaad3ae4d0c70f8b1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719155"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079907"
 ---
-# <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-ügyfél használata az Azure-ban fejlesztési/tesztelési célra
-Használhatja a Windows 7, Windows 8, Windows 10 Enterprise (x64) az Azure-ban fejlesztési/tesztelési célra Ön által vagy egy megfelelő (korábbi nevén MSDN) a Visual Studio-előfizetéssel rendelkezik. Ez a cikk ismerteti a megfelelőségi feltételek Windows 7, Windows 8.1, Windows 10 Enterprise futtatásához az Azure és a következő Azure-katalógus-rendszerképek használata.
+# <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>A Windows-ügyfél használata az Azure-ban fejlesztési és tesztelési helyzetekben
+A fejlesztői és tesztelési forgatókönyvekhez használhatja a Windows 7, Windows 8 vagy Windows 10 Enterprise (x64) rendszert az Azure-ban, amennyiben rendelkezik a megfelelő Visual Studio (korábbi MSDN) előfizetéssel. Ez a cikk a Windows 7, a Windows 8,1, a Windows 10 Enterprise és a következő Azure Gallery-lemezképek használatára vonatkozó támogathatósági követelményeket ismerteti.
 
-![Lemezkép adatait az Azure Portalról](./media/client-images/windows-client-msdn-images.png) 
+![Rendszerkép részletei a Azure Portal](./media/client-images/windows-client-msdn-images.png) 
 
 > [!NOTE]
-> A Windows 10 Pro és a Windows 10 Pro N rendszerképet az Azure-katalógusban, tekintse meg [üzembe helyezése az Azure-ban több-Bérlős üzemeltető jogosultságokkal rendelkező Windows 10-es](windows-desktop-multitenant-hosting-deployment.md)
->![Pro lemezkép adatait az Azure Portalról](./media/client-images/windows-client-pro-images.png) 
+> A Windows 10 Pro és a Windows 10 Pro N rendszerképek az Azure-katalógusban című témakörben tájékozódhat [arról, hogyan helyezheti üzembe a Windows 10](windows-desktop-multitenant-hosting-deployment.md)
+>rendszert az Azure![-ban a Azure Portal](./media/client-images/windows-client-pro-images.png) 
 >
 
-## <a name="subscription-eligibility"></a>Előfizetés való jogosultság
-Visual Studio-előfizetők (azok a személyek, akik szerezték be a Visual Studio előfizetési licencre) Windows-ügyfél használhatja fejlesztési és tesztelési célokra. Windows-ügyfél a saját hardver- és Azure virtuális gépeken futó bármilyen típusú Azure-előfizetés is használható. Windows ügyfél előfordulhat, hogy nem kell telepíteni vagy normál éles környezetben az Azure-ban használt, vagy személyek, akik nem aktív Visual Studio-előfizetők által használt.
+## <a name="subscription-eligibility"></a>Előfizetés támogathatósága
+Az aktív Visual Studio-előfizetők (akik Visual Studio-előfizetési licencet szereztek be) a Windows-ügyfelet használhatják fejlesztési és tesztelési célokra. A Windows-ügyfél a saját hardveres és Azure-beli virtuális gépeken is használható, bármilyen típusú Azure-előfizetésben. A Windows-ügyfél nem helyezhető üzembe az Azure-ban, és nem használható a normál termelési használatra, vagy nem aktív Visual Studio-előfizetőknek.
 
-Az Ön kényelme érdekében bizonyos Windows 10 rendszerű rendszerképek érhetők el az Azure katalógusából belül [jogosult fejlesztési/tesztelési ajánlatok](#eligible-offers). Visual Studio-előfizetők belül bármilyen típusú ajánlatot is [megfelelően készítse elő és hozzon létre](prepare-for-upload-vhd-image.md) egy 64 bites Windows 7, Windows 8 vagy Windows 10-es lemezképet, majd [feltöltése az Azure-bA](upload-generalized-managed.md). Használatát a Visual Studio-előfizetők fejlesztési-tesztelési korlátozott marad.
+Az Ön kényelme érdekében bizonyos Windows 10-es lemezképek az Azure Galleryben érhetők el, a [jogosult fejlesztési/tesztelési ajánlatokon](#eligible-offers)belül. A Visual Studio-előfizetők bármilyen típusú ajánlaton belül a 64 bites Windows 7, Windows 8 vagy Windows 10 rendszerű rendszerképek [megfelelő előkészítését és létrehozását](prepare-for-upload-vhd-image.md) is lehetővé teszi, majd feltöltheti őket [Az Azure](upload-generalized-managed.md)-ba. A használat az aktív Visual Studio-előfizetők által a fejlesztéshez és teszteléshez is korlátozott.
 
 ## <a name="eligible-offers"></a>Jogosult ajánlatok
-Az alábbi táblázat ismerteti az ajánlat azonosítók, amelyek jogosultak arra, hogy üzembe helyezése az Azure katalógusában a Windows 10-es. Az alábbi ajánlatok csak láthatók a Windows 10-lemezképeket. Visual Studio-előfizetők, akiknek szükség van egy másik ajánlatra írja be a Windows-ügyfél futtatásához szükséges, hogy [megfelelően készítse elő és hozzon létre](prepare-for-upload-vhd-image.md) egy 64 bites Windows 7, Windows 8 vagy Windows 10-es lemezképet, és [majd töltse fel az Azure-bA](upload-generalized-managed.md).
+A következő táblázat a Windows 10 Azure-katalóguson keresztüli üzembe helyezésére jogosult ajánlat-azonosítókat ismerteti. A Windows 10-es lemezképek csak a következő ajánlatokban láthatók. Azok a Visual Studio-előfizetők, akiknek a Windows-ügyfelet egy másik ajánlati típusban kell futtatniuk, [megfelelően elő kell készíteniük és létre](prepare-for-upload-vhd-image.md) kell hozniuk egy 64 bites Windows 7, Windows 8 vagy Windows 10 rendszerképet, [majd fel kell tölteni az Azure](upload-generalized-managed.md)-ba.
 
-| Csomag neve | Csomag száma | Rendelkezésre álló ügyfélkezelési képek |
+| Ajánlat neve | Csomag száma | Elérhető ügyféloldali rendszerképek |
 |:--- |:---:|:---:|
 | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/) |0023P |Windows 10 |
 | [A Visual Studio Enterprise (MPN) előfizetők](https://azure.microsoft.com/offers/ms-azr-0029p/) |0029P |Windows 10 |
-| [A Visual Studio Professional-előfizetők](https://azure.microsoft.com/offers/ms-azr-0059p/) |0059P |Windows 10 |
-| [A Visual Studio Test Professional-előfizetők](https://azure.microsoft.com/offers/ms-azr-0060p/) |0060P |Windows 10 |
-| [A Visual Studio Premium MSDN-nel (kedvezményes)](https://azure.microsoft.com/offers/ms-azr-0061p/) |0061P |Windows 10 |
-| [A Visual Studio Enterprise-előfizetők](https://azure.microsoft.com/offers/ms-azr-0063p/) |0063P |Windows 10 |
-| [A Visual Studio Enterprise (BizSpark) előfizetők](https://azure.microsoft.com/offers/ms-azr-0064p/) |0064P |Windows 10 |
-| [Nagyvállalati fejlesztés és tesztelés](https://azure.microsoft.com/offers/ms-azr-0148p/) |0148P |Windows 10 |
+| [Visual Studio Professional-előfizetők](https://azure.microsoft.com/offers/ms-azr-0059p/) |0059P |Windows 10 |
+| [Visual Studio test Professional-előfizetők](https://azure.microsoft.com/offers/ms-azr-0060p/) |0060P |Windows 10 |
+| [Visual Studio Premium MSDN-nel (juttatás)](https://azure.microsoft.com/offers/ms-azr-0061p/) |0061P |Windows 10 |
+| [Visual Studio Enterprise-előfizetők](https://azure.microsoft.com/offers/ms-azr-0063p/) |0063P |Windows 10 |
+| [Visual Studio Enterprise-(BizSpark-) előfizetők](https://azure.microsoft.com/offers/ms-azr-0064p/) |0064P |Windows 10 |
+| [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/) |0148P |Windows 10 |
 
-## <a name="check-your-azure-subscription"></a>Ellenőrizze az Azure-előfizetés
-Ha nem ismeri az ajánlat azonosítója, szerezheti be azt az Azure Portalon az alábbi két módszer egyikével:  
+## <a name="check-your-azure-subscription"></a>Azure-előfizetés keresése
+Ha nem ismeri az ajánlat AZONOSÍTÓját, az alábbi két módszer egyikével szerezheti be a Azure Portal:  
 
-- Az a *előfizetések* ablakban:
+- Az előfizetések ablakban:
 
-  ![Az ajánlat részleteit az Azure Portalon](./media/client-images/offer-id-azure-portal.png) 
+  ![Az ajánlat AZONOSÍTÓjának részletei a Azure Portal](./media/client-images/offer-id-azure-portal.png) 
 
-- Vagy kattintson **számlázási** és kattintson az előfizetési azonosítóját. Az ajánlat azonosítója megjelenik a *számlázási* ablak.
+- Vagy kattintson a **számlázás** lehetőségre, majd az előfizetés-azonosítóra. Az ajánlat azonosítója megjelenik a *Számlázási* ablakban.
 
-Az ajánlat Azonosítót a is megtekintheti a ["Előfizetések" lapon](https://account.windowsazure.com/Subscriptions) az Azure-fiókportál:
+Az ajánlat AZONOSÍTÓját az Azure-fiók portál [előfizetés lapján](https://account.windowsazure.com/Subscriptions) is megtekintheti:
 
-![Az Azure fiókportálon ajánlat részleteit](./media/client-images/offer-id-azure-account-portal.png) 
+![Az ajánlatok AZONOSÍTÓjának részletei az Azure-fiók portálján](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>További lépések
-Most már telepítheti a virtuális gépek [PowerShell](quick-create-powershell.md), [Resource Manager-sablonok](ps-template.md), vagy [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Most már üzembe helyezheti a virtuális gépeket a [PowerShell](quick-create-powershell.md), a [Resource Manager-sablonok](ps-template.md)vagy a [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)használatával.
 

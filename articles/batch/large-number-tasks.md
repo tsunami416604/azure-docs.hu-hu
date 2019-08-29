@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: f91d47e1f57fb74575fbdad0a76386b53fb38b1f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1322b8eb14205ff29e109fae82466270f7507781
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322522"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094024"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Nagy számú feladat elküldése egy batch-feladatba
 
@@ -30,7 +29,7 @@ Ez a cikk útmutatást és példákat tartalmaz arra vonatkozóan, hogy nagy sz�
 
 ## <a name="use-task-collections"></a>Feladatok gyűjteményének használata
 
-A Batch API-k olyan metódusokat biztosítanak, amelyekkel a ** feladatok hatékonyan hozzáadhatók gyűjteményként egy adott időpontban. Nagy mennyiségű feladat hozzáadásakor a megfelelő módszereket vagy túlterheléseket kell használnia a feladatok gyűjteményként való hozzáadásához. Általában úgy hozhat létre egy feladatot, hogy meghatározza a feladatokat, és megismétli a feladathoz tartozó bemeneti fájlok vagy paraméterek körét.
+A Batch API-k olyan metódusokat biztosítanak, amelyekkel afeladatok hatékonyan hozzáadhatók gyűjteményként egy adott időpontban. Nagy mennyiségű feladat hozzáadásakor a megfelelő módszereket vagy túlterheléseket kell használnia a feladatok gyűjteményként való hozzáadásához. Általában úgy hozhat létre egy feladatot, hogy meghatározza a feladatokat, és megismétli a feladathoz tartozó bemeneti fájlok vagy paraméterek körét.
 
 Az egyetlen hívásban felvehető feladat-gyűjtemény maximális mérete a használt batch API-val függ:
 

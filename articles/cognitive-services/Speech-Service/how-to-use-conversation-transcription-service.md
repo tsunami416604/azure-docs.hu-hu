@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 8c4ecc017d058900297f2220173e064700e7051b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5ad912b1cee5495e18a5eb2da4d981eadd74dd7d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559464"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066426"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Több résztvevős beszélgetések átírása a Speech SDK-val
 
@@ -25,7 +25,9 @@ A Speech SDK **ConversationTranscriber** API-jával olyan értekezleteket és be
 
 * A beszélgetési átirat a C++, C#a és a Java Windows, Linux és Android rendszereken támogatott.
 * A ROOBO fejlesztői készlet a támogatott hardveres környezet a beszélgetési átiratok létrehozásához, amely körkörös, több mikrofonos tömböt biztosít, amely hatékonyan használható a hangszórók azonosításához. [További információ: Speech Devices SDK](speech-devices-sdk.md).
-* Az átírást bemutató beszédfelismerési SDK-támogatás a hangos lekéréses és leküldéses üzemmódú streamek, valamint a 16 bites 16 kHz-es PCM-hang nyolc csatornájának használatára korlátozódik.
+* Az átírást bemutató beszédfelismerési SDK-támogatás a lekéréses és leküldéses üzemmódra korlátozódik, amely 8 csatornás 16 bites 16 kHz-es PCM-hanggal rendelkezik. Jelenleg csak az alábbi készletek támogatottak a 8 csatornás hangrögzítéshez:
+   * [ROOBO intelligens audio kör alakú 7 – MIC DK](https://ddk.roobo.com/)
+   * [Azure Kinect DK](https://azure.microsoft.com/en-in/services/kinect-dk/).
 * A beszélgetés átírása jelenleg az "en-US" és a "zh-CN" nyelveken érhető el a következő régiókban: CentralUS és eastasia.
 
 ## <a name="prerequisites"></a>Előfeltételek

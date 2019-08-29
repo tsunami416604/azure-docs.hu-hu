@@ -1,6 +1,6 @@
 ---
-title: Windows VM-bővítmény hibáinak elhárítása |} A Microsoft Docs
-description: További tudnivalók az Azure Windows VM-bővítmény hibáinak elhárítása
+title: Windowsos virtuálisgép-bővítményekkel kapcsolatos hibák elhárítása | Microsoft Docs
+description: Tudnivalók az Azure-beli Windows virtuálisgép-bővítményekkel kapcsolatos hibák elhárításáról
 services: virtual-machines-windows
 documentationcenter: ''
 author: kundanap
@@ -9,24 +9,23 @@ editor: ''
 tags: top-support-issue,azure-resource-manager
 ms.assetid: 878ab9b6-c3e6-40be-82d4-d77fecd5030f
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: f2b85e9a156d0e6264ec39282b803118963cbbbb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6108b3c8d4f4c5c93bc2543042294bc8167d4dd9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706664"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084295"
 ---
-# <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM-bővítmény hibáinak elhárítása
+# <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure-beli Windows VM-bővítményekkel kapcsolatos hibák elhárítása
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
-## <a name="viewing-extension-status"></a>Bővítmény állapotának megtekintése
-Az Azure Resource Manager-sablonok az Azure PowerShell-lel hajtható végre. A sablon hajtja végre, ha a bővítmény állapotát az Azure Resource Explorerben vagy a parancssori eszközök tekinthetők meg.
+## <a name="viewing-extension-status"></a>A bővítmény állapotának megtekintése
+Azure Resource Manager-sablonok Azure PowerShellból is végrehajthatók. A sablon végrehajtása után a bővítmény állapota Azure Erőforrás-kezelőból vagy a parancssori eszközökből is megtekinthető.
 
 Például:
 
@@ -59,13 +58,13 @@ Itt látható a minta kimenete:
     }
   ]
 
-## <a name="troubleshooting-extension-failures"></a>Bővítmény hibáinak elhárítása
-### <a name="rerun-the-extension-on-the-vm"></a>Futtassa újra a bővítményt a virtuális gépen
-Ha futtat szkripteket a virtuális gép egyéni Szkriptbővítmény használatával, néha futtatható hiba történt, ahol a virtuális gép sikeresen létrejött, de a parancsfájl futtatása sikertelen volt. Ezen feltételek mellett az ajánlott módszer a helyreállítás a hiba, távolítsa el a bővítményt, és futtassa újra a sablont.
-Megjegyzés: A jövőben ezt a funkciót szeretné továbbfejlesztett távolítsa el a kiterjesztés eltávolítása van szükség.
+## <a name="troubleshooting-extension-failures"></a>Bővítményekkel kapcsolatos hibák elhárítása
+### <a name="rerun-the-extension-on-the-vm"></a>A bővítmény újrafuttatása a virtuális gépen
+Ha a virtuális gépen parancsfájlokat futtat egyéni szkriptek használatával, időnként előfordulhat, hogy a virtuális gép sikeres létrehozásakor hiba történt, de a parancsfájl végrehajtása sikertelen volt. Ilyen körülmények között a hiba helyreállításának ajánlott módja a bővítmény eltávolítása és újbóli újrafuttatása.
+Megjegyzés: A jövőben ez a funkció továbbra is kibővült a bővítmény eltávolításának szükségességével.
 
-#### <a name="remove-the-extension-from-azure-powershell"></a>Távolítsa el a bővítményt az Azure PowerShell-lel
+#### <a name="remove-the-extension-from-azure-powershell"></a>Távolítsa el a bővítményt Azure PowerShell
     Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
 
-A bővítmény az Eltávolítás után, a sablon lehet Újrafuttatja a parancsfájlok futtatásához a virtuális gépen.
+A bővítmény eltávolítását követően a sablon újra végrehajtható a parancsfájlok futtatásához a virtuális gépen.
 

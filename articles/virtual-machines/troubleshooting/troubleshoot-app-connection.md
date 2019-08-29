@@ -1,149 +1,148 @@
 ---
-title: Az Azure-beli virtuális gép alkalmazás-hozzáférés hibaelhárítása |} A Microsoft Docs
-description: Részletes hibaelhárítási lépések használatával az Azure-beli virtuális gépeken futó alkalmazásokhoz való kapcsolódás során fellépő problémák elkülönítését.
+title: Virtuálisgép-alkalmazások Azure-beli hozzáférésének hibáinak megoldása | Microsoft Docs
+description: Ezekkel a részletes hibaelhárítási lépésekkel elkülönítheti az Azure-beli virtuális gépeken futó alkalmazásokhoz való csatlakozással kapcsolatos problémákat.
 services: virtual-machines
 documentationcenter: ''
 author: genlin
 manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
-keywords: nem, indítsa el az alkalmazást, a program nem nyitja meg, letiltva, indítsa el a program, a figyelő blokkolt port nem lehet port figyelésére
+keywords: az alkalmazás nem indítható el, a program nem nyílik meg, a figyelő port blokkolva, nem indítható el a program, a figyelési port blokkolva
 ms.assetid: b9ff7cd0-0c5d-4c3c-a6be-3ac47abf31ba
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 9bc528cdd098a2e355c542c3ca8f9bcb0287f339
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: fd79e04cdd8f9d01131c016031d696c1583eb55d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710527"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080400"
 ---
-# <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépeken alkalmazások csatlakozási hibáinak elhárítása
+# <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Az alkalmazások kapcsolódási problémáinak elhárítása az Azure-beli virtuális gépeken
 
-Nincsenek különböző okok miatt nem kezdődhet és nem egy Azure virtuális gépen (VM) futó alkalmazásokhoz való csatlakozáshoz. Okok közé tartozik az alkalmazás nem fut, vagy a várt portokat figyeli, a letiltott figyelő portját és a hálózat szabályok nem megfelelően megadásának forgalmat az alkalmazáshoz. Ez a cikk ismerteti a módszeres megközelítés keresse meg és hárítsa el a problémát.
+Az Azure-beli virtuális gépen (VM) futó alkalmazások nem indíthatók el és nem csatlakozhatnak. Az okok közé tartozik az alkalmazás nem fut, vagy nem figyeli a várt portokat, a figyelő port letiltva, vagy a hálózati szabályok nem adják meg megfelelően az alkalmazás felé irányuló forgalmat. Ez a cikk a probléma megoldásának módszerét ismerteti.
 
-Ha a virtuális Géphez, RDP vagy SSH használatával való csatlakozással kapcsolatos problémákat tapasztal, először tekintse meg az alábbi cikkekben:
+Ha a virtuális géphez RDP vagy SSH használatával csatlakozik, először olvassa el az alábbi cikkek egyikét:
 
-* [A Windows-alapú Azure virtuális gép távoli asztali kapcsolatok hibaelhárítása](troubleshoot-rdp-connection.md)
-* [Secure Shell (SSH) kapcsolatok egy Linux-alapú Azure virtuális gépek hibaelhárítása](troubleshoot-ssh-connection.md).
+* [Windows-alapú Azure-beli virtuális gépekkel létesített Távoli asztal-kapcsolatok hibáinak megoldása](troubleshoot-rdp-connection.md)
+* [A Secure Shell-(SSH-) kapcsolatok hibakeresése Linux-alapú Azure-beli virtuális gépeken](troubleshoot-ssh-connection.md).
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a [az MSDN Azure és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik megoldásként is fájl is egy Azure-támogatási esemény. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza **támogatja az első**.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és válassza a **támogatás kérése**lehetőséget.
 
-## <a name="quick-start-troubleshooting-steps"></a>Gyors üzembe helyezési hibaelhárítási lépéseket
-Ha problémába ütközik egy alkalmazást, próbálkozzon az alábbi általános hibaelhárítási lépéseket. Minden lépése után próbáljon újból az alkalmazást:
+## <a name="quick-start-troubleshooting-steps"></a>Gyors indítás – hibaelhárítási lépések
+Ha problémája merül fel az alkalmazáshoz való csatlakozás során, próbálkozzon az alábbi általános hibaelhárítási lépésekkel. Az egyes lépések után próbálkozzon újra az alkalmazással való csatlakozással:
 
 * A virtuális gép újraindítása
-* Hozza létre újra a végpontot / tűzfalszabályok / hálózati biztonsági csoport (NSG) szabályai
+* Hozza létre újra a végponti/tűzfalszabályok/hálózati biztonsági csoport (NSG) szabályait
   * [Resource Manager-modell – hálózati biztonsági csoportok kezelése](../../virtual-network/manage-network-security-group.md)
-  * [A Klasszikus modell - végpontok kezelése a Cloud Services](../../cloud-services/cloud-services-enable-communication-role-instances.md)
-* Csatlakozás a más helyre, például egy másik Azure virtuális hálózatot
+  * [Klasszikus modell – Cloud Services-végpontok kezelése](../../cloud-services/cloud-services-enable-communication-role-instances.md)
+* Más helyről, például egy másik Azure-beli virtuális hálózatról is kapcsolódhat
 * A virtuális gép ismételt üzembe helyezése
-  * [Windows virtuális gép újratelepítése](redeploy-to-new-node-windows.md)
-  * [Linux rendszerű virtuális gép újratelepítése](redeploy-to-new-node-linux.md)
-* Hozza létre újra a virtuális gép
+  * [Windows rendszerű virtuális gép újbóli üzembe helyezése](redeploy-to-new-node-windows.md)
+  * [Linux rendszerű virtuális gép újbóli üzembe helyezése](redeploy-to-new-node-linux.md)
+* A virtuális gép újbóli létrehozása
 
-További információkért lásd: [Végpontkapcsolatának hibaelhárítási (RDP/SSH/HTTP, a hibák stb.)](https://social.msdn.microsoft.com/Forums/azure/en-US/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows).
+További információ: a [végponti kapcsolat hibaelhárítása (RDP/SSH/http stb. hibák)](https://social.msdn.microsoft.com/Forums/azure/en-US/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows).
 
-## <a name="detailed-troubleshooting-overview"></a>Részletes hibaelhárítási áttekintése
-Nincsenek a hozzáférés-beli virtuális gépen futó alkalmazás hibaelhárítása négy fő területtel.
+## <a name="detailed-troubleshooting-overview"></a>Részletes hibaelhárítás – áttekintés
+Az Azure-beli virtuális gépeken futó alkalmazások hozzáférésének hibakereséséhez négy fő terület áll rendelkezésre.
 
-![hibaelhárítás aplikaci nelze spustit.](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access1.png)
+![az alkalmazás nem indítható el.](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access1.png)
 
-1. Az az Azure virtuális gépen futó alkalmazás.
-   * Maga az alkalmazás megfelelően működnek-e?
-2. Az Azure virtuális gépen.
-   * Az a virtuális gépre, megfelelően működnek-e, és válaszol a kérelmekre?
-3. Az Azure network-végpontok.
-   * A felhő-Szolgáltatásvégpontok a virtuális gépek a klasszikus üzemi modellben.
-   * Hálózati biztonsági csoportok és bejövő NAT-szabályok a Resource Manager üzemi modell virtuális gépek számára.
-   * A felhasználók a folyamat a várt portokat a virtuális gép/alkalmazáshoz is forgalom?
-4. Az internetes edge-eszköz.
-   * Tűzfalszabályok helyen megakadályozza, hogy az adatforgalom megfelelően áramló?
+1. Az Azure-beli virtuális gépen futó alkalmazás.
+   * Az alkalmazás megfelelően fut?
+2. Az Azure-beli virtuális gép.
+   * Maga a virtuális gép megfelelően fut, és válaszol a kérelmekre?
+3. Azure-beli hálózati végpontok.
+   * Cloud Service-végpontok a virtuális gépekhez a klasszikus üzemi modellben.
+   * Hálózati biztonsági csoportok és a virtuális gépek bejövő NAT-szabályai a Resource Manager-alapú üzemi modellben.
+   * Képes a felhasználóktól a virtuális gépre/alkalmazásba irányuló adatforgalom a várt portokon?
+4. Az Internet Edge-eszköz.
+   * Vannak olyan tűzfalszabályok, amelyek megakadályozzák a forgalom megfelelő áramlását?
 
-Az alkalmazás egy helyek közötti VPN vagy ExpressRoute-kapcsolaton keresztül elérő ügyfélszámítógépeken a területekre, amelyek problémákat okozhat az alkalmazás és az Azure virtuális gépen.
+Az alkalmazást helyek közötti VPN-vagy ExpressRoute-kapcsolaton keresztül elérő ügyfélszámítógépek esetében az alkalmazás és az Azure-beli virtuális gép okozhatja a problémát okozó fő területeket.
 
-A problémáról és annak javítási okának meghatározása, kövesse az alábbi lépéseket.
+A probléma forrásának és a javításának megállapításához kövesse az alábbi lépéseket.
 
-## <a name="step-1-access-application-from-target-vm"></a>1\. lépés: Hozzáférési kérelem a cél virtuális gép
-Próbálja meg elérni az alkalmazást a megfelelő ügyféloldali-program, amelyen fut a virtuális gépről. Használja a helyi gazdagép nevét, a helyi IP-címet, vagy a visszacsatolási cím (127.0.0.1).
+## <a name="step-1-access-application-from-target-vm"></a>1\. lépés: Alkalmazás elérése a cél virtuális gépről
+Próbálja meg elérni az alkalmazást a megfelelő ügyfélprogrammal azon a virtuális gépen, amelyen fut. Használja a helyi gazdagép nevét, a helyi IP-címet vagy a visszacsatolási címet (127.0.0.1).
 
-![Indítsa el az alkalmazást közvetlenül a virtuális gépről](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
+![alkalmazás elindítása közvetlenül a virtuális gépről](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
 
-Például ha az alkalmazás egy webkiszolgáló, nyisson meg egy böngészőt a virtuális gépen, és próbálja meg elérni a virtuális gépen üzemeltetett weblapon.
+Ha például az alkalmazás egy webkiszolgáló, nyisson meg egy böngészőt a virtuális gépen, és próbáljon meg hozzáférni egy, a virtuális gépen tárolt weboldalhoz.
 
-Ha az alkalmazás férhet hozzá, lépjen a [2. lépés](#step2).
+Ha elérheti az alkalmazást, folytassa a [2](#step2). lépéssel.
 
-Ha nem tudja elérni az alkalmazást, ellenőrizze a következő beállításokat:
+Ha nem fér hozzá az alkalmazáshoz, ellenőrizze a következő beállításokat:
 
-* Az alkalmazás fut, a cél virtuális gépen.
-* Az alkalmazás a várt TCP és UDP-portokon figyel.
+* Az alkalmazás a cél virtuális gépen fut.
+* Az alkalmazás figyeli a várt TCP-és UDP-portokat.
 
-A Windows és Linux-alapú virtuális gépek használata a **netstat - a** parancsot az aktív figyelőportjait megjelenítéséhez. Vizsgálja meg a várt portokat, amelyeken az alkalmazás figyelésére kell kimenetét. Indítsa újra az alkalmazást, vagy konfigurálja úgy, hogy a várt portokat használja, szükség szerint, és próbálja meg újból elérni az alkalmazás helyi.
+A Windows-és a Linux-alapú virtuális gépeken a **netstat-a** parancs használatával jelenítse meg az aktív figyelési portokat. Vizsgálja meg a várt portok kimenetét, amelyeken az alkalmazásnak figyelnie kell. Indítsa újra az alkalmazást, vagy konfigurálja úgy, hogy igény szerint használja a várt portokat, és próbálja meg helyileg elérni az alkalmazást.
 
-## <a id="step2"></a>2. lépés: Az azonos virtuális hálózatban lévő másik virtuális gépről hozzáférési alkalmazás
-Próbálja meg elérni az alkalmazást, egy másik virtuális gépről, de az azonos virtuális hálózatba, a virtuális gép állomásnevét vagy az Azure által hozzárendelt nyilvános, magán vagy a szolgáltató IP-címének használatával. A klasszikus üzemi modellel létrehozott virtuális gépek ne használja a felhőalapú szolgáltatás nyilvános IP-címét.
+## <a id="step2"></a>2. lépés: Alkalmazás elérése ugyanazon a virtuális hálózaton lévő másik virtuális gépről
+Próbálja meg elérni az alkalmazást egy másik virtuális gépről, de ugyanabban a virtuális hálózatban, a virtuális gép állomásneve vagy az Azure-ban hozzárendelt nyilvános, magánhálózati vagy szolgáltatói IP-címének használatával. A klasszikus üzemi modellel létrehozott virtuális gépek esetében ne használja a felhőalapú szolgáltatás nyilvános IP-címét.
 
-![Indítsa el az alkalmazást egy másik virtuális gépről](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
+![alkalmazás elindítása egy másik virtuális gépről](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
 
-Például ha az alkalmazás egy webkiszolgáló, próbálja meg elérni egy weblap egy böngészőből, egy másik virtuális Gépet az azonos virtuális hálózatba.
+Ha például az alkalmazás egy webkiszolgáló, próbáljon meg hozzáférni egy weboldalhoz egy másik, ugyanazon a virtuális hálózaton lévő virtuális GÉPEN.
 
-Ha az alkalmazás férhet hozzá, lépjen a [3. lépés](#step3).
+Ha elérheti az alkalmazást, folytassa a [3](#step3). lépéssel.
 
-Ha nem tudja elérni az alkalmazást, ellenőrizze a következő beállításokat:
+Ha nem fér hozzá az alkalmazáshoz, ellenőrizze a következő beállításokat:
 
-* A cél virtuális gép gazdagép tűzfala engedélyezi-e a bejövő kérelem és válasz kimenő forgalmat.
-* Behatolásészlelés vagy a cél virtuális Gépen futó szoftver hálózatfigyelési engedélyezi-e a forgalmat.
-* Cloud Services végpontjainak vagy a hálózati biztonsági csoportok engedélyezi a forgalmat:
-  * [A Klasszikus modell - végpontok kezelése a Cloud Services](../../cloud-services/cloud-services-enable-communication-role-instances.md)
+* A célként megadott virtuális gépen a gazdagép tűzfala lehetővé teszi a bejövő kérelmek és a kimenő válaszok forgalmát.
+* A cél virtuális gépen futó behatolás-észlelési vagy Hálózatfigyelő szoftver lehetővé teszi a forgalmat.
+* Cloud Services végpontok vagy hálózati biztonsági csoportok engedélyezik a forgalmat:
+  * [Klasszikus modell – Cloud Services-végpontok kezelése](../../cloud-services/cloud-services-enable-communication-role-instances.md)
   * [Resource Manager-modell – hálózati biztonsági csoportok kezelése](../../virtual-network/manage-network-security-group.md)
-* Egy külön összetevő fut a virtuális Gépen az elérési út között a teszt virtuális gép és a virtuális gép, például a terheléselosztó vagy a tűzfal engedélyezi-e a forgalmat.
+* A virtuális gépen a teszt virtuális gép és a virtuális gép (például terheléselosztó vagy tűzfal) közötti útvonalon futó különálló összetevő engedélyezi a forgalmat.
 
-Windows-alapú virtuális gépen fokozott biztonságú Windows tűzfal segítségével határozza meg, hogy a tűzfalszabályok kizárása az alkalmazás bejövő és kimenő forgalmat.
+Windows-alapú virtuális gépen a fokozott biztonságú Windows tűzfal használatával állapítsa meg, hogy a tűzfalszabályok kizárják-e az alkalmazás bejövő és kimenő forgalmát.
 
-## <a id="step3"></a>3. lépés: A virtuális hálózaton kívülről származó hozzáférés alkalmazás
-Próbálja meg elérni az alkalmazást a virtuális hálózaton kívüli számítógépről, mint a virtuális gép, amelyen fut az alkalmazás. Egy másik hálózatot használja az eredeti ügyfélszámítógépen.
+## <a id="step3"></a>3. lépés: Alkalmazás elérése a virtuális hálózaton kívülről
+Próbáljon meg hozzáférni az alkalmazáshoz a virtuális hálózaton kívüli számítógépről, mert az alkalmazást futtató virtuális gép. Használjon másik hálózatot az eredeti ügyfélszámítógépként.
 
-![Indítsa el az alkalmazást a virtuális hálózaton kívüli számítógépről](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
+![alkalmazás elindítása a virtuális hálózaton kívüli számítógépről](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
 
-Például ha az alkalmazás egy webkiszolgáló, próbálja meg elérni a weblap a számítógépen, amely nem a virtuális hálózatban futó közvetlenül a böngészőből.
+Ha például az alkalmazás egy webkiszolgáló, akkor próbáljon meg hozzáférni a weboldalhoz egy olyan böngészőben, amely nem a virtuális hálózaton található.
 
-Ha nem tudja elérni az alkalmazást, ellenőrizze a következő beállításokat:
+Ha nem fér hozzá az alkalmazáshoz, ellenőrizze a következő beállításokat:
 
-* A virtuális gépek a klasszikus üzemi modellel létrehozott:
+* A klasszikus üzembe helyezési modellel létrehozott virtuális gépek esetén:
   
-  * Győződjön meg arról, hogy a végpont-konfiguráció a virtuális gép számára engedélyezi a bejövő forgalmat, különösen a protokollt (TCP vagy UDP) és a nyilvános és privát portszámokat.
-  * Ellenőrizze, hogy a végponti hozzáférés-vezérlési listák (ACL) nem akadályozzák az internetről bejövő forgalmat.
-  * További információkért lásd: [hogyan állítsa be végpontok egy virtuális géphez](../windows/classic/setup-endpoints.md).
-* A létrehozott virtuális gépek a Resource Manager üzemi modell használatával:
+  * Ellenőrizze, hogy a virtuális gép végpont-konfigurációja lehetővé teszi-e a bejövő forgalmat, különösen a protokollt (TCP vagy UDP), valamint a nyilvános és a privát portszámot.
+  * Ellenőrizze, hogy a végponton lévő hozzáférés-vezérlési listák (ACL-ek) nem akadályozzák-e az internetről érkező bejövő forgalmat.
+  * További információ: végpontok [beállítása virtuális géphez](../windows/classic/setup-endpoints.md).
+* A Resource Manager-alapú üzemi modell használatával létrehozott virtuális gépek esetén:
   
-  * Győződjön meg arról, hogy a virtuális gép bejövő NAT-szabály konfigurációjának engedélyezi a bejövő forgalmat, különösen a protokollt (TCP vagy UDP) és a nyilvános és privát portszámokat.
-  * Győződjön meg arról, hogy a hálózati biztonsági csoportok engedélyezi a bejövő kérelem és válasz kimenő forgalmat.
-  * További információkért lásd: [Mi az a hálózati biztonsági csoport?](../../virtual-network/security-overview.md)
+  * Ellenőrizze, hogy a virtuális gép bejövő NAT-szabályának konfigurációja lehetővé teszi-e a bejövő forgalmat, különösen a protokollt (TCP vagy UDP), valamint a nyilvános és a privát portszámot.
+  * Ellenőrizze, hogy a hálózati biztonsági csoportok engedélyezik-e a bejövő kérelmeket és a kimenő válaszok forgalmát.
+  * További információ: [Mi az a hálózati biztonsági csoport?](../../virtual-network/security-overview.md)
 
-Ha a virtuális gép vagy a végpont egy elosztott terhelésű készlet tagjai:
+Ha a virtuális gép vagy végpont egy elosztott terhelésű készlet tagja:
 
-* Győződjön meg arról, hogy a mintavétel protocol (TCP vagy UDP) és a portszám helyességéről.
-* Ha a mintavételi protokoll és port eltér attól az elosztott terhelésű készlet protokoll és port:
-  * Győződjön meg arról, hogy az alkalmazás figyeli-e a mintavételi protocol (TCP vagy UDP) és a portszám (használata **netstat – a** a cél virtuális Gépen).
-  * Győződjön meg arról, hogy a gazdagép tűzfal a cél virtuális Gépen engedélyezi a bejövő állapotminta iránti kérelem és a kimenő mintavételi válaszok forgalmat.
+* Ellenőrizze, hogy a mintavételi protokoll (TCP vagy UDP) és a portszám helyes-e.
+* Ha a mintavételi protokoll és a port eltér a terheléselosztási készlet protokolljának és portjától:
+  * Győződjön meg arról, hogy az alkalmazás figyeli a mintavételi protokollt (TCP vagy UDP) és a portszámot (használja a **netstat – a** elemet a cél virtuális gépen).
+  * Győződjön meg arról, hogy a célként megadott virtuális gépen a gazdagép tűzfala lehetővé teszi a bejövő mintavételi kérelmek és a kimenő mintavételi forgalom megterhelését.
 
-Ha elérhetik az alkalmazást, győződjön meg arról, hogy engedélyezi-e az internetes edge-eszköz:
+Ha hozzáfér az alkalmazáshoz, győződjön meg arról, hogy az internetes peremhálózati eszköz lehetővé teszi a következőket:
 
-* A kimenő kérelem alkalmazásforgalomba az ügyfélszámítógépről, az Azure virtuális gépen.
-* A bejövő kérelem érkező az Azure virtuális gépen.
+* A kimenő alkalmazás az ügyfélszámítógépről az Azure-beli virtuális gépre irányuló adatforgalmat kéri le.
+* A bejövő alkalmazás válaszának forgalma az Azure-beli virtuális gépről.
 
-## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>Lépés 4 nem tud hozzáférni az alkalmazáshoz, használatával IP ellenőrzéséhez ellenőrizze a beállításokat. 
+## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>4\. lépés ha nem fér hozzá az alkalmazáshoz, az IP-ellenőrzés használatával ellenőrizze a beállításokat. 
 
-További információkért lásd: [Figyelés áttekintése az Azure network](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
+További információ: az [Azure Network monitoring áttekintése](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 
 ## <a name="additional-resources"></a>További források
-[A Windows-alapú Azure virtuális gép távoli asztali kapcsolatok hibaelhárítása](troubleshoot-rdp-connection.md)
+[Windows-alapú Azure-beli virtuális gépekkel létesített Távoli asztal-kapcsolatok hibáinak megoldása](troubleshoot-rdp-connection.md)
 
-[Egy Linux-alapú Azure virtuális gép Secure Shell (SSH) kapcsolatok hibaelhárítása](troubleshoot-ssh-connection.md)
+[A Secure Shell-(SSH-) kapcsolatok hibakeresése Linux-alapú Azure-beli virtuális gépeken](troubleshoot-ssh-connection.md)
 
 

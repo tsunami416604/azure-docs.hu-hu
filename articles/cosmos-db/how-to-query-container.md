@@ -3,23 +3,23 @@ title: Tárolók lekérdezése az Azure Cosmos DB-ben
 description: Megismerheti, hogyan kérdezhet le tárolókat az Azure Cosmos DB-ben
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: cf14e005de3710f26bfdbab7cc0dac87e0cf000e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 799fa43ad6ff12e5fa84326cbb41842e76daff12
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243752"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092969"
 ---
-# <a name="query-an-azure-cosmos-container"></a>A lekérdezés egy Azure Cosmos-tárolóhoz
+# <a name="query-an-azure-cosmos-container"></a>Azure Cosmos-tároló lekérdezése
 
-Ez a cikk bemutatja, hogyan kérdezhet le egy tárolót az Azure Cosmos DB (gyűjtemény, graph vagy tábla).
+Ez a cikk azt ismerteti, hogyan lehet lekérdezni egy tárolót (gyűjtemény, gráf vagy tábla) a Azure Cosmos DBban.
 
 ## <a name="in-partition-query"></a>Partíción belüli lekérdezés
 
-Tárolók, adatokat kérdezhet le, ha a lekérdezés a partíció megadott szűrőjének, amikor az Azure Cosmos DB automatikusan kezeli a lekérdezést. A lekérdezés a partíciós kulcs szűrőben megadott értékeknek megfelelő partíciókhoz irányítja. Ha például a következő lekérdezés irányítja a rendszer a `DeviceId` partíció található, a megfelelő partíciókulcs-értékkel dokumentumokat tartalmazó `XMS-0001`.
+Ha tárolóból kérdez le adatait, ha a lekérdezéshez meg van adva egy partíciós kulcs szűrő, Azure Cosmos DB automatikusan kezeli a lekérdezést. A lekérdezés a szűrőben megadott partíciós kulcs értékeinek megfelelő partíciókhoz irányítja a lekérdezést. Például a következő lekérdezés a `DeviceId` partícióra van irányítva, amely a partíciós kulcs értékének `XMS-0001`megfelelő összes dokumentumot tartalmazza.
 
 ```csharp
 // Query using partition key into a class called, DeviceReading
@@ -30,9 +30,9 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 
 ## <a name="cross-partition-query"></a>Többpartíciós kiterjedő lekérdezés
 
-A következő lekérdezés nem tartalmaz egy szűrőt a partíciókulcs (`DeviceId`), és az összes partíciót, amelyen fut a partíció indexe alapján van rendezve. Több partícióra kiterjedő lekérdezések futtatása, állítsa be `EnableCrossPartitionQuery` igaz (vagy `x-ms-documentdb-query-enablecrosspartition`  a REST API-ban).
+A következő lekérdezés nem rendelkezik szűrővel a partíciós kulcson`DeviceId`(), és az összes partícióra partíciókulcsra, ahol a partíció indexén fut. A partíciók közötti lekérdezés futtatásához állítsa `EnableCrossPartitionQuery` az igaz értéket ( `x-ms-documentdb-query-enablecrosspartition`vagy  a REST API).
 
-Az EnableCrossPartitionQuery tulajdonság egy logikai értéket fogad el. Ha a beállítása igaz értékre, és ha a lekérdezés nem rendelkezik egy partíciókulcsot, az Azure Cosmos DB ventilátorok fel horizontálisan a lekérdezést a partíciók között. A ventilátor ki az összes partíciót az egyes lekérdezések alapján történik. Olvassa el a lekérdezés eredményeit, hogy az ügyfélalkalmazások kell a FeedResponse eredményeinek használják, és ellenőrizze a continuationtoken argumentumot használja tulajdonság. Olvassa el az összes eredmény, hagyja a léptetés az adatokon, mindaddig, amíg a continuationtoken argumentumot használja má hodnotu null. 
+A EnableCrossPartitionQuery tulajdonság egy logikai értéket fogad el. Ha igaz értékre van állítva, és ha a lekérdezés nem rendelkezik partíciós kulccsal, Azure Cosmos DB a partíciók közötti lekérdezést. A ventilátort úgy teheti meg, hogy egyéni lekérdezéseket bocsát ki az összes partícióra. A lekérdezés eredményeinek olvasásához az ügyfélalkalmazások a FeedResponse származó eredményeket használják, és a Continuationtoken argumentumot használja tulajdonságot kell megkeresni. Az összes eredmény beolvasásához tartsa ismétlődően az értékeket, amíg a Continuationtoken argumentumot használja null nem lesz. 
 
 ```csharp
 // Query across partition keys into a class called, DeviceReading
@@ -42,11 +42,11 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 ```
 
-Az Azure Cosmos DB támogatja az aggregátumfüggvények COUNT, MIN, MAX és átlagos keresztül tárolók SQL használatával. Az aggregátumfüggvények keresztül tárolók kezdődően az SDK-verzió 1.12.0 és újabb verziók. Lekérdezések tartalmaznia kell egy egyetlen összesítő operátort, és egyetlen értéket kell adni a leképezésben.
+Azure Cosmos DB támogatja az összesítő függvények DARABSZÁMát, a MIN, a MAXIMUMot és az ÁTLAGot a tárolók számára az SQL használatával. A tárolók összesített függvényei az SDK-verzió 1.12.0 és újabb verziójától kezdve. A lekérdezéseknek tartalmazniuk kell egyetlen aggregált operátort, és tartalmaznia kell egy értéket a vetítésben.
 
 ## <a name="parallel-cross-partition-query"></a>Párhuzamos többpartíciós lekérdezés
 
-Azure Cosmos DB SDK 1.9.0-s és újabb verziói támogatják a párhuzamos lekérdezés-végrehajtási lehetőségeket. A párhuzamos többpartíciós lekérdezésekkel kis késésű többpartíciós lekérdezések hajthatók végre. A következő lekérdezés például a partíciókon való párhuzamos futtatásra van konfigurálva.
+Az Azure Cosmos DB SDK-k 1.9.0, és később támogatják a párhuzamos lekérdezés-végrehajtási lehetőségeket. A párhuzamos többpartíciós lekérdezésekkel kis késésű többpartíciós lekérdezések hajthatók végre. A következő lekérdezés például a partíciókon való párhuzamos futtatásra van konfigurálva.
 
 ```csharp
 // Cross-partition Order By Query with parallel execution
@@ -59,15 +59,15 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 
 A lekérdezések párhuzamos végrehajtását az alábbi paraméterek beállításával kezelheti:
 
-- **MaxDegreeOfParallelism**: A tároló partíciók állítja be egyidejű hálózati kapcsolatok maximális számát. Ha ez a tulajdonság a -1, az SDK kezeli a párhuzamosság foka. Ha a `MaxDegreeOfParallelism` nem megadott, vagy az értéke 0, amely az alapértelmezett érték, egy egyetlen hálózati kapcsolat a tároló partíciókra.
+- **Maxanalyticsunits**: Beállítja a tároló partícióinak egyidejű hálózati kapcsolatainak maximális számát. Ha a tulajdonságot-1 értékre állítja, az SDK kezeli a párhuzamosság mértékét. Ha a `MaxDegreeOfParallelism` nincs megadva, vagy 0 értékre van állítva, amely az alapértelmezett érték, a tároló partícióinak egyetlen hálózati kapcsolatai vannak.
 
-- **MaxBufferedItemCount**: Ügyletek ügyféloldali memóriahasználat és a késés lekérdezése. Ha kihagyja ezt a beállítást, vagy a -1 értékre állítva, az SDK kezeli a párhuzamos lekérdezés-végrehajtás során pufferelt elemek számát.
+- **MaxBufferedItemCount**: Kereskedik a lekérdezés késése és az ügyféloldali memória kihasználtsága között. Ha ez a beállítás nincs megadva, vagy az-1 értékre van állítva, az SDK kezeli a párhuzamos lekérdezés végrehajtása során pufferelt elemek számát.
 
-A gyűjtemény állapota azonos, a a párhuzamos lekérdezés ugyanazon sorrendben, mint a soros lekérdezés eredményeket ad vissza. A rendezést (ORDER BY, TOP) operátorok tartalmazó partícióra kiterjedő lekérdezések végrehajtásakor az Azure Cosmos DB SDK bocsát ki a párhuzamos lekérdezés partíciók között. Egyesíti a részlegesen tárolt eredményeket az ügyféloldalon, globálisan rendezett eredményeket.
+A gyűjtemény azonos állapotában a párhuzamos lekérdezés a soros végrehajtással megegyező sorrendben adja vissza az eredményeket. Ha több partíciós lekérdezést is végrehajt, amely tartalmazza a rendezési operátorokat (ORDER BY, TOP), akkor a Azure Cosmos DB SDK párhuzamosan kiadja a lekérdezést a partíciók között. A részben rendezett eredményeket egyesíti az ügyfél oldalán, hogy globálisan rendezett eredményeket hozzon létre.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Azure Cosmos DB particionálási a következő cikkekben talál:
+A particionálással kapcsolatos tudnivalókat az alábbi cikkekben találja Azure Cosmos DB:
 
 - [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 - [Szintetikus partíciókulcsok az Azure Cosmos DB-ben](synthetic-partition-keys.md)
