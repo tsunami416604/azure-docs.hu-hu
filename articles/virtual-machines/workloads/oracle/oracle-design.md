@@ -9,22 +9,21 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: ebe6f27818df8407504e4254f16d952aa298b6cc
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c2c2d1a9affe13d485bfeef52c781ed259b53bc8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348322"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100114"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Oracle-adatbázis tervezése és megvalósítása az Azure-ban
 
-## <a name="assumptions"></a>Előfeltevésekbe
+## <a name="assumptions"></a>Feltételezések
 
 - Egy Oracle-adatbázist szeretne áttelepíteni a helyszínről az Azure-ba.
 - Az áttelepíteni kívánt Oracle Databasehoz tartozó [diagnosztikai csomaggal](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm) rendelkezik
@@ -159,7 +158,7 @@ A hálózati sávszélességre vonatkozó követelmények alapján különböző
 
 - *Prémium szintű Storage-lemezek*: Ezek a lemezek a legmegfelelőbbek az éles számítási feladatokhoz. A Premium Storage olyan virtuálisgép-lemezeket támogat, amelyek adott méretű virtuális gépekhez, például a DS, a DSv2, a GS és az F sorozatú virtuális gépekhez csatlakoztathatók. A prémium szintű lemez különböző méretekkel rendelkezik, és az 32 GB és 4 096 GB közötti hosszúságú lemezek közül választhat. Mindegyik lemez mérete saját teljesítményre vonatkozó előírásokkal rendelkezik. Az alkalmazás követelményeitől függően egy vagy több lemezt is csatolhat a virtuális géphez.
 
-Amikor új felügyelt lemezt hoz létre a portálról, kiválaszthatja a  használni kívánt lemez típusát. Ne feledje, hogy az összes rendelkezésre álló lemez nem jelenik meg a legördülő menüben. Egy adott virtuálisgép-méret kiválasztása után a menü csak a virtuális gép méretétől függően elérhető Premium Storage SKU-t jeleníti meg.
+Amikor új felügyelt lemezt hoz létre a portálról, kiválaszthatja a használni kívánt lemez típusát. Ne feledje, hogy az összes rendelkezésre álló lemez nem jelenik meg a legördülő menüben. Egy adott virtuálisgép-méret kiválasztása után a menü csak a virtuális gép méretétől függően elérhető Premium Storage SKU-t jeleníti meg.
 
 ![A felügyelt lemez oldalának képernyőképe](./media/oracle-design/premium_disk01.png)
 

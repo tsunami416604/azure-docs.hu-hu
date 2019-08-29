@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 8ca87f18a91af3937f8b4dd1148ecad8507e0dd5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 5e1fe6252f396a4585b5d7d7190728b79229d5c7
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849062"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073977"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows rendszerű számítógépek összekapcsolásának Azure Monitor
 
@@ -204,6 +204,6 @@ Az eredményül kapott keresési eredmények között meg kell jelennie a szívv
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át [a Windows és Linux rendszerhez készült log Analytics ügynök](agent-manage.md) felügyeletét és karbantartását, és Ismerje meg, hogyan kezelheti az ügynököt a gépek üzembe helyezési életciklusa során.  
+- Tekintse át a [Windows és Linux rendszerhez készült log Analytics ügynök felügyeletét és karbantartását](agent-manage.md) , hogy megtudja, hogyan lehet újrakonfigurálni, frissíteni vagy eltávolítani az ügynököt a virtuális gépről.
 
 - Ha problémába ütközik az ügynök telepítésekor vagy felügyeletekor, tekintse át [a Windows-ügynök hibaelhárítását](agent-windows-troubleshoot.md) ismertető témakört.

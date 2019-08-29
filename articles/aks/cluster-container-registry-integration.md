@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: mlearned
-ms.openlocfilehash: 6c06453d479ae55ceb1c05a7ee8a29ce19a7a13b
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 1f07581be8fc416f8aae5eec1460ca3d33bda8f9
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034975"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114236"
 ---
 # <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Előzetes verzió – hitelesítés a Azure Container Registry az Azure Kubernetes Service-ben
 
@@ -59,7 +59,7 @@ Ez a lépés több percet is igénybe vehet.
 
 ## <a name="create-acr-integration-for-existing-aks-clusters"></a>ACR-integráció létrehozása meglévő AK-fürtökhöz
 
-Az ACR integrálása meglévő ACR-fürtökkel az alábbi, az **ACR-Name** és az **ACR-Resource-ID azonosítók** érvényes értékeinek megadásával.
+Az alábbihoz tartozó **ACR-Name** vagy **ACR-Resource-id** érvényes értékek megadásával integrálhat egy meglévő, meglévő "ACR" típusú fürtöket.
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --enable-acr --acr <acrName>

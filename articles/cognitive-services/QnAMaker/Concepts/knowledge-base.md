@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 8cd63913c0e96d496aa617369601c1dd121b4b46
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 2b3e74f337cf8f57321c3a8d94f8191fc3ebb530
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542842"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093904"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Mit jelent a QnA Maker Knowledge base?
 
@@ -81,9 +81,9 @@ A **felhasználó lekérdezése** az a kérdés, hogy a végfelhasználó megké
 }
 ```
 
-A választ a tulajdonságok, például a [scoreThreshold](./confidence-score.md#choose-a-score-threshold), a [Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)és a [stringFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags)tulajdonságainak beállításával szabályozhatja.
+A választ a tulajdonságok, például a [scoreThreshold](./confidence-score.md#choose-a-score-threshold), a [Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)és a [strictFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags)tulajdonságainak beállításával szabályozhatja.
 
-A beszélgetési [tartalmat](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) többfordulatos [funkciókkal](../how-to/multiturn-conversation.md) használva megtarthatja a beszélgetést a kérdések és válaszok pontosítására, hogy megtalálja a megfelelő és a végső választ.
+A [](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) beszélgetési kontextusban többfordulatos [funkciókkal](../how-to/multiturn-conversation.md) megtarthatja a beszélgetést a kérdések és válaszok pontosításával, hogy megtalálja a megfelelő és a végső választ.
 
 ### <a name="the-response-from-a-call-to-generate-answer"></a>A válasz meghívása a válasz létrehozásához
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: c3c3252ec2fd850a763bbbf089d470df5173843f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 86e0f09e957df308f3af868d9590951f29d226b1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612539"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073892"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Oktatóanyag: Windows Server virtuális gépek csatlakoztatása felügyelt tartományokhoz
 
@@ -153,15 +153,23 @@ Ha létrehozta a virtuális gépet, és létrehoz egy RDP-kapcsolatot, most csat
 1. Az Azure AD DS felügyelt tartományhoz való csatlakozás folyamatának befejezéséhez indítsa újra a virtuális gépet.
 
 > [!TIP]
-> Tartományhoz is csatlakozhat egy virtuális géphez a PowerShell és a [Add-Computer][add-computer] parancsmag használatával. A következő példa csatlakozik a *contoso* tartományhoz, majd újraindítja a virtuális gépet. Ha a rendszer kéri, adja meg az *Azure ad DC-rendszergazdák* csoportjához tartozó felhasználó hitelesítő adatait:
+> Tartományhoz csatlakoztathat egy virtuális gépet a PowerShell használatával a [Add-Computer][add-computer] parancsmaggal. A következő példa csatlakozik a *contoso* tartományhoz, majd újraindítja a virtuális gépet. Ha a rendszer kéri, adja meg az *Azure ad DC-rendszergazdák* csoportjához tartozó felhasználó hitelesítő adatait:
 >
 > `Add-Computer -DomainName CONTOSO -Restart`
+>
+> Ha tartományhoz szeretne csatlakozni egy virtuális géphez a csatlakoztatása nélkül, és manuálisan konfigurálja a kapcsolatot, akkor a [set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell parancsmag használatát is megismerheti.
 
 A Windows Server rendszerű virtuális gép újraindítása után az Azure AD DS felügyelt tartományban alkalmazott házirendeket a rendszer leküldi a virtuális géphez. Most már bejelentkezhet a Windows Server rendszerű virtuális gépre is a megfelelő tartományi hitelesítő adatok használatával.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A következő oktatóanyagban ezt a Windows Server rendszerű virtuális gépet használja az Azure AD DS felügyelt tartomány felügyeletét lehetővé teszi a felügyeleti eszközök telepítéséhez. Ha nem szeretné folytatni az oktatóanyag-sorozatot, tekintse át a következő karbantartási lépéseket az [RDP](#disable-rdp) letiltásához vagy [a virtuális gép törléséhez](#delete-the-vm). Ellenkező esetben [folytassa a következő oktatóanyaggal](#next-steps).
+
+### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>Csatlakozás a virtuális géphez az Azure AD DS felügyelt tartományból
+
+Ha el szeretné távolítani a virtuális gépet az Azure AD DS felügyelt tartományból, kövesse újra a lépéseket a [virtuális gép tartományhoz](#join-the-vm-to-the-azure-ad-ds-managed-domain)való csatlakoztatásához. Az Azure AD DS felügyelt tartományhoz való csatlakozás helyett válassza a munkacsoporthoz való csatlakozást,például az alapértelmezett munkacsoportot. A virtuális gép újraindítása után a számítógép-objektum el lesz távolítva az Azure AD DS felügyelt tartományból.
+
+Ha [törli a virtuális gépet](#delete-the-vm) a tartományból való leválasztás nélkül, egy árva számítógép-objektum marad az Azure AD DS.
 
 ### <a name="disable-rdp"></a>RDP letiltása
 
@@ -231,3 +239,4 @@ Az Azure AD DS felügyelt tartományának felügyeletéhez konfigurálja a felü
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
 [jit-access]: ../security-center/security-center-just-in-time.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
+[set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

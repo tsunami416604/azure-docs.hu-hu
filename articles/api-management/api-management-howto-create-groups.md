@@ -1,6 +1,6 @@
 ---
-title: Csoportok használata az Azure API Management fejlesztői fiókok kezelése |} A Microsoft Docs
-description: Csoportok használata az Azure API Management fejlesztői fiókok kezelése
+title: Fejlesztői fiókok kezelése a csoportok használatával az Azure API Managementban | Microsoft Docs
+description: Ismerje meg, hogyan kezelheti a fejlesztői fiókokat az Azure-beli csoportok használatával API Management
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,20 +9,19 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 5392cf5463dd0b11d1ce53856c8e4e2e788892b0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f83b91933e2aca4bf77fcab4a30f2123f4eb4ed0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60658437"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073639"
 ---
-# <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Hogyan hozhat létre és csoportok használata az Azure API Management fejlesztői fiókok kezelése
+# <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Csoportok létrehozása és használata a fejlesztői fiókok kezeléséhez az Azure-ban API Management
 
-Az API Management szolgáltatásban csoportok használatával szabályozható a fejlesztők hozzáférése a termékhez. Termékek először végzett csoportok számára látható, és ezeket a csoportokat a fejlesztők megtekintheti és előfizethet azokra a termékekre a csoportokhoz társított majd. 
+Az API Management szolgáltatásban csoportok használatával szabályozható a fejlesztők hozzáférése a termékhez. A termékek először láthatók a csoportok számára, majd a csoportokban lévő fejlesztők megtekinthetik és előfizethetik a csoportokhoz társított termékeket. 
 
 Az API Management az alábbi megváltoztathatatlan rendszercsoportokkal rendelkezik:
 
@@ -30,75 +29,75 @@ Az API Management az alábbi megváltoztathatatlan rendszercsoportokkal rendelke
 * **Fejlesztők** – A fejlesztői portál hitelesített felhasználói tartoznak ebbe a csoportba. A fejlesztők olyan ügyfelek, akik alkalmazásokat hoznak létre az API-k segítségével. A fejlesztők hozzáférhetnek a fejlesztői portálhoz, és olyan alkalmazásokat készíthetnek, amelyek egy API műveleteit hívják meg.
 * **Vendégek** – A fejlesztői portál nem hitelesített felhasználói tartoznak ebbe a csoportba, például az egyik API Management példány fejlesztői portálját meglátogató leendő ügyfelek. A vendégek kaphatnak bizonyos szintű, csak olvasási hozzáférést, például megtekinthetnek API-kat, de nem hívhatják meg őket.
 
-Ezeken a rendszercsoportokon kívül a rendszergazdák létrehozhatnak egyéni csoportokat vagy [kihasználhatja a társított Azure Active Directory-bérlők külső csoportjait][leverage external groups in associated Azure Active Directory tenants]. A fejlesztők mellett az egyéni és külső csoportoknak is lehet adni láthatóságot és hozzáférést az API-termékekhez. Például egy adott partnerszervezet fejlesztői számára létre lehet hozni egy egyéni csoportot, és hozzáférést lehet nekik biztosítani a megfelelő API-kat tartalmazó termék API-jaihoz. Egy felhasználó egyszerre több csoport tagja is lehet.
+Ezeken a rendszercsoportokon kívül a rendszergazdák létrehozhatnak egyéni csoportokat vagy [áttelepíthetik a társított Azure Active Directory-bérlők külső csoportjait is][leverage external groups in associated Azure Active Directory tenants]. A fejlesztők mellett az egyéni és külső csoportoknak is lehet adni láthatóságot és hozzáférést az API-termékekhez. Például egy adott partnerszervezet fejlesztői számára létre lehet hozni egy egyéni csoportot, és hozzáférést lehet nekik biztosítani a megfelelő API-kat tartalmazó termék API-jaihoz. Egy felhasználó egyszerre több csoport tagja is lehet.
 
-Ez az útmutató ismerteti, hogyan az API Management példányok rendszergazdái új csoportok hozzáadása és rendelje azokat termékek és a fejlesztők számára.
+Ez az útmutató bemutatja, hogy egy API Management-példány rendszergazdája hogyan adhat hozzá új csoportokat, és hogyan társíthatja azokat termékekhez és fejlesztőknek.
 
-Csoportok létrehozása és kezelése a közzétevő portálon, valamint létrehozhat és kezelheti a csoportokat az API Management REST API használatával [csoport](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) entitás.
+A kiadói portálon a csoportok létrehozása és kezelése mellett a API Management REST API [csoport](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) entitás használatával is létrehozhatja és kezelheti a csoportokat.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Végezze el a cikkben leírt feladatok: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
+A cikkben szereplő feladatok elvégzése: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-group"> </a>Hozzon létre egy csoportot
+## <a name="create-group"> </a>Csoport létrehozása
 
-Ez a szakasz bemutatja, hogyan adhat hozzá egy új csoportot az API Management-fiókhoz.
+Ez a szakasz bemutatja, hogyan vehet fel új csoportot a API Management-fiókjába.
 
-1. Válassza ki a **csoportok** lapon, a képernyő bal oldalán.
-2. Kattintson a **+ Hozzáadás**.
-3. Adjon meg egy egyedi nevet a csoport és a egy leírást.
+1. Válassza a **csoportok** fület a képernyő bal oldalán.
+2. Kattintson a **+ Hozzáadás**gombra.
+3. Adjon meg egy egyedi nevet a csoportnak, és egy opcionális leírást.
 4. Nyomja meg a **Create** (Létrehozás) gombot.
 
     ![Új csoport hozzáadása](./media/api-management-howto-create-groups/groups001.png)
 
-A csoport létrehozása után felkerül a **csoportok** listája. <br/>Szerkesztheti a **neve** vagy **leírása** a csoporthoz, kattintson a csoport nevét és **beállítások**.<br/>A csoport törléséhez kattintson a nevére, a csoportot, majd nyomja le **törlése**.
+A csoport létrehozása után a rendszer hozzáadja a **csoportok** listájához. <br/>A csoport **nevének** vagy **leírásának** szerkesztéséhez kattintson a csoport és a **Beállítások**nevére.<br/>A csoport törléséhez kattintson a csoport nevére, majd nyomja le a **delete**billentyűt.
 
-Most, hogy a csoport jön létre, termékek és a fejlesztők társított lehet.
+Most, hogy létrejött a csoport, hozzá lehet rendelni a termékekhez és a fejlesztőhöz.
 
-## <a name="associate-group-product"> </a>Csoport hozzárendelése egy termékkel
+## <a name="associate-group-product"> </a>Csoport hozzárendelése termékhez
 
-1. Válassza ki a **termékek** lap bal oldalán.
-2. Kattintson a kívánt termék nevét.
-3. Nyomja meg **hozzáférés-vezérlés**.
-4. Kattintson a **+ csoport hozzáadása**.
+1. Válassza a bal oldali **termékek** lapot.
+2. Kattintson a kívánt termék nevére.
+3. Kattintson a **hozzáférés-vezérlés**gombra.
+4. Kattintson a **+ Csoport hozzáadása**elemre.
 
-    ![Csoport hozzárendelése egy termékkel](./media/api-management-howto-create-groups/groups002.png)
+    ![Csoport hozzárendelése termékhez](./media/api-management-howto-create-groups/groups002.png)
 5. Válassza ki a hozzáadni kívánt csoportot.
 
-    ![Csoport hozzárendelése egy termékkel](./media/api-management-howto-create-groups/groups003.png)
+    ![Csoport hozzárendelése termékhez](./media/api-management-howto-create-groups/groups003.png)
 
-    Csoport eltávolítása a termékből, kattintson a **törlése**.
+    Ha el szeretne távolítani egy csoportot a termékből, kattintson a **Törlés**gombra.
 
     ![Csoport törlése](./media/api-management-howto-create-groups/groups004.png)
 
-Miután egy csoport társítva egy terméket, fejlesztők számára, hogy a csoportban megtekintheti, és iratkozzon fel a termék.
+Ha egy termék társítva van egy csoporthoz, akkor a csoport fejlesztői megtekinthetik és előfizethetik a terméket.
 
 > [!NOTE]
-> Azure Active Directory-csoportok hozzáadása, lásd: [hogyan engedélyezheti az Azure Active Directory használatával az Azure API Management fejlesztői fiókok](api-management-howto-aad.md).
+> Azure Active Directory csoportok hozzáadásával kapcsolatban lásd: [fejlesztői fiókok engedélyezése Azure Active Directory használatával az Azure API Managementban](api-management-howto-aad.md).
 
-## <a name="associate-group-developer"> </a>Csoportok társítása a fejlesztőkhöz
+## <a name="associate-group-developer"> </a>Csoportok hozzárendelése a fejlesztőknek
 
-Ez a szakasz bemutatja, hogyan csoportok társítása a tagokat.
+Ez a szakasz bemutatja, hogyan lehet csoportokat társítani a tagokkal.
 
-1. Válassza ki a **csoportok** lapon, a képernyő bal oldalán.
-2. Válassza ki **tagok**.
+1. Válassza a **csoportok** fület a képernyő bal oldalán.
+2. Válasszon **tagokat**.
 
-    ![Egy tag hozzáadása](./media/api-management-howto-create-groups/groups005.png)
-3. Nyomja meg **+ Hozzáadás** , és jelöljön ki egy tagot.
+    ![Tag hozzáadása](./media/api-management-howto-create-groups/groups005.png)
+3. Kattintson a **+ Hozzáadás** gombra, és válasszon ki egy tagot.
 
-    ![Egy tag hozzáadása](./media/api-management-howto-create-groups/groups006.png)
-4. Nyomja meg **kiválasztása**.
+    ![Tag hozzáadása](./media/api-management-howto-create-groups/groups006.png)
+4. Kattintson a **kiválasztás**gombra.
 
-A fejlesztői és a csoport között. a társítás hozzáadása után megtekintheti azt a **felhasználók** fülre.
+Miután hozzáadta a társítást a fejlesztőhöz és a csoporthoz, a **felhasználók** lapon tekintheti meg.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A fejlesztők egy csoporthoz való hozzáadása után megtekintheti, és előfizethet azokra a termékekre a csoport. További információkért lásd: [létrehozása és egy termék közzététele az Azure API Management][How create and publish a product in Azure API Management],
-* Csoportok létrehozása és kezelése a közzétevő portálon, valamint létrehozhat és kezelheti a csoportokat az API Management REST API használatával [csoport](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) entitás.
+* Miután hozzáadta a fejlesztőt egy csoporthoz, megtekintheti és előfizethet az adott csoporthoz társított termékekre. További információkért lásd: [termék létrehozása és közzététele az Azure-ban API Management][How create and publish a product in Azure API Management],
+* A kiadói portálon a csoportok létrehozása és kezelése mellett a API Management REST API [csoport](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) entitás használatával is létrehozhatja és kezelheti a csoportokat.
 
 [Create a group]: #create-group
 [Associate a group with a product]: #associate-group-product

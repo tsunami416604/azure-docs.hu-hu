@@ -3,15 +3,15 @@ title: Több független Azure Functions eseményindító létrehozása a Cosmos 
 description: Megtudhatja, hogyan konfigurálhat több független Azure Functions eseményindítót a Cosmos DBhoz eseményvezérelt architektúrák létrehozásához.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 315ac1025a2b05ec7b16f7f0b14b66f224905d92
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 987136bf8aba1313e1bef21f58691bf9a860ea32
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335675"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093383"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Több Azure Functions eseményindító létrehozása a Cosmos DBhoz
 
@@ -27,18 +27,18 @@ Az eseményvezérelt kiszolgáló nélküli folyamatok a [Cosmos DB Azure functi
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>Tárolók optimalizálása több eseményindítóhoz
 
-Cosmos DB esetén  a Azure functions trigger követelményeit figyelembe véve egy második tárolóra van szükség az állapot tárolásához, más néven a *bérletek tárolója*. Ez azt jelenti, hogy minden egyes Azure-függvényhez külön címbérleti tárolóra van szükség?
+Cosmos DB esetén a Azure functions trigger követelményeit figyelembe véve egy második tárolóra van szükség az állapot tárolásához, más néven a *bérletek tárolója*. Ez azt jelenti, hogy minden egyes Azure-függvényhez külön címbérleti tárolóra van szükség?
 
 Itt két lehetőség közül választhat:
 
-* Hozzon létre **egy-egy bérletek tárolót**egy függvényben: Ez a megközelítés további költségekre is fordítható, kivéve, ha [megosztott átviteli sebességű adatbázist](./set-throughput.md#set-throughput-on-a-database)használ. Ne feledje, hogy a tároló szintjének minimális átviteli [sebessége 400,](./request-units.md)a bérletek tároló esetében pedig csak a folyamat előrehaladásának és karbantartásának ellenőrzéséhez használatos.
+* Hozzon létre **egy-egy bérletek tárolót**egy függvényben: Ez a megközelítés további költségekre is fordítható, kivéve, ha [megosztott átviteli sebességű adatbázist](./set-throughput.md#set-throughput-on-a-database)használ. Ne feledje, hogy a tároló szintjének minimális átviteli sebessége 400 [](./request-units.md), a bérletek tároló esetében pedig csak a folyamat előrehaladásának és karbantartásának ellenőrzéséhez használatos.
 * Egyetlen címbérleti tárolóval kell rendelkeznie **, és** meg kell osztania az összes funkciója számára: Ez a második lehetőség a tárolóban lévő kiépített kérelmek jobb kihasználását teszi lehetővé, mivel több Azure Functionst is engedélyez a kiosztott átviteli sebesség megosztásához és használatához.
 
 Ennek a cikknek a célja a második lehetőség megvalósítása.
 
 ## <a name="configuring-a-shared-leases-container"></a>Megosztott bérletek tárolójának konfigurálása
 
-A megosztott bérletek tárolójának konfigurálásához az eseményindítók esetében az egyetlen további konfigurációt kell hozzáadnia [, ha a](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) C# `leaseCollectionPrefix` `LeaseCollectionPrefix` vagy az [attribútumot](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) használja, ha JavaScriptet használ. Az attribútum értékének logikai leírónak kell lennie az adott triggernél.
+A megosztott bérletek tárolójának konfigurálásához az eseményindítók esetében az egyetlen további konfigurációt kell hozzáadnia, ha a `LeaseCollectionPrefix` [](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) C# vagy `leaseCollectionPrefix` az [attribútumot](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) használja, ha JavaScriptet használ. Az attribútum értékének logikai leírónak kell lennie az adott triggernél.
 
 Ha például három eseményindítóval rendelkezik: az egyik az e-maileket küldi el, amelyek összesítést végeznek egy anyagbeli nézet létrehozásához, és az egyiket, amely egy másik tárhelyre küldi a módosításokat, a `LeaseCollectionPrefix` későbbi elemzésekhez az "e-maileket" is hozzárendelheti az elsőhöz, " "a második" és "analitika" a harmadik felé.
 

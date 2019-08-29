@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d64fe6c244ffcb6da2926dfea6efaa6da315727
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 3c14ff9c4f6d2bc2b1a62d1874d01950d09491c0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234456"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099820"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Az Azure HANA nagyméretű példányok vezérlése az Azure Portalon keresztül
 Ez a dokumentum azt ismerteti, hogyan jelennek meg a [Hana nagyméretű példányai](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) [Azure Portalban](https://portal.azure.com) , és milyen tevékenységek hajthatók végre az Ön számára üzembe helyezett Hana nagyméretű példány-egységekkel Azure Portal használatával. A HANA nagyméretű példányainak láthatósága Azure Portal egy Azure-erőforrás-szolgáltatón keresztül érhető el a HANA nagyméretű példányain, amelyek jelenleg nyilvános előzetes verzióban érhetők el
@@ -93,7 +92,7 @@ Egy másik nagyon fontos információ található az Áttekintés jobb alsó sar
 A fejléc jobb oldali oszlopában egy további mező tájékoztatja a HANA nagyméretű példány egységének energiagazdálkodási állapotáról.
 
 > [!NOTE]
-> A tápellátási állapot azt ismerteti, hogy a hardvereszköz be van-e kapcsolva vagy ki van-e kapcsolva. Nem ad információt az operációs rendszer működéséről. Egy HANA nagyméretű példány-egység újraindításakor kis idő alatt fog megjelenni, amikor az egység állapota úgy változik  , hogy a kezdési állapotba **lépjen.** Az **Indítás** állapota azt jelenti, hogy az operációs rendszer elindul, vagy az operációs rendszer teljesen elindult. Ennek eredményeképpen az egység újraindítása után azonnal be kell jelentkeznie az egységbe, amint az állapot megkezdésre vált.
+> A tápellátási állapot azt ismerteti, hogy a hardvereszköz be van-e kapcsolva vagy ki van-e kapcsolva. Nem ad információt az operációs rendszer működéséről. Egy HANA nagyméretű példány-egység újraindításakor kis idő alatt fog megjelenni, amikor az egység állapota úgy változik, hogy a **kezdési** állapotbalépjen. Az **Indítás** állapota azt jelenti, hogy az operációs rendszer elindul, vagy az operációs rendszer teljesen elindult. Ennek eredményeképpen az egység újraindítása után azonnal be kell jelentkeznie az egységbe, amint az állapot megkezdésre vált.
 > 
 
 Ha a "továbbiak" gombra kattint, további információk jelennek meg. Az egyik további információ a HANA nagyméretű példányok Stamp változatának felülvizsgálatát jeleníti meg, amely az egységet telepítette. Tekintse meg a HANA nagy példányszámú bélyegzők különböző változatait ismertető cikket az [Azure-ban (nagyméretű példányok) SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
@@ -130,7 +129,7 @@ A Linux operációs rendszer újraindításának kezdeményezése különböző 
 Az Újraindítás gomb megnyomásakor a rendszer megkérdezi, hogy valóban szeretné-e újraindítani az egységet. Az "igen" gomb megnyomásával erősítse meg, hogy az egység újra fog indulni.
 
 > [!NOTE]
-> Az újraindítási folyamat során egy kis idő fog megjelenni, ahol az egység állapota úgy  változik, hogy megkezdi az indítást az elindított állapotba. Az **Indítás** állapota azt jelenti, hogy az operációs rendszer elindul, vagy az operációs rendszer teljesen elindult. Ennek eredményeképpen az egység újraindítása után azonnal be kell jelentkeznie az egységbe, amint az állapot megkezdésre vált.
+> Az újraindítási folyamat során egy kis idő fog megjelenni, ahol az egység állapota úgy változik, hogy megkezdi az indítást az elindított állapotba. Az **Indítás** állapota azt jelenti, hogy az operációs rendszer elindul, vagy az operációs rendszer teljesen elindult. Ennek eredményeképpen az egység újraindítása után azonnal be kell jelentkeznie az egységbe, amint az állapot megkezdésre vált.
 
 > [!IMPORTANT]
 > A HANA nagyméretű példány egységében lévő memóriától függ, a hardver újraindítása és újraindítása, valamint az operációs rendszer akár egy órát is igénybe vehet.

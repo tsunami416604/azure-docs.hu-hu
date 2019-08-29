@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: f4d2afd65ec06c331498ce974e933fe08c8e67dd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 432580017cec548b7ecd7cf766aa8f5cdb2253cc
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935190"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113590"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Felügyeleti feladatok automatizálása adatbázis-feladatok használatával
 
@@ -43,7 +43,7 @@ A feladatok automatizálását több esetben is használhatja:
 
 A következő feladatütemezés-technológiák érhetők el Azure SQL Databaseban:
 
-- Az **SQL-ügynök feladatai** a klasszikus és a harci tesztelés alatt álló SQL Server feladatütemezés összetevő, amely felügyelt példányban érhető el. Az SQL Agent-feladatok egyetlen adatbázisban nem érhetők el.
+- Az **SQL-ügynök feladatai** a klasszikus és a harci tesztelés alatt álló SQL Server feladatütemezés összetevő, amely felügyelt példányban érhető el. Az SQL Agent-feladatok nem érhetők el az Azure SQL önálló adatbázisaiban.
 - **Elastic Database feladatok (előzetes verzió)** olyan feladatütemezés-szolgáltatások, amelyek egy vagy több Azure SQL-adatbázison futtatnak egyéni feladatokat.
 
 Érdemes figyelembe venni néhány különbséget az SQL-ügynök (a helyszínen és SQL Database felügyelt példány részeként) és az adatbázis rugalmas feladatainak (az Azure SQL Database-ben és a SQL Data Warehouse-ban lévő adatbázisok esetében elérhető önálló adatbázisok esetében) között.

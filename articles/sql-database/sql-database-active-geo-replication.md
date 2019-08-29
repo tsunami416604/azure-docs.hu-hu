@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 131333f140518f6fb2f63f17d0aa72692dc7d49a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c1f50dfb499c220a4e13f043438798c556319ddf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935076"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092806"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Aktív geo-replikáció létrehozása és használata
 
@@ -106,6 +106,10 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 ## <a name="preparing-secondary-database-for-failover"></a>Másodlagos adatbázis előkészítése feladatátvételhez
 
 Annak biztosítása érdekében, hogy az alkalmazás azonnal hozzáférhessen az új elsődleges feladatátvételhez, ellenőrizze, hogy a másodlagos kiszolgáló és az adatbázis hitelesítési követelményei megfelelően vannak-e konfigurálva. Részletekért lásd: [SQL Database biztonság a katasztrófa utáni helyreállítás után](sql-database-geo-replication-security-config.md). A megfelelőség biztosítása érdekében a feladatátvételt követően ellenőrizze, hogy a másodlagos adatbázis biztonsági mentési adatmegőrzési szabályzata megegyezik-e az elsődleges értékkel. Ezek a beállítások nem részei az adatbázisnak, és nem replikálódnak. Alapértelmezés szerint a másodlagos beállítás a hét nap alapértelmezett PITR megőrzési időtartamával lesz konfigurálva. Részletekért lásd: [SQL Database automatikus biztonsági mentések](sql-database-automated-backups.md).
+
+> [!IMPORTANT]
+> Ha az adatbázis egy feladatátvételi csoport tagja, nem kezdeményezhet feladatátvételt a Geo-Replication faiover parancs használatával. Érdemes lehet feladatátvételi parancsot használni a csoport számára. Ha egy egyedi adatbázist kell feladatátvételt végeznie, először el kell távolítania azt a feladatátvételi csoportból. Részletekért lásd: [feladatátvételi csoportok](sql-database-auto-failover-group.md) . 
+
 
 ## <a name="configuring-secondary-database"></a>Másodlagos adatbázis konfigurálása
 

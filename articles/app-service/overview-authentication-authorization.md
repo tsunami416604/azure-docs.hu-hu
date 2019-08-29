@@ -10,18 +10,17 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d01994dc4d01baed71bb3de56e069fac5597dc77
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e308b44fffff451daa92cbf19209a1bcbfd4bff6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030845"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087984"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
 
@@ -109,7 +108,7 @@ Az alábbi táblázat a hitelesítési folyamat lépéseit mutatja be.
 | Lépés | Szolgáltatói SDK nélkül | Szolgáltatói SDK-val |
 | - | - | - |
 | 1. Felhasználó aláírása itt: | Átirányítja az ügyfelet a `/.auth/login/<provider>`következőre:. | Az ügyfél kódja közvetlenül a szolgáltató SDK-val aláírja a felhasználót, és hitelesítési jogkivonatot kap. További információt a szolgáltató dokumentációjában talál. |
-| 2. Utóhitelesítés | A szolgáltató átirányítja az `/.auth/login/<provider>/callback`ügyfelet a következőre:. | Az ügyfél [](app-service-authentication-how-to.md#validate-tokens-from-providers) kódja a szolgáltatótól `/.auth/login/<provider>` kapott jogkivonatot érvényesíti. |
+| 2. Hitelesítés utáni | A szolgáltató átirányítja az `/.auth/login/<provider>/callback`ügyfelet a következőre:. | Az ügyfél [](app-service-authentication-how-to.md#validate-tokens-from-providers) kódja a szolgáltatótól `/.auth/login/<provider>` kapott jogkivonatot érvényesíti. |
 | 3. Hitelesített munkamenet létrehozása | App Service a hitelesített cookie-t adja hozzá válaszként. | App Service visszaadja a saját hitelesítési tokenjét az ügyfél kódjához. |
 | 4. Hitelesített tartalom kiszolgálása | Az ügyfél hitelesítési cookie-t is tartalmaz a következő kérelmekben (a böngésző automatikusan kezeli). | Az ügyfél kódja a (Mobile apps `X-ZUMO-AUTH` ügyféloldali SDK-k által automatikusan kezelt) fejlécben található hitelesítési tokent jeleníti meg. |
 
@@ -125,7 +124,7 @@ A [Azure Portalban](https://portal.azure.com)számos viselkedést konfigurálhat
 
 A következő címsorok leírják a beállításokat.
 
-### <a name="allow-anonymous-requests-no-action"></a>Névtelen kérések engedélyezése (nincs művelet)
+### <a name="allow-anonymous-requests-no-action"></a>Névtelen kérelmek engedélyezése (nincs művelet)
 
 Ez a beállítás elhalasztja az alkalmazás kódjához való nem hitelesített forgalom engedélyezését. A hitelesített kérések esetében App Service a HTTP-fejlécekben is továbbítja a hitelesítési adatokat. 
 

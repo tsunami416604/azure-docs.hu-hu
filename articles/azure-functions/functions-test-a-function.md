@@ -7,16 +7,15 @@ author: craigshoemaker
 manager: gwallace
 keywords: az Azure functions, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra tesztelése
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 800c9db245007047b2dc17b3f270737254ed42d7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 0bd6222a6f2a2582fb715dbaf364fe23e41630d5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479724"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085124"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>A kódot tesztelés az Azure Functions stratégiák
 
@@ -29,7 +28,7 @@ A következő tartalmától azt, hogy több különböző nyelvet és a környez
 - [C#a Visual Studióban az xUnit](#c-in-visual-studio)
 - [A VS Code-Jest JavaScript](#javascript-in-vs-code)
 
-A minta tárház érhető el az [GitHub](https://github.com/Azure-Samples/azure-functions-tests).
+A minta tárház a githubon [](https://github.com/Azure-Samples/azure-functions-tests)érhető el.
 
 ## <a name="c-in-visual-studio"></a>C#a Visual Studióban
 Az alábbi példa bemutatja, hogyan hozhat létre egy C# Függvényalkalmazásnak a Visual Studióban, és futtassa, és teszteli a [xUnit](https://xunit.github.io).
@@ -43,8 +42,8 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy C# Függvényalkalmazásna
 1. [Hozzon létre egy új Functions-alkalmazás](./functions-create-first-azure-function.md) , és nevezze el *funkciók*
 2. [Egy HTTP-függvény létrehozása sablonból](./functions-create-first-azure-function.md) , és nevezze el *HttpTrigger*.
 3. [Időzítő függvény létrehozása sablonból](./functions-create-scheduled-function.md) , és nevezze el *TimerTrigger*.
-4. [Hozzon létre egy xUnit tesztalkalmazás](https://xunit.github.io/docs/getting-started-dotnet-core) a Visual Studióban kattintson **fájl > Új > Projekt > Visual C# > .NET Core > xUnit tesztelő projektet** , és nevezze el *Functions.Test*. 
-5. Egy mutató hivatkozásokat tudjon felvenni a vizsga alkalmazás a Nuget segítségével [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
+4. [Hozzon létre egy xUnit-tesztelési alkalmazást](https://xunit.github.io/docs/getting-started-dotnet-core) a Visual Studióban. ehhez kattintson a **fájl > új > projekt > Visual C# > .net Core > xUnit test Project** elemre, és nevezze el a functions *. test*parancsot. 
+5. A Nuget használata a [Microsoft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) tesztelési alkalmazásból származó hivatkozások hozzáadásához
 6. [Referencia a *funkciók* alkalmazás](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) a *Functions.Test* alkalmazást.
 
 ### <a name="create-test-classes"></a>Teszt osztályok létrehozása
@@ -55,7 +54,7 @@ Minden függvény vesz igénybe egy példányát [ILogger](https://docs.microsof
 
 A `ListLogger` osztály hivatott megvalósítása a `ILogger` felületet, és tartsa egy teszt során értékelésre üzeneteket belső listájában.
 
-**Kattintson a jobb gombbal** a a *Functions.Test* alkalmazás, és válassza ki **Hozzáadás > osztály**, adja neki **NullScope.cs** , és adja meg a következő kódot:
+**Kattintson a jobb gombbal** a *functions. test* alkalmazásra, majd válassza a **> osztály hozzáadása**lehetőséget, nevezze el **NullScope.cs** , és adja meg a következő kódot:
 
 ```csharp
 using System;
@@ -73,7 +72,7 @@ namespace Functions.Tests
 }
 ```
 
-Ezután **kattintson a jobb gombbal** a a *Functions.Test* alkalmazás, és válassza **Hozzáadás > osztály**, adja neki **ListLogger.cs** , és adja meg a a következő kódot:
+Ezután **kattintson a jobb gombbal** a *functions. test* alkalmazásra, és válassza a **Hozzáadás > osztály**lehetőséget, nevezze el **ListLogger.cs** , és adja meg a következő kódot:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -111,11 +110,11 @@ namespace Functions.Tests
 
 A `ListLogger` osztály által szerződésben vállalt módon valósítja meg az alábbi tagokat az `ILogger` felületen:
 
-- **BeginScope**: Hatókörök hozzáadása a naplózási környezetben. Ebben az esetben a vizsgálat csak pontokat a statikus példányhoz a `NullScope` osztály, hogy a függvény tesztelése.
+- **BeginScope**: Hatókörök: környezet hozzáadása a naplózáshoz. Ebben az esetben a teszt csak a `NullScope` osztály statikus példányára mutat, hogy lehetővé tegye a teszt működését.
 
-- **IsEnabled**: Alapértelmezés szerint `false` van megadva.
+- **IsEnabled**: Alapértelmezett érték `false` van megadva.
 
-- **Napló**: Ezt a módszert használja a megadott `formatter` függvényt az üzenet formázásához és az eredményül kapott szöveg hozzáadja a `Logs` gyűjtemény.
+- **Napló**: Ez a metódus a megadott `formatter` függvényt használja az üzenet formázásához, majd hozzáadja az eredményül `Logs` kapott szöveget a gyűjteményhez.
 
 A `Logs` gyűjteménye egy példányát `List<string>` és a konstruktorban inicializálva van.
 
@@ -196,13 +195,13 @@ namespace Functions.Tests
 ```
 A `TestFactory` osztálya határozza meg a következő tagok:
 
-- **Adatok**: Ez a tulajdonság adja vissza egy [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) mintaadatok gyűjteménye. A kulcs-érték párral egy lekérdezési karakterláncot az átadott értékeket jelölik.
+- Adatértékek: Ez a tulajdonság a mintaadatok [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) gyűjteményét adja vissza. A kulcs-érték párral egy lekérdezési karakterláncot az átadott értékeket jelölik.
 
-- **CreateDictionary**: Ez a módszer egy kulcs/érték pár fogadja argumentumként, és adja vissza egy új `Dictionary` létrehozásához használt `QueryCollection` a lekérdezési karakterlánc értékeit jelölik.
+- **CreateDictionary**: Ez a metódus fogadja a kulcs/érték párokat argumentumként, `Dictionary` és visszaadja `QueryCollection` a lekérdezési karakterlánc értékeit jelölő új létrehozási értéket.
 
-- **CreateHttpRequest**: Ez a módszer létrehoz egy HTTP-kérelem inicializálása a megadott lekérdezési karakterlánc paraméterei.
+- **CreateHttpRequest**: Ez a metódus egy HTTP-kérést hoz létre, amely a megadott lekérdezési karakterlánc-paraméterekkel inicializálva van.
 
-- **CreateLogger**: Naplózó típusa alapján, ezzel a módszerrel a teszteléshez használt naplózó osztály adja vissza. A `ListLogger` nyomon követi a naplózott üzenetek tesztekben kiértékelésére.
+- **CreateLogger**: A naplózó típusa alapján ez a metódus a teszteléshez használt naplózó osztályt adja vissza. A `ListLogger` nyomon követi a naplózott üzenetek tesztekben kiértékelésére.
 
 Ezután **kattintson a jobb gombbal** a a *Functions.Test* alkalmazás, és válassza **Hozzáadás > osztály**, adja neki **FunctionsTests.cs** , és adja meg a a következő kódot:
 
@@ -247,13 +246,13 @@ namespace Functions.Tests
 ```
 Ez az osztály megvalósított tagjai:
 
-- **Http_trigger_should_return_known_string**: Ez a vizsgálat kérést hoz létre a lekérdezés-karakterlánc értékét `name=Bill` egy HTTP-függvényt, és ellenőrzi, hogy a várt választ adja vissza.
+- **Http_trigger_should_return_known_string**: Ez a teszt egy http `name=Bill` -függvény lekérdezési karakterlánc-értékeit tartalmazó kérelmet hoz létre, és ellenőrzi, hogy a rendszer visszaadja-e a várt választ.
 
-- **Http_trigger_should_return_string_from_member_data**: Ez a vizsgálat xUnit attribútumok mintaadatokat a HTTP-függvényt használ.
+- **Http_trigger_should_return_string_from_member_data**: Ez a teszt xUnit-attribútumokat használ a HTTP-függvényhez tartozó mintaadatok biztosításához.
 
-- **Timer_should_log_message**: Ez a vizsgálat létrehoz egy példányt a `ListLogger` , és átadja egy időzítő függvények. Miután a függvény fut, majd a napló be van jelölve annak érdekében, hogy jelen a várt üzenet.
+- **Timer_should_log_message**: Ez a teszt létrehoz egy példányt `ListLogger` , és átadja azt egy időzítő függvénynek. Miután a függvény fut, majd a napló be van jelölve annak érdekében, hogy jelen a várt üzenet.
 
-Ha szeretne hozzáférni a tesztekben Alkalmazásbeállítások, [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
+Ha a tesztek során szeretné elérni az alkalmazás beállításait, használhatja a [System. environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
 
 ### <a name="run-tests"></a>Tesztek futtatása
 
@@ -377,6 +376,6 @@ Ezután állítson be egy töréspontot a teszt- és nyomja le az **F5**.
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan írhat az Ön függvényeinek automatizált teszteket, folytassa a ezeket az erőforrásokat:
-- [Egy nem HTTP által aktivált függvény manuális futtatása](./functions-manually-run-non-http.md)
+- [Nem HTTP-triggert futtató függvény manuális futtatása](./functions-manually-run-non-http.md)
 - [Az Azure Functions hibakezelés](./functions-bindings-error-pages.md)
 - [Azure-függvény Event Grid eseményindító helyi hibakeresés](./functions-debug-event-grid-trigger-local.md)

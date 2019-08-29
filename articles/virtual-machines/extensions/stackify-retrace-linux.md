@@ -1,6 +1,6 @@
 ---
-title: Visszalépés az Azure Linux-ügynök bővítmény stackify értelmezi |} A Microsoft Docs
-description: A stackify értelmezi végig Linux-ügynök Linux rendszerű virtuális gépre telepíteni.
+title: Az Azure Linux-ügynök bővítményének Stackify újrarajzolása | Microsoft Docs
+description: Telepítse a Stackify retrace Linux-ügynököt egy linuxos virtuális gépre.
 services: virtual-machines-linux
 documentationcenter: ''
 author: darinhoward
@@ -8,61 +8,60 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: roiyz
-ms.openlocfilehash: ca3232dc3862cffb67d396b3ec2333fdc28dbb65
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6db152394a8e57689b34436b48dbcb4ecdc58b5a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706642"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084317"
 ---
-# <a name="stackify-retrace-linux-agent-extension"></a>Stackify értelmezi a Visszalépés Linux-ügynök bővítmény
+# <a name="stackify-retrace-linux-agent-extension"></a>A Linux-ügynök bővítményének Stackify újranyomkövetése
 
 ## <a name="overview"></a>Áttekintés
 
-Stackify értelmezi, amelyek nyomon követik az alkalmazás segítségével megkeresheti és kijavíthatja az esetleges problémákat gyorsan részleteinek termékek biztosít. Fejlesztői csapatok a Visszalépés egy teljes körűen integrált, több környezet, az alkalmazás teljesítményének felettes power. Amely ötvözi az minden fejlesztési csapat által igényelt számos eszközt.
+A Stackify olyan termékeket biztosít, amelyek nyomon követhetik az alkalmazás részleteit, így gyorsan megtalálhatja és elháríthatja a problémákat. A fejlesztői csapatok esetében az újbóli nyomkövetés egy teljes körűen integrált, több környezetből álló, az alkalmazások teljesítményének növelésére használható. Számos eszközt egyesít, minden fejlesztési csapatnak szüksége van.
 
-A csak eszköz, amely egyetlen platform minden környezetben keresztül biztosít minden, a következő funkciók végig.
+Az újbóli nyomkövetés az egyetlen eszköz, amely a következő képességeket biztosítja az összes környezetben egyetlen platformon.
 
-* Alkalmazásteljesítmény-felügyeleti (APM)
-* Alkalmazás- és naplózás
-* Hiba nyomon követése és figyelése
-* Kiszolgáló, az alkalmazás és az egyéni metrikák
+* Alkalmazások teljesítményének kezelése (APM)
+* Alkalmazás-és kiszolgáló-naplózás
+* Hibák nyomon követése és figyelése
+* Kiszolgáló, alkalmazás és egyéni metrikák
 
-**Körülbelül stackify értelmezi a Linux-ügynök bővítmény**
+**Tudnivalók a Stackify Linux-ügynök bővítménnyel kapcsolatban**
 
-Ez a bővítmény a Linux-ügynökének végig egy telepítési útvonal biztosít. 
+Ez a bővítmény telepítési útvonalat biztosít a Linux-ügynök újranyomkövetéshez. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="operating-system"></a>Operációs rendszer 
 
-A Visszalépés az ügynök ezen Linux-disztribúció futtatható
+Az újranyomkövetési ügynök futtatható a Linux-disztribúciók ellen
 
 | Disztribúció | Version |
 |---|---|
-| Ubuntu | 16.04 LTS, 14.04 LTS, 16.10 és 17.04 |
-| Debian | 7.9 + és 8.2 +, 9 |
-| Red Hat | 6.7+, 7.1+ |
-| CentOS | 6.3+, 7.0+ |
+| Ubuntu | 16,04 LTS, 14,04 LTS, 16,10 és 17,04 |
+| Debian | 7,9 + és 8.2 +, 9 |
+| Red Hat | 6.7 +, 7.1 + |
+| CentOS | 6.3 +, 7.0 + |
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A stackify értelmezi az ügynök-bővítmény linuxhoz megköveteli, hogy a céloldali virtuális gép csatlakozik az internethez. 
+A Linux Stackify-ügynökének kiterjesztése megköveteli, hogy a célként megadott virtuális gép csatlakozik az internethez. 
 
-Szükség lehet módosítani a kapcsolat lehetővé tétele a Stackify, olvassa el a hálózati konfiguráció https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
+Előfordulhat, hogy módosítania kell a hálózati konfigurációt, hogy engedélyezze a kapcsolódást a Stackify számára. lásd: https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
 
 
 ## <a name="extension-schema"></a>Bővítményséma
 
 ---
 
-A következő JSON a stackify értelmezi az ügynök végig bővítmény sémáját jeleníti meg. A bővítmény telepítéséhez a `environment` és `activationKey`.
+A következő JSON a Stackify újranyomkövetési ügynök bővítményének sémáját mutatja be. A kiterjesztéshez a `environment` és `activationKey`a szükséges.
 
 ```json
     {
@@ -90,13 +89,13 @@ A következő JSON a stackify értelmezi az ügynök végig bővítmény sémáj
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés 
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletes JSON-sémája a stackify értelmezi végig Linux Agent bővítmény futtatása során egy Azure Resource Manager-sablon üzembe helyezése Azure Resource Manager-sablon is használható.  
+Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletezett JSON-séma egy Azure Resource Manager sablonban használható a Stackify retrace Linux-ügynök bővítmény futtatásához Azure Resource Manager sablon központi telepítése során.  
 
-A JSON-t egy virtuálisgép-bővítményt a virtuális gép típusú erőforrást belülre, vagy elhelyezve, a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON-fájllal való elhelyezését hatással van az erőforrás nevét, és írja be az értékét. További információkért tekintse meg a csoport nevét és típusát gyermekerőforrásait.
+A virtuálisgép-bővítmények JSON-je beágyazható a virtuális gép erőforrásaiba, vagy egy Resource Manager JSON-sablon legfelső szintű vagy legfelső szintjén helyezhető el. A JSON elhelyezése hatással van az erőforrás nevének és típusának értékére. További információ: a gyermek erőforrások nevének és típusának beállítása.
 
-Az alábbi példa azt feltételezi, hogy a stackify értelmezi végig Linux-bővítményt a virtuális gép típusú erőforrást van beágyazva. A bővítmény erőforrás beágyazása, ha a JSON kerül a "resources": [] objektumot a virtuális gép.
+Az alábbi példa azt feltételezi, hogy a Stackify retrace Linux-bővítmény a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a JSON a virtuális gép "erőforrások": [] objektumára kerül.
 
-A bővítmény telepítéséhez a `environment` és `activationKey`.
+A kiterjesztéshez a `environment` és `activationKey`a szükséges.
 
 ```json
     {
@@ -149,11 +148,11 @@ Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőf
 ```
 
 
-## <a name="powershell-deployment"></a>PowerShell környezetben végzett telepítés
+## <a name="powershell-deployment"></a>PowerShell-telepítés
 
-A `Set-AzVMExtension` parancs a stackify értelmezi végig Linux ügynök virtuálisgép-bővítmény egy meglévő virtuális gépek üzembe helyezéséhez használható. A parancs futtatása előtt a nyilvános és privát konfigurációk kell egy PowerShell kivonattábla kell tárolni.
+A `Set-AzVMExtension` parancs segítségével telepítheti a Stackify retrace Linux-ügynök virtuálisgép-bővítményét egy meglévő virtuális gépre. A parancs futtatása előtt a nyilvános és a privát konfigurációkat egy PowerShell-kivonatoló táblában kell tárolni.
 
-A bővítmény telepítéséhez a `environment` és `activationKey`.
+A kiterjesztéshez a `environment` és `activationKey`a szükséges.
 
 ```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
@@ -172,9 +171,9 @@ Set-AzVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
 
 ## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés 
 
-Az Azure parancssori eszköz segítségével végig Linux-ügynök stackify értelmezi virtuálisgép-bővítmény egy meglévő virtuális gépek üzembe helyezéséhez.  
+Az Azure CLI-eszköz használatával üzembe helyezheti a Stackify retrace Linux-ügynök virtuálisgép-bővítményét egy meglévő virtuális gépre.  
 
-A bővítmény telepítéséhez a `environment` és `activationKey`.
+A kiterjesztéshez a `environment` és `activationKey`a szükséges.
 
 ```azurecli
 az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --name 'StackifyLinuxAgentExtension' --protected-settings '{"activationKey":"myActivationKey"}' --settings '{"environment":"myEnvironment"}'  --resource-group 'myResourceGroup' --vm-name 'myVmName'
@@ -184,19 +183,19 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 
 ### <a name="error-codes"></a>Hibakódok
 
-| Hibakód | Jelentés | A művelet lehetséges |
+| Hibakód | Jelentés | Lehetséges művelet |
 | :---: | --- | --- |
-| 10 | Telepítési hiba | wget megadása kötelező |
-| 20 | Telepítési hiba | Python megadása kötelező |
-| 30 | Telepítési hiba | sudo megadása kötelező |
-| 40 | Telepítési hiba | tárolófájlban megadása kötelező |
-| 51 | Telepítési hiba | Nem támogatott operációsrendszer-disztribúció |
-| 60 | Telepítési hiba | környezet megadása kötelező |
+| 10 | Telepítési hiba | a wget megadása kötelező |
+| 20 | Telepítési hiba | Python szükséges |
+| 30 | Telepítési hiba | a sudo megadása kötelező |
+| 40 | Telepítési hiba | a activationKey megadása kötelező |
+| 51 | Telepítési hiba | Az operációs rendszer disztribúciója nem támogatott |
+| 60 | Telepítési hiba | a környezet megadása kötelező |
 | 70 | Telepítési hiba | Ismeretlen |
-| 80 | Hiba történt engedélyezése | Szolgáltatás beállítása nem sikerült |
-| 90 | Hiba történt engedélyezése | Szolgáltatás indítása sikertelen |
-| 100 | Letilthatja a hibajelentési | Szolgáltatás leállítása nem sikerült |
-| 110 | Letilthatja a hibajelentési | Szolgáltatás eltávolítása sikertelen |
-| 120 | Eltávolítási hiba | Szolgáltatás leállítása nem sikerült |
+| 80 | Hiba engedélyezése | A szolgáltatás telepítése nem sikerült |
+| 90 | Hiba engedélyezése | A szolgáltatás indítása nem sikerült |
+| 100 | Hiba letiltása | A szolgáltatás leállítása sikertelen |
+| 110 | Hiba letiltása | A szolgáltatás eltávolítása nem sikerült |
+| 120 | Eltávolítási hiba | A szolgáltatás leállítása sikertelen |
 
-Ha további segítségre van szüksége, forduljon a támogatási Stackify https://support.stackify.com.
+Ha további segítségre van szüksége, vegye fel a kapcsolatot https://support.stackify.com a Stackify támogatási szolgálatával.

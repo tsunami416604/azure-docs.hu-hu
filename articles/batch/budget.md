@@ -5,18 +5,17 @@ services: batch
 author: laurenhughes
 manager: gwallace
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/19/2019
 ms.author: lahugh
-ms.openlocfilehash: e6a99021a5e05f04672a4db2b4c208b8f4bad8c8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6ccf530fe2164b3d9b1936648ffe9057c334efd6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361790"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094206"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Cost Analysis és költségvetések Azure Batch
 
@@ -24,7 +23,7 @@ Magáért a Azure Batchért nem számítunk fel díjat, csak a számítási erő
 
 ## <a name="batch-resources"></a>Batch-erőforrások
 
-A virtuális gépek a legjelentősebb erőforrás a kötegelt feldolgozáshoz. A virtuális gépeknek a Batchhez való használatának költségeit a típus, a mennyiség és a használat időtartama alapján számítjuk ki. A virtuális gépek számlázási [lehetőségei közé tartozik](https://azure.microsoft.com/offers/ms-azr-0003p/) az utólagos elszámolású vagy a [foglalás](../billing/billing-save-compute-costs-reservations.md) (előre fizetve). A számítási feladattól függően mindkét fizetési lehetőség különböző előnyökkel jár, és mindkét fizetési modell eltérő hatással lesz a számlára.
+A virtuális gépek a legjelentősebb erőforrás a kötegelt feldolgozáshoz. A virtuális gépeknek a Batchhez való használatának költségeit a típus, a mennyiség és a használat időtartama alapján számítjuk ki. A virtuális gépek számlázási [](https://azure.microsoft.com/offers/ms-azr-0003p/) lehetőségei közé tartozik az utólagos elszámolású vagy a [foglalás](../billing/billing-save-compute-costs-reservations.md) (előre fizetve). A számítási feladattól függően mindkét fizetési lehetőség különböző előnyökkel jár, és mindkét fizetési modell eltérő hatással lesz a számlára.
 
 Ha az alkalmazások batch-csomópontokra (VM) vannak telepítve [alkalmazáscsomag](batch-application-packages.md)használatával, akkor az alkalmazás csomagjai által felhasznált Azure Storage-erőforrásokért kell fizetnie. A rendszer a bemeneti és kimeneti fájlok, például az erőforrások fájljainak és egyéb naplófájljainak tárolását is kiszámlázza. Általánosságban elmondható, hogy a Batch szolgáltatáshoz kapcsolódó tárolási adatok ára sokkal alacsonyabb, mint a számítási erőforrások díja. A **VirtualMachineConfiguration** -mel létrehozott készletekben található minden virtuális gépnek van egy társított operációsrendszer-lemeze, amely az Azure által felügyelt lemezeket használja. Az Azure által felügyelt lemezek további költségekkel járnak, és a többi lemez teljesítmény-szintjei is eltérő költségekkel rendelkeznek.
 
@@ -51,7 +50,7 @@ A Azure Portal segítségével költségvetéseket hozhat létre, és elkölthet
 1. A Azure Portal válassza a **Cost Management + számlázás** lehetőséget a bal oldali navigációs sávon.
 1. Előfizetés kiválasztása a **saját** előfizetések szakaszból
 1. A bal oldali navigációs sáv **Cost Management** szakaszában kattintson a **Cost Analysis** elemre, amely a következőképpen jelenik meg:
-1. Válassza a **szűrő hozzáadása**lehetőséget. Az első legördülő menüben válassza ![ki az **erőforrás elemet,** majd válassza ki az erőforrás-szűrőt](./media/batch-budget/resource-filter.png)
+1. Válassza a **szűrő hozzáadása**lehetőséget. Az első legördülő menüben válassza ![ki az erőforrás elemet, majd válassza ki az erőforrás-szűrőt](./media/batch-budget/resource-filter.png)
 1. A második legördülő menüben válassza ki a Batch-készletet. A készlet kiválasztása után a Cost Analysis a következő elemzéshez hasonlóan fog kinézni.
     ![Készlet költséghatékonyságának elemzése](./media/batch-budget/pool-cost-analysis.png)
 

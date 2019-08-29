@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3524f34773f4627dff478ee7cc9cbff9f674bf8e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ec23d3f08fb22f73618c27443bcd8b72c43a9862
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931767"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113565"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -164,7 +164,8 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 > [!NOTE]
 >1. Ez egy legfelső szintű függvényt, nem ágyazhatók egymásba.
->2. Ez a függvény csak hivatott bejegyzés létrehozások használható. Használhatja azt egy attribútumot, ha a **leképezése a alkalmazni** tulajdonságot **csak objektum létrehozásakor**.
+>2. Ez a függvény nem alkalmazható olyan attribútumokra, amelyek egyező elsőbbséggel rendelkeznek.  
+>3. Ez a függvény csak hivatott bejegyzés létrehozások használható. Használhatja azt egy attribútumot, ha a **leképezése a alkalmazni** tulajdonságot **csak objektum létrehozásakor**.
 
 
 **Paraméterek:**<br> 

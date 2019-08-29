@@ -6,16 +6,15 @@ author: jeffhollan
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: 8ad09550e572c98931346b44a6c6f84da29a85e4
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 2cc6493d01508d439d8dcef2d12ca1ea40632d81
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443960"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096231"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Azure Functions Premium csomag (előzetes verzió)
 
@@ -83,7 +82,7 @@ A terv létrehozásakor két beállítást kell beállítania: a példányok min
 
 Ha az alkalmazás a csomag méretétől meghaladó példányokat igényel, akkor továbbra is kibővíthető, amíg a példányok száma eléri a maximális burst korlátot.  A csomagon kívüli példányok díját csak akkor számítjuk fel, ha a rendszert futtatják és bérbe adják.  A legjobb megoldás az, ha az alkalmazást a meghatározott maximális korlátig méretezni, míg a minimálisan szükséges csomag példányai garantáltak az alkalmazás számára.
 
-A terv méretének és Azure Portal maximális értékének konfigurálásához válassza ki a csomag  kibővíthető lehetőségeit vagy az adott tervhez üzembe helyezett Function alkalmazást (a **platform szolgáltatásai**alatt).
+A terv méretének és Azure Portal maximális értékének konfigurálásához válassza ki a csomag kibővíthető lehetőségeit vagy az adott tervhez üzembe helyezett Function alkalmazást (a **platform szolgáltatásai**alatt).
 
 Az Azure CLI maximális burst korlátját is megnövelheti:
 

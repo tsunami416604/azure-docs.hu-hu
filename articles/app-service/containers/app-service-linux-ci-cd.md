@@ -1,7 +1,7 @@
 ---
-title: Folyamatos üzembe helyezés a Web App for containers szolgáltatásban – Azure App Service-ben |} A Microsoft Docs
-description: Hogyan állítható be a folyamatos üzembe helyezés a Web App for containers szolgáltatásban.
-keywords: az Azure app Service-ben, a linux, a docker, az acr, a nyílt forráskódú
+title: Folyamatos üzembe helyezés a Web App for Containers-Azure App Servicerel | Microsoft Docs
+description: Folyamatos üzembe helyezés beállítása a Web App for Containersban.
+keywords: Azure app Service, Linux, Docker, ACR, OSS
 services: app-service
 documentationcenter: ''
 author: msangapu
@@ -11,62 +11,61 @@ ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: be3768aadb3e256aa7b0ba7fe3d72cf4169e9bb2
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1dc776f0a61ac1a29ab3fe3ebdd542469863cd50
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705721"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071359"
 ---
-# <a name="continuous-deployment-with-web-app-for-containers"></a>Folyamatos üzembe helyezés a Web App for containers szolgáltatásban
+# <a name="continuous-deployment-with-web-app-for-containers"></a>Folyamatos üzembe helyezés a Web App for Containers
 
-Ebben az oktatóanyagban egy egyéni tárolórendszerképbe – folyamatos üzembe helyezés konfigurálása a felügyelt [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) tárházak vagy [Docker Hub](https://hub.docker.com).
+Ebben az oktatóanyagban a folyamatos üzembe helyezést konfigurálja a felügyelt [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) adattárakból vagy a [Docker hub](https://hub.docker.com)-ból származó egyéni tároló-rendszerképhez.
 
-## <a name="enable-continuous-deployment-with-acr"></a>Az ACR-REL folyamatos üzembe helyezés engedélyezése
+## <a name="enable-continuous-deployment-with-acr"></a>Folyamatos üzembe helyezés engedélyezése ACR-sel
 
-![Képernyőkép az ACR webhook](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-02.png)
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki a **App Service-ben** az oldal bal oldalán lehetőséget.
-3. Válassza ki az alkalmazást, amelyhez a folyamatos üzembe helyezés konfigurálása kívánt nevét.
-4. Az a **Tárolóbeállítások** lapon jelölje be **egyetlen tároló**
-5. Válassza ki **az Azure Container Registrybe**
-6. Válassza ki **folyamatos üzembe helyezés > a**
-7. Válassza ki **mentése** folyamatos üzembe helyezés engedélyezése.
-
-## <a name="use-the-acr-webhook"></a>Az ACR-webhookok használata
-
-Ha engedélyezve van a folyamatos üzembe helyezés, az Azure Container Registry webhookok oldalán megtekintheti az újonnan létrehozott webhook.
-
-![Képernyőkép az ACR webhook](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-03.png)
-
-A Tárolóregisztrációs adatbázisba kattintson a Webhookok a jelenlegi webhookok megtekintéséhez.
-
-## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>(Nem kötelező) a Docker hub folyamatos üzembe helyezés engedélyezése
+![Képernyőfelvétel az ACR webhookról](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-02.png)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki a **App Service-ben** az oldal bal oldalán lehetőséget.
-3. Válassza ki az alkalmazást, amelyhez a folyamatos üzembe helyezés konfigurálása kívánt nevét.
-4. Az a **Tárolóbeállítások** lapon jelölje be **egyetlen tároló**
-5. Válassza ki **Docker Hub**
-6. Válassza ki **folyamatos üzembe helyezés > a**
-7. Válassza ki **mentése** folyamatos üzembe helyezés engedélyezése.
+2. Kattintson a lap bal oldalán található **app Service** lehetőségre.
+3. Válassza ki annak az alkalmazásnak a nevét, amelyhez a folyamatos üzembe helyezést konfigurálni kívánja.
+4. A **tároló beállításai** lapon válassza az **egyetlen tároló** elemet.
+5. **Azure Container Registry** kiválasztása
+6. **Folyamatos üzembe helyezési >** kiválasztása
+7. A folyamatos üzembe helyezés engedélyezéséhez válassza a **Mentés** lehetőséget.
 
-![Képernyőkép az alkalmazás-beállítás](./media/app-service-webapp-service-linux-ci-cd/ci-cd-docker-02.png)
+## <a name="use-the-acr-webhook"></a>Az ACR webhook használata
 
-Másolja a Webhook URL-CÍMÉT. Egy webhook hozzáadása a Docker hub, hajtsa végre a <a href="https://docs.docker.com/docker-hub/webhooks/" target="_blank">Docker hub webhookok</a>.
+Miután engedélyezte a folyamatos üzembe helyezést, megtekintheti az újonnan létrehozott webhookot a Azure Container Registry webhookok oldalán.
+
+![Képernyőfelvétel az ACR webhookról](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-03.png)
+
+Az aktuális webhookok megtekintéséhez a Container Registry kattintson a webhookok elemre.
+
+## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>Folyamatos üzembe helyezés engedélyezése a Docker hub-ban (opcionális)
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Kattintson a lap bal oldalán található **app Service** lehetőségre.
+3. Válassza ki annak az alkalmazásnak a nevét, amelyhez a folyamatos üzembe helyezést konfigurálni kívánja.
+4. A **tároló beállításai** lapon válassza az **egyetlen tároló** elemet.
+5. **Docker hub** kiválasztása
+6. **Folyamatos üzembe helyezési >** kiválasztása
+7. A folyamatos üzembe helyezés engedélyezéséhez válassza a **Mentés** lehetőséget.
+
+![Képernyőkép az alkalmazás beállításáról](./media/app-service-webapp-service-linux-ci-cd/ci-cd-docker-02.png)
+
+Másolja a webhook URL-címét. Ha webhookot szeretne hozzáadni a Docker hub-hoz, kövesse a <a href="https://docs.docker.com/docker-hub/webhooks/" target="_blank">Docker hub</a>webhookait.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Linuxon futó Azure App Service bemutatása](./app-service-linux-intro.md)
+* [A Linux Azure App Service bemutatása](./app-service-linux-intro.md)
 * [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
 * [.NET Core-webalkalmazás létrehozása Linuxon futó App Service-ben](quickstart-dotnetcore.md)
-* [Ruby-webalkalmazás létrehozása Linuxon futó App Service-ben](quickstart-ruby.md)
-* [Web App for Containers a Docker-/ Go-webalkalmazás üzembe helyezése](quickstart-docker-go.md)
+* [Ruby-Webalkalmazás létrehozása App Service Linux rendszeren](quickstart-ruby.md)
+* [Docker-/go-alapú webalkalmazás üzembe helyezése Web App for Containers](quickstart-docker-go.md)
 * [Azure App Service Linuxon – gyakori kérdések](./app-service-linux-faq.md)
 * [A Web App for Containers felügyelete az Azure CLI-vel](./app-service-linux-cli.md)

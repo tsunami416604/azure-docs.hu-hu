@@ -8,17 +8,16 @@ manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.devlang: na
 ms.topic: sample
 ms.date: 12/14/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 19f5016b5fb6906046875ad1ab96c892d6e10ecf
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 08bd36ae1d8498d40d997ce03a9d8e4a3d5aef9e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729745"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071901"
 ---
 # <a name="set-up-custom-domain"></a>Egyéni tartomány beállítása
 
@@ -28,7 +27,7 @@ Ez a példaszkript egy egyéni tartományt állít be az API Management szolgál
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha helyi telepítése és használata a PowerShell, az oktatóanyaghoz az Azure PowerShell 1.0-s vagy újabb verziója. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz a Azure PowerShell modul 1,0-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -36,7 +35,7 @@ Ha helyi telepítése és használata a PowerShell, az oktatóanyaghoz az Azure 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás.
+Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot az erőforráscsoport és az összes kapcsolódó erőforrás eltávolításához.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup

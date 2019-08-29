@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítás Windows virtuális gép üzembe helyezése, az Azure-ban |} A Microsoft Docs
-description: Resource Manager üzembe helyezési hibák elhárításához, ha egy új Windows virtuális gép létrehozása az Azure-ban
+title: A Windowsos virtuális gépek Azure-beli üzembe helyezésének hibája Microsoft Docs
+description: A Resource Manager üzembe helyezésével kapcsolatos hibák elhárítása új Windowsos virtuális gép létrehozásakor az Azure-ban
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: JiangChen79
@@ -11,19 +11,18 @@ ms.assetid: afc6c1a4-2769-41f6-bbf9-76f9f23bcdf4
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6bdf0816e40e34b184da0340a8dbaffbcd7657e8
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6dbe4c1533aecfab4a62ce3ad90b694c0c00f4b6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710459"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103489"
 ---
-# <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Az Azure-ban új Windows virtuális gépek létrehozásakor felmerülő üzembehelyezési hibák elhárítása
+# <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Új Windowsos virtuális gép Azure-beli létrehozásakor felmerülő üzembe helyezési problémák elhárítása
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
@@ -31,65 +30,65 @@ ms.locfileid: "67710459"
 ## <a name="top-issues"></a>Leggyakoribb problémák
 [!INCLUDE [support-disclaimer](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
-Más virtuális gép üzembe helyezési problémák és kérdések: [az Azure-beli üzembe helyezése Windows virtuális gép hibáinak elhárítása](troubleshoot-deploy-vm-windows.md).
+Más virtuálisgép-telepítési problémák és kérdések esetén lásd: [a Windows rendszerű virtuális gépekkel kapcsolatos hibák elhárítása az Azure-ban](troubleshoot-deploy-vm-windows.md).
 
-## <a name="collect-activity-logs"></a>Collect-Tevékenységnaplók
-Hibaelhárítás indítása, hogy azonosítsa a hibát a probléma társított a vizsgálati naplók összegyűjtése. Az alábbi hivatkozások a folyamat, kövesse a részletes adatokat tartalmaznak.
+## <a name="collect-activity-logs"></a>Tevékenységnaplók összegyűjtése
+A hibaelhárítás megkezdéséhez Gyűjtse össze a tevékenység naplóit a problémához kapcsolódó hiba azonosításához. A következő hivatkozások részletes információkat tartalmaznak a követendő folyamatról.
 
 [Üzembe helyezési műveletek megtekintése](../../azure-resource-manager/resource-manager-deployment-operations.md)
 
-[Tevékenységnaplók megtekintése az Azure-erőforrások kezelése](../../resource-group-audit.md)
+[Tevékenységnaplók megtekintése az Azure-erőforrások kezeléséhez](../../resource-group-audit.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**Y:** Ha az operációs rendszer általánosított Windows, és a feltöltött, illetve rögzíteni az általánosított beállítást, majd nem kell esetleges hibákat. Hasonlóan ha az operációs rendszer Windows specializált, feltöltött, illetve a speciális beállítással rögzített, majd hibákat nem lesz.
+**Y** Ha az operációs rendszer általánosított, és az általánosított beállítással van feltöltve és/vagy rögzítve, akkor nem lesz hiba. Hasonlóképpen, ha az operációs rendszer Windows rendszerű, és a speciális beállítással van feltöltve és/vagy rögzítve, akkor nem lesz hiba.
 
-**Feltöltéssel kapcsolatos hibák:**
+**Feltöltési hibák:**
 
-**N<sup>1</sup>:** Ha az operációs rendszer általánosított Windows, mint a feltöltés specializált, kap egy kiépítési időtúllépési hiba a virtuális géppel a Kezdőélmény képernyőn elakadt.
+**N<sup>1</sup>:** Ha az operációs rendszer általánosítva van, és speciálisként van feltöltve, akkor időtúllépési hiba jelenik meg a virtuális géppel az OOBE képernyőn.
 
-**N<sup>2</sup>:** Ha az operációs rendszer Windows kifejezetten, és fel lesz töltve általánosítottként, kap egy kiépítési hibák és a virtuális gép megakad a Kezdőélmény képernyő, mert az új virtuális gép fut-e az eredeti számítógép neve, felhasználónévvel és jelszóval.
-
-**Felbontás**
-
-Mindkét ezek a hibák elhárításához használja [Add-AzVhd az eredeti virtuális merevlemez feltöltéséhez](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd), elérhető a helyszínen, az ugyanazt a beállítást, amely az operációs rendszer (általánosítva/speciális) számára. Általánosként feltölteni, ne felejtse el először futtassa a Sysprep eszközt.
-
-**Rögzítés a hibák:**
-
-**N<sup>3</sup>:** Ha az operációs rendszer általánosított Windows, mint rögzítése specializált, kap egy kiépítési időtúllépési hiba, mert az eredeti virtuális gép már nem használható, mert általánosként van megjelölve.
-
-**N<sup>4</sup>:** Az operációs rendszer Windows kifejezetten, és azt általánosként van rögzítve, ha egy kiépítési hibák kap, mert az új virtuális gép fut-e az eredeti számítógép neve, felhasználónévvel és jelszóval. Ezenkívül az eredeti virtuális gép nem áll használható, mert meg van jelölve a speciális.
+**N<sup>2</sup>:** Ha az operációs rendszer a Windows specializált, és a rendszer általánosított fájlként töltődik fel, akkor a virtuális gép az OOBE képernyőn megakad, mert az új virtuális gép az eredeti számítógépnévvel, felhasználónévvel és jelszóval fut.
 
 **Felbontás**
 
-Mindkét a hibák elhárításához, az aktuális lemezkép törlése a portálról, és [vegye fel újra a jelenlegi VHD-ből](../windows/create-vm-specialized.md) ugyanazokat a beállításokat, mint az operációs rendszer (általánosítva/speciális) számára.
+A hibák elhárításához az [Add-AzVhd használatával töltse fel az eredeti VHD](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)-t, amely a helyszínen elérhető, ugyanazzal a beállítással, mint az operációs rendszer (általánosított/specializált). Az általánosított feltöltéshez ne felejtse el először futtatni a Sysprep programot.
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Probléma: Egyéni/katalógus/Piactéri lemezképhez; foglalási hibák
-Ez a hiba helyzetekben akkor keletkezik, ha az új virtuális gép kérelem rögzítve van egy fürtöt, amely nem támogatja a kért Virtuálisgép-méretet, vagy nem rendelkezik a rendelkezésre álló szabad területet a kérelem befogadásához.
+**Rögzítési hibák:**
 
-**1. ok:** A fürt nem támogatja a kért Virtuálisgép-méretet.
+**N<sup>3</sup>:** Ha az operációs rendszer általánosítva van, és speciálisként van rögzítve, akkor időtúllépési hiba történik, mert az eredeti virtuális gép nem használható, mert általánosítva van megjelölve.
+
+**N<sup>4</sup>:** Ha az operációs rendszer a Windows specializált, és az általánosként van rögzítve, a rendszer kiépítési hibát jelez, mert az új virtuális gép az eredeti számítógépnévvel, felhasználónévvel és jelszóval fut. Emellett az eredeti virtuális gép nem használható, mert speciálisként van megjelölve.
+
+**Felbontás**
+
+A hibák elhárításához törölje az aktuális rendszerképet a portálról, és a [jelenlegi VHD](../windows/create-vm-specialized.md) -fájlból állítsa be újra az operációs rendszer (általánosított/specializált) beállítással megegyező beállítással.
+
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Probléma: Egyéni/Képtár/Piactéri rendszerkép; foglalási hiba
+Ez a hiba olyan helyzetekben fordul elő, amikor az új virtuálisgép-kérelem olyan fürthöz van rögzítve, amely nem támogatja a kért virtuálisgép-méretet, vagy nem rendelkezik szabad területtel a kérelem elfogadásához.
+
+**1. ok:** A fürt nem támogatja a kért VM-méretet.
 
 **1. megoldás:**
 
-* Próbálja megismételni a kérést kisebb Virtuálisgép-mérettel.
-* Ha a kért virtuális gép mérete nem lehet módosítani:
-  * Állítsa le a rendelkezésre állási csoport összes virtuális gépen.
-    Kattintson a **erőforráscsoportok** > *az erőforráscsoport* > **erőforrások** > *a rendelkezésre állási csoport*  >  **Virtuális gépek** > *a virtuális gép* > **leállítása**.
-  * Után állítsa le a virtuális gépek, a új virtuális gép létrehozása a kívánt méretet.
-  * Először indítsa el az új virtuális Gépet, majd válassza ki a leállított virtuális gépek mindegyike és kattintson **Start**.
+* Próbálja megismételni a kérést kisebb virtuálisgép-méret használatával.
+* Ha a kért virtuális gép mérete nem módosítható:
+  * Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból.
+    Kattintson **Az erőforráscsoportok** > *az erőforráscsoport* > **erőforrásai***a rendelkezésre állási* > csoportVirtual Machinesa > virtuálisgép > *Leállítás.*  > 
+  * Az összes virtuális gép leállítása után hozza létre az új virtuális gépet a kívánt méretben.
+  * Először indítsa el az új virtuális gépet, majd válassza ki a leállított virtuális gépeket, és kattintson az **Indítás**gombra.
 
-**2. ok:** A fürt nem rendelkezik ingyenes erőforrások.
+**2. ok:** A fürtnek nincs szabad erőforrása.
 
 **2. megoldás:**
 
-* Próbálja megismételni a kérést később.
-* Ha az új virtuális gép egy másik rendelkezésre állási csoport része lehet.
-  * Hozzon létre egy új virtuális Gépet egy másik rendelkezésre állási csoportot (ugyanabban a régióban).
-  * Adja hozzá az új virtuális gép ugyanazon a virtuális hálózaton.
+* Próbálja megismételni a kérelmet egy későbbi időpontban.
+* Ha az új virtuális gép egy másik rendelkezésre állási csoport része lehet
+  * Hozzon létre egy új virtuális gépet egy másik rendelkezésre állási készletben (ugyanabban a régióban).
+  * Adja hozzá az új virtuális gépet ugyanahhoz a virtuális hálózathoz.
 
 ## <a name="next-steps"></a>További lépések
-Ha Windows leállított virtuális gép elindítása vagy egy meglévő Windows Azure-beli virtuális gép átméretezése során problémákat tapasztal, tekintse meg [újraindításával vagy átméretezésével, meglévő Windows virtuális gépként az Azure-ban üzembe helyezés hibáinak elhárítása Resource Manager](restart-resize-error-troubleshooting.md).
+Ha problémákba ütközik egy leállított Windowsos virtuális gép indításakor vagy egy meglévő Windows rendszerű virtuális gép átméretezése az Azure-ban, tekintse meg a [Resource Manager üzembe helyezésével kapcsolatos hibák elhárítása az Azure-ban meglévő Windows rendszerű virtuális gépek újraindítása vagy átméretezés](restart-resize-error-troubleshooting.md)
 
 

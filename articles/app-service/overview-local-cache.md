@@ -1,6 +1,6 @@
 ---
-title: Helyi gyorsítótár – áttekintés – az Azure App Service |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan lehet engedélyezni, átméretezése és az Azure App Service helyi gyorsítótár-szolgáltatás állapotának lekérdezése
+title: Helyi gyorsítótár áttekintése – Azure App Service | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan engedélyezheti, átméretezheti és lekérdezheti az Azure App Service helyi gyorsítótár szolgáltatás állapotát.
 services: app-service
 documentationcenter: app-service
 author: cephalin
@@ -10,66 +10,65 @@ tags: optional
 keywords: ''
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1d6e233509b50f0b03678f2e62267169d02133a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9102d6f3ce3be44107268419517dc9ebe434ac7a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60839036"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098461"
 ---
-# <a name="azure-app-service-local-cache-overview"></a>Az Azure App Service helyi gyorsítótár – áttekintés
+# <a name="azure-app-service-local-cache-overview"></a>Azure App Service a helyi gyorsítótár áttekintése
 
 > [!NOTE]
-> Helyi gyorsítótár nem támogatott a Function apps vagy a tárolóalapú App Service-alkalmazások, mint például a [Linuxon futó App Service](containers/app-service-linux-intro.md).
+> A helyi gyorsítótár nem támogatott a Function apps vagy a Container App Service alkalmazásokban, például a [linuxon app Service](containers/app-service-linux-intro.md).
 
 
-Azure App Service-tartalom az Azure Storage tárolja, és az illesztett be, a tartalommegosztás tartósan. Ez a kialakítás célja, hogy együttműködést a különböző alkalmazások és az alábbi attribútumok tartoznak:  
+Azure App Service tartalom tárolása az Azure Storage-ban történik, és tartós módon van felkészülve, mint a tartalom megosztása. Ez a kialakítás a különböző alkalmazásokkal való együttműködésre szolgál, és a következő tulajdonságokkal rendelkezik:  
 
-* A tartalom közösen használja az alkalmazást több virtuális gép (VM) példányát.
-* A tartalom tartós, és a futó alkalmazások által módosíthatók.
-* Naplófájlok és a diagnosztikai adatok fájlok az azonos megosztott tartalmat tartalmazó mappa alatt érhetők el.
-* Új tartalom közzététele közvetlenül frissíti a tartalmat tartalmazó mappa. Azonnal megtekintheti ugyanahhoz a tartalomhoz az SCM webhely és a futó alkalmazás (általában néhány technológiák, például az ASP.NET, a kezdeményezni az alkalmazás újraindítása, néhány fájl módosításait a legújabb tartalmának beolvasása a).
+* A tartalom megosztása az alkalmazás több virtuális gép (VM) példánya között történik.
+* A tartalom tartós, és az alkalmazások futtatásával módosítható.
+* A naplófájlok és a diagnosztikai adatfájlok ugyanabban a megosztott tartalom mappában érhetők el.
+* Az új tartalom közzététele közvetlenül frissíti a tartalom mappát. Azonnal megtekintheti ugyanezeket a tartalmakat az SCM webhelyén és a futó alkalmazásban (általában bizonyos technológiák, például a ASP.NET), hogy a legújabb tartalom beszerzése érdekében egy alkalmazás újraindítását kezdeményezzen bizonyos fájlokon.
 
-Számos alkalmazás használja legalább az összes funkciót, míg egyes alkalmazások egyszerűen nagy teljesítményű, csak olvasható tartalomtárhoz konvertál, amely a magas rendelkezésre állású futtathatják. Ezek az alkalmazások is kihasználhatják a Virtuálisgép-példány egy adott helyi gyorsítótár.
+Habár számos alkalmazás használja ezeket a funkciókat, egyes alkalmazásokhoz csak nagy teljesítményű, csak olvasható tartalom-áruházra van szükség, amely magas rendelkezésre állással futtatható. Ezek az alkalmazások kihasználhatják egy adott helyi gyorsítótár virtuálisgép-példányát.
 
-Az Azure App Service helyi gyorsítótára szolgáltatást a tartalom webes szerepkör nézetét jeleníti meg. Ez a tartalom a tároló tartalmának aszinkron módon helyszíni indítási létrehozott írási – de – elvetési gyorsítótár. Ha a gyorsítótár elkészült, a hely át lett váltva a gyorsítótárazott tartalom futtatásához. Helyi gyorsítótár rendszeren futtatott alkalmazások rendelkeznek a következő előnyökkel jár:
+A Azure App Service helyi gyorsítótár szolgáltatás a tartalom webes szerepkörét jeleníti meg. Ez a tartalom az aszinkron módon a hely indításakor létrehozott tárolási tartalom írási és elvetési gyorsítótára. Ha a gyorsítótár elkészült, a hely a gyorsítótárazott tartalomon való futtatásra van állítva. A helyi gyorsítótárban futó alkalmazások a következő előnyöket nyújtják:
 
-* Azok a védett, az Azure Storage tartalmakhoz férhetnek előforduló késéseket.
-* Azok a tervezett frissítések vagy nem tervezett leállás és bármely más üzemzavarokhoz vezethet az Azure Storage, amelyek a tartalommegosztás, kiszolgáló-kiszolgáló védett.
-* Tároló megosztás módosításai miatt kevesebb alkalmazás-újraindítások rendelkeznek.
+* Ezek a késések az Azure Storage-ban tárolt tartalomhoz való hozzáféréskor jelentkeznek.
+* Ezek a tervezett frissítések és a nem tervezett leállások, valamint az Azure Storage szolgáltatással kapcsolatos egyéb fennakadások, amelyek a tartalom megosztását kiszolgáló kiszolgálókon történnek.
+* A tárolási megosztás változásai miatt kevesebb alkalmazás újraindul.
 
-## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Hogyan az a helyi gyorsítótár módosítja az App Service működését
-* _D:\home_ mutat, a helyi gyorsítótár, amely a Virtuálisgép-példányon jön létre, az alkalmazás indulásakor. _D:\Local_ továbbra is a Virtuálisgép-specifikus ideiglenes tároló mutat.
-* A helyi gyorsítótár egyszeri másolatát tartalmazza a _/Helykonfiguráció_ és _/siteextensions_ mappákat a megosztott tartalom tároló, _D:\home\site_ és _D:\home\ siteextensions_, illetve. A Másolás a helyi gyorsítótárba az alkalmazás indulásakor. Az egyes alkalmazások a két mappa mérete alapértelmezés szerint 300 MB-ra korlátozott, de legfeljebb 2 GB lehet növelni.
-* A helyi gyorsítótár nem írható-olvasható. Azonban bármilyen módosítás elvész az alkalmazást áthelyezi a virtuális gépek, illetve újraindításakor beolvasása. Ne használja a helyi gyorsítótár alkalmazásokat, amelyek kritikus fontosságú adatok tárolása a tartalomtárhoz konvertál.
-* _D:\home\LogFiles_ és _D:\home\Data_ tartalmazza a naplófájlok és az alkalmazásadatokat. A két almappát a rendszer helyben tárolja a Virtuálisgép-példányon, és másolja a megosztott tartalomtároló rendszeres időközönként. Alkalmazások ezeket a mappákat írásával megőrizheti a naplófájlokat és az adatok. Azonban a Másolás a megosztott tartalomtároló, legjobb, így lehetséges, hogy a naplófájlok és az adatok egy VM-példány egy hirtelen összeomlása miatt megszakadt.
-* [A naplóstreamelés](troubleshoot-diagnostic-logs.md#streamlogs) hatással van a legjobb másolatot. Sikerült a adatfolyamként továbbított naplók perces késleltetés akár figyelje meg.
-* A megosztott tartalom tárolóban változás történik a mappastruktúra a _LogFiles_ és _adatok_ mappákat a helyi gyorsítótárat használó alkalmazások esetében. Nincsenek most almappák neki, hogy az "egyedi azonosító" + időbélyeg elnevezési mintát. Egyes, több a almappával felel meg egy Virtuálisgép-példánnyal, ahol az alkalmazás fut, vagy futott.
-* Más, a mappa _D:\home_ a helyi gyorsítótárban maradjon, és nem másolódnak át a megosztott tartalomtároló.
-* Alkalmazás üzembe helyezése bármely támogatott módszerrel közvetlenül a tartós megosztott tartalomtároló tesz közzé. Frissítése az _D:\home\site_ és _D:\home\siteextensions_ mappák a helyi gyorsítótárban, az alkalmazásnak újra kell indítani. Ahhoz, hogy az életciklus zökkenőmentes, olvassa el a cikk későbbi részében.
-* Az SCM helyet tartalom alapértelmezett nézete továbbra is, hogy a megosztott tartalom tárolóján.
+## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Hogyan módosítja a helyi gyorsítótár a App Service viselkedését
+* A _D:\home_ a helyi gyorsítótárra mutat, amely a virtuálisgép-példányon jön létre, amikor az alkalmazás elindul. A _D:\Local_ továbbra is az ideiglenes VM-specifikus tárterületre mutat.
+* A helyi gyorsítótár a megosztott _/site_ és a _/siteextensions_ mappák egy egyszeri másolatát tartalmazza, a következő helyen: _D:\home\site_ és _D:\home\siteextensions_. Az alkalmazás indításakor a rendszer a helyi gyorsítótárba másolja a fájlokat. Az egyes alkalmazások két mappájának mérete alapértelmezés szerint 300 MB-ra van korlátozva, de akár 2 GB-ot is megnövelheti.
+* A helyi gyorsítótár írható-olvasható. Ha azonban az alkalmazás a virtuális gépeket helyezi át, vagy újraindul, a módosítások elvesznek. Ne használja a helyi gyorsítótárat olyan alkalmazások esetében, amelyek kritikus fontosságú adatokat tárolnak a tartalom-tárolóban.
+* A _D:\home\LogFiles_ és a _D:\home\Data_ naplófájlokat és alkalmazásadatokat tartalmaznak. A két almappát a rendszer helyileg tárolja a virtuálisgép-példányon, és rendszeres időközönként átmásolja őket a megosztott tartalom tárolójába. Az alkalmazások a naplófájlokat és az adatfájlokat a mappákba írással is megőrzik. A megosztott tartalom tárolójába való másolás azonban a legjobb megoldás, ezért lehetséges, hogy a naplófájlok és az adatmennyiség elvész a virtuálisgép-példányok hirtelen összeomlása miatt.
+* [](troubleshoot-diagnostic-logs.md#streamlogs) A naplózási adatfolyamra a legalkalmasabb másolási lehetőség vonatkozik. Akár egy percet is megfigyelheti a továbbított naplókban.
+* A megosztott tartalom tárolóban módosul a _naplófájlok_ és az adatmappák mappa szerkezete a helyi gyorsítótárat használó alkalmazásokhoz. A bennük található almappákban az "egyedi azonosító" és az időbélyeg elnevezési mintája látható. Az almappák mindegyike egy olyan virtuálisgép-példánynak felel meg, amelyben az alkalmazás fut vagy fut.
+* A _D:\home_ egyéb mappái a helyi gyorsítótárban maradnak, és nem másolódnak át a megosztott tartalom-tárolóba.
+* Az alkalmazás központi telepítése bármely támogatott módszerrel közvetlenül a tartós megosztott tartalom tárolójába kerül. A helyi gyorsítótárban lévő _D:\home\site_ -és _D:\home\siteextensions_ -mappák frissítéséhez az alkalmazást újra kell indítani. Az életciklus zökkenőmentesvé tételéhez tekintse meg a cikk későbbi részében található információkat.
+* Az SCM-hely alapértelmezett tartalmi nézete továbbra is megegyezik a megosztott tartalom tárolójával.
 
-## <a name="enable-local-cache-in-app-service"></a>Az App Service-ben a helyi gyorsítótár engedélyezése
-Helyi gyorsítótár az alkalmazás fenntartott beállítások segítségével konfigurálhatja. Ezek a beállítások alkalmazást konfigurálhatja a következő módszerekkel:
+## <a name="enable-local-cache-in-app-service"></a>Helyi gyorsítótár engedélyezése a App Serviceban
+A helyi gyorsítótárat a fenntartott Alkalmazásbeállítások együttes használatával konfigurálhatja. Az Alkalmazásbeállítások a következő módszerekkel konfigurálhatók:
 
 * [Azure Portal](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
-### <a name="configure-local-cache-by-using-the-azure-portal"></a>Helyi gyorsítótár konfigurálása az Azure portal használatával
+### <a name="configure-local-cache-by-using-the-azure-portal"></a>Helyi gyorsítótár konfigurálása a Azure Portal használatával
 <a name="Configure-Local-Cache-Portal"></a>
 
-Ennek az alkalmazásbeállításnak használatával engedélyeznie a webalkalmazás-alkalmazásonként helyi gyorsítótár: `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
+A helyi gyorsítótárat a webalkalmazások alapján engedélyezheti az alkalmazás-beállítás használatával:`WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
-![Azure-portál alkalmazás beállítások: Helyi gyorsítótár](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
+![Azure Portal alkalmazás beállításai: Helyi gyorsítótár](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 
-### <a name="configure-local-cache-by-using-azure-resource-manager"></a>Helyi gyorsítótár konfigurálása az Azure Resource Manager használatával
+### <a name="configure-local-cache-by-using-azure-resource-manager"></a>Helyi gyorsítótár konfigurálása Azure Resource Manager használatával
 <a name="Configure-Local-Cache-ARM"></a>
 
 ```json
@@ -93,33 +92,33 @@ Ennek az alkalmazásbeállításnak használatával engedélyeznie a webalkalmaz
 ...
 ```
 
-## <a name="change-the-size-setting-in-local-cache"></a>Helyi gyorsítótár mérete beállításainak módosítása
-Alapértelmezés szerint a helyi gyorsítótár mérete a **300 MB**. Ez magában foglalja a /site és a tartalom tárból másolt /siteextensions mappák, valamint a helyileg létrehozott naplók és adatok mappákat. Ez a korlát növeléséhez használja a Alkalmazásbeállítás `WEBSITE_LOCAL_CACHE_SIZEINMB`. A méret legfeljebb növelheti **2 GB-os** (2000 MB) alkalmazásonként.
+## <a name="change-the-size-setting-in-local-cache"></a>A méret beállítás módosítása a helyi gyorsítótárban
+Alapértelmezés szerint a helyi gyorsítótár mérete **300 MB**. Ebbe beletartozik a/site másolt és a/siteextensions mappa, valamint a helyileg létrehozott naplók és adatmappák. A korlát növeléséhez használja az alkalmazás beállítását `WEBSITE_LOCAL_CACHE_SIZEINMB`. Az alkalmazások mérete legfeljebb **2 GB** (2000 MB) lehet.
 
-## <a name="best-practices-for-using-app-service-local-cache"></a>App Service helyi gyorsítótára használatának ajánlott eljárásai
-Azt javasoljuk, hogy a helyi gyorsítótár együtt használja a [átmeneti környezetek](../app-service/deploy-staging-slots.md) funkció.
+## <a name="best-practices-for-using-app-service-local-cache"></a>Ajánlott eljárások App Service helyi gyorsítótár használatához
+Javasoljuk, hogy a helyi gyorsítótárat az [átmeneti környezetek](../app-service/deploy-staging-slots.md) szolgáltatással együtt használja.
 
-* Adja hozzá a *kiemelt* Alkalmazásbeállítás `WEBSITE_LOCAL_CACHE_OPTION` értékkel `Always` , a **éles** tárolóhely. Ha használ `WEBSITE_LOCAL_CACHE_SIZEINMB`, is hozzáadhatja az üzemelési egy Beragadó beállítást.
-* Hozzon létre egy **átmeneti** tárolóhely, és tegye közzé az előkészítési pont. Általában nem állít be az előkészítési pont egy zökkenőmentes buildelési és üzembe helyezése-tesztelési életciklus átmeneti, ha a helyi gyorsítótár előnyeit az éles üzembe helyezési pont engedélyezése a helyi gyorsítótár használatával.
-* Tesztelje webhelyét, az előkészítési pont ellen.  
-* Amikor készen áll, adja ki a [felcserélési művelet](../app-service/deploy-staging-slots.md#Swap) tárhelyek az átmeneti és éles környezet között.  
-* Kiemelt beállítások közé tartozik a nevét és a tárolóhelyet a kiemelt. Így átváltásakor a előkészítési pont lekérdezi éles környezetben, azt örökli a helyi gyorsítótár beállításokat. Az újonnan éles üzembe helyezési pont átváltva a helyi gyorsítótárban fog futni, néhány perc múlva, illetve fog kell bemelegíteni tárolóhely melegítési részeként lapozófájl-kapacitás után. Ezért a tárolóhelycsere befejeződése után az üzemelési fut a helyi gyorsítótárban.
+* Adja hozzá a *Sticky* app `WEBSITE_LOCAL_CACHE_OPTION` beállítást az éles tárolóhely értékével. `Always` Ha használja `WEBSITE_LOCAL_CACHE_SIZEINMB`a-t, az éles tárolóhelyként is hozzáadja az értéket.
+* Hozzon létre egy **átmeneti** tárolóhelyet, és tegye közzé az átmeneti tárolóhelyen. Általában nem úgy állítja be az átmeneti tárolóhelyet, hogy a helyi gyorsítótárat használja, hogy zökkenőmentes Build-üzembe helyezés-tesztelési életciklust engedélyezzen az átmeneti tároláshoz, ha az üzemi tárolóhelyhez tartozó helyi gyorsítótár előnyeit kapja.
+* Tesztelje a webhelyet az átmeneti tárolóhelyen.  
+* Ha elkészült, állítson ki egy [swap-műveletet](../app-service/deploy-staging-slots.md#Swap) az átmeneti és az üzemi tárolóhelyek között.  
+* A Sticky-beállítások közé tartozik a név és a Sticky to a slot. Tehát amikor az előkészítési pont az éles környezetbe kerül, örökli a helyi gyorsítótár-alkalmazás beállításait. Az újonnan felcserélt üzemi tárolóhely néhány perc elteltével a helyi gyorsítótárral fog futni, és a rendszer a swap után bemelegíti a slot bemelegedési részét. Tehát amikor a tárolóhely cseréje befejeződött, az éles tárolóhely a helyi gyorsítótáron fut.
 
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
-### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Hogyan állapítható meg, ha a helyi gyorsítótárral a saját alkalmazásra érvényes?
-Ha az alkalmazás szüksége van egy nagy teljesítményű, megbízható tartalomtárhoz konvertál, nem használja a tartalomtároló futásidőben kritikus fontosságú adatokat írni, és teljes mérete 2 GB-nál kevesebb, akkor a válasz a "yes" használata! A /site és /siteextensions mappa amelyek összméretén lekéréséhez használhatja a webhelybővítmény "Az Azure Web Apps lemezhasználat."
+### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Honnan tudhatom meg, hogy a helyi gyorsítótár vonatkozik-e az alkalmazásra?
+Ha az alkalmazásnak nagy teljesítményű, megbízható tartalom-tárolóra van szüksége, a nem használja a Content Store-t a kritikus adatokat futásidőben, és a teljes méretnél kevesebb, mint 2 GB-ot, a válasz igen. A/site és a/siteextensions mappák teljes méretének lekéréséhez használhatja az "Azure Web Apps lemezhasználat" nevű helyet.
 
-### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Hogyan állapítható meg, ha a webhelyem változott-e a helyi gyorsítótár használatával?
-Az átmeneti környezetek használata a helyi gyorsítótár-szolgáltatás, a csereművelet végrehajtásához helyi gyorsítótár bemelegíteni van. Ellenőrizze, hogy a webhely fut-e helyi gyorsítótárban, ellenőrizheti a munkavégző folyamat környezeti változó `WEBSITE_LOCALCACHE_READY`. Kövesse az utasításokat a a [munkavégző folyamat környezeti változó](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) lap eléréséhez a munkavégző folyamat környezeti változó több példányon.  
+### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Honnan tudhatom meg, hogy a webhelyem a helyi gyorsítótár használatára váltott-e?
+Ha az átmeneti környezetekben a helyi gyorsítótár szolgáltatást használja, a swap művelet nem fejeződik be, amíg a helyi gyorsítótár be nem fejeződik. Ha ellenőrizni szeretné, hogy a hely a helyi gyorsítótáron fut-e, ellenőrizze a munkavégző `WEBSITE_LOCALCACHE_READY`folyamat környezeti változóját. A [munkavégző folyamat környezeti változójának](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) lapján található utasítások segítségével több példányon is elérheti a munkavégző folyamat környezeti változóját.  
 
-### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Éppen most közzétett új módosításokat, de az alkalmazás nem úgy tűnik, hogy azokat. Hogy miért?
-Ha az alkalmazás a helyi gyorsítótárat használ, majd szeretné újraindítja a helyet, a legutóbbi változtatásokat beolvasásához. Nem a módosítások közzététele éles helyhez szeretne? Lásd az előző ajánlott eljárások szakaszban tárolóhely-beállításokat.
+### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Most közzétettem az új módosításokat, de az alkalmazásom úgy tűnik, hogy nem rendelkezik velük. Hogy miért?
+Ha az alkalmazás helyi gyorsítótárat használ, a legújabb módosítások beszerzéséhez újra kell indítania a helyet. Nem kívánja közzétenni a módosításokat egy éles helyen? Tekintse meg a tárolóhelyek beállításait az előző ajánlott eljárások szakaszban.
 
-### <a name="where-are-my-logs"></a>Hol találhatók a naplókat?
-A helyi gyorsítótár a naplók és adatok mappák máshogy néznek ki egy kicsit. Azonban az almappák szerkezete ugyanaz marad, azzal a különbséggel, hogy az almappákat is nestled alatt egy almappát a formátum "egyedi virtuális gép azonosítója" + időbélyeg.
+### <a name="where-are-my-logs"></a>Hol találhatók a naplók?
+A helyi gyorsítótárral a naplók és az adatmappák egy kicsit máshogy néznek ki. Az almappák szerkezete azonban változatlan marad, azzal a különbséggel, hogy az almappák az "egyedi virtuálisgép-azonosító" és az időbélyeg formátuma alatt vannak.
 
-### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Helyi gyorsítótár engedélyezve van, de az alkalmazás továbbra is lekérdezi újraindul. Ez miért van? E úgy Gondoltuk, helyi gyorsítótár segítségével a gyakori alkalmazás újraindul.
-Helyi gyorsítótár storage szolgáltatással kapcsolatos alkalmazás-újraindítások megelőzése érdekében. Azonban az alkalmazás sikerült továbbra is mennek keresztül újraindul a virtuális gép tervezett, infrastruktúra-frissítések során. A teljes alkalmazás újraindul, hogy a hogy a helyi gyorsítótár engedélyezve kell lennie kevesebb.
+### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Engedélyezve van a helyi gyorsítótár, de az alkalmazás továbbra is újraindul. Miért van ez? Azt hittem, hogy a helyi gyorsítótár segített a gyakori alkalmazás-újraindítások során.
+A helyi gyorsítótár segít megelőzni a tárolóval kapcsolatos alkalmazások újraindítását. Az alkalmazás azonban továbbra is elvégezhető a virtuális gép tervezett infrastruktúrájának frissítése során. Az alkalmazás általános újraindítása, ha a helyi gyorsítótár engedélyezve van, kevesebbnek kell lennie.
 
-### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Helyi gyorsítótár kizárandó könyvtárak másolását a gyorsabb helyi meghajtó a?
-A lépés, amely átmásolja a storage tartalom részeként ki van zárva minden tárház nevű mappát. Ez segít a forgatókönyvekhez, ahol a webhely tartalmát tartalmazhat egy verziókövetési adattár, amely nem lehet szükség a napi művelet az alkalmazás. 
+### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>A helyi gyorsítótár kizár minden könyvtárat a gyorsabb helyi meghajtóra?
+A tárolási tartalmat átmásoló lépés részeként minden adattár nevű mappa ki van zárva. Ez segít olyan forgatókönyvek esetén, ahol a webhely tartalma tartalmazhat olyan verziókövetés-tárházat, amely nem feltétlenül szükséges az alkalmazás napi működéséhez. 

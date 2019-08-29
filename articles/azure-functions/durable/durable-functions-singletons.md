@@ -1,29 +1,28 @@
 ---
-title: Durable Functions – Azure singletons
-description: Hogyan singletons a Durable Functions bővítmény az Azure Functions szolgáltatáshoz.
+title: Durable Functions – Azure
+description: Az Durable Functions bővítmény használata Azure Functionshoz.
 services: functions
 author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c032ba046668310ff71d067d22a805fc6446667c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9bf9687f60e649fee98869ef263117177ad5efd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683798"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097930"
 ---
-# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Egyszeres vezénylők a tartós függvények (az Azure Functions)
+# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions)
 
-Gyakran biztosítania kell a háttérben futó feladatok egy adott vezénylőt, hogy csak egy példányban futtatható egyszerre. Ezt megteheti [Durable Functions](durable-functions-overview.md) rendel egy adott példány azonosítója egy orchestrator létrehozásakor.
+A háttérben futó feladatokhoz gyakran kell gondoskodnia arról, hogy egy adott Orchestrator egyszerre csak egy példány fusson. Ezt [Durable functions](durable-functions-overview.md) teheti meg egy adott példány azonosítójának egy Orchestrator való hozzárendelésével a létrehozásakor.
 
-## <a name="singleton-example"></a>Egyedülálló – példa
+## <a name="singleton-example"></a>Egyszeres példa
 
-A következő C# és JavaScript-példák azt szemléltetik, egy HTTP-eseményindító függvény, amely létrehoz egy egypéldányos háttérben futó feladatok vezénylésével. A kód biztosítja, hogy csak egy példány létezik a megadott példány azonosítóját.
+A következő C# és JavaScript példák egy http-trigger függvényt mutatnak be, amely létrehoz egy egypéldányos háttérben végzett előkészítést. A kód biztosítja, hogy csak egy példány létezik egy adott példány-AZONOSÍTÓhoz.
 
 ### <a name="c"></a>C#
 
@@ -56,7 +55,7 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
 Íme a function.json fájlban:
 ```json
@@ -112,17 +111,17 @@ module.exports = async function(context, req) {
 };
 ```
 
-Alapértelmezés szerint példány azonosítói véletlenszerűen létrehozott GUID. Azonban ebben az esetben a példány azonosítója az URL-címből átadott útvonal adatai. A kód meghívja [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) (C#) vagy `getStatus` (JavaScript) ellenőrizze, hogy a megadott Azonosítóval rendelkező példány már fut-e. Ha nem, akkor egy példány jön létre, hogy az azonosítóval.
+Alapértelmezés szerint a példány-azonosítók véletlenszerűen generált GUID azonosítók. Ebben az esetben azonban a rendszer átadja a példány AZONOSÍTÓját az útvonalon lévő adatokból az URL-címről. A kód meghívja aC# [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) ( `getStatus` ) vagy a (JavaScript) metódust annak vizsgálatára, hogy a megadott azonosítójú példány már fut-e. Ha nem, akkor létrejön egy példány ezzel az AZONOSÍTÓval.
 
 > [!WARNING]
-> A JavaScript fejlesztésének helyileg, kell beállítania a környezeti változót `WEBSITE_HOSTNAME` való `localhost:<port>`, például. `localhost:7071` a módszer használatához `DurableOrchestrationClient`. Ezzel a követelménnyel kapcsolatban további információkért lásd: a [GitHub-problémát](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> A JavaScriptben helyileg történő fejlesztéskor a környezeti változót `WEBSITE_HOSTNAME` `localhost:<port>`is be kell állítania. `localhost:7071`metódusok használata a `DurableOrchestrationClient`alkalmazásban. Erről a követelményről a [GitHub-probléma](https://github.com/Azure/azure-functions-durable-js/issues/28)című cikkben olvashat bővebben.
 
 > [!NOTE]
-> Ez a példa egy lehetséges versenyhelyzet szerepel. Ha két példánya **HttpStartSingle** egyidejűleg hajtsa végre, mindkét függvényhívások jártak, de csak egy vezénylési példány ténylegesen indul el. A követelményeitől függően ez lehet a nem kívánt mellékhatásokkal. Ezért fontos győződjön meg arról, hogy nincsenek két kérelmek egyidejűleg futtathatja az eseményindító függvény.
+> Ebben a példában a verseny feltétele lehetséges. Ha a **HttpStartSingle** két példánya egyidejű végrehajtást hajt végre, mindkét függvényhívás sikeres lesz, de a rendszer csak egy hanghívási példányt fog elindulni. A követelményektől függően előfordulhat, hogy ez nem lenne lehetséges mellékhatása. Ezért fontos annak biztosítása, hogy ne lehessen egyszerre két kérelmet végrehajtani az trigger-függvényt.
 
-Az orchestrator-függvény a gyakorlati kivitelezés részleteinek ténylegesen nem számít. Lehet, hogy az orchestrator szokásos függvény, amely indulásakor és befejezésekor, vagy lehet egy örökre futtató (azaz egy [külső Vezénylési](durable-functions-eternal-orchestrations.md)). A fontos pontot, hogy minden eddiginél csak egy példány egy időben futnak.
+A Orchestrator függvény implementációjának részletei valójában nem számítanak. Ez lehet egy normál Orchestrator-függvény, amely megkezdi és befejeződik, vagy az is lehet, hogy örökre fut (azaz egy [örök](durable-functions-eternal-orchestrations.md)kialakítás). A lényeg az, hogy egyszerre csak egy példány fut egyszerre.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan hívhat meg alárendelt vezénylések](durable-functions-sub-orchestrations.md)
+> [Megtudhatja, hogyan hívhat meg az alfolyamatokat](durable-functions-sub-orchestrations.md)

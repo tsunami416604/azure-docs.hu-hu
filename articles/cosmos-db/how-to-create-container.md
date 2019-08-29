@@ -3,19 +3,19 @@ title: Tároló létrehozása az Azure Cosmos DB-ben
 description: Tudnivalók a tárolók Azure Cosmos DB-ben történő létrehozásáról
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7768f94051c6882f08dce360e35bf673c7b1103d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a88d8f33624278ac6e70b918cec7cef133fe4b34
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241005"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093476"
 ---
-# <a name="create-an-azure-cosmos-container"></a>Egy Azure Cosmos-tároló létrehozása
+# <a name="create-an-azure-cosmos-container"></a>Azure Cosmos-tároló létrehozása
 
-Ez a cikk ismerteti a különböző módon hozhat létre egy Azure Cosmos-tárolóhoz (gyűjtemény, táblázat vagy gráf). Azure Portallal, Azure CLI-vel, vagy a támogatott SDK-k a. Ez a cikk bemutatja, hogyan hozzon létre egy tárolót, adja meg a partíciókulcs és oszthatnak ki átviteli kapacitásokat.
+Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehozásának különböző módszereit ismerteti. Ehhez használhatja a Azure Portal, az Azure CLI vagy a támogatott SDK-kat is. Ez a cikk bemutatja, hogyan hozhat létre tárolót, hogyan adhatja meg a partíciós kulcsot, és hogyan lehet kiépíteni az átviteli sebességet.
 
 ## <a name="create-a-container-using-azure-portal"></a>Tároló létrehozása az Azure Portal használatával
 
@@ -25,31 +25,31 @@ Ez a cikk ismerteti a különböző módon hozhat létre egy Azure Cosmos-tárol
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-sql-api-dotnet.md#create-account), vagy válasszon ki egy meglévő fiókot.
 
-1. Nyissa meg a **adatkezelő** panelre, és válassza **új gyűjtemény**. Következő lépésként adja meg a következő adatokat:
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új gyűjtemény**lehetőséget. Ezután adja meg a következő adatokat:
 
-   * Adja meg e létrehozásakor egy új adatbázist és egy meglévő használatával.
-   * Adjon meg egy gyűjteményt.
-   * Adjon meg egy partíciókulcsot.
-   * Adjon meg egy átviteli (például 1000 kérelemegység) ki kell építeni.
+   * Jelezze, hogy új adatbázist hoz létre, vagy egy meglévőt használ.
+   * Adja meg a gyűjtemény AZONOSÍTÓját.
+   * Adjon meg egy partíciós kulcsot.
+   * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-![Képernyőfelvétel az adatkezelő panelen az új gyűjtemény kiemelésével](./media/how-to-create-container/partitioned-collection-create-sql.png)
+![Képernyőkép a Adatkezelő panelről, új gyűjtemény kijelölve](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
-### <a id="portal-mongodb"></a>Az Azure Cosmos DB API a mongodb-hez
+### <a id="portal-mongodb"></a>MongoDB Azure Cosmos DB API
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-mongodb-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő fiókot.
 
-1. Nyissa meg a **adatkezelő** panelre, és válassza **új gyűjtemény**. Következő lépésként adja meg a következő adatokat:
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új gyűjtemény**lehetőséget. Ezután adja meg a következő adatokat:
 
-   * Adja meg e létrehozásakor egy új adatbázist és egy meglévő használatával.
-   * Adjon meg egy gyűjteményt.
-   * Adja meg a szegmenskulccsal.
-   * Adjon meg egy átviteli (például 1000 kérelemegység) ki kell építeni.
+   * Jelezze, hogy új adatbázist hoz létre, vagy egy meglévőt használ.
+   * Adja meg a gyűjtemény AZONOSÍTÓját.
+   * Adja meg a szegmens kulcsát.
+   * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-![Képernyőkép az Azure Cosmos DB API a mongodb-hez, gyűjtemény hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+![Képernyőkép a MongoDB Azure Cosmos DB API-ról, gyűjtemény hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
 ### <a id="portal-cassandra"></a>Cassandra API
 
@@ -57,15 +57,15 @@ Ez a cikk ismerteti a különböző módon hozhat létre egy Azure Cosmos-tárol
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-cassandra-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő fiókot.
 
-1. Nyissa meg a **adatkezelő** panelre, és válassza **új tábla**. Következő lépésként adja meg a következő adatokat:
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új tábla**lehetőséget. Ezután adja meg a következő adatokat:
 
-   * Azt jelzik, hogy létrehozásakor egy új kulcsteret, és egy meglévő használatával.
+   * Jelezze, hogy új lemezterületet hoz létre, vagy egy meglévőt használ.
    * Adja meg egy tábla nevét.
-   * Adja meg a tulajdonságokat, és adja meg az elsődleges kulcsot.
-   * Adjon meg egy átviteli (például 1000 kérelemegység) ki kell építeni.
+   * Adja meg a tulajdonságokat, és adjon meg egy elsődleges kulcsot.
+   * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-![Képernyőkép a Cassandra API, táblázat hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
+![Képernyőkép a Cassandra APIről, tábla hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
 
 > [!NOTE]
 > A Cassandra API esetében a rendszer az elsődleges kulcsot használja partíciókulcsként.
@@ -76,16 +76,16 @@ Ez a cikk ismerteti a különböző módon hozhat létre egy Azure Cosmos-tárol
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-graph-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő fiókot.
 
-1. Nyissa meg a **adatkezelő** panelre, és válassza **új gráf**. Következő lépésként adja meg a következő adatokat:
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új gráf**lehetőséget. Ezután adja meg a következő adatokat:
 
-   * Adja meg, hogy létrehozásakor egy új adatbázist, és egy meglévő használatával.
-   * Adja meg a gráf azonosítóját.
+   * Jelezze, hogy új adatbázist hoz létre, vagy egy meglévőt használ.
+   * Adja meg a gráf AZONOSÍTÓját.
    * Válassza a **Korlátlan** tárolási kapacitás lehetőséget.
-   * Adja meg a csúcspontok partíciókulcsot.
-   * Adjon meg egy átviteli (például 1000 kérelemegység) ki kell építeni.
+   * Adja meg a csúcspontok partíciós kulcsát.
+   * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-![Képernyőkép a Gremlin API, gráf hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
+![Képernyőkép a Gremlin API-ról, gráf hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
 
 ### <a id="portal-table"></a>Table API
 
@@ -93,13 +93,13 @@ Ez a cikk ismerteti a különböző módon hozhat létre egy Azure Cosmos-tárol
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-table-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő fiókot.
 
-1. Nyissa meg a **adatkezelő** panelre, és válassza **új tábla**. Következő lépésként adja meg a következő adatokat:
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új tábla**lehetőséget. Ezután adja meg a következő adatokat:
 
-   * Adjon meg egy táblát.
-   * Adjon meg egy átviteli (például 1000 kérelemegység) ki kell építeni.
+   * Adja meg a tábla AZONOSÍTÓját.
+   * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-![Képernyőfelvétel: a Table API, táblázat hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-table.png)
+![Képernyőkép a Table APIről, tábla hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-table.png)
 
 > [!Note]
 > A Table API esetében a rendszer minden új sor hozzáadásakor megad egy partíciókulcsot.
@@ -120,7 +120,7 @@ az cosmosdb collection create \
     --throughput 400
 ```
 
-### <a id="cli-mongodb"></a>Az Azure Cosmos DB API a mongodb-hez
+### <a id="cli-mongodb"></a>MongoDB Azure Cosmos DB API
 
 ```azurecli-interactive
 # Create a collection with a shard key and provision 400 RU/s throughput.
@@ -172,9 +172,9 @@ az cosmosdb collection create \
     --throughput 400
 ```
 
-## <a name="create-a-container-using-powershell"></a>Hozzon létre egy tárolót, PowerShell-lel
+## <a name="create-a-container-using-powershell"></a>Tároló létrehozása a PowerShell használatával
 
-Az alábbi minták jeleníti meg az Azure Cosmos DB egy tároló-szintű erőforrás kiépítéséhez szükséges támogató erőforrások létrehozása
+Az alábbi minták az összes olyan támogatási erőforrás létrehozását mutatják be, amely a tároló szintű erőforrások kiépítéséhez szükséges a Azure Cosmos DB
 
 ### <a id="ps-sql"></a>SQL API
 
@@ -489,7 +489,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 1000 });
 ```
 
-### <a id="dotnet-mongodb"></a>Az Azure Cosmos DB API a mongodb-hez
+### <a id="dotnet-mongodb"></a>MongoDB Azure Cosmos DB API
 
 ```csharp
 // Create a collection with a partition key by using Mongo Shell:
@@ -497,7 +497,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 ```
 
 > [!Note]
-> MongoDB átviteli protokoll nem tudja értelmezni a fogalmát [kérelemegység](request-units.md). Hozzon létre új gyűjteményt, a kiosztott átviteli sebesség, használja az Azure portal vagy a Cosmos DB SDK-k SQL API-hoz.
+> A MongoDB huzal protokoll nem ismeri a [kérelmek egységének](request-units.md)fogalmát. Ha olyan új gyűjteményt szeretne létrehozni, amely számára kiépített átviteli sebességgel rendelkezik, használja a Azure Portal vagy Cosmos DB SDK-kat az SQL API-hoz.
 
 ### <a id="dotnet-cassandra"></a>Cassandra API
 
@@ -512,6 +512,6 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 ## <a name="next-steps"></a>További lépések
 
 - [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
-- [Az Azure Cosmos DB-kérésegységeiről](request-units.md)
-- [A tárolók és adatbázisok kiépítése átviteli](set-throughput.md)
-- [Az Azure Cosmos-fiók használata](account-overview.md)
+- [Az Azure Cosmos DB kérelemegységei](request-units.md)
+- [Adatforgalom kiépítése a tárolók és adatbázisok számára](set-throughput.md)
+- [Azure Cosmos-fiók használata](account-overview.md)

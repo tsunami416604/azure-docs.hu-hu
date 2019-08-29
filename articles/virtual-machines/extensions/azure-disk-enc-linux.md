@@ -1,6 +1,6 @@
 ---
-title: Az Azure Disk Encryption for Linux |} A Microsoft Docs
-description: Az Azure Disk Encryption egy virtuális gép, virtuálisgép-bővítmények használatával Linux rendszeren telepíti.
+title: Linux-Azure Disk Encryption | Microsoft Docs
+description: Üzembe helyezi Azure Disk Encryption Linux rendszerű virtuális gépre egy virtuálisgép-bővítmény használatával.
 services: virtual-machines-linux
 documentationcenter: ''
 author: ejarvi
@@ -8,44 +8,43 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: d544aae33faf60be00a2b4ea0a45f405efcedb39
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6a81f105f9632a7ca7e2bf7188e358274020c78f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706148"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084768"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption for Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Disk Encryption kihasználja a dm-crypt alrendszer Linux rendszeren, hogy biztosítsa a teljes lemeztitkosítás [válassza ki az Azure Linux-disztribúciók](https://aka.ms/adelinux).  Ez a megoldás integrálva van az Azure Key Vault lemeztitkosítási kulcsokat és titkos kulcsok kezeléséhez.
+Azure Disk Encryption kihasználja a Linux dm-crypt alrendszerét, hogy teljes lemezes titkosítást biztosítson az [Azure Linux-disztribúciók kiválasztása](https://aka.ms/adelinux)során.  Ez a megoldás integrálva van Azure Key Vault a lemezes titkosítási kulcsok és titkos kódok kezeléséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Előfeltételek teljes listáját lásd: [Azure Disk Encryption titkosítási előfeltétel](
-../../security/azure-security-disk-encryption-prerequisites.md).
+Az előfeltételek teljes listáját itt tekintheti meg: [Azure Disk Encryption](
+../../security/azure-security-disk-encryption-prerequisites.md)előfeltételek.
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Az Azure Disk Encryption válassza disztribúciók és verziók a jelenleg támogatott.  Tekintse meg a [az Azure Disk Encryption támogatott operációs rendszerek: Linux](../../security/azure-security-disk-encryption-prerequisites.md#linux) által támogatott Linux-disztribúciók listáját.
+A Azure Disk Encryption jelenleg támogatott a disztribúciók és verziók kiválasztása esetén.  Tekintse [meg a Azure Disk Encryption támogatott operációs rendszereket: Linux](../../security/azure-security-disk-encryption-prerequisites.md#linux) a támogatott Linux-disztribúciók listájához.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-Az Azure Disk Encryption for Linux internetkapcsolatra van szükség az Active Directory, a Key Vault, a Storage és a csomag felügyeleti végpontok való hozzáféréshez.  További információkért lásd: [Azure Disk Encryption titkosítási előfeltétel](../../security/azure-security-disk-encryption-prerequisites.md).
+A Linux rendszerhez készült Azure Disk Encryption internetkapcsolatot igényel Active Directory-, Key Vault-, tárolási és csomagkezelő végpontokhoz való hozzáféréshez.  További információ: [Azure Disk Encryption előfeltételek](../../security/azure-security-disk-encryption-prerequisites.md).
 
-## <a name="extension-schemata"></a>Bővítmény sémák szerializálása
+## <a name="extension-schemata"></a>Bővítmény sémák
 
-Nincsenek az Azure Disk Encryption két sémák szerializálása: v1.1, egy újabb, ajánlott sémát, amely nem használ Azure Active Directory (AAD) tulajdonságait, és v0.1, egy régebbi séma, amely szükséges az AAD-tulajdonságok. Kell használnia a kiterjesztést használja a megfelelő verziójú sémába: a bővítmény verziója 1.1-et az AzureDiskEncryptionForLinux bővítmény verziója 0.1-es frissítés a séma v0.1 AzureDiskEncryptionForLinux a séma v1.1.
-### <a name="schema-v11-no-aad-recommended"></a>Séma v1.1: Nincs aad-ben (ajánlott)
+Két sémák van a Azure Disk Encryption: v 1.1, egy újabb, ajánlott séma, amely nem használ Azure Active Directory (HRE) tulajdonságokat és v 0.1-et, amely egy régebbi, HRE-tulajdonságokat igénylő séma. Az Ön által használt bővítménynek megfelelő séma-verziót kell használnia: schema v 1.1 a AzureDiskEncryptionForLinux Extension 1,1-es verziójához, a Schema v 0.1 a AzureDiskEncryptionForLinux Extension 0,1-es verziójához.
+### <a name="schema-v11-no-aad-recommended"></a>Séma v 1.1: Nincs HRE (ajánlott)
 
-A v1.1 séma ajánlott, és nem igényel Azure Active Directory-tulajdonságok.
+A v 1.1 séma használata javasolt, és nem igényel Azure Active Directory tulajdonságokat.
 
 ```json
 {
@@ -71,11 +70,11 @@ A v1.1 séma ajánlott, és nem igényel Azure Active Directory-tulajdonságok.
 ```
 
 
-### <a name="schema-v01-with-aad"></a>Séma v0.1: az aad-vel 
+### <a name="schema-v01-with-aad"></a>A Schema v 0.1: a HRE 
 
-Az 0.1-sémát igényel `aadClientID` és `aadClientSecret` vagy `AADClientCertificate`.
+Az 0,1 `aadClientID` `AADClientCertificate`-es séma használatához és a vagyavagya.`aadClientSecret`
 
-Használatával `aadClientSecret`:
+Használat `aadClientSecret`:
 
 ```json
 {
@@ -105,7 +104,7 @@ Használatával `aadClientSecret`:
 }
 ```
 
-Használatával `AADClientCertificate`:
+Használat `AADClientCertificate`:
 
 ```json
 {
@@ -143,32 +142,32 @@ Használatával `AADClientCertificate`:
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | Karakterlánc |
 | type | AzureDiskEncryptionForLinux | Karakterlánc |
-| typeHandlerVersion | 0.1, 1.1 | int |
-| (0,1 Technologie ASP.NET) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID azonosítója | 
-| (0,1 Technologie ASP.NET) AADClientSecret | password | sztring |
-| (0,1 Technologie ASP.NET) AADClientCertificate | thumbprint | sztring |
-| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-szótárt |
+| typeHandlerVersion | 0,1, 1,1 | int |
+| (0,1 séma) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
+| (0,1 séma) AADClientSecret | password | Karakterlánc |
+| (0,1 séma) AADClientCertificate | thumbprint | Karakterlánc |
+| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-szótár |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | Karakterlánc | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | Karakterlánc |
 | KeyEncryptionKeyURL | url | Karakterlánc |
-| (nem kötelező) KeyVaultURL | url | Karakterlánc |
+| választható KeyVaultURL | url | Karakterlánc |
 | Passphrase | password | Karakterlánc | 
 | SequenceVersion | uniqueidentifier | Karakterlánc |
-| VolumeType | Az operációs rendszer, az adatok, az összes | sztring |
+| VolumeType | Operációs rendszer, az összes | Karakterlánc |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Sablon telepítése egy példa: [futó Linux rendszerű virtuális gépek titkosításának engedélyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm).
+A sablonok központi telepítésének példáját lásd: a [titkosítás engedélyezése futó Linux rendszerű virtuális](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)gépeken.
 
 ## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
-Útmutató a legújabb [Azure CLI dokumentációját](/cli/azure/vm/encryption?view=azure-cli-latest). 
+Az utasítások az [Azure CLI](/cli/azure/vm/encryption?view=azure-cli-latest)legújabb dokumentációjában találhatók. 
 
 ## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-A hibaelhárításhoz, tekintse meg a [– hibaelhárítási útmutató az Azure Disk Encryption](../../security/azure-security-disk-encryption-tsg.md).
+Hibaelhárításhoz tekintse meg a [Azure Disk Encryption hibaelhárítási útmutatót](../../security/azure-security-disk-encryption-tsg.md).
 
 ### <a name="support"></a>Támogatás
 
@@ -176,4 +175,4 @@ Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az 
 
 ## <a name="next-steps"></a>További lépések
 
-Virtuálisgép-bővítményekkel kapcsolatos további információkért lásd: [virtuális gépi bővítmények és szolgáltatások Linux](features-linux.md).
+További információ a virtuálisgép-bővítményekről: [virtuálisgép-bővítmények és-szolgáltatások Linux rendszerhez](features-linux.md).

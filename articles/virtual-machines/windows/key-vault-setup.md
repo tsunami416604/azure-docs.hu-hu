@@ -1,6 +1,6 @@
 ---
-title: Állítsa be a Key Vault a Windows virtuális gépek az Azure Resource Managerben |} A Microsoft Docs
-description: Hogyan állítható be a Key Vault az Azure Resource Manager virtuális géppel való használatra.
+title: Key Vault beállítása a Windows rendszerű virtuális gépekhez Azure Resource Managerban | Microsoft Docs
+description: Key Vault beállítása Azure Resource Manager virtuális géppel való használatra.
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -11,53 +11,52 @@ ms.assetid: 33a483e2-cfbc-4c62-a588-5d9fd52491e2
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: 671d825300581796320542e09b8c9c4562097eb0
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: e92ccacbcdc49ae5ea9496c9c8ac7fa90a05e20c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722554"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079231"
 ---
-# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>A virtuális gépek az Azure Resource Manager Key Vault beállítása
+# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Key Vault beállítása virtuális gépekhez Azure Resource Manager
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Azure Resource Manager veremben titkos kódok és tanúsítványok a Key vault erőforrás-szolgáltató által biztosított erőforrásként vannak modellezve. A Key Vaulttal kapcsolatos további információkért lásd: [Mi az Azure Key Vault?](../../key-vault/key-vault-whatis.md)
+Azure Resource Manager veremben a titkok/tanúsítványok a Key Vault erőforrás-szolgáltatója által biztosított erőforrásokként vannak modellezve. További információ a Key Vaultről: [Mi az Azure Key Vault?](../../key-vault/key-vault-whatis.md)
 
 > [!NOTE]
-> 1. Ahhoz, hogy a Key Vault az Azure Resource Manager virtuális gépeken, amely használható a **EnabledForDeployment** állítson be a Key Vault tulajdonság igaz értékre. Ezt megteheti a különböző ügyfelek részére.
-> 2. A Key Vault kell létrehozni az ugyanazon előfizetésben és helyen a virtuális gép is.
+> 1. Ahhoz, hogy a Key Vault Azure Resource Manager virtuális gépekkel is használhatók legyenek, a Key Vault **EnabledForDeployment** tulajdonságát True értékre kell állítani. Ezt megteheti különböző ügyfeleken.
+> 2. A Key Vault a virtuális géppel megegyező előfizetésben és helyen kell létrehozni.
 >
 >
 
 ## <a name="use-powershell-to-set-up-key-vault"></a>Key Vault beállítása a PowerShell használatával
-Kulcstartó létrehozása PowerShell használatával, lásd: [beállítása és lekérése egy titkos kulcsot az Azure Key vault PowerShell-lel](../../key-vault/quick-create-powershell.md).
+Ha a PowerShell használatával szeretne kulcstartót létrehozni, olvassa el [a titkos kód beállítása és lekérése Azure Key Vault a PowerShell használatával](../../key-vault/quick-create-powershell.md)című témakört.
 
-Új kulcstartó a PowerShell-parancsmagot is használhatja:
+Új kulcstartók esetén ezt a PowerShell-parancsmagot használhatja:
 
     New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
 
-A meglévő kulcstartók a következő PowerShell-parancsmagot is használhatja:
+A meglévő kulcstartók esetében ezt a PowerShell-parancsmagot használhatja:
 
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
-## <a name="use-cli-to-set-up-key-vault"></a>Key Vault beállítása a parancssori felület használatával
-Key vault létrehozása a parancssori felület (CLI) használatával, lásd: [kezelése a Key Vault parancssori felület használatával](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault).
+## <a name="use-cli-to-set-up-key-vault"></a>Key Vault beállítása a CLI használatával
+Key Vault parancssori felületen (CLI) való létrehozásával kapcsolatban lásd: [Key Vault kezelése a CLI használatával](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault).
 
-CLI-hez akkor a key vault létrehozása előtt a központi telepítési szabályzatot rendel. Ehhez futtassa az alábbi parancsot:
+A CLI esetében létre kell hoznia a kulcstartót, mielőtt hozzárendeli a központi telepítési szabályzatot. Ehhez futtassa az alábbi parancsot:
 
     az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
     
-Engedélyezi a Key Vault-sablonalapú telepítéssel használatra, majd futtassa a következő parancsot:
+Ezután az Key Vault a sablonok központi telepítésének engedélyezéséhez futtassa a következő parancsot:
 
     az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
-## <a name="use-templates-to-set-up-key-vault"></a>A sablonok segítségével a Key Vault beállítása
-Bár egy sablont használ, be kell állítania a `enabledForDeployment` tulajdonságot `true` a Key Vault erőforrás.
+## <a name="use-templates-to-set-up-key-vault"></a>Sablonok használata a Key Vault beállításához
+Sablon használatakor a `enabledForDeployment` `true` tulajdonságot a Key Vault erőforráshoz kell beállítania.
 
     {
       "type": "Microsoft.KeyVault/vaults",
@@ -71,4 +70,4 @@ Bár egy sablont használ, be kell állítania a `enabledForDeployment` tulajdon
       }
     }
 
-Egyéb beállítások, amelyek konfigurálásával megadhatja a sablonok használatával hozzon létre egy kulcstartót, lásd: [hozzon létre egy kulcstartót](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).
+A Key Vault sablonok használatával történő létrehozásakor konfigurálható egyéb beállításokért lásd: [kulcstartó létrehozása](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).

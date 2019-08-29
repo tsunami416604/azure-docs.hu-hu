@@ -1,5 +1,5 @@
 ---
-title: Webalkalmazási tűzfal (WAF) konfigurálása App Service-környezet – Azure
+title: Webalkalmazási tűzfal (WAF) konfigurálása a App Service Environmenthoz – Azure
 description: Megtudhatja, hogyan konfigurálhat webalkalmazás-tűzfalat App Service Environment környezete előtt.
 services: app-service\web
 documentationcenter: ''
@@ -10,17 +10,16 @@ ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: seodec18
-ms.openlocfilehash: c1930777f44266755f20400d063ec938ee631adb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 01224e4270ba8a7c7df4a311823dd6156038438a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130658"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070049"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Webalkalmazás-tűzfal (WAF) konfigurálása App Service Environment környezetben
 ## <a name="overview"></a>Áttekintés
@@ -74,12 +73,12 @@ Ha bejelentkezett, az alábbi képen láthatóhoz hasonló irányítópultot fog
 
 ![Felügyeleti irányítópult][ManagementDashboard]
 
-A **Szolgáltatások** lapra kattintva konfigurálhatja a WAF-ot azokra a szolgáltatásokra, amelyeket védelmez. A Barracuda WAF további konfigurálásáért lásd a [dokumentációt](https://techlib.barracuda.com/waf/getstarted1). A következő példa egy App Service-alkalmazás a HTTP és HTTPS-en forgalmat bonyolító lett konfigurálva.
+A **Szolgáltatások** lapra kattintva konfigurálhatja a WAF-ot azokra a szolgáltatásokra, amelyeket védelmez. A Barracuda WAF további konfigurálásáért lásd a [dokumentációt](https://techlib.barracuda.com/waf/getstarted1). A következő példában egy, a HTTP-n és HTTPS-en forgalmat kiszolgáló App Service alkalmazást konfiguráltunk.
 
 ![Felügyelet – Szolgáltatások hozzáadása][ManagementAddServices]
 
 > [!NOTE]
-> Attól függően, hogyan konfigurálta alkalmazásait, és milyen szolgáltatásokat használ az App Service-környezetben meg kell továbbítani a forgalmat a TCP 80-as és 443-as, például-astól különböző portok Ha App Service-alkalmazások az IP SSL-beállítással rendelkezik. Az App Service Environment környezetekben használt hálózati portok listáját a [Bejövő forgalom szabályozása dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) Hálózati portok szakaszában találja.
+> Attól függően, hogy az alkalmazások hogyan vannak konfigurálva, és milyen funkciókat használ a App Service Environmentban, továbbítania kell a forgalmat a 80-es és 443-es TCP-portok esetében, például ha egy App Service alkalmazás IP SSL beállítása. Az App Service Environment környezetekben használt hálózati portok listáját a [Bejövő forgalom szabályozása dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) Hálózati portok szakaszában találja.
 > 
 > 
 

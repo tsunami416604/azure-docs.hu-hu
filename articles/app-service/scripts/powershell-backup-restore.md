@@ -1,6 +1,6 @@
 ---
-title: Az Azure PowerShell-Példaszkript – webalkalmazás biztonsági visszaállítása |} A Microsoft Docs
-description: Az Azure PowerShell-Példaszkript – webalkalmazás biztonsági visszaállítása
+title: Azure PowerShell szkript minta – webalkalmazás visszaállítása biztonsági másolatból | Microsoft Docs
+description: Azure PowerShell szkript minta – webalkalmazás visszaállítása biztonsági másolatból
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -10,21 +10,20 @@ tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: fe1ac9f445434507c65f87fcd423eccb1a4ffacc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85cbcb4b01161e0004d38f08ae8c30fd398727ff
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136606"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087888"
 ---
-# <a name="restore-a-web-app-from-a-backup-using-azure-powershell"></a>Webalkalmazás visszaállítása biztonsági másolatból Azure PowerShell-lel
+# <a name="restore-a-web-app-from-a-backup-using-azure-powershell"></a>Webalkalmazás visszaállítása biztonsági másolatból Azure PowerShell használatával
 
-Ez a példaszkript egy korábban elvégzett biztonsági mentés beolvassa egy meglévő web Apps, és annak tartalmára felülírásával visszaállítására. 
+Ez a minta parancsfájl egy korábban befejezett biztonsági mentést kérdez le egy meglévő webalkalmazásból, és felülírja a tartalmát. 
 
 Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzAccount` futtatásával hozza létre a kapcsolatot az Azure-ral. 
 
@@ -36,7 +35,7 @@ Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutat�
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-Ha többé már nincs szüksége a webalkalmazást, a következő paranccsal törölheti az erőforráscsoportot, a webalkalmazás, és az összes kapcsolódó erőforrás.
+Ha már nincs szüksége a webalkalmazásra, az alábbi paranccsal távolíthatja el az erőforráscsoportot, a webalkalmazást és az összes kapcsolódó erőforrást.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroupName -Force
@@ -49,7 +48,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Lekéri egy webalkalmazás biztonsági másolatainak listáját. |
-| [Restore-AzWebAppBackup](/powershell/module/az.websites/restore-azwebappbackup) | Webalkalmazás visszaállítása egy korábban elvégzett biztonsági másolatból. |
+| [Restore-AzWebAppBackup](/powershell/module/az.websites/restore-azwebappbackup) | Visszaállítja egy webalkalmazást egy korábban befejezett biztonsági másolatból. |
 
 ## <a name="next-steps"></a>További lépések
 

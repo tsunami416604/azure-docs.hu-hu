@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 431212b2b0ac7bba209130e511e3510e3008a6c4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2014b00a82a6d56bf58b471336c6d809721abea9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68500037"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095437"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus méretezési képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
@@ -138,7 +137,7 @@ Ezek a típusok a következő képletekben támogatottak:
 * double
 * doubleVec
 * doubleVecList
-* sztring
+* Karakterlánc
 * időbélyeg – a timestamp egy összetett struktúra, amely a következő tagokat tartalmazza:
 
   * év

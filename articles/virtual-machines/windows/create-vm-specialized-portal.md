@@ -1,6 +1,6 @@
 ---
-title: Windows virtuális gép létrehozása az Azure Portalon speciális virtuális merevlemezből |} A Microsoft Docs
-description: Hozzon létre egy új Windows virtuális gép VHD-vel az Azure Portalon.
+title: Windows rendszerű virtuális gép létrehozása speciális virtuális merevlemezről a Azure Portalban | Microsoft Docs
+description: Hozzon létre egy új Windows rendszerű virtuális gépet egy virtuális merevlemezen a Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -10,74 +10,73 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: cadd4b16ab111f46e49429c6d99e0e692325b3b1
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: ab5af0e5971b91f45cbb12b4d0583caafa5ad504
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718933"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079646"
 ---
-# <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Virtuális gép létrehozása VHD-fájlból az Azure portal használatával
+# <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Virtuális gép létrehozása virtuális merevlemezről a Azure Portal használatával
 
-Többféleképpen is lehet létrehozni egy virtuális gépet (VM) az Azure-ban: 
+A virtuális gépek (VM-EK) több módon is létrehozhatók az Azure-ban: 
 
-- Ha már rendelkezik egy virtuális merevlemez (VHD), vagy másolja a VHD-t használja a meglévő virtuális gépről szeretne, létrehozhat egy új virtuális gép által *csatolása* a VHD-az új virtuális gép operációsrendszer-lemezként. 
+- Ha a virtuális merevlemezt (VHD) már használja, vagy ha a virtuális merevlemezt egy meglévő virtuális gépről kívánja átmásolni, hozzon létre egy új virtuális gépet úgy, hogy az új virtuális gépre rendszerlemezként csatolja a VHD-t. 
 
-- A törölt virtuális gépek VHD-fájlból egy új virtuális Gépet is létrehozhat. Például ha egy Azure virtuális Gépen, amely nem megfelelően működik, törölje a virtuális Gépet szabadon a virtuális merevlemez használatával hozzon létre egy új virtuális Gépet. Újból felhasználhatja a virtuális Merevlemezzel, vagy a virtuális merevlemez másolatának létrehozása egy pillanatkép létrehozásához, és majd hozzon létre az új felügyelt lemez a pillanatképből. Pillanatkép létrehozása eltarthat néhány további lépést, de megőrzi az eredeti virtuális merevlemez, és egy tartalék biztosít.
+- Létrehozhat egy új virtuális gépet egy olyan virtuális gép virtuális merevlemezéről, amely törölve lett. Ha például egy olyan Azure-beli virtuális gép van, amely nem megfelelően működik, törölheti a virtuális gépet, és használhatja a virtuális merevlemezt egy új virtuális gép létrehozásához. Felhasználhatja ugyanazt a VHD-t, vagy létrehozhat egy másolatot a virtuális merevlemezről egy pillanatkép létrehozásával, majd egy új felügyelt lemez létrehozásával a pillanatképből. Bár a pillanatkép létrehozása néhány további lépést is igénybe vehet, megőrzi az eredeti VHD-t, és tartalékot biztosít.
 
-- Vegyünk egy klasszikus virtuális gép, és a virtuális merevlemez használatával hozzon létre egy új virtuális Gépet, amely a Resource Manager üzemi modell és a felügyelt lemezeket használ. A legjobb eredmények **leállítása** a pillanatkép létrehozása előtt az Azure Portalon a klasszikus virtuális gép.
+- Hozzon létre egy klasszikus virtuális gépet, és használja a VHD-t a Resource Manager-alapú üzemi modellt és a felügyelt lemezeket használó új virtuális gép létrehozásához. A legjobb eredmény érdekében **állítsa le** a klasszikus virtuális gépet a Azure Portal a pillanatkép létrehozása előtt.
  
-- A helyi VHD feltöltése és csatolása a új virtuális gép által a helyszíni virtuális merevlemezről hozhat létre egy Azure virtuális Gépen. Használhatja az PowerShell vagy egy másik eszköz a virtuális merevlemez feltöltéséhez egy tárfiókba, és ezután egy felügyelt lemezt hoz létre a VHD-ből. További információkért lásd: [egyéni VHD feltöltése](create-vm-specialized.md#option-2-upload-a-specialized-vhd). 
+- Létrehozhat egy Azure-beli virtuális gépet egy helyszíni virtuális merevlemezről a helyszíni VHD feltöltésével és egy új virtuális géphez való csatolásával. A PowerShell vagy egy másik eszköz használatával feltöltheti a virtuális merevlemezt egy Storage-fiókba, majd létrehoz egy felügyelt lemezt a VHD-ből. További információ: [speciális virtuális merevlemez feltöltése](create-vm-specialized.md#option-2-upload-a-specialized-vhd). 
 
-Ne használjon egy speciális lemez, ha azt szeretné, hogy több virtuális gép létrehozása. Ehelyett a nagyobb telepítések esetén [hozzon létre egy rendszerképet](capture-image-resource.md) , majd [rendszerkép használatával több virtuális gép létrehozása](create-vm-generalized-managed.md).
+Ne használjon speciális lemezt, ha több virtuális gépet szeretne létrehozni. Ehelyett nagyobb telepítések esetén hozzon [létre egy rendszerképet](capture-image-resource.md) , majd ezt a rendszerképet [használva hozzon létre több virtuális](create-vm-generalized-managed.md)gépet.
 
 
 ## <a name="copy-a-disk"></a>Lemez másolása
 
-Pillanatkép létrehozása, és ezután hozzon létre egy lemezt a pillanatképből. Ez a stratégia lehetővé teszi az eredeti virtuális merevlemez tartalékként megtartása:
+Hozzon létre egy pillanatképet, majd hozzon létre egy lemezt a pillanatképből. Ez a stratégia lehetővé teszi az eredeti VHD tartalékként való megőrzését:
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali menüben válassza ki a **minden szolgáltatás**.
-2. Az a **minden szolgáltatás** írja be a keresőmezőbe **lemezek** majd **lemezek** elérhető lemezek listájának megjelenítéséhez.
-3. Válassza ki a használni kívánt lemezt. A **lemez** oldala jelenik meg a lemezen.
-4. A felső menüben válassza ki a **létrehozás pillanatkép**. 
-5. Adjon meg egy **neve** elkészíteni a pillanatképet.
-6. Válasszon egy **erőforráscsoport** elkészíteni a pillanatképet. Használjon vagy egy meglévő erőforráscsoportot, vagy hozzon létre egy újat.
-7. A **fiók típusa**, válasszon **standard szintű (HDD)** vagy **prémium (SSD)** storage.
-8. Ha elkészült, válassza ki a **létrehozás** a pillanatkép létrehozásához.
-9. A pillanatkép létrehozását követően válassza ki a **erőforrás létrehozása** a bal oldali menüben.
-10. A Keresés mezőbe írja be a **felügyelt lemez** majd **Managed Disks** a listából.
-11. Az a **Managed Disks** lapon jelölje be **létrehozás**.
-12. Adjon meg egy **neve** a lemezhez.
-13. Válasszon egy **erőforráscsoport** a lemezhez. Használjon vagy egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Ez a beállítás lesz is az erőforráscsoport, ahol a virtuális Gépet hoz létre a lemezről.
-14. A **fiók típusa**, válasszon **standard szintű (HDD)** vagy **prémium (SSD)** storage.
-15. A **adatforrástípust**, győződjön meg, hogy **pillanatkép** van kiválasztva.
-16. Az a **forráspillanatkép** legördülő menüben válassza ki a használni kívánt pillanatképet.
-17. Ellenőrizze a beállításokat igény szerint, majd **létrehozás** létrehozza a lemezt.
+1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden szolgáltatás**lehetőséget.
+2. A **minden szolgáltatás** keresési mezőjébe írja be a **lemezek** elemet, majd válassza a **lemezek** lehetőséget az elérhető lemezek listájának megjelenítéséhez.
+3. Válassza ki a használni kívánt lemezt. Megjelenik a lemez lapja.
+4. A felső menüben válassza a **pillanatkép létrehozása**lehetőséget. 
+5. Adja meg a pillanatkép **nevét** .
+6. Válasszon **erőforráscsoportot** a pillanatképhez. Használhat meglévő erőforráscsoportot is, vagy létrehozhat egy újat.
+7. A **fióktípus mezőben**válassza a **Standard (HDD)** vagy a **prémium (SSD)** tárolót.
+8. Ha elkészült, válassza a **Létrehozás** lehetőséget a pillanatkép létrehozásához.
+9. A pillanatkép létrehozása után válassza az **erőforrás létrehozása** lehetőséget a bal oldali menüben.
+10. A keresőmezőbe írja be a **felügyelt lemez** kifejezést, majd válassza ki a **Managed Disks** elemet a listából.
+11. A **Managed Disks** lapon válassza a **Létrehozás**lehetőséget.
+12. Adja meg a lemez **nevét** .
+13. Válasszon ki egy **erőforráscsoportot** a lemezhez. Használhat meglévő erőforráscsoportot is, vagy létrehozhat egy újat. Ez a kijelölés olyan erőforráscsoportként is használható, amelyben a virtuális gépet a lemezről hozza létre.
+14. A **fióktípus mezőben**válassza a **Standard (HDD)** vagy a **prémium (SSD)** tárolót.
+15. A **forrás típusa mezőben**ellenőrizze, hogy a **Pillanatkép** van-e kiválasztva.
+16. A **forrás-pillanatkép** legördülő menüben válassza ki a használni kívánt pillanatképet.
+17. Szükség szerint végezze el a szükséges módosításokat, majd válassza a **Létrehozás** lehetőséget a lemez létrehozásához.
 
-## <a name="create-a-vm-from-a-disk"></a>Egy lemezt a virtuális gép létrehozása
+## <a name="create-a-vm-from-a-disk"></a>Virtuális gép létrehozása lemezről
 
-Miután a virtuális Merevlemezt, amely a használni kívánt felügyelt lemez, a virtuális Gépet a portálon hozhat létre:
+Miután a felügyelt lemez virtuális merevlemezét használni szeretné, a virtuális gépet a portálon is létrehozhatja:
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali menüben válassza ki a **minden szolgáltatás**.
-2. Az a **minden szolgáltatás** írja be a keresőmezőbe **lemezek** majd **lemezek** elérhető lemezek listájának megjelenítéséhez.
-3. Válassza ki a használni kívánt lemezt. A **lemez** oldala nyílik meg a lemezen.
-4. Az a **áttekintése** lapon, győződjön meg arról, hogy **lemez állapota** állapottal **azokat**. Ha nem, szüksége lehet, vagy válassza le a lemezt a virtuális Gépet, vagy szabadítson fel a lemezt a virtuális gép törlése.
-4. Válassza a lap tetején lévő menüben **hozzon létre virtuális gép**.
-5. A a **alapjai** az új virtuális gép lap, adja meg egy **virtuális gép neve** és vagy válasszon egy meglévő **erőforráscsoport** , vagy hozzon létre egy újat.
-6. A **mérete**, jelölje be **méretének módosítása** való hozzáférést a **mérete** lapot.
-7. Jelöljön ki egy virtuális gép mérete sort, és válassza a **kiválasztása**.
-8. Az a **hálózatkezelés** lapon engedélyezheti, hogy vagy a portálon, minden új erőforrásokat hozhat létre vagy válasszon egy meglévő **virtuális hálózati** és **hálózati biztonsági csoport**. A portál mindig létrehoz egy új hálózati adapter és a nyilvános IP-címet az új virtuális gép számára. 
-9. Az a **felügyeleti** lapon, ne módosítsa a figyelési beállításokat.
-10. Az a **Vendég config** lap, igény szerint adja hozzá a kiterjesztést.
-11. Ha elkészült, válassza ki a **felülvizsgálat + létrehozása**. 
-12. Ha a virtuális gép konfigurációjának ellenőrzése sikeres, válassza ki a **létrehozás** a üzembe helyezésének megkezdéséhez.
+1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden szolgáltatás**lehetőséget.
+2. A **minden szolgáltatás** keresési mezőjébe írja be a **lemezek** elemet, majd válassza a **lemezek** lehetőséget az elérhető lemezek listájának megjelenítéséhez.
+3. Válassza ki a használni kívánt lemezt. Megnyílik a lemez lapja.
+4. Az **Áttekintés** lapon győződjön meg arról, hogy a **lemez állapota** nem **csatoltként**van felsorolva. Ha nem, akkor lehet, hogy le kell választania a lemezt a virtuális gépről, vagy törölnie kell a virtuális gépet, hogy felszabadítsa a lemezt.
+4. A lap tetején található menüben válassza a **virtuális gép létrehozása**elemet.
+5. Az új virtuális gép **alapjai** lapon adja meg a **virtuális gép nevét** , vagy válasszon ki egy meglévő **erőforráscsoportot** , vagy hozzon létre újat.
+6. Améret lapon kattintson a méret **módosítása** elemre a **méret** lap eléréséhez.
+7. Válasszon ki egy virtuálisgép-méretezési sort, majd válassza a **kiválasztás**lehetőséget.
+8. A **hálózatkezelés** lapon engedélyezheti, hogy a portál minden új erőforrást hozzon létre, vagy kiválaszthat egy meglévő **virtuális hálózatot** és **hálózati biztonsági csoportot**is. A portál mindig létrehoz egy új hálózati adaptert és egy nyilvános IP-címet az új virtuális géphez. 
+9. A felügyeleti lapon végezze el a figyelési beállítások módosítását.
+10. A **vendég konfigurációja** lapon szükség szerint adja hozzá a kívánt bővítményeket.
+11. Ha elkészült, válassza a **felülvizsgálat + létrehozás**elemet. 
+12. Ha a virtuális gép konfigurációja ellenőrzi az ellenőrzést, válassza a **Létrehozás** lehetőséget a telepítés elindításához.
 
 ## <a name="next-steps"></a>További lépések
 
-Is használhatja a PowerShell-lel [VHD feltöltése az Azure-ba, és a egy specializált virtuális gép létrehozása](create-vm-specialized.md).
+A PowerShell használatával is feltöltheti [a VHD-t az Azure-ba, és létrehozhat egy speciális virtuális gépet](create-vm-specialized.md).
 
 

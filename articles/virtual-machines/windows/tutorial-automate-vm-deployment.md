@@ -9,23 +9,22 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 72489c6d0b03166fcb2a5f1ed39f7b8d5408ff24
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 02c038a1eefefb62dceb42e511b9a895691ef47b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708171"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101720"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Oktatóanyag – Alkalmazások telepítése Windows virtuális gépekre az Azure-ban az egyéni szkriptbővítménnyel
 
-Gyors és következetes módon konfigurálhatja a virtuális gépek (VM), használhatja a [Custom Script bővítmény a Windows](extensions-customscript.md). Ezen oktatóanyag segítségével megtanulhatja a következőket:
+A virtuális gépek gyors és konzisztens konfigurálásához használhatja a Windowshoz készült [egyéni parancsfájl](extensions-customscript.md)-bővítményt. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * IIS telepítése az egyéni szkriptek bővítményével
@@ -47,13 +46,13 @@ Az egyéni szkriptek bővítménye Windows és Linux rendszerű virtuális gépe
 
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
-Állítsa be a rendszergazdai felhasználónevet és jelszót a virtuális gép [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát a [Get-hitelesítőadat használatával](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Most már létrehozhatja a virtuális Gépet a [New-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre az *USA keleti régiója* helyen. Ha még nem léteznek, létrejön a *myResourceGroupAutomate* nevű erőforráscsoport és a támogató hálózati erőforrások. A webes forgalom engedélyezéséhez a parancsmag megnyitja a *80*-as portot is.
+Most már létrehozhatja a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)használatával. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre az *USA keleti régiója* helyen. Ha még nem léteznek, létrejön a *myResourceGroupAutomate* nevű erőforráscsoport és a támogató hálózati erőforrások. A webes forgalom engedélyezéséhez a parancsmag megnyitja a *80*-as portot is.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -72,7 +71,7 @@ Az erőforrások és a virtuális gép létrehozása néhány percig tart.
 
 
 ## <a name="automate-iis-install"></a>Az IIS-telepítés automatizálása
-Használat [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) az egyéni szkriptek futtatására szolgáló bővítmény telepítése. A bővítmény a `powershell Add-WindowsFeature Web-Server` parancs futtatásával telepíti az IIS-webkiszolgálót, majd a *Default.htm* lapot frissítve megjeleníti a virtuális gép eszköznevét:
+A [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) használatával telepítse az egyéni szkriptek bővítményét. A bővítmény a `powershell Add-WindowsFeature Web-Server` parancs futtatásával telepíti az IIS-webkiszolgálót, majd a *Default.htm* lapot frissítve megjeleníti a virtuális gép eszköznevét:
 
 ```azurepowershell-interactive
 Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
@@ -87,7 +86,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
 
 
 ## <a name="test-web-site"></a>Webhely tesztelése
-A terheléselosztó a nyilvános IP-cím beszerzése [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). A következő példa a korábban létrehozott *myPublicIPAddress* IP-címét kéri le:
+Szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). A következő példa a korábban létrehozott *myPublicIPAddress* IP-címét kéri le:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `

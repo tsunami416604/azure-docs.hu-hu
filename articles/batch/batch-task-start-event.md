@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 76100f1457123ac88055fddd55eb22a102201adf
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: efad9e71b986156c6d8e95208d50ac8d5a4d7e7f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322810"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094366"
 ---
 # <a name="task-start-event"></a>Tevékenység indítása esemény
 
@@ -51,8 +50,8 @@ ms.locfileid: "68322810"
 |Elem neve|Type|Megjegyzések|
 |------------------|----------|-----------|
 |jobId|Sztring|A feladatot tartalmazó feladat azonosítója.|
-|id|Karakterlánc|A feladat azonosítója.|
-|taskType|Karakterlánc|A feladat típusa. Ez lehet "JobManager", amely azt jelzi, hogy egy Feladatkezelő feladat vagy "felhasználó", amely azt jelzi, hogy a feladat nem Feladatkezelő feladat.|
+|id|Sztring|A feladat azonosítója.|
+|taskType|Sztring|A feladat típusa. Ez lehet "JobManager", amely azt jelzi, hogy egy Feladatkezelő feladat vagy "felhasználó", amely azt jelzi, hogy a feladat nem Feladatkezelő feladat.|
 |systemTaskVersion|Int32|Ez a feladat belső újrapróbálkozási számlálója. A Batch szolgáltatás belsőleg újra tud próbálkozni az átmeneti problémák miatti feladatokkal. Ezek a problémák belső ütemezési hibákat tartalmazhatnak, vagy helytelen állapotú számítási csomópontokból történő helyreállításra tett kísérleteket okozhatnak.|
 |[nodeInfo](#nodeInfo)|Összetett típus|A feladat futtatására szolgáló számítási csomóponttal kapcsolatos információkat tartalmazza.|
 |[multiInstanceSettings](#multiInstanceSettings)|Összetett típus|Azt adja meg, hogy a feladat több számítási csomópontot igénylő többpéldányos feladat.  További részletekért lásd: [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) .|
@@ -63,7 +62,7 @@ ms.locfileid: "68322810"
 
 |Elem neve|Type|Megjegyzések|
 |------------------|----------|-----------|
-|poolId|Karakterlánc|Annak a készletnek az azonosítója, amelyen a feladat futott.|
+|poolId|Sztring|Annak a készletnek az azonosítója, amelyen a feladat futott.|
 |nodeId|Sztring|Annak a csomópontnak az azonosítója, amelyen a feladat futott.|
 
 ###  <a name="multiInstanceSettings"></a>multiInstanceSettings

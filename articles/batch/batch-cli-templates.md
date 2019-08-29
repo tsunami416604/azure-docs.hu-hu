@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 5e5ed8a69d5140814899c24e96eded6dc61e5908
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 4733cf1a83bec472baae42f2ac29636bff5fc324
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323680"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095312"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>A CLI-sablonok és a fájlátvitel Azure Batch használata
 
@@ -261,7 +260,7 @@ Batch-készlet vagy-feladatok létrehozásához feltölthet egy batch CLI-sablon
 
 Sablon feltöltése:
 
-1. A Batch Explorer **területen válassza a** > katalógus**helyi sablonok**lehetőséget.
+1. A Batch Explorer területen válassza > a katalógus**helyi sablonok**lehetőséget.
 
 2. Válasszon ki vagy húzzon át egy helyi készletet vagy sablont.
 

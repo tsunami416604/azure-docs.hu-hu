@@ -1,6 +1,6 @@
 ---
-title: MATLAB fürt virtuális gépein |} A Microsoft Docs
-description: A számításigényes párhuzamos MATLAB számítási feladatok futtatásához MATLAB elosztott számítástechnikai Server-fürtök létrehozása a Microsoft Azure virtual machines használatához
+title: MATLAB-fürtök a virtuális gépeken | Microsoft Docs
+description: A Microsoft Azure Virtual Machines használatával MATLAB Distributed Computing Server-fürtöket hozhat létre a nagy számítási igényű párhuzamos MATLAB-munkaterhelések futtatásához
 services: virtual-machines-windows
 documentationcenter: ''
 author: mscurrell
@@ -8,68 +8,67 @@ manager: gwallace
 editor: ''
 ms.assetid: e9980ce9-124a-41f1-b9ec-f444c8ea5c72
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: 857382c09192e71d9727a91274993091f2f903b2
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: d57d9bfa964759e639c2cf40d86bd603b1900ce7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718685"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103016"
 ---
-# <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>MATLAB elosztott számítástechnikai kiszolgáló-fürtök létrehozása az Azure virtuális gépeken
-A számításigényes párhuzamos MATLAB számítási feladatok futtatásához egy vagy több MATLAB elosztott számítástechnikai Server-fürtök létrehozása a Microsoft Azure virtual machines használatához. A MATLAB elosztott számítástechnikai kiszolgálói szoftver telepítése a virtuális gép alap lemezképeként használhatja, és az Azure gyorsindítási sablon vagy Azure PowerShell-szkript használata (a rendelkezésre álló [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)) üzembe helyezése és felügyelete a fürtön. Az üzembe helyezést követően csatlakozzon a fürthöz, a számítási feladatok futtatásához.
+# <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>MATLAB Distributed Computing Server-fürtök létrehozása Azure-beli virtuális gépeken
+Microsoft Azure virtuális gépek használatával hozzon létre egy vagy több MATLAB Distributed Computing Server-fürtöt a nagy számítási igényű párhuzamos MATLAB-munkaterhelések futtatásához. Telepítse a MATLAB Distributed Computing Server szoftvert egy virtuális gépre alaprendszerképként való használatra, és használjon egy Azure-beli rövid útmutató sablont vagy Azure PowerShell [](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)szkriptet (amely a githubon érhető el) a fürt üzembe helyezéséhez és kezeléséhez. Az üzembe helyezés után kapcsolódjon a fürthöz a számítási feladatok futtatásához.
 
-## <a name="about-matlab-and-matlab-distributed-computing-server"></a>MATLAB és MATLAB elosztott számítástechnikai kiszolgáló
-A [MATLAB](https://www.mathworks.com/products/matlab/) platform mérnöki és tudományos problémák megoldására van optimalizálva. A nagy méretű szimulációkat és adatfeldolgozási feladatok MATLAB felhasználók MathWorks párhuzamos termékek számítási segítségével gyorsítsa fel a nagy számítási igényű számítási feladatok olyan számítási fürtök és a rács szolgáltatások kihasználásával. [Párhuzamos számítási eszközkészlet](https://www.mathworks.com/products/parallel-computing/) MATLAB felhasználók alkalmazások párhuzamosíthatja, és kihasználhatja a Többmagos feldolgozók, gpu-kat, és számítási fürtök. [MATLAB elosztott számítástechnikai kiszolgáló](https://www.mathworks.com/products/distriben/) lehetővé teszi, hogy a felhasználók MATLAB a számítási fürt követhetők.
+## <a name="about-matlab-and-matlab-distributed-computing-server"></a>Tudnivalók a MATLAB és a MATLAB Distributed Computing Serverről
+A [MATLAB](https://www.mathworks.com/products/matlab/) platform mérnöki és tudományos problémák megoldására van optimalizálva. A nagy léptékű szimulációkkal és adatfeldolgozási feladatokkal rendelkező MATLAB-felhasználók MathWorks párhuzamos számítástechnikai termékekkel növelhetik a számítási igényű munkaterheléseket a számítási fürtök és a Grid-szolgáltatások kihasználásával. A [Parallel Computing Toolbox](https://www.mathworks.com/products/parallel-computing/) lehetővé teszi, hogy a MATLAB-felhasználók integrálással az alkalmazásokat, és kihasználhassanak több magos processzort, GPU-t és számítási fürtöt. A [MATLAB Distributed Computing Server](https://www.mathworks.com/products/distriben/) lehetővé teszi, hogy a MATLAB-felhasználók számos számítógépet használjanak egy számítási fürtben.
 
-Az Azure virtual machines használatával is létrehozhat, amelyek ugyanazokat párhuzamos munkák küldje el a helyszíni fürtök, például az interaktív feladatok, a batch-feladatok, a független feladatokra és a kommunikáció számára elérhető mechanizmusok MATLAB elosztott számítástechnikai névkiszolgáló-fürtjétől a feladatok. Kiépítés képest számos előnye az Azure-t a MATLAB platform együtt van, és a hagyományos helyszíni hardveres: méretű számos virtuális gép létrehozása a fürtök igény szerinti így fizetnie csak azokat a számítási erőforrásokat használ, és a lehetővé teszi nagy mennyiségű modell tesztelhető.  
+Az Azure Virtual Machines használatával olyan MATLAB elosztott számítástechnikai kiszolgáló fürtöket hozhat létre, amelyek rendelkeznek az összes elérhető mechanizmussal a párhuzamos munka helyszíni fürtökként való elküldéséhez, például interaktív feladatok, kötegelt feladatok, független feladatok és kommunikáció feladatok. Az Azure-ral a MATLAB platformmal együtt számos előnnyel jár, mint a hagyományos helyszíni hardverek: a virtuálisgép-méretek széles köre, a fürtök igény szerinti létrehozása, így csak a felhasznált számítási erőforrásokért kell fizetnie, és a a modellek nagy léptékű tesztelésének lehetősége.  
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Ügyfélszámítógép** – Windows-alapú számítógépről való üzembe helyezést követően az Azure és a MATLAB elosztott számítási fürt kommunikációra lesz szüksége.
-* **Az Azure PowerShell** – lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview) telepítheti az ügyfélszámítógépen.
-* **Azure-előfizetés** – Ha nem rendelkezik előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) mindössze néhány perc alatt. A nagyobb fürtök esetén fontolja meg a használatalapú fizetéses előfizetésre, vagy egyéb fizetési lehetőségeket.
-* **Vcpu-kvóta** -szüksége lehet egy nagy fürt, vagy egynél több MATLAB elosztott számítástechnikai Server-fürt üzembe helyezéséhez a vCPU-kvóta növeléséhez. A kvóta növeléséhez [nyisson meg egy támogatási kérést online](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) díjmentesen.
-* **MATLAB párhuzamos számítási eszközkészlet és MATLAB elosztott számítástechnikai kiszolgáló licencek** – a parancsfájlok feltételeztük, hogy a [MathWorks üzemeltetett License Manager](https://www.mathworks.com/help/install/license-management.html) használt összes licencét.  
-* **MATLAB elosztott számítástechnikai kiszolgálószoftver** -egy virtuális Gépet, amely a fürt virtuális gépeihez az alap Virtuálisgép-lemezképet lesz lesz telepítve.
+* **Ügyfélszámítógép** – szükség van egy Windows-alapú ügyfélszámítógépre, amely az üzembe helyezés után kommunikál az Azure-val és a MATLAB Distributed Computing Server-fürttel.
+* **Azure PowerShell** – megtudhatja, [hogyan telepítheti és konfigurálhatja az Azure PowerShell](/powershell/azure/overview) az ügyfélszámítógépen való telepítéséhez.
+* **Azure-előfizetés** – ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) . Nagyobb fürtök esetén vegye figyelembe az utólagos elszámolású előfizetést vagy más vásárlási lehetőségeket.
+* **vCPU kvóta** – előfordulhat, hogy a vCPU-kvótát a nagyméretű fürt vagy több MATLAB Distributed Computing Server-fürt üzembe helyezéséhez kell emelnie. A kvóta növeléséhez [Nyisson meg egy online ügyfélszolgálati kérést](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) díjmentesen.
+* **MATLAB, Parallel Computing Toolbox és MATLAB Distributed Computing Server** -licencek – a parancsfájlok feltételezik, hogy a [MathWorks üzemeltetett licenckezelő](https://www.mathworks.com/help/install/license-management.html) minden licenchez használatos.  
+* **MATLAB Distributed Computing Server szoftver** – a rendszer telepíti a virtuális gépre, amelyet a fürt virtuális gépei alapszintű virtuálisgép-rendszerképként fog használni.
 
-## <a name="high-level-steps"></a>Magas szintű lépései
-MATLAB elosztott számítástechnikai kiszolgálófürtök számára az Azure virtual machines használatához a következő magas szintű lépések szükségesek. Részletes útmutatást a gyorsindítási sablon és a parancsfájlok kísérő a dokumentációban szerepelnek [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster).
+## <a name="high-level-steps"></a>Magas szintű lépések
+Ha Azure-beli virtuális gépeket szeretne használni a MATLAB Distributed Computing Server-fürtökhöz, a következő magas szintű lépésekre van szükség. A részletes utasítások a gyors üzembe helyezési sablont és a githubon [](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)lévő szkripteket kísérő dokumentációban találhatók.
 
-1. **Alap Virtuálisgép-lemezkép létrehozása**  
+1. **Alap VM-rendszerkép létrehozása**  
 
-   * Letöltheti és telepítheti a virtuális gép MATLAB elosztott számítástechnikai kiszolgáló szoftvereket.
+   * Töltse le és telepítse a MATLAB Distributed Computing Server szoftvert erre a virtuális gépre.
 
      > [!NOTE]
-     > A folyamat eltarthat néhány óra múlva, de csak kell tennie azt követően minden egyes MATLAB verziójához használja.   
+     > Ez a folyamat néhány órát is igénybe vehet, de csak egyszer kell megtennie a MATLAB minden egyes verziójára.   
      >
      >
-2. **Egy vagy több fürtök létrehozása**  
+2. **Hozzon létre egy vagy több fürtöt**  
 
-   * A megadott PowerShell-szkripttel, vagy a gyorsindítási sablon használatával hozzon létre egy fürtöt az alap Virtuálisgép-rendszerképből.   
-   * A megadott PowerShell-parancsfájlt, amely lehetővé teszi, hogy a listában, szüneteltetés, folytatás a fürtökkel kezelheti, és a fürtök törlése.
+   * Használja a megadott PowerShell-parancsfájlt, vagy a gyors üzembe helyezési sablonnal hozzon létre egy fürtöt az alap VM-rendszerképből.   
+   * A fürtöket a megadott PowerShell-parancsfájl segítségével kezelheti, amely lehetővé teszi fürtök listázását, szüneteltetését, folytatását és törlését.
 
-## <a name="cluster-configurations"></a>Fürtkonfigurációk
-Jelenleg a fürt létrehozási parancsprogrammal és a sablon lehetővé teszi egy egyetlen MATLAB elosztott számítástechnikai kiszolgálói topológia létrehozása. Ha azt szeretné, hozzon létre egy vagy több további fürt minden egyes fürt munkavégző, különböző méretű virtuális gépek használó virtuális gépek eltérő számú kellene, és így tovább.
+## <a name="cluster-configurations"></a>Fürtkonfiguráció
+Jelenleg a fürt létrehozására szolgáló parancsfájl és sablon lehetővé teszi, hogy egyetlen MATLAB elosztott számítástechnikai kiszolgálói topológiát hozzon létre. Ha szeretné, hozzon létre egy vagy több további fürtöt, és minden egyes fürt eltérő virtuálisgép-méretekkel rendelkezik, és így tovább.
 
-### <a name="matlab-client-and-cluster-in-azure"></a>MATLAB ügyfél és a fürt az Azure-ban
-Az ügyfélcsomópont MATLAB, MATLAB Feladatütemező csomópont és MATLAB elosztott számítástechnikai kiszolgáló "feldolgozó" csomópontok összes határozzák Azure virtuális gépek egy virtuális hálózatban, az alábbi ábrán látható módon.
+### <a name="matlab-client-and-cluster-in-azure"></a>MATLAB-ügyfél és-fürt az Azure-ban
+A MATLAB-ügyfél csomópontja, a MATLAB Feladatütemező csomópontja és a MATLAB Distributed Computing Server "Worker" csomópontok mind Azure-beli virtuális gépekként vannak konfigurálva egy virtuális hálózaton, ahogy az a következő ábrán látható.
 
 
-* A fürt használatára, az ügyfél-csomópontnak által a távoli asztal csatlakozni. Az ügyfél-csomópontnak az MATLAB ügyfél futtatja.
-* Az ügyfél-csomópontnak rendelkezik egy fájlmegosztást, amely szerint az összes feldolgozó érhető el.
-* A licenc ellenőrzi a minden MATLAB szoftver MathWorks üzemeltetett License Manager használható.
-* Alapértelmezés szerint egy MATLAB elosztott számítástechnikai kiszolgáló munkavégző vCPU / virtuális gépek feldolgozón jön létre, de bármilyen számot megadhat.
+* A fürt használatához kapcsolódjon Távoli asztal az ügyfél-csomóponthoz. Az ügyfél csomópontja futtatja a MATLAB-ügyfelet.
+* Az ügyfél csomópontja olyan fájlmegosztást tartalmaz, amely az összes feldolgozóval elérhető.
+* A MathWorks üzemeltetett licenckezelő szolgáltatás az összes MATLAB szoftver licencének ellenőrzéséhez használatos.
+* Alapértelmezés szerint a rendszer a munkavégző virtuális gépeken egy vCPU elosztott számítástechnikai kiszolgáló-feldolgozót hoz létre, de bármilyen számot megadhat.
 
-## <a name="use-an-azure-based-cluster"></a>Egy Azure-alapú fürt használatára
-És más típusú MATLAB elosztott számítástechnikai névkiszolgáló-fürtjétől szeretné használni a profil-kezelőt a MATLAB ügyfél (a virtuális gép ügyfélen) Feladatütemező MATLAB fürt profil létrehozásához.
+## <a name="use-an-azure-based-cluster"></a>Azure-alapú fürt használata
+Más típusú MATLAB Distributed Computing Server-fürtökhöz hasonlóan a MATLAB-ügyfélen (az ügyfél virtuális gépen) a fürtszolgáltatás-kezelőt kell használnia, hogy létrehozzon egy MATLAB Feladatütemező-fürtöt.
 
-![Profil kezelő](./media/matlab-mdcs-cluster/cluster_profile_manager.png)
+![Fürterőforrás-kezelő](./media/matlab-mdcs-cluster/cluster_profile_manager.png)
 
 ## <a name="next-steps"></a>További lépések
-* Üzembe helyezése és kezelése az Azure-ban MATLAB elosztott számítástechnikai névkiszolgáló-fürtjétől részletes utasításokért lásd: a [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) a sablonok és a parancsfájlokat tartalmazó tárházban.
-* Nyissa meg a [MathWorks hely](https://www.mathworks.com/) MATLAB és MATLAB elosztott számítástechnikai kiszolgáló részletes dokumentációt.
+* A MATLAB Distributed Computing Server-fürtök az Azure-ban való üzembe helyezésével és felügyeletével kapcsolatos részletes utasításokért tekintse meg a sablonokat és parancsfájlokat tartalmazó [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) -tárházat.
+* Nyissa meg a [MathWorks](https://www.mathworks.com/) webhelyét a MATLAB és a MATLAB Distributed Computing Server részletes dokumentációjában.

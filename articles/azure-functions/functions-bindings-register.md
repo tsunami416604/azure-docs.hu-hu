@@ -1,50 +1,49 @@
 ---
-title: Az Azure Functions kötési bővítményeket regisztrálása
-description: Ismerje meg, az adott környezet alapján az Azure Functions kötés bővítmények regisztrálásához.
+title: Azure Functions kötési bővítmények regisztrálása
+description: Megtudhatja, hogyan regisztrálhat egy Azure Functions-kötési bővítményt a környezete alapján.
 services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 5969c3e0d270b45347f8132b2d655ba2e56cb2c0
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 93ced443a73d5499d8b305770c3c866c26d540f0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625895"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086469"
 ---
-# <a name="register-azure-functions-binding-extensions"></a>Az Azure Functions kötési bővítményeket regisztrálása
+# <a name="register-azure-functions-binding-extensions"></a>Azure Functions kötési bővítmények regisztrálása
 
-Az Azure Functions verzió 2.x [kötések](./functions-triggers-bindings.md) a functions futtatókörnyezetének a különálló csomagként érhető el. .NET-es függvényeket kötések keresztül NuGet-csomagok eléréséhez, amíg bővítmény csomagok hozzáférést egyéb funkciók keresztül a konfigurációs beállítások összes kötését.
+Azure Functions 2. x verziójában a [kötések](./functions-triggers-bindings.md) külön csomagokként érhetők el a functions futtatókörnyezetből. Míg a .NET függvények NuGet-csomagokon keresztül érik el a kötéseket, a bővítmények lehetővé teszik más függvények számára, hogy a konfigurációs beállításokon keresztül hozzáférjenek az összes kötéshez.
 
-Vegye figyelembe a következő elemek bővítmények kötéséhez kapcsolódó:
+Vegye figyelembe a kötési bővítményekkel kapcsolatos következő elemeket:
 
-- Kötési bővítményeket explicit módon aspektusnevek regisztrálva funkciók 1.x, kivéve, ha [létrehozása egy C# Visual studióval osztálytár](#local-csharp).
+- A kötési kiterjesztések nincsenek explicit módon regisztrálva az 1. x függvényekben, kivéve, ha [a Visual Studióval C# hoz létre egy osztály-függvénytárat](#local-csharp).
 
-- HTTP- és időzítő eseményindító alapértelmezés szerint támogatott, és nem igényel a kiterjesztése.
+- A HTTP-és időzítő-eseményindítók alapértelmezés szerint támogatottak, és nincs szükség bővítményre.
 
-Az alábbi táblázat azt jelzi, hogy mikor és hogyan regisztrálhatja a kötéseket.
+A következő táblázat azt mutatja be, hogy mikor és hogyan regisztrálja a kötéseket.
 
-| Fejlesztési környezet |Regisztráció<br/> a függvények 1.x  |Regisztráció<br/> a függvények 2.x  |
+| Fejlesztési környezet |Regisztráció<br/> a functions 1. x  |Regisztráció<br/> a functions 2. x  |
 |-------------------------|------------------------------------|------------------------------------|
 |Azure Portal|Automatikus|Automatikus|
-|Nem – .NET-nyelveket vagy a helyi Azure Core Tools-fejlesztés|Automatikus|[Azure Functions Core Tools és bővítmény csomagok használata](#extension-bundles)|
-|C#a Visual Studio használatával osztálytár|[NuGet-eszközök](#vs)|[NuGet-eszközök](#vs)|
-|A Visual Studio Code C# osztálytár|–|[A .NET Core parancssori felület használata](#vs-code)|
+|Non-.NET-nyelvek vagy helyi Azure Core-eszközök fejlesztése|Automatikus|[Azure Functions Core Tools-és bővítmény-csomagok használata](#extension-bundles)|
+|C#osztály könyvtára a Visual Studióval|[NuGet-eszközök használata](#vs)|[NuGet-eszközök használata](#vs)|
+|C#a Visual Studio Code-ot használó osztály könyvtára|–|[A .NET Core parancssori felülete használata](#vs-code)|
 
-## <a name="extension-bundles"></a>A helyi fejlesztési bővítmény kötegek
+## <a name="extension-bundles"></a>Kiterjesztési csomagok helyi fejlesztéshez
 
-Bővítmény csomagjaiból a verzió 2.x verziójú futtatókörnyezet, amely kompatibilis adja meg a bővítmények kötése a függvényalkalmazás projektjét funkciók lehetővé teszi a helyi fejlesztési technológia. A bővítmény csomagok majd szerepelnek a központi telepítési csomag, az Azure-ba történő telepítésekor. Csomagok beállítása keresztül elérhető a Microsoft által kiadott összes kötések lehetővé teszi a *host.json* fájlt. A köteg megadott bővítménycsomagok kompatibilisek egymással, és segítségével csomagok közötti ütközések elkerülésével. Amikor fejlesztése helyileg, ellenőrizze, hogy a legújabb verzióját használja, [Azure Functions Core Tools](functions-run-local.md#v2).
+A bővítmények a 2. x verzió helyi fejlesztési technológiája, amely lehetővé teszi, hogy a Function app-projekthez hozzáadjon egy kompatibilis függvények kötési bővítményeket. Ezeket a kiterjesztési csomagokat a rendszer az Azure-ba történő üzembe helyezéskor felveszi a központi telepítési csomagba. A csomagok a Microsoft által közzétett összes kötést a *Host. JSON* fájl egy beállításával teszik elérhetővé. A csomagban definiált kiterjesztési csomagok kompatibilisek egymással, ami segít elkerülni a csomagok közötti ütközéseket. Helyi fejlesztés esetén győződjön meg arról, hogy a [Azure functions Core Tools](functions-run-local.md#v2)legújabb verzióját használja.
 
-Azure Functions Core Tools vagy a Visual Studio Code használatával az összes helyi fejlesztési bővítmény kötegeket használja.
+Az Azure Functions Core Tools vagy a Visual Studio Code használatával minden helyi fejlesztéshez használhat bővítmény-csomagokat.
 
-Ha a bővítmény csomagok nem használja, telepítenie kell a .NET Core SDK 2.x a helyi számítógépen mielőtt bármilyen kötési bővítményeket telepít. Csomagok eltávolítja ezt a követelményt a helyi fejlesztési. 
+Ha nem használ bővítmény-csomagokat, a kötési bővítmények telepítése előtt telepítenie kell a .NET Core 2. x SDK-t a helyi számítógépen. A csomagok ezt a követelményt a helyi fejlesztéshez is megszüntetik. 
 
-Bővítmény csomagok használatához frissítse a *host.json* -fájl a következő bejegyzés `extensionBundle`:
+A bővítmények használatához frissítse a *Host. JSON* fájlt, hogy tartalmazza a következő bejegyzést `extensionBundle`:
 
 ```json
 {
@@ -56,50 +55,50 @@ Bővítmény csomagok használatához frissítse a *host.json* -fájl a követke
 }
 ```
 
-A következő tulajdonságok érhetők el `extensionBundle`:
+A következő tulajdonságok érhetők el a `extensionBundle`ben:
 
 | Tulajdonság | Leírás |
 | -------- | ----------- |
-| **`id`** | A Microsoft Azure Functions bővítmény csomagjaiból névtere. |
-| **`version`** | A csomagot a telepítendő verzióját. A Functions futtatókörnyezete mindig választja, a verziótartományon vagy időköz által meghatározott maximális megengedhető verziójára. A fenti version értéke lehetővé teszi, hogy az akár 1.0.0-s, de nem többek között a 2.0.0-s minden csomag verzió. További információkért lásd: a [időköz jelölése verzió tartományok megadása](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards). |
+| **`id`** | Microsoft Azure functions bővítmények névterei. |
+| **`version`** | A telepítendő csomag verziószáma. A functions Runtime mindig kiválasztja a verziószám vagy az intervallum által meghatározott maximálisan megengedett verziót. A fenti verzió értéke lehetővé teszi, hogy az összes köteg verziója a 1.0.0-ból, de nem tartalmazza a 2.0.0. További információ: a [verziók tartományának megadására szolgáló intervallum jelölése](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards). |
 
-Verziók növekmény csomagot a csomag módosítása a csomag. Főverzió módosítások fordulhat elő, ha a csomagban csomagokat növekmény egy fő verziót, amely általában egybeessen a Functions futtatókörnyezete főverziója változik.  
+A csomag verziójának növekménye csomagokként a köteg változása. A főverzió módosításai akkor fordulnak elő, ha a csomagban lévő csomagok nagyobb verziójúak, ami általában egybeesik a functions futtatókörnyezet főverziójának változásával.  
 
-Az aktuális készletét a alapértelmezett csomagazonosító alapján telepített bővítmények felsorolása ez [extensions.json fájl](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json).
+Az alapértelmezett csomag által telepített bővítmények jelenleg a [Extensions. JSON fájlban](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)vannak felsorolva.
 
 <a name="local-csharp"></a>
 
-## <a name="vs"></a> C\# osztálytár a Visual Studióval
+## <a name="vs"></a>C\# osztályú könyvtár a Visual Studióval
 
-A **Visual Studio**, csomagokat a Package Manager konzol használatával lehet telepíteni a [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) parancsot, az alábbi példában látható módon:
+A **Visual Studióban**a Package Manager konzolon telepítheti a csomagokat az [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) paranccsal, ahogy az alábbi példában is látható:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
 ```
 
-Egy adott kötéshez használt csomag nevét a áttekintésével foglalkozó cikkben megtalálható a kötéshez. Egy vonatkozó példáért tekintse meg a [csomagok a Service Bus kötés áttekintésével foglalkozó cikkben szakaszában](functions-bindings-service-bus.md#packages---functions-1x).
+Az adott kötéshez használt csomag neve az adott kötéshez tartozó hivatkozási cikkben található. Példaként tekintse meg a [Service Bus kötési útmutató csomagok szakaszát](functions-bindings-service-bus.md#packages---functions-1x).
 
-Cserélje le `<TARGET_VERSION>` a példában a csomaghoz, egy adott verzióját a például `3.0.0-beta5`. Érvényes verzió szerepel az egyes csomagot oldalakon [NuGet.org](https://nuget.org). A főbb verziók, hogy a Functions futtatókörnyezete megfelelnek a referenciacikk a kötési 1.x vagy 2.x vannak megadva.
+Cserélje `<TARGET_VERSION>` le a példát a csomag egy adott verziójára, `3.0.0-beta5`például:. Az érvényes verziók a [NuGet.org](https://nuget.org)-on található egyedi csomag oldalain találhatók. Az 1. x vagy 2. x függvényeknek megfelelő főverziók a kötésre vonatkozó hivatkozási cikkben vannak megadva.
 
-Ha `Install-Package` való hivatkozáshoz egy kötést, nincs szüksége [bővítmény csomagjaiból](#extension-bundles). Ezt a megközelítést a Visual studióban fejlesztett osztálykódtárakat jellemző.
+Ha egy kötésre mutató hivatkozást használ `Install-Package` , nem szükséges a [bővítmények](#extension-bundles)használata. Ez a megközelítés kifejezetten a Visual Studióban létrehozott osztályok könyvtáraira vonatkozik.
 
-## <a name="vs-code"></a> C# osztálytár Visual Studio Code használatával
+## <a name="vs-code"></a>C# osztály könyvtára a Visual Studio Code-ban
 
 > [!NOTE]
-> Azt javasoljuk, [bővítmény csomagjaiból](#extension-bundles) szeretné, hogy automatikusan telepítse kompatibilis bővítménycsomagok kötelező funkciók.
+> Javasoljuk, hogy [](#extension-bundles) a bővítmények használatával a függvények automatikusan telepítsék a kötési bővítmények kompatibilis készletét.
 
-A **Visual Studio Code**, a csomagok telepítése egy C# hordozhatóosztálytár-projektjének a parancssor használatával a [dotnet-csomag hozzáadása](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) a .NET Core parancssori parancsot. A következő példa bemutatja, hogyan adhat hozzá kötéseket:
+A **Visual Studio Code**-ban a parancssorban C# telepítsen egy Class Library-projekthez tartozó [](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) csomagokat a a .net Core parancssori felülete. Az alábbi példa bemutatja, hogyan adhat hozzá kötéseket:
 
 ```terminal
 dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --version <TARGET_VERSION>
 ```
 
-A .NET Core CLI csak akkor használható, az Azure Functions 2.x fejlesztéséhez.
+A a .NET Core parancssori felülete csak Azure Functions 2. x fejlesztéshez használható.
 
-Cserélje le `<BINDING_TYPE_NAME>` a csomagot a kívánt kötés a áttekintésével foglalkozó cikkben megadott nevével. A kívánt kötés áttekintésével foglalkozó cikkben talál a [támogatott kötések listája](./functions-triggers-bindings.md#supported-bindings).
+Cserélje `<BINDING_TYPE_NAME>` le a (z) helyére a kívánt kötésre vonatkozó hivatkozási cikkben megadott csomag nevét. A kívánt kötési hivatkozásról szóló cikket a [támogatott kötések listájában](./functions-triggers-bindings.md#supported-bindings)találja.
 
-Cserélje le `<TARGET_VERSION>` a példában a csomaghoz, egy adott verzióját a például `3.0.0-beta5`. Érvényes verzió szerepel az egyes csomagot oldalakon [NuGet.org](https://nuget.org). A főbb verziók, hogy a Functions futtatókörnyezete megfelelnek a referenciacikk a kötési 1.x vagy 2.x vannak megadva.
+Cserélje `<TARGET_VERSION>` le a példát a csomag egy adott verziójára, `3.0.0-beta5`például:. Az érvényes verziók a [NuGet.org](https://nuget.org)-on található egyedi csomag oldalain találhatók. Az 1. x vagy 2. x függvényeknek megfelelő főverziók a kötésre vonatkozó hivatkozási cikkben vannak megadva.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Azure függvény eseményindítót és a kötési – példa](./functions-bindings-example.md)
+> [Az Azure Function trigger és a kötési példa](./functions-bindings-example.md)

@@ -1,7 +1,7 @@
 ---
-title: Egyéni rendszerkép többtárolós vagy beépített rendszerkép – az Azure App Service üzembe helyezése |} A Microsoft Docs
-description: A Linuxon futó App Service egyéni Docker-tárolók üzembe helyezése, a többtárolós és a egy beépített alkalmazás-keretrendszer közötti kiválasztásáról
-keywords: az Azure app service, webalkalmazás, linux, oss
+title: Egyéni lemezkép, többtárolós vagy beépített rendszerkép üzembe helyezése – Azure App Service | Microsoft Docs
+description: Döntés az egyéni Docker-tárolók üzembe helyezése, a többtárolós és a beépített alkalmazás-keretrendszer a Linux rendszeren való App Service
+keywords: Azure app Service, Web App, Linux, OSS
 services: app-service
 documentationCenter: ''
 author: msangapu
@@ -11,48 +11,47 @@ ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: bba38bb69e5abaa94b01308924fe0c6bf07ca08e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae28b185aa44ca22d59204826036435a10c64e91
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64919951"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066792"
 ---
-# <a name="custom-image-multi-container-or-built-in-platform-image"></a>Egyéni rendszerkép, többtárolós vagy beépített platformlemezkép?
+# <a name="custom-image-multi-container-or-built-in-platform-image"></a>Egyéni rendszerkép, több tároló vagy beépített platform-rendszerkép?
 
-[A linuxon futó App Service](app-service-linux-intro.md) kínál a közzétett webes alkalmazásai három különböző elérési utak:
+A Linuxon futó [app Service](app-service-linux-intro.md) három különböző elérési utat biztosít az alkalmazás webes közzétételéhez:
 
-- **Egyéni lemezkép telepítésének**: "Dockerize" az alkalmazás be egy Docker-rendszerképet, amely az összes, a fájlok és a egy futtatásra kész csomag függőségeit tartalmazza.
-- **Több tároló üzembe helyezési**: "Dockerize" az alkalmazás konfigurációs fájl a Docker Compose használatával több tárolón.
-- **Az alkalmazás üzembe helyezése a platform beépített rendszerképpel rendelkező**: A beépített platform általános webes alkalmazás futtatókörnyezetek és függőségei, mint például a Node és a PHP tartalmazzák. Használjon a [Azure App Service-alapú üzembe helyezési módszer](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) helyezze üzembe az alkalmazást a webalkalmazás-tárolóba, és beépített platformlemezkép használatával futtassa.
+- **Egyéni rendszerkép központi telepítése**: "Dockerize" az alkalmazás egy olyan Docker-rendszerképbe, amely tartalmazza az összes fájlt és függőséget egy használatra kész csomagban.
+- **Több tárolós telepítés**: A "Dockerize" az alkalmazás több tárolón keresztül egy Docker-összeállítási konfigurációs fájl használatával.
+- **Alkalmazás üzembe helyezése beépített platform rendszerképpel**: Beépített platform-rendszerképeink közös webalkalmazás-futtatókörnyezeteket és függőségeket tartalmaznak, például a Node és a PHP-t. A [Azure app Service üzembe](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) helyezési módszerek bármelyikével üzembe helyezheti az alkalmazást a webalkalmazás tárolójában, majd egy beépített platform-lemezkép használatával futtathatja azt.
 
-## <a name="which-method-is-right-for-your-app"></a>Módszer a legmegfelelőbb az alkalmazást? 
+## <a name="which-method-is-right-for-your-app"></a>Melyik módszer a legmegfelelőbb az alkalmazáshoz? 
 
-Megfontolandó legfontosabb tényezők a következők:
+A megfontolandó elsődleges tényezők a következők:
 
-- **A Docker a fejlesztési munkafolyamat rendelkezésre állási**: Egyéni rendszerkép fejlesztési a Docker-fejlesztési munkafolyamat alapszintű ismerete szükséges. Egy webalkalmazás, egyéni lemezkép telepítéséhez van szükség, például a Docker Hub adattárban gazdagépre az egyéni rendszerkép közzététele. Ha ismeri a Docker és a Docker-feladatokat adhat hozzá a build-munkafolyamatot, vagy már közzéteszi az alkalmazást egy Docker-rendszerképet, egyéni rendszerkép szinte biztosan a legjobb választás.
-- **Többrétegű architektúra**: Például egy webes alkalmazás réteg és a egy API-réteget külön képességek használatával többtárolós több tároló üzembe helyezése. 
-- **Alkalmazások teljesítményének**: Például a Redis cache réteget használó többtárolós alkalmazás teljesítményének növelése érdekében. Válassza ki a többtárolós ennek eléréséhez.
-- **Egyedi futtatókörnyezet használatának követelményei**: A beépített platformlemezképek tervezték, hogy a legtöbb webes alkalmazások igényeihez, de a testreszabhatóság korlátozott. Előfordulhat, hogy az alkalmazás egyedi függőségekkel vagy más, amelyek túllépik a beépített rendszerképek Mik képes a futtatókörnyezet használatának követelményei.
-- **Build követelmények**: A [folyamatos üzembe helyezés](../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json), megtekintheti az alkalmazás és az Azure-ban közvetlenül a kódból származzanak. Nincsenek külső build és a közzétételi folyamat nem szükséges. Azonban korlátozva van a testreszabhatóság és belül nástroje sestavení Pro rendelkezésre állását a [Kudu](https://github.com/projectkudu/kudu/wiki) üzembe helyezési motorban. Az alkalmazás lehetséges, hogy elszaporodó Kudu a képességek, a függőségek vagy egyéni hozhat létre logikai követelményei növekedésével.
-- **Lemez írási/olvasási követelmények**: Web Apps-alkalmazások az összes webes tartalmak vannak lefoglalva a tárolási köteten. Az Azure-tárhely, a kötet csatlakoztatva van `/home` a fájlrendszer az alkalmazást. Ellentétben a fájlok a tároló fájlrendszer a tartalom köteten lévő fájlok elérhetők egy alkalmazás összes méretezési csoport példánya között, és módosítások megmaradnak az alkalmazás-újraindítások között. Azonban a tartalom kötet a lemez késése értéke magasabb, és további változó, mint a helyi tároló fájlrendszer és a hozzáférés a késés is hatással lehet ügyfélfelügyeletiplatform-frissítésekre, a nem tervezett üzemkimaradások, és a hálózati problémák léptek fel. Tartalomfájlok (nagy erőforrásigényű) csak olvasható hozzáférést igénylő alkalmazások előnyösebb lehet egyéni rendszerképet a központi telepítési fájljait elhelyezi az lemezkép fájlrendszer helyett a tartalom köteten található.
-- **Erőforrás-használat Build**: Ha egy alkalmazást a forrásból, a központi telepítési parancsfájlok futtatása Kudu használatával az azonos App Service-csomag számítási és tárolási erőforrások a futó alkalmazás. Nagy méretű alkalmazások telepítésének felhasználható további erőforrásokat, vagy a kívánt időt. Különösen számos üzembe helyezési munkafolyamatok létrehozása (nagy erőforrásigényű) lemez tevékenység a alkalmazás tartalom köteten, amely nincs optimalizálva az ilyen tevékenység. Egyéni rendszerkép kínál az alkalmazás fájljait és függőségek összes az Azure-bA és nincs szükség további fájlátvitel vagy a telepítési műveletek egyetlen csomagban.
-- **Gyors ismétlését szükséges**: Alkalmazás dockerizing build további lépéseket igényel. A módosítások érvénybe léptetéséhez, meg kell az új rendszerkép leküldése egy adattár az egyes frissítések. Ezek a frissítések majd lekért vannak az Azure-környezethez. Ha az alkalmazás igényeinek megfelel egy beépített tárolót, üzembe helyezése a forrás kínálhatják gyorsabb fejlesztést munkafolyamat.
+- A **Docker elérhetősége a fejlesztési**munkafolyamatban: Az egyéni rendszerkép-fejlesztés a Docker-fejlesztési munkafolyamat alapszintű ismeretét igényli. Az egyéni rendszerképeknek egy webalkalmazásba történő üzembe helyezéséhez az egyéni rendszerkép közzétételét kell megadnia egy adattár-gazdagéphez, például a Docker hub-hoz. Ha ismeri a Docker-t, és hozzá tud adni Docker-feladatokat a Build-munkafolyamathoz, vagy ha már közzétette az alkalmazást Docker-rendszerképként, az egyéni rendszerkép szinte minden bizonnyal a legjobb választás.
+- **Többrétegű architektúra**: Helyezzen üzembe több tárolót, például egy webalkalmazási réteget és egy API-réteget a képességek elkülönítéséhez több tároló használatával. 
+- **Alkalmazás teljesítménye**: Növelje a többtárolós alkalmazások teljesítményét egy olyan gyorsítótár-réteggel, mint például a Redis. A többszörös tároló lehetőség kiválasztásával érheti el ezt.
+- **Egyedi futásidejű követelmények**: A beépített platform rendszerképeket úgy tervezték, hogy megfeleljenek a legtöbb webalkalmazás igényeinek, de a testreszabhatóság korlátozott. Előfordulhat, hogy az alkalmazás egyedi függőségekkel vagy más futásidejű követelményekkel rendelkezik, amelyek meghaladják a beépített lemezképek képességeit.
+- **Felépítési követelmények**: A [folyamatos üzembe helyezéssel](../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)az Azure-ban közvetlenül a forráskódból hozhatja létre és futtathatja az alkalmazást. Nincs szükség külső felépítési vagy közzétételi folyamatra. Azonban a [kudu](https://github.com/projectkudu/kudu/wiki) üzembe helyezési motoron belül a build-eszközök testreszabhatóság és rendelkezésre állása is korlátozott. Az alkalmazása növelheti a kudu képességeit, mivel azok függőségei vagy az egyéni Build logikára vonatkozó követelmények szerint növekszik.
+- **Lemez olvasási/írási követelményei**: Az összes webalkalmazás a webes tartalmak tárolási kötetét osztja ki. Az Azure Storage által támogatott kötet az alkalmazás fájlrendszerében van csatlakoztatva `/home` . A tároló fájlrendszerében lévő fájlokkal ellentétben a tartalom kötetében lévő fájlok az alkalmazás összes méretezési példányán elérhetők, és a módosítások az alkalmazások újraindításakor is megmaradnak. A tartalom kötetének késése azonban nagyobb és változó, mint a helyi tároló fájlrendszerének késése, és a hozzáférés hatással lehet a platformok frissítései, a nem tervezett állásidő és a hálózati kapcsolati problémákra. Azok az alkalmazások, amelyeknek a tartalomhoz való nehezen olvasható hozzáférésre van szükségük, az egyéni rendszerkép központi telepítése is hasznos lehet, amely a tartalom kötetén található fájlokat a képfájlrendszerben helyezi el.
+- **Erőforrás-használat létrehozása**: Ha egy alkalmazás a forrásból lett üzembe helyezve, a kudu által futtatott telepítési parancsfájlok ugyanazt a App Service tervezze meg a számítási és tárolási erőforrásokat a futó alkalmazásként. A nagyméretű alkalmazások telepítése több erőforrást vagy időt is igénybe vehet. A sok üzembe helyezési munkafolyamatok nagy mennyiségű lemezes tevékenységet hoznak az alkalmazás tartalmának kötetén, amely nincs optimalizálva ilyen tevékenységre. Az egyéni rendszerkép egyetlen csomagban biztosítja az alkalmazás összes fájlját és függőségét az Azure-ba, és nincs szükség további fájlátviteli vagy üzembe helyezési műveletekre.
+- **Gyors iteráció szükséges**: Dockerizing egy alkalmazáshoz további Build lépések szükségesek. A módosítások érvénybe léptetéséhez le kell küldenie az új rendszerképet egy adattárba az egyes frissítésekkel. Ezeket a frissítéseket ezután az Azure-környezetbe kell húzni. Ha a beépített tárolók egyike megfelel az alkalmazás igényeinek, a forrásról való üzembe helyezés gyorsabb fejlesztési munkafolyamatot eredményezhet.
 
 ## <a name="next-steps"></a>További lépések
 
 Egyéni tároló:
 * [Egyéni tároló futtatása](quickstart-docker-go.md)
 
-Többtárolós:
+Több tároló:
 * [Többtárolós alkalmazás létrehozása](quickstart-multi-container.md)
 
-A következő cikkek az első lépéseket a Linuxon futó App Service platform beépített rendszerképpel:
+A következő cikkek bemutatják, hogyan kezdheti meg a Linuxon futó App Servicet a beépített platform rendszerképpel:
 
 * [.NET Core](quickstart-dotnetcore.md)
 * [PHP](quickstart-php.md)

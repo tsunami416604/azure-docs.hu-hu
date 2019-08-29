@@ -1,6 +1,6 @@
 ---
-title: SQL Server virtuális gép létrehozása az Azure PowerShell (klasszikus) |} A Microsoft Docs
-description: Egy Azure virtuális gép létrehozása az SQL Server virtuálisgép-katalógus rendszerképek lépéseket és a PowerShell-parancsfájlok biztosít. Ez a témakör a klasszikus üzembe helyezési módot használja.
+title: SQL Server virtuális gép létrehozása Azure PowerShellban (klasszikus) | Microsoft Docs
+description: Útmutatást és PowerShell-szkripteket biztosít az Azure-beli virtuális gépek SQL Server virtuálisgép-katalógus rendszerképeivel való létrehozásához. Ez a témakör a klasszikus üzembe helyezési módot használja.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -8,94 +8,93 @@ manager: craigg
 tags: azure-service-management
 ms.assetid: b73be387-9323-4e08-be53-6e5928e3786e
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ad8b59a9290c533a3687b5ff8956d8682fb6d9e9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a4c7c29736cdd80ef7ebe413a377aba630d61858
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607837"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101873"
 ---
-# <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Azure PowerShell (klasszikus) használatával az SQL Server virtuális gép kiépítése
+# <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>SQL Server virtuális gép kiépítése Azure PowerShell használatával (klasszikus)
 
-Ez a cikk lépéseit az SQL Server virtuális gép létrehozása az Azure-ban a PowerShell-parancsmagok használatával.
+Ez a cikk a SQL Server virtuális gépek Azure-beli létrehozásával kapcsolatos lépéseit ismerteti a PowerShell-parancsmagok használatával.
 
 > [!IMPORTANT] 
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
-Ez a témakör erőforrás-kezelő verziója: [az Azure PowerShell Resource Manager az SQL Server virtuális gép kiépítése](../sql/virtual-machines-windows-ps-sql-create.md).
+A jelen témakör Resource Manager-verziójának használatával kapcsolatban lásd: [SQL Server virtuális gép kiépítése Azure PowerShell Resource Managerrel](../sql/virtual-machines-windows-ps-sql-create.md).
 
-### <a name="install-and-configure-powershell"></a>PowerShell telepítése és konfigurálása:
+### <a name="install-and-configure-powershell"></a>A PowerShell telepítése és konfigurálása:
 1. Ha nem rendelkezik Azure-fiókkal, az [Azure ingyenes próbát](https://azure.microsoft.com/pricing/free-trial/) biztosít.
-2. [Töltse le és telepítse a legújabb Azure PowerShell-parancsok](/powershell/azure/overview).
-3. Indítsa el a Windows Powershellt, és csatlakoztassa az Azure-előfizetésbe a **Add-AzureAccount** parancsot.
+2. [Töltse le és telepítse a legújabb Azure PowerShell-parancsokat](/powershell/azure/overview).
+3. Indítsa el a Windows PowerShellt, és kapcsolja hozzá az Azure-előfizetéséhez az **Add-AzureAccount** paranccsal.
 
    ```powershell
    Add-AzureAccount
    ```
 
-## <a name="determine-your-target-azure-region"></a>Határozza meg a cél Azure-régió
+## <a name="determine-your-target-azure-region"></a>A cél Azure-régió meghatározása
 
-Az SQL Servert futtató virtuális gép-ban üzemeltetett alkalmazásban egy felhőalapú szolgáltatás, amely egy adott Azure-régióban található. A következő lépések segítenek meghatározni a régió, a storage-fiók, és a felhőalapú szolgáltatás, amely jelzi a az oktatóanyag további részeinek.
+A SQL Server virtuális gép egy adott Azure-régióban található felhőalapú szolgáltatásban lesz üzemeltetve. A következő lépések segítségével meghatározhatja a régiót, a Storage-fiókot és a felhőalapú szolgáltatást, amelyet az oktatóanyag további részében fog használni.
 
-1. Határozza meg, hogy az SQL Server virtuális gép üzemeltetésére használni kívánt adatközpontban. A következő PowerShell-parancsot az elérhető régiónevek listáját jeleníti meg.
+1. Határozza meg azt az adatközpontot, amelyet a SQL Server VM üzemeltetéséhez használni kíván. A következő PowerShell-parancs megjeleníti az elérhető régiók neveinek listáját.
 
    ```powershell
    (Get-AzureLocation).Name
    ```
 
-2. Az elsődleges hely azonosítása után állítsa be a nevű változó **$dcLocation** régióhoz. Az alábbi parancs például az "USA keleti régiója" régió állít be:
+2. Miután azonosította az előnyben részesített helyet, állítson be egy **$dcLocation** nevű változót az adott régióra. Például a következő parancs a régiót "Kelet-USA"-ra állítja be:
 
    ```powershell
    $dcLocation = "East US"
    ```
 
-## <a name="set-your-subscription-and-storage-account"></a>Az előfizetés és a storage-fiók beállítása
+## <a name="set-your-subscription-and-storage-account"></a>Az előfizetés és a Storage-fiók beállítása
 
-1. Határozza meg az Azure-előfizetés az új virtuális gép használhat.
+1. Határozza meg az új virtuális géphez használni kívánt Azure-előfizetést.
 
    ```powershell
    (Get-AzureSubscription).SubscriptionName
    ```
 
-2. A cél Azure-előfizetés hozzárendelése, a **$subscr** változó. Az aktuális Azure-előfizetés, majd állítsa ezzel.
+2. Rendelje hozzá a célként megadott Azure-előfizetést a **$subscr** változóhoz. Ezt követően állítsa be az aktuális Azure-előfizetését.
 
    ```powershell
    $subscr="<subscription name>"
    Select-AzureSubscription -SubscriptionName $subscr –Current
    ```
 
-3. Ezután ellenőrizze a meglévő tárfiókok. Az alábbi parancsfájlt, amely a kiválasztott régióban található összes storage-fiókok jeleníti meg:
+3. Ezután keresse meg a meglévő Storage-fiókokat. A következő parancsfájl a választott régióban található összes Storage-fiókot megjeleníti:
 
    ```powershell
    (Get-AzureStorageAccount | where { $_.GeoPrimaryLocation -eq $dcLocation }).StorageAccountName
    ```
 
    > [!NOTE]
-   > Szüksége van egy új tárfiókot, egy kisbetűs minden tárfiók neve először hozzon létre a New-AzureStorageAccount paranccsal az alábbi példában látható módon: `New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
+   > Ha új Storage-fiókra van szüksége, először hozzon létre egy teljesen alacsony szintű Storage-fióknevet a New-AzureStorageAccount paranccsal a következő példában látható módon:`New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
 
-4. Rendelje hozzá a céloldali tárfiók neve, a **$staccount**. Ezután **Set-AzureSubscription** az előfizetés és az aktuális storage-fiók beállításához.
+4. Rendelje hozzá a cél Storage-fióknevét a $staccounthoz. Ezután a **set-azuresubscription parancsot** használatával állítsa be az előfizetést és az aktuális Storage-fiókot.
 
    ```powershell
    $staccount="<storage account name>"
    Set-AzureSubscription -SubscriptionName $subscr -CurrentStorageAccountName $staccount
    ```
 
-## <a name="select-a-sql-server-virtual-machine-image"></a>Válassza ki az SQL Server virtuálisgép-lemezkép
+## <a name="select-a-sql-server-virtual-machine-image"></a>SQL Server virtuális gép rendszerképének kiválasztása
 
-1. Ismerje meg az elérhető SQL Server virtual machines-lemezképek a katalógusból listája. Ezek a lemezképek minden rendelkezik egy **ImageFamily** tulajdonság "SQL" karakterlánccal kezdődik. A következő lekérdezést, hogy az SQL Server előre telepítve van a kép termékcsaládban elérhető megjeleníti.
+1. Ismerje meg az elérhető SQL Server Virtual Machines-lemezképek listáját a katalógusból. Ezek a lemezképek mind rendelkeznek egy **ImageFamily** -tulajdonsággal, amely az "SQL" kifejezéssel kezdődik. Az alábbi lekérdezés az elérhető rendszerképeket jeleníti meg, amelyek SQL Server előre telepítve vannak.
 
    ```powershell
    Get-AzureVMImage | where { $_.ImageFamily -like "SQL*" } | select ImageFamily -Unique | Sort-Object -Property ImageFamily
    ```
 
-2. Ha megtalálta a virtuális gép lemezkép operációsrendszer-család, lehet több közzétett rendszerképek a családban. A következő parancsfájl használatával keresse meg a kiválasztott kép termékcsalád legújabb közzétett virtuális gép rendszerkép nevét (például **SQL Server 2016 RTM Enterprise Windows Server 2012 R2**):
+2. Ha megtalálta a virtuális gép lemezképének családját, több közzétett rendszerkép is szerepelhet ebben a családban. A következő parancsfájl használatával megkeresheti a kiválasztott rendszerkép-család legújabb közzétett virtuálisgép-lemezképének nevét (például **SQL Server 2016 RTM Enterprise Windows Server 2012 R2**rendszeren):
 
    ```powershell
    $family="<ImageFamily value>"
@@ -107,16 +106,16 @@ Az SQL Servert futtató virtuális gép-ban üzemeltetett alkalmazásban egy fel
 
 ## <a name="create-the-virtual-machine"></a>A virtuális gép létrehozása
 
-Végül hozza létre a virtuális gépet a PowerShell-lel:
+Végül hozza létre a virtuális gépet a PowerShell használatával:
 
-1. Hozzon létre egy felhőalapú szolgáltatás, az új virtuális gép üzemeltetésére. Vegye figyelembe, hogy lehetőség arra is használhatja egy meglévő felhőszolgáltatáshoz is. Hozzon létre egy új változót **$svcname** a felhőszolgáltatás rövid nevét.
+1. Hozzon létre egy felhőalapú szolgáltatást az új virtuális gép üzemeltetéséhez. Vegye figyelembe, hogy ehelyett meglévő felhőalapú szolgáltatást is használhat. Hozzon létre egy új változót **$svcname** a Cloud Service rövid nevével.
 
    ```powershell
    $svcname = "<cloud service name>"
    New-AzureService -ServiceName $svcname -Label $svcname -Location $dcLocation
    ```
 
-2. Adja meg a virtuális gép nevét és méretét. Virtuálisgép-méretekkel kapcsolatos további információkért lásd: [az Azure virtuálisgép-méretek](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+2. Adja meg a virtuális gép nevét és méretét. A virtuálisgép-méretekkel kapcsolatos további információkért lásd: [virtuális gépek méretei az Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)-hoz.
 
    ```powershell
    $vmname="<machine name>"
@@ -124,7 +123,7 @@ Végül hozza létre a virtuális gépet a PowerShell-lel:
    $vm1=New-AzureVMConfig -Name $vmname -InstanceSize $vmsize -ImageName $image
    ```
 
-3. Adja meg a helyi rendszergazdai fiókkal és jelszóval.
+3. A helyi rendszergazdai fiók és a jelszó megadása.
 
    ```powershell
    $cred=Get-Credential -Message "Type the name and password of the local administrator account."
@@ -138,11 +137,11 @@ Végül hozza létre a virtuális gépet a PowerShell-lel:
    ```
 
 > [!NOTE]
-> További magyarázat és konfigurációs lehetőségek: a **hozhat létre a parancskészlethez** szakasz [létrehozása és előkonfigurálása a Windows-alapú virtuális gépek az Azure PowerShell használatával](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+> További magyarázatért és konfigurációs lehetőségekhez tekintse meg a [Windows-alapú Virtual Machines létrehozásához és előkonfigurálásához használja a Azure PowerShell használata](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)a következőben: a **parancsbővítések összeállítása** című szakaszt.
 
-## <a name="example-powershell-script"></a>Példa a PowerShell parancsprogramra
+## <a name="example-powershell-script"></a>Példa PowerShell-parancsfájlra
 
-Az alábbi parancsprogram azt szemlélteti, egy teljes szkript, amely létrehoz egy **SQL Server 2016 RTM Enterprise Windows Server 2012 R2** virtuális gépet. Ha ezt a parancsfájlt használja, akkor testre kell szabnia a kezdeti változók alapján az előző témakörben leírt lépéseket.
+A következő parancsfájl egy olyan teljes parancsfájlt mutat be, amely egy **SQL Server 2016 RTM Enterprise rendszert hoz létre a Windows Server 2012 R2 rendszerű** virtuális gépen. Ha ezt a parancsfájlt használja, a jelen témakör előző lépései alapján testre kell szabnia a kezdeti változókat.
 
 ```powershell
 # Customize these variables based on your settings and requirements:
@@ -177,32 +176,32 @@ $vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCrede
 New-AzureVM –ServiceName $svcname -VMs $vm1
 ```
 
-## <a name="connect-with-remote-desktop"></a>Csatlakozzon a távoli asztallal
+## <a name="connect-with-remote-desktop"></a>Kapcsolat a Távoli asztallal
 
-1. Ezek a virtuális gépek telepítés befejezéséhez indítsa el az aktuális felhasználó a dokumentum mappában hozza létre az RDP-fájlok:
+1. Hozza létre az aktuális felhasználó dokumentum mappájába az RDP-fájlokat, hogy a telepítés befejezéséhez a következő virtuális gépeket indítsa el:
 
    ```powershell
    $documentspath = [environment]::getfolderpath("mydocuments")
    Get-AzureRemoteDesktopFile -ServiceName $svcname -Name $vmname -LocalPath "$documentspath\vm1.rdp"
    ```
 
-2. A dokumentumok könyvtárában nyissa meg az RDP-fájlt. Csatlakozás a rendszergazdai felhasználónevet és a korábban megadott jelszóval (például, ha a felhasználónév VMAdmin volt, adja meg a "\VMAdmin" a felhasználó, és adja meg a jelszót).
+2. A dokumentumok könyvtárban indítsa el az RDP-fájlt. Kapcsolódjon a korábban megadott rendszergazdai felhasználónévvel és jelszóval (például ha a Felhasználónév VMAdmin volt, a felhasználóként adja meg a "\VMAdmin" nevet, és adja meg a jelszót).
 
    ```powershell
    cd $documentspath
    .\vm1.rdp
    ```
 
-## <a name="complete-the-configuration-of-the-sql-server-machine-for-remote-access"></a>Az SQL Server-gép távelérés konfigurálása
+## <a name="complete-the-configuration-of-the-sql-server-machine-for-remote-access"></a>A SQL Server gép konfigurálásának befejezése a táveléréshez
 
-A távoli asztali gépről való bejelentkezés után a következő témakör utasításait alapján az SQL Server konfigurálása [lépéseit az SQL Server-kapcsolat konfigurálása Azure-beli virtuális gépen](virtual-machines-windows-classic-sql-connect.md#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
+Miután bejelentkezett a gépre a távoli asztal használatával, konfigurálja a SQL Server a [SQL Server-kapcsolat Azure-beli virtuális gépen való konfigurálásának lépései](virtual-machines-windows-classic-sql-connect.md#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)című részben leírtak szerint.
 
 ## <a name="next-steps"></a>További lépések
 
-Talál további útmutatást az üzembe helyezés a PowerShell használatával a virtuális gépek a [virtual machines dokumentációja](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+A Virtual Machines és a [Virtual Machines dokumentációjában](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)további útmutatást talál a virtuális gépek üzembe helyezéséhez.
 
-Sok esetben a következő lépés, hogy az adatbázisokat az új SQL Server rendszerű virtuális gép. Az adatbázis-áttelepítési útmutatóját lásd: [-adatbázis áttelepítése az SQL Server-beli virtuális gépen](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+Sok esetben a következő lépés az adatbázisok migrálása erre az új SQL Server VMra. Az adatbázis-áttelepítési útmutató: [adatbázis áttelepítése Azure-beli virtuális gépen SQL Server](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 
-Ha is érdekli az SQL virtuális gépek létrehozása, olvassa el az Azure portal használatával [kiépítése egy SQL Server virtuális gépet az Azure-ban](../sql/virtual-machines-windows-portal-sql-server-provision.md). Vegye figyelembe, hogy az oktatóanyag bemutatja a portálon hoz létre virtuális gépeket a klasszikus modellt, a PowerShell-témakörben használt helyett a javasolt Resource Manager-modell használatával.
+Ha az SQL-Virtual Machines létrehozásához is érdekli a Azure Portal használata, tekintse [meg a SQL Server virtuális gép Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md)-beli üzembe helyezésével foglalkozó témakört. Vegye figyelembe, hogy az oktatóanyag, amely végigvezeti a portálon, létrehozza a virtuális gépeket az ajánlott Resource Manager-modell használatával, nem pedig a jelen PowerShell-témakörben használt klasszikus modellt.
 
-Ezekkel az erőforrásokkal mellett azt javasoljuk, hogy tekintse át [Azure Virtual Machines szolgáltatásban futó SQL Server kapcsolatos témaköröket](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Ezen erőforrások mellett azt javasoljuk, hogy tekintse át az [Azure Virtual Machines futó SQL Serverával kapcsolatos egyéb témaköröket](../sql/virtual-machines-windows-sql-server-iaas-overview.md)is.

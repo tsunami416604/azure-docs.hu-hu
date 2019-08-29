@@ -1,6 +1,6 @@
 ---
-title: Az Azure API management házirend minta - megvalósítása X-CSRF minta |} A Microsoft Docs
-description: Az Azure API management házirend-minta - sok API-k által használt X-CSRF minta megvalósítását mutatja be. Ez a példa kifejezetten az SAP-átjáróra vonatkozik.
+title: Azure API Management-szabályzat – példa – az X-CSRF minta implementálása | Microsoft Docs
+description: Azure API Management-szabályzat – példa – bemutatja, hogyan valósítható meg a sok API által használt X-CSRF minta. Ez a példa kifejezetten az SAP-átjáróra vonatkozik.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,31 +9,30 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 2f4d26702443ef3113dad98cde1d13b292fe657a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 14ea9113bf5712d6ffce356d02abb7224c21771a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306699"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067719"
 ---
-# <a name="implement-x-csrf-pattern"></a>A minta megvalósítása X-CSRF
+# <a name="implement-x-csrf-pattern"></a>Az X-CSRF minta implementálása
 
-Ez a cikk bemutatja egy Azure API management házirend minta azt mutatja be, sok API-k által használt X-CSRF minta megvalósítása. Ez a példa kifejezetten az SAP-átjáróra vonatkozik. Az ismertetett lépéseket követve beállíthatja, vagy szerkesztheti egy szabályzat-kódot, [Set meg vagy szerkessze a szabályzat](../set-edit-policies.md). További példák megtekintéséhez lásd: [házirend minták](../policy-samples.md).
+Ez a cikk egy Azure API Management Policy-mintát mutat be, amely bemutatja, hogyan valósítható meg a sok API által használt X-CSRF minta. Ez a példa kifejezetten az SAP-átjáróra vonatkozik. A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-samples.md).
 
 ## <a name="policy"></a>Szabályzat
 
-Illessze be a kódot a **bejövő** letiltása.
+Illessze be a kódot a **bejövő** blokkba.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Get X-CSRF token from SAP gateway using send request.policy.xml)]
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az APIM-szabályzatokat:
+További információ a APIM-házirendekről:
 
 + [Átalakítási házirendek](../api-management-transformation-policies.md)
-+ [A házirend-minták](../policy-samples.md)
++ [Házirend-minták](../policy-samples.md)
 

@@ -10,19 +10,18 @@ tags: azure-service-management
 ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c9214d8906ad00744f811782f732b15aeec3a7f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 057d9beebc106d71183b3c979636bb9c5410b15c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136540"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098374"
 ---
-# <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>Egyéni SSL-tanúsítvány kötése egy webalkalmazáshoz, PowerShell-lel
+# <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>Egyéni SSL-tanúsítvány kötése egy webalkalmazáshoz a PowerShell használatával
 
 Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd hozzáköti egy egyéni tartománynév SSL-tanúsítványát. 
 

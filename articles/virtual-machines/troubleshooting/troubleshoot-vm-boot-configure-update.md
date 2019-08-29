@@ -1,6 +1,6 @@
 ---
-title: Virtuális gép indítási elakadt a "Getting Windows készen áll. Ne kapcsolja ki a számítógép"az Azure-ban |} A Microsoft Docs
-description: Vezessen be a lépéseket, amelyben virtuális gép indítási elakadt a "Getting Windows készen a hiba elhárításához. Ne kapcsolja ki a számítógépet.”
+title: A virtuális gép indítása beragadt a Windows rendszerre kész állapotba. Ne kapcsolja ki a számítógépet az Azure-ban | Microsoft Docs
+description: Bemutatjuk azokat a lépéseket, amelyekkel elhárítható a virtuális gép indításakor beragadt "a Windows rendszer kész állapotba kerül. Ne kapcsolja ki a számítógépet.”
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -10,56 +10,55 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: c3592529d20680c6920e569887effee4ffe38344
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f3c18ea1887ea5b05bb89f85371139ac83dfe49
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684006"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080165"
 ---
-# <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Virtuális gép indítási elakadt a "Getting Windows készen áll. Ne kapcsolja ki a számítógép"az Azure-ban
+# <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>A virtuális gép indítása beragadt a Windows rendszerre kész állapotba. A számítógép kikapcsolása az Azure-ban
 
-Ez a cikk segítséget nyújt a probléma megoldásához, ha a virtuális gép (VM) elakadt be a "Getting Windows kész. Ne kapcsolja ki a számítógép"szakasz indításakor.
+Ez a cikk segítséget nyújt a probléma megoldásához, amikor a virtuális gép (VM) beragadt a "Windows rendszerre kész állapotba. Az indítás során ne kapcsolja ki a számítógép "szakaszát.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="symptoms"></a>Probléma
 
-Ha használ **rendszerindítási diagnosztika** szeretne kapni a képernyőkép a virtuális gép, az operációs rendszer nem teljes mértékben elindításához. A virtuális Gépet jeleníti meg az üzenet "Getting Windows készen áll. Ne kapcsolja ki a számítógépet.”
+Ha rendszerindítási **diagnosztikát** használ a virtuális gép képernyőképének beszerzéséhez, az operációs rendszer nem indul el teljesen. A virtuális gép megjeleníti a "Felkészülés a Windowsba" üzenetet. Ne kapcsolja ki a számítógépet.”
 
-![Üzenet például a Windows Server 2012 R2 rendszerhez](./media/troubleshoot-vm-configure-update-boot/message1.png)
+![Példa a Windows Server 2012 R2-re](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
-![Üzenet-példa](./media/troubleshoot-vm-configure-update-boot/message2.png)
+![Üzenet – példa](./media/troubleshoot-vm-configure-update-boot/message2.png)
 
 ## <a name="cause"></a>Ok
 
-Általában ez a probléma adódik, amikor a kiszolgáló állapotát az utolsó újraindítás után a konfiguráció módosult. A konfiguráció módosításának előfordulhat, hogy sikerült inicializálni, Windows-frissítéseket, vagy a módosítások a kiszolgálói szerepkörök/szolgáltatásával. A Windows Update, ha a frissítések mérete nagy, az operációs rendszer több időre van szüksége, konfigurálja újra a módosításokat.
+Ez a probléma általában akkor fordul elő, ha a kiszolgáló a konfiguráció módosítása után a végső újraindítást végzi. Előfordulhat, hogy a konfigurációs módosítást a Windows-frissítések vagy a kiszolgáló szerepkörei/funkciójának módosításai inicializálják. Windows Update esetén, ha a frissítések mérete nagy, az operációs rendszernek több időre van szüksége a módosítások újrakonfigurálásához.
 
-## <a name="back-up-the-os-disk"></a>Készítsen biztonsági másolatot az operációsrendszer-lemez
+## <a name="back-up-the-os-disk"></a>Az operációsrendszer-lemez biztonsági mentése
 
-Mielőtt megpróbálja kijavítani a problémát, készítsen biztonsági másolatot az operációsrendszer-lemez.
+A probléma elhárítása előtt biztonsági mentést készíthet az operációsrendszer-lemezről.
 
-### <a name="for-vms-with-an-encrypted-disk-you-must-unlock-the-disks-first"></a>A virtuális gépek egy titkosított lemezzel zárolásának feloldása a lemezek először
+### <a name="for-vms-with-an-encrypted-disk-you-must-unlock-the-disks-first"></a>Titkosított lemezzel rendelkező virtuális gépek esetén először fel kell oldani a lemezek zárolását.
 
-Kövesse az alábbi lépéseket annak megállapításához, hogy a virtuális gép egy titkosított virtuális gép.
+Az alábbi lépéseket követve megállapíthatja, hogy a virtuális gép titkosított virtuális gép-e.
 
-1. Az Azure Portalon nyissa meg a virtuális gép, és keresse meg a lemezeket.
+1. A Azure Portal nyissa meg a virtuális gépet, majd keresse meg a lemezeket.
 
-2. Tekintse meg a **titkosítási** oszlopban tekintheti meg, hogy engedélyezve van-e a titkosítás.
+2. Tekintse meg a **titkosítás** oszlopot, és ellenőrizze, hogy engedélyezve van-e a titkosítás.
 
-Ha az operációsrendszer-lemeze titkosítva van, a titkosított lemez zárolásának feloldásához. A lemez zárolásának feloldásához kövesse az alábbi lépéseket.
+Ha az operációsrendszer-lemez titkosítva van, oldja fel a titkosított lemez zárolását. A lemez zárolásának feloldásához kövesse az alábbi lépéseket.
 
-1. Hozzon létre egy helyreállítási virtuális Gépet, amely a ugyanazt az erőforráscsoportot, a Tárfiókot és a helyet az érintett virtuális gép található.
+1. Hozzon létre egy olyan helyreállítási virtuális gépet, amely ugyanabban az erőforráscsoportban, Storage-fiókban és helyen található, mint az érintett virtuális gép.
 
-2. Az Azure Portalon az érintett virtuális gép törlése, és tartsa a lemezt.
+2. A Azure Portal törölje az érintett virtuális gépet, és tartsa meg a lemezt.
 
-3. Futtassa a Powershellt rendszergazdaként.
+3. Futtassa a PowerShellt rendszergazdaként.
 
-4. Futtassa a következő parancsmagot a titkos kód nevét.
+4. Futtassa a következő parancsmagot a titkos kulcs nevének beolvasásához.
 
     ```Powershell
     Login-AzAccount
@@ -74,7 +73,7 @@ Ha az operációsrendszer-lemeze titkosítva van, a titkosított lemez zárolás
     Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq   $vmName) -and ($_.ContentType -eq ‘BEK’)}
     ```
 
-5. Miután a titkos kód nevét, futtassa az alábbi parancsokat a PowerShellben.
+5. A titkos kód neve után futtassa a következő parancsokat a PowerShellben.
 
     ```Powershell
     $secretName = 'SecretName'
@@ -82,10 +81,10 @@ Ha az operációsrendszer-lemeze titkosítva van, a titkosított lemez zárolás
     $bekSecretBase64 = $keyVaultSecret.SecretValueText
     ```
 
-6. A Base64-kódolású érték átalakítása bájt, és a kimenet fájlba írása. 
+6. Konvertálja a Base64 kódolású értéket bájtra, és írja a kimenetet egy fájlba. 
 
     > [!Note]
-    > Ha az USB zárolásának feloldása a beállítást, a rendelkeznek BEk-KEL fájl nevének meg kell egyeznie az eredeti rendelkeznek BEk-KEL GUID. Hozzon létre egy mappát a C meghajtó "Blokktitkosítási kulcsot" nevű, akkor kövesse ezeket a lépéseket.
+    > Ha az USB-feloldási lehetőséget használja, a BEK-fájl nevének meg kell egyeznie az eredeti BEK GUID azonosítóval. Az alábbi lépéseket követve hozzon létre egy "BEK" nevű mappát a C meghajtón.
     
     ```Powershell
     New-Item -ItemType directory -Path C:\BEK
@@ -94,43 +93,43 @@ Ha az operációsrendszer-lemeze titkosítva van, a titkosított lemez zárolás
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7. A számítógépen a blokktitkosítási kulcsot fájl létrehozása után másolja a fájlt a helyreállítási virtuális Gépet, az zárolt operációsrendszer-lemez csatolva van. Futtassa az alábbi parancsokat a blokktitkosítási kulcsot fájl helyét.
+7. Miután létrehozta a BEK-fájlt a SZÁMÍTÓGÉPén, másolja a fájlt a helyreállítási virtuális gépre, amelyhez a zárolt operációsrendszer-lemez csatlakozik. Futtassa a következő parancsokat a BEK-fájl helyének használatával.
 
     ```Powershell
     manage-bde -status F:
     manage-bde -unlock F: -rk C:\BEKFILENAME.BEK
     ```
-    **Nem kötelező**: Bizonyos esetekben lehet szükség, a lemez visszafejteni a következő paranccsal.
+    Nem **kötelező**: Bizonyos esetekben szükség lehet a lemez visszafejtésére a parancs használatával.
    
     ```Powershell
     manage-bde -off F:
     ```
 
     > [!Note]
-    > Az előző parancs feltételezi, hogy a lemez titkosításához a levél f
+    > Az előző parancs feltételezi, hogy a titkosított lemez az F betűn van.
 
-8. Naplók gyűjtése az kell, ha nyissa meg az elérési út **MEGHAJTÓ betűjele: \Windows\System32\winevt\Logs**.
+8. Ha naplókat kell gyűjtenie, nyissa meg a Path **meghajtó betűjelét: \ Windows\System32\winevt\Logs**.
 
-9. A helyreállítási gépről a meghajtó leválasztása.
+9. Válassza le a meghajtót a helyreállítási gépről.
 
 ### <a name="create-a-snapshot"></a>Pillanatkép létrehozása
 
-Pillanatkép létrehozása lépésekkel [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
+Pillanatkép létrehozásához kövesse a [pillanatkép egy lemezének](../windows/snapshot-copy-managed-disk.md)lépéseit.
 
-## <a name="collect-an-os-memory-dump"></a>Az operációs rendszer memóriakép begyűjtése
+## <a name="collect-an-os-memory-dump"></a>Operációs rendszer memóriaképének begyűjtése
 
-Kövesse a [gyűjtése az operációs rendszer memóriakép](troubleshoot-common-blue-screen-error.md#collect-memory-dump-file) egy operációs rendszer memóriakép gyűjtése, ha a virtuális gép konfigurációs megakadt szakasz.
+Az operációs [rendszer memóriaképének begyűjtése](troubleshoot-common-blue-screen-error.md#collect-memory-dump-file) szakaszának lépéseit követve GYŰJTHET egy operációsrendszer-memóriaképet, ha a virtuális gép beragad a konfigurációnál.
 
-## <a name="contact-microsoft-support"></a>Forduljon a Microsoft ügyfélszolgálatához
+## <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 
-Miután összegyűjtötte a memóriakép-fájl, lépjen kapcsolatba [a Microsoft támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az alapvető ok elemzését.
+A memóriakép-fájl összegyűjtése után forduljon a [Microsoft támogatási szolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és elemezze a kiváltó okot.
 
 
-## <a name="rebuild-the-vm-by-using-powershell"></a>Építse újra a virtuális Gépet PowerShell-lel
+## <a name="rebuild-the-vm-by-using-powershell"></a>A virtuális gép újraépítése a PowerShell használatával
 
-Miután összegyűjtötte a memóriakép, kövesse az alábbi lépéseket a virtuális gép számára.
+A memóriakép fájljának összegyűjtése után a virtuális gép újraépítéséhez kövesse az alábbi lépéseket.
 
-**A nem felügyelt lemezek**
+**Nem felügyelt lemezek esetén**
 
 ```powershell
 # To log in to Azure Resource Manager
@@ -161,7 +160,7 @@ $vm = Set-AzVMOSDisk -VM $vm -VhdUri $osDiskVhdUri -name $osDiskName -CreateOpti
 New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vm -Verbose
 ```
 
-**Felügyelt lemezek**
+**Felügyelt lemezek esetén**
 
 ```powershell
 # To log in to Azure Resource Manager

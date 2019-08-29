@@ -1,49 +1,48 @@
 ---
-title: Fájlrendszer ellenőrzése, ha egy Azure virtuális gép elindítása |} A Microsoft Docs
-description: Ismerje meg, hogyan hárítsa el a problémát, hogy a virtuális gép történő rendszerindítás esetén megjelenítése ellenőrzése fájlrendszer |} A Microsoft Docs
+title: Fájlrendszer ellenőrzése Azure-beli virtuális gép indításakor | Microsoft Docs
+description: Megtudhatja, hogyan oldja meg a virtuális gép által a rendszerindítás során megjelenő problémát? Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 51a97443f6b9ba2a37fa2db708b8520a9c450000
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ad4053c2dda50598853528bb6e8b3441c455fbba
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60594800"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080227"
 ---
-# <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>"Fájlt a rendszer ellenőrzése a" Windows mutat be egy Azure virtuális gép indításakor
+# <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>A Windows egy Azure-beli virtuális gép indításakor a "fájlrendszer ellenőrzése" állapotot jeleníti meg
 
-Ez a cikk ismerteti a "Fájlt a rendszer ellenőrzése a" hiba, amely felmerülhet, amikor elindítja a Windows virtuális gép (VM) a Microsoft Azure-ban.
+Ez a cikk a "fájlrendszer ellenőrzése" hibaüzenetet ismerteti, amely akkor fordulhat elő, amikor egy Windows rendszerű virtuális gépet (VM) indít el Microsoft Azure.
 
 > [!NOTE] 
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti, javasoljuk, hogy az új központi telepítéseknél helyett a klasszikus üzemi modell használatával Resource Manager üzemi modell használatával.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a Resource Manager-alapú üzemi modell használatát ismerteti, amelyet a klasszikus üzemi modell helyett új központi telepítések esetén ajánlott használni.
 
 ## <a name="symptom"></a>Jelenség 
 
-Windows virtuális gép nem indul el. Amikor ellenőrizheti a rendszerindító képernyőképek a [rendszerindítási diagnosztika](boot-diagnostics.md), láthatja, hogy a lemez ellenőrzése folyamat (chkdsk.exe) fut-e az alábbi üzenetek:
+Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a rendszerindítási [diagnosztika](boot-diagnostics.md)rendszerindítási funkcióit, láthatja, hogy a lemez ellenőrzése folyamat (chkdsk. exe) a következő üzenetek egyikével fut:
 
-- Keresés és a meghajtó (C:) javítása
-- C: fájlrendszer vizsgálata
+- Meghajtó (C:) ellenőrzése és javítása
+- Fájlrendszer ellenőrzése a C-ben:
 
 ## <a name="cause"></a>Ok
 
-Ha NTFS hiba található a fájlrendszerben, a Windows ellenőrizze és javítsa ki a konzisztencia, a lemez a következő újraindításkor. Általában ez történik, ha a virtuális gép volt bármilyen váratlan újraindítása, vagy ha a virtuális gép leállítási folyamat váratlanul megszakadt.
+Ha NTFS-hiba található a fájlrendszerben, a Windows a következő újraindításkor fogja ellenőriznie és kijavítani a lemez konzisztenciáját. Ez általában akkor fordul elő, ha a virtuális gép váratlan újraindítást észlelt, vagy ha a virtuális gép leállítási folyamata hirtelen megszakadt.
 
 ## <a name="solution"></a>Megoldás 
 
-Windows általában fog elindulni, a lemez ellenőrzése folyamat befejezése után. Ha a virtuális gép elakadt a lemez ellenőrzése során, próbálja meg futtatni a lemez ellenőrzése offline állapotba a virtuális gépen:
-1.  Pillanatkép készítése az operációsrendszer-lemez az érintett virtuális gépek biztonsági mentéséhez. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
+A Windows a lemez-ellenőrzési folyamat befejezése után általában elindul. Ha a virtuális gép beragadt a lemez-ellenőrzési folyamatba, próbálja meg futtatni a következőt a virtuális gépen lévő ellenőrzési lemezről:
+1.  Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
 2.  [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez](troubleshoot-recovery-disks-portal-windows.md).  
-3.  A helyreállítási virtuális gép futtassa a csatlakoztatott operációsrendszer-lemez lemez ellenőrzése. A következő mintát, a csatlakoztatott operációsrendszer-lemez meghajtóbetűjelét az E: 
+3.  A helyreállítási virtuális gépen futtassa a lemez-ellenőrzési lemezt a csatlakoztatott operációsrendszer-lemezen. A következő példában a csatolt operációsrendszer-lemez illesztőprogram-betűjele E: 
         
         chkdsk E: /f
-4.  A lemez ellenőrzése után válassza le a lemezt a helyreállítási virtuális Gépet, és ezután csatlakoztassa újra a lemezt, hogy az érintett virtuális gép operációsrendszer-lemezként. További információkért lásd: [hibáinak elhárítása egy Windows virtuális Gépet az operációsrendszer-lemez egy helyreállítási virtuális Géphez való csatlakoztatásával](troubleshoot-recovery-disks-portal-windows.md).
+4.  A lemezellenőrzés befejezése után válassza le a lemezt a helyreállítási virtuális gépről, majd csatlakoztassa újra a lemezt az érintett virtuális géphez operációsrendszer-lemezként. További információ: Windows rendszerű [virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez való csatolásával](troubleshoot-recovery-disks-portal-windows.md).

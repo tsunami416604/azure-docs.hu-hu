@@ -7,16 +7,16 @@ ms.date: 07/16/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 848210509bf9ab0ffec35004cbb07e39d6de1bc0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 5a5aeac06ccf31e88a8ec670e57b22e753553ff5
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879603"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114249"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT Plug and Play előzetes verzió általános felületek
 
-Minden IoT-Plug and Play eszköznek várhatóan végre kell hajtania néhány gyakori felületet. A közös interfészek előnyben IoT a megoldásokat, mivel konzisztens funkciókat biztosítanak. A [minősítés](tutorial-build-device-certification.md) megköveteli, hogy az eszköz több közös felületet implementáljon. A Common Interface-definíciókat a globális modell tárházból kérheti le.
+Minden IoT-Plug and Play eszköznek várhatóan végre kell hajtania néhány gyakori felületet. A közös interfészek előnyben IoT a megoldásokat, mivel konzisztens funkciókat biztosítanak. A [minősítés](tutorial-build-device-certification.md) megköveteli, hogy az eszköz több közös felületet implementáljon. A Common Interface-definíciókat a nyilvános modell tárházból kérheti le.
 
 ## <a name="summary-of-common-interfaces"></a>Általános felületek összefoglalása
 
@@ -35,7 +35,7 @@ Minden IoT-Plug and Play eszköznek várhatóan végre kell hajtania néhány gy
 
 ### <a name="cli"></a>parancssori felület
 
-Az Azure IoT-bővítmény az Azure CLI-hez az általános felületek a globális modell tárházból való lekéréséhez használható.
+Az Azure IoT bővítményét használhatja az Azure CLI-hez az általános felületek a nyilvános modell tárházból való lekéréséhez.
 
 ```cmd/sh
 az iot pnp interface show --interface {InterfaceID} --login {ModelRepoConnectionString}
@@ -49,9 +49,9 @@ az iot pnp model show --interface {InterfaceID} --login {ModelRepoConnectionStri
 
 1. A Command paletta megnyitásához használja a **CTRL + SHIFT + P** billentyűkombinációt.
 
-1. Adja meg **Plug and Play** , majd válassza **ki a IoT Plug and Play: Nyissa meg** a Model repository parancsot. Válassza a **globális modell tárház**lehetőséget. Megnyílik a Global Model adattár a VS Code-ban.
+1. Adja meg **Plug and Play** , majd válassza **ki a IoT Plug and Play: Nyissa meg** a Model repository parancsot. Válassza a **nyilvános tárház**lehetőséget. A nyilvános modell tárháza a VS Code-ban nyílik meg.
 
-1. A globális modell adattárában adja meg a kapcsolat nevét a keresőmezőbe.
+1. A nyilvános modell adattárában adja meg a felület nevét a keresőmezőbe.
 
 1. Az interfész helyi másolatának létrehozásához válassza ki azt a keresési eredmények között, majd válassza a **Letöltés**lehetőséget.
 

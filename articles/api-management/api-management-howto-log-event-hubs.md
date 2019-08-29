@@ -1,6 +1,6 @@
 ---
-title: Eseménynaplózás az Azure Event Hubs az Azure API Management hogyan |} A Microsoft Docs
-description: Ismerje meg, hogyan eseménynaplózás az Azure Event Hubs az Azure API Management szolgáltatásban.
+title: Események naplózása az Azure Event Hubsba az Azure API Managementban | Microsoft Docs
+description: Ismerje meg, hogyan naplózhat eseményeket az Azure Event Hubsba az Azure API Managementban.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,45 +10,44 @@ ms.assetid: 88f6507d-7460-4eb2-bffd-76025b73f8c4
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 14f84b5380a1c106114cdab425de7f69f4e19825
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 646d9206ec82d5f35ccab9365e76276ff779d225
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60657543"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073489"
 ---
-# <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Eseménynaplózás az Azure Event Hubs az Azure API Management hogyan
-Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Az Event Hubs úgy működik, mint a "bejárati ajtajának" egy eseményfolyamat számára, és az összegyűjtött adatokat egy eseményközpontba, átalakíthatók, és bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével tárolják. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez.
+# <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Események naplózása az Azure Event Hubsba az Azure-ban API Management
+Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Event Hubs "bejárati ajtóként" viselkedik egy esemény-adatcsatorna esetében, és az adatok egy Event hubhoz való gyűjtése után átalakítható és tárolható bármely valós idejű elemzési szolgáltató vagy kötegelt/Storage-adapter használatával. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez.
 
-Ez a cikk remek kiegészítése a [Azure API Management integrálása az Event Hubs](https://azure.microsoft.com/documentation/videos/integrate-azure-api-management-with-event-hubs/) videó, valamint bemutatja az Azure Event Hubs használatával az API Management-eseményeket.
+Ez a cikk az [Azure-API Management Event Hubs](https://azure.microsoft.com/documentation/videos/integrate-azure-api-management-with-event-hubs/) videóval való integrálását és az Azure Event Hubs használatával történő API Management események naplózását ismerteti.
 
 ## <a name="create-an-azure-event-hub"></a>Azure Event Hub létrehozása
 
-Létrehoz egy eseményközpontot, és lekérése, és az Eseményközpontból érkező események küldéséhez és fogadásához szükséges kapcsolati karakterláncokat részletes lépéseiért lásd: [hozzon létre egy Event Hubs-névtér és a egy eseményközpontot, az Azure portal használatával](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+Az Event hub létrehozásával és a kapcsolati karakterláncok beszerzésével kapcsolatos részletes lépésekért, amelyekkel az Event hub-ba érkező és onnan érkező eseményeket kell elküldeni, tekintse meg [a Event Hubs névtér és az Event hub Azure Portal használatával történő létrehozását](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)ismertető témakört.
 
-## <a name="create-an-api-management-logger"></a>Az API Management-naplózó létrehozása
-Most, hogy egy Eseményközpontba,-e a következő lépéssel konfigurálhatja a [naplózó](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity) az az API Management szolgáltatás úgy, hogy az Event hubs események naplóba.
+## <a name="create-an-api-management-logger"></a>API Management naplózó létrehozása
+Most, hogy rendelkezik egy Event hub-val, a következő lépés egy [naplózó](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity) konfigurálása a API Management szolgáltatásban, hogy az eseményeket naplózni tudja az Event hub-ban.
 
-Az API Management másolása használatával konfigurálhatók a [API Management REST API](https://aka.ms/smapi). Mielőtt először a REST API használatával, tekintse át a [Előfeltételek](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest) , és gondoskodjon arról, hogy [engedélyezve van a REST API-hozzáférés](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI).
+API Management naplózók konfigurálása a [API Management REST API](https://aka.ms/smapi)használatával történik. A REST API első használata előtt tekintse át az előfeltételeket, és győződjön meg arról, hogy [engedélyezte a hozzáférést a REST APIhoz](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI). [](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest)
 
-Hozzon létre egy naplózó, győződjön meg arról, egy HTTP PUT kérelem a következő URL-cím sablon használatával:
+A naplózó létrehozásához tegye a következő URL-sablon használatával a HTTP PUT-kérelmet:
 
 `https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2017-03-01`
 
-* Cserélje le `{your service}` az API Management szolgáltatáspéldányhoz nevére.
-* Cserélje le `{new logger name}` az új naplózó kívánt nevét. Ez a név hivatkozik, amikor konfigurálja a [log-eventhub](/azure/api-management/api-management-advanced-policies#log-to-eventhub) házirend
+* Cserélje `{your service}` le a nevet a API Management szolgáltatás példányának nevére.
+* Cserélje `{new logger name}` le az nevet az új naplózni kívánt névre. Erre a névre hivatkozik a [eventhub](/azure/api-management/api-management-advanced-policies#log-to-eventhub) házirend konfigurálásakor
 
-Adja hozzá a következő fejléceket a kérelmet:
+Adja hozzá a következő fejléceket a kérelemhez:
 
-* Content-Type : application/json
-* Hitelesítés: SharedAccessSignature 58...
-  * Útmutató generálása a `SharedAccessSignature` lásd [Azure API Management REST API-hitelesítés](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-authentication).
+* Content-Type: Application/JSON
+* Engedély SharedAccessSignature 58...
+  * A `SharedAccessSignature` lásd: [Azure API Management REST API-hitelesítés](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-authentication)létrehozásával kapcsolatos utasítások.
 
-Adja meg a kérelem törzsében, az alábbi sablon használatával:
+A kérelem törzsének megadásához használja a következő sablont:
 
 ```json
 {
@@ -61,11 +60,11 @@ Adja meg a kérelem törzsében, az alábbi sablon használatával:
 }
 ```
 
-* `loggerType` meg kell `AzureEventHub`.
-* `description` egy leírást a naplózó biztosít, és a egy nulla hosszúságú karakterlánc is lehet, ha szükséges.
-* `credentials` tartalmazza a `name` és `connectionString` az Azure Event hub.
+* `loggerType`értékre kell állítani `AzureEventHub`.
+* `description`a naplózó opcionális leírását tartalmazza, és szükség esetén nulla hosszúságú karakterláncot is használhat.
+* `credentials`az `name` Azure Event `connectionString` hub-t és az-t tartalmazza.
 
-Ha Ön kérést az, ha a naplózó létrehozása állapotkódot `201 Created` adja vissza. Az alábbiakban látható a mintaválasz a fenti példa kérés alapján.
+Ha a kérést a naplózó létrehozásakor végzi, a `201 Created` rendszer a visszaadott állapotkódot adja vissza. Alább látható egy minta válasz a fenti minta-kérelem alapján.
 
 ```json
 {
@@ -82,45 +81,45 @@ Ha Ön kérést az, ha a naplózó létrehozása állapotkódot `201 Created` ad
 ```
 
 > [!NOTE]
-> Más lehetséges visszatérési kódok és azok okok: [létrehozni naplózót](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity#PUT). Más műveleteket, mint a listában, frissítés és törlés módjáról, olvassa el a [naplózó](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity) entitás dokumentációját.
+> További lehetséges visszatérési kódok és azok okai a következő témakörben találhatók: [adatgyűjtő létrehozása](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity#PUT). Ha szeretné megtudni, hogyan hajthat végre más műveleteket, például listát, frissítést és törlést [](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity) , tekintse meg a naplózó entitás dokumentációját.
 >
 >
 
-## <a name="configure-log-to-eventhubs-policies"></a>Napló-eventhubs-szabályzatok konfigurálása
+## <a name="configure-log-to-eventhubs-policies"></a>Eventhubs házirendek konfigurálása
 
-Ha a naplózó már konfigurálva van az API Management szolgáltatásban, a kívánt eseményeket a log-eventhubs házirendeket konfigurálhat. A napló-eventhubs-szabályzat a bejövő ügyfélházirend szekció vagy a szabályzat kimenő szakaszában is használható.
+Ha a naplózó konfigurálva van a API Managementban, beállíthatja a eventhubs szabályzatokat a kívánt események naplózásához. A eventhubs házirend a bejövő házirend szakaszban vagy a kimenő házirend szakaszban használható.
 
 1. Tallózzon az APIM-példányra.
-2. Válassza ki az API lapon.
-3. Válassza ki az API-t, amelyhez hozzá szeretné adja hozzá a szabályzatot. Ebben a példában egy szabályzatot, amely adunk hozzá a **Echo API** a a **korlátlan** termék.
+2. Válassza az API fület.
+3. Válassza ki azt az API-t, amelyhez hozzá szeretné adni a szabályzatot. Ebben a példában egy szabályzatot adunk hozzá az **echo API** -hoz a **korlátlan** termékben.
 4. Válassza a **Minden művelet** lehetőséget.
-5. A képernyő felső részén válassza ki a tervezés lapon.
-6. A bejövő vagy kimenő feldolgozás ablakában kattintson a háromszögre (a Ceruza mellett).
-7. Válassza ki a Kódszerkesztő. További információkért lásd: [hogyan állítsa be, vagy szerkesztheti a szabályzatokat](set-edit-policies.md).
-8. Vigye a kurzort a a `inbound` vagy `outbound` ügyfélházirend szekció.
-9. Válassza a jobb oldali ablak **speciális szabályzatok** > **naplózás az EventHub**. Ennek hatására a `log-to-eventhub` Házirendsablon utasítást.
+5. A képernyő felső részén válassza a tervezés lapot.
+6. A bejövő vagy kimenő feldolgozási ablakban kattintson a háromszögre (a ceruza mellett).
+7. Válassza ki a Kódszerkesztőt. További információ: szabályzatok [beállítása vagy szerkesztése](set-edit-policies.md).
+8. Vigye a kurzort a `inbound` vagy `outbound` a házirend szakaszba.
+9. A jobb oldali ablakban válassza a **speciális szabályzatok** > **napló EventHub**lehetőséget. Ez beszúrja `log-to-eventhub` a házirend-utasítás sablonját.
 
 ```xml
 <log-to-eventhub logger-id ='logger-id'>
   @( string.Join(",", DateTime.UtcNow, context.Deployment.ServiceName, context.RequestId, context.Request.IpAddress, context.Operation.Name))
 </log-to-eventhub>
 ```
-Cserélje le `logger-id` használt értékkel rendelkező `{new logger name}` létrehozni a naplózót az előző lépésben az URL-címben.
+Cserélje `logger-id` le az értéket az URL- `{new logger name}` ben használt értékre az előző lépésben létrehozott naplózó létrehozásához.
 
-Bármilyen kifejezés, amely egy karakterláncot ad vissza értéket használhatja a `log-to-eventhub` elemet. Ebben a példában a dátum és idő, szolgáltatásnév, kérelem azonosítója, kérelem IP-cím és műveletnév tartalmazó karakterláncot a rendszer naplózza.
+Bármely olyan kifejezést használhat, amely egy karakterláncot ad vissza a `log-to-eventhub` elem értékeként. Ebben a példában egy karakterláncot, amely a dátumot és az időt, a szolgáltatás nevét, a kérelem azonosítóját, a kérelem IP-címét és a művelet nevét tartalmazza, a rendszer naplózza.
 
-Kattintson a **mentése** a frissített szabályzatot konfigurációjának mentéséhez. Amint a rendszer menti a házirendet és aktív eseményt naplózza a kijelölt Eseményközpont.
+A frissített házirend-konfiguráció mentéséhez kattintson a **Mentés** gombra. Amint menti a szabályzatot, a rendszer aktív állapotba kerül, és az eseményeket a kijelölt Event hub-ba naplózza.
 
 ## <a name="next-steps"></a>További lépések
 * További információ az Azure Event Hubs
-  * [Az Azure Event Hubs használatának első lépései](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [Üzenetek fogadása az EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [Ismerkedés az Azure Event Hubs](../event-hubs/event-hubs-c-getstarted-send.md)
+  * [Üzenetek fogadása a EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [Event Hubs programozási útmutató](../event-hubs/event-hubs-programming-guide.md)
-* További információ az API Management és az Event Hubs-integráció
-  * [Naplózó entitások bemutatása](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [napló eventhub házirend-referencia](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
-  * [Az Azure API Management, az Event Hubs és Moesif API-k monitorozása](api-management-log-to-eventhub-sample.md)  
-* Tudjon meg többet [Azure Application Insights-integráció](api-management-howto-app-insights.md)
+* További információ a API Management és a Event Hubs integrációról
+  * [Naplózó entitás referenciája](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
+  * [eventhub házirend-hivatkozás](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+  * [Az API-k monitorozása az Azure API Management, a Event Hubs és a Moesif segítségével](api-management-log-to-eventhub-sample.md)  
+* További információ az [Azure Application Insights](api-management-howto-app-insights.md) -nal való integrációról
 
 [publisher-portal]: ./media/api-management-howto-log-event-hubs/publisher-portal.png
 [create-event-hub]: ./media/api-management-howto-log-event-hubs/create-event-hub.png

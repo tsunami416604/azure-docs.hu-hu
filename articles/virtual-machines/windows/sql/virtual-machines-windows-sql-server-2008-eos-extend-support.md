@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: adba197b4412177d0655fb6835cfdf8671a81f4e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 93e0032cd283eda034519ca29a0e1cf501b5cde6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846118"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100455"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>A SQL Server 2008 és SQL Server 2008 R2 támogatásának kiterjesztése az Azure-ra
 
@@ -66,7 +65,7 @@ Az Azure-beli virtuális gépeken az EOS SQL Server vész-helyreállítási mego
 
 - **SQL Server biztonsági mentések**: A Azure Backup segítségével megvédheti az EOS-SQL Server ransomware, véletlen törléssel és sérüléssel szemben. A megoldás jelenleg előzetes verzióban érhető el az EOS SQL Server esetében, és támogatja a Windows 2008 R2 SP1 rendszeren futó SQL Server 2008 és 2008 R2 rendszert. További részletekért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2).
 - **Napló szállítása**: A RTO csökkentése érdekében egy másik zónában vagy Azure-régióban is létrehozhat egy naplóbeli szállítási replikát. Manuálisan kell konfigurálnia a napló szállítását.
-- **Azure site Recovery**: A virtuális gép a zónák és régiók között Azure Site Recovery replikáció használatával replikálható. SQL Server alkalmazás-konzisztens Pillanatképek szükségesek a helyreállítás biztosításához vészhelyzet esetén. Azure Site Recovery legalább 1 órás RPO, valamint egy 2 órás (plusz SQL Server helyreállítási idő) RTO biztosít az EOS SQL Server vész-helyreállításhoz.
+- **Azure Site Recovery**: A virtuális gép a zónák és régiók között Azure Site Recovery replikáció használatával replikálható. SQL Server alkalmazás-konzisztens Pillanatképek szükségesek a helyreállítás biztosításához vészhelyzet esetén. Azure Site Recovery legalább 1 órás RPO, valamint egy 2 órás (plusz SQL Server helyreállítási idő) RTO biztosít az EOS SQL Server vész-helyreállításhoz.
 
 ## <a name="security-patching"></a>Biztonsági javítások
 SQL Server virtuális gépek bővített biztonsági frissítései a Microsoft Update csatornákon keresztül érkeznek, miután a SQL Server VM regisztrálva lettek az SQL VM [erőforrás](virtual-machines-windows-sql-register-with-resource-provider.md)-szolgáltatónál. A javítások manuálisan vagy automatikusan is letölthetők.

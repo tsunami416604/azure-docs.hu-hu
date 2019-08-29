@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: b451769f5f98bf64ca340504c983f16d1db36647
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: a844d28067fc0851760849317160d5902918252e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991555"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074393"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Milyen Apache Hadoop-összetevők és-verziók érhetők el a HDInsight-ben?
 
@@ -177,63 +177,7 @@ A szakasz hivatkozásokat tartalmaz a Hortonworks adatplatform-disztribúciók �
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>A csomópontok alapértelmezett konfigurációja és a virtuális gépek méretei a fürtökhöz
 
-A következő táblázatok felsorolják a HDInsight-fürtök alapértelmezett virtuálisgép-méretét.  Ez a diagram a HDInsight-fürtök telepítéséhez szükséges PowerShell-vagy Azure CLI-parancsfájlok létrehozásához használandó virtuálisgép-méretek megismerésére szolgál.
-
-> [!NOTE]
-> A csak az adatlemezeket tartalmazó fürtök a Kafka és a HBase fürtök, amelyeken engedélyezve van a gyorsított írási funkció. A HDInsight ezekben a forgatókönyvekben támogatja a P30 és a S30 lemez méretét.
-
-> [!IMPORTANT]  
-> Ha a fürtben több mint 32 feldolgozó csomópontra van szüksége, ki kell választania egy fő csomópont-méretet legalább 8 maggal és 14 GB RAM-mal.
-
-* Minden támogatott régió, kivéve Dél-Brazília és Nyugat-Japán:
-
-|Fürt típusa|Hadoop|HBase|Interaktív lekérdezés|Storm|Spark|ML Server|Kafka|
-|---|---|---|---|---|---|---|---|
-|Fej: alapértelmezett VM-méret|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
-|Fej: ajánlott virtuálisgép-méretek|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M v2|
-||D4 v2|D4 v2|D14|A8 v2|D13 v2|D13 v2|D3 v2|
-||D12 v2|D12 v2|E16 v3|A2m v2|D14 v2|D14 v2|D4 v2|
-||E4 v3|E4 v3|E32 v3|E4 v3|E4 v3|E4 v3|D12 v2|
-|Worker: alapértelmezett VM-méret|D4 v2|D4 v2|D14 v2|D3 v2|D13 v2|D4 v2|4 D12v2 2 S30 lemezzel|
-|Worker: ajánlott virtuálisgép-méretek|D3 v2|D3 v2|D13|D3 v2|D4 v2|D4 v2|D13 v2|
-||D4 v2|D4 v2|D14|D4 v2|D12 v2|D12 v2|DS12 v2|
-||D12 v2|D12 v2|E16 v3|D12 v2|D13 v2|D13 v2|DS13 v2|
-||E4 v3|E4 v3|E20 v3|E4 v3|D14 v2|D14 v2|E4 v3|
-||||E32 v3||E16 v3|E16 v3|ES4 v3|
-||||E64 v3||E20 v3|E20 v3|E8 v3|
-||||||E32 v3|E32 v3|ES8 v3|
-||||||E64 v3|E64 v3||
-|ZooKeeper: alapértelmezett VM-méret||A4 v2|A4 v2|A4 v2||A2 v2|D3v2|
-|ZooKeeper: ajánlott virtuálisgép-méretek||A4 v2||A2 v2|||A2M v2|
-|||A8 v2||A4 v2|||D3 v2|
-|||A2m v2||A8 v2|||E8 v3|
-|ML szolgáltatások: alapértelmezett VM-méret||||||D4 v2||
-|ML szolgáltatások: ajánlott VM-méret||||||D4 v2||
-|||||||D12 v2||
-|||||||D13 v2||
-|||||||D14 v2||
-|||||||E16 v3||
-|||||||E20 v3||
-|||||||E32 v3||
-|||||||E64 v3||
-
-* Dél-Brazília és Nyugat-Japán (nem v2 méret):
-
-  | Fürt típusa | Hadoop | HBase | Interaktív lekérdezés |Storm | Spark | ML-szolgáltatások |
-  | --- | --- | --- | --- | --- | --- | --- |
-  | Fej: alapértelmezett VM-méret |D12 |D12  | D13 |A3 |D12 |D12 |
-  | Fej: ajánlott virtuálisgép-méretek |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13<br/> D14 |A3<br/> A4<br/> A5 |D12<br/> D13<br/> D14 |D12<br/> D13<br/> D14 |
-  | Worker: alapértelmezett VM-méret |D4 |D4  |  D14 |D3 |D13 |D4 |
-  | Worker: ajánlott virtuálisgép-méretek |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13<br/> D14 |D3,<br/> D4,<br/> D12 |D4,<br/> D12<br/> D13<br/> D14 | D4,<br/> D12<br/> D13<br/> D14 |
-  | ZooKeeper: alapértelmezett VM-méret | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
-  | ZooKeeper: ajánlott virtuálisgép-méretek | |A2<br/> A3<br/> A4 | |A2<br/> A3<br/> A4 | | |
-  | ML szolgáltatások: alapértelmezett VM-méretek | | | | | |D4 |
-  | ML szolgáltatások: ajánlott virtuálisgép-méretek | | | | | |D4,<br/> D12<br/> D13<br/> D14 |
-
-> [!NOTE]
-> - A *Nimbus* a Storm-fürt típusának nevezzük.
-> - A Worker neve a Storm-fürt típusának felügyelője.
-> - A feldolgozó neve a HBase-fürt típusának régiója.
+További információ arról, hogy mely virtuálisgép-SKU-ket szeretné kijelölni a fürt számára: az [Azure HDInsight-fürt konfigurációjának részletei](hdinsight-supported-node-configuration.md).
 
 ## <a name="next-steps"></a>További lépések
 - [Fürt beállítása Apache Hadoop, Spark és más HDInsight](hdinsight-hadoop-provision-linux-clusters.md)

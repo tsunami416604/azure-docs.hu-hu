@@ -9,21 +9,20 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3db1884fb80ce28dc58f09687ff16cc1ce904679
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8eaa96dd92ab0f18b590b284d59dd7b775738602
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708101"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101737"
 ---
-# <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Oktatóanyag: Biztonsági mentése és visszaállítása az Azure-beli Windows virtuális gépek fájljait
+# <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Oktatóanyag: Windows rendszerű virtuális gépek fájljainak biztonsági mentése és visszaállítása az Azure-ban
 
 Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy bizonyos fájlokat. Ez a cikk azt ismerteti, hogyan állíthat vissza egy fájlt egy Windows Servert és IIS-t futtató virtuális gépre. Ha még nem rendelkezik virtuális géppel, a [windowsos rövid útmutatóval](quick-create-portal.md) létrehozhat egyet. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -46,12 +45,12 @@ Hozzon létre egy egyszerű, ütemezett napi biztonsági mentést egy Recovery S
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. A bal oldali menüben válassza a **Virtuális gépek** elemet. 
 1. Válasszon egy virtuális gépet a listából, amelyről biztonsági mentést kíván készíteni.
-1. A virtuális gép paneljén a a **műveletek** területén kattintson **Backup**. Megnyílik a **Biztonsági mentés engedélyezése** panel.
-1. A **Recovery Services-tárolóban** kattintson az **Új létrehozása** elemre, és adja meg az új tároló nevét. Az új tároló ugyanabban az erőforráscsoportban és helyen, ahol a virtuális gép jön létre.
-1. A **biztonsági mentési házirend kiválasztása**, tartsa meg az alapértelmezett **(új) DailyPolicy**, és kattintson a **biztonsági mentés engedélyezése**.
+1. A virtuális gép panel **műveletek** szakaszában kattintson a **biztonsági mentés**elemre. Megnyílik a **Biztonsági mentés engedélyezése** panel.
+1. A **Recovery Services-tárolóban** kattintson az **Új létrehozása** elemre, és adja meg az új tároló nevét. Egy új tároló jön létre ugyanabban az erőforráscsoportban és helyen, mint a virtuális gép.
+1. A **biztonsági mentési házirend kiválasztása**területen tartsa meg az alapértelmezett **(új) DailyPolicy**, majd kattintson a **biztonsági mentés engedélyezése**elemre.
 1. Az első helyreállítási pont létrehozásához a **Biztonsági mentés** panelen kattintson a **Biztonsági mentés most** elemre.
-1. Az a **biztonsági mentés** panelen kattintson a naptár ikonra, és válassza ki a visszaállítási pont mennyi ideig őrzi meg a rendszer, majd kattintson a Naptár vezérlőelem használatával **OK**.
-1. Az a **Backup** a virtuális gép paneljén láthatja, amelyek a teljes visszaállítási pontok száma.
+1. A **biztonsági mentés** panelen kattintson a naptár ikonra, a Calendar (naptár) vezérlőelem használatával válassza ki a visszaállítási pont megőrzési idejét, majd kattintson az **OK**gombra.
+1. A virtuális gép **biztonsági mentés** paneljén látni fogja a befejezett visszaállítási pontok számát.
 
 
     ![Helyreállítási pontok](./media/tutorial-backup-vms/backup-complete.png)
@@ -76,17 +75,17 @@ Ebben a példában bemutatjuk, hogyan állíthatja helyre az IIS alapértelmezet
 
 1. A helyi számítógépen nyisson meg egy új lapot, majd nyissa meg az [Azure Portalt](https://portal.azure.com).
 1. A bal oldali menüben válassza a **Virtuális gépek** elemet, majd válassza ki a virtuális gépet a listából.
-1. A virtuális gép paneljén a a **műveletek** területén kattintson **Backup**. Megnyílik a **Biztonsági mentés** panel. 
+1. A virtuális gép panel **műveletek** szakaszában kattintson a **biztonsági mentés**elemre. Megnyílik a **Biztonsági mentés** panel. 
 1. A panel tetején található menüben válassza a **Fájlhelyreállítás** elemet. Megnyílik a **Fájlhelyreállítás** panel.
-1. A **1. lépés: Válassza ki a helyreállítási pont**, válasszon egy helyreállítási pontot a legördülő listából.
-1. A **2. lépés: Fájlok tallózására és helyreállítására szolgáló szkript letöltése**, kattintson a **végrehajtható fájl letöltése** gombra. Másolja a fájlhoz tartozó jelszót, és mentse azt biztonságos helyen.
+1. Az **1. lépésben: Válassza ki a**helyreállítási pontot, majd válasszon ki egy helyreállítási pontot a legördülő menüből.
+1. A **2. lépésben: Parancsfájl letöltése a fájlok**tallózásához és helyreállításához kattintson a végrehajtható fájl **letöltése** gombra. Másolja a fájl jelszavát, és mentse biztonságos helyre.
 1. A helyi számítógépen nyissa meg a **Fájlkezelőt**, keresse meg a **Letöltések** mappát, és másolja a letöltött .exe fájlt. A fájlnév a virtuális gép nevét tartalmazó előtaggal lesz ellátva. 
-1. A virtuális gép (az RDP-kapcsolat használatával) illessze be a virtuális gép az asztalhoz az .exe fájlra. 
-1. Lépjen a virtuális gép asztalára, és kattintson duplán az .exe fájlra. A parancssor használatával indul el. A program csatlakoztatja a helyreállítási pont keresztül elérhető fájlmegosztásként. A megosztás létrehozása után írja be a **q** betűt a parancssor bezárásához.
+1. A virtuális gépen (RDP-kapcsolat használatával) illessze be az. exe fájlt a virtuális gép asztalára. 
+1. Lépjen a virtuális gép asztalára, és kattintson duplán az .exe fájlra. Ekkor elindul egy parancssor. A program a helyreállítási pontot olyan fájlmegosztásként csatlakoztatja, amelyet elér. A megosztás létrehozása után írja be a **q** betűt a parancssor bezárásához.
 1. A virtuális gépen nyissa meg a **Fájlkezelőt**, és navigáljon a fájlmegosztáshoz használt meghajtóbetűjelre.
 1. Navigáljon az \inetpub\wwwroot helyre, másolja ki az **iisstart.png** fájlt a fájlmegosztásból, és illessze be az \inetpub\wwwroot helyre. Például másolja az F:\inetpub\wwwroot\iisstart.png fájlt, és illessze be a c:\inetpub\wwwroot helyre a fájl helyreállításához.
 1. A helyi számítógépen nyissa meg azt a böngészőlapot, amelyen az alapértelmezett IIS-weboldalt megjelenítő virtuális gép IP-címéhez csatlakozott. Nyomja le a CTRL + F5 billentyűparancsot a böngészőlap frissítéséhez. Most láthatja, hogy a kép vissza lett állítva.
-1. A helyi számítógépen térjen vissza az Azure Portalon, majd a böngészőlapon **3. lépés: A lemezek leválasztása a helyreállítás után** kattintson a **lemezek leválasztása** gombra. Ha elfelejti elvégezni ezt a lépést, a csatlakoztatási ponttal létesített kapcsolat 12 óra elteltével automatikusan lezárul. E 12 óra elteltével le kell töltenie egy új szkriptet az új csatlakoztatási pont létrehozásához.
+1. A helyi számítógépen lépjen vissza a Azure Portal böngésző lapjára, és **a 3. lépésben: A lemezek leválasztása a** helyreállítás után kattintson a **lemezek** leválasztása gombra. Ha elfelejti elvégezni ezt a lépést, a csatlakoztatási ponttal létesített kapcsolat 12 óra elteltével automatikusan lezárul. A 12 óra elteltével le kell töltenie egy új parancsfájlt egy új csatlakoztatási pont létrehozásához.
 
 
 

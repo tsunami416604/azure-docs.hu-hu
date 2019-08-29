@@ -8,18 +8,18 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: dff15deaefba728bad76965a186dd2f245ea5854
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 021341406f1a7269aadf18eb3a748e539cbb5bf5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019855"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086964"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>IoT Central kezelése az Azure CLI-vel
 
 [!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
 
-IoT Central alkalmazások a IoT Central [Application Manager](https://aka.ms/iotcentral) -lapról való létrehozása és kezelése helyett az [Azure CLI](/cli/azure/) használatával kezelheti az alkalmazásokat.
+IoT Central alkalmazások az [azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén való létrehozása és kezelése helyett az [Azure CLI](/cli/azure/) használatával kezelheti az alkalmazásokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

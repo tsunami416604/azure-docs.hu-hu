@@ -1,31 +1,30 @@
 ---
-title: Egyéni vezénylési állapot Durable Functions – Azure
-description: Megtudhatja, hogyan konfigurálhatja és használhatja az egyéni vezénylési állapot Durable Functions.
+title: Egyéni összehangolás állapota a Durable Functionsban – Azure
+description: Megtudhatja, hogyan konfigurálhatja és használhatja a Durable Functions egyéni előkészítési állapotát.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 8d36c797e80702302a1954d2f00e1e4daabcaa88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b93b0cd5053db7d8a2b6aebd30d32f542670d90
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60710000"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098120"
 ---
-# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) az egyéni vezénylési állapot
+# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Egyéni összehangolás állapota a Durable Functionsban (Azure Functions)
 
-Egyéni vezénylési állapot lehetővé teszi az orchestrator függvény egyéni állapot értékének beállítása. A HTTP-GetStatus API-n keresztül biztosított Ez az állapot vagy a `DurableOrchestrationClient.GetStatusAsync` API-t.
+Az egyéni előkészítési állapot lehetővé teszi egyéni állapot értékének megadását a Orchestrator függvényhez. Ezt az állapotot a http GetStatus API vagy az `DurableOrchestrationClient.GetStatusAsync` API segítségével biztosítjuk.
 
-## <a name="sample-use-cases"></a>Példa használati esetek
+## <a name="sample-use-cases"></a>Példa használati esetekre
 
-### <a name="visualize-progress"></a>Előrehaladásának megjelenítése
+### <a name="visualize-progress"></a>Előrehaladás megjelenítése
 
-Ügyfelek lekérdezi az állapot végpontját és egy folyamat, amely megjeleníti az aktuális végrehajtási fázis felhasználói felület megjelenítéséhez. A következő minta azt mutatja be, folyamat megosztása:
+Az ügyfelek lekérdezik az állapot végpontját, és megjelenítenek egy folyamatjelző FELÜLETET, amely megjeleníti az aktuális végrehajtási szakaszt. Az alábbi példa a folyamat megosztását mutatja be:
 
 #### <a name="c"></a>C#
 
@@ -54,7 +53,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
 ```javascript
 const df = require("durable-functions");
@@ -80,7 +79,7 @@ module.exports = async function(context, name) {
 };
 ```
 
-Majd az ügyfél fog kapni a vezénylési kimenetét, és csak akkor, ha `CustomStatus` mező "London" értékre van állítva:
+Ezután a-ügyfél csak akkor kapja meg a koordinálás kimenetét, ha `CustomStatus` a mező értéke "London":
 
 #### <a name="c"></a>C#
 
@@ -115,7 +114,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
 ```javascript
 const df = require("durable-functions");
@@ -145,14 +144,14 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> A JavaScript a `customStatus` mező lesz beállítva, amikor a következő `yield` vagy `return` művelet ütemezve van.
+> A JavaScriptben a `customStatus` következő `yield` vagy `return` művelet ütemezésekor a mező lesz beállítva.
 
 > [!WARNING]
-> A JavaScript fejlesztésének helyileg, kell beállítania a környezeti változót `WEBSITE_HOSTNAME` való `localhost:<port>`, például. `localhost:7071` a módszer használatához `DurableOrchestrationClient`. Ezzel a követelménnyel kapcsolatban további információkért lásd: a [GitHub-problémát](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> A JavaScriptben helyileg történő fejlesztéskor a környezeti változót `WEBSITE_HOSTNAME` `localhost:<port>`is be kell állítania. `localhost:7071`metódusok használata a `DurableOrchestrationClient`alkalmazásban. Erről a követelményről a [GitHub-probléma](https://github.com/Azure/azure-functions-durable-js/issues/28)című cikkben olvashat bővebben.
 
-### <a name="output-customization"></a>Kimeneti testreszabása
+### <a name="output-customization"></a>Kimenet testreszabása
 
-Egy másik érdekes forgatókönyv van szegmentálja a felhasználók egyedi jellemzőit és az interakciók alapján testre szabott kimeneti felismerésével. Egyéni vezénylési állapot segítségével az ügyféloldali kódot általános marad. Az összes fő módosításokat a kiszolgálói oldalon történik, az alábbi mintában látható módon:
+Egy másik érdekes forgatókönyv a felhasználók szegmentálása úgy, hogy egyedi tulajdonságok vagy interakciók alapján testreszabott kimenetet ad vissza. Az egyéni előkészítési állapot segítségével az ügyféloldali kód általános marad. Az összes fő módosítás a kiszolgálóoldali oldalon fog történni, ahogy az a következő mintában látható:
 
 #### <a name="c"></a>C#
 
@@ -192,7 +191,7 @@ public static void Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
 ```javascript
 const df = require("durable-functions");
@@ -225,9 +224,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-### <a name="instruction-specification"></a>Utasítás specifikáció
+### <a name="instruction-specification"></a>Utasítások specifikációja
 
-Az orchestrator biztosíthat egyedi utasításokat az egyéni állapot-n keresztül az ügyfelek számára. Az egyéni utasításokat lesz rendelve a lépéseket a vezénylési kódban:
+A Orchestrator egyéni állapoton keresztül egyedi utasításokat adhat az ügyfeleknek. Az egyéni állapotra vonatkozó utasításokat a rendszer a koordináló kód lépéseihez rendeli hozzá:
 
 #### <a name="c"></a>C#
 
@@ -257,7 +256,7 @@ public static async Task<bool> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
 ```javascript
 const df = require("durable-functions");
@@ -284,9 +283,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-## <a name="sample"></a>Sample
+## <a name="sample"></a>Minta
 
-Az alábbi minta egyéni Ez a beállítás először;
+Az alábbi példában az egyéni állapot beállítása először van megadva.
 
 ### <a name="c"></a>C#
 
@@ -303,7 +302,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
 ```javascript
 const df = require("durable-functions");
@@ -319,14 +318,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-A vezénylési futása közben a külső ügyfelek lehet beolvasni az egyéni állapot:
+A folyamat futása közben a külső ügyfelek behívhatják ezt az egyéni állapotot:
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 ```
 
-Az ügyfelek a következő választ fog kapni:
+Az ügyfelek a következő választ kapják:
 
 ```http
 {
@@ -340,9 +339,9 @@ Az ügyfelek a következő választ fog kapni:
 ```
 
 > [!WARNING]
-> Az egyéni hasznos adat, képesnek kell lennie ahhoz, hogy elférjen az Azure Table Storage oszlop azért legfeljebb 16 KB-os UTF-16 JSON-szövegben. Ha nagyobb hasznos adat van szükségük a fejlesztők a külső tárhelyen.
+> Az egyéni állapot adattartalma 16 KB-os UTF-16 JSON-szövegre van korlátozva, mert képesnek kell lennie arra, hogy illeszkedjen egy Azure Table Storage-oszlopba. A fejlesztők használhatják a külső tárhelyet, ha nagyobb adattartalomra van szükségük.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Durable Functions HTTP API-k ismertetése](durable-functions-http-api.md)
+> [A HTTP API-k megismerése Durable Functions](durable-functions-http-api.md)

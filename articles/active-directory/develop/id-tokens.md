@@ -11,18 +11,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 08/27/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85145d4a81eb4d12910758e01dda675ea378a46b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4968d1acbccca9c2c46b4bbb6f0853b82e8d7f71
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853179"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074262"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 
@@ -30,7 +30,7 @@ ms.locfileid: "68853179"
 
 ## <a name="using-the-id_token"></a>A id_token használata
 
-Az azonosító jogkivonatokat annak ellenőrzésére kell használni, hogy a felhasználó ki és milyen további hasznos információkat igényel róluk – a [hozzáférési jogkivonat](access-tokens.md)helyett nem használható. Az általa biztosított jogcímek az alkalmazáson belül, egy adatbázis beírásával és az ügyfélalkalmazás elérésének biztosításával használhatók.
+Az azonosító jogkivonatokat annak ellenőrzésére kell használni, hogy a felhasználó ki és milyen további hasznos információkat igényel róluk – a [hozzáférési jogkivonat](access-tokens.md)helyett nem használható. Az általa biztosított jogcímek az alkalmazásban, az adatbázis kulcsaiként és az ügyfélalkalmazás elérésének biztosítására használhatók.  A kulcsok adatbázishoz való létrehozásakor `idp` nem ajánlott használni, mert a vendég forgatókönyveket felzavarja.  A `sub` beírást egyedül kell elvégezni (amely mindig egyedi), az `tid` útválasztáshoz használt, ha szükséges.  Ha több szolgáltatás között is meg kell osztania `oid` az adatmegosztást, a működni fog, `oid` + + `sub` `tid` mivel az összes szolgáltatás ugyanaz lesz.
 
 ## <a name="claims-in-an-id_token"></a>Jogcímek egy id_token
 
@@ -85,7 +85,7 @@ Ez a lista azokat a jogcímeket jeleníti meg, amelyek a legtöbb id_tokens alap
 |`rh` | Átlátszatlan karakterlánc |Az Azure által a jogkivonatok újraellenőrzéséhez használt belső jogcím. Figyelmen kívül kell hagyni. |
 |`sub` | Karakterlánc, GUID | Az a rendszerbiztonsági tag, amelyről a jogkivonat adatokat érvényesít, például egy alkalmazás felhasználóját. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. A tulajdonos egy páros-azonosító – egyedi egy adott alkalmazás-AZONOSÍTÓhoz. Ha egyetlen felhasználó két különböző alkalmazásba jelentkezik be két különböző ügyfél-azonosítóval, akkor ezek az alkalmazások két különböző értéket kapnak a tulajdonos jogcímek számára. Az architektúra-és adatvédelmi követelményektől függően ez lehet vagy nem kívánatos. |
 |`tid` | Karakterlánc, GUID | Egy GUID, amely azt az Azure AD-bérlőt jelöli, amelyből a felhasználó származik. Munkahelyi és iskolai fiókok esetén a GUID az a szervezet, amelyhez a felhasználó tartozik. A személyes fiókok esetében az érték `9188040d-6c67-4c5b-b112-36a304b66dad`a következő:. Ennek `profile` a jogcímnek a fogadásához a hatókörre van szükség. |
-|`unique_name` | Karakterlánc | A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantáltan egyedi a bérlőn belül, és csak megjelenítési célokra használható. Csak a 1.0 `id_tokens`-s verzióban van kiállítva. |
+|`unique_name` | Sztring | A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantáltan egyedi a bérlőn belül, és csak megjelenítési célokra használható. Csak a 1.0 `id_tokens`-s verzióban van kiállítva. |
 |`uti` | Átlátszatlan karakterlánc | Az Azure által a jogkivonatok újraellenőrzéséhez használt belső jogcím. Figyelmen kívül kell hagyni. |
 |`ver` | Karakterlánc, vagy 1,0 vagy 2,0 | Megadja a id_token verzióját. |
 

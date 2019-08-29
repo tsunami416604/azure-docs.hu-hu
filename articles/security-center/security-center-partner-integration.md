@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2c43a3c046243c4802fb433f3b755cee158002b6
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9d52526f87f20a855c045f4e565793ac29abf04a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950565"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100998"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -34,7 +34,7 @@ A Security Center használatával egyszerűen engedélyezhet integrált biztons�
 - **Integrált észlelések**: A partnermegoldásoktól érkező biztonsági eseményeket a rendszer automatikusan összegyűjti, összesíti és megjeleníti a Security Center riasztásainak és incidenseinek részeként. Ezek az események más forrásoktól érkező észlelésekhez is kapcsolódnak, ami fejlett fenyegetésészlelési képességeket biztosít.
 - **Egységes állapot figyelése és kezelése**: Az integrált állapotesemények lehetővé teszik az összes partnermegoldás gyors monitorozását. Az alapszintű felügyeletből könnyen elérhető a speciális beállítás a partnermegoldás használatával.
 
-Az integrált biztonsági megoldások jelenleg a [Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) és a [Rapid7](https://www.rapid7.com/products/insightvm/) , valamint a Microsoft Application Gateway webalkalmazási tűzfal általi sebezhetőségi felmérést is tartalmaznak.
+Az integrált biztonsági megoldások jelenleg a [Qualys](https://www.qualys.com/public-cloud/#azure) és a [Rapid7](https://www.rapid7.com/products/insightvm/) , valamint a Microsoft Application Gateway webalkalmazási tűzfal általi sebezhetőségi felmérést is tartalmaznak.
 
 > [!NOTE]
 > A Security Center nem telepíti a Microsoft Monitoring Agentet a partner virtuális berendezésekre, mert a legtöbb biztonsági megoldásokkal foglalkozó forgalmazó tiltja a külső ügynökök futtatását a saját berendezésein.

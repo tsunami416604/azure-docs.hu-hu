@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1de2d40e107c03db8c0e406a7bb1a12c15d5c736
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1df278c67c8f84648d2fc7ab3818656cfb9de74a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708497"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100702"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel
 
@@ -155,12 +154,12 @@ A virtuális gép mérete a virtuális gép által elérhető számítási erőf
 
 Az alábbi táblázat a méreteket használati esetek alapján kategorizálja.  
 
-| Típus                     | Gyakori méretek           |    Leírás       |
+| Type                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
 | [Számításra optimalizált](sizes-compute.md)   | Fsv2          | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
-| [Memóriaoptimalizált](sizes-memory.md)    | Az Esv3, Ev3, M, DSv2, a Dv2  | Magas memória-mag arány a memória javára. Ideális választás relációs adatbázisokhoz, közepes és nagy gyorsítótárakhoz, memóriában végzett elemzésekhez.                 |
-| [Tárolásra optimalizált](sizes-storage.md)      | Lsv2, Ls              | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
+| [Memóriaoptimalizált](sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Magas memória-mag arány a memória javára. Ideális választás relációs adatbázisokhoz, közepes és nagy gyorsítótárakhoz, memóriában végzett elemzésekhez.                 |
+| [Tárolásra optimalizált](sizes-storage.md)      | Lsv2, ls              | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
 | [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Specializált virtuális gépek nagy terhelést jelentő grafikus rendereléshez és videószerkesztéshez.       |
 | [Nagy teljesítmény](sizes-hpc.md) | H        | Leghatékonyabb processzorral rendelkező virtuális gépeink, választható nagy átviteli sebességű hálózati adapterekkel (RDMA). |
 
@@ -262,7 +261,7 @@ Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek fel
 | Felszabadítva | Azt jelzi, hogy a virtuális gép el lett távolítva a hipervizorról, a vezérlősíkon azonban továbbra is elérhető. A felszabadított állapotban lévő virtuális gépekért nem kell díjat fizetni. |
 | - | Azt jelzi, hogy a virtuális gép energiaállapota ismeretlen. |
 
-### <a name="find-the-power-state"></a>A energiaállapot keresése
+### <a name="find-the-power-state"></a>Energiaellátás állapotának megállapítása
 
 Egy adott virtuális gép állapotát az [az vm get-instance-view](/cli/azure/vm) paranccsal kérheti le. Ügyeljen arra, hogy egy érvényes nevet adjon meg a virtuális géphez és az erőforráscsoporthoz. 
 
@@ -281,7 +280,7 @@ ode                DisplayStatus    Level
 PowerState/running  VM running       Info
 ```
 
-## <a name="management-tasks"></a>Felügyeleti feladatok
+## <a name="management-tasks"></a>Kezelési feladatok
 
 A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok futtatására, például a virtuális gép indítására, leállítására vagy törlésére. Emellett előfordulhat, hogy szkripteket is szeretne létrehozni az ismétlődő vagy összetett feladatok automatizálására. Az Azure CLI használatával számos gyakori felügyeleti feladat futtatható a parancssorból vagy szkriptek segítségével. 
 

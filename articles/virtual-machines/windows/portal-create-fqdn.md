@@ -1,6 +1,6 @@
 ---
-title: FQDN létrehozása a Windows virtuális gépek az Azure Portalon |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre egy teljes tartománynév, vagy teljes Tartományneve, a Resource Manager-alapú virtuális gépet az Azure Portalon.
+title: Windows rendszerű virtuális gép teljes tartománynevének létrehozása a Azure Portalban | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre teljes tartománynevet vagy teljes TARTOMÁNYNEVEt a Azure Portal Resource Manager-alapú virtuális géphez.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -9,33 +9,32 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: a2ae5887-76df-485e-ae19-0efd96df8600
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48ad63cb39218f099d9128dae379c7df105764b9
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: c86e2739efd951ad9274f2fa0829b9fd7e13e3e5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723042"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102599"
 ---
-# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Hozzon létre egy teljesen minősített tartománynevét egy Windows virtuális gép az Azure Portalon
+# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Teljes tartománynév létrehozása a Azure Portal a Windows rendszerű virtuális gépekhez
 
-Amikor egy virtuális gépet (VM) hoz létre a a [az Azure portal](https://portal.azure.com), automatikusan létrejön a virtuális gép nyilvános IP-erőforrást. Az IP-cím használatával érheti el távolról a virtuális Gépet. Bár a portálon hozzon létre egy [teljesen minősített tartománynevét](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), vagy teljes Tartományneve, a létrehozásához követheti a virtuális gép létrehozása után. Ez a cikk bemutatja a lépéseket a DNS-nevét vagy teljes tartománynév létrehozásához.
+Amikor létrehoz egy virtuális gépet (VM) a [Azure Portal](https://portal.azure.com), a rendszer automatikusan létrehoz egy nyilvános IP-erőforrást a virtuális géphez. Ezt az IP-címet használja a virtuális gép távoli eléréséhez. Bár a portál nem hoz létre [teljesen minősített tartománynevet](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)vagy teljes tartománynevet, létrehozhat egyet a virtuális gép létrehozása után. Ez a cikk a DNS-név vagy a teljes tartománynév létrehozásának lépéseit mutatja be.
 
-## <a name="create-a-fqdn"></a>FQDN létrehozása
-Ez a cikk azt feltételezi, hogy már létrehozott egy virtuális Gépet. Ha szükséges, [virtuális gép létrehozása a portálon](quick-create-portal.md) vagy [az Azure PowerShell-lel](quick-create-powershell.md). Miután a virtuális gép működik, és kövesse az alábbi lépéseket:
+## <a name="create-a-fqdn"></a>Teljes tartománynév létrehozása
+Ez a cikk azt feltételezi, hogy már létrehozott egy virtuális gépet. Ha szükséges, [létrehozhat egy virtuális gépet a portálon](quick-create-portal.md) vagy a [Azure PowerShell](quick-create-powershell.md)használatával. A virtuális gép működése után kövesse az alábbi lépéseket:
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-Ön mostantól távolról csatlakozhat a virtuális Gépet, mint például a távoli asztal protokoll (RDP) a DNS-név használatával.
+Mostantól távolról is csatlakozhat a virtuális géphez a következő DNS-névvel, például a RDP protokoll (RDP) protokollal.
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy a virtuális gép rendelkezik egy nyilvános IP-cím és DNS-nevet, telepítheti a közös alkalmazás-keretrendszerek és szolgáltatások, például az IIS, SQL vagy a SharePoint.
+Most, hogy a virtuális gép rendelkezik egy nyilvános IP-címmel és egy DNS-névvel, olyan általános alkalmazás-keretrendszereket vagy szolgáltatásokat telepíthet, mint például az IIS, az SQL vagy a SharePoint.
 
-Emellett olvashat további [Resource Manager használatával](../../azure-resource-manager/resource-group-overview.md) tippek az Azure-környezetek felépítésével.
+További információt a [Resource Manager használatával](../../azure-resource-manager/resource-group-overview.md) kapcsolatban az Azure-beli üzembe helyezések létrehozásával kapcsolatos tippekhez is találhat.
 

@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-service
 ms.topic: article
-ms.date: 08/08/2018
+ms.date: 08/27/2019
 ms.author: danlep
-ms.openlocfilehash: 9690f900b6fe8d81fbebc3fcf5b7022b12bc3b96
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: f80956ec401737766f7a85540e90be70b9d621e7
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310265"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114705"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Hitelesítés Azure Container Registry az Azure Kubernetes szolgáltatással
 
@@ -21,7 +21,7 @@ Ha Azure Container Registryt (ACR) használ az Azure Kubernetes szolgáltatássa
 
 Csak az alábbi hitelesítési módszerek egyikét kell konfigurálnia. A leggyakoribb módszer az, hogy [hozzáférést biztosítson az AK egyszerű szolgáltatásának használatával](#grant-aks-access-to-acr). Ha konkrét igényei vannak, igény szerint [a Kubernetes](#access-with-kubernetes-secret)-titkokat is megadhatja.
 
-Ez a cikk azt feltételezi, hogy már létrehozott egy AK-fürtöt, és hozzáfér a fürthöz a `kubectl` parancssori ügyféllel.
+Ez a cikk azt feltételezi, hogy már létrehozott egy AK-fürtöt, és hozzáfér a fürthöz a `kubectl` parancssori ügyféllel. Ha inkább fürtöt szeretne létrehozni, és hozzáférést szeretne konfigurálni egy tároló-beállításjegyzékhez a fürt létrehozási ideje [alatt, tekintse meg az oktatóanyagot: Helyezzen üzembe egy AK](../aks/tutorial-kubernetes-deploy-cluster.md) -fürtöt, vagy [végezzen hitelesítést Azure Container Registry az Azure Kubernetes Service (előzetes verzió) szolgáltatásban](../aks/cluster-container-registry-integration.md).
 
 ## <a name="grant-aks-access-to-acr"></a>AK-hozzáférés biztosítása az ACR-hez
 

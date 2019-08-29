@@ -1,6 +1,6 @@
 ---
-title: Részletes technikai platform által támogatott áttelepítés a klasszikusból az Azure Resource Manager |} A Microsoft Docs
-description: Ez a cikk does az erőforrások a platform által támogatott áttelepítés részletes technikai a klasszikusból Azure Resource Manager
+title: Technikai részletes bemutató a platform által támogatott áttelepítéshez klasszikusról Azure Resource Managerra | Microsoft Docs
+description: Ez a cikk részletesen ismerteti az erőforrások platform által támogatott áttelepítését a klasszikusról Azure Resource Manager
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -11,30 +11,29 @@ ms.assetid: 1ee40d32-a5e8-42a2-97d0-3232fd3cbb98
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 1729a19c1d1fe6b7e46f68fd3bc515a9194efe03
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 996dc10b3937cad781dcc19a1c37efd511409964
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723190"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089445"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Részletes technikai útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról
-Vessünk egy részletesen a klasszikus Azure üzemi modellből az Azure Resource Manager-alapú üzemi modellbe való migrálás. Áttekintjük, források segítségével megismerheti, hogyan telepíti át az Azure platform az erőforrásokat az üzemi modellek között erőforrás és szolgáltatás szintjén. További információkért olvassa el a szolgáltatás a közlemény cikk: [A platform által támogatott áttelepítés IaaS-erőforrások klasszikusból Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Vessünk egy alapos bevezetést a klasszikus Azure üzemi modellből a Azure Resource Manager üzemi modellbe való Migrálás során. Egy erőforrás és szolgáltatás szintjén tekintjük meg az erőforrásokat, amelyekkel megismerheti, hogy az Azure platform hogyan telepítse át az erőforrásokat a két üzembe helyezési modell között. További információért olvassa el a szolgáltatással kapcsolatos bejelentést ismertető cikket: [Platform által támogatott IaaS-erőforrások áttelepítése klasszikusról Azure Resource Managerra](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-migration-deep-dive](../../../includes/virtual-machines-common-classic-resource-manager-migration-deep-dive.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-* [A platform által támogatott áttelepítés IaaS-erőforrások klasszikusból Azure Resource Manager áttekintése](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [A IaaS-erőforrások platform által támogatott áttelepítésének áttekintése klasszikusról Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [IaaS-erőforrások áttelepítése klasszikusból Azure Resource Manager PowerShell-lel](migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [IaaS-erőforrások áttelepítése klasszikusból Azure Resource Manager parancssori felület használatával](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [VPN-átjáró klasszikusról Resource Manager-áttelepítés](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-classic-resource-manager-migration)
-* [Az ExpressRoute-Kapcsolatcsoportok és a társított virtuális hálózatok migrálása a klasszikusból a Resource Manager-alapú üzemi modellbe](https://docs.microsoft.com/azure/expressroute/expressroute-migration-classic-resource-manager)
-* [Az IaaS-erőforrások klasszikusból Azure Resource Manager áttelepítését segítő közösségi eszközök](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [A IaaS-erőforrások migrálása a Klasszikusból a Azure Resource Managerba a PowerShell használatával](migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [A CLI használatával IaaS-erőforrásokat telepíthet át a klasszikusról Azure Resource Manager](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Klasszikusról VPN Gateway a Resource Manager-áttelepítésre](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-classic-resource-manager-migration)
+* [ExpressRoute-áramkörök és társított virtuális hálózatok áttelepítése a Klasszikusból a Resource Manager-alapú üzemi modellbe](https://docs.microsoft.com/azure/expressroute/expressroute-migration-classic-resource-manager)
+* [Közösségi eszközök a IaaS-erőforrások Klasszikusból Azure Resource Managerba való áttelepítésének támogatásához](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [A leggyakoribb áttelepítési hibák áttekintése](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [A legtöbb – gyakori kérdések áttelepítése IaaS-erőforrások klasszikusból Azure Resource Manager áttekintése](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Tekintse át a IaaS-erőforrások klasszikusról Azure Resource Managerra való áttelepítésével kapcsolatos leggyakoribb kérdéseket](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

@@ -15,53 +15,53 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: 31b05ec4fa68c3d4804000caee94b62432bdaed9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d60acdf483d418e458f51ef6cf31b17c43b7379f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557757"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70065906"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Adatfelderítési és vizualizációs eszközök a Data Science Virtual Machine
 
-Az adatelemzés egyik kulcsfontosságú lépése az, hogy megértse az adatelemzést. A vizualizációk és az adatfeltárási eszközök segítenek felgyorsítani az adatmegismerést. Itt talál néhány olyan eszközt a DSVM, amelyek megkönnyítik ezt a kulcsfontosságú lépést. 
+Az adatelemzés során a legfontosabb az, hogy megértse az adatelemzést. A vizualizációk és az adatfeltárási eszközök segítenek felgyorsítani az adatmegismerést. A következő, a Data Science Virtual Machine (DSVM) szolgáltatásban elérhető eszközök megkönnyítik ezt a kulcsot.
 
 ## <a name="apache-drill"></a>Apache Drill
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Nyílt forráskódú SQL-lekérdezési motor a Big-adatmennyiségen    |
-| A DSVM támogatott verziói      | Windows, Linux  |
-| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?      |  `/dsvm/tools/drill*` Csak beágyazott módban van telepítve   |
-| Gyakori használati      |  Helyszíni adatelemzés az ETL megkövetelése nélkül. Különböző adatforrások és formátumok lekérdezése, beleértve a CSV-t, a JSON-t, a Hadoop     |
-| Hogyan futtathatja / használata?      | Asztali parancsikon  <br/> [Ismerkedés a részletezéssel 10 percen belül](https://drill.apache.org/docs/drill-in-10-minutes/)  |
-| A dsvm-hez kapcsolódó eszközök      |   Rattle, Weka, SQL Server Management Studio      |
+| Mi ez?   | Nyílt forráskódú SQL-lekérdezési motor big data    |
+| Támogatott DSVM-verziók      | Windows, Linux  |
+| Hogyan van konfigurálva és telepítve a DSVM?      |  `/dsvm/tools/drill*` Csak beágyazott módban van telepítve   |
+| Gyakori használati      |  Helyben történő adatfeltáráshoz kinyerési, átalakítási, betöltési (ETL) adatok nélkül. Különböző adatforrások és-formátumok lekérdezése, beleértve a CSV-t, a JSON-t, a rokon táblákat és a Hadoop.     |
+| Használat és Futtatás      | Asztali parancsikon  <br/> [Ismerkedés a részletezéssel 10 percen belül](https://drill.apache.org/docs/drill-in-10-minutes/)  |
+| A DSVM kapcsolódó eszközök      |   Rattle, Weka, SQL Server Management Studio      |
 
 ## <a name="weka"></a>Weka
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   |  A WEKA a gépi tanulási algoritmusok gyűjteménye az adatbányászati feladatokhoz. Az algoritmusokat közvetlenül egy adatkészletre lehet alkalmazni, vagy a saját Java-kódjából hívható meg. Weka előtti adatfeldolgozás, besorolás, regressziós, fürtözés, társítási szabályok és megjelenítési eszközöket tartalmaz. |
+| Mi ez?   |  Gépi tanulási algoritmusok gyűjteménye adatbányászati feladatokhoz. Ezeket az algoritmusokat közvetlenül egy adatkészletre lehet alkalmazni, vagy a saját Java-kódjából hívható meg. A WEKA az adatfeldolgozás, a besorolás, a regresszió, a fürtözés, a társítási szabályok és a vizualizáció eszközeit tartalmazza. |
 | Támogatott DSVM-kiadások     | Windows, Linux     |
-| Gyakori használati      | Általános ML eszköz     |
-| Hogyan futtathatja / használata?      | Windows rendszeren keresse meg a WEKA a Start menüben. Linux rendszeren jelentkezzen be a X2Go, majd navigáljon az Applications-> Development-> WEKA. |
+| Gyakori használati      | Általános gépi tanulási eszköz     |
+| Használat és Futtatás      | A Windows, Weka keresése a Start menüben. Linux rendszeren jelentkezzen be a X2Go-be, majd lépjen az alkalmazások > fejlesztési > WEKA. |
 | A minták mutató hivatkozások      | [Weka minták](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
-| A dsvm-hez kapcsolódó eszközök      |LightGBM, csörgő, Xgboost   |
+| A DSVM kapcsolódó eszközök      |LightGBM, csörgő, Xgboost   |
 
 ## <a name="rattle"></a>Rattle
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   |   Grafikus felhasználói felület az R használatával történő adatbányászathoz   |
+| Mi ez?   |   Grafikus felhasználói felület (GUI) az R-t használó adatbányászathoz   |
 | Támogatott DSVM-kiadások     | Windows, Linux     |
 | Gyakori használati      | Általános felhasználói felületi adatbányászati eszköz az R-hez    |
-| Hogyan futtathatja / használata?      | UI-eszköz. Windows rendszeren indítson el egy parancssort, futtassa az R-t, `rattle()`majd az r Run oldalon. Linux rendszeren kapcsolódjon a X2Go-hez, indítson el egy terminált, futtassa az `rattle()`r parancsot, majd az r Run oldalon. |
+| Használat és Futtatás      | UI-eszköz. Windows rendszeren nyisson meg egy parancssort, futtassa az R-t, majd az R `rattle()`-ben futtassa a parancsot. Linux rendszeren kapcsolódjon a X2Go, indítson el egy terminált, futtassa az R parancsot, majd `rattle()`az r-ben futtassa a parancsot. |
 | A minták mutató hivatkozások      | [Rattle](https://togaware.com/onepager/) |
-| A dsvm-hez kapcsolódó eszközök      |LightGBM, Weka, Xgboost   |
+| A DSVM kapcsolódó eszközök      |LightGBM, Weka, Xgboost   |
 
 ## <a name="power-bi-desktop"></a>Power BI Desktop 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Interaktív adatábrázolás és Üzletiintelligencia-eszköze    |
-| A DSVM támogatott verziói      | Windows  |
-| Gyakori használati      |  Adatvizualizációk és -irányítópultokat készít   |
-| Hogyan futtathatja / használata?      | Asztali parancsikon (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| A dsvm-hez kapcsolódó eszközök      |   Visual Studio 2019, Visual Studio Code, Juno      |
+| Mi ez?   | Interaktív adatvizualizáció és BI-eszköz    |
+| Támogatott DSVM-verziók      | Windows  |
+| Gyakori használati      |  Adatvizualizációk és az irányítópultok fejlesztése   |
+| Használat és Futtatás      | Asztali parancsikon (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
+| A DSVM kapcsolódó eszközök      |   Visual Studio 2019, Visual Studio Code, Juno      |
 

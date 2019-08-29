@@ -1,55 +1,54 @@
 ---
-title: Durable Functions - Azure-diagnosztika
-description: Ismerje meg, hogyan diagnosztizálhatja a problémákat a Durable Functions bővítmény az Azure Functions szolgáltatáshoz.
+title: Diagnosztika a Durable Functions-ben – Azure
+description: Ismerje meg, hogyan diagnosztizálhatja a problémákat a Azure Functions Durable Functions bővítménnyel.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 167f697d4928d88114a30739a1d39a576c87ac84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2cc60ee2c73aa6858f68d6b13a895a0188bb5735
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126669"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098132"
 ---
-# <a name="diagnostics-in-durable-functions-in-azure"></a>Az Azure-ban Durable Functions-diagnosztika
+# <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnosztika Durable Functions az Azure-ban
 
-Több lehetőség a problémák diagnosztizálásához [Durable Functions](durable-functions-overview.md). Ezek némelyike megegyezik a hagyományos függvényekre vonatkozó módszerekkel, mások pedig csak a Durable Functions függvényeihez használhatók.
+Több lehetőség is van a Durable Functionsával kapcsolatos problémák [](durable-functions-overview.md)diagnosztizálására. Ezek némelyike megegyezik a hagyományos függvényekre vonatkozó módszerekkel, mások pedig csak a Durable Functions függvényeihez használhatók.
 
 ## <a name="application-insights"></a>Application Insights
 
-[Az Application Insights](../../azure-monitor/app/app-insights-overview.md) diagnosztika és monitorozás az Azure Functions ajánlott módja. Durable Functions Ugyanez vonatkozik. Hogyan használható az Application Insights a függvényalkalmazásban áttekintését lásd: [figyelése az Azure Functions](../functions-monitoring.md).
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) a diagnosztika és a figyelés ajánlott módszere Azure Functionsokban. Ugyanez vonatkozik a Durable Functionsra is. A Application Insightsnek a Function alkalmazásban való kihasználása áttekintését lásd: [Azure functions figyelése](../functions-monitoring.md).
 
-Az Azure Functions-Durable Extension is bocsát ki *követési események* , amelyek engedélyezik a vezénylések végrehajtásának teljes körű nyomon követését. Ezek található, és megkérdezi a használatával a [Application Insights-elemzési](../../azure-monitor/app/analytics.md) eszköz az Azure Portalon.
+A Azure Functions tartós bővítmény olyan *követési eseményeket* is kibocsát, amelyek segítségével nyomon követheti a folyamat végpontok közötti végrehajtását. Ezek a Azure Portal [Application Insights Analytics](../../azure-monitor/app/analytics.md) eszközének használatával találhatók meg és kérhetők le.
 
-### <a name="tracking-data"></a>Követési adatok
+### <a name="tracking-data"></a>Adatkövetés
 
-Egy vezénylési példány minden életciklus esemény hatására való írásra egy követési eseményének a **nyomkövetések** gyűjtése az Application Insightsban. Ez az esemény tartalmaz egy **customDimensions** több mező adattartalom.  Mezőnevek vannak az összes előtaggal kiegészített `prop__`.
+Egy összehangoló példány minden életciklus-eseménye egy követési eseményt ír a Application Insights **nyomkövetési** gyűjteményéből. Ez az esemény több mezőből álló **customDimensions** -adattartalmat tartalmaz.  A `prop__`mezők nevei minden előtagértéke.
 
-* **hubName**: A feladat központ, amelyben a vezénylések futnak nevére.
-* **Alkalmazásnév**: A függvényalkalmazás nevére. Ez akkor hasznos, ha több függvényalkalmazás ugyanazt az Application Insights-példány megosztása.
-* **slotName**: A [üzembe helyezési pont](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) az aktuális függvényalkalmazás futó. Ez akkor hasznos, ha az üzembe helyezési pontok verzióra a vezénylések használhatja.
-* **Függvénynév**: Az orchestrator vagy tevékenység függvény neve.
-* **functionType**: A függvény típusú például **Orchestrator** vagy **tevékenység**.
-* **instanceId**: Az orchestration-példány egyedi azonosítója.
-* **állapot**: A példány életciklusa végrehajtási állapotát. Érvényes értékek a következők:
-  * **Ütemezett**: A függvény végrehajtási lett ütemezve, de még futó nem indul el.
-  * **Lépések**: A függvény futtatása megkezdődött, de nem rendelkezik még várni a vagy befejeződött.
-  * **Várni a**: Az orchestrator néhány dolgot van ütemezve, és várakozik, amíg az befejeződik.
-  * **Figyelő**: Az orchestrator egy külső eseményértesítés figyel.
-  * **Befejezett**: A függvény sikeresen befejeződött.
-  * **Nem sikerült**: A függvény egy hiba miatt nem sikerült.
-* **OK**: A követési esemény társított további adatokat. Például egy példányt vár egy külső eseményre értesítést, ha ez a mező vár az esemény nevét jelöli. Ha egy függvény sikertelen volt, ez a hiba részletes adatait tartalmazza.
-* **isReplay**: Logikai érték, amely jelzi, hogy-e a követési esemény a játssza vissza a végrehajtási.
-* **extensionVersion**: A tartós feladat bővítmény verziója. Ez akkor különösen fontos adatokat, ha a jelentéskészítési a bővítményt a lehetséges hibák. Hosszan futó példányok előfordulhat, hogy több verzió jelentést, ha frissítés történik futás közben.
-* **sequenceNumber**: Egy esemény végrehajtási sorszáma. Az időbélyeg segít az események sorrendjének végrehajtási idő szerint együtt. *Vegye figyelembe, hogy ez a szám alaphelyzetbe állítása nulla, ha a fogadó újraindul a példány futása közben, ezért fontos mindig szerinti rendezéshez-tárhelyek időbélyegző szerint, majd sequenceNumber lesz-e.*
+* **hubName**: Annak a feladatnak a neve, amelyben a rendszer fut.
+* **appName**: A Function alkalmazás neve. Ez akkor hasznos, ha több Function-alkalmazással is rendelkezik, amelyek ugyanazt a Application Insights példányt osztják meg.
+* **slotName**: Az [üzembe helyezési](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) pont, amelyben az aktuális Function alkalmazás fut. Ez akkor lehet hasznos, ha az üzembe helyezési pontokat a felépítésük verziójára használja.
+* **függvénynév**: A Orchestrator vagy a tevékenység függvény neve.
+* **functionType**: A függvény típusa, például **Orchestrator** vagy **tevékenység**.
+* **instanceId**: A koordináló példány egyedi azonosítója.
+* **állapot**: A példány életciklus-végrehajtási állapota. Érvényes értékek a következők:
+  * **Ütemezett**: A függvény ütemezése végrehajtásra lett ütemezve, de még nem indult el.
+  * Elindítva: A függvény futása megkezdődött, de még nem várt vagy nem fejeződött be.
+  * **Várt**: A Orchestrator ütemezett némi munkát, és arra vár, hogy befejeződjön.
+  * **Figyelés**: A Orchestrator egy külső eseményről szóló értesítést figyel.
+  * **Befejezve**: A függvény sikeresen befejeződött.
+  * **Sikertelen**: A függvény hibával meghiúsult.
+* **OK**: A nyomkövetési eseményhez kapcsolódó további információk. Ha például egy példány egy külső eseményről szóló értesítésre vár, akkor ez a mező a várt esemény nevét jelzi. Ha egy függvény meghiúsult, akkor a hiba részleteit fogja tartalmazni.
+* **isReplay**: Logikai érték, amely azt jelzi, hogy a követési esemény az újrajátszott végrehajtásra van-e kiválasztva.
+* **extensionVersion**: A tartós feladathoz tartozó bővítmény verziója. Ez különösen fontos, ha a bővítmény lehetséges hibáit jelenti. A hosszan futó példányok több verziót is jelenthetnek, ha a futás közben frissítés történik.
+* **sorszám**: Esemény végrehajtási sorszáma. Az időbélyeggel kombinálva a végrehajtás ideje alapján rendezheti az eseményeket. *Vegye figyelembe, hogy ez a szám nulla értékre áll vissza, ha a gazdagép újraindul, miközben a példány fut, ezért fontos, hogy először az időbélyegző alapján rendezze az értéket, majd sorszám.*
 
-A követési adatokat az Application insights szolgáltatásba a kibocsátott részletességét konfigurálható a `logger` (Functions 1.x) vagy `logging` (2.x függvények) szakaszában a `host.json` fájlt.
+A Application Insightsra kibocsátott adatok részletességét a `logger` `host.json` fájl (functions 1. x) vagy `logging` (functions 2. x) szakaszában lehet konfigurálni.
 
 #### <a name="functions-1x"></a>Functions 1.x
 
@@ -77,9 +76,9 @@ A követési adatokat az Application insights szolgáltatásba a kibocsátott r�
 }
 ```
 
-Alapértelmezés szerint a rendszer rendelkezésre újrajátszás-nem követési események. Az adatok mennyisége csökkenthető beállításával `Host.Triggers.DurableTask` való `"Warning"` vagy `"Error"` ebben az esetben követési események fogja csak bocsátja ki kivételes esetekben.
+Alapértelmezés szerint az összes nem újrajátszható követési esemény ki van bocsátva. Az adatmennyiség csökkenthető a beállítással `Host.Triggers.DurableTask` , `"Warning"` illetve `"Error"` a esetében, amikor a követési események csak kivételes helyzetekben lesznek kibocsátva.
 
-A részletes vezénylési visszajátszását események kibocsátó engedélyezése a `LogReplayEvents` állítható `true` a a `host.json` fájlt `durableTask` látható módon:
+Ha engedélyezni szeretné a részletes előkészítési események kiosztását, a `LogReplayEvents` a `host.json` fájlban `durableTask` az alábbi `true` módon állítható be:
 
 #### <a name="functions-1x"></a>Functions 1.x
 
@@ -104,11 +103,11 @@ A részletes vezénylési visszajátszását események kibocsátó engedélyez�
 ```
 
 > [!NOTE]
-> Alapértelmezés szerint az Application Insights telemetriát az Azure Functions futtatókörnyezete elkerülése érdekében adatok túl gyakran kibocsátó mintát venni. Ez azt eredményezheti, nyomon követési adatok elveszhetnek, egy rövid idő alatt sok életciklus-események előfordulásakor. A [a cikk az Azure Functions Monitorozási](../functions-monitoring.md#configure-sampling) ezt a viselkedést konfigurálását ismerteti.
+> Alapértelmezés szerint a Azure Functions futtatókörnyezet Application Insights telemetria, hogy az adatkibocsátás túl gyakori legyen. Ez azt eredményezheti, hogy a nyomkövetési adatok elvesznek, ha rövid időn belül sok életciklus-esemény következik be. A [Azure functions-figyelési cikk](../functions-monitoring.md#configure-sampling) elmagyarázza, hogyan konfigurálhatja ezt a viselkedést.
 
 ### <a name="single-instance-query"></a>Egypéldányos lekérdezés
 
-A következő lekérdezés egyetlen példánya korábbi követési adatait jeleníti meg a [Hello feladatütemezési](durable-functions-sequence.md) vezénylési működik. Használatával írt a [Application Insights lekérdezési nyelv (AIQL)](https://aka.ms/LogAnalyticsLanguageReference). Kiszűri a visszajátszás végrehajtási, hogy csak a *logikai* végrehajtási elérési út jelenik meg. Események is rendezve szerinti rendezés `timestamp` és `sequenceNumber` , ahogyan az alábbi lekérdezést:
+A következő lekérdezés a [Hello Sequence](durable-functions-sequence.md) függvény összehangolása egyetlen példányának korábbi követési adatait jeleníti meg. A [Application Insights lekérdezési nyelv (AIQL)](https://aka.ms/LogAnalyticsLanguageReference)használatával van írva. Kiszűri az ismétlések végrehajtását, így csak a *logikai* végrehajtási útvonal látható. Az események rendezési `timestamp` `sequenceNumber` sorrendje az alábbi lekérdezés szerint rendezhető:
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
@@ -127,13 +126,13 @@ traces
 | project timestamp, functionName, state, instanceId, sequenceNumber, appName = cloud_RoleName
 ```
 
-Az eredmény az listája követési események, amelyek a vezénylési, többek között a végrehajtás ideje, növekvő sorrendben rendezve függvényeinek tevékenység végrehajtási elérési útját jeleníti meg.
+Az eredmény azon követési események listája, amelyek a koordinálás végrehajtási útvonalát mutatják, beleértve a tevékenységek függvényeit is, amelyek sorrendje a végrehajtás időpontja.
 
-![Application Insights-lekérdezés](./media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
+![Application Insights lekérdezés](./media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
 
-### <a name="instance-summary-query"></a>Példány összegzése lekérdezés
+### <a name="instance-summary-query"></a>Példány összegző lekérdezése
 
-A következő lekérdezést a megadott időtartományban futtató összes orchestration-példányok állapotát jeleníti meg.
+A következő lekérdezés az adott időtartományban futó összes összehangoló példány állapotát megjeleníti.
 
 ```AIQL
 let start = datetime(2017-09-30T04:30:00);
@@ -151,13 +150,13 @@ traces
 | order by timestamp asc
 ```
 
-Példány azonosítóinak listáját és azok állapotának futásidejű jön létre.
+Ennek eredménye a példány-azonosítók és az aktuális futtatókörnyezeti állapot listája.
 
-![Application Insights-lekérdezés](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
+![Application Insights lekérdezés](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
 
 ## <a name="logging"></a>Naplózás
 
-Fontos szem előtt tartani az orchestrator visszajátszását viselkedés közvetlenül egy orchestrator-függvényt a naplók írásakor. Vegyük példaként a következő orchestrator függvényt:
+Fontos, hogy a Orchestrator-újrajátszás viselkedését ne feledje, amikor közvetlenül egy Orchestrator-függvényből ír naplókat. Vegyük például a következő Orchestrator függvényt:
 
 ### <a name="c"></a>C#
 
@@ -176,7 +175,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
 ```javascript
 const df = require("durable-functions");
@@ -192,7 +191,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-Az eredményül kapott naplóadatokat fogja keresse meg a következőhöz hasonló:
+Az eredményül kapott naplók a következőhöz hasonló módon fognak kinézni:
 
 ```txt
 Calling F1.
@@ -208,9 +207,9 @@ Done!
 ```
 
 > [!NOTE]
-> Ne feledje, hogy a naplók hívni, ajánlott az F1, F2 és F3 jogcímet, míg ezek a függvények csak *ténylegesen* nevű először munka közben. Ismétlés során későbbi hívások kimarad, és a kimenetek az orchestrator logika játssza vissza a rendszer.
+> Ne feledje, hogy míg a naplók az F1, az F2 és az F3 meghívását kérik , ezeket a függvényeket csak az első alkalommal nevezik. A rendszer kihagyja az újrajátszás során megjelenő további hívásokat, és a kimeneteket visszajátssza a Orchestrator logikába.
 
-Ha azt szeretné, csak bejelentkezésre nem visszajátszását végrehajtási, írhat a napló csak akkor, ha egy feltételes kifejezéses `IsReplaying` van `false`. Fontolja meg a fenti példában, de ezúttal a visszajátszás ellenőrzi.
+Ha csak a nem újrajátszható végrehajtást szeretné bejelentkezni, írhat egy feltételes kifejezést úgy, hogy csak akkor `IsReplaying` jelentkezzen be, ha a. `false` Vegye figyelembe a fenti példát, de ezúttal újrajátszás-ellenőrzésekkel.
 
 #### <a name="c"></a>C#
 
@@ -229,7 +228,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
 ```javascript
 const df = require("durable-functions");
@@ -245,7 +244,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-Ezzel a kimenet a következőképpen történik:
+Ezzel a módosítással a napló kimenete a következő:
 
 ```txt
 Calling F1.
@@ -256,7 +255,7 @@ Done!
 
 ## <a name="custom-status"></a>Egyéni állapot
 
-Egyéni vezénylési állapot lehetővé teszi az orchestrator függvény egyéni állapot értékének beállítása. A HTTP-állapot lekérdezési API-n keresztül biztosított Ez az állapot vagy a `DurableOrchestrationClient.GetStatusAsync` API-t. Az egyéni vezénylési állapot lehetővé teszi, hogy az orchestrator funkciók gazdagabb figyelése. Az orchestrator függvénykód lehetnek például `DurableOrchestrationContext.SetCustomStatus` hívások frissíteni a hosszú ideig futó művelet folyamatban van. Egy ügyfél, például egy weblap vagy más külső rendszerre, majd sikerült rendszeresen lekérdezi gazdagabb végrehajtási adatok HTTP-állapot lekérdezési API-k. A minta használatával `DurableOrchestrationContext.SetCustomStatus` lejjebb:
+Az egyéni előkészítési állapot lehetővé teszi egyéni állapot értékének megadását a Orchestrator függvényhez. Ezt az állapotot a http-állapot lekérdezési API- `DurableOrchestrationClient.GetStatusAsync` jával vagy az API-n keresztül biztosítjuk. Az egyéni előkészítési állapot lehetővé teszi a Orchestrator függvények szélesebb körű figyelését. A Orchestrator függvény kódja például tartalmazhat `DurableOrchestrationContext.SetCustomStatus` hívásokat a hosszan futó művelet előrehaladásának frissítéséhez. Az ügyfél, például egy weblap vagy más külső rendszer, rendszeres időközönként lekérdezheti a HTTP-állapot lekérdezési API-jait a részletes végrehajtási információkhoz. Az alábbi minta `DurableOrchestrationContext.SetCustomStatus` használatával kell megadnia a mintát:
 
 ### <a name="c"></a>C#
 
@@ -273,7 +272,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2.x függvények)
+### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
 ```javascript
 const df = require("durable-functions");
@@ -289,14 +288,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-A vezénylési futása közben a külső ügyfelek lehet beolvasni az egyéni állapot:
+A folyamat futása közben a külső ügyfelek behívhatják ezt az egyéni állapotot:
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 ```
 
-Az ügyfelek a következő választ fog kapni:
+Az ügyfelek a következő választ kapják:
 
 ```http
 {
@@ -310,31 +309,31 @@ Az ügyfelek a következő választ fog kapni:
 ```
 
 > [!WARNING]
-> Az egyéni hasznos adat, képesnek kell lennie ahhoz, hogy elférjen az Azure Table Storage oszlop azért legfeljebb 16 KB-os UTF-16 JSON-szövegben. Külső tárterület is használhatja, ha nagyobb hasznos adat van szüksége.
+> Az egyéni állapot adattartalma 16 KB-os UTF-16 JSON-szövegre van korlátozva, mert képesnek kell lennie arra, hogy illeszkedjen egy Azure Table Storage-oszlopba. Ha nagyobb adattartalomra van szüksége, külső tárterületet is használhat.
 
 ## <a name="debugging"></a>Hibakeresés
 
-Hibakeresés közvetlenül a függvénykódot az Azure Functions támogatja, és ugyanazon támogató hajtja előre Durable Functions, az Azure-ban fut-e, vagy helyileg. Vannak azonban kell ügyelnie, ha a hibakeresés néhány viselkedést:
+Azure Functions támogatja a hibakeresési funkció programkódjának közvetlen használatát, és ugyanezen támogatás a Durable Functions, akár az Azure-ban, akár helyileg fut. Előfordulhat azonban, hogy a hibakeresés során néhány viselkedést kell figyelembe vennie:
 
-* **Ismétlés**: Az orchestrator funkciók rendszeresen játszani, ha új bemenetek érkezik. Ez azt jelenti, hogy egyetlen *logikai* egy orchestrator-függvény végrehajtása eredményezhet az azonos töréspontot lenyomásával többször, különösen akkor, ha a beállítás korai szakaszában a függvénykódot.
-* **Await**: Minden alkalommal, amikor egy `await` van észlelt, azt poskytne vezérlő térjen vissza a tartós feladat keretrendszer dispatcher. Ha első alkalommal egy adott `await` lett észlelt, a kapcsolódó feladat nincs *soha nem* folytatódik. Soha nem folytatja a feladatot, mert ke krokování *keresztül* a await (a Visual Studióban F10) már nem ténylegesen lehetséges. Csak ke krokování keresztül működik, ha egy feladat játssza vissza van folyamatban.
-* **Üzenetküldési időtúllépések**: Durable Functions belsőleg üzenetsorbeli üzenetek számára, mind az orchestrator és függvények tevékenység végrehajtásának meghajtót használja. Több virtuális gépes környezetben és a hibakeresés a hosszabb ideig támadó csomópontmetrikák ismétlődő végrehajtási eredményez, az üzenet egy másik virtuális Géphez. Ez a viselkedés rendszeres üzenetsor-eseményindító függvényeket is létezik, de fontos, hogy felhívják ebben a környezetben, mivel az üzenetsorok egy implementálási részlete.
+* **Visszajátszás**: A Orchestrator függvények rendszeresen újrajátszják az új bemenetek fogadását. Ez azt jelenti, hogy egy Orchestrator-függvény egyetlen *logikai* végrehajtásával több alkalommal is megtalálhatja ugyanazt a töréspontot, különösen akkor, ha a függvény kódja korán van beállítva.
+* **Várakozás**: Amikor a `await` rendszer megtalálta a műveletet, visszaadja a vezérlést a tartós feladatokra szolgáló Framework-diszpécsernek. Ha az első alkalommal `await` fordul elő, a kapcsolódó feladat *soha nem* folytatódik. Mivel a feladat soha nem folytatódik, a várakozás (az F10 a Visual Studióban) nem lehetséges. Az átlépés csak akkor működik, ha egy feladat újra van játszva.
+* **Üzenetkezelési időtúllépések**: A belső Durable Functions üzenetsor-üzeneteket használ a Orchestrator függvények és a tevékenységek funkcióinak végrehajtásához. A több virtuális gépre kiterjedő környezetekben a hosszabb ideig tartó hibakeresés miatt egy másik virtuális gép is felveheti az üzenetet, ami ismétlődő végrehajtást eredményezhet. Ez a viselkedés a rendszeres üzenetsor-trigger függvények esetében is létezik, de fontos, hogy ebben a környezetben is kimutasson, mivel a várólisták megvalósítási részletességgel rendelkeznek.
 
 > [!TIP]
-> Beállításakor töréspontok keresése, ha csak nem visszajátszását végrehajtási megáll, beállíthat egy feltételes töréspontot, hogy szüneteket csak ha `IsReplaying` van `false`.
+> A töréspontok beállításakor, ha csak a nem újrajátszható végrehajtást szeretné megszakítani, beállíthat egy feltételes töréspontot, amely `IsReplaying` csak `false`akkor szakad meg, ha a.
 
 ## <a name="storage"></a>Storage
 
-Alapértelmezés szerint a Durable Functions állapota tárolja az Azure Storage-ban. Ez azt jelenti, hogy vizsgálhatja meg a vezénylések használni például az eszközök állapotának [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+Alapértelmezés szerint a Durable Functions az Azure Storage-ban tárolja az állapotot. Ez azt jelenti, hogy a munkafolyamatok állapotát a [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)eszközzel ellenőrizheti.
 
-![Az Azure Storage Explorer képernyőképe](./media/durable-functions-diagnostics/storage-explorer.png)
+![Képernyőkép Azure Storage Explorer](./media/durable-functions-diagnostics/storage-explorer.png)
 
-Ez akkor hasznos, láthatja, hogy pontosan milyen állapota egy vezénylési lehet, mert a hibakereséshez. A várólistában lévő üzenetek is vizsgálni, amelyből megtudhatja, milyen munkahelyi függőben lévő (vagy bizonyos esetekben elakadt).
+Ez a hibakereséshez hasznos, mert pontosan azt látja, hogy milyen állapotban lehet a rendszer. A várólistákban lévő üzenetek megtekinthetők a függőben lévő (vagy bizonyos esetekben beragadott) munkák megismerésére is.
 
 > [!WARNING]
-> Bár a table storage-ban végrehajtási előzményeinek megtekintéséhez kényelmes, elkerülése érdekében minden olyan függőséget véve a táblánál. Mivel a Durable Functions bővítmény haladásával is megváltoztathatja.
+> Habár érdemes megtekinteni a táblázatos tárolóban a végrehajtási előzményeket, ne vegyen fel függőségeket ezen a táblán. Előfordulhat, hogy a Durable Functions bővítmény fejlődése megváltozhat.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Tartós időzítők használata](durable-functions-timers.md)
+> [Ismerje meg, hogyan használhatja a tartós időzítőket](durable-functions-timers.md)

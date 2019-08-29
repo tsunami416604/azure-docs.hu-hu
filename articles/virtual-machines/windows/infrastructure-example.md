@@ -1,6 +1,6 @@
 ---
-title: Példa Azure-infrastruktúra bemutató |} A Microsoft Docs
-description: Ismerje meg a főbb tervezési és megvalósítási irányelvek egy példa infrastruktúra az Azure-beli üzembe helyezéséhez.
+title: Példa az Azure infrastruktúra-útmutatóra | Microsoft Docs
+description: Ismerje meg az Azure-beli infrastruktúra üzembe helyezésének legfontosabb tervezési és megvalósítási irányelveit.
 documentationcenter: ''
 services: virtual-machines-windows
 author: cynthn
@@ -11,107 +11,106 @@ ms.assetid: 7032b586-e4e5-4954-952f-fdfc03fc1980
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ff98079c6156783442078546a4783a367863057
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: f4191015ee4dc7eb753c70f23be242f2ca88dcc3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722595"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079390"
 ---
-# <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Windows virtuális gépek Azure-infrastruktúra bemutató példa
-Ez a cikk bemutatja a például alkalmazás-infrastruktúrák létrehozását. A Microsoft részletes információkat talál, egy egyszerű online áruházban, amely egyesíti az irányelvek és elnevezési konvenciók, a rendelkezésre állási csoportok, virtuális hálózatok és terheléselosztók döntések infrastruktúra tervezése és ténylegesen üzembe helyezése a virtuális gépek (VM).
+# <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Példa Azure Infrastructure-útmutató Windows rendszerű virtuális gépekhez
+Ez a cikk végigvezeti egy példaként szolgáló alkalmazás-infrastruktúra kiépítésén. Részletesen ismertetjük az infrastruktúra tervezését egy egyszerű online áruházban, amely összefoglalja az elnevezési konvenciókat, a rendelkezésre állási csoportokat, a virtuális hálózatokat és a Load balancereket, és ténylegesen üzembe helyezi a virtuális gépeket (VM).
 
-## <a name="example-workload"></a>Példa munkaterhelés
-Az Adventure Works Cycles szeretne egy online áruházból-alkalmazások az Azure-ban, amely a következőkből áll:
+## <a name="example-workload"></a>Példa munkaterhelésre
+Az Adventure Works-ciklusok egy online áruházbeli alkalmazást kívánnak létrehozni az Azure-ban, amely a következőket tartalmazza:
 
-* A webes szintű előtér-ügyfelet futtató két IIS-kiszolgálók
-* Adatok és a egy alkalmazásrétegbe a rendelések feldolgozása két IIS-kiszolgálókkal
-* Két Microsoft SQL Server-példány AlwaysOn rendelkezésre állási csoportokkal (két különböző SQL Server és a legtöbb csomópont tanúsító) termék adatok és a rendelések tárolására az adatbázis-rétegből
-* Két felhasználói fiókok és a egy hitelesítési szint szállítók Active Directory-tartományvezérlők
-* Összes kiszolgáló két alhálózat helye:
-  * a webkiszolgálói az előtér-alhálózat 
-  * Az alkalmazáskiszolgálók, az SQL-fürt és a tartományvezérlők egy háttérbeli alhálózatot
+* Két IIS-kiszolgáló, amely az ügyfél előtérét futtatja egy webes rétegben
+* Két IIS-kiszolgáló, amely egy alkalmazási szinten dolgozza fel az adatfeldolgozást és a rendeléseket
+* Két Microsoft SQL Server példány az alAlwaysOnon rendelkezésre állási csoportokkal (két SQL-kiszolgáló és egy tanúsító többségi csomópont) a termékek és megrendelések adatbázis-rétegbeli tárolásához
+* Két Active Directory tartományvezérlő a hitelesítési szinten lévő vevői fiókok és szállítók számára
+* Az összes kiszolgáló két alhálózatban található:
+  * a webkiszolgálók előtér-alhálózata 
+  * az alkalmazás-kiszolgálók, az SQL-fürt és a tartományvezérlők háttérbeli alhálózata
 
-![Az alkalmazás-infrastruktúra különböző rétegek ábrája](./media/infrastructure-example/example-tiers.png)
+![Az alkalmazás-infrastruktúra különböző szintjeinek ábrája](./media/infrastructure-example/example-tiers.png)
 
-Biztonságos bejövő webes forgalmat kell kell kiegyenlített terhelésű a webkiszolgálók között, az ügyfelek, keresse meg az online áruházból. A rendelés feldolgozása forgalom HTTP-kéréseket a webes kiszolgálók a kell application kiszolgálók között elosztott terhelésű formájában. Ezenkívül az infrastruktúra úgy kell megtervezni, magas rendelkezésre állás érdekében.
+A bejövő biztonságos webes forgalomnak a webkiszolgálók között terheléselosztást kell biztosítania az online áruházban. A webkiszolgálókról érkező HTTP-kérések formájában végzett feldolgozási forgalomnak egyensúlyban kell lennie az alkalmazás-kiszolgálók között. Emellett az infrastruktúrát magas rendelkezésre álláshoz kell tervezni.
 
-Az eredményül kapott kialakítási tartalmaznia kell:
+Az eredményül kapott kialakításnak a következőket kell tartalmaznia:
 
-* Azure-előfizetések és fiók
-* Egyetlen erőforráscsoportra
+* Azure-előfizetés és-fiók
+* Egyetlen erőforráscsoport
 * Azure Managed Disks
-* Egy virtuális hálózatot két alhálózattal
-* Egy hasonló szerepkörrel rendelkező virtuális gépek rendelkezésre állási csoportok
+* Virtuális hálózat két alhálózattal
+* A hasonló szerepkörrel rendelkező virtuális gépek rendelkezésre állási csoportjai
 * Virtual machines (Virtuális gépek)
 
-Az összes a fenti ezek elnevezési konvencióinak:
+A fenti elnevezési konvenciók mindegyike a következő:
 
-* Adventure Works Cycles használ **[informatikai munkaterhelés]-[helye]-[Azure-erőforrás]** előtagjaként
-  * Ebben a példában "**azos**" (az Azure Online Store) az informatikai számítási feladat neve és a "**használata**" (USA keleti RÉGIÓJA 2) az a hely
-* Virtuális hálózatok használata AZOS-használat – VN **[száma]**
-* A rendelkezésre állási csoportok használata azos-használata-as- **[szerepkör]**
-* Virtuálisgép-neveknek azos használata – használata – virtuálisgép - **[vmname]**
+* Az Adventure Works-ciklusok a **[it munkaterhelés]-[Location]-[Azure Resource]** előtagot használják.
+  * Ebben a példában a "**azos**" (Azure online áruház) az IT-munkaterhelés neve és a "**use**" (az USA 2. keleti régiója)
+* Virtuális hálózatok AZOS használata – VN **[Number]**
+* A rendelkezésre állási készletek a azos használatát használják
+* A virtuális gépek nevei azos használ-VM- **[vmname]**
 
-## <a name="azure-subscriptions-and-accounts"></a>Az Azure-előfizetések és fiókok
-Az Adventure Works Cycles nevű Adventure Works nagyvállalati előfizetéssel, a vállalati előfizetést, segítségével az informatikai számítási feladathoz tartozó számlázási.
+## <a name="azure-subscriptions-and-accounts"></a>Azure-előfizetések és-fiókok
+Az Adventure Works-ciklusok nagyvállalati előfizetéssel rendelkeznek, amely az Adventure Works Enterprise előfizetését használja az IT-számítási feladatok számlázásához.
 
 ## <a name="storage"></a>Storage
-Az Adventure Works Cycles határozza meg, hogy az Azure Managed Disks kell használniuk. Virtuális gépek létrehozásakor a mindkét elérhető tárolási rétegek használhatók:
+Az Adventure Works-ciklusok határozzák meg, hogy az Azure Managed Disks-t használják. Virtuális gépek létrehozásakor a rendszer mindkét rendelkezésre álló tárolási szintet használja:
 
-* **Standard szintű storage** a webkiszolgálók, az alkalmazáskiszolgálókat, és a tartományvezérlők és az adatlemezek.
-* **A Premium storage** az SQL Server virtuális gépek és az adatlemezek.
+* A webkiszolgálók, az alkalmazás-kiszolgálók és a tartományvezérlők, valamint az adatlemezek **szabványos tárolói** .
+* **Premium Storage** a SQL Server virtuális gépek és az adatlemezek számára.
 
 ## <a name="virtual-network-and-subnets"></a>Virtuális hálózat és alhálózatok
-Mivel a virtuális hálózat nem kell a folyamatban lévő kapcsolódástól az Adventure Work ciklusokat a helyszíni hálózathoz, csak felhőalapú virtuális hálózaton döntöttek.
+Mivel a virtuális hálózatnak nincs szüksége folyamatos kapcsolatra a kaland munkahelyi ciklusok helyszíni hálózatán, úgy döntöttek, hogy csak felhőalapú virtuális hálózaton vannak.
 
-Általuk létrehozott egy kizárólag felhőalapú virtuális hálózatot az Azure portal használatával a következő beállításokkal:
+Egy csak felhőalapú virtuális hálózatot hoztak létre a következő beállításokkal a Azure Portal használatával:
 
 * Név: AZOS-USE-VN01
-* Hely: USA 2. keleti régiója
-* virtuális hálózat címtere: 10.0.0.0/8
+* Helyen USA 2. keleti régiója
+* Virtuális hálózati címtartomány: 10.0.0.0/8
 * Első alhálózat:
   * Név: Előtér
-  * Címtér: 10.0.1.0/24
-* Második alhálózatot:
+  * Címterület: 10.0.1.0/24
+* Második alhálózat:
   * Név: Háttér
-  * Címtér: 10.0.2.0/24
+  * Címterület: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
-Az Adventure Works Cycles magas rendelkezésre állásának összes négy szinten az online áruház fenntartására, úgy döntött, négy rendelkezésre állási csoportok:
+Az online áruház mind a négy szintje magas rendelkezésre állásának fenntartása érdekében az Adventure Works-ciklusok négy rendelkezésre állási csoporton vannak eldöntve:
 
-* **azos-használat-as-web** a webkiszolgálók számára
-* **azos-használat-as-app** az alkalmazáskiszolgálók
-* **azos-használjon-t-sql-** az SQL-kiszolgálók
-* **azos-használat-as-dc** a tartományvezérlőknek
+* **azos – webes használat** a webkiszolgálók számára
+* **azos-alkalmazás használata** az alkalmazáskiszolgáló esetében
+* **azos –** SQL Server-SQL-kiszolgálók használata
+* **azos –** tartományvezérlőként való használata a tartományvezérlők számára
 
 ## <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
-Az Adventure Works Cycles kiválasztotta az Azure virtuális gépek a következő nevekkel:
+Az Adventure Works-ciklusok az Azure-beli virtuális gépek következő nevein vannak eldöntve:
 
-* **azos-használat – virtuálisgép-web01** az első webkiszolgáló
-* **azos-használat – virtuálisgép-web02** a második webkiszolgáló
-* **azos-használat – virtuálisgép-app01** az első alkalmazás-kiszolgálón
-* **azos-használat – virtuálisgép-app02** az alkalmazás második kiszolgálón
-* **azos-használat – virtuálisgép-sql01** a fürt első SQL Server-kiszolgáló
-* **azos-használat – virtuálisgép-sql02** a második az SQL Server-kiszolgáló a fürtben
-* **azos-használat – virtuálisgép-dc01** az első tartományvezérlő
-* **azos-használat – virtuálisgép-dc02** a második tartományvezérlő
+* **azos – virtuális gép – web01** az első webkiszolgálóhoz
+* **azos – virtuális gép – web02** a második webkiszolgálóhoz
+* **azos-use-VM-app01** az első alkalmazáskiszolgáló számára
+* **azos-use-VM-app02** a második alkalmazás-kiszolgálóhoz
+* **azos-use-VM-sql01** a fürt első SQL Server kiszolgálójához
+* **azos – a virtuális gép sql02** a fürt második SQL Server kiszolgálójához
+* **azos – a-VM-DC01 használata** az első tartományvezérlőhöz
+* **azos – virtuális gép dc02** a második tartományvezérlőhöz
 
-Íme a létrejövő konfigurációt.
+Itt látható az eredményül kapott konfiguráció.
 
-![Az Azure-ban üzembe helyezett alkalmazások végleges infrastruktúra](./media/infrastructure-example/example-config.png)
+![Az Azure-ban üzembe helyezett végleges alkalmazás-infrastruktúra](./media/infrastructure-example/example-config.png)
 
-Ez a konfiguráció a következőket tartalmazza:
+Ez a konfiguráció a következőket foglalja magában:
 
-* Egy kizárólag felhőalapú virtuális hálózatot két alhálózattal (előtérbeli és háttérbeli)
-* Az Azure Managed Disks, Standard és prémium szintű lemezek
-* Egy, az egyes szintek az online áruház négy rendelkezésre állási csoportok
-* A virtuális gépek a négy szinten
-* Egy külső elosztott terhelésű készlet webkiszolgálók az internetről érkező HTTPS-alapú webes forgalom
-* Az elosztott terhelésű készlet az alkalmazáskiszolgálók a webkiszolgálók titkosítatlan webes forgalmat a belső
-* Egyetlen erőforráscsoportra
+* Csak felhőalapú virtuális hálózat két alhálózattal (előtér és háttér)
+* Azure Managed Disks standard és prémium szintű lemezekkel
+* Négy rendelkezésre állási csoport, egyet az online áruház egyes szintjeihez
+* A négy rétegek virtuális gépei
+* Külső elosztott terhelésű készlet a HTTPS-alapú webes forgalom számára az internetről a webkiszolgálókra
+* Belső terheléselosztási készlet a webkiszolgálókról az alkalmazáskiszolgáló felé irányuló titkosítatlan webes forgalomhoz
+* Egyetlen erőforráscsoport
