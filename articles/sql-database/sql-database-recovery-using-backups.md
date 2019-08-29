@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/30/2019
-ms.openlocfilehash: 55d60ec332515fcfa3deb565a4a770027681537a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/27/2019
+ms.openlocfilehash: 00982ea837783a7e7a9dca257f04c77d48aceef2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566977"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103116"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Azure SQL Database helyreállítása automatikus adatbázis-biztonsági mentéssel
 
@@ -37,7 +37,7 @@ Standard vagy prémium szintű szolgáltatási szint használata esetén a vissz
 - A P11 – P15 – S4-S12 vagy P1 – P6 visszaállítása, ha az adatbázis maximális mérete meghaladja a 500 GB-ot.
 - A P1 – P6 – S4 – S12 visszaállítása, ha az adatbázis maximális mérete meghaladja a 250 GB-ot.
 
-A többletköltség akkor icurred, ha a visszaállított adatbázis maximális mérete nagyobb, mint a céladatbázis szolgáltatási szintjéhez és teljesítményéhez tartozó tárterület mennyisége. A benne foglalt mennyiség fölött kiosztott extra tárterületet külön kell fizetni. A további tárterület részletes díjszabását a [SQL Database díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/sql-database/)tekintheti meg. Ha a felhasznált terület tényleges mennyisége kevesebb, mint a tárhelyek mennyisége, akkor ezt a többletköltséget elkerülheti, ha a maximális adatbázis méretét a befoglalt mennyiségre állítja.
+Az extra költségek akkor merülnek fel, ha a visszaállított adatbázis maximális mérete nagyobb, mint a céladatbázis szolgáltatási szintjéhez és a teljesítmény szintjéhez tartozó tárterület mennyisége. A benne foglalt mennyiség fölött kiosztott extra tárterületet külön kell fizetni. A további tárterület részletes díjszabását a [SQL Database díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/sql-database/)tekintheti meg. Ha a felhasznált terület tényleges mennyisége kevesebb, mint a tárhelyek mennyisége, akkor ezt a többletköltséget elkerülheti, ha a maximális adatbázis méretét a befoglalt mennyiségre állítja.
 
 > [!NOTE]
 > Az adatbázisok [automatikus biztonsági mentése](sql-database-automated-backups.md) az [adatbázis-másolat](sql-database-copy.md)létrehozásakor használatos.
@@ -113,7 +113,7 @@ Ha a Azure Portal segítségével kívánja helyreállítani a törölt adatbáz
 
 Bármely Azure-régióban lévő kiszolgálón visszaállíthat egy SQL-adatbázist a legutóbbi földrajzilag replikált biztonsági mentésből. A Geo-visszaállítás a forrásként egy földrajzilag replikált biztonsági mentést használ. Akkor is kérhető, ha az adatbázis vagy az adatközpont kimaradás miatt nem érhető el.
 
-A Geo-visszaállítás az alapértelmezett helyreállítási lehetőség, ha az adatbázis nem érhető el az üzemeltetési régióban lévő incidens miatt. Az adatbázist bármely más régióban lévő kiszolgálóra is visszaállíthatja. A biztonsági másolat készítése és az egy másik régióban lévő Azure-blobba való földrajzi replikálása között késés történik. Ennek eredményeképpen a visszaállított adatbázis akár egy óráig is elvégezhető a Orignal-adatbázis mögött. A következő ábra az adatbázis visszaállítását mutatja be egy másik régióban elérhető legutóbbi biztonsági mentésből.
+A Geo-visszaállítás az alapértelmezett helyreállítási lehetőség, ha az adatbázis nem érhető el az üzemeltetési régióban lévő incidens miatt. Az adatbázist bármely más régióban lévő kiszolgálóra is visszaállíthatja. A biztonsági másolat készítése és az egy másik régióban lévő Azure-blobba való földrajzi replikálása között késés történik. Ennek eredményeképpen a visszaállított adatbázis akár egy óráig is elvégezhető az eredeti adatbázis mögött. A következő ábra az adatbázis visszaállítását mutatja be egy másik régióban elérhető legutóbbi biztonsági mentésből.
 
 ![Geo-visszaállítás](./media/sql-database-geo-restore/geo-restore-2.png)
 
@@ -127,7 +127,7 @@ A földrajzi másodlagos időponthoz való visszaállítás jelenleg nem támoga
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Geo-visszaállítás a Azure Portal használatával
 
-Ha a Azure Portal segítségével szeretne geo-visszaállítani egy adatbázist a [DTU-alapú modell megőrzési időtartama](sql-database-service-tiers-dtu.md) vagy a [virtuális mag-alapú modell megőrzési időszaka](sql-database-service-tiers-vcore.md) során, nyissa meg az SQL-adatbázisok lapot, majd kattintson a **Hozzáadás**gombra. A **forrás kiválasztása** szövegmezőben válassza a **biztonsági mentés**lehetőséget. Adja meg azt a biztonsági másolatot, amelyből a helyreállítást el szeretné végezni a régióban és a választott kiszolgálón.
+Egy adatbázis geo-visszaállításához a Azure Portal segítségével nyissa meg az SQL-adatbázisok lapot, majd kattintson a **Hozzáadás**gombra. A **forrás kiválasztása** szövegmezőben válassza a **biztonsági mentés**lehetőséget. Adja meg azt a biztonsági másolatot, amelyből a helyreállítást el szeretné végezni a régióban és a választott kiszolgálón.
 
 > [!Note]
 > A Azure Portal használatával történő geo-visszaállítás felügyelt példányban nem érhető el. Ehelyett használja a PowerShellt.

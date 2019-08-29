@@ -1,6 +1,6 @@
 ---
-title: Egy Azure virtuális Géphez tartozó rendszer-újraindítás ismertetése |} A Microsoft Docs
-description: Felsorolja azokat az eseményeket, amelyek miatt egy virtuális gép újraindítása
+title: Egy Azure-beli virtuális gép rendszer-újraindításának ismertetése | Microsoft Docs
+description: A virtuális gép újraindítását okozó események listája
 services: virtual-machines
 documentationcenter: ''
 author: genlin
@@ -8,119 +8,118 @@ manager: willchen
 editor: ''
 tags: ''
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 70a6845349b90cf614a84e13680ebb6fc6b3e2a9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aea4c20ceeb9b4f1ad70187da2690fd5d202fe7a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60443755"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089545"
 ---
-# <a name="understand-a-system-reboot-for-azure-vm"></a>Azure virtuális Géphez tartozó rendszer-újraindítás ismertetése
+# <a name="understand-a-system-reboot-for-azure-vm"></a>Az Azure-beli virtuális gép rendszer-újraindításának ismertetése
 
-Azure-beli virtuális gépek (VM) néha előfordulhat, hogy újraindítás OK, a kellene az újraindítási műveletet kezdeményezett bizonyítékokat nélkül. Ez a cikk felsorolja a műveletek és az eseményeket, amelyek virtuális gépek újraindítását okozhatja, és hogyan váratlan újraindítás problémák elkerülése érdekében, vagy csökkentse az ilyen problémák hatását betekintést nyújt.
+Előfordulhat, hogy az Azure-beli virtuális gépek (VM-EK) időnként újraindulnak, anélkül, hogy az újraindítási műveletet kezdeményezték volna. Ez a cikk felsorolja azokat a műveleteket és eseményeket, amelyek a virtuális gépek újraindítását okozhatják, és betekintést nyújtanak a váratlan újraindítási problémák elkerülésére vagy az ilyen problémák hatásának csökkentésére.
 
-## <a name="configure-the-vms-for-high-availability"></a>A magas rendelkezésre állású virtuális gép konfigurálása
+## <a name="configure-the-vms-for-high-availability"></a>A virtuális gépek konfigurálása magas rendelkezésre álláshoz
 
-A legjobb módszer egy alkalmazás, amelyen fut az Azure-beli virtuális gépek elleni védelme érdekében újraindul, és állásidő a magas rendelkezésre állású virtuális gépeket konfigurálhatja.
+Az Azure-on futó alkalmazások védelmének legjobb módja a virtuális gépek újraindításának és leállásának a biztosítása a virtuális gépek magas rendelkezésre álláshoz való konfigurálásához.
 
-Ez a szint az alkalmazás redundanciájának biztosítása érdekében javasoljuk, hogy két vagy több virtuális gépet egy rendelkezésre állási csoportban. Ez a konfiguráció biztosítja, hogy vagy a tervezett vagy nem tervezett karbantartási események esetén legalább egy virtuális gép elérhető, és megfelel-e a 99,95 %-os [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/).
+Ha ezt a redundancia-szintet szeretné biztosítani az alkalmazás számára, javasoljuk, hogy legalább két virtuális gépet egy rendelkezésre állási csoportban csoportosítson. Ez a konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartási események során legalább egy virtuális gép elérhető legyen, és megfelel a 99,95%-os [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/)-nak.
 
-A rendelkezésre állási csoportok kapcsolatos további információkért lásd a következő cikkeket:
+A rendelkezésre állási csoportokkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Virtuális gépek rendelkezésre állásának kezelése](../windows/manage-availability.md)
 - [Virtuális gépek rendelkezésre állásának konfigurálása](../windows/classic/configure-availability.md)
 
-## <a name="resource-health-information"></a>Erőforrás-állapotára vonatkozó
+## <a name="resource-health-information"></a>Resource Health információk
 
-Az Azure Resource Health szolgáltatás, amely az egyes Azure-erőforrások állapotáról, és hasznos útmutatást problémák elhárításához nyújt. Egy felhőalapú környezetben, ahol nem lehetséges közvetlenül hozzáférni a kiszolgálók vagy infrastruktúra-elemeket a Resource Health célja, hogy a hibaelhárítási töltött idő csökkentése érdekében. Különösen célja-e a probléma okát esik-e az alkalmazás vagy egy esemény belül az Azure platform meghatározása töltött idő csökkentése érdekében. További információkért lásd: [megismerése és használata a Resource Health](../../resource-health/resource-health-overview.md).
+Azure Resource Health egy olyan szolgáltatás, amely lehetővé teszi az egyes Azure-erőforrások állapotát, és gyakorlati útmutatást nyújt a problémák elhárításához. Olyan felhőalapú környezetben, ahol nem lehet közvetlenül hozzáférni a kiszolgálókhoz vagy infrastruktúra-elemekhez, a Resource Health célja, hogy csökkentse a hibaelhárítás során eltöltött időt. A cél az, hogy csökkentse azt az időpontot, ameddig a probléma kihasználása az alkalmazásban vagy az Azure platformon belüli eseményben rejlik. További információ: [Resource Health megismerése és használata](../../resource-health/resource-health-overview.md).
 
-## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>Műveletek és események, amelyek miatt a virtuális gép újraindítása
+## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>Műveletek és események, amelyek a virtuális gép újraindítását okozhatják
 
 ### <a name="planned-maintenance"></a>Tervezett karbantartás
 
-A Microsoft Azure a Microsoft rendszeresen végez frissítéseket szerte a világon a megbízhatóságának, teljesítményének és a gazda-infrastruktúrát alapjául szolgáló virtuális gépek biztonságának javítása érdekében. Ezeket a frissítéseket, beleértve a memóriamegőrző frissítésekkel számos működésére hatással az a virtuális gépek vagy cloud services.
+Microsoft Azure rendszeresen végez frissítéseket a világ minden táján, hogy javítsa a virtuális gépeken alapuló gazdagép-infrastruktúra megbízhatóságát, teljesítményét és biztonságát. A frissítések, köztük a memória-megőrzési frissítések jelentős része a virtuális gépekre vagy a Cloud Servicesre gyakorolt hatás nélkül történik.
 
-Bizonyos frissítések azonban újraindítás szükséges. Ezekben az esetekben a virtuális gépek leállnak, ilyenkor az infrastruktúra javításának során, majd a virtuális gépeket újra lesz indítva.
+Néhány frissítéshez azonban újraindítás szükséges. Ilyen esetekben a virtuális gépek le vannak állítva az infrastruktúra javítása közben, majd a virtuális gépek újraindulnak.
 
-Ismerje meg, milyen tervezett karbantartás az Azure-t, és milyen hatással vannak a Linux rendszerű virtuális gépek rendelkezésre állásának, tekintse meg az itt felsorolt cikkeket. A cikkek háttértudást biztosítanak az Azure tervezett karbantartási folyamatáról, illetve arról, hogy miként ütemezheti úgy a tervezett karbantartást, hogy az a lehető legkisebb hatást gyakorolja.
+Az Azure tervezett karbantartásának megismeréséhez és a linuxos virtuális gépek rendelkezésre állásának befolyásolásához tekintse meg az itt felsorolt cikkeket. A cikkek háttértudást biztosítanak az Azure tervezett karbantartási folyamatáról, illetve arról, hogy miként ütemezheti úgy a tervezett karbantartást, hogy az a lehető legkisebb hatást gyakorolja.
 
 - [A virtuális gépek tervezett karbantartása az Azure-ban](../windows/planned-maintenance.md)
 - [Azure-beli virtuális gépek tervezett karbantartásának ütemezése](../windows/classic/planned-maintenance-schedule.md)
 
 ### <a name="memory-preserving-updates"></a>Memóriamegőrző frissítések
 
-Ez az osztály a frissítések a Microsoft Azure-ban, a felhasználói élmény nincs hatással a futó virtuális gépek a. A frissítések sok esetben olyan összetevőkhöz vagy szolgáltatásokhoz tartoznak, amelyek frissíthetők a futó példány zavarása nélkül. Néhány platforminfrastruktúra-frissítések a gazdagép operációs rendszere, amely a virtuális gépek újraindítása nélkül alkalmazhatók.
+A Microsoft Azure frissítéseinek ezen osztályában a felhasználók nem gyakorolnak hatást a futó virtuális gépekre. A frissítések sok esetben olyan összetevőkhöz vagy szolgáltatásokhoz tartoznak, amelyek frissíthetők a futó példány zavarása nélkül. Némelyik a gazdagép operációs rendszerének platform-infrastruktúrájának frissítései, amelyeket a virtuális gépek újraindítása nélkül lehet alkalmazni.
 
-Ezeket a memóriamegőrző frissítéseket olyan technológia biztosítja, amely lehetővé teszi a helyszíni élő áttelepítést. Frissül, amikor a virtuális gép bekerül egy *szüneteltetve* állapota. Ez az állapot megőrzi a memóriát a RAM-ban, amíg az alapjául szolgáló gazda operációs rendszer megkapja a szükséges frissítéseket és javításokat. A virtuális gép a szüneteltetés után 30 másodpercen belül folytatja a működését. A szüneteltetés után a virtuális gép órája automatikusan szinkronizálódik.
+Ezeket a memóriamegőrző frissítéseket olyan technológia biztosítja, amely lehetővé teszi a helyszíni élő áttelepítést. A frissítés során a virtuális gép szüneteltetett állapotba kerül. Ez az állapot megőrzi a memóriát a RAM-ban, amíg az alapjául szolgáló gazda operációs rendszer megkapja a szükséges frissítéseket és javításokat. A virtuális gép a szüneteltetés után 30 másodpercen belül folytatja a működését. A szüneteltetés után a virtuális gép órája automatikusan szinkronizálódik.
 
-A rövid felfüggesztési időszak miatt frissítések telepítése ezzel a mechanizmussal jelentősen csökkenti a virtuális gépeken. Nem minden frissítés azonban így is telepíthető. 
+A rövid szüneteltetési időszak miatt a frissítések ezen a mechanizmuson keresztül történő üzembe helyezése jelentősen csökkenti a virtuális gépekre gyakorolt hatást. Így azonban nem minden frissítés helyezhető üzembe. 
 
 A többpéldányos frissítések végrehajtása (a rendelkezésre állási csoportokban lévő virtuális gépeken) frissítési tartományonként történik.
 
 > [!NOTE]
-> Linux rendszerű gépek, amelyeken a régi kernel-verzióknál kernelpánikot során ez a frissítési mód van hatással. A probléma elkerülése érdekében frissítse a kernel verziója 3.10.0-327.10.1 vagy újabb verzióra. További információkért lásd: [egy Azure Linux virtuális gép 3.10-alapú kernel panics egy gazdagép-csomópont frissítése után](https://support.microsoft.com/help/3212236).
+> A régi kernel-verziókkal rendelkező Linux-gépeket a kernel pánikja érinti a frissítési módszer során. A probléma elkerüléséhez frissítsen a kernel 3.10.0-327.10.1 vagy újabb verziójára. További információ: [Azure Linux rendszerű virtuális gép a 3,10-alapú kernelen a gazdagép csomópontjának frissítése után](https://support.microsoft.com/help/3212236).
 
-### <a name="user-initiated-reboot-or-shutdown-actions"></a>Felhasználó által kezdeményezett újraindítás vagy leállítás műveletek
+### <a name="user-initiated-reboot-or-shutdown-actions"></a>Felhasználó által kezdeményezett újraindítási vagy leállítási műveletek
 
-Ha az Azure Portalon, az Azure PowerShell, a parancssori felület vagy a REST API az újraindítást hajt végre, Észreveheti, hogy az esemény a [Azure-tevékenységnapló](../../azure-monitor/platform/activity-logs-overview.md).
+Ha újraindítást végez a Azure Portal, Azure PowerShell, parancssori felület vagy az Alaphelyzetbe állítás API használatával, megkeresheti az eseményt az [Azure](../../azure-monitor/platform/activity-logs-overview.md)-beli tevékenység naplójában.
 
-A művelet végrehajtása a virtuális gép operációs rendszerről, megkeresni az eseményt a rendszer naplókban.
+Ha a virtuális gép operációs rendszerének a műveletét hajtja végre, a rendszernaplókban megkeresheti az eseményt.
 
-Egyéb forgatókönyvek, amelyek általában a virtuális gép újraindításához több konfiguráció-módosítási műveletek közé tartozik. Általában megjelenik egy figyelmeztető üzenet, amely jelzi, hogy egy adott művelet végrehajtása a virtuális gép újraindítását eredményezi. Ilyenek például a virtuális gép átméretezése műveleteket, az a rendszergazdai fiók jelszavának módosítása, valamint a statikus IP-címet.
+Más forgatókönyvek, amelyek általában a virtuális gép újraindítását okozzák, több konfigurációs módosítási műveletet is tartalmazhatnak. Általában egy figyelmeztető üzenet jelenik meg, amely jelzi, hogy egy adott művelet végrehajtása a virtuális gép újraindítását eredményezi. Ilyenek például a virtuális gépek átméretezési műveletei, a rendszergazdai fiók jelszavának módosítása és statikus IP-cím beállítása.
 
-### <a name="azure-security-center-and-windows-update"></a>Az Azure Security Center és a Windows Update
+### <a name="azure-security-center-and-windows-update"></a>Azure Security Center és Windows Update
 
-Az Azure Security Center figyeli a napi Windows és Linux rendszerű virtuális gépek operációsrendszer-frissítések hiányoznak. A Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját a Windows Update webhelyről vagy a Windows Server Update Services (WSUS), attól függően, amelyek a szolgáltatás úgy van konfigurálva a Windows virtuális gép. A Security Center is ellenőrzi a Linux rendszerek legújabb frissítéseit. Ha a virtuális gép nincs telepítve a rendszer frissítés, a Security Center javasolja, hogy a rendszerfrissítések alkalmazása. Ezeket a rendszer frissítéseinek alkalmazása a Security Center az Azure Portalon keresztül vezérli. Egyes frissítések telepítését, miután a virtuális gépek újraindításának lehet szükség. További információkért lásd: [az Azure Security Center rendszer frissítéseinek alkalmazása](../../security-center/security-center-apply-system-updates.md).
+Azure Security Center figyeli a napi Windows és Linux rendszerű virtuális gépeket az operációs rendszer frissítéseinek hiányában. Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját Windows Update vagy Windows Server Update Services (WSUS) szolgáltatásból attól függően, hogy melyik szolgáltatást konfigurálja a Windows rendszerű virtuális gépeken. A Security Center a linuxos rendszerek legújabb frissítéseit is ellenőrzi. Ha a virtuális gép hiányzik a rendszerfrissítésből, Security Center javasolja a rendszerfrissítések alkalmazását. A rendszerfrissítések alkalmazásának vezérlése a Azure Portal Security Centeron keresztül történik. Néhány frissítés alkalmazása után szükség lehet a virtuális gépek újraindítására. További információ: rendszerfrissítések [alkalmazása Azure Security Centerban](../../security-center/security-center-apply-system-updates.md).
 
-A helyszíni kiszolgálók, például Azure nem küldi el a frissítések a Windows Update Windows virtuális gépekhez, mivel ezek a gépek célja, hogy a felhasználók által felügyelt lehet. Ön azonban javasolt, hogy hagyja meg a Windows Update automatikus beállítás engedélyezve van. A Windows Update frissítések automatikus telepítése a okozhat is előfordul, a frissítések alkalmazása utáni újraindítások. További információkért lásd: [Windows Update – GYIK](https://support.microsoft.com/help/12373/windows-update-faq).
+A helyszíni kiszolgálókhoz hasonlóan az Azure nem küldi le a frissítéseket a Windows Updateról a Windows rendszerű virtuális gépekre, mert ezeket a gépeket a felhasználók számára kívánja felügyelni. Javasoljuk azonban, hogy engedélyezze az automatikus Windows Update beállítást. A frissítések Windows Updateról történő automatikus telepítése a frissítések alkalmazása után is okozhat újraindítást. További információ: [Windows Update GYIK](https://support.microsoft.com/help/12373/windows-update-faq).
 
-### <a name="other-situations-affecting-the-availability-of-your-vm"></a>Más helyzetekben a virtuális gépek rendelkezésre állásának
+### <a name="other-situations-affecting-the-availability-of-your-vm"></a>A virtuális gép rendelkezésre állását befolyásoló egyéb helyzetek
 
-Nincsenek más esetekben, amelyben Azure aktívan előfordulhat, hogy felfüggeszti a virtuális gépek használatát. E-mail-értesítések a műveletet, mielőtt, jelenik meg, így lesz arra, hogy az alapul szolgáló kapcsolatos hibák elhárítása. Virtuális gép rendelkezésre állást befolyásoló problémákat közé biztonsági problémákat és a fizetési módok lejárta.
+Más esetekben előfordulhat, hogy az Azure aktívan felfüggeszti a virtuális gépek használatát. A művelet elvégzése előtt e-mail-értesítéseket fog kapni, így lehetősége lesz a mögöttes problémák megoldására. A virtuális gépek rendelkezésre állását befolyásoló problémák például a biztonsági szabálysértések és a fizetési módok lejárta.
 
-### <a name="host-server-faults"></a>Gazdagép-kiszolgálói hibák
+### <a name="host-server-faults"></a>Gazda kiszolgálói hibák
 
-A virtuális gép üzemel az Azure-adatközpont belül futó fizikai kiszolgálón. A fizikai kiszolgálón fut néhány más Azure-összetevők mellett a gazdagép-ügynök nevű ügynök. Ezek a fizikai kiszolgálón Azure szoftver-összetevő nem válaszol, amikor a monitorozási rendszer elindítja a helyreállítási kísérletek a gazdakiszolgáló újraindítása. A virtuális gép újra öt percen belül általában érhető el, és továbbra is ugyanazon a gazdagépen, mint korábban live.
+A virtuális gépet egy Azure-adatközponton belül futó fizikai kiszolgálón üzemelteti a rendszer. A fizikai kiszolgáló egy másik Azure-összetevő mellett futtatja a gazdagép ügynökének nevezett ügynököt. Ha ezek az Azure-beli szoftver-összetevők a fizikai kiszolgálón nem válaszolnak, a figyelő rendszer elindítja a gazdagép újraindítását a helyreállítás megkísérlése érdekében. A virtuális gép általában öt percen belül újra elérhető, és továbbra is ugyanazon a gazdagépen él, mint korábban.
 
-Kiszolgáló-hibák általában hardverhiba, például a merevlemez vagy SSD-meghajtó hibáját okozza. Az Azure folyamatosan figyeli az ilyen események, az alapul szolgáló hibák azonosítja, és bevezeti a frissítés után a megoldás megvalósítása és tesztelt.
+A kiszolgálói hibákat általában hardverhiba okozta, például a merevlemez vagy a SSD-meghajtó meghibásodása. Az Azure folyamatosan figyeli ezeket az eseményeket, azonosítja a mögöttes hibákat, és kivezeti a frissítéseket a megoldás implementálása és tesztelése után.
 
-Mivel a gazdagép server hibákat adott erre a kiszolgálóra, olyan ismétlődő virtuális gép újraindítási helyzet előfordulhat, hogy továbbfejlesztett által manuálisan újbóli üzembe helyezés virtuális Gépre, és a egy másik gazdakiszolgálón. Ez a művelet használatával is elindítható a **ismételt üzembe helyezése** beállítás részleteit megjelenítő oldalon a virtuális gép vagy leállításával és újraindításával a virtuális gép az Azure Portalon.
+Mivel egyes gazdagép-kiszolgálói hibák az adott kiszolgálóra jellemzőek lehetnek, a virtuális gép újraindítási helyzetét a virtuális gép másik gazdagép-kiszolgálóra történő manuális ismételt üzembe helyezésével lehet javítani. Ez a művelet a virtuális gép részletek lapjának **újratelepítése** lehetőségével indítható el, vagy a virtuális gép leállításával és újraindításával a Azure Portal.
 
-### <a name="auto-recovery"></a>Automatikus helyreállítása
+### <a name="auto-recovery"></a>Automatikus helyreállítás
 
-Ha a kiszolgáló valamilyen okból nem újraindítás, az Azure platform egy automatikus helyreállítási műveletet a hibás gazdakiszolgáló további teendőkért rotációból indítja el. 
+Ha a gazda-kiszolgáló valamilyen okból nem indítható újra, az Azure platform automatikus helyreállítási műveletet indít el, hogy a hibás gazdagép-kiszolgáló ne legyen elforgatva további vizsgálat céljára. 
 
-Az adott gazdagép összes virtuális gép automatikusan áthelyezéséről van egy másik, megfelelő állapotú gazdakiszolgálón. A folyamat befejeződése általában 15 percen belül. Automatikus helyreállítási folyamatával kapcsolatos további tudnivalókért lásd: [virtuális gépek automatikus helyreállítása](https://azure.microsoft.com/blog/service-healing-auto-recovery-of-virtual-machines).
+A rendszer a gazdagépen lévő összes virtuális gépet egy másik, kifogástalan állapotú gazdagépre helyezi át. Ez a folyamat általában 15 percen belül befejeződik. További információ az automatikus helyreállítási folyamatról: [virtuális gépek automatikus helyreállítása](https://azure.microsoft.com/blog/service-healing-auto-recovery-of-virtual-machines).
 
 ### <a name="unplanned-maintenance"></a>Nem tervezett karbantartás
 
-Ritka esetekben az Azure üzemeltetési csapat kell végrehajtani a karbantartási tevékenységek annak biztosítása érdekében az Azure platform általános állapotát. Ez a viselkedés hatással lehet a virtuális gépek rendelkezésre állása, és általában eredményez a ugyanaz a automatikus helyreállítási művelet az korábban leírtaknak megfelelően.  
+Ritkán előfordulhat, hogy az Azure-műveleti csapatnak karbantartási tevékenységeket kell végeznie az Azure platform általános állapotának biztosítása érdekében. Ez a viselkedés hatással lehet a virtuális gépek rendelkezésre állására, és általában ugyanazokat az automatikus helyreállítási műveleteket eredményezi, mint a korábban leírtak szerint.  
 
-Nem tervezett karbantartás a következők:
+A nem tervezett karbantartás a következőket foglalja magában:
 
-- Sürgős csomópont töredezettségmentesítése
-- Sürgős hálózati kapcsoló frissítések
+- Sürgős csomópont-töredezettségmentesítés
+- Sürgős hálózati kapcsolók frissítései
 
-### <a name="vm-crashes"></a>Virtuális gép összeomlik
+### <a name="vm-crashes"></a>VIRTUÁLIS gépek összeomlása
 
-Virtuális gépek előfordulhat, hogy indítsa újra a virtuális gépre kapcsolatos problémák miatt. A számítási feladat vagy szerepkör, amely a virtuális gép fut-e hibakeresés a vendég operációs rendszerben is kiválthatják. Az összeomlás okának meghatározásához segítségre van szüksége tekintse meg a rendszer és az alkalmazásnaplókat a Windows virtuális gépek és a Linux rendszerű virtuális gépek soros naplókat.
+A virtuális gépeken belüli problémák miatt előfordulhat, hogy a virtuális gépek újraindulnak. A virtuális gépen futó munkaterhelés vagy szerepkör a vendég operációs rendszeren is aktiválhatja a hibákat. Ha segítségre van az összeomlás okának meghatározásához, tekintse meg a Windows rendszerű virtuális gépek rendszer-és alkalmazás-naplóit, valamint a linuxos virtuális gépek soros naplóit.
 
-### <a name="storage-related-forced-shutdowns"></a>A kényszerített leállások Storage szolgáltatással kapcsolatos
+### <a name="storage-related-forced-shutdowns"></a>Tárolással kapcsolatos kényszerített leállítások
 
-Az Azure-beli virtuális gépek operációs rendszer és az adattárolás, az Azure Storage-infrastruktúrában üzemeltetett virtuális lemezek támaszkodnak. Minden alkalommal, amikor a rendelkezésre állás vagy a virtuális gép és a társított virtuális lemezekkel közötti kapcsolat több mint 120 másodpercen van hatással, az Azure platform adatsérüléseinek elkerülése érdekében a virtuális gépek Kényszerített leállítás hajt végre. A virtuális gépek automatikusan bekapcsolt biztonsági után tárolási kapcsolat helyreállt. 
+Az Azure-beli virtuális gépek az Azure Storage-infrastruktúrában üzemeltetett operációs rendszerek és adattárolási virtuális lemezeket használják. Ha a virtuális gép és a hozzá tartozó virtuális lemezek közötti rendelkezésre állást vagy kapcsolatot több mint 120 másodpercre érinti, az Azure platform a virtuális gépek kényszerített leállítását hajtja végre, hogy elkerülje az adatok sérülését. A rendszer automatikusan visszaállítja a virtuális gépeket a tárolási kapcsolat visszaállítása után. 
 
-A leállítási időtartama mindössze öt perc is lehet, de sokkal hosszabb lehet. A következő egy társított kényszerített leállások storage szolgáltatással kapcsolatos adott esetek valamelyike: 
+A Leállítás időtartama akár öt percet is igénybe vehet, de jóval hosszabb lehet. A következő a tárolással kapcsolatos kényszerített leállításokhoz kapcsolódó konkrét esetek egyike: 
 
-**IO meghaladó korlátozza.**
+**IO-korlátok túllépése**
 
-Előfordulhat, hogy ideiglenesen leállítása virtuális gépeket, ha az i/o-kérések következetesen szabályozva, mivel az i/o-műveletek száma másodpercenként (IOPS) mennyisége meghaladja a a lemez i/o-korlátok között. (A standard szintű lemezes tárolás az legfeljebb 500 IOPS.) A probléma megoldásához használja a lemez szétosztottsága befolyásolhatja, vagy konfigurálja a Vendég virtuális gép, a terheléstől függően a ténylegesen felhasznált tárterület. További információkért lásd: [Azure virtuális gép konfigurálása optimális tároló-teljesítményre](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
+Előfordulhat, hogy a virtuális gépek átmenetileg le vannak állítva az I/o-kérelmek következetes szabályozása miatt, mert a másodpercenkénti I/o-műveletek mennyisége (IOPS) meghaladja a lemez I/O-korlátait. (A standard szintű lemezes tárolás 500 IOPS van korlátozva.) A probléma megoldásához használjon lemezes csíkozást, vagy konfigurálja a tárterületet a vendég virtuális gépen a munkaterheléstől függően. Részletekért lásd: [Azure-beli virtuális gépek konfigurálása optimális tárolási teljesítményhez](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
 
-### <a name="other-incidents"></a>Egyéb események
+### <a name="other-incidents"></a>Egyéb incidensek
 
-Ritka esetekben a széles körű probléma hatással lehet a több kiszolgálót az Azure-adatközpontban. Ez a probléma akkor fordul elő, ha az Azure-csapat e-mail-értesítéseket küld az érintett előfizetések. Ellenőrizheti a [Azure Service Health dashboard](https://azure.microsoft.com/status/) és az Azure portal, az állapot folyamatos kimaradások és korábbi eseményeit.
+Ritka esetekben egy elterjedt probléma az Azure-adatközpont több kiszolgálójára is hatással lehet. Ha ez a probléma merül fel, az Azure csapata e-mail-értesítéseket küld az érintett előfizetésekhez. A folyamatban lévő kimaradások és a múltbeli incidensek állapotának ellenőrzéséhez tekintse meg a [Azure Service Health irányítópultot](https://azure.microsoft.com/status/) és a Azure Portal.

@@ -8,18 +8,18 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 7893c8e8b8d67b4b63bd9d6bb5a71552e95c9125
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 25751db785bf5d0b67195d1e1db660c0b9b5bf4e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850249"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100952"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>IoT Central kezelése a Azure Portal
 
 [!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
 
-IoT Central alkalmazások a IoT Central [Application Manager](https://aka.ms/iotcentral) -lapról való létrehozása és kezelése helyett a [Azure Portal](https://portal.azure.com) használatával kezelheti az alkalmazásokat.
+IoT Central alkalmazások az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén való létrehozása és kezelése helyett a [Azure Portal](https://portal.azure.com) használatával kezelheti az alkalmazásokat.
 
 ## <a name="create-iot-central-applications"></a>IoT Central-alkalmazások létrehozása
 
@@ -39,7 +39,7 @@ Most válassza a **Létrehozás**lehetőséget.
 
 ![Felügyeleti portál: Erőforrás IoT Central](media/howto-manage-iot-central-from-portal/image0c1.png)
 
-Töltse ki az űrlap összes mezőjét. Ez az űrlap hasonló ahhoz az űrlaphoz, amelyet kitöltött az alkalmazások létrehozásához a IoT Central [Application Manager](https://aka.ms/iotcentral) lapon. További információt az [IoT Central-alkalmazás létrehozása](quick-deploy-iot-central.md) című témakörben talál.
+Töltse ki az űrlap összes mezőjét. Ez az űrlap hasonló az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén az alkalmazások létrehozásához kitöltött űrlaphoz. További információt az [IoT Central-alkalmazás létrehozása](quick-deploy-iot-central.md) című témakörben talál.
 
 ![Felügyeleti portál: IoT Central erőforrás létrehozása](media/howto-manage-iot-central-from-portal/image1a.png)  
 

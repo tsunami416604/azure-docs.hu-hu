@@ -1,6 +1,6 @@
 ---
-title: FQDN létrehozása a Linux rendszerű virtuális gép az Azure Portalon |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre egy teljes tartománynév, vagy teljes Tartományneve, a Resource Manager-alapú virtuális gépet az Azure Portalon.
+title: Teljes tartománynév létrehozása Linux rendszerű virtuális gép számára a Azure Portalban | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre teljes tartománynevet vagy teljes TARTOMÁNYNEVEt a Azure Portal Resource Manager-alapú virtuális géphez.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -9,33 +9,32 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 2cd6c249-a737-4a0a-b5ba-e1c09e551b30
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e9454ce72fa2581f4de5390314f9ca8ef36504d1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d7309f4be43c6b653f261e5de5fbe3e638e83294
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671102"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082447"
 ---
-# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Linux rendszerű virtuális gép létrehozása egy teljesen minősített tartománynevét az Azure Portalon
+# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Teljes tartománynév létrehozása a Azure Portal Linux rendszerű virtuális gép számára
 
-Amikor egy virtuális gépet (VM) hoz létre a a [az Azure portal](https://portal.azure.com), automatikusan létrejön a virtuális gép nyilvános IP-erőforrást. Az IP-cím használatával érheti el távolról a virtuális Gépet. Bár a portálon hozzon létre egy [teljesen minősített tartománynevét](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), vagy teljes tartománynév, felvehet egy a virtuális gép létrehozása után. Ez a cikk bemutatja a lépéseket a DNS-nevét vagy teljes tartománynév létrehozásához.
+Amikor létrehoz egy virtuális gépet (VM) a [Azure Portal](https://portal.azure.com), a rendszer automatikusan létrehoz egy nyilvános IP-erőforrást a virtuális géphez. Ezt az IP-címet használja a virtuális gép távoli eléréséhez. Bár a portál nem hoz létre [teljesen minősített tartománynevet](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)vagy teljes tartománynevet, a virtuális gép létrehozása után egyet is hozzáadhat. Ez a cikk a DNS-név vagy a teljes tartománynév létrehozásának lépéseit mutatja be.
 
-## <a name="create-a-fqdn"></a>FQDN létrehozása
-Ez a cikk azt feltételezi, hogy már létrehozott egy virtuális Gépet. Ha szükséges, [virtuális gép létrehozása a portálon](quick-create-portal.md) vagy [az Azure CLI-vel](quick-create-cli.md). Miután a virtuális gép működik, és kövesse az alábbi lépéseket:
+## <a name="create-a-fqdn"></a>Teljes tartománynév létrehozása
+Ez a cikk azt feltételezi, hogy már létrehozott egy virtuális gépet. Ha szükséges, [létrehozhat egy virtuális gépet a portálon](quick-create-portal.md) vagy [Az Azure CLI](quick-create-cli.md)használatával. A virtuális gép működése után kövesse az alábbi lépéseket:
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-Ön mostantól távolról csatlakozhat a virtuális gép használata a DNS-névhez, mint például a `ssh azureuser@mydns.westus.cloudapp.azure.com`.
+Most már távolról is csatlakozhat a virtuális géphez a következő DNS-névvel, például `ssh azureuser@mydns.westus.cloudapp.azure.com`:.
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy a virtuális gép rendelkezik egy nyilvános IP-cím és DNS-nevet, akkor telepítheti a közös alkalmazás-keretrendszerek vagy szolgáltatások, mint az nginx, a MongoDB, a Docker, stb.
+Most, hogy a virtuális gép rendelkezik egy nyilvános IP-címmel és egy DNS-névvel, üzembe helyezhet olyan általános alkalmazás-keretrendszereket vagy szolgáltatásokat, mint például az Nginx, a MongoDB, a Docker stb.
 
-Emellett olvashat további [Resource Manager használatával](../../azure-resource-manager/resource-group-overview.md) tippek az Azure-környezetek felépítésével.
+További információt a [Resource Manager használatával](../../azure-resource-manager/resource-group-overview.md) kapcsolatban az Azure-beli üzembe helyezések létrehozásával kapcsolatos tippekhez is találhat.
 

@@ -1,5 +1,5 @@
 ---
-title: IBM Db2 Azure virtuális gépek DBMS üzembe helyezési SAP számítási |} A Microsoft Docs
+title: IBM DB2 Azure Virtual Machines adatbázis-kezelő üzembe helyezés az SAP-munkaterheléshez | Microsoft Docs
 description: IBM Db2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d1de50e6b1b673a2613a893c19633bbd4bd43fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b53207802b84e63f08c26de254ccd86a6b4620e2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409267"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100007"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>IBM Db2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 
@@ -310,98 +309,98 @@ ms.locfileid: "65409267"
 
 
 
-A Microsoft Azure-ral áttelepítheti a meglévő SAP on futó alkalmazáshoz, IBM DB2-höz Linux, UNIX és a Windows (LUW) az Azure virtuális gépekre. SAP-LUW az IBM DB2-höz a rendszergazdák és fejlesztők számára továbbra is használhatják az azonos fejlesztési és felügyeleti eszközöket, amely elérhető a helyszínen.
-Általános információk az SAP Business Suite futó LUW találja a az SAP közösségi hálózati Állapotváltozás-, IBM DB2-höz <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>.
+A Microsoft Azure segítségével áttelepítheti az IBM DB2 for Linux, UNIX és Windows (LUW) rendszerű meglévő SAP-alkalmazást az Azure Virtual Machines szolgáltatásba. Az SAP használata az IBM DB2 for LUW esetében a rendszergazdák és a fejlesztők továbbra is használhatják ugyanazokat a fejlesztési és felügyeleti eszközöket, amelyek a helyszínen is elérhetők.
+Az SAP Business Suite IBM DB2-on való futtatásával kapcsolatos általános információk az SAP Community Network (LUW) <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>webhelyen találhatók.
 
-További információt és SAP az Azure-beli LUW Db2-kapcsolatos frissítésekről, tekintse meg az SAP-Jegyzetnek [2233094]. 
+Az Azure-beli LUW-hez készült SAP on-vel kapcsolatos további információkért lásd: SAP Note [2233094]. 
 
-Az SAP számítási feladatok Azure-ban található különböző cikkek nyilvánosan is.  Javasoljuk, hogy start [SAP számítási feladatok Azure-ban – első lépések a](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) majd válasszon a terület az érdeklődési kör
+Az Azure-ban megjelent SAP számítási feladatok különböző cikkei.  Javasoljuk, hogy az [Azure-beli SAP-számítási feladatok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) elindításához használja az első lépéseket, majd válassza ki az érdeklődési területét
 
-Az alábbi SAP-megjegyzések kapcsolódó Azure-beli SAP kapcsolatban a dokumentumban leírt terület:
+A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak, a jelen dokumentumban foglalt területeken:
 
 | Megjegyzés száma | Beosztás |
 | --- | --- |
-| [1928533] |SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure virtuális gépek típusai |
-| [2015553] |A Microsoft Azure-beli SAP: Támogatás előfeltételei |
-| [1999351] |Továbbfejlesztett Azure Monitoring for SAP hibaelhárítási |
-| [2178632] |Metrikák figyelése a Microsoft Azure-beli SAP-kulcs |
-| [1409604] |A Windows-virtualizálás: Speciális figyelés |
-| [2191498] |SAP használata Linux az Azure-ral: Speciális figyelés |
-| [2233094] |DB6: SAP-alkalmazások Azure-ban, IBM DB2-höz használatával Linux, UNIX és a Windows - további információ |
-| [2243692] |A Microsoft Azure (IaaS) virtuális gép Linux: Az SAP-licenccel kapcsolatos problémák |
-| [1984787] |SUSE LINUX Enterprise Server 12: Telepítési jegyzetek |
-| [2002167] |Red Hat Enterprise Linux 7.x: Telepítés és frissítés |
-| [1597355] |Linux-lapozóterület javaslat |
+| [1928533] |SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure-beli virtuális gépek típusai |
+| [2015553] |SAP on Microsoft Azure: Támogatási előfeltételek |
+| [1999351] |Az SAP-hez készült bővített Azure monitoring hibaelhárítása |
+| [2178632] |Az SAP-hez Microsoft Azure legfontosabb monitorozási metrikák |
+| [1409604] |Virtualizáció Windows rendszeren: Továbbfejlesztett figyelés |
+| [2191498] |SAP Linuxon az Azure-ban: Továbbfejlesztett figyelés |
+| [2233094] |DB6: SAP-alkalmazások az Azure-ban az IBM DB2-vel Linux, UNIX és Windows rendszerekre – további információk |
+| [2243692] |Linux on Microsoft Azure (IaaS) virtuális gép: SAP-licencekkel kapcsolatos problémák |
+| [1984787] |SUSE LINUX Enterprise Server 12: Telepítési megjegyzések |
+| [2002167] |Red Hat Enterprise Linux 7. x: Telepítés és frissítés |
+| [1597355] |A Linux rendszerhez készült swap-space-javaslat |
 
-Egy Pull-kérelem-olvassa el ezt a dokumentumot, mint rendelkezik olvassa el a dokumentumot [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) lévő többi útmutató és a [SAP számítási feladatok az Azure-dokumentáció](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+A jelen dokumentumban leírtak szerint olvassa el az [azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP](dbms_guide_general.md) -munkaterheléshez és az [Azure-dokumentáció SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)-munkaterhelésének egyéb útmutatói című dokumentumait. 
 
 
-## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM Db2, Linux, UNIX és a Windows verzió támogatása
-SAP a Microsoft Azure Virtual Machine Services LUW az IBM Db2-tól 10,5 Db2-verzió támogatott.
+## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM DB2 Linux-, UNIX-és Windows-verzió-támogatáshoz
+Az SAP on IBM DB2 for LUW on Microsoft Azure Virtual Machine Services a DB2 10,5-es verziójában támogatott.
 
-Támogatott SAP-termékek és Azure-beli Virtuálisgép-típusok kapcsolatos információkért tekintse meg az SAP-Jegyzetnek [1928533].
+További információ a támogatott SAP-termékekről és az Azure-beli virtuális gépek típusairól: SAP Note [1928533].
 
-## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM Db2, Linux, UNIX és a beállítási útmutatója Windows Azure virtuális gépeken futó SAP-telepítések
-### <a name="storage-configuration"></a>Tárolási konfiguráció
-Adatbázis összes fájlja az NTFS fájlrendszerrel, közvetlenül csatlakoztatott lemezek alapján kell tárolni. Ezeket a lemezeket az Azure virtuális géphez csatlakoztatva vannak, és az Azure BLOB Storage-oldal alapulnak (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) vagy a Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Hálózati meghajtók vagy távoli megosztások a következő fájl Azure-szolgáltatásokat, mint bármilyen típusú **nem** támogatott adatbázis-fájlok: 
+## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM DB2 Linux-, UNIX-és Windows-konfigurációs irányelvek az Azure-beli virtuális gépeken futó SAP-telepítésekhez
+### <a name="storage-configuration"></a>Tároló konfigurációja
+Az összes adatbázisfájlt a közvetlenül csatlakoztatott lemezek alapján kell tárolni az NTFS fájlrendszerben. Ezek a lemezek az Azure-beli virtuális géphez vannak csatlakoztatva, és az Azure Page blob<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>Storage-ban (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>) vagy Managed Disks () alapulnak. Az adatbázisfájlok **nem** támogatják a különböző hálózati meghajtókat vagy távoli megosztásokat, például a következő Azure-Fájlszolgáltatások: 
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
 
-Azure lap BLOB Storage vagy a Managed Disks-lemezekkel, a kimutatások végzett [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) telepítéshez, a Db2 DBMS, valamint a alkalmazni.
+Az Azure-beli BLOB Storage vagy a Managed Disks-alapú lemezek használatával az [azure Virtual Machines adatbázis-kezelő rendszerhez készült, az SAP](dbms_guide_general.md) számítási feladatokhoz való üzembe helyezésével kapcsolatos megfontolások a DB2 adatbázis-kezelővel együtt üzemelő példányokra vonatkoznak.
 
-Amint azt korábban a dokumentum általános része, az Azure-lemezek IOPS átviteli kvótái létezik. A pontos kvóták a virtuális gép típusától függően használhatók. Saját kvótával rendelkező virtuális gépek típusainak listáját találja [itt (Linux)] [ virtual-machines-sizes-linux] és [itt (Windows)][virtual-machines-sizes-windows].
+A dokumentum általános részében leírtak szerint az Azure-lemezek IOPS átviteli sebességére vonatkozó kvóták léteznek. A pontos kvóták a használt virtuális gép típusától függően változnak. A kvótákkal rendelkező virtuálisgép-típusok listáját [itt találja (Linux)][virtual-machines-sizes-linux] és [itt (Windows)][virtual-machines-sizes-windows].
 
-Mindaddig, amíg a jelenlegi IOPS lemezenként nem elegendő, lehetőség az adatbázis összes fájlja egy egyetlen csatlakoztatott lemezen tárolja. Mivel mindig kell elkülöníti az adatfájlok és a tranzakciós naplófájlok különböző lemezek és virtuális merevlemezeken.
+Ha a jelenlegi IOPS-kvóta lemezenként elegendő, akkor egyetlen csatlakoztatott lemezen is tárolhatók az összes adatbázis-fájl. Az adatfájlok és a tranzakciónaplók fájljait mindig külön lemezeken/virtuális merevlemezeken kell elkülöníteni.
 
-Teljesítménnyel kapcsolatos megfontolások is tekintse meg fejezet "Az Adatbiztonság és adatbázis-könyvtárak a teljesítménnyel kapcsolatos szempontok" az SAP telepítési útmutatóit.
+A teljesítményre vonatkozó megfontolásokat az SAP telepítési útmutatói című témakör "adatbiztonsági és teljesítménybeli szempontok az adatbázis-címtárakhoz" című részében találhat.
 
-Másik lehetőségként használhatja a Windows Tárolókészletek (csak elérhető a Windows Server 2012 és újabb) leírt módon [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) hozhat létre egy nagy méretű logikai eszköz több lemez.
+Azt is megteheti, hogy a Windows Storage-készleteket (csak a Windows Server 2012-es és újabb verziókban érhető el) használja az [Azure Virtual Machines](dbms_guide_general.md)
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-A lemezek, a Db2 tárolási útvonalat a sapdata és saptmp címtárak tartalmazó adjon meg egy 512 KB-os fizikai lemez szektormérete. A Windows Tárolókészletek használata esetén a tárolókészletek a parancssori felület használatával a paraméter használatával manuálisan létre kell hoznia `-LogicalSectorSizeDefault`. További információkért lásd: <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+A sapdata-és saptmp-címtárakhoz tartozó DB2 Storage-elérési utakat tartalmazó lemezek esetében meg kell adnia a 512 KB méretű fizikai lemez szektor méretét. Windows Storage-készletek használatakor manuálisan kell létrehoznia a tárolási készleteket parancssori felületen keresztül a paraméter `-LogicalSectorSizeDefault`használatával. További információ: <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
-Azure M sorozatú virtuális gép csökkenteni lehet a késés, a tranzakciós naplókhoz való írása tényezők befolyásolják, a teljesítmény az Azure Premium Storage, Azure Write Accelerator használatakor képest. Ezért a virtuális, a Db2 tranzakciós naplókhoz a kötetet alkotó Azure Write Accelerator szabad telepíteni. A dokumentumban olvasható részletei [Írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
+Az Azure M sorozatú virtuális gépek esetében a tranzakciós naplókba írt késések az Azure írásgyorsító használatakor az Azure Premium Storage teljesítményéhez képest csökkenhetnek. Ezért telepítenie kell az Azure-írásgyorsító a DB2-tranzakciónaplók kötetét alkotó virtuális merevlemez (ek) számára. A részletek olvashatók a dokumentumban [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
 
-### <a name="backuprestore"></a>Biztonsági mentés / visszaállítás
-A biztonsági mentési és visszaállítási funkció az IBM DB2-höz tartozó LUW ugyanúgy, mint a standard szintű Windows Server operációs rendszerek és a Hyper-V támogatott.
+### <a name="backuprestore"></a>Biztonsági mentés/visszaállítás
+A LUW IBM DB2 biztonsági mentési/helyreállítási funkciója ugyanúgy támogatott, mint a normál Windows Server operációs rendszereken és a Hyper-V-ben.
 
-Győződjön meg arról, hogy már működik a adatbázis érvényes biztonsági mentési stratégiájának. 
+Győződjön meg arról, hogy érvényes adatbázis-biztonsági mentési stratégia van érvényben. 
 
-Operációs rendszer nélküli telepítések, mint biztonsági mentési/visszaállítási teljesítménye attól függ, hány kötetek párhuzamosan olvasható, és az átviteli sebességet, ezek a kötetek lehetnek. Emellett a biztonságimásolat-tömörítési funkciók által használt CPU-felhasználás előfordulhat, hogy fontos szerepet játszik a virtuális gépek nyolc CPU szállal. Ezért egy feltételezheti, hogy:
+Az operációs rendszer nélküli telepítésekhez hasonlóan a biztonsági mentési/visszaállítási teljesítmény attól függ, hogy hány kötet olvasható párhuzamosan, és milyen átviteli sebesség lehet a köteten. Emellett a biztonsági másolatok tömörítése által használt CPU-felhasználás jelentős szerepet játszhat a legfeljebb nyolc CPU-szálat tartalmazó virtuális gépeken. Ezért feltételezhető, hogy az alábbiakra van lehetőség:
 
-* A kevesebb, a lemezek számát fogja tárolni, az adatbázis-eszközökre, annál kisebb a teljes átviteli sebesség beolvasás
-* Minél kisebb a virtuális gépen, a jogosultságeszkalálást szálak száma a biztonságimásolat-tömörítési funkciók hatását
-* A kevesebb céllal (lemezek Stripe könyvtárak) írni a biztonsági mentés, az alacsonyabb az átviteli sebesség
+* Minél kevesebb az adatbázis-eszközök tárolására használt lemezek száma, annál kisebb a teljes teljesítmény az olvasás során
+* Minél kevesebb CPU-szál van a virtuális gépen, annál súlyosabb a biztonsági másolatok tömörítésének hatása
+* A kevesebb célpont (könyvtárak, lemezek) a biztonsági mentés megírásához, annál alacsonyabb az átviteli sebesség
 
-Növelje az írási tárolók, a két lehetőség lehet igényeitől függően használt/kombinált:
+A megjelenő célok számának növeléséhez két lehetőség is használható/kombinálható az igényeitől függően:
 
-* A biztonsági mentési célkötet szétosztott több lemez keresztül az IOPS átviteli sebességet a köteten lévő csíkozott javítása érdekében
-* Egynél több céloldali könyvtár használatával történő biztonsági mentés írása
+* A biztonsági mentési cél kötetének csíkozása több lemezre a IOPS átviteli sebességének növelése érdekében a csíkozott köteten
+* Egynél több célkönyvtár használata a biztonsági mentés írásához
 
 >[!NOTE]
->Db2, a Windows nem támogatja a Windows VSS technológia. Ennek eredményeképpen a virtuális gép biztonsági másolat alkalmazáskonzisztens az Azure Backup szolgáltatás a Db2-adatbázis-kezelő telepített virtuális gépek nem javítható.
+>A DB2 on Windows rendszeren nem támogatott a Windows VSS technológiája. Ennek eredményeképpen a Azure Backup szolgáltatás konzisztens virtuálisgép-biztonsági mentése nem használható olyan virtuális gépek számára, amelyeken a DB2-adatbázis telepítve van.
 
-### <a name="high-availability-and-disaster-recovery"></a>Magas rendelkezésre állás és vészhelyreállítás
-A Microsoft Fürtkiszolgáló (MSCS) nem támogatott.
+### <a name="high-availability-and-disaster-recovery"></a>Magas rendelkezésre állás és vész-helyreállítás
+A Microsoft Cluster Server (MSCS) nem támogatott.
 
-Db2 magas rendelkezésre állású vész-helyreállítási (HADR) használata támogatott. Ha a virtuális gépek, a magas rendelkezésre ÁLLÁSÚ konfiguráció névfeloldás működik, a nem különböznek a beállítása az Azure-ban minden olyan beállítás, amely a helyszínen történik. Nem ajánlott, csak az IP-feloldási támaszkodik.
+A DB2 magas rendelkezésre állású vész-helyreállítási (HADR) használata támogatott. Ha a HA-konfiguráció virtuális gépei működnek a névfeloldással, az Azure-beli beállítás nem különbözik a helyszínen végzett telepítéstől. Nem ajánlott kizárólag az IP-feloldásra támaszkodni.
 
-Ne használja a Georeplikáció a storage-fiókok, amelyek az adatbázis lemezeinek tárolására. További információkért tekintse meg a dokumentum [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md). 
+Ne használja a Geo-replikációt az adatbázis-lemezeket tároló Storage-fiókok esetében. További információkért tekintse meg az [Azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP](dbms_guide_general.md)-munkaterheléshez című dokumentumra vonatkozó szempontokat. 
 
 ### <a name="accelerated-networking"></a>Gyorsított hálózatkezelés
-A Windows a Db2-környezetek, erősen javasoljuk, hogy a dokumentumban ismertetett módon kihasználhassák a gyorsított hálózatkezelés az Azure működésének [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Emellett érdemes lehet szereplő javaslatok útmutatóként [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md). 
+A Windows rendszerhez készült DB2-telepítések esetében erősen ajánlott a gyorsított hálózatkezelés Azure-funkcióinak használata, ahogy azt a dokumentum [Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)-gyorsított hálózata című témakörben leírtak szerint. Tekintse meg az [Azure Virtual Machines adatbázis-kezelői szolgáltatás SAP](dbms_guide_general.md)-munkaterheléshez való üzembe helyezésével kapcsolatos szempontokat is. 
 
 
-### <a name="specifics-for-linux-deployments"></a>Linux-telepítések-adatait
-Mindaddig, amíg a jelenlegi IOPS lemezenként nem elegendő, lehetőség az adatbázis összes fájlja egy egyetlen lemezen tárolja. Mivel mindig kell elkülöníti az adatfájlok és a tranzakciós naplófájlok különböző lemezek és virtuális merevlemezeken.
+### <a name="specifics-for-linux-deployments"></a>A Linux rendszerbe állításokra vonatkozó részletek
+Ha a jelenlegi IOPS-kvóta lemezenként elegendő, az összes adatbázis-fájlt egyetlen lemezen tárolhatja. Az adatfájlok és a tranzakciónaplók fájljait mindig külön lemezeken/virtuális merevlemezeken kell elkülöníteni.
 
-Azt is megteheti, ha egy Azure virtuális Merevlemezzel IOPS és az i/o műveletek átviteli sebesség nem elegendő, használhatja az LVM (a Logical Volume Manager) vagy MDADM a dokumentumban ismertetett módon [Considerations for Azure Virtual Machines DBMS üzembe helyezési SAP számítási](dbms_guide_general.md)keresztül több lemez egy nagy méretű logikai eszköz létrehozásához.
-A lemezek, a Db2 tárolási útvonalat a sapdata és saptmp címtárak tartalmazó adjon meg egy 512 KB-os fizikai lemez szektormérete.
+Ha az egyetlen Azure VHD-fájl IOPS vagy I/O-átviteli sebessége nem elegendő, az LVM (logikai kötet-kezelő) vagy a MDADM az [azure Virtual Machines adatbázis](dbms_guide_general.md) -kezelői szolgáltatás üzembe helyezése az SAP-munkaterheléshez című témakörben leírtak szerint nagyméretű logikai eszköz több lemezen.
+A sapdata-és saptmp-címtárakhoz tartozó DB2 Storage-elérési utakat tartalmazó lemezek esetében meg kell adnia a 512 KB méretű fizikai lemez szektor méretét.
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
 ### <a name="other"></a>Egyéb
-Egyéb általános területeken, például az Azure rendelkezésre állási csoportok vagy az SAP-figyelés a alkalmazni a dokumentumban ismertetett módon [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) központi telepítéséhez, valamint az IBM adatbázist rendelkező virtuális gépek .
+Minden egyéb általános terület, például az Azure-beli rendelkezésre állási készletek vagy az SAP-figyelés az Azure-beli virtuális gépek az IBM-adatbázissal való üzembe helyezésére vonatkozó dokumentumokkal kapcsolatos megfontolásokban ismertetett módon, az [azure Virtual Machines adatbázis](dbms_guide_general.md) -kezelői környezet

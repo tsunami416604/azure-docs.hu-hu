@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: fd3ec276fdc95ad326d14a5b21e8ab793b154080
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: db9f7e75af01ed83c39ef3a37ab2612426ef6ea4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875780"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099609"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Új eszköz típusának meghatározása az Azure IoT Central alkalmazásban
 
@@ -49,7 +49,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazásra. Ha elvégezte az [Azure IoT Central-alkalmazás létrehozása](quick-deploy-iot-central.md) rövid útmutatót, újból felhasználhatja az abban létrehozott alkalmazást. Egyébként hajtsa végre az alábbi lépéseket egy üres Azure IoT Central-alkalmazás létrehozásához:
 
-1. Lépjen az Azure IoT Central [Alkalmazáskezelő](https://aka.ms/iotcentral) oldalára.
+1. Navigáljon az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyére.
 
 2. Írja be az Azure-előfizetés eléréséhez használt e-mail-címet és jelszót:
 
@@ -57,7 +57,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazá
 
 3. Új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassza az **új alkalmazás**lehetőséget:
 
-    ![Azure IoT Central Alkalmazáskezelő oldal](./media/tutorial-define-device-type/iotcentralhome.png)
+    ![Az Azure IoT Central Application Manager lapja](./media/tutorial-define-device-type/iotcentralhome.png)
 
 4. Új Azure IoT Central-alkalmazás létrehozása:
     

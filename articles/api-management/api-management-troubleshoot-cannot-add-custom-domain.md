@@ -9,18 +9,17 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
-ms.openlocfilehash: 7aaf29ddf52fb07524aa972f12ca18c235a40928
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 30dfd864c6c237024c72325da813691ac5043bd0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68351518"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072091"
 ---
-# <a name="failed-to-update-api-management-service-hostnames"></a>Nem sikerült frissíteni az API Management-szolgáltatás gazdagépneveit
+# <a name="failed-to-update-api-management-service-hostnames"></a>Nem sikerült frissíteni API Management Service-gazdagépeket
 
 Ez a cikk a "nem sikerült frissíteni API Management Service hostnames" hibát mutatja be, amely akkor fordulhat elő, ha egyéni tartományt ad hozzá az Azure API Management szolgáltatáshoz. Ez a cikk a probléma megoldásához nyújt hibaelhárítási lépéseket.
 
@@ -46,7 +45,7 @@ A probléma megoldásához kövesse az alábbi lépéseket:
 1. Ha a API Management szolgáltatás nem szerepel a listában, válassza a **hozzáférési házirend hozzáadása**lehetőséget, majd hozza létre a következő hozzáférési szabályzatot:
     - **Konfigurálás sablonból**: Nincsenek
     - **Rendszerbiztonsági tag kiválasztása**: Keresse meg a API Management szolgáltatás nevét, majd válassza ki a listából.
-    - **Kulcs engedélyei**: None
+    - **Kulcs engedélyei**: Nincsenek
     - **Titkos kód engedélyei**: Beolvasás
     - **Tanúsítvány engedélyei**: Nincsenek
 1. A hozzáférési házirend létrehozásához kattintson **az OK gombra** .

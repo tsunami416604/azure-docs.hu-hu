@@ -1,6 +1,6 @@
 ---
-title: Az Azure API Management-sablon erőforrásainak |} A Microsoft Docs
-description: További információ a típusú erőforrásokat az Azure API Management fejlesztői portál sablonjainak érhető el.
+title: Azure API Management sablon erőforrásai | Microsoft Docs
+description: Ismerje meg az Azure API Management fejlesztői portál sablonjaiban használható erőforrások típusait.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,65 +10,64 @@ ms.assetid: 51a1b4c6-a9fd-4524-9e0e-03a9800c3e94
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 673dcbeb630899eebc328cd4fae16f7fe8f47a55
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b634f871670d252aadaf2d2a672c4d5f43a6e5d9
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557885"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073338"
 ---
-# <a name="azure-api-management-template-resources"></a>Az Azure API Management-sablon erőforrásainak
-Az Azure API Management biztosít a következő típusú erőforrásokat használja, a fejlesztői portál sablonjainak.  
+# <a name="azure-api-management-template-resources"></a>Azure API Management-sablon erőforrásai
+Az Azure API Management a következő típusú erőforrásokat biztosítja a fejlesztői portál sablonjaiban való használathoz.  
   
 -   [Karakterlánc-erőforrások](#strings)  
   
--   [Erőforrások szimbóluma](#glyphs)  
+-   [Karakterjel-erőforrások](#glyphs)  
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="strings"></a> Karakterlánc-erőforrások  
- Az API Management biztosítja a karakterlánc-erőforrások széles köréhez használható a fejlesztői portálon. Ezek az erőforrások van honosítva API Management által támogatott nyelveket. Sablonok alapértelmezett készletét oldalfejlécben, címkéket és semmilyen állandó karakterláncokba, amelyeket a jelennek meg a fejlesztői portál ezeket az erőforrásokat használ. A sablonok egy karakterlánc-erőforrást használ, adja meg az erőforrás karakterlánc előtag karakterlánc neve követ, az alábbi példában látható módon.  
+##  <a name="strings"></a>Karakterlánc-erőforrások  
+ A API Management a fejlesztői portálon használható karakterlánc-erőforrások átfogó készletét nyújtja. Ezek az erőforrások a API Management által támogatott összes nyelvre honosítva vannak. Az alapértelmezett sablonok ezeket az erőforrásokat használják a fejlesztői portálon megjelenített fejlécek, címkék és bármely állandó sztringek esetében. Ha karakterlánc-erőforrást szeretne használni a sablonokban, adja meg az erőforrás-karakterlánc előtagját, amelyet a karakterlánc neve követ, az alábbi példában látható módon.  
   
 ```  
 {% localized "Prefix|Name" %}  
   
 ```  
   
- Az alábbi példa a termék lista sablonból, és megjeleníti a **termékek** az oldal tetején.  
+ A következő példa a Terméklista sablonból származik, és megjeleníti az oldal tetején található **termékeket** .  
   
 ```  
 <h2>{% localized "ProductsStrings|PageTitleProducts" %}</h2>  
   
 ```  
   
-A következő honosítási beállítások támogatottak:
+A következő honosítási lehetőségek támogatottak:
 
 | Területi beállítás    | Nyelv               |
 |-----------|------------------------|
-| „hu”      | "Angol"              |
-| "cs"      | "Čeština"              |
-| "de"      | "Deutsch"              |
-| "es"      | "Español"              |
-| "fr"      | "Franciaország"             |
-| "hu"      | "Magyar"               |
-| ""      | "Italiano"             |
-| "ja-JP"   | "日本語"                |
-| "ko"      | "한국어"                |
-| "nl"      | "Nederlands"           |
-| "pl."      | "Polski"               |
-| "pt-br"   | "Portugál (Brazília)"   |
-| "pt-pt"   | "Portugál (Portugália)" |
-| "ru"      | "Русский"              |
-| "sv"      | "Svenska"              |
-| "tr"      | "Türkçe"               |
-| "zh-hans" | "中文(简体)"           |
-| "zh-hant" | "中文(繁體)"           |
+| „hu”      | Angol              |
+| CS      | Cseh              |
+| de      | Deutsch              |
+| es      | Spanyol              |
+| fr      | Francia             |
+| hu      | Magyar               |
+| Ez      | Italiano             |
+| "ja-JP"   | 日本語                |
+| Ko      | "한국어"                |
+| nl      | Nederlands           |
+| pl      | Polski               |
+| "pt-br"   | "Portugál (Brasil)"   |
+| "PT-PT"   | "Portugál (Portugália)" |
+| ru      | "Русский"              |
+| Sv      | "Svenska"              |
+| TR      | Türkçe               |
+| "zh-Hans" | "kínai (egyszerűsített)"           |
+| "zh-Hant" | "kínai (繁體)"           |
 
- Tekintse meg a következő táblákat használható a fejlesztői portál sablonjainak erőforrásait. A tábla neve a karakterlánc-erőforrásokat, az adott tábla előtagot használja.  
+ Tekintse át a következő táblázatokat a fejlesztői portál sablonjaiban használható karakterlánc-erőforrásokhoz. A tábla nevét használja a tábla karakterlánc-erőforrásainak előtagjaként.  
   
 -   [ApisStrings](#ApisStrings)  
   
@@ -110,13 +109,13 @@ A következő honosítási beállítások támogatottak:
   
 -   [UserProfile](#UserProfile)  
   
-###  <a name="ApisStrings"></a> ApisStrings  
+###  <a name="ApisStrings"></a>ApisStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
 |PageTitleApis|API-k|  
   
-###  <a name="AppDetailsStrings"></a> AppDetailsStrings  
+###  <a name="AppDetailsStrings"></a>AppDetailsStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
@@ -125,482 +124,482 @@ A következő honosítási beállítások támogatottak:
 |WebApplicationsScreenshotAlt|Képernyőfelvétel|  
 |WebApplicationsScreenshotsHeader|Képernyőképek|  
   
-###  <a name="ApplicationListStrings"></a> ApplicationListStrings  
+###  <a name="ApplicationListStrings"></a>ApplicationListStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Biztosan el kívánja távolítani az alkalmazást?|  
-|WebDevelopersAppNotPublished|Not published|  
+|WebDevelopersAppNotPublished|Nincs közzétéve|  
 |WebDevelopersAppNotSubmitted|Nincs elküldve|  
 |WebDevelopersAppTableCategoryHeader|Category|  
 |WebDevelopersAppTableNameHeader|Name (Név)|  
-|WebDevelopersAppTableStateHeader|Állapot|  
+|WebDevelopersAppTableStateHeader|State|  
 |WebDevelopersEditLink|Szerkesztés|  
 |WebDevelopersRegisterAppLink|Alkalmazás regisztrálása|  
 |WebDevelopersRemoveLink|Eltávolítás|  
 |WebDevelopersSubmitLink|Küldés|  
-|WebDevelopersYourApplicationsHeader|Az alkalmazások|  
+|WebDevelopersYourApplicationsHeader|Alkalmazások|  
   
-###  <a name="AppStrings"></a> AppStrings  
+###  <a name="AppStrings"></a>AppStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
 |WebApplicationsHeader|Alkalmazások|  
   
-###  <a name="CommonResources"></a> CommonResources  
+###  <a name="CommonResources"></a>CommonResources  
   
 |Name (Név)|Text|  
 |----------|----------|  
 |NoItemsToDisplay|Nincs eredmény.|  
-|GeneralExceptionMessage|Valami nem megfelelő. Ez lehet egy ideiglenes problémáról vagy egy hiba. Kérjük próbálkozzon újra.|  
-|GeneralJsonExceptionMessage|Valami nem megfelelő. Ez lehet egy ideiglenes problémáról vagy egy hiba. Kérjük frissítse az oldalt, és próbálkozzon újra.|  
-|ConfirmationMessageUnsavedChanges|Néhány nem mentett módosítások vannak. Biztosan visszavonja és elveti a módosításokat szeretne?|  
+|GeneralExceptionMessage|Valami nem megfelelő. Ez lehet egy ideiglenes hiba vagy egy hiba. Próbálkozzon újra.|  
+|GeneralJsonExceptionMessage|Valami nem megfelelő. Ez lehet egy ideiglenes hiba vagy egy hiba. Töltse be újra a lapot, és próbálkozzon újra.|  
+|ConfirmationMessageUnsavedChanges|Néhány nem mentett módosítás. Biztos, hogy megszakítja és elveti a módosításokat?|  
 |AzureActiveDirectory|Azure Active Directory|  
-|HttpLargeRequestMessage|HTTP-kérés törzse túl nagy.|  
+|HttpLargeRequestMessage|A HTTP-kérelem törzse túl nagy.|  
   
-###  <a name="CommonStrings"></a> CommonStrings  
+###  <a name="CommonStrings"></a>CommonStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
 |ButtonLabelCancel|Mégse|  
 |ButtonLabelSave|Mentés|  
-|GeneralExceptionMessage|Valami nem megfelelő. Ez lehet egy ideiglenes problémáról vagy egy hiba. Kérjük próbálkozzon újra.|  
-|NoItemsToDisplay|Nem találhatók elemek megjelenítéséhez.|  
-|PagerButtonLabelFirst|Első|  
+|GeneralExceptionMessage|Valami nem megfelelő. Ez lehet egy ideiglenes hiba vagy egy hiba. Próbálkozzon újra.|  
+|NoItemsToDisplay|Nincsenek megjeleníthető elemek.|  
+|PagerButtonLabelFirst|Utónév|  
 |PagerButtonLabelLast|Vezetéknév|  
 |PagerButtonLabelNext|Következő lépés|  
 |PagerButtonLabelPrevious|Előző|  
-|PagerLabelPageNOfM|Oldal {0} , {1}|  
+|PagerLabelPageNOfM|Lapja {0}{1}|  
 |PasswordTooShort|A jelszó túl rövid|  
-|EmailAsPassword|Ne használja a e-mail-címét jelszóként|  
-|PasswordSameAsUserName|A jelszó nem tartalmazhatja a felhasználónevet|  
+|EmailAsPassword|E-mail-cím használata jelszóként|  
+|PasswordSameAsUserName|A jelszó nem tartalmazhatja a felhasználónevét|  
 |PasswordTwoCharacterClasses|Használjon eltérő karakterosztályokat|  
-|PasswordTooManyRepetitions|Túl sokszor ismétlődik|  
+|PasswordTooManyRepetitions|Túl sok ismétlődés|  
 |PasswordSequenceFound|A jelszó szekvenciákat tartalmaz|  
 |PagerLabelPageSize|Oldalméret|  
-|CurtainLabelLoading|Betöltése...|  
-|TablePlaceholderNothingToDisplay|Nem szerepel megjeleníthető adat a kijelölt időszak és a hatókör|  
+|CurtainLabelLoading|Betöltés folyamatban...|  
+|TablePlaceholderNothingToDisplay|A kiválasztott időszak és a hatókör nem rendelkezik a megadott értékkel.|  
 |ButtonLabelClose|Bezárás|  
   
-###  <a name="Documentation"></a> Dokumentáció  
+###  <a name="Documentation"></a>Dokumentáció  
   
 |Name (Név)|Text|  
 |----------|----------|  
-|WebDocumentationInvalidHeaderErrorMessage|Érvénytelen fejléc "{0}"|  
-|WebDocumentationInvalidRequestErrorMessage|Érvénytelen a kérelem URL-címe|  
+|WebDocumentationInvalidHeaderErrorMessage|Érvénytelen fejléc:{0}""|  
+|WebDocumentationInvalidRequestErrorMessage|Érvénytelen kérési URL|  
 |TextboxLabelAccessToken|Hozzáférési jogkivonat *|  
-|DropdownOptionPrimaryKeyFormat|Elsődleges –{0}|  
-|DropdownOptionSecondaryKeyFormat|Másodlagos-{0}|  
-|WebDocumentationSubscriptionKeyText|Az előfizetési kulcs|  
-|WebDocumentationTemplatesAddHeaders|Adja hozzá a szükséges HTTP-fejlécek|  
+|DropdownOptionPrimaryKeyFormat|Elsődleges{0}|  
+|DropdownOptionSecondaryKeyFormat|Másodlagos{0}|  
+|WebDocumentationSubscriptionKeyText|Előfizetési kulcs|  
+|WebDocumentationTemplatesAddHeaders|A szükséges HTTP-fejlécek felvétele|  
 |WebDocumentationTemplatesBasicAuthSample|Basic Authorization – minta|  
-|WebDocumentationTemplatesCurlForBasicAuth|a Basic Authorization használata:--{username} felhasználó: {password}|  
-|WebDocumentationTemplatesCurlValuesForPath|Adja meg az elérési út paramétereihez (így jelölve: {...}), az előfizetési kulcs és a lekérdezési paraméterek értékeinek értékek|  
+|WebDocumentationTemplatesCurlForBasicAuth|alapszintű engedélyezési használat:--felhasználó {username}: {Password}|  
+|WebDocumentationTemplatesCurlValuesForPath|Adja meg az elérésiút-paraméterek ({...}) értékeit, az előfizetési kulcsot és a lekérdezési paraméterek értékeit.|  
 |WebDocumentationTemplatesDeveloperKey|Az előfizetési kulcs megadása|  
-|WebDocumentationTemplatesJavaApache|Ez a minta webhelyről () HTTP Components Apache HTTP-ügyfelét használja http://hc.apache.org/httpcomponents-client-ga/)|  
-|WebDocumentationTemplatesOptionalParams|Az opcionális paraméterek értékeinek megadása szükség szerint|  
-|WebDocumentationTemplatesPhpPackage|Ez a minta a http_request2 típusú csomagot használja. (További információ: https://pear.php.net/package/HTTP_Request2)|  
-|WebDocumentationTemplatesPythonValuesForPath|Adja meg az értékeket az elérési út paramétereihez (így jelölve: {...}) és a kérés törzsének, szükség esetén|  
+|WebDocumentationTemplatesJavaApache|Ez a példa az Apache HTTP-ügyfelet használja a HTTP-összetevőkből (http://hc.apache.org/httpcomponents-client-ga/)|  
+|WebDocumentationTemplatesOptionalParams|Szükség szerint határozza meg a választható paraméterek értékeit|  
+|WebDocumentationTemplatesPhpPackage|Ez a példa a HTTP_Request2 csomagot használja. (További információ: https://pear.php.net/package/HTTP_Request2)|  
+|WebDocumentationTemplatesPythonValuesForPath|Határozza meg az elérésiút-paraméterek ({...}) értékeit, és szükség esetén kérje a törzset.|  
 |WebDocumentationTemplatesRequestBody|Kéréstörzs megadása|  
-|WebDocumentationTemplatesRequiredParams|Adja meg az értékeket az alábbi kötelező paraméterekhez|  
-|WebDocumentationTemplatesValuesForPath|Adja meg az értékeket az elérési út paramétereihez (így jelölve: {...})|  
-|OAuth2AuthorizationEndpointDescription|Az engedélyezési végpont az erőforrás tulajdonosa használhatnak, és engedélyek beszerzésére szolgál.|  
-|OAuth2AuthorizationEndpointName|engedélyezési végpont|  
-|OAuth2TokenEndpointDescription|A jogkivonat-végpont segítségével az ügyfél hozzáférési jogkivonat beszerzése az engedélyezési típust szabályzatkérelem vagy a frissítési jogkivonatot.|  
-|OAuth2TokenEndpointName|jogkivonat-végpont|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Description|< p\> az ügyfél kezdeményezi a folyamat során az erőforrás tulajdonosa felhasználói ügynököt az engedélyezési végpontra irányítja.  Az ügyfél tartalmazza az ügyfél-azonosítója, a megadott hatókörben, a helyi állapotot és a egy átirányítási URI-t, amelyhez az engedélyezési kiszolgáló elküldi a felhasználói ügynök vissza, ha hozzáférést (engedélyezett vagy tiltott).     < /p\> < p\> az engedélyezési kiszolgáló hitelesíti az erőforrás tulajdonosa (a felhasználói ügynök) n keresztül, és megállapítja, hogy az erőforrás tulajdonosa vagy az ügyfél-hozzáférési kérés elutasítása.     < /p\> < p\> feltéve, hogy az erőforrás tulajdonosa megadja a hozzáférést, az engedélyezési kiszolgáló visszairányítja a felhasználói ügynököt az ügyfélnek, az átirányítás, a megadott URI azonosító használatával korábbi (a kérésben vagy az ügyfél registrati során a).  Az átirányítási URI tartalmazza az engedélyezési kódot, és az ügyfél által korábban megadott összes helyi állapotot.     </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ErrorDescription|< p\> Ha a felhasználó elutasítja a hozzáférési kérést, vagy ha a kérés érvénytelen, a rendszer értesíti az ügyfélt az átirányításhoz hozzáfűzött alábbi paraméterek használatával: < /p\>|  
+|WebDocumentationTemplatesRequiredParams|A következő kötelező paraméterek értékeinek megadása|  
+|WebDocumentationTemplatesValuesForPath|Az elérésiút-paraméterek értékeinek megadása (lásd: {...})|  
+|OAuth2AuthorizationEndpointDescription|Az engedélyezési végpont az erőforrás-tulajdonossal való interakcióra és egy engedélyezési engedély beszerzésére szolgál.|  
+|OAuth2AuthorizationEndpointName|Engedélyezési végpont|  
+|OAuth2TokenEndpointDescription|A jogkivonat-végpontot az ügyfél a hozzáférési jogkivonat beszerzéséhez használja az engedélyezési vagy frissítési jogkivonat megadásával.|  
+|OAuth2TokenEndpointName|Jogkivonat-végpont|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Description|< p\> az ügyfél kezdeményezi a folyamatot úgy, hogy az erőforrás-tulajdonos felhasználói ügynökét az engedélyezési végpontra irányítja.  Az ügyfél tartalmazza az ügyfél-azonosítót, a kért hatókört, a helyi állapotot, valamint egy átirányítási URI-t, amelyhez az engedélyezési kiszolgáló a hozzáférés engedélyezése (vagy elutasítása) után visszaküldi a felhasználói ügynököt.     </p\> < p\> az engedélyezési kiszolgáló hitelesíti az erőforrás-tulajdonost (a felhasználói ügynökön keresztül), és megállapítja, hogy az erőforrás tulajdonosa engedélyezi vagy megtagadja az ügyfél hozzáférési kérelmét.     </p\> < p\> feltételezi, hogy az erőforrás-tulajdonos hozzáférést ad hozzá, az engedélyezési kiszolgáló a korábban megadott átirányítási URI használatával átirányítja a felhasználói ügynököt az ügyfélnek (a kérelemben vagy az ügyfél registrati bekapcsolva).  Az átirányítási URI tartalmaz egy engedélyezési kódot és az ügyfél által korábban megadott helyi állapotot.     </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ErrorDescription|< p\> ha a felhasználó megtagadja a hozzáférési kérést, ha a kérés érvénytelen, a rendszer az átirányítási következő paraméterekkel veszi fel az ügyfelet: </p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Name|Engedélyezési kérés|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_RequestDescription|< p\> az ügyfélalkalmazás kell küldenie a felhasználót az engedélyezési végpont az OAuth-folyamat kezdeményezése céljából.          Az engedélyezési végponton a felhasználó elvégzi a hitelesítést, és ezután vagy megtagadja a hozzáférést az alkalmazáshoz.     </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ResponseDescription|< p\> feltéve, hogy az erőforrás tulajdonosa megadja a hozzáférést, az engedélyezési kiszolgáló átirányítja a felhasználói ügynököt az ügyfélhez, az átirányítás, a megadott URI azonosító használata korábbi (a kérésben vagy ügyfél-regisztráció során).  Az átirányítási URI tartalmazza az engedélyezési kódot, és az ügyfél által korábban megadott összes helyi állapotot. </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_Description|< p\> az ügyfél hozzáférési jogkivonatot kér az engedélyezési kiszolgáló: "% s jogkivonat-végpont az előző lépésben kapott engedélyezési kód együtt.  A kérés küldésekor az ügyfél elvégzi a hitelesítést az engedélyezési kiszolgálón.  Az ügyfél tartalmazza az átirányítási URI-t az ellenőrzéshez az engedélyezési kód beszerzésére szolgál. < /p\> < p\> az engedélyezési kiszolgáló hitelesíti az ügyfelet, érvényesíti az engedélyezési kódot, és biztosítja, hogy az átirányítási URI kapott megegyezik-e (C) lépésben az ügyfél átirányítására használt URI-ja.  Érvényes, ha az engedélyezési kiszolgáló válaszként vissza egy hozzáférési jogkivonatot és szükség esetén a frissítési jogkivonatot. </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ErrorDescription|< p\> a kérés ügyfél-hitelesítése sikertelen volt, vagy nem érvényes, ha az engedélyezési kiszolgáló válaszol a HTTP 400 (hibás kérés) állapotkódot (kivéve, ha másképpen megadva), és a válasz az alábbi paramétereket. </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_RequestDescription|< p\> az ügyfél kérést küld a jogkivonat-végpont az alábbi paramétereket az "application/x-www-form-urlencoded" formátum használata és az UTF-8 a HTTP-kérelem entitástörzsében küldésével. </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ResponseDescription|< p\> az engedélyezési kiszolgáló kiállítja a hozzáférési jogkivonat és opcionális frissítési jogkivonat, és a 200 (OK) állapotkódot a HTTP-válasz törzsében a következő paraméterek hozzáadásával a válasz entitástörzséhez. </p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_Description|< p\> az engedélyezési kiszolgáló hitelesíti az ügyfél és a egy hozzáférési jogkivonatot kér a jogkivonat-végpont. < /p\> < p\> az engedélyezési kiszolgáló hitelesíti az ügyfelet, és érvényesség esetén kiállítja a hozzáférési jogkivonatot. </p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ErrorDescription|< p\> , ha a kérés ügyfél-hitelesítése sikertelen, vagy nem érvényes az engedélyezési kiszolgáló válaszol a HTTP 400 (hibás kérés) állapotkódot (kivéve, ha másképpen megadva), és a válasz az alábbi paramétereket. </p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_RequestDescription|< p\> az ügyfél kérést küld a jogkivonat-végpont az alábbi paramétereket az "application/x-www-form-urlencoded" formátum használata és az UTF-8 a HTTP-kérelem entitástörzsében hozzáadásával. </p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ResponseDescription|< p\> Ha a hozzáférési jogkivonat kérése érvényes és engedélyezett, az engedélyezési kiszolgáló egy hozzáférési jogkivonatot és szükség esetén a frissítési jogkivonatot, és a válasz entitástörzséhez a 200-as HTTP-válasz törzsében a következő paraméterek hozzáadásával  (OK) állapotkódot. </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_Description|< p\> az ügyfél a folyamatot kezdeményező az erőforrás tulajdonosa megkérnek: "% s felhasználói ügynököt az engedélyezési végpontra.  Az ügyfél tartalmazza az ügyfél-azonosítója, a megadott hatókörben, a helyi állapotot és a egy átirányítási URI-t, amelyhez az engedélyezési kiszolgáló elküldi a felhasználói ügynök vissza, ha hozzáférést (engedélyezett vagy tiltott). < /p\> < p\> az engedélyezési kiszolgáló hitelesíti az erőforrás tulajdonosa (a felhasználói ügynök) n keresztül, és megállapítja, hogy az erőforrás tulajdonosa vagy az ügyfél elutasítása: "% s hozzáférési kérelem. < /p\> < p\> feltéve, hogy az erőforrás tulajdonosa megadja a hozzáférést, az engedélyezési kiszolgáló visszairányítja a felhasználói ügynököt az ügyfélnek az átirányítási URI-t korábban megadott használatával.  Az átirányítási URI az URI töredék a hozzáférési jogkivonatot tartalmazza. </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ErrorDescription|< p\> , ha az erőforrás tulajdonosa elutasítja a hozzáférési kérést, vagy ha a kérelem egy hiányzó vagy érvénytelen átirányítási URI-t leszámítva bármilyen okból meghiúsul, az engedélyezési kiszolgáló értesíti az ügyfélt az alábbi paramétereket ad hozzá a töredék összetevő o az átirányítási URI-t az "application/x-www-form-urlencoded" formátumban. f. </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_RequestDescription|< p\> az ügyfélalkalmazás kell küldenie a felhasználót az engedélyezési végpont az OAuth-folyamat kezdeményezése céljából.      Az engedélyezési végponton a felhasználó elvégzi a hitelesítést, és ezután vagy megtagadja a hozzáférést az alkalmazáshoz. </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ResponseDescription|< p\> az erőforrás tulajdonosa jóváhagyja a hozzáférési kérést, ha az engedélyezési kiszolgáló kiad egy jogkivonatot, és elküldi azt az ügyfél a következő paramétereket ad hozzá az átirányítási URI-t használja az "application/x-www töredék összetevője -űrlap - kulcstárolókat"formátumban. </p\>|  
-|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Description|Az engedélyezési kód folyamata (pl.: webes alkalmazások PHP, Java, Python, Ruby, ASP.NET, stb.) hitelesítő adatok titkosságának alkalmas ügyfelek van optimalizálva.|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_RequestDescription|< p\> az ügyfélalkalmazásnak el kell küldenie a felhasználót az engedélyezési végpontnak a OAuth folyamat elindításához.          Az engedélyezési végponton a felhasználó hitelesíti és engedélyezi vagy megtagadja az alkalmazáshoz való hozzáférést.     </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ResponseDescription|< p\> feltételezve, hogy az erőforrás tulajdonosa hozzáférést biztosít, az engedélyezési kiszolgáló a korábban megadott átirányítási URI (a kérelemben vagy az ügyfél-regisztráció során) átirányítja a felhasználói ügynököt az ügyfélnek.  Az átirányítási URI tartalmaz egy engedélyezési kódot és az ügyfél által korábban megadott helyi állapotot. </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_Description|< p\> az ügyfél egy hozzáférési jogkivonatot kér az engedélyezési kiszolgáló jogkivonat-végpontján az előző lépésben fogadott engedélyezési kóddal együtt.  A kérelem végrehajtásakor az ügyfél hitelesíti magát az engedélyezési kiszolgálóval.  Az ügyfél tartalmazza a hitelesítési kód beszerzéséhez használt átirányítási URI-t. </p\> < p\> az engedélyezési kiszolgáló hitelesíti az ügyfelet, érvényesíti az engedélyezési kódot, és biztosítja, hogy a fogadott átirányítási URI megfelel az ügyfél átirányításához használt URI-nak (C).  Ha érvényes, az engedélyezési kiszolgáló visszaválaszol egy hozzáférési jogkivonattal, és opcionálisan egy frissítési tokent is. </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ErrorDescription|< p\> ha a kérelem ügyfél-hitelesítése sikertelen vagy érvénytelen, az engedélyezési kiszolgáló a http 400 (hibás kérelem) állapotkódot válaszol (kivéve, ha másként van megadva), és az alábbi paramétereket tartalmazza a válaszhoz. </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_RequestDescription|< p\> az ügyfél a jogkivonat-végpontra irányuló kérést küld a következő paramétereknek az "application/x-www-Form-urlencoded" formátumban való elküldésével, amely az UTF-8 karakterkódolását használja a HTTP-kérelem entitás-törzsében. </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ResponseDescription|< p\> az engedélyezési kiszolgáló kiadja a hozzáférési jogkivonatot és opcionális frissítési jogkivonatot, és létrehozza a választ úgy, hogy hozzáadja a következő paramétereket a http-válasz entitás-törzséhez egy 200 (ok) állapotkód használatával. </p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_Description|< p\> az ügyfél hitelesíti magát az engedélyezési kiszolgálóval, és hozzáférési jogkivonatot kér a jogkivonat-végponttól. </p\> < p\> az engedélyezési kiszolgáló hitelesíti az ügyfelet, és ha érvényes, kiadja a hozzáférési jogkivonatot. </p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ErrorDescription|< p\> ha a kérelem sikertelen ügyfél-hitelesítése vagy érvénytelen, az engedélyezési kiszolgáló a http 400 (hibás kérelem) állapotkódot válaszol (kivéve, ha másként van megadva), és az alábbi paramétereket tartalmazza a válaszhoz. </p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_RequestDescription|< p\> az ügyfél a jogkivonat-végpontra irányuló kérést küld a következő paraméterek hozzáadásával az "application/x-www-Form-urlencoded" formátumban az UTF-8 karakterkódolásával a HTTP-kérelem entitás-törzsében. </p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ResponseDescription|< p\> ha a hozzáférési jogkivonat kérelme érvényes és engedélyezett, az engedélyezési kiszolgáló kiadja a hozzáférési jogkivonatot és opcionális frissítési jogkivonatot, és létrehozza a választ úgy, hogy hozzáadja a következő paramétereket a http-válasz entitásához a 200  (OK) állapotkód. </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_Description|< p\> az ügyfél kezdeményezi a folyamatot úgy, hogy az erőforrás-tulajdonos felhasználói ügynökét az engedélyezési végpontra irányítja.  Az ügyfél tartalmazza az ügyfél-azonosítót, a kért hatókört, a helyi állapotot, valamint egy átirányítási URI-t, amelyhez az engedélyezési kiszolgáló a hozzáférés engedélyezése (vagy elutasítása) után visszaküldi a felhasználói ügynököt. </p\> < p\> az engedélyezési kiszolgáló hitelesíti az erőforrás-tulajdonost (a felhasználói ügynökön keresztül), és megállapítja, hogy az erőforrás tulajdonosa engedélyezi vagy megtagadja az ügyfél hozzáférési kérelmét. </p\> < p\> feltételezi, hogy az erőforrás-tulajdonos hozzáférést biztosít, az engedélyezési kiszolgáló a korábban megadott átirányítási URI használatával átirányítja a felhasználói ügynököt az ügyfélnek.  Az átirányítási URI tartalmazza a hozzáférési tokent az URI-töredékben. </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ErrorDescription|< p\> ha az erőforrás tulajdonosa megtagadja a hozzáférési kérést, vagy ha a kérés nem hiányzik vagy érvénytelen átirányítási URI-t tartalmaz, az engedélyezési kiszolgáló értesíti az ügyfelet a következő paramétereknek a töredék összetevőhöz való hozzáadásával: o f az átirányítási URI az "application/x-www-Form-urlencoded" formátum használatával. </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_RequestDescription|< p\> az ügyfélalkalmazásnak el kell küldenie a felhasználót az engedélyezési végpontnak a OAuth folyamat elindításához.      Az engedélyezési végponton a felhasználó hitelesíti és engedélyezi vagy megtagadja az alkalmazáshoz való hozzáférést. </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ResponseDescription|< p\> ha az erőforrás-tulajdonos hozzáférést biztosít a hozzáférési kéréshez, az engedélyezési kiszolgáló kiadja a hozzáférési jogkivonatot, és továbbítja azt az ügyfélnek a következő paraméterek hozzáadásával az átirányítási URI töredék összetevőjéhez az "application/x-www" paranccsal. -Form-urlencoded "formátum. </p\>|  
+|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Description|Az engedélyezési kód folyamata olyan ügyfelek számára van optimalizálva, amelyek képesek a hitelesítő adataik titkosságának megőrzésére (például a PHP, a Java, a Python, a Ruby, a ASP.NET stb. használatával megvalósított webkiszolgálói alkalmazások).|  
 |OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Name|Engedélyezési kód|  
-|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Description|Az ügyfélhitelesítő adatok folyamata olyan esetekben, ahol az ügyfél (az alkalmazás) kér az ellenőrzése alatt a védett erőforrásokhoz való hozzáférés megfelelő. Az ügyfél minősül erőforrás tulajdonosának, ezért végfelhasználói beavatkozásra szükség.|  
+|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Description|Az ügyfél-hitelesítő adatok folyamata olyan esetekben megfelelő, amikor az ügyfél (az alkalmazás) hozzáférést kér a védett erőforrásokhoz a vezérlőn belül. Az ügyfél erőforrás-tulajdonosnak minősül, így nincs szükség végfelhasználói beavatkozásra.|  
 |OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Name|Ügyfélhitelesítő adatok|  
-|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Description|Implicit folyamat adott átirányítási URI működtetéséhez szükséges hitelesítő adatok titkosságát nem alkalmas ügyfelek számára van optimalizálva. Ezek az ügyfelek általában egy parancsnyelv, például a JavaScript használatával vannak megvalósítva.|  
-|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Name|Implicit engedélyezés|  
-|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Description|Erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata olyan esetekben, ahol az erőforrás tulajdonosa megbízhatósági kapcsolattal rendelkezik az ügyféllel (az alkalmazás), például az eszköz operációs rendszere vagy a magas jogosultsági szintű alkalmazások megfelelő. Ez a folyamat ideális az ügyfelek képesek beszerezni az erőforrás-tulajdonos hitelesítő adatait (felhasználónév és jelszó, jellemzően interaktív űrlap használatával).|  
-|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Name|Erőforrás tulajdonosának jelszavas hitelesítése|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_Description|< p\> az erőforrás tulajdonosa az ügyfél kínál a felhasználónévvel és jelszóval. < /p\> < p\> az ügyfél hozzáférési jogkivonatot kér az engedélyezési kiszolgáló: "% s jogkivonat-végpont által, beleértve az erőforrás tulajdonosától kapott hitelesítő adatokat.  A kérés küldésekor az ügyfél elvégzi a hitelesítést az engedélyezési kiszolgálón. < /p\> < p\> az engedélyezési kiszolgáló hitelesíti az ügyfelet, és ellenőrzi a az erőforrás-tulajdonos hitelesítő adatokat, és érvényesség esetén kiállítja a hozzáférési jogkivonatot. </p\>|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ErrorDescription|< p\> , ha a kérés ügyfél-hitelesítése sikertelen, vagy nem érvényes az engedélyezési kiszolgáló válaszol a HTTP 400 (hibás kérés) állapotkódot (kivéve, ha másképpen megadva), és a válasz az alábbi paramétereket. </p\>|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_RequestDescription|< p\> az ügyfél kérést küld a jogkivonat-végpont az alábbi paramétereket az "application/x-www-form-urlencoded" formátum használata és az UTF-8 a HTTP-kérelem entitástörzsében hozzáadásával. </p\>|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ResponseDescription|< p\> Ha a hozzáférési jogkivonat kérése érvényes és engedélyezett, az engedélyezési kiszolgáló egy hozzáférési jogkivonatot és szükség esetén a frissítési jogkivonatot, és a válasz entitástörzséhez entitástörzsében 20 a HTTP-válasz a következő paraméterek hozzáadásával 0 (OK) állapotkódot. </p\>|  
+|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Description|Az implicit folyamat olyan ügyfelek számára van optimalizálva, amelyek nem képesek a hitelesítő adatok titkosságának fenntartására, hogy egy adott átirányítási URI-t működtessenek. Ezeket az ügyfeleket általában egy parancsfájlban, például a JavaScript használatával implementálják a böngészőben.|  
+|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Name|Implicit|  
+|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Description|Az erőforrás-tulajdonos jelszavának hitelesítő adatai folyamata olyan esetekben megfelelő, amikor az erőforrás tulajdonosa megbízhatósági kapcsolatban áll az ügyféllel (az alkalmazással), például az eszköz operációs rendszerével vagy egy magas jogosultsági szintű alkalmazással. Ez a folyamat olyan ügyfelek számára megfelelő, akik képesek az erőforrás-tulajdonos hitelesítő adatainak beszerzésére (a felhasználónevet és a jelszót általában interaktív formában használják).|  
+|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Name|Erőforrás-tulajdonos jelszavas hitelesítése|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_Description|< p\> az erőforrás tulajdonosa megadja az ügyfelet a felhasználónevével és jelszavával. </p\> < p\> az ügyfél hozzáférési jogkivonatot kér az engedélyezési kiszolgáló jogkivonat-végpontján az erőforrás-tulajdonostól kapott hitelesítő adatokkal együtt.  A kérelem végrehajtásakor az ügyfél hitelesíti magát az engedélyezési kiszolgálóval. </p\> < p\> az engedélyezési kiszolgáló hitelesíti az ügyfelet, és érvényesíti az erőforrás-tulajdonos hitelesítő adatait, és ha érvényes, kiadja a hozzáférési jogkivonatot. </p\>|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ErrorDescription|< p\> ha a kérelem sikertelen ügyfél-hitelesítése vagy érvénytelen, az engedélyezési kiszolgáló a http 400 (hibás kérelem) állapotkódot válaszol (kivéve, ha másként van megadva), és az alábbi paramétereket tartalmazza a válaszhoz. </p\>|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_RequestDescription|< p\> az ügyfél a jogkivonat-végpontra irányuló kérést küld a következő paraméterek hozzáadásával az "application/x-www-Form-urlencoded" formátumban az UTF-8 karakterkódolásával a HTTP-kérelem entitás-törzsében. </p\>|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ResponseDescription|< p\> ha a hozzáférési jogkivonat kérelme érvényes és engedélyezett, az engedélyezési kiszolgáló kiadja a hozzáférési jogkivonatot és opcionális frissítési jogkivonatot, és létrehozza a választ úgy, hogy hozzáadja a következő paramétereket a http-válasz entitásához a 20 0 (OK) állapotkód. </p\>|  
 |OAuth2Step_AccessTokenRequest_Name|Hozzáférési jogkivonat kérése|  
 |OAuth2Step_AuthorizationRequest_Name|Engedélyezési kérés|  
-|OAuth2AccessToken_AuthorizationCodeGrant_TokenResponse|SZÜKSÉGES. A hozzáférési jogkivonatot az engedélyezési kiszolgáló által kiadott.|  
-|OAuth2AccessToken_ClientCredentialsGrant_TokenResponse|SZÜKSÉGES. A hozzáférési jogkivonatot az engedélyezési kiszolgáló által kiadott.|  
-|OAuth2AccessToken_ImplicitGrant_AuthorizationResponse|SZÜKSÉGES. A hozzáférési jogkivonatot az engedélyezési kiszolgáló által kiadott.|  
-|OAuth2AccessToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|SZÜKSÉGES. A hozzáférési jogkivonatot az engedélyezési kiszolgáló által kiadott.|  
-|OAuth2ClientId_AuthorizationCodeGrant_AuthorizationRequest|SZÜKSÉGES. Ügyfél-azonosítója.|  
-|OAuth2ClientId_AuthorizationCodeGrant_TokenRequest|Ha az ügyfél nem végez hitelesítést az engedélyezési kiszolgáló szükséges.|  
-|OAuth2ClientId_ImplicitGrant_AuthorizationRequest|SZÜKSÉGES. Az ügyfél-azonosítója.|  
+|OAuth2AccessToken_AuthorizationCodeGrant_TokenResponse|SZÜKSÉGES. Az engedélyezési kiszolgáló által kiállított hozzáférési jogkivonat.|  
+|OAuth2AccessToken_ClientCredentialsGrant_TokenResponse|SZÜKSÉGES. Az engedélyezési kiszolgáló által kiállított hozzáférési jogkivonat.|  
+|OAuth2AccessToken_ImplicitGrant_AuthorizationResponse|SZÜKSÉGES. Az engedélyezési kiszolgáló által kiállított hozzáférési jogkivonat.|  
+|OAuth2AccessToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|SZÜKSÉGES. Az engedélyezési kiszolgáló által kiállított hozzáférési jogkivonat.|  
+|OAuth2ClientId_AuthorizationCodeGrant_AuthorizationRequest|SZÜKSÉGES. Ügyfél-azonosító.|  
+|OAuth2ClientId_AuthorizationCodeGrant_TokenRequest|KÖTELEZŐ, ha az ügyfél nem hitelesíti magát az engedélyezési kiszolgálóval.|  
+|OAuth2ClientId_ImplicitGrant_AuthorizationRequest|SZÜKSÉGES. Az ügyfél-azonosító.|  
 |OAuth2Code_AuthorizationCodeGrant_AuthorizationResponse|SZÜKSÉGES. Az engedélyezési kiszolgáló által generált engedélyezési kód.|  
 |OAuth2Code_AuthorizationCodeGrant_TokenRequest|SZÜKSÉGES. Az engedélyezési kiszolgálótól kapott engedélyezési kód.|  
-|OAuth2ErrorDescription_AuthorizationCodeGrant_AuthorizationErrorResponse|NEM KÖTELEZŐ. Emberek számára olvasható ASCII szöveges kezeléséről további információt.|  
-|OAuth2ErrorDescription_AuthorizationCodeGrant_TokenErrorResponse|NEM KÖTELEZŐ. Emberek számára olvasható ASCII szöveges kezeléséről további információt.|  
-|OAuth2ErrorDescription_ClientCredentialsGrant_TokenErrorResponse|NEM KÖTELEZŐ. Emberek számára olvasható ASCII szöveges kezeléséről további információt.|  
-|OAuth2ErrorDescription_ImplicitGrant_AuthorizationErrorResponse|NEM KÖTELEZŐ. Emberek számára olvasható ASCII szöveges kezeléséről további információt.|  
-|OAuth2ErrorDescription_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|NEM KÖTELEZŐ. Emberek számára olvasható ASCII szöveges kezeléséről további információt.|  
-|OAuth2ErrorUri_AuthorizationCodeGrant_AuthorizationErrorResponse|NEM KÖTELEZŐ. A hibával kapcsolatos információkat az emberek számára olvasható weblap azonosító URI.|  
-|OAuth2ErrorUri_AuthorizationCodeGrant_TokenErrorResponse|NEM KÖTELEZŐ. A hibával kapcsolatos információkat az emberek számára olvasható weblap azonosító URI.|  
-|OAuth2ErrorUri_ClientCredentialsGrant_TokenErrorResponse|NEM KÖTELEZŐ. A hibával kapcsolatos információkat az emberek számára olvasható weblap azonosító URI.|  
-|OAuth2ErrorUri_ImplicitGrant_AuthorizationErrorResponse|NEM KÖTELEZŐ. A hibával kapcsolatos információkat az emberek számára olvasható weblap azonosító URI.|  
-|OAuth2ErrorUri_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|NEM KÖTELEZŐ. A hibával kapcsolatos információkat az emberek számára olvasható weblap azonosító URI.|  
-|OAuth2Error_AuthorizationCodeGrant_AuthorizationErrorResponse|SZÜKSÉGES. Egy egyetlen ASCII-hibakód a következők közül: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
-|OAuth2Error_AuthorizationCodeGrant_TokenErrorResponse|SZÜKSÉGES. Egy egyetlen ASCII-hibakód a következők közül: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
-|OAuth2Error_ClientCredentialsGrant_TokenErrorResponse|SZÜKSÉGES. Egy egyetlen ASCII-hibakód a következők közül: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
-|OAuth2Error_ImplicitGrant_AuthorizationErrorResponse|SZÜKSÉGES. Egy egyetlen ASCII-hibakód a következők közül: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
-|OAuth2Error_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|SZÜKSÉGES. Egy egyetlen ASCII-hibakód a következők közül: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
-|OAuth2ExpiresIn_AuthorizationCodeGrant_TokenResponse|AJÁNLOTT. Az élettartam (másodperc), a hozzáférési jogkivonat.|  
-|OAuth2ExpiresIn_ClientCredentialsGrant_TokenResponse|AJÁNLOTT. Az élettartam (másodperc), a hozzáférési jogkivonat.|  
-|OAuth2ExpiresIn_ImplicitGrant_AuthorizationResponse|AJÁNLOTT. Az élettartam (másodperc), a hozzáférési jogkivonat.|  
-|OAuth2ExpiresIn_ResourceOwnerPasswordCredentialsGrant_TokenResponse|AJÁNLOTT. Az élettartam (másodperc), a hozzáférési jogkivonat.|  
-|OAuth2GrantType_AuthorizationCodeGrant_TokenRequest|SZÜKSÉGES. A "authorization_code" értéket kell beállítani.|  
-|OAuth2GrantType_ClientCredentialsGrant_TokenRequest|SZÜKSÉGES. A "client_credentials" értéket kell beállítani.|  
-|OAuth2GrantType_ResourceOwnerPasswordCredentialsGrant_TokenRequest|SZÜKSÉGES. A "password" értéket kell beállítani.|  
-|OAuth2Password_ResourceOwnerPasswordCredentialsGrant_TokenRequest|SZÜKSÉGES. Az erőforrás-tulajdonos jelszava.|  
-|OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|NEM KÖTELEZŐ. Az átirányítási végpont URI-t egy abszolút URI Azonosítónak kell lennie.|  
-|OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|SZÜKSÉGES, ha a "redirect_uri" paraméter szerepelt az engedélyezési kérésben, és az értékeknek azonosnak kell lenniük.|  
-|OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|NEM KÖTELEZŐ. Az átirányítási végpont URI-t egy abszolút URI Azonosítónak kell lennie.|  
-|OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|NEM KÖTELEZŐ. A frissítési jogkivonat, amely új hozzáférési jogkivonatok beszerzésére használható.|  
-|OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|NEM KÖTELEZŐ. A frissítési jogkivonat, amely új hozzáférési jogkivonatok beszerzésére használható.|  
-|OAuth2RefreshToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|NEM KÖTELEZŐ. A frissítési jogkivonat, amely új hozzáférési jogkivonatok beszerzésére használható.|  
-|OAuth2ResponseType_AuthorizationCodeGrant_AuthorizationRequest|SZÜKSÉGES. A "code" értéket kell beállítani.|  
-|OAuth2ResponseType_ImplicitGrant_AuthorizationRequest|SZÜKSÉGES. Értéket kell megadni a "token".|  
-|OAuth2Scope_AuthorizationCodeGrant_AuthorizationRequest|NEM KÖTELEZŐ. A hozzáférési kérés hatóköre.|  
-|OAuth2Scope_AuthorizationCodeGrant_TokenResponse|Nem kötelező, ha megegyezik az ügyfél; által kért hatókörrel Ellenkező esetben kötelező.|  
-|OAuth2Scope_ClientCredentialsGrant_TokenRequest|NEM KÖTELEZŐ. A hozzáférési kérés hatóköre.|  
-|OAuth2Scope_ClientCredentialsGrant_TokenResponse|Nem kötelező, ha megegyezik az ügyfél; által kért hatókörrel Ellenkező esetben kötelező.|  
-|OAuth2Scope_ImplicitGrant_AuthorizationRequest|NEM KÖTELEZŐ. A hozzáférési kérés hatóköre.|  
-|OAuth2Scope_ImplicitGrant_AuthorizationResponse|Nem kötelező, ha megegyezik az ügyfél; által kért hatókörrel Ellenkező esetben kötelező.|  
-|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenRequest|NEM KÖTELEZŐ. A hozzáférési kérés hatóköre.|  
-|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Nem kötelező, ha megegyezik az ügyfél; által kért hatókörrel Ellenkező esetben kötelező.|  
-|OAuth2State_AuthorizationCodeGrant_AuthorizationErrorResponse|SZÜKSÉGES, ha a "state" paraméter szerepelt az ügyfél engedélyezési kérésben.  Az ügyféltől kapott pontos érték.|  
-|OAuth2State_AuthorizationCodeGrant_AuthorizationRequest|AJÁNLOTT. A kérelem és a visszahívás közötti állapot karbantartására használ az ügyfél által használt átlátszatlan érték.  Az engedélyezési kiszolgáló tartalmazza ezt az értéket, amikor az átirányítás, a felhasználói ügynököt az ügyfélhez.  A paraméter használandó, a webhelyközi kérések hamisításának megakadályozása.|  
-|OAuth2State_AuthorizationCodeGrant_AuthorizationResponse|SZÜKSÉGES, ha a "state" paraméter szerepelt az ügyfél engedélyezési kérésben.  Az ügyféltől kapott pontos érték.|  
-|OAuth2State_ImplicitGrant_AuthorizationErrorResponse|SZÜKSÉGES, ha a "state" paraméter szerepelt az ügyfél engedélyezési kérésben.  Az ügyféltől kapott pontos érték.|  
-|OAuth2State_ImplicitGrant_AuthorizationRequest|AJÁNLOTT. A kérelem és a visszahívás közötti állapot karbantartására használ az ügyfél által használt átlátszatlan érték.  Az engedélyezési kiszolgáló tartalmazza ezt az értéket, amikor az átirányítás, a felhasználói ügynököt az ügyfélhez.  A paraméter használandó, a webhelyközi kérések hamisításának megakadályozása.|  
-|OAuth2State_ImplicitGrant_AuthorizationResponse|SZÜKSÉGES, ha a "state" paraméter szerepelt az ügyfél engedélyezési kérésben.  Az ügyféltől kapott pontos érték.|  
-|OAuth2TokenType_AuthorizationCodeGrant_TokenResponse|SZÜKSÉGES. A kiállított biztonsági jogkivonat típusa.|  
-|OAuth2TokenType_ClientCredentialsGrant_TokenResponse|SZÜKSÉGES. A kiállított biztonsági jogkivonat típusa.|  
-|OAuth2TokenType_ImplicitGrant_AuthorizationResponse|SZÜKSÉGES. A kiállított biztonsági jogkivonat típusa.|  
-|OAuth2TokenType_ResourceOwnerPasswordCredentialsGrant_TokenResponse|SZÜKSÉGES. A kiállított biztonsági jogkivonat típusa.|  
+|OAuth2ErrorDescription_AuthorizationCodeGrant_AuthorizationErrorResponse|VÁLASZTHATÓ. Az ember által olvasható ASCII-szöveg további információkat biztosít.|  
+|OAuth2ErrorDescription_AuthorizationCodeGrant_TokenErrorResponse|VÁLASZTHATÓ. Az ember által olvasható ASCII-szöveg további információkat biztosít.|  
+|OAuth2ErrorDescription_ClientCredentialsGrant_TokenErrorResponse|VÁLASZTHATÓ. Az ember által olvasható ASCII-szöveg további információkat biztosít.|  
+|OAuth2ErrorDescription_ImplicitGrant_AuthorizationErrorResponse|VÁLASZTHATÓ. Az ember által olvasható ASCII-szöveg további információkat biztosít.|  
+|OAuth2ErrorDescription_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|VÁLASZTHATÓ. Az ember által olvasható ASCII-szöveg további információkat biztosít.|  
+|OAuth2ErrorUri_AuthorizationCodeGrant_AuthorizationErrorResponse|VÁLASZTHATÓ. A hibával kapcsolatos információkat tartalmazó, ember által olvasható weblapot azonosító URI.|  
+|OAuth2ErrorUri_AuthorizationCodeGrant_TokenErrorResponse|VÁLASZTHATÓ. A hibával kapcsolatos információkat tartalmazó, ember által olvasható weblapot azonosító URI.|  
+|OAuth2ErrorUri_ClientCredentialsGrant_TokenErrorResponse|VÁLASZTHATÓ. A hibával kapcsolatos információkat tartalmazó, ember által olvasható weblapot azonosító URI.|  
+|OAuth2ErrorUri_ImplicitGrant_AuthorizationErrorResponse|VÁLASZTHATÓ. A hibával kapcsolatos információkat tartalmazó, ember által olvasható weblapot azonosító URI.|  
+|OAuth2ErrorUri_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|VÁLASZTHATÓ. A hibával kapcsolatos információkat tartalmazó, ember által olvasható weblapot azonosító URI.|  
+|OAuth2Error_AuthorizationCodeGrant_AuthorizationErrorResponse|SZÜKSÉGES. Egyetlen ASCII-hibakód a következőtől: invalid_request, unauthorized_client, ACCESS_DENIED, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
+|OAuth2Error_AuthorizationCodeGrant_TokenErrorResponse|SZÜKSÉGES. Egyetlen ASCII-hibakód a következőtől: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
+|OAuth2Error_ClientCredentialsGrant_TokenErrorResponse|SZÜKSÉGES. Egyetlen ASCII-hibakód a következőtől: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
+|OAuth2Error_ImplicitGrant_AuthorizationErrorResponse|SZÜKSÉGES. Egyetlen ASCII-hibakód a következőtől: invalid_request, unauthorized_client, ACCESS_DENIED, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
+|OAuth2Error_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|SZÜKSÉGES. Egyetlen ASCII-hibakód a következőtől: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
+|OAuth2ExpiresIn_AuthorizationCodeGrant_TokenResponse|AJÁNLOTT. A hozzáférési jogkivonat élettartama másodpercben.|  
+|OAuth2ExpiresIn_ClientCredentialsGrant_TokenResponse|AJÁNLOTT. A hozzáférési jogkivonat élettartama másodpercben.|  
+|OAuth2ExpiresIn_ImplicitGrant_AuthorizationResponse|AJÁNLOTT. A hozzáférési jogkivonat élettartama másodpercben.|  
+|OAuth2ExpiresIn_ResourceOwnerPasswordCredentialsGrant_TokenResponse|AJÁNLOTT. A hozzáférési jogkivonat élettartama másodpercben.|  
+|OAuth2GrantType_AuthorizationCodeGrant_TokenRequest|SZÜKSÉGES. Az értéket "authorization_code" értékre kell beállítani.|  
+|OAuth2GrantType_ClientCredentialsGrant_TokenRequest|SZÜKSÉGES. Az értéket "client_credentials" értékre kell beállítani.|  
+|OAuth2GrantType_ResourceOwnerPasswordCredentialsGrant_TokenRequest|SZÜKSÉGES. Az értéket a "password" értékre kell beállítani.|  
+|OAuth2Password_ResourceOwnerPasswordCredentialsGrant_TokenRequest|SZÜKSÉGES. Az erőforrás tulajdonosának jelszava.|  
+|OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|VÁLASZTHATÓ. Az átirányítási végpont URI azonosítójának abszolút URI-nak kell lennie.|  
+|OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|KÖTELEZŐ, ha a "redirect_uri" paraméter szerepel az engedélyezési kérelemben, és az értékeknek azonosnak kell lenniük.|  
+|OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|VÁLASZTHATÓ. Az átirányítási végpont URI azonosítójának abszolút URI-nak kell lennie.|  
+|OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|VÁLASZTHATÓ. A frissítési token, amely új hozzáférési tokenek beszerzésére használható.|  
+|OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|VÁLASZTHATÓ. A frissítési token, amely új hozzáférési tokenek beszerzésére használható.|  
+|OAuth2RefreshToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|VÁLASZTHATÓ. A frissítési token, amely új hozzáférési tokenek beszerzésére használható.|  
+|OAuth2ResponseType_AuthorizationCodeGrant_AuthorizationRequest|SZÜKSÉGES. Az értéket "code" értékre kell beállítani.|  
+|OAuth2ResponseType_ImplicitGrant_AuthorizationRequest|SZÜKSÉGES. Az értéket "token" értékre kell beállítani.|  
+|OAuth2Scope_AuthorizationCodeGrant_AuthorizationRequest|VÁLASZTHATÓ. A hozzáférési kérelem hatóköre.|  
+|OAuth2Scope_AuthorizationCodeGrant_TokenResponse|Nem kötelező, ha megegyezik az ügyfél által kért hatókörrel; Ellenkező esetben kötelező.|  
+|OAuth2Scope_ClientCredentialsGrant_TokenRequest|VÁLASZTHATÓ. A hozzáférési kérelem hatóköre.|  
+|OAuth2Scope_ClientCredentialsGrant_TokenResponse|Nem kötelező, ha megegyezik az ügyfél által kért hatókörrel; Ellenkező esetben kötelező.|  
+|OAuth2Scope_ImplicitGrant_AuthorizationRequest|VÁLASZTHATÓ. A hozzáférési kérelem hatóköre.|  
+|OAuth2Scope_ImplicitGrant_AuthorizationResponse|Nem kötelező, ha megegyezik az ügyfél által kért hatókörrel; Ellenkező esetben kötelező.|  
+|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenRequest|VÁLASZTHATÓ. A hozzáférési kérelem hatóköre.|  
+|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Nem kötelező, ha megegyezik az ügyfél által kért hatókörrel; Ellenkező esetben kötelező.|  
+|OAuth2State_AuthorizationCodeGrant_AuthorizationErrorResponse|KÖTELEZŐ, ha az "State" paraméter szerepel az ügyfél-engedélyezési kérelemben.  Az ügyféltől kapott pontos érték.|  
+|OAuth2State_AuthorizationCodeGrant_AuthorizationRequest|AJÁNLOTT. Az ügyfél által a kérelem és a visszahívás közötti állapot fenntartására használt átlátszatlan érték.  Az engedélyezési kiszolgáló ezt az értéket tartalmazza, amikor a felhasználó-ügynök visszairányítja az ügyfelet.  A paramétert a helyek közötti kérelmek hamisításának megelőzésére kell használni.|  
+|OAuth2State_AuthorizationCodeGrant_AuthorizationResponse|KÖTELEZŐ, ha az "State" paraméter szerepel az ügyfél-engedélyezési kérelemben.  Az ügyféltől kapott pontos érték.|  
+|OAuth2State_ImplicitGrant_AuthorizationErrorResponse|KÖTELEZŐ, ha az "State" paraméter szerepel az ügyfél-engedélyezési kérelemben.  Az ügyféltől kapott pontos érték.|  
+|OAuth2State_ImplicitGrant_AuthorizationRequest|AJÁNLOTT. Az ügyfél által a kérelem és a visszahívás közötti állapot fenntartására használt átlátszatlan érték.  Az engedélyezési kiszolgáló ezt az értéket tartalmazza, amikor a felhasználó-ügynök visszairányítja az ügyfelet.  A paramétert a helyek közötti kérelmek hamisításának megelőzésére kell használni.|  
+|OAuth2State_ImplicitGrant_AuthorizationResponse|KÖTELEZŐ, ha az "State" paraméter szerepel az ügyfél-engedélyezési kérelemben.  Az ügyféltől kapott pontos érték.|  
+|OAuth2TokenType_AuthorizationCodeGrant_TokenResponse|SZÜKSÉGES. A kiállított jogkivonat típusa.|  
+|OAuth2TokenType_ClientCredentialsGrant_TokenResponse|SZÜKSÉGES. A kiállított jogkivonat típusa.|  
+|OAuth2TokenType_ImplicitGrant_AuthorizationResponse|SZÜKSÉGES. A kiállított jogkivonat típusa.|  
+|OAuth2TokenType_ResourceOwnerPasswordCredentialsGrant_TokenResponse|SZÜKSÉGES. A kiállított jogkivonat típusa.|  
 |OAuth2UserName_ResourceOwnerPasswordCredentialsGrant_TokenRequest|SZÜKSÉGES. Az erőforrás-tulajdonos felhasználóneve.|  
-|OAuth2UnsupportedTokenType|Jogkivonat-típus "{0}" nem támogatott.|  
-|OAuth2InvalidState|Érvénytelen válasz érkezett az engedélyezési kiszolgáló|  
-|OAuth2GrantType_AuthorizationCode|engedélyezési kód|  
+|OAuth2UnsupportedTokenType|A (z{0}) "" jogkivonat-típus nem támogatott.|  
+|OAuth2InvalidState|Az engedélyezési kiszolgáló érvénytelen választ küldött|  
+|OAuth2GrantType_AuthorizationCode|Engedélyezési kód|  
 |OAuth2GrantType_Implicit|Implicit|  
 |OAuth2GrantType_ClientCredentials|Ügyfél-hitelesítő adatok|  
 |OAuth2GrantType_ResourceOwnerPassword|Erőforrás tulajdonosának jelszava|  
-|WebDocumentation302Code|302 Found|  
+|WebDocumentation302Code|302 – Megtalálva|  
 |WebDocumentation400Code|400 (hibás kérés)|  
 |OAuth2SendingMethod_AuthHeader|Engedélyeztetési fejléc|  
 |OAuth2SendingMethod_QueryParam|Lekérdezési paraméter|  
-|OAuth2AuthorizationServerGeneralException|Hiba történt az objektumon keresztüli hozzáférés engedélyezésekor {0}|  
-|OAuth2AuthorizationServerCommunicationException|Nem sikerült létrehozni az engedélyezési kiszolgáló HTTP-kapcsolat, vagy váratlanul megszűnt.|  
+|OAuth2AuthorizationServerGeneralException|Hiba történt a hozzáférés engedélyezésekor a következőn keresztül:{0}|  
+|OAuth2AuthorizationServerCommunicationException|Nem sikerült HTTP-kapcsolatokat létesíteni az engedélyezési kiszolgálóval, vagy váratlanul lezárult.|  
 |WebDocumentationOAuth2GeneralErrorMessage|Váratlan hiba történt.|  
-|AuthorizationServerCommunicationException|Engedélyezési kiszolgálón kommunikációs kivétel történt. Lépjen kapcsolatba a rendszergazdával.|  
-|TextblockSubscriptionKeyHeaderDescription|Előfizetési kulcs, amely hozzáférést biztosít az API-ra. Található a < a href ='/ developer "\>profil < /a\>.|  
-|TextblockOAuthHeaderDescription|OAuth 2.0 hozzáférési jogkivonat érkezett < i\>{0}< /i\>. Támogatott engedélyezési típusok: < i\>{1}< /i\>.|  
-|TextblockContentTypeHeaderDescription|Az API-nak küldött törzs médiatípusa.|  
-|ErrorMessageApiNotAccessible|A meghívni próbált API jelenleg nem érhető el. Lépjen kapcsolatba az API közzétevőjével < a href = "/ issues"\>ide < /a\>.|  
-|ErrorMessageApiTimedout|A meghívni próbált API válasz visszatéréshez a szokásosnál tovább tart. Lépjen kapcsolatba az API közzétevőjével < a href = "/ issues"\>ide < /a\>.|  
-|BadRequestParameterExpected|""{0}"paraméternek"|  
-|TooltipTextDoubleClickToSelectAll|Kattintson duplán az összes kijelöléséhez.|  
-|TooltipTextHideRevealSecret|Megjelenítése/elrejtése|  
-|ButtonLinkOpenConsole|Kipróbálom|  
+|AuthorizationServerCommunicationException|Az engedélyezési kiszolgáló kommunikációs kivétel történt. Forduljon a rendszergazdához.|  
+|TextblockSubscriptionKeyHeaderDescription|Az ehhez az API-hoz hozzáférést biztosító előfizetési kulcs. A <ban található href = '/Developer '\>profil </a.\>|  
+|TextblockOAuthHeaderDescription|A OAuth 2,0 < i\>{0}</i\>hozzáférési tokent kapott. Támogatott engedélyezési típusok: < i\>{1}</i\>.|  
+|TextblockContentTypeHeaderDescription|Az API-nak eljuttatott törzs adathordozó-típusa.|  
+|ErrorMessageApiNotAccessible|A hívni próbált API jelenleg nem érhető el. Vegye fel a kapcsolatot az API-közzétevővel < href =\>"/Issues"\>itt </a.|  
+|ErrorMessageApiTimedout|A hívni próbált API a szokásosnál hosszabb időt vesz igénybe. Vegye fel a kapcsolatot az API-közzétevővel < href =\>"/Issues"\>itt </a.|  
+|BadRequestParameterExpected|{0}a rendszer "" paramétert várt: "|  
+|TooltipTextDoubleClickToSelectAll|Kattintson duplán az összes kiválasztásához.|  
+|TooltipTextHideRevealSecret|Megjelenítés/elrejtés|  
+|ButtonLinkOpenConsole|Próba|  
 |SectionHeadingRequestBody|A kérés törzse|  
 |SectionHeadingRequestParameters|A kérés paraméterei|  
 |SectionHeadingRequestUrl|Kérés URL-címe|  
 |SectionHeadingResponse|Válasz|  
 |SectionHeadingRequestHeaders|Kérelemfejlécek|  
-|FormLabelSubtextOptional|Nem kötelező|  
+|FormLabelSubtextOptional|választható|  
 |SectionHeadingCodeSamples|Kódminták|  
-|TextblockOpenidConnectHeaderDescription|OpenID Connect azonosítói jogkivonat érkezett < i\>{0}< /i\>. Támogatott engedélyezési típusok: < i\>{1}< /i\>.|  
+|TextblockOpenidConnectHeaderDescription|< I\>{0}</i\>-ből beszerzett OpenID Connect ID jogkivonat. Támogatott engedélyezési típusok: < i\>{1}</i\>.|  
   
-###  <a name="ErrorPageStrings"></a> ErrorPageStrings  
+###  <a name="ErrorPageStrings"></a>ErrorPageStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
 |LinkLabelBack|vissza|  
-|LinkLabelHomePage|Kezdőlap|  
-|LinkLabelSendUsEmail|E-mail küldése|  
+|LinkLabelHomePage|a kezdőlapra|  
+|LinkLabelSendUsEmail|Küldjön nekünk e-mailt|  
 |PageTitleError|Sajnos hiba történt a kért lap kiszolgálásakor|  
-|TextblockPotentialCauseIntermittentIssue|Ez lehet egy átmeneti hozzáférési hibát, amely már nem látható.|  
-|TextblockPotentialCauseOldLink|A hivatkozás, amelyre kattintott, elavult és nem a megfelelő helyre mutat.|  
-|TextblockPotentialCauseTechnicalProblem|Előfordulhatnak technikai hiba található a rendszerünkben.|  
-|TextblockPotentialSolutionRefresh|Próbálja meg frissíteni az oldalt.|  
-|TextblockPotentialSolutionStartOver|Az újrakezdés az {0}.|  
-|TextblockPotentialSolutionTryAgain|Nyissa meg {0} , és próbálja meg újra végrehajtani a műveletet.|  
-|TextReportProblem|{0} amely leírja, mi történt, és áttekintjük, hogy, amint tudunk.|  
+|TextblockPotentialCauseIntermittentIssue|Ez lehet egy időszakos adathozzáférési probléma, amely már elment.|  
+|TextblockPotentialCauseOldLink|Előfordulhat, hogy a hivatkozás, amelyre kattintott, elavult, és nem a megfelelő helyre mutat.|  
+|TextblockPotentialCauseTechnicalProblem|Lehetséges, hogy technikai probléma van a végén.|  
+|TextblockPotentialSolutionRefresh|Próbálja meg frissíteni a lapot.|  
+|TextblockPotentialSolutionStartOver|Kezdje a következővel {0}:.|  
+|TextblockPotentialSolutionTryAgain|Lépjen {0} be, és próbálja meg újra végrehajtani a műveletet.|  
+|TextReportProblem|{0}leírja, hogy mi volt a baj, és a lehető leghamarabb megvizsgáljuk.|  
 |TitlePotentialCause|Lehetséges ok|  
-|TitlePotentialSolution|Esetleg csak átmeneti hibáról, néhány az alábbiakkal próbálkozhat|  
+|TitlePotentialSolution|Valószínűleg csak egy ideiglenes probléma, néhány dolog, amit kipróbálhat|  
   
-###  <a name="IssuesStrings"></a> IssuesStrings  
+###  <a name="IssuesStrings"></a>IssuesStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
-|WebIssuesIndexTitle|Hibák|  
-|WebIssuesNoActiveSubscriptions|Ön nem rendelkezik aktív előfizetéssel. Elő kell fizetnie egy termékre, hibát.|  
-|WebIssuesNotSignin|Nem jelentkezett be. Adjon {0} jelentéséhez vagy hozzászólás írásához.|  
-|WebIssuesReportIssueButton|Probléma bejelentése|  
+|WebIssuesIndexTitle|Problémák|  
+|WebIssuesNoActiveSubscriptions|Nincsenek aktív előfizetések. A probléma bejelentéséhez elő kell fizetnie egy termékre.|  
+|WebIssuesNotSignin|Nincs bejelentkezve. Jelentsen egy problémát, vagy küldjön egy hozzászólást. {0}|  
+|WebIssuesReportIssueButton|Probléma jelentése|  
 |WebIssuesSignIn|bejelentkezés|  
-|WebIssuesStatusReportedBy|Állapot: {0} &#124; által jelentett {1}|  
+|WebIssuesStatusReportedBy|Állapot: {0} &#124; jelentett{1}|  
   
-###  <a name="NotFoundStrings"></a> NotFoundStrings  
+###  <a name="NotFoundStrings"></a>NotFoundStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
-|LinkLabelHomePage|Kezdőlap|  
-|LinkLabelSendUsEmail|E-mail küldése|  
-|PageTitleNotFound|Sajnos nem találjuk a keresett lap|  
-|TextblockPotentialCauseMisspelledUrl|Előfordulhat, hogy elgépelte az URL-címet, ha a beírt.|  
-|TextblockPotentialCauseOldLink|A hivatkozás, amelyre kattintott, elavult és nem a megfelelő helyre mutat.|  
-|TextblockPotentialSolutionRetype|Próbálja meg újra beírni az URL-címet.|  
-|TextblockPotentialSolutionStartOver|Az újrakezdés az {0}.|  
-|TextReportProblem|{0} amely leírja, mi történt, és áttekintjük, hogy, amint tudunk.|  
+|LinkLabelHomePage|a kezdőlapra|  
+|LinkLabelSendUsEmail|Küldjön nekünk e-mailt|  
+|PageTitleNotFound|Sajnos nem található a keresett oldal|  
+|TextblockPotentialCauseMisspelledUrl|Előfordulhat, hogy hibásan írta be az URL-címet, ha beírta a-ben.|  
+|TextblockPotentialCauseOldLink|Előfordulhat, hogy a hivatkozás, amelyre kattintott, elavult, és nem a megfelelő helyre mutat.|  
+|TextblockPotentialSolutionRetype|Próbálja meg újból beírni az URL-címet.|  
+|TextblockPotentialSolutionStartOver|Kezdje a következővel {0}:.|  
+|TextReportProblem|{0}leírja, hogy mi volt a baj, és a lehető leghamarabb megvizsgáljuk.|  
 |TitlePotentialCause|Lehetséges ok|  
 |TitlePotentialSolution|Lehetséges megoldás|  
   
-###  <a name="ProductDetailsStrings"></a> ProductDetailsStrings  
+###  <a name="ProductDetailsStrings"></a>ProductDetailsStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
-|WebProductsAgreement|Ha előfizet {0} termék elfogadom a `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`.|  
-|WebProductsLegalTermsLink|Használati feltételek|  
-|WebProductsSubscribeButton|Feliratkozás|  
+|WebProductsAgreement|A {0} termékre való feliratkozással Elfogadom a `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`következőt:.|  
+|WebProductsLegalTermsLink|használati feltételeit|  
+|WebProductsSubscribeButton|Előfizetés|  
 |WebProductsUsageLimitsHeader|Használati korlátozások|  
-|WebProductsYouAreNotSubscribed|A termékre előfizetett.|  
-|WebProductsYouRequestedSubscription|A termékre való előfizetést igényelt.|  
-|ErrorYouNeedToAgreeWithLegalTerms|A folytatás előtt el kell fogadnia a használati feltételeket.|  
+|WebProductsYouAreNotSubscribed|Erre a termékre előfizetett.|  
+|WebProductsYouRequestedSubscription|A termékre való előfizetést kért.|  
+|ErrorYouNeedToAgreeWithLegalTerms|A folytatáshoz el kell fogadnia a használati feltételeket.|  
 |ButtonLabelAddSubscription|Előfizetés hozzáadása|  
-|LinkLabelChangeSubscriptionName|Módosítása|  
+|LinkLabelChangeSubscriptionName|módosítás|  
 |ButtonLabelConfirm|Megerősítés|  
-|TextblockMultipleSubscriptionsCount|Rendelkezik {0} előfizetés a termékre:|  
-|TextblockSingleSubscriptionsCount|Rendelkezik {0} előfizetés a termékre:|  
-|TextblockSingleApisCount|Ez a termék {0} API:|  
-|TextblockMultipleApisCount|Ez a termék {0} API-kat:|  
+|TextblockMultipleSubscriptionsCount|A termékre {0} előfizetések tartoznak:|  
+|TextblockSingleSubscriptionsCount|Előfizetése van {0} a termékre:|  
+|TextblockSingleApisCount|Ez a termék {0} API-t tartalmaz:|  
+|TextblockMultipleApisCount|Ez a termék {0} API-kat tartalmaz:|  
 |TextblockHeaderSubscribe|Előfizetés a termékre|  
-|TextblockSubscriptionDescription|Egy új előfizetést hoz létre a következő:|  
-|TextblockSubscriptionLimitReached|Elérte az előfizetési korlátot.|  
+|TextblockSubscriptionDescription|A rendszer új előfizetést hoz létre a következő módon:|  
+|TextblockSubscriptionLimitReached|Elérte az előfizetések korlátját.|  
   
-###  <a name="ProductsStrings"></a> ProductsStrings  
-  
-|Name (Név)|Text|  
-|----------|----------|  
-|PageTitleProducts|Products|  
-  
-###  <a name="ProviderInfoStrings"></a> ProviderInfoStrings  
+###  <a name="ProductsStrings"></a>ProductsStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
-|TextboxExternalIdentitiesDisabled|Bejelentkezés le van tiltva a rendszergazdák által jelenleg.|  
-|TextboxExternalIdentitiesSigninInvitation|Vagy bejelentkezés a következővel:|  
-|TextboxExternalIdentitiesSigninInvitationPrimary|Bejelentkezés a következővel:|  
+|PageTitleProducts|Termékek|  
   
-###  <a name="SigninResources"></a> SigninResources  
+###  <a name="ProviderInfoStrings"></a>ProviderInfoStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
-|PrincipalNotFound|Rendszerbiztonsági tag nem található vagy az aláírás érvénytelen|  
+|TextboxExternalIdentitiesDisabled|A bejelentkezést a rendszergazdák jelenleg letiltották.|  
+|TextboxExternalIdentitiesSigninInvitation|Másik lehetőségként jelentkezzen be|  
+|TextboxExternalIdentitiesSigninInvitationPrimary|Bejelentkezés a rel:|  
+  
+###  <a name="SigninResources"></a>SigninResources  
+  
+|Name (Név)|Text|  
+|----------|----------|  
+|PrincipalNotFound|A rendszerbiztonsági tag nem található, vagy az aláírás érvénytelen.|  
 |ErrorSsoAuthenticationFailed|Az SSO-hitelesítés nem sikerült|  
-|ErrorSsoAuthenticationFailedDetailed|Érvénytelen megadott biztonsági jogkivonat vagy aláírása nem ellenőrizhető.|  
+|ErrorSsoAuthenticationFailedDetailed|Érvénytelen lexikális elem van megadva, vagy az aláírás nem ellenőrizhető.|  
 |ErrorSsoTokenInvalid|Az SSO-jogkivonat érvénytelen|  
-|ValidationErrorSpecificEmailAlreadyExists|E-mail "{0}" már regisztrálva van|  
-|ValidationErrorSpecificEmailInvalid|E-mail "{0}" érvénytelen|  
-|ValidationErrorPasswordInvalid|Jelszó érvénytelen. Javítsa a hibákat, és próbálkozzon újra.|  
-|PropertyTooShort|{0} túl rövid|  
-|WebAuthenticationAddresserEmailInvalidErrorMessage|Érvénytelen e-mail cím.|  
-|ValidationMessageNewPasswordConfirmationRequired|Az új jelszó megerősítése|  
-|ValidationErrorPasswordConfirmationRequired|Megerősítésre szolgáló jelszó üres|  
-|WebAuthenticationEmailChangeNotice|Változás megerősítő e-mailt a jelszómódosításra vonatkozó van {0}. Kövesse az abban található utasításokat az új e-mail cím megerősítéséhez. Ha az e-mail nem érkezik meg a postafiókjába pár percen belül, ellenőrizze a Levélszemét mappa.|  
-|WebAuthenticationEmailChangeNoticeHeader|Az e-mailek módosítási kérésének feldolgozása sikerült|  
-|WebAuthenticationEmailChangeNoticeTitle|E-mailek módosítási kérése|  
-|WebAuthenticationEmailHasBeenRevertedNotice|E-mail-cím már létezik. Kérést visszavontuk|  
-|ValidationErrorEmailAlreadyExists|E-mail-cím már létezik.|  
+|ValidationErrorSpecificEmailAlreadyExists|A ({0}z) "" e-mail már regisztrálva van|  
+|ValidationErrorSpecificEmailInvalid|A ({0}z) "" e-mail-címe érvénytelen|  
+|ValidationErrorPasswordInvalid|A jelszó érvénytelen. Javítsa ki a hibákat, és próbálkozzon újra.|  
+|PropertyTooShort|{0}túl rövid|  
+|WebAuthenticationAddresserEmailInvalidErrorMessage|Érvénytelen e-mail-cím.|  
+|ValidationMessageNewPasswordConfirmationRequired|Új jelszó megerősítése|  
+|ValidationErrorPasswordConfirmationRequired|A megerősítésre szolgáló jelszó üres|  
+|WebAuthenticationEmailChangeNotice|A megerősítő e-mailek {0}módosítása a következő módon történik:. Az új e-mail-cím megerősítéséhez kövesse az itt található utasításokat. Ha az e-mail nem érkezik meg a Beérkezett üzenetek mappájába a következő néhány percben, ellenőrizze a levélszemét mappáját.|  
+|WebAuthenticationEmailChangeNoticeHeader|Az e-mail-módosítási kérelme sikeresen feldolgozva|  
+|WebAuthenticationEmailChangeNoticeTitle|E-mail-cím módosítási kérése|  
+|WebAuthenticationEmailHasBeenRevertedNotice|Már létezik e-mail-cím. A kérelem visszavonásra került|  
+|ValidationErrorEmailAlreadyExists|Az e-mail-cím már létezik|  
 |ValidationErrorEmailInvalid|Érvénytelen e-mail cím|  
-|TextboxLabelEmail|E-mail|  
-|ValidationErrorEmailRequired|E-mail cím megadása kötelező.|  
+|TextboxLabelEmail|Email|  
+|ValidationErrorEmailRequired|E-mail-cím megadása kötelező.|  
 |WebAuthenticationErrorNoticeHeader|Hiba|  
-|WebAuthenticationFieldLengthErrorMessage|{0} a maximális hossza {1}|  
+|WebAuthenticationFieldLengthErrorMessage|{0}maximális hosszának kell lennie{1}|  
 |TextboxLabelEmailFirstName|Utónév|  
-|ValidationErrorFirstNameRequired|Keresztnév megadása kötelező.|  
-|ValidationErrorFirstNameInvalid|Érvénytelen Keresztnév|  
-|NoticeInvalidInvitationToken|Vegye figyelembe, hogy megerősítésben szereplő hivatkozások csak 48 óráig érvényes. Ha ezen az időtartamon belül, ellenőrizze, hogy a hivatkozás helyes-e. Ha a hivatkozás lejárt, ismételje meg a műveletet ellenőrizheti.|  
+|ValidationErrorFirstNameRequired|A keresztnév megadása kötelező.|  
+|ValidationErrorFirstNameInvalid|Érvénytelen keresztnév|  
+|NoticeInvalidInvitationToken|Vegye figyelembe, hogy a megerősítő hivatkozások csak 48 óráig érvényesek. Ha továbbra is ezen az időkereten belül van, ellenőrizze, hogy helyes-e a hivatkozás. Ha a hivatkozás lejárt, akkor ismételje meg a megerősíteni kívánt műveletet.|  
 |NoticeHeaderInvalidInvitationToken|Érvénytelen meghívói biztonsági jogkivonat|  
 |NoticeTitleInvalidInvitationToken|Megerősítési hiba|  
-|WebAuthenticationLastNameInvalidErrorMessage|Érvénytelen Vezetéknév|  
+|WebAuthenticationLastNameInvalidErrorMessage|Érvénytelen vezetéknév|  
 |TextboxLabelEmailLastName|Vezetéknév|  
-|ValidationErrorLastNameRequired|Vezetéknév megadása kötelező.|  
-|WebAuthenticationLinkExpiredNotice|Ön elküldött megerősítési hivatkozás lejárt. `<a href={0}?token={1}>Resend confirmation email.</a\>`|  
+|ValidationErrorLastNameRequired|A vezetéknév megadása kötelező.|  
+|WebAuthenticationLinkExpiredNotice|A jóváhagyásra küldött hivatkozás lejárt. `<a href={0}?token={1}>Resend confirmation email.</a\>`|  
 |NoticePasswordResetLinkInvalidOrExpired|A jelszó-visszaállítási hivatkozás érvénytelen vagy lejárt.|  
 |WebAuthenticationLinkExpiredNoticeTitle|Hivatkozás elküldve|  
 |WebAuthenticationNewPasswordLabel|Új jelszó|  
-|ValidationMessageNewPasswordRequired|Új jelszó megadása kötelező.|  
-|TextboxLabelNotificationsSenderEmail|Az értesítések feladói e-mail|  
-|TextboxLabelOrganizationName|Szervezet neve|  
-|WebAuthenticationOrganizationRequiredErrorMessage|Szervezet neve nincs megadva|  
+|ValidationMessageNewPasswordRequired|Új jelszó szükséges.|  
+|TextboxLabelNotificationsSenderEmail|Az értesítések feladói e-mail-címe|  
+|TextboxLabelOrganizationName|Munkahely vagy intézmény neve|  
+|WebAuthenticationOrganizationRequiredErrorMessage|A munkahely neve üres|  
 |WebAuthenticationPasswordChangedNotice|A jelszó frissítése sikerült|  
-|WebAuthenticationPasswordChangedNoticeTitle|Jelszó frissítve|  
+|WebAuthenticationPasswordChangedNoticeTitle|A jelszó frissítése megtörtént|  
 |WebAuthenticationPasswordCompareErrorMessage|A jelszavak nem egyeznek|  
 |WebAuthenticationPasswordConfirmLabel|Jelszó megerősítése|  
-|ValidationErrorPasswordInvalidDetailed|A jelszava túl gyenge.|  
-|WebAuthenticationPasswordLabel|Jelszó|  
-|ValidationErrorPasswordRequired|Jelszó megadása kötelező.|  
-|WebAuthenticationPasswordResetSendNotice|Módosítsa jelszavát megerősítő e-mailt a módszer van {0}. Kövesse az e-mailben található utasításokat a jelszómódosítási folyamat folytatásához.|  
-|WebAuthenticationPasswordResetSendNoticeHeader|A jelszó igénylésére vonatkozó kérés feldolgozása sikerült|  
+|ValidationErrorPasswordInvalidDetailed|A jelszó túl gyenge.|  
+|WebAuthenticationPasswordLabel|Windows 10|  
+|ValidationErrorPasswordRequired|A jelszó megadása kötelező.|  
+|WebAuthenticationPasswordResetSendNotice|Jelszó megerősítő e-mail-címének {0}módosítása. A jelszó-módosítási folyamat folytatásához kövesse az e-mailben található utasításokat.|  
+|WebAuthenticationPasswordResetSendNoticeHeader|A jelszó-visszaállítási kérelem feldolgozása sikeresen megtörtént|  
 |WebAuthenticationPasswordResetSendNoticeTitle|Új jelszó kérése|  
-|WebAuthenticationRequestNotFoundNotice|A kérelem nem található|  
-|WebAuthenticationSenderEmailRequiredErrorMessage|Értesítések feladói e-mail-címe üres|  
-|WebAuthenticationSigninPasswordLabel|A jelszó beírásával erősítse meg a módosítást|  
-|WebAuthenticationSignupConfirmNotice|Regisztrációs megerősítő e-mailt az felé {0}. < br /\> kövesse az e-mailben található utasításokat a fiók aktiválásához. < br /\> az e-mailt nem érkezik meg a postafiókjába pár percen belül, ha Ellenőrizze a Levélszemét mappát.|  
-|WebAuthenticationSignupConfirmNoticeHeader|A fiók sikeresen létrejött.|  
-|WebAuthenticationSignupConfirmNoticeRepeatHeader|Regisztrációs megerősítő e-mailt újraküldtük|  
+|WebAuthenticationRequestNotFoundNotice|A kérés nem található|  
+|WebAuthenticationSenderEmailRequiredErrorMessage|Az értesítések feladói e-mail-címe üres|  
+|WebAuthenticationSigninPasswordLabel|Kérjük, erősítse meg a módosítást jelszó megadásával|  
+|WebAuthenticationSignupConfirmNotice|A regisztráció megerősítő e-mail {0}-címe. <\> br/kérjük, kövesse az e-mailben található utasításokat a fiók aktiválásához\> . < br/ha az e-mail nem érkezik meg a Beérkezett üzenetek mappájába a következő néhány percen belül, kérjük, Keresse meg a levélszemét mappáját.|  
+|WebAuthenticationSignupConfirmNoticeHeader|A fiók sikeresen létrejött|  
+|WebAuthenticationSignupConfirmNoticeRepeatHeader|A regisztrációs visszaigazoló e-mailt újra elküldtük|  
 |WebAuthenticationSignupConfirmNoticeTitle|Fiók létrehozva|  
-|WebAuthenticationTokenRequiredErrorMessage|A token üres|  
-|WebAuthenticationUserAlreadyRegisteredNotice|Úgy tűnik, ezzel az e-mail a felhasználó már regisztrálva van a rendszerben. Ha elfelejtette a jelszavát, próbálja meg visszaállítani azt, vagy forduljon az ügyfélszolgálathoz.|  
+|WebAuthenticationTokenRequiredErrorMessage|A biztonsági jogkivonat üres|  
+|WebAuthenticationUserAlreadyRegisteredNotice|Úgy tűnik, hogy az e-mail-címmel rendelkező felhasználó már regisztrálva van a rendszeren. Ha elfelejtette a jelszavát, próbálja meg visszaállítani, vagy forduljon a támogatási csapathoz.|  
 |WebAuthenticationUserAlreadyRegisteredNoticeHeader|Már regisztrált felhasználó|  
-|WebAuthenticationUserAlreadyRegisteredNoticeTitle|Már regisztrálva van|  
-|ButtonLabelChangePassword|Jelszó módosítása|  
+|WebAuthenticationUserAlreadyRegisteredNoticeTitle|Már regisztrált|  
+|ButtonLabelChangePassword|Jelszó megváltoztatása|  
 |ButtonLabelChangeAccountInfo|Fiókinformációk módosítása|  
 |ButtonLabelCloseAccount|Fiók bezárása|  
-|WebAuthenticationInvalidCaptchaErrorMessage|Megadott szöveg nem egyezik a képen látható szöveget. Kérjük, próbálkozzon újból.|  
-|ValidationErrorCredentialsInvalid|E-mailben vagy a jelszó érvénytelen. Javítsa a hibákat, és próbálkozzon újra.|  
-|WebAuthenticationRequestIsNotValid|Kérés nem érvényes|  
-|WebAuthenticationUserIsNotConfirm|Bejelentkezési kísérlet előtt erősítse meg a regisztrációt.|  
-|WebAuthenticationInvalidEmailFormated|Érvénytelen e-mail-cím: {0}|  
+|WebAuthenticationInvalidCaptchaErrorMessage|A beírt szöveg nem egyezik meg a képen látható szöveggel. Kérjük, próbálkozzon újból.|  
+|ValidationErrorCredentialsInvalid|Az e-mail vagy a jelszó érvénytelen. Javítsa ki a hibákat, és próbálkozzon újra.|  
+|WebAuthenticationRequestIsNotValid|A kérés nem érvényes|  
+|WebAuthenticationUserIsNotConfirm|A bejelentkezés megkísérlése előtt erősítse meg a regisztrációt.|  
+|WebAuthenticationInvalidEmailFormated|Az e-mailek érvénytelenek:{0}|  
 |WebAuthenticationUserNotFound|A felhasználó nem található|  
-|WebAuthenticationTenantNotRegistered|A fiókja tagja egy Azure Active Directory-bérlőjéhez, amely nem jogosult a portál elérésére.|  
-|WebAuthenticationAuthenticationFailed|Hitelesítés nem sikerült.|  
-|WebAuthenticationGooglePlusNotEnabled|Hitelesítés nem sikerült. Ha Ön hitelesítette az alkalmazást majd forduljon a rendszergazdához, győződjön meg arról, hogy a Google-hitelesítés megfelelően van konfigurálva.|  
+|WebAuthenticationTenantNotRegistered|A fiókja olyan Azure Active Directory bérlőhöz tartozik, amely nem jogosult a portál elérésére.|  
+|WebAuthenticationAuthenticationFailed|A hitelesítés sikertelen volt.|  
+|WebAuthenticationGooglePlusNotEnabled|A hitelesítés sikertelen volt. Ha Ön engedélyezte az alkalmazást, forduljon a rendszergazdához, és győződjön meg arról, hogy a Google-hitelesítés megfelelően van konfigurálva.|  
 |ValidationErrorAllowedTenantIsRequired|Az engedélyezett bérlő megadása kötelező|  
-|ValidationErrorTenantIsNotValid|Az Azure Active Directory-bérlőhöz "{0}" nem érvényes.|  
+|ValidationErrorTenantIsNotValid|A Azure Active Directory bérlő ({0}) nem érvényes.|  
 |WebAuthenticationActiveDirectoryTitle|Azure Active Directory|  
-|WebAuthenticationLoginUsingYourProvider|Jelentkezzen be a {0} fiók|  
-|WebAuthenticationUserLimitNotice|Ez a szolgáltatás elérte az engedélyezett felhasználók maximális számát. Adjon `<a href="mailto:{0}"\>contact the administrator</a\>` frissítse a szolgáltatást, és a felhasználói regisztráció újbóli engedélyezéséhez.|  
-|WebAuthenticationUserLimitNoticeHeader|Felhasználói regisztráció le van tiltva|  
-|WebAuthenticationUserLimitNoticeTitle|Felhasználói regisztráció le van tiltva|  
-|WebAuthenticationUserRegistrationDisabledNotice|A felhasználói regisztrációt a rendszergazda letiltotta. Jelentkezzen be a külső identitásszolgáltató.|  
-|WebAuthenticationUserRegistrationDisabledNoticeHeader|Felhasználói regisztráció le van tiltva|  
-|WebAuthenticationUserRegistrationDisabledNoticeTitle|Felhasználói regisztráció le van tiltva|  
-|WebAuthenticationSignupPendingConfirmationNotice|A fiók létrehozásának befejezése előtt ellenőriznünk kell a e-mail címét. E-mailt elküldtük Önnek {0}. Kövesse az e-mailben található utasításokat a fiók aktiválásához. Ha az e-mail nem érkezik meg a postafiókjába pár percen belül, ellenőrizze a Levélszemét mappa.|  
-|WebAuthenticationSignupPendingConfirmationAccountFoundNotice|Egy meg nem erősített fiókot találtunk az e-mail-cím {0}. A fiók létrehozásának befejezéséhez ellenőrizze az e-mail-címet kell. E-mailt elküldtük Önnek {0}. Kövesse az e-mailben található utasításokat a fiók aktiválásához. Ha az e-mail nem érkezik meg a postafiókjába pár percen belül, ellenőrizze a Levélszemét mappa|  
+|WebAuthenticationLoginUsingYourProvider|Bejelentkezés a {0} fiók használatával|  
+|WebAuthenticationUserLimitNotice|A szolgáltatás elérte az engedélyezett felhasználók maximális számát. `<a href="mailto:{0}"\>contact the administrator</a\>` Frissítse a szolgáltatását, és engedélyezze újra a felhasználói regisztrációt.|  
+|WebAuthenticationUserLimitNoticeHeader|A felhasználói regisztráció le van tiltva|  
+|WebAuthenticationUserLimitNoticeTitle|A felhasználói regisztráció le van tiltva|  
+|WebAuthenticationUserRegistrationDisabledNotice|A rendszergazda letiltotta a felhasználók regisztrációját. Jelentkezzen be külső identitás-szolgáltatóval.|  
+|WebAuthenticationUserRegistrationDisabledNoticeHeader|A felhasználói regisztráció le van tiltva|  
+|WebAuthenticationUserRegistrationDisabledNoticeTitle|A felhasználói regisztráció le van tiltva|  
+|WebAuthenticationSignupPendingConfirmationNotice|Ahhoz, hogy elvégezze a fiók létrehozását, ellenőrizni kell az e-mail-címét. E-mailt küldtünk a {0}következőnek:. A fiók aktiválásához kövesse az e-mailben szereplő utasításokat. Ha az e-mail-cím nem érkezik meg a következő néhány percen belül, ellenőrizze a levélszemét mappáját.|  
+|WebAuthenticationSignupPendingConfirmationAccountFoundNotice|Nem megerősített fiókot találtunk az e-mail cím {0}számára. A fiók létrehozásának befejezéséhez ellenőrizni kell az e-mail címét. E-mailt küldtünk a {0}következőnek:. A fiók aktiválásához kövesse az e-mailben szereplő utasításokat. Ha az e-mail-cím nem érkezik meg a következő néhány percen belül, ellenőrizze a levélszemét mappáját|  
 |WebAuthenticationSignupConfirmationAlmostDone|Majdnem kész|  
-|WebAuthenticationSignupConfirmationEmailSent|E-mailt elküldtük Önnek {0}. Kövesse az e-mailben található utasításokat a fiók aktiválásához. Ha az e-mail nem érkezik meg a postafiókjába pár percen belül, ellenőrizze a Levélszemét mappa.|  
-|WebAuthenticationEmailSentNotificationMessage|Sikerült elküldeni e-mailben {0}|  
-|WebAuthenticationNoAadTenantConfigured|Nincs konfigurálva a szolgáltatáshoz Azure Active Directory-bérlővel.|  
-|CheckboxLabelUserRegistrationTermsConsentRequired|Elfogadom a `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`.|  
-|TextblockUserRegistrationTermsProvided|Tekintse át `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
-|DialogHeadingTermsOfUse|Használati feltételek|  
-|ValidationMessageConsentNotAccepted|A folytatás előtt el kell fogadnia a használati feltételeket.|  
+|WebAuthenticationSignupConfirmationEmailSent|E-mailt küldtünk a {0}következőnek:. A fiók aktiválásához kövesse az e-mailben szereplő utasításokat. Ha az e-mail-cím nem érkezik meg a következő néhány percen belül, ellenőrizze a levélszemét mappáját.|  
+|WebAuthenticationEmailSentNotificationMessage|Az e-mail sikeresen elküldve{0}|  
+|WebAuthenticationNoAadTenantConfigured|Nincs Azure Active Directory bérlő konfigurálva a szolgáltatáshoz.|  
+|CheckboxLabelUserRegistrationTermsConsentRequired|Elfogadom a `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`következőt:.|  
+|TextblockUserRegistrationTermsProvided|Tekintse át`<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
+|DialogHeadingTermsOfUse|használati feltételeit|  
+|ValidationMessageConsentNotAccepted|A folytatáshoz el kell fogadnia a használati feltételeket.|  
   
-###  <a name="SigninStrings"></a> SigninStrings  
+###  <a name="SigninStrings"></a>SigninStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
 |WebAuthenticationForgotPassword|Elfelejtette jelszavát?|  
-|WebAuthenticationIfAdministrator|Ha rendszergazdaként kell bejelentkeznie a `<a href="{0}"\>here</a\>`.|  
+|WebAuthenticationIfAdministrator|Ha Ön rendszergazda, be kell jelentkeznie `<a href="{0}"\>here</a\>`.|  
 |WebAuthenticationNotAMember|Még nem tag? `<a href="/signup"\>Sign up now</a\>`|  
 |WebAuthenticationRemember|Emlékezzen rám ezen a számítógépen|  
-|WebAuthenticationSigininWithPassword|Jelentkezzen be a felhasználónevét és jelszavát|  
+|WebAuthenticationSigininWithPassword|Bejelentkezés felhasználónévvel és jelszóval|  
 |WebAuthenticationSigninTitle|Bejelentkezés|  
-|WebAuthenticationSignUpNow|Regisztráljon most|  
+|WebAuthenticationSignUpNow|Regisztráció|  
   
-###  <a name="SignupStrings"></a> SignupStrings  
-  
-|Name (Név)|Text|  
-|----------|----------|  
-|PageTitleSignup|Regisztráció|  
-|WebAuthenticationAlreadyAMember|Már tag?|  
-|WebAuthenticationCreateNewAccount|Új API Management-fiók létrehozása|  
-|WebAuthenticationSigninNow|Jelentkezzen be most|  
-|ButtonLabelSignup|Regisztráció|  
-  
-###  <a name="SubscriptionListStrings"></a> SubscriptionListStrings  
+###  <a name="SignupStrings"></a>SignupStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
-|SubscriptionCancelConfirmation|Biztos, hogy szeretné-e az előfizetést?|  
-|SubscriptionRenewConfirmation|Biztos, hogy szeretné-e az előfizetés meghosszabbításához?|  
+|PageTitleSignup|Feliratkozás|  
+|WebAuthenticationAlreadyAMember|Már van tag?|  
+|WebAuthenticationCreateNewAccount|Új API Management fiók létrehozása|  
+|WebAuthenticationSigninNow|Bejelentkezés|  
+|ButtonLabelSignup|Feliratkozás|  
+  
+###  <a name="SubscriptionListStrings"></a>SubscriptionListStrings  
+  
+|Name (Név)|Text|  
+|----------|----------|  
+|SubscriptionCancelConfirmation|Biztosan meg kívánja szakítani ezt az előfizetést?|  
+|SubscriptionRenewConfirmation|Biztosan meg kívánja újítani ezt az előfizetést?|  
 |WebDevelopersManageSubscriptions|Előfizetések kezelése|  
 |WebDevelopersPrimaryKey|Elsődleges kulcs|  
 |WebDevelopersRegenerateLink|Újragenerálás|  
 |WebDevelopersSecondaryKey|Másodlagos kulcs|  
 |ButtonLabelShowKey|Megjelenítés|  
-|ButtonLabelRenewSubscription|Frissítés|  
-|WebDevelopersSubscriptionRequested|Kérelem dátuma {0}|  
-|WebDevelopersSubscriptionRequestedState|A kért|  
+|ButtonLabelRenewSubscription|Megújítás|  
+|WebDevelopersSubscriptionRequested|Igénylés bekapcsolva{0}|  
+|WebDevelopersSubscriptionRequestedState|Igényelve|  
 |WebDevelopersSubscriptionTableNameHeader|Name (Név)|  
-|WebDevelopersSubscriptionTableStateHeader|Állapot|  
+|WebDevelopersSubscriptionTableStateHeader|State|  
 |WebDevelopersUsageStatisticsLink|Analytics-jelentések|  
-|WebDevelopersYourSubscriptions|Az előfizetések|  
-|SubscriptionPropertyLabelRequestedDate|Kérelem dátuma|  
-|SubscriptionPropertyLabelStartedDate|A következőn:|  
+|WebDevelopersYourSubscriptions|Előfizetések|  
+|SubscriptionPropertyLabelRequestedDate|Kérelem dátuma:|  
+|SubscriptionPropertyLabelStartedDate|Elindítva|  
 |PageTitleRenameSubscription|Előfizetés átnevezése|  
 |SubscriptionPropertyLabelName|Előfizetés neve|  
   
-###  <a name="SubscriptionStrings"></a> SubscriptionStrings  
+###  <a name="SubscriptionStrings"></a>SubscriptionStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
-|SectionHeadingCloseAccount|Szeretné megszüntetni a fiók?|  
+|SectionHeadingCloseAccount|Szeretné lezárta a fiókját?|  
 |PageTitleDeveloperProfile|Profil|  
-|ButtonLabelHideKey|Elrejtése|  
+|ButtonLabelHideKey|Elrejtés|  
 |ButtonLabelRegenerateKey|Újragenerálás|  
-|InformationMessageKeyWasRegenerated|Biztos, hogy szeretné-e újragenerálja a kulcsot?|  
+|InformationMessageKeyWasRegenerated|Biztosan újra szeretné állítani ezt a kulcsot?|  
 |ButtonLabelShowKey|Megjelenítés|  
   
-###  <a name="UpdateProfileStrings"></a> UpdateProfileStrings  
+###  <a name="UpdateProfileStrings"></a>UpdateProfileStrings  
   
 |Name (Név)|Text|  
 |----------|----------|  
 |ButtonLabelUpdateProfile|Profil frissítése|  
 |PageTitleUpdateProfile|Fiókadatok frissítése|  
   
-###  <a name="UserProfile"></a> Felhasználói profil  
+###  <a name="UserProfile"></a>UserProfile  
   
 |Name (Név)|Text|  
 |----------|----------|  
 |ButtonLabelChangeAccountInfo|Fiókinformációk módosítása|  
-|ButtonLabelChangePassword|Jelszó módosítása|  
+|ButtonLabelChangePassword|Jelszó megváltoztatása|  
 |ButtonLabelCloseAccount|Fiók bezárása|  
-|TextboxLabelEmail|E-mail|  
+|TextboxLabelEmail|Email|  
 |TextboxLabelEmailFirstName|Utónév|  
 |TextboxLabelEmailLastName|Vezetéknév|  
-|TextboxLabelNotificationsSenderEmail|Az értesítések feladói e-mail|  
-|TextboxLabelOrganizationName|Szervezet neve|  
+|TextboxLabelNotificationsSenderEmail|Az értesítések feladói e-mail-címe|  
+|TextboxLabelOrganizationName|Munkahely vagy intézmény neve|  
 |SubscriptionStateActive|Aktív|  
 |SubscriptionStateCancelled|Megszakítva|  
 |SubscriptionStateExpired|Elévült|  
-|SubscriptionStateRejected|Elutasított|  
-|SubscriptionStateRequested|A kért|  
+|SubscriptionStateRejected|Elutasítva|  
+|SubscriptionStateRequested|Igényelve|  
 |SubscriptionStateSuspended|Felfüggesztve|  
-|DefaultSubscriptionNameTemplate|{0}  (alapértelmezett)|  
+|DefaultSubscriptionNameTemplate|{0}alapértelmezett|  
 |SubscriptionNameTemplate|Fejlesztői hozzáférés #{0}|  
 |TextboxLabelSubscriptionName|Előfizetés neve|  
-|ValidationMessageSubscriptionNameRequired|Előfizetés neve nem lehet üres.|  
-|ApiManagementUserLimitReached|Ez a szolgáltatás elérte az engedélyezett felhasználók maximális számát. Frissítsen egy magasabb díjszabási csomagot.|  
+|ValidationMessageSubscriptionNameRequired|Az előfizetés neve nem lehet üres.|  
+|ApiManagementUserLimitReached|A szolgáltatás elérte az engedélyezett felhasználók maximális számát. Frissítsen magasabb díjszabási szintre.|  
   
-##  <a name="glyphs"></a> Erőforrások szimbóluma  
- Az API Management fejlesztői portál sablonjainak használhatja az ikonokra a [a rendszerindítási Glyphicons](https://getbootstrap.com/components/#glyphicons). Karaktertábla készlete magában foglalja a több mint 250 Karaktertábla betűtípus formátumban a [Glyphicon](https://glyphicons.com/) Halflings beállítása. A készletből egy szimbóluma használatához használja a következő szintaxist.  
+##  <a name="glyphs"></a>Karakterjel-erőforrások  
+ API Management fejlesztői portál sablonjai a [Glyphicons származó](https://getbootstrap.com/components/#glyphicons)karakterjeleket használhatják a bootstrapből. Ez a karakterjel-készlet több mint 250 karakterjelet tartalmaz a [Glyphicon](https://glyphicons.com/) félszerzetek készletből származó betűkészlet formátumban. Ha a készletből karakterjelet szeretne használni, használja a következő szintaxist.  
   
 ```html  
 <span class="glyphicon glyphicon-user">  
 ```  
   
- Karaktertábla teljes listáját lásd: [a rendszerindítási Glyphicons](https://getbootstrap.com/components/#glyphicons).
+ A karakterjelek teljes listájáért lásd: [Glyphicons from bootstrap](https://getbootstrap.com/components/#glyphicons).
 
 ## <a name="next-steps"></a>További lépések
-Sablonok használatának ismertetését lásd: [testreszabása sablonok használatával, az API Management fejlesztői portálon](api-management-developer-portal-templates.md).
+További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

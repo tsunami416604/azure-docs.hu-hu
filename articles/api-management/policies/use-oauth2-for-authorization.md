@@ -1,6 +1,6 @@
 ---
-title: Az Azure API management házirend minta - használja az OAuth2 engedélyezési az átjáró és a egy háttérrendszer között |} A Microsoft Docs
-description: Az Azure API management házirend-minta - bemutatja, hogyan használja az OAuth2 engedélyezési az átjáró és a egy háttérrendszer között. Bemutatja, hogyan szerezheti be a hozzáférési jogkivonatot az AAD-tól, majd továbbíthatja azt a háttérrendszernek.
+title: Azure API Management-szabályzat – minta – OAuth2 használata az átjáró és a háttér közötti hitelesítéshez | Microsoft Docs
+description: Azure API Management-szabályzat – példa – bemutatja, hogyan használható a OAuth2 az átjáró és a háttér közötti hitelesítéshez. Bemutatja, hogyan szerezheti be a hozzáférési jogkivonatot az AAD-tól, majd továbbíthatja azt a háttérrendszernek.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,35 +9,34 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 519233cb9e77bf48f67d869a54af771c17c7827e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fac10b728e4b7f09ec1019c3257f7c9e5d6e7714
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859090"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071864"
 ---
-# <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>Használja az OAuth2 engedélyezési az átjáró és a egy háttérrendszer között
+# <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>OAuth2 használata az átjáró és a háttér közötti engedélyezéshez
 
-Ez a cikk bemutatja egy Azure API management házirend minta, amely azt ismerteti, hogyan használja az OAuth2 engedélyezési az átjáró és a egy háttérrendszer között. Bemutatja, hogyan szerezheti be a hozzáférési jogkivonatot az AAD-tól, majd továbbíthatja azt a háttérrendszernek. 
+Ez a cikk egy Azure API Management-szabályzatot mutat be, amely bemutatja, hogyan használható a OAuth2 az átjáró és a háttér közötti hitelesítéshez. Bemutatja, hogyan szerezheti be a hozzáférési jogkivonatot az AAD-tól, majd továbbíthatja azt a háttérrendszernek. 
 
-Az ismertetett lépéseket követve beállíthatja, vagy szerkesztheti egy szabályzat-kódot, [Set meg vagy szerkessze a szabályzat](../set-edit-policies.md). További példák megtekintéséhez lásd: [házirend minták](../policy-samples.md).
+A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-samples.md).
 
-A következő szkript tulajdonságban {{}} megjelenő tulajdonságok. Tulajdonságok és az API Management-házirendek használatával kapcsolatos további információkért lásd: [ez](../api-management-howto-properties.md) témakör.
+A következő parancsfájl a {{Property}} alkalmazásban megjelenő tulajdonságokat használja. További információ a tulajdonságokról és azok használatáról API Management házirendekben: [ebben a](../api-management-howto-properties.md) témakörben.
  
 ## <a name="policy"></a>Szabályzat
 
-Illessze be a kódot a **bejövő** letiltása.
+Illessze be a kódot a **bejövő** blokkba.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Get OAuth2 access token from AAD and forward it to the backend.policy.xml)]
   
 ## <a name="next-steps"></a>További lépések
 
-További információ az APIM-szabályzatokat:
+További információ a APIM-házirendekről:
 
 + [Átalakítási házirendek](../api-management-transformation-policies.md)
-+ [A házirend-minták](../policy-samples.md)
++ [Házirend-minták](../policy-samples.md)
 

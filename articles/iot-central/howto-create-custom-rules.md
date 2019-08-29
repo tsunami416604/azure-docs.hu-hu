@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: c31fa96457a3945c39fcc34770cb6783af3b81e8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d89e8f174c7006c1a0f771dd4dfaa816ded3698c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049117"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100989"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>Az Azure IoT Central kiterjesztése az értesítéseket küldő egyéni szabályokkal
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ### <a name="iot-central-application"></a>IoT Central alkalmazás
 
-Hozzon létre egy IoT Central alkalmazást az [Azure IoT Central-My Applications](https://aka.ms/iotcentral) lapon a következő beállításokkal:
+Hozzon létre egy IoT Central alkalmazást az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén a következő beállításokkal:
 
 | Beállítás | Value |
 | ------- | ----- |
@@ -305,7 +305,7 @@ Ez a megoldás egy Stream Analytics lekérdezést használ annak észlelésére,
 
 ## <a name="configure-export-in-iot-central"></a>Az Exportálás konfigurálása IoT Central
 
-Navigáljon a contoso-sablonból létrehozott [IoT Central alkalmazáshoz](https://aka.ms/iotcentral) . Ebben a szakaszban úgy konfigurálja az alkalmazást, hogy a szimulált eszközökről az telemetria továbbítsa az alkalmazást. Az Exportálás konfigurálása:
+Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén navigáljon a contoso-sablonból létrehozott IoT Central alkalmazáshoz. Ebben a szakaszban úgy konfigurálja az alkalmazást, hogy a szimulált eszközökről az telemetria továbbítsa az alkalmazást. Az Exportálás konfigurálása:
 
 1. Navigáljon a **folyamatos adatexportálás** lapra, válassza az **+ új**, majd az **Azure Event Hubs**elemet.
 1. Az Exportálás konfigurálásához használja a következő beállításokat, majd válassza a **Mentés**lehetőséget:

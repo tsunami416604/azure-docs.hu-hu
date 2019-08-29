@@ -1,6 +1,6 @@
 ---
-title: TLS kölcsönös hitelesítés – az Azure App Service konfigurálása
-description: Ismerje meg, hogyan állítsa be alkalmazását a TLS ügyfél Tanúsítványalapú hitelesítés használatára.
+title: TLS kölcsönös hitelesítés konfigurálása – Azure App Service
+description: Megtudhatja, hogyan konfigurálhatja az alkalmazást úgy, hogy az ügyféltanúsítvány-alapú hitelesítést használja a TLS-ben.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -10,43 +10,42 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5702362add6a50f2f4525afbd3649f083f34b6fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4e97a96687e5fa1d934ab8c0317b52cb753f72c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60852448"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088175"
 ---
-# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Az Azure App Service TLS kölcsönös hitelesítés beállítása
+# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>A TLS kölcsönös hitelesítés konfigurálása Azure App Servicehoz
 
-Engedélyezi a hitelesítést, a különböző típusú hozzáférést korlátozhatja az Azure App Service-alkalmazás. Az egyik lehetőség, a kérelem ügyféltanúsítványt az ügyfél kérése esetén a TLS/SSL-en keresztül, és a tanúsítvány érvényesítéséhez. Ez a mechanizmus TLS kölcsönös hitelesítés vagy az ügyféltanúsítvány-alapú hitelesítés nevezzük. Ez a cikk bemutatja, hogyan állíthatja be az alkalmazás ügyféltanúsítvány-alapú hitelesítés használatára.
+A Azure App Service-alkalmazáshoz való hozzáférést a különböző típusú hitelesítés engedélyezésével korlátozhatja. Az egyik módszer az, ha az ügyfél kérelmét a TLS/SSL protokollon keresztül kéri le, és érvényesíti a tanúsítványt. Ezt a mechanizmust TLS kölcsönös hitelesítés vagy ügyféltanúsítvány-alapú hitelesítésnek nevezzük. Ez a cikk bemutatja, hogyan állíthatja be az alkalmazást az ügyféltanúsítvány-alapú hitelesítés használatára.
 
 > [!NOTE]
-> Ha a HTTP és HTTPS-nem keresztül éri el a hely, nem fog kapni minden olyan ügyfél-tanúsítványt. Így ha az alkalmazás ügyfél-tanúsítványok igényel, nem engedélyezze kérelmeket az alkalmazás HTTP-n keresztül.
+> Ha HTTP-n keresztül fér hozzá a webhelyhez, és nem HTTPS-kapcsolaton keresztül, akkor nem fog ügyféltanúsítványt kapni. Tehát ha az alkalmazáshoz Ügyféltanúsítványok szükségesek, akkor a HTTP-n keresztül nem engedélyezheti a kérelmeket az alkalmazásnak.
 >
 
-## <a name="enable-client-certificates"></a>Engedélyezze az ügyféltanúsítványok használatát
+## <a name="enable-client-certificates"></a>Ügyféltanúsítványok engedélyezése
 
-Az alkalmazás beállítása az ügyféltanúsítványok megköveteléséhez, állítsa be kell a `clientCertEnabled` beállítása az alkalmazás `true`. A beállítás megadásához futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com).
+Ha az alkalmazást az Ügyféltanúsítványok megköveteléséhez szeretné beállítani, be kell állítania az `clientCertEnabled` `true`alkalmazás beállítását a következőre:. A beállítás megadásához futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
 
-## <a name="access-client-certificate"></a>Ügyfél-hozzáférési tanúsítvány
+## <a name="access-client-certificate"></a>Hozzáférési ügyféltanúsítvány
 
-Az App Service-ben a kérelem SSL-lezárást történik, ha az előtéri load balancer. Amikor a kérést a kódját a [kompatibilis ügyféltanúsítványok](#enable-client-certificates), az App Service-kódtárba egy `X-ARR-ClientCert` kérelemfejlécet az ügyféltanúsítványt. App Service-ben nem befolyásolja az ezt a tanúsítványt az alkalmazáshoz való továbbítása eltérő. A kód felelős az ügyféltanúsítvány érvényesítése.
+App Service a kérelem SSL-megszakítása a frontend Load balancerben történik. Ha [engedélyezve van az Ügyféltanúsítványok](#enable-client-certificates)számára az alkalmazás kódjára való továbbítás, app Service beinjektál egy `X-ARR-ClientCert` kérelem fejlécét az ügyféltanúsítvány használatával. A App Service nem végez semmit ezzel az ügyféltanúsítvány-val, mint az alkalmazásra való továbbítása. Az alkalmazás kódjának feladata az ügyféltanúsítvány ellenőrzése.
 
-Az ASP.NET, az ügyféltanúsítvány érhető el a **HttpRequest.ClientCertificate** tulajdonság.
+A ASP.NET esetében az ügyféltanúsítvány a **HttpRequest. ClientCertificate** tulajdonságon keresztül érhető el.
 
-A más alkalmazáscsoportokat (Node.js, PHP, stb.), az ügyféltanúsítvány érhető el – a base64-kódolású érték szerepel az alkalmazásban a `X-ARR-ClientCert` kérés fejlécéhez.
+Más alkalmazások (node. js, php stb.) esetén az ügyfél-tanúsítvány az alkalmazásban a `X-ARR-ClientCert` kérelem fejlécében Base64 kódolású értékkel érhető el.
 
-## <a name="aspnet-sample"></a>ASP.NET sample
+## <a name="aspnet-sample"></a>ASP.NET minta
 
 ```csharp
     using System;
@@ -170,9 +169,9 @@ A más alkalmazáscsoportokat (Node.js, PHP, stb.), az ügyféltanúsítvány é
     }
 ```
 
-## <a name="nodejs-sample"></a>NODE.js-minta
+## <a name="nodejs-sample"></a>Node. js-minta
 
-Az alábbi Node.js-mintakód beolvassa a `X-ARR-ClientCert` fejlécére, és használja [csomópont-forge](https://github.com/digitalbazaar/forge) PEM base64-kódolású karakterlánc átalakítása egy tanúsítvány-objektumot, és érvényesítse azt:
+A következő Node. js-mintakód beolvassa a `X-ARR-ClientCert` fejlécet, és a [Node-Forge](https://github.com/digitalbazaar/forge) használatával átalakítja a Base64 kódolású PEM-karakterláncot egy tanúsítvány objektummá, és érvényesíti azt:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -190,7 +189,7 @@ export class AuthorizationHandler {
             const incomingCert: pki.Certificate = pki.certificateFromPem(pem);
 
             // Validate certificate thumbprint
-            const fingerPrint = md.sha1.create().update(asn1.toDer((pki as any).certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
+            const fingerPrint = md.sha1.create().update(asn1.toDer(pki.certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
             if (fingerPrint.toLowerCase() !== 'abcdef1234567890abcdef1234567890abcdef12') throw new Error('UNAUTHORIZED');
 
             // Validate time validity

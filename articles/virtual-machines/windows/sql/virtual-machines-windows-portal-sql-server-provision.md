@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 52f6e7ebb1cbae14878b1897bd8c59c73dd0f493
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 38fdbbf76806325e457f066e6b469a531c27b038
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981024"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102206"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Windows SQL Server virtuális gép kiépítése a Azure Portal
 
@@ -37,21 +36,12 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 SQL Server virtuális gép létrehozásakor kiválaszthatja a virtuális gépek katalógusában található számos előre konfigurált rendszerkép egyikét. A következő lépések bemutatják, hogyan választhatja ki a SQL Server 2017 rendszerképek egyikét.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) a fiók használatával.
+1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
+1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A **Részletek megjelenítése**lehetőség kiválasztásával további információkat is megtekintheti. 
+1. Írja `2017` be az **SQL Virtual Machines** csempe SQL Server képkeresés mezőjébe, majd válassza az **ingyenes SQL Server licenc lehetőséget: SQL Server 2017 fejlesztő a Windows Server 2016** -ből a legördülő menüből. 
 
-1. Az Azure Portalon kattintson az **Erőforrás létrehozása** gombra. A portál megnyitja az **Új** ablakot.
 
-1. Az **Új** ablakban kattintson a **Számítás**, majd az **Összes megjelenítése** elemre.
-
-1. A keresőmezőbe írja be az **SQL Server 2017** kifejezést, majd nyomja le az ENTER billentyűt.
-
-1. A szűrő legördülő menüben válassza a _Windows Server 2016_ lehetőséget az **operációs rendszer** számára, és válassza a _Microsoft_ lehetőséget **közzétevőként**. 
-
-     ![Új számítás ablak](./media/virtual-machines-windows-portal-sql-server-provision/azure-new-compute-blade.png)
-
-1. Tekintse át az elérhető SQL Server-rendszerképeket. Minden rendszerkép egy SQL Server-verziót és egy operációs rendszert azonosít.
-
-1. Válassza ki az ingyenes **SQL Server licenc nevű rendszerképet: SQL Server 2017 fejlesztői Windows Server 2016**rendszeren.
+   ![SQL VM-rendszerkép kiválasztása](media/virtual-machines-windows-portal-sql-server-provision/select-sql-vm-image-portal.png)
 
    > [!TIP]
    > A fejlesztői kiadás ebben az útmutatóban van használatban, mivel ez az SQL Server teljes funkcionalitású, ingyenes kiadása a fejlesztési teszteléshez. Csak a virtuális gép futtatásával járó költségeket kell kifizetni. Azonban szabadon választhatja ki az útmutatóban használni kívánt rendszerképeket. Az elérhető lemezképek leírását a [SQL Server Windows Virtual Machines áttekintésében](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)találhatja meg.
@@ -61,7 +51,6 @@ SQL Server virtuális gép létrehozásakor kiválaszthatja a virtuális gépek 
    >
    > A lehetőségekkel kapcsolatos további információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
 
-1. Ellenőrizze, hogy a **Telepítési modell kiválasztása** alatt a **Resource Manager** van-e kiválasztva. Az új virtuális gépek esetén az ajánlott üzemi modell a Resource Manager. 
 
 1. Kattintson a **Létrehozás** gombra.
 

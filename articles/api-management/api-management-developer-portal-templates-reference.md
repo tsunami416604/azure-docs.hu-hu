@@ -1,6 +1,6 @@
 ---
-title: Az Azure API Management fejlesztői portál sablonjainak |} A Microsoft Docs
-description: Ismerje meg, hogyan szabhatja testre a sablonok használatával az Azure API Management fejlesztői portál oldalainak tartalmát.
+title: Azure API Management fejlesztői portál sablonjai | Microsoft Docs
+description: Megtudhatja, hogyan szabhatja testre a fejlesztői portál oldalain található tartalmakat az Azure API Management sablonjainak használatával.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,47 +10,46 @@ ms.assetid: 5189f3d8-2a4c-4dc8-ab19-11c7df0114d4
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 0f339984a9db1a337f97e6db24571004cc34f679
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb06c1c5db20f3216c5c8e81580e445f9c0ba804
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60657645"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072608"
 ---
-# <a name="developer-portal-templates"></a>Fejlesztői portál sablonjainak
+# <a name="developer-portal-templates"></a>Fejlesztői portál sablonjai
 
-Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfigurálása a tartalom-sablonok használatával tartalmának testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxist és a szerkesztő szerkesztőprogramban, például [DotLiquid tervezők számára](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a egy megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [szimbóluma erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálhatja a lapok tartalmát, igény szerint ezek a sablonok használatával nagy rugalmasságot biztosít.  
+Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxis és az Ön által választott szerkesztő használatával, például a [tervezők DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), a karakterjel- [erőforrások](api-management-template-resources.md#glyphs)és a [lapok vezérlőelemek](api-management-page-controls.md)széles választékával nagy rugalmasságot biztosíthat a konfiguráláshoz a lapok tartalmának megjelenítése, ahogy az a sablonok használatával illik.  
   
-Sablonok használatának ismertetését lásd: [testreszabása sablonok használatával, az API Management fejlesztői portálon](api-management-developer-portal-templates.md).  
+További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).  
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-##  <a name="DeveloperPortalTemplates"></a> Fejlesztői portál sablonjainak  
+##  <a name="DeveloperPortalTemplates"></a>Fejlesztői portál sablonjai  
   
 -   [API-k](api-management-api-templates.md)  
-    -   [API-k listájából](api-management-api-templates.md#APIList)  
+    -   [API-lista](api-management-api-templates.md#APIList)  
     -   [Művelet](api-management-api-templates.md#Product)  
     -   [Kódminták](api-management-api-templates.md#CodeSamples)  
-        -   [A curl](api-management-api-templates.md#Curl)  
+        -   [Curl](api-management-api-templates.md#Curl)  
         -   [C#](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  
         -   [JavaScript](api-management-api-templates.md#JavaScript)  
-        -   [Objective C](api-management-api-templates.md#ObjectiveC)  
+        -   [C célkitűzés](api-management-api-templates.md#ObjectiveC)  
         -   [PHP](api-management-api-templates.md#PHP)  
         -   [Python](api-management-api-templates.md#Python)  
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [Termékek](api-management-product-templates.md)  
-    -   [Termékek listáját](api-management-product-templates.md#ProductList)  
-    -   [A termék](api-management-product-templates.md#Product)  
+    -   [Terméklista](api-management-product-templates.md#ProductList)  
+    -   [Termék](api-management-product-templates.md#Product)  
 -   [Alkalmazások](api-management-application-templates.md)  
     -   [Alkalmazások listája](api-management-application-templates.md#ProductList)  
     -   [Alkalmazás](api-management-application-templates.md#Application)  
 -   [Hibák](api-management-issue-templates.md)  
-    -   [A probléma listája](api-management-issue-templates.md#IssueList)  
+    -   [Problémák listája](api-management-issue-templates.md#IssueList)  
 -   [Felhasználói profil](api-management-user-profile-templates.md)  
     -   [Profil](api-management-user-profile-templates.md#Profile)  
     -   [Előfizetések](api-management-user-profile-templates.md#Subscriptions)  
@@ -59,7 +58,7 @@ Sablonok használatának ismertetését lásd: [testreszabása sablonok használ
 -   [Oldalak](api-management-page-templates.md)  
     -   [bejelentkezés](api-management-page-templates.md#SignIn)  
     -   [Regisztráció](api-management-page-templates.md#SignUp)  
-    -   [Az oldal nem található](api-management-page-templates.md#PageNotFound)
+    -   [A lap nem található](api-management-page-templates.md#PageNotFound)
 
 ## <a name="next-steps"></a>További lépések  
 

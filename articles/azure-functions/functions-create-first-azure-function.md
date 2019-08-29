@@ -1,5 +1,5 @@
 ---
-title: Az első függvény létrehozása az Azure Portalról |} A Microsoft Docs
+title: Hozza létre az első függvényt a Azure Portalból | Microsoft Docs
 description: Ismerje meg, hogyan hozhatja létre az első Azure-függvényét kiszolgáló nélküli végrehajtáshoz az Azure Portalon.
 services: functions
 documentationcenter: na
@@ -7,28 +7,27 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 4a49cb3de2dc36dcd933a0b31b6a55b838eb1336
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 93b3f34b78710b18b6ff95f91b3eeda09e9e73e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864636"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097004"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Az első függvény létrehozása az Azure portálon
 
-Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást. Ebből a cikkből megtudhatja, hogyan használhatja a Functions egy "hello world" függvény létrehozása az Azure Portalon.
+Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást. Ebből a cikkből megtudhatja, hogyan használhatók a függvények a "Hello World" függvény létrehozásához a Azure Portal.
 
 ![Függvényalkalmazás létrehozása az Azure Portalon](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> C#Vegye figyelembe a fejlesztők [az első függvény létrehozása a Visual Studio 2019](functions-create-your-first-function-visual-studio.md) helyett a portálon. 
+> C#a fejlesztőknek érdemes megfontolniuk az [első függvény létrehozását a Visual Studio 2019-ben](functions-create-your-first-function-visual-studio.md) a portál helyett. 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -46,7 +45,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 1. Bontsa ki az új függvényalkalmazást, majd kattintson a **Függvények** elem melletti **+** gombra, és válassza a **Portálba épített**, majd a **Folytatás** lehetőséget.
 
-    ![Függvények gyors útmutató: a platform kiválasztása.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![Funkciók a platform kiválasztásához.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 
 1. Válassza a **WebHook + API**, majd a **Létrehozás** lehetőséget.
 
@@ -80,7 +79,7 @@ Mostantól egy HTTP-kérelem küldésével futtathatja az új függvényt.
 
 ## <a name="next-steps"></a>További lépések
 
-Ezzel létrehozott egy függvényalkalmazást egy egyszerű HTTP-triggert használó függvényt.  
+Létrehozott egy egyszerű HTTP által aktivált függvényt tartalmazó Function alkalmazást.  
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 

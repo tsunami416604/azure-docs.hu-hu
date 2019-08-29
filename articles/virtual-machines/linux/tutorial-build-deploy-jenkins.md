@@ -6,21 +6,20 @@ manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: jenkins
 ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a62a302748cb7e60b6a857c686d1833ad499cc7a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60478367"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081658"
 ---
-# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Oktatóanyag: Alkalmazás üzembe helyezése az Azure-beli Linux rendszerű virtuális gépek használatával a Jenkins és az Azure DevOps-szolgáltatásokkal
+# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Oktatóanyag: Az alkalmazás üzembe helyezése az Azure-beli linuxos virtuális gépeken a Jenkins és az Azure DevOps Services használatával
 
 Folyamatos integráció (CI) és a folyamatos üzembe helyezés (CD) egy folyamatból, amellyel építheti, kiadhatja és üzembe helyezheti a kódot. Az Azure DevOps Services teljes funkcionalitású CI-/CD-automatizálási eszközöket biztosít az Azure-ban történő üzembe helyezéshez. A Jenkins egy olyan népszerű, harmadik féltől származó CI/CD szolgáltatást nyújtó, kiszolgálóalapú eszköz, amely CI/CD-automatizálást is biztosít. Az Azure DevOps Services és a Jenkins együttes használatával testre szabhatja, hogyan kézbesíti felhőalapú alkalmazását vagy szolgáltatását.
 
@@ -35,10 +34,10 @@ egy Linux rendszerű virtuális gépeket tartalmazó [üzembehelyezési csoportb
 > * A Jenkins konfigurálása az Azure DevOps Services-el való integrációhoz.
 > * Jenkins szolgáltatási végpont létrehozása.
 > * Üzembe helyezési csoport létrehozása az Azure virtuális gépekhez.
-> * Hozzon létre egy Azure-folyamatok kiadási folyamatot.
+> * Hozzon létre egy Azure-folyamatok kiadási folyamatát.
 > * Manuális és CI által kiváltott üzembe helyezések végrehajtása.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 * Egy Jenkins-kiszolgálóhoz történő hozzáférés szükséges. Ha még nem hozott létre Jenkins-kiszolgálót, lásd: [Jenkins-főkiszolgáló létrehozása Azure virtuális gépen](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
 
@@ -68,7 +67,7 @@ Hozzon létre egy adattármásolatot az alkalmazáshoz, és jegyezze le a helyet
 
 ## <a name="configure-jenkins-plug-ins"></a>A Jenkins beépülő moduljainak konfigurálása
 
-Először konfigurálnia kell két Jenkins beépülő: **NodeJS** és **VS Team Services, a folyamatos üzembe helyezés**.
+Először két Jenkins beépülő modult kell konfigurálnia: A **NodeJS** és a **vs Team Services folyamatos üzembe helyezése**.
 
 1. Nyissa meg a Jenkins-fiókját, és válassza a **Manage Jenkins** (Jenkins kezelése) lehetőséget.
 2. A **Manage Jenkins** (Jenkins kezelése) oldalon válassza a **Manage Plugins** (Beépülő modulok kezelése) lehetőséget.
@@ -141,7 +140,7 @@ Szüksége van egy [üzembe helyezési csoportra](https://www.visualstudio.com/d
 8. A telepítés után a rendszer kéri az üzembe helyezési csoport címkéit. Fogadja el az alapértelmezett beállításokat.
 9. Az Azure DevOps Services-ben ellenőrizze az újonnan regisztrált virtuális gépet a **Targets** (Célok) szakaszban a **Deployment Groups** (Üzembehelyezési csoportok) alatt.
 
-## <a name="create-an-azure-pipelines-release-pipeline"></a>Hozzon létre egy Azure-folyamatok kibocsátási folyamatok
+## <a name="create-an-azure-pipelines-release-pipeline"></a>Azure-folyamatok kiadási folyamatának létrehozása
 
 A kiadási folyamat azt a folyamatot határozza meg, amelyet az Azure Pipelines az alkalmazás üzembe helyezésére használ. Ebben a példában egy felületszkriptet fog végrehajtani.
 
@@ -164,7 +163,7 @@ Kiadási folyamat létrehozása az Azure Pipelinesban:
 
 1. Válassza a **+ Release** (+ Kiadás) elemet, majd a **Create Release** (Kiadás létrehozása) lehetőséget.
 2. A kiemelt legördülő listában válassza ki a befejezett buildet, majd válassza a **Queue** (Várólista) lehetőséget.
-3. Kattintson az előugró üzenetben a kiadási hivatkozásra. Példa: "Release **Release-1** létrejött."
+3. Kattintson az előugró üzenetben a kiadási hivatkozásra. Példa: "A kiadás **kiadása – 1** lett létrehozva."
 4. Nyissa meg a **Logs** (Naplók) lapot a kiadási konzol kimenetének megtekintéséhez.
 5. A böngészőben nyissa meg az üzembe helyezési csoporthoz hozzáadott egyik kiszolgáló URL-címét. Adja meg például a **http://{your-server-ip-address}** címet.
 6. Lépjen a Git-adattárba, és módosítsa a **h1** fejléc tartalmát az app/views/index.jade fájlban egy módosított szövegre.

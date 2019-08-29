@@ -1,6 +1,6 @@
 ---
-title: Lapozófájl-kapacitás az operációs rendszer lemez egy Azure virtuális gép CLI-vel |} A Microsoft Docs
-description: Az Azure virtuális géphez a CLI-vel által használt operációsrendszer-lemez módosítása
+title: Azure-beli virtuális gép operációsrendszer-lemezének felcserélése a CLI használatával | Microsoft Docs "
+description: Módosítsa az Azure-beli virtuális gépek által használt operációsrendszer-lemezt a parancssori felület használatával.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -11,30 +11,29 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 970f3409cc46fa6cf96fff3e6944ebeaeadcdcce
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 7b5f8a47b2b9c3692698b2ec6a7e5bc470b86a18
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667264"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091673"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>A parancssori felület használata Azure virtuális gép által használt operációsrendszer-lemez módosítása
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Azure-beli virtuális gép által használt operációsrendszer-lemez módosítása a parancssori felület használatával
 
 
-Ha rendelkezik egy meglévő virtuális Gépet, de szeretne váltani a lemezt egy biztonsági mentési lemez vagy egy másik operációsrendszer-lemez, az Azure CLI használatával az operációsrendszer-lemez felcserélése. Nem kell törölnie kell, és hozza létre újra a virtuális Gépet. Akkor is használhatja egy felügyelt lemezt egy másik erőforráscsoportban, mindaddig, amíg még nincs használatban.
+Ha rendelkezik meglévő virtuális géppel, de a lemezt egy biztonsági mentési lemez vagy egy másik operációsrendszer-lemez esetében szeretné cserélni, az Azure CLI használatával cserélheti le az operációsrendszer-lemezeket. Nem kell törölnie és újból létrehoznia a virtuális gépet. Akár felügyelt lemezt is használhat egy másik erőforráscsoporthoz, ha még nincs használatban.
 
-A virtuális gép stopped\deallocated kell, majd a felügyelt lemez az erőforrás-Azonosítójára kicserélhető a különböző felügyelt lemez az erőforrás-azonosítója. 
+A virtuális gépnek stopped\deallocated kell lennie, a felügyelt lemez erőforrás-AZONOSÍTÓját lecserélheti egy másik felügyelt lemez erőforrás-azonosítójával. 
 
-Győződjön meg arról, hogy a lemez csatolásához kompatibilisek legyenek-e a virtuális gép méretét és a tároló típusa. Például ha a használni kívánt lemezt Premium Storage-ban, majd a virtuális gép kell lennie (például a DS sorozatú méretét) prémium szintű tárolás képes.
+Győződjön meg arról, hogy a virtuális gép mérete és a tároló típusa kompatibilis-e a csatolni kívánt lemezzel. Ha például a használni kívánt lemez Premium Storage, akkor a virtuális gépnek képesnek kell lennie Premium Storage (például egy DS-sorozat méretének).
 
-Ehhez a cikkhez az Azure CLI 2.0.25-ös vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
+Ehhez a cikkhez az Azure CLI 2.0.25 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 
-Használat [az Lemezlista](/cli/azure/disk) , a lemezek listájának lekérése az erőforráscsoportban.
+Az az [Disk List](/cli/azure/disk) paranccsal kérheti le az erőforráscsoport lemezeinek listáját.
 
 ```azurecli-interactive
 az disk list \
@@ -44,7 +43,7 @@ az disk list \
 ```
 
 
-Használat [az vm stop](/cli/azure/vm) való stop\deallocate előtt érvényesítheti a lemezeket a virtuális gép.
+Az az [VM stop](/cli/azure/vm) paranccsal stop\deallocate a virtuális gépet a lemezek cseréje előtt.
 
 ```azurecli-interactive
 az vm stop \
@@ -53,7 +52,7 @@ az vm stop \
 ```
 
 
-Használat [az vm update](/cli/azure/vm#az-vm-update) a teljes erőforrás-azonosító, az új lemezt a `--osdisk` paraméter 
+Használja az az [VM Update](/cli/azure/vm#az-vm-update) -t a `--osdisk` paraméter új lemezének teljes erőforrás-azonosítójával. 
 
 ```azurecli-interactive 
 az vm update \
@@ -62,7 +61,7 @@ az vm update \
    --os-disk /subscriptions/<subscription ID>/resourceGroups/swap/providers/Microsoft.Compute/disks/myDisk 
    ```
    
-Indítsa újra a virtuális Gépet az [az vm start](/cli/azure/vm).
+Indítsa újra a virtuális gépet az [az VM Start](/cli/azure/vm)paranccsal.
 
 ```azurecli-interactive
 az vm start \
@@ -73,4 +72,4 @@ az vm start \
    
 **Következő lépések**
 
-Lemez másolatának létrehozásához lásd: [lemez pillanatképének elkészítése](snapshot-copy-managed-disk.md).
+Lemez másolatának létrehozásához tekintse meg a [lemez pillanatképe](snapshot-copy-managed-disk.md)című témakört.

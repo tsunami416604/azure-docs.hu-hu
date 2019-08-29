@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c718794528989fbc46b404617f16d3a91ade6011
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 155f392410c5722a28ba09acafc1480e72586773
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877309"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100906"
 ---
 # <a name="create-a-new-device-template-version"></a>Új sablon-verzió létrehozása
 
@@ -50,7 +50,7 @@ Az alábbi lista azokat a felhasználói műveleteket ismerteti, amelyek új ver
 
 Mi történik a szabályokkal és az eszközök irányítópultokkal, ha módosulnak a verziók?
 
-A **szabályok** olyan feltételeket tartalmazhatnak, amelyek a tulajdonságoktól függenek. Ha eltávolította a tulajdonságok közül egyet vagy többet, ezek a szabályok megbonthatók az új sablon-verzióban. Ezeket a konkrét szabályokat megtekintheti, és frissítheti a feltételeket a szabályok kijavításához. Az előző verzióra vonatkozó szabályoknak hatással kell lenniük a működésre.
+Az eszköz korábbi verziójának **szabályai** változatlanok maradnak. A szabályok nem települnek át automatikusan az új eszköz sablonjának verziójára. A szokásos módon hozhat létre szabályokat az új sablon verziójához. További információt a [telemetria-szabály létrehozása és az értesítések beállítása az Azure IoT Central alkalmazásban](howto-create-telemetry-rules.md) című cikkben talál.
 
 Az **eszköz** -irányítópultok többféle típusú csempét is tartalmazhatnak. A csempék némelyike tartalmazhatja a beállításokat és a tulajdonságokat. Ha a csempén használt tulajdonság vagy beállítás el van távolítva, a csempe teljesen vagy részben megszakad. Nyissa meg a csempét, és javítsa ki a problémát a csempe eltávolításával vagy a csempe tartalmának frissítésével.
 

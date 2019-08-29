@@ -1,6 +1,6 @@
 ---
-title: Chef kiterjesztése az Azure virtuális gépek |} A Microsoft Docs
-description: A Chef ügyfél központi telepítése egy virtuális gépet, a Chef Virtuálisgép-bővítmény használatával.
+title: Chef-bővítmény Azure-beli virtuális gépekhez | Microsoft Docs
+description: Telepítse a Chef-ügyfelet egy virtuális gépre a Chef VM bővítmény használatával.
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
@@ -10,34 +10,33 @@ tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
-ms.openlocfilehash: e72536cc6f9ec3b94016d16de8502e70bc7107aa
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 0ed042b3b004fd43bc03304c3042c2ac3e1a6482
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706091"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092557"
 ---
-# <a name="chef-vm-extension-for-linux-and-windows"></a>A Linux és Windows Chef Virtuálisgép-bővítmény
+# <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-bővítmény Linux és Windows rendszerekhez
 
-A Chef szoftver egy Linux és Windows rendszerhez készült DevOps automatizálási platformot biztosít, amely lehetővé teszi a fizikai és a virtuális kiszolgálók konfigurációjának kezelését. A Chef Virtuálisgép-bővítmény, amely lehetővé teszi a Chef a virtuális gépek bővítmény.
+A Chef szoftver egy Linux és Windows rendszerhez készült DevOps automatizálási platformot biztosít, amely lehetővé teszi a fizikai és a virtuális kiszolgálók konfigurációjának kezelését. A Chef VM bővítmény egy bővítmény, amely lehetővé teszi a Chef használatát a virtuális gépeken.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A Chef Virtuálisgép-bővítményt az összes támogatott a [bővítmény támogatott operációs rendszer a](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems) az Azure-ban.
+A Chef virtuálisgép-bővítmény támogatott az Azure-ban [támogatott operációs rendszerek](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems) összes bővítményében.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A Chef Virtuálisgép-bővítmény szükséges, hogy a céloldali virtuális gép csatlakozik az internethez annak érdekében, hogy a Chef ügyfél hasznos adatainak lekérése az content delivery network (CDN).  
+A Chef virtuálisgép-bővítmény megköveteli, hogy a célként megadott virtuális gép csatlakoztatva legyen az internethez, hogy lekérje a Chef-ügyfél adattartalmát a Content Delivery Network (CDN) szolgáltatásból.  
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON-ra a sémát a Chef Virtuálisgép-bővítmény mutatja be. A bővítmény telepítéséhez legalább a Chef URL-címe, az érvényesítési ügyfél nevét és az érvényesítési kulcs a Chef kiszolgáló; Ezek az értékek található a `knife.rb` fájlt a letöltött telepítésekor starter-kit.zip [Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) vagy egy önálló [Chef kiszolgáló](https://downloads.chef.io/chef-server). Az érvényesítési kulcs kényes adatként kell kezelni, mert azt kell konfigurálni a a **protectedSettings** elem, ami azt jelenti, hogy azt a rendszer csak visszafejti a cél virtuális gépen.
+A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A kiterjesztéshez legalább a Chef-kiszolgáló URL-címére, az érvényesítési ügyfél nevére és a Chef-kiszolgáló érvényesítési kulcsára van szükség; Ezek az értékek a `knife.rb` [Chef automatizálása](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) vagy egy önálló Chef- [kiszolgáló](https://downloads.chef.io/chef-server)telepítésekor letöltött Starter-Kit. zip fájlban találhatók. Mivel az ellenőrző kulcsot bizalmas adatokként kell kezelni, azt a **protectedsettingsfromkeyvault** elem alatt kell konfigurálni, ami azt jelenti, hogy csak a célként megadott virtuális gépen lesz visszafejtve.
 
 ```json
 {
@@ -66,13 +65,13 @@ A következő JSON-ra a sémát a Chef Virtuálisgép-bővítmény mutatja be. A
 }  
 ```
 
-### <a name="core-property-values"></a>Core tulajdonságértékek
+### <a name="core-property-values"></a>Alapvető tulajdonságok értékei
 
 | Name (Név) | Érték és példa | Adattípus
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | sztring |
-| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | Karakterlánc |
+| publisher | `Chef.Bootstrap.WindowsAzure` | Karakterlánc |
+| type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | Karakterlánc |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Beállítások
@@ -80,10 +79,10 @@ A következő JSON-ra a sémát a Chef Virtuálisgép-bővítmény mutatja be. A
 | Name (Név) | Érték és példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | I |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | sztring | I |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | Karakterlánc | I |
 | settings/runlist | `recipe[mycookbook::default]` | Karakterlánc | I |
 
-### <a name="protected-settings"></a>Védett beállításai
+### <a name="protected-settings"></a>Védett beállítások
 
 | Name (Név) | Példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ---- |
@@ -103,15 +102,15 @@ A következő JSON-ra a sémát a Chef Virtuálisgép-bővítmény mutatja be. A
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Sablonok segítségével helyezhet üzembe egy vagy több virtuális gépeket, a Chef-ügyfél telepítése, csatlakozhat a Chef és a hajtsa végre a kiszolgálón a kezdeti konfiguráció által meghatározott a [Run-list](https://docs.chef.io/run_lists.html)
+Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. A sablonokat egy vagy több virtuális gép üzembe helyezésére, a Chef-ügyfél telepítésére, a Chef-kiszolgálóhoz való kapcsolódásra, valamint a [futtatási lista](https://docs.chef.io/run_lists.html) által meghatározott kezdeti konfiguráció végrehajtására használhatja.
 
-Egy mintául szolgáló Resource Manager-sablon, amely tartalmazza a Chef Virtuálisgép-bővítmény megtalálható a [Azure gyorsindítási galéria](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
+A Chef VM-bővítményt tartalmazó példa Resource Manager-sablon az [Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)rövid útmutatójában található.
 
 Virtuálisgép-bővítmények JSON konfigurációjának a virtuális gép típusú erőforrást belülre, vagy elhelyezve, a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON konfigurációs elhelyezését hatással van az erőforrás nevét, és írja be az értékét. További információkért lásd: [állítsa be a nevét és típusát gyermekerőforrásait](../../azure-resource-manager/resource-manager-template-child-resource.md).
 
 ## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
-Az Azure CLI is használható a Chef Virtuálisgép-bővítmény telepítéséhez a meglévő virtuális géphez. Cserélje le a **validation_key** az érvényesítési kulcs tartalmát (a fájlt egy `.pem` kiterjesztés).  Cserélje le **validation_client_name**, **chef_server_url** és **run_list** e értékeit a `knife.rb` az Starter Kit fájlt.
+Az Azure CLI használatával üzembe helyezheti a Chef virtuálisgép-bővítményt egy meglévő virtuális gépre. Cserélje le a **validation_key** az érvényesítési kulcs tartalmára (ez a fájl `.pem` kiterjesztésként).  Cserélje le a **validation_client_name**, a **chef_server_url** és a **run_list** értéket `knife.rb` az alapszintű csomagban található fájl értékeire.
 
 ```azurecli
 az vm extension set \
@@ -149,9 +148,9 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 
 | Hibakód | Jelentés | A művelet lehetséges |
 | :---: | --- | --- |
-| 51 | Ezt a bővítményt a virtuális gép operációs rendszeren nem támogatott | |
+| 51 | Ez a bővítmény nem támogatott a virtuális gép operációs rendszerében | |
 
-További hibaelhárítási információk megtalálhatók a [Chef Virtuálisgép-bővítmény fontos](https://github.com/chef-partners/azure-chef-extension).
+További hibaelhárítási információk a [Chef VM-bővítmény readme](https://github.com/chef-partners/azure-chef-extension)-ban találhatók.
 
 ## <a name="next-steps"></a>További lépések
 

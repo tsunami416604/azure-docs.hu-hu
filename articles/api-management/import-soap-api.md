@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 7f7a203495e35d9e4143fe247a55adaa43bc5d2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 22b7b79426829b57f15263f7792dca6596c6641f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817030"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073245"
 ---
 # <a name="import-soap-api"></a>SOAP API importálása
 
@@ -49,7 +48,7 @@ Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány 
     ![Továbbítás](./media/import-soap-api/pass-through.png)
 5. Nyomja le a Tab billentyűt.
 
-    A következő mezőket a SOAP API információval háttérszolgáltatásból: Megjelenített név, a neve, leírása.
+    A következő mezők a SOAP API adataival tölthetők le: Megjelenítendő név, név, leírás.
 6. Adja hozzá az API URL-cím utótagját. Az utótag lesz a név, amely azonosítja az API-t ebben az APIM-példányban. Egyedinek kell lennie az APIM-példányon belül.
 9. Az API egy termékkel való társítással tehető közzé. Ebben az esetben az „*Unlimited*” terméket használjuk.  Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.
 

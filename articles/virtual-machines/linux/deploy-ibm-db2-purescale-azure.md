@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 68fde09b1ee5f18aa784793cc19e9f547b19ed43
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 8eb8075454dc3a49e9525d566c34c64bab8be5a0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871882"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083448"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Az IBM DB2-pureScale üzembe helyezése az Azure-ban
 
@@ -78,9 +77,9 @@ A GitHub-tárház tartalmazza a DB2server. RSP, a Response (. RSP) fájlt, amely
 > [!NOTE]
 > A DB2server. RSP egy minta válaszfájlt tartalmaz a GitHubon található [DB2onAzure](https://aka.ms/db2onazure) -tárházban. Ha ezt a fájlt használja, szerkesztenie kell, mielőtt működni fog a környezetben.
 
-| Képernyő neve               | Mező                                        | Érték                                                                                                 |
+| Képernyő neve               | Mező                                        | Value                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Üdvözlőképernyő                   |                                              | Új telepítés                                                                                           |
+| Üdvözöljük!                   |                                              | Új telepítés                                                                                           |
 | Termék kiválasztása          |                                              | A DB2 verziója 11.1.3.3. Kiszolgálói kiadások DB2 pureScale                                              |
 | Konfiguráció             | Címtár                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | A telepítés típusának kiválasztása                 | Tipikus                                                                                               |
@@ -88,7 +87,7 @@ A GitHub-tárház tartalmazza a DB2server. RSP, a Response (. RSP) fájlt, amely
 | Példány tulajdonosa            | Meglévő felhasználó, példány, Felhasználónév        | DB2sdin1                                                                                              |
 | Bekerített felhasználó               | Meglévő felhasználó, felhasználó neve                     | DB2sdfe1                                                                                              |
 | Fürt fájlrendszere       | Megosztott lemezpartíció eszközének elérési útja            | /dev/dm-2                                                                                             |
-|                           | Csatlakoztatási pont                                  | /DB2sd\_1804a                                                                                         |
+|                           | Csatlakozási pont                                  | /DB2sd\_1804a                                                                                         |
 |                           | Megosztott lemez az adattároláshoz                         | /dev/dm-1                                                                                             |
 |                           | Csatlakoztatási pont (adatcsatorna)                           | /DB2fs/datafs1                                                                                        |
 |                           | Naplóhoz tartozó megosztott lemez                          | /dev/dm-0                                                                                             |

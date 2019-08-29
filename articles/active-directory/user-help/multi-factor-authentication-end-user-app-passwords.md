@@ -14,12 +14,12 @@ ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a9d997f9ced0fbd921abfb13cda5a4845eb3763
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: fc6f6f7b02db664ca6cd62dc7aad61baf5f132fa
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616300"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088407"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Alkalmazások jelszavainak kezelése kétlépéses ellenőrzéshez
 
@@ -47,7 +47,7 @@ Az alkalmazáshoz tartozó jelszavakat a kétfaktoros ellenőrzés használata a
 
 - **A szervezet kétfaktoros ellenőrzést és a további biztonsági ellenőrzés oldalt használja.** Ha munkahelyi vagy iskolai fiókját ( alain@contoso.compéldául:) használja a szervezeten belüli kétfaktoros ellenőrzéssel, akkor az alkalmazás jelszavait a [további biztonsági ellenőrzés lapról](https://account.activedirectory.windowsazure.com/Proofup.aspx)kezelheti. Részletes útmutatást az [alkalmazás jelszavainak létrehozása és törlése a további biztonsági ellenőrzés használatával](#create-and-delete-app-passwords-from-the-additional-security-verification-page) című cikkben talál.
 
-- **A szervezet kétfaktoros ellenőrzést és az Office 365 portált használja.** Ha munkahelyi vagy iskolai fiókját (például:, alain@contoso.com), kétfaktoros ellenőrzést és Office 365 alkalmazást használ a szervezetben, az alkalmazás jelszavait az [Office 365 portálról](https://office.portal.com)kezelheti. Részletes útmutatást az [alkalmazás jelszavainak létrehozása és törlése az Office 365-portál használatával](#create-and-delete-app-passwords-using-the-office-365-portal) című cikkben talál.
+- **A szervezet kétfaktoros ellenőrzést és az Office 365 portált használja.** Ha munkahelyi vagy iskolai fiókját (például:, alain@contoso.com), kétfaktoros ellenőrzést és Office 365 alkalmazást használ a szervezetben, az alkalmazás jelszavait az [Office 365 portálról](https://www.office.com)kezelheti. Részletes útmutatást az [alkalmazás jelszavainak létrehozása és törlése az Office 365-portál használatával](#create-and-delete-app-passwords-using-the-office-365-portal) című cikkben talál.
 
 - **Kétfaktoros ellenőrzést használ személyes Microsoft-fiók.** Ha személyes Microsoft-fiók (például alain@outlook.com) használ kétfaktoros ellenőrzéssel, a [biztonsági alapok lapról](https://account.microsoft.com/security/)kezelheti az alkalmazáshoz tartozó jelszavakat. Részletes útmutatás: [alkalmazások jelszavainak használata olyan alkalmazásokkal, amelyek nem támogatják](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification)a kétlépéses ellenőrzést.
 

@@ -1,6 +1,6 @@
 ---
-title: Szinkronizálási idő Windows virtuális gépek az Azure-ban |} A Microsoft Docs
-description: Idő szinkronizálása a Windows virtuális gépekhez.
+title: Windows rendszerű virtuális gépek időszinkronizálása az Azure-ban | Microsoft Docs
+description: Windows rendszerű virtuális gépek időszinkronizálása.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -8,157 +8,156 @@ manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: d413fe73735f526444aea76d68f44163065578a0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 04b2eb70a9e304fb50f4f6cb94daf0a0dda86d63
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710227"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100255"
 ---
-# <a name="time-sync-for-windows-vms-in-azure"></a>Idő szinkronizálása a Windows virtuális gépek az Azure-ban
+# <a name="time-sync-for-windows-vms-in-azure"></a>Windows rendszerű virtuális gépek időszinkronizálása az Azure-ban
 
-Időszinkronizálás fontos a biztonság és eseménykorreláció. Egyes esetekben használatos az elosztott tranzakciók végrehajtására. Szinkronizáció idő pontossága a több számítógépes rendszereken érhető el. Szinkronizálási hatással lehet más dolgokra, beleértve az újraindítások és az idő forrás- és a számítógép beolvasása az idő közötti hálózati forgalmat. 
+Az időszinkronizálás fontos a biztonság és az események korrelációs használata esetén. Időnként az elosztott tranzakciók megvalósítására használják. A több számítógépes rendszer közötti idő-pontosság a szinkronizáláson keresztül érhető el. A szinkronizálás több dologra is hatással lehet, többek között a újraindításra és a hálózati forgalomra az idő forrása és a számítógép lekérése között. 
 
-Az Azure mostantól a Windows Server 2016 rendszert futtató infrastruktúra alapját. A Windows Server 2016 továbbfejlesztett algoritmusok pontos idő és a helyi órája UTC szinkronizálását a feltétel rendelkezik.  A Windows Server 2016 szintén fejlődött a VMICTimeSync szolgáltatás, amely szabályozza, hogy hogyan virtuális gépek szinkronizál az állomás pontos ideje. Fejlesztések közé tartoznak a pontosabb kezdeti ideje a virtuális gép start vagy a virtuális gép visszaállítási megszakítási késési javítási Windows idő (W32time) a megadott minták. 
+Az Azure-t mostantól a Windows Server 2016-et futtató infrastruktúra támogatja. A Windows Server 2016 továbbfejlesztett algoritmusokkal rendelkezik, amelyek az időpontot és a feltételt használják a helyi óra és az UTC közötti szinkronizáláshoz.  A Windows Server 2016 továbbfejlesztette a VMICTimeSync szolgáltatást, amely azt szabályozza, hogy a virtuális gépek hogyan szinkronizálják a gazdagépet a pontos időpontig. A javításokban pontosabb kezdeti idő van a virtuális gépek indításakor vagy a virtuális gépek visszaállításakor, valamint a Windows Time (W32Time) szolgáltatásban megadott minták késési késleltetésének javítása. 
 
 
 >[!NOTE]
->A Windows időszolgáltatás gyors áttekintést, vessen egy pillantást, ez [videó összefoglaló jellegű áttekintést nyújt](https://aka.ms/WS2016TimeVideo).
+>A Windows időszolgáltatásának gyors áttekintéséhez tekintse meg ezt a [magas szintű áttekintő videót](https://aka.ms/WS2016TimeVideo).
 >
-> További információkért lásd: [Windows Server 2016 – pontos idő](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> További információ: [a Windows Server 2016 pontos ideje](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
 
 ## <a name="overview"></a>Áttekintés
 
-A számítógép órája pontosságának van kivett a hogyan zárja be a számítógép óráját, hogy az idő egyezményes világidő (UTC) standard. (UTC) egy második 300 évben ki csak lehet pontos atomi órájával multinacionális mintát határozza meg. De UTC olvasása közvetlenül speciális hardvert igényel. Ehelyett időkiszolgálók szinkronizálva lesznek az UTC és más számítógépek méretezhetőségét és háttértárat érhető el. Minden számítógép szinkronizálási szolgáltatás fut, hogy tudja, milyen idő-kiszolgálók által használt, és rendszeresen ellenőrzi, hogy ha a számítógép órája javításra szoruló idő tartozik, és beállítja az időt, szükség esetén. 
+A számítógép órájának pontossága a számítógép órájának az egyezményes világidő (UTC) időszabványhoz való zárásának mérésére szolgál. Az UTC-t egy, a pontos Atomic-órákat tartalmazó többnemzetiségű minta határozza meg, amely csak 300 év egy másodpercében lehet kikapcsolható. Az UTC közvetlen olvasása azonban speciális hardvert igényel. Ehelyett az időkiszolgálókat a rendszer az UTC szerint szinkronizálja, és más számítógépekről éri el a méretezhetőség és a robusztusság biztosítása érdekében. Minden számítógépen van olyan időszinkronizálási szolgáltatás, amely tudja, hogy milyen időkiszolgálókat használ, és rendszeres időközönként ellenőrzi, hogy a számítógép óráját javítani kell-e, és szükség esetén módosítani kell-e az időt. 
 
-Azure gazdagép belső hierarchiabeli 1 Microsoft tulajdonú eszközökről, a GPS-antennák azok időt vesz igénybe a Microsoft idő kiszolgálók vannak szinkronizálva. Az Azure Virtual machines vagy függőségi viszonyban lehet átadni a pontos időt a gazdagép (*idő gazdagép*) be a virtuális gép vagy a virtuális gép közvetlenül lekérheti a idő egy kiszolgálót vagy mindkettőt. 
+Az Azure-gazdagépek szinkronizálása a Microsoft által a Microsoft által birtokolt stratum 1-eszközökről, a GPS-antennák használatával történik. Az Azure-beli virtuális gépek vagy a gazdagéptől függenek, hogy a pontos időt (*gazda időt*) a virtuális gépre irányítják, vagy a virtuális gép közvetlenül lekérheti az időt egy időkiszolgálóról, vagy mindkettő kombinációját. 
 
-A gazdagép virtuálisgép-interakció is befolyásolhatja az óra. Során [karbantartás megőrzése memória](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot), virtuális gépek vannak függesztve, akár 30 másodpercig. Például karbantartás megkezdése előtt a virtuális gép órája jeleníti meg a 10:00:00-kor és 28 másodperc tart. Után folytatja a virtuális Gépet, az óra, a virtuális gép továbbra is megjeleníti 10:00:00-kor, amelyek 28 másodperc ki. Ennek, a VMICTimeSync szolgáltatás figyeli a gazdagép és a módosítások utasításokat található a virtuális gépek esetében történő kompenzálás mi történik.
+A virtuális gép és a gazdagép közötti interakció is hatással lehet az órára. A [karbantartás](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)során a virtuális gépek legfeljebb 30 másodpercig szünetelnek. Például a karbantartás megkezdése előtt a virtuális gép órája a 10:00:00-as és 28 másodperces időtartamot jeleníti meg. A virtuális gép újraindítása után a virtuális gép órája továbbra is a 10:00:00-as értéket fogja megjeleníteni, ami 28 másodperc lenne. Ennek kiválasztásához a VMICTimeSync szolgáltatás figyeli, hogy mi történik a gazdagépen, és felszólítja a virtuális gépeken végrehajtott módosítások elvégzésére a kompenzálás érdekében.
 
-A VMICTimeSync szolgáltatás minta vagy a szinkronizálás üzemmódban működik, és csak befolyásolják az óra előre. Minta módban, amelyhez szükség van a W32time futnia kell, a VMICTimeSync szolgáltatást a gazdagép 5 másodpercenként lekérdezi és W32time mintákat biztosít. Körülbelül 30 másodpercenként, a W32time szolgáltatás legújabb idő mintát vesz igénybe, és befolyásolhatja a Vendég óra használja. Szinkronizálási mód aktiválódik, ha Vendég folytatódik, vagy ha a Vendég óra drifts mögött a gazdagép óra több mint 5 másodperc. Azokban az esetekben, ahol a W32time szolgáltatás megfelelően fut az utóbbi esetben szabad bekövetkeznie.
+A VMICTimeSync szolgáltatás akár minta-, akár szinkronizálási módban működik, és csak az órát fogja befolyásolni. A W32Time futtatását igénylő mintavételi módban a VMICTimeSync szolgáltatás 5 másodpercenként lekérdezi a gazdagépet, és időmintákat biztosít a W32Time. Körülbelül 30 másodpercenként a W32Time szolgáltatás a legkésőbbi időpontot használja, és a vendég órája befolyásolja. A szinkronizálási mód akkor aktiválódik, ha a vendég újraindult, vagy ha a vendég órája 5 másodpercnél több időt vesz igénybe a gazdagép órája mögött. Azokban az esetekben, amikor a W32Time szolgáltatás megfelelően fut, az utóbbi esetben soha nem fordulhat elő.
 
-Nélkül idő szinkronizálási működő, a virtuális gép órája hibák lenne összeadódhatnak. Ha csak egy virtuális Gépet, a hatás nem jelentős, kivéve, ha a munkaterhelés rendkívül pontos időmérő igényel. De a legtöbb esetben azt kell több, összekapcsolt virtuális gépeket, amelyek idő segítségével nyomon követheti a tranzakciók és az időt kell lennie a teljes telepítés során. Ha más virtuális gépek között eltelt idő, sikerült jelenik meg a következő hatásai vannak:
+Az időszinkronizálás nem működik, mert a virtuális gépen lévő idő felhalmozza a hibákat. Ha csak egy virtuális gép van, akkor előfordulhat, hogy a hatás nem jelentős, kivéve, ha a munkaterhelés nagyon pontos időmérést igényel. A legtöbb esetben azonban több, egymással összekapcsolt virtuális géppel is rendelkezünk, amelyek időt használnak a tranzakciók nyomon követésére, és az idő a teljes telepítés során konzisztensnek kell lennie. Ha a virtuális gépek közötti idő eltér, a következő hatások jelenhetnek meg:
 
-- Hitelesítés sikertelen lesz. Biztonsági protokollok, például a Kerberos vagy a tanúsítvány-függő technológia támaszkodik a rendszeridő konzisztens a rendszerek között. 
-- Legyen nagyon nehéz döntse el, mi történhetett rendszerekben, hogy a naplók (vagy egyéb adat) nem fogadom el lehetőséget időben. Az ugyanahhoz az eseményhez jelenne meg, különböző időpontokban, nehéz és korrelációs történt.
-- Ha óra ki kapcsolva, a számlázás helytelenül sikerült kiszámítani.
+- A hitelesítés sikertelen lesz. A biztonsági protokollok, például a Kerberos vagy a tanúsítványtól függő technológiák támaszkodnak a rendszerek közötti konzisztens időszakra. 
+- Nagyon nehéz megállapítani, hogy mi történt a rendszeren, ha a naplók (vagy más adat) nem fogadnak el időt. Ugyanez az esemény a különböző időpontokban történt, így megnehezíti a korrelációt.
+- Ha az óra ki van kapcsolva, a számlázás helytelenül számítható ki.
 
-A legjobb eredmények elérése érdekében a Windows központi telepítések, a vendég operációs rendszer, amely biztosítja a legújabb fejlesztései időszinkronizálás használható a Windows Server 2016 használatával végezheti el.
+A Windows központi telepítések legjobb eredményei a Windows Server 2016 operációs rendszer használatával érhetők el, amely biztosítja, hogy az időszinkronizálás legújabb fejlesztései is használhatók legyenek.
 
 ## <a name="configuration-options"></a>Beállítási lehetőségek
 
-A szinkronizálás konfigurálása az Azure-ban üzemeltetett Windows rendszerű virtuális gépek három lehetőség áll rendelkezésre:
+Az Azure-ban üzemeltetett Windows-alapú virtuális gépek időszinkronizálásának konfigurálására három lehetőség áll rendelkezésre:
 
-- Állomás pontos idejével és time.windows.com. Ez az Azure Marketplace-rendszerképek a használt alapértelmezett konfigurációja.
-- Csak állomásnév.
-- Egy másik, külső időkiszolgálóval használhatja, vagy állomás pontos idejével használata nélkül.
-
-
-### <a name="use-the-default"></a>Használja az alapértelmezett
-
-Alapértelmezés szerint a Windows OS VM-rendszerképek a két forrásból származó szinkronizálása w32time vannak konfigurálva: 
-
-- Az NTP szolgáltató, amely információkat olvas be time.windows.com.
-- A VMICTimeSync szolgáltatás, a gazdagép kommunikációhoz használt időt, hogy a virtuális gépeket, és javíthatja a megadottakat, miután a virtuális gép karbantartás miatt szünetel. Azure gazdagépek hierarchiabeli 1 a Microsoft által birtokolt eszközök használatával – pontos idő tartani.
-
-a W32Time inkább az idő-szolgáltató a következő sorrendben prioritású: hierarchiabeli szintjét, legfelső szintű késleltetés, legfelső szintű diszperziós, idő eltolása. A legtöbb esetben w32time inkább time.windows.com a gazdagépre, mert a time.windows.com alacsonyabb hierarchiabeli jelentések. 
-
-Tartományhoz csatlakoztatott gépeket magát a tartományt hozza létre a szinkronizálási időhierarchiában, de az erdő gyökértartományában továbbra is kell valahol az időt vesz igénybe, és az alábbi szempontokat még mindig tartsa igaz.
+- A gazdagép ideje és time.windows.com. Ez az Azure Marketplace-lemezképekben használt alapértelmezett konfiguráció.
+- Csak gazdagép.
+- Használjon egy másik, külső időkiszolgálót vagy anélkül, hogy a gazdagépi időt használja.
 
 
-### <a name="host-only"></a>Csak állomásnév 
+### <a name="use-the-default"></a>Alapértelmezett érték használata
 
-Mivel a time.windows.com egy nyilvános NTP-kiszolgálót, vele time szinkronizálása igényel az interneten keresztül küldi a forgalmat, különböző csomag késések negatív hatással lehet az idő szinkronizálása minőségét. Time.windows.com eltávolítása átvált a gazdagép csak szinkronizálás néha javítja az idő szinkronizálása az eredményeket.
+Alapértelmezés szerint a Windows operációs rendszerhez készült virtuálisgép-lemezképek két forrásból való szinkronizálásra vannak konfigurálva a W32Time: 
 
-Váltás csak állomásnév idő szinkronizálása teszi értelemben vett idő szinkronizálása tapasztal problémák az alapértelmezett konfigurációt használja. Próbálja ki a gazdagép csak szinkronizálás megtekintéséhez Ha, amelyek az idő szinkronizálása a virtuális Gépen. 
+- Az NTP-szolgáltató, amely információt kap a time.windows.com.
+- A VMICTimeSync szolgáltatás, amely a gazdagépi idő és a virtuális gépek közötti kommunikációra szolgál, és a virtuális gép karbantartás utáni szüneteltetése után végez javítást. Az Azure-gazdagépek a Microsoft által birtokolt stratum 1 eszközöket használják a pontos idő megtartására.
 
-### <a name="external-time-server"></a>Külső időkiszolgálóval
+a W32Time a következő prioritási sorrendben szeretné előnyben részesíteni az időszolgáltatót: stratum szint, root delay, root diszperzió, Time eltolás. A legtöbb esetben a W32Time szívesebben time.windows.com a gazdagépre, mert a time.windows.com az alsó réteget jelenti. 
 
-Ha adott időpont-szinkronizálás követelményei, is lehetőség van a külső idő kiszolgálók használatával. Külső idő kiszolgálók biztosíthat az adott időpontot, amely a tesztelési helyzetekhez, ideje egységességének biztosítása üzemeltetett-Microsoft adatközpontok vagy kezelési azt másodperc, speciális módon gépekkel hasznos lehet.
-
-Külső kiszolgálók VMICTimeSync szolgáltatás és az alapértelmezett konfiguráció hasonló eredményeket VMICTimeProvider kombinálhatók. 
-
-## <a name="check-your-configuration"></a>Ellenőrizze a konfigurációt
+Tartományhoz csatlakozó gépek esetén a tartomány maga is időszinkronizálási hierarchiát hoz létre, de az erdő gyökerének el kell érnie az időt, és a következő szempontokat továbbra is igaz értékre kell állítani.
 
 
-Ellenőrizze, hogy a az idő NTP szolgáltató explicit az NTP-kiszolgálókra (NTP) vagy a tartomány idő szinkronizálása (NT5DS) használatára van konfigurálva.
+### <a name="host-only"></a>Csak gazdagép 
+
+Mivel a time.windows.com egy nyilvános NTP-kiszolgáló, a szinkronizálási idő megköveteli az interneten keresztüli adatforgalmat, a csomagok késése pedig negatívan befolyásolhatja az idő szinkronizálásának minőségét. A time.windows.com eltávolítása a csak gazdagépre történő szinkronizálásra való áttéréssel időnként javíthatja az idő szinkronizálásának eredményeit.
+
+Ha az alapértelmezett konfiguráció használatával időt vesz igénybe, a csak a gazdagépre való áttéréskor érdemes váltani. Próbálja ki a gazdagépek szinkronizálását, és ellenőrizze, hogy ez javítaná-e a virtuális gépen futó idő szinkronizálását. 
+
+### <a name="external-time-server"></a>Külső idő kiszolgálója
+
+Ha bizonyos időszinkronizálási követelményekkel rendelkezik, akkor a külső időkiszolgálók is használhatók. A külső időkiszolgálók meghatározott időt biztosíthatnak, ami hasznos lehet a tesztelési forgatókönyvekhez, így biztosítva a nem Microsoft-adatközpontokban üzemeltetett gépekkel való időbeli egységességet, illetve a LEAP másodpercek speciális módon történő kezelését.
+
+A külső kiszolgálókat a VMICTimeSync szolgáltatással és a VMICTimeProvider kombinálva az alapértelmezett konfigurációhoz hasonló eredményeket adhat meg. 
+
+## <a name="check-your-configuration"></a>Konfiguráció ellenõrzése
+
+
+Ellenőrizze, hogy az NTP-kiszolgáló időszolgáltatója a explicit NTP-kiszolgálók (NTP) vagy a tartomány időszinkronizálása (NT5DS) használatára van-e konfigurálva.
 
 ```
 w32tm /dumpreg /subkey:Parameters | findstr /i "type"
 ```
 
-Ha a virtuális gép által használt NTP, a következő kimenet jelenik meg:
+Ha a virtuális gép NTP-t használ, a következő kimenet jelenik meg:
 
 ```
 Value Name                 Value Type          Value Data
 Type                       REG_SZ              NTP
 ```
 
-Milyen időkiszolgálóval megtekintéséhez az NTP idő szolgáltatót használ, egy rendszergazda jogú parancssorból írja be a:
+Ha szeretné megtekinteni, hogy az NTP-kiszolgáló milyen időpontot használ, egy rendszergazda jogú parancssorba írja be a következőt:
 
 ```
 w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 ```
 
-Ha a virtuális gép nem használja az alapértelmezett, a kimeneti néznek ki:
+Ha a virtuális gép az alapértelmezettet használja, a kimenet a következőképpen fog kinézni:
 
 ```
 NtpServer                  REG_SZ              time.windows.com,0x8
 ```
 
 
-Megtekintheti, milyen idő szolgáltató jelenleg használatban van.
+Itt láthatja, hogy jelenleg milyen időszolgáltatót használ.
 
 ```
 w32tm /query /source
 ```
 
 
-A kimenet láthatóvá teheti, és mi jelentené itt látható:
+Itt látható a kimenet, és mit jelent:
     
-- **time.Windows.com** – a alapértelmezett konfigurálásban w32time kap időt a time.windows.com. Az idő szinkronizálása minőségi internet kapcsolódniuk kell hozzá függ, és késések csomag által érintett. Ez a szokásos kimenete az alapértelmezett beállítás.
-- **Virtuális gép IC idő szinkronizálási szolgáltató** – a virtuális Gépet a gazdagépről idő szinkronizálása folyamatban van. Ez általában akkor az az eredmény, ha Ön Feliratkozás a gazdagép csak szinkronizálás vagy az NTP-kiszolgáló nem érhető el abban a pillanatban. 
-- *A tartomány kiszolgáló* – az aktuális számítógép egy tartományhoz tartozik, és a tartomány az időhierarchiában szinkronizálási határozza meg.
-- *Egyéb kiszolgálón* -w32time explicit módon konfigurálták, hogy az idő lekérése, a másik kiszolgáló. Idő szinkronizálása minőségi attól függ, hogy ezen idő server minőségét.
-- **Helyi CMOS óra** – óra nincs szinkronizálva. Ez a kimenet kaphat, ha w32time még nem volt elég ideje elindításához újraindítás után, vagy ha az összes beállított idő adatforrás nem érhető el.
+- **Time.Windows.com** – az alapértelmezett konfigurációban a w32time a Time.Windows.com-től származó időt is igénybe veheti. Az időszinkronizálási minőség függ az internetkapcsolattól, és a csomagok késése is befolyásolja. Ez az alapértelmezett beállítás normál kimenete.
+- **VM IC-idő szinkronizációs szolgáltatója** – a virtuális gép szinkronizálja az időt a gazdagépről. Ez általában akkor következik be, ha csak a gazdagépen lévő idő szinkronizálására van lehetőség, vagy ha a NTP jelenleg nem érhető el. 
+- *A tartományi kiszolgáló* – az aktuális gép egy tartományban van, és a tartomány meghatározza az időszinkronizálási hierarchiát.
+- *Egy másik kiszolgáló* -W32Time explicit módon úgy lett konfigurálva, hogy lekérje a másik kiszolgáló idejét. Az időszinkronizálás minősége ettől az időponttól függ a kiszolgáló minőségétől.
+- A **helyi CMOS óra** – óra nincs szinkronizálva. Ezt a kimenetet akkor érheti el, ha a W32Time nem volt elég ideje elindítani az újraindítás után, vagy ha a konfigurált időforrások nem érhetők el.
 
 
-## <a name="opt-in-for-host-only-time-sync"></a>Feliratkozás a gazdagép csak idő szinkronizálása
+## <a name="opt-in-for-host-only-time-sync"></a>Csak a gazdagépen történő szinkronizálás engedélyezése
 
-Az Azure folyamatosan dolgozik növelése az idő szinkronizálása a gazdagépeken és tud garantálni, hogy az idő szinkronizálása infrastruktúra található, a Microsoft tulajdonában lévő adatközpontokban. Ha a szinkronizálás az alapértelmezett beállítás, amely time.windows.com használja elsődleges idő forrásaként problémái, segítségével a következő parancsok szeretné csak állomásnév idő szinkronizálása.
+Az Azure folyamatosan dolgozik a gazdagépek időszinkronizálásának javításán, és garantálja, hogy az összes időszinkronizálási infrastruktúra közös elhelyezésű a Microsoft által birtokolt adatközpontokban. Ha van olyan időszinkronizálási problémája, amely a time.windows.com elsődleges időforrásként való használatát részesíti előnyben, a következő parancsokkal engedélyezheti a gazdagépen lévő idő szinkronizálását.
 
-A VMIC szolgáltató megjelölése engedélyezve van. 
+A VMIC-szolgáltató megjelölése engedélyezettként. 
 
 ```
 reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w32time\TimeProviders\VMICTimeProvider /v Enabled /t REG_DWORD /d 1 /f
 ```
 
-Jelölje meg az NTP-szolgáltatót, mert le van tiltva.
+Az NTP-szolgáltatót letiltottként kell megjelölnie.
 
 ```
 reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w32time\TimeProviders\NtpClient /v Enabled /t REG_DWORD /d 0 /f
 ```
 
-Indítsa újra a w32time szolgáltatás.
+Indítsa újra a W32Time szolgáltatást.
 
 ```
 net stop w32time && net start w32time
 ```
 
 
-## <a name="windows-server-2012-and-r2-vms"></a>Windows Server 2012 és R2 virtuális gépek 
+## <a name="windows-server-2012-and-r2-vms"></a>Windows Server 2012 és R2 rendszerű virtuális gépek 
 
-A Windows Server 2012 és Windows Server 2012 R2 rendelkezik az idő szinkronizálása más alapértelmezett beállításait. A W32Time szolgáltatás alapértelmezés szerint úgy, hogy a szolgáltatás alacsony többletterhelést keresztül szeretnék pontos idő van beállítva. 
+A Windows Server 2012 és a Windows Server 2012 R2 különböző alapértelmezett beállításokkal rendelkezik az idő szinkronizálásához. A W32Time alapértelmezés szerint úgy van konfigurálva, hogy a szolgáltatás alacsony terhelést és a pontos időt részesíti előnyben. 
 
-Ha szeretné helyezni az újabb alapértelmezett beállításokat, amelyeknek pontos idő használata a Windows Server 2012 és 2012 R2 központi telepítések, a következő beállításokat is alkalmazhat.
+Ha a Windows Server 2012-es és 2012 R2-es verzióját szeretné áthelyezni a pontos időpontot előnyben részesített új alapértelmezett beállítások használatára, akkor a következő beállításokat alkalmazhatja.
 
-A w32time lekérdezésének frissítése, és frissítési időközök Windows Server 2016-beállításoknak megfelelően.
+Frissítse a W32Time lekérdezési és frissítési intervallumait a Windows Server 2016 beállításainak megfelelően.
 
 ```
 reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w32time\Config /v MinPollInterval /t REG_DWORD /d 6 /f
@@ -167,9 +166,9 @@ reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w32time\Config /v U
 w32tm /config /update
 ```
 
-A w32time tudják használni a új lekérdezési időköz a NtpServers megjelölni használja őket. Kiszolgálók vannak feliratozva 0x1 jelzőbit maszkkal rendelkező, ha, amely akkor bírálja felül ezt a mechanizmust, és w32time SpecialPollInterval inkább használna. Ügyeljen arra, hogy megadott NTP-kiszolgálók vagy használja 0x8 jelző vagy nem jelző minden:
+Ahhoz, hogy a W32Time használni tudja az új lekérdezési időközöket, a NtpServers meg kell adni őket használva. Ha a kiszolgálók megjegyzése 0x1 bitflag maszkkal történik, akkor ez felülbírálja ezt a mechanizmust, és a W32Time a SpecialPollInterval-t fogja használni. Győződjön meg arról, hogy a megadott NTP-kiszolgálók 0x8 jelzőt vagy nincs jelölőt használnak:
 
-Ellenőrizze, hogy milyen jelzők használ a használt NTP-kiszolgálók.
+Győződjön meg arról, hogy a használt NTP-kiszolgálókhoz milyen jelzők vannak használatban.
 
 ```
 w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
@@ -177,11 +176,11 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbiakban további információt az idő szinkronizálása mutató hivatkozásokat:
+Az alábbi hivatkozások az idő szinkronizálásával kapcsolatos további részletekre mutatnak:
 
-- [Windows időszolgáltatás eszközei és beállításai](https://docs.microsoft.com/windows-server/networking/windows-time-service/Windows-Time-Service-Tools-and-Settings)
-- [A Windows Server 2016-ban fejlesztései ](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-server-2016-improvements)
-- [A Windows Server 2016 – pontos idő](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
-- [Határ konfigurálása a Windows időszolgáltatás nagy pontosságú környezetek támogatása](https://docs.microsoft.com/windows-server/networking/windows-time-service/support-boundary)
+- [A Windows időszolgáltatás eszközei és beállításai](https://docs.microsoft.com/windows-server/networking/windows-time-service/Windows-Time-Service-Tools-and-Settings)
+- [A Windows Server 2016 fejlesztése](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Pontos idő a Windows Server 2016-hoz](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+- [Határ támogatása a Windows időszolgáltatásának magas pontosságú környezetekhez való konfigurálásához](https://docs.microsoft.com/windows-server/networking/windows-time-service/support-boundary)
 
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: 37921c655cc3c5de5c3c5079eda47fb7513fdf9f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 878e2b03e21c18ef4ee845251e91642037c6c5ff
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560950"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114641"
 ---
 # <a name="limits-and-quotas"></a>Korlátok és kvóták
 
@@ -37,7 +37,13 @@ A betanítási lemezképek száma projektenként és címkék szerint projektenk
 |[](https://go.microsoft.com/fwlink/?linkid=865445) Megjóslási műveletek tárterület nélkül (tranzakció/másodperc)|2|20|
 |[TrainProject](https://go.microsoft.com/fwlink/?linkid=865446) (API-hívások másodpercenként)|2|10|
 |[Egyéb API-hívások](https://go.microsoft.com/fwlink/?linkid=865446) (Tranzakció/másodperc)|10|10|
+|Elfogadott rendszerképek típusai|jpg, PNG, BMP, GIF|jpg, PNG, BMP, GIF|
+|Minimális képméret/szélesség képpontban|256 (lásd a megjegyzést)|256 (lásd a megjegyzést)|
+|Maximális képméret/szélesség képpontban|korlátlan|korlátlan|
 |Maximális képméret (betanítási képfeltöltés) |6 MB|6 MB|
 |Maximális képméret (előrejelzés)|4 MB|4 MB|
 |Objektumok maximális száma objektum-észlelési betanítási képen|200|200|
 |Címkék maximális száma besorolási képenként|30|30|
+
+> [!NOTE]
+> Az 256 képpontnál kisebb méretű képek is el lesznek fogadva, a méretük pedig nagyobb.

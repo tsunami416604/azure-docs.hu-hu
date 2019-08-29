@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/02/2019
+ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 776b8303e3454b40979691ea32fdcca11be4fa71
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: fb1007929a26384da60e542865c750fd1d642440
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013370"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114674"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Beépített szerepkörök az Azure-erőforrásokhoz
 
@@ -70,6 +70,8 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 | [Számlázási olvasó](#billing-reader) | Olvasási hozzáférés engedélyezése a számlázási információkhoz |
 | [BizTalk közreműködő](#biztalk-contributor) | Lehetővé teszi a BizTalk Services kezelését, de azokhoz való hozzáférés nélkül. |
 | [Blockchain-hozzáférés (előzetes verzió)](#blockchain-member-node-access-preview) | Engedélyezi a hozzáférést a Blockchain-tagok csomópontjaihoz |
+| [Tervezet közreműködője](#blueprint-contributor) | Kezelheti a terv definícióit, de nem rendelheti hozzá őket. |
+| [Blueprint operátor](#blueprint-operator) | Meglévő közzétett tervrajzokat is hozzárendelhet, de nem hozhat létre új tervrajzokat. Megjegyzés: ez csak akkor működik, ha a hozzárendelés felhasználó által hozzárendelt felügyelt identitással lett végrehajtva. |
 | [CDN-végpont közreműködői](#cdn-endpoint-contributor) | Kezelheti a CDN-végpontokat, de nem tud hozzáférést biztosítani más felhasználóknak. |
 | [CDN-végpont olvasója](#cdn-endpoint-reader) | Megtekintheti a CDN-végpontokat, de nem végezheti el a módosításokat. |
 | [CDN-profil közreműködői](#cdn-profile-contributor) | Kezelheti a CDN-profilokat és azok végpontjait, de nem adhat hozzáférést más felhasználóknak. |
@@ -139,7 +141,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 | [Storage blob adatközreműködői](#storage-blob-data-contributor) | Azure Storage-tárolók és-Blobok olvasása, írása és törlése. Ha meg szeretné tudni, hogy mely műveletek szükségesek egy adott adatművelethez, tekintse meg a [blob-és üzenetsor-műveletek meghívására vonatkozó engedélyeket](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Storage blob-adattulajdonos](#storage-blob-data-owner) | Teljes hozzáférést biztosít az Azure Storage blob-tárolók és-adatkészletekhez, beleértve a POSIX hozzáférés-vezérlés hozzárendelését. Ha meg szeretné tudni, hogy mely műveletek szükségesek egy adott adatművelethez, tekintse meg a [blob-és üzenetsor-műveletek meghívására vonatkozó engedélyeket](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Storage blob-Adatolvasó](#storage-blob-data-reader) | Azure Storage-tárolók és-Blobok olvasása és listázása. Ha meg szeretné tudni, hogy mely műveletek szükségesek egy adott adatművelethez, tekintse meg a [blob-és üzenetsor-műveletek meghívására vonatkozó engedélyeket](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
-| [Storage blob-delegáló](#storage-blob-delegator) | Szerezze be a felhasználói delegálási kulcsot, amely az Azure AD-beli hitelesítő adatokkal aláírt tárolók vagy Blobok közös hozzáférési aláírásának létrehozásához használható. További információt a [felhasználói delegálási sas létrehozása](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)című témakörben talál. |
+| [Storage blob-delegáló](#storage-blob-delegator) | Felhasználói delegálási kulcs beszerzése, amely az Azure AD-beli hitelesítő adatokkal aláírt tárolók vagy Blobok közös hozzáférési aláírásának létrehozásához használható. További információt a [felhasználói delegálási sas létrehozása](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)című témakörben talál. |
 | [Storage file-adatsmb-megosztás közreműködői](#storage-file-data-smb-share-contributor) | Lehetővé teszi az olvasási, írási és törlési hozzáférést az Azure Storage-fájlmegosztás SMB-en keresztül |
 | [Storage file-adatsmb-megosztás emelt szintű közreműködője](#storage-file-data-smb-share-elevated-contributor) | Olvasási, írási, törlési és módosítási engedélyek engedélyezése az Azure Storage-fájlmegosztás SMB-kapcsolaton keresztüli eléréséhez |
 | [Storage-fájl adatsmb-megosztásának olvasója](#storage-file-data-smb-share-reader) | Olvasási hozzáférés engedélyezése az Azure-fájlmegosztás SMB használatával |
@@ -948,6 +950,44 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
+## <a name="blueprint-contributor"></a>Tervezet közreműködője
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Kezelheti a terv definícióit, de nem rendelheti hozzá őket. |
+> | **Azonosító** | 41077137-e803-4205-871c-5a86e6a753b4 |
+> | **Műveletek** |  |
+> | Microsoft. Authorization/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | Microsoft. Blueprint/tervezetek/* | Terv-definíciók vagy tervrajz-összetevők létrehozása és kezelése. |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | Microsoft.Resources/deployments/* | Erőforráscsoport-telepítések létrehozása és kezelése |
+> | Microsoft.Support/* | Támogatási jegyek létrehozása és kezelése |
+> | **Nincs tapintat** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | *none* |  |
+> | **NotDataActions** |  |
+> | *none* |  |
+
+## <a name="blueprint-operator"></a>Blueprint operátor
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Meglévő közzétett tervrajzokat is hozzárendelhet, de nem hozhat létre új tervrajzokat. Megjegyzés: ez csak akkor működik, ha a hozzárendelés felhasználó által hozzárendelt felügyelt identitással lett végrehajtva. |
+> | **Azonosító** | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
+> | **Műveletek** |  |
+> | Microsoft. Authorization/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | Microsoft. Blueprint/blueprintAssignments/* | Terv-hozzárendelések létrehozása és kezelése. |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | Microsoft.Resources/deployments/* | Erőforráscsoport-telepítések létrehozása és kezelése |
+> | Microsoft.Support/* | Támogatási jegyek létrehozása és kezelése |
+> | **Nincs tapintat** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | *none* |  |
+> | **NotDataActions** |  |
+> | *none* |  |
+
 ## <a name="cdn-endpoint-contributor"></a>A CDN-végpont közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1268,7 +1308,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **Műveletek** |  |
 > | Microsoft. fogyasztás/* |  |
 > | Microsoft.CostManagement/* |  |
-> | Microsoft. számlázás/billingPeriods/olvasás | Az elérhető számlázási időszakok felsorolása |
+> | Microsoft. számlázás/billingPeriods/olvasás |  |
 > | Microsoft. Resources/előfizetések/olvasás | Az előfizetések listájának beolvasása. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Erőforráscsoportok beolvasása vagy felsorolása. |
 > | Microsoft.Support/* | Támogatási jegyek létrehozása és kezelése |
@@ -1291,7 +1331,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **Műveletek** |  |
 > | Microsoft.Consumption/*/read |  |
 > | Microsoft.CostManagement/*/read |  |
-> | Microsoft. számlázás/billingPeriods/olvasás | Az elérhető számlázási időszakok felsorolása |
+> | Microsoft. számlázás/billingPeriods/olvasás |  |
 > | Microsoft. Resources/előfizetések/olvasás | Az előfizetések listájának beolvasása. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Erőforráscsoportok beolvasása vagy felsorolása. |
 > | Microsoft.Support/* | Támogatási jegyek létrehozása és kezelése |
@@ -1899,6 +1939,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.Insights/Register/Action | A Microsoft Insights-szolgáltató regisztrálása |
 > | Microsoft. bepillantások/scheduledqueryrules/* |  |
 > | Microsoft.Insights/webtests/* | Application Insights webes tesztek olvasása/írása/törlése. |
+> | Microsoft. bepillantások/munkafüzetek/* |  |
 > | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Log Analytics-megoldási csomagok olvasása/írása/törlése. |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* | A log Analytics-beli mentett keresések olvasása/írása/törlése. |
 > | Microsoft.OperationalInsights/workspaces/search/action | Keresési lekérdezés végrehajtása |
@@ -2474,6 +2515,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.Sql/managedInstances/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/managedInstances/securityAlertPolicies/* |  |
+> | Microsoft. SQL/managedInstances/adatbázisok/transparentDataEncryption/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | SQL Server naplózási szabályzatok létrehozása és kezelése |
 > | Microsoft.Sql/servers/auditingSettings/* | SQL Server naplózási beállításának létrehozása és kezelése |
@@ -2494,6 +2536,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.Sql/servers/databases/securityAlertPolicies/* | SQL Server-adatbázis biztonsági riasztási házirendjeinek létrehozása és kezelése |
 > | Microsoft.Sql/servers/databases/securityMetrics/* | SQL Server-adatbázis biztonsági metrikáinak létrehozása és kezelése |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
+> | Microsoft. SQL/kiszolgálók/adatbázisok/transparentDataEncryption/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |

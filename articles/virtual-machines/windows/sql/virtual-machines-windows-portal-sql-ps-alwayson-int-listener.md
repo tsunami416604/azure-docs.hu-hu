@@ -1,6 +1,6 @@
 ---
-title: Always On rendelkezésre állási csoport figyelője – Microsoft Azure konfigurálása |} A Microsoft Docs
-description: Belső terheléselosztó használata egy vagy több IP-címek az Azure Resource Manager modellel konfigurálja a rendelkezésre állási csoport figyelője.
+title: AlwaysOn rendelkezésre állási csoport Figyelőinak konfigurálása – Microsoft Azure | Microsoft Docs
+description: Konfigurálja a rendelkezésre állási csoport figyelőit a Azure Resource Manager modellen egy belső terheléselosztó használatával egy vagy több IP-címmel.
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
@@ -8,78 +8,77 @@ manager: craigg
 editor: monicar
 ms.assetid: 14b39cde-311c-4ddf-98f3-8694e01a7d3b
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: 5b647af7925ceb81c524deb0accf90f9e895080e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7d6427e88960ec3ff550affb1624dd82e561a6bb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165802"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102174"
 ---
-# <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Egy vagy több Always On rendelkezésre állási csoport figyelője – erőforrás-kezelő konfigurálása
-Ez a témakör bemutatja, hogyan lehet:
+# <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Egy vagy több always on rendelkezésre állási csoport figyelők konfigurálása – Resource Manager
+Ez a témakör a következőket mutatja be:
 
-* Hozzon létre egy belső terheléselosztót a PowerShell-parancsmagok használatával az SQL Server rendelkezésre állási csoportok számára.
-* Adja hozzá a további IP-címek terheléselosztóhoz egynél több rendelkezésre állási csoport. 
+* Hozzon létre belső terheléselosztó SQL Server rendelkezésre állási csoportok számára a PowerShell-parancsmagok használatával.
+* További IP-címeket adhat hozzá egy terheléselosztó számára egynél több rendelkezésre állási csoport számára. 
 
-Egy rendelkezésre állási csoport figyelőjének egy virtuális hálózat neve, amelyhez az ügyfelek csatlakozni az adatbázis eléréséhez. Azure-beli virtuális gépeken terheléselosztó tárolja az IP-címet a figyelőhöz. A load balancer irányítja a forgalmat a mintavételi portot figyel az SQL Server példányához. Általában a rendelkezésre állási csoport egy belső terheléselosztót használ. Az Azure belső terheléselosztó egy vagy több IP-címek is üzemeltethet. Minden IP-cím egy adott mintavételi portot használja. Ez a dokumentum bemutatja, hogyan PowerShell használatával létrehozhat egy terheléselosztót, vagy IP-címek hozzáadása egy meglévő terheléselosztóhoz az SQL Server rendelkezésre állási csoportok számára. 
+A rendelkezésre állási csoport figyelője olyan virtuális hálózat neve, amelyet az ügyfelek az adatbázis-hozzáféréshez csatlakoznak. Az Azure-beli virtuális gépeken a terheléselosztó a figyelő IP-címét tárolja. A terheléselosztó átirányítja a forgalmat a mintavételi portot figyelő SQL Server példányára. A rendelkezésre állási csoport általában belső terheléselosztó használatával működik. Egy belső Azure Load Balancer egy vagy több IP-címet képes tárolni. Minden IP-cím egy adott mintavételi portot használ. Ebből a dokumentumból megtudhatja, hogyan használható a PowerShell egy terheléselosztó létrehozásához, illetve IP-címek egy meglévő terheléselosztó SQL Server rendelkezésre állási csoportok számára való hozzáadásához. 
 
-Több IP-cím hozzárendelése a belső terheléselosztó lehetővé teszi új Azure-ba, és csak a Resource Manager-modell érhető el. Ez a feladat végrehajtásához szüksége lehet Resource Manager-modellben az Azure virtuális gépeken telepített SQL Server rendelkezésre állási csoport. Az SQL Server virtuális gépeket is ugyanabban a rendelkezésre állási csoporthoz kell tartoznia. Használhatja a [Microsoft sablon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) automatikusan létrehozni a rendelkezésre állási csoportot az Azure Resource Manager. Ez a sablon automatikusan létrehozza a rendelkezésre állási csoport, beleértve a belső terheléselosztó az Ön számára. Ha szeretné, akkor [Always On rendelkezésre állási csoport manuális konfigurálása](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
+Több IP-cím a belső terheléselosztó számára való hozzárendelésének lehetősége új az Azure-hoz, és csak a Resource Manager-modellben érhető el. A feladat végrehajtásához rendelkeznie kell egy, az Azure Virtual Machines szolgáltatásban üzembe helyezett SQL Server rendelkezésre állási csoport Resource Manager-modellben. Mindkét SQL Server virtuális gépnek ugyanahhoz a rendelkezésre állási csoporthoz kell tartoznia. A rendelkezésre állási csoport automatikus létrehozásához használhatja a [Microsoft-sablont](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) Azure Resource Manager. Ez a sablon automatikusan létrehozza a rendelkezésre állási csoportot, beleértve az Ön számára a belső terheléselosztó. Ha szeretné, [manuálisan is konfigurálhatja az Always On rendelkezésre állási csoportot](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
-Ehhez a témakörhöz, hogy a rendelkezésre állási csoportok már konfigurálva vannak.  
+Ehhez a témakörhöz a rendelkezésre állási csoportok konfigurálása szükséges.  
 
-Kapcsolódó témakörök a következők:
+A kapcsolódó témakörök a következők:
 
 * [AlwaysOn rendelkezésre állási csoportok konfigurálása Azure-beli virtuális gépen (GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
-* [A virtuális hálózatok közötti kapcsolat konfigurálása Azure Resource Manager és a PowerShell használatával](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+* [VNet-VNet közötti kapcsolatok konfigurálása Azure Resource Manager és a PowerShell használatával](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
 
-## <a name="verify-powershell-version"></a>PowerShell-verziójának ellenőrzése
+## <a name="verify-powershell-version"></a>PowerShell-verzió ellenőrzése
 
-Ebben a cikkben szereplő példák az Azure PowerShell-modul 5.4.1-es használatával vizsgálják.
+A cikkben szereplő példák a Azure PowerShell modul 5.4.1-es verziójának használatával lettek tesztelve.
 
-Ellenőrizze a PowerShell-modul 5.4.1 vagy újabb.
+Győződjön meg arról, hogy a PowerShell-modul 5.4.1 vagy újabb.
 
-Lásd: [Azure PowerShell-modul telepítéséhez](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 ## <a name="configure-the-windows-firewall"></a>A Windows tűzfal konfigurálása
 
-Az SQL Server-hozzáférés engedélyezése a Windows tűzfal konfigurálásához. A tűzfalszabályok engedélyezik a portokat használja a figyelő mintavétel, valamint az SQL Server-példány TCP-kapcsolatot. Részletes útmutatásért lásd: [Windows tűzfal konfigurálása az hozzáféréshez](https://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Hozzon létre egy bejövő szabályt az SQL Server-portot és a mintavételi portot.
+Konfigurálja a Windows tűzfalat a SQL Server hozzáférésének engedélyezéséhez. A tűzfalszabályok lehetővé teszik, hogy a portok TCP-kapcsolatai a SQL Server-példány és a figyelő mintavétele által használhatók legyenek. Részletes útmutatásért lásd: [Windows tűzfal konfigurálása az adatbázismotor eléréséhez](https://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Hozzon létre egy bejövő szabályt a SQL Server portjához és a mintavételi porthoz.
 
-Ha Ön az Azure hálózati biztonsági csoporttal való hozzáférés korlátozása győződjön meg arról, hogy az engedélyezési szabályok közé tartoznak a háttér SQL Server virtuális gép IP-címek és a terheléselosztó nem fix IP-címek a rendelkezésre állási csoport figyelőjének és a fürt alapvető IP-címét, ha van ilyen.
+Ha egy Azure hálózati biztonsági csoporttal korlátozza a hozzáférést, győződjön meg arról, hogy az engedélyezési szabályok közé tartozik a háttérrendszer SQL Server VM IP-címe, valamint az AG-figyelő terheléselosztási IP-címei és a fürt alapvető IP-címe, ha van ilyen.
 
-## <a name="determine-the-load-balancer-sku-required"></a>Határozza meg a terheléselosztó Termékváltozat megadása kötelező
+## <a name="determine-the-load-balancer-sku-required"></a>Határozza meg a terheléselosztó SKU-jának követelményét
 
-[Az Azure load balancer](../../../load-balancer/load-balancer-overview.md) 2 termékváltozatban érhető el: Alapszintű és Standard. A standard load balancer használata javasolt. Ha a virtuális gépeket egy rendelkezésre állási csoportban, az alapszintű load balancer számára engedélyezett. A standard load balancer szükséges, hogy az összes virtuális gép IP-címek szabványos IP-cím használatára.
+Az [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) 2 SKU-ban érhető el: Alapszintű & standard. A standard Load Balancer használata ajánlott. Ha a virtuális gépek rendelkezésre állási csoportba tartoznak, az alapszintű Load Balancer használata engedélyezett. A standard Load Balancer megköveteli, hogy minden virtuális gép IP-címe standard IP-címet használjon.
 
-Az aktuális [Microsoft sablon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) egy rendelkezésre állási csoportot használja az alapszintű load balancer alapszintű IP-címmel.
+Egy rendelkezésre állási csoport aktuális [Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) -sablonja egy alapszintű Load balancert használ alapszintű IP-címekkel.
 
-Ebben a cikkben szereplő példák a standard load balancer adja meg. A parancsfájl tartalmazza a példákban `-sku Standard`.
+A cikkben szereplő példák a standard Load balancert határozzák meg. A példákban a parancsfájl tartalmaz `-sku Standard`.
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
-Alapszintű load balancer létrehozása, távolítsa el a `-sku Standard` a sorból, amely a terheléselosztó hoz létre. Példa:
+Alapszintű terheléselosztó létrehozásához távolítsa `-sku Standard` el a terheléselosztó által létrehozott sorból. Példa:
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
 ```
 
-## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Példa parancsfájl: Belső terheléselosztó létrehozása a PowerShell használatával
+## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Példa szkriptre: Belső terheléselosztó létrehozása a PowerShell-lel
 
 > [!NOTE]
-> Ha létrehozta a rendelkezésre állási csoportnak a [Microsoft sablon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), a belső load balancer már létre lett hozva.
+> Ha a rendelkezésre állási csoportot a [Microsoft-sablonnal](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)hozta létre, a belső terheléselosztó már létrejött.
 
-A következő PowerShell-parancsfájl egy belső terheléselosztót hoz létre, konfigurálja a terheléselosztási szabályok és állítja be az IP-címet a terheléselosztóhoz. A szkript futtatásához nyissa meg a Windows PowerShell ISE-ben, és illessze be a parancsfájlt a parancsfájl panelen. Használat `Connect-AzAccount` való bejelentkezés a Powershellbe. Ha több Azure-előfizetéssel rendelkezik, használja a `Select-AzSubscription` az előfizetés beállításához. 
+A következő PowerShell-szkript létrehoz egy belső terheléselosztó-t, konfigurálja a terheléselosztási szabályokat, és beállítja a terheléselosztó IP-címét. A parancsfájl futtatásához nyissa meg Windows PowerShell integrált parancsprogram-kezelési környezet, majd illessze be a szkriptet a szkript ablaktáblába. A `Connect-AzAccount` paranccsal jelentkezhet be a powershellbe. Ha több Azure-előfizetéssel rendelkezik `Select-AzSubscription` , az előfizetés beállításához használja a következőt:. 
 
 ```powershell
 # Connect-AzAccount
@@ -129,18 +128,18 @@ foreach($VMName in $VMNames)
     }
 ```
 
-## <a name="Add-IP"></a> Példa parancsfájl: IP-cím hozzáadása egy meglévő a terheléselosztóhoz a PowerShell-lel
-Egynél több rendelkezésre állási csoportot használja, adja hozzá a további IP-címet a terheléselosztóhoz. Minden IP-cím a saját terheléselosztási szabály, mintavételi portot és előtérbeli port szükséges.
+## <a name="Add-IP"></a>Példa szkriptre: IP-cím hozzáadása meglévő Load Balancerhez a PowerShell használatával
+Ha egynél több rendelkezésre állási csoportot szeretne használni, adjon hozzá egy további IP-címet a terheléselosztó számára. Minden IP-címnek szüksége van saját terheléselosztási szabályra, mintavételi portra és elülső portra.
 
-Az előtérbeli portot az SQL Server-példányhoz való csatlakozáshoz használt alkalmazások port. Különböző rendelkezésre állási csoportok számára az IP-címek is használja az előtér-portot.
+Az előtér-port az a port, amelyet az alkalmazások a SQL Server-példányhoz való kapcsolódáshoz használnak. A különböző rendelkezésre állási csoportok IP-címei ugyanazt az előtér-portot használhatják.
 
 > [!NOTE]
-> Az SQL Server rendelkezésre állási csoportok minden IP-cím szükséges az adott mintavételi port. Például egy IP-címmel a terheléselosztón 59999 mintavételi portot használ, nincs más IP-címeket, hogy a terheléselosztó a mintavételi portot 59999 használhatja.
+> SQL Server rendelkezésre állási csoportok esetében minden IP-címnek egy adott mintavételi portra van szüksége. Ha például egy terheléselosztó egyik IP-címe a 59999-es mintavételi portot használja, a terheléselosztó más IP-címei nem használhatják az 59999-es mintavételi portot.
 
-* Load balancer korlátok kapcsolatos információkért lásd: **privát előtéri IP-Címek száma terheléselosztónként** alatt [hálózatkezelési korlátok – Azure Resource Manager](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
-* Rendelkezésre állási csoport korlátok kapcsolatos információkért lásd: [korlátozások (rendelkezésre állási csoportok)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
+* A terheléselosztó korlátaival kapcsolatos információkért lásd: **magánhálózati előtérbeli IP-cím/** terheléselosztó a [hálózati korlátok között – Azure Resource Manager](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
+* További információ a rendelkezésre állási csoport korlátairól: [korlátozások (rendelkezésre állási csoportok)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
 
-A következő parancsfájl egy új IP-címet ad hozzá egy meglévő a terheléselosztóhoz. Az ILB figyelő-portot az előtérbeli portot terheléselosztási használja. Ezt a portot is lehet a port, amelyet az SQL Server figyel a következőn:. Az SQL Server alapértelmezett példánya a port a 1433-as. A terheléselosztási szabály egy rendelkezésre állási csoport egy nem fix IP-cím (közvetlen kiszolgálói válasz) szükséges, ezért a a háttér-port pedig ugyanaz, mint az előtérbeli portot. Frissítse a változókat, az adott környezetben. 
+A következő parancsfájl egy új IP-címet helyez el egy meglévő terheléselosztó számára. A ILB a figyelő portot használja a terheléselosztási előtér-porthoz. Ez a port lehet a SQL Server figyelő port. SQL Server alapértelmezett példányai esetében a port 1433. Egy rendelkezésre állási csoport terheléselosztási szabálya egy lebegőpontos IP-címet (közvetlen kiszolgáló-visszaküldést) igényel, így a háttér-port megegyezik az előtér-porttal. Frissítse a környezet változóit. 
 
 ```powershell
 # Connect-AzAccount
@@ -185,57 +184,57 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 [!INCLUDE [ag-listener-configure](../../../../includes/virtual-machines-ag-listener-configure.md)]
 
-## <a name="set-the-listener-port-in-sql-server-management-studio"></a>A figyelő portját állítsa az SQL Server Management Studióban
+## <a name="set-the-listener-port-in-sql-server-management-studio"></a>A figyelő portjának beállítása SQL Server Management Studio
 
-1. Indítsa el az SQL Server Management Studiót, és kapcsolódjon az elsődleges replika.
+1. Indítsa el SQL Server Management Studio és kapcsolódjon az elsődleges replikához.
 
-1. Navigáljon a **AlwaysOn magas rendelkezésre állás** | **rendelkezésre állási csoportok** | **rendelkezésre állási csoport figyelője**. 
+1. Navigáljon a **magas rendelkezésre** | állási**rendelkezésre** | állási csoportok**rendelkezésre állási csoportjának figyelők**AlwaysOn. 
 
-1. Meg kell jelennie a figyelő nevét, amely a Feladatátvevőfürt-kezelő létrehozta. Kattintson a jobb gombbal a figyelő nevét, és kattintson a **tulajdonságok**.
+1. Ekkor megjelenik a Feladatátvevőfürt-kezelőban létrehozott figyelő neve. Kattintson a jobb gombbal a figyelő nevére, és kattintson a **Tulajdonságok**elemre.
 
-1. Az a **Port** mezőben, adja meg a portszámot a rendelkezésre állási csoport figyelőjének a korábban használt $EndpointPort használatával (az alapértelmezett 1433-as volt az), majd kattintson a **OK**.
+1. A **port** mezőben adja meg a rendelkezésre állási csoport figyelő portszámát a korábban használt $EndpointPort használatával (1433 volt az alapértelmezett), majd kattintson az **OK**gombra.
 
-## <a name="test-the-connection-to-the-listener"></a>A figyelő a kapcsolat tesztelése
+## <a name="test-the-connection-to-the-listener"></a>A figyelővel létesített kapcsolatok tesztelése
 
-A kapcsolat teszteléséhez:
+A kapcsolódás tesztelése:
 
-1. RDP-vel az azonos virtuális hálózatba, de a replika nem rendelkezik SQL-kiszolgálóra. Ez lehet a többi SQL Server a fürtben.
+1. Az RDP-t egy olyan SQL Serverra, amely ugyanabban a virtuális hálózatban található, de nem tulajdonosa a replikának. Ez lehet a fürt más SQL Server.
 
-1. Használat **sqlcmd** segédprogram a kapcsolat teszteléséhez. Például hozza létre a következő parancsfájl egy **sqlcmd** kapcsolatot az elsődleges replika, a figyelő a Windows-hitelesítés használatával:
+1. A **Sqlcmd** segédprogram használatával tesztelheti a kapcsolódást. Az alábbi szkript például egy **Sqlcmd** kapcsolatot létesít az elsődleges replikával a figyelőn keresztül a Windows-hitelesítéssel:
    
     ```
     sqlcmd -S <listenerName> -E
     ```
    
-    Ha a figyelő nem az alapértelmezett portot használ portot (1433), adja meg a portot a kapcsolati karakterláncban. A következő sqlcmd parancsot például egy figyelő 1435 porton csatlakozik: 
+    Ha a figyelő nem az alapértelmezett portot (1433) használja, akkor a portot a csatlakozási karakterláncban kell megadni. Például a következő Sqlcmd-parancs csatlakozik egy figyelőhöz a 1435-as porton: 
    
     ```
     sqlcmd -S <listenerName>,1435 -E
     ```
 
-Az SQLCMD-kapcsolatot automatikusan csatlakozik bármely SQL Server-példány az elsődleges replikát. 
+Az SQLCMD-kapcsolat automatikusan csatlakozik a SQL Server-példányhoz, amely az elsődleges replikát tárolja. 
 
 > [!NOTE]
-> Győződjön meg arról, hogy a megadott port nyitva a tűzfalon az SQL-kiszolgálók is. Mindkét kiszolgáló szükséges egy bejövő szabályt a TCP-portot, amelyet használhat. Lásd: [hozzáadása vagy szerkesztése tűzfalszabály](https://technet.microsoft.com/library/cc753558.aspx) további információt. 
+> Győződjön meg arról, hogy a megadott port meg van nyitva a tűzfalon mindkét SQL Server-kiszolgálón. Mindkét kiszolgálónak szüksége van egy bejövő szabályra a használt TCP-porthoz. További információért lásd: [Tűzfalszabályok hozzáadása vagy szerkesztése](https://technet.microsoft.com/library/cc753558.aspx) . 
 > 
 > 
 
 ## <a name="guidelines-and-limitations"></a>Irányelvek és korlátozások
-Vegye figyelembe az alábbi irányelveket a rendelkezésre állási csoport figyelője az Azure-ban a belső terheléselosztó:
+Vegye figyelembe a következő irányelveket a rendelkezésre állási csoport figyelője az Azure-ban belső terheléselosztó használatával:
 
-* A belső terheléselosztót csak érheti el, a figyelő az adott virtuális hálózaton belül.
+* Belső terheléselosztó esetén a figyelő csak ugyanazon a virtuális hálózaton belül érhető el.
 
-* Ha Ön az Azure hálózati biztonsági csoporttal való hozzáférés korlátozása győződjön meg arról, hogy az engedélyezési szabályok közé tartoznak a háttér SQL Server virtuális gép IP-címek és a terheléselosztó nem fix IP-címek a rendelkezésre állási csoport figyelőjének és a fürt alapvető IP-címét, ha van ilyen.
+* Ha egy Azure hálózati biztonsági csoporttal korlátozza a hozzáférést, győződjön meg arról, hogy az engedélyezési szabályok közé tartozik a háttérrendszer SQL Server VM IP-címe, valamint az AG-figyelő terheléselosztási IP-címei és a fürt alapvető IP-címe, ha van ilyen.
 
 ## <a name="for-more-information"></a>További tudnivalók
-További információkért lásd: [konfigurálása Always On rendelkezésre állási csoport Azure-beli virtuális gépen manuálisan](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
+További információ: Always [on rendelkezésre állási csoport konfigurálása az Azure-beli virtuális gépen manuálisan](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
 ## <a name="powershell-cmdlets"></a>PowerShell-parancsmagok
-A következő PowerShell-parancsmagok használatával hozzon létre egy Azure-beli virtuális gépek belső terheléselosztót.
+Az alábbi PowerShell-parancsmagokkal hozzon létre egy belső Load balancert az Azure Virtual Machines szolgáltatáshoz.
 
-* [Új AzLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) egy terheléselosztót hoz létre. 
-* [New-AzLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) creates a front-end IP configuration for a load balancer. 
-* [New-AzLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) creates a rule configuration for a load balancer. 
-* [New-AzLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) creates a backend address pool configuration for a load balancer. 
-* [Új AzLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) hoz létre egy mintavételi konfigurációt egy terheléselosztóhoz.
-* [Remove-AzLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) terheléselosztó távolít el egy Azure-erőforráscsoportot.
+* A [New-AzLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) létrehoz egy Load balancert. 
+* A [New-AzLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) létrehoz egy ELŐTÉR-IP-konfigurációt a terheléselosztó számára. 
+* A [New-AzLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) létrehoz egy szabálykészlet-konfigurációt a terheléselosztó számára. 
+* A [New-AzLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) létrehoz egy háttér-címkészlet konfigurációját a terheléselosztó számára. 
+* A [New-AzLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) létrehoz egy mintavételi konfigurációt a terheléselosztó számára.
+* A [Remove-AzLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) eltávolítja a Load balancert egy Azure-erőforráscsoporthoz.

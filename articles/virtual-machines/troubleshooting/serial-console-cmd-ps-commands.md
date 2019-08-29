@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 77fe6f1ce416df049928697d2c166e2aba0abfe2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a106984bc60d0ccfe29a1956213aec6f87ad30dd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935219"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090168"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows-parancsok – CMD és PowerShell
 
@@ -77,7 +76,7 @@ vagy
 ### <a name="stop-service"></a>Szolgáltatás leállítása
 `net stop termservice`
 
-vagy
+or
 
 `sc stop termservice`
 ## <a name="manage-networking-features"></a>Hálózatkezelési funkciók kezelése
@@ -211,11 +210,11 @@ Az elérési útnak `/restore` a használatakor megadott `/save`mappa szülőjé
 ### <a name="show-os-version"></a>Operációs rendszer verziójának megjelenítése
 `ver`
 
-vagy 
+or 
 
 `wmic os get caption,version,buildnumber /format:list`
 
-vagy 
+or 
 
 `systeminfo  find /i "os name"`
 
@@ -223,7 +222,7 @@ vagy
 ### <a name="view-os-install-date"></a>Operációs rendszer telepítési dátumának megtekintése
 `systeminfo | find /i "original"`
 
-vagy 
+or 
 
 `wmic os get installdate`
 ### <a name="view-last-boot-time"></a>Utolsó rendszerindítás időpontjának megtekintése
@@ -346,7 +345,7 @@ vagy
 ### <a name="show-windows-firewall-rule-by-port"></a>A Windows tűzfal szabályának megjelenítése Port alapján
 `get-netfirewallportfilter | where {$_.localport -eq 3389} | foreach {Get-NetFirewallRule -Name $_.InstanceId} | format-list Name,Enabled,Profile,Direction,Action`
 
-vagy
+or
 
 `(new-object -ComObject hnetcfg.fwpolicy2).rules | where {$_.localports -eq 3389 -and $_.direction -eq 1} | format-table Name,Enabled`
 
@@ -361,7 +360,7 @@ vagy
 ### <a name="verify-user-account-is-enabled"></a>Felhasználói fiók ellenőrzése engedélyezve
 `(get-localuser | where {$_.SID -like "S-1-5-21-*-500"}).Enabled`
 
-vagy 
+or 
 
 `(get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'").Disabled`
 
@@ -375,7 +374,7 @@ Ez a példa engedélyezi a beépített helyi rendszergazdai fiókot, amely mindi
 ### <a name="view-user-account-properties"></a>Felhasználói fiók tulajdonságainak megtekintése
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | format-list *`
 
-vagy 
+or 
 
 `get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'" |  format-list Name,Disabled,Status,Lockout,Description,SID`
 

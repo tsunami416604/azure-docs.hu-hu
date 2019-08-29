@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: 0a411e0fe3b89eaaa19f4e18f5e614b03dd1d682
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 90b2a1954d60f1e86ab61afb264483177f4aca3b
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599429"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073937"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric hálózati minták
 Az Azure Service Fabric-fürtöt más Azure hálózati szolgáltatásokkal is integrálhatja. Ebben a cikkben bemutatjuk, hogyan hozhat létre olyan fürtöket, amelyek a következő szolgáltatásokat használják:
@@ -496,7 +496,7 @@ Egy két csomópontot tartalmazó fürtben az egyik csomópont típusa a külső
     "inboundNatPools": [
     ```
 
-5. Adjon hozzá egy `Microsoft.Network/loadBalancers` második erőforrást. A belső terheléselosztási [szakaszban létrehozott](#internallb) belső terheléselosztó hasonlónak tűnik, de az "-int" terheléselosztó változókat használja, és csak az 80-es alkalmazás-portot implementálja. Ez a művelet `inboundNatPools`eltávolítja az RDP-végpontokat a nyilvános terheléselosztó esetében is. Ha az RDP-t a belső terheléselosztó esetében szeretné használni `inboundNatPools` , váltson át a külső terheléselosztó erre a belső Load balancerre:
+5. Adjon hozzá egy `Microsoft.Network/loadBalancers` második erőforrást. A belső terheléselosztási szakaszban létrehozott belső terheléselosztó hasonlónak tűnik [](#internallb) , de az "-int" terheléselosztó változókat használja, és csak az 80-es alkalmazás-portot implementálja. Ez a művelet `inboundNatPools`eltávolítja az RDP-végpontokat a nyilvános terheléselosztó esetében is. Ha az RDP-t a belső terheléselosztó esetében szeretné használni `inboundNatPools` , váltson át a külső terheléselosztó erre a belső Load balancerre:
 
     ```json
             /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" load balancer variables. */
@@ -604,6 +604,10 @@ Egy két csomópontot tartalmazó fürtben az egyik csomópont típusa a külső
     ```
 
 Az üzembe helyezést követően két terheléselosztó látható az erőforráscsoporthoz. Ha megkeresi a terheléselosztó szolgáltatásait, megtekintheti a nyilvános IP-címhez hozzárendelt nyilvános IP-címet és felügyeleti végpontokat (19000-es és 19080-as portok). A belső terheléselosztó számára hozzárendelt statikus belső IP-címet és alkalmazás-végpontot (80-as portot) is láthatja. Mindkét terheléselosztó ugyanazt a virtuálisgép-méretezési készletet használja.
+
+## <a name="notes-for-production-workloads"></a>Az éles számítási feladatokra vonatkozó megjegyzések
+
+A fenti GitHub-sablonok úgy vannak kialakítva, hogy működjenek az alapértelmezett SKU-val az Azure standard Load Balancer (SLB) és az alapszintű SKU használatával. Ez a SLB nem rendelkezik SLA-val, ezért az éles számítási feladatokhoz a szabványos SKU-t kell használni. Erről további információt az [Azure standard Load Balancer áttekintése](/azure/load-balancer/load-balancer-standard-overview)című témakörben talál. A SLB standard SKU-t használó összes Service Fabric fürtnek biztosítania kell, hogy minden csomópont-típushoz olyan szabály legyen, amely engedélyezi a kimenő forgalmat az 443-as porton. Ez a fürt beállításának befejezéséhez szükséges, és az ilyen szabályok nélküli központi telepítések sikertelenek lesznek. A "belső only" terheléselosztó fenti példájában egy további külső terheléselosztó hozzáadása szükséges a sablonhoz egy olyan szabállyal, amely engedélyezi a kimenő forgalmat a 443-es porton.
 
 ## <a name="next-steps"></a>További lépések
 [Fürt létrehozása](service-fabric-cluster-creation-via-arm.md)

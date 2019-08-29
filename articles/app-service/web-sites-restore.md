@@ -10,24 +10,23 @@ ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2289ef81785520b81c7d69a97cb20196015fe802
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 519cf5388b095c7ca6e0ae7d978608f0824dc3a2
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637743"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066518"
 ---
 # <a name="restore-an-app-in-azure"></a>Alkalmazás visszaállítása az Azure-ban
 Ebből a cikkből megtudhatja, hogyan állíthatja [](../app-service/overview.md) vissza az alkalmazást olyan Azure app Serviceban, amelyekről korábban készített biztonsági mentést (lásd: [az alkalmazás biztonsági mentése az Azure-ban](manage-backup.md)). Az alkalmazást visszaállíthatja a csatolt adatbázisaival egy korábbi állapotba, vagy létrehozhat egy új alkalmazást az eredeti alkalmazás biztonsági másolatai alapján. A Azure App Service a következő adatbázisokat támogatja a biztonsági mentéshez és visszaállításhoz:
 - [SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
-- [MySQL in-app](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
+- [beépített mySQL](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
 A biztonsági másolatokból történő visszaállítás a **standard** és a **prémium** szinten futó alkalmazások számára érhető el. Az alkalmazás skálázásával kapcsolatos további információkért lásd: alkalmazás vertikális felskálázása [Az Azure-ban](manage-scale-up.md). A **prémium** szint nagyobb számú napi biztonsági mentést tesz lehetővé, mint a **standard** szint.
 

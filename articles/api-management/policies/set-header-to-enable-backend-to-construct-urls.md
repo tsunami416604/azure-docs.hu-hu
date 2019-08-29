@@ -1,6 +1,6 @@
 ---
-title: Példa az Azure API management házirend - továbbított fejléc hozzáadása |} A Microsoft Docs
-description: Az Azure API management házirend-minta - továbbított fejléc hozzáadása a bejövő kérelem engedélyezéséhez a háttérrendszeri API létrehozásához a megfelelő URL-címek mutatja be.
+title: Azure API Management-házirend minta – továbbított fejléc hozzáadása | Microsoft Docs
+description: Azure API Management-szabályzat – példa – bemutatja, hogyan adhat hozzá továbbított fejlécet a bejövő kérelemben, hogy a háttér-API megfelelő URL-címeket lehessen létrehozni.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,30 +9,29 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: b857d1780e9734ce891ce2c0ce4bedf50dfe13e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e525029ae8eab086d11126a4e18958423e207aa1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859494"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067507"
 ---
-# <a name="add-a-forwarded-header"></a>Egy továbbított fejléc hozzáadása
+# <a name="add-a-forwarded-header"></a>Továbbított fejléc hozzáadása
 
-Ez a cikk bemutatja egy Azure API management házirend minta azt mutatja be, a bejövő kérelem engedélyezéséhez a háttérrendszeri API létrehozásához a megfelelő URL-címek továbbított fejléc hozzáadása. Az ismertetett lépéseket követve beállíthatja, vagy szerkesztheti egy szabályzat-kódot, [Set meg vagy szerkessze a szabályzat](../set-edit-policies.md). További példák megtekintéséhez lásd: [házirend minták](../policy-samples.md).
+Ez a cikk egy Azure API Management házirend-mintát mutat be, amely bemutatja, hogyan adhat hozzá továbbított fejlécet a bejövő kérelemben, hogy a háttérrendszer API-ját megfelelő URL-címeket lehessen létrehozni. A szabályzatok beállításához vagy szerkesztéséhez kövesse a [szabályzat beállítása vagy szerkesztése](../set-edit-policies.md)című témakörben leírt lépéseket. További példákat a következő témakörben talál: [Policy Samples](../policy-samples.md).
 
 ## <a name="code"></a>Kód
 
-Illessze be a kódot a **bejövő** letiltása.
+Illessze be a kódot a **bejövő** blokkba.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Forward gateway hostname to backend for generating correct urls in responses.policy.xml)]
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az APIM-szabályzatokat:
+További információ a APIM-házirendekről:
 
 + [Átalakítási házirendek](../api-management-transformation-policies.md)
-+ [A házirend-minták](../policy-samples.md)
++ [Házirend-minták](../policy-samples.md)

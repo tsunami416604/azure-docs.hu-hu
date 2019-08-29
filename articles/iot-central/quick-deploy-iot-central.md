@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 78fb48d2584e94e5c38a4648f1ae41e566637601
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0d5f04d9c0cc6dcd8a784ae7a816d93e2aab30aa
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875583"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099490"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central-alkalmazás létrehozása
 
@@ -24,7 +24,7 @@ _Szerkesztőként_ az Azure IoT Central használatával határozza meg a Microso
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 
-Lépjen az Azure IoT Central [Alkalmazáskezelő](https://aka.ms/iotcentral) oldalára. Be kell jelentkeznie személyes, munkahelyi vagy iskolai Microsoft-fiókjával.
+Navigáljon az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyére. Be kell jelentkeznie személyes, munkahelyi vagy iskolai Microsoft-fiókjával.
 
 Egy új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassza az **Új alkalmazás** lehetőséget. Ekkor megjelenik az **Alkalmazás létrehozása** oldal.
 
@@ -58,4 +58,4 @@ Egy új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassz
 Ebben a rövid útmutatóban létrehozott egy IoT Central-alkalmazást. A következő javasolt lépés:
 
 > [!div class="nextstepaction"]
-> [Ismerkedés az IoT Centrallal](overview-iot-central-tour.md)
+> [Új eszköz típusának meghatározása az Azure IoT Central alkalmazásban](./tutorial-define-device-type.md)

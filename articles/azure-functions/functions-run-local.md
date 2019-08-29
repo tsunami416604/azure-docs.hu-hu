@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 481e6c5f2271651627577af3d03f9dd4da725146
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 4bad9db6af6d368c943619bc2105f3fba0b7eb7b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949910"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096160"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools használata
 
@@ -315,12 +314,12 @@ func host start
 | **`--cors-credentials`** | A csak a cookie-k és a hitelesítési fejlécek használatának engedélyezése csak a 2. x verzióban. |
 | **`--cors`** | A CORS-eredetek vesszővel tagolt listája, szóközök nélkül. |
 | **`--language-worker`** | A nyelv feldolgozójának konfigurálásához szükséges argumentumok. Csak 2. x verzió. |
-| **`--nodeDebugPort -n`** | A csomópont-hibakereső által használandó port. Alapértelmezett: A Launch. JSON vagy a 5858 érték. Csak 1. x verzió. |
+| **`--nodeDebugPort -n`** | A csomópont-hibakereső által használandó port. Alapértelmezett A Launch. JSON vagy a 5858 érték. Csak 1. x verzió. |
 | **`--password`** | A jelszó vagy egy olyan fájl, amely egy. pfx fájl jelszavát tartalmazza. Csak a `--cert`alkalmazásban használatos. Csak 2. x verzió. |
 | **`--port -p`** | A figyelni kívánt helyi port. Alapértelmezett érték: 7071. |
 | **`--pause-on-error`** | A folyamat bezárása előtt szüneteltesse a további adatokat. Csak akkor használható, ha egy integrált fejlesztői környezetből (IDE) indít alapszintű eszközöket.|
 | **`--script-root --prefix`** | A futtatni vagy telepíteni kívánt Function alkalmazás gyökeréhez tartozó elérési út megadására szolgál. Ez olyan lefordított projektek esetében használatos, amelyek a projektfájlok almappában hozhatók elő. Ha például létrehoz egy C# Class Library-projektet, a Host. JSON, a local. Settings. JSON és a function. JSON fájlok egy olyan *gyökérkönyvtárban* jönnek létre, amelynek elérési `MyProject/bin/Debug/netstandard2.0`útja hasonló. Ebben az esetben állítsa az előtagot `--script-root MyProject/bin/Debug/netstandard2.0`a következőre:. Ez a Function alkalmazás gyökere, ha az Azure-ban fut. |
-| **`--timeout -t`** | A függvények gazdagépének időtúllépése másodpercben. Alapértelmezett: 20 másodperc.|
+| **`--timeout -t`** | A függvények gazdagépének időtúllépése másodpercben. Alapértelmezett 20 másodperc.|
 | **`--useHttps`** | Kötés helyett a következőhöz `http://localhost:{port}`: `https://localhost:{port}` . Alapértelmezés szerint ez a beállítás megbízható tanúsítványt hoz létre a számítógépen.|
 
 A functions-gazdagép indításakor a HTTP-triggert függvények URL-címét adja meg:

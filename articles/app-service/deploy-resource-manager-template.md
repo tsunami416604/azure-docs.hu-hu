@@ -1,65 +1,64 @@
 ---
-title: Útmutató a sablonok – az Azure App Service-alkalmazások telepítése |} A Microsoft Docs
-description: Javaslatok webalkalmazások telepítése Azure Resource Manager-sablonok létrehozására.
+title: Útmutatás az alkalmazások sablonokkal való üzembe helyezéséhez – Azure App Service | Microsoft Docs
+description: Javaslatok a webalkalmazások üzembe helyezéséhez Azure Resource Manager sablonok létrehozásához.
 services: app-service
 documentationcenter: app-service
 author: tfitzmac
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: d8fa8b216ca6044adefe1398b58f5d14630540e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 196aeb69a1948a44afb8170fa5f48d42b978854d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66137153"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070460"
 ---
-# <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Útmutatás a webes alkalmazások üzembe helyezése Azure Resource Manager-sablonok használatával
+# <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Útmutató webalkalmazások üzembe helyezéséhez Azure Resource Manager sablonok használatával
 
-Ez a cikk az Azure App Service-megoldások üzembe helyezése Azure Resource Manager-sablonok létrehozására vonatkozó javaslatokat nyújt. Ezek a javaslatok segíthetnek a gyakori problémák elkerülése érdekében.
+Ez a cikk ajánlásokat tartalmaz Azure Resource Manager sablonok létrehozásához Azure App Service megoldások telepítéséhez. Ezek a javaslatok segíthetnek a gyakori problémák elkerülésében.
 
-## <a name="define-dependencies"></a>Függőségek megadása
+## <a name="define-dependencies"></a>Függőségek definiálása
 
-A web apps függőségek meghatározása egy adott webalkalmazáson belül az erőforrásokat együttműködését ismeretét igényli. Helytelen megrendelés függőségek ad meg, ha, telepítési hibák vezethet, vagy hozzon létre, amely a központi telepítés megáll versenyhelyzet.
+A Web Apps függőségeinek definiálásához meg kell ismernie, hogyan hatnak a webalkalmazások erőforrásai. Ha nem megfelelő sorrendben adta meg a függőségeket, a telepítési hibák merülhetnek fel, vagy létrehozhat egy olyan versenyhelyzet-feltételt, amely megtartja a telepítést.
 
 > [!WARNING]
-> Ha egy MSDeploy webhelybővítmény adja meg a sablonban, be kell konfigurációs erőforrásokat, az MSDeploy erőforrástól függ-e. Konfigurációs módosítások miatt a helyet, hogy indítsa újra a aszinkron módon történik. Azáltal, hogy a konfigurációs erőforrásokat MSDeploy függ, akkor győződjön meg arról, hogy MSDeploy befejezését, mielőtt a hely újraindul. A függőségek nélkül az a hely MSDeploy központi telepítési folyamata során újraindulhat. Egy példa a sablonhoz, lásd: [WordPress webalkalmazás üzembe helyezése függőségi sablon](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json).
+> Ha a sablonban MSDeploy-bővítményt is tartalmaz, a MSDeploy erőforrástól függőként kell beállítania a konfigurációs erőforrásokat. A konfigurációs módosítások a hely aszinkron újraindítását okozzák. Azáltal, hogy a konfigurációs erőforrások MSDeploy függenek, gondoskodni kell arról, hogy a MSDeploy a hely újraindítása előtt véget ér. Ezen függőségek nélkül a hely a MSDeploy üzembe helyezési folyamata során újraindulhat. Példa sablonra: WordPress- [sablon a web Deploy](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json)-függőséggel.
 
-Az alábbi képen látható a különféle App Service-erőforrások esetében a függőségi sorrend:
+A következő képen a különböző App Service erőforrások függőségi sorrendje látható:
 
-![Webes alkalmazás függőségei](media/web-sites-rm-template-guidance/web-dependencies.png)
+![Webalkalmazás függőségei](media/web-sites-rm-template-guidance/web-dependencies.png)
 
-A következő sorrendben erőforrások központi telepítése:
+Az erőforrásokat a következő sorrendben helyezheti üzembe:
 
-**1. szint**
-* App Service-csomag.
-* Bármely egyéb kapcsolódó erőforrásokat, például adatbázisok és a storage-fiókok.
+**1. szintű**
+* App Service terv.
+* Bármilyen más kapcsolódó erőforrás, például adatbázisok vagy Storage-fiókok.
 
 **2. szintű**
-* Web app – az App Service-csomag függ.
-* Az Azure Application Insights-példányt, amely a kiszolgálófarm--célozza az App Service-csomag függ.
+* Webalkalmazás – a App Service tervtől függ.
+* Az Azure Application Insights-példány, amely a kiszolgálófarmot célozza, a App Service tervtől függ.
 
-**3. szint**
-* Verziókövetés – a web app függ.
-* MSDeploy-webhelybővítményt – a web app függ.
-* Application Insights-példány a kiszolgálófarm--célzó attól függ, hogy a webalkalmazás.
+**3. szintű**
+* Verziókövetés – a webalkalmazástól függ.
+* MSDeploy – a webalkalmazástól függ.
+* A kiszolgálófarmot tároló Application Insights példány – a webalkalmazástól függ.
 
-**4. réteg**
-* App Service-tanúsítvány – függ, hogy a verziókövetés, vagy MSDeploy, ha jelen. Ellenkező esetben a webes alkalmazás függ.
-* Konfigurációs beállítások (kapcsolati karakterláncok, web.config értékek, Alkalmazásbeállítások) – függ verziókövetés vagy MSDeploy amennyiben vagy telepítve. Ellenkező esetben a webes alkalmazás függ.
+**4. szintű**
+* App Service tanúsítvány – függ a forrás vezérlőelemtől vagy a MSDeploy, ha van ilyen. Ellenkező esetben a webalkalmazástól függ.
+* Konfigurációs beállítások (kapcsolati karakterláncok, web. config értékek, Alkalmazásbeállítások) – függ a forrás vezérlőelemtől vagy a MSDeploy, ha van ilyen. Ellenkező esetben a webalkalmazástól függ.
 
-**5. szint**
-* Gazdagép neve kötések--függ, hogy a tanúsítványt, ha van ilyen. Ellenkező esetben attól függ, a magasabb szintű erőforrás.
-* Webhelybővítményekkel – ha van ilyen konfigurációs beállításoktól függ. Ellenkező esetben attól függ, a magasabb szintű erőforrás.
+**5. szintű**
+* Állomásnév-kötések – a tanúsítványtól függ, ha van. Ellenkező esetben egy magasabb szintű erőforrástól függ.
+* Hely bővítményei – a konfigurációs beállításoktól függ, ha vannak ilyenek. Ellenkező esetben egy magasabb szintű erőforrástól függ.
 
-A megoldás általában csak néhány, az erőforrások és rétegek tartalmaz. Hiányzó szinten képezze le az eggyel magasabb szint alacsonyabb erőforrásokat.
+A megoldás általában csak néhány ilyen erőforrást és szintet tartalmaz. A hiányzó rétegek esetében az alacsonyabb erőforrásokat a következő magasabb rétegre kell leképezni.
 
-Az alábbi példa bemutatja egy sablon részét. A konfiguráció a kapcsolati karakterlánc értékét az MSDeploy bővítmény függ. Az MSDeploy bővítmény attól függ, a webalkalmazáshoz és adatbázishoz. 
+A következő példa egy sablon részét mutatja be. A kapcsolatok karakterlánc-konfigurációjának értéke a MSDeploy-bővítménytől függ. A MSDeploy bővítmény a webalkalmazástól és az adatbázistól függ. 
 
 ```json
 {
@@ -88,19 +87,19 @@ Az alábbi példa bemutatja egy sablon részét. A konfiguráció a kapcsolati k
 }
 ```
 
-A fenti kódot használó alkalmazást kész minta: [sablon: Egyszerű Umbraco-webalkalmazás összeállítása](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
+A fenti kódot használó, [használatra kész minta: sablon: Hozzon létre egy egyszerű árnyék](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple)-webalkalmazást.
 
 ## <a name="find-information-about-msdeploy-errors"></a>MSDeploy-hibákkal kapcsolatos információk keresése
 
-Ha a Resource Manager-sablon MSDeploy használ, a központi telepítési hibaüzenetek nehezen érthető lehet. További információ a sikertelen üzembe helyezés után próbálja meg az alábbi lépéseket:
+Ha a Resource Manager-sablon MSDeploy használ, a telepítési hibaüzenetek nehezen érthetők. Ha további információt szeretne kapni egy sikertelen telepítés után, próbálkozzon a következő lépésekkel:
 
-1. Nyissa meg a hely [Kudu konzol](https://github.com/projectkudu/kudu/wiki/Kudu-console).
-2. Keresse meg a D:\home\LogFiles\SiteExtensions\MSDeploy mappában.
-3. Keresse meg a appManagerStatus.xml és appManagerLog.xml fájlokat. Az első fájl állapota naplózza. A második fájl a hibával kapcsolatos információkat naplózza. Ha a hiba nem egyértelmű, hogy, megadhatja azt, még a fórum a Súgó kérése során.
+1. Nyissa meg a hely [kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console)-konzolját.
+2. Tallózással keresse meg a mappát a következő címen: D:\home\LogFiles\SiteExtensions\MSDeploy.
+3. Keresse meg a appManagerStatus. XML és a appManagerLog. xml fájlt. Az első fájl naplózza az állapotot. A második fájl a hibával kapcsolatos információkat naplózza. Ha a hiba nem egyértelmű, akkor azt is megteheti, ha segítséget kér a fórumon.
 
-## <a name="choose-a-unique-web-app-name"></a>Válassza ki a webalkalmazás egyedi neve
+## <a name="choose-a-unique-web-app-name"></a>Egyedi webalkalmazás nevének kiválasztása
 
-A név a webalkalmazás globálisan egyedinek kell lennie. Használhat egy elnevezési konvenciója, valószínű, hogy egyedi legyen, vagy használhatja a [uniqueString függvény](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) , amelyek segítik a létrehozni egy egyedi nevet.
+A webalkalmazás nevének globálisan egyedinek kell lennie. Használhat olyan elnevezési konvenciót, amely valószínűleg egyedi, vagy használhatja a [uniqueString függvényt](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) egyedi név létrehozásához.
 
 ```json
 {
@@ -111,13 +110,13 @@ A név a webalkalmazás globálisan egyedinek kell lennie. Használhat egy elnev
 }
 ```
 
-## <a name="deploy-web-app-certificate-from-key-vault"></a>Webalkalmazás-tanúsítvány a Key Vault üzembe helyezése
+## <a name="deploy-web-app-certificate-from-key-vault"></a>Webalkalmazás-tanúsítvány üzembe helyezése Key Vault
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ha a sablon tartalmaz egy [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) , amely SSL-kötés és a tanúsítvány a Key Vaultban tárolt, meg kell győződnie arról, hogy az App Service identity is hozzáférjen a tanúsítványhoz.
+Ha a sablon tartalmaz egy [Microsoft. Web/Certificates-](/azure/templates/microsoft.web/certificates) erőforrást az SSL-kötéshez, és a tanúsítványt egy Key Vault tárolja, meg kell győződnie arról, hogy a app Service identitás hozzáfér a tanúsítványhoz.
 
-A globális Azure-ban, az App Service-ben egyszerű szolgáltatás azonosítója rendelkezik **abfa0a7c-a6b6-4736-8310-5855508787cd**. A Key Vault hozzáférési jogot az App Service szolgáltatás egyszerű, használja:
+A globális Azure-ban a App Service egyszerű szolgáltatásnév a **ABFA0A7C-A6B6-4736-8310-5855508787CD**azonosítója. Ahhoz, hogy hozzáférést biztosítson Key Vault számára a App Service egyszerű szolgáltatásnév számára, használja a következőt:
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy `
@@ -127,17 +126,17 @@ Set-AzKeyVaultAccessPolicy `
   -PermissionsToCertificates get
 ```
 
-Az Azure Government, az App Service-ben egyszerű szolgáltatás azonosítója rendelkezik **6a02c803-dafd-4136-b4c3-5a6f318b4714**. Ez az előző példában használja.
+Azure Government az App Service egyszerű szolgáltatás azonosítója a **6a02c803-dafd-4136-b4c3-5a6f318b4714**. Használja ezt az azonosítót az előző példában.
 
-Válassza ki a Key Vault **tanúsítványok** és **létrehozás/importálás** feltölteni a tanúsítványt.
+A tanúsítvány feltöltéséhez a Key Vault válassza a **tanúsítványok** , majd a **Létrehozás/importálás** lehetőséget.
 
 ![Tanúsítvány importálása](media/web-sites-rm-template-guidance/import-certificate.png)
 
-A sablonban, adja meg a tanúsítvány nevét a `keyVaultSecretName`.
+A sablonban adja meg a tanúsítvány `keyVaultSecretName`nevét.
 
-Egy példa a sablonhoz, lásd: [üzembe helyezése a webalkalmazásban tanúsítványt a Key Vault titkos kulcsából, és SSL-kötés létrehozásához használhatja](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault).
+Példaként lásd: webalkalmazás [-tanúsítvány üzembe helyezése Key Vault titkos kulcsból, és az SSL-kötés létrehozásához használja](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault).
 
 ## <a name="next-steps"></a>További lépések
 
-* Webalkalmazások sablonnal oktatóanyagért lásd: [kiépítése és kiszámítható módon az Azure mikroszolgáltatások üzembe helyezéséhez](deploy-complex-application-predictably.md).
-* JSON-szintaxist és a sablonok erőforrástípusok tulajdonságaival kapcsolatos tudnivalókért lásd: [Azure Resource Manager sablonreferenciája](/azure/templates/).
+* A webalkalmazások sablonnal történő üzembe helyezésével kapcsolatos oktatóanyagért tekintse meg a következő témakört: az [Azure-ban előre jelzett szolgáltatások üzembe helyezése és telepítése](deploy-complex-application-predictably.md).
+* A sablonokban található erőforrástípusok JSON-szintaxisával és tulajdonságaival kapcsolatos információkért lásd: [Azure Resource Manager sablon referenciája](/azure/templates/).

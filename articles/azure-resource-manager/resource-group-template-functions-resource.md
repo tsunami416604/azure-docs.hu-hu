@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2cd37405176eefa8f4445942b9fbf1afc2a7404a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: eddd99be9d4a30e3e71c806a3f98c6be6800e8fb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650417"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095753"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Erőforrás-funkciók az Azure Resource Manager-sablonok
 
@@ -188,7 +188,7 @@ Az erőforrás neve használatával adja meg az erőforrás vagy a [resourceId f
 
 Ha feltételesen telepített erőforrásban használ egy **List** függvényt, akkor a függvény akkor is kiértékelésre kerül, ha az erőforrás nincs telepítve. Hibaüzenet jelenik meg, ha a **lista** függvény olyan erőforrásra hivatkozik, amely nem létezik. Az **IF** függvény használatával győződjön meg arról, hogy a függvény csak az erőforrás telepítésekor lesz kiértékelve. Tekintse [](resource-group-template-functions-logical.md#if) meg a if függvényt egy olyan minta sablon esetében, amely a IF és a listát feltételesen telepített erőforrást használja.
 
-### <a name="example"></a>Példa
+### <a name="list-example"></a>Példa a listára
 
 A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) mutatja be az elsődleges és másodlagos kulcsok vissza a kimeneti szakasz egy storage-fiókból. Emellett a tárfiók SAS-jogkivonatát adja vissza. 
 
@@ -284,7 +284,7 @@ Minden támogatott típus a következő formátumban adja vissza:
 
 A visszaadott értékekhez tömb rendezése nem garantált.
 
-### <a name="example"></a>Példa
+### <a name="providers-example"></a>Szolgáltatók – példa
 
 A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) bemutatja, hogyan használja a szolgáltató függvényt:
 
@@ -433,7 +433,7 @@ Példa:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt``Microsoft.Compute/virtualMachines/extensions/myVM/myExt` helyes, helytelen
 
-### <a name="example"></a>Példa
+### <a name="reference-example"></a>Példa hivatkozásra
 
 A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) üzembe helyez egy erőforrást, és adott erőforrásra hivatkozik.
 
@@ -600,7 +600,7 @@ A resourceGroup függvény egyik gyakori felhasználási hozhat létre erőforr�
 
 A resourceGroup függvény használatával címkéket is alkalmazhat az erőforráscsoporthoz egy erőforráshoz. További információ: [címkék alkalmazása az erőforráscsoporthoz](resource-group-using-tags.md#apply-tags-from-resource-group).
 
-### <a name="example"></a>Példa
+### <a name="resource-group-example"></a>Erőforráscsoport – példa
 
 A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) az erőforráscsoport tulajdonságait adja vissza.
 
@@ -737,7 +737,7 @@ Gyakran kell használatakor ez a függvény egy storage-fiók vagy a virtuális 
 }
 ```
 
-### <a name="example"></a>Példa
+### <a name="resource-id-example"></a>Példa erőforrás-AZONOSÍTÓra
 
 A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) adja vissza az erőforráscsoportot egy storage-fiók erőforrás-azonosító:
 
@@ -795,7 +795,7 @@ A függvény a következő formátumban adja vissza:
 }
 ```
 
-### <a name="example"></a>Példa
+### <a name="subscription-example"></a>Előfizetés – példa
 
 A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) mutat be az előfizetés függvény meghívta a kimeneti szakasz. 
 

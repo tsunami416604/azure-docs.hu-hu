@@ -1,47 +1,47 @@
 ---
-title: Ismerje meg, hogyan konfigurálhatja és kezelheti az Azure Cosmos DB élettartama
-description: Ismerje meg, hogyan konfigurálhatja és kezelheti az Azure Cosmos DB élettartama
+title: Megtudhatja, hogyan konfigurálhatja és kezelheti az élettartamot Azure Cosmos DB
+description: Megtudhatja, hogyan konfigurálhatja és kezelheti az élettartamot Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 618e7e19b20f361aa0a8c668e9621a29db43772d
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: bb67e6e4fbef51a0fbd26efd2618be8cc9896beb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797756"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092987"
 ---
-# <a name="configure-time-to-live-in-azure-cosmos-db"></a>Az Azure Cosmos DB élettartam konfigurálása
+# <a name="configure-time-to-live-in-azure-cosmos-db"></a>Állítsa be az élettartamot Azure Cosmos DB
 
-Az Azure Cosmos DB élettartamot (TTL) konfigurálása a tároló szintjén is választja, vagy felülírhatja, az elemek szintjén a tároló beállítását követően. Élettartam egy tárolót az Azure portal vagy a megfelelő nyelvfüggő SDK-k használatával konfigurálható. Elem szintű TTL felülbírálások az SDK-k használatával konfigurálható.
+A Azure Cosmos DBban beállíthatja, hogy az élettartam (TTL) a tároló szintjén legyen beállítva, vagy egy elem szintjén felülbírálhatja a tároló beállítása után. A tárolók ÉLETTARTAMát Azure Portal vagy a nyelvfüggő SDK-k használatával konfigurálhatja. Az elemszintű TTL-felülbírálások az SDK-k használatával konfigurálhatók.
 
-## <a name="enable-time-to-live-on-a-container-using-azure-portal"></a>Az Azure portal használatával egy tárolón élettartam engedélyezése
+## <a name="enable-time-to-live-on-a-container-using-azure-portal"></a>Az Azure Portal-t használó tárolón való élő idő engedélyezése
 
-Használja az alábbi lépéseket egy tárolón lejárat nélkül élettartam engedélyezéséhez. Ezzel a TTL bírálható felül az elemek szintjén való engedélyezéséhez. Az élettartam másodpercig egy nem nulla érték megadásával is beállíthatja.
+A következő lépésekkel engedélyezheti, hogy a lejárati idő nélkül egy tárolón lehessen élni. Ezzel a beállítással engedélyezheti, hogy az élettartam felülbírálható legyen az elemszintű szinten. Az ÉLETTARTAMot úgy is beállíthatja, hogy nem nulla értéket adjon meg másodpercben.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Hozzon létre egy új Azure Cosmos-fiókot, vagy válasszon ki egy meglévő fiókot.
 
-3. Nyissa meg a **adatkezelő** ablaktáblán.
+3. Nyissa meg a **adatkezelő** ablaktáblát.
 
-4. Jelöljön ki egy meglévő tárolót, bontsa ki azt, és módosítsa a következő értékeket:
+4. Válasszon ki egy meglévő tárolót, bontsa ki, majd módosítsa a következő értékeket:
 
-   * Nyissa meg a **méretezés és beállítások** ablak.
-   * A **beállítás** megkereséséhez **élettartama**.
-   * Válassza ki **bekapcsolva (alapértelmezett) nincs** , vagy válasszon **a** és a TTL értékének beállítása
+   * Nyissa meg a **méretezési & beállítások** ablakát.
+   * A keresés, **élettartam** **beállítása** területen.
+   * Válassza **a be (nincs alapértelmezett)** lehetőséget, vagy válassza **a** be lehetőséget, és állítsa be a TTL értéket
    * Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
-   ![Az Azure Portalon élettartam konfigurálása](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
+   ![Állítsa be az élettartamot Azure Portal](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
 
 
-- Amikor DefaultTimeToLive null értékű majd az élő idő ki van kapcsolva
-- Ha DefaultTimeToLive-e a -1, majd az idő élő beállítás be van kapcsolva (alapértelmezett)
-- Ha DefaultTimeToLive bármely más Int érték (0) kivételével az élő beállítás van
+- Ha a DefaultTimeToLive értéke null, akkor az élettartama ki van kapcsolva
+- Ha a DefaultTimeToLive értéke-1, akkor az élettartam beállítás értéke (nincs alapértelmezett)
+- Ha a DefaultTimeToLive bármely más int értékkel rendelkezik (kivéve a 0 értéket), az élettartam beállítás értéke
 
-## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Egy tároló, SDK-val élettartam engedélyezése
+## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Az SDK-t használó tárolón való élő idő engedélyezése
 
 ### <a id="dotnet-enable-noexpiry"></a>.NET SDK
 
@@ -58,11 +58,11 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
     new RequestOptions { OfferThroughput = 20000 });
 ```
 
-## <a name="set-time-to-live-on-a-container-using-sdk"></a>Live SDK-val egy tárolón idő beállítása
+## <a name="set-time-to-live-on-a-container-using-sdk"></a>Időtartam beállítása egy tárolón az SDK használatával
 
 ### <a id="dotnet-enable-withexpiry"></a>.NET SDK
 
-A tároló élő idejének beállítása, meg kell adnia a nullától eltérő pozitív szám, amely azt jelzi, hogy az adott időszakban másodpercek alatt. A konfigurált TTL-érték alapján, az összes elem a tároló után az utolsó elem időbélyegző módosításának `_ts` törlődnek.
+Ha meg szeretné adni az időt egy tárolón való működéshez, meg kell adnia egy nullától eltérő pozitív számot, amely a másodpercben megadott időtartamot jelzi. A beállított TTL-érték alapján a tárolóban lévő összes elem törlődik az elem `_ts` utolsó módosításának időbélyegzője után.
 
 ```csharp
 // Create a new collection with TTL enabled and a 90 day expiration
@@ -91,34 +91,34 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 }
 ```
 
-## <a name="set-time-to-live-on-an-item"></a>Az elem élettartam beállítása
+## <a name="set-time-to-live-on-an-item"></a>Élettartam beállítása egy elemen
 
-Egy alapértelmezett élettartama egy tárolón beállításnál mellett beállíthatja egy elem élettartamot. Az elemek szintjén élettartam beállítás felülbírálja az alapértelmezett élettartam az elem a tárolóban.
+A tárolók alapértelmezett élettartamának beállítása mellett beállíthatja, hogy az egyes elemek Mikor éljünk. Az elemszintű élettartam beállítása felülbírálja az adott tárolóban lévő elemek alapértelmezett ÉLETTARTAMát.
 
-* Az élettartam beállítani egy elem, meg kell adnia egy nullától eltérő pozitív szám, amely megadja, hogy az az időtartam másodpercben, az elem lejár, miután az utolsó elem időbélyegző módosításának `_ts`.
+* Egy elem ÉLETTARTAMának beállításához meg kell adnia egy nullától eltérő pozitív számot, amely azt jelzi, hogy a másodpercben az elem utolsó módosításának időbélyegzője `_ts`után hány pontot kell lejárni.
 
-* Ha az elem nem rendelkezik egy TTL-mezőt, majd alapértelmezés szerint az Élettartamon, állítsa be a tárolóba érvényesek az elemet.
+* Ha az elem nem rendelkezik TTL mezővel, akkor alapértelmezés szerint a tárolóra beállított TTL-érték lesz érvényes az elemre.
 
-* Ha TTL le van tiltva, a tároló szintjén, a cikk a TTL mező figyelmen kívül mindaddig, amíg az élettartam (TTL) újra engedélyezni a tárolón.
+* Ha az élettartam le van tiltva a tároló szintjén, a rendszer figyelmen kívül hagyja az elem TTL mezőjét, amíg az élettartam újra engedélyezve nem lesz a tárolón.
 
 ### <a id="portal-set-ttl-item"></a>Azure Portal
 
-Használja az alábbi lépéseket egy elemet az élettartam engedélyezése:
+A következő lépésekkel engedélyezheti az élettartamot egy elemen:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Hozzon létre egy új Azure Cosmos-fiókot, vagy válasszon ki egy meglévő fiókot.
 
-3. Nyissa meg a **adatkezelő** ablaktáblán.
+3. Nyissa meg a **adatkezelő** ablaktáblát.
 
-4. Jelöljön ki egy meglévő tárolót, bontsa ki azt, és módosítsa a következő értékeket:
+4. Válasszon ki egy meglévő tárolót, bontsa ki, majd módosítsa a következő értékeket:
 
-   * Nyissa meg a **méretezés és beállítások** ablak.
-   * A **beállítás** megkereséséhez **élettartama**.
-   * Válassza ki **bekapcsolva (alapértelmezett) nincs** , vagy válasszon **a** és a TTL értékének beállítása. 
+   * Nyissa meg a **méretezési & beállítások** ablakát.
+   * A keresés, **élettartam** **beállítása** területen.
+   * Válassza **a be lehetőséget (nincs alapértelmezett)** , vagy válassza **a** be lehetőséget, és állítsa be a TTL értéket. 
    * Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
-5. Ezután keresse meg az elem, amelynek meg szeretné idejét élő, adja hozzá a `ttl` tulajdonságot, és válassza ki **frissítés**. 
+5. Ezután Navigáljon arra az elemre, amelyre az élettartamot szeretné beállítani, adja hozzá `ttl` a tulajdonságot, és válassza a **frissítés**lehetőséget. 
 
    ```json
    {
@@ -169,9 +169,9 @@ const itemDefinition = {
 ```
 
 
-## <a name="reset-time-to-live"></a>Élettartam alaphelyzetbe állítása
+## <a name="reset-time-to-live"></a>Élettartam visszaállítása
 
-Alaphelyzetbe állíthatja a írási végrehajtásával egy elemet az élő vagy az elemre a frissítés ideje. Az írási vagy frissítési műveletben fogja beállítani a `_ts` az aktuális idő lejár a cikk az élettartam újra megkezdődik. Ha szeretné módosítani az élettartam egy elem, frissítheti a mező, ugyanúgy, mint bármely más mező frissíti.
+Az elemre vonatkozó írási vagy frissítési művelet végrehajtásával visszaállíthatja az élettartamot egy adott elemen. Az írási vagy frissítési művelet az aktuális időpontot állítja be `_ts` , a lejárati idő élettartama pedig újra elindul. Ha módosítani szeretné egy elem ÉLETTARTAMát, akkor a mezőt ugyanúgy frissítheti, mint bármely más mezőt.
 
 ### <a id="dotnet-extend-ttl-item"></a>.NET SDK
 
@@ -187,9 +187,9 @@ readDocument.ttl = 60 * 30 * 30; // update time to live
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
-## <a name="turn-off-time-to-live"></a>Kapcsolja ki az élettartam
+## <a name="turn-off-time-to-live"></a>Az élettartam kikapcsolása
 
-Ha élettartam elem lett beállítva, és már nem szeretné, hogy a cikk hamarosan lejár, majd is lekérni az elemet, távolítsa el az élettartam mezőt, és cserélje le a cikk a kiszolgálón. Ha a TTL mező eltávolítják az elemet, az alapértelmezett TTL-érték a tárolóhoz rendelt alkalmazva az elemet. Állítsa be az élettartam értéke-1, megakadályozhatja, hogy lejárjanak egy elemet, és az élettartam értéke nem örököl a tárolót.
+Ha az élettartam értéke be van állítva egy elemre, és már nem szeretné, hogy az elem lejárjon, akkor lekérheti az adott tételt, eltávolíthatja a TTL mezőt, és lecserélheti a kiszolgálón lévő elemre. Ha a TTL mező el lett távolítva az elemből, a rendszer a tárolóhoz rendelt alapértelmezett TTL-értéket alkalmazza az elemre. Állítsa a TTL értéket a-1 értékre, hogy megakadályozza egy elem lejáratát, és nem örökli a TTL értékét a tárolóból.
 
 ### <a id="dotnet-turn-off-ttl-item"></a>.NET SDK
 
@@ -208,7 +208,7 @@ response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="disable-time-to-live"></a>Élettartam letiltása
 
-A tároló élő, és állítsa le a háttérben futó folyamatot lejárt elemek keresése letiltása a `DefaultTimeToLive` a tárolón a tulajdonság azt törölni kell. Ez a tulajdonság törlése nem azonos a -1 értékre állítaná. -1 értéket állítsa be, amikor a tároló új elemek megtalálhatók lesznek tartja, azonban felülbírálhatja ezt az értéket az adott elem a tárolóban. A TTL tulajdonsága a tárolóból való eltávolításakor az elemek nem jár, még akkor is, ha vannak, akik explicit módon bírálták felül az előző alapértelmezett TTL-érték.
+Ha le szeretné tiltani az időt egy tárolóban, és leállítja a háttérben futó folyamatot a lejárt elemek `DefaultTimeToLive` ellenőrzésével, a tárolóban lévő tulajdonságot törölni kell. A tulajdonság törlése eltér az-1 értéktől. Ha a-1 értékre állítja, a tárolóhoz hozzáadott új elemek örökre életbe kerülnek, de felülbírálhatja ezt az értéket a tároló adott elemein. Ha eltávolítja a TTL tulajdonságot a tárolóból, az elemek soha nem járnak le, még akkor sem, ha az előző alapértelmezett TTL-értéket explicit módon felülbírálták.
 
 ### <a id="dotnet-disable-ttl"></a>.NET SDK
 
@@ -222,6 +222,6 @@ await client.ReplaceDocumentCollectionAsync(collection);
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a következő cikkben élettartam:
+További információ a következő cikkben található idő megadásáról:
 
-* [élettartam](time-to-live.md)
+* [Élettartam](time-to-live.md)

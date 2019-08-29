@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 7ab921d889c48ccd8be469328e2690cb1cb2d8b2
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 7dba929101a928f0bbcb8553d6dd3b3043d74853
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050030"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114852"
 ---
 # <a name="install-and-run-face-containers"></a>Face containers telepítése és futtatása
 
@@ -150,7 +150,6 @@ Ezek a beállítások kapcsolatos további információkért lásd: [tárolók k
 
 Ebben a cikkben megtanulta a fogalmakat és a munkafolyamatot Face API tárolók letöltéséhez, telepítéséhez és futtatásához. Összegezve:
 
-* A Face API három Linux-tárolót biztosít a Docker számára, amelyek kulcsfontosságú kifejezést biztosítanak a kinyeréshez, a nyelvfelismerés és a hangulat elemzéséhez.
 * A rendszer letölti a tároló lemezképeit a Azure Container Registryról.
 * Tárolórendszerképek futtatása a Docker.
 * Az REST API vagy az SDK használatával meghívhatja a műveleteket Face API tárolókban a tároló gazdagép URI azonosítójának megadásával.

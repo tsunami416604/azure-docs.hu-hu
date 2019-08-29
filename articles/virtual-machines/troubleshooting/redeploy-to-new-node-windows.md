@@ -1,6 +1,6 @@
 ---
-title: Ismételt üzembe helyezése az Azure Windows virtual machines |} A Microsoft Docs
-description: Hogyan lehet RDP-kapcsolatok problémáinak megoldásához az Azure-beli Windows virtuális gépek ismételt üzembe.
+title: Windows rendszerű virtuális gépek újbóli üzembe helyezése az Azure-ban | Microsoft Docs
+description: Windows rendszerű virtuális gépek újbóli üzembe helyezése az Azure-ban az RDP-kapcsolatok problémáinak enyhítése érdekében.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: genlin
@@ -8,30 +8,29 @@ manager: gwallace
 tags: azure-resource-manager,top-support-issue
 ms.assetid: 0ee456ee-4595-4a14-8916-72c9110fc8bd
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 48b10b6fd854cc6da1f2ea2d48852d162e995946
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 12488033448c7798690b3d6d68782baf2f76adf9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710256"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090300"
 ---
-# <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Új Azure csomópontra Windows virtuális gép ismételt üzembe helyezése
-Ha Ön rendelkezik lett nehézségekkel hibaelhárítás a távoli asztali (RDP) kapcsolatot vagy alkalmazáshoz való hozzáférés Windows-alapú Azure virtuális gépek (VM), a virtuális gép újbóli segítségére lehetnek. Egy virtuális Gépet, újbóli telepítése során a virtuális Gépet leállítja az Azure a virtuális gép áthelyezése egy másik csomópontra az Azure infrastruktúráján belül, és ezután kapcsolja be újra, a konfigurációs beállításokat és a kapcsolódó erőforrások megőrzése. Ez a cikk bemutatja, hogyan újratelepíteni a virtuális gép az Azure PowerShell vagy az Azure portal használatával.
+# <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Windows rendszerű virtuális gép újratelepítése új Azure-csomópontra
+Ha problémába ütközik a Windows-alapú Azure-beli virtuális géphez (VM) való Távoli asztal-(RDP-) kapcsolat vagy alkalmazás-hozzáférés hibaelhárítása során, akkor a virtuális gép újbóli üzembe helyezése segíthet. Ha újratelepít egy virtuális gépet, az Azure leállítja a virtuális gépet, áthelyezi a virtuális gépet az Azure-infrastruktúra egy új csomópontjára, majd újra bekapcsolja, megtartva az összes konfigurációs beállítást és a kapcsolódó erőforrásokat. Ez a cikk bemutatja, hogyan telepítheti újra a virtuális gépeket Azure PowerShell vagy a Azure Portal használatával.
 
 > [!NOTE]
-> Miután egy virtuális gép újbóli telepítése, az ideiglenes lemez elvesztését, és dinamikus, virtuális hálózati adapterhez társított IP-címek frissülnek. 
+> A virtuális gép újbóli üzembe helyezése után az ideiglenes lemez elvész, és a rendszer frissíti a virtuális hálózati adapterhez társított dinamikus IP-címeket. 
 
 
 ## <a name="using-azure-powershell"></a>Az Azure PowerShell használata
-Ellenőrizze, hogy az Azure PowerShell legújabb verzióját 1.x telepítve van a gépén. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
+Győződjön meg arról, hogy a legújabb Azure PowerShell 1. x telepítve van a gépen. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
 
-Az alábbi példa telepíti a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`:
+A következő példa telepíti a nevű virtuális gépet `myVM` a nevű `myResourceGroup`erőforráscsoport-csoportba:
 
 ```powershell
 Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -40,5 +39,5 @@ Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 ## <a name="next-steps"></a>További lépések
-Ha a virtuális Géphez való csatlakozással kapcsolatos problémákat tapasztal, találhat segítséget [RDP-kapcsolatok hibaelhárításának](troubleshoot-rdp-connection.md) vagy [hibaelhárítási lépések az RDP részletes](detailed-troubleshoot-rdp.md). Ha a virtuális Gépen futó alkalmazásokhoz nem elérhető, is olvashatja [kapcsolatos hibák elhárítása alkalmazás](../windows/troubleshoot-app-connection.md).
+Ha problémába ütközik a virtuális géphez való csatlakozással kapcsolatban, az [RDP-kapcsolatok hibaelhárításával](troubleshoot-rdp-connection.md) és a [részletes RDP](detailed-troubleshoot-rdp.md)-hibaelhárítási lépésekkel kapcsolatos súgóban talál. Ha nem fér hozzá a virtuális gépen futó alkalmazáshoz, az [alkalmazások hibaelhárításával kapcsolatos problémákat](../windows/troubleshoot-app-connection.md)is elolvashatja.
 

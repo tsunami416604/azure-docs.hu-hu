@@ -1,7 +1,7 @@
 ---
-title: Biztonsági áttekintés – az Azure App Service |} A Microsoft Docs
-description: Ismerje meg hogyan App Service segítségével biztonságos alkalmazását, és hogyan lehet további zárolását az alkalmazás a fenyegetésekkel szemben.
-keywords: az Azure app service, webalkalmazás, mobilalkalmazás, api-alkalmazás, függvényalkalmazás, biztonság, biztonságos, biztonságos, megfelelőség, a megfelelő, a tanúsítványt, a tanúsítványok, https, ftps, tls, a megbízhatóság, a titkosítás, titkosítás, titkosított, ip-korlátozást, hitelesítés, engedélyezés, authn, autho, msi, felügyeltszolgáltatás-identitás, felügyelt identitás, titkos kulcsok, titkos kulcsot, javítás, patch, javítások, verzió, elkülönítés, hálózatelkülönítés, ddos, mitm
+title: Biztonsági áttekintés – Azure App Service | Microsoft Docs
+description: Ismerje meg, hogyan segít a App Service az alkalmazás biztonságossá tételében, és hogy miként lehet tovább zárolni az alkalmazást a fenyegetésektől.
+keywords: Azure app Service, webalkalmazás, Mobile App, API app, Function app, biztonság, biztonságos, biztonságos, megfelelőség, megfelelő, tanúsítvány, tanúsítványok, HTTPS, FTPS, TLS, megbízhatóság, titkosítás, titkosítás, titkosított, IP-korlátozás, hitelesítés, engedélyezés, authn, autho, MSI, felügyelt szolgáltatás identitása, felügyelt identitás, titkok, titkos kód, javítás, javítás, javítások, verzió, elkülönítés, hálózati elkülönítés, DDoS, MitM
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -10,111 +10,110 @@ editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0e592c03da222e5265ed53aab8ef73f3b477f33a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6f122abff1ac75bb1cb836f3389c96dfcdf60e0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475867"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074116"
 ---
-# <a name="security-in-azure-app-service"></a>Biztonság az Azure App Service-ben
+# <a name="security-in-azure-app-service"></a>Biztonság a Azure App Service
 
-Ez a cikk bemutatja, hogyan [Azure App Service](overview.md) segít a webalkalmazások, mobilalkalmazások háttérrendszerének, API-alkalmazásba, biztonságos és [függvényalkalmazás](/azure/azure-functions/). Azt is bemutatja, hogyan tovább növelheti az alkalmazás az App Service-szolgáltatások beépített.
+Ez a cikk bemutatja, hogyan segíti a [Azure app Service](overview.md) a webalkalmazások, a Mobile App back end, az API-alkalmazás és a [Function-alkalmazás](/azure/azure-functions/)biztonságossá tételét. Azt is bemutatja, hogyan lehet tovább biztonságossá tenni az alkalmazást a beépített App Service funkciókkal.
 
-Az App Service, Azure virtuális gépek, tárolási, hálózati kapcsolatok, webes keretrendszerek, felügyeleti és az integrációs szolgáltatások, beleértve a platform összetevők aktívan védett és megerősített. App Service-ben győződjön meg arról, hogy rendszeresen erőteljes megfelelőségi ellenőrzést végighalad:
+A App Service platform-összetevői, beleértve az Azure-beli virtuális gépeket, a tárhelyet, a hálózati kapcsolatokat, a webes keretrendszereket, a felügyeleti és integrációs funkciókat, aktívan biztosítva és megerősítve. App Service a folyamatos megfelelőség ellenőrzése folyamatosan történik, hogy megbizonyosodjon róla, hogy:
 
-- Az alkalmazás-erőforrások vannak [biztonságos](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) az Azure-erőforrások a más ügyfelek adataitól.
-- [Virtuálisgép-példányok és a futtatókörnyezet szoftver rendszeresen frissülnek](overview-patch-os-runtime.md) cím újonnan felfedezett biztonsági rések. 
-- A titkos kulcsokat (például a kapcsolati karakterláncok) az alkalmazás és más Azure-erőforrások közötti kommunikáció (például [SQL Database](https://azure.microsoft.com/services/sql-database/)) Azure-ban marad, és nem közötti hálózati határok. Titkos kódok mindig titkosítva vannak tárolt.
-- Az App Service-kapcsolatot minden kommunikációhoz használt szolgáltatásokat, például [hibrid kapcsolat](app-service-hybrid-connections.md), titkosítva van. 
-- Kapcsolatok a távoli felügyeleti eszközökkel, mint például az Azure PowerShell-lel, az Azure CLI, Azure SDK, REST API-k, az összes titkosított.
-- kezelés gondoskodik az infrastruktúra és a platform, a kártevők elleni 24 órás threat elosztott szolgáltatásmegtagadásos (DDoS-), man-in-the-middle (MITM) és más fenyegetések ellen.
+- Az alkalmazás erőforrásai a [](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) többi ügyfél Azure-erőforrásaitól védve vannak.
+- A virtuálisgép [-példányok és a futásidejű szoftverek rendszeresen frissülnek](overview-patch-os-runtime.md) az újonnan felderített biztonsági rések kezeléséhez. 
+- Az alkalmazás és az egyéb Azure-erőforrások (például a [SQL Database](https://azure.microsoft.com/services/sql-database/)) közötti titkok (például a kapcsolati karakterláncok) az Azure-ban maradnak, és nem kereszteznek semmilyen hálózati határt. A titkos kulcsokat a rendszer mindig titkosítja tároláskor.
+- A App Service kapcsolati funkciói (például a [hibrid kapcsolat](app-service-hybrid-connections.md)) közötti kommunikáció titkosítva van. 
+- A távoli felügyeleti eszközökkel (például Azure PowerShellokkal, Azure CLI-vel, Azure SDK-kkal, REST API-kkal) létesített kapcsolatok mindegyike titkosítva van.
+- a 24 órás veszélyforrások kezelése megvédi az infrastruktúrát és a platformot a kártevők, az elosztott szolgáltatásmegtagadási (DDoS), a személyes környezet (MITM) és más fenyegetések ellen.
 
-Az Azure-beli infrastruktúra- és platformszolgáltatások biztonsági további információkért lásd: [Azure adatvédelmi központ](https://azure.microsoft.com/overview/trusted-cloud/).
+További információ az infrastruktúra és a platform biztonságáról az Azure-ban: [Azure biztonsági és adatkezelési központ](https://azure.microsoft.com/overview/trusted-cloud/).
 
-A következő szakaszok bemutatják, hogyan védheti még jobban az App Service-alkalmazást a fenyegetésekkel szemben.
+Az alábbi fejezetek azt mutatják be, hogyan lehet tovább védelemmel ellátni App Service alkalmazást a fenyegetésektől.
 
-## <a name="https-and-certificates"></a>HTTPS protokoll és tanúsítványok
+## <a name="https-and-certificates"></a>HTTPS és tanúsítványok
 
-App Service lehetővé teszi az alkalmazások biztonságos [HTTPS](https://wikipedia.org/wiki/HTTPS). Az alkalmazás létrehozásakor az alapértelmezett tartomány nevét (\<alkalmazás_neve >. azurewebsites.net) már elérhető a HTTPS-en keresztül. Ha Ön [az alkalmazás egyéni tartomány konfigurálása](app-service-web-tutorial-custom-domain.md), akkor is [egyéni tanúsítvánnyal biztosított](app-service-web-tutorial-custom-ssl.md) , hogy az ügyfelek böngészőin teheti a biztonságos HTTPS-kapcsolatok az egyéni tartományban. Kétféleképpen teheti meg:
+A App Service segítségével biztonságossá teheti az alkalmazásokat a [https](https://wikipedia.org/wiki/HTTPS)használatával. Az alkalmazás létrehozásakor az alapértelmezett tartományneve (\<APP_NAME >. azurewebsites. net) már elérhető a HTTPS protokoll használatával. Ha [Egyéni tartományt konfigurál](app-service-web-tutorial-custom-domain.md)az alkalmazáshoz, akkor azt is biztonságossá kell tennie [egy egyéni tanúsítvánnyal](app-service-web-tutorial-custom-ssl.md) , hogy az ügyféloldali böngészők biztonságos HTTPS-kapcsolatot tegyenek elérhetővé az egyéni tartománnyal. Kétféleképpen teheti meg:
 
-- **App Service-tanúsítvány** -tanúsítvány létrehozása közvetlenül az Azure-ban. A tanúsítvány a védett [Azure Key Vault](/azure/key-vault/), és az App Service alkalmazásba importálható. További információkért lásd: [vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány](web-sites-purchase-ssl-web-site.md).
-- **Külső tanúsítvány** – egy megbízható hitelesítésszolgáltatótól vásárolt egyéni SSL-tanúsítvány feltöltése, és kösse az App Service-alkalmazást. App Service-ben egyetlen tartományból álló tanúsítványokat és a helyettesítő tanúsítványok is támogatja. Tesztelési célokra önaláírt tanúsítványokat is támogatja. További információkért lásd: [meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-](app-service-web-tutorial-custom-ssl.md).
+- **Tanúsítvány app Service** – közvetlenül az Azure-ban hozhat létre tanúsítványt. A tanúsítvány [Azure Key Vault](/azure/key-vault/)védett, és importálható a app Service alkalmazásba. További információ: SSL- [tanúsítvány vásárlása és konfigurálása a Azure app Service számára](web-sites-purchase-ssl-web-site.md).
+- **Külső gyártótól származó tanúsítvány** – töltsön fel egy megbízható hitelesítésszolgáltatótól vásárolt egyéni SSL-tanúsítványt, és kösse azt a app Service alkalmazáshoz. App Service támogatja az egytartományos tanúsítványokat és a helyettesítő tanúsítványokat is. Emellett az önaláírt tanúsítványokat is támogatja tesztelési célokra. További információ: [meglévő egyéni SSL-tanúsítvány kötése Azure app Servicehoz](app-service-web-tutorial-custom-ssl.md).
 
-## <a name="insecure-protocols-http-tls-10-ftp"></a>Nem biztonságos protokollt (HTTP, a TLS 1.0, FTP)
+## <a name="insecure-protocols-http-tls-10-ftp"></a>Nem biztonságos protokollok (HTTP, TLS 1,0, FTP)
 
-Az alkalmazását az összes titkosítatlan (HTTP) kapcsolat biztonságos, az App Service biztosítja egyetlen kattintással konfigurációját, és HTTPS kényszerítése. Nem biztonságos kérelmek azonnal ki vannak kapcsolva, mielőtt elérnék még az alkalmazás kódjában. További információkért lásd: [HTTPS kényszerítése](app-service-web-tutorial-custom-ssl.md#enforce-https).
+Ha az alkalmazást az összes titkosítatlan (HTTP) kapcsolaton biztonságossá szeretné tenni, App Service egy kattintással konfigurálhatja a HTTPS-t. A nem biztonságos kérések még az alkalmazás kódjának elérése előtt el vannak kapcsolva. További információ: [https](app-service-web-tutorial-custom-ssl.md#enforce-https)kikényszerítés.
 
-[A TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 már nem tekinthető biztonságos szerint iparági szabványok, például [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). App Service lehetővé teszi, akkor tiltsa le az elavult protokollokat [a TLS 1.1/1.2 kényszerítése](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions).
+A [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1,0 már nem tekinthető biztonságosnak az iparági szabványok, például a [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). App Service lehetővé teszi az elavult protokollok letiltását a [TLS 1.1/1.2 kényszerítésével](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions).
 
-App Service-ben FTP és a FTPS támogatja a fájlok telepítéséhez. Azonban FTPS kell helyett használja az FTP, ha lehetséges. Ha az egyik vagy mindkét ezeket a protokollokat, amelyek nem használja, akkor [őket tiltani](deploy-ftp.md#enforce-ftps).
+A App Service az FTP-t és a FTPS is támogatja a fájlok telepítéséhez. A FTPS-et azonban FTP helyett kell használni, ha lehetséges. Ha az egyik vagy mindkét protokoll nincs használatban, [Tiltsa le őket](deploy-ftp.md#enforce-ftps).
 
 ## <a name="static-ip-restrictions"></a>Statikus IP-korlátozások
 
-Alapértelmezés szerint az App Service-alkalmazás fogadja az internetről érkező összes IP-cím kéréseit, de a férjenek hozzá az IP-címek részhalmazát. App Service-ben Windows férhessenek hozzá az alkalmazás IP-címek listájának definiálását teszi lehetővé. Az engedélyezett listára egyedi IP-címek hozzáadhatja, vagy egy IP-címtartomány határozzák meg egy alhálózati maszkot. További információkért lásd: [Azure App Service statikus IP-korlátozások](app-service-ip-restrictions.md).
+Alapértelmezés szerint a App Service alkalmazás az internetről érkező összes IP-címről fogad kérelmeket, de az IP-címek kis részhalmazára korlátozhatja a hozzáférést. A Windows App Service lehetővé teszi az alkalmazás elérésére jogosult IP-címek listájának megadását. Az engedélyezett lista tartalmazhat egyedi IP-címeket vagy egy alhálózati maszk által meghatározott IP-címtartományt. További információ: [Azure app Service statikus IP-korlátozások](app-service-ip-restrictions.md).
 
-A Windows App Service, az korlátozhatja is IP-címeket dinamikusan konfigurálásával a _web.config_. További információkért lásd: [dinamikus IP-biztonság \<dynamicIpSecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+A Windows App Service esetében a _web. config_fájl konfigurálásával dinamikusan is korlátozhatja az IP-címeket. További információ: [dinamikus IP-biztonsági \<dynamicIpSecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>Ügyfél-hitelesítés és engedélyezés
 
-Az Azure App Service biztosít teljes körű hitelesítése és engedélyezése a felhasználók vagy -ügyfél alkalmazásokat. Ha engedélyezve van, a felhasználók és az ügyfélalkalmazások alig vagy egyáltalán nem alkalmazás-kóddal jelentkezhetnek. Előfordulhat, hogy a saját hitelesítési és engedélyezési megoldást valósíthat meg, vagy inkább kezelésére, az App Service lehetővé teszi. A hitelesítési és engedélyezési modul webes kéréseket kezeli az alkalmazás kódjának őket leadása előtt, és a jogosulatlan kérések, megtagadja, mielőtt elérnék a kódot.
+Azure App Service a felhasználók vagy ügyfélalkalmazások kulcsrakész hitelesítését és engedélyezését teszi lehetővé. Ha ez a beállítás engedélyezve van, a felhasználók és az ügyfélalkalmazások csak kis vagy egyetlen alkalmazási kóddal jelentkezhetnek be. Saját hitelesítési és engedélyezési megoldást is alkalmazhat, vagy engedélyezheti a App Service számára, hogy az Ön számára kezelje azt. A hitelesítési és engedélyezési modul a webes kérelmeket az alkalmazás kódjába való átadás előtt kezeli, és megtagadja a jogosulatlan kérelmeket, mielőtt azok elérnék a kódot.
 
-App Service-hitelesítés és -engedélyezés támogatja a több hitelesítési szolgáltatók, beleértve az Azure Active Directory, Microsoft fiókok, Facebook, Google, és a Twitter. További információkért lásd: [hitelesítése és engedélyezése Azure App Service-ben](overview-authentication-authorization.md).
+App Service a hitelesítés és az engedélyezés több hitelesítésszolgáltató használatát támogatja, beleértve a Azure Active Directory, a Microsoft-fiókokat, a Facebook, a Google és a Twitter szolgáltatást. További információkért lásd: [Hitelesítés és engedélyezés az Azure App Service-ben](overview-authentication-authorization.md).
 
 ## <a name="service-to-service-authentication"></a>Szolgáltatások közötti hitelesítés
 
-A háttérszolgáltatás hitelesítésekor az App Service biztosítja a szükséges függően két különböző mechanizmus:
+A háttérrendszer hitelesítése során a App Service két különböző mechanizmust biztosít a szükségestől függően:
 
-- **Identitás szolgáltatás** – jelentkezzen be a távoli erőforrás maga az alkalmazás identitását használja. Az App Service lehetővé teszi, hogy egyszerűen létrehozhatja egy [identitás](overview-managed-identity.md), amelyet más szolgáltatásokkal, például hitelesítést használhat [Azure SQL Database](/azure/sql-database/) vagy [Azure Key Vault](/azure/key-vault/). Ez a megközelítés egy teljes körű Útmutató: [App Service-ben egy felügyelt identitás használata Azure SQL Database biztonságos kapcsolatot](app-service-web-tutorial-connect-msi.md).
-- **A alapú meghatalmazásos (OBO)** – győződjön meg arról, delegált hozzáférést a távoli erőforrásokhoz a felhasználó nevében. Az Azure Active Directoryval, a hitelesítésszolgáltató, az App Service-alkalmazást hajthat végre delegált bejelentkezési egy távoli szolgáltatásnak, például [Azure Active Directory Graph API](../active-directory/develop/active-directory-graph-api.md) vagy egy távoli API-alkalmazást az App Service-ben. Ez a megközelítés egy teljes körű Útmutató: [hitelesítése és engedélyezése a felhasználók teljes körű Azure App Service-ben](app-service-web-tutorial-auth-aad.md).
+- **Szolgáltatás identitása** – jelentkezzen be a távoli erőforrásba az alkalmazás identitásával. App Service lehetővé teszi, hogy könnyen [](overview-managed-identity.md)hozzon létre egy felügyelt identitást, amelyet más szolgáltatásokkal való hitelesítéshez használhat, például [Azure SQL Database](/azure/sql-database/) vagy [Azure Key Vault](/azure/key-vault/). Ennek a megközelítésnek a teljes körű oktatóanyagát lásd: [biztonságos Azure SQL Database a app Service-kapcsolatot felügyelt identitás használatával](app-service-web-tutorial-connect-msi.md).
+- **Bejelentkezett (OBO)** – a felhasználó nevében delegált hozzáférést biztosít a távoli erőforrásokhoz. A Azure Active Directory hitelesítési szolgáltatóként a App Service alkalmazás delegált bejelentkezést hajthat végre egy távoli szolgáltatásban, például [Azure Active Directory Graph API](../active-directory/develop/active-directory-graph-api.md) vagy egy távoli API-alkalmazás app Service. Ennek a módszernek a teljes körű oktatóanyagát lásd: a [felhasználók hitelesítése és engedélyezése a Azure app Service](app-service-web-tutorial-auth-aad.md).
 
-## <a name="connectivity-to-remote-resources"></a>Kapcsolat a távoli erőforrásokhoz
+## <a name="connectivity-to-remote-resources"></a>Távoli erőforrásokhoz való kapcsolódás
 
-A távoli erőforrások eléréséhez szükséges lehet, hogy a az alkalmazás három típusa van: 
+Az alkalmazásnak háromféle távoli erőforrással kell rendelkeznie a következők eléréséhez: 
 
 - [Azure-erőforrások](#azure-resources)
-- [Egy Azure virtuális hálózatban lévő erőforrások](#resources-inside-an-azure-virtual-network)
-- [A helyszíni erőforrásokhoz](#on-premises-resources)
+- [Azure-Virtual Network belüli erőforrások](#resources-inside-an-azure-virtual-network)
+- [Helyszíni erőforrások](#on-premises-resources)
 
-A minden egyes ezekben az esetekben App Service-ben is biztosítja, hogy biztonságos kapcsolatot, de továbbra is érdemes betartania bevált biztonsági gyakorlatokat. Például mindig használhatja titkosított kapcsolatokat, ha a háttér-erőforrás lehetővé teszi a nem titkosított kapcsolatokat. Továbbá győződjön meg arról, hogy a háttér-Azure-szolgáltatás lehetővé teszi, hogy az IP-címek csoportját. A kimenő IP-címek megtalálja az alkalmazást [bejövő és kimenő IP-címek az Azure App Service](overview-inbound-outbound-ips.md).
+Ezekben az esetekben a App Service lehetővé teszi a biztonságos kapcsolatok biztosítását, de továbbra is érdemes megfigyelni az ajánlott biztonsági eljárásokat. Például mindig titkosított kapcsolatokat használjon, még akkor is, ha a háttér-erőforrás engedélyezi a titkosítatlan kapcsolatokat. Továbbá győződjön meg arról, hogy a háttérbeli Azure-szolgáltatás lehetővé teszi az IP-címek minimális készletének használatát. Az alkalmazás kimenő IP-címeit a [bejövő és kimenő IP-címek Azure app Serviceban](overview-inbound-outbound-ips.md)találhatja meg.
 
 ### <a name="azure-resources"></a>Azure-erőforrások
 
-Ha az alkalmazás csatlakozik Azure-erőforrások, például [SQL Database](https://azure.microsoft.com/services/sql-database/) és [Azure Storage](/azure/storage/), a kapcsolat Azure-ban marad, és nem közötti hálózati határok. Azonban a kapcsolatot az Azure-ban a megosztott hálózati áramlik, ezért mindig ellenőrizze, hogy a kapcsolat titkosítva van. 
+Ha az alkalmazás az Azure-erőforrásokhoz, például [](https://azure.microsoft.com/services/sql-database/) a SQL Databasehoz és az [Azure Storage](/azure/storage/)-hoz csatlakozik, a kapcsolat az Azure-ban marad, és nem keresztez semmilyen hálózati határt. A kapcsolat azonban a megosztott hálózatkezelésen keresztül zajlik az Azure-ban, ezért mindig ellenőrizze, hogy a kapcsolat titkosítva van-e. 
 
-Ha az alkalmazás üzemel egy [App Service Environment-környezet](environment/intro.md), akkor [támogatott Azure-szolgáltatások virtuális hálózati Szolgáltatásvégpontok használatával csatlakozhat](../virtual-network/virtual-network-service-endpoints-overview.md).
+Ha az alkalmazás egy [app Service környezetben](environment/intro.md)üzemel, akkor [Virtual Network szolgáltatás-végpontok használatával kell csatlakoznia a támogatott Azure](../virtual-network/virtual-network-service-endpoints-overview.md)-szolgáltatásokhoz.
 
-### <a name="resources-inside-an-azure-virtual-network"></a>Egy Azure virtuális hálózatban lévő erőforrások
+### <a name="resources-inside-an-azure-virtual-network"></a>Azure-Virtual Network belüli erőforrások
 
-Az alkalmazás hozzáférhessen-e az erőforrások egy [Azure Virtual Network](/azure/virtual-network/) keresztül [virtuális hálózati integráció](web-sites-integrate-with-vnet.md). Az integráció jön létre egy virtuális hálózathoz pont – hely típusú VPN-kapcsolattal. Az alkalmazás ezután hozzáférhetnek az erőforrásokat a virtuális hálózat privát IP-címeik használatával. A pont – hely kapcsolatot, azonban továbbra is járja a megosztott hálózatok az Azure-ban. 
+Az alkalmazás [Virtual Network](web-sites-integrate-with-vnet.md)-integráción keresztül férhet hozzá az [Azure-Virtual Network](/azure/virtual-network/) erőforrásaihoz. Az integráció egy Virtual Network pont – hely típusú VPN-kapcsolattal van létrehozva. Az alkalmazás ezután hozzáférhet a Virtual Network lévő erőforrásokhoz saját IP-címeik használatával. A pont – hely kapcsolat azonban továbbra is a megosztott hálózatokon halad át az Azure-ban. 
 
-Az erőforrás kapcsolat teljes egészében az Azure-ban a közös hálózatok elkülönítésére, létrehozni az alkalmazást egy [App Service Environment-környezet](environment/intro.md). Mivel az App Service-környezet mindig egy dedikált virtuális hálózaton üzembe, az alkalmazás és a virtuális hálózatban lévő erőforrások közötti kapcsolat elszigetelt. Az App Service Environment-környezetek hálózati biztonság más aspektusait, lásd: [Hálózatelkülönítés](#network-isolation).
+Ha az erőforrás-kapcsolatot teljesen el szeretné különíteni az Azure-beli megosztott hálózatokból, hozza létre az alkalmazást [app Service környezetben](environment/intro.md). Mivel egy App Service környezet mindig dedikált Virtual Network van telepítve, az alkalmazás és a Virtual Network belüli erőforrások közötti kapcsolat teljesen elkülönített. App Service környezetben a hálózati biztonság egyéb szempontjaival kapcsolatban lásd: [hálózati elkülönítés](#network-isolation).
 
-### <a name="on-premises-resources"></a>A helyszíni erőforrásokhoz
+### <a name="on-premises-resources"></a>Helyszíni erőforrások
 
-Biztonságosan elérhet a helyszíni erőforrásokat, például adatbázisokat, három módon: 
+A helyszíni erőforrásokhoz (például adatbázisokhoz) való biztonságos hozzáférés háromféleképpen lehetséges: 
 
-- [Hibrid kapcsolatok](app-service-hybrid-connections.md) – a távoli erőforrás egy TCP-alagúton keresztül egy pont-pont típusú kapcsolatot hoz létre. A TCP-alagút létrehozása a TLS 1.2 használatával közös hozzáférésű jogosultságkód (SAS) kulcsokkal.
-- [Virtuális hálózati integráció](web-sites-integrate-with-vnet.md) site-to-site VPN - leírtak [erőforrások egy Azure virtuális hálózaton belül](#resources-inside-an-azure-virtual-network), de a virtuális hálózat is kapcsolódik a helyszíni hálózaton keresztül egy [ site-to-site VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md). A hálózati topológia az alkalmazás csatlakozhat a helyszíni erőforrásokhoz, mint az egyéb erőforrások a virtuális hálózatban.
-- [App Service Environment-környezet](environment/intro.md) site-to-site VPN - leírtak [erőforrások egy Azure virtuális hálózaton belül](#resources-inside-an-azure-virtual-network), de a virtuális hálózat is kapcsolódik a helyszíni hálózaton keresztül egy [site-to-site VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md). A hálózati topológia az alkalmazás csatlakozhat a helyszíni erőforrásokhoz, mint az egyéb erőforrások a virtuális hálózatban.
+- [Hibrid kapcsolatok](app-service-hybrid-connections.md) – pont-pont típusú kapcsolatot létesít a távoli erőforrással egy TCP-alagúton keresztül. A TCP-alagút a TLS 1,2 közös hozzáférés-aláírási (SAS-) kulcsokkal van létrehozva.
+- [Virtual Network](web-sites-integrate-with-vnet.md) a helyek közötti VPN-sel való integrációt – az [Azure-Virtual Network belüli erőforrásokban](#resources-inside-an-azure-virtual-network)leírtak szerint, de a Virtual Network a [helyek közötti VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)-kapcsolaton keresztül csatlakozhat a helyszíni hálózathoz. Ebben a hálózati topológiában az alkalmazás olyan helyszíni erőforrásokhoz is csatlakozhat, mint például a Virtual Network egyéb erőforrásai.
+- [App Service környezet](environment/intro.md) helyek közötti VPN-vel – az [Azure-Virtual Network belüli erőforrásokban](#resources-inside-an-azure-virtual-network)leírtak szerint, de a Virtual Network a [helyek közötti VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)-kapcsolaton keresztül csatlakozhat a helyszíni hálózathoz. Ebben a hálózati topológiában az alkalmazás olyan helyszíni erőforrásokhoz is csatlakozhat, mint például a Virtual Network egyéb erőforrásai.
 
-## <a name="application-secrets"></a>Titkos alkalmazáskulcsok
+## <a name="application-secrets"></a>Alkalmazás-titkok
 
-Titkos alkalmazáskulcsok, például az adatbázis hitelesítő adatait, API-jogkivonatai és titkos kulcsok ne tároljon a kódot, vagy a konfigurációs fájlokban. Az általánosan elfogadott megközelítés érheti el őket, mint a következő [környezeti változók](https://wikipedia.org/wiki/Environment_variable) tetszőleges nyelven a szokásos mintájának használatával. Az App Service-ben a környezeti változókat határozhat meg módja keresztül [Alkalmazásbeállítások](configure-common.md#configure-app-settings) (és a .NET-alkalmazásokban, különösen [kapcsolati karakterláncok](configure-common.md#configure-connection-strings)). Az alkalmazásbeállítások és a kapcsolati karakterláncok titkosítva tárolódnak az Azure-ban, és azokat csak előtt folyamatban kártevő program férkőzik be az alkalmazás folyamata memória az alkalmazás indításakor már visszafejteni. A titkosítási kulcsokat a rendszer rendszeresen elforgatva.
+Ne tárolja az alkalmazás-titkokat, például az adatbázis hitelesítő adatait, az API-jogkivonatokat és a titkos kulcsokat a kódban vagy a konfigurációs fájlokban. Az általánosan elfogadott módszer az, hogy az Ön által választott nyelven a standard minta alapján [környezeti változókként](https://wikipedia.org/wiki/Environment_variable) férjen hozzájuk. App Service a környezeti változók definiálásának módja az [Alkalmazásbeállítások](configure-common.md#configure-app-settings) (és különösen a .NET-alkalmazások, a [kapcsolódási karakterláncok](configure-common.md#configure-connection-strings)) használatával történik. Az Alkalmazásbeállítások és a kapcsolódási karakterláncok az Azure-ban vannak titkosítva, és csak akkor lesznek visszafejtve, ha az alkalmazás elindul az alkalmazás folyamatának memóriájában. A titkosítási kulcsok elforgatása rendszeresen történik.
 
-Azt is megteheti, integrálható az App Service-alkalmazás az [Azure Key Vault](/azure/key-vault/) speciális titkos kulcsok kezeléséhez. Által [felügyelt identitással a Key Vault elérése](../key-vault/tutorial-web-application-keyvault.md), az App Service-alkalmazást biztonságosan férhet hozzá a titkos kulcsok van szüksége.
+Azt is megteheti, hogy a App Service alkalmazást a speciális titkok kezeléséhez [Azure Key Vault](/azure/key-vault/) segítségével integrálja. Ha [a Key Vault felügyelt identitással fér hozzá](../key-vault/tutorial-web-application-keyvault.md), a app Service alkalmazás biztonságosan hozzáférhet a szükséges titkokhoz.
 
-## <a name="network-isolation"></a>A hálózatok elkülönítéséhez
+## <a name="network-isolation"></a>Hálózati elkülönítés
 
-Az alábbiakat kivéve a **elkülönített** tarifacsomag, minden szinten az alkalmazások futtatása az App Service-ben a megosztott hálózati infrastruktúrán. Ha például a nyilvános IP-címek és terheléselosztók előtérbeli más bérlők felhasználóival vannak megosztva. A **elkülönített** szint biztosít teljes körű hálózatelkülönítés az alkalmazásokat egy dedikált futtatásával [App Service Environment-környezet](environment/intro.md). App Service-környezet fut, a saját példányát [Azure Virtual Network](/azure/virtual-network/). Lehetővé teszi, hogy: 
+Az **elkülönített** díjszabási szinten kívül minden csomag a app Service megosztott hálózati infrastruktúráján futtatja az alkalmazásokat. A nyilvános IP-címek és az előtér-terheléselosztó például más Bérlővel is megoszthatók. Az **elkülönített** csomag lehetővé teszi a hálózati elkülönítést az alkalmazások dedikált [app Service környezetben](environment/intro.md)való futtatásával. App Service környezet az [Azure Virtual Network](/azure/virtual-network/)saját példányában fut. A következőket teszi lehetővé: 
 
-- Dedikált előtér-szolgálja ki a segítségével egy dedikált nyilvános végpontot.
-- Belső alkalmazás használatával egy belső terheléselosztó (ILB), amely lehetővé teszi a hozzáférés csak az Azure virtuális hálózaton belül szolgálnak. Az ILB a privát alhálózatra, így az alkalmazások teljes elkülönítés az internetről származó IP-címmel rendelkezik.
-- [Használja az ILB mögötti webalkalmazási tűzfal (WAF)](environment/integrate-with-application-gateway.md). A WAF a nyilvánosan elérhető alkalmazások, például DDoS elleni védelem, URI szűrési és SQL-injektálás megelőzési nagyvállalati szintű védelmet biztosít.
+- Az alkalmazásokat dedikált nyilvános végponton keresztül, dedikált kezelőfelülettel tálalhatja.
+- Belső alkalmazás kiszolgálása belső terheléselosztó (ILB) használatával, amely csak az Azure-Virtual Networkon belülről engedélyezi a hozzáférést. A ILB IP-címmel rendelkezik a privát alhálózatból, amely az alkalmazások teljes elkülönítését biztosítja az internetről.
+- [Használjon egy ILB a webalkalmazási tűzfal mögött (WAF)](environment/integrate-with-application-gateway.md). A WAF nagyvállalati szintű védelmet kínál a nyilvános alkalmazásokhoz, például a DDoS-védelemhez, az URI-szűréshez és az SQL-injektálások megelőzéséhez.
 
-További információkért lásd: [Introduction to Azure App Service Environment-környezetek](environment/intro.md). 
+További információ: [bevezetés Azure app Service környezetekben](environment/intro.md). 

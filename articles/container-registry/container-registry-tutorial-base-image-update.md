@@ -6,15 +6,15 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 06/12/2019
+ms.date: 08/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7cd278143ffe482cb51f76b1019413e97a777a3a
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 23b0990be7f215d9cc443c5549ae38de86826d17
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981815"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114614"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Oktatóanyag: A tároló rendszerképének automatizálása, ha alaprendszerkép frissül egy Azure Container registryben 
 
@@ -72,7 +72,16 @@ Az alapként szolgáló rendszerképek frissítésekor újra össze kell állít
 
 ### <a name="tasks-triggered-by-a-base-image-update"></a>Alapszintű rendszerkép frissítése által aktivált feladatok
 
-* Jelenleg a Docker származó lemezképek esetében egy ACR-feladat észleli az egyazon Azure Container registryben, a nyilvános Docker hub-tárházban vagy a Microsoft Container Registryban található nyilvános tárházban lévő alaplemezképek függőségeit. Ha az `FROM` utasításban megadott alaprendszerkép ezen a helyen található, az ACR-feladat egy hookot ad hozzá, amely biztosítja, hogy a rendszer az alapértékének frissítésekor bármikor újraépítse a rendszerképet.
+* A Docker származó lemezképek esetében az ACR-feladat az alábbi helyekről észleli az alaplemezképek függőségeit:
+
+  * Ugyanaz az Azure Container Registry, ahol a feladat fut
+  * Egy másik Azure Container Registry ugyanabban a régióban 
+  * Nyilvános tárház a Docker hub-ban 
+  * Nyilvános tárház a Microsoft Container Registryban
+
+   Ha az `FROM` utasításban megadott alaprendszerkép ezen a helyen található, az ACR-feladat egy hookot ad hozzá, amely biztosítja, hogy a rendszer az alapértékének frissítésekor bármikor újraépítse a rendszerképet.
+
+* Az ACR-feladatok jelenleg csak az alkalmazás-(*futtatókörnyezet*-) lemezképek alaprendszerkép-frissítéseinek nyomon követésére használhatók. Nem követ nyomon a többfázisú Dockerfiles használt közbenső (*buildtime*) lemezképek alaprendszerkép-frissítéseit.  
 
 * Amikor egy ACR-feladatot hoz létre az az [ACR Task Create][az-acr-task-create] paranccsal, alapértelmezés szerint a feladat alaprendszerkép-frissítéssel aktiválható. Vagyis a `base-image-trigger-enabled` tulajdonság értéke TRUE (igaz). Ha le szeretné tiltani ezt a viselkedést egy feladatban, frissítse a tulajdonságot hamis értékre. Futtassa például a következő az [ACR Task Update][az-acr-task-update] parancsot:
 

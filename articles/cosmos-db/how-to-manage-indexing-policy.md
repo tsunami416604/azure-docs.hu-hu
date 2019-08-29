@@ -3,15 +3,15 @@ title: Az indexelési szabályzatok kezelése a Azure Cosmos DBban
 description: Ismerje meg, hogyan kezelheti az indexelési szabályzatokat Azure Cosmos DB
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: thweiss
-ms.openlocfilehash: 0100be7eeacdcda5b123356e95e2510a365d0f22
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6e935b88c474d28c06b8cdd76d36f5ba64c942f9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356438"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093208"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Az indexelési szabályzatok kezelése a Azure Cosmos DBban
 
@@ -59,7 +59,7 @@ az cosmosdb collection update \
 
 ## <a name="use-the-net-sdk-v2"></a>A .NET SDK v2 használata
 
-A `DocumentCollection` [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) -ből származó objektum ( [lásd a](create-sql-api-dotnet.md) használatáról szóló rövid útmutatót) egy `IndexingPolicy` olyan tulajdonságot tesz elérhetővé `IndexingMode` , amely `ExcludedPaths`lehetővé teszi `IncludedPaths` a módosítását, illetve a hozzáadását és eltávolítását.
+A `DocumentCollection` [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) -ből származó objektum ( [](create-sql-api-dotnet.md) lásd a használatáról szóló rövid útmutatót) egy `IndexingPolicy` olyan tulajdonságot tesz elérhetővé `IndexingMode` , amely `ExcludedPaths`lehetővé teszi `IncludedPaths` a módosítását, illetve a hozzáadását és eltávolítását.
 
 ```csharp
 // retrieve the container's details
@@ -83,7 +83,7 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 
 ## <a name="use-the-java-sdk"></a>A Java SDK használata
 
-A `DocumentCollection` [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) -ból származó objektum ( [lásd a](create-sql-api-java.md) használatról szóló rövid útmutatót) `getIndexingPolicy()` teszi `setIndexingPolicy()` elérhetővé és metódusokat. Az `IndexingPolicy` általuk manipulált objektum lehetővé teszi az indexelési mód módosítását, valamint a felvett és kizárt elérési utak hozzáadását és eltávolítását.
+A `DocumentCollection` [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) -ból származó objektum ( [](create-sql-api-java.md) lásd a használatról szóló rövid útmutatót) `getIndexingPolicy()` teszi `setIndexingPolicy()` elérhetővé és metódusokat. Az `IndexingPolicy` általuk manipulált objektum lehetővé teszi az indexelési mód módosítását, valamint a felvett és kizárt elérési utak hozzáadását és eltávolítását.
 
 ```java
 // retrieve the container's details
@@ -120,7 +120,7 @@ containerResponse.subscribe(result -> {
 
 ## <a name="use-the-nodejs-sdk"></a>A Node. js SDK használata
 
-A `ContainerDefinition` [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) felülete [(lásd a](create-sql-api-nodejs.md) használattal kapcsolatos rövid útmutatót) egy olyan `indexingPolicy` tulajdonságot tesz elérhetővé, `indexingMode` amely lehetővé teszi a módosítását, illetve a és `excludedPaths`a hozzáadását, illetve eltávolítását `includedPaths` .
+A `ContainerDefinition` [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) felülete (lásd [](create-sql-api-nodejs.md) a használattal kapcsolatos rövid útmutatót) egy olyan `indexingPolicy` tulajdonságot tesz elérhetővé, `indexingMode` amely lehetővé teszi a `includedPaths` módosítását, illetve a és `excludedPaths`a hozzáadását, illetve eltávolítását.
 
 ```javascript
 // retrieve the container's details
