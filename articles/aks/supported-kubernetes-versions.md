@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 0e26b9b5aee61f399a39c032cdbd2084884538c9
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 27b180d8d95d7dad967b8ac2495a795ed70836b9
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982714"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147220"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Támogatott Kubernetes-verziók az Azure Kubernetes szolgáltatásban (ak)
 
@@ -49,13 +49,13 @@ Az AKS a Kubernetes négy alverzióját támogatja:
 
 Ez az úgynevezett "N-3" – (N (legújabb kiadás) – 3 (másodlagos verzió)).
 
-Ha például az AK a *1.13. x-et* mutatja be, a következő verziókhoz nyújt támogatást:
+Ha például az AK a *1.13. a* -t mutatja be, a következő verziókhoz nyújtunk támogatást:
 
 Új alverzió    |    Támogatott verziók listája
 -----------------    |    ----------------------
-1.13.x               |    1.12. a, 1.12. b, 1.11. a, 1.11. b, 1.10. a, 1.10. b
+1.13. a               |    1.12. a, 1.12. b, 1.11. a, 1.11. b, 1.10. a, 1.10. b
 
-Ahol az "x" és a ". a" és a ". b" is jellemző patch-verziók.
+Ahol a ". a" és a ". b" kifejezés a javításokat reprezentálja. " a "from 1.13. a a 1,12. a-től eltérő lehet. Például: 1.13.9 és 1.12.8.
 
 A verziók változásaival és elvárásaival kapcsolatos tájékoztatásért tekintse meg az alábbi "kommunikáció" című szakaszt.
 
@@ -72,7 +72,7 @@ A verziók változásaival és elvárásaival kapcsolatos tájékoztatásért te
 1.9.b
 ```
 
-A és az AK a 1.13. x-et is kibocsátja, ez azt jelenti, hogy az 1,9. x verzió (az összes 1,9-es verzió) el lesz távolítva, és nem támogatott
+És az AK 1,13-es kiadása. *, ez azt jelenti, hogy a 1,9.* a verziók (az összes 1,9-es verzió) el lesznek távolítva, és nem támogatottak.
 
 > [!NOTE]
 > Vegye figyelembe, hogy ha az ügyfelek nem támogatott Kubernetes-verziót futtatnak, a rendszer a fürt támogatásának kérelmezése után a frissítésre kéri őket. A nem támogatott Kubernetes-kiadásokat futtató fürtöket az [AK-támogatási szabályzatok](https://docs.microsoft.com/azure/aks/support-policies)nem tartalmazzák.
@@ -126,7 +126,7 @@ Előfordulhat, hogy a rendszer kihagyja az adott javítási kiadásokat, vagy a 
 
 ### <a name="azure-portal-and-cli-default-versions"></a>Azure Portal és CLI alapértelmezett verziói
 
-Ha AK-fürtöt telepít a portálon vagy az Azure CLI-vel, a fürt mindig az N-1 alverzióra és a legújabb javításra van beállítva. Ha például az AK támogatja a *1.13. x-et*, *1.12. a* + 1.12.*b*, *1.11. a* + *1.11. b*, *1.10. a* + *1.10 b*, az új fürtök alapértelmezett verziója *1.12. b* .
+Ha AK-fürtöt telepít a portálon vagy az Azure CLI-vel, a fürt mindig az N-1 alverzióra és a legújabb javításra van beállítva. Ha például az AK támogatja a *1.13. a*, *1.12. a* + *1.12. b*, *1.11. a* + *1.11. b*, *1.10. a* + *1.10 b*, az új fürtök alapértelmezett verziója *1.12. b* .
 
 Az AK alapértelmezett értéke N-1 (Minor. latestPatch, például 1.12. b), így az ügyfelek számára az ismert, a stabil és a javított verzió alapértelmezés szerint elérhető.
 
@@ -161,8 +161,8 @@ KubernetesVersion    Upgrades
 
 Ha az *n-4* verziót használ, a rendszer nem támogatja a támogatást, és a rendszer a frissítésre kéri. Ha az n-4 verzióról az n-3-ra való frissítés sikeres, akkor már a támogatási szabályzatok között van. Példa:
 
-- Ha a támogatott AK-verziók a következők: *1.13. x*, *1.12. a* + *1.12. b*, *1.11. c* + *1.11 d*, és *1.10. e* + *1.10 f* és Ön *1,9. g* vagy *1,9. h*, a támogatáson kívül van.
-- Ha a frissítés *1,9. g* vagy *1,9. h* és *1.10. e* között vagy *1.10. f* sikeres, a támogatási szabályzatokon belül visszakerül.
+- Ha a támogatott AK-verziók *1.13. a*, *1.12. b* + *1.12. c*, *1.11. d* + *1.11. e*és *1.10. f* + *1,10. g* , és Ön 1,9. *h* vagy *1.9. i* a támogatáson kívül van.
+- Ha az *1,9. h* vagy *1,9. i* – 1.10. *f* vagy *1.10. g* verzióra való frissítés sikeres, akkor a támogatási szabályzaton belül visszakerül.
 
 Az *n-4-* nél régebbi verzióra történő frissítés nem támogatott. Ilyen esetekben javasoljuk, hogy az ügyfelek új AK-fürtöket hozzanak létre, és újra üzembe helyezzük a munkaterheléseket.
 

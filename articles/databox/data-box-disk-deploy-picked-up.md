@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 1c102d05d4c570f9415fad18c004847de11d50cc
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: e58e33efebfe372bd5cacc45f0a8045cec18878d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035705"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135041"
 ---
 ::: zone target="chromeless"
 
-# <a name="return-azure-data-box-disk"></a>Visszatérési Azure Data Box Disk 
+## <a name="return-azure-data-box-disk"></a>Visszatérési Azure Data Box Disk 
 
 ::: zone-end
 
@@ -49,22 +49,9 @@ Mielőtt elkezdené, győződjön meg arról, hogy végrehajtotta az [oktatóany
     - Javasoljuk, hogy a lemezeket jól biztonságos, buborékokkal védett körbefuttatással csomagolja.
     - Győződjön meg arról, hogy a megfelelő illeszkedés a dobozon belüli mozgások csökkentése érdekében.
 
-A következő lépéseket az eszköz visszaadása határozza meg.
+A következő lépéseket az eszköz visszaadása határozza meg. Az utasítások eltérnek az USA/Kanada, Ausztrália és Ázsia országaiban.
 
-
-
-- [Ha az eszközt az Egyesült Államokban és Kanadában](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada)küldi el, a UPS-be ütemezhet.
-- Regisztráljon a [DHL for Europe szolgáltatásra](data-box-disk-deploy-picked-up.md#pick-up-in-europe) a webhelyének meglátogatásával és a légúti számla számának megadásával.
-- [Egy pickup beosztása Ausztráliában](data-box-disk-deploy-picked-up.md#pick-up-in-australia).
-- Bemutatjuk [az ázsiai országok](data-box-disk-deploy-picked-up.md#pick-up-in-asia) , például Japán, Korea és Szingapúr országainak felvételét.
-
-::: zone target="chromeless"
-
-Miután a szállító bevette a lemezeket, a portál frissítései és a nyomkövetési azonosító megjelenik.
-
-::: zone-end
-
-## <a name="pick-up-in-us-canada"></a>Vegye fel velünk a kapcsolatot Kanadában
+### <a name="pick-up-in-us-canada"></a>Vegye fel velünk a kapcsolatot Kanadában
 
 Ha az eszközt az USA-ban vagy Kanadában adja vissza, hajtsa végre a következő lépéseket.
 
@@ -80,7 +67,7 @@ Ha az eszközt az USA-ban vagy Kanadában adja vissza, hajtsa végre a következ
     - Ha a nyomkövetési szám nem található, a UPS-nek további díjat kell fizetnie a felvétel során.
     - A pickup ütemezése helyett a Data Box Disk a legközelebbi legördülő helyen is elvégezheti.
 
-## <a name="pick-up-in-europe"></a>Felvétel Európában
+### <a name="pick-up-in-europe"></a>Felvétel Európában
 
 Ha az eszközt Európa-ban adja vissza, hajtsa végre a következő lépéseket.
 
@@ -93,7 +80,7 @@ Ha az eszközt Európa-ban adja vissza, hajtsa végre a következő lépéseket.
 4. Nyissa meg az ország/régió DHL Express webhelyét, és válassza **a Courier Collection > EReturn szállítás**lehetőséget.    
 3. Adja meg a fuvarlevél számát, és kattintson a **Futárrendelés** gombra a csomagfelvétel lefoglalásához.
 
-## <a name="pick-up-in-australia"></a>Felvétel Ausztráliában
+### <a name="pick-up-in-australia"></a>Felvétel Ausztráliában
 
 Az Ausztráliában található Azure-adatközpontok további biztonsági értesítésekkel rendelkeznek. Az összes bejövő szállítmánynak speciális értesítéssel kell rendelkeznie. Kövesse az alábbi lépéseket az Ausztráliában való felvételhez.
 
@@ -104,11 +91,11 @@ Az Ausztráliában található Azure-adatközpontok további biztonsági értes�
     - Cím
     - Kapcsolattartó neve
 
-## <a name="pick-up-in-asia"></a>Felvétel Ázsiában
+### <a name="pick-up-in-asia"></a>Felvétel Ázsiában
 
 A felvételi utasítások a japán, Korea és Szingapúr esetében eltérőek.
 
-### <a name="pick-up-in-japan"></a>Felvétel Japánban
+#### <a name="pick-up-in-japan"></a>Felvétel Japánban
 
 1. Adja meg a cég nevét és a címadatokat a küldeményre vonatkozó információként a küldő adatai alapján.
 2. E-mail-Quantium-megoldás a következő e-mail-sablon használatával.
@@ -135,7 +122,7 @@ Ha szükséges, lépjen kapcsolatba a Quantium-megoldás támogatásával (Japá
 - E-mailCustomerservice.JP@quantiumsolutions.com 
 - Telefon: 03-5755-0150 
 
-### <a name="pick-up-in-korea"></a>Felvétel Koreában
+#### <a name="pick-up-in-korea"></a>Felvétel Koreában
 
 1. Ügyeljen arra, hogy tartalmazza a visszaküldött szállítmány megjegyzését.
 2. Ha a feladási Megjegyzés van jelen:
@@ -149,13 +136,10 @@ Ha szükséges, lépjen kapcsolatba a Quantium-megoldás támogatásával (Japá
     3. Ha a futár nem érkezik meg a gyűjteményhez, hívja a *Quantium Solutions nemzetközi* forródrótot alternatív megoldásokra. 
     4. Ha a kérést telefonon keresztül kezdeményezik, a rendszer szóbeli megerősítést küld.
 
-### <a name="pick-up-in-singapore"></a>Felvétel Szingapúrban
+#### <a name="pick-up-in-singapore"></a>Felvétel Szingapúrban
 
 1. Nyomtassa ki a szállítási címkét, és csatolja a dobozhoz. Ha a címke sérült vagy elveszett:
     - Nyissa meg az **áttekintés > a szállítási címke letöltése** és a visszaszállítási címke beszerzése című cikket.
-
-        ![Levélcímke letöltése](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - A címke elhelyezése az eszközön. Győződjön meg arról, hogy a felirat látható.
 
 2. Felvétel kérése:

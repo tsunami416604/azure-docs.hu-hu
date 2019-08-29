@@ -3,21 +3,20 @@ title: Az adatüzemek monitorozása Azure Monitor használatával | Microsoft Do
 description: Megtudhatja, hogyan használhatja a Azure Monitort a Data Factory folyamatok figyeléséhez, ha engedélyezi a diagnosztikai naplókat a Azure Data Factory információi alapján.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.author: shlo
-ms.openlocfilehash: 6bad74d33f5d50bb7a35de69927bf97daad07798
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0614de8bbb1429c84bf5f2e55c1765f3e4863f3a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326851"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141135"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Az adatgyárak riasztása és monitorozása Azure Monitor használatával
 A Felhőbeli alkalmazások számos mozgó részből összetettek. A figyelési szolgáltatással biztosítható, hogy az alkalmazás kifogástalan állapotban maradjon. Emellett segít elhárítani a lehetséges problémákat vagy a múltbeli hibák elhárítását. Emellett a figyelési adatok segítségével mélyebb elemzéseket nyerhet az alkalmazásról. Ez az információ segít az alkalmazások teljesítményének vagy karbantartásának javításában, vagy automatizálhatja azokat a műveleteket, amelyek egyébként manuális beavatkozást igényelnek.
@@ -105,12 +104,12 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Tulajdonság | Típus | Leírás |
 | --- | --- | --- |
-| storageAccountId |Karakterlánc | Annak a Storage-fióknak az erőforrás-azonosítója, amelyre a diagnosztikai naplókat el szeretné küldeni |
-| serviceBusRuleId |Sztring | A Service Bus-névtér Service Bus-szabályának azonosítója, amelyben Event Hubs létrehozni a folyamatos átviteli diagnosztikai naplókhoz. A szabály azonosítója a következő formátumú: "{Service Bus erőforrás-azonosító}/authorizationrules/{Key neve}".|
+| storageAccountId |Sztring | Annak a Storage-fióknak az erőforrás-azonosítója, amelyre a diagnosztikai naplókat el szeretné küldeni |
+| serviceBusRuleId |String | A Service Bus-névtér Service Bus-szabályának azonosítója, amelyben Event Hubs létrehozni a folyamatos átviteli diagnosztikai naplókhoz. A szabály azonosítója a következő formátumú: "{Service Bus erőforrás-azonosító}/authorizationrules/{Key neve}".|
 | workspaceId | Összetett típus | Metrikus idő típusú gabona és adatmegőrzési szabályzatok tömbje. Jelenleg ez a tulajdonság üres. |
-|metrics| A folyamat által a meghívott folyamatnak átadni kívánt folyamat paramétereinek értéke| Egy JSON-objektum-hozzárendelési paraméter neve az argumentum értékéhez |
+|metrikák| A folyamat által a meghívott folyamatnak átadni kívánt folyamat paramétereinek értéke| Egy JSON-objektum-hozzárendelési paraméter neve az argumentum értékéhez |
 | logs| Összetett típus| Az erőforrástípus diagnosztikai naplójának kategóriája. Az erőforráshoz tartozó diagnosztikai naplók listájának beszerzéséhez először végezze el a diagnosztikai beállítások beolvasása műveletet. |
-| category| Karakterlánc| A naplózási kategóriák és a megőrzési szabályzatok tömbje |
+| category| String| A naplózási kategóriák és a megőrzési szabályzatok tömbje |
 | timeGrain | String | Az ISO 8601-es időtartamú formátumban rögzített mérőszámok részletessége. PT1M kell lennie (egy perc)|
 | enabled| Logikai | Meghatározza, hogy engedélyezve van-e az adott metrika vagy naplózási kategória gyűjteménye ehhez az erőforráshoz|
 | retentionPolicy| Összetett típus| A metrika vagy a napló kategóriájának adatmegőrzési szabályát ismerteti. Csak a Storage-fiók beállítására szolgál.|
@@ -280,16 +279,16 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | Szint |Sztring | A diagnosztikai naplók szintje. A 4. szint mindig a tevékenység-futtatási naplók esetében használható. | `4`  |
 | correlationId |Sztring | Egy adott kérelem végpontok közötti nyomon követésére szolgáló egyedi azonosító | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | Sztring | Az esemény időpontja TimeSpan, UTC formátumban`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|activityRunId| Karakterlánc| A tevékenység futtatásának azonosítója | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
-|pipelineRunId| Karakterlánc| A folyamat futtatásának azonosítója | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|activityRunId| Sztring| A tevékenység futtatásának azonosítója | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
+|pipelineRunId| Sztring| A folyamat futtatásának azonosítója | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| Sztring | Társított erőforrás-azonosító a (z) adatfeldolgozó erőforráshoz | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| Karakterlánc | A diagnosztikai naplók kategóriája. A tulajdonság beállítása "ActivityRuns" értékre | `ActivityRuns` |
+|category| Sztring | A diagnosztikai naplók kategóriája. A tulajdonság beállítása "ActivityRuns" értékre | `ActivityRuns` |
 |level| Sztring | A diagnosztikai naplók szintje. A tulajdonság "tájékoztató" értékre állítása | `Informational` |
 |operationName| Sztring |Az állapottal rendelkező tevékenység neve. Ha az állapot a kezdő szívverés, akkor `MyActivity -`a. Ha az állapot a záró szívverés, `MyActivity - Succeeded` a végső állapotú. | `MyActivity - Succeeded` |
 |pipelineName| Sztring | A folyamat neve | `MyPipeline` |
-|activityName| Karakterlánc | A tevékenység neve | `MyActivity` |
+|activityName| Sztring | A tevékenység neve | `MyActivity` |
 |start| Sztring | A TimeSpan, UTC formátumban futtatott tevékenység kezdete | `2017-06-26T20:55:29.5007959Z`|
-|end| Karakterlánc | A tevékenység vége TimeSpan, UTC formátumban fut. Ha a tevékenység még nem fejeződött be (a tevékenységhez tartozó diagnosztikai naplóban), az alapértelmezett érték `1601-01-01T00:00:00Z` van beállítva.  | `2017-06-26T20:55:29.5007959Z` |
+|end| Sztring | A tevékenység vége TimeSpan, UTC formátumban fut. Ha a tevékenység még nem fejeződött be (a tevékenységhez tartozó diagnosztikai naplóban), az alapértelmezett érték `1601-01-01T00:00:00Z` van beállítva.  | `2017-06-26T20:55:29.5007959Z` |
 
 #### <a name="pipeline-run-logs-attributes"></a>Folyamat futtatási naplóinak attribútumai
 
@@ -325,7 +324,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | --- | --- | --- | --- |
 | Szint |Sztring | A diagnosztikai naplók szintje. A 4-es szint a tevékenység-futtatási naplók esetében használható. | `4`  |
 | correlationId |Sztring | Egy adott kérelem végpontok közötti nyomon követésére szolgáló egyedi azonosító | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | Karakterlánc | Az esemény időpontja TimeSpan, UTC formátumban`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| time | Sztring | Az esemény időpontja TimeSpan, UTC formátumban`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |runId| Sztring| A folyamat futtatásának azonosítója | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| Sztring | Társított erőforrás-azonosító a (z) adatfeldolgozó erőforráshoz | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| Sztring | A diagnosztikai naplók kategóriája. A tulajdonság beállítása "PipelineRuns" értékre | `PipelineRuns` |
@@ -334,7 +333,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |pipelineName| Sztring | A folyamat neve | `MyPipeline` |
 |start| Sztring | A TimeSpan, UTC formátumban futtatott tevékenység kezdete | `2017-06-26T20:55:29.5007959Z`|
 |end| Sztring | A tevékenység vége TimeSpan, UTC formátumban fut. Ha a tevékenység még nem fejeződött be (a tevékenységhez tartozó diagnosztikai naplóban), az alapértelmezett érték `1601-01-01T00:00:00Z` van beállítva.  | `2017-06-26T20:55:29.5007959Z` |
-|status| Karakterlánc | A folyamat futásának végső állapota (sikeres vagy sikertelen) | `Succeeded`|
+|status| Sztring | A folyamat futásának végső állapota (sikeres vagy sikertelen) | `Succeeded`|
 
 #### <a name="trigger-run-logs-attributes"></a>Trigger futtatási naplók attribútumai
 
@@ -367,14 +366,14 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Tulajdonság | Típus | Leírás | Példa |
 | --- | --- | --- | --- |
-| Szint |Karakterlánc | A diagnosztikai naplók szintje. Állítsa a 4-es szintre a tevékenység futtatási naplóihoz. | `4`  |
-| correlationId |Karakterlánc | Egy adott kérelem végpontok közötti nyomon követésére szolgáló egyedi azonosító | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| Szint |Sztring | A diagnosztikai naplók szintje. Állítsa a 4-es szintre a tevékenység futtatási naplóihoz. | `4`  |
+| correlationId |Sztring | Egy adott kérelem végpontok közötti nyomon követésére szolgáló egyedi azonosító | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | Sztring | Az esemény időpontja TimeSpan, UTC formátumban`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |triggerId| Sztring| Az trigger futtatásának azonosítója | `08587023010602533858661257311` |
 |resourceId| Sztring | Társított erőforrás-azonosító a (z) adatfeldolgozó erőforráshoz | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| Sztring | A diagnosztikai naplók kategóriája. A tulajdonság beállítása "PipelineRuns" értékre | `PipelineRuns` |
 |level| Sztring | A diagnosztikai naplók szintje. A tulajdonság "tájékoztató" értékre állítása | `Informational` |
-|operationName| Karakterlánc |A végleges állapotú trigger neve, függetlenül attól, hogy sikeresen kirúgták-e. "MyTrigger – sikeres", ha a szívverés sikeres volt| `MyTrigger - Succeeded` |
+|operationName| Sztring |A végleges állapotú trigger neve, függetlenül attól, hogy sikeresen kirúgták-e. "MyTrigger – sikeres", ha a szívverés sikeres volt| `MyTrigger - Succeeded` |
 |triggerName| Sztring | Az trigger neve | `MyTrigger` |
 |triggerType| Sztring | Az trigger típusa (manuális trigger vagy Schedule trigger) | `ScheduleTrigger` |
 |triggerEvent| Sztring | Az eseményindító eseménye | `ScheduleTime - 2017-07-06T01:50:25Z` |

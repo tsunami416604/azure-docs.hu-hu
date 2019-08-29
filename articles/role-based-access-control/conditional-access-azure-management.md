@@ -15,14 +15,17 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: d4036b2aaa59eeb8e38a5881e465031d7a2f15e3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: e4b7ce0701349cae3ef501213d0f822ee8d150d0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899710"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142829"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Az Azure-felügyelethez való hozzáférés kezelése feltételes hozzáféréssel
+
+> [!CAUTION]
+> Győződjön meg arról, hogy az Azure-felügyelethez való hozzáférés kezeléséhez szükséges szabályzat beállítása előtt meg kell ismernie a feltételes hozzáférés működését. Ügyeljen arra, hogy ne hozzon létre olyan feltételeket, amelyek letiltják a saját hozzáférését a portálhoz.
 
 A Azure Active Directory (Azure AD) feltételes hozzáférése a megadott feltételek alapján szabályozza a felhőalapú alkalmazásokhoz való hozzáférést. A hozzáférés engedélyezéséhez olyan feltételes hozzáférési szabályzatokat hozhat létre, amelyek engedélyezik vagy letiltják a hozzáférést attól függően, hogy teljesülnek-e a szabályzat követelményei. 
 
@@ -44,7 +47,5 @@ A létrehozott szabályzat az összes Azure felügyeleti végpontra vonatkozik, 
 
 Vegye figyelembe, hogy a házirend Azure PowerShellra vonatkozik, amely meghívja a Azure Resource Manager API-t. Ez nem vonatkozik az [Azure ad powershellre](/powershell/azure/active-directory/install-adv2), amely meghívja a Microsoft Graph.
 
-> [!CAUTION]
-> Győződjön meg arról, hogy az Azure-felügyelethez való hozzáférés kezeléséhez szükséges szabályzat beállítása előtt meg kell ismernie a feltételes hozzáférés működését. Ügyeljen arra, hogy ne hozzon létre olyan feltételeket, amelyek letiltják a saját hozzáférését a portálhoz.
 
 További információ a feltételes hozzáférés beállításáról és használatáról: [Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).

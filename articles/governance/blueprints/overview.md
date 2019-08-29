@@ -3,16 +3,16 @@ title: Az Azure Blueprints áttekintése
 description: Ismerje meg, hogyan hozhat létre, határozhat meg és helyezhet üzembe összetevőket az Azure-környezetben az Azure BluePrints szolgáltatásban.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/08/2019
+ms.date: 08/26/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: be7e3043172f988a429bbf02dec08bfbbc1a70b7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 631aa956573fd611988030af8ea7e34c6c266045
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848438"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146105"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Az Azure BluePrints szolgáltatás áttekintése
 
@@ -106,14 +106,23 @@ Tervek hozzárendeléséhez vagy a hozzárendelés megszüntetéséhez a fiókna
 > [!NOTE]
 > Mivel a tervhozzárendelések létrehozása előfizetésenként történik, a terv hozzárendelési és hozzárendelés-megszüntetési engedélyeit az előfizetés hatókörében kell megadni, vagy örökléssel kell biztosítani az előfizetési hatókörben.
 
-A fenti engedélyek mindegyike megtalálható a tulajdonosi szerepkörben. A **közreműködő** szerepkör létrehozta a tervrajzot, és törli a terv engedélyeit, de nem rendelkezik terv-hozzárendelési engedélyekkel. Ha ezek a beépített szerepkörök nem felelnek meg a biztonsági követelményeinek, létrehozhat [egyéni szerepköröket](../../role-based-access-control/custom-roles.md).
+A következő beépített szerepkörök érhetők el:
+
+|RBAC szerepkör | Leírás |
+|-|-|
+|[Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) | A többi engedélyen kívül minden Azure Blueprint kapcsolódó engedélyt tartalmaz. |
+|[Közreműködő](../../role-based-access-control/built-in-roles.md#contributor) | Más engedélyek mellett létrehozhat és törölhet tervrajz-definíciókat, de nem rendelkezik terv-hozzárendelési engedélyekkel. |
+|[Tervezet közreműködője](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Kezelheti a terv definícióit, de nem rendelheti hozzá őket. |
+|[Blueprint operátor](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Meglévő közzétett tervrajzokat is hozzárendelhet, de nem hozhat létre új terv-definíciókat. A terv-hozzárendelés csak akkor működik, ha a hozzárendelés felhasználó által hozzárendelt felügyelt identitással lett végrehajtva. |
+
+Ha ezek a beépített szerepkörök nem felelnek meg a biztonsági követelményeinek, létrehozhat [egyéni szerepköröket](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
 > Ha rendszer által hozzárendelt felügyelt identitást használ, az Azure-tervezetekhez tartozó egyszerű szolgáltatás tulajdonosi szerepkört igényel a hozzárendelt előfizetésben az üzembe helyezés engedélyezése érdekében. A portál használata esetén ezt a szerepkört a rendszer automatikusan biztosítja és visszavonja az üzembe helyezéshez. A REST API használata esetén a szerepkört manuálisan kell biztosítani, de az üzembe helyezés befejeződése a rendszer szintén automatikusan visszavonja. Ha felhasználó által hozzárendelt felügyelt identitást használ, csak a terv-hozzárendelést létrehozó felhasználónak kell tulajdonosi engedélyeket létrehoznia.
 
 ## <a name="naming-limits"></a>Elnevezési korlátok
 
-A következő lista felsorolja az egyes mezőkhöz tartozó korlátozásokat:
+Bizonyos mezőkhöz a következő korlátozások vonatkoznak:
 
 |Object|Mező|Engedélyezett karakterek|Legfeljebb Hossz|
 |-|-|-|-|

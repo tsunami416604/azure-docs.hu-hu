@@ -3,7 +3,7 @@ title: Hibák és kivételek (MSAL) | Azure
 description: Ismerje meg, hogyan kezelheti a hibákat és kivételeket, a feltételes hozzáférést és a jogcímeket a MSAL-alkalmazásokban.
 services: active-directory
 documentationcenter: dev-center-name
-author: TylerMSFT
+author: negoe
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
-ms.author: twhitney
+ms.date: 08/19/2019
+ms.author: negoe
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c37a52ee939e6144b98e6a1369f94beabc5fc1d9
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 77a2e571b76044ff9114f6671b187118cf03c0ba
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532865"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135813"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Kivételek és hibák kezelése a MSAL használatával
 A Microsoft Authentication Library (MSAL) kivételei az alkalmazások fejlesztői számára készültek a hibák megoldásához, és nem a végfelhasználók számára történő megjelenítéshez. A kivételek üzenetei nincsenek honosítva.
@@ -43,13 +43,13 @@ Itt láthatók azok a gyakori kivételek, amelyek felmerülhetnek, és néhány 
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: A felhasználó vagy a rendszergazda nem egyezett bele a (z) {appName} nevű, {appId} AZONOSÍTÓJÚ alkalmazás használatára. Interaktív engedélyezési kérelem küldése ehhez a felhasználóhoz és erőforráshoz.| Először be kell szereznie a felhasználói beleegyező engedélyt. Ha nem a .NET Core-ot használja (amely nem rendelkezik webes felhasználói felülettel), akkor a (csak `AcquireTokeninteractive`egyszer) hívást hívja meg. Ha a .net Core-ot használja `AcquireTokenInteractive`, vagy nem szeretné elvégezni a használatát, a felhasználó megkeresheti az URL-címet a beleegyezés megadásához:. https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read Hívás `AcquireTokenInteractive`:`app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: A többtényezős hitelesítés használatához a felhasználónak kell lennie.| Nincs megoldás, ha az MFA konfigurálva van a bérlőhöz, és a HRE úgy dönt, hogy kikényszeríti azt, egy interaktív folyamatra, például `AcquireTokenInteractive` vagy `AcquireTokenByDeviceCode`.|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: A támogatás típusa nem támogatott a */gyakori hibák* -vagy */consumers* -végpontokon. Használja a */Organizations* vagy a bérlő-specifikus végpontot. A */gyakori hibák*használta.| Ahogy az az Azure AD-ban is szerepel, a szolgáltatónak Bérlővel vagy egyéb */Organizations*kell rendelkeznie.|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: A kérelem törzsének a következő paramétert kell tartalmaznia: "client_secret vagy client_assertion".| Ez akkor fordulhat elő, ha az alkalmazás nincs nyilvános ügyfélalkalmazásként regisztrálva az Azure AD-ben. A Azure Portal szerkessze az alkalmazás jegyzékfájlját, és állítsa be a `allowPublicClient` `true`következőt:. |
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: A kérelem törzsének a következő paramétert kell tartalmaznia: "client_secret vagy client_assertion".| Ez a kivétel akkor fordulhat elő, ha az alkalmazás nem nyilvános ügyfélalkalmazásként van regisztrálva az Azure AD-ben. A Azure Portal szerkessze az alkalmazás jegyzékfájlját, és állítsa be a `allowPublicClient` `true`következőt:. |
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| unknown_user-üzenet: Nem azonosítható a bejelentkezett felhasználó| A függvénytár nem tudta lekérdezni az aktuálisan bejelentkezett Windows-felhasználót, vagy a felhasználó nem AD vagy HRE csatlakoztatott (a munkahelyhez csatlakoztatott felhasználók nem támogatottak). 1\. megoldás: a UWP győződjön meg arról, hogy az alkalmazás a következő képességekkel rendelkezik: Vállalati hitelesítés, magánhálózat (ügyfél és kiszolgáló), felhasználói fiók adatai. 2\. mérséklés: Implementálja saját logikáját a Felhasználónév beolvasásához (például john@contoso.com), és használja `AcquireTokenByIntegratedWindowsAuth` a felhasználónevet tartalmazó űrlapot.|
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| Ez a módszer Active Directory (AD) által közzétett protokollra támaszkodik. Ha a felhasználó a Azure Active Directory AD-biztonsági mentés nélkül lett létrehozva ("felügyelt" felhasználó), ez a metódus sikertelen lesz. Az AD-ben létrehozott és a HRE által támogatott felhasználók ("összevont" felhasználók) kihasználhatják ezt a nem interaktív hitelesítési módszert. Kockázatcsökkentő Használjon interaktív hitelesítést.|
 
 ## <a name="javascript-errors"></a>JavaScript-hibák
 
-A MSAL. js olyan hibaüzeneteket biztosít, amelyek absztrakt és osztályozzák a gyakori hibák különböző típusait, és rendelkeznek egy felülettel a hibák adott részleteinek eléréséhez, például a hibaüzenetek megfelelő kezeléséhez.
+A MSAL. js olyan hibaüzeneteket biztosít, amelyek absztrakt és osztályozzák a gyakori hibák különböző típusait. Emellett felületet biztosít a hibák konkrét részleteinek eléréséhez, például a hibaüzenetek megfelelő kezeléséhez.
 
 **Hiba objektum**
 
@@ -65,7 +65,7 @@ export class AuthError extends Error {
 }
 ```                
 A hiba osztály kibővítésével a következő tulajdonságokat érheti el:
-* **AuthError. Message:** Ez ugyanaz, mint a errorMessage.
+* **AuthError. Message:**  Ugyanaz, mint a errorMessage.
 * **AuthError. stack:** Az eldobott hibák verem-nyomkövetése. A nyomkövetés kiindulási pontja a hiba.
 
 **Hibák típusai**
@@ -74,15 +74,15 @@ A következő típusú hibák érhetők el:
 
 * *AuthError:* A MSAL. js függvénytár alapszintű hiba osztálya váratlan hibákhoz is használatos.
 
-* *ClientAuthError:* A hiba osztály, amely az ügyfél-hitelesítéssel kapcsolatos problémát jelöli. A könyvtárból érkező hibák többsége ClientAuthErrors lesz. Ezek olyan hibák lehetnek, mint például a bejelentkezési módszer meghívása, amikor a bejelentkezés folyamatban van, a felhasználók pedig megszakítják a bejelentkezést stb.
+* *ClientAuthError:* Hiba osztály, amely az ügyfél-hitelesítéssel kapcsolatos problémát jelöli. A könyvtárból érkező hibák többsége ClientAuthErrors lesz. Ezek a hibák olyanok, mint a bejelentkezési módszer meghívása, amikor a bejelentkezés folyamatban van, a felhasználók pedig megszakítják a bejelentkezést és így tovább. 
 
 * *ClientConfigurationError:* Hiba osztály: a ClientAuthError kibővítése a kérések előtt, amikor a megadott felhasználói konfigurációs paraméterek hibásak vagy hiányoznak.
 
 * *ServerError* A hitelesítési kiszolgáló által küldött hibaüzeneteket jelölő hiba osztálya. Ezek lehetnek olyan hibák, mint például az érvénytelen kérelmek formátuma vagy paraméterei, vagy bármilyen más hiba, amely megakadályozza, hogy a kiszolgáló hitelesítse vagy engedélyezze a felhasználót.
 
-* *InteractionRequiredAuthError:* A hiba osztálya a ServerError kiterjesztésével olyan kiszolgálói hibákat jelöl, amelyek interaktív hívást igényelnek. Ez akkor fordul elő `acquireTokenSilent` , ha a felhasználónak a kiszolgálóval való interakcióra van szüksége a hitelesítő adatok vagy a hitelesítés/engedélyezés jóváhagyása érdekében. A hibakódok közé tartoznak a következők: "interaction_required", "login_required", "consent_required".
+* *InteractionRequiredAuthError:* A ServerError kiterjesztése a kiszolgálói hibákra, amelyek interaktív hívást igényelnek. Ez a hiba akkor fordul `acquireTokenSilent` elő, ha a felhasználónak a kiszolgálóval való interakcióra van szüksége a hitelesítő adatok vagy a hitelesítés/engedélyezés jóváhagyása érdekében. A hibakódok közé tartoznak a következők: "interaction_required", "login_required", "consent_required".
 
-A hitelesítési folyamatokban az átirányítási módszerekkel (`loginRedirect`, `acquireTokenRedirect`) való hibakezelés érdekében regisztrálnia kell a visszahívást, amely sikeres vagy `handleRedirectCallback()` sikertelen volt az átirányítás után, a következő módon:
+A hitelesítési folyamatokban az átirányítási módszerekkel (`loginRedirect`, `acquireTokenRedirect`) való hibakezelés érdekében regisztrálnia kell a visszahívást, amelyet a rendszer a metódus használatával `handleRedirectCallback()` sikeres vagy sikertelen műveletnek nevez a következő módon:
 
 ```javascript
 function authCallback(error, response) {
@@ -111,7 +111,9 @@ myMSALObj.acquireTokenPopup(request).then(
 
 ### <a name="interaction-required-errors"></a>Interakció szükséges hibák
 
-A rendszer hibát ad vissza, ha felhasználói felületi interakcióra van szükség. Ez azt jelenti, hogy nem interaktív módszert próbált használni a token beszerzéséhez (például `acquireTokenSilent`), de a MSAL nem lehetett csendesen megtenni. A lehetséges okok a következők:
+A rendszer hibát ad vissza, ha nem interaktív módszert használ a token beszerzéséhez (például `acquireTokenSilent`), és a MSAL nem tudott csendesen megtenni. 
+
+A lehetséges okok a következők:
 
 * be kell jelentkeznie
 * meg kell egyeznie
@@ -160,28 +162,24 @@ A hiba kezelésére szolgáló minta egy interaktív hívást tesz lehetővé a 
 myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenResponse) {
     // call API
 }).catch( function (error) {
-    // call acquireTokenPopup in case of acquireTokenSilent failure
-    myMSALObj.acquireTokenPopup(accessTokenRequest).then(
-        function (accessTokenResponse) {
+    if (error instanceof InteractionRequiredAuthError) {
+        // Extract claims from error message
+        accessTokenRequest.claimsRequest = extractClaims(error.errorMessage);
+        // call acquireTokenPopup in case of InteractionRequiredAuthError failure
+        myMSALObj.acquireTokenPopup(accessTokenRequest).then(function (accessTokenResponse) {
             // call API
         }).catch(function (error) {
             console.log(error);
         });
+    }
 });
 ```
 
 A jogkivonat interaktív beszerzése kéri a felhasználót, és lehetőséget biztosít számukra a kötelező feltételes hozzáférési szabályzat kielégítésére.
 
-Ha feltételes hozzáférést igénylő API-t hív meg, az API-val kapcsolatos hiba esetén a jogcímek kérdését is megkaphatja. Ebben az esetben átadhatja a hibában visszaadott jogcímeket `extraQueryParameters` a jogkivonatok beszerzésére irányuló hívásban, hogy a felhasználó a megfelelő szabályzat teljesítését kérje:
+Ha feltételes hozzáférést igénylő API-t hív meg, az API-val kapcsolatos hiba esetén a jogcímek kérdését is megkaphatja. Ebben az esetben átadhatja a hibában `claimsRequest` visszaadott jogcímeket az `AuthenticationParameters.ts` osztály mezőjébe, hogy az megfeleljen a megfelelő házirendnek. 
 
-```javascript
-var request = {
-    scopes: ["user.read"],
-    extraQueryParameters: {claims: claims}
-}
-
-myMSALObj.acquireTokenPopup(request);
-```
+További részletekért lásd: [további]() jogcímek igénylése.
 
 ## <a name="retrying-after-errors-and-exceptions"></a>Próbálkozás a hibák és kivételek után
 
@@ -189,7 +187,7 @@ myMSALObj.acquireTokenPopup(request);
 A MSAL.NET egy egyszerű újrapróbálkozási mechanizmust valósít meg a 500-600-es HTTP-hibakódok miatti hibák esetén.
 
 ### <a name="http-429"></a>HTTP 429
-Ha a szolgáltatás-jogkivonat-kiszolgáló (STS) túl elfoglalt a "túl sok kérelem" miatt, a 429 HTTP-hibát ad vissza, amely arra utal, hogy mikor próbálkozzon újra (az újrapróbálkozási válasz mező) a másodpercben vagy egy dátumban.
+Ha a szolgáltatás-jogkivonat-kiszolgáló (STS) túl sok kéréssel túl van terhelve, a 429 HTTP-hibát ad vissza, amely arra utal, hogy mikor próbálkozzon újra az idő függvényében. A hiba a `Retry-After` válasz mezőből olvasható.
 
 #### <a name="net"></a>.NET
 A [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) -kivételi felületek `System.Net.Http.Headers.HttpResponseHeaders` tulajdonságként `namedHeaders`jelennek meg. Ezért további információkat is kihasználhat a hibakódból az alkalmazások megbízhatóságának növelése érdekében. Abban az esetben, ha az imént leírtuk, a `RetryAfterproperty` (típus `RetryConditionHeaderValue`) és a számítási kapacitás használatával próbálkozzon újra.

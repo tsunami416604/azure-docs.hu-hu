@@ -16,12 +16,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf6190ae35a573ab4b9a37f5cd1f2bd75f06ca46
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3c6ad7e305958131c4f544dfa2022e7471e9adac
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667159"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147110"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>A felhasználó kiépítési állapotának megtekintése
 
@@ -62,7 +62,7 @@ A kiépítési naplók rögzítik a kiépítési szolgáltatás által végrehaj
 További információ a Azure Portal naplóinak olvasásához: a [kiépítési jelentéskészítési útmutató](check-status-user-account-provisioning.md).
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Mennyi időt vesz igénybe a felhasználók kiépítése?
-Ha automatikus felhasználó-kiosztást használ egy alkalmazással, az Azure AD automatikusan kiépíti és frissíti a felhasználói fiókokat az alkalmazásokban olyan dolgok alapján, mint a [felhasználó-és csoport-hozzárendelés](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) egy rendszeres ütemezett időintervallumban, jellemzően 10 percenként.
+Ha automatikus felhasználó-kiosztást használ egy alkalmazással, az Azure AD automatikusan kiépíti és frissíti a felhasználói fiókokat az alkalmazásokban olyan dolgok alapján, mint a [felhasználó-és csoport-hozzárendelés](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) egy rendszeres ütemezett időintervallumban, jellemzően 40 percenként.
 
 Az adott felhasználó üzembe helyezéséhez szükséges idő főleg attól függ, hogy a kiépítési feladatok kezdeti szinkronizálást vagy növekményes szinkronizálást futtatnak-e.
 
@@ -98,7 +98,7 @@ A **kezdeti szinkronizálás**befejezéséhez szükséges időt befolyásoló t�
 
 - Azt határozza meg, hogy a kiépítés hatókörében lévő felhasználók egyeznek-e a célalkalmazás meglévő felhasználóival, vagy az első alkalommal kell létrehozni. Azok a szinkronizálási feladatok, amelyekhez az összes felhasználó először jön létre, akár *kétszer is* eltarthat, amíg a szinkronizálási feladatok, amelyekhez az összes felhasználó hozzá van hasonlítva a meglévő felhasználókhoz.
 
-- A naplókban előforduló hibák [száma.](check-status-user-account-provisioning.md) A teljesítmény lassabb, ha sok hiba van, és a kiépítési szolgáltatás karantén állapotba került.    
+- A naplókban előforduló [](check-status-user-account-provisioning.md)hibák száma. A teljesítmény lassabb, ha sok hiba van, és a kiépítési szolgáltatás karantén állapotba került.    
 
 - A rendszer által megvalósított kérelmek gyakoriságának korlátai és szabályozása. Egyes megcélzott rendszerek a kérelmek arányának korlátozásait és szabályozását implementálják, ami hatással lehet a teljesítményre a nagy szinkronizálási műveletek során. Ilyen körülmények között egy olyan alkalmazás, amely túl sok kérést kap, lassú lehet a válasz sebessége vagy a kapcsolat lezárása. A teljesítmény javítása érdekében az összekötőt úgy kell módosítani, hogy ne küldje el gyorsabban az alkalmazás kéréseit, mint amennyit az alkalmazás feldolgozhat. A Microsoft által létrehozott összekötők kiépítése ezt a beállítást teszi elérhetővé. 
 

@@ -4,19 +4,19 @@ ms.service: batch
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: lahugh
-ms.openlocfilehash: 14891acdbe9a0f810666ba54f8d63050a9330601
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 0ca6e38a9c9b5b92041e7f5b0fe964de58ef8f55
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179468"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128055"
 ---
 ## <a name="get-account-credentials"></a>Fiók hitelesítő adatainak lekérése
 
 Meg kell adnia például a Batch- és a Storage-fiók hitelesítő adatait. A szükséges hitelesítő adatokat például az Azure Portalon kérheti le egyszerűen. (A hitelesítő adatok az Azure API-k vagy parancssori eszközök használatával is lekérhetők.)
 
-1. Kattintson a **Minden szolgáltatás** > **Batch-fiókok** lehetőségre, majd a Batch-fiók nevére.
+1. Válassza a **minden szolgáltatás** > **Batch-fiókok**lehetőséget, majd válassza ki a Batch-fiók nevét.
 
-2. A Batch hitelesítő adatainak megtekintéséhez kattintson a **Kulcsok** elemre. Másolja a **Batch-fiók**, az **URL** és az **Elsődleges elérési kulcs** mező értékét egy szövegszerkesztőbe.
+2. A Batch hitelesítő adatainak megtekintéséhez válassza a **kulcsok**lehetőséget. Másolja a **Batch-fiók**, az **URL** és az **Elsődleges elérési kulcs** mező értékét egy szövegszerkesztőbe.
 
-3. A Storage-fiók nevének és kulcsainak megtekintéséhez kattintson a **Storage-fiók** elemre. Másolja a **Storage-fiók neve** és az **1. kulcs** mező értékét egy szövegszerkesztőbe.
+3. A Storage-fiók nevének és kulcsainak megtekintéséhez válassza a **Storage-fiók**lehetőséget. Másolja a **Storage-fiók neve** és az **1. kulcs** mező értékét egy szövegszerkesztőbe.

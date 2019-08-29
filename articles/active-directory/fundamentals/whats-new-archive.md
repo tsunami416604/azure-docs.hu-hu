@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a978e2755818e88cad580753e041eacd50a9e6d2
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 1b5615de8df42bca64822b0e459c7815412300af
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980486"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125382"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Újdonságok archívuma? az Azure Active Directoryban
 
@@ -1843,11 +1843,11 @@ Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kap
 **Szolgáltatás kategóriája:** Identitásvédelem  
 **A termék képességei:** Identitás-biztonsági & védelme
 
-Az insight észlelt kockázati eseményekhez kap az Azure AD-előfizetéshez vannak kötve. Az Azure AD Premium P2 kiadás az a legrészletesebb információkat minden mögöttes észlelés beolvasása.
+Az észlelt kockázatok észlelésével kapcsolatos betekintés az Azure AD-előfizetéshez van kötve. Az Azure AD Premium P2 kiadás az a legrészletesebb információkat minden mögöttes észlelés beolvasása.
 
-Az Azure AD Premium P1 Edition, amelyek nem tartoznak a licenc tartalomként jelennek meg a bejelentkezési kockázati esemény további észlelt kockázattal érintett.
+A prémium szintű Azure AD P1 kiadással a licenc által nem érintett észlelések nem jelennek meg, mivel a kockázatkezelési szolgáltatás a további kockázatok észlelésével jelentkezik.
 
-További információkért tekintse át [Az Azure Active Directory kockázati eseményeivel](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events) foglalkozó cikket.
+További információ: [Azure Active Directory kockázati észlelések](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events).
  
 ---
 
@@ -1913,7 +1913,7 @@ Az általánosan elérhető az új Azure Active Directory felügyeleti konzol é
 
 **Mi érhető el?**
 
-Az új felügyeleti konzol az átmenet részeként elérhetővé vált 2 új API-k az Azure AD-Tevékenységnaplók beolvasása. Az új API-készletet biztosít gazdagabb szűrési és rendezési funkció részletesebb naplózás és a bejelentkezési tevékenységek biztosítása mellett. Az adatok korábban már elérhető a biztonsági jelentések mostantól elérhető az Identity Protection kockázati események API-t a Microsoft Graph használatával.
+Az új felügyeleti konzol az átmenet részeként elérhetővé vált 2 új API-k az Azure AD-Tevékenységnaplók beolvasása. Az új API-készletet biztosít gazdagabb szűrési és rendezési funkció részletesebb naplózás és a bejelentkezési tevékenységek biztosítása mellett. A biztonsági jelentésekben korábban elérhető adatok mostantól az Identity Protection kockázati észlelések API-n keresztül érhetők el Microsoft Graphban.
 
 További információkért lásd:
 
@@ -2264,13 +2264,13 @@ További információ: [vezérlők az Azure ad feltételes hozzáférésben](htt
  
 ---
 
-### <a name="aggregation-of-real-time-risk-events"></a>Valós idejű kockázati események összesítése
+### <a name="aggregation-of-real-time-risk-detections"></a>A valós idejű kockázati észlelések összesítése
 
 **Típusa** Megváltozott funkció    
 **Szolgáltatás kategóriája:** Identitásvédelem  
 **A termék képességei:** Identitás biztonsága és védelme
 
-Az Azure AD Identity Protection az összes olyan valós idejű kockázati események, amelyek az ugyanazon IP-cím származik az adott napon most már az egyes kockázati esemény összesítjük. Ez a változás bármilyen változás nélkül jelenik meg a felhasználó biztonsági kockázati események mennyiségét korlátozza.
+Azure AD Identity Protection az összes olyan valós idejű kockázati észlelést, amely egy adott napon belül ugyanabból az IP-címről származik, az egyes kockázati észlelési típusok esetében összesítve lesz. Ez a változás korlátozza a kockázati észlelések mennyiségét, ami a felhasználói biztonság módosítása nélkül jelenik meg.
 
 Az alapul szolgáló valós idejű észlelését működik minden alkalommal, amikor a felhasználó bejelentkezik. Ha rendelkezik egy olyan bejelentkezési kockázat-biztonsági házirendet, állítsa be a multi-factor Authentication szolgáltatás blokkolja a hozzáférést, továbbra is aktivált minden kockázatos bejelentkezés során.
  
@@ -2388,7 +2388,7 @@ További információkért lásd: [egy külső alkalmazás az Azure ad-ben a fel
 
 **Mi érhető el?**
 
- Az új felügyeleti konzol, a két új API-kkal való áttérés részeként az Azure Active Directory érhetők el naplók. Az új API-készletet biztosít gazdagabb szűrési és rendezési funkció részletesebb naplózás és a bejelentkezési tevékenységek biztosítása mellett. Az adatok korábban már elérhető a biztonsági jelentések mostantól elérhetők az Identity Protection kockázati események API-k a Microsoft Graph.
+ Az új felügyeleti konzol, a két új API-kkal való áttérés részeként az Azure Active Directory érhetők el naplók. Az új API-készletet biztosít gazdagabb szűrési és rendezési funkció részletesebb naplózás és a bejelentkezési tevékenységek biztosítása mellett. A biztonsági jelentésekben korábban elérhető adatok mostantól az Identity Protection kockázati észlelési API-n keresztül érhetők el Microsoft Graphban.
 
 
 ## <a name="september-2017"></a>2017. szeptember

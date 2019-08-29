@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f52ca8062ed1ed196a67d25385b712451afe8ae
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 02c093375ba2dc5c851a2deb35bdea28338ee982
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532729"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135768"
 ---
 # <a name="logging"></a>Naplózás
 A Microsoft Authentication Library (MSAL) alkalmazásai olyan naplófájlok előállítására szolgálnak, amelyek segíthetnek a problémák diagnosztizálásában és a részletekben. Egy alkalmazás több sornyi kóddal is konfigurálhatja a naplózást, és egyéni vezérléssel láthatja el a részletességi szintet, valamint azt, hogy a rendszer naplózza-e a személyes és a szervezeti adatokat. Javasoljuk, hogy állítson be egy MSAL-naplózási visszahívást, és adjon meg egy módszert a felhasználók számára a hitelesítési problémákkal rendelkező naplók elküldéséhez.
@@ -100,14 +100,15 @@ var msalConfig = {
     auth: {
         clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”,
     },
-    system: {
-        logger: {
-            localCallback: loggerCallback,
-            level: Msal.LogLevel.Verbose,
-            piiLoggingEnabled: false,
-            correlationId: '1234'
-        }
-    }
+     system: {
+             logger: new Msal.Logger(
+                                loggerCallback ,{
+                                     level: Msal.LogLevel.Verbose,
+                                     piiLoggingEnabled: false,
+                                     correlationId: '1234'
+                                }
+                        )
+     }
 }
 
 var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);

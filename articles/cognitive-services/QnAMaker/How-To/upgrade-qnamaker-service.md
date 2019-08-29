@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 08/26/2019
 ms.author: diberry
-ms.openlocfilehash: df4aa2d6a3c4690fb1fc38b0f4f7d49afccdd657
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ba9c2cd5a85e02a7dd4b1091a050d76e94861964
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640486"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147082"
 ---
 # <a name="share-or-upgrade-your-qna-maker-service"></a>QnA Maker szolgáltatás megosztása vagy frissítése
 Megoszthatja vagy frissítheti QnA Maker szolgáltatásait, hogy jobban kezelhesse az erőforrásokat. 
@@ -26,13 +26,14 @@ Megadhatja, hogy a kezdeti létrehozás után a QnA Maker verem egyes összetev�
 
 QnA Maker több Azure-erőforrást hoz létre. A felügyelet és a költségmegosztás előnyeinek csökkentése érdekében az alábbi táblázat segítségével megismerheti, hogy mit tehet és nem oszthat meg:
 
-|Szolgáltatás|Megosztás|
-|--|--|
-|Cognitive Services|X|
-|App Service-csomag|✔|
-|App Service-ben|X|
-|Application Insights|✔|
-|Keresési szolgáltatás|✔|
+|Szolgáltatás|Megosztás|Reason|
+|--|--|--|
+|Cognitive Services|X|Nem lehetséges a kialakítás|
+|App Service-csomag|✔|Az App Service-csomaghoz lefoglalt rögzített lemezterület. Ha más alkalmazások is ugyanazt a App Service-csomagot osztják meg, akkor jelentős lemezterületet is igénybe vesz, a QnAMaker App Service problémákba kerül.|
+|App Service-ben|X|Nem lehetséges a kialakítás|
+|Application Insights|✔|Megosztható|
+|Keresési szolgáltatás|✔|1. `testkb` a QnAMaker szolgáltatás számára fenntartott név, amelyet mások nem használhatnak.<br>2. A név `synonym-map` szerinti szinonimák a QnAMaker szolgáltatás számára vannak fenntartva.<br>3. A közzétett Tudásbázis számát a keresési szolgáltatás szintje korlátozza. Ha ingyenes indexek állnak rendelkezésre, más szolgáltatások is használhatják azt.|
+
 
 ## <a name="upgrade-qna-maker-management-sku"></a>QnA Maker felügyeleti SKU frissítése
 

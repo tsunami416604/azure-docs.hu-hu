@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2f60b496594946e9175ecf5c1948b08c9065b1b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 220f68461d47293e9f43a650e4fa5d1d59bce02f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848202"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128337"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -30,7 +30,7 @@ A következő táblázat a jelen cikkben tárgyalt összes fejlesztési környez
 | [Helyi környezet](#local) | A fejlesztési környezet és a függőségek teljes körű vezérlése. Bármilyen felépíthető eszközzel, környezettel vagy tetszőleges IDE-val futtatható. | A kezdéshez tovább tart. Telepíteni kell a szükséges SDK-csomagokat, és a környezetnek is telepítve kell lennie, ha még nem rendelkezik ilyennel. |
 | [Azure Databricks](#aml-databricks) | Ideális megoldás a méretezhető Apache Spark platformon nagy léptékű, intenzív gépi tanulási munkafolyamatok futtatására. | A kísérleti gépi tanulás vagy a kisebb léptékű kísérletek és munkafolyamatok meggyilkolása. További költségek Azure Databricksért. Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/databricks/). |
 | [A Data Science Virtual Machine (DSVM)](#dsvm) | Hasonlóan a felhőalapú notebook virtuális géphez (a Python és az SDK előre telepítve van), de további népszerű adatelemzési és gépi tanulási eszközökkel előre telepítve van. Egyszerűen méretezhető és kombinálható más egyéni eszközökkel és munkafolyamatokkal. | A felhőalapú notebook virtuális géphez képest lassabban megkezdhető a kezdeti lépések. |
-| [Azure Notebooks](#aznotebooks) | A Python és az SDK előre telepített, ingyenes és könnyű súlyt nyújt az első lépésekhez. | A kevésbé nagy teljesítményű virtuális gépek elérhetők a felhőalapú notebook-alapú virtuális gépekhez képest. Elkülönített a munkaterületről és egyéb erőforrásokról. |
+| [Azure Notebooks](#aznotebooks) | A Python és az SDK előzetes telepítése ingyenes és könnyű használatot nyújt. | A felhőalapú notebook virtuális géphez képest kevésbé nagy teljesítményű virtuális gépek érhetők el. Elkülönített a munkaterületről és egyéb erőforrásokról. |
 
 Ez a cikk további használati tippeket is tartalmaz a következő eszközökhöz:
 
@@ -72,7 +72,7 @@ A notebook virtuális gép:
 
   Ha kódot használ, a virtuális gép oktatóanyagokat és mintákat tartalmaz, amelyek segítségével megismerheti a Azure Machine Learning szolgáltatás használatát. A minta jegyzetfüzeteket a munkaterület Azure Blob Storage fiókjában tárolja, így azok megoszthatók a virtuális gépek között. A futtatáskor hozzáférhetnek a munkaterület adattárakhoz és számítási erőforrásaihoz is.
 
-+ **Egyszerű beállítás**: Hozzon létre egyet bármikor a Azure Machine Learning munkaterületen belülről. Adjon meg csak egy nevet, és adjon meg egy Azure-beli virtuálisgép-típust. Próbálja ki most ezt [az oktatóanyagot: Környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md)beállítása.
++ **Egyszerű beállítás**: Hozzon létre egyet bármikor a Azure Machine Learning munkaterületen belülről. Adjon meg csak egy nevet, és adjon meg egy Azure-beli virtuális gép típusát. Próbálja ki most ezt [az oktatóanyagot: Környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md)beállítása.
 
 + **Testreszabható**. A felügyelt és biztonságos virtuálisgép-ajánlat során teljes hozzáférést biztosít a hardver képességeihez, és testre szabhatja a szíved iránti vágyát. Például gyorsan létrehozhatja a legújabb NVidia V100-alapú virtuális gépet az új neurális hálózati architektúra lépésenkénti hibakeresésének végrehajtásához.
 
@@ -187,16 +187,21 @@ Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hoz
 
     Ezzel a paranccsal a notebook-és automl-extrákkal telepítheti a Base Azure Machine Learning SDK-t. Az `automl` extra egy nagyméretű telepítés, és a zárójelből is eltávolítható, ha nem szeretne automatizált gépi tanulási kísérleteket futtatni. Az `automl` extra a Azure Machine learning adat-előkészítési SDK-t is tartalmazza alapértelmezett függőségként.
 
-     ```shell
+    ```shell
     pip install azureml-sdk[notebooks,automl]
     ```
 
    > [!NOTE]
-   > Ha olyan üzenetet kap, hogy a PyYAML nem távolítható el, használja inkább a következő parancsot:
+   > * Ha olyan üzenetet kap, hogy a PyYAML nem távolítható el, használja inkább a következő parancsot:
    >
-   > `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >
+   > * A macOS Catalinatől kezdve a zsh (Z Shell) az alapértelmezett bejelentkezési rendszerhéj és az interaktív rendszerhéj. A zsh-ben használja az alábbi parancsot, amely a "\\" (fordított perjel) karakterrel rendelkező zárójeleket követi:
+   >
+   >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
-   Az SDK telepítése több percet is igénybe vehet. A telepítési lehetőségekkel kapcsolatos további információkért tekintse meg a telepítési [útmutatót](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) .
+
+   Az SDK telepítése több percet is igénybe vehet. További információ a telepítési lehetőségekről: telepítési [útmutató](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
 1. Telepítsen további csomagokat a Machine learning-kísérletezéshez.
 
@@ -280,7 +285,7 @@ Ha a Visual Studio Code-ot szeretné használni a fejlesztéshez, tegye a követ
 <a name="aml-databricks"></a>
 
 ## <a name="azure-databricks"></a>Azure Databricks
-A Azure Databricks egy Apache Spark-alapú környezet az Azure-felhőben. Egy együttműködő notebook-alapú környezetet biztosít CPU-vagy GPU-alapú számítási fürttel.
+A Azure Databricks egy Apache Spark-alapú környezet az Azure-felhőben. Együttműködik a notebookon alapuló, CPU-vagy GPU-alapú számítási fürttel.
 
 Hogyan működik a Azure Databricks Azure Machine Learning szolgáltatással:
 + A modelleket Spark MLlib használatával is betaníthatja, és a modellt ACI/AK-ba helyezheti el Azure Databricks belülről.
@@ -329,14 +334,14 @@ Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com
    1. A **tárak** lapon válassza az **Újraindítás**lehetőséget.
 
    Vegye figyelembe a következőket is:
-   + A Automl config Azure Databricks használatakor adja hozzá a következő paramétereket:
+   + A AutoML config Azure Databricks használatakor adja hozzá a következő paramétereket:
        1. ```max_concurrent_iterations```a fürt munkavégző csomópontjainak száma alapján történik.
         2. ```spark_context=sc```az alapértelmezett Spark-környezeten alapul.
-   + Ha pedig egy régi SDK-verzióval rendelkezik, törölje a fürt telepített libs elemét, és váltson a kukába. Telepítse az új SDK-verziót, és indítsa újra a fürtöt. Ha probléma merül fel, válassza le és csatlakoztassa újra a fürtöt.
+   + Ha pedig egy régi SDK-verzióval rendelkezik, törölje a fürt telepített libs elemét, és váltson a kukába. Telepítse az új SDK-verziót, és indítsa újra a fürtöt. Ha az újraindítás után probléma merül fel, válassza le és csatlakoztassa újra a fürtöt.
 
 Ha a telepítés sikeres volt, az importált függvénytárnak a következőhöz hasonlóan kell kinéznie:
 
-SDK a Databricks **** -hez a Databricks ![-hez készült automatikus gépi tanulás nélkül Azure Machine learning SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+SDK a Databricks -hez a Databricks ![-hez készült automatikus gépi tanulás nélkül Azure Machine learning SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
 SDK az Databricks-hez **készült** automatizált ![Machine learning SDK-val a Databricks-re telepített automatikus gépi tanulással](./media/how-to-configure-environment/automlonadb.jpg)
 
@@ -357,7 +362,7 @@ Próbálja ki:
 
 A Azure Notebooks használatának megkezdéséhez használja a [Azure Portal](https://portal.azure.com) .  Nyissa meg a munkaterületet, és az **Áttekintés** szakaszban válassza az első **lépések lehetőséget Azure Notebooks**.
 
-Alapértelmezés szerint a Azure Notebooks egy ingyenes szolgáltatási szintet használ, amely legfeljebb 4 GB memóriával és 1 GB-nyi adattal rendelkezik. A korlátokat azonban eltávolíthatja egy Data Science Virtual Machine-példánynak a Azure Notebooks projekthez való csatolásával. További információ: [Azure Notebooks projektek kezelése és konfigurálása – számítási réteg](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
+Alapértelmezés szerint a Azure Notebooks egy ingyenes szolgáltatási szintet használ, amely legfeljebb 4 GB memóriával és 1 GB adattal rendelkezik. A korlátokat azonban eltávolíthatja egy Data Science Virtual Machine-példánynak a Azure Notebooks projekthez való csatolásával. További információ: [Azure Notebooks projektek kezelése és konfigurálása – számítási réteg](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a id="workspace"></a>Munkaterület-konfigurációs fájl létrehozása
 

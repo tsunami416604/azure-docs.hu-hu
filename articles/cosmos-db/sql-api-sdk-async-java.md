@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 07/01/2019
 ms.author: moderakh
-ms.openlocfilehash: 3bee473adde9c4762cf400dff6190eb76a4cc8d7
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 156699b8d8c1a645961f4e919bdd843d995a3d18
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624691"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142652"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB aszinkron Java SDK az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -152,9 +152,13 @@ A Microsoft legalább értesítést küldenek **12 hónapig** kivonása egy SDK-
 
 Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer elutasítja a szolgáltatás által.
 
+> [!WARNING]
+> Az SQL API-hoz készült aszinkron Java SDK **1. x** verziója az **2020-as augusztus 30-** án megszűnik.
+> 
+>
 <br/>
 
-| Verzió | Kiadás dátuma | Visszavonás dátuma |
+| Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
 | [2.4.3](#2.4.3) |Mar 5, 2019|--- |
 | [2.4.2](#2.4.2) |Mar 1, 2019|--- |
@@ -169,9 +173,9 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 | [2.1.0](#2.1.0) |2018. szeptember 5.|--- |
 | [2.0.1](#2.0.1) |2018. augusztus 16.|--- |
 | [2.0.0](#2.0.0) |2018. június 20.|--- |
-| [1.0.2](#1.0.2) |2018. május 18.|--- |
-| [1.0.1](#1.0.1) |2018. április 20.|--- |
-| [1.0.0](#1.0.0) |2018. február 27.|--- |
+| [1.0.2](#1.0.2) |2018. május 18.|2020. augusztus 30-ig |
+| [1.0.1](#1.0.1) |2018. április 20.|2020. augusztus 30-ig |
+| [1.0.0](#1.0.0) |2018. február 27.|2020. augusztus 30-ig |
 
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

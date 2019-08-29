@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 509bd472fe5f930ac830b8b4016129f8acb67324
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80bc5ef78a73430dea23bdd644767d9fa9b3c9a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612882"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124680"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Gyakori kérdések (GYIK)
 Ez az oldal válaszol a Azure Active Directory Domain Servicesával kapcsolatos gyakori kérdésekre. A frissítések ellenőrzésének megtartása.
@@ -61,6 +61,9 @@ Nem. A Azure AD Domain Services által megadott tartomány felügyelt tartomány
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>A vendégnek a címtárat használó felhasználók meghívókat Azure AD Domain Services?
 Nem. Az Azure ad [B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) Meghívási folyamatát használó vendég felhasználók a Azure ad Domain Services felügyelt tartományba vannak szinkronizálva. A felhasználók jelszavait azonban nem tárolja az Azure AD-címtárban. Ezért a Azure AD Domain Services nem képes szinkronizálni az NTLM-és Kerberos-kivonatokat a felügyelt tartományba tartozó felhasználók számára. Ennek eredményeképpen az ilyen felhasználók nem jelentkezhetnek be a felügyelt tartományba, vagy számítógépeket csatlakoztatnak a felügyelt tartományhoz.
+
+### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Áthelyezhetek egy meglévő Azure AD Domain Services felügyelt tartományt egy másik előfizetésbe, erőforráscsoporthoz, régióba vagy virtuális hálózatra?
+Nem. Azure AD Domain Services felügyelt tartomány létrehozása után nem helyezheti át a példányt másik erőforráscsoporthoz, virtuális hálózatba, előfizetésbe stb. Ügyeljen arra, hogy a legmegfelelőbb előfizetést, erőforráscsoportot, régiót és virtuális hálózatot válassza ki az Azure AD DS-példány telepítésekor.
 
 ## <a name="administration-and-operations"></a>Felügyelet és műveletek
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Csatlakozhatok a felügyelt tartományhoz tartozó tartományvezérlőhöz a Távoli asztal használatával?

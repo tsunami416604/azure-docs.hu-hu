@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: da97dde43a6ef13db204f1d3be1229a0dfc30af5
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 8747111921df494b8d5618dc8d6ece99fa821e47
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668039"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147637"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (node. js) használatával
 
@@ -44,9 +44,9 @@ Az oktatóanyag végén két Node. js-konzol alkalmazást futtat:
 > [!NOTE]
 > IoT Hub számos eszköz-platformot és nyelvet támogat (beleértve a C, .NET, JavaScript, Python és Java rendszereket) az Azure IoT Device SDK-k használatával. Tekintse meg az [Azure IoT fejlesztői központ] című témakört, amely részletesen ismerteti, hogyan csatlakoztatható az eszköz az Azure IoT Hubhoz.
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+## <a name="prerequisites"></a>Előfeltételek
 
-* Node. js 10.0. x vagy újabb verzió.
+* Node. js 10.0. x vagy újabb verzió. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítheti a Node. js-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
 
 * Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
 

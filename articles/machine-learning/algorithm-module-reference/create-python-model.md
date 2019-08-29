@@ -1,7 +1,7 @@
 ---
 title: 'Python-modell létrehozása: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Útmutató az Azure Machine Learning szolgáltatás a Python-modell létrehozása modell használatával hozzon létre egyéni modellezési vagy adatfeldolgozási modult.
+description: Ismerje meg, hogyan hozhat létre egyéni modellezési vagy adatfeldolgozási modult a Azure Machine Learning szolgáltatásban a Python modell létrehozása című témakörben.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,39 +9,38 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ea9b50cede3e2d264ca0476b6a987ca6896c3c79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6d7aabd41e9d0e872926adbbcb2d18332cb7d5e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029745"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128924"
 ---
 # <a name="create-python-model"></a>Python-modell létrehozása
 
-Ez a cikk ismerteti, hogyan használható a **létrehozása Python-modell** modul egy kellő modell létrehozása a Python-szkriptet. 
+Ez a cikk bemutatja, hogyan hozhat létre egy nem betanított modellt egy Python-szkriptből a **Python-modell létrehozása** modul használatával. 
 
-Minden tanuló, amely egy Python-csomag az Azure Machine Learning-környezetben megtalálható is a modell alapján. 
+A modellt a Azure Machine Learning-környezetben található Python-csomagban szereplő bármelyik tanulón alapozhatja. 
 
-Miután létrehozta a modellt, használhat [Train Model](train-model.md) egy adatkészleten a modell betanításához, mint bármely más learner az Azure Machine Learning. A betanított modell átadható [Score Model](score-model.md) előrejelzéseket a modell használatával. A betanított modell menthető, és a pontozási munkafolyamat közzétehetők webszolgáltatásként.
+A modell létrehozása után a betanítási [modell](train-model.md) segítségével betaníthatja a modellt egy adatkészleten, például a Azure Machine learning bármely más tanulója számára. A betanított modell átadható a [pontszám modellnek](score-model.md) , hogy a modell segítségével előrejelzéseket lehessen készíteni. A betanított modell így menthető, és a pontozási munkafolyamat webszolgáltatásként is közzétehető.
 
 > [!WARNING]
-> Jelenleg nem lehet átadni egy Python-modell, pontozott eredményeit [Evaluate Model](evaluate-model.md). A modell értékelése van szüksége, ha egyéni Python szkriptet, és futtathatja írhat a [Python-szkript végrehajtására](execute-python-script.md) modul.  
+> Jelenleg nem lehet átadni a Python-modell eredményes eredményeit a [modell](evaluate-model.md)kiértékeléséhez. Ha ki kell értékelnie egy modellt, írhat egyéni Python-szkriptet, és futtathatja azt a [Python-parancsfájl végrehajtása](execute-python-script.md) modullal.  
 
 
-## <a name="how-to-configure-create-python-model"></a>Python-modell létrehozása konfigurálása
+## <a name="how-to-configure-create-python-model"></a>A Python-modell létrehozásának beállítása
 
-Ez a modul használatához Python közbenső vagy szakértői ismerete. A modul minden tanuló, amely megtalálható a Python-csomagok már telepítve van az Azure Machine Learning használatát támogatja. Tekintse meg az előre telepített Python csomaglista [Python-szkript végrehajtására](execute-python-script.md).
+A modul használatához a Python közbenső vagy szakértői ismerete szükséges. A modul támogatja a Azure Machine Learning-ban már telepített Python-csomagok részét képező tanulók használatát. Lásd: előre telepített Python-csomagok listája a [Python-szkript végrehajtásához](execute-python-script.md).
   
 
-A cikkből megtudhatja, hogyan használható a **létrehozása Python-modell** egy egyszerű kísérlet a. Az alábbi, a grafikon a kísérlet.
+Ez a cikk bemutatja, hogyan használható a **Python-modell létrehozása** egy egyszerű kísérlettel. Alább látható a kísérlet gráfja.
 
 ![create-python-model](./media/module/aml-create-python-model.png)
 
-1.  Kattintson a **létrehozása Python-modell**, szerkessze a szkriptet a modellezés megvalósításához, vagy az adatkezelést feldolgozni. Minden tanuló, amely az Azure Machine Learning-környezetben a Python-csomag része is a modell alapján.
+1.  Kattintson a **Python-modell létrehozása**lehetőségre, szerkessze a szkriptet a modellezés vagy az adatkezelési folyamat megvalósításához. A modellt a Azure Machine Learning környezetben található Python-csomagban található bármely tanulón alapozhatja.
 
 
-    Az alábbiakban a két osztályú Naiv Bayes osztályozó mintakód használatával a népszerű *sklearn* csomagot.
+    Az alábbi példa a kétosztályos naiv Bayes-osztályozó minta kódját mutatja be a népszerű *sklearn* -csomag használatával.
 
 ```Python
 
@@ -76,11 +75,11 @@ class AzureMLModel:
 ```
 
 
-2. Csatlakozás a **létrehozása Python-modell** modul az imént létrehozott egy **tanítási modell** és **pontszám modell**
+2. Csatlakoztassa az imént létrehozott **Python Model** -modult a betanítási **modellhez** és a **pontszám modellhez**
 
-3. Ha a modell kiértékelésére van szüksége, adjon hozzá egy [Python-szkript végrehajtására](execute-python-script.md) és szerkesztheti az értékelés végrehajtására, a Python-szkriptet.
+3. Ha ki kell értékelnie a modellt, vegyen fel egy [Python](execute-python-script.md) -szkriptet, és szerkessze a Python-szkriptet a kiértékelés megvalósításához.
 
-Az alábbi, a kiértékelési mintakódot.
+Az alábbiakban a minta kiértékelési kódja látható.
 
 ```Python
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 58db76401439befd476bc78c1a1a20eeed5c2342
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1b1e9338f92aaefab8e7754139066ac03e8b8213
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779167"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142623"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -251,9 +251,21 @@ Az Azure Cosmos DB .NET Core előzetes SDK funkcióparitás legújabb verziójá
 
 Ha az SDK-val kapcsolatos kérdése van, tegye közzé a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), vagy a [GitHub](https://github.com/Azure/azure-documentdb-dotnet/issues)-tárházban található problémát.
 
-## <a name="release--retirement-dates"></a>Állapot tárolá & kivezetési dátum
+## <a name="release--retirement-dates"></a>Kiadási & nyugdíjazási dátumok
+A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
 
-| Verzió | Kiadás dátuma | Visszavonás dátuma |
+Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
+
+A szolgáltatás elutasítja a kivont SDK használatával Azure Cosmos DB kérelmeket.
+
+> [!WARNING]
+> Az SQL API-hoz készült .NET Core SDK **1. x** verziója a **2020-es augusztus 30-** án megszűnik.
+> 
+>
+<br/>
+
+
+| Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
 | [2.5.1](#2.5.1) |Július 02, 2019 |--- |
 | [2.4.1](#2.4.1) |2019. június 20. |--- |
@@ -268,26 +280,26 @@ Ha az SDK-val kapcsolatos kérdése van, tegye közzé a [StackOverflow](https:/
 | [2.1.1](#2.1.1) |2018. szeptember 27. |--- |
 | [2.1.0](#2.1.0) |2018. szeptember 21. |--- |
 | [2.0.0](#2.0.0) |2018. szeptember 07. |--- |
-| [1.9.1](#1.9.1) |2018. március 09. |--- |
-| [1.8.2](#1.8.2) |2018. február 21. |--- |
-| [1.8.1](#1.8.1) |2018. február 05 |--- |
-| [1.7.1](#1.7.1) |2017. november 16. |--- |
-| [1.7.0](#1.7.0) |2017. november 10. |--- |
-| [1.6.0](#1.6.0) |2017. október 17. |--- |
-| [1.5.1](#1.5.1) |2017. október 02 |--- |
-| [1.5.0](#1.5.0) |2017. augusztus 10. |--- | 
-| [1.4.1](#1.4.1) |2017. augusztus 07. |--- |
-| [1.4.0](#1.4.0) |2017. augusztus 02 |--- |
-| [1.3.2](#1.3.2) |2017. június 12. |--- |
-| [1.3.1](#1.3.1) |2017. május 23. |--- |
-| [1.3.0](#1.3.0) |2017. május 10. |--- |
-| [1.2.2](#1.2.2) |2017. április 19. |--- |
-| [1.2.1](#1.2.1) |2017. március 29. |--- |
-| [1.2.0](#1.2.0) |2017. március 25. |--- |
-| [1.1.2](#1.1.2) |2017. március 20. |--- |
-| [1.1.1](#1.1.1) |2017. március 14. |--- |
-| [1.1.0](#1.1.0) |2017. február 16. |--- |
-| [1.0.0](#1.0.0) |2016. december 21-én |--- |
+| [1.9.1](#1.9.1) |2018. március 09. |2020. augusztus 30-ig |
+| [1.8.2](#1.8.2) |2018. február 21. |2020. augusztus 30-ig |
+| [1.8.1](#1.8.1) |2018. február 05 |2020. augusztus 30-ig |
+| [1.7.1](#1.7.1) |2017. november 16. |2020. augusztus 30-ig |
+| [1.7.0](#1.7.0) |2017. november 10. |2020. augusztus 30-ig |
+| [1.6.0](#1.6.0) |2017. október 17. |2020. augusztus 30-ig |
+| [1.5.1](#1.5.1) |2017. október 02 |2020. augusztus 30-ig |
+| [1.5.0](#1.5.0) |2017. augusztus 10. |2020. augusztus 30-ig | 
+| [1.4.1](#1.4.1) |2017. augusztus 07. |2020. augusztus 30-ig |
+| [1.4.0](#1.4.0) |2017. augusztus 02 |2020. augusztus 30-ig |
+| [1.3.2](#1.3.2) |2017. június 12. |2020. augusztus 30-ig |
+| [1.3.1](#1.3.1) |2017. május 23. |2020. augusztus 30-ig |
+| [1.3.0](#1.3.0) |2017. május 10. |2020. augusztus 30-ig |
+| [1.2.2](#1.2.2) |2017. április 19. |2020. augusztus 30-ig |
+| [1.2.1](#1.2.1) |2017. március 29. |2020. augusztus 30-ig |
+| [1.2.0](#1.2.0) |2017. március 25. |2020. augusztus 30-ig |
+| [1.1.2](#1.1.2) |2017. március 20. |2020. augusztus 30-ig |
+| [1.1.1](#1.1.1) |2017. március 14. |2020. augusztus 30-ig |
+| [1.1.0](#1.1.0) |2017. február 16. |2020. augusztus 30-ig |
+| [1.0.0](#1.0.0) |2016. december 21-én |2020. augusztus 30-ig |
 | [0.1.0-preview](#0.1.0-preview) |2016. november 15-én |2016. december 31-ig. |
 
 ## <a name="see-also"></a>Lásd még:

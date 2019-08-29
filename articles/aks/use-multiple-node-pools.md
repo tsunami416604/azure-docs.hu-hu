@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 656934f00879b47669fac4deaac5156cb100e159
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: caeb89332bd46b4f0cf2d0f9e5654aebca4d765d
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898752"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147256"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Előzetes verzió – több Node-készlet létrehozása és kezelése az Azure Kubernetes Service-ben (ak)
 
@@ -101,12 +101,15 @@ az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --enable-vmss \
-    --node-count 1 \
+    --node-count 2 \
     --generate-ssh-keys \
     --kubernetes-version 1.13.10
 ```
 
 A fürt létrehozása néhány percet vesz igénybe.
+
+> [!NOTE]
+> Annak biztosítása érdekében, hogy a fürt megbízhatóan működjön, legalább 2 (két) csomópontot kell futtatnia az alapértelmezett csomópont-készletben, mivel az alapvető rendszerszolgáltatások ezen a csomópont-készleten futnak.
 
 Ha a fürt elkészült, használja az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot a fürt hitelesítő adatainak lekéréséhez a következővel való használatra `kubectl`:
 
@@ -133,7 +136,7 @@ A csomópont-készletek állapotának megtekintéséhez használja az az [AK Nod
 az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
-A következő példa kimenete azt mutatja, hogy a *mynodepool* sikeresen létrejött a csomópont-készletben lévő három csomóponttal. Ha az AK-fürt az előző lépésben lett létrehozva, akkor egy alapértelmezett *nodepool1* lett létrehozva, amelynek a csomópontjának száma *1*.
+A következő példa kimenete azt mutatja, hogy a *mynodepool* sikeresen létrejött a csomópont-készletben lévő három csomóponttal. Ha az AK-fürt az előző lépésben lett létrehozva, a rendszer egy alapértelmezett *nodepool1* hozott létre, amelynek a csomópontja *2*.
 
 ```console
 $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
@@ -151,7 +154,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -166,11 +169,14 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > Ha nem ad meg *OrchestratorVersion* vagy *VmSize* a csomópont hozzáadásakor, a csomópontok az AK-fürt alapértelmezett értékei alapján jönnek létre. Ebben a példában ez volt a Kubernetes verziójának *1.13.10* és a *Standard_DS2_v2*csomópontjának mérete.
 
 ## <a name="upgrade-a-node-pool"></a>Csomópont-készlet frissítése
-
+ 
 > [!NOTE]
 > Egy fürtön vagy csomóponton található műveletek frissítése és méretezése kölcsönösen kizárható. Nem lehet egyszerre frissíteni és méretezni a fürt vagy a csomópont készletét. Ehelyett minden Művelettípus a következő, ugyanazon az erőforráson megjelenő kérelem előtt fejeződik be a cél erőforráson. Erről a hibaelhárítási útmutatóban [](https://aka.ms/aks-pending-upgrade)olvashat bővebben.
 
 Ha az AK-fürt az első lépésben lett létrehozva, `--kubernetes-version` a rendszer egy *1.13.10* adott meg. Ezzel beállítja a Kubernetes verzióját a vezérlő síkja és a kezdeti csomópont-készlet esetében is. A vezérlő síkja és a Kubernetes verziójának frissítéséhez különböző parancsok tartoznak. A `az aks upgrade` parancs a vezérlési sík frissítésére szolgál, míg az `az aks nodepool upgrade` egy adott csomópont-készlet frissítésére szolgál.
+
+> [!NOTE]
+> A Node Pool operációsrendszer-rendszerkép verziója a fürt Kubernetes-verziójához van kötve. A fürt frissítését követően csak az operációs rendszer rendszerképének frissítését fogja kérni.
 
 Frissítse a *mynodepool* az Kubernetes *1.13.10*. Az az [AK Node Pool upgrade][az-aks-nodepool-upgrade] paranccsal frissítse a csomópont-készletet, ahogy az az alábbi példában is látható:
 
@@ -206,7 +212,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -269,7 +275,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -319,7 +325,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -372,7 +378,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -389,7 +395,7 @@ A *gpunodepool* sikeres létrehozása néhány percet vesz igénybe.
 
 ## <a name="schedule-pods-using-taints-and-tolerations"></a>A hüvelyek kiosztása a fertőzöttség és a tolerancia használatával
 
-Most már két csomópont-készlet található a fürtben – az alapértelmezett, eredetileg létrehozott Node-készletet és a GPU-alapú csomópont-készletet. A fürt csomópontjainak megtekintéséhez használja a [kubectl Get Nodes][kubectl-get] parancsot. A következő példa kimenete egy csomópontot mutat be az egyes csomópont-készletekben:
+Most már két csomópont-készlet található a fürtben – az alapértelmezett, eredetileg létrehozott Node-készletet és a GPU-alapú csomópont-készletet. A fürt csomópontjainak megtekintéséhez használja a [kubectl Get Nodes][kubectl-get] parancsot. A következő példa kimenete a csomópontokat mutatja:
 
 ```console
 $ kubectl get nodes

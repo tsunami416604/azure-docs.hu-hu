@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 08/28/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aefa6d21488b617b26ddefe5fa4fc61cdd203f96
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e13ab3378857bd0254d7cb2fb98249ccc24b1cb7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032538"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125627"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: Helyszíni alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
 
@@ -36,7 +36,7 @@ Ez az oktatóanyag:
 
 Helyszíni alkalmazás Azure AD-hez való hozzáadásához a következők szükségesek:
 
-* [Microsoft Azure ad alapszintű vagy prémium szintű előfizetés](https://azure.microsoft.com/pricing/details/active-directory)
+* [Microsoft Azure ad Premium-előfizetés](https://azure.microsoft.com/pricing/details/active-directory)
 * Alkalmazás-rendszergazdai fiók
 * A felhasználói identitásokat a helyszíni címtárból kell szinkronizálni, vagy közvetlenül az Azure AD-bérlőn belül kell létrehozni. Identitásszinkronizálás lehetővé teszi az Azure AD számára, hogy előzetesen hitelesítse a felhasználókat, mielőtt hozzáférést adna nekik az App proxy közzétett alkalmazásaihoz, és hogy a szükséges felhasználói azonosító információkkal rendelkezzen az egyszeri bejelentkezés (SSO) végrehajtásához.
 
@@ -171,7 +171,7 @@ Most, hogy előkészítette a környezetet, és telepített egy összekötőt, k
     | **Name** | Annak az alkalmazásnak a neve, amely megjelenik majd a hozzáférési panelen és a Azure Portal. |
     | **Belső URL-cím** | Az alkalmazásnak a magánhálózaton belüli elérésére szolgáló URL-cím. Megadhat egyedi elérési utat a háttérkiszolgálón a közzétételhez, míg a kiszolgáló további része nem lesz közzétéve. Így különböző webhelyeket tehet közzé ugyanazon a kiszolgálón, mint a különböző alkalmazásokat, és mindegyiknek saját nevet és hozzáférési szabályokat adhat.<br><br>Ha közzétesz egy útvonalat, győződjön meg róla, hogy az tartalmaz minden szükséges lemezképet, szkriptet és stíluslapot az alkalmazásához. Ha például az alkalmazás a https:\//yourapp/app címen található, és a https:\//yourapp/Media helyen található rendszerképeket használja, akkor a https\/:/yourapp/útvonalat kell közzétennie. A belső URL-címnek nem kell a felhasználók által megjelenített kezdőlapnak lennie. További információt a [közzétett alkalmazások egyéni kezdőlapjának beállítása](application-proxy-configure-custom-home-page.md)című témakörben talál. |
     | **Külső URL-cím** | A felhasználók számára az alkalmazásnak a hálózaton kívülről való eléréséhez használt címe. Ha nem szeretné az alapértelmezett alkalmazásproxy-tartományt használni, olvassa el az [Azure ad Application proxy egyéni tartományait](application-proxy-configure-custom-domain.md)ismertető témakört.|
-    | **Előzetes hitelesítés** | Hogyan ellenőrzi az alkalmazásproxy a felhasználókat, mielőtt hozzáférést adna nekik az alkalmazáshoz.<br><br>**Azure Active Directory** – az alkalmazásproxy átirányítja a felhasználókat, hogy jelentkezzenek be az Azure ad-be, amely hitelesíti a címtár és az alkalmazás engedélyeit. Azt javasoljuk, hogy ezt a beállítást az alapértelmezett módon tartsa elérhetővé, így kihasználhatja az Azure AD biztonsági funkcióit, például a feltételes hozzáférést és a többtényezős hitelesítést. Az alkalmazás Microsoft Cloud alkalmazás-biztonsággal való figyeléséhez **Azure Active Directory** szükséges.<br><br>**Továbbító** – a felhasználóknak nem kell hitelesíteniük az Azure ad-vel az alkalmazás eléréséhez. Továbbra is beállíthatja a háttérbeli hitelesítési követelményeket. |
+    | **Előzetes hitelesítés** | Hogyan ellenőrzi az alkalmazásproxy a felhasználókat, mielőtt hozzáférést adna nekik az alkalmazáshoz.<br><br>**Azure Active Directory** – az alkalmazásproxy átirányítja a felhasználókat, hogy jelentkezzenek be az Azure ad-be, amely hitelesíti a címtár és az alkalmazás engedélyeit. Azt javasoljuk, hogy ezt a beállítást az alapértelmezett módon tartsa elérhetővé, így kihasználhatja az Azure AD biztonsági funkcióit, például a feltételes hozzáférést és a Multi-Factor Authentication. Az alkalmazás Microsoft Cloud alkalmazás-biztonsággal való figyeléséhez **Azure Active Directory** szükséges.<br><br>**Továbbító** – a felhasználóknak nem kell hitelesíteniük az Azure ad-vel az alkalmazás eléréséhez. Továbbra is beállíthatja a háttérbeli hitelesítési követelményeket. |
     | **Összekötő csoport** | Az összekötők feldolgozzák az alkalmazáshoz való távoli hozzáférést, és az összekötő csoportok segítségével régió, hálózat vagy cél szerint rendszerezheti az összekötőket és az alkalmazásokat. Ha még nincs létrehozva összekötő-csoport, az alkalmazás **alapértelmezés szerint**hozzá lesz rendelve.<br><br>Ha az alkalmazás WebSockets-t használ a csatlakozáshoz, a csoportban lévő összes összekötőnek 1.5.612.0 vagy újabb verziójúnak kell lennie.|
 
 1. Ha szükséges, konfigurálja a **további beállításokat**. A legtöbb alkalmazás esetében ezeket a beállításokat az alapértelmezett állapotukban kell megőrizni. 

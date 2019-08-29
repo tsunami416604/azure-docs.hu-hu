@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304ba16985d5abfc4d385b3f1150cfa544c20b2a
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c8e73bd3639adcc43dd191ff2eacaf7335f08d72
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335504"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126597"
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection engedélyezése
 
-A Azure Active Directory Identity Protection Azure Active Directory (Azure AD) egyik funkciója. Az Azure AD Identity Protection a következőket teszi lehetővé:
+A Azure Active Directory Identity Protection Azure Active Directory (Azure AD) egyik funkciója. A Azure AD Identity Protection a következőket teszi lehetővé:
 
-- A megjelölt felhasználók és a Machine Learning-algoritmusok használatával észlelt kockázati események összesített nézetének megtekintése
-- Kockázatalapú feltételes hozzáférési szabályzatok beállítása a felhasználók automatikus védelmére
-- A szervezet biztonsági helyzetének javítása a biztonsági résekkel szembeni intézkedésekkel 
+- A megjelölt felhasználók és a gépi tanulási algoritmusok használatával észlelt kockázati észlelések összevont nézetének beolvasása
+- Kockázatalapú feltételes hozzáférési szabályzatok beállítása a felhasználók automatikus védelemmel való ellátásához
+- Biztonsági helyzetek javítása biztonsági rések használatával 
 
 További információ: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bb1e29735a860f5dc3b6ce8996af9fcd4962871
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ed5e5e26a27e13ba09ffcc97e0b2b0f1b37bc8bd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335304"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127697"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Gyors útmutató: Hozzáférés letiltása, ha a rendszer munkamenet-kockázatot észlel Azure Active Directory Identity Protection  
 
@@ -34,7 +34,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 - **Hozzáférés egy prémium szintű Azure ad P2 kiadáshoz** – a Azure AD Identity Protection egy prémium szintű Azure ad P2 funkció. 
 - **Identitáskezelés** – az ebben a rövid útmutatóban szereplő forgatókönyvben engedélyezni kell az Identity Protection használatát. Ha nem tudja, hogyan engedélyezheti az Identitáskezelés védelmét, tekintse meg a [Azure Active Directory Identity Protection engedélyezése](../identity-protection/enable.md)című témakört.
-- **Tor böngésző** – a [Tor böngésző](https://www.torproject.org/projects/torbrowser.html.en) úgy lett kialakítva, hogy segítsen megőrizni az adatvédelmet online. Az Identity Protection egy közepes kockázati szinttel rendelkező **Névtelen IP-címekről érkező**bejelentkezést észlel egy Tor-böngészőből. További információkért tekintse át [Az Azure Active Directory kockázati eseményeivel](../reports-monitoring/concept-risk-events.md) foglalkozó cikket.  
+- **Tor böngésző** – a [Tor böngésző](https://www.torproject.org/projects/torbrowser.html.en) úgy lett kialakítva, hogy segítsen megőrizni az adatvédelmet online. Az Identity Protection egy közepes kockázati szinttel rendelkező **Névtelen IP-címekről érkező**bejelentkezést észlel egy Tor-böngészőből. További információ: [Azure Active Directory kockázati észlelések](../reports-monitoring/concept-risk-events.md).  
 - **Egy Alain Charon nevű tesztüzenet** – ha nem tudja, hogyan hozhat létre egy teszt fiókot, tekintse meg [az új felhasználó hozzáadása](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)című témakört.
 
 ## <a name="test-your-sign-in"></a>A bejelentkezés tesztelése 
@@ -48,7 +48,7 @@ Ennek a lépésnek a célja, hogy ellenőrizze, hogy a teszt fiókja hozzáférh
 
 ## <a name="create-your-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása 
 
-Az ebben a rövid útmutatóban szereplő forgatókönyv egy Tor-böngészőből származó bejelentkezést használ a **Névtelen IP-címek** kockázati eseményből származó észlelt bejelentkezések létrehozásához. A kockázati esemény közepes szintű. Ha válaszolni szeretne erre a kockázati eseményre, állítsa közepesre a bejelentkezési kockázati feltételt. 
+Az ebben a rövid útmutatóban szereplő forgatókönyv egy Tor-böngészőből származó bejelentkezést használ a **Névtelen IP-címek** kockázati észlelése során észlelt bejelentkezések létrehozásához. A kockázat észlelésének kockázati szintje közepes. A kockázati észlelésre való reagáláshoz állítsa közepesre a bejelentkezési kockázati feltételt. 
 
 Ez a szakasz bemutatja, hogyan hozhatja létre a szükséges bejelentkezési kockázat feltételes hozzáférési szabályzatát. A házirendben állítsa be a következőket:
 
@@ -65,11 +65,11 @@ Ez a szakasz bemutatja, hogyan hozhatja létre a szükséges bejelentkezési koc
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként.
 2. Lépjen a [Azure ad Identity Protection lapra](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/Overview).
 3. A **Azure ad Identity Protection** lap **Konfigurálás** szakaszában kattintson a **bejelentkezési kockázati házirend**elemre.
-4. A szabályzat lap hozzárendelések szakaszában kattintson  a **felhasználók**elemre.
+4. A szabályzat lap hozzárendelések szakaszában kattintson a **felhasználók**elemre.
 5. A **felhasználók** lapon kattintson a **felhasználók kiválasztása**elemre.
 6. A **felhasználók kiválasztása** lapon válassza az **Alain Charon**, majd a **kiválasztás**lehetőséget.
 7. A **felhasználók** lapon kattintson a **kész**gombra. 
-8. A szabályzat lap hozzárendelések szakaszában kattintson  a **feltételek**elemre.
+8. A szabályzat lap hozzárendelések szakaszában kattintson a **feltételek**elemre.
 9. A **feltételek** lapon kattintson a **bejelentkezési kockázat**elemre.
 10. A **bejelentkezési kockázat** lapon válassza a **közepes vagy újabb**lehetőséget, majd kattintson a **kiválasztás**elemre. 
 11. A **feltételek** lapon kattintson a **kész**gombra.
@@ -81,7 +81,7 @@ Ez a szakasz bemutatja, hogyan hozhatja létre a szükséges bejelentkezési koc
 
 A szabályzat teszteléséhez próbáljon meg **Alan Charon** bejelentkezni a [Azure Portalba](https://portal.azure.com) a Tor böngésző használatával. A bejelentkezési kísérletet a feltételes hozzáférési szabályzatnak le kell tiltania.
 
-![Többtényezős hitelesítés](./media/quickstart-sign-in-risk-policy/203.png)
+![Multi-Factor Authentication](./media/quickstart-sign-in-risk-policy/203.png)
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -89,4 +89,4 @@ A szabályzat teszteléséhez próbáljon meg **Alan Charon** bejelentkezni a [A
 Ha már nincs rá szükség, törölje a teszt felhasználót, a Tor böngészőt, és tiltsa le a bejelentkezési kockázat feltételes hozzáférési szabályzatot:
 
 - Ha nem tudja, hogyan törölhet egy Azure AD-felhasználót, tekintse [meg a felhasználók hozzáadása és törlése](../fundamentals/add-users-azure-active-directory.md#delete-a-user)című témakört.
-- A Tor-böngésző eltávolításával kapcsolatos utasításokért [lásd:](https://tb-manual.torproject.org/uninstalling/)eltávolítása.
+- A Tor-böngésző eltávolításával kapcsolatos utasításokért [](https://tb-manual.torproject.org/uninstalling/)lásd: eltávolítása.

@@ -1,7 +1,7 @@
 ---
-title: 'Adatok importálása: Modul-hivatkozás'
+title: 'Adatimportálás: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használja az adatok importálása modullal az Azure Machine Learning szolgáltatásban egy machine learning-kísérletbe meglévő felhőalapú adatszolgáltatásokból származó adatok betöltéséhez.
+description: Ismerje meg, hogyan tölthetők be adatok egy gépi tanulási kísérletbe a meglévő felhőalapú adatszolgáltatásokból a Azure Machine Learning szolgáltatás adatimportálási moduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,80 +9,79 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ed51c4e7b6c7d226c7827d1ba00bc96a7be1e6b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8522c759efb0cc599bbcf8e7569f6045da571a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028305"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128785"
 ---
-# <a name="import-data-module"></a>Adatok modul importálása
+# <a name="import-data-module"></a>Adatmodul importálása
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul használatával tölthet be egy machine learning-kísérlet meglévő felhőalapú adatszolgáltatásokból származó adatokat.  
-A modul most a varázsló segít egy tárolási megoldás, és válasszon a meglévő előfizetések és fiókok közül minden beállításokat gyorsan funkciókat. Az adatok meglévő kapcsolatok szerkesztésére van szüksége? Nincs a problémát. a varázsló betölti az összes korábbi konfigurációs adatait, így nem kell újra kezdenie a folyamatot. 
+Ezzel a modullal az adatok betölthetők egy gépi tanulási kísérletbe a meglévő felhőalapú adatszolgáltatásokból.  
+A modul mostantól tartalmaz egy varázslót, amely segítséget nyújt a tárolási lehetőségek kiválasztásához, és a meglévő előfizetések és fiókok közül választhatja ki az összes beállítás gyors konfigurálását. Módosítania kell egy meglévő adatkapcsolatokat? Nincs probléma; a varázsló betölti az összes korábbi konfigurációs részletet, így nem kell újból elindítania. 
   
-Az adatok kívánt, és csatlakozzon a forrás-, meghatározása után [adatok importálása](./import-data.md) kikövetkezteti tartalmaz, és betölti az adatokat az Azure Machine Learning-munkaterület értékei alapján minden oszlop adattípusát. A kimenet a [adatok importálása](./import-data.md) van egy adatkészletet, amely használható bármilyen kísérletet.
+A kívánt adatok definiálása és a forráshoz való kapcsolódás után az [adatok importálása](./import-data.md) az egyes oszlopok adattípusát a benne foglalt értékek alapján következteti ki, és betölti az adatait a Azure Machine learning munkaterületre. Az importálási [adat](./import-data.md) kimenete egy olyan adatkészlet, amely bármilyen kísérlethez használható.
 
   
-Ha megváltozik a forrásadatokat, frissítse az adatkészletet, és adja hozzá az új adatok újrafuttatásával [adatok importálása](./import-data.md). Azonban ha nem szeretné újra olvassa el a forráskiszolgálóról minden alkalommal, amikor Ön futtathatja a kísérletet, válassza ki a **használja a gyorsítótárazott eredményeket** igaz értékre a beállítást. Ha ezt a lehetőséget választja, a modul ellenőrzi, e kísérlet futott korábban a azonos forrásból és ugyanazt a bemeneti beállítások használatával. Ha egy korábbi futtatás található, a gyorsítótárban lévő adatok használata esetén a forrás az adatok újbóli betöltéséből helyett.
+Ha a forrásadatok megváltoznak, frissítheti az adatkészletet, és új adatokat adhat hozzá az [importálási adatokat](./import-data.md)újrafuttatva. Ha azonban nem kívánja újra beolvasni a forrást a kísérlet minden egyes futtatásakor, válassza a gyorsítótárazott **eredmények használata** beállítást igaz értékre. Ha ez a beállítás be van jelölve, a modul ellenőrzi, hogy a kísérlet korábban is ugyanazzal a forrással és azonos beviteli lehetőségekkel fut-e. Ha a rendszer egy korábbi futtatást talál, a rendszer a gyorsítótárban lévő adatok helyett a forrásból származó adatok újratöltését fogja használni.
  
 
 ## <a name="data-sources"></a>Adatforrások
 
-Az adatok importálása modullal a következő adatforrásokat támogatja. Részletes útmutatásért és példákért minden adatforráshoz a hivatkozásokra kattintva. 
+Az Adatimportálási modul a következő adatforrásokat támogatja. Az egyes adatforrások használatára vonatkozó részletes utasításokhoz és példákhoz kattintson a hivatkozásokra. 
  
-Ha nem biztos abban, hogy hogyan és hol tárolja az adatokat, lásd a jelen útmutató az adatelemzési folyamat a common data jellegű alkalmazási:  [Az Azure Machine Learning speciális elemzési forgatókönyvek](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-plan-sample-scenarios). 
+Ha nem tudja, hogyan vagy hol tárolja az adatait, tekintse meg az útmutató az adatelemzési folyamat általános adatforgatókönyveit:  [Speciális elemzési forgatókönyvek Azure Machine Learningban](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-plan-sample-scenarios). 
 
 
-|Adatforrás| Használata|
+|Adatforrás| Használat|
 |-----------|-----------|  
-|[A HTTP Protokollon keresztül, a webes URL-címe](./import-from-web-url-via-http.md)|A webes és URL-, amely a HTTP Protokollt használ, amely lett megadva. a CSV, TSV, ARFF vagy SvmLight formátumokban tárolt adatok lekérése|  
-|[Importálás az Azure Blob Storage-ból](./import-from-azure-blob-storage.md) |Az Azure blob service-ben tárolt adatok lekérése|  
+|[Webes URL-cím HTTP-n keresztül](./import-from-web-url-via-http.md)|A HTTP protokollt használó webes URL-címen tárolt és a CSV-, TSV-, ARFF-vagy SvmLight-formátumokban megadott adatforrások beolvasása|  
+|[Importálás az Azure Blob Storageból](./import-from-azure-blob-storage.md) |Az Azure Blob Service-ben tárolt adatlekérdezés|  
 
-## <a name="how-to-use-import-data"></a>Adatok importálása használata
+## <a name="how-to-use-import-data"></a>Az importálási információ használata
  
-1. Adja hozzá a **adatok importálása** modult a kísérletvászonra. Ez a modul a annak a **adatok bemeneti és kimeneti** kategória a felületen.
+1. Adja hozzá az Adatimportálási modult a kísérlethez. Ezt a modult a felület **adatbevitel és kimenet** kategóriájában találja.
 
-2. Kattintson a **adatok importálása varázsló elindításához** az adatforrás varázsló segítségével konfigurálhatja.
+2. Az adatforrás varázsló használatával történő konfigurálásához kattintson az **adatimportálás indítása varázsló** elemre.
 
-    A varázsló lekéri a fiók nevét és hitelesítő adatokat és egyéb beállítások konfigurálása súgó. Ha egy meglévő konfigurációnak szerkeszti, először betölti az aktuális értékeit.
+    A varázsló lekéri a fiók nevét és a hitelesítő adatokat, és segítséget nyújt más beállítások konfigurálásához. Ha meglévő konfigurációt szerkeszt, először az aktuális értékeket tölti be.
 
-3. Ha nem szeretné használni a varázslót, kattintson a **adatforrás**, és válassza ki a felhőalapú tárolási, olvasásakor. 
+3. Ha nem szeretné használni a varázslót, kattintson az **adatforrás**elemre, és válassza ki, hogy milyen típusú felhőalapú tárhelyet szeretne olvasni. 
 
-    További beállítások attól függenek, a választja, a tárolás típusát és a storage védett e vagy sem. Előfordulhat, hogy meg kell adnia, a fiók neve, a fájl típusa vagy a hitelesítő adatokat. Egyes források nem igényelnek hitelesítés; egyéb rendszerek esetén szükség lehet tudni, hogy a fiók nevét, a kulcs vagy a tároló neve.
+    A további beállítások a kiválasztott tárolási típustól függenek, valamint azt, hogy a tárterület védett-e. Előfordulhat, hogy meg kell adnia a fiók nevét, a fájltípust vagy a hitelesítő adatokat. Egyes források nem igényelnek hitelesítést; mások számára előfordulhat, hogy ismernie kell a fiók nevét, kulcsát vagy tárolójának nevét.
 
-4. Válassza ki a **használja a gyorsítótárazott eredményeket** beállítást, ha az adatkészlet több egymást követő újrahasznosításának gyorsítótárazni szeretné.
+4. Jelölje be a **gyorsítótárazott eredmények használata** lehetőséget, ha az adatkészletet az egymást követő futtatások újbóli felhasználásához szeretné gyorsítótárazni.
 
-    Ha nem történt más modul paraméterek módosítása nélkül, a kísérlet betölti az adatok csak az első idő a modul fut, és ezt követően használja a az adatkészlet egy gyorsítótárazott verziója.
+    Feltéve, hogy a modul paramétereinek nincsenek más módosításai, a kísérlet csak a modul első futtatásakor tölti be az adatokat, majd ezt követően az adatkészlet gyorsítótárazott verzióját használja.
 
-    Törölje ezt a beállítást, ha szeretné újra betölti az adatokat minden alkalommal, amikor a kísérlet futtatásához.
+    Törölje ezt a beállítást, ha a kísérlet futtatásakor minden alkalommal újra be kell töltenie az adatfrissítést.
 
 5. Futtassa a kísérletet.
 
-    Adatok importálása a felületen betölti az adatokat, amikor azt kikövetkezteti tartalmaz, értékei alapján minden oszlop adattípusát vagy numerikus vagy kategorikus.
+    Amikor az adatok importálása betölti az adatok betöltését a felületre, az az egyes oszlopok adattípusát a benne foglalt értékek alapján, numerikus vagy kategorikusan következteti ki.
 
-    - Ha egy fejléc található, a fejléc az oszlopokat a kimeneti adatkészlet neve szolgál.
+    - Ha van fejléc, a fejléc a kimeneti adatkészlet oszlopainak elnevezésére szolgál.
 
-    - Ha az adatok nincsenek meglévő oszlopfejléceket, új oszlopnevek jönnek létre a formátum col1, col2, használatával... , coln *.
+    - Ha az adatsorokban nem találhatók oszlopfejlécek, az új oszlopnevek a col1, a col2,... formátum használatával jönnek létre. , Coln *.
 
 ## <a name="results"></a>Results (Eredmények)
 
-Ha az importálás befejeződött, kattintson a kimeneti adatkészletet, és válassza ki **Visualize** megtekintheti, ha az adatok importálása sikerült.
+Amikor az importálás befejeződik, kattintson a kimeneti adatkészletre, és válassza a **Megjelenítés** lehetőséget, hogy megtekintse az adatokat az importálás sikeres volt-e.
 
-Ha ismét az adatokat menteni szeretné, ahelyett, hogy importál egy új adatkészletet a kísérlet futtatásakor, kattintson a jobb gombbal a kimenetet, és válassza ki **mentés adatkészletként**. Válassza ki az adatkészlet nevét. A mentett adatkészlet megőrzi az adatokat a mentés időpontjában, és adatokat nem frissül a kísérlet akkor fut újra, még akkor is, ha módosítja az adatkészletet a kísérletben. Ez akkor lehet hasznos adatok pillanatképek készítése.
+Ha az adatokat újbóli használatra szeretné menteni, ahelyett, hogy a kísérlet minden egyes futtatásakor új adatkészletet importál, kattintson a jobb gombbal a kimenetre, és válassza a **Mentés másként adatkészlet**lehetőséget. Válassza ki az adatkészlet nevét. A mentett adatkészlet megőrzi az adatokat a mentéskor, és a kísérlet újrafuttatásakor nem frissül az adat, még akkor is, ha a kísérletben szereplő adatkészlet megváltozik. Ez hasznos lehet az adatpillanatképek készítésekor.
 
-Az adatok importálása után, néhány további előkészített modellezési és elemzési lehet szükség:
+Az információk importálása után szükség lehet néhány további modellezési és elemzési előkészületre:
 
 
-- Használat [metaadatainak szerkesztése](./edit-metadata.md) oszlopnevek, kezelni a más oszlopot vagy annak jelzése céljából, hogy egyes oszlopok címkéket és a funkciók módosításához.
+- Használja a [metaadatok szerkesztése](./edit-metadata.md) lehetőséget az oszlopnevek módosításához, egy oszlop más adattípusként való kezeléséhez, illetve annak jelzéséhez, hogy egyes oszlopok címkék vagy szolgáltatások.
 
-- Használjon [Select Columns in Dataset](./select-columns-in-dataset.md) átalakításához, és használja a modellezési oszlopok kiválasztásához. Az átalakított vagy eltávolított oszlopokat is könnyen kell csatlakoznia az eredeti adathalmazból használatával a [oszlopok hozzáadása](./add-columns.md) modul.  
+- Az adatkészletben az [Oszlopok kiválasztása](./select-columns-in-dataset.md) lehetőséggel kiválaszthatja a modellezéshez átalakítani vagy használni kívánt oszlopok részhalmazát. Az átalakított vagy eltávolított oszlopok könnyedén csatlakoztathatók az eredeti adatkészlethez az [Oszlopok hozzáadása](./add-columns.md) modullal.  
 
-- Használat [partíciót és minta](./partition-and-sample.md) az adatkészlet felosztása, hajtsa végre a mintavételi vagy a felső n sorok beolvasása.
+- A [Partition és a Sample](./partition-and-sample.md) használatával ossza fel az adatkészletet, végezzen mintavételezést, vagy töltse le az első n sort.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

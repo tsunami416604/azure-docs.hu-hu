@@ -7,12 +7,12 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 131d6865c47a32bbefbfbd397a5f0f88dedc9c35
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 12b88e14ed1d20ad26c9c8832877da08d3d98523
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543508"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146127"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Vendég-konfigurációs szabályzatok létrehozása
 
@@ -142,7 +142,7 @@ Azure Policy vendég konfigurációban a futtatáskor használt titkok kezelés�
 Először hozzon létre egy felhasználó által hozzárendelt felügyelt identitást az Azure-ban. Az identitást a virtuális gépek használják a Key Vaultban tárolt titkos kódok elérésére. A részletes lépésekért lásd: [felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása és törlése Azure PowerShell használatával](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
 Ezután hozzon létre egy Key Vault példányt. Részletes lépések: [titkos PowerShell beállítása és](../../../key-vault/quick-create-powershell.md)beolvasása.
-Rendeljen engedélyeket a példányhoz, hogy a felhasználó által hozzárendelt identitás hozzáférést biztosítson a Key Vaultban tárolt titkos kulcsokhoz. Részletes lépések: [Secret-.net beállítása és](../../../key-vault/quick-create-net.md#assign-permissions-to-your-application-to-read-secrets-from-key-vault)beolvasása.
+Rendeljen engedélyeket a példányhoz, hogy a felhasználó által hozzárendelt identitás hozzáférést biztosítson a Key Vaultban tárolt titkos kulcsokhoz. Részletes lépések: [Secret-.net beállítása és](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault)beolvasása.
 
 Ezután rendelje hozzá a felhasználó által hozzárendelt identitást a virtuális géphez. A részletes lépésekért lásd: felügyelt identitások konfigurálása Azure-beli virtuális gépeken [a PowerShell használatával](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
 A skálán ezt az identitást a Azure Resource Manager segítségével Azure Policy használatával rendelheti hozzá. A részletes lépésekért lásd: felügyelt identitások konfigurálása Azure-beli virtuális gépeken [sablon használatával](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
@@ -316,13 +316,13 @@ Az Azure-ban létrehozott házirend-és kezdeményezési definíciókkal az utol
 
 ## <a name="policy-lifecycle"></a>Szabályzat életciklusa
 
-Miután közzétett egy egyéni Azure Policy az egyéni tartalomkezelő csomag használatával, két mezőt kell frissíteni, ha közzé szeretne tenni egy új kiadást.
+Miután közzétett egy egyéni Azure Policy az egyéni tartalomkezelő csomag használatával, két mezőt kell frissíteni, ha új kiadást szeretne közzétenni.
 
-- **Verzió**: A parancsmag `New-GuestConfigurationPolicy` -parancsmag futtatásakor meg kell adnia a jelenleg közzétett verziónál nagyobb verziószámot.  Ezzel frissíti a vendég konfiguráció-hozzárendelés verzióját az új házirend-fájlban, így a bővítmény felismeri, hogy a csomag frissítve lett.
-- **contentHash**: Ezt a `New-GuestConfigurationPolicy` parancsmag automatikusan frissíti.  A által `New-GuestConfigurationPackage`létrehozott csomag kivonatának értéke.  Ennek megfelelőnek kell lennie `.zip` a közzétett fájlhoz.  Ha csak a `contentUri` tulajdonság frissül, például abban az esetben, ha valaki manuálisan módosíthatja a házirend-definíciót a portálon, a bővítmény nem fogadja el a csomagot.
+- **Verzió**: A `New-GuestConfigurationPolicy` parancsmag futtatásakor meg kell adnia a jelenleg közzétett verziónál nagyobb verziószámot.  A tulajdonság frissíti a vendég konfiguráció-hozzárendelés verzióját az új házirend-fájlban, így a bővítmény felismeri, hogy a csomag frissítve lett.
+- **contentHash**: Ezt a tulajdonságot a `New-GuestConfigurationPolicy` parancsmag automatikusan frissíti.  Ez a csomag által `New-GuestConfigurationPackage`létrehozott kivonatoló érték.  A tulajdonságnak megfelelőnek kell lennie a `.zip` közzétett fájlhoz.  Ha csak a `contentUri` tulajdonság frissül, például abban az esetben, ha valaki manuálisan módosítani tudja a házirend-definíciót a portálról, a bővítmény nem fogadja el a tartalmi csomagot.
 
 Egy frissített csomag kiadásának legegyszerűbb módja, ha megismétli a jelen cikkben ismertetett folyamatot, és megadja a verziószámot.
-Ez garantálja az összes tulajdonság megfelelő frissítését.
+Ez a folyamat garantálja az összes tulajdonság megfelelő frissítését.
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows Csoportházirend tartalom konvertálása Azure Policy vendég konfigurációra
 
@@ -330,7 +330,7 @@ A vendég konfigurációja a Windows rendszerű gépek naplózásakor a PowerShe
 A DSC-Közösség közzétette az exportált Csoportházirend-sablonok DSC formátumra való konvertálásának eszközét.
 Az eszköznek a fent ismertetett vendég konfigurációs parancsmagokkal együtt történő használatával átalakíthatja a Windows Csoportházirend tartalmát, és becsomagolhatja vagy közzéteheti a Azure Policy a naplózáshoz.
 Az eszköz használatával kapcsolatos részletekért lásd a gyors üzembe [helyezést ismertető cikket. Csoportházirend konvertálása a DSC](/powershell/dsc/quickstarts/gpo-quickstart)-be.
-A tartalom konvertálása után a fenti lépéseket követve hozzon létre egy pakcage, és tegye közzé Azure Policyként ugyanúgy, mint bármely DSC-tartalomhoz.
+A tartalom konvertálása után a fenti lépéseket követve hozzon létre egy csomagot, és tegye közzé Azure Policyként, ugyanúgy, mint bármely DSC-tartalomhoz.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>VÁLASZTHATÓ Vendég konfigurációs csomagjainak aláírása
 

@@ -1,7 +1,7 @@
 ---
-title: 'Multiclass Neurális hálózat: Modul-hivatkozás'
+title: 'Többosztályos neurális hálózat: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használhatja a Neurális hálózati osztályú modul az Azure Machine Learning szolgáltatás Neurális hálózat, amely több érték tartozik egy cél előrejelzésére szolgáló modell létrehozása.
+description: Ismerje meg, hogyan használható a többosztályos neurális hálózati modul a Azure Machine Learning szolgáltatásban egy olyan neurális hálózati modell létrehozásához, amely egy több értékkel rendelkező cél előrejelzésére használható.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,89 +9,88 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: a7bef225c001ebd9bbb9a45c8bcc301cfb49edb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44d1e7606efd5bc6d2286254dc4863728e3edbfd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029385"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128597"
 ---
-# <a name="multiclass-neural-network-module"></a>Multiclass Neurális hálózat-modul
+# <a name="multiclass-neural-network-module"></a>Többosztályos neurális hálózati modul
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul használatával Neurális hálózat, amely több érték tartozik egy cél előrejelzésére szolgáló modell létrehozása. 
+Ezzel a modullal létrehozhat egy olyan neurális hálózati modellt, amely egy több értékkel rendelkező cél előrejelzésére használható. 
 
-Például ilyen típusú Neurális hálózatokkal előfordulhat, hogy használható komplex számítógépes látástechnológiai feladatokat, például számjegyet vagy betűt felismerés, a dokumentum besorolási és mintafelismerést.
+Előfordulhat például, hogy az ilyen típusú neurális hálózatokat összetett számítógépes látási feladatokban lehet használni, például a Digit vagy a levél felismerése, a dokumentumok besorolása és a minta felismerése.
 
-Besorolási Neurális hálózatok használata egy felügyelt tanítás módszer, és ezért van szükség egy *adatkészlet címkézett* , amely tartalmaz egy címkét.
+A neurális hálózatokat használó besorolás felügyelt tanulási módszer, ezért olyan címkézett adatkészletet igényel, amely tartalmaz egy címke oszlopot.
 
-A modell betanításához biztosít a modell és a címkézett adatkészlet bemeneteként [Train Model](./train-model.md). A betanított modell majd az új bemeneti példák értékeinek használható.  
+A modellt úgy is betaníthatja, hogy a modell és a címkézett adatkészlet bemenetként adja meg a betanítási [modellt](./train-model.md). A betanított modell ezután felhasználható az új bemeneti példák értékeinek előrejelzésére.  
 
-## <a name="about-neural-networks"></a>Neurális hálózatokkal kapcsolatos
+## <a name="about-neural-networks"></a>A neurális hálózatok ismertetése
 
-Neurális hálózat olyan összekapcsolt rétegek. A bemeneti adatok az első rétegbeli, és egy aciklikus diagramhoz súlyozott élek és a csomópont csatlakozik egy kimenete rétegen.
+A neurális hálózatok egymással összekapcsolt rétegekből állnak. A bemenetek az első réteg, és egy kimeneti réteghez csatlakoznak egy súlyozott élekből és csomópontokból álló aciklikus gráf használatával.
 
-A bemeneti és kimeneti rétegek között több rejtett réteget is beszúrhat. Legtöbb prediktív feladatot is elvégezhető egyszerűen csak egy vagy több rejtett réteget. Legutóbbi kutatási azonban azt mutatja, sok réteg Neurális hálózatok (DNN), hogy bonyolult feladatokat, köztük a képet, vagy a beszédfelismerést a hatékony. Az egymást követő rétegek szemantikai mélysége növekvő mértékű modell szolgálnak.
+A bemeneti és a kimeneti rétegek között több rejtett réteget is beszúrhat. A legtöbb prediktív feladat egyszerűen elvégezhető egy vagy több rejtett réteg használatával. A legújabb kutatások azonban azt mutatták, hogy a sok réteggel rendelkező Deep neurális hálózatok (DNN) hatékonyak lehetnek olyan összetett feladatokban, mint például a képek vagy a beszédfelismerés. Az egymást követő rétegek a szemantikai mélység növekvő szintjének modellezésére szolgálnak.
 
-Bemenetek és kimenetek közötti kapcsolat tanulságot a bemeneti adatokat a Neurális hálózat betanítása. A gráf irányát a Rejtett réteg és a kimenete rétegen bemenetei a folytatódik. A réteg összes csomópontja a következő rétege a csomópontok súlyozott élek köti össze.
+A bemenetek és a kimenetek közötti kapcsolatot a rendszer betanítja a neurális hálózat betanítása a bemeneti adatokon. A gráf iránya a bemeneti rétegből és a kimeneti rétegből folytatódik. A rétegben lévő összes csomópontot a súlyozott élek kötik a következő réteg csomópontjaira.
 
-A kimenet a hálózat egy adott bevitel számítási, érték minden egyes csomópont a rejtett rétegben, és a kimenete rétegen számítja ki. Az értéket állítja be az értékeket az előző rétegből csomópont súlyozott összege kiszámítása. Az aktiválás függvényének alkalmazva lesz súlyozott az összeget.
+Egy adott bemenethez tartozó hálózat kimenetének kiszámításához egy értéket kell kiszámítani a rejtett rétegek és a kimeneti réteg minden csomópontján. Az érték úgy van beállítva, hogy kiszámítja az előző réteg csomópontjainak értékeinek súlyozott összegét. Ezután az adott súlyozott összegre alkalmazza az aktiválási függvényt.
 
-## <a name="configure-multiclass-neural-network"></a>Multiclass Neurális hálózat konfigurálása
+## <a name="configure-multiclass-neural-network"></a>Többosztályos neurális hálózat konfigurálása
 
-1. Adja hozzá a **osztályú Neurális hálózat** modult a kísérletvászonra a felületen. Ez a modul alatt található **Machine Learning**, **inicializálása**, a a **besorolási** kategória.
+1. Adja hozzá a többosztályos **neurális hálózati** modult a kísérlethez az illesztőfelületen. Ezt a modult a **besorolás** kategóriában, a **Machine learning**, az **inicializálás**lehetőség alatt találja.
 
-2. **A létrehozási mód trainer**: Ez a beállítás használatával adja meg, hogyan kell betanítani a modellt:
+2. **Oktatói mód létrehozása**: Ezzel a beállítással adhatja meg, hogyan kívánja betanítani a modellt:
 
-    - **Egyetlen paraméter**: Válassza ezt a lehetőséget, ha már tudja, hogyan szeretné konfigurálni a modellt.
+    - **Egyetlen paraméter**: Akkor válassza ezt a lehetőséget, ha már tudja, hogyan szeretné konfigurálni a modellt.
 
     
 
-3. **Rejtett réteg specifikáció**: Válassza ki a hálózati architektúra hozhat létre.
+3. **Rejtett réteg specifikációja**: Válassza ki a létrehozandó hálózati architektúra típusát.
 
-    - **Teljes körűen csatlakoztatott eset**: Ezt a beállítást az alapértelmezett Neurális hálózat architektúra használatával egy modell létrehozásához. Multiclass Neurális hálózat esetében az alapértelmezett érték a következők:
+    - **Teljes mértékben csatlakoztatott eset**: Válassza ezt a lehetőséget, ha az alapértelmezett neurális hálózati architektúrát használó modellt szeretne létrehozni. A többosztályos neurális hálózati modellek esetében az alapértelmezett értékek a következők:
 
         - Egy rejtett réteg
-        - A kimenete rétegen teljes csatlakozik a rejtett rétegben.
-        - A rejtett rétegben teljes mértékben a bemeneti réteg van csatlakoztatva.
-        - A bemeneti rétegben lévő csomópontok számát a betanítási adatok a szolgáltatások száma határozza meg.
-        - A rejtett rétegben található csomópontok számát a felhasználó által beállítható. Az alapértelmezett érték 100.
-        - A kimenete rétegen csomópontok száma attól függ, hogy hány osztály.
+        - A kimeneti réteg teljes mértékben csatlakozik a rejtett réteghez.
+        - A rejtett réteg teljes mértékben csatlakozik a bemeneti réteghez.
+        - A bemeneti rétegben lévő csomópontok számát a betanítási adatokban található szolgáltatások száma határozza meg.
+        - A rejtett rétegben található csomópontok számát a felhasználó állíthatja be. Az alapértelmezett érték a 100.
+        - A kimeneti rétegben lévő csomópontok száma az osztályok számától függ.
   
    
 
-5. **Rejtett csomópontok**: Ez a beállítás teszi lehetővé testre szabhatja az alapértelmezett architektúra rejtett csomópontok számát. Írja be a rejtett csomópontok számát. Az alapértelmezett érték 100 csomópont egy rejtett réteg.
+5. **Rejtett csomópontok száma**: Ez a beállítás lehetővé teszi a rejtett csomópontok számának testreszabását az alapértelmezett architektúrában. Adja meg a rejtett csomópontok számát. Az alapértelmezett érték egy rejtett réteg, amely 100 csomóponttal rendelkezik.
 
-6. **Megfelelő tanulási rátát**: Határozza meg a lépés minden egyes ismétléskor javítása előtt időpontokban méretét. Tanulási ráta nagyobb értéket a modell csoportba történő átszervezését gyorsabban okozhat, de azt is túllépése esetén helyi minimális követelménynek.
+6. **A tanulási arány**: Megadhatja az egyes iterációkban végrehajtott lépés méretét a javítás előtt. A tanulási ráta nagyobb értéke miatt a modell gyorsabban konvergálhat, de a helyi minimumok túllépése is lehet.
 
-7. **Tanulási ismétlések száma**: Adja meg az algoritmus kell dolgoznia a betanítási esetek maximális száma.
+7. **Tanulási Ismétlések száma**: Itt adhatja meg, hogy az algoritmus hány alkalommal dolgozza fel a betanítási eseteket.
 
-8. **A kezdeti learning súlyozza átmérőjű**: Adja meg a csomópont súlyok a tanulási folyamat elején.
+8. **A kezdeti tanulási súlyok átmérő**: Határozza meg a csomópontok súlyozásait a tanulási folyamat elején.
 
-9. **A hír**: Adjon meg egy learning csomópontokhoz az előző lépés során alkalmazott súly.
+9. **A lendület**: Határozza meg az előző iterációk csomópontjain való tanulás során alkalmazandó súlyozást.
   
-11. **Példák shuffle**: Ezt a beállítást a véletlenszerűen rendezendő esetek ismétléseinek között.
+11. **Példák a shuffle**-re: Válassza ezt a lehetőséget az ismétlések közötti esetek rendezéséhez.
 
-    Törölje ezt a beállítást, ha esetek pontosan ugyanabban a sorrendben dolgozzák minden alkalommal, amikor a kísérlet futtatásához.
+    Ha kijelöli ezt a beállítást, a rendszer pontosan ugyanabban a sorrendben dolgozza fel az eseteket, amikor futtatja a kísérletet.
 
-12. **Véletlenszerű szám kezdőérték**: Írjon be egy értéket a kezdőérték használandó, ha azt szeretné, ismételhetőség kísérletei során az ugyanazon kísérletben.
+12. **Véletlenszerű számú mag**: Adja meg a magokként használni kívánt értéket, ha meg kívánja bizonyosodni arról, hogy az azonos kísérletben lévő futtatások között ismételhető.
 
-14. Betanítási adatkészletet és a egy összekapcsolása a [képzési modulok](module-reference.md): 
+14. Csatlakoztasson egy betanítási adatkészletet és egy betanítási [modult](module-reference.md): 
 
-    - Ha **létrehozási trainer módban** való **egyetlen paramétert**, használjon [tanítási modell](train-model.md).  
+    - Ha úgy állítja be az **oktatói módot** , hogy az **egyetlen paraméter**legyen, használja a [Train modellt](train-model.md).  
   
 
 ## <a name="results"></a>Results (Eredmények)
 
-Képzési befejezése után:
+A betanítás befejezése után:
 
-- A modell paraméterek együtt a szolgáltatás összegzését súlyok származó képzési és más paramétereket, a Neurális hálózat, kattintson a jobb gombbal kimenete [tanítási modell](./train-model.md) válassza **Visualize**.  
+- Ha meg szeretné tekinteni a modell paramétereinek összegzését, valamint a képzésből beszerzett, valamint a neurális hálózat egyéb paramétereit, kattintson a jobb gombbal a [vonat modell](./train-model.md) kimenetére, majd válassza a **Megjelenítés**lehetőséget.  
 
-- Szeretné menteni a betanított modell pillanatképét, kattintson a jobb gombbal a **Trained model** kimenetét, és válassza ki **betanított modell mentése másként**. Ez a modell nem frissül az ugyanazon kísérletben, egymást követő futtatások.
+- A betanított modell pillanatképének mentéséhez kattintson a jobb gombbal a **betanított modell** kimenetére, és válassza a **Mentés**betanítva modellként lehetőséget. Ez a modell nem frissül ugyanazon kísérlet egymást követő futtatásakor.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

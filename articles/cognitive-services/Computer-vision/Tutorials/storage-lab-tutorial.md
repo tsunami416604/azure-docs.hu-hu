@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 00cca0cbf500ea4e884a9f9334896a18fe7b0978
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c125941414c73b14138f2b2fc15e470d9ed2d905
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597868"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137542"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Oktatóanyag: Rendszerkép-metaadatok előállítása az Azure Storage-ban Computer Vision használatával
 
@@ -46,7 +46,8 @@ Létre kell hoznia egy Computer Vision erőforrást az Azure-fiókjához; Ez az 
 
 1. Ezután lépjen az erőforráscsoport menüjére, és kattintson az imént létrehozott Computer Vision API-előfizetésre. Másolja az URL-címet a **végpont** alatt, hogy valahol egyszerűen lekérheti azt egy pillanat alatt. Ezután kattintson a **hozzáférési kulcsok megjelenítése**lehetőségre.
 
-    ![Azure Portal oldalon a végpont URL-címe és a hozzáférési kulcsok hivatkozása](../Images/copy-vision-endpoint.png)
+    ![Azure Portal oldalon a végpont URL-címe és a hozzáférési kulcsok hivatkozása](../Images/copy-vision-endpoint.png)[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
 
 1. A következő ablakban másolja az **1. kulcs** értékét a vágólapra.
 

@@ -1,7 +1,6 @@
 ---
 title: Helyszíni VMware-kiszolgálók előkészítése VMware virtuális gépek az Azure-ba való vészhelyreállításához | Microsoft Docs
 description: Ismerje meg, hogyan készíthet elő VMware-kiszolgálókat az Azure-ba irányuló vészhelyreállításhoz az Azure Site Recovery szolgáltatással.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -9,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/22/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 315d4daf7155bc33235507f39b5cce8869db5aa6
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0f62ee1a79126f456b993c7caf2de3741637f710
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972155"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147804"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Helyszíni VMware-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításához
 

@@ -1,7 +1,7 @@
 ---
-title: 'Átalakítás vonatkoznak: Modul-hivatkozás'
+title: 'Átalakítás alkalmazása: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogy a alkalmazni átalakítási modul használata az Azure Machine Learning szolgáltatás egy korábban számított átalakítás alapján bemeneti adatkészlet módosítása.
+description: Megtudhatja, hogyan módosíthatja a bemeneti adatkészletet egy korábban számított transzformáció alapján a Azure Machine Learning szolgáltatás átalakítási moduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,42 +9,41 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 810f375642af49814049589cb83ad17fea578b13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b4ec9e71d9ce932a7b206467db91760f4a4fc47
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028710"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128969"
 ---
 # <a name="apply-transformation-module"></a>A alkalmazni átalakítási modul
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul használatával módosítsa a bemeneti adatkészlet egy korábban számított átalakítás alapján.  
+Ezzel a modullal módosíthatja a bemeneti adatkészletet egy korábban számított transzformáció alapján.  
   
-Például, ha a betanítási adatok optimalizálására a z-pontszámok használta a **normalizálása adatok** modul szeretne számolta z-pontszám érték használata képzéshez a pontozási fázis során. Az Azure Machine Learning, mentheti a normalizálási metódus egy átalakítási és majd használatával **átalakítás alkalmazása** a z-pontszám alkalmazni a bemeneti adatokat a kiértékelés előtt.
+Ha például a z-score-t használta a betanítási adatok normalizálása érdekében a **normalizálás** adatmodul használatával, akkor azt a z-score értéket érdemes használni, amelyet a program a pontozási fázisban is kiszámított képzéshez. Azure Machine Learning a normalizálás módszerét átalakíthatja átalakításként, majd az **átalakítás alkalmazása** paranccsal alkalmazhatja a z-pontszámot a bemeneti adatokra a pontozás előtt.
   
-Az Azure Machine Learning létrehozásához, és ezután alkalmazza az egyéni átalakítások számos különböző típusú támogatást biztosít. Például előfordulhat, hogy szeretné menteni, és újból felhasználhatók az átalakításokat is:  
+Azure Machine Learning támogatást nyújt számos különböző egyéni átalakítás létrehozásához, majd alkalmazásához. Előfordulhat például, hogy menteni szeretné, majd újrahasznosítja az átalakításokat a következőre:  
   
-- Távolítsa el vagy cserélje le a hiányzó értékek használatával **Clean Missing Data**
-- Adatok optimalizálása **adatok normalizálása**
+- Hiányzó értékek eltávolítása vagy cseréje a **tiszta hiányzó adatok** használatával
+- Adatnormalizálás az adatnormalizálás használatával
   
 
-## <a name="how-to-use-apply-transformation"></a>Hogyan használható a alkalmazni átalakítása  
+## <a name="how-to-use-apply-transformation"></a>Az átalakítás alkalmazása  
   
-1. Adja hozzá a **átalakítás alkalmazása** modult a kísérletvászonra. Ez a modul alatt található **Machine Learning**, a a **pontszám** kategória. 
+1. Adja hozzá az átalakítási modul **alkalmazása** a kísérlethez lehetőséget. Ez a modul a **pontszám** kategóriában **Machine learning**alatt található. 
   
-2. Keresse meg egy meglévő átalakítást egy bemeneti adatokként.  A korábban mentett átalakítások található a **alakítja át az** csoportot a bal oldali navigációs ablaktáblán.  
+2. Keressen egy meglévő átalakítást bemenetként való használatra.  A korábban mentett átalakítások a bal oldali navigációs ablaktábla átalakítások csoportjában találhatók.  
   
    
   
-3. Az adatkészlet, amely átalakítja a kívánt kapcsolatot. Az adatkészlet kell pontosan ugyanazzal a sémával rendelkezik (az oszlopok, az oszlopnevek, adattípusok száma), az adatkészletet, amelynek az átalakítás először tervezték.  
+3. Az átalakítani kívánt adatkészlet csatlakoztatása. Az adatkészletnek pontosan ugyanazzal a sémával kell rendelkeznie (oszlopok száma, oszlopnevek, adattípusok), mint azt az adatkészletet, amelyhez az átalakítást először tervezték.  
   
-4. Nincs más paramétereket kell állítani, mivel minden testreszabás történik az átalakítás meghatározásakor.  
+4. Más paramétereket nem kell beállítani, mert az átalakítás definiálásakor az összes Testreszabás megtörténik.  
   
-5. Átalakítás alkalmazni kívánja az új adatkészletre, futtassa a kísérletet.  
+5. Ha egy átalakítást szeretne alkalmazni az új adatkészletre, futtassa a kísérletet.  
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

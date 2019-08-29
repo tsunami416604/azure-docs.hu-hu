@@ -1,7 +1,7 @@
 ---
-title: 'Betanítását, fürtszolgáltatási modell: Modul-hivatkozás'
+title: 'Fürtszolgáltatási modell betanítása: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használható a fürtözési modell betanításához modul az Azure Machine Learning szolgáltatás fürtözési modelleket taníthat be.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning Service-ben a vonat-fürtszolgáltatási modell modult a fürtözési modellek betanításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,56 +9,55 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 41cdec1d7f1c3932b17da6f9b1de518071f3f542
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4883b1420913eb4e5f3bd5f13a95e410370d9184
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028080"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128479"
 ---
 # <a name="train-clustering-model"></a>Csoportosítási modell betanítása
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul használatával a fürtözési modell betanításához.
+Ez a modul egy fürtszolgáltatási modell betanítására használható.
 
-A modul veszi egy kellő fürtözési modell használata már konfigurálta a [K-közép-Fürtszolgáltatás](k-means-clustering.md) modult, és betanítja a modellt címkézett vagy címke nélküli adatkészlet használatával. A modul hoz létre a mindkét betanított modell előrejelzési, és beállított egy fürt hozzárendelését a betanítási adatok minden esetben használható.
+A modul olyan nem betanított fürtszolgáltatási modellt vesz igénybe, amelyet már konfigurált a [K-Meaning-fürtszolgáltatási](k-means-clustering.md) modullal, és a modellt a címkével ellátott vagy nem címkézett adatkészletet használva. A modul létrehoz egy betanított modellt is, amelyet az előrejelzéshez használhat, valamint a betanítási adatokban lévő egyes esetekben a fürt hozzárendeléseinek készletét.
 
 > [!NOTE]
-> A fürtözési modell nem lehet tanítása az a [tanítási modell](train-model.md) modult, amely az általános modul machine learning-modellek betanításához. Ez azért van, [tanítási modell](train-model.md) működik csak a felügyelt tanulási algoritmus. K-közép- és más fürtözési algoritmusok engedélyezése felügyeletlen tanulás, ami azt jelenti, hogy az algoritmus tudhat meg a címke nélküli adatokból.  
+> A adatbázismotor a betanítási modell modul használatával [](train-model.md) tanítjuk ki, amely a gépi tanulási modellek általános modulja. Ennek oka, hogy a betanítási [modell](train-model.md) csak felügyelt tanulási algoritmusokkal működik. A K-means és más fürtözési algoritmusok lehetővé teszik a nem felügyelt tanulást, ami azt jelenti, hogy az algoritmus nem címkézett adatokból tanulhat.  
   
-## <a name="how-to-use-train-clustering-model"></a>Fürtszolgáltatás tanítási használata  
+## <a name="how-to-use-train-clustering-model"></a>A vonat-fürtszolgáltatási modell használata  
   
-1.  Adja hozzá a **Train-csoportosítási modellben** modult a kísérletvászonra a Studióban. A modul alatt találja **Machine Learning-modulok**, a a **Train** kategória.  
+1.  Adja hozzá a **Train fürtözési modell** modult a kísérlethez a Studióban. A modult **Machine learning modulok**területen találja a **vonat** kategóriában.  
   
-2. Adja hozzá a [K-közép-Fürtszolgáltatás](k-means-clustering.md) modul, vagy egy másik egyéni modult, amely létrehoz egy kompatibilis fürtszolgáltatás modellezheti, és állítsa be a paramétereket a fürtözési modell.  
+2. Adja hozzá a [K-means fürtszolgáltatási](k-means-clustering.md) modult, vagy egy másik olyan egyéni modult, amely kompatibilis fürtszolgáltatási modellt hoz létre, és állítsa be a fürtszolgáltatási modell paramétereit.  
     
-3.  Betanítási adatkészletet csatolása a jobb oldali bemeneti portjával **Train-csoportosítási modellben**.
+3.  Csatoljon egy betanítási adatkészletet a **vonat-fürtözési modell**jobb oldali bemenetéhez.
   
-5.  A **oszlopkészlet**, válassza ki az oszlopokat az adatkészletből a fürt létrehozásakor használt. Ügyeljen arra, hogy válassza ki az oszlopot, amely jó szolgáltatásait: Kerülje például az azonosítók vagy más egyedi értékkel rendelkező oszlopot vagy oszlopokat, amelyek ugyanazokat az értékeket.
+5.  Az **oszlop beállítása**területen válassza ki a fürtök létrehozásához használni kívánt adatkészlet oszlopait. Ügyeljen arra, hogy olyan oszlopokat válasszon ki, amelyek jó szolgáltatásokat tesznek elérhetővé: például ne használjon azonosítókat vagy más olyan oszlopokat, amelyek egyedi értékekkel rendelkeznek, vagy az összes azonos értékkel rendelkező oszlopokat.
 
-    Egy címke nem érhető el, ha szeretné használni a szolgáltatást, vagy hagyja.  
+    Ha egy címke elérhető, használhatja szolgáltatásként, vagy hagyja ki.  
   
-6. A beállítást, **ellenőrizze az eredmény csak hozzáfűzéssel bővíthető vagy négyzet jelölését**, ha azt szeretné, a kimenetben a betanítási adatok, és az új fürt címke.
+6. Jelölje be a lehetőséget, ha a betanítási adatokat az új fürt címkével együtt szeretné kiadni, válassza a **Hozzáfűzés vagy a kijelölés jelölőnégyzetet**.
 
-    Törölje ezt a beállítást, ha csak a fürt-hozzárendeléseket a kimeneti. 
+    Ha kijelöli ezt a beállítást, csak a fürt hozzárendelései lesznek kimenetek. 
 
-7. Futtassa a kísérletet, vagy kattintson a **Train-csoportosítási modellben** modul, és válassza ki **kijelölt futtatása**.  
+7. Futtassa a kísérletet, vagy kattintson a **vonat-fürtszolgáltatási modell** modulra, és válassza a **kijelölt futtatása**lehetőséget.  
   
 ### <a name="results"></a>Results (Eredmények)
 
-Miután befejeződött a képzés:
+A betanítás befejezése után:
 
 
-+  Tekintse meg az értékeket az adatkészletben, kattintson a jobb gombbal a modult, válassza **adatkészletek eredmény**, és kattintson a **Visualize**.
++  Az adatkészlet értékeinek megtekintéséhez kattintson a jobb gombbal a modulra, válassza az **eredmény**-adatkészletek lehetőséget, majd kattintson a **Megjelenítés**elemre.
 
-+ A betanított modell újabb újra felhasználhatja a menteni, kattintson a jobb gombbal a modult, jelölje ki **Trained model**, és kattintson a **betanított modell mentése másként**.
++ A betanított modell későbbi újrafelhasználásához kattintson a jobb gombbal a modulra, válassza a betanított **modell**lehetőséget, majd kattintson a **Mentés**betanított modellként lehetőségre.
 
-+ Pontszámok készítése a modellből, használja a [adatok hozzárendelése fürtökhöz](assign-data-to-clusters.md).
++ A modellből származó pontszámok létrehozásához használja az [adatok](assign-data-to-clusters.md)kiosztása fürtökhöz lehetőséget.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

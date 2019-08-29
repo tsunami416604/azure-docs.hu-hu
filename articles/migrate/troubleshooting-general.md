@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: fa1e7fcf89ccc06e429831191ba5dfce3cf33797
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 7fea6d16c8846909a8ce9bb33aae74ce343018fa
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828317"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142323"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -199,15 +199,15 @@ Nem jóváhagyott Linux operációs rendszer | Előfordulhat, hogy a gép az Azu
 Ismeretlen operációs rendszer | A virtuális gép operációs rendszere a következőként lett megadva: vCenter Server. Ez a viselkedés blokkolja Azure Migrate a virtuális gép Azure-készültségének ellenőrzéséhez. Mielőtt áttelepíti a gépet, győződjön meg arról, hogy az Azure [támogatja](https://aka.ms/azureoslist) a számítógép operációs rendszerét.
 Az operációs rendszer bitszáma nem támogatott | A 32 bites operációs rendszert futtató virtuális gépek az Azure-ban is elindíthatók, de javasoljuk, hogy az Azure-ba való áttelepítés előtt frissítse a virtuális gép operációs rendszerét 64 bitesre.
 Microsoft Visual Studio-előfizetést igényel | A gép Windows ügyfél operációs rendszert futtat, amely csak Visual Studio-előfizetésen keresztül támogatott.
-Nem található a szükséges tárolási teljesítménynek megfelelő virtuális gép | A géphez szükséges tárolási teljesítmény (bemeneti/kimeneti műveletek száma másodpercenként [IOPS] és átviteli sebesség) meghaladja az Azure-beli virtuális gépek támogatását. Csökkentse a gép tárolási követelményeit az áttelepítés előtt.
-Nem található a szükséges hálózati teljesítménynek megfelelő virtuális gép | A gép számára szükséges hálózati teljesítmény (be/ki) meghaladja az Azure-beli virtuális gépek támogatását. Csökkentse a gép hálózati követelményeit.
-Nem található virtuális gép a megadott helyen | A Migrálás előtt használjon másik célhelyet.
+Nem található virtuális gép a szükséges tárolási teljesítményhez | A géphez szükséges tárolási teljesítmény (bemeneti/kimeneti műveletek száma másodpercenként [IOPS] és átviteli sebesség) meghaladja az Azure-beli virtuális gépek támogatását. Csökkentse a gép tárolási követelményeit az áttelepítés előtt.
+Nem található virtuális gép a szükséges hálózati teljesítményhez | A gép számára szükséges hálózati teljesítmény (be/ki) meghaladja az Azure-beli virtuális gépek támogatását. Csökkentse a gép hálózati követelményeit.
+A virtuális gép nem található a megadott helyen | A Migrálás előtt használjon másik célhelyet.
 Egy vagy több lemez nem megfelelő | A virtuális géphez csatolt egy vagy több lemez nem felel meg az Azure követelményeinek. Azure Migrate: A kiszolgáló értékelése jelenleg nem támogatja ultra SSD lemezeket, és a prémium szintű felügyelt lemezekre vonatkozó korlátok alapján értékeli a lemezeket (32 TB).  A virtuális géphez csatlakoztatott minden lemez esetében győződjön meg arról, hogy a lemez mérete < 64 TB (ultra SSD-lemezek által támogatott), ha nem, csökkentse a lemez méretét az Azure-ba való áttelepítés előtt, vagy használjon több lemezt az Azure-ban, és [csoportosítsa őket](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) , hogy magasabb tárolási korlátokat kapjon. Győződjön meg arról, hogy az egyes lemezek által igényelt teljesítmény (IOPS és átviteli sebesség) támogatott az Azure által [felügyelt virtuálisgép-lemezek](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)esetében.
 Egy vagy több nem megfelelő hálózati adapter. | A nem használt hálózati adapterek eltávolítása a gépről az áttelepítés előtt.
 A lemezek száma meghaladja a korlátot | Az áttelepítés előtt távolítsa el a nem használt lemezeket a gépről.
 A lemezméret meghaladja a korlátot | Azure Migrate: A Server Assessment jelenleg nem támogatja ultra SSD lemezeket, és a prémium szintű lemezes korlátok alapján értékeli a lemezeket (32 TB). Az Azure azonban a legfeljebb 64 TB méretű lemezeket támogatja (ultra SSD lemezek által támogatott). A lemezeket a Migrálás előtt kevesebb mint 64 TB-ra csökkenti, vagy [](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) több lemezt használ az Azure-ban, és a nagyobb tárolási korlátok eléréséhez.
 A lemez nem érhető el a megadott helyen | A Migrálás előtt ellenőrizze, hogy a lemez a célhelyen van-e.
-A lemez a megadott redundanciával nem érhető el | A lemeznek az értékelési beállításokban definiált redundancia-tárolási típust kell használnia (alapértelmezés szerint LRS).
+A lemez nem érhető el a megadott redundancia esetén | A lemeznek az értékelési beállításokban definiált redundancia-tárolási típust kell használnia (alapértelmezés szerint LRS).
 Belső hiba miatt nem sikerült meghatározni a lemez alkalmasságát | Próbálja meg létrehozni a csoport új értékelését.
 Nem található a szükséges magokkal és memóriával rendelkező virtuális gép | Az Azure nem talált megfelelő virtuálisgép-típust. A Migrálás előtt csökkentse a helyszíni gép memóriáját és a magok számát.
 Belső hiba miatt nem sikerült meghatározni a virtuális gép alkalmasságát | Próbálja meg létrehozni a csoport új értékelését.
@@ -271,7 +271,7 @@ Linux rendszerű virtuális gép esetén győződjön meg arról, hogy az MMA é
 
 ### <a name="what-operating-systems-does-the-dependency-agent-support"></a>Milyen operációs rendszereket támogat a függőségi ügynök?
 
-[Itt látható a függőségi ügynök által támogatott Windows operációs rendszerek listája](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems). Itt látható a [függőségi ügynök által támogatott Linux operációs rendszerek listája](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
+[A [Azure monitor for VMS által támogatott Windows-és Linux-operációs rendszerek](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)listája.
 
 ### <a name="i-cant-visualize-dependencies-in-azure-migrate-for-more-than-a-one-hour-duration"></a>Egy órás időtartamon belül nem tudom megjeleníteni a függőségeket Azure Migrateban.
 Azure Migrate a függőségeket legfeljebb egy órás időtartamra lehet megjeleníteni. Bár a Azure Migrate lehetővé teszi, hogy visszalépjen az előző hónapban egy adott dátumra, a függőségek megjelenítésének maximális időtartama egy óra.

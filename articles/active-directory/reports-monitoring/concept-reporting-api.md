@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30669c8f5aeefc14db42a32d87f333419758327
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 28c64653ee0f9135e6da4c3768b89f9a0b25b2ef
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989865"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127361"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Ismerkedés a Azure Active Directory Reporting API-val
 
@@ -49,7 +49,7 @@ Részletes útmutatást a [Azure Active Directory jelentési API elérésének](
 
 A naplók `https://graph.microsoft.com/beta/auditLogs/directoryAudits` Microsoft Graph API-végpontja, valamint a bejelentkezések `https://graph.microsoft.com/beta/auditLogs/signIns`Microsoft Graph API-végpontja. További információkért tekintse meg a [naplózási API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) -referenciát és a [bejelentkezési API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn)-referenciát.
 
-Emellett az [Identity Protection kockázati eseményei API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) -val programozási hozzáférést nyerhet a biztonsági észlelésekhez Microsoft Graph használatával. További információ: Ismerkedés [a Azure Active Directory Identity Protection és Microsoft Graphával](../identity-protection/graph-get-started.md). 
+Emellett az [Identity Protection kockázati észlelések API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) -val programozási hozzáférést nyerhet a biztonsági észlelésekhez Microsoft Graph használatával. További információ: Ismerkedés [a Azure Active Directory Identity Protection és Microsoft Graphával](../identity-protection/graph-get-started.md). 
 
 > [!NOTE]
 >  A **https:\/\/Graph.Windows.net\/bérlői\>-név\/jelentésekvégpontjaelavult\/ .\<** A fentiekben ismertetett új API-végpontok használatával programozott módon férhet hozzá a tevékenység-és biztonsági jelentésekhez.

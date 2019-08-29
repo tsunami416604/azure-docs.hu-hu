@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 73bf7424e7c1aedff271ed3653592d174416003c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1bd850fe2cac7194d78005f4c0a57523bc8323c6
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090188"
+ms.locfileid: "70124483"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>A soros konzol használata a GRUB és az single user mód eléréséhez
 A GRUB a nagy egyesített bootloader, amely valószínűleg az első dolog, amit látni fog egy virtuális gép indításakor. Mivel az operációs rendszer elindítása előtt megjelenik, az SSH-n keresztül nem érhető el. A GRUB-ból a rendszerindítási konfigurációt úgy módosíthatja, hogy az egy felhasználói módba induljon, egyebek között.
@@ -58,9 +58,24 @@ Ha egyfelhasználós módban van, az alábbi lépéseket követve adhat hozzá �
 A RHEL automatikusan egy felhasználói módba kerül, ha a szokásos módon nem indítható el. Ha azonban nem állított be rendszergazdai jogosultságot az egyfelhasználós üzemmódhoz, nem lesz rendszergazdai jelszava, és nem fog tudni bejelentkezni. Megkerülő megoldás (lásd az "egyfelhasználós üzemmód manuális megadása" szakaszt alább), de a javaslat a root Access kezdeti beállítására szolgál.
 
 ### <a name="grub-access-in-rhel"></a>GRUB-hozzáférés a RHEL-ben
-A RHEL a GRUB engedélyezve van a dobozból. A grub megadásához indítsa újra a `sudo reboot` virtuális gépet, és nyomja le bármelyik billentyűt. Ekkor megjelenik a GRUB képernyő.
+A RHEL a GRUB engedélyezve van a dobozból. A grub megadásához indítsa újra a `sudo reboot` virtuális gépet, és nyomja le bármelyik billentyűt. Ekkor megjelenik a GRUB képernyő. Ha nem jelenik meg, győződjön meg arról, hogy az alábbi sorok szerepelnek a GRUB-`/etc/default/grub`fájlban ():
 
-> Megjegyzés: A Red Hat dokumentációt is biztosít a mentési módba való rendszerindítás, a vészhelyzeti mód, a hibakeresési mód és a gyökér jelszavának alaphelyzetbe állításához. Ide [kattintva érheti el](https://aka.ms/rhel7grubterminal).
+#### <a name="rhel-8"></a>RHEL 8:
+```
+GRUB_TIMEOUT=5
+GRUB_TERMINAL="serial console"
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
+```
+
+#### <a name="rhel-7"></a>7\. RHEL:
+```
+GRUB_TIMEOUT=5
+GRUB_TERMINAL_OUTPUT="serial console"
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 net.ifnames=0"
+```
+
+> [!NOTE]
+> A Red Hat dokumentációt is biztosít a mentési módba való rendszerindítás, a vészhelyzeti mód, a hibakeresési mód és a gyökér jelszavának alaphelyzetbe állításához. Ide [kattintva érheti el](https://aka.ms/rhel7grubterminal).
 
 ### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>Rendszergazdai hozzáférés beállítása egyetlen felhasználói üzemmódhoz a RHEL-ben
 A RHEL egyfelhasználós üzemmódjában engedélyezni kell a legfelső szintű felhasználót, amely alapértelmezés szerint le van tiltva. Ha engedélyezni szeretné az egyfelhasználós üzemmódot, kövesse az alábbi utasításokat:
@@ -193,7 +208,7 @@ Ha a SLES normál esetben nem indítható el, a rendszer automatikusan eltávol�
 A Red Hat Enterprise Linuxhoz hasonlóan a Oracle Linux egy felhasználói módja a GRUB és a root felhasználó engedélyezését igényli.
 
 ### <a name="grub-access-in-oracle-linux"></a>GRUB-hozzáférés Oracle Linux
-A Oracle Linux a GRUB engedélyezve van a dobozból. A grub megadásához indítsa újra a `sudo reboot` virtuális gépet, és nyomja le az ESC billentyűt. Ekkor megjelenik a GRUB képernyő. Ha nem látja a grub-t, győződjön meg arról, hogy a `GRUB_TERMINAL` sor értéke "soros konzol", például:. `GRUB_TERMINAL="serial console"`
+A Oracle Linux a GRUB engedélyezve van a dobozból. A grub megadásához indítsa újra a `sudo reboot` virtuális gépet, és nyomja le az ESC billentyűt. Ekkor megjelenik a GRUB képernyő. Ha nem látja a grub-t, győződjön meg arról, hogy a `GRUB_TERMINAL` sor értéke "soros konzol", például:. `GRUB_TERMINAL="serial console"` Hozza létre újra a `grub2-mkconfig -o /boot/grub/grub.cfg`grub-t.
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Egy felhasználói mód a Oracle Linuxban
 A fenti RHEL utasításait követve engedélyezze az egyfelhasználós üzemmódot a Oracle Linuxban.

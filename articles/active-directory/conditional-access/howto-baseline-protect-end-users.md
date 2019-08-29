@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 131d38f6154e7a6e2f3175838b084e47e17ec582
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 0f1a2e0bad39b54edc153416e4120bbc6912578c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532932"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125450"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Alapterv házirend: Végfelhasználói védelem (előzetes verzió)
 
@@ -24,7 +24,7 @@ ms.locfileid: "69532932"
 
 A biztonság és a használhatóság ésszerű egyensúlyának elérése érdekében a felhasználóknak nem kell megadniuk minden alkalommal, amikor bejelentkeznek. A normál felhasználói viselkedést tükröző hitelesítési kérések, például ugyanarról az eszközről való bejelentkezés ugyanazon a helyen, kis valószínűséggel sérülnek. Az MFA-kihívásokkal csak a kockázatos és a rossz színész jellemzőinek megjelenítését kérő bejelentkezések szükségesek.
 
-A végfelhasználói védelem a kockázatalapú MFA alapszabályzata, amely a címtár összes felhasználóját védi, beleértve az összes rendszergazdai szerepkört is. [](concept-baseline-protection.md) Ennek a szabályzatnak az engedélyezéséhez minden felhasználónak regisztrálnia kell az MFA-t a hitelesítő alkalmazás használatával. A felhasználók 14 napig figyelmen kívül hagyhatják az MFA regisztrációs kérését, amely után a rendszer letiltja a bejelentkezést, amíg nem regisztrálja az MFA-t. Az MFA-regisztráció után a rendszer csak a kockázatos bejelentkezési kísérletek során kéri a felhasználókat a többtényezős hitelesítésre. A rendszer letiltja a feltört felhasználói fiókokat, amíg a jelszó alaphelyzetbe nem áll, és a kockázati események el lettek távolítva.
+A végfelhasználói védelem a kockázatalapú MFA alapszabályzata, amely a címtár összes felhasználóját védi, beleértve az összes rendszergazdai szerepkört is. [](concept-baseline-protection.md) Ennek a szabályzatnak az engedélyezéséhez minden felhasználónak regisztrálnia kell az MFA-t a hitelesítő alkalmazás használatával. A felhasználók 14 napig figyelmen kívül hagyhatják az MFA regisztrációs kérését, amely után a rendszer letiltja a bejelentkezést, amíg nem regisztrálja az MFA-t. Az MFA-regisztráció után a rendszer csak a kockázatos bejelentkezési kísérletek során kéri a felhasználókat a többtényezős hitelesítésre. A rendszer letiltja a feltört felhasználói fiókokat, amíg a jelszó alaphelyzetbe nem áll, és a kockázati észlelések el lettek távolítva.
 
 > [!NOTE]
 > Ez a szabályzat minden felhasználóra vonatkozik, beleértve a vendég fiókokat, és az összes alkalmazásba való bejelentkezéskor lesz kiértékelve.
@@ -33,7 +33,7 @@ A végfelhasználói védelem a kockázatalapú MFA alapszabályzata, amely a c�
 
 Ügyfeleink védelméhez a Microsoft kiszivárgott hitelesítő adatai nyilvánosan elérhető felhasználóneveket és jelszavakat találnak. Ha megfelelnek valamelyik felhasználójuk, akkor a fiók azonnali védelmét nyújtjuk. A kiszivárgott hitelesítő adatokként azonosított felhasználókat a rendszer megerősíti. A rendszer letiltja a felhasználók bejelentkezését, amíg a jelszó alaphelyzetbe nem áll.
 
-A prémium szintű Azure AD licenccel rendelkező felhasználók visszaállíthatják a hozzáférést az önkiszolgáló jelszó-visszaállítás (SSPR) használatával, ha a képesség engedélyezve van a címtárban. A letiltott prémium szintű licenccel nem rendelkező felhasználóknak kapcsolatba kell lépniük a rendszergazdával a jelszó manuális alaphelyzetbe állításához és a megjelölt felhasználói kockázati esemény elvetéséhez.
+A prémium szintű Azure AD licenccel rendelkező felhasználók visszaállíthatják a hozzáférést az önkiszolgáló jelszó-visszaállítás (SSPR) használatával, ha a képesség engedélyezve van a címtárban. A letiltott prémium szintű licenccel nem rendelkező felhasználóknak kapcsolatba kell lépniük a rendszergazdával a jelszó manuális alaphelyzetbe állításához, és el kell végezniük a megjelölt felhasználói kockázatok észlelését.
 
 ### <a name="steps-to-unblock-a-user"></a>A felhasználó blokkolásának feloldásának lépései
 

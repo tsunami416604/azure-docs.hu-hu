@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: bcdb549ce5b522b2d456e2cbeb5471b9df984514
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 945afd4f0a5049985955bbc71bbf6b2250f68d2a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774406"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129041"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>A virtuális gép (VM) és a környezet-létrehozási hibák elhárítása Azure DevTest Labs
 A DevTest Labs figyelmeztetést ad, ha a gép neve érvénytelen, vagy ha a rendszer megsért egy tesztkörnyezet-házirendet. Időnként a laborbeli virtuális `X` gép vagy a környezeti állapot mellett vörös színnel jelenik meg, amely arról tájékoztatja, hogy valamilyen hiba történt.  Ez a cikk néhány trükköt tartalmaz, amelyek segítségével megtalálhatja a mögöttes problémát, és remélhetőleg a későbbiekben elkerülhető a probléma.
 
 ## <a name="portal-notifications"></a>Portál értesítései
-Ha a Azure Portal használja, a megtekinteni kívánt első hely az **értesítések panel**.  A **harang ikonra**kattintva a fő parancssáv elérhető értesítések paneljén megtudhatja, hogy a tesztkörnyezet virtuális gépe vagy a környezet létrehozása sikeres volt-e.  Ha hiba történt, a létrehozási hibához kapcsolódó hibaüzenet jelenik meg. A részletek gyakran további információkat nyújtanak a probléma megoldásához. A következő példában a virtuális gép létrehozása nem sikerült, mert a magok kifogytak. A részletes üzenetből megtudhatja, hogyan javíthatja ki a problémát, és hogyan kérheti le az alapvető kvóta növelését.
+Ha a Azure Portal használja, a megtekinteni kívánt első hely az **értesítések panel**.  A **harang ikonra**kattintva a fő parancssáv elérhető értesítések paneljén megtudhatja, hogy a tesztkörnyezet virtuális gépe vagy a környezet létrehozása sikeres volt-e.  Ha hiba történt, a létrehozási hibához kapcsolódó hibaüzenet jelenik meg. A részletek gyakran további információkat nyújtanak a probléma megoldásához. A következő példában a virtuális gép létrehozása nem sikerült, mert a magok kifogytak. A részletes üzenetből megtudhatja, hogyan javíthatja ki a problémát, és hogyan kérheti le az alapvető kvóta növelését.
 
 ![Értesítés Azure Portal](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
 

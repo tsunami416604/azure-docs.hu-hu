@@ -1,134 +1,146 @@
 ---
-title: Az Azure HDInsight az Apache Spark-fürt hibáinak elhárítása
-description: Ismerje meg az Apache Spark-fürtök Azure HDInsight és az azok megkerüléséhez kapcsolatos problémákat.
+title: Apache Spark-fürttel kapcsolatos problémák elhárítása az Azure HDInsight
+description: Ismerkedjen meg az Azure HDInsight Apache Spark-fürtökkel kapcsolatos problémákról és azok megoldásáról.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 02/21/2018
+ms.topic: troubleshooting
+ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 51a0ee6f2d928d79e60ca9976d7651c70867a41f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 76b4f721135c6e34eebdc20268a76e84d86b0637
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717593"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575682"
 ---
-# <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight-fürt az Apache Spark ismert problémái
+# <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Ismert problémák a Apache Spark-fürtön a HDInsight-on
 
-Ez a dokumentum nyomon követi az összes ismert problémák a HDInsight Spark nyilvános előzetes verzió.  
+Ez a dokumentum a HDInsight Spark nyilvános előzetes verziójával kapcsolatos összes ismert problémát nyomon követi.  
 
-## <a name="apache-livy-leaks-interactive-session"></a>Az Apache Livy elveszít interaktív munkamenet
-Amikor [Apache Livy](https://livy.incubator.apache.org/) újraindítja (az [Apache Ambari](https://ambari.apache.org/) vagy átjárócsomópontjával 0 virtuális gép újraindítása miatt) életben egy interaktív munkamenethez, egy interaktív feladat munkamenet kiszivárgott. Ennek eredményeképpen új feladatok is elakadt elfogadva állapotban.
+## <a name="apache-livy-leaks-interactive-session"></a>Apache Livy-szivárgások interaktív munkamenete
+Amikor az [Apache Livy](https://livy.incubator.apache.org/) újraindul (az [Apache Ambari](https://ambari.apache.org/) vagy a átjárócsomóponthoz 0 virtuális gép újraindítása miatt) egy interaktív munkamenettel még életben van, egy interaktív feladatütemezés kerül kiszivárgásra. Ennek eredményeképpen az új feladatok elhelyezhetők az elfogadott állapotba.
 
-**Megoldás:**
+**Kockázatcsökkentő**
 
-Az alábbi eljárás segítségével orvosolhatja a problémát:
+A probléma megkerüléséhez kövesse az alábbi eljárást:
 
-1. Ssh átjárócsomópontjával be. További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. SSH-t a átjárócsomóponthoz. További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Futtassa a következő parancsot az alkalmazásazonosítót a livy-n keresztül lépések interaktív feladatok található. 
-   
+2. Futtassa a következő parancsot a Livy-on keresztül indított interaktív feladatok alkalmazás-azonosítóinak megkereséséhez.
+
         yarn application –list
-   
-    Az alapértelmezett feladat nevek lesznek Livy, ha a feladatok a Livyvel interaktív munkamenethez indított nincsenek megadva kifejezett nevek. A Livy-munkamenet által indított [Jupyter Notebook](https://jupyter.org/), feladat neve kezdődik remotesparkmagics_ *. 
-3. Futtassa a következő parancsot ezen feladatok leállítása. 
-   
+
+    Az alapértelmezett feladatok neve Livy, ha a feladatok olyan interaktív Livy-munkamenettel kezdődtek, amelyben nincsenek megadva explicit nevek. A [Jupyter notebook](https://jupyter.org/)által elindított Livy-munkamenethez a feladatok neve a `remotesparkmagics_*`következővel kezdődik:.
+
+3. Futtassa a következő parancsot a feladatok leöléséhez.
+
         yarn application –kill <Application ID>
 
-Új feladatok kezdjen programokat futtatni. 
+Elindul az új feladatok futtatása.
 
-## <a name="spark-history-server-not-started"></a>Spark-Előzménykiszolgáló nem indult el
-Spark-Előzménykiszolgáló nem indult el automatikusan a fürt létrehozása után.  
+## <a name="spark-history-server-not-started"></a>A Spark History-kiszolgáló nincs elindítva
+A Spark History-kiszolgáló nem indul el automatikusan a fürt létrehozása után.  
 
-**Megoldás:** 
+**Kockázatcsökkentő**
 
-Indítsa el manuálisan a korábbi kiszolgáló Ambari.
+Manuálisan indítsa el az előzmények kiszolgálót a Ambari-ből.
 
-## <a name="permission-issue-in-spark-log-directory"></a>A Spark naplókönyvtár kulcstartóbeli probléma
-hdiuser lekérdezi a következő hiba, amikor egy feladat használatával küldjön spark-submit szkripttel:
+## <a name="permission-issue-in-spark-log-directory"></a>Engedélyezési probléma a Spark-napló címtárában
+a hdiuser a következő hibaüzenetet kapja, amikor elküld egy feladatot a Spark-Submit paranccsal:
 
 ```
 java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (Permission denied)
 ```
-És nincs illesztőprogram naplófájlt. 
 
-**Megoldás:**
+És nem írt be illesztőprogram-naplót.
 
-1. Adja hozzá a Hadoop-csoport hdiuser. 
-2. Adja meg a 777 engedélyek /var/log/spark a fürt létrehozása után. 
-3. Frissítse az Ambari segítségével lehet 777 engedélyekkel könyvtár spark napló helyét.  
-4. Futtassa a spark-submit sudo.  
+**Kockázatcsökkentő**
 
-## <a name="spark-phoenix-connector-is-not-supported"></a>A Phoenix a Spark összekötő nem támogatott.
+1. Adja hozzá a hdiuser a Hadoop-csoporthoz.
+2. Adja meg a 777 engedélyeket a/var/log/Spark a fürt létrehozása után.
+3. Frissítse a Spark-napló helyét a Ambari használatával a 777 engedélyekkel rendelkező könyvtárba.  
+4. Futtassa a Spark-Submit parancsot sudo-ként.  
 
-HDInsight Spark-fürtök nem támogatják a Spark-Phoenix-összekötő.
+## <a name="spark-phoenix-connector-is-not-supported"></a>A Spark-Phoenix összekötő nem támogatott
 
-**Megoldás:**
+A HDInsight Spark-fürtök nem támogatják a Spark-Phoenix összekötőt.
 
-A Spark-HBase-összekötő inkább kell használnia. Az utasításokért lásd: [használata Spark-HBase-összekötő](https://web.archive.org/web/20190112153146/ https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
+**Kockázatcsökkentő**
 
-## <a name="issues-related-to-jupyter-notebooks"></a>A Jupyter notebooks kapcsolatos problémák
-Az alábbiakban néhány, a Jupyter notebookok kapcsolatos ismert problémákat.
+Ehelyett a Spark-HBase összekötőt kell használnia. Az utasításokért lásd: a [Spark-HBase-összekötő használata](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
 
-### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>A fájlnevekben nem ASCII-karaktereket notebookok
-Ne használjon a Jupyter notebook fájlnevek nem ASCII-karaktereket. Ha megpróbálja feltölteni egy fájlt, amely rendelkezik a nem ASCII-fájl nevét, a Jupyter felületen, bármilyen hibaüzenet nélkül sikertelen lesz. Jupyter nem teszi lehetővé a fájl feltöltéséhez, de egy látható hiba nem throw vagy.
+## <a name="issues-related-to-jupyter-notebooks"></a>Jupyter-jegyzetfüzetekkel kapcsolatos problémák
 
-### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Hiba történt a nagyobb méretű notebookok betöltése
+A Jupyter-jegyzetfüzetekkel kapcsolatos ismert problémák a következők.
+
+### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Nem ASCII-karaktereket tartalmazó jegyzetfüzetek a fájlnevekben
+
+Ne használjon nem ASCII-karaktereket a Jupyter notebook fájlnevében. Ha a Jupyter felhasználói felületén próbál meg feltölteni egy fájlt, amely nem ASCII fájlnévvel rendelkezik, hibaüzenet nélkül meghiúsul. A Jupyter nem teszi lehetővé a fájl feltöltését, de nem mutat látható hibát sem.
+
+### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Hiba történt a nagyobb méretű jegyzetfüzetek betöltésekor
+
 Előfordulhat, hogy a hibával találkozik **`Error loading notebook`** Ha a jegyzetfüzet-nál nagyobb terhelése.  
 
-**Megoldás:**
+**Kockázatcsökkentő**
 
-Ha ez a hibaüzenet azt, nem jelenti az adatok sérült vagy elveszett.  A notebookok továbbra is a lemezen vannak `/var/lib/jupyter`, és az SSH a fürtbe érheti el őket. További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Ha ezt a hibaüzenetet kapja, nem jelenti azt, hogy az adatai sérültek vagy elvesznek.  A jegyzetfüzetek még mindig a lemezen vannak `/var/lib/jupyter`a-ben, és az SSH-t a fürtbe is elérheti. További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Miután csatlakozott a fürthöz SSH használatával, másolhatja a notebookok a fürtről a helyi gépen (a szolgáltatáskapcsolódási pont vagy WinSCP) biztonsági mentéséhez a notebookot a fontos adatok elvesztésének megelőzése érdekében. Ezek közül SSH-alagutat az átjárócsomópont-es porton keresztül az átjáró nélkül férhetnek hozzá a Jupyter 8001 be.  Itt törölje a jelet a jegyzetfüzet kimenetét, és mentse el újra a notebook méretének minimalizálása érdekében.
+Miután az SSH-val csatlakozott a fürthöz, a notebookot a fürtből a helyi gépre (SCP vagy megnyerő használatával) biztonsági másolatként másolhatja, hogy megakadályozza a jegyzetfüzetben található fontos adatok elvesztését. Ezután az 8001-as porton keresztül az SSH-alagúttal elérheti a átjárócsomóponthoz a Jupyter eléréséhez anélkül, hogy az átjárón kellene haladnia.  Innen törölheti a jegyzetfüzet kimenetét, és visszaállíthatja a notebook méretének minimalizálásához.
 
-Ez a hiba a jövőbeni megakadályozni, kövesse az ajánlott eljárásokat:
+Ha meg szeretné akadályozni, hogy ez a hiba a jövőben is megtörténjen, kövesse az ajánlott eljárásokat:
 
-* Fontos, hogy maradjon kicsi a jegyzetfüzet méretét. A Spark-feladatok bármely olyan kimenete, amely küld vissza a Jupyter a notebookot a rendszer megőrzi.  Általában célszerű jupyterrel, Cellafunkciók ajánlott futó elkerülése érdekében `.collect()` on nagy RDD vagy dataframes; helyette, ha szeretne betekintés az RDD tartalmát, érdemes futó `.take()` vagy `.sample()` , hogy a kimenet nem get túl nagy.
-* Is amikor menti egy jegyzetfüzetet, törölje az összes kimeneti cellák méretének csökkentése érdekében.
+* Fontos, hogy a jegyzetfüzet mérete kicsi legyen. A Spark-feladatok olyan kimenetét, amelyet visszaküld a Jupyter-be, megőrzi a jegyzetfüzetben.  Az ajánlott eljárás az általános Jupyter, hogy ne fusson `.collect()` a nagyméretű RDD vagy dataframes; Ehelyett ha egy RDD tartalmát szeretné megtekinteni, érdemes lehet a futtatást `.take()` vagy `.sample()` a kimenetet, hogy a kimenet ne legyen túl nagy.
+* Emellett a jegyzetfüzetek mentésekor törölje az összes kimeneti cella méretét a méret csökkentése érdekében.
 
-### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Notebook első indításkor a vártnál hosszabb idő alatt
-A Jupyter notebook használatával Spark Magic Quadrant kód utasításnak elsőként több mint egy percet is igénybe vehet.  
+### <a name="notebook-initial-startup-takes-longer-than-expected"></a>A jegyzetfüzet kezdeti indítása a vártnál hosszabb időt vesz igénybe
 
-**Magyarázat:**
+A Spark Magic használatával a Jupyter notebook első Code utasítása több mint egy percet is igénybe vehet.  
 
-Ez akkor fordul elő, mert az első kódcella futtatásakor. A háttérben munkamenet-konfiguráció- és Spark-, SQL kezdeményez, és a Hive-környezetek. Ezek a környezetek vannak beállítva, az első utasítás futtatása, és azt a benyomást biztosít ez után az utasítás végrehajtásához hosszú időbe telt meg.
+**Magyarázat**
 
-### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Jupyter notebook időkorlátot adja meg a munkamenet létrehozása
-Ha Spark-fürt kifogyott az erőforrásokból, a Jupyter notebookot a Spark és a PySpark kernelt fogja próbál meg létrehozni a munkamenet időkorlátja. 
+Ez azért történik, mert az első kód cellájának futtatásakor. A háttérben ez a munkamenet-konfiguráció, a Spark, az SQL és a kaptár környezetek beállítását indítja el. A kontextusok beállítása után az első utasítás fut, és ez azt a benyomást kelti, hogy az utasítás végrehajtása hosszú ideig tartott.
 
-**Megoldások:** 
+### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Jupyter-jegyzetfüzet időtúllépése a munkamenet létrehozásakor
 
-1. A Spark-fürt által az egyes erőforrások felszabadítása:
-   
-   * Más Spark-jegyzetfüzetek leállítása a Bezárás és Halt menü fog, vagy kattintson a leállítás a notebook Explorerben.
-   * Más Spark-alkalmazások, a YARN leállítása.
-2. Indítsa újra a notebook próbált elindításához. Elegendő erőforrást hozhat létre egy munkamenetet most elérhetőnek kell lennie.
+Ha a Spark-fürt erőforrás-kifogyott, a Jupyter-jegyzetfüzetben található Spark-és PySpark-kernel időtúllépési kísérletet tesz a munkamenet létrehozásához.
+
+**Enyhítését**
+
+1. Szabadítson fel néhány erőforrást a Spark-fürtön a alábbiak szerint:
+
+   * A többi Spark-jegyzetfüzet leállításához lépjen a Bezárás és leállítás menüre, vagy kattintson a Leállítás gombra a notebook Explorerben.
+   * Más Spark-alkalmazások leállítása a FONALból.
+
+2. Indítsa újra az elindítani próbált jegyzetfüzetet. Elegendő erőforrást kell elérhetőnek lennie ahhoz, hogy most létrehozza a munkamenetet.
 
 ## <a name="see-also"></a>Lásd még
-* [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)
+
+* [Áttekintés Apache Spark az Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek
-* [Az Apache Spark és BI: Spark on HDInsight használatával, BI-eszközökkel interaktív adatelemzés végrehajtása](apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight HVAC-adatok épület-hőmérséklet elemzésére](apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
+
+* [Apache Spark BI-val: Interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
+* [Apache Spark a Machine Learningkal: A Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark a Machine Learningkal: Az élelmiszer-vizsgálati eredmények előrejelzése a Spark in HDInsight használatával](apache-spark-machine-learning-mllib-ipython.md)
+* [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása
+
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
 * [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
+
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
-* [Az Apache Spark-alkalmazások távoli hibakeresése az IntelliJ IDEA HDInsight-eszközei beépülő használata](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Az Apache Zeppelin notebookok használata a HDInsight Apache Spark-fürt](apache-spark-zeppelin-notebook.md)
-* [Notebookokhoz elérhető kernelek Jupyter a HDInsight az Apache Spark-fürt](apache-spark-jupyter-notebook-kernels.md)
+* [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata a Apache Spark alkalmazások távoli hibakereséséhez](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Apache Zeppelin notebookok használata Apache Spark-fürttel a HDInsight-on](apache-spark-zeppelin-notebook.md)
+* [Jupyter notebookokhoz elérhető kernelek Apache Spark-fürtben HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Erőforrások kezelése
+
 * [Apache Spark-fürt erőforrásainak kezelése az Azure HDInsightban](apache-spark-resource-manager.md)
 * [Apache Spark-fürtön futó feladatok nyomon követése és hibakeresése a HDInsightban](apache-spark-job-debugging.md)
-

@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38383685f74020f5208d42df4428f896931fbe2a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6dd50aa00368469a9c5b42c41826da28566268d4
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931790"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125418"
 ---
 # <a name="whats-new-for-authentication"></a>A hitelesítés újdonságai 
 
@@ -41,7 +41,24 @@ A hitelesítési rendszer folyamatosan módosítja és hozzáadja a szolgáltat�
 
 ## <a name="upcoming-changes"></a>Közelgő változások
 
-Augusztus 2019: Az URL-elemzési szabályok alapján kényszerítheti a szemantikai hibákat – az ismétlődő paraméterek hibát jeleznek, a paraméterek közötti idézőjelek a továbbiakban nem lesznek figyelmen kívül hagyva, és az [Anyagjegyzék](https://www.w3.org/International/questions/qa-byte-order-mark) figyelmen kívül lesz hagyva.
+Szeptember 2019: A szemantika további kényszerítése az URL-elemzési szabályok alapján – az ismétlődő paraméterek hibát jeleznek, és az [Anyagjegyzék](https://www.w3.org/International/questions/qa-byte-order-mark) figyelmen kívül lesz hagyva.
+
+## <a name="august-2019"></a>Augusztus 2019
+
+### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>A POST Form szemantikai érvényesítése szigorúbb lesz, és a rendszer figyelmen kívül hagyja az idézőjeleket
+
+Hatálybalépés **dátuma**: Szeptember 2., 2019
+
+Érintett végpontok: V 1.0 és v 2.0
+
+Érintett **protokoll**: Bárhol a POST használatban van ([ügyfél-hitelesítő adatok](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow), [engedélyezési kód](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)beváltási, [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)és [frissítési jogkivonat](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)beváltásával)
+
+A 9/2-as hét elindításával a POST metódust használó hitelesítési kérelmek szigorúbb HTTP-szabványokkal lesznek érvényesítve.  A szóközök és a kettős idézőjelek (") nem lesznek eltávolítva a kérelmek űrlapjának értékeiből. Ezeknek a változásoknak nem kell megszüntetniük a meglévő ügyfeleket, és biztosítaniuk kell, hogy az Azure AD-nek küldött kérelmeket minden alkalommal megbízhatóan kezelje a rendszer. A jövőben (lásd fent) Azt tervezzük, hogy az ismétlődő paramétereket is elutasítjuk, és figyelmen kívül hagyják az ANYAGJEGYZÉKet a kérések között. 
+
+Példa:
+
+`?e=f&g=h` `e`  ==  Napjainkban`f`a értelmezése azonos módon történik.`?e=    "f"&g=h`  Ennek a változásnak az értelmezése `e`  ==  `    "f"` most már nem valószínű, hogy ez egy érvényes argumentum, és a kérés sikertelen lesz. 
+
 
 ## <a name="july-2019"></a>Július 2019
 

@@ -1,6 +1,6 @@
 ---
-title: Figyelése és csökkentheti a szabályozás, az Azure Time Series Insightsban |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan figyelheti, diagnosztizálhatja és kezelheti az Azure Time Series Insightsban késés és sávszélesség-szabályozási okozó teljesítményével kapcsolatos problémákat.
+title: A szabályozás figyelése és csökkentése a Azure Time Series Insightsban | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan figyelheti, diagnosztizálhatja és csökkentheti a késést és a szabályozást okozó teljesítménnyel kapcsolatos problémákat a Azure Time Series Insightsban.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -10,78 +10,90 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 05/07/2019
+ms.date: 08/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 129476c833e596d40daa7081e23c0fd6d1b93b30
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 275eff59c56229f45a131e107668b8fefab24536
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165757"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123763"
 ---
-# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Figyelheti, és az Azure Time Series Insightsban késés csökkentése érdekében a szabályozás csökkentése
+# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>A Azure Time Series Insights késésének csökkentése a szabályozás monitorozásával és enyhítésével
 
-A bejövő adatok mennyisége meghaladja a környezet konfigurációját, amikor a késleltetés vagy az Azure Time Series Insights-szabályozás tapasztalhat.
+Ha a bejövő adatmennyiség meghaladja a környezete konfigurációját, késést vagy szabályozást tapasztalhat Azure Time Series Insightsban.
 
-Elkerülheti a késés és a sávszélesség-szabályozási adatok elemezni szeretné a környezet megfelelő konfigurálásával.
+A késleltetés és a szabályozás elkerülése érdekében az elemezni kívánt adatmennyiséghez megfelelően konfigurálja a környezetet.
 
-Legnagyobb valószínűséggel késés és a szabályozás, amikor Ön:
+A következő esetekben valószínűleg késést és szabályozást tapasztal:
 
-- Adjon hozzá egy eseményforrás, amely tartalmazza a régi adatok haladhatja meg a meghatározott időn belül bejövő forgalom (a Time Series Insights olvasásra kell).
-- Adjon hozzá további eseményforrásokkal környezethez, további események (ami túllépheti a környezet kapacitása) ugrásszerű eredményez.
-- Korábbi események nagy mennyiségű leküldése egy eseményforrás (a Time Series Insights olvasásra kell) késéssel eredményez.
-- Csatlakozzon a referenciaadatok telemetriával, nagyobb esemény-méretet eredményez.  A sávszélesség-szabályozási szempontjából egy ingressed adatok csomagot a csomag mérete 32 KB-os 32 események számít, minden egyes 1 KB méretű. Engedélyezett események maximális mérete 32 KB; 32 KB-nál nagyobb adatcsomagok csonkolva lesznek.
+- Adjon hozzá olyan eseményforrás, amely olyan régi adatforrásokat tartalmaz, amelyek túllépik a megadott bejövő forgalom arányát (Time Series Insights fel kell vennie).
+- További eseményforrás hozzáadása egy környezethez, amely a további eseményekből származó tüske (ami túllépheti a környezet kapacitását).
+- Nagy mennyiségű történelmi eseményt küldhet egy adott esemény forrásaként, ami késést eredményez (Time Series Insights fel kell fognia).
+- Összekapcsolhatja a telemetria-vel való hivatkozási adatmennyiséget, ami nagyobb méretű eseményt eredményez.  A szabályozás szempontjából egy 32 KB méretű ingressed-adatcsomag 32-eseményként van kezelve, minden méret 1 KB. Az esemény maximálisan megengedett mérete 32 KB; az 32 KB-nál nagyobb adatcsomagok csonkítva vannak.
 
 ## <a name="video"></a>Videó
 
-### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>További tudnivalók a Time Series Insights bejövő működéshez, és tervezze meg, hogyan.</br>
+### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Ismerkedjen meg Time Series Insights adatforgalom viselkedésével és a tervezésével.</br>
 
 > [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
-## <a name="monitor-latency-and-throttling-with-alerts"></a>Késés és a szabályozás és a riasztások figyelése
+## <a name="monitor-latency-and-throttling-with-alerts"></a>Késés és szabályozás figyelése riasztásokkal
 
-Riasztások segíthetnek a környezet által okozott késési problémák diagnosztizálásához és érdekében.
+A riasztások segíthetnek a környezete által okozott késési problémák diagnosztizálásában és enyhítésében.
 
-1. Az Azure Portalon válassza ki a **metrikák**.
+1. A Azure Portal válassza a **riasztások**elemet.
 
-   [![Metrikák](media/environment-mitigate-latency/add-metrics.png)](media/environment-mitigate-latency/add-metrics.png#lightbox)
+   [![Riasztások](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
-1. Válassza a **Metrikariasztás hozzáadása** lehetőséget.  
+1. Ekkor megjelenik a **szabály létrehozása** panel. Válassza a **Hozzáadás** lehetőséget a **feltétel**alatt.
 
-   [![Metrikariasztás hozzáadása](media/environment-mitigate-latency/add-metric-alert.png)](media/environment-mitigate-latency/add-metric-alert.png#lightbox)
+   [![Riasztás hozzáadása](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
-Itt konfigurálhatja a riasztások a következő mérőszámok segítségével:
+1. Ezután konfigurálja a jel logikájának pontos feltételeit.
 
-|Metrika  |Leírás  |
-|---------|---------|
-|**Bejövő bájtokat fogadott**     | Nyers bájt száma eseményforrások olvasni. Nyers száma általában a tulajdonság nevét és értékét tartalmazza.  |  
-|**Bejövő forgalom érvénytelen üzenet érkezett**     | Érvénytelen üzeneteinek száma az összes Azure Event Hubs vagy Azure IoT Hub eseményforrások olvasni.      |
-|**Bejövő üzenetek fogadása**   | Üzenetek száma az összes Event Hubs vagy IoT-központok eseményforrások olvasni.        |
-|**Bejövő bájtok tárolt**     | Összes tárolt események méretét és lekérdezhető. A tulajdonság értéke csak a számított méretét.        |
-|**Bejövő forgalom tárolt események**     |   A tárolt és lekérdezhető egybesimított események száma.      |
-|**Bejövő forgalom fogadott üzenethez idő elteltével**    |  Forrás- és az idő a feldolgozása a bejövő forgalom a különbözet között az, hogy az üzenet az eseménynaplóban-e várólistán lévő idő másodpercben.      |
-|**Bejövő üzenetek száma időbeli kapott**    |  Utolsó várólistán lévő üzenetek sorszáma közötti különbség az adatforrás a bejövő forgalom feldolgozott üzenet partíciót és feladatütemezési számát.      |
+   [![Jel logikájának konfigurálása](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
-![Késés](media/environment-mitigate-latency/latency.png)
+   Innentől kezdve a következő feltételek valamelyikével konfigurálhatja a riasztásokat:
 
-* Ha meg van szabályozva, látni fogja a egy értéke a *bejövő érkezett üzenet időeltolódás*, hány másodpercet a TSI mögött van, a tényleges idő az üzenet tájékoztat eléri az eseményforrás (kivéve az appx-alapú indexelési idő. 30 – 60 másodpercet).  *Bejövő forgalom Beérkezett üzenetek száma időbeli* értékkel, lehetővé téve annak meghatározására, hogy hány üzenetek mögött található, akkor is kell rendelkeznie.  Az első szerepelnek legegyszerűbben, amely lehetővé teszi a különbség az, hogy a környezet kapacitás bővítéséhez.  
+   |Metrika  |Leírás  |
+   |---------|---------|
+   |**Bejövő fogadott bájtok száma**     | Az esemény forrásaiból beolvasott nyers bájtok száma. A nyers darabszám általában a tulajdonság nevét és értékét tartalmazza.  |  
+   |**A bejövő forgalom érvénytelen üzeneteket kapott**     | Az összes Azure-Event Hubs vagy az Azure IoT Hub-eseményforrás által beolvasott érvénytelen üzenetek száma.      |
+   |**Bejövő fogadott üzenetek**   | Az összes Event Hubs vagy IoT hub-eseményforrás által olvasott üzenetek száma.        |
+   |**Bejövő forgalomban tárolt bájtok**     | A lekérdezéshez tárolt és elérhető események teljes mérete. A méret kiszámítása csak a tulajdonság értékén történik.        |
+   |**Bejövő tárolt események**    |   A lekérdezéshez rendelkezésre álló és elérhető összeolvasztott események száma.      |
+   |**Beérkező üzenetek** időeltolódása   |  Az üzenet az várólistán lévő való beérkezése és a bejövő forgalomban történő feldolgozás időpontja közötti különbség másodpercben kifejezve.      |
+   |**Bejövő fogadott üzenetek számának késése**   |  Az eseményforrás-partíció utolsó várólistán lévő-üzenetének sorszáma és a bejövő forgalomban feldolgozott üzenet sorszáma közötti különbség.      |
 
-  Ha egyetlen egység S1 környezettel rendelkezik, és tekintse meg, hogy nincs-e 5,000,000 üzenet késéssel, például sikerült hat egységeket a napi körül első szerepelnek a környezet méretének növeléséhez.  Sikerült növelheti még tovább catch fel gyorsabban. Az utólagos idő pedig gyakran előfordul, kiépítésekor kezdetben környezetekben, különösen akkor, ha csatlakoztatja, amely már rendelkezik az események, az eseményforrás, vagy ha Ön tömeges feltöltés nagy mennyiségű előzményadatok.
+   Válassza a **Done** (Kész) lehetőséget.
 
-* Egy másik eljárás az, hogy állítsa be egy **belépő tárolt események** riasztás > = némileg alább 2 órán át a teljes környezet kapacitása a küszöbértéket.  Ez a riasztás segíthetnek megérteni, ha Ön folyamatosan kapacitással, amely azt jelzi, hogy a késés nagy valószínűséggel. 
+1. A kívánt jel logikájának konfigurálása után vizuálisan tekintse át a kiválasztott riasztási szabályt.
 
-  Például, ha három S1 szintű egységek kiépítése (vagy perces betöltési kapacitás 2100 esemény), beállíthat egy **belépő tárolt események** a riasztási > 1900 események = 2 óra alatt. Ha folyamatosan ezt a küszöbértéket meghaladó, és ezért a a riasztást kiváltó, valószínűleg alatt-regisztrálva van.  
+   [![Behatolása](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
 
-* Ha azt gyanítja, hogy van szabályozva, összehasonlíthatja a **bejövő Beérkezett üzenetek** az eseménnyel a forrás egressed az üzeneteket.  Ha az Event Hubs-eseményközpontba bejövő nagyobb, mint a **bejövő Beérkezett üzenetek**, a Time Series Insights valószínűleg szabályozva.
+## <a name="throttling-and-ingress-management"></a>Szabályozás és bejövő forgalom kezelése
 
-## <a name="improving-performance"></a>A teljesítmény fokozása
+* Ha a szabályozása folyamatban van, megjelenik egy érték a bejövő forgalomhoz *kapott üzenet*időkorlátja, amely arról tájékoztatja, hogy az ÁME mögötti idő hány másodpercig tart a tényleges idő, amikor az üzenet megkeresi az esemény forrását (kivéve a Appx indexelési idejét. 30-60 másodperc).  
 
-Szabályozási vagy tapasztalt késés csökkentése érdekében javítsa ki a legjobb módszer az növeli a kapacitást a környezet.
+  A *bejövő fogadott üzenetek számának késési* értékének is szerepelnie kell, ami lehetővé teszi, hogy megtudja, hány üzenet mögött van.  A legkönnyebben elsajátítható, hogy növelje a környezet kapacitását olyan méretre, amely lehetővé teszi a különbség leküzdését.  
 
-Elkerülheti a késés és a sávszélesség-szabályozási adatok elemezni szeretné a környezet megfelelő konfigurálásával. A környezet kapacitása hozzáadása kapcsolatos további információkért lásd: [Skálázhatja környezetét](time-series-insights-how-to-scale-your-environment.md).
+  Ha például egyetlen egység S1-környezettel rendelkezik, és láthatja, hogy van egy 5 000 000-os üzenet késése, akkor a környezet méretét akár hat egységre növelheti, hogy felkészüljön.  A gyorsabb felzárkózás érdekében még tovább növelheti. A felmerülési időszak gyakori esemény, amikor először telepítenek egy környezetet, különösen akkor, ha olyan eseménnyel csatlakozik, amely már rendelkezik eseményekkel, vagy ha nagy mennyiségű előzményt tölt fel.
+
+* Egy másik módszer egy **bejövő tárolt események** riasztásának beállítása > = egy küszöbérték kis mértékben a teljes környezeti kapacitás alatt 2 órán keresztül.  Ez a riasztás segít megismerni, hogy folyamatosan van-e kapacitása, ami nagy valószínűséggel jelzi a késést. 
+
+  Ha például három S1 egység van kiépítve (vagy 2100 eseményt percenként beáramló kapacitással), megadhat egy **bejövő tárolt események** riasztást > = 1900 eseményekhez 2 órán keresztül. Ha folyamatosan túllépi ezt a küszöbértéket, és így aktiválja a riasztást, valószínűleg kiosztották.  
+
+* Ha azt gyanítja, hogy a szabályozása folyamatban van, összehasonlíthatja a **bejövő beérkező üzeneteket** az eseményforrás egressed üzeneteivel.  Ha az Event hub-ba való belépés nagyobb, mint a **bejövő fogadott üzenetek**, a Time Series Insights valószínűleg szabályozva lesznek.
+
+## <a name="improving-performance"></a>A teljesítmény javítása
+
+A szabályozás és a késések csökkentése érdekében a legjobb megoldás a környezet kapacitásának növelésére.
+
+A késleltetés és a szabályozás elkerülése érdekében az elemezni kívánt adatmennyiséghez megfelelően konfigurálja a környezetet. A kapacitásnak a környezethez való hozzáadásával kapcsolatos további információkért lásd: [a környezet skálázása](time-series-insights-how-to-scale-your-environment.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- További hibaelhárítási [diagnosztizálása és kapcsolatos problémák megoldásához a Time Series Insights-környezet a](time-series-insights-diagnose-and-solve-problems.md).
+- További hibaelhárítási lépéseket a [Time Series Insights-környezetben felmerülő problémák diagnosztizálásához és megoldásához](time-series-insights-diagnose-and-solve-problems.md).
 
-- További segítségért beszélgetés indítása a a [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) vagy [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). Is [az Azure-támogatás](https://azure.microsoft.com/support/options/) személyes támogatás lehetőségeket.
+- Ha további segítségre van, indítson el egy beszélgetést az [MSDN fórumon](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) vagy [stack overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). Az [Azure támogatási](https://azure.microsoft.com/support/options/) szolgálata segítséget nyújt a támogatott támogatási lehetőségekhez is.

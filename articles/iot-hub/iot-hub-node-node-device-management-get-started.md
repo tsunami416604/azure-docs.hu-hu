@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 049fc534c6bf3d777268363968ac2a8b92ca8d1c
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 98ec53d384186968d69c3f84cdfa12fbdbe92b71
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904436"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147450"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>Ismerkedés az Eszközkezelővel (node. js)
 
@@ -34,8 +34,6 @@ Az oktatóanyag végén két Node. js-konzollal rendelkező alkalmazás találha
 * a **dmpatterns_getstarted_service. js**egy közvetlen metódust hív meg a szimulált eszköz alkalmazásban, megjeleníti a választ, és megjeleníti a frissített jelentett tulajdonságokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
-
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Node. js 10.0. x vagy újabb verzió. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítheti a Node. js-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
 

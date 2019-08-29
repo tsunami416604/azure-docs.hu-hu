@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 7ff4db2e349d0da811ef262e308477bde3b27a3c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ac9a62a810a957c67d9c24063d01eff822c8294f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934593"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129298"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure Security – technikai képességek
 Ez a cikk az Azure-beli biztonsági szolgáltatások bevezetését ismerteti, amelyek segítenek a felhőben tárolt adatvédelmek, erőforrások és alkalmazások védelmében, és megfelelnek a vállalat biztonsági igényeinek.
@@ -61,7 +61,7 @@ Az Azure Active Directory (Azure AD) biztonsági előnyei közé tartozik a köv
 
 - Egyszeri bejelentkezéses hozzáférést biztosíthat az alkalmazásokhoz, több ezer előre integrált SaaS-alkalmazáshoz.
 
-- Engedélyezze az alkalmazás-hozzáférési biztonságot a szabályokon alapuló többtényezős hitelesítésnek a helyszíni és a Felhőbeli alkalmazásokhoz való kényszerítésével.
+- Engedélyezze az alkalmazás-hozzáférési biztonságot a szabályokon alapuló Multi-Factor Authentication kényszerítésével mind a helyszíni, mind a felhőalapú alkalmazásokhoz.
 
 - Biztonságos távoli hozzáférés biztosítása helyszíni webalkalmazásokhoz az Azure AD Application Proxy használatával.
 
@@ -73,7 +73,7 @@ A következő alapvető Azure Identity Management-képességek:
 
 - Egyszeri bejelentkezés
 
-- Többtényezős hitelesítés
+- Multi-Factor Authentication
 
 - Biztonsági monitorozás, riasztások és gépi tanuláson alapuló jelentések
 
@@ -95,7 +95,7 @@ Számos szervezet olyan szoftveres (SaaS) alkalmazásokra támaszkodik, mint pé
 
 Nem csak a felhasználóknak nem kell több felhasználónevet és jelszót kezelnie, az alkalmazások hozzáférését a szervezeti csoportok és az alkalmazotti állapotuk alapján automatikusan kiépítheti vagy kiépítheti. Az [Azure ad olyan biztonsági és hozzáférési irányítási vezérlőket vezet be](../../active-directory/active-directory-enterprise-apps-manage-sso.md) , amelyek segítségével központilag kezelheti a felhasználók hozzáférését az SaaS-alkalmazásokon keresztül.
 
-#### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
+#### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Az [Azure multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) olyan hitelesítési módszer, amely több ellenőrzési módszer használatát igényli, és kritikus második biztonsági réteget hoz létre a felhasználói bejelentkezésekhez és tranzakciókra. Az [MFA segít megvédeni](../../active-directory/authentication/concept-mfa-howitworks.md) az adathozzáférést az adatkezeléshez és az alkalmazásokhoz, miközben egy egyszerű bejelentkezési folyamatra vonatkozó felhasználói igényeket is kielégít. Erős hitelesítést tesz lehetővé számos ellenőrzési lehetőség – telefonhívás, szöveges üzenet vagy Mobile apps-értesítés, valamint ellenőrző kód és külső OAuth-tokenek – használatával.
 
@@ -147,7 +147,7 @@ A Azure AD Privileged Identity Management a következőket teszi lehetővé:
 
 #### <a name="identity-protection"></a>Identitásvédelem
 
-A [Azure ad Identity Protection](../../active-directory/identity-protection/overview.md) egy olyan biztonsági szolgáltatás, amely összevont nézetet biztosít a kockázati események és a szervezet identitásait érintő lehetséges sebezhetőségek számára. Az Identity Protection meglévő Azure Active Directory anomáliák észlelési képességeit használja (az Azure AD rendellenes tevékenységi jelentéseiben érhető el), és bevezeti az új kockázati események típusait, amelyek valós időben észlelik a rendellenességeket.
+A [Azure ad Identity Protection](../../active-directory/identity-protection/overview.md) egy olyan biztonsági szolgáltatás, amely összevont nézetet biztosít a szervezet identitásait érintő kockázati észlelések és potenciális sebezhetőségek számára. Az Identity Protection meglévő Azure Active Directory anomáliák észlelési képességeit használja (az Azure AD rendellenes tevékenységi jelentésein keresztül érhető el), és új kockázati észlelési típusokat vezet be, amelyek valós időben észlelik a rendellenességeket.
 
 ## <a name="secure-resource-access"></a>Erőforrás-hozzáférés biztonságossá tétele
 

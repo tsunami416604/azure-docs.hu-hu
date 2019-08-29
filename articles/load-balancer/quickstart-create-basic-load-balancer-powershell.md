@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 58b36265a5e440dbf33a5d6fb85e791abbd006a8
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 378904b139edb7fe5d7c4376102ca6b153d84fb6
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274245"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129083"
 ---
 # <a name="get-started"></a>QuickStart Nyilvános terheléselosztó létrehozása Azure PowerShell használatával
 
@@ -295,40 +295,37 @@ Telepítése az IIS-t egyéni weblappal mindkét háttérszolgáltatás nyújtó
 
 1. Kérje le a terheléselosztó nyilvános IP-címét. Kérje le a terheléselosztó nyilvános IP-címét a `Get-AzPublicIPAddress` paranccsal.
 
-   ```azurepowershell-interactive
-    Get-AzPublicIPAddress `
-    -ResourceGroupName "myResourceGroupLB" `
-    -Name "myPublicIP" | select IpAddress
-   ```
-2. Hozzon létre egy távoli asztali kapcsolatot a VM1 géphez az előző lépésben beszerzett nyilvános IP-címmel. 
+    ```azurepowershell-interactive
+    Get-AzPublicIPAddress -ResourceGroupName "myResourceGroupLB" -Name "myPublicIP" | select IpAddress
+    ```
 
-   ```azurepowershell-interactive
+2. A **helyi gépen nyisson meg egy parancssort vagy egy PowerShell-ablakot**ehhez a lépéshez.  Hozzon létre egy távoli asztali kapcsolatot a VM1 géphez az előző lépésben beszerzett nyilvános IP-címmel. 
 
-      mstsc /v:PublicIpAddress:4221  
-  
-   ```
+    ```azurepowershell-interactive
+    mstsc /v:PublicIpAddress:4221  
+    ```
+
 3. Adja meg a hitelesítő adatokat a *VM1* géphez az RDP-munkamenet elindításához.
 4. Indítsa el a Windows PowerShellt a VM1 gépen, majd telepítse az IIS-kiszolgálót, és frissítse az alapértelmezett htm-fájlt az alábbi parancsokkal.
+
     ```azurepowershell-interactive
-    # Install IIS
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
-    
-    # Remove default htm file
-     remove-item  C:\inetpub\wwwroot\iisstart.htm
-    
-    #Add custom htm file
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
+        # Install IIS
+          Install-WindowsFeature -name Web-Server -IncludeManagementTools
+        
+        # Remove default htm file
+          remove-item  C:\inetpub\wwwroot\iisstart.htm
+        
+        # Add custom htm file
+          Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
     ```
-5. Zárja be a *myVM1* géphez létrehozott RDP-kapcsolatot.
-6. Hozzon létre egy RDP-kapcsolatot a *myVM2* géphez a `mstsc /v:PublicIpAddress:4222` parancs futtatásával, és ismételje meg a 4. lépést a *VM2* gépnél.
+5. Szüntesse meg a távoli asztali kapcsolatot a *myVM1*-gyel.
+6. **Hozzon létre egy RDP-kapcsolatot a helyi gépen** a `mstsc /v:PublicIpAddress:4222` *myVM2* paranccsal, és ismételje meg a 4. lépést a *VM2*.
 
 ## <a name="test-load-balancer"></a>Terheléselosztó tesztelése
 Szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). A következő példa a korábban létrehozott *myPublicIP* IP-címét kéri le:
 
 ```azurepowershell-interactive
-Get-AzPublicIPAddress `
-  -ResourceGroupName "myResourceGroupLB" `
-  -Name "myPublicIP" | select IpAddress
+Get-AzPublicIPAddress -ResourceGroupName "myResourceGroupLB" -Name "myPublicIP" | select IpAddress
 ```
 
 A nyilvános IP-címet beírhatja egy böngészőbe. Ekkor megjelenik a webhely, amely tartalmazza annak a virtuális gépnek az eszköznevét, amelyhez a terheléselosztó forgalmat irányított, ahogy az alábbi példában is látható:

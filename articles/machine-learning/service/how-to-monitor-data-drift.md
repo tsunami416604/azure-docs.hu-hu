@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: 41e357ee53d4c2fbc6683be3446ba2527dd9253f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: c6c4d1d4da3679eaefacb5aa0c91fcf64afc2a6b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623982"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128276"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) szolgáltatásban üzembe helyezett modellek adateltolódásának (előzetes verzió) észlelése
 
@@ -178,16 +178,7 @@ Ahhoz, hogy egyéni riasztásokat és műveleteket állítson be, az összes ada
 
 ## <a name="retrain-your-model-after-drift"></a>Modell újratanítása a drift után
 
-Ha az adateltolódás negatív hatással van a telepített modell teljesítményére, ideje a modell újratanítására. A következő [ `diff()` módszerarégiésazújbetanításiadatkészletekközöttiváltozáskezdetiértelmétadjameg.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#diff-rhs-dataset--compute-target-none--columns-none-
-) 
-
-```python
-from azureml.core import Dataset
-
-old_training_dataset.diff(new_training_dataset)
-```
-
-Az előző kód kimenete alapján érdemes lehet áttanítani a modellt. Ehhez folytassa a következő lépésekkel.
+Ha az adateltolódás negatív hatással van a telepített modell teljesítményére, ideje a modell újratanítására. Ehhez folytassa a következő lépésekkel.
 
 * Vizsgálja meg az összegyűjtött adatokat, és készítse elő az adatokat az új modell betanításához.
 * Felosztás a betanítási/tesztelési adatként.

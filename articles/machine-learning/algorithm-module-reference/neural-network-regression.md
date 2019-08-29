@@ -1,7 +1,7 @@
 ---
-title: 'Neurális hálózat regresszió: Modul-hivatkozás'
+title: 'Neurális hálózat regressziója: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, a Neurális hálózat regressziós modul használata az Azure Machine Learning szolgáltatás egy olyan testre szabható Neurális hálózat algoritmus használatával regressziós modell létrehozásához...
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning-szolgáltatás neurális hálózat regressziós modulját egy regressziós modell létrehozásához egy testreszabható neurális hálózati algoritmus használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,94 +9,93 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: bc6a7505ab09e929e5add61eea687f871aedf242
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93f27458a2571b2e26a090c06b01d8abe3e79c2a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029310"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128585"
 ---
-# <a name="neural-network-regression-module"></a>Neurális hálózat regressziós modul
+# <a name="neural-network-regression-module"></a>Neurális hálózat regressziós modulja
 
-*Egy regressziós modell létrehozása egy Neurális hálózat algoritmus használatával*  
+*Egy regressziós modellt hoz létre egy neurális hálózati algoritmus használatával*  
   
- Kategória: Gépi tanulás / modell inicializálása / regresszió
+ Kategória Machine Learning/inicializálási modell/regresszió
   
-## <a name="module-overview"></a>A modul áttekintése  
+## <a name="module-overview"></a>Modul áttekintése  
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul használatával egy olyan testre szabható Neurális hálózat algoritmus használatával regressziós modell létrehozásához.
+Ezzel a modullal létrehozhat egy regressziós modellt egy testreszabható neurális hálózati algoritmus használatával.
   
- Bár a deep learning és a modellezés komplex kapcsolatos, például képfelismerés széles körben ismert Neurális hálózatok, azok könnyedén igazítani regressziós problémák. Minden osztály statisztikai modellek nevezhető Neurális hálózat, ha azokat az adaptív súlyok használata, és megbecsülheti a bemenetek nem lineáris funkcióit. Így a Neurális hálózat regressziós megfelelő a problémákat, ahol egy hagyományos regressziós modell nem fér el a megoldás.
+ Habár a neurális hálózatok széles körben ismertek a mélyreható tanulásban és az összetett problémák modellezésében, például a képfelismerésben, könnyen alkalmazkodnak a regressziós problémákhoz. A statisztikai modellek bármely osztálya lehet egy neurális hálózat, ha adaptív súlyozást használnak, és a bemenetük nem lineáris függvényeit is megközelítik. Így a neurális hálózat regressziója olyan problémákra alkalmas, amelyekben a hagyományos regressziós modell nem fér hozzá a megoldásokhoz.
   
- Neurális hálózat regressziós egy felügyelt tanítás metódust, és ezért van szükség egy *adatkészlet címkézett*, amely tartalmaz egy címkét. Egy regressziós modell előre megbecsüli egy numerikus értéket, mert a címke oszlop numerikus adattípust kell lennie.  
+ A neurális hálózat regressziója felügyelt tanulási módszer, ezért *címkézett*adatkészletet igényel, amely tartalmaz egy címke oszlopot. Mivel a regressziós modell egy numerikus értéket jelez, a Label oszlopnak numerikus adattípusnak kell lennie.  
   
- A modell betanításához biztosít a modell és a címkézett adatkészlet bemeneteként [Train Model](./train-model.md). A betanított modell majd az új bemeneti példák értékeinek használható.  
+ A modellt úgy is betaníthatja, hogy a modell és a címkézett adatkészlet bemenetként adja meg a betanítási [modellt](./train-model.md). A betanított modell ezután felhasználható az új bemeneti példák értékeinek előrejelzésére.  
   
-## <a name="configure-neural-network-regression"></a>Neurális hálózat regressziós konfigurálása 
+## <a name="configure-neural-network-regression"></a>Az neurális hálózat regressziójának konfigurálása 
 
-Neurális hálózatokkal nagymértékben testre szabható. Ez a szakasz ismerteti, hogyan hozhat létre egy modell kétféleképpen:
+A neurális hálózatokat széles körben lehet testreszabni. Ez a szakasz azt ismerteti, hogyan hozhat létre modellt két módszer használatával:
   
-+ [Az alapértelmezett architektúra használatával Neurális hálózat modell létrehozása](#bkmk_DefaultArchitecture)  
++ [Neurális hálózati modell létrehozása az alapértelmezett architektúra használatával](#bkmk_DefaultArchitecture)  
   
-    Ha elfogadja az alapértelmezett Neurális hálózati architektúrát, használja a **tulajdonságok** ablaktáblán, a Neurális hálózat, például a csomópontok a rejtett rétegben, tanulási rátát és normalizálási viselkedését szabályozó paramétereinek a beállításához.
+    Ha elfogadja az alapértelmezett neurális hálózati architektúrát, a **Tulajdonságok** ablaktáblán állíthatja be a neurális hálózat viselkedését vezérlő paramétereket, például a rejtett rétegben található csomópontok számát, a tanulási arányt és a normalizálás funkciót.
 
-    Ha még nem ismeri a Neurális hálózatokat, kezdje itt. A modul támogatja számos testreszabásokat, és a modell hangolása, a Neurális hálózatokat részletes ismerete nélkül. 
+    Kezdje itt, ha ismerkedik a neurális hálózatokkal. A modul számos testreszabást támogat, valamint a modell finomhangolását a neurális hálózatok mélyreható ismerete nélkül. 
 
-+ Adja meg egy egyéni Neurális hálózat architektúrája 
++ Egyéni architektúra definiálása egy neurális hálózathoz 
 
-    Használja ezt a beállítást, ha azt szeretné, nagyon rejtett réteget hozzáadásához, vagy teljes mértékben testre szabhatja a hálózati architektúrát, a kapcsolatokat és az aktiválási funkciók.
+    Akkor használja ezt a beállítást, ha további rejtett rétegeket szeretne hozzáadni, vagy teljes mértékben testre szeretné szabni a hálózati architektúrát, a kapcsolatait és az aktiválási funkciókat.
     
-    Ez a beállítás akkor ajánlott, ha már ismeri némileg Neurális hálózatokkal. A Net # nyelv használatával adja meg a hálózati architektúra.  
+    Ez a lehetőség akkor a legjobb, ha már némileg ismeri a neurális hálózatokat. A hálózati architektúrát a net # nyelv használatával határozhatja meg.  
 
-##  <a name="bkmk_DefaultArchitecture"></a> Az alapértelmezett architektúra használatával Neurális hálózat modell létrehozása
+##  <a name="bkmk_DefaultArchitecture"></a>Neurális hálózati modell létrehozása az alapértelmezett architektúra használatával
   
-1.  Adja hozzá a **Neurális hálózat regressziós** modult a kísérletvászonra a felületen. Ez a modul alatt található **Machine Learning**, **inicializálása**, a a **regressziós** kategória. 
+1.  Adja hozzá a **neurális hálózat regressziós** modulját a kísérlethez az illesztőfelületen. Ezt a modult a regressziós kategóriában, a **Machine learning**, az **inicializálás**lehetőség alatt találja. 
   
-2. Megadhatja, hogy hogyan a modellt úgy vélik a **létrehozási trainer módban** lehetőséget.  
+2. Adja meg, hogyan szeretné képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
-    -   **Egyetlen paraméter**: Válassza ezt a lehetőséget, ha már tudja, hogyan szeretné konfigurálni a modellt.  
+    -   **Egyetlen paraméter**: Akkor válassza ezt a lehetőséget, ha már tudja, hogyan szeretné konfigurálni a modellt.  
 
-3.  A **rejtett réteg specifikáció**válassza **teljes csatlakoztatott eset**. Ezzel a beállítással létrehoz egy modellt, az alapértelmezett Neurális hálózat architektúra, amely egy Neurális hálózat regressziós modell, ezek az attribútumok rendelkezik használatával:  
+3.  A **rejtett réteg specifikációjában**válassza a **teljesen csatlakoztatott eset**elemet. Ez a lehetőség létrehoz egy modellt az alapértelmezett neurális hálózati architektúrával, amely egy neurális hálózat regressziós modelljéhez a következő attribútumokat használja:  
   
-    + A hálózat pontosan egy rejtett réteg rendelkezik.
-    + A kimenete rétegen teljesen csatlakozni a rejtett rétegben, és a rejtett rétegben teljesen csatlakozni a bemeneti réteget.
-    + A rejtett rétegben található csomópontok számát a felhasználó által beállítható (alapértelmezett érték 100).  
+    + A hálózat pontosan egy rejtett réteggel rendelkezik.
+    + A kimeneti réteg teljes mértékben csatlakozik a rejtett réteghez, és a rejtett réteg teljesen csatlakoztatva van a bemeneti réteghez.
+    + A rejtett rétegben található csomópontok számát a felhasználó állíthatja be (az alapértelmezett érték 100).  
   
-    A bemeneti rétegben lévő csomópontok számát a betanítási adatok a szolgáltatások száma határozza meg, mert a regressziós modellek lehetnek csak egy csomópont a kimenete rétegen.  
+    Mivel a bemeneti rétegben lévő csomópontok számát a betanítási adatokban található szolgáltatások száma határozza meg, a regressziós modellben csak egy csomópont lehet a kimeneti rétegben.  
   
-4. A **rejtett csomópontok**, írja be a rejtett csomópontok számát. Az alapértelmezett érték 100 csomópont egy rejtett réteg. (Ez a beállítás nem áll rendelkezésre, ha meghatároz egy egyéni architektúra használatával Net #.)
+4. A **rejtett**csomópontok számának megírásával adja meg a rejtett csomópontok számát. Az alapértelmezett érték egy rejtett réteg, amely 100 csomóponttal rendelkezik. (Ez a beállítás nem érhető el, ha a NET # használatával egyéni architektúrát határoz meg.)
   
-5.  A **tanulási ráta**, adjon meg egy értéket, amely meghatározza a lépés minden egyes ismétléskor javítása előtt időpontokban. Tanulási ráta nagyobb értéket a modell csoportba történő átszervezését gyorsabban okozhat, de azt is túllépése esetén helyi minimális követelménynek.
+5.  A **tanulási arány**mezőben adjon meg egy értéket, amely meghatározza az egyes iterációk lépéseit a javítás előtt. A tanulási ráta nagyobb értéke miatt a modell gyorsabban konvergálhat, de a helyi minimumok túllépése is lehet.
 
-6.  A **tanulási ismétlések száma**, adja meg az algoritmus dolgozza fel a betanítási esetek maximális száma.
+6.  A **tanulási ismétlések számának**megadásával meghatározhatja, hogy az algoritmus hány alkalommal dolgozza fel a betanítási eseteket.
 
-7.  A ** a betanulási súlyozza átmérőjű, be egy értéket, amely meghatározza, hogy a csomópont súlyok a tanulási folyamat elején.
+7.  A * * a kezdeti tanulási súlyok átmérője mezőbe írjon be egy értéket, amely meghatározza a csomópontok súlyait a tanulási folyamat elején.
 
-8.  A **a hír**, írjon be egy értéket az előző lépés során a csomópontok a súlyozást tanulására alkalmazni.
+8.  **A lendülethez**adja meg a tanulás során alkalmazandó értéket az előző iterációk csomópontjainak súlyozása alapján.
 
-10. A beállítást, **példák Shuffle**, az esetek közötti ismétlését a sorrendjének módosításához. Törölje ezt a beállítást, ha esetek pontosan ugyanabban a sorrendben dolgozzák minden alkalommal, amikor a kísérlet futtatásához.
+10. Az ismétlések közötti váltáshoz válassza ki a kívánt lehetőséget, majd a **shuffle példákat**. Ha kijelöli ezt a beállítást, a rendszer pontosan ugyanabban a sorrendben dolgozza fel az eseteket, amikor futtatja a kísérletet.
   
-11. A **véletlenszerű szám kezdőérték**, kitöltheti a kezdőérték használandó értéket. Adja meg az egyik kezdőérték értéket akkor hasznos, ha azt szeretné, az ismételhetőség az ugyanazon kísérletben frissítési kísérletei.
+11. A **véletlenszerű számú magok**esetében igény szerint megadhatja a vetőmagként használandó értéket. A magok értékének megadásával akkor lehet hasznos, ha biztosítani szeretné az azonos kísérletben lévő futtatások közötti ismételhetőséget.
   
-13. Betanítási adatkészletet és a egy összekapcsolása a [képzési modulok](module-reference.md): 
+13. Csatlakoztasson egy betanítási adatkészletet és egy betanítási [modult](module-reference.md): 
   
-    -   Ha **létrehozási trainer módban** való **egyetlen paramétert**, használjon [tanítási modell](./train-model.md).  
+    -   Ha úgy állítja be az **oktatói módot** , hogy az **egyetlen paraméter**legyen, használja a [Train modellt](./train-model.md).  
   
    
 14. Futtassa a kísérletet.  
 
 ## <a name="results"></a>Results (Eredmények)
 
-Képzési befejezése után:
+A betanítás befejezése után:
 
-+ A modell paraméterek együtt a szolgáltatás összegzését súlyok származó képzési és más paramétereket, a Neurális hálózat, kattintson a jobb gombbal kimenete [tanítási modell](./train-model.md), és válassza ki **Visualize**.  
++ Ha meg szeretné tekinteni a modell paramétereinek összegzését, valamint a képzésből beszerzett, valamint a neurális hálózat egyéb paramétereit, kattintson a jobb gombbal a betanítási [modell](./train-model.md)kimenetére, majd válassza a **Megjelenítés**lehetőséget.  
 
-+ Szeretné menteni a betanított modell pillanatképét, kattintson a jobb gombbal a **Trained model** kimenetét, és válassza ki **betanított modell mentése másként**. Ez a modell nem frissül az ugyanazon kísérletben, egymást követő futtatások.
++ A betanított modell pillanatképének mentéséhez kattintson a jobb gombbal a **betanított modell** kimenetére, és válassza a **Mentés**betanítva modellként lehetőséget. Ez a modell nem frissül ugyanazon kísérlet egymást követő futtatásakor.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

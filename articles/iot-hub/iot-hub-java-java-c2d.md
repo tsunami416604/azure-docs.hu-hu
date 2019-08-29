@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 28d01f1acbc6d9ff033567b10efc801925752191
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4d9a73ee9fb9e4019d30354e6d9fbbe57d081e33
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618480"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147520"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Üzenetküldés a felhőből az eszközre IoT Hub (Java)
 
@@ -43,7 +43,7 @@ Az oktatóanyag végén két Java-konzol alkalmazást futtat:
 > [!NOTE]
 > A IoT Hub számos eszköz platformjának és nyelvének (például C, Java, Python és JavaScript) támogatásával rendelkezik az Azure IoT Device SDK-k használatával. Az eszköznek az oktatóanyag kódjához való csatlakoztatásának részletes ismertetését, és általában az Azure IoT Hub az Azure [IoT fejlesztői](https://azure.microsoft.com/develop/iot)központját tekintheti meg.
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+## <a name="prerequisites"></a>Előfeltételek
 
 * Az eszközről a IoT hub gyors üzembe helyezése, illetve az [telemetria-](quickstart-send-telemetry-java.md) [Útválasztás konfigurálása IoT hub](tutorial-routing.md) oktatóanyag használatával.
 

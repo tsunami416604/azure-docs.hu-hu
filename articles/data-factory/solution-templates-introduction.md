@@ -8,15 +8,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/04/2019
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: d239e44364c3a4879f2f131717511385a4bd7037
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: c4a3fc20e806ec91ed2646e6131f682bf5c80e38
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234445"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140835"
 ---
 # <a name="templates"></a>Sablonok
 
@@ -34,7 +34,7 @@ A következő két módon teheti meg a Data Factory folyamat létrehozását a s
 
     ![A sablon-gyűjtemény megnyitása a szerző lapról](media/solution-templates-introduction/templates-intro-image2.png)
 
-## <a name="template-gallery"></a>Sablon gyűjteménye
+## <a name="template-gallery"></a>Sablontár
 
 ![A sablon gyűjteménye](media/solution-templates-introduction/templates-intro-image3.png)
 
@@ -72,7 +72,7 @@ A Data Factory Azure Resource Manager sablonokat használ a következő adattár
 
 -   SSIS-sablonok
 
-    -   Az Azure-SSIS Integration Runtime ütemezett SSIS-csomagok végrehajtása
+    -   SSIS-csomagok végrehajtásának ütemezett Azure-SSIS Integration Runtime
 
 -   Sablonok átalakítása
 

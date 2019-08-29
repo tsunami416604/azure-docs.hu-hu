@@ -1,7 +1,7 @@
 ---
 title: 'Oszlopok hozzáadása: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használhatja az oszlopok hozzáadása a modul az Azure Machine Learning szolgáltatás fűzze össze két adatkészletet.
+description: Megtudhatja, hogyan összefűzheti a két adathalmazt a Azure Machine Learning-szolgáltatás oszlopok hozzáadása moduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,42 +9,41 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: f1e087e97007c6ba271651a9791c7c3b38a9b9b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 630f8f7d4561ed6e7e9f943f4b3b123daeee4d67
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029355"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129019"
 ---
-# <a name="add-columns-module"></a>Oszlopok modul hozzáadása
+# <a name="add-columns-module"></a>Oszlopok hozzáadása modul
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul segítségével összefűzhet két adatkészletet. Egyetlen adatkészlet létrehozása a bemenetként megadott a két adatkészlet összes oszlopa kombinálja. Ha fűzze össze a több mint két adatkészletet kell, akkor több példánya **oszlopok hozzáadása**.
+Ezzel a modullal összefűzheti a két adatkészletet. Egyetlen adatkészlet létrehozásához a bemenetként megadott két adatkészlet összes oszlopát össze kell kapcsolni. Ha kettőnél több adatkészletet kell összefűzni, használja az **Oszlopok hozzáadása**több példányát.
 
 
 
-## <a name="how-to-configure-add-columns"></a>Oszlopok hozzáadása konfigurálása
-1. Hozzáadás a **oszlopok hozzáadása** modult a kísérletvászonra.
+## <a name="how-to-configure-add-columns"></a>Az oszlopok hozzáadásának beállítása
+1. Adja hozzá az **Oszlopok hozzáadása** modult a kísérlethez.
 
-2. A két adatkészletet, amely fűzze össze szeretné csatlakoztatni. Ha azt szeretné, úgy, hogy több mint két adatkészletet, láncolhatja össze több kombinációit **oszlopok hozzáadása**.
+2. Kösse össze az összefűzni kívánt két adatkészletet. Ha kettőnél több adatkészletet szeretne egyesíteni, összekapcsolhatja az **Oszlopok hozzáadása**több kombinációját is.
 
-    - Úgy, hogy két oszlopot, amelyek eltérő mennyiségű sor lehetőség. A kimeneti adatkészlet számokhoz a kisebb forrásoszlop minden egyes sorára a hiányzó értékeket.
+    - Két olyan oszlopot is össze lehet kapcsolni, amelyek eltérő számú sorral rendelkeznek. A kimeneti adatkészlet a kisebb forrás oszlop minden sorának hiányzó értékeivel van feltöltve.
 
-    - Az egyes oszlopok hozzáadása nem választható. Minden adathalmaz összes oszlopát vannak a használatakor összefűzött **oszlopok hozzáadása**. Ezért adja hozzá az oszlopok csak egy részhalmazát szeretné, ha használatával Select Columns adatkészlet adatkészlet létrehozása a kívánt oszlopokat.
+    - Nem választhat egyes oszlopokat a hozzáadáshoz. Az egyes adatkészletek összes oszlopa összefűzve lesz az **oszlopok hozzáadásakor**. Ezért ha csak az oszlopok egy részhalmazát szeretné felvenni, az adatkészletben az Oszlopok kiválasztása lehetőséggel hozzon létre egy adatkészletet, amely a kívánt oszlopokat használja.
 
 3. Futtassa a kísérletet.
 
 ### <a name="results"></a>Results (Eredmények)
-A kísérlet után futott:
+A kísérlet futtatása után:
 
-- Az első sort az új adatkészlet megtekintéséhez kattintson a jobb gombbal a kimenetét **oszlopok hozzáadása** , és válassza ki a képi megjelenítés opcióra.
+- Az új adatkészlet első sorainak megjelenítéséhez kattintson a jobb gombbal az **Oszlopok hozzáadása** elemre, majd válassza a Megjelenítés lehetőséget.
 
-Az új adatkészlet oszlopok száma egyenlő mindkét bemeneti adatkészletek az oszlopok összege.
+Az új adatkészlet oszlopainak száma megegyezik a bemeneti adatkészletek oszlopainak összegével.
 
-Ha két oszlop a bemeneti adatkészletek ugyanazzal a névvel, egy numerikus utótagot ad hozzá az oszlop neve. Például ha két példánya TargetOutcome nevű oszlop, a bal oldali oszlopban lenne nevezhető TargetOutcome_1 és a jobb oldali oszlopban lenne TargetOutcome_2 átnevezték.
+Ha két azonos nevű oszlop szerepel a bemeneti adatkészletekben, a rendszer egy numerikus utótagot ad hozzá az oszlop nevéhez. Ha például egy TargetOutcome nevű oszlop két példánya van, a bal oldali oszlop átnevezve lesz TargetOutcome_1, és a jobb oldali oszlop átnevezve lesz TargetOutcome_2.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

@@ -3,21 +3,20 @@ title: Társított szolgáltatások a Azure Data Factoryban | Microsoft Docs
 description: A Data Factory társított szolgáltatásainak megismerése. Társított szolgáltatások hivatkozása számítási/adattárakkal a adatok gyárához.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: shlo
-ms.openlocfilehash: 904e063ae64a971de7f34fbfac63b7679f3bc363
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 80e9cee0d973dc8575e9645c537b6b69fbeef700
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019960"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137121"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Társított szolgáltatások Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -92,14 +91,11 @@ A következő társított szolgáltatás egy Azure Storage-beli társított szol
 ```
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
+
 Társított szolgáltatásokat a következő eszközök vagy SDK-k egyikével hozhat létre: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager sablon és Azure Portal
 
 ## <a name="data-store-linked-services"></a>Adattárhoz társított szolgáltatások
-Az adattárakhoz való kapcsolódás [támogatott adattárakban és-formátumokban](copy-activity-overview.md#supported-data-stores-and-formats)található. A különböző tárolók számára szükséges speciális kapcsolatok tulajdonságainak listázása.
-
-## <a name="data-store-supported-activities"></a>Adattár által támogatott tevékenységek
-
-[!INCLUDE [Connector-activity support matrix](../../includes/connector-activity-support-matrix.md)]
+A Data Factory által támogatott adatok listáját az [összekötő áttekintése című](copy-activity-overview.md#supported-data-stores-and-formats) cikkben találja. A támogatott kapcsolatok tulajdonságainak megismeréséhez kattintson egy adattárra.
 
 ## <a name="compute-linked-services"></a>Társított szolgáltatások számítása
 A [számítási környezetek](compute-linked-services.md) ismertetése a különböző számítási környezetekről nyújt segítséget, amelyekkel kapcsolódhat az adat-előállítóhoz, valamint a különböző konfigurációkhoz.

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Tartomány-specifikus tartalmait – REST, Python'
+title: 'Gyors útmutató: Domain-specifikus tartalom – REST, Python'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban tartománymodellekkel fog hírességeket és nevezetességeket azonosítani egy képen a Computer Vision API a Pythonnal való használatával.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 19e87769bf4e49e5665d5f4887da9fd08e3cd6af
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 24fc695a2f832374a109b11ee6a87813146f13ed
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340662"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137607"
 ---
-# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Gyors útmutató: A tartományi modell, a REST API-t és a Python használatával a Computer Vision
+# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Gyors útmutató: Tartományi modell használata a REST API és a Python használatával Computer Vision
 
 Ebben a rövid útmutatóban tartománymodellel fog nevezetességeket és igény szerint hírességeket azonosítani egy távoli képen a Computer Vision REST API-jának segítségével. A [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) metódussal egy tartományspecifikus modellel ismerheti fel a képek tartalmait azonosíthat egy képen.
 
@@ -31,17 +31,14 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A [Pythonnak](https://www.python.org/downloads/) telepítve kell lennie, ha a mintát helyben szeretné futtatni.
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Megjelenik a származó ingyenes próbaverziós kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) előfizetni a Computer Vision, és a kulcs beszerzése.
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti `COMPUTER_VISION_SUBSCRIPTION_KEY` karakterláncához, a nevet és `COMPUTER_VISION_ENDPOINT`a-t.
 
 ## <a name="create-and-run-the-landmarks-sample"></a>A nevezetességminta létrehozása és futtatása
 
 A nevezetességminta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
-1. Hajtsa végre a következő módosításokat a kód megfelelő területein:
-    1. Cserélje le a `subscription_key` értéket az előfizetői azonosítóra.
-    1. Ha szükséges, cserélje le az `vision_base_url` értéket azon Azure-régió Computer Vision-erőforrás metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
-    1. Ha szeretné, cserélje le az `image_url` értéket annak a képnek az URL-címére, amelyen nevezetességeket szeretne azonosítani.
+1. Ha szeretné, cserélje le az `image_url` értéket annak a képnek az URL-címére, amelyen nevezetességeket szeretne azonosítani.
 1. Mentse a kódot egy `.py` kiterjesztésű fájlként. Például: `get-landmarks.py`.
 1. Nyisson meg egy parancsablakot.
 1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python get-landmarks.py`.
@@ -54,20 +51,17 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from io import BytesIO
 
-# Replace <Subscription Key> with your valid subscription key.
-subscription_key = "<Subscription Key>"
-assert subscription_key
+# Add your Computer Vision subscription key and endpoint to your environment variables.
+if 'COMPUTER_VISION_SUBSCRIPTION_KEY' in os.environ:
+    subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
+else:
+    print("\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n**Restart your shell or IDE for changes to take effect.**")
+    sys.exit()
 
-# You must use the same region in your REST call as you used to get your
-# subscription keys. For example, if you got your subscription keys from
-# westus, replace "westcentralus" in the URI below with "westus".
-#
-# Free trial subscription keys are generated in the "westus" region.
-# If you use a free trial subscription key, you shouldn't need to change
-# this region.
-vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
+if 'COMPUTER_VISION_ENDPOINT' in os.environ:
+    endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-landmark_analyze_url = vision_base_url + "models/landmarks/analyze"
+landmark_analyze_url = endpoint + "vision/v2.0/models/landmarks/analyze"
 
 # Set image_url to the URL of an image that you want to analyze.
 image_url = "https://upload.wikimedia.org/wikipedia/commons/f/f6/" + \

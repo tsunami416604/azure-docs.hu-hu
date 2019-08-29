@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc7ea05497d69a7ca833cc783e7a2bc6bf1a8b07
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 92bfb921833d99a3538ffa8c4c5d16a9f0cd3acd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335439"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126285"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>kézikönyv: A felhasználói kockázati szabályzat konfigurálása
 
@@ -26,9 +26,9 @@ Ez a cikk a felhasználói kockázati házirend konfigurálásához szükséges 
 
 ## <a name="what-is-a-user-risk-policy"></a>Mi az a felhasználói kockázati házirend?
 
-Az Azure AD elemzi a felhasználók minden egyes bejelentkezését. Az elemzés célja, hogy észlelje a bejelentkezéshez kapcsolódó gyanús műveleteket. Az Azure AD-ben a rendszer által észlelt gyanús műveletek is ismert kockázati események. Néhány kockázati eseményt valós időben lehet észlelni, több időt igénylő kockázati események is vannak. Ha például szokatlan helyekre való lehetetlen utazást szeretne felderíteni, a rendszernek egy 14 napos kezdeti tanulási időszakot kell megadnia a felhasználó szokásos működésének megismeréséhez. Több lehetőség is van az észlelt kockázati események feloldására. Például az egyes kockázati események manuálisan is feloldhatók, vagy a bejelentkezési kockázat vagy a felhasználói kockázat feltételes hozzáférési szabályzata alapján megoldhatók.
+Az Azure AD elemzi a felhasználók minden egyes bejelentkezését. Az elemzés célja, hogy észlelje a bejelentkezéshez kapcsolódó gyanús műveleteket. Az Azure AD-ben a rendszer által észlelt gyanús műveletek a kockázati észlelések is ismertek. Míg egyes kockázati észlelések valós időben észlelhetők, több időt igénylő kockázati észlelések is megoldhatók. Ha például szokatlan helyekre való lehetetlen utazást szeretne felderíteni, a rendszernek egy 14 napos kezdeti tanulási időszakot kell megadnia a felhasználó szokásos működésének megismeréséhez. Több lehetőség is van az észlelt kockázati észlelések feloldására. Például az egyes kockázati észleléseket manuálisan is megoldhatja, vagy a bejelentkezési kockázat vagy a felhasználói kockázat feltételes hozzáférési szabályzata segítségével megoldható.
 
-A felhasználó számára észlelt és nem feloldott összes kockázati eseményt aktív kockázati eseménynek nevezzük. A felhasználóhoz társított aktív kockázati eseményeket felhasználói kockázatnak nevezzük. A felhasználói kockázat alapján az Azure AD kiszámítja azt a valószínűséget (alacsony, közepes, magas), amelyet a felhasználó feltört. A valószínűség neve felhasználói kockázati szint.
+A felhasználók számára észlelt és nem feloldott összes kockázati észlelést aktív kockázati észlelésnek nevezzük. A felhasználóhoz társított aktív kockázati észleléseket felhasználói kockázatnak nevezzük. A felhasználói kockázat alapján az Azure AD kiszámítja azt a valószínűséget (alacsony, közepes, magas), amelyet a felhasználó feltört. A valószínűség neve felhasználói kockázati szint.
 
 ![Felhasználói kockázatok](./media/howto-user-risk-policy/1031.png)
 
@@ -72,8 +72,8 @@ Megadhat egy felhasználói kockázati biztonsági házirendet, amely letiltja a
 
 Bejelentkezés letiltása:
 
-* Megakadályozza az új felhasználói kockázati események létrehozását az érintett felhasználó számára
-* Lehetővé teszi a rendszergazdáknak a felhasználó identitását befolyásoló kockázati események manuális szervizelését és biztonságos állapotba való visszaállítását.
+* Megakadályozza az új felhasználói kockázati észlelések létrehozását az érintett felhasználó számára
+* Lehetővé teszi a rendszergazdáknak, hogy manuálisan javítsanak a felhasználó identitását befolyásoló kockázati észleléseket, és visszaállítsa azt egy biztonságos állapotba
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 

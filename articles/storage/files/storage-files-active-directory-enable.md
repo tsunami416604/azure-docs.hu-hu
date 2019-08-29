@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: rogarana
-ms.openlocfilehash: 23e8c82bad60675338a0482155ed8a92cdad3d3d
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 886cacc5e90136380a183f6b9ddd1123d726dcf3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617679"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129231"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>Az SMB protokollon keresztüli Azure Active Directory Domain Services hitelesítés engedélyezése Azure Files
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -46,11 +46,9 @@ Mielőtt engedélyezi az Azure AD-t az SMB-en keresztül a Azure Fileshoz, győz
 
 2.  **Engedélyezze Azure AD Domain Services az Azure AD-bérlőn.**
 
-< < < < < < < fej az Azure AD-beli hitelesítő adatokkal való hitelesítés támogatásához engedélyeznie kell az Azure AD-bérlő Azure AD Domain Servicesét. Ha nem az Azure AD-bérlő rendszergazdája, lépjen kapcsolatba a rendszergazdával, és kövesse a lépésenkénti útmutatót, amely [lehetővé teszi Azure Active Directory Domain Services használatát a Azure Portal használatával](../../active-directory-domain-services/tutorial-create-instance.md).
-= = = = = = = Az Azure AD-beli hitelesítő adatokkal való hitelesítés támogatásához engedélyeznie kell az Azure AD DS az Azure AD-bérlőhöz. Ha nem az Azure AD-bérlő rendszergazdája, lépjen kapcsolatba a rendszergazdával, és kövesse a lépésenkénti útmutatót a [Azure Active Directory Domain Services engedélyezéséhez a Azure Portal használatával](../../active-directory-domain-services/create-instance.md).
->>>>>>> 5f049740fef320adb172d59f68bd161bdc4318e1
+    Az Azure AD-beli hitelesítő adatokkal való hitelesítés támogatásához engedélyeznie kell Azure AD Domain Services az Azure AD-bérlő számára. Ha nem az Azure AD-bérlő rendszergazdája, lépjen kapcsolatba a rendszergazdával, és kövesse a lépésenkénti útmutatót, amely [lehetővé teszi Azure Active Directory Domain Services használatát a Azure Portal használatával](../../active-directory-domain-services/tutorial-create-instance.md).
 
-    It typically takes about 15 minutes for an Azure AD DS deployment to complete. Verify that the health status of Azure AD DS shows **Running**, with password hash synchronization enabled, before proceeding to the next step.
+    Általában körülbelül 15 percet vesz igénybe, hogy az Azure AD DS üzembe helyezése befejeződjön. A következő lépés végrehajtása előtt ellenőrizze, hogy **fut**-e az Azure AD DS állapota, és hogy engedélyezve van-e a jelszó kivonatának szinkronizálása.
 
 3.  **Tartomány – Azure-beli virtuális gép csatlakoztatása az Azure AD DShoz.**
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 5f387310e737982b824d0ac9662822d9a74f39e9
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e606b4fee2c46f66f13c45586bcc25577bd90a1f
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67616019"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147186"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) Kubernetes alapvető fogalmai
 
@@ -100,6 +100,9 @@ A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások az alapsz
 ### <a name="node-pools"></a>Csomópontkészletek
 
 Az azonos konfiguráció csomópontjai a *csomópont*-készletekbe vannak csoportosítva. A Kubernetes-fürt egy vagy több csomópontot tartalmaz. A csomópontok és a méretek kezdeti száma akkor van meghatározva, amikor egy AK-fürtöt hoz létre, amely létrehoz egy *alapértelmezett csomópont*-készletet. Ez az alapértelmezett Node-készlet az AK-ban tartalmazza az ügynök csomópontjait futtató mögöttes virtuális gépeket. Több Node-készlet támogatása jelenleg előzetes verzióban érhető el az AK-ban.
+
+> [!NOTE]
+> Annak biztosítása érdekében, hogy a fürt megbízhatóan működjön, legalább 2 (két) csomópontot kell futtatnia az alapértelmezett csomópont-készletben.
 
 AK-fürt méretezése vagy frissítése esetén a művelet az alapértelmezett csomópont-készleten történik. Dönthet úgy is, hogy egy adott csomópont-készletet méretezéssel vagy frissítéssel végez. A frissítési műveletek esetében a futó tárolók a csomópont más csomópontjain vannak ütemezve, amíg az összes csomópont frissítése sikeresen megtörtént.
 

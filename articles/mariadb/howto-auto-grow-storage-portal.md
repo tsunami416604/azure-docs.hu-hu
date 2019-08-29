@@ -1,45 +1,45 @@
 ---
-title: Automatikus növekedés storage, Azure Database-ben az Azure portal használatával MariaDB-hez
-description: Ez a cikk bemutatja, hogyan engedélyezheti az automatikus tárolási növekszik az Azure Database for MariaDB Azure portal használatával
+title: A tároló automatikus növekedése Azure Database for MariaDB a Azure Portal használatával
+description: Ez a cikk azt ismerteti, hogyan engedélyezheti az automatikus növekedés tárolását Azure Database for MariaDB használatával Azure Portal
 author: ambhatna
 ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 5/29/2019
-ms.openlocfilehash: bb3291b66776a5f0f6be16069b2d6a999b2d1f32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d7b126b5c07cc8661cf50b4c4e13f78592b118e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66676878"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136696"
 ---
-# <a name="auto-grow-storage-in-azure-database-for-mariadb-using-the-azure-portal"></a>Automatikus növekedés storage, Azure Database-ben az Azure portal használatával MariaDB-hez
-Ez a cikk bemutatja, hogyan konfigurálhat egy Azure Database for MariaDB-kiszolgálótár növelheti a számítási feladatok befolyásolása nélkül.
+# <a name="auto-grow-storage-in-azure-database-for-mariadb-using-the-azure-portal"></a>A tároló automatikus növekedése Azure Database for MariaDB a Azure Portal használatával
+Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for MariaDB-kiszolgáló tárterületét úgy, hogy az a munkaterhelés befolyásolása nélkül is növekszik.
 
-Amikor egy kiszolgáló eléri a lefoglalt tárolási kapacitása, a kiszolgáló csak olvashatóként van megjelölve. Azonban ha engedélyezte a storage automatikus növekedés, a tárolást növeli az egyre növekvő adatok befogadásához. Kevesebb mint 100 GB-os kiépített tároló kiszolgálók esetében a felhasznált tárterület mérete eléri 5 GB-tal, amint a szabad tárhely nem éri el a nagyobb, mint 1 GB vagy 10 %-a felhasznált tárterület. Több mint 100 GB-os kiépített tároló kiszolgálók esetében a felhasznált tárterület mérete növekszik 5 % 5 %-a kiépített tárhely méretére alatt rendelkezésre álló szabad tárhely esetén. Maximális tárhely korlátozza a megadott [Itt](https://docs.microsoft.com/azure/mariadb/concepts-pricing-tiers#storage) vonatkoznak.
+Ha egy kiszolgáló eléri a lefoglalt tárterület korlátját, a kiszolgáló csak olvashatóként van megjelölve. Ha azonban engedélyezi a tárterület automatikus növekedését, a kiszolgáló tárterülete megnöveli a növekvő adatmennyiséget. A 100 GB-nál kevesebb kiosztott tárterülettel rendelkező kiszolgálók esetében a kiépített tárterület mérete 5 GB-kal nő, amint az ingyenes tárterület a kiépített tárterület nagyobb 1 GB-os vagy 10%-ában kisebb. A 100 GB-nál több kiosztott tárterülettel rendelkező kiszolgálók esetében a kiosztott tárterület mérete 5%-kal nő, ha a szabad tárterület mérete a kiosztott tárterület méretének 5%-a alá esik. Az [itt](https://docs.microsoft.com/azure/mariadb/concepts-pricing-tiers#storage) megadott maximális tárolási korlátozások érvényesek.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató végrehajtásához lesz szüksége:
-- Egy [, Azure Database for MariaDB-kiszolgáló](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+- Egy [Azure Database for MariaDB-kiszolgáló](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 
-## <a name="enable-storage-auto-grow"></a>Storage automatikus növekedés 
+## <a name="enable-storage-auto-grow"></a>Tárterület automatikus növekedésének engedélyezése 
 
-Kövesse az alábbi lépéseket a kiszolgáló storage automatikus növekedés MariaDB beállításához:
+Az alábbi lépéseket követve állíthatja be a MariaDB-kiszolgáló tárterületének automatikus növekedését:
 
-1. Az a [az Azure portal](https://portal.azure.com/), válassza ki az Azure Database for MariaDB-kiszolgáló.
+1. A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő Azure Database for MariaDB-kiszolgálót.
 
-2. A MariaDB lapon alatt **beállítások** szakaszban kattintson **tarifacsomag** árképzési szint lap megnyitásához.
+2. A MariaDB-kiszolgáló lapon, a **Beállítások** fejléc alatt kattintson a díjszabási csomag elemre a díjszabási szintek lap megnyitásához.
 
-3. Az Auto-növekedés szakaszban válassza ki a **Igen** storage automatikus növekedés engedélyezéséhez.
+3. Az automatikus növekedés szakaszban válassza az **Igen** lehetőséget a tárterület automatikus növekedésének engedélyezéséhez.
 
-    ![Azure Database for MariaDB - Settings_Pricing_tier - Auto-növekedés](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
+    ![Azure Database for MariaDB-Settings_Pricing_tier – automatikus növekedés](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
 
 4. A változtatások mentéséhez kattintson az **OK** gombra.
 
-5. Értesítés megerősíti, hogy az automatikus növekedés engedélyezése sikerült.
+5. Egy értesítés megerősíti, hogy az automatikus növekedés sikeresen engedélyezve lett.
 
-    ![Azure Database for MariaDB - auto-növekedés sikeres](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
+    ![Azure Database for MariaDB – az automatikus növekedés sikere](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg [riasztások létrehozása metrikákhoz](howto-alert-metric.md).
+Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-metric.md).

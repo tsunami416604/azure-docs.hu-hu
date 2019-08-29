@@ -1,61 +1,60 @@
 ---
-title: Data Factory használatieset - termékekre vonatkozó javaslatok
-description: Ismerje meg egy Azure Data Factory használatával és egyéb szolgáltatások használati eset.
+title: Data Factory használati eset – termékre vonatkozó javaslatok
+description: További információ a Azure Data Factory használatával megvalósított használati esetekről, valamint más szolgáltatásokkal.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 4a3d1c513bcfb6449ca73d873c0dd9831c6fe01d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 49ad9be7c70602132436b14234f01a4086d8e1fe
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60605713"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139138"
 ---
 # <a name="use-case---product-recommendations"></a>Használati eset – Termékajánlások
-Az Azure Data Factory a Cortana Intelligence Suite-megoldásgyorsítók megvalósításához használt számos szolgáltatás egyike.  Lásd: [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) oldalán Ez az alkalmazáscsomag adatait. Ez a dokumentum egy gyakori alkalmazási helyzet, hogy az Azure-felhasználók már megoldott és az Azure Data Factory és az egyéb Cortana Intelligence Komponensszolgáltatások használatával implementált ismertetünk.
+Azure Data Factory a megoldási gyorssegédek Cortana Intelligence Suite megvalósításához használt számos szolgáltatás egyike.  A csomaggal kapcsolatos részletekért tekintse meg [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) oldalt. Ebben a dokumentumban általános használati esetet ismertetünk, amelyet az Azure-felhasználók már megoldottak és implementáltak Azure Data Factory és más Cortana Intelligence összetevő-szolgáltatások használatával.
 
 ## <a name="scenario"></a>Forgatókönyv
-Online kiskereskedők gyakran szeretne rávenni a termékek megvásárlására a legnagyobb valószínűséggel hasznos lehet, és ezért nagy valószínűséggel vásárlása termékekkel szabályzatkérelem ügyfeleiknek. Ennek érdekében a online kiskereskedők kell, hogy adott felhasználó számára személyre szabott Termékajánlatok használatával a felhasználó online élmény testreszabása. Ezek személyre szabott ajánlások a jelenlegi és korábbi vásárlási viselkedési adatokat, termékinformációkat, újonnan bevezetett márkái és termék- és Szegmentálás adatok alapján történik.  Emellett azok megadhatják a felhasználó termékekre vonatkozó javaslatok teljes viselkedésébe, az összes felhasználójukat kombinált elemzése alapján.
+Az online kereskedők gyakran szeretnék megcsábítani ügyfeleiket termékeik megvásárlására azáltal, hogy olyan termékekkel látják el őket, amelyek nagy valószínűséggel érdeklik, és így nagy valószínűséggel vásárolnak. Ennek elvégzéséhez az online kiskereskedőknek személyre szabott termékre vonatkozó javaslatokkal kell testreszabnia a felhasználó online élményét. Ezeket a személyre szabott javaslatokat a jelenlegi és a korábbi vásárlási viselkedési adatok, a termékinformáció, az újonnan bevezetett márkák, valamint a termékek és az ügyfelek szegmentálási adatai alapján kell elvégezni.  Emellett a felhasználói termékre vonatkozó javaslatokat is megadhatnak a felhasználók összesített viselkedésének elemzése alapján.
 
-Az alábbi kiskereskedők célja, hogy magasabb értékesítési bevételről kedvezményekhez és optimalizálhatja a felhasználói kattintson értékesítés átalakításhoz.  Azok az átalakításhoz azáltal, hogy az ügyfelek érdeklődését és műveletek alapján környezetfüggő, viselkedés-alapú termékekre vonatkozó javaslatok érhet el. Ezt a használati esetet online kiskereskedők használjuk példaként szolgál a vállalatok, amelyek az ügyfelek számára, akik optimalizálását. Ezeket az alapelveket azonban minden olyan cég, amely körül a termékek és szolgáltatások az ügyfelek megszólítása és ügyfelek vásárlási élmény a személyre szabott Termékajánlatok szeretne alkalmazni.
+Ezeknek a kereskedőknek a célja, hogy optimalizálják a felhasználók kattintás utáni átalakítását, és magasabb értékesítési bevételt nyerjenek.  Ezt a konverziót a kontextust, viselkedésen alapuló termékre vonatkozó ajánlásokat biztosítanak az ügyfelek érdekei és műveletei alapján. Ebben a használati esetben az online kiskereskedőket használjuk példaként az ügyfeleknek optimalizálni kívánt vállalkozásokra. Ezek az alapelvek azonban minden olyan vállalkozásra érvényesek, amely az ügyfeleit a termékeit és szolgáltatásait szeretné felvenni, és a személyre szabott termékekkel kapcsolatos javaslatokkal fokozza ügyfeleik vásárlási tapasztalatát.
 
 ## <a name="challenges"></a>Problémák
-Nincsenek számos kihívást, hogy online kiskereskedők face használati eset az ilyen típusú végrehajtására tett kísérlet során. 
+Az ilyen típusú használati eset megvalósítására tett kísérlet során számos kihívással szembesülnek az online kereskedők. 
 
-Először kell-e a különböző méretekre és az adatok betöltött több adatforrásból, mind a helyszíni és a felhőben. Ezeket az adatokat a termék adatait, a korábbi felhasználói viselkedési adatokat és a felhasználói adatok, a felhasználó megnyitja az online kereskedelmi webhely tartalmaz. 
+Először is, a különböző méretek és formák adatait több adatforrásból kell bevenni, a helyszínen és a felhőben egyaránt. Ezek az adatforgalom tartalmazza a termékadatokat, a korábbi ügyfél-viselkedési információkat és a felhasználói információkat, amikor a felhasználó megkeresi az online kereskedelmi webhelyet. 
 
-Második, személyre szabott termékajánlatokat lehet kapcsán felmerült költségeiért és nagy pontossággal számítja ki, és előre jelzett. Termék márkáját, és viselkedését, és a böngésző ügyféladatok, mellett online kiskereskedők kell is ügyfélvisszajelzések elmúlt beszerzésekre ajánlott a termékekre vonatkozó javaslatok, a felhasználó meghatározásakor figyelembe vennie. 
+Másodszor, a személyre szabott termékre vonatkozó ajánlásokat ésszerűen és pontosan ki kell számítani, és előre jelezni kell. A termékre, a márkára, valamint az ügyfél viselkedésére és a böngészőre vonatkozó adatok mellett az online kereskedőknek is szerepelniük kell az ügyfelekkel kapcsolatos visszajelzések a múltbeli vásárlásokkal kapcsolatban, hogy a legjobb termékre vonatkozó javaslatok meglegyenek a felhasználó számára. 
 
-A javaslatok harmadik, azonnal a terméket, a felhasználó számára adjon meg egy zökkenőmentes tallózása és vásárlási élményt, és adja meg a legutóbbi és a vonatkozó javaslatok kell lennie. 
+Harmadszor, a felhasználónak azonnal el kell látnia a felhasználót, hogy zökkenőmentes böngészési és vásárlási élményt nyújtson, és megadja a legfrissebb és a vonatkozó javaslatokat. 
 
-Végül a kiskereskedők kell mérni saját megközelítés hatékonyságát átfogó értékesítési nyomon követése révén keresztértékesítési kattintson-átalakítás értékesítési sikeres, és módosítsa a jövőbeni ajánlások.
+Végezetül a kiskereskedőknek a megközelítésük eredményességét kell mérniük azáltal, hogy nyomon követik a teljes értékesítési és az értékesítésre való kattintásra való áttérést, és a későbbi javaslatokhoz igazodnak.
 
 ## <a name="solution-overview"></a>Megoldás áttekintése
-Ez a példa használati esetekhez megoldott és az Azure Data Factory és az egyéb Cortana Intelligence Komponensszolgáltatások, beleértve a valós Azure-felhasználók által megvalósított [HDInsight](https://azure.microsoft.com/services/hdinsight/) és [Power BI](https://powerbi.microsoft.com/).
+A példában szereplő használati esetet a Azure Data Factory és más Cortana Intelligence összetevő-szolgáltatások, például a [HDInsight](https://azure.microsoft.com/services/hdinsight/) és a [Power bi](https://powerbi.microsoft.com/)használatával oldották meg és implementálták a valódi Azure-felhasználók.
 
-Az online kereskedő az adatok tárolási lehetőségek a munkafolyamaton keresztül egy Azure Blob-tároló, egy helyszíni SQL server, Azure SQL Database és a egy relációs adatpiacot használja.  A blob-tároló ügyfél-információkat, a felhasználói viselkedési adatokat, és a termék információk adatokat tartalmazza. A termék információk adatok tartalmazzák a termék márkáját adatokat, és a katalógus a helyszínen tárolt az SQL data warehouse termék. 
+Az online kiskereskedő egy Azure BLOB-tárolót, egy helyszíni SQL Servert, az Azure SQL DB-t és egy olyan kapcsolati data mart használ, amely az adattárolási lehetőségek között a munkafolyamaton belül.  A blob-tároló a vásárlói adatokat, az ügyfél viselkedési adatait és a termékinformáció adatait tartalmazza. A termékinformáció-adatok tartalmazzák a termék márkájának adatait és a helyszínen tárolt termékkatalógust egy SQL-adattárházban. 
 
-Összes adat kombinált, és a egy termék javaslat rendszerbe, hogy személyre szabott javaslatok alapján ügyfelek érdeklődését és műveleteket, amíg a felhasználó a webhelyen a katalógusban szereplő termékek mappanevekkel adatkéréseket. Az ügyfelek is megtekintheti a termék megnézzük, kapcsolódó termékek bármely egy felhasználó nem kapcsolódó általános webhely használati minták alapján.
+Az összes információ össze van építve és egy termék-ajánlási rendszerbe kerül, hogy személyre szabott ajánlásokat nyújtson az ügyfelek érdeklődési köre és műveletei alapján, míg a felhasználó a webhelyen lévő katalógusban böngészhet a termékek között. Az ügyfelek olyan termékeket is láthatnak, amelyek a termékhez kapcsolódnak, és a webhelyek általános használati mintái alapján működnek, amelyek nem kapcsolódnak egyetlen felhasználóhoz sem.
 
-![használatieset](./media/data-factory-product-reco-usecase/diagram-1.png)
+![használati eset diagramja](./media/data-factory-product-reco-usecase/diagram-1.png)
 
-A nyers webes naplófájlok gigabájt jönnek létre naponta az online kereskedő webhelyről félig strukturált fájlok formájában. A nyers webes naplófájlokat és az ügyfél és a termékkatalógus információit be lett töltve rendszeresen egy Azure Blob storage használatával a Data Factory globálisan üzemelő adatáthelyezési szolgáltatás. A nyers naplófájlokat a nap (év és hónap) szerint vannak particionálva, blob Storage-hosszú távú tárolás céljából.  [Az Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) particionálása a nyers naplófájlokat a blob-tárolóban és a Hive és a Pig-parancsfájlok használatával nagy mennyiségű betöltött naplók feldolgozása. A particionált webnaplók adatok kinyerése a szükséges bemenetek a machine learning-javaslat rendszer hoz létre a személyre szabott Termékajánlatok majd dolgozzák fel.
+A rendszer a nyers webnapló fájljait naponta generálja az online kereskedő webhelyéről, félig strukturált fájlok formájában. A nyers webes naplófájlok és az ügyfél-és Termékkatalógus-információk rendszeresen bekerülnek az Azure Blob Storage-ba az Data Factory globálisan üzembe helyezett adatáthelyezési szolgáltatásával. A nap nyers naplófájljai a blob Storage-ban (év és hónap) particionálva lesznek a hosszú távú tároláshoz.  Az [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) a blob-tárolóban található nyers naplófájlok particionálására, valamint a kaptár és a Pig szkriptek használatával feldolgozza a felhasznált naplókat. A rendszer feldolgozza a particionált webes naplók adatait, hogy kibontsa a gépi tanulási javaslatrendszer szükséges bemeneteit a személyre szabott termékre vonatkozó javaslatok létrehozásához.
 
-A javaslat a machine learning-ebben a példában használt a rendszer egy nyílt forráskódú gépi tanulási javaslat-platformja [Apache Mahout](https://mahout.apache.org/).  Bármely [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) vagy egyéni modell forgatókönyvet is alkalmazható.  Előre jelezni az összesített használati mintái alapján a webhelyen található elemek koszinuszhasonlóságát, valamint az egyes felhasználó alapján a személyre szabott javaslatok létrehozása a Mahout modellt használja.
+Az ebben a példában a gépi tanuláshoz használt ajánlási rendszer az [Apache Mahout](https://mahout.apache.org/)nyílt forráskódú gépi tanulási javaslati platformja.  A forgatókönyvre bármilyen [Azure Machine learning](https://azure.microsoft.com/services/machine-learning/) vagy egyéni modell alkalmazható.  A Mahout modell a webhelyhez tartozó elemek közötti hasonlóság előrejelzésére szolgál a teljes használati minták alapján, valamint a személyre szabott javaslatok létrehozásához az egyes felhasználók alapján.
 
-Végül az eredményhalmaz, személyre szabott Termékajánlatok került egy relációs adatpiacot felhasználásra a kereskedő webhely által.  Az eredményhalmaz sikerült is közvetlenül a blob storage-ból egy másik alkalmazás érhető el, vagy más fogyasztók és a használati esetek további áruházak áthelyezni.
+Végezetül a személyre szabott termékekre vonatkozó ajánlásokat a kiskereskedelmi webhelynek való felhasználás céljából áthelyezik egy rokon data martra.  Az eredményhalmaz közvetlenül is elérhető a blob Storage-ból egy másik alkalmazásból, vagy áthelyezhető további üzletekbe más felhasználók és használati esetek számára.
 
 ## <a name="benefits"></a>Előnyök
-Termék javaslat stratégiájuk optimalizálása és üzleti céljaihoz igazodó azt, a megoldás teljesül, az online kereskedő termékkihelyezési és marketing-célkitűzéseket. Emellett a felhasználók sikeresen üzembe helyezése és kezelése a termék javaslat munkafolyamat egy hatékony, megbízható és költséghatékony módon. A módszer egyszerűen a modell frissítése és finomhangolása annak alapján értékesítési kattintson csomagkonverzió létrehozások sikeres intézkedések hatékonyságát. Azure Data Factory segítségével a felhasználók sikeresen abandon az időigényes és drága feladat manuális felhőerőforrás-kezelés és igény szerinti felhőerőforrás-kezelés. Ezért ezek sikerült időt, költséget takaríthat meg, valamint csökkentheti a megoldás üzembe helyezése. Leszármaztatás adatnézetek és üzemeltetési szolgáltatások állapotának vált könnyen megjeleníthetővé és intuitív adat-előállító figyelése és kezelése az Azure Portalon elérhető felhasználói felületi hibaelhárítása. Megoldás most ütemezett és kezelt, hogy befejeződött az adatok megbízhatóan előállított és a felhasználók számára elérhető, és adatokat és a feldolgozási függőségek automatikusan kezeli az emberi beavatkozás nélkül.
+A termékre vonatkozó ajánlási stratégia optimalizálásával és az üzleti célokkal való összehangolásával a megoldás megfelelt az online kiskereskedelmi értékesítési és marketing-célkitűzéseknek. Emellett hatékony, megbízható és költséghatékony módon működővé tenni és kezelhetik a termékre vonatkozó ajánlási munkafolyamatot. A módszer megkönnyíti számukra a modell frissítését és a hatékonyság finomhangolását az értékesítésre kattintásra váltás sikeressége alapján. A Azure Data Factory használatával elhagyták az időigényes és költséges kézi felhőalapú erőforrás-kezelést, és áthelyezhetik az igény szerinti felhőalapú erőforrás-kezelést. Így időt és pénzt takaríthat meg, és csökkentheti a megoldás üzembe helyezéséhez szükséges időt. Az adatbányászati nézetek és az operatív szolgáltatások állapota könnyen láthatóvá és elhárítható a Azure Portal elérhető intuitív Data Factory monitorozási és felügyeleti felhasználói felülettel. A megoldásuk mostantól ütemezhető és felügyelhető, így a befejezett adatmennyiséget megbízhatóan állítják elő és szállítják a felhasználók számára, és az adatkezelési függőségeket a rendszer automatikusan emberi beavatkozás nélkül kezeli.
 
-Azáltal, hogy a személyre szabott élménnyel, a létrehozott agilisak és vonzó ügyfél online kereskedő élményt, és így növelheti az értékesítési és a teljes ügyfél-elégedettséget.
+Ennek a személyre szabott vásárlási élménynek a biztosításával az online kiskereskedő versenyképesebb és vonzó felhasználói élményt nyújt, így növelheti az értékesítést és az ügyfelek teljes elégedettségét.
 

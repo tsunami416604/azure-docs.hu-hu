@@ -1,26 +1,25 @@
 ---
-title: UNTIL tevékenység az Azure Data Factoryban |} A Microsoft Docs
-description: Az Until tevékenység hurokba került hajt végre egy tevékenységkészletet mindaddig, amíg a tevékenységhez rendelt feltétel igaz értéket ad vissza, vagy időtúllépés.
+title: A Azure Data Factory tevékenységig | Microsoft Docs
+description: A amíg tevékenység végrehajtja a tevékenységek egy csoportját, amíg a tevékenységhez rendelt feltétel igaz vagy időtúllépést nem ad vissza.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80eebf0813b6403d5e1e8ff510003f7f0f57c821
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66155171"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142449"
 ---
-# <a name="until-activity-in-azure-data-factory"></a>UNTIL tevékenység az Azure Data Factoryban
-Until tevékenység ugyanazokat a funkciókat nyújtja, amely egy do-until ciklusos szerkezete a programozási nyelvek. Egy tevékenységkészletet futtat le ciklusosan addig, amíg a tevékenységhez rendelt feltétel igaz értéket nem ad vissza. Megadhat egy időtúllépési értéket az Until tevékenységhez a Data Factoryban. 
+# <a name="until-activity-in-azure-data-factory"></a>A tevékenység Azure Data Factory
+A amíg tevékenység ugyanazokat a funkciókat biztosítja, mint a ciklusok közötti hurkos struktúra a programozási nyelvek esetében. Egy tevékenységkészletet futtat le ciklusosan addig, amíg a tevékenységhez rendelt feltétel igaz értéket nem ad vissza. Megadhat egy időtúllépési értéket az Until tevékenységhez a Data Factoryban. 
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -50,23 +49,23 @@ Until tevékenység ugyanazokat a funkciókat nyújtja, amely egy do-until ciklu
 
 ```
 
-## <a name="type-properties"></a>Tulajdonságok
+## <a name="type-properties"></a>Típus tulajdonságai
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | Neve a `Until` tevékenység. | String | Igen
-type | Meg kell **mindaddig, amíg**. | String | Igen
-kifejezés | IGAZ vagy hamis kifejezés | Kifejezés.  | Igen
-timeout | A do-until ciklus időtúllépés történik a megadott időpont után. | karakterlánc. `d.hh:mm:ss` (vagy) `hh:mm:ss`. Az alapértelmezett érték: 7 nap. Maximális érték: 90 napig. | Nem
-Tevékenységek | Mindaddig, amíg a kifejezés eredménye végrehajtott tevékenységek `true`. | Tevékenységek tömbje. |  Igen
+name | A `Until` tevékenység neve. | Sztring | Igen
+type | **Csak**a értékre kell beállítani. | Sztring | Igen
+expression | Igaz vagy hamis értéket megadó kifejezés | Kifejezés.  | Igen
+timeout | A do-ig hurkos időtúllépés a megadott idő után. | Karakterlánc. `d.hh:mm:ss`vagy `hh:mm:ss`. Az alapértelmezett érték 7 nap. Maximális érték: 90 nap. | Nem
+Tevékenységek | Azoknak a tevékenységeknek a készlete, amelyeket a kifejezés `true`kiértékelése után hajt végre. | Tevékenységek tömbje. |  Igen
 
 ## <a name="example-1"></a>1\. példa
 
 > [!NOTE]
-> Ez a szakasz a JSON-definíciók és minta PowerShell-parancsokat a folyamat futtatása biztosít. A részletes utasításokat követve hozzon létre egy Data Factory-folyamatot az Azure PowerShell és a JSON-definíciók bemutatóért lásd: [oktatóanyag: adat-előállító létrehozása az Azure PowerShell-lel](quickstart-create-data-factory-powershell.md).
+> Ez a szakasz JSON-definíciókat és PowerShell-parancsokat tartalmaz a folyamat futtatásához. A Data Factory-adatfolyamatok Azure PowerShell és JSON-definíciók használatával történő létrehozásával kapcsolatos részletes útmutatásért lásd [: oktatóanyag: az adatfeldolgozó létrehozása a Azure PowerShell használatával](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-until-activity"></a>A folyamat-Until tevékenység
-Ebben a példában a folyamat két tevékenységet tartalmaz: **Mindaddig, amíg** és **várjon**. A Várakozás tevékenység megvárja, amíg a megadott időszakra vonatkozóan a hurok a webes tevékenység futtatása előtt. Kifejezések és függvények a Data Factory kapcsolatos további információkért lásd: [kifejezés nyelvet és a functions](control-flow-expression-language-functions.md). 
+### <a name="pipeline-with-until-activity"></a>Folyamat a tevékenységig
+Ebben a példában a folyamat két tevékenységgel rendelkezik: **Várjon**. A várakozási tevékenység a megadott ideig várakozik a webes tevékenység ciklusban való futtatása előtt. A Data Factory kifejezésekkel és függvényekkel kapcsolatos információkért lásd a [kifejezés nyelvét és funkcióit](control-flow-expression-language-functions.md)ismertető témakört. 
 
 ```json
 {
@@ -117,9 +116,9 @@ Ebben a példában a folyamat két tevékenységet tartalmaz: **Mindaddig, amíg
 ```
 
 ## <a name="example-2"></a>2\. példa 
-Ebben a példában szereplő folyamat adatokat másol a kimeneti mappa egy hurokba, és a egy bemeneti mappa. A hurok ér véget, amikor ismételje meg a paraméter értékét HAMIS értékre van állítva, vagy egy perc után időtúllépés.   
+Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából egy hurok kimeneti mappájába. A hurok akkor leáll, ha az Ismétlési paraméter értéke false (hamis) értékre van állítva, vagy egy perc elteltével időtúllépés történik.   
 
-### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Until tevékenység (Adfv2QuickStartPipeline.json) rendelkező folyamat
+### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Folyamat a tevékenységig (Adfv2QuickStartPipeline. JSON)
 
 ```json
 {
@@ -192,7 +191,7 @@ Ebben a példában szereplő folyamat adatokat másol a kimeneti mappa egy hurok
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage linked service (AzureStorageLinkedService.json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage társított szolgáltatás (AzureStorageLinkedService. JSON)
 
 ```json
 {
@@ -209,8 +208,8 @@ Ebben a példában szereplő folyamat adatokat másol a kimeneti mappa egy hurok
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>A paraméteres (BlobDataset.json) az Azure Blob-adatkészlet
-A folyamat beállítja a **folderPath** vagy értékéhez **outputPath1** vagy **outputPath2** paramétert a folyamat. 
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Paraméteres Azure Blob-adatkészlet (BlobDataset. JSON)
+A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **outputPath2** paraméterének értékére. 
 
 ```json
 {
@@ -236,7 +235,7 @@ A folyamat beállítja a **folderPath** vagy értékéhez **outputPath1** vagy *
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Folyamat paramétere JSON (PipelineParameters.json)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Adatcsatorna-paraméter JSON (PipelineParameters. JSON)
 
 ```json
 {
@@ -250,7 +249,7 @@ A folyamat beállítja a **folderPath** vagy értékéhez **outputPath1** vagy *
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ezek a parancsok feltételezik, hogy mentette a mappába a JSON-fájlok: C:\ADF. 
+Ezek a parancsok feltételezik, hogy mentette a JSON-fájlokat a mappába: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -290,11 +289,11 @@ while ($True) {
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a többi Data Factory által támogatott átvitelvezérlési tevékenységek: 
+Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 
 - [If Condition tevékenység](control-flow-if-condition-activity.md)
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)
-- [Minden egyes tevékenységhez](control-flow-for-each-activity.md)
+- [Minden tevékenységhez](control-flow-for-each-activity.md)
 - [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 - [Webes tevékenység](control-flow-web-activity.md)

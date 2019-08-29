@@ -17,14 +17,18 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 719939b393b01938a4d4faa41a5dca163b2a8949
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 611947c8c1d202cf4abf4222dfe0072aced58507
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834698"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135725"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Hozzáférés engedélyezése Azure Active Directory webes alkalmazásokhoz az OAuth 2.0 kódengedélyezési folyamat használatával
+
+> [!NOTE]
+>  Ha nem közli a kiszolgálóval, hogy milyen erőforrást szeretne meghívni, akkor a kiszolgáló nem aktiválja az adott erőforráshoz tartozó feltételes hozzáférési házirendeket. Tehát ahhoz, hogy MFA-triggert tartalmazzon, tartalmaznia kell egy erőforrást az URL-címben. 
+>
 
 Azure Active Directory (Azure AD) a OAuth 2,0 használatával engedélyezi az Azure AD-bérlőben található webalkalmazásokhoz és webes API-khoz való hozzáférés engedélyezését. Ez az útmutató a nyelvtől független, és leírja, hogyan küldhet és fogadhat HTTP-üzeneteket a [nyílt forráskódú kódtárak](active-directory-authentication-libraries.md)használata nélkül.
 
@@ -219,7 +223,7 @@ A következő táblázat felsorolja azokat a HTTP-állapotkódok listáját, ame
 | HTTP-kód | Leírás |
 | --- | --- |
 | 400 |Alapértelmezett HTTP-kód. A legtöbb esetben használatos, és általában egy helytelenül formázott kérelem okozza. Javítsa ki és küldje el újra a kérelmet. |
-| 401 |A hitelesítés sikertelen volt. Például a kérelemből hiányzik a client_secret paraméter. |
+| 401 |A hitelesítés sikertelen. Például a kérelemből hiányzik a client_secret paraméter. |
 | 403 |A hitelesítés sikertelen. Például a felhasználónak nincs engedélye az erőforrás elérésére. |
 | 500 |Belső hiba történt a szolgáltatásban. Próbálja megismételni a kérelmet. |
 
@@ -278,6 +282,8 @@ Az RFC 6750 specifikációja a következő hibákat definiálja a WWW-Authentica
 A hozzáférési jogkivonatok rövid életűek, és a lejáratuk után frissíteni kell az erőforrások elérésének folytatásához. Frissítheti `access_token` a-t egy másik `POST` kérelem küldésével a `/token` végpontra, `code`de `refresh_token` ezúttal a helyett.  A frissítési jogkivonatok érvényesek minden olyan erőforrásra, amelyhez az ügyfélnek már hozzáférése van, így a kérelemre `resource=https://graph.microsoft.com` kiadott frissítési jogkivonat felhasználható új hozzáférési `resource=https://contoso.com/api`jogkivonat igénylésére. 
 
 A frissítési tokenek nem rendelkeznek megadott élettartammal. A frissítési tokenek élettartama általában viszonylag hosszú. Bizonyos esetekben azonban a frissítési tokenek lejárnak, visszavonásra kerülnek, vagy hiányoznak a megfelelő jogosultságok a kívánt művelethez. Az alkalmazásnak megfelelően kell elvárnia és kezelnie a jogkivonat-kiállítási végpont által visszaadott hibákat.
+
+[!NOTE] A hozzáférési jogkivonat élettartama itt található: https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-configurable-token-lifetimes#configurable-token-lifetime-properties A hozzáférési jogkivonatok alapértelmezett értéke 1 óra, a frissítési tokenek alapértelmezett értéke pedig 90 nap. Ezek az élettartamok úgy módosíthatók, hogy ennek megfelelően konfigurálja a jogkivonat élettartamát. 
 
 Ha a frissítési jogkivonat hibája miatt választ kap, elveti az aktuális frissítési jogkivonatot, és új engedélyezési kódot vagy hozzáférési jogkivonatot kér. Különösen, ha frissítési tokent használ az engedélyezési kód megadásakor, ha a vagy `interaction_required` `invalid_grant` a hibakódot választ kap, elveti a frissítési tokent, és új engedélyezési kódot kér.
 

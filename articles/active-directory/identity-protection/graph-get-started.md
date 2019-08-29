@@ -1,6 +1,6 @@
 ---
 title: Microsoft Graph a Azure Active Directory Identity Protectionhoz | Microsoft Docs
-description: Megtudhatja, hogyan kérdezheti le Microsoft Graph a kockázati események és a kapcsolódó információk Azure Active Directoryból való lekérdezéséhez.
+description: Megtudhatja, hogyan lehet lekérdezni Microsoft Graph a kockázati észlelések és a kapcsolódó információk Azure Active Directoryból való lekérdezéséhez.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1640511c2f97865f5026f9f977ed0e4a9c03e338
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: a79440d0d969e01dc94759d4619fc0359762e1fd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774376"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126576"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>A Azure Active Directory Identity Protection és a Microsoft Graph első lépései
 
-Microsoft Graph a Microsoft Unified API-végpontja és a [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API-k otthona. A kockázatos felhasználókról és a bejelentkezésekről négy API található. Az első API ( **riskDetection**) lehetővé teszi Microsoft Graph lekérdezését a felhasználók és a bejelentkezéshez kapcsolódó kockázati észlelések, valamint az észleléssel kapcsolatos kapcsolódó információk listájának lekéréséhez. A második API, a **riskyUsers**lehetővé teszi, hogy lekérdezze Microsoft Graph a kockázatként észlelt felhasználói identitások védelmére vonatkozó információkat. A harmadik API, a **bejelentkezési**lehetővé teszi az Azure ad-bejelentkezésekre vonatkozó információk Microsoft Graph lekérdezését a kockázati állapottal, a részletekkel és a szinttel kapcsolatos konkrét tulajdonságokkal. A negyedik API ( **identityRiskEvents**) lehetővé teszi Microsoft Graph lekérdezését a [kockázati események](../reports-monitoring/concept-risk-events.md) és a kapcsolódó információk listájához. Ebből a cikkből megtudhatja, hogyan csatlakozhat a Microsoft Graphhoz, és hogyan kérdezheti le ezeket az API-kat. A részletes bevezetést, a teljes dokumentációt és a Graph Explorerrel való hozzáférést a [Microsoft Graph webhelyén](https://graph.microsoft.io/) vagy az API-k konkrét dokumentációjában találja:
+Microsoft Graph a Microsoft Unified API-végpontja és a [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API-k otthona. A kockázatos felhasználókról és a bejelentkezésekről négy API található. Az első API ( **riskDetection**) lehetővé teszi Microsoft Graph lekérdezését a felhasználók és a bejelentkezéshez kapcsolódó kockázati észlelések, valamint az észleléssel kapcsolatos kapcsolódó információk listájának lekéréséhez. A második API, a **riskyUsers**lehetővé teszi, hogy lekérdezze Microsoft Graph a kockázatként észlelt felhasználói identitások védelmére vonatkozó információkat. A harmadik API, a **bejelentkezési**lehetővé teszi az Azure ad-bejelentkezésekre vonatkozó információk Microsoft Graph lekérdezését a kockázati állapottal, a részletekkel és a szinttel kapcsolatos konkrét tulajdonságokkal. A negyedik API ( **identityRiskEvents**) lehetővé teszi Microsoft Graph lekérdezését a [kockázati észlelések](../reports-monitoring/concept-risk-events.md) és a kapcsolódó információk listájához. Ebből a cikkből megtudhatja, hogyan csatlakozhat a Microsoft Graphhoz, és hogyan kérdezheti le ezeket az API-kat. A részletes bevezetést, a teljes dokumentációt és a Graph Explorerrel való hozzáférést a [Microsoft Graph webhelyén](https://graph.microsoft.io/) vagy az API-k konkrét dokumentációjában találja:
 
 * [riskDetection API](https://docs.microsoft.com/graph/api/resources/riskdetection?view=graph-rest-beta)
 * [riskyUsers API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
@@ -68,7 +68,7 @@ A Kezdés előtt a következőkre lesz szüksége:
 
    ![Alkalmazás létrehozása](./media/graph-get-started/44.png)
 
-   1. A **név** szövegmezőbe írja be az alkalmazás nevét (például: AADIP kockázati esemény API-alkalmazása).
+   1. A **név** szövegmezőbe írja be az alkalmazás nevét (például: AADIP kockázat-észlelési API-alkalmazás).
 
    1. **Írja be**a következőt: webalkalmazás **és/vagy webes API**.
 
@@ -122,7 +122,7 @@ A Kezdés előtt a következőkre lesz szüksége:
 
    ![Alkalmazás létrehozása](./media/graph-get-started/24.png)
 
-   1. A **kulcs leírása** szövegmezőbe írja be a leírást (például *AADIP kockázati esemény*).
+   1. A **kulcs leírása** szövegmezőbe írja be a leírást (például *AADIP kockázat észlelése*).
    1. Az **időtartam**beállításnál válassza **az 1 év**lehetőséget.
    1. Kattintson a **Save** (Mentés) gombra.
    1. Másolja a kulcs értékét, majd illessze be egy biztonságos helyre.   
@@ -131,7 +131,7 @@ A Kezdés előtt a következőkre lesz szüksége:
    > Ha elveszíti ezt a kulcsot, térjen vissza ehhez a szakaszhoz, és hozzon létre egy új kulcsot. Titkos kulcs megtartása: bárki, aki hozzáfér az adataihoz.
    > 
 
-## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-events-api"></a>Hitelesítés Microsoft Graph és az Identity Risk Events API lekérdezése
+## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-detections-api"></a>Hitelesítés Microsoft Graph és az identitás kockázati észlelése API lekérdezése
 
 Ezen a ponton a következőket kell tennie:
 
@@ -157,7 +157,7 @@ A hitelesítés során megkeresheti a jogkivonat típusát és a hozzáférési 
 
 Küldje el ezt a fejlécet kérelemként a következő API URL-címre:`https://graph.microsoft.com/beta/identityRiskEvents`
 
-A válasz, ha a sikeres, az identitás kockázati eseményeinek és a hozzájuk kapcsolódó adatoknak a OData JSON formátumban való gyűjteménye, amely a megfelelő módon elemezhető és kezelhető.
+A válasz, ha a sikeres, az identitások kockázatának észlelése és a hozzájuk kapcsolódó adatok OData JSON formátumban való gyűjteménye, amely elemezhető és kezelhető, ahogy az illik.
 
 Az alábbi mintakód a PowerShell használatával történő hitelesítéshez és az API meghívásához.  
 Csak adja hozzá az ügyfél-azonosítót, a titkos kulcsot és a bérlői tartományt.
@@ -204,9 +204,9 @@ Az Identity Protection bejelentkezési kockázati házirendjeivel olyan feltéte
 GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType eq 'offline'
 ```
 
-### <a name="get-the-high-risk-and-medium-risk-events-identityriskevents-api"></a>Magas kockázatú és közepes kockázatú események (identityRiskEvents API) beszerzése
+### <a name="get-the-high-risk-and-medium-risk-detections-identityriskevents-api"></a>A magas kockázatú és közepes kockázatú észlelések (identityRiskEvents API) beszerzése
 
-Az olyan közepes és magas kockázatú események, amelyek az Identity Protection bejelentkezési vagy felhasználói kockázati házirendjeinek kiváltására képesek lehetnek. Mivel közepes vagy nagy valószínűséggel vannak, hogy a bejelentkezni próbáló felhasználó nem a jogos identitás tulajdonosa, szervizelését kell lennie az ilyen események prioritásának. 
+A közepes és magas kockázatú észlelések azokat a képességeket jelentik, amelyek képesek az Identity Protection bejelentkezési vagy felhasználói kockázati házirendjeinek aktiválására. Mivel közepes vagy nagy valószínűséggel vannak, hogy a bejelentkezni próbáló felhasználó nem a jogos identitás tulajdonosa, szervizelését kell lennie az ilyen események prioritásának. 
 
 ```
 GET https://graph.microsoft.com/beta/identityRiskEvents?`$filter=riskLevel eq 'high' or riskLevel eq 'medium'" 
@@ -230,14 +230,14 @@ https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>
 ## <a name="next-steps"></a>További lépések
 
 Gratulálunk, most elkészítette az első hívását Microsoft Graph!  
-Most már lekérdezheti az identitás kockázati eseményeit, és felhasználhatja az adatok megjelenítését.
+Most már lekérdezheti az identitások kockázati észleléseit, és használhatja az adatok megjelenítését.
 
 Ha többet szeretne megtudni a Microsoft Graphről, és hogyan hozhat létre alkalmazásokat a Graph API használatával, [](https://docs.microsoft.com/graph/overview) tekintse meg a dokumentációt, és még sok más a [Microsoft Graph webhelyen](https://developer.microsoft.com/graph). 
 
 A kapcsolódó információk a következő témakörben találhatók:
 
 - [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-- [A Azure Active Directory Identity Protection által észlelt kockázati események típusai](../reports-monitoring/concept-risk-events.md)
+- [A Azure Active Directory Identity Protection által észlelt kockázati észlelések típusai](../reports-monitoring/concept-risk-events.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
 - [A Microsoft Graph áttekintése](https://developer.microsoft.com/graph/docs)
 - [Azure AD Identity Protection szolgáltatás gyökerének](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root)

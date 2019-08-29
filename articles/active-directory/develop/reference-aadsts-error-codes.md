@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ec69f4bc2e73bfb390a6b23b1da627d77f9b5e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8cfefe02b8c9325a2d501289b10b09bc153b0593
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874251"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135755"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Hitelesítés és hitelesítési hibakódok
 
@@ -194,6 +194,7 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS)
 | AADSTS90019 | MissingTenantRealm – az Azure AD nem tudta megállapítani a bérlő azonosítóját a kérelemből. |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat – a egyszerű név formátuma érvénytelen, vagy nem felel meg a várt `name[/host][@realm]` formátumnak. Az egyszerű név megadása kötelező, a gazdagép és a tartomány nem kötelező, és lehet null értékű. |
 | AADSTS90023 | InvalidRequest – a hitelesítési szolgáltatás kérése érvénytelen. |
+| AADSTS9002313 | InvalidRequest – a kérelem helytelen formátumú vagy érvénytelen. – A probléma oka az, hogy hiba történt egy adott végpontra vonatkozó kérelemben. A probléma előfeltétele, hogy beszerezze a hiba Hegedűs-nyomkövetését, és megtekinti, hogy a kérelem formátuma megfelelő-e. |
 | AADSTS90024 | RequestBudgetExceededError – átmeneti hiba történt. Próbálja meg újra. |
 | AADSTS90033 | MsodsServiceUnavailable – a Microsoft Online Directory szolgáltatás (MSODS) nem érhető el. |
 | AADSTS90036 | MsodsServiceUnretryableFailure – váratlan, nem újrapróbálkozást lehetővé tevő hiba történt a MSODS által üzemeltetett WCF szolgáltatásban. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez |

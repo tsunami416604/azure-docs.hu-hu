@@ -1,31 +1,30 @@
 ---
-title: Adatok átalakítása a Hive-tevékenység – az Azure használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan használhatja a Hive-tevékenység az Azure data factory a Hive-lekérdezések futtatásához egy a-igény és a saját HDInsight-fürtön.
+title: Adatátalakítás a méhkas tevékenységgel – Azure | Microsoft Docs
+description: Megtudhatja, hogyan használhatja a kaptár tevékenységeket egy Azure-beli adatgyárban a kaptár-lekérdezések futtatásához egy igény szerinti vagy saját HDInsight-fürtön.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: 80083218-743e-4da8-bdd2-60d1c77b1227
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: a63ef969f17fc48145174d99fec53e77b61885a4
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 8a7e6748f450ae398a05097ac6b192d074f5f1f7
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827977"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139535"
 ---
-# <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Adatok átalakítása a Hive-tevékenység használatával az Azure Data Factoryban 
-> [!div class="op_single_selector" title1="Adatátalakítási tevékenységek"]
-> * [Hive-tevékenység](data-factory-hive-activity.md) 
+# <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Az adatátalakítás a kaptár tevékenységgel Azure Data Factory 
+> [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
+> * [Struktúra tevékenysége](data-factory-hive-activity.md) 
 > * [Pig-tevékenység](data-factory-pig-activity.md)
-> * [MapReduce-tevékenység](data-factory-map-reduce.md)
-> * [Hadoop Streamelési tevékenységben](data-factory-hadoop-streaming-activity.md)
+> * [MapReduce tevékenység](data-factory-map-reduce.md)
+> * [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
 > * [Spark-tevékenység](data-factory-spark.md)
 > * [Machine Learning kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning Update-erőforrástevékenység](data-factory-azure-ml-update-resource-activity.md)
@@ -34,12 +33,12 @@ ms.locfileid: "67827977"
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [adatok átalakítása a Hive-tevékenység használatával a Data Factory](../transform-data-using-hadoop-hive.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory-szolgáltatás aktuális verzióját használja, tekintse meg az [adatátalakítás a Data Factory-ben](../transform-data-using-hadoop-hive.md)című témakört.
 
-A HDInsight Hive tevékenység, egy Data factoryben [folyamat](data-factory-create-pipelines.md) a Hive-lekérdezéseket hajt végre [saját](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-alapú HDInsight-fürt. Ez a cikk épül, amely a [adat-átalakítási tevékenységeket](data-factory-data-transformation-activities.md) című cikket, amely megadja az adatok átalakítását és a támogatott Adatátalakítási tevékenységek általános áttekintése.
+A Data Factory [folyamat](data-factory-create-pipelines.md) HDInsight-struktúrájának tevékenysége a [saját](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-alapú HDInsight-fürtön hajtja végre a kaptár-lekérdezéseket. Ez a cikk az Adatátalakítási [tevékenységekről](data-factory-data-transformation-activities.md) szóló cikket ismerteti, amely általános áttekintést nyújt az adatátalakításról és a támogatott átalakítási tevékenységekről.
 
 > [!NOTE] 
-> Ha most ismerkedik az Azure Data Factory, olvassa el az [az Azure Data Factory bemutatását](data-factory-introduction.md) és végezze el az oktatóanyag: [Az első adatfolyamat kiépítése](data-factory-build-your-first-pipeline.md) Ez a cikk elolvasása előtt. 
+> Ha még nem Azure Data Factory, olvassa el a [Azure Data Factory](data-factory-introduction.md) bevezetését, és végezze el az oktatóanyagot: A cikk elolvasása előtt hozza [létre első](data-factory-build-your-first-pipeline.md) adatfolyamatát. 
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -73,22 +72,22 @@ A HDInsight Hive tevékenység, egy Data factoryben [folyamat](data-factory-crea
 }
 ```
 ## <a name="syntax-details"></a>Szintaxis részletei
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | name |A tevékenység neve |Igen |
-| description |Mire használható a tevékenységet leíró szöveg |Nem |
+| description |A tevékenység által használt szöveg leírása |Nem |
 | type |HDinsightHive |Igen |
-| inputs |A Hive-tevékenység által felhasznált bemeneti |Nem |
-| outputs |A Hive-tevékenység által előállított kimeneti |Igen |
-| linkedServiceName |A HDInsight-fürt a Data Factory társított szolgáltatásként regisztrált mutató hivatkozás |Igen |
-| script |Adja meg a Hive-parancsfájl beágyazott |Nem |
-| scriptPath |Store a Hive-szkript egy Azure blob Storage, és adja meg a fájl elérési útját. Használja a "script" vagy "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájlnév formátuma a kis-és nagybetűket. |Nem |
-| defines |Adja meg a paramétereket a kulcs/érték párokként való belül a Hive-parancsfájl használatával "hiveconf: |Nem |
+| inputs |A kaptár tevékenység által felhasznált bemenetek |Nem |
+| outputs |A kaptár tevékenység által létrehozott kimenetek |Igen |
+| linkedServiceName |Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre |Igen |
+| script |A struktúra-parancsfájl beágyazottként való megadásának meghatározása |Nem |
+| scriptPath |Tárolja a kaptár parancsfájlt egy Azure Blob Storage-tárolóban, és adja meg a fájl elérési útját. Használja a "script" vagy a "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájl neve megkülönbözteti a kis-és nagybetűket. |Nem |
+| defines |Adja meg a paramétereket kulcs/érték párokként a kaptár parancsfájlban a "hiveconf" használatával való hivatkozáshoz. |Nem |
 
 ## <a name="example"></a>Példa
-Vegyünk egy példát, játék-naplók analytics, ahol szeretné azonosítani a játékok indítja el a vállalati felhasználók töltött időt. 
+Vegyünk egy példát a game logs analyticsre, ahol a felhasználók által a vállalat által elindított játékokkal töltött idő azonosítására van szükség. 
 
-A következő naplófájl, játék mintanapló, amelyeket egy vessző (`,`) választ el, és a következő mezőket – ProfileID, SessionStart, időtartamának, SrcIPAddress és GameType tartalmazza.
+A következő napló egy példaként szolgáló, vesszővel (`,`) elválasztott napló, amely a következő mezőket tartalmazza – ProfileID, SessionStart, időtartam, SrcIPAddress és szakasz.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -98,7 +97,7 @@ A következő naplófájl, játék mintanapló, amelyeket egy vessző (`,`) vál
 .....
 ```
 
-A **Hive-parancsprogram** feldolgozni ezeket az adatokat:
+Az adatfeldolgozáshoz használandó **struktúra-parancsfájl** :
 
 ```
 DROP TABLE IF EXISTS HiveSampleIn; 
@@ -125,18 +124,18 @@ Select
 FROM HiveSampleIn Group by ProfileID
 ```
 
-A Hive-parancsfájl végrehajtása a Data Factory-folyamatok, tegye a következőket kell
+A kaptár parancsfájl Data Factory-folyamatban való végrehajtásához a következőket kell tennie
 
-1. Létrehoz egy társított szolgáltatást, regisztrálnia [a saját HDInsight számítási fürt](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) vagy konfigurálása [igény szerinti HDInsight számítási fürt](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Adjuk a társított szolgáltatás "HDInsightLinkedService".
-2. Hozzon létre egy [társított szolgáltatás](data-factory-azure-blob-connector.md) a adatok tárolásához Azure Blob Storage-kapcsolat konfigurálása. Adjuk a társított szolgáltatás "StorageLinkedService"
-3. Hozzon létre [adatkészletek](data-factory-create-datasets.md) mutat a bemeneti és kimeneti adatokat. Adjuk a bemeneti adatkészlet "HiveSampleIn" és a kimeneti adatkészlet "HiveSampleOut"
-4. Másolás a Hive-lekérdezést az Azure Blob Storage-fájlként #2. lépésben konfigurált. a storage, az adatok tárolásához eltér a lekérdezés fájl kiszolgálójára, ha egy külön Azure Storage társított szolgáltatás létrehozása, és a tevékenység hivatkozik rá. Használja **scriptPath** , adja meg a hive-lekérdezés fájl elérési útját és **scriptLinkedService** , adja meg az Azure storage, amely tartalmazza a parancsfájlban. 
+1. Hozzon létre egy társított szolgáltatást a [saját HDInsight számítási fürt](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) regisztrálásához vagy [igény szerinti HDInsight számítási fürt](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)konfigurálásához. Hívjuk ezt a társított szolgáltatást "HDInsightLinkedService".
+2. Hozzon létre egy [társított szolgáltatást](data-factory-azure-blob-connector.md) a kapcsolat konfigurálásához az Azure Blob Storage-hoz, amely az adattárolót üzemelteti. Hívjuk ezt a társított szolgáltatást "StorageLinkedService"
+3. A [](data-factory-create-datasets.md) bemeneti és a kimeneti adatokra mutató adatkészletek létrehozása. Hívjuk meg a "HiveSampleIn" bemeneti adatkészletet és a "HiveSampleOut" kimeneti adatkészletet
+4. Másolja a kaptár-lekérdezést fájlként az Azure-ba Blob Storage a következő lépésben konfigurálva: #2. Ha az adatok tárolására szolgáló tároló eltér a lekérdezési fájllal, hozzon létre egy külön Azure Storage-beli társított szolgáltatást, és tekintse meg azt a tevékenységben. A **scriptPath** használatával adja meg a kaptár-lekérdezési fájl és a **scriptlinkedservice szolgáltatás** elérési útját a parancsfájlt tartalmazó Azure-tároló megadásához. 
    
    > [!NOTE]
-   > A Hive-parancsfájl beágyazott a tevékenység meghatározásában használatával is megadhatja a **parancsfájl** tulajdonság. Hogy mint belül a JSON-dokumentum igényeinek kell megadni a parancsfájl speciális karaktereket nem ajánlott ezt a módszert, és hibakeresési problémákat okozhat. Az ajánlott eljárás, hogy #4. lépés.
+   > A kaptár parancsfájlt a tevékenység definíciójában is megadhatja a **szkript** tulajdonság használatával. Ezt a megközelítést nem javasoljuk, mert a parancsfájlban szereplő összes speciális karakternek meg kell menekülnie, és hibakeresési problémákhoz vezethet. Az ajánlott eljárás a #4 lépés végrehajtása.
    > 
    > 
-5. A HDInsightHive tevékenység létrehoz egy folyamatot. A tevékenység folyamatok/átalakítások az adatokat.
+5. Hozzon létre egy folyamatot a HDInsightHive tevékenységgel. A tevékenység feldolgozza/átalakítja az adatfeldolgozást.
 
     ```JSON   
     {   
@@ -170,15 +169,15 @@ A Hive-parancsfájl végrehajtása a Data Factory-folyamatok, tegye a következ�
         }
     }
     ```
-6. A folyamat üzembe helyezéséhez. Lásd: [folyamatok létrehozása](data-factory-create-pipelines.md) részleteivel. 
-7. Monitorozza a folyamatot a data factory figyelési és felügyeleti nézetek használatával. Lásd: [figyelés és kezelheti a Data Factory-folyamatok](data-factory-monitor-manage-pipelines.md) részleteivel. 
+6. A folyamat üzembe helyezése. Részletekért lásd: [folyamatok létrehozása](data-factory-create-pipelines.md) című cikk. 
+7. A folyamat figyelése a adatfeldolgozó-figyelési és-felügyeleti nézetek használatával. Részletekért lásd: [Data Factory folyamatok figyelése és kezelése](data-factory-monitor-manage-pipelines.md) . 
 
-## <a name="specifying-parameters-for-a-hive-script"></a>Egy Hive-szkriptet paramétereinek megadása
-Ebben a példában játék naplók naponta Azure Blob Storage-bA betöltött, és a egy particionált dátum és idő a mappa tárolja. Szeretné paraméterezni a Hive-szkript és a bemeneti mappa helye dinamikusan továbbítása során futásidejű és is előállíthat a kimeneti dátum és idő particionálni.
+## <a name="specifying-parameters-for-a-hive-script"></a>Egy struktúra-parancsfájl paramétereinek megadása
+Ebben a példában a rendszer naponta betölti a játék naplóit az Azure Blob Storageba, és egy olyan mappában tárolja őket, amely a dátummal és idővel particionálva van. Parametrizálja a struktúra parancsfájlját, és a bemeneti mappa helyét dinamikusan át kell adni a futtatókörnyezet során, és a kimenetet a dátummal és idővel is létrehozva.
 
-A paraméteres Hive-szkript használatához tegye a következőket
+A paraméteres struktúra parancsfájljának használatához tegye a következőket
 
-* Adja meg a paramétereket a **meghatározása**.
+* Határozza meg a paramétereketa definiálva.
 
     ```JSON  
     {
@@ -216,7 +215,7 @@ A paraméteres Hive-szkript használatához tegye a következőket
       }
     }
     ```
-* A Hive-parancsfájl, tekintse meg a paraméter használatával **${hiveconf:parameterName}** . 
+* A kaptár parancsfájlban tekintse át a következőt **: $ {hiveconf: parameterName}** . 
   
     ```
     DROP TABLE IF EXISTS HiveSampleIn; 
@@ -244,8 +243,8 @@ A paraméteres Hive-szkript használatához tegye a következőket
     ```
   ## <a name="see-also"></a>Lásd még:
 * [Pig-tevékenység](data-factory-pig-activity.md)
-* [MapReduce-tevékenység](data-factory-map-reduce.md)
-* [Hadoop Streamelési tevékenységben](data-factory-hadoop-streaming-activity.md)
+* [MapReduce tevékenység](data-factory-map-reduce.md)
+* [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
 * [Spark-programok meghívása](data-factory-spark.md)
 * [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 

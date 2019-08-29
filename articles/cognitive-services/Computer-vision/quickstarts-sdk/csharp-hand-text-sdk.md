@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Kézzel írt szöveg - SDK-t, kinyeréseC#'
+title: 'Gyors útmutató: Kézírásos szöveg kinyerése – SDK,C#'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget fog kinyerni egy képből a Computer Vision Windows C#-ügyfélkódtárával.
 services: cognitive-services
@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ba72fdce42a8313903a26aead4a1c1922a9bb586
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 315e35535c29771fb12a97f26e6e2c294e888d07
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603464"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137423"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-c-sdk"></a>Gyors útmutató: A Computer Vision segítségével kézzel írt szöveg kinyerése C# SDK
+# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-c-sdk"></a>Gyors útmutató: Kézírásos szöveg kinyerése C# a Computer Vision SDK használatával
 
-Ebben a rövid útmutatóban a kézírásos vagy nyomtatott szöveg lesz kinyerése egy képet, a számítógép Látástechnológiai SDK-t C#. Ha szeretné, letöltheti a teljes minta alkalmazásként ebben az útmutatóban a kódot a [Cognitive Services-Csharp Látástechnológia](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) adattárat a Githubon.
+Ebben a rövid útmutatóban kézírásos vagy nyomtatott szöveget fog kinyerni egy képből a Computer Vision SDK C#-val. Ha szeretné, letöltheti az útmutatóban szereplő kódot teljes minta alkalmazásként a GitHubon elérhető [Cognitive Services csharp](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) -jövőképből.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Computer Vision előfizetési kulcs. Megjelenik a származó ingyenes próbaverziós kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) előfizetni a Computer Vision, és a kulcs beszerzése.
+* Egy Computer Vision előfizetési kulcs. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti `COMPUTER_VISION_SUBSCRIPTION_KEY` karakterláncához, a nevet és `COMPUTER_VISION_ENDPOINT`a-t.
 * A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 * A [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) ügyfélkódtár NuGet-csomagja. A csomag letöltése nem szükséges. A telepítési utasításokat az alábbiakban találja.
 
@@ -37,7 +37,7 @@ A minta futtatásához az alábbi lépéseket kell végrehajtania:
     1. A menüben kattintson a **Tools** (Eszközök) elemre, és válassza a **NuGet Package Manager** (NuGet-csomagkezelő), majd a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése a megoldáshoz) lehetőséget.
     1. Kattintson a **Browse** (Tallózás) lapra, majd írja be a **keresőmezőbe** a „Microsoft.Azure.CognitiveServices.Vision.ComputerVision” kifejezést.
     1. Válassza a megjelenő **Microsoft.Azure.CognitiveServices.Vision.ComputerVision** lehetőséget, majd jelölje be a projektnév melletti jelölőnégyzetet, és kattintson az **Install** (Telepítés) gombra.
-1. Írja felül a `Program.cs` értékét az alábbi kóddal. A `BatchReadFileAsync` és `BatchReadFileInStreamAsync` módszerek burkolhatja a [Batch elolvashatják az API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) helyi és távoli lemezképek jelölik. A `GetReadOperationResultAsync` metódus burkolja az [első olvasási művelet eredménye API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d).
+1. Írja felül a `Program.cs` értékét az alábbi kóddal. A `BatchReadFileAsync` és`BatchReadFileInStreamAsync` a metódusok becsomagolják a [Batch olvasási API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) -ját a távoli és helyi lemezképekhez. A `GetReadOperationResultAsync` metódus lezárja az [olvasási művelet eredményének lekérdezése API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)-t.
 
     ```csharp
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
@@ -179,7 +179,7 @@ A minta futtatásához az alábbi lépéseket kell végrehajtania:
 
 ## <a name="examine-the-response"></a>A válasz vizsgálata
 
-A sikeres válasz a sor az egyes lemezképek felismert szöveget jelenít meg.
+A sikeres válasz minden képhez kinyomtatja a felismert szöveg sorait.
 
 ```console
 Calling GetHandwritingRecognitionOperationResultAsync()
@@ -193,7 +193,7 @@ The quick brown fox jumps over the lazy
 Pack my box with five dozen liquor jugs
 ```
 
-Lásd: [a rövid útmutató: Bontsa ki a kézzel írt szöveg - REST, C# ](../QuickStarts/CSharp-hand-text.md#examine-the-response) a nyers JSON-kimenet példa az API-hívás.
+Lásd [: gyors útmutató: Kézírásos szöveg kinyerése C# ](../QuickStarts/CSharp-hand-text.md#examine-the-response) – REST, példa az API-hívás nyers JSON-kimenetére.
 
 ## <a name="next-steps"></a>További lépések
 

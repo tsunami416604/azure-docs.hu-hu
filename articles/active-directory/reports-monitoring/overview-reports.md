@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf5770cf052a478ea56f906efc19698554a1cd0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: cd3907231ce3963d43fa8279039a736b63fc2043
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989725"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127270"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Mi az Azure Active Directory-jelentés?
 
@@ -54,9 +54,9 @@ Az Azure AD minden kiadása biztosítja a kockázatos és kockázatos bejelentke
 
 - A **ingyenes Azure Active Directory és**az alapszintű kiadásokban a kockázatok és a kockázatos bejelentkezések számára megjelölt felhasználók listája jelenik meg. 
 
-- Az **Azure Active Directory 1. prémium** kiadása kibővíti ezt a modellt, mert lehetővé teszi azt is, hogy megvizsgáljon néhány, az egyes jelentésekhez észlelt mögöttes kockázatos eseményt. 
+- A **prémium szintű Azure Active Directory 1** kiadás kiterjeszti ezt a modellt azáltal, hogy megvizsgálja az egyes jelentésekhez észlelt mögöttes kockázati észlelések némelyikét is. 
 
-- Az **Azure Active Directory 2. prémium** kiadása nyújtja a legrészletesebb információkat a mögöttes kockázatos eseményekről, és lehetővé teszi olyan biztonsági házirendek konfigurálását, amelyek automatikusan, a konfigurált kockázati szinteknek megfelelően válaszolnak.
+- A **prémium szintű Azure Active Directory 2** kiadás a legrészletesebb információkat tartalmazza a mögöttes kockázati észlelésekről, és lehetővé teszi olyan biztonsági szabályzatok konfigurálását, amelyek automatikusan reagálnak a konfigurált kockázati szintekre.
 
 
 ## <a name="activity-reports"></a>Tevékenységjelentések

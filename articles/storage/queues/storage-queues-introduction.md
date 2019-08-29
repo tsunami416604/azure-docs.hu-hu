@@ -8,23 +8,16 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: cbrooks
-ms.openlocfilehash: 67e4874fcca93633140b7630ceadd273d1646f86
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 86bbff167a2653fd8d89b566b551c4c53dd3614e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721173"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124568"
 ---
-# <a name="what-are-azure-queues"></a>Mi az az Azure Queues?
+# <a name="what-are-azure-queues"></a>Mik azok az Azure Queues?
 
-Az Azure üzenetsor-tároló szolgáltatás nagy számú üzenet tárolására szolgál. A HTTP-vagy HTTPS-t használó hitelesített hívásokon keresztül érheti el az üzeneteket a világ bármely pontján. Egy üzenetsor-üzenet akár 64 KB méretű is lehet. Egy üzenetsor akár több millió üzenetet is tartalmazhat, akár egy Storage-fiók teljes kapacitási korlátját.
-
-## <a name="common-uses"></a>Gyakori felhasználások
-
-A Queue Storage gyakori használati módjai:
-
-* Hátralékos munkák létrehozása aszinkron feldolgozáshoz
-* Üzenetek átadása egy Azure webes szerepkörről egy Azure feldolgozói szerepkörnek
+Az Azure Queue Storage nagy mennyiségű üzenet tárolására szolgál. A HTTP-vagy HTTPS-t használó hitelesített hívásokon keresztül érheti el az üzeneteket a világ bármely pontján. Egy üzenetsor-üzenet akár 64 KB méretű is lehet. Egy üzenetsor akár több millió üzenetet is tartalmazhat, akár egy Storage-fiók teljes kapacitási korlátját. A várólistákat általában arra használják, hogy egy várakozó munkafolyamatot hozzon létre aszinkron feldolgozásra.
 
 ## <a name="queue-service-concepts"></a>Queue szolgáltatás fogalmak
 
@@ -42,7 +35,7 @@ A Queue szolgáltatás az alábbi összetevőkből áll:
 
 * **Storage-fiók:** Az Azure Storage-hoz való összes hozzáférés egy Storage-fiókon keresztül történik. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) (Az Azure Storage méretezhetőségi és teljesítménycéljai).
 
-* **Várólista** A várólista üzenetek készletét tartalmazza. A **várólista nevének csak** kisbetűsnek kell lennie. Az üzenetsorok elnevezésével kapcsolatos információkat lásd: [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx) (Üzenetsorok és metaadatok elnevezése).
+* **Várólista** A várólista üzenetek készletét tartalmazza. A várólista nevének csak kisbetűsnek kell lennie. Az üzenetsorok elnevezésével kapcsolatos információkat lásd: [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx) (Üzenetsorok és metaadatok elnevezése).
 
 * **Üzenetet** Legfeljebb 64 KB méretű, bármilyen formátumú üzenet. Az 2017-07-29-es verzió előtt az engedélyezett maximális élettartam hét nap. A 2017-07-29-es vagy újabb verzió esetén a maximális élettartam lehet bármilyen pozitív szám, vagy-1, amely azt jelzi, hogy az üzenet nem jár le. Ha a paraméter nincs megadva, az alapértelmezett élettartam hét nap.
 

@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan biztosítja a Azure Cosmos DB az inaktív adato
 author: monhaber
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 08/21/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: e22e05618c8b8977ba8b03afd3b654d27d4fa6bd
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 035c7e9ed5ab33c89a2a55b1133294db434bfe81
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981739"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123906"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Komplex veszélyforrások elleni védelem Azure Cosmos DB
 
@@ -56,6 +56,31 @@ Használja a következő PowerShell-parancsmagokat:
 * [Komplex veszélyforrások elleni védelem engedélyezése](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409)
 * [Komplex veszélyforrások elleni védelem](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
 * [A komplex veszélyforrások elleni védelem letiltása](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
+
+### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használata
+
+Azure Resource Manager-sablonnal beállíthatja, hogy a rendszer engedélyezve legyen a komplex veszélyforrások elleni védelem Cosmos DB.
+További információ: CosmosDB- [fiók létrehozása komplex veszélyforrások elleni védelemmel](https://azure.microsoft.com/en-us/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/).
+
+### <a name="using-azure-policy"></a>Azure Policy használata
+
+A Cosmos DB a komplex veszélyforrások elleni védelem engedélyezéséhez használjon Azure Policy.
+
+1. Indítsa el az Azure **Policy-fogalommeghatározások** lapot, és keressen rá a Cosmos db házirend komplex **veszélyforrások elleni védelmének üzembe helyezése** lehetőségre.
+
+    ![Keresési szabályzat](./media/cosmos-db-advanced-threat-protection/cosmos-db.png) 
+
+1. Kattintson a komplex **veszélyforrások elleni védelem telepítése CosmosDB** házirendre, majd kattintson a **hozzárendelés**elemre.
+
+    ![Előfizetés vagy csoport kiválasztása](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png)
+
+
+1. A **hatókör** mezőben kattintson a három pontra, válasszon ki egy Azure-előfizetést vagy erőforráscsoportot, majd kattintson a **kiválasztás**elemre.
+
+    ![Házirend-definíciók lap](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png)
+
+
+1. Adja meg a többi paramétert, majd kattintson a **hozzárendelés**elemre.
 
 ## <a name="manage-atp-security-alerts"></a>ATP biztonsági riasztások kezelése
 

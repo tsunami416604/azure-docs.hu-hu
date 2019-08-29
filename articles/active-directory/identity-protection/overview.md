@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99a542d3208d5871d88c966fffc65cf16e0fbeee
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 8b89cab41061376fc1d8b4cbffc8fe87b9677688
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335395"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125678"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Mi az Azure Active Directory Identity Protection?
 
@@ -45,10 +45,10 @@ Azure Active Directory Identity Protection több, mint egy figyelési és jelent
 - A bejelentkezési kockázati szintek kiszámítása
 - Felhasználói kockázati szintek kiszámítása
 
-**Kockázati események kivizsgálása:**
+**A kockázati észlelések kivizsgálása:**
 
-- Értesítés küldése a kockázati eseményekről
-- Kockázati események kivizsgálása a releváns és a környezetfüggő információk használatával
+- A kockázatok észlelésére vonatkozó értesítések küldése
+- A kockázatelemzések kivizsgálása a releváns és a környezetfüggő információk használatával
 - Alapvető munkafolyamatok biztosítása a vizsgálatok nyomon követéséhez
 - Egyszerű hozzáférés biztosítása a hibajavítási műveletekhez, például a jelszó-visszaállításhoz
 
@@ -76,10 +76,10 @@ További részletekért lásd: [rendszergazdai szerepkörök hozzárendeléséne
 
 Azure Active Directory Identity Protection elemzi a konfigurációt, és észleli azokat a biztonsági réseket, amelyek hatással lehetnek a felhasználó identitására. További részletekért tekintse meg a [Azure Active Directory Identity Protection által észlelt biztonsági réseket](vulnerabilities.md).
 
-### <a name="risk-events"></a>Kockázati események
+### <a name="risk-detections"></a>Kockázati észlelések
 
-Azure Active Directory adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználó identitásával kapcsolatos gyanús műveletek észlelésére. A rendszer létrehoz egy rekordot minden észlelt gyanús művelethez. Ezeket a rekordokat kockázati eseménynek is nevezzük.  
-További részletek: [Az Azure Active Directory kockázati eseményei](../active-directory-identity-protection-risk-events.md).
+Azure Active Directory adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználó identitásával kapcsolatos gyanús műveletek észlelésére. A rendszer létrehoz egy rekordot minden észlelt gyanús művelethez. Ezeket a rekordokat kockázati észlelésnek is nevezzük.  
+További részletek: [Azure Active Directory kockázati észlelések](../active-directory-identity-protection-risk-events.md).
 
 ## <a name="investigation"></a>Vizsgálat
 
@@ -89,10 +89,10 @@ Az Identity Protection szolgáltatással való utazás általában az Identity P
 
 Az irányítópult hozzáférést biztosít a következőkhöz:
 
-- Jelentések, például **a kockázatra megjelölt felhasználók**, **kockázati események** és **biztonsági rések**
+- Jelentések, például **a kockázatra megjelölt felhasználók**, **kockázati észlelések** és **biztonsági rések**
 - Beállítások, például **biztonsági házirendek**konfigurációja, **értesítések** és **multi-Factor Authentication-regisztráció**
 
-Általában a vizsgálat kiindulási pontja, amely a kockázati eseményekkel kapcsolatos tevékenységek, naplók és egyéb kapcsolódó információk áttekintését mutatja be, hogy eldöntse, hogy szükséges-e szervizelési vagy kockázatcsökkentő lépések, és hogy az identitás milyen módon volt megsérült, és megértette, hogyan használták a feltört identitást.
+Általában a vizsgálat kiindulási pontja, amely a kockázatkezeléssel kapcsolatos tevékenységek, naplók és egyéb releváns információk áttekintését mutatja be, hogy szükség van-e a szervizelésre vagy a kockázatcsökkentő lépésekre, és hogy az identitás milyen módon volt megsérült, és megértette, hogyan használták a feltört identitást.
 
 A vizsgálati tevékenységeket összekapcsolhatja az [értesítések](notifications.md) Azure Active Directory a védelem küldése e-mailben.
 

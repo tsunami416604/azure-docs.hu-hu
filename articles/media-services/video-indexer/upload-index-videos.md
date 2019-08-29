@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 8fffc74075abf6dcc4b5c293819f739a9725646b
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 7233bea4a030b814a5332284a80f07a71f288dba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998178"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128203"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -30,15 +30,15 @@ A cikk bemutatja, hogyan használhatja a [Videó feltöltése](https://api-porta
 A videó feltöltése után Video Indexer, opcionálisan kódolja a videót (a cikkben ismertetett módon). A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős megoldással olyan Video Indexer fiókot hozhat létre, amely az [Azure-előfizetéshez és egy Azure Media Services-fiókhoz csatlakozik](connect-to-azure.md). Ön az indexelt perceket és a Media Accounttal kapcsolatos díjakat fizeti ki. 
 
 ## <a name="uploading-considerations"></a>Feltöltési szempontok
-
-- A videó URL-cím alapján történő feltöltésekor (előnyben részesített) a végpontot a TLS 1.2-es (vagy újabb) verziójával kell védeni
-- A feltöltési méret és az URL-cím beállítás a 30 GB-ra van korlátozva
-- A kérelem URL-címének hossza legfeljebb 2048 karakter hosszú lehet.
-- A feltöltési méret a byte Array kapcsolóval legfeljebb 2 GB
-- A bájtos tömb beállítása 30 percnél hosszabb időt vesz igénybe
-- A `videoURL` paraméterben megadott URL-címet kódolni kell
-- Az indexelési Media Servicesi eszközök ugyanazzal a korlátozással rendelkeznek, mint az URL-cím indexelése
-- A Video Indexer legfeljebb 4 órát tartalmaz egyetlen fájlhoz
+ 
+- Ha a videót az URL-cím alapján tölti fel (előnyben részesített), a végpontot a TLS 1,2-as (vagy újabb) titkosítással kell védeni.
+- A feltöltési méret és az URL-cím beállítás a 30 GB-ra van korlátozva.
+- A kérelem URL-címének hossza legfeljebb 6144 karakter hosszúságú lehet, ahol a lekérdezési karakterlánc URL-címe legfeljebb 4096 karakter hosszúságú lehet.
+- A byte Array kapcsolóval rendelkező feltöltési méret 2 GB-ra van korlátozva.
+- A bájtos tömb beállítása 30 percnél hosszabb időt vesz igénybe.
+- A `videoURL` paraméterben megadott URL-címet kódolni kell.
+- Az indexelési Media Servicesi eszközök ugyanazzal a korlátozással rendelkeznek, mint az URL-cím indexelése.
+- A Video Indexer legfeljebb 4 órát tartalmaz egyetlen fájlra vonatkozóan.
 
 > [!Tip]
 > Javasoljuk, hogy a .NET-keretrendszer 4.6.2-es vagy újabb verzióját használja, mivel a régebbi verziók nem a TLS 1.2-t használják alapértelmezés szerint.

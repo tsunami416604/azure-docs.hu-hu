@@ -1,7 +1,7 @@
 ---
 title: 'Python rövid útmutató: Indexek létrehozása, betöltése és lekérdezése REST API-k használatával – Azure Search'
 description: Ismerteti, hogyan hozhat létre indexet, tölthet be és futtathat lekérdezéseket Python, Jupyter notebookok és a Azure Search REST API használatával.
-ms.date: 07/11/2019
+ms.date: 08/28/2019
 author: heidisteen
 manager: nitinme
 ms.author: heidist
@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.openlocfilehash: 308e296ba5306949e87e68f14c8c219b85825af4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 352d26a1f3e781f7dbb6e502caea44bdb45b398a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656793"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129406"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Gyors útmutató: Azure Search index létrehozása a Pythonban Jupyter-jegyzetfüzetek használatával
 > [!div class="op_single_selector"]
@@ -71,6 +71,8 @@ Ebben a feladatban indítson el egy Jupyter-jegyzetfüzetet, és ellenőrizze, h
    headers = {'Content-Type': 'application/json',
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
+
+   Ha ConnectionError `"Failed to establish a new connection"`kap, ellenőrizze, hogy az API-kulcs elsődleges vagy másodlagos rendszergazdai kulcs-e, és hogy az összes kezdő és záró karakter (`?` és `/`) be van-e helyezve.
 
 1. A harmadik cellában alakítsa ki a kérelmet. Ez a GET kérelem célja a keresési szolgáltatás indexek gyűjteménye, és kiválasztja a meglévő indexek Name (név) tulajdonságát.
 

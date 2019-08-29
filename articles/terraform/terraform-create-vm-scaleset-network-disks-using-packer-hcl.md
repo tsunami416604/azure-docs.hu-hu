@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/29/2017
-ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 08/28/2019
+ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884914"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138346"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Azure-beli virtuálisgép-méretezési csoport létrehozása a Terraformmal egy egyéni Packer-rendszerképből
 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 > * [A Terraform telepítése és az Azure-hoz való hozzáférés konfigurálása](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure)
 > * [Egy SSH-kulcspár létrehozása](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys), ha még nem rendelkezik kulcspárral
 > * [A Packer telepítése](https://www.packer.io/docs/install/index.html), ha még nincs telepítve a helyi gépen
@@ -44,7 +44,7 @@ Hozzon létre három új fájlt egy üres könyvtárban a következő nevekkel:
 
 - ```variables.tf``` Ez a fájl tartalmazza a sablonban használt változók értékeit.
 - ```output.tf``` Ez a fájl írja le az üzembe helyezés után megjelenő beállításokat.
-- ```vmss.tf``` Ez a fájl tartalmazza az üzembe helyezés alatt álló infrastruktúra kódját.
+- ```vmss.tf```Ez a fájl tartalmazza a telepítendő infrastruktúra kódját.
 
 ##  <a name="create-the-variables"></a>A változók létrehozása 
 
@@ -124,7 +124,7 @@ resource "azurerm_public_ip" "vmss" {
   name                         = "vmss-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}"
 
   tags {
@@ -175,12 +175,12 @@ Kövesse az oktatóanyagot egy NGINX-telepítést tartalmazó, üzemből kivont 
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>Az infrastruktúra szerkesztése a virtuálisgép-méretezési csoport hozzáadásához
 
 Ebben a lépésben a következő erőforrásokat hozza létre a korábban üzembe helyezett hálózaton:
-- Az Azure Load Balancer az alkalmazás kiszolgálásához és a 4. lépésben üzembe helyezett nyilvános IP-címhez való csatolásához
+- Az Azure Load Balancer az alkalmazás kiszolgálásához és a korábban üzembe helyezett nyilvános IP-címhez csatolásához.
 - Egy Azure Load Balancer és az alkalmazást kiszolgáló szabályok, és ezek csatolása a korábban konfigurált nyilvános IP-címhez.
-- Egy Azure-háttércímkészlet és annak hozzárendelése a terheléselosztóhoz 
-- A terheléselosztón konfigurált és az alkalmazás által használt állapotminta portja 
-- A korábban üzembe helyezett virtuális hálózaton futó terheléselosztó mögötti virtuálisgép-méretezési csoport
-- [Nginx](https://nginx.org/) az egyéni rendszerképből telepített virtuálisgép-méretezési csoport csomópontjain
+- Azure háttérbeli címkészlet és hozzárendelés a terheléselosztó számára.
+- Az alkalmazás által használt és a terheléselosztó által konfigurált állapot-mintavételi port.
+- Egy virtuálisgép-méretezési csoport a terheléselosztó mögött, amely a korábban üzembe helyezett VNET fut.
+- [Nginx](https://nginx.org/) az egyéni rendszerképből telepített virtuálisgép-skála csomópontjain.
 
 
 Adja hozzá az alábbi kódot a `vmss.tf` fájl végéhez.
@@ -290,6 +290,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
       name                                   = "IPConfiguration"
       subnet_id                              = "${azurerm_subnet.vmss.id}"
       load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+      primary = true
     }
   }
   
@@ -355,7 +356,7 @@ resource "azurerm_public_ip" "jumpbox" {
   name                         = "jumpbox-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}-ssh"
 
   tags {

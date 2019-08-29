@@ -15,26 +15,26 @@ ms.date: 01/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 950d0dc2f4a1a88e0c317b3398c7492cc6c52e2a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3e6b79c7d5c2ed9744dc00eb1588c35f8ea94a76
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989837"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127655"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>A Azure Portal kockázati jelentésére megjelölt felhasználók
 
-Azure Active Directory (Azure AD) észleli a felhasználói fiókokhoz kapcsolódó gyanús műveleteket. Minden észlelt művelethez létrejön egy [kockázati esemény](concept-risk-events.md) nevű rekord.
+Azure Active Directory (Azure AD) észleli a felhasználói fiókokhoz kapcsolódó gyanús műveleteket. Minden észlelt művelethez létrejön egy [kockázati észlelés](concept-risk-events.md) nevű rekord.
 
 A [Azure Portal](https://portal.azure.com) biztonsági jelentéseinek eléréséhez válassza a **Azure Active Directory** panelt, majd navigáljon a **Biztonság** szakaszra. 
 
-A rendszer az észlelt kockázati eseményeket a következők kiszámítására használja:
+Az észlelt kockázati észlelések a következők kiszámítására használhatók:
 
 - **Kockázatos bejelentkezések** – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. 
 
 - **Kockázatosként megjelölt felhasználók** – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. 
 
-A kockázati eseményeket kiváltó szabályzatok konfigurálásával kapcsolatos további információkért lásd: [a felhasználói kockázati házirend konfigurálása](../identity-protection/howto-user-risk-policy.md). 
+A kockázatok észlelését kiváltó szabályzatok konfigurálásával kapcsolatos további információkért lásd: [a felhasználói kockázati házirend konfigurálása](../identity-protection/howto-user-risk-policy.md). 
 
 ![Kockázatos bejelentkezések](./media/concept-user-at-risk/10.png)
 
@@ -45,9 +45,9 @@ Az Azure Active Directory minden kiadása biztosítja a kockázatosként megjel�
 
 - A **ingyenes Azure Active Directory és**az alapszintű kiadásokban megjelenik a kockázatként megjelölt felhasználók listája. 
 
-- Emellett a **prémium szintű Azure Active Directory 1** kiadással megvizsgálhatja az egyes jelentésekhez észlelt mögöttes kockázati eseményeket. 
+- Emellett a **prémium szintű Azure Active Directory 1** kiadás lehetővé teszi, hogy megvizsgáljon néhány, az egyes jelentésekhez észlelt mögöttes kockázati észlelést. 
 
-- Az **Azure Active Directory 2. prémium** kiadása nyújtja a legrészletesebb információkat minden mögöttes kockázatos eseményről, és lehetővé teszi olyan biztonsági szabályzatok konfigurálását, amelyek automatikusan, a konfigurált kockázati szinteknek megfelelően válaszolnak.
+- A **prémium szintű Azure Active Directory 2** kiadás az összes mögöttes kockázati észleléssel kapcsolatos legrészletesebb információkat tartalmazza, és lehetővé teszi olyan biztonsági szabályzatok konfigurálását, amelyek automatikusan reagálnak a konfigurált kockázati szintekre.
 
 
 ## <a name="users-at-risk-report-for-azure-ad-free-and-basic-editions"></a>Az Azure AD ingyenes és alapszintű kiadásaihoz tartozó veszélyeztetett felhasználókról szóló jelentés
@@ -73,7 +73,7 @@ Az Azure AD prémium kiadásaiban a kockázati jelentésre megjelölt felhaszná
 
 - Egy lista azokról a felhasználói fiókokról, amelyeknek elképzelhető, hogy sérült a biztonsága 
 
-- Összesített adatok az észlelt [kockázati események típusairól](concept-risk-events.md)
+- Az észlelt [kockázati észlelési típusok](concept-risk-events.md) összesített adatai
 
 - Lehetőség a jelentés letöltésére
 
@@ -87,13 +87,13 @@ Egy felhasználó kiválasztásakor megkapja a felhasználó részletes jelenté
 
 - A felhasználói jelszó alaphelyzetbe állítását
 
-- Az összes esemény elvetését
+- Összes esemény bezárása
 
-- A felhasználóhoz kapcsolódó, jelentett kockázati események vizsgálatát. 
+- A jelentett kockázati észlelések vizsgálata a felhasználó számára. 
 
 ![Kockázatos bejelentkezések](./media/concept-user-at-risk/324.png)
 
-Egy kockázati esemény vizsgálatához válassza ki azt a listából a kockázati eseményhez tartozó **Részletek** panel megnyitásához. A **Részletek** panelen manuálisan bezárhatja a kockázati eseményeket vagy újra aktiválhatja a manuálisan bezárt kockázati eseményeket. 
+A kockázatok észlelésének kivizsgálásához válasszon ki egyet a listából, és nyissa meg a kockázatkezelés **részletei paneljét** . A **részletek** panelen lehetősége van manuálisan lezárni a kockázatkezelést, vagy újraaktiválni a manuálisan lezárt kockázatok észlelését. 
 
 ![Kockázatos bejelentkezések](./media/concept-user-at-risk/325.png)
 

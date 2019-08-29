@@ -10,12 +10,12 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 97b66bff0e6413b7774a054a01a0dc73649c9cce
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b0d8eef025efb6398f1d7c734ca558540b157fef
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68962988"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128256"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>A Batch-előrejelzések futtatása Azure Machine Learning folyamatokkal rendelkező nagyméretű adatkészleteken
 
@@ -114,7 +114,7 @@ output_dir = PipelineData(name="scores",
 
 ### <a name="set-up-compute-target"></a>Állítsa be a számítási célnak
 
-Azure Machine Learning a *számítási* (vagy *számítási cél*) a gépi tanulási folyamat számítási lépéseit végrehajtó gépekre vagy fürtökre vonatkozik. Létrehozhat például egy `Azure Machine Learning compute`.
+Azure Machine Learning a *számítási* (vagy *számítási cél*) a gépi tanulási folyamat számítási lépéseit végrehajtó gépekre vagy fürtökre vonatkozik. Létrehozhat például egy Azure Machine Learning-számítást a [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) osztály használatával.
 
 ```python
 from azureml.core.compute import AmlCompute

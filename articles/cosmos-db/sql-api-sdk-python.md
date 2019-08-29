@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: ed90c22fa8c5b94567a9886ca71c9b35fbb103f0
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624629"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137338"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -145,7 +145,12 @@ Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adó
 A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket.
 
 > [!WARNING]
-> Az Azure SQL SDK for Python minden verziója, a **1.0.0** verzió előtt **, 2016. február 29-** én megszűnt. 
+> Az SQL API-hoz készült Python SDK minden verziójának a **2016. február 29-** én kivonult. 
+> 
+> 
+
+> [!WARNING]
+> Az SQL API-hoz készült Python SDK 1. x és 2. x verziója a **2020-es augusztus 30-** án megszűnik. 
 > 
 > 
 
@@ -155,27 +160,27 @@ A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket
 | --- | --- | --- |
 | [3.0.2](#3.0.2) |November 15., 2018 |--- |
 | [3.0.1](#3.0.1) |Oct 04, 2018 |--- |
-| [2.3.3](#2.3.3) |Szeptember 08., 2018 |--- |
-| [2.3.2](#2.3.2) |08. május 2018 |--- |
-| [2.3.1](#2.3.1) |December 21., 2017 |--- |
-| [2.3.0](#2.3.0) |2017. november 10. |--- |
-| [2.2.1](#2.2.1) |Szeptember 29., 2017 |--- |
-| [2.2.0](#2.2.0) |2017. május 10. |--- |
-| [2.1.0](#2.1.0) |Május 01., 2017 |--- |
-| [2.0.1](#2.0.1) |2016. október 30. |--- |
-| [2.0.0](#2.0.0) |Szeptember 29., 2016 |--- |
-| [1.9.0](#1.9.0) |2016. július 7. |--- |
-| [1.8.0](#1.8.0) |2016. június 14-én |--- |
-| [1.7.0](#1.7.0) |Április 26., 2016 |--- |
-| [1.6.1](#1.6.1) |2016. április 08. |--- |
-| [1.6.0](#1.6.0) |2016. március 29-én |--- |
-| [1.5.0](#1.5.0) |2016. január 03. |--- |
-| [1.4.2](#1.4.2) |Október 06.2015 |--- |
-| 1.4.1 |Október 06.2015 |--- |
-| [1.2.0](#1.2.0) |Augusztus 06, 2015 |--- |
-| [1.1.0](#1.1.0) |2015. július 09. |--- |
-| [1.0.1](#1.0.1) |2015. május 25. |--- |
-| [1.0.0](#1.0.0) |2015. április 07. |--- |
+| [2.3.3](#2.3.3) |Szeptember 08., 2018 |2020. augusztus 30-ig |
+| [2.3.2](#2.3.2) |08. május 2018 |2020. augusztus 30-ig |
+| [2.3.1](#2.3.1) |December 21., 2017 |2020. augusztus 30-ig |
+| [2.3.0](#2.3.0) |2017. november 10. |2020. augusztus 30-ig |
+| [2.2.1](#2.2.1) |Szeptember 29., 2017 |2020. augusztus 30-ig |
+| [2.2.0](#2.2.0) |2017. május 10. |2020. augusztus 30-ig |
+| [2.1.0](#2.1.0) |Május 01., 2017 |2020. augusztus 30-ig |
+| [2.0.1](#2.0.1) |2016. október 30. |2020. augusztus 30-ig |
+| [2.0.0](#2.0.0) |Szeptember 29., 2016 |2020. augusztus 30-ig |
+| [1.9.0](#1.9.0) |2016. július 7. |2020. augusztus 30-ig |
+| [1.8.0](#1.8.0) |2016. június 14-én |2020. augusztus 30-ig |
+| [1.7.0](#1.7.0) |Április 26., 2016 |2020. augusztus 30-ig |
+| [1.6.1](#1.6.1) |2016. április 08. |2020. augusztus 30-ig |
+| [1.6.0](#1.6.0) |2016. március 29-én |2020. augusztus 30-ig |
+| [1.5.0](#1.5.0) |2016. január 03. |2020. augusztus 30-ig |
+| [1.4.2](#1.4.2) |Október 06.2015 |2020. augusztus 30-ig |
+| 1.4.1 |Október 06.2015 |2020. augusztus 30-ig |
+| [1.2.0](#1.2.0) |Augusztus 06, 2015 |2020. augusztus 30-ig |
+| [1.1.0](#1.1.0) |2015. július 09. |2020. augusztus 30-ig |
+| [1.0.1](#1.0.1) |2015. május 25. |2020. augusztus 30-ig |
+| [1.0.0](#1.0.0) |2015. április 07. |2020. augusztus 30-ig |
 | 0.9.4-prelease |Január 14., 2015 |2016. február 29-én |
 | 0.9.3-prelease |December 9., 2014 |2016. február 29-én |
 | 0.9.2-prelease |November 25., 2014 |2016. február 29-én |

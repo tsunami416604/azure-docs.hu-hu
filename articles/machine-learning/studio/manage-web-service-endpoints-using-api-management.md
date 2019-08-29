@@ -1,5 +1,5 @@
 ---
-title: Az API Management segítségével a webszolgáltatások kezelése
+title: Webszolgáltatások kezelése API Management használatával
 titleSuffix: Azure Machine Learning Studio
 description: Az API Management használatával AzureML webszolgáltatások kezelése bemutató útmutató. A REST API-végpontokon kezelheti a felhasználói hozzáférés-szabályozás és figyelési irányítópult definiálásával.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8b424696c3350ff2592df9a97189dde3df57845f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347254"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138562"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Az API Management használata az Azure Machine Learning Studio-webszolgáltatások kezelése
 ## <a name="overview"></a>Áttekintés
@@ -182,11 +182,11 @@ Nevezze át, hogy **SimpleFeatureHashingExperiment**. Bontsa ki a **mentett adat
 
 Bontsa ki a **adatátalakítás** és **adatkezelési** , és húzza **Select Columns in Dataset** alakzatot a kísérlet során. Csatlakozás **felülvizsgálatok lefoglalja az Amazon** való **oszlopok kiválasztása az adathalmaz**.
 
-![A könyv felülvizsgálatok adatkészlet modul összekötése a Projektoszlopok modullal](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
+![A Book Reviews DataSet modul csatlakoztatása egy Project Columns modulhoz](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
 Kattintson a **Select Columns in Dataset** majd **Oszlopválasztás indítása** válassza **Col2**. Kattintson a pipa jelre a módosítások alkalmazásához.
 
-![Válassza ki az oszlopnevek használatával oszlopok](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
+![Oszlopok kijelölése oszlopnevek használatával](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
 Bontsa ki a **Szövegelemzés** , és húzza **Szolgáltatáskivonatolás** alakzatot a kísérletet. Csatlakozás **oszlopok kiválasztása az adathalmaz** való **Szolgáltatáskivonatolás**.
 
@@ -214,7 +214,7 @@ Kattintson a **Igen** közzététele a kísérletet.
 ![Igen – közzététel](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>A webszolgáltatás teszteléséhez
-Az AzureML webszolgáltatás (kérelem/válasz szolgáltatás) az RSS- és BES (kötegelt végrehajtási szolgáltatás) végpontok áll. Az RSS szinkron végrehajtásra van. BES az aszinkron feladatok végrehajtásra. Az alábbi minta Python-forrás a webes szolgáltatás tesztelése, szükség lehet töltse le és telepítse az Azure SDK a Pythonhoz készült (lásd: [Python telepítése](../../python-how-to-install.md)).
+Az AzureML webszolgáltatás (kérelem/válasz szolgáltatás) az RSS- és BES (kötegelt végrehajtási szolgáltatás) végpontok áll. Az RSS szinkron végrehajtásra van. BES az aszinkron feladatok végrehajtásra. Ha tesztelni szeretné a webszolgáltatását az alábbi példa Python-forrással, előfordulhat, hogy le kell töltenie és telepítenie kell a Pythonhoz készült Azure SDK-t (lásd: [A Python telepítése](/azure/python/python-sdk-azure-install))
 
 Is szüksége lesz a **munkaterület**, **szolgáltatás**, és **api_key** a kísérlet a minta az alábbi forrás. Annak a munkaterület és a szolgáltatás lehet **kérés/válasz** vagy **kötegelt végrehajtási** a webszolgáltatás irányítópultján a kísérlethez.
 

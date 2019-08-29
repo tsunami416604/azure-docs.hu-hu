@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f57f09f146e542768c83fa034f0b4e65bc6b2ae
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: ce62a5059304fe83d933a46ae69f4b8e0c276ba7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987939"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127036"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory jelentési késések
 
@@ -64,24 +64,24 @@ A következő táblázat a biztonsági jelentések késési információit sorol
 | Érintett felhasználók          | 5 perc   | 15 perc  | 2 óra  |
 | Kockázatos bejelentkezések         | 5 perc   | 15 perc  | 2 óra  |
 
-## <a name="risk-events"></a>Kockázati események
+## <a name="risk-detections"></a>Kockázati észlelések
 
-Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. Minden észlelt gyanús művelet egy **kockázati eseménynek**nevezett rekordban van tárolva.
+Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. A rendszer minden észlelt gyanús műveletet egy **kockázati észlelésnek**nevezett rekordban tárol.
 
-A következő táblázat a kockázati események késési információit sorolja fel.
+A következő táblázat a kockázati észlelések késési információit sorolja fel.
 
 | Jelentés | Minimális | Average | Maximum |
 | :-- | --- | --- | --- |
-| Névtelen IP-címről történő bejelentkezések |5 perc |15 perc |2 óra |
-| Ismeretlen helyekről történt bejelentkezések |5 perc |15 perc |2 óra |
+| Bejelentkezések névtelen IP-címről |5 perc |15 perc |2 óra |
+| Bejelentkezések ismeretlen helyekről |5 perc |15 perc |2 óra |
 | Felhasználók, akiknek kiszivárogtak a hitelesítő adatai |2 óra |4 óra |8 óra |
 | Bejelentkezés szokatlan helyekről |5 perc |1 óra |8 óra  |
 | Bejelentkezések fertőzött eszközökről |2 óra |4 óra |8 óra  |
-| Gyanús tevékenységeket mutató IP-címekről indított bejelentkezések |2 óra |4 óra |8 óra  |
+| Bejelentkezések gyanús tevékenységeket mutató IP-címekkel |2 óra |4 óra |8 óra  |
 
 
 ## <a name="next-steps"></a>További lépések
 
 * [Azure AD-jelentések – áttekintés](overview-reports.md)
 * [Programozott hozzáférés az Azure AD-jelentésekhez](concept-reporting-api.md)
-* [Az Azure Active Directory kockázati eseményei](concept-risk-events.md)
+* [Azure Active Directory kockázati észlelések](concept-risk-events.md)

@@ -1,41 +1,40 @@
 ---
-title: Frissítse a machine learning-modellek az Azure Data Factory használatával |} A Microsoft Docs
-description: Ismerteti, hogyan hozhat létre Azure Data Factory segítségével prediktív adatcsatornák létrehozása és a gépi tanulás
+title: Gépi tanulási modellek frissítése a Azure Data Factory használatával | Microsoft Docs
+description: Ismerteti, hogyan hozhat létre prediktív folyamatokat a Azure Data Factory és a gépi tanulás használatával
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: shlo
-ms.openlocfilehash: 8f1320db0af85f6c83a9daf8e17a691336c9b251
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 56d0ce6668c1077b99c980c2bc5b16998a3a41c1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60335478"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140530"
 ---
-# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Az Azure Machine Learning-modellek frissítése az Update-erőforrástevékenység
-Ez a cikk a fő Azure Data Factory - integráció a cikk az Azure Machine Learning egészíti ki: [Az Azure Machine Learning és az Azure Data Factory prediktív adatcsatornák létrehozása](transform-data-using-machine-learning.md). Ha ezt még nem tette meg, ez a cikk elolvasása előtt tekintse át a fő cikket.
+# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Azure Machine Learning modellek frissítése az erőforrás frissítése tevékenység használatával
+Ez a cikk a fő Azure Data Factory Azure Machine Learning integrációs cikket egészíti ki: [Prediktív folyamatokat hozhat létre Azure Machine learning és Azure Data Factory használatával](transform-data-using-machine-learning.md). Ha még nem tette meg, tekintse át a fő cikket, mielőtt beolvassa ezt a cikket.
 
 ## <a name="overview"></a>Áttekintés
-A modell Azure Machine Learning-modellek modellezést, a folyamat részeként a betanított és mentve. Ezt követően használhatja azt egy prediktív webszolgáltatás létrehozására. A Web service a webhelyek, az irányítópultok és a mobile apps majd használhatók fel.
+Azure Machine Learning modellek végrehajtott folyamata részeként a rendszer betanítja és menti a modellt. Ezt követően használhatja azt egy prediktív webszolgáltatás létrehozására. A Web service a webhelyek, az irányítópultok és a mobile apps majd használhatók fel.
 
-Machine Learning segítségével létrehozott modellek ben általában nem statikusak. Az új adatok válnak elérhetővé, vagy ha a fogyasztói API-rendelkezik a saját adatait a modell kell lennie retrained. Tekintse meg [egy gépi tanulási modellek szoftveres Átképezése](../machine-learning/machine-learning-retrain-machine-learning-model.md) hogyan ténytábláknál az Azure Machine Learning-modell részleteit.
+Machine Learning segítségével létrehozott modellek ben általában nem statikusak. Az új adatok válnak elérhetővé, vagy ha a fogyasztói API-rendelkezik a saját adatait a modell kell lennie retrained. Tekintse át a [Machine learning modell](../machine-learning/machine-learning-retrain-machine-learning-model.md) újratanítása című témakört, amely részletesen ismerteti, hogyan lehet a modelleket Azure Machine learning-ben áttanítani.
 
-Átképezési fordulhat elő, gyakran. A Batch Execution-tevékenység és az Update-erőforrástevékenység üzembe helyezheti átképezési és a Data Factory segítségével prediktív webszolgáltatás frissítése az Azure Machine Learning-modellhez.
+Átképezési fordulhat elő, gyakran. A kötegelt végrehajtási tevékenységek és az erőforrás-frissítési tevékenységek segítségével működővé tenni a Azure Machine Learning modell átképzését és a prediktív webszolgáltatás frissítését a Data Factory használatával.
 
-A következő képen látható betanítást, prediktív webszolgáltatások közötti kapcsolatot ábrázolja.
+Az alábbi ábra a képzés és a prediktív webszolgáltatások közötti kapcsolatot ábrázolja.
 
 ![Webszolgáltatások](./media/update-machine-learning-models/web-services.png)
 
-## <a name="azure-machine-learning-update-resource-activity"></a>Az Azure Machine Learning update-erőforrástevékenység
+## <a name="azure-machine-learning-update-resource-activity"></a>Erőforrás-frissítési tevékenység Azure Machine Learning
 
-A következő JSON-kódrészlet definiál egy Azure Machine Learning Batch Execution-tevékenység.
+A következő JSON-kódrészlet definiál egy Azure Machine Learning batch végrehajtási tevékenységet.
 
 ```json
 {
@@ -57,49 +56,49 @@ A következő JSON-kódrészlet definiál egy Azure Machine Learning Batch Execu
 }
 ```
 
-| Tulajdonság                      | Leírás                              | Szükséges |
+| Tulajdonság                      | Leírás                              | Kötelező |
 | :---------------------------- | :--------------------------------------- | :------- |
-| name                          | A folyamat a tevékenység neve     | Igen      |
-| description                   | A tevékenység leírása leíró szöveg.  | Nem       |
-| type                          | Az Azure Machine Learning Update Resource-tevékenységek, a tevékenység típusa van **AzureMLUpdateResource**. | Igen      |
-| linkedServiceName             | Az Azure Machine Learning társított szolgáltatás updateResourceEndpoint tulajdonsága tartalmaz. | Igen      |
-| trainedModelName              | A Web Service kísérletben frissíteni kell a Trained Model-modul neve | Igen      |
-| trainedModelLinkedServiceName | A frissítési művelet által feltöltött ilearner-fájlt tároló Azure Storage társított szolgáltatás neve | Igen      |
-| trainedModelFilePath          | A relatív elérési útja a trainedModelLinkedService, amelyek a frissítési művelet által feltöltött ilearner-fájlt | Igen      |
+| name                          | A folyamatban szereplő tevékenység neve     | Igen      |
+| description                   | A tevékenység működését leíró szöveg  | Nem       |
+| type                          | Azure Machine Learning frissítési erőforrás tevékenység esetén a tevékenység típusa **AzureMLUpdateResource**. | Igen      |
+| linkedServiceName             | Azure Machine Learning társított szolgáltatás, amely a updateResourceEndpoint tulajdonságot tartalmazza. | Igen      |
+| trainedModelName              | A frissítendő webszolgáltatási kísérletben szereplő betanított modell modul neve | Igen      |
+| trainedModelLinkedServiceName | Az Azure Storage társított szolgáltatás neve, amely a frissítési művelettel feltöltött ilearner fájlt tartja | Igen      |
+| trainedModelFilePath          | A trainedModelLinkedService relatív fájljának elérési útja, amely a frissítési művelet által feltöltött ilearner-fájlt jelöli. | Igen      |
 
 ## <a name="end-to-end-workflow"></a>Teljes körű munkafolyamat
 
-Modell és a prediktív webszolgáltatások frissítés átképezési modellezést, a teljes folyamat az alábbi lépésekből áll:
+A végrehajtott teljes folyamata és a prediktív webszolgáltatások frissítése a következő lépésekkel jár:
 
-- Meghívása a **webszolgáltatás képzési** használatával a **kötegelt végrehajtási tevékenység**. Ugyanaz, mint egy ismertetett prediktív webszolgáltatás egy webszolgáltatás képzés Invoking [hozhatók létre prediktív adatcsatornák Azure Machine Learning és a Data Factory kötegelt végrehajtási tevékenység](transform-data-using-machine-learning.md). A képzési webszolgáltatás kimenete egy iLearner-fájlt, amely segítségével a prediktív webszolgáltatás frissítésével.
-- Meghívása a **erőforrás végpontjának frissítése** , a **prediktív webszolgáltatás** használatával a **Update-erőforrástevékenység** a webszolgáltatás újonnan betanított modell frissítésével.
+- Hívja meg a betanítási webszolgáltatást a **Batch végrehajtási tevékenység**használatával. A betanítási webszolgáltatás meghívása ugyanaz, mint a prediktív [folyamatok létrehozása Azure Machine learning és Data Factory batch-végrehajtási tevékenység használatával](transform-data-using-machine-learning.md)című témakörben ismertetett prediktív webszolgáltatás. A betanítási webszolgáltatás kimenete egy iLearner-fájl, amelyet a prediktív webszolgáltatás frissítésére használhat.
+- A **prediktív webszolgáltatás** frissítési **erőforrás** -végpontjának meghívásával frissítse a webszolgáltatást az újonnan betanított modellel a webszolgáltatás **frissítése tevékenységgel** .
 
-## <a name="azure-machine-learning-linked-service"></a>Az Azure Machine Learning-beli társított szolgáltatás
+## <a name="azure-machine-learning-linked-service"></a>Társított szolgáltatás Azure Machine Learning
 
-A fent említett végpontok közötti munkafolyamat működjön két társított Azure Machine Learning-szolgáltatások létrehozásához szüksége:
+A fent említett végpontok közötti munkafolyamat működéséhez két Azure Machine Learning társított szolgáltatást kell létrehoznia:
 
-1. Azure Machine Learning-társított szolgáltatást, a képzési webszolgáltatás, ezt a társított szolgáltatást használják kötegelt végrehajtási tevékenység ugyanúgy, mint a már említettük a [hozhatók létre prediktív adatcsatornák Azure Machine Learning és a Data Factory Batch használatával Végrehajtási tevékenység](transform-data-using-machine-learning.md). A különbség a betanítási webszolgáltatás kimenete egy iLearner-fájlt, amelyet majd Update-erőforrástevékenység a prediktív webszolgáltatás frissítésével.
-2. Az Azure Machine Learning a prediktív webszolgáltatás a frissítés erőforrás-végponthoz társított szolgáltatást. Ezt a társított szolgáltatást használják Update-erőforrástevékenység frissíteni a prediktív webszolgáltatás parancssorai lépés visszaadott iLearner-fájlt használ.
+1. Egy Azure Machine Learning társított szolgáltatás a betanítási webszolgáltatáshoz, ezt a társított szolgáltatást a Batch-végrehajtási tevékenységek ugyanúgy használják, mint a [prediktív folyamatok létrehozása Azure Machine learning és Data Factory kötegelt végrehajtás használatával. tevékenység](transform-data-using-machine-learning.md). Különbség a betanítási webszolgáltatás kimenete egy olyan iLearner-fájl, amelyet a rendszer a prediktív webszolgáltatás frissítéséhez használ a frissítési erőforrás tevékenységgel.
+2. Egy Azure Machine Learning társított szolgáltatás a prediktív webszolgáltatás frissítési erőforrás-végpontján. Ez a társított szolgáltatás az erőforrás frissítése tevékenység használatával frissíti a prediktív webszolgáltatást a fenti lépésből visszaadott iLearner-fájllal.
 
-A második társított Azure Machine Learning szolgáltatás a konfiguráció eltér az Azure Machine Learning Web Service klasszikus webszolgáltatást, vagy egy új webszolgáltatás esetén. A különbségek külön-külön az alábbi szakaszok ismertetik.
+A második Azure Machine Learning társított szolgáltatás esetében a konfiguráció eltérő, ha a Azure Machine Learning webszolgáltatása egy klasszikus webszolgáltatás vagy egy új webszolgáltatás. A különbségeket az alábbi szakaszokban külön tárgyaljuk.
 
-## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Webszolgáltatás az új Azure Resource Manager webszolgáltatás
+## <a name="web-service-is-new-azure-resource-manager-web-service"></a>A webszolgáltatás új Azure Resource Manager webszolgáltatás
 
-Ha a webszolgáltatás, amely egy Azure Resource Manager-végpontot tesz közzé az új típusú, nem kell hozzáadnia a második **nem alapértelmezett** végpont. A **updateResourceEndpoint** formátum van a hivatkozott szolgáltatásban található:
+Ha a webszolgáltatás az új típusú webszolgáltatás, amely egy Azure Resource Manager-végpontot tesz elérhetővé, nem kell hozzáadnia a második **nem alapértelmezett** végpontot. A társított szolgáltatás **updateResourceEndpoint** formátuma:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview
 ```
 
-Kérheti értékek helyen jogosultak az URL-cím számára a webszolgáltatás a lekérdezésekor a [Azure Machine Learning Web Services portálon](https://services.azureml.net/).
+A webszolgáltatások Azure Machine Learning webszolgáltatások [portálján](https://services.azureml.net/)található webszolgáltatás lekérdezése során az URL-címekre vonatkozó értékeket is lekérheti.
 
-Az új típusú frissítési erőforrás végpontjának szolgáltatás egyszerű hitelesítés szükséges. Használja az egyszerű szolgáltatásnév hitelesítése, egy alkalmazás entitás regisztrálása az Azure Active Directory (Azure AD), és adja meg azt a **közreműködői** vagy **tulajdonosa** szerepkört az előfizetés vagy az erőforrás-csoport helyét a web service tartozik. A részletek [egyszerű szolgáltatás létrehozása és kezelése az Azure-erőforrás engedélyek hozzárendelése](../active-directory/develop/howto-create-service-principal-portal.md). Jegyezze fel a következő értékeket, mert a társított szolgáltatás definiálásához használja:
+Az új típusú frissítési erőforrás-végponthoz egyszerű szolgáltatásnév-hitelesítés szükséges. Az egyszerű szolgáltatás hitelesítésének használatához regisztráljon egy alkalmazás-entitást Azure Active Directory (Azure AD-ben), és adja meg az előfizetés **közreműködői** vagy **tulajdonosi** szerepkörét, vagy azt az erőforráscsoportot, amelyben a webszolgáltatás a webszolgáltatáshoz tartozik. Lásd: [egyszerű szolgáltatásnév létrehozása és engedélyek](../active-directory/develop/howto-create-service-principal-portal.md)kiosztása az Azure-erőforrások kezeléséhez. Jegyezze fel a következő értékeket, mert a társított szolgáltatás definiálásához használja:
 
 - Alkalmazásazonosító
 - Alkalmazáskulcs
 - Bérlőazonosító
 
-Itt látható egy minta a társított szolgáltatás definíciójában:
+Itt látható egy példa társított szolgáltatás definíciója:
 
 ```json
 {
@@ -125,20 +124,20 @@ Itt látható egy minta a társított szolgáltatás definíciójában:
 }
 ```
 
-A következő esetben további részletekkel. Rendelkezik egy példa átképezési és frissítése az Azure Machine Learning studio-modellek az Azure Data Factory-folyamatot.
+A következő forgatókönyv további részleteket tartalmaz. A Azure Machine Learning Studio-modellek átképzésére és frissítésére például egy Azure Data Factory folyamatból.
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Minta: Átképezési és a egy Azure Machine Learning-modellek
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Minta: Azure Machine Learning modell átképzése és frissítése
 
-Ez a szakasz egy minta folyamatát, amely tartalmazza a **Batch Execution-tevékenység az Azure Machine Learning studio** a modellek újratanítása. A folyamatot is alkalmaz a **Azure Machine Learning studio Update-erőforrástevékenység** az pontozási webszolgáltatás a modell frissítése. A szakasz is biztosít JSON-kódrészletek a társított szolgáltatások, adatkészletek és a példában található folyamat.
+Ez a szakasz egy minta folyamatot biztosít, amely a **Azure Machine learning Studio batch végrehajtási tevékenységét** használja a modell újratanításához. A folyamat a **Azure Machine learning Studio Update erőforrás** -tevékenységgel is frissíti a modellt a pontozási webszolgáltatás szolgáltatásban. A szakasz a példában szereplő társított szolgáltatások, adatkészletek és folyamatok JSON-kódrészleteit is tartalmazza.
 
-### <a name="azure-blob-storage-linked-service"></a>Az Azure Blob storage-beli társított szolgáltatást:
-Az Azure Storage tárolja, a következő adatokat:
+### <a name="azure-blob-storage-linked-service"></a>Azure Blob Storage társított szolgáltatás:
+Az Azure Storage a következő adatkészleteket tartalmazza:
 
-* betanítási adatok. Az Azure Machine Learning studio webszolgáltatás képzési bemeneti adatait.
-* iLearner-fájlt. Az Azure Machine Learning studio webszolgáltatás képzési kimenete. Ez a fájl is a bemeneti az Update-erőforrástevékenység.
+* betanítási adatgyűjtés. A Azure Machine Learning Studio betanítási webszolgáltatás bemeneti adata.
+* iLearner-fájl. A Azure Machine Learning Studio Training web szolgáltatás kimenete. Ez a fájl a frissítési erőforrás tevékenységének bemenete is.
 
-Itt látható a minta a társított szolgáltatás JSON-definíciót:
+Itt látható a társított szolgáltatás JSON-definíciója:
 
 ```JSON
 {
@@ -152,8 +151,8 @@ Itt látható a minta a társított szolgáltatás JSON-definíciót:
 }
 ```
 
-### <a name="linked-service-for-azure-machine-learning-studio-training-endpoint"></a>Az Azure Machine Learning studio képzési végponthoz társított szolgáltatás
-A következő JSON-kódrészlet definiál egy társított Azure Machine Learning szolgáltatás, amely az alapértelmezett végpont az képzési webszolgáltatás mutat.
+### <a name="linked-service-for-azure-machine-learning-studio-training-endpoint"></a>Társított szolgáltatás a Azure Machine Learning Studio betanítási végpontja számára
+A következő JSON-kódrészlet definiál egy Azure Machine Learning társított szolgáltatást, amely a betanítási webszolgáltatás alapértelmezett végpontját mutat.
 
 ```JSON
 {
@@ -168,16 +167,16 @@ A következő JSON-kódrészlet definiál egy társított Azure Machine Learning
 }
 ```
 
-A **Azure Machine Learning studio**, tegye a következőket használatával lekérjük az értékeket a **mlEndpoint** és **apikey tulajdonsággal végzett tesztelése**:
+A **Azure Machine learning Studióban**tegye a következőket a **MlEndpoint** és a **apiKey**értékének beolvasásához:
 
-1. Kattintson a **WEBSZOLGÁLTATÁSOK** a bal oldali menüben.
-2. Kattintson a **webszolgáltatás képzési** webes szolgáltatások listájában.
-3. Kattintson a Tovább gombra másolási **API-kulcs** szövegmezőben. Illessze be a vágólapra a kulcsot a Data Factory JSON-szerkesztőt.
-4. Az a **Azure Machine Learning studio**, kattintson a **KÖTEGELT végrehajtási** hivatkozásra.
-5. Másolás a **Request URI** a a **kérelem** szakaszt, és illessze be a Data Factory JSON-szerkesztőt.
+1. A bal oldali menüben kattintson a **Web Services** elemre.
+2. A webszolgáltatások listájában kattintson a betanítási **webszolgáltatás** elemre.
+3. Kattintson az API- **kulcs** szövegmező melletti Másolás lehetőségre. Illessze be a vágólapra a kulcsot a Data Factory JSON-szerkesztőbe.
+4. A **Azure Machine learning Studióban**kattintson a **Batch-végrehajtási** hivatkozás elemre.
+5. Másolja a kérési **URI** -t a **kérelem** szakaszból, és ILLESSZE be a Data Factory JSON-szerkesztőbe.
 
-### <a name="linked-service-for-azure-machine-learning-studio-updatable-scoring-endpoint"></a>Társított szolgáltatás az Azure Machine Learning studio frissíthető pontozási végpontjához:
-A következő JSON-kódrészlet definiál egy társított Azure Machine Learning szolgáltatás, amely a pontozási webszolgáltatás frissíthető végpontra mutat.
+### <a name="linked-service-for-azure-machine-learning-studio-updatable-scoring-endpoint"></a>Társított szolgáltatás Azure Machine Learning Studio frissíthető pontozási végponthoz:
+A következő JSON-kódrészlet egy Azure Machine Learning társított szolgáltatást határoz meg, amely a pontozási webszolgáltatás frissíthető végpontján mutat.
 
 ```JSON
 {
@@ -197,7 +196,7 @@ A következő JSON-kódrészlet definiál egy társított Azure Machine Learning
 ```
 
 ### <a name="pipeline"></a>Folyamat
-A folyamat két tevékenységet tartalmaz: **AzureMLBatchExecution** és **AzureMLUpdateResource**. A kötegelt végrehajtási tevékenység bemeneteként a betanítási adatok vesz igénybe, és állít elő kimenetként egy iLearner-fájlt. A frissítés erőforrástevékenység majd vesz igénybe a iLearner-fájlt, és ezzel a prediktív webszolgáltatás frissítésével.
+A folyamat két tevékenységgel rendelkezik: **AzureMLBatchExecution** és **AzureMLUpdateResource**. A kötegelt végrehajtási tevékenység bemenetként veszi át a betanítási adatokat, és kimenetként létrehoz egy iLearner-fájlt. Ezután az erőforrás frissítése tevékenység elvégzi ezt a iLearner-fájlt, és ezzel frissíti a prediktív webszolgáltatást.
 
 ```JSON
 {
@@ -268,13 +267,13 @@ A folyamat két tevékenységet tartalmaz: **AzureMLBatchExecution** és **Azure
 }
 ```
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő cikkek, amelyek bemutatják, hogyan alakíthat át adatokat, egyéb módon:
+A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást:
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)
-* [Hive-tevékenység](transform-data-using-hadoop-hive.md)
+* [Struktúra tevékenysége](transform-data-using-hadoop-hive.md)
 * [Pig-tevékenység](transform-data-using-hadoop-pig.md)
-* [MapReduce-tevékenység](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop Streamelési tevékenységben](transform-data-using-hadoop-streaming.md)
+* [MapReduce tevékenység](transform-data-using-hadoop-map-reduce.md)
+* [Hadoop streaming-tevékenység](transform-data-using-hadoop-streaming.md)
 * [Spark-tevékenység](transform-data-using-spark.md)
 * [.NET egyéni tevékenység](transform-data-using-dotnet-custom-activity.md)
 * [Tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)

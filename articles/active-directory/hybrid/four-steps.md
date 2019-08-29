@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4eb5b4c634fe495a0ed149016d862defc2eb45
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532444"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124928"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Négy lépés egy erős identitás-alaprendszer számára a Azure Active Directory
 
@@ -71,7 +71,7 @@ Az Azure AD Application Proxy a következő előnyöket kínálja:
 
 * Az Azure AD kiterjesztése helyszíni erőforrásokra
   * Felhőbeli biztonság és védelem
-  * Olyan funkciók, mint a feltételes hozzáférés és a többtényezős hitelesítés, amelyek könnyen engedélyezhetők
+  * Olyan funkciók, mint a feltételes hozzáférés és a könnyen engedélyezhető Multi-Factor Authentication
 * A peremhálózaton nem található összetevők, például a VPN és a hagyományos fordított proxy megoldások
 * Nincs szükség bejövő kapcsolatra
 * Egyszeri bejelentkezés (SSO) a felhőben és a helyszínen lévő eszközök, erőforrások és alkalmazások között
@@ -141,7 +141,7 @@ Alapértelmezés szerint az Azure AD feloldja a fiókokat, amikor a jelszó-viss
 
 Az Azure olyan jelentéseket biztosít, amelyeket Ön és a szervezete is használhat, hogy a felhasználók az MFA és a SSPR számára legyenek regisztrálva. Előfordulhat, hogy a regisztráció során még nem regisztrált felhasználókat be kell tanítani a folyamatba.
 
-Az MFA [-bejelentkezésekről szóló jelentés](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) az MFA-használattal kapcsolatos információkat tartalmaz, és betekintést nyújt arról, hogyan működik az MFA a szervezetben. A bejelentkezési tevékenységhez (és a naplózási és kockázati eseményekhez) való hozzáférés elengedhetetlen a hibaelhárításhoz, a használati elemzésekhez és a kriminalisztikai vizsgálatokhoz.
+Az MFA [-bejelentkezésekről szóló jelentés](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) az MFA-használattal kapcsolatos információkat tartalmaz, és betekintést nyújt arról, hogyan működik az MFA a szervezetben. Az Azure AD-hez való bejelentkezési tevékenységhez (és az auditálásokhoz és a kockázati észlelésekhez) való hozzáférés elengedhetetlen a hibaelhárításhoz, a használati elemzésekhez és a kriminalisztikai vizsgálatokhoz.
 
 Hasonlóképpen, az [önkiszolgáló jelszó-kezelési jelentés](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) használatával meghatározhatja, hogy ki (vagy nem) regisztrált a SSPR.
 

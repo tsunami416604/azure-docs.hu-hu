@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc02b8b5dccbec106e90430fc1714253df6ad847
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: e30f8264870272fc12dcb7e15b37e5fd30688bcb
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334016"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126529"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection GYIK
 
 Ez a cikk a Azure Active Directory (Azure AD) Identity Protection szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza. További információ: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md). 
 
-## <a name="why-do-some-risk-events-have-closed-system-status"></a>Miért van bizonyos kockázati események "lezárt (System)" állapotban?
+## <a name="why-do-some-risk-detections-have-closed-system-status"></a>Miért van bizonyos kockázati észlelések "lezárt (System)" állapotban?
 
-**V:** Ezeket a kockázati eseményeket az Identity Protection észlelte, és később bezárták, mert az események már nem tekinthetők kockázatnak. Ezek az események nem számítanak bele a felhasználó kockázati szintjébe. 
+**V:** Ezeket a kockázati észleléseket az Identity Protection észlelte, és később bezárták, mert az események már nem tekinthetők kockázatnak. Ezek az események nem számítanak bele a felhasználó kockázati szintjébe. 
 
 ---
 

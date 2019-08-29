@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 889158aeb40cfcbc69291845acfee833af0930b6
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114299"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147901"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Gépi tanulási modell üzembe helyezése Azure App Service (előzetes verzió)
 
@@ -265,8 +265,8 @@ print(response.json())
 
 ## <a name="next-steps"></a>További lépések
 
-* A webalkalmazás konfigurálásával kapcsolatos további információkért tekintse [meg a Linux](/azure/app-service/containers/) -dokumentáció app Serviceát.
-* A skálázással kapcsolatos további információkért lásd: [az automatikus skálázás első lépései az Azure-ban](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
-* Az SSL-támogatással kapcsolatos további információkért lásd: [SSL-tanúsítvány használata a Azure app Serviceban](/azure/app-service/app-service-web-ssl-cert-load).
-* A hitelesítéssel kapcsolatos további információkért lásd: [a app Service alkalmazás konfigurálása Azure Active Directory bejelentkezés használatára](/azure/app-service/configure-authentication-provider-aad).
+* Megtudhatja, hogyan konfigurálhatja a webalkalmazást a Linux dokumentációjának [app Service](/azure/app-service/containers/) .
+* További információ az automatikus skálázás az [Azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)-ban való használatáról.
+* [Használjon SSL-tanúsítványt a Azure app Service](/azure/app-service/app-service-web-ssl-cert-load).
+* [Konfigurálja a app Service alkalmazást Azure Active Directory bejelentkezés használatára](/azure/app-service/configure-authentication-provider-aad).
 * [Webszolgáltatásként üzembe helyezett gépi Tanulási modell felhasználása](how-to-consume-web-service.md)

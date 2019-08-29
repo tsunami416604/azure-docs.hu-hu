@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6d82b353f8b485b4441853b7ff8e70e7d69f4d6a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5d618f12b2a83b0aee145470aff900e26241b705
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986986"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147279"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>A IoT Edge eszközök, modulok és alárendelt eszközök kibővített offline képességeinek megismerése
 
@@ -174,7 +174,7 @@ A helyi tárolót közvetlenül a telepítési jegyzékben is konfigurálhatja. 
             "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
             "createOptions": {
                 "HostConfig": {
-                    "Binds":["<HostStoragePath>:<ModuleStoragePath"],
+                    "Binds":["<HostStoragePath>:<ModuleStoragePath>"],
                     "PortBindings":{"5671/tcp":[{"HostPort":"5671"}],"8883/tcp":[{"HostPort":"8883"}],"443/tcp":[{"HostPort":"443"}]}}}
         },
         "type": "docker",

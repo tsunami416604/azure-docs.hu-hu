@@ -1,20 +1,20 @@
 ---
-title: Egy Azure Data Explorer fürt és adatbázis létrehozása a Python használatával
-description: Megtudhatja, hogyan hozhat létre Azure Data Explorer fürt és adatbázis Python használatával.
+title: Azure Adatkezelő-fürt és-adatbázis létrehozása a Python használatával
+description: Ismerje meg, hogyan hozhat létre Azure Adatkezelő-fürtöt és-adatbázist a Python használatával.
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: caac53aec08e234f320ee4278a5a58bbc62bff68
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3f58e596db26c04a8f3be4f87eb129fadf5e328
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66494574"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141737"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Egy Azure Data Explorer fürt és adatbázis létrehozása a Python használatával
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Azure Adatkezelő-fürt és-adatbázis létrehozása a Python használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](create-cluster-database-portal.md)
@@ -24,7 +24,7 @@ ms.locfileid: "66494574"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a cikkben létrehozhat egy fürtöt, és a egy adatbázis Python használatával.
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. Ebben a cikkben egy fürtöt és egy adatbázist hoz létre a Python használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,15 +32,15 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="install-python-package"></a>Python-csomag telepítése
 
-Python-csomag telepítése az Azure Data Explorer (Kusto), nyissa meg egy parancssort, amelynek az elérési út Python. Futtassa ezt a parancsot:
+Az Azure Adatkezelő (Kusto) Python-csomagjának telepítéséhez nyisson meg egy parancssort, amely a Python elérési útját is tartalmazni fogja. Futtassa ezt a parancsot:
 
 ```
 pip install azure-mgmt-kusto
 ```
 
-## <a name="create-the-azure-data-explorer-cluster"></a>Az Azure Data Explorer-fürt létrehozása
+## <a name="create-the-azure-data-explorer-cluster"></a>Az Azure Adatkezelő-fürt létrehozása
 
-1. A fürt létrehozásához a következő paranccsal:
+1. Hozza létre a fürtöt a következő parancs használatával:
 
     ```Python
     from azure.mgmt.kusto.kusto_management_client import KustoManagementClient
@@ -65,25 +65,25 @@ pip install azure-mgmt-kusto
 
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
    |---|---|---|
-   | cluster_name | *mykustocluster* | A fürt kívánt nevét.|
-   | sku | *D13_v2* | A Termékváltozat a fürthöz használt. |
-   | resource_group_name | *testrg* | Az erőforrás csoport neve, ahol a fürt létrejön. |
+   | cluster_name | *mykustocluster* | A fürt kívánt neve.|
+   | sku | *D13_v2* | A fürthöz használni kívánt SKU. |
+   | resource_group_name | *testrg* | Az erőforráscsoport neve, amelyben a fürt létre lesz hozva. |
 
-    Nincsenek további nem kötelező paraméterek, amelyet használhat, például a fürt kapacitásának.
+    További választható paramétereket is használhat, például a fürt kapacitását.
     
-1. Állítsa be [ *a hitelesítő adatok*](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python)
+1. [ *Hitelesítő adatok* beállítása](/azure/python/python-sdk-azure-authenticate)
 
-1. A következő paranccsal ellenőrizze, hogy a fürt létrehozása sikeresen megtörtént:
+1. A következő parancs futtatásával győződjön meg arról, hogy a fürt létrehozása sikeres volt-e:
 
     ```Python
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
     ```
 
-Ha az eredmény tartalmazza `provisioningState` együtt a `Succeeded` érték, akkor a fürt sikeresen létrejött.
+Ha az eredmény tartalmazza `provisioningState` az `Succeeded` értéket, a fürt létrehozása sikeresen megtörtént.
 
-## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Az adatbázis létrehozása az Azure Data Explorer fürtben
+## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Az adatbázis létrehozása az Azure Adatkezelő-fürtben
 
-1. Az adatbázis létrehozása a következő paranccsal:
+1. Hozza létre az adatbázist a következő parancs használatával:
 
     ```Python
     from azure.mgmt.kusto.models import Database
@@ -103,24 +103,24 @@ Ha az eredmény tartalmazza `provisioningState` együtt a `Succeeded` érték, a
 
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
    |---|---|---|
-   | cluster_name | *mykustocluster* | A fürt, ahol létrejön az adatbázis neve.|
+   | cluster_name | *mykustocluster* | Annak a fürtnek a neve, ahová az adatbázist létre kívánja hozni.|
    | database_name | *mykustodatabase* | Az adatbázis neve.|
-   | resource_group_name | *testrg* | Az erőforrás csoport neve, ahol a fürt létrejön. |
-   | soft_delete_period | *3650 nap 0:00:00* | Mennyi ideig megtartott adatok lekérdezhetők. |
-   | hot_cache_period | *3650 nap 0:00:00* | Mennyi ideig megtartott adatok a gyorsítótárban. |
+   | resource_group_name | *testrg* | Az erőforráscsoport neve, amelyben a fürt létre lesz hozva. |
+   | soft_delete_period | *3650 nap, 0:00:00* | Az az időtartam, ameddig az adat a lekérdezés számára elérhető marad. |
+   | hot_cache_period | *3650 nap, 0:00:00* | Az az időtartam, ameddig az adat a gyorsítótárban lesz tárolva. |
 
-1. A következő paranccsal tekintse meg az Ön által létrehozott adatbázist:
+1. Futtassa a következő parancsot a létrehozott adatbázis megtekintéséhez:
 
     ```Python
     database_operations.get(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName)
     ```
 
-Most már egy fürt és a egy adatbázist.
+Most már rendelkezik egy fürttel és egy adatbázissal.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-* Ha azt tervezi, hajtsa végre a más cikkeket, megtarthatja a létrehozott erőforrásokat.
-* Erőforrások törléséhez törölje a fürtöt. Ha töröl egy fürtöt, benne az adatbázisokat is törli. A következő paranccsal törölje a fürtöt:
+* Ha azt tervezi, hogy követi a többi cikket, tartsa meg a létrehozott erőforrásokat.
+* Az erőforrások törléséhez törölje a fürtöt. Ha töröl egy fürtöt, az az összes adatbázisát is törli. A fürt törléséhez használja a következő parancsot:
 
     ```Python
     cluster_operations.delete(resource_group_name = resource_group_name, cluster_name = clusterName)
@@ -128,4 +128,4 @@ Most már egy fürt és a egy adatbázist.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Data Explorer Python-kódtár használata az adatok betöltése](python-ingest-data.md)
+* [Adatbevitel az Azure Adatkezelő Python Library használatával](python-ingest-data.md)

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 7ed81375912613995d573b110607e7913adfd10f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 21da8dce7a77a086381bd21dc0129b614fa65ad3
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051661"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138411"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Oktatóanyag: Ismerkedés az első ML-kísérlet létrehozásával
 
@@ -71,7 +71,7 @@ A virtuális gép futása után a **notebook virtuális gépek** szakasz haszná
 1. A Jupyter notebook weboldalán a legfelső mappanév a felhasználónevét adja meg.  Válassza ki ezt a mappát.
 
     > [!TIP]
-    > Ez a mappa a saját munkaterületén található [Storage](concept-workspace.md#resources) -tárolóban, és nem a notebook virtuális gépen van.  Törölheti a notebook virtuális gépet, és továbbra is megőrizheti a munkáját.  Amikor később hoz létre egy új jegyzetfüzet virtuális gépet, a rendszer ezt a mappát fogja betölteni. Ha a munkaterületet másokkal is megosztja, látni fogja a mappát, és látni fogja a sajátját.
+    > Ez a mappa a saját munkaterületén található [Storage](concept-workspace.md#resources) -fiókban, és nem a notebook virtuális gépen van.  Törölheti a notebook virtuális gépet, és továbbra is megőrizheti a munkáját.  Amikor később hoz létre egy új jegyzetfüzet virtuális gépet, a rendszer ezt a mappát fogja betölteni. Ha a munkaterületet másokkal is megosztja, látni fogja a mappát, és látni fogja a sajátját.
 
 1. Nyissa `samples-*` meg az alkönyvtárat, majd nyissa meg a`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
 

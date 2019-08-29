@@ -3,25 +3,23 @@ title: Az első data factory létrehozása (Visual Studio) | Microsoft Docs
 description: Az oktatóanyag során létrehoz egy mintául szolgáló Azure Data Factory-folyamatot a Visual Studio használatával.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 7398c0c9-7a03-4628-94b3-f2aaef4a72c5
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.custom: vs-azure
-ms.tgt_pltfrm: na
 ms.topic: tutorial
+ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: f3c4fc379ac932e66c5d02e08e72ef4d16db638b
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 39b640a64cf93a7a9cbb0565084b238891e880c1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836701"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140552"
 ---
-# <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Oktatóanyag: Adat-előállító létrehozása a Visual Studio használatával
+# <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Oktatóanyag: Adatelőállító létrehozása a Visual Studio használatával
 > [!div class="op_single_selector" title="Tools/SDKs"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
@@ -31,30 +29,30 @@ ms.locfileid: "67836701"
 
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [a rövid útmutató: Hozzon létre egy data factoryt az Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a gyors [útmutató: Hozzon létre egy adatgyárat a Azure Data Factory](../quickstart-create-data-factory-dot-net.md)használatával.
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Azure Data Factoryt a Visual Studióval. Létrehozhat egy Visual Studio projektet a Data Factory projektsablon használatával, definiálhatja a Data Factory entitásokat (társított szolgáltatásokat, adatkészleteket és folyamatot) JSON formátumban, majd közzéteheti/üzembe helyezheti az entitásokat a felhőben. 
 
-Ebben az oktatóanyagban szereplő folyamat egyetlen tevékenységet tartalmaz: **HDInsight Hive-tevékenység**. A tevékenység egy hive-szkriptet futtat egy Azure HDInsight fürtön, amely a bemeneti adatokat átalakítja a kimeneti adatok előállításához. A folyamat úgy van ütemezve, hogy havonta egyszer fusson a megadott kezdő és befejező időpontok közt. 
+Az oktatóanyagban szereplő folyamat egyetlen tevékenységgel rendelkezik: **HDInsight-struktúra tevékenysége**. A tevékenység egy hive-szkriptet futtat egy Azure HDInsight fürtön, amely a bemeneti adatokat átalakítja a kimeneti adatok előállításához. A folyamat úgy van ütemezve, hogy havonta egyszer fusson a megadott kezdő és befejező időpontok közt. 
 
 > [!NOTE]
-> Ez az oktatóanyag nem tartalmazza az adatok Azure Data Factory használatával történő másolásának leírását. Az Azure Data Factory használata adatok másolása oktatóanyagért lásd: [oktatóanyag: Adatok másolása Blob Storage-ból az SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Ez az oktatóanyag nem tartalmazza az adatok Azure Data Factory használatával történő másolásának leírását. Az Azure Data Factory használatával történő adatmásolással kapcsolatos oktatóanyagért lásd [: oktatóanyag: Adatok másolása Blob Storageból SQL Databaseba](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
 > Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További tudnivalókért lásd: [Ütemezés és végrehajtás a Data Factoryban](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
 
-## <a name="walkthrough-create-and-publish-data-factory-entities"></a>Forgatókönyv: Hozzon létre, és a Data Factory-entitások közzététele
+## <a name="walkthrough-create-and-publish-data-factory-entities"></a>Forgatókönyv: Data Factory entitások létrehozása és közzététele
 Az útmutató során a következő lépéseket fogja elvégezni:
 
 1. Két társított szolgáltatás létrehozása: **AzureStorageLinkedService1** és **HDInsightOnDemandLinkedService1**. 
    
     Ebben az oktatóanyagban a hive-tevékenység bemeneti és kimeneti adatai ugyanabban az Azure Blob Storage-tárolóban vannak. A meglévő bemeneti adatokat egy igény szerinti HDInsight-fürt használatával dolgozhatja fel a kimeneti adatok előállításához. Az igény szerinti HDInsight-fürtöt az Azure Data Factory automatikusan hozza létre futásidőben, amikor a bemeneti adatok készen állnak a feldolgozásra. Az adattárakat vagy számítási erőforrásokat társítani kell a data factoryhoz, hogy a Data Factory szolgáltatás futásidőben képes legyen csatlakozni hozzájuk. Ezért az AzureStorageLinkedService1 használatával társíthatja az Azure Storage-fiókját a data factoryhoz, a HDInsightOnDemandLinkedService1 használatával pedig egy igény szerinti HDInsight-fürtöt társíthat. A közzétételkor adja meg a létrehozni kívánt vagy egy meglévő data factory nevét.  
-2. Létrehoz két adatkészletet: **InputDataset** és **OutputDataset**, amelyek az Azure blob storage-ban tárolt bemeneti/kimeneti adatokat képviselik. 
+2. Hozzon létre két adatkészletet: **InputDataset** és **OutputDataset**, amelyek az Azure Blob Storage-ban tárolt bemeneti/kimeneti adatokat jelölik. 
    
     Ezek az adatkészlet-definíciók az előző lépésben létrehozott Azure Storage társított szolgáltatásra vonatkoznak. Az InputDataset adatkészlethez megadja a blobtárolót (adfgetstarted) és a bemeneti adatokkal rendelkező blobot tároló mappát (inputdata). Az OutputDataset adatkészlethez megadja a blobtárolót (adfgetstarted) és a kimeneti adatokat tároló mappát (partitioneddata). Egyéb tulajdonságokat is megad, például a szerkezetet, rendelkezésre állást és a szabályzatot.
 3. Hozzon létre egy folyamatot **MyFirstPipeline** néven. 
   
-    Ebben az útmutatóban a folyamat egyetlen tevékenységet tartalmaz: **HDInsight Hive-tevékenység**. A tevékenység a bemeneti adatokat átalakítja a kimeneti adatok előállításához, amihez egy hive-szkriptet futtat egy igény szerinti HDInsight-fürtön. A hive-tevékenységgel kapcsolatos további információk: [Hive-tevékenység](data-factory-hive-activity.md) 
+    Ebben az útmutatóban a folyamatnak csak egy tevékenysége van: **HDInsight-struktúra tevékenysége**. A tevékenység a bemeneti adatokat átalakítja a kimeneti adatok előállításához, amihez egy hive-szkriptet futtat egy igény szerinti HDInsight-fürtön. A hive-tevékenységgel kapcsolatos további információk: [Hive-tevékenység](data-factory-hive-activity.md) 
 4. Létrehoz egy **DataFactoryUsingVS** nevű data factoryt. Üzembe helyezi a data factoryt és a Data Factory-entitásokat (társított szolgáltatások, táblák és a folyamat).
 5. A közzététel után az Azure Portal paneljei és a Figyelés + felügyelet alkalmazás használatával figyelheti a folyamatot. 
   
@@ -67,7 +65,7 @@ Az útmutató során a következő lépéseket fogja elvégezni:
 3. A számítógépre a következőket kell telepíteni:
    * Visual Studio 2013 vagy Visual Studio 2015
    * Töltse le az Azure SDK-t a Visual Studio 2013-hoz vagy a Visual Studio 2015-höz. Nyissa meg az [Azure letöltési oldalát](https://azure.microsoft.com/downloads/), és kattintson a **VS 2013** vagy a **VS 2015** elemre a **.NET** szakaszban.
-   * Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). A beépülő modul a következő lépések végrehajtásával is frissítheti: Kattintson a menü **eszközök** -> **bővítmények és frissítések** -> **Online** -> **Visual Studio-galéria**  ->  **Microsoft Azure Data Factory Tools for Visual Studio** -> **frissítés**.
+   * Töltse le a legújabb Azure Data Factory beépülő modult a Visual studióhoz: [Vs 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [vs 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). A beépülő modult a következő lépések végrehajtásával is frissítheti: A menüben kattintson a **Tools** -> **Extensions and Updates** -> **online** -> **Visual Studio Gallery** -> **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Frissítés**.
 
 Most hozzunk létre egy Azure data factoryt a Visual Studióval.
 
@@ -81,7 +79,7 @@ Most hozzunk létre egy Azure data factoryt a Visual Studióval.
     ![Megoldáskezelő](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
 ### <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
-Ebben a lépésben két társított szolgáltatást hoz létre: **Az Azure Storage** és **HDInsight igény szerinti**. 
+Ebben a lépésben két társított szolgáltatást hoz létre: **Azure Storage** **-és HDInsight igény szerint**. 
 
 Az Azure Storage társított szolgáltatás a kapcsolódási adatok megadásával társítja Azure Storage-fiókját a data factoryhoz. A Data Factory szolgáltatás a társított szolgáltatás beállításából származó kapcsolati sztringet használja az Azure-tárolóhoz való csatlakozáshoz futásidőben. Ez a tároló tárolja a folyamat bemeneti és kimeneti adatait, valamint a hive-tevékenység által használt hive-szkriptet. 
 
@@ -178,7 +176,7 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
     type | A naplófájlok szövegformátumúak, ezért a TextFormat típust használjuk. |
     columnDelimiter | A naplófájlokban vesszővel (`,`) vannak elválasztva az oszlopok
     frequency/interval | A frequency (gyakoriság) beállítása Month (Hónap), az interval (időköz) beállítása pedig 1, ami azt jelenti, hogy a bemeneti szeletek havonta érhetők el.
-    external | Ez a tulajdonság true (igaz) értékre van állítva, ha a tevékenység bemeneti adatait nem a folyamat hozta létre. Ez a tulajdonság csak a bemeneti adatkészleteken van meghatározva. Az első tevékenység bemeneti adatkészlete esetében mindig állítsa igaz értékre.
+    külső | Ez a tulajdonság true (igaz) értékre van állítva, ha a tevékenység bemeneti adatait nem a folyamat hozta létre. Ez a tulajdonság csak a bemeneti adatkészleteken van meghatározva. Az első tevékenység bemeneti adatkészlete esetében mindig állítsa igaz értékre.
 4. Mentse az **InputDataset.json** fájlt.
 
 #### <a name="create-output-dataset"></a>Kimeneti adatkészlet létrehozása
@@ -216,7 +214,7 @@ Most a kimeneti adatkészletet hozza létre, amely az Azure Blob Storage-tárol�
 4. Mentse az **OutputDataset.json** fájlt.
 
 ### <a name="create-pipeline"></a>Folyamat létrehozása
-Eddig létrehozta az Azure Storage társított szolgáltatást, valamint a bemeneti és kimeneti adatkészleteket. Most létrehozhat egy folyamatot egy **HDInsightHive**-tevékenységgel. A tevékenység **bemenetének** beállítása **AzureBlobInput**, a **kimeneté** pedig **AzureBlobOutput**. Bemeneti adatkészlet egy szelet havonta érhető el (frequency: Hónap, időköz: 1.), és a kimeneti szelet előállítása havonta történik túl. 
+Eddig létrehozta az Azure Storage társított szolgáltatást, valamint a bemeneti és kimeneti adatkészleteket. Most létrehozhat egy folyamatot egy **HDInsightHive**-tevékenységgel. A tevékenység **bemenetének** beállítása **AzureBlobInput**, a **kimeneté** pedig **AzureBlobOutput**. A bemeneti adatkészlet egy szelete havonta elérhető (gyakoriság: Hónap, időköz: 1.) és a kimeneti szelet is havonta jön létre. 
 
 1. A **Solution Explorerben** (Megoldáskezelőben) kattintson a jobb gombbal a **Pipelines** (Folyamatok) elemre, mutasson az **Add** (Hozzáadás) parancsra, és kattintson a **New Item** (Új elem) lehetőségre.
 2. Válassza ki a listából a **Hive Transformation Pipeline** (Hive átalakítási folyamat) lehetőséget, és kattintson az **Add** (Hozzáadás) parancsra.
@@ -325,7 +323,7 @@ Ebben a lépésben a projektben lévő Data Factory-entitásokat (társított sz
 
 Fontos tudnivalók:
 
-- Ha a hibaüzenetet kapja: **Ez az előfizetés nincs regisztrálva a Microsoft.DataFactory névtér**, tegye a következők egyikét, és próbálkozzon újra a közzététellel:
+- Ha a következő hibaüzenetet kapja: **Ez az előfizetés nincs regisztrálva a Microsoft. DataFactory névtér használatára**, hajtsa végre az alábbi műveletek egyikét, majd próbálkozzon újra a közzétételsel:
     - Az Azure PowerShellben futtassa az alábbi parancsot a Data Factory-szolgáltató regisztrálásához.
         ```powershell   
         Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
@@ -347,7 +345,7 @@ Ebben a lépésben a data factory Diagramnézete használatával figyeli a folya
    1. Kattintson a **További szolgáltatások**, majd az **Adat-előállítók** elemre.
        
         ![Data factoryk tallózása](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png)
-   2. Válassza ki az adat-előállító nevét (például: **DataFactoryUsingVS09152016**) a data factoryk listájából.
+   2. Válassza ki az adatgyár nevét (például: **DataFactoryUsingVS09152016**) az adatüzemek listájából.
    
        ![A data factory kiválasztása](./media/data-factory-build-your-first-pipeline-using-vs/select-first-data-factory.png)
 2. A data factory kezdőlapján kattintson a **Diagram** lehetőségre.
@@ -416,7 +414,7 @@ A folyamatok figyeléséhez a Monitor & Manage alkalmazást is használhatja. Az
     
     Ahogy egyre több szelet lesz feldolgozva, egyre több tároló jelenik meg az Azure Blob Storage-tárban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Az Azure Blob Storage-tárból olyan eszközökkel törölheti a tárolókat, mint például a [Microsoft Storage Explorer](https://storageexplorer.com/).
 - Jelenleg a kimeneti adatkészlet vezérli az ütemezést, ezért kimeneti adatkészletet akkor is létre kell hoznia, ha a tevékenység nem állít elő semmilyen kimenetet. Ha a tevékenység nem fogad semmilyen bemenetet, kihagyhatja a bemeneti adatkészlet létrehozását. 
-- Ez az oktatóanyag nem tartalmazza az adatok Azure Data Factory használatával történő másolásának leírását. Az Azure Data Factory használata adatok másolása oktatóanyagért lásd: [oktatóanyag: Adatok másolása Blob Storage-ból az SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+- Ez az oktatóanyag nem tartalmazza az adatok Azure Data Factory használatával történő másolásának leírását. Az Azure Data Factory használatával történő adatmásolással kapcsolatos oktatóanyagért lásd [: oktatóanyag: Adatok másolása Blob Storageból SQL Databaseba](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 
 ## <a name="use-server-explorer-to-view-data-factories"></a>A Kiszolgókezelő használata data factoryk megtekintéséhez
@@ -558,7 +556,7 @@ Az oktatóanyag során létrehozott egy Azure data factoryt, amely egy HDInsight
 4. Létrehozott egy **folyamatot** egy **HDInsight Hive**-tevékenységgel.  
 
 ## <a name="next-steps"></a>További lépések
-Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely Hive-parancsfájlt futtat egy igény szerinti HDInsight-fürtön. A másolási tevékenység adatokat másol egy Azure-Blobból az Azure SQL használatával, olvassa el [oktatóanyag: Adatok másolása Azure blobból Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely Hive-parancsfájlt futtat egy igény szerinti HDInsight-fürtön. A másolási tevékenység használatával az Azure-blobból az Azure SQL-be másolt adatok másolásával [kapcsolatban lásd: oktatóanyag: Adatok másolása Azure-blobból az Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)-be.
 
 Összefűzhet két tevékenységet (vagyis egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. Lásd [a Data Factorybeli ütemezést és végrehajtást](data-factory-scheduling-and-execution.md) ismertető cikket. 
 

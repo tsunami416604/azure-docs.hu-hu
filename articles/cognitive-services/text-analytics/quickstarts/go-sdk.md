@@ -8,14 +8,14 @@ manager: assafi
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 25d8052cda422c185d49c36c5daff9ac4582e66c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1ba2ec6b5c0c59be7b7264f7558fbb393adcc2d8
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880995"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142788"
 ---
 # <a name="quickstart-text-analytics-client-library-for-go"></a>Gyors útmutató: Text Analytics ügyféloldali kódtár a Go-hoz
 
@@ -96,6 +96,8 @@ import (
     "fmt"
     "github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics"
     "github.com/Azure/go-autorest/autorest"
+    "log"
+    "os"    
 )
 ```
 
@@ -113,15 +115,21 @@ func BoolPointer(v bool) *bool {
 }
 ```
 
-A projekt fő függvényében hozzon létre változókat az erőforrás Azure-végpontja és kulcsa számára. Ha a környezeti változót az alkalmazás elindítása után hozta létre, akkor a változó eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a shellt.
+Az alkalmazás `main` függvényében hozzon létre változókat az erőforrás Azure-végpontja és előfizetési kulcsa számára. Szerezze be ezeket az értékeket a környezeti változók TEXT_ANALYTICS_SUBSCRIPTION_KEY és TEXT_ANALYTICS_ENDPOINT. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
 
 [!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
 ```golang
-// This sample assumes you have created an environment variable for your key
-subscriptionKey := os.Getenv("TEXT_ANALYTICS_SUBSCRIPTION_KEY")
-// replace this endpoint with the correct one for your Azure resource. 
-endpoint := "https://eastus.api.cognitive.microsoft.com"
+var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
+if "" == os.Getenv(subscriptionKeyVar) {
+    log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
+}
+var subscriptionKey string = os.Getenv(subscriptionKeyVar)
+var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
+if "" == os.Getenv(endpointVar) {
+    log.Fatal("Please set/export the environment variable " + endpointVar + ".")
+}
+var endpoint string = os.Getenv(endpointVar)
 ```
 
 ## <a name="object-model"></a>Objektummodell 
@@ -174,22 +182,25 @@ func SentimentAnalysis(textAnalyticsclient textanalytics.BaseClient) {
 Ugyanebben a függvényben hívja meg az ügyfél [hangulata ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Sentiment) függvényt, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a hangulat pontszámát. Ha a pontszám közelebb van a 0 értékhez, a negatív érzést jelez, míg az 1. számú pontszám pozitív hangulatot jelez.
 
 ```golang
-result, _ := textAnalyticsclient.Sentiment(ctx, BoolPointer(false), &batchInput)
+result, err := textAnalyticsclient.Sentiment(ctx, BoolPointer(false), &batchInput)
+if err != nil { log.Fatal(err) }
+
 batchResult := textanalytics.SentimentBatchResult{}
 jsonString, _ := json.Marshal(result.Value)
 json.Unmarshal(jsonString, &batchResult)
 
 // Printing sentiment results
 for _,document := range *batchResult.Documents {
-    fmt.Printf("Document ID: %s " , *document.ID)
+    fmt.Printf("Document ID: %s\n", *document.ID)
     fmt.Printf("Sentiment Score: %f\n",*document.Score)
 }
 
 // Printing document errors
-fmt.Println("Document Errors")
+fmt.Println("Document Errors:")
 for _,error := range *batchResult.Errors {
     fmt.Printf("Document ID: %s Message : %s\n" ,*error.ID, *error.Message)
 }
+fmt.Println()
 ```
 
 A projekt fő függvényében hívja `SentimentAnalysis()`meg a t.
@@ -222,7 +233,8 @@ func LanguageDetection(textAnalyticsclient textanalytics.BaseClient) {
 Ugyanebben a függvényben hívja meg az ügyfél [DetectLanguage ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.DetectLanguage) , és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az észlelt nyelvet.
 
 ```golang
-result, _ := textAnalyticsclient.DetectLanguage(ctx, BoolPointer(false), &batchInput)
+result, err := textAnalyticsclient.DetectLanguage(ctx, BoolPointer(false), &batchInput)
+if err != nil { log.Fatal(err) }
 
 // Printing language detection results
 for _,document := range *result.Documents {
@@ -235,10 +247,11 @@ for _,document := range *result.Documents {
 }
 
 // Printing document errors
-fmt.Println("Document Errors")
+fmt.Println("Document Errors:")
 for _,error := range *result.Errors {
     fmt.Printf("Document ID: %s Message : %s\n" ,*error.ID, *error.Message)
 }
+fmt.Println()
 ```
 
 A projekt fő függvényében hívja `LanguageDetection()`meg a t.
@@ -254,7 +267,7 @@ Document ID: 0 Detected Languages with Score: English 1.000000
 Hozzon létre egy nevű `ExtractEntities()` új függvényt, amely a korábban létrehozott ügyfelet veszi fel. Hozza létre az elemezni kívánt dokumentumokat tartalmazó [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) -objektumok listáját. Minden objektum tartalmaz egy `id`, `language`és egy `text` attribútumot. Az `text` attribútum tárolja az elemezni kívánt szöveget, `language` a dokumentum nyelvét, a `id` pedig bármely értéket. 
 
 ```golang
-func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
+func ExtractEntities(textAnalyticsclient textanalytics.BaseClient) {
 
     ctx := context.Background()
     inputDocuments := []textanalytics.MultiLanguageInput {
@@ -262,7 +275,7 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
             Language: StringPointer("en"),
             ID:StringPointer("0"),
             Text:StringPointer("Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."),
-        }
+        },
     }
 
     batchInput := textanalytics.MultiLanguageBatchInput{Documents:&inputDocuments}
@@ -272,7 +285,8 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
 Ugyanebben a függvényben hívja meg az ügyfél [entitásait ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Entities) , és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit és a kinyert entitások pontszámát.
 
 ```golang
-    result, _ := textAnalyticsclient.Entities(ctx, BoolPointer(false), &batchInput)
+    result, err := textAnalyticsclient.Entities(ctx, BoolPointer(false), &batchInput)
+    if err != nil { log.Fatal(err) }
 
     // Printing extracted entities results
     for _,document := range *result.Documents {
@@ -292,10 +306,11 @@ Ugyanebben a függvényben hívja meg az ügyfél [entitásait ()](https://godoc
     }
 
     // Printing document errors
-    fmt.Println("Document Errors")
+    fmt.Println("Document Errors:")
     for _,error := range *result.Errors {
         fmt.Printf("Document ID: %s Message : %s\n" ,*error.ID, *error.Message)
     }
+    fmt.Println()
 ```
 
 A projekt fő függvényében hívja `ExtractEntities()`meg a t.
@@ -345,7 +360,8 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
 Ugyanebben a függvényben hívja meg az ügyfél alkifejezéseit [()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.KeyPhrases) , és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit és a kinyert fő kifejezéseket.
 
 ```golang
-    result, _ := textAnalyticsclient.KeyPhrases(ctx, BoolPointer(false), &batchInput)
+    result, err := textAnalyticsclient.KeyPhrases(ctx, BoolPointer(false), &batchInput)
+    if err != nil { log.Fatal(err) }
 
     // Printing extracted key phrases results
     for _,document := range *result.Documents {
@@ -358,10 +374,11 @@ Ugyanebben a függvényben hívja meg az ügyfél alkifejezéseit [()](https://g
     }
 
     // Printing document errors
-    fmt.Println("Document Errors")
+    fmt.Println("Document Errors:")
     for _,error := range *result.Errors {
         fmt.Printf("Document ID: %s Message : %s\n" ,*error.ID, *error.Message)
     }
+    fmt.Println()
 ```
 
 A projekt fő függvényében hívja `ExtractKeyPhrases()`meg a t.

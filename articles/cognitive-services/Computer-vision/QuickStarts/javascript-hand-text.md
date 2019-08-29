@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 42bb85b5dfab6c9799d89ff92ab5e5b3c0230019
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 36c5eff33c47e62d8b17be7fa4ca05c925f73250
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311995"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137831"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Gyors útmutató: Nyomtatott és kézírásos szöveg kinyerése a Computer Vision REST API és a JavaScript használatával
 
@@ -29,17 +29,14 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait.
+Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti `COMPUTER_VISION_SUBSCRIPTION_KEY` karakterláncához, a nevet és `COMPUTER_VISION_ENDPOINT`a-t.
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
-1. Hajtsa végre a következő módosításokat a kód megfelelő területein:
-    1. Cserélje le a `subscriptionKey` értéket az előfizetői azonosítóra.
-    1. Ha szükséges, cserélje le a Batch-olvasási metódus végponti URL-címét az Azure-régióból, ahol az előfizetési kulcsokat beszerezte. [](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) `uriBase`
-    1. Szükség esetén cserélje le a `value` `inputImage` vezérlő attribútumának értékét egy másik olyan rendszerkép URL-címére, amelyből szöveget szeretne kinyerni.
+1. Szükség esetén cserélje le a `value` `inputImage` vezérlő attribútumának értékét egy másik olyan rendszerkép URL-címére, amelyből szöveget szeretne kinyerni.
 1. Mentse a kódot egy `.html` kiterjesztésű fájlként. Például: `get-text.html`.
 1. Nyisson meg egy böngészőablakot.
 1. A böngészőben húzza a fájlt a böngészőablakba.
@@ -60,19 +57,11 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
         // *** Update or verify the following values. ***
         // **********************************************
 
-        // Replace <Subscription Key> with your valid subscription key.
-        var subscriptionKey = "<Subscription Key>";
-
-        // You must use the same Azure region in your REST API method as you used to
-        // get your subscription keys. For example, if you got your subscription keys
-        // from the West US region, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westcentralus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
-        var uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
+        let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
+        let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
+        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+        
+        var uriBase = endpoint + "vision/v2.0/read/core/asyncBatchAnalyze";
 
         // Display the image.
         var sourceImageUrl = document.getElementById("inputImage").value;

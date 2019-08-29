@@ -1,7 +1,7 @@
 ---
-title: 'Adatok exportálása: Modul-hivatkozás'
+title: 'Az adatexportálás: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használhatja az adatok exportálása modult az Azure Machine Learning szolgáltatás eredmények, a köztes adatok és a működő adatok mentse a kísérletekből felhőalapú tárolási célhely kívül az Azure Machine Learning.
+description: Megtudhatja, hogyan használhatja az adatok exportálása modult a Azure Machine Learning szolgáltatásban az eredmények, a köztes adatok és a munkaadatoknak a kísérletekből a Azure Machine Learningn kívüli Felhőbeli tárolási célhelyekre való mentéséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,75 +9,74 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: c3744803f172edf9fbf2556a12677e8faef370c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4fb539f4c86d27813b60964794fc1f398d3f2a4
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028320"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128761"
 ---
-# <a name="export-data-module"></a>Export Data modul
+# <a name="export-data-module"></a>Adatmodul exportálása
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul használatával eredmények, a köztes adatok és a működő adatok mentse a kísérletekből felhőalapú tárolási célhely kívül az Azure Machine Learning.
+Ezzel a modullal mentheti az eredményeket, a köztes és a munkaadatokat a kísérletekből a Azure Machine Learningon kívüli felhőalapú tárolási célhelyekre.
 
-Ez a modul exportálása vagy mentése folyamatban van az adatok az alábbi felhőbeli szolgáltatások támogatja:
+Ez a modul támogatja a következő felhőalapú adatszolgáltatások exportálását vagy mentését:
 
 
-- **Az Azure Blob Storage-exportálás**: Menti az adatokat a Blob szolgáltatás az Azure-ban. Nyilvánosan megosztott vagy menteni a biztonságos alkalmazás adattárakban lévő adatokat a Blob service-ben.
+- **Exportálás az Azure Blob Storageba**: Az Azure-beli Blob serviceba menti az adatvesztést. A Blob serviceban tárolt adatmennyiség megoszthatók nyilvánosan, vagy menthetők biztonságos alkalmazás-adattárakban.
 
   
-## <a name="how-to-configure-export-data"></a>Adatok exportálása konfigurálása
+## <a name="how-to-configure-export-data"></a>Az exportálási beállítások konfigurálása
 
-1. Adja hozzá a **adatok exportálása** modult a kísérletvászonra a felületen. Ez a modul a annak a **bemeneti és kimeneti** kategória.
+1. Adja hozzá az adatexportálási modult a kísérlethez az illesztőfelületen. Ez a modul a **bemeneti és a kimeneti** kategóriában található.
 
-2. Csatlakozás **adatok exportálása** , a modul a adatait tartalmazó exportálni szeretné.
+2. Az exportálni kívánt adategységeket tartalmazó modulba csatlakoztasson adatexportálást.
 
-3. Kattintson duplán a **adatok exportálása** megnyitásához a **tulajdonságok** ablaktáblán.
+3. Kattintson duplán az adatexportálás elemre a **Tulajdonságok** ablaktábla megnyitásához.
 
-4. A **adat célhelyét**, válassza ki a felhőalapú tárolást, amelyen menteni fogja az adatokat. Ha módosításokat hajt végre ezt a beállítást, az összes többi tulajdonság állnak vissza. Ezért ügyeljen arra, hogy először válassza ezt a lehetőséget!
+4. Az **adatcél**mezőben válassza ki a felhőalapú tárolás típusát, ahová menteni szeretné az adatait. Ha módosítja ezt a beállítást, az összes többi tulajdonság alaphelyzetbe áll. Ügyeljen arra, hogy először ezt a lehetőséget válassza.
 
-5. Adjon meg egy fiók nevét és hitelesítési módszer a megadott tárfiók eléréséhez szükséges.
+5. Adja meg a megadott Storage-fiók eléréséhez szükséges fióknevet és hitelesítési módszert.
 
-    **Az Azure Blob Storage exportálása** az egyetlen lehetőség van a privát előzetes verzióban érhető el. Alábbi bemutatja, hogyan állíthatja be a modult.
-    1. Az Azure blob szolgáltatás nem nagy mennyiségű adatot, beleértve a bináris adatok tárolására. A blob Storage két típusa van: nyilvános blobok és a blobokat, amelyekre a bejelentkezési hitelesítő adatok szükségesek.
+    A privát előzetes verzióban csak az **Azure Blob Storageba való exportálás** lehetséges. Az alábbiakban bemutatjuk, hogyan állíthatja be a modult.
+    1. Az Azure Blob Service nagy mennyiségű, például bináris adatmennyiségű adattárolásra szolgál. A blob Storage két típusa létezik: nyilvános blobok és Blobok, amelyek bejelentkezési hitelesítő adatokat igényelnek.
 
-    2. A **hitelesítési típus**, válassza a **nyilvános (SAS)** Ha tudja, hogy a storage támogatja-e a hozzáférést egy SAS URL-CÍMEN keresztül.
+    2. A **Hitelesítés típusa**beállításnál válassza a **nyilvános (SAS)** lehetőséget, ha tudja, hogy a tároló támogatja az SAS URL-címen keresztüli hozzáférést.
 
-          Egy SAS URL-címet egy olyan speciális típusú URL-címet, amely egy Azure storage-segédprogram használatával hozhat létre, és csak korlátozott ideig áll rendelkezésre.  A hitelesítéshez és a letöltés szükséges összes információt tartalmazza.
+          Az SAS URL-cím olyan speciális URL-cím, amely egy Azure Storage-segédprogrammal hozható létre, és csak korlátozott ideig érhető el.  A hitelesítéshez és a letöltéshez szükséges összes információt tartalmazza.
 
-        A **URI**írja be vagy illessze be a teljes URI-t, amely meghatározza a fiók és a nyilvános blob.
+        **URI**esetén írja be vagy illessze be a fiókot és a nyilvános blobot meghatározó teljes URI-t.
 
-        Fájlformátum a megosztott Fürtkötettel és TSV támogatottak.
+        Fájlformátum esetén a CSV és a TSV formátum támogatott.
 
-    3. Személyes fiókok esetében válassza a **fiók**, és adja meg a fiók nevét és a fiókkulcsot, hogy a kísérlet lehet írni a storage-fiókot.
+    3. Privát fiókok esetében válassza a **fiók**lehetőséget, és adja meg a fiók nevét és a fiók kulcsát, hogy a kísérlet a Storage-fiókba írjon.
 
-         - **Fiók neve**: Írja be vagy illessze be a fiók neve, ahol az adatokat menteni szeretné. Például, ha a tárfiók teljes URL-címe `http://myshared.blob.core.windows.net`, írja be `myshared`.
+         - **Fiók neve**: Írja be vagy illessze be annak a fióknak a nevét, ahová menteni kívánja az adatgyűjtést. Ha például a Storage-fiók `http://myshared.blob.core.windows.net`teljes URL-címe, akkor gépelje be `myshared`a következőt:.
 
-        - **Fiókkulcs**: Illessze be a tárelérési kulcs, amely a fiókhoz van hozzárendelve.
+        - **Fiók kulcsa**: Illessze be a fiókhoz társított Storage-elérési kulcsot.
 
-        -  **Tároló, a könyvtár vagy a blob elérési útja**: Adja meg az exportált adatok tárolására szolgáló BLOB nevét. Például mentse az eredményeket a kísérlet egy új blob nevű **results01.csv** a tárolóban **előrejelzéseket** nevű fiókban **mymldata**, teljes URL-CÍMÉT a BLOB lenne `http://mymldata.blob.core.windows.net/predictions/results01.csv`.
+        -  **Tároló, könyvtár vagy blob elérési útja**: Írja be annak a blobnak a nevét, ahová az exportált adatmennyiséget tárolni kívánja. Ha például egy **results01. csv** nevű új blobba szeretné menteni a kísérlet eredményét egy **mymldata**nevű fiókban , a blob teljes URL-címe a következő lesz `http://mymldata.blob.core.windows.net/predictions/results01.csv`:.
 
-            Ezért a mezőben **tároló, a könyvtár vagy a blob elérési útja**, kell megadni a tároló és blobnév, a következő: `predictions/results01.csv`
+            Ezért a **tároló, könyvtár vagy blob mező elérési útján**a következő módon kell megadnia a tárolót és a blob nevét:`predictions/results01.csv`
 
-        - Ha a nevet, egy blobot, amely még nem létezik, az Azure létrehozza a blobot, az Ön számára.
+        - Ha olyan blob nevét adja meg, amely még nem létezik, az Azure létrehozza a blobot.
 
-       -  Meglévő blobokhoz írásakor is megadhat, hogy a blob tartalmának aktuális felül a tulajdonság beállítása **az Azure blob-tároló írási mód**. Alapértelmezés szerint ez a tulajdonság értéke **hiba**, ami azt jelenti, hogy hiba akkor következik be, amikor az azonos nevű meglévő blob fájl található.
+       -  Egy meglévő blobba való íráskor megadhatja, hogy felülírja-e a blob aktuális tartalmát a tulajdonság, az **Azure Blob Storage írási mód**beállításával. Alapértelmezés szerint ez a tulajdonság a **hiba**értékre van állítva, ami azt jelenti, hogy hiba jön létre, amikor egy azonos nevű meglévő blob-fájl található.
 
 
-    4. A **blobfájlra fájlformátum**, válassza ki a formátumot, ahol adatokat kell tárolni.
+    4. A **blob**fájl formátuma beállításnál válassza ki azt a formátumot, amelyben az adattárolást tárolni szeretné.
 
-        - **CSV**: Vesszővel tagolt (CSV) a rendszer az alapértelmezett tárolási formátum. Oszlopfejlécek az adatokkal együtt exportálja, jelölje be a jelölőnégyzetet, **írási blob fejlécsor**.  A vesszővel tagolt formátumú használja az Azure Machine Learning kapcsolatos további információkért lásd: [átalakítás fürt megosztott Kötetévé](./convert-to-csv.md).
+        - **CSV**: A vesszővel tagolt értékek (CSV) az alapértelmezett tárolási formátum. Ha az oszlop fejléceit az adatsorokkal együtt szeretné exportálni, válassza ki a beállítást, majd írja be a **blob fejlécét**.  A Azure Machine Learningben használt vesszővel tagolt formátummal kapcsolatos további információkért lásd: [Konvertálás CSV](./convert-to-csv.md)-re.
 
-        - **TSV**: Tabulátorral tagolt értékeket (TSV) formátuma kompatibilis számos machine learning-eszközökkel. Oszlopfejlécek az adatokkal együtt exportálja, jelölje be a jelölőnégyzetet, **írási blob fejlécsor**.  
+        - **TSV**: A tabulátorral tagolt értékek (TSV) formátuma számos gépi tanulási eszközzel kompatibilis. Ha az oszlop fejléceit az adatsorokkal együtt szeretné exportálni, válassza ki a beállítást, majd írja be a **blob fejlécét**.  
 
  
-    5. **Gyorsítótárazott eredményeket használja**: Akkor válassza ezt a beállítást, ha el szeretné kerülni az eredményeket a blobfájlba újraírását minden alkalommal, amikor a kísérlet futtatásához. Ha nem változtak más modul paraméterekhez, a kísérlet ír az eredmények csak az első alkalommal fut, a modul, vagy az adatok változásakor.
+    5. **Gyorsítótárazott eredmények használata**: Akkor válassza ezt a lehetőséget, ha el szeretné kerülni az eredmények a blob-fájlba való újraírását minden alkalommal, amikor futtatja a kísérletet. Ha a modul paramétereinek nincsenek más módosításai, a kísérlet csak a modul első futtatásakor, vagy az adatok módosításakor írja az eredményeket.
 
     6. Futtassa a kísérletet.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

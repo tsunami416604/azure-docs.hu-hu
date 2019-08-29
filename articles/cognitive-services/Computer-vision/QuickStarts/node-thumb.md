@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Miniatűrkép - REST, Node.js generálása'
+title: 'Gyors útmutató: Miniatűr létrehozása – REST, Node. js'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban miniatűrt hozhat létre egy képből a Computer Vision API és Node.js használatával.
 services: cognitive-services
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ca161952cb909a0902e0a441fcdead8ba896982f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8307b572eb73a96c23f3327cbda4ad2ac3126acc
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605836"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137722"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-nodejs"></a>Gyors útmutató: A Computer Vision REST API és a Node.js használatával miniatűrkép generálása
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-nodejs"></a>Gyors útmutató: Miniatűr létrehozása a Computer Vision REST API és a Node. js használatával
 
-Ebben a rövid útmutatóban miniatűrt hozhat létre egy képből a Computer Vision REST API-jának segítségével. A [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) metódussal létrehozhatja egy kép miniatűrjét. Megadhatja a magasságát és a szélességét, amely eltérhet a bemeneti kép oldalarányától. Computer Vision segítségével intelligens vágása nyelvelemző, mind a terület hasznos helyek azonosításához, és hozzon létre körbevágási koordinátái alapján az adott régióban.
+Ebben a rövid útmutatóban miniatűrt hozhat létre egy képből a Computer Vision REST API-jának segítségével. A [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) metódussal létrehozhatja egy kép miniatűrjét. Megadhatja a magasságát és a szélességét, amely eltérhet a bemeneti kép oldalarányától. A Computer Vision az intelligens vágás használatával intelligens módon azonosítja a fontos területet, és az adott régió alapján készíti el a levágási koordinátákat.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 - A [Node.js](https://nodejs.org) 4.x-es vagy újabb verziójával kell rendelkeznie.
 - Rendelkeznie kell az [npm-mel](https://www.npmjs.com/).
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Megjelenik a származó ingyenes próbaverziós kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) előfizetni a Computer Vision, és a kulcs beszerzése.
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti `COMPUTER_VISION_SUBSCRIPTION_KEY` karakterláncához, a nevet és `COMPUTER_VISION_ENDPOINT`a-t.
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
@@ -45,10 +45,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
    1. A csomag sikeres telepítése után zárja be a parancssori ablakot.
 
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
-1. Hajtsa végre a következő módosításokat a kód megfelelő területein:
-    1. Cserélje le a `subscriptionKey` értéket az előfizetői azonosítóra.
-    1. Ha szükséges, cserélje le az `uriBase` értéket azon Azure-régió [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
-    1. Ha szeretné, cserélje le az `imageUrl` értéket egy másik elemzendő kép URL-címére.
+1. Ha szeretné, cserélje le az `imageUrl` értéket egy olyan kép URL-címére, amelyet elemezni szeretne.
 1. Mentse a kódot fájlként `.js` kiterjesztéssel. Például: `get-thumbnail.js`.
 1. Nyisson meg egy parancsablakot.
 1. Amikor a rendszer kéri, a `node` paranccsal futtassa a fájlt. Például: `node get-thumbnail.js`.
@@ -58,14 +55,11 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 
 const request = require('request');
 
-// Replace <Subscription Key> with your valid subscription key.
-const subscriptionKey = '<Subscription Key>';
+let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
+let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
+if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
 
-// You must use the same location in your REST call as you used to get your
-// subscription keys. For example, if you got your subscription keys from
-// westus, replace "westcentralus" in the URL below with "westus".
-const uriBase =
-    'https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail';
+var uriBase = endpoint + 'vision/v2.0/generateThumbnail';
 
 const imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg';

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Miniatűrkép - REST, Python generálása'
+title: 'Gyors útmutató: Miniatűr létrehozása – REST, Python'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban miniatűrt hozhat létre egy képből a Computer Vision API és Python használatával.
 services: cognitive-services
@@ -11,27 +11,27 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 5203467eadadf1180eabf7b5a51b113ae273ee7c
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f699a41e566d4080b77b538d03804b1969291678
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603542"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141249"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Gyors útmutató: A Computer Vision REST API és a Python használatával miniatűrkép generálása
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Gyors útmutató: Miniatűr létrehozása a Computer Vision REST API és a Python használatával
 
-Ebben a rövid útmutatóban a miniatűr generál egy rendszerképből számítógépes Látástechnológiai REST API használatával. Az a [miniatűr beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) metódus, megadhatja a kívánt magasság és szélesség és régió alapján nyelvelemző, mind a terület hasznos helyek azonosításához, és körbevágási koordináták készítése intelligens vágása számítógépes Látástechnológiai használja.
+Ebben a rövid útmutatóban egy miniatűrt fog létrehozni a rendszerképből Computer Vision REST API használatával. A [miniatűr](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) beolvasása módszerrel megadhatja a kívánt magasságot és szélességet, a Computer Vision pedig intelligens levágást használ a fontos terület intelligens azonosításához és az adott régió alapján történő levágási koordináták létrehozásához.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/try/cognitive-services/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Megjelenik a származó ingyenes próbaverziós kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) előfizetni a Computer Vision, és a kulcs beszerzése.
-- Például egy Kódszerkesztő [Visual Studio Code](https://code.visualstudio.com/download)
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti `COMPUTER_VISION_SUBSCRIPTION_KEY` karakterláncához, a nevet és `COMPUTER_VISION_ENDPOINT`a-t.
+- Egy Kódszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/download).
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-Hozhat létre, és futtassa a mintát, másolja a következő kódot a Kódszerkesztő. 
+A minta létrehozásához és futtatásához másolja a következő kódot a kódszerkesztőba. 
 
 ```python
 import requests
@@ -41,20 +41,17 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from io import BytesIO
 
-# Replace <Subscription Key> with your valid subscription key.
-subscription_key = "<Subscription Key>"
-assert subscription_key
+# Add your Computer Vision subscription key and endpoint to your environment variables.
+if 'COMPUTER_VISION_SUBSCRIPTION_KEY' in os.environ:
+    subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
+else:
+    print("\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n**Restart your shell or IDE for changes to take effect.**")
+    sys.exit()
 
-# You must use the same region in your REST call as you used to get your
-# subscription keys. For example, if you got your subscription keys from
-# westus, replace "westcentralus" in the URI below with "westus".
-#
-# Free trial subscription keys are generated in the "westcentralus" region.
-# If you use a free trial subscription key, you shouldn't need to change
-# this region.
-vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
+if 'COMPUTER_VISION_ENDPOINT' in os.environ:
+    endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-thumbnail_url = vision_base_url + "generateThumbnail"
+thumbnail_url = endpoint + "vision/v2.0/generateThumbnail"
 
 # Set image_url to the URL of an image that you want to analyze.
 image_url = "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg"
@@ -77,8 +74,6 @@ print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
 ```
 
 Ezután tegye a következőket:
-1. Cserélje le a `subscription_key` értéket az előfizetői azonosítóra.
-1. Ha szükséges, cserélje le az `vision_base_url` értéket azon Azure-régió Computer Vision-erőforrás metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
 1. Ha szeretné, cserélje le az `image_url` értéket annak a képnek az URL-címére, amelyhez miniatűrt szeretne létrehozni.
 1. Mentse a kódot egy `.py` kiterjesztésű fájlként. Például: `get-thumbnail.py`.
 1. Nyisson meg egy parancsablakot.
@@ -86,17 +81,17 @@ Ezután tegye a következőket:
 
 ## <a name="examine-the-response"></a>A válasz vizsgálata
 
-A sikeres válasz, a bináris adatokat, amelyek a miniatűr kép adatait jelöli. A mintában Ez a kép megjelenjen. A kérelem meghiúsul, ha a válasz jelenik meg a parancsablakot, és tartalmaznia kell egy hibakódot.
+A rendszer sikeres választ ad vissza bináris adatként, amely a miniatűr képéneket jelöli. A mintának ezt a képet kell megjelenítenie. Ha a kérelem sikertelen, a válasz megjelenik a parancssorablakban, és tartalmaznia kell egy hibakódot.
 
-## <a name="run-in-jupyter-optional"></a>Futtatása a Jupyter-(nem kötelező)
+## <a name="run-in-jupyter-optional"></a>Futtatás a Jupyter (nem kötelező)
 
-Ez a rövid útmutató lépés által lépés feldolgozza a Jupyter notebook használatával igény szerint futtathatja [MyBinder](https://mybinder.org). A Binder indításához válassza az alábbi gombot:
+A rövid útmutató lépésről lépésre elindítható a [MyBinder](https://mybinder.org)Jupyter notebookjának használatával. A Binder indításához válassza az alábbi gombot:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
 ## <a name="next-steps"></a>További lépések
 
-Következőként ismerje meg a miniatűr-létrehozást funkció részletesebb információkat.
+Következő lépésként tájékozódjon részletesebben a miniatűr generálási funkciójával kapcsolatban.
 
 > [!div class="nextstepaction"]
 > [Miniatűrök létrehozása](../concept-generating-thumbnails.md)

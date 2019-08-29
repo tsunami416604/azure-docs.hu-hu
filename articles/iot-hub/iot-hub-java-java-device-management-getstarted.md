@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 7fed6caa719824dd51b19789a7066ffaea13d336
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 82c2c6d7ac347949a7cf24226fdb0095313ee689
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907832"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147684"
 ---
 # <a name="get-started-with-device-management-java"></a>Ismerkedés az eszközkezelés (Java) szolgáltatással
 
@@ -52,8 +52,6 @@ Az oktatóanyag végén két Java-konzolos alkalmazás található:
 > Az eszközökön és a megoldás hátterében futó alkalmazások létrehozásához használható SDK-k ismertetése: [Azure IoT SDK](iot-hub-devguide-sdks.md)-k.
 
 ## <a name="prerequisites"></a>Előfeltételek
-
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Java SE 8. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) ismerteti, hogyan telepíthet Java-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
 

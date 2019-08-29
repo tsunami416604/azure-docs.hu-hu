@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b062f484a48d8376bbbb8fa9dd5bd3e39bbba14f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 15960c39878e0c8ae22f94197ed1937597f1ee02
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049974"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126133"
 ---
 ::: zone target="docs"
 
@@ -34,7 +34,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ::: zone target="chromeless"
 
-# <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Azure Data Box Disk kicsomagolása, összekötése és feloldása
+## <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Azure Data Box Disk kicsomagolása, összekötése és feloldása
 
 ::: zone-end
 
@@ -281,7 +281,7 @@ Ha a lemezek feloldása során problémákba ütközik, tekintse meg a feloldás
     > [!div class="nextstepaction"]
     > [Data Box Disk eszközkészlet letöltése Windowsra](https://aka.ms/databoxdisktoolswin)
 
-    vagy
+    or
     > [!div class="nextstepaction"]
     > [Data Box Disk eszközkészlet letöltése Linuxra](https://aka.ms/databoxdisktoolslinux) 
 
@@ -313,7 +313,9 @@ Ha a lemezek feloldása során problémákba ütközik, tekintse meg a feloldás
 
 A lemez zárolásának feloldása után megtekintheti a lemez tartalmát.
 
-A lemezek beállításával és feloldásával kapcsolatos további információkért nyissa [meg az oktatóanyagot: Azure Data Box Disk](data-box-disk-deploy-set-up.md)kicsomagolása, összekötése és feloldása.
+A lemezek beállításával kapcsolatos további információkért nyissa meg [a Data Box Disk](data-box-disk-deploy-set-up.md#unpack-your-disks)kicsomagolását.
+
+A lemezek zárolásának feloldásával kapcsolatos további infomration nyissa [meg a Windows-ügyfél zárolásának feloldása Data Box Disk](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client).
 
 ::: zone-end
 

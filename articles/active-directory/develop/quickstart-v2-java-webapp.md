@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: de2a59f878e0c0258b0619895d8f4c8bfd0670a8
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 549b4457ee38504001e83c4b831cd321e1542068
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036429"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125478"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: Bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -34,10 +34,9 @@ Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-
 
 > ## <a name="prerequisites"></a>Előfeltételek
 > A minta futtatásához a következőkre lesz szüksége: 
-> - Internetkapcsolat.
-> - A Java és a Maven egy működő telepítése.
-> - Egy Azure Active Directory (Azure AD) bérlő. Az Azure AD-bérlő beszerzésével kapcsolatos további információkért lásd: [Azure ad-bérlő beszerzése.](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
-
+> - A Java Development Kit (JDK) 8 vagy újabb, illetve Maven.
+> - Egy Azure Active Directory (Azure AD) bérlő. Az Azure AD-bérlő beszerzésével kapcsolatos további információkért lásd: [Azure ad-bérlő beszerzése.](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant)
+>
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
 > A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el:
@@ -143,5 +142,22 @@ A MSAL4J mutató hivatkozás hozzáadásához adja hozzá a következő kódot a
 ```
 import com.microsoft.aad.msal4j.*;
 ```
+
+## <a name="next-steps"></a>További lépések
+
+További információ az engedélyekről és a beleegyezik:
+
+> [!div class="nextstepaction"]
+> [Engedélyek és beleegyezik](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent)
+
+Ha többet szeretne megtudni a forgatókönyv hitelesítési folyamatáról, tekintse meg a OAuth 2,0 engedélyezési kód folyamatát:
+
+> [!div class="nextstepaction"]
+> [Engedélyezési kód OAuth folyamata](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+
+Segítsen nekünk a Microsoft Identity platform fejlesztésében. Mondja el, mit gondol egy rövid, kétkérdéses felmérés végrehajtásával.
+
+> [!div class="nextstepaction"]
+> [Microsoft Identity platform-felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

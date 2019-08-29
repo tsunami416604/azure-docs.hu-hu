@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 4b24805cd59d1eb9d28591749d5169486e54d506
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3fa485c9fb2835b8270cb35fc75b57251476005f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250122"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141771"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Mért számlázás a Marketplace-mérési szolgáltatás használatával
 
@@ -36,7 +36,7 @@ Ha az ajánlatot az árképzési modelljeivel együtt határozza meg, fontos meg
 
 * Minden SaaS-ajánlat úgy van konfigurálva, hogy a Microsofton keresztül értékesítsen vagy sem.  Ez a beállítás az ajánlat közzétételekor nem módosítható.
 * A Microsofton keresztüli értékesítésre konfigurált SaaS-ajánlatok egy vagy több csomaggal rendelkezhetnek. A felhasználók a SaaS-ajánlatra fizetnek, de a Microsoft a csomag keretében vásárolható meg.
-* Minden csomaghoz hozzá van rendelve egy díjszabási modell: **átalánydíjas** vagy **felhasználónként**. Az ajánlat minden csomagját ugyanahhoz az árképzési modellhez kell társítani. Például nem lehet olyan ajánlat, amelyben az egyik terve átalánydíjas díjszabási modell, a másik pedig felhasználónkénti díjszabási modell.
+* Minden csomaghoz hozzá van rendelve egy díjszabási modell: **átalánydíjas** vagyfelhasználónként. Az ajánlat minden csomagját ugyanahhoz az árképzési modellhez kell társítani. Például nem lehet olyan ajánlat, amelyben az egyik terve átalánydíjas díjszabási modell, a másik pedig felhasználónkénti díjszabási modell.
 * Az átalánydíjas számlázási modellhez konfigurált minden egyes csomagon belül legalább egy ismétlődő díj szerepel (amely $0):
     * Ismétlődő **havi** díj: a csomag megvásárlásakor a rendszer havi ismétlődéssel előre fizetett átalányösszegű havi díjat számít fel.
     * Ismétlődő **éves** díj: a csomag megvásárlásakor a felhasználó éves ismétlődéssel előre fizetett átalányösszegű éves díj.
@@ -84,13 +84,13 @@ A dimenziók egyéb attribútumai az egyes csomagokra jellemzőek, és a tervtő
 
 A méretek két speciális fogalmat is tartalmazhatnak, amelyek "engedélyezve" és "végtelen":
 
-* Az **engedélyezve** érték azt jelzi, hogy ez a csomag részt vesz ebben a dimenzióban.  Ha olyan új csomagot hoz létre, amely nem küldi el ezt a dimenziót, érdemes elhagynia ezt az eltávolítást.  Emellett a csomag első közzététele után hozzáadott új dimenziók a már közzétett tervben "nem engedélyezettként" jelennek meg.  Egy letiltott dimenzió ekkor megjelenik az ügyfelek által látott csomag dimenzióinak listájában.
+* Az **engedélyezve** érték azt jelzi, hogy ez a csomag részt vesz ebben a dimenzióban.  Ha olyan új csomagot hoz létre, amely nem küldi el ezt a dimenziót, érdemes elhagynia ezt az eltávolítást.  Emellett a csomag első közzététele után hozzáadott új dimenziók a már közzétett tervben "nem engedélyezettként" jelennek meg.  A kikapcsolt dimenziók nem jelennek meg az ügyfelek által látott csomag dimenzióinak listájában.
 * A **végtelen**, amelyet a "∞" végtelen szimbólum jelöl, azt jelzi, hogy ez a csomag részt vesz ebben a dimenzióban, de nem számítja fel a használatot ezen a dimenzión.  Ha meg szeretné jeleníteni ügyfelei számára, hogy a dimenzió által képviselt funkciók beletartoznak a csomagba, de a használat korlátozás nélkül.  A végtelen használatú dimenziók az ügyfelek által látott csomag dimenzióinak listájában jelennek meg, ami azt jelzi, hogy a csomagnak soha nem kell díjat fizetnie.
 
 >[!Note] 
 >A következő forgatókönyvek explicit módon támogatottak: <br> – Új dimenziót adhat hozzá egy új tervhez.  Az új dimenzió nem lesz engedélyezve a már közzétett csomagok esetében. <br> – Bármilyen dimenzió nélkül közzétehet egy **átalánydíjas** csomagot, majd hozzáadhat egy új tervet, és konfigurálhat egy új dimenziót az adott tervhez. Az új dimenzió nem lesz engedélyezve a már közzétett tervekhez.
 
-## <a name="constraints"></a>Korlátozások
+## <a name="constraints"></a>Megkötések
 
 ### <a name="trial-behavior"></a>Próbaverziós viselkedés
 

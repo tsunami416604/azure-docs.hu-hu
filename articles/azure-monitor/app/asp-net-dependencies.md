@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: 858508e949f8a880498e1a3d983dc76224010c31
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 5e07243720872ff4555d4c000dcb7b0b7236e66f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534617"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126740"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Függőségek nyomon követése az Azure Application Insights 
 
@@ -39,6 +39,7 @@ Application Insights SDK-kat .net-és .net Core `DependencyTrackingTelemetryModu
 |[ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3\.0.0 vagy újabb verzió. |
 |Azure Cosmos DB | Csak a HTTP/HTTPS használata esetén automatikusan nyomon követhető. Az Application Insights nem rögzíti a TCP-módot. |
 
+Ha hiányzik egy függőség, vagy egy másik SDK-t használ, győződjön meg róla, hogy az [automatikusan összegyűjtött függőségek](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)listáján szerepel. Ha a függőség nincs automatikusan begyűjtve, nyomon követheti manuálisan a [függőségi hívással](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Automatikus függőség-követés beállítása a konzolos alkalmazásokban
 

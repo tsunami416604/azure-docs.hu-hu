@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: 1b35533eeb4c4a364588dbea11f74e8d6b76df3b
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: d9f1afdff53ada2df7722fcfdd7014fb6c417e39
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998220"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135174"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrikák és diagnosztikai naplózás
 
@@ -555,7 +555,7 @@ További információ a [lekérdezési tár várakozási statisztikáinak adatai
 |SourceSystem|Mindig Azure |
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Type|Mindig AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig MICROSOFT.SQ |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig MICROSOFT.SQL |
 |Category|A kategória neve. Mindig Hibák |
 |OperationName|A művelet neve. Mindig ErrorEvent |
 |Resource|Az erőforrás neve |

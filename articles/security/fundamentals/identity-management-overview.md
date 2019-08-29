@@ -1,6 +1,6 @@
 ---
 title: Azure-beli biztonsági funkciók, amelyek segítenek az Identitáskezelés kezelésében | Microsoft Docs
-description: " Ez a cikk áttekintést nyújt az Azure alapvető biztonsági funkcióiról, amelyek segítenek az Identitáskezelés kezelésében. A Microsoft identitás-és hozzáférés-kezelési megoldásai segítenek a vállalati adatközpontban és a felhőben lévő alkalmazásokhoz és erőforrásokhoz való hozzáférés védelmében, így további ellenőrzési szintek (például többtényezős hitelesítés és feltételes hozzáférés) is elérhetők. szabályzatok. "
+description: " Ez a cikk áttekintést nyújt az Azure alapvető biztonsági funkcióiról, amelyek segítenek az Identitáskezelés kezelésében. A Microsoft identitás-és hozzáférés-kezelési megoldásai segítenek a vállalati adatközpontban és a felhőben lévő alkalmazásokhoz és erőforrásokhoz való hozzáférés védelmében, így további ellenőrzési szintek, például a Multi-Factor Authentication és a feltételes hozzáférés engedélyezése szabályzatok. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,22 +16,22 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 1081fa8c9c7cc64418515aabbb755ecf056196ca
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 021767aa20dc35459c68fead674ff00510af2538
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826291"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129360"
 ---
 # <a name="azure-identity-management-security-overview"></a>Az Azure Identity Management biztonsági áttekintése
 
- Az Identitáskezelés a [rendszerbiztonsági tag](/windows/security/identity-protection/access-control/security-principals)hitelesítésének és engedélyezésének folyamata. Emellett magában foglalja az ilyen rendszerbiztonsági tagok (identitások) adatainak szabályozását is. A rendszerbiztonsági tag (identitások) tartalmazhatnak szolgáltatásokat, alkalmazásokat, felhasználókat, csoportokat stb. A Microsoft identitás-és hozzáférés-kezelési megoldásai segítenek a vállalati adatközpontban és a felhőben lévő alkalmazásokhoz és erőforrásokhoz való hozzáférés védelmében. Az ilyen védelem további ellenőrzési szinteket tesz lehetővé, például a többtényezős hitelesítést és a feltételes hozzáférési szabályzatokat. A gyanús tevékenységek speciális biztonsági jelentéskészítéssel, naplózással és riasztással való figyelése segít csökkenteni a lehetséges biztonsági problémákat. A [prémium szintű Azure Active Directory](/azure/active-directory/active-directory-editions) egyszeri bejelentkezést (SSO-t) biztosít több ezer felhőalapú szoftver-(SaaS-) alkalmazáshoz, és hozzáfér a helyszínen futtatott webalkalmazásokhoz.
+ Az Identitáskezelés a [rendszerbiztonsági tag](/windows/security/identity-protection/access-control/security-principals)hitelesítésének és engedélyezésének folyamata. Emellett magában foglalja az ilyen rendszerbiztonsági tagok (identitások) adatainak szabályozását is. A rendszerbiztonsági tag (identitások) tartalmazhatnak szolgáltatásokat, alkalmazásokat, felhasználókat, csoportokat stb. A Microsoft identitás-és hozzáférés-kezelési megoldásai segítenek a vállalati adatközpontban és a felhőben lévő alkalmazásokhoz és erőforrásokhoz való hozzáférés védelmében. Az ilyen védelem további ellenőrzési szinteket tesz lehetővé, például a Multi-Factor Authentication és a feltételes hozzáférési házirendeket. A gyanús tevékenységek speciális biztonsági jelentéskészítéssel, naplózással és riasztással való figyelése segít csökkenteni a lehetséges biztonsági problémákat. A [prémium szintű Azure Active Directory](/azure/active-directory/active-directory-editions) egyszeri bejelentkezést (SSO-t) biztosít több ezer felhőalapú szoftver-(SaaS-) alkalmazáshoz, és hozzáfér a helyszínen futtatott webalkalmazásokhoz.
  
 Ha kihasználja Azure Active Directory (Azure AD) biztonsági előnyeit, a következőket teheti:
 
 * Egyetlen identitás létrehozása és kezelése minden felhasználó számára a hibrid vállalaton belül, a felhasználók, csoportok és eszközök szinkronizálással való megőrzése. 
 * Egyszeri bejelentkezéses hozzáférés biztosítása az alkalmazásokhoz, beleértve több ezer előre integrált SaaS-alkalmazást.
-* Engedélyezze az alkalmazás-hozzáférési biztonságot a szabályokon alapuló többtényezős hitelesítésnek a helyszíni és a Felhőbeli alkalmazásokhoz való kényszerítésével.
+* Engedélyezze az alkalmazás-hozzáférési biztonságot a szabályokon alapuló Multi-Factor Authentication kényszerítésével mind a helyszíni, mind a felhőalapú alkalmazásokhoz.
 * Biztonságos távoli hozzáférés biztosítása helyszíni webalkalmazásokhoz az Azure AD Application Proxy használatával.
 
 Ennek a cikknek a célja, hogy áttekintést nyújtson az Azure-beli alapvető biztonsági funkciókról, amelyek segítik az Identitáskezelés kezelését. Olyan cikkekre mutató hivatkozásokat is biztosítunk, amelyek részletesen ismertetik az egyes funkciók részleteit, így többet is megtudhat.  
@@ -79,13 +79,13 @@ További információ:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Az Azure multi-Factor Authentication olyan hitelesítési módszer, amely több ellenőrzési módszer használatát igényli, és egy kritikus második biztonsági réteget vesz fel a felhasználói bejelentkezésekhez és tranzakciókra. A többtényezős hitelesítés segítségével biztosítható a hozzáférés az adatkezeléshez és az alkalmazásokhoz, miközben egy egyszerű bejelentkezési folyamatra vonatkozó felhasználói igényeket is kielégít. Erős hitelesítést biztosít számos ellenőrzési lehetőség használatával: telefonhívások, szöveges üzenetek vagy Mobile apps-értesítések, valamint ellenőrző kódok és külső OAuth-tokenek.
+Az Azure Multi-Factor Authentication olyan hitelesítési módszer, amely több ellenőrzési módszer használatát igényli, és kritikus második biztonsági réteget hoz létre a felhasználói bejelentkezésekhez és tranzakciókra. Multi-Factor Authentication segít megőrizni az adathozzáférést és az alkalmazásokhoz való hozzáférést, miközben a felhasználói igényeket egy egyszerű bejelentkezési folyamaton keresztül teljesíti. Erős hitelesítést biztosít számos ellenőrzési lehetőség használatával: telefonhívások, szöveges üzenetek vagy Mobile apps-értesítések, valamint ellenőrző kódok és külső OAuth-tokenek.
 
 További információ:
 
 * [Többtényezős hitelesítés](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Mi az az Azure Multi-Factor Authentication?](/azure/active-directory/authentication/multi-factor-authentication)
-* [Az Azure multi-Factor Authentication működése](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Az Azure Multi-Factor Authentication működése](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="rbac"></a>RBAC
 
@@ -160,7 +160,7 @@ További információ:
 
 ## <a name="identity-protection"></a>Identitásvédelem
 
-A Azure AD Identity Protection egy biztonsági szolgáltatás, amely összevont nézetet biztosít a kockázati eseményekről és a szervezet identitásait érintő lehetséges sebezhetőségekről. Az Identity Protection kihasználja a meglévő Azure AD-anomáliák – észlelési képességeket, amelyek az Azure AD rendellenes tevékenységi jelentéseiben érhetők el. Az Identity Protection olyan új kockázati események típusait is bemutatja, amelyek valós időben tudják észlelni a rendellenességeket.
+A Azure AD Identity Protection egy olyan biztonsági szolgáltatás, amely összevont nézetet biztosít a szervezet identitásait érintő kockázati észlelések és potenciális sebezhetőségek számára. Az Identity Protection kihasználja a meglévő Azure AD-anomáliák – észlelési képességeket, amelyek az Azure AD rendellenes tevékenységi jelentéseiben érhetők el. Az Identity Protection olyan új kockázati észlelési típusokat is tartalmaz, amelyek valós időben észlelik a rendellenességeket.
 
 További információ:
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8df01c204a6893f4e2ff1c2ff22fa337d77c519b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a762009a7aaf1a965333ac573efe55d792c3f04b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637595"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125004"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Intelligens zárolás Azure Active Directory
 
@@ -67,7 +67,7 @@ A szervezeti követelmények alapján előfordulhat, hogy az intelligens zárol�
 
 A szervezet intelligens zárolási értékeinek vizsgálatához vagy módosításához kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és kattintson a **Azure Active Directory**, majd a **hitelesítési módszerek**elemre.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon a **Azure Active Directory** > **hitelesítési módszerek** > **jelszavas védelméhez**.
 1. Állítsa bea zárolási küszöbértéket attól függően, hogy az első zárolás előtt hány sikertelen bejelentkezés engedélyezett a fiókon. Az alapértelmezett érték 10.
 1. Állítsa a **zárolás időtartamát másodpercben**, az egyes zárolások hosszára másodpercben. Az alapértelmezett érték 60 másodperc (egy perc).
 

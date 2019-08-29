@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: df377b19d78a63b3cfc57347fff00345a9c63ead
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 21b046a54c2fbe309113222f54dbad4405fc409d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562531"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136568"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Felügyelt Storage-fiók Azure Key Vault – PowerShell
 
@@ -21,6 +21,7 @@ ms.locfileid: "69562531"
 > - Az ügyfélalkalmazás hitelesítése a Storage-fiók hitelesítő adatai helyett alkalmazás vagy felhasználói identitás használatával. 
 > - Azure AD-beli [felügyelt identitás](/azure/active-directory/managed-identities-azure-resources/) használata az Azure-on való futtatáskor. A felügyelt identitások teljes egészében megszüntetik az ügyfél-hitelesítés szükségességét, és a hitelesítő adatokat a vagy az alkalmazásban tárolják.
 > - Használja a szerepköralapú Access Control (RBAC) az engedélyezés felügyeletéhez, amelyet a Key Vault is támogat.
+> - A HRE való hozzáférés nem működik, mert még nem fér hozzá a táblákhoz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -142,7 +143,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Kulcs újragenerálásának engedélyezése
 
-Ha azt szeretné, hogy a Key Vault rendszeresen újragenerálja a Storage-fiók kulcsait, beállíthat egy újragenerálási időszakot. A következő példában egy három napos újragenerálási időszakot állítunk be. Három nap elteltével Key Vault újragenerálta a "key1", és az aktív kulcsot a "key2" értékről "key1"-re cseréli.
+Ha azt szeretné, hogy a Key Vault rendszeresen újragenerálja a Storage-fiók kulcsait, beállíthat egy újragenerálási időszakot. A következő példában egy három napos újragenerálási időszakot állítunk be. Három nap elteltével Key Vault újragenerálta a "key2", és az aktív kulcsot a "key2" értékről "key1"-re cseréli.
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

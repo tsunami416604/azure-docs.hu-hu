@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dcc7d2d03b3c4a3f4c8c772f38aa3785080d986
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 9da0552e3ccc707c6b2f228b402f4e9db7dafee3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335361"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125707"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Értesítések Azure Active Directory Identity Protection
 
-A Azure AD Identity Protection kétféle automatizált értesítő e-mailt küld a felhasználói kockázatok és kockázati események kezeléséhez:
+Azure AD Identity Protection kétféle automatizált értesítő e-mailt küld a felhasználói kockázatok és a kockázati észlelések kezeléséhez:
 
 - Veszélyeztetett felhasználók észlelt e-mail-címe
 - Heti kivonatoló e-mail
@@ -31,7 +31,7 @@ Ez a cikk az értesítő e-mailek áttekintését tartalmazza.
 
 A veszélyeztetett észlelt fiókra adott válaszként Azure AD Identity Protection e-mail-riasztást hoz létre a **veszélyeztetett felhasználókkal** kapcsolatban. Az e-mail tartalmazza a kockázati jelentésre **[megjelölt felhasználókra](../reports-monitoring/concept-user-at-risk.md)** mutató hivatkozást. Ajánlott eljárásként azonnal vizsgálja meg a veszélyeztetett felhasználókat.
 
-Ennek a riasztásnak a konfigurációja lehetővé teszi, hogy meghatározza, milyen felhasználói kockázati szinten szeretné létrehozni a riasztást. A rendszer akkor hozza létre az e-mailt, ha a felhasználó kockázati szintje eléri a megadott értéket; a felhasználó számára azonban nem fogja tudni észlelni az e-mail-riasztásokat, miután erre a felhasználói kockázati szintre költöztek. Ha például úgy állítja be a házirendet, hogy közepes felhasználói kockázattal figyelmeztessen, és a felhasználó John közepes kockázatra vált, a veszélyeztetett felhasználókat a rendszer az észlelt e-mail-címre fogja kapni John számára. Ha azonban John ezt követően nagy kockázatra vált, vagy további kockázati eseményekre van szüksége, nem fog észlelni veszélyt jelentő második felhasználót.
+Ennek a riasztásnak a konfigurációja lehetővé teszi, hogy meghatározza, milyen felhasználói kockázati szinten szeretné létrehozni a riasztást. A rendszer akkor hozza létre az e-mailt, ha a felhasználó kockázati szintje eléri a megadott értéket; a felhasználó számára azonban nem fogja tudni észlelni az e-mail-riasztásokat, miután erre a felhasználói kockázati szintre költöztek. Ha például úgy állítja be a házirendet, hogy közepes felhasználói kockázattal figyelmeztessen, és a felhasználó John közepes kockázatra vált, a veszélyeztetett felhasználókat a rendszer az észlelt e-mail-címre fogja kapni John számára. Ha azonban John ezt követően nagy kockázatra vált, vagy további kockázati észleléseket észlel, akkor nem fog tudni kockázatot jelentő második felhasználót kapni.
 
 ![Veszélyeztetett felhasználók észlelt e-mail-címe](./media/notifications/01.png)
 
@@ -48,7 +48,7 @@ A kapcsolódó párbeszédpanel megnyitásához kattintson a **riasztások** ele
 
 ## <a name="weekly-digest-email"></a>Heti kivonatoló e-mail
 
-A heti kivonatoló e-mail tartalmazza az új kockázati események összegzését.  
+A heti kivonatoló e-mail tartalmazza az új kockázati észlelések összegzését.  
 A következőket tartalmazza:
 
 - Érintett felhasználók

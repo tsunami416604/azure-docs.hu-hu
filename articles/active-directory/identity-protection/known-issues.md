@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d5aa50aec98b3944aed92b9da49182f0608f34c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: fe7125174129752e6d6dbe0e00d01d4f32755333
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333891"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126092"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Gyakori kérdések és ismert problémák az Identity Protectionben (frissítve) Azure Active Directory
 
@@ -34,15 +34,15 @@ A **Felhasználónév** mezőben lévő lekérdezések megkülönböztetik a kis
 
 A **dátumok megjelenítésének módosítása,** hogy elrejtse a **kockázat utolsó frissítésének** oszlopát. Az oszlop olvasásához kattintson a kockázatos felhasználók panel tetején található **oszlopok** elemre.
 
-A klasszikus Identity Protection **összes eseményének** bezárása a kockázati események állapotának lezártra állítása **(megoldva)** .
+A klasszikus Identity Protection **összes eseményének** bezárásakor a kockázati észlelések állapota lezárva **(megoldva)** állapotú.
 
 ## <a name="risky-sign-ins-report-known-issues"></a>Kockázatos bejelentkezések – ismert problémák
 
-A kockázati eseményeken **feloldható megoldás** a **kockázatalapú házirend által vezérelt MFA-t használó felhasználók számára**állítja be az állapotot.
+A kockázatkezelési **megoldás** a **kockázatalapú szabályzat által vezérelt MFA-t használó felhasználók számára**állítja be az állapotot.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-event"></a>Miért nem tudom beállítani a saját kockázati szinteket az egyes kockázati eseményekhez?
+### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>Miért nem tudom beállítani a saját kockázati szinteket az egyes kockázati észlelésekhez?
 
 Az Identity Protection kockázati szintjei az észlelés pontosságán és a felügyelt gépi tanuláson alapulnak. A felhasználók által megjelenített felhasználói élmény testreszabásához a rendszergazda belefoglalhat vagy kizárhat bizonyos felhasználókat/csoportokat a felhasználói kockázat és a bejelentkezési kockázati szabályzatok alapján.
 
@@ -54,12 +54,12 @@ Az IP térinformatikai leképezés az iparági szintű kihívás. Ha úgy érzi,
 
 **Sérült biztonság megerősítése** (bejelentkezéskor) – tájékoztatja Azure AD Identity Protection arról, hogy a bejelentkezést nem az identitás tulajdonosa végezte el, és a rendszer kompromisszumot jelez.
 
-- A visszajelzés kézhezvétele után a bejelentkezési és a felhasználói kockázati állapotot a rendszer visszaigazolja a feltört és a kockázati **szintre.**
+- A visszajelzés kézhezvétele után a bejelentkezési és a felhasználói kockázati állapotot a rendszer visszaigazolja a feltört és akockázati szintre.
 
 - Ezen felül a kockázatkezelési rendszerek jövőbeli fejlesztései esetében is biztosítjuk az információkat a gépi tanulási rendszerekhez.
 
     > [!NOTE]
-    > Ha a felhasználó már szervizelve van, ne kattintson a **Biztonság megerősítése** elemre, mert a bejelentkezési és a felhasználói kockázati állapotot a  rendszer visszaigazolja a feltört és a kockázati szint **magas**szintre való visszalépésével.
+    > Ha a felhasználó már szervizelve van, ne kattintson a **Biztonság megerősítése** elemre, mert a bejelentkezési és a felhasználói kockázati állapotot a rendszer visszaigazolja a feltört és a kockázati szint **magas**szintre való visszalépésével.
 
 **Biztonság megerősítése** (bejelentkezéskor) – tájékoztatja Azure AD Identity Protection arról, hogy a bejelentkezést az identitás tulajdonosa végezte, és nem jelent kompromisszumot.
 
@@ -68,11 +68,11 @@ Az IP térinformatikai leképezés az iparági szintű kihívás. Ha úgy érzi,
 - Ezen felül a kockázatkezelési rendszerek jövőbeli fejlesztései esetében is biztosítjuk az információkat a gépi tanulási rendszerekhez.
 
     > [!NOTE]
-    > Ha úgy véli, hogy a felhasználó nem sérül, a felhasználói szinten utasítsa el a **felhasználói kockázatot** , nem pedig a megerősített **széf** használatát a bejelentkezési szinten. A felhasználói szintű felhasználói **kockázat** elvetése bezárja a felhasználói kockázatot és az összes múltbeli kockázatos bejelentkezést és kockázati eseményt.
+    > Ha úgy véli, hogy a felhasználó nem sérül, a felhasználói szinten utasítsa el a **felhasználói kockázatot** , nem pedig a megerősített **széf** használatát a bejelentkezési szinten. A felhasználói szintű felhasználói **kockázat** elvetése bezárja a felhasználói kockázatot és az összes múltbeli kockázatos bejelentkezést és kockázati észlelést.
 
-### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-events-are-shown-in-identity-protection"></a>Miért jelenik meg egy alacsony (vagy magasabb) kockázati pontszámmal rendelkező felhasználó, még akkor is, ha nincsenek kockázatos bejelentkezések vagy kockázati események az Identity Protectionben?
+### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Miért jelenik meg egy alacsony (vagy magasabb) kockázati pontszámmal rendelkező felhasználó, még akkor is, ha nincsenek kockázatos bejelentkezések vagy kockázati észlelések az Identity Protectionben?
 
-Mivel a felhasználói kockázat kumulatív jellegű, és nem jár le, a felhasználó akkor is csökkentheti a felhasználói kockázatot, ha az Identity Protection szolgáltatásban nincsenek közelmúltbeli kockázatos bejelentkezések vagy kockázati események. Ez akkor fordulhat elő, ha a felhasználó egyetlen rosszindulatú tevékenysége túllépte az időkeretet, amelyre a kockázatos bejelentkezések és a kockázati események részleteit tároljuk. Nem jár le a felhasználói kockázat, mert a rossz szereplőkkel kapcsolatban is ismertek voltak az ügyfelek környezetében, több mint 140 napon keresztül, a támadás feltörése előtt. Az ügyfelek áttekinthetik a felhasználó kockázati idővonalát, hogy megtudja, miért van a veszélye annak, hogy a felhasználó a következővel rendelkezik:`Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
+Tekintettel arra, hogy a felhasználói kockázat kumulatív jellegű, és nem jár le, a felhasználó akkor is csökkentheti a felhasználói kockázatot, ha az Identity Protection szolgáltatásban nincsenek közelmúltbeli kockázatos bejelentkezések vagy kockázati észlelések. Ez akkor fordulhat elő, ha a felhasználó egyetlen rosszindulatú tevékenysége túllépte az időkeretet, amely a kockázatos bejelentkezések és a kockázatok észlelésének részleteit tárolja. Nem jár le a felhasználói kockázat, mert a rossz szereplőkkel kapcsolatban is ismertek voltak az ügyfelek környezetében, több mint 140 napon keresztül, a támadás feltörése előtt. Az ügyfelek áttekinthetik a felhasználó kockázati idővonalát, hogy megtudja, miért van a veszélye annak, hogy a felhasználó a következővel rendelkezik:`Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Miért van a bejelentkezés "a bejelentkezési kockázat (aggregált)" pontszáma, amikor a hozzá társított észlelések alacsony vagy közepes kockázattal rendelkeznek?
 

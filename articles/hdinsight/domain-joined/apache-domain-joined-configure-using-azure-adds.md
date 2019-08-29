@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 300fd31632a6b3c9043c19dd9b47f40258080261
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1165cbeff1144567e43f408c0866c0b8a571882d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614207"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125586"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>HDInsight-fürt konfigurálása Enterprise Security Package-dzsel az Azure Active Directory Domain Services használatával
 
@@ -22,12 +22,12 @@ A Enterprise Security Package (ESP) fürtök többfelhasználós hozzáférést 
 Ebből a cikkből megtudhatja, hogyan konfigurálhat HDInsight-fürtöt ESP-vel Azure Active Directory Domain Services (Azure AD-DS) használatával.
 
 > [!NOTE]  
-> Az ESP általánosan elérhető a HDInsight 3,6-es és a 4,0-es verzióban a fürtök típusaihoz: Apache Spark, interaktív, Apache Hadoop és HBase. Az Apache Kafka-fürt típusának ESP-je előzetes verzióban érhető el.
+> Az ESP általánosan elérhető a HDInsight 3,6-es és a 4,0-es verzióban a fürtök típusaihoz: Apache Spark, interaktív, Hadoop és HBase. Az Apache Kafka-fürthöz tartozó ESP előzetes verzióban érhető el, és csak a lehető legjobb támogatást nyújtja. Az ESP GA dátum előtt létrehozott ESP-fürtök (2018. október 1.) nem támogatottak.
 
 ## <a name="enable-azure-ad-ds"></a>Az Azure AD-DS engedélyezése
 
 > [!NOTE]  
-> Csak a bérlői rendszergazdák rendelkeznek az Azure AD-DS engedélyezéséhez szükséges jogosultságokkal. Ha a fürt tárterülete Azure Data Lake Storage (ADLS) Gen1 vagy Gen2, le kell tiltania a többtényezős hitelesítést (MFA) csak azon felhasználók számára, akiknek alapvető Kerberos-hitelesítéssel kell hozzáférnie a fürthöz. A [megbízható IP](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) -címek vagy a [feltételes hozzáférés](../../active-directory/conditional-access/overview.md) használatával letilthatja az MFA-t adott felhasználók számára, ha a HDInsight-fürt VNET IP-tartományhoz férnek hozzá. Ha feltételes hozzáférést használ, győződjön meg arról, hogy az AD Service-végpont engedélyezve van a HDInsight VNET.
+> Csak a bérlői rendszergazdák rendelkeznek az Azure AD-DS engedélyezéséhez szükséges jogosultságokkal. Ha a fürt tárterülete Azure Data Lake Storage (ADLS) Gen1 vagy Gen2, le kell tiltania a Multi-Factor Authentication (MFA) csak azokra a felhasználókra, akiknek alapvető Kerberos-hitelesítéssel kell hozzáférnie a fürthöz. A [megbízható IP](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) -címek vagy a [feltételes hozzáférés](../../active-directory/conditional-access/overview.md) használatával letilthatja az MFA-t adott felhasználók számára, ha a HDInsight-fürt VNET IP-tartományhoz férnek hozzá. Ha feltételes hozzáférést használ, győződjön meg arról, hogy az AD Service-végpont engedélyezve van a HDInsight VNET.
 >
 > Ha a fürt tárterülete Azure Blob Storage (WASB), ne tiltsa le az MFA-t.
 

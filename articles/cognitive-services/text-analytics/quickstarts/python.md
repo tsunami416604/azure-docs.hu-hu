@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/28/2019
+ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 3ef7f65bbb27992278eb467f840c1443ac0db0b8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 669cd43b73bc66289a355f7fbf9c4498d8a7b99a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725896"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135015"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Python-REST API használata a Text Analytics kognitív szolgáltatás meghívásához 
 <a name="HOLTop"></a>
@@ -49,11 +49,20 @@ import requests
 from pprint import pprint
 ```
 
-Hozzon létre változókat az előfizetési kulcshoz, valamint a Text Analytics REST API végpontját. Győződjön meg arról, hogy a végpontban lévő régió megfelel a regisztráció során használtnak (például `westcentralus`). Ha ingyenes próbaverziót használ, semmit nem kell módosítania.
+Hozzon létre változókat az erőforrás Azure-végpontjának és előfizetési kulcsának létrehozásához. Szerezze be ezeket az értékeket a környezeti változók TEXT_ANALYTICS_SUBSCRIPTION_KEY és TEXT_ANALYTICS_ENDPOINT. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
     
 ```python
-subscription_key = "<ADD YOUR KEY HERE>"
-text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/"
+import os
+
+key_var_name = 'TEXT_ANALYTICS_SUBSCRIPTION_KEY'
+if not key_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
+subscription_key = os.environ[key_var_name]
+
+endpoint_var_name = 'TEXT_ANALYTICS_ENDPOINT'
+if not endpoint_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
+endpoint = os.environ[endpoint_var_name]
 ```
 
 Az alábbi szakaszok azt ismertetik, hogyan hívhatók meg az egyes API-funkciók.
@@ -65,7 +74,7 @@ Az alábbi szakaszok azt ismertetik, hogyan hívhatók meg az egyes API-funkció
 Hozzáfűzés `languages` a Text Analytics alap végponthoz a nyelvfelismerés URL-címének megalkotása érdekében. Például:`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
     
 ```python
-language_api_url = text_analytics_base_url + "languages"
+language_api_url = endpoint + "/text/analytics/v2.1/languages"
 ```
 
 Az API `documents`-ban található hasznos adatok a `id` és a `text` attribútumot tartalmazó rekordok tartalmazzák. Az `text` attribútum tárolja az elemezni kívánt szöveget, és a `id` értéke bármilyen lehet. 
@@ -134,7 +143,7 @@ pprint(languages)
 Ahhoz, hogy észlelni lehessen a dokumentumok egy halmazának pozitív vagy negatív közötti tartományát, fűzze `sentiment` hozzá az Text Analytics Base végponthoz a nyelvfelismerés URL-címének megadásához. Például:`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
     
 ```python
-sentiment_url = text_analytics_base_url + "sentiment"
+sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
 ```
 
 A nyelvfelismerés példához hasonlóan hozzon létre egy szótárt egy `documents` olyan kulccsal, amely a dokumentumok listájából áll. Minden dokumentum egy rekord, amely az `id`, az elemzendő `text` és a szöveg `language` tulajdonságából áll. 
@@ -196,7 +205,7 @@ A dokumentumra vonatkozó hangulati pontszám 0,0 és 1,0 között van, és egy 
 Ha a legfontosabb kifejezéseket szeretné kibontani a dokumentumok egy `keyPhrases` csoportján, fűzze hozzá az Text Analytics Base végponthoz a nyelvfelismerés URL-címének megadásához. Például:`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
     
 ```python
-keyphrase_url = text_analytics_base_url + "keyPhrases"
+keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
 ```
 
 A dokumentumok ezen gyűjteménye ugyanaz, mint az érzelmek elemzésére szolgáló példa.
@@ -272,7 +281,7 @@ pprint(key_phrases)
 A jól ismert entitások (személyek, helyek és dolgok) a szöveges dokumentumokban való azonosításához `entities` fűzze hozzá az Text Analytics Base végpontot a nyelvfelismerés URL-címének létrehozásához. Például:`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
     
 ```python
-entities_url = text_analytics_base_url + "entities"
+entities_url = endpoint + "/text/analytics/v2.1/entities"
 ```
 
 Hozzon létre egy gyűjteményt a dokumentumokból, például az előző példákban. 

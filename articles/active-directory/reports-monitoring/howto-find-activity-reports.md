@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356412bfca19e72d09338faf8c8bcac5ec8f273a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988290"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127394"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Tevékenység-jelentések keresése a Azure Portal
 
@@ -112,29 +112,29 @@ A bejelentkezési jelentés használatával megtekintheti az alkalmazás haszná
 
 ### <a name="anomalous-activity-reports"></a>Rendellenes tevékenységgel kapcsolatos jelentések
 
-A rendellenes tevékenységekről szóló jelentések információt nyújtanak a biztonsággal kapcsolatos kockázati eseményekről, amelyeket az Azure AD képes felderíteni és jelenteni.
+A rendellenes tevékenységekről szóló jelentések információt nyújtanak a biztonsággal kapcsolatos, az Azure AD által észlelhető és jelentett biztonsági kockázatokról.
 
-A következő táblázat felsorolja az Azure AD rendellenes tevékenységek biztonsági jelentéseit és a Azure Portal megfelelő kockázati események típusait. További információkért tekintse át [Az Azure Active Directory kockázati eseményeivel](concept-risk-events.md) foglalkozó cikket.  
+A következő táblázat felsorolja az Azure AD rendellenes tevékenységek biztonsági jelentéseit és a Azure Portal megfelelő kockázati észlelési típusokat. További információ: [Azure Active Directory kockázati észlelések](concept-risk-events.md).  
 
 
-| Azure AD rendellenes tevékenységekről szóló jelentés |  Identity Protection-kockázati esemény típusa|
+| Azure AD rendellenes tevékenységekről szóló jelentés |  Identity Protection kockázati észlelési típusa|
 | :--- | :--- |
 | Felhasználók, akiknek kiszivárogtak a hitelesítő adatai | Kiszivárgott hitelesítő adatok |
 | Rendszertelen bejelentkezési tevékenység | Bejelentkezés szokatlan helyekről |
 | Bejelentkezések potenciálisan fertőzött eszközökről | Bejelentkezések fertőzött eszközökről|
-| Bejelentkezések ismeretlen forrásokról | Névtelen IP-címről történő bejelentkezések |
-| Gyanús tevékenységeket mutató IP-címekről indított bejelentkezések | Gyanús tevékenységeket mutató IP-címekről indított bejelentkezések |
-| - | Ismeretlen helyekről történt bejelentkezések |
+| Bejelentkezések ismeretlen forrásokról | Bejelentkezések névtelen IP-címről |
+| Bejelentkezések gyanús tevékenységeket mutató IP-címekkel | Bejelentkezések gyanús tevékenységeket mutató IP-címekkel |
+| - | Bejelentkezések ismeretlen helyekről |
 
-A következő Azure AD rendellenes tevékenység biztonsági jelentései nem szerepelnek kockázati eseményként a Azure Portalban:
+A következő Azure AD rendellenes tevékenység biztonsági jelentései nem szerepelnek a Azure Portalban felderített kockázati észlelésekben:
 
 * Több hibát követő bejelentkezések
 * Bejelentkezések különböző földrajzi régiókból
 
 
-### <a name="detected-risk-events"></a>Észlelt kockázati események
+### <a name="detected-risk-detections"></a>Észlelt kockázati észlelések
 
-Az észlelt kockázati eseményekről a [Azure Portal](https://portal.azure.com) **Azure Active Directory** paneljének **biztonsági** szakaszában férhet hozzá a jelentésekhez. Az észlelt kockázati eseményeket a következő jelentések követik nyomon:   
+Az észlelt kockázati észlelésekkel kapcsolatos jelentések a [Azure Portal](https://portal.azure.com) **Azure Active Directory** paneljének **biztonsági** szakaszában érhetők el. Az észlelt kockázati észleléseket a következő jelentések követik nyomon:   
 
 - [Veszélyeztetett felhasználók](concept-user-at-risk.md)
 - [Kockázatos bejelentkezések](concept-risky-sign-ins.md)
@@ -147,7 +147,7 @@ Az észlelt kockázati eseményekről a [Azure Portal](https://portal.azure.com)
 
 #### <a name="symptoms"></a>Probléma 
 
-Letöltöttem a tevékenységnaplókat (audit vagy bejelentkezési), és nem látom a kiválasztott időre vonatkozó összes rekordot. Miért? 
+Letöltöttem a tevékenységnaplókat (audit vagy bejelentkezési), és nem látom a kiválasztott időre vonatkozó összes rekordot. Hogy miért? 
 
  ![Jelentéskészítés](./media/troubleshoot-missing-data-download/01.png)
  
@@ -205,7 +205,7 @@ Várjon, hogy a műveletek úgy 15 perc és két óra közötti időtartam eltel
 
 #### <a name="symptoms"></a>Probléma
 
-Nem jelenik meg 30 napnál több bejelentkezési és auditadat az Azure Portalról. Miért? 
+Nem jelenik meg 30 napnál több bejelentkezési és auditadat az Azure Portalról. Hogy miért? 
 
  ![Jelentéskészítés](./media/troubleshoot-missing-audit-data/03.png)
 

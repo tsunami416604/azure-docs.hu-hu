@@ -3,25 +3,22 @@ title: Az első data factory létrehozása (Resource Manager-sablon) | Microsoft
 description: Ebben az oktatóprogramban egy egyszerű minta Azure Data Factory-folyamatot fog létrehozni egy Azure Resource Manager-sablon segítségével.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: eb9e70b9-a13a-4a27-8256-2759496be470
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 66475c0500cb3106dc95945dd2e457e20f68bff3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: c4ff0f28f4f0058d388e3b2f9c753737fb6ee0d4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836670"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140501"
 ---
-# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Az első Azure data factory használatával az Azure Resource Manager-sablon létrehozása
+# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Az első Azure-beli adatelőállító létrehozása Azure Resource Manager sablon használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
@@ -31,16 +28,16 @@ ms.locfileid: "67836670"
 > 
  
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [a rövid útmutató: Hozzon létre egy data factoryt az Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a gyors [útmutató: Hozzon létre egy adatgyárat a Azure Data Factory](../quickstart-create-data-factory-dot-net.md)használatával.
 
 Ez a cikk bemutatja, hogyan hozhatja létre első Azure data factoryját egy Azure Resource Manager-sablonnal. Ha ezt az oktatóanyagot más eszközök/SDK-k használatával szeretné elvégezni, válassza ki az egyik lehetőséget a legördülő listából.
 
-Ebben az oktatóanyagban szereplő folyamat egyetlen tevékenységet tartalmaz: **HDInsight Hive-tevékenység**. A tevékenység egy hive-szkriptet futtat egy Azure HDInsight fürtön, amely a bemeneti adatokat átalakítja a kimeneti adatok előállításához. A folyamat úgy van ütemezve, hogy havonta egyszer fusson a megadott kezdő és befejező időpontok közt. 
+Az oktatóanyagban szereplő folyamat egyetlen tevékenységgel rendelkezik: **HDInsight-struktúra tevékenysége**. A tevékenység egy hive-szkriptet futtat egy Azure HDInsight fürtön, amely a bemeneti adatokat átalakítja a kimeneti adatok előállításához. A folyamat úgy van ütemezve, hogy havonta egyszer fusson a megadott kezdő és befejező időpontok közt. 
 
 > [!NOTE]
-> Az oktatóanyagban található adatfolyamat átalakítja a bemeneti adatokat, hogy ezzel kimeneti adatokat hozzon létre. Az Azure Data Factory használata adatok másolása oktatóanyagért lásd: [oktatóanyag: Adatok másolása Blob Storage-ból az SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Az oktatóanyagban található adatfolyamat átalakítja a bemeneti adatokat, hogy ezzel kimeneti adatokat hozzon létre. Az Azure Data Factory használatával történő adatmásolással kapcsolatos oktatóanyagért lásd [: oktatóanyag: Adatok másolása Blob Storageból SQL Databaseba](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
-> Ebben az oktatóanyagban szereplő folyamat csak egyetlen tevékenységtípussal rendelkezik: HDInsightHive. Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További tudnivalókért lásd: [Ütemezés és végrehajtás a Data Factoryban](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
+> Az oktatóanyagban szereplő folyamatnak csak egy típusú tevékenysége van: HDInsightHive. Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További tudnivalókért lásd: [Ütemezés és végrehajtás a Data Factoryban](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -62,7 +59,7 @@ Ebben az oktatóanyagban szereplő folyamat egyetlen tevékenységet tartalmaz: 
 
 A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy vagy több tevékenység lehet. Kétféle típusú tevékenység létezik: az [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) és az [adatátalakítási tevékenységek](data-factory-data-transformation-activities.md). Az oktatóanyag segítségével egyetlen tevékenységgel (Hive-tevékenységgel) rendelkező folyamatot hozhat létre.
 
-A következő szakasz a Data Factory-entitások meghatározására szolgáló teljes Resource Manager-sablont ismerteti, így gyorsan végighaladhat az oktatóanyagon és tesztelheti a sablont. Az egyes Data Factory-entitások meghatározásának megértéséhez tekintse meg a [Data Factory-entitások a sablonban](#data-factory-entities-in-the-template) szakaszt. A JSON-szintaxist és a egy sablont a Data Factory-erőforrások tulajdonságai kapcsolatos további információkért lásd: [Microsoft.DataFactory erőforrástípusok](/azure/templates/microsoft.datafactory/allversions).
+A következő szakasz a Data Factory-entitások meghatározására szolgáló teljes Resource Manager-sablont ismerteti, így gyorsan végighaladhat az oktatóanyagon és tesztelheti a sablont. Az egyes Data Factory-entitások meghatározásának megértéséhez tekintse meg a [Data Factory-entitások a sablonban](#data-factory-entities-in-the-template) szakaszt. A sablon Data Factory erőforrásainak JSON-szintaxisával és tulajdonságaival kapcsolatos információkért lásd: [Microsoft. DataFactory-erőforrástípusok](/azure/templates/microsoft.datafactory/allversions).
 
 ## <a name="data-factory-json-template"></a>Data Factory JSON-sablon
 A data factory meghatározásához szükséges legfelső szintű Resource Manager-sablon a következő: 
@@ -264,7 +261,7 @@ Hozzon létre egy **ADFTutorialARM.json** nevű JSON-fájlt a **C:\ADFGetStarted
 ```
 
 > [!NOTE]
-> Azure data factory létrehozásához a Resource Manager-sablon egy másik példát talál [oktatóanyag: Folyamat létrehozása másolási tevékenységgel az Azure Resource Manager-sablon használatával](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md).  
+> A Resource Manager-sablonok egy másik példáját is megtalálhatja az Azure- [beli adatgyár létrehozásához az oktatóanyagban: Másolási tevékenységgel rendelkező folyamat létrehozása Azure Resource Manager sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)használatával.  
 > 
 > 
 
@@ -410,7 +407,7 @@ Ebben a szakaszban megadhatja az Azure-tárfiók nevét és kulcsát. Az Azure S
     }
 }
 ```
-A **connectionString** a storageAccountName és storageAccountKey paramétereket használja. A paraméterek értékei a konfigurációs fájlok használatával adhatók át. A definíció változókat is használ: azureStorageLinkedService és a datafactoryname értékeket definiálva a sablonban. 
+A **connectionString** a storageAccountName és storageAccountKey paramétereket használja. A paraméterek értékei a konfigurációs fájlok használatával adhatók át. A definíció a sablonban definiált változókat is használja: azureStorageLinkedService és dataFactoryName. 
 
 #### <a name="hdinsight-on-demand-linked-service"></a>HDInsight igény szerinti társított szolgáltatás
 A HDInsight igény szerinti társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg a [Számítási társított szolgáltatás](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) című cikket.  
@@ -618,7 +615,7 @@ Az itt látható, mintául szolgáló Resource Manager-sablonnal egy háttérben
     ]
 }
 ```
-Ez a sablon nevű átjáróval GatewayUsingArmDF nevű data factoryt hoz létre: GatewayUsingARM. 
+Ez a sablon létrehoz egy GatewayUsingArmDF nevű adatelőállítót egy nevű átjáróval: GatewayUsingARM. 
 
 ## <a name="see-also"></a>Lásd még:
 

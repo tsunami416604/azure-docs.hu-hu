@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: af95ad892b62cb5d8bece554d6026525d9279777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 03651ecb073d02a373c434b8cb55bdafec6d142a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102874"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142222"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Gyakori kérdések (GYIK)
 
@@ -172,7 +172,7 @@ Nem, a függőségi vizualizációt nem lehet exportálni. Mivel azonban a Azure
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-the-dependency-agent"></a>Hogyan automatizálható a Microsoft monitoring Agent (MMA) és a függőségi ügynök telepítése?
 
-[Az ügynökök telepítéséhez](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)használja ezt a parancsfájlt. Kövesse ezeket az [utasításokat az MMA telepítéséhez](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) a parancssor vagy az Automation használatával. Az MMA esetében használja [ezt a parancsfájlt](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+Ezzel [a parancsfájllal telepítheti a függőségi ügynököt](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Kövesse ezeket az [utasításokat az MMA telepítéséhez](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) a parancssor vagy az Automation használatával. Az MMA esetében használja [ezt a parancsfájlt](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 
 A parancsfájlok mellett olyan központi telepítési eszközöket is használhat, mint a System Center Configuration Manager és a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) az ügynökök üzembe helyezéséhez.
 
@@ -183,8 +183,7 @@ A parancsfájlok mellett olyan központi telepítési eszközöket is használha
 
 ### <a name="what-operating-systems-are-supported-by-the-dependency-agent"></a>Milyen operációs rendszereket támogat a függőségi ügynök?
 
-- A [függőségi ügynök által támogatott Windows operációs rendszerek](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems)listájának megtekintése.
-- A [függőségi ügynök által támogatott Linux operációs rendszerek](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)listájának megtekintése.
+A [Azure monitor for VMS által támogatott Windows-és Linux-operációs rendszerek](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)listájának megtekintése.
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Megjeleníthetem a függőségeket Azure Migrateban több mint egy óráig?
 Nem. A függőségeket akár egy óráig is megjelenítheti. Visszatérhet egy adott dátumhoz az előzményekben, egy hónapra visszamenőleg, de a vizualizációk maximális időtartama egy óra. Használhatja például az időtartamot a függőségi térképen a tegnapi függőségek megtekintéséhez, de csak egyórás időszakra lehet megtekinteni. A [függőségi adat](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) hosszabb időtartamon keresztül történő lekérdezéséhez azonban Azure monitor naplókat is használhat.

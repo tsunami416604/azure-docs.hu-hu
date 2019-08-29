@@ -11,23 +11,23 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6751fe74bfd9b8a07aec2263582d9f1a4bc0b2ac
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: b1a1c35929670891c38bb1b3e26806b4c9bed6a0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333985"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126464"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection Glossary
 
 ### <a name="at-risk-user"></a>Veszélyeztetett (felhasználó)
-Egy vagy több aktív kockázati eseményt használó felhasználó. 
+Egy vagy több aktív kockázati észleléssel rendelkező felhasználó. 
 
 ### <a name="atypical-sign-in-location"></a>Szokatlan bejelentkezési hely
 Egy földrajzi helyről való bejelentkezés, amely nem jellemző az adott felhasználóra, a hasonló felhasználókra vagy a bérlőre.
 
 ### <a name="azure-ad-identity-protection"></a>Azure AD Identity Protection
-Azure Active Directory biztonsági modulja, amely összevont nézetet biztosít a kockázati eseményekről és a szervezet identitásait érintő lehetséges sebezhetőségekről.
+Azure Active Directory biztonsági modulja, amely összevont nézetet biztosít a szervezet identitásait érintő kockázati észlelések és lehetséges sebezhetőségek tekintetében.
 
 ### <a name="conditional-access"></a>Feltételes hozzáférés
 Az erőforrásokhoz való hozzáférés biztosítására szolgáló szabályzat. A feltételes hozzáférési szabályokat a Azure Active Directory tárolja, és az Azure AD kiértékeli az erőforráshoz való hozzáférés megadását megelőzően.  Ilyen szabályok például a hozzáférés korlátozása a felhasználói hely, az Eszközállapot vagy a felhasználói hitelesítési módszer alapján.
@@ -38,31 +38,31 @@ Információ, amely tartalmazza a helyi és hálózati erőforrásokhoz való ho
 ### <a name="event"></a>Esemény
 Egy tevékenység rekordja Azure Active Directoryban.
 
-### <a name="false-positive-risk-event"></a>Hamis pozitív (kockázati esemény)
-Az Identity Protection felhasználója manuálisan állítja be a kockázati esemény állapotát, amely azt jelzi, hogy a kockázati eseményt megvizsgálták, és a rendszer helytelenül jelölték meg kockázati eseményként.
+### <a name="false-positive-risk-detection"></a>Hamis pozitív (kockázati észlelés)
+Egy Identity Protection-felhasználó által manuálisan beállított kockázatkezelési állapot, amely azt jelzi, hogy a rendszer megvizsgálta a kockázat észlelését, és a kockázat észlelése helytelenül van megjelölve.
 
 ### <a name="identity"></a>Identitás
 Olyan személy vagy entitás, amelyet hitelesítéssel kell ellenőrizni, például jelszó vagy tanúsítvány alapján.
 
-### <a name="identity-risk-event"></a>Identity kockázati esemény
+### <a name="identity-risk-detection"></a>Identitás kockázatának észlelése
 HRE-esemény, amely rendellenesként van megjelölve az Identity Protection által, és jelezheti, hogy az identitás biztonsága sérült.
 
-### <a name="ignored-risk-event"></a>Figyelmen kívül hagyva (kockázati esemény)
-Az Identity Protection felhasználója manuálisan állítja be a kockázati esemény állapotát, amely azt jelzi, hogy a kockázati esemény a Szervizelési művelet végrehajtása nélkül zárul le.
+### <a name="ignored-risk-detection"></a>Figyelmen kívül hagyva (kockázati észlelés)
+Egy Identity Protection-felhasználó által manuálisan beállított kockázatkezelési állapot, amely azt jelzi, hogy a kockázatok észlelése lezárult a Szervizelési művelet végrehajtása nélkül.
 
 ### <a name="impossible-travel-from-atypical-locations"></a>Nem lehet utazni szokatlan helyekről
-Egy kockázati esemény akkor aktiválódik, ha ugyanahhoz a felhasználóhoz két bejelentkezést észlelt a rendszer, ahol legalább egy szokatlan bejelentkezési helyről van szó, és a bejelentkezések közötti idő rövidebb, mint a helyek közötti fizikai utazás minimális ideje.  
+A kockázatkezelés akkor aktiválódik, ha ugyanahhoz a felhasználóhoz két bejelentkezést észlelt a rendszer, ahol legalább az egyik szokatlan bejelentkezési helyről van szó, és a bejelentkezések közötti idő rövidebb, mint a fizikai utazáshoz szükséges minimális idő. helyek.  
 
 ### <a name="investigation"></a>Vizsgálat
-A kockázati eseményekkel kapcsolatos tevékenységek, naplók és egyéb kapcsolódó információk áttekintésének folyamata annak eldöntéséhez, hogy szükség van-e a szervizelésre vagy a kockázatcsökkentő lépésekre, meg kell ismernie, hogy az identitás biztonsága és módja, valamint a feltört identitás használatban volt.
+A kockázatértékeléssel kapcsolatos tevékenységek, naplók és egyéb kapcsolódó információk áttekintésének folyamata annak eldöntéséhez, hogy szükség van-e a szervizelésre vagy a kockázatcsökkentő lépésekre, meg kell ismernie, hogy az identitás biztonsága és módja, valamint a feltört az identitás használatban volt.
 
 ### <a name="leaked-credentials"></a>Kiszivárgott hitelesítő adatok
-Az aktuális felhasználói hitelesítő adatok (Felhasználónév és jelszó) elküldésekor kiváltott kockázati esemény, amely a kutatók által a Dark web-ben nyilvánosan elérhető.
+Az aktuális felhasználói hitelesítő adatok (Felhasználónév és jelszó) kiváltása akkor aktiválódik, amikor a kutatók a Dark web-ben nyilvánosan közzétették a felhasználókat.
 
 ### <a name="mitigation"></a>Kezelés
-Olyan művelet, amely korlátozza vagy megszünteti a támadók számára a sérült identitás vagy eszköz kihasználása az identitás vagy az eszköz biztonságos állapotba való visszaállítása nélkül. A mérséklés nem oldja meg az identitáshoz vagy eszközhöz társított korábbi kockázati eseményeket.
+Olyan művelet, amely korlátozza vagy megszünteti a támadók számára a sérült identitás vagy eszköz kihasználása az identitás vagy az eszköz biztonságos állapotba való visszaállítása nélkül. A mérséklés nem oldja meg az identitáshoz vagy eszközhöz társított korábbi kockázati észleléseket.
 
-### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 Olyan hitelesítési módszer, amelynek két vagy több hitelesítési módszerre van szüksége, ami magában foglalhatja a felhasználó által birtokolt, ilyen tanúsítványokat is. amit a felhasználó ismer, például felhasználóneveket, jelszavakat vagy pass-kifejezéseket; fizikai attribútumok, például ujjlenyomatok; és személyes attribútumok, például személyes aláírások.
 
 ### <a name="offline-detection"></a>Offline észlelés
@@ -75,10 +75,10 @@ Egy biztonsági szabályzat része, amely meghatározza az entitásokat (csoport
 A biztonsági szabályzat azon része, amely leírja a szabályzatot kiváltó körülményeket, valamint a szabályzat indításakor végrehajtott műveleteket.
 
 ### <a name="prevention"></a>Megelőzés
-Egy olyan művelet, amely megakadályozza a szervezet sérülését egy olyan személyazonosság vagy eszköz általi visszaélés miatt, amely gyaníthatóan vagy ismeri a veszélyt. A megelőzési műveletek nem védik az eszközt vagy az identitást, és nem oldják fel az előző kockázati eseményeket.
+Egy olyan művelet, amely megakadályozza a szervezet sérülését egy olyan személyazonosság vagy eszköz általi visszaélés miatt, amely gyaníthatóan vagy ismeri a veszélyt. A megelőzési műveletek nem védik az eszközt vagy az identitást, és nem oldják fel a korábbi kockázati észleléseket.
 
 ### <a name="privileged-user"></a>Kiemelt jogosultságú (felhasználó)
-A kockázati esemény időpontjában a felhasználó állandó vagy ideiglenes rendszergazdai engedéllyel rendelkezett a Azure Active Directory egy vagy több erőforrásához, mint például a globális rendszergazda, a számlázási rendszergazda, a szolgáltatás-rendszergazda, a felhasználói rendszergazda és a jelszó-rendszergazda. 
+A kockázatok észlelésének időpontjában a felhasználó állandó vagy ideiglenes rendszergazdai engedéllyel rendelkezett a Azure Active Directory egy vagy több erőforrásához, például: globális rendszergazda, számlázási rendszergazda, szolgáltatás rendszergazdája, felhasználói rendszergazda és jelszó Rendszergazda. 
 
 ### <a name="real-time"></a>Valós idejű
 Lásd: valós idejű észlelés.
@@ -86,23 +86,23 @@ Lásd: valós idejű észlelés.
 ### <a name="real-time-detection"></a>Valós idejű észlelés
 A rendellenességek észlelése és a kockázat kiértékelése olyan eseményeknél, mint például a bejelentkezési kísérlet, mielőtt az esemény továbblép.
 
-### <a name="remediated-risk-event"></a>Szervizelés (kockázati esemény)
-Az Identity Protection automatikusan beállítja a kockázati esemény állapotát, ami azt jelzi, hogy a kockázati eseményt az adott típusú kockázati esemény esetében a standard szervizelési művelettel szervizelték. Ha például a rendszer alaphelyzetbe állítja a felhasználói jelszót, számos kockázati esemény automatikusan szervizelésre kerül, amely jelzi, hogy az előző jelszót feltörték.
+### <a name="remediated-risk-detection"></a>Szervizelés (kockázat észlelése)
+Az Identity Protection automatikusan beállítja a kockázatkezelési állapotot, ami azt jelzi, hogy a kockázat észlelését a rendszer az ilyen típusú kockázati észleléshez használt standard szervizelési művelettel szervizelte. Ha például a rendszer alaphelyzetbe állítja a felhasználói jelszót, számos olyan kockázati észlelést észlel, amely azt jelzi, hogy az előző jelszó biztonsága megsérül.
 
 ### <a name="remediation"></a>Szervizelés
-Egy olyan művelet, amely olyan identitás vagy eszköz védelmét teszi biztonságossá, amely korábban gyanúba esett vagy ismert volt. Egy szervizelési művelet visszaállítja az identitást vagy az eszközt egy biztonságos állapotba, és feloldja az identitáshoz vagy eszközhöz társított korábbi kockázati eseményeket.
+Egy olyan művelet, amely olyan identitás vagy eszköz védelmét teszi biztonságossá, amely korábban gyanúba esett vagy ismert volt. Egy szervizelési művelet visszaállítja az identitást vagy az eszközt egy biztonságos állapotba, és feloldja az identitáshoz vagy eszközhöz társított korábbi veszélyforrások észlelését.
 
-### <a name="resolved-risk-event"></a>Megoldott (kockázati esemény)
-Az Identity Protection felhasználója manuálisan állítja be a kockázati esemény állapotát, amely azt jelzi, hogy a felhasználó megfelelő szervizelési műveletet végzett az Identity Protectionn kívül, és a kockázati eseményt zártnak kell tekinteni.
+### <a name="resolved-risk-detection"></a>Megoldott (kockázati észlelés)
+Egy Identity Protection-felhasználó által manuálisan beállított kockázatkezelési állapot, amely azt jelzi, hogy a felhasználó megfelelő szervizelési műveletet végzett az Identity Protectionn kívül, és a kockázat észlelését zártnak kell tekinteni.
 
-### <a name="risk-event-status"></a>Kockázati esemény állapota
-Egy kockázati esemény tulajdonsága, amely azt jelzi, hogy az esemény aktív-e, és ha be van zárva, a Bezárás oka.
+### <a name="risk-detection-status"></a>Kockázat észlelésének állapota
+Egy kockázatkezelési tulajdonság, amely azt jelzi, hogy az esemény aktív-e, és ha be van zárva, a Bezárás oka.
 
-### <a name="risk-event-type"></a>Kockázati esemény típusa
-A kockázati Esemény kategóriája, amely azt jelzi, hogy milyen típusú anomália okozta az eseményt kockázatos.
+### <a name="risk-detection-type"></a>Kockázat észlelésének típusa
+A kockázat észlelésének kategóriája, amely azt jelzi, hogy milyen típusú anomália okozta az eseményt kockázatos.
 
-### <a name="risk-level-risk-event"></a>Kockázati szint (kockázati esemény)
-A kockázati esemény súlyosságának jelzése (magas, közepes vagy alacsony), amely segíti az Identity Protection-felhasználók számára, hogy a szervezetük kockázatának csökkentése érdekében az általuk végrehajtott műveleteket rangsorolják. 
+### <a name="risk-level-risk-detection"></a>Kockázati szint (kockázati észlelés)
+A kockázat észlelésének súlyossága (magas, közepes vagy alacsony), amely segíti az Identity Protection-felhasználók számára, hogy a szervezetük kockázatának csökkentése érdekében az általuk végrehajtott műveleteket rangsorolják. 
 
 ### <a name="risk-level-sign-in"></a>Kockázati szint (bejelentkezés)
 Egy adott bejelentkezés valószínűségének (magas, közepes vagy alacsony) jele, hogy valaki más megpróbálja használni a felhasználó identitását.
@@ -126,16 +126,16 @@ Azure Active Directory identitásának hitelesítése.
 A Azure Active Directory identitás hitelesítésének folyamata vagy művelete, valamint a műveletet rögzítő esemény.
 
 ### <a name="sign-in-from-anonymous-ip-address"></a>Bejelentkezés névtelen IP-címről
-Az IP-címről a névtelen proxy IP-címként azonosított sikeres bejelentkezés után kiváltott kockázati esemény.
+Egy, a névtelen proxy IP-címeként azonosított IP-címről érkező sikeres bejelentkezés után kiváltott kockázat észlelése.
 
 ### <a name="sign-in-from-infected-device"></a>Bejelentkezés fertőzött eszközről
-Olyan kockázati esemény, amely akkor aktiválódik, ha a bejelentkezés egy IP-címről származik, amelyet egy vagy több sérült eszköz használ, amely aktívan próbálkozik a bot-kiszolgálóval való kommunikációra.
+A kockázatkezelés akkor aktiválódik, ha a bejelentkezés egy IP-címről származik, amelyet egy vagy több olyan sérült eszköz használ, amely aktívan próbálkozik a bot-kiszolgálóval való kommunikációra.
 
 ### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Bejelentkezés gyanús tevékenységű IP-címről
-Egy olyan kockázati esemény, amely sikeres bejelentkezés után egy olyan IP-címről váltott ki, amely nagy számú sikertelen bejelentkezési kísérletet adott rövid idő alatt több felhasználói fiók között.
+A kockázatok észlelése egy olyan IP-címről sikeres bejelentkezés után váltott ki, amely a sikertelen bejelentkezési kísérleteket több felhasználói fiókra vonatkozóan rövid idő alatt elvégezte.
 
 ### <a name="sign-in-from-unfamiliar-location"></a>Bejelentkezés ismeretlen helyről
-Olyan kockázati esemény, amely akkor aktiválódik, amikor egy felhasználó sikeresen bejelentkezik egy új helyről (IP, szélesség/hosszúság és ASN).
+A kockázatkezelés akkor aktiválódik, amikor egy felhasználó sikeresen bejelentkezik egy új helyről (IP-cím, szélesség/hosszúság és ASN).
 
 ### <a name="sign-in-risk"></a>Bejelentkezési kockázat
 Lásd: kockázati szint (bejelentkezés)
@@ -153,7 +153,7 @@ Lásd: kockázati szint (felhasználói kompromisszum).
 Feltételes hozzáférési szabályzat, amely figyelembe veszi a bejelentkezést, és az előre meghatározott feltételek és szabályok alapján alkalmazza a korlátozásokat.
 
 ### <a name="users-flagged-for-risk"></a>Kockázatosként megjelölt felhasználók
-Azok a felhasználók, akiknek aktív vagy szervizelt kockázati eseményei vannak
+Azok a felhasználók, akiknek aktív vagy szervizelt kockázati észlelésük van
 
 ### <a name="vulnerability"></a>Biztonsági rés
 A Azure Active Directory konfigurációját vagy feltételét, amely a könyvtárat kihasználja a biztonsági rések vagy fenyegetések ellen.

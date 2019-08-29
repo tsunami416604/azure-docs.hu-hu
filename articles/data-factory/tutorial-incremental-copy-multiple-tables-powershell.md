@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 244779e647c4b184b036b1a5ea77aac199be5994
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0c5b9a16a7b52239f1ef16d42e1b4be344863a04
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60570684"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140625"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL-adatbázisba.    
@@ -173,9 +172,9 @@ END
 ### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Adattípusok és további tárolt eljárások létrehozása az Azure SQL-adatbázisban
 Az alábbi lekérdezés futtatásával hozzon létre két tárolt eljárást és két adattípust az SQL-adatbázisban. Ezek összevonják a forrástáblák adatait a céltáblákba. 
 
-Annak érdekében, hogy az utazás egyszerűen a következővel kell kezdődnie, azt közvetlenül a tárolt eljárások a változásadatok a passing táblázatváltozó keresztül használja, és majd céltár egyesíti a azokat. Legyen óvatos, hogy, nem a várt "" nagyszámú (több mint 100). a különbözeti sorok a következő táblaváltozót tárolja.  
+Ahhoz, hogy az utazást könnyen el lehessen kezdeni, közvetlenül használjuk ezeket a tárolt eljárásokat egy tábla változón keresztül, majd összevonjuk őket a célhelyek tárolójába. Legyen óvatos, ha nem vár "nagy" számú különbözeti sort (több mint 100) a Table változóban.  
 
-Ha szeretné a különbözeti sorokat nagy számú egyesítse a céltár, javasoljuk, hogy kell használni a másolási tevékenység a változásadatok másolásához a célhelyen "átmeneti" ideiglenes táblába első tárolja, és majd beépített táblában vari használata nélkül a saját tárolt eljárás lehet egyesíteni őket, a "átmeneti" tábla "záró" táblához. 
+Ha nagy számú különbözeti sort kell egyesíteni a célhelyen, javasoljuk, hogy a másolási tevékenység használatával másolja át az összes különbözeti értéket a cél tárolóban lévő ideiglenes "átmeneti" táblába, majd a Table Vari használata nélkül készítse el saját tárolt eljárását. képes egyesíteni őket az "átmeneti" táblából a "Final" táblába. 
 
 
 ```sql
@@ -272,7 +271,7 @@ Vegye figyelembe a következő szempontokat:
     The specified Data Factory name 'ADFIncMultiCopyTutorialFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Adatelőállító-példányok létrehozásához a felhasználói fióknak, amellyel bejelentkezik az Azure-ba, a közreműködő vagy tulajdonos szerepkörök tagjának, vagy az Azure-előfizetés rendszergazdájának kell lennie.
-* Azure-régióban, amelyben a Data Factory jelenleg listája, válassza ki a régiók, amelyek a következő oldalon érdeklődésére számot tartó, és bontsa ki **Analytics** található **adat-előállító**: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). Az adat-előállítók által használt adattárak (Azure Storage, SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
+* Azon Azure-régiók listájáért, amelyekben Data Factory jelenleg elérhető, válassza ki a következő oldalon megtekinteni kívánt régiókat, majd bontsa ki az **elemzés** elemet a **Data Factory**megkereséséhez: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). Az adat-előállítók által használt adattárak (Azure Storage, SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 

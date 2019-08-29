@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 0e0ad63ffb8d9c22d1b527644bc78e229ac6830c
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: bbec8c79b7d1b1a3f8864e12a6dc5b6c07bbb05d
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668200"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147818"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Első lépések IoT Hub modul identitása és modulja – twin (C)
 
@@ -31,7 +31,7 @@ Az oktatóanyag végén két C alkalmazás található:
 > [!NOTE]
 > További információ az Azure IoT SDK-k használatáról, amelyekkel az eszközökön futtatott alkalmazások és a megoldási háttérrendszer is használható: [Azure IoT SDK](iot-hub-devguide-sdks.md)-k.
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+## <a name="prerequisites"></a>Előfeltételek
 
 * Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
 

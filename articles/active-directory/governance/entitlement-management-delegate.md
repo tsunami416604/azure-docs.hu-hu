@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4430e2115e4282ba7bb618184139a845547a06ed
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 064724b3c6a5faa485850ecdfa3d3759d3631be0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967092"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124912"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Feladatok delegálása az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -30,13 +30,15 @@ ms.locfileid: "68967092"
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Alapértelmezés szerint a globális rendszergazdák és a felhasználói rendszergazdák az Azure AD-jogosultságok felügyeletének minden aspektusát létrehozzák és kezelhetik. Előfordulhat azonban, hogy az ezekben a szerepkörökben lévő felhasználók nem ismerik az összes olyan forgatókönyvet, amelyben hozzáférési csomagok szükségesek. Jellemzően olyan részlegek felhasználói, akik tudják, hogy kivel kell együttműködni.
+Alapértelmezés szerint a globális rendszergazdák és a felhasználói rendszergazdák az Azure AD-jogosultságok felügyeletének minden aspektusát létrehozzák és kezelhetik. Előfordulhat azonban, hogy az ezekben a szerepkörökben lévő felhasználók nem ismerik az összes olyan forgatókönyvet, amelyben hozzáférési csomagok szükségesek. Jellemzően olyan részlegek felhasználói, akik tudják, hogy kivel kell együttműködni. 
 
-A nem rendszergazdák számára nem korlátozott engedélyek megadása helyett a lehető legkevesebb engedélyt adhat a felhasználóknak a feladatok elvégzéséhez, és el kell kerülniük az ütköző vagy nem megfelelő hozzáférési jogosultságok létrehozását. Ez a cikk azokat a szerepköröket ismerteti, amelyeket hozzárendelhet a jogosultság-kezelés különböző feladatai delegálásához.
+A nem rendszergazdák számára nem korlátozott engedélyek megadása helyett a lehető legkevesebb engedélyt adhat a felhasználóknak a feladatok elvégzéséhez, és el kell kerülniük az ütköző vagy nem megfelelő hozzáférési jogosultságok létrehozását. Ez a cikk azokat a szerepköröket ismerteti, amelyeket hozzárendelhet a jogosultság-kezelés különböző feladatai delegálásához. 
 
 ## <a name="delegate-example-for-departmental-adoption"></a>Példa delegálásra a tanszékek bevezetéséhez
 
-Ha meg szeretné tudni, hogyan delegálhatja a feladatokat a jogosultságok kezelésében, ez segít megfontolni egy példát. Tegyük fel, hogy a szervezete a következő öt felhasználóval rendelkezik:
+Ha meg szeretné tudni, hogyan delegálhatja a feladatokat a jogosultságok kezelésében, ez segít megfontolni egy példát. 
+
+Tegyük fel, hogy a szervezete a következő öt felhasználóval rendelkezik:
 
 | Felhasználó | Részleg | Megjegyzések |
 | --- | --- | --- |
@@ -59,6 +61,7 @@ Mind a kutatási, mind a marketing részleg a jogosultságok felügyeletét szer
 Most a kutatási és marketing részlegek is használhatják a jogosultságok kezelését. Bob, Carol, Dave és ELISA a megfelelő katalógusokban hozhat létre és kezelhet hozzáférési csomagokat.
 
 ![Jogosultsági felügyeleti delegált példa](./media/entitlement-management-delegate/elm-delegate.png)
+
 
 ## <a name="entitlement-management-roles"></a>Jogosultsági felügyeleti szerepkörök
 
@@ -113,6 +116,7 @@ Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhaszná
 | [Alkalmazás-rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa |  |  | :heavy_check_mark: |  |
 | [Cloud Application Administrator](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa |  |  | :heavy_check_mark: |  |
 | Felhasználó | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha az alkalmazás tulajdonosa |  |
+
 
 ## <a name="add-a-catalog-creator"></a>Katalógus létrehozójának hozzáadása
 

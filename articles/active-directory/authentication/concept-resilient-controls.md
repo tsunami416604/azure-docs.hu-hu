@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9be48d8f403d3ddde993ebdcf0142b55e52afce
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 675e970bbdaeb035273eb87394dda610e070aa39
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779674"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125113"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Rugalmas hozzáférés-vezérlési felügyeleti stratégia létrehozása Azure Active Directory
 
@@ -80,12 +80,12 @@ Ez a példa a kiválasztott felhasználók számára biztosítja a **AppUsers**,
 * 1\. szabályzat: A célcsoportokon kívüli személyek hozzáférésének letiltása
   * Felhasználók és csoportok: Minden felhasználó belefoglalása. A AppUsers, a CoreAdmins és a EmergencyAccess kizárása
   * Felhőalapú alkalmazások: Minden alkalmazás belefoglalása
-  * Feltételek (nincs)
+  * Feltételek NEz egy
   * Ellenőrzés engedélyezése: Letiltás
 * 2\. szabályzat: Az MFA-t vagy a megbízható eszközt igénylő AppUsers való hozzáférés biztosítása.
   * Felhasználók és csoportok: AppUsers belefoglalása. CoreAdmins és EmergencyAccess kizárása
   * Felhőalapú alkalmazások: Minden alkalmazás belefoglalása
-  * Feltételek (nincs)
+  * Feltételek NEz egy
   * Ellenőrzés engedélyezése: Hozzáférés biztosítása, többtényezős hitelesítés megkövetelése, az eszköz megfelelőségének megkövetelése. Több vezérlő esetén: A kiválasztott vezérlők egyikének megkövetelése.
 
 ### <a name="contingencies-for-user-lockout"></a>Felhasználói zárolási szükséghelyzetek
@@ -232,7 +232,7 @@ Attól függően, hogy a rendszer milyen enyhítéseket vagy feltételeket haszn
 1. A változás-ellenőrzési stratégia részeként dokumentálja az összes módosítást és az előző állapotot, hogy vissza tudja állítani az összes olyan előfizetési lehetőséget, amelyet azonnal végrehajtott, amint a hozzáférés-vezérlés teljesen működőképes.
 2. Tegyük fel, hogy a rosszindulatú szereplők jelszó-vagy adathalászat-támadásokkal próbálnak begyűjteni jelszavakat az MFA letiltásakor. Emellett előfordulhat, hogy a rossz színészek már rendelkeznek olyan jelszavakkal, amelyek korábban nem adtak hozzáférést minden olyan erőforráshoz, amely ebben az ablakban próbálkozhat. Az olyan kritikus fontosságú felhasználók számára, mint a vezetők, részlegesen csökkenthetik ezt a kockázatot azáltal, hogy visszaállítják a jelszavukat az MFA letiltása előtt.
 3. Az összes bejelentkezési tevékenység archiválása annak azonosításához, hogy ki férhet hozzá az MFA idejének letiltásához.
-4. Az ablak [összes jelentett kockázati eseményének osztályozása](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) .
+4. Az ebben az ablakban [jelentett összes kockázati észlelés osztályozása](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) .
 
 ## <a name="after-a-disruption"></a>Megszakítás után
 
@@ -242,7 +242,7 @@ Vonja vissza az aktivált készenléti terv részeként elvégzett módosításo
 2. Tiltsa le a készenléti házirendeket. 
 3. Visszaállíthatja a megszakítás során elvégzett és dokumentált egyéb módosításokat.
 4. Ha vészhelyzeti hozzáférési fiókot használt, ne felejtse el újragenerált hitelesítő adatokat, és fizikailag biztonságossá tenni az új hitelesítő adatok részleteit a vészhelyzeti hozzáférési fiók eljárásainak részeként.
-5. Folytassa a gyanús tevékenységek megszakítása után [jelentett összes kockázati esemény osztályozását](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) .
+5. Folytassa a gyanús tevékenységek megszakítása után [jelentett összes kockázati észlelés osztályozását](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) .
 6. Vonja vissza a [PowerShell használatával](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) kiadott összes frissítési jogkivonatot a felhasználók egy csoportjának célzásához. Az összes frissítési token visszavonása fontos a megszakadáskor használt privilegizált fiókok esetében, és ezzel kényszeríti őket a visszaállított szabályzatok ismételt hitelesítésére és ellenőrzésére.
 
 ## <a name="emergency-options"></a>Vészhelyzeti beállítások
@@ -254,7 +254,7 @@ Ha a szervezet felhasználónkénti MFA örökölt házirendeket használ, akkor
    1. Ha nem rendelkezik a kimenő IP-címek leltárával, vagy ha a hozzáférést a vállalati hálózaton belül és kívül is engedélyezni szeretné, a teljes IPv4-címtartományt felveheti megbízható IP-címként a 0.0.0.0/1 és a 128.0.0.0/1 érték megadásával.
 
 >[!IMPORTANT]
- > Ha kibővíti a megbízható IP-címeket a hozzáférés feloldása érdekében, az IP-címekhez társított kockázati események (például a lehetetlen utazás vagy az ismeretlen helyek) nem jönnek létre.
+ > Ha kibővíti a megbízható IP-címeket a hozzáférés feloldásához, az IP-címekhez (például lehetetlen utazáshoz vagy ismeretlen helyszínekhez) kapcsolódó kockázati észleléseket nem generálja a rendszer.
 
 >[!NOTE]
  > Az Azure MFA [megbízható IP](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) -címeinek konfigurálása csak [prémium szintű Azure ad licenccel](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)lehetséges.

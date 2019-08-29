@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: b3607f0b462efceab322e6eaf616268a34b02fb0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905233"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142082"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>A Azure Migrate korábbi verziójának használata
 
@@ -201,7 +201,7 @@ A függőségi vizualizáció használatához egy Log Analytics munkaterületet 
 1. Ha Log Analytics munkaterületet szeretne csatolni egy projekthez, az **áttekintés**> **Essentials**szolgáltatásban kattintson a **Konfigurálás szükséges**elemre.
 2. Létrehozhat egy új munkaterületet, vagy csatolhat egy meglévőt:
   - Új munkaterület létrehozásához adjon meg egy nevet. A munkaterület ugyanabban az [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) -földrajzbeli régióban jön létre, mint az áttelepítési projekt.
-  - Ha meglévő munkaterületet csatol, az összes elérhető munkaterületet az áttelepítési projekttel megegyező előfizetésben is kiválaszthatja. Csak azok a munkaterületek jelennek meg, amelyek egy [támogatott Service Map régióban](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)lettek létrehozva. Munkaterület csatolásához ellenőrizze, hogy van-e "olvasó" hozzáférése a munkaterülethez.
+  - Ha meglévő munkaterületet csatol, az összes elérhető munkaterületet az áttelepítési projekttel megegyező előfizetésben is kiválaszthatja. Csak azok a munkaterületek jelennek meg, amelyek egy [támogatott Service Map régióban](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)lettek létrehozva. Munkaterület csatolásához ellenőrizze, hogy van-e "olvasó" hozzáférése a munkaterülethez.
 
 > [!NOTE]
 > Az áttelepítési projekthez társított munkaterület nem módosítható.

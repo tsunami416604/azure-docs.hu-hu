@@ -3,21 +3,20 @@ title: Webes tevékenység a Azure Data Factoryban | Microsoft Docs
 description: Megtudhatja, hogyan használhatja a webes tevékenységeket, a Data Factory által támogatott vezérlési folyamatok egyikét a REST-végpontok egy folyamatból való meghívásához.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.author: shlo
-ms.openlocfilehash: f6153bf1162eaa1c7eab2c358977d754695b64fd
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 73770e559af8a999c17fff5ea1aa6ee53ac17e83
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325395"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141588"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webes tevékenység Azure Data Factory
 A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy Data Factory-folyamatból. Az adatkészleteket és a társított szolgáltatásokat továbbíthatja a tevékenység számára felhasználásra vagy elérés céljára.
@@ -64,14 +63,14 @@ A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy
 
 ## <a name="type-properties"></a>Típus tulajdonságai
 
-Tulajdonság | Leírás | Megengedett értékek | Szükséges
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
 name | A webes tevékenység neve | Sztring | Igen
-type | Webtevékenységre kell beállítani. | Sztring | Igen
-method | A célként megadott végpont REST API-metódusa. | Karakterlánc. <br/><br/>Támogatott típusok: "GET", "POST", "PUT" | Igen
+type | Webtevékenységre kellbeállítani. | Sztring | Igen
+metódus | A célként megadott végpont REST API-metódusa. | Karakterlánc. <br/><br/>Támogatott típusok: "GET", "POST", "PUT" | Igen
 url | Cél végpontja és elérési útja | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). A tevékenység 1 percenként időtúllépést jelez, ha a végponttól nem érkezik válasz. | Igen
 fejlécek | A kérelembe küldendő fejlécek. Például egy kérelem nyelvének és típusának megadásához: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Igen, a Content-Type fejléc megadása kötelező. `"headers":{ "Content-Type":"application/json"}`
-törzse | A végpontnak elküldhető adattartalmat jelöli.  | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). <br/><br/>Tekintse meg a kérelem hasznos adatainak sémáját a [kérelmek hasznos](#request-payload-schema) adatait tartalmazó sémában. | A POST/PUT metódusokhoz szükséges.
+törzs | A végpontnak elküldhető adattartalmat jelöli.  | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). <br/><br/>Tekintse meg a kérelem hasznos adatainak sémáját a [kérelmek hasznos](#request-payload-schema) adatait tartalmazó sémában. | A POST/PUT metódusokhoz szükséges.
 hitelesítés | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű vagy ClientCertificate". További információ: [hitelesítés](#authentication) szakasz. Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
 datasets | A végpontnak átadott adatkészletek listája. | Adatkészlet-hivatkozások tömbje. Üres tömb lehet. | Igen
 linkedServices | A végpontnak átadott társított szolgáltatások listája. | Társított szolgáltatási referenciák tömbje. Üres tömb lehet. | Igen

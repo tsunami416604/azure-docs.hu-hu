@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 08/28/2019
 ms.author: shthowse
-ms.openlocfilehash: 8590acbbd6001c1f214589298e454c1e75f93d67
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5b18ba4e06e8a44d7bd59b12a69a14ae15506234
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883535"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135000"
 ---
 # <a name="quickstart-text-analytics-client-library-for-nodejs"></a>Gyors útmutató: Text Analytics ügyféloldali kódtár a Node. js-hez
 <a name="HOLTop"></a>
@@ -64,30 +64,34 @@ npm init
 Hozzon létre egy `index.js` nevű fájlt, és importálja a következő könyvtárakat:
 
 ```javascript
-const CognitiveServicesCredentials = require("ms-rest-azure").CognitiveServicesCredentials;
-const TextAnalyticsAPIClient = require("azure-cognitiveservices-textanalytics");
+const CognitiveServicesCredentials = require("@azure/ms-rest-js");
+const TextAnalyticsAPIClient = require("@azure/cognitiveservices-textanalytics");
 ```
 
-Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának létrehozásához. Ha a környezeti változót az alkalmazás elindítása után hozta létre, akkor a változó eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a shellt.
+Hozzon létre változókat az erőforrás Azure-végpontjának és előfizetési kulcsának létrehozásához. Szerezze be ezeket az értékeket a környezeti változók TEXT_ANALYTICS_SUBSCRIPTION_KEY és TEXT_ANALYTICS_ENDPOINT. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
 
 [!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
 ```javascript
-// replace this endpoint with the correct one for your Azure resource. 
-let endpoint = "https://westus.api.cognitive.microsoft.com/";
-// This sample assumes you have created an environment variable for your key
-let key = var apiKey = process.env.TEXTANALYTICS_SUBSCRIPTION_KEY;
-let credentials = new CognitiveServicesCredentials(
-    key
-);
+const key_var = 'TEXT_ANALYTICS_SUBSCRIPTION_KEY';
+if (!process.env[key_var]) {
+    throw new Error('please set/export the following environment variable: ' + key_var);
+}
+const subscription_key = process.env[key_var];
+
+const endpoint_var = 'TEXT_ANALYTICS_ENDPOINT';
+if (!process.env[endpoint_var]) {
+    throw new Error('please set/export the following environment variable: ' + endpoint_var);
+}
+const endpoint = process.env[endpoint_var];
 ```
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Telepítse a `ms-rest-azure` és `azure-cognitiveservices-textanalytics` a NPM csomagokat:
+Telepítse a `@azure/ms-rest-js` és `@azure/cognitiveservices-textanalytics` a NPM csomagokat:
 
 ```console
-npm install azure-cognitiveservices-textanalytics ms-rest-azure
+npm install @azure/cognitiveservices-textanalytics @azure/ms-rest-js
 ```
 
 Az alkalmazás `package.json` fájlja a függőségekkel lesz frissítve.
@@ -114,11 +118,8 @@ A válasz objektum az egyes dokumentumok elemzési információit tartalmazó li
 Hozzon létre [](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest) egy új TextAnalyticsClient `credentials` - `endpoint` objektumot paraméterként.
 
 ```javascript
-//Replace 'westus' with the correct region for your Text Analytics subscription
-let client = new TextAnalyticsAPIClient(
-    credentials,
-    endpoint
-);
+const creds = new CognitiveServicesCredentials.ApiKeyCredentials({ inHeader: { 'Ocp-Apim-Subscription-Key': subscription_key } });
+const client = new TextAnalyticsAPIClient.TextAnalyticsClient(creds, endpoint);
 ```
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
@@ -199,11 +200,10 @@ ID: 1 Language English
 Hozza létre a dokumentumokat tartalmazó objektumok listáját.
 
 ```javascript
-
-    const inputDocuments = {documents:[
-        {language:"en", id:"1", text:"Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800"}
-        ]}
-
+const inputDocuments = {
+    documents: [
+        { language: "en", id: "1", text: "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800" }
+    ]
 }
 ```
 

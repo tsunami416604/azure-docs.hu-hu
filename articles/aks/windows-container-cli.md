@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 879e2831dc099eabe43f1eefb81b1b7373c665dc
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a173272600bab71264ed3b85ce5141814c0a6aed
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898709"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147202"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Előzetes verzió – Windows Server-tároló létrehozása Azure Kubernetes szolgáltatásbeli (ak) fürtön az Azure CLI használatával
 
@@ -121,8 +121,11 @@ A következő példa kimenete azt mutatja, hogy az erőforráscsoport sikeresen 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
 Ha olyan AK-fürtöt szeretne futtatni, amely támogatja a Windows Server-tárolók csomópont-készleteit, a fürtnek olyan hálózati házirendet kell használnia, amely az [Azure CNI][azure-cni-about] (Advanced) hálózati beépülő modult használja. További információ a szükséges alhálózati tartományok és hálózati megfontolások megtervezéséhez: az [Azure CNI hálózatkezelésének konfigurálása][use-advanced-networking]. Az az [AK Create][az-aks-create] paranccsal hozzon létre egy *myAKSCluster*nevű AK-fürtöt. Ez a parancs létrehozza a szükséges hálózati erőforrásokat, ha nem léteznek.
-  * A fürt egy csomóponttal van konfigurálva.
+  * A fürt két csomóponttal van konfigurálva
   * A *Windows-admin-password* és a *Windows-admin-username* paraméterek a fürtön létrehozott Windows Server-tárolók rendszergazdai hitelesítő adatait adja meg.
+
+> [!NOTE]
+> Annak biztosítása érdekében, hogy a fürt megbízhatóan működjön, legalább 2 (két) csomópontot kell futtatnia az alapértelmezett csomópont-készletben.
 
 Adja meg saját biztonságos *PASSWORD_WIN* (ne feledje, hogy a cikkben szereplő parancsok egy bash-rendszerhéjba kerülnek):
 
@@ -132,7 +135,7 @@ PASSWORD_WIN="P@ssw0rd1234"
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --node-count 1 \
+    --node-count 2 \
     --enable-addons monitoring \
     --kubernetes-version 1.14.6 \
     --generate-ssh-keys \
@@ -184,7 +187,7 @@ A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get][kube
 kubectl get nodes
 ```
 
-A következő példakimenet az előző lépésekben létrehozott csomópontot mutatja be. Győződjön meg arról, hogy a csomópont állapota *kész*:
+A következő példa kimenete a fürt összes csomópontját mutatja. Győződjön meg arról, hogy az összes csomópont állapota *kész*:
 
 ```
 NAME                                STATUS   ROLES   AGE    VERSION

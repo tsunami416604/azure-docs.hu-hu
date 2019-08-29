@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9da58bf3152867bc13dd1879ec57a69b8bd38cb0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828729"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129332"
 ---
 # <a name="azure-operational-security-best-practices"></a>Az Azure működési biztonságának ajánlott eljárásai
 Ez a cikk az Azure-ban tárolt adatok, alkalmazások és egyéb eszközök védelmére vonatkozó ajánlott eljárásokat ismerteti.
@@ -218,7 +218,7 @@ További információ: [házirendek létrehozása és kezelése a megfelelőség
 **Részletek**: Az Azure Policy Description vagy az Azure Policy [Initiative](../../governance/policy/concepts/definition-structure.md#initiatives) leírásában a szervezeti házirendre mutató hivatkozás hozzáadásával a szervezet dokumentációjában vagy az Azure-szabályzatban is megadhatja a dokumentum-hozzárendelést. [](../../governance/policy/concepts/definition-structure.md#display-name-and-description)
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Azure AD kockázati jelentések figyelése
-A biztonsági rések túlnyomó többsége akkor kerül sor, amikor a támadók a felhasználó identitásának ellopásával hozzáférnek a környezetekhez. A feltört identitások feltárása nem egyszerű feladat. Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. Minden észlelt gyanús művelet egy [kockázati eseménynek](../../active-directory/reports-monitoring/concept-risk-events.md)nevezett rekordban van tárolva. A kockázati események rögzítése az Azure AD biztonsági jelentéseiben történik. További információért olvassa el a [veszélyeztetett felhasználókról szóló jelentést](../../active-directory/reports-monitoring/concept-user-at-risk.md) , valamint a [kockázatos bejelentkezések biztonsági jelentését](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).
+A biztonsági rések túlnyomó többsége akkor kerül sor, amikor a támadók a felhasználó identitásának ellopásával hozzáférnek a környezetekhez. A feltört identitások feltárása nem egyszerű feladat. Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. A rendszer minden észlelt gyanús műveletet egy [kockázati észlelésnek](../../active-directory/reports-monitoring/concept-risk-events.md)nevezett rekordban tárol. A kockázati észlelések az Azure AD biztonsági jelentéseiben vannak rögzítve. További információért olvassa el a [veszélyeztetett felhasználókról szóló jelentést](../../active-directory/reports-monitoring/concept-user-at-risk.md) , valamint a [kockázatos bejelentkezések biztonsági jelentését](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).
 
 ## <a name="next-steps"></a>További lépések
 Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági](best-practices-and-patterns.md) eljárásaival és modelljeivel foglalkozó témakörben talál.

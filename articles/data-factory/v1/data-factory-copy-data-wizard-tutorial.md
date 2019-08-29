@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával |} A Microsoft Docs'
+title: 'Oktatóanyag: Folyamat létrehozása a másolás varázsló használatával | Microsoft Docs'
 description: Az oktatóanyag során létrehoz egy másolási tevékenységgel rendelkező Azure Data Factory-folyamatot a Data Factory által támogatott Másolás varázslóval.
 services: data-factory
 documentationcenter: ''
@@ -8,19 +8,18 @@ manager: craigg
 ms.assetid: b87afb8e-53b7-4e1b-905b-0343dd096198
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0d67e18182d44dc640c75d982ccb40f1d22f8b41
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: fa5e7735d122dcf06b9b9692abb23441752082fa
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836591"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140356"
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Oktatóanyag: Folyamat létrehozása másolási tevékenységgel a Data Factory másolás varázslója használatával
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása Data Factory másolás varázsló használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
@@ -62,7 +61,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
       - Meglévő erőforráscsoport kiválasztásához kattintson a **Use existing** (Meglévő használata) elemre.
       - Az erőforráscsoport nevének megadásához válassza ki a **Create new** (Új létrehozása) lehetőséget.
           
-        Ez az oktatóanyag lépései során feltételezzük, hogy a nevet használja: **ADFTutorialResourceGroup** az erőforráscsoportnak. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.
+        Az oktatóanyag néhány lépése azt feltételezi, hogy a következő nevet használja: Az erőforráscsoport **ADFTutorialResourceGroup** . Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.
    4. Válassza ki a Data Factory **helyét**.
    5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.  
    6. Kattintson a **Create** (Létrehozás) gombra.

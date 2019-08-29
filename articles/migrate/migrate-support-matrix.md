@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 08/29/2019
 ms.author: raynew
-ms.openlocfilehash: 49bd193303255cdf7d18fd5da9dec8d84c50a829
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 99ef5c8a4a4291dd1b9d047da9006623dacd0b53
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019188"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147868"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate támogatási mátrix
 
@@ -31,10 +31,10 @@ A Azure Migrate szolgáltatásnak két verziója van:
 
 A táblázat összefoglalja a támogatott áttelepítési forgatókönyveket.
 
-**Üzembe helyezés** | **Részletek*** 
+**Üzembe helyezés** | **Részletek** 
 --- | --- 
 **Helyszíni Értékelés** | A VMware virtuális gépeken és a Hyper-V virtuális gépeken futó helyszíni munkaterhelések és adatok értékelése. Értékelje Azure Migrate Server Assessment és Microsoft Data Migration Assistant (DMA) használatát, valamint a Cloudamize, a kölcsönzési technológiát és a Turbonomic kiszolgálót is tartalmazó külső eszközöket.
-**Helyszíni áttelepítés az Azure-ba** | Áttelepítheti a fizikai kiszolgálókon, a VMware virtuális gépeken, a Hyper-V virtuális gépeken és az AWS/GCP-példányokon futó munkaterheléseket és az Azure-ba. Migrálás Azure Migrate Server Assessment és Azure Database Migration Service (DMS) használatával, valamint a harmadik féltől származó, a Carbonite-és a CorentTech tartalmazó eszközök használatával.
+**Helyszíni áttelepítés az Azure-ba** | Áttelepítheti a fizikai kiszolgálókon, a VMware virtuális gépeken, a Hyper-V virtuális gépeken, a fizikai kiszolgálókon és a felhőalapú virtuális gépeken futó számítási feladatokat és az Azure-ba. Migrálás Azure Migrate Server Assessment és Azure Database Migration Service (DMS) használatával, valamint a harmadik féltől származó, a Carbonite-és a CorentTech tartalmazó eszközök használatával.
 
 Az eszközök adott támogatását az alábbiak szerint összegzi a rendszer.
 
@@ -53,7 +53,7 @@ CorentTech | Áttelepítés | [További információk](https://www.corenttech.co
 
 **Támogatás** | **Részletek**
 --- | ---
-Subscription | Egy előfizetéshez egyetlen Azure Migrate projekt tartozhat.
+Subscription | Egy előfizetéshez több Azure Migrate projekt is tartozhat.
 Azure-engedélyek | Azure Migrate projekt létrehozásához közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az előfizetésben.
 VMware virtuális gépek  | Egyetlen projektben akár 35 000 VMware virtuális gépet is megvizsgálhat.
 Hyper-V virtuális gépek | Akár 10 000 Hyper-V virtuális gépet is kivizsgálhat egyetlen projektben.

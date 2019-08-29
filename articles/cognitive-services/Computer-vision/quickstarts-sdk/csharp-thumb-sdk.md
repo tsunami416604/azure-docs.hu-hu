@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Miniatűrkép - SDK-t, generálásaC#'
+title: 'Gyors útmutató: Miniatűr létrehozása – SDK,C#'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban miniatűrt fog létrehozni egy képből a Computer Vision Windows C#-ügyfélkódtárával.
 services: cognitive-services
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 78ffd9628c7a65ae60d457bbff3631ea261649d5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b43bce2b8235c44475e92da385ba57ee467815ef
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603438"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141006"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Gyors útmutató: A számítógép Látástechnológiai SDK-val miniatűrkép generálása ésC#
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Gyors útmutató: Miniatűr létrehozása a Computer Vision SDK használatával ésC#
 
-Ez a rövid útmutatóban egy rendszerképből, a számítógép Látástechnológiai SDK-t fog létrehozni egy intelligens csonkolva miniatűr C#. Ha szeretné, letöltheti a teljes minta alkalmazásként ebben az útmutatóban a kódot a [Cognitive Services-Csharp Látástechnológia](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) adattárat a Githubon.
+Ebben a rövid útmutatóban egy intelligensen nyírt miniatűrt fog létrehozni egy képből a Computer Vision SDK- C#val. Ha szeretné, letöltheti az útmutatóban szereplő kódot teljes minta alkalmazásként a GitHubon elérhető [Cognitive Services csharp](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) -jövőképből.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Computer Vision előfizetési kulcs. Megjelenik a származó ingyenes próbaverziós kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) előfizetni a Computer Vision, és a kulcs beszerzése.
+* Egy Computer Vision előfizetési kulcs. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti `COMPUTER_VISION_SUBSCRIPTION_KEY` karakterláncához, a nevet és `COMPUTER_VISION_ENDPOINT`a-t.
 * A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 * A [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) ügyfélkódtár NuGet-csomagja. A csomag letöltése nem szükséges. A telepítési utasításokat az alábbiakban találja.
 
 ## <a name="generatethumbnailasync-method"></a>A GenerateThumbnailAsync metódus
 
- A metódusokkal létrehozhatja egy kép miniatűrjét. Megadhatja a magasságát és a szélességét, amely eltérhet a bemeneti kép oldalarányától. Computer Vision segítségével intelligens vágása nyelvelemző, mind a terület hasznos helyek azonosításához, és hozzon létre körbevágási koordinátái alapján az adott régióban.
+ A metódusokkal létrehozhatja egy kép miniatűrjét. Megadhatja a magasságát és a szélességét, amely eltérhet a bemeneti kép oldalarányától. A Computer Vision az intelligens vágás használatával intelligens módon azonosítja a fontos területet, és az adott régió alapján készíti el a levágási koordinátákat.
 
 A minta futtatásához az alábbi lépéseket kell végrehajtania:
 

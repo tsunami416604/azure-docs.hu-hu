@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 4b6a140ec428ce3b053c41074f02f65f19b8dc72
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e7b69e57d4e01c292a2c6d032ba995d1936b88dc
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102891"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142904"
 ---
 # <a name="dependency-visualization"></a>Függőségek képi megjelenítése
 
@@ -45,7 +45,7 @@ A Azure Migrate a [Service Map](../operations-management-suite/operations-manage
 
 - A munkaterület társítása során új munkaterületet kell létrehoznia, vagy egy meglévőt csatlakoztatni:
   - Amikor új munkaterületet hoz létre, meg kell adnia a munkaterület nevét. A munkaterület ezután egy, az áttelepítési projekttel megegyező [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) -földrajzbeli régióban jön létre.
-  - Ha meglévő munkaterületet csatol, az összes elérhető munkaterületet az áttelepítési projekttel megegyező előfizetésben is kiválaszthatja. Vegye figyelembe, hogy csak azok a munkaterületek vannak felsorolva, amelyek olyan régióban lettek létrehozva, ahol a [Service Map támogatott](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). A munkaterület csatolásához győződjön meg arról, hogy van "olvasó" hozzáférése a munkaterülethez.
+  - Ha meglévő munkaterületet csatol, az összes elérhető munkaterületet az áttelepítési projekttel megegyező előfizetésben is kiválaszthatja. Vegye figyelembe, hogy csak azok a munkaterületek vannak felsorolva, amelyek olyan régióban lettek létrehozva, ahol a [Service Map támogatott](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). A munkaterület csatolásához győződjön meg arról, hogy van "olvasó" hozzáférése a munkaterülethez.
 
   > [!NOTE]
   > Miután csatolt egy munkaterületet egy projekthez, később nem módosítható.

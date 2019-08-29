@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martinco
-ms.openlocfilehash: 80c1ffd27b0668f19fd87e7eda62e578c861ba64
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fb17d1b95d74a67f220651cf198f367bdd31f19f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934605"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129319"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Az identitás-infrastruktúra biztonságossá tétele öt lépésben
 
@@ -42,7 +42,7 @@ Az ebben a dokumentumban ismertetett javaslatok az Azure AD-bérlő identitás-b
 
 Mielőtt elkezdené ezt a feladatlistát, győződjön meg róla, hogy az ellenőrzőlista elolvasása közben nem sérül. Először gondoskodnia kell a Kiemelt jogosultságú fiókok biztonságáról.
 
-A Kiemelt fiókok felügyeletét befogadó támadók óriási károkat okozhatnak, ezért fontos, hogy először megvédje ezeket a fiókokat. Az alapszintű [védelem](../../active-directory/conditional-access/baseline-protection.md)használatával engedélyezheti és megkövetelheti az [Azure multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) használatát a szervezet összes rendszergazdájának. Ha még nem implementálta az MFA-t, tegye meg most! Ez fontos.
+A Kiemelt fiókok felügyeletét befogadó támadók óriási károkat okozhatnak, ezért fontos, hogy először megvédje ezeket a fiókokat. Az alapkonfiguráció [védelme](../../active-directory/conditional-access/baseline-protection.md)révén engedélyezheti és megkövetelheti az [Azure multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) használatát a szervezet összes rendszergazdájának. Ha még nem implementálta az MFA-t, tegye meg most! Ez fontos.
 
 Minden készlet? Ismerkedjen meg az ellenőrzőlista első lépéseivel.
 
@@ -53,7 +53,7 @@ A legtöbb nagyvállalati biztonsági rést egy olyan fiók okozta, amely a jels
 
 ### <a name="make-sure-your-organization-use-strong-authentication"></a>Győződjön meg arról, hogy a szervezete erős hitelesítést használ
 
-A kitalált jelszavak gyakorisága, az adathalászás, a kártevők ellopása vagy az újbóli használat miatt kritikus fontosságú a jelszó visszaállítása valamilyen erős hitelesítő adat használatával – további információ az [Azure multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md)szolgáltatásról.
+A kitalált jelszavak gyakorisága, az adathalászás, a kártevő szoftverrel való ellopás vagy az újbóli használat miatt kritikus fontosságú a jelszó visszaállítása valamilyen erős hitelesítő adat használatával – további információ az [Azure multi-Factor Authenticationról](../../active-directory/authentication/multi-factor-authentication.md).
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Indítsa el a gyakran megtámadott jelszavak betiltását, és kapcsolja ki a hagyományos összetettséget és a lejárati szabályokat.
 
@@ -130,7 +130,7 @@ A Azure Active Directory számos képességgel rendelkezik, amelyek automatikusa
 
 ### <a name="implement-user-risk-security-policy-using-azure-ad-identity-protection"></a>A felhasználói kockázatokra vonatkozó biztonsági házirend megvalósítása Azure AD Identity Protection használatával
 
-A felhasználói kockázat azt jelzi, hogy a felhasználó identitása sérült, és a felhasználó identitásával társított [felhasználói kockázati események](../../active-directory/identity-protection/overview.md) alapján számítja ki a rendszer. A felhasználói kockázati házirend egy feltételes hozzáférési szabályzat, amely kiértékeli a kockázati szintet egy adott felhasználó vagy csoport számára. Az alacsony, közepes és magas kockázati szintű szabályok alapján a szabályzat beállítható úgy, hogy blokkolja a hozzáférést, vagy a többtényezős hitelesítés használatával biztonságos jelszó megváltoztatására van szükség. A Microsoft javaslata a nagy kockázatú felhasználók biztonságos jelszavas módosításának megkövetelése.
+A felhasználói kockázat azt jelzi, hogy a felhasználó identitása sérült, és a felhasználó identitásával kapcsolatos [felhasználói kockázati észlelések](../../active-directory/identity-protection/overview.md) alapján számítja ki a rendszer. A felhasználói kockázati házirend egy feltételes hozzáférési szabályzat, amely kiértékeli a kockázati szintet egy adott felhasználó vagy csoport számára. Az alacsony, közepes és magas kockázati szintű szabályok alapján a szabályzat beállítható úgy, hogy blokkolja a hozzáférést, vagy a többtényezős hitelesítés használatával biztonságos jelszó megváltoztatására van szükség. A Microsoft javaslata a nagy kockázatú felhasználók biztonságos jelszavas módosításának megkövetelése.
 
 ![Kockázatosként megjelölt felhasználók](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
@@ -156,7 +156,7 @@ A [Azure ad Connect Health figyelése AD FS](../../active-directory/hybrid/how-t
 
 ### <a name="monitor-azure-ad-identity-protection-events"></a>Azure AD Identity Protection események figyelése
 
-A [Azure ad Identity Protection](../../active-directory/identity-protection/overview.md) egy értesítési, figyelési és jelentéskészítési eszköz, amellyel észlelhetők a szervezet identitásait érintő lehetséges sebezhetőségek. Ez észleli a kockázati eseményeket, például a kiszivárgott hitelesítő adatokat, a lehetetlen utazást és a fertőzött eszközökről érkező bejelentkezéseket, a névtelen IP-címeket, a gyanús tevékenységhez tartozó IP-címeket és az ismeretlen helyeket. Az értesítési riasztások lehetővé teszik a veszélyeztetett felhasználók és/vagy heti kivonatoló e-mailek fogadását.
+A [Azure ad Identity Protection](../../active-directory/identity-protection/overview.md) egy értesítési, figyelési és jelentéskészítési eszköz, amellyel észlelhetők a szervezet identitásait érintő lehetséges sebezhetőségek. Észleli a kockázati észleléseket, például a kiszivárgott hitelesítő adatokat, a lehetetlen utazást és a fertőzött eszközökről érkező bejelentkezéseket, a névtelen IP-címeket, a gyanús tevékenységhez tartozó IP-címeket és az ismeretlen helyeket. Az értesítési riasztások lehetővé teszik a veszélyeztetett felhasználók és/vagy heti kivonatoló e-mailek fogadását.
 
 Azure AD Identity Protection két fontos jelentést biztosít a napi figyeléshez:
 1. A kockázatos bejelentkezési jelentések felszínre kerülnek a felhasználói bejelentkezési tevékenységek, amelyeket meg kell vizsgálnia. Előfordulhat, hogy a legitim tulajdonos nem végezte el a bejelentkezést.

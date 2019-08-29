@@ -7,17 +7,16 @@ author: nabhishek
 manager: craigg
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: fad8045ac8bddb236f0f80ad223ebafc7aa7e93a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: b6426017b7608742866cedb08b5ac9298400d433
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002861"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140889"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Databricks-jegyzetfüzet futtatása a Databricks-jegyzetfüzet tevékenységeivel az Azure Data Factoryban
 
@@ -71,7 +70,7 @@ Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg 
 
 1.  **Hely:** válassza ki az adat-előállító helyét.
 
-    Azure-régióban, amelyben a Data Factory jelenleg listája, válassza ki a régiók, amelyek a következő oldalon érdeklődésére számot tartó, és bontsa ki **Analytics** található **adat-előállító**: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). A Data Factory által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+    Azon Azure-régiók listájáért, amelyekben Data Factory jelenleg elérhető, válassza ki a következő oldalon megtekinteni kívánt régiókat, majd bontsa ki az **elemzés** elemet a **Data Factory**megkereséséhez: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). A Data Factory által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 1.  Kattintson a **Létrehozás** gombra.
 
 
@@ -109,7 +108,7 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
     1.  A **Hozzáférési jogkivonatot** hozza létre az Azure Databricks-munkaterületről. A lépéseket [itt](https://docs.databricks.com/api/latest/authentication.html#generate-token) találhatja meg.
 
-    1.  A **fürtverzió**válassza **4.2** (az Apache Spark 2.3.1, Scala 2.11-et)
+    1.  A **fürt verziója**esetében válassza a **4,2** elemet (Apache Spark 2.3.1, Scala 2,11)
 
     1.  A **Fürtcsomópont típusa** mezőben válassza a **Standard\_D3\_v2** lehetőséget az **Általános célú (HDD)** területen ehhez az oktatóanyaghoz. 
     
@@ -151,7 +150,7 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
           ![Új mappa létrehozása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. [Hozzon létre egy új jegyzetfüzetet](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), neki **mynotebook** alatt **adftutorial** mappát, kattintson a **létrehozása.**
+       1. [Új jegyzetfüzet létrehozása](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), hívjuk meg **mynotebook** a **adftutorial** mappában, kattintson a **Létrehozás gombra.**
 
           ![Új jegyzetfüzet létrehozása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -179,7 +178,7 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
        ![Paraméter hozzáadása](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  A paraméter neve legyen **bemeneti** , és az értéket kifejezésként  **\@folyamat ().parameters.name**.
+    b.  Adjon nevet a paraméternek **bemenetként** , és adja meg az értéket kifejezés  **\@-feldolgozási (). Parameters. name**néven.
 
 1.  A folyamat érvényesítéséhez kattintson az **Érvényesítés** gombra az eszköztáron. Az érvényesítési ablak bezárásához kattintson a **\>\>** (jobbra mutató nyíl) gombra.
 

@@ -11,29 +11,29 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce4e2958978de9339f4340755e3740730025a5f
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: f244c28b99c429fef5641bb4fc399e09fd451069
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334029"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126557"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>kézikönyv: Kockázatkezelési szabályzatok konfigurálása Azure Active Directory Identity Protectionben (frissítve)
 
-Az Azure AD olyan kockázati eseményeket észlel, amelyek az esetlegesen feltört identitásokra mutató mutatók. A kockázati szabályzatok konfigurálásával automatizált válaszokat adhat meg az észlelési eredményekre:
+Az Azure AD olyan kockázati észleléseket észlel, amelyek az esetlegesen feltört identitásokra mutató mutatók. A kockázati szabályzatok konfigurálásával automatizált válaszokat adhat meg az észlelési eredményekre:
 
-- A bejelentkezési kockázati házirenddel a felhasználók bejelentkezését követően észlelt valós idejű kockázati eseményekre adott válasz állítható be. 
+- A bejelentkezési kockázati házirenddel a felhasználók bejelentkezését követően észlelt valós idejű kockázati észlelésekre adott válasz állítható be. 
 - A felhasználói kockázati házirend segítségével választ kaphat a felhasználó által az idő múlásával észlelt összes aktív felhasználói kockázatra.  
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>Mi a bejelentkezési kockázati házirend?
 
-Az Azure AD elemzi a felhasználók minden egyes bejelentkezését. Az elemzés célja, hogy észlelje a bejelentkezéshez kapcsolódó gyanús műveleteket. Például a bejelentkezés névtelen IP-cím használatával történik, vagy ismeretlen helyről kezdeményezett bejelentkezés? Az Azure AD-ben a rendszer által észlelt gyanús műveletek is ismert kockázati események. A bejelentkezés során észlelt kockázati események alapján az Azure AD kiszámítja az értéket. Az érték azt a valószínűséget (alacsony, közepes, magas) jelöli, amelyet a bejelentkezés nem a legitim felhasználó hajt végre. A valószínűség neve **bejelentkezési kockázati szint**.
+Az Azure AD elemzi a felhasználók minden egyes bejelentkezését. Az elemzés célja, hogy észlelje a bejelentkezéshez kapcsolódó gyanús műveleteket. Például a bejelentkezés névtelen IP-cím használatával történik, vagy ismeretlen helyről kezdeményezett bejelentkezés? Az Azure AD-ben a rendszer által észlelt gyanús műveletek a kockázati észlelések is ismertek. A bejelentkezés során észlelt kockázati észlelések alapján az Azure AD kiszámítja az értéket. Az érték azt a valószínűséget (alacsony, közepes, magas) jelöli, amelyet a bejelentkezés nem a legitim felhasználó hajt végre. A valószínűség neve **bejelentkezési kockázati szint**.
 
 A bejelentkezési kockázati szabályzat egy adott bejelentkezési kockázati szinthez beállítható automatizált válasz. Válaszában letilthatja az erőforrásokhoz való hozzáférést, vagy megkövetelheti a többtényezős hitelesítés (MFA) kihívásának elérését.
 
-Amikor egy felhasználó sikeresen befejezte a bejelentkezési kockázati házirend által aktivált MFA-kérést, visszajelzést küld az Identity Protectionnek, hogy a bejelentkezés a legitim felhasználótól származik. Így az MFA-kérést kiváltó bejelentkezési kockázati esemény automatikusan be lesz zárva, és az Identity Protection megakadályozza, hogy ez az esemény hozzájáruljon a felhasználói kockázat megszerzéséhez. A bejelentkezési kockázati házirend engedélyezése csökkentheti a kockázatos bejelentkezések noisiness, mivel lehetővé teszi a felhasználók számára, hogy az MFA-ra való felszólításkor és a kapcsolódó kockázatos bejelentkezést követően automatikusan lezárja a felhasználókat.
+Amikor egy felhasználó sikeresen befejezte a bejelentkezési kockázati házirend által aktivált MFA-kérést, visszajelzést küld az Identity Protectionnek, hogy a bejelentkezés a legitim felhasználótól származik. Így az MFA-kérést kiváltó bejelentkezési kockázat automatikusan be lesz zárva, és az Identity Protection megakadályozza, hogy ez az esemény hozzájáruljon a felhasználói kockázat megszerzéséhez. A bejelentkezési kockázati házirend engedélyezése csökkentheti a kockázatos bejelentkezések noisiness, mivel lehetővé teszi a felhasználók számára, hogy az MFA-ra való felszólításkor és a kapcsolódó kockázatos bejelentkezést követően automatikusan lezárja a felhasználókat.
 
 ## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Hogyan hozzáférni a bejelentkezési kockázati szabályzathoz?
    
@@ -51,7 +51,7 @@ A bejelentkezési kockázati házirend konfigurálásakor a következőket kell 
 
 - A házirendet kiváltó bejelentkezési kockázati szint:
 
-   ![Bejelentkezés kockázati szintje](./media/howto-configure-risk-policies/12.png)
+   ![Bejelentkezési kockázati szint](./media/howto-configure-risk-policies/12.png)
 
 - A bejelentkezési kockázati szint teljesülése esetén érvényesíteni kívánt hozzáférés típusa:  
 
@@ -93,9 +93,9 @@ A kapcsolódó felhasználói élmény áttekintését lásd:
 
 ## <a name="what-is-a-user-risk-policy"></a>Mi az a felhasználói kockázati házirend?
 
-Az Azure AD elemzi a felhasználók minden egyes bejelentkezését. Az elemzés célja, hogy észlelje a bejelentkezéshez kapcsolódó gyanús műveleteket. Az Azure AD-ben a rendszer által észlelt gyanús műveletek is ismert kockázati események. Néhány kockázati eseményt valós időben lehet észlelni, több időt igénylő kockázati események is vannak. Ha például szokatlan helyekre való lehetetlen utazást szeretne felderíteni, a rendszernek egy 14 napos kezdeti tanulási időszakot kell megadnia a felhasználó szokásos működésének megismeréséhez. Több lehetőség is van az észlelt kockázati események feloldására. Például az egyes kockázati események manuálisan is feloldhatók, vagy a bejelentkezési kockázat vagy a felhasználói kockázat feltételes hozzáférési szabályzata alapján megoldhatók.
+Az Azure AD elemzi a felhasználók minden egyes bejelentkezését. Az elemzés célja, hogy észlelje a bejelentkezéshez kapcsolódó gyanús műveleteket. Az Azure AD-ben a rendszer által észlelt gyanús műveletek a kockázati észlelések is ismertek. Míg egyes kockázati észlelések valós időben észlelhetők, több időt igénylő kockázati észlelések is megoldhatók. Ha például szokatlan helyekre való lehetetlen utazást szeretne felderíteni, a rendszernek egy 14 napos kezdeti tanulási időszakot kell megadnia a felhasználó szokásos működésének megismeréséhez. Több lehetőség is van az észlelt kockázati észlelések feloldására. Például az egyes kockázati észleléseket manuálisan is megoldhatja, vagy a bejelentkezési kockázat vagy a felhasználói kockázat feltételes hozzáférési szabályzata segítségével megoldható.
 
-A felhasználó számára észlelt és nem feloldott összes kockázati eseményt aktív kockázati eseménynek nevezzük. A felhasználóhoz társított aktív kockázati eseményeket felhasználói kockázatnak nevezzük. A felhasználói kockázat alapján az Azure AD kiszámítja azt a valószínűséget (alacsony, közepes, magas), amelyet a felhasználó feltört. A valószínűség neve felhasználói kockázati szint.
+A felhasználók számára észlelt és nem feloldott összes kockázati észlelést aktív kockázati észlelésnek nevezzük. A felhasználóhoz társított aktív kockázati észleléseket felhasználói kockázatnak nevezzük. A felhasználói kockázat alapján az Azure AD kiszámítja azt a valószínűséget (alacsony, közepes, magas), amelyet a felhasználó feltört. A valószínűség neve felhasználói kockázati szint.
 
 ![Felhasználói kockázatok](./media/howto-configure-risk-policies/11031.png)
 
@@ -139,8 +139,8 @@ Megadhat egy felhasználói kockázati biztonsági házirendet, amely letiltja a
 
 Bejelentkezés letiltása:
 
-* Megakadályozza az új felhasználói kockázati események létrehozását az érintett felhasználó számára
-* Lehetővé teszi a rendszergazdáknak a felhasználó identitását befolyásoló kockázati események manuális szervizelését és biztonságos állapotba való visszaállítását.
+* Megakadályozza az új felhasználói kockázati észlelések létrehozását az érintett felhasználó számára
+* Lehetővé teszi a rendszergazdáknak, hogy manuálisan javítsanak a felhasználó identitását befolyásoló kockázati észleléseket, és visszaállítsa azt egy biztonságos állapotba
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 

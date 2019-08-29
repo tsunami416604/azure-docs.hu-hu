@@ -3,27 +3,26 @@ title: Elágaztatás Azure Data Factory-folyamatokban | Microsoft Docs
 description: Megismerheti, hogyan vezérelheti az adatok folyamát az Azure Data Factoryben elágaztatási és láncolási tevékenységekkel.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
-ms.author: shlo
-ms.openlocfilehash: 9a03094683a973db16aa949f0610bc7f9914be45
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 264d8e049cc7b714e00aaa77441cdc81a1e0a0c9
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456993"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140734"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 
 Ebben az oktatóanyagban egy olyan adat-előállító folyamatot hoz létre, amely bemutat néhány folyamvezérlési funkciót. A folyamat egy egyszerű másolást hajt végre egy Azure Blob Storage-beli tárolóból egy másik tárolóba, amely ugyanazon tárfiókban található. Ha a másolási tevékenység sikeres, egy, a sikeres műveletet jelző e-mailt szeretne küldeni, amelyben szerepelnek a sikeres másolási művelet részletei (például az írt adatok mennyisége). Ha a másolási tevékenység sikertelen, egy, a sikertelen műveletet jelző e-mailt szeretne küldeni, amelyben szerepelnek a sikertelen másolás részletei (például a hibaüzenet). Az oktatóanyag során megismerheti, hogyan adhatók át a paraméterek.
 
-A forgatókönyv általános áttekintést: ![Áttekintés](media/tutorial-control-flow/overview.png)
+A forgatókönyv magas szintű áttekintése: ![Áttekintés](media/tutorial-control-flow/overview.png)
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -66,14 +65,14 @@ Hozzon létre egy, a C# nyelvet használó .NET-konzolalkalmazást a Visual Stud
 
 1. Indítsa el a **Visual Studiót**.
 2. Kattintson a **File** (Fájl) menüre, mutasson a **New** (Új) elemre, és kattintson a **Project** (Projekt) lehetőségre. A lépések elvégzéséhez a .NET 4.5.2-es vagy újabb verziója szükséges.
-3. A projekttípusok jobb oldalon megjelenő listájában válassza a **Visual C#** -> **Konzolalkalmazás (.NET-keretrendszer)** elemet.
+3. A projekttípusok jobb oldalon megjelenő listájában válassza a **Visual C#**  -> **Konzolalkalmazás (.NET-keretrendszer)** elemet.
 4. Adja a projektnek az **ADFv2BranchTutorial** nevet.
 5. A projekt létrehozásához kattintson az **OK** gombra.
 
 ## <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
 1. Kattintson a **Tools** (Eszközök)  -> **NuGet Package Manager** (NuGet-csomagkezelő) -> **Package Manager Console** (Csomagkezelő konzol) elemre.
-2. Az a **Package Manager Console**, csomagok telepítéséhez a következő parancsokat. Tekintse meg [Microsoft.Azure.Management.DataFactory nuget-csomag](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) adatokkal.
+2. A **Package Manager konzolon**futtassa a következő parancsokat a csomagok telepítéséhez. A részletekkel kapcsolatban tekintse meg a [Microsoft. Azure. Management. DataFactory nuget csomagot](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
@@ -96,7 +95,7 @@ Hozzon létre egy, a C# nyelvet használó .NET-konzolalkalmazást a Visual Stud
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Adja hozzá ezeket a statikus változókat a **Program osztályhoz**. Cserélje le a helyőrzőket saját értékeire. Azure-régióban, amelyben a Data Factory jelenleg listája, válassza ki a régiók, amelyek a következő oldalon érdeklődésére számot tartó, és bontsa ki **Analytics** található **adat-előállító**: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+2. Adja hozzá ezeket a statikus változókat a **Program osztályhoz**. Cserélje le a helyőrzőket saját értékeire. Azon Azure-régiók listájáért, amelyekben Data Factory jelenleg elérhető, válassza ki a következő oldalon megtekinteni kívánt régiókat, majd bontsa ki az **elemzés** elemet a **Data Factory**megkereséséhez: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
     ```csharp
         // Set variables
@@ -140,7 +139,7 @@ Hozzon létre egy, a C# nyelvet használó .NET-konzolalkalmazást a Visual Stud
     var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
     ```
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>data factory létrehozása
 
 Hozzon létre egy „CreateOrUpdateDataFactory” funkciót a Program.cs fájlban:
 
@@ -209,7 +208,7 @@ Adja hozzá a következő kódot a **Main** metódushoz, amely létrehoz egy **A
 
 Meghatároz egy adatkészletet, amely a forrásadatokat jelöli az Azure Blobban. Ez a Blob-adatkészlet az előző lépésben létrehozott Azure Storage-beli társított szolgáltatásra vonatkozik, és a következőket írja le:
 
-- A blob másolása helye: **FolderPath** és **FileName**;
+- A másolandó blob helye: **FolderPath** és **fájlnév**;
 - Figyelje meg a FolderPath esetében használt paramétereket. A „sourceBlobContainer” a paraméter neve, a kifejezést pedig a folyamat futásával átadott értékek helyettesítik. A paraméterek meghatározására szolgáló szintaxis: `@pipeline().parameters.<parameterName>`
 
 Hozzon létre egy „SourceBlobDatasetDefinition” funkciót a Program.cs fájlban:
@@ -263,14 +262,14 @@ client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDataset
 client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetName, SinkBlobDatasetDefinition(client));
 ```
 
-## <a name="create-a-c-class-emailrequest"></a>Hozzon létre egy C# osztály: EmailRequest
+## <a name="create-a-c-class-emailrequest"></a>Hozzon C# létre egy osztályt: EmailRequest
 
 A C#-projektben hozzon létre egy **EmailRequest** nevű osztályt. Ez határozza meg, hogy a folyamat e-mailek küldésekor milyen tulajdonságokat küld a törzskérelemben. Ebben az oktatóanyagban a folyamat négy tulajdonságot küld a folyamatból az e-mailbe:
 
 - **Message**: az e-mail törzse. Sikeres másolás esetén ez a tulajdonság tartalmazza a futás részleteit (az írt adatok mennyiségét). Sikertelen másolás esetén ez a tulajdonság tartalmazza a hiba részleteit.
 - **Data factory name**: az adat-előállító neve.
 - **Pipeline name**: a folyamat neve.
-- **Fogadó**: Átadott paraméter. Ez a tulajdonság adja meg az e-mail fogadóját.
+- **Fogadó**: Az átadott paraméter. Ez a tulajdonság adja meg az e-mail fogadóját.
 
 ```csharp
     class EmailRequest

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a228c0d349fd45f34923a64ef99dcfba50c4c548
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 93532b1b40dc138a234d5433591a2ba79167194e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034993"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135575"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkör engedélyei Azure Active Directory
 
@@ -123,7 +123,7 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 * **[Eszköz rendszergazdája](#device-administrators)** : Ez a szerepkör csak az [eszközbeállítások](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)további helyi rendszergazdája számára érhető el. Az ezzel a szerepkörrel rendelkező felhasználók a Azure Active Directoryhoz csatlakozó összes Windows 10-es eszközön a helyi számítógép-Rendszergazdák lesznek. Nem tudja kezelni az eszközök objektumait Azure Active Directoryban. 
 
-* **[Directory-olvasók](#directory-readers)** : Ez a szerepkör csak olyan örökölt alkalmazásokhoz rendelhető hozzá, amelyek nem támogatják az [engedélyezési keretrendszert](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Ne rendelje hozzá a felhasználókhoz.
+* **[Directory-olvasók](#directory-readers)** : Ez a szerepkör csak olyan örökölt alkalmazásokhoz rendelhető hozzá, amelyek nem támogatják az [engedélyezési keretrendszert](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Az ebben a szerepkörben lévő felhasználók beolvashatják az alapszintű címtár-információkat. A következő szerepkört kell használni: 1.) adja meg a vendég felhasználói számára az olvasási hozzáférést ahelyett, hogy az összes vendég felhasználó számára megadja azt. 2.) a nem rendszergazda felhasználók adott készletének megadása az Azure Portalhoz, ha "az Azure AD-portálhoz való hozzáférés korlátozása csak a rendszergazdák számára" beállítás értéke "yes". 3) az egyszerű szolgáltatások elérésének biztosítása a whereDirectory. Read. All nem lehetőség.
 
 * **[Címtár-szinkronizálási fiókok](#directory-synchronization-accounts)** : Ne használja. Ezt a szerepkört a rendszer automatikusan hozzárendeli a Azure AD Connect szolgáltatáshoz, és semmilyen más használatra nem javasolt vagy nem támogatott.
 
@@ -658,7 +658,7 @@ Az ehhez a szerepkörhöz hozzárendelt felhasználók hozzá lesznek adva a hel
 | Microsoft. HRE. Directory/groupSettingTemplates/Basic/READ | A Azure Active Directory groupSettingTemplates alapszintű tulajdonságainak olvasása. |
 
 ### <a name="directory-readers"></a>Címtárolvasó
-Az alapvető címtáradatok olvasása. Az alkalmazásokhoz való hozzáférés biztosítása nem a felhasználók számára ajánlott.
+Az alapvető címtáradatok olvasása. Az ebben a szerepkörben lévő felhasználók beolvashatják az alapszintű címtár-információkat. A következő szerepkört kell használni: 1.) adja meg a vendég felhasználói számára az olvasási hozzáférést ahelyett, hogy az összes vendég felhasználó számára megadja azt. 2.) a nem rendszergazda felhasználók adott készletének megadása az Azure Portalhoz, ha "az Azure AD-portálhoz való hozzáférés korlátozása csak a rendszergazdák számára" beállítás értéke "yes". 3) az egyszerű szolgáltatások elérésének biztosítása a whereDirectory. Read. All nem lehetőség.
 
 | **Műveletek** | **Leírás** |
 | --- | --- |

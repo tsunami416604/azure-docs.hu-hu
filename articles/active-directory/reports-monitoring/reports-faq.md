@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a9b1144e3ef1f1a49c39d694f465653da5881cb
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e8c3138b82c7dc4a7217e8cb67448a5d824398ba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987926"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127024"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Gyakori kérdések Azure Active Directory jelentésekről
 
@@ -37,7 +37,7 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 
 **K: Jelenleg a Endpoint API `https://graph.windows.net/<tenant-name>/reports/` -k segítségével lehívhatjuk az Azure ad biztonsági jelentéseit (az észlelések bizonyos típusai, például a kiszivárgott hitelesítő adatok vagy a névtelen IP-címekről való bejelentkezések) a jelentéskészítési rendszerekhez programozott módon. Mire érdemes váltani?**
 
-**V:** Az [Identity Protection kockázati eseményeinek API](../identity-protection/graph-get-started.md) -jával Microsoft Graph használatával férhet hozzá a biztonsági észlelésekhez. Ez az új formátum nagyobb rugalmasságot biztosít az adatlekérdezéshez, a speciális szűréssel, a mezők kiválasztásával és egyebekkel, valamint a kockázati események egyetlen típusba való egységesítésével könnyebben integrálható a SIEM és más adatgyűjtési eszközökbe. Mivel az adatformátumok eltérő formátumúak, nem helyettesíthet új lekérdezést a régi lekérdezésekhez. [Az új API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)azonban a Microsoft Graph-t használja, amely a O365 vagy az Azure ad-hez hasonló API-k Microsoft-szabványa. Így a szükséges munka kiterjesztheti az aktuális MS Graph-beruházásokat, vagy megkezdheti az áttérést az új standard platformra.
+**V:** Az [Identity Protection kockázati észlelések API](../identity-protection/graph-get-started.md) -val Microsoft Graph használatával férhet hozzá a biztonsági észlelésekhez. Ez az új formátum nagyobb rugalmasságot biztosít az adatlekérdezéshez, a speciális szűréssel, a mezők kiválasztásával és egyebekkel, valamint a kockázati észlelések egyetlen típusra történő egységesítésével, így könnyebben integrálható a SIEM és más adatgyűjtési eszközökbe. Mivel az adatformátumok eltérő formátumúak, nem helyettesíthet új lekérdezést a régi lekérdezésekhez. [Az új API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)azonban a Microsoft Graph-t használja, amely a O365 vagy az Azure ad-hez hasonló API-k Microsoft-szabványa. Így a szükséges munka kiterjesztheti az aktuális MS Graph-beruházásokat, vagy megkezdheti az áttérést az új standard platformra.
 
 ---
 
@@ -107,7 +107,7 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 
 ## <a name="risky-sign-ins"></a>Kockázatos bejelentkezések
 
-**K: Van egy kockázati esemény az Identity Protectionben, de nem látok megfelelő bejelentkezést a bejelentkezési jelentésben. Ez várható?**
+**K: A rendszer kockázati észlelést észlel az Identity Protectionben, de nem látok megfelelő bejelentkezést a bejelentkezési jelentésekben. Ez várható?**
 
 **V:** Igen, az Identity Protection kiértékeli az összes hitelesítési folyamat kockázatát, akár interaktív, akár nem interaktív. Azonban az összes bejelentkezési jelentés csak az interaktív bejelentkezéseket jeleníti meg.
 
@@ -115,7 +115,7 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 
 **K: Hogyan tudni, miért van a bejelentkezés vagy a felhasználó kockázatos jelölése a Azure Portalban?**
 
-**V:** Ha **prémium szintű Azure ad** -előfizetéssel rendelkezik, további információkat tudhat meg a mögöttes kockázati eseményekről, ha kiválasztja a felhasználót a **kockázatra megjelölt felhasználók** számára, vagy ha kijelöl egy rekordot a **kockázatos bejelentkezések** jelentésében. Ha **ingyenes** vagy alapszintű előfizetéssel rendelkezik, akkor a kockázatos és kockázatos bejelentkezési jelentésekben megtekintheti a felhasználókat, de az alapul szolgáló kockázati eseményekre vonatkozó információk nem láthatók.
+**V:** Ha **prémium szintű Azure ad** -előfizetéssel rendelkezik, további információkat tudhat meg az alapul szolgáló kockázati észlelésekről, ha kijelöli a felhasználót a kockázatnak kijelölve, vagy egy, a **kockázatos bejelentkezési** jelentésben szereplő rekordot választ. Ha **ingyenes** vagy alapszintű előfizetéssel rendelkezik, akkor a kockázatos és kockázatos bejelentkezési jelentésekben megtekintheti a felhasználókat, de a mögöttes kockázati észlelési információk nem láthatók.
 
 ---
 
@@ -125,7 +125,7 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 
 ---
 
-**K: Mit jelent a "Bejelentkezés további kockázattal" nevű kockázati esemény?**
+**K: Mit jelent a kockázatkezelési "Bejelentkezés további kockázattal" kifejezés?**
 
 **V:** Annak érdekében, hogy betekintést kapjon az összes kockázatos bejelentkezésbe a környezetében, a "Bejelentkezés további kockázattal" funkció helyőrzőként funkcionál az olyan észlelésekhez, amelyek kizárólag Azure AD Identity Protection előfizetők számára készültek.
 

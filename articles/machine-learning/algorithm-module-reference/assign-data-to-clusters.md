@@ -1,7 +1,7 @@
 ---
-title: 'Adatok hozzárendelése fürt: Modul-hivatkozás'
+title: 'Az adatfürthöz való hozzárendelés: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Útmutató az Azure Machine Learning szolgáltatás az adatok hozzárendelése fürt modul használatával a fürtözési modell pontozása.
+description: Megtudhatja, hogyan használhatja az adathozzárendelési modult Azure Machine Learning szolgáltatásban a fürtszolgáltatási modell pontozásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,45 +9,44 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 1c2d2a02ecfb617551dd9174b87f363d57b151a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56f608044716ea3655576c11aa7a62343215f508
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467200"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128991"
 ---
-# <a name="module-assign-data-to-clusters"></a>A modul: Adatok hozzárendelése fürtökhöz
+# <a name="module-assign-data-to-clusters"></a>Modul Az adatfürthöz rendelése
 
-Ez a cikk ismerteti, hogyan használható a *adatok hozzárendelése fürtökhöz* modul az Azure Machine Learning vizuális felületen. A modul állít elő, előrejelzéseket volt képzett csoportosítási modellben a *K-közép-Fürtszolgáltatás* algoritmus.
+Ez a cikk azt ismerteti, hogyan használható az adathozzárendelés a fürtökhöz modul a Azure Machine learning vizuális felületen. A modul előrejelzéseket készít egy olyan fürtözött modell használatával, amely a *K-means fürtszolgáltatási* algoritmussal lett betanítva.
 
-A fürtök modul hozzárendelése adatokat adja vissza egy adatkészletet, amely tartalmazza az új adatpontok valószínű hozzárendelések. 
+Az adatok hozzárendelése a fürtökhöz modul olyan adatkészletet ad vissza, amely tartalmazza az egyes új adatpontok lehetséges hozzárendeléseit. 
 
 
-## <a name="how-to-use-assign-data-to-clusters"></a>Hogyan használható az adatok hozzárendelése fürtökhöz
+## <a name="how-to-use-assign-data-to-clusters"></a>Az adathozzárendelés fürthöz való használata
   
-1. Az Azure Machine Learning vizuális felhasználói felületet keresse meg a fürtözési korábban betanított modell. Hozzon létre, és a fürtözési modell betanításához az alábbi módszerek egyikével:  
+1. A Azure Machine Learning vizuális felületen keresse meg a korábban betanított fürtszolgáltatási modellt. A következő módszerek egyikével hozhat létre és állíthat be egy fürtszolgáltatási modellt:  
   
-    - Konfigurálja a K-közép-csoportosítási algoritmus használatával a [K-közép-Fürtszolgáltatás](k-means-clustering.md) modul és train a modellben egy adatkészletet, és a fürtözési modell betanításához modul (Ez a cikk) használatával.  
+    - Konfigurálja a K-azt a fürtözési algoritmust a [k-Meaning-fürtszolgáltatási](k-means-clustering.md) modul használatával, és a modell betanítását egy adatkészlet és a vonat-fürtszolgáltatási modell modul (ez a cikk) használatával.  
   
-    - Is hozzáadhat egy meglévő betanított fürtözési modell a a **mentett modellek** csoporthoz a munkaterületét.
+    - Hozzáadhat egy meglévő betanított fürtszolgáltatási modellt is a munkaterület **mentett modellek** csoportjából.
 
-2. A bal oldali bemeneti portjával csatolja a betanított modell **adatok hozzárendelése fürtökhöz**.  
+2. Csatolja a betanított modellt a bal oldali bemeneti porthoz, amely **adatokat rendel**a fürtökhöz.  
 
-3. Egy új adatkészlet csatolása bemenetként. 
+3. Új adatkészlet csatlakoztatása bemenetként. 
 
-   Ez az adatkészlet a címkék nem kötelező. Általában a fürtszolgáltatás egy olyan felügyeletlen learning módszer. Nem várt már ismerni a kategóriák. Azonban a bemeneti oszlopok azonosnak kell lennie a fürtözési modell, vagy hiba történt a betanítási rendszerben használt oszlopok szerepelnek.
+   Ebben az adatkészletben a címkék megadása nem kötelező. A fürtözés általában egy nem felügyelt tanulási módszer. A kategóriákat nem várható előre megismerni. A bemeneti oszlopoknak azonban meg kell egyezniük a fürtszolgáltatási modell betanításakor használt oszlopokkal, vagy hiba történik.
 
     > [!TIP]
-    > A felület, a fürt előrejelzéseket írt oszlopok számának csökkentése, használja a [oszlopok kiválasztása az adatkészlet](select-columns-in-dataset.md), és válassza ki az oszlopok egy része. 
+    > Ha csökkenteni szeretné a fürt előrejelzési felületére írt oszlopok számát, használja az adatkészletben az [Oszlopok kiválasztása lehetőséget](select-columns-in-dataset.md), majd válassza ki az oszlopok egy részhalmazát. 
     
-4. Hagyja a **ellenőrizze az eredmény csak hozzáfűzéssel bővíthető vagy négyzet jelölését** jelölőnégyzet be van jelölve, ha azt szeretné, hogy az eredményeket a teljes adatkészletet, beleértve egy oszlopot, amely megjeleníti az eredményeket (fürt hozzárendelések) tartalmaznak.
+4. Ha azt szeretné, hogy az eredmények tartalmazzák a teljes bemeneti adatkészletet, ne jelölje be a **Hozzáfűzés vagy a kijelölés jelölőnégyzetet** , ha azt szeretné, hogy a rendszer az eredményeket tartalmazó oszlopot (fürt-hozzárendeléseket) is tartalmazza.
   
-    Ha törli ezt a jelölőnégyzetet, a rendszer csak az eredményeket adja vissza. Ez a beállítás akkor lehet hasznos, előrejelzéseket egy webes szolgáltatás részeként történő létrehozásakor.
+    Ha törli a jelölést a jelölőnégyzetből, akkor a rendszer csak az eredményeket adja vissza. Ez a beállítás akkor lehet hasznos, ha egy webszolgáltatás részeként hoz létre előrejelzéseket.
   
 5.  Futtassa a kísérletet.  
   
 ### <a name="results"></a>Results (Eredmények)
 
-+  Tekintse meg az értékeket az adatkészletben, kattintson a jobb gombbal a modult, jelölje ki **adatkészletek eredmény**, majd válassza ki **Visualize**.
++  Az adatkészlet értékeinek megtekintéséhez kattintson a jobb gombbal a modulra, válassza az **eredmények**adatkészletek lehetőséget, majd válassza a **Megjelenítés**lehetőséget.
 

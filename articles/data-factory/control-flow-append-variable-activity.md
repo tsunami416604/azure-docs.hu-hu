@@ -1,38 +1,38 @@
 ---
-title: Az Azure Data Factory változó tevékenység hozzáfűzése |} A Microsoft Docs
-description: Ismerje meg, hogyan állíthatja be a változó hozzáfűzése tevékenység tömbváltozóhoz egy meglévő Data Factory-folyamatok meghatározott érték hozzáadása
+title: Változó tevékenység hozzáfűzése a Azure Data Factoryban | Microsoft Docs
+description: Megtudhatja, hogyan állíthatja be a változó hozzáfűzése tevékenységet úgy, hogy értéket adjon hozzá egy Data Factory folyamatban definiált meglévő tömb-változóhoz.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.date: 10/09/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: a5efe946000eb00e65d314ae53d7136761e2109d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24808c9ed4bda5e8d3b0ce23ab93bc59eb260374
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557222"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141725"
 ---
-# <a name="append-variable-activity-in-azure-data-factory"></a>Az Azure Data Factory változó tevékenység hozzáfűzése
+# <a name="append-variable-activity-in-azure-data-factory"></a>Változó tevékenység hozzáfűzése Azure Data Factory
 
-A változó hozzáfűzése tevékenység használatával adjon meg egy értéket egy meglévő, egy Data Factory-folyamatot meghatározott tömbváltozóhoz.
+A változó hozzáfűzése tevékenységgel hozzáadhat egy értéket egy Data Factory folyamatban definiált meglévő tömb változóhoz.
 
-## <a name="type-properties"></a>Tulajdonságok
+## <a name="type-properties"></a>Típus tulajdonságai
 
-Tulajdonság | Leírás | Szükséges
+Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-name | A folyamat a tevékenység neve | Igen
-description | A tevékenység leírása leíró szöveg | nem
-type | Tevékenység típus AppendVariable | igen
-value | Karakterlánc változóban megadott összefűzésére használható szövegkonstans vagy kifejezés objektum értéke | igen
-variableName | A tevékenység, a változó által módosító változó nevének kell lennie a "Array" típus | igen
+name | A tevékenység neve a folyamatban | Igen
+description | A tevékenység működését leíró szöveg | nem
+type | A tevékenység típusa AppendVariable | igen
+value | A megadott változóhoz való hozzáfűzéshez használt karakterlánc-literál vagy kifejezés objektum értéke | igen
+variableName | Annak a változónak a neve, amely tevékenység alapján módosul, a változónak "Array" típusúnak kell lennie. | igen
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg a kapcsolódó vezérlésfolyam-tevékenységek a Data Factory által támogatott: 
+A Data Factory által támogatott kapcsolódó vezérlési folyamatokkal kapcsolatos tevékenységek ismertetése: 
 
-- [Változó beállítása tevékenységhez](control-flow-set-variable-activity.md)
+- [Változó tevékenység beállítása](control-flow-set-variable-activity.md)

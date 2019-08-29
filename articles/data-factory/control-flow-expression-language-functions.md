@@ -3,21 +3,20 @@ title: Kifejezés és függvények a Azure Data Factoryban | Microsoft Docs
 description: Ez a cikk a adat-előállító entitások létrehozásához használható kifejezésekkel és függvényekkel kapcsolatos információkat tartalmazza.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: 533d0c7461530a00e6f640ee53c0c87d336e799d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c500c4b2d35a449a9f9c0f693a02c008ea6e3c5e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876316"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141693"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Kifejezések és függvények az Azure Data Factoryben
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -232,7 +231,7 @@ Ez az [oktatóanyag](https://azure.microsoft.com/mediahandler/files/resourcefile
 |uriComponentToBinary|Egy URI-kódolású karakterlánc bináris ábrázolását adja vissza. Az alábbi kifejezés például a következő bináris ábrázolását `You Are:Cool/Awesome`adja vissza:`uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Sztring<br /><br />**Leírás**: Kötelező. Az URI-kódolású karakterlánc.|  
 |uriComponentToString|Egy URI-kódolású karakterlánc karakterlánc-ábrázolását adja vissza. A következő kifejezés például a függvényt `You Are:Cool/Awesome`adja vissza:`uriComponentToString('You+Are%3ACool%2FAwesome')`<br /><br /> **Paraméter száma**: 1<br /><br />**Név**: Sztring<br /><br />**Leírás**: Kötelező. Az URI-kódolású karakterlánc.|  
 |xml|Az érték XML-ábrázolásának visszaadása. A következő kifejezés például egy XML-tartalmat ad vissza, amelyet `'\<name>Alan\</name>'`a `xml('\<name>Alan\</name>')`:. Az XML-függvény a JSON-objektumok bemenetét is támogatja. A paramétert `{ "abc": "xyz" }` például XML-tartalomra konvertálja a rendszer`\<abc>xyz\</abc>`<br /><br /> **Paraméter száma**: 1<br /><br />**Név**: Value<br /><br />**Leírás**: Kötelező. Az XML-re konvertálandó érték.|  
-|XPath|Olyan XML-csomópontok tömbjét adja vissza, amelyek megfelelnek egy olyan érték XPath-kifejezésének, amelyet az XPath-kifejezés kiértékel.<br /><br />  **1. példa**<br /><br /> Tegyük fel, hogy a "P1" paraméter értéke a következő XML karakterlánc-ábrázolása:<br /><br /> `<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>`<br /><br /> 1. Ez a kód:`xpath(xml(pipeline().parameters.p1), '/lab/robot/name')`<br /><br /> visszatérés<br /><br /> `[ <name>R1</name>, <name>R2</name> ]`<br /><br /> mivel<br /><br /> 2. Ez a kód:`xpath(xml(pipeline().parameters.p1, ' sum(/lab/robot/parts)')`<br /><br /> visszatérés<br /><br /> `13`<br /><br /> <br /><br /> **2. példa**<br /><br /> A következő XML-tartalomnak kell megadnia:<br /><br /> `<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>`<br /><br /> 1.  Ez a kód:`@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')`<br /><br /> or<br /><br /> 2. Ez a kód:`@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')`<br /><br /> adja vissza<br /><br /> `<Location xmlns="http://foo.com">bar</Location>`<br /><br /> és<br /><br /> 3. Ez a kód:`@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')`<br /><br /> adja vissza<br /><br /> ``bar``<br /><br /> **Paraméter száma**: 1<br /><br />**Név**: Xml<br /><br />**Leírás**: Kötelező. Az az XML, amelyen az XPath-kifejezést ki kell értékelni.<br /><br /> **Paraméter száma**: 2<br /><br />**Név**: XPath<br /><br />**Leírás**: Kötelező. Az értékelendő XPath-kifejezés.|  
+|XPath|Olyan XML-csomópontok tömbjét adja vissza, amelyek megfelelnek egy olyan érték XPath-kifejezésének, amelyet az XPath-kifejezés kiértékel.<br /><br />  **1. példa**<br /><br /> Tegyük fel, hogy a "P1" paraméter értéke a következő XML karakterlánc-ábrázolása:<br /><br /> `<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>`<br /><br /> 1. Ez a kód:`xpath(xml(pipeline().parameters.p1), '/lab/robot/name')`<br /><br /> visszatérés<br /><br /> `[ <name>R1</name>, <name>R2</name> ]`<br /><br /> mivel<br /><br /> 2. Ez a kód:`xpath(xml(pipeline().parameters.p1, ' sum(/lab/robot/parts)')`<br /><br /> visszatérés<br /><br /> `13`<br /><br /> <br /><br /> **2. példa**<br /><br /> A következő XML-tartalomnak kell megadnia:<br /><br /> `<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>`<br /><br /> 1.  Ez a kód:`@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')`<br /><br /> vagy<br /><br /> 2. Ez a kód:`@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')`<br /><br /> adja vissza<br /><br /> `<Location xmlns="http://foo.com">bar</Location>`<br /><br /> és<br /><br /> 3. Ez a kód:`@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')`<br /><br /> adja vissza<br /><br /> ``bar``<br /><br /> **Paraméter száma**: 1<br /><br />**Név**: Xml<br /><br />**Leírás**: Kötelező. Az az XML, amelyen az XPath-kifejezést ki kell értékelni.<br /><br /> **Paraméter száma**: 2<br /><br />**Név**: XPath<br /><br />**Leírás**: Kötelező. Az értékelendő XPath-kifejezés.|  
 |array|Alakítsa át a paramétert egy tömbre.  A következő kifejezés például a függvényt `["abc"]`adja vissza:`array('abc')`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Value<br /><br /> **Leírás**: Kötelező. Egy tömbre konvertált érték.|
 |createArray|Létrehoz egy tömböt a paraméterekből.  A következő kifejezés például a függvényt `["a", "c"]`adja vissza:`createArray('a', 'c')`<br /><br /> **Paraméter száma**: 1... n<br /><br /> **Név**: Bármely n<br /><br /> **Leírás**: Kötelező. Egy tömbbe egyesíthető értékek.|
 

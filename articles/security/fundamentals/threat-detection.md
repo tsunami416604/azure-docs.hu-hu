@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 86b17efdb811e9e4040b8b267c161b950f6de5fd
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6278e848a82fb31939117fa9b916a92a2fb74a3e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036180"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129283"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure komplex veszélyforrások észlelése
 
@@ -30,13 +30,13 @@ Az Azure számos lehetőséget kínál a biztonsági beállítások konfigurál�
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
-A [Azure ad Identity Protection](../../active-directory/identity-protection/overview.md) egy [prémium szintű Azure Active Directory P2](../../active-directory/active-directory-whatis.md) kiadási funkció, amely áttekintést nyújt a szervezet identitásait érintő kockázati eseményekről és lehetséges sebezhetőségekről. Az Identity Protection meglévő Azure AD-anomália-észlelési képességeket használ, amelyek az [Azure ad rendellenes tevékenységi jelentéseiben](../../active-directory/active-directory-reporting-azure-portal.md)érhetők el, és új kockázati események típusait észlelik, amelyek valós idejű rendellenességek észlelésére képesek.
+A [Azure ad Identity Protection](../../active-directory/identity-protection/overview.md) egy [prémium szintű Azure Active Directory P2](../../active-directory/active-directory-whatis.md) kiadási funkció, amely áttekintést nyújt a szervezet identitásait érintő kockázati észlelésekről és lehetséges sebezhetőségekről. Az Identity Protection meglévő Azure AD-anomália-észlelési képességeket használ, amelyek az [Azure ad rendellenes tevékenységi jelentéseiben](../../active-directory/active-directory-reporting-azure-portal.md)érhetők el, és új kockázati észlelési típusokat vezetnek be, amelyek valós idejű rendellenességek észlelésére képesek.
 
 ![Azure AD Identity Protection diagram](./media/threat-detection/azure-threat-detection-fig1.png)
 
-Az Identity Protection adaptív gépi tanulási algoritmusokat és heurisztikus használatot alkalmaz a rendellenességek és a kockázati események észlelésére, amelyek jelezhetik, hogy az identitás biztonsága sérült. Ezeknek az adatoknak a használatával az Identity Protection jelentéseket és riasztásokat hoz létre, így megvizsgálhatja ezeket a kockázati eseményeket, és elvégezheti a megfelelő szervizelési vagy kockázatcsökkentő műveleteket.
+Az Identity Protection adaptív gépi tanulási algoritmusokat és heurisztikus használatot alkalmaz a rendellenességek és a kockázati észlelések észlelésére, ami arra utalhat, hogy az identitás biztonsága sérült. Ezeknek az adatoknak a használatával az Identity Protection jelentéseket és riasztásokat hoz létre, így kivizsgálhatja ezeket a kockázati észleléseket, és elvégezheti a megfelelő szervizelési vagy kockázatcsökkentő műveleteket.
 
-Azure Active Directory Identity Protection több, mint egy figyelési és jelentéskészítési eszköz. A kockázati események alapján az Identity Protection kiszámítja az egyes felhasználókra vonatkozó felhasználói kockázati szintet, így a kockázatkezelési házirendek konfigurálásával automatikusan védetté teheti a szervezet identitásait.
+Azure Active Directory Identity Protection több, mint egy figyelési és jelentéskészítési eszköz. A kockázati észlelések alapján az Identity Protection kiszámítja az egyes felhasználókra vonatkozó felhasználói kockázati szintet, így a kockázatkezelési szabályzatokat konfigurálhatja a szervezet identitásának automatikus védelméhez.
 
 Ezek a kockázatalapú házirendek a Azure Active Directory és az [EMS](../../active-directory/active-directory-conditional-access-azure-portal.md)által biztosított egyéb [feltételes hozzáférés](../../active-directory/active-directory-conditional-access-azure-portal.md) -vezérlések mellett automatikusan letilthatják vagy felhasználhatják az olyan adaptív szervizelési műveleteket, amelyek jelszavas alaphelyzetbe állítást és több tényezőt tartalmaznak hitelesítés kényszerítése.
 
@@ -46,14 +46,14 @@ Azure Active Directory Identity Protection több, mint egy figyelési és jelent
 
 Néhány példa az Azure Identity Protection által a fiókok és identitások biztonságossá tételéhez:
 
-[Kockázati események és kockázatos fiókok észlelése](../../active-directory/identity-protection/overview.md)
--   Hat kockázati esemény típusának észlelése gépi tanulási és heurisztikus szabályok használatával.
+[Kockázati észlelések és kockázatos fiókok észlelése](../../active-directory/identity-protection/overview.md)
+-   A hat kockázati észlelési típus észlelése gépi tanulással és heurisztikus szabályokkal.
 -   Felhasználói kockázati szintek kiszámítása.
 -   A biztonsági rések kiemelésével egyéni ajánlásokat adhat meg az általános biztonsági testhelyzet javításához.
 
-[Kockázati események kivizsgálása](../../active-directory/identity-protection/overview.md)
--   Értesítés küldése a kockázati eseményekről.
--   A kockázati események vizsgálata a releváns és a környezetfüggő információk használatával.
+[A kockázati észlelések kivizsgálása](../../active-directory/identity-protection/overview.md)
+-   Értesítések küldése a kockázati észlelésekhez.
+-   A kockázatok észlelésének vizsgálata a releváns és a környezetfüggő információk használatával.
 -   Alapvető munkafolyamatok biztosítása a vizsgálatok nyomon követéséhez.
 -   Könnyű hozzáférést biztosít a javítási műveletekhez, például a jelszó-visszaállításhoz.
 

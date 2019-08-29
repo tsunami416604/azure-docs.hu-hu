@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 45e1ad6bd757ec5acaf784c94e4cfb5e487ce9ba
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 52eeedf4651cee012569034ae635a4736b3f3335
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975737"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135541"
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása
 
@@ -88,7 +88,7 @@ Ha az egyéni tartománynévhez konfigurálja a DNS-t, két lehetőség közül 
 -   Konfiguráljon egy olyan rekordot, amely a API Management átjáró IP-címére mutat.
 
 > [!NOTE]
-> Bár az API Management-példány IP-címe statikus, néhány esetben változhat. Ezért javasoljuk, hogy használjon CNAME-t az egyéni tartomány konfigurálásakor. A DNS-konfigurációs módszer kiválasztásakor vegye figyelembe a figyelmet. További információk az [API-Mananagement – gyakori kérdések](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules).
+> Bár az API Management-példány IP-címe statikus, néhány esetben változhat. Ezért javasoljuk, hogy használjon CNAME-t az egyéni tartomány konfigurálásakor. A DNS-konfigurációs módszer kiválasztásakor vegye figyelembe a figyelmet. További információk az [API-Mananagement – gyakori kérdések](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services).
 
 ## <a name="next-steps"></a>További lépések
 

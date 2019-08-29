@@ -16,17 +16,17 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 540bc8a4dbfda83ff6e0480bc216a38742bbef2b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1513dba19221e64d40551ffb13a5e9f33fd9858f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988082"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127239"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Gyors útmutató: Elnevezett helyszínek konfigurálása Azure Active Directory
 
 A nevesített helyek segítségével megcímkézhetők a szervezeten belül a megbízható IP-címtartományok. Az Azure AD a nevesített helyeket a következő célokra használja:
-- Észlelheti a vakriasztású [kockázati eseményeket](concept-risk-events.md). A megbízható helyről történő bejelentkezésnél kisebb a felhasználó bejelentkezési kockázata.   
+- Azonosíthatja a [kockázati észlelések](concept-risk-events.md)téves pozitív értékeit. A megbízható helyről történő bejelentkezésnél kisebb a felhasználó bejelentkezési kockázata.   
 - Konfigurálja a [hely-alapú feltételes hozzáférést](../conditional-access/location-condition.md).
 
 Ebben a rövid útmutatóban megismerheti, hogyan lehet nevesített helyeket konfigurálni a saját környezetében.

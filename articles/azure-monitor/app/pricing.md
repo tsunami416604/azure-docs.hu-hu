@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.author: dalek
-ms.openlocfilehash: 45a8f8a7ee4d887503aeaf8e0e285c45a21c4bcc
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: f2ea87f237fa5cca8a4b1f6773d2b47729cfb5b0
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982609"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147550"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>A Application Insights használatának és költségeinek kezelése
 
@@ -147,6 +147,9 @@ Ha a tényleges mintavételezési sebességet szeretné felderíteni, független
 Az egyes megőrzött rekordokban `itemCount` az eredeti rekordok számát jelöli. A korábbi elvetett rekordok száma 1. 
 
 ## <a name="change-the-data-retention-period"></a>Módosítsa az Adatmegőrzés időtartama
+
+> [!NOTE]
+> Ezt a funkciót átmenetileg eltávolította a probléma megoldásához.  A visszalépést a 2019-es szeptember közepére tesszük vissza.
 
 Application Insights erőforrások alapértelmezett megőrzése 90 nap. Minden Application Insights erőforráshoz különböző megőrzési időszakok választhatók ki. A rendelkezésre álló adatmegőrzési időszakok teljes készlete 30, 60, 90, 120, 180, 270, 365, 550 vagy 730 nap. 
 

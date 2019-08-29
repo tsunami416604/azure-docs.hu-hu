@@ -6,14 +6,14 @@ author: laurenhughes
 manager: gwallace
 ms.service: batch
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 08/28/2019
 ms.author: lahugh
-ms.openlocfilehash: 00da17512cbc2e713955ea83c7d9fa7517958169
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3c2213c25a8fdc6d6545711bd2af9b94662ee609
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036696"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141826"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-pool"></a>Készlet létrehozása a megosztott képtára használatával
 
@@ -23,7 +23,7 @@ Ha Azure Batch-készletet hoz létre a virtuális gép konfigurációjával, meg
 
 Ha az egyéni rendszerképhez a megosztott képtárat használja, az operációs rendszer típusát és konfigurációját, valamint az adatlemezek típusát is szabályozhatja. A megosztott rendszerkép tartalmazhat olyan alkalmazásokat és referenciákat, amelyek a Batch-készlet összes csomópontján elérhetővé válnak a kiépítés után.
 
-A környezethez szükség szerint a rendszerkép több verzióját is használhatja. Ha rendszerkép-verziót használ a virtuális gép létrehozásához, a rendszer a rendszerkép verzióját használja a virtuális gép új lemezének létrehozásához. 
+A környezethez szükség szerint a rendszerkép több verzióját is használhatja. Ha rendszerkép-verziót használ a virtuális gép létrehozásához, a rendszer a rendszerkép verzióját használja a virtuális gép új lemezének létrehozásához.
 
 A megosztott rendszerkép használatával időt takaríthat meg a készlet számítási csomópontjainak előkészítése a Batch-munkaterhelések futtatásához. A kiépítés után egy Azure Marketplace-rendszerkép is használható, és minden számítási csomóponton telepítheti a szoftvereket, de a megosztott rendszerképek használata általában hatékonyabb. Emellett több replikát is megadhat a megosztott rendszerképhez, így ha sok virtuális géppel (több mint 600 virtuális géppel) rendelkező készleteket hoz létre, akkor időt takaríthat meg a készlet létrehozásakor.
 
@@ -91,6 +91,19 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
     ...
 }
 ```
+
+## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>Készlet létrehozása megosztott rendszerképből a Azure Portal használatával
+
+A következő lépésekkel hozhat létre készletet egy megosztott rendszerképből a Azure Portal.
+
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg a **Batch** -fiókokat, és válassza ki a fiókját.
+1. Válassza a **készletek** lehetőséget, majd a **Hozzáadás** gombra kattintva hozzon létre egy új készletet.
+1. A **rendszerkép típusa** szakaszban válassza a **megosztott képgyűjtemény**lehetőséget.
+1. Hajtsa végre a többi szakaszt a felügyelt lemezképpel kapcsolatos információkkal.
+1. Kattintson az **OK** gombra.
+
+![Hozzon létre egy készletet egy megosztott rendszerképből a portálon.](media/batch-custom-images/create-custom-pool.png)
 
 ## <a name="considerations-for-large-pools"></a>A nagyméretű készletek szempontjai
 

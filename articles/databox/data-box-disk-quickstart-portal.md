@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 9664fd35462ab6084b203fe4ccd3c10435d64991
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: cbc55433517174c8080b941ca8526e5a4fd3427d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035641"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126016"
 ---
 ::: zone target="docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "70035641"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Ismerkedés a Azure Data Box Disk használatával Azure Portal
+## <a name="get-started-with-azure-data-box-disk"></a>Ismerkedés a Azure Data Box Disk 
 
 ::: zone-end
 
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ::: zone target="chromeless"
 
-A rövid útmutató az Azure Data Box Disk az Azure Portal használatával való üzembe helyezését írja le. A lépések közé tartozik az előfeltételek áttekintése, a lemezek zárolásának feloldása, az adatok lemezek közötti összekapcsolásának és másolásának az Azure-ba való feltöltése.
+Ez az útmutató ismerteti, hogyan helyezheti üzembe a Azure Data Box Disk a Azure Portalban. A lépések tartalmazzák az előfeltételek áttekintését, a lemezek zárolásának feloldását, valamint az adatok lemezre való kapcsolódását és másolását, hogy az Azure-ba töltse fel őket.
 
 ::: zone-end
 
@@ -60,7 +60,7 @@ Jelentkezzen be az Azure Portalra a [https://aka.ms/azuredataboxfromdiskdocs](ht
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>Előfeltételek
+### <a name="prerequisites"></a>Előfeltételek
 
 - A [következő oktatóanyag használatával helyezte el Data Box Disk sorrendjét: Megrendelés Azure Data Box Disk](data-box-disk-deploy-ordered.md).
 - Megkapta a meghajtókat, és a portálon a feldolgozás **Kézbesítve** állapotra frissül.

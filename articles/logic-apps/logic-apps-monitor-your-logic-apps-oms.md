@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 08/16/2019
-ms.openlocfilehash: 2f82bd9c0bcacf2c552df84cdd4f8f2cd6a68c8a
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.date: 08/29/2019
+ms.openlocfilehash: a038a05f03ce7a209ae82203441750749bc6c4c4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543205"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138803"
 ---
 # <a name="get-insights-and-debugging-data-for-logic-apps-by-using-azure-monitor-logs"></a>Elemzések és hibakeresési eredmények beolvasása a Logic apps számára Azure Monitor naplók használatával
 
@@ -55,7 +55,7 @@ A Kezdés előtt Log Analytics munkaterületre van szükség. Megtudhatja [, hog
 
 ## <a name="install-logic-apps-management-solution"></a>Logic Apps felügyeleti megoldás telepítése
 
-Ha már bekapcsolta Azure Monitor naplókat a logikai alkalmazás létrehozásakor, hagyja ki ezt a lépést. Már telepítve van a Logic Apps felügyeleti megoldás.
+Ha már beállította Azure Monitor naplókat a logikai alkalmazás létrehozásakor, hagyja ki ezt a lépést. Már telepítve van a Logic Apps felügyeleti megoldás.
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza a **Minden szolgáltatás** elemet. A keresőmezőbe keresse meg a "log Analytics-munkaterületek" elemet, és válassza a **log Analytics**munkaterületek lehetőséget.
 
@@ -107,19 +107,17 @@ A logikai alkalmazás futtatása után megtekintheti a futtatások állapotát �
 
    Az alábbi példa egy adott logikai alkalmazás összes futtatását mutatja be:
 
-   ![Logikai alkalmazás vagy állapot futtatásának megtekintése](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
+   ![Logikai alkalmazás futtatásának és állapotának megtekintése](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
 
-   Ezen a lapon a következő speciális beállítások érhetők el:
+   Ezen az oldalon speciális beállítások érhetők el: 
 
-   * **Követett tulajdonságok:**
+   * **Követett tulajdonságok** oszlop: Egy olyan logikai alkalmazás esetében, amelyben a követett tulajdonságok a műveletek szerint vannak csoportosítva, ezek a tulajdonságok ezen az oszlopon tekinthetők meg. A követett tulajdonságok megtekintéséhez válassza a **nézet**lehetőséget. A követett tulajdonságok kereséséhez használja az oszlop szűrőt.
 
-     Ebben az oszlopban láthatók a logikai alkalmazás által a műveletek szerint csoportosított, nyomon követett tulajdonságok. A követett tulajdonságok megtekintéséhez válassza a **nézet**lehetőséget. A követett tulajdonságok kereséséhez használja az oszlop szűrőt.
+      ![Logikai alkalmazás nyomon követett tulajdonságainak megtekintése](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
 
-     ![Logikai alkalmazás nyomon követett tulajdonságainak megtekintése](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
+      Minden újonnan hozzáadott nyomon követett tulajdonság 10-15 percet is igénybe vehet, mielőtt első alkalommal megjelenjenek. Ismerje meg [, hogyan adhat hozzá nyomon követett tulajdonságokat a logikai alkalmazáshoz](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details).
 
-     Minden újonnan hozzáadott nyomon követett tulajdonság 10-15 percet is igénybe vehet, mielőtt első alkalommal megjelenjenek. Ismerje meg [, hogyan adhat hozzá nyomon követett tulajdonságokat a logikai alkalmazáshoz](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details).
-
-   * **Újraküldés** Egy vagy több, sikertelen, sikeres vagy még futó logikai Alkalmazás-futtatást újra küldhet újra. Jelölje be az újraküldeni kívánt futtatásokhoz tartozó jelölőnégyzeteket, majd kattintson azújraküldés elemre.
+   * **Újraküldése**: Egy vagy több olyan logikai alkalmazás újraküldhető, amely sikertelen, sikeres vagy még mindig fut. Jelölje be az újraküldeni kívánt futtatásokhoz tartozó jelölőnégyzeteket, majd kattintson az Újraküldés elemre.
 
      ![Logikai alkalmazás futtatásának újraküldése](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
@@ -133,25 +131,21 @@ A logikai alkalmazás futtatása után megtekintheti a futtatások állapotát �
 
      ![Az időablak módosítása](media/logic-apps-monitor-your-logic-apps-oms/change-interval.png)
 
-1. Egy adott Futtatás összes műveletének és részletes adatainak megtekintéséhez jelöljön ki egy sort a logikai alkalmazás futtatásához.
+1. Egy adott Futtatás összes műveletének és részletes adatainak megtekintéséhez válassza ki a logikai alkalmazás futtatásának sorát.
 
-   Az alábbi példa egy adott logikai alkalmazás futtatásának összes műveletét jeleníti meg:
+   Az alábbi példa egy adott logikai alkalmazás futtatásának összes műveletét és eseményindítóját mutatja be:
 
    ![Logikai alkalmazás futtatási műveleteinek megtekintése](media/logic-apps-monitor-your-logic-apps-oms/logic-app-action-details.png)
 
-1. Bármely találati oldalon megtekintheti az eredmények mögötti lekérdezést, vagy az összes eredmény megjelenítéséhez válassza az **összes megtekintése**lehetőséget, amely megnyitja a napló keresése lapot.
+1. Bármely találati oldalon megtekintheti az eredmények mögötti lekérdezést, vagy az összes eredmény megjelenítéséhez válassza az **összes megtekintése**lehetőséget, amely megnyitja a **naplók** lapot.
 
-   ![Az összes találati oldalon látható](media/logic-apps-monitor-your-logic-apps-oms/logic-app-seeall.png)
+   ![Az összes eredmény megtekintése](media/logic-apps-monitor-your-logic-apps-oms/logic-app-see-all.png)
 
-   A naplók keresése lapon a következő lehetőségek közül választhat:
+   A **naplók** lapon a következő lehetőségek közül választhat:
 
    * A lekérdezés eredményeinek megtekintéséhez kattintson a **tábla**elemre.
 
-   * A lekérdezés módosításához szerkesztheti a lekérdezési karakterláncot a keresősáv használatával. A jobb felhasználói élmény érdekében válassza a **speciális elemzés**lehetőséget.
-
-     ![Logikai alkalmazás futtatási műveleteinek és részleteinek megtekintése](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
-
-     A log Analytics lapon frissítheti a lekérdezéseket, és megtekintheti az eredményeket a táblából. Ez a lekérdezés [Kusto-lekérdezési nyelvet](https://aka.ms/LogAnalyticsLanguageReference)használ, amelyet szerkeszthet, ha különböző eredményeket szeretne megtekinteni.
+   * A lekérdezések a [Kusto lekérdezési nyelvét](https://aka.ms/LogAnalyticsLanguageReference)használják, amelyet szerkeszthet, ha különböző eredményeket szeretne megtekinteni. A lekérdezés módosításához frissítse a lekérdezési karakterláncot, és válassza a **Futtatás** lehetőséget a tábla eredményeinek megtekintéséhez. 
 
      ![Log Analytics – lekérdezés nézet](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 

@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: 9ddc7ad8882b30a17be5820116da72c5ab32fad9
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 308eb90e7ae244442a603491044e90dc3b8d052a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640613"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141146"
 ---
 # <a name="service-limits-in-azure-search"></a>Szolgáltatási korlátozások a Azure Search
 A tárterületre, a munkaterhelésekre és az indexek, dokumentumok és egyéb objektumok mennyiségére vonatkozó maximális korlátok attól függnek, hogy a Azure Search **ingyenes**, alapszintű, **standard**vagy **Storage optimalizált** árképzési szinteken van-e kiépítve. [](search-create-service-portal.md)
@@ -124,6 +124,15 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 <sup>4</sup> készségkészlet legfeljebb 30 ismeret.
 
 <sup>5</sup> a kognitív keresési munkaterhelések és az Azure-Blobok indexelésének képelemzése rövidebb ideig tart, mint a normál szöveges indexelés. A képek elemzése és a természetes nyelvi feldolgozás számítási igényű, és aránytalanul nagy mennyiségű rendelkezésre álló feldolgozási kapacitást igényel. A futási idő csökkentve lett, hogy a várólistán lévő többi feladat fusson.  
+
+## <a name="synonym-limits"></a>Szinonimák korlátai
+
+Az engedélyezett szinonimák maximális száma az árképzési szinten változhat. Mindegyik szabály legfeljebb 20 bővítéssel rendelkezhet, ahol a bővítés egy equivalvent-kifejezés. Például a "Cat", a "Kitty", a "macskaféle" és az "Felis" (a macskák nemhez tartozó) társítása 3 kiterjesztésnek számít.
+
+| Resource | Free | Alapszintű | S1 | S2 | S3 | S3 – HD |L1 | 2\. |
+| -------- | -----|------ |----|----|----|-------|---|----|
+| Szinonimák maximális térképe |3 |3|5 |10 |20 |20 | 10 | 10 |
+| Szabályok maximális száma leképezés szerint |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
 
 ## <a name="queries-per-second-qps"></a>Lekérdezések másodpercenként (QPS)
 

@@ -1,7 +1,7 @@
 ---
-title: 'Átalakítás fürt megosztott Kötetévé: Modul-hivatkozás'
+title: 'Konvertálás CSV-fájllá: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, az átalakítás fürt megosztott kötetei szolgáltatás modul használata az Azure Machine Learning szolgáltatás egy adatkészlet alakítható át egy CSV-formátumba is letöltött, exportálásának vagy megosztásának R vagy Python-szkript modulokkal.
+description: Megtudhatja, hogyan alakíthatja át az adatkészletet a Azure Machine Learning szolgáltatásban a CSV konvertálása modulba úgy, hogy olyan CSV-formátumra alakítsa át, amely letölthető, exportálható vagy megosztható R vagy Python parancsfájl-modulok használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,52 +9,51 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 8b8b6758cc2df7a092ce36e9507f84ac534d0e3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b8f235014efe440e518f1f9c4d0d454f6918955
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028725"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128899"
 ---
-# <a name="convert-to-csv-module"></a>Átalakítás fürt megosztott kötetei szolgáltatás modul
+# <a name="convert-to-csv-module"></a>Konvertálás CSV-modulba
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul használja egy adatkészlet alakítható át egy CSV-formátumba is letöltött, exportálásának vagy megosztásának R vagy Python-szkript modulokkal.
+Ezzel a modullal olyan CSV-formátumba alakíthatja át az adatkészletet, amely letölthető, exportálható vagy megosztható R-vagy Python-parancsfájl-modulok használatával.
 
-### <a name="more-about-the-csv-format"></a>További információ a CSV formátum 
+### <a name="more-about-the-csv-format"></a>További információ a CSV-formátumról 
 
-A CSV formátum, amely a "vesszővel tagolt értékek" rövidítése, számos külső gépi tanulási eszközkészlet által használt fájlformátum. Fürt megosztott kötetei szolgáltatás nem egy közös adatcsere-formátumot, ha a nyílt forráskódú nyelvek, például az R vagy Python.
+A CSV-formátum, amely a "vesszővel tagolt értékek", számos külső gépi tanulási eszköz által használt fájlformátum. A CSV gyakori formátum, ha olyan nyílt forráskódú nyelvekkel dolgozik, mint például az R vagy a Python.
 
-Akkor is, ha ezt teszi, hogy a legtöbb feladatot az Azure Machine Learning, nincsenek alkalommal, amikor találhatja, az adatkészlet átalakítása a fürt megosztott kötetei szolgáltatás a külső eszközök használatával hasznos. Példa:
+Még ha Azure Machine Learning is dolgozik a legtöbb munkában, időnként előfordulhat, hogy az adatkészlet CSV-re való konvertálása külső eszközökön is hasznos lehet. Példa:
 
-+ Töltse le a CSV-fájl megnyitható az Excel használatával, vagy importálja egy relációs adatbázisban.  
-+ Mentés a CSV-fájlt a felhőbeli tárhelyére, és kapcsolódjon a Power BI-Vizualizációk létrehozásához.  
-+ A CSV formátum használatával előkészíti az adatokat az R és Python. Kattintson a jobb gombbal a kódot közvetlenül a Python, vagy egy Jupyter notebookot az adatok eléréséhez szükséges a modul kimenete. 
++ Töltse le a CSV-fájlt, és nyissa meg az Excelben, vagy importálja egy kapcsolódó adatbázisba.  
++ Mentse a CSV-fájlt a Felhőbeli tárhelyre, és kapcsolódjon hozzá Power BI a vizualizációk létrehozásához.  
++ Az R és a Python alkalmazásban az adatfeldolgozáshoz használja a CSV formátumot. Kattintson a jobb gombbal a modul kimenetére, hogy létrehozza az adatok közvetlenül a Pythonból vagy egy Jupyter-jegyzetfüzetből való eléréséhez szükséges kódot. 
 
-Amikor egy adatkészlet átalakítás fürt megosztott Kötetévé, a fájl kerül az Azure ML-munkaterület. Nyissa meg és használhatják a fájlt közvetlenül az Azure storage segédprogramot használhatja, vagy kattintson a jobb gombbal a modul kimeneti és a CSV-fájl letöltése a számítógépre, vagy használhatja az R vagy Python nyelvű programkódjával.  
+Ha az adatkészletet CSV-fájllá alakítja át, a fájl az Azure ML-munkaterületen lesz mentve. Az Azure Storage segédprogrammal közvetlenül is megnyithatja és használhatja a fájlt, vagy kattintson a jobb gombbal a modul kimenetére, majd töltse le a CSV-fájlt a számítógépére, vagy használja az R vagy Python kódban.  
 
-## <a name="how-to-configure-convert-to-csv"></a>Átalakítás fürt megosztott kötetei szolgáltatás konfigurálása
+## <a name="how-to-configure-convert-to-csv"></a>A CSV-re történő konvertálás konfigurálása
 
-1.  Adja hozzá a [átalakítás fürt megosztott Kötetévé](./convert-to-csv.md) modult a kísérletvászonra. Ez a modul a annak a **formátum Adatátalakítókat** csoporthoz a felület a. 
+1.  Adja hozzá a [Konvertálás CSV](./convert-to-csv.md) -modult a kísérlethez. Ezt a modult a csatoló adatformátum- **konverziók** csoportjába is megtalálhatja. 
 
-2. Csatlakoztassa azt minden olyan modul, amely egy adatkészletet.   
+2. Csatlakoztatása bármely modulhoz, amely egy adatkészletet eredményez.   
   
 3.  Futtassa a kísérletet.
 
 ### <a name="results"></a>Results (Eredmények)
   
 
-Kattintson duplán a kimenetét [átalakítás fürt megosztott Kötetévé](./convert-to-csv.md), és válassza ki az alábbi lehetőségek egyikét.  
+Kattintson duplán a CSV-re történő [Konvertálás](./convert-to-csv.md)kimenetére, és válasszon egyet ezek közül.  
 
- + **Eredmény adatkészlet-letöltés >** : Azonnal megnyitja az adatok másolatát egy helyi mappába menthető CSV formátumban. Ha nem ad meg egy mappát, a alkalmazni egy alapértelmezett név, és a CSV-fájlt a rendszer menti a helyi **letölti** könyvtár.
+ + **Eredmény-adatkészlet – > Letöltés**: A azonnal megnyit egy olyan CSV-formátumban tárolt adatmásolatot, amelyet a helyi mappába menthet. Ha nem ad meg mappát, a rendszer az alapértelmezett fájlnevet alkalmazza, és a CSV-fájlt a helyi **letöltések** könyvtárba menti.
 
 
- + **Eredmény adatkészlet -> Mentés adatkészletként**: A CSV-fájlt ment vissza az Azure ML-munkaterület külön adatkészletként.
+ + **Eredmény-adatkészlet – > mentés**adatkészletként: Külön adatkészletként menti a CSV-fájlt az Azure ML-munkaterületre.
 
- + **Adat-hozzáférési kód készítése**: Az Azure Machine Learning állít elő, hogy hozzáférhessen az adatokat, Python vagy R. használatával a kód két készletnyi Az adatok eléréséhez, másolja a kódrészletet az alkalmazásba. (*Adatok hozzáférési kód előállítása hamarosan fognak érkezni.* )
+ + **Adatelérési kód**előállítása: Az Azure ML két kódrészletet hoz létre az adat eléréséhez a Python vagy az R használatával. Az adatelemek eléréséhez másolja a kódrészletet az alkalmazásba. (*Az adatelérési kód előállítása hamarosan elérhető lesz.* )
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

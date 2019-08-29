@@ -1,7 +1,7 @@
 ---
 title: 'Metaadatok szerkesztése: Segédanyagok a modulokhoz'
 titleSuffix: Azure Machine Learning service
-description: Útmutató az Azure Machine Learning szolgáltatás a metaadatok szerkesztéséhez modul segítségével módosíthatja az oszlopok egy adatkészlet társított metaadatokat.
+description: Megtudhatja, hogyan használhatja a metaadatok szerkesztése modult a Azure Machine Learning szolgáltatásban az adatkészlet oszlopaihoz társított metaadatok módosításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,94 +9,93 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 282652adb917450c262e08bf10c3c6e537b829e7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 642b2a038ec434584c8af6dd72d58810e136ed57
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072719"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128869"
 ---
-# <a name="edit-metadata-module"></a>Metaadatok modul szerkesztése
+# <a name="edit-metadata-module"></a>Metaadat-modul szerkesztése
 
-Ez a cikk ismerteti a visual felület (előzetes verzió) az Azure Machine Learning szolgáltatás egy modul.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Az adatok szerkesztése modul segítségével módosíthatja az oszlopok egy adatkészlet társított metaadatokat. A metaadatok szerkesztéséhez modul használata után az adatkészlet értékét, és az adatok típusát változik.
+Az adatkészletek oszlopaihoz társított metaadatok módosításához használja az adatok szerkesztése modult. Az adatkészlet értéke és adattípusa a metaadatok szerkesztése modul használata után módosul.
 
-Jellemző metaadat-módosítások a következők lehetnek:
+A metaadatok tipikus változásai a következők lehetnek:
   
-+ Kategorikus értékek logikai vagy numerikus oszlopok kezelni.
++ Logikai vagy numerikus oszlopok kategorikus értékként való kezelése.
   
-+ Jelzi, hogy melyik oszlop tartalmazza a **osztály** címkét vagy kategorizálása vagy előre jelezni kívánt értékeket tartalmazza.
++ Azt jelzi, hogy melyik oszlop tartalmazza a **osztály** címkéjét, vagy tartalmazza a kategorizálni vagy megjósolni kívánt értékeket.
   
-+ Oszlopok megjelölése funkciókat.
++ Oszlopok megjelölése szolgáltatásként.
   
-+ Megváltoztatja a dátum/idő értékek, numerikus érték, vagy fordítva.
++ Dátum-és időértékek numerikus értékekre való módosítása vagy fordítva.
   
 + Oszlopok átnevezése.
   
- Bármikor módosítania egy oszlop definíciója általában egy alsóbb rétegbeli modul igényeinek megfelelően, használja a metaadatok szerkesztéséhez. Például bizonyos modulok csak meghatározott adattípusok használata vagy jelzőket a oszlop, például a szükséges `IsFeature` vagy `IsCategorical`.  
+ A metaadatok szerkesztése lehetőséggel bármikor módosíthatja az oszlopok definícióját, jellemzően egy alsóbb rétegbeli modul követelményeinek megfelelően. Egyes modulok például csak bizonyos adattípusokkal működnek, vagy jelölőket igényelnek az oszlopokon, például `IsFeature` vagy `IsCategorical`.  
   
- A szükséges műveletet hajt végre, miután a metaadatok visszaállíthatja az eredeti állapotba.
+ A szükséges művelet elvégzése után visszaállíthatja a metaadatokat az eredeti állapotába.
   
-## <a name="configure-edit-metadata"></a>Szerkesztés metaadatok konfigurálása
+## <a name="configure-edit-metadata"></a>Metaadatok szerkesztésének konfigurálása
   
-1. Az Azure Machine Learning a metaadatok szerkesztéséhez modul hozzáadása is futtathatja a kísérletet, és csatlakozzon a frissíteni kívánt adatkészlet. Az adatkészlet mellett található **adatátalakítás** a a **kezelése** kategória.
+1. A Azure Machine Learningban adja hozzá a metaadatok szerkesztése modult a kísérlethez, és kapcsolódjon a frissíteni kívánt adatkészlethez. Az adatkészletet a manipulálás kategóriában találja az **adatátalakítás** alatt.
   
-1. Válassza ki **az Oszlopválasztó elindítása** , és válassza ki az oszlop vagy oszlopkészlet dolgozhat. Oszlopok külön-külön neve vagy indexe választhat, vagy választhat egy típus szerint oszlopok csoportja.  
+1. Válassza az oszlopok **elindítása** lehetőséget, majd válassza ki az oszlopot vagy az oszlopok készletét, hogy működjön a használatával. Az oszlopokat egyenként is kiválaszthatja név vagy index alapján, vagy az oszlopok csoportját típus szerint is kiválaszthatja.  
   
-1. Válassza ki a **adattípus** beállítást, ha szüksége más hozzárendelése a kijelölt oszlopokban. Szüksége lehet módosíthatja az adattípust, bizonyos műveletek. Például ha a forrás adatkészlet kezeli a szöveg, számok, módosítania kell azokat egy numerikus adattípusúra matematikai műveletek használata előtt.
+1. Válassza az **adattípus** lehetőséget, ha egy másik adattípust kell hozzárendelni a kijelölt oszlopokhoz. Előfordulhat, hogy módosítania kell az adattípust bizonyos műveletekhez. Ha például a forrás-adatkészlet szövegként kezelt számokat tartalmaz, a matematikai műveletek használata előtt módosítania kell őket egy numerikus adattípusra.
 
-    + A támogatott típusok a következők **karakterlánc**, **egész**, **dupla**, **logikai**, és **DateTime**.
+    + A támogatott adattípusok a következők: **String**, **Integer**, **Double**, **Boolean**és **datetime**.
 
-    + Ha több oszlopot, telepítenie kell a metaadat-módosítások *összes* kijelölt oszlopok. Például tegyük fel kettő vagy három numerikus oszlopokat választja. Minden karakterlánccá adattípusúra, és nevezze át őket egy művelettel módosíthatja őket. Azonban nem módosítható egy oszlop karakteres adattípusúnak, és a egy másik oszlopot egy lebegőpontos az egész.
+    + Ha több oszlopot választ ki, a metaadatok módosításait *minden* kijelölt oszlopra alkalmaznia kell. Tegyük fel például, hogy két vagy három numerikus oszlopot választ. Az összeset megváltoztathatja egy sztring típusú adattípusra, és átnevezheti őket egyetlen műveletben. Azonban az egyik oszlop nem módosítható karakterlánc adattípusra, és egy lebegőpontos oszlop egy egész számra.
   
-    + Ha nem ad meg egy új típusú adatokat, az az oszlop metaadatai nem változik.
+    + Ha nem ad meg új adattípust, az oszlop metaadatai változatlanok maradnak.
 
-    + Az oszlop típusa és az értékek módosul a Szerkesztés metaadat-művelet végrehajtása után. Alaphelyzetbe állítja az oszlop adattípusához szerkesztése metaadatok használatával állíthatja helyre az eredeti adattípus bármikor.  
+    + Az oszlop típusa és értékei a metaadatok szerkesztése művelet végrehajtása után változnak. Az oszlop adattípusának alaphelyzetbe állításához a metaadatok szerkesztése lehetőséggel bármikor helyreállíthatja az eredeti adattípust.  
 
     > [!NOTE]
-    > Ha módosítja a bármilyen típusú és szám a **dátum és idő** írja be, hagyja a **dátum és idő formátumban** mező üres. Jelenleg nem lehetséges a cél-adatformátum megadásához.  
+    > Ha bármilyen típusú számot módosít a **datetime** típusra, hagyja üresen a **datetime formátum** mezőt. Jelenleg nem lehet megadnia a célként megadott adatformátumot.  
 
-1. Válassza ki a **Kategorikus** beállítással azt adhatja meg, hogy a kijelölt oszlopokban szereplő értékek kategóriák kell kezelni.
+1. Válassza a **kategorikus** lehetőséget annak megadásához, hogy a kijelölt oszlopokban szereplő értékeket kategóriákként kell kezelni.
 
-    Például akkor lehet, hogy 0, 1 és 2 számokat tartalmazó oszlop, de tudja, hogy számok ténylegesen jelenti azt, hogy "Smoker," "Nem-smoker" és "Ismeretlen". Ebben az esetben az oszlopot a kategorikus megjelölése biztosíthatja, hogy a értékeket fogja használni, csak az adatok csoportosításához, és nem numerikus számításokban.
+    Előfordulhat például, hogy olyan oszlopa van, amely a 0, 1 és 2 számot tartalmazza, de tudja, hogy a számok valójában "dohányos", "nem dohányzó" és "ismeretlen" értéket tartalmaznak. Ebben az esetben úgy, hogy az oszlopot kategorikusként jelöli meg, így az értékek csak az adatok csoportosítására szolgálnak, nem numerikus számításokban.
   
-1. Használja a **mezők** beállítást, ha meg szeretné változtatni a módon, hogy az Azure Machine Learning a modellek az adatokat használja.
+1. Ha módosítani szeretné a modellben található adatAzure Machine Learning, használja a **mezők** beállítást.
 
-    + **A szolgáltatás**: Ez a beállítás használatával Ez a jelző azt egy olyan oszlop, amely a szolgáltatás oszlopok csak a modulok egyik funkciója. Alapértelmezés szerint az összes oszlop szolgáltatások kezdetben kezeli.  
+    + **Szolgáltatás**: Ezzel a beállítással az oszlopokat szolgáltatásként jelölheti meg a modulokban, amelyek csak a szolgáltatások oszlopaiban működnek. Alapértelmezés szerint a rendszer az összes oszlopot szolgáltatásként kezeli.  
   
-    + **Címke**: Ez a beállítás segítségével jelölje meg a címke, amely más néven az előre jelezhető attribútumot, vagy a cél változó. Számos modulok van szükség, hogy pontosan egy címke oszlop szerepel az adatkészletet.
+    + **Címke**: Ezzel a beállítással jelölheti meg a címkét, amely a kiszámítható attribútum vagy a célként megadott változó néven is ismert. Számos modulhoz szükség van az adatkészlet pontosan egy felirat oszlopának megjelölésére.
 
-        Sok esetben az Azure Machine Learning is következtet, hogy egy oszlop osztály címkét tartalmaz. A metaadatok beállításával biztosíthatja, hogy az oszlop megfelelően azonosítja. Ezt a beállítást nem módosítja az adatok értékeit. Csak az, hogy egyes gépi tanulási algoritmusok kezelni az adatok úgy változik.
+        Sok esetben Azure Machine Learning következtetni, hogy egy oszlop tartalmaz egy osztály címkét. A metaadatok beállításával gondoskodhat arról, hogy az oszlop helyesen legyen azonosítva. Ez a beállítás nem változtatja meg az adatértékeket. Csak úgy változik, hogy egyes gépi tanulási algoritmusok kezelik az adatmennyiséget.
   
     > [!TIP]
-    > Adatok, amelyek nem fér el a következő kategóriákba vannak? Előfordulhat, hogy például, hogy az adatkészlet egyedi azonosítók, amelyeket nem hasznos változókat, például értékeket tartalmaznak. Néha az ilyen azonosítókat az modell használatakor problémákat okozhat.
+    > Vannak olyan adatkészletei, amelyek nem illeszkednek a kategóriákba? Előfordulhat például, hogy az adatkészlet olyan értékeket tartalmaz, mint például az egyedi azonosítók, amelyek nem hasznosak változókként. Időnként előfordulhat, hogy az ilyen azonosítók problémákat okozhatnak a modellben való használat során.
     >
-    > Szerencsére az Azure Machine Learning biztosítja, hogy az adatok, így nem kell törölni az ilyen oszlopokat az adatkészletből. Amikor szüksége van néhány speciális oszlopkészleteket műveletek végrehajtásához, csak távolítsa el az összes többi oszlop ideiglenesen használatával a [Select Columns in Dataset](select-columns-in-dataset.md) modul. Később is egyesíthet az oszlopok vissza az adatkészlet használatával a [oszlopok hozzáadása](add-columns.md) modul.  
+    > Szerencsére Azure Machine Learning megtartja az összes adatát, így nem kell törölnie ezeket az oszlopokat az adatkészletből. Ha műveleteket kell végrehajtania egy bizonyos speciális oszlopon, csak távolítsa el az összes többi oszlopot ideiglenesen az [adatkészlet kiválasztása](select-columns-in-dataset.md) modulban. Később az oszlopok [hozzáadása](add-columns.md) modullal egyesítheti az oszlopokat az adatkészletbe.  
   
-1. A következő beállítások segítségével törölje az előző beállításokat, és vissza a metaadatokat az alapértelmezett értékeket.  
+1. Az alábbi beállításokkal törölheti a korábbi beállításokat, és visszaállíthatja a metaadatokat az alapértelmezett értékekre.  
   
-    + **Törölje a szolgáltatás**: Ez a beállítás használatával távolítsa el a szolgáltatás jelzőt.  
+    + **Szolgáltatás törlése**: Ezzel a beállítással távolíthatja el a szolgáltatás jelzőjét.  
   
-         Az összes oszlop szolgáltatások kezdetben kezeli. Matematikai műveletek végrehajtása modulok előfordulhat, hogy kell ezt a beállítást használja annak érdekében, hogy megakadályozza, hogy a numerikus oszlopokat, amelyeket az változókat.
+         Az összes oszlopot kezdetben szolgáltatásként kezeli a rendszer. A matematikai műveleteket végző modulok esetén ezt a beállítást kell használni ahhoz, hogy megakadályozza a numerikus oszlopok változóként való kezelését.
   
-    + **Egyértelmű címke**: Ez a beállítás segítségével távolítsa el a **címke** a megadott oszlop metaadataiból.  
+    + **Címke törlése**: Ezzel a beállítással távolíthatja el a **címke** metaadatait a megadott oszlopból.  
   
-    + **Törölje a pontszám**: Ez a beállítás segítségével távolítsa el a **pontszám** a megadott oszlop metaadataiból.  
+    + **Pontszám törlése**: Ezzel a beállítással távolíthatja el a **pontszám** metaadatait a megadott oszlopból.  
   
-         Jelenleg nem lehet explicit módon megjelöl egy oszlop az Azure Machine Learning pontszámot. Egyes műveletek azonban egy pontszám belső használatra megjelölt alatt álló oszlop eredményez. Emellett egy egyéni R modult előfordulhat, hogy kimeneti pontszám értékeket.
+         Jelenleg nem lehet explicit módon megjelölni egy oszlopot a Azure Machine Learning pontszáma alapján. Egyes műveletek azonban egy oszlopként jelennek meg, amely a pontszám belső jelölését eredményezi. Emellett az egyéni R-modulok is kihasználhatják a pontszám értékeit.
 
-1. A **új oszlopnevek**, adja meg a kijelölt oszlopot vagy oszlopokat új nevét.  
+1. Az **új oszlopnevek**mezőben adja meg a kijelölt oszlop vagy oszlopok új nevét.  
   
-    + Oszlopnevek használható csak az UTF-8 által támogatott karakterek kódolása. Üres karakterláncok, a NULL értékek vagy állhatnak kizárólag tárolóhelyek nevek nem engedélyezett.  
+    + Az oszlopnevek csak az UTF-8 kódolás által támogatott karaktereket használhatják. Üres karakterláncok, nullák vagy kizárólag szóközökből álló nevek nem engedélyezettek.  
   
-    + Több oszlop átnevezéséhez írja be a nevét, az oszlop az indexek sorrendje a vesszővel elválasztott listáját.  
+    + Több oszlop átnevezéséhez adja meg a neveket vesszővel tagolt listaként az oszlop indexek sorrendjében.  
   
-    + Az összes kijelölt oszlopok kell nevezhető át. Nem hagyja el vagy hagyja ki az oszlopot.  
+    + Az összes kijelölt oszlopot át kell jelölni. Az oszlopokat nem lehet kihagyni vagy kihagyni.  
   
 1. Futtassa a kísérletet.  
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) az Azure Machine Learning szolgáltatáshoz.
+Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) .

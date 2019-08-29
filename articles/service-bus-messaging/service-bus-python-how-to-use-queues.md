@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: fa3aedf138564fedafe555adfbaf6c56efc1813e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9bb53a8e68866e2ed346277171e2706f5907e8af
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360838"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141910"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Service Bus Queues használata a Python használatával
 
@@ -31,12 +31,12 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Python-alkalmazáso
 1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja [MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) -előfizetői előnyeit, vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. [Service Bus üzenetsor létrehozásához kövesse az Azure Portal használata](service-bus-quickstart-portal.md) című témakör lépéseit.
     1. Olvassa el Service Bus **várólisták**gyors **áttekintését** . 
-    2. Hozzon létre egy Service Bus névteret. 
+    2. Hozzon létreegy Service Bus névteret. 
     3. A **kapcsolatok karakterláncának**beolvasása. 
 
         > [!NOTE]
-        > Az oktatóanyagban a  Python használatával hozzon létre egy várólistát a Service Bus névtérben. 
-1. Telepítse a Pythont vagy a [python Azure Service Bus csomagot][Python Azure Service Bus package], lásd a [Python telepítési útmutatóját](../python-how-to-install.md). A Python SDK Service Bus teljes dokumentációja [itt](/python/api/overview/azure/servicebus?view=azure-python)található.
+        > Az oktatóanyagban a Python használatával hozzon létre egy várólistát a Service Bus névtérben. 
+1. Telepítse a Pythont vagy a [python Azure Service Bus csomagot][Python Azure Service Bus package], lásd a [Python telepítési útmutatóját](/azure/python/python-sdk-azure-install). A Python SDK Service Bus teljes dokumentációja [itt](/python/api/overview/azure/servicebus?view=azure-python)található.
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
 A **ServiceBusClient** objektum lehetővé teszi a várólistákkal való munkavégzést. Adja hozzá a következő kódot bármely olyan Python-fájlhoz, amelyben programozott módon szeretné elérni Service Bus:

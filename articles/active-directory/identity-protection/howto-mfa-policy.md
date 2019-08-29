@@ -11,29 +11,29 @@ manager: daveba
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27ff7512bb3f9422ed4c8edd7ab50fce23f0ed07
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 939f08fd16cf27e641cf6436a00396ad2db8e6c3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499564"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126390"
 ---
-# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>kézikönyv: Az Azure multi-Factor Authentication regisztrációs szabályzatának konfigurálása
+# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>kézikönyv: Az Azure Multi-Factor Authentication regisztrációs szabályzatának konfigurálása
 
 A Azure AD Identity Protection segítségével a többtényezős hitelesítés (MFA) regisztrációját úgy kezelheti, hogy a feltételes hozzáférési szabályzatot úgy konfigurálja, hogy az MFA-regisztráció megkövetelése nélkül milyen modern hitelesítési alkalmazást szeretne bejelentkezni. Ez a cikk bemutatja, hogyan használható a szabályzat, és hogyan konfigurálható.
 
 
 
-## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Mi az Azure multi-Factor Authentication regisztrációs szabályzata?
+## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Mi az Azure Multi-Factor Authentication regisztrációs szabályzata?
 
-Az Azure multi-Factor Authentication szolgáltatással ellenőrizheti, hogy ki használ-e egynél több felhasználónevet és jelszót. Egy második biztonsági réteget biztosít a felhasználói bejelentkezésekhez. Ahhoz, hogy a felhasználók képesek legyenek válaszolni az MFA-kérésekre, először regisztrálniuk kell az Azure multi-Factor Authentication szolgáltatásban.
+Az Azure Multi-Factor Authentication lehetővé teszi annak ellenőrzését, hogy ki használ-e egynél több felhasználónevet és jelszót. Egy második biztonsági réteget biztosít a felhasználói bejelentkezésekhez. Ahhoz, hogy a felhasználók képesek legyenek válaszolni az MFA-kérésekre, először regisztrálniuk kell az Azure Multi-Factor Authentication.
 
-Azt javasoljuk, hogy a felhasználói bejelentkezésekhez az Azure multi-Factor Authentication használata szükséges, mivel:
+Javasoljuk, hogy a felhasználói bejelentkezésekhez az Azure Multi-Factor Authentication használata szükséges, mert:
 
 - Erős hitelesítést biztosít számos egyszerű ellenőrzési lehetőséggel
-- Kulcsszerepet játszik a szervezet előkészítésében a kockázati események védelmére és helyreállítására az Identitáskezelés során
+- Kulcsszerepet játszik a szervezet előkészítésében, hogy megvédje és helyreállítsa a kockázati észleléseket az Identity Protectionben
 
-Az MFA-ról további részleteket a [Mi az az Azure multi-Factor Authentication?](../authentication/howto-mfa-getstarted.md) című témakörben talál.
+Az MFA-ról további részleteket a [Mi az Azure multi-Factor Authentication?](../authentication/howto-mfa-getstarted.md) című témakörben talál.
 
 ## <a name="how-do-i-access-the-registration-policy"></a>Hogyan hozzáférni a regisztrációs szabályzathoz?
 

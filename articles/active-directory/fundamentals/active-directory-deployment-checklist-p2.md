@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 767e3caf577bc1b7a49bd56570b8aeedbe307edc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 7b5678fb0edcecae9ffa6a3c27f3dc6334ecf505
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693878"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125346"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory funkció telepítési útmutatója
 
@@ -53,10 +53,10 @@ Ebben a fázisban a rendszergazdák lehetővé teszik az alapkonfiguráció bizt
 | [A felhőalapú felhasználói fiókok rendszeres jelszavának alaphelyzetbe állításának letiltása](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Az időszakos jelszó-visszaállítja a felhasználókat a meglévő jelszavaik növelésére. A Microsoft jelszó-útmutatási dokumentációjában található útmutatást követve a helyi házirendet a csak felhőalapú felhasználók számára tükrözheti. | Azure AD Free |
 | [Azure Active Directory intelligens zárolás testreszabása](../authentication/howto-password-smart-lockout.md) | A felhőalapú felhasználók zárolásának leállítása a helyszíni Active Directory felhasználók számára | |
 | [Extranetes intelligens zárolás engedélyezése AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS extranetes zárolás védi a találgatásos támadások elleni támadásokat, miközben érvényes AD FS-felhasználók továbbra is használhatják a fiókjaikat. | |
-| [Az Azure AD multi-Factor Authentication üzembe helyezése feltételes hozzáférési házirendekkel](../authentication/howto-mfa-getstarted.md) | Megkövetelheti a felhasználóktól, hogy a feltételes hozzáférési szabályzatok használatával kétlépéses ellenőrzést végezzenek az érzékeny alkalmazások elérésekor. | Azure AD Premium P1 |
+| [Azure AD-Multi-Factor Authentication üzembe helyezése feltételes hozzáférési szabályzatok használatával](../authentication/howto-mfa-getstarted.md) | Megkövetelheti a felhasználóktól, hogy a feltételes hozzáférési szabályzatok használatával kétlépéses ellenőrzést végezzenek az érzékeny alkalmazások elérésekor. | Azure AD Premium P1 |
 | [Az Azure Active Directory Identity Protection engedélyezése](../identity-protection/enable.md) | A kockázatos bejelentkezések és a feltört hitelesítő adatok nyomon követésének engedélyezése a szervezet felhasználói számára. | Azure AD Premium P2 |
-| [Kockázati események használata a többtényezős hitelesítés és a jelszó módosításának elindításához](../authentication/tutorial-risk-based-sspr-mfa.md) | Olyan automatizálás engedélyezése, amely képes eseményeket, például a többtényezős hitelesítést, a jelszó-visszaállítást és a bejelentkezések kockázaton alapuló blokkolását. | Azure AD Premium P2 |
-| [A hiperkonvergens regisztráció önkiszolgáló jelszó-visszaállítás és az Azure AD multi-factor Authentication (előzetes verzió) engedélyezése](../authentication/concept-registration-mfa-sspr-converged.md) | Lehetővé teszi a felhasználók számára, hogy az Azure multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás egyik gyakori felületéről regisztráljon. | Azure AD Premium P1 |
+| [Kockázati észlelések használata a többtényezős hitelesítés és a jelszó módosításának elindításához](../authentication/tutorial-risk-based-sspr-mfa.md) | Olyan automatizálás engedélyezése, amely képes eseményeket, például a többtényezős hitelesítést, a jelszó-visszaállítást és a bejelentkezések kockázaton alapuló blokkolását. | Azure AD Premium P2 |
+| [A hiperkonvergens regisztráció önkiszolgáló jelszó-visszaállítás és az Azure AD multi-factor Authentication (előzetes verzió) engedélyezése](../authentication/concept-registration-mfa-sspr-converged.md) | Lehetővé teheti a felhasználók számára, hogy az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás egyik gyakori felhasználói felületén regisztráljanak. | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>2\. fázis: Felhasználók importálása, szinkronizálás engedélyezése és eszközök kezelése
 

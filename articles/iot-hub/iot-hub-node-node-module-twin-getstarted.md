@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 2ef4047b5dcb0658f4bc48da41ff4e177386fa40
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 803162110ead050f9d1a595b11c29ec6707640a8
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048574"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147408"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (node. js)
 
@@ -32,11 +32,11 @@ Az oktatóanyag végén két Node. js-alkalmazás található:
 > [!NOTE]
 > További információ az Azure IoT SDK-k használatáról az eszközökön való futtatáshoz és a megoldás hátteréről: [Azure IoT SDK](iot-hub-devguide-sdks.md)-k.
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+## <a name="prerequisites"></a>Előfeltételek
+
+* Node. js 10.0. x vagy újabb verzió. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítheti a Node. js-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
 
 * Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
-
-* Telepítse a legújabb [Node. js SDK](https://github.com/Azure/azure-iot-sdk-node)-t.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 

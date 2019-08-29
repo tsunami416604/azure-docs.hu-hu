@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 73cf6fd1c20f2e4208d1f7c28a756f28a2fad839
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: ce44be5bae5aaa8f86d04068cce1c4bc919b0893
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302576"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126962"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: Elosztott alkalmazások osztályozása
 
@@ -66,7 +66,7 @@ A teljesítménnyel kapcsolatos problémák elhárításához válassza a **telj
 
 ![A teljesítmény élményét bemutató képernyőkép](media/app-map/performance.png)
 
-### <a name="go-to-details"></a>Ugrás a részletekre
+### <a name="go-to-details"></a>Részletek megnyitása
 
 Válassza az **Ugrás** a részletekhez lehetőséget a végpontok közötti tranzakciós élmény megismeréséhez, amely a hívási verem szintjéhez nyújt nézeteket.
 
@@ -74,7 +74,7 @@ Válassza az **Ugrás** a részletekhez lehetőséget a végpontok közötti tra
 
 ![Képernyőkép a végpontok közötti tranzakció részleteiről](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Megtekintés az elemzésekben
+### <a name="view-in-analytics"></a>Megtekintés az Analyticsben
 
 Az alkalmazások adatai lekérdezéséhez és kivizsgálásához kattintson **a megtekintés az elemzésekben**lehetőségre.
 
@@ -272,4 +272,6 @@ A visszajelzések megadásához használja a visszajelzés lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-* [A korreláció ismertetése](https://docs.microsoft.com/azure/application-insights/application-insights-correlation)
+* Ha többet szeretne megtudni a korreláció működéséről Application Insights tekintse meg a [telemetria korrelációs https://docs.microsoft.com/azure/application-insights/application-insights-correlation) cikk] (.
+* A [végpontok közötti tranzakció diagnosztikai felülete](transaction-diagnostics.md) összekapcsolja az összes Application Insights figyelt összetevőből származó kiszolgálóoldali telemetria egyetlen nézetbe.
+* A ASP.NET Core-és ASP.NET kapcsolatos speciális korrelációs forgatókönyvek esetében tekintse meg az [Egyéni műveletek nyomon követése](custom-operations-tracking.md) című cikket.

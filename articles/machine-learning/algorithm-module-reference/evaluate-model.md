@@ -1,7 +1,7 @@
 ---
-title: 'Modell értékelése: Modul-hivatkozás'
+title: 'Modell kiértékelése: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogy a modell kiértékelése modul használata az Azure Machine Learning szolgáltatás a betanított modell pontosságát méréséhez.
+description: Megtudhatja, hogyan használhatja a modell kiértékelése modult Azure Machine Learning szolgáltatásban a betanított modell pontosságának méréséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,122 +9,121 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 40a8247c22da1f7a057e222565ffb2ec4c6b7fb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17263c8e7300f427b7d82aea65e1f83edf6d6fc4
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028740"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128853"
 ---
-# <a name="evaluate-model-module"></a>Model-modul kiértékelése
+# <a name="evaluate-model-module"></a>Modell modul kiértékelése
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul segítségével mérheti a betanított modell pontosságát. Egy adatkészlet jön létre egy olyan modellből pontszámok tartalmazó adnia, és a **Evaluate Model** modul kiszámítja az iparági szabványnak megfelelő értékelési mérőszámok készletét.
+Ezzel a modullal mérhető a betanított modell pontossága. Olyan adatkészletet ad meg, amely egy modellből generált pontszámokat tartalmaz, és a **modell** kiértékelése modul az iparági szabványnak megfelelő értékelési metrikákat számítja ki.
   
- A metrikák által visszaadott **Evaluate Model** függenek, hogy kipróbálja a modell típusa:  
+ A kiértékelési **modell** által visszaadott mérőszámok az Ön által kiértékelt modell típusától függenek:  
   
--   **Képbesorolási modellek**    
+-   **Besorolási modellek**    
 -   **Regressziós modellek**    
 
 
 
 > [!TIP]
-> Ha most ismerkedik a modell értékelése, javasoljuk a videósorozat a vészhelyreállítás. Stephen Elston a részeként az [machine learning-tanfolyamot](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) az EdX. 
+> Ha most ismerkedik a modell kiértékelésével, javasoljuk, hogy a videó sorozatot Dr. Stephen Elston, a EdX [Machine learning tanfolyamának](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) részeként. 
 
 
-Háromféleképpen használja a **Evaluate Model** modul:
+Háromféle módon használhatja a **modell** kiértékelése modult:
 
-+ Pontszámok készítése a betanítási adatokon, és a pontok alapján a modell értékelése
-+ Pontszámok a modell létrehozásához, de a pontszámok fenntartott tesztelési konfigurálásában a pontszámok összehasonlítása
-+ Pontszámok használatával ugyanazokat az adatokat két különböző, de kapcsolódó modellek összehasonlítása
++ Pontszámok előállítása a betanítási adataival, és a modell kiértékelése a pontszámok alapján
++ Pontszámok létrehozása a modellhez, de a pontszámok összevetése egy foglalt tesztelési csoport pontszámai alapján
++ A pontszámok összehasonlítása két különböző, de kapcsolódó modell esetében ugyanazon adathalmaz használatával
 
-## <a name="use-the-training-data"></a>A betanítási adatok használata
+## <a name="use-the-training-data"></a>A betanítási adatkészletek használata
 
-A modell kiértékelése, csatlakoznia kell egy adatkészletet, amely tartalmazza a bemeneti oszlopai és pontszámait.  Ha nincs más adatok nem érhető el, az eredeti adatkészletre is használhatja.
+A modellek kiértékeléséhez össze kell kapcsolni egy adatkészletet, amely tartalmazza a bemeneti oszlopokat és a pontszámokat.  Ha nem áll rendelkezésre más adat, használhatja az eredeti adatkészletet.
 
-1. Csatlakozás a **adatkészlet Pontozását** a kimeneti a [Score Model](./score-model.md) bemenetével **Evaluate Model**. 
-2. Kattintson a **Evaluate Model** modult, majd futtassa a kísérletet, a kiértékelési eredmények létrehozásához.
+1. Kapcsolja össze a [pontszám modell](./score-model.md) **pontszám** -kimenetét a **modell**kiértékelésének bemenetével. 
+2. Kattintson a **modell** kiértékelése elemre, és futtassa a kísérletet a kiértékelési pontszámok létrehozásához.
 
-## <a name="use-testing-data"></a>Tesztelési adatok használata
+## <a name="use-testing-data"></a>Tesztelési célú adatfeldolgozás
 
-A machine Learning szolgáltatásban egy gyakori forgatókönyv, hogy az eredeti készlet szét a tanítási és egy tesztelési, használja a [Split](./split-data.md) modul, vagy a [partíciót és minta](./partition-and-sample.md) modul. 
+A gépi tanulás gyakori forgatókönyve, hogy elkülöníti az eredeti adatkészletet képzési és tesztelési adatkészletekben, a felosztott modul vagy a [partíció és a minta](./partition-and-sample.md) modul használatával. [](./split-data.md) 
 
-1. Csatlakozás a **adatkészlet Pontozását** a kimeneti a [Score Model](score-model.md) bemenetével **Evaluate Model**. 
-2. Csatlakozás a felosztási adatok modul jobb oldali bemenetével tesztelési adatokat tartalmazó kimenetét **Evaluate Model**.
-2. Kattintson a **Evaluate Model** modult, majd válassza ki **kijelölt futtatása** a kiértékelési eredmények létrehozásához.
+1. Kapcsolja össze a [pontszám modell](score-model.md) **pontszám** -kimenetét a **modell**kiértékelésének bemenetével. 
+2. Kösse össze a kiértékelési **modell**jobb oldali bemenetének tesztelési adatokat tartalmazó felosztott adat-modul kimenetét.
+2. Kattintson a **modell** kiértékelése elemre, és válassza a **kijelölt futtatása** lehetőséget a próbaverziók létrehozásához.
 
-## <a name="compare-scores-from-two-models"></a>Pontszámok a két modell összehasonlítása
+## <a name="compare-scores-from-two-models"></a>Pontszámok összehasonlítása két modellből
 
-Is csatlakoztathat egy második együttesét a pontszámok **Evaluate Model**.  A pontszámok egy megosztott kiértékelési eredmények már ismert, vagy egy ugyanazokat az adatokat egy másik modell eredményeinek lehet.
+A **modell**kiértékeléséhez a pontszámok második készletét is összekapcsolhatjuk.  Előfordulhat, hogy a pontszámok olyan közös értékelési készletek, amelyek ismert eredményekkel rendelkeznek, vagy egy másik modellből származó eredmények egy részét ugyanarra az adatokra vonatkozóan.
 
-Ez a funkció akkor hasznos, mivel könnyen összehasonlíthat ugyanazokat az adatokat a két különböző modell eredményeinek. Vagy előfordulhat, hogy hasonlítsa össze a két különböző futtatások pontszámok keresztül eltérő paraméterekkel rendelkező ugyanazokat az adatokat.
+Ez a funkció azért hasznos, mert egyszerűen össze lehet hasonlítani két különböző modell eredményeit ugyanazon adatokon. Másik lehetőségként összehasonlíthatja azokat a két különböző futtatásból származó pontszámokat, amelyek különböző paraméterekkel rendelkeznek.
 
-1. Csatlakozás a **adatkészlet Pontozását** a kimeneti a [Score Model](score-model.md) bemenetével **Evaluate Model**. 
-2. A kimenet a második modell Score Model-modul csatlakozni a jobb oldali bemenetével **Evaluate Model**.
-3. Kattintson a jobb gombbal **Evaluate Model**, és válassza ki **kijelölt futtatása** a kiértékelési eredmények létrehozásához.
+1. Kapcsolja össze a [pontszám modell](score-model.md) **pontszám** -kimenetét a **modell**kiértékelésének bemenetével. 
+2. Kapcsolja össze a pontszám modell modul kimenetét a második modellhez a **modell**kiértékelése jobb oldali bemenetével.
+3. Kattintson a jobb gombbal a **modell**kiértékelése lehetőségre, és válassza a **kijelölt futtatása** lehetőséget a próbaverziók létrehozásához.
 
 ## <a name="results"></a>Results (Eredmények)
 
-Futtatása után **Evaluate Model**, kattintson a jobb gombbal a modult, és válassza ki **kiértékelésének eredménye** kattintva megjelenítjük az eredményeket. A következőket teheti:
+A kiértékelési **modell**futtatása után kattintson a jobb gombbal a modulra, és válassza a kiértékelési **eredmények** lehetőséget az eredmények megtekintéséhez. A következőket teheti:
 
-+ Az eredmények mentése más eszközökkel könnyebben végezhet adatelemzést adatkészletként
-+ Hozzon létre egy vizualizációt a felületen
++ Az eredmények mentése adatkészletként, így könnyebben elemezhető más eszközökkel
++ Vizualizáció létrehozása a felületen
 
-Ha az adatkészletek csatlakozni mindkét bemenetei **Evaluate Model**, az eredményeket mind az adatkészlethez tartozó, vagy mindkét modellt metrikáit tartalmazza.
-A modell vagy a bal oldali port csatolt adatok egyike jelenik meg először a jelentésben, a metrikák az adatkészlet követ, illetve a megfelelő portot a csatlakoztatott modell.  
+Ha adatkészleteket hoz létre a kiértékelési **modell**mindkét bemenetéhez, akkor az eredmények mindkét adathalmazra, vagy mindkét modellre vonatkozó metrikákat tartalmaznak.
+A bal oldali porthoz csatolt modellnek vagy adatoknak először a jelentésben kell megjelenni, amelyet a DataSet adatkészlethez tartozó metrikák, illetve a jobb oldali porthoz csatolt modell mutat.  
 
-Az alábbi képen például a két fürtözési modell, amely ugyanazokat az adatokat, de eltérő paraméterekkel rendelkező készült jelöli az eredmények összehasonlítása.  
+Az alábbi ábrán például az azonos adatokra épülő két fürtözött modell eredményeinek összehasonlítása, de különböző paraméterekkel.  
 
-![AML&#95;Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
+![Pénzmosás&#95;Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
 
-Mivel ez a fürtözési modell, a kiértékelési eredmények eltérőek, mint ha két regressziós modellt a pontszámok képest, illetve két képbesorolási modellek képest. Azonban az általános bemutató megegyezik. 
+Mivel ez egy fürtözési modell, a kiértékelési eredmények eltérnek, mint ha két regressziós modellből származó pontszámokat hasonlítanak össze, vagy két besorolási modellel hasonlították össze. A teljes bemutató azonban ugyanaz. 
 
 ## <a name="metrics"></a>Mérőszámok
 
-Ez a szakasz ismerteti a visszaadott használhatók a modellek különféle típusú metrikák **Evaluate Model**:
+Ez a szakasz a kiértékelési **modellel**használható, adott típusú modellek által visszaadott mérőszámokat ismerteti:
 
-+ [képbesorolási modellek](#bkmk_classification)
++ [besorolási modellek](#bkmk_classification)
 + [regressziós modellek](#bkmk_regression)
 
-###  <a name="bkmk_classification"></a> Képbesorolási modellek metrikái
+###  <a name="bkmk_classification"></a>Besorolási modellek metrikái
 
-A következő metrikák szerepelnek a jelentésben képbesorolási modellek kiértékelése során. Modell összehasonlítására, ha azok rangsora szerint a mérőszám az értékeléshez választja.  
+A következő metrikákat kell jelenteni a besorolási modellek kiértékelése során. Ha összehasonlítja a modelleket, azokat a kiértékeléshez kiválasztott metrika rangsorolja.  
   
--   **Pontosság** méri a besorolási modell az időarány, amíg teljes esetben igaz eredmény, még kiadásában.  
+-   A **pontosság** a besorolási modell jóságát méri az igaz eredményeknek az összes esethez viszonyított arányában.  
   
--   **Pontosság** Igaz eredmény az időarány, amíg az összes pozitív eredmények felett van.  
+-   A **pontosság** a valódi eredmények aránya az összes pozitív eredménynél.  
   
--   **Idézze** van a százalékértékében mutatkozó a modell által visszaadott összes megfelelő eredmény.  
+-   A **visszahívás** a modell által visszaadott összes helyes eredmény hányada.  
   
--   **F-pontszám** számítja ki, hogy a pontosság és a visszaírási 0 és 1, ahol az ideális F-pontszám értéke 1 közötti súlyozott átlagát.  
+-   Az **f-score** kiszámítása a pontosság súlyozott átlagát és a 0 és 1 közötti visszahívást, ahol az ideális F-score értéke 1.  
   
--   **AUC** mértékek a görbe alatti terület az ábrázolt igaz értékre, az y tengely és a hamis pozitív jelzések elkerülése az x tengelyen lévő pozitívok. Ez a metrika akkor hasznos, mert biztosít, amely lehetővé teszi a különböző típusú modell összehasonlítására egyetlen számmá.  
+-   A **AUC** méri a görbe alatti terület kirajzolását az y tengelyen található igaz pozitív értékkel, az x tengelyen pedig téves pozitív értéket. Ez a metrika azért hasznos, mert egyetlen számot biztosít, amely lehetővé teszi különböző típusú modellek összehasonlítását.  
   
-- **Átlagos veszteség log** a nem megfelelő eredmények a büntetés express segítségével egyetlen pontszámot. A különbség a két valószínűségi disztribúciók – igaz azt, és a egy, a modell, akkor a program.  
+- Az **átlagos napló elvesztése** egy olyan pontszám, amely a helytelen eredményekre vonatkozó büntetés kiértékelésére szolgál. A számítás a két valószínűségi eloszlás közötti különbség – igaz, és a modellben szereplő egyik.  
   
-- **Napló adatveszteség képzési** egyetlen feltüntető pontszámok tartoznak az osztályozó által igénybe vett használhatóságát egy véletlenszerű előrejelzési van. A napló adatveszteség méri a modell a bizonytalanság összehasonlítja a valószínűségek, a címkék az ismert értékek (földön hiteles) adja vissza. A modell egy teljes log veszteség minimalizálása érdekében érdemes.
+- A betanítási **naplók elvesztésének** egyetlen pontszáma, amely az osztályozó előnyeit jelöli véletlenszerű előrejelzéssel. A napló elvesztése a modell bizonytalanságát méri, ha összehasonlítja az általa az ismert értékekre (a talajjal igaz) vonatkozó valószínűségeket a címkékben. A modell egészére vonatkozóan szeretné csökkenteni a napló elvesztését.
 
-##  <a name="bkmk_regression"></a> Regressziós modellek metrikái
+##  <a name="bkmk_regression"></a>Regressziós modellek metrikái
  
-Metrikákat adja vissza, regressziós modellek általában tervezték, hogy a hiba-becslésére.  Egy modellt az adatok illeszkednek jól, ha a megfigyelt és az előre jelzett értékek közötti különbség az, kis minősül. Azonban megnézzük a például minta (bármely egy előre jelzett pont és a megfelelő tényleges érték közötti különbség) eláruljuk, sokkal kapcsolatos potenciális eltérés a modellben.  
+A regressziós modellekhez visszaadott metrikák általában a hibák mennyiségének becslésére lettek kialakítva.  A modell akkor tekinthető megfelelőnek, ha a megfigyelt és az előre jelzett értékek közötti különbség kicsi. A maradékok mintázatának (az egy előre jelzett pont és a hozzá tartozó tényleges érték közötti különbség) megvizsgálása azonban sokat jelenthet a modell lehetséges torzításával kapcsolatban.  
   
- A következő metrikák szerepelnek a jelentésben, regressziós modellek értékeléséhez. Modell összehasonlítására, amikor azok rangsora szerint a mérőszám az értékeléshez választja.  
+ A regressziós modellek kiértékeléséhez a következő metrikákat kell jelenteni. A modellek összehasonlításakor a rendszer a kiértékeléshez kiválasztott mérőszám alapján rangsorolja azokat.  
   
-- **Jelenti azt, hogy abszolút hiba (MAE)** méri, hogy milyen közel az előrejelzés vannak, a tényleges eredmények; így alacsonyabb pontszám, annál jobb.  
+- Az **átlagos abszolút hiba (Mae)** méri, hogy az előrejelzések hogyan zárulnak le a tényleges eredményekhez képest. így jobb az alacsonyabb pontszám.  
   
-- **Root mean squared hiba (Gyökátlagos)** hoz létre egyetlen érték, amely összefoglalja a hiba a modellben. Squaring a különbség az, amelyet a metrika nem veszik figyelembe az előny előrejelzési és korrigáljuk előrejelzési közötti különbség.  
+- A **legfelső szintű középre állított hiba (gyökátlagos)** egyetlen értéket hoz létre, amely összegzi a modellben található hibát. A különbség négyszögesítése a metrika figyelmen kívül hagyja a túlzott előrejelzés és az előrejelzés közötti különbséget.  
   
-- **Relatív abszolút hiba (RAE)** várt és tényleges érték; közötti relatív abszolút eltérés van relatív, mert az a különbség a számtani elosztja.  
+- **Relatív abszolút hiba (Rae)** a várt és a tényleges értékek közötti relatív abszolút különbség; relatív, mert az átlagos különbség a számtani középérték alapján oszlik meg.  
   
-- **Relatív hiba (RSE) négyzet** hasonlóképpen normalizálja az előre jelzett értékek teljes squared hiba a teljes squared hiba a tényleges értékek halmozódik.  
+- A **relatív négyzetes hiba (RSE)** hasonló módon normalizálja az előre jelzett értékek teljes négyzetes hibáját azáltal, hogy a tényleges értékek teljes négyzetes hibáját választja.  
   
-- **Jelenti azt, hogy a nulla egy hiba (MZOE)** jelzi, hogy az előrejelzés helyes volt-e vagy sem.  Más szóval: `ZeroOneLoss(x,y) = 1` amikor `x!=y`; egyébként `0`.
+- **Nulla egy hiba (MZOE)** azt jelzi, hogy az előrejelzés helyes-e vagy sem.  Más szóval: `ZeroOneLoss(x,y) = 1` ha `x!=y`; egyéb esetben `0`.
   
-- **Együttható**gyakran nevezik R<sup>2</sup>, teljesítményéből prediktív modell 0 és 1 közötti értéket. Nulla érték azt jelenti, hogy a modell le véletlenszerű (ismerteti semmi); 1 azt jelenti, hogy nincs tökéletes választás. Azonban legyen óvatos az R értelmezése<sup>2</sup> értékeket, mivel lehet, hogy a kis-értékek teljesen normális, és nagy értékeket is lehet a gyanús.
+- A **meghatározási együttható**(más néven R<sup>2</sup>) a modell prediktív erejét mutatja 0 és 1 közötti értékként. Nulla érték azt jelenti, hogy a modell véletlenszerű (semmit sem jelent); 1 a tökéletes illeszkedést jelenti. Azonban körültekintően kell használni az R<sup>2</sup> értékek értelmezését, mivel az alacsony értékek teljesen normálisak lehetnek, és a magas értékek gyanúja is lehet.
   
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

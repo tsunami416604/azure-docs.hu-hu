@@ -1,7 +1,7 @@
 ---
-title: 'Adatok optimalizálása: Modul-hivatkozás'
+title: 'Az adatnormalizálás: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Az adatok normalizálása modul használata az Azure Machine Learning szolgáltatás egy adatkészletből átalakítására *normalizálási*...
+description: Megtudhatja, hogyan alakíthatja át az adathalmazt normalizálás használatával a Azure Machine Learningszolgáltatásban lévő adatnormalizálás modul segítségével.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,105 +9,104 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 95069bafa94770511c7ee40e82068960298fd6c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 504224ae586e18fc5bf9294b537e730da37a2423
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029445"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128573"
 ---
-# <a name="normalize-data-module"></a>Adatok modul normalizálása
+# <a name="normalize-data-module"></a>Adatmodul normalizálása
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul segítségével átalakíthatja egy adatkészletből *normalizálási*.
+Ezzel a modullal lehet átalakítani egy adatkészletet a *normalizálás*segítségével.
 
-Normalizálási a machine Learning adat-előkészítés részeként gyakran alkalmazott technika. A normalizálási célja, hogy módosítsa az adatkészlet egy gyakori méretezési, anélkül, hogy az értékek vagy elveszett adatok tartományait torzító különbségek használandó számokat tartalmazó oszlop értékeit. Normalizálási is megfelelően modellezheti az adatokat az egyes algoritmusok szükség.
+A normalizálás olyan technika, amelyet gyakran alkalmaznak a gépi tanuláshoz szükséges adatelőkészítés részeként. A normalizálás célja, hogy az adatkészletben lévő numerikus oszlopok értékeit közös skála használatára módosítsa, és ne torzítsa az értékek tartományán belüli különbségeket, vagy veszítse el az adatokat. Bizonyos algoritmusok esetében a normalizálás is szükséges ahhoz, hogy az adatmodell megfelelően működjön.
 
-Tegyük fel, hogy a bemeneti adatkészlet tartalmaz egy oszlop értékei 0 és 1 közötti és a egy másik oszlop a 100 000 10 000 közötti értékeket. A nagy különbség az a *méretezési* számok problémákat okozhat, amikor megpróbál értékek kombinálja funkciók modellezés közben.
+Tegyük fel például, hogy a bemeneti adatkészlet egy, 0 és 1 közötti értékeket tartalmazó oszlopot tartalmaz, és egy másik oszlop, amelynek értéke 10 000 és 100 000 között van. A számok skálájának nagy különbsége problémákat okozhat, ha az értékeket a modellezés során funkcióként próbálja meg kombinálni.
 
-*Normalizálási* Ezzel elkerülheti ezeket a problémákat, melyek fenntartják a általános terjesztésű és arányok a forrásadatok, miközben gondoskodik a méretezési csoport alkalmazva a modellben használt összes numerikus oszlopok között szereplő új értékeket hozzon létre.
+A normalizálás elkerüli ezeket a problémákat olyan új értékek létrehozásával, amelyek fenntartják az általános eloszlást és a forrásadatok arányát, miközben a modellben használt összes numerikus oszlopon belül megtartják az értékeket.
 
-Ez a modul numerikus adatok átalakítása többféle lehetőséget kínál:
+Ez a modul több lehetőséget kínál a numerikus adat átalakítására:
 
-- Minden érték egy 0 és 1 módosíthatja méretezése, vagy az értékek átalakíthatja őket képviselő, ahelyett, hogy abszolút értékek ranks PERCENTILIS szerint.
-- Normalizálási is alkalmazhat, csak egy oszlop, vagy több oszlop ugyanabból az adatkészletből.
-- Ismételje meg a kísérletet, vagy a alkalmazni a normalizálási ugyanazokat a lépéseket a többi adattal kell, a lépések Mentés másként normalizálási átalakító, és alkalmazhatja azt egyéb adatkészletekhez, amelyek ugyanazzal a sémával rendelkezik.
+- Az összes érték módosítható egy 0-1-os méretre, vagy átalakíthatja az értékeket úgy, hogy az abszolút értékek helyett percentilis-rangsorként jelöli meg őket.
+- A normalizálás egyetlen oszlopra vagy ugyanazon adatkészlet több oszlopára is alkalmazható.
+- Ha meg kell ismételnie a kísérletet, vagy ugyanazokat a normalizálás lépéseket kell alkalmaznia más adatokat is, a lépéseket elmentheti normalizálás átalakításként, és alkalmazhatja azt más adathalmazokra, amelyek ugyanazzal a sémával rendelkeznek.
 
 > [!WARNING]
-> Egyes algoritmusok van szükség, hogy adatokat a modell tanítása előtt lesz normalizálva. Más algoritmusok hajtsa végre a saját adatok méretezés, vagy normalizálási. Ezért ha egy gépi tanulási prediktív modell felépítése az algoritmus választja, mindenképpen tekintse át az adatok az algoritmus a betanítási adatok normalizálási alkalmazása előtt.
+> Egyes algoritmusok esetében a modell betanítása előtt normalizálni kell az adattípusokat. Más algoritmusok saját adatméretezést vagy normalizálás hajtanak végre. Ezért ha egy prediktív modell létrehozásához használni kívánt gépi tanulási algoritmust választ, mindenképpen tekintse át az algoritmus adatkövetelményeit, mielőtt alkalmazza a betanítási adat normalizálása előtt.
 
-##  <a name="configure-normalize-data"></a>Konfigurálása adatok normalizálása
+##  <a name="configure-normalize-data"></a>Az adatnormalizálás konfigurálása
 
-Ez a modul használatával egyszerre csak egy normalizálási módszert is alkalmazhat. Normalizálási ugyanezzel a módszerrel, ezért minden kiválasztott oszlopok vonatkozik. Normalizálási módszereket használja az egy második példányt **normalizálása adatok**.
+A modul használatával egyszerre csak egy normalizáló módszert alkalmazhat. Ezért ugyanazt a normalizáló módszert alkalmazza a rendszer az összes kiválasztott oszlopra. A különböző normalizáló módszerek használatához használja az adatnormalizálás másodikpéldányát.
 
-1. Adja hozzá a **normalizálása adatok** modult a kísérletvászonra. Megtalálhatja a modul az Azure Machine Learning, a **adatátalakítás**, a a **méretezés és csökkentse** kategória.
+1. Adja hozzá az adatnormalizálás modult a kísérlethez. A modult Azure Machine Learningban, az adatátalakításalatt, a **skála és a csökkentés** kategóriában találja.
 
-2. Csatlakozzon egy adatkészletet, amely tartalmazza az összes legalább egy oszlopot.
+2. Csatlakoztasson egy olyan adatkészletet, amely legalább egy, az összes számot tartalmazó oszlopot tartalmaz.
 
-3. Az Oszlopválasztó használatával válassza ki a numerikus oszlopok optimalizálására. Ha nem adja meg az egyes oszlopok alapértelmezés szerint **összes** numerikus típusú oszlop a bemeneti adatok megtalálhatók, és ugyanazon normalizálási folyamat lépéseit követve alkalmazott összes kijelölt oszlop. 
+3. A normalizálni kívánt numerikus oszlopok kiválasztásához használja az oszlop választóját. Ha nem választja ki az egyes oszlopokat, alapértelmezés szerint az **összes** numerikus típusú oszlop szerepel a bemenetben, és ugyanazt a normalizáló folyamatot alkalmazza az összes kijelölt oszlopra. 
 
-    Ez furcsa eredményekhez vezethet, hogy nem lesz normalizálva numerikus oszlopok belefoglalása! Mindig körültekintően ellenőrizze az oszlopok.
+    Ez furcsa eredményekhez vezethet, ha olyan numerikus oszlopokat is tartalmaz, amelyek nem lesznek normalizálva! Mindig gondosan tekintse meg az oszlopokat.
 
-    Ha nem numerikus oszlop észlel, ellenőrizze annak ellenőrzéséhez, hogy az oszlop adattípusát támogatott numerikus típusú oszlop-metaadatot.
+    Ha nem észlelhető numerikus oszlop, ellenőrizze az oszlop metaadatait annak ellenőrzéséhez, hogy az oszlop adattípusa támogatott numerikus típusú-e.
 
     > [!TIP]
-    > Győződjön meg arról, hogy egy adott típusú oszlopok biztosított bemenetként, próbálkozzon a használatával a [Select Columns in Dataset](./select-columns-in-dataset.md) előtt modul **normalizálása adatok**.
+    > Annak érdekében, hogy a megadott típusú oszlopok bemenetként legyenek megadva, próbálja meg az **adatok normalizálása**előtt használni az [Oszlopok kiválasztása az adatkészlet](./select-columns-in-dataset.md) modulban.
 
-4. **Használja a 0 értéket, ha be van jelölve a változatlan oszlopok**:  Válassza ezt a lehetőséget, ha bármely numerikus oszlopára tartalmaz egy állandó értéket. Ez biztosítja, hogy az ilyen oszlopokat normalizálási műveletek nem használja.
+4. **Ha be van jelölve, használja a 0 értéket az állandó oszlopokhoz**:  Akkor válassza ezt a lehetőséget, ha bármely numerikus oszlop egyetlen változatlan értéket tartalmaz. Ez biztosítja, hogy az ilyen oszlopok ne legyenek használatban a normalizálás műveletekben.
 
-5. Az a **átalakítási metódus** legördülő menüben válassza ki a alkalmazni az összes kijelölt oszlop egy matematikai funkcióval. 
+5. Az **átalakítási módszer** legördülő listából válassza ki az összes kijelölt oszlopra alkalmazni kívánt egyetlen matematikai függvényt. 
   
-    - **Zscore**: Minden érték alakítja át a z-pontszám.
+    - **Zscore**: Az összes értéket egy z-pontszámra konvertálja.
     
-      Az oszlopban szereplő értékeket átalakításából származnak, használja a következő képletre:  
+      Az oszlopban szereplő értékek a következő képlettel alakíthatók át:  
   
-      ![z használatával normalizálási&#45;pontszámok](media/module/aml-normalization-z-score.png)
+      ![normalizálás z&#45;pontszámok használatával](media/module/aml-normalization-z-score.png)
   
-      Mean- és standard szórása arra az esetre vonatkoznak az egyes oszlopok külön-külön. Sokaság szórását szolgál.
+      A középérték és a szórás kiszámítása minden egyes oszlop esetében külön történik. A statisztikai sokaság szórása használatban van.
   
-    - **MinMax**: A min-max normalizáló a következőhöz költségráfordításokkal egyenes arányban, kiegészítve a [0,1] időköz szélességhez igazítva.
+    - **MinMax**: A min-max normalizáló lineárisan átméretezi az összes szolgáltatást a [0, 1] intervallumra.
     
-      A [0,1] időköz átméretezésekor végzi el időeltolású alapdokumentációjában értékeit, hogy a minimális értéke 0, és a az új maximális értéket (Ez a különbség az eredeti maximális és minimális értékeket).
+      A [0, 1] intervallumra való átméretezés az egyes szolgáltatások értékeinek eltolásával történik, így a minimális érték 0, majd az új maximális érték (amely az eredeti maximális és minimális értékek közötti különbség).
       
-      Az oszlopban szereplő értékeket átalakításából származnak, használja a következő képletre:  
+      Az oszlopban szereplő értékek a következő képlettel alakíthatók át:  
   
-      ![a minimális használatával normalizálási&#45;max függvény](media/module/aml-normalization-minmax.png "AML_normalization-minmax")  
+      ![normalizálás a min&#45;Max függvény használatával](media/module/aml-normalization-minmax.png "AML_normalization – MinMax")  
   
-    - **Logisztikai**: Az oszlopban szereplő értékeket átalakításából származnak, használja a következő képletre:
+    - **Logisztika**: Az oszlopban szereplő értékek a következő képlettel alakíthatók át:
 
-      ![normalizálási logisztikai függvény által képletét](media/module/aml-normalization-logistic.png "AML_normalization logisztikai")  
+      ![a logisztikai függvény által normalizált képlet](media/module/aml-normalization-logistic.png "AML_normalization – logisztika")  
   
-    - **Lognormális**: Ez a beállítás lognormális méretezési csoport összes érték alakítja.
+    - **Lognormális**: Ez a beállítás az összes értéket lognormális-skálára konvertálja.
   
-      Az oszlopban szereplő értékeket átalakításából származnak, használja a következő képletre:
+      Az oszlopban szereplő értékek a következő képlettel alakíthatók át:
   
-      ![képlet log&#45;normális eloszlás](media/module/aml-normalization-lognormal.png "AML_normalization lognormális")
+      a ![képlet&#45;naplójának normál eloszlása](media/module/aml-normalization-lognormal.png "AML_normalization – lognormális")
     
-      Μ és σ az alábbiakban a terjesztés, számított tapasztalati az adatokból minden oszlophoz a legnagyobb valószínűséggel becslések szerint külön-külön paramétereit.  
+      Itt a μ és a σ a eloszlás paraméterei, amelyeket a rendszer az adatok alapján, a maximális valószínűségi becslések szerint számít, külön-külön.  
   
-    - **TanH**: Az összes lesznek átalakítva tangens hiperbolikuszát.
+    - **TanH**: Minden érték egy hiperbolikus tangensre lesz konvertálva.
     
-      Az oszlopban szereplő értékeket átalakításából származnak, használja a következő képletre:
+      Az oszlopban szereplő értékek a következő képlettel alakíthatók át:
     
-      ![a tanh függvénnyel normalizálási](media/module/aml-normalization-tanh.png "AML_normalization-tanh")
+      ![normalizálás a TANH függvény használatával](media/module/aml-normalization-tanh.png "AML_normalization – TANH")
 
-6. Futtassa a kísérletet, vagy kattintson duplán a **normalizálása adatok** modul, és válassza ki **kijelölt futtatása**. 
+6. Futtassa a kísérletet, vagy kattintson duplán az adatnormalizálás modulra, és válassza a **kijelölt futtatása**lehetőséget. 
 
 ## <a name="results"></a>Results (Eredmények)
 
-A **normalizálása adatok** modul két kimenetek állít elő:
+A **normalizálás** adatmodul két kimenetet hoz létre:
 
-- Az átalakított értékek megtekintéséhez kattintson a jobb gombbal a modult, jelölje ki **átalakított adatkészlet**, és kattintson a **Visualize**.
+- Az átalakított értékek megtekintéséhez kattintson a jobb gombbal a modulra, válassza az átalakított **adatkészlet**lehetőséget, majd kattintson a **Megjelenítés**elemre.
 
-    Alapértelmezés szerint az értékek helyen lesznek átalakítva. Ha meg szeretné hasonlítsa össze az átalakított értékeket az eredeti értékekre, használja a [oszlopok hozzáadása](./add-columns.md) modul újraegyesítésére az adatkészleteket, és megtekintheti az egymás melletti oszlopokat.
+    Alapértelmezés szerint az értékek a helyük szerint lesznek átalakítva. Ha össze szeretné hasonlítani az átalakított értékeket az eredeti értékekkel, az [Oszlopok hozzáadása](./add-columns.md) modullal egyesítheti az adatkészleteket, és megtekintheti az oszlopokat egymás mellett.
 
-- Az átalakítást, hogy ugyanazzal a módszerrel normalizálási alkalmazhat egy másik hasonló adatkészlet mentéséhez kattintson a jobb gombbal a modult, válassza ki **transzformációs függvény**, és kattintson a **Mentés másként átalakító**.
+- Az átalakítás mentéséhez, hogy ugyanazt a normalizáló módszert alkalmazza egy másik hasonló adatkészletre, kattintson a jobb gombbal a modulra, válassza az **átalakítási függvény**lehetőséget, majd kattintson a **Mentés átalakítóként**lehetőségre.
 
-    A mentett átalakítások, majd betöltheti a **alakítja át az** csoporthoz a bal oldali navigációs sávon, és alkalmazza azt ugyanazzal a sémával rendelkező adatkészlet használatával [. / Átalakítás alkalmazása](apply-transformation.md).  
+    Ezután betöltheti a mentett transzformációkat a bal oldali navigációs ablaktábla átalakítások csoportjából, és alkalmazhatja azt egy olyan adatkészletre, amely ugyanazzal a sémával rendelkezik a [./Apply-transzformáció](apply-transformation.md)használatával.  
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

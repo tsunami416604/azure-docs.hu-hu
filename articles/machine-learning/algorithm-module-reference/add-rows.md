@@ -1,7 +1,7 @@
 ---
 title: 'Sorok hozzáadása: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használhatja a sorok hozzáadása a modul az Azure Machine Learning szolgáltatás fűzze össze két adatkészletet.
+description: Megtudhatja, hogyan összefűzheti a két adathalmazt a Azure Machine Learning szolgáltatás sorok hozzáadása moduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,38 +9,37 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ffd693ea3452ef48dc3e05e7bc4a6d3988a487b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c25f555fd7870afa4e75a3d1e490914e85118d20
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028755"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129009"
 ---
-# <a name="add-rows-module"></a>Sorok modul hozzáadása
+# <a name="add-rows-module"></a>Sorok hozzáadása modul
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul segítségével összefűzhet két adatkészletet. A második adatkészlet sorait összefűző, az első adatkészletet végén rendeljük hozzá.  
+Ezzel a modullal összefűzheti a két adatkészletet. Az Összefűzés során a rendszer hozzáadja a második adatkészlet sorait az első adatkészlet végéhez.  
   
-Sorok összefűzésén például a következő esetekben hasznos:  
+A sorok összefűzése olyan helyzetekben hasznos, mint például a következők:  
   
-+ Értékelési statisztika sorozatát készítette, és szeretné úgy, hogy egy tábla a könnyebb jelentéskészítés.  
++ Létrehozta az értékelési statisztikák sorozatát, és egy táblázatba szeretné egyesíteni a könnyebb jelentéskészítés érdekében.  
   
-+ Különböző adatkészletekkel dolgozik, és az adatkészletek a végső adatkészlet létrehozásához összevonására.  
++ Különböző adatkészletekkel dolgozik, és a végső adatkészlet létrehozásához egyesíteni kívánja az adatkészleteket.  
 
-## <a name="how-to-use-add-rows"></a>Sorok hozzáadása használata  
+## <a name="how-to-use-add-rows"></a>A sorok hozzáadása  
 
-Összefűzhet két adatkészletet azon sorait, a sorok pontosan ugyanazzal a sémával kell rendelkeznie. Ez azt jelenti, az azonos számú oszlopot, és az azonos típusú adatokat az oszlopok.
+Két adatkészletből származó sorok összefűzéséhez a soroknak pontosan ugyanazzal a sémával kell rendelkezniük. Ez azt jelenti, hogy ugyanaz a számú oszlop és ugyanolyan típusú adattípus szerepel az oszlopokban.
 
-1.  Húzza a **sorok hozzáadása** modult is futtathatja a kísérletet, annak a **adatátalakítás**, a a **kezelése** kategória.
+1.  Húzza a **sorok hozzáadása** modult a kísérletbe, és keresse meg az **adatátalakítás**alatt, a **manipulálás** kategóriában.
 
-2. Csatlakozzon az adatkészletet a két bemeneti port. Az adatkészletet, amely a hozzáfűzni kívánt kapcsolódnia kell a második (jobb oldali) portot. 
+2. Az adatkészletek csatlakoztatása a két bemeneti porthoz. A hozzáfűzni kívánt adatkészletet a második (jobb oldali) porthoz kell csatlakoztatni. 
   
-3.  Futtassa a kísérletet. A kimeneti adatkészlet sorainak száma meg kell egyeznie az mindkét bemeneti adatkészletek a sorok összege.
+3.  Futtassa a kísérletet. A kimeneti adatkészlet sorainak számának egyenlőnek kell lennie a bemeneti adatkészletek sorainak összegével.
 
-    Ha az ugyanahhoz az adatkészlethez hozzá mindkét bemenetei a **sorok hozzáadása** modul, az adatkészlet je duplicitní. 
+    Ha ugyanazt az adatkészletet adja hozzá a **sorok hozzáadása** modul mindkét bemenetéhez, a rendszer duplikálja az adatkészletet. 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

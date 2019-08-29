@@ -6,19 +6,31 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 796335fddf6107284b589d70094ff4f5a0e3acd5
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: a0c34e30e52bd2a6d57e2cf8299f231f7f2960d9
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050002"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147939"
 ---
 ::: zone target="docs"
 
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Oktatóanyag: Adatmásolás Azure Data Box Diskre és ellenőrzés
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="copy-data-to-azure-data-box-disk-and-validate"></a>Adatmásolás Azure Data Box Diskba és ellenőrzés
+
+A lemezek csatlakoztatása és zárolása után az adatok a forrás adatkiszolgálóról a lemezekre másolhatók. Az Adatmásolás befejezése után a másolt Adatmásolást kell végrehajtania. Az érvényesítés biztosítja, hogy az adatok sikeresen fel lesznek feltöltve az Azure-ba később.
+
+::: zone-end
+
+::: zone target="docs"
 
 A jelen oktatóanyag ismerteti, hogyan másolhat adatokat a gazdagépről, majd hogyan hozhat létre ellenőrzőösszegeket az adatok integritásának ellenőrzéséhez.
 
@@ -294,19 +306,18 @@ A következő oktatóanyag azt ismerteti, hogyan küldheti vissza a Data Box Dis
 
 ::: zone target="chromeless"
 
-## <a name="copy-data-to-disks"></a>Adatok másolása a lemezekre
+### <a name="copy-data-to-disks"></a>Adatok másolása a lemezekre
 
 A következő lépésekkel csatlakozhat a számítógépről, és másolhatja azokat a Data Box Diskba.
 
 1. Tekintse meg a zárolásfeloldás után a meghajtó tartalmát. A meghajtón lévő előlétrehozott mappák és almappák listája eltér attól függően, hogy milyen beállítások vannak kiválasztva a Data Box Disk rendelés elhelyezésekor.
 2. Másolja az olyan mappákba, amelyek megfelelnek a megfelelő adatformátumnak. Másolja például a strukturálatlan adat mappát a *BlockBlob* mappa, VHD vagy VHDX adat mappájába, hogy *PageBlob* a mappát és a fájlokat a *AzureFile*. Ha az adatformátum nem egyezik a megfelelő mappával (tárolási típus), akkor egy későbbi lépésben az adatok feltöltése az Azure-ba meghiúsul.
 
-    - Győződjön meg arról, hogy a tárolók, a blobok és a fájlok megfelelnek az [Azure elnevezési konvencióinak](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) és az [Azure-objektumok méretének](data-box-disk-limits.md#azure-object-size-limits). Ha nem követi ezeket a szabályokat vagy korlátozásokat, az Azure-ba történő adatfeltöltés sikertelen lesz.
-    - A rendszer a BlockBlob és a PageBlob mappa alatt található minden almappához létrehoz egy tárolót az Azure Storage-fiókban. A rendszer az *BlockBlob* és a *PageBlob* mappában található összes fájlt átmásolja az Azure Storage-fiókba $root alapértelmezett tárolóba. 
-    - A $root tárolóban lévő fájlokat a rendszer mindig blokkolja blobként feltölti.
-    - Fájlok másolása egy mappába a *AzureFile* mappában. A *AzureFile* mappában található almappa létrehoz egy fájlmegosztás. A közvetlenül a *AzureFile* mappába másolt fájlok sikertelenek lesznek, és a rendszer blokk blobként feltölti őket.
-    - Ha vannak fájlok és mappák a gyökérkönyvtárban, akkor át kell azokat helyeznie egy másik mappába az adatok másolásának megkezdése előtt.
+    - Győződjön meg arról, hogy a tárolók, a blobok és a fájlok megfelelnek az [Azure elnevezési konvencióinak](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) és az [Azure-objektumok méretének](data-box-disk-limits.md#azure-object-size-limits). Ha nem követi ezeket a szabályokat vagy korlátozásokat, az Azure-ba történő adatfeltöltés sikertelen lesz.     
     - Ha a megrendelés Managed Disks a tárolási célhelyek egyike, tekintse meg a felügyelt [lemezek](data-box-disk-limits.md#managed-disk-naming-conventions)elnevezési konvencióit.
+    - A rendszer a BlockBlob és a PageBlob mappa alatt található minden almappához létrehoz egy tárolót az Azure Storage-fiókban. A rendszer az *BlockBlob* és a *PageBlob* mappában található összes fájlt átmásolja az Azure Storage-fiókba $root alapértelmezett tárolóba. A $root tárolóban lévő fájlokat a rendszer mindig blokkolja blobként feltölti.
+    - Hozzon létre egy almappát a *AzureFile* mappában. Ez az almappa leképezi a felhőben lévő fájlmegosztás. Másolja a fájlokat az almappába. A közvetlenül a *AzureFile* mappába másolt fájlok sikertelenek lesznek, és a rendszer blokk blobként feltölti őket.
+    - Ha vannak fájlok és mappák a gyökérkönyvtárban, akkor át kell azokat helyeznie egy másik mappába az adatok másolásának megkezdése előtt.
 
 3. A fogd és vidd paranccsal a Fájlkezelőben vagy bármely SMB-kompatibilis fájlmásolás eszközzel, például a Robocopy használatával másolhatók az adatai. A következő parancs használatával több másolási feladat is kezdeményezhető:
 
@@ -317,13 +328,13 @@ A következő lépésekkel csatlakozhat a számítógépről, és másolhatja az
 
 Ha több lemezt használ, használja a [felosztás és másolás](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks) választható eljárását, és olyan nagy adatkészletet használ, amelyet az összes lemezre el kell osztani és át kell másolni.
 
-## <a name="validate-data"></a>Az adatok ellenőrzése
+### <a name="validate-data"></a>Az adatok ellenőrzése
 
 Az alábbi lépéseket követve ellenőrizheti adatait.
 
 1. Futtassa a `DataBoxDiskValidation.cmd` parancsot az ellenőrzőösszeg-érvényesítéshez a meghajtó *DataBoxDiskImport* mappájában.
 2. A 2. lehetőség használatával ellenőrizze a fájlokat, és állítson be ellenőrzőösszegeket. Az adatok méretétől függően a lépésben írtak elvégzése hosszabb időt is igénybe vehet. Ha hiba történik az érvényesítés és az ellenőrzőösszeg létrehozása során, a rendszer értesíti, és megjelenít egy, a hibanaplóra mutató hivatkozást.
 
-    Az adatok ellenőrzésével kapcsolatos további információkért lásd: [adatok ellenőrzése](data-box-disk-deploy-copy-data.md#validate-data). Ha az érvényesítés során hibák merülnek fel, tekintse meg az [érvényesítési hibák elhárítása](data-box-disk-troubleshoot.md)című témakört.
+    Az adatok ellenőrzésével kapcsolatos további információkért lásd: [adatok ellenőrzése](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Ha az érvényesítés során hibák merülnek fel, tekintse meg az [érvényesítési hibák elhárítása](https://docs.microsoft.com/en-us/azure/databox/data-box-disk-troubleshoot){: Target = "_blank"} című témakört.
 
 ::: zone-end

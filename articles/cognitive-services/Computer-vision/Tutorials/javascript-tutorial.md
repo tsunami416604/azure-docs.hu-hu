@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 04/30/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: df2aef9a6401d0a3a1807fb7e869f03f9b7bcd36
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8b0c2f16a8492904c93b5c603e8084384496b2c4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881237"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141230"
 ---
 # <a name="use-computer-vision-features-with-the-rest-api-and-javascript"></a>Computer Vision szolgáltatások használata a REST API és a JavaScript használatával
 
@@ -34,7 +34,7 @@ Az útmutató lépéseit egy egyszerű szövegszerkesztővel követheti el.
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Előfizetés a Computer Vision API-ra és egy előfizetési kulcs beszerzése
 
-A példa létrehozása előtt elő kell fizetnie a Computer Vision API-ra, amely az Azure Cognitive Services része. Az előfizetésről és a kulcskezelésről további információt az [Előfizetések](https://azure.microsoft.com/try/cognitive-services/) című témakörben találhat. Az elsődleges és a másodlagos kulcsok is érvényesek az útmutatóban való használatra.
+A példa létrehozása előtt rendelkeznie kell egy előfizetési kulccsal a Computer Visionhoz. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Jegyezze fel a szolgáltatás végpontjának URL-címét is.
 
 ## <a name="acquire-incomplete-tutorial-project"></a>Hiányos oktatóanyag-projekt beolvasása
 

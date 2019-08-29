@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: a23f71a38324d9751846f1308f79d3a4e746fd85
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c35863ed1d564adf4190efa1888d24f4f4f68ddf
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637289"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147861"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Válasszon a virtuális mag szolgáltatási szintjei közül, és térjen át a DTU szolgáltatási szintjeiről
 
@@ -43,7 +43,7 @@ A következő táblázat a három szintje közötti különbségeket ismerteti:
 ||**Általános célú**|**Üzleti szempontból kritikus**|**Nagy kapacitású**|
 |---|---|---|---|
 |Ajánlott alkalmazási terület|A legtöbb üzleti számítási feladat. A szolgáltatás költségvetés-orientált, kiegyensúlyozott és méretezhető számítási és tárolási lehetőségeket kínál.|Magas I/O-követelményeknek megfelelő üzleti alkalmazások. Több elkülönített replika használatával maximális rugalmasságot biztosít a hibákhoz.|A legtöbb üzleti számítási feladat nagy mértékben méretezhető tárolási és olvasási méretezési követelményekkel.|
-|Compute|**Kiépített számítás**:<br/>Gen4 1 – 24 virtuális mag<br/>Gen5 2 – 80 virtuális mag<br/>**Kiszolgáló nélküli számítás**:<br/>Gen5 0,5 – 4 virtuális mag|**Kiépített számítás**:<br/>Gen4 1 – 24 virtuális mag<br/>Gen5 2 – 80 virtuális mag|**Kiépített számítás**:<br/>Gen4 1 – 24 virtuális mag<br/>Gen5 2 – 80 virtuális mag|
+|Compute|**Kiépített számítás**:<br/>Gen4 1 – 24 virtuális mag<br/>Gen5 2 – 80 virtuális mag<br/>**Kiszolgáló nélküli számítás**:<br/>Gen5 0,5 – 16 virtuális mag|**Kiépített számítás**:<br/>Gen4 1 – 24 virtuális mag<br/>Gen5 2 – 80 virtuális mag|**Kiépített számítás**:<br/>Gen4 1 – 24 virtuális mag<br/>Gen5 2 – 80 virtuális mag|
 |Memory (Memória)|**Kiépített számítás**:<br/>Gen4 7 GB/virtuális mag<br/>Gen5 5,1 GB/virtuális mag<br/>**Kiszolgáló nélküli számítás**:<br/>Gen5 3 GB/virtuális mag|**Kiépített számítás**:<br/>Gen4 7 GB/virtuális mag<br/>Gen5 5,1 GB/virtuális mag |**Kiépített számítás**:<br/>Gen4 7 GB/virtuális mag<br/>Gen5 5,1 GB/virtuális mag|
 |Storage|Távoli tárterületet használ.<br/>**Önálló adatbázis kiépített számítási**felszámítása:<br/>5 GB – 4 TB<br/>**Önálló adatbázis-kiszolgáló nélküli számítás**:<br/>5 GB - 1 TB<br/>**Felügyelt példány**: 32 GB - 8 TB |A helyi SSD-tárolót használ.<br/>**Önálló adatbázis kiépített számítási**felszámítása:<br/>5 GB – 4 TB<br/>**Felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
 |I/O-átviteli sebesség (hozzávetőleges)|**Önálló adatbázis**: 500 IOPS/virtuális mag 7000 maximális IOPS.<br/>**Felügyelt példány**: A [fájl méretétől](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)függ.|5000 IOPS/mag 200 000 maximális IOPS|A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPs a munkaterheléstől függ.|

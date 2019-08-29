@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a82cc4da3b9f4f0c654c95b9889a8bf73fd8ec5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4cc07ac2644ac9f97146e980a1961b9b84e7c561
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989613"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127051"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Az Azure AD bejelentkezési naplók sémájának értelmezése Azure Monitor
 
@@ -154,11 +154,11 @@ Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) bejelentkezési napl
 | ResultType | A bejelentkezési művelet eredménye lehet *sikeres* vagy *sikertelen*. | 
 | ResultSignature | A bejelentkezési művelethez tartozó hibakódot tartalmazza, ha van ilyen. |
 | ResultDescription | A bejelentkezési művelet hibájának leírását adja meg. |
-| riskDetail | riskDetail | Egy kockázatos felhasználó, bejelentkezési vagy kockázati esemény adott állapotának hátterét adja meg. A lehetséges értékek a következők `none`: `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordChange`, `userPerformedSecuredPasswordReset` ,,`aiConfirmedSigninSafe`, ,,`userPassedMFADrivenByRiskBasedPolicy`, ,`adminConfirmedSigninCompromised`,. `adminDismissedAllRiskForUser` `adminConfirmedSigninSafe` `unknownFutureValue` Az érték `none` azt jelenti, hogy a felhasználó vagy a bejelentkezés eddig nem hajt végre műveletet. <br>**Megjegyzés:** A tulajdonság részleteit egy prémium szintű Azure AD P2-licencre van szükség. Más licencek az értéket `hidden`adják vissza. |
-| riskEventTypes | riskEventTypes | A bejelentkezéshez társított kockázati események típusai. A lehetséges értékek a következők `unlikelyTravel`: `anonymizedIPAddress` `maliciousIPAddress`, `unfamiliarFeatures` ,,`malwareInfectedIPAddress`,,,,, és .`unknownFutureValue` `suspiciousIPAddress` `leakedCredentials` `investigationsThreatIntelligence` `generic` |
+| riskDetail | riskDetail | A "okát" a kockázatos felhasználó, a bejelentkezés vagy a kockázatkezelés egy adott állapota mögött. A lehetséges értékek a következők `none`: `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordChange`, `userPerformedSecuredPasswordReset` ,,`aiConfirmedSigninSafe`, ,,`userPassedMFADrivenByRiskBasedPolicy`, ,`adminConfirmedSigninCompromised`,. `adminDismissedAllRiskForUser` `adminConfirmedSigninSafe` `unknownFutureValue` Az érték `none` azt jelenti, hogy a felhasználó vagy a bejelentkezés eddig nem hajt végre műveletet. <br>**Megjegyzés:** A tulajdonság részleteit egy prémium szintű Azure AD P2-licencre van szükség. Más licencek az értéket `hidden`adják vissza. |
+| riskEventTypes | riskEventTypes | A bejelentkezéshez társított kockázati észlelési típusok. A lehetséges értékek a következők `unlikelyTravel`: `anonymizedIPAddress` `maliciousIPAddress`, `unfamiliarFeatures` ,,`malwareInfectedIPAddress`,,,,, és .`unknownFutureValue` `suspiciousIPAddress` `leakedCredentials` `investigationsThreatIntelligence` `generic` |
 | riskLevelAggregated | riskLevel | Összesített kockázati szint. A lehetséges értékek a következők `none`: `low` `medium`, `high` `unknownFutureValue`,,, és. `hidden` Az érték `hidden` azt jelenti, hogy a felhasználó vagy a bejelentkezés nem volt engedélyezve a Azure ad Identity Protection. **Megjegyzés:** Ennek a tulajdonságnak a részletei csak prémium szintű Azure AD P2 ügyfelek esetében érhetők el. A rendszer minden más ügyfelet `hidden`visszaadja. |
 | riskLevelDuringSignIn | riskLevel | Kockázati szint a bejelentkezés során. A lehetséges értékek a következők `none`: `low` `medium`, `high` `unknownFutureValue`,,, és. `hidden` Az érték `hidden` azt jelenti, hogy a felhasználó vagy a bejelentkezés nem volt engedélyezve a Azure ad Identity Protection. **Megjegyzés:** Ennek a tulajdonságnak a részletei csak prémium szintű Azure AD P2 ügyfelek esetében érhetők el. A rendszer minden más ügyfelet `hidden`visszaadja. |
-| riskState | riskState | A kockázatos felhasználó, bejelentkezés vagy kockázati esemény jelentésének állapota. A lehetséges értékek a következők `none`: `confirmedSafe` `remediated`,, `dismissed`, `atRisk`, `confirmedCompromised`, ,`unknownFutureValue`. |
+| riskState | riskState | A kockázatos felhasználó, a bejelentkezés vagy a kockázat észlelése állapotának jelentése. A lehetséges értékek a következők `none`: `confirmedSafe` `remediated`,, `dismissed`, `atRisk`, `confirmedCompromised`, ,`unknownFutureValue`. |
 | Átl |  Ez az érték le van képezve, és nyugodtan figyelmen kívül hagyhatja ezt a mezőt. |
 | CallerIpAddress | Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. | 
 | CorrelationId | Az ügyfél által átadott opcionális GUID-azonosító. Ez az érték segít az ügyféloldali műveleteknek a kiszolgálóoldali műveletekkel való összekapcsolásában, és akkor hasznos, ha a szolgáltatásokra kiterjedő naplók követését végzi. |

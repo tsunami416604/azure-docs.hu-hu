@@ -1,7 +1,7 @@
 ---
-title: 'Importálás az Azure Blob Storage-ból: Modul-hivatkozás'
+title: 'Importálás az Azure Blob Storageból: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, ez a témakör ismerteti, hogyan használható az importálás az Azure Blob Storage-modul az Azure Machine Learning szolgáltatásban adatokat olvasni az Azure blob storage-ban, hogy az adatokat a machine learning-kísérletből is használhatja.
+description: Ebből a témakörből megtudhatja, hogyan használhatja az Azure Blob Storage-ból való importálást az Azure Blob Storage Azure Machine Learning modulból, hogy az adatok a Machine learning-kísérletekben is használhatók legyenek.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,88 +9,87 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 4ac98516c1a326e1ede09bbb9660113ffd0642a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fea64070c496379351bb75f2a38aba9b4db70dcd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029685"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128719"
 ---
-# <a name="import-from-azure-blob-storage-module"></a>Azure Blob Storage-modul importálása
+# <a name="import-from-azure-blob-storage-module"></a>Importálás az Azure Blob Storage modulból
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul használható adatokat olvasni az Azure blob storage-ban, hogy használhatja az adatokat a machine learning-kísérlet.  
+Ezzel a modullal olvashatók be az adatok az Azure Blob Storage-ból, így a Machine learning-kísérletekben tárolt adatok is használhatók.  
 
-Az Azure Blob szolgáltatás nem nagy mennyiségű adatot, beleértve a bináris adatok tárolására. Azure-blobok bárhonnan, HTTP vagy HTTPS használatával is elérhetők. Hitelesítés a blob storage típusától függően szükség lehet. 
+Az Azure Blob Service nagy mennyiségű, például bináris adatmennyiségű adattárolásra szolgál. Az Azure-Blobok bárhonnan, HTTP-vagy HTTPS-kapcsolaton keresztül is elérhetők. A blob Storage típusától függően szükség lehet a hitelesítésre. 
 
-- Bárki, vagy egy SAS URL-cím rendelkező felhasználók számára érhető el nyilvános blobok.
-- Privát blobok szükséges bejelentkezési adatokat és hitelesítő adatokat.
+- A nyilvános blobokat bárki vagy SAS URL-címmel rendelkező felhasználó is elérheti.
+- A privát blobokhoz bejelentkezési és hitelesítő adatok szükségesek.
 
-Blob storage-ból importálása van szükség, hogy adatokat használó blobok tárolja a **blokkblob** formátumban. A blob található fájlok vesszővel tagolt (CSV) vagy tabulátorral tagolt (TSV) formátumot kell használnia. Ha a fájl elolvasásához, a rekordokat és bármely alkalmazandó attribútum fejlécek vannak a memóriába sorok adatkészletként.
-
-
-Javasoljuk, hogy profilját, az adatok az importálás előtt, győződjön meg arról, hogy a séma az elvárt módon. Az importálási folyamat megvizsgálja az egyes határozza meg a séma fő sorok száma, de újabb sort tartalmazhat felesleges oszlopok vagy hibákat okozó adatokhoz.
+A blob Storage-ból történő importálás megköveteli, hogy az adatok a **Blobok blokkolása** formátumot használó blobokban legyenek tárolva. A blobban tárolt fájloknak vesszővel tagolt (CSV) vagy tabulátorral tagolt (TSV) formátumot kell használniuk. Ha elolvassa a fájlt, a rekordok és a megfelelő attribútumok fejlécei sorokként töltődnek be a memóriába adatkészletként.
 
 
-
-## <a name="manually-set-properties-in-the-import-data-module"></a>Manuálisan állítsa be a tulajdonságokat a az adatok importálása modullal
-
-A következő lépések bemutatják, hogyan manuális konfigurálásához az importálás forrás.
-
-1. Adja hozzá a **adatok importálása** modult a kísérletvászonra. Ez a modul az található a felületen, a a **adatok bemeneti és kimeneti**
-
-2. A **adatforrás**válassza **Azure Blob Storage**.
-
-3. A **hitelesítési típus**, válassza a **nyilvános (SAS URL-cím)** Ha tudja, hogy az információk nyilvános adatforrásként lett megadva. A SAS URL-címet az időhöz kötött URL nyilvánosan elérhető, amely egy Azure storage-segédprogram használatával is létrehozhat.
-
-    Ellenkező esetben válasszon **fiók**.
-
-4. Ha az adatok egy **nyilvános** blobot, amely a SAS URL-cím használatával érhető el, mert az URL-karakterlánc letöltése és a hitelesítéshez szükséges összes információt tartalmazza, nem kell további hitelesítő adatokat.
-
-    Az a **URI** mezőbe írja be vagy illessze be a teljes URI-t, amely meghatározza a fiók és a nyilvános blob.
+Javasoljuk, hogy az importálás előtt profilokat készítsen az adataihoz, hogy a séma a várt módon legyen. Az importálási folyamat megvizsgál néhány fő sort a séma meghatározásához, de a későbbi sorok további oszlopokat is tartalmazhatnak, vagy hibákat okozhatnak.
 
 
 
-5. Ha az adatok egy **privát** fiók, meg kell adnia hitelesítő adatait, beleértve a fiók nevét és a kulcsot.
+## <a name="manually-set-properties-in-the-import-data-module"></a>Tulajdonságok manuális beállítása az Adatimportálási modulban
 
-    - A **fióknév**írja be vagy illessze be a fiók, amely tartalmazza a használni kívánt blob neve.
+A következő lépések azt írják le, hogyan konfigurálhatja manuálisan az importálási forrást.
 
-        Például, ha a tárfiók teljes URL-címe `http://myshared.blob.core.windows.net`, írja be `myshared`.
+1. Adja hozzá az Adatimportálási modult a kísérlethez. Ez a modul a felületen, az **adatok bemenetében és kimenetében** található.
 
-    - A **fiókkulcs**, illessze be a tárelérési kulcs, amely a fiókhoz van hozzárendelve.
+2. Az **adatforrás**területen válassza az **Azure Blob Storage**lehetőséget.
 
-        Ha nem ismeri a hozzáférési kulcsot, című témakör, "Az Azure storage-fiókok kezelése" Ebben a cikkben: [Az Azure Storage-fiókokkal kapcsolatos](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
+3. A **Hitelesítés típusa**beállításnál válassza a **nyilvános (SAS URL)** lehetőséget, ha biztos benne, hogy az adatok nyilvános adatforrásként vannak megadva. Az SAS URL-cím egy olyan időkorlátos URL-cím, amely egy Azure Storage-segédprogrammal létrehozható nyilvános hozzáféréshez használható.
 
-6. A **tároló, a könyvtár vagy a blob elérési útja**, írja be a blobra, a lekérdezni kívánt nevét.
+    Egyéb esetben válassza a **fiók**lehetőséget.
 
-    Például, ha egy fájlt a feltöltött **data01.csv** a tárolóhoz **trainingdata** nevű fiókban **mymldata**, a fájl teljes URL-cím lesz: `http://mymldata.blob.core.windows.net/trainingdata/data01.txt` .
+4. Ha az adatok olyan **nyilvános** blobban találhatók, amely sas URL-cím használatával érhető el, nincs szükség további hitelesítő adatokra, mert az URL-karakterlánc tartalmazza a letöltéshez és a hitelesítéshez szükséges összes információt.
 
-    Ezért a mezőben **tároló, a könyvtár vagy a blob elérési útja**, írja be: `trainingdata/data01.csv`
+    Az **URI** mezőben írja be vagy illessze be a fiókot és a nyilvános blobot meghatározó teljes URI-t.
 
-    Több fájlt importál, használhatja a helyettesítő karakterek `*` (csillag) vagy `?` (kérdőjel).
 
-    Például, ha a tároló `trainingdata` több fájl tartalmaz egy kompatibilis formátumra, használhatja a következő specifikáció kezdődő összes fájl olvasása `data`, és fűzze össze őket egy adatkészletbe:
+
+5. Ha az adatai **privát** fiókkal rendelkeznek, meg kell adnia a hitelesítő adatokat, beleértve a fióknevet és a kulcsot is.
+
+    - A **fiók neve**mezőbe írja be vagy illessze be annak a fióknak a nevét, amely az elérni kívánt blobot tartalmazza.
+
+        Ha például a Storage-fiók `http://myshared.blob.core.windows.net`teljes URL-címe, akkor gépelje be `myshared`a következőt:.
+
+    - A **fiók kulcsa**mezőben illessze be a fiókhoz társított tárterület-hozzáférési kulcsot.
+
+        Ha nem ismeri a hozzáférési kulcsot, tekintse meg a jelen cikk "az Azure Storage-fiókok kezelése" című szakaszát. [Tudnivalók az Azure Storage](https://docs.microsoft.com/azure/storage/storage-create-storage-account)-fiókokról.
+
+6. A **tároló, könyvtár vagy blob elérési útja**mezőbe írja be a lekérdezni kívánt blob nevét.
+
+    Ha például egy **data01. csv** nevű fájlt töltött fel egy **mymldata**nevű fiók `http://mymldata.blob.core.windows.net/trainingdata/data01.txt` **trainingdata** , a fájl teljes URL-címe a következő lesz:.
+
+    Ezért a **tároló, könyvtár vagy blob mező elérési útján**a következőt kell beírnia:`trainingdata/data01.csv`
+
+    Több fájl importálásához használhatja a helyettesítő karaktereket `*` (csillag) vagy `?` (kérdőjel).
+
+    Tegyük fel például, hogy `trainingdata` a tároló több `data`, kompatibilis formátumú fájlt tartalmaz, az alábbi specifikáció segítségével olvashatja el az összes fájlt, és összefűzheti őket egyetlen adatkészletbe:
 
     `trainingdata/data*.csv`
 
-    A tároló neve nem használhat helyettesítő karaktereket. Importálja a fájlokat a több tároló van szüksége, ha egy külön példányát használja a **adatok importálása** modul minden egyes tároló és az adatkészletek használatával majd egyesítési a [sorok hozzáadása](./add-rows.md) modul.
+    A tárolók neveiben nem használhatók helyettesítő karakterek. Ha több tárolóból kell fájlokat importálnia, használja az **adatok importálása** modul külön példányát az egyes tárolók számára, majd egyesítse az adatkészleteket a [sorok hozzáadása](./add-rows.md) modul használatával.
 
     > [!NOTE]
-    > Ha a megoldás, kiválasztotta **használja a gyorsítótárazott eredményeket**, módosításokat hajt végre a tárolóban található fájlokat nem aktiválhatja az adatok a kísérletben.
+    > Ha a lehetőséget választotta, a **gyorsítótárazott eredmények használatával**a tárolóban lévő fájlokon végrehajtott módosítások nem indítják el a kísérletben lévő adatfrissítést.
 
-7. A **Blob fájlformátum**, válasszon egy beállítást, amely azt jelzi, hogy a blobban tárolt adatok formátumát, hogy az Azure Machine Learning képes megfelelően feldolgozni az adatokat. A következő formátumokban támogatja:
+7. **Blob fájlformátum**esetén olyan beállítást válasszon, amely megadja a blobban tárolt adatformátumot, így a Azure Machine learning megfelelően feldolgozhatják az adatfeldolgozást. A következő formátumok támogatottak:
 
-    - **CSV**: Vesszővel tagolt (CSV) exportálása és importálása az Azure Machine Learning fájlok alapértelmezett tárolási formátumát. Ha az adatok már tartalmaz egy fejléc sorra, ügyeljen arra, hogy a beállítást, **fájl rendelkezik fejlécsor**, vagy a fejlécet, adatsorrá lesznek kezelve.
-
-       
-
-    - **TSV**: Tabulátorral tagolt értékeket (TSV) számos machine learning-eszközök által használt formátumban. Ha az adatok már tartalmaz egy fejléc sorra, ügyeljen arra, hogy a beállítást, **fájl rendelkezik fejlécsor**, vagy a fejlécet, adatsorrá lesznek kezelve.
+    - **CSV**: A vesszővel tagolt értékek (CSV) a fájlok exportálásának és importálásának alapértelmezett tárolási formátuma Azure Machine Learningban. Ha az adathalmaz már tartalmaz egy fejlécet, ügyeljen arra, hogy a **fájl fejléce**legyen, vagy a fejléc adatsorként lesz kezelve.
 
        
 
-    - **ARFF**: Ehhez a formátumhoz a Weka eszközkészlet által használt formátumú fájlok importálásával. 
+    - **TSV**: A tabulátorral tagolt értékek (TSV) számos gépi tanulási eszköz által használt formátum. Ha az adathalmaz már tartalmaz egy fejlécet, ügyeljen arra, hogy a **fájl fejléce**legyen, vagy a fejléc adatsorként lesz kezelve.
+
+       
+
+    - **ARFF**: Ez a formátum támogatja a fájlok importálását a WEKA eszközkészlet által használt formátumban. 
 
    
 
@@ -99,4 +98,4 @@ A következő lépések bemutatják, hogyan manuális konfigurálásához az imp
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

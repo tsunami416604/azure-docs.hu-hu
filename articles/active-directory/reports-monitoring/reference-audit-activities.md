@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a687823d1344ca11864523cb9187f48d7373fd41
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 56a94ef3f6ea5737b629efe44bd3e1cc1f36a693
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989637"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127130"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD naplózott tevékenységekre vonatkozó referencia
 
@@ -65,11 +65,11 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Hozzáférési felülvizsgálatok|Programvezérlő leválasztása|
 |Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat frissítése|
 |Hozzáférési felülvizsgálatok|Az Azure AD hozzáférési felülvizsgálatok bevezetési állapotának frissítése|
-|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati e-mail-értesítés beállításainak frissítése|
-|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődésszám beállításának frissítése|
-|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődési időtartam (nap) beállításának frissítése|
-|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődési befejezési típus beállításának frissítése|
-|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődési típus beállításának frissítése|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati e-mail-értesítési beállításainak frissítése|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati ismétlődési szám beállításának frissítése|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat ismétlődési időtartamának frissítése napokban beállítás|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati ismétlődési típus beállításának frissítése|
+|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati ismétlődési típus beállításának frissítése|
 |Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati emlékeztető beállításainak frissítése|
 |Hozzáférési felülvizsgálatok|Program frissítése|
 |Hozzáférési felülvizsgálatok|Kérelem-jóváhagyás frissítése|
@@ -348,10 +348,10 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 
 |Naplózási kategória|Tevékenység|
 |---|---|
-|Adminisztratív egységek kezelése|Egy kockázatiesemény-típus letöltése|
+|Adminisztratív egységek kezelése|Egyetlen kockázati észlelési típus letöltése|
 |Adminisztratív egységek kezelése|Rendszergazdák és a heti összefoglalók letöltésének jóváhagyása|
-|Adminisztratív egységek kezelése|Összes kockázatiesemény-típus letöltése|
-|Adminisztratív egységek kezelése|Ingyenes felhasználói kockázati események letöltése|
+|Adminisztratív egységek kezelése|Az összes kockázati észlelési típus letöltése|
+|Adminisztratív egységek kezelése|Ingyenes felhasználói kockázati észlelések letöltése|
 |Adminisztratív egységek kezelése|Kockázatosként megjelölt felhasználók letöltése|
 |Alkalmazáskezelés|Feldolgozott kötegelt meghívók|
 |Alkalmazáskezelés|Kötegelt meghívók feltöltve|
@@ -517,11 +517,11 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |---|---|
 |Csoportkezelés|Kérelem-jóváhagyási kérelem felülvizsgálata|
 |Csoportkezelés|Hozzáférési felülvizsgálat frissítése|
-|Csoportkezelés|Hozzáférési felülvizsgálati e-mail-értesítés beállításainak frissítése|
-|Csoportkezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődésszám beállításának frissítése|
-|Csoportkezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődési időtartam (nap) beállításának frissítése|
-|Felhasználókezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődési befejezési típus beállításának frissítése|
-|Felhasználókezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődési típus beállításának frissítése|
+|Csoportkezelés|Hozzáférési felülvizsgálati e-mail-értesítési beállításainak frissítése|
+|Csoportkezelés|Hozzáférési felülvizsgálati ismétlődési szám beállításának frissítése|
+|Csoportkezelés|Hozzáférési felülvizsgálat ismétlődési időtartamának frissítése napokban beállítás|
+|Felhasználókezelés|Hozzáférési felülvizsgálati ismétlődési típus beállításának frissítése|
+|Felhasználókezelés|Hozzáférési felülvizsgálati ismétlődési típus beállításának frissítése|
 
 
 

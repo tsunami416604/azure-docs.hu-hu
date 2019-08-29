@@ -3,21 +3,20 @@ title: Adathalmazok a Azure Data Factoryban | Microsoft Docs
 description: Tudnivalók a Data Factory adatkészletekről. Az adatkészletek bemeneti/kimeneti adatokat jelölnek.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: shlo
-ms.openlocfilehash: bbf7159abf88ce70cc62d202a8375aad302a0552
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 788fee724f381ab317b97a682aa21d17ec1ffa9d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019976"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137302"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Adathalmazok a Azure Data Factoryban
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -147,9 +146,7 @@ Vegye figyelembe a következő szempontokat:
 - a linkedServiceName egy AzureSqlDatabase típusú társított szolgáltatásra hivatkozik, amely a következő JSON-kódrészletben van meghatározva.
 
 ## <a name="dataset-type"></a>Adatkészlet típusa
-A használt adattártól függően számos különböző típusú adatkészlet létezik. A Data Factory által támogatott adattárak listáját a következő táblázat tartalmazza. Kattintson egy adattárra, és Ismerje meg, hogyan hozhat létre egy társított szolgáltatást és egy adatkészletet az adott adattárhoz.
-
-[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/connector-activity-support-matrix.md)]
+A használt adattártól függően számos különböző típusú adatkészlet létezik. A Data Factory által támogatott adatok listáját az [összekötő áttekintése című](connector-overview.md) cikkben találja. Kattintson egy adattárra, és Ismerje meg, hogyan hozhat létre egy társított szolgáltatást és egy adatkészletet az adott adattárhoz.
 
 Az előző szakaszban szereplő példában az adatkészlet típusa **tulajdonsága azuresqltable**értékre van állítva. Hasonlóképpen, az Azure Blob-adatkészletek esetében az adatkészlet típusa **AzureBlob**értékre van állítva, ahogy az a következő JSON-ban látható:
 

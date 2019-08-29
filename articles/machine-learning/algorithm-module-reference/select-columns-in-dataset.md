@@ -1,7 +1,7 @@
 ---
-title: 'Oszlopok kiválasztása az adatkészlet: Modul-hivatkozás'
+title: 'Oszlopok kiválasztása az adatkészletben: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan adatkészletet modul az Azure Machine Learning szolgáltatás a Select-Columns használatával válassza ki az alsóbb rétegbeli műveletek használandó oszlopok egy része.
+description: Megtudhatja, hogyan használhatók az Oszlopok kiválasztása a Azure Machine Learning szolgáltatásban az adathalmaz-modulban, hogy kiválassza az alsóbb rétegbeli műveletekben használandó oszlopok egy részhalmazát.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,103 +9,102 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: e7407f62bd3401411d56076b298bd8cd134ece62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 097477fb9fc10d954954815c7f4b0fef8947a526
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028095"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128498"
 ---
-# <a name="select-columns-in-dataset-module"></a>Oszlopok kiválasztása az adathalmaz-modul
+# <a name="select-columns-in-dataset-module"></a>Oszlopok kiválasztása az adatkészlet modulban
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul az alsóbb rétegbeli műveletek használandó oszlopok kiválasztásához használható. A modul nem fizikailag törli az oszlopot a forrásadatkészlet; Ehelyett hozza létre oszlopok, hasonlóan egy adatbázis *nézet* vagy *leképezése*.
+Ezzel a modullal kiválaszthatja az alsóbb rétegbeli műveletekben használandó oszlopok egy részhalmazát. A modul nem távolítja el fizikailag az oszlopokat a forrás adatkészletből; Ehelyett egy adatbázis-nézethez vagy kivetítéshez hasonlóan az oszlopok egy részhalmazát hozza létre.
 
-Ez a modul akkor hasznos, amikor szüksége van egy alsóbb rétegbeli művelet oszlopainak korlátozásához, vagy ha a szükségtelen oszlopok eltávolításával az adatkészlet méretének csökkentése érdekében.
+Ez a modul akkor lehet hasznos, ha korlátozni szeretné az alsóbb rétegbeli művelethez rendelkezésre álló oszlopokat, vagy ha csökkenteni kívánja az adatkészlet méretét a szükségtelen oszlopok eltávolításával.
 
-Az oszlopok az adatkészlet kimeneti ugyanabban a sorrendben, mint az eredeti adatok, még akkor is, ha megadja ezeket különböző sorrendben.
+Az adatkészlet oszlopai ugyanabban a sorrendben jelennek meg, mint az eredeti adatokat, még akkor is, ha más sorrendben adja meg őket.
 
 ## <a name="how-to-use"></a>A használat módja
 
-Ez a modul nem tartozik paraméter. Az Oszlopválasztó használatával válassza ki a bevonhat vagy kizárhat oszlopokat.
+Ez a modul nem tartalmaz paramétereket. Az oszlop választóval kiválaszthatja a belefoglalni vagy kizárni kívánt oszlopokat.
 
 ### <a name="choose-columns-by-name"></a>Oszlopok kiválasztása név szerint
 
-A modul neve szerint oszlopok kiválasztására vonatkozó több lehetőség áll rendelkezésre: 
+A modulban több lehetőség is van az oszlopok név szerinti kiválasztására: 
 
 + Szűrés és keresés
 
-    Kattintson a **név szerint** lehetőséget.
+    Kattintson a **név szerint** lehetőségre.
 
-    Ha csatlakozott egy adatkészletet, amely már fel van töltve, elérhető oszlopok listájának kell megjelennie. Ha nincsenek oszlopok jelennek meg, szüksége lehet a felsőbb rétegbeli modulok oszlop listájának megjelenítéséhez futtassa.
+    Ha már kitöltött adatkészlet van csatlakoztatva, akkor megjelenik az elérhető oszlopok listája. Ha egyetlen oszlop sem jelenik meg, előfordulhat, hogy az oszlopok listájának megtekintéséhez felsőbb rétegbeli modulokat kell futtatnia.
 
-    A lista szűréséhez írja be a keresőmezőbe. Például, ha beírja a levél `w` a keresőmezőbe, a szűrt lista megjelenítése az oszlopok neveit, amelyek tartalmazzák a levél `w`.
+    A lista szűréséhez írja be a kifejezést a keresőmezőbe. Ha például beírja a betűt `w` a keresőmezőbe, a rendszer szűri a listát a betűt `w`tartalmazó oszlopnevek megjelenítéséhez.
 
-    Válassza ki az oszlopot, és kattintson a jobbra mutató nyíl gombra áthelyezi a kijelölt oszlopokat a jobb oldali panelen található listában.
+    Jelölje ki az oszlopokat, és kattintson a jobbra mutató nyílra a kijelölt oszlopok a jobb oldali ablaktáblán a listára való áthelyezéséhez.
 
-    + Az oszlopnevek folyamatos tartomány kijelöléséhez nyomja le a **Shift + kattintás**.
-    + Az egyes oszlopok hozzáadása a kijelölt, nyomja le a **Ctrl + kattintással**.
+    + Az oszlopnevek folytonos tartományának kiválasztásához nyomja le a **SHIFT + kattintás**billentyűkombinációt.
+    + Ha egyes oszlopokat szeretne hozzáadni a kijelöléshez, nyomja le a **CTRL + kattintás**billentyűkombinációt.
 
-    Kattintson a pipa gombra kattintva mentse és zárja be.
+    Kattintson a pipa gombra a mentéshez és a bezáráshoz.
 
-+ Nevek használata az egyéb szabályokkal
++ Nevek használata más szabályokkal együtt
 
-    Kattintson a **a szabályok** lehetőséget.
+    Kattintson a **with Rules** (szabályokkal) lehetőségre.
     
-    Válasszon egy szabályt, például egy adott típusú oszlopok megjelenítése.
+    Válasszon egy szabályt, például egy adott adattípus oszlopainak megjelenítését.
 
-    Ezután kattintson az adott típusú az egyes oszlopok neve, a kiválasztási listában való hozzáadásakor.
+    Ezután kattintson az adott típusú oszlopokra név alapján, hogy hozzáadja őket a kiválasztási listához.
 
-+ Írja vagy illessze be az oszlopok neveit vesszővel elválasztott listája
++ Írja be vagy illessze be az oszlopnevek vesszővel tagolt listáját
 
-    Ha az adatkészlet széles, indexek használata könnyebb, vagy külön-külön létrehozott oszlopok kiválasztásával, hanem nevek listája. Feltéve, hogy előkészítette a lista előre:
+    Ha az adatkészlet széles, egyszerűbb lehet az indexek vagy a generált Névlista használata ahelyett, hogy külön oszlopokat kellene kiválasztania. Feltételezve, hogy előkészítette a listát előre:
 
-    1. Kattintson a **a szabályok** lehetőséget. 
-    2. Válassza ki **nem szerepelnek oszlopok a**válassza **Belefoglalás**, majd kattintson a szövegdobozba, és a piros felkiáltójel. 
-    3. Illessze be a, vagy írja be a korábban ellenőrzött oszlopnevek vesszővel tagolt listája. Nem lehet menteni a modul Ha bármely oszlop neve érvénytelen, ezért mindenképpen előre nevek ellenőrzése.
+    1. Kattintson a **with Rules** (szabályokkal) lehetőségre. 
+    2. Válassza a **nem oszlopok**lehetőséget, válassza a Belefoglalás lehetőséget, majd kattintson a piros felkiáltójelet tartalmazó szövegmezőbe. 
+    3. Illessze be vagy írja be a korábban érvényesített oszlopnevek vesszővel tagolt listáját. A modul nem menthető, ha bármelyik oszlop érvénytelen névvel rendelkezik, ezért ügyeljen arra, hogy a neveket előre ellenőrizze.
     
-    Ez a módszer használatával adja meg az oszlop az index értékek listáját. 
+    Ezzel a módszerrel az oszlopok listáját is megadhatja az index értékei alapján. 
 
-### <a name="choose-by-type"></a>Válassza ki a típus szerint
+### <a name="choose-by-type"></a>Választás típus szerint
 
-Használatakor a **a szabályok** beállítást, az oszlop ablakbon több feltételt is alkalmazhat. Szüksége lehet például egy numerikus adattípusú csak a szolgáltatás oszlopok.
+Ha a **with Rules** kapcsolót használja, több feltételt is alkalmazhat az oszlopok kiválasztására. Előfordulhat például, hogy csak numerikus adattípusú szolgáltatások oszlopait kell lekérnie.
 
-A **megkezdése a** beállítás meghatározza, hogy a kiindulási pont, és az eredmények megértéséhez fontos. 
+A **kezdete** beállítás határozza meg a kiindulási pontot, és fontos az eredmények megismeréséhez. 
 
-+ Ha a **minden oszlop** beállítást, minden oszlopokat ad hozzá a listához. Ezt követően kell használnia a **kizárása** beállítást *eltávolítása* oszlopokat, amelyek megfelelnek bizonyos feltételeknek. 
++ Ha a **minden oszlop** lehetőséget választja, a rendszer az összes oszlopot hozzáadja a listához. Ezt követően a **kizárás** lehetőséget kell használnia az egyes feltételeknek megfelelő oszlopok *eltávolításához* . 
 
-    Például előfordulhat, hogy indítsa el az összes oszlopot tartalmazó, és távolítsa el oszlopok neve vagy típusa szerint.
+    Előfordulhat például, hogy az összes oszlopot megkezdi, majd eltávolítja az oszlopokat név vagy típus szerint.
 
-+ Ha a **nem oszlopok** beállítást, az oszlopok listájának elindításakor üresen. Majd adja meg a feltételek *hozzáadása* oszlopot a listához. 
++ Ha a **nincs oszlop** lehetőséget választja, az oszlopok listája üresen elindul. Ezután megadhatja az oszlopok listához való hozzáadásának feltételeit. 
 
-    Ha több szabályt, minden egyes feltétel van **additív**. Tegyük fel például, hogy nem szerepelnek oszlopok a kezdődhet, és egy szabályt, amely az összes numerikus oszlopok adja. Az adatkészletben Automobile price, amely 16 ilyen oszlop eredményez. Ezután kattintson a **+** új feltétel hozzáadása, és válassza a bejelentkezés **többek között az összes**. Az eredményül kapott adatkészletet tartalmaz, a numerikus oszlopok, valamint az összes funkció oszlopot, beleértve néhány funkció karakterlánc típusú oszlopokra.
+    Ha több szabályt alkalmaz, minden feltétel **adalékanyag**. Tegyük fel például, hogy nem oszlopokat ad meg, majd hozzáad egy szabályt az összes numerikus oszlop beolvasásához. Az autó árát tartalmazó adatkészletben 16 oszlopot eredményez. Ezután kattintson a jelre egy **+** új feltétel hozzáadásához, majd válassza a **minden szolgáltatás**belefoglalása lehetőséget. Az eredményül kapott adatkészlet tartalmazza az összes numerikus oszlopot, valamint az összes funkció oszlopát, beleértve a karakterlánc-funkciók egyes oszlopait is.
 
-### <a name="choose-by-column-index"></a>Az oszlopindex alapján
+### <a name="choose-by-column-index"></a>Oszlopos index választása
 
-Az oszlopindex abban az oszlop belül az eredeti adatkészletre hivatkozik.
+Az oszlop indexe az oszlopnak az eredeti adatkészleten belüli sorrendjére hivatkozik.
 
-+ Oszlopok számozása 1-gyel egymás után kezdődik.  
-+ Az oszlopok számos, amelyet egy kötőjel. 
-+ Például nyílt specifikációk `1-` vagy `-3` nem engedélyezettek.
-+ Ismétlődő index értékek (vagy oszlopneveket) használata nem engedélyezett, és hibát eredményezhet.
++ Az oszlopok egymás után sorszámozással kezdődnek, 1-től kezdődően.  
++ Egy sor oszlop beszerzéséhez használjon kötőjelet. 
++ A nyílt végű specifikációk `1-` (például vagy `-3` ) nem engedélyezettek.
++ Ismétlődő index-értékek (vagy oszlopnevek) nem engedélyezettek, és hibát okozhatnak.
 
-Például feltéve, hogy az adatkészlet legalább nyolc oszlopot tartalmaz, akkor sikerült illessze be a valamelyik a következő példákat, hogy több nem egymás melletti oszlopot ad vissza: 
+Tegyük fel például, hogy az adatkészletnek legalább nyolc oszlopa van, az alábbi példák bármelyikét beillesztheti több nem összefüggő oszlop visszaküldéséhez: 
 
 + `8,1-4,6`
 + `1,3-8`
 + `1,3-6,4` 
 
-az utolsó példában nem eredményez hibát; azonban adja vissza egy példánya oszlop `4`.
+az utolsó példa nem eredményez hibát; azonban az oszlop `4`egyetlen példányát adja vissza.
 
 
 
-### <a name="change-order-of-columns"></a>Az oszlopok sorrendjének módosítása
+### <a name="change-order-of-columns"></a>Oszlopok sorrendjének módosítása
 
-A beállítás **engedélyezi az ismétlődő elemeket, és őrizze meg a kijelölt oszlopok sorrendjét** üres lista kezdődik, és felveszi az oszlopok megadott neve vagy indexe. Ellentétben más beállításokat, amelyek mindig vissza oszlopokat "természetes sorrend", ezt a beállítást kimenete az oszlopokat a sorrendben, név vagy őket. 
+Az oszlopok **ismétlődésének és megőrzésének engedélyezése** a kijelölésben üres listával kezdődik, és a név vagy index alapján megadott oszlopokat adja meg. A többi lehetőségtől eltérően, amely mindig a "természetes sorrendben" adja vissza az oszlopokat, ez a beállítás az oszlopokat a név vagy a lista sorrendjében jeleníti meg. 
 
-Például az oszlopok Col1, Col2, Col3 és Col4 adatkészletek, sikerült az oszlopok sorrendjét, és hagyja ki 2. oszlop, adja meg a következő listák valamelyikét:
+Például a Col1, Col2, Col3 és Col4 oszlopokkal rendelkező adatkészletekben visszavonhatja az oszlopok sorrendjét, és kihagyhatja a 2. oszlopot a következő felsorolások egyikének megadásával:
 
 + `Col4, Col3, Col1`
 + `4,3,1`
@@ -113,4 +112,4 @@ Például az oszlopok Col1, Col2, Col3 és Col4 adatkészletek, sikerült az osz
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

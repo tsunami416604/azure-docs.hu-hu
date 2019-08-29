@@ -1,7 +1,7 @@
 ---
-title: 'Távolítsa el az ismétlődő sorok: Modul-hivatkozás'
+title: 'Ismétlődő sorok eltávolítása: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Útmutató az ismétlődő sorok eltávolítása modul használata az Azure Machine Learning szolgáltatás eltávolítja a potenciális ismétlődő egy adatkészletből.
+description: Megtudhatja, hogyan távolíthatja el a lehetséges duplikált adatokat az adatkészletből a Azure Machine Learning szolgáltatás ismétlődő sorok eltávolítása moduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,74 +9,73 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: dce90d911085c1f7330a2e0952bb9576c1d765fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b16e745de277d5aa262f1e1624df22f97d0cf29c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029295"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128527"
 ---
-# <a name="remove-duplicate-rows-module"></a>Távolítsa el az ismétlődő sorok modul
+# <a name="remove-duplicate-rows-module"></a>Ismétlődő sorok moduljának eltávolítása
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul használatával lehetséges ismétlődések eltávolítása egy adatkészletből.
+Ezzel a modullal távolíthatja el a lehetséges duplikált adatokat egy adatkészletből.
 
-Tegyük fel, hogy az adatok a következőhöz hasonló, és a betegek több rekordot jelöli. 
+Tegyük fel például, hogy az adatok úgy néznek ki, mint a következő, és a betegek több rekordját jelöli. 
 
-| PatientID | Monogram| Nem|Kor|Beléptetett|
+| PatientID | Monogram| Nem|Kor|Elismerte|
 |----|----|----|----|----|
-|1|F.M.| M| 53| Jan|
-|2| F.A.M.| M| 53| Jan|
-|3| F.A.M.| M| 24| Jan|
-|3| F.M.| M| 24| Február|
-|4| F.M.| M| 23| Február|
+|1|F.M.| M| 53| jan.|
+|2| F.A.M.| M| 53| jan.|
+|3| F.A.M.| M| 24| jan.|
+|3| F.M.| M| 24| feb.|
+|4| F.M.| M| 23| feb.|
 | | F.M.| M| 23| |
 |5| F.A.M.| M| 53| |
 |6| F.A.M.| M| NaN| |
 |7| F.A.M.| M| NaN| |
 
-Természetesen az ebben a példában az esetlegesen ismétlődő adatok több oszlopot tartalmaz. Csatlakoznak-e ismétlődések ténylegesen attól függ, hogy az adatok kapcsolatos ismereteit. 
+Egyértelmű, hogy ez a példa több, potenciálisan ismétlődő adattal rendelkező oszlopot tartalmaz. Függetlenül attól, hogy valóban duplikált elemek-e, az adatok ismerete függ. 
 
-+ Például előfordulhat, hogy biztos lehet, hogy sok betegek rendelkezik ugyanazzal a névvel. Nem lenne letiltjuk a duplikált elemek használatával bármilyen nevet tartalmazó oszlopot, csak a **azonosító** oszlop. Ezzel a módszerrel csak az ismétlődő azonosító értéket tartalmazó sorok ki van szűrve, függetlenül a betegek rendelkeznek-e ugyanazzal a névvel vagy sem.
++ Előfordulhat például, hogy sok betegnek ugyanaz a neve. Nem távolítja el a duplikált elemeket bármely név oszlop használatával, csak az **azonosító** oszlopot. Így csak az ismétlődő azonosító értékekkel rendelkező sorok vannak kiszűrve, függetlenül attól, hogy a páciensek neve megegyezik-e.
 
-+ Azt is megteheti dönthet, hogy engedélyezi az ismétlődő elemeket az azonosító mezőben, és keresse meg az egyedi bejegyzések, például utónév, utolsó nevét, kor, és a nemek egyéb kombinációjáig terjedhet fájlokat használja.  
++ Másik lehetőségként dönthet úgy is, hogy engedélyezi az ismétlődéseket az azonosító mezőben, és más fájlok kombinációját használja az egyedi rekordok, például az utónév, a vezetéknév, az életkor és a nemek kereséséhez.  
 
-Állítsa be a feltételeket, akár egy sor nem ismétlődő vagy nem, csak egy oszlop vagy egy a használni kívánt oszlopokat adjon meg **kulcsok**. Két sort számítanak ismétlődések csak akkor, ha szereplő értékek **összes** Kulcsoszlopok megegyeznek. Ha bármely sor nullértékkel rendelkezik, a hiányzó értékeket **kulcsok**, nem minősülnek ismétlődő sorok. Például, ha a nemek és a Korszűrő vannak beállítva, mivel fenti 6 és 7 sort a táblában a kulcsok nem ismétlődő sorok megadott van hiányzó értékük korában.
+Ha meg szeretné határozni, hogy egy sor duplikált-e vagy sem, akkor adja meg a kulcsként használni kívánt egyetlen oszlopotvagy oszlopokat. Két sor csak akkor tekinthető ismétlődőnek, ha az **összes** kulcs oszlop értékei egyenlőek. Ha bármelyik sorban hiányzik a **kulcsok**értéke, nem lesznek ismétlődő sorok. Ha például a nemek és a kor értéke kulcsokként van beállítva a fenti táblázatban, a 6. és a 7. sor nem duplikált sorokból áll, mert az életkorban hiányzik az érték.
 
-A modul futtatásakor jelölt adatkészletet hoz létre, és nincsenek ismétlődések között megadott oszlopok csoportját tartalmazó sorok készletét adja vissza.
+Amikor futtatja a modult, létrehoz egy jelölt adatkészletet, és olyan sorok halmazát adja vissza, amelyek nem rendelkeznek ismétlődéssel a megadott oszlopok között.
 
 > [!IMPORTANT]
-> A forrás adatkészlet nem változtak meg; Ez a modul egy új adatkészlet kizárandó ismétlődéseket, a megadott feltételek alapján szűrt hoz létre.
+> A forrás-adatkészlet nem módosult; Ez a modul egy új adatkészletet hoz létre, amely a megadott feltételek alapján szűri a duplikált elemek kizárását.
 
-## <a name="how-to-use-remove-duplicate-rows"></a>Hogyan használható az ismétlődő sorok eltávolítása
+## <a name="how-to-use-remove-duplicate-rows"></a>Ismétlődő sorok eltávolításának használata
 
-1. Adja hozzá a modul a kísérletben. Annak a **ismétlődő sorok eltávolítása** alatt modul **adatátalakítás**, **adatkezelési**.  
+1. Adja hozzá a modult a kísérlethez. Az **ismétlődő sorok eltávolítása** modult az adatátalakítás, a **manipuláció**lehetőség alatt találja.  
 
-2. Csatlakozzon, amely ismétlődő sorok ellenőrizni kívánja az adatkészletet.
+2. Kösse össze az adatkészletet, amelynek ismétlődő sorait szeretné megkeresni.
 
-3. A a **tulajdonságok** ablaktáblán, a **oszlop kiválasztása szűrőkifejezés kulcs**, kattintson a **Oszlopválasztás indítása**, válassza az ismétlődések azonosításához használni kívánt oszlopokat.
+3. A **Tulajdonságok** ablaktáblában a **kulcs oszlop kiválasztása szűrő kifejezés**alatt kattintson az **oszlop kiválasztásának indítása**lehetőségre az ismétlődések azonosításához használandó oszlopok kiválasztásához.
 
-    Ebben a környezetben **kulcs** jelenti azt, hogy egyedi azonosítója. Az Oszlopválasztó használatával választhat, minden oszlop van megjelölve **kulcs oszlopok**. Az összes ki nem jelölt oszlopok nem kulcs oszlop minősülnek. Oszlopok kulcsként kiválasztott kombinációja határozza meg a rekordok egyediségét. (Úgy is, mint egy SQL-utasítást, amely több equalities illesztéseket.)
+    Ebben a kontextusban a **kulcs** nem egy egyedi azonosítót jelent. Az oszlop Választójának használatával kiválasztott összes oszlop **kulcs oszlopként**van megjelölve. Az összes nem kijelölt oszlop nem kulcsfontosságú oszlopnak minősül. A kulcsként kiválasztott oszlopok kombinációja határozza meg a rekordok egyediségét. (Úgy gondolja, hogy olyan SQL-utasításként működik, amely több egyenlő illesztést használ.)
 
     Példák:
 
-    + "Szeretnék arról, hogy egyedi azonosítók": Válassza ki az azonosító oszlop csak.
-    + "Szeretném, hogy az Utónév, Vezetéknév és azonosító kombinációja egyedi": Válassza ki az összes három oszlopot.
+    + "Szeretném biztosítani, hogy az azonosítók egyediek legyenek": Csak az azonosító oszlopot válassza.
+    + "Szeretném biztosítani, hogy az utónév, a vezetéknév és az azonosító kombinációja egyedi legyen": Mindhárom oszlop kijelölése.
 
-4. Használja a **első ismétlődő sorok megőrzése** jelölőnégyzet bejelölésével jelezze, amelyben vissza, ha a duplikátumok találhatók sorok:
+4. Az **első ismétlődő sor megőrzése** jelölőnégyzet bejelölésével jelezheti, hogy melyik sort kell visszaadnia az ismétlődések keresésekor:
 
-    + Ha kiválasztva, az első sort adja vissza, és mások elveti. 
-    + Ha a beállítás jelölését, az utolsó ismétlődő sor maradjanak az eredményeket, és mások elvesznek. 
+    + Ha be van jelölve, a rendszer az első sort adja vissza, és a többi elvet. 
+    + Ha törli ezt a beállítást, a rendszer az utolsó ismétlődő sort tárolja az eredmények között, másokat pedig elvet. 
 
 5. Futtassa a kísérletet.
 
-6. Tekintse át az eredményeket, kattintson a jobb gombbal a modult, jelölje ki **eredmények adatkészlet**, és kattintson a **Visualize**. 
+6. Az eredmények áttekintéséhez kattintson a jobb gombbal a modulra, válassza az **eredmények adatkészlet**lehetőséget, majd kattintson a **Megjelenítés**elemre. 
 
 > [!TIP]
-> Ha az eredmények nehezen érthető, vagy ha azt szeretné, az egyes oszlopok kizárása a figyelmet, eltávolíthatja az oszlopok a [Select Columns in Dataset](./select-columns-in-dataset.md) modul.
+> Ha az eredmények nehezen érthetőek, vagy ha ki szeretne zárni egyes oszlopokat a megfontolásból, eltávolíthatja az oszlopokat az [adatkészlet kiválasztása](./select-columns-in-dataset.md) modulban.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

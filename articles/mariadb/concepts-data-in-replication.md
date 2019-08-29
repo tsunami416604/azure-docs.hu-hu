@@ -1,42 +1,46 @@
 ---
-title: Adatok replikálása MariaDB-hez készült Azure Database-be.
-description: Ez a cikk ismerteti az adatok a replikáció Azure Database for MariaDB-hez.
+title: Az adatreplikálás Azure Database for MariaDBba.
+description: Ez a cikk az Azure Database for MariaDB adatreplikálását ismerteti.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: c19ec06ce353d653086fa693dde975a55f51f823
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 28c2c01e85120ec17e6f782fb0686a627d50d0d0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839256"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136749"
 ---
-# <a name="replicate-data-into-azure-database-for-mariadb"></a>Replikálják az adatokat MariaDB-hez készült Azure Database-be
+# <a name="replicate-data-into-azure-database-for-mariadb"></a>Az adatreplikálás Azure Database for MariaDBba
 
-Adatok a replikáció lehetővé teszi, hogy szinkronizálja az adatokat a helyszínen futó virtuális gépeket vagy adatbázis-szolgáltatások be az Azure Database for MariaDB szolgáltatás egyéb felhőszolgáltatók által üzemeltetett MariaDB-kiszolgálóról. Adatok a replikáció a bináris napló (binlog) pozíció-alapú fájlreplikációs MariaDB natív alapul. Binlog replikációval kapcsolatos további tudnivalókért tekintse meg a [binlog replikálációs szolgáltatása-áttekintés](https://mariadb.com/kb/en/library/replication-overview/).
+A beérkező adatokra épülő replikáció lehetővé teszi, hogy szinkronizálja egy helyszínen, virtuális gépeken vagy más felhőszolgáltatók által üzemeltetett adatbázis-szolgáltatásokban futó MariaDB-kiszolgáló adatait az Azure Database for MariaDB-szolgáltatásba. A beérkező adatokra épülő replikáció a MariaDB natív bináris naplójának (binlog) fájlpozíció-alapú replikációján alapul. A BinLog replikálásával kapcsolatos további tudnivalókért tekintse meg a [BinLog-replikáció áttekintése](https://mariadb.com/kb/en/library/replication-overview/)című témakört.
 
-## <a name="when-to-use-data-in-replication"></a>Mikor érdemes használni az adatok a replikáció
-A fő forgatókönyvet kell figyelembe venni, a replikációs adatokat a rendszer:
+## <a name="when-to-use-data-in-replication"></a>Mikor kell használni a felhőbe irányuló replikálás
+A felhőbe irányuló replikálás használatának főbb forgatókönyvei:
 
-- **Hibrid adatok szinkronizálása:** Az adatok a replikáció beállíthatja, hogy a helyszíni kiszolgálók között az Azure Database for MariaDB szinkronizált adatok. Hibrid alkalmazások létrehozása a szinkronizálás hasznos. Ez a módszer akkor tetszetős, ha már rendelkezik egy meglévő helyi adatbázis-kiszolgáló, de szeretne áthelyezni az adatokat egy régió közelebb a végfelhasználók számára.
-- **Több felhőalapú szinkronizálás:** Összetett felhőalapú megoldásokhoz adatok a replikáció használata, Azure Database for MariaDB és eltérő felhőszolgáltatókat, beleértve a virtuális gépeket és ezeket a felhőben lévő üzemeltetett adatbázis-szolgáltatások közötti adatszinkronizáláshoz.
+- **Hibrid adatszinkronizálás:** A felhőbe irányuló replikálás segítségével megtarthatja a helyszíni kiszolgálók és a Azure Database for MariaDB között szinkronizált adatokat. Ez a szinkronizálás a hibrid alkalmazások létrehozásához hasznos. Ez a módszer akkor fordul elő, ha egy meglévő helyi adatbázis-kiszolgálóval rendelkezik, de az adott régióban szeretné áthelyezni az információkat a végfelhasználók számára.
+- **Több felhős szinkronizálás:** Összetett felhőalapú megoldások esetén a felhőbe irányuló replikálás segítségével szinkronizálhat adatokat Azure Database for MariaDB és különböző felhőalapú szolgáltatók között, beleértve a felhőben üzemeltetett virtuális gépeket és adatbázis-szolgáltatásokat.
 
-## <a name="limitations-and-considerations"></a>Korlátozások és szempontok
+## <a name="limitations-and-considerations"></a>Korlátozások és megfontolások
 
-### <a name="data-not-replicated"></a>Nem replikált adatok
-A [ *mysql rendszeradatbázis* ](https://mariadb.com/kb/en/library/the-mysql-database-tables/) a fölérendelt kiszolgálón nincs replikálva. Fiókok és engedélyek a fölérendelt kiszolgáló a módosítások nem lesznek replikálva. Ha a fölérendelt kiszolgálón hozzon létre egy fiókot, és ezt a fiókot hozzá kell férniük a replikakiszolgáló, manuálisan hozzon létre ugyanazt a fiókot a replika kiszolgálói oldalon. Milyen táblák tárolják a rendszeradatbázis megismeréséhez tekintse meg a [MariaDB dokumentáció](https://mariadb.com/kb/en/library/the-mysql-database-tables/).
+### <a name="data-not-replicated"></a>Nem replikált adatértékek
+A főkiszolgálón található [*MySQL rendszeradatbázis*](https://mariadb.com/kb/en/library/the-mysql-database-tables/) nem replikálódik. A rendszer nem replikálja a fiókok és engedélyek módosításait a főkiszolgálón. Ha létrehoz egy fiókot a főkiszolgálón, és ennek a fióknak el kell érnie a másodpéldány-kiszolgálót, akkor manuálisan kell létrehoznia ugyanazt a fiókot a replika-kiszolgáló oldalán. A rendszeradatbázisban található táblák megismeréséhez tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/library/the-mysql-database-tables/).
 
 ### <a name="requirements"></a>Követelmények
-- A fő kiszolgálónak kell lennie legalább MariaDB 10.2 verzió.
-- A master és a replika server-verziók azonosnak kell lennie. Például mindkét verziója 10.2 MariaDB kell lennie.
+- A főkiszolgáló verziójának legalább MariaDB 10,2-es verziójúnak kell lennie.
+- A fő-és a replika-kiszolgáló verziószámának azonosnak kell lennie. Például mindkettőnek a 10,2-es verzió MariaDB kell lennie.
 - Minden táblának elsődleges kulccsal kell rendelkeznie.
-- Főkiszolgáló a InnoDB motor kell használnia.
-- Felhasználó bináris naplózás konfigurálása és az új felhasználók létrehozására a fölérendelt kiszolgáló a szükséges engedélyekkel kell rendelkeznie.
+- A főkiszolgálónak a InnoDB motort kell használnia.
+- A felhasználónak rendelkeznie kell engedéllyel a bináris naplózás konfigurálásához és új felhasználók létrehozásához a főkiszolgálón.
+- Ha a főkiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL hitelesítésszolgáltatói tanúsítvány szerepel- `mariadb.az_replication_change_master` e a tárolt eljárásban. Tekintse át az [](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) alábbi példákat `master_ssl_ca` és a paramétert.
+- Győződjön meg arról, hogy a fő kiszolgáló IP-címe hozzá lett adva az Azure Database for MariaDB replikakiszolgálójának tűzfalszabályaihoz. A tűzfalszabályokat az [Azure Portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) vagy az [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) használatával frissítheti.
+- Győződjön meg arról, hogy a főkiszolgálót üzemeltető gép engedélyezi a bejövő és kimenő forgalmat is a 3306-os porton.
+- Gondoskodjon róla, hogy a főkiszolgálónak **nyilvános IP-címe** legyen, vagy a DNS legyen nyilvánosan hozzáférhető.
 
 ### <a name="other"></a>Egyéb
-- Adatok a replikáció csak támogatott az általános célú és memóriahasználatra optimalizált tarifacsomagok van.
+- Az adatreplikálás csak általános célú és a memória optimalizált díjszabási szintjein támogatott.
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg, hogyan [adatok a replikáció beállítása](howto-data-in-replication.md).
+- Megtudhatja, hogyan [állíthatja be](howto-data-in-replication.md)az adatreplikációt.

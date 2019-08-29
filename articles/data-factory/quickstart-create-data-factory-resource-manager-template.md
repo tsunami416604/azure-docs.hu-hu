@@ -8,23 +8,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 2b25dff29563dcf44077465f3e563d04f04b3119
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7826d34b3489fce9d71da051345cf066b756ef8b
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66157016"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140971"
 ---
-# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Hozzon létre egy Azure data factoryt az Azure Resource Manager-sablon használatával
+# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Azure-beli adatelőállító létrehozása Azure Resource Manager sablon használatával
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Aktuális verzió](quickstart-create-data-factory-resource-manager-template.md)
 
-A rövid útmutató bemutatja, hogyan hozhat létre Azure-beli adat-előállítókat Azure Resource Manager-sablonokkal. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Hogyan oktatóanyagot **átalakítása** Azure Data factoryval, lásd: [oktatóanyag: Adatok átalakítása a Spark használatával](transform-data-using-spark.md).
+A rövid útmutató bemutatja, hogyan hozhat létre Azure-beli adat-előállítókat Azure Resource Manager-sablonokkal. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az adatAzure Data Factory használatával történő **átalakításával** kapcsolatos oktatóanyagért lásd [: oktatóanyag: Az adatátalakítás a](transform-data-using-spark.md)Spark használatával.
 
 > [!NOTE]
 > Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. Ha szeretné megismerni az Azure Data Factoryt, tekintse meg [Az Azure Data Factory bemutatását](introduction.md).
@@ -43,7 +43,7 @@ A Resource Manager-sablonokkal kapcsolatos általános információkért tekints
 
 A következő szakasz a Data Factory-entitások meghatározására szolgáló teljes Resource Manager-sablont ismerteti, így gyorsan végighaladhat az oktatóanyagon és tesztelheti a sablont. Az egyes Data Factory-entitások meghatározásának megértéséhez tekintse meg a [Data Factory-entitások a sablonban](#data-factory-entities-in-the-template) szakaszt.
 
-A JSON-szintaxist és a egy sablont a Data Factory-erőforrások tulajdonságai kapcsolatos további információkért lásd: [Microsoft.DataFactory erőforrástípusok](/azure/templates/microsoft.datafactory/allversions).
+A sablon Data Factory erőforrásainak JSON-szintaxisával és tulajdonságaival kapcsolatos információkért lásd: [Microsoft. DataFactory-erőforrástípusok](/azure/templates/microsoft.datafactory/allversions).
 
 ## <a name="data-factory-json"></a>Data Factory JSON
 
@@ -369,9 +369,9 @@ A sablon a következő Data Factory-entitásokat helyezi üzembe:
 - Másolási tevékenységgel rendelkező folyamat
 - A folyamatot elindító eseményindító
 
-Az üzembe helyezett eseményindító leállított állapotban van. A módon az eseményindító elindításának egyik használata a **Start-AzDataFactoryV2Trigger** PowerShell-parancsmagot. A következő eljárás részletesen bemutatja a lépéseket:
+Az üzembe helyezett eseményindító leállított állapotban van. Az trigger indításának egyik módja a **Start-AzDataFactoryV2Trigger PowerShell-** parancsmag használata. A következő eljárás részletesen bemutatja a lépéseket:
 
-1. A PowerShell ablakában hozzon létre egy változót, amely az erőforráscsoport nevét tárolja. Másolja be a következő parancsot a PowerShell ablakába, majd nyomja le az ENTER billentyűt. Ha a New-AzResourceGroupDeployment parancs egy másik erőforráscsoport-nevet adta meg, Itt frissítheti az értéket.
+1. A PowerShell ablakában hozzon létre egy változót, amely az erőforráscsoport nevét tárolja. Másolja be a következő parancsot a PowerShell ablakába, majd nyomja le az ENTER billentyűt. Ha más erőforráscsoport-nevet adott meg a New-AzResourceGroupDeployment parancshoz, itt frissítheti az értéket.
 
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -403,7 +403,7 @@ Az üzembe helyezett eseményindító leállított állapotban van. A módon az 
     ```
     
     Ekkor az eseményindító futtatási állapota **Leállítva**.
-5. **Indítsa el az eseményindítót**. Az eseményindító egész órakor futtatja a sablonban meghatározott folyamatot. Ez azt jelenti, hogy ha 14:25-kor hajtotta végre a parancsot, az eseményindító 15:00-kor futtatja először a folyamatot. Ezután futtatja a folyamatot a megadott befejezési időpontja az eseményindító óránként amíg.
+5. **Indítsa el az eseményindítót**. Az eseményindító egész órakor futtatja a sablonban meghatározott folyamatot. Ez azt jelenti, hogy ha 14:25-kor hajtotta végre a parancsot, az eseményindító 15:00-kor futtatja először a folyamatot. Ezt követően óránként futtatja a folyamatot az triggerhez megadott befejezési időpontig.
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
@@ -417,7 +417,7 @@ Az üzembe helyezett eseményindító leállított állapotban van. A módon az 
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
     True
     ```
-6. Győződjön meg arról, hogy az eseményindító elindítása a Get-AzDataFactoryV2Trigger parancs újbóli futtatásával.
+6. A Get-AzDataFactoryV2Trigger parancs újbóli futtatásával ellenőrizze, hogy elindult-e az trigger.
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
@@ -452,13 +452,13 @@ Az üzembe helyezett eseményindító leállított állapotban van. A módon az 
     ![Folyamat futtatásának figyelése](media/quickstart-create-data-factory-resource-manager-template/monitor-pipeline-run.png)
 
     > [!IMPORTANT]
-    > A folyamatfuttatások csak egész órakor, láthatja (például: 4 AM, 5, 6: 00-kor, stb.). Kattintson az eszköztár **Frissítés** gombjára a lista frissítéséhez, amikor megkezdődik a következő óra.
+    > A folyamat futását csak az óra órája látja (például: 4, 5, 6, stb.). Kattintson az eszköztár **Frissítés** gombjára a lista frissítéséhez, amikor megkezdődik a következő óra.
 
 5. Kattintson a **Műveletek** oszlopokban található hivatkozásra.
 
     ![Folyamat művelethivatkozása](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
 
-6. Itt a folyamat futtatásához kapcsolódó tevékenységfuttatások láthatóak. Ez a rövid útmutatóban a folyamat csak egyetlen tevékenységtípussal rendelkezik: Másolja. Így ennek a tevékenységnek a futtatása látható.
+6. Itt a folyamat futtatásához kapcsolódó tevékenységfuttatások láthatóak. Ebben a rövid útmutatóban a folyamatnak csak egy típusú tevékenysége van: Másolja. Így ennek a tevékenységnek a futtatása látható.
 
     ![Tevékenységfuttatások](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
 7. Kattintson a **Kimenet** oszlop alatti hivatkozásra. Megjelenik a másolási művelet kimenete egy **Kimenet** ablakban. A teljes kimenet megtekintéséhez kattintson a teljes méret gombra. Visszaállíthatja a kimeneti ablak eredeti méretét, vagy be is zárhatja azt.
@@ -507,7 +507,7 @@ Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előál
 }
 ```
 
-A connectionString a storageAccountName és storageAccountKey paramétereket használja. A paraméterek értékei a konfigurációs fájlok használatával adhatók át. A definíció változókat is használ: azureStorageLinkedService és a datafactoryname értékeket definiálva a sablonban.
+A connectionString a storageAccountName és storageAccountKey paramétereket használja. A paraméterek értékei a konfigurációs fájlok használatával adhatók át. A definíció a sablonban definiált változókat is használja: azureStorageLinkedService és dataFactoryName.
 
 #### <a name="azure-blob-input-dataset"></a>Azure blobbemeneti adatkészlet
 
@@ -605,7 +605,7 @@ Meghatározhat egy folyamatot, amely adatokat másol egy Azure Blob-adatkészlet
 
 #### <a name="trigger"></a>Eseményindító
 
-Meghatározhat egy eseményindítót, amely óránként egyszer futtatja a folyamatot. Az üzembe helyezett eseményindító leállított állapotban van. Indítsa el az eseményindítót a használatával a **Start-AzDataFactoryV2Trigger** parancsmagot. Az eseményindítókról további információkat a [Folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#triggers) című cikkben talál.
+Meghatározhat egy eseményindítót, amely óránként egyszer futtatja a folyamatot. Az üzembe helyezett eseményindító leállított állapotban van. Indítsa el a triggert a **Start-AzDataFactoryV2Trigger** parancsmag használatával. Az eseményindítókról további információkat a [Folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#triggers) című cikkben talál.
 
 ```json
 {

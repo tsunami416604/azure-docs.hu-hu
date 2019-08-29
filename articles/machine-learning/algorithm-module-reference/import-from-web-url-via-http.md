@@ -1,7 +1,7 @@
 ---
-title: 'Importálás a HTTP-n keresztül, a webes URL-címe: Modul-hivatkozás'
+title: 'Importálás webes URL-címről HTTP-n keresztül: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Útmutató az webes URL-címről az importálási keresztül az Azure Machine Learning szolgáltatás HTTP-modulja nyilvános weblap használható a machine learning-kísérletből adatokat olvasni.
+description: Megtudhatja, hogyan használhatja az importálás webes URL-címről HTTP-modulon keresztül a Azure Machine Learning szolgáltatásban az adatok egy nyilvános weboldalról való beolvasásához a gépi tanulási kísérletekben való használatra.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,74 +9,73 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: bff913efb38c9e5589c795386dfbbc480d799a37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 59b8e2e73b9904a503c16d8891e5a5bd771fc87f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411441"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128756"
 ---
-# <a name="import-from-web-url-via-http-module"></a>Z Webové adresy URL via HTTP-modul importálása
+# <a name="import-from-web-url-via-http-module"></a>Importálás webes URL-címről HTTP-modul használatával
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul használatával olvassák az adatokat a machine learning-kísérletből használatra nyilvános weblapon.
+Ezzel a modullal olvashatók be az adatok egy nyilvános weboldalról a Machine learning-kísérletekben való használatra.
 
-Az alábbi korlátozások vonatkoznak a webhelyen közzétett adatok:
+A következő korlátozások vonatkoznak a weblapokon közzétett adatszolgáltatásokra:
 
-- Adatok a támogatott formátumok valamelyikében kell lennie: CSV, TSV, ARFF vagy SvmLight. Más adatok hibát okoznak.
-- Nincs hitelesítés szükséges, vagy a támogatott. Adatok nyilvánosan elérhetőnek kell lennie. 
+- Az adatmennyiségnek a támogatott formátumok egyikében kell lennie: CSV, TSV, ARFF vagy SvmLight. Az egyéb adathibák hibát okoznak.
+- Nincs szükség hitelesítésre vagy nem támogatott. Az adatszolgáltatásnak nyilvánosan elérhetőnek kell lennie. 
 
-Az adatok a két módja van: a varázsló segítségével állítsa be az adatforrás, vagy manuálisan konfigurálja azt.
+Kétféleképpen lehet beolvasni az adatforrást: használja a varázslót az adatforrás beállításához, vagy konfigurálja manuálisan.
 
-## <a name="use-the-data-import-wizard"></a>Az adatok importálása varázslójával
+## <a name="use-the-data-import-wizard"></a>Az adatimportálás varázsló használata
 
-1. Adja hozzá a **adatok importálása** modult a kísérletvászonra. Annak a modul a felületen, a a **adatok bemeneti és kimeneti** kategória.
+1. Adja hozzá az Adatimportálási modult a kísérlethez. A modult a felületen, az **adatok bemenete és a kimenet** kategóriában találja.
 
-2. Kattintson a **importálása varázsló elindításához** , és válassza ki a webes URL-cím a HTTP Protokollon keresztül.
+2. Kattintson **az adatimportálás varázsló indítása** lehetőségre, és válassza a webes URL-cím http-n keresztül lehetőséget.
 
-3. Illessze be az URL-címet, és válassza ki a adatok formátumát.
+3. Illessze be az URL-címet, és válassza ki az adatformátumot.
 
-4. Ha konfigurációja befejeződött.
+4. Ha a konfigurálás befejeződött.
 
-Az adatok meglévő kapcsolatok szerkesztésére, indítsa el újra a varázslót. A varázsló minden korábbi konfigurációs adatait betölti, így nem kell újra kezdenie a folyamatot
+Meglévő adatkapcsolatok szerkesztéséhez indítsa újra a varázslót. A varázsló betölti az összes korábbi konfigurációs részletet, így nem kell újból elindítania
 
-## <a name="manually-set-properties-in-the-import-data-module"></a>Manuálisan állítsa be a tulajdonságokat a az adatok importálása modullal
+## <a name="manually-set-properties-in-the-import-data-module"></a>Tulajdonságok manuális beállítása az Adatimportálási modulban
 
-A következő lépések bemutatják, hogyan manuális konfigurálásához az importálás forrás.
+A következő lépések azt írják le, hogyan konfigurálhatja manuálisan az importálási forrást.
 
-1. Adja hozzá a [adatok importálása](import-data.md) modult a kísérletvászonra. Annak a modul a felületen, a a **adatok bemeneti és kimeneti** kategória.
+1. Adja hozzá [](import-data.md) az Adatimportálási modult a kísérlethez. A modult a felületen, az **adatok bemenete és a kimenet** kategóriában találja.
 
-2. A **adatforrás**válassza **webes URL-cím a HTTP Protokollon keresztül**.
+2. Az **adatforrás**területen válassza a **webes URL-cím http-n keresztül**lehetőséget.
 
-3. A **URL-cím**írja be vagy illessze be a teljes URL-címét a betölteni kívánt adatokat tartalmazó oldalon.
+3. Az **URL-cím**mezőben írja be vagy illessze be a betölteni kívánt adatmennyiséget tartalmazó oldal teljes URL-címét.
 
-    Az URL-címet tartalmaznia kell a webhely URL-címe és a fájl nevét és kiterjesztését, az oldal, amely tartalmazza az adatok betöltése a teljes elérési útja.
+    Az URL-címnek tartalmaznia kell a webhely URL-címét és a fájl nevét és kiterjesztését tartalmazó teljes elérési utat a betölteni kívánt adatnak a laphoz.
 
-    Például a következő lapot tartalmaz az Írisz adatkészletet, a machine learning-tárházat a University of California, Irvine:
+    A következő oldal például a Kaliforniai Egyetem (University of California) Machine learning adattárában található írisz-adathalmazt tartalmazza:
 
     `https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`
 
-4. A **adatformátum**, válassza ki a támogatott adatok egyik formázza a listából.
+4. **Adatformátum**esetén válassza ki a listából a támogatott adatformátumok egyikét.
 
-    Azt javasoljuk, hogy mindig ellenőrizze az adatokat előzetesen formátumának meghatározásához. A UC Irvine lap a CSV formátumot használja. Egyéb támogatott formátumok a következők: TSV ARFF és SvmLight.
+    Azt javasoljuk, hogy a formátum meghatározásához mindig ellenőrizze az előre megadott adategységeket. Az UC Irvine-oldal CSV-formátumot használ. Más támogatott adatformátumok a TSV, a ARFF és az SvmLight.
 
-5. Ha az adatok CSV- vagy TSV formátumban, használja a **fájl rendelkezik fejlécsor** lehetőséget kiválasztva jelezze-e a forrásadatok tartalmaz egy fejléc sorra. A fejléc sorában segítségével rendelje hozzá az oszlopok neveit.
+5. Ha az adatai CSV-vagy TSV-formátumúak, akkor a **fájl fejléce** beállítással jelezheti, hogy a forrásadatok tartalmaz-e fejlécsort. A fejlécsor az oszlopnevek hozzárendelésére szolgál.
 
-6. Válassza ki a **használja a gyorsítótárazott eredményeket** beállításai, ha várhatóan nem sokkal módosíthatja az adatokat, vagy ha el szeretné kerülni az újjáépítés az adatokat, minden egyes alkalommal, amikor futtathatja a kísérletet.
+6. Jelölje be a **gyorsítótárazott eredmények használata** lehetőséget, ha nem várható, hogy az adatok sokat változnak, vagy ha el szeretné kerülni az adatok ismételt betöltését minden egyes alkalommal, amikor futtatja a kísérletet.
 
-    Ezt a beállítást, ha a kísérlet betölti az adatokat az első idő a modul fut, és ezt követően a az adatkészlet egy gyorsítótárazott verzióját használja.
+    Ha ez a beállítás be van jelölve, a kísérlet a modul első futtatásakor betölti az adatokat, és ezt követően az adatkészlet gyorsítótárazott verzióját használja.
 
-    Ha azt szeretné, az adatkészlet minden egyes megismételt kísérletet adatkészlet újbóli betöltéséhez, kapcsolja ki a **használja a gyorsítótárazott eredményeket** lehetőséget. Eredmények is újbóli, ha módosításokat paramétereihez [adatok importálása](import-data.md).
+    Ha újra szeretné tölteni az adatkészletet a kísérlet adatkészletének minden egyes iterációjában, törölje a **gyorsítótárbeli eredmények használata** lehetőséget. Az eredmények akkor is újratölthetők, ha az [importálási adatok](import-data.md)paraméterei módosulnak.
 
 7. Futtassa a kísérletet.
 
 ## <a name="results"></a>Results (Eredmények)
 
-Amikor végzett, kattintson a kimeneti adatkészletet, és válassza ki **Visualize** megtekintheti, ha az adatok importálása sikerült.
+Ha elkészült, kattintson a kimeneti adatkészletre, és válassza a **Megjelenítés** lehetőséget, hogy megtekintse az adatokat sikeresen importálta.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

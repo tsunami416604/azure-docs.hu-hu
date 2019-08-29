@@ -1,7 +1,7 @@
 ---
 title: 'Pontszám modell: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Útmutató az Azure Machine Learning szolgáltatás a Score Model-modul használatával létrehozhat egy előrejelzéseket betanított besorolási vagy regressziós modell használatával.
+description: Megtudhatja, hogyan hozhatja ki az előrejelzéseket egy betanított besorolási vagy regressziós modell használatával a Azure Machine Learning szolgáltatás pontszám-modell moduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,49 +9,48 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: f8f7bfcbbf013f2cf32957772086d7e44d31e310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43a398b091b282da6ede06796250cda17117dc18
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029265"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128521"
 ---
 # <a name="score-model-module"></a>A Score model (Modell montozása) modul
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul segítségével hozza létre előrejelzések betanított osztályozási vagy regressziós modell használatával.
+Ezzel a modullal a betanított besorolási vagy regressziós modell használatával készíthet előrejelzéseket.
 
 ## <a name="how-to-use"></a>A használat módja
 
-1. Adja hozzá a **Score Model** modult a kísérletvászonra.
+1. Adja hozzá a **pontszám modell** modult a kísérlethez.
 
-2. Betanított modell és a egy új bemeneti adatokat tartalmazó adatkészlet csatolni. 
+2. Csatoljon egy betanított modellt és egy új bemeneti adatokat tartalmazó adatkészletet. 
 
-    Az adatok egy betanított modellt használ a típussal kompatibilis formátumban kell megadni. A bemeneti adatkészlet sémája általánosan is meg kell egyeznie a séma az adatok a modell betanításához használja.
+    Az adatformátumnak kompatibilisnek kell lennie az Ön által használt betanított modell típusával. A bemeneti adatkészlet sémájának általában egyeznie kell a modell betanításához használt adatok sémájával is.
 
 3. Futtassa a kísérletet.
 
 ## <a name="results"></a>Results (Eredmények)
 
-Miután létrehozta a pontszámok használatával készletét [Score Model](./score-model.md):
+Miután létrehozta a pontszámok készletét a [score Model](./score-model.md)használatával:
 
-+ A modell pontosságát (teljesítmény) értékeléséhez használt mérőszámok álló készletet hoz létre.  csatlakozhat a pontozott adatkészlet [Evaluate Model](./evaluate-model.md), 
-+ Kattintson a jobb gombbal a modult, és válassza ki **Visualize** minta az eredmények megjelenítéséhez.
-+ Mentse az eredményeket egy adatkészletet.
++ A modell pontosságának értékeléséhez használt mérőszámok készletének létrehozása (teljesítmény).  a [modell](./evaluate-model.md)kiértékeléséhez összekapcsolhatók a pontozásos adatkészlet, 
++ Kattintson a jobb gombbal a modulra, és válassza a **Megjelenítés** lehetőséget az eredmények mintájának megtekintéséhez.
++ Mentse az eredményeket egy adatkészletbe.
 
-A pontszám, vagy az előre jelzett érték, a modell és a bemeneti adatok függően számos különböző formátumokban lehet:
+A pontszám vagy az előre jelzett érték számos különböző formátumban lehet, a modelltől és a bemeneti adatoktól függően:
 
-- Képbesorolási modellek, a [Score Model](./score-model.md) előre jelzett érték az osztályt, valamint az előre jelzett érték valószínűségét adja vissza.
-- Regressziós modellek [Score Model](./score-model.md) állít elő, csak az előre jelzett numerikus érték.
-- A pontszám képbesorolási modellek, előfordulhat, hogy lehet az objektumosztályt, a képet, vagy olyan logikai érték, amely azt jelzi, hogy található-e egy adott funkció.
+- A besorolási modellek esetében a [pontszám modell](./score-model.md) a osztály előre jelzett értékét, valamint az előre jelzett érték valószínűségét adja eredményül.
+- A regressziós modellek esetében a [pontszám modell](./score-model.md) csak az előre jelzett numerikus értéket hozza létre.
+- A képbesorolási modellek esetében a pontszám lehet a rendszerképben található objektum osztálya, vagy egy logikai érték, amely azt jelzi, hogy egy adott szolgáltatás található-e.
 
-## <a name="publish-scores-as-a-web-service"></a>Eredmények közzététele webszolgáltatásként
+## <a name="publish-scores-as-a-web-service"></a>Pontszámok közzététele webszolgáltatásként
 
-A pontozás egyik gyakori felhasználási, hogy a hibaüzenettel reagál egy prediktív webszolgáltatás részeként. További információkért tekintse meg ebben az oktatóanyagban egy webszolgáltatás alapján az Azure Machine Learning-kísérlet létrehozása:
+A pontozás gyakori használata a kimenet visszaküldése a prediktív webszolgáltatás részeként. További információkért tekintse meg ezt az oktatóanyagot, amely bemutatja, hogyan hozhat létre egy webszolgáltatást egy kísérleten alapuló Azure Machine Learningban:
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

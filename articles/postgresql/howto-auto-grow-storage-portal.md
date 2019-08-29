@@ -1,45 +1,45 @@
 ---
-title: Automatikus növekedés az Azure Portalon az Azure Database for PostgreSQL - kiszolgáló egyetlen tároló
-description: Ez a cikk bemutatja, hogyan engedélyezheti az automatikus növekedés az Azure Portalon az Azure Database for PostegreSQL – egyetlen kiszolgáló storage
+title: Tárterület automatikus növekedése a Azure Database for PostgreSQL egyetlen kiszolgáló Azure Portal használatával
+description: Ez a cikk azt ismerteti, hogyan engedélyezheti az automatikus növekedés tárterületét az Azure Database for PostgreSQL-Single Server Azure Portal használatával
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/29/2019
-ms.openlocfilehash: 9f88fe3e8a30dd80c5331bd6c8ea7aec401c6fb9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d028093b030e1f2cf00ceae9297563c36c314c5
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66676758"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142867"
 ---
-# <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Automatikus növekedés az Azure Portalon az Azure Database for PostgreSQL - kiszolgáló egyetlen tároló
-Ez a cikk bemutatja, hogyan konfigurálhat egy Azure Database for PostgreSQL-kiszolgáló tár növelheti a számítási feladatok befolyásolása nélkül.
+# <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Tárterület automatikus növekedése a Azure Database for PostgreSQL egyetlen kiszolgáló Azure Portal használatával
+Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for PostgreSQL-kiszolgáló tárterületét úgy, hogy az a munkaterhelés befolyásolása nélkül is növekszik.
 
-Amikor egy kiszolgáló eléri a lefoglalt tárolási kapacitása, a kiszolgáló csak olvashatóként van megjelölve. Azonban ha engedélyezte a storage automatikus növekedés, a tárolást növeli az egyre növekvő adatok befogadásához. Kevesebb mint 100 GB-os kiépített tároló kiszolgálók esetében a felhasznált tárterület mérete eléri 5 GB-tal, amint a szabad tárhely nem éri el a nagyobb, mint 1 GB vagy 10 %-a felhasznált tárterület. Több mint 100 GB-os kiépített tároló kiszolgálók esetében a felhasznált tárterület mérete növekszik 5 % 5 %-a kiépített tárhely méretére alatt rendelkezésre álló szabad tárhely esetén. Maximális tárhely korlátozza a megadott [Itt](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage) vonatkoznak.
+Ha egy kiszolgáló eléri a lefoglalt tárterület korlátját, a kiszolgáló csak olvashatóként van megjelölve. Ha azonban engedélyezi a tárterület automatikus növekedését, a kiszolgáló tárterülete megnöveli a növekvő adatmennyiséget. A 100 GB-nál kevesebb kiosztott tárterülettel rendelkező kiszolgálók esetében a kiépített tárterület mérete 5 GB-kal nő, amint az ingyenes tárterület a kiépített tárterület nagyobb 1 GB-os vagy 10%-ában kisebb. A 100 GB-nál több kiosztott tárterülettel rendelkező kiszolgálók esetében a kiosztott tárterület mérete 5%-kal nő, ha a szabad tárterület mérete a kiosztott tárterület méretének 5%-a alá esik. Az [itt](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage) megadott maximális tárolási korlátozások érvényesek.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató végrehajtásához lesz szüksége:
-- Egy [, Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md)
+- Egy [Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md)
 
-## <a name="enable-storage-auto-grow"></a>Storage automatikus növekedés 
+## <a name="enable-storage-auto-grow"></a>Tárterület automatikus növekedésének engedélyezése 
 
-Kövesse az alábbi lépéseket a PostgreSQL-kiszolgáló tárolási automatikus növekedés beállításához:
+A PostgreSQL-kiszolgáló tárterület automatikus növekedésének beállításához kövesse az alábbi lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), válassza ki az Azure Database for PostgreSQL-kiszolgálóhoz.
+1. A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő Azure Database for PostgreSQL-kiszolgálót.
 
-2. A PostgreSQL-kiszolgáló oldalán a **beállítások**, kattintson a **tarifacsomag** árképzési szint lap megnyitásához.
+2. A PostgreSQL-kiszolgáló lap **Beállítások**területén kattintson az **árképzési** csomag elemre a díjszabási csomag megnyitásához.
 
-3. Az a **Auto-növekedés** szakaszban jelölje be **Igen** storage automatikus növekedés engedélyezéséhez.
+3. Az **automatikus növekedés** szakaszban válassza az **Igen** lehetőséget a tárterület automatikus növekedésének engedélyezéséhez.
 
-    ![Azure Database for PostgreSQL - Settings_Pricing_tier - Auto-növekedés](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
+    ![Azure Database for PostgreSQL-Settings_Pricing_tier – automatikus növekedés](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
 
 4. A változtatások mentéséhez kattintson az **OK** gombra.
 
-5. Értesítés megerősíti, hogy az automatikus növekedés engedélyezése sikerült.
+5. Egy értesítés megerősíti, hogy az automatikus növekedés sikeresen engedélyezve lett.
 
-    ![Azure Database for PostgreSQL - auto-növekedés sikeres](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
+    ![Azure Database for PostgreSQL – az automatikus növekedés sikere](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg [riasztások létrehozása metrikákhoz](howto-alert-on-metric.md).
+Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-on-metric.md).

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Hozzon létre egy Azure Data Factory-folyamatot a REST API használatával |} A Microsoft Docs'
+title: 'Oktatóanyag: Azure Data Factory folyamat létrehozása a REST API használatával | Microsoft Docs'
 description: Az oktatóanyagban a REST API használatával hoz létre egy másolási tevékenységgel rendelkező Azure Data Factory-folyamatot az adatok Azure Blob Storage-tárból egy Azure SQL-adatbázisba való másolásához.
 services: data-factory
 documentationcenter: ''
@@ -9,19 +9,18 @@ editor: ''
 ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6b5698d94a09096d58b316ca3b23bead5b1a39a7
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 187d8375220c5dbfbaf0b92d41231dedd7e71ee6
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839414"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140225"
 ---
-# <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Oktatóanyag: Hozzon létre egy Azure Data Factory-folyamatot az adatok másolásához a REST API használatával 
+# <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Oktatóanyag: REST API használata Azure Data Factory folyamat létrehozásához az adatmásoláshoz 
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
@@ -38,14 +37,14 @@ ms.locfileid: "67839414"
 
 A cikk útmutatást nyújt adat-előállítók REST API használatával való létrehozására olyan folyamatokkal, amelyek az Azure Blob Storage-tárból másolnak adatokat egy Azure SQL-adatbázisba. Ha még csak ismerkedik az Azure Data Factory szolgáltatással, olvassa el a [Bevezetés az Azure Data Factory használatába](data-factory-introduction.md) című cikket az oktatóanyag elvégzése előtt.   
 
-Ebben az oktatóanyagban egy folyamatot egy tevékenységgel rendelkező létrehozása: Másolási tevékenység. A másolási tevékenység adatokat másol a forrásadattárból egy támogatott fogadó adattárba. A forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. További információ a másolási tevékenységről: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md).
+Ebben az oktatóanyagban egy olyan folyamatot hoz létre, amely egy tevékenységgel rendelkezik: Másolási tevékenység. A másolási tevékenység adatokat másol a forrásadattárból egy támogatott fogadó adattárba. A forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. További információ a másolási tevékenységről: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md).
 
 Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További információért lásd: [egy folyamaton belüli több tevékenység](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
 > [!NOTE]
 > Ez a cikk nem tárgyalja a Data Factoryhoz használható REST API egészét. A Data Factory-parancsmagokkal kapcsolatos átfogó dokumentációért tekintse meg a [Data Factory REST API Reference](/rest/api/datafactory/) (Data Factory REST API referenciája) című cikket.
 >  
-> Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. Adatok átalakítása az Azure Data Factory használatával kapcsolatos oktatóanyagért lásd: [oktatóanyag: Az adatok Hadoop-fürttel történő átalakítására szolgáló folyamat létrehozása](data-factory-build-your-first-pipeline.md).
+> Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. Az adatAzure Data Factory használatával történő átalakításával kapcsolatos oktatóanyagért lásd [: oktatóanyag: Hozzon létre egy folyamatot az adatátalakításhoz](data-factory-build-your-first-pipeline.md)a Hadoop-fürt használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -187,7 +186,7 @@ Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságoka
 | format -> type |A bemeneti fájl szöveges formátumú, ezért a **TextFormat** értéket használjuk. |
 | columnDelimiter | A bemeneti fájlban **vesszővel (`,`)** vannak elválasztva az oszlopok. |
 | frequency/interval | A frequency (gyakoriság) beállítása **Hour** (Óra), az interval (időköz) beállítása pedig **1**, ami azt jelenti, hogy a bemeneti szeletek **óránként** érhetők el. Vagyis a Data Factory szolgáltatás óránként keres bemeneti adatokat a megadott blobtároló (**adftutorial**) gyökérmappájában. A szolgáltatás a folyamat kezdő és befejező időpontja közti időszakban – és nem azon kívül – keres adatokat.  |
-| external | Ez a tulajdonság a **true** (igaz) értékre van állítva, ha az adatokat nem ez a folyamat hozta létre. Az oktatóanyagban használt bemeneti adatok az emp.txt fájlban találhatók, amelyet nem ez a folyamat hoz létre, ezért ezt a tulajdonságot true (igaz) értékre állítottuk. |
+| külső | Ez a tulajdonság a **true** (igaz) értékre van állítva, ha az adatokat nem ez a folyamat hozta létre. Az oktatóanyagban használt bemeneti adatok az emp.txt fájlban találhatók, amelyet nem ez a folyamat hoz létre, ezért ezt a tulajdonságot true (igaz) értékre állítottuk. |
 
 További információ ezekről a JSON-tulajdonságokról: [Azure Blob-összekötő](data-factory-azure-blob-connector.md#dataset-properties).
 
@@ -352,7 +351,7 @@ Ebben a lépésben egy **ADFCopyTutorialDF** nevű Azure-adatelőállítót fog 
 
 Vegye figyelembe a következő szempontokat:
 
-* Az Azure Data Factory nevének globálisan egyedinek kell lennie. Ha a hiba az eredmény jelenik meg: **Nem érhető el a Data factory name "ADFCopyTutorialDF"** , tegye a következőket:  
+* Az Azure Data Factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenet jelenik meg az eredményekben: A **"ADFCopyTutorialDF" nevű adatgyár nem érhető el**, hajtsa végre a következő lépéseket:  
   
   1. Módosítsa a nevet (például yournameADFCopyTutorialDF) a **datafactory.json** fájlban.
   2. Az első parancsnál, amikor a **$cmd** változóhoz értéket rendel, cserélje le az ADFCopyTutorialDF értéket az új névre, és futtassa le így a parancsot. 
@@ -361,7 +360,7 @@ Vegye figyelembe a következő szempontokat:
      A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.
 * Data Factory-példányok létrehozásához az Azure-előfizetés közreműködőjének/rendszergazdájának kell lennie.
 * Az adat-előállító neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá tehető.
-* Ha a hibaüzenetet kapja: "**Ez az előfizetés nincs regisztrálva a Microsoft.DataFactory névtér**", tegye a következők egyikét, és próbálkozzon újra a közzététellel: 
+* Ha a következő hibaüzenetet kapja: "**Ez az előfizetés nincs regisztrálva a Microsoft. DataFactory névtér használatára**, hajtsa végre az alábbi műveletek egyikét, majd próbálkozzon újra a közzétételsel: 
   
   * Az Azure PowerShellben futtassa az alábbi parancsot a Data Factory-szolgáltató regisztrálásához: 
 
@@ -378,7 +377,7 @@ Vegye figyelembe a következő szempontokat:
 A folyamat létrehozása előtt először létre kell hoznia néhány Data Factory-entitást. Először hozza létre a társított szolgáltatást, amely összekapcsolja a forrásként és célként használt adattárakat az Ön adattárával. Majd definiálja a bemeneti és kimeneti adatkészleteket, amelyek adatként szolgálnak a társított adattárakban. Végül hozza létre az adatcsatornát egy tevékenységgel, amely ezeket az adatkészleteket használja.
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
-Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben az oktatóanyagban nem használunk számítási szolgáltatásokat (például Azure HDInsight vagy Azure Data Lake Analytics). Csak kétféle típusú adattárat használunk: Azure Storage (forrás) és Azure SQL Database (cél). Ezért AzureStorageLinkedService és azuresqllinkedservice néven típusú két társított szolgáltatást hoz létre: AzureStorage és AzureSqlDatabase.  
+Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben az oktatóanyagban nem használunk számítási szolgáltatásokat (például Azure HDInsight vagy Azure Data Lake Analytics). Csak kétféle típusú adattárat használunk: Azure Storage (forrás) és Azure SQL Database (cél). Ezért hozzon létre két társított szolgáltatást a AzureStorageLinkedService és a AzureSqlLinkedService típushoz: AzureStorage és AzureSqlDatabase.  
 
 Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előállítóval. Ebben a tárfiókban hozta létre a tárolót, és ebbe töltötte fel az adatokat az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként.   
 

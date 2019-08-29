@@ -1,7 +1,7 @@
 ---
-title: 'Döntési erdő regresszió: Modul-hivatkozás'
+title: 'Döntési erdő regressziója: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogy a döntési erdő regressziós modul használata az Azure Machine Learning szolgáltatás egy döntési fák algoritmus egy közelmúltra alapuló regressziós modell létrehozásához.
+description: Megtudhatja, hogyan használható a döntési erdő regressziós modulja Azure Machine Learning szolgáltatásban egy regressziós modell létrehozásához a döntési fák együttese alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,77 +9,76 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: d372adf75d46fdedb7a6f2b17e47822475d1f155
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8bb3285aecb6aff399606e6263f014027a86581
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65442363"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128886"
 ---
-# <a name="decision-forest-regression-module"></a>Döntési erdő regressziós modul
+# <a name="decision-forest-regression-module"></a>Döntési erdő regressziós modulja
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul használatával a döntési fák algoritmus egy közelmúltra alapuló regressziós modell létrehozásához.
+Ezzel a modullal egy regressziós modellt hozhat létre a döntési fák együttese alapján.
 
-Miután konfigurálta a modellt, akkor kell betanítja a modellt, címkézett adatkészletet használ, és a [Train Model](./train-model.md) modul.  A betanított modell használható, hogy előrejelzéseket végezzen. 
+A modell konfigurálása után a modellt a címkével ellátott adatkészlet és a [vonat modell](./train-model.md) modul használatával kell betanítania.  Ezt követően a betanított modell segítségével előrejelzéseket készíthet. 
 
 ## <a name="how-it-works"></a>Működés
 
-Döntési fák algoritmus nem számszerű modellek egyszerű tesztek egy sorozatát végre minden egyes előfordulás esetén áthaladó bináris fa adatstruktúra, amíg el nem levélcsomópont (döntés).
+A döntési fák olyan nem parametrikus modellek, amelyek az egyes példányok esetében egyszerű teszteket hajtanak végre, a bináris faszerkezetek adatstruktúráját, amíg el nem éri a levél csomópontot (döntés).
 
-Döntési fák rendelkezik, ezeket az előnyöket:
+A döntési fák a következő előnyöket biztosítják:
 
-- Azok a számítási és a memóriahasználat hatékony betanítási és Predikciós során.
+- Hatékonyak mind a számítások, mind a memóriahasználat esetében a képzés és az előrejelzés során.
 
-- Nem lineáris döntési határok jelölnek.
+- Nem lineáris döntési határokat is jelenthetnek.
 
-- Ezek hajtsa végre az integrált szolgáltatás kiválasztása és besorolása és ellenálló zajos szolgáltatások folytonosságát.
+- Integrált funkciók kiválasztását és besorolását végzik, és rugalmasan működnek a zajos funkciók jelenlétében.
 
-Itt látható regressziós modell döntési fák részének áll. Egy regressziós döntési erdő fákban Gauss terjesztési jelenít meg, az előrejelzési. Összesítést fák Gauss terjesztési összes fák kombinált eloszlásának legközelebb található a modellben a közelmúltra-n keresztül történik.
+Ez a regressziós modell a döntési fák együttesét tartalmazza. A regressziós döntési erdőben minden fa a Gauss-eloszlást előrejelzésként jeleníti meg. A fák összevonása során a rendszer összesítést végez a modellben található összes fa összevont eloszlásához legközelebb eső Gauss-eloszlás megtalálásához.
 
-Ez az algoritmus és a megvalósítás elméleti keretében kapcsolatos további információkért lásd: Ez a cikk: [Döntési erdő: A besorolás, regressziós, sűrűségű-becslésére, szívócsővezeték tanulási és félig felügyelt tanítás egyesített keretrendszer](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Az algoritmus elméleti keretrendszerével és annak megvalósításával kapcsolatos további információkért tekintse meg ezt a cikket: [Döntési erdők: Egységes keretrendszer a besoroláshoz, a Regresszióhoz, a sűrűség értékeléséhez, a sokrétű tanuláshoz és a részben felügyelt tanuláshoz](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
-## <a name="how-to-configure-decision-forest-regression-model"></a>Döntési erdő regressziós modell konfigurálása
+## <a name="how-to-configure-decision-forest-regression-model"></a>Döntési erdő regressziós modelljének konfigurálása
 
-1. Adja hozzá a **döntési erdő regressziós** modult a kísérletvászonra. A modul az a kapcsolat alatt található **Machine Learning**, **modell inicializálása**, és **regressziós**.
+1. Adja hozzá a **döntési erdő regressziós** modulját a kísérlethez. A modult a **Machine learning**, a **modell inicializálása**és a **regresszió**alatt található felületen érheti el.
 
-2. Nyissa meg a modul tulajdonságait, és a **metódus az újraszámítás**, az egyes fák létrehozásához használt módszer kiválasztására szolgál.  Választhat **zsákoló** vagy **replikálása**.
+2. Nyissa meg a modul tulajdonságait,és az újramintavételezési módszernél válassza ki az egyes fák létrehozásához használt módszert.  A **csomagok** és a **replikálás**lehetőség közül választhat.
 
-    - **Zsákoló**: Zsákolási néven is ismert *bootstrap összesítésével*. Egy regressziós döntési erdő fákban Gauss disztribúciót előrejelzési de jelenít meg. Az összesítés a egy Gauss, amelynek első két percet egyezik a megadott egyéni fák által visszaadott összes Gaussians kombinálásával Gaussians keverékét pillanat található.
+    - **Poggyász**: A poggyászt rendszerindítási *összesítésnek*is nevezik. A regressziós döntési erdőben található fák mindegyike egy Gauss-eloszlást ad vissza előrejelzés útján. Az Összesítés egy olyan Gauss megkeresése, amelynek első két pillanata megegyezik az egyes fák által visszaadott összes Gauss összevonásával.
 
-         További információkért tekintse meg a Wikipédia [Bootstrap összesítésével](https://wikipedia.org/wiki/Bootstrap_aggregating).
+         További információ: a rendszerindítási összesítések [](https://wikipedia.org/wiki/Bootstrap_aggregating)Wikipedia-bejegyzése.
 
-    - **Replikálása**: Replikáció esetén minden egyes fa be van tanítva, pontosan ugyanazt a bemeneti adatok. A meghatározása, mely split predikátum használt egyes facsomópont véletlenszerű marad, és a fák eltérő lesz.
+    - **Replikálás**: A replikáció során minden fát pontosan ugyanazok a bemeneti adatok képeznek. Az egyes facsomópontok esetében a kiosztott predikátumok véletlenszerűek maradnak, és a fák sokrétűek lesznek.
 
-         További információ a betanítási folyamat, a **replikálása** talál [számítógépes Látástechnológiai és orvosi képelemzés döntési erdő. Criminisi és J. Shotton. Springer 2013. ](https://research.microsoft.com/projects/decisionforests/).
+         További információ a betanítási folyamatról a **replikálási** lehetőséggel kapcsolatban [: Computer Vision és az orvosi képek elemzését szolgáló döntési erdők. Criminisi és J. Shotton. Springer 2013. ](https://research.microsoft.com/projects/decisionforests/).
 
-3. Adja meg, hogyan a modellt úgy vélik a **létrehozási trainer módban** lehetőséget.
+3. Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.
 
     - **Egyetlen paraméter**
 
-      Ha tudja, hogyan szeretné konfigurálni a modellt, megadhat egy adott értékhalmazt argumentumként. Előfordulhat, hogy megismerte ezeket az értékeket a Kísérletezési vagy útmutatásként kapott őket.
+      Ha tudja, hogyan szeretné konfigurálni a modellt, megadhatja az értékek egy adott halmazát argumentumként. Lehetséges, hogy kísérletezéssel megismerte ezeket az értékeket, vagy útmutatásként kapta őket.
 
 
 
-4. A **döntési fák száma**, hozhat létre a ensemble döntési fák teljes számát. Több döntési fák létrehozásával lefedettségét esetlegesen kap, de megnöveli a képzési időt.
+4. A **döntési fák száma mezőben**adja meg az Ensemble-ben létrehozandó döntési fák teljes számát. További döntési fák létrehozásával lehetőség van jobb lefedettségre, de a képzési idő növekedni fog.
 
     > [!TIP]
-    > Ez az érték vezérli jelenik meg, amikor megjelenítik a betanított modell fák számát is. Ha azt szeretné, vagy egy egyetlen fa nyomtatása, az érték 1; megadható azonban ez azt jelenti, hogy csak egy fa lesz (a kezdeti paraméterkészlet fa) előállított és hajt végre semmilyen további ismétlését.
+    > Ez az érték a betanított modell megjelenítésekor megjelenő fák számát is szabályozza. Ha egyetlen fát szeretne megtekinteni vagy kinyomtatni, az értéket 1-re állíthatja. azonban ez azt jelenti, hogy csak egy fa lesz létrehozva (a kezdeti paraméterekkel rendelkező fa), és további iterációk nem lesznek végrehajtva.
 
-5. A **a döntési fák maximális mélysége**, írja be a maximális bármely döntési fa maximális mélységét. A fa mélysége növelése növelheti a pontosság kockázatára overfitting és megnövelt képzési időt.
+5. **A döntési fák maximális mélységéhez**adjon meg egy számot, amely korlátozza a döntési fa maximális mélységét. A fa mélységének növelésével növelheti a pontosságot, és megnövelheti a beilleszkedő és a megnövekedett betanítási időt is.
 
-6. A **csomópontonként véletlen megszakítások száma**, írja be a minden csomópont a fa készítése során használandó megszakítások számát. A *felosztása* azt jelenti, hogy minden egyes szintjét a fához (node) funkcióit véletlenszerűen vannak osztva.
+6. A **véletlenszerű felosztások száma**a csomóponton mezőben adja meg a fa egyes csomópontjainak kiépítésekor használandó felosztások számát. A *felosztás* azt jelenti, hogy a fa (csomópont) egyes szintjeinek funkciói véletlenszerűen vannak osztva.
 
-7. A **minták levél csomópontonként minimális száma**, jelezze a minimális száma, amelyekre szükség van egy fa bármely terminál csomópontot (levél) hozhat létre.
+7. A **minták minimális**száma a levél csomópontjainál adja meg az esetek minimális számát, amely szükséges ahhoz, hogy bármely terminál csomópont (levél) a fában legyen létrehozva.
 
-     Ez az érték növelésével növeli az új szabályok létrehozása a küszöbértéket. Az alapértelmezett értéke 1, például egyetlen esetet okozhat egy új szabályt létrehozni. Az érték 5-re növeli, ha a betanítási adatok kellene az azonos feltételeket teljesítő legalább öt esetek tartalmaznak.
+     Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét. Ha például az alapértelmezett érték 1, akkor akár egyetlen esetben is létrehozhat egy új szabályt. Ha az értéket 5-re emeli, a betanítási adatmennyiségnek legalább öt olyan esetet kellene tartalmaznia, amelyek megfelelnek ugyanazoknak a feltételeknek.
 
 
-9. Címkézett adatkészlet csatlakoztatása, válasszon ki egy egycímkés oszlopot tartalmazó legfeljebb két eredményeket, és csatlakozzon [tanítási modell](./train-model.md).
+9. Egy címkézett adatkészlet csatlakoztatása, válasszon ki egy egycímkés oszlopot, amely legfeljebb két eredményből áll, és [](./train-model.md)csatlakozzon a betanítási modellhez.
 
-    - Ha **létrehozási trainer módban** beállítást **egyetlen paramétert**, a modell betanításához használja a [Train Model](./train-model.md) modul.
+    - Ha az **oktatói mód létrehozása** beállítást **egyetlen paraméterre**állítja be, a modell betanítása a [Train Model](./train-model.md) modul használatával végezhető el.
 
    
 
@@ -87,14 +86,14 @@ Ez az algoritmus és a megvalósítás elméleti keretében kapcsolatos további
 
 ### <a name="results"></a>Results (Eredmények)
 
-Képzési befejezése után:
+A betanítás befejezése után:
 
-+ A létrehozott minden egyes ismétléskor a fában, kattintson a jobb gombbal a képzési modul kimenete, és válassza **Visualize**.
++ Ha meg szeretné tekinteni az egyes iterációkban létrehozott fát, kattintson a jobb gombbal a betanítási modul kimenetére, majd válassza a **Megjelenítés**lehetőséget.
 
-+ A szabályokat az egyes csomópontok fákban kattintson, és az elágazást feltárásához.
++ Ha meg szeretné tekinteni az egyes csomópontok szabályait, kattintson az egyes faszerkezetekre, és bontsa ki a felosztást.
 
-+ Szeretné menteni a betanított modell pillanatképét, kattintson a jobb gombbal a képzési modul kimenetét, és válassza **betanított modell mentése másként**. A kísérlet futtatásának egymást követő nem frissül a minta ezen példányával. 
++ A betanított modell pillanatképének mentéséhez kattintson a jobb gombbal az oktatási modul kimenetére, és válassza a **Mentés**betanítva modellként lehetőséget. A modell ezen példánya nem frissül a kísérlet egymást követő futtatásakor. 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

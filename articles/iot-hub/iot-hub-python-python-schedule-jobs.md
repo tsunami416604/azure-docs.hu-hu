@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: bc93dcea74f0660a4f56aec237eaae5a4e3eeb9a
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: a1b206b3be4cf012d7d0cd399cf2a67d853537b1
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904525"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147394"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Feladatok ütemezett és szórása (Python)
 
@@ -53,7 +53,7 @@ a **scheduleJobService.py**, amely közvetlen metódust hív meg a szimulált es
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-Az előfeltételek a következő telepítési utasításokkal rendelkeznek.
+## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 

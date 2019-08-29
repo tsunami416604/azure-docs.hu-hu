@@ -1,7 +1,7 @@
 ---
-title: A modul kapcsolatos hibák elhárítása
+title: Modul hibáinak elhárítása
 titleSuffix: Azure Machine Learning service
-description: Az Azure Machine Learning Studiót hibakódok modul-kivételek elhárításához
+description: A modul kivételei a Azure Machine Learning Studio hibakódok használatával – problémamegoldás
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,248 +9,247 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 5ce3d86d37940f66065debce30b348371b7aa6af
-ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
+ms.openlocfilehash: dc383d302fb3e9920ee8ef2d7d908a5b406ea1da
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67568251"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128663"
 ---
-# <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Kivételek és Algoritmusokra és modulokra vonatkozó referenciák hibakód alapján
+# <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Kivételek és hibakódok az algoritmushoz & modul hivatkozása
 
-További tudnivalók a hibaüzenetek és a modulok használata az Azure Machine Learning Studióban esetleg felmerülő kivétel kódokat. 
+Ismerje meg a hibaüzeneteket és a kivételeket, amelyek a Azure Machine Learning Studio moduljaival találkozhatnak. 
 
-A probléma megoldásához keresse meg a hiba gyakori okai olvashat ebben a cikkben. Beolvasni a hibaüzenetet a teljes szöveg a Studióban két módja van:  
+A probléma megoldásához keresse meg a cikkben szereplő hibát, és olvassa el a gyakori okokat. A Studióban a következő két módon kérhető le egy hibaüzenet teljes szövege:  
  
-- Kattintson a hivatkozásra **kimeneti napló megtekintése**, a jobb oldali ablaktáblán, és görgessen le. A részletes hibaüzenetet az utolsó két sor az ablak jelenik meg.  
+- Kattintson a hivatkozásra, **tekintse meg a kimeneti naplót**, a jobb oldali ablaktáblán, és görgessen a lap aljára. A részletes hibaüzenet az ablak utolsó két sorában jelenik meg.  
   
-- Válassza ki a modul, amely rendelkezik a hiba, és kattintson a piros X. Csak a megfelelő hibaüzenet jelenik meg.  
+- Válassza ki a hibát tartalmazó modult, majd kattintson a piros X elemre. Csak a vonatkozó hibaüzenet jelenik meg.  
   
-Ha a hiba üzenet szövege nem hasznos, küldjön nekünk a környezet és a kívánt hozzáadást, illetve módosítások kapcsolatos információkat. Akkor a hiba a témakör a visszajelzés elküldése, vagy keresse fel a [Azure Machine Learning STUDIO-fórumon](https://aka.ms/aml-forum-studio) és új kérdést tenne fel.  
+Ha a hibaüzenet szövege nem hasznos, küldjön nekünk információkat a kontextusról és a kívánt kiegészítésekről vagy változásokról. Küldhet visszajelzést a témakörben, vagy látogasson el a [Azure Machine learning Studio fórumára](https://aka.ms/aml-forum-studio) , és tegye fel a kérdést.  
 
 
-## <a name="error-0001"></a>Hiba történt a 0001  
- Kivétel lép fel, ha az adatkészlet egy vagy több megadott oszlop nem található.  
+## <a name="error-0001"></a>0,001-es hiba  
+ Kivétel történik, ha egy vagy több megadott oszlop nem található.  
   
- Ez a hiba fog kapni, ha egy oszlop kiválasztása a modul történik, de a kijelölt oszlop nem szerepel a bemeneti adatkészlet. Ez a hiba akkor fordulhat elő, ha manuálisan adta egy oszlop nevében, vagy ha az Oszlopválasztó biztosított javasolt oszlop, amely a kísérlet futtatásakor az adatkészlet nem létezik.  
+ Ez a hibaüzenet akkor jelenik meg, ha egy modulhoz oszlop van kiválasztva, de a kijelölt oszlop (ok) nem szerepel a bemeneti adatkészletben. Ez a hiba akkor fordulhat elő, ha kézzel írt be egy oszlopnevet, vagy ha az oszlop választója olyan javasolt oszlopot adott meg, amely nem szerepelt az adatkészletben a kísérlet futtatásakor.  
   
-**Megoldás:** Nyissa meg újra a modult, ehhez a kivételhez értesítő, és ellenőrizze, hogy az oszlop neve vagy nevei megfelelőek, és hogy létezik-e a hivatkozott oszlopok.  
+**Megoldás:** Tekintse át a kivételt tartalmazó modult, és ellenőrizze, hogy az oszlopnév vagy a nevek helyesek-e, és hogy a hivatkozott oszlopok léteznek-e.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Egy vagy több megadott oszlopok nem találhatók.|  
-|Oszlop neve vagy indexe "{0}" nem található|  
-|Oszlop neve vagy indexe "{0}"nem létezik a"{1}"|  
+|Egy vagy több megadott oszlop nem található|  
+|A (z) "{0}" nevű vagy indexű oszlop nem található|  
+|A (z) ""{0}nevű vagy indexű oszlop nem{1}létezik a következőben: ""|  
  
 
 ## <a name="error-0002"></a>0002 hiba  
- Kivétel lép fel, ha egy vagy több paraméter nem sikerült az elemzett vagy átváltott a megadott típus által előírt cél metódus típusa.  
+ Kivétel történik, ha egy vagy több paramétert nem lehetett elemezni, vagy a megadott típusról át kell alakítani a cél metódus típusának megfelelően.  
   
- Ez a hiba akkor fordul elő, az Azure Machine Learning adja meg a paramétert a bemeneti adatként, és az érték típusa eltér a várt típus, és implicit konverziója nem hajtható végre.  
+ Ez a hiba akkor fordul elő Azure Machine Learning amikor bemenetként ad meg egy paramétert, és az érték típusa eltér a várt típustól, és az implicit konverzió nem hajtható végre.  
   
-**Megoldás:** A modul követelményeinek ellenőrzése és döntse el, melyik érték típusát kötelező megadni (string, integer, double, stb.)  
+**Megoldás:** Ellenőrizze a modul követelményeit, és határozza meg, hogy melyik értéktípus szükséges (karakterlánc, egész szám, dupla stb.)  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem sikerült elemezni a paraméter|  
-|Nem sikerült elemezni a "{0}" paraméter|  
-|Nem sikerült elemezni a (átalakítás) "{0}"paraméter"{1}"|  
-|Nem sikerült konvertálni "{0}"paraméter a"{1}"záró"{2}"|  
-|Nem sikerült konvertálni "{0}"paraméter értéke"{1}"feladó"{2}"záró"{3}"|  
-|Érték nem konvertálható "{0}"oszlopában"{1}"feladó"{2}"záró"{3}"a használati formátum"{4}" megadott|  
+|Nem sikerült elemezni a paramétert|  
+|Nem sikerült elemezni{0}a (z) "" paramétert|  
+|Nem sikerült elemezni a (z{0}) "" paramétert a következőre{1}: ""|  
+|Nem sikerült konvertálni{0}a (z) "{1}" paramétert{2}a következőre: ""|  
+|Nem sikerült a ({0}z) ""{1}paraméter értékének{2}{3}konvertálása a következőre: ""|  
+|Nem sikerült a (z{0}) ""{1}oszlop{2}{3}{4}"" értékének konvertálása|  
   
 
-## <a name="error-0003"></a>Hiba történt a 0003  
- Kivétel lép fel, ha egy vagy több bemenetei null értékű vagy üres.  
+## <a name="error-0003"></a>0003 hiba  
+ Kivétel történik, ha egy vagy több bemenet null értékű vagy üres.  
   
- Az Azure Machine Learning ezt a hibaüzenetet fog kapni, ha bármely bemeneti vagy a modul paraméterei null értékű vagy üres.  Ez a hiba fordulhatnak elő, például, ha nem adta meg minden paraméter értéke. Azt is történhet, ha egy adatkészletet, amely értékek hiányoznak, vagy egy üres adatkészlet választása.  
+ Ez a hibaüzenet akkor jelenik meg Azure Machine Learning, ha a modulhoz tartozó bemenetek vagy paraméterek null értékűek vagy üresek.  Ez a hiba akkor fordulhat elő, ha például nem adott meg értéket a paraméterhez. Akkor is előfordulhat, ha olyan adatkészletet választott, amely hiányzó értékeket tartalmaz, vagy egy üres adatkészlet.  
   
 **Megoldás:**
  
-+ Nyissa meg a modul, amely a kivétel előállított, és győződjön meg arról, hogy az összes bemeneti lett megadva. Győződjön meg arról, hogy minden kötelező bemeneti vannak megadva. 
-+ Győződjön meg arról, hogy az Azure storage-ból betöltött adatokat, és elérhető, valamint, hogy a fiók neve vagy a kulcs nem változott.  
-+ Ellenőrizze a bemeneti adatok hiányzó értékeket, vagy null értékeket.
-+ Ha egy lekérdezést használ adatforrásként, ellenőrizze a várt formátum a visszaadott adat. 
-+ Ellenőrizze az elgépelések vagy egyéb adatok specifikace változásait.
++ Nyissa meg a kivételt okozó modult, és győződjön meg arról, hogy az összes bemenet meg van adva. Győződjön meg arról, hogy az összes szükséges bemenet meg van adva. 
++ Győződjön meg arról, hogy az Azure Storage-ból betöltött adatok elérhetők, és hogy a fiók neve vagy kulcsa nem módosult.  
++ A hiányzó vagy a null értékek bevitele a bemeneti adatok között.
++ Ha egy adatforráson lekérdezést használ, ellenőrizze, hogy az adatok visszaadása a várt formátumban történik-e. 
++ Helyesírás-és egyéb változások keresése az adatok specifikációjában.
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Egy vagy több bemeneti null értékű vagy üres|  
-|Bemeneti "{0}" NULL értékű vagy üres|  
+|Egy vagy több bemenet null értékű vagy üres.|  
+|A bemeneti érték ("")NULLértékűvagyüres{0}|  
   
 
 ## <a name="error-0004"></a>0004 hiba  
- Kivétel lép fel, ha a paraméter értéke kisebb vagy egyenlő a megadott értéket.  
+ Kivétel történik, ha a paraméter értéke kisebb vagy egyenlő, mint a megadott érték.  
   
- Ezt a hibaüzenetet fog kapni az Azure Machine Learning, ha a paraméter az üzenetben a modul az adatok feldolgozásához szükséges határ érték alá.  
+ Ezt a hibaüzenetet Azure Machine Learning fogja kapni, ha az üzenetben szereplő paraméter egy olyan határ érték alá esik, amely ahhoz szükséges, hogy a modul feldolgozza az adatfeldolgozást.  
   
-**Megoldás:** Nyissa meg újra a modult, a kivétel értesítő, és módosítsa a paramétert, a megadott értéknek nagyobbnak kell lennie.  
+**Megoldás:** Nyissa meg újra a modult, és módosítsa a paramétert úgy, hogy az a megadott értéknél nagyobb legyen.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A paraméter határ értékének nagyobbnak kell lennie.|  
-|A paraméter "{0}" értéknek nagyobbnak kell lennie {1}.|  
-|A paraméter "{0}"értéke"{1}" amely nagyobbnak kell lennie {2}|  
+|A paraméternek nagyobbnak kell lennie, mint a határ értéke.|  
+|A ({0}z) "" paraméter értékének nagyobbnak kell lennie, mint. {1}|  
+|A (z) "{1}"paraméterértéke"",amelyneknagyobbnakkelllennie,mint{0}{2}|  
   
 
 
-## <a name="error-0005"></a>0005 hiba  
- Kivétel lép fel, ha a paraméter kisebb, mint egy adott érték.  
+## <a name="error-0005"></a>0,005-es hiba  
+ Kivétel történik, ha a paraméter egy adott értéknél kisebb.  
   
- Az Azure Machine Learning ezt a hibaüzenetet kapja, ha a paraméter az üzenet nem éri el, vagy más, mint a határérték, a modul az adatok feldolgozásához szükséges lesz.  
+ Ezt a hibaüzenetet Azure Machine Learning fogja kapni, ha az üzenetben szereplő paraméter értéke alacsonyabb, vagy egyenlő a modul által az adat feldolgozásához szükséges határ értékével.  
   
-**Megoldás:** Nyissa meg újra a modult, a kivétel értesítő, és módosítsa a paramétert nagyobb vagy azzal egyenlő a megadott érték.  
+**Megoldás:** Nyissa meg újra a modult, és módosítsa a paramétert úgy, hogy az a megadott értéknél nagyobb vagy azzal egyenlő legyen.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A paraméter kisebb értéket a határhoz kell lennie.|  
-|A paraméter "{0}" értéknek nagyobbnak vagy azzal egyenlőnek kell lennie. {1}.|  
-|A paraméter "{0}"értéke"{1}" amely nagyobb vagy azzal egyenlőnek kell lennie {2}.|  
+|A paraméternek nagyobbnak vagy egyenlőnek kell lennie a határ értékével.|  
+|{0} A{1}(z) "" paraméter értékének nagyobbnak vagy egyenlőnek kell lennie.|  
+|A (z) "{1} {2}{0}" paraméter értéke "", amelynek nagyobbnak vagy egyenlőnek kell lennie.|  
   
 
 ## <a name="error-0006"></a>0006 hiba  
- Kivétel lép fel, ha a paraméter nagyobb vagy egyenlő a megadott érték.  
+ Kivétel történik, ha a paraméter nagyobb vagy egyenlő, mint a megadott érték.  
   
- Az Azure Machine Learning a hibaüzenetet fog kapni, ha a paraméter az üzenetben nagyobb vagy egyenlő a határérték, a modul az adatok feldolgozásához szükséges.  
+ Ezt a hibaüzenetet Azure Machine Learning fogja kapni, ha az üzenetben szereplő paraméter nagyobb vagy egyenlő, mint a modul által az adat feldolgozásához szükséges határ érték.  
   
-**Megoldás:** Nyissa meg újra a modult, a kivétel értesítő, és módosítsa a paramétert, a megadott értéknek kisebbnek kell lennie.  
+**Megoldás:** Nyissa meg újra a modult, és módosítsa a paramétert úgy, hogy az a megadott értéknél kisebb legyen.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Paraméterek eltérés. Paraméterek egyike lehet nagyobb, mint a többi.|  
-|A paraméter "{0}"értéknek kisebbnek kell lennie a paraméter"{1}" értéket.|  
-|A paraméter "{0}"értéke"{1}" kell lennie, amely kisebb, mint {2}.|  
+|A paraméterek nem egyeznek. Az egyik paraméternek kisebbnek kell lennie, mint egy másiknak.|  
+|A (z) "{1}"paraméterértékénekkisebbnekkelllenniea(z)""paraméternél.{0}|  
+|A (z) "{1} {2}{0}" paraméter értéke "", amelynek kisebbnek kell lennie, mint.|  
   
 
 ## <a name="error-0007"></a>0007 hiba  
- Kivétel lép fel, ha a paraméter értéke nagyobb, mint egy adott érték.  
+ Kivétel történik, ha a paraméter egy adott értéknél nagyobb.  
   
- Az Azure Machine Learning a hibaüzenetet fog kapni, ha a modul a tulajdonságok között megadott nagyobb, mint az engedélyezett értéket. Például előfordulhat, hogy megad egy támogatott dátumok tartományán kívüli adatokat, vagy jelezheti, hogy öt oszlopnak használható-e, ha csak három oszlopot érhetők el. 
+ Ezt a hibaüzenetet Azure Machine Learning, ha a modul tulajdonságainál nagyobb értéket adott meg, mint a megengedettnél. Megadhat például olyan adatmennyiséget, amely kívül esik a támogatott dátumok tartományán, vagy jelezheti, hogy öt oszlop használható, ha csak három oszlop érhető el. 
  
- Ez a hiba is meg kell egyeznie a valamilyen módon két adatkészletek megadása esetén előfordulhat, hogy megjelenik. Ha vannak oszlopok átnevezése, és adja meg az oszlopok index által, például a neveket adhat meg számának egyeznie kell a szám oszlop indexek. Egy másik példa lehet egy matematikai művelet által használt két oszlop, amelyben az oszlopok rendelkeznie kell azonos számú sort. 
+ Ez a hiba akkor is megjelenhet, ha két olyan adathalmazt ad meg, amelyeknek valamilyen módon meg kell egyezniük. Ha például oszlopokat kíván átnevezni, és index alapján adja meg az oszlopokat, a megadott nevek számának meg kell egyeznie az oszlopok oszlopainak számával. Egy másik példa lehet egy olyan matematikai művelet, amely két oszlopot használ, ahol az oszlopoknak azonos számú sort kell tartalmazniuk. 
   
 **Megoldás:**
  
- + Nyissa meg a szóban forgó modul, és áttekintheti azokat numerikusra változtatja a beállításokat.
- + Győződjön meg arról, hogy minden olyan paraméterértékeket címtartományba támogatott érték az adott tulajdonságnál.
- + Ha a modul több bemenet tart, győződjön meg arról, hogy bemenetek az azonos méretű.
+ + Nyissa meg a szóban forgó modult, és tekintse át a numerikus tulajdonságok beállításait.
+ + Győződjön meg arról, hogy bármelyik paraméter értéke az adott tulajdonság értékének támogatott tartománya alá esik.
+ + Ha a modul több bemenetet is igénybe vesz, ügyeljen arra, hogy a bemenetek azonos méretűek legyenek.
 <!-- + If the module has multiple properties that can be set, ensure that related properties have appropriate values. For example, when using [Group Data into Bins](group-data-into-bins.md), if you use the option to specify custom bin edges, the number of bins must match the number of values you provide as bin boundaries.-->
- + Ellenőrizze, hogy módosultak-e az adatkészlethez vagy adatforrást. Néha egy értéket, amely működött az adatok egy korábbi verziójával meghiúsul után, az oszlopok száma, az oszlop adattípusait vagy az adatok mérete módosult.  
+ + Győződjön meg arról, hogy az adatkészlet vagy az adatforrás módosult-e. Előfordulhat, hogy egy olyan érték, amely az adat egy korábbi verziójával működött, az oszlopok száma, az oszlop adattípusa vagy az adat mérete után sikertelen lesz.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Paraméterek eltérés. Kisebb vagy egyenlő a másikra a paraméterek egyikét kell lennie.|  
-|A paraméter "{0}"értéknek kisebbnek kell lennie, mint vagy egyenlő, paraméterben"{1}" értéket.|  
-|A paraméter "{0}"értéke"{1}" kell lennie, amely kisebb vagy egyenlő {2}.|  
+|A paraméterek nem egyeznek. Az egyik paraméternek kisebbnek vagy egyenlőnek kell lennie egy másikkal.|  
+|A "{1}" paraméter értékének kisebbnek vagy egyenlőnek kell lennie a (z) "" paraméter értékével.{0}|  
+|A (z) "{1} {2}{0}" paraméter értéke "", amely kisebbnek vagy egyenlőnek kell lennie.|  
   
 
 ## <a name="error-0008"></a>0008 hiba  
- Kivétel lép fel, ha a paraméter nem tartományban.  
+ Kivétel történik, ha a paraméter nem a tartományon belül van.  
   
- Az Azure Machine Learning a hibaüzenetet fog kapni, ha a paraméter az üzenetben kívül esik a határokon, a modul az adatok feldolgozásához szükséges.  
+ Ezt a hibaüzenetet Azure Machine Learning fogja kapni, ha az üzenetben szereplő paraméter kívül esik a modul által az adat feldolgozásához szükséges korlátokon.  
   
- Például ez a hiba jelenik meg, ha megpróbálja használni [sorok hozzáadása](add-rows.md) úgy, hogy két adatkészletet, amely az oszlopok száma eltér.  
+ Ez a hiba például akkor jelenik meg, ha a [sorok hozzáadása](add-rows.md) lehetőséggel megpróbál összekapcsolni két olyan adatkészletet, amelyek eltérő számú oszloppal rendelkeznek.  
   
-**Megoldás:** Nyissa meg újra a modult, a kivétel értesítő, és módosítsa a paraméterként megadott tartományon belül.  
+**Megoldás:** Nyissa meg újra a modult, és módosítsa a paramétert a megadott tartományon belülre.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Paraméter értéke nem a megadott tartományban.|  
-|A paraméter "{0}" érték nem szerepel a tartományban.|  
-|A paraméter "{0}" értéket kell tartományán [{1}, {2}].|  
+|A paraméter értéke nem a megadott tartományba esik.|  
+|A paraméter{0}"" értéke nem a tartományon belül van.|  
+|A ({0}z) "" paraméter értékének a következő{1}tartományba kell esnie: [, {2}].|  
   
 
 ## <a name="error-0009"></a>0009 hiba  
- Kivétel lép fel, ha az Azure storage-fiók neve vagy a tároló neve helytelenül van megadva.  
+ Kivétel történik, ha az Azure Storage-fiók neve vagy a tároló neve helytelenül van megadva.  
   
-Ez a hiba akkor fordul elő, az Azure Machine Learning Studióban az Azure storage-fiókhoz tartozó paramétert is meghatároz, de a neve vagy a jelszó nem lehet feloldani. Hibákat a jelszavak vagy fiókneveket fordulhat elő, ennek számos oka lehet:
+Ez a hiba akkor fordul elő Azure Machine Learning Studio, ha megad egy Azure Storage-fiók paramétereit, de a név vagy a jelszó nem oldható fel. A jelszóval vagy a fiók nevével kapcsolatos hibák több okból is megtörténhetnek:
  
- + A fiók nem megfelelő típusú. Néhány új fióktípusok nem támogatottak a Machine Learning Studio segítségével. Lásd: [adatok importálása](import-data.md) részleteiről.
- + Helytelen fiók nevet meg
- + A fiók már nem létezik.
- + A storage-fiók jelszava helytelen, vagy megváltozott
- + A tároló neve nem adott meg, vagy a tároló nem létezik.
- + Teljes mértékben nem adott meg a fájl elérési útját (a blob elérési útja)
+ + A fiók típusa nem megfelelő. Néhány új fióktípus nem támogatott a Machine Learning Studiohoz való használathoz. További részletek: [adatok importálása](import-data.md) .
+ + A helytelen fióknevet adta meg
+ + A fiók már nem létezik
+ + A Storage-fiók jelszava helytelen vagy megváltozott
+ + Nem adta meg a tároló nevét, vagy a tároló nem létezik
+ + Nem adta meg teljes mértékben a fájl elérési útját (a blob elérési útját).
    
 **Megoldás:**
 
-Ilyen jellegű problémák gyakran fordul elő, amikor megpróbálja manuálisan adja meg a fiók neve, a jelszó és a tároló elérési útja. Azt javasoljuk, hogy az új varázslót az használja a [adatok importálása](import-data.md) modult, amely segítségével kereshet meg és nevek ellenőrzése.
+Ilyen problémák gyakran akkor fordulnak elő, amikor megpróbál kézzel megadnia a fiók nevét, jelszavát vagy tárolójának elérési útját. Javasoljuk, hogy az Adatimportálási modulhoz az [](import-data.md) új varázslót használja, amely segít megkeresni és megtekinteni a neveket.
 
-Is ellenőrizheti, hogy a fiók, tárolót vagy blobot törölve lett. Egy másik az Azure storage-segédprogram használatával győződjön meg arról, hogy a fiók nevét és jelszavát megadva, és arról, hogy a tároló létezik. 
+Győződjön meg arról is, hogy a fiók, a tároló vagy a blob törölve lett-e. Egy másik Azure Storage segédprogrammal ellenőrizze, hogy helyesen adta-e meg a fióknevet és a jelszót, valamint hogy létezik-e a tároló. 
 
-Néhány újabb fióktípusok nem támogatottak az Azure Machine Learning. Például az új "Forró" vagy "hidegnek" nevezett tárolási típusok nem használhatók a machine Learning szolgáltatáshoz. Klasszikus tárfiókokat és a storage-fiókok létrehozni, mert az "Általános célú" jól működnek.
+Azure Machine Learning nem támogatja néhány újabb fióktípus használatát. Például az új "forró" vagy "hideg" tárolási típusok nem használhatók gépi tanuláshoz. Mind a klasszikus Storage-fiókok, mind a Storage-fiókok "általános célú"-ként lettek létrehozva.
 
-Ha megadott egy blob teljes elérési útja, győződjön meg arról, hogy az elérési út van megadva **tároló/blobname**, és hogy a tároló, mind a blob létezik a fiókban.  
+Ha meg van adva egy blob teljes elérési útja, ellenőrizze, hogy az elérési út **tároló-vagy blobname**van-e megadva, és hogy a tároló és a blob is létezik-e a fiókban.  
   
- Az elérési út nem tartalmazhat perjelet vezető. Például **blob/tároló/** helytelen, és meg kell adni **tárolót vagy blobot**.  
+ Az elérési út nem tartalmazhat kezdő perjelet. A **/Container/blob** például helytelen, és **tárolóként vagy blobként**kell megadni.  
 
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Az Azure storage-fiók neve vagy a tároló neve nem megfelelő.|  
-|Az Azure storage-fiók neve "{0}"vagy a tároló neve"{1}" nem megfelelő; a tárolót a blob nevét, formátumú tároló/várt.|  
+|Az Azure Storage-fiók neve vagy a tároló neve helytelen.|  
+|Az Azure Storage-fiók neve{0}("") vagy{1}a tároló neve ("") helytelen, a rendszer a tároló nevét/blobját várta.|  
   
 
 ## <a name="error-0010"></a>0010 hiba  
- Kivétel lép fel, ha a bemeneti adatkészletek oszlopnevek egyező, de nem kell rendelkeznie.  
+ Kivétel történik, ha a bemeneti adatkészletek olyan oszlopnevek, amelyeknek egyezniük kell, de nem.  
   
- Az Azure Machine Learning a hibaüzenetet fog kapni, ha az üzenet a oszlopindex eltérő oszlopneveket szerepel a két bemeneti adatkészletet.  
+ Ezt a hibaüzenetet Azure Machine Learning fogja kapni, ha az üzenetben szereplő oszlop indexe eltérő oszlopnevek tartalmaz a két bemeneti adatkészletben.  
   
-**Megoldás:** Használat [metaadatainak szerkesztése](edit-metadata.md) vagy módosíthatja az oszlop neve megegyezik a megadott oszlopindex az eredeti adathalmazból.  
+**Megoldás:** Használja a [metaadatok szerkesztése](edit-metadata.md) lehetőséget, vagy módosítsa az eredeti adatkészletet úgy, hogy az azonos oszlopnevet adjon meg a megadott oszlop-indexhez.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A bemeneti adatkészletek megfelelő indexszel rendelkező oszlopok neve nem lehet.|  
-|Oszlopnevek nem azonosak oszlop {0} adatpontjához bemeneti adatkészletek ({1} és {2} jelölik).|  
+|A bemeneti adatkészletekben a megfelelő indexszel rendelkező oszlopok nevei eltérőek.|  
+|Az oszlopnevek nem egyeznek a bemeneti adatkészletek ( {0} {1} és {2} a) oszlopainak (nulla-alapú) oszlopának neveivel.|  
   
 
 ## <a name="error-0011"></a>0011 hiba  
- Kivétel lép fel, ha az átadott oszlop argumentum nem vonatkozik egyik adatkészlet oszlop.  
+ Kivétel történik, ha az átadott oszlop beállított argumentuma nem vonatkozik egyetlen adatkészlet-oszlopra sem.  
   
- Az Azure Machine Learning a hibaüzenetet fog kapni, ha a megadott oszlop kiválasztása nem egyezik meg az adott adatkészlet oszlopok.  
+ Ezt a hibaüzenetet Azure Machine Learning fogja kapni, ha a megadott oszlop nem egyezik a megadott adatkészlet egyik oszlopával sem.  
   
- Ez a hiba is kaphat, ha egy oszlop nincs kiválasztva, és a modul működéséhez szükség legalább egy oszlopot.  
+ Ezt a hibát akkor is megteheti, ha még nem jelölt ki oszlopot, és legalább egy oszlopra van szükség ahhoz, hogy a modul működjön.  
   
-**Megoldás:** Módosítsa az oszlop kiválasztása a modulban, hogy a, érvénybe lépnek az oszlopok az adatkészletben.  
+**Megoldás:** Módosítsa az oszlop kijelölését a modulban, hogy az az adatkészlet oszlopaira vonatkozzon.  
   
- Ha a modul megköveteli, hogy egy adott oszlop, például egy felirat oszlopot válasszon, ellenőrizze, hogy a jobb oldali oszlop van kijelölve.  
+ Ha a modulhoz ki kell választania egy adott oszlopot, például egy felirat oszlopot, ellenőrizze, hogy a jobb oldali oszlop van-e kiválasztva.  
   
- Ha a nem megfelelő oszlop van kijelölve, távolítsa el őket, és futtassa újra a kísérletet.  
+ Ha nem megfelelő oszlopok vannak kijelölve, távolítsa el, majd futtassa újra a kísérletet.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Megadott oszlopkészlet nem vonatkozik egyik adatkészlet oszlop.|  
-|A megadott oszlopkészlet "{0}" adatkészletoszlopok valamelyik nem vonatkozik.|  
+|A megadott oszlop nem vonatkozik egyetlen adatkészlet-oszlopra sem.|  
+|A megadott "{0}" oszlop nem vonatkozik egyetlen adatkészlet-oszlopra sem.|  
   
 
 ## <a name="error-0012"></a>0012 hiba  
- Kivétel lép fel, ha az osztály példánya nem hozható létre átadott argumentumok együtt.  
+ Kivétel történik, ha az osztály példánya nem hozható létre az átadott argumentumok készletével.  
   
-**Megoldás:** Ez a hiba nem a felhasználó által döntéstámogató, és a egy későbbi kiadástól kezdve elavulttá válik.  
+**Megoldás:** Ez a hiba nem hajtható végre a felhasználó számára, és egy későbbi kiadásban elavulttá válik.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Kellő modellezheti, először a modell betanításához.|  
-|Kellő modell ({0}), betanított modellt használja.|  
+|Nem betanított modell, először a betanítási modell.|  
+|Nem betanított modell{0}(), használja a betanított modellt.|  
   
 
 ## <a name="error-0013"></a>0013 hiba  
- Kivétel lép fel, ha a learner a modulba átadott érvénytelen típusú.  
+ Kivétel történik, ha a tanuló a modulnak átadott értéket adta meg érvénytelen típusként.  
   
- Ez a hiba a betanított modell nem kompatibilis a csatlakoztatott pontozási modul következik be. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the experiment is run.  -->
+ Ez a hiba akkor fordul elő, ha egy betanított modell nem kompatibilis a kapcsolódó pontozási modullal. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the experiment is run.  -->
   
 **Megoldás:**
 
-A képzési modul által előállított learner típusának meghatározása, és adja meg a pontozási modul, amely megfelelő a tanuló számára. 
+Határozza meg a betanítási modul által létrehozott tanuló típusát, és határozza meg a tanuló számára megfelelő pontozási modult. 
 
-Ha a modell volt képzett, speciális képzési modulok bármelyikével, csatlakozhat a betanított modell csak a megfelelő speciális pontozási modul. 
+Ha a modellt a speciális képzési modulok bármelyikével betanítják, a betanított modellt csak a megfelelő speciális pontozási modulhoz kapcsolja össze. 
 
 
-|Modell típusa|Képzési modul| Pontozó modul|
+|Modell típusa|Betanítási modul| Pontozási modul|
 |----|----|----|
-|minden besorolás|[Tanítási modell](train-model.md) |[Pontszám modell](score-model.md)|
-|minden olyan regressziós modell|[Tanítási modell](train-model.md) |[Pontszám modell](score-model.md)|
+|bármely osztályozó|[Betanítási modell](train-model.md) |[Pontszám modell](score-model.md)|
+|bármely regressziós modell|[Betanítási modell](train-model.md) |[Pontszám modell](score-model.md)|
 
 <!--| clustering models| [Train Clustering Model](train-clustering-model.md) or [Sweep Clustering](sweep-clustering.md)| [Assign Data to Clusters](assign-data-to-clusters.md)|
 | anomaly detection - One-Class SVM | [Train Anomaly Detection Model](train-anomaly-detection-model.md) |[Score Model](score-model.md)|
@@ -262,797 +261,797 @@ Ha a modell volt képzett, speciális képzési modulok bármelyikével, csatlak
 |Vowpal Wabbit models| [Train Vowpal Wabbit Version 7-10 Model](train-vowpal-wabbit-version-7-10-model.md) | [Score Vowpal Wabbit Version 7-10 Model](score-vowpal-wabbit-version-7-10-model.md) |
 |Vowpal Wabbit models| [Train Vowpal Wabbit Version 8 Model](score-vowpal-wabbit-version-8-model.md) | [Score Vowpal Wabbit Version 8 Model](score-vowpal-wabbit-version-8-model.md) |-->
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Érvénytelen típusú learner lett átadva.|  
-|Learner "{0}" kifejezésben érvénytelen típusú.|  
+|Érvénytelen típusú tanuló lett átadva.|  
+|A tanuló "{0}" típusa érvénytelen.|  
 
 
 ## <a name="error-0014"></a>0014 hiba  
- Kivétel lép fel, ha az oszlop egyedi értékek száma nagyobb a megengedettnél.  
+ Kivétel történik, ha az oszlop egyedi értékeinek száma nagyobb az engedélyezettnél.  
   
- Ez a hiba akkor fordul elő, ha egy oszlop túl sok egyedi értékeket tartalmaz.  Például előfordulhat, hogy ezt a hibaüzenetet Ha adja meg, hogy egy oszlop kategorikus adatként kell kezelni, de az oszlop, befejeződik a feldolgozás, hogy túl sok egyedi értékek vannak. Is láthatja ezt a hibát, ha a két bemenet egyedi értékek számának között eltérés van.   
+ Ez a hiba akkor fordul elő, ha egy oszlop túl sok egyedi értéket tartalmaz.  Előfordulhat például, hogy ez a hiba akkor jelenik meg, ha azt adja meg, hogy egy oszlop kategorikus adatként legyen kezelve, de túl sok egyedi érték van az oszlopban a feldolgozás befejezésének engedélyezéséhez. Ez a hiba akkor is megjelenhet, ha a két bemenetben lévő egyedi értékek száma nem egyezik.   
   
 **Megoldás:**
 
-Nyissa meg a modul, amely a hibát okozta, és azonosíthatja a bemenetként használt oszlopok. Egyes modulok, a jobb gombbal az adatkészlet bemeneti és a select **Visualize** az egyes oszlopain, többek között a egyedi értékeket, és azok elosztásának megtekintheti a statisztikákat.
+Nyissa meg a hibát generáló modult, és azonosítsa a bemenetként használt oszlopokat. Egyes modulok esetében kattintson a jobb gombbal az adatkészlet bemenetére, és válassza a **Megjelenítés** lehetőséget az egyes oszlopokra vonatkozó statisztikák beszerzéséhez, beleértve az egyedi értékek számát és a terjesztését.
 
-A csoportosítási vagy kategorizálási használni kívánt oszlopok lépéseket oszlopokban szereplő egyedi értékek számának csökkentése érdekében. Az oszlop adatok típusától függően különböző módon csökkentheti. 
+A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok esetében hajtsa végre a lépéseket az oszlopok egyedi értékei számának csökkentése érdekében. Az oszlop adattípusától függően a különböző módokon is csökkentheti az adattípust. 
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  
 -->
 > [!TIP]
-> Nem található a forgatókönyvének megfelelő megoldást? A visszajelzést a témakör, amely tartalmazza a hiba, és az adattípus generáló modul nevét és az oszlop számosságát. Lesz az információk biztosítása érdekében használjuk több megcélzott hibaelhárítási lépések a gyakran használt esetekben.   
+> Nem található a forgatókönyvnek megfelelő megoldás? A témakörben visszajelzést adhat, amely tartalmazza a hibát generáló modul nevét, valamint az oszlop adattípusát és a kardinálisát. Az információkat a gyakori forgatókönyvek részletesebb hibaelhárítási lépéseinek biztosítására fogjuk használni.   
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Oszlop egyedi értékek száma, nagyobb a megengedettnél.|  
-|Az oszlop egyedi értékek száma: "{0}" rekord száma meghaladja a {1}.|  
+|Az oszlop egyedi értékeinek száma nagyobb, mint az engedélyezett.|  
+|A (z) "{0}" oszlopban szereplő egyedi értékek száma meghaladja a {1}sorszámát.|  
   
 
 ## <a name="error-0015"></a>0015 hiba  
- Kivétel lép fel, ha az adatbázis-kapcsolat sikertelen volt.  
+ Kivétel történik, ha az adatbázis-kapcsolatok sikertelenek voltak.  
   
- Ez a hiba fog kapni, ha egy hibás SQL-fiók neve, jelszavát, adatbázis-kiszolgáló vagy adatbázis nevét adja meg, vagy ha az adatbázis vagy a kiszolgáló hibái miatt nem létesíthető kapcsolat az adatbázissal.  
+ Ez a hibaüzenet akkor jelenik meg, ha helytelen SQL-fióknevet, jelszót, adatbázis-kiszolgálót vagy adatbázisnevet ad meg, vagy ha az adatbázissal vagy a kiszolgálóval kapcsolatos problémák miatt nem lehet kapcsolódni az adatbázishoz.  
   
-**Megoldás:** Ellenőrizze, hogy a fiók neve, a jelszó, az adatbázis-kiszolgáló és a adatbázis van megadva, és hogy a megadott fiók rendelkezik-e a megfelelő szintű engedélyeket. Ellenőrizze, hogy az adatbázis jelenleg elérhető-e.  
+**Megoldás:** Ellenőrizze, hogy a fiók neve, jelszava, adatbázis-kiszolgálója és adatbázisa helyesen van-e megadva, és hogy a megadott fiók megfelelő szintű engedélyekkel rendelkezik-e. Ellenőrizze, hogy az adatbázis jelenleg elérhető-e.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Adatbázis-csatlakozási hiba.|  
-|Adatbázis-kapcsolatot: {0}.|  
+|Hiba történt az adatbázis-kapcsolatok létrehozásakor.|  
+|Hiba történt az adatbázis- {0}kapcsolatok létrehozásakor:.|  
   
 
 
 ## <a name="error-0016"></a>0016 hiba  
- Kivétel lép fel, ha a bemeneti adatkészletek a modulba átadott kell kompatibilis oszlop típusa, de nem.  
+ Kivétel történik, ha a modulnak átadott bemeneti adatkészleteknek kompatibilis oszlop típusúnak kell lenniük, de nem.  
   
- Az Azure Machine Learning a hibaüzenetet fog kapni, ha a két vagy több adatkészletet átadott oszlopok típusú nem kompatibilis egymással.  
+ Ez a hibaüzenet akkor jelenik meg Azure Machine Learning, ha a két vagy több adatkészletben átadott oszlopok típusai nem kompatibilisek egymással.  
   
-**Megoldás:** Használat [metaadatainak szerkesztése](edit-metadata.md) vagy az eredeti bemeneti adatkészlet módosítása<!--, or use [Convert to Dataset](convert-to-dataset.md)--> annak érdekében, hogy az oszlopok milyen típusú kompatibilis.  
+**Megoldás:** [Metaadatok szerkesztése](edit-metadata.md) vagy az eredeti bemeneti adatkészlet módosítása<!--, or use [Convert to Dataset](convert-to-dataset.md)--> annak biztosítása érdekében, hogy az oszlopok típusai kompatibilisek legyenek.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A bemeneti adatkészletek megfelelő indexszel rendelkező oszlopok rendelkezik típusa nem kompatibilis.|  
-|Oszlopok {0} és {1} nem kompatibilis.|  
-|Elem típusú oszlophoz nem kompatibilisek az oszlop {0} adatpontjához bemeneti adatkészletek ({1} és {2} jelölik).|  
+|A bemeneti adatkészletekben a megfelelő indexszel rendelkező oszlopok nem kompatibilis típusokkal rendelkeznek.|  
+|Oszlopok {0} és{1} nem kompatibilisek.|  
+|Az oszlop típusú elemek nem kompatibilisek a {0} bemeneti adatkészletek ({1} és {2} ) oszlopainak (nulla-alapú) oszlopával.|  
   
 
 ## <a name="error-0017"></a>0017 hiba  
- Kivétel lép fel, ha a kiválasztott oszlop adattípusú, amely nem támogatja az aktuális modult használ.  
+ Kivétel történik, ha egy kiválasztott oszlop olyan adattípust használ, amelyet az aktuális modul nem támogat.  
   
- Például előfordulhat, hogy ez a hibaüzenet az Azure Machine Learning Ha oszlop választását is tartalmaz, amely nem tudja feldolgozni a modult, például egy karakterláncokat tartalmazó matematikai művelet oszlopot vagy pontszám oszlop egy kategorikus funkció oszlop esetén adattípusú oszlop szükséges.  
+ Előfordulhat például, hogy ezt a hibát Azure Machine Learning, ha az oszlop kijelölése olyan adattípusú oszlopot tartalmaz, amelyet a modul nem tud feldolgozni, például egy matematikai művelet sztring oszlopát, vagy egy olyan pontszám oszlopot, amelyben a kategorikus funkció oszlopa szükséges.  
   
 **Megoldás:**
- 1. Az oszlop, amely a probléma azonosításához.
- 2. Tekintse át a modul.
- 3. Módosítsa az oszlop, hogy felel meg a követelményeknek. Számos, a következő modulok segítségével hajtsa végre a módosításokat, attól függően, oszlopot és a kívánt átalakítást lehet szükség:
-    + Használat [metaadatainak szerkesztése](edit-metadata.md) az oszlopok adattípusának módosítása, vagy módosítsa az oszlophasználat funkcióval numerikus, nem kategorikus a kategorikus és így tovább.
+ 1. Azonosítsa a problémát okozó oszlopot.
+ 2. Tekintse át a modul követelményeit.
+ 3. Módosítsa az oszlopot úgy, hogy az megfeleljen a követelményeknek. Előfordulhat, hogy a következő modulok közül többet kell használnia a módosítások elvégzéséhez az oszloptól és a megkísérelt konverziótól függően:
+    + A [metaadatok szerkesztése](edit-metadata.md) lehetőséggel módosíthatja az oszlopok adattípusát, vagy megváltoztathatja az oszlop használatát a szolgáltatástól a numerikus értékre, a kategorikus és a nem kategorikus típusra, és így tovább.
 <!--    + Use [Convert to Dataset](convert-to-dataset.md) to ensure that all included columns use data types that are supported by Azure Machine Learning.  If you cannot convert the columns, consider removing them from the input dataset.
     + Use the [Apply SQL Transformation](apply-sql-transformation.md) or [Execute R Script](execute-r-script.md) modules to cast or convert any columns that cannot be modified using [Edit Metadata](edit-metadata.md). These modules provide more flexibility for working with datetime data types.
     + For numeric data types, you can use the [Apply Math Operation](apply-math-operation.md) module to round or truncate values, or use the [Clip Values](clip-values.md) module to remove out of range values.  -->
- 4. Végső megoldásként szüksége lehet az eredeti bemeneti adatkészlet módosítása.
+ 4. Végső megoldásként előfordulhat, hogy módosítania kell az eredeti bemeneti adatkészletet.
 
 > [!TIP]
-> Nem található a forgatókönyvének megfelelő megoldást? A visszajelzést a témakör, amely tartalmazza a hiba, és az adattípus generáló modul nevét és az oszlop számosságát. Lesz az információk biztosítása érdekében használjuk több megcélzott hibaelhárítási lépések a gyakran használt esetekben. 
+> Nem található a forgatókönyvnek megfelelő megoldás? A témakörben visszajelzést adhat, amely tartalmazza a hibát generáló modul nevét, valamint az oszlop adattípusát és a kardinálisát. Az információkat a gyakori forgatókönyvek részletesebb hibaelhárítási lépéseinek biztosítására fogjuk használni. 
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem tudja feldolgozni a jelenlegi típusú oszlop. A modul által a típusa nem támogatott.|  
-|Nem tudja feldolgozni a típusú oszlop {0}. A modul által a típusa nem támogatott.|  
-|Nem tudja feldolgozni az oszlop "{1}" típusú {0}. A modul által a típusa nem támogatott.|  
-|Nem tudja feldolgozni az oszlop "{1}" típusú {0}. A modul által a típusa nem támogatott. Paraméter neve: {2}|  
+|Az aktuális típusú oszlop nem dolgozható fel. A modul nem támogatja a típust.|  
+|A típusú {0}oszlop nem dolgozható fel. A modul nem támogatja a típust.|  
+|A (z){1}"" típusú {0}oszlop nem dolgozható fel. A modul nem támogatja a típust.|  
+|A (z){1}"" típusú {0}oszlop nem dolgozható fel. A modul nem támogatja a típust. Paraméter neve:{2}|  
   
 
 ## <a name="error-0018"></a>0018 hiba  
- Kivétel lép fel, ha a bemeneti adatkészlet nem érvényes.  
+ Kivétel történik, ha a bemeneti adatkészlet érvénytelen.  
   
-**Megoldás:** Ez a hiba az Azure Machine Learning is megjelenhetnek számos környezetben, így nem egyetlen felbontása. Általában a hiba azt jelzi, hogy rendelkezik-e az adatok modulra bemenetként a helytelen számú oszlopot, vagy az adattípus nem egyezik meg a követelményeket a modult. Példa:  
+**Megoldás:** Ez a hiba Azure Machine Learning több kontextusban is megjelenhet, így nincs egyetlen megoldás. Általánosságban a hiba azt jelzi, hogy a modulba bemenetként megadott adatok helytelen számú oszlopot tartalmaz, vagy az adattípus nem felel meg a modul követelményeinek. Példa:  
   
--   A modul egy címke oszlopot igényel, de egyetlen oszlop sincs címke van megjelölve, vagy még nincs kiválasztva egy címke oszlopot.  
+-   A modulhoz címke típusú oszlopra van szükség, de az oszlop nem jelölésként van megjelölve, vagy még nem jelölt ki felirat oszlopot.  
   
--   A modul megköveteli, hogy adatokat kell kategorikus azonban az adatok numerikus.  
+-   A modul megköveteli, hogy az adat legyen kategorikus, de az adatai numerikusak.  
   
 <!---   The module requires a specific data type. For example, ratings provided to [Train Matchbox Recommender](train-matchbox-recommender.md) can be either numeric or categorical, but cannot be floating point numbers.  -->
   
--   Az adatok a megfelelő formátumú.  
+-   Az adatformátum nem megfelelő.  
   
--   Importált adatok obsahuje neplatné znaky, helytelen értékeket, vagy onnan máshová az identitástartomány-értékeknek.  
--   Az oszlop üres, vagy túl sok a hiányzó értékeket tartalmaz.  
+-   Az importált adatok érvénytelen karaktereket, helytelen értékeket vagy tartományon kívüli értékeket tartalmaznak.  
+-   Az oszlop üres, vagy túl sok hiányzó értéket tartalmaz.  
   
- A követelményekkel és az adatok előfordulhat, hogy hogyan határozza meg, tekintse át a modult, amely bemenetként az adatkészletet használó fog tartozó súgó-témakör.  
+ A követelmények és az adatok módjának megállapításához tekintse át az adatkészletet bemenetként használó modul súgóját.  
   
  <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Adatkészlet nem érvényes.|  
-|{0} érvénytelen adatokat tartalmaz.|  
-|{0} és {1} konzisztens oszlop szerinti legyen.|  
+|Az adatkészlet érvénytelen.|  
+|{0}Érvénytelen adatértéket tartalmaz.|  
+|{0}és {1} konzisztens oszlopnak kell lennie.|  
   
 
 ## <a name="error-0019"></a>0019 hiba  
- Kivétel lép fel, ha a rendezett értékeket tartalmazó oszlop várt, de nem létezik.  
+ Kivétel történik, ha az oszlopnak rendezett értékeket kell tartalmaznia, de nem.  
   
- Az Azure Machine Learning a hibaüzenetet fog kapni, ha a megadott oszlop értékei sorrendben.  
+ Ezt a hibaüzenetet Azure Machine Learning fogja kapni, ha a megadott oszlop értékei nem sorrendben vannak.  
   
-**Megoldás:** Az oszlop értékeit rendezni a bemeneti adatkészlet manuális módosításával, majd futtassa újra a modult.  
+**Megoldás:** Rendezze az oszlop értékeit a bemeneti adatkészlet manuális módosításával, majd futtassa újra a modult.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Oszlop értékei nem rendezi a rendszer.|  
-|Oszlop értékeinek "{0}" nincsenek rendezve.|  
-|Oszlop értékeinek "{0}", "adatkészlet{1}" nincsenek rendezve.|  
+|Az oszlopban lévő értékek nincsenek rendezve.|  
+|A (z){0}"" oszlop értékei nem rendezettek.|  
+|A (z){0}""{1}adatkészlet "" oszlopában található értékek nem rendezettek.|  
   
 
 ## <a name="error-0020"></a>0020 hiba  
- Kivétel lép fel, amennyiben az adatkészletek a modulba átadott némelyike szereplő oszlopok száma túl kicsi.  
+ Kivétel történik, ha a modulnak átadott egyes adatkészletekben lévő oszlopok száma túl kicsi.  
   
- Az Azure Machine Learning fogja ezt a hibaüzenetet kapja, ellenkező modul kijelölt elegendő számú oszloppal.  
+ Ez a hibaüzenet akkor jelenik meg Azure Machine Learning, ha nincs elég oszlop kiválasztva egy modulhoz.  
   
-**Megoldás:** Nyissa meg újra a modult, és győződjön meg arról, hogy Oszlopválasztó rendelkezik kiválasztott oszlopainak helyes számát.  
+**Megoldás:** Nyissa meg újra a modult, és győződjön meg arról, hogy az oszlop választója megfelelő számú oszlopot jelölt ki.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Bemeneti adatkészlet szereplő oszlopok száma kisebb, mint a minimális.|  
-|Bemeneti adatkészlet szereplő oszlopok száma kisebb, mint a minimálisan megengedett {0} oszlopot.|  
-|Bemeneti adatkészlet szereplő oszlopok száma "{0}" kisebb, mint a minimálisan megengedett {1} oszlopot.|
+|A bemeneti adatkészlet oszlopainak száma kevesebb, mint az engedélyezett minimum.|  
+|A bemeneti adatkészletben lévő oszlopok száma kevesebb, mint a {0} minimálisan megengedett oszlop (ok).|  
+|A bemeneti adatkészletben{0}szereplő oszlopok száma kisebb, mint a {1} minimálisan megengedett oszlop (ok).|
 
 ## <a name="error-0021"></a>0021 hiba  
- Kivétel lép fel, amennyiben az adatkészletek a modulba átadott egyes sorainak száma túl kicsi.  
+ Kivétel történik, ha a modulnak átadott egyes adatkészletek sorainak száma túl kicsi.  
   
- Ez a hiba a látható az Azure Machine Learning elő az adatkészletben, a megadott művelet végrehajtásához nincs elég sort. Például előfordulhat, hogy ezt a hibaüzenetet a bemeneti adatkészlet Ha üres, vagy ha próbált néhány érvényes sorok minimális száma igénylő műveletet hajtanak végre. Az ilyen műveletek tartalmazhat (de nem korlátozódnak) grouping vagy besorolás alapján statisztikai módszerekkel, bizonyos típusú dobozolás, és a tanulás számokkal.  
+ Ez a hiba akkor látható, ha az adatkészletben nincs elegendő sor a megadott művelet végrehajtásához Azure Machine Learning. Előfordulhat például, hogy ez a hiba akkor jelenik meg, ha a bemeneti adatkészlet üres, vagy ha olyan műveletet próbál végrehajtani, amely a minimálisan szükséges sorok érvényességét igényli. Ezek a műveletek magukban foglalhatják a statisztikai módszerek, bizonyos dobozolási és a számokkal való tanulás alapján történő csoportosítást vagy besorolást.  
   
 **Megoldás:**
  
- + Nyissa meg a modul, amely a hibát, és ellenőrizze a bemeneti adatkészlet és a modul tulajdonságait. 
- + Győződjön meg arról, hogy a bemeneti adatkészlet nem üres és, hogy nincsenek-e elegendő sornyi adatot modul súgójában ismertetett követelményeknek.  
- + Ha az adatok betöltése külső forrásból, győződjön meg arról, hogy az adatforrás érhető el, és nincs-e hiba, vagy módosítsa a data-definíciót, amely miatt az importálási folyamat kevesebb sort beolvasni a.
- + A modul, amely hatással legyen az adatok típusát vagy értékek, például a tisztítás, száma, a felosztás vagy join műveletek felső az adatokat egy olyan műveletet hajt végre, ellenőrizze a visszaadott sorok számának meghatározásához műveletekhez kimenetek.  
+ + Nyissa meg a hibát visszaadó modult, és keresse meg a bemeneti adatkészletet és a modul tulajdonságait. 
+ + Ellenőrizze, hogy a bemeneti adatkészlet nem üres-e, és hogy van-e elegendő sornyi adat a modul súgójában ismertetett követelmények teljesítéséhez.  
+ + Ha az adatok külső forrásból töltődnek be, győződjön meg arról, hogy az adatforrás elérhető, és nincs olyan hiba vagy változás az adatdefinícióban, amely miatt az importálási folyamat kevesebb sort kap.
+ + Ha olyan műveletet végez, amely hatással lehet az adatok típusára vagy az értékek számára, például tisztításra, felosztásra vagy csatlakozási műveletekre, ellenőrizze a műveletek kimenetét a visszaadott sorok számának megállapításához.  
 
 
 
 ## <a name="error-0022"></a>0022 hiba  
- Kivétel lép fel, ha a bemeneti adatkészlet a kijelölt oszlopok száma nem egyezik a várt számú.  
+ Kivétel történik, ha a bemeneti adatkészlet kiválasztott oszlopainak száma nem egyezik a várt számmal.  
   
- Ez a hiba az Azure Machine Learning akkor fordulhat elő, amikor az alsóbb rétegbeli modul vagy a művelet a szükséges oszlopokat vagy bemenetek bizonyos számú, és túl kevés vagy túl sok oszlop, vagy bemenetei között megadott. Példa:  
+ Ez a hiba Azure Machine Learning akkor fordulhat elő, ha az alárendelt modulnak vagy műveletnek adott számú oszlopot vagy bemenetet kell használnia, és túl kevés vagy túl sok oszlopot vagy bemenetet adott meg. Példa:  
   
--   Adjon meg egy egycímkés oszlop vagy egy kulcsoszlop, és véletlenül egyszerre választott ki több oszlopot.  
+-   Egyetlen címkét tartalmazó oszlopot vagy kulcs oszlopot kell megadnia, és véletlenül több oszlopot is kiválasztott.  
   
--   Oszlopok vannak átnevezése, de több vagy kevesebb nevek megadott oszlopok számánál.  
+-   Átnevezi az oszlopokat, de több vagy kevesebb nevet adott meg, mint amennyi oszlop.  
   
--   A forrás vagy cél oszlopok száma megváltozott, vagy a modul által használt oszlopok száma nem egyezik.  
+-   A forrás vagy a cél oszlopainak száma módosult, vagy nem egyezik a modul által használt oszlopok számával.  
   
--   Bemenetek, a megadott értékek egy vesszővel tagolt listája, de az értékek száma nem egyezik, vagy több bemenet nem támogatottak.  
+-   A bemenetek értékeinek vesszővel tagolt listáját adta meg, de az értékek száma nem egyezik, vagy több bemenet nem támogatott.  
   
-**Megoldás:** Nyissa meg újra a modult, és ellenőrizze a kijelölés, győződjön meg arról, hogy a megfelelő számú oszlop van kiválasztva. Ellenőrizze a felsőbb rétegbeli modulok kimenetek, és alsóbb rétegbeli műveletek követelményeinek.  
+**Megoldás:** Nyissa meg újra a modult, és ellenőrizze az oszlop kijelölését, és győződjön meg arról, hogy a megfelelő számú oszlop van kiválasztva. Ellenőrizze a felsőbb rétegbeli modulok kimeneteit, valamint az alsóbb rétegbeli műveletek követelményeit.  
   
- Ha használta a egyikét oszlop kiválasztása, kiválaszthat több oszlop (oszlop indexek, összes funkciót, az összes numerikus, stb.), ellenőrizze a pontos szám visszaadott a kijelölt oszlopok.  
+ Ha az egyik olyan oszlop kijelölési beállítást használta, amely több oszlopot is kijelölhet (oszlop indexek, minden funkció, összes numerikus elem stb.), ellenőrizze a kijelölés által visszaadott oszlopok pontos számát.  
   
  <!--If you are trying to specify a comma-separated list of datasets as inputs to [Unpack Zipped Datasets](unpack-zipped-datasets.md), unpack only one dataset at a time. Multiple inputs are not supported.  -->
   
- Győződjön meg arról, hogy a számát vagy a fölérendelt oszlop típusa nem változott.  
+ Ellenőrizze, hogy a felsőbb rétegbeli oszlopok száma vagy típusa nem módosult-e.  
   
- Ha a modell betanításához egy javaslat adatkészletet használ, ne feledje, hogy a ajánló vár oszlopok, csak korlátozott számú felhasználói-elem párokból vagy a felhasználó-elem-módosítják a rangsort megfelelő. A modell tanítása vagy javaslat adatkészletek felosztás előtt további oszlopok eltávolítása. További információkért lásd: [Split Data](split-data.md).  
+ Ha ajánlási adatkészletet használ a modell betanításához, ne feledje, hogy az ajánló korlátozott számú oszlopot vár, amely a felhasználó-elem párokhoz vagy a felhasználói elemek rangsorolásához tartozik. Távolítsa el a további oszlopokat a modell vagy a felosztási javaslat adatkészletének betanítása előtt. További információ: [adatok felosztása](split-data.md).  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A bemeneti adatkészlet a kijelölt oszlopok száma nem egyezik a várt számú.|  
-|A bemeneti adatkészlet a kijelölt oszlopok száma nem egyenlő {0}.|  
-|Oszlop kiválasztása a minta "{0}" bemeneti adatkészlet nem egyenlő a kiválasztott oszlopok száma biztosít {1}.|  
-|Oszlop kiválasztása a minta "{0}" adja meg a várt {1} bemeneti adatkészlethez, a kiválasztott oszlopok, de {2} oszlop(ok) van/biztosított.|  
+|A bemeneti adatkészletben lévő kijelölt oszlopok száma nem egyezik a várt számmal.|  
+|A bemeneti adatkészlet kiválasztott oszlopainak száma nem egyenlő {0}.|  
+|A (z {1}){0}"" oszlop-kiválasztási minta a bemeneti adatkészletben lévő kijelölt oszlopok számát adja meg, nem egyenlő.|  
+|A (z){0}"" oszlop kiválasztási mintája várhatóan a bemeneti adatkészletben kiválasztott oszlop {2} (oka) t adja {1} meg, de oszlop (ok) van megadva.|  
 
 
 
 ## <a name="error-0023"></a>0023 hiba  
- Kivétel lép fel, ha a bemeneti adatkészlet a céloszlop nem érvényes az aktuális trainer modulhoz.  
+ Kivétel fordul elő, ha a bemeneti adatkészlet cél oszlopa nem érvényes az aktuális oktatói modulhoz.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha a céloszlop (mint kiválasztott modul paraméterei) nem az érvényes adattípus, az összes hiányzó értékeket tartalmazott, vagy nem az elvárt módon kategorikus volt.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha a cél oszlop (a modul paraméterei közül kiválasztva) nem érvényes adattípusú, az összes hiányzó értéket tartalmazza, vagy nem a vártnak megfelelően.  
   
-**Megoldás:** Nyissa meg újra a modult, bemeneti címke vagy a céloldali oszlop tartalmának vizsgálata. Győződjön meg arról, hogy nem rendelkezik az összes hiányzó értékeket. Ha a modul, a várt lehet kategorikus a céloszlop, ellenőrizze, hogy, hogy nincsenek egynél több különböző értékeket a céloszlop található.  
+**Megoldás:** Nyissa meg újra a modul bemenetét a címke/cél oszlop tartalmának vizsgálatához. Győződjön meg arról, hogy nem rendelkezik minden hiányzó értékkel. Ha a modulnak meg kell győződnie arról, hogy a cél oszlop kategorikus, akkor győződjön meg arról, hogy a cél oszlopban több különböző érték szerepel.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Bemeneti adatkészlet céloszlop nem támogatott.|  
-|Bemeneti adatkészlet nem támogatott a céloszlop "{0}".|  
-|Bemeneti adatkészlet nem támogatott a céloszlop "{0}" típusú learner az {1}.|  
+|A bemeneti adatkészlet nem támogatott célként megadott oszlopot tartalmaz.|  
+|A bemeneti adatkészlet nem támogatott cél oszlopot tartalmaz:{0}"".|  
+|A bemeneti adatkészlet nem támogatja a (z){0}"" cél oszlopot a ( {1}z) típusú tanulók számára.|  
  
 
 ## <a name="error-0024"></a>0024 hiba  
-Kivétel lép fel, ha az adatkészlet nem tartalmaz egy címkét oszlopot.  
+Kivétel történik, ha az adatkészlet nem tartalmaz felirat oszlopot.  
 
- Az Azure Machine Learning a hiba akkor fordul elő, ha a modul egy címke oszlopot igényel, és az adatkészlet nem rendelkezik egy olyan címke oszlop. Például egy pontozott adatkészlet értékelése gyakran van szükség, hogy megtalálható-e egy címke oszlop pontosságát metrikák számítási.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor a modulhoz címke oszlop szükséges, és az adatkészlet nem tartalmaz felirat oszlopot. Például egy pontszámmal rendelkező adatkészlet kiértékelése általában megköveteli, hogy a kiszámítási pontosság mérőszámai címkével ellátott oszlop legyen jelen.  
  
-Emellett előfordulhat, hogy egy felirat oszlop található az adatkészletben, de nem észleli az Azure Machine Learning megfelelően.
+Azt is megteheti, hogy egy felirat típusú oszlop szerepel az adatkészletben, de a Azure Machine Learning nem észleli megfelelően.
   
 **Megoldás:**
 
-+ Nyissa meg a modul, amely a hibát okozta, és ha egy címke oszlopban szerepel-e. Az oszlop neve vagy az adatok típusa nem számít, mindaddig, amíg az oszlop egy egyszeri eredmény (vagy függő változó), amely előre jelezni kívánt tartalmaz. Ha nem biztos abban, hogy melyik oszlop a címkével rendelkezik, keressen egy általános nevet például *osztály* vagy *cél*. 
-+  Ha az adatkészlet nem tartalmazza a címke oszlop, lehet, hogy a felirat oszlopot kifejezetten vagy véletlenül eltávolították felső. Az is előfordulhat, hogy az adatkészlet ne legyen-e egy felsőbb rétegbeli pontozási modul kimenete.
-+ Explicit módon meg az oszlopot a címke oszlopban, adja hozzá a [metaadatainak szerkesztése](edit-metadata.md) modul, és kapcsolódjon az adatkészletet. Csak a címke oszlopban válassza ki és **címke** származó a **mezők** legördülő listából. 
-+ Ha a megfelelő oszlopban a címkét választ, kiválaszthat **egyértelmű címke** származó a **mezők** , hárítsa el a metaadatokat az az oszlop. 
++ Nyissa meg a hibát generáló modult, és állapítsa meg, hogy van-e felirat típusú oszlop. Az oszlop neve vagy adattípusa nem számít, feltéve, hogy az oszlop egyetlen eredményt (vagy függő változót) tartalmaz, amelyet előre meg szeretne jósolni. Ha nem biztos abban, hogy melyik oszlop rendelkezik a címkével, keresse meg az általános nevet , például az osztályt vagy a *célt*. 
++  Ha az adatkészlet nem tartalmaz felirat oszlopot, akkor lehetséges, hogy a Label oszlop explicit módon vagy véletlenül eltávolította a felsőbb rétegbeli adatokat. Az is előfordulhat, hogy az adatkészlet nem egy felsőbb rétegbeli pontozási modul kimenete.
++ Ha explicit módon meg szeretné jelölni az oszlopot feliratként, vegye fel a [metaadatok szerkesztése](edit-metadata.md) modult, és kapcsolja össze az adatkészletet. Válassza ki a csak a címke oszlopot, és válassza a **címkék** lehetőséget a **mezők** legördülő listából. 
++ Ha a hibás oszlop van kiválasztva címkeként, a **mezőkben** lévő metaadatok kijavításához jelölje be a **címke törlése jelölőnégyzetet** . 
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nincs címke oszlop adatkészletben.|  
-|Nincs címke oszlop a "{0}".|  
+|Nincs felirat oszlop az adatkészletben.|  
+|Nincs felirat típusú oszlop a következőben{0}: "".|  
   
 
-## <a name="error-0025"></a>0025 hiba  
- Kivétel lép fel, ha az adatkészlet nem tartalmaz egy pontszám oszlopot.  
+## <a name="error-0025"></a>0,025-es hiba  
+ Kivétel történik, ha az adatkészlet nem tartalmaz pontszám oszlopot.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha a bemenetet a kiértékelés modell nem tartalmaz érvényes pontszám oszlopokat. Ha például a felhasználó megpróbál egy adatkészlet kiértékelése előtt, egy megfelelő betanított modell volt pontozott, vagy a pontszám oszlopot explicit módon elvetése felső. Ez a kivétel akkor is előfordul, ha a két adatkészlet pontszám oszlopai nem kompatibilisek. Például akkor lehet összehasonlítani kívánt egy lineáris regressor erre az adott bináris osztályozó pontosságát.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha a kiértékelési modellbe való bevitel nem tartalmaz érvényes pontszám-oszlopokat. A felhasználó például megpróbál kiértékelni egy adatkészletet, mielőtt a megfelelő betanított modellel szerezte volna, vagy a pontszám oszlop explicit módon el lett dobva. Ez a kivétel akkor is előfordulhat, ha a két adatkészlet pontszám oszlopai nem kompatibilisek. Előfordulhat például, hogy egy lineáris regressor pontosságát próbálja összehasonlítani egy bináris osztályozó használatával.  
   
-**Megoldás:** Nyissa meg újra a bemenetet a evaluate-model, és vizsgálja meg, ha egy vagy több pontszám oszlopot tartalmaz. Ha nem, az adatkészlet nem volt pontozott, vagy a pontszám oszlopokat egy felsőbb rétegbeli modul el lettek dobva.  
+**Megoldás:** Tekintse át a kiértékelési modell bemenetét, és vizsgálja meg, hogy egy vagy több pontszám oszlopot tartalmaz-e. Ha nem, az adatkészlet nem lett kiváltva, vagy a pontszám oszlopait egy felsőbb rétegbeli modulban eldobta.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nincs pontszám oszlop adatkészletben.|  
-|Nincs a pontszám oszlop "{0}".|  
-|Nincs a pontszám oszlop "{0}" által előállított, amely egy "{1}". Az adatkészlet, használja a megfelelő típusú learner pontozása.|  
+|Nincs pontszám oszlop az adatkészletben.|  
+|Nincs pontszám oszlop a következőben{0}: "".|  
+|Nincs ""{1}nevű pontszám-oszlop{0}a következőben: "". A megfelelő típusú tanuló használatával szerzi be az adatkészletet.|  
   
 
 ## <a name="error-0026"></a>0026 hiba  
- Kivétel lép fel, ha ilyen nevű oszlop nem engedélyezett.  
+ Kivétel történik, ha az azonos nevű oszlopok nem engedélyezettek.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha több oszlop rendelkezik ugyanazzal a névvel. Egyik módja, előfordulhat, hogy ez a hibaüzenet akkor, ha a az adatkészlet nem rendelkezik egy fejléc sorra, és automatikusan hozzárendeli az oszlopnevek: Col0, Col1, stb.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha több oszlopnak ugyanaz a neve. Ennek a hibának az az egyik módja, ha az adatkészlet nem rendelkezik fejléc-sorral, és az oszlopnevek automatikusan hozzá vannak rendelve: Col0, Col1 stb.  
   
-**Megoldás:** Ha oszlop rendelkezik ugyanazzal a névvel, beszúrása egy [metaadatainak szerkesztése](edit-metadata.md) modul bemeneti adatkészlet és a modul között. Használja az oszlopot az oszlopválasztóban [metaadatainak szerkesztése](edit-metadata.md) válassza ki az oszlop átnevezéséhez írja be az új nevek a **új oszlopnevek** szövegmezőbe.  
+**Megoldás:** Ha az oszlopok neve megegyezik, szúrja be a [metaadatok szerkesztése](edit-metadata.md) modult a bemeneti adatkészlet és a modul között. Az átnevezni kívánt oszlopok kiválasztásához használja az oszlop választóját a [metaadatok szerkesztése](edit-metadata.md) elemre, írja be az új neveket az **új oszlopnevek** szövegmezőbe.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Egyenlő oszlopnevek argumentumok vannak megadva. Egyenlő oszlopnevek nem engedélyezettek a modul által.|  
-|Az oszlopnevek argumentumok egyenlő "{0}"és"{1}" használata nem engedélyezett. Adja meg a különböző neveket.|  
+|Az egyenlő oszlopnevek az argumentumokban vannak megadva. A modul nem engedélyezi az egyenlő oszlopnevek nevét.|  
+|A (z) "{0}" és "{1}" argumentumokban szereplő egyenlő oszlopnevek nem engedélyezettek. Különböző neveket válasszon.|  
   
 
 ## <a name="error-0027"></a>0027 hiba  
- Kivétel lép fel, abban az esetben, ha a két objektum kell lennie az azonos méretű, azonban nem.  
+ Kivétel fordul elő abban az esetben, ha két objektumnak azonos méretűnek kell lennie, de nem.  
   
- Ez gyakori hiba az Azure Machine Learning, és sok feltétel okozhatja.  
+ Ez a Azure Machine Learning gyakori hibája, és számos feltételt okozhat.  
   
-**Megoldás:** Nincs konkrét megoldás. Azonban úgy ellenőrizheti, például a következő feltételeket:  
+**Megoldás:** Nincs konkrét megoldás. A feltételeket azonban a következőképpen tekintheti meg:  
   
--   Ha oszlopok vannak átnevezése, ügyeljen arra, hogy rendelkezik-e az azonos számú elemet (a bemeneti oszlopok és az új nevek listája) a listák.  
+-   Oszlopok átnevezése esetén győződjön meg arról, hogy az egyes listák (a bemeneti oszlopok és az új nevek listája) azonos számú elemmel rendelkeznek.  
   
--   Ha való csatlakozás vagy összefűzi a két adatkészletet, győződjön meg arról, hogy ugyanazzal a sémával rendelkezik.  
+-   Ha két adatkészletet csatlakoztat vagy ÖSSZEFŰZ, győződjön meg róla, hogy ugyanazzal a sémával rendelkeznek.  
   
--   Ha, amelyhez csatlakozik, két adatkészletet, amely több oszlop van, ellenőrizze, hogy a Kulcsoszlopok ugyanazokat az adatokat írja be, és válassza a **engedélyezi az ismétlődő elemeket, és őrizze meg a kijelölt oszlopok sorrendjét**.  
+-   Ha két olyan adatkészletet hoz létre, amelyek több oszloppal rendelkeznek, győződjön meg arról, hogy a kulcs oszlopai azonos adattípussal rendelkeznek, és válassza az **Ismétlődések engedélyezése és az oszlopok megőrzése**a kijelölésben lehetőséget.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Az átadott objektumok mérete nem konzisztens.|  
-|Mérete "{0}"není konzistentní s mérete"{1}".|  
+|Az átadott objektumok mérete inkonzisztens.|  
+|A (z){0}"" mérete nem konzisztens a (z{1}) "" méretével.|  
   
 
 ## <a name="error-0028"></a>0028 hiba  
- Kivétel történt abban az esetben, amikor oszlopkészlet ismétlődő oszlopneveket tartalmaz, és nem engedélyezett.  
+ Kivétel keletkezik abban az esetben, ha az oszlop duplikált oszlopnevek tartalmaz, és nem engedélyezett.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, amikor oszlopnevek ismétlődik; Ez azt jelenti, hogy nem egyedi.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor az oszlopnevek duplikálva vannak; Ez nem egyedi.  
   
-**Megoldás:** Az összes oszlop rendelkezik-e ugyanaz a név, adjon hozzá egy [metaadatainak szerkesztése](edit-metadata.md) a bemeneti adatkészlet és a modul a hiba előléptetése között. Használja az oszlopot az Oszlopválasztóban [metaadatainak szerkesztése](edit-metadata.md) nevezze át, és írja be az új oszlopok nevét, az oszlopok kiválasztásához a **új oszlopnevek** szövegmezőbe. Ha több oszlopot, ellenőrizze, hogy a beírt értékeket az **új oszlopnevek** egyediek.  
+**Megoldás:** Ha bármely oszlop neve azonos, adja hozzá a [metaadatok szerkesztése](edit-metadata.md) a bemeneti adatkészletbe és a hibát növelő modulba. Az átnevezni kívánt oszlopok kiválasztásához használja az oszlop-választót a [metaadatok szerkesztése](edit-metadata.md) elemre, majd írja be az új oszlopok nevét az **új oszlopnevek** szövegmezőbe. Több oszlop átnevezése esetén ügyeljen arra, hogy az **új oszlopokban** megadott értékek egyediek legyenek.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Oszlop ismétlődő oszlop neve tartalmazza.|  
-|A név "{0}" je duplicitní.|  
-|A név "{0}"duplikálódnak a"{1}".|  
+|Az oszlop a duplikált oszlop neve (ke) t tartalmazza.|  
+|A következő név{0}duplikált: "".|  
+|A "{0}" név duplikálva van a következőben{1}: "".|  
   
 
 ## <a name="error-0029"></a>0029 hiba  
- Kivétel lép fel, abban az esetben, amikor átadott URI érvénytelen.  
+ Kivétel fordul elő abban az esetben, ha a rendszer érvénytelen URI-értéket ad át.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, abban az esetben, amikor átadott URI érvénytelen.  Ez a hiba fog kapni, ha az alábbi feltételek bármelyike igaz:, vagy a.  
+ Ez a hiba Azure Machine Learning esetén akkor fordul elő, ha a rendszer érvénytelen URI-t ad át.  Ez a hibaüzenet akkor jelenik meg, ha a következő feltételek bármelyike teljesül: vagy.  
   
--   A nyilvános vagy a SAS URI-t az Azure Blob Storage olvasási vagy megadott írási hibát tartalmaz.  
+-   Az olvasási vagy írási Azure Blob Storage számára megadott nyilvános vagy SAS URI-azonosító hibát tartalmaz.  
   
--   A SAS időtartományából lejárt.  
+-   Az SAS időtartománya lejárt.  
   
--   A webes URL-cím via HTTP-forrás egy fájl vagy egy visszacsatolási URI-t jelöli.  
+-   A webes URL-cím HTTP-forráson keresztül egy fájlt vagy egy visszacsatolási URI-t jelöl.  
   
--   A webes URL-cím a HTTP Protokollon keresztül egy nem megfelelően formázott URL-címet tartalmaz.  
+-   A HTTP-n keresztüli webes URL-cím helytelenül formázott URL-címet tartalmaz.  
   
--   Az URL-cím nem oldható fel a távoli forrás.  
+-   A távoli forrás nem tudja feloldani az URL-címet.  
   
-**Megoldás:** Nyissa meg újra a modult, és ellenőrizze az URI formátumát. Ha az adatforrás egy webes URL-címet a HTTP Protokollon keresztül, ellenőrizze, hogy a tervezett forrás nem egy fájl vagy egy visszacsatolási URI (localhost).  
+**Megoldás:** Nyissa meg újra a modult, és ellenőrizze az URI formátumát. Ha az adatforrás HTTP-n keresztüli webes URL-cím, ellenőrizze, hogy a kívánt forrás nem fájl vagy visszacsatolási URI (localhost).  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Érvénytelen Uri lett átadva.|  
+|A rendszer érvénytelen URI-t adott át.|  
   
 
 ## <a name="error-0030"></a>0030 hiba  
- Kivétel történt abban az esetben, ha az nem lehet letölteni a fájlt.  
+ Kivétel keletkezik abban az esetben, ha a fájl letöltése nem lehetséges.  
   
- Ez a kivétel az Azure Machine Learning akkor fordul elő, ha az nem lehet letölteni a fájlt. Ez a kivétel fog kapni, amikor egy HTTP-forrás egy megkísérelt olvasása sikertelen volt a három (3) ismételt próbálkozás után megpróbál.  
+ Ez a kivétel Azure Machine Learning akkor következik be, amikor nem lehet letölteni egy fájlt. Ez a kivétel akkor fog megjelenni, ha egy HTTP-forrásból való olvasási kísérlet három (3) újrapróbálkozás után meghiúsult.  
   
-**Megoldás:** Ellenőrizze, hogy helyesen szerepel-e a HTTP-forrás az URI-t, és hogy a hely jelenleg elérhető az interneten keresztül.  
+**Megoldás:** Győződjön meg arról, hogy a HTTP-forrás URI-ja helyes, és hogy a hely jelenleg elérhető az interneten keresztül.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
 |Nem sikerült letölteni a fájlt.|  
-|Hiba történt a fájl letöltése: {0}.|  
+|Hiba történt a fájl letöltésekor {0}:.|  
   
 
 ## <a name="error-0031"></a>0031 hiba  
- Kivétel lép fel, ha oszlopkészlet szereplő oszlopok száma kisebb, mint amennyi szükséges.  
+ Kivétel történik, ha a készlet oszlopainak száma kisebb a szükségesnél.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha a kijelölt oszlopok száma kisebb, mint amennyi szükséges.  A hibaüzenetet fog kapni, ha a minimálisan szükséges, hogy nincsenek kijelölve oszlopok számát.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha a kiválasztott oszlopok száma kisebb a szükségesnél.  Ez a hibaüzenet akkor jelenik meg, ha nincs kiválasztva a minimálisan szükséges oszlopok száma.  
   
-**Megoldás:** A kijelölés használatával további oszlopok hozzáadása a **Oszlopválasztó**.  
+**Megoldás:** Adjon hozzá további oszlopokat az oszlop kiválasztásához az **oszlop választójának**használatával.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Oszlopkészlet szereplő oszlopok száma kisebb, mint a szükséges.|  
-|{0} oszlopot kell megadni. A megadott oszlopok tényleges száma {1}.|  
+|A set oszlop oszlopainak száma kisebb a szükségesnél.|  
+|{0}meg kell adni az oszlop (oka) t. A megadott oszlopok {1}tényleges száma.|  
 
-## <a name="error-0032"></a>0032 hiba  
- Kivétel lép fel, ha az argumentuma nem szám.  
+## <a name="error-0032"></a>0032-es hiba  
+ Kivétel történik, ha az argumentum nem szám.  
   
- Ezt a hibaüzenetet fog kapni az Azure Machine Learning, ha az argumentum értéke egy dupla és a NaN.  
+ Ezt a hibaüzenetet akkor kapja meg Azure Machine Learning, ha az argumentum egy dupla vagy NaN.  
   
-**Megoldás:** Módosítsa a megadott argumentum egy érvényes értéket használja.  
+**Megoldás:** Módosítsa a megadott argumentumot érvényes érték használatára.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
 |Az argumentum nem szám.|  
-|"{0}" nem szám.|  
+|a{0}"" nem szám.|  
   
 
-## <a name="error-0033"></a>0033 hiba  
- Kivétel lép fel, ha az argumentuma Infinity.  
+## <a name="error-0033"></a>0033-es hiba  
+ Kivétel történik, ha az argumentum végtelen.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha az argumentum végtelen. Ez a hiba fog kapni, ha az argumentum `double.NegativeInfinity` vagy `double.PositiveInfinity`.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha az argumentum végtelen. Ez a hibaüzenet akkor jelenik meg, ha az argumentum `double.NegativeInfinity` vagy `double.PositiveInfinity`vagy.  
   
-**Megoldás:** Módosítsa a megadott argumentum nem egy érvényes értéket.  
+**Megoldás:** Módosítsa a megadott argumentumot érvényes értékre.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Argumentum véges kell lennie.|  
-|"{0}" nem véges.|  
+|Az argumentumnak véges kell lennie.|  
+|a{0}"" nem véges.|  
   
 
-## <a name="error-0034"></a>0034 hiba  
- Kivétel lép fel, több minősítés az egy adott felhasználó-cikk pár van-e.  
+## <a name="error-0034"></a>0034-es hiba  
+ Kivétel történik, ha egynél több minősítés létezik egy adott felhasználói elemmel rendelkező pár esetében.  
   
- Ez a hiba az Azure Machine Learning javaslatban akkor jelentkezik, ha egy felhasználó-cikk pár egynél több minősítés értékkel rendelkezik.  
+ Ez a hiba Azure Machine Learning fordul elő abban az esetben, ha egy felhasználói Item pár több minősítési értékkel rendelkezik.  
   
-**Megoldás:** Győződjön meg arról, hogy a felhasználó-cikk pár rendelkezik-e egy minősítési érték csak.  
+**Megoldás:** Győződjön meg arról, hogy a felhasználó-Item pár csak egy minősítési értéket rendelkezik.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Egynél több minősítés létezik az adatkészletben lévő értékeket.|  
-|Felhasználó egynél több minősítés {0} és elemének {1} minősítés előrejelzési adatokat táblában.|  
+|Egynél több minősítés létezik az adatkészletben lévő érték (ek) hez.|  
+|Egynél több minősítés a felhasználó {0} és a cikk {1} számára a minősítés előrejelzési adattáblájában.|  
   
 
-## <a name="error-0035"></a>0035 hiba  
- Kivétel lép fel, ha nem szolgáltatások egy adott felhasználó vagy az elem van megadva.  
+## <a name="error-0035"></a>0035-es hiba  
+ Kivétel történik, ha egy adott felhasználó vagy elem számára nem adtak meg szolgáltatásokat.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, javaslat modellt alkalmaznak a pontozó próbált, de a szolgáltatás vektor nem található.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha egy ajánlási modellt próbál használni a pontozáshoz, de nem található a szolgáltatás vektora.  
   
 **Megoldás:**
 
-A Matchbox ajánló vannak bizonyos feltételei, elem szolgáltatások vagy a felhasználói funkciók használata szükséges.  Ez a hiba azt jelzi, hogy a szolgáltatás vektor egy felhasználó vagy a bemenetként megadott elem hiányzik.  Biztosítania kell, hogy egy vektoros funkciók érhető el minden elem vagy felhasználói adatok.  
+A Matchbox-ajánló rendelkezik bizonyos követelményekkel, amelyeket az elemek vagy a felhasználói szolgáltatások használatakor kell teljesíteni.  Ez a hiba azt jelzi, hogy hiányzik egy szolgáltatás-vektor a bemenetként megadott felhasználó vagy elem számára.  Biztosítania kell, hogy az egyes felhasználók vagy elemek számára elérhetők legyenek a szolgáltatások egy vektora.  
   
- Például ha, betanított ajánlás modellkezelési szolgáltatások, például a felhasználó betöltötte, hely vagy jövedelem, de most szeretne létrehozni az új felhasználók, akik nem jelentek-betanítás, során meg kell adnia néhány egyenértékű funkciócsoport pontszámok (azaz, kor, hely, és bevétel értékek) az új felhasználók annak érdekében, hogy a számukra megfelelő előrejelzéseket. 
+ Ha például a felhasználó korát, helyét vagy bevételét használó funkciókkal, de most olyan új felhasználók számára szeretne pontszámokat létrehozni, akik nem voltak jelen a képzés során, meg kell adnia a funkciók megfelelő készletét (azaz az életkort, a helyet és a bevételi értékek) az új felhasználók számára a megfelelő előrejelzések létrehozásához. 
  
- Ha nem kell ezeknek a felhasználóknak minden olyan funkciók, fontolja meg a funkciófejlesztési létrehozásához szükséges szolgáltatásokat.  Például ha nem rendelkezik egyedi felhasználói kora vagy jövedelem értékeket, előfordulhat, hogy létrehozza a hozzávetőleges értékeket kell használnia a felhasználók egy csoportjánál. 
+ Ha nem rendelkezik ezekkel a felhasználókkal, érdemes lehet a megfelelő funkciók létrehozásához.  Ha például nem rendelkezik egyéni felhasználói kor-vagy bevételi értékekkel, a felhasználók egy csoportjára vonatkozóan megközelítő értékeket is létrehozhat. 
  
 <!--When you are scoring from a recommendation mode, you can use item or user features only if you previously used item or user features during training. For more information, see [Score Matchbox Recommender](score-matchbox-recommender.md).
  
 For general information about how the Matchbox recommendation algorithm works, and how to prepare a dataset of item features or user features, see [Train Matchbox Recommender](train-matchbox-recommender.md).  -->
   
  > [!TIP]
- > A megoldás nem alkalmazható az Ön esetében? Üdvözli az ezen a cikken visszajelzés küldésére és a forgatókönyv, beleértve a modul és a sorok száma az az oszlop információ áll. Fog ez az információ biztosítása érdekében használjuk részletesebb hibaelhárítási lépéseket a jövőben.
+ > A megoldás nem alkalmazható az adott esetre? Szívesen küld visszajelzést erről a cikkről, és információt nyújt a forgatókönyvről, beleértve a modult és a sorok számát az oszlopban. Ezeket az információkat a jövőben részletesebb hibaelhárítási lépések megadására fogjuk használni.
    
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nincsenek szolgáltatások szükséges felhasználói vagy elem van megadva.|  
-|A szolgáltatások {0} szükséges, de nincs megadva.|  
+|Nem adtak meg szolgáltatásokat a szükséges felhasználóhoz vagy elemhez.|  
+|A szükséges {0} , de nem megadott funkciók.|  
   
 
-## <a name="error-0036"></a>0036 hiba  
- Kivétel lép fel, ha több szolgáltatás vektorok egy adott felhasználó vagy az elem van megadva.  
+## <a name="error-0036"></a>0036-es hiba  
+ Kivétel történik, ha egy adott felhasználóhoz vagy elemhez több szolgáltatás-vektor van megadva.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha egy szolgáltatás vektor egynél többször van definiálva.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha egy szolgáltatás vektora egynél többször van definiálva.  
   
-**Megoldás:** Győződjön meg arról, hogy a szolgáltatás vektor nincs definiálva egynél többször.  
+**Megoldás:** Győződjön meg arról, hogy a szolgáltatás vektora egynél többször van definiálva.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Ismétlődő funkció egy felhasználó vagy egy elem definíciója.|  
-|A szolgáltatás definíciója ismétlődő {0}.|  
+|Egy felhasználó vagy elem duplikált funkció-definíciója.|  
+|Duplikált a szolgáltatás {0}definíciója a következőhöz:.|  
   
 
-## <a name="error-0037"></a>0037 hiba  
- Kivétel lép fel, ha a címke több oszlop van megadva, és csak egy engedélyezett.  
+## <a name="error-0037"></a>0037-es hiba  
+ Kivétel történik, ha több címke oszlop van megadva, és csak egy engedélyezett.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha egynél több oszlop van kijelölve, az új címke oszlopot kell. Legtöbb felügyelt tanulási algoritmusok kell megjelölni a cél vagy a címkét, csak egy oszlop van szükség.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha egynél több oszlop van kiválasztva az új címke oszlopnak. A legtöbb felügyelt tanulási algoritmushoz meg kell adni egy oszlopot, amely célként vagy címkével van megjelölve.  
   
-**Megoldás:** Ellenőrizze, hogy csak egy oszlop kiválasztása az új címke oszlopként.  
+**Megoldás:** Ügyeljen arra, hogy egyetlen oszlopot jelöljön ki az új címke oszlopként.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Több címke oszlop van megadva.|  
+|Több címkét tartalmazó oszlop van megadva.|  
   
 
-## <a name="error-0038"></a>0038 hiba  
- Kivétel akkor fordul elő, ha az elemek várt száma pontos szám lehet, de nem.  
+## <a name="error-0038"></a>0038-es hiba  
+ Kivétel történik, ha a várt elemek számának pontos értéknek kell lennie, de nem.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha az elemek várt száma pontos szám lehet, de nem.  A hibaüzenetet fog kapni, ha az elemek száma nem egyenlő a érvényes várt értékkel.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha a várt elemek számának pontos értéknek kell lennie, de nem.  Ez a hibaüzenet akkor jelenik meg, ha az elemek száma nem egyezik meg az érvényes várt értékkel.  
   
-**Megoldás:** Módosítsa a bemeneti rendelkezik a megfelelő elemek száma.  
+**Megoldás:** Módosítsa a bemenetet a megfelelő számú elem megadásához.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Elemek értéke nem érvényes.|  
-|Az elemek száma "{0}" nem érvényes.|  
-|Az elemek száma "{0}" nem érvényes száma egyenlő {1} elem(ek).|  
+|Az elemek száma érvénytelen.|  
+|A "{0}" elemben szereplő elemek száma érvénytelen.|  
+|A (z) "{0}" elemek száma nem egyezik meg az {1} elem (ek) érvényes számával.|  
   
 
-## <a name="error-0039"></a>0039 hiba  
- Kivétel lép fel, ha egy művelet sikertelen volt.  
+## <a name="error-0039"></a>0039-es hiba  
+ Kivétel történik, ha egy művelet meghiúsult.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, amikor egy belső művelet nem hajtható végre.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha egy belső művelet nem hajtható végre.  
   
-**Megoldás:** Ezt a hibát sok feltétel okozza, és nem áll rendelkezésre egyedi jogorvoslat.  
- Az alábbi táblázat tartalmazza a hiba általános üzenetekről, amelyeken a rendszer egy adott feltétel leírása követ. 
+**Megoldás:** Ezt a hibát számos feltétel okozta, és nincs konkrét orvoslás.  
+ A következő táblázat a hiba általános üzeneteit tartalmazza, amelyeket a feltétel adott leírása követ. 
  
- Részletek nem érhetők el, ha [visszajelzés küldése](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning) és ismertetik a modulok által generált a hibát, és a kapcsolódó feltételeket.
+ Ha nem áll rendelkezésre adat, [küldjön visszajelzést](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning) , és adja meg a hibát generáló modulok adatait és a kapcsolódó feltételeket.
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem sikerült.|  
-|Hiba történt a művelet befejezése: {0}.|  
+|A művelet sikertelen volt.|  
+|Hiba történt a művelet végrehajtása {0}közben:.|  
   
 
-## <a name="error-0040"></a>0040 hiba  
- Kivétel történt egy elavult modul hívása során.  
+## <a name="error-0040"></a>0040-es hiba  
+ Kivétel történik egy elavult modul meghívásakor.  
   
- Ez a hiba az Azure Machine Learning egy elavult modul hívása során jön létre.  
+ Ez a hiba a Azure Machine Learning egy elavult modul meghívásakor jön létre.  
   
-**Megoldás:** Cserélje le az elavult modul egy támogatott. A modul kimeneti naplót, mely modul használja helyette a információkat talál.  
+**Megoldás:** Cserélje le az elavult modult egy támogatottra. Tekintse meg a modul kimeneti naplóját a használni kívánt modulra vonatkozó információkért.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Elavult modul elérése.|  
-|A modul "{0}" elavult. Használja a modul "{1}" helyett.|  
- 
-
-## <a name="error-0041"></a>0041 hiba  
- Kivétel történt egy elavult modul hívása során.  
-  
- Ez a hiba az Azure Machine Learning egy elavult modul hívása során jön létre.  
-  
-**Megoldás:** Cserélje le az elavult modul támogatott eszközök készletét. Ezt az információt meg fognak jelenni a modul kimeneti naplót.  
-  
-|Kivétel üzenetek|  
-|------------------------|  
-|Elavult modul elérése.|  
-|A modul "{0}" elavult. A modulok használata "{1}" a kért funkció.|  
+|Az elavult modul elérése.|  
+|A ({0}z) "" modul elavult. Használja helyette{1}a következőt: "".|  
  
 
-## <a name="error-0042"></a>0042 hiba  
- Kivétel lép fel, ha az nem lehet átalakítani az oszlop egy másik.  
+## <a name="error-0041"></a>0041-es hiba  
+ Kivétel történik egy elavult modul meghívásakor.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha az nem lehet átalakítani oszlopot a megadott típusra.  A hibaüzenetet fog kapni, ha egy modulnak szüksége van egy adott adattípus, például a dátum és idő, szöveg, lebegőpontos számot vagy egész szám, de nem lehet átalakítani egy létező oszlop típusának megadása kötelező.  
+ Ez a hiba a Azure Machine Learning egy elavult modul meghívásakor jön létre.  
+  
+**Megoldás:** Cserélje le az elavult modult egy támogatott csoportra. Ezeket az információkat a modul kimeneti naplójában kell megjeleníteni.  
+  
+|Kivételek üzenetei|  
+|------------------------|  
+|Az elavult modul elérése.|  
+|A ({0}z) "" modul elavult. A kért funkciókhoz{1}használja a "" modulokat.|  
  
-Például előfordulhat, hogy válasszon ki egy oszlopot, és próbálja meg azt a matematikai művelet használható egy numerikus adattípusúra konvertálása, és ezt a hibát kap, ha az oszlop érvénytelen adatokat tartalmazott. 
 
-A másik ok lehet, hogy megjelenik a hibaüzenet, ha megpróbálja használni a kategorikus oszlopként lebegőpontos számok vagy sok egyedi értékeket tartalmazó oszlop. 
+## <a name="error-0042"></a>0042-es hiba  
+ Kivétel történik, ha az oszlopot nem lehet más típusúra konvertálni.  
+  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor nem lehetséges az oszlop konvertálása a megadott típusra.  Ez a hibaüzenet akkor jelenik meg, ha egy modulhoz egy adott adattípus szükséges, például a DateTime, a Text, a lebegőpontos szám vagy egész érték, de a meglévő oszlopokat nem lehet a szükséges típusra konvertálni.  
+ 
+Kiválaszthat például egy oszlopot, és megpróbálhatja a numerikus adattípusra konvertálni a matematikai műveletekben való használathoz, és ha az oszlop érvénytelen értékeket tartalmaz, ezt a hibaüzenetet kapja. 
+
+Ez a hiba akkor fordulhat elő, ha olyan oszlopot próbál használni, amely lebegőpontos számokat vagy sok egyedi értéket tartalmaz kategorikus oszlopként. 
   
 **Megoldás:**
 
-+ Nyissa meg a következő súgóoldalt a modul, amely a hibát okozta, és ellenőrizze az adattípus-követelményekkel.
-+ Tekintse át a bemeneti adatkészlet az oszlopok adattípusát.
-+ Vizsgálja meg az úgynevezett séma nélküli adatforrások származó adatokat.
-+ Ellenőrizze az adatkészlet a hiányzó értékeket vagy speciális karaktereket, amelyek blokkolhatják a kívánt adattípusra történő átalakítás. 
-    + Numerikus adattípusok összhangban kell lennie: például ellenőrizze a lebegőpontos számok egy egész számot tartalmazó oszlop.
-    + Keresse meg a szöveges karakterlánc vagy szám oszlop értékeinek NA. 
-    + Logikai értékek konvertálható a szükséges adatok típusától függően egy megfelelő választ.
-    + Vizsgálja meg a szöveges oszlopok nem unicode-karaktereket, tabulátor karakter vagy vezérlőkaraktereket
-    + Dátum és idő adatok modellezése a hibák elkerülése érdekében összhangban kell lennie, de a karbantartás miatt a sok formátumok összetett folyamat lehet. Fontolja meg <!--the [Execute R Script](execute-r-script.md) or -->[Python-szkript végrehajtása](execute-python-script.md) modulok fölösleges elemeket.  
-+ Szükség esetén módosítsa az értékeket a bemeneti adatkészletben, hogy az oszlop sikeresen lehet konvertálni. Módosítás tartalmazhat dobozolás, csonkolása vagy kerekítési üzemeltetési és kiugró értékek kiszűrése vagy imputálási érték hiányzik. Machine learning néhány általános adatok átalakítása forgatókönyvhöz a következő cikkekben talál:
-    + [Hiányzó adatok törlése](clean-missing-data.md)
-    + [Adatok optimalizálása](normalize-data.md)
++ Nyissa meg a hibát generáló modul Súgó lapját, és ellenőrizze az adattípus követelményeit.
++ Tekintse át az oszlopok adattípusait a bemeneti adatkészletben.
++ Az úgynevezett séma nélküli adatforrásokból származó információk vizsgálata.
++ A hiányzó értékeket vagy speciális karaktereket tartalmazó adatkészletben keresse meg a kívánt adattípusra való átalakítást blokkoló adatokat. 
+    + A numerikus adattípusoknak konzisztenseknek kell lenniük: például a lebegőpontos számok egy egész számú oszlopban való keresésével.
+    + Keressen szöveges karakterláncokat vagy NA értékeket egy Number oszlopban. 
+    + A logikai értékeket a szükséges adattípustól függően megfelelő ábrázolásra lehet konvertálni.
+    + Nem Unicode karakterek, tabulátorok vagy vezérlőkarakterek szöveg oszlopainak vizsgálata
+    + A DateTime típusú adatmennyiségnek konzisztensnek kell lennie a modellezési hibák elkerüléséhez, de a tisztítás számos formátum miatt bonyolult lehet. Érdemes használni <!--the [Execute R Script](execute-r-script.md) or -->[Python parancsfájl](execute-python-script.md) -modulok végrehajtása a tisztítás végrehajtásához.  
++ Ha szükséges, módosítsa a bemeneti adatkészlet értékeit, hogy az oszlop sikeresen konvertálható legyen. A módosítás magában foglalhatja a dobozolási, a csonkítás vagy a kerekítési műveletet, a kiugró értékek megszüntetését vagy a hiányzó értékek imputálási. A Machine learningben a következő cikkekben talál néhány gyakori Adatátalakítási forgatókönyvet:
+    + [Hiányzó adatértékek törlése](clean-missing-data.md)
+    + [Az adatnormalizálás](normalize-data.md)
 <!--+ [Clip Values](clip-values.md) 
     + [Group Data Into Bins](group-data-into-bins.md)
   -->
  
 > [!TIP]
-> Nem egyértelmű vagy nem van megoldás? Üdvözli az ezen a cikken visszajelzés küldésére és a forgatókönyv, beleértve a modul, és az oszlop adattípusát információ áll. Fog ez az információ biztosítása érdekében használjuk részletesebb hibaelhárítási lépéseket a jövőben.  
+> A feloldás nem egyértelmű, vagy nem alkalmazható az adott esetre? Szívesen küld visszajelzést erről a cikkről, és információt nyújt a forgatókönyvről, beleértve a modult és az oszlop adattípusát. Ezeket az információkat a jövőben részletesebb hibaelhárítási lépések megadására fogjuk használni.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Átalakítás nem engedélyezett.|  
-|Nem sikerült átalakítani típusú oszlop {0} típusú oszlopra {1}.|  
-|Nem sikerült átalakítani az oszlop "{2}" típusú {0} típusú oszlopra {1}.|  
-|Nem sikerült átalakítani az oszlop "{2}" típusú {0} oszlopra "{3}" típusú {1}.|  
+|Nem engedélyezett a konverzió.|  
+|A típusú oszlop {0} nem alakítható át típusú {1}oszlopba.|  
+|A (z) típusú{2}"" oszlop nem alakítható át {1}típusú oszlopba. {0}|  
+|A (z) "{2}" típusú " {0} " oszlop nem{3}konvertálható " {1}" típusúra.|  
   
 
-## <a name="error-0043"></a>0043 hiba  
- Typ prvku explicit módon nem implementálja egyenlő kivétel lép fel.  
+## <a name="error-0043"></a>0043-es hiba  
+ Kivétel történik, ha az elemtípus explicit módon nem valósítja meg az egyenlő értéket.  
   
- Ez a hiba az Azure Machine Learning a fel nem használt, és elavulttá válik.  
+ Ez a hiba Azure Machine Learning nem használható, és a rendszer elavult.  
   
 **Megoldás:** Nincs.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nincs elérhető explicit metódus egyenlő található.|  
-|Nem lehet két értéket oszlop \\"{0}\\" típusú {1}. Nincs elérhető explicit metódus egyenlő található.|  
+|Nem található elérhető explicit metódus.|  
+|\\A típusú{0}""\\oszlophoz tartozó értékek nem hasonlíthatók össze. {1} Nem található elérhető explicit metódus.|  
 
 
-## <a name="error-0044"></a>0044 hiba  
- Kivétel lép fel, ha az nem lehetséges a meglévő értékek elem típusú oszlop.  
+## <a name="error-0044"></a>0044-es hiba  
+ Kivétel történik, ha a meglévő értékekből nem lehet származtatni az oszlop típusát.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha az nem lehetséges következtetnek ki egy oszlopot vagy oszlopokat az adatkészlet típusa. Ez általában akkor fordul elő, amikor két vagy több adatkészletet előállítjuk a különböző elem típusát. Ha az Azure Machine Learning nem határozható meg a közös típust, amely képes egy oszlop- vagy információveszteség nélkül oszlop összes értékét képviselik, ezt a hibát generál.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor nem lehet következtetni egy oszlop vagy oszlop típusára egy adatkészletben. Ez általában akkor fordul elő, ha két vagy több olyan adatkészletet fűz össze, amelyek különböző típusú elemeket tartalmaznak. Ha Azure Machine Learning nem tud megállapítani egy olyan közös típust, amely egy oszlop vagy oszlop összes értékének az információ elvesztése nélkül való ábrázolására képes, ez a hibaüzenetet eredményezi.  
   
-**Megoldás:** Győződjön meg arról, hogy az összes mindkét olyan adatkészlettel, kombinált az adott oszlop értékei azonos egyikét írja be a (numerikus, logikai, kategorikus, string, dátum, stb.), vagy az azonos típusú is kényszeríthető.  
+**Megoldás:** Győződjön meg arról, hogy a két adatkészletben található adott oszlopban lévő összes érték azonos típusú (numerikus, logikai, kategorikus, karakterlánc, dátum stb.), vagy kényszerített lehet ugyanarra a típusra.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem sikerült kinyerni az elem típusú oszlop.|  
-|Nem sikerült kinyerni az elem típusa "{0}" – az összes az elemei null értékű hivatkozásokat.|  
-|Nem sikerült kinyerni az elem típusa "{0}", "adatkészlet{1}" – az összes az elemei null értékű hivatkozásokat.|  
+|Az oszlop elemének típusa nem származtatható.|  
+|A (z) "{0}" oszlophoz tartozó elemtípus nem származtatható – az összes elem null hivatkozás.|  
+|Nem származtatható a (z){0}""{1}adatkészlet "" oszlopának típusa – az összes elem null hivatkozás.|  
   
 
-## <a name="error-0045"></a>0045 hiba  
- Kivétel lép fel, ha az nem lehet létrehozni egy oszlop miatt a forrás vegyes elem típusát.  
+## <a name="error-0045"></a>0045-es hiba  
+ Kivétel keletkezik, ha a forrás vegyes típusú elemei miatt nem lehet oszlopot létrehozni.  
   
- Ez a hiba az Azure Machine Learning jön létre, ha a két adatkészlet kombinált elem típusú különböznek.  
+ Ez a hiba akkor jön létre a Azure Machine Learningban, ha a két adathalmaz összevont elemeinek típusa eltérő.  
   
-**Megoldás:** Győződjön meg arról, hogy az összes mindkét olyan adatkészlettel, kombinált az adott oszlop értékei (numerikus, logikai, kategorikus, string, dátum, stb.) azonos típusú.  
+**Megoldás:** Győződjön meg arról, hogy az adott oszlopban lévő összes érték azonos típusú (numerikus, logikai, kategorikus, string, Date stb.).  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Vegyes elemtípus oszlop nem hozható létre.|  
-|Azonosítójú oszlop nem hozható létre "{0}" elem vegyes típusok: \n\tType az adatok az [{1}, {0}] van {2}\n\tType az adatok [{3}, {0}] van {4}.|  
+|Vegyes elem típusú oszlop nem hozható létre.|  
+|Nem hozható létre "" nevű{0}oszlop a (z{3}{1} {4}) "" vegyes típusú elemeknél: {0}\ n\tType {2}[,] \n\tType [ {0},].|  
   
 
-## <a name="error-0046"></a>0046 hiba  
- Kivétel lép fel, ha az nem könyvtár létrehozása a megadott elérési úton lehetséges.  
+## <a name="error-0046"></a>0046-es hiba  
+ Kivétel történik, ha a megadott elérési úton nem lehet könyvtárat létrehozni.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha az nem lehet létrehozni egy könyvtárat a megadott elérési úton. Ezt a hibaüzenetet fog kapni, ha bármely részét a kimeneti könyvtárba, egy Hive-lekérdezés helytelen vagy nem érhető el.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor nem lehet könyvtárat létrehozni a megadott elérési úton. Ez a hibaüzenet akkor jelenik meg, ha a kaptár-lekérdezés kimeneti könyvtárának bármelyik része helytelen vagy nem érhető el.  
   
-**Megoldás:** Nyissa meg újra a modult, és győződjön meg arról, hogy a könyvtár elérési útja megfelelően van formázva, valamint, hogy elérhető-e az aktuális hitelesítő adatokkal.  
+**Megoldás:** Nyissa meg újra a modult, és ellenőrizze, hogy a könyvtár elérési útja helyesen van-e formázva, és hogy elérhető-e az aktuális hitelesítő adatokkal.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Adjon meg egy érvényes kimeneti könyvtár.|  
-|Könyvtár: {0} nem hozható létre. Adjon meg érvényes elérési utat.|  
+|Érvényes kimeneti könyvtárat kell megadnia.|  
+|Könyvtár: {0} nem hozható létre. Érvényes elérési utat kell megadni.|  
   
 
-## <a name="error-0047"></a>Hiba történt a 0047  
- Kivétel lép fel, amennyiben az adatkészletek a modulba átadott néhány funkció oszlopok száma túl kicsi.  
+## <a name="error-0047"></a>0047-es hiba  
+ Kivétel történik, ha a modulnak átadott egyes adatkészletekben a szolgáltatás oszlopainak száma túl kicsi.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha a bemeneti adatkészlet betanítás nem tartalmaz oszlopokat az algoritmus által megkövetelt minimális számát. Általában vagy az adatkészletet üres, vagy csak a betanítási oszlopokat tartalmazza.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha a betanításhoz megadott bemeneti adatkészlet nem tartalmazza az algoritmus által igényelt oszlopok minimális számát. Jellemzően vagy az adatkészlet üres, vagy csak képzési oszlopokat tartalmaz.  
   
-**Megoldás:** Nyissa meg újra a bemeneti adatkészletet, győződjön meg arról, hogy egy vagy több további oszlopokat a címke oszlop szereplőkkel.  
+**Megoldás:** Nyissa meg újra a bemeneti adatkészletet, és győződjön meg arról, hogy egy vagy több további oszlop található a Label (címke) oszlop mellett.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A bemeneti adatkészlet funkció oszlopok száma nem kisebb, mint a minimális.|  
-|A bemeneti adatkészlet funkció oszlopok száma kisebb, mint a minimálisan megengedett {0} oszlopot.|  
-|A bemeneti adatkészlet funkció oszlopok száma "{0}" kisebb, mint a minimálisan megengedett {1} oszlopot.|  
+|A bemeneti adatkészlet funkció oszlopainak száma kevesebb, mint a minimálisan megengedett érték.|  
+|A bemeneti adatkészletben szereplő szolgáltatások oszlopainak száma kevesebb, mint {0} az oszlop (ok) minimuma.|  
+|A (z) "{0}" bemeneti adatkészletben szereplő szolgáltatások oszlopainak száma kevesebb, mint az {1} oszlop (ok) minimuma.|  
   
 
-## <a name="error-0048"></a>0048 hiba  
- Kivétel történt abban az esetben, ha az nem lehet megnyitni a fájlt.  
+## <a name="error-0048"></a>0048-es hiba  
+ Kivétel keletkezik abban az esetben, ha egy fájlt nem lehet megnyitni.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha az nem lehet írni, vagy nyisson meg egy fájlt olvasásra. Ebből kifolyólag előfordulhat, hogy ezt a hibaüzenetet kapja:  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor nem lehet fájlt megnyitni olvasásra vagy írásra. A következő okok miatt előfordulhat, hogy ezt a hibaüzenetet kapja:  
   
--   A tároló vagy a fájlra (blobra) nem létezik  
+-   A tároló vagy a fájl (blob) nem létezik.  
   
--   A fájl vagy a tároló hozzáférési szintjét nem teszi lehetővé a fájl eléréséhez  
+-   A fájl vagy tároló hozzáférési szintje nem teszi lehetővé a fájl elérését  
   
--   A fájl mérete túl nagy, olvassa el, vagy formátuma nem megfelelő  
+-   A fájl túl nagy az olvasáshoz vagy a helytelen formátumhoz  
   
-**Megoldás:** Nyissa meg újra a modult, és az olvasni kívánt fájlt.  
+**Megoldás:** Nyissa meg újra a modult és az olvasni kívánt fájlt.  
   
- Győződjön meg arról, hogy helyesek-e a tároló és a fájl nevét.  
+ Ellenőrizze, hogy a tároló és a fájl neve helyes-e.  
   
- A klasszikus Azure portálon vagy az Azure storage eszköz használatával ellenőrizze, hogy rendelkezik-e engedélye a fájl elérésére.  
+ A klasszikus Azure portál vagy egy Azure Storage-eszköz használatával ellenőrizze, hogy rendelkezik-e a fájl eléréséhez szükséges engedéllyel.  
   
   <!--If you are trying to read an image file, make sure that it meets the requirements for image files in terms of size, number of pixels, and so forth. For more information, see [Import Images](import-images.md).  -->
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem lehet megnyitni a fájlt.|  
-|Hiba történt a fájl megnyitásakor: {0}.|  
+|Nem lehet megnyitni egy fájlt.|  
+|Hiba történt a fájl megnyitásakor {0}:.|  
 
 
-## <a name="error-0049"></a>0049 hiba  
- Kivétel történt abban az esetben, ha az nem lehet elemezni a fájlt.  
+## <a name="error-0049"></a>0049-es hiba  
+ Kivétel keletkezik abban az esetben, ha nem lehet fájlt elemezni.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha az nem lehet elemezni a fájlt. Ez a hiba fog kapni, ha a fájl formátuma kijelölt a [adatok importálása](import-data.md) modul nem felel meg a fájl tényleges formátumát, vagy ha a fájl egy felismerhetetlen karaktert tartalmaz.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor egy fájlt nem lehet elemezni. Ez a hibaüzenet akkor jelenik meg, ha az [adatok importálása](import-data.md) modulban kiválasztott fájlformátum nem egyezik a fájl tényleges formátumával, vagy ha a fájl nem felismerhető karaktert tartalmaz.  
   
-**Megoldás:** Nyissa meg újra a modult, és javítsa ki a fájl formátuma lehetőséget, ha a fájl formátuma nem egyezik. Ha lehetséges vizsgálja meg a fájlt annak ellenőrzéséhez, hogy nem tartalmaz érvénytelen karaktereket.  
+**Megoldás:** Nyissa meg újra a modult, és javítsa ki a fájlformátum kijelölését, ha az nem egyezik meg a fájl formátumával. Ha lehetséges, vizsgálja meg a fájlt annak ellenőrzéséhez, hogy az nem tartalmaz-e szabálytalan karaktereket.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem sikerült elemezni a fájlt.|  
+|Nem lehet elemezni egy fájlt.|  
 |Hiba történt a fájl elemzésekor: {0}.|  
   
 
-## <a name="error-0050"></a>0050 hiba  
- Kivétel lép fel, abban az esetben, ha a bemeneti és kimeneti fájlok megegyeznek.  
+## <a name="error-0050"></a>0050-es hiba  
+ Kivétel fordul elő abban az esetben, ha a bemeneti és kimeneti fájlok megegyeznek.  
   
-**Megoldás:** Ez a hiba az Azure Machine Learning a fel nem használt, és elavulttá válik.  
+**Megoldás:** Ez a hiba Azure Machine Learning nem használható, és a rendszer elavult.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A bemeneti és kimeneti megadott fájlokat nem lehet azonos.|
+|A bemenethez és kimenethez megadott fájlok nem lehetnek azonosak.|
 
 
-## <a name="error-0051"></a>0051 hiba  
- Kivétel történt abban az esetben, ha több kimeneti fájlok megegyeznek.  
+## <a name="error-0051"></a>0051-es hiba  
+ Kivétel fordul elő abban az esetben, ha több kimeneti fájl is ugyanaz.  
   
-**Megoldás:** Ez a hiba az Azure Machine Learning a fel nem használt, és elavulttá válik.  
+**Megoldás:** Ez a hiba Azure Machine Learning nem használható, és a rendszer elavult.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A kimenetek megadott fájlokat nem lehet azonos.|
+|A kimenetekhez megadott fájlok nem lehetnek azonosak.|
 
 
-## <a name="error-0052"></a>0052 hiba  
- Kivétel lép fel, ha az Azure storage-fiókkulcs helytelenül van megadva.  
+## <a name="error-0052"></a>0052-es hiba  
+ Kivétel történik, ha az Azure Storage-fiók kulcsa helytelenül van megadva.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha az Azure-tárfiók eléréséhez használt kulcs helytelen. Például előfordulhat, hogy ezt a hibaüzenetet, ha az Azure storage-kulcs csonkolt másolni és beilleszteni, vagy helytelen kulcsot lett megadva.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha az Azure Storage-fiók eléréséhez használt kulcs helytelen. Előfordulhat például, hogy ez a hiba akkor jelenik meg, ha az Azure Storage-kulcsot a vágólapra másolta és beillesztette, vagy ha rossz kulcsot használt.  
   
- Az Azure storage-fiókhoz tartozó kulcs lekérésével kapcsolatos további információkért lásd: [megtekintése, másolása és újragenerálása storage hozzáférési kulcsok](https://azure.microsoft.com/documentation/articles/storage-create-storage-account-classic-portal/).  
+ További információ az Azure Storage-fiókok kulcsának beszerzéséről: [tároló-hozzáférési kulcsok megtekintése, másolása és](https://azure.microsoft.com/documentation/articles/storage-create-storage-account-classic-portal/)újragenerálása.  
   
-**Megoldás:** Nyissa meg újra a modult, és ellenőrizze, hogy az Azure storage-kulcs helyes-e a fiók; másolja a kulcsot újra a klasszikus Azure portálon szükség esetén.  
+**Megoldás:** Nyissa meg újra a modult, és győződjön meg arról, hogy az Azure Storage-kulcs helyes a fiókhoz; szükség esetén másolja újra a kulcsot a klasszikus Azure portálról.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Az Azure storage-fiók kulcs helytelen.|  
+|Az Azure Storage-fiók kulcsa helytelen.|  
   
 
-## <a name="error-0053"></a>0053 hiba  
- Kivétel lép fel abban az esetben, ha nem felhasználó funkciók vagy elemek matchbox javaslatokat.  
+## <a name="error-0053"></a>0053-es hiba  
+ Kivétel fordul elő abban az esetben, ha nincsenek felhasználói funkciók vagy elemek Matchbox-javaslatokhoz.  
   
- Ez a hiba az Azure Machine Learning jön létre, ha a szolgáltatás vektor nem található.  
+ Ez a hiba a Azure Machine Learning akkor jön létre, ha nem található a szolgáltatás vektora.  
   
-**Megoldás:** Győződjön meg arról, hogy a szolgáltatás vektor szerepel a bemeneti adatkészlet.  
+**Megoldás:** Győződjön meg arról, hogy a bemeneti adatkészletben megtalálható a szolgáltatás vektora.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Felhasználó funkciók vagy / és elemek is kötelező, de nincs megadva.|  
+|A felhasználói szolgáltatások vagy/vagy elemek megadása kötelező, de nincs megadva.|  
 
-## <a name="error-0054"></a>0054 hiba  
- Kivétel lép fel, ha túl kevés eltérő érték szerepel az oszlop a művelet végrehajtásához.  
+## <a name="error-0054"></a>0054-es hiba  
+ Kivétel történik, ha az oszlopban túl kevés az érték a művelet befejezéséhez.  
   
-**Megoldás:** Ez a hiba az Azure Machine Learning a fel nem használt, és elavulttá válik.  
+**Megoldás:** Ez a hiba Azure Machine Learning nem használható, és a rendszer elavult.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Adatok a művelet végrehajtásához a megadott oszlop túl kevés eltérő érték van.|  
-|Adatok a művelet végrehajtásához a megadott oszlop túl kevés eltérő érték van. A szükséges minimális érték {0} elemeket.|  
-|Adatok túl kevés eltérő érték szerepel az oszlop "{1}" művelet végrehajtásához. A szükséges minimális érték {0} elemeket.|  
+|A művelet befejezéséhez az adatok túl kevés különböző értékkel rendelkeznek a megadott oszlopban.|  
+|A művelet befejezéséhez az adatok túl kevés különböző értékkel rendelkeznek a megadott oszlopban. A kötelező minimum {0} elemek.|  
+|A művelet befejezéséhez az adatok túl kevés különböző értékkel rendelkeznek a (z) "{1}" oszlopban. A kötelező minimum {0} elemek.|  
   
 
-## <a name="error-0055"></a>0055 hiba  
- Kivétel történt egy elavult modul hívása során.  Az Azure Machine Learning a hiba akkor jelenik meg, ha megpróbálja meghívni a modul, amely már elavult.
+## <a name="error-0055"></a>0055-es hiba  
+ Kivétel történik egy elavult modul meghívásakor.  Ez a hiba Azure Machine Learning jelenik meg, ha egy elavult modult hív meg.
   
 **Megoldás:**
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Elavult modul elérése.|  
-|A modul "{0}" elavult.|  
+|Az elavult modul elérése.|  
+|A ({0}z) "" modul elavult.|  
 
-## <a name="error-0056"></a>0056 hiba  
- Kivétel lép fel, ha egy művelet a kijelölt oszlopok sérti szemben támasztott követelményeit.  
+## <a name="error-0056"></a>0056-es hiba  
+ Kivétel történik, ha egy művelethez kiválasztott oszlopok sértik a követelményeket.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, az oszlop egy adott adattípusú lehet igénylő művelet oszlopok kiválasztásakor. 
+ Ez a hiba Azure Machine Learning akkor következik be, amikor oszlopokat választ egy olyan művelethez, amelyhez az oszlopnak egy adott adattípussal kell rendelkeznie. 
  
- Ez a hiba is fordulhat elő, ha az oszlop a megfelelő adattípust, de a modul megköveteli, hogy az oszlop be kell jelölni egy funkció, a címke vagy a kategorikus oszlopok.  
+ Ez a hiba akkor is előfordulhat, ha az oszlop a megfelelő adattípusú, de a használt modulhoz az oszlopnak a funkció, a címke vagy a kategorikus oszlop is jelöléssel kell rendelkeznie.  
   
   <!--For example, the [Convert to Indicator Values](convert-to-indicator-values.md) module requires that columns be categorical, and will raise this error if you select a feature column or label column.  -->
   
 **Megoldás:**
   
-1.  Tekintse át a az aktuálisan kiválasztott oszlopok adattípusát. 
+1.  Tekintse át a jelenleg kijelölt oszlopok adattípusát. 
 
-2. Annak megállapítása, hogy kategorikus,-e a kijelölt oszlopok címkét, vagy a szolgáltatás oszlopokat.  
+2. Győződjön meg arról, hogy a kijelölt oszlopok kategorikus, címke vagy szolgáltatás oszlopokat használnak-e.  
   
-3.  Tekintse át a modult, amelyben a kijelölés, hogy vannak-e típus vagy oszlop adathasználati adatokat konkrét követelmények végzett tartozó súgó-témakör.  
+3.  Tekintse át annak a modulnak a súgóját, amelyben az oszlopot kiválasztva megtudhatja, hogy vannak-e konkrét követelmények az adattípus vagy az oszlop használata esetén.  
   
-3.  Használat [metaadatainak szerkesztése](edit-metadata.md) az oszlop típusának módosítása a művelet időtartama. Ügyeljen arra, hogy az oszlop típusa állítsa vissza az eredeti értékére, egy másik példányát [metaadatainak szerkesztése](edit-metadata.md), alsóbb rétegbeli műveletekhez szükség esetén.  
+3.  Módosítsa az oszlop típusát a művelet időtartamára a [metaadatok szerkesztése](edit-metadata.md) paranccsal. Ügyeljen arra, hogy az oszlop típusát visszaállítsa az eredeti értékre, a [metaadatok](edit-metadata.md)másik példányát használva, ha az alsóbb rétegbeli műveletekhez szükség van.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Egy vagy több kijelölt oszlopokat a rendszer nem egy engedélyezett kategóriában.|  
-|Nevű oszlop "{0}" nem szerepel az engedélyezett kategória.|  
+|Egy vagy több kijelölt oszlop nem engedélyezett kategóriába tartozik.|  
+|A (z){0}"" nevű oszlop nem engedélyezett kategóriába tartozik.|  
   
 
-## <a name="error-0057"></a>0057 hiba  
- Kivétel történt a fájl vagy már létező blobot létrehozására tett kísérlet során.  
+## <a name="error-0057"></a>0057-es hiba  
+ Kivétel keletkezik, amikor egy már létező fájlt vagy blobot próbál létrehozni.  
   
- A kivétel lép fel, ha használja a [adatok exportálása](export-data.md) modul vagy más, egy kísérlet az eredmények mentése az Azure Machine Learning az Azure blob storage-ba, de a modul megpróbál létrehozni egy fájl vagy blob, amelyet már létezik.   
+ Ez a kivétel akkor fordul elő, ha az adatexportálási modul vagy más modul használatával menti a kísérlet eredményeit Azure Machine Learning az Azure Blob Storage- [ba](export-data.md) , de megpróbál létrehozni egy már létező fájlt vagy blobot.   
   
 **Megoldás:**
  
- Ez a hiba fog kapni, csak ha korábban a tulajdonság értéke **az Azure blob-tároló írási mód** a **hiba**. A kialakításból fakadóan Ez a modul hibát jelez, ha egy blobot, amely már létezik egy adatkészlet írni.
+ Ez a hiba csak akkor fog megjelenni, ha korábban már beállította a tulajdonságotaz **Azure Blob Storage írási módjára** . A tervezés szerint ez a modul hibát jelez, ha olyan blobhoz próbál meg írni egy adatkészletet, amely már létezik.
  
- - Nyissa meg a modul tulajdonságait, és módosítsa a tulajdonság **az Azure blob-tároló írási mód** való **felülírás**.
- - Azt is megteheti írja be egy másik cél blob vagy a fájl nevét, és ügyeljen arra, hogy adjon meg egy blobot, amely már nem létezik.  
+ - Nyissa meg a modul tulajdonságait, és módosítsa az **Azure Blob Storage írási mód** tulajdonságát a **felülíráshoz**.
+ - Másik lehetőségként beírhatja egy másik cél blob vagy fájl nevét is, és megadhat egy olyan blobot, amely még nem létezik.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Fájl- vagy Blob már létezik.|  
-|Fájl- vagy Blob "{0}" már létezik.|  
+|A fájl vagy a blob már létezik.|  
+|A (z){0}"" fájl vagy blob már létezik.|  
   
 
-## <a name="error-0058"></a>0058 hiba  
- Az Azure Machine Learning a hiba akkor fordul elő, ha az adatkészlet nem tartalmaz a várt címkét oszlop.  
+## <a name="error-0058"></a>0058-es hiba  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha az adatkészlet nem tartalmazza a várt felirat oszlopot.  
   
- Ez a kivétel is előfordulhatnak, ha a címke oszlopban megadott adatok vagy a learner által várt adattípus nem egyezik, vagy a megfelelő értékkel rendelkezik. Ehhez a kivételhez például akkor, ha egy bináris osztályozó által igénybe vett képzés használ a címke valós értékű oszlop jön létre.  
+ Ez a kivétel akkor is előfordulhat, ha a megadott címke oszlop nem egyezik a tanuló által várt adatokkal vagy adattípussal, vagy helytelen értékekkel rendelkezik. Ez a kivétel például akkor jön létre, amikor egy valós értékű címke oszlopot használ a bináris osztályozó betanításakor.  
   
-**Megoldás:** A megoldás a learner vagy trainer, amelyet használ, és az adatkészlet az oszlopok adattípusai függ. Első lépésként ellenőrizze a gépi tanulási algoritmus vagy képzési modul követelményeinek.  
+**Megoldás:** A megoldás a használt tanulótól vagy trénertől, valamint az adatkészlet oszlopainak adattípusaitól függ. Először ellenőrizze a Machine learning-algoritmus vagy a betanítási modul követelményeit.  
   
- Nyissa meg újra az adatkészletet. Győződjön meg arról, hogy az oszlop várt kell kezelni, mint a címke rendelkezik a megfelelő adatokat, írja be a modell létrehozásakor.  
+ Nyissa meg újra a bemeneti adatkészletet. Ellenőrizze, hogy a felvenni kívánt oszlop megfelelő adattípussal rendelkezik-e a létrehozandó modellhez.  
   
- Ellenőrizze a bemeneteket hiányzó értékekkel kapcsolatos és számára, vagy szükség esetén cserélje le őket.  
+ Ellenőrizze a hiányzó értékek bemeneteit, és szükség esetén távolítsa el vagy cserélje le őket.  
   
- Ha szükséges, adja hozzá a [metaadatainak szerkesztése](edit-metadata.md) modul, és győződjön meg arról, hogy a felirat oszlop címke van megjelölve.  
+ Ha szükséges, adja hozzá a [metaadatok szerkesztése](edit-metadata.md) modult, és győződjön meg arról, hogy a Label (címke) oszlop címkéként van megjelölve.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A címke oszlop van, nem a várt|  
-|A címke oszlop van, nem a várt módon "{0}".|  
-|A címke oszlop "{0}"nem várt egy"{1}".|  
+|A Label oszlop nem a várt módon szerepel.|  
+|A Label oszlop nem a várt módon szerepel a{0}következőben: "".|  
+|A felirat "{0}" oszlopa nem várt a következőben{1}: "".|  
   
 
-## <a name="error-0059"></a>0059 hiba  
- Kivétel lép fel, ha egy olyan Oszlopválasztó megadott oszlopindex nem elemezhető.  
+## <a name="error-0059"></a>0059-es hiba  
+ Kivétel történik, ha egy oszlop választójában megadott oszlop-index nem elemezhető.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha egy oszlopot az Oszlopválasztóban használatakor a megadott oszlopindex nem elemezhető.  Ez a hiba fog kapni, ha a oszlopindex nem elemezhető formátuma érvénytelen.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha az oszlop Választójának használatakor megadott oszlop-index nem elemezhető.  Ez a hibaüzenet akkor jelenik meg, ha az oszlop indexének formátuma érvénytelen, és nem elemezhető.  
   
-**Megoldás:** Módosítsa az oszlop index használatához egy érvényes értéket.  
+**Megoldás:** Módosítsa az oszlop indexét érvényes index érték használatára.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Egy vagy több megadott oszlophoz index vagy index tartományokat nem elemezhető.|  
-|Az oszlopindex vagy tartomány "{0}" nem elemezhető.|  
+|Egy vagy több megadott oszlop indexe vagy index tartománya nem elemezhető.|  
+|Nem lehetett elemezni a{0}(z) "" oszlop indexét vagy tartományát.|  
   
 
-## <a name="error-0060"></a>0060 hiba  
- Egy Oszlopválasztó megadott címtartomány oszlop tartományon kívüli kivétel lép fel.  
+## <a name="error-0060"></a>0060-es hiba  
+ Kivétel történik, ha a tartományon kívüli oszlop tartománya meg van adva egy oszlop-választóban.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha meg van adva egy tartományon kívüli oszlop címtartományt oszlopot az oszlopválasztóban. A hibaüzenetet fog kapni, ha az oszlop az Oszlopválasztó a tartomány nem felel meg az oszlopok az adatkészletben.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor egy tartományon kívüli oszlop van megadva az oszlop-választóban. Ez a hibaüzenet akkor jelenik meg, ha az oszlop-választóban lévő oszlop tartománya nem felel meg az adatkészlet oszlopainak.  
   
-**Megoldás:** Módosítsa az oszlop a tartomány az Oszlopválasztó, hogy az oszlopok az adatkészletben.  
+**Megoldás:** Módosítsa az oszlop-kiválasztó oszlopának tartományát az adatkészlet oszlopainak megfelelő értékre.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Érvénytelen vagy a megadott tartomány oszlop index tartományon kívül esik.|  
-|Oszlop tartomány "{0}" érvénytelen, vagy a tartományon kívül esik.|  
+|Érvénytelen vagy a tartományon kívüli oszlop indexelési tartománya van megadva.|  
+|A (z{0}) "" oszlop tartománya érvénytelen vagy a megengedett tartományon kívül esik.|  
   
 
-## <a name="error-0061"></a>0061 hiba  
- Kivétel történt egy sor hozzáadása, amely rendelkezik, mint a táblában az oszlopok különböző számú DataTable megkísérlése során.  
+## <a name="error-0061"></a>0061-es hiba  
+ Kivétel lép fel, amikor olyan sort ad hozzá egy adattáblához, amely eltérő számú oszloppal rendelkezik a táblánál.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, amikor megpróbálja egy sort ad hozzá egy adatkészlethez, amelynek eltérő számú oszlop, mint az adatkészlet.  Ezt a hibaüzenetet fog kapni, ha az adatkészlethez hozzáadott sor a bemeneti adatkészlet az oszlopok különböző számú.  A sor nem fűzhető hozzá az adatkészlethez, ha az oszlopok száma nem egyezik.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, amikor egy olyan sort próbál hozzáadni egy adatkészlethez, amely az adatkészlettől eltérő számú oszloppal rendelkezik.  Ez a hibaüzenet akkor jelenik meg, ha az adatkészletbe felvett sor különböző számú oszlopot tartalmaz a bemeneti adatkészletből.  Ha az oszlopok száma eltérő, a sor nem fűzhető hozzá az adatkészlethez.  
   
-**Megoldás:** A bemeneti adatkészlet a hozzáadott sor azonos számú oszlopot kell módosítani, vagy módosítsa az adatkészlet azonos számú oszlopot kell hozzáadni a sor.  
+**Megoldás:** Módosítsa a bemeneti adatkészletet úgy, hogy az azonos számú oszlopot adjon hozzá a sorhoz, vagy módosítsa a hozzáadott sort, hogy az azonos számú oszlop legyen az adatkészletben.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Összes táblának azonos számú oszlopot kell rendelkeznie.|  
+|Az összes táblának azonos számú oszlopot kell tartalmaznia.|  
   
 
-## <a name="error-0062"></a>0062 hiba  
- Kivétel lép fel, eltérő learner típusú két modell összehasonlítására megkísérlése során.  
+## <a name="error-0062"></a>0062-es hiba  
+ Kivétel keletkezik, amikor két modellt próbál összehasonlítani különböző tanulói típusokkal.  
   
- Ez a hiba az Azure Machine Learning jön létre, amikor értékelési mérőszámok két másik pontozott adatkészletek esetében nem lehet összehasonlítani. Ebben az esetben nincs lehetőség a két pontozott adatkészlet létrehozásához használt modell hatékonysága összehasonlítására.  
+ Ez a hiba a Azure Machine Learningban akkor jön létre, amikor két különböző pontozású adathalmazra vonatkozó értékelési metrikákat nem lehet összehasonlítani. Ebben az esetben nem lehet összehasonlítani a két pontszámmal rendelkező adatkészletek előállításához használt modellek hatékonyságát.  
   
-**Megoldás:** Győződjön meg arról, hogy a pontozott eredményeket hozzák ugyanezeket a gépi tanulási modell (bináris osztályozás, regressziós, többcsoportos besorolást, javaslat, fürtözés, rendellenességek észlelése stb.) Minden modell, amely összehasonlítja a azonos learner típusúnak kell lennie.  
+**Megoldás:** Győződjön meg arról, hogy a pontozásos eredményeket azonos típusú gépi tanulási modell (bináris besorolás, regresszió, többosztályos besorolás, javaslat, fürtözés, rendellenességek észlelése stb.) alapján állítja elő. Minden összehasonlítandó modellnek ugyanazzal a tanulói típussal kell rendelkeznie.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Minden modell a azonos learner típusúnak kell lennie.|  
+|Minden modellnek ugyanazzal a tanulói típussal kell rendelkeznie.|  
   
 
  <!--## Error 0063  
@@ -1083,341 +1082,341 @@ A másik ok lehet, hogy megjelenik a hibaüzenet, ha megpróbálja használni a 
 > + [Execute R Script](execute-r-script.md)
 > + [Create R Model](create-r-model.md)
 -->  
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Hiba történt az R-szkriptet a kiértékelés során.|  
-|A következő hiba történt az R-parancsfájl kiértékelése során:---R hibaüzenete kezdete--- {0} ---vége a R hibaüzenete---|  
-|R-parancsfájl kiértékelése során "{1}" a következő hiba történt:---R hibaüzenete kezdete--- {0} ---vége a R hibaüzenete---|  
+|Hiba történt az R-szkript kiértékelése során.|  
+|Az r-szkript kiértékelése során a következő hiba történt:----------az r---------- {0} hibaüzenetet, amely az r-ből-----------hibaüzenetet jelenít meg-----------|  
+|A (z) "{1}" r-szkript kiértékelése során a következő hiba történt:----------az r---------- {0} hibaüzenete-----------az r-ből származó hibaüzenet végére-----------|  
   
 
 
-## <a name="error-0064"></a>0064 hiba  
- Kivétel lép fel, ha az Azure storage-fiók neve vagy a storage-kulcs helytelenül van megadva.  
+## <a name="error-0064"></a>0064-es hiba  
+ Kivétel történik, ha az Azure Storage-fiók neve vagy a tárolási kulcs helytelenül van megadva.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha az Azure storage-fiók neve vagy a storage-kulcs helytelenül van megadva. Ez a hiba fog kapni, ha helytelen felhasználónév és jelszó ad meg a tárfiók. Ez akkor fordulhat elő, ha be kézzel a fióknév vagy jelszó. Ez akkor is előfordulhat, ha a fiók törölve lett.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha az Azure Storage-fiók neve vagy a tárolási kulcs helytelenül van megadva. Ez a hibaüzenet akkor jelenik meg, ha helytelen fióknevet vagy jelszót ad meg a Storage-fiókhoz. Ez akkor fordulhat elő, ha manuálisan adja meg a fiók nevét vagy jelszavát. Ez akkor is előfordulhat, ha a fiókot törölték.  
   
-**Megoldás:** Ellenőrizze, hogy a fiók nevét és jelszavát megadva, és arról, hogy a fiók létezik-e.  
+**Megoldás:** Ellenőrizze, hogy a fiók neve és jelszava helyesen van-e megadva, és létezik-e a fiók.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Az Azure storage-fiók neve vagy a storage-kulcs helytelen.|  
-|Az Azure storage-fiók neve "{0}" vagy a tárfiók kulcsát, a fiók neve helytelen.|  
+|Az Azure Storage-fiók neve vagy a Storage-kulcs helytelen.|  
+|Helytelen az Azure Storage-fiók{0}neve ("") vagy a fióknév Storage-kulcsa.|  
   
 
-## <a name="error-0065"></a>0065 hiba  
- Kivétel lép fel, ha az Azure blob neve helytelenül van megadva.  
+## <a name="error-0065"></a>0065-es hiba  
+ Kivétel történik, ha az Azure-Blob neve helytelenül van megadva.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha az Azure blob neve helytelenül van megadva.  A hibaüzenetet fog kapni, ha:  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha az Azure-Blob neve helytelenül van megadva.  A következő hibaüzenet jelenik meg:  
   
--   A blob a megadott tároló nem található.  
+-   A blob nem található a megadott tárolóban.  
   
  <!---   The fully qualified name of the blob specified for output in one of the [Learning with Counts](data-transformation-learning-with-counts.md) modules is greater than 512 characters.  -->
   
--   Csak a tároló van megadva, az forrás egy [adatok importálása](import-data.md) kérése, amikor formátuma az Excel- vagy CSV kódolással volt; a tárolóban lévő összes BLOB tartalmát összefűzésén nem engedélyezett, ha ezek a formátumok.  
+-   Csak a tároló lett megadva adatimportálási kérelem forrásaként, ha a formátum Excel vagy CSV a kódolással. [](import-data.md) a tárolóban lévő összes blob tartalmának összefűzése nem engedélyezett ezekkel a formátumokkal.  
   
--   SAS URI nem tartalmaz érvényes blob neve.  
+-   A SAS URI-ja nem tartalmazza az érvényes blob nevét.  
   
-**Megoldás:** Nyissa meg újra a modult, a kivétel kivétel. Győződjön meg arról, hogy a megadott blob létezik-e a tárolóban, a storage-fiókban és az engedélyek lehetővé teszi a blob. Győződjön meg arról, hogy a bemeneti adatok az űrlap **containername/filename** Ha Excel- vagy CSV formátumban kódolással. Győződjön meg arról, hogy a SAS URI érvényes blob nevét tartalmazza.  
+**Megoldás:** Tekintse át a kivételt eldobott modult. Győződjön meg arról, hogy a megadott blob létezik a Storage-fiók tárolójában, és hogy az engedélyek lehetővé teszik a blob megtekintését. Ellenőrizze, hogy a bevitel **ContainerName/filename formátumú-** e, ha az Excel vagy a CSV kódolási formátummal rendelkezik. Ellenőrizze, hogy az SAS URI tartalmazza-e az érvényes blob nevét.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Az Azure storage-blob nem megfelelő.|  
-|Az Azure storage blob neve "{0}" nem megfelelő|  
+|Az Azure Storage-blob helytelen.|  
+|Az Azure Storage-blob neve{0}("") helytelen|  
   
 
-## <a name="error-0066"></a>0066 hiba  
- Kivétel lép fel, ha egy erőforrás nem tölthető fel az Azure-blobba.  
+## <a name="error-0066"></a>0066-es hiba  
+ Kivétel történik, ha egy erőforrást nem sikerült feltölteni egy Azure-Blobba.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha egy erőforrás nem tölthető fel az Azure-blobba.  <!--You will receive this message if [Train Vowpal Wabbit 7-4 Model](train-vowpal-wabbit-version-7-4-model.md) encounters an error attempting to save either the model or the hash created when training the model.--> Mindkét menti, és ugyanazt az Azure storage-fiókot a fiókot, amely tartalmazza a bemeneti fájl.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha egy erőforrást nem sikerült feltölteni egy Azure-Blobba.  <!--You will receive this message if [Train Vowpal Wabbit 7-4 Model](train-vowpal-wabbit-version-7-4-model.md) encounters an error attempting to save either the model or the hash created when training the model.--> Mindkettő ugyanazon Azure Storage-fiókba kerül, mint a bemeneti fájlt tartalmazó fiók.  
   
-**Megoldás:** Nyissa meg újra a modult. Győződjön meg arról, hogy az Azure-fiók neve, tárkulcs és tároló helyességéről, valamint, hogy a fiók rendelkezik-e a tároló írási engedéllyel.  
+**Megoldás:** Nyissa meg újra a modult. Ellenőrizze, hogy az Azure-fiók neve, a tárolási kulcs és a tároló helyes-e, és hogy a fióknak van-e írási engedélye a tárolóba.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Az Azure storage-erőforrás nem tölthető fel.|  
-|A fájl "{0}" nem lehet feltölteni az Azure storage-ot {1}.|  
+|Az erőforrás nem tölthető fel az Azure Storage-ba.|  
+|A következő fájl{0}nem tölthető fel az Azure {1}Storage-ba: "".|  
   
 
-## <a name="error-0067"></a>0067 hiba  
- Kivétel lép fel, ha egy adatkészlet rendelkezik a vártnál oszlopok különböző számú.  
+## <a name="error-0067"></a>0067-es hiba  
+ Kivétel történik, ha egy adatkészlet eltérő számú oszloppal rendelkezik a vártnál.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha egy adatkészlet rendelkezik a vártnál oszlopok különböző számú.  Ezt a hibaüzenetet fog kapni, ha az adatkészletben lévő oszlopok száma, amelyeket a modul végrehajtása során vár oszlopok száma eltér.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha egy adatkészlet eltérő számú oszloppal rendelkezik a vártnál.  Ez a hibaüzenet akkor jelenik meg, ha az adatkészlet oszlopainak száma eltér a végrehajtás során a modul által várt oszlopok számától.  
   
-**Megoldás:** Módosítsa a bemeneti adatkészlet vagy a paraméterek.  
+**Megoldás:** Módosítsa a bemeneti adatkészletet vagy a paramétereket.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Váratlan számú oszlopot a DataTable.|  
-|A várt "{0}"de található oszlopok"{1}" oszlopok helyett.|  
+|Váratlan számú oszlop szerepel a DataTable adattáblában.|  
+|A rendszer "" oszlopokat várt{1}, de ehelyett "" oszlopokat talált.{0}|  
   
 
-## <a name="error-0068"></a>0068 hiba  
- Kivétel lép fel, ha a megadott Hive-parancsfájl nem megfelelő.  
+## <a name="error-0068"></a>0068-es hiba  
+ Kivétel történik, ha a megadott kaptár-parancsfájl helytelen.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha QL Hive-parancsfájl szintaktikai hibák, vagy ha a Hive-értelmező hibába ütközik a lekérdezés vagy a parancsfájl végrehajtása közben.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha szintaktikai hibák vannak a kaptár QL parancsfájljában, vagy ha a kaptár-értelmező hibát észlel a lekérdezés vagy a parancsfájl végrehajtása közben.  
   
 **Megoldás:**
 
-Hive hibaüzenete általában jelentett vissza a hibanapló, hogy az adott hiba általános alapján műveleteket végezheti el. 
+A struktúra hibaüzenetét általában visszaküldi a rendszer a hibanaplóba, így az adott hiba alapján műveleteket hajthat végre. 
 
-+ Nyissa meg a modult, és megvizsgálja a lekérdezést a hibákat.  
-+ Győződjön meg arról, hogy a lekérdezés megfelelően működik az Azure Machine Learning-en kívül a Hive konzolt a Hadoop-fürt és a lekérdezés futtatása.  
-+ Próbálja ki a megjegyzéseket a Hive-parancsfájl végrehajtható utasítások és a egy sorba megjegyzések keverése figyelésekor külön sorban helyezi el.  
++ Nyissa meg a modult, és ellenőrizze a hibákat a lekérdezésben.  
++ Ellenőrizze, hogy a lekérdezés megfelelően működik-e Azure Machine Learning a Hadoop-fürt kaptár-konzolján való bejelentkezéssel és a lekérdezés futtatásával.  
++ Próbálja meg egy külön sorban elhelyezni a megjegyzéseket a kaptár-parancsfájlban, szemben a végrehajtható utasítások és megjegyzések egyetlen sorba való keverésével.  
 
 ### <a name="resources"></a>További források
 
-A Hive-lekérdezések machine Learning a Súgó a következő cikkekben talál:
+A Machine learninghez készült kaptár-lekérdezésekkel kapcsolatos segítségért tekintse meg a következő cikkeket:
 
-+ [Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage-ból](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-move-hive-tables)
-+ [Ismerje meg a Hive-lekérdezések a táblázatokban lévő adatok](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-explore-data-hive-tables)
-+ [Funkciók létrehozása az adatokhoz a Hive-lekérdezések segítségével egy Hadoop-fürt](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-create-features-hive)
-+ [Hive-az SQL-felhasználók – Adatlap (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)
++ [Struktúra-táblák létrehozása és adatok betöltése az Azure Blob Storage](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-move-hive-tables)
++ [A táblákban lévő adatelemzés struktúra-lekérdezésekkel](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-explore-data-hive-tables)
++ [Hadoop-fürtben lévő adatszolgáltatások létrehozása struktúra-lekérdezések használatával](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-create-features-hive)
++ [SQL-felhasználók számára készült kaptár (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)
 
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Hive-parancsfájl nem megfelelő.|  
-|Hive-parancsprogram {0} nem megfelelő.|  
+|A struktúra parancsfájlja helytelen.|  
+|A struktúra {0} -parancsfájl helytelen.|  
   
 
-## <a name="error-0069"></a>0069 hiba  
- Kivétel lép fel, ha a megadott SQL-parancsfájl nem megfelelő.  
+## <a name="error-0069"></a>0069-es hiba  
+ Kivétel történik, ha a megadott SQL-parancsfájl helytelen.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha a megadott SQL-szkript szintaktikai problémák, vagy ha a megadott oszlopokat vagy tábla a parancsfájl nem érvényes. 
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha a megadott SQL-parancsfájl szintaktikai problémákkal rendelkezik, vagy ha a parancsfájlban megadott oszlopok vagy táblák érvénytelenek. 
  
- Ezt a hibaüzenetet fog kapni, ha az SQL-kezelő hibákat észlel, a lekérdezés vagy a parancsfájl végrehajtása közben. Az SQL-hibaüzenet általában jelentett vissza a hibanapló, hogy az adott hiba általános alapján műveleteket végezheti el.  
+ Ez a hibaüzenet akkor jelenik meg, ha az SQL-motor hibát észlel a lekérdezés vagy a parancsfájl végrehajtása során. Az SQL-hibaüzenetet általában visszaküldi a rendszer a hibanaplóba, így az adott hiba alapján műveleteket hajthat végre.  
   
-**Megoldás:** Nyissa meg újra a modult, és vizsgálja meg az SQL-lekérdezés hibákkal.  
+**Megoldás:** Tekintse át újra a modult, és vizsgálja meg az SQL-lekérdezés hibáit.  
   
- Győződjön meg arról, hogy a lekérdezés megfelelően működik az Azure Machine Learning-en kívül közvetlenül bejelentkezni az adatbázis-kiszolgáló és a lekérdezés futtatása.  
+ Ellenőrizze, hogy a lekérdezés megfelelően működik-e az Azure ML-n keresztül, ha közvetlenül az adatbázis-kiszolgálóra jelentkezik be, és futtatja a lekérdezést.  
   
- Ha a modul kivétel által jelentett létrehozott SQL üzenetet, alapján műveleteket a jelzett hibát. A hibaüzenetek néha például a nagy valószínűséggel hiba útmutatást:
-+ *Nincs ilyen oszlop vagy hiányzó adatbázis*, jelezve, hogy előfordulhat, hogy írt be helytelen az oszlop nevét. Ha biztos abban, hogy az oszlop neve helyesen, próbálkozzon zárójelben vagy idézőjelek adni az oszlop azonosítóját.
-+ *SQL logikai hiba közelében \<SQL kulcsszó\>* , amely azt jelzi, hogy lehetséges, hogy a megadott kulcsszóval előtt szintaktikai hiba
+ Ha a modul kivétele szerint egy SQL által generált üzenet jelenik meg, akkor a jelentett hiba alapján végezze el a műveletet. Előfordulhat például, hogy a hibaüzenetek időnként konkrét útmutatást tartalmaznak a valószínű hibára vonatkozóan:
++ *Nincs ilyen oszlop vagy hiányzó adatbázis*, ami azt jelzi, hogy helytelen az oszlopnév beírása. Ha biztos benne, hogy az oszlop neve helyes, az oszlop azonosítójának bejelöléséhez használjon szögletes zárójeleket vagy idézőjeleket.
++ *SQL-logikai hiba \<az SQL\>-kulcsszó közelében*, ami azt jelzi, hogy szintaktikai hiba történt a megadott kulcsszó előtt
 
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|SQL-szkript nem megfelelő.|  
-|SQL-lekérdezés "{0}" nem megfelelő.|  
-|SQL-lekérdezés "{0}" nem megfelelő: {1}|  
+|Az SQL-parancsfájl helytelen.|  
+|A (z{0}) "" SQL-lekérdezés nem megfelelő.|  
+|A (z{0}) "" SQL-lekérdezés helytelen:{1}|  
   
 
-## <a name="error-0070"></a>0070 hiba  
- Kivétel lép fel, amikor megpróbálja elérni az Azure-tábla nem létezik.  
+## <a name="error-0070"></a>0070-es hiba  
+ Kivétel történik, ha nem létező Azure-táblához próbál hozzáférni.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha próbál meg hozzáférni egy nem létező Azure table. Ezt a hibaüzenetet fog kapni, ha megad egy táblát az Azure storage, amely nem létezik, amikor az Azure Table Storage írásakor vagy olvasásakor. Ez akkor fordulhat elő, ha írunk, a kívánt tábla nevét, vagy ha a célnév és a tárolás típusát nem egyeznek. Például egy tábla olvasni szánt, de ehelyett a blob nevét a megadott.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, amikor megpróbál hozzáférni egy nem létező Azure-táblához. Ez a hibaüzenet akkor jelenik meg, ha olyan táblát ad meg az Azure Storage-ban, amely nem létezik az Azure Table Storageba való olvasáskor vagy annak írásakor. Ez akkor fordulhat elő, ha nem írja be a kívánt tábla nevét, vagy ha a cél neve és a tárolási típusa nem egyezik. Előfordulhat például, hogy egy táblából kíván olvasni, de ehelyett egy blob nevét adta meg.  
   
-**Megoldás:** Nyissa meg újra a modult, ellenőrizze, hogy a tábla neve helyesen-e.  
+**Megoldás:** Nyissa meg újra a modult annak ellenőrzéséhez, hogy a tábla neve helyes-e.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Az Azure tábla nem létezik.|  
-|Az Azure table "{0}" nem létezik.|  
+|Az Azure-tábla nem létezik.|  
+|A (z{0}) "" Azure-tábla nem létezik.|  
   
-## <a name="error-0071"></a>0071 hiba  
- Kivétel lép fel, ha a megadott hitelesítő adatok helytelenek.  
+## <a name="error-0071"></a>0071-es hiba  
+ Kivétel történik, ha a megadott hitelesítő adatok helytelenek.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha a megadott hitelesítő adatok helytelenek.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha a megadott hitelesítő adatok helytelenek.  
   
- Ez a hiba akkor is megjelenik, ha a modul nem tud kapcsolódni egy HDInsight-fürtön.  
+ Ez a hiba akkor is megjelenhet, ha a modul nem tud csatlakozni a HDInsight-fürthöz.  
   
-**Megoldás:** Tekintse át a bemeneti adatokat a modult, és ellenőrizze a fiók nevét és jelszavát.  
+**Megoldás:** Tekintse át a modul bemeneteit, és ellenőrizze a fiók nevét és jelszavát.  
   
- Ellenőrizze, hogy a következő problémákat okozhat, hiba:  
+ A következő hibák jelentkezhetnek be, amelyek hibát okozhatnak:  
   
--   Az adatkészlet sémája nem egyezik meg a cél datatable sémája.  
+-   Az adatkészlet sémája nem felel meg a cél DataTable sémájának.  
   
--   Oszlopnevek hiányzik vagy helytelenül  
+-   Az oszlopnevek hiányoznak vagy helytelenül vannak megadva  
   
--   Írás az oszlopok neveiben nem megengedett karaktereket tartalmazó tábla. Általában ilyen oszlopnevek szögletes zárójelben, de nem működik, ha oszlopnevek használata csak betűket és aláhúzásjeleket (_) szerkesztése  
+-   Olyan táblára ír, amely nem engedélyezett karaktereket tartalmazó oszlopnevek tartalmaz. Általában szögletes zárójelben láthatja az oszlopok nevét, de ha ez nem működik, az oszlopnevek szerkesztésével csak betűket és aláhúzást használhat (_)  
   
--   Írni próbált karakterláncok tartalmazhat szimpla idézőjelek  
+-   Az írni próbált karakterláncok szimpla idézőjeleket tartalmaznak  
   
- Ha egy HDInsight-fürthöz való csatlakozáshoz, győződjön meg arról, hogy a cél fürtnek érhető el a megadott hitelesítő adatokkal.  
+ Ha egy HDInsight-fürthöz próbál csatlakozni, ellenőrizze, hogy a cél fürt elérhető-e a megadott hitelesítő adatokkal.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A rendszer átadja a helytelen hitelesítő adatokat.|  
-|Helytelen felhasználónév "{0}" vagy a jelszó átadása|  
+|Helytelen hitelesítő adatok lettek átadva.|  
+|Helytelen Felhasználónév{0}vagy jelszó lett átadva|  
   
 
-## <a name="error-0072"></a>0072 hiba  
- Kivétel történt a kapcsolat időtúllépése esetén.  
+## <a name="error-0072"></a>0072-es hiba  
+ A kapcsolat időtúllépése esetén kivétel történik.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha a kapcsolat időkorlátja. Ezt a hibaüzenetet fog kapni, ha jelenleg folyamatban van az adatforrás vagy a cél, például az internetkapcsolat lassú, kapcsolat problémái, vagy ha az adatkészlet nagy és/vagy az SQL-lekérdezést az adatok olvasásához bonyolult számításokat végez.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha a kapcsolódás időtúllépés miatt megszakad. Ez a hibaüzenet akkor jelenik meg, ha az adatforrással vagy a céllal kapcsolatban jelenleg kapcsolati problémák léptek fel, például lassú internetkapcsolat, vagy ha az adathalmaz nagy méretű és/vagy az adatok olvasására szolgáló SQL-lekérdezés bonyolult feldolgozást végez.  
   
-**Megoldás:** Határozza meg, hogy vannak-e jelenleg az Azure storage és az internet lassú kapcsolat problémái.  
+**Megoldás:** Állapítsa meg, hogy jelenleg van-e probléma az Azure Storage vagy az Internet lassú kapcsolataival.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Kapcsolódási időtúllépés történt.|  
+|A kapcsolat időtúllépése megtörtént.|  
   
 
-## <a name="error-0073"></a>0073 hiba  
- Kivétel lép fel, ha hiba történik egy másik oszlop konvertálása közben.  
+## <a name="error-0073"></a>0073-es hiba  
+ Kivétel történik, ha hiba történik egy oszlop más típusúra konvertálásakor.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha az nem lehet átalakítani az oszlop egy másik.  A hibaüzenetet fog kapni, ha egy modulnak szüksége van egy adott típusú, és nem lehet átalakítani az oszlop az új típussá.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor nem lehetséges az oszlop konvertálása más típusra.  Ez a hibaüzenet akkor jelenik meg, ha egy modulnak egy adott típusra van szüksége, és az oszlopot nem lehet az új típusra konvertálni.  
   
-**Megoldás:** Módosítsa a bemeneti adatkészlet, úgy, hogy az oszlop alapján a belső kivétel konvertálható.  
+**Megoldás:** Módosítsa a bemeneti adatkészletet úgy, hogy az oszlop a belső kivétel alapján legyen konvertálható.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem sikerült konvertálni oszlop.|  
-|Nem sikerült konvertálni oszlop {0}.|  
+|Az oszlop konvertálása nem sikerült.|  
+|Nem sikerült átalakítani az oszlopot {0}a következőre:.|  
   
 
-## <a name="error-0074"></a>0074 hiba  
- Kivétel az, amikor a [metaadatainak szerkesztése](edit-metadata.md) ritka oszlopot a kategorikus megkísérli.  
+## <a name="error-0074"></a>0074-es hiba  
+ Kivétel történik, ha a [metaadatok szerkesztése](edit-metadata.md) kísérletet tesz egy ritka oszlopnak a kategorikusba alakítására.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, amikor a [metaadatainak szerkesztése](edit-metadata.md) ritka oszlopot a kategorikus megkísérli.  Ez a hiba fog kapni, ritka oszlopok átalakítása a kategorikus tett kísérlet során a **kategorikus győződjön** lehetőséget.  Az Azure machine Learning nem támogatja a ritka kategorikus tömbök, így sikertelen lesz, a modul.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor a [metaadatok szerkesztése](edit-metadata.md) kísérletet tesz a ritka oszlopok kategorikusra alakítására.  Ez a hibaüzenet akkor jelenik meg, amikor a ritka oszlopokat kategorikus értékre próbálja átalakítani a **make kategorikus** lehetőséggel.  Az Azure Machine learning nem támogatja a ritka kategorikus tömbök használatát, így a modul sikertelen lesz.  
   
  <!--**Resolution:**
  Make the column dense by using [Convert to Dataset](convert-to-dataset.md) first or do not convert the column to categorical.  -->
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Kategorikus ritka oszlop nem lehet konvertálni.|  
+|Ritka oszlopok nem alakíthatók át kategorikus értékké.|  
   
 
-## <a name="error-0075"></a>0075 hiba  
-Érvénytelen dobozolási függvény használatos, amikor egy adatkészlet quantizing kivétel lép fel.  
+## <a name="error-0075"></a>0075-es hiba  
+Kivétel történik, ha egy adatkészlet kvantálásakor érvénytelen dobozolási függvényt használ a rendszer.  
   
-Az Azure Machine Learning a hiba akkor fordul elő, ha próbált bin adatokat egy nem támogatott módszerrel, vagy ha a paraméterkombinációk érvénytelenek.  
+Ez a hiba Azure Machine Learning akkor következik be, amikor nem támogatott metódussal próbál meg raktárhelyeket használni, vagy ha a paraméterek kombinációi érvénytelenek.  
   
 **Megoldás:**
 
-Ezt az eseményt a hibakezelést az Azure Machine Learning, amely további testreszabási módszerek dobozolás, engedélyezett egy korábbi verzióban jelent meg. Jelenleg az összes dobozolási módszer alapul egy kiválasztási lehetőséget a legördülő listából, így technikailag már nem lehet ez a hibaüzenet jelenhet.
+Az eseményhez tartozó hibakezelés a Azure Machine Learning egy korábbi verziójában lett bevezetve, amely a dobozolási metódusok további testreszabását tette lehetővé. Jelenleg az összes dobozolási-módszer egy legördülő lista egy kiválasztásán alapul, így a továbbiakban nem lehet ezt a hibát megszerezni.
 
  <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Azure Machine Learning forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=MachineLearning), providing the data types, parameter settings, and the exact error message.  -->
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Érvénytelen dobozolási függvény.|  
+|Érvénytelen dobozolási függvény van használatban.|  
   
 
-## <a name="error-0077"></a>0077 hiba  
- Kivétel lép fel, amikor ismeretlen blobfájlra ír átadott mód.  
+## <a name="error-0077"></a>0077-es hiba  
+ Kivétel történik, ha az ismeretlen blob-írási mód lett átadva.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha egy blob fájlt a cél- vagy leírásainak átadott érvénytelen argumentum.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha érvénytelen argumentumot ad át a blob-fájl célhelyének vagy forrásának specifikációi.  
   
-**Megoldás:** Adatok importálása és exportálása az Azure blob storage szolgáltatásba vagy onnan szinte összes modult a paraméter értéke az írási módban tartásával rendeli hozzá egy legördülő lista; használatával ezért már nem átadandó érték érvénytelen, és ez a hiba nem jelenik meg. Ezt a hibát egy későbbi kiadástól kezdve elavulttá válik.  
+**Megoldás:** Szinte minden olyan modulban, amely az Azure Blob Storage-ba vagy onnan exportálja az adatok importálását és exportálását, legördülő lista használatával rendeli hozzá az írási módot vezérlő paramétereket. ezért nem lehet átadni egy érvénytelen értéket, és ez a hiba nem jelenik meg. Ez a hiba egy későbbi kiadásban elavulttá válik.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem támogatott blob mód ír.|  
-|Nem támogatott blob ír mód: {0}.|  
+|A blob írási módja nem támogatott.|  
+|A blob írási módja nem támogatott: {0}.|  
   
 
-## <a name="error-0078"></a>0078 hiba  
- Kivétel történt Ha a HTTP lehetőséget a [adatok importálása](import-data.md) átirányítás jelző 3xx állapotkódot kap.  
+## <a name="error-0078"></a>0078-es hiba  
+ Kivétel történik, ha az importáláshoz [](import-data.md) használt http-beállítás egy 3xx-állapotkódot kap, amely átirányítást jelez.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha a HTTP lehetőséget a [adatok importálása](import-data.md) kap egy 3xx (301, 302, 304, stb.) átirányítás jelölő állapotkódot. Ez a hiba fog kapni, ha megpróbál csatlakozni egy HTTP-forrás, amely a böngésző átirányítja egy másik lapra. Biztonsági okokból webhelyek átirányítása nem engedélyezettek adatforrásként az Azure Machine Learning.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor [](import-data.md) az ADATimportálás http-beállítása egy 3xx (301, 302, 304 stb.) kap, amely az átirányítás állapotát jelzi. Ez a hibaüzenet akkor jelenik meg, ha olyan HTTP-forráshoz próbál csatlakozni, amely egy másik lapra irányítja át a böngészőt. Biztonsági okokból a webhelyek átirányítása nem engedélyezett a Azure Machine Learning adatforrásaként.  
   
-**Megoldás:** Ha a webhely megbízható webhelyek, adja meg közvetlenül az átirányított URL-címet.  
+**Megoldás:** Ha a webhely megbízható webhely, adja meg közvetlenül az átirányított URL-címet.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem engedélyezett HTTP-átirányítás|  
+|Http-átirányítás nem engedélyezett|  
   
 
-## <a name="error-0079"></a>0079 hiba  
- Kivétel lép fel, ha az Azure storage-tároló neve helytelenül van megadva.  
+## <a name="error-0079"></a>0079-es hiba  
+ Kivétel történik, ha az Azure Storage-tároló neve helytelenül van megadva.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha az Azure storage-tároló neve helytelenül van megadva. Ez a hiba fog kapni, ha nem adta meg a tároló és a blob (fájl) nevének használatával **blob-tároló kezdődő elérési útját** lehetőséget az Azure Blob Storage írásakor.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha az Azure Storage-tároló neve helytelenül van megadva. Ezt a hibaüzenetet akkor kapja meg, ha a tárolót és a blobot (fájl) nem adta meg **a blob elérési útja alapján az** Azure Blob Storageba való íráskor.  
   
-**Megoldás:** Nyissa meg újra a [adatok exportálása](export-data.md) modul, és ellenőrizze, hogy a blob a megadott elérési útja tartalmazza a tároló és a fájl nevét, a következő formátumban **tároló/filename**.  
+**Megoldás:** Tekintse át [](export-data.md) újra az adatexportálási modult, és ellenőrizze, hogy a blob megadott elérési útja tartalmazza-e a tárolót és a fájlnevet is a **tároló/fájlnév**formátumban.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Az Azure storage-tároló neve nem megfelelő.|  
-|Az Azure storage-tároló nevének "{0}" nem megfelelő; a tárolót a blob nevét, formátumú tároló/várt.|  
+|Az Azure Storage-tároló neve helytelen.|  
+|Az Azure Storage-tároló neve{0}("") helytelen, a rendszer a tároló nevét/blobját várta.|  
   
 
-## <a name="error-0080"></a>0080 hiba  
- Kivétel lép fel, ha hiányzik az összes értéket tartalmazó oszlop nem engedélyezett a modul által.  
+## <a name="error-0080"></a>0080-es hiba  
+ Kivétel történik, ha az összes hiányzó értékkel rendelkező oszlop nem engedélyezett a modulban.  
   
- Ez a hiba az Azure Machine Learning jön létre, amikor egy vagy több, a modul által használt az oszlopok az összes hiányzó értékeket tartalmaz. Például ha egy modul van számítási feladatokat az egyes oszlopok összesített statisztikák, azt nem működik egy adatot nem tartalmazó oszlop. Ezekben az esetekben modul végrehajtása a kivétel miatt megáll.  
+ Ez a hiba akkor jelenik meg Azure Machine Learningban, ha a modul által felhasznált oszlopok közül egy vagy több tartalmazza az összes hiányzó értéket. Ha például egy modul minden oszlophoz összesíti a statisztikát, nem tud adatokat tartalmazó oszlopon működni. Ilyen esetekben a modul végrehajtása ezzel a kivétellel megszűnik.  
   
-**Megoldás:** Nyissa meg újra az adatkészletet, és távolítsa el az összes hiányzó értéket tartalmazó oszlopokat.  
+**Megoldás:** Nyissa meg újra a bemeneti adatkészletet, és távolítson el minden olyan oszlopot, amely tartalmazza az összes hiányzó értéket.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Hiányzik az összes értéket tartalmazó oszlopok nem engedélyezettek.|  
-|Oszlop {0} hiányzó összes értékkel rendelkezik.|  
+|Az összes hiányzó értékkel rendelkező oszlopok nem engedélyezettek.|  
+|Az {0} oszlop minden hiányzó értékkel rendelkezik.|  
   
 
-## <a name="error-0081"></a>0081 hiba  
- Ha próbálják meg csökkenteni a dimenziók száma a szolgáltatás oszlopok száma egyenlő a bemeneti adatkészlethez, legalább egy szolgáltatás ritka oszlopot tartalmazó PEM-modul kivétel lép fel.  
+## <a name="error-0081"></a>0081-es hiba  
+ Kivétel keletkezik a PCA modulban, ha a csökkenteni kívánt méretek száma egyenlő a bemeneti adatkészletben lévő funkciók oszlopainak számával, amely legalább egy ritka funkció oszlopot tartalmaz.  
   
- Ez a hiba az Azure Machine Learning jön létre, ha a következő feltételek teljesülnek: (a) a bemeneti adatkészlet tartalmaz legalább egy ritka oszlop, és (b) a dimenziók a kért utolsó száma megegyezik a bemeneti dimenziók száma.  
+ Ez a hiba Azure Machine Learning a következő feltételek teljesülése esetén jön létre: (a) a bemeneti adatkészlet legalább egy ritka oszlopával rendelkezik, és (b) a kért dimenziók végső száma megegyezik a bemeneti dimenziók számával.  
   
-**Megoldás:** Érdemes csökkenteni lehet kevesebb, mint a bemeneti adatok dimenziók száma a kimenetet a dimenziók száma. Ez a jellemző PEM-alkalmazásokban.   <!--For more information, see [Principal Component Analysis](principal-component-analysis.md).  -->
+**Megoldás:** Vegye figyelembe, hogy a kimenetben lévő méretek száma kevesebb, mint a bemeneti dimenziók száma. Ez a PCA alkalmazásaiban jellemző.   <!--For more information, see [Principal Component Analysis](principal-component-analysis.md).  -->
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A szolgáltatás a ritka oszlopokat tartalmazó adatkészlet kisebb, mint a szolgáltatás oszlopok számának csökkentése érdekében a dimenziók száma kell lennie.|  
+|A ritka funkció típusú oszlopokat tartalmazó adatkészlet esetében a méretek számának kisebbnek kell lennie, mint a szolgáltatás oszlopainak száma.|  
  
 
-## <a name="error-0082"></a>0082 hiba  
- Kivétel lép fel, amikor egy modell nem lehet sikeresen deszerializált.  
+## <a name="error-0082"></a>0082-es hiba  
+ Kivétel történik, ha egy modellt nem sikerült deszerializálni.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, amikor egy mentett gépi tanulási modellt vagy az átalakítás nem tölthető be az Azure Machine Learning modul használhatatlanná tévő változást eredményeként egy újabb verziójával.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha egy mentett gépi tanulási modellt vagy átalakítót nem lehet betölteni a Azure Machine Learning futtatókörnyezet újabb verziójával a megszakítási változás eredményeképpen.  
   
-**Megoldás:** A tanítási kísérlet, amely a modell vagy az átalakítás előállított újrafuttatása és a modell vagy átalakítási resaved kell lennie.  
+**Megoldás:** A modellt vagy átalakítót előkészítő kísérletet újra kell futtatni, és a modellt vagy az átalakítást újra kell menteni.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Modell nem lehet deszerializálni, mert azt valószínűleg egy régebbi szerializációs formátum van szerializált. Újratanítás, és mentse el újra a modellt.|  
+|A modellt nem sikerült deszerializálni, mert valószínűleg egy régebbi szerializálási formátummal lett szerializálva. A modell újratanítása és újramentése.|  
   
 
-## <a name="error-0083"></a>0083 hiba  
- Kivétel lép fel, ha a használt adatkészlet képzési konkrétní typ delegáta learner nem használható.  
+## <a name="error-0083"></a>0083-es hiba  
+ Kivétel történik, ha a képzéshez használt adatkészlet nem használható konkrét típusú tanulók számára.  
   
- Ez a hiba az Azure Machine Learning jön létre, ha az adatkészlet nem kompatibilis a learner betanítása. Például az adatkészlet az egyes sorokban szereplő legalább egy hiányzó értéket tartalmaz, és ennek eredményeképpen a teljes adatkészlet szeretné hagyni képzés során. Más esetekben egyes gépi tanulási algoritmusok, például a rendellenességek észlelése nem várható, címkék jelen, és ehhez a kivételhez nagyvállalat, ha a címkék szerepelnek az adatkészlet.  
+ Ez a hiba akkor jön létre a Azure Machine Learningban, ha az adatkészlet nem kompatibilis a betanított tanulóval. Előfordulhat például, hogy az adatkészlet tartalmaz legalább egy hiányzó értéket az egyes sorokban, és ennek eredményeképpen a teljes adatkészlet kimarad a betanítás során. Más esetekben a gépi tanulási algoritmusok, például a anomáliák észlelése nem vár feliratokat, és ezt a kivételt kidobják, ha a címkék szerepelnek az adatkészletben.  
   
-**Megoldás:** A bemeneti adatkészlet követelményeinek ellenőrzéséhez használt learner dokumentációjában. Vizsgálja meg az oszlopban láthatja az összes szükséges oszlopok jelen.  
+**Megoldás:** Tekintse át a bemeneti adatkészletre vonatkozó követelmények ellenőrzését szolgáló tanuló dokumentációját. Vizsgálja meg az oszlopokat, hogy megjelenjenek az összes szükséges oszlop.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A betanításhoz használt adatkészlet nem érvényes.|  
-|{0} a betanításhoz érvénytelen adatokat tartalmaz.|  
-|{0} a betanításhoz érvénytelen adatokat tartalmaz. Learner típusa: {1}.|  
+|A betanításhoz használt adatkészlet érvénytelen.|  
+|{0}a betanításhoz érvénytelen adatértéket tartalmaz.|  
+|{0}a betanításhoz érvénytelen adatértéket tartalmaz. Tanuló típusa: {1}.|  
   
 
-## <a name="error-0084"></a>0084 hiba  
- Kivétel lép fel, az R-szkriptek előállított pontszámok kiértékelésekor. Ez a jelenleg nem támogatott.  
+## <a name="error-0084"></a>0084-es hiba  
+ Kivétel történik az R-parancsfájlokból előállított pontszámok kiértékelése során. Ez jelenleg nem támogatott.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha megpróbálja használni a modulok egyik R-szkriptet, amely tartalmazza a pontszámok kimenete modell kiértékelése.  
+ Ez a hiba Azure Machine Learning fordul elő, ha az egyik modul használatával próbálja kiértékelni a modelleket egy, a pontszámokat tartalmazó R-szkriptből származó kimenettel.  
   
 **Megoldás:**
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|R által előállított pontszámok kiértékelése használata jelenleg nem támogatott.|  
+|Az R által előállított pontszámok kiértékelése jelenleg nem támogatott.|  
   
 
-## <a name="error-0085"></a>0085 hiba  
- Kivétel lép fel, ha a parancsfájlok értékelésére egy hibaüzenettel meghiúsul.  
+## <a name="error-0085"></a>0085-es hiba  
+ Kivétel történik, ha a parancsfájl kiértékelése hibát jelez.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, szintaktikai hibákat tartalmazó egyéni parancsfájl futtatása során.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha szintaktikai hibákat tartalmazó egyéni parancsfájlt futtat.  
   
-**Megoldás:** Tekintse át a kódot egy külső szerkesztő, és ellenőrizze a hibákat.  
+**Megoldás:** Tekintse át a kódot egy külső szerkesztőben, és ellenőrizze a hibákat.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Hiba történt a parancsfájl kiértékelése közben.|  
-|A következő hiba történt a parancsfájl kiértékelése, közben megtekintése további információk a kimeneti naplót:---hibaüzenete kezdete {0} interpret--- {1} ---vége hibaüzenete {0} interpret--- ------|  
+|Hiba történt a parancsfájl kiértékelése során.|  
+|A parancsfájl kiértékelése során a következő hiba történt, további információért tekintse meg a kimeneti naplót:---------- {0} az értelmező {1} hibaüzenetének megkezdése---------- {0} ----------a értelmező hibaüzenetének vége---- ------|  
   
 
-## <a name="error-0086"></a>0086 hiba  
- Kivétel lép fel, amikor a számlálási átalakító érvénytelen.  
+## <a name="error-0086"></a>0086-es hiba  
+ Kivétel történik, ha egy számlálási átalakító érvénytelen.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, amikor kiválaszt egy count táblázat alapján átalakítást, de a kijelölt átalakítás nem kompatibilis, az aktuális adatokat, vagy az új száma tábla.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, amikor egy Count tábla alapján választ egy átalakítást, de a kiválasztott átalakító nem kompatibilis az aktuális adattal, vagy az új Count táblával.  
   
-**Megoldás:** A modul támogatja az számát és a két különböző formátumokban az átalakítás alkotó szabályok mentése. Táblák száma összevonásakor, győződjön meg arról, hogy mindkét tábla egyesíteni szeretné ugyanazt a formátumot használja.  
+**Megoldás:** A modul támogatja a számok és a szabályok mentését, amelyek két különböző formátumban teszik lehetővé az átalakítást. Ha a számlálási táblákat egyesíti, ellenőrizze, hogy mindkét egyesíteni kívánt tábla ugyanazt a formátumot használja-e.  
   
-Általában olyan szám-alapú átalakítást csak alkalmazható az átalakítás eredetileg létrehozott adatkészletként ugyanazzal a sémával rendelkező adatkészletekre.  
+Általánosságban elmondható, hogy a Count-alapú átalakítás csak olyan adatkészletekre alkalmazható, amelyek ugyanazzal a sémával rendelkeznek, mint amelyben az átalakítás eredetileg létrejött.  
   
  <!-- For general information, see [Learning with Counts](data-transformation-learning-with-counts.md). For requirements specific to creating and merging count-based features, see these topics:  
   
@@ -1427,31 +1426,31 @@ Ezt az eseményt a hibakezelést az Azure Machine Learning, amely további testr
   
 -   [Modify Count Table Parameters](modify-count-table-parameters.md)  
   -->
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A megadott számlálási átalakító érvénytelen.|  
-|A bemeneti portját a számlálási átalakítás "{0}" érvénytelen.|  
-|A bemeneti portját a számlálási átalakítás "{0}"nem egyesíthető a bemeneti portját a számlálási átalakítás"{1}". Ellenőrizze, hogy ellenőrizze a leltárhoz egyezések használt metaadatok.|  
+|Érvénytelen számlálási átalakító van megadva.|  
+|A (z) "{0}" bemeneti porton levő számlálási átalakítás érvénytelen.|  
+|A (z) "{0}" bemeneti porton levő számlálási átalakítás nem egyesíthető a ({1}z) "" bemeneti porton levő Count transzformációval. Ellenőrizze, hogy a találatok között használt metaadatok megfelelnek-e.|  
   
 
-## <a name="error-0087"></a>0087 hiba  
- Kivétel lép fel, ha meg van adva egy érvénytelen számlálóadat táblatípus tanulási modulok számát.  
+## <a name="error-0087"></a>0087-es hiba  
+ Kivétel fordul elő, ha egy érvénytelen szám típusú tábla van megadva a Counts modulokkal való tanuláshoz.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, próbál meg importálni a meglévő száma tábla, de a tábla nem kompatibilis, az aktuális adatokat, vagy az új száma tábla.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, amikor egy meglévő Count táblát próbál importálni, de a tábla nem kompatibilis az aktuális adattal vagy az új Count táblával.  
   
-**Megoldás:** Számos különböző formátumokban számát és a szabályok az átalakítás alkotó mentéséhez. Száma táblák összevonásakor, győződjön meg arról, hogy mindkettő ugyanazt a formátumot használja.  
+**Megoldás:** Az átalakítást alkotó számok és szabályok mentéséhez különböző formátumok tartoznak. Ha a számlálási táblákat egyesíti, ellenőrizze, hogy mindkét ugyanazt a formátumot használja-e.  
   
- Általában olyan szám-alapú átalakítást csak alkalmazható az átalakítás eredetileg létrehozott adatkészletként ugyanazzal a sémával rendelkező adatkészletekre.  
+ Általában a Count-alapú transzformáció csak olyan adatkészletekre alkalmazható, amelyek ugyanazzal a sémával rendelkeznek, mint a transzformáció eredetileg létrehozott adatkészlethez.  
   
   <!--For general information, see [Learning with Counts](data-transformation-learning-with-counts.md). -->
   
 
-## <a name="error-0088"></a>0088 hiba  
- Kivétel lép fel egy érvénytelen számbavételi típus van megadva a tanulási modulok számát.  
+## <a name="error-0088"></a>0088-es hiba  
+ Kivétel fordul elő, ha érvénytelen számlálási típus van megadva a Counts modulokkal való tanuláshoz.  
   
- Ez a hiba az Azure Machine Learning történik, ha, mint egy másik számlálási módszer használata esetén támogatott featurization száma alapján.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha egy eltérő számlálási módszert próbál használni, mint amennyit a a Count-alapú featurization esetében támogatott.  
   
-**Megoldás:** Általában számlálási módszerek közül választ egy legördülő listából, így ez a hibaüzenet nem jelenik meg.  
+**Megoldás:** Általánosságban elmondható, hogy a számlálási módszerek egy legördülő listából vannak kiválasztva, így nem jelennek meg ez a hiba.  
   
   <!--For general information, see [Learning with Counts](data-transformation-learning-with-counts.md). For requirements specific to creating and merging count-based features, see these topics:  
   
@@ -1461,323 +1460,323 @@ Ezt az eseményt a hibakezelést az Azure Machine Learning, amely további testr
   
 -   [Modify Count Table Parameters](modify-count-table-parameters.md)  
   -->
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Érvénytelen számbavételi típus van megadva.|  
-|A megadott számbavételi típus "{0}" nem egy érvényes számbavételi típus.|  
+|Érvénytelen számlálási típus van megadva.|  
+|A megadott "{0}" számlálási típus nem érvényes számlálási típus.|  
   
 
-## <a name="error-0089"></a>0089 hiba  
- Kivétel lép fel, ha a megadott számú osztályok nem éri el a tényleges száma egy adatkészletben leltárhoz használt osztályok.  
+## <a name="error-0089"></a>0089-es hiba  
+ Kivétel történik, ha a megadott számú osztály kisebb, mint a számláláshoz használt adatkészletben szereplő osztályok tényleges száma.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, amikor egy count táblát hoz létre, és a felirat oszlop tartalmazza, mint a modul paraméterei az osztályok különböző számú.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor létrehoz egy Count táblát, és a Label (címke) oszlop különböző számú osztályt tartalmaz, mint amennyit a modul paramétereinek megadott.  
   
-**Megoldás:** Ellenőrizze az adatkészlet, és ismerje meg, hogy pontosan eltérő értékek száma (lehetséges osztályok) címke oszlop található. A count tábla létrehozásakor meg kell adnia legalább az osztályok száma.  
+**Megoldás:** Ellenőrizze az adatkészletet, és győződjön meg arról, hogy a címke oszlopban pontosan hány különböző érték (lehetséges osztály) szerepel. A Count tábla létrehozásakor legalább ennyi osztályt kell megadnia.  
   
- A count tábla automatikusan nem tudja megállapítani a rendelkezésre álló leltárosztályok számát.  
+ A Count tábla nem tudja automatikusan meghatározni az elérhető osztályok számát.  
   
- A count tábla létrehozásakor nem adható meg a 0, vagy a szám, amely kisebb, mint a tényleges hány osztály szerepel a címke oszlop.  
+ A Count tábla létrehozásakor nem adhat meg 0 vagy bármely olyan számot, amely kisebb, mint a címke oszlopban szereplő osztályok tényleges száma.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Az osztályok száma helytelen. Győződjön meg arról, hogy az osztályok, adja meg a paraméter ablaktábla száma kisebb, mint a címke oszlop osztályok száma egyenlő.|  
-|A megadott osztályok száma "{0}"verziójú, amely nem nagyobb, mint egy címke értéke"{1}" leltározza az adatkészlet. Győződjön meg arról, hogy az osztályok, adja meg a paraméter ablaktábla száma kisebb, mint a címke oszlop osztályok száma egyenlő.|  
+|Az osztályok száma helytelen. Győződjön meg arról, hogy a paraméter ablaktáblán megadott osztályok száma nagyobb vagy egyenlő, mint a címke oszlopban szereplő osztályok száma.|  
+|A megadott osztályok száma "{0}", amely nem nagyobb, mint a (z) "{1}" címke értéke a darabszámhoz használt adatkészletben. Győződjön meg arról, hogy a paraméter ablaktáblán megadott osztályok száma nagyobb vagy egyenlő, mint a címke oszlopban szereplő osztályok száma.|  
   
 
-## <a name="error-0090"></a>0090 hiba  
- Kivétel lép fel, ha a Hive-tábla létrehozása meghiúsul.  
+## <a name="error-0090"></a>0090-es hiba  
+ Kivétel történik, ha a struktúra-tábla létrehozása sikertelen.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, használatakor [adatok exportálása](export-data.md) vagy egy másik lehetőség az adatok mentése egy HDInsight-fürt és a megadott Hive-tábla nem hozható létre.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha [](export-data.md) adatexportálási vagy más lehetőséget használ az HDInsight-fürtre történő adatmentéshez, és a megadott struktúra-tábla nem hozható létre.  
   
-**Megoldás:** Ellenőrizze a fürthöz társított Azure-tárfiók nevére, és győződjön meg arról, hogy a modul tulajdonságai használ ugyanazzal a fiókkal.  
+**Megoldás:** Ellenőrizze a fürthöz társított Azure Storage-fiók nevét, és ellenőrizze, hogy ugyanazt a fiókot használja-e a modul tulajdonságainál.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A Hive-táblában nem hozható létre. Egy HDInsight-fürtöt hogy a fürthöz társított Azure storage-fiók neve megegyezik a mi átadott modul paraméterrel.|  
-|A Hive-tábla "{0}" nem sikerült létrehozni. Egy HDInsight-fürtöt hogy a fürthöz társított Azure storage-fiók neve megegyezik a mi átadott modul paraméterrel.|  
-|A Hive-tábla "{0}" nem sikerült létrehozni. Egy HDInsight-fürtöt, győződjön meg, hogy a fürthöz társított Azure storage-fiók neve "{1}".|  
+|Nem sikerült létrehozni a kaptár-táblázatot. HDInsight-fürt esetén győződjön meg arról, hogy a fürthöz társított Azure Storage-fiók neve ugyanaz, mint amit a Module paraméteren keresztül továbbított.|  
+|Nem sikerült létrehozni a{0}(z) "" struktúra-táblázatot. HDInsight-fürt esetén győződjön meg arról, hogy a fürthöz társított Azure Storage-fiók neve ugyanaz, mint amit a Module paraméteren keresztül továbbított.|  
+|Nem sikerült létrehozni a{0}(z) "" struktúra-táblázatot. HDInsight-fürt esetén győződjön meg arról, hogy a fürthöz társított Azure Storage-{1}fiók neve "".|  
  
 
-## <a name="error-0100"></a>0100 hiba  
- Kivétel lép fel, ha egy nem támogatott nyelvet meg van adva egy egyéni modult.  
+## <a name="error-0100"></a>0100-es hiba  
+ Kivétel történik, ha egy egyéni modulhoz nem támogatott nyelv van megadva.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, egy egyéni modult és name tulajdonsága készítése során a **nyelvi** egy egyéni modult xml-definíciós fájljának elem értéke érvénytelen. Az egyetlen érvényes érték a tulajdonság jelenleg `R`. Példa:  
+ Ez a hiba Azure Machine Learning történik, amikor egyéni modult hoz létre, és a **nyelvi** elem Name tulajdonsága egy egyéni modul XML-definíciós fájljában érvénytelen értékkel rendelkezik. Jelenleg a tulajdonság `R`egyetlen érvényes értéke. Példa:  
   
  `<Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />`  
   
-**Megoldás:** Ellenőrizze, hogy a név tulajdonsága a **nyelvi** egyéni modul xml-definíciós fájljának elemében van beállítva `R`. Mentse a fájlt, frissítse az egyéni modult zip-csomagját, és próbálja meg újra hozzá az egyéni modult.  
+**Megoldás:** Ellenőrizze, hogy az egyéni modul XML-definíciós fájljának **Language** elemének Name tulajdonsága a `R`következőre van-e beállítva:. Mentse a fájlt, frissítse az egyéni modul ZIP-csomagját, és próbálkozzon újra az egyéni modul hozzáadásával.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A megadott nyelv nem támogatott egyéni modul|  
+|A megadott egyéni modul nyelve nem támogatott|  
   
 
-## <a name="error-0101"></a>0101 hiba  
- Minden port és a paraméter azonosítóinak egyedinek kell lennie.  
+## <a name="error-0101"></a>0101-es hiba  
+ Minden port és paraméter azonosítójának egyedinek kell lennie.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, egy vagy több portot vagy a paraméterek hozzárendelése esetén ugyanaz az azonosító egy egyéni XML-definíciós fájljának modulban.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor egy vagy több port vagy paraméter ugyanahhoz az azonosító értékhez van rendelve egy egyéni modul XML-definíciós fájljában.  
   
-**Megoldás:** Ellenőrizze, hogy a azonosító minden port és a paraméterek értékei egyedi. Mentse az xml-fájlt, frissítse az egyéni modult zip-csomagját, és próbálja meg újra hozzá az egyéni modult.  
+**Megoldás:** Győződjön meg arról, hogy az összes port és paraméter azonosító értékei egyediek. Mentse az XML-fájlt, frissítse az egyéni modul ZIP-csomagját, és próbálkozzon újra az egyéni modul hozzáadásával.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Minden port és azonosítók paraméter egy modul egyedinek kell lennie|  
-|A modul "{0}" argumentuma ismétlődő port és azonosítók. Összes port/argumentum-azonosítót a modulhoz egyedinek kell lennie.|  
+|Egy modul összes portjának és paraméterének azonosítójának egyedinek kell lennie|  
+|A ({0}z) "" modul duplikált port/argumentum-azonosítókat tartalmaz. A modul minden port/argumentum azonosítójának egyedinek kell lennie.|  
   
 
-## <a name="error-0102"></a>0102 hiba  
- Fordul elő, amikor nem nyerhetők ki a ZIP-fájlt.  
+## <a name="error-0102"></a>0102-es hiba  
+ Nem lehet kibontani a ZIP-fájlt.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, amikor egy .zip kiterjesztésű tömörített csomagot importál, de a csomag nem érhető egy zip-fájlt, vagy a fájl nem használja a támogatott zip formátumba.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor egy. zip kiterjesztésű tömörített csomagot importál, de a csomag nem zip-fájl, vagy a fájl nem támogatott ZIP-formátumot használ.  
   
-**Megoldás:** Ellenőrizze, hogy a kiválasztott fájl érvényes .zip fájlt, és, hogy lett-e tömörített egyik támogatott tömörítési algoritmus használatával.  
+**Megoldás:** Győződjön meg arról, hogy a kiválasztott fájl érvényes. zip-fájl, és hogy az egyik támogatott tömörítési algoritmus használatával lett tömörítve.  
   
- Megjelenik a hibaüzenet, a tömörített formátumban adatkészletek importálásakor, ha győződjön meg az összes abban található fájlokat a támogatott formátumok valamelyikével, Unicode formátumban vannak.  <!--For more information, see [Unpack Zipped Datasets](unpack-zipped-datasets.md).  -->
+ Ha az adatkészletek tömörített formátumban való importálásakor ezt a hibaüzenetet kapja, ellenőrizze, hogy az összes foglalt fájl használja-e a támogatott fájlformátumok egyikét, és hogy Unicode formátumú-e.  <!--For more information, see [Unpack Zipped Datasets](unpack-zipped-datasets.md).  -->
   
- Próbálja meg újra hozzáadni a kívánt fájlokat egy új tömörített ZIP mappába, majd próbálja újra hozzá az egyéni modult.  
+ Próbálja újból hozzáadni a kívánt fájlokat egy új tömörített ZIP-mappához, és próbálkozzon újra az egyéni modul hozzáadásával.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A megadott ZIP fájl formátuma nem megfelelő formátumú|  
+|A megadott ZIP-fájl formátuma nem megfelelő.|  
 
 
-## <a name="error-0103"></a>0103 hiba  
- Ha egy ZIP-fájl nem tartalmaz .xml fájlok lépett fel  
+## <a name="error-0103"></a>0103-es hiba  
+ Ha egy ZIP-fájl nem tartalmaz. xml fájlokat  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha az egyéni modult zip-csomagját nem tartalmaz a modul definition (.xml) fájlok. Ezeket a fájlokat a zip-csomagját (például nem almappa belül.) gyökérmappájában található kell  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor az egyéni modul ZIP-csomagja nem tartalmaz modul-definíciós (. xml) fájlokat. Ezeket a fájlokat a zip-csomag gyökerében kell tárolni (például nem egy almappában belül).  
   
-**Megoldás:** Ellenőrizze, hogy egy vagy több xml modul definíciós fájl a gyökérmappában található azon a zip-csomagját a oly módon, azt egy ideiglenes mappába a meghajtón található. XML-fájlok közvetlenül a mappát, amelybe kibontotta a zip-csomagját, kell lennie. Győződjön meg arról, hogy a zip-csomagját, amely nem választja ki a zip, ezzel létrehoz belül a zip-csomagját almappa neve megegyezik a zip-kijelölt mappa xml-fájlokat tartalmazó mappa létrehozásakor.  
+**Megoldás:** Ellenőrizze, hogy egy vagy több XML-modul definíciós fájlja a zip-csomag gyökérkönyvtárában van-e kibontva a lemezmeghajtó egy ideiglenes mappájába. Minden XML-fájlnak közvetlenül abban a mappában kell lennie, amelyhez a ZIP-csomagot kibontotta. Győződjön meg arról, hogy a zip-csomag létrehozásakor ne válasszon olyan mappát, amely a zip XML-fájlokat tartalmaz, mivel ez létrehoz egy almappát a zip-csomagban a zip-fájlhoz megadott névvel.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A megadott ZIP-fájlja nem tartalmaz a bármely modul definíciós fájlok (.xml)|  
+|A megadott ZIP-fájl nem tartalmaz modul-definíciós fájlokat (. XML fájlok)|  
 
 
-## <a name="error-0104"></a>Hiba történt a 0104  
- Fordul elő, ha egy modul csomagdefiníciós fájl hivatkozik egy parancsfájlt, amely nem található  
+## <a name="error-0104"></a>0104-es hiba  
+ Ha egy modul definíciós fájlja olyan parancsfájlra hivatkozik, amely nem található  
   
- Ez a hiba az Azure Machine Learning fordul elő, amikor egy egyéni modult xml-definíciós fájljának hivatkozik egy parancsfájlt a **nyelvi** elem, amely nem szerepel a zip-csomagját. A parancsfájl-fájl elérési útja van megadva a **sourceFile** tulajdonságát a **nyelvi** elemet. A forrásfájl elérési útja a zip-csomagját (a modul xml-definíciós fájlokat megegyező helyen) gyökeréhez viszonyítva. Ha a parancsfájl almappa, meg kell adni a parancsfájl relatív elérési útját. Például ha mentette az összes parancsfájl egy **myScripts** mappán belül, a zip-csomagját a **nyelvi** elem lenne az elérési út hozzáadása a **sourceFile** tulajdonság alább. Példa:  
+ Ez a hiba akkor fordul elő Azure Machine Learning, ha az egyéni modul XML-definíciós fájlja olyan **nyelvi** elemre hivatkozik, amely nem szerepel a zip-csomagban. A parancsfájl elérési útja a **Language** elem **sourceFile** tulajdonságában van definiálva. A forrásfájl elérési útja a zip-csomag gyökeréhez képest (a modul XML-definíciós fájljaival megegyező helyen található). Ha a parancsfájl egy almappában található, meg kell adni a parancsfájl relatív elérési útját. Ha például az összes parancsfájlt a zip-csomagban található **szkriptek** -mappában tárolta, a **nyelvi** elemnek az alábbi módon kell hozzáadnia ezt az elérési utat a **sourceFile** tulajdonsághoz. Példa:  
   
  `<Language name="R" sourceFile="myScripts/CustomAddRows.R" entryPoint="CustomAddRows" />`  
   
-**Megoldás:** Győződjön meg arról, hogy értékét a **sourceFile** tulajdonságot a **nyelvi** az egyéni modul xml-definíció elem helyességéről, valamint, hogy a forrásfájl megtalálható-e a megfelelő relatív elérési út a zip-csomagját.  
+**Megoldás:** Győződjön meg arról, hogy az egyéni modul XML-definíciójának **Language** elemében a **sourceFile** tulajdonság értéke helyes, és hogy a forrásfájl a zip-csomagban található helyes relatív elérési úton található.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|R-szkript hivatkozott fájl nem létezik.|  
-|Hivatkozott R-parancsfájl "{0}" nem található. Győződjön meg arról, hogy a fájl relatív elérési útja helyes-e a definíciók helyről.|  
+|A hivatkozott R-parancsfájl nem létezik.|  
+|A hivatkozott R-parancsfájl{0}("") nem található. Győződjön meg arról, hogy a fájl relatív elérési útja helyes a definíciók helyéről.|  
 
 
-## <a name="error-0105"></a>0105 hiba  
- Ez a hibaüzenet jelenik meg, ha egy modul csomagdefiníciós fájl tartalmaz egy nem támogatott paramétertípust  
+## <a name="error-0105"></a>0105-es hiba  
+ Ez a hiba akkor jelenik meg, ha egy modul definíciós fájlja nem támogatott paraméter-típust tartalmaz  
   
- Ez a hiba az Azure Machine Learning jön létre, amikor a hoz létre egy egyéni modult xml-definíció és a egy paraméter vagy a definícióban argumentum típusa nem egyezik meg a támogatott típusú.  
+ Ez a hiba a Azure Machine Learning akkor jön létre, amikor létrehoz egy egyéni modul XML-definícióját, és a definícióban szereplő paraméter vagy argumentum típusa nem egyezik a támogatott típussal.  
   
-**Megoldás:** Győződjön meg arról, hogy minden tulajdonság **Arg** támogatott típusú elem a modul egyéni xml-definíciós fájlban.  
+**Megoldás:** Győződjön meg arról, hogy az egyéni modul XML-definíciós fájljában található bármely **ARG** -elem Type tulajdonsága támogatott típusú.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A paramétertípus nem támogatott.|  
-|Paraméter típusa nem támogatott "{0}" megadott.|  
+|A paraméter típusa nem támogatott.|  
+|A megadott "{0}" paraméter típusa nem támogatott.|  
 
 
-## <a name="error-0106"></a>0106 hiba  
- Fordul elő, ha egy modul csomagdefiníciós fájl definiálja a bemeneti típusa nem támogatott  
+## <a name="error-0106"></a>0106-es hiba  
+ Ha egy modul definíciós fájlja nem támogatott bemeneti típust határoz meg  
   
- Ez a hiba az Azure Machine Learning jön létre, amikor egy bemeneti portját a egy egyéni modult XML-definíció típusa nem egyezik meg a támogatott típusú.  
+ Ez a hiba akkor jön létre Azure Machine Learning, ha egy egyéni modul XML-definíciójában lévő bemeneti port típusa nem egyezik a támogatott típussal.  
   
-**Megoldás:** Győződjön meg róla, hogy egy egyéni modult XML-definíciós fájljának bemeneti elem tulajdonság támogatott típusú.  
+**Megoldás:** Győződjön meg arról, hogy az egyéni modul XML-definíciós fájljának Type tulajdonsága támogatott típusú.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Bemenet típusa nem támogatott.|  
-|Nem támogatott a bemeneti típus "{0}" megadott.|  
+|Nem támogatott bemeneti típus.|  
+|Nem támogatott bemeneti típus{0}van megadva.|  
 
 
-## <a name="error-0107"></a>0107 hiba  
- Fordul elő, ha egy modul csomagdefiníciós fájl egy nem támogatott kimenet típusa határozza meg.  
+## <a name="error-0107"></a>0107-es hiba  
+ Ha egy modul definíciós fájlja nem támogatott kimeneti típust határoz meg  
   
- Ez a hiba az Azure Machine Learning jön létre, ha a kimeneti portra, a modul egyéni xml-definíció típusa nem egyezik meg a támogatott típusú.  
+ Ez a hiba akkor jön létre Azure Machine Learning, ha egy egyéni modul XML-definíciójában lévő kimeneti port típusa nem egyezik a támogatott típussal.  
   
-**Megoldás:** Győződjön meg róla, hogy az egyéni modul xml-definíciós fájl kimeneti elem tulajdonság támogatott típusú.  
+**Megoldás:** Győződjön meg arról, hogy az egyéni modul XML-definíciós fájljának Type tulajdonsága támogatott típusú.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem támogatott kimeneti típus.|  
-|Kimenet típusa nem támogatott "{0}" megadott.|  
+|A kimeneti típus nem támogatott.|  
+|A megadott "{0}" kimeneti típus nem támogatott.|  
 
 
-## <a name="error-0108"></a>0108 hiba  
- Ha egy modul csomagdefiníciós fájl határozza meg a további bemeneti vagy kimeneti portok, mint amennyit lépett fel  
+## <a name="error-0108"></a>0108-es hiba  
+ Ha egy modul definíciós fájlja több bemeneti vagy kimeneti portot határoz meg, mint amennyit támogatott  
   
- Ez a hiba az Azure Machine Learning jön létre, amikor egy egyéni modult xml-definíció túl sok bemeneti vagy kimeneti portok vannak meghatározva.  
+ Ez a hiba akkor jön létre Azure Machine Learning, ha túl sok bemeneti vagy kimeneti port van definiálva egy egyéni modul XML-definíciójában.  
   
-**Megoldás:** Ellenőrzi, hogy a bemeneti és kimeneti portok az egyéni modul xml-definícióban meghatározott maximális száma nem haladja meg a támogatott portok maximális számát.  
+**Megoldás:** Gondoskodik arról, hogy az egyéni modul XML-definíciójában megadott bemeneti és kimeneti portok maximális száma ne haladja meg a támogatott portok maximális számát.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
 |Túllépte a bemeneti vagy kimeneti portok támogatott számát.|  
-|Támogatott túllépése száma "{0}" portokat. Maximálisan engedélyezett számú "{0}portok van{1}".| 
+|Túllépte a támogatott{0}portok számát. A{0}"" portok{1}maximálisan megengedett száma "".| 
 
-## <a name="error-0109"></a>0109 hiba  
- Fordul elő, ha egy modul csomagdefiníciós fájl egy Oszlopválasztó helytelenül meghatározása  
+## <a name="error-0109"></a>0109-es hiba  
+ Egy modul-definíciós fájl helytelen oszlop-választójának meghatározásakor  
   
- Ez a hiba az Azure Machine Learning jön létre, ha a szintaxis egy oszlop-választó argumentumként egy egyéni modult xml-definíció hibát tartalmaz.  
+ Ez a hiba akkor jön létre a Azure Machine Learningban, ha egy oszlop választó argumentum szintaxisa hibát tartalmaz az egyéni modul XML-definíciójában.  
   
-**Megoldás:** Ez a hiba jön létre, ha a szintaxis egy oszlop-választó argumentumként egy egyéni modult xml-definíció hibát tartalmaz.  
+**Megoldás:** Ez a hiba akkor jön létre, ha egy oszlop választó argumentumának szintaxisa hibát tartalmaz egy egyéni modul XML-definíciójában.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Oszlopválasztó szintaxis nem támogatott.|  
+|Az oszlop választójának szintaxisa nem támogatott.|  
   
 
-## <a name="error-0110"></a>0110 hiba  
- Fordul elő, ha egy modul csomagdefiníciós fájl egy oszlop-választó, amely hivatkozik a nem létező bemeneti portját ID határozza meg.  
+## <a name="error-0110"></a>0110-es hiba  
+ Egy modul definíciós fájlja olyan oszlop-választót határoz meg, amely nem létező bemeneti portra hivatkozik  
   
- Ez a hiba az Azure Machine Learning jön létre. Ha a *portId* tulajdonságot a Tulajdonságok elemben, egy Arg ColumnPicker típusa nem egyezik egy bemeneti porthoz azonosító értékét.  
+ Ez a hiba akkor jön létre Azure Machine Learning, amikor a ColumnPicker típusú ARG *portId* tulajdonsága nem egyezik a bemeneti port azonosító értékével.  
   
-**Megoldás:** Ellenőrizze, hogy a portId tulajdonságában megtalálható a bemeneti portját a modul egyéni xml-definícióban meghatározott azonosító értékét.  
+**Megoldás:** Győződjön meg arról, hogy a portId tulajdonság megegyezik az egyéni modul XML-definíciójában definiált bemeneti port azonosító értékével.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Oszlopválasztó hivatkozik egy nem létező bemeneti porthoz.|  
-|Oszlopválasztó hivatkozik a nem létező bemeneti portját ID "{0}".|  
+|Az oszlop választója egy nem létező bemeneti port AZONOSÍTÓra hivatkozik.|  
+|Az oszlop választója egy nem létező bemeneti portra ({0}"") hivatkozik.|  
   
 
-## <a name="error-0111"></a>0111 hiba  
- Fordul elő, ha egy modul csomagdefiníciós fájl érvénytelen tulajdonság határozza meg.  
+## <a name="error-0111"></a>0111-es hiba  
+ Ha egy modul definíciós fájlja érvénytelen tulajdonságot határoz meg  
   
- Ez a hiba az Azure Machine Learning jön létre, az egyéni modul XML-definíció elem rendelt érvénytelen tulajdonság.  
+ Ez a hiba Azure Machine Learning akkor jön létre, amikor egy érvénytelen tulajdonság van hozzárendelve egy elemhez az egyéni modul XML-definíciójában.  
   
-**Megoldás:** Ellenőrizze, hogy a tulajdonság egyéni modult elem által támogatott.  
+**Megoldás:** Győződjön meg arról, hogy az egyéni modul elem támogatja a tulajdonságot.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Vlastnost definíciója érvénytelen.|  
-|Erőforrástulajdonság-definíciót "{0}" értéke érvénytelen.|  
+|A tulajdonság definíciója érvénytelen.|  
+|A (z{0}) "" tulajdonság definíciója érvénytelen.|  
   
 
-## <a name="error-0112"></a>0112 hiba  
- Fordul elő, ha egy modul csomagdefiníciós fájl nem elemezhető.  
+## <a name="error-0112"></a>0112-es hiba  
+ Modul-definíciós fájl nem elemezhető  
   
- Ez a hiba az Azure Machine Learning jön létre, ha egy hiba megakadályozza, hogy az egyéni XML-definíció érvényes XML-fájlként elemezhető modul xml formátumban.  
+ Ez a hiba akkor jön létre a Azure Machine Learningban, ha az XML-formátumban hiba történt, amely megakadályozza, hogy az egyéni modul XML-definíciója érvényes XML-fájlként legyen elemezve.  
   
-**Megoldás:** Győződjön meg arról, hogy minden elem megnyitása és megfelelően lezárva. Győződjön meg arról, hogy nincsenek-e hibák az XML-formázáshoz.  
+**Megoldás:** Győződjön meg arról, hogy minden elem meg van nyitva, és megfelelően van lezárva. Győződjön meg arról, hogy az XML-formázás nem tartalmaz hibát.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem sikerült elemezni a modul csomagdefiníciós fájl.|  
-|Nem sikerült elemezni a modul csomagdefiníciós fájl "{0}".|  
+|A modul definíciós fájlja nem elemezhető.|  
+|A modul definíciós fájlja ({0}"") nem értelmezhető.|  
   
 
-## <a name="error-0113"></a>0113 hiba  
- Fordul elő, ha egy modul csomagdefiníciós fájl hibákat tartalmaz.  
+## <a name="error-0113"></a>0113-es hiba  
+ Egy modul definíciós fájlja hibát tartalmaz.  
   
- Ez a hiba az Azure Machine Learning jön létre, amikor az egyéni modul XML-definíciós fájljának elemezhető, de hibák, például az egyéni modulok által nem támogatott elemeket definícióját tartalmazza.  
+ Ez a hiba Azure Machine Learning akkor jön létre, amikor az egyéni modul XML-definíciós fájlja elemezhető, de hibákat tartalmaz, például az egyéni modulok által nem támogatott elemek definícióját.  
   
-**Megoldás:** Győződjön meg arról, hogy az egyéni modult definíciós fájl határozza meg az elemek és egyéni modulok által támogatott tulajdonságok.  
+**Megoldás:** Győződjön meg arról, hogy az egyéni modul definíciós fájlja az egyéni modulok által támogatott elemeket és tulajdonságokat határozza meg.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A modul csomagdefiníciós fájl hibákat tartalmaz.|  
-|A modul csomagdefiníciós fájl "{0}" hibákat tartalmaz.|  
-|A modul csomagdefiníciós fájl "{0}" hibákat tartalmaz. {1}|  
+|A modul definíciós fájlja hibákat tartalmaz.|  
+|A (z){0}"" modul-definíciós fájl hibákat tartalmaz.|  
+|A (z){0}"" modul-definíciós fájl hibákat tartalmaz. [https://doi.org/10.13012/J8PN93H8]({1})|  
   
 
-## <a name="error-0114"></a>0114 hiba  
- Egy egyéni modult sikertelen készítése során lépett fel.  
+## <a name="error-0114"></a>0114-es hiba  
+ Az egyéni modul létrehozásakor nem sikerül.  
   
- Ez a hiba az Azure Machine Learning jön létre, ha egy egyéni modult build sikertelen. Ez akkor fordul elő, ha egy vagy több egyéni modul kapcsolatos hiba történt az egyéni modul hozzáadása. A további hibákat jelentett belül ez a hibaüzenet.  
+ Ez a hiba a Azure Machine Learning akkor jön létre, amikor egy egyéni modul létrehozása meghiúsul. Ez akkor fordul elő, ha egy vagy több egyéni modulhoz kapcsolódó hiba történt az egyéni modul hozzáadásakor. A további hibák a hibaüzeneten belül jelennek meg.  
   
-**Megoldás:** Oldja meg a kivételre vonatkozó üzenet jelentett hibákat.  
+**Megoldás:** Hárítsa el a kivételt jelző üzenetben jelentett hibákat.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
 |Nem sikerült létrehozni az egyéni modult.|  
-|A modul egyéni buildek hiba (hibák) miatt sikertelen volt: {0}|  
+|Az egyéni modul-buildek meghiúsultak a következő hibával:{0}|  
   
 
-## <a name="error-0115"></a>0115 hiba  
- Fordul elő, amikor egy egyéni modult alapértelmezett parancsfájl kiterjesztése nem támogatott.  
+## <a name="error-0115"></a>0115-es hiba  
+ Az egyéni modul alapértelmezett parancsfájlja nem támogatott bővítményt tartalmaz.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha egy parancsfájl adja meg egy egyéni modul által használt ismeretlen fájlnév-kiterjesztés.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor olyan egyéni modulhoz ad meg parancsfájlt, amely ismeretlen fájlnév-kiterjesztést használ.  
   
-**Megoldás:** Ellenőrizze a formátum és a fájlnév kiterjesztése bármilyen parancsfájl fájlt az egyéni modult is tartalmaz.  
+**Megoldás:** Ellenőrizze az egyéni modulban található parancsfájlok fájlformátumát és a fájlnév kiterjesztését.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A bővítmény nem támogatott az alapértelmezett parancsprogramok.|  
-|Nem támogatott fájl bővítmény {0} alapértelmezett parancsfájlt.|  
+|Az alapértelmezett parancsfájl esetében nem támogatott a mérték.|  
+|{0} Az alapértelmezett parancsfájl esetében nem támogatott a fájl kiterjesztése.|  
   
 
-## <a name="error-0121"></a>0121 hiba  
- Amikor SQL ír sikertelen, mert a tábla nem lehet írni lépett fel  
+## <a name="error-0121"></a>0121-es hiba  
+ Az SQL-írások sikertelenek, mert a tábla nem írható  
   
- Ez a hiba az Azure Machine Learning jön létre, ha használja a [adatok exportálása](export-data.md) modul eredmények mentéséhez és a egy SQL database egyik táblájában a tábla nem lehet írni. Általában ez a hiba Ha láthatók a [adatok exportálása](export-data.md) modul sikeresen kapcsolatot hoz létre az SQL Server-példányhoz, de ezután nem lehet írni a tábla tartalmát az Azure ML-adatkészletet.  
+ Ez a hiba abban az esetben jön létre a Azure Machine Learningban [](export-data.md) , ha az adatexportálási modult használja az eredmények egy SQL-adatbázisban lévő táblába való mentéséhez, és a tábla nem írható a következőre:. Ez a hiba általában akkor jelenik meg, ha [](export-data.md) az adatexportálási modul sikeresen kapcsolatot létesít a SQL Server példánnyal, de nem tudja írni az Azure ml-adatkészlet tartalmát a táblába.  
   
 **Megoldás:**
- - Nyissa meg a Tulajdonságok panelen, a [adatok exportálása](export-data.md) modul, és ellenőrizze, hogy az adatbázis és tábla neve helyesen lett megadva. 
- - Tekintse át az adatkészlet exportál, és ügyeljen arra, hogy az adatok kompatibilis a céltábla sémája.
- - Győződjön meg arról, hogy az SQL jelentkezzen be társított a felhasználónév és jelszó a tábla írási engedélyekkel rendelkezik. 
- - Ha a kivétel tartalmaz további információ a hibáról az SQL Serverből, adott információk használatával javíthatja a megadottakat.  
+ - Nyissa meg az adatexportálási modul tulajdonságok paneljét, és ellenőrizze, hogy helyesen adta-e meg az adatbázis és a táblanév nevét. [](export-data.md) 
+ - Tekintse át az exportálni kívánt adatkészlet sémáját, és győződjön meg arról, hogy az adat kompatibilis a céltábla táblájával.
+ - Győződjön meg arról, hogy a felhasználónévvel és jelszóval társított SQL-bejelentkezés jogosult a táblába való írásra. 
+ - Ha a kivétel további információkat tartalmaz a SQL Servertól, akkor a javítások elvégzéséhez használja ezeket az adatokat.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem lehet írni kiszolgálóhoz csatlakoztatott táblába.|  
-|Nem lehet írni az Sql-táblát: {0}|  
+|Csatlakoztatva a kiszolgálóhoz, nem lehet írni a táblába.|  
+|Nem lehet írni az SQL-táblába:{0}|  
 
 
-## <a name="error-0122"></a>0122 hiba  
- Kivétel lép fel, ha több súly oszlop van megadva, és csak egy engedélyezett.  
+## <a name="error-0122"></a>0122-es hiba  
+ Kivétel történik, ha több súlyozási oszlop van megadva, és csak egy engedélyezett.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, amikor súlyozási oszlopként, hogy túl sok oszlop kijelölve.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha túl sok oszlop van kijelölve súlyozási oszlopként.  
   
-**Megoldás:** Tekintse át a bemeneti adatkészlet és a metaadatait. Győződjön meg arról, hogy csak egy oszlop súlyok tartalmaz.  
+**Megoldás:** Tekintse át a bemeneti adatkészletet és annak metaadatait. Győződjön meg arról, hogy csak egy oszlop tartalmaz súlyozást.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Súly több oszlop van megadva.|  
+|Több súlyozási oszlop van megadva.|  
 
 
-## <a name="error-0123"></a>0123 hiba  
- Kivétel lép fel, ha vektorok oszlop van megadva címke oszlopra.  
+## <a name="error-0123"></a>0123-es hiba  
+ Kivétel történik, ha a vektorok oszlopa címke oszlopra van megadva.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, a címke oszlopként egy vektoros használatakor.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha a címkét tartalmazó oszlopként egy vektort használ.  
   
-**Megoldás:** Módosítsa az oszlop, ha a szükséges adatok formátumát, vagy válasszon másik oszlopot.  
+**Megoldás:** Szükség esetén módosítsa az oszlop adatformátumát, vagy válasszon másik oszlopot.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Oszlop vektorok címke oszlop van megadva.|  
+|A vektorok oszlopa felirat oszlopként van megadva.|  
 
 
-## <a name="error-0124"></a>0124 hiba  
- Kivétel lép fel, ha nem numerikus oszlop van megadva, a súly oszlopban kell.  
-  
-**Megoldás:**
-  
-|Kivétel üzenetek|  
-|------------------------|  
-|Nem numerikus oszlophoz a súly oszlop van megadva.|  
-  
-
-
-## <a name="error-0125"></a>0125 hiba  
- Fordul elő, ha több adatkészlet sémája nem egyezik.  
+## <a name="error-0124"></a>0124-es hiba  
+ Kivétel történik, ha nem numerikus oszlopok vannak megadva a Weight oszlopnak.  
   
 **Megoldás:**
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
+|------------------------|  
+|Nem numerikus oszlop van megadva súlyozási oszlopként.|  
+  
+
+
+## <a name="error-0125"></a>0125-es hiba  
+ Akkor fordul elő, ha több adatkészlet sémája nem egyezik.  
+  
+**Megoldás:**
+  
+|Kivételek üzenetei|  
 |------------------------|  
 |Az adatkészlet sémája nem egyezik.|  
 
 
-## <a name="error-0126"></a>0126 hiba  
- Kivétel lép fel, ha a felhasználó adja meg, amely nem támogatott az Azure ML SQL tartományhoz.  
+## <a name="error-0126"></a>0126-es hiba  
+ Kivétel történik, ha a felhasználó olyan SQL-tartományt ad meg, amely nem támogatott az Azure ML-ben.  
   
- Ez a hiba akkor jön létre, amikor a felhasználó adja meg, amely nem támogatott az Azure Machine Learning SQL tartományhoz. A hibaüzenetet fog kapni, ha olyan tartományban, amely nem szerepel az engedélyezési listán egy adatbázis-kiszolgálóhoz való csatlakozáshoz. Az engedélyezett SQL-tartományok jelenleg: ". database.windows.net",". cloudapp.net", vagy a ". database.secure.windows.net". A kiszolgáló, egy Azure SQL-kiszolgálóhoz vagy a kiszolgáló Azure-beli virtuális gépen kell lennie.  
+ Ez a hiba akkor jön létre, ha a felhasználó olyan SQL-tartományt ad meg, amely Azure Machine Learning nem támogatott. Ez a hibaüzenet akkor jelenik meg, ha olyan tartományban próbál csatlakozni egy adatbázis-kiszolgálóhoz, amely nem rendelkezik engedélyezési listával. Jelenleg az engedélyezett SQL-tartományok a következők: ". database.windows.net", ". cloudapp.net" vagy ". database.secure.windows.net". Vagyis a kiszolgálónak Azure SQL Servernek vagy egy Azure-beli virtuális gépen lévő kiszolgálónak kell lennie.  
   
-**Megoldás:** Nyissa meg újra a modult. Győződjön meg arról, hogy az SQL database-kiszolgáló egyikéhez tartozik az elfogadott tartományok:  
+**Megoldás:** Nyissa meg újra a modult. Győződjön meg arról, hogy az SQL Database-kiszolgáló az egyik elfogadott tartományhoz tartozik:  
   
 -   .database.windows.net  
   
@@ -1785,16 +1784,16 @@ Ezt az eseményt a hibakezelést az Azure Machine Learning, amely további testr
   
 -   .database.secure.windows.net  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem támogatott az SQL-tartomány.|  
-|Az SQL-tartomány {0} jelenleg nem támogatott az Azure gépi tanulás|  
+|Nem támogatott SQL-tartomány.|  
+|Az SQL- {0} tartomány jelenleg nem támogatott az Azure ml-ben|  
   
 
-## <a name="error-0127"></a>0127 hiba  
- Kép képpontos mérete meghaladja az engedélyezett korlátot  
+## <a name="error-0127"></a>0127-es hiba  
+ A képképpont mérete meghaladja az engedélyezett korlátot  
   
- Ez a hiba akkor fordul elő, ha egy kép adatkészletből besoroláshoz tartozó képek olvas, és a képek nagyobb, mint amit a modell képes kezelni.  
+ Ez a hiba akkor fordul elő, ha lemezképeket olvas be a besoroláshoz, és a lemezképek nagyobbak, mint amennyit a modell képes kezelni.  
   
  <!--**Resolution:**
  For more information about the image size and other requirements, see these topics:  
@@ -1803,145 +1802,145 @@ Ezt az eseményt a hibakezelést az Azure Machine Learning, amely további testr
   
 -   [Pretrained Cascade Image Classification](pretrained-cascade-image-classification.md)  -->
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Kép képpontos mérete meghaladja az engedélyezett korlátot.|  
-|A fájl képpontos képméret "{0}" meghaladja az engedélyezett korlátot: "{1}"|  
+|A képképpont mérete meghaladja az engedélyezett korlátot.|  
+|A (z) "{0}" fájl képpontjának mérete meghaladja az engedélyezett korlátot: ""{1}|  
 
 
-## <a name="error-0128"></a>0128 hiba  
- Feltételes valószínűségek kategorikus oszlopok száma meghaladja a korlátot.  
+## <a name="error-0128"></a>0128-es hiba  
+ A kategorikus oszlopok feltételes valószínűségének száma meghaladja a korlátot.  
   
 **Megoldás:**
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Feltételes valószínűségek kategorikus oszlopok száma meghaladja a korlátot.|  
-|Feltételes valószínűségek kategorikus oszlopok száma meghaladja a korlátot. Oszlopok{0}"és"{1}"a problémás pár vannak.|  
+|A kategorikus oszlopok feltételes valószínűségének száma meghaladja a korlátot.|  
+|A kategorikus oszlopok feltételes valószínűségének száma meghaladja a korlátot. A "" és a{1}"" oszlop a problémás pár.{0}|  
 
 
-## <a name="error-0129"></a>0129 hiba  
- Az adatkészlet szereplő oszlopok száma meghaladja az engedélyezett korlátot.  
+## <a name="error-0129"></a>0129-es hiba  
+ Az adatkészlet oszlopainak száma meghaladja az engedélyezett korlátot.  
   
 **Megoldás:**
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Az adatkészlet szereplő oszlopok száma meghaladja az engedélyezett korlátot.|  
-|Az adatkészletben szereplő oszlopok száma "{0}"meghaladja a megengedett."|  
-|Az adatkészletben szereplő oszlopok száma "{0}"meghaladja az engedélyezett korlátot"{1}". "|  
-|Az adatkészletben szereplő oszlopok száma "{0}engedélyezett meghaladja{1}"korlátozza az"{2}". "|  
-## <a name="error-0130"></a>0130 hiba  
- Kivétel lép fel, amikor az összes sort a betanítási adatkészletet a hiányzó értékeket tartalmaznak.  
+|Az adatkészlet oszlopainak száma meghaladja az engedélyezett korlátot.|  
+|A (z) "{0}" adatkészletben lévő oszlopok száma meghaladja az engedélyezett értéket.|  
+|A (z) "{0}" adatkészletében lévő oszlopok száma meghaladja a (z) "{1}" megengedett határértékét.|  
+|A (z) "{0}" adatkészletben lévő oszlopok száma meghaladja a (z) ""{1}megengedett "" határértéket{2}.|  
+## <a name="error-0130"></a>0130-es hiba  
+ Kivétel történik, ha a betanítási adatkészlet összes sora hiányzó értékeket tartalmaz.  
   
- Ez akkor fordul elő, ha a betanítási adatkészletet néhány oszlopa üres.  
+ Ez akkor fordul elő, ha a betanítási adatkészlet egyes oszlopai üresek.  
   
-**Megoldás:** Használja a [Clean Missing Data](clean-missing-data.md) modul összes hiányzó értékekkel rendelkező oszlopok eltávolításával.  
+**Megoldás:** A [tiszta hiányzó adatok](clean-missing-data.md) modul használatával távolítsa el az oszlopokat az összes hiányzó értékkel.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Betanítási adatkészletet szereplő összes sor a hiányzó értékeket tartalmaznak.  Fontolja meg az Clean Missing Data modullal távolítsa el a hiányzó értékeket.|  
+|A betanítási adatkészlet összes sora hiányzó értékeket tartalmaz.  A hiányzó értékek eltávolításához érdemes lehet a tiszta hiányzó adatmodult használni.|  
  
 
-## <a name="error-0131"></a>0131 hiba  
- Kivétel lép fel, ha egy vagy több adatkészletet egy zip-fájlban nem tud kicsomagolt és megfelelően regisztrálva  
+## <a name="error-0131"></a>0131-es hiba  
+ Kivétel történik, ha egy vagy több zip-fájlban lévő adatkészletet nem lehet kibontani, és megfelelően regisztrálni.  
   
- Ez a hiba akkor jön létre, amikor egy vagy több adatkészletet egy zip-fájlt a kicsomagolt és megfelelően olvasása sikertelen. Ez a hiba fog kapni, ha a kicsomagolás sikertelen, mert maga a zip-fájlt vagy fájlokat az egyik sérült, vagy rendszerhiba kicsomagolása, és a egy fájl kibontása közben.  
+ Ez a hiba akkor jön létre, ha egy vagy több zip-fájlban lévő adatkészletet nem lehet kibontani, és helyesen olvasni. Ez a hibaüzenet akkor jelenik meg, ha a kicsomagolás sikertelen, mert a zip-fájl maga vagy az egyik fájlja sérült, vagy rendszerhiba történt a fájlok kicsomagolása és kibontása során.  
   
-**Megoldás:** A hibaüzenetben megadott adatok segítségével meghatározhatja a folytatásról.  
+**Megoldás:** A folytatáshoz használja a hibaüzenetben megadott adatokat.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem sikerült tömörített adathalmazok feltöltése|  
-|Adatkészlet zip {0} a következő üzenettel meghiúsult: {1}|  
-|Adatkészlet zip {0} sikertelen volt egy {1} üzenettel kivétel: {2}|  
+|Nem sikerült feltölteni a tömörített adatkészleteket|  
+|A tömörített {0} adatkészlet a következő üzenettel meghiúsult:{1}|  
+|A tömörített {0} adatkészlet a következő {1} üzenettel való kivétel miatt meghiúsult:{2}|  
   
 
-## <a name="error-0132"></a>0132 hiba  
- Fájlnév nélkül lett megadva a kicsomagolás; több fájl zip-fájlban találhatók.  
+## <a name="error-0132"></a>0132-es hiba  
+ Nincs megadva fájlnév a kicsomagoláshoz. több fájl található a zip-fájlban.  
   
- Ez a hiba jön létre, ha a fájlnév nélkül lett megadva a kicsomagolás; több fájl zip-fájlban találhatók. Ez a hiba fog kapni, ha a .zip-fájlban csak egy tömörített fájl található, de nem adta meg egy fájlt a a kivonási a **Unpack adatkészlet** szöveg mezőben az a **tulajdonság** modul panel. Jelenleg csak egy fájlt kinyerhetők a modul minden egyes futtatásakor.  
+ Ez a hiba akkor jön létre, ha nincs megadva fájlnév a kicsomagoláshoz. több fájl található a zip-fájlban. Ez a hibaüzenet akkor jelenik meg, ha a. zip fájl egynél több tömörített fájlt tartalmaz, de nem adott meg a kibontáshoz szükséges fájlt az **adatkészlet** kicsomagolása szövegmezőbe a modul **Tulajdonságok** paneljén. Jelenleg csak egy fájl lehet kinyerhető a modul minden egyes indításakor.  
   
-**Megoldás:** A hibaüzenet a .zip-fájlban található fájlok listáját tartalmazza. Másolja ki a kívánt fájl nevét, és illessze be azt a **Unpack adatkészlet** szövegmezőben.  
+**Megoldás:** A hibaüzenet a. zip fájlban található fájlok listáját tartalmazza. Másolja ki a kívánt fájl nevét, és illessze be az adatkészletbe a **kicsomagolás** szövegmezőbe.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Zip-fájl több fájlokat; tartalmazza. Bontsa ki a fájlt kell megadnia.|  
-|A fájl egynél több fájlt tartalmazza. Adja meg a fájl kibontásához. A következő fájlok találhatók: {0}|  
+|A zip-fájl több fájlt tartalmaz; meg kell adnia a kibontani kívánt fájlt.|  
+|A fájl egynél több fájlt tartalmaz. A kibontani kívánt fájl meghatározása. A rendszer a következő fájlokat találta:{0}|  
   
 
-## <a name="error-0133"></a>0133 hiba  
- A megadott fájl nem található a zip-fájl  
+## <a name="error-0133"></a>0133-es hiba  
+ A megadott fájl nem található a zip-fájlban  
   
- Ez a hiba jön létre, amikor a megadott fájlnév a **Unpack adatkészlet** mezőjében a **tulajdonság** ablaktáblában nem egyezik meg a minden fájlhoz a .zip-fájlban található nevét. Ennek a hibának a leggyakoribb okok a következők: egy írja be a hiba, vagy bontsa ki a fájlhoz a megfelelő archív fájl keresése.  
+ Ez a hiba akkor jön létre, ha a **Tulajdonságok** ablaktábla adatkészletbe **való** kicsomagolása mezőben megadott fájlnév nem egyezik a. zip fájlban található bármely fájl nevével. A hiba leggyakoribb okai a begépelési hiba, vagy a fájl nem megfelelő archív fájljának a kibontásához.  
   
-**Megoldás:** Nyissa meg újra a modult. Ha a kibontani kívánt fájl neve megjelenik a található fájlok listáját, másolja ki a fájl nevét, és illessze be azt a **Unpack adatkészlet** tulajdonságnál. Ha nem látja a kívánt fájl nevét a listában, ellenőrizze, hogy a megfelelő zip-fájlt, és a helyes-e a kívánt fájl nevét.  
+**Megoldás:** Nyissa meg újra a modult. Ha a kibontani kívánt fájl neve megjelenik a talált fájlok listájában, másolja ki a fájlnevet, és illessze be az adatkészletbe a kicsomagolási tulajdonság mezőben. Ha nem látja a kívánt fájlnevet a listában, ellenőrizze, hogy rendelkezik-e a megfelelő. zip fájllal és a megfelelő névvel a kívánt fájlhoz.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A megadott fájl nem volt található int a zip-fájlt.|  
-|A megadott fájl nem található. A következő fájlok találhatók: {0}|  
+|A megadott fájl nem található a zip-fájlban.|  
+|A megadott fájl nem található. A következő fájl (oka) t találta:{0}|  
   
 
-## <a name="error-0134"></a>0134 hiba
-Kivétel lép fel, ha a címke oszlop hiányzik, vagy címkézett sorok száma nem elegendő.  
+## <a name="error-0134"></a>0134-es hiba
+Kivétel keletkezik, ha hiányzik a Label oszlop, vagy nem áll rendelkezésre elegendő számú címkézett sor.  
   
-Ez akkor fordul elő, ha a modulnak szüksége van egy olyan címke oszlop, de Ön nem tartalmazza az egyik oszlop kiválasztása, vagy a címke oszlop túl sok érték hiányzik.
+Ez a hiba akkor fordul elő, ha a modulhoz címke oszlop szükséges, de nem tartalmaz egyet az oszlop kiválasztásakor, vagy a Label (címke) oszlopban túl sok érték hiányzik.
 
-Ez a hiba akkor is előfordulhat, ha egy korábbi művelet módosítja az adatkészletet úgy, hogy a megfelelő sorok érhetők el egy alsóbb rétegbeli művelet. Tegyük fel például, a kifejezés használata a **partíciót és minta** modul adatkészlet elosztandó szám értékeket. Nem található egyezés a kifejezés, ha az egyik partíció eredő adatkészlet lesz üres.
+Ez a hiba akkor is megjelenhet, ha egy korábbi művelet megváltoztatja az adatkészletet úgy, hogy a nem megfelelő sorok elérhetők legyenek egy alsóbb rétegbeli művelet számára. Tegyük fel például, hogy a **partíció és a minta** modul egy kifejezését használja az adatkészlet értékek szerinti felosztásához. Ha a kifejezéshez nem található egyezés, akkor a partícióból származó egyik adatkészlet üres lenne.
 
 Megoldás: 
 
- Ha egy címke oszlop szerepel a kijelölés, de nem ismerhető fel, használja a [metaadatainak szerkesztése](edit-metadata.md) modult, jelölje meg a címke oszlopként.
+ Ha címkét tartalmazó oszlopot is tartalmaz az oszlop kijelölésekor, de nem ismeri fel, a [metaadatok szerkesztése](edit-metadata.md) modullal megjelölheti a címkét oszlopként.
   
-  <!--Use the [Summarize Data](summarize-data.md) module to generate a report that shows how many values are missing in each column. -->Ezután használhatja a [Clean Missing Data](clean-missing-data.md) modul hiányzó értékekkel sorok eltávolítása a címke oszlopban. 
+  <!--Use the [Summarize Data](summarize-data.md) module to generate a report that shows how many values are missing in each column. -->Ezután a [tiszta hiányzó](clean-missing-data.md) adatmodul használatával eltávolíthatja a hiányzó értékekkel rendelkező sorokat a Label (címke) oszlopban. 
 
- Ellenőrizze a bemeneti adatkészletek, győződjön meg arról, hogy érvényes adatokat, és megfelelnek a művelet elegendő sorok tartalmazzák. Számos algoritmusok hibaüzenetet hoz létre, ha néhány minimális száma adatsor van szükségük, de az adatok csak néhány sort, vagy csak egy fejlécet tartalmaz.
+ Ellenőrizze a bemeneti adatkészleteket, és győződjön meg arról, hogy érvényes adatokat tartalmaznak, és hogy elegendő sor van a művelet követelményeinek kielégítéséhez. Számos algoritmus hibaüzenetet küld, ha néhány minimális számú adatra van szükségük, de az adat csak néhány sort tartalmaz, vagy csak egy fejlécet.
   
-|Kivétel üzenetek|
+|Kivételek üzenetei|
 |------------------------|
-|Kivétel lép fel, ha a címke oszlop hiányzik, vagy címkézett sorok száma nem elegendő.|  
-|Kivétel lép fel, ha a címke oszlop hiányzik, vagy kevesebb, mint {0} sorok címkével|  
+|Kivétel keletkezik, ha hiányzik a Label oszlop, vagy nem áll rendelkezésre elegendő számú címkézett sor.|  
+|Kivétel történik, ha a címke oszlop hiányzik vagy kevesebb, {0} mint a címkézett sorok|  
   
 
-## <a name="error-0135"></a>0135 hiba  
- Csak a középpontját-alapú fürt támogatott.  
+## <a name="error-0135"></a>0135-es hiba  
+ Csak a középpontját-alapú fürtök támogatottak.  
   
-**Megoldás:** Ez a hibaüzenet fürtözési modell, amely egy egyéni fürtözési algoritmust, amely nem használja a fürt inicializálása centroids alapján kiértékelheti, hogy próbált léphetnek fel.  
+**Megoldás:** Ez a hibaüzenet akkor jelenhet meg, ha olyan fürtözött modellt próbált kiértékelni, amely egy olyan egyéni fürtszolgáltatási algoritmuson alapul, amely nem használja a centroids a fürt inicializálásához.  
   
   <!--You can use [Evaluate Model](evaluate-model.md) to evaluate clustering models that are based on the  [K-Means Clustering](k-means-clustering.md) module. For custom algorithms, use the [Execute R Script](execute-r-script.md) module to create a custom evaluation script.  -->
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Csak a középpontját-alapú fürt támogatott.|  
+|Csak a középpontját-alapú fürtök támogatottak.|  
   
 
-## <a name="error-0136"></a>0136 hiba  
- Nincs fájlnév érkezett; nem sikerült a fájl eredményeképpen feldolgozni.  
+## <a name="error-0136"></a>0136-es hiba  
+ A fájl neve nem lett visszaadva; nem lehet feldolgozni a fájlt ennek eredményeképpen.  
   
 **Megoldás:**
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nincs fájlnév érkezett; nem sikerült a fájl eredményeképpen feldolgozni.|  
+|A fájl neve nem lett visszaadva; nem lehet feldolgozni a fájlt ennek eredményeképpen.|  
   
 
-## <a name="error-0137"></a>0137 hiba  
- Az Azure Storage SDK táblázat tulajdonságai és adatkészletoszlopok konvertálása olvasási vagy írási során hibába ütközött.  
+## <a name="error-0137"></a>0137-es hiba  
+ Az Azure Storage SDK hibát észlelt a táblázat tulajdonságai és az adatkészlet oszlopai között az olvasás vagy az írás során.  
   
 **Megoldás:**
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Az Azure table storage tulajdonság és az adatkészlet oszlopok közötti konverziós hiba.|  
-|Az Azure table storage tulajdonság és az adatkészlet oszlopok közötti konverziós hiba. További információ: {0}|  
+|Átalakítási hiba az Azure Table Storage tulajdonság és az adatkészlet oszlopa között.|  
+|Átalakítási hiba az Azure Table Storage tulajdonság és az adatkészlet oszlopa között. További információ:{0}|  
 
-## <a name="error-0138"></a>0138 hiba  
- Memória már sor került, nem lehet a modul teljes futtatását. Az adatkészlet egyszerűsítés segíthet a probléma enyhítése.  
+## <a name="error-0138"></a>0138-es hiba  
+ A memória kimerült, nem lehet befejezni a modul futtatását. Az adatkészlet leegyszerűsítése segíthet enyhíteni a problémát.  
   
- Ez a hiba akkor fordul elő, ha a modul futtató van szüksége több memóriára érhető el az Azure container. Ez akkor fordulhat elő, ha egy nagy méretű adathalmazt dolgozik, és az aktuális művelet nem fér el a memóriába.  
+ Ez a hiba akkor fordul elő, ha a futó modul több memóriát igényel, mint amennyi az Azure-tárolóban elérhető. Ez akkor fordulhat elő, ha nagyméretű adatkészlettel dolgozik, és az aktuális művelet nem fér bele a memóriába.  
   
-**Megoldás:** Ha próbált egy nagy méretű adathalmazt olvassa el, és a művelet nem hajtható végre, egyszerűsítés az adatkészlet segíthetnek.  
+**Megoldás:** Ha nagyméretű adatkészletet próbál beolvasni, és a művelet nem hajtható végre, az adatkészlet leegyszerűsítése segíthet.  
   
   <!--If you use the visualizations on datasets to check the cardinality of columns, only some rows are sampled. To get a full report, use [Summarize Data](summarize-data.md). You can also use the [Apply SQL Transformation](apply-sql-transformation.md) to check for the number of unique values in each column.  
   
@@ -1949,24 +1948,24 @@ Megoldás:
   
  Try using [Principal Component Analysis](principal-component-analysis.md) or one of the provided feature selection methods to reduce your dataset to a smaller set of more feature-rich columns: [Feature Selection](feature-selection-modules.md)  -->
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Memória már sor került, nem lehet a modul teljes futtatását.|  
+|A memória kimerült, nem lehet befejezni a modul futtatását.|  
   
 
-## <a name="error-0139"></a>0139 hiba  
- Kivétel lép fel, ha az nem lehet átalakítani egy oszlop egy másik.  
+## <a name="error-0139"></a>0139-es hiba  
+ Kivétel történik, ha nem lehetséges egy oszlop átalakítása más típusra.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, próbál meg egy másik adattípusúra konvertálása egy olyan oszlop, de típus vagy a modul által az aktuális művelet nem támogatott.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, amikor egy oszlopot más adattípusra próbál átalakítani, de az aktuális művelet vagy a modul nem támogatja ezt a típust.  
   
- A hiba akkor is megjelenhet, ha egy modul megkísérli implicit módon konvertálni az adatokat az aktuális modult követelményeinek, de a konvertálás nem lehetséges.  
+ A hiba akkor is megjelenhet, ha egy modul megpróbál implicit módon konvertálni az adattípust az aktuális modul követelményeinek megfelelően, de a konverzió nem lehetséges.  
   
 **Megoldás:**
 
-1. Tekintse át a bemeneti adatokat, és határozza meg a használni kívánt oszlop pontos adattípusa és határozzák meg a hiba az oszlop adattípusát. Egyes esetekben előfordulhat, hogy úgy gondolja, hogy az adatok típusa helyes, de találja, hogy egy felsőbb szintű művelet módosította az adattípus vagy egy oszlop használatát. Használja a [metaadatainak szerkesztése](edit-metadata.md) modul oszlop-metaadatot visszaállítani az eredeti állapotba. 
-2. Tekintse meg a modul súgóoldalt a megadott művelet esetében a követelmények ellenőrzéséhez. Határozza meg az aktuális modul által támogatott adattípusokat és az értékek milyen tartomány használatát támogatják. 
+1. Tekintse át a bemeneti adatokat, és határozza meg a használni kívánt oszlop pontos adattípusát, valamint a hibát előállító oszlop adattípusát. Előfordulhat, hogy az adattípus helyes, de azt tapasztalja, hogy egy felsőbb rétegbeli művelet módosította az oszlop adattípusát vagy használatát. A [metaadatok szerkesztése](edit-metadata.md) modullal állítsa vissza az oszlop metaadatait az eredeti állapotába. 
+2. Tekintse meg a modul Súgó lapját a megadott művelet követelményeinek ellenőrzéséhez. Határozza meg, hogy az aktuális modul mely adattípusokat támogatja, és hogy milyen értékek támogatottak. 
  <!--3. If values need to be truncated, rounded, or outliers removed, use the [Apply Math Operation](apply-math-operation.md) or [Clip Values](clip-values.md) modules to make corrections.-->
-4. Érdemes lehet, hogy konvertálni, vagy más oszlop alakítható. A következő modulok minden jelentős rugalmasságot és a power adja meg az adatok módosításához: 
+4. Gondolja át, hogy lehetséges-e az oszlop konvertálása vagy átadása más adattípusra. Az alábbi modulok mind jelentős rugalmasságot és hatékonyságot biztosítanak az adatmódosításhoz: 
  <!--
    + [Apply SQL Transformation](apply-sql-transformation.md)
    + [Execute R Script](execute-r-script.md)
@@ -1974,222 +1973,222 @@ Megoldás:
    + [Python-szkript végrehajtása](execute-python-script.md).  
 
 > [!NOTE]
-> Még mindig nem működik? Vegye figyelembe, hogy további visszajelzés küldése a problémáról, és segítsen fejlesztése jobban hibaelhárítási útmutatót. Csak ezen az oldalon a visszajelzés elküldése, és adja meg a hiba, és az adattípus konvertálása sikertelen generáló modul nevét.
+> Még nem működik? Érdemes lehet további visszajelzést küldeni a problémáról, hogy hatékonyabb hibaelhárítási útmutatót nyújtson. Küldje el visszajelzését ezen a lapon, és adja meg a hibát generáló modul nevét, valamint az adattípus-konverziót, amely nem sikerült.
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Átalakítás nem engedélyezett.|  
-|Nem lehet átalakítani: {0}.|  
-|Nem lehet átalakítani: {0}, sorban {1}.|  
-|Nem sikerült átalakítani típusú oszlop {0} típusú oszlopra {1} sorban {2}.|  
-|Nem sikerült átalakítani az oszlop "{2}" típusú {0} típusú oszlopra {1} sorban {3}.|  
-|Nem sikerült átalakítani az oszlop "{2}" típusú {0} oszlopra "{3}" típusú {1} sorban {4}.| 
+|Nem engedélyezett a konverzió.|  
+|A konvertálás nem lehetséges {0}:.|  
+|A következő nem konvertálható: {0}, sor. {1}|  
+|A típusú {0} oszlop nem alakítható át sor {2}típusú {1} oszlopba.|  
+|A (z) "{2}" típusú {0} oszlop nem alakítható át {1} sor {3}típusú oszlopba.|  
+|A (z) "{2}" típusú oszlop {0} {3}nem konvertálható {1} a (z) " {4}" típusú oszlopba sorban.| 
 
-## <a name="error-0140"></a>0140 hiba  
- Kivétel lép fel, ha az átadott oszlop argumentum nem tartalmaz más oszlopok címke oszlopot kivéve.  
+## <a name="error-0140"></a>0140-es hiba  
+ Kivétel történik, ha az átadott oszlop beállított argumentuma nem tartalmaz más oszlopokat, kivéve a Label oszlopot.  
   
- Ez a hiba akkor fordul elő, ha csatlakozott egy adatkészlet a modul, amely több oszlop funkciókat, beleértve a szükséges, de csak a címke oszlopban megadott.  
+ Ez a hiba akkor fordul elő, ha olyan modulhoz csatlakoztatott egy adatkészletet, amelyhez több oszlop szükséges (beleértve a funkciókat is), de csak a Label (címke) oszlopot adta meg.  
   
-**Megoldás:** Válasszon legalább egy szolgáltatás oszlopot tartalmazza az adatkészletben.  
+**Megoldás:** Válasszon ki legalább egy olyan funkciót, amelyet fel szeretne venni az adatkészletbe.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Megadott oszlop készlet nem tartalmaz más oszlopok címke oszlopot kivéve.|  
-  
-
-## <a name="error-0141"></a>0141 hiba  
- Kivétel lép fel, ha a szám, karakterlánc típusú oszlopokra és a kiválasztott numerikus oszlopok és a kategorikus egyedi értékeket túl kicsi.  
-  
- Az Azure Machine Learning a hiba akkor fordul elő, ha az nem elég egyedi értékek a kiválasztott oszlop végrehajtani a műveletet.  
-  
-**Megoldás:** Egyes műveletek statisztikai műveletek végrehajtása a szolgáltatás és a kategorikus oszlopok, és ha nem elég érték, a művelet sikertelen lehet, vagy érvénytelen eredményt adja vissza. Ellenőrizze az adatkészlet ahhoz, hogy a szolgáltatás és a felirat oszlopban található értékek száma, és ellenőrizze, hogy a végrehajtani kívánt művelet statisztikailag érvényes.  
-  
- Ha a forrás adatkészlet érvényes, is megkereshet e néhány felsőbb rétegbeli adat manipulálásával vagy metaadat-művelet módosította az adatokat, és néhány érték eltávolítása.  
-  
- Ha felfelé irányuló műveletek felosztása, mintavételi vagy az Újraszámítás, győződjön meg arról, hogy a kimenetek tartalmaz-e a várt számú sort és értékeket.  
-  
-|Kivétel üzenetek|  
-|------------------------|  
-|A kiválasztott numerikus és egyedi értékeket a kategorikus és karakterlánc oszlopok száma nem elég nagy.|  
-|A kijelölt numerikus oszlopok és egyedi értékeket a kategorikus és karakterlánc típusú oszlopokra teljes száma (jelenleg {0}) kell lennie, mint {1}|  
+|A megadott oszlop nem tartalmaz más oszlopokat, kivéve a Label oszlopot.|  
   
 
-## <a name="error-0142"></a>0142 hiba  
- Kivétel lép fel, amikor a rendszer nem tölthető be a tanúsítvány hitelesítéséhez.  
+## <a name="error-0141"></a>0141-es hiba  
+ Kivétel történik, ha a kijelölt numerikus oszlopok száma és a kategorikus és sztring oszlopok egyedi értékei túl kicsik.  
+  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor nincs elég egyedi érték a kijelölt oszlopban a művelet végrehajtásához.  
+  
+**Megoldás:** Egyes műveletek statisztikai műveleteket hajtanak végre a szolgáltatáson és a kategorikus oszlopokon, és ha nincs elég érték, a művelet meghiúsulhat, vagy érvénytelen eredményt adhat vissza. Ellenőrizze az adatkészletet, és tekintse meg, hogy hány érték szerepel a funkció és a címke oszlopaiban, és határozza meg, hogy a végrehajtani kívánt művelet statisztikailag érvényes-e.  
+  
+ Ha a forrás-adatkészlet érvényes, akkor azt is megteheti, hogy egy felsőbb rétegbeli adatmanipuláció vagy metaadat-művelet módosította-e az adatokat, és eltávolított néhány értéket.  
+  
+ Ha a felsőbb rétegbeli műveletek között felosztás, mintavételezés vagy újraszámítás történt, ellenőrizze, hogy a kimenetek tartalmazzák-e a sorok és az értékek várt számát.  
+  
+|Kivételek üzenetei|  
+|------------------------|  
+|A kijelölt numerikus oszlopok és a kategorikus és sztring oszlopok egyedi értékeinek száma túl kicsi.|  
+|A kiválasztott numerikus oszlopok és egyedi értékek teljes száma a kategorikus és a sztring oszlopban (jelenleg {0}) legalább a következőnek kell lennie:{1}|  
+  
+
+## <a name="error-0142"></a>0142-es hiba  
+ Kivétel történik, ha a rendszeren nem tölthető be tanúsítvány a hitelesítéshez.  
   
 **Megoldás:**
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
 |A tanúsítvány nem tölthető be.|  
-|A tanúsítvány {0} nem tölthető be. Az ujjlenyomat {1}.|  
+|A tanúsítvány {0} nem tölthető be. Az ujjlenyomata {1}:.|  
   
 
-## <a name="error-0143"></a>0143 hiba  
- Nem lehet elemezni a felhasználó által megadott URL-címet, amely kellene lennie a Githubról.  
+## <a name="error-0143"></a>0143-es hiba  
+ A felhasználó által megadott URL-cím nem elemezhető, mert a GitHubról kellene származnia.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha megad egy URL-cím érvénytelen, és a modulnak szüksége van egy érvényes GitHub URL-CÍMÉT.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha érvénytelen URL-címet ad meg, és a modulnak érvényes GitHub URL-címet kell megadnia.  
   
-**Megoldás:** Győződjön meg arról, hogy az URL-cím vonatkozik-e egy érvényes GitHub-adattárból. Másik hely típusok nem támogatottak.  
+**Megoldás:** Ellenőrizze, hogy az URL-cím érvényes GitHub-tárházra hivatkozik-e. A többi hely típusa nem támogatott.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|URL-je nem a github.com.|  
-|URL-je nem a github.com: {0}|  
+|Az URL-cím nem a github.com.|  
+|Az URL-cím nem a github.com:{0}|  
 
-## <a name="error-0144"></a>0144 hiba  
- Felhasználó által megadott GitHub URL-címét a várt rész hiányzik.  
+## <a name="error-0144"></a>0144-es hiba  
+ A felhasználó által megadott GitHub URL-cím hiányzik a várt részből.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha megad egy GitHub forrás használatával URL-cím formátuma érvénytelen.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha egy GitHub-forrásfájlt érvénytelen URL-formátummal ad meg.  
   
-**Megoldás:** Ellenőrizze, hogy a GitHub-adattár URL-cím érvényes-e, és \blob\ vagy \tree végződik\\.  
+**Megoldás:** Győződjön meg arról, hogy a GitHub-tárház URL-címe érvényes, és a\\\blob\ vagy \tree végződik.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem lehet elemezni a GitHub URL-CÍMÉT.|  
-|GitHub URL-címe nem elemezhető (várt érték "\blob\\" vagy "\tree\\" után a tárház nevének): {0}|  
+|A GitHub URL-címe nem elemezhető.|  
+|A GitHub URL-címe nem elemezhető (\\a "\blob"\\vagy a "\tree" a tárház neve után):{0}|  
 
-## <a name="error-0145"></a>0145 hiba  
- A replikációs könyvtár valamilyen okból nem hozható létre.  
+## <a name="error-0145"></a>0145-es hiba  
+ Valamilyen okból nem lehet létrehozni a replikációs könyvtárat.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha a modul nem tudta létrehozni a megadott könyvtárban.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor a modul nem tudja létrehozni a megadott könyvtárat.  
   
 **Megoldás:**
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Replikációs könyvtár nem hozható létre.|  
+|A replikációs könyvtár nem hozható létre.|  
   
 
-## <a name="error-0146"></a>0146 hiba  
- Ha a felhasználói fájlok a helyi könyvtárba kicsomagolt, a kombinált elérési útja túl hosszú lehet.  
+## <a name="error-0146"></a>0146-es hiba  
+ Ha a felhasználói fájlok kibontása a helyi könyvtárba történik, előfordulhat, hogy az összetett elérési út túl hosszú.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, amikor, kibontására fájlokat, de néhány fájlnév túl hosszú, amikor a kicsomagolt.  
+ Ez a hiba Azure Machine Learning a fájlok kibontásakor következik be, de néhány fájlnév túl hosszú, ha kibontja a kicsomagolást.  
   
-**Megoldás:** Szerkesztése a fájlneveket, úgy, hogy a kombinált elérési út és fájlnév nem hosszabb 248 karakternél.  
+**Megoldás:** Szerkessze a fájlneveket úgy, hogy a kombinált elérési út és a fájlnév ne legyen hosszabb 248 karakternél.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Replikációs útvonal 248 karakternél hosszabb, Rövidítse le a szkript neve vagy elérési útja.|  
+|A replikálási útvonal 248 karakternél hosszabb, lerövidíti a parancsfájl nevét vagy elérési útját.|  
 
-## <a name="error-0147"></a>0147 hiba  
- Nem sikerült letölteni szolgáltatáshasználatot GitHub-okból  
+## <a name="error-0147"></a>0147-es hiba  
+ Valamilyen okból nem tölthetők le a GitHubról származó dolgok  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha nem tudja olvasni vagy a megadott fájlok letöltése a githubról.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor nem tudja olvasni vagy letölteni a megadott fájlokat a GitHubról.  
   
-**Megoldás:** Lehet, hogy a probléma ideiglenes; Próbálja meg elérni a fájlokat egy másik időpontban. Vagy ellenőrizze, hogy rendelkezik-e a szükséges engedélyekkel, és hogy a forrás érvénytelen.  
+**Megoldás:** Lehetséges, hogy a probléma ideiglenes; Előfordulhat, hogy a fájlokat más időpontban próbálja elérni. Ellenőrizze, hogy rendelkezik-e a szükséges engedélyekkel, és hogy a forrás érvényes-e.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
 |GitHub-hozzáférési hiba.|  
-|GitHub-hozzáférési hiba. {0}|  
+|GitHub-hozzáférési hiba. [https://doi.org/10.13012/J8PN93H8]({0})|  
   
 
-## <a name="error-0148"></a>0148 hiba  
- Jogosulatlan hozzáférési problémák adatok kibontása vagy könyvtár létrehozása közben.  
+## <a name="error-0148"></a>0148-es hiba  
+ Jogosulatlan hozzáférési problémák az adatok kinyerése vagy a címtár létrehozása közben.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, amikor hozzon létre egy könyvtárat vagy adatok olvasása a storage-ból próbált, de nem rendelkezik a szükséges engedélyekkel.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor egy könyvtárat próbál létrehozni, vagy a tárolóból beolvasni az adatait, de nem rendelkezik a szükséges engedélyekkel.  
   
 **Megoldás:**
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Jogosulatlan hozzáférési kivétel adatok kinyerésekor.|  
+|Jogosulatlan hozzáférési kivétel történt az adatok kinyerése közben.|  
   
 
-## <a name="error-0149"></a>0149 hiba  
- A felhasználó fájl nem létezik a GitHub csomagot belül.  
+## <a name="error-0149"></a>0149-es hiba  
+ A felhasználói fájl nem létezik a GitHub-csomagban.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha a megadott fájl nem található.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor a megadott fájl nem található.  
   
 Megoldás: 
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|GitHub-fájl nem található.|  
-|GitHub-fájl nem található.: {0}|  
+|A GitHub-fájl nem található.|  
+|A GitHub-fájl nem található.:{0}|  
   
 
-## <a name="error-0150"></a>0150 hiba  
- A parancsfájlok, amelyek a felhasználói csomag származnak nem sikerült kicsomagolt, nagy valószínűséggel GitHub fájlok való ütközés miatt.  
+## <a name="error-0150"></a>0150-es hiba  
+ A felhasználói csomagból származó parancsfájlokat nem lehet kibontani, legvalószínűbben a GitHub-fájlokkal való ütközés miatt.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha a parancsfájl nem nyerhetők ki, általában az azonos nevű meglévő fájl esetén.  
+ Ez a hiba Azure Machine Learning akkor fordul elő, ha egy parancsfájlt nem lehet kinyerni, általában akkor, ha már létezik azonos nevű fájl.  
   
 Megoldás:
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Nem sikerült kicsomagolni a köteg; lehetséges névütközés GitHub-fájlokat.|  
+|Nem lehet kibontani a csomagot; a lehetséges nevek összeütközése GitHub-fájlokkal.|  
   
 
-## <a name="error-0151"></a>0151 hiba  
- Hiba történt a felhőbe tárolás hibát. Ellenőrizze az URL-címet.  
+## <a name="error-0151"></a>0151-es hiba  
+ Hiba történt a felhőalapú tárolóba való írás során. Keresse meg az URL-címet.  
   
- Az Azure Machine Learning a hiba akkor fordul elő, ha a modul próbál adatokat írni a felhőalapú tárolást, de az URL-cím nem érhető el vagy érvénytelen.  
+ Ez a hiba Azure Machine Learning akkor következik be, amikor a modul megpróbálja írni az adatbevitelt a felhőalapú tárolóba, de az URL-cím nem érhető el vagy érvénytelen.  
   
-Megoldás: Ellenőrizze az URL-címet, és ellenőrizze, hogy írható.  
+Megoldás: Ellenőrizze az URL-címet, és ellenőrizze, hogy az írható-e.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Hiba a felhőalapú tárolás (valószínűleg egy hibás url) írása közben.|  
-|Hiba történt a felhőalapú tárolás írásakor: {0}. Ellenőrizze az URL-címet.|  
+|Hiba történt a felhőalapú tárolóba való íráskor (valószínűleg rossz URL-cím).|  
+|Hiba történt a felhőalapú tárolóba {0}való írás során:. Keresse meg az URL-címet.|  
   
-## <a name="error-0152"></a>0152 hiba  
- Az Azure-felhőtípus nem megfelelően van megadva a modul a környezetben.  
+## <a name="error-0152"></a>0152-es hiba  
+ Az Azure-beli felhő típusa helytelenül lett megadva a modul környezetében.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Hibás Azure-Felhőtípus|  
-|Hibás Azure-felhő típusa: {0}|  
+|Rossz Azure-felhő típusa|  
+|Rossz Azure-felhő típusa:{0}|  
   
-## <a name="error-0153"></a>0153 hiba  
- A tárolási végpontot a megadott érték érvénytelen.  
+## <a name="error-0153"></a>0153-es hiba  
+ A megadott tárolási végpont érvénytelen.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Hibás Azure-Felhőtípus|  
-|Hibás tárolási végpont: {0}|  
+|Rossz Azure-felhő típusa|  
+|Rossz tárolási végpont:{0}|  
 
-## <a name="error-0154"></a>0154 hiba  
+## <a name="error-0154"></a>0154-es hiba  
  A megadott kiszolgálónév nem oldható fel.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
 |A megadott kiszolgálónév nem oldható fel.|  
-|A megadott kiszolgáló {0}. documents.azure.com nem oldható fel|
+|A megadott Server {0}. Documents.Azure.com nem oldható fel.|
 
-## <a name="error-0155"></a>0155 hiba  
- A DocDb ügyfél kivételt okozott.  
+## <a name="error-0155"></a>0155-es hiba  
+ A DocDb-ügyfél kivételt váltott ki  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|A DocDb ügyfél kivételt okozott.|  
-|DocDb ügyfél: {0}|
+|A DocDb-ügyfél kivételt váltott ki|  
+|DocDb-ügyfél:{0}|
 
-## <a name="error-0156"></a>0156 hiba  
- Helytelen választ HCatalog-kiszolgáló.  
+## <a name="error-0156"></a>0156-es hiba  
+ Helytelen válasz a HCatalog-kiszolgálóhoz.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Helytelen választ HCatalog-kiszolgáló. Ellenőrizze, hogy futnak-e az összes szolgáltatás.|  
-|Helytelen választ HCatalog-kiszolgáló. Ellenőrizze, hogy futnak-e az összes szolgáltatás. Hiba részletei: {0}|
+|Helytelen válasz a HCatalog-kiszolgálóhoz. Győződjön meg arról, hogy az összes szolgáltatás fut.|  
+|Helytelen válasz a HCatalog-kiszolgálóhoz. Győződjön meg arról, hogy az összes szolgáltatás fut. Hiba részletei: {0}|
 
-## <a name="error-0157"></a>0157 hiba  
- Hiba történt az Azure Cosmos DB miatt inkonzisztens vagy más sémák olvasása. Olvasó szükséges összes dokumentum ugyanazzal a sémával rendelkezik.  
+## <a name="error-0157"></a>0157-es hiba  
+ Hiba történt az Azure Cosmos DB inkonzisztens vagy eltérő dokumentum-sémák miatt történő olvasásakor. Az olvasó megköveteli, hogy az összes dokumentum ugyanazzal a sémával rendelkezzen.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Különböző sémákkal észlelt dokumentumokat. Győződjön meg arról, hogy minden dokumentum ugyanazzal a sémával rendelkezik.|
+|A rendszer különböző sémákkal rendelkező dokumentumokat észlelt. Győződjön meg arról, hogy az összes dokumentum ugyanazzal a sémával rendelkezik|
 
-## <a name="error-1000"></a>1000 hiba  
-Belső könyvtár kivételt.  
+## <a name="error-1000"></a>1000-es hiba  
+Belső függvénytár-kivétel.  
   
-Ez a hiba rögzítése egyéb nem kezelt belső motor hibák biztosítunk. Ezért ez a hiba okát az modult, amely a hibát okozta függően eltérőek lehetnek.  
+Ez a hiba a nem kezelt belső motor hibáinak rögzítésére szolgál. Ezért előfordulhat, hogy a hiba oka eltérő lehet a hibát generáló modultól függően.  
   
-További segítséget szeretne kérni, azt javasoljuk, hogy a hiba az Azure Machine Learning fórum, és egy leírást a forgatókönyv, beleértve az adatokat használja bemenetként való megnyitásáról a részletes üzenet feladása. A visszajelzés segít számunkra, hogy rangsorolhatja a hibákat, és további munka legfontosabb problémáinak azonosítása.  
+Ha további segítségre van szüksége, javasoljuk, hogy tegye közzé a hibához tartozó részletes üzenetet a Azure Machine Learning fórumnak, a forgatókönyv leírásával együtt, beleértve a bemenetként használt adatokat is. Ez a visszajelzés segít rangsorolni a hibákat, és azonosítani a legfontosabb problémákat a további munkához.  
   
-|Kivétel üzenetek|  
+|Kivételek üzenetei|  
 |------------------------|  
-|Erőforrástár-kivétel.|  
-|Erőforrástár-kivétel: {0}|  
-|{0} Erőforrástár-kivétel: {1}|  
+|Függvénytár-kivétel.|  
+|Függvénytár-kivétel:{0}|  
+|{0}függvénytár-kivétel:{1}|  

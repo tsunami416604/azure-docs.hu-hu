@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 33e29b02adfccf94da84dd99451117485b892ba3
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
-ms.translationtype: HT
+ms.openlocfilehash: c6b9c0a8615960772ccac824c293b5f4ea6cfe55
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072903"
+ms.locfileid: "70129193"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync – hibaelhárítás
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -717,7 +717,7 @@ Ez a hiba azért fordul elő, mert a Storage-fiók feladatátvétele egy másik 
 | **Hiba karakterlánca** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
 | **Szervizelés szükséges** | Nem |
 
-Ez a hiba a szinkronizálási adatbázis belső problémája miatt fordul elő. Ez a hiba automatikusan feloldásra kerül, amikor a Azure File Sync a szinkronizálás újrapróbálkozásakor. Ha a hiba hosszabb időt vesz igénybe, hozzon létre egy támogatási kérést, és felvesszük Önnel a kapcsolatot, hogy segítsen a probléma megoldásában.
+Ez a hiba a szinkronizálási adatbázis belső problémája miatt fordul elő. Ez a hiba automatikusan feloldja a szinkronizálás újrapróbálkozásait. Ha a hiba hosszabb időt vesz igénybe, hozzon létre egy támogatási kérést, és felvesszük Önnel a kapcsolatot, hogy segítsen a probléma megoldásában.
 
 <a id="-2134364024"></a>**A szinkronizálás a Azure Active Directory bérlő változása miatt nem sikerült**  
 

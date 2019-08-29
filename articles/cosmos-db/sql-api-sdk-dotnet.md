@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 4380bf81d05aa5247b57605b2aa53d24a73a0f68
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 431ede41e115c82c877041da4a0eb93eacf83cbd
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638584"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142665"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK az SQL API-hoz: Megjegyzések letöltése és kibocsátási megjegyzései
 > [!div class="op_single_selector"]
@@ -377,6 +377,10 @@ Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adó
 
 A szolgáltatás elutasítja a kivont SDK használatával Azure Cosmos DB kérelmeket.
 
+> [!WARNING]
+> Az SQL API-hoz készült .NET SDK összes verziójának **1. x** verziója a **2020-es augusztus 30-ig**megszűnik.
+> 
+>
 <br/>
 
 | Version | Kiadás dátuma | Visszavonás dátuma |
@@ -394,52 +398,52 @@ A szolgáltatás elutasítja a kivont SDK használatával Azure Cosmos DB kérel
 | [2.1.1](#2.1.1) |2018. szeptember 27. |--- |
 | [2.1.0](#2.1.0) |2018. szeptember 21. |--- |
 | [2.0.0](#2.0.0) |2018. szeptember 07. |--- |
-| [1.22.0](#1.22.0) |2018. április 19. |--- |
-| [1.21.1](#1.20.1) |2018. március 09. |--- |
-| [1.20.2](#1.20.1) |2018. február 21. |--- |
-| [1.20.1](#1.20.1) |2018. február 05 |--- |
-| [1.19.1](#1.19.1) |2017. november 16. |--- |
-| [1.19.0](#1.19.0) |2017. november 10. |--- |
-| [1.18.1](#1.18.1) |November 07., 2017 |--- |
-| [1.18.0](#1.18.0) |2017. október 17. |--- |
-| [1.17.0](#1.17.0) |2017. augusztus 10. |--- |
-| [1.16.1](#1.16.1) |2017. augusztus 07. |--- |
-| [1.16.0](#1.16.0) |2017. augusztus 02 |--- |
-| [1.15.0](#1.15.0) |Június 30., 2017 |--- |
-| [1.14.1](#1.14.1) |2017. május 23. |--- |
-| [1.14.0](#1.14.0) |2017. május 10. |--- |
-| [1.13.4](#1.13.4) |Május 09., 2017 |--- |
-| [1.13.3](#1.13.3) |Május 06., 2017 |--- |
-| [1.13.2](#1.13.2) |2017. április 19. |--- |
-| [1.13.1](#1.13.1) |2017. március 29. |--- |
-| [1.13.0](#1.13.0) |Március 24., 2017 |--- |
-| [1.12.2](#1.12.2) |2017. március 20. |--- |
-| [1.12.1](#1.12.1) |2017. március 14. |--- |
-| [1.12.0](#1.12.0) |Február 15., 2017 |--- |
-| [1.11.4](#1.11.4) |Február 06, 2017 |--- |
-| [1.11.3](#1.11.3) |2017. január 26. |--- |
-| [1.11.1](#1.11.1) |2016. december 21-én |--- |
-| [1.11.0](#1.11.0) |December 08., 2016 |--- |
-| [1.10.0](#1.10.0) |Szeptember 27., 2016 |--- |
-| [1.9.5](#1.9.5) |Szeptember 01., 2016 |--- |
-| [1.9.4](#1.9.4) |Augusztus 24, 2016 |--- |
-| [1.9.3](#1.9.3) |Augusztus 15., 2016 |--- |
-| [1.9.2](#1.9.2) |2016. július 23. |--- |
-| [1.8.0](#1.8.0) |2016. június 14-én |--- |
-| [1.7.1](#1.7.1) |Május 06., 2016 |--- |
-| [1.7.0](#1.7.0) |Április 26., 2016 |--- |
-| [1.6.3](#1.6.3) |2016. április 08. |--- |
-| [1.6.2](#1.6.2) |2016. március 29-én |--- |
-| [1.5.3](#1.5.3) |Február 19., 2016 |--- |
-| [1.5.2](#1.5.2) |December 14., 2015 |--- |
-| [1.5.1](#1.5.1) |November 23., 2015 |--- |
-| [1.5.0](#1.5.0) |2015. október 05 |--- |
-| [1.4.1](#1.4.1) |Augusztus 25., 2015 |--- |
-| [1.4.0](#1.4.0) |Augusztus 13., 2015 |--- |
-| [1.3.0](#1.3.0) |2015. augusztus 05 |--- |
-| [1.2.0](#1.2.0) |Július 06., 2015 |--- |
-| [1.1.0](#1.1.0) |Április 30., 2015 |--- |
-| [1.0.0](#1.0.0) |2015. április 08. |--- |
+| [1.22.0](#1.22.0) |2018. április 19. | 2020. augusztus 30-ig |
+| [1.21.1](#1.20.1) |2018. március 09. |2020. augusztus 30-ig |
+| [1.20.2](#1.20.1) |2018. február 21. |2020. augusztus 30-ig |
+| [1.20.1](#1.20.1) |2018. február 05 |2020. augusztus 30-ig |
+| [1.19.1](#1.19.1) |2017. november 16. |2020. augusztus 30-ig |
+| [1.19.0](#1.19.0) |2017. november 10. |2020. augusztus 30-ig |
+| [1.18.1](#1.18.1) |November 07., 2017 |2020. augusztus 30-ig |
+| [1.18.0](#1.18.0) |2017. október 17. |2020. augusztus 30-ig |
+| [1.17.0](#1.17.0) |2017. augusztus 10. |2020. augusztus 30-ig |
+| [1.16.1](#1.16.1) |2017. augusztus 07. |2020. augusztus 30-ig |
+| [1.16.0](#1.16.0) |2017. augusztus 02 |2020. augusztus 30-ig |
+| [1.15.0](#1.15.0) |Június 30., 2017 |2020. augusztus 30-ig |
+| [1.14.1](#1.14.1) |2017. május 23. |2020. augusztus 30-ig |
+| [1.14.0](#1.14.0) |2017. május 10. |2020. augusztus 30-ig |
+| [1.13.4](#1.13.4) |Május 09., 2017 |2020. augusztus 30-ig |
+| [1.13.3](#1.13.3) |Május 06., 2017 |2020. augusztus 30-ig |
+| [1.13.2](#1.13.2) |2017. április 19. |2020. augusztus 30-ig |
+| [1.13.1](#1.13.1) |2017. március 29. |2020. augusztus 30-ig |
+| [1.13.0](#1.13.0) |Március 24., 2017 |2020. augusztus 30-ig |
+| [1.12.2](#1.12.2) |2017. március 20. |2020. augusztus 30-ig |
+| [1.12.1](#1.12.1) |2017. március 14. |2020. augusztus 30-ig |
+| [1.12.0](#1.12.0) |Február 15., 2017 |2020. augusztus 30-ig |
+| [1.11.4](#1.11.4) |Február 06, 2017 |2020. augusztus 30-ig |
+| [1.11.3](#1.11.3) |2017. január 26. |2020. augusztus 30-ig |
+| [1.11.1](#1.11.1) |2016. december 21-én |2020. augusztus 30-ig |
+| [1.11.0](#1.11.0) |December 08., 2016 |2020. augusztus 30-ig |
+| [1.10.0](#1.10.0) |Szeptember 27., 2016 |2020. augusztus 30-ig |
+| [1.9.5](#1.9.5) |Szeptember 01., 2016 |2020. augusztus 30-ig |
+| [1.9.4](#1.9.4) |Augusztus 24, 2016 |2020. augusztus 30-ig |
+| [1.9.3](#1.9.3) |Augusztus 15., 2016 |2020. augusztus 30-ig |
+| [1.9.2](#1.9.2) |2016. július 23. |2020. augusztus 30-ig |
+| [1.8.0](#1.8.0) |2016. június 14-én |2020. augusztus 30-ig |
+| [1.7.1](#1.7.1) |Május 06., 2016 |2020. augusztus 30-ig |
+| [1.7.0](#1.7.0) |Április 26., 2016 |2020. augusztus 30-ig |
+| [1.6.3](#1.6.3) |2016. április 08. |2020. augusztus 30-ig |
+| [1.6.2](#1.6.2) |2016. március 29-én |2020. augusztus 30-ig |
+| [1.5.3](#1.5.3) |Február 19., 2016 |2020. augusztus 30-ig |
+| [1.5.2](#1.5.2) |December 14., 2015 |2020. augusztus 30-ig |
+| [1.5.1](#1.5.1) |November 23., 2015 |2020. augusztus 30-ig |
+| [1.5.0](#1.5.0) |2015. október 05 |2020. augusztus 30-ig |
+| [1.4.1](#1.4.1) |Augusztus 25., 2015 |2020. augusztus 30-ig |
+| [1.4.0](#1.4.0) |Augusztus 13., 2015 |2020. augusztus 30-ig |
+| [1.3.0](#1.3.0) |2015. augusztus 05 |2020. augusztus 30-ig |
+| [1.2.0](#1.2.0) |Július 06., 2015 |2020. augusztus 30-ig |
+| [1.1.0](#1.1.0) |Április 30., 2015 |2020. augusztus 30-ig |
+| [1.0.0](#1.0.0) |2015. április 08. | 2020. augusztus 30-ig |
 
 
 ## <a name="faq"></a>GYIK

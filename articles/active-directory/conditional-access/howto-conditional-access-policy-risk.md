@@ -11,24 +11,24 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64d1b3e2f36256164420ae6b2e699f0ef48e2e78
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 3cf3281e00560a289fbb4adfe57083644e1a86e3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576549"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125434"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>Feltételes hozzáférés: Kockázatalapú feltételes hozzáférés
 
-A prémium szintű Azure AD P2 licenccel rendelkező szervezetek létrehozhatnak Azure AD Identity Protection kockázati eseményeket tartalmazó feltételes hozzáférési szabályzatokat. Három alapértelmezett szabályzatot lehet engedélyezni a jelölőnégyzetből. 
+A prémium szintű Azure AD P2 licenccel rendelkező szervezetek létrehozhatnak Azure AD Identity Protection kockázati észleléseket tartalmazó feltételes hozzáférési szabályzatokat. Három alapértelmezett szabályzatot lehet engedélyezni a jelölőnégyzetből. 
 
-* Minden felhasználónak regisztrálnia kell az Azure multi-Factor Authentication szolgáltatásban.
+* Az összes felhasználónak regisztrálnia kell az Azure Multi-Factor Authentication.
 * Jelszó megváltoztatásának megkövetelése a nagy kockázatú felhasználók számára.
 * Többtényezős hitelesítés megkövetelése közepes vagy magas bejelentkezési kockázattal rendelkező felhasználók számára.
 
-## <a name="require-all-users-to-register-for-azure-multi-factor-authentication"></a>Az Azure multi-Factor Authentication szolgáltatás regisztrálásának megkövetelése minden felhasználó számára
+## <a name="require-all-users-to-register-for-azure-multi-factor-authentication"></a>Minden felhasználónak regisztrálnia kell az Azure-Multi-Factor Authentication
 
-Ennek a szabályzatnak az engedélyezéséhez az összes felhasználónak regisztrálnia kell az Azure multi-Factor Authentication szolgáltatásra 14 napon belül. 
+Ha engedélyezi ezt a házirendet, az összes felhasználónak 14 napon belül regisztrálnia kell az Azure-Multi-Factor Authentication. 
 
 1. Jelentkezzen be az **Azure Portalra**.
 1. Kattintson a **Minden szolgáltatás** elemre, majd keresse meg az **Azure AD Identity Protection** szolgáltatást.

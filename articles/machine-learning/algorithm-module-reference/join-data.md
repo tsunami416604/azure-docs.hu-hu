@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 1022bdc26a340b6b54ad840d1fe47674509fa865
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5fdb822a445e8a62cd36e6dd05aa218b9b41ce9e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871658"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128740"
 ---
 # <a name="join-data"></a>Adatok összekapcsolása
 
@@ -27,9 +26,9 @@ Két adatkészlethez való csatlakozás végrehajtásához egy kulcs oszlopnak k
 
 1. Adja hozzá az egyesíteni kívánt adatkészleteket, majd húzza az **illesztési adat** modult a kísérletbe. 
 
-    A modult az Adatátalakítási  kategóriában, a **manipuláció**szakaszban találja.
+    A modult az Adatátalakítási kategóriában, a **manipuláció**szakaszban találja.
 
-1. Csatlakoztassa az adatkészleteket az  adategyesítési modulhoz. 
+1. Csatlakoztassa az adatkészleteket az adategyesítési modulhoz. 
  
 1. Válassza az **oszlop indítása lehetőséget** , hogy kiválassza a kulcs oszlop (oka) t. Ne felejtse el kiválasztani a bal és a jobb oldali bemenetek oszlopait.
 
@@ -65,7 +64,7 @@ Két adatkészlethez való csatlakozás végrehajtásához egy kulcs oszlopnak k
 
 1. Futtassa a kísérletet, vagy válassza ki az összekapcsolási modult, és a kiválasztott **Futtatás** elemre kattintva végezze el a csatlakozást.
 
-1. Az eredmények megtekintéséhez kattintson a jobb gombbal az adategyesítési  > **eredmények** > adatkészletének**megjelenítése**elemre.
+1. Az eredmények megtekintéséhez kattintson a jobb gombbal az adategyesítési > **eredmények** > adatkészletének**megjelenítése**elemre.
 
 ## <a name="next-steps"></a>További lépések
 

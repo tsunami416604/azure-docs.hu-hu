@@ -3,21 +3,20 @@ title: Az Azure Data Factory folyamatai és tevékenységei | Microsoft Docs
 description: További információk a folyamatokról és tevékenységekről az Azure Data Factoryban.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.author: shlo
-ms.openlocfilehash: 5e34dae5570c64ec2c9fdc478ba8ec1bf4bce9d2
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: c986b4efea905ce4e1d9ee6f08b688fe6ef6ef5e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976748"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142557"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -173,8 +172,8 @@ A szabályzatok az adott tevékenység futásidejű viselkedését befolyásolj�
 JSON-név | Leírás | Megengedett értékek | Kötelező
 --------- | ----------- | -------------- | --------
 timeout | Megadja a futtatni kívánt tevékenység időtúllépését. | Timespan | Nem. Az alapértelmezett időtúllépés 7 nap.
-retry | Újrapróbálkozási kísérletek maximális száma | Egész szám | Nem. Az alapértelmezett érték: 0
-retryIntervalInSeconds | Az újrapróbálkozási kísérletek közötti késleltetés, másodpercben | Egész szám | Nem. Az alapértelmezett érték 30 másodperc
+retry | Újrapróbálkozási kísérletek maximális száma | Integer | Nem. Az alapértelmezett érték: 0
+retryIntervalInSeconds | Az újrapróbálkozási kísérletek közötti késleltetés, másodpercben | Integer | Nem. Az alapértelmezett érték 30 másodperc
 secureOutput | Ha az értéke igaz, a tevékenység kimenete biztonságosnak minősül, és a rendszer nem naplózza a monitorozáshoz. | Logikai | Nem. Az alapértelmezett érték a false (hamis).
 
 ### <a name="control-activity"></a>Vezérlési tevékenység

@@ -5,19 +5,23 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 6/26/2019
+ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 1995ce2a91bfbc115f80c99687cc84b52ef614ec
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: f35a3567ae4ae7c3e2d59f776d3a3bc00ec2be3e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950112"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142382"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Hibakeresés Azure Data Factory
 
 Ez a cikk a Azure Data Factory külső ellenőrzési tevékenységeinek gyakori hibaelhárítási módszereit vizsgálja.
+
+## <a name="connector-and-copy-activity"></a>Összekötő és másolási tevékenység
+
+Összekötői problémák esetén, például a másolási tevékenység használatával kapcsolatos hiba esetén tekintse át az [Azure Data Factory összekötők hibaelhárítása](connector-troubleshoot-guide.md)című témakört.
 
 ## <a name="azure-databricks"></a>Azure Databricks
 

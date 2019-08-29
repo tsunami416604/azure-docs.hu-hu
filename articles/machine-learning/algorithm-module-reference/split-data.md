@@ -1,7 +1,7 @@
 ---
-title: 'Adatok felosztása: Modul-hivatkozás'
+title: 'Adatdarabolás: Modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használhatja a felosztási adatok modul az Azure Machine Learning szolgáltatás adatkészlet felosztása két különböző eljáráscsoport.
+description: Megtudhatja, hogyan oszthat meg egy adatkészletet két különálló készletre a Azure Machine Learning szolgáltatásban az adatfelosztási modul használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,110 +9,109 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: a7395280ed9a2e9dcb94a081f0b3bf10a28da719
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31612e10e7978e94f1ed467b5ffbecde40910ef9
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029400"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128463"
 ---
-# <a name="split-data-module"></a>Split Data modul
+# <a name="split-data-module"></a>Adategység felosztása
 
-Ez a cikk ismerteti a vizuális felületen (előzetes verzió) az Azure Machine Learning szolgáltatás egy moduljához.
+Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ez a modul használatával egy adatkészlet felosztása két különböző eljáráscsoport.
+Ezzel a modullal két különálló készletre oszthat egy adatkészletet.
 
-Ez a modul különösen hasznos, ha egy betanítási és egy tesztelési válassza szét az adatokat kell. Testre szabható módon, hogy adatokat, valamint van-e osztva. Néhány lehetőség támogatja a véletlenszerű adatok; mások számára egy adott adattípus vagy a modell típusa vannak igazítva.
+Ez a modul különösen akkor hasznos, ha a képzési és tesztelési csoportokban külön kell elkülönítenie az adategységeket. Testre szabhatja az adatmegosztás módját is. Egyes lehetőségek támogatják az adatvéletlenszerűség használatát; mások egy adott adattípus vagy modell típusára vannak igazítva.
 
-## <a name="how-to-configure"></a>Konfigurálása
+## <a name="how-to-configure"></a>Konfigurálás
 
 > [!TIP]
-> Felosztási mód kiválasztása előtt olvassa el a minden beállításnál az split kell meghatározni.
-> Ha a felosztó mód módosításához az összes többi beállítást sikerült alaphelyzetbe állítani.
+> A felosztási mód kiválasztása előtt olvassa el az összes lehetőséget, hogy meghatározza a szükséges felosztás típusát.
+> Ha megváltoztatja a felosztási módot, az összes többi beállítás alaphelyzetbe állítható.
 
-1. Adja hozzá a **Split Data** modult a kísérletvászonra a felületen. Ez a modul alatt található **adatátalakítás**, a a **minta és a felosztás** kategória.
+1. Adja hozzá az adatfelosztási modult a kísérlethez az illesztőfelületen. Ez a modul az adatátalakításalatt, a **minta és a felosztás** kategóriában található.
 
-2. **Felosztás mód**: Válasszon egyet a következő módok, adatok, és hogyan szeretné osztani, típusától függően. Minden egyes bontásával mód különböző beállításokkal rendelkezik. Kattintson a következő témakörök részletes útmutatásért és példákért. 
+2. **Felosztási mód**: Válasszon az alábbi módok közül, attól függően, hogy milyen típusú adattípussal rendelkezik, és hogyan szeretné osztani. Az egyes felosztási módok különböző beállításokkal rendelkeznek. Részletes útmutatást és példákat a következő témakörökben talál. 
 
-    - **Sorok felosztása**: Használja ezt a beállítást, ha csak át szeretné az adatok felosztása két részből áll. A százalékos arányát el az egyes felosztása a adatokat is megadhat, de az adatok alapértelmezés szerint 50 – 50 van osztva.
+    - **Sorok felosztása**: Akkor használja ezt a beállítást, ha csak két részre szeretné osztani az adatterületet. Megadhatja, hogy az egyes felosztásokban hány adatmennyiség legyen elhelyezve, de alapértelmezés szerint az adatmennyiség 50-50.
 
-        Véletlenszerűvé tétele a kijelölt sorokat az egyes csoportokban, és használja a rétegzett mintavételi is. A rétegzett mintavételi választania kell az adatok, amelyek esetében szeretne értékek egyaránt felosztani a két eredményt adatkészletek csak egy oszlop.  
+        Az egyes csoportokban lévő sorok kijelölését, valamint rétegzett mintavételezést is használhat. Rétegzett mintavételezés esetén ki kell választania egy olyan adatoszlopot, amelynek az értékeit egyenlően kell kiosztani a két eredmény-adatkészletek között.  
 
-    - **Reguláris kifejezés Split** válassza ezt a beállítást, ha meg szeretné az adatkészlet nullával való tesztelés a egy értéke csak egy oszlop.
+    - **Reguláris kifejezés felosztása**  Akkor válassza ezt a lehetőséget, ha az adatkészletet el szeretné osztani egy érték egyetlen oszlopának tesztelésével.
 
-        Például ha vélemények elemzése vannak sikerült egy adott termék nevének egy szövegmezőben meglétének ellenőrzése, és az adatkészlet majd ezt követően sorokra a termék nevét, és azok nélkül.
+        Ha például a hangulat elemzését végezheti el, akkor érdemes megkeresni egy adott terméknév jelenlétét egy szövegmezőben, majd az adatkészletet a célként megadott terméknév és a nélküli sorokra osztani.
 
-    - **Relatív kifejezés Split**:  Használja ezt a beállítást, ha szeretné alkalmaz egy feltételt egy szám típusú oszlop. A szám egy dátum/idő mezőt, egy oszlop tartalmazó korra vagy összegeket és százalékos is lehet. Például előfordulhat, hogy szeretné osztani az adatkészlethez, attól függően, a cikkek kora sávokban csoport személyek vagy egy naptári dátum szerint külön adatok költségét.
+    - **Relatív kifejezés felosztása**:  Akkor használja ezt a beállítást, ha egy feltételt egy Number oszlopra szeretne alkalmazni. A szám lehet dátum/idő mező, az Age vagy a dollár összegét tartalmazó oszlop, vagy akár egy százalék is. Előfordulhat például, hogy az adatkészletet az elemek díjszabása alapján szeretné felosztani, a személyeket korcsoport szerint csoportosítani, vagy az adatokat egy naptári dátum alapján elkülönítve.
 
 ### <a name="split-rows"></a>Sorok felosztása
-1.  Adja hozzá a [Split Data](./split-data.md) modult a kísérletvászonra a felületén, és csatlakozzon a felosztani kívánt adatkészlet.
+1.  Adja hozzá [](./split-data.md) az adatfelosztási modult a kísérlethez a felületén, és kapcsolódjon a felosztani kívánt adatkészlethez.
   
-2.  A **megosztás mód**, válassza a **sorok felosztása**. 
+2.  A **felosztási mód**beállításnál válassza a **sorok felosztása**lehetőséget. 
 
-3.  **Az első kimeneti adatkészletnél a sorok**. Ez a beállítás segítségével meghatározhatja a sorok számát az első (bal oldali) kimeneti lépnek. Az összes többi sort halad át a második (jobb oldali) kimenet.
+3.  **Az első kimeneti adatkészletben szereplő sorok töredéke**. Ezzel a beállítással meghatározhatja, hogy hány sor kerüljön be az első (bal oldali) kimenetbe. Minden más sor a második (jobb oldali) kimenetre lép.
 
-    A arány sorok elküldhetők az első kimeneti adatkészletnél, így egy 0 és 1 közötti tizedes tört kell megadnia a százalékát jelenti.
+    Az arány az első kimeneti adatkészletbe küldendő sorok százalékos arányát jelöli, ezért 0 és 1 közötti decimális számot kell megadnia.
      
-     Például 0,75 értéket írja be, ha az adatkészlet lenne lehet megosztani egy 75:25 arány, a 75 %-a sorokat, elküldi az első kimeneti adatkészletnél és 25 % a második kimeneti adatkészlet küldött használatával.
+     Ha például a 0,75 értéket adja meg értékként, az adatkészlet egy 75:25-arány használatával oszlik el, az első kimeneti adatkészletbe elküldett sorok 75%-ában, a második kimeneti adatkészletbe pedig 25%-ot.
   
-4. Válassza ki a **Randomized split** beállítást, ha a kívánt adatok kiválasztása a két csoportra véletlenszerűvé tétele. Ez a előnyben részesített lehetőség, amikor tanítási és tesztelési adatkészleteket hoz létre.
+4. Válassza ki a randomizált felosztási lehetőséget, ha az adatválasztást véletlenszerűen szeretné kijelölni a két csoportban. Ez az előnyben részesített lehetőség a képzési és tesztelési adatkészletek létrehozásakor.
 
-5.  **Véletlenszám-generálás kezdőértéke**: Írja be a példányok használandó pseudorandom sorozatát inicializálása egy nem negatív egész érték. Az alapértelmezett kezdőérték készítése a véletlenszerű számok összes modult használja. 
+5.  **Véletlenszerű mag**: Írjon be egy nem negatív egész értéket a használni kívánt példányok bájtján elvégeznek inicializálásához. Ezt az alapértelmezett magot használja a rendszer minden olyan modulban, amely véletlenszerű számokat eredményez. 
 
-     Adja meg az egyik kezdőérték teszi általában reprodukálható az eredményeket. Ha meg kell ismételni a felosztási művelet eredményeinek, adjon meg egy a véletlenszám-generátor kezdőértékét. Ellenkező esetben a véletlenszám-generálás kezdőértéke értéke 0, ami azt jelenti, hogy a kezdeti alapérték kérhető le a rendszeróra alapértelmezés szerint. Ennek eredményeképpen az adatok eloszlása eltérhet minden alkalommal, amikor egy split hajt végre. 
+     A magok megadásával az eredmények általánosan megismételhetők. Ha meg kell ismételnie egy felosztási művelet eredményét, meg kell adnia egy magot a véletlenszám-generátorhoz. Ellenkező esetben a véletlenszerű magok értéke alapértelmezés szerint 0, ami azt jelenti, hogy a kezdeti mag értékét a rendszer órája szerzi be. Ennek eredményeképpen az adatok eloszlása némileg eltérő lehet minden alkalommal, amikor elvégez egy felosztást. 
 
-6. **Rétegzett split**: Ezt a beállítást **igaz** annak érdekében, hogy a két kimeneti adatkészletek tartalmaznak egy reprezentatív mintát értékek a *strata oszlop* vagy *csoportosítási oszlopot*. 
+6. **Rétegzett felosztás**: Ha a beállítás értéke **true (igaz** ), akkor győződjön meg arról, hogy a két kimeneti adatkészlet tartalmazza a *rétegek* vagy a *csoportosítási kulcs oszlopban*szereplő értékek reprezentatív mintáját. 
 
-    A rétegzett mintavételezése esetén, az adatok úgy, hogy minden egyes kimeneti adatkészlet lekérdezi nagyjából azonos százalékos arányának minden célként megadott van osztva. Például előfordulhat, hogy szeretné győződjön meg arról, hogy a tanítási és egy tesztelési vannak nagyjából elosztott terhelésű kapcsolatban az eredménye, vagy véve zásoktól néhány másik oszlop, például a nemek.
+    Rétegzett mintavételezés esetén az adatokat a rendszer úgy osztja szét, hogy mindegyik kimeneti adatkészlet nagyjából az egyes célértékek azonos százalékát kapja meg. Például érdemes lehet biztosítani, hogy a képzési és tesztelési készletek nagyjából egyensúlyban legyenek az eredményekkel, vagy egy másik oszlop, például a nemek tekintetében.
 
 7. Futtassa a kísérletet.
 
 
 ## <a name="regular-expression-split"></a>Reguláris kifejezés felosztása
 
-1.  Adja hozzá a [Split Data](./split-data.md) modult a kísérletvászonra, és csatlakoztassa a felosztani kívánt adatkészletet bemenetként.  
+1.  Adja hozzá [](./split-data.md) az adatfelosztási modult a kísérlethez, és kapcsolja bemenetként a felosztani kívánt adatkészlethez.  
   
-2.  A **megosztás mód**válassza **reguláris kifejezés split**.
+2.  A **felosztási mód**beállításnál válassza a **reguláris kifejezés felosztása**elemet.
 
-3. Az a **reguláris kifejezés** mezőbe írja be egy érvényes reguláris kifejezés. 
+3. A **reguláris kifejezés** mezőbe írjon be egy érvényes reguláris kifejezést. 
   
-   A reguláris kifejezés Python reguláris kifejezési szintaxist kell követniük.
+   A reguláris kifejezésnek a Python reguláris kifejezés szintaxisát kell követnie.
 
 
 4. Futtassa a kísérletet.
 
-    Azt adja meg a reguláris kifejezés alapján, az adatkészlet oszlik sorok két készletnyi: sorok, amelyek megfelelnek a kifejezést, és minden fennmaradó sorok értékekkel. 
+    Az Ön által megadott reguláris kifejezés alapján az adatkészlet két sorra van osztva: sorokba, amelyek megfelelnek a kifejezésnek és az összes többi sornak. 
 
 ## <a name="relative-expression-split"></a>Relatív kifejezés felosztása.
 
-1. Adja hozzá a [Split Data](./split-data.md) modult a kísérletvászonra, és csatlakoztassa a felosztani kívánt adatkészletet bemenetként.
+1. Adja hozzá [](./split-data.md) az adatfelosztási modult a kísérlethez, és kapcsolja bemenetként a felosztani kívánt adatkészlethez.
   
-2. A **megosztás mód**válassza **relatív kifejezés split**.
+2. A **felosztási mód**beállításnál válassza a **relatív kifejezés felosztása**elemet.
   
-3. Az a **relációs kifejezés** szövegmezőbe írjon be egy kifejezést, amely csak egy oszlop-összehasonlító műveletet hajtja végre:
+3. A **relációs kifejezés** szövegmezőbe írjon be egy olyan kifejezést, amely egy összehasonlítási műveletet hajt végre egyetlen oszlopon:
 
 
  - Numerikus oszlop:
-    - Az oszlop számokból áll bármely numerikus adattípusú, többek között a dátum/idő típusú adatokat.
+    - Az oszlop numerikus adattípusok számát tartalmazza, beleértve a dátum/idő adattípusokat is.
 
-    - A kifejezés egyetlen oszlop neve legfeljebb hivatkozhat.
+    - A kifejezés legfeljebb egy oszlop nevét hivatkozhat.
 
-    - Használja az és jel karaktert (&) és a művelet és használatára vonatkozó függőleges vonal (|) karaktert a vagy művelet.
+    - A és a művelethez használja az jel karaktert (&), és használja a (z) vagy művelethez tartozó pipe karaktert (|).
 
-    - A következő operátor használata támogatott: `<`, `>`, `<=`, `>=`, `==`, `!=`
+    - A következő operátorok támogatottak `<`: `>` `<=`, `>=`,, `==`,,`!=`
 
-    - A műveletek nem csoportosíthatók `(` és `)`.
+    - A és `(` `)`a használatával nem csoportosíthatjuk a műveleteket.
 
- - Karakterláncokat tartalmazó oszlopot: 
-    - A következő operátor használata támogatott: `==`, `!=`
+ - Karakterlánc-oszlop: 
+    - A következő operátorok támogatottak `==`:,`!=`
 
 
 
 4. Futtassa a kísérletet.
 
-    A kifejezés osztja fel az adatkészletet sorok két készletnyi: a feltételnek megfelelő értéket tartalmazó sorok, és az összes többi sorra.
+    A kifejezés két sorból osztja el az adatkészletet: a feltételnek megfelelő értékeket tartalmazó sorok és az összes többi sor.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [modullistából készletét](module-reference.md) Azure Machine Learning szolgáltatáshoz. 
+Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
