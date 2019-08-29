@@ -1,5 +1,5 @@
 - name: Az Azure Analysis Services dokumentációja
-  href: index.md
+  href: index.yml
 - name: Áttekintés
   items:
     - name: Mi az Azure Analysis Services?

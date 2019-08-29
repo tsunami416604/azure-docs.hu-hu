@@ -89,6 +89,10 @@
           href: concepts-read-replicas.md
 - name: Útmutatók
   items:
+    - name: Kiszolgáló kezelése
+      items:
+        - name: Azure Portal
+          href: howto-create-manage-server-portal.md
     - name: Tűzfalszabályok
       items:
         - name: Azure Portal
@@ -123,6 +127,8 @@
       items:
         - name: Azure Portal
           href: howto-auto-grow-storage-portal.md
+        - name: Azure CLI
+          href: howto-auto-grow-storage-cli.md
     - name: Hozzáférés a kiszolgálói naplókhoz
       items:
         - name: Lassú lekérdezési naplók
