@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: a86dd021d8f9cfe275b3af3f0cb71b99857c26d7
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 753f0bece5b8b52ebb50ab2a6e93056ce209cfbc
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971524"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183558"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Modell üzembe helyezése egyéni Docker-alapú rendszerkép használatával
 
@@ -23,7 +23,7 @@ Megtudhatja, hogyan használhat egyéni Docker-alapképet a betanított modellek
 
 Ha egy webszolgáltatáshoz vagy IoT Edge eszközhöz helyez üzembe egy betanított modellt, a rendszer létrehoz egy csomagot, amely a bejövő kérelmek kezelésére szolgáló webkiszolgálót tartalmaz.
 
-Azure Machine Learning a szolgáltatás egy alapértelmezett Docker-alaprendszerképet biztosít, így nem kell aggódnia a létrehozásával kapcsolatban. Használhat egy alaprendszerképként létrehozott egyéni alapképet is. 
+Azure Machine Learning a szolgáltatás egy alapértelmezett Docker-alaprendszerképet biztosít, így nem kell aggódnia a létrehozásával kapcsolatban. Azure Machine Learning szolgáltatási környezeteket is használhat egy adott alaprendszerkép kiválasztásához, vagy használhat egy Ön által megadott egyéni adatbázist.
 
 Alapszintű rendszerképet kell használni a központi telepítés rendszerképének létrehozásakor. A mögöttes operációs rendszert és összetevőket tartalmazza. Az üzembe helyezési folyamat ezután további összetevőket (például a modellt, a Conda-környezetet és más eszközöket) helyez el a lemezképbe a telepítés előtt.
 
@@ -193,6 +193,8 @@ A Microsoft számos Docker-rendszerképet biztosít egy nyilvánosan elérhető 
 > [!IMPORTANT]
 > A CUDA vagy TensorRT használó Microsoft-rendszerképeket csak Microsoft Azure szolgáltatásokban kell használni.
 
+További információ: [Azure Machine learning Service containers](https://github.com/Azure/AzureML-Containers).
+
 > [!TIP]
 >__Ha a modell Azure Machine learning számítási__feladatokra van betanítva, az Azure Machine learning SDK __1.0.22 vagy újabb verziójával__ , a rendszer a betanítás során létrehoz egy rendszerképet. A rendszerkép nevének felderítéséhez használja `run.properties["AzureML.DerivedImageName"]`a következőt:. Az alábbi példa bemutatja, hogyan használhatja ezt a rendszerképet:
 >
@@ -203,29 +205,50 @@ A Microsoft számos Docker-rendszerképet biztosít egy nyilvánosan elérhető 
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Rendszerkép használata az Azure Machine Learning SDK-val
 
-Egyéni rendszerkép használatához állítsa a `base_image` [következtetési konfigurációs objektum](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) tulajdonságát a rendszerkép címeként:
+Ha a munkaterülethez **Azure Container Registry**tárolt képet vagy egy **nyilvánosan elérhető tároló**-beállításjegyzéket szeretne használni, állítsa be a következő [környezeti](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) attribútumokat:
+
++ `docker.enabled=True`
++ `docker.base_image`: Állítsa a beállításjegyzékre és a rendszerkép elérési útjára.
 
 ```python
-# use an image from a registry named 'myregistry'
-inference_config.base_image = "myregistry.azurecr.io/myimage:v1"
+from azureml.core import Environment
+# Create the environment
+myenv = Environment(name="myenv")
+# Enable Docker and reference an image
+myenv.docker.enabled = True
+myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
 ```
 
-Ez a formátum a munkaterülethez és a nyilvánosan elérhető tároló-beállításjegyzékek Azure Container Registryban tárolt rendszerképekre is használható. Az alábbi kód például a Microsoft által biztosított alapértelmezett rendszerképet használja:
+Ha olyan rendszerképet szeretne használni a __saját tároló__ -beállításjegyzékből, amely nem szerepel a munkaterületén, a használatával `docker.base_image_registry` meg kell adnia a tárház és a Felhasználónév és jelszó nevét:
 
 ```python
-# use an image available in public Container Registry without authentication
-inference_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+# Set the container registry information
+myenv.docker.base_image_repository.address = "myregistry.azurecr.io"
+myenv.docker.base_image_repository.username = "username"
+myenv.docker.base_image_repository.password = "password"
 ```
 
-Ha olyan rendszerképet szeretne használni a __saját tároló__ -beállításjegyzékből, amely nem szerepel a munkaterületén, meg kell adnia a tárház nevét és a felhasználónevet és a jelszót:
+A környezet meghatározása után használja azt egy [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) objektummal annak a következtetési környezetnek a meghatározásához, amelyben a modell és a webszolgáltatás futni fog.
 
 ```python
-# Use an image available in a private Container Registry
-inference_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
-inference_config.base_image_registry.address = "myregistry.azurecr.io"
-inference_config.base_image_registry.username = "username"
-inference_config.base_image_registry.password = "password"
+from azureml.core.model import InferenceConfig
+# Use environment in InferenceConfig
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
 ```
+
+Ezen a ponton folytathatja a telepítést. A következő kódrészlet például egy webszolgáltatást helyez üzembe helyileg a következtetési konfiguráció és az egyéni rendszerkép használatával:
+
+```python
+from azureml.core.webservice import LocalWebservice, Webservice
+
+deployment_config = LocalWebservice.deploy_configuration(port=8890)
+service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
+service.wait_for_deployment(show_output = True)
+print(service.state)
+```
+
+A telepítéssel kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine learning szolgáltatással](how-to-deploy-and-where.md).
 
 ### <a name="use-an-image-with-the-machine-learning-cli"></a>Rendszerkép használata a Machine Learning parancssori felülettel
 

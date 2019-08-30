@@ -1,18 +1,18 @@
 ---
 title: Válassza ki a megfelelő VM SKU-t az Azure Adatkezelő-fürthöz
 description: Ez a cikk az Azure Adatkezelő-fürt optimális SKU-méretének kiválasztását ismerteti.
-author: avnera
+author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 2eb23a65196ac4f6456f50dbbbfd9e4b484ad171
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 8293fd2d84189cc1f1df3564abbfdcbf86e3543e
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515726"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186750"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Válassza ki a megfelelő VM SKU-t az Azure Adatkezelő-fürthöz 
 
@@ -83,7 +83,7 @@ Az Azure Adatkezelő-fürt virtuális gépek műszaki specifikációit az alább
 |L16s_1| tárolásra optimalizált | 2,6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
 
 * Régiónként az Azure Adatkezelő [LISTSKUS API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet)használatával megtekintheti a VIRTUÁLISGÉP-SKU-k frissített listáját. 
-* További információ a [különböző számítási SKU](/azure/virtual-machines/windows/sizes-compute)-ról. 
+* További információ a [különböző SKU](/azure/virtual-machines/windows/sizes)-ról. 
 
 ## <a name="next-steps"></a>További lépések
 

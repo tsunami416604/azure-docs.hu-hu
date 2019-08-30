@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
-ms.openlocfilehash: 507a6d998f83f5a399f78566967067d0ed92f8b0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 3955995ed1a7a48cfe323db5bf0e767446d89534
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534384"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164068"
 ---
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a használt Azure-előfizetés hitelesítő adataival. 
 
@@ -37,7 +37,10 @@ ms.locfileid: "69534384"
 
 1. Miután befejezte a munkaterület konfigurálását, válassza a **Létrehozás**lehetőséget. 
 
-   A munkaterület létrehozása néhány percet is igénybe vehet.
+   > [!Warning] 
+   > Több percet is igénybe vehet, hogy a munkaterületet a felhőben hozza létre.
 
-   Ha a folyamat elkészült, megjelenik egy központi telepítés sikerességét jelző üzenet. Az új munkaterület megtekintéséhez válassza az **Ugrás erőforráshoz**lehetőséget.
+   Ha a folyamat elkészült, megjelenik egy központi telepítés sikerességét jelző üzenet. 
+ 
+ 1. Az új munkaterület megtekintéséhez válassza az **Ugrás erőforráshoz**lehetőséget.
 
