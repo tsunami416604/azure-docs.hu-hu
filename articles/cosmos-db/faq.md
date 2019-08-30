@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 93b00aec868cf947b67329934c703f5d1b774426
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: cb2b3246264d04ce97c45dff58979079a731998e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615382"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066086"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Az Azure Cosmos DB API kapcsolatos gyakori kérdések
 
@@ -31,6 +31,12 @@ Az egyes Azure Cosmos-tárolók kiosztott átviteli sebességgel konfigurálhat�
 Kulcs/érték (tábla), Oszlopalapú, dokumentum és modellek natív módon támogatja a ARS (atomokból, rekordokat és feladatütemezések) miatt a grafikon adatainak tervezése az Azure Cosmos DB épül. Atom, a rekordokat és a feladatütemezések egyszerűen leképezve és előre jelzett különböző adatmodelleket. A modellekhez tartozó API-k mostantól elérhetők (SQL-, MongoDB-, tábla-és Gremlin), és a további adatmodellekhez kapcsolódó egyebek a jövőben lesznek elérhetők.
 
 Az Azure Cosmos DB egy séma sémafüggetlen indexelés összetevő, amely képes automatikusan indexeli az azt betöltő anélkül, hogy bármiféle séma vagy másodlagos indexek a fejlesztőtől származó összes adatot tartalmaz. A motor logikai index elrendezések (fordított, Oszlopalapú, fa), amelyek a tárolási elrendezés az index és a Lekérdezésfeldolgozás alrendszerek szétválaszthatók készletét támaszkodik. A cosmos DB lehetővé teszi az átviteli protokollokat és API-k támogatása kibővíthető módon és kéréseivé átalakítani azokat hatékonyan a core data model (1) és a logikai index elrendezések (2) így egyedi módon képes a natív módon támogató egynél több adatmodellt is tartalmaz.
+
+### <a name="can-i-use-multiple-apis-to-access-my-data"></a>Használhatok több API-t az adataim eléréséhez?
+
+Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Ahol a többmodelles Azure Cosmos DB több API-t és több adatmodellt is támogat, a különböző API-k különböző adatformátumokat használnak a Storage és a Wire protokoll számára. Például az SQL JSON-t használ, a MongoDB pedig a BSON-t használja, a EDM, Cassandra pedig a CQL, a Gremlin pedig a GraphSON-t használja. Ennek eredményeképpen azt javasoljuk, hogy ugyanazt az API-t használja az adott fiókban lévő adathoz való hozzáféréshez.
+
+Az egyes API-k egymástól függetlenül működnek, kivéve a Gremlin és az SQL API-t, amelyek együttműködnek egymással.
 
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Az Azure Cosmos DB a HIPAA szabványnak megfelelő?
 

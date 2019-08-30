@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.openlocfilehash: 5957a7c555c5b5d9905fcb7e3310093416ae5efb
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: bbb78dcd36ec986cefc1d57e01396f285a6b30dd
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147708"
+ms.locfileid: "70161959"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Feladatok ütemezett és szórása (Java)
 
@@ -53,9 +53,9 @@ Az oktatóanyag végén egy Java-konzolos eszköz-alkalmazás és egy Java-konzo
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A legújabb [Java SE Development Kit 8](https://aka.ms/azure-jdks)
+* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
 
-* [Maven 3](https://maven.apache.org/install.html)
+* [Maven 3](https://maven.apache.org/download.cgi)
 
 * Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
 

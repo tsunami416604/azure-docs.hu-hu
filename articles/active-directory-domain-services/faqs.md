@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 80bc5ef78a73430dea23bdd644767d9fa9b3c9a8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b079d311e357f4dfb94e55fbca3cafdec198ade9
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124680"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171901"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Gyakori kérdések (GYIK)
 Ez az oldal válaszol a Azure Active Directory Domain Servicesával kapcsolatos gyakori kérdésekre. A frissítések ellenőrzésének megtartása.
@@ -79,7 +79,7 @@ Nem. Nem kap rendszergazdai jogosultságot a felügyelt tartományon. A "tartom�
 Nem. A csoporttagságok nem módosíthatók Azure AD Domain Services által kiszolgált tartományokon. Ugyanez vonatkozik a felhasználói attribútumokra is. Az Azure AD-ben vagy a helyszíni tartományban azonban a csoporttagság vagy a felhasználói attribútumok is megváltoztathatók. Ezeket a módosításokat a rendszer automatikusan szinkronizálja Azure AD Domain Services.
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Mennyi időt vesz igénybe, hogy az Azure AD-címtárban végrehajtott módosítások megjelenjenek a felügyelt tartományban?
-Az Azure AD-címtárban az Azure AD felhasználói felület vagy a PowerShell használatával végzett módosítások a felügyelt tartományba vannak szinkronizálva. Ez a szinkronizálási folyamat a háttérben fut. A kezdeti szinkronizálás befejezése után általában körülbelül 20 percet vesz igénybe, hogy az Azure AD-ben végzett módosítások tükrözzék a felügyelt tartományban.
+Az Azure AD-címtárban az Azure AD felhasználói felület vagy a PowerShell használatával végzett módosítások automatikusan szinkronizálhatók a felügyelt tartományba. Ez a szinkronizálási folyamat a háttérben fut. Nincs meghatározott időtartam a szinkronizáláshoz az összes objektum módosításának befejezéséhez.
 
 ### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>Bővíthető a Azure AD Domain Services által biztosított felügyelt tartomány sémája?
 Nem. A sémát a Microsoft felügyeli a felügyelt tartományhoz. A Azure AD Domain Services nem támogatja a séma-bővítményeket.

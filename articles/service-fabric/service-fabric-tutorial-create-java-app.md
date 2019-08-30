@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
-ms.custom: mvc, seo-java-august2019
-ms.openlocfilehash: 3601bcfbb812dc9f8ee893cc1c88eb8eebce485f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.custom: mvc, seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 56a68f852e9eee3303540d6ebd180608935c6135
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963964"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172066"
 ---
-# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Oktatóanyag: Hozzon létre egy alkalmazást egy Java Web API kezelőfelületi szolgáltatással és egy állapot-nyilvántartó szolgáltatással Service Fabric
+# <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Oktatóanyag: Hozzon létre egy alkalmazást egy Java API előtér-szolgáltatással és egy állapot-visszaállítási szolgáltatással az Azure Service Fabric
 
 Ez az oktatóanyag egy sorozat első része. Az útmutató elvégzése után rendelkezni fog egy webes kezelőfelületű Java-szavazóalkalmazással, amely egy, a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat. Az oktatóanyag elvégzésének egyik feltétele, hogy rendelkezzen egy működő Mac OSX vagy Linux fejlesztői géppel. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást, akkor [letöltheti a forráskódot a kész alkalmazáshoz](https://github.com/Azure-Samples/service-fabric-java-quickstart), és folytathatja a [mintául szolgáló szavazóalkalmazás bemutatásával](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application). Azt is vegye figyelembe, [hogy a Java megbízható szolgáltatások](service-fabric-quickstart-java-reliable-services.md) rövid útmutatóját követi.
 

@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 4d9a73ee9fb9e4019d30354e6d9fbbe57d081e33
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 4754d7c2182de79d583dce4982b33395bf037479
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147520"
+ms.locfileid: "70161894"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Üzenetküldés a felhőből az eszközre IoT Hub (Java)
 
@@ -47,9 +47,9 @@ Az oktatóanyag végén két Java-konzol alkalmazást futtat:
 
 * Az eszközről a IoT hub gyors üzembe helyezése, illetve az [telemetria-](quickstart-send-telemetry-java.md) [Útválasztás konfigurálása IoT hub](tutorial-routing.md) oktatóanyag használatával.
 
-* A legújabb [Java SE Development Kit 8](https://aka.ms/azure-jdks)
+* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
 
-* [Maven 3](https://maven.apache.org/install.html)
+* [Maven 3](https://maven.apache.org/download.cgi)
 
 * Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 

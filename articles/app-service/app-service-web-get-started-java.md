@@ -15,18 +15,18 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
-ms.custom: mvc, seo-java-july2019
-ms.openlocfilehash: 2af33976a3c1d1458136a5d91d51c656ede2d343
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.custom: mvc, seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 483adcccff9f49b3335a453f43fc667dd4f0e61b
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68514101"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171314"
 ---
-# <a name="quickstart-create-a-java-app-in-app-service"></a>Gyors útmutató: Java-alkalmazás létrehozása App Service
+# <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Windows rendszeren
 
 > [!NOTE]
-> Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A Linuxon App Service való üzembe helyezéssel kapcsolatban lásd: Java- [Webalkalmazás létrehozása Linuxon](./containers/quickstart-java.md).
+> Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A Linuxon App Service valóüzembe helyezéssel kapcsolatban lásd: Java- [Webalkalmazás létrehozása Linuxon](./containers/quickstart-java.md).
 >
 
 Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -t a [Azure app Service Maven beépülő modullal](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) egy Java Web Archive-(War-) fájl telepítéséhez.
@@ -106,7 +106,7 @@ Frissítse a következő helyőrzőket a bővítmény konfigurációjában:
 | ----------- | ----------- |
 | `SUBSCRIPTION_ID` | Annak az előfizetésnek az egyedi azonosítója, amelyre telepíteni kívánja az alkalmazást. Az alapértelmezett előfizetés azonosítója a Cloud Shell vagy a `az account show` parancssori felület használatával érhető el. Az összes elérhető előfizetéshez használja az `az account list` parancsot.|
 | `RESOURCEGROUP_NAME` | Az új erőforráscsoport neve, amelyben létre szeretné hozni az alkalmazást. Ha egy alkalmazás összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlésével például az alkalmazáshoz társított összes erőforrást törli. Frissítse ezt az értéket egy egyedi új erőforráscsoport-névvel, például *myResourceGroup*. Ezt az erőforráscsoport-nevet használjuk egy későbbi szakaszban az összes Azure-erőforrás eltávolításához. |
-| `WEBAPP_NAME` | Az alkalmazás neve az alkalmazás állomásneve része lesz az Azure-ban (WEBAPP_NAME. azurewebsites. net) való üzembe helyezéskor. Frissítse ezt az értéket az új App Service alkalmazás egyedi nevével, amely a Java-alkalmazást, például a contosot fogja üzemeltetni. |
+| `WEBAPP_NAME` | Az alkalmazás neve az alkalmazás állomásneve része lesz az Azure-ban (WEBAPP_NAME. azurewebsites. net) való üzembe helyezéskor. Frissítse ezt az értéket az új App Service alkalmazás egyedi nevével, amely a Java-alkalmazást, például a contosotfogja üzemeltetni. |
 | `REGION` | Egy Azure-régió, ahol az alkalmazás üzemeltetve van, például *westus2*. A régiók listáját az `az account list-locations` paranccsal, a Cloud Shellben vagy a CLI-ben kérheti le. |
 
 ## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése

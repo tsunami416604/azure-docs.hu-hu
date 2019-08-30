@@ -14,15 +14,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.custom: seo-java-july2019
-ms.openlocfilehash: f816a5c84416b7f40e3062bf22dd70cbb356c6f1
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.custom: seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 3639eef1e95b354298b718af24217a8fbefb3a74
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662888"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173374"
 ---
-# <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>A Java Message Service (JMS) API használata a Service Bus és a AMQP 1,0 használatával
+# <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>A Java Message Service (JMS) használata a Azure Service Bus és a AMQP 1,0
 A Advanced Message Queueing Protocol (AMQP) 1,0 egy hatékony, megbízható, vezeték nélküli üzenetkezelési protokoll, amellyel robusztus, platformfüggetlen üzenetkezelési alkalmazások hozhatók létre.
 
 A AMQP 1,0-es verziójának támogatása a Service Bus azt jelenti, hogy a több platformon futó, felügyelt és feliratkozott üzenetkezelési funkciókat egy hatékony bináris protokoll használatával lehet használni. Emellett a különböző nyelvek, keretrendszerek és operációs rendszerek együttes használatával létrehozott összetevőkből álló alkalmazásokat is készíthet.

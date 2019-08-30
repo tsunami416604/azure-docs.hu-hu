@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: dc31abaadf3f39d31a4c1b04f9911b5ce1677916
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: e01bb13b904aaf8671512daa3ef3cbad182f01e3
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048592"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70161964"
 ---
 Ez a szakasz azt ismerteti, hogyan hozható létre IoT hub a [Azure Portal](https://portal.azure.com)használatával.
 
@@ -50,7 +50,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre IoT hub a [Azure Portal](http
 
     -  > **Az eszközről a felhőbe irányuló**speciális beállítások: Ez a tulajdonság az eszközről a felhőbe irányuló üzeneteket az üzenetek egyidejű olvasóinak számához kapcsolja. A legtöbb hubhoz csak négy partíció szükséges.
 
-1. Ebben az oktatóanyagban fogadja el az alapértelmezett beállításokat, majd válassza a **felülvizsgálat + létrehozás** lehetőséget a választási lehetőségek áttekintéséhez. Ehhez hasonló képernyő jelenik meg.
+1. Ehhez a cikkhez fogadja el az alapértelmezett beállításokat, majd válassza a **felülvizsgálat + létrehozás** lehetőséget a lehetőségek áttekintéséhez. Ehhez hasonló képernyő jelenik meg.
 
    ![Tekintse át az új központ létrehozásával kapcsolatos információkat](./media/iot-hub-include-create-hub/iot-hub-create-review-vs2019.png)
 
