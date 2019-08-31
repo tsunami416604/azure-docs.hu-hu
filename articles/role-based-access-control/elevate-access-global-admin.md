@@ -1,6 +1,6 @@
 ---
-title: Az Azure-előfizetések és a felügyeleti csoportok kezelése hozzáférési szintjének emelése |} A Microsoft Docs
-description: Összes előfizetés és a felügyeleti csoportok az Azure Active Directoryban az Azure portal vagy a REST API használata kezelheti egy globális rendszergazda hozzáférési szintjének emelése módját ismerteti.
+title: Jogosultságszint-emelési hozzáférés az összes Azure-előfizetés és-felügyeleti csoport kezeléséhez | Microsoft Docs
+description: Ismerteti, hogyan lehet a globális rendszergazda hozzáférését a Azure Portal vagy REST API használatával a Azure Active Directory összes előfizetésének és felügyeleti csoportjának kezeléséhez.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,79 +15,79 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ede7037aabc85739ee47636f1390c15e0b0d1639
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 984284fa185d4d8454b1689a62ca9e08c342e33b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158409"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195121"
 ---
-# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Az Azure-előfizetések és a felügyeleti csoportok kezelése hozzáférési szintjének emelése
+# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Jogosultságszint-emelési hozzáférés az összes Azure-előfizetés és-felügyeleti csoport kezeléséhez
 
-Globális rendszergazdaként az Azure Active Directoryban (Azure AD) akkor nem tudja elérni az összes előfizetés és a felügyeleti csoportok a címtárban. Ez a cikk leírja, hogyan, hogy szintre emelhet, a hozzáférés az összes előfizetés és a felügyeleti csoportok.
+Azure Active Directory (Azure AD) globális rendszergazdájaként előfordulhat, hogy nem fér hozzá a címtár összes előfizetéséhez és felügyeleti csoportjához. Ez a cikk bemutatja, hogyan emelheti ki az összes előfizetéshez és felügyeleti csoporthoz való hozzáférést.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="why-would-you-need-to-elevate-your-access"></a>Miért érdemes lenne szükség van a hozzáférési szintjének emelése?
+## <a name="why-would-you-need-to-elevate-your-access"></a>Miért kell megemelni a hozzáférést?
 
-Ha egy globális rendszergazdai, előfordulhat, hogy azt szeretné, a következő lehet:
+Ha Ön globális rendszergazda, akkor előfordulhat, hogy az alábbi lépéseket szeretné elvégezni:
 
-- Azure-előfizetés vagy a felügyeleti csoportok való hozzáférés visszaszerzéséhez, amikor a felhasználó elveszíti a hozzáférést
-- Adja meg egy másik felhasználó, vagy saját kezűleg elérni az Azure-előfizetés vagy a felügyeleti csoportok
-- Tekintse meg az összes Azure-előfizetések vagy a szervezet felügyeleti csoportok
-- Lehetővé teszi egy automation-alkalmazást (például számlázási vagy naplózási alkalmazás) eléréséhez az Azure-előfizetések vagy a felügyeleti csoportok
+- Azure-előfizetéshez vagy felügyeleti csoporthoz való hozzáférés visszanyerése, ha egy felhasználó elveszítette a hozzáférést
+- Egy másik felhasználó vagy egy Azure-előfizetéshez vagy egy felügyeleti csoporthoz való hozzáférés biztosítása
+- A szervezet összes Azure-előfizetésének vagy felügyeleti csoportjának megjelenítése
+- Az Azure-előfizetések és-felügyeleti csoportok elérésének engedélyezése az Automation-alkalmazások számára (például számlázási vagy naplózási alkalmazás)
 
-## <a name="how-does-elevate-access-work"></a>Hogyan szintjének emelése a hozzáférés munkahelyi?
+## <a name="how-does-elevate-access-work"></a>Hogyan működik a jogosultságszint-emelési hozzáférés?
 
-Az Azure AD és az Azure-erőforrások egymástól függetlenül biztonságosak. Azt jelenti az Azure AD szerepkör-hozzárendelések nem biztosíthat hozzáférést az Azure-erőforrásokhoz, és Azure szerepkör-hozzárendelések nem biztosíthat hozzáférést az Azure ad-hez. Azonban ha Ön egy [globális rendszergazdai](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) az Azure AD-ben rendelhet saját kezűleg hozzáférés az Azure-előfizetések és a felügyeleti csoportok a címtárban. Akkor használja ezt a funkciót, ha nem rendelkezik hozzáféréssel az Azure-előfizetések erőforrásaihoz, például virtuális gépeket vagy a storage-fiókok, és ezek az erőforrások eléréséhez a globális rendszergazda jogosultságot használni kívánt.
+Az Azure AD és az Azure-erőforrások egymástól függetlenül biztonságosak. Az Azure AD szerepkör-hozzárendelések nem biztosítanak hozzáférést az Azure-erőforrásokhoz, és az Azure-szerepkör-hozzárendelések nem biztosítanak hozzáférést az Azure AD-hoz. Ha azonban Ön [globális rendszergazda](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) az Azure ad-ben, saját maga is kioszthatja az összes Azure-előfizetést és felügyeleti csoportot a címtárában. Akkor használja ezt a funkciót, ha nem rendelkezik hozzáféréssel az Azure-előfizetési erőforrásokhoz, például a virtuális gépekhez vagy a Storage-fiókokhoz, és a globális rendszergazdai jogosultságot szeretné használni az erőforrásokhoz való hozzáféréshez.
 
-Ha Ön a hozzáférési szintjének emelése, akkor hozzá lesz rendelve a [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) gyökérszintű hatókörben Azure-ban szerepet (`/`). Ez lehetővé teszi, hogy az összes erőforrás megtekintéséhez és hozzárendeléséhez a hozzáférést minden olyan előfizetés vagy a felügyeleti csoport a címtárban. Felhasználói hozzáférés rendszergazdája szerepkör-hozzárendeléseit a PowerShell használatával eltávolítható.
+Ha emeli a hozzáférést, a [felhasználói hozzáférés rendszergazdai](built-in-roles.md#user-access-administrator) szerepköre lesz hozzárendelve az Azure-ban a root scope (`/`) elemnél. Ez lehetővé teszi az összes erőforrás megtekintését és a hozzáférés hozzárendelését bármely előfizetésben vagy felügyeleti csoportban a címtárban. A felhasználói hozzáférés rendszergazdai szerepkör-hozzárendelései eltávolíthatók a PowerShell használatával.
 
-Miután elvégezte a módosításokat, végre kell hajtania a gyökérszintű hatókörben, el kell távolítania az emelt szintű hozzáférés.
+Ezt a emelt szintű hozzáférést csak akkor távolíthatja el, ha elvégezte a szükséges módosításokat a gyökérszintű hatókörben.
 
-![Hozzáférési szintjének emelése](./media/elevate-access-global-admin/elevate-access.png)
+![Jogosultságszint-emelési hozzáférés](./media/elevate-access-global-admin/elevate-access.png)
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Kövesse az alábbi lépéseket az Azure portal használatával egy globális rendszergazda hozzáférési szintjének emelése.
+Kövesse az alábbi lépéseket a globális rendszergazda hozzáférésének a Azure Portal használatával történő jogosultságszint-emeléséhez.
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) vagy a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) globális rendszergazdaként.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) vagy a [Azure Active Directory felügyeleti](https://aad.portal.azure.com) központba globális rendszergazdaként.
 
-1. Kattintson a navigációs lista **Azure Active Directory** majd **tulajdonságok**.
+1. A navigációs listában kattintson a **Azure Active Directory** elemre, majd a **Tulajdonságok**elemre.
 
-   ![Az Azure AD tulajdonságok – képernyőkép](./media/elevate-access-global-admin/aad-properties.png)
+   ![Azure AD-tulajdonságok – képernyőfelvétel](./media/elevate-access-global-admin/aad-properties.png)
 
-1. A **Access management az Azure-erőforrások**, a váltógomb beállítása **Igen**.
+1. Az **Azure-erőforrások hozzáférés-kezelés**területén állítsa a kapcsolót **Igen**értékre.
 
-   ![Hozzáférés-kezelés az Azure-erőforrásokhoz – képernyőkép](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
+   ![Hozzáférés-kezelés az Azure-erőforrásokhoz – képernyőfelvétel](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   Ha beállította a váltógomb **Igen**, az Azure RBAC a gyökérszintű hatókörben (/) a felhasználói hozzáférés rendszergazdája szerepkör van rendelve. Ezzel engedélyt ad meg szerepkörök hozzárendelése az összes Azure-előfizetések és az Azure AD-címtárhoz társított felügyeleti csoportokat. Ezzel a kapcsolóval csak az Azure AD globális rendszergazdai szerepkörrel felruházott felhasználók számára érhető el.
+   Ha a váltás az **Igen**értékre van állítva, akkor a root (/) hatókörben az Azure RBAC felhasználói hozzáférés rendszergazdai szerepköre lesz hozzárendelve. Ez lehetővé teszi, hogy az ehhez az Azure AD-címtárhoz társított összes Azure-előfizetéshez és felügyeleti csoporthoz rendeljen szerepköröket. Ez a váltógomb csak a globális rendszergazdai szerepkörrel rendelkező felhasználók számára érhető el az Azure AD-ben.
 
-   Ha beállította a váltógomb **nem**, az Azure RBAC-ben a felhasználói hozzáférés rendszergazdája szerepkör törlődik a felhasználói fiók. Szerepkörök az összes Azure-előfizetések és az Azure AD-címtárhoz társított felügyeleti csoport már nem rendelhet hozzá. Megtekintheti, és kezelheti a csak az Azure-előfizetések és a felügyeleti csoportot, amelyhez rendelkezik hozzáféréssel.
+   Ha a **nem**értékre állítja a kapcsolót, a rendszer eltávolítja a felhasználói fiókból az Azure RBAC felhasználói hozzáférés rendszergazdai szerepkörét. Az ehhez az Azure AD-címtárhoz társított összes Azure-előfizetéshez és felügyeleti csoporthoz már nem lehet szerepköröket hozzárendelni. Csak azokat az Azure-előfizetéseket és felügyeleti csoportokat tekintheti meg és kezelheti, amelyekhez hozzáférést kapott.
 
-1. Kattintson a **mentése** a beállítás mentéséhez.
+1. A beállítás mentéséhez kattintson a **Save (Mentés** ) gombra.
 
-   Ez a beállítás a globális tulajdonság nem, és csak a jelenleg bejelentkezett felhasználóra vonatkozik. A globális rendszergazdai szerepkör összes tagja számára nem jogosultságszintjének emelése.
+   Ez a beállítás nem globális tulajdonság, és csak az aktuálisan bejelentkezett felhasználóra vonatkozik. A globális rendszergazdai szerepkör összes tagjához nem lehet hozzáférni.
 
-1. Jelentkezzen ki, és jelentkezzen be újra a frissítés a hozzáférést.
+1. Jelentkezzen ki, majd jelentkezzen be újra, és frissítse a hozzáférését.
 
-    Akkor most már elérhetők az összes előfizetés és a felügyeleti csoportok a címtárban. Láthatja, hogy Önhöz rendelve a felhasználói hozzáférés rendszergazdája szerepkör gyökérszintű hatókörben.
+    Most már hozzáféréssel kell rendelkeznie a címtár összes előfizetéséhez és felügyeleti csoportjához. Megfigyelheti, hogy a felhasználói hozzáférés rendszergazdai szerepköre a gyökérszintű hatókörben van hozzárendelve.
 
-   ![Előfizetés szerepkör-hozzárendeléseit a legfelső szintű hatóköre – képernyőkép](./media/elevate-access-global-admin/iam-root.png)
+   ![Előfizetési szerepkör-hozzárendelések a gyökérszintű hatókörrel – képernyőfelvétel](./media/elevate-access-global-admin/iam-root.png)
 
-1. Győződjön meg a kívánt módosításokat, ha szeretné tenni az emelt szintű hozzáférés.
+1. Végezze el a szükséges módosításokat a emelt szintű hozzáféréshez.
 
-    További információ a szerepkörök hozzárendelése: [rbac-RÓL és az Azure portal-hozzáférés kezelése](role-assignments-portal.md). Ha az Azure AD Privileged Identity Management (PIM) használ, tekintse meg [Fedezze fel az Azure erőforrások kezeléséhez a PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) vagy [erőforrás-szerepkörök hozzárendelése az Azure PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
+    A szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [hozzáférés kezelése a RBAC és a Azure Portal használatával](role-assignments-portal.md). Azure AD Privileged Identity Management (PIM) használata esetén olvassa el a következő témakört: [Azure-erőforrások kezelése a PIM-ban](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) , illetve [Azure-erőforrás-szerepkörök kiosztása a PIM-ben](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
 
-1. Amikor elkészült, állítsa be a **Access management az Azure-erőforrások** válthat vissza a **nem**. Mivel ez egy felhasználói beállítás, akkor be kell jelentkeznie ugyanazon felhasználóként, hozzáférési szintjének emelése használt.
+1. Ha elkészült, állítsa be a **hozzáférés-kezelés az Azure** -erőforrásokhoz visszaváltás a **nem**értékre. Mivel ez egy felhasználónkénti beállítás, a hozzáférés megemeléséhez használt felhasználóként kell bejelentkeznie.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-### <a name="list-role-assignment-at-the-root-scope-"></a>A gyökérszintű hatókörben (/) szerepkör-hozzárendelés listája
+### <a name="list-role-assignment-at-the-root-scope-"></a>Szerepkör-hozzárendelés listázása a gyökérszintű hatókörben (/)
 
-A gyökérszintű hatókörben egy felhasználó a felhasználói hozzáférés rendszergazdája szerepkör-hozzárendelés felsorolása (`/`), használja a [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) parancsot.
+A felhasználói hozzáférés rendszergazdai szerepkör-hozzárendelésének listázásához a gyökérszintű hatókörben (`/`) használja a [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) parancsot.
 
 ```azurepowershell
 Get-AzRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" `
@@ -106,14 +106,14 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-### <a name="remove-a-role-assignment-at-the-root-scope-"></a>A gyökérszintű hatókörben (/) szerepkör-hozzárendelés eltávolítása
+### <a name="remove-a-role-assignment-at-the-root-scope-"></a>Szerepkör-hozzárendelés eltávolítása a gyökérszintű hatókörben (/)
 
-A gyökérszintű hatókörben egy felhasználó a felhasználói hozzáférés rendszergazdája szerepkör-hozzárendelés eltávolítása (`/`), kövesse az alábbi lépéseket.
+Az alábbi lépéseket követve távolíthatja el a felhasználói hozzáférés rendszergazdai szerepkörének hozzárendelését`/`egy felhasználóhoz a gyökérszintű hatókörben ().
 
-1. Jelentkezzen be, eltávolíthatja az emelt szintű hozzáférés. Ez lehet ugyanaz a felhasználó hozzáférést és a egy másik globális rendszergazda emelt szintű hozzáféréssel a gyökérszintű hatókörben jogosultságszintjének emeléséhez használt.
+1. Jelentkezzen be olyan felhasználóként, aki el tudja távolítani a emelt szintű hozzáférést. Ez lehet ugyanaz a felhasználó, aki a hozzáférés vagy egy másik globális rendszergazda számára emelt szintű hozzáféréssel rendelkezik a gyökérszintű hatókörben.
 
 
-1. Használja a [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) parancsot a felhasználói hozzáférés rendszergazdája szerepkör-hozzárendelés eltávolítása.
+1. A [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) parancs használatával távolítsa el a felhasználói hozzáférés rendszergazdai szerepkörének hozzárendelését.
 
     ```azurepowershell
     Remove-AzRoleAssignment -SignInName <username@example.com> `
@@ -122,17 +122,17 @@ A gyökérszintű hatókörben egy felhasználó a felhasználói hozzáférés 
 
 ## <a name="rest-api"></a>REST API
 
-### <a name="elevate-access-for-a-global-administrator"></a>Egy globális rendszergazda hozzáférési szintjének emelése
+### <a name="elevate-access-for-a-global-administrator"></a>Globális rendszergazda hozzáférésének megemelése
 
-Az alábbi alapvető lépéseket használatával jogosultságszintjének emelése egy globális rendszergazda, a REST API használatával.
+A következő alapvető lépésekkel emelheti ki a globális rendszergazda hozzáférését a REST API használatával.
 
-1. REST használatával hívja `elevateAccess`, amely engedélyezi, hogy a felhasználói hozzáférés rendszergazdája szerepkör a gyökérszintű hatókörben (`/`).
+1. A REST, a `elevateAccess`Call, amellyel a felhasználói hozzáférés rendszergazdai szerepkört a gyökérszintű hatókör (`/`) segítségével érheti el.
 
    ```http
    POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
    ```
 
-1. Hozzon létre egy [szerepkör-hozzárendelés](/rest/api/authorization/roleassignments) bármely hatókörben bármely szerepkör hozzárendelése. Az alábbi példa bemutatja a gyökérszintű hatókörben a {roleDefinitionID} szerepkör hozzárendelése tulajdonságai (`/`):
+1. Hozzon létre egy [szerepkör](/rest/api/authorization/roleassignments) -hozzárendelést, amely bármely hatókörhöz társítható. Az alábbi példa a {roleDefinitionID} szerepkör a gyökérszintű hatókörben (`/`) való hozzárendelésének tulajdonságait mutatja be:
 
    ```json
    { 
@@ -147,25 +147,25 @@ Az alábbi alapvető lépéseket használatával jogosultságszintjének emelés
    }
    ```
 
-1. A felhasználói hozzáférés rendszergazdája közben is eltávolíthatja a gyökérszintű hatókörben szerepkör-hozzárendelések (`/`).
+1. A felhasználói hozzáférés rendszergazdája a gyökérszintű hatókör (`/`) segítségével is eltávolíthatja a szerepkör-hozzárendeléseket.
 
-1. Távolítsa el a felhasználói hozzáférés rendszergazdai jogosultságokkal, amíg szükség van rájuk újra.
+1. Távolítsa el a felhasználói hozzáférés rendszergazdai jogosultságait, amíg újra nem szükségesek.
 
-### <a name="list-role-assignments-at-the-root-scope-"></a>A gyökérszintű hatókörben (/) szerepkör-hozzárendelések listát
+### <a name="list-role-assignments-at-the-root-scope-"></a>Szerepkör-hozzárendelések listázása a gyökérszintű hatókörben (/)
 
-A szerepkör-hozzárendeléseket a gyökérszintű hatókörben egy felhasználó összes listázhatja (`/`).
+Egy felhasználóhoz tartozó összes szerepkör-hozzárendelést listázhatja a gyökérszintű hatókör (`/`) használatával.
 
-- Hívás [GET Szerepkörkiosztások](/rest/api/authorization/roleassignments/listforscope) ahol `{objectIdOfUser}` a felhasználót, amelynek szeretné beolvasni a szerepkör-hozzárendelések objektum azonosítója.
+- Hívja le a [Get roleAssignments](/rest/api/authorization/roleassignments/listforscope) -t, ahol a a lekérdezni kívánt szerepkör-hozzárendeléseket tartalmazó `{objectIdOfUser}` felhasználó objektumazonosító.
 
    ```http
    GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectIdOfUser}'
    ```
 
-### <a name="list-deny-assignments-at-the-root-scope-"></a>Listában elutasítása hozzárendelések a gyökérszintű hatókörben (/)
+### <a name="list-deny-assignments-at-the-root-scope-"></a>Megtagadási hozzárendelések listázása a gyökérszintű hatókörben (/)
 
-Listázhatja az összes, a Megtagadás hozzárendelését az olyan a gyökérszintű hatókörben (`/`).
+Egy felhasználó összes megtagadási hozzárendelését listázhatja a gyökérszintű hatókörben (`/`).
 
-- Hívja a GET-denyAssignments ahol `{objectIdOfUser}` azon megtagadása hozzárendelések szeretné beolvasni a felhasználói objektum azonosítója.
+- Hívja le a Get `{objectIdOfUser}` denyAssignments, ahol a a lekérdezni kívánt megtagadási hozzárendeléseket kérő felhasználó objektumazonosító.
 
    ```http
    GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter=gdprExportPrincipalId+eq+'{objectIdOfUser}'
@@ -173,9 +173,9 @@ Listázhatja az összes, a Megtagadás hozzárendelését az olyan a gyökérszi
 
 ### <a name="remove-elevated-access"></a>Emelt szintű hozzáférés eltávolítása
 
-Meghívásakor `elevateAccess`, szerepkör-hozzárendelés hoz létre a saját maga számára, így ezeket a jogosultságokat visszavonása el kell távolítania a hozzárendelést.
+A hívásakor `elevateAccess`létre kell hoznia egy szerepkör-hozzárendelést a saját maga számára, hogy visszavonja ezeket a jogosultságokat a hozzárendelés eltávolításához.
 
-1. Hívás [GET roleDefinitions](/rest/api/authorization/roledefinitions/get) ahol `roleName` eredménye a felhasználói hozzáférés adminisztrátora, a felhasználói hozzáférés rendszergazdája szerepkör neve Azonosítóját határozza meg.
+1. Hívja meg a [Get roleDefinitions](/rest/api/authorization/roledefinitions/get) , ahol `roleName` a felhasználó-hozzáférési rendszergazda határozza meg a felhasználói hozzáférés rendszergazdai szerepkörének a nevét.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=roleName+eq+'User Access Administrator'
@@ -216,20 +216,20 @@ Meghívásakor `elevateAccess`, szerepkör-hozzárendelés hoz létre a saját m
     }
     ```
 
-    Mentse az Azonosítót a a `name` paramétert, ebben az esetben `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9`.
+    Mentse az azonosítót a `name` paraméterből, ebben az esetben. `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9`
 
-2. Fel is kell a szerepkör-hozzárendelést a directory-rendszergazda directory hatókörben. Összes hozzárendelés directory hatókörben, a listában a `principalId` a directory-rendszergazda azokat a jogosultságszint-emelés hozzáférés, hívja. Ez felsorolja az összes hozzárendelés az objectid könyvtárában.
+2. A címtár-hatókörben a címtár-rendszergazda szerepkör-hozzárendelését is fel kell sorolnia. Sorolja fel az összes hozzárendelést a címtár `principalId` hatókörében azon címtár-rendszergazda számára, aki az emelt szintű hozzáférési hívást kezdeményezte. Ez a lista a címtárban lévő összes hozzárendelést listázza a ObjectId.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'
     ```
     
     >[!NOTE] 
-    >A directory-rendszergazda nem rendelkezhet számos hozzárendelésnél, ha az előző lekérdezést ad vissza túl sok hozzárendelések is lekérdezheti az összes hozzárendelés csak könyvtár hatókör szintjén, majd az eredmények szűréséhez: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
+    >A címtár-rendszergazda nem rendelkezhet sok hozzárendeléssel, ha az előző lekérdezés túl sok hozzárendelést ad vissza, az összes hozzárendelés lekérdezése csak a címtár hatóköri szintjén végezhető el, majd szűrheti az eredményeket:`GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
         
-   1. Az előző hívás az szerepkör-hozzárendelések listáját adja vissza. Keresse meg a szerepkör-hozzárendelés, ahol a hatókör az `"/"` és a `roleDefinitionId` végződik a szerepkör nevének azonosítója, az 1. lépésben található és `principalId` objectid azonosítóját, a directory-rendszergazda megegyezik. 
+   1. Az előző hívások a szerepkör-hozzárendelések listáját adják vissza. Keresse meg azt a szerepkör-hozzárendelést `"/"` , amelyben `roleDefinitionId` a hatókör szerepel, és az 1. lépésben megtalált `principalId` szerepkör-név és a címtár-rendszergazda objectId. 
     
-      Szerepkör-hozzárendelés minta:
+      Példa szerepkör-hozzárendelésre:
 
        ```json
        {
@@ -253,9 +253,9 @@ Meghívásakor `elevateAccess`, szerepkör-hozzárendelés hoz létre a saját m
        }
        ```
         
-      Ismét mentse az Azonosítót a a `name` paramétert, ebben az esetben e7dd75bc-06f6-4e71-9014-ee96a929d099.
+      Ismét mentse az azonosítót a `name` paraméterből, ebben az esetben a e7dd75bc-06f6-4e71-9014-ee96a929d099.
 
-   1. Végül a hozzáadta a hozzárendelés eltávolítása a szerepkör-hozzárendelés azonosítója `elevateAccess`:
+   1. Végül a szerepkör-hozzárendelési azonosító használatával távolítsa el a következő `elevateAccess`által hozzáadott hozzárendelést:
 
       ```http
       DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01
@@ -264,4 +264,4 @@ Meghívásakor `elevateAccess`, szerepkör-hozzárendelés hoz létre a saját m
 ## <a name="next-steps"></a>További lépések
 
 - [A különböző Azure-beli szerepkörök ismertetése](rbac-and-directory-admin-roles.md)
-- [Rbac-RÓL és a REST API használatával Azure-erőforrásokhoz való hozzáférés kezelése](role-assignments-rest.md)
+- [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a REST API használatával](role-assignments-rest.md)

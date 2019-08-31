@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a3a097c164628e6d4e4b7886a195901207d83a3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d3bb18f11de92680d296d747fc34e16c3264c369
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852210"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193287"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platform és a OAuth 2,0 ügyfél-hitelesítő adatok folyamata
 
@@ -66,7 +66,7 @@ Az ilyen típusú hitelesítés olyan démonok és szolgáltatásfiókok esetéb
 Az ACL-ek használata helyett API-k használatával teheti elérhetővé az alkalmazások engedélyeit. Egy alkalmazás engedélyt kap egy alkalmazás számára egy szervezet rendszergazdája, és csak az adott szervezet és alkalmazottai által birtokolt adathozzáféréshez használható. Microsoft Graph például több alkalmazás-engedélyt tesz elérhetővé a következők elvégzéséhez:
 
 * E-mailek olvasása az összes postaládában
-* E-mailek olvasása és írása az összes postaládában
+* Levelek olvasása és írása az összes postaládában
 * E-mailek küldése bármely felhasználó nevében
 * Címtáradatok olvasása
 
@@ -81,7 +81,7 @@ Az alkalmazás engedélyeinek használatához kövesse a következő szakaszokba
 3. Keresse meg az **API-engedélyek** szakaszt, majd adja hozzá az alkalmazás által igényelt alkalmazás- **engedélyeket** .
 4. **Mentse** az alkalmazás regisztrációját.
 
-#### <a name="recommended-sign-the-user-into-your-app"></a>Ajánlott A felhasználó aláírása az alkalmazásba
+#### <a name="recommended-sign-the-user-into-your-app"></a>Ajánlott: A felhasználó aláírása az alkalmazásba
 
 Az alkalmazás-engedélyeket használó alkalmazások létrehozásakor általában az alkalmazásnak olyan oldalra vagy nézetre van szüksége, amelyen a rendszergazda jóváhagyja az alkalmazás engedélyeit. Ez az oldal lehet az alkalmazás bejelentkezési folyamatának része, az alkalmazás beállításainak egy része, vagy egy dedikált "kapcsolat" folyamat is. Sok esetben érdemes megmutatni, hogy az alkalmazás csak akkor jelenjen meg ez a "kapcsolódás" nézet, ha egy felhasználó munkahelyi vagy iskolai Microsoft-fiók bejelentkezett.
 
@@ -170,7 +170,8 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 ```
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/common/oauth2/v2.0/token'
+// Replace {tenant} with your tenant! 
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
 | Paraméter | Állapot | Leírás |
@@ -250,10 +251,6 @@ A hiba a következőképpen néz ki:
 | `trace_id` | A diagnosztika támogatásához szükséges kérelem egyedi azonosítója. |
 | `correlation_id` | Egy egyedi azonosító, amely az egyes összetevőkben a diagnosztika segítésére szolgál. |
 
-> [!NOTE]
-> Ahhoz, hogy az alkalmazás megkapja a v2-tokent, frissítheti az alkalmazás jegyzékfájlját az Azure Portalon. Hozzáadhatja az attribútumot `accessTokenAcceptedVersion` , és a értékre állíthatja a `"accessTokenAcceptedVersion": 2`2 értéket. Tekintse meg az [alkalmazás jegyzékfájlját](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-reference) , hogy többet is megértsen. Alapértelmezés szerint az alkalmazás jelenleg fogadja v1-tokent. Ha ez nincs meghatározva az alkalmazás/webes API-jegyzékben, akkor az attribútum értéke a jegyzékfájlban az alapértelmezett érték 1, ezért az alkalmazás v1 tokent fog kapni.  
-
-
 ## <a name="use-a-token"></a>Token használata
 
 Most, hogy megszerezte a jogkivonatot, a token használatával teheti meg a kéréseket az erőforrásnak. A jogkivonat lejárata után ismételje meg a kérést a `/token` végpontra egy új hozzáférési jogkivonat beszerzéséhez.
@@ -269,7 +266,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ```
 
 ```
-curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q" 'https://graph.microsoft.com/v1.0/me/messages'
+curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph.microsoft.com/v1.0/me/messages'
 ```
 
 ## <a name="code-samples-and-other-documentation"></a>Példák a kódokra és egyéb dokumentációra

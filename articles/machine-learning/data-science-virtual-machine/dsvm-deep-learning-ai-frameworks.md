@@ -1,30 +1,23 @@
 ---
 title: Deep learning & AI-keretrendszerek
-titleSuffix: Azure Data Science Virtual Machines
-description: Mély tanulási keretrendszerek és eszközök az Azure Data Science Virtual Machine, beleértve a TensorFlow, a PyTorch, a kerasz, a Cafe, a MXNet, a Horovod, a theano, a Chainer és más eszközöket.
+titleSuffix: Azure Data Science Virtual Machine
+description: Az Azure Data Science Virtual Machine-ban elérhető mély tanulási keretrendszerek és eszközök, beleértve a TensorFlow, a PyTorch, a kerasz, a Cafe, a MXNet, a Horovod, a theano, a Chainer és más eszközöket.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 08/11/2019
-ms.author: vijetaj
-ms.openlocfilehash: 3c9510b99bbdc7db292ecdc0bf59aadc305cf0c8
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: bcf5228b6d6055c4b2e716ca6b34878a3bb3b870
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035837"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192172"
 ---
-# <a name="deep-learning-and-ai-frameworks"></a>Mély tanulás és mesterségesintelligencia-keretrendszerek
+# <a name="deep-learning-and-ai-frameworks-for-azure-data-science-vm"></a>Deep learning-és AI-keretrendszerek az Azure Data Science VM
 A [Data Science Virtual Machine](https://aka.ms/dsvm) (DSVM) számos mély tanulási keretrendszert támogat, amelyek segítségével mesterséges intelligencia (AI) alkalmazásokat hozhat létre prediktív elemzési és kognitív képességekkel, például a képekkel és a nyelvekkel kapcsolatos ismeretekkel.
 
 A DSVM elérhető mély tanulási keretrendszerek a következők:

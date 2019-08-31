@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan hozhat létre egy egyoldalas webalkalmazást, a
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/29/2019
+ms.date: 08/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 4d9af918c222107cfca5863309efb391b8e6d2e0
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 031e8074585426584d7ef63a103c9c2b4d90e6c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720869"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194215"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Oktatóanyag: Azure Time Series Insights egyoldalas webalkalmazás létrehozása
 
@@ -69,7 +69,7 @@ Ez az oktatóanyag a minta alkalmazás Time Series Insights környezetének adat
     > [!NOTE]
     > A Visual Studio-élmény a verziótól és a konfigurációs beállításoktól függően némileg eltérő lehet a látható példáktól.
 
-1. Nyissa meg a Visual studiót, és jelentkezzen be. A webalkalmazáshoz tartozó projekt létrehozásához a **fájl** menüben válassza a webhely **megnyitása** > **lehetőséget.**
+1. Nyissa meg a Visual studiót, és jelentkezzen be. A webalkalmazáshoz tartozó projekt létrehozásához a **fájl** menüben válassza a webhely **megnyitása** > lehetőséget.
 
     [![Visual Studio – új megoldás létrehozása](media/tutorial-create-tsi-sample-spa/vs-solution-create.png)](media/tutorial-create-tsi-sample-spa/vs-solution-create.png#lightbox)
 
@@ -127,6 +127,10 @@ Ez az oktatóanyag a minta alkalmazás Time Series Insights környezetének adat
 
       [![Visual Studio – a profil közzététele panel](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png#lightbox)
 
+   1. Válassza ki az új Azure App Service példány közzétételét, vagy használjon egy meglévőt.
+
+      [![Azure App Service példány kiválasztása](media/tutorial-create-tsi-sample-spa/vs-publish-select-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-select-target.png#lightbox)
+
    1. Válassza ki az alkalmazás közzétételéhez használni kívánt előfizetést. Válassza ki a **TsiSpaApp** projektet. Ezután válassza az **OK** lehetőséget.
 
       [![Visual Studio – a profil közzététele App Service panel](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png#lightbox)
@@ -137,12 +141,16 @@ Ez az oktatóanyag a minta alkalmazás Time Series Insights környezetének adat
 
    1. A Visual Studio **kimenet** paneljén megjelenik egy sikeres közzétételi napló. Az üzembe helyezés befejezésekor a Visual Studio megnyitja a webalkalmazást egy böngésző lapon, és bekéri a bejelentkezést. A sikeres bejelentkezést követően a Time Series Insights vezérlőelemek adatokkal vannak feltöltve.
 
+   1. Navigáljon a webalkalmazáshoz, és jelentkezzen be a megjelenített Time Series Insights vizuális adatok megtekintéséhez.
+
+      [![Az üzemeltetett webalkalmazás áttekintése](media/tutorial-create-tsi-sample-spa/vs-publish-hosted-app.png)](media/tutorial-create-tsi-sample-spa/vs-publish-hosted-app.png#lightbox)
+
 ## <a name="troubleshoot"></a>Hibaelhárítás  
 
 Hibakód/állapot | Leírás
 ---------------------| -----------
-*AADSTS50011: Az alkalmazáshoz nincs regisztrálva Válaszcím.* | Az Azure AD-regisztrációból hiányzik a **Válasz URL-** tulajdonsága. Lépjen a **Beállítások** > **Válasz URL-címeire** az Azure ad-alkalmazás regisztrálásához. Győződjön meg arról, hogy az **átirányítási URI** -t a **2. lépésben** vagy a **4** . lépésben adta meg, amikor [regisztrálta az alkalmazást az Azure ad használatára](#register-with-azure-ad) .
-*AADSTS50011: A kérelemben megadott válasz URL-cím nem egyezik az alkalmazáshoz konfigurált válasz URL-címekkel: "\<Application ID GUID >".* |  > Awebalkalmazás [felépítése és közzététele](#build-and-publish) című **6. b lépésben** megadottértéknekmegkellegyeznieazAzuread-alkalmazásregisztrálásakorabeállításokválaszURL-címeiterületenmegadottértékkel`postLogoutRedirectUri` . |
+*AADSTS50011: Az alkalmazáshoz nincs regisztrálva Válaszcím.* | Az Azure AD-regisztrációból hiányzik egy **átirányítási URI** -tulajdonság. Nyissa meg az Azure ad-alkalmazás regisztrációjának **hitelesítés** > -átirányítási**URI** -azonosítóit. Győződjön meg arról, hogy az **átirányítási URI** -t a **2. lépésben** vagy a **4** . lépésben adta meg, amikor [regisztrálta az alkalmazást az Azure ad használatára](#register-with-azure-ad) .
+*AADSTS50011: A kérelemben megadott válasz URL-cím nem egyezik az alkalmazáshoz konfigurált válasz URL-címekkel: "\<Application ID GUID >".* |  > Awebalkalmazás [felépítése és közzététele](#build-and-publish) című **6. b lépésben** megadottértéknekmegkellegyeznieazAzuread-alkalmazásregisztrációjábanahitelesítésiátirányításiURIazonosítóbanmegadottértékkel`postLogoutRedirectUri` . |
 A webalkalmazás betöltődik, de egy stílus nélküli, csak szöveges bejelentkezési oldala van, fehér háttérrel. | Győződjön meg arról, hogy a [Webalkalmazás létrehozása és közzététele](#build-and-publish) című **6. lépésben** tárgyalt elérési utak helyesek. Ha a webalkalmazás nem találja a .css fájlokat, akkor a lapok nem a megfelelő stílussal jelennek meg.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

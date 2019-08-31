@@ -1,27 +1,21 @@
 ---
-title: Az adatplatformok számára az adatelemző virtuális gép – Azure |} A Microsoft Docs
-description: További tudnivalók az adatplatformok és a Data Science virtuális gépen támogatott eszközök.
+title: Támogatott adatplatformok
+titleSuffix: Azure Data Science Virtual Machine
+description: Ismerje meg az Azure Data Science Virtual Machine által támogatott adatplatformokat és eszközöket.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: a0fe4ee33769a6d8cf14f60dcc0c4615bb00c5e8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e0ba013f7739e7ade717136cb5507af630263a18
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565294"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192208"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>A Data Science virtuális gépen támogatott adatplatform
 

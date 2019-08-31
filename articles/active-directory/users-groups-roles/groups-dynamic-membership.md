@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/30/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f529723abd449891dba845253502b78e8666199f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: b562ccf81a80219caa9f80bec82f64f7d2510626
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650221"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194610"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -27,30 +27,32 @@ Az Azure Active Directory (Azure AD) szolgáltatásban létrehozhat összetett a
 
 Ha a felhasználó vagy az eszköz bármely attribútuma megváltozik, a rendszer kiértékeli az összes dinamikus csoportosítási szabályt egy adott könyvtárban, hogy megtekintse, hogy a módosítás aktiválja-e az összes csoportot Hozzáadás vagy eltávolítás. Ha egy felhasználó vagy eszköz megfelel egy adott csoportra vonatkozó szabálynak, akkor a csoport tagjaként adja hozzá őket. Ha már nem felelnek meg a szabálynak, azok el lesznek távolítva. Nem lehet manuálisan hozzáadni vagy eltávolítani egy dinamikus csoport tagjait.
 
-* Létrehozhat egy dinamikus csoportot eszközökhöz vagy felhasználókhoz, de nem hozhat létre olyan szabályt, amely a felhasználókat és az eszközöket is tartalmazza.
-* Nem hozható létre eszközcsoport az eszköz tulajdonosai attribútumai alapján. Az eszközök tagsági szabályai csak az eszköz attribútumait hivatkozhatják.
+- Létrehozhat egy dinamikus csoportot eszközökhöz vagy felhasználókhoz, de nem hozhat létre olyan szabályt, amely a felhasználókat és az eszközöket is tartalmazza.
+- Nem hozható létre eszközcsoport az eszköz tulajdonosai attribútumai alapján. Az eszközök tagsági szabályai csak az eszköz attribútumait hivatkozhatják.
 
 > [!NOTE]
 > Ehhez a szolgáltatáshoz egy prémium szintű Azure AD P1 licenc szükséges minden olyan egyedi felhasználóhoz, amely egy vagy több dinamikus csoport tagja. Nem kell licenceket hozzárendelni a felhasználókhoz, hogy azok a dinamikus csoportok tagjai legyenek, de a bérlőben lévő licencek minimális száma csak az összes ilyen felhasználóra vonatkozik. Ha például összesen 1 000 egyedi felhasználó szerepelt a bérlő összes dinamikus csoportjában, akkor legalább 1 000 licenccel kell rendelkeznie a prémium szintű Azure AD P1-hez, hogy megfeleljen a licenc követelményeinek.
 >
 
-## <a name="constructing-the-body-of-a-membership-rule"></a>Tagsági szabály törzsének összeállítása
+## <a name="rule-builder-in-the-azure-portal"></a>Szabálykészlet a Azure Portalban
 
-Olyan tagsági szabály, amely automatikusan feltölt egy csoportot a felhasználók vagy az eszközök számára egy bináris kifejezés, amely igaz vagy hamis eredményt eredményez. Egy egyszerű szabály három része:
+Az Azure AD egy olyan szabályt biztosít, amellyel gyorsabban hozhat létre és frissíthet fontos szabályokat. A szabály-szerkesztő legfeljebb öt kifejezést támogat. A szabály-szerkesztő megkönnyíti néhány egyszerű kifejezéssel rendelkező szabály kiépítését, azonban nem használható minden szabály újbóli létrehozásához. Ha a szabály-szerkesztő nem támogatja a létrehozni kívánt szabályt, használhatja a szövegmezőt.
 
-* Tulajdonság
-* Operator
-* Value
+Íme néhány példa a speciális szabályokra vagy szintaxisra, amelyekhez ajánlott a következő szövegmezővel létrehozni:
 
-Egy kifejezésen belüli részek sorrendje fontos a szintaktikai hibák elkerülése érdekében.
+- Szabály ötnél több kifejezéssel
+- A közvetlen jelentések szabálya
+- [Operátor prioritásának](groups-dynamic-membership.md#operator-precedence) beállítása
+- [Összetett kifejezésekkel rendelkező szabályok](groups-dynamic-membership.md#rules-with-complex-expressions); például:`(user.proxyAddresses -any (_ -contains "contoso"))`
 
-### <a name="rule-builder-in-the-azure-portal"></a>Szabálykészlet a Azure Portalban
+> [!NOTE]
+> Előfordulhat, hogy a szabály-szerkesztő nem tudja megjeleníteni a szövegmezőben létrehozott egyes szabályokat. Előfordulhat, hogy egy üzenet jelenik meg, ha a szabály-szerkesztő nem tudja megjeleníteni a szabályt. A szabály-szerkesztő semmilyen módon nem módosítja a dinamikus csoport szabályainak támogatott szintaxisát, érvényesítését vagy feldolgozását.
 
-Az Azure AD egy olyan szabályt biztosít, amellyel gyorsabban hozhat létre és frissíthet fontos szabályokat. A szabály-szerkesztő legfeljebb öt szabályt támogat. Hatodik és bármely további szabály feltételének hozzáadásához a szövegmezőt kell használnia. További részletes útmutatásért lásd: [dinamikus csoport frissítése](groups-update-rule.md).
+További részletes útmutatásért lásd: [dinamikus csoport frissítése](groups-update-rule.md).
 
-   ![Tagsági szabály hozzáadása dinamikus csoporthoz](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Tagsági szabály hozzáadása dinamikus csoporthoz](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-### <a name="rules-with-a-single-expression"></a>Egyetlen kifejezéssel rendelkező szabályok
+### <a name="rule-syntax-for-a-single-expression"></a>Egyetlen kifejezés szabályának szintaxisa
 
 Egyetlen kifejezés a tagsági szabály legegyszerűbb formája, és csak a fent említett három részből áll. Az egyetlen kifejezéssel rendelkező szabály a következőhöz hasonlóan néz `Property Operator Value`ki:, ahol a tulajdonság szintaxisa a Object. Property neve.
 
@@ -62,13 +64,23 @@ user.department -eq "Sales"
 
 A zárójelek egyetlen kifejezés esetében nem kötelezőek. A tagsági szabály törzsének teljes hossza nem haladhatja meg a 2048 karaktert.
 
+# <a name="constructing-the-body-of-a-membership-rule"></a>Tagsági szabály törzsének összeállítása
+
+Olyan tagsági szabály, amely automatikusan feltölt egy csoportot a felhasználók vagy az eszközök számára egy bináris kifejezés, amely igaz vagy hamis eredményt eredményez. Egy egyszerű szabály három része:
+
+- Tulajdonság
+- Operator
+- Value
+
+Egy kifejezésen belüli részek sorrendje fontos a szintaktikai hibák elkerülése érdekében.
+
 ## <a name="supported-properties"></a>Támogatott tulajdonságok
 
 A tagsági szabályok létrehozásához háromféle tulajdonságot lehet használni.
 
-* Logikai
-* Sztring
-* Karakterlánc-gyűjtemény
+- Logikai
+- Sztring
+- Karakterlánc-gyűjtemény
 
 A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés létrehozásához.
 
@@ -119,7 +131,7 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 
 Az eszköz szabályaihoz használt tulajdonságokért lásd: [eszközök szabályai](#rules-for-devices).
 
-## <a name="supported-operators"></a>Támogatott operátorok
+## <a name="supported-expression-operators"></a>Támogatott kifejezések operátorai
 
 A következő táblázat felsorolja az összes támogatott operátort és azok szintaxisát egyetlen kifejezéshez. A operátorok kötőjel (-) előtaggal vagy anélkül is használhatók.
 
@@ -297,10 +309,10 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 
 A következő tippek segíthetnek a szabály megfelelő használatához.
 
-* A **kezelő azonosítója** a felettes objektumazonosító. A kezelő **profiljában**található.
-* A szabály működéséhez győződjön meg arról, hogy a **kezelő** tulajdonság helyesen van beállítva a bérlő felhasználói számára. A felhasználó profiljában megtekintheti az aktuális értéket.
-* Ez a szabály csak a felettes közvetlen jelentéseit támogatja. Más szóval nem hozhat létre csoportot a felettes közvetlen jelentéseivel *és* jelentéseivel.
-* Ez a szabály nem kombinálható más tagsági szabályokkal.
+- A **kezelő azonosítója** a felettes objektumazonosító. A kezelő **profiljában**található.
+- A szabály működéséhez győződjön meg arról, hogy a **kezelő** tulajdonság helyesen van beállítva a bérlő felhasználói számára. A felhasználó profiljában megtekintheti az aktuális értéket.
+- Ez a szabály csak a felettes közvetlen jelentéseit támogatja. Más szóval nem hozhat létre csoportot a felettes közvetlen jelentéseivel *és* jelentéseivel.
+- Ez a szabály nem kombinálható más tagsági szabályokkal.
 
 ### <a name="create-an-all-users-rule"></a>"Minden felhasználó" szabály létrehozása
 
@@ -373,8 +385,8 @@ A következő eszköz-attribútumok használhatók.
 
 Ezek a cikkek további információkat nyújtanak Azure Active Directory csoportjairól.
 
-* [Meglévő csoportok megtekintése](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Új csoport létrehozása és tagok hozzáadása](../fundamentals/active-directory-groups-create-azure-portal.md)
-* [Csoportbeállítások kezelése](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Csoporttagságok kezelése](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [A csoportban lévő felhasználók dinamikus szabályainak kezelése](groups-create-rule.md)
+- [Meglévő csoportok megtekintése](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Új csoport létrehozása és tagok hozzáadása](../fundamentals/active-directory-groups-create-azure-portal.md)
+- [Csoportbeállítások kezelése](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [Csoporttagságok kezelése](../fundamentals/active-directory-groups-membership-azure-portal.md)
+- [A csoportban lévő felhasználók dinamikus szabályainak kezelése](groups-create-rule.md)

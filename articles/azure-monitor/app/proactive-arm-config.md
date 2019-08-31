@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights intelligens észlelési szabály beállításainak konfigurálása az Azure Resource Manager-sablonokkal |} A Microsoft Docs
-description: Felügyeleti és Azure Resource Manager-sablonok az Azure Application Insights intelligens detektálási szabályok konfigurálásának automatizálása
+title: Az Azure Application Insights intelligens észlelési szabály beállításainak konfigurálása Azure Resource Manager-sablonokkal | Microsoft Docs
+description: Az Azure Application Insights intelligens észlelési szabályok kezelésének és konfigurálásának automatizálása Azure Resource Manager-sablonokkal
 services: application-insights
 documentationcenter: ''
 author: harelbr
@@ -13,38 +13,38 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: 6bb89eec0b4905e101bed87d3d3fc617dec589e0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: e7a54c2e207a27f3519375df09d0c930a92d52d6
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477861"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193718"
 ---
-# <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használatával az Application Insights intelligens detektálási szabályok kezelése
+# <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Application Insights intelligens észlelési szabályok kezelése Azure Resource Manager-sablonok használatával
 
-Az Application Insights intelligens detektálási szabályok kezelhetők, és konfiguráltak [Azure Resource Manager-sablonok](../../azure-resource-manager/resource-group-authoring-templates.md).
-Ez a módszer használható, az Azure Resource Manager automation, illetve a meglévő erőforrások beállítások módosítása új Application Insights-erőforrások üzembe helyezésekor.
+A Application Insightsban található intelligens észlelési szabályok kezelhetők és konfigurálhatók [Azure Resource Manager sablonok](../../azure-resource-manager/resource-group-authoring-templates.md)használatával.
+Ez a módszer akkor használható, ha új Application Insights erőforrásokat telepít Azure Resource Manager automatizálással, vagy a meglévő erőforrások beállításainak módosítására.
 
-## <a name="smart-detection-rule-configuration"></a>Az intelligens észlelési szabály konfigurációja
+## <a name="smart-detection-rule-configuration"></a>Intelligens észlelési szabály konfigurációja
 
-A következő értékeket a intelligens detektálási szabályra konfigurálhatja:
+Az intelligens detektálási szabályokhoz a következő beállításokat konfigurálhatja:
 - Ha a szabály engedélyezve van (az alapértelmezett érték **igaz**.)
-- Ha e-maileket küldjön el az előfizetéshez társított felhasználók [Monitoring Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) és [közreműködő figyelése](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) szerepkörök, amikor egy észlelési talál (az alapértelmezett érték **igaz**.)
-- Bármilyen e-mail további címzettjei ki kell értesítést kaphat, ha egy észlelési található.
-    -  E-mail-konfiguráció nem érhető el, az intelligens detektálási szabályok megjelölve _előzetes_.
+- Ha az e-maileket el kell juttatni az előfizetés [figyelési olvasójának](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) felhasználóinak, illetve a közreműködői szerepkörök [figyelésére](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) , ha észlelés található (az alapértelmezett érték **igaz**.)
+- Minden további e-mail-címzett, akinek értesítést kell kapnia, amikor észlelés található.
+    -  Az e-mail-konfiguráció nem érhető el az _előzetes_verzióként megjelölt intelligens észlelési szabályokhoz.
 
-Ahhoz, hogy a szabály konfigurálása Azure Resource Manageren keresztül, az intelligens észlelési szabály konfigurációja már elérhető az Application Insights-erőforrást, nevű belül belső erőforrásként **ProactiveDetectionConfigs**.
-Maximális rugalmassággal egyedi értesítési beállításokat minden intelligens detektálási szabályra is konfigurálhatók.
+Ha engedélyezni szeretné a szabályok beállításait a Azure Resource Manageron keresztül, az intelligens észlelési szabály konfigurációja mostantól belső erőforrásként is elérhető a **ProactiveDetectionConfigs**nevű Application Insights erőforráson belül.
+A maximális rugalmasság érdekében minden egyes intelligens észlelési szabályt egyedi értesítési beállításokkal lehet konfigurálni.
 
 ## 
 
 ## <a name="examples"></a>Példák
 
-Az alábbiakban néhány példát bemutató az Azure Resource Manager-sablonok használatával intelligens detektálási szabályok konfigurálásához.
-Az összes minta tekintse meg az Application Insights-erőforrás nevű _"myApplication"_ , és az "hosszú függőségi időtartam intelligens detektálási szabályra", amely belsőleg nevű _"longdependencyduration"_ .
-Ellenőrizze, hogy cserélje le az Application Insights-erőforrás nevét, és adja meg a megfelelő intelligens észlelés a szabály belső nevét. Ellenőrizze a megfelelő belső Azure Resource Manager nevét az egyes intelligens detektálási szabályok listáját az alábbi táblázatot.
+Az alábbiakban néhány példát láthat arra, hogyan konfigurálhatja az intelligens észlelési szabályok beállításait Azure Resource Manager-sablonok használatával.
+Az összes minta egy _"myApplication"_ nevű Application Insights erőforrásra, valamint a "hosszú függőségi időtartam intelligens észlelési szabályára" vonatkozik, amely belsőleg _"longdependencyduration"_ néven szerepel.
+Ügyeljen rá, hogy cserélje le a Application Insights erőforrás nevét, és adja meg a vonatkozó intelligens észlelési szabály belső nevét. Az egyes intelligens észlelési szabályokhoz tartozó belső Azure Resource Manager-nevek listáját az alábbi táblázatban találja.
 
-### <a name="disable-a-smart-detection-rule"></a>Intelligens detektálási szabályra letiltása
+### <a name="disable-a-smart-detection-rule"></a>Intelligens észlelési szabály letiltása
 
 ```json
 {
@@ -75,7 +75,7 @@ Ellenőrizze, hogy cserélje le az Application Insights-erőforrás nevét, és 
     }
 ```
 
-### <a name="disable-sending-email-notifications-for-a-smart-detection-rule"></a>Intelligens detektálási szabályra küldését e-mail-értesítések letiltása
+### <a name="disable-sending-email-notifications-for-a-smart-detection-rule"></a>E-mail-értesítések küldésének letiltása intelligens észlelési szabályhoz
 
 ```json
 {
@@ -106,7 +106,7 @@ Ellenőrizze, hogy cserélje le az Application Insights-erőforrás nevét, és 
     }
 ```
 
-### <a name="add-additional-email-recipients-for-a-smart-detection-rule"></a>Adjon hozzá egy intelligens detektálási szabályra e-mail további címzettjei
+### <a name="add-additional-email-recipients-for-a-smart-detection-rule"></a>További e-mail-címzettek hozzáadása intelligens észlelési szabályhoz
 
 ```json
 {
@@ -138,9 +138,9 @@ Ellenőrizze, hogy cserélje le az Application Insights-erőforrás nevét, és 
 
 ```
 
-### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Sikertelen rendellenességek v2 (nem klasszikus) végrehajtásának riasztási szabálya
+### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Hiba anomália v2 (nem klasszikus) riasztási szabály
 
-Az Azure Resource Manager-sablon azt mutatja be, rendellenes hibák v2 riasztási szabály konfigurálása egy 2 súlyosságát. Az új verzió a rendellenes hibák riasztási szabály része az új Azure-platform riasztások, és lecseréli a klasszikus verzióra, amely részeként kivezetjük a [klasszikus riasztások használatból való kivonást egyaránt folyamat](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+Ez a Azure Resource Manager-sablon azt mutatja be, hogy a hiba anomália v2 riasztási szabályt 2 értékkel. Az új Azure-riasztási platformnak ez a meghibásodási rendellenesség miatti riasztási szabálynak az új verziója, amely a klasszikus [riasztások nyugdíjazási folyamatának](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)részeként kivont klasszikus verziót váltja fel.
 
 ```json
 {
@@ -151,6 +151,7 @@ Az Azure Resource Manager-sablon azt mutatja be, rendellenes hibák v2 riasztás
             "type": "microsoft.alertsmanagement/smartdetectoralertrules",
             "apiVersion": "2019-03-01",
             "name": "Failure Anomalies - my-app",
+            "location": "global", 
             "properties": {
                   "description": "Detects a spike in the failure rate of requests or dependencies",
                   "state": "Enabled",
@@ -170,31 +171,31 @@ Az Azure Resource Manager-sablon azt mutatja be, rendellenes hibák v2 riasztás
 ```
 
 > [!NOTE]
-> Az Azure Resource Manager-sablon a rendellenes hibák v2 riasztási szabály az egyedi, és eltér a hagyományos intelligens detektálási szabályok a cikkben ismertetett.   
+> Ez a Azure Resource Manager sablon egyedi a hiba anomália v2 riasztási szabályhoz, és eltér a jelen cikkben ismertetett klasszikus intelligens észlelési szabályoktól.   
 
-## <a name="smart-detection-rule-names"></a>Intelligens detektálási szabályok neve
+## <a name="smart-detection-rule-names"></a>Intelligens észlelési szabályok nevei
 
-Alább az intelligens detektálási szabályok nevének táblázatát, mivel azok megjelennek a portálon, és azok belső nevekkel, amelyek az Azure Resource Manager-sablonban használandó.
+Az alábbi táblázat az intelligens észlelési szabályok neveit mutatja, ahogy azok a portálon jelennek meg, a belső nevükkel együtt, amelyeket a Azure Resource Manager sablonban kell használni.
 
 > [!NOTE]
-> Intelligens detektálási szabályok megjelölve _előzetes_ nem támogatják az e-mail-értesítéseket. Ezért csak akkor állíthat a _engedélyezve_ ezek a szabályok tulajdonsága. 
+> Az előzetesként megjelölt intelligens észlelési szabályok nem támogatják az e-mailes értesítéseket. Ezért csak a szabályok _engedélyezve_ tulajdonságát állíthatja be. 
 
-| Az Azure portal szabály neve | A belső név
+| Azure Portal szabály neve | A belső név
 |:---|:---|
 | Lassú lapbetöltés | slowpageloadtime |
-| Lassú kiszolgálói válaszidő | slowserverresponsetime |
+| Lassú kiszolgálói válasz | slowserverresponsetime |
 | Hosszú függőségi időtartam | longdependencyduration |
-| Kiszolgálói válaszidő romlása | degradationinserverresponsetime |
-| A függőségi időtartam teljesítménycsökkenése | degradationindependencyduration |
-| Csökkenés a következőben nyomkövetési súlyossági arány (előzetes verzió) | extension_traceseveritydetector |
-| Rendellenes növekedése a kivételek mennyiségének (előzetes verzió) | extension_exceptionchangeextension |
-| Potenciális memóriavesztést észlelt (előzetes verzió) | extension_memoryleakextension |
-| Potenciális biztonsági problémát észlelt (előzetes verzió) | extension_securityextensionspackage |
-| Rendellenes növekedése a napi adatmennyiség (előzetes verzió) | extension_billingdatavolumedailyspikeextension |
+| Kiszolgáló válaszidejének romlása | degradationinserverresponsetime |
+| Függőségi időtartam csökkenése | degradationindependencyduration |
+| A nyomkövetés súlyossági arányának csökkenése (előzetes verzió) | extension_traceseveritydetector |
+| Rendellenes növekedés a kivétel mennyisége (előzetes verzió) | extension_exceptionchangeextension |
+| Potenciális memóriavesztés észlelhető (előzetes verzió) | extension_memoryleakextension |
+| Lehetséges biztonsági probléma észlelhető (előzetes verzió) | extension_securityextensionspackage |
+| A napi adatmennyiség rendellenes növekedése (előzetes verzió) | extension_billingdatavolumedailyspikeextension |
 
 ## <a name="next-steps"></a>További lépések
 
-További információk automatikus észlelése:
+További információ az automatikus észlelésről:
 
 - [Hiba-anomáliák](../../azure-monitor/app/proactive-failure-diagnostics.md)
 - [Memóriavesztés](../../azure-monitor/app/proactive-potential-memory-leak.md)

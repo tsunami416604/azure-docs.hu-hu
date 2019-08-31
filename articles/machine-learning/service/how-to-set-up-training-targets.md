@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1ee18abfab2cf286ee010bd6d25dfbc5a38cebb
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: c9bc9d64d7f21498acd5cb0c23447e7ff77de629
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011563"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195573"
 ---
-# <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak 
+# <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modell betanításához 
 
 A Azure Machine Learning szolgáltatással különféle erőforrásokon és környezeteken is elvégezheti a modell betanítását, amelyet együttesen [__számítási céloknak__](concept-azure-machine-learning-architecture.md#compute-targets)is nevezünk. A számítási cél lehet egy helyi gép vagy egy felhőalapú erőforrás, például egy Azure Machine Learning számítási, Azure-HDInsight vagy egy távoli virtuális gép.  Emellett számítási célokat is létrehozhat a modell telepítéséhez a ["hol és hogyan kell üzembe helyezni a modelleket"](how-to-deploy-and-where.md)című cikkben leírtak szerint.
 
@@ -47,33 +47,9 @@ Azure Machine Learning szolgáltatás különböző számítási célokban elté
 
 A betanítás során gyakori, hogy a helyi számítógépen indul el, és később a betanítási szkriptet más számítási célra futtatja. A Azure Machine Learning szolgáltatással különböző számítási célokból futtathat parancsfájlokat anélkül, hogy módosítani kellene a parancsfájlt. 
 
-Mindössze annyit kell tennie, hogy a futtatási konfigurációval határozza meg az egyesszámítási célkitűzések környezetét.  Ha ezt követően egy másik számítási célra szeretné futtatni a betanítási kísérletet, adja meg az adott számítás futtatási konfigurációját.
+Mindössze annyit kell tennie, hogy a futtatási konfiguráción belül minden számítási célesetében meghatározza a környezetet.  Ha ezt követően egy másik számítási célra szeretné futtatni a betanítási kísérletet, adja meg az adott számítás futtatási konfigurációját. A környezet megadásának és a konfiguráció futtatásához való kötésének részleteiért lásd: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md)
 
 További információ a [kísérletek](#submit) elküldéséről a cikk végén.
-
-### <a name="manage-environment-and-dependencies"></a>A környezet és a függőségek kezelése
-
-A futtatási konfiguráció létrehozásakor el kell döntenie, hogyan kezelje a környezetet és a függőségeket a számítási célra. 
-
-#### <a name="system-managed-environment"></a>A rendszer által felügyelt környezetben
-
-Ha azt szeretné, hogy a [Conda](https://conda.io/docs/) kezelje a Python-környezetet és a parancsfájlok függőségeit, használja a rendszer által felügyelt környezetet. A rendszer által felügyelt környezetek alapértelmezés szerint és a leggyakoribb választás szerint vannak feltételezve. A távoli számítási célok esetében hasznos, különösen akkor, ha a cél nem konfigurálható. 
-
-Mindössze annyit kell tennie, hogy minden csomag-függőséget a [CondaDependency osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) használatával határoz meg, majd a Conda létrehoz egy **conda_dependencies. YML** nevű fájlt a munkaterület **aml_config** könyvtárában a csomagok függőségeinek listájával és a betanítási kísérlet elküldésekor beállítja a Python-környezetet. 
-
-Egy új környezet kezdeti beállítása több percet is igénybe vehet, a szükséges függőségek méretétől függően. Amíg a csomagok listája változatlan marad, a beállítási idő csak egyszer fordul elő.
-  
-A következő kód példát mutat be egy olyan rendszerfelügyelt környezetre, amely a scikit-Learn műveletet igényli:
-    
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_system_managed)]
-
-#### <a name="user-managed-environment"></a>Felhasználó által felügyelt környezetben
-
-A felhasználó által felügyelt környezetek esetében Ön felelős a környezet beállításában és minden csomag telepítéséhez, amelyet a képzési szkriptnek szüksége van a számítási célra. Ha a képzési környezet már konfigurálva van (például a helyi gépen), kihagyhatja a telepítési lépést a True értékre `user_managed_dependencies` állításával. A Conda nem fogja megtekinteni a környezetet, vagy semmit sem telepít Önnek.
-
-Az alábbi kód egy, a felhasználó által felügyelt környezethez tartozó képzési futtatások konfigurálására mutat példát:
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
 
 ## <a name="whats-an-estimator"></a>Mi az a kalkulátor?
 
@@ -390,7 +366,7 @@ További információ: erőforrás- [kezelés](reference-azure-machine-learning-
 
 A Azure Machine Learning szolgáltatáshoz tartozó [vs Code-bővítmény](how-to-vscode-tools.md#create-and-manage-compute-targets) használatával elérheti, létrehozhatja és kezelheti a munkaterülethez társított számítási célokat.
 
-## <a id="submit"></a>Betanítási Futtatás beküldése
+## <a id="submit"></a>Betanítási Futtatás beküldése a Azure Machine Learning SDK-val
 
 Miután létrehozta a futtatási konfigurációt, a használatával futtathatja a kísérletet.  A betanítási futtatást elküldő kód mintája megegyezik a számítási célok összes típusával:
 
@@ -430,8 +406,70 @@ Ugyanezt a kísérletet másik számítási célra is futtathatja, ha más futta
 Vagy a következőket teheti:
 
 * A kísérletet egy `Estimator` olyan objektummal küldje el, amely az [ml modellek becslések-vel való](how-to-train-ml-models.md)betanítását mutatja.
-* Kísérlet küldése [a CLI bővítmény használatával](reference-azure-machine-learning-cli.md#experiments).
+* HyperDrive-Futtatás küldése a [hiperparaméter finomhangolásához](how-to-tune-hyperparameters.md).
 * Kísérlet küldése a [vs Code bővítmény](how-to-vscode-tools.md#train-and-tune-models)használatával.
+
+## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Futtatási konfiguráció létrehozása és futtatásának elküldése Azure Machine Learning CLI használatával
+
+Használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t és a [Machine learning CLI](reference-azure-machine-learning-cli.md) -bővítményt a futtatási konfigurációk létrehozásához és a különböző számítási célokból való beküldéséhez. Az alábbi példák azt feltételezik, hogy van egy meglévő Azure Machine learning-munkaterület, és bejelentkezett az Azure `az login` -ba a CLI paranccsal. 
+
+### <a name="create-run-configuration"></a>Futtatási konfiguráció létrehozása
+
+A futtatási konfiguráció létrehozásának legegyszerűbb módja a Machine learning Python-szkripteket tartalmazó mappa navigálása, valamint a CLI-parancs használata
+
+```azurecli
+az ml folder attach
+```
+
+Ez a parancs létrehoz egy `.azureml` almappát, amely tartalmazza a sablon futtatására szolgáló konfigurációs fájlokat a különböző számítási célokhoz. Ezen fájlok másolásával és szerkesztésével testreszabhatja a konfigurációt, például a Python-csomagok hozzáadásához vagy a Docker-beállítások módosításához.  
+
+### <a name="create-an-experiment"></a>Kísérlet létrehozása
+
+Első lépésként hozzon létre egy kísérletet a futtatásokhoz
+
+```azurecli
+az ml experiment create -n <experiment>
+```
+
+### <a name="script-run"></a>Parancsfájl futtatása
+
+Parancsfájl futtatásának elküldéséhez hajtson végre egy parancsot.
+
+```azurecli
+az ml run submit-script -e <experiment> -c <runconfig> my_train.py
+```
+
+### <a name="hyperdrive-run"></a>HyperDrive futtatása
+
+A HyperDrive és az Azure CLI használatával is végrehajthatja a paraméterek hangolási futtatását. Először hozzon létre egy HyperDrive-konfigurációs fájlt a következő formátumban. A hiperparaméter hangolási paramétereinek részletes ismertetését lásd: [a modell Hiperparaméterek beállítása finomhangolása](how-to-tune-hyperparameters.md) .
+
+```yml
+# hdconfig.yml
+sampling: 
+    type: random # Supported options: Random, Grid, Bayesian
+    parameter_space: # specify a name|expression|values tuple for each parameter.
+    - name: --penalty # The name of a script parameter to generate values for.
+      expression: choice # supported options: choice, randint, uniform, quniform, loguniform, qloguniform, normal, qnormal, lognormal, qlognormal
+      values: [0.5, 1, 1.5] # The list of values, the number of values is dependent on the expression specified.
+policy: 
+    type: BanditPolicy # Supported options: BanditPolicy, MedianStoppingPolicy, TruncationSelectionPolicy, NoTerminationPolicy
+    evaluation_interval: 1 # Policy properties are policy specific. See the above link for policy specific parameter details.
+    slack_factor: 0.2
+primary_metric_name: Accuracy # The metric used when evaluating the policy
+primary_metric_goal: Maximize # Maximize|Minimize
+max_total_runs: 8 # The maximum number of runs to generate
+max_concurrent_runs: 2 # The number of runs that can run concurrently.
+max_duration_minutes: 100 # The maximum length of time to run the experiment before cancelling.
+```
+
+Adja hozzá ezt a fájlt a konfigurációs fájlok futtatása mellett. Ezután küldje el a HyperDrive futtatását a paranccsal:
+```azurecli
+az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
+```
+
+Jegyezze fel az argumentumok szakaszt a runconfig és a *paraméter* területen a HyperDrive konfigurációban. Ezek tartalmazzák a betanítási parancsfájlnak átadandó parancssori argumentumokat. A runconfig értéke minden iteráció esetében azonos marad, míg a HyperDrive config tartománya megismétli a tartományt. Ne ugyanazt az argumentumot válassza mindkét fájlban.
+
+A ```az ml``` CLI-parancsokkal és az argumentumok teljes készletével kapcsolatos további részletekért tekintse meg [a dokumentációt](reference-azure-machine-learning-cli.md).
 
 <a id="gitintegration"></a>
 

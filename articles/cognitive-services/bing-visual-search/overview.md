@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 03/27/2019
+ms.date: 08/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: 15abbfd8892464f3a2c21a85c07bc5b8e94e47ad
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 22a8bb2609439a82a825bf7f542709d46771ad92
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594703"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195218"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Mi az a Bing Visual Search API?
 
-A Bing Visual Search API egy rendszerkép elemzéseit adja vissza. Feltölthet egy képet, vagy megadhat egy URL-címet is. Az elemzések vizuálisan hasonló képek, vásárlási források, weblapok, amelyek tartalmazzák a képet, és így tovább. A Bing Visual Search API által visszaadott bepillantások hasonlóak a Bing.com/images-on láthatók számára.
+A Bing Visual Search API egy rendszerkép elemzéseit adja vissza. Feltölthet egy képet, vagy megadhat egy URL-címet is. Az elemzések vizuálisan hasonló képek, vásárlási források, weblapok, amelyek tartalmazzák a képet, és így tovább. A Bing Visual Search API által visszaadott bepillantások hasonlóak a Bing.com/images-on láthatók számára. 
 
 Ha a [Bing Image Search API](../bing-image-search/overview.md)használja, a rendszerkép feltöltése helyett az adott API keresési eredményeiből is betekintési jogkivonatokat használhat a Bing Visual Search.
 
@@ -38,6 +38,7 @@ A következő bepillantást a Bing Visual Search használatával derítheti fel:
 | Kapcsolódó keresések                     | A mások által készített vagy a rendszerkép tartalmán alapuló kapcsolódó keresések.            |
 | A rendszerképet tartalmazó weblapok     | A bemeneti képet tartalmazó weblapok.            |
 | Receptet                              | Azokat a weblapokat, amelyekkel az edény a bemeneti képen látható.            |
+| Entitások                             | Jól ismert személyek, helyek és dolgok. |
 
 Az elemzések mellett Bing Visual Search a bemeneti képből származtatott különböző kifejezéseket (azaz címkéket) adja vissza. A címkék lehetővé teszik a felhasználók számára a rendszerképben található fogalmak megismerését. Ha például a bemeneti rendszerkép egy híres sportoló, akkor az egyik címke lehet a sportoló neve, egy másik címke is lehet sport. Vagy ha a bemeneti rendszerkép egy Apple Pie, a címkék Apple Pie, piték és desszertek lehetnek.
 

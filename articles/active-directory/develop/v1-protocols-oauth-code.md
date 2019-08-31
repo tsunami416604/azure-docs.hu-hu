@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 611947c8c1d202cf4abf4222dfe0072aced58507
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 81b1f06238b8205e72fd989bb581fba39423f7c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135725"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193234"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Hozzáférés engedélyezése Azure Active Directory webes alkalmazásokhoz az OAuth 2.0 kódengedélyezési folyamat használatával
 
@@ -179,7 +179,7 @@ A sikeres válasz így néz ki:
 
 | Paraméter | Leírás |
 | --- | --- |
-| access_token |A kért [hozzáférési jogkivonat](access-tokens.md) aláírt JSON web token (JWT). Az alkalmazás használhatja ezt a tokent a biztonságos erőforráshoz, például egy webes API-hoz való hitelesítéshez. |
+| access_token |A kért hozzáférési jogkivonat.  Ez egy átlátszatlan karakterlánc – attól függ, hogy mit vár az erőforrás, és nem az ügyfél számára ajánlott. Az alkalmazás használhatja ezt a tokent a biztonságos erőforráshoz, például egy webes API-hoz való hitelesítéshez. |
 | token_type |Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a tulajdonos. A tulajdonosi jogkivonatokkal kapcsolatos további információkért lásd [: OAuth 2.0 engedélyezési keretrendszer: Tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |A hozzáférési jogkivonat érvényességi ideje (másodpercben). |
 | expires_on |A hozzáférési jogkivonat lejáratának időpontja. A dátum az 1970-01-01T0:0: 0Z UTC számú másodperc, a lejárati időpontig. Ez az érték a gyorsítótárazott tokenek élettartamának meghatározására szolgál. |
@@ -283,8 +283,6 @@ A hozzáférési jogkivonatok rövid életűek, és a lejáratuk után frissíte
 
 A frissítési tokenek nem rendelkeznek megadott élettartammal. A frissítési tokenek élettartama általában viszonylag hosszú. Bizonyos esetekben azonban a frissítési tokenek lejárnak, visszavonásra kerülnek, vagy hiányoznak a megfelelő jogosultságok a kívánt művelethez. Az alkalmazásnak megfelelően kell elvárnia és kezelnie a jogkivonat-kiállítási végpont által visszaadott hibákat.
 
-[!NOTE] A hozzáférési jogkivonat élettartama itt található: https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-configurable-token-lifetimes#configurable-token-lifetime-properties A hozzáférési jogkivonatok alapértelmezett értéke 1 óra, a frissítési tokenek alapértelmezett értéke pedig 90 nap. Ezek az élettartamok úgy módosíthatók, hogy ennek megfelelően konfigurálja a jogkivonat élettartamát. 
-
 Ha a frissítési jogkivonat hibája miatt választ kap, elveti az aktuális frissítési jogkivonatot, és új engedélyezési kódot vagy hozzáférési jogkivonatot kér. Különösen, ha frissítési tokent használ az engedélyezési kód megadásakor, ha a vagy `interaction_required` `invalid_grant` a hibakódot választ kap, elveti a frissítési tokent, és új engedélyezési kódot kér.
 
 Egy példa a bérlőre **jellemző** végpontra (a **közös** végpontot is használhatja) egy új hozzáférési jogkivonat lekéréséhez, amely a frissítési token használatával a következőképpen néz ki:
@@ -352,3 +350,6 @@ A példaként kapott hiba a következőhöz hasonló:
 | correlation_id |A kérelem egyedi azonosítója, amely segíthet az összetevők diagnosztizálásában. |
 
 A hibakódok és az ajánlott ügyfél-művelet leírását a jogkivonat- [végponti hibák hibakódja](#error-codes-for-token-endpoint-errors)című témakörben tekintheti meg.
+
+## <a name="next-steps"></a>További lépések
+További információ az Azure AD 1.0 végpontról, valamint a webes alkalmazások és webes API-k hitelesítésének és engedélyezésének módjáról: [példák](sample-v1-code.md)az alkalmazásokra.

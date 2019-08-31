@@ -1,49 +1,49 @@
 ---
-title: Az Azure Resource Manager sablonfüggvényei – összehasonlítás |} A Microsoft Docs
-description: A functions az Azure Resource Manager-sablon használatával értékek összehasonlítása ismerteti.
+title: Azure Resource Manager template functions – összehasonlítás | Microsoft Docs
+description: A Azure Resource Manager-sablonban az értékek összehasonlításához használandó függvényeket ismerteti.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 0eafadd4049baea58aa882b3421eaa6a684a3a38
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 05e51af62be974f925fefc46ad63c489f27fd163
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205502"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194828"
 ---
-# <a name="comparison-functions-for-azure-resource-manager-templates"></a>Összehasonlító függvények az Azure Resource Manager-sablonok
+# <a name="comparison-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok összehasonlító funkciói
 
-Resource Manager összehasonlítások végzett a sablonok számos funkciót biztosít.
+A Resource Manager számos funkciót biztosít a sablonokban való összehasonlításhoz.
 
-* [egyenlő](#equals)
+* [equals](#equals)
 * [greater](#greater)
 * [greaterOrEquals](#greaterorequals)
-* [less](#less)
+* [kisebb](#less)
 * [lessOrEquals](#lessorequals)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="equals"></a>egyenlő
+## <a name="equals"></a>equals
 `equals(arg1, arg2)`
 
-Ellenőrzi, hogy a két érték egyenlő egymással.
+Ellenőrzi, hogy két érték egyenlő-e egymással.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int, string, array vagy object |Az első érték egyenlő kereséséhez. |
-| arg2 |Igen |int, string, array vagy object |A második érték egyenlő kereséséhez. |
+| arg1 |Igen |int, string, array vagy object |Az egyenlőség keresésének első értéke. |
+| arg2 |Igen |int, string, array vagy object |A második érték az egyenlőség kereséséhez. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Értéket ad vissza **igaz** Ha az érték egyenlő; ellenkező esetben **hamis**.
+**Igaz** értéket ad vissza, ha az értékek egyenlőek; Ellenkező esetben **hamis**.
 
 ### <a name="remarks"></a>Megjegyzések
 
-A egyenlő függvény gyakran használják az a `condition` elem annak megállapítására, hogy egy erőforrás üzembe van helyezve.
+Az Equals függvényt gyakran használják az `condition` elemmel annak teszteléséhez, hogy van-e üzembe helyezett erőforrás.
 
 ```json
 {
@@ -62,7 +62,7 @@ A egyenlő függvény gyakran használják az a `condition` elem annak megállap
 
 ### <a name="example"></a>Példa
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/equals.json) ellenőrzi a különböző típusú érték azonosságát. Az alapértelmezett értékeket ad vissza IGAZ.
+Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/equals.json) különböző típusú értékeket keres az egyenlőséghez. Az összes alapértelmezett érték igaz értéket ad vissza.
 
 ```json
 {
@@ -127,12 +127,12 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| checkInts | Bool | True (Igaz) |
-| checkStrings | Bool | True (Igaz) |
-| checkArrays | Bool | True (Igaz) |
-| checkObjects | Bool | True (Igaz) |
+| checkInts | Bool | True |
+| checkStrings | Bool | True |
+| checkArrays | Bool | True |
+| checkObjects | Bool | True |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -146,7 +146,7 @@ Ez a PowerShell használatával például a sablon üzembe helyezéséhez haszn�
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json 
 ```
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) használ [nem](resource-group-template-functions-logical.md#not) a **egyenlő**.
+A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) a sablon [nem](resource-group-template-functions-logical.md#not) **egyenlő**.
 
 ```json
 {
@@ -163,11 +163,11 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-Az előző példából kimenete:
+Az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | True (Igaz) |
+| checkNotEquals | Bool | True |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -184,22 +184,22 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="greater"></a>nagyobb
 `greater(arg1, arg2)`
 
-Ellenőrzi, hogy az első érték nagyobb, mint a második érték.
+Ellenőrzi, hogy az első érték nagyobb-e, mint a második érték.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |egész szám vagy karakterlánc |Az első érték nagyobb összehasonlítására. |
-| arg2 |Igen |egész szám vagy karakterlánc |A második érték nagyobb összehasonlítására. |
+| arg1 |Igen |int vagy sztring |A nagyobb összehasonlítás első értéke. |
+| arg2 |Igen |int vagy sztring |A nagyobb összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Értéket ad vissza **igaz** Ha az első érték nagyobb, mint a második érték; ellenkező esetben **hamis**.
+**Igaz** értéket ad vissza, ha az első érték nagyobb, mint a második érték; Ellenkező esetben **hamis**.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greater.json) ellenőrzi, hogy az egyik érték nagyobb, mint a többi.
+Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greater.json) ellenőrzi, hogy az egyik érték nagyobb-e, mint a másik.
 
 ```json
 {
@@ -240,10 +240,10 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | checkInts | Bool | False (Hamis) |
-| checkStrings | Bool | True (Igaz) |
+| checkStrings | Bool | True |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -260,22 +260,22 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="greaterorequals"></a>greaterOrEquals
 `greaterOrEquals(arg1, arg2)`
 
-Ellenőrzi, hogy az első érték kisebb, mint a második érték egyenlő.
+Ellenőrzi, hogy az első érték nagyobb-e vagy egyenlő-e a második értékkel.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |egész szám vagy karakterlánc |Az első érték nagyobb vagy egyenlő összehasonlítására. |
-| arg2 |Igen |egész szám vagy karakterlánc |A második érték nagyobb vagy egyenlő összehasonlítására. |
+| arg1 |Igen |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás első értéke. |
+| arg2 |Igen |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Értéket ad vissza **igaz** Ha az első érték nagyobb vagy egyenlő a második érték; ellenkező esetben **hamis**.
+**Igaz** értéket ad vissza, ha az első érték nagyobb vagy egyenlő, mint a második érték; Ellenkező esetben **hamis**.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greaterorequals.json) ellenőrzi, hogy az egyik érték nagyobb vagy egyenlő a másikba.
+Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greaterorequals.json) ellenőrzi, hogy az egyik érték nagyobb-e vagy egyenlő-e a másikkal.
 
 ```json
 {
@@ -316,10 +316,10 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | checkInts | Bool | False (Hamis) |
-| checkStrings | Bool | True (Igaz) |
+| checkStrings | Bool | True |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -336,22 +336,22 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="less"></a>kevesebb
 `less(arg1, arg2)`
 
-Ellenőrzi, hogy van-e az első érték kisebb, mint a második érték.
+Ellenőrzi, hogy az első érték kisebb-e a második értéknél.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |egész szám vagy karakterlánc |Az első érték kisebb összehasonlítására. |
-| arg2 |Igen |egész szám vagy karakterlánc |A második érték kevesebb összehasonlítására. |
+| arg1 |Igen |int vagy sztring |A kevésbé hasonlítható összehasonlítás első értéke. |
+| arg2 |Igen |int vagy sztring |A kisebb összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Értéket ad vissza **igaz** Ha az első érték kisebb, mint a második érték; ellenkező esetben **hamis**.
+**Igaz** értéket ad vissza, ha az első érték kisebb, mint a második érték; Ellenkező esetben **hamis**.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/less.json) ellenőrzi, hogy az egyik érték kisebb, mint a többi.
+Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/less.json) ellenőrzi, hogy az egyik érték kisebb-e, mint a másik.
 
 ```json
 {
@@ -392,9 +392,9 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| checkInts | Bool | True (Igaz) |
+| checkInts | Bool | True |
 | checkStrings | Bool | False (Hamis) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
@@ -412,22 +412,22 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="lessorequals"></a>lessOrEquals
 `lessOrEquals(arg1, arg2)`
 
-Ellenőrzi, hogy az első érték kisebb vagy egyenlő a második érték.
+Ellenőrzi, hogy az első érték kisebb-e vagy egyenlő-e a második értékkel.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |egész szám vagy karakterlánc |Az első értékét a kisebb vagy egyenlő összehasonlítása. |
-| arg2 |Igen |egész szám vagy karakterlánc |A második értéke a kisebb vagy egyenlő összehasonlítása. |
+| arg1 |Igen |int vagy sztring |A kisebb vagy egyenlő összehasonlítás első értéke. |
+| arg2 |Igen |int vagy sztring |A kisebb vagy egyenlő összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Értéket ad vissza **igaz** Ha az első érték kisebb, mint vagy egyenlő a második érték; ellenkező esetben **hamis**.
+**Igaz** értéket ad vissza, ha az első érték kisebb vagy egyenlő, mint a második érték; Ellenkező esetben **hamis**.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/lessorequals.json) ellenőrzi, hogy a egy értéke kisebb vagy egyenlő a másikba.
+Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/lessorequals.json) ellenőrzi, hogy az egyik érték kisebb-e vagy egyenlő-e a másikkal.
 
 ```json
 {
@@ -468,9 +468,9 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| checkInts | Bool | True (Igaz) |
+| checkInts | Bool | True |
 | checkStrings | Bool | False (Hamis) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
@@ -489,5 +489,5 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * Több sablon egyesíteni, lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
 * A megadott számú alkalommal újrafuttathatja egy adott típusú erőforrás létrehozásakor, lásd: [több erőforráspéldány létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
-* Ellenőrizze, hogyan helyezheti üzembe a létrehozott sablont, tekintse meg a [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](resource-group-template-deploy.md).
+* A létrehozott sablon üzembe helyezésével kapcsolatban lásd: [alkalmazás központi telepítése Azure Resource Manager sablonnal](resource-group-template-deploy.md).
 

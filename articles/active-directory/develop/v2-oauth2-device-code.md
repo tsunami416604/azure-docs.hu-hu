@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 274c4e89ff3f996cc71cdacdfb7b5b72e813ae4b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: fdd99899494e9f7b3c0caa4e83f18803b969db1e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297663"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192715"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft Identity platform és a OAuth 2,0-es eszköz kódjának folyamata
 
@@ -35,7 +35,7 @@ A Microsoft Identity platform támogatja az [eszköz kódjainak](https://tools.i
 >
 > Az Azure AD-bérlőnek meghívott személyes fiókok képesek lesznek használni az eszköz flow-támogatását, de csak a bérlő kontextusában.
 >
-> További Megjegyzés: a `verification_uri_complete` válasz mező jelenleg nem szerepel vagy nem támogatott.  
+> További Megjegyzés: a `verification_uri_complete` válasz mező jelenleg nem szerepel vagy nem támogatott.  Ezt azért említjük, mert ha elolvasta a szabványost, akkor `verification_uri_complete` az eszköz Code flow standard választható részeként jelenik meg.
 
 > [!NOTE]
 > A Microsoft Identity platform végpontja nem támogatja az összes Azure Active Directory forgatókönyvet és funkciót. Annak megállapításához, hogy a Microsoft Identity platform-végpontot kell-e használni, olvassa el a [Microsoft Identity platform korlátozásait](active-directory-v2-limitations.md)ismertetőt.
@@ -44,7 +44,7 @@ A Microsoft Identity platform támogatja az [eszköz kódjainak](https://tools.i
 
 A teljes eszköz kódjának folyamata a következő diagramhoz hasonlóan néz ki. A cikk későbbi részében leírt lépéseket ismertetjük.
 
-![Eszköz kódjának folyamata](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
+![Eszközkód folyamata](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
 ## <a name="device-authorization-request"></a>Eszköz-engedélyezési kérelem
 
@@ -67,8 +67,8 @@ scope=user.read%20openid%20profile
 
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Szükséges |Az a címtár-bérlő, amelyre engedélyt szeretne kérni. Ez lehet a GUID vagy a felhasználóbarát név formátuma.  |
-| `client_id` | Szükséges | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
+| `tenant` | Kötelező |Az a címtár-bérlő, amelyre engedélyt szeretne kérni. Ez lehet a GUID vagy a felhasználóbarát név formátuma.  |
+| `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
 | `scope` | Ajánlott | Egy szóközzel tagolt lista, [](v2-permissions-and-consent.md) melyben a felhasználónak jóvá kell hagynia a hatókört.  |
 
 ### <a name="device-authorization-response"></a>Eszköz-engedélyezési válasz
@@ -99,11 +99,11 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 ```
 
-| Paraméter | Szükséges | Leírás|
+| Paraméter | Kötelező | Leírás|
 | -------- | -------- | ---------- |
-| `grant_type` | Szükséges | Kötelező`urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Szükséges | Meg kell egyeznie `client_id` a kezdeti kérelemben használt értékkel. |
-| `device_code`| Szükséges | A `device_code` visszaadott eszköz engedélyezési kérelme.  |
+| `grant_type` | Kötelező | Kötelező`urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | Kötelező | Meg kell egyeznie `client_id` a kezdeti kérelemben használt értékkel. |
+| `device_code`| Kötelező | A `device_code` visszaadott eszköz engedélyezési kérelme.  |
 
 ### <a name="expected-errors"></a>Várt hibák
 

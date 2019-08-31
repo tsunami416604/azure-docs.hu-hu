@@ -1,57 +1,57 @@
 ---
-title: Vállalati munkahelyi fiókok és a Partnerközpont
-description: Ellenőrizze, hogy a vállalat rendelkezik-e egy munkahelyi fiókot állítsa be a Microsoft, hozzon létre egy új munkahelyi fiókot, vagy állítsa be a munkahelyi fiókok használata a Partner Center módja.
-author: mattwojo
+title: Vállalati munkahelyi fiókok és partner központ
+description: Hogyan ellenőrizhető, hogy a vállalata rendelkezik-e a Microsofttal beállított munkahelyi fiókkal, hozzon létre egy új munkahelyi fiókot, vagy állítson be több munkahelyi fiókot a partner centerrel való használatra.
+author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: d9326cab6cb5ed4ca76c9a84654697f9f90bcfcd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 744b4e4975c5d4cec5c705e639e9cc8d252a7dd6
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619546"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194274"
 ---
-# <a name="company-work-accounts-and-partner-center"></a>Vállalati munkahelyi fiókok és a Partnerközpont
+# <a name="company-work-accounts-and-partner-center"></a>Vállalati munkahelyi fiókok és partner központ
 
-Partnerközpont vállalati munkahelyi fiókokat, más néven az Azure Active Directory (AD) bérlő, fiókhozzáférés egyszerre több felhasználó, szabályozhatja az engedélyeket, csoportok és alkalmazások felügyeletéhez és a profiladatok karbantartásához használja. A vállalati munkahelyi e-mail-fiók tartománya létrehozhatja, a Partnerközpont-fiókkal, a vállalat alkalmazottai jelentkezhetnek be a Partner Center marketplace-ajánlat a saját munkahelyi fiókok felhasználónevei és jelszavai használata kezelheti.
+A partner Center vállalati munkahelyi fiókokat, más néven Azure Active Directory (AD) bérlőket használ a fiókok hozzáférésének kezeléséhez több felhasználóhoz, a vezérlési engedélyekhez, a gazdagépekhez és az alkalmazásokhoz, valamint a profilok karbantartásához. Ha a vállalata munkahelyi e-mail-fiókjának tartományát összekapcsolja a partner Center-fiókkal, a vállalat alkalmazottai a saját munkahelyi fiókjának felhasználónevével és jelszavával felügyelhetik a piactéren a piactéren elérhető ajánlatokat.
 
-## <a name="check-whether-your-company-already-has-a-work-account"></a>Ellenőrizze, hogy a vállalat már rendelkezik munkahelyi fiókkal
+## <a name="check-whether-your-company-already-has-a-work-account"></a>Győződjön meg arról, hogy a vállalata már rendelkezik munkahelyi fiókkal
 
-Ha a vállalat előfizetett egy Microsoft felhőszolgáltatásra, például Azure, Microsoft Intune vagy Office 365-höz, akkor már rendelkezik egy munkahelyi e-mail fiók tartománya (más néven az Azure Active Directory-bérlő), amelyek együtt Partner Center.
+Ha vállalata előfizetett egy Microsoft Cloud Service-szolgáltatásra (például Azure, Microsoft Intune vagy Office 365), akkor már rendelkezik egy munkahelyi e-mail-fiókkal (más néven Azure Active Directory Bérlővel), amelyet a partner centerrel együtt használhat.
 
-Ellenőrizze az alábbi lépéseket követve:
-1. Jelentkezzen be az Azure felügyeleti portálon, a https://portal.azure.com.
-2. Válassza ki **Azure Active Directory** a bal oldali navigációs menüben, és válassza ki a **egyéni tartománynevek**.
-3. Ha már rendelkezik munkahelyi fiókkal, a tartománynév jelennek meg.
+A következő lépésekkel ellenőrizheti:
+1. Jelentkezzen be az Azure felügyeleti portálján a https://portal.azure.com következő címen:.
+2. Válassza a bal oldali navigációs menü **Azure Active Directory** elemét, majd válassza az **Egyéni tartománynevek**lehetőséget.
+3. Ha már rendelkezik munkahelyi fiókkal, a rendszer a tartománynevet fogja listázni.
 
-Ha a vállalat még nem rendelkezik munkahelyi fiókkal, egy létrejön az Ön számára a Partnerközpont regisztrációs folyamat során.
+Ha a vállalat még nem rendelkezik munkahelyi fiókkal, a rendszer létrehoz egy fiókot a partner Center regisztrációs folyamat során.
 
-## <a name="set-up-multiple-work-accounts"></a>Állítsa be a munkahelyi fiókok
+## <a name="set-up-multiple-work-accounts"></a>Több munkahelyi fiók beállítása
 
-Mielőtt egy meglévő munkahelyi fiók használata mellett dönt, fontolja meg, hány felhasználó a munkahelyi fiók Partnerközpont elérhetőnek kell. Ha a felhasználók a munkahelyi fiók Partnerközpont elérni kívánó nem rendelkezik, érdemes több munkahelyi fiókokat, célszerű lehet, hogy csak az adott felhasználók, akik Partnerközpont elérhetőnek kell szerepelnek az adott fiókban.
+Mielőtt megkezdené a munkahelyi fiók használatát, gondolja át, hogy a munkahelyi fiók hány felhasználójának kell hozzáférnie a partner központhoz. Ha a munkahelyi fiókban olyan felhasználók vannak, akik nem szeretnének hozzáférni a partner központhoz, érdemes lehet több munkahelyi fiókot létrehoznia, így csak azok a felhasználók jelennek meg, akik hozzáférhetnek a partner központhoz egy adott fiókon.
 
-## <a name="create-a-new-work-account"></a>Hozzon létre egy új munkahelyi fiókot
+## <a name="create-a-new-work-account"></a>Új munkahelyi fiók létrehozása
 
-Hozzon létre egy új munkahelyi fiókot a vállalat számára, kövesse az alábbi lépéseket. Segítségkérés a személy, aki rendszergazdai jogosultságokkal rendelkezik a vállalata a Microsoft Azure-fiók szükségessé.
+Ha új munkahelyi fiókot szeretne létrehozni a vállalat számára, kövesse az alábbi lépéseket. Előfordulhat, hogy segítségre van szüksége a vállalat Microsoft Azure fiókjához tartozó rendszergazdai engedélyekkel.
 
 1. Jelentkezzen be a [Microsoft Azure Portalra](https://portal.azure.com).
-2. A bal oldali navigációs menüben válassza ki a **Azure Active Directory** -> **felhasználók**.
-3. Válassza ki **új felhasználó** , és hozzon létre egy új Azure munkahelyi fiók és az e-mail-címét. Ügyeljen arra, hogy a **címtárbeli szerepkör** értékre van állítva **felhasználói** , és válassza ki a **jelszó megjelenítése** jelölőnégyzet alján megtekintheti, és jegyezze fel az automatikusan létrehozott jelszó.
-4. Válassza ki **létrehozás** menteni az új felhasználót.
+2. A bal oldali navigációs menüben válassza ki a **Azure Active Directory** -> **felhasználókat**.
+3. Válassza az **új felhasználó** lehetőséget, és hozzon létre egy új Azure Work-fiókot a név és az e-mail cím megadásával. Győződjön meg arról, hogy a **címtárbeli szerepkör** a **felhasználó** értékre van állítva, és a lenti **jelszó megjelenítése** jelölőnégyzet bejelölésével megtekintheti és megjelenítheti az automatikusan generált jelszót.
+4. Válassza a **Létrehozás** lehetőséget az új felhasználó mentéséhez.
 
-Az a felhasználói fiókhoz tartozó e-mail-cím egy ellenőrzött tartomány nevét, a címtárban kell lennie. Listázhatja az összes ellenőrzött tartomány a címtár kiválasztásával **Azure Active Directory** -> **egyéni tartománynevek** a bal oldali navigációs menüben.
+A felhasználói fiók e-mail-címének ellenőrzött tartománynévnek kell lennie a címtárban. A címtárban lévő összes ellenőrzött tartományt kilistázhatja a bal oldali navigációs menüben **Azure Active Directory** -> **Egyéni tartománynevek** lehetőség kiválasztásával.
 
-Az Azure Active Directoryban egyéni tartományok hozzáadásával kapcsolatos további tudnivalókért lásd: [hozzáadása vagy az Azure AD-tartomány társítása](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain).
+Az egyéni tartományok Azure Active Directoryban való hozzáadásával kapcsolatos további tudnivalókért lásd: [tartomány hozzáadása vagy hozzárendelése az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain).
 
-## <a name="troubleshoot-work-email-sign-in"></a>Munkahelyi e-mail-bejelentkezési hibaelhárítása
+## <a name="troubleshoot-work-email-sign-in"></a>Munkahelyi e-mailek bejelentkezésének hibakeresése
 
-Ha nem tud bejelentkezni a munkahelyi fiókjával (más néven az Azure AD-bérlő), keresse meg a forgatókönyvet a diagram alá, amely a legjobban megfelel az adott helyzethez, és kövesse a javasolt lépéseket.
+Ha nem sikerül bejelentkeznie a munkahelyi fiókjába (más néven az Azure AD-bérlőbe), keresse meg az alábbi ábrát, amely a legjobban megfelel a helyzetnek, és kövesse az ajánlott lépéseket.
 
-![Munkahelyi fiók bejelentkezési hibaelhárítási diagramja](./media/onboarding-aad-flow.png)
+![A munkahelyi fiók bejelentkezési hibaelhárításának ábrája](./media/onboarding-aad-flow.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [A Partner Center piactér kereskedelmi fiók kezelése](./manage-account.md) 
+- [A kereskedelmi piactér-fiók kezelése a partner Centerben](./manage-account.md) 

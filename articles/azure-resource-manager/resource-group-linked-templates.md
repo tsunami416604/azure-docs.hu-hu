@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: c79429d1a39e975c6bcc7fce191846a6205f9a86
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b48988c04f6b387a8124a812a836e2b92a9d3ada
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311706"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194380"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok, az Azure-erőforrások üzembe helyezésekor
 
@@ -479,6 +479,8 @@ done
 A hivatkozott sablonnak külsőleg elérhetőnek kell lennie, bár az általánosan elérhető a nyilvános nem szükséges. A sablon adhat hozzá egy privát storage-fiókot, amely csak a tárfiók tulajdonosa számára hozzáférhető. Ezután hozzon létre egy közös hozzáférésű jogosultságkód (SAS-) tokenekkel hozzáférés engedélyezése az üzembe helyezés során. A SAS-token hozzáadása az URI-t, a társított sablon. Annak ellenére, hogy a jogkivonat átadott biztonságos karakterláncként, URI-ját a hivatkozott sablonnak, többek között a SAS-jogkivonat kerül a központi telepítési műveleteket. Korlátozhatja a fenyegetéseknek, állítsa be a jogkivonat-lejárati idejét.
 
 A paraméterfájl is lehet korlátozni a hozzáférést keresztül SAS-token.
+
+Jelenleg nem lehet olyan sablonhoz csatolni, amely egy [Azure Storage-tűzfal](../storage/common/storage-network-security.md)mögött található Storage-fiókban van.
 
 Az alábbi példa bemutatja, hogyan adhatók át a SAS-token való egy sablont:
 

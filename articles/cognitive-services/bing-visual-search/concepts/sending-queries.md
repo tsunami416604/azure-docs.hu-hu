@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 7/01/2019
+ms.date: 08/30/2019
 ms.author: aahi
-ms.openlocfilehash: 6604e5d5b3b77955c9e5f78df5d2a5b804bf09ef
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e857401591d45048962e9f606973dbf59dfe99c8
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883578"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194315"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Keresési lekérdezések küldése a Bing Visual Search API
 
@@ -242,7 +242,7 @@ A `tags` mező egy megjelenítendő nevet és egy műveletlistát (megállapít�
 
 Az alapértelmezett információk listáját itt tekintheti meg: [default](../default-insights-tag.md)bepillantások címkéje.
 
-A többi címke más megállapításokat tartalmaz, amelyeket a felhasználó érdekesnek találhat. Például ha a kép szöveget tartalmaz, az egyik címke egy TextResults megállapítást tartalmazhat, benne a felismert szöveggel. Vagy ha a Bing felismeri egy entitást (azaz egy személyt, helyet vagy dolgot) a képen, akkor az egyik címke azonosítja az entitást. A Visual Search emellett egy, a bemeneti képből kinyert kifejezéskészletet (címkék) is visszaad. Ezek a címkék lehetővé teszik a felhasználók számára a rendszerképben található fogalmak megismerését. Például ha a bemeneti kép egy híres sportolót ábrázol, az egyik címke lehet a Sport, amely sporttal kapcsolatos képekre mutató hivatkozásokat tartalmaz.
+A többi címke más megállapításokat tartalmaz, amelyeket a felhasználó érdekesnek találhat. Például ha a kép szöveget tartalmaz, az egyik címke egy TextResults megállapítást tartalmazhat, benne a felismert szöveggel. Ha a Bing egy entitást (azaz kulturálisan ismert/népszerű személy, hely vagy dolog) ismer el a képen, akkor az egyik címke azonosítja az entitást. A Visual Search emellett egy, a bemeneti képből kinyert kifejezéskészletet (címkék) is visszaad. Ezek a címkék lehetővé teszik a felhasználók számára a rendszerképben található fogalmak megismerését. Például ha a bemeneti kép egy híres sportolót ábrázol, az egyik címke lehet a Sport, amely sporttal kapcsolatos képekre mutató hivatkozásokat tartalmaz.
 
 Minden címke tartalmaz egy megjelenítendő nevet, amelyet a megállapítás kategorizálására használhat, egy határoló keretet, amely azonosítja a megállapítás releváns tartományát, magukat a megállapításokat, valamint a kép miniatűrjét. Például ha a kép egy sportmezt viselő személyt ábrázol, az egyik címke egy határoló keretet tartalmazhat, amely körülhatárolja a mezt és VisualSearch-, valamint ProductVisualSearch-megállapításokat tartalmaz. Egy másik címke pedig egy ImageResults-megállapítást tartalmazhat, benne egy kapcsolódó témájú képeket lekérő /images/search API-kérelem URL-címével, vagy egy Bing.com keresési URL-címmel, amely átirányítja a felhasználót a Bing.com képkeresési eredményeihez.
 
@@ -368,7 +368,7 @@ A szövegfelismerés képes felismerni a névjegykártyákon található kapcsol
     }
 ```
 
-Ha a képen egy felismerhető entitás, például egy személy, hely vagy tárgy látható, a címkék egyike tartalmazhat egy Entity megállapítást.
+Ha a rendszerkép olyan felismert entitást tartalmaz, mint a kulturálisan ismert/népszerű személy, hely vagy dolog, akkor az egyik címke tartalmazhatja az entitások betekintését.
 
 ```json
     {

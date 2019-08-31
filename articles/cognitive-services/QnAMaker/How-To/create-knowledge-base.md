@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b2fb7496f16359f01ddbbe6db31b2d047a2ab4df
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 322a1d25ed434d8be674288b1b13d6ecf961590b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012809"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193561"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Gyors útmutató: Tudásbázis létrehozása a QnA Maker API Service Portal használatával
 
@@ -67,7 +67,7 @@ Ha elkészült a tudásbázissal, távolítsa el a QnA Maker portálon.
 
 ## <a name="next-steps"></a>További lépések
 
-A költségmegtakarítási mértékek esetében megoszthat néhányat, de nem minden QnA Makerhoz létrehozott Azure-erőforrást. [](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker)
+A költségmegtakarítási mértékek esetében megoszthat néhányat, de nem minden QnA Makerhoz létrehozott Azure-erőforrást. [](set-up-qnamaker-service-azure.md#share-existing-services-with-qna-maker)
 
 > [!div class="nextstepaction"]
-> [Csevegési chit személyes hozzáadása](./chit-chat-knowledge-base.md)
+> [Metaadatokkal kapcsolatos kérdések hozzáadása](../quickstarts/add-question-metadata-portal.md)

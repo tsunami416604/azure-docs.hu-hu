@@ -1,28 +1,23 @@
 ---
-title: Adatfelderítési és vizualizációs eszközök – Azure | Microsoft Docs
+title: Adatáttekintési és vizualizációs eszközök
+titleSuffix: Azure Data Science Virtual Machine
 description: Adatfelderítési és vizualizációs eszközök a Data Science Virtual Machinehoz.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: d60acdf483d418e458f51ef6cf31b17c43b7379f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 14c34a13440d50fcf42c2207f9933dc1de014a14
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065906"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191964"
 ---
-# <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Adatfelderítési és vizualizációs eszközök a Data Science Virtual Machine
+# <a name="data-exploration-and-visualization-tools-on-the-azure-data-science-virtual-machine"></a>Adatfelderítési és vizualizációs eszközök az Azure Data Science Virtual Machine
 
 Az adatelemzés során a legfontosabb az, hogy megértse az adatelemzést. A vizualizációk és az adatfeltárási eszközök segítenek felgyorsítani az adatmegismerést. A következő, a Data Science Virtual Machine (DSVM) szolgáltatásban elérhető eszközök megkönnyítik ezt a kulcsot.
 

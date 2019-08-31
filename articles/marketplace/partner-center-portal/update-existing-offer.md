@@ -1,103 +1,103 @@
 ---
-title: Egy létező kereskedelmi Marketplace-ajánlat frissítése
-description: Hogyan hajtsa végre az meglévő kereskedelmi Marketplace-ajánlat, többek között a Szerkesztés, a tervezet törlése, a közzétételi kérelem megszakítása frissítéseket, állítsa le az értékesítés, az ajánlat vagy a csomag, és a privát célközönséggel.
-author: mattwojo
+title: Meglévő kereskedelmi Piactéri ajánlat frissítése
+description: Meglévő kereskedelmi Piactéri ajánlat frissítése, beleértve a szerkesztést, a Piszkozat törlését, a közzétételi kérések megszakítását, az ajánlat vagy terv értékesítésének leállítását és a privát célközönségek szinkronizálását.
+author: ChJenk
 manager: evansma
-ms.author: mattwoj
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: f591df0fe93336da09e9c441292c97be09f25a2e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9cefdc9354560ac5b7f3789cde2408a4c255c186
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442094"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191764"
 ---
-# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>A kereskedelmi piactéren egy létező ajánlat frissítése
+# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Meglévő ajánlat frissítése a kereskedelmi piactéren
 
-Megtekintheti a meglévő ajánlatok a **áttekintése** lapján a [kereskedelmi piactér portálján](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) a Partner Center.
+A meglévő ajánlatokat a partner Center [kereskedelmi piactér portáljának](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) **Áttekintés** lapján tekintheti meg.
 
-Létező ajánlat, amely jelenleg az élő a Marketplace-en frissítése: 
+Meglévő, jelenleg a piactéren élő ajánlat frissítése: 
 
-1. Válassza ki a frissíteni kívánt ajánlat nevét. Az ajánlat állapota elérhetőként **élő**, **közzététel folyamatban**, **Draft**, **szükséges figyelmet**, vagy **nincs folyamatban a Marketplace-en értékesített** (Ha korábban már kiválasztotta leállítani az ajánlat értékesítése). Miután választott, a **ajánlat áttekintése** oldala nyílik meg, hogy az ajánlat.
-2. Válassza ki **frissítése** az Áttekintés kártya, vagy a menüelem a bal oldali navigációs sávjában, hogy frissíteni szeretné a területen. Érdemes lehet frissíteni a **kínálnak a telepítő**, **tulajdonságok**, **listaelem ajánlat**, **előzetes**, **technikai konfiguráció** , **Tervezése – áttekintés**, vagy **kipróbálása**. 
-3. Hajtsa végre a módosításokat, majd **mentése**. Ismételje meg ezt a folyamatot, amíg az összes módosítást végzett.
+1. Válassza ki a frissíteni kívánt ajánlat nevét. Az ajánlat állapota élőként, **Közzététel folyamatban**,piszkozatként, figyelemmel vagy **a piactéren való értékesítés nélkül** (ha korábban már kiválasztotta az ajánlat értékesítésének leállítását). A kiválasztást követően megnyílik az ajánlat **Áttekintés** lapja az ajánlathoz.
+2. Válassza a **frissítés** lehetőséget az áttekintő kártyáról vagy a bal oldali navigációs menüből a frissíteni kívánt területen. Előfordulhat, hogy frissíteni kívánja **az ajánlat telepítését**, a **tulajdonságokat**, az **ajánlatok listáját**, az **előzetes**verziót, a **technikai konfigurációt**, a **terv áttekintését**vagy a tesztelési **meghajtót**. 
+3. Végezze el a módosításokat, majd kattintson a **Mentés**gombra. Ismételje meg a folyamatot, amíg az összes módosítás be nem fejeződik.
 
-## <a name="review-and-publish-an-updated-offer"></a>Tekintse át és a egy frissített ajánlat közzététele
+## <a name="review-and-publish-an-updated-offer"></a>Frissített ajánlat áttekintése és közzététele
 
-Ha készen áll a frissített ajánlat közzététele, válassza ki a **közzététel** bármelyik lapról. A **tekintse át, és tegye közzé** oldal jelenik meg. Ezen a lapon a következő műveletek végezhetők el:
+Ha készen áll a frissített ajánlat közzétételére, válassza a **Közzététel** bármely oldalon lehetőséget. Ekkor megnyílik a **felülvizsgálati és közzétételi** oldal. Ezen az oldalon a következőket teheti:
 
 
-- Tekintse meg a befejezettség állapotát a frissített ajánlat szakaszokat: 
-    - **Közzé nem tett változások**: A szakasz frissítve lett, és befejeződött. Az összes szükséges adatok lettek megadva, és nem léptek fel hibák bevezetett frissítések.
-    - **Hiányos**: A szakasz végzett frissítések jelent meg a hibákat, ki kell javítani kell, vagy további információt adni igényel.
-- A minősítési tesztelés csapat győződjön meg arról, hogy zökkenőmentesen kerül tesztelése további információkkal szolgálnak.
-- Küldje el a frissített ajánlat közzététele kiválasztásával **küldés**.  E-mailben küldünk, amikor egy előzetes verzióhoz, a frissített ajánlat érhető el, hogy tekintse át és a sign-off.
+- Tekintse meg a frissített ajánlat fejezeteinek befejezési állapotát: 
+    - **Közzé nem tett módosítások**: A szakasz frissítve lett, és befejeződött. Minden szükséges információ meg lett adta, és a frissítésekben nem történt hiba.
+    - **Hiányos**: A szakasz frissítései rögzített hibákat észleltek, vagy további információkat kell megadni.
+- Adjon meg további információkat a minősítési teszt csapatának, hogy a tesztelés zökkenőmentes legyen.
+- Küldje el a frissített ajánlatot közzétételre a **Submit (Küldés**) lehetőség kiválasztásával.  E-mailben küldünk Önnek, ha a frissített ajánlat előzetes verziója elérhető az áttekintéshez és a kijelentkezéshez.
 
-**FONTOS**: Nézze át ajánlat előzetes verziójára, ha elérhető, és válassza ki **éles** a frissített ajánlat közzétételéhez a célközönség (nyilvános vagy privát).
+**FONTOS**: Tekintse át az ajánlat előzetes verzióját, miután elérhetővé vált, és válassza a **Go-Live** lehetőséget a frissített ajánlat közzétételéhez a célközönség (nyilvános vagy magánjellegű) számára.
 
-## <a name="update-a-plan-within-an-existing-offer"></a>A csomag belül egy létező ajánlat frissítése
+## <a name="update-a-plan-within-an-existing-offer"></a>Csomag frissítése egy meglévő ajánlaton belül
 
-Módosíthatja egy meglévő ajánlat, amely a korábban közzétett egy csomagban:
+Ha módosítani kíván egy csomagot egy meglévő, már közzétett ajánlaton belül:
 
-- Az a **ajánlat áttekintése** oldalt a meglévő ajánlat, válassza ki a módosítani kívánt csomagot. Ha a csomag nem érhető el a **csomag áttekintése** listáról válassza ki **csomagokról lásd**.
-- Válassza ki a csomagot választhat **neve**, **díjszabási modell**, vagy **rendelkezésre állási**. *Csomagok jelenleg csak angol (Egyesült Államok) nyelven érhető el*.
-- Válassza ki **mentése** a csomag neve, leírása, díjszabás, vagy célközönség rendelkezésre állási szükséges módosítása után. 
-- Válassza ki **közzététel** után készen áll a frissítések közzétételéhez. A **[tekintse át, és tegye közzé](#review-and-publish-an-updated-offer)** lap megnyitja, és adja meg a frissítések egy befejezési állapotot. 
+- Ha az **ajánlat áttekintése** oldalon meg van nyitva a meglévő ajánlat, válassza ki a módosítani kívánt csomagot. Ha a csomag nem érhető el a **csomag áttekintése** listából, válassza a **minden csomag**megjelenítése lehetőséget.
+- Kiválaszthatja a csomag **nevét**, a **díjszabási modellt**vagy a **rendelkezésre állást**. *Jelenleg a csomagok csak angol nyelven (Egyesült Államok) érhetők el*.
+- Válassza a **Mentés** lehetőséget a csomag nevének, leírásának, díjszabásának vagy célközönségének elérhetővé tételéhez szükséges módosítások elvégzése után. 
+- Ha készen áll a frissítések közzétételére, válassza a **Közzététel** lehetőséget. Ekkor megnyílik a **[felülvizsgálati és közzétételi](#review-and-publish-an-updated-offer)** oldal, és megadhatja a frissítések befejezési állapotát. 
 
-## <a name="delete-a-draft-offer"></a>A draft ajánlat törlése
+## <a name="delete-a-draft-offer"></a>Draft-ajánlat törlése
 
-A draft-ajánlat (egyet, amely nincs közzétéve) kiválasztásával törölheti **törölni a tervezet** származó a **ajánlat áttekintése** lap. Ez a beállítás nem lesz elérhető, akkor, ha korábban már közzétette az ajánlat.
+Törölheti a piszkozatot (az egyiket, amelyet még nem tettek közzé) az **ajánlat áttekintése** lapon lévő **Piszkozat törlése** lehetőség kiválasztásával. Ez a lehetőség nem érhető el, ha korábban már közzétette az ajánlatot.
 
-Miután megerősítette, hogy szeretné-e törölni a tervezet-ajánlat, az ajánlat már nem látható vagy érhető el a Partner Center és a **összes kínál** oldal jelenik meg.
+Miután megerősítette, hogy törölni kívánja a draft ajánlatot, az ajánlat többé nem lesz látható vagy nem érhető el a partner Centerben, és megnyílik a **minden ajánlat** oldal.
 
-## <a name="delete-a-draft-plan"></a>A draft-csomag törlése
+## <a name="delete-a-draft-plan"></a>Draft csomag törlése
 
-Nincs közzétéve csomagot törléséhez válassza ki **törölni a tervezet** származó a **csomag áttekintése** lap. Ez a beállítás nem lesz elérhető, ha korábban már közzétette az ajánlat.
+A még nem közzétett csomag törléséhez válassza a **terv – áttekintés** lap **Piszkozat törlése** elemét. Ha korábban már közzétette az ajánlatot, ez a beállítás nem lesz elérhető.
 
-Miután megerősítette, hogy szeretné-e törölni a tervezet-díjcsomagot, a csomag már nem látható vagy érhető el a Partner Center.
+Miután megerősítette, hogy törölni kívánja a terv tervezetét, a terv többé nem lesz látható vagy nem érhető el a partner Centerben.
 
-## <a name="cancel-publishing"></a>Közzététel visszavonása
+## <a name="cancel-publishing"></a>Közzététel megszakítása
 
-Az ajánlat megszakítja a **közzététel folyamatban** állapota:
+Ajánlat megszakítása a **Közzététel folyamatban** állapotában:
 
-- Az ajánlat nevének kiválasztásával nyissa meg a **ajánlat áttekintése** lapot. 
-- Válassza ki **Mégse közzététele** az oldal jobb felső sarokban.
-- Győződjön meg arról, hogy szeretné-e leállítani az ajánlat közzétételét. 
+- Válassza ki az ajánlat nevét az **ajánlat** áttekintő oldalának megnyitásához. 
+- Válassza a **Közzététel megszakítása** elemet a lap jobb felső sarkában.
+- Erősítse meg, hogy le kívánja állítani az ajánlat közzétételét. 
 
-Ha közzé szeretné tenni az ajánlatot egy későbbi időpontban, szüksége lesz a közzétételi folyamat kezdje újra a folyamatot.
+Ha egy későbbi időpontban szeretné közzétenni az ajánlatot, el kell indítania a közzétételi folyamatot.
 
 > [!NOTE]
-> Csak akkor, ha az ajánlat nem még haladt előre a sign-off lépést közzétevő közzétételét egy ajánlatot is leállíthatja. Kiválasztása után **élesben** megszakítja a beállítás nem fog többé közzététele.
+> Az ajánlatot csak akkor állíthatja le, ha az ajánlat még nem haladt előre a közzétevő kijelentkezési lépésén. A **Go Live** lehetőség kiválasztása után többé nem lehet megszakítani a közzétételt.
 
-## <a name="stop-selling-an-offer-or-plan"></a>Állítsa le az ajánlat vagy a csomag értékesítése
+## <a name="stop-selling-an-offer-or-plan"></a>Ajánlat vagy csomag értékesítésének leállítása
 
-Ajánlat értékesítése után a korábban közzétett leállításához válassza ki **értékesítése leállítása** származó a **ajánlat áttekintése** lap. Csomag értékesítése leállításához válassza ki **értékesítése leállítása** származó a **csomag áttekintése** lap. (Megszüntetheti a csomag értékesítési csak akkor használható, ha legfeljebb egy tervet az ajánlatot. Ha szeretné, állítsa le a csomag értékesítése belül az ajánlat egyéb csomagok befolyásolása nélkül.)
+Ha le szeretné állítani egy ajánlat értékesítését, miután közzétette azt, válassza az **értékesítés leállítása** az **ajánlat áttekintése** oldalról lehetőséget. A csomag értékesítésének leállításához válassza az **értékesítés leállítása** lehetőséget a **csomag áttekintése** lapon. (A csomag értékesítésének leállítására szolgáló lehetőség csak akkor érhető el, ha az ajánlat több csomaggal rendelkezik. Dönthet úgy is, hogy leállítja az egyik csomag értékesítését anélkül, hogy az ajánlaton belüli egyéb csomagokat befolyásolná.)
 
-Ön kijelenti, hogy szeretné-e az ajánlat vagy a csomag értékesítése leállítása, ha néhány órán belül már nem lesz látható a Marketplace-en, és új ügyfelek nem töltheti le. 
+Miután megerősítette, hogy az ajánlat vagy a csomag értékesítését szeretné leállítani, néhány órán belül többé nem lesz látható a piactéren, és az új ügyfelek nem tölthetik le. 
 
-Bármely, akik korábban beszerzett az ajánlat vagy a csomag továbbra is használhatja azt. Újból letöltheti, de nem kap frissítéseket, ha frissíti és újból közzéteszi az ajánlatot vagy egy későbbi időpontban megtervezése. 
+Azok az ügyfelek, akik korábban megszerezték az ajánlatot vagy a tervet, továbbra is használhatják. Újra le tudják tölteni, de nem kapják meg a frissítéseket, ha később frissíti, majd újból közzéteszi az ajánlatot vagy megtervezi. 
 
-Az ajánlat/csomag értékesítése a kérelem befejezése után továbbra is látni fogja, a kereskedelmi Marketplace portálon, a Partner Center. A draft törléséhez válassza ki **törölni a tervezet** vagy a **ajánlat áttekintése** vagy **tervezése – áttekintés** lapot. 
+Miután az ajánlat/csomag értékesítésének leállítására irányuló kérése befejeződött, a partner Center kereskedelmi piactér portálján továbbra is megjelenik. A Piszkozat törléséhez válassza a **Piszkozat törlése** lehetőséget az **ajánlat áttekintése** vagy a **terv áttekintése** lapon. 
 
-Ha úgy dönt, hogy a listában, vagy értékesíteni ezt az ajánlatot, vagy újra megtervezése, kövesse az utasításokat [egy létező ajánlat frissítése](#update-an-existing-offer-in-the-commercial-marketplace). Ne feledje, hogy kell **közzététele** az ajánlat vagy a csomag módosítása után újra.
+Ha úgy dönt, hogy kilistázza vagy eladja ezt az ajánlatot vagy megtervezi, kövesse az utasításokat [egy meglévő ajánlat frissítéséhez](#update-an-existing-offer-in-the-commercial-marketplace). Ne feledje, hogy a módosítások elvégzése után újra **közzé** kell tennie az ajánlatot, vagy újra kell terveznie azt.
 
-## <a name="remove-offers-from-existing-customers"></a>Ajánlatok eltávolítása a meglévő ügyfelek
+## <a name="remove-offers-from-existing-customers"></a>Ajánlatok eltávolítása meglévő ügyfelekről
 
-Az ajánlatok eltávolítása a meglévő ügyfelek [egy támogatási jegyet](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Válassza ki az adott ajánlat típusát a a **Problem type** listában, majd **egy közzétett ajánlat eltávolítása** a a **kategória** listája. Küldje el a kérelmet. A támogatási csapat végigvezeti Önt az ajánlat eltávolítása során.
+A meglévő ügyfelektől származó ajánlatok eltávolításához [Jelentkezzen be egy támogatási kérést](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Válassza ki az adott ajánlat típusát a **probléma típusa** listából, majd válassza a **közzétett ajánlat eltávolítása** lehetőséget a **Kategória** listában. Küldje el a kérelmet. A támogatási csapat végigvezeti az ajánlat-eltávolítási folyamaton.
 
-## <a name="sync-private-plan-audiences"></a>Szinkronizálási privát terv célközönséggel
+## <a name="sync-private-plan-audiences"></a>Privát csomag célközönségének szinkronizálása
 
-Az ajánlat magában foglalja egy vagy több terveket, amelyek csak egy privát korlátozott közönség számára érhető el vannak konfigurálva, esetén csak a közönség, ki férhet hozzá a titkos csomagot az ajánlatra egyéb módosítások közzététele nélkül frissítheti. 
+Ha az ajánlat egy vagy több olyan csomagot tartalmaz, amely úgy van konfigurálva, hogy csak egy privát korlátozott közönség számára legyen elérhető, akkor lehetséges, hogy csak azokat a célközönséget frissíti, akik hozzáférhetnek az adott privát csomaghoz anélkül, hogy más módosításokat kellene közzétenni az ajánlaton. 
 
-A frissítés, és szinkronizálja a csomagokkal privát célközönsége:
+A csomag (ok) privát célközönségének frissítése és szinkronizálása:
 
-- A célközönség módosítása egy vagy több privát tervek használatával a + **azonosító hozzáadása** vagy **importálása (csv) ügyfelek** gombra, majd mentse a módosításokat.
-- Válassza ki **privát célközönség szinkronizálása** származó a **tervezése – áttekintés** lapot.
+- Módosítsa a célközönséget egy vagy több privát csomagba a + **Add ID** vagy az **import Customers (CSV)** gomb használatával, majd mentse a módosításokat.
+- Válassza a **privát célközönség szinkronizálása** lehetőséget a **terv áttekintése** lapon.
 
-**Privát célközönség szinkronizálása** fog közzétenni a privát lehetővé közönségek felé egyaránt, csak a változásokat bármely egyéb frissítések, előfordulhat, hogy végzett a draft-ajánlat közzététele nélkül.
+A **privát célközönség szinkronizálása** csak a privát célközönségek módosításait teszi közzé anélkül, hogy közzé kellene tenni a draft ajánlatban esetlegesen végrehajtott egyéb frissítéseket.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A kereskedelmi Piactéri ajánlat közzétételi állapotának ellenőrzése](./publishing-status.md)
+- [A kereskedelmi piactér ajánlat közzétételi állapotának megtekintése](./publishing-status.md)

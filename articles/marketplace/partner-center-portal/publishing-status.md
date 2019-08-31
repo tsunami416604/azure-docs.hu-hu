@@ -1,18 +1,18 @@
 ---
 title: A kereskedelmi piactér ajánlat közzétételi állapotának megtekintése
 description: Tekintse át az ajánlat közzétételéhez szükséges ellenőrzési, minősítési és előzetes lépések állapotát a Microsoft partner Center kereskedelmi Piactéren keresztül.
-author: mattwojo
+author: ChJenk
 manager: evansma
-ms.author: mattwoj
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: c547ad256e6ba44da4ef81aa2a3aa2c77ba24815
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 77cb18a858ca87acbb8182bf708e403010251365
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982732"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191778"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>A kereskedelmi piactér ajánlat közzétételi állapotának megtekintése
 
