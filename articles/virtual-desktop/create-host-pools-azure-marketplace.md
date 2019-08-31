@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 04/05/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 32628296c5d43a11371b486abc426da2e243d0a7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 6629a612f7067394d9da83a81bdf46467a6e033a
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138228"
+ms.locfileid: "70163731"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Oktatóanyag: Gazdagépkészlet létrehozása az Azure Marketplace használatával
 
@@ -26,7 +26,11 @@ Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy Windows rendszerű vi
 > * Csatlakoztassa a virtuális gépeket a Active Directory tartományhoz.
 > * Regisztrálja a virtuális gépeket a Windows Virtual Desktopban.
 
-Mielőtt elkezdené, [töltse le és importálja a](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg.
+Mielőtt elkezdené, [töltse le és importálja a](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

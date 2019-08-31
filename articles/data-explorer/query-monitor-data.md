@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor Azure adatkezelő (előzetes verzió) segítségével az adatok lekérdezése
-description: Ebben a témakörben adatok lekérdezése az Azure Monitor az Application Insights és a Log Analytics egy Azure Data Explorer-proxy több termék lekérdezések létrehozásával
+title: Azure Monitor lekérdezése az Azure Adatkezelő használatával (előzetes verzió)
+description: Ebben a témakörben egy Azure Adatkezelő proxy létrehozásával Azure Monitor a Application Insights és a Log Analytics
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,90 +8,92 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: f363e59e6faa6b115eb40a2a5d35432f02299d52
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8e61f52282bcbc62a3eb069272cd7c1f3e329d3b
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811192"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172702"
 ---
-# <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Az Azure Monitor Azure adatkezelő (előzetes verzió) segítségével az adatok lekérdezése
+# <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Monitor lekérdezése az Azure Adatkezelő használatával (előzetes verzió)
 
-Az Azure Data Explorer proxy fürt (ADX Proxy) olyan entitás, amely lehetővé teszi, hogy több termék lekérdezések között az Azure az adatkezelőt, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview), és [Log Analytics (LA)](/azure/azure-monitor/platform/data-platform-logs) a a [Azure Monitor](/azure/azure-monitor/) szolgáltatás. Proxy fürtként leképezheti az Azure Monitor Log Analytics-munkaterületek és Application Insights-alkalmazásokkal. Ezután lekérdezheti a proxy-fürt az adatkezelőt az Azure-eszközökkel és közötti fürt lekérdezés hivatkozik rá. A cikk bemutatja, hogyan egy proxykiszolgáló-fürthöz való kapcsolódáshoz, proxy fürt hozzáadása az Azure Data Explorer webes felhasználói felületén, és lekérdezéseket futtassanak a mesterséges Intelligencia vagy a LA munkaterületek Azure Data Explorer.
+Az Azure Adatkezelő proxy-fürt (ADX proxy) egy olyan entitás, amely lehetővé teszi az Azure Adatkezelő, a [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)és a [log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs) közötti, [Azure monitor](/azure/azure-monitor/) szolgáltatásban lévő lekérdezések elvégzését. Azure Monitor Log Analytics-munkaterületeket és Application Insights-alkalmazásokat is leképezheti proxy fürtként. Ezután lekérdezheti a proxykiszolgálót az Azure Adatkezelő eszközeivel, és megtekintheti azt egy több fürtből álló lekérdezésben. A cikk bemutatja, hogyan csatlakozhat egy proxy-fürthöz, hogyan adhat hozzá proxykiszolgálót az Azure Adatkezelő webes felhasználói felületéhez, és hogyan futtathat lekérdezéseket az Azure-Adatkezelő AI-alkalmazásaira vagy LA munkaterületeire.
 
-Az Azure Data Explorer proxy folyamat: 
+Az Azure Adatkezelő proxy folyamata: 
 
-![ADX proxy folyamat](media/adx-proxy/adx-proxy-flow.png)
+![ADX-proxy folyamata](media/adx-proxy/adx-proxy-flow.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!NOTE]
-> A ADX Proxy használata előzetes verzióként. Ez a funkció engedélyezéséhez lépjen kapcsolatba a [ADXProxy](mailto:adxproxy@microsoft.com) csapat.
+> A ADX proxy előnézet módban van. A szolgáltatás engedélyezéséhez forduljon a [ADXProxy](mailto:adxproxy@microsoft.com) csapatához.
 
-## <a name="connect-to-the-proxy"></a>Csatlakozás a proxykiszolgálóhoz
+## <a name="connect-to-the-proxy"></a>Csatlakozás a proxyhoz
 
-1. Az Azure Data Explorer natív fürt ellenőrzése (például *súgó* fürt) jelenik meg a bal oldali menüben, a Log Analytics vagy az Application Insights-fürthöz való csatlakozás előtt.
+1. Ellenőrizze, hogy az Azure Adatkezelő natív fürtje (például a *Súgó* fürt) megjelenik-e a bal oldali menüben, mielőtt a Log Analytics vagy Application Insights fürthöz csatlakozna.
 
     ![ADX natív fürt](media/adx-proxy/web-ui-help-cluster.png)
 
-1. Az Azure Data Explorer felhasználói felületén (https://dataexplorer.azure.com/clusters) válassza **hozzáadása fürthöz**.
+1. Az Azure adatkezelő felhasználói felületén https://dataexplorer.azure.com/clusters) (válassza a **fürt hozzáadása**elemet.
 
-1. Az a **hozzáadása fürthöz** ablakban:
+1. A **fürt hozzáadása** ablakban:
 
-    * Adja hozzá a LA vagy AI-fürt URL-CÍMÉT. Például:`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
+    * Adja hozzá az URL-címet a LA vagy AI-fürthöz. Például:`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
 
     * Válassza a **Hozzáadás** lehetőséget.
 
     ![Fürt hozzáadása](media/adx-proxy/add-cluster.png)
 
-    Ha a kapcsolat hozzá több proxy-fürthöz, minden egyes másik nevet. Ellenkező esetben az összes rendelkeznek ugyanazzal a névvel a bal oldali panelen.
+    Ha egynél több proxykiszolgálót ad hozzá, adjon meg minden más nevet. Ellenkező esetben az összes neve megegyezik a bal oldali ablaktáblán.
 
-1. A kapcsolat létrejötte után a LA vagy AI-fürt a bal oldali panelen, a natív ADX fürttel fog megjelenni. 
+1. A létrehozást követően a saját LA vagy AI-fürtje megjelenik a bal oldali ablaktáblán a natív ADX-fürttel. 
 
-    ![A log Analytics és az Azure Data Explorer fürtök](media/adx-proxy/la-adx-clusters.png)
+    ![Log Analytics és Azure Adatkezelő-fürtök](media/adx-proxy/la-adx-clusters.png)
 
 ## <a name="run-queries"></a>Lekérdezések futtatása
 
-Kusto Explorerben ADX webes Explorer, a Jupyter Kqlmagic, vagy a REST API segítségével lekérdezheti a proxy-fürtöket. 
+A Kusto Explorer, a ADX web Explorer, a Jupyter Kqlmagic vagy a REST API használatával kérdezheti le a proxykiszolgálót. 
 
 > [!TIP]
-> * Adatbázis neve a proxy-fürt a megadott erőforrás névvel kell rendelkeznie. A megkülönböztetik a kis-és nagybetűket.
-> * A fürt lekérdezéseket, hogy ellenőrizze, hogy a [az alkalmazások és a munkaterületek elnevezési](#application-insights-app-and-log-analytics-workspace-names) helyes-e.
+> * Az adatbázis nevének meg kell egyeznie a fürtben megadott erőforrás nevével. A nevek megkülönböztetik a kis-és nagybetűket.
+> * A fürtök közötti lekérdezésekben ellenőrizze, hogy helyesek-e a Application Insights alkalmazások és Log Analytics munkaterületek elnevezése.
+>     * Ha a nevek speciális karaktereket tartalmaznak, azokat a rendszer URL-kódolással helyettesíti a proxy fürt nevében. 
+>     * Ha a nevek olyan karaktereket tartalmaznak, amelyek nem felelnek meg a [KQL](/azure/kusto/query/schema-entities/entity-names)-azonosítók nevének **-** , a kötőjel karakter váltja fel őket.
 
-### <a name="query-against-the-native-azure-data-explorer-cluster"></a>A natív Azure adatkezelő fürt lekérdezésének 
+### <a name="query-against-the-native-azure-data-explorer-cluster"></a>Lekérdezés a natív Azure Adatkezelő-fürtön 
 
-Lekérdezések futtatása az Azure Data Explorer fürtön (például *StormEvents* táblára *súgó* fürtben). A lekérdezés futtatásakor győződjön meg arról, hogy a natív Azure adatkezelő fürt van kiválasztva a bal oldali panelen.
+Lekérdezéseket futtathat az Azure Adatkezelő-fürtön (például *StormEvents* -tábla a *Súgó* fürtben). A lekérdezés futtatásakor ellenőrizze, hogy a natív Azure Adatkezelő-fürt ki van-e választva a bal oldali ablaktáblán.
 
 ```kusto
 StormEvents | take 10 // Demonstrate query through the native ADX cluster
 ```
 
-![StormEvents tábla lekérdezése](media/adx-proxy/query-adx.png)
+![StormEvents-tábla lekérdezése](media/adx-proxy/query-adx.png)
 
-### <a name="query-against-your-la-or-ai-cluster"></a>A LA vagy AI-fürtön hajtja lekérdezése
+### <a name="query-against-your-la-or-ai-cluster"></a>Lekérdezés a LA vagy AI-fürtön
 
-A LA vagy AL fürtön futó lekérdezések futtatásakor győződjön meg arról, hogy a LA vagy AI-fürt van kiválasztva a bal oldali panelen. 
+Amikor lekérdezést futtat az LA vagy az AL-fürtön, ellenőrizze, hogy a bal oldali panelen van-e kiválasztva a LA vagy AI-fürt. 
 
 ```kusto
 Perf | take 10 // Demonstrate query through the proxy on the LA workspace
 ```
 
-![Lekérdezés LA munkaterület](media/adx-proxy/query-la.png)
+![LA-munkaterület lekérdezése](media/adx-proxy/query-la.png)
 
-### <a name="query-your-la-or-ai-cluster-from-the-adx-proxy"></a>A LA vagy AI-fürt érkezett a ADX lekérdezése  
+### <a name="query-your-la-or-ai-cluster-from-the-adx-proxy"></a>Az ADX proxy lekérdezése a LA vagy AI-fürtből  
 
-Lekérdezések a LA vagy AI-fürtön történő futtatásakor a proxy, ellenőrizze a ADX natív fürt van kiválasztva a bal oldali panelen. A következő példa bemutatja egy lekérdezést a LA munkaterület használatával a natív ADX fürt
+Ha a proxyból futtatja a lekérdezéseket az LA vagy AI-fürtön, a bal oldali panelen ellenőrizze, hogy a ADX natív fürt van-e kiválasztva. Az alábbi példa az LA munkaterület lekérdezését mutatja be a natív ADX-fürt használatával.
 
 ```kusto
 cluster('https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name').Perf
 | take 10 
 ```
 
-![Az Azure Data Explorer-proxy lekérdezése](media/adx-proxy/query-adx-proxy.png)
+![Lekérdezés az Azure Adatkezelő proxyról](media/adx-proxy/query-adx-proxy.png)
 
-### <a name="cross-query-of-la-or-ai-cluster-and-the-adx-cluster-from-the-adx-proxy"></a>Adatbázisközi lekérdezés LA vagy AI-fürt és a ADX fürt a ADX érkezett 
+### <a name="cross-query-of-la-or-ai-cluster-and-the-adx-cluster-from-the-adx-proxy"></a>LA vagy AI-fürt és a ADX-fürt több lekérdezése a ADX-proxyból 
 
-A proxy a fürt közötti lekérdezések futtatásakor győződjön meg arról, a ADX natív fürt van kiválasztva a bal oldali panelen. A következő példák azt mutatják be, kombinálása ADX fürt táblák (használatával `union`) LA munkaterülettel.
+Ha a proxyról futtat több fürtözött lekérdezést, a bal oldali panelen ellenőrizze, hogy a ADX natív fürt van-e kiválasztva. Az alábbi példák azt mutatják be, hogyan kombinálható `union`a ADX-fürt táblái (a) és az La Workspace együttes használatával.
 
 ```kusto
 union StormEvents, cluster('https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>').Perf
@@ -103,25 +105,20 @@ let CL1 = 'https://ade.loganalytics.io/subscriptions/<subscription-id>/resourceg
 union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 ```
 
-![Adatbázisközi lekérdezés érkezett az Azure Data Explorer](media/adx-proxy/cross-query-adx-proxy.png)
+![Több lekérdezés az Azure Adatkezelő proxyról](media/adx-proxy/cross-query-adx-proxy.png)
 
-Használatával a [ `join` operátor](/azure/kusto/query/joinoperator), helyett union, megkövetelheti egy futtassák egy Azure Data Explorer natív fürtöt (és nem az a proxy) érhető el. 
+Ha az [ `join` operátort](/azure/kusto/query/joinoperator)használja az Union helyett, akkor előfordulhat, hogy egy tippet kell futtatnia egy Azure adatkezelő natív fürtön (és nem a proxyn). 
 
-## <a name="additional-syntax-examples"></a>További szintaxispéldáival
+## <a name="additional-syntax-examples"></a>További példák a szintaxisra
 
-Az alábbi szintaxissal lehetőségek érhetők el az Application Insights (AI) vagy a Log Analytics (LA) fürtöket hívásakor:
+A Application Insights (AI) vagy Log Analytics (LA) fürtök meghívásakor a következő szintaxisú beállítások érhetők el:
 
 |Szintaxis leírása  |Application Insights  |Log Analytics  |
 |----------------|---------|---------|
-| Adatbázis, amely tartalmazza az ebben az előfizetésben csak a megadott erőforrás a fürtön belül (**ajánlott a fürt lekérdezések közötti**) |   fürt (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`) | fürt (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`)     |
-| Fürt, amely tartalmazza az összes apps/munkaterületek ebben az előfizetésben    |     fürt (`https://ade.applicationinsights.io/subscriptions/<subscription-id>`)    |    fürt (`https://ade.loganalytics.io/subscriptions/<subscription-id>`)     |
-|Fürt, amely tartalmazza az előfizetés összes alkalmazások/munkaterületet, és ez az erőforráscsoport tagja    |   fürt (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    fürt (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
-|Ebben az előfizetésben csak a meghatározott erőforrást tartalmazó fürt      |    fürt (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  fürt (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
-
-### <a name="application-insights-app-and-log-analytics-workspace-names"></a>Application Insights-alkalmazás és a Log Analytics-munkaterület neve
-
-* Nevek tartalmazhat speciális karaktereket, kódolás a proxy-fürt neve a URL-cím azok van cserélve. 
-* Ha a nevek tartalmazzák a karakterek, amelyek nem felelnek meg az [KQL azonosító név szabályok](/azure/kusto/query/schema-entities/entity-names), a dash váltják **-** karakter.
+| Olyan fürtön belüli adatbázis, amely csak az előfizetésben definiált erőforrást tartalmazza (**több fürt lekérdezéséhez ajánlott**) |   fürt (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`) | fürt (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`)     |
+| Az előfizetésben szereplő összes alkalmazást/munkaterületet tartalmazó fürt    |     fürt (`https://ade.applicationinsights.io/subscriptions/<subscription-id>`)    |    fürt (`https://ade.loganalytics.io/subscriptions/<subscription-id>`)     |
+|Az előfizetésben szereplő összes alkalmazást/munkaterületet tartalmazó fürt, amely az erőforráscsoport tagjai.    |   fürt (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    fürt (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
+|Ebben az előfizetésben csak a definiált erőforrást tartalmazó fürt      |    fürt (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  fürt (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
 
 ## <a name="next-steps"></a>További lépések
 

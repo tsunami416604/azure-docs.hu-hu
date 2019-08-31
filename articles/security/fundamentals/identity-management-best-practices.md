@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 371c3b9fde17bba33fb6f2526be68fe89aec6b01
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 093c5878cd2f7df63502a7aff686824af3c88078
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934695"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195088"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások
 Ebben a cikkben az Azure Identity Management és a hozzáférés-vezérléssel kapcsolatos ajánlott biztonsági eljárások gyűjteményét tárgyaljuk. Ezek az ajánlott eljárások az [Azure ad](../../active-directory/fundamentals/active-directory-whatis.md) -vel és az ügyfelek, például saját felhasználói élményekkel kapcsolatos tapasztalataiból származnak.
@@ -93,7 +93,7 @@ Azok a szervezetek, amelyek nem integrálják a helyszíni identitást a Felhőb
 > Ki kell választania, hogy mely címtárakban kritikus fiókok fognak megjelenni, és hogy a használt rendszergazdai munkaállomást az új Cloud Services vagy a meglévő folyamatok felügyelik-e. A meglévő felügyeleti és identitás-kiépítési folyamatok használata csökkentheti a kockázatokat, de a támadók kockázatát is veszélyeztethetik a helyszíni fiókok és a felhőbe való belátások. Érdemes lehet más stratégiát használni a különböző szerepkörökhöz (például rendszergazdák és üzleti egység adminisztrátorai). Két lehetőség közül választhat. Az első lehetőség olyan Azure AD-fiókok létrehozása, amelyek nincsenek szinkronizálva a helyszíni Active Directory-példánnyal. Csatlakoztassa a felügyeleti munkaállomást az Azure AD-hez, amelyet Microsoft Intune használatával kezelhet és javíthat. A második lehetőség a meglévő rendszergazdai fiókok használata a helyszíni Active Directory-példányra való szinkronizálással. A Active Directory tartományban meglévő munkaállomásokat kezelheti felügyeletre és biztonságra.
 
 ## <a name="manage-connected-tenants"></a>Csatlakoztatott bérlők kezelése
-A biztonsági szervezetnek meg kell vizsgálnia a kockázat felmérését, és meg kell határoznia, hogy a szervezet szabályzatait és az összes szabályozási követelményt követi-e a rendszer. Győződjön meg arról, hogy a biztonsági szervezet az éles környezethez és a hálózathoz (az [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) vagy [a helyek közötti VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)-en keresztül) kapcsolódó összes előfizetéshez betekintést kapott. Az Azure AD [globális rendszergazdája/vállalati rendszergazdája](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) hozzáférhet a [felhasználói hozzáférés rendszergazdai](../../role-based-access-control/built-in-roles.md#user-access-administrator) szerepköréhez, és megtekintheti a környezethez csatlakoztatott összes előfizetést és felügyelt csoportot.
+A biztonsági szervezetnek meg kell vizsgálnia a kockázat felmérését, és meg kell határoznia, hogy a szervezet szabályzatait és az összes szabályozási követelményt követi-e a rendszer. Győződjön meg arról, hogy a biztonsági szervezet az éles környezethez és a hálózathoz (az [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) vagy [a helyek közötti VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)-en keresztül) kapcsolódó összes előfizetéshez betekintést kapott. Az Azure AD [globális rendszergazdája/vállalati rendszergazdája](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) hozzáférhet a [felhasználói hozzáférés rendszergazdai](../../role-based-access-control/built-in-roles.md#user-access-administrator) szerepköréhez, és megtekintheti a környezethez csatlakoztatott összes előfizetést és felügyelt csoportot.
 
 Lásd: [jogosultságszint-emelési hozzáférés az összes Azure-előfizetés és-felügyeleti csoport kezeléséhez](../../role-based-access-control/elevate-access-global-admin.md) , hogy Ön és biztonsági csoportja megtekintse a környezetéhez kapcsolódó összes előfizetést vagy felügyeleti csoportot. A kockázatok felmérése után távolítsa el ezt a emelt szintű hozzáférést.
 
@@ -143,17 +143,17 @@ Több lehetőség is van a kétlépéses ellenőrzés megkövetelésére. A legj
 
 A kétlépéses ellenőrzés engedélyezésének lehetőségei és előnyei a következők:
 
-**1. lehetőség**: [A többtényezős hitelesítés engedélyezése a felhasználói állapot módosításával](../../active-directory/authentication/howto-mfa-userstates.md).   
-**Előnyök**: Ez a hagyományos módszer a kétlépéses ellenőrzés megkövetelésére. [A felhőben és az Azure multi-Factor Authentication-kiszolgálón egyaránt működik az Azure multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-whichversion)szolgáltatással. Ennek a módszernek a használatával a felhasználóknak kétlépéses ellenőrzést kell végezniük minden alkalommal, amikor bejelentkeznek, és felülbírálják a feltételes hozzáférési szabályzatokat.
+**1. lehetőség**: [A multi-Factor Authentication engedélyezése a felhasználói állapot módosításával](../../active-directory/authentication/howto-mfa-userstates.md).   
+**Előnyök**: Ez a hagyományos módszer a kétlépéses ellenőrzés megkövetelésére. [Az azure multi-Factor Authentication a felhőben és az azure multi-Factor Authentication-kiszolgáló](/azure/active-directory/authentication/concept-mfa-whichversion)is működik. Ennek a módszernek a használatával a felhasználóknak kétlépéses ellenőrzést kell végezniük minden alkalommal, amikor bejelentkeznek, és felülbírálják a feltételes hozzáférési szabályzatokat.
 
-Annak megállapításához, hogy a többtényezős hitelesítés engedélyezése szükséges-e, tekintse meg a [szervezetem számára legmegfelelőbb Azure MFA-verziót](/azure/active-directory/authentication/concept-mfa-whichversion).
+Annak megállapításához, hogy hol kell engedélyezni a Multi-Factor Authenticationt, tekintse meg a [szervezetem számára legmegfelelőbb Azure MFA-verziót](/azure/active-directory/authentication/concept-mfa-whichversion).
 
-**2. lehetőség**: [A többtényezős hitelesítés engedélyezése feltételes hozzáférési házirenddel](/azure/active-directory/authentication/howto-mfa-getstarted).
+**2. lehetőség**: [Feltételes hozzáférési házirenddel rendelkező multi-Factor Authentication engedélyezése](/azure/active-directory/authentication/howto-mfa-getstarted).
 **Előnyök**: Ez a beállítás lehetővé teszi, hogy a [feltételes hozzáférés](/azure/active-directory/active-directory-conditional-access-azure-portal)használatával megkérdezzen a kétlépéses ellenőrzést adott körülmények között. A konkrét feltételek különböző helyekről, nem megbízható eszközökről vagy kockázatos alkalmazásokból is lehetnek felhasználói bejelentkezésre. Meghatározott feltételek meghatározása, amelyekben kétlépéses ellenőrzésre van szükség, így elkerülhető a felhasználók folyamatos rákérdezése, ami kellemetlen felhasználói élmény lehet.
 
-Ez a legrugalmasabb módszer a felhasználók kétlépéses ellenőrzésének engedélyezésére. A feltételes hozzáférési szabályzat engedélyezése csak az Azure multi-Factor Authentication felhőben való használata esetén működik, és az Azure AD prémium funkciója. Erről a módszerről további információt a [felhőalapú Azure multi-Factor Authentication üzembe helyezése című](/azure/active-directory/authentication/howto-mfa-getstarted)témakörben talál.
+Ez a legrugalmasabb módszer a felhasználók kétlépéses ellenőrzésének engedélyezésére. A feltételes hozzáférési szabályzat engedélyezése csak a felhőben működő Azure-Multi-Factor Authentication működik, és az Azure AD prémium funkciója. Erről a módszerről a [felhőalapú Azure-multi-Factor Authentication üzembe helyezése című](/azure/active-directory/authentication/howto-mfa-getstarted)témakörben talál további információt.
 
-**3. lehetőség**: Engedélyezze a többtényezős hitelesítést a feltételes hozzáférési házirendekkel a [Azure ad Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa)felhasználói és bejelentkezési kockázatának kiértékelésével.   
+**3. lehetőség**: A Multi-Factor Authentication a feltételes hozzáférési házirendekkel engedélyezheti az [Azure ad Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa)felhasználói és bejelentkezési kockázatának kiértékelésével.   
 **Előnyök**: Ez a beállítás a következőket teszi lehetővé:
 
 - A szervezet identitásait érintő lehetséges sebezhetőségek észlelése.
@@ -163,7 +163,7 @@ Ez a legrugalmasabb módszer a felhasználók kétlépéses ellenőrzésének en
 Ez a módszer a Azure AD Identity Protection kockázatértékelés használatával határozza meg, hogy szükséges-e kétlépéses ellenőrzés a felhasználói és bejelentkezési kockázatok alapján minden felhőalapú alkalmazás esetében. Ehhez a módszerhez Azure Active Directory P2 licencelés szükséges. A metódussal kapcsolatban a Azure Active Directory Identity Protectionban talál további [](/azure/active-directory/identity-protection/overview)információt.
 
 > [!Note]
-> 1\. lehetőség: a többtényezős hitelesítés engedélyezése a felhasználói állapot módosításával, felülbírálja a feltételes hozzáférési szabályzatokat. Mivel a 2. és a 3. lehetőség feltételes hozzáférési házirendeket használ, nem használhatja az 1. lehetőséget.
+> 1\. lehetőség, a Multi-Factor Authentication engedélyezése a felhasználói állapot módosításával, felülbírálja a feltételes hozzáférési szabályzatokat. Mivel a 2. és a 3. lehetőség feltételes hozzáférési házirendeket használ, nem használhatja az 1. lehetőséget.
 
 Azok a szervezetek, amelyek nem vesznek fel az Identity Protection további rétegeit, például a kétlépéses ellenőrzést, hajlamosabbak a hitelesítő adatok ellopására irányuló támadásokra. A hitelesítő adatok ellopására irányuló támadás adatsérülést eredményezhet.
 
@@ -174,7 +174,7 @@ A csoportok vagy az egyes Azure-funkciókért felelős egyedi szerepkörök kije
 
 A kockázat felmérése és javítása érdekében a biztonsági csapatnak meg kell vizsgálnia az Azure-erőforrásokat. Ha a biztonsági csapat működési felelősséggel rendelkezik, további engedélyekre van szükségük a feladataik elvégzéséhez.
 
-A [RBAC](/azure/role-based-access-control/overview) segítségével engedélyeket rendelhet hozzá a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy adott hatókörben. A szerepkör-hozzárendelés hatóköre lehet előfizetés, erőforráscsoport vagy egyetlen erőforrás is.
+A [RBAC](/azure/role-based-access-control/overview) segítségével engedélyeket rendelhet hozzá a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy adott hatókörben. A szerepkörkiosztás hatóköre előfizetés, erőforráscsoport vagy egyetlen erőforrás is lehet.
 
 **Ajánlott eljárás**: Elkülönítheti a feladatokat a csapaton belül, és csak a felhasználók számára biztosíthatja a feladatok elvégzéséhez szükséges hozzáférést. Ahelyett, hogy az Azure-előfizetésben vagy-erőforrásokban mindenki számára korlátlan jogosultságot adna, csak bizonyos műveleteket engedélyezzen egy adott hatókörben.
 **Részletek**: Az Azure [-ban beépített RBAC](/azure/role-based-access-control/built-in-roles) -szerepköröket használhat a felhasználókhoz való jogosultságok kiosztásához.
@@ -239,10 +239,10 @@ A következő összefoglalja az [Azure ad-ben az emelt szintű hozzáférés biz
 **Ajánlott eljárás**: Vészhelyzet esetén a "break Glass" folyamatra van szükség.
 **Részletek**: Kövesse az [Azure ad-ben az emelt szintű hozzáférés biztonságossá tétele a hibrid és](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)a felhőben történő üzembe helyezéshez című témakör lépéseit.
 
-**Ajánlott eljárás**: Az összes kritikus rendszergazdai fiók jelszó nélküli (előnyben részesített) vagy többtényezős hitelesítés megkövetelése.
+**Ajánlott eljárás**: Az összes kritikus rendszergazdai fiók jelszavának lekérése (előnyben részesített) vagy Multi-Factor Authentication megkövetelése.
 **Részletek**: A [Microsoft Authenticator alkalmazással](/azure/active-directory/authentication/howto-authentication-phone-sign-in) jelszó használata nélkül jelentkezhet be bármely Azure ad-fiókba. A [vállalati Windows Hello-hez](/windows/security/identity-protection/hello-for-business/hello-identity-verification)hasonlóan a Microsoft Authenticator a kulcs-alapú hitelesítés használatával engedélyezi az eszközhöz kötött felhasználói hitelesítő adatokat, és biometrikus hitelesítést vagy PIN-kódot használ.
 
-Az Azure multi-Factor Authentication megkövetelése bejelentkezéskor minden olyan felhasználó számára, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: Globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange Online-rendszergazda és SharePoint Online-rendszergazda. Engedélyezze [a többtényezős hitelesítést a rendszergazdai fiókjaihoz](/azure/active-directory/authentication/howto-mfa-userstates) , és győződjön meg arról, hogy a rendszergazdai fiók felhasználóinak regisztrálva vannak.
+Az Azure-Multi-Factor Authentication bejelentkezéskor minden olyan felhasználóhoz, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz, be kell jelentkeznie: Globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange Online-rendszergazda és SharePoint Online-rendszergazda. Engedélyezze [a rendszergazdai fiókok multi-Factor Authenticationét](/azure/active-directory/authentication/howto-mfa-userstates) , és győződjön meg arról, hogy a rendszergazdai fiók felhasználóinak regisztrálva vannak.
 
 **Ajánlott eljárás**: A kritikus rendszergazdai fiókok esetében olyan felügyeleti munkaállomás szükséges, amelyben a termelési feladatok nem engedélyezettek (például a böngészés és az e-mail). Ez biztosítja a rendszergazdai fiókokat a böngészést és e-mailt használó támadási vektorokból, és jelentősen csökkenti a jelentős incidensek kockázatát.
 **Részletek**: Használjon rendszergazdai munkaállomást. Válassza ki a munkaállomás biztonságának szintjét:
@@ -265,7 +265,7 @@ Az Azure multi-Factor Authentication megkövetelése bejelentkezéskor minden ol
 
 [Jelszó-kivonat szinkronizálásának bekapcsolása](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#turn-on-password-hash-synchronization)  
 
-[Többtényezős hitelesítés megkövetelése a felhasználók számára az összes Kiemelt szerepkörben, valamint a felhasználók számára](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[Multi-Factor Authentication megkövetelése minden Kiemelt szerepkörrel rendelkező és a felhasználók számára elérhető felhasználók számára](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
 [Az Office 365 biztonságos pontszámának beszerzése (az Office 365 használata esetén)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
 

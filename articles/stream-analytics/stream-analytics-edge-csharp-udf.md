@@ -1,5 +1,5 @@
 ---
-title: Felhasználói C# függvény írása Azure Stream Analytics Edge-feladathoz a Visual Studióban (előzetes verzió)
+title: Felhasználó C# által definiált függvények írása Azure stream Analytics Edge-feladatokhoz a Visual Studióban (előzetes verzió)
 description: Megtudhatja, hogyan írhat felhasználói C# függvényt Azure Stream Analytics Edge-feladathoz a Visual Studióban.
 services: stream-analytics
 author: mamccrea
@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5597109a65a8af88bf286977d039656635565ed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cadc603a94d5d17ad2df419f8507c37f9e3272f8
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60204156"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173316"
 ---
-# <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Oktatóanyag: Írhat egy C# felhasználó által definiált függvény Azure Stream Analytics Edge-feladat (előzetes verzió)
+# <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Oktatóanyag: C# Felhasználó által definiált függvény írása Azure stream Analytics Edge-feladathoz (előzetes verzió)
 
-A Visual Studióban létrehozott felhasználói C# függvényekkel (UDF-ekkel) kiterjesztheti az Azure Stream Analytics lekérdezéseinek nyelvét a saját függvényeire. A C#-pal meglévő kódokat használhat újra (így DLL-eket is), valamint matematikai vagy összetett logikát alkalmazhat. Háromféleképpen UDF-EK végrehajtásához: A projekt egy Stream Analytics háttérkódban fájlok egy helyi felhasználói függvények C# projekt vagy UDF-EK egy tárfiókból egy meglévő csomagból. Ez az oktatóanyag a CodeBehind metódussal implementál egy alapszintű C# függvényt. A Stream Analytics-feladatokhoz használható UDF funkció jelenleg előzetes verzióban érhető el, így használata nem javasolt éles környezetekben.
+A Visual Studióban létrehozott felhasználói C# függvényekkel (UDF-ekkel) kiterjesztheti az Azure Stream Analytics lekérdezéseinek nyelvét a saját függvényeire. A C#-pal meglévő kódokat használhat újra (így DLL-eket is), valamint matematikai vagy összetett logikát alkalmazhat. Háromféleképpen UDF-EK végrehajtásához: CodeBehind a fájlokat egy Stream Analytics projektben, egy helyi C# projektből UDF, vagy egy meglévő csomagból a UDF. Ez az oktatóanyag a CodeBehind metódussal implementál egy alapszintű C# függvényt. A Stream Analytics-feladatokhoz használható UDF funkció jelenleg előzetes verzióban érhető el, így használata nem javasolt éles környezetekben.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a nagyítással | Microsoft Docs'
+title: 'Oktatóanyag: Egyszeri bejelentkezéses (SSO) integráció Azure Active Directory nagyítással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és nagyítás között.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e36d1bb91e70e21ee1940e189bfedaebafa4412
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: c0d5a87d4723bcc21b75db1b31ada72823abdf02
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975949"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171414"
 ---
-# <a name="tutorial-integrate-zoom-with-azure-active-directory"></a>Oktatóanyag: Nagyítás integrálása Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a nagyítással
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a nagyítást Azure Active Directory (Azure AD-val). Ha az Azure AD-vel integrálja a nagyítást, a következőket teheti:
 
@@ -89,50 +89,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez vegye fel a kapcsolatot a [nagyítási ügyfél támogatási csoportjával](https://support.zoom.us/hc/en-us) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. A nagyítási alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
-
-    ![image](common/edit-attribute.png)
-
-6. A fentieken kívül a nagyítási alkalmazás néhány további attribútumot vár az SAML-válaszban. A  **felhasználó attribútumai** **** párbeszédpanelfelhasználóijogcímekszakaszábanakövetkezőlépésekkeladjahozzáazSAML-jogkivonatattribútumátazalábbitáblázatbanlátható módon: 
-
-    | Name (Név) | Névtér  |  Forrás attribútum|
-    | ---------------| --------------- | --------- |
-    | E-mail-cím  | user.mail  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail` |
-    | Utónév  | User. givenName  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |
-    | Vezetéknév  | felhasználó. vezetéknév  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |
-    | Telefonszám  | User. telephoneNumber  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone` |
-    | Részleg  | felhasználó. részleg  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department` |
-    | role |    User. assignedrole |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role` |
-
-    > [!NOTE]
-    > Ide kattintva [](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) megtudhatja, hogyan konfigurálhatja a szerepkört az Azure ad-ben
-
-    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
-
-    c. Válassza a forrás **attribútumként**lehetőséget.
-
-    d. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
-
-    e. Kattintson a **Ok**
-
-    f. Kattintson a **Save** (Mentés) gombra.
-
-    > [!NOTE]
-    > A nagyítás várhatóan az SAML-adattartalomban lévő csoportos jogcímet is megvárhatja, így ha bármilyen csoportot hozott létre, vegye fel a kapcsolatot a [nagyítási ügyfél támogatási csapatával](https://support.zoom.us/hc/en-us) a csoport adataival, hogy a csoport adatait is be lehessen állítani. Emellett meg kell adnia az objektumazonosító számára az [ügyfél-támogatási csapat nagyítását](https://support.zoom.us/hc/en-us) , hogy azok a végén is konfigurálhatók legyenek. Kérjük, kövesse a [dokumentumot](https://support.zoom.us/hc/en-us/articles/115005887566) az objektumazonosító beszerzéséhez.
-
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-6. A **Nagyítás beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
+1. A **Nagyítás beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+
+> [!NOTE]
+> Ha meg szeretné tudni, hogyan konfigurálhatja a szerepkört az Azure AD-ben, olvassa el a [vállalati alkalmazások SAML-jogkivonatában kiadott szerepkör](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)-jogcímek konfigurálása című részt
+
+> [!NOTE]
+> A nagyítás várhatóan egy csoportos jogcímet várhat az SAML-adattartalomban. Ha bármilyen csoportot hozott létre, lépjen kapcsolatba a [nagyítási ügyfél támogatási](https://support.zoom.us/hc/en-us) csoportjával, és adja meg a csoport adatait a csoport adatainak konfigurálásához. Emellett meg kell adnia az objektumazonosító számára az [ügyfél-támogatási csapat nagyítását](https://support.zoom.us/hc/en-us) , hogy az objektum azonosítója a végén is konfigurálható legyen. Az objektumazonosító beszerzéséhez tekintse meg a [Nagyítás konfigurálása az Azure](https://support.zoom.us/hc/en-us/articles/115005887566)-ban című témakört.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -242,3 +211,4 @@ Amikor a hozzáférési panelen a nagyítás csempére kattint, automatikusan be
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [A nagyítás kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

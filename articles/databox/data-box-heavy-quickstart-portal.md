@@ -1,59 +1,62 @@
 ---
-title: Rövid útmutató a Microsoft Azure Data Box (nagy erőforrásigényű) |} A Microsoft Docs
-description: Ismerje meg, hogyan helyezhet üzembe gyorsan az Azure Data Box (nagy erőforrásigényű) az Azure Portalon
+title: Gyors útmutató a Microsoft Azure Data Box Heavyhoz | Microsoft Docs
+description: Ismerkedjen meg a Azure Data Box Heavy gyors üzembe helyezésével Azure Portal
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 06/04/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 3467b25c085fb86d4aed3918d5446d118f76ffb8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 433c3ac08d8d7d8158d4cc958979782e3b3192e1
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446734"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164421"
 ---
-# <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>Gyors útmutató: Üzembe helyezése az Azure Data Box (nagy erőforrásigényű) az Azure portal használatával
+::: zone target = "docs"
 
-Ez a rövid útmutató azt ismerteti, üzembe helyezése az Azure Data Box (nagy erőforrásigényű) az Azure portal használatával. A lépések bemutatják, hogyan kábelek, konfigurálása és adatok másolása az adatok Box – nehéz, úgy, hogy feltölti az Azure-bA. A rövid útmutató az Azure Portalon és az eszköz helyi webes felületén hajtható végre.
+# <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>Gyors útmutató: Azure Data Box Heavy üzembe helyezése a Azure Portal használatával
 
-Részletes részletes üzembe helyezés és a nyomkövetési utasításokat, keresse fel [oktatóanyag: Rendelés az Azure Data Box (nagy erőforrásigényű)](data-box-heavy-deploy-ordered.md)
+Ez a rövid útmutató azt ismerteti, hogyan helyezhetők üzembe a Azure Data Box Heavy a Azure Portal használatával. A lépések közé tartozik az adatok csatlakoztatása, konfigurálása és másolása Data Box Heavyba, hogy feltöltve legyenek az Azure-ba. A rövid útmutató az Azure Portalon és az eszköz helyi webes felületén hajtható végre.
+
+A részletes üzembe helyezési és követési utasításokért keresse fel az [oktatóanyagot: Megrendelés Azure Data Box Heavy](data-box-heavy-deploy-ordered.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Végezze el a telepítési hely, a Data Box szolgáltatás és az eszköz a következő konfigurálási előfeltételeket, mielőtt üzembe helyezné az eszközt.
+Az eszköz telepítése előtt végezze el a következő konfigurálási előfeltételeket a telepítési helyhez, Data Box szolgáltatáshoz és az eszközhöz.
 
-### <a name="for-installation-site"></a>Telepítési hely
+### <a name="for-installation-site"></a>A telepítési helyhez
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-- Az eszköz összes a entryways keresztül illeszkednek. Eszköz méretek: szélesség: 26" hossza: 48" height: 28”.
-- Ha azt tervezi, hogy egy emelet az alapoktól emelet kívül telepítse az eszköz az itt vagy egy ramp keresztül elérhető lesz.
-- Az eszköz kezelésére két személy rendelkezik. Az eszköz körülbelül 500 KB lbs tömege. a kerekek, és.
-- A helyi adatközpontban segítségével közel kerülhet egy elérhető hálózati kapcsolat, amely lehetővé teszi az erőforrás-igényű rendelkező eszköz, a strukturálatlan hellyel rendelkezik.
+- Az eszköz az összes bebejáratán elfér. Az eszköz méretei a következők: width: 26 "hossz: 48 "magasság: 28 ".
+- Ha az eszközt a földszinten kívüli emeleten szeretné telepíteni, egy lift vagy egy rámpa használatával férhet hozzá az eszközhöz.
+- Az eszközt két személy kezelheti. Az eszköz körülbelül ~ 500 lbs-t mérlegel. és a kerekekre kerül.
+- Az adatközpontban van egy olyan, a rendelkezésre álló hálózati kapcsolat közelsége, amely képes az adott helyigényű eszköz elhelyezésére.
 
 ### <a name="for-service"></a>A szolgáltatás esetén
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 - Rendelkezik Microsoft Azure Storage-fiókkal és a hozzá szükséges hozzáférési hitelesítő adatokkal.
-- A Data Box szolgáltatás használja az előfizetés [Microsoft nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview), vagy [a Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/).
-- Az előfizetésre, és hozzon létre egy Data Box nehéz rendelést tulajdonosi vagy közreműködői hozzáféréssel rendelkezik.
+- A Data Box szolgáltatáshoz használt előfizetés a [Microsoft nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), a [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)vagy a [Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/).
+- Data Box Heavy rendelés létrehozásához tulajdonos vagy közreműködő fér hozzá az előfizetéshez.
 
 ### <a name="for-device"></a>Az eszköz esetén
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-- Áttekintette a [a Data Box nehéz biztonságának irányelvek](data-box-safety.md).
-- Rendelkezik egy fogadó számítógép csatlakozik az adatközponti hálózathoz. Data Box nehéz lesz másolja az adatokat erről a számítógépről. A gazdaszámítógép futtatnia kell egy [támogatott operációs rendszert](data-box-heavy-system-requirements.md).
-- Rendelkezik egy laptop RJ-45 kábellel csatlakozik a helyi felhasználói felület és az eszköz konfigurálása. A hordozható számítógép segítségével az eszköz minden egyes csomópontja egyszer konfigurálhatja.
-- Az Adatközpont nagy sebességű hálózat rendelkezik, és rendelkeznie kell legalább egy 10 GbE kapcsolatot.
-- Szüksége vagy egy 40-GB/s 10-GB/s kábellel eszköz csomópontonkénti. Válassza ki a kábelek, amelyek kompatibilisek a Mellanox MCX314A-BCCT a hálózati adapter:
-    - A 40-GB/s kábel, az eszköz vége kell lennie QSFP +.
-    - A 10-GB/s kábel szüksége lesz egy 10 – G kapcsoló az egyik, a egy QSFP + SFP + adapter (vagy a DSS foglalt követelményeknek adapter), amely az eszköz rendkívüli End rendkívüli SFP + kábellel.
-- A tápkábelek szerepelnek a tálca hátulján az eszköz található.
+- Áttekintette a [Data Box Heavy biztonsági irányelveit](data-box-safety.md).
+- Az adatközpont-hálózathoz csatlakozik egy gazdaszámítógép. Data Box Heavy másolja az adatait a számítógépről. A gazdagépnek [támogatott operációs rendszert](data-box-heavy-system-requirements.md)kell futtatnia.
+- A helyi felhasználói felülethez való kapcsolódáshoz és az eszköz konfigurálásához egy RJ-45 kábelt tartalmazó laptop tartozik. A laptop használatával konfigurálja egyszer az eszköz egyes csomópontjait.
+- Az adatközpont nagy sebességű hálózattal rendelkezik, és legalább 1 10 GbE-kapcsolatban van.
+- Az eszköz csomópontjain 1 40-Gbps vagy 10 GB/s-os kábelre van szükség. Válassza ki a Mellanox MCX314A-BCCT hálózati adapterrel kompatibilis kábeleket:
+    - Az 40-Gbps kábel esetében a kábel QSFP +-nak kell lennie.
+    - A 10 GB/s-os kábel esetében olyan SFP + kábelre van szükség, amely egy 10 G-os kapcsolóval csatlakozik egy végponton, egy QSFP + és SFP + adapterrel (vagy a QSA-adapterrel), amely az eszközhöz csatlakozik.
+- Az energiaellátási kábelek az eszköz hátoldalán található tálcában találhatók.
+
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -65,80 +68,93 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
 
 1. Hozzon létre egy új Azure Data Box-erőforrást az Azure Portalon.
 2. Válasszon ki egy meglévő előfizetést a szolgáltatáshoz, és az átvitel típusánál válassza az **Importálás** lehetőséget. Adja meg a **Forrásország** mezőben azt a helyet, ahol az adatok jelenleg találhatók, az **Azure-beli célrégió** mezőben pedig az adatátvitel célját.
-3. Válassza ki **Data Box-(nagy erőforrásigényű)** . A maximálisan felhasználható kapacitás 770 TB, és több rendeléseket adatok nagyobb méretek esetében hozhat létre.
+3. Válassza a **Data Box Heavy**lehetőséget. A maximálisan felhasználható kapacitás 770 TB, és több megrendelést is létrehozhat nagyobb adatméretekhez.
 4. Adja meg a rendelés részleteit és a szállítási adatokat. Ha a szolgáltatás elérhető az Ön régiójában, adja meg az értesítési e-mail-címeket, tekintse át az összefoglalót, és hozza létre a rendelést.
 
 A rendelés létrehozását követően megtörténik az eszköz a szállításra való előkészítése.
 
-## <a name="cable-for-power"></a>Az energiagazdálkodási kábel
+::: zone-end
 
-Ez a lépés 5 percet vesz igénybe.
+::: zone target = "chromeless"
 
-Amikor megjelenik a Data Box (nagy erőforrásigényű), a következő lépések bekapcsolási az eszköz bekábelezése, és kapcsolja be az eszközt.
+# <a name="cable-and-connect-to-your-device"></a>Kábel csatlakoztatása az eszközhöz
+
+Miután áttekintette az előfeltételeket, csatlakoztassa az eszközt, és kapcsolódjon az eszközhöz.
+
+::: zone-end
+
+## <a name="cable-for-power"></a>Tápkábel
+
+Ez a lépés körülbelül 5 percet vesz igénybe.
+
+Amikor megkapja a Data Box Heavy, hajtsa végre az alábbi lépéseket az eszköz csatlakoztatásához, majd kapcsolja be az eszközt.
 
 1. Amennyiben az eszközön sérülés vagy illetéktelen hozzáférés nyomai észlelhetők, ne folytassa az üzembe helyezést. Vegye fel a kapcsolatot a Microsoft támogatási szolgálatával, és küldessen egy csereeszközt.
-2. Telepítési hely helyezheti az eszközöket, és a hátsó kerekek zárolása.
-3. Csatlakozzon a tápegységek hátulján az eszközön található összes négy tápkábelek.
-4. Az első síknak power gombok segítségével kapcsolja be az eszköz csomópontok.
+2. Helyezze át az eszközt a telepítési helyre, és zárja be a hátsó kerekeket.
+3. Csatlakoztasson az összes négy tápkábelt az eszköz hátoldalán található energiaellátási eszközökhöz.
+4. Az eszköz csomópontjainak bekapcsolásához használja az első síkon lévő főkapcsoló gombokat.
 
-## <a name="cable-first-node-for-network"></a>Hálózati kábel első csomópont
+## <a name="cable-first-node-for-network"></a>Hálózati kábel első csomópontja
 
-Ebben a lépésben a befejezéséhez körülbelül 10 – 15 percet vesz igénybe.
+Ez a lépés körülbelül 10-15 percet vesz igénybe.
 
 1. Az RJ-45 CAT 6 hálózati kábellel csatlakoztassa a gazdagépet az eszköz felügyeleti portjához (MGMT).
-2. A Twinax QSFP + rézeres kábellel csatlakoztasson legalább egy 40 Gbps a (javasolt több mint 1 GB/s) hálózati adaptert, adatok 1 vagy az adatok a 2. Ha a 10-GB/s kapcsoló használata a Twinax SFP + rézeres kábellel egy QSFP + SFP + adapter (DSS foglalt követelményeknek adapter) való csatlakozáshoz a 40 Gbps hálózati adapter adatok.
+2. A Twinax QSFP + Copper kábel használatával legalább 1 40 GB/s (előnyben részesített 1 GB/s) hálózati adapter, adat 1 vagy adat 2 adatkapcsolattal csatlakoztatható. Ha 10 GB/s-os kapcsolót használ, használjon egy Twinax SFP + Copper kábelt egy QSFP + és SFP + adapter (a QSA adapter) használatával az 40-Gbps hálózati adapter csatlakoztatásához az adataihoz.
 3. Csatlakoztassa a kábeleket az eszközhöz az ábra szerint.  
 
-    ![Data Box nehéz bekábelezte](media/data-box-heavy-quickstart-portal/data-box-heavy-ports-cabled.png)  
+    ![Data Box Heavy kábellel](media/data-box-heavy-quickstart-portal/data-box-heavy-ports-cabled.png)  
 
-## <a name="configure-first-node"></a>Első csomópontok konfigurálása
+## <a name="configure-first-node"></a>Az első csomópont konfigurálása
 
 Ez a lépés kb. 5–7 percet vesz igénybe.
 
-1. Az eszköz jelszavát az [Azure Portal](https://portal.azure.com) **Általános > Eszköz adatai** lapján találja. Ugyanazt a jelszót mindkét csomópontját az eszköz használható.
-2. És a 255.255.255.0 alhálózati maszkkal 192.168.100.5 statikus IP-cím hozzárendelése az Ethernet-adaptert a számítógépen a Data Box (nagy erőforrásigényű) való kapcsolódáshoz használ. Nyissa meg az eszköz helyi webes felületét a következő helyen: `https://192.168.100.10`. A csatlakozás az eszköz bekapcsolását követően 5 percet is igénybe vehet.
+1. Az eszköz jelszavát az [Azure Portal](https://portal.azure.com) **Általános > Eszköz adatai** lapján találja. Ugyanazt a jelszót használja az eszköz mindkét csomópontja esetében.
+2. Rendeljen hozzá egy statikus IP-címet a 192.168.100.5 és az alhálózat 255.255.255.0 az Ethernet-adapterhez azon a számítógépen, amelyet a Data Box Heavyhoz való csatlakozáshoz használ. Nyissa meg az eszköz helyi webes felületét a következő helyen: `https://192.168.100.10`. A csatlakozás az eszköz bekapcsolását követően 5 percet is igénybe vehet.
 3. Jelentkezzen be az Azure Portalról beszerzett jelszóval. Egy hibaüzenet jelenik meg, miszerint a webhely biztonsági tanúsítványa hibás. A böngészőspecifikus utasításokat követve lépjen a weblapra.
-4. Alapértelmezés szerint a hálózati adapterek (kivéve a MGMT) beállításai DHCP. Ha szükséges, konfigurálja ezeket az adaptereket statikus, és adjon meg egy IP-címet.
+4. Alapértelmezés szerint a csatoló hálózati beállításai (kivéve a MGMT-t) DHCP-ként vannak konfigurálva. Ha szükséges, konfigurálhatja ezeket a csatolókat statikusként, és megadhat egy IP-címet.
 
-## <a name="cable-and-configure-the-second-node"></a>Bekötéséhez és konfigurálásához a második csomópont
+## <a name="cable-and-configure-the-second-node"></a>Kábel és a második csomópont konfigurálása
 
-Ebben a lépésben a befejezéséhez körülbelül 15 – 20 percet vesz igénybe.
+Ez a lépés körülbelül 15-20 percet vesz igénybe.
 
-Kövesse a lépéseket az első fürtcsomópont bekötéséhez és konfigurálásához a második csomópontot az eszközön használt.  
+Kövesse az első csomóponthoz tartozó lépéseket, és konfigurálja a második csomópontot az eszközön.  
+
+
+::: zone target = "docs"
 
 ## <a name="copy-data"></a>Adatok másolása
 
-Ez a művelet elvégzéséhez szükséges idő attól függ, az adatok mérete és a sebesség, a hálózat, amelyen a rendszer az adatokat másolja.
+A művelet elvégzéséhez szükséges idő az adatok méretétől és annak a hálózatnak a sebességétől függ, amelyen az adatok másolása megtörtént.
  
-1. Adatok másolása az mindkét eszköz a csomópontok mindkét a 40-GB/s sebességű adatok felületek segítségével párhuzamosan.
+1. Másolja az összes eszközt az eszközök csomópontjaira az 40-Gbps adatinterfészek párhuzamos használatával.
 
-    - Ha Windows-állomás, például használja az SMB kompatibilis fájlmásoló eszközt [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
+    - Ha Windows-gazdagépet használ, használjon olyan SMB-kompatibilis fájlmásolás eszközt, mint például a [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
     - NFS-gazdagép esetén a `cp` parancs vagy a `rsync` használatával másolhatja az adatokat.
-2. Csatlakozás a megosztásokat, az eszközön, az elérési út alapján:`\\<IP address of your device>\ShareName`. A megosztás hozzáférés szükséges hitelesítő adatokat, keresse fel a **Connect & copy** a helyi webes felületén a Data Box (nagy erőforrásigényű) lapján.
-3. Győződjön meg arról, hogy a megosztás és mappanevek, és az adatok kövesse az ismertetett irányelvek, a [Azure Storage és a Data Box nehéz szolgáltatási korlátozásaival](data-box-heavy-limits.md).
+2. Kapcsolódjon az eszközön található megosztásokhoz a következő elérési út használatával:`\\<IP address of your device>\ShareName`. A megosztás hozzáférési hitelesítő adatainak beszerzéséhez nyissa meg a Data Box Heavy helyi webes FELÜLETének **kapcsolódás & másolása** lapját.
+3. Győződjön meg arról, hogy a megosztási és a mappa neve, valamint az adatkövetés az [Azure Storage-ban és a Data Box Heavy szolgáltatás korlátaiban](data-box-heavy-limits.md)ismertetett irányelvek szerint történjen.
 
-## <a name="prepare-to-ship"></a>A szállítás előkészítése
+## <a name="prepare-to-ship"></a>Szállításra való előkészítés
 
 A művelet végrehajtásának időtartama az adatok mennyiségétől függ.
 
-1. Lépjen az adatmásolás befejezése után hibák nélkül, **szállításra való** helyi webes felületén oldalra, majd indítsa el az előkészületeket a szállításra.
-2. Miután a **szállításra való** rendelkezik sikeresen befejeződött, mind a csomópontokon, kapcsolja ki az eszköz helyi webes felületén.
+1. Miután az Adatmásolás hibák nélkül befejeződött, lépjen a helyi webes felhasználói felületen **szállításra való előkészítés** lapra, és indítsa el a hajó előkészítését.
+2. Miután a **szállításra való előkészítés** sikeresen befejeződött a csomópontokon, kapcsolja ki az eszközt a helyi webes kezelőfelületről.
 
 ## <a name="ship-to-azure"></a>Elküldés az Azure-nak
 
-Ez a művelet a végrehajtásához körülbelül 15 – 20 percet vesz igénybe.
+A művelet végrehajtása körülbelül 15-20 percet vesz igénybe.
 
-1. Távolítsa el a kábelek, és vissza kell a tálca hátulján az eszköz található.
-2. Ütemezhet begyűjtést a regionális szolgáltató.
-3. Kapcsolatfelvétel [Box Adatműveletek](mailto:DataBoxOps@microsoft.com) tájékoztatja a begyűjtés kapcsolatban, valamint hogy a visszaszállítási címkét.
-4. Lehet, hogy a visszaszállítási címke az eszköz az első egyértelmű panelen látható.
+1. Távolítsa el a kábeleket, majd küldje vissza őket az eszköz hátoldalán lévő tálcába.
+2. Ütemezzen egy felvételt a regionális szolgáltatóval.
+3. Lépjen kapcsolatba [Data Box műveletekkel](mailto:DataBoxOps@microsoft.com) , hogy tájékoztassa a pickupot és a visszaszállítási címkét.
+4. A visszatérési szállítási címkének az eszköz elülső paneljén láthatónak kell lennie.
 
 ## <a name="verify-data"></a>Az adatok ellenőrzése
 
 A művelet végrehajtásának időtartama az adatok mennyiségétől függ.
 
-1. A Data Box (nagy erőforrásigényű) eszközt az Azure-adatközponti hálózathoz való csatlakozáskor az adatok automatikusan feltölti az Azure-bA.
-2. A Data Box szolgáltatás értesíti, hogy befejeződött-e az adatok másolása az Azure Portalon keresztül.
+1. Ha a Data Box Heavy eszköz csatlakozik az Azure Datacenter networkhez, az adatok automatikusan feltöltve lettek az Azure-ba.
+2. Data Box szolgáltatás értesíti arról, hogy az Adatmásolás befejeződött az Azure Portalon keresztül.
 
     1. Ellenőrizze a hibákat a hibanaplókban, és tegye meg a szükséges intézkedéseket.
     2. Ellenőrizze, hogy az adatok jelen vannak-e a tárfiók(ok)ban, mielőtt törölné azokat a forrásról.
@@ -147,13 +163,15 @@ A művelet végrehajtásának időtartama az adatok mennyiségétől függ.
 
 Ez a lépés 2–3 percet vehet igénybe.
 
-- Az Azure Portalon a Data Box nehéz rendelés megszakíthatja a rendelés feldolgozása előtt. A rendelést a teljesítése után már nem lehet visszavonni. A rendelés halad a maga útján, amíg el nem éri a teljesített állapotot. A rendelés visszavonásához lépjen az **Áttekintés** oldalra, és kattintson a **Megszakítás** parancsra a parancssávon.
+- A sorrend feldolgozása előtt megszakíthatja a Azure Portal Data Box Heavy sorrendjét. A rendelést a teljesítése után már nem lehet visszavonni. A rendelés halad a maga útján, amíg el nem éri a teljesített állapotot. A rendelés visszavonásához lépjen az **Áttekintés** oldalra, és kattintson a **Megszakítás** parancsra a parancssávon.
 
 - A rendelés akkor törölhető, ha a **Teljesítve** vagy a **Megszakítva** állapot jelenik meg az Azure Portalon. A rendelés törléséhez lépjen az **Áttekintés** oldalra, és kattintson a **Törlés** parancsra a parancssávon.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a rövid útmutatóban egy Data Box (nagy erőforrásigényű) segítségével az adatok importálása az Azure-bA helyezte. Az Azure Data Box nehéz felügyeleti kapcsolatos további információkért folytassa a következő oktatóanyaggal:
+Ebben a rövid útmutatóban üzembe helyezett egy Data Box Heavy az Azure-ba történő adatimportáláshoz. Ha többet szeretne megtudni a Azure Data Box Heavy-kezelésről, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> [Az Azure portal segítségével felügyelheti a Data Box (nagy erőforrásigényű)](data-box-portal-admin.md)
+> [A Azure Portal használata a Data Box Heavy felügyeletéhez](data-box-portal-admin.md)
+
+::: zone-end

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b555ecdf8bbd3d29e440675599041f40ac3c9d0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 62ea1761cef48ab7808a352789963ab55129d2f8
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125028"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162389"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Felhőalapú Azure-beli Multi-Factor Authentication üzembe helyezés tervezése
 
@@ -172,6 +172,8 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-
 ### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Felhasználók konvertálása felhasználónkénti MFA-ből feltételes hozzáférésen alapuló MFA-ra
 
 Ha a felhasználók engedélyezve lettek a felhasználónkénti engedélyezése és a kényszerített Azure Multi-Factor Authentication használatával, a következő PowerShell segítséget nyújthat a feltételes hozzáférés-alapú Azure-Multi-Factor Authentication való átalakításhoz.
+
+Futtassa ezt a PowerShellt egy ISE-ablakban, vagy mentse a következőt:. PS1 fájl helyi futtatásához.
 
 ```PowerShell
 # Disable MFA for all users, keeping their MFA methods intact

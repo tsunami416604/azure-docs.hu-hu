@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan végezheti el az ügyfelek bevezetését az Azu
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 35cf61897d012690f0a0f752a7cb36270e11e10e
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: dabee74dc757a8ccdc4384662f5c9bc09a1e5fbe
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012062"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165034"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez
 
@@ -61,63 +61,8 @@ az account set --subscription <subscriptionId/name>
 az account show
 ```
 
-
-## <a name="ensure-the-customers-subscription-is-registered-for-onboarding"></a>Győződjön meg arról, hogy az ügyfél előfizetése regisztrálva van a bevezetéshez
-
-A **Microsoft. ManagedServices** erőforrás-szolgáltató manuális regisztrálásával minden előfizetést engedélyezni kell a bevezetéshez. Az ügyfél regisztrálhat egy előfizetést az [Azure Resource Providers és types](../../azure-resource-manager/resource-manager-supported-services.md)szolgáltatásban ismertetett lépések követésével.
-
-Az ügyfél ellenőrizheti, hogy az előfizetés készen áll-e a bevezetésre az alábbi módszerek egyikével.
-
-### <a name="azure-portal"></a>Azure Portal
-
-1. A Azure Portal válassza ki az előfizetést.
-1. Válassza ki az **Erőforrás-szolgáltatók** elemet.
-1. Ellenőrizze, hogy a **Microsoft. ManagedServices** **regisztráltként**jelenik-e meg.
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-Ennek a következőhöz hasonló eredményeket kell visszaadnia:
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-Ennek a következőhöz hasonló eredményeket kell visszaadnia:
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
+> [!NOTE]
+> Ha egy előfizetést (vagy egy vagy több, az előfizetésen belüli erőforráscsoportot) készít az itt leírt eljárással, a **Microsoft. ManagedServices** erőforrás-szolgáltató regisztrálva lesz az adott előfizetéshez.
 
 ## <a name="define-roles-and-permissions"></a>Szerepkörök és engedélyek definiálása
 
@@ -129,8 +74,6 @@ A felügyelet egyszerűbbé tételéhez ajánlott az Azure AD felhasználói cso
 > A szerepkör-hozzárendeléseknek a szerepköralapú hozzáférés-vezérlés (RBAC) [beépített szerepköreit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kell használniuk. Az Azure-beli delegált erőforrás-kezelés jelenleg minden beépített szerepkört támogat, kivéve a tulajdonost és a [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) engedéllyel rendelkező beépített szerepköröket. A felhasználói hozzáférés rendszergazdai beépített szerepköre korlátozott használat esetén támogatott az alább leírtak szerint. Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) szintén nem támogatottak.
 
 Az engedélyek definiálásához ismernie kell az egyes felhasználók, felhasználói csoportok vagy egyszerű szolgáltatásnév azonosító értékeit, amelyekhez hozzáférést szeretne biztosítani. A hozzárendelni kívánt beépített szerepkörökhöz is szüksége lesz a szerepkör-definíciós AZONOSÍTÓra. Ha még nem rendelkezik velük, a következő módszerek egyikével kérheti le őket.
-
-
 
 ### <a name="powershell"></a>PowerShell
 

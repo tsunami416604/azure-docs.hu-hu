@@ -3,21 +3,31 @@ title: Azure Functions létrehozása és üzembe helyezése a Pythonban a Visual
 description: A Visual Studio Code bővítmény használata a Azure Functionshoz kiszolgáló nélküli függvények létrehozása a Pythonban és üzembe helyezése az Azure-ban.
 services: functions
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: f5591a3e0ca73649b1ffc51c75aa95e86e286768
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 4f5c10536992f51ac61815507a3869e521520299
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639086"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170714"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>A Python üzembe helyezése a Visual Studio Code-Azure Functions
 
 Ebben az oktatóanyagban a Visual Studio Code és a Azure Functions bővítmény használatával hozzon létre egy kiszolgáló nélküli HTTP-végpontot a Python segítségével, és adjon hozzá egy kapcsolatot (vagy "kötést") a tárolóhoz. Azure Functions futtatja a kódot egy kiszolgáló nélküli környezetben anélkül, hogy virtuális gépet kellene kiépíteni vagy webalkalmazást közzétennie. A Visual Studio Code Azure Functions-bővítménye jelentősen leegyszerűsíti a függvények használatának folyamatát azáltal, hogy automatikusan kezeli a számos konfigurációs szempontot.
+
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+
+> [!div class="checklist"]
+> * Az Azure Functions-bővítmény telepítése
+> * HTTP által aktivált függvény létrehozása
+> * Helyi hibakeresés
+> * Alkalmazásbeállítások szinkronizálása
+> * Folyamatos átviteli naplók megtekintése
+> * Kapcsolódás az Azure Storage-hoz
 
 Ha problémákat tapasztal az oktatóanyag lépéseivel kapcsolatban, szeretnénk hallani a részleteket. Az egyes szakaszok végén található **probléma** gombra kattintva részletes visszajelzéseket küldhet.
 
@@ -94,35 +104,32 @@ Ha a `func` parancs nem ismerhető fel, ellenőrizze, hogy a Azure functions Cor
 
 1. Az alábbi utasításokban:
 
-    | Kérdés | Érték | Leírás | 
+    | Kérdés | Value | Leírás | 
     | --- | --- | --- |
     | A projekthez tartozó mappa megadása | Aktuális megnyitott mappa | Az a mappa, amelyben létre kívánja hozni a projektet. Előfordulhat, hogy létre szeretné hozni a projektet egy almappában. |
     | Válasszon nyelvet a Function app-projekthez | **Python** | A függvényhez használandó nyelv, amely meghatározza a kódhoz használt sablont. |
     | Válasszon sablont a projekt első függvényéhez | **HTTP-trigger** | A HTTP-triggert használó függvények akkor futnak le, amikor HTTP-kérelem történik a függvény végpontján. (A Azure Functions számos más eseményindítóval rendelkezik. További információért lásd: [Mire használhatom a functions szolgáltatást?](functions-overview.md#what-can-i-do-with-functions) |
     | Adja meg a függvény nevét | HttpExample | A név olyan almappában használatos, amely tartalmazza a függvény kódját a konfigurációs adat mellett, valamint meghatározza a HTTP-végpont nevét is. Használja az "HttpExample" értéket ahelyett, hogy elfogadja az alapértelmezett "HTTPTrigger" elemet, hogy megkülönböztesse magát a függvényt az triggerből. |
-    | Engedélyszint | **Névtelen** | A névtelen hitelesítés mindenki számára nyilvánosan elérhetővé teszi a funkciót. |
+    | Engedélyszint | **Függvény** | A függvény végpontján kezdeményezett hívásokhoz egy [funkcióbillentyű](functions-bindings-http-webhook.md#authorization-keys)szükséges. |
     | Válassza ki, hogyan szeretné megnyitni a projektet? | **Megnyitás az aktuális ablakban** | Megnyitja a projektet az aktuális Visual Studio Code-ablakban. |
 
-1. Rövid idő elteltével egy üzenet jelzi, hogy az új projekt létrejött. A **Explorerben**megjelenik a függvényhez létrehozott almappa, a Visual Studio Code pedig megnyitja az  *\_ \_\_init\_.* a (z) alapértelmezett függvény kódját tartalmazó fájlt:
+1. Rövid idő elteltével egy üzenet jelzi, hogy az új projekt létrejött. Az **Explorerben**a függvényhez létrehozott almappa található. 
+
+1. Ha még nincs megnyitva, nyissa meg az alapértelmezett függvény kódját tartalmazó  *\_init\_\_. \_* a (z) fájlt:
 
     [![Új Python functions-projekt létrehozásának eredménye](media/tutorial-vs-code-serverless-python/project-create-results.png)](media/tutorial-vs-code-serverless-python/project-create-results.png)
 
     > [!NOTE]
-    > Ha a Visual Studio Code azt jelzi, hogy nincs **kiválasztva  *\_ \_Python-tolmács az init\_\_.* a parancssori felület megnyitásakor, nyissa meg a parancssort (F1), majd válassza a Python: Válassza a értelmező** parancs lehetőséget, majd válassza ki a virtuális környezetet a `.env` helyi mappában (amely a projekt részeként lett létrehozva). A környezetnek a Python 3.6 x-alapúnak kell lennie, amelyet az [Előfeltételek](#prerequisites)között korábban feljegyzett.
+    > Ha a Visual Studio Code azt jelzi, hogy nincs kiválasztva Python-tolmács az  *\_ \_init\_\_. a.* a parancs megnyitásakor, nyissa meg a parancssort (F1), majd válassza a **Python: Válassza a értelmező** parancs lehetőséget, majd válassza ki a virtuális környezetet a `.env` helyi mappában (amely a projekt részeként lett létrehozva). A környezetnek a Python 3.6 x-alapúnak kell lennie, amelyet az [Előfeltételek](#prerequisites)között korábban feljegyzett.
     >
     > ![A projekttel létrehozott virtuális környezet kiválasztása](media/tutorial-vs-code-serverless-python/select-venv-interpreter.png)
-
-> [!TIP]
-> Ha ugyanabban a projektben egy másik függvényt szeretne létrehozni, használja az **Azure-ban a **create Function** parancsot: Functions** Explorer, vagy nyissa meg a Command paletta (F1) **, és válassza ki a Azure functions: Függvény** létrehozása parancs. Mindkét parancs rákérdez a függvény nevére (amely a végpont neve), majd létrehoz egy almappát az alapértelmezett fájlokkal.
->
-> ![Új Function parancs az Azure-ban: Functions Explorer](media/tutorial-vs-code-serverless-python/function-create-new.png)
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=python-functions-extension&step=02-create-function)
 
 ## <a name="examine-the-code-files"></a>A kód fájljainak vizsgálata
 
-Az újonnan létrehozott függvény almappájában három fájl található  *\_:\_ \_az init\_.* a (z) függvény kódja, a *function. JSON* a függvényt írja le Azure functions és *sample. dat* egy minta adatfájl. Ha szeretné, törölheti a *sample. dat* fájlt, mivel az csak azt mutatja, hogy más fájlokat is hozzáadhat az almappához.
+Az újonnan létrehozott _HttpExample_ -függvény almappájában három fájl található:  *\_ \_az init\_\_.* a a függvény kódját tartalmazza, a *function. JSON* a függvényt az Azure-ba írja. A functions és a *sample. dat* egy minta adatfájl. Ha szeretné, törölheti a *sample. dat* fájlt, mivel az csak azt mutatja, hogy más fájlokat is hozzáadhat az almappához.
 
 Nézzük meg először a *function. JSON* fájlt, majd a kódot az  *\_ \_\_init\_.* a......
 
@@ -135,7 +142,7 @@ A function. JSON fájl biztosítja a Azure Functions végponthoz szükséges kon
   "scriptFile": "__init__.py",
   "bindings": [
     {
-      "authLevel": "anonymous",
+      "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
@@ -155,9 +162,9 @@ A function. JSON fájl biztosítja a Azure Functions végponthoz szükséges kon
 
 A `scriptFile` tulajdonság azonosítja a kód indítási fájlját, és a kódnak tartalmaznia kell egy nevű `main`Python-függvényt. A kódot több fájlba is felhasználhatja, amíg az itt megadott fájl `main` függvényt tartalmaz.
 
-A `bindings` elem két objektumot tartalmaz, egyet a beérkező kérések leírására, a másikat pedig a http-válasz leírására. A bejövő kérelmek (`"direction": "in"`) esetében a függvény válaszol a HTTP Get vagy post kérelmekre, és nem igényel hitelesítést. A válasz (`"direction": "out"`) egy olyan http-válasz, amely a `main` Python függvényből származó bármilyen értéket ad vissza.
+A `bindings` elem két objektumot tartalmaz, egyet a beérkező kérések leírására, a másikat pedig a http-válasz leírására. A bejövő kérések`"direction": "in"`() esetében a függvény a HTTP Get vagy post kérelmekre válaszol, és megköveteli, hogy a függvény kulcsát adja meg. A válasz (`"direction": "out"`) egy olyan http-válasz, amely a `main` Python függvényből származó bármilyen értéket ad vissza.
 
-### <a name="initpy"></a>\_\_init.py\_\_
+### <a name="__initpy__"></a>\_\_init.py\_\_
 
 Új függvény létrehozásakor Azure functions alapértelmezett Python-kódot biztosít az  *\_init\_\_. \_* a:
 
@@ -231,11 +238,11 @@ A kód fontos részei a következők:
         --data {"""name""":"""Visual Studio Code"""} http://localhost:7071/api/HttpExample
     ```
 
-    Másik lehetőségként hozzon létre egy fájlt `{"name":"Visual Studio Code"}` *, például a* következőt:, `curl --header "Content-Type: application/json" --request POST --data @data.json http://localhost:7071/api/HttpExample`és használja az parancsot.
+    Másik lehetőségként hozzon létre egy fájlt, például `{"name":"Visual Studio Code"}` a következőt:, `curl --header "Content-Type: application/json" --request POST --data @data.json http://localhost:7071/api/HttpExample`és használja az parancsot.
 
-1. A függvény hibakeresésének teszteléséhez állítson be egy töréspontot a sorban `name = req.params.get('name')` , amely újra beolvassa az URL-címre, és egy kérést küld újra. A Visual Studio Code debuggernek le kell állnia az adott sorban, így megvizsgálhatja a változókat, és áttekintheti a kódot. (Az alapszintű hibakeresés rövid áttekintését lásd: [Visual Studio Code oktatóanyag – a hibakereső konfigurálása és futtatása](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger).)
+1. A függvény hibakereséséhez állítson be egy töréspontot az URL- `name = req.params.get('name')` címre, amely beolvassa és elküld egy kérést az URL-címhez. A Visual Studio Code debuggernek le kell állnia az adott sorban, így megvizsgálhatja a változókat, és áttekintheti a kódot. (Az alapszintű hibakeresés rövid áttekintését lásd: [Visual Studio Code oktatóanyag – a hibakereső konfigurálása és futtatása](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger).)
 
-1. Ha meggyőződött arról, hogy a funkciót helyileg tesztelte, állítsa le a hibakeresőt **(a** > hibakeresés**leállítása** vagy a hibakeresési eszköztáron a leválasztási parancs leállítása paranccsal).
+1. Ha meggyőződött arról, hogy a funkciót helyileg tesztelte, állítsa le a hibakeresőt > (a hibakeresés**leállítása** vagy a hibakeresési eszköztáron a leválasztási parancs leállítása paranccsal).
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=python-functions-extension&step=04-test-debug)
@@ -386,7 +393,7 @@ Az első üzembe helyezés után módosításokat végezhet a kódban, például
     }
     ```
 
-1. Indítsa el a hibakeresőt az F5 billentyű lenyomásával, **vagy a** > hibakeresés megkezdése parancs bejelölésével. A **kimeneti** ablakban most mindkét végpontot meg kell jeleníteni a projektben:
+1. Indítsa el a hibakeresőt az F5 billentyű lenyomásával > , vagy a hibakeresés megkezdése parancs bejelölésével. A **kimeneti** ablakban most mindkét végpontot meg kell jeleníteni a projektben:
 
     ```output
     Http Functions:
@@ -423,7 +430,7 @@ Ebben a szakaszban egy tárolási kötést ad hozzá az oktatóanyag korábbi r�
     | --- | --- |
     | Kötési irány beállítása | ki |
     | Kötés kiválasztása a kifelé | Azure Queue Storage |
-    | Ez a név szolgál a kötés azonosítására a kódban. | msg |
+    | A kódban a kötés azonosítására használt név | msg |
     | Az az üzenetsor, amelybe az üzenet el lesz küldve | outqueue |
     | Válassza a beállítás lehetőséget a *Local. Settings. JSON* fájlban (a tárolási kapcsolatok megkérdezése) | AzureWebJobsStorage |
 
@@ -472,7 +479,7 @@ Ebben a szakaszban egy tárolási kötést ad hozzá az oktatóanyag korábbi r�
             )
     ```
 
-1. A módosítások helyi teszteléséhez indítsa el újra a hibakeresőt a Visual Studio Code-ban az F5 billentyű lenyomásával, **vagy a** > hibakeresés megkezdése menüparancs kiválasztásával. A **kimeneti** ablaknak a projektben lévő végpontok megjelenítéséhez hasonlóan kell megjelennie.
+1. A módosítások helyi teszteléséhez indítsa el újra a hibakeresőt a Visual Studio Code-ban az F5 billentyű lenyomásával, vagy a > hibakeresés megkezdése menüparancs kiválasztásával. A **kimeneti** ablaknak a projektben lévő végpontok megjelenítéséhez hasonlóan kell megjelennie.
 
 1. Egy böngészőben nyissa meg az URL `http://localhost:7071/api/HttpExample?name=VS%20Code` -címet, és hozzon létre egy kérelmet a HttpExample-végpontnak, amely szintén üzenetet ír a várólistára.
 

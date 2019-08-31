@@ -15,15 +15,15 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: mvc, seo-java-july2019
-ms.openlocfilehash: 4f31820357048515ddf30b53a93c03f7eecec3be
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.custom: mvc, seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 10e5c31b4fbeb8af0235a067c57c3b209fe892af
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678224"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171307"
 ---
-# <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Gyors útmutató: Java-alkalmazás létrehozása App Service Linux rendszeren
+# <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Linuxon
 
 A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -t a [Azure app Service Maven beépülő modullal](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) egy Java Web Archive-(War-) fájl telepítéséhez.
 > [!NOTE]

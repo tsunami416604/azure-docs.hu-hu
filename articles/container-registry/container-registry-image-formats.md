@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/18/2019
+ms.date: 08/30/2019
 ms.author: danlep
-ms.openlocfilehash: c804dd7b73ea4a51c02c8b342a4ac60d992ec7c5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: d49aab89c9568f168808c40508b4fe7d3175e902
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310677"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164523"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure Container Registry támogatott tartalom-formátumok
 
@@ -29,11 +29,17 @@ A következő Docker-tároló képformátumai támogatottak:
 
 ## <a name="oci-images"></a>OCI-lemezképek
 
-A Azure Container Registry olyan képeket is támogat, amelyek megfelelnek a [nyílt tároló kezdeményezés (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md)képformátumának specifikációjának. A csomagolási formátumok közé tartozik a [szingularitás képformátuma (SIF)](https://www.sylabs.io/2018/03/sif-containing-your-containers/).
+Azure Container Registry támogatja a [nyílt tároló kezdeményezés (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md)képformátumának specifikációjának megfelelő lemezképeket. A csomagolási formátumok közé tartozik a [szingularitás képformátuma (SIF)](https://www.sylabs.io/2018/03/sif-containing-your-containers/).
+
+## <a name="oci-artifacts"></a>OCI összetevők
+
+Azure Container Registry támogatja a [OCI-terjesztési specifikációt](https://github.com/opencontainers/distribution-spec), a szállítói semleges, a felhő-agnosztikus specifikációt a tároló-lemezképek és más tartalomtípusok (összetevők) tárolására, megosztására, védelmére és üzembe helyezésére. A specifikáció lehetővé teszi, hogy a beállításjegyzék az összetevők széles körét tárolja a tároló rendszerképein kívül. Az összetevőnek megfelelő eszközöket kell használnia az összetevők leküldéséhez és lekéréséhez. Példaként tekintse meg az [OCI-összetevő leküldése és lekérése egy Azure Container Registry használatával](container-registry-oci-artifacts.md)című témakört.
+
+Ha többet szeretne megtudni a OCI összetevőkről, tekintse meg a [OCI beállításjegyzék as Storage (ORAS)](https://github.com/deislabs/oras) tárházát és a [OCI](https://github.com/opencontainers/artifacts) -összetevők tárházát a githubon.
 
 ## <a name="helm-charts"></a>Helm-diagramok
 
-A Azure Container Registry képes a Helm- [diagramok](https://helm.sh/), a Kubernetes alkalmazások gyors kezelésére és üzembe helyezésére használt csomagolási formátum tárolására. A [Helm ügyfélprogram](https://docs.helm.sh/using_helm/#installing-helm) 2.11.0 vagy újabb verziója támogatott.
+A Azure Container Registry képes a Helm- [diagramok](https://helm.sh/), a Kubernetes alkalmazások gyors kezelésére és üzembe helyezésére használt csomagolási formátum tárolására. A [Helm Client](https://docs.helm.sh/using_helm/#installing-helm) 2-es verziója (2.11.0 vagy újabb) támogatott.
 
 ## <a name="next-steps"></a>További lépések
 

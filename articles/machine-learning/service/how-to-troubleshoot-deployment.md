@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 24716a9b9fa5174d899cf0678b83b2da0c59957c
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358669"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183537"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Az Azure Kubernetes Service és a Azure Container Instances üzemelő példány hibaelhárítása Azure Machine Learning
 
@@ -204,6 +204,9 @@ print(prediction)
 
 A helyi tesztelés során előfordulhat, hogy frissítenie kell `score.py` a fájlt a naplózás hozzáadásához, vagy a felderített problémák megoldására tett kísérletet. A fájl módosításainak újratöltéséhez `score.py` használja `reload()`a következőt:. A következő kód például újratölti a szolgáltatáshoz tartozó parancsfájlt, majd adatokat küld neki. Az adatgyűjtés a frissített `score.py` fájllal történik:
 
+> [!IMPORTANT]
+> A `reload` metódus csak helyi központi telepítések esetén érhető el. További információ a központi telepítés más számítási célra való frissítéséről: a [modellek üzembe helyezésének](how-to-deploy-and-where.md#update)frissítése szakasz.
+
 ```python
 service.reload()
 print(service.run(input_data=test_sample))
@@ -240,7 +243,7 @@ A rendszerkép sikeres felépítése után a rendszer megkísérli a tároló in
 
 A naplók ellenőrzéséhez használja a Docker- [napló vizsgálata](#dockerlog) szakaszban található információkat.
 
-## <a name="function-fails-getmodelpath"></a>Függvény futása: get_model_path()
+## <a name="function-fails-get_model_path"></a>Függvény futása: get_model_path()
 
 Gyakran előfordul, `init()` hogy a pontozási parancsfájl függvényében a [Model. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) függvényt egy modell fájljának vagy a tárolóban található, a modell fájljainak mappájának megkeresésére hívja meg. Ha a modell fájlja vagy mappája nem található, a függvény sikertelen lesz. A legegyszerűbben úgy, hogy ez a hiba hibakeresési, hogy futtassa az alábbi a tároló shellben a Python-kód:
 
@@ -255,7 +258,7 @@ Ez a példa megjeleníti a helyi elérési utat ( `/var/azureml-app`ahhoz képes
 
 Ha a naplózási szint HIBAKERESÉSét állítja be, akkor további információk is naplózhatók, ami hasznos lehet a hiba azonosításához.
 
-## <a name="function-fails-runinputdata"></a>Függvény futása: run(input_data)
+## <a name="function-fails-runinput_data"></a>Függvény futása: run(input_data)
 
 Ha a szolgáltatás sikeres üzembe helyezése, de azt meg ezeket az adatokat a pontozási végpontjához összeomlik, hiba, valamint rögzíti az utasítás is hozzáadhat a `run(input_data)` függvényt, hogy a részletes hibaüzenet Ehelyett adja vissza. Példa:
 
@@ -476,7 +479,7 @@ Ebben a példában a beállításjegyzék neve `myregistry` , és a rendszerkép
     docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
     ```
 
-1. Ha a VS Code-t a tárolón belül PTVSD szeretné csatolni, nyissa meg a VS Code-ot, és használja az F5 billentyűt, __vagy válassza a__ Ha a rendszer kéri, __válassza ki a Azure Machine learning szolgáltatást: Docker-__ hibakeresési konfiguráció. Azt is megteheti, hogy kijelöli a hibakeresés ikont az oldalsó sávon, a __Azure Machine learning szolgáltatásban: A hibakeresési__ legördülő menüből a Docker hibakeresési bejegyzését, majd a zöld nyíl használatával csatolja a hibakeresőt.
+1. Ha a VS Code-t a tárolón belül PTVSD szeretné csatolni, nyissa meg a VS Code-ot, és használja az F5 billentyűt, vagy válassza a Ha a rendszer kéri, __válassza ki a Azure Machine learning szolgáltatást: Docker-__ hibakeresési konfiguráció. Azt is megteheti, hogy kijelöli a hibakeresés ikont az oldalsó sávon, a __Azure Machine learning szolgáltatásban: A hibakeresési__ legördülő menüből a Docker hibakeresési bejegyzését, majd a zöld nyíl használatával csatolja a hibakeresőt.
 
     ![A hibakeresés ikon, a hibakeresés elindítása gomb és a konfigurációs választó](media/how-to-troubleshoot-deployment/start-debugging.png)
 

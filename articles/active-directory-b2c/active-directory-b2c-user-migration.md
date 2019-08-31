@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 08ace7170a982fbaa186b77b27e342f16349aadd
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c922799b650de7f921cc0493eb3feb2ad90b9d92
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613303"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183148"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Felhasználói áttelepítés
 
@@ -139,7 +139,9 @@ Módosítsa az `$AppId` értéket az Azure ad- **alkalmazás azonosítójával**
 
 ## <a name="step-2-pre-migration-application-sample"></a>2\. lépés: Áttelepítés előtti alkalmazás mintája
 
-[Töltse le és futtassa a mintakód][UserMigrationSample]. A fájlt. zip fájlként töltheti le.
+Az áttelepítés előtti kódrészletet a Közösség által karbantartott `azure-ad-b2c/user-migration` GitHub-tárházban találja:
+
+[Azure-ad-B2C/felhasználó-áttelepítés/áttelepítés előtti][UserMigrationSample-code] GitHub
 
 ### <a name="step-21-edit-the-migration-data-file"></a>2,1. lépés: Az áttelepítési adatfájl szerkesztése
 
@@ -364,7 +366,7 @@ A naplózási információkat közel valós időben tekintheti meg és figyelhet
 
 ## <a name="optional-download-the-complete-policy-files"></a>Választható Töltse le a teljes házirend-fájlokat
 
-Miután elvégezte az [Egyéni szabályzatok használatának első lépéseit][B2C-GetStartedCustom] , javasoljuk, hogy a saját egyéni házirend-fájljaival hozza létre a forgatókönyvet. Az Ön referenciája alapján megadta a [minta házirend-fájlokat][UserMigrationSample].
+Miután elvégezte az [Egyéni szabályzatok használatának első lépéseit][B2C-GetStartedCustom] , javasoljuk, hogy a saját egyéni házirend-fájljaival hozza létre a forgatókönyvet. Az Ön referenciája alapján megadta a [minta házirend-fájlokat][UserMigrationSample-policy].
 
 [AD-PasswordPolicies]: https://docs.microsoft.com/azure/active-directory/active-directory-passwords-policy
 [AD-Powershell]: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2
@@ -375,4 +377,5 @@ Miután elvégezte az [Egyéni szabályzatok használatának első lépéseit][B
 [B2C-GraphQuickStart]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet
 [B2C-NavContext]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-navigate-to-b2c-context
 [Portal]: https://portal.azure.com/
-[UserMigrationSample]: https://github.com/azure-ad-b2c/user-migration
+[UserMigrationSample-code]: https://github.com/azure-ad-b2c/user-migration/tree/master/pre-migration/source-code
+[UserMigrationSample-policy]: https://github.com/azure-ad-b2c/user-migration/tree/master/pre-migration/policy

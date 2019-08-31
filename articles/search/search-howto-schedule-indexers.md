@@ -3,18 +3,18 @@ title: Indexelő ütemezhetnek – Azure Search
 description: Ütemezze Azure Search indexelő tartalmat rendszeres időközönként vagy adott időpontra.
 ms.date: 05/31/2019
 author: HeidiSteen
-manager: HeidiSteen
+manager: nitinme
 ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: 245a2139aae0910ea1415811234667f2c06500ec
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f72067637f9db84a432562ea5502861355426469
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855796"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186570"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>Indexelő ütemezett Azure Search
 Az indexelő általában egyszer fut, közvetlenül a létrehozása után. Igény szerint újra futtathatja a portál, a REST API vagy a .NET SDK használatával. Az indexelő konfigurálható úgy is, hogy rendszeres időközönként fusson az ütemterven.

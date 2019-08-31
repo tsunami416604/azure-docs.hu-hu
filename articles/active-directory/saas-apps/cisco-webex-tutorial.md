@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adda943676eb4918369d3cb8027f559d5dd0f6e
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 141d3062f231e198b3587efcdf4ae6e9a1c97ed6
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050017"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162675"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció Cisco WebEx-értekezletekkel
 
@@ -78,24 +78,24 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/)a **Cisco WebEx** -értekezletek alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
-
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-1. Az alapszintű **SAML-konfiguráció** szakaszban töltse fel a letöltött **szolgáltatói metaadat** -fájlt, és konfigurálja az alkalmazást **identitásszolgáltató** kezdeményezett módban az alábbi lépések végrehajtásával:
-
-    >[!Note]
-    >Ekkor megjelenik a szolgáltatói metaadatokat tartalmazó fájl, amelyet később a **Cisco WebEx-értekezletek SSO konfigurálása** című részében talál az oktatóanyagban. 
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon való beállításával az alkalmazást **identitásszolgáltató** kezdeményezett módban állíthatja be a **szolgáltatói metaadatok** fájljának a következőképpen történő feltöltésével:
 
     a. Kattintson a **metaadatfájl feltöltése**.
 
     b. Kattintson a **mappa embléma** válassza ki a metaadat-fájlt, és kattintson a **feltöltése**.
 
-    c. A szolgáltatói metaadatok feltöltésének sikeres befejezése után az **azonosító** és a **Válasz URL-** értékei az alapszintű **SAML-konfiguráció** szakaszban automatikusan feltöltve lesznek:
+    c. A szolgáltatói metaadatok feltöltésének sikeres befejezése után az **azonosító** és a **Válasz URL-** értékei az alapszintű **SAML-konfiguráció** szakaszban automatikusan feltöltve értékre kerülnek.
 
-5. Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
+    >[!Note]
+    >A szolgáltatói metaadat-fájlt a **Cisco WebEx-értekezletek SSO konfigurálása** című szakaszban találja, amelyet az oktatóanyag későbbi részében ismertet. 
+
+1. Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:  
+
+    a. Az alapszintű **SAML-konfiguráció** szakaszban kattintson a Szerkesztés/toll ikonra.
+
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
     
-    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<customername>.webex.com`
+    b. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával:` https://<customername>.my.webex.com`
 
 5. A Cisco WebEx-értekezletek alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 

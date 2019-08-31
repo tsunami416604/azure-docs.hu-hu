@@ -1,8 +1,6 @@
 ---
 title: HTTP által aktivált függvény létrehozása az Azure-ban
 description: Útmutató az első Python-függvény létrehozása az Azure-ban az Azure Functions Core Tools és az Azure CLI használatával.
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 04/24/2019
@@ -10,13 +8,13 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
-manager: jeconnoc
-ms.openlocfilehash: 5b90702f89af260a67b69bf96c2e079a45298723
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+manager: gwallace
+ms.openlocfilehash: cb7f5a10169c8baaecae0fc1916a439d61bfbf7c
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575444"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170881"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>HTTP által aktivált függvény létrehozása az Azure-ban
 
@@ -28,7 +26,7 @@ Ez a cikk a Azure Functions első két rövid útmutatója. A cikk elvégzése u
 
 A Kezdés előtt a következőkkel kell rendelkeznie:
 
-+ Telepítse a [Python 3,6](https://www.python.org/downloads/)-es frissítést.
++ Telepítse a [Python 3.6. x](https://www.python.org/downloads/)verzióját.
 
 + Telepítse [Azure functions Core Tools](./functions-run-local.md#v2) 2.7.1575 vagy újabb verziót.
 
@@ -104,7 +102,7 @@ A rendszer létrehoz egy _HttpTrigger_ nevű almappát, amely a következő fáj
 
 A következő parancs elindítja a Function alkalmazást, amely az Azure-ban használt Azure Functions futtatókörnyezettel helyileg fut.
 
-```bash
+```console
 func host start
 ```
 
@@ -134,7 +132,7 @@ Application started. Press Ctrl+C to shut down.
 
 Http Functions:
 
-        HttpTrigger: http://localhost:7071/api/MyHttpTrigger
+        HttpTrigger: http://localhost:7071/api/HttpTrigger
 
 [8/27/2018 10:38:27 PM] Host started (29486ms)
 [8/27/2018 10:38:27 PM] Job host started
@@ -168,7 +166,33 @@ Ezzel a paranccsal egy társított Azure Application Insights-példány is kiép
 
 Most már készen áll a helyi functions-projekt közzétételére az Azure-beli Function alkalmazásban.
 
-[!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
+## <a name="deploy-the-function-app-project-to-azure"></a>A függvényalkalmazás projektjének üzembe helyezése az Azure-ban
+
+Miután létrehozta a Function alkalmazást az Azure-ban, a [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) Core Tools paranccsal üzembe helyezheti a projekt kódját az Azure-ban. Ezekben a példákban cserélje `<APP_NAME>` le az alkalmazást az előző lépésből az alkalmazás nevére.
+
+```command
+func azure functionapp publish <APP_NAME> --build remote
+```
+
+A `--build remote` lehetőség a Python-projektet a központi telepítési csomagban található fájlokból távolról, az Azure-ban hozza létre. 
+
+A következőhöz hasonló kimenet jelenik meg, amelyet az olvashatóság érdekében csonkolt:
+
+```output
+Getting site publishing info...
+...
+
+Preparing archive...
+Uploading content...
+Upload completed successfully.
+Deployment completed successfully.
+Syncing triggers...
+Functions in myfunctionapp:
+    HttpTrigger - [httpTrigger]
+        Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
+```
+
+Másolja ki `Invoke url` az értékét `HttpTrigger`, amelyet mostantól használhat a függvény Azure-beli teszteléséhez. Az URL-cím `code` olyan lekérdezési karakterlánc-értéket tartalmaz, amely a függvény kulcsa. Ez a kulcs megnehezíti mások számára a HTTP-trigger végpont meghívását az Azure-ban.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 

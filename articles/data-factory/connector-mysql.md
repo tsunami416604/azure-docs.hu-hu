@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b17b6d12dc60546a29d37cfa12fe1f11186579e1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: fcf56e8088af25c14c022039bf8862f2dc21c77a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967460"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172567"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Adatok másolása a MySQL-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -25,6 +25,9 @@ ms.locfileid: "68967460"
 > * [Aktuális verzió](connector-mysql.md)
 
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok MySQL-adatbázisból való másolásához. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+
+>[!NOTE]
+>Az adatok [Azure Database for MySQL](../mysql/overview.md) szolgáltatásból történő másolásához használja a speciális [Azure Database for MySQL](connector-azure-database-for-mysql.md)-összekötőt.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 

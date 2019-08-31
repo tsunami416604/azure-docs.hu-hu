@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/12/2019
+ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 08864d6a965921f7f6d284dc53bd2586d30fedd1
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 096b6a13c85d04ebeb4f2ffae72acdd8629ae886
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014432"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191746"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric fürt beállításainak testreszabása
 Ez a cikk a Service Fabric-fürthöz testreszabható különböző háló-beállításokat ismerteti. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre. További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Önálló fürtök esetében testreszabhatja a beállításokat a *ClusterConfig. JSON* fájl frissítésével és a fürtön végzett konfigurációs frissítés elindításával. További információ: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -236,6 +236,8 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |UserMaxStandByReplicaCount |Int, az alapértelmezett érték 1 |Dinamikus|A rendszer által a felhasználói szolgáltatások számára megmaradó készenléti replikák alapértelmezett maximális száma. |
 |UserReplicaRestartWaitDuration |Az idő másodpercben, az alapértelmezett \* érték 60,0 30 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ha egy megőrzött replika leáll; Windows Fabric vár erre az időtartamra a replika számára, hogy új helyettesítő replikák létrehozása előtt készítsen biztonsági mentést (ami az állapot másolatát igényli). |
 |UserStandByReplicaKeepDuration |Az idő másodpercben, az alapértelmezett \* érték \* 3600,0 24 7 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ha egy megőrzött replika vissza fog térni a leállási állapotból; lehetséges, hogy már lecserélték. Ez az időzítő azt határozza meg, hogy az FM mennyi ideig tart a készenléti replika számára az eldobás előtt. |
+|WaitForInBuildReplicaSafetyCheckTimeout|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromSeconds (60 * 10)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A választható WaitForInBuildReplica biztonsági ellenőrzési időtúllépés konfigurációs bejegyzése. Ez a konfiguráció határozza meg a csomópont-inaktiválások és-frissítések WaitForInBuildReplica biztonsági vizsgálatának időtúllépését. Ez a biztonsági ellenőrzés meghiúsul, ha az alábbiak bármelyike igaz:-egy elsődleges létrehozása folyamatban van, és az Ft cél másodpéldányának mérete > 1 – ha az aktuális replika buildben van, és meg van őrizni – ha ez a jelenlegi elsődleges, és egy új replika készül, a biztonsági ellenőrzés kihagyása megmarad PED, ha az időkorlát akkor is lejár, ha az egyik korábbi feltétel még mindig igaz. |
+|WaitForReconfigurationSafetyCheckTimeout|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromSeconds (60.0 * 10)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A választható WaitForReconfiguration biztonsági ellenőrzési időtúllépés konfigurációs bejegyzése. Ez a konfiguráció határozza meg a csomópont-inaktiválások és-frissítések WaitForReconfiguration biztonsági vizsgálatának időtúllépését. Ez a biztonsági ellenőrzés sikertelen, ha a bejelölt replika az újrakonfigurálás alatt álló partíció része. Az időkorlát lejárta után a biztonsági ellenőrzés kimarad, még akkor is, ha a partíció még mindig újrakonfigurálás alatt áll.|
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
@@ -647,6 +649,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |AADClusterApplication|karakterlánc, az alapértelmezett érték: ""|Statikus tartalom|A fürtöt jelölő webes API-alkalmazás neve vagy azonosítója |
 |AADLoginEndpoint|karakterlánc, az alapértelmezett érték: ""|Statikus tartalom|HRE bejelentkezési végpont, alapértelmezett Azure Commercial, nem alapértelmezett környezethez van megadva, például Azure Government "https:\//login.microsoftonline.us" |
 |AADTenantId|karakterlánc, az alapértelmezett érték: ""|Statikus tartalom|Bérlő azonosítója (GUID) |
+|AcceptExpiredPinnedClusterCertificate|bool, az alapértelmezett érték FALSE|Dinamikus|Jelző, amely azt jelzi, hogy az ujjlenyomattal deklarált lejárt fürtözött tanúsítványok csak a fürt tanúsítványainak esetében érvényesek-e. a fürt életben tartásához. |
 |AdminClientCertThumbprints|karakterlánc, az alapértelmezett érték: ""|Dinamikus|Az ügyfelek által a rendszergazdai szerepkörben használt tanúsítványok ujjlenyomatai megfelelnek. Vesszővel tagolt nevek listája. |
 |AADTokenEndpointFormat|karakterlánc, az alapértelmezett érték: ""|Statikus tartalom|HRE jogkivonat-végpont, alapértelmezett Azure Commercial, nem alapértelmezett környezethez megadva, például Azure Government "https:\//login.microsoftonline.us/{0}" |
 |AdminClientClaims|karakterlánc, az alapértelmezett érték: ""|Dinamikus|A rendszergazdai ügyfelektől várt összes lehetséges jogcím; a ClientClaims megegyező formátum; Ez a lista belsőleg bekerül a ClientClaims; így nem kell ugyanazt a bejegyzést hozzáadnia a ClientClaims. |

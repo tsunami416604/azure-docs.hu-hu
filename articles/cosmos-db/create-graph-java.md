@@ -8,15 +8,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
-ms.custom: seo-java-july2019
-ms.openlocfilehash: cea53aefae2e559b7874b1235e4f952fe46ea642
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.custom: seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 8689cb74e35d5b87c300f5fce239993691652ee2
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509606"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172525"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>Gyors útmutató: Graph-adatbázis létrehozása Azure Cosmos DB a Java SDK használatával 
+# <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-table-api"></a>Gyors útmutató: Hozzon létre egy Graph-adatbázist a Java SDK-val és a Azure Cosmos DB Table API
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)

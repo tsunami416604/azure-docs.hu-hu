@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 82c2c6d7ac347949a7cf24226fdb0095313ee689
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 52d7eb035ed06c368214b8b5cb7ef583cd99b51b
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147684"
+ms.locfileid: "70162000"
 ---
 # <a name="get-started-with-device-management-java"></a>Ismerkedés az eszközkezelés (Java) szolgáltatással
 
@@ -53,9 +53,9 @@ Az oktatóanyag végén két Java-konzolos alkalmazás található:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Java SE 8. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) ismerteti, hogyan telepíthet Java-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
+* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
 
-* Maven 3 [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) leírja, hogyan telepítheti a [mavent](https://maven.apache.org/what-is-maven.html) ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
+* [Maven 3](https://maven.apache.org/download.cgi)
 
 * Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
 

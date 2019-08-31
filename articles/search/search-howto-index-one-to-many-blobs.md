@@ -1,45 +1,45 @@
 ---
-title: Index blobokat tartalmazó több keresési index dokumentumokat az Azure Blob-indexelő az Azure Search – a teljes szöveges keresés
-description: Feltérképezi az Azure-blobok az Azure Search Blob indexelőjével szöveges tartalom. Minden egyes blob egy vagy több Azure Search-index dokumentumot tartalmazhat.
+title: Az Azure Blob indexelő által több keresési indexelési dokumentumot tartalmazó Blobok indexelése teljes szöveges kereséshez – Azure Search
+description: Azure-Blobok bejárása a szöveges tartalomhoz a Azure Search blob indexelő használatával. Az egyes Blobok egy vagy több Azure Search indexelő dokumentumot is tartalmazhatnak.
 ms.date: 05/02/2019
 author: arv100kri
-manager: briansmi
+manager: nitinme
 ms.author: arjagann
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seofeb2018
-ms.openlocfilehash: 628ced069c9d32c6e874c2e36a1e3b752c476003
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c2a17d006f65854a89b9fac1818fcec420c07dc
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024649"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182301"
 ---
-# <a name="indexing-blobs-producing-multiple-search-documents"></a>Dokumentumok keresése több előállító-blobok indexelése
-Alapértelmezés szerint egy blob indexelőjével egyetlen keresési dokumentumként kezeli a blob tartalmát. Bizonyos **parsingMode** értékeket támogatja a forgatókönyvek, ahol az egyes blob több keresési dokumentumok eredményezhet. A különböző típusú **parsingMode** , amelyek engedélyezik a rendszer-, csomagolja ki indexer, amely több, mint egy keresési dokumentum-ból:
+# <a name="indexing-blobs-producing-multiple-search-documents"></a>Több keresési dokumentumot előállító Blobok indexelése
+Alapértelmezés szerint a blob indexelő egyetlen keresési dokumentumként fogja kezelni a blob tartalmát. Bizonyos **parsingMode** -értékek olyan forgatókönyveket támogatnak, amelyekben egy adott blob több keresési dokumentumot is eredményezhet. A különböző típusú **parsingMode** , amelyek lehetővé teszik, hogy az indexelő több keresési dokumentumot is kinyerjen a blobból:
 + `delimitedText`
 + `jsonArray`
 + `jsonLines`
 
-## <a name="one-to-many-document-key"></a>-A-többhöz dokumentum kulcs
-Minden egyes dokumentum, amely megjelenik-e az Azure Search-index egyedileg azonosít egy dokumentum kulcsot. 
+## <a name="one-to-many-document-key"></a>Egy-a-többhöz dokumentum kulcsa
+A Azure Search indexben megjelenített minden dokumentumot egyedileg azonosít egy dokumentum kulcsa. 
 
-Ha nincs elemzési mód van megadva, és ha nincs explicit leképezést az index Azure Search kulcsmező automatikusan [térképek](search-indexer-field-mappings.md) a `metadata_storage_path` kulcsként tulajdonság. Ez a leképezés biztosítja, hogy megjelenik-e minden egyes blob egyedi search-dokumentumként.
+Ha nincs megadva elemzési mód, és ha nincs explicit leképezés a kulcs mezőhöz az indexben, Azure Search automatikusan leképezi [](search-indexer-field-mappings.md) a `metadata_storage_path` tulajdonságot kulcsként. Ez a leképezés biztosítja, hogy az egyes Blobok külön keresési dokumentumként jelenjenek meg.
 
-Használja a fent felsorolt elemzési mód bármelyikében, amikor egy blob "több" keresési dokumentumokhoz, ami kizárólag alapuló blob metaadatai nem alkalmasak a dokumentum kulcs rendeli hozzá. Ez a korlátozás áthidalható, Azure Search szolgáltatás képes a kulcs létrehozása minden egyes entitás blob kinyert "egy-a-többhöz" dokumentum. Ez a tulajdonság neve `AzureSearch_DocumentKey` és minden kinyert a blob egyedi entitás van adva. Ez a tulajdonság értékének garantáltan minden egyes entitásnak egyedi _blobok között_ és az entitások külön keresési-dokumentumok formájában jelennek meg.
+A fent felsorolt elemzési módok bármelyikének használatakor az egyik blob a "sok" keresési dokumentumra mutat, így a dokumentum kulcsa kizárólag a blob metaadatainak alapján használható. Ennek a korlátozásnak a leküzdéséhez Azure Search képes "egy-a-többhöz" dokumentum-kulcsot generálni a blobból kinyert egyes entitásokhoz. Ez a tulajdonság neve `AzureSearch_DocumentKey` , és hozzá lesz adva a blobból kinyert egyes entitásokhoz. Ennek a tulajdonságnak az értéke garantáltan egyedi a _Blobok közötti_ egyes entitások esetében, és az entitások külön keresési dokumentumokként jelennek meg.
 
-Alapesetben, amikor a kulcsindex mező nincs explicit mezőmegfeleltetései meg van adva a `AzureSearch_DocumentKey` van leképezve, használja a `base64Encode` mezőleképezés függvény.
+Alapértelmezés szerint, ha nincs megadva explicit mező a Key index mezőhöz, a a `AzureSearch_DocumentKey` leképezése a `base64Encode` mező leképezése függvény használatával történik.
 
 ## <a name="example"></a>Példa
-Tegyük fel, hogy az index definícióját a következő mezőket:
+Tegyük fel, hogy az index definíciója a következő mezőkkel rendelkezik:
 + `id`
 + `temperature`
 + `pressure`
 + `timestamp`
 
-És a blob-tároló blobok az alábbi struktúra használatával:
+És a blob-tároló Blobokkal rendelkezik a következő szerkezettel:
 
 _Blob1.json_
 
@@ -51,7 +51,7 @@ _Blob2.json_
     { "temperature": 1, "pressure": 1, "timestamp": "2018-01-12T00:00:00Z" }
     { "temperature" : 120, "pressure" : 3, "timestamp": "2013-05-11T00:00:00Z" }
 
-Mikor hozzon létre egy indexelőt, és állítsa a **parsingMode** való `jsonLines` – bármely kulcsmező, a következő hozzárendelést leképezéseket a rendszer implicit módon alkalmazza explicit mező megadása nélkül
+Amikor létrehoz egy indexelő, és a **parsingMode** úgy `jsonLines` állítja be, hogy a kulcs mezőhöz tartozó explicit mező-hozzárendelések megadása nélkül történjen, a következő leképezést a rendszer implicit módon alkalmazza.
     
     {
         "sourceFieldName" : "AzureSearch_DocumentKey",
@@ -59,18 +59,18 @@ Mikor hozzon létre egy indexelőt, és állítsa a **parsingMode** való `jsonL
         "mappingFunction": { "name" : "base64Encode" }
     }
 
-A telepítő az Azure Search-index a következő információkat (base64-kódolású azonosító kivonatosan lerövidítettük) tartalmazó fog eredményezni.
+Ez a beállítás azt eredményezi, hogy a Azure Search index a következő adatokat tartalmazza (a Base64 kódolású azonosító lerövidíti a rövid időpontot)
 
 | id | hőmérséklet | pressure | timestamp |
 |----|-------------|----------|-----------|
-| aHR0... YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
-| aHR0... YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |
-| aHR0... YjIuanNvbjsx | 1 | 1 | 2018-01-12T00:00:00Z |
-| aHR0... YjIuanNvbjsy | 120 | 3 | 2013-05-11T00:00:00Z |
+| aHR0 ... YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
+| aHR0 ... YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |
+| aHR0 ... YjIuanNvbjsx | 1 | 1 | 2018-01-12T00:00:00Z |
+| aHR0 ... YjIuanNvbjsy | 120 | 3 | 2013-05-11T00:00:00Z |
 
-## <a name="custom-field-mapping-for-index-key-field"></a>Leképezés index kulcsmező. egyéni mező
+## <a name="custom-field-mapping-for-index-key-field"></a>Egyéni mezők leképezése az index kulcsa mezőhöz
 
-Feltéve, hogy az azonos index definícióját az előző példával, mondja ki a blobtároló blobok az alábbi struktúrával rendelkezik:
+Ha ugyanazt az index-definíciót szeretné, mint az előző példában, tegyük fel, hogy a blob-tároló blobokat tartalmaz a következő szerkezettel:
 
 _Blob1.json_
 
@@ -84,26 +84,26 @@ _Blob2.json_
     1, 1, 1,"2018-01-12T00:00:00Z" 
     2, 120, 3,"2013-05-11T00:00:00Z" 
 
-Az indexelő létrehozásakor `delimitedText` **parsingMode**, előfordulhat, hogy természetes kulcsmező mezőleképezés függvényt az alábbiak szerint állíthatja miatt:
+Ha a `delimitedText` **parsingMode**-vel hoz létre indexelő, természetesnek tűnhet, hogy egy mező-leképezési függvényt állítson be a kulcs mezőhöz a következőképpen:
 
     {
         "sourceFieldName" : "recordid",
         "targetFieldName": "id"
     }
 
-Azonban ez a leképezés fog _nem_ eredményez 4 dokumentum jelenik meg az index, mert a `recordid` mező, nem egyedi _blobok között_. Ezért javasoljuk, győződjön meg arról, hogy a alkalmazni az implicit mezőleképezés felhasználása a `AzureSearch_DocumentKey` tulajdonságot "egy-a-többhöz" elemzési módhoz kulcsindex mezőjére.
+Ez a leképezés azonban _nem_ eredményez 4 olyan dokumentumot, amely megjelenik az indexben, mert a `recordid` mező nem egyedi a _Blobok között_. Ezért javasoljuk, hogy a `AzureSearch_DocumentKey` tulajdonságból az "egy a többhöz" elemzési üzemmódhoz tartozó Key index mezőre alkalmazott implicit mező-leképezést használja.
 
-Ha szeretné beállítani egy explicit mezőleképezés, ellenőrizze, hogy a _sourceField_ nem azonos azzal, ha minden egyes **közötti összes BLOB**.
+Ha explicit mező-hozzárendelést szeretne beállítani, győződjön meg arról, hogy a _sourceField_ különbözik az egyes entitások **minden blobban**.
 
 > [!NOTE]
-> A által használt megközelítés `AzureSearch_DocumentKey` annak biztosítására, hogy egyedisége kinyert entitásonként változhat, és ezért nem támaszkodhat a hozzá tartozó érték az alkalmazás igényeinek megfelelően.
+> A kinyert `AzureSearch_DocumentKey` entitások egyediségének biztosításához használt megközelítés változhat, ezért nem szabad az alkalmazás igényeinek megfelelően használni.
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Indexelők az Azure Search szolgáltatásban](search-indexer-overview.md)
-+ [Az Azure Search szolgáltatással az Azure Blob Storage indexelése](search-howto-index-json-blobs.md)
-+ [CSV-blobok indexelése az Azure Search blob indexelőjével](search-howto-index-csv-blobs.md)
-+ [JSON-blobok indexelése az Azure Search blob indexelőjével](search-howto-index-json-blobs.md)
++ [Indexelő a Azure Search](search-indexer-overview.md)
++ [Az Azure Blob Storage indexelése Azure Search](search-howto-index-json-blobs.md)
++ [CSV-Blobok indexelése Azure Search blob indexelő](search-howto-index-csv-blobs.md)
++ [JSON-Blobok indexelése Azure Search blob indexelő](search-howto-index-json-blobs.md)
 
 ## <a name="NextSteps"></a>Következő lépések
-* Azure Search kapcsolatos további információkért tekintse meg a [keresési szolgáltatás oldalát](https://azure.microsoft.com/services/search/).
+* Ha többet szeretne megtudni a Azure Searchről, tekintse meg a [keresési szolgáltatás lapot](https://azure.microsoft.com/services/search/).

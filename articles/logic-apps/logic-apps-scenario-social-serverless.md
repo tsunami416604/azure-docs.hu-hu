@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 6f0176253d0f1953e9c779a317cfe7bf453acb8f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: b8ba341252679a07e50f9b276f7f485b08a6acba
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385447"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164866"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Streaming Customer-adatáttekintési irányítópult létrehozása Azure Logic Apps és Azure Functions
 
@@ -106,7 +106,7 @@ A Visual Studióban vagy a Azure Portalban megtekintheti az előző futtatási e
 
 ## <a name="create-automated-deployment-templates"></a>Automatizált üzembehelyezési sablonok létrehozása
 
-A Logic app-megoldás létrehozása után [Azure Resource Manager sablonként](../azure-resource-manager/resource-group-overview.md#template-deployment) rögzítheti és telepítheti az alkalmazást a világ bármely Azure-régiójába. Ezzel a képességgel módosíthatók az alkalmazás különböző verzióinak létrehozására és a megoldás Azure-folyamatokra való integrálására szolgáló paraméterek is. A központi telepítési sablonban Azure Functions is megadhat, így egyetlen sablonként kezelheti a teljes megoldást és az összes függőséget. Útmutató a [logikai alkalmazások telepítésének automatizálásához](logic-apps-azure-resource-manager-templates-overview.md).
+A Logic app-megoldás létrehozása után [Azure Resource Manager sablonként](../azure-resource-manager/template-deployment-overview.md) rögzítheti és telepítheti az alkalmazást a világ bármely Azure-régiójába. Ezzel a képességgel módosíthatók az alkalmazás különböző verzióinak létrehozására és a megoldás Azure-folyamatokra való integrálására szolgáló paraméterek is. A központi telepítési sablonban Azure Functions is megadhat, így egyetlen sablonként kezelheti a teljes megoldást és az összes függőséget. Útmutató a [logikai alkalmazások telepítésének automatizálásához](logic-apps-azure-resource-manager-templates-overview.md).
 
 Egy Azure-függvényt tartalmazó központi telepítési sablonhoz az [Azure Gyorsindítás sablon adattárában](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)tájékozódhat.
 

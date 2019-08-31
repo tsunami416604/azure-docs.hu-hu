@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 85b1e3eae9d7472fa829665707fca481a28f0623
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 88a5e5fa1267e834a04c46ed38868cf74acd9bb0
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011277"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171927"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Az objektumok és a hitelesítő adatok szinkronizálása egy Azure AD Domain Services felügyelt tartományban
 
@@ -30,7 +30,7 @@ Az alábbi ábra azt szemlélteti, hogyan működik a szinkronizálás az Azure 
 
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Szinkronizálás az Azure AD-ből az Azure-ba AD DS
 
-A felhasználói fiókokat, a csoporttagságok és a hitelesítő adatok kivonatait az Azure AD és az Azure AD DS között szinkronizálja a rendszer. Ez a szinkronizálási folyamat automatikus. Nem kell konfigurálnia, figyelnie vagy kezelnie ezt a szinkronizálási folyamatot. A kezdeti szinkronizálás néhány órát is igénybe vehet, az Azure AD-címtárban lévő objektumok számától függően. A kezdeti szinkronizálás befejeződése után az Azure AD-ben végrehajtott módosítások, például a jelszó vagy az attribútumok változásai, 20-30 percet vesznek igénybe az Azure AD DS.
+A felhasználói fiókokat, a csoporttagságok és a hitelesítő adatok kivonatait az Azure AD és az Azure AD DS között szinkronizálja a rendszer. Ez a szinkronizálási folyamat automatikus. Nem kell konfigurálnia, figyelnie vagy kezelnie ezt a szinkronizálási folyamatot. A kezdeti szinkronizálás néhány órát is igénybe vehet, az Azure AD-címtárban lévő objektumok számától függően. A kezdeti szinkronizálás befejezését követően az Azure AD-ben végrehajtott módosítások, például a jelszó vagy az attribútumok változásai automatikusan szinkronizálva lesznek az Azure AD DS.
 
 A szinkronizálási folyamat egy módszer/egyirányú kialakítás. Az Azure AD DS változásainak visszavonása az Azure AD-be nem vonható vissza. Egy Azure AD DS felügyelt tartomány nagyrészt írásvédett, kivéve a létrehozható egyéni szervezeti egységeket. A felhasználói attribútumok, a felhasználói jelszavak vagy a csoporttagság nem módosítható egy Azure AD DS felügyelt tartományon belül.
 

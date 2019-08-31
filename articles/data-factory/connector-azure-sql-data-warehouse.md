@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 45f7db943499b8a722b8e203d676d1d80eb5091e
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 49a0c7597e8d44e3f60e2d3b6bd4c14cad1524b5
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996679"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172627"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -536,6 +536,10 @@ Ha a forrásadatok 1 MB-nál nagyobb sorral rendelkezik, érdemes a forrástábl
 
 Azt is megteheti, hogy az ilyen széles oszlopokkal rendelkező adatok esetében nem hozhatók be az adatok az ADF használatával, ha kikapcsolja az "alapszintű" beállítást.
 
+### <a name="sql-data-warehouse-resource-class"></a>Az SQL Data Warehouse erőforrásosztály
+
+A felhasználót, hogy adatokat tölt be az SQL Data Warehouse polybase nagyobb erőforrásosztályt hozzárendelni a legjobb teljesítmény elérése érdekében.
+
 ### <a name="polybase-troubleshooting"></a>Alapszintű hibaelhárítás
 
 **Betöltés decimális oszlopba**
@@ -549,13 +553,7 @@ ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data typ
 A megoldás az "**alapértelmezett típus használata**" beállítás kijelölésének feloldása (hamis) a másolási tevékenység fogadója – > a bázisterület alapbeállításai. A["](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
 )USE_TYPE_DEFAULT" egy alapszintű natív konfiguráció, amely meghatározza, hogy a rendszer hogyan kezelje a hiányzó értékeket a tagolt szövegfájlokban, amikor a viszonyítási adatok beolvasása a szövegfájlból történik. 
 
-**Egyéb**
-
-### <a name="sql-data-warehouse-resource-class"></a>Az SQL Data Warehouse erőforrásosztály
-
-A felhasználót, hogy adatokat tölt be az SQL Data Warehouse polybase nagyobb erőforrásosztályt hozzárendelni a legjobb teljesítmény elérése érdekében.
-
-### <a name="tablename-in-azure-sql-data-warehouse"></a>**tableName** az Azure SQL Data Warehouse
+**`tableName`Azure SQL Data Warehouse**
 
 Az alábbi táblázat példákat mutat be, hogyan adhat meg a **tableName** JSON adatkészlet tulajdonság. Séma és a táblázat neve különböző kombinációit jeleníti meg.
 
@@ -572,7 +570,7 @@ A következő hibát látja, ha a probléma lehet, hogy a megadott érték a **t
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
 ```
 
-### <a name="columns-with-default-values"></a>Az alapértelmezett értékekkel oszlopok
+**Alapértelmezett értékeket tartalmazó oszlopok**
 
 A PolyBase szolgáltatás, a Data Factory jelenleg csak az azonos számú oszlopot, mint a céltábla fogad el. Ilyen például, ahol az egyiket van definiálva az alapértelmezett érték négy oszlopot tartalmazó táblát. A bemeneti adatok továbbra is rendelkeznie kell négy oszlopot. Három oszlop a bemeneti adatkészlet az alábbihoz hasonló hibaüzenetet eredményez:
 

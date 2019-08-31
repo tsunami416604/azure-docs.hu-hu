@@ -1,31 +1,25 @@
 ---
-title: Data Science virtuális gép készletek – Azure |} A Microsoft Docs
+title: Megosztott készletek
+titleSuffix: Azure Data Science Virtual Machine
 description: Dsvm-készletek üzembe helyezése megosztott erőforrásként egy csapat számára
 keywords: deep learning, AI, beépített adatelemzési eszközzel, az adatelemzési virtuális gépet, a térinformatikai elemzés, a csoportos adatelemzési folyamat
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/10/2018
+author: vijetajo
 ms.author: vijetaj
-ms.openlocfilehash: 76a715838fa5eb4f806fccc98675ea5acdbe1822
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.topic: conceptual
+ms.date: 12/10/2018
+ms.openlocfilehash: 929040b5dc8650a757fb9c0da58cb82a76a72b5b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992037"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195631"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Az adatelemző virtuális gépek megosztott készlet létrehozása
 
-Ez a cikk azt ismerteti, hogyan hozhat létre egy csapat számára egy megosztott adatelemzési Virtual Machines (Dsvm). A megosztott készlet használatának előnyei közé tartozik a jobb erőforrás-használat, a könnyebb megosztás és együttműködés, valamint a DSVM erőforrások hatékonyabb kezelése.
+Ebből a cikkből megtudhatja, hogyan hozhat létre az adatelemzési Virtual Machines (Dsvm) megosztott készletét egy csapat számára. A megosztott készlet használatának előnyei közé tartozik a jobb erőforrás-használat, a könnyebb megosztás és együttműködés, valamint a DSVM erőforrások hatékonyabb kezelése.
 
 Számos módszer és technológiák használatával Dsvm készletét hozza létre. Ez a cikk az interaktív virtuális gépek (VM-EK) készleteit tárgyalja. Egy alternatív felügyelt számítási infrastruktúra Azure Machine Learning számítás. További információ: [számítási célok beállítása](../service/how-to-set-up-training-targets.md#amlcompute).
 

@@ -1,8 +1,8 @@
 ---
-title: az Azure Search (előzetes verzió) – Azure Search moreLikeThis
-description: A moreLikeThis (előzetes verzió) szolgáltatáshoz, az Azure Search REST API-ban előzetes dokumentációjában talál.
+title: moreLikeThis Azure Searchban (előzetes verzió) – Azure Search
+description: A moreLikeThis (előzetes verzió) szolgáltatás előzetes dokumentációja, amely a Azure Search REST API elérhető.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: rest-api
@@ -10,27 +10,27 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 4d1c691e570d3cfc7e0475c02e4c60ed6ffa8440
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d7c816c545c6647907aa9d700a4eb6ed91277465
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485355"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182294"
 ---
-# <a name="morelikethis-in-azure-search"></a>az Azure Search moreLikeThis
+# <a name="morelikethis-in-azure-search"></a>moreLikeThis Azure Search
 
 > [!Note]
-> moreLikeThis előzetes állapotban van, nem éles használatra szánt. A [REST API verzióját 2019-05-06-Preview](search-api-preview.md) ezt a szolgáltatást biztosít. Rendszer jelenleg nem .NET SDK-t támogatja.
+> a moreLikeThis előzetes verzióban érhető el, és nem éles használatra készült. A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
 
-`moreLikeThis=[key]` a lekérdezési paraméter a [Search API-dokumentumok](https://docs.microsoft.com/rest/api/searchservice/search-documents) , amely olyan dokumentumokat keres a dokumentumot, a dokumentum kulcsaként által megadott hasonló. Ha egy keresési kérelmet a `moreLikeThis`, egy lekérdezés jön létre keresési feltételeket az adott dokumentum kinyert legjobban leíró dokumentum. A létrehozott lekérdezést a keresés kérés majd szolgál. Alapértelmezés szerint az összes kereshető mező tartalmát minősülnek, mínusz a megadott használatával korlátozott mezőket a `searchFields` paraméter. A `moreLikeThis` paraméter nem használható a keresési paraméterrel, `search=[string]`.
+`moreLikeThis=[key]`a a [keresési dokumentumok API](https://docs.microsoft.com/rest/api/searchservice/search-documents) lekérdezési paramétere, amely a dokumentum kulcsában megadott dokumentumhoz hasonló dokumentumokat keres. Ha keresési kérelem `moreLikeThis`történik, a rendszer egy lekérdezést hoz létre az adott dokumentumból kinyert keresési kifejezésekkel, amelyek az adott dokumentumot a legmegfelelőbb módon írják le. A rendszer ezután a generált lekérdezést használja a keresési kérelem elvégzéséhez. Alapértelmezés szerint az összes kereshető mező tartalma megtekinthető, mínusz a `searchFields` paraméterrel megadott korlátozott mezők. A `moreLikeThis` paraméter nem használható a keresési `search=[string]`paraméterrel.
 
-Alapértelmezés szerint minden felső szintű kereshető mező tartalmát minősülnek. Ha szeretné inkább adja meg az adott mezők, használhatja a `searchFields` paraméter. 
+Alapértelmezés szerint a rendszer a legfelső szintű kereshető mezők tartalmát veszi figyelembe. Ha inkább konkrét mezőket szeretne megadni, használhatja a `searchFields` paramétert. 
 
-A kereshető almező moreLikeThis nem használható egy [komplex típus](search-howto-complex-data-types.md).
+[Összetett típusban](search-howto-complex-data-types.md)nem használhatók kereshető almezők a moreLikeThis.
 
 ## <a name="examples"></a>Példák 
 
-Az alábbi, például egy moreLikeThis lekérdezés. A lekérdezés talál, amelynek leírás mezők leginkább hasonlítanak, a mező a forrás-dokumentum által megadott a dokumentumok a `moreLikeThis` paraméter.
+Az alábbi példa egy moreLikeThis-lekérdezést mutat be. A lekérdezés megkeresi azokat a dokumentumokat, amelyek leírás mezőjének legtöbbje hasonló a forrásdokumentum mezőjéhez `moreLikeThis` a paraméterben megadott módon.
 
 ```
 Get /indexes/hotels/docs?moreLikeThis=1002&searchFields=description&api-version=2019-05-06-Preview
@@ -47,7 +47,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
 
 ## <a name="next-steps"></a>További lépések
 
-Minden olyan webes tesztelési eszköz segítségével kísérletezhet a funkció.  Ehhez a gyakorlathoz Postman használatát javasoljuk.
+A szolgáltatással való kísérletezéshez bármilyen webes tesztelési eszközt használhat.  Javasoljuk, hogy ehhez a gyakorlathoz a Poster-t használja.
 
 > [!div class="nextstepaction"]
-> [Ismerkedés az Azure Search REST API-k Postman](search-get-started-postman.md)
+> [Ismerkedjen meg Azure Search REST API-kkal a Poster használatával](search-get-started-postman.md)

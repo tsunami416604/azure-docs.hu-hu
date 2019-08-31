@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/20/2019
+ms.date: 08/30/2019
 ms.author: barclayn
-ms.openlocfilehash: 910057e0e81219a68608441530d03ca1a2411b02
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9721f22eb73c68f729ced13480370f6593c58510
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875093"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182794"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-beli adatok titkosítása – Rest
 
@@ -254,14 +254,16 @@ A kiszolgálói titkosítás támogatását jelenleg a transzparens adattitkosí
 
 A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always encrypted](https://msdn.microsoft.com/library/mt163865.aspx) funkción keresztül. A Always Encrypted az ügyfél által létrehozott és tárolt kulcsot használja. Az ügyfelek a főkulcsot egy Windows tanúsítványtárolóban, Azure Key Vaultban vagy egy helyi hardveres biztonsági modulban tárolhatják. A SQL Server Management Studio használatával az SQL-felhasználók kiválaszthatják, hogy milyen kulcsot szeretnének használni az oszlop titkosításához.
 
-#### <a name="encryption-model-and-key-management"></a>Titkosítási modell és kulcskezelő
+#### <a name="encryption-model-and-key-management-table"></a>Titkosítási modell és kulcskezelő tábla
 
-| **Kiszolgálóoldali szolgáltatás által felügyelt kulcs használata** |**Ügyfél által felügyelt kulcs kiszolgálóoldali használata**| **Ügyfél által felügyelt ügyféloldali használat** | **AI és Machine Learning**   |
-|--------------------|-------------------|----------------------|--------------------|
+|                                  |                    | **Titkosítási modell és kulcskezelő** |                    |
+|----------------------------------|--------------------|-----------------------------------------|--------------------|
+|                                  | **Kiszolgálóoldali szolgáltatás által felügyelt kulcs használata**     | **Ügyfél által felügyelt kulcs kiszolgálóoldali használata**             | **Ügyfél által felügyelt ügyféloldali használat**      |
+| **AI és Machine Learning**      |                    |                    |                    |
 | Azure Search                     | Igen                | -                  | -                  |
 | Azure Machine Learning Service   | Igen                | -                  | -                  |
 | Azure Machine Learning Studio    | Igen                | Előzetes verzió, RSA 2048 bites | -               |
-| Power BI                         | Igen                | Előzetes verzió, RSA 2048 bites | -               |
+| Power BI                         | Igen                | Előzetes verzió, RSA 2048 bites | -                  |
 | **Elemzés**                    |                    |                    |                    |
 | Azure Stream Analytics           | Igen                | -                  | -                  |
 | Event Hubs                       | Igen                | -                  | -                  |
@@ -282,7 +284,7 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 | Azure SQL Database               | Igen                | Igen, RSA 2048-bit  | Igen                |
 | MariaDB Azure SQL Database   | Igen                | -                  | -                  |
 | MySQL-Azure SQL Database     | Igen                | -                  | -                  |
-| Azure SQL Database PostgreSQL-hez | Igen                | -                  | -                 |
+| Azure SQL Database PostgreSQL-hez | Igen                | -                  | -                  |
 | Azure SQL Data Warehouse         | Igen                | Igen, RSA 2048-bit  | Igen                |
 | SQL Server Stretch Database      | Igen                | Igen, RSA 2048-bit  | Igen                |
 | Table Storage                    | Igen                | -                  | Igen                |

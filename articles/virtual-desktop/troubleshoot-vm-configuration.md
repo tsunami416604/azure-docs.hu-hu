@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f797d3ee525806d8002b19edb1378d0376508b08
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 03a8e8063f1a66b929311f09bf8e20cd4b951e43
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073934"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163302"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
 
@@ -208,7 +208,12 @@ Vizsgálja meg az alább felsorolt beállításjegyzék-bejegyzéseket, és elle
 **Javítsa ki** Kövesse ezeket az utasításokat a párhuzamos verem telepítéséhez a munkamenet-gazda virtuális gépen.
 
 1. A RDP protokoll (RDP) használatával közvetlenül a munkamenet-gazda virtuális gépre kerül a helyi rendszergazdaként.
-2. Ha még nem tette meg, töltse le és importálja a PowerShell-munkamenetben használni kívánt [Windows virtuális asztali PowerShell](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) -modult.
+2. Ha még nem tette meg, töltse le és importálja [a Windows rendszerű virtuális asztali PowerShell](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) -modult, amelyet a PowerShell-munkamenetben szeretne használni, majd futtassa ezt a parancsmagot a fiókjába való bejelentkezéshez:
+    
+    ```powershell
+    Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+    ```
+    
 3. Telepítse a párhuzamos veremet a [gazdagép létrehozása a PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)használatával című részből.
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>A Windows rendszerű virtuális asztalok egymás melletti veremének kijavítása

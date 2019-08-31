@@ -1,8 +1,8 @@
 ---
-title: Összetett adattípusok modellezése – Azure Search hogyan
-description: Beágyazott vagy hierarchikus datové struktury modellezhető az Azure Search-index typu ComplexType és gyűjtemények adattípusok használatával.
+title: Összetett adattípusok modellezése – Azure Search
+description: A beágyazott vagy hierarchikus adatstruktúrák modellezése egy Azure Search indexben ComplexType és gyűjtemények adattípusok használatával.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 services: search
@@ -10,31 +10,31 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: e7e6ddefd13d669c949389bc4fad85fb6cff4d3a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: b9c9b35adc0dde032723c3c60adedf5b2e7b4cb6
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621362"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183197"
 ---
-# <a name="how-to-model-complex-data-types-in-azure-search"></a>Összetett adattípusok modellezése az Azure Search hogyan
+# <a name="how-to-model-complex-data-types-in-azure-search"></a>Összetett adattípusok modellezése Azure Search
 
-Azure Search-index feltöltéséhez használt külső adathalmazok számos alakzatok kerülhet. Egyes esetekben a hierarchikus vagy beágyazott alépítményeit tartalmazzák. Például előfordulhat, hogy több cím tartalmazza az egyetlen ügyfél több színt és méretet egyetlen termékváltozat, egy könyv, több készítői és így tovább. Feltételek modellező, láthatja a továbbiakban ezen szerkezetek *összetett*, *összetett*, *összetett*, vagy *összesített* adattípusokat. A kifejezés a fogalom használja az Azure Search **komplex típus**. Az Azure Search szolgáltatásban komplex típusok vannak modellezve használatával **összetett mezők**. Egy összetett mező egy mezőt, amely bármilyen típusú adatot, beleértve a más komplex típusú lehet (almező) gyermekeket tartalmaz. Ez a módszer hasonló módon strukturált adattípusúként programozási nyelven.
+A Azure Search indexek feltöltéséhez használt külső adatkészletek számos alakzatban lehetnek. Esetenként hierarchikus vagy beágyazott alstruktúrákat is tartalmaznak. A példák több címet is tartalmazhatnak egyetlen ügyfél számára, több színt és méretet egyetlen SKU számára, egyetlen könyv több szerzője és így tovább. A modellezési feltételekben ezeket a struktúrákat *összetett*, *összetett*, *összetett*vagy *aggregált* adattípusoknak is nevezzük. A koncepció Azure Search kifejezése **összetett típusú**. Azure Search az összetett típusok modellezése **összetett mezők**használatával történik. A komplex mező olyan mező, amely bármilyen adattípusú gyermekeket (almezőket) tartalmaz, beleértve a más összetett típusokat is. Ez hasonló módon működik, mint a strukturált adattípusok programozási nyelven.
 
-Összetett mezők jelölik, a dokumentum egyetlen objektumot, vagy egy objektumtömb, az adatok típusától függően. Típusú mezők `Edm.ComplexType` egyetlen objektumok, miközben típusú mezők `Collection(Edm.ComplexType)` Pole binárních hodnot objektumokat képviseli.
+Az összetett mezők a dokumentumban szereplő egyetlen objektumot vagy objektumok tömbjét jelölik, az adattípustól függően. A Type típusú `Edm.ComplexType` mezők egyetlen objektumot jelölnek, míg a `Collection(Edm.ComplexType)` típusú mezők objektumok tömbjét jelölik.
 
-Az Azure Search natív módon támogatja a komplex típusok és gyűjteményeket. Ezek a típusok lehetővé teszik az Azure Search-index szinte bármilyen JSON struktúrában modell. Az Azure Search API-k korábbi verziói esetén csak egybesimított sor csoportok importálása sikerült. A legújabb verzióban az index már jobban felelhet meg forrásadatokat. Más szóval ha a forrásadatok komplex típusok, az index lehet komplex típusok is.
+Azure Search natív módon támogatja a komplex típusokat és gyűjteményeket. Ezek a típusok lehetővé teszik szinte bármilyen JSON-struktúra modellezését egy Azure Search indexben. A Azure Search API-k korábbi verzióiban csak a lapos sorok importálhatók. A legújabb verzióban az index mostantól alaposabban megközelítheti a forrásadatokat. Más szóval, ha a forrásadatok összetett típusokkal rendelkeznek, az indexnek lehetnek összetett típusai is.
 
-Első lépésként javasoljuk, hogy a [Hotels adatkészlet](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md), amelyek betöltése a a **adatok importálása** varázsló az Azure Portalon. A varázsló észleli a komplex típusok a forrás, és az indexsémát az észlelt struktúrák alapján javasol.
+Első lépésként javasoljuk a [Hotel](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)adatkészletét, amelyet betölthet a Azure Portal adatimportálás varázslójával. A varázsló összetett típusokat észlel a forrásban, és az észlelt struktúrák alapján javasol egy index sémát.
 
 > [!Note]
-> Összetett típusok támogatása az általánosan elérhető a `api-version=2019-05-06`. 
+> Az összetett típusok támogatása általánosan elérhető a alkalmazásban `api-version=2019-05-06`. 
 >
-> Ha a keresési megoldás egy gyűjtemény egybesimított adatkészletek korábbi megoldások épül, akkor módosítani kell az index összetett típusokat tartalmazza a legújabb API-verzióban támogatott. API-verziók frissítésével kapcsolatos további információkért lásd: [frissítsen a legújabb REST API-verzióra](search-api-migration.md) vagy [frissítsen a legújabb .NET SDK-verzióra](search-dotnet-sdk-migration-version-9.md).
+> Ha a keresési megoldás az összevont adatkészletek korábbi megkerülő megoldásaira épül egy gyűjteményben, módosítsa az indexet úgy, hogy az a legújabb API-verzióban támogatott összetett típusokat tartalmazzon. Az API-verziók frissítésével kapcsolatos további információkért lásd: [frissítés a legújabb REST API verzióra](search-api-migration.md) , vagy [frissítsen a legújabb .net SDK](search-dotnet-sdk-migration-version-9.md)-verzióra.
 
-## <a name="example-of-a-complex-structure"></a>Egy összetett struktúra – példa
+## <a name="example-of-a-complex-structure"></a>Példa összetett szerkezetre
 
-A következő JSON-dokumentum egyszerű és összetett mezőket tevődik össze. Komplex mezők, például `Address` és `Rooms`, alárendelt mezővel rendelkezik. `Address` az adott alárendelt mezők értékei egyetlen készletével rendelkezik, mivel ez a dokumentum egyetlen objektumot. Ezzel szemben a `Rooms` több példányban alárendelt mezőinek értékeit, és az egyik minden objektum rendelkezik a gyűjteményben.
+A következő JSON-dokumentum egyszerű mezőkből és összetett mezőkből áll. Az összetett mezők, például `Address` a `Rooms`és a, rendelkeznek almezővel. `Address`az adott almezőhöz tartozó értékek egyetlen halmaza, mivel ez a dokumentum egyetlen objektuma. Ezzel szemben `Rooms` az almezőinek több halmaza van, egyet a gyűjtemény minden objektumához.
 
 ```json
 {
@@ -63,9 +63,9 @@ A következő JSON-dokumentum egyszerű és összetett mezőket tevődik össze.
 
 ## <a name="creating-complex-fields"></a>Összetett mezők létrehozása
 
-Bármely index definíciója és annak is használhatja a portálon, [REST API-val](https://docs.microsoft.com/rest/api/searchservice/create-index), vagy [.NET SDK-val](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) hozhat létre egy sémát, amely összetett típusokat tartalmazza. 
+Ahogy az index definíciója esetében is, a portál, a [REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)vagy a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) használatával összetett típusokat tartalmazó sémát hozhat létre. 
 
-Az alábbi példa bemutatja egy egyszerű mezőket gyűjtemények és komplex típusok rendelkező JSON-index séma. Figyelje meg, hogy egy összetett típus belül minden alárendelt mező típusa, és előfordulhat, attribútumok, csak a legfelső szintű mezők. A séma felel meg a fenti példa adatok. `Address` van egy összetett mezőt, amely nem egy gyűjtemény (egy szállodai Vendég rendelkezik egy címet). `Rooms` (egy szállodai Vendég rendelkezik számos termek) összetett gyűjtemény mező kitöltése.
+Az alábbi példa egy olyan JSON-index sémát mutat be, amely egyszerű mezőket, gyűjteményeket és összetett típusokat tartalmaz. Figyelje meg, hogy egy összetett típuson belül minden almező rendelkezik egy típussal, és rendelkezhet attribútumokkal, mint a legfelső szintű mezők. A séma megfelel a fenti példában szereplő adatként. `Address`a egy olyan összetett mező, amely nem gyűjtemény (a szállodában van egy címe). `Rooms`egy összetett gyűjtemény mező (a Hotel számos szobát tartalmaz).
 
 <!---
 For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
@@ -100,69 +100,69 @@ Indexers are a different story. When defining an indexer, in particular one used
 
 ## <a name="updating-complex-fields"></a>Összetett mezők frissítése
 
-Összes a [szabályok újraindexelés](search-howto-reindex.md) , amely érvényes mezők összetett mezők általánosságban továbbra is érvényesek. Néhány ismereteit itt, a fő szabályok mező hozzáadása egy index rebuild nem igényel, de a legtöbb módosítások tegye.
+Az általános mezőkre vonatkozó összes újraindexelő [szabály](search-howto-reindex.md) továbbra is összetett mezőkre vonatkozik. Az itt található főbb szabályok újbóli létrehozásakor a mező hozzáadásához nincs szükség index-újraépítésre, de a legtöbb módosítás nem szükséges.
 
-### <a name="structural-updates-to-the-definition"></a>A definíció strukturális frissítéséhez
+### <a name="structural-updates-to-the-definition"></a>A definíció szerkezeti frissítései
 
-Új alfeladat mezőket egy indexkészítés nélkül bármikor hozzáadhat egy összetett mezőt. Például hozzáadása "Irányítószám" `Address` vagy az "eszközök" `Rooms` engedélyezett, csakúgy, mint legfelső szintű mező hozzáadása egy indexbe. Meglévő dokumentumok új mezők null érték tartozik, amíg az adatok frissítésével explicit módon feltölti ezeknek a mezőknek.
+Új almezőket bármikor hozzáadhat egy összetett mezőhöz anélkül, hogy szükség lenne az index újraépítésére. Például, ha a "Irányítószám" `Address` vagy "kényelmi `Rooms` " értékre való felvétel engedélyezve van, ugyanúgy, mint a felső szintű mező hozzáadása egy indexhez. A meglévő dokumentumok NULL értékkel rendelkeznek az új mezőkhöz, amíg az adatok frissítésével explicit módon fel nem tölti ezeket a mezőket.
 
-Figyelje meg, hogy egy összetett típus belül minden alárendelt mező típusa, és előfordulhat, attribútumok, csak a legfelső szintű mezők
+Figyelje meg, hogy egy összetett típuson belül minden almező rendelkezik egy típussal, és rendelkezhet attribútumokkal, mint a legfelső szintű mezők
 
-### <a name="data-updates"></a>Adatok frissítése
+### <a name="data-updates"></a>Adatfrissítések
 
-Egy index ugyanezzel a meglévő dokumentumok frissítése a `upload` művelet összetett és egyszerű mezők esetében ugyanúgy működik – minden mező cseréje. Azonban `merge` (vagy `mergeOrUpload` egy meglévő dokumentumot alkalmazva) nem azonos az összes mezőt működik. Pontosabban a `merge` példányösszevonás elemek a gyűjteményen belül nem támogatja. Ez a korlátozás az egyszerű típusok, gyűjtemények és összetett gyűjtemény létezik. Egy gyűjtemény frissítéséhez, meg fogjuk kell a teljes értékét a vizualizációhoz módosításokat, és hozzáadhatja az új gyűjtemény az Index API-kérelem.
+Az indexben `upload` lévő meglévő dokumentumok frissítése a művelettel ugyanúgy működik, mint az összetett és az egyszerű mezők esetében – az összes mezőt lecseréli a rendszer. Azonban ( `merge` vagy `mergeOrUpload` egy meglévő dokumentumra alkalmazva) nem ugyanaz, mint az összes mezőnél. `merge` A nem támogatja a gyűjteményben lévő elemek egyesítését. Ez a korlátozás egyszerű típusok és összetett gyűjtemények gyűjteményei esetében létezik. Egy gyűjtemény frissítéséhez le kell kérnie a teljes gyűjtemény értékét, végre kell hajtania a módosításokat, majd tartalmaznia kell az új gyűjteményt az index API-kérelemben.
 
 ## <a name="searching-complex-fields"></a>Összetett mezők keresése
 
-Szabad formátumú keresési kifejezések a komplex típusok a várt módon működik. Ha bármely kereshető mezőjében vagy dokumentum alárendelt mező bárhol megegyezik, maga a dokumentum egyezés.
+A szabad formátumú keresési kifejezések a várt módon működnek összetett típusokkal. Ha bármilyen kereshető mező vagy Almező megfelel a dokumentumnak, akkor maga a dokumentum egyezés.
 
-Lekérdezések get további feltételeket és a kezelők rendelkezik, és néhány olyan kifejezéssel rendelkeznek mezők nevét adja meg, lehetséges, a komplikáltabb a [Lucene szintaxis](query-lucene-syntax.md). Például ez a lekérdezés megkísérli megfeleltetni a két kifejezés, "Portland" és "OR", a cím mező két alárendelt mező alapján:
+A lekérdezések részletesebben, ha több kifejezéssel és operátorral rendelkezik, és egyes feltételeknél meg van adva mezőnév, ahogy az a [Lucene szintaxissal](query-lucene-syntax.md)is lehetséges. A lekérdezés például két, "Portland" és "OR" kifejezéssel próbálkozik a címtartomány két almezője között:
 
     search=Address/City:Portland AND Address/State:OR
 
-Lekérdezésekben, mint ennek a következők *predikátumban* teljes szöveges keresés, ellentétben a szűrők. A szűrők, összetett gyűjtemény almező a lekérdezések közötti kapcsolatot a tartományban változók használata [ `any` vagy `all` ](search-query-odata-collection-operators.md). A fenti Lucene lekérdezési együtt más városok Oregon "Portland, Maine" és "Portland, Oregon" is olyan dokumentumokat ad vissza. Ez akkor történik, mivel minden egyes záradékot a mező a teljes dokumentumban szereplő összes érték érvényes, így a "jelenlegi alárendelt dokumentum" fogalma nem. Ezzel kapcsolatban további információkért lásd: [ismertetése OData fájlgyűjtési szűrők az Azure Search](search-query-understand-collection-filters.md).
+Az ehhez hasonló lekérdezések nem korrelálnak a teljes szöveges kereséshez, a szűrőktől eltérően. A szűrőkben egy összetett gyűjtemény almezőin keresztüli lekérdezések korrelálnak a [ `any` vagy `all` ](search-query-odata-collection-operators.md)a tartományon belüli változók használatával. A fenti Lucene-lekérdezés a "Portland, Maine" és "Portland, Oregon", valamint az Oregon többi városát tartalmazó dokumentumokat adja vissza. Ez azért történik, mert az egyes záradékok a teljes dokumentumban lévő mező összes értékére érvényesek, így nincs "aktuális aldokumentum" fogalma. Erről további információt a [OData-gyűjtési szűrők ismertetése a Azure Searchban](search-query-understand-collection-filters.md)című témakörben talál.
 
-## <a name="selecting-complex-fields"></a>Összetett mezők kiválasztása
+## <a name="selecting-complex-fields"></a>Összetett mezők kijelölése
 
-A `$select` válassza ki a mezőket a keresési eredmények között visszaadott paraméter használható. Ez a paraméter használatával válassza ki az adott almező egy összetett mező, a fölérendelt és alárendelt mező perjellel elválasztva tartalmazza (`/`).
+A `$select` paraméter használatával kiválaszthatja, hogy mely mezőket adja vissza a rendszer a keresési eredmények között. Ha ezt a paramétert szeretné használni egy összetett mező adott almezőinek kiválasztásához, akkor a szülő mezőt és az almezőt perjel`/`() karakterrel elválasztva adja meg.
 
     $select=HotelName, Address/City, Rooms/BaseRate
 
-Mezők kell megjelölni lekérhető az indexben, ha azt szeretné őket a keresési eredmények között. Csak a mezők lekérhető megjelölve használható egy `$select` utasítást.
+Ha a keresési eredmények között szeretné, a mezőket beolvasható értékként kell megjelölni az indexben. Egy `$select` utasításban csak a beolvasható megjelölt mezők használhatók.
 
-## <a name="filter-facet-and-sort-complex-fields"></a>Szűrés, értékkorlátozás és rendezési összetett mezők
+## <a name="filter-facet-and-sort-complex-fields"></a>Összetett mezők szűrése, aspektusa és rendezése
 
-Azonos [OData syntaxe cesty](query-odata-filter-orderby-syntax.md) használja a szűréshez és fielded keresések értékkorlátozás, rendezés, majd válassza ki a mezőket a keresési kérelem esetében is használható. Pro komplexní typy szabályok vonatkoznak, amelyek az alárendelt mezők is megjelölhetők szerint rendezhető és kategorizálható szabályozzák. További információ a szabályokról, tekintse meg a [Index létrehozása API-referencia](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
+A szűréshez és a mezőkben végzett keresésekhez használt [OData-elérésiút-szintaxis](query-odata-filter-orderby-syntax.md) is használható a keresési kérelemben található mezők aspektusának, rendezésének és kiválasztásához. Összetett típusok esetén a szabályok érvényesek, amelyek meghatározzák, hogy mely almezőket lehet csoportosított vagy sokrétűként megjelölni. További információt ezekről a szabályokról a [create index API](https://docs.microsoft.com/rest/api/searchservice/create-index#request)-referenciát ismertető témakörben talál.
 
-### <a name="faceting-sub-fields"></a>Almező jellemzőkezelés
+### <a name="faceting-sub-fields"></a>Metszeti almezők
 
-Minden alárendelt mező kategorizálható megjelölhető, kivéve, ha típusú `Edm.GeographyPoint` vagy `Collection(Edm.GeographyPoint)`.
+Bármely almező kijelölhető, ha nem vagy `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)`típusú.
 
-A dokumentumok számát adja vissza az értékkorlátozás eredményeket a szülő dokumentum (egy Szálloda), az összetett gyűjteményben (termek) nem a alárendelt dokumentumok számítjuk ki. Tegyük fel például, egy szállodai Vendég "csomag" típusú 20 termek rendelkezik. A facet paraméter megadott `facet=Rooms/Type`, értékkorlátozás száma egy Szálloda, nem 20-a termek a lesz.
+A dimenzió eredményeiben visszaadott dokumentumok számát a rendszer kiszámítja a szülő dokumentum (a szálloda) számára, nem pedig az aldokumentumok egy összetett gyűjteményben (szobákban). Tegyük fel például, hogy egy szálloda 20 "Suite" típusú szobát tartalmaz. Mivel ez a dimenziós paraméter `facet=Rooms/Type`, a dimenziók száma egy a szálloda számára, nem 20 a helyiségek számára.
 
-### <a name="sorting-complex-fields"></a>Rendezési összetett mezők
+### <a name="sorting-complex-fields"></a>Összetett mezők rendezése
 
-Rendezési műveletekben dokumentumok ("Hotels"), és nem alárendelt dokumentumok (termek) vonatkoznak. Ha egy összetett típus gyűjtemény például termek, fontos vegye figyelembe, hogy nem rendezhetők termek egyáltalán. Sőt a gyűjtemény nem lehet rendezni.
+A rendezési műveletek dokumentumok (szállodák) és nem aldokumentumok (szobák) esetében érvényesek. Ha összetett típusú gyűjteményt (például szobákat) tartalmaz, fontos tisztában lennie azzal, hogy a szobák egyáltalán nem rendezhetők. Valójában nem rendezheti a gyűjteményeket.
 
-Rendezési műveletekben működnek, ha a mezők a dokumentumban egyetlen értéket kell-e a mező egy egyszerű mezőt, vagy egy alárendelt mezőt összetett típusban. Ha például `Address/City` lehet rendezhető, így csak egy címet / Szálloda, mert `$orderby=Address/City` hotels város szerint rendezhető.
+A rendezési műveletek akkor működnek, ha a mezők egyetlen értékkel rendelkeznek a dokumentumokban, függetlenül attól, hogy a mező egy egyszerű mező, vagy egy összetett típusú almező. Lehet például, `Address/City` hogy rendezhető, mert egy helyen csak egy-egy címe van, ezért `$orderby=Address/City` a hotelek város szerint lesznek sorba rendezve.
 
-### <a name="filtering-on-complex-fields"></a>Összetett mezők szűrése
+### <a name="filtering-on-complex-fields"></a>Szűrés összetett mezőkön
 
-Almező egy kifejezést egy összetett mező is hivatkozunk. Használja ugyanazt [OData syntaxe cesty](query-odata-filter-orderby-syntax.md) értékkorlátozás, rendezés, majd válassza ki a mezőket a használt. Például a következő szűrőt ad vissza minden hotels Kanadában:
+A szűrő kifejezésben a komplex mezők almezőire is hivatkozhat. Egyszerűen használja ugyanazt a [OData elérésiút](query-odata-filter-orderby-syntax.md) -szintaxist, amelyet a rendszer a mezők rendezéséhez, rendezéséhez és kiválasztásához használ. A következő szűrő például az összes kanadai szállodát visszaküldi:
 
     $filter=Address/Country eq 'Canada'
 
-Szűrés egy összetett gyűjtemény mező, használhatja a **lambda kifejezésnek** az a [ `any` és `all` operátorok](search-query-odata-collection-operators.md). Ebben az esetben a **tartomány változó** a lambda kifejezésnek az alárendelt mezőkkel objektum. Ezeket a standard szintű OData syntaxe cesty alárendelt mezőket is hivatkozunk. Ha például a következő szűrőt ad vissza deluxe legalább egy helyet az összes szállodák és az összes, nem fogyasztási termek:
+Egy összetett gyűjtemény mező szűréséhez használhat **lambda kifejezést** a [ `any` és `all` ](search-query-odata-collection-operators.md)a operátorral. Ebben az esetben a lambda kifejezés **tartomány változója** egy olyan objektum, amely almezőket tartalmaz. Ezeket az alárendelt mezőket a standard OData Path szintaxissal tekintheti meg. A következő szűrő például az összes olyan szállodát visszaküldi, amely legalább egy deluxe szobával és az összes nem dohányzó szobával rendelkezik:
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-Legfelső szintű egyszerű mezőkkel összetett mezők egyszerű almező csak tartalmazhat szűrők, ha rendelkezik, a **szűrhető** attribútum beállítása `true` indexdefinícióban. További információkért lásd: a [Index létrehozása API-referencia](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
+A legfelső szintű egyszerű mezőkhöz hasonlóan a komplex mezők egyszerű almezői csak akkor szerepelhetnek a szűrőkben, ha az index definíciójában a szűrhető `true` attribútum van beállítva. További információ: [create index API Reference](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki a [Hotels adatkészlet](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md) a a **adatimportálás** varázsló. A fontos adatok eléréséhez a Cosmos DB kapcsolati információk kell.
+Próbálja ki a [Hotels](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md) adatkészletet az adatimportálás varázslóban. Az adatok eléréséhez a readme szolgáltatásban megadott Cosmos DB kapcsolati információkra lesz szüksége.
 
-Az aktuális adatnak az első lépés a varázslóban az Azure Cosmos DB új adatforrás létrehozása. További a a varázslóban, amikor a célként megadott index lapot a megjelennek az index a komplex típusok. Hozzon létre, és ez az index betöltése, majd hajtsa végre a lekérdezéseket az új struktúra megértéséhez.
+Ezekkel az adatokkal a varázsló első lépéseként egy új Azure Cosmos DB adatforrást kell létrehoznia. Ha a varázslóban a cél index lapra kerül, egy összetett típusú index jelenik meg. Hozza létre és töltse be az indexet, majd hajtsa végre a lekérdezéseket az új struktúra megismeréséhez.
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: importálás, az indexelés és a lekérdezések portál varázsló](search-get-started-portal.md)
+> [Gyors útmutató: portál varázsló importáláshoz, indexeléshez és lekérdezésekhez](search-get-started-portal.md)

@@ -5,20 +5,20 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d500f6c74bb62322a5e14ce3c489e8dba11dc2f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 190d697dca56fa51d92987f32db0146aa79881aa
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68555799"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162402"
 ---
-# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Felhasználói beállítások kezelése az Azure multi-Factor Authentication szolgáltatással a felhőben
+# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Felhasználói beállítások kezelése az Azure Multi-Factor Authentication a felhőben
 
 Rendszergazdaként a következő felhasználói és eszközbeállítások felügyeletét végezheti el:
 
@@ -32,9 +32,12 @@ A hitelesítés-rendszergazdai szerepkörhöz rendelt rendszergazda megkövetelh
 
 ![Hitelesítési módszerek kezelése a Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
-1. A jelszó alaphelyzetbe állítása visszaállítja a felhasználó jelszavát, és hozzárendel egy ideiglenes jelszót, amelyet a következő bejelentkezéskor módosítani kell.
-2. Az MFA ismételt regisztrálásának megkövetelése, hogy amikor a felhasználó a következő alkalommal jelentkezik be, a rendszer kérni fogja az új MFA hitelesítési módszer beállítását.
-3. Az MFA-munkamenetek visszavonása törli a felhasználó által megjegyzett MFA-munkameneteket, és azt igényli, hogy az MFA-t a következő alkalommal kell végrehajtania, amikor a szabályzat az eszközön szükséges.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. A bal oldalon válassza **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
+1. Válassza ki azt a felhasználót, akinek műveletet kíván végrehajtani, és válassza a **hitelesítési módszerek**lehetőséget.
+   - A **jelszó** alaphelyzetbe állítása visszaállítja a felhasználó jelszavát, és hozzárendel egy ideiglenes jelszót, amelyet a következő bejelentkezéskor módosítani kell.
+   - Az **MFA ismételt regisztrálásának** megkövetelése, hogy amikor a felhasználó a következő alkalommal jelentkezik be, a rendszer kérni fogja az új MFA hitelesítési módszer beállítását.
+   - Az **MFA** -munkamenetek visszavonása törli a felhasználó által megjegyzett MFA-munkameneteket, és azt igényli, hogy az MFA-t a következő alkalommal kell végrehajtania, amikor a szabályzat az eszközön szükséges.
 
 ## <a name="require-users-to-provide-contact-methods-again"></a>A kapcsolattartási módszerek újbóli megkövetelése a felhasználóktól
 
@@ -78,7 +81,7 @@ Ezzel a beállítással törlődik a felhasználó által létrehozott összes a
 
 ## <a name="restore-mfa-on-all-remembered-devices-for-a-user"></a>MFA visszaállítása a felhasználó összes megjegyzett eszközén
 
-Az Azure multi-Factor Authentication konfigurálható funkcióinak egyike lehetővé teszi a felhasználóknak az eszközök megbízhatóként való megjelölését. További információ: az [Azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md#remember-multi-factor-authentication).
+Az Azure Multi-Factor Authentication konfigurálható szolgáltatásainak egyike lehetővé teszi a felhasználók számára, hogy megbízhatóként megjelölik az eszközöket. További információ: az [Azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md#remember-multi-factor-authentication).
 
 A felhasználók eldönthetik, hogy egy konfigurálható napokra vonatkozó kétlépéses ellenőrzést végeznek a normál eszközökön. Ha egy fiók biztonsága sérül, vagy egy megbízható eszköz elvész, el kell tudnia távolítani a megbízható állapotot, és újra meg kell követelni a kétlépéses ellenőrzést.
 

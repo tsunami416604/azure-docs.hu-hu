@@ -1,19 +1,19 @@
 ---
 title: Speciális lekérdezési minták
-description: Néhány speciális lekérdezéseket futtatnia, beleértve a VMSS-kapacitás használt, minden címke listázása az Azure Erőforrás-grafikon és a megfelelő virtuális gépek használata a reguláris kifejezéseket.
+description: Az Azure Resource Graph használatával speciális lekérdezéseket futtathat, beleértve a virtuálisgép-méretezési csoport kapacitását, az összes használt címke felsorolását, valamint a reguláris kifejezésekkel rendelkező virtuális gépeket.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7684ae6b4ddb6320efc62ef6f9963bef1b9a66fa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b5742d4c14d2599b3efa73e427a5d418e5ef1c1e
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691981"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164900"
 ---
 # <a name="advanced-resource-graph-queries"></a>Speciális Resource Graph-lekérdezések
 
@@ -22,7 +22,7 @@ Az Azure Resource Graph-fal végzett lekérdezések megértéséhez először a 
 A következő speciális lekérdezéseken vezetjük végig:
 
 > [!div class="checklist"]
-> - [Virtuális gép méretezési csoport kapacitásának és méret](#vmss-capacity)
+> - [Virtuálisgép-méretezési csoport kapacitásának és méretének beolvasása](#vmss-capacity)
 > - [Összes címkenév listázása](#list-all-tags)
 > - [Reguláris kifejezésekkel egyező virtuális gépek](#vm-regex)
 
@@ -72,8 +72,8 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 
 ## <a name="vm-regex"></a>Reguláris kifejezésekkel egyező virtuális gépek
 
-Ez a lekérdezés olyan virtuális gépeket keres, amelyek egyeznek egy [reguláris kifejezéssel](/dotnet/standard/base-types/regular-expression-language-quick-reference) (más néven _regex-szel_).
-A **blobnévelőtagjaként \@**  lehetővé teszi számunkra, hogy adja meg a következő reguláris kifejezésre megfelelően, amely `^Contoso(.*)[0-9]+$`. A reguláris kifejezés definíciójának magyarázata:
+Ez a lekérdezés olyan virtuális gépeket keres, amelyek egyeznek egy [reguláris kifejezéssel](/dotnet/standard/base-types/regular-expression-language-quick-reference) (más néven _regex-szel_). Az **egyezések \@**  használata `^Contoso(.*)[0-9]+$`lehetővé teszi, hogy megegyezzen a reguláris kifejezéssel, amely a következő:.
+A reguláris kifejezés definíciójának magyarázata:
 
 - `^` – Az egyezésnek a sztring elején kell kezdődnie.
 - `Contoso` – A kis- és nagybetűket megkülönböztető sztring.
@@ -99,6 +99,22 @@ az graph query -q "where type =~ 'microsoft.compute/virtualmachines' and name ma
 ```azurepowershell-interactive
 Search-AzGraph -Query "where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$' | project name | order by name asc"
 ```
+
+## <a name="displaynames"></a>Bérlői és előfizetési nevek belefoglalása a DisplayName paraméterrel
+
+Ez a lekérdezés az új **include** paramétert használja a displaynames kapcsolóval, hogy hozzáadja a **hosszúnak** , és **tenantDisplayName** az eredményekhez. Ez a paraméter csak az Azure CLI és a Azure PowerShell esetében érhető el.
+
+```azurecli-interactive
+az graph query -q "limit 1" --include displayNames
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "limit 1" -Include DisplayNames
+```
+
+> [!NOTE]
+> Ha a lekérdezés nem a **Project** használatával adja meg a visszaadott tulajdonságokat, a **hosszúnak** és a **tenantDisplayName** automatikusan belekerül az eredmények közé.
+> Ha a lekérdezés a **projectet**használja, a _DisplayName_ mezők mindegyikének explicit módon szerepelnie kell a **projektben** , vagy nem lesznek visszaadva az eredmények között még akkor sem, ha a **include** paramétert használja.
 
 ## <a name="next-steps"></a>További lépések
 

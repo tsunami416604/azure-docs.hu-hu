@@ -3,16 +3,16 @@ title: Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynök
 description: Ez a cikk a Microsoft Azure Recovery Services (MARS) ügynököt futtató gépek biztonsági mentésének Azure Backup támogatását foglalja össze.
 author: dcurwin
 ms.service: backup
-ms.date: 02/17/2019
+ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 8c983772f58c1ea01db175b47225ccfafa515b96
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 599d3f97ea30b096999d754a995af2ba660c0bc3
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951983"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186174"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -72,20 +72,22 @@ Hálózati sávszélesség-szabályozás | Nem érhető el a Windows Server 2008
 
 A MARS-ügynök használatával biztonsági mentést készíthet közvetlenül az Azure-ba a helyszíni gépeken és az Azure-beli virtuális gépeken futó egyes operációs rendszereken. Az operációs rendszernek 64 bitesnek kell lennie, és a legújabb szervizcsomagokat és frissítéseket kell futtatnia. A következő táblázat összefoglalja ezeket az operációs rendszereket:
 
-**Operációs rendszer** | **Fájlok/mappák** | **Rendszerállapot** 
---- | --- | --- 
-Windows 10 (Enterprise, Pro, Home) | Igen | Nem
-Windows 8,1 (Enterprise, Pro)| Igen |Nem
-Windows 8 (Enterprise, Pro) | Igen | Nem
-Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Igen | Nem
-Windows Server 2016 (Standard, Datacenter, Essentials) | Igen | Igen
-Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Igen | Igen
-Windows Server 2012 (Standard, Datacenter, Foundation) | Igen | Igen
-Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Igen | Igen
-Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Igen | Nem
-Windows Storage Server 2016/2012 R2/2012 (standard, munkacsoport) | Igen | Nem
+**Operációs rendszer** | **Fájlok/mappák** | **Rendszerállapot** | **Szoftver/modulra vonatkozó követelmények**
+--- | --- | --- | ---
+Windows 10 (Enterprise, Pro, Home) | Igen | Nem |  A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
+Windows 8,1 (Enterprise, Pro)| Igen |Nem | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
+Windows 8 (Enterprise, Pro) | Igen | Nem | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
+Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Igen | Nem | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
+Windows Server 2016 (Standard, Datacenter, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2012 (Standard, Datacenter, Foundation) | Igen | Igen |-.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe)
+Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Igen | Igen | -.NET 3,5, .net 4,5 <br> – Windows PowerShell <br> -Kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe)
+Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Igen | Nem | -.NET 3,5, .net 4,5 <br> – Windows PowerShell <br> -Kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM. exe) <br> – Virtual Server 2005 Base + KB KB948515
+Windows Storage Server 2016/2012 R2/2012 (standard, munkacsoport) | Igen | Nem | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2019 (standard, Datacenter, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
 
 További információ: [támogatott MABS és DPM operációs rendszerek](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
+
 
 ## <a name="backup-limits"></a>Biztonsági mentési korlátok
 

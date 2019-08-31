@@ -2,7 +2,7 @@
 title: A kognitív keresési képességek szövegének felosztása – Azure Search
 description: Szöveg felosztása darabokra vagy szöveges lapokra egy Azure Search alkoholtartalom-növelési folyamaton alapuló hossz alapján.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.workload: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 03ebf39db264c9d6f78b228f3af4239c6e249b26
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fcde448c664ad85b78d275304dd01a1eedaca006
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635947"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183300"
 ---
 #   <a name="text-split-cognitive-skill"></a>Szöveg felosztása kognitív képességgel
 
@@ -79,7 +79,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 }
 ```
 
-##  <a name="sample-input"></a>Minta bemenet
+##  <a name="sample-input"></a>Mintabemenet
 
 ```json
 {

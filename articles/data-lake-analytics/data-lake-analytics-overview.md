@@ -9,12 +9,12 @@ ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: 1f798917548f4a744518b12ba1e2be2095bdf1c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3572c308310c49eed48ccb25dfa7cb0fb161515f
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60811639"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164515"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Mi az az Azure Data Lake Analytics?
 
@@ -42,7 +42,7 @@ A Data Lake Analytics egy költséghatékony megoldás big data-számítási fel
     
 ### <a name="works-with-all-your-azure-data"></a>Az összes Azure Data-szolgáltatással együttműködik
   
-A Data Lake Analytics az Azure Data Lake Store szolgáltatással való együttműködésre lett kifejlesztve, így a legmagasabb szintű teljesítményt, adatátvitelt és párhuzamos folyamatkezelést biztosítja, valamint kompatibilis az Azure Storage-blobokkal, az Azure SQL Database-szel és az Azure Warehouse-szal.
+A Data Lake Analytics a legmagasabb teljesítmény-, átviteli teljesítmény-és párhuzamos Azure Data Lake Storage működik, és az Azure Storage-Blobokkal, Azure SQL Databaseekkel, Azure Warehouse-val működik együtt.
 
 ### <a name="next-steps"></a>További lépések
  

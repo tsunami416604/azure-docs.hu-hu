@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: 86e0f09e957df308f3af868d9590951f29d226b1
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3fd2a50946f0857d527c34b62687b2dbdd71298e
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073892"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172028"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Oktatóanyag: Windows Server virtuális gépek csatlakoztatása felügyelt tartományokhoz
 
@@ -214,7 +214,7 @@ A hibaelhárítási lépések elvégzése után próbáljon újra csatlakozni a 
 * Győződjön meg arról, hogy a megadott felhasználói fiók az *HRE DC-rendszergazdák* csoport tagja.
 * Próbálja meg az UPN formátumot használni a hitelesítő adatok megadásához, például `contosoadmin@contoso.onmicrosoft.com`:. Ha sok felhasználó rendelkezik ugyanazzal az UPN-előtaggal a bérlőben, vagy ha az UPN-előtag túl hosszú, akkor előfordulhat, hogy a fiók *sAMAccountName* automatikusan létrejön. Ezekben az esetekben előfordulhat, hogy a fiók *sAMAccountName* formátuma eltér a helyszíni tartományban várttól vagy használattól.
 * Győződjön meg arról, hogy engedélyezte a [jelszó][password-sync] -szinkronizálást a felügyelt tartományhoz. A konfigurációs lépés nélkül a szükséges jelszó-kivonatok nem jelennek meg az Azure AD DS felügyelt tartományában, hogy megfelelően hitelesítse a bejelentkezési kísérletet.
-* Várjon, amíg a jelszó-szinkronizálás be nem fejeződik. Felhasználói fiók jelszavának módosítása esetén 15-20 percet is igénybe vehet, hogy a jelszó elérhető legyen a tartományhoz való csatlakozáshoz.
+* Várjon, amíg a jelszó-szinkronizálás be nem fejeződik. A felhasználói fiók jelszavának módosításakor az Azure AD automatikus háttérben történő szinkronizálása frissíti az Azure AD DSban található jelszót. Időbe telik, amíg a jelszó elérhetővé válik a tartományhoz való csatlakozáshoz.
 
 ## <a name="next-steps"></a>További lépések
 

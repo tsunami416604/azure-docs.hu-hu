@@ -1,71 +1,75 @@
 ---
-title: Alkalmazáscsoportok kezelése a Windows virtuális asztal előzetes – Azure
-description: Ismerteti, hogyan állíthatja be Windows virtuális asztal előzetes bérlők számára az Azure Active Directoryban.
+title: Alkalmazás-csoportok kezelése a Windows rendszerű virtuális asztali előzetes verzióhoz – Azure
+description: Leírja, hogyan kell beállítani a Windows rendszerű virtuális asztali előnézeti bérlőket a Azure Active Directoryban.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 73425df1f0cfedd2a681650fc2b536a652b621d5
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 2bec7e490443727fa294e7be9412bb20ae66e691
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206679"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163251"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Oktatóanyag: Alkalmazáscsoportok kezelése Windows virtuális asztal előzetes verzió
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Oktatóanyag: Alkalmazás-csoportok kezelése a Windows rendszerű virtuális asztal előzetes verziójához
 
-Létrehozott egy új Windows virtuális asztal előzetes gazdagép-készlet alapértelmezett alkalmazáscsoportnak is közzéteszi a teljes asztalhoz. Emellett a gazdagép-készlet egy vagy több RemoteApp alkalmazáscsoportok is létrehozhat. Ez az oktatóanyag egy RemoteApp-app csoport létrehozása és közzététele az egyes **Start** menü alkalmazásokat.
+Az új Windows virtuális asztali előzetes verziójú címkészlet számára létrehozott alapértelmezett alkalmazáscsoport a teljes asztalt is közzéteszi. Emellett létrehozhat egy vagy több RemoteApp-alkalmazáscsoport is a gazdagéphez. Ezt az oktatóanyagot követve hozzon létre egy RemoteApp-alkalmazáscsoport alkalmazást, és tegye közzé az egyes **Start** menüket.
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Hozzon létre egy RemoteApp-csoportot.
-> * RemoteApp-programok hozzáférést biztosít.
+> * Hozzáférés biztosítása RemoteApp-programokhoz.
 
-Mielőtt elkezdené, [letöltése és importálása a Windows virtuális asztal PowerShell-modul](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) használatához a PowerShell-munkamenetben, ha még nem tette.
+Mielőtt elkezdené, [töltse le és importálja a](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
 
-## <a name="create-a-remoteapp-group"></a>A RemoteApp-csoport létrehozása
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
-1. Futtassa a következő PowerShell-parancsmag egy új RemoteApp üres app csoport létrehozásához.
+## <a name="create-a-remoteapp-group"></a>RemoteApp-csoport létrehozása
+
+1. A következő PowerShell-parancsmag futtatásával hozzon létre egy új, üres RemoteApp-alkalmazás csoportot.
 
    ```powershell
    New-RdsAppGroup <tenantname> <hostpoolname> <appgroupname> -ResourceType "RemoteApp"
    ```
 
-2. (Nem kötelező) Győződjön meg arról, hogy az alkalmazás csoport létrejött, futtathatja a következő parancsmagot a gazdagép-készlet az összes alkalmazás csoportok listájának megtekintéséhez.
+2. Választható Annak ellenőrzéséhez, hogy az alkalmazáscsoport létrejött-e, a következő parancsmag futtatásával megtekintheti az alkalmazáskészlethez tartozó összes alkalmazás-csoportot.
 
    ```powershell
    Get-RdsAppGroup <tenantname> <hostpoolname>
    ```
 
-3. Listáját a következő parancsmag futtatásával **Start** virtuálisgép-lemezkép a gazdagép-készlet alkalmazások menüben. Jegyezze fel a tartozó értékeket **FilePath**, **IconPath**, **IconIndex**, és más fontos információkat a közzétenni kívánt alkalmazáshoz.
+3. Futtassa a következő parancsmagot a **Start** menü alkalmazások listájának lekéréséhez a gazdaszámítógép virtuálisgép-rendszerképén. Jegyezze fel a közzétenni kívánt alkalmazás **filepath**, **IconPath**, **IconIndex**és egyéb fontos információinak értékeit.
 
    ```powershell
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
    
-4. Futtassa az alábbi parancsmagot, az alkalmazás alapján való `AppAlias`. `AppAlias` láthatóvá válik a 3. lépésében a kimeneti futtatásakor.
+4. A következő parancsmag futtatásával telepítheti az alkalmazást a `AppAlias`alapján. `AppAlias`a 3. lépés kimenetének futtatásakor láthatóvá válik.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>
    ```
 
-5. (Nem kötelező) Futtassa a következő parancsmag egy új RemoteApp-program közzététele az 1. lépésben létrehozott csoporthoz.
+5. Választható Futtassa a következő parancsmagot egy új RemoteApp-program közzétételéhez az 1. lépésben létrehozott alkalmazáscsoport számára.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
    ```
 
-6. Győződjön meg arról, hogy az alkalmazás úgy lett közzétéve, futtassa a következő parancsmagot.
+6. Az alkalmazás közzétételének ellenőrzéséhez futtassa a következő parancsmagot.
 
    ```powershell
    Get-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname>
    ```
 
-7. Az alkalmazás csoport közzétenni kívánt minden egyes alkalmazáshoz ismételje meg az 1. és 5.
-8. Futtassa a következő parancsmagot a RemoteApp-programok, az alkalmazás csoport hozzáférés adható a felhasználóknak.
+7. Ismételje meg az 1 – 5. lépést minden olyan alkalmazás esetében, amelyet közzé szeretne tenni ehhez az alkalmazási csoporthoz.
+8. Futtassa a következő parancsmagot, hogy hozzáférést biztosítson a felhasználóknak a RemoteApp-programokhoz az alkalmazás csoportban.
 
    ```powershell
    Add-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname> -UserPrincipalName <userupn>
@@ -73,7 +77,7 @@ Mielőtt elkezdené, [letöltése és importálása a Windows virtuális asztal 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan hozzon létre egy app-csoportot, RemoteApp-programok való feltöltéséhez és felhasználók hozzárendelése az alkalmazás csoport. Megtudhatja, hogyan hoz létre egy érvényesítési gazdagép készletet, lásd a következő oktatóanyagot. Érvényesítési gazdagép készlet használatával figyelheti a szolgáltatásfrissítések, mielőtt megvalósítaná azokat az éles környezetben.
+Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy alkalmazáscsoport, hogyan tölthető be a RemoteApp-programokkal, és hogyan rendelhet hozzá felhasználókat az alkalmazás-csoporthoz. Az érvényesítési gazdagépek létrehozásáról a következő oktatóanyagban olvashat bővebben. Az ellenőrzési gazdagépek segítségével figyelheti a szolgáltatás frissítéseit, mielőtt az éles környezetbe helyezné őket.
 
 > [!div class="nextstepaction"]
-> [Szolgáltatásfrissítések ellenőrzése gazdagép-készlet létrehozása](./create-validation-host-pool.md)
+> [Gazdagép-készlet létrehozása a szolgáltatás frissítéseinek ellenőrzéséhez](./create-validation-host-pool.md)

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/29/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b90b4806e86ed0ba33500cf31a6ed892241ceabe
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
-ms.translationtype: MT
+ms.openlocfilehash: 27526f4940cb7ab538992f3506c1a35a81cec9bc
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423458"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165024"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>A QnA Maker Tudásbázis korlátok és határok
 
@@ -44,19 +44,31 @@ A QnAs egy URL-lapról való kinyeréséhez feltérképezhető mély hivatkozás
 
 ## <a name="metadata-limits"></a>Metaadat-korlátok
 
+### <a name="by-azure-search-pricing-tier"></a>Azure Search díjszabási szintje szerint
+
 A metaadatok mezőinek maximális száma a Tudásbázisban a **[Azure Search szint korlátain](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** alapul.
 
 |**Az Azure Search szolgáltatásréteg** | **Ingyenes** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Maximális metaadatokat tartalmazó mezőket a QnA Maker szolgáltatás (között az összes Tudásbázis)|1,000|100 *|1,000|1,000|1,000|1,000|
 
+### <a name="by-name-and-value"></a>Név és érték szerint
+
+A metaadatok nevének és értékének hosszát és elfogadható karaktereit a következő táblázat tartalmazza.
+
+|Elem|Engedélyezett karakterek|Regex-minta egyezése|Karakterek maximális száma|
+|--|--|--|--|
+|Name (Név)|Lehetővé teszi<br>alfanumerikus karakterek (betűk és számjegyek)<br>`_`aláhúzásjellel|`^[a-zA-Z0-9_]+$`|100|
+|Value|Mindent lehetővé tesz, kivéve<br>`:`kettőspont<br>`|`(függőleges cső)|`^[^:|]+$`|500|
+|||||
+
 ## <a name="knowledge-base-content-limits"></a>Tudásbázis-tartalmat korlátok
 Általános korlátozások a tartalmat a Tudásbázis:
 * Válasz szövegének hossza: 25,000
 * A szóban forgó szöveg hossza: 1,000
 * A metaadat-kulcs/érték szövegének hossza: 100
-* A metaadatok neve támogatott karakterek: Ábécék, számjegyek és _  
-* A metaadatok értékének támogatott karakterei: Az összes kivétel: és | 
+* A metaadatok neve támogatott karakterek: Ábécék, számjegyek és`_`  
+* A metaadatok értékének támogatott karakterei: Kivéve `:` , és`|` 
 * Fájlnév hossza: 200
 * Támogatott fájlformátumok: ".tsv", ".pdf", "txt", ".docx", ".xlsx".
 * Alternatív kérdések maximális száma: 300

@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 07/20/2019
-ms.openlocfilehash: 21da8dce7a77a086381bd21dc0129b614fa65ad3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 08/28/2019
+ms.openlocfilehash: df74d2d07937634e2b656746c0a9fc9cd86b8c93
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138411"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182603"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Oktatóanyag: Ismerkedés az első ML-kísérlet létrehozásával
 
@@ -51,10 +51,11 @@ A munkaterületről hozzon létre egy felhőalapú erőforrást a Jupyter-jegyze
 
      ![Új virtuális gép kiválasztása](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
 
-1. Adja meg a virtuális gép nevét. Ezután kattintson a **Létrehozás** elemre.
+1. Adja meg a virtuális gép nevét. 
+   + A notebook virtuális gép nevének 2 – 16 karakter közöttinek kell lennie. Az érvényes karakterek a betűk, a számok és a karakter.  
+   + A névnek egyedinek kell lennie az Azure-előfizetésen belül is.
 
-    > [!NOTE]
-    > A notebook virtuális gép nevének 2 – 16 karakter közöttinek kell lennie. Az érvényes karakterek a betűk, a számok és a karakter.  A névnek egyedinek kell lennie az Azure-előfizetésen belül is.
+1. Ezután kattintson a **Létrehozás** elemre. A virtuális gép beállítása eltarthat egy kis ideig.
 
 1. Várjon, amíg az állapot **futni**nem változik.
 
@@ -66,43 +67,16 @@ A virtuális gép futása után a **notebook virtuális gépek** szakasz haszná
 
     ![A Jupyter notebook-kiszolgáló elindítása](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
-    A hivatkozás elindítja a notebook-kiszolgálót, és megnyitja a Jupyter notebook weboldalát egy új böngésző lapon.  Ez a hivatkozás csak a virtuális gépet létrehozó személy számára fog működni. A munkaterület minden felhasználójának létre kell hoznia a saját virtuális gépet.
+   A hivatkozás elindítja a notebook-kiszolgálót, és megnyitja a Jupyter notebook weboldalát egy új böngésző lapon.  Ez a hivatkozás csak a virtuális gépet létrehozó személy számára fog működni. A munkaterület minden felhasználójának létre kell hoznia a saját virtuális gépet.
 
-1. A Jupyter notebook weboldalán a legfelső mappanév a felhasználónevét adja meg.  Válassza ki ezt a mappát.
+1. A Jupyter notebook weboldalán válassza ki a saját felhasználónevével rendelkező legfelső szintű mappanév-nevet.  
 
-    > [!TIP]
-    > Ez a mappa a saját munkaterületén található [Storage](concept-workspace.md#resources) -fiókban, és nem a notebook virtuális gépen van.  Törölheti a notebook virtuális gépet, és továbbra is megőrizheti a munkáját.  Amikor később hoz létre egy új jegyzetfüzet virtuális gépet, a rendszer ezt a mappát fogja betölteni. Ha a munkaterületet másokkal is megosztja, látni fogja a mappát, és látni fogja a sajátját.
+   Ez a mappa nem a jegyzetfüzet virtuális gépén, hanem a munkaterület [Storage](concept-workspace.md#resources) -fiókjában található.  Ha törli a notebook VM-et, továbbra is megtarthatja a munkáját.  Amikor később hoz létre egy új jegyzetfüzet virtuális gépet, a rendszer ezt a mappát fogja betölteni. Ha a munkaterületet másokkal is megosztja, látni fogja a mappát, és látni fogja a sajátját.
 
-1. Nyissa `samples-*` meg az alkönyvtárat, majd nyissa meg a`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
+1. Nyissa `samples-*` meg az alkönyvtárat, majd nyissa meg a Jupyter notebookot.`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
 
-> [!Warning]
-> Győződjön meg arról, `tutorial-1st-experiment-sdk-train.ipynb` hogy megnyitotta `.yml` a fájlt, és **nem** a > azonos nevű fájlt. 
-
-Az oktatóanyag **második részében** futtatja a kódot a Machine `tutorial-1st-experiment-sdk-train.ipynb` learning-modellek betanításához.
-
-## <a name="end"></a>Erőforrások törlése
-
-Ne hajtsa végre ezt a szakaszt, ha továbbra is az oktatóanyag **2. részét** tervezi.
-
-### <a name="stop-the-notebook-vm"></a>A notebook virtuális gép leállítása
-
-Ha Felhőbeli jegyzetfüzet-kiszolgálót használt, állítsa le a virtuális gépet, ha nem használja a költségeket.
-
-1. A munkaterületen válassza a **notebook virtuális gépek**lehetőséget.
-
-   ![A virtuális gép kiszolgálójának leállítása](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
-
-1. Válassza ki a virtuális gépet a listából.
-
-1. Válassza a **Leállítás**lehetőséget.
-
-1. Ha készen áll a kiszolgáló ismételt használatára, válassza az **Indítás**lehetőséget.
-
-### <a name="delete-everything"></a>Mindent törölni
-
-[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
-
-Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
+   > [!Warning]
+   > Győződjön meg arról, `tutorial-1st-experiment-sdk-train.ipynb` hogy megnyitotta `.yml` a fájlt, és **nem** a > azonos nevű fájlt. 
 
 ## <a name="next-steps"></a>További lépések
 
@@ -111,7 +85,10 @@ Ebben az oktatóanyagban a következő feladatokat végezte el:
 * Létrehozott egy Azure Machine Learning szolgáltatás munkaterületet.
 * Létrehozott és konfigurált egy felhőalapú notebook-kiszolgálót a munkaterületen.
 
-Folytassa az oktatóanyag **2** . részével egy egyszerű gépi tanulási modell betanításához.
+Az oktatóanyag **második részében** futtatja a kódot a Machine `tutorial-1st-experiment-sdk-train.ipynb` learning-modellek betanításához. 
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Az első modell betanítása](tutorial-1st-experiment-sdk-train.md)
+
+> [!IMPORTANT]
+> Ha nem tervezi az oktatóanyag vagy más oktatóanyagok 2. részét, akkor [állítsa le a Felhőbeli notebook Server-alapú virtuális gépet](tutorial-1st-experiment-sdk-train.md#clean-up-resources) , ha nem használja azt a Cost csökkentése érdekében.

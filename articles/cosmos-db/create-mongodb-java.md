@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
 ms.custom: seo-java-august2019
-ms.openlocfilehash: 693e58cf578b5b2374a1d8fc63da8bb1a77faf1b
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f30b1ef7a80e11c2cefd8689845fb7d450a1c167
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515824"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172338"
 ---
-# <a name="quickstart-build-a-web-app-using-azure-cosmos-dbs-api-for-mongodb-and-java-sdk"></a>Gyors útmutató: Webalkalmazás létrehozása a MongoDB és a Java SDK-hoz készült Azure Cosmos DB API-val
+# <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Gyors útmutató: Hozzon létre egy, a Java és a MongoDB API-t használó Console-alkalmazást Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)

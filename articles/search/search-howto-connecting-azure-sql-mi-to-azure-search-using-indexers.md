@@ -2,18 +2,18 @@
 title: Azure SQL felügyelt példányok közötti kapcsolatok a keresés indexeléséhez – Azure Search
 description: Engedélyezze a nyilvános végpontot, hogy engedélyezze az SQL felügyelt példányokhoz való kapcsolódást egy Azure Search indexelő eszközéről.
 author: vl8163264128
-manager: briansmi
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: victliu
-ms.openlocfilehash: ae947e85f600b3bc380898ad5820239aa823794d
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 07bc1a55c0222fda87b28acbaa8bfe552fb8e6ed
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229127"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186662"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-managed-instance"></a>Azure Search indexelő és az SQL felügyelt példány közötti kapcsolatok konfigurálása
 Ahogy azt a [Azure SQL Database összekapcsolása a Azure Search indexelő használatával](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)című részében leírtak szerint, a Azure Search a nyilvános végponton keresztül támogatja az indexek létrehozását az **SQL felügyelt példányain** .

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f4f081001f2573bccc58205ccc7955739b7f5c4c
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: ca7985ee302b35f8e7b39c46c229c7b0b263ffce
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779291"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170663"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions hálózati beállítások
 
@@ -52,8 +52,10 @@ További információ: [Azure app Service statikus hozzáférési korlátozások
 ## <a name="private-site-access"></a>Hozzáférés személyes oldalakhoz
 
 A privát helyhez való hozzáférés arra utal, hogy az alkalmazás csak a magánhálózaton keresztül érhető el, például egy Azure-beli virtuális hálózaton belülről. 
-* A privát helyhez való hozzáférés a [prémium](./functions-premium-plan.md) és a [app Service](functions-scale.md#app-service-plan) csomagban érhető el, amikor a **szolgáltatási végpontok** konfigurálva vannak. További információ: [Virtual Network szolgáltatás](../virtual-network/virtual-network-service-endpoints-overview.md) -végpontok
-    * Ne feledje, hogy a szolgáltatási végpontok esetében a függvény továbbra is teljes kimenő hozzáférést biztosít az internethez, még a konfigurált Virtual Network Integration is.
+* A privát helyhez való hozzáférés a **szolgáltatási végpontok** konfigurálásakor a [prémium](./functions-premium-plan.md), a használati és a [app Servicei](functions-scale.md#app-service-plan) csomagban érhető el. [](functions-scale.md#consumption-plan) 
+    * A szolgáltatási végpontok a platform funkciói > hálózatkezelés > a hozzáférési korlátozások konfigurálása > a szabály hozzáadása lehetőséggel konfigurálhatók. A virtuális hálózatok mostantól a szabály típusaként is kiválaszthatók.
+    * További információ: [Virtual Network szolgáltatás](../virtual-network/virtual-network-service-endpoints-overview.md) -végpontok
+        * Ne feledje, hogy a szolgáltatási végpontok esetében a függvény továbbra is teljes kimenő hozzáférést biztosít az internethez, még a konfigurált Virtual Network Integration is.
 * A privát helyhez való hozzáférés egy belső terheléselosztó (ILB) által konfigurált App Service Environment is elérhető. További információ: [belső terheléselosztó létrehozása és használata app Service Environmentsal](../app-service/environment/create-ilb-ase.md).
 
 ## <a name="virtual-network-integration"></a>Virtuális hálózat integrációja
@@ -99,6 +101,13 @@ A functions Virtual Network Integration a App Service Web Apps szolgáltatással
 * [Átjáró szükséges VNet-integráció](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
 A Virtual Network Integration használatával kapcsolatos további tudnivalókért lásd: [Function App-alkalmazás integrálása Azure](functions-create-vnet.md)-beli virtuális hálózattal.
+
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>A Storage-fiók korlátozása egy virtuális hálózatra
+
+> [!note] 
+> Átmenetileg akár 12 órát is igénybe vehet, amíg a Storage-fiók elérhetővé válik a Function app számára, miután beállította a hozzáférési korlátozásokat a Storage-fiókhoz. Ez idő alatt az alkalmazás teljesen offline állapotba kerül.
+
+Magasabb szintű biztonság biztosítása érdekében korlátozhatja az alkalmazás Storage-fiókját egy virtuális hálózatra. Ezután integrálnia kell a helyet az adott virtuális hálózattal a Storage-fiók eléréséhez. Ezt a konfigurációt minden olyan csomag támogatja, amely támogatja a virtuális hálózatok integrálását.
 
 ## <a name="virtual-network-triggers-non-http"></a>Virtuális hálózati eseményindítók (nem HTTP)
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 7fa2a5088e2eae039d43ecf0db080190f74cd772
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7f913eebb2dd3926165a36c37dcb356aa05f2de4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125222"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172055"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Oktatóanyag: Azure Active Directory Domain Services-példány létrehozása és konfigurálása
 
@@ -202,7 +202,7 @@ A csak felhőalapú felhasználók jelszavának módosításához a felhasznál�
 1. A **jelszó módosítása** lapon adja meg a meglévő (régi) jelszavát, majd írja be és erősítse meg az új jelszót.
 1. Válassza ki **elküldése**.
 
-Néhány percet vesz igénybe, miután módosította a jelszavát, hogy az új jelszót használni lehessen az Azure AD DSban. Körülbelül 20 perc elteltével az új jelszó használatával bejelentkezhet a felügyelt tartományhoz csatlakoztatott számítógépekre.
+Néhány percet vesz igénybe, miután módosította az új jelszóhoz tartozó jelszót, hogy az Azure AD DS használható legyen, és hogy sikeresen bejelentkezzen a felügyelt tartományhoz csatlakoztatott számítógépekre.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 011345cca1ed1c763a628c94401320862182c9cc
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: d3128144a06f4faa46d18650c3dd2c21f72afc1c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707368"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164788"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Gyors útmutató: A Pythonhoz készült Face ügyféloldali kódtár
 
@@ -135,7 +135,7 @@ A következő kód egy **PersonGroup** hoz létre három különböző **személ
 
 ### <a name="create-persongroup"></a>PersonGroup létrehozása
 
-Ennek a forgatókönyvnek a lépéseihez a következő rendszerképeket kell mentenie a projekt gyökérkönyvtárba: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
+Ennek a forgatókönyvnek a végrehajtásához a következő képeket kell mentenie a projekt gyökérkönyvtárában: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
 
 A képek ezen csoportja három különböző személynek megfelelő arc-rendszerképeket tartalmaz. A kód három **személy** objektumot határoz meg, és társítja azokat a `woman`, `man`, és `child`rendszerű képfájlokkal.
 
@@ -161,7 +161,7 @@ Az arcok hozzárendelése után be kell tanítania a **PersonGroup** , hogy azon
 
 ## <a name="identify-a-face"></a>Arc azonosítása
 
-A következő kód több képpel rendelkező képet helyez el, és megkeresi az egyes személyek identitását a képen. Összehasonlítja az észlelt **PersonGroup**, a különböző **személy** objektumokat tartalmazó adatbázisokat, amelyek mindegyikéhez több arca van társítva. 
+A következő kód több képpel rendelkező képet helyez el, és megkeresi az egyes személyek identitását a képen. Összehasonlítja az észlelt elemeket egy **PersonGroup**, egy olyan, a különböző **személy** objektumokat tartalmazó adatbázissal, amelyek az arc funkciói ismertek.
 
 > [!IMPORTANT]
 > A példa futtatásához először futtatnia kell a kódot [egy személy csoport létrehozása és betanítása csoportban](#create-and-train-a-person-group).
@@ -188,7 +188,7 @@ Ebben a példában a [személy csoport létrehozása és](#create-and-train-a-pe
 
 Először is rendelkeznie kell egy másik Azure-előfizetéssel, egy Face erőforrással. ezt a [beállítás](#setting-up) szakasz lépéseit követve teheti meg. 
 
-Ezután hozza létre a következő változókat a parancsfájl teteje közelében. Emellett új környezeti változókat is létre kell hoznia az Azure-fiók előfizetés-AZONOSÍTÓJÁRA, valamint az új (cél) fiók kulcs-és előfizetés-AZONOSÍTÓját. 
+Ezután hozza létre a következő változókat a parancsfájl teteje közelében. Emellett új környezeti változókat is létre kell hoznia az Azure-fiók előfizetés-AZONOSÍTÓJÁRA, valamint az új (cél) fiók kulcsát, végpontját és előfizetési AZONOSÍTÓját. 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshotvars)]
 
@@ -202,7 +202,7 @@ A parancsfájlban később mentse a jelenlegi ügyfél-objektumot a forrás-ügy
 
 A pillanatképek többi művelete egy aszinkron függvényen belül történik. 
 
-1. Első lépésként készítse **el a** pillanatképet, amely az eredeti előfizetése adatait egy ideiglenes Felhőbeli helyre menti. Ez a metódus egy azonosítót ad vissza, amelyet a művelet állapotának lekérdezéséhez használ.
+1. Első lépésként készítse el a pillanatképet, amely az eredeti előfizetése adatait egy ideiglenes Felhőbeli helyre menti. Ez a metódus egy azonosítót ad vissza, amelyet a művelet állapotának lekérdezéséhez használ.
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_take)]
 

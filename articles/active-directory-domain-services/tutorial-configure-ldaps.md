@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 505a3104968e285a7fe4801db8029dc45647087a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 2eaae9093614f1512dcd75d23c98bca871bf2850
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011350"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193324"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: Biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -63,7 +63,7 @@ A kért vagy létrehozott tanúsítványnak meg kell felelnie az alábbi követe
 
 * **Megbízható kiállító** – a tanúsítványt a felügyelt tartományhoz csatlakozó számítógépeknek megbízható LDAP használatával kell kibocsátania. Ez a hatóság lehet egy nyilvános HITELESÍTÉSSZOLGÁLTATÓ vagy egy, a számítógépek által megbízhatónak minősített vállalati HITELESÍTÉSSZOLGÁLTATÓ.
 * **Élettartam** – a tanúsítványnak érvényesnek kell lennie legalább a következő 3-6 hónapra. Secure LDAP a felügyelt tartományhoz való hozzáférés megszakad, ha a tanúsítvány lejár.
-* **Tulajdonos neve** – a tanúsítvány tulajdonosának neve csak a felügyelt tartomány lehet. Ha például a tartomány neve *contoso.com*, a tanúsítvány tulajdonosának neve *contoso.com*kell, hogy legyen.
+* **Tulajdonos neve** – a tanúsítvány tulajdonosának neve csak a felügyelt tartomány lehet. Ha például a tartomány neve *contoso.com*, a tanúsítvány tulajdonosának a következőnek kell lennie: * *. contoso.com*.
     * A tanúsítvány DNS-nevének vagy tulajdonosának alternatív nevének helyettesítő tanúsítványnak kell lennie ahhoz, hogy a biztonságos LDAP megfelelően működjön a Azure AD Domain Services. A tartományvezérlők véletlenszerű neveket használnak, és eltávolíthatók vagy hozzáadhatók, így biztosítható, hogy a szolgáltatás továbbra is elérhető maradjon.
 * **Kulcshasználat** – a tanúsítványt a *digitális aláírásokhoz* és a *kulcsfontosságú titkosítási*kell konfigurálni.
 * **Tanúsítvány célja** – a tanúsítványnak érvényesnek kell lennie az SSL-kiszolgáló hitelesítéséhez.
@@ -78,7 +78,7 @@ $dnsName="contoso.com"
 $lifetime=Get-Date
 
 # Create a self-signed certificate for use with Azure AD DS
-New-SelfSignedCertificate -Subject $dnsName `
+New-SelfSignedCertificate -Subject *.$dnsName `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
   -Type SSLServerAuthentication -DnsName *.$dnsName, $dnsName
 ```
@@ -86,7 +86,7 @@ New-SelfSignedCertificate -Subject $dnsName `
 A következő példa kimenete azt mutatja, hogy a tanúsítvány létrehozása sikeres volt, és a helyi tanúsítványtárolóban (*LocalMachine\MY*) tárolódik:
 
 ```output
-PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject $dnsName `
+PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject *.$dnsName `
 >>   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
 >>   -Type SSLServerAuthentication -DnsName *.$dnsName, $dnsName.com
 

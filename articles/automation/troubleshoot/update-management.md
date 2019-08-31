@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: aaeaed22b1e09556452a49d7fc63c15ef0c7fcdb
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 48d2463eee2caeaae36118bf736d00eed84c897a
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061334"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186225"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Hibák elhárítása Update Management
 
@@ -113,6 +113,24 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
+
+### <a name="updates-nodeployment"></a>Forgatókönyv Frissítések telepítés nélküli telepítése
+
+### <a name="issue"></a>Probléma
+
+Ha Update Managementban regisztrál egy Windows rendszerű gépet, a frissítések telepítés nélkül is megjelenhetnek.
+
+### <a name="cause"></a>Ok
+
+Windows rendszeren a frissítések automatikusan települnek, amint elérhetők. Ez zavart okozhat, ha nem ütemezett frissítést a gépre való központi telepítéshez.
+
+### <a name="resolution"></a>Megoldás:
+
+A Windows beállításkulcs `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` alapértelmezett értéke a "4" – **automatikus letöltés és telepítés**.
+
+Update Management ügyfelek esetében javasoljuk, hogy ezt a kulcsot "3" – **automatikus letöltéssel, de ne automatikus telepítéssel**állítsa be.
+
+További információ: az [Automatikus frissítések konfigurálása](https://docs.microsoft.com/en-us/windows/deployment/update/waas-wu-settings#configure-automatic-updates).
 
 ### <a name="nologs"></a>Forgatókönyv A gépek nem jelennek meg a portálon Update Management
 

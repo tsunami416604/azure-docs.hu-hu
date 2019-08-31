@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/03/2019
-ms.openlocfilehash: e9cc5aaaf11a799b17cc87b40113e166fcd93afb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/29/2019
+ms.openlocfilehash: cdbc79ca6764dd49f427b395dbaf8502c58bf63a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568991"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173431"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Azure SQL Database-adatbázis tranzakciós szempontból konzisztens másolatának másolása
 
@@ -24,7 +24,7 @@ Azure SQL Database számos módszert biztosít egy meglévő Azure SQL Database-
 
 ## <a name="overview"></a>Áttekintés
 
-A másolási kérelem időpontját tartalmazó adatbázis-másolat a forrásadatbázis pillanatképe. Ugyanezt a kiszolgálót vagy egy másik kiszolgálót is kiválaszthatja. Azt is megteheti, hogy megtartja a szolgáltatási szintet és a számítási méretet, vagy eltérő számítási méretet használ ugyanazon a szolgáltatási szinten (kiadás) belül. A másolás befejezése után teljesen működőképes, független adatbázis lesz. Ezen a ponton bármely kiadásra frissítheti vagy visszaminősítheti azt. A bejelentkezések, a felhasználók és az engedélyek egymástól függetlenül kezelhetők.  
+A másolási kérelem időpontját tartalmazó adatbázis-másolat a forrásadatbázis pillanatképe. Ugyanezt a kiszolgálót vagy egy másik kiszolgálót is kiválaszthatja. Azt is megteheti, hogy megtartja a szolgáltatási szintet és a számítási méretet, vagy eltérő számítási méretet használ ugyanazon a szolgáltatási szinten (kiadás) belül. A másolás befejezése után teljesen működőképes, független adatbázis lesz. Ezen a ponton bármely kiadásra frissítheti vagy visszaminősítheti azt. A bejelentkezések, a felhasználók és az engedélyek egymástól függetlenül kezelhetők. A másolás a Geo-replikációs technológiával jön létre, és a kivetés befejezése után a rendszer automatikusan leállítja a Geo-replikálási hivatkozást. A Geo-replikáció használatának összes követelménye az adatbázis-másolási műveletre vonatkozik. Részletekért lásd: az [aktív geo-replikáció áttekintése](sql-database-active-geo-replication.md) .
 
 > [!NOTE]
 > Az adatbázisok [automatikus biztonsági mentése](sql-database-automated-backups.md) az adatbázis-másolat létrehozásakor használatos.
@@ -61,6 +61,26 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 ```
 
 A teljes minta parancsfájlt itt tekintheti [meg: adatbázis másolása új kiszolgálóra](scripts/sql-database-copy-database-to-new-server-powershell.md).
+
+Az adatbázis másolása aszinkron művelet, de a céladatbázis közvetlenül a kérelem elfogadása után jön létre. Ha még folyamatban van a másolási művelet megszakítása, a [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) parancsmag használatával dobja el a céladatbázis-adatbázist.  
+
+## <a name="rbac-roles-to-manage-database-copy"></a>RBAC szerepkörök az adatbázis-másolat kezeléséhez
+
+Adatbázis-másolat létrehozásához a következő szerepköröket kell megadnia
+
+- Előfizetés tulajdonosa vagy
+- SQL Server közreműködő szerepkör vagy
+- Egyéni szerepkör a forrás-és a célként megadott adatbázisokhoz a következő engedélyekkel:
+
+   Microsoft. SQL/kiszolgálók/adatbázisok/olvasás Microsoft. SQL/kiszolgálók/adatbázisok/írás
+
+Az adatbázis-másolatok megszakításához a következő szerepköröket kell megadnia
+
+- Előfizetés tulajdonosa vagy
+- SQL Server közreműködő szerepkör vagy
+- Egyéni szerepkör a forrás-és a célként megadott adatbázisokhoz a következő engedélyekkel:
+
+   Microsoft. SQL/kiszolgálók/adatbázisok/olvasás Microsoft. SQL/kiszolgálók/adatbázisok/írás
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Adatbázis másolása a Transact-SQL használatával
 
@@ -107,6 +127,10 @@ Figyelje a másolási folyamatot a sys. Databases és a sys. DM _database_copies
 
 > [!NOTE]
 > Ha úgy dönt, hogy megszakítja a másolást, amíg folyamatban van, hajtsa végre a [drop Database](https://msdn.microsoft.com/library/ms178613.aspx) utasítást az új adatbázison. Azt is megteheti, hogy a forrás-adatbázis DROP DATABASE utasításának végrehajtása megszakítja a másolási folyamatot.
+
+> [!IMPORTANT]
+> Ha olyan másolatot kell létrehoznia, amely lényegesen kisebb SLO-val rendelkezik, mint a forrás, akkor előfordulhat, hogy a céladatbázis nem rendelkezik elegendő erőforrással a kiindulási folyamat befejezéséhez, és a másolási Opera meghibásodásához vezethet. Ebben a forgatókönyvben egy geo-visszaállítási kérelem használatával hozzon létre egy másolatot egy másik kiszolgálón és/vagy egy másik régióban. További információ: [Azure SQL Database helyreállítása adatbázis-másolatok használatával](sql-database-recovery-using-backups.md#geo-restore) .
+
 
 ## <a name="resolve-logins"></a>Bejelentkezések feloldása
 

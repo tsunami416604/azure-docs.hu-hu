@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0c6186334820d0e419a06b9c60a8279825bf54c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e79d7a4b97f010b035f5c864682b4d3882a21393
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927296"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171914"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Testre szabhatja az alkalmazás felhasználói felületét egy egyéni házirend használatával Azure Active Directory B2C
 
@@ -65,17 +65,16 @@ A HTML-tartalom blob Storage-ban való üzemeltetéséhez tegye a következőket
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A **központi** menüben válassza az **új** > **Storage** > **Storage-fiók**lehetőséget.
-3. Adja meg a Storage-fiók egyedi **nevét** .
-4. A **telepítési modell** maradhat a **Resource Managerben**.
-5. Változtassa meg a **fiók típusát** a **blob Storage**-ban.
-6. A **teljesítmény** továbbra is **standard**maradhat.
-7. A **replikáció** az **ra-GRS**is maradhat.
-8. A **hozzáférési szint** ismegmaradhat.
-9. A **Storage szolgáltatás** titkosításatovábbra is letiltható.
-10. Válasszon egy előfizetést a Storage-fiókjához.
-11. Hozzon létre egy **erőforráscsoportot** , vagy válasszon ki egy meglévőt.
-12. Válassza ki a tárolási fiók **földrajzi helyét** .
-13. Kattintson a **Létrehozás** parancsra a tárfiók létrehozásához.  
+3. Válasszon egy előfizetést a Storage-fiókjához.
+4. Hozzon létre egy **erőforráscsoportot** , vagy válasszon ki egy meglévőt.
+5. Adja meg a Storage-fiók egyedi **nevét** .
+6. Válassza ki a tárolási fiók **földrajzi helyét** . 
+7. A **telepítési modell** maradhat a **Resource Managerben**.
+8. A **teljesítmény** továbbra is **standard**maradhat.
+9. Változtassa meg a **fiók típusát** a **blob Storage**-ban.
+10. A **replikáció** az **ra-GRS**is maradhat.
+11. A **hozzáférési szint** ismegmaradhat. 
+12. A Storage-fiók létrehozásához kattintson a **felülvizsgálat + létrehozás** lehetőségre.  
     A telepítés befejezése után a Storage- **fiók** panelje automatikusan megnyílik.
 
 ## <a name="create-a-container"></a>Tároló létrehozása

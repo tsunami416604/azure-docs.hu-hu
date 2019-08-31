@@ -4,23 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/24/2019
 ms.author: glenga
-ms.openlocfilehash: a3f75b7273164abc5318f16e9ab8d9883ff0c0aa
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9381f436aaeedb31732f853a6c4765ac43c6a752
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178901"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170884"
 ---
 ## <a name="test"></a>A függvény tesztelése az Azure-ban
 
-Tesztelje az üzembe helyezett függvényt a cURL használatával. Az előző lépésben másolt URL-cím használatával fűzze hozzá a lekérdezési karakterlánc `&name=<yourname>` az URL-címhez, akkor az alábbi példában látható módon:
+A cURL használatával tesztelheti az üzembe helyezett függvényt. Az előző lépésben átmásolt URL-cím (például a Function Key) használatával fűzze hozzá a lekérdezési `&name=<yourname>` karakterláncot az URL-címhez.
 
-```bash
-curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
-```
+![a cURL használatával hívja meg a függvényt az Azure-ban.](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png) 
 
-![a cURL használatával meghívja a függvényt az Azure-ban.](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png) 
+A vágólapra másolt URL-címet, beleértve a funkcióbillentyű, a webböngészője címét is beillesztheti. A kérés végrehajtása előtt fűzze hozzá `&name=<yourname>` a lekérdezési karakterláncot az URL-címhez.
 
-A másolt URL-címét a webböngésző is beillesztheti. Újra, fűzze hozzá a lekérdezési karakterlánc `&name=<yourname>` az URL-címet, a kérelem végrehajtása előtt.
-
-![A függvény hívása egy webböngésző használatával.](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  
+![A függvény meghívásához egy webböngészőt használjon.](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e15f704fc9604bd18a1f4848e84065fc507314
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 1c2d877a1dc611e02e9fbc245df230ca669a2ae4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563101"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171447"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Slacktel
 
@@ -47,6 +47,9 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 * A Slack támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 * A Slack **csak időben támogatja a** felhasználók üzembe helyezését
 * A Slack támogatja a [felhasználók **automatikus** kiépítési felállítását](https://docs.microsoft.com/en-gb/azure/active-directory/saas-apps/slack-provisioning-tutorial)
+
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
 ## <a name="adding-slack-from-the-gallery"></a>Slack hozzáadása a gyűjteményből
 
@@ -90,36 +93,6 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     > [!NOTE]
     > A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez vegye fel a kapcsolatot a [Slack-ügyfél támogatási csoportjával](https://slack.com/help/contact) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
-
-1. A Slack alkalmazás megadott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
-
-    ![image](common/edit-attribute.png)
-
-    > [!NOTE]
-    > Ha van olyan felhasználó, aki hozzárendelt **e-mail-címe** nem Office 365-licenccel rendelkezik, akkor a **felhasználó. e-mail** -jogcím nem jelenik meg az SAML-jogkivonatban. Ezekben az esetekben azt javasoljuk, hogy a **User. userPrincipalName** használja a User **. mail** attribútum értékeként, hogy az **egyedi azonosítóként** legyen leképezve.
-
-1. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
-
-    | Name (Név) | Forrás attribútum |
-    | --- | --- |
-    | first_name | User. givenName |
-    | last_name | felhasználó. vezetéknév |
-    | User. E-mail | user.mail |
-    | User. username | user.userprincipalname |
-
-    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
-
-    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
-
-    c. Hagyja üresen a **névteret** .
-
-    d. Válassza a forrás **attribútumként**lehetőséget.
-
-    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
-
-    f. Kattintson a **Ok**
-
-    g. Kattintson a **Save** (Mentés) gombra.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -187,7 +160,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ### <a name="create-slack-test-user"></a>Slack-teszt felhasználó létrehozása
 
-Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a Slackben. A Slack az igény szerinti üzembe helyezést is támogatja, ami alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. A Slack elérésére tett kísérlet során új felhasználó jön létre, ha még nem létezik. A Slack a felhasználók automatikus üzembe helyezését is támogatja, további részleteket [itt](slack-provisioning-tutorial.md) talál az automatikus felhasználó-kiépítés konfigurálásával kapcsolatban.
+A szakasz célja, hogy létrehozzon egy B. Simon nevű felhasználót a Slackben. A Slack az igény szerinti üzembe helyezést is támogatja, ami alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. A Slack elérésére tett kísérlet során új felhasználó jön létre, ha még nem létezik. A Slack a felhasználók automatikus üzembe helyezését is támogatja, további részleteket [itt](slack-provisioning-tutorial.md) talál az automatikus felhasználó-kiépítés konfigurálásával kapcsolatban.
 
 > [!NOTE]
 > Ha manuálisan kell létrehoznia egy felhasználót, vegye fel a kapcsolatot a [Slack support csapatával](https://slack.com/help/contact).

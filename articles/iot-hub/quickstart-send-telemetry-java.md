@@ -10,14 +10,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 15d9447d7078fd4858a7957448dd30d07049d6e9
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4ef5c8c9defd0a5da4bc0579d457113f8f4c5e4d
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68958625"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172959"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-java"></a>Gyors útmutató: Telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (Java)
+# <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Gyors útmutató: Telemetria küldése egy Azure IoT hub-ba, és beolvasása Java-alkalmazással
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -31,9 +31,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutatóban futtatott két mintaalkalmazás a Java használatával készült. A fejlesztői gépen szükség lesz a Java SE 8-as vagy újabb verziójára.
+A rövid útmutatóban futtatott két mintaalkalmazás a Java használatával készült. A fejlesztői gépen Java SE 8 szükséges.
 
-A Javát az [Oracle](https://aka.ms/azure-jdks) webhelyéről töltheti le többféle platformra.
+A Java SE Development Kit 8 letöltése több platformra is elvégezhető a [Java hosszú távú Azure-és Azure stack-támogatásával](https://docs.microsoft.com/en-us/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
 
 A Java aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői gépen:
 

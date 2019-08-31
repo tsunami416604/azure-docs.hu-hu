@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 08/30/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: cbc55433517174c8080b941ca8526e5a4fd3427d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7623244d8b7de012d80e7e4844a9b3693ccdd662
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126016"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186694"
 ---
 ::: zone target="docs"
 
@@ -40,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ::: zone target="chromeless"
 
-Ez az útmutató ismerteti, hogyan helyezheti üzembe a Azure Data Box Disk a Azure Portalban. A lépések tartalmazzák az előfeltételek áttekintését, a lemezek zárolásának feloldását, valamint az adatok lemezre való kapcsolódását és másolását, hogy az Azure-ba töltse fel őket.
+Ez az útmutató végigvezeti a Azure Portal Azure Data Box Disk használatának lépésein. Ez az útmutató segítséget nyújt a következő kérdések megválaszolásához.
 
 ::: zone-end
 
@@ -60,17 +61,16 @@ Jelentkezzen be az Azure Portalra a [https://aka.ms/azuredataboxfromdiskdocs](ht
 
 ::: zone target="chromeless"
 
-### <a name="prerequisites"></a>Előfeltételek
-
-- A [következő oktatóanyag használatával helyezte el Data Box Disk sorrendjét: Megrendelés Azure Data Box Disk](data-box-disk-deploy-ordered.md).
-- Megkapta a meghajtókat, és a portálon a feldolgozás **Kézbesítve** állapotra frissül.
-- Ellenőrizte a fogadott lemezek számát, és lemezenként egy csatlakoztatott kábellel rendelkezik.
-- Van olyan ügyfélszámítógép, amelyről másolatot készíthet az adatokról. Az ügyfélszámítógépen:
-
-    - Futtasson egy [támogatott operációs rendszert](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
-    - Ha ez egy Windows-ügyfél, telepítenie kell [más szükséges szoftvereket](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) .
+> [!div class="checklist"]
+>
+> - **Előfeltételek áttekintése**: A lemezek, a kábelek, az operációs rendszer és az egyéb szoftverek számának ellenőrzéséhez.
+> - **Kapcsolat és feloldás**: Az eszköz csatlakoztatása és a lemez zárolásának feloldása az adatmásoláshoz.
+> - **Másolja az adatlemezre, és ellenőrizze az**alábbiakat: Másolja az adatlemezeket az előlétrehozott mappákba.
+> - **A lemezek visszaküldése**: Visszaadja a lemezeket az Azure-adatközpontba, ahol a rendszer feltölti az adatait a Storage-fiókjába.
+> - **Az Azure-ban tárolt adatellenőrzés**: Győződjön meg arról, hogy az adatok feltöltve lettek a Storage-fiókba, mielőtt törölné a forrás dátum-kiszolgálóról.
 
 ::: zone-end
+
 
 ::: zone target="docs"
 

@@ -8,19 +8,37 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b91adc9dd5f221a6d354a98bdc0f4a7fd4483ecb
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 60a2b63c7d37440bb08c7a7f15f052cfa2607406
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982351"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193684"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker hibaelhárítása
 
 A QnA Maker szolgáltatással kapcsolatos leggyakrabban felmerülő kérdések válogatott listája segít a szolgáltatás gyorsabb és jobb eredményekkel való elfogadásában.
+
+
+## <a name="how-to-get-the-qnamaker-service-hostname"></a>A QnAMaker szolgáltatás gazdagépneve beszerzése
+
+QnAMaker szolgáltatás gazdagépneve hasznos hibakeresés céljából forduljon a támogatási QnAMaker vagy a uservoice-on. Az állomásnév a következő formátumú URL-cím: https:// *{hostname}* . azurewebsites.net.
+    
+1. Keresse meg a QnAMaker szolgáltatást (erőforráscsoport) a [Azure Portalon](https://portal.azure.com)
+
+    ![QnAMaker Azure-erőforráscsoportot az Azure Portalon](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
+
+1. Válassza ki a QnA Maker erőforráshoz társított App Service. A nevek általában azonosak.
+
+     ![Válassza ki a QnAMaker App Service-ben](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+
+1. Az állomásnév URL-cím áll rendelkezésre az Áttekintés szakaszban
+
+    ![QnAMaker állomásnév](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
+    
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>A QnA Maker portál Súgó robotjának használata
 
@@ -98,6 +116,14 @@ Ha több nyelven elérhető tartalmait, mindenképpen hozzon létre egy külön 
 
 Az app service frissítése, ha a figyelmeztetés ikon mellett a Tudásbázis következő, a verzió értékét a **végpont kulcsok** tábla a **felhasználói beállítások** [oldal](https://www.qnamaker.ai/UserSettings).
 
+### <a name="i-deleted-my-existing-search-service-how-can-i-fix-this"></a>Törölte a meglévő keresési szolgáltatást. Hogyan javíthatom ezt?
+
+Ha töröl egy Azure Search indexet, a művelet végleges, és az index nem állítható helyre. 
+
+### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>Töröltem az `testkb` indexet a keresési szolgáltatásban. Hogyan javíthatom ezt? 
+
+A régi adatait nem lehet helyreállítani. Hozzon létre egy új QnA Maker-erőforrást, és hozza létre újra a tudásbázist.
+
 ### <a name="when-should-i-refresh-my-endpoint-keys"></a>Mikor kell frissíteni a végpont kulcsaim?
 
 Frissítse a végpont kulcsokat, ha azt gyanítja, hogy azok biztonsága sérült.
@@ -108,7 +134,7 @@ Több nyelv és több tudásbázisok szeretné használni, a felhasználók szá
 
 ### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>Hogyan módosíthatom a QnA Maker által használt Azure Search-erőforrás neve?
 
-Az Azure Search-erőforrás neve a QnA Maker erőforrásnév bizonyos betűk hozzáfűzi a végén a rendszer. Így nehéz különbséget tenni a QnA Maker több keresési erőforrások között. Hozzon létre egy külön Azure Search-szolgáltatás (elnevezési azt a kívánt módon), és csatlakoztassa a kérdések és válaszok szolgáltatást. A lépések hasonlóak a lépéseket kell tennie hogy [frissítése az Azure Search](How-To/upgrade-qnamaker-service.md#upgrade-azure-search-service).
+Az Azure Search-erőforrás neve a QnA Maker erőforrásnév bizonyos betűk hozzáfűzi a végén a rendszer. Így nehéz különbséget tenni a QnA Maker több keresési erőforrások között. Hozzon létre egy külön Azure Search-szolgáltatás (elnevezési azt a kívánt módon), és csatlakoztassa a kérdések és válaszok szolgáltatást. A lépések hasonlóak a lépéseket kell tennie hogy [frissítése az Azure Search](How-To/set-up-qnamaker-service-azure.md#upgrade-azure-search-service).
 
 ### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>Ha QnA Maker visszaadja `Runtime core is not initialized,` , Hogyan javíthatom?
 

@@ -10,14 +10,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 977bf07c8383bb1086e7878bd10f2519cc2f40ad
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1f05e9916a87f7258dad358ac8fff91c5ba7f25e
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68958638"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172936"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Gyors útmutató: IoT hub (Java) szolgáltatáshoz csatlakoztatott eszköz vezérlése
+# <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Gyors útmutató: Azure IoT hub-hoz csatlakoztatott eszköz kezelése Javával
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
@@ -35,9 +35,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutatóban futtatott két mintaalkalmazás a Java használatával készült. A fejlesztői gépen szükség lesz a Java SE 8-as vagy újabb verziójára.
+A rövid útmutatóban futtatott két mintaalkalmazás a Java használatával készült. A fejlesztői gépen Java SE 8 szükséges.
 
-A Javát az [Oracle](https://aka.ms/azure-jdks) webhelyéről töltheti le többféle platformra.
+A Java SE Development Kit 8 letöltése több platformra is elvégezhető a [Java hosszú távú Azure-és Azure stack-támogatásával](https://docs.microsoft.com/en-us/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
 
 A Java aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői gépen:
 

@@ -1,55 +1,55 @@
 ---
-title: Lekérdezés bővítése keresztül a keresési index – Azure Search szinonimáiról
-description: Hozzon létre egy szinonimatérképet, bontsa ki az Azure Search-index a keresési lekérdezés hatókörét. Hatókör van szélesíteni adnia egyenértékű kifejezések foglalandó listáját.
+title: A lekérdezés kiterjesztésének szinonimái a keresési indexnél – Azure Search
+description: Hozzon létre egy szinonimát a keresési lekérdezés hatókörének kibontásához egy Azure Search indexen. A hatókör ki van bővítve, hogy belefoglalja a listában megadott egyenértékű feltételeket.
 author: brjohnstmsft
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/02/2019
-manager: jlembicz
+manager: nitinme
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 99abcc70a81622e4efbe85722d457bd1846b6e15
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d9ddb5af42c538558a69ce68e7ea90161c947b12
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485216"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186457"
 ---
-# <a name="synonyms-in-azure-search"></a>Az Azure Search szolgáltatásban a szinonimák
+# <a name="synonyms-in-azure-search"></a>Szinonimák a Azure Searchban
 
-A keresőmotorok szinonimák társítsa egyenértékű kifejezéseket, amely implicit módon bontsa ki a lekérdezés hatókörét a felhasználónak nem kell ténylegesen adja meg az előfizetési időszak nélkül. Például adja meg a kifejezés "kutya" és a szinonima társítások "canine" és "ételadagot", "kutya" tartalmazó dokumentumok, "canine" vagy "ételadagot" csökken a lekérdezés hatókörén belül.
+A keresőmotorok szinonimái olyan egyenértékű kifejezésekkel rendelkeznek, amelyek implicit módon bővítik a lekérdezés hatókörét anélkül, hogy a felhasználónak ténylegesen meg kellene adnia a kifejezést. Például a "Dog" kifejezés és a "kutya" és "kiskutya" szinonimái társítása esetén a "Dog", "kutya" vagy "Puppy" tartalmú dokumentumok a lekérdezés hatókörén belül maradnak.
 
-Az Azure Search szolgáltatásban a szinonima bővítése lekérdezések során történik. Szolgáltatás, amely nincs meglévő műveletek megszakadását szinonimatérképet is hozzáadhat. Hozzáadhat egy **synonymMaps** anélkül, hogy kellene építenie az indexet egy mező definition tulajdonságát.
+Azure Search a szinonimák bővítése a lekérdezés időpontjában történik. A meglévő műveletek megszakítása nélkül is hozzáadhat szinonimákat a szolgáltatásokhoz. **SynonymMaps** tulajdonságot adhat hozzá egy mező definícióhoz anélkül, hogy újra kellene építenie az indexet.
 
-## <a name="create-synonyms"></a>A szinonimák létrehozása
+## <a name="create-synonyms"></a>Szinonimák létrehozása
 
-Nem szinonimák létrehozására szolgáló portál támogatott, de a REST API vagy .NET SDK-t is használhatja. REST – első lépések, azt javasoljuk [a postmannel](search-get-started-postman.md) és az API-kérések kialakításában: [Hozzon létre Szinonimatérképet](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). A C# fejlesztők, megkezdheti az [szinonimák hozzáadása az Azure-keresés- C# ](search-synonyms-tutorial-sdk.md).
+A rendszer nem támogatja a szinonimák létrehozására szolgáló portál használatát, de használhatja a REST API vagy a .NET SDK-t is. A REST használatának megkezdéséhez javasoljuk, hogy a Poster és az API-t használó kérelmek megfogalmazását [használja](search-get-started-postman.md) : [Szinonima leképezések létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). A C# fejlesztők számára megkezdheti a [szinonimák hozzáadását az C#Azure Search szolgáltatásban ](search-synonyms-tutorial-sdk.md).
 
-Igény szerint ha használ [ügyfél által felügyelt kulcsokat](search-security-manage-encryption-keys.md) Szolgáltatásoldali titkosítás inaktív, a alkalmazhat protection által a szinonimatérkép tartalmát.
+Ha az [ügyfél által felügyelt kulcsokat](search-security-manage-encryption-keys.md) használja a kiszolgálóoldali titkosításhoz, akkor ezt a védelmet a szinonima Térkép tartalmára is alkalmazhatja.
 
 ## <a name="use-synonyms"></a>A szinonimák használata
 
-Az Azure Search szolgáltatásban a szinonima támogatási szinonimatérképet, amely meghatározza, és töltse fel a szolgáltatás alapul. Ezeket a térképeket (például indexek vagy adatforrások) egy független erőforrást alkotnak, és használhatja a keresési szolgáltatásban lévő bármely indexben bármely kereshető mezőjében.
+Azure Search a szinonimák támogatása az Ön által definiált és a szolgáltatásba feltöltött szinonimás térképeken alapul. Ezek a térképek egy független erőforrásnak (például indexeknek vagy adatforrásoknak) minősülnek, és a keresési szolgáltatás bármely indexének bármely kereshető mezője használhatja.
 
-Szinonima vannak leképezve, és az indexek karbantartása egymástól függetlenül. Meghatározása egy szinonimatérképet, és töltse fel azt a szolgáltatást, a egy mezőben szinonimát szolgáltatás nevű új tulajdonsággal hozzáadásával engedélyezheti **synonymMaps** a mező-definícióban. Létrehozása, frissítése és törlése egy szinonimatérképet, mindig egy teljes-dokumentum műveletét, ami azt jelenti, hogy Ön nem létrehozása, frissítése vagy törlése a szinonimatérkép részeit növekményes. Még egy-egy bejegyzésnek frissítése szükséges egy töltse be újra.
+A szinonimák és az indexek egymástól függetlenül vannak karbantartva. Miután meghatározta a szinonimákat, és feltölti a szolgáltatásba, engedélyezheti a szinonima funkciót egy mezőhöz egy új, **synonymMaps** nevű tulajdonság hozzáadásával a mező definíciójában. A szinonimák leképezésének létrehozása, frissítése és törlése mindig egy teljes dokumentumból álló művelet, ami azt jelenti, hogy a szinonima-Térkép részeit nem lehet Növekményesen létrehozni, frissíteni vagy törölni. A frissítéshez még egy bejegyzést is újra kell tölteni.
 
-A szinonimák beépítése a keresőalkalmazás két lépésből áll:
+A szinonimák a keresési alkalmazásba való beépítése egy kétlépéses folyamat:
 
-1.  Adjon hozzá egy szinonimatérképet a keresőszolgáltatáshoz az alábbi API-kon keresztül.  
+1.  Vegyen fel egy szinonimát a keresési szolgáltatáshoz az alábbi API-kon keresztül.  
 
-2.  A szinonimatérkép indexdefinícióban használandó kereshető mező konfigurálása.
+2.  Egy kereshető mező beállítása a szinonimák leképezésének használatára az index definíciójában.
 
-### <a name="synonymmaps-resource-apis"></a>SynonymMaps erőforrás API-k
+### <a name="synonymmaps-resource-apis"></a>SynonymMaps Resource API-k
 
-#### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>Adja hozzá, vagy frissíteni a szolgáltatás alatt egy szinonimatérképet, használatával KÖZZÉTENNI, vagy HELYEZZE.
+#### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>Vegyen fel vagy frissítsen egy szinonima-leképezést a szolgáltatásban a POST vagy a PUT paranccsal.
 
-Szinonimatérképet vannak töltve a szolgáltatásba, POST és PUT-n keresztül. Minden szabály az új sor karakter ("\n") kell elválasztani. Legfeljebb 5000 szabályok száma egy ingyenes szolgáltatás a szinonimatérkép és 10 000 szabályok az összes többi termékváltozat határozhatja meg. Minden szabály legfeljebb 20 bővülésből rendelkezhet.
+A szinonima térképek a szolgáltatásba POST vagy PUT használatával lesznek feltöltve. Minden szabályt az új vonal karakterének ("\n") kell elválasztani. Egy ingyenes szolgáltatásban és a 10 000-szabályokban az összes többi SKU esetében legfeljebb 5 000 szabályt adhat meg. Minden szabály legfeljebb 20 kiterjesztéssel rendelkezhet.
 
-Szinonimatérképet az alábbiakban ismertetett Apache Solr formátumúnak kell lennie. Ha rendelkezik egy meglévő szinonimát szótár más formátumban, és közvetlenül használni szeretne, vegye fel velünk a [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+A szinonima Maps-nek Apache Solr formátumban kell lennie, amely alább látható. Ha egy meglévő szinonimát tartalmazó szótár eltérő formátumú, és közvetlenül szeretné használni, kérjük, tudassa velünk a [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
-Létrehozhat egy új szinonimatérképet HTTP POST, használja az alábbi példában látható módon:
+A HTTP POST használatával új szinonimákat hozhat létre, ahogy az alábbi példában is látható:
 
     POST https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
@@ -62,7 +62,7 @@ Létrehozhat egy új szinonimatérképet HTTP POST, használja az alábbi péld�
           Washington, Wash., WA => WA\n"
     }
 
-Másik lehetőségként a PUT, és adja meg a szinonimát leképezés nevét az URI-t. Ha nem létezik a szinonimatérkép, létrejön.
+Azt is megteheti, hogy a PUT elemre kattint, és megadja a szinonimák megfeleltetésének nevét az URI-n. Ha a szinonimák leképezése nem létezik, a rendszer létrehozza.
 
     PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
@@ -74,38 +74,38 @@ Másik lehetőségként a PUT, és adja meg a szinonimát leképezés nevét az 
           Washington, Wash., WA => WA\n"
     }
 
-##### <a name="apache-solr-synonym-format"></a>Az Apache Solr szinonimát formátum
+##### <a name="apache-solr-synonym-format"></a>Apache Solr szinonimájának formátuma
 
-A Solr formátum egyenértékű és explicit szinonimaleképezéseket támogatja. Leképezési szabályok kövessék a nyílt forráskódú szinonimát szűrőspecifikáció elérje az Apache Solr, jelen dokumentumban ismertetett: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Alul látható egy példa szabály egyenértékű szinonimák.
+A Solr formátuma támogatja az egyenértékű és a explicit szinonimák leképezését. A leképezési szabályok betartják az Apache Solr nyílt forráskódú szinonimáit, amelyek a jelen dokumentumban olvashatók: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Az alábbi minta szabály egyenértékű szinonimákat mutat be.
 ```
 USA, United States, United States of America
 ```
 
-A fenti keresési lekérdezést a szabály az "USA" bővített "USA" vagy "Egyesült Államok" vagy "Az Amerikai Egyesült Államok".
+A fenti szabály szerint az "USA" keresési lekérdezés az "USA" vagy a "Egyesült Államok" vagy a "Egyesült Államok of America" kifejezésre lesz kiterjesztve.
 
-Explicit leképezés nyíl helyén "= >". Megadása esetén egy keresési lekérdezést, amely megfelel a bal oldalon az előfizetési időszak sorozatát "= >" váltja fel a lehetőségeket, a jobb oldalon. Adja meg az alábbi szabály, keresési lekérdezéseket "Washington", "Wash." vagy a "WA" az összes felülíródik a "WA". Explicit leképezés csak a megadott irányba vonatkozik, és nem írja újra a lekérdezést a "Washington" a "WA" Ebben az esetben.
+Az explicit leképezést a "= >" nyíl jelöli. Ha meg van adva, a "= >" bal oldalán található keresési lekérdezés lejárati sorozata a jobb oldalon található alternatívákkal lesz lecserélve. Az alábbi szabály miatt a "Washington", "Wash" lekérdezési lekérdezések. vagy a "WA" kifejezés minden újraírásra kerül a "WA"-be. A explicit leképezés csak a megadott irányra vonatkozik, és a "WA" lekérdezés nem írható át "Washington" értékre ebben az esetben.
 ```
 Washington, Wash., WA => WA
 ```
 
-#### <a name="list-synonym-maps-under-your-service"></a>Lista szinonimát leképezi a szolgáltatás alatt.
+#### <a name="list-synonym-maps-under-your-service"></a>A szolgáltatáshoz tartozó szinonimák listázása.
 
     GET https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
 
-#### <a name="get-a-synonym-map-under-your-service"></a>A szolgáltatás alatt egy szinonimatérképet beolvasása.
+#### <a name="get-a-synonym-map-under-your-service"></a>A szolgáltatáshoz tartozó szinonima-Térkép beszerzése.
 
     GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
-#### <a name="delete-a-synonyms-map-under-your-service"></a>A szolgáltatás alatt a szinonimák leképezés törlése.
+#### <a name="delete-a-synonyms-map-under-your-service"></a>A szolgáltatáshoz tartozó szinonimák leképezésének törlése.
 
     DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
-### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>A szinonimatérkép indexdefinícióban használandó kereshető mező konfigurálása.
+### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Egy kereshető mező beállítása a szinonimák leképezésének használatára az index definíciójában.
 
-Új mező tulajdonság **synonymMaps** egy szinonimatérképet egy kereshető mező használandó megadásához használható. Szinonimatérképet szolgáltatási szint erőforrások és a szolgáltatásban az index bármely mező alapján lehet rá hivatkozni.
+A **synonymMaps** új mező tulajdonsága egy kereshető mezőhöz használandó szinonima-leképezés megadására használható. A szinonima-térképek szolgáltatási szintű erőforrások, és a szolgáltatásban lévő index bármely mezője hivatkozhat rá.
 
     POST https://[servicename].search.windows.net/indexes?api-version=2019-05-06
     api-key: [admin key]
@@ -139,31 +139,31 @@ Washington, Wash., WA => WA
        ]
     }
 
-**synonymMaps** kereshető mezőket "Edm.String" vagy "Collection(Edm.String)" típusú adható meg.
+a **synonymMaps** megadható a "EDM. String" vagy "Collection (EDM. String)" típusú kereshető mezőkhöz.
 
 > [!NOTE]
-> Legfeljebb egy szinonima mezőnként leképezése. Ha több szinonimatérképet használni kívánt, vegye fel velünk a [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> Mezőhöz csak egy szinonimát lehet rendelni. Ha több szinonima-térképet szeretne használni, kérjük, tudassa velünk a [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
-## <a name="impact-of-synonyms-on-other-search-features"></a>A keresési funkciókat a szinonimák hatása
+## <a name="impact-of-synonyms-on-other-search-features"></a>Szinonimák hatása más keresési funkciókra
 
-A szinonimák szolgáltatást a szinonimákat a vagy művelettel az eredeti lekérdezés újraírja. Ebből kifolyólag a találatok kiemelése és pontozási profilok kezeli az eredeti kifejezés és szinonimák egyenértékűként.
+A szinonima funkció átírja az eredeti lekérdezést szinonimákkal a vagy operátorral. Emiatt a kiemelési és pontozási profilok az eredeti kifejezést és a szinonimákat egyenértékűként kezelik.
 
-Szinonima funkció keresési lekérdezéseket vonatkozik, és nem vonatkozik a szűrők vagy metszettel. Hasonlóképpen javaslatok alapuló csak az eredeti kifejezés; Szinonima egyezik a válaszban nem jelennek meg.
+A szinonima funkció a keresési lekérdezésekre vonatkozik, és nem vonatkozik a szűrőkre vagy az aspektusokra. Hasonlóképpen, a javaslatok kizárólag az eredeti feltételeken alapulnak; a válaszban nem jelennek meg szinonima egyezések.
 
-Szinonima bővülésből nem vonatkoznak a keresőkifejezést helyettesítő; előtag, az intelligens, és a reguláris kifejezés feltételei nem kibontva.
+A szinonimák bővítései nem érvényesek a helyettesítő karakteres keresési kifejezésekre; az előtag, a fuzzy és a regex kifejezések nincsenek kibontva.
 
-Ha kell tennie, amelyekre vonatkozik a szinonima bővítése és helyettesítő, reguláris kifejezéssel vagy az intelligens keresés egyetlen lekérdezést, kombinálhatja a lekérdezéseket, a OR szintaxis használatával. Például úgy, hogy a szinonimák helyettesítő karaktereket is tartalmazó egyszerű lekérdezési szintaxis, az előfizetési időszak lenne `<query> | <query>*`.
+Ha egyetlen lekérdezést kell végrehajtania, amely szinonimákat, valamint helyettesítő karaktereket, regexeket vagy fuzzy kereséseket alkalmaz, a lekérdezéseket a vagy a szintaxis használatával kombinálhatja. Ha például a szinonimákat az egyszerű lekérdezési szintaxishoz helyettesítő karakterekkel kombinálja, a kifejezés `<query> | <query>*`a következő lesz:.
 
-## <a name="tips-for-building-a-synonym-map"></a>Tippek a szinonimatérkép létrehozásához
+## <a name="tips-for-building-a-synonym-map"></a>Tippek szinonimás Térkép létrehozásához
 
-- Egy rövid, jól megtervezett szinonimatérképet hatékonyabb, mint az lehetséges egyezések teljesnek. A túl nagy vagy összetett szótárak elemzése és a Lekérdezések késése hatással, ha a lekérdezés kibővíti a sok szinonimák hosszabb időt vesz igénybe. Ahelyett, hogy milyen feltételek használhatók találat, a tényleges használati keresztül kap egy [keresési forgalom elemzése – jelentés](search-traffic-analytics.md).
+- Egy rövid, jól megtervezett szinonimás Térkép hatékonyabb, mint a lehetséges egyezések teljes listája. A túlzottan nagy vagy összetett szótárak hosszabb időt is igénybe vehetik a lekérdezés késését, ha a lekérdezés sok szinonimára bővül. Nem hiszem, hogy milyen használati feltételek használhatók, a tényleges kifejezéseket a [keresési forgalom elemzése jelentés](search-traffic-analytics.md)segítségével érheti el.
 
-- Egy előzetes és érvényesítési gyakorolja engedélyezése, majd ez a jelentés pontosan határozza meg, hogy melyik feltételeit fog szinonimát egyezést kihasználhatják és majd továbbra is használhatja azt, hogy a szinonimatérkép az előállító jobb eredmény érvényesítése. Az előre meghatározott jelentésben a csempék "leggyakoribb keresési lekérdezések" és "eredmény nélküli keresési lekérdezések" felkínálja a szükséges információkat.
+- Az előzetes és az érvényesítési gyakorlat is lehetővé teszi, hogy a jelentés használatával pontosan meghatározza, hogy mely feltételek részesülnek a szinonimák között, majd továbbra is használja azt érvényesítésként, hogy a szinonimák térképe jobb eredményt ad. Az előre definiált jelentésben a "leggyakoribb keresési lekérdezések" és a "nulla eredményű keresési lekérdezések" a szükséges információkat biztosítja.
 
-- Létrehozhat több szinonimatérképet a search-alkalmazás (például úgy, hogy ha az alkalmazás támogatja a többnyelvű ügyfélkörét language). Jelenleg egy mező csak egyikét használhatja őket. A mező synonymMaps tulajdonság bármikor frissítheti.
+- A keresési alkalmazáshoz több szinonimás térképet is létrehozhat (például ha az alkalmazás támogatja a többnyelvű ügyfélkört). Jelenleg egy mező csak az egyiket használhatja. A mezők synonymMaps tulajdonságát bármikor frissítheti.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha egy meglévő index (nem éles) fejlesztői környezetben, kísérletezhet egy kis szótár meg, hogy a szinonimák hozzáadásával hogyan változik a keresési funkciót, beleértve a hatása a pontozási profilok, a találatok kiemelése és javaslatok.
+- Ha meglévő indexe van egy fejlesztési (nem éles) környezetben, kísérletezzen egy kisméretű szótárral, és nézze meg, hogy a szinonimák hozzáadása hogyan módosítja a keresési élményt, beleértve a pontozási profilok, a kiemelések és a javaslatok hatását.
 
-- [Forgalmi elemzések keresése engedélyezése](search-traffic-analytics.md) és az előre megadott jelentést a Power BI segítségével megtudhatja, mely kifejezések a legtöbb, és melyeket dokumentumot ad vissza. Ezen elemzési elemzőmodellek, vizsgálja felül a szótár tartalmazza, amely az indexben található dokumentumok kell lennie feloldása rendszer lekérdezések a szinonimák.
+- [Engedélyezze a Search Traffic Analytics szolgáltatást](search-traffic-analytics.md) , és az előre definiált Power bi jelentés használatával megtudhatja, hogy mely feltételek használják a legtöbbet, és melyek nulla dokumentumokat adnak vissza. Ezeket az információkat felhasználva áttekintheti a szótárt, hogy tartalmazza azokat a szinonimákat, amelyekkel az indexben lévő dokumentumokra feloldható nem termékre vonatkozó lekérdezések.

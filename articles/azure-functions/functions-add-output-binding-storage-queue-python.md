@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 34ec7c678410b2e0814f8dbb7a69257886cb891d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9fdbf3466256c5e24de17541770fa2095fcf38a4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639155"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171087"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Azure Storage-várólista kötésének hozzáadása a Python-függvényhez
 
@@ -194,11 +194,11 @@ Megvizsgálhatja [a tárolási üzenetsor üzenetét](#query-the-storage-queue) 
 
 ## <a name="next-steps"></a>További lépések
 
-Frissítette a HTTP-triggert a függvényt, hogy az adatait egy tárolási várólistába írja. Ha többet szeretne megtudni a Python Azure Functions fejlesztéséről, tekintse meg a [Python fejlesztői útmutató Azure functions](functions-reference-python.md) és [Azure functions triggerek és kötések](functions-triggers-bindings.md)című témakört.
+Frissítette a HTTP-triggert a függvényt, hogy az adatait egy tárolási várólistába írja. Ha többet szeretne megtudni a Python Azure Functions fejlesztéséről, tekintse meg a [Python fejlesztői útmutató Azure functions](functions-reference-python.md) és [Azure functions triggerek és kötések](functions-triggers-bindings.md)című témakört. A Python függvényekben a teljes körű függvények projektjeiről a [Python functions](/samples/browse/?products=azure-functions&languages=python)példákban olvashat. 
 
 Ezután engedélyezze Application Insights figyelését a Function alkalmazáshoz:
 
 > [!div class="nextstepaction"]
-> [Application Insights integráció engedélyezése](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Application Insights-integráció engedélyezése](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Storage Explorer]: https://storageexplorer.com/

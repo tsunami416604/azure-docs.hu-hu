@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/17/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: afc50a5adb591550f6e988a572d1ac9a8c4439cb
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 48b38e88ea6d0d99a0734aa36716020ced6e3d78
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955180"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193615"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>A QnA Maker Tudásbázis megbízhatósági pontszám
 Ha egy felhasználó lekérdezése Tudásbázis van, a QnA Maker azokra adott válaszokat, és a egy magabiztossági pontszámot ad vissza. Ezt az értéket, hogy a válasz-e a megfelelő egyezik a megadott felhasználói lekérdezés magabiztosan jelzi. 
@@ -55,7 +55,7 @@ A küszöbérték kiválasztásakor tartsa szem előtt a pontosság és lefedett
 - Ha **lefedettség** (vagy visszaírási) több fontos - és megválaszolásában, mint sok kérdésre, lehetséges, még akkor is, ha a felhasználó kérdés – csak részleges kapcsolat majd CSÖKKENTHETI a küszöbértéket. Ez azt jelenti, hogy ott lehet további olyan esetekben, ahol a válasz nem felel meg a felhasználó a tényleges lekérdezés, de néhány egyéb némileg kapcsolódó választ ad. *Például:* ha a **30**. küszöbértéket adja meg, választ kaphat a lekérdezésekre, például "hol szerkeszthetem a kb-ot?"
 
 > [!NOTE]
-> A QnA Maker újabb verzióit közé tartozik a pontozási logikát, és hatással lehetnek a küszöbértéket. Frissíti a szolgáltatás bármikor ügyeljen arra, hogy tesztelése és finomhangolása a küszöbértéket, ha szükséges. Ellenőrizheti a kérdések és válaszok verziója [Itt](https://www.qnamaker.ai/UserSettings), és tekintse meg a legújabb frissítéseinek [Itt](../How-To/troubleshooting-runtime.md).
+> A QnA Maker újabb verzióit közé tartozik a pontozási logikát, és hatással lehetnek a küszöbértéket. Frissíti a szolgáltatás bármikor ügyeljen arra, hogy tesztelése és finomhangolása a küszöbértéket, ha szükséges. Ellenőrizheti a kérdések és válaszok verziója [Itt](https://www.qnamaker.ai/UserSettings), és tekintse meg a legújabb frissítéseinek [Itt](../How-To/set-up-qnamaker-service-azure.md#get-latest-runtime-updates).
 
 ## <a name="set-threshold"></a>Küszöbérték beállítása 
 

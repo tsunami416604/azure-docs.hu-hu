@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: shthowse
-ms.openlocfilehash: 5b18ba4e06e8a44d7bd59b12a69a14ae15506234
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c3cd64d0a683a60132808bca6a7ceb4aa84db4f1
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135000"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195204"
 ---
 # <a name="quickstart-text-analytics-client-library-for-nodejs"></a>Gyors útmutató: Text Analytics ügyféloldali kódtár a Node. js-hez
 <a name="HOLTop"></a>
@@ -34,7 +34,7 @@ A (z) Node. js-hez készült Text Analytics ügyféloldali kódtár használatá
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* A [.net Core SDK](https://dotnet.microsoft.com/download/dotnet-core)aktuális verziója.
+* A [Node. js](https://nodejs.org/)jelenlegi verziója.
 
 ## <a name="setting-up"></a>Beállítás
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics megoldás mintái
-description: Ismerje meg a Azure Stream Analytics megoldási mintáit.
+description: Ismerkedjen meg a Azure Stream Analytics különböző gyakori megoldási mintázatával.
 author: zhongc
 ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 0a99c1b8f655943840bf68b59ee1506a8985dbdd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: cbc9ffe9510cf0888e8d8b62ea112b6517117eed
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065965"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173038"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics megoldás mintái
 

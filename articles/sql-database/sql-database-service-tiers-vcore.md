@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 06/26/2019
-ms.openlocfilehash: c35863ed1d564adf4190efa1888d24f4f4f68ddf
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.date: 08/29/2019
+ms.openlocfilehash: 4af269faab21207e1a754e309cac16e5e0a94b69
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147861"
+ms.locfileid: "70164342"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Válasszon a virtuális mag szolgáltatási szintjei közül, és térjen át a DTU szolgáltatási szintjeiről
 
 A Virtual Core (virtuális mag) alapú vásárlási modell lehetővé teszi a számítási és tárolási erőforrások egymástól független méretezését, a helyszíni teljesítmény egyeztetését és az árak optimalizálását. Azt is lehetővé teszi, hogy kiválassza a hardverek generációját:
 
-- **Gen4**: Akár 24 logikai processzor Intel E5-2673 v3 (Haswell) 2,4-GHz processzorok, virtuális mag = 1 PP (fizikai mag), 7 GB/mag, csatlakoztatott SSD
-- **Gen5**: Akár 80 logikai CPU-k Intel E5-2673 v4 (Broadwell) 2,3-GHz processzorok, virtuális mag = 1 LP (Hyper-thread), 5,1 GB/mag, gyors eNVM SSD
+- **Gen4**: Akár 24 logikai processzor Intel E5-2673 v3 (Haswell) 2,4-GHz processzorok, virtuális mag = 1 PP (fizikai mag), 7 GB/virtuális mag, csatlakoztatott SSD
+- **Gen5**: Akár 80 logikai processzor Intel E5-2673 v4 (Broadwell) 2,3-GHz processzorok, virtuális mag = 1 LP (Hyper-thread), 5,1 GB/virtuális mag a kiépített számítási feladatokhoz és akár 24 GB/virtuális mag a kiszolgáló nélküli számításokhoz, gyors eNVM SSD
 
 A Gen4-hardver lényegesen több memóriát kínál virtuális mag. A Gen5-hardverek azonban jóval nagyobb számítási erőforrások vertikális felskálázását teszik lehetővé.
 
@@ -44,9 +44,9 @@ A következő táblázat a három szintje közötti különbségeket ismerteti:
 |---|---|---|---|
 |Ajánlott alkalmazási terület|A legtöbb üzleti számítási feladat. A szolgáltatás költségvetés-orientált, kiegyensúlyozott és méretezhető számítási és tárolási lehetőségeket kínál.|Magas I/O-követelményeknek megfelelő üzleti alkalmazások. Több elkülönített replika használatával maximális rugalmasságot biztosít a hibákhoz.|A legtöbb üzleti számítási feladat nagy mértékben méretezhető tárolási és olvasási méretezési követelményekkel.|
 |Compute|**Kiépített számítás**:<br/>Gen4 1 – 24 virtuális mag<br/>Gen5 2 – 80 virtuális mag<br/>**Kiszolgáló nélküli számítás**:<br/>Gen5 0,5 – 16 virtuális mag|**Kiépített számítás**:<br/>Gen4 1 – 24 virtuális mag<br/>Gen5 2 – 80 virtuális mag|**Kiépített számítás**:<br/>Gen4 1 – 24 virtuális mag<br/>Gen5 2 – 80 virtuális mag|
-|Memory (Memória)|**Kiépített számítás**:<br/>Gen4 7 GB/virtuális mag<br/>Gen5 5,1 GB/virtuális mag<br/>**Kiszolgáló nélküli számítás**:<br/>Gen5 3 GB/virtuális mag|**Kiépített számítás**:<br/>Gen4 7 GB/virtuális mag<br/>Gen5 5,1 GB/virtuális mag |**Kiépített számítás**:<br/>Gen4 7 GB/virtuális mag<br/>Gen5 5,1 GB/virtuális mag|
-|Storage|Távoli tárterületet használ.<br/>**Önálló adatbázis kiépített számítási**felszámítása:<br/>5 GB – 4 TB<br/>**Önálló adatbázis-kiszolgáló nélküli számítás**:<br/>5 GB - 1 TB<br/>**Felügyelt példány**: 32 GB - 8 TB |A helyi SSD-tárolót használ.<br/>**Önálló adatbázis kiépített számítási**felszámítása:<br/>5 GB – 4 TB<br/>**Felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
-|I/O-átviteli sebesség (hozzávetőleges)|**Önálló adatbázis**: 500 IOPS/virtuális mag 7000 maximális IOPS.<br/>**Felügyelt példány**: A [fájl méretétől](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)függ.|5000 IOPS/mag 200 000 maximális IOPS|A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPs a munkaterheléstől függ.|
+|Memory (Memória)|**Kiépített számítás**:<br/>Gen4 7 GB/virtuális mag<br/>Gen5 5,1 GB/virtuális mag<br/>**Kiszolgáló nélküli számítás**:<br/>Gen5 Akár 24 GB/virtuális mag|**Kiépített számítás**:<br/>Gen4 7 GB/virtuális mag<br/>Gen5 5,1 GB/virtuális mag |**Kiépített számítás**:<br/>Gen4 7 GB/virtuális mag<br/>Gen5 5,1 GB/virtuális mag|
+|Storage|Távoli tárterületet használ.<br/>**Önálló adatbázis és rugalmas készlet kiépített számítási**felszámítása:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**Felügyelt példány**: 32 GB - 8 TB |A helyi SSD-tárolót használ.<br/>**Önálló adatbázis és rugalmas készlet kiépített számítási**felszámítása:<br/>5 GB – 4 TB<br/>**Felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
+|I/O-átviteli sebesség (hozzávetőleges)|**Önálló adatbázis és rugalmas készlet**: 500 IOPS/virtuális mag legfeljebb 40000 maximális IOPS.<br/>**Felügyelt példány**: A [fájl méretétől](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)függ.|5000 IOPS maximum 200 000 maximális IOPS|A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPs a munkaterheléstől függ.|
 |Rendelkezésre állás|1 replika, nincsenek olvasási méretezésű replikák|3 replika, 1 [olvasási léptékű replika](sql-database-read-scale-out.md),<br/>zóna – redundáns magas rendelkezésre állás (HA)|1 írható-olvasható replika, valamint 0-4 [-es olvasási léptékű replika](sql-database-read-scale-out.md)|
 |Biztonsági másolatok|[Olvasási hozzáférés – geo-redundáns tárolás (ra-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 nap (alapértelmezés szerint 7 nap)|[Ra-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 nap (alapértelmezés szerint 7 nap)|Pillanatkép-alapú biztonsági másolatok az Azure-beli távoli tárolóban. A visszaállítja ezeket a pillanatképeket a gyors helyreállításhoz. A biztonsági másolatok azonnaliek, és nem befolyásolják a számítási I/O-teljesítményt. A visszaállítások gyorsak, és nem az adatmennyiség (óra vagy nap helyett percekben).|
 |Memóriabeli|Nem támogatott|Támogatott|Nem támogatott|

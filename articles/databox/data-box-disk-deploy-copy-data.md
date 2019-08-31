@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 08/29/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: a0c34e30e52bd2a6d57e2cf8299f231f7f2960d9
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: e883e231988e63d22cb990224d240b1c13fb04b6
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147939"
+ms.locfileid: "70164435"
 ---
 ::: zone target="docs"
 
@@ -335,6 +335,6 @@ Az alábbi lépéseket követve ellenőrizheti adatait.
 1. Futtassa a `DataBoxDiskValidation.cmd` parancsot az ellenőrzőösszeg-érvényesítéshez a meghajtó *DataBoxDiskImport* mappájában.
 2. A 2. lehetőség használatával ellenőrizze a fájlokat, és állítson be ellenőrzőösszegeket. Az adatok méretétől függően a lépésben írtak elvégzése hosszabb időt is igénybe vehet. Ha hiba történik az érvényesítés és az ellenőrzőösszeg létrehozása során, a rendszer értesíti, és megjelenít egy, a hibanaplóra mutató hivatkozást.
 
-    Az adatok ellenőrzésével kapcsolatos további információkért lásd: [adatok ellenőrzése](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Ha az érvényesítés során hibák merülnek fel, tekintse meg az [érvényesítési hibák elhárítása](https://docs.microsoft.com/en-us/azure/databox/data-box-disk-troubleshoot){: Target = "_blank"} című témakört.
+    Az adatok ellenőrzésével kapcsolatos további információkért lásd: [adatok ellenőrzése](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Ha az érvényesítés során hibák merülnek fel, tekintse meg az [érvényesítési hibák elhárítása](data-box-disk-troubleshoot.md)című témakört.
 
 ::: zone-end

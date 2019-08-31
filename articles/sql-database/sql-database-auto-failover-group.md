@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/16/2019
-ms.openlocfilehash: 6357b5a477390f484a47167a0b9d2e524d37c9ac
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/29/2019
+ms.openlocfilehash: 73aeea42cd843716c845d7712539ae5c81f03dca
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035772"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173069"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 
-Az automatikus feladatátvételi csoportok egy SQL Database funkció, amely lehetővé teszi a SQL Database-kiszolgálón vagy a felügyelt példányban lévő összes adatbázisban lévő adatbázisok replikálásának és feladatátvételének kezelését egy másik régióba. A meglévő [aktív geo-replikálási](sql-database-active-geo-replication.md) szolgáltatás egyik deklaratív absztrakciója, amely a földrajzilag replikált adatbázisok nagy léptékű üzembe helyezésének és kezelésének egyszerűsítésére szolgál. A feladatátvételt manuálisan is kezdeményezheti, vagy delegálhatja a SQL Database szolgáltatásnak egy felhasználó által definiált házirend alapján. Az utóbbi lehetőség lehetővé teszi, hogy egy végzetes hiba vagy más nem tervezett esemény után automatikusan helyreállítson több kapcsolódó adatbázist egy másodlagos régióban, ami az SQL Database szolgáltatás rendelkezésre állásának teljes vagy részleges elvesztését eredményezi az elsődleges régióban. A feladatátvételi csoportok tartalmazhatnak egy vagy több adatbázist, jellemzően ugyanazt az alkalmazást használják. Emellett az olvasható másodlagos adatbázisokat is használhatja az írásvédett lekérdezési feladatok kiszervezéséhez. Mivel az automatikus feladatátvételi csoportok több adatbázist is tartalmaznak, ezeket az adatbázisokat az elsődleges kiszolgálón kell konfigurálni. A feladatátvételi csoportban lévő adatbázisokhoz tartozó elsődleges és másodlagos kiszolgálóknak ugyanahhoz az előfizetéshez kell tartoznia. Az automatikus feladatátvételi csoportok támogatják a csoportban lévő összes adatbázis replikációját egy másik régióban lévő egyetlen másodlagos kiszolgálóra.
+Az automatikus feladatátvételi csoportok egy SQL Database funkció, amely lehetővé teszi a SQL Database-kiszolgálón vagy a felügyelt példányban lévő összes adatbázisban lévő adatbázisok replikálásának és feladatátvételének kezelését egy másik régióba. A meglévő [aktív geo-replikálási](sql-database-active-geo-replication.md) szolgáltatás egyik deklaratív absztrakciója, amely a földrajzilag replikált adatbázisok nagy léptékű üzembe helyezésének és kezelésének egyszerűsítésére szolgál. A feladatátvételt manuálisan is kezdeményezheti, vagy delegálhatja a SQL Database szolgáltatásnak egy felhasználó által definiált házirend alapján. Az utóbbi lehetőség lehetővé teszi, hogy egy végzetes hiba vagy más nem tervezett esemény után automatikusan helyreállítson több kapcsolódó adatbázist egy másodlagos régióban, ami az SQL Database szolgáltatás rendelkezésre állásának teljes vagy részleges elvesztését eredményezi az elsődleges régióban. A feladatátvételi csoportok tartalmazhatnak egy vagy több adatbázist, jellemzően ugyanazt az alkalmazást használják. Emellett az olvasható másodlagos adatbázisokat is használhatja az írásvédett lekérdezési feladatok kiszervezéséhez. Mivel az automatikus feladatátvételi csoportok több adatbázist is tartalmaznak, ezeket az adatbázisokat az elsődleges kiszolgálón kell konfigurálni. Az automatikus feladatátvételi csoportok támogatják a csoportban lévő összes adatbázis replikációját egy másik régióban lévő egyetlen másodlagos kiszolgálóra.
 
 > [!NOTE]
 > Ha SQL Database-kiszolgálón található önálló vagy készletezett adatbázisokkal dolgozik, és több formátumú másodlagos zónák szeretne ugyanabban vagy különböző régiókban, használja az [aktív földrajzi replikálást](sql-database-active-geo-replication.md). 
@@ -191,12 +191,20 @@ Ha az alkalmazás felügyelt példányt használ adatcsomagként, kövesse az al
 
   Annak biztosítása érdekében, hogy az elsődleges és a másodlagos példányok feladatátvétele ne szakítsa meg a kapcsolatot az elsődleges példánnyal, ugyanabban a DNS-zónában kell lennie. A szolgáltatás garantálja, hogy ugyanaz a többtartományos (SAN) tanúsítvány használható az ügyfélkapcsolatok hitelesítésére a feladatátvételi csoport két példányának egyikén. Ha az alkalmazás készen áll az éles környezetben való üzembe helyezésre, hozzon létre egy másodlagos példányt egy másik régióban, és győződjön meg róla, hogy az elsődleges példánnyal osztja meg a DNS-zónát. Ezt megteheti egy `DNS Zone Partner` opcionális paraméter megadásával a Azure Portal, a PowerShell vagy a REST API használatával. 
 
-  A másodlagos példánynak az elsődleges példánnyal azonos DNS-zónában való létrehozásával kapcsolatos további információkért lásd: [feladatátvételi csoportok kezelése felügyelt példányokkal (előzetes verzió)](#powershell-managing-failover-groups-with-managed-instances-preview).
+  Az elsődleges példánnyal azonos DNS-zónában található másodlagos példány létrehozásával kapcsolatos további információkért lásd: [másodlagos felügyelt példány létrehozása](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
 
 - **Replikációs forgalom engedélyezése két példány között**
 
   Mivel minden példány el van különítve a saját VNet, engedélyezni kell a két irányú adatforgalmat a virtuális hálózatok között. Lásd: [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
+- **Feladatátvételi csoport létrehozása a felügyelt példányok között különböző előfizetésekben**
+
+  A felügyelt példányok között két különböző előfizetésben hozhat létre feladatátvételi csoportot. A PowerShell API használatakor megadhatja a `PartnerSubscriptionId` másodlagos példány paraméterét. REST API használatakor a `properties.managedInstancePairs` paraméterben szereplő minden példány-azonosító rendelkezhet saját subscriptionID is. 
+  
+  > [!IMPORTANT]
+  > Az Azure Portal nem támogatja a feladatátvételi csoportokat a különböző előfizetések között.
+
+  
 - **Feladatátvételi csoport konfigurálása a teljes példány feladatátvételének kezeléséhez**
 
   A feladatátvételi csoport a példány összes adatbázisának feladatátvételét fogja kezelni. Egy csoport létrehozásakor a példány minden adatbázisa automatikusan a másodlagos példányra lesz replikálva. A feladatátvételi csoportok nem használhatók az adatbázisok egy részhalmazának részleges feladatátvételének kezdeményezésére.
@@ -326,34 +334,16 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 > Egy minta parancsfájl esetében lásd: [feladatátvételi csoport konfigurálása és feladatátvétele egyetlen adatbázishoz](scripts/sql-database-add-single-db-to-failover-group-powershell.md).
 >
 
-### <a name="powershell-managing-failover-groups-with-managed-instances-preview"></a>PowerShell: Feladatátvételi csoportok kezelése felügyelt példányokkal (előzetes verzió)
+### <a name="powershell-managing-sql-database-failover-groups-with-managed-instances"></a>PowerShell: SQL Database feladatátvételi csoportok kezelése felügyelt példányokkal 
 
-#### <a name="install-the-newest-pre-release-version-of-powershell"></a>A PowerShell legújabb kiadás előtti verziójának telepítése
-
-1. Frissítse a PowerShellGet modult a 1.6.5 (vagy a legújabb előzetes verzióra). Lásd: PowerShell-előnézeti [webhely](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview).
-
-   ```powershell
-      install-module PowerShellGet -MinimumVersion 1.6.5 -force
-   ```
-
-2. Egy új PowerShell-ablakban hajtsa végre a következő parancsokat:
-
-   ```powershell
-      import-module PowerShellGet
-      get-module PowerShellGet #verify version is 1.6.5 (or newer)
-      install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
-      import-module azurerm.sql
-   ```
-
-#### <a name="powershell-commandlets-to-create-an-instance-failover-group"></a>PowerShell-parancsmagok példány-feladatátvételi csoport létrehozásához
-
-| API | Leírás |
+| A parancsmag | Leírás |
 | --- | --- |
-| New-AzureRmSqlDatabaseInstanceFailoverGroup |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
-| Set-AzureRmSqlDatabaseInstanceFailoverGroup |Módosítja a feladatátvételi csoport konfigurációját.|
-| Get-AzureRmSqlDatabaseInstanceFailoverGroup |A feladatátvételi csoport konfigurációjának beolvasása|
-| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |Elindítja a feladatátvételi csoport feladatátvételét a másodlagos kiszolgálóra.|
-| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | Feladatátvételi csoport eltávolítása|
+| [Új – AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
+| [Set-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Módosítja a feladatátvételi csoport konfigurációját.|
+| [Get-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |A feladatátvételi csoport konfigurációjának beolvasása|
+| [Kapcsoló – AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Elindítja a feladatátvételi csoport feladatátvételét a másodlagos kiszolgálóra.|
+| [Remove-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Feladatátvételi csoport eltávolítása|
+|  | |
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: SQL Database-alapú feladatátvételi csoportok kezelése önálló és készletezett adatbázisokkal
 

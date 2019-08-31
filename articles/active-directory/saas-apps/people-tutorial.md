@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció az emberekkel | Microsoft Docs'
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az emberekkel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és személyek között.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/01/2019
+ms.date: 08/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 334241683f95496ce9ea0629247bb8fd53364ee9
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3a9b8f08a54c978d81a8d33c61ab3d5f5fc7271f
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826119"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164220"
 ---
-# <a name="tutorial-integrate-people-with-azure-active-directory"></a>Oktatóanyag: Személyek integrálása a Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-people"></a>Oktatóanyag: Egyszeri bejelentkezéses (SSO) integráció Azure Active Directory személyekkel
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhat személyeket Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja az embereket, a következőket teheti:
 
@@ -47,6 +47,9 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 * A felhasználók támogatják az **SP** által KEZDEMÉNYEZett SSO-t
 * A People Mobile Application mostantól az Azure AD-vel is konfigurálható az egyszeri bejelentkezés engedélyezéséhez. Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
+>[!NOTE]
+>Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
+
 ## <a name="adding-people-from-the-gallery"></a>Személyek felvétele a katalógusból
 
 A személyek Azure AD-be való integrálásának konfigurálásához hozzá kell adnia személyeket a katalógusból a felügyelt SaaS-alkalmazások listájához.
@@ -58,21 +61,20 @@ A személyek Azure AD-be való integrálásának konfigurálásához hozzá kell
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **People** kifejezést a keresőmezőbe.
 1. Válassza ki a **személyek** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on-for-people"></a>Azure AD egyszeri bejelentkezés konfigurálása és tesztelése személyeknek
 
 Konfigurálja és tesztelje az Azure AD SSO-t olyan személyekkel, akik egy **B. Simon**nevű teszt felhasználót használnak. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között.
 
 Az Azure AD SSO személyekkel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 2. A **[felhasználók egyszeri](#configure-people-sso)** bejelentkezésének beállítása – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-5. **[Hozzon létre egy felhasználót](#create-people-test-user)** , aki a felhasználó Azure ad-képviseletéhez csatolt B. Simon-partneri jogosultsággal rendelkezik.
+    1. **[Hozzon létre egy felhasználót](#create-people-test-user)** , aki a felhasználó Azure ad-képviseletéhez csatolt B. Simon-partneri jogosultsággal rendelkezik.
 6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
@@ -100,22 +102,6 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 6. A **személyek beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
-
-### <a name="configure-people-sso"></a>Felhasználók egyszeri bejelentkezésének konfigurálása
-
-1. Az alkalmazáshoz való egyszeri bejelentkezéshez be kell jelentkeznie a saját bérlői fiókjába rendszergazdaként.
-   
-2. A bal oldali menüben kattintson a **Beállítások**elemre.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/people-tutorial/tutorial_people_001.png)
-
-3. Kattintson a **vállalat**elemre.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/people-tutorial/tutorial_people_002.png)
-
-4. Az **"egyszeri bejelentkezés" SAML meta-** adatfájljának feltöltéséhez kattintson a **Tallózás** gombra a letöltött metaadat-fájl feltöltéséhez.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/people-tutorial/tutorial_people_003.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -147,11 +133,35 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
+## <a name="configure-people-sso"></a>Felhasználók egyszeri bejelentkezésének konfigurálása
+
+1. A konfigurációnak a felhasználókon belüli automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítés** gombra a felhasználók számára. Itt adja meg a rendszergazdai hitelesítő adatokat a felhasználókba való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-6-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha manuálisan szeretné beállítani a személyeket, nyisson meg egy új böngészőablakot, és jelentkezzen be a vállalati webhelyre rendszergazdaként, és hajtsa végre a következő lépéseket:
+   
+4. A bal oldali menüben kattintson a **Beállítások**elemre.
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/people-tutorial/tutorial_people_001.png)
+
+5. Kattintson a **vállalat**elemre.
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/people-tutorial/tutorial_people_002.png)
+
+6. Az **"egyszeri bejelentkezés" SAML meta-** adatfájljának feltöltéséhez kattintson a **Tallózás** gombra a letöltött metaadat-fájl feltöltéséhez.
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/people-tutorial/tutorial_people_003.png)
+
 ### <a name="create-people-test-user"></a>Felhasználók létrehozása tesztelési felhasználó
 
 Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a People-ben. Az [ügyfél-támogatási csapattal](mailto:customerservices@peoplehr.com) együttműködve veheti fel a felhasználókat a People platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -179,3 +189,4 @@ Ha a hozzáférési panelen a személyek csempére kattint, akkor automatikusan 
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Felhasználók kipróbálása az Azure AD-vel](https://aad.portal.azure.com)

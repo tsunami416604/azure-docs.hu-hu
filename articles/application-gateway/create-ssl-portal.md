@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/25/2019
+ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: bc5216fccd5beab0e655776c0ccda3c53332da6f
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b558384fe6bc86cd7b0ebd640407557e23f68ddd
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478607"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194575"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Oktatóanyag: Application Gateway konfigurálása SSL-megszakítással a Azure Portal használatával
 
@@ -58,6 +58,9 @@ E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 
 Az [export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) és a tanúsítványból származó pfx-fájl exportálásához visszaadott ujjlenyomattal használja a következőt:
 
+> [!NOTE]
+> Ne használjon speciális karaktereket a. pfx-fájl jelszavában. Csak alfanumerikus karakterek támogatottak.
+
 ```powershell
 $pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
 Export-PfxCertificate `
@@ -87,11 +90,11 @@ Export-PfxCertificate `
 
     - **Név**: Adja meg a virtuális hálózat nevének *myVNet* .
 
-    - **Alhálózat neve** (Application Gateway alhálózat): Az  alhálózatok rácsa az *alapértelmezett*nevű alhálózatot jeleníti meg. Módosítsa az alhálózat nevét a *myAGSubnet*értékre.<br>Az Application Gateway-alhálózat csak Application Gateway átjárókat tartalmazhat. Más erőforrások nem engedélyezettek.
+    - **Alhálózat neve** (Application Gateway alhálózat): Az alhálózatok rácsa az *alapértelmezett*nevű alhálózatot jeleníti meg. Módosítsa az alhálózat nevét a *myAGSubnet*értékre.<br>Az Application Gateway-alhálózat csak Application Gateway átjárókat tartalmazhat. Más erőforrások nem engedélyezettek.
 
-    - **Alhálózat neve** (háttér-kiszolgáló alhálózata): Az alhálózatok rácsának  második sorában írja be a *MyBackendSubnet* **nevet az alhálózat neve** oszlopba.
+    - **Alhálózat neve** (háttér-kiszolgáló alhálózata): Az alhálózatok rácsának második sorában írja be a *MyBackendSubnet* **nevet az alhálózat neve** oszlopba.
 
-    - **Címtartomány** (háttér-kiszolgáló alhálózata): Az alhálózatok rácsának  második sorában adjon meg egy címtartományt, amely nem fedi át a *myAGSubnet*címtartományt. Ha például a *myAGSubnet* 10.0.0.0/24, a *10.0.1.0/24* értéket adja meg a *myBackendSubnet*-tartományhoz.
+    - **Címtartomány** (háttér-kiszolgáló alhálózata): Az alhálózatok rácsának második sorában adjon meg egy címtartományt, amely nem fedi át a *myAGSubnet*címtartományt. Ha például a *myAGSubnet* 10.0.0.0/24, a *10.0.1.0/24* értéket adja meg a *myBackendSubnet*-tartományhoz.
 
     A **virtuális hálózat létrehozása** ablak bezárásához és a virtuális hálózat beállításainak mentéséhez kattintson **az OK gombra** .
 
@@ -122,11 +125,11 @@ A háttér-készlet arra szolgál, hogy a kérelmeket a kérést kiszolgáló h�
     - **Név**: Adja meg a *myBackendPool* nevét a háttérbeli készlet neveként.
     - **Háttérbeli készlet hozzáadása célok nélkül**: Válassza az **Igen** lehetőséget, ha célokat nem tartalmazó háttér-készletet szeretne létrehozni. Az Application Gateway létrehozása után hozzá kell adni a háttérbeli célokat.
 
-3. A háttérbeli **készlet hozzáadása** ablakban válassza a **Hozzáadás** elemet a háttérbeli készlet konfigurációjának mentéséhez, és térjen  vissza a háttérrendszer lapra.
+3. A háttérbeli **készlet hozzáadása** ablakban válassza a **Hozzáadás** elemet a háttérbeli készlet konfigurációjának mentéséhez, és térjen vissza a háttérrendszer lapra.
 
      ![Új Application Gateway létrehozása: háttérrendszer](./media/application-gateway-create-gateway-portal/application-gateway-create-backends.png)
 
-4. A backends (háttérrendszer) **lapon válassza a Next (tovább) gombot:  Konfiguráció**.
+4. A backends (háttérrendszer) **lapon válassza a Next (tovább) gombot: Konfiguráció**.
 
 ### <a name="configuration-tab"></a>Konfiguráció lap
 
@@ -190,7 +193,7 @@ Ehhez a következőket kell tennie:
 
     - **Erőforráscsoport**: Válassza az erőforráscsoport neve **myResourceGroupAG** lehetőséget.
     - **Virtuális gép neve**: Adja meg a *myVM* nevet a virtuális gép nevéhez.
-    - **Felhasználónév**: Adja  meg az azureuser nevet a rendszergazda felhasználónevénél.
+    - **Felhasználónév**: Adja meg az azureuser nevet a rendszergazda felhasználónevénél.
     - **Jelszó**: Adja meg a *Azure123456!* a rendszergazdai jelszóhoz.
 4. Fogadja el a többi alapértelmezett értéket, **majd válassza a Next (tovább) gombot: Lemezek**.  
 5. Fogadja el a **lemezek** lap alapértelmezett értékeit **, majd kattintson a Next (tovább) gombra: Hálózatkezelés**.

@@ -2,7 +2,7 @@
 title: Frissítés a Azure Search .NET SDK 10-es verziójára – Azure Search
 description: Telepítse át a kódot a Azure Search .NET SDK 10-es verziójára a régebbi verzióról. Ismerje meg, hogy mi az új, és milyen kód módosítása szükséges.
 author: arv100kri
-manager: briansmi
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: dotnet
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: arjagann
 ms.custom: seodec2018
-ms.openlocfilehash: 193f886fe92c41fa51dbc5acbca89f0a5aa6043e
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: e4633a1c0543331b0ea9820703ed685fb99f2130
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020263"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182362"
 ---
 # <a name="upgrade-to-the-azure-search-net-sdk-version-10"></a>Frissítés a Azure Search .NET SDK 10-es verziójára
 

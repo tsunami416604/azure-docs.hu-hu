@@ -1,6 +1,6 @@
 ---
-title: Folyamatos integráció és az Azure Stream Analytics CI/CD NuGet-csomag fejlesztése
-description: Ez a cikk ismerteti, hogyan állítsa be a folyamatos integráció és üzembe helyezési folyamat az Azure Stream Analytics CI/CD NuGet-csomag használatával.
+title: A Azure Stream Analytics CI/CD NuGet csomag használata az integrációhoz és a fejlesztéshez
+description: Ez a cikk azt ismerteti, hogyan használható a Azure Stream Analytics CI/CD NuGet-csomag a folyamatos integrációs és üzembe helyezési folyamat beállításához.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -8,62 +8,62 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: f34139dafffe3d4890f17988114dffdd8b480d2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 47bcd29ca8a1da0c42f7bc39aeb4ffc1ad8e8571
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827313"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172897"
 ---
-# <a name="continuously-integrate-and-develop-with-azure-stream-analytics-cicd-nuget-package"></a>Folyamatos integráció és az Azure Stream Analytics CI/CD NuGet-csomag fejlesztése
-Ez a cikk ismerteti, hogyan állítsa be a folyamatos integráció és üzembe helyezési folyamat az Azure Stream Analytics CI/CD NuGet-csomag használatával.
+# <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>A Azure Stream Analytics CI/CD NuGet csomag használata az integrációhoz és a fejlesztéshez 
+Ez a cikk azt ismerteti, hogyan használható a Azure Stream Analytics CI/CD NuGet csomag a folyamatos integrációs és üzembe helyezési folyamat beállításához.
 
-2\.3.0000.0 verzióját használja, vagy a fenti, [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) kérhet támogatást az MSBuild.
+Használja a Visual studióhoz készült [stream Analytics-eszközök](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) 2.3.0000.0 vagy újabb verzióját az MSBuild támogatásának megismeréséhez.
 
-A NuGet-csomag érhető el: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Az MSBuild, a helyi Futtatás és a központi telepítési eszközök, amelyek támogatják a folyamatos integráció és üzembe helyezés folyamatát biztosít [Stream Analytics Visual Studio-projektek](stream-analytics-vs-tools.md). 
+NuGet-csomag érhető el: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Olyan MSBuild, helyi futtatási és üzembe helyezési eszközöket biztosít, amelyek támogatják [stream Analytics Visual Studio-projektek](stream-analytics-vs-tools.md)folyamatos integrációját és üzembe helyezési folyamatát. 
 > [!NOTE]
-> A NuGet-csomag használható csak a 2.3.0000.0 vagy újabb verziója a Stream Analytics Tools for Visual Studio. Ha korábbi verzióiban a Visual Studio tools-projektet, nyissa meg őket a 2.3.0000.0 vagy újabb verzió, és mentse. Ezután az új képességek is engedélyezve van. 
+> A NuGet csomag csak a Visual studióhoz készült Stream Analytics Tools for 2.3.0000.0 vagy újabb verziójával használható. Ha a Visual Studio Tools korábbi verzióiban hoztak létre projekteket, egyszerűen nyissa meg őket a 2.3.0000.0 vagy a fenti verzióval, és mentse. Ezután az új funkciók engedélyezve vannak. 
 
-További információkért lásd: [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
+További információ: [stream Analytics Tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
 ## <a name="msbuild"></a>MSBuild
-Például a szabványos Visual Studio MSBuild élményt hozhat létre egy projektet két lehetősége van. Kattintson a jobb gombbal a projektre, és válassza **összeállítása**. Használhatja még **MSBuild** a NuGet csomag a parancssorból.
+A standard Visual Studio MSBuild-élményhez hasonlóan a projekt létrehozásához két lehetőség közül választhat. Kattintson a jobb gombbal a projektre, majd válassza a **Létrehozás**lehetőséget. A NuGet csomagban található **MSBuild** -t is használhatja a parancssorból.
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
 
 ```
 
-Ha egy Stream Analytics Visual Studio-projekt sikeresen létrejött, a következő két Azure Resource Manager sablon fájlt alatt állít elő a **bin / [hibakeresési/kiskereskedelmi] és üzembe helyezése** mappa: 
+Stream Analytics Visual Studio-projekt sikeres létrehozásakor a a következő két Azure Resource Manager sablonfájlt hozza létre a **bin/[debug/Retail]/Deploy** mappában: 
 
 *  Resource Manager-sablonfájl
 
        [ProjectName].JobTemplate.json 
 
-*  Resource Manager-paraméterfájl
+*  Resource Manager-paraméterek fájlja
 
        [ProjectName].JobTemplate.parameters.json   
 
-Az alapértelmezett paramétereket a parameters.json fájlban vannak a Visual Studio-projektben a beállításokat. Ha azt szeretné, egy másik környezetben való üzembe helyezéséhez, annak megfelelően cserélje le a paramétereket.
+A Parameters. JSON fájlban lévő alapértelmezett paraméterek a Visual Studio-projekt beállításaiból származnak. Ha egy másik környezetbe szeretne telepíteni, cserélje le a paramétereket ennek megfelelően.
 
 > [!NOTE]
-> Az összes a hitelesítő adatokat, az alapértelmezett értékek vannak beállítva a null. Ön **szükséges** értékeinek beállítását a felhő üzembe helyezése előtt.
+> Az összes hitelesítő adat esetében az alapértelmezett értékek NULL értékre vannak állítva. A felhőbe való üzembe helyezés előtt be kell állítania az értékeket.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
       "value": null
     },
 ```
-Ismerje meg, hogyan [üzembe helyezése Resource Manager-sablonfájlban és Azure PowerShell-lel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Ismerje meg, hogyan [objektum használata paraméterként a Resource Manager-sablonnal](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+További információ a telepítéséről [Resource Manager-sablonfájl és Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). További információ arról, hogyan [használható egy objektum paraméterként egy Resource Manager-sablonban](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
-Felügyelt identitás használatára az Azure Data Lake Store Gen1 kimeneti fogadóként, meg kell hozzáférést biztosítania a szolgáltatásnévnek előtt üzembe helyezni az Azure PowerShell használatával. Ismerje meg, hogyan [ADLS Gen1 felügyelt identitással üzembe helyezése a Resource Manager-sablonnal](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
+Ha Azure Data Lake Store Gen1 felügyelt identitást szeretne használni kimeneti fogadóként, az Azure-ba való üzembe helyezés előtt meg kell adnia a szolgáltatásnevet a PowerShell használatával. További információ a [ADLS Gen1 felügyelt identitással való üzembe helyezéséhez Resource Manager-sablonnal](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
 
 
 ## <a name="command-line-tool"></a>Parancssori eszköz
 
 ### <a name="build-the-project"></a>A projekt felépítése
-A NuGet-csomag rendelkezik nevű parancssori eszköz **SA.exe**. Támogatja a project build és a egy tetszőleges számítógépre, amelyen a folyamatos integrációs és teljesítési folyamat használható helyi tesztelést. 
+Az NuGet-csomag egy **sa. exe**nevű parancssori eszközzel rendelkezik. Támogatja a projektek kialakítását és a helyi tesztelést egy tetszőleges gépen, amelyet a folyamatos integráció és a folyamatos kézbesítés folyamata használhat. 
 
-Az üzembe helyezési fájlokat alapértelmezés szerint az aktuális könyvtár alá kerülnek. A kimeneti elérési út a következő – OutputPath paraméter segítségével adhatja meg:
+A központi telepítési fájlok alapértelmezés szerint az aktuális könyvtár alá kerülnek. A kimeneti elérési utat a következő-OutputPath paraméter használatával adhatja meg:
 
 ```
 ./tools/SA.exe build -Project [Your Project Full Path] [-OutputPath <outputPath>] 
@@ -71,15 +71,15 @@ Az üzembe helyezési fájlokat alapértelmezés szerint az aktuális könyvtár
 
 ### <a name="test-the-script-locally"></a>A parancsfájl helyi tesztelése
 
-Ha a projekt helyi bemeneti fájlok van megadva, a Visual Studióban, egy automatizált parancsfájl tesztelési használatával futtathatja a *localrun* parancsot. A kimeneti eredmények az aktuális könyvtár alá kerül.
+Ha a projekt helyi bemeneti fájlokat adott meg a Visual Studióban, a *localrun* parancs használatával futtathat egy automatizált parancsfájl-tesztet. A kimeneti eredmény az aktuális könyvtár alá kerül.
  
 ```
 localrun -Project [ProjectFullPath]
 ```
 
-### <a name="generate-a-job-definition-file-to-use-with-the-stream-analytics-powershell-api"></a>Hozzon létre egy feladatot csomagdefiníciós fájl a Stream Analytics PowerShell API használata
+### <a name="generate-a-job-definition-file-to-use-with-the-stream-analytics-powershell-api"></a>A Stream Analytics PowerShell API-val használni kívánt feladatdefiníció létrehozása
 
-A *arm* parancs fogadja a feladat sablon és a feladat sablon paraméterfájljait keresztül build bemenetként létrehozott. Ezután azt egyesíti azokat egy feladat definícióját JSON-fájlt, amely a Stream Analytics PowerShell API-val használható.
+Az *ARM* parancs a Build as bemenet használatával generált sablont és a feladatütemezés paramétereit veszi alapul. Ezután egy, a Stream Analytics PowerShell API-val használható, feladatdefiníció nevű JSON-fájlba kombinálja őket.
 
 ```powershell
 arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-OutputFile <asaArmFilePath>]
@@ -93,6 +93,6 @@ Példa:
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Az Azure Stream Analytics felhőalapú feladat létrehozása a Visual Studióban](stream-analytics-quick-create-vs.md)
+* [Rövid útmutató: Azure Stream Analytics Cloud-feladatok létrehozása a Visual Studióban](stream-analytics-quick-create-vs.md)
 * [Stream Analytics-lekérdezések Visual studióval helyileg tesztelése](stream-analytics-vs-tools-local-run.md)
-* [Ismerkedés az Azure Stream Analytics-feladatok a Visual Studióval](stream-analytics-vs-tools.md)
+* [Azure Stream Analytics feladatok megismerése a Visual Studióval](stream-analytics-vs-tools.md)

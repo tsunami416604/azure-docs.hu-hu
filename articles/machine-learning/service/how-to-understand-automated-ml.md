@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 387865ac229acc5d16f595b96c76e7c9a014e991
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: d626a7768e7070360a6f0249486bfa83407fe998
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062132"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192062"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Az automatizált gépi tanulás eredményeinek megismerése
 
@@ -102,7 +102,7 @@ weighted_accuracy|A súlyozott pontosság az a pontosság, amelyben az egyes pé
 
 Egy keveredési mátrixot egy osztályozási modell teljesítményét leírására szolgál. Minden egyes sor jeleníti meg az IGAZ osztály példányait, és minden oszlop felel meg a példányok, az előrejelzett osztály. A keveredési mátrix megfelelően osztályozott címkéket és a egy adott modell hibásan besorolt címkéit jeleníti meg.
 
-Az Azure Machine Learning osztályozási problémák, automatikusan biztosít mindegyik modellt, amely egy keveredési mátrixot. Az egyes keveredési mátrixot automatizált gépi Tanulási vörös, zöld és hibásan besorolt címkékként jelennek megfelelően osztályozott címkéket. A kör mérete az adott doboz minták számát jelöli. Emellett a szomszédos sávdiagramok minden egyes előre jelzett címke és az egyes igaz címke gyakorisága száma megtalálható. 
+Az Azure Machine Learning osztályozási problémák, automatikusan biztosít mindegyik modellt, amely egy keveredési mátrixot. Az automatikus ML minden egyes összekeveredési mátrix esetében megjeleníti az egyes előre jelzett címkék gyakoriságát és az egyes igaz címkék metszetét. Minél sötétebb a szín, annál nagyobb számnak kell lennie a mátrix adott részében. Ideális esetben a legsötétebb színek a mátrix átlója. 
 
 1\. példa: Gyenge pontosságú besorolási modell ![gyenge pontossággal](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 

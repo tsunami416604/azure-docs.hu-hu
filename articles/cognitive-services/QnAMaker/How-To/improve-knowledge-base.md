@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 577bf7f157eb89da360fa6cbdd4d22c1054f234f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: daf2781113016b20c19a6b8f5365033f1ff1479b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966708"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195269"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Az aktív tanulás használata a Tudásbázis fejlesztéséhez
 
@@ -56,7 +56,7 @@ Fontos, hogy QnA Maker explicit visszajelzést kapjon arról, hogy a válaszok k
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>A futtatókörnyezet verziójának frissítése az aktív tanulás használatára
 
-Az aktív tanulást a futtatókörnyezet 4.4.0 és újabb verziói támogatják. Ha a Tudásbázis egy korábbi verzión lett létrehozva, [frissítse a futtatókörnyezetet](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates) a szolgáltatás használatára. 
+Az aktív tanulást a futtatókörnyezet 4.4.0 és újabb verziói támogatják. Ha a Tudásbázis egy korábbi verzión lett létrehozva, [frissítse a futtatókörnyezetet](set-up-qnamaker-service-azure.md#get-latest-runtime-updates) a szolgáltatás használatára. 
 
 ## <a name="turn-on-active-learning-to-see-suggestions"></a>A javaslatok megjelenítéséhez kapcsolja be az aktív tanulást
 
@@ -194,7 +194,7 @@ A JSON-törzs több beállítással rendelkezik:
 |JSON-törzs tulajdonság|Type|Cél|
 |--|--|--|--|
 |`feedbackRecords`|array|Visszajelzések listája.|
-|`userId`|Karakterlánc|A javasolt kérdéseket elfogadó személy felhasználói azonosítója. A felhasználói azonosító formátuma. Például egy e-mail-cím lehet érvényes felhasználói azonosító az architektúrában. Választható.|
+|`userId`|Karakterlánc|A javasolt kérdéseket elfogadó személy felhasználói azonosítója. A felhasználói azonosító formátuma. Például egy e-mail-cím lehet érvényes felhasználói azonosító az architektúrában. Nem kötelező.|
 |`userQuestion`|Karakterlánc|A felhasználó lekérdezésének pontos szövege. Kötelező.|
 |`qnaID`|szám|A [GenerateAnswer válaszban](metadata-generateanswer-usage.md#generateanswer-response-properties)található kérdés azonosítója. |
 

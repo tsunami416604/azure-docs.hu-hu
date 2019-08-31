@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: daea1415c42960970d097753bc657392d4e1a1f4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: fd8abf81589f3338f9e45c6c1d23681269ccc654
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137278"
+ms.locfileid: "70164856"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>Gyors útmutató: A Javához készült ügyféloldali kódtár Computer Vision
 
@@ -142,6 +142,9 @@ Először hozzon létre egy **erőforrást/** mappát a projekt **src/Main/** ma
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_refs)]
 
+> [!NOTE]
+> A távoli rendszerképeket az URL-cím használatával is elemezheti. A távoli rendszerképeket [](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java) érintő forgatókönyvek a githubon találhatók.
+
 ### <a name="specify-visual-features"></a>Vizuális funkciók meghatározása
 
 Ezután adja meg, hogy mely vizuális funkciókat szeretné kibontani az elemzésbe. A teljes listát a [VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable) enumerálásban tekintheti meg.
@@ -149,17 +152,59 @@ Ezután adja meg, hogy mely vizuális funkciókat szeretné kibontani az elemzé
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
 
 ### <a name="analyze"></a>Elemzés
-Ez a metódus részletes eredményeket jelenít meg a konzolon a képelemzés egyes hatókörei esetében. Javasoljuk, hogy ezt a metódust a try/catch blokkban hívja meg
+Ez a metódus részletes eredményeket jelenít meg a konzolon a képelemzés egyes hatókörei esetében. Javasoljuk, hogy ezt a metódust a try/catch blokkban hívja meg. A **analyzeImageInStream** metódus egy **ImageAnalysis** objektumot ad vissza, amely az összes kinyert információt tartalmazza.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_analyze)]
 
-### <a name="display-results"></a>Eredmények megjelenítése
+Az alábbi részek azt mutatják be, hogyan elemezheti ezeket az információkat részletesen.
 
-A fenti metódus hívása egy ImageAnalysis objektumot ad vissza, amely az összes kinyert információt tartalmazza. Egy adott vizualizáció funkció részleteinek kinyomtatásához a következőhöz hasonló kódrészletet használhat.
+### <a name="get-image-description"></a>Rendszerkép lekérése – Leírás
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_display)]
+A következő kód beolvassa a rendszerképhez létrehozott feliratok listáját. További részletekért tekintse meg a [képek leírása](../concept-describing-images.md) című témakört.
 
-A megjelenítési beállítások teljes készletét a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java) tekintheti meg.
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_captions)]
+
+### <a name="get-image-category"></a>Rendszerkép beolvasása kategória
+
+A következő kód lekéri a rendszerkép észlelt kategóriáját. További részletekért tekintse meg a [képek kategorizálása](../concept-categorizing-images.md) című témakört.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_category)]
+
+### <a name="get-image-tags"></a>Képcímkék beolvasása
+
+A következő kód beolvassa az észlelt címkék készletét a képen. További részletekért tekintse meg a [tartalom címkéit](../concept-tagging-images.md) .
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_tags)]
+
+### <a name="get-faces"></a>Arcok beolvasása
+
+A következő kód az észlelt arcokat adja vissza a képen a téglalap koordinátáival, majd a Face attribútumok elemet. További részletekért tekintse meg az [Arcfelismerés](../concept-detecting-faces.md) című témakört.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
+
+### <a name="get-adult-or-racy-content"></a>Felnőtt vagy zamatos tartalom beszerzése
+
+A következő kód kinyomtatja a képen a felnőtt vagy a zamatos tartalom észlelt jelenlétét. További részletekért tekintse meg a [felnőtt és a zamatos tartalmat](../concept-detecting-adult-content.md) .
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_adult)]
+
+### <a name="get-image-color-scheme"></a>Rendszerképek színsémájának beolvasása
+
+A következő kód az észlelt színattribútumokat nyomtatja ki a képen, például a domináns színeket és a kiejtés színét. További [](../concept-detecting-color-schemes.md) részletekért lásd: Színsémák.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_colors)]
+
+### <a name="get-domain-specific-content"></a>Tartományhoz tartozó tartalom beolvasása
+
+A Computer Vision speciális modellt használhat a képek további elemzéséhez. További részletekért tekintse meg a tartományra vonatkozó [tartalmat](../concept-detecting-domain-content.md) . 
+
+A következő kód az észlelt hírességek adatait elemzi a képen.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_celebrities)]
+
+A következő kód az észlelt tereptárgyak adatait elemzi a képen.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_landmarks)]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 

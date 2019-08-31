@@ -1,100 +1,100 @@
 ---
-title: Frissítse a legújabb Azure Search szolgáltatás REST API-verzióra – Azure Search
-description: Tekintse át az API-verziók közötti különbségek, és ismerje meg, milyen műveleteket végezzen a meglévő kód áttelepítése a legújabb Azure Search szolgáltatás REST API-verzióra van szükség.
+title: Frissítés a legújabb Azure Search Service REST API verzióra – Azure Search
+description: Tekintse át az API-verziók közötti különbségeket, és Ismerje meg, hogy mely műveletek szükségesek a meglévő kód legújabb Azure Search Service REST API verzióra való átváltásához.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: 85a8ddf4ce87d7ac8ce460c0aff56311a2ea4578
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c1f7fdb1f349c9e31ba63d79a9b9e26ea9f09da
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540694"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182388"
 ---
-# <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Frissítse a legújabb Azure Search szolgáltatás REST API-verzióra
-Ha egy korábbi verzióját használja, a [Azure Search szolgáltatás REST API](https://docs.microsoft.com/rest/api/searchservice/), ez a cikk segít az alkalmazás használhatja a legújabb általánosan elérhető API-verzió a 2019-05-06 frissítése.
+# <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Frissítés a legújabb Azure Search Service REST API verzióra
+Ha a [Azure Search Service REST API](https://docs.microsoft.com/rest/api/searchservice/)egy korábbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás frissítéséhez a legújabb általánosan elérhető API-verzió (2019-05-06) használatára.
 
-REST API-verzió a 2019-05-06 tartalmaz néhány módosítást korábbi verzióit. Ezek a leginkább visszamenőlegesen kompatibilis, így a kód módosítása csak minimális erőfeszítéssel, attól függően, melyik verziót használja előtt érdemes beállítani. [A frissítési lépéseket](#UpgradeSteps) felvázolja a kód módosításait az új funkciók használatához szükséges.
+A REST API 2019-05-06-es verziója a korábbi verziók néhány módosítását tartalmazza. Ezek többnyire visszamenőlegesen kompatibilisek, ezért a kód módosítása csak minimális erőfeszítést igényelhet, attól függően, hogy melyik verziót használta. A [verziófrissítés lépései](#UpgradeSteps) az új funkciók használatához szükséges kód módosításait ismertetik.
 
 > [!NOTE]
-> Az Azure Search-szolgáltatáspéldányhoz támogatja egy tartományt a REST API-verziók, többek között a korábbiakat. Továbbra is ezen API-verziót használnak, de javasoljuk, hogy a kód áttelepítése a legújabb verzióra, hogy az új funkciókat érheti el.
+> Az Azure Search Service-példányok számos REST API-verziót támogatnak, köztük a korábbikat is. Továbbra is használhatja ezeket az API-verziókat, de javasoljuk, hogy a kód áttelepítését a legújabb verzióra, hogy hozzáférhessen az új funkciókhoz.
 
 <a name="WhatsNew"></a>
 
-## <a name="whats-new-in-version-2019-05-06"></a>A 2019-05-06 verzió újdonságai
-Verzióját 2019-05-06-a az Azure Search szolgáltatás REST API általánosan elérhető legújabb kiadása. Ebben a verzióban API általánosan elérhető állapotba ügyfelét funkciók a következők:
+## <a name="whats-new-in-version-2019-05-06"></a>Az 2019-05-06-es verzió újdonságai
+Az 2019-05-06-es verzió a Azure Search Service REST API legújabb általánosan elérhető kiadása. Az API-verzió általánosan elérhető állapotára váltott funkciók a következők:
 
-* [Az automatikus kiegészítés](index-add-suggesters.md) typeahead funkció, amely egy részben megadott kifejezés bemeneti befejeződik.
+* Az [automatikus kiegészítés](index-add-suggesters.md) egy typeahead funkció, amely egy részben megadott kifejezési bemenetet hajt végre.
 
-* [Komplexní typy](search-howto-complex-data-types.md) natív támogatást nyújt az Azure Search-index strukturált objektum adatokat.
+* Az [összetett típusok](search-howto-complex-data-types.md) natív támogatást biztosítanak a strukturált objektumok számára egy Azure Search indexben.
 
-* [Elemzés módok JsonLines](search-howto-index-json-blobs.md)részét képező Azure BLOB indexelést, egy keresési új dokumentumot hoz létre egy JSON-entitás, amely egy új sor választja el egymástól.
+* A [JsonLines-elemzési módok](search-howto-index-json-blobs.md), az Azure Blob-indexelés részeként egy keresési dokumentumot hoz létre, amely egy sortöréssel elválasztott JSON-entitáson alapul.
 
-* [A kognitív keresés](cognitive-search-concept-intro.md) biztosít, amely a Cognitive Services mesterséges Intelligencia Adatbővítés motorok indexelés.
+* A [kognitív keresés](cognitive-search-concept-intro.md) olyan indexelést biztosít, amely kihasználja Cognitive Services mesterséges intelligencia-gazdagító motorját.
 
-Több előzetes funkciók kiadása a általánosan elérhető frissítés egybe. Tekintse át az új előzetes verziójú funkciók listáját, tekintse meg [Search REST api-verzió a 2019-05-06-Preview](search-api-preview.md).
+Az előzetes verzió számos szolgáltatása egybeesik az általánosan elérhető frissítéssel. Az új előzetes verziójú funkciók listájának áttekintését lásd: [REST API – version 2019-05-06 – előzetes verzió](search-api-preview.md).
 
 ## <a name="breaking-changes"></a>Kompatibilitástörő változások
 
-Az alábbi funkciókat tartalmazó meglévő kódot megszakítja az api-version = a 2019-05-06.
+A következő funkciókat tartalmazó meglévő kód megszakad az API-Version = 2019-05-06 esetén.
 
-### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Az Azure Cosmos DB - indexelő adatforrás van most "type": "cosmos DB"
+### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>A Azure Cosmos db-DataSource indexelő most "type": "cosmosdb"
 
-Ha használ olyan [Cosmos DB-indexelő](search-howto-index-cosmosdb.md ), módosítania kell `"type": "documentdb"` való `"type": "cosmosdb"`.
+Ha [Cosmos db](search-howto-index-cosmosdb.md )indexelő használ, a `"type": "documentdb"` `"type": "cosmosdb"`következőre kell váltania:.
 
-### <a name="indexer-execution-result-errors-no-longer-have-status"></a>Az indexelő végrehajtási eredménye hibák már nincs állapot
+### <a name="indexer-execution-result-errors-no-longer-have-status"></a>Az indexelő végrehajtási eredményeinek hibái már nem rendelkeznek állapottal
 
-Az indexelő végrehajtási hiba struktúráját korábban rendelkezett egy `status` elemet. Ez nem nyújtott hasznos információkat az elem el lett távolítva.
+Az indexelő végrehajtásához használt hiba szerkezete korábban egy `status` elemmel rendelkezett. Ez az elem el lett távolítva, mert nem volt hasznos információ.
 
-### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>Az indexelő adatforrás API már nem ad vissza a kapcsolati karakterláncok
+### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>Az indexelő adatforrás API többé nem adja vissza a kapcsolatok karakterláncait
 
-API-ból a 2019-05-06 és a 2019-05-06-előzetes verzió frissítésétől kezdve az adatforrás API verziója már nem ad vissza kapcsolati karakterláncok bármely REST-művelet a válaszban. Előző API-verziókban az adatforrásokat, POST, használatával létrehozott Azure Search visszaadott **201-es** a OData választ, amelyek tartalmazzák a kapcsolati karakterlánc egyszerű szöveges követ.
+A 2019-05-06-es és 2019-05-06-os API-verzióktól kezdve az adatforrás API többé nem adja vissza a kapcsolódási karakterláncokat a REST-műveletek válaszában. A korábbi API-verziókban a POST paranccsal létrehozott adatforrások esetében a Azure Search a **201** értéket adta vissza, amelyet a OData válasz követ, amely egyszerű szövegként szerepelt a kapcsolatok karakterláncában.
 
-### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>Megnevezett entitások felismerése cognitive szakértelem megszűnt
+### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>Az elnevezett entitások felismerésének kognitív készsége már megszűnt
 
-Ha felhívja [neve entitások felismerése](cognitive-search-skill-named-entity-recognition.md) szakértelem a kódban, a hívás sikertelen lesz. Csere a funkció [entitások felismerése](cognitive-search-skill-entity-recognition.md). Meg kell tudni cserélje le a képzettségi hivatkozás más módosítása nélkül. Az API-aláírás a mindkét verzió esetében megegyezik. 
+Ha meghívja a [név entitás](cognitive-search-skill-named-entity-recognition.md) -felismerési képességet a kódban, a hívás sikertelen lesz. A helyettesítő funkció [](cognitive-search-skill-entity-recognition.md)az entitások felismerése. A szaktudás hivatkozását más változtatások nélkül is le kell cserélni. Az API-aláírás mindkét verzió esetében azonos. 
 
 <a name="UpgradeSteps"></a>
 
-## <a name="steps-to-upgrade"></a>Frissítési lépései
-Ha frissít egy előző verzióról a végleges verzió, 2017-11-11 vagy 2016-09-01, valószínűleg nem kell semmilyen módosítást a kód más, a verziószám módosításához. A csak olyan helyzetekben, amelyben szükség lehet kódot, amikor:
+## <a name="steps-to-upgrade"></a>A frissítés lépései
+Ha egy korábbi, 2017-11-11-es vagy 2016-09-01-es verzióról frissít, valószínűleg nem kell módosítania a kódot, kivéve a verziószámot. A következő esetekben lehet szükség a kód módosítására:
 
-* A kód sikertelen lesz, ha egy API-válaszban visszaadott ismeretlen tulajdonságait. Alapértelmezés szerint az alkalmazás figyelmen kívül hagyja-tulajdonságok, amely nem érthető.
+* A kód meghiúsul, ha a rendszer ismeretlen tulajdonságokat ad vissza egy API-válaszban. Alapértelmezés szerint az alkalmazás figyelmen kívül hagyja az általa nem értelmezhető tulajdonságokat.
 
-* A kód továbbra is fennáll az API-kérések, és próbálja meg újból elküldeni őket az új API-verzióra. Például Ez azért fordulhat elő, ha az alkalmazás továbbra is fennáll, a Search API által visszaadott folytatási token (további információért keressen `@search.nextPageParameters` a a [Search API-referencia](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)).
+* A kód megőrzi az API-kérelmeket, és megkísérli az új API-verzióra való újraküldést. Ez például akkor fordulhat elő, ha az alkalmazás a keresési API által visszaadott folytatási tokeneket is megőrzi (további információért `@search.nextPageParameters` keresse a [Search API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)-referenciát).
 
-Ha ezekben a helyzetekben egyikét alkalmazza, majd szükség lehet, ennek megfelelően módosítania kell a kódot. Ellenkező esetben módosítása nélkül lehet szükség, ha el szeretné indítani a használatával a [új funkciók](#WhatsNew) 2019-05-06-verzió.
+Ha bármelyik ilyen helyzet Önre vonatkozik, akkor előfordulhat, hogy a kódot ennek megfelelően kell módosítania. Ellenkező esetben nincs szükség módosításra, kivéve, ha az 2019-05-06-es verzió [új funkcióit](#WhatsNew) szeretné használni.
 
-Ha API előzetes verziójáról frissít, a fenti is vonatkozik, de is figyelembe kell venni, hogy bizonyos előzetes verziójú funkciók nem érhetők el a verzió a 2019-05-06:
+Ha egy előzetes verziójú API-verzióról frissít, a fentiek is érvényesek, de a 2019-05-06-es verzióban nem érhető el az előzetes verziójú szolgáltatások:
 
-* ["Több ilyen" lekérdezések](search-more-like-this.md)
-* [Fürt megosztott kötetei szolgáltatás blob-indexelés](search-howto-index-csv-blobs.md)
-* [MongoDB API támogatása a Cosmos DB-indexelő](search-howto-index-cosmosdb.md)
+* ["Több, mint a" lekérdezés](search-more-like-this.md)
+* [CSV-blob indexelése](search-howto-index-csv-blobs.md)
+* [MongoDB API-támogatás Cosmos db indexelő számára](search-howto-index-cosmosdb.md)
 
-Ha a kódot használja ezeket a funkciókat, nem tudja frissíteni az API-verzió a 2019-05-06 anélkül, hogy eltávolítaná a használatát.
+Ha a kód ezeket a funkciókat használja, nem fogja tudni frissíteni a 2019-05-06-es API-verzióra a használat eltávolítása nélkül.
 
 > [!IMPORTANT]
-> Előzetes API-k tesztelési és értékelési célokra szolgálnak, és nem éles környezetekben használható.
+> Az előzetes verziójú API-k tesztelési és értékelési célokra szolgálnak, és nem használhatók éles környezetekben.
 > 
 
-### <a name="upgrading-complex-types"></a>Komplexní typy frissítése
+### <a name="upgrading-complex-types"></a>Összetett típusok frissítése
 
-Ha a kódot a régebbi verzióival előzetes API 2017-11-11-Preview vagy 2016-09-01-Preview komplexní typy használ, néhány új és módosított korlátozva van verzióban, amelynek szüksége, érdemes figyelembe vennie a 2019-05-06:
+Ha a kód összetett típusokat használ a korábbi előzetes verziójú API 2017-11-11 – Preview vagy 2016-09-01-Preview verzióhoz, akkor a 2019-05-06-as verzióban néhány új és megváltozott korlátozás szerepel, amelyekről tudnia kell:
 
-+ Almező és indexenkénti összetett gyűjtemények száma mélysége korlátait csökkentette lett. Ha hozott létre, amelyek használatával az előzetes api-verziók kvótákra indexeket, bármely próbál frissítse vagy hozza létre őket API-verzióval a 2019-05-06 sikertelen lesz. Ha ez érvényes Önre, szüksége lesz újra kell tervezni a sémát, majd építse újra az index és az új keretein belül.
++ Az almezők mélységének és az indexekben lévő összetett gyűjtemények számának korlátozása csökkent. Ha olyan indexeket hozott létre, amelyek túllépik ezeket a korlátozásokat az előzetes verziójú API-verziók használatával, akkor az API 2019-05-06-es verziójának használatával végzett frissítés vagy újbóli létrehozás sikertelen lesz. Ha ez Önre vonatkozik, újra kell terveznie a sémát, hogy az megfeleljen az új korlátoknak, majd újjáépítse az indexet.
 
-+ Új korlátozva van az api-version 2019-05-06 összetett gyűjtemény hozható létre a dokumentum elemeinek száma. Ha indexeket a dokumentumok, amelyek használatával az előzetes api-verziók kvótákra hozta létre, api-verzió a 2019-05-06 adatok újraindexelése tett bármilyen kísérlet sikertelen lesz. Ha ez érvényes Önre, szüksége lesz a dokumentum egy összetett gyűjtemény elemei számának csökkentése előtt az adatok újraindexelés.
++ Az API-Version 2019-05-06 új korlátja a dokumentumok összetett gyűjtemények elemeinek száma. Ha olyan dokumentumokkal hozta létre az indexeket, amelyek túllépik ezeket a korlátozásokat az előzetes verziójú API-verziók használatával, az API-Version 2019-05-06-es verzióval végzett újraindexelési kísérlet sikertelen lesz. Ha ez Önre vonatkozik, csökkentenie kell az összetett gyűjtemények elemeinek számát, mielőtt újraindexeli az adatokat.
 
-További információkért lásd: [szolgáltatási korlátozásaival, az Azure Search](search-limits-quotas-capacity.md).
+További információ: [Azure Search szolgáltatási korlátai](search-limits-quotas-capacity.md).
 
-### <a name="how-to-upgrade-an-old-complex-type-structure"></a>Egy régi komplex típus struktúra frissítése
+### <a name="how-to-upgrade-an-old-complex-type-structure"></a>Régi komplex típusú struktúra frissítése
 
-Ha a kódot a korábbi előzetes API-verziók egyikével komplexní typy használ, előfordulhat, hogy használni egy index definíciója formátuma a következőhöz hasonló:
+Ha a kód összetett típusokat használ a korábbi előzetes verziójú API-verziók egyikével, lehetséges, hogy az alábbihoz hasonló index-definíció formátumot használ:
 
 ```json
 {
@@ -129,23 +129,23 @@ Ha a kódot a korábbi előzetes API-verziók egyikével komplexní typy haszná
 }  
 ```
 
-Egy újabb faszerkezetben formátumát meghatározó index mezőire API verziója 2017. 11. 11 – előzetes verzió a jelent meg. Az új formátumban az egyes összetett Pole literálu a mezők gyűjteménye ahol definiálva vannak az al mezőjét. Az API-verzió a 2019-05-06 az új formátum kizárólag szolgál, és próbál létrehozni vagy frissíteni a régi formátumot használó index művelet sikertelen lesz. Ha a régi formátumot használatával létrehozott indexeket, szüksége API verziója 2017. 11. 11 – előzetes verzió használata előtt felügyelhetők, API-verzióval a 2019-05-06 frissíteni őket az új formátumra.
+Az index mezőinek definiálásához egy újabb faszerkezetű formátum lett bevezetve az API 2017-11-11-es verziójában. Az új formátumban minden összetett mezőhöz tartozik egy mező gyűjtemény, amelyben az almezők definiálva vannak. Az API 2019-05-06-es verziójában ez az új formátum kizárólag a régi formátummal rendelkező indexek létrehozására vagy frissítésére tett kísérlet sikertelen lesz. Ha a régi formátummal létrehozott indexekkel rendelkezik, akkor az API 2017-11-11-es verziójának előzetes verzióját kell használnia az új formátumra való frissítéshez, mielőtt azok a 2019-05-06-es API-verzióval felügyelhetők legyenek.
 
-Az új formátumra "egyszerű" indexek frissítheti az alábbi lépéseket követve API verziója 2017. 11. 11 – előzetes verzió használata:
+A "Flat" indexeket az új formátumra frissítheti a következő lépésekkel az API 2017-11-11-es verziójának használatával:
 
-1. Hajtsa végre az indexet beolvasni egy GET kéréssel. Ha már szerepel az új formátumra, akkor végzett.
+1. Az index lekéréséhez hajtson végre egy GET-kérelmet. Ha már az új formátumban van, elkészült.
 
-2. Az index az "egyszerű" formátumból az új formátumra fordítja le. Ez a kód írása, mivel nincs mintakód elérhető a írásának időpontjában kell.
+2. Fordítsa le az indexet a "Flat" formátumból az új formátumra. Ehhez kódot kell írnia, mivel az írás időpontjában nincs elérhető mintakód.
 
-3. Hajtsa végre a PUT-kérések az index frissítéséhez az új formátumra. Ellenőrizze, hogy nem módosítható a kereshetőségét/filterability mezők, például az index összes többi részletet, mert ez nem engedélyezett a frissítés Index API.
+3. Helyezzen el egy PUT-kérést az index új formátumra való frissítéséhez. Ügyeljen arra, hogy ne módosítsa az index egyéb részleteit, például a mezők kereshetőség/szűrését, mert ezt a frissítési index API nem engedélyezi.
 
 > [!NOTE]
-> Nem alkalmas a régi "egyszerű" formátumban, az Azure Portalról létrehozott indexeket lehet kezelni. Frissítsen az indexek a "egyszerű" leképezése az Önnek legkorábbi, a "fa" megjelenítését.
+> Nem lehetséges a régi "Flat" formátummal létrehozott indexek kezelése a Azure Portal. Frissítse az indexeket a "Flat" ábrázolásból a "Tree" kifejezésre a lehető leghamarabb.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át az Azure Search szolgáltatás REST API dokumentációja. Ha problémákat tapasztal, megkérdezi a Súgó a [StackOverflow](https://stackoverflow.com/) vagy [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/community/?product=search).
+Tekintse át a Azure Search Service REST API dokumentációját. Ha problémákba ütközik, kérjen segítséget a [StackOverflow](https://stackoverflow.com/) , vagy [forduljon](https://azure.microsoft.com/support/community/?product=search)az ügyfélszolgálathoz.
 
 > [!div class="nextstepaction"]
-> [Keresési szolgáltatás REST API-referencia](https://docs.microsoft.com/rest/api/searchservice/)
+> [Keresési szolgáltatás REST API referenciája](https://docs.microsoft.com/rest/api/searchservice/)
 

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 1459b6fc45bb3d875b4869d1dcb4302dec21eb96
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: bc32ce59a7ec99278fb193f375d4ca945c227d2f
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114805"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172196"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>A tárolók rendszerképének fejlesztése és karbantartása ACR-feladatokkal
 
@@ -49,6 +49,13 @@ Az alábbi táblázat néhány példát mutat be az ACR-feladatok támogatott k�
 | GitHub-ág | Egy GitHub-tárház adott ága.| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub-almappa | Egy GitHub-tárházban lévő almappában található fájlok. Példa egy ág és almappa specifikációjának kombinációját mutatja be. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | Távoli Fez | Tömörített archívumban található fájlok egy távoli webkiszolgálón. | `http://remoteserver/myapp.tar.gz` |
+
+Alapértelmezés szerint az ACR-feladatok lemezképeket készítenek a Linux operációs rendszerhez és az AMD64 architektúrához. Határozza meg `--platform` a címkét, hogy Windows-lemezképeket vagy Linux-rendszerképeket hozzon létre más architektúrák számára. Itt adhatja meg az operációs rendszer és az architektúra (például `--platform Linux/arm`) által támogatott architektúrát. ARM architektúrák esetén opcionálisan megadhatja az operációs rendszer/architektúra/Variant formátumú változatot (például `--platform Linux/arm64/v8`):
+
+| OS | Architektúra|
+| --- | ------- | 
+| Linux | amd64<br/>kar<br/>arm64<br/>386 |
+| Windows | amd64 |
 
 Az ACR-feladatok tároló-életciklus primitívek. Például integrálhatja az ACR-feladatokat a CI/CD-megoldásba. Ha az [az login][az-login] [szolgáltatást egy egyszerű szolgáltatással][az-login-service-principal]hajtja végre, akkor a CI/CD-megoldás ezután kiadhatja [az ACR Build][az-acr-build] -parancsokat a rendszerkép-buildek elindításához.
 

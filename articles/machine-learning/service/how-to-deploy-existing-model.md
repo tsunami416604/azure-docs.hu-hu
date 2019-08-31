@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: cbbfd5f7beb7270bf55e952c818b4802d9d9ecab
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f30ac3d5e20b3f797e083972ac179fd29f6b1475
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847991"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182534"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Meglévő modell használata Azure Machine Learning szolgáltatással
 
@@ -76,23 +76,40 @@ A modell-regisztrációval kapcsolatos további információkért lásd: [gépi 
 
 ## <a name="define-inference-configuration"></a>Következtetési konfiguráció megadása
 
-A következtetési konfiguráció határozza meg az üzembe helyezett modell futtatásához használt környezetet. A következtetési konfiguráció a következő fájlokra hivatkozik, amelyek az üzembe helyezéskor a modell futtatására szolgálnak:
+A következtetési konfiguráció határozza meg az üzembe helyezett modell futtatásához használt környezetet. A következtetési konfiguráció a következő entitásokra hivatkozik, amelyek a modellnek a telepítésekor történő futtatására szolgálnak:
 
-* A futtatókörnyezet. Az egyetlen érvényes érték a futtatókörnyezethez jelenleg a Python.
 * Egy bejegyzési parancsfájl. Ez a fájl ( `score.py`nevű) betölti a modellt a telepített szolgáltatás indításakor. Emellett az adatfogadásért, a modellbe való átadásért, majd a válasz visszaküldéséhez is felelős.
-* Egy Conda-környezeti fájl. Ez a fájl határozza meg a modell és a beléptetési parancsfájl futtatásához szükséges Python-csomagokat. 
+* Egy Azure Machine Learning szolgáltatási [környezet](how-to-use-environments.md). A környezet a modell és a bejegyzési parancsfájl futtatásához szükséges szoftver-függőségeket határozza meg.
 
-Az alábbi példa egy alapszintű következtetési konfigurációt mutat be a Python SDK használatával:
+Az alábbi példa azt szemlélteti, hogyan használható az SDK egy környezet létrehozásához, majd egy következtetési konfiguráció használatával:
 
 ```python
 from azureml.core.model import InferenceConfig
+from azureml.core import Environment
+from azureml.core.environment import CondaDependencies
 
-inference_config = InferenceConfig(runtime= "python", 
-                                   entry_script="score.py",
-                                   conda_file="myenv.yml")
+# Create the environment
+myenv = Environment(name="myenv")
+conda_dep = CondaDependencies()
+
+# Define the packages needed by the model and scripts
+conda_dep.add_conda_package("tensorflow")
+conda_dep.add_conda_package("numpy")
+conda_dep.add_conda_package("scikit-learn")
+conda_dep.add_pip_package("keras")
+
+# Adds dependencies to PythonSection of myenv
+myenv.python.conda_dependencies=conda_dep
+
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
 ```
 
-További információ: [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) -hivatkozás.
+További információkért tekintse át a következő cikkeket:
+
++ [Környezetek használata](how-to-use-environments.md).
++ [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) -hivatkozás.
+
 
 A CLI betölti a következtetési konfigurációt egy YAML-fájlból:
 
@@ -102,6 +119,20 @@ A CLI betölti a következtetési konfigurációt egy YAML-fájlból:
    "runtime": "python",
    "condaFile": "myenv.yml"
 }
+```
+
+A CLI-vel a Conda- `myenv.yml` környezet a következtetési konfiguráció által hivatkozott fájlban van definiálva. A következő YAML a fájl tartalma:
+
+```yaml
+name: inference_environment
+dependencies:
+- python=3.6.2
+- tensorflow
+- numpy
+- scikit-learn
+- pip:
+    - azureml-defaults
+    - keras
 ```
 
 További információ a konfigurációról: [modellek üzembe helyezése Azure Machine learning szolgáltatással](how-to-deploy-and-where.md).
@@ -190,24 +221,6 @@ def predict(text, include_neutral=True):
 ```
 
 A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine learning szolgáltatással](how-to-deploy-and-where.md).
-
-### <a name="conda-environment"></a>Conda-környezet
-
-A következő YAML ismerteti a modell és a bejegyzés parancsfájljának futtatásához szükséges Conda környezetet:
-
-```yaml
-name: inference_environment
-dependencies:
-- python=3.6.2
-- tensorflow
-- numpy
-- scikit-learn
-- pip:
-    - azureml-defaults
-    - keras
-```
-
-További információ: [modellek üzembe helyezése Azure Machine learning szolgáltatással](how-to-deploy-and-where.md).
 
 ## <a name="define-deployment"></a>Központi telepítés meghatározása
 

@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 0ccd57e1614f23d775df2fe8e963d2cc7f9a4358
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 124b10607f710ddfb76787eac09dea7ec6ffc03c
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360734"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173052"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Oktatóanyag: A blob Storage szolgáltatással rendelkező, magasan elérhető alkalmazások létrehozása
 
@@ -82,7 +82,7 @@ Kövesse az alábbi lépéseket egy írásvédett georedundáns tárfiók létre
    | **Üzemi modell** | Resource Manager  | A Resource Manager a legújabb funkciókat kínálja.|
    | **Fióktípus** | StorageV2 | A fiókok típusaival kapcsolatos információkért lásd [a tárfiókok típusait](../common/storage-introduction.md#types-of-storage-accounts) |
    | **Teljesítmény** | Standard | A példaforgatókönyvhöz a standard teljesítmény elegendő. |
-   | **Replikáció**| Georedundáns írásvédett tárolás (RA-GRS) | Ez szükséges a minta működéséhez. |
+   | **Replikáció**| Írásvédett georedundáns tárolás (RA-GRS) | Ez szükséges a minta működéséhez. |
    |**Előfizetés** | az Ön előfizetése |Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.azure.com/Subscriptions) ismertető cikket. |
    |**ResourceGroup** | myResourceGroup |Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
    |**Location** | East US | Válassza ki a helyet. |
@@ -120,7 +120,7 @@ git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
 [Töltse le a minta projektet](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) , és bontsa ki a fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A minta projekt egy alapszintű Node. js-alkalmazást tartalmaz.
 
 ```bash
-git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
+git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 ```
 
 ---
@@ -131,7 +131,7 @@ git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
 
 Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati sztringet. Ezt a kapcsolati sztringet tárolhatja egy környezeti változóban az alkalmazást futtató helyi gépen. A környezeti változó létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
 
-Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati sztringjét**. Futtassa a következő parancsok egyikét az operációs rendszer alapján, és cserélje \<le\> az yourconnectionstring kifejezést-t a tényleges kapcsolatok karakterláncára. A parancs egy környezeti változót ment a helyi számítógépen. A Windows rendszerben a környezeti változó nem érhető el, amíg újra nem  tölti be a használni kívánt parancssort vagy rendszerhéjat.
+Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati sztringjét**. Futtassa a következő parancsok egyikét az operációs rendszer alapján, és cserélje \<le\> az yourconnectionstring kifejezést-t a tényleges kapcsolatok karakterláncára. A parancs egy környezeti változót ment a helyi számítógépen. A Windows rendszerben a környezeti változó nem érhető el, amíg újra nem tölti be a használni kívánt parancssort vagy rendszerhéjat.
 
 ### <a name="linux"></a>Linux
 
@@ -149,7 +149,7 @@ setx storageconnectionstring "<yourconnectionstring>"
 
 Az alkalmazásban meg kell adnia a Storage-fiók hitelesítő adatait. Ezeket az információkat az alkalmazást futtató helyi gépen található környezeti változókban tárolhatja. A környezeti változók létrehozásához kövesse az alábbi példák egyikét az operációs rendszertől függően.
 
-Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Illessze be a **Storage-fiók nevét** és a **kulcs** értékeit a következő parancsokra, és cserélje le \<a youraccountname\> és \<a youraccountkey\> helyőrzőket. Ez a parancs menti a környezeti változókat a helyi gépre. A Windows rendszerben a környezeti változó nem érhető el, amíg újra nem  tölti be a használni kívánt parancssort vagy rendszerhéjat.
+Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Illessze be a **Storage-fiók nevét** és a **kulcs** értékeit a következő parancsokra, és cserélje le \<a youraccountname\> és \<a youraccountkey\> helyőrzőket. Ez a parancs menti a környezeti változókat a helyi gépre. A Windows rendszerben a környezeti változó nem érhető el, amíg újra nem tölti be a használni kívánt parancssort vagy rendszerhéjat.
 
 ### <a name="linux"></a>Linux
 
@@ -167,7 +167,7 @@ setx accountkey "<youraccountkey>"
 
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
-Ehhez a mintához biztonságosan kell tárolnia a Storage-fiók nevét és kulcsát. Tárolja azokat a helyi környezeti változókban a mintát futtató gép számára. A környezeti változók létrehozásához használja a Linux vagy a Windows példa használatát az operációs rendszertől függően. A Windows rendszerben a környezeti változó addig nem érhető el, amíg  be nem tölti a használni kívánt parancssort vagy rendszerhéjat.
+Ehhez a mintához biztonságosan kell tárolnia a Storage-fiók nevét és kulcsát. Tárolja azokat a helyi környezeti változókban a mintát futtató gép számára. A környezeti változók létrehozásához használja a Linux vagy a Windows példa használatát az operációs rendszertől függően. A Windows rendszerben a környezeti változó addig nem érhető el, amíg be nem tölti a használni kívánt parancssort vagy rendszerhéjat.
 
 ### <a name="linux-example"></a>Linuxos példa
 

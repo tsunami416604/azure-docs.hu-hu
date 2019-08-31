@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 7b569454696717913c325581ca1f00479a371984
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061371"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183183"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Gyakori kérdések (GYIK)
 
@@ -143,7 +143,7 @@ A Azure AD B2C bérlő törléséhez kövesse az alábbi lépéseket:
 1. Válassza **az összes alkalmazás megtekintése** lehetőséget
 1. Válassza ki a **B2C-Extensions-app**nevű alkalmazást, válassza a **Törlés**lehetőséget, majd kattintson az **Igen** gombra, amikor a rendszer kéri.
 1. A **kezelés**területen válassza a **felhasználói beállítások**lehetőséget.
-1. A **LinkedIn-fiók kapcsolatai**területen válassza a **nem**, majd a **Mentés**lehetőséget.
+1. Ha van ilyen, a **LinkedIn-fiók kapcsolatai**területen válassza a **nem**, majd a **Mentés**lehetőséget.
 1. A **kezelés**területen válassza a **Tulajdonságok** lehetőséget.
 1. Az **Azure-erőforrások hozzáférés-kezelés**területén válassza az **Igen**, majd a **Mentés**lehetőséget.
 1. Jelentkezzen ki a Azure Portal, majd jelentkezzen be újra a hozzáférésének frissítéséhez.

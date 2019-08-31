@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 3acae8f7d34bb02905e6e8d479b7de5ccab1bb7a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d9b0c551cdfb92b380a967aaa5bdce7c278fd39e
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850980"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183571"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttérbeli állapot, diagnosztikai naplók és metrikák a Application Gateway
 
@@ -105,7 +105,7 @@ Az Azure-ban különféle típusú naplókat használhat az Application Gateway-
 A naplók tárolásához három lehetőség közül választhat:
 
 * **Storage-fiók**: A Storage-fiókokat a rendszer a legjobb naplókhoz használja, ha a naplók hosszabb időtartamra vannak tárolva, és szükség esetén felül vannak értékelve.
-* **Event hubok**: Az Event hubok nagyszerű lehetőséget biztosít a más biztonsági információkkal és eseménykezelő (SEIM) eszközökkel való integrációra, hogy riasztásokat kapjon az erőforrásaihoz.
+* **Event hubok**: Az Event hubok nagyszerű lehetőséget biztosít a más biztonsági információkkal és eseménykezelő (SIEM) eszközökkel való integrációra, hogy riasztásokat kapjon az erőforrásaihoz.
 * **Naplók Azure monitor**: Azure Monitor naplók használata ajánlott az alkalmazás általános valós idejű figyeléséhez vagy trendek kereséséhez.
 
 ### <a name="enable-logging-through-powershell"></a>Naplózás engedélyezése a PowerShell-lel

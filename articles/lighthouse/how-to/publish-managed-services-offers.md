@@ -4,19 +4,19 @@ description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási aj
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f9d3fad2a98647bcd10d54c03a76e95bc3e05227
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: c0c2ccf03292434b3f23b26857ec0d2b3fc3ceed
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011865"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165252"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-en
 
-Ebből a cikkből megtudhatja, hogyan tehet közzé egy nyilvános vagy privát felügyelt szolgáltatást az [Azure Marketplace](https://azuremarketplace.microsoft.com) -en a [Cloud Partner Portal](https://cloudpartner.azure.com/)használatával, amely lehetővé teszi egy ügyfél számára, hogy az ajánlatot az Azure-beli delegált erőforrás-kezeléshez lehessen bevezetni.
+Ebből a cikkből megtudhatja, hogyan tehet közzé egy nyilvános vagy privát felügyelt szolgáltatást az [Azure Marketplace](https://azuremarketplace.microsoft.com) -en a [Cloud Partner Portal](https://cloudpartner.azure.com/)használatával felügyeleti.
 
 > [!NOTE]
 > Az ajánlatok létrehozásához és közzétételéhez érvényes fiókkal kell rendelkeznie a [partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) . Ha még nem rendelkezik fiókkal, a [regisztrációs folyamat](https://aka.ms/joinmarketplace) végigvezeti a fiók létrehozásának lépésein a partner Centerben és a kereskedelmi piactér programban való regisztrálásban. A [rendszer automatikusan hozzárendeli](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started) az Ön Microsoft Partner Network (MPN) azonosítóját a közzétett ajánlatokhoz, és nyomon követheti az ügyfelek bevonásának következményeit.
@@ -127,6 +127,65 @@ Miután hozzáadta ezt az információt, válassza a **Mentés lehetőséget.**
 ## <a name="publish-your-offer"></a>Az ajánlat közzététele
 
 Ha már elégedett az összes megadott információval, a következő lépés az ajánlat közzététele az Azure Marketplace-en. Válassza a **Közzététel** gombot, hogy elindítsa az ajánlatát élőben. További információ erről a folyamatról: [Azure Marketplace-és AppSource-ajánlatok közzététele](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
+
+## <a name="the-customer-onboarding-process"></a>Az ügyfél bevezetési folyamata
+
+Amikor egy ügyfél felveszi az ajánlatot, [egy vagy több konkrét előfizetést vagy erőforráscsoportot delegálhat](view-manage-service-providers.md#delegate-resources) , amelyek ezután bekerülnek az Azure-beli delegált erőforrás-kezelésbe. Ha egy ügyfél elfogadta az ajánlatot, de még nem delegált erőforrást, akkor a Azure Portal [**szolgáltatók**](view-manage-service-providers.md) lapján a **szolgáltatói ajánlatok** szakaszának felső részén egy megjegyzés jelenik meg.
+
+Ahhoz, hogy előkészítse az előfizetést (vagy az előfizetéshez tartozó erőforráscsoportokat), az előfizetést a **Microsoft. ManagedServices** erőforrás-szolgáltató manuális regisztrálásával kell engedélyezni a bevezetéshez. Az ügyfél bérlője és a tulajdonos szerepkör felhasználója ezt az [Azure Resource Providers és types](../../azure-resource-manager/resource-manager-supported-services.md)című témakörben ismertetett lépéseket követve teheti meg.
+
+Az ügyfél ezután ellenőrizheti, hogy az előfizetés készen áll-e a bevezetésre az alábbi módszerek egyikével.
+
+### <a name="azure-portal"></a>Azure Portal
+
+1. A Azure Portal válassza ki az előfizetést.
+1. Válassza ki az **Erőforrás-szolgáltatók** elemet.
+1. Ellenőrizze, hogy a **Microsoft. ManagedServices** **regisztráltként**jelenik-e meg.
+
+### <a name="powershell"></a>PowerShell
+
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if you're not using Cloud Shell
+
+Set-AzContext -Subscription <subscriptionId>
+Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
+```
+
+Ennek a következőhöz hasonló eredményeket kell visszaadnia:
+
+```output
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {registrationDefinitions}
+Locations         : {}
+
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {registrationAssignments}
+Locations         : {}
+
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {operations}
+Locations         : {}
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+```azurecli-interactive
+# Log in first with az login if you're not using Cloud Shell
+
+az account set –subscription <subscriptionId>
+az provider show --namespace "Microsoft.ManagedServices" --output table
+```
+
+Ennek a következőhöz hasonló eredményeket kell visszaadnia:
+
+```output
+Namespace                  RegistrationState
+-------------------------  -------------------
+Microsoft.ManagedServices  Registered
+```
 
 ## <a name="next-steps"></a>További lépések
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 05/08/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 732192e481f88c0cd3c78e9dac43970eb5be72e6
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 3843a03b3b6d41520b121e5088fb13eac956e6fa
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840516"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163594"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Oktatóanyag: Gazdagépcsoport létrehozása a szolgáltatásfrissítések érvényesítéséhez
 
@@ -25,7 +25,11 @@ Az érvényesítési gazdagépen lévő hibák hibakereséséhez használhatja a
 >[!NOTE]
 > Javasoljuk, hogy az összes jövőbeli frissítés teszteléséhez hagyja meg az ellenőrző gazdagép készletét.
 
-Mielőtt elkezdené, [töltse le és importálja a Windows rendszerű virtuális asztali PowerShell](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)-modult, ha még nem tette meg.
+Mielőtt elkezdené, [töltse le és importálja a Windows rendszerű virtuális asztali PowerShell](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)-modult, ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="create-your-host-pool"></a>A gazda készlet létrehozása
 

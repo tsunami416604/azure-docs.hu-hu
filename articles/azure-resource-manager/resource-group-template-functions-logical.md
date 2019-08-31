@@ -1,21 +1,21 @@
 ---
-title: Az Azure Resource Manager-sablonfüggvények – logikai |} A Microsoft Docs
-description: A functions az Azure Resource Manager-sablon használatával határozza meg a logikai értékeket ismerteti.
+title: Azure Resource Manager template functions – logikai | Microsoft Docs
+description: A Azure Resource Manager-sablonban a logikai értékek meghatározásához használandó függvények leírása.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2487cf928685423e4b60bb2923fc7e348eaff0c3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ea91798a1c0ca0aad729128ce4694a85165f3c3b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447976"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194786"
 ---
-# <a name="logical-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok logikai függvények
+# <a name="logical-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok logikai funkciói
 
-Resource Manager összehasonlítások végzett a sablonok számos funkciót biztosít.
+A Resource Manager számos funkciót biztosít a sablonokban való összehasonlításhoz.
 
 * [and](#and)
 * [bool](#bool)
@@ -27,23 +27,23 @@ Resource Manager összehasonlítások végzett a sablonok számos funkciót bizt
 
 `and(arg1, arg2, ...)`
 
-Ellenőrzi, hogy minden paraméter értéket Igaz.
+Ellenőrzi, hogy az összes paraméter értéke igaz-e.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |boolean |Ellenőrizze, hogy az első értéket e igaz. |
-| arg2 |Igen |boolean |A második érték, ellenőrizze, hogy igaz. |
-| További argumentumok |Nem |boolean |További argumentumok ellenőrizze, hogy igaz. |
+| arg1 |Igen |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| arg2 |Igen |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| További argumentumok |Nem |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Értéket ad vissza **igaz** Ha minden érték igaz; ellenkező esetben **hamis**.
+**Igaz** értéket ad vissza, ha az összes érték igaz; Ellenkező esetben **hamis**.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) logikai függvények használatát ismerteti.
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) a logikai függvények használatát mutatja be.
 
 ```json
 {
@@ -67,9 +67,9 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-Az előző példából kimenete:
+Az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False (Hamis) |
 | orExampleOutput | Bool | True |
@@ -79,20 +79,20 @@ Az előző példából kimenete:
 
 `bool(arg1)`
 
-A paraméter alakítja át egy logikai érték.
+A paramétert logikai értékre alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |karakterlánc- vagy int |Az érték egy logikai típusra konvertál. |
+| arg1 |Igen |karakterlánc vagy int |A logikai értékké konvertálandó érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
-Az átalakított érték logikai érték.
+Az átalakított érték logikai értéke.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) bool használata egy string vagy integer jeleníti meg.
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) azt szemlélteti, hogyan használható a bool karakterlánc vagy egész számmal.
 
 ```json
 {
@@ -122,7 +122,7 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False (Hamis) |
@@ -133,27 +133,27 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 `if(condition, trueValue, falseValue)`
 
-Hogy értéket adja vissza egy feltétele igaz vagy hamis.
+Egy értéket ad vissza, attól függően, hogy a feltétel igaz vagy hamis.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| condition |Igen |boolean |Ellenőrizze, hogy azt true vagy FALSE (hamis) érték. |
-| trueValue |Igen | karakterlánc, int, objektumot vagy tömböt |A visszatérési érték, amikor a feltétel teljesül. |
-| falseValue |Igen | karakterlánc, int, objektumot vagy tömböt |A visszatérési érték, amikor a feltétel nem teljesül. |
+| condition |Igen |boolean |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
+| trueValue |Igen | karakterlánc, int, Object vagy Array |A feltétel teljesülésekor visszaadott érték. |
+| falseValue |Igen | karakterlánc, int, Object vagy Array |A feltétel hamis állapotának visszaadására szolgáló érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Második paraméterként adja vissza, amikor az első paraméter **igaz**; ellenkező esetben, harmadik paraméterként adja vissza.
+A második paramétert adja vissza, ha az első paraméter **igaz**. Ellenkező esetben a harmadik paramétert adja vissza.
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ha a feltétel nem **igaz**, a true érték csak abban az esetben. Ha a feltétel nem **hamis**, a False (hamis) érték csak abban az esetben. Az a **Ha** függvény, hozzáadhatja a kifejezések, amelyek csak feltételesen érvényes. Ha például egy erőforrást, hogy létezik egy feltétel alapján, de a más feltétel alapján nem hivatkozhat. Feltételesen a kifejezések kiértékelése példát a következő szakaszban látható.
+Ha a feltétel **igaz**, csak a True érték lesz kiértékelve. Ha a feltétel **hamis**, csak a hamis értéket értékeli ki a rendszer. Az **IF** függvénnyel olyan kifejezéseket is tartalmazhat, amelyek csak feltételes érvényességgel rendelkeznek. Hivatkozhat például egy olyan erőforrásra, amely egy feltételben található, de nem a másik feltételben. A következő szakaszban látható egy példa a feltételes kiértékelésre kifejezésekre.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) bemutatja, hogyan használható a `if` függvény.
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) a `if` függvény használatát mutatja be.
 
 ```json
 {
@@ -178,15 +178,15 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-Az előző példából kimenete:
+Az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| yesOutput | String | igen |
-| noOutput | String | nem |
-| objectOutput | Object | {"teszt": "érték1"} |
+| yesOutput | Sztring | igen |
+| nincs kimenet | Sztring | nem |
+| objectOutput | Object | {"test": "érték1"} |
 
-A következő [példasablonja](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) kifejezésekkel, amelyek csak feltételesen érvényes ez a funkció használatát ismerteti.
+A következő [példa](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) azt mutatja be, hogyan használható ez a függvény olyan kifejezésekkel, amelyek csak feltételes érvényességgel rendelkeznek.
 
 ```json
 {
@@ -238,7 +238,7 @@ A következő [példasablonja](https://github.com/krnese/AzureDeploy/blob/master
 
 `not(arg1)`
 
-Logikai érték a ellentétes értékké alakítja.
+Logikai érték konvertálása az ellenkező értékre.
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -248,11 +248,11 @@ Logikai érték a ellentétes értékké alakítja.
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Értéket ad vissza **igaz** paraméter esetén **hamis**. Értéket ad vissza **hamis** paraméter esetén **igaz**.
+**Igaz** értéket ad eredményül, ha a paraméter **hamis**. **Hamis** értéket ad vissza, ha a paraméter **igaz**.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) logikai függvények használatát ismerteti.
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) a logikai függvények használatát mutatja be.
 
 ```json
 {
@@ -276,15 +276,15 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-Az előző példából kimenete:
+Az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False (Hamis) |
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False (Hamis) |
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) használ **nem** a [egyenlő](resource-group-template-functions-comparison.md#equals).
+A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) a sablon **nem** [egyenlő](resource-group-template-functions-comparison.md#equals).
 
 ```json
 {
@@ -300,9 +300,9 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
     }
 ```
 
-Az előző példából kimenete:
+Az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -310,23 +310,23 @@ Az előző példából kimenete:
 
 `or(arg1, arg2, ...)`
 
-Ellenőrzi, hogy minden paraméter értéke igaz.
+Ellenőrzi, hogy a paraméter értéke igaz-e.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |boolean |Ellenőrizze, hogy az első értéket e igaz. |
-| arg2 |Igen |boolean |A második érték, ellenőrizze, hogy igaz. |
-| További argumentumok |Nem |boolean |További argumentumok ellenőrizze, hogy igaz. |
+| arg1 |Igen |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| arg2 |Igen |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| További argumentumok |Nem |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Értéket ad vissza **igaz** Ha bármely érték igaz; ellenkező esetben **hamis**.
+**Igaz** értéket ad vissza, ha bármelyik érték igaz; Ellenkező esetben **hamis**.
 
 ### <a name="examples"></a>Példák
 
-A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) logikai függvények használatát ismerteti.
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) a logikai függvények használatát mutatja be.
 
 ```json
 {
@@ -350,9 +350,9 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-Az előző példából kimenete:
+Az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False (Hamis) |
 | orExampleOutput | Bool | True |

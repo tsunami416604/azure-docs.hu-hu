@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre és kezelhet virtuális gépeket az Azure CLI-vel a DevTest Labs szolgáltatásban |} A Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure DevTest Labs szolgáltatásban hozhat létre és kezelhet virtuális gépeket az Azure CLI-vel
+title: Virtuális gépek létrehozása és kezelése a DevTest Labs szolgáltatásban az Azure CLI használatával | Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre és kezelhet virtuális gépeket az Azure CLI-vel a Azure DevTest Labs használatával
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,55 +13,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 48a30ef86cdb10b540ffe1231294542ccff87255
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11ac4e10cbd116ed204a8a11274408f5a5a9b4d9
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622320"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183135"
 ---
-# <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Hozzon létre és kezelhet virtuális gépeket a DevTest Labs szolgáltatással az Azure CLI használatával
-Ez a rövid útmutató végigvezeti létrehozása, elindítása, csatlakozás, frissítése és karbantartása a fejlesztői gépen, a lab-ben. 
+# <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Virtuális gépek létrehozása és kezelése az Azure CLI-vel a DevTest Labs használatával
+Ez a rövid útmutató végigvezeti a fejlesztői gépek tesztkörnyezetben való létrehozásával, indításával, csatlakoztatásával, frissítésével és tisztításával. 
 
 Előkészületek:
 
-* Ha a labor nem lett létrehozva, útmutató [Itt](devtest-lab-create-lab.md).
+* Ha nem hoztak létre labort, [itt](devtest-lab-create-lab.md)találhat útmutatást.
 
-* [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Indításához futtassa az jelentkezzen be a kapcsolat létrehozása az Azure-ral. 
+* [Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t. Az indításhoz futtassa az az login parancsot az Azure-beli kapcsolatok létrehozásához. 
 
-## <a name="create-and-verify-the-virtual-machine"></a>Hozzon létre, és ellenőrizze a virtuális gép 
-DevTest Labs kapcsolódó parancsokat, végrehajtása előtt állítsa be a megfelelő Azure-környezet használatával a `az account set` parancsot:
+## <a name="create-and-verify-the-virtual-machine"></a>A virtuális gép létrehozása és ellenőrzése 
+A DevTest Labs-hez kapcsolódó parancsok végrehajtása előtt állítsa be a megfelelő Azure-környezetet `az account set` a következő paranccsal:
 
 ```azurecli
 az account set --subscription 11111111-1111-1111-1111-111111111111
 ```
 
-A parancs egy virtuális gép létrehozása a következő: `az lab vm create`. A labor, labor nevét és virtuálisgép-nevet az erőforráscsoport összes szükségesek. A többi argumentummal módosítsa a virtuális gép típusától függően.
+A virtuális gép létrehozásához szükséges parancs a következő `az lab vm create`:. Az erőforráscsoport a laborhoz, a labor neve és a virtuális gép neve egyaránt szükséges. A többi argumentum a virtuális gép típusától függően változik.
 
-A következő parancs létrehoz egy Windows-alapú lemezkép az Azure Marketplace-beli. A lemezkép neve megegyezik, jelennének meg az Azure portal használatával a virtuális gép létrehozásakor. 
+A következő parancs egy Windows-alapú rendszerképet hoz létre az Azure Market Place-ből. A rendszerkép neve ugyanaz, mint amikor a Azure Portal használatával hoz létre virtuális gépet. 
 
 ```azurecli
-az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "Visual Studio Community 2017 on Windows Server 2016 (x64)" --image-type gallery --size 'Standard_D2s_v3’ --admin-username 'AdminUser' --admin-password 'Password1!'
+az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "Visual Studio Community 2017 on Windows Server 2016 (x64)" --image-type gallery --size 'Standard_D2s_v3' --admin-username 'AdminUser' --admin-password 'Password1!'
 ```
 
-A következő parancs létrehoz egy rendelkezésre álló a laborban egyéni lemezképen alapuló virtuális gépet:
+A következő parancs egy virtuális gépet hoz létre a laborban elérhető egyéni rendszerkép alapján:
 
 ```azurecli
 az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "My Custom Image" --image-type custom --size 'Standard_D2s_v3' --admin-username 'AdminUser' --admin-password 'Password1!'
 ```
 
-A **-képtípust** argumentum megváltozott **katalógus** való **egyéni**. A lemezkép neve megegyezik, amit lát van, ha a virtuális gép létrehozása az Azure Portalon.
+A **rendszerkép típusú** argumentum a katalógusból a **Custom**értékre változott. A rendszerkép neve megegyezik azzal, amit látni fog, ha a Azure Portalban hozza létre a virtuális gépet.
 
-A következő parancs létrehoz egy virtuális gép egy Piactéri rendszerképből ssh hitelesítés:
+A következő parancs létrehoz egy virtuális gépet egy, az SSH-hitelesítéssel rendelkező Piactéri rendszerképből:
 
 ```azurecli
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 
-Virtuális gépek beállításával képletek alapján is létrehozhat a **-képtípust** paramétert **képlet**. Ha a virtuális géphez megadott virtuális hálózat választása van szüksége, használja a **vnet-name** és **alhálózati** paramétereket. További információkért lásd: [az lab vm létrehozása](/cli/azure/lab/vm#az-lab-vm-create).
+A képletek alapján is létrehozhat virtuális gépeket, ha a **rendszerkép-típus** paramétert **képletre**állítja. Ha ki kell választania egy adott virtuális hálózatot a virtuális géphez, használja a **vnet** és az alhálózati paramétereket. További információ: [az Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
 
-## <a name="verify-that-the-vm-is-available"></a>Győződjön meg arról, hogy a virtuális gép érhető el.
-Használja a `az lab vm show` paranccsal ellenőrizheti, hogy a virtuális gép elérhető legyen-e előtt indítsa el, és csatlakozhat hozzá. 
+## <a name="verify-that-the-vm-is-available"></a>Ellenőrizze, hogy a virtuális gép elérhető-e.
+A `az lab vm show` parancs használatával ellenőrizze, hogy a virtuális gép elérhető-e, mielőtt elkezdi és csatlakozik hozzá. 
 
 ```azurecli
 az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand 'properties($expand=ComputeVm,NetworkInterface)' --query '{status: computeVm.statuses[0].displayStatus, fqdn: fqdn, ipAddress: networkInterface.publicIpAddress}'
@@ -74,20 +74,20 @@ az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sam
 }
 ```
 
-## <a name="start-and-connect-to-the-virtual-machine"></a>Indítsa el, és csatlakozzon a virtuális géphez
-A következő példaparancs egy virtuális gép elindul:
+## <a name="start-and-connect-to-the-virtual-machine"></a>A virtuális gép elindítása és kapcsolódás
+A következő példában szereplő parancs egy virtuális gépet indít el:
 
 ```azurecli
 az lab vm start --lab-name sampleLabName --name sampleVMName --resource-group sampleLabResourceGroup
 ```
 
-Kapcsolódás virtuális Géphez: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) vagy [a távoli asztal](../virtual-machines/windows/connect-logon.md).
+Kapcsolódás virtuális géphez: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) vagy [Távoli asztal](../virtual-machines/windows/connect-logon.md).
 ```bash
 ssh userName@ipAddressOrfqdn 
 ```
 
 ## <a name="update-the-virtual-machine"></a>A virtuális gép frissítése
-A következő mintaparancs összetevők virtuális Gépre vonatkozik:
+A következő minta parancs az összetevőket egy virtuális gépre alkalmazza:
 
 ```azurecli
 az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resource-group sampleResourceGroup  --artifacts @/artifacts.json
@@ -123,7 +123,7 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 ]
 ```
 
-A lab-ben elérhető összetevők listázása.
+A laborban elérhető összetevők listázása.
 ```azurecli
 az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand "properties(\$expand=artifacts)" --query 'artifacts[].{artifactId: artifactId, status: status}'
 ```
@@ -134,8 +134,8 @@ az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sam
 }
 ```
 
-## <a name="stop-and-delete-the-virtual-machine"></a>Állítsa le és törölje a virtuális gép    
-A következő mintaparancs leállítja a virtuális gép.
+## <a name="stop-and-delete-the-virtual-machine"></a>A virtuális gép leállítása és törlése    
+A következő minta parancs leállítja a virtuális gépet.
 
 ```azurecli
 az lab vm stop --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup
@@ -147,4 +147,4 @@ az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group s
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg az alábbi tartalommal: [Azure DevTest Labs szolgáltatásban az Azure CLI dokumentációját](/cli/azure/lab?view=azure-cli-latest). 
+Tekintse meg a következő tartalmakat: [Azure DevTest Labs Azure CLI](/cli/azure/lab?view=azure-cli-latest)-dokumentációja. 

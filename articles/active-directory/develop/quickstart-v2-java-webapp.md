@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: 549b4457ee38504001e83c4b831cd321e1542068
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: fa3ad71dcc7738169f78f4dab94bd9bdf4d4cc89
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125478"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182969"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: Bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -39,9 +39,7 @@ Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-
 >
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
-> A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el:
-> * Express [1. lehetőség: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintát.](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * Kézi [2. lehetőség: Regisztrálja és manuálisan konfigurálja az alkalmazás és a kód mintát.](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> A gyors üzembe helyezési alkalmazás elindításához két lehetőség közül választhat: Express (1. lehetőség) vagy manuális (2. lehetőség)
 > 
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. lehetőség: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját
 >
@@ -123,7 +121,7 @@ Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-
 ### <a name="getting-msal"></a>MSAL beolvasása
 A MSAL4J az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek. Az alkalmazáshoz a Maven vagy a Gradle használatával adhat hozzá MSAL4J a függőségek kezeléséhez azáltal, hogy a következő változtatásokat hajtja végre a Pom. XML vagy a Build. Gradle fájlban az alkalmazásban. 
 
-```
+```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>msal4j</artifactId>
@@ -139,7 +137,7 @@ compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
 ### <a name="msal-initialization"></a>Msal inicializálása
 A MSAL4J mutató hivatkozás hozzáadásához adja hozzá a következő kódot a fájl elejéhez, ahol a MSAL4J fogja használni: 
 
-```
+```Java
 import com.microsoft.aad.msal4j.*;
 ```
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 08/29/2019
 ms.author: dapine
-ms.openlocfilehash: 3c0129275ecf78e6a4e6b9286f975ded2b6f9ae3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 25ea4c96a0e392db2af9c25a150696ca2b25b2dd
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051204"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164536"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Űrlap-felismerő tárolók telepítése és futtatása
 
@@ -58,28 +58,25 @@ A következő táblázat ismerteti az egyes űrlap-felismerő tárolók lefoglal
 
 | Tároló | Minimális | Ajánlott |
 |-----------|---------|-------------|
-|cognitive-services-form-recognizer | 2 mag, 4 GB memória | 4 mag, 8 GB memória |
+| Form Recognizer | 2 mag, 4 GB memória | 4 mag, 8 GB memória |
+| szövegfelismerés | 1 mag, 8 GB memória | 2 mag, 8 GB memória |
 
 * Minden mag legalább 2,6 gigahertz (GHz) vagy gyorsabb lehet.
-* TPS – tranzakció/másodperc
 * Az alap és a memória a `--cpus` `docker run` parancs `--memory` részeként használt és beállításoknak felel meg.
 
 > [!Note]
 > A minimális és ajánlott értékek a Docker korlátain alapulnak, *nem* a gazdagép erőforrásaihoz.
 
-## <a name="get-the-container-image-with-the-docker-pull-command"></a>A tároló rendszerképének beolvasása a Docker pull paranccsal
+## <a name="get-the-container-images-with-the-docker-pull-command"></a>A tároló lemezképének lekérése a Docker pull paranccsal
 
-Az űrlap-felismerő tároló lemezképei a következő adattárban érhetők el:
+Az **űrlap-felismerő** és a **szövegfelismerés** ajánlatok tárolójának lemezképei a következő tároló-beállításjegyzékben érhetők el:
 
-| Tároló | Tárház |
+| Tároló | Teljes rendszerkép neve |
 |-----------|------------|
-| cognitive-services-form-recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| Form Recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| szövegfelismerés | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-Ha a tárolót az űrlap `cognitive-services-recognize-text` -felismerő szolgáltatás helyett szeretné használni, ügyeljen arra, hogy a [](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull) `docker pull` parancsot a megfelelő nevű tárolóval használja: 
-
-```
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
+Mindkét tárolóra szüksége lesz, vegye figyelembe, hogy a **felismerő szöveg** tárolója [részletesen a cikken kívül található.](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -91,6 +88,15 @@ Az űrlap-felismerő tároló beszerzéséhez használja a következő parancsot
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest
+```
+### <a name="docker-pull-for-the-recognize-text-container"></a>Docker-lekérés a szövegfelismerés tárolóhoz
+
+#### <a name="recognize-text"></a>szövegfelismerés
+
+A szövegfelismerés tároló beszerzéséhez használja a következő parancsot:
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>A tároló használata

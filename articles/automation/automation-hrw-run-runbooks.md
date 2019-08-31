@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e726b60a08f234ef021b2901f8ed29ec74f0ff47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97d900146b3485df5cdf226f07aaa3aee116fc92
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087581"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186768"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid Runbook-feldolgozón
 
@@ -61,7 +61,7 @@ Használhatja a [InlineScript](automation-powershell-workflow.md#inlinescript)is
 
 ### <a name="runas-account"></a>Futtató fiók
 
-Alapértelmezés szerint a hibrid Runbook-feldolgozó a Windows helyi rendszerét és egy speciális felhasználói `nxautomation` fiókot használ a Linux rendszerhez a runbookok végrehajtásához. Ahelyett, hogy a runbookok saját hitelesítéssel lássa el a helyi erőforrásokat, megadhat egy futtató fiókot egy hibrid feldolgozói csoport számára. Meg kell adnia egy [hitelesítő adatot](automation-credentials.md) , amely hozzáféréssel rendelkezik a helyi erőforrásokhoz, és az összes runbookok ezen hitelesítő adatok alatt fut, ha a csoport egy hibrid Runbook-feldolgozóján fut.
+Alapértelmezés szerint a hibrid Runbook-feldolgozó a Windows helyi rendszerét és egy speciális felhasználói `nxautomation` fiókot használ a Linux rendszerhez a runbookok végrehajtásához. Ahelyett, hogy a runbookok saját hitelesítéssel lássa el a helyi erőforrásokat, megadhat egy futtató fiókot egy hibrid feldolgozói csoport számára. Olyan hitelesítőadat- [eszközt](automation-credentials.md) kell megadnia, amely hozzáféréssel rendelkezik a helyi erőforrásokhoz, beleértve a tanúsítványtárolókat és a hitelesítő adatokban futtatott összes runbookok, ha a csoport egy hibrid Runbook-feldolgozóján fut.
 
 A hitelesítő adatok felhasználónevének a következő formátumok egyikében kell lennie:
 
