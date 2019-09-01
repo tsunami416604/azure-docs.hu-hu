@@ -49,14 +49,14 @@ Az eseményeket IoT-objektumok (például eszközök és érzékelők) küldik e
 
 | Attribútum | Type | Leírás |
 | --- | --- | --- |
-| id | Karakterlánc | Az esemény egyedi azonosítója. |
-| subject | Karakterlánc | Közzétevő által megadott elérési út az esemény tárgya számára. |
+| id | string | Az esemény egyedi azonosítója. |
+| subject | string | Közzétevő által megadott elérési út az esemény tárgya számára. |
 | data | object | Az erőforrás-szolgáltatóhoz tartozó esemény-adatértékek. |
-| eventType | Karakterlánc | Az eseményforrás egyik regisztrált eseménytípus. |
-| eventTime | Karakterlánc | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
-| dataVersion | Karakterlánc | Az adatobjektum sémaverziója. A közzétevő határozza meg a séma verzióját. |
-| metadataVersion | Karakterlánc | Az esemény-metaadatok sémaverziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
-| topic | Karakterlánc | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Event Grid megadja ezt az értéket. |
+| eventType | string | Az eseményforrás egyik regisztrált eseménytípus. |
+| eventTime | string | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő határozza meg a séma verzióját. |
+| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
+| topic | string | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Event Grid megadja ezt az értéket. |
 
 További információ a Event Grid esemény sémával kapcsolatban:
 
