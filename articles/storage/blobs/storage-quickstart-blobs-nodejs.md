@@ -322,7 +322,7 @@ response = await listBlobs(containerName);
 response.blobs.forEach((blob) => console.log(` - ${blob.name}`));
 ```
 
-Egy blob letöltéséhez a válasz rögzítve lesz, majd ennek használatával fog a rendszer hozzáférni a blob értékéhez. A válaszból a readableStreamBody érték karakterlánccá alakul, és naplózva lesz a kimeneti ablakban.
+Egy blob letöltéséhez a válasz rögzítve lesz, majd ennek használatával fog a rendszer hozzáférni a blob értékéhez. A válaszból a readableStreamBody érték sztringgé alakul, és naplózva lesz a kimeneti ablakban.
 
 ```javascript
 response = await downloadBlob(containerName, blobName);

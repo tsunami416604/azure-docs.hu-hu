@@ -58,6 +58,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: Alapelvek
   items:
+    - name: Sablonalapú üzembe helyezések
+      href: template-deployment-overview.md
     - name: Sablonfájl szerkezete
       displayName: 'parameters,variables,resources,outputs,condition'
       href: resource-group-authoring-templates.md
@@ -83,6 +85,8 @@
   items:
     - name: Sablonok létrehozása
       items:
+        - name: Fejlesztői eszköz – VS Code
+          href: resource-manager-tools-vs-code.md
         - name: Sablon létrehozása
           href: how-to-create-template.md
         - name: Gyermekerőforrás neve és típusa

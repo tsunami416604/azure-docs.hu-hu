@@ -6,7 +6,7 @@
   items:
     - name: Mi az az adatelemzési virtuális gép?
       href: overview.md
-    - name: Mi az a mesterséges intelligenciát használó geo-adatelemzési virtuális gép?
+    - name: Mi az a mesterséges intelligenciát használó geo-adatelemzési virtuális gép (GEO AI DSVM)?
       href: geo-ai-dsvm-overview.md
 - name: Gyors útmutatók
   expanded: true
@@ -17,7 +17,7 @@
       href: dsvm-ubuntu-intro.md
     - name: CentOS rendszerű DSVM létrehozása
       href: linux-dsvm-intro.md
-    - name: Mesterséges intelligenciát használó geo-adatelemzési virtuális gép létrehozása
+    - name: Geo AI DSVM létrehozása
       href: provision-geo-ai-dsvm.md
 - name: Alapelvek
   items:

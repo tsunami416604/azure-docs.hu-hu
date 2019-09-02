@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Azure Files
+summary: Az Azure Files teljes körűen felügyelt platformfüggetlen felhőbeli fájlmegosztást nyújt, amely a Server Message Block (SMB) protokollon keresztül érhető el.
+metadata:
+  title: Azure Files
+  description: A felhőben és a helyszínen is csatlakoztathat fájlmegosztásokat Windows, Linux vagy macOS rendszeren. A gyorsabb helyi hozzáférés érdekében az Azure File Sync használatával Windows-kiszolgálókon gyorsítótárazhatja az Azure-fájlmegosztásokat.
+  services: storage
+  ms.service: storage
+  ms.subservice: files
+  ms.topic: landing-page
+  ms.collection: collection
+  author: roygara
+  ms.author: rogarana
+  ms.date: 08/27/2019
+  ms.openlocfilehash: 06764b43d46dc4fee51ac58254e2d2578257f096
+  ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70143050"
+landingContent:
+- title: Az Azure Files bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Files tervezési útmutató
+      url: storage-files-planning.md
+    - text: Azure File Sync tervezési útmutató
+      url: storage-sync-files-planning.md
+    - text: Mi az Azure Files?
+      url: storage-files-introduction.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Fájlmegosztás létrehozása/használata – Windows
+      url: storage-files-quick-create-use-windows.md
+    - text: Prémium szintű fájlmegosztás létrehozása
+      url: storage-how-to-create-premium-fileshare.md
+    - text: Kiszolgáló kezelése az Azure File Sync használatával
+      url: storage-sync-files-server-registration.md
+  - linkListType: tutorial
+    links:
+    - text: Windows-fájlkiszolgálók kiterjesztése az Azure File Sync használatával
+      url: storage-sync-files-extend-servers.md
+- title: Hibaelhárítás
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Files – Windows-hibaelhárítás
+      url: storage-troubleshoot-windows-file-connection-problems.md
+    - text: Azure Files – Linux-hibaelhárítás
+      url: storage-troubleshoot-linux-file-connection-problems.md
+    - text: Azure Files – Teljesítménnyel kapcsolatos hibaelhárítás
+      url: storage-troubleshooting-files-performance.md
+    - text: Azure File Sync-hibaelhárítás
+      url: storage-sync-files-troubleshoot.md

@@ -41,7 +41,7 @@ sections:
       - items:
           - html: <a href="service/tutorial-1st-experiment-sdk-setup">A környezet beállítása és az első gépi tanulási kísérlet betanítása</a>
           - html: <a href="service/tutorial-train-models-with-aml">Képbesorolási modellek betanítása és üzembe helyezése</a>
-          - html: <a href="service/tutorial-data-prep">Adatok előkészítése és automatizált gépi tanulás a taxiutak árának előrejelzéséhez</a>
+          - html: <a href="service/tutorial-auto-train-models">Automatizált gépi tanulás használata a taxiutak árának előrejelzéséhez</a>
         style: unordered
         type: list
       - text: 'Modellek felhasználása:'

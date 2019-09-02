@@ -41,7 +41,7 @@ Ha a Blob Storage-végpont a névtelen olvasási hozzáférések elutasításár
 
 Az Azure CDN figyelmen kívül hagyja a SAS-jogkivonathoz hozzáadott korlátozásokat. Például minden SAS-token rendelkezik lejárati idővel, ami azt jelenti, hogy a tartalmak lejárt SAS-tokennel is hozzáférhetők, amíg az adott tartalom véglegesen törölve nem lesz a CDN jelenléti pont (POP-) kiszolgálókról. A gyorsítótár válaszfejlécének beállításával szabályozható, hogy a rendszer meddig tárolja az adatokat az Azure CDN-ben. További információkért lásd: [Azure Storage-blobok lejárati idejének kezelése az Azure CDN-ben](cdn-manage-expiration-of-blob-content.md).
 
-Ha ugyanazon végponthoz több SAS URL-címet hoz létre, fontolja meg a lekérdezési karakterláncok gyorsítótárazásának engedélyezését. Ezzel biztosíthatja, hogy a rendszer minden egyes URL-címet egyedi entitásként kezeljen. További információkért lásd: [Az Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési karakterláncokkal](cdn-query-string.md).
+Ha ugyanazon végponthoz több SAS URL-címet hoz létre, fontolja meg a lekérdezési sztringek gyorsítótárazásának engedélyezését. Ezzel biztosíthatja, hogy a rendszer minden egyes URL-címet egyedi entitásként kezeljen. További információkért lásd: [Az Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési sztringekkel](cdn-query-string.md).
 
 ## <a name="http-to-https-redirection"></a>HTTP–HTTPS átirányítás
 Lehetősége van a HTTP-forgalom HTTPS-re történő átirányítására, ha létrehoz egy [URL-átirányítási szabályt](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect) az [Azure CDN szabálymotorral](cdn-verizon-premium-rules-engine.md). Ehhez a lehetőséghez a következő profilra lesz szüksége: **Azure CDN Premiumhoz a Verizontól**.

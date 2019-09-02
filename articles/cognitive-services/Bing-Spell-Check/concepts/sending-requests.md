@@ -19,7 +19,7 @@ ms.locfileid: "68883451"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Kérelmek küldése a Bing Spell Check API-nak
 
-Egy szöveges karakterlánc helyesírási és nyelvtani hibáinak megkereséséhez GET kérést kell küldenie a következő végpontra:  
+Egy szöveges sztring helyesírási és nyelvtani hibáinak megkereséséhez GET kérést kell küldenie a következő végpontra:  
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
@@ -29,7 +29,7 @@ A kérelemnek a HTTPS protokollt kell használnia.
 
 Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Az azonosítónak egy ügyfélalkalmazás részeként való terjesztése több lehetőséget ad arra, hogy rosszindulatú külső felek hozzáférjenek az azonosítóhoz. A kiszolgálók egyetlen frissítési pontot is biztosítanak az API jövőbeli verzióihoz.
 
-A kérelemnek tartalmaznia kell a [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#text) lekérdezési paramétert, amely az ellenőrzendő szöveges karakterláncot adja meg. Nem kötelező, de a kérelemnek érdemes tartalmaznia egy [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#mkt) lekérdezési paramétert is, amely azonosítja a piacot, ahonnan eredményeket szeretnénk kapni. Az opcionális lekérdezési paraméterek (például `mode`) listáját lásd a [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#query-parameters) ismertető cikkben. Minden lekérdezési paraméter értékének URL-kódolásúnak kell lennie.  
+A kérelemnek tartalmaznia kell a [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#text) lekérdezési paramétert, amely az ellenőrzendő szöveges sztringet adja meg. Nem kötelező, de a kérelemnek érdemes tartalmaznia egy [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#mkt) lekérdezési paramétert is, amely azonosítja a piacot, ahonnan eredményeket szeretnénk kapni. Az opcionális lekérdezési paraméterek (például `mode`) listáját lásd a [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#query-parameters) ismertető cikkben. Minden lekérdezési paraméter értékének URL-kódolásúnak kell lennie.  
   
 A kérelemnek tartalmaznia kell az [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey) fejlécet. Bár nem kötelező, javasoljuk, hogy a következő fejléceket is megadja. Ezek a fejlécek segítenek a Bing Spell Check APInak pontosabb eredményeket adni:  
   

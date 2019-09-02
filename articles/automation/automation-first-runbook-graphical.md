@@ -151,7 +151,7 @@ Most hozzáad egy **Start-AzureRmVM** tevékenységet, amellyel egy virtuális g
 1. A Könyvtár vezérlőben írja be a keresési szövegmezőbe a következőt: **Start-AzureRm**.
 2. Adja hozzá a **Start-AzureRmVM** elemet a vászonhoz, és húzza az **Előfizetés azonosítójának megadása** alá.
 1. Vigye a kurzort a **Előfizetés azonosítójának megadása** fölé, és várja meg, amíg megjelenik az alakzat alján egy kör. Kattintson a körre, és húzza a nyilat a **Start-AzureRmVM** elemre.
-1. Jelölje ki a **Start-AzureRmVM** elemet. A **Start-AzureRmVM** készleteinek megtekintéséhez kattintson a **Paraméterek**, majd a **Paraméterkészlet** lehetőségre. Válassza ki a **ResourceGroupNameParameterSetName** paraméterkészletet. A **ResourceGroupName** és a **Name** mellett felkiáltójel van. Ez azt jelzi, hogy ezek kötelező paraméterek. Azt is észreveheti, hogy mindkét helyen szöveges értéket kell megadni.
+1. Jelölje ki a **Start-AzureRmVM** elemet. A **Start-AzureRmVM** készleteinek megtekintéséhez kattintson a **Paraméterek**, majd a **Paraméterkészlet** lehetőségre. Válassza ki a **ResourceGroupNameParameterSetName** paraméterkészletet. A **ResourceGroupName** és a **Name** mellett felkiáltójel van. Ez azt jelzi, hogy ezek kötelező paraméterek. Azt is észreveheti, hogy mindkét helyen sztring értéket kell megadni.
 1. Válassza ki a **Name** paramétert. Válassza ki a **PowerShell-kifejezés** elemet az **Adatforrás** területen, majd írja be idézőjelek között a runbookkal elindított virtuális gép nevét. Kattintson az **OK** gombra.
 1. Válassza a **ResourceGroupName** elemet. Használja a **PowerShell-kifejezés** elemet az **Adatforrás** mezőben, majd írja be az erőforráscsoport nevét idézőjelek között. Kattintson az **OK** gombra.
 1. Kattintson a Teszt panelre, hogy tesztelhesse a runbookot.
@@ -185,7 +185,7 @@ Most úgy módosítja a runbookot, hogy csak akkor próbálja meg elindítani a 
 1. Távolítsa el az **Előfizetés azonosítójának megadása** és a **Start-AzureRmVM** közötti hivatkozást. Ehhez kattintson rá, majd nyomja le a *Delete* billentyűt.
 1. A Könyvtár vezérlőben írja be a keresési szövegmezőbe a következőt: **Get-AzureRm**.
 1. Adja hozzá a vászonhoz a **Get-AzureRmVM** elemet.
-1. A **Get-AzureRmVM** készleteinek megtekintéséhez válassza a **Get-AzureRmVM**, majd a **Paraméterkészlet** lehetőséget. Válassza ki a **GetVirtualMachineInResourceGroupNameParamSet** paraméterkészletet. A **ResourceGroupName** és a **Name** mellett felkiáltójel van. Ez azt jelzi, hogy ezek kötelező paraméterek. Azt is észreveheti, hogy mindkét helyen szöveges értéket kell megadni.
+1. A **Get-AzureRmVM** készleteinek megtekintéséhez válassza a **Get-AzureRmVM**, majd a **Paraméterkészlet** lehetőséget. Válassza ki a **GetVirtualMachineInResourceGroupNameParamSet** paraméterkészletet. A **ResourceGroupName** és a **Name** mellett felkiáltójel van. Ez azt jelzi, hogy ezek kötelező paraméterek. Azt is észreveheti, hogy mindkét helyen sztring értéket kell megadni.
 1. A **Name** paraméterhez tartozó **Adatforrás** elemét módosítsa a **Forgatókönyv bemenet** beállításra, majd válassza a **VMName** lehetőséget. Kattintson az **OK** gombra.
 1. A **ResourceGroupName** paraméterhez tartozó **Adatforrás** elemét módosítsa a **Forgatókönyv bemenet** beállításra, majd válassza a **ResourceGroupName** lehetőséget. Kattintson az **OK** gombra.
 1. A **Status** paraméterhez tartozó **Adatforrás** elemét módosítsa a **Konstans érték** beállításra, majd kattintson az **Igaz** gombra. Kattintson az **OK** gombra.

@@ -76,15 +76,15 @@ A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forr�
 
    ![Forrásfájlok az Azure Blob Storage-ban](./media/cognitive-search-quickstart-blob/sample-data.png)
 
-1. A mintafájlok feltöltése után kérje le a tároló nevét és a kapcsolati karakterláncot a Blob Storage-hoz. Ezt úgy teheti meg, hogy a Azure Portal a Storage-fiókjához navigál, és kiválasztja a **hozzáférési kulcsok**elemet, majd a **kapcsolati sztring** mezőt másolja.
+1. A mintafájlok feltöltése után kérje le a tároló nevét és a kapcsolati sztringet a Blob Storage-hoz. Ezt úgy teheti meg, hogy a Azure Portal a Storage-fiókjához navigál, és kiválasztja a **hozzáférési kulcsok**elemet, majd a **kapcsolati sztring** mezőt másolja.
 
-   A kapcsolati karakterláncnak a következő példához hasonló URL-címnek kell lennie:
+   A kapcsolati sztringnek a következő példához hasonló URL-címnek kell lennie:
 
       ```http
       DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
-A kapcsolati karakterlánc megadásának egyéb módjai is vannak, például egy közös hozzáférésű jogosultságkód biztosítása. Az adatforrások hitelesítő adataival kapcsolatos további információért lásd: [Indexelés az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md#Credentials).
+A kapcsolati sztring megadásának egyéb módjai is vannak, például egy közös hozzáférésű jogosultságkód biztosítása. Az adatforrások hitelesítő adataival kapcsolatos további információért lásd: [Indexelés az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md#Credentials).
 
 ## <a name="set-up-your-environment"></a>A környezet kialakítása
 
@@ -613,7 +613,7 @@ A figyelmeztetések bizonyos forrásfájl- és képességkombinációk esetében
  
 ## <a name="query-your-index"></a>Az index lekérdezése
 
-Az indexelés befejezése után futtathat olyan lekérdezéseket, amelyek az egyes mezők tartalmát adják vissza. Alapértelmezés szerint az Azure Search az első 50 eredményt adja vissza. A mintaadatok mérete kicsi, ezért az alapértelmezett beállítás megfelelő. Azonban nagyobb méretű adatkészletek esetén előfordulhat, hogy a lekérdezési karakterláncban meg kell adnia a megfelelő paramétereket, hogy a rendszer több eredményt adjon vissza. Részletes utasításokért lásd: [Eredmények lapokra bontása az Azure Searchben](search-pagination-page-layout.md).
+Az indexelés befejezése után futtathat olyan lekérdezéseket, amelyek az egyes mezők tartalmát adják vissza. Alapértelmezés szerint az Azure Search az első 50 eredményt adja vissza. A mintaadatok mérete kicsi, ezért az alapértelmezett beállítás megfelelő. Azonban nagyobb méretű adatkészletek esetén előfordulhat, hogy a lekérdezési sztringben meg kell adnia a megfelelő paramétereket, hogy a rendszer több eredményt adjon vissza. Részletes utasításokért lásd: [Eredmények lapokra bontása az Azure Searchben](search-pagination-page-layout.md).
 
 Ellenőrzési lépésként kérdezze le az index összes mezőjét.
 

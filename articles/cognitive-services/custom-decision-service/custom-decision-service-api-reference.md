@@ -59,7 +59,7 @@ callback({
                  {"id":"<A2>","lastRefresh":"2017-04-30T22:34:25.3401438Z"}]});
 ```
 
-A böngésző utána a `callback()` függvény meghívásaként értelmezve végrehajtja ezt a karakterláncot.
+A böngésző utána a `callback()` függvény meghívásaként értelmezve végrehajtja ezt a sztringet.
 
 Az előző példában szereplő visszahívási függvény paraméterének a következő sémája van:
 

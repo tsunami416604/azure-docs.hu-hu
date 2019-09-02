@@ -153,7 +153,7 @@ A példa használatához a következőket kell tennie:
     });
     ```
 
-2. Módosítsa a következő változókat az *app.js* fájlban a fiókbeállításainak megfelelően (Hogyan található meg a [kapcsolati karakterlánc](connect-mongodb-account.md)?):
+2. Módosítsa a következő változókat az *app.js* fájlban a fiókbeállításainak megfelelően (Hogyan található meg a [kapcsolati sztring](connect-mongodb-account.md)?):
 
     > [!IMPORTANT]
     > A **MongoDB Node.js 3.0 illesztőprogram** megköveteli a Cosmos DB-jelszóban lévő speciális karakterek kódolását. Az „=” karakter %3D formában kódolandó.

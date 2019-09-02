@@ -57,7 +57,7 @@ A hírcsatorna formátummal kapcsolatban bővebben lásd: [API-referencia](custo
 
     ![Custom Decision Service-portál](./media/custom-decision-service-tutorial/portal.png)
 
-3. Adjon egyedi nevet az alkalmazásnak az **Alkalmazásazonosító** szövegmezőben. Ha ezt a nevet már használja egy másik ügyfél, a rendszer kérni fogja, hogy válasszon másik alkalmazásazonosítót. Válassza ki a **Speciális** jelölőnégyzetet, majd adja meg a [kapcsolati karakterláncot](../../storage/common/storage-configure-connection-string.md) az Azure tárfiókhoz. Normál esetben ugyanazt a tárfiókot használja az összes alkalmazáshoz.
+3. Adjon egyedi nevet az alkalmazásnak az **Alkalmazásazonosító** szövegmezőben. Ha ezt a nevet már használja egy másik ügyfél, a rendszer kérni fogja, hogy válasszon másik alkalmazásazonosítót. Válassza ki a **Speciális** jelölőnégyzetet, majd adja meg a [kapcsolati sztringet](../../storage/common/storage-configure-connection-string.md) az Azure tárfiókhoz. Normál esetben ugyanazt a tárfiókot használja az összes alkalmazáshoz.
 
     ![Új alkalmazás párbeszédpanel](./media/custom-decision-service-tutorial/new-app-dialog.png)
 
@@ -92,7 +92,7 @@ A Custom Decision Service a cikkeket a Ranking API-n keresztül rangsorolja. Enn
 <!-- NB: action feeds for 'app-recent' are listed one after another. -->
 ```
 
-A Ranking-API által adott HTTP-válasz JSONP-formátumú karakterlánc. Az app-politika esetén a karakterlánc például így néz ki:
+A Ranking-API által adott HTTP-válasz JSONP-formátumú sztring. Az app-politika esetén a sztring például így néz ki:
 
 ```json
 callback({
@@ -102,7 +102,7 @@ callback({
    "actionSets":[{"id":"feed-politics","lastRefresh":"date"}] });
 ```
 
-A böngésző utána a `callback()` függvény meghívásaként értelmezve végrehajtja ezt a karakterláncot. Az `data` argumentumok tartalmazzák a `callback()` függvényben az alkalmazásazonosítót és a megjelenítendő URL-ek rangsorát. A három alkalmazás megkülönböztetéséhez különösen szükséges `callback()` által a `data.appId` használata. A `eventId` belső használatára szolgál, a Custom Decision Service vele párosítja a megadott rangsort a megfelelő kattintáshoz, ha van.
+A böngésző utána a `callback()` függvény meghívásaként értelmezve végrehajtja ezt a sztringet. Az `data` argumentumok tartalmazzák a `callback()` függvényben az alkalmazásazonosítót és a megjelenítendő URL-ek rangsorát. A három alkalmazás megkülönböztetéséhez különösen szükséges `callback()` által a `data.appId` használata. A `eventId` belső használatára szolgál, a Custom Decision Service vele párosítja a megadott rangsort a megfelelő kattintáshoz, ha van.
 
 > [!TIP]
 > `callback()` ellenőrizheti a műveleti hírcsatornák frissességét a `lastRefresh` mező használatával. Ha egy adott hírcsatorna nem elég friss, előfordulhat, hogy `callback()` figyelmen kívül hagyja a megadott rangsort, közvetlenül meghívja a hírcsatornát, és a hírcsatorna által megadott alapértelmezett rangsort használja.

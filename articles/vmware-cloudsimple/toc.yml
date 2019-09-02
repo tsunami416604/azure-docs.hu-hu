@@ -60,6 +60,8 @@
           href: access-cloudsimple-portal.md
         - name: Helyszíni tűzfal konfigurációja
           href: on-premises-firewall-configuration.md
+        - name: vSphere-ügyfél elérése
+          href: vcenter-access.md
         - name: Csomópontok kezelése
           items:
             - name: Csomópontok kiépítése
@@ -94,23 +96,19 @@
               href: public-ips.md
             - name: VPN-kapcsolatok beállítása
               href: vpn-gateway.md
-            - name: Társviszony-adatok lekérése virtuális hálózati kapcsolat létesítéséhez a CloudSimple-lel
+            - name: Virtuális hálózati kapcsolat létesítése a CloudSimple-höz
               href: virtual-network-connection.md
-            - name: Hozzáférés vSphere-ügyfelek eszkalációs jogosultságaihoz a rendszergazdai feladatok ellátása érdekében
-              href: 'https://docs.azure.cloudsimple.com/vsphere-access/'
         - name: Fiókkezelés a CloudSimple portálján
           items:
             - name: Fiók összegzésének megtekintése
               href: account.md
             - name: Felhasználók listájának megtekintése
               href: users.md
-            - name: Virtuális hálózati kapcsolat beállítása magánfelhőhöz
-              href: virtual-network-connection.md
-        - name: VMware rendszerű virtuális gépek beállítása magánfelhőhöz
+        - name: CloudSimple-alapú virtuális gépek beállítása
           items:
-            - name: Virtuális gép létrehozása az Azure-ban
+            - name: CloudSimple-alapú virtuális gép létrehozása az Azure-ban
               href: azure-create-vm.md
-            - name: Virtuális gépek kezelése az Azure-ban
+            - name: A CloudSimple-alapú virtuális gépek felügyelete az Azure-ban
               href: azure-manage-vm.md
     - name: Útmutatók
       items:
@@ -126,12 +124,14 @@
               href: migration-layer-2-vpn.md
         - name: Magánfelhő-hálózat
           items:
-            - name: VPN-kapcsolat a helyszíni rendszer és a magánfelhő között
+            - name: VPN-kapcsolat magánfelhőkhöz
               href: set-up-vpn.md
             - name: Helyszíni hálózati kapcsolat ExpressRoute-tal
               href: on-premises-connection.md
             - name: Azure virtuális hálózati kapcsolat ExpressRoute-tal
               href: azure-expressroute-connection.md
+            - name: DNS-névfeloldás konfigurálása
+              href: on-premises-dns-setup.md
         - name: VMware-platform
           items:
             - name: A magánfelhő engedélymodelljének megismerése

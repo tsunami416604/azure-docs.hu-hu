@@ -1,48 +1,57 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Active Directory-jelentések és -monitorozás
+### YamlMime:Landing
+title: Azure Active Directory-jelentések és -monitorozási dokumentáció
+summary: Ismerje meg, hogyan használhatók a jelentések az Azure AD-ban.
 metadata:
-  document_id: null
-  title: 'Az Azure Active Directory-jelentések és -monitorozás dokumentációja – Oktatóanyagok, rövid útmutatók, alapfogalmak | Microsoft Docs'
-  description: 'Ebből a cikkből megtudhatja, hogyan konfigurálhatja és tesztelheti az Azure Active Directory jelentéseit és monitorozási megoldásait'
+  title: Azure Active Directory-jelentések és -monitorozási dokumentáció
+  description: Ismerje meg, hogyan használhatók a jelentések és a monitorozás az Azure AD-ban.
   services: active-directory
-  ms.subservice: report-monitor
-  author: priyamohanram
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: devices
   ms.topic: landing-page
-  ms.date: 08/14/2018
-  ms.author: priyamo
-abstract:
-  description: 'Ismerje meg, hogyan tekintheti meg az adott környezet biztonsági és naplózási jelentéseit, illetve hogyan monitorozhatja őket a használati minták elemzéséhez. Az Azure Active Directory (Azure AD) jelentései alapján betekintést nyerhet a környezet biztonsági és használati mintáiba. Választ adhat például a következő kérdésekre:<ul><li>Hogyan használják a felhasználók az alkalmazásokat vagy a szolgáltatásokat?</li><li>Melyek a környezet állapotát érintő lehetséges kockázatok?</li><li>Hogyan tudom elhárítani azokat a hibákat, amelyek megakadályozzák a felhasználók munkavégzését?</li>'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Ebből a cikkből megtudhatja, hogyan töltheti le a tevékenységnaplókat, illetve hogyan irányíthatja át a naplókat egy Azure Storage-fiókba'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-sign-in-report">Bejelentkezési jelentés letöltése</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-audit-report">Naplózási jelentés letöltése</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-install-power-bi-content-pack">A jelentéskészítési Power BI-tartalomcsomag telepítése</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account">Naplók átirányítása egy tárfiókba</a>
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Ebből a cikkből megtudhatja, hogyan férhet hozzá a jelentésekhez, illetve hogyan streamelheti a tevékenységnaplókat a választott monitorozási rendszerbe'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates">Programozott hozzáférés a Reporting API-hoz tanúsítványok használatával</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub">Tevékenységnaplók streamelése egy eseményközpontba</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes">Bejelentkezési hibakódok</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema">Az Azure AD-auditnaplók sémája az Azure Monitorban</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema">Az Azure AD bejelentkezési naplóinak sémája az Azure Monitorban</a>
+  author: MarkusVi
+  ms.author: markvi
+  ms.date: 08/29/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 2b29aaf88f0a7659fd3ceb58ddf3b762ee7646d3
+  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70162500"
+landingContent:
+- title: Az Azure Active Directory-jelentések és -monitorozás ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mit jelent az Azure Active Directory monitorozása?
+      url: overview-monitoring.md
+  - linkListType: concept
+    links:
+    - text: Naplók
+      url: concept-audit-logs.md
+    - text: Bejelentkezési naplók
+      url: concept-sign-ins.md
+    - text: Kockázatos bejelentkezések naplói
+      url: concept-risky-sign-ins.md
+    - text: Kockázatosként megjelölt felhasználók naplói
+      url: concept-user-at-risk.md
+    - text: Üzembehelyezési naplók
+      url: concept-provisioning-logs.md
+- title: Jelentések használata az Azure AD-ban
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Tevékenységjelentések keresése
+      url: howto-find-activity-reports.md
+    - text: Kockázatosként megjelölt felhasználók szervizelése
+      url: howto-remediate-users-flagged-for-risk.md
+    - text: Az Azure AD-munkafüzetek használata
+      url: howto-use-azure-monitor-workbooks.md
+- title: Monitorozás használata az Azure AD-ban
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Tevékenységnaplók elemzése az Azure Monitor-naplókban
+      url: howto-analyze-activity-logs-log-analytics.md
+    - text: Naplóelemzési nézetek telepítése és használata az Azure AD-ban
+      url: howto-install-use-log-analytics-views.md

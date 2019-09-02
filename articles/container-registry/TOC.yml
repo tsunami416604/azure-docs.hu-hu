@@ -59,6 +59,8 @@
       items:
         - name: Rendszerképek küldése és lekérése
           href: container-registry-get-started-docker-cli.md
+        - name: OCI-összetevő küldése és lekérése
+          href: container-registry-oci-artifacts.md
         - name: Az adattárak megtekintése
           href: container-registry-repositories.md
         - name: Tárolórendszerképek importálása

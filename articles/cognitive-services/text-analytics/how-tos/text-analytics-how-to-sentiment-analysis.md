@@ -98,7 +98,7 @@ Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol sem
 
 ## <a name="step-3-view-the-results"></a>3\. lépés: Eredmények megtekintése
 
-Az a hangulat-elemző a szöveget túlnyomórészt pozitívként vagy negatívként osztályozza. 0 és 1 közötti pontszámot rendel hozzá. A 0,5 közeli értékek semlegesek vagy határozatlanok. A 0,5-ös pontszám semlegességet jelez. Ha egy sztringet nem lehet elemezni az érzelmekkel kapcsolatban, vagy nincs hangulata, a pontszám mindig 0,5 pontosan. Ha például egy spanyol nyelvű szöveget ad meg angol nyelvi kóddal, a pontszám 0,5 lesz.
+Az a hangulat-elemző a szöveget túlnyomórészt pozitívként vagy negatívként osztályozza. 0 és 1 közötti pontszámot rendel hozzá. A 0,5 közeli értékek semlegesek vagy határozatlanok. A 0,5-ös pontszám semlegességet jelez. Ha egy sztringet nem lehet elemezni az érzelmekkel kapcsolatban, vagy nincs hangulata, a pontszám mindig 0,5 pontosan. Ha például egy spanyol nyelvű sztringet ad meg angol nyelvi kóddal, a pontszám 0,5 lesz.
 
 A kimenetet visszaadása azonnali. Az eredményeket egy olyan alkalmazásba is továbbíthatja, amely fogadja a JSON-t, vagy mentse a kimenetet egy fájlba a helyi rendszeren. Ezután importálja a kimenetet egy olyan alkalmazásba, amelyet az adatrendezéshez, kereséshez és kezeléshez használhat.
 

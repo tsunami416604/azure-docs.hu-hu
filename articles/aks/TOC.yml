@@ -306,6 +306,10 @@
               href: istio-install.md
             - name: Intelligens útválasztás és tesztcsoportos kiadások
               href: istio-scenario-routing.md
+        - name: A Hashicorp Consul Connect használata
+          items:
+            - name: Telepítés és konfigurálás
+              href: consul-install.md
         - name: Az Azure Database for PostgreSQL használata
           href: ../postgresql/concepts-aks.md
           maintainContext: true

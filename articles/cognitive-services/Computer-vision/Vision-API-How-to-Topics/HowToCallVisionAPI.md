@@ -49,7 +49,7 @@ A Computer Vision API minden meghívásához előfizetési kulcs szükséges. Ez
 
 A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait.
 
-1. Az előfizetési kulcs lekérdezési karakterláncban történő átadásához lásd az alábbi Computer Vision API példát:
+1. Az előfizetési kulcs lekérdezési sztringben történő átadásához lásd az alábbi Computer Vision API példát:
 
     ```https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>```
 

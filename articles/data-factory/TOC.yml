@@ -187,6 +187,8 @@
           href: iterative-development-debugging.md
     - name: Összekötők
       items:
+        - name: Összekötők áttekintése
+          href: connector-overview.md
         - name: Amazon Marketplace Web Service
           href: connector-amazon-marketplace-web-service.md
         - name: Amazon Redshift
@@ -306,7 +308,7 @@
           href: connector-oracle-service-cloud.md
         - name: Parquet formátum
           href: format-parquet.md
-        - name: Paypal
+        - name: PayPal
           href: connector-paypal.md
         - name: Phoenix
           href: connector-phoenix.md
@@ -382,40 +384,40 @@
     - name: Adatok átalakítása
       href: transform-data.md
       items:
+        - name: Azure-függvények tevékenységei
+          href: control-flow-azure-function-activity.md
+        - name: Egyéni tevékenység
+          href: transform-data-using-dotnet-custom-activity.md
+        - name: Databricks Jar-tevékenysége
+          href: transform-data-databricks-jar.md
+        - name: Databricks-jegyzetfüzetek tevékenységei
+          href: transform-data-databricks-notebook.md
+        - name: Databricks Python-tevékenységei
+          href: transform-data-databricks-python.md
+        - name: Data Lake U-SQL-tevékenység
+          href: transform-data-using-data-lake-analytics.md
         - name: HDInsight Hive-tevékenység
           href: transform-data-using-hadoop-hive.md
-        - name: HDInsight Pig-tevékenység
-          href: transform-data-using-hadoop-pig.md
         - name: HDInsight MapReduce-tevékenység
           href: transform-data-using-hadoop-map-reduce.md
-        - name: HDInsight Streaming-tevékenység
-          href: transform-data-using-hadoop-streaming.md
+        - name: HDInsight Pig-tevékenység
+          href: transform-data-using-hadoop-pig.md
         - name: HDInsight Spark-tevékenység
           href: transform-data-using-spark.md
+        - name: HDInsight Streaming-tevékenység
+          href: transform-data-using-hadoop-streaming.md
         - name: ML kötegelt végrehajtási tevékenység
           href: transform-data-using-machine-learning.md
         - name: ML Update-erőforrástevékenység
           href: update-machine-learning-models.md
         - name: Tárolt eljárási tevékenység
           href: transform-data-using-stored-procedure.md
-        - name: Data Lake U-SQL-tevékenység
-          href: transform-data-using-data-lake-analytics.md
-        - name: Databricks-jegyzetfüzetek tevékenységei
-          href: transform-data-databricks-notebook.md
-        - name: Databricks Jar-tevékenysége
-          href: transform-data-databricks-jar.md
-        - name: Databricks Python-tevékenységei
-          href: transform-data-databricks-python.md
-        - name: Egyéni tevékenység
-          href: transform-data-using-dotnet-custom-activity.md
         - name: Társított szolgáltatások számítása
           href: compute-linked-services.md
     - name: Átvitelvezérlés
       items:
         - name: Változó tevékenység hozzáfűzése
           href: control-flow-append-variable-activity.md
-        - name: Azure-függvények tevékenységei
-          href: control-flow-azure-function-activity.md
         - name: Data Flow-tevékenység végrehajtása
           href: control-flow-execute-data-flow-activity.md
         - name: Folyamat végrehajtása tevékenység
@@ -584,6 +586,8 @@
       items:
         - name: Tevékenységek hibaelhárítása
           href: data-factory-troubleshoot-guide.md
+        - name: Összekötő hibaelhárítása
+          href: connector-troubleshoot-guide.md
         - name: Az Azure-SSIS integrációs modul kezelésével kapcsolatos hibaelhárítás
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Csomagvégrehajtás hibaelhárítása az Azure-SSIS integrációs modulban

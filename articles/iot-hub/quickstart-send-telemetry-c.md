@@ -135,7 +135,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 ## <a name="send-simulated-telemetry"></a>Szimulált telemetria küldése
 
-A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus végponthoz csatlakozik, és karakterláncot küld szimulált telemetriaként.
+A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus végponthoz csatlakozik, és sztringet küld szimulált telemetriaként.
 
 1. Szövegszerkesztővel nyissa meg az iothub_convenience_sample.c forrásfájlt, és tekintse át a telemetriai adatok küldését végző mintakódot. A fájl a következő helyen található a munkakönyvtárban, ahol klónozotta az Azure IoT C SDK-t:
 
@@ -150,7 +150,7 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
     static const char* connectionString = "[device connection string]";
     ```
 
-    Cserélje le a `connectionString` konstans értékét az eszköz korábban feljegyzett kapcsolati karakterláncára. Utána mentse el az **iothub_convenience_sample.c** módosításait.
+    Cserélje le a `connectionString` konstans értékét az eszköz korábban feljegyzett kapcsolati sztringjére. Utána mentse el az **iothub_convenience_sample.c** módosításait.
 
 3. Egy helyi terminálablakban keresse meg az *iothub_convenience_sample* projektkönyvtárat az Azure IoT C SDK-ban létrehozott CMake könyvtárban. Írja be a következő parancsot a munkakönyvtárból:
 

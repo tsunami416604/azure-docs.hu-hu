@@ -135,7 +135,7 @@ A Cosmos DB támogatja az összesítési folyamatot a nyilvános előzetes verzi
 - $subtract
 - $trunc
 
-#### <a name="string-expressions"></a>Karakteres kifejezések
+#### <a name="string-expressions"></a>Sztringkifejezések
 - $concat
 - $indexOfBytes
 - $indexOfCP

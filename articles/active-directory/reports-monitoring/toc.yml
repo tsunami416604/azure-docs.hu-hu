@@ -37,10 +37,12 @@
       href: concept-usage-insights-report.md
     - name: Kockázatos bejelentkezések
       href: concept-risky-sign-ins.md
-    - name: Kockázati események
+    - name: Kockázatészlelések
       href: concept-risk-events.md
     - name: Veszélyeztetett felhasználók
       href: concept-user-at-risk.md
+    - name: Üzembehelyezési naplók
+      href: concept-provisioning-logs.md
     - name: Reporting API-k
       href: concept-reporting-api.md
     - name: Azure AD-naplók az Azure Monitorban

@@ -156,6 +156,9 @@
     - name: Meglévő hozzárendelések frissítése a portálról
       displayName: 'lock, errors'
       href: ./how-to/update-existing-assignments.md
+    - name: A környezet konfigurálása Blueprint Operatorhoz
+      displayName: 'rbac, user-assigned, managed, identity, management group'
+      href: ./how-to/configure-for-blueprint-operator.md
     - name: Tervek kezelése kódként (közösség)
       href: 'https://github.com/Azure/azure-blueprints/blob/master/README.md'
 - name: Hibaelhárítás

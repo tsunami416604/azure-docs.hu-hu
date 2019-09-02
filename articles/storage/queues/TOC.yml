@@ -1,9 +1,9 @@
-- name: Azure Storage-dokumentáció
-  href: /azure/storage/
+- name: Azure Queue Storage-dokumentáció
+  href: /azure/storage/queues/
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi az az Azure Queues?
+    - name: Mik az Azure-üzenetsorok?
       href: storage-queues-introduction.md
 - name: Gyors útmutatók
   items:

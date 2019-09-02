@@ -88,7 +88,7 @@ Az adatfájl az indexelendő kiadványok listáját adja meg, mindegyik sora egy
 ...
 ```
 
-Ebben a kódrészletben, a kiadvány *Cím* és *Év* attribútumait adja meg rendre JSON-karakterlánc és szám alakban. A többszörös értékekhez JSON-tömböket használunk. Mivel az *Author* összetett attribútum, mindegyik értéket a részattribútumaiból felépülő JSON objektum képvisel. Ha az attribútum értéke hiányzik, mint a *Kulcsszó* esetében, az attribútum kizárható a JSON ábrázolásból.
+Ebben a kódrészletben, a kiadvány *Cím* és *Év* attribútumait adja meg rendre JSON-sztring és szám alakban. A többszörös értékekhez JSON-tömböket használunk. Mivel az *Author* összetett attribútum, mindegyik értéket a részattribútumaiból felépülő JSON objektum képvisel. Ha az attribútum értéke hiányzik, mint a *Kulcsszó* esetében, az attribútum kizárható a JSON ábrázolásból.
 
 A különböző tanulmányok valószínűségeinek megkülönböztetéséhez adja meg a relatív logaritmikus valószínűséget a beépített *logprob* attribútum alapján. Adott *p* 0 és 1 közötti valószínűségre a logaritmikus valószínűség kiszámítása a log(*p*) szerint történik, ahol a log() a természetes logaritmusfüggvényt jelenti.
 
@@ -217,8 +217,8 @@ A különböző [webes API-k](WebAPI.md) emellett közvetlenül is meghívhatók
 
 * [http://localhost:8000/interpret?query=papers by susan t dumais](http://localhost:8000/interpret?query=papers%20by%20susan%20t%20dumais)
 * [http://localhost:8000/interpret?query=papers by susan t d&complete=1](http://localhost:8000/interpret?query=papers%20by%20susan%20t%20d&complete=1)
-* [http://localhost:8000/evaluate?expr=Composite(Author.Name=='susan t dumais')&attributes=Title,Year,Author.Name,Author.Id&count=2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
-* [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name=='susan t dumais'),Year>=2013)&attributes=Year,Keyword&count=4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
+* [http://localhost:8000/evaluate?expr=Composite(Author.Name== 'susan t dumais')&attributes=Title,Year,Author.Name,Author.Id&count=2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
+* [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name== 'susan t dumais'),Year>=2013)&attributes=Year,Keyword&count=4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
 
 Azure-on kívül [ `kes.exe host_service` ](CommandLine.md#host_service-command) az indexek legfeljebb 10 000 objektumra korlátozódnak. Egyéb korlátot jelent a másodpercenkénti 10 API-kérés és az összesen 1000 kérés, ami után a folyamat automatikusan véget ér. Ezeknek a korlátozásoknak a megkerülésére futtassa a parancsot a [Windows VM-en az Azure-ban](../../../articles/virtual-machines/windows/quick-create-portal.md) környezeten belül, vagy a [`kes.exe deploy_service`](CommandLine.md#deploy_service-command) paranccsal tegye át Azure felhőszolgáltatásra. További információkért lásd: a szolgáltatás telepítéséhez.
 

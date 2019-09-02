@@ -54,7 +54,7 @@ Ebben az esetben érdemes megállapítania, hogy az indexelő figyelmen kívül 
 ## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>4\. tipp: A kibővített dokumentumokat a motorháztető alatt tekintheti meg 
 A dúsított dokumentumok a dúsítás során létrehozott ideiglenes struktúrák, majd a feldolgozás befejezésekor törlődnek.
 
-Ha pillanatképet szeretne készíteni az indexelés során létrejött bővített dokumentumról, adja hozzá az indexhez az ```enriched``` mezőt. Az indexelő automatikusan hozzáadja a mezőhöz az adott dokumentum bővítéseinek karakterláncos leképezését.
+Ha pillanatképet szeretne készíteni az indexelés során létrejött bővített dokumentumról, adja hozzá az indexhez az ```enriched``` mezőt. Az indexelő automatikusan hozzáadja a mezőhöz az adott dokumentum bővítéseinek sztringes leképezését.
 
 Az ```enriched``` mező egy sztringet tartalmaz, amely a JSON-ban szereplő memóriabeli bővített dokumentum logikai leképezése.  A mező értéke azonban egy érvényes JSON-dokumentum. Mivel az idézőjelek előtt escape-karakter áll, a `\"` karaktereket `"` karakterre kell cserélnie, ha a dokumentumot formázott JSON-ként szeretné megtekinteni. 
 

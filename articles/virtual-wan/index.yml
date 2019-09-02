@@ -1,40 +1,65 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Virtual WAN
+### YamlMime:Landing
+title: A Virtual WAN dokumentációja
+summary: Ismerkedjen meg az Azure Virtual WAN beállításának, létrehozásának és kezelésének módjaival. Építsen ki biztonságos, globális méretű, messzire ágazó kapcsolatokat.
 metadata:
-  document_id: null
-  title: A Virtual WAN dokumentációja – oktatóanyagok és API-referenciák | Microsoft Docs
-  meta.description: 'Learn how to configure, create, and manage an Azure Virtual WAN. Build secure global scale branch connectivity.'
+  title: A Virtual WAN dokumentációja
+  description: Ismerkedés a Virtual WAN szolgáltatással
   services: virtual-wan
-  author: cherylmc
-  manager: jeconnoc
   ms.service: virtual-wan
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/01/2018
+  author: cherylmc
   ms.author: cherylmc
-abstract:
-  description: 'Ismerkedjen meg az Azure Virtual WAN beállításának, létrehozásának és kezelésének módjaival. Építsen ki biztonságos, globális méretű, messzire ágazó kapcsolatokat.'
-sections:
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'További tudnivalók a kapcsolatok beállításáról, létrehozásáról és kezeléséről az Azure Virtual WAN használatával.'
-      - type: list
-        style: unordered
-        className: spaced Bullet
-        items:
-          - html: <a href="/azure/virtual-wan/virtual-wan-site-to-site-portal">Helyek közötti kapcsolatok</a>
-          - html: <a href="/azure/virtual-wan/virtual-wan-point-to-site-portal">Pont–hely kapcsolatok</a>
-          - html: <a href="/azure/virtual-wan/virtual-wan-expressroute-portal">ExpressRoute-kapcsolatok</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: '<p><a href="/powershell/module/az.network#networking">PowerShell</a></p><p><a href="/cli/azure/ext/virtual-wan">Azure CLI</a></p>'
-          - title: REST
-            html: '<p><a href="https://go.microsoft.com/fwlink/p/?linkid=2005000">REST API-referencia</a></p>'
+  ms.date: 08/28/2019
+  ms.openlocfilehash: a79f04f343264669bfa4366a140c6fd11b4fc7e5
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70128163"
+landingContent:
+- title: A Virtual WAN bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a Virtual WAN?
+      url: virtual-wan-about.md
+  - linkListType: concept
+    links:
+    - text: Helyek és partnerek kezelése
+      url: virtual-wan-locations-partners.md
+    - text: GYIK
+      url: virtual-wan-faq.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Helyek közötti kapcsolat létrehozása
+      url: virtual-wan-site-to-site-portal.md
+    - text: ExpressRoute-társítás létrehozása
+      url: virtual-wan-expressroute-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: Forgalom irányítása virtuális központról NVA-ra
+      url: virtual-wan-route-table-portal.md
+  - linkListType: concept
+    links:
+    - text: Alapértelmezett szabályzatok IPsec-kapcsolatokhoz
+      url: virtual-wan-ipsec.md
+- title: Architektúra
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Globális átviteli hálózati architektúra
+      url: virtual-wan-global-transit-network-architecture.md
+    - text: Office 365-vezérlősík
+      url: virtual-wan-office365-overview.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/ext/virtual-wan/network
+    - text: Azure PowerShell
+      url: /powershell/module/az.network#networking
+    - text: REST
+      url: /rest/api/virtualwan

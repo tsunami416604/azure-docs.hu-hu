@@ -96,20 +96,27 @@
   href: reset-network-interface.md
 - name: Virtuális gép újraindítása vagy átméretezése
   href: restart-resize-error-troubleshooting.md
-- name: A soros konzol használata
+- name: Soros konzol
+  href: serial-console-overview.md
   items:
-    - name: Linux rendszerű virtuális gép
+    - name: Soros konzol Linuxhoz
       href: serial-console-linux.md
       items:
         - name: Soros konzolos GRUB/egyfelhasználós mód
           href: serial-console-grub-single-user-mode.md
         - name: Soros konzolos NMI/SysRq
           href: serial-console-nmi-sysrq.md
-    - name: Windows rendszerű virtuális gép
+    - name: Soros konzol Windowshoz
       href: serial-console-windows.md
       items:
         - name: A CMD és a Powershell parancsai
           href: serial-console-cmd-ps-commands.md
+    - name: Soros konzol engedélyezése és letiltása
+      href: serial-console-enable-disable.md
+    - name: A soros konzol energiagazdálkodási lehetőségei
+      href: serial-console-power-options.md
+    - name: A soros konzol gyakori hibái
+      href: serial-console-errors.md
 - name: Tárerőforrások törlésekor jelentkező hibák
   href: storage-resource-deletion-errors.md
 - name: Klasszikus tárerőforrások törlésekor jelentkező hibák
@@ -153,6 +160,8 @@
 - name: Rendszerindítási hibák
   href: boot-error-troubleshoot.md
   items:
+    - name: Az Azure Virtual Machine rendszerindítási hibája
+      href: troubleshoot-vm-boot-error.md
     - name: Rendszerindítási diagnosztika
       href: boot-diagnostics.md
     - name: BitLocker-hibák

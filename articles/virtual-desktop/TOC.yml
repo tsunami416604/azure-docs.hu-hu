@@ -66,6 +66,8 @@
       href: fslogix-containers-azure-files.md
     - name: Partnerintegrációk
       href: partners.md
+    - name: A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
+      href: windows-10-multisession-faq.md
 - name: Hibaelhárítás
   items:
     - name: 'Hibaelhárítási áttekintés, visszajelzés és támogatás'

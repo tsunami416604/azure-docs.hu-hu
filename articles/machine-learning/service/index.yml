@@ -3,7 +3,7 @@ documentType: LandingData
 title: Az Azure Machine Learning szolgáltatás dokumentációja
 metadata:
   title: Az Azure Machine Learning szolgáltatás dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: 'Az Azure Machine Learning szolgáltatás SDK-kat és szolgáltatásokat biztosít a gépi tanulási modellek gyors betanításához és üzembe helyezéséhez, valamint az adatok előkészítéséhez. A számítási erőforrások és a folyamatok automatikus méretezésével növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind használhatja olyan nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn. Első lépések az útmutatókkal és oktatóanyagokkal.'
+  description: 'Az Azure Machine Learning szolgáltatás SDK-kat és szolgáltatásokat biztosít a gépi tanulási modellek gyors betanításához és üzembe helyezéséhez. A számítási erőforrások és a folyamatok automatikus méretezésével növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind használhatja olyan nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn. Első lépések az útmutatókkal és oktatóanyagokkal.'
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -16,7 +16,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: 'Az Azure Machine Learning szolgáltatás SDK-kat és szolgáltatásokat biztosít a gépi tanulási modellek gyors betanításához és üzembe helyezéséhez, valamint az adatok előkészítéséhez. A számítási erőforrások és a folyamatok automatikus méretezésével növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind használhatja olyan nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn. Első lépések az útmutatókkal és oktatóanyagokkal.'
+  description: 'Az Azure Machine Learning szolgáltatás SDK-kat és szolgáltatásokat biztosít a gépi tanulási modellek gyors betanításához és üzembe helyezéséhez. A számítási erőforrások és a folyamatok automatikus méretezésével növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind használhatja olyan nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn. Első lépések az útmutatókkal és oktatóanyagokkal.'
   aside:
     image:
       alt: null
@@ -30,7 +30,7 @@ sections:
   - title: Részletes útmutatók
     items:
       - type: paragraph
-        text: 'Megtudhatja, hogyan készítheti elő adatait és kísérleteit, illetve hogyan taníthatja be és működtetheti gépi tanulási modelljeit.'
+        text: 'Megtudhatja, hogyan készítheti elő kísérleteit, illetve hogyan taníthatja be és működtetheti gépi tanulási modelljeit.'
       - type: paragraph
         text: 'A könnyen, kódolás nélkül használható <b>Azure Portallal</b> a következőket teheti:'
       - type: list

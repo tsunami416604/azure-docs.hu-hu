@@ -1,35 +1,51 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Bastion – Dokumentáció
+### YamlMime:Landing
+title: Azure Bastion – Dokumentáció (előzetes verzió)
+summary: Megtudhatja, hogy csatlakozhat egy virtuális géphez az Azure Bastionnal. Biztonságos és zökkenőmentes RDP-/SSH-kapcsolatokat konfigurálhat a virtuális gépeihez közvetlenül az Azure Portalon SSL használatával. Ha az Azure Bastionon keresztül csatlakozik, a virtuális gépeinek nincs szüksége nyilvános IP-címre.
 metadata:
-  document_id: null
-  title: Bastion
-  meta.description: Learn how to use Azure Bastion
-  author: cherylmc
-  ms.service: Bastion
+  title: Azure Bastion – Dokumentáció (előzetes verzió)
+  description: Megtudhatja, hogy csatlakozhat egy virtuális géphez az Azure Bastionnal. Biztonságos és zökkenőmentes RDP-/SSH-kapcsolatokat konfigurálhat a virtuális gépeihez közvetlenül az Azure Portalon SSL használatával.
+  services: bastion
+  ms.service: bastion
   ms.topic: landing-page
-  ms.date: 07/02/2019
+  author: cherylmc
   ms.author: cherylmc
-abstract:
-  description: 'Megtudhatja, hogy csatlakozhat egy virtuális géphez az Azure Bastionnal. Biztonságos és zökkenőmentes RDP-/SSH-kapcsolatokat konfigurálhat a virtuális gépeihez közvetlenül az Azure Portalon SSL használatával. Ha az Azure Bastionon keresztül csatlakozik, a virtuális gépeinek nincs szüksége nyilvános IP-címre.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://go.microsoft.com/fwlink/?linkid=2095604'
-      width: 250
-    title: 'Az Azure Bastion használata (1:03)'
-    href: 'https://go.microsoft.com/fwlink/?linkid=2095517'
-    width: 250
-sections:
-  - title: Azure Bastion létrehozása és konfigurálása (Előzetes verzió)
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan konfigurálhat egy Azure Bastion-gazdagépet, és hogyan csatlakozhat egy virtuális géphez.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/bastion/bastion-create-host-portal">Azure Bastion-gazdagép létrehozása és módosítása</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Csatlakozás Windows rendszerű virtuális géphez</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Csatlakozás Linux rendszerű virtuális géphez</a>
-          - html: <a href="/azure/bastion/bastion-faq">Az Azure Bastion GYIK elolvasása</a>
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 6854e6ec4bd36ea38fa0e1f9cd46f95e11144be6
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70128118"
+landingContent:
+- title: Az Azure Bastion ismertetése (előzetes verzió)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Bastion?
+      url: bastion-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Bastion – gyakori kérdések
+      url: bastion-faq.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Bastion-gazdagép létrehozása
+      url: bastion-create-host-portal.md
+    - text: Csatlakozás virtuális géphez (Linux)
+      url: bastion-connect-vm-ssh.md
+    - text: Csatlakozás virtuális géphez (Windows)
+      url: bastion-connect-vm-rdp.md
+  - linkListType: video
+    links:
+    - text: Az Azure Bastion használata
+      url: https://go.microsoft.com/fwlink/?linkid=2095517
+- title: Virtuálisgép-munkamenetek használata
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Másolás és beillesztés
+      url: bastion-vm-copy-paste.md
+    - text: Teljes képernyős nézet
+      url: bastion-vm-full-screen.md

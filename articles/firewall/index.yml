@@ -1,47 +1,57 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Firewall-dokumentáció
+summary: További tudnivalók az Azure Firewall üzembe helyezéséről, amely egy felhőalapú hálózati biztonsági szolgáltatás.
 metadata:
-  title: Azure Firewall-dokumentáció – oktatóanyagok és API-referencia
-  meta.description: 'Learn how to create Azure Firewalls. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
+  title: Azure Firewall-dokumentáció
+  description: További tudnivalók az Azure Firewall üzembe helyezéséről, amely egy felhőalapú hálózati biztonsági szolgáltatás.
   services: firewall
-  author: vhorne
   ms.service: firewall
   ms.topic: landing-page
-  ms.date: 9/24/2018
+  author: vhorne
   ms.author: victorh
-abstract:
-  description: 'További tudnivalók az Azure Firewall üzembe helyezéséről, amely egy felhőalapú hálózati biztonsági szolgáltatás. Az oktatóanyagok, API-referenciák és egyéb dokumentációk bemutatják, hogyan állíthatja be az alkalmazási és hálózati szintű szabályzatokat az Azure virtuális hálózati források védelme érdekében.'
-sections:
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: További tudnivalók az Azure Firewall üzembe helyezéséről
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/firewall/tutorial-firewall-deploy-portal">Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon</a>
-          - html: <a href="/azure/firewall/tutorial-hybrid-ps">Üzembe helyezés hibrid hálózatban</a>
-          - html: <a href="/azure/firewall/tutorial-firewall-dnat">Bejövő forgalom szűrése DNAT használatával</a>
-          - html: <a href="/azure/firewall/tutorial-diagnostics">Az Azure Firewall naplóinak monitorozása</a>
-  - title: Példák
-    items:
-      - type: paragraph
-        text: Szkriptminták gyakori műveletekhez.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/firewall/sample-powershell">Azure PowerShell</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/powershell/module/az.network/new-azfirewall">Azure PowerShell</a></p><p><a href="/cli/azure/ext/azure-firewall/network/firewall">Azure CLI</a></p>
-          - title: Nyelvek
-            html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/firewall/">Compute – REST API-referencia</a></p>'
+  ms.date: 08/30/2019
+  ms.openlocfilehash: aba20908401cba2c1b740570f62593b5afb92dc5
+  ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70147318"
+landingContent:
+- title: Az Azure Firewall ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure Firewall?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Az Azure Firewall szabályfeldolgozási logikája
+      url: rule-processing.md
+    - text: Gyakori kérdések
+      url: firewall-faq.md
+- title: Az Azure Firewall üzembe helyezése
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Üzembe helyezés az Azure Portalon
+      url: tutorial-firewall-deploy-portal.md
+    - text: Üzembe helyezés hibrid hálózatban
+      url: tutorial-hybrid-portal.md
+    - text: Bejövő forgalom szűrése
+      url: tutorial-firewall-dnat.md
+- title: Integrálás a Load Balancerrel
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure Firewall integrálása az Azure Standard Load Balancerrel
+      url: integrate-lb.md
+- title: Az Azure Firewall monitorozása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az Azure Firewall naplói és metrikái
+      url: logs-and-metrics.md
+  - linkListType: tutorial
+    links:
+    - text: Az Azure Firewall naplóinak és metrikáinak monitorozása
+      url: tutorial-diagnostics.md

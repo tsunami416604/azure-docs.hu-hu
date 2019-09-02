@@ -8,6 +8,9 @@
 - name: Gyors útmutatók
   expanded: true
   items:
+    - name: Az első lekérdezés futtatása – Azure Portal
+      displayName: 'portal, resource, graph, explorer'
+      href: first-query-portal.md
     - name: Az első lekérdezés futtatása – Azure CLI
       displayName: 'extension, docker'
       href: first-query-azurecli.md

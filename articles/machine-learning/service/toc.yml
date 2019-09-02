@@ -145,17 +145,6 @@
         - name: Adathalmazok hozzáadása és regisztrálása
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
-        - name: Előkészítés az azureml.dataprep használatával
-          items:
-            - name: Adatok betöltése
-              displayName: 'data, etl, data prep, dataprep'
-              href: how-to-load-data.md
-            - name: Adatok átalakítása
-              displayName: 'data, etl, dataprep, data prep'
-              href: how-to-transform-data.md
-            - name: Adatok írása
-              displayName: 'data, etl, data prep, dataprep'
-              href: how-to-write-data.md
     - name: Modellek betanítása
       items:
         - name: Betanítási környezetek beállítása
@@ -347,6 +336,8 @@
               href: ../algorithm-module-reference/multiclass-neural-network.md
             - name: Többosztályos döntési erdő
               href: ../algorithm-module-reference/multiclass-decision-forest.md
+            - name: Többosztályos súlyozott döntési fa
+              href: ../algorithm-module-reference/multiclass-boosted-decision-tree.md
             - name: Kétosztályos átlagolt perceptron
               href: ../algorithm-module-reference/two-class-averaged-perceptron.md
             - name: Kétosztályos döntési erdő

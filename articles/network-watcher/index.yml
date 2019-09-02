@@ -1,82 +1,86 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: A Network Watcher dokumentációja
+### YamlMime:Landing
+title: Az Azure Network Watcher dokumentációja
+summary: Ismerje meg az Azure Network Watcher használatát. A rövid útmutatók, oktatóanyagok és egyéb dokumentumok bemutatják, hogyan elemezheti az Azure Virtual Network-hálózatát olyan eszközökkel, mint a csomagrögzítés és NSG-forgalomnaplók, amelyekkel diagnosztizálhatja a forgalomszűrési és -irányítási problémákat, valamint monitorozhatja a kapcsolatokat.
 metadata:
-  document_id: null
-  title: 'A Network Watcher dokumentációja – Oktatóanyagok, rövid útmutatók, API-referencia | Microsoft Docs'
-  meta.description: 'Learn how to use Azure Network Watcher. Quickstarts, tutorials, and more, show you how to gain insight into your Azure Virtual Network with tools like packet capture and NSG flows logs, to diagnose problems with traffic filtering and routing, and to monitor connections.'
+  title: A Network Watcher dokumentációja
+  description: Ismerje meg az Azure Network Watcher használatát. A rövid útmutatók, oktatóanyagok és egyéb dokumentumok bemutatják, hogyan elemezheti az Azure Virtual Network-hálózatát olyan eszközökkel, mint a csomagrögzítés és NSG-forgalomnaplók, amelyekkel diagnosztizálhatja a forgalomszűrési és -irányítási problémákat, valamint monitorozhatja a kapcsolatokat.
   services: network-watcher
-  author: KumudD
-  manager: twolley
   ms.service: network-watcher
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/24/2018
+  ms.collection: collection
+  author: KumudD
   ms.author: kumud
-abstract:
-  description: 'Ismerje meg az Azure Network Watcher használatát. A rövid útmutatók, oktatóanyagok és egyéb dokumentumok bemutatják, hogyan elemezheti az Azure Virtual Network-hálózatát olyan eszközökkel, mint a csomagrögzítés és NSG-forgalomnaplók, amelyekkel diagnosztizálhatja a forgalomszűrési és -irányítási problémákat, valamint monitorozhatja a kapcsolatokat.'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Ismerje meg, hogyan diagnosztizálhatja a virtuális gép felé irányuló és az onnan érkező forgalom szűrésével kapcsolatos problémákat.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/portal.svg
-            text: Azure Portal
-            href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem
-          - image:
-              src: ./media/index/powershell.svg
-            text: Azure PowerShell
-            href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem-powershell
-          - image:
-              src: ./media/index/cli.svg
-            text: Azure CLI
-            href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem-cli
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Ismerje meg, hogyan diagnosztizálhatja a virtuális hálózat problémáit.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/network-watcher/diagnose-vm-network-routing-problem">Virtuálisgép- (VM-) hálózat útválasztási problémáinak diagnosztizálása</a>
-          - html: <a href="/azure/network-watcher/connection-monitor">Két virtuális gép közötti hálózati kommunikáció monitorozása</a>
-          - html: <a href="/azure/network-watcher/diagnose-communication-problem-between-networks">Hálózatok közötti kommunikációs probléma diagnosztizálása</a>
-          - html: <a href="/azure/network-watcher/network-watcher-nsg-flow-logging-portal">Virtuális gép be- és kimenő forgalmának naplózása</a>
-  - title: Ingyenes Pluralsight videós képzés
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure-rendszergazda
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-          - title: Azure-beli megoldástervező
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-          - title: Azure-felügyelet AWS-rendszergazdáknak
-            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: '<p><a href="/powershell/module/az.network/#network_watcher">PowerShell</a></p><p><a href="/cli/azure/network/watcher">Azure CLI</a></p>'
-          - title: Nyelvek
-            html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/network-watcher/">REST API-referencia</a></p>
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 534da1b945b4a4463406d5b5c6277833fad35984
+  ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/30/2019
+  ms.locfileid: "70195095"
+landingContent:
+- title: A Network Watcher névjegye
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Network Watcher?
+      url: network-watcher-monitoring-overview.md
+- title: A virtuális gép forgalomszűrési problémáinak diagnosztizálása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IP-forgalom ellenőrzése
+      url: network-watcher-ip-flow-verify-overview.md
+  - linkListType: quickstart
+    links:
+    - text: A virtuális gép forgalomszűrési problémáinak diagnosztizálása
+      url: diagnose-vm-network-traffic-filtering-problem.md
+- title: A virtuális gép útválasztási problémáinak diagnosztizálása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: A virtuális gép következő ugrással kapcsolatos útválasztási problémáinak diagnosztizálása
+      url: network-watcher-next-hop-overview.md
+  - linkListType: tutorial
+    links:
+    - text: A virtuális gép útválasztási problémáinak diagnosztizálása
+      url: diagnose-vm-network-routing-problem.md
+- title: A virtuális gép kommunikációs problémáinak diagnosztizálása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: A virtuális gép kimenő kommunikációjával kapcsolatos problémák diagnosztizálása
+      url: network-watcher-connectivity-overview.md
+  - linkListType: tutorial
+    links:
+    - text: A virtuális gép útválasztási problémáinak diagnosztizálása
+      url: network-watcher-connectivity-portal.md
+    - text: Virtuális gépek közötti kommunikáció monitorozása
+      url: connection-monitor.md
+- title: Virtuális gép hálózati forgalmának naplózása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Virtuális gép hálózati forgalmának naplózása
+      url: network-watcher-nsg-flow-logging-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Virtuális gép hálózati forgalmának naplózása
+      url: network-watcher-nsg-flow-logging-portal.md
+  - linkListType: tutorial
+    links:
+    - text: NSG-forgalom naplóinak konfigurálása
+      url: network-watcher-nsg-flow-logging-portal.md
+    - text: NSG-forgalom naplóinak elemzése a Traffic Analytics használatával
+      url: traffic-analytics.md
+    - text: Virtuális gép hálózati forgalmának naplózása
+      url: network-watcher-nsg-flow-logging-portal.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.network/#network_watcher
+    - text: Azure CLI
+      url: /cli/azure/network/watcher
+    - text: REST
+      url: /rest/api/network-watcher/

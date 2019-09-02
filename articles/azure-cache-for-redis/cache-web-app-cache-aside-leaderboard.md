@@ -154,7 +154,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
 
     ![Web.config](./media/cache-web-app-cache-aside-leaderboard/cache-web-config.png)
 
-1. A `configuration` szakaszon belül adja hozzá a következő `connectionStrings` szakaszt. A kapcsolati karakterlánc nevének meg kell egyeznie az Entity Framework-adatbáziskörnyezet osztályának nevével, amely a következő: `TeamContext`.
+1. A `configuration` szakaszon belül adja hozzá a következő `connectionStrings` szakaszt. A kapcsolati sztring nevének meg kell egyeznie az Entity Framework-adatbáziskörnyezet osztályának nevével, amely a következő: `TeamContext`.
 
     Ez a kapcsolati karakterlánc feltételezi, hogy teljesül-e a [Előfeltételek](#prerequisites) és a telepített SQL Server Express LocalDB, amely részét képezi, a *.NET asztali fejlesztés* számítási feladattal együtt a Visual Studio 2019.
 
@@ -678,13 +678,13 @@ Ebben a szakaszban egy új SQL Azure-adatbázist fog üzembe helyezni az Azure-b
 
 1. Kattintson a **Rögzítés az irányítópulton** elemre, majd a **Létrehozás** gombra az új adatbázis és kiszolgáló létrehozásához.
 
-1. Ha az új adatbázis létrejött, kattintson az **Adatbázis kapcsolati karakterláncainak megjelenítése** elemre, és másolja az **ADO.NET** kapcsolati karakterláncot.
+1. Ha az új adatbázis létrejött, kattintson az **Adatbázis kapcsolati sztringjeinek megjelenítése** elemre, és másolja az **ADO.NET** kapcsolati sztringet.
 
     ![Kapcsolati sztringek megjelenítése](./media/cache-web-app-cache-aside-leaderboard/cache-show-connection-strings.png)
 
-1. Az Azure Portalon navigáljon az App Service-hez, és kattintson az **Alkalmazásbeállítások**, majd az **Új kapcsolati karakterlánc hozzáadása** elemre a Kapcsolati karakterláncok szakaszban.
+1. Az Azure Portalon navigáljon az App Service-hez, és kattintson az **Alkalmazásbeállítások**, majd az **Új kapcsolati sztring hozzáadása** elemre a Kapcsolati sztringek szakaszban.
 
-1. Adjon hozzá egy *TeamContext* nevű kapcsolati karakterláncot, amely megegyezik az Entity Framework-adatbáziskörnyezet osztályának nevével. Illessze be az új adatbázis kapcsolati karakterláncát az értékként. Cserélje le az alábbi helyőrzőket a kapcsolati karakterláncban, majd kattintson a **Mentés** elemre:
+1. Adjon hozzá egy *TeamContext* nevű kapcsolati sztringet, amely megegyezik az Entity Framework-adatbáziskörnyezet osztályának nevével. Illessze be az új adatbázis kapcsolati sztringjét az értékként. Cserélje le az alábbi helyőrzőket a kapcsolati sztringben, majd kattintson a **Mentés** elemre:
 
     | Helyőrző | Ajánlott érték |
     | --- | --- |
