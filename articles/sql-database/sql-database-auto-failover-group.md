@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/29/2019
-ms.openlocfilehash: 73aeea42cd843716c845d7712539ae5c81f03dca
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.date: 08/30/2019
+ms.openlocfilehash: 65a75bc3a2e7ab2361ee8ae53d11ba1604c1d1ef
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173069"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208343"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 
@@ -92,7 +92,7 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 
 - **Csak olvasási feladatátvételi szabályzat**
 
-  Alapértelmezés szerint a csak olvasási figyelő feladatátvétele le van tiltva. Gondoskodik arról, hogy az elsődleges teljesítmény ne legyen hatással a másodlagos kapcsolat nélküli állapotra. Ez azonban azt is jelenti, hogy a csak olvasási munkamenetek nem fognak tudni csatlakozni, amíg a másodlagos helyre nem kerül. Ha nem tudja elviselni a leállást a csak olvasási munkamenetek esetében, és az elsődlegesnél a csak olvasási és írási-olvasási forgalom esetében átmenetileg használja az elsődlegest, engedélyezheti a feladatátvételt a csak olvasási figyelő számára. Ebben az esetben a csak olvasási forgalom automatikusan átirányítva lesz az elsődlegesre, ha a másodlagos nem érhető el.
+  Alapértelmezés szerint a csak olvasási figyelő feladatátvétele le van tiltva. Gondoskodik arról, hogy az elsődleges teljesítmény ne legyen hatással a másodlagos kapcsolat nélküli állapotra. Ez azonban azt is jelenti, hogy a csak olvasási munkamenetek nem fognak tudni csatlakozni, amíg a másodlagos helyre nem kerül. Ha nem tudja elviselni az állásidőt a csak olvasási munkamenetek esetében, és az OK, hogy az elsődlegeset átmenetileg használja mind a írásvédett, mind az írási és olvasási forgalom számára, akkor engedélyezheti a feladatátvételt a csak olvasási figyelő számára a `AllowReadOnlyFailoverToPrimary` tulajdonság konfigurálásával. Ebben az esetben a csak olvasási forgalom automatikusan átirányítva lesz az elsődlegesre, ha a másodlagos nem érhető el.
 
 - **Tervezett feladatátvétel**
 
@@ -112,7 +112,7 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 
 - **Türelmi időszak adatvesztéssel**
 
-  Mivel az elsődleges és másodlagos adatbázisok aszinkron replikálással vannak szinkronizálva, a feladatátvétel adatvesztést okozhat. Testreszabhatja az automatikus feladatátvételi szabályzatot, hogy tükrözze az alkalmazás adatvesztési tűréshatárát. A **GracePeriodWithDataLossHours**konfigurálásával szabályozhatja, hogy a rendszer mennyi ideig várjon, mielőtt elindítja a feladatátvételt, amely valószínűleg adatvesztést okoz.
+  Mivel az elsődleges és másodlagos adatbázisok aszinkron replikálással vannak szinkronizálva, a feladatátvétel adatvesztést okozhat. Testreszabhatja az automatikus feladatátvételi szabályzatot, hogy tükrözze az alkalmazás adatvesztési tűréshatárát. A konfigurálásával `GracePeriodWithDataLossHours`szabályozhatja, hogy a rendszer mennyi ideig várjon, mielőtt elindítja a feladatátvételt, amely valószínűleg adatvesztést okoz.
 
 - **Több feladatátvételi csoport**
 
@@ -155,7 +155,7 @@ Az üzletmenet folytonosságát szem előtt tartva az alábbi általános irány
 
 - **Írásvédett munkaterheléshez csak olvasási figyelő használható**
 
-  Ha az adatok bizonyos elavulása érdekében logikailag elszigetelt írásvédett munkaterheléssel rendelkezik, használhatja az alkalmazás másodlagos adatbázisát. Csak olvasási munkamenetek esetén használja `<fog-name>.secondary.database.windows.net` a kiszolgáló URL-címét, a kapcsolat pedig automatikusan a másodlagosra lesz irányítva. Azt is javasoljuk, hogy a **ApplicationIntent = ReadOnly**használatával a rendszer a következővel jelezze a kapcsolatok karakterláncának olvasási szándékát:.
+  Ha az adatok bizonyos elavulása érdekében logikailag elszigetelt írásvédett munkaterheléssel rendelkezik, használhatja az alkalmazás másodlagos adatbázisát. Csak olvasási munkamenetek esetén használja `<fog-name>.secondary.database.windows.net` a kiszolgáló URL-címét, a kapcsolat pedig automatikusan a másodlagosra lesz irányítva. Azt is javasoljuk, hogy a használatával `ApplicationIntent=ReadOnly`adja meg a következőt:. Ha biztosítani szeretné, hogy a csak olvasási feladatok újrakapcsolódjanak a feladatátvétel után, vagy ha a másodlagos kiszolgáló offline állapotba kerül, győződjön meg arról, `AllowReadOnlyFailoverToPrimary` hogy a feladatátvételi házirend tulajdonsága konfigurálva van. 
 
 - **Készüljön fel a teljesítmény romlására**
 
@@ -166,7 +166,7 @@ Az üzletmenet folytonosságát szem előtt tartva az alábbi általános irány
 
 - **Felkészülés az adatvesztésre**
 
-  Ha a rendszer kimaradást észlel, az SQL megvárja a **GracePeriodWithDataLossHours**által megadott időszakot. Az alapértelmezett érték 1 óra. Ha nem engedheti meg az adatvesztést, ügyeljen arra, hogy a **GracePeriodWithDataLossHours** megfelelően nagy számú, például 24 óráig állítsa be. A manuális csoport feladatátvételi szolgáltatásával visszatérhet a másodlagosról az elsődlegesre.
+  Ha a rendszer kimaradást észlel, az SQL megvárja a által `GracePeriodWithDataLossHours`megadott időszakot. Az alapértelmezett érték 1 óra. Ha nem engedheti meg az adatvesztést, ügyeljen `GracePeriodWithDataLossHours` arra, hogy a megfelelő számú, például 24 órás értéket állítsa be. A manuális csoport feladatátvételi szolgáltatásával visszatérhet a másodlagosról az elsődlegesre.
 
   > [!IMPORTANT]
   > A 800-es vagy kevesebb DTU és több mint 250 adatbázissal rendelkező, Geo-replikációt használó rugalmas készletek olyan problémákba ütközhet, mint a hosszabb tervezett feladatátvétel és a csökkentett teljesítmény.  Ezek a problémák nagyobb valószínűséggel fordulnak elő az írási igényű munkaterhelések esetében, ha a Geo-replikációs végpontok földrajzilag széles körben elkülönülnek, vagy ha az egyes adatbázisokhoz több másodlagos végpont is használatos.  Ezeknek a problémáknak a tünetei akkor jelennek meg, ha a földrajzi replikálási késés idővel növekszik.  Ez a késés figyelhető a [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)használatával.  Ha ezek a problémák lépnek fel, a mérséklések közé tartozik a készlet DTU számának növelése vagy a Geo-replikált adatbázisok számának csökkentése ugyanabban a készletben.
@@ -305,10 +305,10 @@ Ezt a sorozatot kifejezetten arra a problémára érdemes elkerülni, hogy az al
 
 ## <a name="preventing-the-loss-of-critical-data"></a>A kritikus fontosságú adatmennyiség elvesztésének megakadályozása
 
-A nagyméretű hálózatok nagy késése miatt a folyamatos másolás aszinkron replikációs mechanizmust használ. Az aszinkron replikáció során az adatvesztés elkerülhető, ha hiba történik. Előfordulhat azonban, hogy egyes alkalmazások nem igényelnek adatvesztést. A kritikus frissítések elleni védelem érdekében az alkalmazás fejlesztői a tranzakció véglegesítése után azonnal meghívhatják a [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) rendszereljárást. A **sp_wait_for_database_copy_sync** meghívásával a rendszer addig blokkolja a hívó szálat, amíg az utolsó véglegesített tranzakció át nem lett továbbítva a másodlagos adatbázisba. Azonban nem várja meg, amíg a továbbított tranzakciók újra le lesznek játszva és véglegesítve lettek a másodlagoson. a **sp_wait_for_database_copy_sync** hatóköre egy adott folytonos másolási hivatkozásra terjed ki. Minden olyan felhasználó, aki az elsődleges adatbázishoz kapcsolódási jogokkal rendelkezik, meghívhatja ezt az eljárást.
+A nagyméretű hálózatok nagy késése miatt a folyamatos másolás aszinkron replikációs mechanizmust használ. Az aszinkron replikáció során az adatvesztés elkerülhető, ha hiba történik. Előfordulhat azonban, hogy egyes alkalmazások nem igényelnek adatvesztést. A kritikus frissítések elleni védelem érdekében az alkalmazás fejlesztői a tranzakció véglegesítése után azonnal meghívhatják a [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) rendszereljárást. A `sp_wait_for_database_copy_sync` hívás a hívó szálat blokkolja, amíg az utolsó véglegesített tranzakció át nem lett továbbítva a másodlagos adatbázisba. Azonban nem várja meg, amíg a továbbított tranzakciók újra le lesznek játszva és véglegesítve lettek a másodlagoson. `sp_wait_for_database_copy_sync`hatóköre egy adott folytonos másolási hivatkozásra vonatkozik. Minden olyan felhasználó, aki az elsődleges adatbázishoz kapcsolódási jogokkal rendelkezik, meghívhatja ezt az eljárást.
 
 > [!NOTE]
-> a **sp_wait_for_database_copy_sync** megakadályozza az adatvesztést a feladatátvétel után, de nem garantálja a teljes szinkronizálást az olvasási hozzáféréshez. A **sp_wait_for_database_copy_sync** eljárás hívása által okozott késleltetés jelentős lehet, és a tranzakciós napló méretétől függ a hívás időpontjában.
+> `sp_wait_for_database_copy_sync`megakadályozza az adatvesztést a feladatátvétel után, de nem garantálja a teljes szinkronizálást az olvasási hozzáféréshez. Az `sp_wait_for_database_copy_sync` eljárási hívás által okozott késleltetés jelentős lehet, és a tranzakciós napló méretétől függ a hívás időpontjában.
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>Feladatátvételi csoportok és időponthoz történő visszaállítás
 

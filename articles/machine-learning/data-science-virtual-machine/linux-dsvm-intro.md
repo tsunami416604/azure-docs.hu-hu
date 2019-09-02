@@ -1,29 +1,22 @@
 ---
-title: A CentOS Linux rendszerű adatelemző virtuális gép létrehozása
-titleSuffix: Azure
+title: 'Gyors útmutató: CentOS Linux létrehozása'
+titleSuffix: Azure Data Science Virtual Machine
 description: Linux-Data Science Virtual Machine létrehozása és konfigurálása az Azure-ban az elemzéshez és a gépi tanuláshoz.
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: c0464253c55aa5e51e8e86686405ea6b107c8382
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 1ab3a527643bc5a567644a937fdd1eb9e31bf567
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047712"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195330"
 ---
-# <a name="provision-a-linux-centos-data-science-virtual-machine-in-azure"></a>Linux CentOS-Data Science Virtual Machine kiépítése az Azure-ban
+# <a name="quickstart-set-up-a-linux-centos-data-science-virtual-machine-in-azure"></a>Gyors útmutató: Linux CentOS-Data Science Virtual Machine beállítása az Azure-ban
 
 A Linux Data Science Virtual Machine (DSVM) egy CentOS-alapú Azure-beli virtuális gép. A Linux DSVM olyan előre telepített eszközöket tartalmaz, amelyeket az adatelemzéshez és a gépi tanuláshoz használhat. 
 

@@ -1,5 +1,5 @@
 ---
-title: Language Understanding Bot Node.js v4
+title: Language Understanding bot Node. js v4
 titleSuffix: Azure Cognitive Services
 description: A Node.js használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). Ez csevegőrobot a Human Resources app használatával rövid idő alatt megvalósít egy robotmegoldást. A robot összeállításához a Bot Framework 4-es verzióját és az Azure webalkalmazás-robotot használja.
 services: cognitive-services
@@ -9,24 +9,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: a06bd5a1a061de82230e93b867ea88e333b3cc93
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8455a9c9ecff89643e090f1d763a44f97f5779f5
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442556"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70206879"
 ---
-# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Oktatóanyag: Használja a Web App Bot engedélyezve van, a Language Understanding használatánál a node.js-ben 
+# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Oktatóanyag: Webalkalmazás-robot használata Language Understanding a Node. js-ben 
 
-A Node.js használatával hozhat létre csevegőrobotot integrálva van a language understanding (LUIS). A robot épül fel az Azure-ral [Web app bot](https://docs.microsoft.com/azure/bot-service/) erőforrás és [Bot Framework version](https://github.com/Microsoft/botbuilder-dotnet) V4.
+A Node. js használatával a Language Understanding (LUIS) nyelvvel integrált csevegési robot hozható létre. A robot az Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) Resource és a [bot Framework](https://github.com/Microsoft/botbuilder-dotnet) v4-es verziójával készült.
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
 > * Webalkalmazás-robot létrehozása. Ez a folyamat egy új LUIS-appot hoz létre az Ön számára.
-> * Töltse le a robot-projektet a webes bot service által létrehozott
+> * A web bot Service által létrehozott robot-projekt letöltése
 > * A robot és az emulátor elindítása a helyi számítógépen
 > * Kimondottszöveg-eredmények megtekintése a robotban
 
@@ -36,7 +36,7 @@ A Node.js használatával hozhat létre csevegőrobotot integrálva van a langua
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
 
-## <a name="create-a-web-app-bot-resource"></a>Web app-robot-erőforrás létrehozása
+## <a name="create-a-web-app-bot-resource"></a>Webalkalmazás-robot erőforrás létrehozása
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Új erőforrás létrehozása** lehetőséget.
 
@@ -54,61 +54,61 @@ A Node.js használatával hozhat létre csevegőrobotot integrálva van a langua
     |App neve|A név lesz az altartomány a robot felhőbeli üzembe helyezésekor (például humanresourcesbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, például: `luis-nodejs-bot-johnsmith`|
     |Robotsablon|A Bot Framework beállításai – lásd a következő táblázatot|
     |A LUIS-app helye|Egyeznie kell a LUIS-erőforrás régiójával|`westus`|
-    |App service-csomag/hely|Ne változtassa meg a megadott alapértelmezett értéket.|
-    |Application Insights|Ne változtassa meg a megadott alapértelmezett értéket.|
-    |A Microsoft App ID azonosítója és jelszava|Ne változtassa meg a megadott alapértelmezett értéket.|
+    |App Service-csomag/hely|Ne módosítsa a megadott alapértelmezett értéket.|
+    |Application Insights|Ne módosítsa a megadott alapértelmezett értéket.|
+    |Microsoft-alkalmazás azonosítója és jelszava|Ne módosítsa a megadott alapértelmezett értéket.|
 
-1. Az a **Bot sablon**, jelölje be az alábbiakat, majd válassza ki a **kiválasztása** alatt ezek a beállítások gombra:
+1. A **bot**-sablonban válassza ki a következőt, majd a beállítások területen válassza a **kiválasztás** gombot:
 
     |Beállítás|Cél|Kiválasztás|
     |--|--|--|
     |SDK verziója|Bot Framework verziója|**SDK v4**|
     |SDK nyelve|Robot programozási nyelve|**Node.js**|
-    |A robot|Robot típusa|**Alapszintű robot**|
+    |Bot|Robot típusa|**Alapszintű robot**|
     
-1. Kattintson a **Létrehozás** gombra. Ezzel létrehozza a robotszolgáltatást, és üzembe helyezi azt az Azure-ban. A folyamat egyik része egy `luis-nodejs-bot-XXXX` nevű LUIS-appot hoz létre. Ez a név a /Azure Bot Service-alkalmazás neve alapján.
+1. Kattintson a **Létrehozás** gombra. Ezzel létrehozza a robotszolgáltatást, és üzembe helyezi azt az Azure-ban. A folyamat egyik része egy `luis-nodejs-bot-XXXX` nevű LUIS-appot hoz létre. Ez a név a/Azure bot Service-alkalmazás nevén alapul.
 
-    [![Web app bot létrehozása](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
+    [![Webalkalmazás robotjának létrehozása](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
-    Várjon, amíg a bot service jön létre a folytatás előtt.
+    A folytatás előtt várjon, amíg létrejött a robot szolgáltatás.
 
-## <a name="the-bot-has-a-language-understanding-model"></a>A robot a Language Understanding modellel rendelkezik.
+## <a name="the-bot-has-a-language-understanding-model"></a>A robot Language Understanding modellt tartalmaz
 
-A bot service létrehozását is létrehoz egy új LUIS alkalmazás leképezések és példa kimondott szöveg. A robot szándékleképezéseket biztosít az új LUIS-apphoz a következő szándékok esetén: 
+A bot Service létrehozási folyamata egy új LUIS-alkalmazást is létrehoz a szándékokkal és példa hosszúságú kimondott szöveg. A robot szándékleképezéseket biztosít az új LUIS-apphoz a következő szándékok esetén: 
 
 |Alapszintű robot LUIS-szándékai|példa kimondott szöveg|
 |--|--|
-|Címjegyzék repülési|`Travel to Paris`|
+|Repülőjegy|`Travel to Paris`|
 |Mégse|`bye`|
-|None|Az app tartományán kívül bármi.|
+|Nincsenek|Az app tartományán kívül bármi.|
 
 ## <a name="test-the-bot-in-web-chat"></a>A robot webes csevegési tesztelése
 
-1. Miközben továbbra is az új robot, az Azure Portalon, válassza ki a **vizsgálat a webes csevegési**. 
-1. Az a **írja be az üzenetet** szövegmezőbe írja be a szöveget `hello`. A robot a bot framework, valamint a Foglalás Párizsba repülőjegyet például adott LUIS-modellnek a példa a lekérdezésekre vonatkozó információkkal válaszol. 
+1. Miközben az új robot Azure Portal továbbra is elérhető, válassza a **tesztelés webes csevegésben**lehetőséget. 
+1. Az írja be az **üzenet** szövegmezőbe írja be a `hello`szöveget. A robot a bot-keretrendszerre vonatkozó információkkal válaszol, valamint az adott LUIS-modell lekérdezéseit is, például egy repülés Párizsba való foglalását. 
 
-    ![Képernyőkép az Azure Portalon, adja meg a "hello" szöveggel.](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
+    ![A Azure Portal képernyőképe a "Hello" szöveg beírásával.](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
 
-    A robot gyors teszteléshez a tesztelési funkciók is használhatja. További fejezze be a tesztelés, beleértve a hibakeresés, a bot kód letöltése, és használhatja a Visual Studiót. 
+    A tesztelési funkció használatával gyorsan tesztelheti a robotot. A teljes teszteléshez, beleértve a hibakeresést, töltse le a robot kódját, és használja a Visual studiót. 
 
-## <a name="download-the-web-app-bot-source-code"></a>Töltse le a web app bot forráskód
+## <a name="download-the-web-app-bot-source-code"></a>A webalkalmazás robot-forráskódjának letöltése
 A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi számítógépre. 
 
 1. Az Azure Portalon a **Robot felügyelete** szakaszban kattintson a **Build** elemre. 
 
 1. Válassza a **Robot forráskódjának letöltse** lehetőséget. 
 
-    [![Töltse le a web app bot forráskódja alapszintű robot](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
+    [![Webalkalmazás-robot forráskódjának letöltése alapszintű robothoz](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. Amikor a felugró párbeszédpanel kéri **Alkalmazásbeállítások belefoglalása a letöltött zip-fájlban?** válassza **Igen**.
+1. Ha az előugró ablak **a letöltött zip-fájlban is**megkéri az Alkalmazásbeállítások megadását, válassza az **Igen**lehetőséget.
 
 1. Tömörített forráskód esetén az üzenet tartalmazza a kód letöltéséhez szükséges hivatkozást. Kattintson a hivatkozásra. 
 
-1. Mentse a .zip-fájlt a helyi számítógépére, és bontsa ki a fájlokat. Nyissa meg a projektet a Visual Studio használatával. 
+1. Mentse a .zip-fájlt a helyi számítógépére, és bontsa ki a fájlokat. Nyissa meg a projektet a Visual Studióval. 
 
-## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Tekintse át az utterance (kifejezés) küldeni a LUIS és válasz kódja
+## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Tekintse át a kódot, hogy kinyerje a LUIS-t és a választ
 
-1. Nyissa meg a **párbeszédpanelek -> luisHelper.js** fájlt. A rendszer ezen a ponton küldi a robotban megadott felhasználói kimondott szöveget a LUIS-hoz. A LUIS válasz, a metódus egy **bookDetails** JSON-objektum. A saját robot létrehozásakor is készítsen a saját objektum visszaadása a LUIS a részleteket. 
+1. Nyissa meg a **párbeszédpaneleket – > luisHelper. js** fájlt. A rendszer ezen a ponton küldi a robotban megadott felhasználói kimondott szöveget a LUIS-hoz. A LUIS válaszát a metódus **bookDetails** JSON-objektumként adja vissza. Saját robot létrehozásakor létre kell hoznia egy saját objektumot is, amely a LUIS-ből származó részleteket adja vissza. 
 
     ```nodejs
     // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -180,7 +180,7 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
     module.exports.LuisHelper = LuisHelper;
     ```
 
-1. Nyissa meg **párbeszédpanelek -> bookingDialog.js** megérteni, hogyan a BookingDetails objektum a beszélgetés folyamat kezelésére szolgál. Utazás részletei a rendszer felkéri a lépéseket, majd a teljes foglalási megerősítette, és végül ismétlődik a felhasználó számára. 
+1. Nyissa meg a **párbeszédpaneleket – > bookingDialog. js fájlt** , hogy megtudja, hogyan használják a BookingDetails objektumot a beszélgetési folyamat kezeléséhez. Az utazási adatokat a rendszer a következő lépésekben kérdezi le: a teljes foglalás megerősítve, végül pedig visszakerül a felhasználóhoz. 
 
     ```nodejs
     // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -295,19 +295,19 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
     ```
 
 
-## <a name="install-dependencies-and-start-the-bot-code-in-visual-studio"></a>Függőségek telepítése, és indítsa el a robot kódot a Visual Studióban
+## <a name="install-dependencies-and-start-the-bot-code-in-visual-studio"></a>Függőségek telepítése és a robot kódjának elindítása a Visual Studióban
 
-1. A vscode-ban, az integrált terminálon, a függőségek telepítéséhez a parancs `npm install`.
-1. Emellett az integrált terminálon indítsa el a robot a paranccsal `npm start`. 
+1. A VSCode-ben az integrált terminálból telepítse a függőségeket a `npm install`paranccsal.
+1. Az integrált terminálból is indítsa el a robotot a paranccsal `npm start`. 
 
 
-## <a name="use-the-bot-emulator-to-test-the-bot"></a>A robot teszteléséhez a robot emulator használata
+## <a name="use-the-bot-emulator-to-test-the-bot"></a>A bot-emulátor használata a robot teszteléséhez
 
-1. A robot emulátor kezdődik, és válassza ki **nyissa meg a robot**.
-1. Az a **nyissa meg a robot** felugró párbeszédpanel, írja be a robot URL-CÍMÉT, például `http://localhost:3978/api/messages`. A `/api/messages` útvonal a robot a webcímet.
-1. Adja meg a **Microsoft App ID** és **Microsoft App jelszó**, található az a **.env** fájlt a letöltött bot kód gyökerében.
+1. Indítsa el a robot-emulátort, és válassza a **robot megnyitása**lehetőséget.
+1. A **bot megnyitása** előugró ablakban adja meg a robot URL-címét, például `http://localhost:3978/api/messages`:. Az `/api/messages` útvonal a robot webes címe.
+1. Adja meg a **Microsoft-alkalmazás azonosítóját** és a Microsoft- **alkalmazás jelszavát**, amely a letöltött robot gyökerében található **. env** fájlban található.
 
-    Igény szerint hozhat létre egy új robot, konfigurációs, és másolja a `MicrosoftAppId` és `MicrosoftAppPassword` származó a **.env** fájlt a Visual Studio-projektben a robot. A robot konfigurációs fájl neve megegyezik a robot neve kell lennie. 
+    Szükség esetén létrehozhat egy új bot-konfigurációt, és a robothoz `MicrosoftAppPassword` tartozó Visual Studio-projektben található **. env** fájlból másolhatja `MicrosoftAppId` . A bot-konfigurációs fájl nevének meg kell egyeznie a robot nevével. 
 
     ```json
     {
@@ -330,32 +330,32 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
     }
     ```
 
-1. A robot emulátorban, adja meg a `Hello` és az alapszintű robot, a kapott ugyanazt a választ kaphat a **vizsgálat a webes csevegési**.
+1. A bot-emulátorban adja `Hello` meg és kérje le ugyanazt a választ az alapszintű robotra, mint amit a **teszt webes csevegésben**kapott.
 
-    [![Alapszintű robot válasz emulátorban](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
+    [![Alapszintű bot-válasz az emulátorban](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 
-## <a name="ask-bot-a-question-for-the-book-flight-intent"></a>Kérdés feltevése robot számára a címjegyzék repülési célt
+## <a name="ask-bot-a-question-for-the-book-flight-intent"></a>Kérdezze meg a robotot a könyv repülési szándékáról
 
-1. A robot emulátorban repülőjáratra repülőjegyet írja be a következő utterance (kifejezés): 
+1. A robot-emulátorban foglaljon le egy repülőjáratot a következő kifejezés beírásával: 
 
-    ```bot
+    ```console
     Book a flight from Paris to Berlin on March 22, 2020
     ```
 
-    A robot-emulátor megerősítését kéri. 
+    A robot-emulátor megkéri a megerősítést. 
 
-1. Válassza ki **Igen**. A robot fűzi hozzá a műveletek összegzését. 
-1. A robot-emulátor a naplóból, válassza ki a tartalmazó sort `Luis Trace`. Ez megjeleníti a JSON-válasz a LUIS a leképezés és entitásai az utterance (kifejezés).
+1. Válassza az **Igen**lehetőséget. A robot a műveleteinek összegzésével válaszol. 
+1. A robot-emulátor naplójából válassza ki a sort, amely tartalmazza `Luis Trace`a elemet. Ez megjeleníti a LUIS által a cél és a Kimondás entitásai számára küldött JSON-választ.
 
-    [![Alapszintű robot válasz emulátorban](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
+    [![Alapszintű bot-válasz az emulátorban](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Még több [minták](https://github.com/microsoft/botframework-solutions) a természetes nyelvi robotokat. 
+További [mintákat](https://github.com/microsoft/botframework-solutions) tekinthet meg a társalgási robotokkal. 
 
 > [!div class="nextstepaction"]
-> [Egy egyéni tulajdonosnév-tartomány Language Understanding alkalmazás készítése](luis-quickstart-intents-only.md)
+> [Language Understanding-alkalmazás létrehozása egyéni tárgyú tartománnyal](luis-quickstart-intents-only.md)

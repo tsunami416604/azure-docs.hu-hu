@@ -1,29 +1,22 @@
 ---
-title: Egy Ubuntu Linux rendszerű adatelemző virtuális gép létrehozása
-titleSuffix: Azure
+title: Linux Ubuntu gyors üzembe helyezés
+titleSuffix: Azure Data Science Virtual Machine
 description: Állítsa be, és hozzon létre egy Data Science virtuális gép a Linux (Ubuntu) az Azure-ban, elemzési és gépi tanulás.
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-ms.author: vijetaj
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 08/13/2019
-ms.openlocfilehash: 3aa32d8e42079a1aa4bdd7a18a24f7d5d01f7c3e
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 9b323970e735a3e2a9d2cf418b787ed046c5574d
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011653"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192086"
 ---
-# <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Az adatelemző virtuális gép kiépítése Linux (Ubuntu)
+# <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Gyors útmutató: A Linux rendszerhez készült Data Science Virtual Machine beállítása (Ubuntu)
 
 A Linux rendszerhez készült Data Science Virtual Machine (DSVM) egy Ubuntu-alapú virtuálisgép-rendszerkép, amellyel könnyedén megkezdheti a gépi tanulást, beleértve az Azure-beli Deep learning szolgáltatást is. Deep learning eszközök a következők:
 

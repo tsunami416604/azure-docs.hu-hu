@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 08/23/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 6c198b6d5e9ecfed3f36ddc3be831af85a913ca5
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 1bbb0148e6f4be2afc777960afcda9c727328206
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69995838"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195061"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Hasznos tanácsok az Azure SQL Data Warehouse-hoz
 Ez a témakör az Azure SQL Data Warehouse-megoldások összeállításával kapcsolatos hasznos tippeket és ajánlott eljárásokat tartalmaz. Mielőtt belekezdene, részletesen ismerje meg az egyes lépéseket az [Azure SQL Data Warehouse-munkaterhelési mintákat és kizárási mintákat](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns) ismertető témakör elolvasásával, amely leírja, mi az az SQL Data Warehouse.
@@ -33,9 +33,9 @@ Ha előre tudja, milyen elsődleges műveleteket és lekérdezéseket futtat maj
 
 A művelettípusok előzetes ismerete segít optimalizálni a táblák kialakítását.
 
-## <a name="data-migration"></a>Adatok migrálása
+## <a name="data-migration"></a>Adatmigrálás
 
-Először töltse be az adatokat az [Azure Data Lake Store](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store)-ba vagy az Azure Blob Storage-ba. Ezután a PolyBase segítségével töltse be az adatokat az SQL Data Warehouse-ba egy előkészítési táblában. Használja a következő konfigurációt:
+Először töltse be az adatait [Azure Data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) vagy Azure Blob Storage-ba. Ezután a PolyBase segítségével töltse be az adatokat az SQL Data Warehouse-ba egy előkészítési táblában. Használja a következő konfigurációt:
 
 | Tervezés | Ajánlás |
 |:--- |:--- |
@@ -161,6 +161,6 @@ Egyetlen kattintással helyezhet üzembe küllőket az SQL-adatbázisokban az SQ
 [is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
 [adatok migrálásáról]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
 
-[Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
+[Azure Data Lake Storage]: ../data-factory/connector-azure-data-lake-store.md
 [sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
 [sys.dm_pdw_request_steps]:/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql

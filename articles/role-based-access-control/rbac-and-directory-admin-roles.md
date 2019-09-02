@@ -15,12 +15,12 @@ ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1b7183da84b994da8694440183e367f143722002
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: be37768a5cef38ae0dc49e12f1d83ba8005ab961
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345025"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194173"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>A hagyományos előfizetés-rendszergazdai szerepkörök, az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepkörök
 
@@ -31,7 +31,7 @@ Ha még csak ismerkedik az Azure-ral, a különféle Azure-beli szerepkörök m�
 
 ## <a name="how-the-roles-are-related"></a>Hogyan kapcsolódnak egymáshoz a szerepkörök?
 
-Az Azure szerepköreinek megismeréséhez érdemes tudni azok előzményeit is. Azure jelent, amikor erőforrásokhoz való hozzáférés lett felügyelt mindössze három rendszergazdai szerepkörökről: A fiók rendszergazdája, szolgáltatás-rendszergazda és a társ-rendszergazdaként. Az Azure-erőforrásokhoz készült szerepköralapú hozzáférés-vezérlés (RBAC) később került be a funkciók közé. Az Azure RBAC egy viszonylag új engedélyezési rendszer, amely részletes hozzáférés-kezelési lehetőségeket nyújt az Azure-erőforrásokhoz. Az RBAC számos beépített szerepkört tartalmaz, különböző hatókörökben rendelhető hozzá, és saját egyéni szerepkörök létrehozását is lehetővé teszi. Az Azure AD-ben az erőforrások (pl. felhasználók, csoportok és tartományok) kezeléséhez többféle Azure AD-rendszergazdai szerepkör is rendelkezésre áll.
+Az Azure szerepköreinek megismeréséhez érdemes tudni azok előzményeit is. Amikor az Azure eredetileg megjelent, az erőforrásokhoz való hozzáférés mindössze három rendszergazdai szerepkörrel lett felügyelve: Fiók rendszergazdája, szolgáltatás rendszergazdája és társ-rendszergazda. Az Azure-erőforrásokhoz készült szerepköralapú hozzáférés-vezérlés (RBAC) később került be a funkciók közé. Az Azure RBAC egy viszonylag új engedélyezési rendszer, amely részletes hozzáférés-kezelési lehetőségeket nyújt az Azure-erőforrásokhoz. Az RBAC számos beépített szerepkört tartalmaz, különböző hatókörökben rendelhető hozzá, és saját egyéni szerepkörök létrehozását is lehetővé teszi. Az Azure AD-ben az erőforrások (pl. felhasználók, csoportok és tartományok) kezeléséhez többféle Azure AD-rendszergazdai szerepkör is rendelkezésre áll.
 
 Az alábbi ábra a hagyományos előfizetés-rendszergazdai szerepkörök, az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepkörök közötti kapcsolatok áttekintését mutatja be.
 
@@ -42,21 +42,21 @@ Az alábbi ábra a hagyományos előfizetés-rendszergazdai szerepkörök, az Az
 
 Az Azure három hagyományos előfizetés-rendszergazdai szerepköre a fiókadminisztrátor, a szolgáltatás-rendszergazda és a társadminisztrátor. A hagyományos előfizetés-rendszergazdák teljes körű hozzáféréssel rendelkeznek az Azure-előfizetéshez. Az Azure Portal, Azure Resource Manager API-k és a klasszikus üzemi modell segítségével végzik az erőforrások felügyeletét. Az Azure-beli regisztrációhoz használt fiók lesz automatikusan a fiókadminisztrátor és a szolgáltatás-rendszergazda. Ezután további társadminisztrátorok is hozzáadhatók. A szolgáltatás-rendszergazda és a társadminisztrátor ugyanolyan szintű hozzáféréssel rendelkeznek az előfizetés hatókörében, mint a Tulajdonos szerepkörrel (Azure RBAC szerepkör) rendelkező felhasználók. Az alábbi tábla a három hagyományos előfizetés-rendszergazdai szerepkör közötti különbségeket ismerteti.
 
-| Hagyományos előfizetés-adminisztrátor | Korlát | Engedélyek | Megjegyzések |
+| Hagyományos előfizetés-rendszergazda | Korlát | Engedélyek | Megjegyzések |
 | --- | --- | --- | --- |
 | Fiókadminisztrátor | Azure-fiókonként 1 | <ul><li>Hozzáfér az [Azure Fiókközponthoz](https://account.azure.com/Subscriptions).</li><li>Az összes előfizetést egyetlen fiókból kezelheti.</li><li>Új előfizetéseket hozhat létre.</li><li>Megszüntetheti az előfizetéseket.</li><li>Módosíthatja az előfizetés számlázási lehetőségeit.</li><li>Megváltoztathatja a szolgáltatás-rendszergazdát.</li></ul> | Elméleti szinten az előfizetés számlázási tulajdonosa.<br>A fiókadminisztrátor nem fér hozzá az Azure Portalhoz. |
 | Szolgáltatás-rendszergazda | Azure-előfizetésenként 1 | <ul><li>Kezelheti a szolgáltatásokat az [Azure Portalon](https://portal.azure.com).</li><li>Felhasználókat rendelhet hozzá a társadminisztrátor szerepkörhöz.</li></ul> | Alapértelmezés szerint új előfizetések esetén a fiókadminisztrátor a szolgáltatás-rendszergazda is egyben.<br>A szolgáltatás-rendszergazda ugyanolyan szintű hozzáféréssel rendelkezik az előfizetés hatókörében, mint a Tulajdonos szerepkörrel rendelkező felhasználók.<br>A szolgáltatásadminisztrátor teljes hozzáféréssel rendelkezik az Azure Portalhoz. |
 | Társadminisztrátor | Előfizetésenként 200 | <ul><li>Ugyanazokkal a hozzáférési jogosultságokkal rendelkezik, mint a szolgáltatás-rendszergazda, de nem módosíthatja az előfizetések és az Azure-címtárak közötti társítást.</li><li>Felhasználókat rendelhet hozzá a társadminisztrátori szerepkörhöz, de nem változathatja meg a szolgáltatás-rendszergazda személyét.</li></ul> | A társadminisztrátor ugyanolyan szintű hozzáféréssel rendelkezik az előfizetés hatókörében, mint a Tulajdonos szerepkörrel rendelkező felhasználók. |
 
-Az Azure Portalon Társadminisztrátorok felügyelheti és tekintheti meg a szolgáltatás-rendszergazda használatával a **klasszikus rendszergazdák** fülre.
+A Azure Portal a rendszergazdák kezelhetik a rendszergazdákat vagy megtekinthetik a szolgáltatás-rendszergazdát a **klasszikus rendszergazdák** lapon.
 
-![Az Azure Portalon a klasszikus Azure-előfizetés rendszergazdák](./media/rbac-and-directory-admin-roles/classic-administrators.png)
+![A klasszikus Azure-előfizetés rendszergazdái a Azure Portal](./media/rbac-and-directory-admin-roles/classic-administrators.png)
 
-Az Azure Portalon megtekintheti vagy módosíthatja a szolgáltatás-rendszergazda vagy a Tulajdonságok panelen az előfizetés Fiókadminisztrátori megtekintéséhez.
+A Azure Portal megtekintheti vagy módosíthatja a szolgáltatás-rendszergazdát, vagy megtekintheti a fiók rendszergazdáját az előfizetés tulajdonságok paneljén.
 
 ![Fiókadminisztrátor és szolgáltatás-rendszergazda az Azure Portalon](./media/rbac-and-directory-admin-roles/account-admin.png)
 
-További információkért lásd: [klasszikus Azure-előfizetés rendszergazdái](classic-administrators.md).
+További információ: [klasszikus Azure-előfizetés rendszergazdái](classic-administrators.md).
 
 ### <a name="azure-account-and-azure-subscriptions"></a>Azure-fiók és Azure-előfizetések
 
@@ -70,26 +70,26 @@ A fiókok és az előfizetések kezelése az [Azure Fiókközpontban](https://ac
 
 Az Azure RBAC az [Azure Resource Managerre](../azure-resource-manager/resource-group-overview.md) épülő engedélyezési rendszer, amely részletes hozzáférés-kezelési lehetőségeket nyújt például a számítási és a tárolási Azure-erőforrásokhoz. Az Azure RBAC több mint 70 beépített szerepkört tartalmaz. Négy alapvető RBAC-szerepkör létezik. Az első három minden erőforrástípusra vonatkozik:
 
-| Azure RBAC-szerepkör | Engedélyek | Megjegyzések |
+| Azure-beli RBAC szerepkör | Engedélyek | Megjegyzések |
 | --- | --- | --- |
 | [Tulajdonos](built-in-roles.md#owner) | <ul><li>Teljes hozzáféréssel rendelkezik az összes erőforráshoz.</li><li>Hozzáférést delegálhat mások számára.</li></ul> | A szolgáltatás-rendszergazda és társadminisztrátor Tulajdonos szerepkört kap az előfizetés hatókörében.<br>Minden erőforrástípusra alkalmazható. |
 | [Közreműködő](built-in-roles.md#contributor) | <ul><li>Bármilyen típusú Azure-erőforrást létrehozhat és kezelhet.</li><li>Nem adhat hozzáférést mások számára.</li></ul> | Minden erőforrástípusra alkalmazható. |
 | [Olvasó](built-in-roles.md#reader) | <ul><li>Megtekintheti az Azure-erőforrásokat.</li></ul> | Minden erőforrástípusra alkalmazható. |
 | [Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) | <ul><li>Kezelheti az Azure-erőforrásokhoz való felhasználói hozzáférést.</li></ul> |  |
 
-A többi beépített szerepkör adott Azure-erőforrások kezelését teszi lehetővé. Például a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkör virtuális gépek létrehozását és kezelését teszi lehetővé. A beépített szerepkörök listája: [beépített szerepkörök az Azure-erőforrások](built-in-roles.md).
+A többi beépített szerepkör adott Azure-erőforrások kezelését teszi lehetővé. Például a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkör virtuális gépek létrehozását és kezelését teszi lehetővé. Az összes beépített szerepkör listáját itt tekintheti meg: [beépített szerepkörök az Azure-erőforrásokhoz](built-in-roles.md).
 
 Az RBAC-t csak az Azure Portal és az Azure Resource Manager API-k támogatják. Azok a felhasználók, csoportok és alkalmazások, amelyekhez RBAC-szerepkör van hozzárendelve, nem használhatják a [klasszikus Azure üzemi modell API-jait](../azure-resource-manager/resource-manager-deployment-model.md).
 
-Az Azure Portalon az RBAC-t használó szerepkör-hozzárendelések a **Hozzáférés-vezérlés (IAM)** panelen jelennek meg. Ezen a panelen található során a portált, mint például a felügyeleti csoportokhoz, előfizetések, erőforráscsoportok és különböző erőforrásokat.
+Az Azure Portalon az RBAC-t használó szerepkör-hozzárendelések a **Hozzáférés-vezérlés (IAM)** panelen jelennek meg. Ez a panel a portálon, például a felügyeleti csoportokban, előfizetésekben, erőforráscsoportok és különböző erőforrásokban található meg.
 
 ![A Hozzáférés-vezérlés (IAM) panel az Azure Portalon](./media/rbac-and-directory-admin-roles/access-control-role-assignments.png)
 
-Amikor rákattint a **szerepkörök** lapon látni fogja a beépített és egyéni szerepkörök listája.
+Amikor a **szerepkörök** lapra kattint, megjelenik a beépített és az egyéni szerepkörök listája.
 
 ![Beépített szerepkörök az Azure Portalon](./media/rbac-and-directory-admin-roles/roles-list.png)
 
-További információkért lásd: [rbac-RÓL és az Azure portal segítségével Azure-erőforrásokhoz való hozzáférés kezelése](role-assignments-portal.md).
+További információ: [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure Portal használatával](role-assignments-portal.md).
 
 ## <a name="azure-ad-administrator-roles"></a>az Azure AD-rendszergazdai szerepkörök összehasonlítása
 
@@ -97,11 +97,11 @@ Az Azure AD-rendszergazdai szerepkörök az egy címtárban található Azure AD
 
 | Azure AD-rendszergazdai szerepkör | Engedélyek | Megjegyzések |
 | --- | --- | --- |
-| [Globális rendszergazda](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) | <ul><li>Kezeli az Azure Active Directory összes rendszergazdai funkciójához való hozzáférést, valamint az Azure Active Directoryban összevont szolgáltatásokat.</li><li>Rendszergazdai szerepköröket rendelhet másokhoz.</li><li>Bármely felhasználó és az összes többi rendszergazda jelszavát visszaállíthatja.</li></ul> | Az Azure Active Directory-bérlőre regisztráló személy lesz a globális rendszergazda. |
+| [Globális rendszergazda](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Kezeli az Azure Active Directory összes rendszergazdai funkciójához való hozzáférést, valamint az Azure Active Directoryban összevont szolgáltatásokat.</li><li>Rendszergazdai szerepköröket rendelhet másokhoz.</li><li>Bármely felhasználó és az összes többi rendszergazda jelszavát visszaállíthatja.</li></ul> | Az Azure Active Directory-bérlőre regisztráló személy lesz a globális rendszergazda. |
 | [Felhasználói rendszergazda](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>A felhasználók és csoportok minden összetevőjét létrehozhatja és kezelheti.</li><li>Támogatási jegyek kezelése</li><li>Monitorozhatja a szolgáltatás állapotát.</li><li>Módosíthatja a felhasználók, az ügyfélszolgálati rendszergazdák és egyéb felhasználói rendszergazdák jelszavát.</li></ul> |  |
 | [Számlázási rendszergazda](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Vásárlásokat hajthat végre.</li><li>Előfizetések kezelése</li><li>Támogatási jegyek kezelése</li><li>Monitorozhatja a szolgáltatás állapotát.</li></ul> |  |
 
-Az Azure Portalon az Azure AD-rendszergazdai szerepkörök listája a **Szerepkörök és adminisztrátorok** panelen található. Az Azure AD felügyeleti szerepkörök listáját lásd: [rendszergazdája szerepkör engedélyei az Azure Active Directoryban](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Az Azure Portalon az Azure AD-rendszergazdai szerepkörök listája a **Szerepkörök és adminisztrátorok** panelen található. Az összes Azure AD-rendszergazdai szerepkör listáját lásd: [rendszergazdai szerepkör engedélyei Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ![Azure AD-rendszergazdai szerepkörök az Azure Portalon](./media/rbac-and-directory-admin-roles/directory-admin-roles.png)
 
@@ -114,7 +114,7 @@ Magas szinten az Azure RBAC-szerepkörök szabályozzák az Azure-erőforrások 
 | Azure-erőforrásokhoz való hozzáférés kezelése | Az Azure Active Directory-erőforrásokhoz való hozzáférést kezelik. |
 | Támogatják az egyéni szerepköröket. | Saját szerepkörök nem hozhatók létre. |
 | A hatókör több szinten adható meg (kezelési csoport, előfizetés, erőforráscsoport, erőforrás). | A hatókör a bérlő szintje. |
-| A szerepkörre vonatkozó információk az Azure Portalon, az Azure CLI-ben, az Azure PowerShellben, az Azure Resource Manager-sablonokban vagy a REST API-n érhetők el. | Szerepköradatok érhetők el az Azure felügyeleti portál, a Microsoft 365 felügyeleti központ a Microsoft Graph, Azure ad PowerShell |
+| A szerepkörre vonatkozó információk az Azure Portalon, az Azure CLI-ben, az Azure PowerShellben, az Azure Resource Manager-sablonokban vagy a REST API-n érhetők el. | A szerepkör-információk az Azure felügyeleti portálon, Microsoft 365 felügyeleti központban, Microsoft Graphban, a AzureAD PowerShellben érhetők el. |
 
 ### <a name="do-azure-rbac-roles-and--azure-ad-administrator-roles-overlap"></a>Van átfedés az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepkörök között?
 
@@ -126,6 +126,6 @@ Számos Azure AD-rendszergazdai szerepkör terjed ki az Azure AD-re és a Micros
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mi a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrások?](overview.md)
+- [Mi a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrásokhoz?](overview.md)
 - [Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 - [Klasszikus Azure-előfizetés rendszergazdái](classic-administrators.md)

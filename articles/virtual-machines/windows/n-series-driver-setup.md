@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc6e37b088c6bcbb2de4693eb50be661db869ecd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 92ebd34c20e3733971593344925dcb566a1bf912
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089190"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207367"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>NVIDIA GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépeken 
 
@@ -40,6 +40,8 @@ Az alapszintű specifikációk, a tárolási kapacitások és a lemezek részlet
 Miután a GRID-illesztőprogram telepítése egy virtuális gépre megtörténik, újraindítás szükséges. A CUDA-illesztőprogram telepítése után a rendszer nem igényel újraindítást.
 
 ## <a name="verify-driver-installation"></a>Illesztőprogram telepítésének ellenőrzése
+
+Vegye figyelembe, hogy az NVIDIA Vezérlőpult csak a GRID-illesztőprogram telepítésével érhető el. Ha telepítette a CUDA-illesztőprogramokat, az NVIDIA Vezérlőpult nem lesz látható.
 
 Az illesztőprogram telepítését a Eszközkezelő ellenőrizheti. Az alábbi példa a Tesla K80 kártya sikeres konfigurálását mutatja be egy Azure NC virtuális gépen.
 

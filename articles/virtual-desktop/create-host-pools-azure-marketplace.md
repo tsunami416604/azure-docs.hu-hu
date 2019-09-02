@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 6629a612f7067394d9da83a81bdf46467a6e033a
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d6628f1522880f650bfd8c728fe46fd050a8e6a0
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163731"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208386"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Oktatóanyag: Gazdagépkészlet létrehozása az Azure Marketplace használatával
 
@@ -44,7 +44,7 @@ Az Azure Marketplace ajánlatának futtatása új címkészlet kiépítéséhez:
 2. A piactér keresési ablakában adja meg a **Windows virtuális asztal** kifejezést.
 3. Válassza **a Windows virtuális asztal – címkészlet kiépítése**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
 
-Kövesse az útmutatást a megfelelő pengék adatainak megadásához.
+Ezután kövesse a következő szakaszban található utasításokat a megfelelő pengék adatainak megadásához.
 
 ### <a name="basics"></a>Alapvető beállítások
 
@@ -56,6 +56,9 @@ Az **alapvető beállítások** panel az alábbi műveleteket hajtja végre:
 4. Válassza az **új létrehozása** lehetőséget, és adja meg az új erőforráscsoport nevét.
 5. A **hely**mezőben válassza ki a virtuális hálózattal megegyező helyet, amely a Active Directory-kiszolgálóhoz kapcsolódik.
 6. Kattintson az **OK** gombra.
+
+>[!IMPORTANT]
+>Ha tiszta Azure Active Directory Domain Services és Azure Active Directory megoldást használ, ügyeljen arra, hogy a gazdagépet ugyanabban a régióban telepítse, mint a Azure Active Directory Domain Services a tartományhoz való csatlakozás és a hitelesítő adatokkal kapcsolatos hibák elkerülése érdekében.
 
 ### <a name="configure-virtual-machines"></a>Virtuális gépek konfigurálása
 

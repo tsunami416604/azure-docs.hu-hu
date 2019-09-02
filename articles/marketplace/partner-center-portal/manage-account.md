@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 99f981698daf12bf7d493159fc7fd08a98a28104
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8c3b9523f6e6991723b0da721dbf7667ee340772
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194261"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207969"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>A kereskedelmi piactér-fiók kezelése a partner Centerben 
 
@@ -151,7 +151,7 @@ A partner Center [Azure Active Directory](https://docs.microsoft.com/azure/activ
 
 ## <a name="manage-users"></a>Felhasználók kezelése
 
-A partner Center **felhasználói** szakasza ( **Fiókbeállítások**alatt) az Azure ad használatával felügyelheti a partner Center-fiókhoz hozzáférő felhasználókat, csoportokat és Azure ad-alkalmazásokat. Vegye figyelembe, hogy a felhasználók kezeléséhez be kell jelentkeznie a [munkahelyi fiókjával](./company-work-accounts.md) (a társított Azure ad-Bérlővel). Ha egy másik munkahelyi fiókon vagy bérlőn belül szeretné felügyelni a felhasználókat, ki kell jelentkeznie, majd újra be kell jelentkeznie egy **kezelői** engedélyekkel rendelkező felhasználóként az adott munkahelyi fiókra/bérlőre. 
+A partner Center **felhasználói** szakasza ( **Fiókbeállítások**alatt) az Azure ad használatával felügyelheti a partner Center-fiókhoz hozzáférő felhasználókat, csoportokat és Azure ad-alkalmazásokat. A felhasználók kezeléséhez be kell jelentkeznie a [munkahelyi fiókjával](./company-work-accounts.md) (a társított Azure ad-Bérlővel). Ha egy másik munkahelyi fiókon vagy bérlőn belül szeretné felügyelni a felhasználókat, ki kell jelentkeznie, majd újra be kell jelentkeznie egy **kezelői** engedélyekkel rendelkező felhasználóként az adott munkahelyi fiókra/bérlőre. 
 
 Miután bejelentkezett a munkahelyi fiókjával (Azure AD-Bérlővel), a következőket teheti:
 - [Felhasználók hozzáadása vagy eltávolítása](#add-or-remove-users)
@@ -300,20 +300,19 @@ Ha az Azure AD-alkalmazás adatokat olvas és ír a Microsoft Azure ADban, szük
 4.  Ha további kulcsokat szeretne létrehozni, válassza a **másik kulcs hozzáadása**elemet.
 
 
-### <a name="define-user-roles-and-permissions"></a>Felhasználói szerepkörök és engedélyek definiálása
+## <a name="define-user-roles-and-permissions"></a>Felhasználói szerepkörök és engedélyek definiálása
 
-A vállalat felhasználóinak a következő szerepköröket és engedélyeket rendelhetik a kereskedelmi piactér programhoz a partner Centerben. 
+A vállalat felhasználóinak a következő szerepköröket és engedélyeket rendelhetik a kereskedelmi piactér programhoz a partner Centerben:
 
-|**Szerepkör**|**Engedélyek**|
-|----------------------------------|---------------------------------|
-|Manager|-Hozzáférhet az összes Microsoft-fiók szolgáltatáshoz, kivéve az adó-és kifizetési beállításokat|
-|      |-Képes a felhasználók, szerepkörök és munkahelyi fiókok (bérlők) kezelésére|
-|Fejlesztő|-Képes az ajánlatok kezelésére és közzétételére|
-|      |-Megtekintheti a kiadói jelentéseket|
-|Globális rendszergazda|-Nem releváns a kereskedelmi piactéren|
-|Üzleti közreműködő|-Nem releváns a kereskedelmi piactéren|
-|Pénzügyi közreműködő|-Nem releváns a kereskedelmi piactéren|
-|Marketingszakértő|-Nem releváns a kereskedelmi piactéren|
+- **Manager**
+  - Elérheti az összes Microsoft-fiók funkciót az adó-és kifizetési beállítások kivételével
+  - Felügyelheti a felhasználókat, a szerepköröket és a munkahelyi fiókokat (bérlőket)
+- **Fejlesztői**
+  - Kezelheti és közzéteheti az ajánlatokat
+  - Megtekintheti a kiadói jelentéseket
+
+> [!NOTE]
+> A globális rendszergazda, az üzleti közreműködő, a pénzügyi közreműködő és a marketinges szerepkörök nem használhatók a kereskedelmi piactér programban, és nincsenek hozzájuk társított engedélyek.
 
 További információ a szerepkörök és engedélyek kezeléséről a partner Center más területein, például a Azure Active Directory (AD), a felhőalapú megoldás-szolgáltató (CSP), a Vezérlőpult-gyártó (CPV), a vendég felhasználók vagy a Microsoft Partner Network (MPN): [felhasználói szerepkörök társítása és engedélyek a partner Centerben](https://docs.microsoft.com/partner-center/permissions-overview).
 

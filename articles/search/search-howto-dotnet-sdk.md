@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: brjohnst
-ms.openlocfilehash: 42d3a4a0840e7241666f66a09e7e6b11342cbfbc
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 3f167ee082b751f6bd686c0543db6a262615e486
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182263"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208240"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>A Azure Search használata .NET-alkalmazásokból
 
@@ -579,7 +579,7 @@ Az SDK JSON.NET használ a dokumentumok szerializálásához és deszerializál�
 * A kód és a mezőnevek nevei közötti leképezés az indexben.
 * Létrehozhat olyan egyéni attribútumokat, amelyek a tulajdonságok megfeleltetéséhez használhatók a dokumentumok mezőihez.
 
-Az egyéni szerializálás megvalósítására példákat talál a Azure Search .NET SDK-ban a GitHubon. [Ez a mappa](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Search/Search.Tests/Tests/Models)jó kiindulási pont. Az egyéni szerializálási tesztek által használt osztályokat tartalmazza.
+Az egyéni szerializálás megvalósítására példákat talál a Azure Search .NET SDK-ban a GitHubon. [Ez a mappa](https://github.com/Azure/azure-sdk-for-net/tree/4f6f4e4c90200c1b0621c4cead302a91e89f2aba/sdk/search/Microsoft.Azure.Search/tests/Tests/Models)jó kiindulási pont. Az egyéni szerializálási tesztek által használt osztályokat tartalmazza.
 
 ### <a name="searching-for-documents-in-the-index"></a>Dokumentumok keresése az indexben
 A minta alkalmazás utolsó lépése az index egyes dokumentumainak megkeresése:

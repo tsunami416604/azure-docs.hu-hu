@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 091fb7cb9e74166b1e01c00834c2346dd2f0fd8b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 699c8ce559d26ad226ad1dfd7f7266fe8c4acdfb
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835540"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207190"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: Az SAML-jogkivonatban kiadott szerepkör-jogcím konfigurálása nagyvállalati alkalmazásokhoz
 
@@ -59,7 +59,7 @@ Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkci
 
     ![Tulajdonságok lap](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. Nyissa meg az [Azure ad Graph Explorert](https://developer.microsoft.com/graph/graph-explorer) egy másik ablakban, és hajtsa végre a következő lépéseket:
+6. Nyissa meg [Microsoft Graph Explorert](https://developer.microsoft.com/graph/graph-explorer) egy másik ablakban, és hajtsa végre a következő lépéseket:
 
     a. Jelentkezzen be a Graph Explorer-webhelyre a bérlőhöz tartozó globális rendszergazdai vagy rendszergazdai hitelesítő adatok használatával.
 
@@ -186,7 +186,7 @@ Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkci
 
 Meglévő szerepkör frissítéséhez hajtsa végre a következő lépéseket:
 
-1. Nyissa meg az [Azure ad Graph Explorert](https://developer.microsoft.com/graph/graph-explorer).
+1. Nyissa meg [Microsoft Graph Explorert](https://developer.microsoft.com/graph/graph-explorer).
 
 2. Jelentkezzen be a Graph Explorer-webhelyre a bérlőhöz tartozó globális rendszergazdai vagy rendszergazdai hitelesítő adatok használatával.
 
@@ -224,7 +224,7 @@ Meglévő szerepkör frissítéséhez hajtsa végre a következő lépéseket:
 
 Meglévő szerepkör törléséhez hajtsa végre a következő lépéseket:
 
-1. Nyissa meg az [Azure ad Graph Explorert](https://developer.microsoft.com/graph/graph-explorer) egy másik ablakban.
+1. Nyissa meg [Microsoft Graph Explorert](https://developer.microsoft.com/graph/graph-explorer) egy másik ablakban.
 
 2. Jelentkezzen be a Graph Explorer-webhelyre a bérlőhöz tartozó globális rendszergazdai vagy rendszergazdai hitelesítő adatok használatával.
 

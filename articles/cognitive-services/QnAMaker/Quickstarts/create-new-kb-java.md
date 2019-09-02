@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 767866fd6768237c4d3a0d7ea422521254414fb3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 06e2a772bfad7b1964f813a6cb6266efe61c6ccf
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559871"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70206849"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Gyors útmutató: Tudásbázis létrehozása QnA Maker Java használatával
 
@@ -100,7 +100,7 @@ Ismételje a hívást, amíg nem sikerül vagy meg nem hiúsul:
 ```
 
 ## <a name="add-a-main-method"></a>Fő metódus hozzáadása
-A fő metódus létrehozza a tudásbázist, és kérést indít az állapotellenőrzéshez. A rendszer visszaadja a művelet AZONOSÍTÓját a POST Response **fejléc mezőjében**, majd az útvonal részeként használja a Get kérelemben. A `while` hurok újrapróbálkozik az állapottal, ha az nem fejeződött be.
+A fő metódus létrehozza a tudásbázist, és kérést indít az állapotellenőrzéshez. A rendszer visszaadja a művelet AZONOSÍTÓját a POST Responsefejléc mezőjében, majd az útvonal részeként használja a Get kérelemben. A `while` hurok újrapróbálkozik az állapottal, ha az nem fejeződött be.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 
@@ -114,7 +114,7 @@ A fő metódus létrehozza a tudásbázist, és kérést indít az állapotellen
 
 2. Írja be a következő parancsot egy parancssorba a program futtatásához. A parancs egy kérést küld a QnA Maker API-ra a tudásbázis létrehozásához, majd 30 másodpercenként lekérdezi az eredményeket. Mindegyik válasz megjelenik a konzolablakban.
 
-    ```base
+    ```bash
     java -cp ",;libs/*" CreateKB
     ```
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/06/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 2902e63f65db3883d6d8f442db273d19f60e82a8
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 1724e2d81f1a18da5a200637cd25636166d5cb37
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012784"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70206753"
 ---
 # <a name="quickstart-qna-maker-client-library-for-net"></a>Gyors útmutató: A .NET-hez készült ügyféloldali kódtár QnA Maker
 
@@ -182,7 +182,7 @@ A _hurok_ és a _feladat._ a következő kódrészlet késleltetése az újrapr�
 
 Futtassa az alkalmazást a DotNet `run` paranccsal az alkalmazás könyvtárából.
 
-```dotnet
+```console
 dotnet run
 ```
 

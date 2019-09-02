@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 210724e8a8b9b585a3e308b8e321d809e4e897a1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c78359920ebc5faab2e0a678a901bcb8581a4e45
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560652"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207332"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Oktatóanyag: Webalkalmazás-robot használata Language Understanding használatávalC#
 
@@ -54,7 +54,7 @@ A C# használatával a Language Understanding (Luis) segítségével integrált 
     |App neve|A név lesz az altartomány a robot felhőbeli üzembe helyezésekor (például humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, például: `luis-csharp-bot-johnsmith`|
     |Robotsablon|A Bot Framework beállításai – lásd a következő táblázatot|
     |A LUIS-app helye|Egyeznie kell a LUIS-erőforrás régiójával|`westus`|
-    |App Service-csomag helye|Ne módosítsa a megadott alapértelmezett értéket.|
+    |App Service-csomag/hely|Ne módosítsa a megadott alapértelmezett értéket.|
     |Application Insights|Ne módosítsa a megadott alapértelmezett értéket.|
     |Microsoft-alkalmazás azonosítója és jelszava|Ne módosítsa a megadott alapértelmezett értéket.|
 
@@ -347,7 +347,7 @@ Indítsa el a robotot a Visual Studióban. Ekkor megnyílik egy böngészőablak
 
 1. A robot-emulátorban foglaljon le egy repülőjáratot a következő kifejezés beírásával: 
 
-    ```bot
+    ```console
     Book a flight from Paris to Berlin on March 22, 2020
     ```
 

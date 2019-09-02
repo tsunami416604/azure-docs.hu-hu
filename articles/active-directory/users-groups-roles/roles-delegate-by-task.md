@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62814bb1e2934c406dc5fb1eb3b3bc3f3d2ee3b7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3799496d13259c943847625a2cf6a39a8edb1d35
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135551"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207246"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök felügyeleti feladat szerint Azure Active Directory
 
@@ -143,6 +143,11 @@ Vállalati alkalmazások üzembe helyezésének frissítése | Vállalati alkalm
 Vállalati alkalmazás önkiszolgáló frissítése | Vállalati alkalmazás tulajdonosa ([lásd](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)a dokumentációt) | Cloud Application Administrator, alkalmazás-rendszergazda
 Egyszeri bejelentkezési tulajdonságok frissítése | Vállalati alkalmazás tulajdonosa ([lásd](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)a dokumentációt) | Cloud Application Administrator, alkalmazás-rendszergazda
 
+## <a name="entitlement-management"></a>Jogosultságkezelés
+Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
+---- | --------------------- | ----------------
+Erőforrások hozzáadása egy katalógushoz | Felhasználói adminisztrátor | A jogosultságok kezelése szolgáltatással delegálhatja ezt a feladatot a katalógus tulajdonosának ([lásd](../governance/entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)a dokumentációt).
+SharePoint Online-webhelyek hozzáadása a katalógushoz | Globális rendszergazda
 
 
 ## <a name="groups"></a>Csoportok

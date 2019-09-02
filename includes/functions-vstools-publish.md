@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: a0cf557cec0f20d257c3c70290e2d74f077d881a
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b96586c801acfc0419b80fa725a468dcb896f79e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68593805"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70197140"
 ---
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget.
 
@@ -25,7 +25,7 @@ ms.locfileid: "68593805"
     | ------------ |  -------------------------------------------------- |
     | **Azure Functions használati terv** |   Ha a projektet egy [felhasználási](../articles/azure-functions/functions-scale.md#consumption-plan)csomagban futó Function alkalmazásban teszi közzé, csak a functions-alkalmazás végrehajtása után kell fizetnie. Más üzemeltetési csomagok magasabb költségekkel járnak. További információ: [Azure functions skálázás és üzemeltetés](../articles/azure-functions/functions-scale.md). | 
     | **Új létrehozása** | A kapcsolódó erőforrásokkal rendelkező új Function-alkalmazás az Azure-ban jön létre. Ha a **Meglévő kiválasztása** elemet választja, az Azure-beli meglévő függvényalkalmazás összes fájlját felülírják a helyi projekt fájljai. Csak akkor használja ezt a lehetőséget, ha frissítéseket tesz újra közzé egy meglévő függvényalkalmazásba. |
-    | **Futtatás a csomagfájl alapján** | A Function alkalmazás üzembe helyezése a [zip](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) [-](../articles/azure-functions/run-functions-from-deployment-package.md) telepítéssel, a csomaghoz való futtatási móddal engedélyezve. A függvények futtatásának ajánlott módja, ami jobb teljesítményt eredményez. |
+    | **Futtatás a csomagfájl alapján** | A Function alkalmazás üzembe helyezése a [zip](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) [-](../articles/azure-functions/run-functions-from-deployment-package.md) telepítéssel, a csomaghoz való futtatási móddal engedélyezve. A függvények futtatásának ajánlott módja, ami jobb teljesítményt eredményez. Ha nem használja ezt a lehetőséget, ügyeljen arra, hogy a Function app-projekt helyileg fusson, mielőtt közzéteszi az Azure-ban. |
 
 
 3. Kattintson a **Publish** (Közzététel) elemre. Ha még nem jelentkezett be Azure-fiókjába a Visual studióból, válassza a **Bejelentkezés**lehetőséget. Létrehozhat egy ingyenes Azure-fiókot is.

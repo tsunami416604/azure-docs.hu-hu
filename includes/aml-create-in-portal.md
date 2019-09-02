@@ -9,22 +9,26 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
-ms.openlocfilehash: 3955995ed1a7a48cfe323db5bf0e767446d89534
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: dee813cbe1da6a6300f65b7005bf4a4b0226112a
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164068"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208600"
 ---
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a használt Azure-előfizetés hitelesítő adataival. 
 
 1. A Azure Portal bal felső sarkában válassza az **+ erőforrás létrehozása**lehetőséget.
+
+      ![Új erőforrás létrehozása](media/aml-create-in-portal/portal-create-resource.png)
 
 1. A keresősáv használatával megkeresheti **Machine learning szolgáltatás**munkaterületét.
 
 1. Válassza **Machine learning szolgáltatás**munkaterületet.
 
 1. A **Machine learning szolgáltatás** munkaterülete ablaktáblán kattintson a **Létrehozás** elemre a kezdéshez.
+
+  
 
 1. Konfigurálja az új munkaterületet úgy, hogy megadja a munkaterület nevét, az előfizetést, az erőforráscsoportot és a helyet.
 

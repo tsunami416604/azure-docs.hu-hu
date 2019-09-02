@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
 ms.service: virtual-machines-sql
+ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/24/2019
+ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f4dd529481a6216e43d35c76ecee734543d487f3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f0222c64b53bf9e6e8dc69da42d6e6a9c5549765
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100477"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208363"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Felügyeleti feladatok automatizálása Azure-beli virtuális gépeken a SQL Server IaaS-ügynök bővítmény használatával
 > [!div class="op_single_selector"]
@@ -33,13 +34,6 @@ Az SQL Server IaaS-ügynök bővítmény (SqlIaasExtension) Azure-beli virtuáli
 
 A cikk klasszikus verziójának megtekintéséhez lásd: [SQL Server IaaS-ügynök bővítmény SQL Server virtuális gépekhez (klasszikus)](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md).
 
-A SQL Server IaaS bővítmény három kezelhetőségi módot biztosít: 
-
-- A **teljes** mód biztosítja az összes funkciót, de a SQL Server és a rendszergazdai engedélyek újraindítását igényli. Ez a beállítás alapértelmezés szerint telepítve van. A SQL Server VM egyetlen példánnyal való felügyeletére használható. 
-
-- A **Lightweight** nem igényli SQL Server újraindítását, de csak az SQL Server licenc típusának és kiadásának módosítását támogatja. Ezzel a beállítással SQL Server virtuális gépek több példánnyal, vagy a feladatátvevő fürt példányaiban való részvételre. 
-
-- A Windows Server 2008-ra telepített SQL Server 2008-es és SQL Server 2008 R2-es verzió. A Windows Server 2008-rendszerkép ezen módjának használatáról további információt a [Windows server 2008 regisztrációja](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)című témakörben talál. 
 
 ## <a name="supported-services"></a>Támogatott szolgáltatások
 A SQL Server IaaS-ügynök bővítmény a következő felügyeleti feladatokat támogatja:
@@ -82,123 +76,26 @@ Az alábbi követelmények vonatkoznak a SQL Server IaaS-ügynök bővítmény h
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 
-## <a name="change-management-modes"></a>Felügyeleti üzemmódok módosítása
-
-A SQL Server IaaS-ügynök aktuális módja a PowerShell használatával tekinthető meg: 
-
-  ```powershell-interactive
-     #Get the SqlVirtualMachine
-     $sqlvm = Get-AzResource -Name $vm.Name  -ResourceGroupName $vm.ResourceGroupName  -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines
-     $sqlvm.Properties.sqlManagement
-  ```
-
-SQL Server a *Lightweight* IaaS-bővítményt futtató virtuális gépek a Azure Portal használatával _teljes mértékben_ frissíthetik a módot. A _nem ügynök_ módban lévő virtuális gépek SQL Server az operációs rendszer Windows 2008 R2 vagy újabb verzióra való frissítése után _teljes egészében_ frissíthetnek. Nem lehetséges a visszalépés – ehhez teljesen el kell távolítania az SQL IaaS-bővítményt, és újra kell telepítenie. 
-
-Az ügynök üzemmódjának teljes frissítése: 
-
-
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Nyissa meg az SQL-alapú [virtuális gépek](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) erőforrását. 
-1. Válassza ki a SQL Server virtuális gépet, és válassza az **Áttekintés**lehetőséget. 
-1. A nem ügynökkel vagy Lightweight IaaS-móddal rendelkező SQL Server virtuális gépek esetében válassza az **SQL IaaS kiterjesztési üzenetében csak a licenc típusát és a kiadási frissítéseket** .
-
-   ![A mód a portálról való módosításának kiválasztása](media/virtual-machines-windows-sql-server-agent-extension/change-sql-iaas-mode-portal.png)
-
-1. Jelölje be az Elfogadom a **SQL Server szolgáltatás újraindítása a virtuális gépen** jelölőnégyzetet, majd válassza a **megerősítés** lehetőséget a IaaS mód teljes állapotra való frissítéséhez. 
-
-    ![A virtuális gépen SQL Server szolgáltatás újraindítását kérő jelölőnégyzet](media/virtual-machines-windows-sql-server-agent-extension/enable-full-mode-iaas.png)
-
-# <a name="az-clitabbash"></a>[AZ PARANCSSORI FELÜLET](#tab/bash)
-
-Futtassa a következőt a CLI Code kódrészlettel:
-
-  ```azurecli-interactive
-  # Update to full mode
-
-  az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
-  ```
-
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
-
-Futtassa a következő PowerShell-kódrészletet:
-
-  ```powershell-interactive
-  # Update to full mode
-
-  $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
-  $SqlVm.Properties.sqlManagement="Full"
-  $SqlVm | Set-AzResource -Force
-  ```
-
----
-
-
 ##  <a name="installation"></a>Telepítés
-A SQL Server IaaS bővítmény akkor települ, amikor regisztrálja az SQL Server VM az [SQL VM erőforrás](virtual-machines-windows-sql-register-with-resource-provider.md)-szolgáltatóval. Ha szükséges, a SQL Server IaaS-ügynököt manuálisan is telepítheti teljes vagy könnyű mód használatával. 
-
-A SQL Server IaaS-ügynök bővítményét a teljes módban automatikusan telepíti a rendszer, ha a Azure Portal használatával kiépíti az egyik SQL Server virtuális gép Azure Marketplace-lemezképét. 
-
-### <a name="install-in-full-mode"></a>Telepítés teljes módban
-A SQL Server IaaS bővítmény teljes módja teljes kezelhetőséget biztosít a SQL Server VM egyetlen példánya számára. Ha van alapértelmezett példány, a bővítmény az alapértelmezett példánnyal fog működni, és nem támogatja más példányok kezelését. Ha nincs alapértelmezett példány, de csak egyetlen elnevezett példány, akkor a rendszer a nevesített példányt fogja kezelni. Ha nincs alapértelmezett példány, és több megnevezett példány létezik, a bővítmény telepítése sikertelen lesz. 
-
-Telepítse a SQL Server IaaS-ügynököt teljes módban a PowerShell használatával:
+A SQL Server IaaS bővítmény akkor települ, amikor regisztrálja az SQL Server VM az [SQL VM erőforrás](virtual-machines-windows-sql-register-with-resource-provider.md)-szolgáltatóval. Ha szükséges, a SQL Server IaaS-ügynököt manuálisan is telepítheti az alábbi PowerShell-parancs használatával: 
 
   ```powershell-interactive
-     # Get the existing compute VM
-     $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-          
-     # Install 'Full' SQL Server IaaS agent extension
-     New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-        -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
-        -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='Full'}  
-  
+    Set-AzVMExtension -ResourceGroupName "<ResourceGroupName>" -Location "<VMLocation>" -VMName "<VMName>" -Name "SqlIaasExtension" -Publisher "Microsoft.SqlServer.Management" -ExtensionType "SqlIaaSAgent" -TypeHandlerVersion "2.0";  
   ```
-
-| Paraméter | Elfogadható értékek                        |
-| :------------------| :-------------------------------|
-| **sqlServerLicenseType** | `AHUB` vagy `PAYG`     |
-| &nbsp;             | &nbsp;                          |
-
 
 > [!NOTE]
-> Ha a bővítmény még nincs telepítve, a teljes bővítmény telepítése újraindítja a SQL Server szolgáltatást. A SQL Server szolgáltatás újraindításának elkerüléséhez telepítse a kis kezelhetőséget a korlátozott kezelhetőséggel.
-> 
-> A SQL Server IaaS bővítmény frissítése nem indítja újra a SQL Server szolgáltatást. 
+> A bővítmény telepítése újraindítja a SQL Server szolgáltatást. 
+
 
 ### <a name="install-on-a-vm-with-a-single-named-sql-server-instance"></a>Telepítés egyetlen elnevezett SQL Server-példánnyal rendelkező virtuális gépen
 A SQL Server IaaS bővítmény a SQL Server megnevezett példányával fog működni, ha az alapértelmezett példány el lett távolítva, és a IaaS-bővítmény újratelepítése megtörténik.
 
-SQL Server elnevezett példányának használata:
+SQL Server megnevezett példányának használatához hajtsa végre az alábbi lépéseket:
    1. SQL Server VM üzembe helyezése az Azure piactéren. 
    1. Távolítsa el a IaaS bővítményt a [Azure Portalból](https://portal.azure.com).
    1. Távolítsa el SQL Server teljesen a SQL Server VMon belül.
    1. Telepítse a SQL Servert egy megnevezett példánnyal a SQL Server VMon belül. 
    1. Telepítse a IaaS bővítményt a Azure Portal.  
-
-
-### <a name="install-in-lightweight-mode"></a>Telepítés egyszerűsített módban
-A könnyű mód nem indítja újra a SQL Server szolgáltatást, de korlátozott funkcionalitást biztosít. 
-
-Telepítse a SQL Server IaaS-ügynököt egyszerűsített módban a PowerShell használatával:
-
-
-  ```powershell-interactive
-     /#Get the existing  Compute VM
-     $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-          
-     #Register the SQL Server VM with the 'Lightweight' SQL IaaS agent
-     New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-        -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
-        -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='LightWeight'}  
-  
-  ```
-
-| Paraméter | Elfogadható értékek                        |
-| :------------------| :-------------------------------|
-| **sqlServerLicenseType** | `AHUB` vagy `PAYG`     |
-| &nbsp;             | &nbsp;                          |
 
 
 ## <a name="get-the-status-of-the-sql-server-iaas-extension"></a>A SQL Server IaaS-bővítmény állapotának beolvasása
@@ -235,4 +132,3 @@ A **Remove-AzVMSqlServerExtension PowerShell-** parancsmagot is használhatja:
 Kezdje el használni a bővítmény által támogatott szolgáltatások egyikét. További információkért tekintse meg a jelen cikk [támogatott szolgáltatások](#supported-services) című részében hivatkozott cikkeket.
 
 További információ az Azure Virtual Machines SQL Server futtatásáról: [mi SQL Server az azure Virtual Machines?](virtual-machines-windows-sql-server-iaas-overview.md)
-

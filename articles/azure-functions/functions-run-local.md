@@ -1,22 +1,20 @@
 ---
 title: A Azure Functions Core Tools használata | Microsoft Docs
 description: Megtudhatja, hogyan teheti meg az Azure functions szolgáltatást a parancssorból vagy a terminálból a helyi számítógépen, mielőtt futtatja őket a Azure Functionson.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 4bad9db6af6d368c943619bc2105f3fba0b7eb7b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fc77ef6786fbd16ecfeb34397ead11be8b107176
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096160"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207283"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools használata
 
@@ -414,6 +412,8 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ## <a name="publish"></a>Közzététel az Azure-ban
 
 A Azure Functions Core Tools kétféle telepítési típust támogat: a Function-projektfájlok közvetlen üzembe helyezése a Function alkalmazásban a [zip üzembe helyezésével](functions-deployment-technologies.md#zip-deploy) és az [Egyéni Docker-tároló üzembe helyezésével](functions-deployment-technologies.md#docker-container). Már létre kell hoznia [egy Function alkalmazást az Azure-](functions-cli-samples.md#create)előfizetésében, amelyre telepíteni fogja a kódot. A fordítást igénylő projekteket úgy kell felépíteni, hogy a bináris fájlok üzembe helyezhetők legyenek.
+
+A Project mappa olyan nyelvspecifikus fájlokat és címtárakat tartalmazhat, amelyeket nem lehet közzétenni. A kizárt elemek a legfelső szintű projekt mappában található. funcignore fájlban szerepelnek.     
 
 ### <a name="project-file-deployment"></a>Üzembe helyezés (projektfájlok)
 

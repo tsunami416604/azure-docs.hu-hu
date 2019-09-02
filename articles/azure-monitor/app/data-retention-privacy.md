@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 18129c625630e7e21e2139ea3967ba5152bc0b30
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: df441a55ef4a9a40fe4defcabca5f667eeddbf29
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991183"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207289"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -100,7 +100,7 @@ Ezt Ön és a csapattagok is exportálhatjuk, és más helyekre is másolhatók,
 A Microsoft csak a szolgáltatás nyújtásához használja fel az adatgyűjtést.
 
 ## <a name="where-is-the-data-held"></a>Hol tárolják az adattárolást?
-* Az USA-ban, Európában vagy Délkelet-Ázsiában. Ha új Application Insights erőforrást hoz létre, akkor kiválaszthatja a helyet. 
+* Ha új Application Insights erőforrást hoz létre, akkor kiválaszthatja a helyet. További információ a Application Insights rendelkezésre állásról [](https://azure.microsoft.com/global-infrastructure/services/?products=all)régiónként.
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Ez azt jelenti, hogy az alkalmazást az USA-ban, Európában vagy Délkelet-Ázsiában kell üzemeltetni?
 * Nem. Az alkalmazás bárhol futhat, akár a saját helyszíni gazdagépeken, akár a felhőben.

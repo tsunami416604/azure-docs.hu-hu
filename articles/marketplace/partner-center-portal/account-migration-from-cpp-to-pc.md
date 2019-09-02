@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: f5db715ecb7d5523f5f52a356198eb547f69d4f8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 661adb755d076b0cc6114a287855482165ccb817
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194301"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208089"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Fiók áttelepítése Cloud Partner Portalról a partneri központba
 
@@ -26,13 +26,13 @@ Ha egy adott fiókhoz tartozó tulajdonosi szerepkörrel rendelkező felhasznál
 
 A fiók áttelepítési folyamatának elindításához kattintson a szalagcímre. A következő elemeket kell megadnia:
 
-### <a name="work-e-mail-address"></a>Munkahelyi e-mail cím
+### <a name="work-email-address"></a>Munkahelyi e-mail cím
 
-A legtöbb esetben jelentkezzen be a CPP-be való bejelentkezéshez használt e-mail-címre. Bizonyos esetekben egy másik e-mail-címet kell használni:
+A legtöbb esetben jelentkezzen be a CPP-be való bejelentkezéshez használt e-mail-címmel. Bizonyos esetekben egy másik e-mail-címet kell használni:
 
-* Microsoft-fiók: Ha a CPP-fiók egy Microsoft-fiók, akkor meg kell adnia egy érvényes munkahelyi e-mail-címet, amely ahhoz a bérlőhöz tartozik, amelyhez az MPN-azonosító regisztrálva van. 
+* Microsoft-fiók: Ha a CPP-fiók egy Microsoft-fiók, akkor meg kell adnia egy érvényes munkahelyi e-mail-címet, amely ahhoz a bérlőhöz tartozik, amelyhez az MPN-azonosító regisztrálva van.
 
-* Nem egyező bérlő: Ha a munkahelyi e-mail-címe nem tartozik a CPP-fiókjában található Microsoft Partner Network-AZONOSÍTÓhoz társított bérlőhöz, hibaüzenet jelenik meg. Ha ezt a hibát szeretné áthelyezni, adjon meg egy, a bérlőhöz társított e-mail-címet. A megjelenő hibaüzenet megadja a bérlő nevét. 
+* Nem egyező bérlő: Ha a munkahelyi e-mail-címe nem tartozik a CPP-fiókjában található Microsoft Partner Network-AZONOSÍTÓhoz társított bérlőhöz, hibaüzenet jelenik meg. Ha ezt a hibát szeretné áthelyezni, adjon meg egy, a bérlőhöz társított e-mail-címet. A megjelenő hibaüzenet megadja a bérlő nevét.
 
 ### <a name="sign-up-for-microsoft-partner-network-program"></a>Regisztráció Microsoft Partner Network programra
 

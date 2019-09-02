@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 08/25/2019
+ms.date: 08/28/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 014a2c3cff3804657e4e2bf624b97eceef4bf4b2
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 74e0539095701ec104495bf5a44dec668494d444
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033327"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207174"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure AD Identity Governance?
 
@@ -69,6 +69,18 @@ A rendszerjogosultságú hozzáférést a többi szállító a személyazonossá
 ![Emelt szintű hozzáférés életciklusa](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
 A Azure AD Privileged Identity Management (PIM) további vezérlőket biztosít a hozzáférési jogosultságok biztosításához az erőforrásokhoz, az Azure AD-ben, az Azure-ban és más Microsoft Online-szolgáltatásokban.  A többtényezős hitelesítés és a feltételes hozzáférés terén az Azure AD PIM által biztosított igény szerinti hozzáférés-vezérlési és szerepkör-változási riasztások széles körű irányítási funkciókat biztosítanak a vállalati erőforrások biztonságossá tételéhez (címtár, Office 365-és Azure-erőforrás-szerepkörök). A más hozzáférési formákhoz hasonlóan a szervezetek hozzáférési felülvizsgálatokat is használhatnak a rendszergazdai szerepkörökben lévő összes felhasználóra vonatkozó ismétlődő hozzáférés-visszaigazolások konfigurálásához.
+
+## <a name="least-privileged-roles"></a>Legkevésbé Kiemelt szerepkörök
+
+A PIM használata lehetővé teszi a felhasználó rendszergazdai engedélyeinek korlátozását a további biztonság érdekében. Az Azure AD Identity irányítási funkciói a legkevesebb jogosultsággal rendelkező címtár-szerepkört használják a konfiguráláshoz: 
+
+| Funkció | Legkevésbé Kiemelt szerepkör |
+| ------- | --------------------- |
+| Jogosultságkezelés | Felhasználói rendszergazda (a SharePoint Online-helyek katalógusba való felvételének kivételével, amely globális rendszergazdai jogosultságot igényel) |
+| Használati feltételek | Biztonsági rendszergazda vagy feltételes hozzáférésű rendszergazda |
+| Hozzáférési felülvizsgálatok | Felhasználói rendszergazda (az Azure-beli vagy az Azure AD-szerepkörök hozzáférési felülvizsgálatának kivételével, amelyhez Kiemelt szerepkörű rendszergazda szükséges) |
+|Privileged Identity Management | Kiemelt szerepkörgazda |
+
 
 ## <a name="getting-started"></a>Első lépések
 

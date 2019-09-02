@@ -1,30 +1,23 @@
 ---
-title: Áttekintés földrajzi mesterséges intelligenciát használó adatelemző virtuális gép
-titleSuffix: Azure
-description: A földrajzi mesterséges intelligenciát használó adatelemző virtuális gép földrajzi adatokkal használata ArcGIS Pro tartalmaz. Emellett Python-, R-és adatelemzési eszközkészleteket is biztosít a gépi tanulás és a mesterséges intelligencia (AI) használatához.
+title: Mi a Geo mesterséges intelligencia?
+titleSuffix: Azure Data Science Virtual Machine
+description: A Geo mesterséges intelligencia Data Science Virtual Machine ArcGIS Pro-t biztosít a földrajzi adatok és a Python, az R, valamint az adatelemzési segédanyagok használatáról a ML-k és AI-k használatához.
 keywords: deep learning, AI, beépített adatelemzési eszközzel, az adatelemzési virtuális gépet, a térinformatikai elemzés
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.author: vijetaj
-ms.openlocfilehash: 05596ea9a4456b73ec1e398e4a27ec3a49457cd9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
-ms.translationtype: HT
+ms.openlocfilehash: 3d17006b9d35f0abbcc0e9c60f38ab693c1d088d
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172870"
+ms.locfileid: "70195587"
 ---
-# <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>A földrajzi mesterséges intelligenciát használó adatelemző virtuális gép bemutatása
+# <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Mi a Geo mesterséges intelligencia Data Science Virtual Machine?
 
 A Geo mesterséges intelligencia Data Science Virtual Machine (más néven a Geo AI Data Science VM vagy a Geo-DSVM) az Azure Data Science Virtual Machine (DSVM) térinformatikai elemzési funkcióit biztosítja. Ez a virtuális gép kiterjeszti a [DSVM](overview.md) AI-és adatelemzési segédanyagait úgy, hogy hozzáadja a piacvezető [ArcGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) földrajzi információs rendszerét a ERSI-ből.
 

@@ -1,21 +1,20 @@
 ---
-title: Hibák és kivételek kezelésére szolgáló Azure Logic Apps | Microsoft Docs
+title: Hibák és kivételek kezelésére szolgáló Azure Logic Apps
 description: További tudnivalók a hibák és kivételek kezelésére vonatkozó mintákról Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: dereklee
 ms.author: deli
-manager: jeconnoc
+ms.reviewer: klam, estfan, LADocs
 ms.date: 01/31/2018
 ms.topic: article
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 828bea50a66b90f35843901ae2d7c703ffa58f2d
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60996595"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208175"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és kivételek kezelése Azure Logic Appsban
 
@@ -75,7 +74,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az `inputs` �
 |-------|------|-------------|
 | <*retry-policy-type*> | Sztring | A használni kívánt újrapróbálkozási szabályzat típusa: `default` `fixed`, `none`,, vagy`exponential` | 
 | <*retry-interval*> | Sztring | Az újrapróbálkozási időköz, amelyben az értéknek [ISO 8601 formátumot](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kell használnia. Az alapértelmezett minimális időköz `PT5S` , a maximális `PT1D`intervallum. Az exponenciális időközi szabályzat használatakor különböző minimális és maximális értékeket adhat meg. | 
-| <*retry-attempts*> | Egész szám | Az újrapróbálkozási kísérletek száma, amelynek 1 és 90 között kell lennie | 
+| <*retry-attempts*> | Integer | Az újrapróbálkozási kísérletek száma, amelynek 1 és 90 között kell lennie | 
 ||||
 
 *Választható*
@@ -219,13 +218,15 @@ Ha a kivételeket egy **sikertelen** hatókörben szeretné megfogni, és a hib�
 
 A hatókörök korlátozásait lásd: [korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md).
 
+<a name="get-results-from-failures"></a>
+
 ### <a name="get-context-and-results-for-failures"></a>A hibák kontextusának és eredményének beolvasása
 
-Bár a hibák egy hatókörből való kifogása hasznos, előfordulhat, hogy olyan kontextust is szeretne, amely segít megérteni, hogy pontosan milyen műveletek sikertelenek, valamint a visszaadott hibák vagy állapotkódok. A `@result()` kifejezés a hatókör összes műveletének eredményét jeleníti meg.
+Bár a hibák egy hatókörből való kifogása hasznos, előfordulhat, hogy olyan kontextust is szeretne, amely segít megérteni, hogy pontosan milyen műveletek sikertelenek, valamint a visszaadott hibák vagy állapotkódok.
 
-A `@result()` kifejezés egyetlen paramétert fogad el (a hatókör nevét), és az adott hatókörből származó összes művelet eredményének tömbjét adja vissza. Ezek a műveleti objektumok ugyanazokat az attribútumokat tartalmazzák, mint a  **\@műveletek ()** objektum, például a művelet kezdési ideje, befejezési időpontja, állapota, bemenetei, korrelációs azonosítói és kimenetei. Ha a hatókörön belül meghiúsult műveletek kontextusát szeretné elküldeni, egyszerűen párosíthat egy  **\@result ()** függvényt egy **runAfter** tulajdonsággal.
+A [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) függvény kontextust biztosít a hatókör összes műveletének eredményeiről. A `result()` függvény egyetlen paramétert fogad el, amely a hatókör neve, és egy olyan tömböt ad vissza, amely az adott hatókörből származó összes művelet eredményét tartalmazza. Ezek a műveleti objektumok ugyanazokat az attribútumokat `@actions()` tartalmazzák, mint az objektum, például a művelet kezdési ideje, befejezési időpontja, állapota, bemenetei, korrelációs azonosítói és kimenetei. Ha a hatókörön belül meghiúsult műveletek kontextusát szeretné elküldeni, egyszerűen párosíthat egy `@result()` kifejezést a `runAfter` tulajdonsággal.
 
-Ha műveletet szeretne futtatni egy olyan hatókörben lévő művelethez, amely egy **sikertelen** eredménnyel rendelkezik, és az eredmények tömbjét a sikertelen műveletekre szűri, akkor  **\@a Result ()** függvényt egy **[szűrési tömb](../connectors/connectors-native-query.md)** művelettel és [**minden**](../logic-apps/logic-apps-control-flow-loops.md) hurokhoz társíthatja. Elvégezheti a szűrt eredmény tömböt, és végrehajthat egy műveletet minden egyes hibához a **minden hurok esetében** . 
+Ha műveletet szeretne futtatni egy olyan hatókörben lévő művelethez, amely egy **sikertelen** eredménnyel rendelkezik, és az eredmények tömbjét a sikertelen műveletek alapján szűri, `@result()` akkor a kifejezéseket egy szűrési [**tömb**](../connectors/connectors-native-query.md) művelettel és [**minden**](../logic-apps/logic-apps-control-flow-loops.md) hurokhoz társíthatja. Elvégezheti a szűrt eredmény tömböt, és végrehajthat egy műveletet minden egyes hibához a **minden hurok esetében** .
 
 Az alábbi példát követve részletes magyarázatot talál, amely egy HTTP POST-kérelmet küld a válasz törzsének a "My_Scope" hatókörön belül sikertelen műveletekhez:
 

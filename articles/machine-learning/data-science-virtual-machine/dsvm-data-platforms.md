@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: e0ba013f7739e7ade717136cb5507af630263a18
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 5dbaf969420f066698a07b8d137d2ba44fc99080
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192208"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208133"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>A Data Science virtuális gépen támogatott adatplatform
 
-Az adatelemzési virtuális gép (DSVM) lehetővé teszi, hogy hozhat létre az elemzéseket az adatplatformok számos ellen. A DSVM felületek távoli azokat a platformokat, gyors fejlesztési lehetőségeket és prototípus-készítés helyi példányt nyújt. 
+Data Science Virtual Machine (DSVM) használatával számos adatplatformon létrehozhatja az elemzést. A DSVM felületek távoli azokat a platformokat, gyors fejlesztési lehetőségeket és prototípus-készítés helyi példányt nyújt.
 
-Az alábbiakban a DSVM támogatott adatplatformeszközeinkkel. 
+A DSVM a következő adatplatform-eszközöket támogatja.
 
 ## <a name="sql-server-2016-developer-edition"></a>SQL Server 2016 Developer Edition
 
@@ -30,56 +30,56 @@ Az alábbiakban a DSVM támogatott adatplatformeszközeinkkel.
 | Mi ez?   | Egy helyi relációs adatbázis-példányt      |
 | Támogatott DSVM-kiadások      | Windows      |
 | Gyakori használati      | Gyors fejlesztés helyileg kisebb adatkészlet <br/> Futtassa az adatbázis-R   |
-| A minták mutató hivatkozások      |    New York City adatkészlet néhányat példaként betöltése az SQL database-be `nyctaxi`. <br/> A Microsoft R- és adatbázis-analytics Jupyter példa tekinthet meg:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
-| A dsvm-hez kapcsolódó eszközök       | SQL Server Management Studio <br/> ODBC/JDBC illesztőprogramok<br/> a pyodbc RODBC<br />Apache Drill      |
+| A minták mutató hivatkozások      |    A New York City-adathalmazok egy kis mintája betöltődik az SQL Database-be:<br/>  `nyctaxi` <br/> A Microsoft Machine Learning Server és az adatbázison belüli elemzéseket bemutató Jupyter-minta a következő helyen található:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
+| A DSVM kapcsolódó eszközök       | SQL Server Management Studio <br/> ODBC/JDBC-illesztőprogramok<br/> a pyodbc RODBC<br />Apache Drill      |
 
 > [!NOTE]
-> Az SQL Server 2016 developer Edition verziót csak fejlesztési és tesztelési célokra használható. Licenc vagy egy, az SQL Serveres virtuális gépek üzemi környezetben való futtatás szükséges. 
+> A SQL Server 2016 fejlesztői kiadása csak fejlesztési és tesztelési célokra használható. Licenc vagy egy, az SQL Serveres virtuális gépek üzemi környezetben való futtatás szükséges.
 
 
 ### <a name="setup"></a>Beállítás
 
-Az adatbázis-kiszolgáló már előre konfigurálva van, és a kapcsolódó SQL Server a Windows-szolgáltatások (például `SQL Server (MSSQLSERVER)`) automatikus futásra vannak beállítva. A csak manuális lépés futtatásának engedélyezése az adatbázison belüli elemzések használatával a Microsoft R. Ehhez futtassa a következő parancsot egy alkalommal a gép rendszergazdaként a bejelentkezés után az SQL Server Management Studio (SSMS) művelet nyílt "Új lekérdezés" az ssms-ben is, győződjön meg, hogy a kijelölt adatbázis `master` , majd futtassa: 
+Az adatbázis-kiszolgáló már előre konfigurálva van, és a SQL Serverhoz (például `SQL Server (MSSQLSERVER)`) kapcsolódó Windows-szolgáltatások automatikus futásra vannak beállítva. Az egyetlen manuális lépés magában foglalja az adatbázis-elemzések Microsoft Machine Learning Server használatával történő engedélyezését. Ezt úgy teheti meg, hogy a következő parancsot egyszeri műveletként futtatja SQL Server Management Studioban (SSMS). Futtassa ezt a parancsot a számítógép-rendszergazdaként való bejelentkezés után, nyisson meg egy új lekérdezést a SSMS, és győződjön meg arról, `master`hogy a kiválasztott adatbázis a következő:
 
         CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
 
-        (Please replace the %COMPUTERNAME% with your VM name)
+        (Replace %COMPUTERNAME% with your VM name.)
        
-Annak érdekében, hogy az SQL Server Management Studióban futtassa, keressen a "SQL Server Management Studio" a program listában, vagy használja a Windows Search található, majd futtassa. Amikor a rendszer kéri a hitelesítő adatokat, válassza a "Windows-hitelesítés", és használja a számítógépnév vagy ```localhost``` SQL-kiszolgáló nevét. 
+SQL Server Management Studio futtatásához megkeresheti a programok listájában a "SQL Server Management Studio" kifejezést, vagy a Windows Search használatával megkeresheti és futtathatja. Amikor a rendszer kéri a hitelesítő adatokat, válassza a **Windows-hitelesítés** lehetőséget ```localhost``` , és használja a gép nevét vagy a **SQL Server neve** mezőt.
 
-### <a name="how-to-use--run-it"></a>Hogyan futtathatja / használata?  
+### <a name="how-to-use-and-run-it"></a>Használat és Futtatás
 
-Alapértelmezés szerint automatikusan fut az adatbázis-kiszolgáló az az alapértelmezett adatbázispéldányhoz. A virtuális gép eszközökkel, mint például az SQL Server Management Studio használatával helyben SQL Server adatbázisának elérésére. Helyi rendszergazdai fiókot rendszergazdai hozzáféréssel rendelkezik az adatbázishoz. 
+Alapértelmezés szerint az alapértelmezett adatbázis-példánnyal rendelkező adatbázis-kiszolgáló automatikusan lefut. A virtuális gép eszközökkel, mint például az SQL Server Management Studio használatával helyben SQL Server adatbázisának elérésére. A helyi rendszergazdai fiókok rendszergazdai hozzáféréssel rendelkeznek az adatbázishoz.
 
-A dsvm-hez is tartalmaz felvenni a kapcsolatot az SQL Server, az Azure SQL Database, és az Azure SQL Data Warehouse több, többek között a Python, r nyelven írt alkalmazások ODBC-illesztőprogramok és a JDBC-illesztőprogramok 
+Emellett a DSVM ODBC-és JDBC-illesztőprogramokkal is rendelkezik, amelyekkel a SQL Server, az Azure SQL Database és a Azure SQL Data Warehouse különböző nyelveken írt alkalmazásokból, beleértve a Pythont és a Machine Learning Servert is.
 
-### <a name="how-is-it-configured--installed-on-the-dsvm"></a>Hogyan van azt konfigurálni / telepíteni a dsvm-hez? 
+### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Hogyan van konfigurálva és telepítve a DSVM? 
 
-Az SQL Server telepítve van a szokásos módon. Címen található `C:\Program Files\Microsoft SQL Server`. Az R In-database-példány a következő címen található `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`. A dsvm-hez is rendelkezik egy külön önálló R Server-példány telepített `C:\Program Files\Microsoft\R Server\R_SERVER`. Ezek a példányok két-R ne ossza meg a kódtárakat.
+ A SQL Server a szabványos módon települ. Címen található `C:\Program Files\Microsoft SQL Server`. Az adatbázison belüli Machine Learning Server példány a következő címen `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`található:. A DSVM külön önálló Machine Learning Server-példánnyal is rendelkezik, amely a következő helyen `C:\Program Files\Microsoft\R Server\R_SERVER`található:. Ez a két Machine Learning Server példány nem osztja meg a kódtárakat.
 
 
 ## <a name="apache-spark-2x-standalone"></a>Az Apache Spark-2.x (önálló)
 
 | | |
 | ------------- | ------------- |
-| Mi ez?   | A népszerű Apache Spark-platform, a rendszer a gyors nagyméretű adatfeldolgozás és a machine learning (egyetlen csomópont folyamaton belüli) önálló példányának     |
+| Mi ez?   | A népszerű Apache Spark platform önálló (egyetlen csomóponton belüli) példánya; gyors, nagy léptékű adatfeldolgozási és gépi tanulási rendszer     |
 | Támogatott DSVM-kiadások      | Linux <br /> Windows (kísérleti funkció)      |
-| Gyakori használati      | * Spark-/ PySpark-alkalmazások helyi kisebb adatkészlettel, és később gyors fejlesztését üzembe helyezni a nagy méretű, például az Azure HDInsight Spark-fürtökön<br/> * A Microsoft R Server Spark tesztkörnyezetben <br />* A könnyen használható, vagy a Microsoft nyílt forráskódú használatát [MMLSpark](https://github.com/Azure/mmlspark) library gépi Tanulási alkalmazások létrehozásához  |
-| A minták mutató hivatkozások      |    Jupyter-minta: <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> A Microsoft R Server (a Spark környezet): /dsvm/samples/MRS/MRSSparkContextSample.R |
-| A dsvm-hez kapcsolódó eszközök       | PySpark, Scala<br/>Jupyter (Spark-/ PySpark-kernelek)<br/>A Microsoft R Server, SparkR, Sparklyr <br />Apache Drill      |
+| Gyakori használati      | * A Spark/PySpark alkalmazások gyors fejlesztése egy kisebb adatkészlettel és későbbi, nagyméretű Spark-fürtökön, például az Azure HDInsight-ben való üzembe helyezéssel<br/> * Microsoft Machine Learning Server Spark-környezet tesztelése <br />* A SparkML vagy a Microsoft nyílt forráskódú [MMLSpark](https://github.com/Azure/mmlspark) -függvénytárának használata ml-alkalmazások készítéséhez |
+| A minták mutató hivatkozások      |    Jupyter-minta: <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft Machine Learning Server (Spark Context):/dsvm/samples/MRS/MRSSparkContextSample.R |
+| A DSVM kapcsolódó eszközök       | PySpark, Scala<br/>Jupyter (Spark-/ PySpark-kernelek)<br/>Microsoft Machine Learning Server, Sparker, Sparklyr <br />Apache Drill      |
 
-### <a name="how-to-use-it"></a>Hogyan használható a
-A Spark futtathatja a parancssorban a Spark-feladatok elküldése `spark-submit` vagy `pyspark` parancsokat. Jupyter notebook hozzon létre egy új jegyzetfüzetet a Spark-kernel is létrehozhat. 
+### <a name="how-to-use-it"></a>Használat
+A `spark-submit` (z) vagy parancs futtatásával elküldheti a Spark `pyspark` -feladatokat a parancssorba. Jupyter notebook hozzon létre egy új jegyzetfüzetet a Spark-kernel is létrehozhat.
 
-Az R-kódtárak SparkR, a Sparklyr vagy a Microsoft R Server elérhető a DSVM használata Spark is használhatja. Tekintse meg az előző táblázatban szereplő minták mutatókat tartalmaznak. 
+A Spark for R használatával olyan könyvtárakat használhat, mint a Sparker, a Sparklyr és a Microsoft Machine Learning Server, amelyek elérhetők a DSVM. Tekintse meg az előző táblázatban szereplő minták mutatókat tartalmaznak.
 
 > [!NOTE]
-> Az Ubuntu Linux-DSVM kiadás csak támogatott futó Microsoft R Server DSVM-, Spark-környezetben. 
+> A Microsoft Machine Learning Server a DSVM Spark-környezetében való futtatása csak a Ubuntu Linux DSVM kiadásban támogatott.
 
 
 
 ### <a name="setup"></a>Beállítás
-A Spark környezet a Microsoft R Server Ubuntu Linux-DSVM Edition rendszeren fut, mielőtt kell tennie a telepítő lépést ahhoz, hogy a helyi Hadoop HDFS és Yarn-példány egyetlen csomópont csak egyszer. Alapértelmezés szerint Hadoop-szolgáltatásokhoz vannak telepítve, de a dsvm-hez a letiltva. Az engedélyezéshez, először futtassa a következő parancsokat rendszergazdaként kell:
+Mielőtt a (z) Ubuntu Linux DSVM kiadásban Microsoft Machine Learning Server Spark-kontextusban fut, végre kell hajtania egy egyszeri telepítési lépést, amely lehetővé teszi a helyi egycsomópontos Hadoop HDFS és a fonal példányának engedélyezését. Alapértelmezés szerint Hadoop-szolgáltatásokhoz vannak telepítve, de a dsvm-hez a letiltva. Az engedélyezéshez futtassa a következő parancsokat root-ként az első alkalommal:
 
     echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
     cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
@@ -89,15 +89,21 @@ A Spark környezet a Microsoft R Server Ubuntu Linux-DSVM Edition rendszeren fut
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Állítsa le a Hadoop kapcsolódó szolgáltatások, amikor nem kell őket futtatásával ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` egy minta bemutatja, hogyan lehet fejlesztési és tesztelési Asszony (amely a különálló a dsvm-hez a Spark-példányt) távoli Spark környezetben megadott és elérhető a `/dsvm/samples/MRS` a könyvtár. 
+Ha már nincs szüksége rájuk ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```, leállíthatja a Hadoop kapcsolódó szolgáltatásokat.
+
+Egy minta, amely bemutatja, hogyan fejlesztheti és tesztelheti a Mrs-t egy távoli Spark-környezetben (amely a DSVM önálló Spark-példánya), és `/dsvm/samples/MRS` elérhető a címtárban.
 
 
-### <a name="how-is-it-configured--installed-on-the-dsvm"></a>Hogyan van azt konfigurálni / telepíteni a dsvm-hez? 
+### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Hogyan van konfigurálva és telepítve a DSVM? 
 |Platform|Telepítési hely ($SPARK_HOME)|
 |:--------|:--------|
 |Windows | c:\dsvm\tools\spark-X.X.X-bin-hadoopX.X|
 |Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
 
 
-Az alkalmazandó kódtárak el az adatokat az Azure Blob- vagy Azure Data Lake storage (ADLS) és a Microsoft MMLSpark machine learning kódtárak használatával $SPARK_HOME/jegyzékfájlok vannak telepítve. Spark indulásakor a rendszer automatikusan betölti a JAR-fájlok kivételével. Alapértelmezés szerint a Spark használja a helyi lemezen lévő adatokat. Ahhoz, hogy a Spark-példányt az Azure blob vagy ADLS tárolt adatok elérését a DSVM létrehozni és konfigurálni kell a `core-site.xml` fájl található $SPARK_HOME/conf/core-site.xml.template a sablon alapján (Ha a Blob és ADLS helyőrzők konfigurációk) az Azure blob és az Azure Data Lake Storage megfelelő hitelesítő adatokkal. Látja, hogy az ADLS szolgáltatás hitelesítő adatainak létrehozásakor lépéseket részletes [Itt](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory). Miután megadta a hitelesítő adatokat az Azure blob vagy ADLS a core-site.xml fájlban, az URI-előtag a wasb forrásokra tárolt adatokat is lehet hivatkozni: / / vagy az adl: / /. 
+Az Azure Blob Storage-ból vagy Azure Data Lake Storageból származó adatok eléréséhez szükséges kódtárak a Microsoft MMLSpark gépi tanulási könyvtáraival $SPARK _HOME/tégelyekben vannak előtelepítve. Spark indulásakor a rendszer automatikusan betölti a JAR-fájlok kivételével. Alapértelmezés szerint a Spark a helyi lemezen lévő adatátvitelt használja. 
+
+Ahhoz, hogy a DSVM található Spark-példány hozzáférjen a blob Storage-ban vagy a Azure Data Lake Storageban tárolt információhoz, `core-site.xml` létre kell hoznia és konfigurálnia kell a fájlt a $Spark _home/conf/Core-site. xml. template fájlban található sablon alapján. A blob Storage-hoz és a Azure Data Lake Storagehoz is hozzá kell férnie a megfelelő hitelesítő adatokkal. (Vegye figyelembe, hogy a sablonfájlok helyőrzőket használnak a blob Storage és a Azure Data Lake Storage konfigurációkhoz.)
+
+Azure Data Lake Storage szolgáltatás hitelesítő adatainak létrehozásával kapcsolatos részletes információkért lásd: [hitelesítés a Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)használatával. A blob Storage vagy a Azure Data Lake Storage hitelesítő adatainak a Core-site. xml fájlban való megadása után az ezekben a forrásokban tárolt adatokra a wasb://vagy a adl://URI-előtagján keresztül hivatkozhat.
 
