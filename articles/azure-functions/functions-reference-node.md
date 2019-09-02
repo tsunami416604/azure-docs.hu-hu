@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
 ms.openlocfilehash: 62115dd519336c728b679e4e698182a50660a464
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 09/02/2019
 ms.locfileid: "68949887"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
@@ -418,7 +418,7 @@ HTTP-eseményindítók használata esetén a HTTP-kérelem és a válasz-objektu
 
 A következő táblázat a függvények futtatókörnyezetének egyes főbb verziói által használt Node. js-verziót mutatja be:
 
-| Függvények verziója | Node.js verziója | 
+| Függvények verziója | Node. js-verzió | 
 |---|---|
 | 1. x | 6.11.2 (a futtatókörnyezet zárolta) |
 | 2. x  | _Aktív LTS_ -és _karbantartási LTS_ Node. js-verziók (8.11.1 és 10.14.1 ajánlott). Állítsa be a verziót a WEBSITE_NODE_DEFAULT_VERSION [alkalmazás-beállítás](functions-how-to-use-azure-function-app-settings.md#settings)használatával.|

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: fa3ad71dcc7738169f78f4dab94bd9bdf4d4cc89
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: f1ceae17195c08af380a7448dd4dbf3bfa3f9de2
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182969"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211876"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: Bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -35,7 +35,6 @@ Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-
 > ## <a name="prerequisites"></a>Előfeltételek
 > A minta futtatásához a következőkre lesz szüksége: 
 > - A Java Development Kit (JDK) 8 vagy újabb, illetve Maven.
-> - Egy Azure Active Directory (Azure AD) bérlő. Az Azure AD-bérlő beszerzésével kapcsolatos további információkért lásd: [Azure ad-bérlő beszerzése.](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant)
 >
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése

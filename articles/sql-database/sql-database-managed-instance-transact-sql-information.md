@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1bba5e91e3edda41b75a96d8b55495ca5d1c092b
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644878"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70209628"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Felügyelt példányok – T-SQL-különbségek, korlátozások és ismert problémák
 
@@ -338,6 +338,10 @@ A felügyelt példányok nem férnek hozzá a fájlmegosztás és a Windows-mapp
 - `CREATE ASSEMBLY FROM FILE`nem támogatott. Lásd: [szerelvény létrehozása fájlból](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY`nem lehet hivatkozni a fájlokra. Lásd: az [Alter Assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
+### <a name="database-mail-db_mail"></a>Database Mail (db_mail)
+ - `sp_send_dbmail`a @file_attachments atachments nem küldhető paraméterrel. Ez az eljárás nem érhető el a helyi fájlrendszer és a kiterjedési megosztások vagy az Azure Blob Storage szolgáltatásban.
+ - Tekintse meg `@query` a paraméterrel és a hitelesítéssel kapcsolatos ismert problémákat.
+ 
 ### <a name="dbcc"></a>DBCC
 
 A SQL Serverban engedélyezett nem dokumentált DBCC utasítások nem támogatottak a felügyelt példányokban.
@@ -536,6 +540,14 @@ A maximális fájlméret nem lehet `tempdb` nagyobb, mint 24 GB általános cél
 A felügyelt példányok részletes információkat helyeznek el a hibák naplóiban. A hibanapló naplójában számos belső rendszeresemény van naplózva. Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: felügyelt [példány – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ## <a name="Issues"></a>Ismert problémák
+
+### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Biztonságos kapcsolat (SSL) használatával nem hitelesítéshez külső levelezési kiszolgálókra
+
+**Dátum** Augusztus 2019
+
+A [biztonságos kapcsolat (SSL) használatával konfigurált](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail) adatbázis-levelezés nem tud hitelesíteni az Azure-on kívüli e-mail-kiszolgálókon. Ez a biztonsági konfigurációs probléma hamarosan megoldódik.
+
+**Workaround** A biztonságos kapcsolat ideiglenes eltávolítása (SSL) az adatbázis levelezési konfigurációját a probléma megoldása előtt alkotja. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>A szolgáltatási réteg frissítése után újra kell inicializálni a több adatbázis Service Broker párbeszédpaneleit.
 

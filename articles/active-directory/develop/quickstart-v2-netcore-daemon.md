@@ -17,12 +17,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a2b6d01802fd819471a9cfb382166e6293261ca
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a130878baa10be426072dfe79284a1d602dfb6ff
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852897"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211854"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Gyors útmutató: Token beszerzése és Microsoft Graph API meghívása egy konzol alkalmazásból az alkalmazás identitásával
 
@@ -39,9 +39,7 @@ Ehhez a rövid útmutatóhoz a [.net Core 2,2](https://www.microsoft.com/net/dow
 
 > [!div renderon="docs" class="sxs-lookup"]
 >
-> A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el:
-> * Express [1. lehetőség: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * Kézi [2. lehetőség: Alkalmazás-és kód-minta regisztrálása és manuális konfigurálása](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el: Express (1. lehetőség alább) és manuális (2. lehetőség)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. lehetőség: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját
 >
@@ -80,12 +78,12 @@ Ehhez a rövid útmutatóhoz a [.net Core 2,2](https://www.microsoft.com/net/dow
 
 #### <a name="step-2-download-your-visual-studio-project"></a>2\. lépés: A Visual Studio-projekt letöltése
 
-[A Visual Studio-projekt letöltése](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/msal3x.zip)
+[A Visual Studio-projekt letöltése](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>3\. lépés: A Visual Studio-projekt konfigurálása
 
 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples**).
-1. Nyissa meg a megoldást a Visual Studióban – **Daemon-Console. SLN** (nem kötelező).
+1. Nyissa meg a megoldást a Visual Studio- **1-Call-MSGraph\daemon-Console.SLN** (nem kötelező).
 1. Szerkessze a **appSettings. JSON** fájlt, és cserélje le `ClientId`a `Tenant` mezők `ClientSecret` értékeit, és a következőt:
 
     ```json
@@ -145,7 +143,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 Ha a Visual studiót használja, nyomja le az **F5** billentyűt az alkalmazás futtatásához, ellenkező esetben futtassa az alkalmazást a parancssorból vagy a konzolon keresztül:
 
 ```console
-cd {ProjectFolder}\daemon-console
+cd {ProjectFolder}\daemon-console\1-Call-Graph
 dotnet run
 ```
 
@@ -166,7 +164,7 @@ A MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.I
  A MSAL.NET a következő parancs futtatásával telepítheti a Visual Studio **Package Manager konzolján**:
 
 ```powershell
-Install-Package Microsoft.Identity.Client -Pre
+Install-Package Microsoft.Identity.Client
 ```
 
 Ha nem a Visual studiót használja, akkor a következő parancs futtatásával MSAL adhat hozzá a projekthez:
@@ -221,8 +219,15 @@ További információkért tekintse [meg `AcquireTokenForClient` ](https://docs.
 
 ## <a name="next-steps"></a>További lépések
 
+A Daemon-alkalmazásokkal kapcsolatos további tudnivalókért tekintse meg a forgatókönyv kezdőlapját.
+
 > [!div class="nextstepaction"]
-> [.NET Core Daemon-minta](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
+> [Webes API-kat meghívó Daemon-alkalmazás](scenario-daemon-overview.md)
+
+A Daemon Application oktatóanyaghoz lásd:
+
+> [!div class="nextstepaction"]
+> [A Daemon .NET Core konzol oktatóanyaga](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
 
 További információ az engedélyekről és a beleegyezik:
 
@@ -233,9 +238,6 @@ Ha többet szeretne megtudni a forgatókönyv hitelesítési folyamatáról, tek
 
 > [!div class="nextstepaction"]
 > [Ügyfél-hitelesítő adatok OAuth folyamata](v2-oauth2-client-creds-grant-flow.md)
-
-> [!div class="nextstepaction"]
-> [Ügyfél-hitelesítő adatok a MSAL.NET-mel](https://aka.ms/msal-net-client-credentials)
 
 Segítsen nekünk a Microsoft Identity platform fejlesztésében. Mondja el, mit gondol egy rövid, kétkérdéses felmérés végrehajtásával.
 

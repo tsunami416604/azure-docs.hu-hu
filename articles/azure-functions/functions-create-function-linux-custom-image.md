@@ -1,22 +1,19 @@
 ---
 title: Azure Functions létrehozása Linuxon egyéni rendszerkép használatával
 description: Megismerheti, hogyan hozhat létre egyéni Linux-rendszerképeken futó Azure Functions-függvényeket.
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
-ms.devlang: azure-cli
-manager: jeconnoc
-ms.openlocfilehash: 525cb444ad7b1b78de867f83539ac338ddd144e9
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+manager: gwallace
+ms.openlocfilehash: 80f7185b69a7953656235d3bd622b7f61611de1a
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562934"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210176"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával
 
@@ -56,7 +53,7 @@ Használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
 
 ## <a name="create-the-local-function-app-project"></a>A helyi függvényalkalmazás-projekt létrehozása
 
-Futtassa a következő parancsot a parancssorból, hogy létrehozzon az aktuális helyi könyvtár `MyFunctionProj` mappájába egy függvényalkalmazás-projektet.
+Futtassa a következő parancsot a parancssorból, hogy létrehozzon az aktuális helyi könyvtár `MyFunctionProj` mappájába egy függvényalkalmazás-projektet. Python-projektekhez [virtuális környezetben](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional)kell futnia.
 
 ```bash
 func init MyFunctionProj --docker
@@ -68,7 +65,7 @@ Amikor a rendszer kéri, válasszon ki egy feldolgozói futtatókörnyezetet az 
 
 * `dotnet`: létrehoz egy .NET Core Class Library-projektet (. csproj).
 * `node`: létrehoz egy JavaScript-projektet.
-* `python`: létrehoz egy Python-projektet.
+* `python`: létrehoz egy Python-projektet.  
 
 A parancs végrehajtásakor a következő kimenethez hasonlót fog látni:
 

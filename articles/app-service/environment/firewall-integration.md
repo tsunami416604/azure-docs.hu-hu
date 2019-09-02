@@ -10,15 +10,15 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/29/2019
+ms.date: 08/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a3136939b27a5703aef8213225dee3d4d525754d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 038178b3b73e9b07ce96e079403cb641f8efe8b1
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069494"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210056"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Environment zárolása
 
@@ -32,13 +32,13 @@ A kimenő címek biztonságossá tételére szolgáló megoldás egy olyan tűzf
 
 ## <a name="system-architecture"></a>Rendszerarchitektúra
 
-Egy olyan, a tűzfalon áthaladó kimenő forgalommal rendelkező bevezetéshez, amely az útvonalakat a bevezető alhálózaton át kívánja módosítani. Az útvonalak IP-szinten működnek. Ha nem érdekli az útvonalak meghatározása, a TCP-válasz forgalmát más címről is kikényszerítheti a forrásra. Ezt aszimmetrikus útválasztásnak nevezzük, és a TCP-t bontja.
+Egy olyan, a tűzfalon áthaladó kimenő forgalommal rendelkező bevezetéshez, amely az útvonalakat a bevezető alhálózaton át kívánja módosítani. Az útvonalak IP-szinten működnek. Ha nem érdekli az útvonalak meghatározása, a TCP-válasz forgalmát más címről is kikényszerítheti a forrásra. Ha a válasz címe eltér a címek adatforgalmával, akkor a problémát aszimmetrikus útválasztásnak nevezzük, és a rendszer megszakítja a TCP-t.
 
-Az útvonalakat úgy kell meghatározni, hogy a beérkező forgalom ugyanúgy reagáljon, mint a forgalom. Ez a bejövő felügyeleti kérelmek esetében igaz, és a bejövő alkalmazásokra vonatkozó kérelmek esetében igaz.
+Az útvonalakat úgy kell meghatározni, hogy a beérkező forgalom ugyanúgy reagáljon, mint a forgalom. Az útvonalakat meg kell határozni a bejövő felügyeleti kérelmekhez és a bejövő alkalmazásokra vonatkozó kérésekhez.
 
 A befelé irányuló adatforgalomnak a következő egyezményeknek kell megfelelnie
 
-* Az Azure SQL, a Storage és az Event hub szolgáltatásra irányuló forgalom nem támogatott a tűzfal eszközének használata esetén. Ezt a forgalmat közvetlenül a szolgáltatásoknak kell elküldeni. Ennek az az oka, hogy a szolgáltatás-végpontokat konfigurálja a három szolgáltatáshoz. 
+* Az Azure SQL, a Storage és az Event hub szolgáltatásba irányuló adatforgalom nem támogatott a tűzfal eszközének használata esetén. Ezt a forgalmat közvetlenül a szolgáltatásoknak kell elküldeni. Ennek az az oka, hogy a szolgáltatás-végpontokat konfigurálja a három szolgáltatáshoz. 
 * Az útválasztási táblázat szabályait úgy kell meghatározni, hogy a bejövő felügyeleti forgalom vissza legyen küldve onnan, ahonnan származik.
 * Az útválasztási táblázat szabályait úgy kell meghatározni, hogy a bejövő alkalmazások forgalmát visszaküldjék a Honnan érkezett helyről. 
 * Az összes többi, a bevezetőt elhagyó adatforgalmat elküldhetik a tűzfal eszközére egy útválasztási táblázat szabály segítségével.
@@ -49,7 +49,7 @@ A befelé irányuló adatforgalomnak a következő egyezményeknek kell megfelel
 
 A meglévő és a Azure Firewall rendszerből kifelé irányuló kimenő forgalom zárolásának lépései a következők:
 
-1. Engedélyezze a szolgáltatási végpontokat az SQL, a Storage és az Event hub számára a szolgáltatói alhálózatán. Ehhez lépjen a hálózatkezelési portál > alhálózatok elemre, és válassza a Microsoft. EventHub, a Microsoft. SQL és a Microsoft. Storage lehetőséget a szolgáltatás végpontjai legördülő listából. Ha a szolgáltatási végpontok engedélyezve vannak az Azure SQL-ben, az alkalmazások által használt Azure SQL-függőségeket is konfigurálni kell a szolgáltatás-végpontokkal. 
+1. Engedélyezze a szolgáltatási végpontokat az SQL, a Storage és az Event hub számára a szolgáltatói alhálózatán. A szolgáltatási végpontok engedélyezéséhez lépjen a hálózatkezelési portál > alhálózatok elemre, és válassza a Microsoft. EventHub, a Microsoft. SQL és a Microsoft. Storage lehetőséget a szolgáltatás végpontjai legördülő listából. Ha a szolgáltatási végpontok engedélyezve vannak az Azure SQL-ben, az alkalmazások által használt Azure SQL-függőségeket is konfigurálni kell a szolgáltatás-végpontokkal. 
 
    ![szolgáltatási végpontok kiválasztása][2]
   
@@ -91,7 +91,7 @@ Azure Firewall küldhet naplókat az Azure Storage-ba, az Event hub-ba vagy a Az
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-Ha nem ismeri az összes alkalmazás-függőséget, akkor a Azure Firewall Azure Monitor naplókba való integrálása nagyon hasznos. További tudnivalókat Azure Monitor naplók [elemzése a naplózási adatokról Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+Ha nem ismeri az összes alkalmazás-függőséget, akkor hasznos, ha a Azure Firewall Azure Monitor naplókkal való integrációja során először működik. További tudnivalókat Azure Monitor naplók [elemzése a naplófájlok elemzéséről Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
  
 ## <a name="dependencies"></a>Függőségek
 
@@ -188,7 +188,26 @@ A Azure Firewall automatikusan megkapja a teljes tartománynév-címkékkel konf
 |azureprofileruploads3.blob.core.windows.net:443 |
 |azureprofileruploads4.blob.core.windows.net:443 |
 |azureprofileruploads5.blob.core.windows.net:443 |
+|azperfmerges.blob.core.windows.net:443 |
+|azprofileruploads1.blob.core.windows.net:443 |
+|azprofileruploads10.blob.core.windows.net:443 |
+|azprofileruploads2.blob.core.windows.net:443 |
+|azprofileruploads3.blob.core.windows.net:443 |
+|azprofileruploads4.blob.core.windows.net:443 |
+|azprofileruploads6.blob.core.windows.net:443 |
+|azprofileruploads7.blob.core.windows.net:443 |
+|azprofileruploads8.blob.core.windows.net:443 | 
+|azprofileruploads9.blob.core.windows.net:443 |
 |azureprofilerfrontdoor.cloudapp.net:443 |
+|settings-win.data.microsoft.com:443 |
+|maupdateaccount2.blob.core.windows.net:443 |
+|maupdateaccount3.blob.core.windows.net:443 |
+|dc.services.visualstudio.com:443 |
+|gmstorageprodsn1.blob.core.windows.net:443 |
+|gmstorageprodsn1.file.core.windows.net:443 |
+|gmstorageprodsn1.queue.core.windows.net:443 |
+|gmstorageprodsn1.table.core.windows.net:443 |
+|rteventservice.trafficmanager.net:443 |
 
 #### <a name="wildcard-httphttps-dependencies"></a>Helyettesítő HTTP/HTTPS-függőségek 
 
@@ -198,6 +217,7 @@ A Azure Firewall automatikusan megkapja a teljes tartománynév-címkékkel konf
 | \*.management.azure.com:443 |
 | \*. update.microsoft.com:443 |
 | \*.windowsupdate.microsoft.com:443 |
+| \*. identity.azure.net:443 |
 
 #### <a name="linux-dependencies"></a>Linux-függőségek 
 
@@ -212,6 +232,145 @@ A Azure Firewall automatikusan megkapja a teljes tartománynév-címkékkel konf
 |download.mono-project.com:80 |
 |packages.treasuredata.com:80|
 |security.ubuntu.com:80 |
+| \*. cdn.mscr.io:443 |
+|mcr.microsoft.com:443 |
+|packages.fluentbit.io:80 |
+|packages.fluentbit.io:443 |
+|apt-mo.trafficmanager.net:80 |
+|apt-mo.trafficmanager.net:443 |
+|azure.archive.ubuntu.com:80 |
+|azure.archive.ubuntu.com:443 |
+|changelogs.ubuntu.com:80 |
+|13.74.252.37:11371 |
+|13.75.127.55:11371 |
+|13.76.190.189:11371 |
+|13.80.10.205:11371 |
+|13.91.48.226:11371 |
+|40.76.35.62:11371 |
+|104.215.95.108:11371 |
+
+## <a name="us-gov-dependencies"></a>US Gov függőségek
+
+US Gov a Storage, az SQL és az Event hub szolgáltatásbeli végpontokat is be kell állítania.  A Azure Firewall a jelen dokumentum korábbi részében található utasításokkal is használhatja. Ha saját kimenő tűzfal eszközét kell használnia, a végpontok alább láthatók.
+
+| Végpont |
+|----------|
+| \*. ctldl.windowsupdate.com:80 |
+| \*. management.usgovcloudapi.net:80 |
+| \*. update.microsoft.com:80 |
+|admin.core.usgovcloudapi.net:80 |
+|azperfmerges.blob.core.windows.net:80 |
+|azperfmerges.blob.core.windows.net:80 |
+|azprofileruploads1.blob.core.windows.net:80 |
+|azprofileruploads10.blob.core.windows.net:80 |
+|azprofileruploads2.blob.core.windows.net:80 |
+|azprofileruploads3.blob.core.windows.net:80 |
+|azprofileruploads4.blob.core.windows.net:80 |
+|azprofileruploads5.blob.core.windows.net:80 |
+|azprofileruploads6.blob.core.windows.net:80 |
+|azprofileruploads7.blob.core.windows.net:80 |
+|azprofileruploads8.blob.core.windows.net:80 |
+|azprofileruploads9.blob.core.windows.net:80 |
+|azureprofilerfrontdoor.cloudapp.net:80 |
+|azurewatsonanalysis.usgovcloudapp.net:80 |
+|cacerts.digicert.com:80 |
+|client.wns.windows.com:80 |
+|crl.microsoft.com:80 |
+|crl.verisign.com:80 |
+|crl3.digicert.com:80 |
+|csc3-2009-2.crl.verisign.com:80 |
+|ctldl.windowsupdate.com:80 |
+|definitionupdates.microsoft.com:80 |
+|download.windowsupdate.com:80 |
+|fairfax.warmpath.usgovcloudapi.net:80 |
+|flighting.cp.wd.microsoft.com:80 |
+|gcwsprodgmdm2billing.queue.core.usgovcloudapi.net:80 |
+|gcwsprodgmdm2billing.table.core.usgovcloudapi.net:80 |
+|global.metrics.nsatc.net:80 |
+|go.microsoft.com:80 |
+|gr-gcws-prod-bd3.usgovcloudapp.net:80 |
+|gr-gcws-prod-bn1.usgovcloudapp.net:80 |
+|gr-gcws-prod-dd3.usgovcloudapp.net:80 |
+|gr-gcws-prod-dm2.usgovcloudapp.net:80 |
+|gr-gcws-prod-phx20.usgovcloudapp.net:80 |
+|gr-gcws-prod-sn5.usgovcloudapp.net:80 |
+|login.live.com:80 |
+|login.microsoftonline.us:80 |
+|management.core.usgovcloudapi.net:80 |
+|management.usgovcloudapi.net:80 |
+|maupdateaccountff.blob.core.usgovcloudapi.net:80 |
+|mscrl.microsoft.com
+|OCSP. Digicert. 0 |
+|ocsp.msocsp.co|
+|OCSP. VeriSign. 0 |
+|rteventse.trafficmanager.net:80 |
+|settings-n.data.microsoft.com:80 |
+|shavamafestcdnprod1.azureedge.net:80 |
+|shavanifestcdnprod1.azureedge.net:80 |
+|v10ortex-win.data.microsoft.com:80 |
+|wp.microsoft.com:80 |
+|dcpalt.microsoft.com:80 |
+|www.microsoft.com:80 |
+|www.msftconnecttest.com:80 |
+|www.thawte.com:80 |
+|\*ctldl.windowsupdate.com:443 |
+|\*. management.usgovcloudapi.net:443 |
+|\*. update.microsoft.com:443 |
+|admin.core.usgovcloudapi.net:443 |
+|azperfmerges.blob.core.windows.net:443 |
+|azperfmerges.blob.core.windows.net:443 |
+|azprofileruploads1.blob.core.windows.net:443 |
+|azprofileruploads10.blob.core.windows.net:443 |
+|azprofileruploads2.blob.core.windows.net:443 |
+|azprofileruploads3.blob.core.windows.net:443 |
+|azprofileruploads4.blob.core.windows.net:443 |
+|azprofileruploads5.blob.core.windows.net:443 |
+|azprofileruploads6.blob.core.windows.net:443 |
+|azprofileruploads7.blob.core.windows.net:443 |
+|azprofileruploads8.blob.core.windows.net:443 |
+|azprofileruploads9.blob.core.windows.net:443 |
+|azureprofilerfrontdoor.cloudapp.net:443 |
+|azurewatsonanalysis.usgovcloudapp.net:443 |
+|cacerts.digicert.com:443 |
+|client.wns.windows.com:443 |
+|crl.microsoft.com:443 |
+|crl.verisign.com:443 |
+|crl3.digicert.com:443 |
+|csc3-2009-2.crl.verisign.com:443 |
+|ctldl.windowsupdate.com:443 |
+|definitionupdates.microsoft.com:443 |
+|download.windowsupdate.com:443 |
+|fairfax.warmpath.usgovcloudapi.net:443 |
+|flighting.cp.wd.microsoft.com:443 |
+|gcwsprodgmdm2billing.queue.core.usgovcloudapi.net:443 |
+|gcwsprodgmdm2billing.table.core.usgovcloudapi.net:443 |
+|global.metrics.nsatc.net:443 |
+|go.microsoft.com:443 |
+|gr-gcws-prod-bd3.usgovcloudapp.net:443 |
+|gr-gcws-prod-bn1.usgovcloudapp.net:443 |
+|gr-gcws-prod-dd3.usgovcloudapp.net:443 |
+|gr-gcws-prod-dm2.usgovcloudapp.net:443 |
+|gr-gcws-prod-phx20.usgovcloudapp.net:443 |
+|gr-gcws-prod-sn5.usgovcloudapp.net:443 |
+|login.live.com:443 |
+|login.microsoftonline.us:443 |
+|management.core.usgovcloudapi.net:443 |
+|management.usgovcloudapi.net:443 |
+|maupdateaccountff.blob.core.usgovcloudapi.net:443 |
+|mscrl.microsoft.com:443 |
+|ocsp.digicert.com:443 |
+|ocsp.msocsp.com:443 |
+|ocsp.verisign.com:443 |
+|rteventservice.trafficmanager.net:443 |
+|settings-win.data.microsoft.com:443 |
+|shavamanifestcdnprod1.azureedge.net:443 |
+|shavamanifestcdnprod1.azureedge.net:443 |
+|v10.vortex-win.data.microsoft.com:443 |
+|wdcp.microsoft.com:443 |
+|wdcpalt.microsoft.com:443 |
+|www.microsoft.com:443 |
+|www.msftconnecttest.com:443 |
+|www.thawte.com:443 |
 
 <!--Image references-->
 [1]: ./media/firewall-integration/firewall-apprule.png

@@ -7,14 +7,14 @@ manager: carmonm
 keywords: alkalmazás-konzisztens biztonsági mentés; alkalmazás-konzisztens Azure-beli virtuális gépek biztonsági mentése; Linuxos virtuális gép biztonsági mentése; Azure Backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/12/2018
+ms.date: 01/12/2018
 ms.author: dacurwin
-ms.openlocfilehash: bb764cfa14b4bc8e53f25629961a1baecd6a6c1f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: dc7745c7c1110bf3635b1621cecfd5e61488b9f9
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954694"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210406"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Az Azure Linux rendszerű virtuális gépek alkalmazásának konzisztens biztonsági mentése
 

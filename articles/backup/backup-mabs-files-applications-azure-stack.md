@@ -6,16 +6,17 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/5/2018
+ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: 25e511a1596c1119d1db8c9270ce216cd5186e72
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: d9e7aaca99e551e17e8b4be5ef6146a19e44355f
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735475"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210207"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Fájlok és alkalmazások biztonsági mentése az Azure Stackben
+
 A Azure Backup a fájlok és az alkalmazások Azure Stackn való védelemmel (vagy biztonsági mentéssel) való ellátására is használható. Fájlok és alkalmazások biztonsági mentéséhez telepítse Microsoft Azure Backup-kiszolgálót Azure Stack rendszeren futó virtuális gépre. Az azonos virtuális hálózatban található Azure Stack-kiszolgálók fájljait is védelemmel láthatja el. A Azure Backup Server telepítése után hozzáadhat Azure-lemezeket a rövid távú biztonsági mentési adatmennyiséghez elérhető helyi tárterület növeléséhez. A Azure Backup Server hosszú távú adatmegőrzéshez az Azure Storage-t használja.
 
 > [!NOTE]
@@ -23,7 +24,6 @@ A Azure Backup a fájlok és az alkalmazások Azure Stackn való védelemmel (va
 >
 
 Ez a cikk nem tárgyalja a Azure Backup Server telepítését a Azure Stack környezetben. A Azure Stack Azure Backup Server telepítéséhez tekintse meg a [Azure Backup Server telepítését](backup-mabs-install-azure-stack.md)ismertető cikket.
-
 
 ## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Azure Stack virtuális gépek fájljainak és mappáinak biztonsági mentése az Azure-ba
 
@@ -41,7 +41,7 @@ A Azure Stack virtuális gépek fájljainak védelemmel Azure Backup Server konf
 
     ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
 
-    Megnyílik a **csoporttagok kiválasztása** képernyő. 
+    Megnyílik a **csoporttagok kiválasztása** képernyő.
 
     ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
@@ -63,7 +63,7 @@ A Azure Stack virtuális gépek fájljainak védelemmel Azure Backup Server konf
     > A Azure Backup Server csatolt lemezeken több mint öt napig **ne** őrizze meg az operatív helyreállítási (biztonsági mentési) adatait.
     >
 
-    ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png) 
+    ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
 
     A növekményes biztonsági mentések intervallumának kiválasztása helyett az expressz teljes biztonsági mentést csak az egyes ütemezett helyreállítási pontok előtt válassza **közvetlenül a helyreállítási pont előtt**. Ha az alkalmazások munkaterheléseit védi, Azure Backup Server helyreállítási pontokat hoz létre a szinkronizálás gyakoriságának ütemezésekor (ha az alkalmazás támogatja a növekményes biztonsági mentéseket). Ha az alkalmazás nem támogatja a növekményes biztonsági mentéseket, Azure Backup Server expressz teljes biztonsági mentést futtat.
 
@@ -80,13 +80,13 @@ A Azure Stack virtuális gépek fájljainak védelemmel Azure Backup Server konf
 
 9. Ha úgy dönt, hogy biztonsági másolatot készít az Azure-ra, az **online védelmi adatok megadása** oldalon ellenőrizze, hogy ki van-e választva az Azure-ba biztonsági mentéshez használni kívánt munkaterhelések.
 
-10. Az **online biztonsági mentés ütemezésének megadása**területen határozza meg, hogy mikor történjen növekményes biztonsági mentés az Azure-ba. 
+10. Az **online biztonsági mentés ütemezésének megadása**területen határozza meg, hogy mikor történjen növekményes biztonsági mentés az Azure-ba.
 
     A biztonsági másolatok napi, heti, havi és éves futtatására, valamint a futtatásának időpontjára és dátumára is ütemezhetők. A biztonsági mentések naponta akár kétszer is előfordulhatnak. Minden alkalommal, amikor egy biztonsági mentési feladatot futtat, egy adathelyreállítási pont jön létre az Azure-ban a Azure Backup Server lemezen tárolt biztonsági másolati adatok másolatával.
 
 11. Az **online adatmegőrzési szabály meghatározása**területen határozza meg, hogyan maradnak meg a napi/heti/havi/éves biztonsági másolatokből létrehozott helyreállítási pontok az Azure-ban.
 
-12. Az **online replikáció kiválasztása**lapon adja meg, hogyan történjen az adatkezdeti teljes replikálás. 
+12. Az **online replikáció kiválasztása**lapon adja meg, hogyan történjen az adatkezdeti teljes replikálás.
 
 13. Az **Összefoglalás**lapon tekintse át a beállításokat. Amikor a **csoport létrehozása**elemre kattint, a kezdeti adatreplikálás történik. Amikor az adatreplikálás befejeződik, az **állapot** lapon a védelmi csoport állapota **OK**értékként jelenik meg. A kezdeti biztonsági mentési művelet a védelmi csoport beállításaival összhangban zajlik.
 
@@ -115,11 +115,10 @@ A Azure Backup Server-konzol használatával állítsa helyre az adatokat a virt
     * **Értesítés** Kattintson az **E-mail küldése a helyreállítás befejezéséről**elemre, és adja meg a címzetteket, akik megkapják az értesítést. Az e-mail címeket vesszővel válassza el egymástól.
     * A kijelölések után kattintson a **tovább** gombra.
 
-7. Tekintse át a helyreállítási beállításokat, és kattintson a **helyreállítás**gombra. 
+7. Tekintse át a helyreállítási beállításokat, és kattintson a **helyreállítás**gombra.
 
-    > [!Note] 
-    > Amíg a helyreállítási feladat folyamatban van, a kijelölt helyreállítási elemek összes szinkronizációs feladata meg lett szakítva.
-    >
+    >[!Note]
+    >Amíg a helyreállítási feladat folyamatban van, a kijelölt helyreállítási elemek összes szinkronizációs feladata meg lett szakítva.
 
 Modern biztonsági másolati tárhely (MBS) használata esetén a fájlkiszolgáló végfelhasználói helyreállítása (EUR) nem támogatott. A fájlkiszolgáló EUR Kötet árnyékmásolata szolgáltatás (VSS) függőséggel rendelkezik, amelyet a modern biztonsági másolati tárhely nem használ. Ha az EUR engedélyezve van, a következő lépésekkel állíthatja helyre az adatokat:
 
@@ -128,12 +127,16 @@ Modern biztonsági másolati tárhely (MBS) használata esetén a fájlkiszolgá
 2. A **Tulajdonságok** menüben kattintson az **előző verziók** lehetőségre, és válassza ki a helyreállítani kívánt verziót.
 
 ## <a name="view-azure-backup-server-with-a-vault"></a>Azure Backup Server megtekintése tárolóval
-Azure Backup Server entitások az Azure Portalon való megtekintéséhez kövesse az alábbi lépéseket:
+
+A Azure Portal Azure Backup Server entitások megtekintéséhez kövesse az alábbi lépéseket:
+
 1. Nyissa meg Recovery Services-tárolót.
 2. Kattintson a biztonsági mentési infrastruktúra elemre.
 3. A biztonságimásolat-felügyeleti kiszolgálók megtekintése.
 
 ## <a name="see-also"></a>Lásd még
+
 További információ a Azure Backup Server használatáról más számítási feladatok ellátásához: a következő cikkek egyike:
-- [A SharePoint-farm biztonsági mentése](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
-- [SQL Server biztonsági mentése](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+
+* [A SharePoint-farm biztonsági mentése](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
+* [SQL Server biztonsági mentése](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)

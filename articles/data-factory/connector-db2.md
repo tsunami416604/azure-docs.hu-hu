@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 49f86a6a8858fd0ef3085ed571f3348d33f70c8d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 16dd40a521a9b0a240574c2f177f896c31508a37
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966582"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211703"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása a DB2-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -32,6 +32,7 @@ Az adatok a DB2-adatbázisból bármely támogatott fogadó adattárba másolhat
 
 Pontosabban, ez a DB2-összekötő a következő IBM DB2 platformokat és verziókat támogatja az elosztott kapcsolati adatbázis-architektúra (DRDA) SQL Access Manager (SQLAM) 9-es, 10-es és 11-es verziójával:
 
+* IBM DB2 for z/OS 12
 * IBM DB2 for z/OS 11,1
 * IBM DB2 for z/OS 10,1
 * IBM DB2 az i 7,3-hez

@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 8678bacb48bdf63abb2ce517f1bead83d86a5827
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: d4376632b8f912cd76f3af5e9a8819b75f8144b6
+ms.sourcegitcommit: dcea3c1ab715a79ebecd913885fbf9bbee61606a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113747"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70209480"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Gyors útmutató: Azure-beli adat-előállító létrehozása a PowerShell használatával
 
@@ -314,7 +314,7 @@ Ebben az eljárásban egy másolási tevékenységgel rendelkező folyamatot hoz
 
 Ebben a lépésben létrehoz egy folyamat-futtatást.
 
-1. Futtassa a **rehív-AzDataFactoryV2Pipeline** parancsmagot egy folyamat futtatásának létrehozásához. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
+Futtassa a **rehív-AzDataFactoryV2Pipeline** parancsmagot egy folyamat futtatásának létrehozásához. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline `

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a96c02d1d7d2fae43e0a5915e9233bde842ce621
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3a014bab0252667c3c70e56399a72de4e5771a86
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066673"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210115"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása Azure-Virtual Network
 Ez a dokumentum ismerteti a Azure App Service Virtual Network Integration funkciót, valamint azt, hogyan állíthatja be az [](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazásokkal a Azure app Serviceban. [Azure-beli virtuális hálózatok][VNETOverview] A (virtuális hálózatok) lehetővé teszi, hogy számos Azure-erőforrást egy nem internetes útválasztású hálózaton helyezzen el.  
@@ -110,7 +110,7 @@ Ha le szeretné bontani az alkalmazást a VNet,válassza a leválasztás lehető
 
 #### <a name="web-app-for-containers"></a>Web App for Containers
 
-Ha a beépített rendszerképeket használó Linuxon App Service használ, a regionális VNet-integrációs funkció további változtatások nélkül működik. Ha Web App for Containers használ, módosítania kell a Docker-rendszerképet, hogy használni lehessen a VNet-integrációt. A Docker-rendszerképben használja a PORT környezeti változót a fő webkiszolgáló figyelési portjának hardcoded helyett. A PORT környezeti változót automatikusan App Service platform állítja be a tároló indítási ideje szerint.
+Ha a beépített rendszerképeket használó Linuxon App Service használ, a regionális VNet-integrációs funkció további változtatások nélkül működik. Ha Web App for Containers használ, módosítania kell a Docker-rendszerképet, hogy használni lehessen a VNet-integrációt. A Docker-rendszerképben használja a PORT környezeti változót a fő webkiszolgáló figyelési portjának hardcoded helyett. A PORT környezeti változót automatikusan App Service platform állítja be a tároló indítási ideje szerint. Ha SSH-t használ, az SSH démont úgy kell konfigurálni, hogy a SSH_PORT környezeti változó által megadott portszámot figyelje a regionális VNet-integráció használatakor.
 
 ### <a name="service-endpoints"></a>Service Endpoints – szolgáltatásvégpont
 

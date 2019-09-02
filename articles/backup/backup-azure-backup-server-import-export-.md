@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 5/8/2018
+ms.date: 05/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: 0f60fbf22541e5fdd003d0ab663b5905cd31adcd
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: c542abe0e778b9204a23ccea0f3617656ba101e1
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737242"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210435"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Offline – a DPM és a Azure Backup Server biztonsági mentési munkafolyamata
 A Azure Backup számos beépített hatékonyságot biztosít, amelyek a hálózati és tárolási költségeket az Azure-ba irányuló összes adat kezdeti teljes biztonsági mentése során megtakarítják. A kezdeti teljes biztonsági mentések általában nagy mennyiségű adat átvitelét igénylik, és nagyobb hálózati sávszélességet igényelnek, ha az azokat követő biztonsági mentések során csak a különbözeteket/növekményeket továbbítják. Azure Backup tömöríti a kezdeti biztonsági mentéseket. Az offline kivetés folyamatán keresztül a Azure Backup lemezek használatával feltölthetik a tömörített kezdeti biztonsági mentési adatok az Azure-ba.
@@ -207,5 +207,5 @@ Az importálási feladatok befejeződése után a kezdeti biztonsági mentési a
 A következő ütemezett biztonsági mentés időpontjában a Azure Backup növekményes biztonsági mentést hajt végre a kezdeti biztonsági másolaton.
 
 ## <a name="next-steps"></a>További lépések
-* Az Azure importálási/exportálási munkafolyamatával kapcsolatos bármilyen kérdés esetén tekintse meg az [adatok blob Storage-ba való átvitelének Microsoft Azure importálási/exportálási szolgáltatás használata](../storage/common/storage-import-export-service.md)című témakört.
+* Az Azure importálási/exportálási munkafolyamatával kapcsolatos bármilyen kérdés esetén tekintse át az adatok blob Storage-ba való átvitelére szolgáló [Microsoft Azure import/export szolgáltatás használatát](../storage/common/storage-import-export-service.md)ismertető témakört.
 * A munkafolyamattal kapcsolatos kérdésekért tekintse meg a Azure Backup- [GYIK](backup-azure-backup-faq.md) offline biztonsági mentését ismertető szakaszt.

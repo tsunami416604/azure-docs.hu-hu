@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 11e83d0a245b2fba70926723edaf303032f90b8e
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 2f645d290175db9692649d825323313fc207a014
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170588"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210277"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure-beli virtuális gépek biztonsági mentésének hibaelhárítása
 A Azure Backup használata során észlelt hibák elhárítása az alábbi információkkal végezhető el:
@@ -148,7 +148,7 @@ A virtuális gépen a biztonsági mentési művelet sikertelen volt, mert a hál
 
 Egy emelt szintű (rendszergazdai) parancssorból futtassa a következő parancsot:
 
-```
+```text
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTimeFromHost /t REG_SZ /d True /f
 ```
@@ -243,7 +243,7 @@ A virtuális gép biztonsági mentése a pillanatkép-parancsok alapjául szolg�
 - A **tárterület hálózati hozzáférése a NSG használatával tiltható**le. További információ arról, hogyan [hozhatók létre hálózati hozzáférés](backup-azure-arm-vms-prepare.md#establish-network-connectivity) a tárolóhoz az IP-címek engedélyezett listája vagy egy proxykiszolgáló használatával.
 - **A SQL Server biztonsági mentéssel konfigurált virtuális gépek a pillanatkép-feladatok késleltetését okozhatják**. Alapértelmezés szerint a virtuális gép biztonsági mentése létrehoz egy VSS teljes biztonsági mentést a Windows rendszerű virtuális gépeken. Azok a virtuális gépek, amelyek SQL Server futtatnak SQL Server biztonsági mentést, pillanatkép-késéseket tapasztalhatnak. Ha a pillanatkép-késések biztonsági mentési hibákat okoznak, állítsa be a következő beállításkulcsot:
 
-   ```
+   ```text
    [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
    "USEVSSCOPYBACKUP"="TRUE"
    ```

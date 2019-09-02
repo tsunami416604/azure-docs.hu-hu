@@ -1,18 +1,18 @@
 ---
-title: VMware virtuális gépek visszaállítása Azure Backup Server
+title: VMware virtuális gépek visszaállítása az Azure Backup Server használatával
 description: A VMware vCenter/ESXi-kiszolgálón futó VMware virtuális gépek visszaállításához használja a Azure Backup Server (MABS) szolgáltatást.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/18/2019
+ms.date: 08/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: fd851822a7068928a2f332c240bc33b70b1e16f6
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 7d267fcd27a96c5ee7820a5d9fb73c6bbdb80695
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642304"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210144"
 ---
 # <a name="restore-vmware-virtual-machines"></a>VMware virtuális gépek visszaállítása
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 4bce7aeebee729ed253d39720ef520880c261a22
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 3777aecea5e25b33a7010ad90887829406e491ae
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639650"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210171"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Azure Backup Server felügyelet nélküli telepítésének futtatása
 
@@ -26,7 +26,7 @@ Ezek a lépések nem érvényesek Azure Backup Server v1 telepítésekor.
 
 2. Illessze be a következő kódot a MABSSetup. ini fájlba. Cserélje le a zárójelben (\< \>) lévő szöveget a környezetének megfelelő értékekre. A következő szöveg egy példa:
 
-   ```
+   ```text
    [OPTIONS]
    UserName=administrator
    CompanyName=<Microsoft Corporation>
@@ -49,7 +49,7 @@ Ezek a lépések nem érvényesek Azure Backup Server v1 telepítésekor.
 
 3. Mentse a fájlt. Ezután a telepítési kiszolgálón egy rendszergazda jogú parancssorba írja be a következő parancsot:
 
-   ```
+   ```cmd
    start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
    ```
 
