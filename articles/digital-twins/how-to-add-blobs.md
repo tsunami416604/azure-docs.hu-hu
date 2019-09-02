@@ -110,18 +110,18 @@ Az egyénileg visszaadott Blobok megfelelnek a következő JSON-sémának:
 
 | Attribútum | Type | Leírás |
 | --- | --- | --- |
-| **id** | Sztring | A blob egyedi azonosítója |
-| **name** |Sztring | A blob egy emberi felhasználóbarát neve |
-| **parentId** | Sztring | A blob és a (szóközök, eszközök vagy felhasználók) hozzárendelése a szülő entitáshoz |
-| **type** | Sztring | A blob típusa – a *típus* -és *typeId* nem használható  |
-| **typeId** | Egész szám | A blob típusának azonosítója – nem használható a *Type* és a *typeId* |
-| **subtype** | Sztring | A blob altípusa-nem használhatja az altípust és a *subtypeId* |
-| **subtypeId** | Egész szám | A blob altípusának azonosítója – nem használható *altípus* és *subtypeId* |
-| **sharing** | Sztring | Azt határozza meg, hogy a blob osztható-`None`e `Tree`: `Global`Enum [,,] |
-| **description** | Sztring | A blob testreszabott leírása |
+| **id** | String | A blob egyedi azonosítója |
+| **name** |String | A blob egy emberi felhasználóbarát neve |
+| **parentId** | String | A blob és a (szóközök, eszközök vagy felhasználók) hozzárendelése a szülő entitáshoz |
+| **type** | String | A blob típusa – a *típus* -és *typeId* nem használható  |
+| **typeId** | Integer | A blob típusának azonosítója – nem használható a *Type* és a *typeId* |
+| **subtype** | String | A blob altípusa-nem használhatja az altípust és a *subtypeId* |
+| **subtypeId** | Integer | A blob altípusának azonosítója – nem használható *altípus* és *subtypeId* |
+| **sharing** | String | Azt határozza meg, hogy a blob osztható-`None`e `Tree`: `Global`Enum [,,] |
+| **description** | String | A blob testreszabott leírása |
 | **contentInfos** | Array | Strukturálatlan metaadatokat ad meg, beleértve a verziószámot is |
-| **fullName** | Sztring | A blob teljes neve |
-| **spacePaths** | Sztring | A terület elérési útja |
+| **fullName** | String | A blob teljes neve |
+| **spacePaths** | String | A terület elérési útja |
 
 A blob metaadatait mindig a **Content-Type** `application/json` vagy egy `.json` fájlként megadott első adattömbként adja meg a rendszer. A rendszer a második adattömbben adja meg a fájlhoz tartozó adatmennyiséget, és bármilyen támogatott MIME-típust tartalmazhat.
 

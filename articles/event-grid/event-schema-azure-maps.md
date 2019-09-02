@@ -119,9 +119,9 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | -------- | ---- | ----------- |
 | apiCategory | string | Az esemény kategóriája API-t. |
 | apiName | string | Az esemény API neve. |
-| issues | objektum | Megtekintheti a feldolgozás során észlelt problémákat. Ha problémákat ad vissza, majd lesz nem adott vissza a visszajelzéshez geometriája. |
+| issues | object | Megtekintheti a feldolgozás során észlelt problémákat. Ha problémákat ad vissza, majd lesz nem adott vissza a visszajelzéshez geometriája. |
 | responseCode | szám | HTTP-válaszkód |
-| geometries | objektum | Az időkorlát geometriája a koordináta tartalmazó listák helyezze, vagy átfedésben vannak a searchBuffer pozíciója körül. |
+| geometries | object | Az időkorlát geometriája a koordináta tartalmazó listák helyezze, vagy átfedésben vannak a searchBuffer pozíciója körül. |
 
 Ha hiba lép fel, a Maps API-ban a hibaobjektum adja vissza. A hiba objektum a következő tulajdonságokkal rendelkezik:
 
