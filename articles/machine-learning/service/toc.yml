@@ -33,10 +33,10 @@
               href: tutorial-auto-train-models.md
     - name: Vizuális felület
       items:
-        - name: Regressziós modell betanítása
+        - name: 1. Regressziós modell betanítása
           displayName: studio
           href: ui-tutorial-automobile-price-train-score.md
-        - name: Regressziós modell üzembe helyezése
+        - name: 2. Regressziós modell üzembe helyezése
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
     - name: Automatizált gépi tanulás

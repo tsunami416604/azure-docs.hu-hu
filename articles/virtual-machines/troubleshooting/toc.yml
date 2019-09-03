@@ -97,8 +97,9 @@
 - name: Virtuális gép újraindítása vagy átméretezése
   href: restart-resize-error-troubleshooting.md
 - name: Soros konzol
-  href: serial-console-overview.md
   items:
+    - name: Soros konzol – áttekintés
+      href: serial-console-overview.md
     - name: Soros konzol Linuxhoz
       href: serial-console-linux.md
       items:

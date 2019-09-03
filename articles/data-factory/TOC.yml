@@ -147,6 +147,8 @@
           href: concepts-data-flow-overview.md
         - name: Hibakeresési mód
           href: concepts-data-flow-debug-mode.md
+        - name: JSON kezelése
+          href: concepts-data-flow-json.md
         - name: Sémaeltérés
           href: concepts-data-flow-schema-drift.md
         - name: Vizsgálat panel
@@ -446,6 +448,8 @@
           href: control-flow-webhook-activity.md
     - name: Adatfolyam-átalakítások
       items:
+        - name: Rögzített szélességű mező
+          href: how-to-fixed-width.md
         - name: Összesítés
           href: data-flow-aggregate.md
         - name: Sor módosítása
@@ -600,6 +604,8 @@
           href: data-migration-guidance-overview.md
         - name: Adatok migrálása az AWS S3-ból az Azure-ba
           href: data-migration-guidance-s3-azure-storage.md
+        - name: Adatok migrálása helyszíni Hadoop-fürtből az Azure-ba
+          href: data-migration-guidance-hdfs-azure-storage.md
 - name: Referencia
   items:
     - name: .NET
