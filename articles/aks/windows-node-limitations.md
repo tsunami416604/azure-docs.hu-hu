@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: c2c9e3d29ced5f75873656e253ecdbab5efe7df8
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ca5d857e4d473c7f76b7fac62e8a8bab39769b25
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114409"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233130"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>A Windows Server Node-készletek és az alkalmazások számítási feladatainak jelenlegi korlátai az Azure Kubernetes szolgáltatásban (ak)
 
@@ -21,47 +21,18 @@ Az Azure Kubernetes szolgáltatásban (ak) olyan csomópont-készletet hozhat l�
 Ez a cikk a Windows Server-csomópontokra vonatkozó korlátozásokat és operációsrendszer-fogalmakat ismerteti az AK-ban. A Windows Serverhez készült Node-készletek jelenleg előzetes verzióban érhetők el.
 
 > [!IMPORTANT]
-> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További részletekért tekintse meg a következő támogatási cikkeket:
+> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További információkért tekintse meg a következő támogatási cikkeket:
 >
 > * [AK-támogatási szabályzatok][aks-support-policies]
 > * [Azure-támogatás – gyakori kérdések][aks-faq]
 
-## <a name="limitations-for-windows-server-in-kubernetes"></a>A Windows Serverre vonatkozó korlátozások a Kubernetes-ben
+## <a name="which-windows-operating-systems-are-supported"></a>Mely Windows operációs rendszerek támogatottak?
 
-A Windows Server-tárolóknak Windows-alapú tároló gazdagépen kell futniuk. A Windows Server-tárolók az AK-ban való futtatásához [létrehozhat egy Windows Servert futtató csomópont][windows-node-cli] -készletet a vendég operációs rendszerként. A Windows Server-csomópontok készletének támogatása olyan korlátozásokat tartalmaz, amelyek a felsőbb rétegbeli Windows-kiszolgáló részét képezik a Kubernetes projektben. Ezek a korlátozások nem kifejezetten az AK-ra vonatkoznak. További információ a Windows Server rendszerhez készült, a Kubernetes-ben elérhető felső szintű támogatásról: [Windows Server-tárolók Kubernetes-korlátozásokban](https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations).
+Az AK a Windows Server 2019-es verzióját használja gazda operációs rendszerként, és csak a folyamatok elkülönítését támogatja. A más Windows Server-verziók használatával létrehozott tároló-lemezképek nem támogatottak. [Windows-tároló verziójának kompatibilitása][windows-container-compat]
 
-A Kubernetes-ben a Windows Server-tárolók következő felsőbb rétegbeli korlátozásai vonatkoznak az AK-ra:
+## <a name="is-kubernetes-different-on-windows-and-linux"></a>A Kubernetes különbözik a Windows és a Linux rendszereken?
 
-- A Windows Server-tárolók csak a Windows Server 2019-et használhatják, amely megfelel a mögöttes Windows Server-csomópont operációs rendszernek.
-    - A Windows Server 2016 használatával létrehozott tároló-lemezképek, mivel az alapszintű operációs rendszer nem támogatott.
-- A privilegizált tárolók nem használhatók.
-- A Linux-specifikus funkciók, például a RunAsUser, a SELinux, a AppArmor vagy a POSIX képességek nem érhetők el a Windows Server-tárolókban.
-    - A Linux-specifikus, például a UUI/GUID azonosítóval rendelkező fájlrendszerbeli korlátozások a felhasználónkénti engedélyek esetében nem érhetők el a Windows Server-tárolókban.
-- Az Azure-lemezek és a Azure Files támogatott mennyiségi típusok, amelyek a Windows Server-tárolóban NTFS-kötetként érhetők el.
-    - Az NFS-alapú tárolás/kötetek nem támogatottak.
-
-## <a name="aks-limitations-for-windows-server-node-pools"></a>AK-korlátozások a Windows Server Node-készletekhez
-
-A következő további korlátozások érvényesek a Windows Server Node Pool támogatására az AK-ban:
-
-- Az AK-fürt mindig tartalmaz egy Linux-csomópontot, amely az első csomópont-készlet. Ez az első Linux-alapú csomópont-készlet nem törölhető, kivéve, ha maga az AK-fürt törölve lett.
-- Az AK-fürtöknek az Azure CNI (Advanced) hálózatkezelési modellt kell használniuk.
-    - A Kubenet (alapszintű) hálózatkezelés nem támogatott. Nem hozhat létre kubenet-t használó AK-fürtöt. További információ a hálózati modellekkel kapcsolatos különbségekről: az [AK-beli alkalmazások hálózati fogalmai][azure-network-models].
-    - Az Azure CNI hálózati modellje további tervezést és szempontokat igényel az IP-címek kezeléséhez. Az Azure-CNI tervezésével és megvalósításával kapcsolatos további információkért lásd: [Az Azure CNI hálózatkezelésének konfigurálása az AK-ban][configure-azure-cni].
-- Az AK-ban lévő Windows Server-csomópontokat *frissíteni* kell a legújabb Windows Server 2019 kiadásra a javítások és a frissítések legújabb frissítéseinek fenntartása érdekében. A Windows-frissítések nincsenek engedélyezve az Alapcsomópont-rendszerképben az AK-ban. A Windows Update kiadási ciklus és a saját ellenőrzési folyamata körüli rendszeres ütemterv esetén frissíteni kell a Windows Server Node-készlet (ek) et az AK-fürtben. A Windows Server-csomópontok készletének frissítésével kapcsolatos további információkért lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
-    - Ezek a Windows Server-csomópontok a virtuális hálózat alhálózatában átmenetileg felhasználnak további IP-címeket, mivel a rendszer a régi csomópont eltávolítása előtt üzembe helyezi az új csomópontot.
-    - az előfizetésben az vCPU-kvótákat is ideiglenesen felhasználjuk, mivel a rendszer új csomópontot telepít, majd eltávolítja a régi csomópontot.
-    - A rendszer nem tudja automatikusan frissíteni és kezelni az újraindításokat az AK-ban található Linux-csomópontok használatával `kured` .
-- Az AK-fürt legfeljebb nyolc csomópont-készletet tartalmazhat.
-    - Ezen nyolc csomópont-készletben legfeljebb 400 csomópont lehet.
-- A Windows Server-csomópontok készletének neve legfeljebb 6 karakterből állhat.
-- A Windows Server-csomópontok esetében a rendszer nem támogatja az AK-ban található, például a hálózati házirend és a fürt automéretező funkcióinak előzetes verzióját.
-- A bejövő vezérlők csak Linux-csomópontokon NodeSelector használatával ütemezhetők.
-- Az Azure dev Spaces jelenleg csak a Linux-alapú csomópont-készletek esetében érhető el.
-- Csoportosan felügyelt szolgáltatásfiókok (gMSA-EK) támogatása, ha a Windows Server-csomópontok nem csatlakoznak Active Directory tartományhoz jelenleg nem érhető el az AK-ban.
-    - Ha ezt a funkciót szeretné használni, a nyílt forráskódú, a felsőbb rétegbeli [AK-motor][aks-engine] projekt jelenleg biztosít gMSA-támogatást.
-
-## <a name="os-concepts-that-are-different"></a>Eltérő operációsrendszer-fogalmak
+A Windows Server-csomópontok készletének támogatása olyan korlátozásokat tartalmaz, amelyek a felsőbb rétegbeli Windows-kiszolgáló részét képezik a Kubernetes projektben. Ezek a korlátozások nem kifejezetten az AK-ra vonatkoznak. További információ a Windows Server rendszerhez készült, a Kubernetes-ben elérhető felső szintű támogatásról: a Kubernetes-projektből származó [Windows-támogatásra való bevezetés][intro-windows] [támogatott funkcionalitás és korlátozások][upstream-limitations] című szakasza.
 
 A Kubernetes történelmileg Linux-alapú. A felsőbb rétegbeli [Kubernetes.IO][kubernetes] webhely számos példája Linux-csomópontokon használható. Ha Windows Server-tárolókat használó központi telepítéseket hoz létre, a következő szempontokat kell figyelembe venni az operációs rendszer szintjén:
 
@@ -71,14 +42,68 @@ A Kubernetes történelmileg Linux-alapú. A felsőbb rétegbeli [Kubernetes.IO]
 - **Fájlelérési utak** – a Windows Server-konvenció a \ helyett a következőt használja:/.
     - A kötetek csatlakoztatására szolgáló Pod specifikációban a Windows Server-tárolók megfelelő elérési útját kell megadnia. Például egy Linux-tárolóban a */mnt/Volume* csatlakoztatási pontja helyett olyan meghajtóbetűjelet és helyet kell megadnia, mint amilyen például a */K/Volume* a *K:* meghajtó csatlakoztatására.
 
+## <a name="what-kind-of-disks-are-supported-for-windows"></a>Milyen típusú lemezeket támogat a Windows?
+
+Az Azure-lemezek és a Azure Files támogatott mennyiségi típusok, amelyek a Windows Server-tárolóban NTFS-kötetként érhetők el.
+
+## <a name="can-i-run-windows-only-clusters-in-aks"></a>Futtathatok csak Windows rendszerű fürtöket az AK-ban?
+
+Egy AK-fürt fő csomópontjai (a vezérlő síkja) a szolgáltatásban találhatók, a fő összetevőket üzemeltető csomópontok operációs rendszere nem lesz elérhető. Az összes AK-fürt a Linux-alapú alapértelmezett első csomópont-készlettel jön létre. Ez a csomópont-készlet rendszerszolgáltatásokat tartalmaz, amelyek szükségesek a fürt működéséhez. Azt javasoljuk, hogy legalább két csomópontot futtasson az első csomópont-készletben a fürt megbízhatóságának és a fürt működésének a biztosításához. Az első Linux-alapú csomópont-készlet nem törölhető, ha maga az AK-fürt nem törlődik.
+
+## <a name="what-network-plug-ins-are-supported"></a>Milyen hálózati beépülő modulok támogatottak?
+
+A Windows Node-készletekkel rendelkező AK-fürtöknek az Azure CNI (Advanced) hálózatkezelési modellt kell használniuk. A Kubenet (alapszintű) hálózatkezelés nem támogatott. További információ a hálózati modellekkel kapcsolatos különbségekről: az [AK-beli alkalmazások hálózati fogalmai][azure-network-models]. – Az Azure CNI Network Model további tervezést és szempontokat igényel az IP-címek kezeléséhez. Az Azure-CNI tervezésével és megvalósításával kapcsolatos további információkért lásd: [Az Azure CNI hálózatkezelésének konfigurálása az AK-ban][configure-azure-cni].
+
+## <a name="can-i-change-the-min--of-pods-per-node"></a>Megváltoztathatom a hüvelyek percenkénti számát.
+
+A fürtök megbízhatóságának biztosítása érdekében jelenleg követelmény, hogy legalább 30 hüvelyre legyen beállítva.
+
+## <a name="how-do-patch-my-windows-nodes"></a>Hogyan végezhető el a Windows-csomópontok javítása?
+
+Az AK-ban lévő Windows Server-csomópontokat *frissíteni* kell a legújabb javítások és frissítések beszerzéséhez. A Windows-frissítések nincsenek engedélyezve az AK-beli csomópontokon. Az AK az új csomópont-készlet rendszerképeit azonnal kibocsátja, amint a javítások elérhetők, így az ügyfelek feladata a csomópont-készletek frissítése, hogy a jelenlegi javításokon és gyorsjavításokon maradjon. Ez a használatban lévő Kubernetes-verzióra is igaz. Az AK kibocsátási megjegyzései azt jelzik, hogy mikor érhetők el új verziók. A Windows Server-csomópontok készletének frissítésével kapcsolatos további információkért lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
+
+> [!NOTE]
+> A frissített Windows Server-rendszerkép csak akkor lesz használatban, ha a fürt frissítése (a vezérlési sík frissítése) a csomópont-készlet frissítése előtt lett elvégezve.
+>
+
+## <a name="how-many-node-pools-can-i-create"></a>Hány Node-készletet hozhatok létre?
+
+Az AK-fürt legfeljebb nyolc (8) csomópont-készletet tartalmazhat. Ezekhez a csomópont-készletekhez legfeljebb 400 csomópont tartozhat. [Csomópont][nodepool-limitations]-készletre vonatkozó korlátozások.
+
+## <a name="what-can-i-name-my-windows-node-pools"></a>Mire használhatom a Windows-csomópontok készleteit?
+
+A nevet legfeljebb 6 (hat) karakterrel kell megtartania. Ez az AK jelenlegi korlátozása.
+
+## <a name="are-all-features-supported-with-windows-nodes"></a>Támogatottak-e a Windows-csomópontok összes funkciója?
+
+A hálózati házirendek és a kubenet a Windows-csomópontok esetében jelenleg nem támogatottak. 
+
+## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Futtathatok bejövő vezérlőket Windows-csomópontokon?
+
+Igen, a Windows Server-tárolókat támogató bejövő adatkezelők a Windows-csomópontokon is futhatnak az AK-ban.
+
+## <a name="can-i-use-azure-dev-spaces-with-windows-nodes"></a>Használhatom az Azure dev Spaces szolgáltatást Windows-csomópontokkal?
+
+Az Azure dev Spaces jelenleg csak a Linux-alapú csomópont-készletek esetében érhető el.
+
+## <a name="can-my-windows-server-containers-use-gmsa"></a>Használhatom a Windows Server-tárolókat a gMSA?
+
+A csoportosan felügyelt szolgáltatásfiókok (gMSA) támogatása jelenleg nem érhető el az AK-ban.
+
+## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Mi a teendő, ha olyan szolgáltatásra van szükségem, amely nem támogatott?
+
+Keményen dolgozunk, hogy az összes olyan funkciót felhasználjuk, amire szüksége van az AK-ban, de ha hiányosságok lépnek fel, a nyílt forráskódú és a felsőbb rétegbeli [AK-motor][aks-engine] projekt egyszerű és teljes mértékben testreszabható módot kínál a Kubernetes Azure-ban való futtatására, beleértve a Windows-támogatást is. Kérjük, tekintse meg a következő, az AK- [útitervtel][aks-roadmap]kapcsolatos szolgáltatások ütemtervét.
+
 ## <a name="next-steps"></a>További lépések
 
 A Windows Server-tárolók az AK-ban való megkezdéséhez [hozzon létre egy olyan csomópont-készletet, amely a Windows Server rendszerű][windows-node-cli]
 
 <!-- LINKS - external -->
-[upstream-limitations]: https://kubernetes.io/docs/setup/windows/#limitations
 [kubernetes]: https://kubernetes.io
 [aks-engine]: https://github.com/azure/aks-engine
+[upstream-limitations]: https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations
+[intro-windows]: https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/
+[aks-roadmap]: https://github.com/Azure/AKS/projects/1
 
 <!-- LINKS - internal -->
 [azure-network-models]: concepts-network.md#azure-virtual-networks
@@ -88,3 +113,6 @@ A Windows Server-tárolók az AK-ban való megkezdéséhez [hozzon létre egy ol
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
 [azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat
+[nodepool-limitations]: use-multiple-node-pools.md#limitations
+[preview-support]: support-policies.md#preview-features-or-feature-flags
+[windows-container-compat]: https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility#windows-server-2019-host-os-compatibility

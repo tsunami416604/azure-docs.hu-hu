@@ -6,47 +6,49 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: 7fea6d16c8846909a8ce9bb33aae74ce343018fa
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 16e0fe51137ce7e96cf98c0a8acf7c490e9087b3
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142323"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232418"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
-A [Azure Migrate](migrate-services-overview.md) az értékelési és áttelepítési eszközök, valamint a külső gyártóktól származó független szoftvergyártók (ISV-ajánlatok) központját biztosítja. Ez a cikk segítséget nyújt a hibák elhárításához Azure Migrate, Azure Migrate Server Assessment és Azure Migrate Server Migrálás esetén.
+A [Azure Migrate](migrate-services-overview.md) az értékelési és áttelepítési eszközök, valamint a külső gyártóktól származó független szoftvergyártók (ISV-ajánlatok) központját biztosítja. Ez a cikk segítséget nyújt a Azure Migrateával, Azure Migrate a kiszolgálók értékelésével és a Azure Migrate kiszolgáló áttelepítésével kapcsolatos problémák elhárításában.
 
-## <a name="azure-migrate-project-issues"></a>A projekttel kapcsolatos problémák Azure Migrate
 
-### <a name="i-cant-find-my-existing-azure-migrate-project"></a>Nem találom a meglévő Azure Migrate projektet.
+## <a name="find-a-project"></a>Projekt keresése
 
-A Azure Migrate [két verziója](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) létezik. Attól függően, hogy melyik verziót hozta létre a projektben, használja a következő módszerek egyikét:
+A Azure Migrate [két verziója](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) létezik.
 
-* Ha olyan projektet keres, amely a Azure Migrate korábbi verziójával (régi tapasztalatával) lett létrehozva, a projekt megkereséséhez kövesse az alábbi lépéseket:
 
-    1. Lépjen a [Azure Portalre](https://portal.azure.com), és keressen rá a **Azure Migrate**kifejezésre.
-    2. A Azure Migrate irányítópultján megjelenik egy szalagcím, amely a régebbi projektek elérését említi. Ez a szalagcím csak akkor jelenik meg, ha létrehozott egy projektet a régi felülettel. Válassza ki a szalagcímet.
+Ha a Azure Migrate projektet a Azure Migrate aktuális verziójában hozta létre, tegye a következőket:
 
-       ![Meglévő projektek elérése](./media/troubleshooting-general/access-existing-projects.png)
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Migrate**.
+2. A Azure Migrate irányítópulton > **kiszolgálók**lapon válassza a **módosítás** lehetőséget a jobb felső sarokban.
 
-    3. Ekkor megjelenik a Azure Migrate korábbi verziójával létrehozott meglévő projektek listája.
+    ![Váltás meglévő Azure Migrate projektre](./media/troubleshooting-general/switch-project.png)
 
-* Ha egy aktuális verzióval (új felülettel) létrehozott projektet keres, kövesse az alábbi lépéseket a projekt megkereséséhez:
+3. Válassza ki a megfelelő előfizetést és Azure Migrate projektet.
 
-    1. Lépjen a [Azure Portalre](https://portal.azure.com), és keressen rá a **Azure Migrate**kifejezésre.
-    2. A Azure Migrate irányítópulton nyissa meg a **kiszolgálók** lapot a bal oldali ablaktáblán, és kattintson a jobb felső sarokban található **módosítás** lehetőségre.
 
-       ![Váltás meglévő Azure Migrate projektre](./media/troubleshooting-general/switch-project.png)
+Ha a projektet a Azure Migrate előző verziójában hozta létre, tegye a következőket:
 
-    3. Válassza ki a megfelelő előfizetést és Azure Migrate projektet.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Migrate**.
+2. Ha a Azure Migrate-irányítópulton létrehozott egy projektet az előző verzióban, megjelenik egy régebbi projektekre hivatkozó szalagcím. Válassza ki a szalagcímet.
 
-### <a name="how-do-i-create-a-second-azure-migrate-project"></a>Hogyan hozzon létre egy második Azure Migrate projektet?
+    ![Meglévő projektek elérése](./media/troubleshooting-general/access-existing-projects.png)
 
-Az alábbi lépéseket követve hozzon létre egy új Azure Migrate projektet:
+3. Tekintse át a régi projekt listáját.
 
-1. Lépjen a [Azure Portalre](https://portal.azure.com), és keressen rá a **Azure Migrate**kifejezésre.
-2. A Azure Migrate irányítópulton nyissa meg a **kiszolgálók** lapot a bal oldali ablaktáblán, és kattintson a jobb felső sarokban található **módosítás** lehetőségre.
+
+## <a name="create-additional-projects"></a>További projektek létrehozása
+
+Hozzon létre egy új Azure Migrate projektet a következőképpen:
+
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Migrate**.
+2. A Azure Migrate irányítópulton > **kiszolgálók**lapon válassza a **módosítás** lehetőséget a jobb felső sarokban.
 
    ![Azure Migrate projekt módosítása](./media/troubleshooting-general/switch-project.png)
 
@@ -54,158 +56,201 @@ Az alábbi lépéseket követve hozzon létre egy új Azure Migrate projektet:
 
    ![Második Azure Migrate projekt létrehozása](./media/troubleshooting-general/create-new-project.png)
 
-### <a name="which-azure-geographies-does-azure-migrate-support"></a>Mely Azure-régiók támogatják a Azure Migrate?
+## <a name="review-supported-geographies"></a>Támogatott földrajzi területek áttekintése
 
-Tekintse meg a [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects) és a [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects)listáját.
+Tekintse át a [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects) és a [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects)támogatott földrajzi területeit.
 
-### <a name="how-do-i-delete-azure-migrate-projects-and-associated-log-analytics-workspaces"></a>Hogyan törölni Azure Migrate projekteket és a hozzájuk társított Log Analytics munkaterületeket?
+## <a name="delete-projectsworkspaces"></a>Projektek/munkaterületek törlése
 
-Ha töröl egy Azure Migrate projektet, a rendszer törli az áttelepítési projektet *és* a felderített gépek metaadatait. Ha azonban Log Analytics munkaterületet csatolt a kiszolgáló-értékelési eszközhöz, a Log Analytics munkaterület nem törlődik automatikusan. (Ugyanaz a Log Analytics munkaterület több felhasználási esethez is használható.) Ha az Log Analytics munkaterületet is törölni szeretné, ezt manuálisan kell megtennie:
+Azure Migrate projektek és Log Analytics munkaterületek törlésekor vegye figyelembe a következőket:
 
-1. Tallózással keresse meg a projekthez csatolt Log Analytics munkaterületet.
-     * Ha még nem törölte az áttelepítési projektet, keresse meg a munkaterületre mutató hivatkozást az alapvető erőforrások szakasz kiszolgáló értékelése áttekintés lapján.
+- Ha töröl egy Azure Migrate projektet, a rendszer törli a projektet *és* a felderített gépek metaadatait.
+- Ha Log Analytics munkaterületet csatolt a kiszolgáló-értékelési eszközhöz, a munkaterület nem törlődik automatikusan.
+- Ugyanaz a Log Analytics munkaterület több forgatókönyv esetén is használható.
+- Ha törölni szeretné a Log Analytics munkaterületet, manuálisan kell elvégeznie.
 
+
+### <a name="delete-a-project"></a>Projekt törlése
+
+Projekt törlése a Azure Migrate aktuális verziójában:
+
+1. Nyissa meg azt az Azure-erőforráscsoportot, amelyben a projekt létrejött.
+2. Az erőforráscsoport lapon válassza a **rejtett típusok megjelenítése**elemet.
+3. Válassza ki a törölni kívánt áttelepíthető projektet. Az erőforrástípus a Microsoft. migrálása/migrateprojects, és törli.
+
+Egy projekt törlése a Azure Migrate korábbi verziójában: 
+
+1. Nyissa meg azt az Azure-erőforráscsoportot, amelyben a projekt létrejött.
+2. Válassza ki a törölni kívánt áttelepíthető projektet. Az erőforrás típusa áttelepítési projekt, és törli azt.
+
+
+### <a name="delete-a-workspace"></a>Munkaterület törlése
+
+Tallózással keresse meg a projekthez csatolt Log Analytics munkaterületet.
+* Ha nem törölte a Azure Migrate projektet, a munkaterületre mutató hivatkozást az **Essentials** > -**kiszolgáló értékelése**területen találja.
        ![LA munkaterület](./media/troubleshooting-general/loganalytics-workspace.png)
 
-     * Ha már törölte az áttelepítési projektet, válassza az **erőforráscsoportok** lehetőséget a Azure Portal bal oldali ablaktábláján. Keresse meg azt az erőforráscsoportot, amelyben a munkaterületet létrehozták, majd keresse meg.
-2. Kövesse az [Azure log Analytics munkaterület törlése a Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace)című témakör utasításait.
+     * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it. 
 
-### <a name="migration-project-creation-failed-with-a-requests-must-contain-user-identity-headers-error"></a>Az áttelepítési projekt létrehozása nem sikerült – a kérelmekben szerepelnie kell a felhasználói azonosító fejlécének.
 
-Ez a probléma olyan felhasználók számára fordulhat elő, akik nem rendelkeznek hozzáféréssel a szervezet Azure Active Directory (Azure AD) bérlője számára. Amikor első alkalommal ad hozzá egy felhasználót egy Azure AD-bérlőhöz, a felhasználó e-mailben meghívót kap a bérlőhöz való csatlakozáshoz. A felhasználóknak el kell fogadniuk a meghívót, hogy sikeresen bekerüljön a bérlőbe. Ha nem látja az e-mailt, forduljon egy olyan felhasználóhoz, aki már rendelkezik hozzáféréssel a bérlőhöz, és kérje meg őket, hogy küldje el újra a meghívást a [vendég felhasználói](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users)számára a meghívások újraküldése részben megadott lépések segítségével.
+## <a name="error-requests-must-contain-user-identity-headers"></a>Hiba: a kérelmeknek felhasználói azonosító fejléceket kell tartalmazniuk.
 
-A meghívót tartalmazó e-mail fogadása után meg kell nyitnia az e-mailt, és ki kell választania a meghívó elfogadására szolgáló hivatkozást. Ezután ki kell jelentkeznie a Azure Portalból, és újra be kell jelentkeznie. (A böngésző frissítése nem fog működni.) Ezután megkezdheti az áttelepítési projekt létrehozását.
+Projekt létrehozásakor ez a hiba arra utalhat, hogy nincs hozzáférése a szervezet Azure Active Directory (Azure AD) bérlőhöz.
 
-## <a name="appliance-issues"></a>Készülékkel kapcsolatos problémák
+- Amikor első alkalommal ad hozzá egy Azure AD-bérlőhöz, e-mailben meghívót kap a bérlőhöz való csatlakozáshoz.
+- Fogadja el a meghívót, hogy sikeresen bekerüljön a bérlőbe.
+    - Ha nem látja az e-mailt, lépjen kapcsolatba a felhasználóval a bérlőhöz, és kérje meg őket, hogy küldje el újra [a](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users) meghívót.
+    - A meghívót tartalmazó e-mail fogadása után nyissa meg a meghívót, és válassza ki a hivatkozást a meghívás elfogadásához. Ezután jelentkezzen ki a Azure Portalból, és jelentkezzen be újra. (a böngésző frissítése nem fog működni.) Ezután megkezdheti az áttelepítési projekt létrehozását.
 
-### <a name="deployment-of-an-azure-migrate-appliance-for-vmware-failed-with-a-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry-error"></a>A VMware Azure Migrate berendezésének telepítése nem sikerült, mert a megadott jegyzékfájl érvénytelen: Érvénytelen OVF jegyzékfájl-bejegyzés: "Error.
 
-1. Ellenőrizze, hogy a Azure Migrate készülék PETESEJTJEInek fájlja helyesen van-e letöltve a kivonatoló értékének ellenőrzésével. Útmutatásért lásd: [VMWare virtuális gépek előkészítése az Azure-ba történő értékeléshez és](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware)áttelepítéshez. Ha a kivonatoló érték nem egyezik, töltse le újra a PETESEJT-fájlt, majd próbálja megismételni a telepítést.
-2. Ha a telepítés továbbra is meghiúsul, és ha a VMware vSphere-ügyfelet használja a OVF-fájl üzembe helyezéséhez, próbálja meg telepíteni a vSphere webes ügyfelén keresztül. Ha az üzembe helyezés továbbra is sikertelen, próbálkozzon más böngészővel.
-3. Ha a vSphere webes ügyfélprogramot használja, és vCenter Server 6,5-es vagy 6,7-es számítógépen szeretné telepíteni, próbálja meg közvetlenül telepíteni a PETESEJTeket az ESXi-gazdagépre a következő lépések végrehajtásával:
-   - Kapcsolódjon közvetlenül az ESXi-gazdagéphez (vCenter Server helyett) a webes ügyfél használatával (https://<*gazdagép IP-címe*>/UI).
-   - Nyissa meg a **Kezdőlap** > **leltárt**.
-   - Válassza a **fájl** > **telepítése OVF sablont**. Tallózással keresse meg a PETESEJTeket, és fejezze be a telepítést.
-4. Ha a telepítés továbbra is sikertelen, forduljon Azure Migrate támogatási szolgálathoz.
+## <a name="error-invalid-ovf-manifest-entry"></a>Hiba: "érvénytelen OVF manifest-bejegyzés"
 
-### <a name="the-appliance-cant-connect-to-the-internet"></a>A készülék nem tud csatlakozni az internethez.
+Ha a következő hibaüzenet jelenik meg: "a megadott jegyzékfájl érvénytelen: Érvénytelen OVF jegyzékfájl ", tegye a következőket:
 
-Ez a viselkedés akkor fordulhat elő, ha a használt gép proxy mögött van. Győződjön meg arról, hogy megadja az engedélyezési hitelesítő adatokat, ha a proxynak szüksége van rájuk.
-Ha bármilyen URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, ügyeljen arra, hogy ezeket a szükséges URL-címeket hozzáadja az engedélyezési listához:
+1. Ellenőrizze, hogy a Azure Migrate készülék PETESEJTJEInek fájlja helyesen van-e letöltve a kivonatoló értékének ellenőrzésével. [További információk](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Ha a kivonatoló érték nem egyezik, töltse le újra a PETESEJT-fájlt, majd próbálja megismételni a telepítést.
+2. Ha a telepítés továbbra is meghiúsul, és a VMware vSphere ügyfél használatával telepíti a OVF-fájlt, próbálja meg telepíteni a vSphere webes ügyfelén keresztül. Ha az üzembe helyezés továbbra is sikertelen, próbálkozzon más böngészővel.
+3. Ha a vSphere webes ügyfélprogramot használja, és vCenter Server 6,5-es vagy 6,7-es számítógépen szeretné telepíteni, próbálja meg közvetlenül telepíteni a PETESEJTeket az ESXi-gazdagépre:
+   - Kapcsolódjon közvetlenül az ESXi-gazdagéphez (vCenter Server helyett) a webes ügyféllel (https://<*gazdagép IP-címe*>/UI).
+   - A **saját** > **leltár**területen válassza a **fájl** > **központi telepítése OVF sablont**. Tallózással keresse meg a PETESEJTeket, és fejezze be a telepítést.
+4. Ha az üzembe helyezés továbbra is sikertelen, forduljon Azure Migrate támogatási szolgálathoz.
 
-- [Kiszolgáló-értékelés VMware-hez](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-url-access-requirements)
-- [A Hyper-V kiszolgálói értékelése](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#assessment-appliance-url-access)
-- [Kiszolgáló áttelepítése VMware-re (ügynök nélkül)](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-url-access-requirements)
-- [Kiszolgáló áttelepítése VMware-re (ügynök-alapú)](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#replication-appliance-url-access)
-- [Kiszolgáló áttelepítése Hyper-V-re](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#migration-hyper-v-host-url-access)
+## <a name="appliance-cant-connect-to-the-internet"></a>A készülék nem tud csatlakozni az internethez
 
-Ha elfogó proxyt használ az internethez való csatlakozáshoz, importálnia kell a proxy tanúsítványt a készülék virtuális gépre. A [Azure Migrate berendezés](https://docs.microsoft.com/azure/migrate/concepts-collector)lépéseinek végrehajtásával importálhatja a proxy tanúsítványát.
+Ez akkor fordulhat elő, ha a berendezés számítógépe proxy mögött van.
 
-### <a name="error-802-date-and-time-synchronization-error"></a>802-es hiba: Dátum-és időszinkronizálási hiba.
+- Győződjön meg arról, hogy megadja az engedélyezési hitelesítő adatokat, ha a proxynak szüksége van rájuk.
+- Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, adja hozzá ezeket az URL-címeket egy engedélyezési listához:
 
-Előfordulhat, hogy a kiszolgáló órája legfeljebb öt perc alatt szinkronizálva van az aktuális idővel. Módosítsa a gyűjtő virtuális gép órájának időpontját úgy, hogy az megfeleljen az aktuális időpontnak, az alábbiak szerint:
+    - [A VMware Assessment URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-url-access-requirements)
+    - [A Hyper-V értékelésének URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#assessment-appliance-url-access)
+    - [A VMware ügynök nélküli Migrálás URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-url-access-requirements)
+    - [A VMware-ügynök alapú áttelepítés URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#replication-appliance-url-access)
+    - [A Hyper-V áttelepítésének URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#migration-hyper-v-host-url-access)
+
+- Ha elfogó proxyt használ az internethez való csatlakozáshoz, [ezeket a lépéseket követve](https://docs.microsoft.com/azure/migrate/concepts-collector)importálja a tanúsítványt a berendezés virtuális gépén.
+
+## <a name="errordatetime-synchronization"></a>Hiba: dátum/idő szinkronizálása
+
+A dátum-és időszinkronizálással (802) kapcsolatos hiba azt jelzi, hogy a kiszolgáló órája több mint öt percen belül nem lehet szinkronizálva az aktuális idővel. A gyűjtő virtuális gép órájának módosítása a jelenlegi időpontra:
 
 1. Nyisson meg egy rendszergazdai parancssort a virtuális gépen.
 2. Az időzóna ellenõrzéséhez futtassa a **w32tm/TZ**.
 3. Az idő szinkronizálásához futtassa a **w32tm resync**.
 
 
-###  <a name="connection-failed-error-unabletoconnecttoserver"></a>A csatlakoztatás nem sikerült. Hiba: UnableToConnectToServer.
+## <a name="error-unabletoconnecttoserver"></a>Hiba: UnableToConnectToServer
 
-Előfordulhat, hogy nem tud csatlakozni a (z) vCenter Server *servername*. com: 9443. A hiba részletei azt jelzik, hogy nincs olyan végpont, amely a https://*servername*. com: 9443/SDK-ban fogadja el az üzenetet.
+Ha ezt a hibaüzenetet kapja, előfordulhat, hogy nem tud csatlakozni a (z) vCenter Server *servername*. com: 9443. A hiba részletei azt jelzik, hogy nincs olyan végpont, amely a https://*servername*. com: 9443/SDK segítségével fogadja el az üzenetet.
 
-Ebben az esetben győződjön meg arról, hogy a gyűjtő berendezés legújabb verzióját futtatja-e. Ha nem, frissítse a készüléket a [legújabb verzióra](https://docs.microsoft.com/azure/migrate/concepts-collector).
+- Győződjön meg arról, hogy a készülék legújabb verzióját futtatja-e. Ha nem, frissítse a készüléket a [legújabb verzióra](https://docs.microsoft.com/azure/migrate/concepts-collector).
+- Ha a probléma továbbra is a legújabb verzióban következik be, előfordulhat, hogy a készülék nem tudja feloldani a megadott vCenter Server nevet, vagy a megadott port helytelen lehet. Alapértelmezés szerint, ha a port nincs megadva, a gyűjtő megpróbál csatlakozni a 443-as számú portszámhoz.
 
-Ha a probléma továbbra is a legújabb verzióban fordul elő, előfordulhat, hogy a gyűjtő számítógép nem tudja feloldani a megadott vCenter Server nevet, vagy a megadott port helytelen lehet. Alapértelmezés szerint, ha a port nincs megadva, a gyűjtő megpróbál csatlakozni a 443-as számú portszámhoz.
-
-1. Pingelje a *servername*. com-t a gyűjtő gépről.
-2. Ha az 1. lépés meghiúsul, próbáljon meg csatlakozni a vCenter-kiszolgálóhoz az IP-cím használatával.
-3. Adja meg a megfelelő portszámot a vCenterhez történő csatlakozáshoz.
-4. Ellenőrizze, hogy a vCenter-kiszolgáló működik-e.
-
-
-### <a name="the-appliance-might-not-be-registered-successfully-to-the-azure-migrate-project-error-id-60052"></a>Lehet, hogy a berendezés nem regisztrálható sikeresen a Azure Migrate projektben (hiba azonosítója: 60052).
-
-Ez a hiba akkor fordul elő, ha a berendezés regisztrálásához használt Azure-fiók nem rendelkezik megfelelő engedélyekkel. Győződjön meg arról, hogy a készülék regisztrálásához használt Azure-beli felhasználói fiók legalább közreműködői engedélyekkel rendelkezik az előfizetésben. [További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) információ a szükséges Azure-szerepkörökről és-engedélyekről.
-
-### <a name="the-appliance-might-not-be-registered-successfully-to-the-azure-migrate-project-error-id-60039"></a>Lehet, hogy a berendezés nem regisztrálható sikeresen a Azure Migrate projektben (hiba azonosítója: 60039).
-
-Előfordulhat, hogy a készülék regisztrálásához kiválasztott Azure Migrate-projekt nem található. Ebben az esetben a regisztráció meghiúsul. Lépjen a Azure Portalra, és győződjön meg arról, hogy a projekt létezik az erőforráscsoporthoz. Ha a projekt nem létezik, hozzon létre egy új Azure Migrate projektet az erőforráscsoporthoz, és regisztrálja újra a készüléket. [További](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool) információ az új Azure Migrate projekt létrehozásáról.
-
-### <a name="an-azure-key-vault-management-operation-failed-error-id-60030-60031"></a>Egy Azure Key Vault felügyeleti művelet meghiúsult (hiba azonosítója: 60030, 60031).
-
-Győződjön meg arról, hogy a készülék regisztrálásához használt Azure-beli felhasználói fiók legalább közreműködői engedélyekkel rendelkezik az előfizetésben. Győződjön meg arról is, hogy a fiók rendelkezik hozzáféréssel a hibaüzenetben megadott kulcstartóhoz, majd próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. [További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) információ a szükséges Azure-szerepkörökről és-engedélyekről.
-
-### <a name="discovery-couldnt-be-initiated-because-of-an-error-the-operation-failed-for-the-specified-list-of-hosts-or-clusters-error-id-60028"></a>Hiba miatt nem sikerült elindítani a felderítést. Nem sikerült végrehajtani a műveletet a gazdagépek vagy fürtök megadott listájában (hiba azonosítója: 60028).
-
-Nem sikerült elindítani a felderítést a hibaüzenetben felsorolt gazdagépeken, mert probléma merült fel a virtuális gép adatainak elérése vagy beolvasása során. A többi gazdagép hozzáadása sikeresen megtörtént. Adja hozzá a hibaüzenetben felsorolt gazdagépeket a **gazdagép hozzáadása** lehetőség használatával. Ha érvényesítési hiba történt, tekintse át a Szervizelési útmutatót a hibák kijavításához, majd próbálkozzon újra a **Mentés és a felderítés** megkezdése lehetőséggel.
-
-### <a name="an-azure-ad-operation-failed-the-error-occurred-while-creating-or-updating-the-azure-ad-application-error-id-60025"></a>Egy Azure AD-művelet nem sikerült. Hiba történt az Azure AD-alkalmazás létrehozásakor vagy frissítésekor (hiba azonosítója: 60025).
-
-Ez a hiba akkor merül fel, ha a felderítés elindításához használt Azure-felhasználói fiók nem azonos a berendezés regisztrálásához használttal. Tegye a következők egyikét:
-1. Győződjön meg arról, hogy a felderítést kezdeményező felhasználói fiók megegyezik a berendezés regisztrálásához használttal.
-1. Adja meg a HRE-alkalmazás hozzáférési engedélyeit arra a másik felhasználói fiókra, amelyhez a felderítési művelet sikertelen.
-1. Törölje a korábban a Azure Migrate projekthez létrehozott erőforráscsoportot, és hozzon létre egy másik erőforráscsoportot az újraindításhoz.
-
-[További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) információ a HRE alkalmazás engedélyeiről.
-
-## <a name="discovery-issues"></a>Felderítési problémák
-
-### <a name="i-started-discovery-but-dont-see-the-discovered-vms-on-the-azure-portal-the-server-assessment-and-server-migration-tiles-show-a-status-of-discovery-in-progress"></a>Elindítottam a felderítést, de nem látják a felderített virtuális gépeket a Azure Portalon. A **kiszolgáló-értékelési** és a **kiszolgáló** -áttelepítési csempék a "felderítés folyamatban" állapotot mutatják.
-Miután elindította a felderítést a készülékről, hagyjon némi időt, amíg a felderített gépek megjelennek a Azure Portal. A VMware-felderítés körülbelül 15 percet vesz igénybe, és a Hyper-V felderítéséhez hozzáadott gazdagépeken körülbelül 2 perc van. Ha továbbra is a "felderítés folyamatban" állapot jelenik meg a várakozási időszakok után is, válassza a **frissítés** lehetőséget a **kiszolgálók** lapon. Ennek meg kell jelennie a felderített kiszolgálók számának a kiszolgáló-értékelési és a kiszolgáló-áttelepítési csempén.
+    1. Pingelje a *servername*. com-t a készülékről.
+    2. Ha az 1. lépés meghiúsul, próbáljon meg csatlakozni a vCenter-kiszolgálóhoz az IP-cím használatával.
+    3. Azonosítsa a vCenter Serverhoz való csatlakozáshoz használandó portszámot.
+    4. Ellenőrizze, hogy a vCenter Server működik-e.
 
 
-### <a name="im-using-an-appliance-that-continuously-discovers-my-on-premises-environment-but-the-vms-that-are-deleted-in-my-on-premises-environment-are-still-shown-in-the-portal"></a>Olyan készüléket használok, amely folyamatosan felfedi a helyszíni környezetet, de a helyszíni környezetben törölt virtuális gépek továbbra is megjelennek a portálon.
+## <a name="error-appliance-might-not-be-registered"></a>Hiba: Lehet, hogy a berendezés nincs regisztrálva
 
-Akár 30 percet is igénybe vehet, amíg a berendezés által összegyűjtött felderítési adatok megjelennek a portálon. Ha 30 perc után sem jelenik meg naprakész információ, frissítse az adatokat a következő lépésekkel:
+- 60052-es hiba: "előfordulhat, hogy a készülék nem regisztrálható sikeresen a Azure Migrate projektben", ha a berendezés regisztrálásához használt Azure-fiók nem rendelkezik megfelelő engedélyekkel. 
+    - Győződjön meg arról, hogy a készülék regisztrálásához használt Azure-beli felhasználói fiók legalább közreműködői engedélyekkel rendelkezik az előfizetésben.
+    - [További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) információ a szükséges Azure-szerepkörökről és-engedélyekről.
+- 60039-es hiba: "előfordulhat, hogy a készülék nem regisztrálható sikeresen a Azure Migrate projektben" akkor fordulhat elő, ha a regisztráció sikertelen, mert a berendezés regisztrálásához használt Azure Migrate projekt nem található.
+    - A Azure Portalon, és győződjön meg arról, hogy a projekt létezik az erőforráscsoporthoz.
+    - Ha a projekt nem létezik, hozzon létre egy új Azure Migrate projektet az erőforráscsoporthoz, és regisztrálja újra a készüléket. [Ismerje meg, hogyan](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool) hozhat létre új projektet.
 
-1. Lépjen a **kiszolgálók** > **Azure Migrate kiszolgáló értékelése**elemre, és válassza az **Áttekintés**lehetőséget.
-2. A **kezelés**területen válassza a **Agent Health**
-3. Válassza az **ügynök frissítése**lehetőséget. Ez a lehetőség az ügynökök listájában jelenik meg.
-4. Várjon, amíg a frissítési művelet befejeződik. Ekkor a virtuális gépek naprakész információit kell látnia.
+## <a name="error-key-vault-management-operation-failed"></a>Hiba: Key Vault felügyeleti művelet sikertelen volt.
 
-### <a name="i-dont-see-the-latest-information-on-the-on-premise-vms-on-the-portal"></a>Nem látom a legújabb információkat a helyszíni virtuális gépekről a portálon.
+Ha a 60030-es vagy a 60031-es hibát kapja, "az Azure Key Vault felügyeleti művelet sikertelen", tegye a következőket: 
+- Győződjön meg arról, hogy a készülék regisztrálásához használt Azure-beli felhasználói fiók legalább közreműködői engedélyekkel rendelkezik az előfizetésben.
+- Győződjön meg arról, hogy a fiók rendelkezik hozzáféréssel a hibaüzenetben megadott kulcstartóhoz, majd próbálja megismételni a műveletet.
+- Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.
+- [További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) információ a szükséges Azure-szerepkörökről és-engedélyekről.
 
-Akár 30 percet is igénybe vehet, amíg a berendezés által összegyűjtött felderítési adatok megjelennek a portálon. Ha 30 perc után sem jelenik meg naprakész információ, frissítse az adatokat a következő lépésekkel:
+## <a name="fix-discovery-couldnt-be-initiated"></a>Javítsa ki Nem sikerült elindítani a felderítést
 
-1. Lépjen a **kiszolgálók** > **Azure Migrate kiszolgáló értékelése**elemre, és válassza az **Áttekintés**lehetőséget.
-2. A **kezelés**területen válassza a **Agent Health**
-3. Válassza az **ügynök frissítése**lehetőséget. Ez a lehetőség az ügynökök listájában jelenik meg.
-4. Várjon, amíg a frissítési művelet befejeződik. Ekkor a virtuális gépek naprakész információit kell látnia.
+60028-es hiba: "Hiba miatt nem sikerült elindítani a felderítést. A gazdagépek vagy fürtök megadott listája nem tudta végrehajtani a műveletet, mert nem sikerült elindítani a felderítést a hiba miatt, mert a virtuális gép információinak elérése vagy beolvasása során probléma merült fel. A többi gazdagép hozzáadása sikeresen megtörtént.
 
-### <a name="cant-connect-to-a-host-or-cluster-because-the-server-name-cant-be-resolved-winrm-error-code-0x803381b9-error-id-50004"></a>Nem lehet csatlakozni egy gazdagéphez vagy fürthöz, mert a kiszolgáló neve nem oldható fel. WinRM-hibakód: 0x803381B9 (hiba azonosítója: 50004).
-Ez a hiba akkor fordul elő, ha a berendezés Azure DNS szolgáltatása nem tudja feloldani a megadott fürtöt vagy állomásnevet. Ha ezt a hibát látja a fürtön, próbálja meg a fürt teljes tartománynevét (FQDN).
+- Adja hozzá a hibaüzenetben felsorolt gazdagépeket a **gazdagép hozzáadása** lehetőség használatával.
+- Ha érvényesítési hiba történt, tekintse át a Szervizelési útmutatót a hibák kijavításához, majd próbálkozzon újra a **Mentés és a felderítés** megkezdése lehetőséggel.
 
-Előfordulhat, hogy ez a hiba a fürtben lévő gazdagépek esetében is megjelenik. Ebben az esetben a készülék csatlakozhat a fürthöz, a fürt azonban olyan állomásnévket ad vissza, amelyek nem teljes tartománynevek.
+## <a name="fix-azure-ad-operation-failed-60025"></a>Javítsa ki Az Azure AD-művelet nem sikerült (60025)
 
-A hiba megoldásához frissítse a gazdagépek fájlját a készüléken az IP-cím és az állomásnevek hozzárendelésének hozzáadásával:
-1. Nyissa meg a Jegyzettömböt rendszergazdaként. Ezután nyissa meg a C:\Windows\System32\Drivers\etc\hosts fájlt.
-2. Adja hozzá az IP-címet és az állomásnevet egy sorban. Ismételje meg az összes olyan gazdagépet vagy fürtöt, ahol ez a hiba látható.
-3. Mentse és zárja be a hosts fájlt.
-4. Megtekintheti, hogy a készülék tud-e csatlakozni a gazdagépekhez a berendezés-kezelő alkalmazás használatával. 30 perc elteltével a Azure Portalon láthatja a gazdagépek legfrissebb információit.
+60025-es hiba: "Az Azure AD-művelet nem sikerült. Hiba történt az Azure AD-alkalmazás létrehozásakor vagy frissítésekor: akkor következik be, amikor a felderítés elindításához használt Azure-felhasználói fiók eltér a berendezés regisztrálásához használt fióktól. Tegye a következők valamelyikét:
+
+- Győződjön meg arról, hogy a felderítést kezdeményező felhasználói fiók megegyezik a berendezés regisztrálásához használttal.
+- Adja meg Azure Active Directory alkalmazás hozzáférési engedélyeit ahhoz a felhasználói fiókhoz, amelyhez a felderítési művelet sikertelen.
+- Törölje az Azure Migrate projekthez korábban létrehozott erőforráscsoportot. Hozzon létre egy másik erőforráscsoportot az újraindításhoz.
+- [További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) információ Azure Active Directory alkalmazás engedélyeiről.
 
 
-## <a name="assessment-issues"></a>Értékelési problémák
+## <a name="discovered-vms-not-in-portal"></a>Felderített virtuális gépek nem a portálon
 
-### <a name="azure-readiness-issues"></a>Azure-készültségi problémák
+Ha elindítja a felderítést, hogy a **kiszolgáló értékelése** és a **kiszolgáló áttelepítése** **folyamatban van**, de még nem látja a virtuális gépeket a portálon, vegye figyelembe a következőket: 
 
-Probléma | Szervizelés
+- A felderítésnek a készülékről való elindítása után körülbelül 15 percet vesz igénybe a VMware virtuális gépek felderítése, és körülbelül két perc a Hyper-V virtuális gép felderítéséhez hozzáadott összes gazdagép esetében.
+- Ha a várakozási időszakok után továbbra is a **felderítés folyamatban** van, akkor a **kiszolgálók** lapon válassza a **frissítés** lehetőséget. Ennek meg kell jelennie a felderített kiszolgálók számának a **kiszolgáló értékelése** és a **kiszolgáló áttelepítése**során.
+
+
+## <a name="deleted-vms-in-the-portal"></a>Virtuális gépek törölve a portálon
+
+Ha olyan készüléket helyezett üzembe, amely folyamatosan felfedi a helyszíni környezetet, de a törölt virtuális gépek továbbra is megjelennek a portálon, vegye figyelembe a következőket:  
+
+- Akár 30 percet is igénybe vehet, amíg a berendezés által összegyűjtött felderítési adatok megjelennek a portálon.
+- Ha 30 perc elteltével nem jelenik meg naprakész információ, frissítse az adatokat a következő lépésekkel:
+
+    1. A **kiszolgálók** > **Azure Migrate kiszolgáló értékelése**lapon válassza az **Áttekintés**lehetőséget.
+    2. A **kezelés**területen válassza a **Agent Health**
+    3. Válassza az **ügynök frissítése**lehetőséget. 
+    1. Várjon, amíg a frissítési művelet befejeződik. Ekkor megjelenik a naprakész információ.
+
+## <a name="vm-information-isnt-in-the-portal"></a>A virtuális gép adatai nem szerepelnek a portálon
+
+- Akár 30 percet is igénybe vehet, amíg a berendezés által összegyűjtött felderítési adatok megjelennek a portálon.
+- Ha 30 perc elteltével nem jelenik meg naprakész információ, frissítse az adatokat a következő lépésekkel:
+
+    1. A **kiszolgálók** > **Azure Migrate kiszolgáló értékelése**lapon válassza az **Áttekintés**lehetőséget.
+    2. A **kezelés**területen válassza a **Agent Health**
+    3. Válassza az **ügynök frissítése**lehetőséget. 
+    1. Várjon, amíg a frissítési művelet befejeződik. Ekkor megjelenik a naprakész információ.
+
+
+## <a name="fix-cant-connect-to-host-or-cluster"></a>Javítsa ki Nem lehet csatlakozni a gazdagéphez vagy fürthöz
+
+50004-es hiba: "Nem lehet csatlakozni egy gazdagéphez vagy fürthöz, mert a kiszolgáló neve nem oldható fel. WinRM-hibakód: 0x803381B9 "akkor fordulhat elő, ha a berendezés Azure DNS szolgáltatása nem tudja feloldani a megadott fürtöt vagy állomásnevet.
+
+- Ha ezt a hibát látja a fürtön, a fürt teljes tartományneve.
+- Előfordulhat, hogy ez a hiba a fürtben lévő gazdagépek esetében is megjelenik. Ez azt jelzi, hogy a berendezés tud csatlakozni a fürthöz, de a fürt olyan állomásnévket ad vissza, amelyek nem teljes tartománynevek. A hiba megoldásához frissítse a gazdagépek fájlját a készüléken az IP-cím és az állomásnevek hozzárendelésének hozzáadásával:
+    1. Nyissa meg a Jegyzettömböt rendszergazdaként.
+    2. Nyissa meg a C:\Windows\System32\Drivers\etc\hosts fájlt.
+    3. Adja hozzá az IP-címet és az állomásnevet egy sorban. Ismételje meg az összes olyan gazdagépet vagy fürtöt, ahol ez a hiba látható.
+    4. Mentse és zárja be a hosts fájlt.
+    5. Győződjön meg arról, hogy a készülék tud-e csatlakozni a gazdagépekhez a berendezés-kezelő alkalmazás használatával. 30 perc elteltével a Azure Portalban láthatja a gazdagépek legfrissebb információit.
+
+
+
+## <a name="fix-assessment-readiness"></a>Kiértékelési készültség javítása
+
+Javítsa ki az értékelés készültségi problémáit az alábbiak szerint:
+
+**Kérdés** | **Fix**
 --- | ---
 Nem támogatott rendszerindítási típus | Az Azure nem támogatja az EFI rendszerindítási típussal rendelkező virtuális gépeket. Javasoljuk, hogy az áttelepítés futtatása előtt alakítsa át a rendszerindítási típust BIOS-ra. <br/><br/>Az ilyen virtuális gépek áttelepítésének kezeléséhez Azure Migrate kiszolgáló áttelepítését használhatja. Az áttelepítés során a rendszer a virtuális gép rendszerindítási típusát a BIOS-ba konvertálja.
-Feltételesen támogatott Windows operációs rendszer | Az operációs rendszer elérte a támogatás befejezési dátumát, és az [Azure](https://aka.ms/WSosstatement)-támogatáshoz egyéni támogatási szerződés (CSA) szükséges. Az Azure-ba való Migrálás előtt érdemes frissíteni az operációs rendszert.
-Nem támogatott Windows operációs rendszer | Az Azure csak a [kiválasztott Windows operációsrendszer](https://aka.ms/WSosstatement)-verziókat támogatja. Az Azure-ba való Migrálás előtt érdemes lehet frissíteni a gép operációs rendszerét.
-Feltételesen jóváhagyott Linux operációs rendszer | Az Azure csak a [kiválasztott LINUXOS operációsrendszer](../virtual-machines/linux/endorsed-distros.md)-verziókat támogatja. Az Azure-ba való Migrálás előtt érdemes lehet frissíteni a gép operációs rendszerét.
-Nem jóváhagyott Linux operációs rendszer | Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. Az Azure-ba való Migrálás előtt érdemes lehet az operációs rendszert egy [támogatott Linux](../virtual-machines/linux/endorsed-distros.md) -verzióra frissíteni.
-Ismeretlen operációs rendszer | A virtuális gép operációs rendszere a következőként lett megadva: vCenter Server. Ez a viselkedés blokkolja Azure Migrate a virtuális gép Azure-készültségének ellenőrzéséhez. Mielőtt áttelepíti a gépet, győződjön meg arról, hogy az Azure [támogatja](https://aka.ms/azureoslist) a számítógép operációs rendszerét.
-Az operációs rendszer bitszáma nem támogatott | A 32 bites operációs rendszert futtató virtuális gépek az Azure-ban is elindíthatók, de javasoljuk, hogy az Azure-ba való áttelepítés előtt frissítse a virtuális gép operációs rendszerét 64 bitesre.
-Microsoft Visual Studio-előfizetést igényel | A gép Windows ügyfél operációs rendszert futtat, amely csak Visual Studio-előfizetésen keresztül támogatott.
+Feltételesen támogatott Windows operációs rendszer | Az operációs rendszer elérte a támogatás befejezési dátumát, és az [Azure](https://aka.ms/WSosstatement)-támogatáshoz egyéni támogatási szerződés (CSA) szükséges. Az Azure-ba való Migrálás előtt érdemes lehet frissíteni.
+Nem támogatott Windows operációs rendszer | Az Azure csak a [kiválasztott Windows operációsrendszer](https://aka.ms/WSosstatement)-verziókat támogatja. Érdemes lehet frissíteni a gépet az Azure-ba való áttelepítés előtt.
+Feltételesen jóváhagyott Linux operációs rendszer | Az Azure csak a [kiválasztott LINUXOS operációsrendszer](../virtual-machines/linux/endorsed-distros.md)-verziókat támogatja. Érdemes lehet frissíteni a gépet az Azure-ba való áttelepítés előtt.
+Nem jóváhagyott Linux operációs rendszer | Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációs rendszer támogatását. Javasoljuk, hogy az Azure-ba való Migrálás előtt frissítsen egy [támogatott Linux](../virtual-machines/linux/endorsed-distros.md) -verzióra.
+Ismeretlen operációs rendszer | A virtuális gép operációs rendszere a következőként lett megadva: vCenter Server. Ez a viselkedés blokkolja Azure Migrate a virtuális gép Azure-készültségének ellenőrzéséhez. Mielőtt áttelepíti a számítógépet, győződjön meg arról, hogy az Azure [támogatja](https://aka.ms/azureoslist) az operációs rendszert.
+Nem támogatott bites verzió | Az 32 bites operációs rendszerekkel rendelkező virtuális gépek az Azure-ban indíthatók, de javasoljuk, hogy az Azure-ba való Migrálás előtt frissítsen a 64-bites verzióra.
+Microsoft Visual Studio-előfizetést igényel | A gép Windows-ügyfél operációs rendszert futtat, amely csak Visual Studio-előfizetésen keresztül támogatott.
 Nem található virtuális gép a szükséges tárolási teljesítményhez | A géphez szükséges tárolási teljesítmény (bemeneti/kimeneti műveletek száma másodpercenként [IOPS] és átviteli sebesség) meghaladja az Azure-beli virtuális gépek támogatását. Csökkentse a gép tárolási követelményeit az áttelepítés előtt.
 Nem található virtuális gép a szükséges hálózati teljesítményhez | A gép számára szükséges hálózati teljesítmény (be/ki) meghaladja az Azure-beli virtuális gépek támogatását. Csökkentse a gép hálózati követelményeit.
 A virtuális gép nem található a megadott helyen | A Migrálás előtt használjon másik célhelyet.
-Egy vagy több lemez nem megfelelő | A virtuális géphez csatolt egy vagy több lemez nem felel meg az Azure követelményeinek. Azure Migrate: A kiszolgáló értékelése jelenleg nem támogatja ultra SSD lemezeket, és a prémium szintű felügyelt lemezekre vonatkozó korlátok alapján értékeli a lemezeket (32 TB).  A virtuális géphez csatlakoztatott minden lemez esetében győződjön meg arról, hogy a lemez mérete < 64 TB (ultra SSD-lemezek által támogatott), ha nem, csökkentse a lemez méretét az Azure-ba való áttelepítés előtt, vagy használjon több lemezt az Azure-ban, és [csoportosítsa őket](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) , hogy magasabb tárolási korlátokat kapjon. Győződjön meg arról, hogy az egyes lemezek által igényelt teljesítmény (IOPS és átviteli sebesség) támogatott az Azure által [felügyelt virtuálisgép-lemezek](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)esetében.
+Egy vagy több lemez nem megfelelő | A virtuális géphez csatolt egy vagy több lemez nem felel meg az Azure követelményeinek. Egy<br/><br/> Azure Migrate: A kiszolgáló értékelése jelenleg nem támogatja ultra SSD lemezeket, és a prémium szintű felügyelt lemezekre vonatkozó korlátok alapján értékeli a lemezeket (32 TB).<br/><br/> Győződjön meg arról, hogy a virtuális géphez csatolt minden egyes lemez mérete < 64 TB (ultra SSD-lemezek által támogatott).<br/><br/> Ha nem, csökkentse a lemez méretét az Azure-ba való Migrálás előtt, vagy használjon több lemezt az Azure-ban, és [csoportosítsa őket](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) a nagyobb tárolási korlátok eléréséhez. Győződjön meg arról, hogy az egyes lemezek által igényelt teljesítmény (IOPS és átviteli sebesség) támogatott az Azure által [felügyelt virtuálisgép-lemezek](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)esetében.
 Egy vagy több nem megfelelő hálózati adapter. | A nem használt hálózati adapterek eltávolítása a gépről az áttelepítés előtt.
 A lemezek száma meghaladja a korlátot | Az áttelepítés előtt távolítsa el a nem használt lemezeket a gépről.
-A lemezméret meghaladja a korlátot | Azure Migrate: A Server Assessment jelenleg nem támogatja ultra SSD lemezeket, és a prémium szintű lemezes korlátok alapján értékeli a lemezeket (32 TB). Az Azure azonban a legfeljebb 64 TB méretű lemezeket támogatja (ultra SSD lemezek által támogatott). A lemezeket a Migrálás előtt kevesebb mint 64 TB-ra csökkenti, vagy [](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) több lemezt használ az Azure-ban, és a nagyobb tárolási korlátok eléréséhez.
+A lemezméret meghaladja a korlátot | Azure Migrate: A kiszolgáló értékelése jelenleg nem támogatja ultra SSD lemezek használatát, és a prémium szintű lemezes korlátok alapján értékeli a lemezeket (32 TB).<br/><br/> Az Azure azonban a legfeljebb 64 TB méretű lemezeket támogatja (ultra SSD lemezek által támogatott). A lemezeket az áttelepítés előtt kevesebb mint 64 TB-ra csökkenti, vagy több lemezt [](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) is használhat az Azure-ban, és a nagyobb tárolási korlátok eléréséhez.
 A lemez nem érhető el a megadott helyen | A Migrálás előtt ellenőrizze, hogy a lemez a célhelyen van-e.
 A lemez nem érhető el a megadott redundancia esetén | A lemeznek az értékelési beállításokban definiált redundancia-tárolási típust kell használnia (alapértelmezés szerint LRS).
 Belső hiba miatt nem sikerült meghatározni a lemez alkalmasságát | Próbálja meg létrehozni a csoport új értékelését.
@@ -214,84 +259,126 @@ Belső hiba miatt nem sikerült meghatározni a virtuális gép alkalmasságát 
 Belső hiba miatt nem sikerült meghatározni egy vagy több lemez alkalmasságát | Próbálja meg létrehozni a csoport új értékelését.
 Belső hiba miatt nem sikerült meghatározni egy vagy több hálózati adapter megfelelőségét | Próbálja meg létrehozni a csoport új értékelését.
 
-### <a name="i-cant-specify-enterprise-agreement-ea-as-an-azure-offer-in-the-assessment-properties"></a>Nem adható meg Nagyvállalati Szerződés (EA) Azure-ajánlatként az értékelés tulajdonságaiban.
-Azure Migrate Server Assessment jelenleg nem támogatja Nagyvállalati Szerződés (EA) alapú díjszabást. Ennek a korlátozásnak a megkerülő megoldásához használja az utólagos elszámolású Azure-ajánlatot, és használja a **Discount** tulajdonságot a kapott egyéni kedvezmény megadásához. [Az értékelések testreszabásáról itt talál további információt](https://aka.ms/migrate/selfhelp/eapricing).
+## <a name="cant-add-enterprise-agreement-ea-in-an-assessment"></a>Nem lehet felvenni Nagyvállalati Szerződés (EA) felmérésbe
 
-### <a name="why-does-server-assessment-mark-my-linux-vms-conditionally-ready"></a>Miért jelöli meg a Server Assessment a Linux rendszerű virtuális gépeket "feltételesen kész" állapotban?
-Létezik egy ismert rés a kiszolgáló értékelése során, amely megakadályozza, hogy észlelje a helyszíni virtuális gépeken telepített Linux operációs rendszer alverzióját (például RHEL 6,10, jelenleg a kiszolgáló értékelése csak az RHEL 6 verziót észleli). Mivel az Azure csak a Linux bizonyos verzióit támogatja, a Linux rendszerű virtuális gépek jelenleg feltételesen készen állnak a kiszolgáló értékelése során. Az [Azure Linux támogatási dokumentációjának](https://aka.ms/migrate/selfhost/azureendorseddistros)áttekintésével megállapíthatja, hogy a helyszíni virtuális gépen futó Linux operációs rendszer támogatja-e az Azure-t. A támogatott terjesztés ellenőrzése után figyelmen kívül hagyhatja ezt a figyelmeztetést.
+Azure Migrate Server Assessment jelenleg nem támogatja Nagyvállalati Szerződés (EA) díjszabását. Ennek a korlátozásnak a megkerülő megoldásához használja az utólagos elszámolású ajánlatot az Azure **-** ajánlathoz, és használja a **Discount** tulajdonságot a kapott egyéni kedvezmény megadásához. [](https://aka.ms/migrate/selfhelp/eapricing) Megtudhatja, hogyan szabhatja testre az értékeléseket.
 
-### <a name="why-does-the-vm-sku-recommended-by-server-assessment-have-more-cores-and-more-memory-than-whats-allocated-on-premises"></a>Miért van a kiszolgáló értékelése által ajánlott virtuálisgép-SKU több magot és több memóriát tartalmaz, mint amit a helyszínen lefoglalt?
-A Server Assessment által javasolt virtuálisgép-termékváltozat az értékelési tulajdonságoktól függ. A kiszolgálók értékelése során kétféle értékelést hozhat létre: *Teljesítmény-alapú* éshelyszíni. A teljesítmény-alapú értékelések esetében a kiszolgáló értékelése a helyszíni virtuális gépek (CPU, memória, lemez és hálózat kihasználtsága) kihasználtsági adatait veszi figyelembe a helyszíni virtuális gépekhez tartozó megfelelő virtuálisgép-SKU meghatározásához. Emellett a teljesítmény-alapú méretezéshez a komfort tényezőt is figyelembe kell venni a hatékony kihasználtság meghatározásakor. A helyszíni méretezés esetében a teljesítményadatokat nem számítjuk fel, és a cél SKU-t a helyszíni kiosztása alapján ajánljuk.
+## <a name="linux-vms-are-conditionally-ready"></a>A Linux rendszerű virtuális gépek "feltételesen kész"
 
-Tegyük fel például, hogy egy helyszíni virtuális gép 4 maggal és 8 GB memóriával rendelkezik, 50%-os CPU-kihasználtsággal és 50%-os memóriával, és az értékelésben a 1,3 kényelmi tényezője van megadva. Ha az értékelés méretezési feltételei a helyszínen vannak, akkor a rendszer egy 4 maggal és 8 gigabájt (GB) memóriával rendelkező Azure VM SKU **-** t ajánl.
+A kiszolgáló értékelése a Linux rendszerű virtuális gépeket "feltételesen felkészültként" jelöli meg, mivel a kiszolgáló értékelésében egy ismert rés van
 
-Tegyük fel azonban, hogy a méretezési feltétel teljesítmény-alapú. A processzor és a memória hatékony kihasználtsága (50% 50-a 4 mag * 1,3 = 2,6 magok, valamint a 8 GB-os memória használata esetén * 1,3 = 5,3-GB memória), a négy mag (a legközelebbi támogatott alapszám) és a 8 GB memória (a legközelebbi támogatott memória mérete) alapján ajánlott. [A Server Assessment méretezési módszeréről itt talál további információt.](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#sizing)
+- A rés megakadályozza a helyszíni virtuális gépeken telepített Linux operációs rendszer másodlagos verziójának észlelését.
+- Például a RHEL 6,10 esetében a kiszolgáló-Assessment jelenleg csak az RHEL 6 verziót észleli operációs rendszerként.
+-  Mivel az Azure csak a Linux bizonyos verzióit támogatja, a Linux rendszerű virtuális gépek jelenleg feltételesen készen állnak a kiszolgáló értékelése során.
+- Megtekintheti, hogy a helyszíni virtuális gépen futó Linux operációs rendszer az Azure [Linux-támogatás](https://aka.ms/migrate/selfhost/azureendorseddistros)áttekintésével van-e jóváhagyva az Azure-ban.
+-  A támogatott terjesztés ellenőrzése után figyelmen kívül hagyhatja ezt a figyelmeztetést.
 
-### <a name="why-is-the-disk-sku-recommended-by-server-assessment-bigger-than-whats-allocated-on-premises"></a>Miért érdemes a Server Assessment által ajánlott lemez SKU-t használni, mint a mi a helyszínen lefoglalt?
-A kiszolgáló értékelése során a lemez méretezése két értékelési tulajdonságtól függ: a méretezési feltételektől és a tárolási típustól. Ha a méretezési feltétel **teljesítmény-alapú** , és a tároló típusa **automatikus**, a lemez IOPS és átviteli sebessége a céllemez típusának (standard HDD, standard SSD vagy prémium szintű lemezek) azonosítására szolgál. Ezt követően a lemezből származó SKU-t ajánlott használni, és ez a javaslat a helyszíni lemez méretére vonatkozó követelményeket is figyelembe veszi. Ha a méretezési feltétel **teljesítmény-alapú**, és a tárolási típus **prémium**, az Azure-ban prémium szintű lemezes SKU-t ajánlott használni a helyszíni lemez IOPS, átviteli sebessége és mérete alapján. Ugyanazt a logikát kell használni a lemez méretezéséhez, ha a méretezési feltételek **a helyszínen** vannak, és a tárolási típus **standard HDD**, **standard SSD**vagy **prémium**.
+## <a name="azure-skus-exceed-on-premises-sizing"></a>Az Azure SKU-kal meghaladja a helyszíni méretezést
 
-Ha például egy helyszíni lemez 32 GB memóriával rendelkezik, de a lemez összesített olvasási és írási IOPS értéke 800 IOPS, a kiszolgáló értékelése a prémium szintű lemez típusát javasolja (a magasabb IOPS-követelmények miatt), majd javasoljon egy olyan lemezes SKU-t, amely képes támogatni a szükséges IOPS és-méret. Ebben a példában a legjobb megoldást a P15-ös változat (256 GB, 1100 IOPS) adja. Bár a helyszíni lemez által igényelt méret 32 GB volt, a Server Assessment a helyszíni lemez magas IOPS követelménye miatt nagyobb lemezt javasol.
+Azure Migrate kiszolgáló értékelése a felmérés típusa alapján több magot és memóriát is javasolhat az Azure-beli virtuális gépekhez, mint az aktuális helyszíni foglalás:
 
-### <a name="why-does-my-assessment-report-indicate-percentageofcoresutilizedmissing-or-percentageofmemoryutilizedmissing-for-some-vms"></a>Miért jelent az értékelési jelentés a "PercentageOfCoresUtilizedMissing" vagy a "PercentageOfMemoryUtilizedMissing" jelölést egyes virtuális gépek esetében?
-Ezek a problémák akkor jelennek meg, ha a Azure Migrate berendezés nem tud teljesítményadatokat gyűjteni a helyszíni virtuális gépek számára. Ez a viselkedés akkor fordulhat elő, ha a virtuális gépek ki vannak kapcsolva az értékelés létrehozásakor (az elmúlt egy nap/egy hét/egy hónap). A készülék nem tud teljesítményadatokat gyűjteni a virtuális gép számára, ha ki van kapcsolva. Ha csak a teljesítményszámlálók hiányoznak, és a Hyper-V virtuális gépeket próbálja értékelni, ellenőrizze, hogy a dinamikus memória engedélyezve van-e ezeken a virtuális gépeken. Létezik egy ismert probléma, amelyben egy Azure Migrate berendezés nem tudja gyűjteni a memória-kihasználtsági adatokat olyan virtuális gépek számára, amelyeken nincs engedélyezve a dinamikus memória. Ez a probléma csak a Hyper-V virtuális gépekre, a VMware virtuális gépekre nem vonatkozik. Ha a teljesítményszámlálók bármelyike hiányzik, Azure Migrate kiszolgáló értékelése visszaesik a lefoglalt magokra és a memóriára, és a virtuális gép megfelelő méretét javasolja.
 
-### <a name="is-the-os-license-cost-of-the-vm-included-in-the-compute-cost-estimated-by-server-assessment"></a>A kiszolgáló értékelése alapján becsült számítási költségek tartalmazzák-e a virtuális gép operációsrendszer-licencének költségeit?
-A kiszolgáló értékelése jelenleg csak Windows rendszerű gépek esetében veszi figyelembe az operációsrendszer-licenc költségeit. A Linux rendszerű gépek operációsrendszer-licencének költségei jelenleg nem tekintendők.
+- A VM SKU-javaslat az értékelés tulajdonságaitól függ.
+- Ezt a kiszolgáló értékelése során elvégzett értékelés típusa befolyásolja: *Teljesítmény-alapú*vagy helyszíni. 
+- A teljesítmény-alapú értékelések esetében a kiszolgáló értékelése a helyszíni virtuális gépek (CPU, memória, lemez és hálózat kihasználtsága) kihasználtsági adatait veszi figyelembe a helyszíni virtuális gépekhez tartozó megfelelő virtuálisgép-SKU meghatározásához. Emellett a hatékony kihasználtság meghatározásakor is felvesz egy kényelmi tényezőt.
+- A helyszíni méretezés esetén a teljesítményadatok nem számítanak, és a célként megadott SKU-t a helyszíni kiosztás alapján ajánlott használni.
 
-### <a name="what-impact-do-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Milyen hatással van a teljesítménnyel kapcsolatos előzmények és a percentilis kihasználtsága a javasolt méretre?
-Ezek a tulajdonságok csak a teljesítmény alapú méretezésre vonatkoznak. A Server Assessment folyamatosan gyűjti a helyszíni gépek teljesítményadatait, és ezek alapján tesz javaslatot az Azure-beli virtuálisgép- és lemez-termékváltozatra. A teljesítményadatokat a kiszolgáló értékelése a következőképpen gyűjti össze:
-- A Azure Migrate készülék folyamatosan a helyszíni környezetet gyűjti, hogy a VMware virtuális gépek esetében 20 másodpercenként, a Hyper-V virtuális gépek esetében pedig 30 másodpercenként gyűjtsön valós idejű kihasználtsági adatokat.
-- A készülék összesíti a 20 másodperces és a 30 másodperces mintákat, hogy egyetlen adatpontot hozzon létre 10 percenként. Az egyetlen adatpont létrehozásához a készülék kiválasztja a 20 másodperc és a 30 másodperc közötti csúcsérték értéket, majd elküldi az Azure-nak.
+Ha szeretné megmutatni, hogy ez milyen hatással lehet a javaslatokra, vessünk egy példát:
+
+A helyszíni virtuális gép négy maggal és nyolc GB memóriával rendelkezik, 50%-os CPU-kihasználtsággal és 50%-os memória-kihasználtsággal, valamint a 1,3 megadott kényelmi tényezővel.
+
+-  Ha az értékelés **a helyszínen**történik, az Azure-beli VM-SKU 4 maggal és 8 GB memóriát ajánlott.
+- Ha az értékelés teljesítmény-alapú, a processzor és a memória tényleges kihasználtsága (50%-a 4 mag * 1,3 = 2,6 magok 50, valamint a 8 GB-os memória használata * 1,3 = 5,3-GB memória), a négy mag (a legközelebbi támogatott alapszám) és a nyolc GB memória (a legközelebbi támogatott a memória mérete) ajánlott. 
+- [További](concepts-assessment-calculation.md#sizing) információ az értékelés méretezéséről.
+
+## <a name="azure-disk-skus-bigger-than-on-premises"></a>A helyszínen nagyobb méretű Azure Disk SKU-lemez
+
+Azure Migrate kiszolgáló értékelése az értékelés típusától függően nagyobb lemezt javasolhat.
+- A kiszolgáló értékelése során a lemez méretezése két értékelési tulajdonságtól függ: a méretezési feltételektől és a tárolási típustól.
+- Ha a méretezési feltétel **teljesítmény-alapú**, és a tároló típusa **automatikus**, a rendszer a lemez IOPS és átviteli értékeit veszi figyelembe a céllemez típusának (standard HDD, standard SSD vagy prémium) azonosításakor. Ezt követően a lemezből származó SKU-t ajánlott használni, és a javaslat a helyszíni lemez méretére vonatkozó követelményeket is figyelembe veszi. 
+- Ha a méretezési feltétel **teljesítmény-alapú**, és a tárolási típus **prémium**, az Azure-ban prémium szintű lemezes SKU-t ajánlott használni a helyszíni lemez IOPS, átviteli sebessége és mérete alapján. Ugyanazt a logikát kell használni a lemez méretezéséhez, ha a méretezési feltételek **a helyszínen** vannak, és a tárolási típus **standard HDD**, **standard SSD**vagy **prémium**.
+
+Ha például egy helyszíni lemez 32 GB memóriával rendelkezik, de a lemez összesített olvasási és írási IOPS értéke 800 IOPS, a Server Assessment a prémium szintű lemezt javasolja (a magasabb IOPS-követelmények miatt), majd javaslatot tesz az r-t támogató lemez SKU-ra. zükséges-IOPS és-méret. Ebben a példában a legjobb megoldást a P15-ös változat (256 GB, 1100 IOPS) adja. Bár a helyszíni lemez által igényelt méret 32 GB volt, a Server Assessment a helyszíni lemez magas IOPS követelménye miatt nagyobb lemezt javasol.
+
+## <a name="fix-percentage-of-utilized-core-or-memory-missing"></a>Javítsa ki Hiányzó felhasznált mag vagy memória százalékos aránya
+
+A kiszolgáló-értékelési jelentések "PercentageOfCoresUtilizedMissing" vagy "PercentageOfMemoryUtilizedMissing", ha a Azure Migrate berendezés nem tud teljesítményadatokat gyűjteni a megfelelő helyszíni virtuális gépekhez.
+
+- Ez akkor fordulhat elő, ha a virtuális gépek ki vannak kapcsolva az értékelés időtartama alatt. A készülék nem tud teljesítményadatokat gyűjteni a virtuális gép számára, ha ki van kapcsolva.
+- Ha csak a teljesítményszámlálók hiányoznak, és a Hyper-V virtuális gépeket próbálja értékelni, ellenőrizze, hogy a dinamikus memória engedélyezve van-e ezeken a virtuális gépeken. Csak a Hyper-V virtuális gépek ismert hibája van, amelyben egy Azure Migrate berendezés nem tudja gyűjteni a memória-kihasználtsági adatokat olyan virtuális gépek számára, amelyeken nincs engedélyezve a dinamikus memória.
+- Ha a teljesítményszámlálók bármelyike hiányzik, Azure Migrate kiszolgáló értékelése visszaesik a lefoglalt magokra és a memóriára, és a virtuális gép megfelelő méretét javasolja.
+
+## <a name="is-the-vm-os-license-cost-included-in-cost-assessment"></a>A virtuális gép operációs rendszerének licence a Cost Assessment része?
+
+Azure Migrate a kiszolgáló értékelése jelenleg csak Windows rendszerű gépek esetében veszi figyelembe az operációsrendszer-licenc költségeit. A Linux rendszerű gépek licencelési költségei jelenleg nem tekintendők.
+
+## <a name="performance-history-and-percentile-use"></a>A teljesítmény előzményei és a percentilis használata
+
+Ezek a tulajdonságok csak a Azure Migrate kiszolgáló értékelése során alkalmazott teljesítmény-alapú méretezésre vonatkoznak.
+
+A Server Assessment folyamatosan gyűjti a helyszíni gépek teljesítményadatait, és ezek alapján tesz javaslatot az Azure-beli virtuálisgép- és lemez-termékváltozatra. A teljesítményadatokat a kiszolgáló értékelése a következőképpen gyűjti össze:
+- A Azure Migrate készülék folyamatosan a helyszíni környezetet a VMware virtuális gépek esetében 20 másodpercenként, a Hyper-V virtuális gépek esetében pedig 30 másodpercenként gyűjti a valós idejű kihasználtsági adatokat.
+- A készülék 10 percenként összesíti a 20 vagy 30 másodperces mintát, hogy egyetlen adatpontot hozzon létre 10 percenként. Az egyetlen adatpont létrehozásához a készülék kiválasztja a 20 másodperc és a 30 másodperc közötti csúcsérték értéket, majd elküldi az Azure-nak.
 - Amikor értékelést hoz létre a Server Assessmentben a teljesítmény-időtartam és a teljesítményelőzmények percentilisértéke alapján, a rendszer meghatározza a jellemző kihasználtsági értéket. Ha például a teljesítmény előzményei egy hét, és a percentilis kihasználtsága 95., a Azure Migrate az utolsó egy hétre vonatkozó 10 perces mintát rendezi növekvő sorrendbe, majd kijelöli a 95. percentilis értéket a reprezentatív értékként.
-A 95. percentilis értéke biztosítja, hogy figyelmen kívül hagyja a kiugró adatokat, amelyek akkor szerepelhetnek, ha kiveszi a esetek 99% percentilis értékét. Ha az időszakra vonatkozó csúcsérték-használatot szeretné kihagyni, és nem szeretné lemondani a kiugró adatokat, válassza ki a esetek 99% percentilis értéket a percentilis kihasználtsága érdekében.
+- A 95. percentilis értéke biztosítja, hogy figyelmen kívül hagyja a kiugró adatokat, amelyek akkor szerepelhetnek, ha kiveszi a esetek 99% percentilis értékét.
+- Ha az időszakra vonatkozó csúcsérték-használatot szeretné kihagyni, és nem szeretné lemondani a kiugró adatokat, válassza ki a esetek 99% percentilis értéket a percentilis kihasználtsága érdekében.
 
-## <a name="dependency-visualization-issues"></a>Függőségi vizualizációval kapcsolatos problémák
 
-### <a name="i-cant-find-the-dependency-visualization-functionality-for-azure-government-projects"></a>Nem találom a függőségi vizualizáció funkciót Azure Government projektekhez.
+
+## <a name="i-cant-find-dependency-visualization-for-azure-government"></a>Nem találom a függőségi vizualizációt Azure Government
 
 Azure Migrate a függőségi vizualizáció funkciójának Service Map függ. Mivel a Service Map jelenleg nem érhető el a Azure Governmentban, ez a funkció nem érhető el a Azure Governmentban.
 
-### <a name="i-installed-the-microsoft-monitoring-agent-mma-and-the-dependency-agent-on-my-on-premises-vms-but-the-dependencies-are-now-showing-up-in-the-azure-migrate-portal"></a>Telepítettem a Microsoft monitoring Agent (MMA) és a függőségi ügynököt a helyszíni virtuális gépeken, de a függőségek mostantól megjelennek a Azure Migrate portálon.
+## <a name="dependencies-dont-show-after-installing-agents"></a>A függőségek nem jelennek meg az ügynökök telepítése után
 
-Miután telepítette az ügynököket, Azure Migrate általában 15-30 percet vesz igénybe, hogy megjelenjenek a függőségek a portálon. Ha több mint 30 percet várt, ellenőrizze, hogy az MMA tud-e kommunikálni az OMS-munkaterülettel a következő lépésekkel.
 
-Windows rendszerű virtuális gép esetén:
-1. Nyissa meg a Vezérlőpultot, és indítsa el a Microsoft monitoring agentet.
-2. A **Microsoft monitoring Agent tulajdonságai** párbeszédpanel **Azure log Analytics (OMS)** lapján győződjön meg arról, hogy a munkaterület **állapota** zöld.
+Miután telepítette a függőségi vizualizációs ügynököket a helyszíni virtuális gépekre, Azure Migrate általában 15-30 percet vesz igénybe, hogy megjelenjenek a függőségei a portálon. Ha több mint 30 percet várt, győződjön meg arról, hogy a Microsoft monitoring Agent (MMA) tud csatlakozni a Log Analytics munkaterülethez.
+
+Windows rendszerű virtuális gépek esetén:
+1. A Vezérlőpulton indítsa el az MMA-t.
+2. A **Microsoft monitoring Agent tulajdonságok** > **Azure log Analytics (OMS)** területén ellenőrizze, hogy a munkaterület **állapota** zöld.
 3. Ha az állapot nem zöld, próbálja meg eltávolítani a munkaterületet, és adja hozzá újra az MMA-hoz.
 
       ![MMA tulajdonságai párbeszédpanel](./media/troubleshooting-general/mma-status.png)
 
-Linux rendszerű virtuális gép esetén győződjön meg arról, hogy az MMA és a függőségi ügynök telepítési parancsai sikeresek voltak.
+Linux rendszerű virtuális gépek esetén győződjön meg arról, hogy az MMA és a függőségi ügynök telepítési parancsai sikeresek voltak.
 
-### <a name="what-operating-systems-does-mma-support"></a>Milyen operációs rendszereket támogat az MMA?
+## <a name="supported-mma-os"></a>Támogatott MMA operációs rendszer
 
- [Itt látható az MMA által támogatott Windows operációs rendszerek listája](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems).
-[Itt látható az MMA által támogatott Linux operációs rendszerek listája](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems).
+ Tekintse át a támogatott [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)-és [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) -operációs rendszereket.
 
-### <a name="what-operating-systems-does-the-dependency-agent-support"></a>Milyen operációs rendszereket támogat a függőségi ügynök?
+## <a name="supported-dependency-agent-os"></a>Támogatott függőségi ügynök operációs rendszer
 
-[A [Azure monitor for VMS által támogatott Windows-és Linux-operációs rendszerek](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)listája.
+Tekintse át a támogatott [Windows-és Linux-](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) operációs rendszereket.
 
-### <a name="i-cant-visualize-dependencies-in-azure-migrate-for-more-than-a-one-hour-duration"></a>Egy órás időtartamon belül nem tudom megjeleníteni a függőségeket Azure Migrateban.
-Azure Migrate a függőségeket legfeljebb egy órás időtartamra lehet megjeleníteni. Bár a Azure Migrate lehetővé teszi, hogy visszalépjen az előző hónapban egy adott dátumra, a függőségek megjelenítésének maximális időtartama egy óra.
+## <a name="dependencies-for-more-than-an-hour"></a>Több mint egy óra függőségei
 
-A függőségi Térkép időidőtartam funkciójának használatával például megtekintheti a tegnapi függőségeket, de csak egy órás időszakra megtekintheti őket. [A függőségi adat](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) hosszabb időtartamon keresztül történő lekérdezéséhez azonban Azure monitor naplókat is használhat.
+Bár a Azure Migrate lehetővé teszi, hogy visszalépjen az előző hónapban egy adott dátumra, a függőségek megjelenítésének maximális időtartama egy óra.
 
-### <a name="i-cant-visualize-dependencies-for-groups-that-have-more-than-10-vms"></a>Nem tudom megjeleníteni a függőségeket a több mint 10 virtuális géppel rendelkező csoportok esetében.
-A legfeljebb 10 virtuális géppel rendelkező [csoportok függőségeinek megjelenítéséhez](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , ha több mint 10 virtuális géppel rendelkező csoporttal rendelkezik, javasoljuk, hogy ossza szét a csoportot kisebb csoportokra, és jelenítse meg a függőségeket.
+A függőségi Térkép időidőtartam funkciójának használatával például megtekintheti a tegnapi függőségeket, de csak egy órás időszakra megtekintheti őket.
 
-### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>Telepítettem az ügynököket, és a függőségi vizualizációt használták a csoportok létrehozásához. A feladatátvételt követően a gépek az "ügynök telepítése" műveletet mutatják "a függőségek megtekintése" helyett.
-* A tervezett vagy nem tervezett feladatátvételt követően a helyszíni gépek ki vannak kapcsolva, és az egyenértékű gépek az Azure-ban jelennek meg. Ezek a gépek eltérő MAC-címeket vásárolnak. Előfordulhat, hogy más IP-címet is beszerezhetnek attól függően, hogy a felhasználó úgy döntött-e, hogy megtartja-e a helyszíni IP-címet.
+[A függőségi adat](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) hosszabb időtartamon keresztül történő lekérdezéséhez azonban Azure monitor naplókat is használhat.
 
-  Ha a MAC és az IP-címek eltérőek, a Azure Migrate nem társítja a helyszíni gépeket semmilyen Service Map függőségi adattal. Ehelyett arra kéri a felhasználót, hogy a függőségek megtekintése helyett ügynököket telepítsen.
-* A tesztelés utáni feladatátvétel után a helyszíni gépek a várt módon bekapcsolva maradnak. Az Azure-ban megjelenő egyenértékű gépek eltérő MAC-címet igényelnek, és különböző IP-címeket is megvásárolhatnak. Ha a felhasználó blokkolja a kimenő Azure Monitor az ezekről a gépekről érkező forgalmat, Azure Migrate nem rendeli hozzá a helyszíni gépeket semmilyen Service Map függőségi adatokhoz, és nem kéri a felhasználókat, hogy a függőségek megtekintése helyett ügynököket telepítsenek.
+## <a name="i-cant-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Nem tudom megjeleníteni a több mint 10 virtuális géppel rendelkező csoportok függőségeit
 
-## <a name="collect-azure-portal-logs"></a>Azure Portal naplók gyűjtése
+Azure Migrate kiszolgáló értékelése során a legfeljebb 10 virtuális géppel rendelkező [csoportok függőségeit jelenítheti](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) meg. Nagyobb csoportok esetén azt javasoljuk, hogy a függőségek megjelenítéséhez ossza fel a virtuális gépeket kisebb csoportokra.
 
-**Hogyan gyűjteni Azure Portal hálózati forgalmi naplókat?**
+## <a name="machines-show-install-agent-not-view-dependencies"></a>Gépek "telepítési ügynök" nem "View függőségei"
 
-1. Nyissa meg a böngészőt, lépjen [a portálra](https://portal.azure.com), és jelentkezzen be.
+Miután az Azure-ba engedélyezte a függőségi vizualizációval rendelkező gépek áttelepítését, az alábbi viselkedés miatt előfordulhat, hogy a gépek "ügynök telepítése" műveletet mutatnak a "függőségek megtekintése" helyett.
+
+
+- Az Azure-ba való Migrálás után a helyszíni gépek ki vannak kapcsolva, és az egyenértékű virtuális gépek az Azure-ban vannak. Ezek a gépek eltérő MAC-címeket vásárolnak.
+- A gépek más IP-címmel is rendelkezhetnek, attól függően, hogy megtartotta-e a helyszíni IP-címet.
+- Ha a MAC és az IP-címek is eltérnek a helyi környezettől, Azure Migrate nem rendeli hozzá a helyszíni gépeket a Service Map függőségi adatokhoz. Ebben az esetben az ügynököt a függőségek megtekintése helyett az ügynök telepítésére fogja látni.
+- Az Azure-ba való áttelepítést követően a helyszíni gépek továbbra is a várt módon lesznek bekapcsolva. Az Azure-ban megjelenő egyenértékű gépek eltérő MAC-címet igényelnek, és különböző IP-címeket is megvásárolhatnak. Hacsak nem tiltja le a kimenő Azure Monitor ezen gépekről érkező forgalmat, Azure Migrate nem rendeli hozzá a helyszíni gépeket semmilyen Service Map függőségi adatokhoz, így a függőségek megtekintése helyett az ügynökök telepítésének lehetőségét fogja látni.
+
+
+## <a name="collect-network-traffic-logs-in-portal"></a>Hálózati forgalmi naplók gyűjtése a portálon
+
+A naplók gyűjtése a következőképpen történik:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Nyomja meg az F12 billentyűt Fejlesztői eszközök elindításához. Ha szükséges, törölje a jelet a navigációs beállításban szereplő **bejegyzések törlése** elemre.
 3. Válassza a **hálózat** fület, és indítsa el a hálózati forgalom rögzítését:
    - A Chrome-ban válassza a **napló megőrzése**lehetőséget. A rögzítésnek automatikusan el kell indulnia. A piros kör azt jelzi, hogy a forgalom rögzítése folyamatban van. Ha a piros kör nem jelenik meg, válassza ki az elindulni kívánt fekete kört.

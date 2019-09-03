@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/28/2019
-ms.openlocfilehash: df74d2d07937634e2b656746c0a9fc9cd86b8c93
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b1da94a2644c299447271b447f51ae4f7750774c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182603"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231074"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Oktatóanyag: Ismerkedés az első ML-kísérlet létrehozásával
 
@@ -24,16 +24,14 @@ Ebben az oktatóanyagban a teljes körű lépéseket követve megkezdheti a Jupy
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Hozzon létre egy Machine learning-munkaterületet, amelyet a következő oktatóanyagban használhat.
+> * Hozzon létre egy [Azure Machine learning-munkaterület](concept-workspace.md) , amelyet a következő oktatóanyagban szeretne használni.
 > * Hozzon létre egy felhőalapú Jupyter notebook virtuális gépet Azure Machine Learning Python SDK-val telepített és előre konfigurált.
 
-## <a name="prerequisites"></a>Előfeltételek
-
-Az oktatóanyag egyetlen előfeltétele egy Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-A munkaterület olyan alapszintű erőforrás a felhőben, amelyet a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használ. Az Azure-előfizetést és az erőforráscsoportot egy könnyen felhasználható objektumhoz fűzi az SDK-ban. Ha már rendelkezik Azure Machine Learning szolgáltatás munkaterülettel, ugorjon a [következő szakaszra](#azure). Ellenkező esetben hozzon létre egyet most.
+Az Azure Machine Learning munkaterület a felhőben található alapvető erőforrás, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használható. Az Azure-előfizetést és az erőforráscsoportot egy könnyen felhasználható objektumhoz fűzi az SDK-ban. Ha már rendelkezik Azure Machine Learning szolgáltatás munkaterülettel, ugorjon a [következő szakaszra](#azure). Ellenkező esetben hozzon létre egyet most.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -58,10 +56,7 @@ A munkaterületről hozzon létre egy felhőalapú erőforrást a Jupyter-jegyze
 1. Ezután kattintson a **Létrehozás** elemre. A virtuális gép beállítása eltarthat egy kis ideig.
 
 1. Várjon, amíg az állapot **futni**nem változik.
-
-### <a name="launch-jupyter-web-interface"></a>A Jupyter webes felületének elindítása
-
-A virtuális gép futása után a **notebook virtuális gépek** szakasz használatával indítsa el a Jupyter webes felületét.
+   A virtuális gép futása után a **notebook virtuális gépek** szakasz használatával indítsa el a Jupyter webes felületét.
 
 1. A virtuális gép **URI** oszlopában válassza a **Jupyter** lehetőséget.
 
@@ -69,14 +64,6 @@ A virtuális gép futása után a **notebook virtuális gépek** szakasz haszná
 
    A hivatkozás elindítja a notebook-kiszolgálót, és megnyitja a Jupyter notebook weboldalát egy új böngésző lapon.  Ez a hivatkozás csak a virtuális gépet létrehozó személy számára fog működni. A munkaterület minden felhasználójának létre kell hoznia a saját virtuális gépet.
 
-1. A Jupyter notebook weboldalán válassza ki a saját felhasználónevével rendelkező legfelső szintű mappanév-nevet.  
-
-   Ez a mappa nem a jegyzetfüzet virtuális gépén, hanem a munkaterület [Storage](concept-workspace.md#resources) -fiókjában található.  Ha törli a notebook VM-et, továbbra is megtarthatja a munkáját.  Amikor később hoz létre egy új jegyzetfüzet virtuális gépet, a rendszer ezt a mappát fogja betölteni. Ha a munkaterületet másokkal is megosztja, látni fogja a mappát, és látni fogja a sajátját.
-
-1. Nyissa `samples-*` meg az alkönyvtárat, majd nyissa meg a Jupyter notebookot.`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
-
-   > [!Warning]
-   > Győződjön meg arról, `tutorial-1st-experiment-sdk-train.ipynb` hogy megnyitotta `.yml` a fájlt, és **nem** a > azonos nevű fájlt. 
 
 ## <a name="next-steps"></a>További lépések
 

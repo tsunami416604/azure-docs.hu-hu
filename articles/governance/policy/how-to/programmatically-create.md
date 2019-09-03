@@ -7,17 +7,16 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: c4bb06bd4c75dfeb164341d8cc5084030d3a08a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d158950749a9704276a666b58101bb5ad9dcbc42
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979306"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232642"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programozott módon szabályzatok létrehozása és a megfelelőségi adatok megtekintése
 
-Ez a cikk végigvezeti programozott módon szabályzatok létrehozása és kezelése. Azure szabályzatdefiníciók különböző szabályokat és hatások kényszerítenek az erőforrások. Kényszerítési gondoskodik arról, hogy az erőforrások maradjon felelnek meg a vállalati szabványoknak és szolgáltatói szerződéseknek.
+Ez a cikk végigvezeti programozott módon szabályzatok létrehozása és kezelése. Azure Policy definíciók különböző szabályokat és hatásokat alkalmaznak az erőforrásokra. Kényszerítési gondoskodik arról, hogy az erőforrások maradjon felelnek meg a vállalati szabványoknak és szolgáltatói szerződéseknek.
 
 Megfelelőségi kapcsolatos információkért lásd: [megfelelőségi adatok](getting-compliance-data.md).
 
@@ -29,9 +28,9 @@ Mielőtt elkezdené, győződjön meg arról, hogy a következő előfeltételek
 
 1. Ha még nem tette meg, telepítse az [ARMClient](https://github.com/projectkudu/ARMClient) eszközt. Ez egy olyan segédprogram, amely HTTP-kéréseket küld az Azure Resource Manager-alapú API-khoz.
 
-1. Az Azure PowerShell-modul frissítése a legújabb verzióra. Lásd: [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) részletes információkat. A legújabb verzióval kapcsolatos további információkért lásd: [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases).
+1. Frissítse Azure PowerShell modulját a legújabb verzióra. Részletes információkért lásd: [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps) . A legújabb verzióval kapcsolatos további információkért lásd: [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases).
 
-1. Az Azure PowerShell-lel történő ellenőrzése, hogy működik-e az előfizetés az erőforrás-szolgáltató az Azure Policy Insights erőforrás-szolgáltató regisztrálásához. Erőforrás-szolgáltató regisztrálásához rendelkeznie kell engedéllyel az erőforrás-szolgáltató regisztrálási műveletének futtatása. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
+1. Regisztrálja a Azure Policy bepillantást erőforrás-szolgáltatót a Azure PowerShell használatával annak ellenőrzéséhez, hogy az előfizetés működik-e az erőforrás-szolgáltatóval. Erőforrás-szolgáltató regisztrálásához rendelkeznie kell engedéllyel az erőforrás-szolgáltató regisztrálási műveletének futtatása. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
 
    ```azurepowershell-interactive
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
@@ -77,7 +76,7 @@ Az erőforrások jobb rálátást biztosít az első lépését, hogy a szabály
    ```
 
    A parancs létrehoz egy szabályzatdefiníciót nevű _naplózási Storage fiókok nyissa meg a nyilvános hálózatok_.
-   Más paramétereket, amelyeket használhat kapcsolatos további információkért lásd: [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition).
+   További információ a használható egyéb paraméterekről: [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition).
 
    Hely paraméterek nélkül meghívni `New-AzPolicyDefinition` , az alapértelmezett érték a szabályzat-definíció mentése az munkamenet-környezet a kijelölt előfizetésben. A definíció mentése más helyre, használja a következő paraméterekkel:
 
@@ -94,15 +93,15 @@ Az erőforrások jobb rálátást biztosít az első lépését, hogy a szabály
 
    Cserélje le _ContosoRG_ az importálni kívánt erőforráscsoport nevét.
 
-   A **hatókör** paraméterrel `New-AzPolicyAssignment` együttműködik a felügyeleti csoportban, előfizetés, erőforráscsoport vagy egyetlen erőforrás. A paraméter használja a teljes erőforrás-elérési útját, amely a **ResourceId** tulajdonsága `Get-AzResourceGroup` adja vissza. Minta **hatókör** az egyes tárolók a következőképpen történik. Cserélje le `{rName}`, `{rgName}`, `{subId}`, és `{mgName}` az erőforrás nevét, az erőforráscsoport nevét, az előfizetés-azonosító és a felügyeleti csoport neve, illetve.
-   `{rType}` szeretné cserélni a **erőforrástípus** az erőforrás például `Microsoft.Compute/virtualMachines` egy virtuális géphez.
+   A **hatókör** -paraméter `New-AzPolicyAssignment` a felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter használja a teljes erőforrás-elérési útját, amely a **ResourceId** tulajdonsága `Get-AzResourceGroup` adja vissza. Minta **hatókör** az egyes tárolók a következőképpen történik. Cserélje le `{rName}`a,, `{mgName}` , és az erőforrás nevét, az erőforráscsoport nevét, az előfizetés azonosítóját és a felügyeleti csoport nevét. `{subId}` `{rgName}`
+   `{rType}`lecserélve az erőforrás erőforrástípus, például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
 
-   - Erőforrás- `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Erőforrás`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Erőforráscsoport- `/subscriptions/{subId}/resourceGroups/{rgName}`
    - Előfizetés – `/subscriptions/{subId}/`
    - Felügyeleti csoport – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Erőforrás-szabályzatok az Azure Resource Manager PowerShell-modullal kezelésével kapcsolatos további információkért lásd: [Az.Resources](/powershell/module/az.resources/#policies).
+Az erőforrás-házirendek Azure Resource Manager PowerShell-modul használatával történő kezelésével kapcsolatos további információkért lásd [az az.](/powershell/module/az.resources/#policies)Resources című témakört.
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Hozzon létre és ARMClient használatával szabályzatdefiníció hozzárendelése
 
@@ -148,7 +147,7 @@ Az alábbi eljárás segítségével létrehozhat egy szabályzatdefiníciót.
 
    Cserélje le az előző {subscriptionId} azonosítójú, az előfizetés vagy {managementGroupId} azonosítójú, a [felügyeleti csoport](../../management-groups/overview.md).
 
-   A lekérdezés szerkezete kapcsolatos további információkért lásd: [Azure Szabályzatdefiníciók – létrehozás vagy frissítés](/rest/api/resources/policydefinitions/createorupdate) és [Szabályzatdefiníciók – létrehozás vagy frissítés: felügyeleti csoport](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
+   További információ a lekérdezés struktúrájáról: [Azure Policy definíciók – létrehozás vagy frissítés](/rest/api/resources/policydefinitions/createorupdate) és [szabályzat-definíciók – létrehozás vagy frissítés a felügyeleti csoportban](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
 
 A következő eljárással hozhat létre szabályzat-hozzárendelést, és rendelje hozzá a szabályzatdefiníciót az erőforráscsoport szintjén.
 
@@ -210,12 +209,12 @@ Szabályzatdefiníció létrehozásához használja az alábbi eljárást:
    ```
 
    A parancs létrehoz egy szabályzatdefiníciót nevű _naplózási Storage fiókok nyissa meg a nyilvános hálózatok_.
-   Más paramétereket, amelyeket használhat kapcsolatos további információkért lásd: [az szabályzatdefiníció létrehozása](/cli/azure/policy/definition#az-policy-definition-create).
+   További információ a használható egyéb paraméterekről: [az Policy definition Create](/cli/azure/policy/definition#az-policy-definition-create).
 
    Hely paraméterek nélkül meghívni `az policy definition creation` , az alapértelmezett érték a szabályzat-definíció mentése az munkamenet-környezet a kijelölt előfizetésben. A definíció mentése más helyre, használja a következő paraméterekkel:
 
-   - **– előfizetés** -másik előfizetésbe való mentéséhez. Szükséges egy _GUID_ az előfizetés-azonosító értéke, vagy egy _karakterlánc_ az előfizetés nevét.
-   - **--felügyeleticsoport** -mentse egy felügyeleti csoporthoz. Szükséges egy _karakterlánc_ értéket.
+   - **--előfizetés** – mentse egy másik előfizetésbe. Az előfizetés-AZONOSÍTÓhoz vagy egy _karakterlánc_ -értékhez szükséges _GUID_ -értéket igényel az előfizetés neveként.
+   - **--felügyeleti** csoport – mentés egy felügyeleti csoportba. Szükséges egy _karakterlánc_ értéket.
 
 1. A következő paranccsal hozzon létre egy szabályzat-hozzárendelést. Cserélje le a példaadatok &lt; &gt; szimbólumok a saját értékeire.
 
@@ -223,14 +222,14 @@ Szabályzatdefiníció létrehozásához használja az alábbi eljárást:
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   A **--hatókör** paraméterrel `az policy assignment create` együttműködik a felügyeleti csoportban, előfizetés, erőforráscsoport vagy egyetlen erőforrás. A paraméter teljes erőforrás elérési utat használ. Minta **--hatókör** az egyes tárolók a következőképpen történik. Cserélje le `{rName}`, `{rgName}`, `{subId}`, és `{mgName}` az erőforrás nevét, az erőforráscsoport nevét, az előfizetés-azonosító és a felügyeleti csoport neve, illetve. `{rType}` szeretné cserélni a **erőforrástípus** az erőforrás például `Microsoft.Compute/virtualMachines` egy virtuális géphez.
+   A **--scope** paraméter a `az policy assignment create` felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter teljes erőforrás-elérési utat használ. Az egyes tárolók **hatóköre** a következő. Cserélje le `{rName}`a,, `{mgName}` , és az erőforrás nevét, az erőforráscsoport nevét, az előfizetés azonosítóját és a felügyeleti csoport nevét. `{subId}` `{rgName}` `{rType}`lecserélve az erőforrás erőforrástípus, például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
 
-   - Erőforrás- `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Erőforrás`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Erőforráscsoport- `/subscriptions/{subID}/resourceGroups/{rgName}`
    - Előfizetés – `/subscriptions/{subID}`
    - Felügyeleti csoport – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Szabályzatdefiníció azonosítója az Azure PowerShell használatával a következő paranccsal kaphat:
+A Azure Policy definíciós AZONOSÍTÓját a PowerShell használatával szerezheti be a következő paranccsal:
 
 ```azurecli-interactive
 az policy definition show --name 'Audit Storage Accounts with Open Public Networks'
@@ -249,7 +248,7 @@ Hogyan kezelheti az erőforrás-szabályzatok az Azure CLI-vel kapcsolatos tová
 Tekintse át a parancsok és lekérdezések ebben a cikkben további információt a következő cikkeket.
 
 - [Az Azure REST API-erőforrásokhoz](/rest/api/resources/)
-- [Az Azure PowerShell-modulok](/powershell/module/az.resources/#policies)
+- [Azure PowerShell modulok](/powershell/module/az.resources/#policies)
 - [A házirend-parancsok az Azure CLI](/cli/azure/policy?view=azure-cli-latest)
-- [Az Azure Policy Insights erőforrás-szolgáltató REST API-referencia](/rest/api/policy-insights)
-- [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../../management-groups/overview.md).
+- [Azure Policy az erőforrás-szolgáltató REST API referenciája](/rest/api/policy-insights)
+- [Erőforrások rendszerezése az Azure-beli felügyeleti csoportokkal](../../management-groups/overview.md).

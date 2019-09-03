@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 7623244d8b7de012d80e7e4844a9b3693ccdd662
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b07adc955b7904c6e6a3278480cec5a2be91ec35
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186694"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232911"
 ---
 ::: zone target="docs"
 
@@ -67,7 +67,7 @@ Jelentkezzen be az Azure Portalra a [https://aka.ms/azuredataboxfromdiskdocs](ht
 > - **Kapcsolat és feloldás**: Az eszköz csatlakoztatása és a lemez zárolásának feloldása az adatmásoláshoz.
 > - **Másolja az adatlemezre, és ellenőrizze az**alábbiakat: Másolja az adatlemezeket az előlétrehozott mappákba.
 > - **A lemezek visszaküldése**: Visszaadja a lemezeket az Azure-adatközpontba, ahol a rendszer feltölti az adatait a Storage-fiókjába.
-> - **Az Azure-ban tárolt adatellenőrzés**: Győződjön meg arról, hogy az adatok feltöltve lettek a Storage-fiókba, mielőtt törölné a forrás dátum-kiszolgálóról.
+> - **Az Azure-ban tárolt adatellenőrzés**: Mielőtt törölné a forrás-adatkiszolgálóról, ellenőrizze, hogy az adatok fel lettek-e töltve a Storage-fiókjába.
 
 ::: zone-end
 

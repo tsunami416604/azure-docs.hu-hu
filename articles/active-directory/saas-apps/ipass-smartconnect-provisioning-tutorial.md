@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 09ef80742c931c9b7e8f8c2e2cf0b9e373ad6184
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 3141a32437e56bcefe830bc94109e93208e0258d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015773"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232153"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Oktatóanyag: IPass-SmartConnect konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -57,7 +57,7 @@ Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése el�
 Mielőtt iPass a SmartConnect az Azure AD-vel való automatikus felhasználói üzembe helyezéshez, a konfigurációs adatokat le kell kérnie a iPass SmartConnect felügyeleti konzolról:
 
 1. A iPass SmartConnect SCIM-végponton való hitelesítéshez szükséges tulajdonosi jogkivonat lekéréséhez tekintse meg az első alkalommal, amikor beállítja a iPass-SmartConnect, mivel ez az érték csak akkor van megadva. 
-2. Ha nem rendelkezik a tulajdonosi jogkivonattal, a [ipass SmartConnect támogatási csapatának] (mailto:help@ipass.com) elérésével kérje le az újat.
+2. Ha nem rendelkezik a tulajdonosi jogkivonattal, a [IPass SmartConnect támogatási csapatával](mailto:help@ipass.com) kérhet le egy újat.
 
 ## <a name="add-ipass-smartconnect-from-the-gallery"></a>IPass-SmartConnect hozzáadása a gyűjteményből
 

@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e76abcac94a877e6bc7ea5c417c77c8c2febff
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 70e3267792f27a170efa26cc4267d1b25045a099
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032694"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231238"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás konfigurálása utáni feladatok
 
@@ -31,12 +31,12 @@ Miután futtatta a Azure AD Connectt a hibrid Azure AD-csatlakozáshoz való kon
 A Windows 10 és a Windows Server 2016 rendszerű összes tartományhoz csatlakoztatott eszköz automatikusan regisztrálja az Azure AD-t az összes konfigurációs lépés befejezése után. Ha az automatikus regisztráció helyett inkább az ellenőrzött bevezetést részesíti előnyben, a csoportházirend segítségével szelektív módon engedélyezheti vagy letilthatja az automatikus bevezetést.  Ezt a csoportházirendet a további konfigurációs lépések megkezdése előtt be kell állítani:
 * Hozzon létre egy csoportházirend-objektumot a Active Directory.
 * Nevezze el (a hibrid Azure AD-csatlakozás).
-* Szerkesztés & ugrás:  Számítógép-konfiguráció > házirendek > Felügyeleti sablonok > Windows-összetevők > eszköz regisztrálása.
+* Szerkesztés és ugrás:  Számítógép-konfiguráció > házirendek > Felügyeleti sablonok > Windows-összetevők > eszköz regisztrálása.
 
 >[!NOTE]
 >A 2012R2 a **Számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows-összetevők > Workplace JOIN > automatikusan munkahelyi csatlakozás ügyfélszámítógépeken**
 
-* A beállítás letiltása:  Tartományhoz csatlakoztatott számítógépek regisztrálása eszközként.
+* A beállítás engedélyezése:  Tartományhoz csatlakoztatott számítógépek regisztrálása eszközként.
 * Alkalmazza, és kattintson az OK gombra.
 * Csatolja a GPO-t az Ön által választott helyhez (szervezeti egység, biztonsági csoport vagy a tartományhoz az összes eszköz esetében).
 

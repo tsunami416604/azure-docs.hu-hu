@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 3158ebddf6ffe5594c9daf0fd9f3e3fe980c0b24
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b4f9c0ab3ca50b0ce8c9ba27d8773c58a72dcfa9
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845665"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230966"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>A helyszíni Hyper-V virtuális gépek Azure-ba való vész-helyreállításának támogatási mátrixa
 
@@ -151,7 +151,7 @@ Az Azure-ba replikált helyszíni virtuális gépeknek meg kell felelniük az eb
 **Összetevő** | **Követelmények** | **Részletek**
 --- | --- | ---
 Vendég operációs rendszer | A Site Recovery az [Azure által támogatott](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)összes operációs rendszert támogatja.  | Az Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
-Vendég operációs rendszer architektúrája | 64 bites | Az Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
+Vendég operációs rendszer architektúrája | 32 bites (Windows Server 2008)/64-bit | Az Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 Operációs rendszer lemezének mérete | Akár 2 048 GB az 1. generációs virtuális gépekhez.<br/><br/> Akár 300 GB a 2. generációs virtuális gépek számára.  | Az Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 Operációsrendszer-lemezek száma | 1 | Az Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 Adatlemezek száma | 16 vagy kevesebb  | Az Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
@@ -166,13 +166,13 @@ Virtuális gép típusa | 1\. generáció<br/><br/> Generation 2--Windows | A 2.
 
 ## <a name="recovery-services-vault-actions"></a>Recovery Services tároló műveletei
 
-**Művelet** |  **Hyper-V Virtual Machine Manager** | **Hyper-V Virtual Machine Manager nélkül**
+**Művelet** |  **Hyper-V és VMM** | **Hyper-V VMM nélkül**
 --- | --- | ---
 Tár áthelyezése az erőforráscsoportok között<br/><br/> Előfizetéseken belül és között | Nem | Nem
 Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között<br/><br/> Előfizetéseken belül és között | Nem | Nem
 
 > [!NOTE]
-> A helyszíni rendszerről az Azure-ba irányuló Hyper-VM-EK (SCVMM-mel felügyelt) replikálásakor a rendszer csak egy AD-bérlőre replikálhat egy adott környezetből – a Hyper-V-helyről vagy a SCVMM.
+> Ha a helyszíni rendszerből az Azure-ba replikálja a Hyper-VM-et, replikálhat csak egy AD-bérlőre egy adott környezetből – a Hyper-V-helyről vagy a Hyper-V-t a VMM-mel.
 
 
 ## <a name="provider-and-agent"></a>Provider és Agent

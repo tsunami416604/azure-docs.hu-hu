@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 07/20/2019
-ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 09/03/2019
+ms.openlocfilehash: 8065284d65f1b0a91fc05846b451305906c74fc8
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051630"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231100"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: Az első ML-modell betanítása
 
@@ -34,6 +34,29 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 Az egyetlen előfeltétel az oktatóanyag, a [telepítési környezet és a munkaterület](tutorial-1st-experiment-sdk-setup.md)első részének futtatása.
 
 Az oktatóanyag ezen részében az első rész végén megnyitott minta Jupyter jegyzetfüzetben `tutorials/tutorial-1st-experiment-sdk-train.ipynb` futtatja a kódot. Ez a cikk a jegyzetfüzetben található kódot mutatja be.
+
+## <a name="launch-jupyter-web-interface"></a>A Jupyter webes felületének elindítása
+
+1. A Azure Portal munkaterület lapján válassza a bal oldalon található **notebook virtuális gépek** elemet.
+
+1. Az oktatóanyag első részében létrehozott virtuális gép **URI** oszlopában válassza a **Jupyter** lehetőséget.
+
+    ![A Jupyter notebook-kiszolgáló elindítása](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
+
+   A hivatkozás elindítja a notebook-kiszolgálót, és megnyitja a Jupyter notebook weboldalát egy új böngésző lapon.  Ez a hivatkozás csak a virtuális gépet létrehozó személy számára fog működni. A munkaterület minden felhasználójának létre kell hoznia a saját virtuális gépet.
+
+1. A Jupyter notebook weboldalán válassza ki a saját felhasználónevével rendelkező legfelső szintű mappanév-nevet.  
+
+
+   Ez a mappa nem a jegyzetfüzet virtuális gépén, hanem a munkaterület [Storage](concept-workspace.md#resources) -fiókjában található.  Ha törli a notebook VM-et, továbbra is megtarthatja a munkáját.  Amikor később hoz létre egy új jegyzetfüzet virtuális gépet, a rendszer ezt a mappát fogja betölteni. Ha a munkaterületet másokkal is megosztja, látni fogja a mappát, és látni fogja a sajátját.
+
+1. Nyissa `samples-*` meg az alkönyvtárat, majd nyissa meg a Jupyter notebookot.`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
+
+   > [!Warning]
+   > Győződjön meg arról, `tutorial-1st-experiment-sdk-train.ipynb` hogy megnyitotta `.yml` a fájlt, és **nem** a > azonos nevű fájlt. 
+
+1. A cikk többi része ugyanazt a tartalmat tartalmazza, mint amit a jegyzetfüzetben lát.  Ha futtatni szeretné a kódot, váltson a jegyzetfüzetre.
+
 
 ## <a name="connect-workspace-and-create-experiment"></a>Munkaterület összekötése és kísérlet létrehozása
 

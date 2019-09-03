@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: bc6d9e7214d2b7cd009e7562357bed420e49f185
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e9b688d54049c21da3276a20e27dcc9ad3d4ceca
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325112"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231475"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Vész-helyreállítás beállítása többrétegű SharePoint-alkalmazáshoz a vész-helyreállításhoz Azure Site Recovery használatával
 
@@ -56,7 +56,7 @@ A SharePoint egy vagy több olyan kiszolgálóra telepíthető, amely többréte
 
 ## <a name="site-recovery-support"></a>Site Recovery támogatása
 
-A cikk létrehozásához a Windows Server 2012 R2 Enterprise rendszerű VMware virtuális gépeket használták. A rendszer a SharePoint 2013 Enterprise Edition és az SQL Server 2014 Enterprise Edition verziót használta. Mivel a Site Recovery replikáció az alkalmazás agnosztikus, az itt megadott ajánlásokat a következő helyzetekben is meg kell tartani.
+Site Recovery az alkalmazás-független, és működnie kell a SharePoint bármely olyan verziójával, amely támogatott gépen fut. A cikk létrehozásához a Windows Server 2012 R2 Enterprise rendszerű VMware virtuális gépeket használták. A rendszer a SharePoint 2013 Enterprise Edition és az SQL Server 2014 Enterprise Edition verziót használta.
 
 ### <a name="source-and-target"></a>Forrás és cél
 
@@ -67,13 +67,6 @@ A cikk létrehozásához a Windows Server 2012 R2 Enterprise rendszerű VMware v
 **Fizikai kiszolgáló** | Igen | Igen
 **Azure** | NA | Igen
 
-### <a name="sharepoint-versions"></a>SharePoint-verziók
-A következő SharePoint Server-verziók támogatottak.
-
-* SharePoint server 2013 Standard
-* SharePoint server 2013 Enterprise
-* SharePoint server 2016 Standard
-* SharePoint server 2016 Enterprise
 
 ### <a name="things-to-keep-in-mind"></a>Szem előtt tartani kívánt dolgok
 
@@ -93,7 +86,7 @@ Kövesse [ezt az útmutatót](site-recovery-vmware-to-azure.md) a virtuális gé
 
 ## <a name="networking-configuration"></a>Hálózati konfiguráció
 
-### <a name="network-properties"></a>Hálózati tulajdonságok
+### <a name="network-properties"></a>Hálózat tulajdonságai
 
 * Az alkalmazás és a webes szintű virtuális gépek esetében konfigurálja Azure Portal hálózati beállításait, hogy a virtuális gépek a feladatátvételt követően a megfelelő DR hálózathoz legyenek csatolva.
 

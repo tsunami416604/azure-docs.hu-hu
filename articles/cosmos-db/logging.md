@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3a2702abd39ecdf506d58b6bd8884f12607e29e8
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: d8a9963edd689a32ae0642ac6fa4a622c248bc5b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615303"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232376"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnosztikai naplózás az Azure Cosmos DB-ben 
 
@@ -436,7 +436,7 @@ Az egyes naplóbeli keresés által visszaadott adatok jelentését kapcsolatos 
 * A lekérdezéshez, amelynek műveletek tovább tart, mint 3 idő ezredmásodpercben:
 
     ```
-    AzureDiagnostics | where toint(duration_s) > 30000 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
+    AzureDiagnostics | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
     ```
 
 * Lekérdezése, mely ügynök fut a műveletek:
@@ -448,7 +448,7 @@ Az egyes naplóbeli keresés által visszaadott adatok jelentését kapcsolatos 
 * Lekérdezni a, ha a hosszú ideig futó műveletek lettek végrehajtva:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , toint(duration_s)/1000 | render timechart
+    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , duration_s | render timechart
     ```
 
 További információ az új napló keresési nyelvének használatáról: a [naplók keresésének megismerése Azure monitor naplókban](../log-analytics/log-analytics-log-search-new.md). 
@@ -474,7 +474,7 @@ A következő táblázat ismerteti a tartalom minden eseménynapló-bejegyzés.
 | **clientIpAddress** | **clientIpAddress_s** | Az ügyfél IP-cím. |
 | **requestCharge** | **requestCharge_s** | A művelet által használt fenntartott egységek száma |
 | **collectionRid** | **collectionId_s** | A gyűjtemény egyedi azonosítója.|
-| **Időtartam** | **duration_s** | A művelet az órajelben időtartama. |
+| **Időtartam** | **duration_s** | A művelet időtartama ezredmásodpercben. |
 | **requestLength** | **requestLength_s** | A kérelem bájtban hossza. |
 | **responseLength** | **responseLength_s** | A válasz bájtban hossza.|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Ezt az értéket kötelező nem üres Ha [erőforrás-jogkivonatokat](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) hitelesítéshez használhatók. Az érték a felhasználó erőforrás-Azonosítójára mutat. |

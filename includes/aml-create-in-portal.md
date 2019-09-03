@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
-ms.openlocfilehash: dee813cbe1da6a6300f65b7005bf4a4b0226112a
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 11287ee5ca0df3e51bca20b39c35eb5ce33b88bd
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208600"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231064"
 ---
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a használt Azure-előfizetés hitelesítő adataival. 
 
@@ -28,9 +28,7 @@ ms.locfileid: "70208600"
 
 1. A **Machine learning szolgáltatás** munkaterülete ablaktáblán kattintson a **Létrehozás** elemre a kezdéshez.
 
-  
-
-1. Konfigurálja az új munkaterületet úgy, hogy megadja a munkaterület nevét, az előfizetést, az erőforráscsoportot és a helyet.
+1. Adja meg az alábbi adatokat az új munkaterület konfigurálásához:
 
    Mező|Leírás 
    ---|---

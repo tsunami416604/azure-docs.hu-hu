@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: 75bbcfa831ba7ef0b3dd0da629cfa94768d6ae9d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b96779a0a37602b6d114c9baf517df2637f734a2
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873333"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231121"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>A Scaleer és a Spark kombinálása a HDInsight-ben
 
@@ -193,7 +193,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>A légitársaság és az időjárási adatgyűjtés importálása a Spark DataFramesba
 
-Most a Sparker [READ. DF ()](http://spark.apache.org/docs/latest/api/R/read.df.html) függvény használatával importálja az időjárási és a légiközlekedési adatait a Spark DataFrames. Ez a függvény, mint sok más Spark-módszer, lustán fut, ami azt jelenti, hogy a rendszer a végrehajtásra várólistára helyezi, de nem hajtja végre, amíg szükséges.
+Most a Sparker [READ. DF ()](https://spark.apache.org/docs/latest/api/R/read.df.html) függvény használatával importálja az időjárási és a légiközlekedési adatait a Spark DataFrames. Ez a függvény, mint sok más Spark-módszer, lustán fut, ami azt jelenti, hogy a rendszer a végrehajtásra várólistára helyezi, de nem hajtja végre, amíg szükséges.
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -266,7 +266,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>Az időjárási és a légiforgalmi szolgáltatáshoz való csatlakozás
 
-Most a Sparker [JOIN ()](http://spark.apache.org/docs/latest/api/R/join.html) függvényt használjuk a légitársaság és az időjárási adat bal oldali külső csatlakoztatására a AirportID és a DateTime alapján. A külső illesztés lehetővé teszi, hogy az összes légitársasági adatrekordot megőrizze, még akkor is, ha nincs megfelelő időjárási adat. A csatlakozást követően eltávolítunk néhány redundáns oszlopot, és átnevezjük a megtartott oszlopokat az illesztés által bevezetett bejövő DataFrame-előtag eltávolításához.
+Most a Sparker [JOIN ()](https://spark.apache.org/docs/latest/api/R/join.html) függvényt használjuk a légitársaság és az időjárási adat bal oldali külső csatlakoztatására a AirportID és a DateTime alapján. A külső illesztés lehetővé teszi, hogy az összes légitársasági adatrekordot megőrizze, még akkor is, ha nincs megfelelő időjárási adat. A csatlakozást követően eltávolítunk néhány redundáns oszlopot, és átnevezjük a megtartott oszlopokat az illesztés által bevezetett bejövő DataFrame-előtag eltávolításához.
 
 ```
 logmsg('Join airline data with weather at Origin Airport')

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e2faa47a58283623747ae569de22e1c57df1a51f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827321"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231142"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -72,6 +72,9 @@ Hálózati adapter írási sebessége (MB/s) | net. továbbítandó. Average  |A
 
 ## <a name="collected-metadata-vmware"></a>Összegyűjtött metaadatok – VMware
 
+> [!NOTE]
+> A Azure Migrate készülék által felderített metaadatok segítségével az alkalmazások az Azure-ba való áttelepítéskor, az Azure megfelelőségi elemzés, az alkalmazás-függőségi elemzés és a költséghatékonyság megtervezése révén könnyebben méretezhető alkalmazásait. A Microsoft nem használja ezeket az adattípusokat a licencek megfelelőségi ellenőrzéséhez képest.
+
 Itt találja a készülék által gyűjtött és az Azure-ba küldött VMware VM-metaadatok teljes listáját.
 
 **Adatok** | **Számláló**
@@ -122,6 +125,9 @@ Gazdagép adatai virtuális gépenként | ((HostSystem)container).VM
 
 
 ## <a name="collected-performance-data-hyper-v"></a>Összegyűjtött teljesítményadatok – Hyper-V
+
+> [!NOTE]
+> A Azure Migrate készülék által felderített metaadatok segítségével az alkalmazások az Azure-ba való áttelepítéskor, az Azure megfelelőségi elemzés, az alkalmazás-függőségi elemzés és a költséghatékonyság megtervezése révén könnyebben méretezhető alkalmazásait. A Microsoft nem használja ezeket az adattípusokat a licencek megfelelőségi ellenőrzéséhez képest.
 
 Itt látható a VMware virtuális gép teljesítményadatokat, amelyet a készülék az Azure-ba gyűjt és küld.
 

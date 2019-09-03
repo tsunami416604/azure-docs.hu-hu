@@ -4,8 +4,10 @@
   items:
     - name: Tudnivalók a Security Centerről
       href: security-center-intro.md
-    - name: A Security Center által támogatott platformok és funkciók
+    - name: Támogatott platformok
       href: security-center-os-coverage.md
+    - name: Támogatott funkciók
+      href: security-center-services.md
 - name: Gyors útmutatók
   expanded: true
   items:

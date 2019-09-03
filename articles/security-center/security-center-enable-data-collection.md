@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/06/2019
+ms.date: 06/10/2019
 ms.author: v-mohabe
-ms.openlocfilehash: e87ea5f6d8a92f18fc1b289ebf9ffd1cc0326812
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 12739bf230eb7a2d5afa4edd57dbc2761907ec4e
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845899"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231347"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépekről (VM), a virtuálisgép-méretezési csoportokról, a IaaS-tárolók és a nem Azure-beli (beleértve a helyszíni) számítógépekről a biztonsági rések és fenyegetések figyeléséhez. Az adatok gyűjtése a Log Analytics ügynök használatával történik, amely beolvassa a különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat a gépről, és az adatokat a munkaterületre másolja az elemzéshez. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Log Analytics ügynök az összeomlási memóriaképek fájljait is másolja a munkaterületre.
@@ -41,7 +41,7 @@ Az adatok a gépekről való összegyűjtéséhez telepítenie kell a Log Analyt
 > Alapértelmezés szerint az Automatikus kiépítés le van. A Security Center telepítése alapértelmezés szerint az Automatikus kiépítés beállítása, állítsa **a**.
 >
 
-Ha az automatikus kiosztás be van kapcsolva, Security Center kiépíti a Log Analytics ügynököt az összes támogatott Azure-beli virtuális gépen és a létrehozott újakon. Az Automatikus kiépítés használata erősen ajánlott, de a manuális ügynöktelepítések is rendelkezésre áll. [Ismerje meg, hogyan telepítheti a log Analytics Agent bővítményt](#manualagent).
+Ha az automatikus kiosztás be van kapcsolva, Security Center kiépíti a Log Analytics ügynököt az összes támogatott Azure-beli virtuális gépen és a létrehozott újakon. Az Automatikus kiépítés használata erősen ajánlott, de a manuális ügynöktelepítések is rendelkezésre áll. [Ismerje meg, hogyan telepítheti a log Analytics Agent bővítményt](#manual-agent).
 
 
 
@@ -59,7 +59,7 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 
 >[!NOTE]
 > - Hogyan építheti ki egy már meglévő telepítési utasításokért lásd: [automatikus üzembe helyezés abban az esetben egy már létező ügynöktelepítés](#preexisting).
-> - A manuális üzembe helyezéssel kapcsolatos utasításokért lásd: [a log Analytics Agent bővítmény telepítése manuálisan](#manualagent).
+> - A manuális üzembe helyezéssel kapcsolatos utasításokért lásd: [a log Analytics Agent bővítmény telepítése manuálisan](#manual-agent).
 > - Útmutatás az Automatikus kiépítés kikapcsolása: [kapcsolja ki az Automatikus kiépítés](#offprovisioning).
 > - Hogyan felvétele a Security Center PowerShell-lel, tekintse meg útmutatást [automatizálása a PowerShell-lel az Azure Security Center bevezetése](security-center-powershell-onboarding.md).
 >
@@ -240,7 +240,7 @@ Ha kikapcsolhatja az automatikus üzembe helyezése után nem található:
 >  Az automatikus kiépítés letiltása nem távolítja el a Log Analytics ügynököt azon Azure-beli virtuális gépekről, amelyeken az ügynök ki lett építve. Az OMS bővítmény eltávolításával kapcsolatban további információkért lásd: [Hogyan távolíthatom el a Security Center által telepített OMS-kiterjesztéseket](security-center-faq.md#remove-oms).
 >
     
-## Ügynök manuális kiépítése <a name="manualagent"></a>
+## Ügynök manuális kiépítése <a name="manual-agent"></a>
  
 Több módon is telepítheti a Log Analytics-ügynököt manuálisan. Ha manuálisan telepíti, győződjön meg róla, az Automatikus kiépítés letiltása.
 

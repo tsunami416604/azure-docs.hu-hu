@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/29/2019
 ms.author: juliako
-ms.openlocfilehash: b627a78edef1c0b0fe6b3ed011678145aea397ae
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a7d178972a8c8b413e3c6336c403348f1eb78abb
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845884"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232593"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -27,6 +27,43 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
+
+## <a name="august-2019"></a>Augusztus 2019
+ 
+### <a name="video-indexer-deployed-in-uk-south"></a>Video Indexer üzembe helyezése Egyesült Királyság déli régiója
+
+Most már létrehozhat egy Video Indexer fizetős fiókot az Egyesült Királyság déli régiójában.
+
+### <a name="new-editorial-shot-type-insights-available"></a>Új szerkesztői shot típusú bepillantások érhetők el
+
+A videó felvételekhez hozzáadott új címkék a "shot Types" lehetőséget biztosítják a tartalom-létrehozási munkafolyamatban használt általános szerkesztési kifejezésekkel való azonosításhoz, például: Extreme Vértes, Vértes, széles, közepes, két lövés, kültéri, beltéri, bal oldali és jobb oldali (elérhető a JSON).
+
+### <a name="new-people-and-locations-entities-extraction-available"></a>Új személyek és helyszínek entitások kinyerése elérhető
+
+A Video Indexer azonosított helyszíneket és személyeket azonosít természetes nyelvi feldolgozással (NLP) a videó OCR és átirat használatával. A Video Indexer gépi tanulási algoritmust használ arra, hogy felismerje, ha egy videóban egy adott helyet (például az Eiffel-tornyot) vagy személyeket (például John Doe) kell meghívni.
+
+### <a name="keyframes-extraction-in-native-resolution"></a>Kulcsképek kibontása natív felbontásban
+
+A Video Indexer által kinyert kulcsképek a videó eredeti felbontásában érhetők el.
+ 
+### <a name="ga-for-training-custom-face-models-from-images"></a>Az egyéni arc modellek betanítása képekből
+
+Az előnézet módból a GA-ba (az API-n és a portálon keresztül elérhető) képekből származó arcok betanítása.
+
+> [!NOTE]
+> Az "előzetes verzióról a GA-re" való áttérésre nincs hatással az árképzés.
+
+### <a name="hide-gallery-toggle-option"></a>A katalógus váltógomb elrejtése lehetőség
+
+A felhasználó dönthet úgy, hogy elrejti a katalógus fület a portálról (a minták lap elrejtéséhez hasonlóan).
+ 
+### <a name="maximum-url-size-increased"></a>Az URL-cím maximális mérete megnövelve
+
+A videó indexeléséhez a 4096-es URL-lekérdezési karakterlánc (2048 helyett) támogatása.
+ 
+### <a name="support-for-multi-lingual-projects"></a>Többnyelvű projektek támogatása
+
+A projektek mostantól különböző nyelveken indexelt videók alapján is létrehozhatók (csak API-val).
 
 ## <a name="july-2019"></a>Július 2019
 

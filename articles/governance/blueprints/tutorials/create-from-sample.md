@@ -1,193 +1,193 @@
 ---
-title: Tervrajz mintából környezet létrehozása
-description: A tervezet-minta használatával hozza létre a tervezet-definíció egy két erőforráscsoport telepítése és konfigurálása a szerepkör-hozzárendelés minden.
+title: Környezet létrehozása tervrajz mintából
+description: A tervrajz minta segítségével létrehozhat egy olyan tervrajz-definíciót, amely két erőforráscsoportot állít be, és minden egyes szerepkör-hozzárendelést konfigurál.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/05/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b0d5d96ff897ac1710206eb49bca785e8809cb7d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 137764cba91ab94adef4719a0d34b6fb9e6efe29
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798320"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232614"
 ---
-# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Oktatóanyag: Tervrajz mintából környezet létrehozása
+# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Oktatóanyag: Környezet létrehozása tervrajz mintából
 
-Minta tervezetek példákkal mi teheti meg Azure-tervek használatával. Minden egyes egy adott szándékot vagy céllal rendelkező mintát, de nem a teljes környezet létrehozása önmagukban. Minden egyes szolgál kiindulópontként Ismerkedés az Azure tervek használata a csomagban foglalt összetevők, minták és paraméterek különböző kombinációit.
+A minta tervezetek példákat tartalmaznak arra, hogy mit lehet tenni az Azure-tervrajzokkal. Az egyes minták egy adott szándékkal vagy céllal vannak ellátva, de önmagukban nem hozhatnak létre teljes környezetet. A szolgáltatás kiindulópontként szolgál az Azure-tervezetek használatának megkezdéséhez, amely a tartalmazott összetevők, minták és paraméterek különféle kombinációit tartalmazza.
 
-A következő oktatóanyagban a **RBAC erőforráscsoportok** tervezet minta bemutatására a tervek szolgáltatás különböző aspektusait. A következő lépéseket tartalmazza:
+Az alábbi oktatóanyag az **RBAC** Blueprint minta használatával mutatja be a tervrajzok szolgáltatás különböző szempontjait. A következő lépéseket tárgyaljuk:
 
 > [!div class="checklist"]
-> - A minta egy új tervezetdefiníció létrehozása
-> - Jelölje meg a mintát, másolatának **közzétett**
-> - A másolatát a tervezet hozzárendelése egy meglévő előfizetés
-> - A hozzárendelés üzembe helyezett erőforrások vizsgálata
-> - A Zárolás eltávolítása a tervrajz hozzárendelésének megszüntetése
+> - Új terv meghatározásának létrehozása a mintából
+> - A minta másolatának megjelölése **közzétettként**
+> - A terv másolatának kiosztása meglévő előfizetéshez
+> - A hozzárendelés üzembe helyezett erőforrásainak vizsgálata
+> - A terv hozzárendelésének megszüntetése a zárolások eltávolításához
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez egy Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+Az oktatóanyag elvégzéséhez szükség van egy Azure-előfizetésre. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-blueprint-definition-from-sample"></a>Tervezetdefiníció létrehozása mintából
+## <a name="create-blueprint-definition-from-sample"></a>Terv definíciójának létrehozása mintából
 
-Először a tervezet mintát valósítja meg. Egy új tervezet importálása hoz létre a környezetben, a minta alapján.
+Először is implementálja a terv mintáját. Az importálás egy új tervet hoz létre a környezetben a minta alapján.
 
-1. Válassza ki **minden szolgáltatás** a bal oldali panelen. Keresse meg és válassza **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válasszaki a tervrajzokat.
 
-1. Az a **bevezetés** oldal bal oldalán válassza a **létrehozás** gomb alatt _tervrajz létrehozása_.
+1. A bal oldali **első lépések** lapon kattintson a **Létrehozás** gombra a _terv létrehozása_területen.
 
-1. Keresse meg a **RBAC erőforráscsoportok** tervezet minta alapján _egyéb minták_ válassza **a minta használata**.
+1. Keresse meg az **RBAC** tervvel ellátott erőforráscsoportokat _más minták_ alatt, és válassza a **minta használata**lehetőséget.
 
-1. Adja meg a _alapjai_ a tervezet-minta:
+1. Adja meg a tervezet mintájának alapjait:
 
-   - **Tervrajz neve**: Adja meg a tervezet-minta a példányának nevét. Ebben az oktatóanyagban a nevét használjuk _két-rgs-az-szerepkör-hozzárendelések_.
-   - **Definíció helye**: Használja a három pontra, és válassza ki a felügyeleti csoport vagy az előfizetés a minta másolatának mentése.
+   - **Terv neve**: Adjon meg egy nevet a terv mintájának másolatához. Ebben az oktatóanyagban a _Two-RGS-to-role-hozzárendelések_nevet fogjuk használni.
+   - **Definíció helye**: Használja a három pontot, és válassza ki a felügyeleti csoportot vagy előfizetést, és mentse a minta másolatát a következőre:.
 
-1. Válassza ki a _összetevők_ fülre az oldal tetején lévő vagy **tovább: Összetevők** az oldal alján.
+1. Válassza ki az összetevők fület a lap tetején, vagy **a következőt:**  Az oldal alján található összetevők.
 
-1. Tekintse át a tervezet minta alkotó összetevők listáját. Ez a minta meghatároz két erőforráscsoport, a megjelenítendő nevének _ProdRG_ és _PreProdRG_. Tervezet-hozzárendelés során végső nevét és helyét az egyes erőforráscsoportokban vannak beállítva. A _ProdRG_ erőforráscsoport hozzá van rendelve a _közreműködői_ szerepkör és a _PreProdRG_ erőforráscsoport hozzá van rendelve a _tulajdonosa_ és  _Olvasói_ szerepköröket. A szerepkör a definícióban hozzárendelve a statikus, de a felhasználó, alkalmazás vagy csoport, amely hozzá van rendelve a szerepkör beállítása során a tervezet-hozzárendelést.
+1. Tekintse át a terv mintáját alkotó összetevők listáját. Ez a minta két erőforráscsoportot határoz meg, amelyek a _ProdRG_ és a _PreProdRG_megjelenítendő nevei. Az egyes erőforráscsoportok végső neve és helye a terv hozzárendelése során van beállítva. A _ProdRG_ erőforráscsoport hozzá van rendelve a _közreműködő_ szerepkörhöz, és a _PreProdRG_ erőforráscsoport hozzá van rendelve a _tulajdonosi_ és az _olvasói_ szerepkörökhöz. A definícióban hozzárendelt szerepkörök statikusak, de a szerepkörhöz hozzárendelt felhasználó, alkalmazás vagy csoport a terv hozzárendelése során be van állítva.
 
-1. Válassza ki **Piszkozat mentése** amikor befejezte a tervezet-minta áttekintése.
+1. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
-Ebben a lépésben a minta tervezetdefiníció másolatot hoz létre a kiválasztott felügyeleti csoportba vagy előfizetésbe. A mentett tervrajz-definíció bármilyen újonnan tervezet módon kezelhetők. A minta lehet, hogy menti a felügyeleti csoport vagy az előfizetéshez, ahányszor szükséges. Azonban minden példány egy egyedi nevet kell adni.
+Ezzel a lépéssel a kiválasztott felügyeleti csoportban vagy előfizetésben létrehozhatja a minta tervezet definíciójának másolatát. A mentett terv definíciója úgy van kezelve, mint a semmiből létrehozott tervrajzok. A mintát igény szerint bármikor mentheti a felügyeleti csoportba vagy előfizetésbe. Az egyes példányokat azonban egyedi névvel kell megadni.
 
-Miután a **mentése sikerült a tervezetdefiníció** portál értesítés jelenik meg, helyezze át a következő lépéssel.
+Ha megjelenik a **terv mentése sikeres** portál értesítése, lépjen a következő lépésre.
 
-## <a name="publish-the-sample-copy"></a>A minta másolási közzététele
+## <a name="publish-the-sample-copy"></a>A minta másolatának közzététele
 
-A tervezet minta másolatának létrehozása megtörtént a környezetben. A létrehozást **Draft** módban kell lennie, és **közzétett** előtt az hozzárendelve, és telepítve. A tervezet-minta a másolat a környezetben, és igényeinek megfelelően testre szabható. Ebben az oktatóanyagban azt nem végezze el a módosításokat.
+A terv mintájának másolata már létre lett hozva a környezetében. A rendszer **Piszkozat** módban jön létre, és **közzé** kell tenni ahhoz, hogy hozzá lehessen rendelni és telepíteni lehessen. A terv mintájának másolata testreszabható a környezetében és igényei szerint. Ebben az oktatóanyagban nem teszünk semmilyen változást.
 
-1. Válassza ki **minden szolgáltatás** a bal oldali panelen. Keresse meg és válassza **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válasszaki a tervrajzokat.
 
-1. Válassza ki a **definíciók tervezetet** a bal oldalon. A szűrők segítségével keresse meg a _két-rgs-az-szerepkör-hozzárendelések_ tervezetet definícióját, és válassza ki azt.
+1. Válassza a bal oldali **terv** -definíciók lapot. A szűrők segítségével keresse meg a _két RGS-a-role-hozzárendelései_ terv definícióját, majd jelölje ki.
 
-1. Válassza ki **közzététel tervezet** az oldal tetején. Adja meg az új panelen a jobb oldalon, **verzió** , _1.0_ a tervezet-minta a másolatát. Ez a tulajdonság hasznos Ha később egy módosítása. Adja meg **megjegyzések módosítása** például az "első verziója közzétett RBAC tervezet mintát tartalmazó erőforráscsoportokat." Válassza ki **közzététel** az oldal alján.
+1. Válassza a **terv közzététele** lehetőséget az oldal tetején. A jobb oldali új ablaktáblán adja meg a _1,0_ -as **verziót** a tervezet mintájának másolatában. Ez a tulajdonság akkor hasznos, ha később módosítja a módosítást. Adjon meg olyan **módosítási megjegyzéseket** , mint az "első verzió, amelyet az ERŐFORRÁSCSOPORTOK a RBAC Blueprint minta alapján közzétettek." Ezután válassza a **Közzététel** elemet az oldal alján.
 
-Ez a lépés lehetővé teszi a tervezet hozzárendelése egy előfizetést. Közzététele után továbbra is módosíthatók. További módosításokat kell közzétenni egy új **verzió** értéket nyomon követéséhez az azonos tervezetdefiníció különböző verziói közötti különbségeket.
+Ez a lépés lehetővé teszi a terv hozzárendelését egy előfizetéshez. A közzététel után a módosítások továbbra is elvégezhető. A további módosításokhoz új **verzió** értékkel kell közzétenni, hogy nyomon kövessék a különbségeket az azonos terv definíciójának különböző verziói között.
 
-Egyszer a **közzététel sikerült definíció tervezetet** portál értesítés jelenik meg, helyezze át a következő lépéssel.
+Ha megjelenik a **közzétételi terv definíciója sikeres** portál értesítése, lépjen a következő lépésre.
 
-## <a name="assign-the-sample-copy"></a>A minta másolási hozzárendelése
+## <a name="assign-the-sample-copy"></a>A minta másolatának kiosztása
 
-Miután a tervezet minta másolata sikeresen megtörtént **közzétett**, előfizetésre történő mentése felügyeleti csoporton belül is hozzárendelhető. Ez a lépés nem, melyekben a paraméterek vannak-e adva az, hogy az egyes telepítések a példány a tervezet minta egyedi.
+Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ezzel a lépéssel megadhatja, hogy az egyes központi telepítések egyediek legyenek-e.
 
-1. Válassza ki **minden szolgáltatás** a bal oldali panelen. Keresse meg és válassza **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válasszaki a tervrajzokat.
 
-1. Válassza ki a **definíciók tervezetet** a bal oldalon. A szűrők segítségével keresse meg a _két-rgs-az-szerepkör-hozzárendelések_ tervezetet definícióját, és válassza ki azt.
+1. Válassza a bal oldali **terv** -definíciók lapot. A szűrők segítségével keresse meg a _két RGS-a-role-hozzárendelései_ terv definícióját, majd jelölje ki.
 
-1. Válassza ki **tervezet hozzárendelése** a tervrajz-definíció lap tetején.
+1. Válassza a terv kiosztása elemet a terv definíciója oldal tetején.
 
-1. Adja meg a paraméter értékét a tervezet-hozzárendelést:
+1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
    - Alapvető beállítások
 
-     - **Előfizetések**: Válasszon ki egy vagy több az előfizetéseket, amelyek a felügyeleti csoportban, a tervezet minta másolatának mentése. Ha egynél több előfizetéssel, hozzárendelést a megadott paraméterek használatával hozható létre.
-     - **Hozzárendelés neve**: Az Ön a tervrajz-definíció neve alapján előre megadott név.
-     - **Hely**: Válassza ki a régiót, a felügyelt identitás kell létrehozni. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../active-directory/managed-identities-azure-resources/overview.md).
-       A jelen oktatóanyag esetében válassza ki a _USA keleti RÉGIÓJA 2_.
-     - **Tervrajz-definíció verziója**: Válassza ki a **közzétett** verzió _1.0_ a minta tervezetdefiníció példány.
+     - **Előfizetések**: Válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, a terv mintájának másolatát a következőre mentette:. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
+     - **Hozzárendelés neve**: A név előre ki van töltve a terv definíciójának neve alapján.
+     - **Hely**: Válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../active-directory/managed-identities-azure-resources/overview.md).
+       Ebben az oktatóanyagban válassza az _USA 2. keleti_régióját.
+     - **Terv definíciójának verziója**: Válassza ki a közzétett _1,0_ -es verziót a minta-tervezet definíciójának másolatáról.
 
    - Hozzárendelés zárolása
 
-     Válassza ki a _csak olvasható_ tervezet zárolási üzemmódban. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
+     Válassza a _csak olvasható_ terv zárolási módot. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
 
    - Felügyelt identitás
 
-     Hagyja meg az alapértelmezett _rendszerhez rendelt_ lehetőséget. További információkért lásd: [felügyelt identitások](../../../active-directory/managed-identities-azure-resources/overview.md).
+     Hagyja meg az alapértelmezett _rendszer_ -hozzárendelési beállítást. További információ: felügyelt [identitások](../../../active-directory/managed-identities-azure-resources/overview.md).
 
    - Összetevő paraméterei
 
-     A lehívandó összetevő definiálva van ebben a szakaszban definiált paraméterek érvényesek. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) mivel azok van megadva a a tervezet-hozzárendelés során. Minden egyes összetevő, állítsa a paraméter értéke határozzák meg a a **érték** oszlop. A `{Your ID}`, válassza ki az Azure felhasználói fiókot.
+     Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. Az egyes összetevőknél állítsa be a paraméter értékét az érték oszlopban definiált **értékre** . Válassza ki az Azure -belifelhasználóifiókját.`{Your ID}`
 
      |Elemnév|Összetevő típusa|Paraméternév|Value|Leírás|
      |-|-|-|-|-|
-     |ProdRG resource group|Erőforráscsoport|Name (Név)|ProductionRG|Meghatározza az első erőforráscsoport nevét.|
-     |ProdRG resource group|Erőforráscsoport|Location egység|USA 2. nyugati régiója|Beállítja az első erőforráscsoport helyét.|
-     |Közreműködő|Szerepkör-hozzárendelés|Felhasználó vagy csoport|{ID}|Határozza meg, mely felhasználó vagy csoport megadását a _közreműködői_ szerepkör-hozzárendelés az első erőforráscsoporton belül.|
-     |PreProdRG resource group|Erőforráscsoport|Name (Név)|PreProductionRG|Meghatározza a második erőforráscsoport nevét.|
-     |PreProdRG resource group|Erőforráscsoport|Location egység|USA nyugati régiója|A második erőforráscsoport helyét is beállítja.|
-     |Tulajdonos|Szerepkör-hozzárendelés|Felhasználó vagy csoport|{ID}|Határozza meg, mely felhasználó vagy csoport megadását a _tulajdonosa_ szerepkör-hozzárendelés a második erőforráscsoporton belül.|
-     |Olvasók|Szerepkör-hozzárendelés|Felhasználó vagy csoport|{ID}|Határozza meg, mely felhasználó vagy csoport megadását a _olvasók_ szerepkör-hozzárendelés a második erőforráscsoporton belül.|
+     |ProdRG erőforráscsoport|Resource group|Name (Név)|ProductionRG|Meghatározza az első erőforráscsoport nevét.|
+     |ProdRG erőforráscsoport|Resource group|Location|USA nyugati régiója, 2.|Megadja az első erőforráscsoport helyét.|
+     |Közreműködő|Szerepkör-hozzárendelés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg a _közreműködői_ szerepkör-hozzárendelést az első erőforráscsoporthoz.|
+     |PreProdRG erőforráscsoport|Resource group|Name (Név)|PreProductionRG|Meghatározza a második erőforráscsoport nevét.|
+     |PreProdRG erőforráscsoport|Resource group|Location|USA nyugati régiója|Beállítja a második erőforráscsoport helyét.|
+     |Tulajdonos|Szerepkör-hozzárendelés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg a tulajdonosi szerepkör-hozzárendelést a második erőforráscsoporthoz.|
+     |Olvasók|Szerepkör-hozzárendelés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg az _olvasók_ szerepkör-hozzárendelést a második erőforráscsoporthoz.|
 
-1. Után minden paraméter van megadva, válassza a **hozzárendelése** az oldal alján.
+1. Az összes paraméter megadása után válassza a lap alján található **hozzárendelés** elemet.
 
-Ebben a lépésben üzembe helyezi a definiált erőforrásokat, és konfigurálja a kijelölt **zárolási hozzárendelés**. Tervrajz zárolások alkalmazásához akár 30 percet is igénybe vehet.
+Ez a lépés telepíti a definiált erőforrásokat, és konfigurálja akiválasztott zárolási hozzárendelést. A tervrajzi zárolások akár 30 percet is igénybe vehetnek.
 
-Miután a **sikeres tervezetdefiníció hozzárendelése** portál értesítés jelenik meg, helyezze át a következő lépéssel.
+Ha megjelenik a **terv kiosztásának meghatározása sikeres** portál értesítés, lépjen a következő lépésre.
 
 ## <a name="inspect-resources-deployed-by-the-assignment"></a>A hozzárendelés által üzembe helyezett erőforrások vizsgálata
 
-A tervezet-hozzárendelést hoz létre, és nyomon követi a tervezet-definícióban meghatározott összetevők. Láthatjuk, hogy az erőforrások a tervezet-hozzárendelés oldaláról, és közvetlenül megnézzük az erőforrások állapotát.
+A terv-hozzárendelés létrehozza és nyomon követi a terv definíciójában meghatározott összetevőket. Az erőforrások állapotát a terv hozzárendelése oldalon tekintheti meg, az erőforrásokat pedig közvetlenül is megtekintheti.
 
-1. Válassza ki **minden szolgáltatás** a bal oldali panelen. Keresse meg és válassza **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válasszaki a tervrajzokat.
 
-1. Válassza ki a **hozzárendelt tervezetek** a bal oldalon. A szűrők segítségével keresse meg a _Assignment-two-rgs-with-role-assignments_ tervezetet hozzárendelést, és válassza ki azt.
+1. Válassza ki a **kijelölt tervrajzok** lapot a bal oldalon. A szűrők segítségével keresse meg a _hozzárendelés-két-RGS-a-role-hozzárendeléseinek terv-_ hozzárendelést, majd jelölje ki.
 
-   Ezen az oldalon láthatjuk a hozzárendelés sikerült, és a tervezet zárolási állapot együtt létrehozott erőforrások listájában. A hozzárendelés frissül, ha a **hozzárendelési művelet** legördülő minden definíció verzió az üzembe helyezéssel kapcsolatos részleteket jeleníti meg. Egyes listázott erőforrások létrehozásának, ha rájuk kattint, és megnyílik az adott erőforrás-tulajdonság lapon.
+   Ezen a lapon láthatjuk a hozzárendelés sikerességét, valamint a létrehozott erőforrások listáját a terv zárolási állapotával együtt. Ha a hozzárendelés frissül, a **hozzárendelési művelet** legördülő lista az egyes definíciós verziók telepítésének részleteit jeleníti meg. Minden létrehozott felsorolt erőforrás rákattinthat, és megnyithatja az erőforrások tulajdonságlapját.
 
 1. Válassza ki a **ProductionRG** erőforráscsoportot.
 
-   Láthatjuk, hogy az erőforráscsoport neve nem **ProductionRG** , és nem az összetevő megjelenített neve _ProdRG_. Ez a neve megegyezik a tervezet-hozzárendelés során beállított értéket.
+   Azt láthatjuk, hogy az erőforráscsoport neve **ProductionRG** , és nem az összetevő megjelenítendő neve _ProdRG_. Ez a név megegyezik a terv-hozzárendelés során beállított értékkel.
 
-1. Válassza ki a **hozzáférés-vezérlés (IAM)** a bal oldalon, majd a **szerepkör-hozzárendelések** fülre.
+1. Válassza a bal oldalon a **hozzáférés-vezérlés (iam)** lapot, majd a **szerepkör** -hozzárendelések lapot.
 
-   Itt láthatjuk, hogy a fiók megkapta a _közreműködői_ szerepkör hatóköre az _ehhez az erőforráshoz_. A _Assignment-two-rgs-with-role-assignments_ tervezet-hozzárendelést rendelkezik a _tulajdonosa_ szerepkör, mert az erőforráscsoport létrehozásához használt. Ezeket az engedélyeket is használhatók az konfigurált tervezet zárolásokkal-erőforrások kezeléséhez.
+   Itt láthatjuk, hogy a fiókja a _közreműködői_ szerepkört adta meg az _erőforrás_hatókörén. A _hozzárendelés-két-RGS-a-role-hozzárendelések terv-_ hozzárendelés a tulajdonosi szerepkört használja az erőforráscsoport létrehozásához. Ezek az engedélyek a konfigurált Blueprint-zárolásokkal rendelkező erőforrások kezelésére is használhatók.
 
-1. Válassza ki az Azure portal webhely-navigációs, **Assignment-two-rgs-with-role-assignments** , lépjen vissza a egy oldallal, majd válassza ki a **PreProductionRG** erőforráscsoportot.
+1. Az Azure Portal-navigációs panelen válassza a **hozzárendelés-két-RGS-a-role-hozzárendelések** lehetőséget egy lap visszalépéséhez, majd válassza ki a **PreProductionRG** erőforráscsoportot.
 
-1. Válassza ki a **hozzáférés-vezérlés (IAM)** a bal oldalon, majd a **szerepkör-hozzárendelések** fülre.
+1. Válassza a bal oldalon a **hozzáférés-vezérlés (iam)** lapot, majd a **szerepkör** -hozzárendelések lapot.
 
-   Itt láthatjuk, hogy a fiók megkapta-e mind a _tulajdonosa_ és _olvasó_ szerepkörök, mindkét szolgáltatás hatókörének _ehhez az erőforráshoz_. A tervezet-hozzárendelést is rendelkezik a _tulajdonosa_ mint az első erőforráscsoportot.
+   Itt láthatjuk, hogy a fiókja a tulajdonosi és a _olvasói_ szerepkört is biztosította az _erőforrás_hatókörén. A terv hozzárendelése a tulajdonosi szerepkörrel is rendelkezik, mint az első erőforráscsoport.
 
-1. Válassza ki a **hozzárendelések megtagadása** fülre.
+1. Jelölje be a megtagadási hozzárendelések lapot.
 
-   A tervezet-hozzárendelést, létrehozott egy [hozzárendelés megtagadása](../../../role-based-access-control/deny-assignments.md) kényszerítése a telepített erőforráscsoportot, amelybe a a _csak olvasható_ tervezet zárolási mód. A megtagadási hozzárendelés megakadályozza, hogy valaki megfelelő jogosultságokkal a a _szerepkör-hozzárendelések_ bizonyos műveleteket, fülre. A megtagadási hozzárendelés befolyásolja _összes rendszerbiztonsági tag_.
+   A terv-hozzárendelés megtagadási [hozzárendelést](../../../role-based-access-control/deny-assignments.md) hozott létre a központilag telepített erőforráscsoporthoz, hogy kikényszerítse az _írásvédett_ terv zárolási módját. A megtagadási hozzárendelés megakadályozza, hogy valaki megfelelő jogokkal rendelkezik a _szerepkör_ -hozzárendelések lapon bizonyos műveletek elvégzéséhez. A Megtagadás hozzárendelés az _összes rendszerbiztonsági tagra_hatással van.
 
-1. Válassza ki a Megtagadás hozzárendelést, majd válassza ki a **megtagadva engedélyek** a bal oldalon.
+1. Jelölje ki a megtagadási hozzárendelést, majd a bal oldalon válassza a megtagadott **engedélyek** lapot.
 
-   A megtagadási hozzárendelés megakadályozza, hogy az összes műveletet a **\*** és **művelet** konfiguráció, de lehetővé teszi, hogy olvasási hozzáférés kizárásával  **\* /olvasási**keresztül **NotActions**.
+   A megtagadási hozzárendelés megakadályozza a és a **\*** **művelet** konfigurációjának összes műveletét, de a  **\*/Read** kizárásávallehetővé teszi az olvasási hozzáférést.
 
-1. Válassza ki az Azure portal webhely-navigációs, **PreProductionRG - hozzáférés-vezérlés (IAM)**. Válassza ki a **áttekintése** a bal oldalon, majd a **erőforráscsoport törlése** gombra. Adja meg a nevét _PreProductionRG_ a delete és select **törlése** a panel alján.
+1. A Azure Portal navigációs listából válassza a **PreProductionRG-hozzáférés-vezérlés (iam)** lehetőséget. Ezután válassza ki az **Áttekintés** lapot a bal oldalon, majd az **erőforráscsoport törlése** gombot. Írja be a _PreProductionRG_ nevet a törlés megerősítéséhez, majd kattintson a **Törlés** gombra a panel alján.
 
-   A portál értesítései **PreProductionRG sikertelen erőforráscsoport törlése** jelenik meg. A hiba-állapotokat, amely a fiók rendelkezik engedéllyel az erőforráscsoport törlése közben megtagadja a hozzáférést a tervezet-hozzárendelést. Ne feledje, hogy kiválasztott a _csak olvasható_ tervezet zárolási mód tervezet-hozzárendelés során. A tervezet zárolása megakadályozza, hogy, engedéllyel rendelkező fiók még _tulajdonosa_, az erőforrás törlését. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
+   A portál értesítésének **törlési erőforráscsoport-PreProductionRG nem sikerült** . A hiba azt jelzi, hogy a fióknak nincs engedélye az erőforráscsoport törlésére, a hozzáférés megtagadva a terv-hozzárendeléssel. Ne feledje, hogy a terv hozzárendelése során a _csak olvasható_ terv zárolási módot jelöltük ki. A terv zárolása megakadályozza, hogy egy olyan fiók, amely nem rendelkezik engedéllyel, akár tulajdonossal is, törölheti az erőforrást. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
 
-Ezek a lépések bemutatják, hogy az erőforrások létrejöttek meghatározottak szerint, és a tervezet zárolása ebben az esetben a nemkívánatos, amelytől a törlés, még akkor is engedéllyel rendelkező fiók.
+Ezek a lépések azt mutatják, hogy az erőforrások definiálva lettek, és a terv zárolása megakadályozta a nemkívánatos törlést, még az engedéllyel rendelkező fiókból is.
 
-## <a name="unassign-the-blueprint"></a>A tervrajz hozzárendelésének megszüntetése
+## <a name="unassign-the-blueprint"></a>A terv hozzárendelésének megszüntetése
 
-Az utolsó lépés, hogy a tervezet és az erőforrások, központilag telepített a hozzárendelés eltávolítása.
-A hozzárendelés eltávolítása nem távolítja el a telepített összetevők.
+Az utolsó lépés a terv és az üzembe helyezett erőforrások hozzárendelésének eltávolítása.
+A hozzárendelés eltávolítása nem távolítja el az üzembe helyezett összetevőket.
 
-1. Válassza ki **minden szolgáltatás** a bal oldali panelen. Keresse meg és válassza **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válasszaki a tervrajzokat.
 
-1. Válassza ki a **hozzárendelt tervezetek** a bal oldalon. A szűrők segítségével keresse meg a _Assignment-two-rgs-with-role-assignments_ tervezetet hozzárendelést, és válassza ki azt.
+1. Válassza ki a **kijelölt tervrajzok** lapot a bal oldalon. A szűrők segítségével keresse meg a _hozzárendelés-két-RGS-a-role-hozzárendeléseinek terv-_ hozzárendelést, majd jelölje ki.
 
-1. Válassza ki a **kijelölés megszüntetése tervezet** gombra a lap tetején. Olvassa el a figyelmeztetést a megerősítő párbeszédpanelen, majd válassza a **OK**.
+1. Válassza ki a **tervezet hozzárendelésének megszüntetése** gombot az oldal tetején. Olvassa el a figyelmeztetést a megerősítő párbeszédpanelen, majd kattintson az **OK gombra**.
 
-   Az eltávolított tervezet-hozzárendelést a tervezet zárolása is el lesznek távolítva. A létrehozott erőforrásokat ismét engedélyekkel rendelkező fiók lehet törölni.
+   Ha a terv-hozzárendelés el lett távolítva, a terv zárolása is törlődik. A létrehozott erőforrásokat újra törölheti egy olyan fiókkal, amely engedélyekkel rendelkezik.
 
-1. Válassza ki **erőforráscsoportok** az Azure menüjében, majd válassza ki **ProductionRG**.
+1. Az Azure menüben válassza az **erőforráscsoportok** lehetőséget, majd válassza a **ProductionRG**lehetőséget.
 
-1. Válassza ki a **hozzáférés-vezérlés (IAM)** a bal oldalon, majd a **szerepkör-hozzárendelések** fülre.
+1. Válassza a bal oldalon a **hozzáférés-vezérlés (iam)** lapot, majd a **szerepkör** -hozzárendelések lapot.
 
-Az egyes erőforráscsoportokra vonatkozó biztonsági továbbra is rendelkezik a telepített szerepkör-hozzárendeléseket, de már nem rendelkezik a tervezet-hozzárendelést _tulajdonosa_ hozzáférést.
+Az egyes erőforráscsoportok biztonsága továbbra is a telepített szerepkör-hozzárendelésekkel rendelkezik, de a terv hozzárendelése már nem rendelkezik tulajdonosi hozzáféréssel.
 
-Miután a **eltávolítása tervezet-hozzárendelés sikerült** portál értesítés jelenik meg, helyezze át a következő lépéssel.
+Ha megjelenik a **terv-hozzárendelés eltávolítása sikeres** portál értesítés, lépjen a következő lépésre.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ez az oktatóanyag befejezésekor törölje az alábbi forrásanyagokat:
+Ha elkészült ezzel az Oktatóanyaggal, törölje a következő erőforrásokat:
 
 - Erőforráscsoport _ProductionRG_
 - Erőforráscsoport _PreProductionRG_
-- Definíció tervezetet _két-rgs-az-szerepkör-hozzárendelések_
+- Terv definíciója: _Two-RGS-a-role-hozzárendelései_
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md)
+- A [terv életciklusának](../concepts/lifecycle.md) megismerése
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása
 - A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek
 - A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása

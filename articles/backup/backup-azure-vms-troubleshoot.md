@@ -8,18 +8,40 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 2f645d290175db9692649d825323313fc207a014
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 69d75f9050560eb4a9e394241316c0474fffe7cc
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210277"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232457"
 ---
-# <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure-beli virtuális gépek biztonsági mentésének hibaelhárítása
+# <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
+
 A Azure Backup használata során észlelt hibák elhárítása az alábbi információkkal végezhető el:
 
 ## <a name="backup"></a>Tartalék
+
 Ez a szakasz az Azure-beli virtuális gép biztonsági mentési műveletének hibáját ismerteti.
+
+### <a name="basic-troubleshooting"></a>Alapszintű hibaelhárítás
+
+* Győződjön meg arról, hogy a VM-ügynök (WA-ügynök) a [legújabb verzió](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent-on-the-virtual-machine).
+* Győződjön meg arról, hogy a Windows vagy Linux rendszerű virtuális gép operációsrendszer-verziója támogatott, tekintse meg a [IaaS virtuális gép biztonsági mentésének támogatási mátrixát](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas).
+* Ellenőrizze, hogy egy másik biztonsági mentési szolgáltatás nem fut-e.
+   * Annak érdekében, hogy a pillanatképek kiterjesztésével kapcsolatos hibák ne legyenek elérhetők, [távolítsa el a bővítményeket a kényszerített](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load)újratöltéshez
+* Győződjön meg arról, hogy a virtuális gép rendelkezik internetkapcsolattal.
+   * Győződjön meg arról, hogy egy másik biztonsági mentési szolgáltatás nem fut.
+* A verzióban ellenőrizze ,hogyfut-eaWindowsAzureGuestAgentügynök`Services.msc`szolgáltatás. Ha a **Windows Azure Guest Agent ügynök** szolgáltatás hiányzik, telepítse az [Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)tárolóban.
+* Az **Eseménynapló** tartalmazhat olyan biztonsági mentési hibákat, amelyek más biztonsági mentési termékekből származnak, például a Windows Server biztonsági másolatból, és nem az Azure Backup miatt. A következő lépések végrehajtásával megállapíthatja, hogy a probléma Azure Backup-e:
+   * Ha hiba történt egy bejegyzés **biztonsági mentésével** kapcsolatban az eseményforrás vagy az üzenet esetében, ellenőrizze, hogy az Azure IaaS virtuális gépek biztonsági másolatai sikeresek voltak-e, és hogy egy visszaállítási pont lett-e létrehozva a kívánt pillanatkép-típussal.
+    * Ha Azure Backup működik, akkor a probléma valószínűleg egy másik biztonsági mentési megoldás. 
+    * Íme egy példa egy eseménynapló-hibára, amelyben az Azure Backup megfelelően működik, de a "Windows Server biztonsági másolat" sikertelen volt:<br>
+    ![Windows Server biztonsági másolat sikertelen](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
+    * Ha Azure Backup sikertelen, akkor keresse meg a megfelelő hibakódot a jelen cikkben található általános virtuális gép biztonsági mentési hibái című szakaszban. 
+
+## <a name="common-issues"></a>Gyakori problémák
+
+Az alábbiakban az Azure-beli virtuális gépek biztonsági mentési hibáival kapcsolatos gyakori problémákat ismertetjük.
 
 ## <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime – a tárból érkező biztonsági másolatok adatainak másolása időtúllépéssel leállt
 
@@ -36,7 +58,7 @@ Hibaüzenet: A virtuális gép állapota nem teszi lehetővé a biztonsági ment
 A biztonsági mentési művelet meghiúsult, mert a virtuális gép hibás állapotban van. A sikeres biztonsági mentéshez a virtuális gép állapotának futnia, leállítottnak vagy leállítottnak kell lennie (lefoglalva).
 
 * Ha a virtuális gép átmeneti állapotban van a **Futtatás** és a **Leállítás**között, várjon, amíg az állapot megváltozhat. Ezután aktiválja a biztonsági mentési feladatot.
-*  Ha a virtuális gép Linux rendszerű virtuális gép, és a fokozott biztonságú Linux kernel-modult használja, zárja ki az Azure Linux-ügynök elérési útját a biztonsági szabályzatból, és győződjön meg arról, hogy a biztonsági **/var/lib/waagent** telepítve van.
+* Ha a virtuális gép Linux rendszerű virtuális gép, és a fokozott biztonságú Linux kernel-modult használja, zárja ki az Azure Linux-ügynök elérési útját a biztonsági szabályzatból, és győződjön meg arról, hogy a biztonsági **/var/lib/waagent** telepítve van.
 
 ## <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed – nem sikerült befagyasztani a virtuális gép egy vagy több csatlakoztatási pontját, hogy egy fájlrendszerrel konzisztens pillanatképet készítsen
 

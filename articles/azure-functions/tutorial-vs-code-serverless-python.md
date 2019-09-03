@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 4f5c10536992f51ac61815507a3869e521520299
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170714"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233122"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>A Python üzembe helyezése a Visual Studio Code-Azure Functions
 
@@ -56,7 +56,7 @@ Kövesse az operációs rendszerének útmutatását a [Azure functions Core Too
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Miután telepítette a functions bővítményt, jelentkezzen be az Azure-fiókjába **az Azure-ba való navigálással: Functions** Explorer, válassza a **Bejelentkezés az Azure**-ba lehetőséget, majd kövesse az utasításokat.
+Miután telepítette a functions bővítményt, jelentkezzen be az Azure-fiókjába az **Azure-ba: Functions** Explorer, válassza a **Bejelentkezés az Azure**-ba lehetőséget, majd kövesse az utasításokat.
 
 ![Bejelentkezés az Azure-ba a Visual Studio Code használatával](media/tutorial-vs-code-serverless-python/azure-sign-in.png)
 
@@ -207,7 +207,7 @@ A kód fontos részei a következők:
 
 ## <a name="debug-locally"></a>Helyi hibakeresés
 
-1. A functions projekt létrehozásakor a Visual Studio Code bővítmény létrehoz egy indítási konfigurációt `.vscode/launch.json` is, amely egyetlen, a **Python-függvényekhez csatolt**nevű konfigurációt tartalmaz. Ez a konfiguráció azt jelenti, hogy az F5 billentyű lenyomásával vagy a projekt elindításához használhatja a hibakeresési Explorert:
+1. A functions projekt létrehozásakor a Visual Studio Code bővítmény létrehoz egy indítási konfigurációt `.vscode/launch.json` is, amely egyetlen, a **Python-függvényekhez csatolt**nevű konfigurációt tartalmaz. Ez a konfiguráció azt jelenti, hogy egyszerűen kiválaszthatja az **F5 billentyűt** , vagy a hibakeresési tallózó használatával elindíthatja a projektet:
 
     ![A functions indítási konfigurációját bemutató hibakereső Explorer](media/tutorial-vs-code-serverless-python/launch-configuration.png)
 
@@ -393,7 +393,7 @@ Az első üzembe helyezés után módosításokat végezhet a kódban, például
     }
     ```
 
-1. Indítsa el a hibakeresőt az F5 billentyű lenyomásával > , vagy a hibakeresés megkezdése parancs bejelölésével. A **kimeneti** ablakban most mindkét végpontot meg kell jeleníteni a projektben:
+1. Indítsa el a hibakeresőt az **F5 billentyű** lenyomásával > , vagy a hibakeresés**indításának** megkezdése menüparancs bejelölésével. A **kimeneti** ablakban most mindkét végpontot meg kell jeleníteni a projektben:
 
     ```output
     Http Functions:
@@ -479,15 +479,15 @@ Ebben a szakaszban egy tárolási kötést ad hozzá az oktatóanyag korábbi r�
             )
     ```
 
-1. A módosítások helyi teszteléséhez indítsa el újra a hibakeresőt a Visual Studio Code-ban az F5 billentyű lenyomásával, vagy a > hibakeresés megkezdése menüparancs kiválasztásával. A **kimeneti** ablaknak a projektben lévő végpontok megjelenítéséhez hasonlóan kell megjelennie.
+1. A módosítások helyi teszteléséhez indítsa el újra a hibakeresőt a Visual Studio Code-ban az **F5 billentyű** lenyomásával, vagy a > hibakeresés megkezdése menüparancs kiválasztásával. A **kimeneti** ablaknak a projektben lévő végpontok megjelenítéséhez hasonlóan kell megjelennie.
 
 1. Egy böngészőben nyissa meg az URL `http://localhost:7071/api/HttpExample?name=VS%20Code` -címet, és hozzon létre egy kérelmet a HttpExample-végpontnak, amely szintén üzenetet ír a várólistára.
 
 1. Annak ellenőrzéséhez, hogy az üzenet az "üzenetsor" várólistára lett-e írva (a kötésben leírtak szerint), a következő három módszer egyikét használhatja:
 
-    1. Jelentkezzen be [](https://portal.azure.com)a Azure Portalba, és navigáljon a functions projektet tartalmazó erőforráscsoporthoz. Az adott erőforráscsoporthoz a helyi területen navigáljon a projekthez tartozó Storage-fiókba, majd navigáljon a **várólisták**között. Ezen az oldalon navigáljon az "üzenetsor" kifejezésre, amely megjeleníti az összes naplózott üzenetet.
+    1. Jelentkezzen be [](https://portal.azure.com)a Azure Portalba, és lépjen a functions projektet tartalmazó erőforráscsoporthoz. Az adott erőforráscsoport alatt keresse meg és nyissa meg a projekthez tartozó Storage-fiókot, majd lépjen a **várólisták**elemre. Ezen az oldalon ugorjon az "üzenetsor" elemre, amely megjeleníti az összes naplózott üzenetet.
 
-    1. Navigáljon és vizsgálja meg a várólistát a Azure Storage Explorerával, amely integrálható a Visual Studióval, ahogy az az [Azure Storage-hoz való kapcsolódás a Visual Studio Code használatával](functions-add-output-binding-storage-queue-vs-code.md)című témakörben leírtak szerint, különösen a [kimeneti várólista vizsgálata](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue) szakaszban.
+    1. Nyissa meg és vizsgálja meg a várólistát a Azure Storage Explorer segítségével, amely integrálható a Visual Studióval, ahogy az az [Azure Storage-hoz való kapcsolódás a Visual Studio Code használatával](functions-add-output-binding-storage-queue-vs-code.md)című témakörben leírtak szerint, különösen a [kimeneti várólista vizsgálata](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue) szakaszban.
 
     1. Az Azure CLI-vel kérdezheti le a tárolási várólistát a [tárolási üzenetsor lekérdezése](functions-add-output-binding-storage-queue-python.md#query-the-storage-queue)című cikkben leírtak szerint.
     

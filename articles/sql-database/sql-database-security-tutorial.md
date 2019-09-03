@@ -8,14 +8,14 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9850285482db4f5981c183b51152ba1a3ac4975c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640123"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231184"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Oktatóanyag: Egyetlen vagy készletezett adatbázis védelme
 
@@ -58,7 +58,7 @@ Az oktatóanyagban szereplő összes lépéshez jelentkezzen be [Azure Portal](h
 
 ## <a name="create-firewall-rules"></a>Tűzfalszabályok létrehozása
 
-Az SQL-adatbázisokat tűzfalak védik az Azure-ban. Alapértelmezés szerint a rendszer visszautasítja a kiszolgáló és az adatbázis összes kapcsolatát, kivéve a többi Azure-szolgáltatástól érkező kapcsolatokat. További információ: [Azure SQL Database kiszolgálói szintű és adatbázis-szintű tűzfalszabályok](sql-database-firewall-configure.md).
+Az SQL-adatbázisokat tűzfalak védik az Azure-ban. Alapértelmezés szerint a rendszer visszautasítja a kiszolgáló és az adatbázis összes kapcsolatát. További információ: [Azure SQL Database kiszolgálói szintű és adatbázis-szintű tűzfalszabályok](sql-database-firewall-configure.md).
 
 Állítsa be az Azure-szolgáltatásokhoz **való hozzáférés engedélyezése** beállítást a legbiztonságosabb konfigurációhoz. Ezután hozzon létre egy [fenntartott IP-címet (klasszikus központi telepítést)](../virtual-network/virtual-networks-reserved-public-ip.md) ahhoz az erőforráshoz, amelyhez csatlakoznia kell, például egy Azure-beli virtuális gépet vagy egy felhőalapú szolgáltatást, és csak az IP-cím elérését engedélyezze a tűzfalon keresztül. Ha a [Resource Manager](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) -alapú üzemi modellt használja, az egyes erőforrásokhoz dedikált nyilvános IP-címet kell megadni.
 
@@ -87,9 +87,6 @@ Kiszolgáló szintű tűzfalszabály beállítása:
    1. Kattintson **az OK gombra** , és a **tűzfalbeállítások** oldal bezárásához.
 
 Mostantól a kiszolgáló bármelyik adatbázisához csatlakozhat a megadott IP-címmel vagy IP-címtartománnyal.
-
-> [!IMPORTANT]
-> Alapértelmezés szerint a SQL Database tűzfalon keresztüli hozzáférés engedélyezve van az összes Azure-szolgáltatáshoz, az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése**területen. Az összes Azure-szolgáltatáshoz való hozzáférés letiltásához válassza a **ki** lehetőséget.
 
 ### <a name="setup-database-firewall-rules"></a>Adatbázis-tűzfalszabályok beállítása
 

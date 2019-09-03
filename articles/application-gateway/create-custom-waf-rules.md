@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 2499842eeb2dd5a8fa845ed364a6aea7418acc8b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a4cc11447686f81017332a3528019a54a5167c52
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824409"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231982"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Web Application Firewall v2 egyéni szabályok létrehozása és használata
 
@@ -127,7 +127,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-2"></a>2\. példa
 
-Az IP-címekről érkező összes kérést le szeretné tiltani a 198.168.5.4/24 tartományon belül.
+Az IP-címekről érkező összes kérést le szeretné tiltani a 198.168.5.0/24 tartományon belül.
 
 Ebben a példában az IP-címtartomány összes forgalmát letiltja. A szabály neve *SajátSzabály1* , és a prioritás értéke 100.
 
@@ -140,7 +140,7 @@ $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $False
 
 $rule = New-AzApplicationGatewayFirewallCustomRule `
@@ -166,7 +166,7 @@ Itt látható a megfelelő JSON:
             "matchVariable": "RemoteAddr",
             "operator": "IPMatch",
             "matchValues": [
-              "192.168.5.4/24"
+              "192.168.5.0/24"
             ]
           }
         ]
@@ -175,11 +175,11 @@ Itt látható a megfelelő JSON:
   }
 ```
 
-Megfelelő CRS-szabály:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.4/24" "id:7001,deny"`
+Megfelelő CRS-szabály:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-3"></a>3\. példa
 
-Ebben a példában le szeretné tiltani a felhasználói ügynök *evilbot*, valamint a 192.168.5.4/24 tartomány forgalmát. Ennek elvégzéséhez két különálló egyeztetési feltételt hozhat létre, és mindkettőt ugyanabban a szabályban helyezheti el. Ez biztosítja, hogy a *evilbot* a felhasználói ügynök fejlécében **és** a 192.168.5.4/24 tartományból származó IP-címek is le legyenek tiltva.
+Ebben a példában le szeretné tiltani a felhasználói ügynök *evilbot*, valamint a 192.168.5.0/24 tartomány forgalmát. Ennek elvégzéséhez két különálló egyeztetési feltételt hozhat létre, és mindkettőt ugyanabban a szabályban helyezheti el. Ez biztosítja, hogy a *evilbot* a felhasználói ügynök fejlécében **és** a 192.168.5.0/24 tartományból származó IP-címek is le legyenek tiltva.
 
 Logic: p **és** q
 
@@ -194,7 +194,7 @@ $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $False
 
 $condition2 = New-AzApplicationGatewayFirewallCondition `
@@ -229,7 +229,7 @@ Itt látható a megfelelő JSON:
               "operator": "IPMatch", 
               "negateCondition": false, 
               "matchValues": [ 
-                "192.168.5.4/24" 
+                "192.168.5.0/24" 
               ] 
             }, 
             { 
@@ -251,7 +251,7 @@ Itt látható a megfelelő JSON:
 
 ## <a name="example-4"></a>4\. példa
 
-Ebben a példában le szeretné tiltani, hogy a kérelem vagy a *192.168.5.4/24*IP-címtartomány kívül esik-e, vagy a felhasználói ügynök karakterlánca nem a *Chrome* (azaz a felhasználó nem használja a Chrome böngészőt). Mivel ez a logika **vagy**a-t használja, a két feltétel külön szabályokban szerepel, ahogy az alábbi példában is látható. a *SajátSzabály1* és a *SajátSzabály2* egyaránt meg kell egyezniük a forgalom blokkolásával.
+Ebben a példában le szeretné tiltani, hogy a kérelem vagy a *192.168.5.0/24*IP-címtartomány kívül esik-e, vagy a felhasználói ügynök karakterlánca nem a *Chrome* (azaz a felhasználó nem használja a Chrome böngészőt). Mivel ez a logika **vagy**a-t használja, a két feltétel külön szabályokban szerepel, ahogy az alábbi példában is látható. a *SajátSzabály1* és a *SajátSzabály2* egyaránt meg kell egyezniük a forgalom blokkolásával.
 
 Logika: **nem** (p **és** q) = **nem** p **vagy nem** q.
 
@@ -266,7 +266,7 @@ $variable2 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $True
 
 $condition2 = New-AzApplicationGatewayFirewallCondition `
@@ -307,7 +307,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
             "operator": "IPMatch",
             "negateCondition": true,
             "matchValues": [
-              "192.168.5.4/24"
+              "192.168.5.0/24"
             ]
           }
         ]

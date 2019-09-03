@@ -1,10 +1,10 @@
 ---
-title: A Azure Security Center által támogatott szolgáltatások és platformok | Microsoft Docs
-description: Ez a dokumentum a Azure Security Center által támogatott szolgáltatások és platformok listáját tartalmazza.
+title: A Azure Security Center által támogatott platformok | Microsoft Docs
+description: Ez a dokumentum a Azure Security Center által támogatott platformok listáját tartalmazza.
 services: security-center
 documentationcenter: na
 author: monhaber
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
@@ -12,28 +12,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 6/03/2019
+ms.date: 8/29/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 1f5a144728614ee13bf4f08bb594f0546d446880
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c094ef5f3e7c7bfa96f95264e137fd8938296bb4
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640786"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232205"
 ---
-# <a name="platforms-and-features-supported-by-azure-security-center"></a>A Azure Security Center által támogatott platformok és szolgáltatások
+# <a name="supported-platforms"></a>Támogatott platformok 
 
-A biztonsági állapot figyelése és javaslatai elérhetők a klasszikus és a Resource Manager-alapú üzemi modellekkel és számítógépekkel létrehozott virtuális gépekhez (VM).
+## Virtuális gépek/kiszolgálók<a name="vm-server"></a>
+
+A Security Center különböző típusú hibrid környezetekben támogatja a virtuális gépeket/kiszolgálókat:
+
+* Csak Azure
+* Az Azure és a helyszíni
+* Azure és más felhők
+* Azure, egyéb felhők és helyszíni
+
+Azure-előfizetésben aktivált Azure-környezet esetén a Azure Security Center automatikusan felderíti az előfizetésen belül üzembe helyezett IaaS-erőforrásokat.
 
 > [!NOTE]
-> További információ az Azure [-erőforrások klasszikus és Resource Manager-alapú üzembe helyezési modelljeiről](../azure-classic-rm.md) .
->
+> A biztonsági funkciók teljes készletének fogadásához rendelkeznie kell a [log Analytics ügynökkel](../azure-monitor/platform/agents-overview.md#log-analytics-agent), amelyet a Azure Security Center használ, a telepítés és [megfelelően konfigurálva, hogy](security-center-enable-data-collection.md#manual-agent)az adatküldés Azure Security Center.
 
-## <a name="platforms-that-support-the-data-collection-agent"></a>Az adatgyűjtési ügynököt támogató platformok 
-Ez a szakasz felsorolja azokat a platformokat, amelyeken a Azure Security Center által használt Log Analytics-ügynök futtatható.
 
-### <a name="supported-platforms-for-windows-computers-and-vms"></a>Támogatott platformok Windows rendszerű számítógépekhez és virtuális gépekhez
-A következő Windows operációs rendszerek támogatottak:
+A következő részekben azok a támogatott kiszolgálói operációs rendszerek találhatók, amelyeken a Azure Security Center által használt [log Analytics-ügynök](../azure-monitor/platform/agents-overview.md#log-analytics-agent)futtatható.
+
+### Windows Server operációs rendszerek<a name="os-windows"></a>
 
 * A Windows Server 2019
 * Windows Server 2016
@@ -43,16 +50,14 @@ A következő Windows operációs rendszerek támogatottak:
 * Windows Server 2008
 
 > [!NOTE]
-> A Windows Defender ATP szolgáltatással való integráció csak a Windows Server 2012 R2 és a Windows Server 2016 rendszert támogatja.
+> A Microsoft Defender ATP szolgáltatással való integráció csak a Windows Server 2012 R2 és a Windows Server 2016 rendszert támogatja.
 
-### <a name="supported-platforms-for-linux-computers-and-vms"></a>Támogatott platformok Linux rendszerű számítógépekhez és virtuális gépekhez
+A fent felsorolt Windows operációs rendszerek támogatott szolgáltatásaival kapcsolatos további tudnivalókért lásd: [virtuális gépek/kiszolgálók által támogatott szolgáltatások](security-center-services.md##vm-server-features).
 
-A következő Linux operációs rendszerek támogatottak:
-
-> [!NOTE]
-> Mivel a támogatott Linux operációs rendszerek listája folyamatosan változik, ha szeretné, kattintson [ide](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) , hogy megtekintse a támogatott verziók legfrissebb listáját abban az esetben, ha a témakör legutóbbi közzététele óta módosult.
+### Linux operációs rendszerek<a name="os-linux"></a>
 
 64 bites
+
 * CentOS 6 és 7
 * Amazon Linux 2017,09
 * Oracle Linux 6 és 7
@@ -68,103 +73,57 @@ A következő Linux operációs rendszerek támogatottak:
 * Debian GNU/Linux 8 és 9
 * Ubuntu Linux 14,04 LTS és 16,04 LTS
 
-## <a name="vms-and-cloud-services"></a>Virtuális gépek és Cloud Services
+> [!NOTE]
+> Mivel a támogatott Linux operációs rendszerek listája folyamatosan változik, ha szeretné, kattintson [ide](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) , hogy megtekintse a támogatott verziók legfrissebb listáját abban az esetben, ha a témakör legutóbbi közzététele óta módosult.
+
+A Linux operációs rendszerek támogatott szolgáltatásaival kapcsolatos további tudnivalókért lásd: [virtuális gépek/kiszolgálók által támogatott szolgáltatások](security-center-services.md##vm-server-features).
+
+### Felügyelt virtuális gépek szolgáltatásai<a name="virtual-machine"></a>
+
+A virtuális gépeket egy ügyfél-előfizetésben is létrehozzák az Azure által felügyelt szolgáltatások, például az Azure Kubernetes (ak), a Azure Databricks és sok más szolgáltatás részeként is. Ezeket a virtuális gépeket Azure Security Center is felderíti, és a log Analytics-ügynököt a fent felsorolt támogatott [Windows/Linux operációs rendszerek](#os-windows)szerint lehet telepíteni és konfigurálni.
+
+### Cloud Services<a name="cloud-services"></a>
+
 A Cloud Service-ben futó virtuális gépek is támogatottak. Csak az üzemi tárolóhelyeken futó Cloud Services-alapú webes és feldolgozói szerepköröket figyeli a rendszer. További információ a Cloud Services szolgáltatásról: [Az Azure Cloud Services áttekintése](../cloud-services/cloud-services-choose-me.md).
 
+## Pásti-szolgáltatások<a name="paas-services"></a>
 
-## <a name="supported-iaas-features"></a>Támogatott IaaS funkciók
+A Azure Security Center az alábbi Azure-beli, a következő Azure-erőforrásokat támogatja:
 
-> [!div class="mx-tableFixed"]
-> 
+* SQL
+* PostGreSQL
+* MySQL
+* CosmosDB
+* Tárfiók
+* App Service-ben
+* Függvény
+* Felhőszolgáltatás
+* Virtuális hálózat
+* Subnet
+* Hálózati adapter
+* NSG
+* Batch-fiók
+* Service Fabric-fiók
+* Automation-fiók
+* Terheléselosztó
+* Keresés
+* Service Bus-névtér
+* Streamelemzés
+* Eseményközpont-névtér
+* Logikai alkalmazások
+* Redis
+* Data Lake Analytics
+* Data Lake Store
+* Kulcstartó
 
-|Kiszolgáló|Windows|||Linux|||Díjszabás|
-|----|----|----|----|----|----|----|----|
-|**Környezet**|**Azure**||**Non-Azure**|**Azure**||**Non-Azure**||
-||**Virtuális gép**|**Virtuálisgép-méretezési csoport**||**Virtuális gép**|**Virtuálisgép-méretezési csoport**|
-|VMBA-fenyegetések észlelésével kapcsolatos riasztások|✔|✔|✔|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
-|Hálózati veszélyforrások észlelésével kapcsolatos riasztások|✔|✔|X|✔|✔|X|Standard|
-|A Windows Defender ATP-integráció|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|X|X|X|Standard|
-|Hiányzó javítások|✔|✔|✔|✔|✔|✔|Free|
-|Biztonsági konfigurációk|✔|✔|✔|✔|✔|✔|Free|
-|Endpoint Protection-Értékelés|✔|✔|✔|X|X|X|Free|
-|Virtuális gépek igény szerinti elérése|✔|X|X|✔|X|X|Standard|
-|Adaptív alkalmazásvezérlés|✔|X|✔|✔|X|✔|Standard|
-|FIM|✔|✔|✔|✔|✔|✔|Standard|
-|Lemez titkosításának felmérése|✔|✔|X|✔|✔|X|Free|
-|Külső gyártótól származó telepítés|✔|X|X|✔|X|X|Free|
-|NSG-Értékelés|✔|✔|X|✔|✔|X|Free|
-|Fájlok nem észlelhető veszélyforrások észlelése|✔|✔|✔|X|X|X|Standard|
-|Hálózati térkép|✔|✔|X|✔|✔|X|Standard|
-|Adaptív hálózati vezérlők|✔|✔|X|✔|✔|X|Standard|
-|Szabályozási megfelelőségi irányítópult & jelentések|✔|✔|✔|✔|✔|✔|Standard|
-|Javaslatok és veszélyforrások észlelése a Docker által üzemeltetett IaaS-tárolókban|X|X|X|✔|✔|✔|Standard|
-
-### <a name="supported-endpoint-protection-solutions"></a>Támogatott Endpoint Protection-megoldások
-
-A következő táblázat a következőkhöz nyújt mátrixot:
- - Azt határozza meg, hogy használható-e a Azure Security Center az egyes megoldások telepítéséhez.
- - Melyik Endpoint Protection-megoldás Security Center képes felderíteni. Ha a rendszer felderíti az egyik Endpoint Protection-megoldást, Security Center nem javasolja, hogy telepítsen egyet.
-
-További információ az egyes védelemekhez kapcsolódó javaslatok létrehozásáról: [Endpoint Protection Értékelés és javaslatok](security-center-endpoint-protection.md).
-
-| Endpoint Protection| Platformok | Security Center telepítése | Security Center felderítése |
-|------|------|-----|-----|
-| Windows Defender (Microsoft-kártevőirtó)| Windows Server 2016| Nincs, az operációs rendszerbe van beépítve| Igen |
-| System Center Endpoint Protection (Microsoft-kártevőirtó) | Windows Server 2012 R2, 2012, 2008 R2 (lásd az alábbi megjegyzést) | Bővítmény útján | Igen |
-| Trend Micro – minden verzió * | Windows Server termékcsalád  | Nem | Igen |
-| Symantec v12.1.1100+| Windows Server termékcsalád  | Nem | Igen |
-| McAfee v10+ | Windows Server termékcsalád  | Nem | Igen |
-| McAfee v10+ | Linux Server termékcsalád  | Nem | igen **\*** |
-| Sophos v9 +| Linux Server termékcsalád  | Nem | igen **\***  |
-
- **\*** A lefedettségi állapot és a támogató adatmennyiség jelenleg csak a védett előfizetésekhez társított Log Analytics munkaterületen érhető el, és nem jelenik meg Azure Security Center portálon.
-
-> [!NOTE]
-> - A System Center Endpoint Protection (SCEP) Windows Server 2008 R2 rendszerű virtuális gépen való észleléséhez a PowerShell 3,0 (vagy egy felső verzió) után telepíteni kell a SCEP.
-> - A Trend Micro Protection észlelése a mély biztonsági ügynökök esetében támogatott.  A OfficeScan-ügynökök nem támogatottak.
-
-## <a name="supported-paas-features"></a>Támogatott Pásti-funkciók
-
-
-|Szolgáltatás|Javaslatok (ingyenes)|Fenyegetések észlelése (standard)|
-|----|----|----|
-|SQL|✔| ✔|
-|PostGreSQL*|✔| ✔|
-|MySQL*|✔| ✔|
-|Azure Blob Storage-fiókok|✔| ✔|
-|App Services|✔| ✔|
-|Cloud Services|✔| X|
-|Virtuális hálózatok|✔| NA|
-|Alhálózatok|✔| NA|
-|Hálózati adapterek (NIC-k)|✔| NA|
-|NSG|✔| NA|
-|Subscription|✔ **| ✔|
-|Batch|✔| NA|
-|Service Fabric|✔| NA|
-|Automation-fiók|✔| NA|
-|Terheléselosztó|✔| NA|
-|Keresés|✔| NA|
-|Service Bus|✔| NA|
-|Streamelemzés|✔| NA|
-|Eseményközpont|✔| NA|
-|Logikai alkalmazások|✔| NA|
-|Tárfiók|✔| NA|
-|Redis|✔| NA|
-|A "Lake Analytics"|✔| NA|
-|Kulcstartó|✔| NA|
-
-
-
-
-\*Ezek a funkciók jelenleg nyilvános előzetes verzióban támogatottak.
-
-\*\*A HRE-javaslatok csak a standard előfizetésekhez érhetők el
-
-
+Ha többet szeretne megtudni a Pásti-erőforrások fenti listája által támogatott funkciókról, tekintse meg a [Pásti szolgáltatások által támogatott funkciók](security-center-services.md#paas-services)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
+- Ismerje meg [, hogyan gyűjt Security Center adatokat és a log Analytics ügynököt](security-center-enable-data-collection.md).
+- Megtudhatja [, hogyan kezeli és védi a Security Center az információkat](security-center-data-security.md).
 - Megtudhatja, hogyan tervezheti meg [és értelmezheti a Azure Security Center](security-center-planning-and-operations-guide.md)elfogadásához szükséges tervezési szempontokat.
+- Ismerje meg [a különböző felhőalapú környezetekhez elérhető szolgáltatásokat](security-center-services.md).
 - További információ a [Azure Security Center-beli virtuális gépek & kiszolgálói veszélyforrások észleléséről](security-center-alerts-iaas.md).
 - [Gyakori kérdések a Azure Security Center használatáról](security-center-faq.md).
 - [Blogbejegyzések az Azure biztonsági és megfelelőségi](https://blogs.msdn.com/b/azuresecurity/)funkcióiról.

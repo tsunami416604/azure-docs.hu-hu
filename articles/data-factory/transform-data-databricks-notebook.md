@@ -6,18 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-author: djpmsft
-ms.author: daperlov
+author: nabhishek
+ms.author: abnarain
 manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: db437c7699c7fddc2b04175537446f53c4c4bc85
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 23166a4a0110629674db6ccc9d225118264b3c15
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140832"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233057"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Adat átalakítása Databricks-jegyzetfüzet futtatásával
 
@@ -111,6 +111,19 @@ A fenti Databricks-tevékenység definíciójában a következő típustár-típ
 ```
 
 További részletekért tekintse meg a [Databricks dokumentációját](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) .
+
+## <a name="passing-parameters-between-notebooks-and-data-factory"></a>Paraméterek átadása notebookok és Data Factory között
+
+Az adat-előállító paramétereit átadhatja jegyzetfüzeteknek a databricks tevékenység *baseParameters* tulajdonságának használatával. 
+
+Bizonyos esetekben szükség lehet arra, hogy bizonyos értékeket továbbítson a jegyzetfüzetből a adat-előállítónak, amely a adat-előállító vezérlési folyamatához (feltételes ellenőrzésekhez) használható, vagy az alsóbb rétegbeli tevékenységek által felhasználható (legfeljebb 2 MB méretű). 
+
+1. A jegyzetfüzetben hívhatja a [dbutils. notebook. Exit ("ReturnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) és a megfelelő "ReturnValue" értéket a rendszer a adat-előállítónak.
+
+2. A kimenetet az adatgyárban használhatja kifejezés `'@activity('databricks notebook activity name').output.runOutput'`(például) használatával. 
+
+   > [!IMPORTANT]
+   > Ha JSON-objektumot továbbít, az értékeket a tulajdonságok nevének hozzáfűzésével kérheti le. Például: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Könyvtár feltöltése a Databricks-ben
 

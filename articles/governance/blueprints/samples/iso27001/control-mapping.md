@@ -7,12 +7,12 @@ ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 7be9a208f82dd9a487c1794a7996f9bb11bb09d8
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: b37f5aca010c4b0bfd8d87c95d85e66f35b42f81
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515433"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232755"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>Az ISO 27001 tervrajzi minta vezérlésének leképezése
 
@@ -42,7 +42,7 @@ A szabályzatok megsértése miatti erőforrások megismerése segíthet az Azur
 - \[Előzetes\]verzió: Virtuálisgép-bővítmény üzembe helyezése a Linux rendszerű virtuális gép naplózásához, amely lehetővé teszi a távoli kapcsolatokat jelszavak nélküli fiókokból
 - \[Előzetes\]verzió: Linux rendszerű virtuális gépek fiókjainak naplózása jelszó nélkül
 - \[Előzetes\]verzió: Linux rendszerű virtuális gép naplózása, amely lehetővé teszi a távoli kapcsolatokat jelszavak nélküli fiókokkal
-- Klasszikus tárfiókok használatának naplózása
+- Klasszikus Storage-fiókok használatának naplózása
 - Klasszikus virtuális gépek használatának naplózása
 - Felügyelt lemezeket nem használó virtuális gépek naplózása
 
@@ -54,8 +54,8 @@ Ez a terv segít a privilegizált hozzáférési jogosultságok korlátozásába
 - \[Előzetes\]verzió: Olyan írási engedélyekkel rendelkező fiókok naplózása, akik nem engedélyezték az MFA-t az előfizetésen
 - \[Előzetes\]verzió: Az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező külső fiókok naplózása
 - \[Előzetes\]verzió: Előfizetésben írási engedélyekkel rendelkező külső fiókok naplózása
-- Azure Active Directory-rendszergazda-fiók kiépítésének naplózása az SQL-kiszolgálón
-- Az Azure Active Directory ügyfél-hitelesítésre való használatának naplózása a Service Fabricben
+- Az SQL Server Azure Active Directory-rendszergazdájának kiépítés naplózása
+- Azure Active Directory használatának naplózása az ügyfél-hitelesítéshez Service Fabric
 - Egyéni RBAC-szabályok használatának naplózása
 
 ## <a name="a924-management-of-secret-authentication-information-of-users"></a>A. a felhasználók titkos hitelesítési adatainak 9.2.4 kezelése
@@ -86,7 +86,7 @@ Az Azure [szerepköralapú hozzáférés-vezérlést](../../../../role-based-acc
 
 ## <a name="a942-secure-log-on-procedures"></a>A. 9.4.2 biztonságos bejelentkezés eljárásai
 
-Ez a terv három Azure Policy definíciót rendel hozzá a többtényezős hitelesítéssel nem rendelkező fiókok naplózásához. Az Azure multi-Factor Authentication további biztonságot nyújt a hitelesítés második formáját igényli, és erős hitelesítést biztosít. A többtényezős hitelesítés engedélyezése nélküli fiókok figyelésével azonosíthatja azokat a fiókokat, amelyek nagyobb valószínűséggel veszélyeztethetik.
+Ez a terv három Azure Policy definíciót rendel hozzá a többtényezős hitelesítéssel nem rendelkező fiókok naplózásához. Az Azure Multi-Factor Authentication további biztonságot nyújt a hitelesítés második formáját igényli, és erős hitelesítést biztosít. A többtényezős hitelesítés engedélyezése nélküli fiókok figyelésével azonosíthatja azokat a fiókokat, amelyek nagyobb valószínűséggel veszélyeztethetik.
 
 - \[Előzetes\]verzió: Olyan tulajdonosi engedélyekkel rendelkező fiókok naplózása, akik nem MFA engedélyezve vannak az előfizetéseken
 - \[Előzetes\]verzió: Olyan olvasási engedélyekkel rendelkező fiókok naplózása, akik nem engedélyezték az MFA-t az előfizetésen
@@ -119,10 +119,10 @@ Annak megismerése, hogy az Azure-erőforrások nem optimális titkosítási kon
 - \[Előzetes\]verzió: Virtuálisgép-bővítmény üzembe helyezése a Windows rendszerű virtuális gép naplózásához ne tárolja a jelszavakat visszafejthető titkosítással
 - \[Előzetes\]verzió: A Windows rendszerű virtuális gép naplózása ne tárolja a jelszavakat visszafejthető titkosítással
 - \[Előzetes\]verzió: Titkosítatlan virtuálisgép-lemezek figyelése Azure Security Center
-- Az Automation-fiókbeli változótitkosítás engedélyezésének naplózása
-- Azon művelet naplózása, amely a Redis Cache kizárólag biztonságos kapcsolaton keresztül történő elérését engedélyezi
-- Tárfiókokba történő biztonságos átvitel naplózása
-- A ClusterProtectionLevel tulajdonság EncryptAndSign értékre való beállításának naplózása a Service Fabricben
+- Az Automation-fiókok változóinak titkosításának naplózása
+- Csak biztonságos kapcsolatok engedélyezése a Redis Cache
+- Biztonságos átvitel naplózása a Storage-fiókokba
+- A ClusterProtectionLevel tulajdonság beállításának naplózása a Service Fabric EncryptAndSign
 - Transzparens adattitkosítás állapotának naplózása
 - Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
 
@@ -136,7 +136,7 @@ A diagnosztikai naplók betekintést nyújtanak az Azure-erőforrásokon belül 
 - \[Előzetes\]verzió: Log Analytics ügynök üzembe helyezésének naplózása – a virtuálisgép-rendszerkép (operációs rendszer) fel van listázva
 - \[Előzetes\]verzió: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
 - Diagnosztikai beállítás naplózása
-- SQL-kiszolgálói szintű naplózási beállítások naplózása
+- Az SQL Server szintű naplózási beállítások naplózása
 - A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
 
 ## <a name="a1243-administrator-and-operator-logs"></a>A. 12.4.3-rendszergazdai és-kezelői naplók
@@ -148,7 +148,7 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához, ha hét Azur
 - \[Előzetes\]verzió: Log Analytics ügynök üzembe helyezésének naplózása – a virtuálisgép-rendszerkép (operációs rendszer) fel van listázva
 - \[Előzetes\]verzió: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
 - Diagnosztikai beállítás naplózása
-- SQL-kiszolgálói szintű naplózási beállítások naplózása
+- Az SQL Server szintű naplózási beállítások naplózása
 - A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
 
 ## <a name="a1244-clock-synchronization"></a>A. 12.4.4 óra szinkronizálása
@@ -160,7 +160,7 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához, ha hét Azur
 - \[Előzetes\]verzió: Log Analytics ügynök üzembe helyezésének naplózása – a virtuálisgép-rendszerkép (operációs rendszer) fel van listázva
 - \[Előzetes\]verzió: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
 - Diagnosztikai beállítás naplózása
-- SQL-kiszolgálói szintű naplózási beállítások naplózása
+- Az SQL Server szintű naplózási beállítások naplózása
 - A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
 
 ## <a name="a1251-installation-of-software-on-operational-systems"></a>A. 12.5.1 szoftver telepítése az operatív rendszereken
@@ -177,7 +177,7 @@ Ebből a tervből megtudhatja, hogyan kezelheti az informatikai biztonsági rés
 - \[Előzetes\]verzió: Hiányzó rendszerfrissítések figyelése Azure Security Center
 - \[Előzetes\]verzió: Operációs rendszer biztonsági réseinak figyelése Azure Security Center
 - \[Előzetes\]verzió: Az SQL sebezhetőségi felmérés eredményeinek figyelése Azure Security Center
-- \[Előzetes\]verzió: Virtuális gépek biztonsági réseinek figyelése az Azure Security Centerben
+- \[Előzetes\]verzió: VIRTUÁLIS gépek biztonsági Réseinak figyelése Azure Security Center
 
 ## <a name="a1262-restrictions-on-software-installation"></a>A szoftver telepítésének. 12.6.2 korlátozása
 
@@ -192,14 +192,14 @@ Ez a terv segít a hálózatok kezelésében és szabályozásában egy olyan [A
 - \[Előzetes\]verzió: A megengedhető hálózati hozzáférés figyelése Azure Security Center
 - \[Előzetes\]verzió: Nem védett hálózati végpontok figyelése Azure Security Center
 - \[Előzetes\]verzió: Nem védett webalkalmazás figyelése Azure Security Center
-- Tárfiókokhoz való korlátlan hálózati hozzáférés naplózása
+- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 
 ## <a name="a1321-information-transfer-policies-and-procedures"></a>A. 13.2.1-adatátviteli szabályzatok és eljárások
 
 A terv segítségével gondoskodhat arról, hogy az Azure-szolgáltatásokkal való adatátvitel biztonságos legyen, ha két [Azure Policy](../../../policy/overview.md) definíciót rendel hozzá a nem biztonságos kapcsolatok naplózásához a Storage-fiókokhoz és a Redis cache.
 
-- Azon művelet naplózása, amely a Redis Cache kizárólag biztonságos kapcsolaton keresztül történő elérését engedélyezi
-- Tárfiókokba történő biztonságos átvitel naplózása
+- Csak biztonságos kapcsolatok engedélyezése a Redis Cache
+- Biztonságos átvitel naplózása a Storage-fiókokba
 
 ## <a name="next-steps"></a>További lépések
 
@@ -211,7 +211,7 @@ Most, hogy áttekintette az ISO 27001-es terv vezérlési leképezését, az al�
 
 További cikkek a tervekről és azok használatáról:
 
-- Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
+- A [terv életciklusának](../../concepts/lifecycle.md)megismerése.
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.
 - A [tervekkel kapcsolatos műveleti sorrend](../../concepts/sequencing-order.md) testreszabásának elsajátítása.
 - A [tervek erőforrás-zárolásának](../../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.
