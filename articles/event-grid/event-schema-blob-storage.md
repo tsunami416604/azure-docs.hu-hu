@@ -299,7 +299,7 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 | eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
 | id | string | Az esemény egyedi azonosítója. |
-| data | objektum | A BLOB storage-eseményadatok. |
+| data | object | A BLOB storage-eseményadatok. |
 | dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
@@ -312,9 +312,9 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | requestId | string | Szolgáltatás által létrehozott kérelemazonosító a storage API-művelet. Az Azure Storage-diagnosztikai naplók "fejléc-kérelem-azonosító" mező a naplók használatával, és adja vissza a megoldásig API-hívás az "x-ms-request-id" fejléc korrelációját használható. Lásd: [naplóformátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
 | eTag | string | Az érték, amely feltételesen műveletek végrehajtásához használhatja. |
 | contentType | string | A blob megadott tartalom típusa. |
-| contentLength | egész szám | A blob (bájt) mérete. |
+| contentLength | integer | A blob (bájt) mérete. |
 | blobType | string | A blob típusa. Érvényes értékek: "BlockBlob" vagy "PageBlob". |
-| contentOffset | szám | Az eltolás egy írási művelet, a pont, ahol az eseményt kiváltó alkalmazás befejeződött-e a fájl írása időpontokban (bájt). <br>Csak az a blob storage-fiókok hierarchikus névtérrel rendelkező indított esemény jelenik meg.|
+| contentOffset | number | Az eltolás egy írási művelet, a pont, ahol az eseményt kiváltó alkalmazás befejeződött-e a fájl írása időpontokban (bájt). <br>Csak az a blob storage-fiókok hierarchikus névtérrel rendelkező indított esemény jelenik meg.|
 | destinationUrl |string | A művelet befejezése után fog létező fájl URL-címe. Ha egy fájl át lett nevezve, például a `destinationUrl` tulajdonság tartalmazza az URL-címét az új fájl neve. <br>Csak az a blob storage-fiókok hierarchikus névtérrel rendelkező indított esemény jelenik meg.|
 | sourceUrl |string | Az URL-címe a fájl létezik-e a művelet előtt. Ha egy fájl át lett nevezve, például a `sourceUrl` URL-címét az eredeti fájl neve előtt az átnevezési műveletet tartalmaz. <br>Csak az a blob storage-fiókok hierarchikus névtérrel rendelkező indított esemény jelenik meg. |
 | url | string | A blob elérési útja. <br>Ha az ügyfél egy Blob REST API-t használ, akkor az URL-cím van ez a struktúra:  *\<-tárfióknév\>.blob.core.windows.net/\<Tárolónév\>/\<fájlnév \>* . <br>Ha az ügyfél használja a Data Lake Storage REST API-t, akkor az URL-cím van ez a struktúra:  *\<-tárfióknév\>.dfs.core.windows.net/\<system-Fájlnév\> / \<Fájlnév\>* .
