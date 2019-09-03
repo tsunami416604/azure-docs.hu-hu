@@ -316,7 +316,7 @@ ms.locfileid: "70142665"
 * **[Kijavítva]** ArgumentOutOfRangeException a modell kivetítésének kombinálása egy LINQ-lekérdezésben. [#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
-* **[Kijavítva]** Ha a Select nem az utolsó kifejezés, akkor a LINQ-szolgáltató nem feltételezi, hogy nincs kivetítés és nem megfelelő.  [#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
+* **[Kijavítva]** Ha a Select * nem az utolsó kifejezés, akkor a LINQ-szolgáltató nem feltételezi, hogy nincs kivetítés és nem megfelelő.  [#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
 * Megvalósított Upsert, hozzáadott UpsertXXXAsync metódusok
