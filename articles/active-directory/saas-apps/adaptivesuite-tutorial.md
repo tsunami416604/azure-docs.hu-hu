@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 599b0c8f45f91f9ecff210264a813e302f18059e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: ad059e6047dd883c0a5aab0d714d999840050584
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488965"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213616"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Oktatóanyag: Adaptív adatáttekintések integrálása a Azure Active Directory
 
@@ -81,7 +81,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az alapszintű **SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
+1. Az alapszintű **SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
@@ -102,7 +102,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Egy másik böngészőablakban jelentkezzen be az adaptív bepillantást a vállalati webhelyre rendszergazdaként.
 
-2. Nyissa meg az adminisztrációt.
+2. Nyissameg az adminisztrációt.
 
     ![Rendszergazda](./media/adaptivesuite-tutorial/ic805644.png "Rendszergazda")
 
@@ -176,7 +176,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az adaptív adatfelismer
 
 1. Jelentkezzen be az **adaptív bepillantást** a vállalati webhelyre rendszergazdaként.
 
-2. Nyissa meg az adminisztrációt.
+2. Nyissameg az adminisztrációt.
 
    ![Rendszergazda](./media/adaptivesuite-tutorial/IC805644.png "Rendszergazda")
 

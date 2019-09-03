@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d03e43ab2c26131c35eb78815d34cd959cc785
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 78daf578647e087fcc673d612ce24814a53ee331
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347476"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213577"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>Oktatóanyag: Beli jfrog-Artifactory integrálása Azure Active Directory
 
@@ -95,11 +95,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a [beli jfrog Artifactory](https://support.jfrog.com) -ügyfélszolgálati csapatához. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. A beli jfrog Artifactory alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
+1. A beli jfrog Artifactory alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-1. A fentieken kívül a beli jfrog Artifactory alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **csoport jogcímek (előzetes verzió)**  párbeszédpanel **felhasználói attribútumok &**  jogcímek szakaszában hajtsa végre a következő lépéseket:
+1. A fentieken kívül a beli jfrog Artifactory alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **csoport jogcímek (előzetes verzió)** párbeszédpanel **felhasználói attribútumok &** jogcímek szakaszában hajtsa végre a következő lépéseket:
 
     a. Kattintson a **kérelemben visszaadott csoportok**melletti **tollra** .
 

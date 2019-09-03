@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af98633e1dfdbe6392199ade282a918c6134a033
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c0b1471abd7e057af919ed274547daf94d356c2b
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347400"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213607"
 ---
 # <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>Oktatóanyag: A Felhőbeli biztonsági háló integrálása a Azure Active Directory
 
@@ -104,7 +104,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-5. Ha módosítani szeretné  az aláírási beállításokat a követelmény szerint, kattintson a **Szerkesztés** gombra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
+5. Ha módosítani szeretné az aláírási beállításokat a követelmény szerint, kattintson a **Szerkesztés** gombra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
 
     ![SAML-válasz](./media/ciscocloudlock-tutorial/saml.png)
 
@@ -153,7 +153,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ### <a name="create-the-cloud-security-fabric-test-user"></a>A Felhőbeli biztonsági háló tesztelési felhasználójának létrehozása
 
-Ebben a szakaszban létrehoz egy B. Simon nevű felhasználót a Cloud Security-hálóban. A Felhőbeli biztonsági háló [támogatási csapatával](mailto:support@cloudlock.com) a felhasználókat felveheti a Felhőbeli biztonsági háló platformba. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban létrehoz egy B. Simon nevű felhasználót a Cloud Security-hálóban. A Felhőbeli biztonsági háló [támogatási csapatával](mailto:support@cloudlock.com) a felhasználókat felveheti a Felhőbeli biztonsági háló platformba. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

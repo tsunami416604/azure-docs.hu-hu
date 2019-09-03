@@ -7,12 +7,12 @@ ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/02/2019
-ms.openlocfilehash: 7fa8562c466c81ebc05360bf06cdde1ee29bed9e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0c4bf3143bbf1ceb2f2f3c4a22477daa03690a0e
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598985"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213592"
 ---
 # <a name="what-are-azure-open-datasets-preview-and-how-can-you-use-them"></a>Mik az Azure Open-adatkészletek (előzetes verzió) és hogyan használhatók?
 
@@ -49,7 +49,7 @@ Egy Azure-fiókkal a nyílt adatkészleteket kód vagy az Azure-szolgáltatás f
 
 A nyílt adatkészletek Azure Notebooks és Azure Databricks jegyzetfüzeteket biztosítanak, amelyek segítségével az adatokat Azure Machine Learning szolgáltatáshoz és Azure Databrickshoz is csatlakozhat. Az adatkészletek egy Python SDK-n keresztül is elérhetők. 
 
-Azonban nincs szükség Azure-fiókra a nyitott adatkészletek eléréséhez. ezeket bármilyen Python-környezetből elérheti Spark nélkül vagy anélkül.
+Azonban nincs szükség Azure-fiókra a nyitott adatkészletek eléréséhez. ezeket bármilyen Python-környezetből elérheti Spark használatával vagy anélkül.
 
 ## <a name="request-or-contribute-datasets"></a>Adatkészletek kérése vagy hozzájárulása
 
