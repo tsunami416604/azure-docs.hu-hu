@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 02/22/2019
-ms.openlocfilehash: 6c0abc20775e604f9ea1c6ba882e5a9ff1d89e90
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ac4b9b4d32d05083ceabd41207243eb483648baa
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195294"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278591"
 ---
 # <a name="quickstart-set-up-a-windows-data-science-virtual-machine-on-azure"></a>Gyors útmutató: Windows Data Science Virtual Machine beállítása az Azure-ban
 
@@ -24,7 +24,7 @@ A Microsoft Windows Data Science Virtual Machine (DSVM) egy Windows Server 2016 
 
 A DSVM a következő eszközöket tartalmazza:
 
-* Python SDK a [Azure Machine learning szolgáltatáshoz](../service/index.yml).
+* Python SDK a [Azure Machine learning szolgáltatáshoz](../index.yml).
 * [Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/machine-learning-server/index) Developer Edition szoftverhez.
 * Anaconda Python elosztási.
 * Jupyter Notebook az R, Python és a PySpark kernelt.
@@ -126,7 +126,7 @@ A Visual Studio Community tartalmazza a virtuális gépen. A Visual Studio és a
 A Python használatával történő fejlesztéshez a 2,7-es és a 3,6-es anaconda Python-disztribúciók vannak telepítve. Ezek a disztribúciók körülbelül 300 a legnépszerűbb matematikai, a mérnöki csapathoz és az analitikai csomagok, valamint az alap Python rendelkezik. A Visual Studio Community 2017-es verzióban telepített PTVS-t használhatja. Vagy használhatja a anaconda, például az inaktív vagy a Spyder. Keresse meg és nyissa meg az alábbi csomagok egyikét (Windows billentyű + S).
 
 > [!NOTE]
-> Mutasson a Python Tools for Visual Studio, az Anaconda Python 2.7-es, szeretne létrehozni az egyéni környezet minden verzióhoz. Ha ezeket a környezeti útvonalakat a Visual Studio 2017 közösségében szeretné beállítani, ugorjon a **Tools** > **Python-eszközök** > **Python**-környezetek elemre. Válassza ki **+ egyéni**.
+> Mutasson a Python Tools for Visual Studio, az Anaconda Python 2.7-es, szeretne létrehozni az egyéni környezet minden verzióhoz. Ha ezeket a környezeti útvonalakat a Visual Studio 2017 közösségében szeretné beállítani, ugorjon a **Tools** > **Python-eszközök** > **Python-környezetek**elemre. Válassza ki **+ egyéni**.
 
 A C:\Anaconda.-ben telepített anaconda Python 3,6 A C:\Anaconda\envs\python2.-ben telepített anaconda Python 2,7 A részletes lépésekért tekintse meg a [PTVS dokumentációját](https://docs.microsoft.com/visualstudio/python/installing-python-interpreters).
 
@@ -147,7 +147,7 @@ A mintákra mutató hivatkozás a jegyzetfüzet kezdőlapján található, miut�
 
 ### <a name="visual-studio-community-2017"></a>A Visual Studio Community 2017.
 
-A DSVM tartalmazza a Visual Studio Community-t. Ez a Microsoft népszerű IDE-verziójának ingyenes verziója, amelyet kiértékelési célokra és kis csapatoknak is használhatnak. Tekintse meg a [Microsoft szoftverlicenc](https://www.visualstudio.com/support/legal/mt171547)-szerződését.
+A DSVM tartalmazza a Visual Studio Community-t. Ez a Microsoft népszerű IDE-verziójának ingyenes verziója, amelyet kiértékelési célokra és kis csapatoknak is használhatnak. Tekintse meg a [Microsoft szoftverlicenc-szerződését](https://www.visualstudio.com/support/legal/mt171547).
 
 Nyissa meg a Visual studiót az asztal ikon vagy a **Start** menü használatával. Keressen programokat (Windows billentyű + S), majd a **Visual studiót**. Innen olyan nyelveket hozhat létre, mint C#a, a Python, az R és a Node. js. Telepített modulok könnyítse meg az alábbi Azure-szolgáltatások működéséhez:
 
@@ -169,7 +169,7 @@ Machine Learning-szolgáltatások fejlesztéséhez és üzembe helyezéséhez in
 > [!NOTE]
 > Az SQL Server Developer edition csak fejlesztési és tesztelési célokat szolgál. Éles környezetben futtatásához licenc szükséges.
 
-A SQL Server Microsoft SQL Server Management Studio megnyitásával érheti el. A virtuális gép neve kiszolgálónévként vanfeltöltve. Windows-hitelesítést használ a jelentkezik be, a rendszergazda a Windows. Amikor az SQL Server Management Studióban, más felhasználók létrehozása, adatbázisok létrehozása, adatok importálása, és futtasson SQL-lekérdezéseket.
+A SQL Server Microsoft SQL Server Management Studio megnyitásával érheti el. A virtuális gép neve **kiszolgálónévként**van feltöltve. Windows-hitelesítést használ a jelentkezik be, a rendszergazda a Windows. Amikor az SQL Server Management Studióban, más felhasználók létrehozása, adatbázisok létrehozása, adatok importálása, és futtasson SQL-lekérdezéseket.
 
 Ha SQL Server Machine Learning Services használatával szeretné engedélyezni az adatbázison belüli elemzéseket, futtassa a következő parancsot egyszeri műveletként a SQL Server Management Studio-ben a kiszolgáló-rendszergazdaként való bejelentkezés után:
 
@@ -206,7 +206,7 @@ A Python SDK telepítve van a Microsoft Data Science virtuális gépen. A Python
 
 ## <a name="more-microsoft-development-tools"></a>További Microsoft fejlesztési eszközök
 
-A Microsoft webplatform [](https://www.microsoft.com/web/downloads/platform.aspx) -telepítővel más Microsoft fejlesztői eszközöket is megtalálhat és tölthet le. Az eszközre a Microsoft Data Science Virtual Machine asztalán is található parancsikon.  
+A Microsoft [webplatform-telepítővel](https://www.microsoft.com/web/downloads/platform.aspx) más Microsoft fejlesztői eszközöket is megtalálhat és tölthet le. Az eszközre a Microsoft Data Science Virtual Machine asztalán is található parancsikon.  
 
 ## <a name="important-directories-on-the-vm"></a>A virtuális gép fontos könyvtárak
 
@@ -228,8 +228,8 @@ A Microsoft webplatform [](https://www.microsoft.com/web/downloads/platform.aspx
 ## <a name="next-steps"></a>További lépések
 
 * A **Start** menü megnyitásával tárja fel a DSVM található eszközöket.
-* Ismerkedjen meg a Azure Machine Learning szolgáltatással, olvassa el a [Mi az Azure Machine learning Service?](../service/overview-what-is-azure-ml.md) című témakört, és próbálja ki a gyors [útmutatót és](../service/index.yml)az oktatóanyagokat.
+* Ismerkedjen meg a Azure Machine Learning szolgáltatással, olvassa el a [Mi az Azure Machine learning Service?](../service/overview-what-is-azure-ml.md) című témakört, és próbálja ki az [oktatóanyagokat](../index.yml).
 * A Fájlkezelőben keresse meg a C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts azokat a mintákat, amelyek az R RevoScaleR-könyvtárat használják, és nagyvállalati szintű adatelemzést támogatnak. 
-* Olvassa el a Data Science Virtual Machineon elvégezhető [tíz dolgot](https://aka.ms/dsvmtenthings).
+* Olvassa el a [Data Science Virtual Machineon](https://aka.ms/dsvmtenthings)elvégezhető tíz dolgot.
 * Megtudhatja, hogyan teljes körű elemzési megoldásokat rendszeresen használatával hozhat létre a [csoportos adatelemzési folyamat](../team-data-science-process/index.yml).
 * Látogasson el a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com) machine learning és a data analytics minták az Azure Machine Learning és a kapcsolódó adatokat használó szolgáltatások az Azure-ban. A katalógushoz a **Start** menüben és a virtuális gép asztalán is elérhető egy ikon.

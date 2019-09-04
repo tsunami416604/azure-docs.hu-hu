@@ -8,12 +8,13 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 8cb763766ebb151ad1c59b63a33a63493a4f0069
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.localizationpriority: high
+ms.openlocfilehash: 4267b8299e13f1705b218e65b268c45bd5a658e2
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164366"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240301"
 ---
 ::: zone target = "docs"
 
@@ -54,7 +55,7 @@ Minden esetben győződjön meg arról, hogy a megosztási és a mappanév, vala
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 1. Elvégezte az [oktatóanyagot: Azure Data Box Heavy](data-box-deploy-set-up.md)beállítása.
-2. Megkapta a Data Box Heavyt, és a portálon megjelenőmegrendelés állapota kézbesítve.
+2. Megkapta a Data Box Heavyt, és a portálon megjelenő megrendelés állapota **kézbesítve**.
 3. Rendelkezik egy gazdagéptel, amely a Data Box Heavyba másolni kívánt adattal rendelkezik. A gazdaszámítógépen:
     - egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
     - egy nagy sebességű hálózathoz kell csatlakoznia. A leggyorsabb másolási sebességhez a 2 40-GbE kapcsolatok (egy csomóponton eggyel) párhuzamosan használhatók. Ha nincs elérhető 40-GbE-kapcsolat, javasoljuk, hogy legalább 2 10-GbE kapcsolattal rendelkezzen (egy-egy csomóponton).
@@ -139,7 +140,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/data
 
 A `vers` paraméter a Linux-gazdagép által támogatott SMB-verzió. A fenti parancsban illessze be a megfelelő verziót.
 
-A Data Box Heavy által támogatott SMB-verziókkal kapcsolatban lásd: [támogatott fájlrendszerek Linux](data-box-heavy-system-requirements.md#supported-file-systems-for-linux-clients)-ügyfelekhez.
+A Data Box Heavy által támogatott SMB-verziókkal kapcsolatban lásd: [támogatott fájlrendszerek Linux-ügyfelekhez](data-box-heavy-system-requirements.md#supported-file-systems-for-linux-clients).
 
 ## <a name="copy-data-to-data-box-heavy"></a>Adatmásolás Data Box Heavyba
 

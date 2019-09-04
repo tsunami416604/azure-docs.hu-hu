@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: a8e19c89cec00bba05eb74e752268e1da43a1ac0
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 822bbd004035d9745535942c508cae6702e5b99b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035853"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278113"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
 
@@ -35,9 +35,12 @@ Felderítheti és előkészítheti az adatfeldolgozási és-tesztelési modellek
 + [Jupyter jegyzetfüzetek](https://jupyter.org) , amelyekben az [SDK](https://docs.microsoft.com/azure/machine-learning/service/#reference) -k segítségével saját kódokat írhat, például a [minta jegyzetfüzeteket](https://aka.ms/aml-notebooks)
 + [Visual Studio Code-bővítmény](how-to-vscode-tools.md)
 
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
+
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Mire használhatom az Azure Machine Learning szolgáltatást?
 
-A <a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine learning PYTHON SDK</a> -t nyílt forráskódú Python-csomagokkal használhatja, vagy a [Visual Interface (előzetes verzió)](ui-tutorial-automobile-price-train-score.md) használatával magas szintű gépi tanulást és mélyreható tanulási modelleket építhet ki és taníthat ki egy Azure Machine learning-szolgáltatásban Munkaterület.
+A <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine learning PYTHON SDK</a> -t nyílt forráskódú Python-csomagokkal használhatja, vagy a [Visual Interface (előzetes verzió)](ui-tutorial-automobile-price-train-score.md) használatával magas szintű gépi tanulást és mélyreható tanulási modelleket építhet ki és taníthat ki egy Azure Machine learning-szolgáltatásban Munkaterület.
 
 A nyílt forráskódú Python-csomagokban elérhető számos gépi tanulási összetevő közül választhat, például a <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-Learn</a>, a <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>, a <a href="https://pytorch.org" target="_blank">PyTorch</a>és a <a href="https://mxnet.io" target="_blank">MXNet</a>.
 
@@ -45,7 +48,7 @@ Akár kódot ír, akár a vizualizáció felületét használja, több futtatás
 
 ### <a name="code-first-experience"></a>Kód – első élmény
 
-Indítsa el a képzést a helyi gépen a <a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine learning PYTHON SDK</a> használatával, majd a felhőbe. Számos elérhető [számítási cél](how-to-set-up-training-targets.md), például a Azure Machine learning számítási és [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), valamint a [fejlett hiperparaméter-hangolási szolgáltatások](how-to-tune-hyperparameters.md)révén a felhő hatékonyságával gyorsabban hozhat létre jobb modelleket.
+Indítsa el a képzést a helyi gépen a <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine learning PYTHON SDK</a> használatával, majd a felhőbe. Számos elérhető [számítási cél](how-to-set-up-training-targets.md), például a Azure Machine learning számítási és [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), valamint a [fejlett hiperparaméter-hangolási szolgáltatások](how-to-tune-hyperparameters.md)révén a felhő hatékonyságával gyorsabban hozhat létre jobb modelleket.
 
 Az SDK segítségével [automatizálhatja a modell betanítását és finomhangolását](tutorial-auto-train-models.md) is.
 
@@ -63,7 +66,7 @@ A kód nélküli képzéshez próbálkozzon az alábbiakkal:
 
 Ha rendelkezik a megfelelő modellel, egyszerűen használhatja egy webszolgáltatásban, egy IoT-eszközön vagy Power BI. További információ: a [telepítésének és helyének](how-to-deploy-and-where.md)ismertetése.
 
-Ezután felügyelheti a telepített modelleket a Pythonhoz készült [Azure Machine learning SDK](https://aka.ms/aml-sdk) vagy a [Azure Portal](https://portal.azure.com/)használatával.
+Ezután felügyelheti a telepített modelleket a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) vagy a [Azure Portal](https://portal.azure.com/)használatával.
 
 Ezeket a modelleket felhasználhatja, és [valós időben](how-to-consume-web-service.md) vagy [aszinkron módon](how-to-run-batch-predictions.md) , nagy mennyiségű adattal lehet visszaadni az előrejelzéseket.
 
@@ -89,7 +92,7 @@ A Azure Machine Learning szolgáltatás az SDK **-k és a-** a vizualizációs f
 || Általánosan elérhető (GA) | Előzetes verzióban|
 |Illesztőfelületi modulok| Számos | Népszerű modulok kezdeti készlete|
 |Számítási célok betanítása| Tulajdonosi számítási cél, csak CPU-támogatás| A Azure Machine Learning számítást, GPU-t vagy CPU-t támogatja.<br/>(Egyéb, az SDK-ban támogatott számítások)|
-|Üzembe helyezési számítási célok| Tulajdonosi webszolgáltatás formátuma, nem testreszabható | Vállalati biztonsági beállítások & Azure Kubernetes szolgáltatás. <br/>([Egyéb](how-to-deploy-and-where.md) , az SDK-ban támogatott számítások) |
+|Üzembe helyezési számítási célok| Tulajdonosi webszolgáltatás formátuma, nem testreszabható | Vállalati biztonsági beállítások & Azure Kubernetes szolgáltatás. <br/>(Egyéb, az SDK-ban támogatott[számítások](how-to-deploy-and-where.md) ) |
 |Automatizált modellek betanítása és hiperparaméter finomhangolása | Nem | Még nem a Visual Interface-ben. <br/> (Támogatott az SDK-ban és a Azure Portal.) |
 
 Próbálja ki a vizualizációs felületet (előzetes verzió [) az Oktatóanyaggal: Az autó árának előrejelzése a vizualizációs](ui-tutorial-automobile-price-train-score.md)felületen.
@@ -101,11 +104,11 @@ Próbálja ki a vizualizációs felületet (előzetes verzió [) az Oktatóanyag
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-Azure-szolgáltatásokra elkölthető krediteket kap. A kreditek felhasználása után megtarthatja a fiókját, és tovább használhatja azt az [ingyenes Azure-szolgáltatásokkal](https://azure.microsoft.com/free/). A bankkártyáját semmilyen költség nem terheli, hacsak Ön kifejezetten nem módosítja beállításait ennek engedélyezéséhez. Vagy [aktiválhatja az MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)előfizetői előnyeit, amelyek havi kreditet biztosítanak a fizetős Azure-szolgáltatásokhoz.
+Azure-szolgáltatásokra elkölthető krediteket kap. A kreditek felhasználása után megtarthatja a fiókját, és tovább használhatja azt az [ingyenes Azure-szolgáltatásokkal](https://azure.microsoft.com/free/). A bankkártyáját semmilyen költség nem terheli, hacsak Ön kifejezetten nem módosítja beállításait ennek engedélyezéséhez. Vagy [aktiválhatja az MSDN előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), amelyek havi kreditet biztosítanak a fizetős Azure-szolgáltatásokhoz.
 
 ## <a name="next-steps"></a>További lépések
 
-- A kezdéshez [hozzon létre egy Machine learning szolgáltatás](how-to-manage-workspace.md) -munkaterületet.
+- A kezdéshez [hozzon létre egy Machine learning szolgáltatás-munkaterületet](how-to-manage-workspace.md) .
 
 - Kövesse a teljes hosszúságú oktatóanyagokat:
   + [Munkaterület létrehozása és az első ML-modell betanítása](tutorial-1st-experiment-sdk-setup.md)

@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 21e784320bc2b0785cdd28354947c0df6c35daf4
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.localizationpriority: high
+ms.openlocfilehash: 47b8fdbe48514665f40114c9820fdc5def38c778
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207988"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241367"
 ---
 ::: zone target="docs"
 
@@ -72,7 +73,7 @@ Előkészületek:
 Mielőtt elkezdené, győződjön meg róla, hogy:
 
 1. Az [oktatóanyag befejezése: Megrendelés Azure Data Box](data-box-deploy-ordered.md).
-2. A rendszer megkapta a Data Box, és a portálonmegjelenő megrendelés állapota kézbesítve. 
+2. A rendszer megkapta a Data Box, és a portálon megjelenő megrendelés állapota **kézbesítve**. 
 3. Tekintse át a [Data Box biztonsági irányelveit](data-box-safety.md).
 4. A rendszer a 100 TB-os tárolóeszközhöz való használatra egy megalapozott tápkábelt kapott.
 5. Hozzáférés egy olyan gazdagéphez, amely a Data Boxba másolni kívánt adattal rendelkezik. A gazdaszámítógépen:

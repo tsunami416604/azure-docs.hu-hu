@@ -9,7 +9,7 @@ metadata:
   ms.author: sngun
   ms.service: cosmos-db
   ms.topic: landing-page
-  ms.date: 05/20/2019
+  ms.date: 09/01/2019
 abstract:
   description: 'Az Azure Cosmos DB egy teljes mértékben felügyelt adatbázis-szolgáltatás kulcsrakész globális terjesztéssel és átlátható, több főkiszolgálós replikációval. Globálisan terjesztett, kis késleltetésű üzemeltetési és elemzési számítási feladatokat és mesterséges intelligenciát futtathat az adatbázisában található tranzakciós adatokon. Ismerje meg, hogyan használhatja az Azure Cosmos DB szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.'
   aside:

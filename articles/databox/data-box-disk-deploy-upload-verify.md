@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 ms.localizationpriority: high
-ms.date: 08/22/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e36f009422307b3b70091775d2288ee710839172
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: a4d814ab5b1f26a6a2b871a850fd5e3153e256f5
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014180"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240277"
 ---
 ::: zone target="docs"
 
@@ -70,20 +70,40 @@ Ellenőrizze, hogy az adatok jelen vannak-e a tárfiók(ok)ban, mielőtt töröl
       ![Felügyelt lemezek erőforráscsoport](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
   - Ha egy VHDX vagy egy dinamikus/különbséglemezek VHD-t másolt, akkor a VHDX/VHD-t a rendszer egy blokk-blobként feltölti az átmeneti tárolási fiókba. Nyissa meg az átmeneti **tárolási fiókot > blobokat** , majd válassza ki a megfelelő StandardSSD, StandardHDD vagy PremiumSSD. A VHDX/VHD-k blokk-blobként jelennek meg az átmeneti tárolási fiókban.
+  
+::: zone-end
 
-Az adatok Azure-ba történő feltöltését az alábbi lépésekkel ellenőrizheti:
+::: zone target="chromeless"
+
+# <a name="verify-data-upload-to-azure"></a>Az Azure-ba történő adatfeltöltés ellenőrzése
+
+Az adatok Azure-ba való feltöltése után ellenőrizze, hogy az adatok a Storage-fiók (ok) ban vannak-e, mielőtt törölné a forrásból. Az adatai a következőket vehetik fel:
+
+- Azure Storage-fiókja (ke) t. A Data Boxra másolt adatok a típusuktól függően a következő elérési utak egyikére lesznek feltöltve az Azure Storage-fiókban.
+
+    - **A blobok és az oldal Blobok esetében**: https://< storage_account_name >. blob. Core. Windows<containername>. net//files/a.txt
+
+    - **Azure Files esetén**: https://< storage_account_name >. file. Core. Windows. net/<sharename>/Files/a.txt
+
+- A felügyelt lemez erőforrás-csoportja (i). A felügyelt lemezek létrehozásakor a virtuális merevlemezeket blobként kell feltölteni, majd felügyelt lemezekre konvertáljuk. A felügyelt lemezek a rendelés létrehozásakor megadott erőforráscsoporthoz vannak csatolva.
+
+::: zone-end
+
+Az alábbi lépéseket követve ellenőrizheti, hogy az adatfeltöltés az Azure-ba történt-e:
 
 1. Lépjen a lemezrendeléshez kapcsolódó tárfiókra.
 2. Lépjen a **Blob szolgáltatás > Blobok tallózása** elemre. Itt megjelenik a tárolók listája. A *BlockBlob* és *PageBlob* mappában létrehozott almappákhoz hasonlóan a tárfiókban azonos névvel ellátott tárolók jöttek létre.
     Ha a mappanevek nem felelnek meg az Azure elnevezési konvencióinak, az Azure-ba történő adatfeltöltés sikertelen lesz.
 
-4. Ha szeretné ellenőrizni, hogy a teljes adatkészlet fel lett-e töltve, használja a Microsoft Azure Storage Explorert. Csatlakoztassa a lemezbérlési rendeléshez tartozó tárfiókot, majd tekintse meg a blobtárolók listáját. Válasszon ki egy tárolót, kattintson a **Továbbiak**, majd a **Mappastatisztikák** lehetőségre. A **Tevékenységek** ablaktáblán megjelennek a mappára vonatkozó statisztikák (pl. a blobok száma és azok teljes mérete). A blobok teljes méretének meg kell egyeznie az adatkészlet méretével.
+3. Ha szeretné ellenőrizni, hogy a teljes adatkészlet fel lett-e töltve, használja a Microsoft Azure Storage Explorert. Csatlakoztassa a Data Box Disk sorrendnek megfelelő Storage-fiókot, és tekintse meg a blob-tárolók listáját. Válasszon ki egy tárolót, kattintson a **Továbbiak**, majd a **Mappastatisztikák** lehetőségre. A **Tevékenységek** ablaktáblán megjelennek a mappára vonatkozó statisztikák (pl. a blobok száma és azok teljes mérete). A blobok teljes méretének meg kell egyeznie az adatkészlet méretével.
 
     ![A mappa statisztikái a Storage Explorerben](media/data-box-disk-deploy-picked-up/folder-statistics-storage-explorer.png)
 
 ## <a name="erasure-of-data-from-data-box-disk"></a>Adatok törlése a Data Box Diskről
 
 Miután befejeződött a másolás, és ellenőrizte, hogy az adat az Azure Storage-fiókban található, a lemezek biztonságosan törlődnek a NIST szabványnak megfelelően.
+
+::: zone target="docs"
 
 ## <a name="next-steps"></a>További lépések
 
@@ -101,22 +121,6 @@ A következő oktatóanyag a Data Box Diskek Azure Portalon keresztül történ�
 
 ::: zone-end
 
-::: zone target="chromeless"
 
-# <a name="verify-data-upload-to-azure"></a>Az Azure-ba történő adatfeltöltés ellenőrzése
-
-Az adatok Azure-ba való feltöltése után ellenőrizze, hogy az adatok a Storage-fiók (ok) ban vannak-e, mielőtt törölné a forrásból. Az adatai a következőket vehetik fel:
-
-- Azure Storage-fiókja (ke) t. A Data Boxra másolt adatok a típusuktól függően a következő elérési utak egyikére lesznek feltöltve az Azure Storage-fiókban.
-
-    - **A blobok és az oldal Blobok esetében**: https://< storage_account_name >. blob. Core. Windows<containername>. net//files/a.txt
-
-    - **Azure Files esetén**: https://< storage_account_name >. file. Core. Windows. net/<sharename>/Files/a.txt
-
-    Alternatív megoldásként navigálhat az Azure Storage-fiókjából is az Azure Portalon.
-
-- A felügyelt lemez erőforrás-csoportja (i). A felügyelt lemezek létrehozásakor a virtuális merevlemezeket blobként kell feltölteni, majd felügyelt lemezekre konvertáljuk. A felügyelt lemezek a rendelés létrehozásakor megadott erőforráscsoporthoz vannak csatolva.
-
-::: zone-end
 
 

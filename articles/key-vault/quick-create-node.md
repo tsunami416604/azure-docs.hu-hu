@@ -3,18 +3,18 @@ title: Gyors útmutató – a Azure Key Vault titkos kulcsának beállítása é
 description: Ebben a rövid útmutatóban egy csomópont-webalkalmazás használatával állít be és kér le titkos kulcsot a Azure Key Vaultból
 services: key-vault
 author: msmbaldwin
-manager: sumedhb
+manager: rkarlin
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 09/05/2018
-ms.author: barclayn
+ms.date: 09/03/2010
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 5ca6289b1af02a54d8c66d5a9835e24f61c58559
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4bea46e62f90a41b566781457a39718849ee0e15
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934460"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259241"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Gyors útmutató: Azure Key Vault titkos kulcsának beállítása és beolvasása egy csomópont-webalkalmazás használatával 
 
@@ -69,7 +69,7 @@ Ezután létrehoz egy kulcstartót az előző lépésben létrehozott erőforrá
 
 * Key Vault neve.
 * Az erőforráscsoport neve. A névnek 3-24 karakterből álló sztringnek kell lennie, és csak 0-9, a-z, A-Z és egy kötőjelet (-) tartalmazhat.
-* Hely: **USA keleti**régiója.
+* Helyen **USA keleti**régiója.
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "East US"
@@ -196,5 +196,9 @@ Ezt követően a Tallózás gombra `https://<app_name>.azurewebsites.net`kattint
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Node-hoz készült Azure SDK](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
+Ebben a rövid útmutatóban létrehozott egy Key Vault, és egy titkos kulcsot tárolt benne. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
+
+- [A Azure Key Vault áttekintése](key-vault-overview.md)
+- Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](key-vault-developers-guide.md)
+- Tudnivalók a [kulcsokról, a titkokról és a tanúsítványokról](about-keys-secrets-and-certificates.md)
+- [Azure Key Vault ajánlott eljárások](key-vault-best-practices.md) áttekintése

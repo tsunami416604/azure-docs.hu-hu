@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: d8d9478441ffe3962f450bed7bfddf2776386617
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.localizationpriority: high
+ms.openlocfilehash: e438fb38afb649f6f4c7f595059ef64800977242
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164396"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240349"
 ---
 ::: zone target = "docs"
 
@@ -76,7 +77,7 @@ Most már készen áll az eszköz újbóli szállítására.
     2. Hívja meg a szállítási szolgáltató helyi számát a pickup időzítéséhez.
     3. Győződjön meg arról, hogy a szállítási címke kiemelten jelenik meg a szállítás külsején.
     4. Győződjön meg arról, hogy az előző szállítmányból származó régi szállítási címkék el lesznek távolítva az eszközről.
-3. Miután megtörtént a Data Box Heavy beolvasása és ellenőrzése a szolgáltatónál, a portálon a megrendelésiállapotot a rendszer felveszi. A nyomkövetési azonosító is megjelenik.
+3. Miután megtörtént a Data Box Heavy beolvasása és ellenőrzése a szolgáltatónál, a portálon a megrendelési állapotot a rendszer **felveszi**. A nyomkövetési azonosító is megjelenik.
 
 ::: zone target = "docs"
 
@@ -124,7 +125,7 @@ Ha a Data Box Heavy eszköz csatlakozik az Azure Datacenter Network szolgáltat�
 
 ## <a name="erasure-of-data-from-data-box-heavy"></a>Adatok törlése Data Box Heavy
  
-Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box törli a lemezeken található adatokat a [NIST SP 800-88 Revision 1 útmutatásainak](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) megfelelően. A törlés befejezése után [letöltheti a](data-box-portal-admin.md#download-order-history)megrendelési előzményeket.
+Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box törli a lemezeken található adatokat a [NIST SP 800-88 Revision 1 útmutatásainak](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) megfelelően. A törlés befejezése után [letöltheti a megrendelési előzményeket](data-box-portal-admin.md#download-order-history).
 
 ::: zone target = "docs"
 

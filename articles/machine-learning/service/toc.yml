@@ -1,5 +1,5 @@
 - name: Az Azure Machine Learning service dokumentációja
-  href: index.yml
+  href: ../index.yml
 - name: Áttekintés
   expanded: true
   items:

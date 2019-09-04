@@ -8,18 +8,18 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/22/2019
+ms.date: 09/03/2019
 ms.author: jgao
-ms.openlocfilehash: b27caa3d91d67ad63bfbf5e7c549d690980cdd7b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 13ac8b9f6d82cc8b0060f87237ef3140cb245379
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934442"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259205"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Gyors útmutató: Azure Key Vault titkos kód beállítása és beolvasása Resource Manager-sablon használatával
 
-A [Azure Key Vault](./key-vault-overview.md) egy felhőalapú szolgáltatás, amely biztonságos tárolót biztosít a titkok számára, például kulcsokat, jelszavakat, tanúsítványokat és egyéb titkokat. Ez a rövid útmutató egy Resource Manager-sablon üzembe helyezésének folyamatát, amely egy kulcstartó és egy titkos kulcs létrehozásával foglalkozik. A Resource Manager-sablonok fejlesztésével kapcsolatos további információkért tekintse meg a [Resource Manager dokumentációját](/azure/azure-resource-manager/) és a sablonra vonatkozó [referenciát](/azure/templates/microsoft.keyvault/allversions).
+A [Azure Key Vault](./key-vault-overview.md) egy felhőalapú szolgáltatás, amely biztonságos tárolót biztosít a titkok számára, például kulcsokat, jelszavakat, tanúsítványokat és egyéb titkokat. Ez a rövid útmutató egy Resource Manager-sablon üzembe helyezésének folyamatát, amely egy kulcstartó és egy titkos kulcs létrehozásával foglalkozik. A Resource Manager-sablonok fejlesztésével kapcsolatos további információkért tekintse meg a [Resource Manager dokumentációját](/azure/azure-resource-manager/) és a [sablonra vonatkozó referenciát](/azure/templates/microsoft.keyvault/allversions).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -63,10 +63,10 @@ Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablon
     * **Hely**: válasszon ki egy helyet.  Ha például **USA középső RÉGIÓJA**.
     * **Key Vault neve**: adja meg a Key Vault nevét, amelynek globálisan egyedinek kell lennie a. Vault.Azure.net névtérben.  
     * **Bérlőazonosító**: a sablonfüggvény automatikusan lekéri a bérlőazonosítót.  Ne módosítsa az alapértelmezett értéket.
-    * **Ad felhasználói azonosító**: adja meg az előfeltételekből beolvasott Azure ad felhasználói [](#prerequisites)objektum azonosítóját.
+    * **Ad felhasználói azonosító**: adja meg az [előfeltételekből](#prerequisites)beolvasott Azure ad felhasználói objektum azonosítóját.
     * **Titkos kód neve**: adja meg a Key vaultban tárolt titok nevét.  Például: **AdminPassword**.
     * **Titkos érték**: adja meg a titkos értéket.  Ha jelszót tárol, azt javasoljuk, hogy használja az előfeltételekben létrehozott generált jelszót.
-    * **Elfogadom a fenti feltételeket és**kikötéseket: Kiválasztás.
+    * **Elfogadom a fenti feltételeket és kikötéseket**: Válassza.
 3. Válassza a **Beszerzés** lehetőséget.
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
@@ -101,7 +101,9 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Key Vault kezdőlapja](https://azure.microsoft.com/services/key-vault/)
-* [Az Azure Key Vault dokumentációja](index.yml)
-* [Azure SDK For Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
-* [Azure REST API-referencia](https://docs.microsoft.com/rest/api/keyvault/)
+Ebben a rövid útmutatóban létrehozta a kulcstartót és egy titkos kulcsot egy Azure Resource Manager-sablon használatával, és ellenőrizte a központi telepítést. Ha többet szeretne megtudni a Key Vault és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
+
+- [A Azure Key Vault áttekintése](key-vault-overview.md)
+- További információ a [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
+- További információ a [kulcsokról, a titkokról és a tanúsítványokról](about-keys-secrets-and-certificates.md)
+- [Azure Key Vault ajánlott eljárások](key-vault-best-practices.md) áttekintése

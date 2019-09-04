@@ -6,18 +6,18 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 08/21/2019
+ms.date: 09/03/2019
 ms.author: heidist
-ms.openlocfilehash: 204951f725c2885fe9f8bf33fffe83e55628dd34
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 3b0647c3a71e6ce242e7cbd0eedcca3d0fa30ded
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899683"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274052"
 ---
 # <a name="what-is-azure-search"></a>Mi az az Azure Search?
 
-A Azure Search egy felhőalapú keresési megoldás, amely lehetővé teszi a fejlesztők számára API-k és eszközök számára, hogy a webes, mobil-és vállalati alkalmazásokban gazdag keresési élményt adjanak hozzá. Az egyéni kód meghívja az adatfeldolgozást (indexelést) egy index létrehozásához és betöltéséhez. A másik oldalon az alkalmazás kódja lekérdezi a kérelmeket, és kezeli a válaszokat. A keresési élmény az ügyfélen a Azure Search funkcióinak használatával van meghatározva, és a lekérdezés végrehajtása a saját maga által létrehozott, a saját, a saját és a Azure Search tárolt indexeken keresztül történik.
+A Azure Search egy felhőalapú keresési megoldás, amely lehetővé teszi a fejlesztők számára API-k és eszközök számára, hogy a webes, mobil-és vállalati alkalmazásokban gazdag keresési élményt adjanak hozzá. Az egyéni kód meghívja az adatfeldolgozást (indexelést) egy index létrehozásához és betöltéséhez. A másik oldalon az alkalmazás kódja lekérdezi a kérelmeket, és kezeli a válaszokat. A keresési élmény az ügyfélen a Azure Search funkcióinak használatával van meghatározva, és a lekérdezés végrehajtása a saját szolgáltatásában létrehozott, saját és tárolt megőrzött indexeken keresztül történik.
 
 ![Azure Search architektúra](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Search architektúra")
 
@@ -49,12 +49,12 @@ A Azure Search a következő alkalmazási forgatókönyvek esetében kiválóan 
 
 | AI&nbsp;-gazdagodás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Szolgáltatások |
 |-------------------|----------|
-|Mesterséges intelligenciát használó dokumentumok | A képek és a szövegek megismerésére szolgáló [**kognitív keresés**](cognitive-search-concept-intro.md) alkalmazható egy indexelési folyamatra a szöveges információk nyers tartalomból való kinyeréséhez. A [beépített képességek](cognitive-search-predefined-skills.md) között szerepel például az optikai karakterfelismerés (beolvasott JPEG-fájlok kereshetővé tétele), az entitásfelismerés (cég vagy intézmény, név vagy hely azonosítása), valamint a kulcskifejezések felismerése. [Egyéni képességeket is kódolhat](cognitive-search-create-custom-skill-example.md), amelyeket a folyamathoz lehet kapcsolni. |
+|Mesterséges intelligenciát használó dokumentumok | A képek és a szövegek [**megismerésére szolgáló kognitív keresés**](cognitive-search-concept-intro.md) alkalmazható egy indexelési folyamatra a szöveges információk nyers tartalomból való kinyeréséhez. A [beépített képességek](cognitive-search-predefined-skills.md) között szerepel például az optikai karakterfelismerés (beolvasott JPEG-fájlok kereshetővé tétele), az entitásfelismerés (cég vagy intézmény, név vagy hely azonosítása), valamint a kulcskifejezések felismerése. [Egyéni képességeket is kódolhat](cognitive-search-create-custom-skill-example.md), amelyeket a folyamathoz lehet kapcsolni. |
 | Tárolt dúsítások elemzéshez és felhasználáshoz| A [**Knowledge Store (előzetes verzió)** ](knowledge-store-concept-intro.md) az AI-alapú indexelés kiterjesztése. Az Azure Storage háttérként mentheti az indexelés során létrehozott bővítéseket. Ezek az összetevők segítséget nyújtanak a jobb szakértelmével kialakításában, illetve az amorf vagy nem egyértelmű adatmennyiségek alakzatának és struktúrájának létrehozásában. Ezekből a struktúrákból kivetítéseket hozhat létre, amelyek konkrét számítási feladatokat vagy felhasználókat céloznak meg. Közvetlenül is elemezheti a kinyert fájlokat, vagy betöltheti azokat más alkalmazásokba.<br/><br/> |
 
 | &nbsp;Adatimportálás/indexelés | Szolgáltatások |
 |----------------------------------|----------|
-| Adatforrások | Az Azure Search indexei bármilyen forrásból fogadnak el adatokat, feltéve hogy azok JSON adatstruktúraként vannak formázva. <br/><br/> [](search-indexer-overview.md) Az indexelő automatizálja az adatfeldolgozást a támogatott Azure-adatforrások esetében, és kezeli a JSON-szerializálást. Csatlakozhat [Azure SQL Databasehoz](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DBhoz](search-howto-index-cosmosdb.md)vagy az [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) -hoz, hogy kinyerje a kereshető tartalmat az elsődleges adattárakban. Az Azure Blob-indexelők képesek *dokumentumfeltörést* végezni [szövegek kinyeréséhez a leggyakoribb fájlformátumokból](search-howto-indexing-azure-blob-storage.md), ideértve a Microsoft Office-, a PDF- és a HTML-dokumentumokat. |
+| Adatforrások | Az Azure Search indexei bármilyen forrásból fogadnak el adatokat, feltéve hogy azok JSON adatstruktúraként vannak formázva. <br/><br/> Az [**Indexelő**](search-indexer-overview.md) automatizálja az adatfeldolgozást a támogatott Azure-adatforrások esetében, és kezeli a JSON-szerializálást. Csatlakozhat [Azure SQL Databasehoz](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DBhoz](search-howto-index-cosmosdb.md)vagy az [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) -hoz, hogy kinyerje a kereshető tartalmat az elsődleges adattárakban. Az Azure Blob-indexelők képesek *dokumentumfeltörést* végezni [szövegek kinyeréséhez a leggyakoribb fájlformátumokból](search-howto-indexing-azure-blob-storage.md), ideértve a Microsoft Office-, a PDF- és a HTML-dokumentumokat. |
 | Hierarchikus és beágyazott adatstruktúrák | Az [**összetett típusok**](search-howto-complex-data-types.md) és gyűjtemények lehetővé teszik gyakorlatilag bármilyen típusú JSON-struktúra modellezését Azure Search indexként. Egy-a-többhöz és több-a-többhöz számos fajta lehet natív módon kifejezni gyűjtemények, összetett típusok és összetett típusú gyűjtemények formájában.|
 | Nyelvi elemzés | Az elemzők olyan összetevők, amelyekkel a rendszer szövegfeldolgozást végez az indexelési és keresési műveletek során. Két típusukat különböztetjük meg. <br/><br/>Az [**egyéni lexikai elemzőket**](index-add-custom-analyzers.md) a rendszer a fonetikus egyeztetést és reguláris kifejezéseket használó összetett keresési lekérdezésekhez alkalmazza. <br/><br/>A Lucene-tól vagy a Microsofttól származó [**nyelvi elemzők**](index-add-language-analyzers.md) a nyelvspecifikus funkcionalitást kezelik, ideértve például az igeidőt, a nemet, a szabálytalan többesszámú főneveket, a szóösszetételek lebontását és a szavakra bontást (a szóközt nem alkalmazó nyelveknél). <br/><br/>|
 
@@ -132,7 +132,7 @@ Az Azure-előfizetők [üzembe helyezhetik a szolgáltatás ingyenes verzióját
 
 Ha nincs még előfizetése, [ingyen létrehozhat egy Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). A fiók létrehozásakor krediteket kap a fizetős Azure-szolgáltatások kipróbálásához. A kreditek felhasználása után megtarthatja a fiókját, és tovább használhatja azt az [ingyenes Azure-szolgáltatásokkal](https://azure.microsoft.com/free/). A bankkártyáját semmilyen költség nem terheli, hacsak Ön kifejezetten nem módosítja beállításait ennek engedélyezéséhez.
 
-Alternatív megoldásként aktiválhatja az [MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)előfizetői előnyeit is: Az MSDN-előfizetés minden hónapban biztosít Önnek krediteket, amelyekkel fizetős Azure-szolgáltatásokat használhat. 
+Alternatív megoldásként [aktiválhatja az MSDN előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)is: Az MSDN-előfizetés minden hónapban biztosít Önnek krediteket, amelyekkel fizetős Azure-szolgáltatásokat használhat. 
 
 ## <a name="how-to-get-started"></a>Első lépések
 
