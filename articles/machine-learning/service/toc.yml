@@ -290,12 +290,18 @@
               href: ../algorithm-module-reference/edit-metadata.md
             - name: Hiányzó adatok törlése
               href: ../algorithm-module-reference/clean-missing-data.md
+            - name: Funkciókivonatolás
+              href: ../algorithm-module-reference/feature-hashing.md
+            - name: N-Gram-funkciók kinyerése szövegből
+              href: ../algorithm-module-reference/extract-n-gram-features-from-text.md
             - name: Oszlopok hozzáadása
               href: ../algorithm-module-reference/add-columns.md
             - name: Sorok hozzáadása
               href: ../algorithm-module-reference/add-rows.md
             - name: Ismétlődő sorok eltávolítása
               href: ../algorithm-module-reference/remove-duplicate-rows.md
+            - name: Szöveg előfeldolgozása
+              href: ../algorithm-module-reference/preprocess-text.md
             - name: Adatok összekapcsolása
               href: ../algorithm-module-reference/join-data.md
             - name: Adatok felosztása
