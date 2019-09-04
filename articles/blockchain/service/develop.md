@@ -1,6 +1,6 @@
 ---
-title: Az Azure Blockchain-szolgáltatás fejlesztői áttekintés
-description: Bevezetés az Azure Blockchain-szolgáltatások-megoldások fejlesztése.
+title: Az Azure Blockchain Service Development áttekintése
+description: Bevezetés az Azure Blockchain Service-megoldások fejlesztéséhez.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,60 +10,60 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 388a5d8c80c3e2462602959e9d5cbc1452974d1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f27dd199cc054d128a4f46b222c7207d5975efb
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027900"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241008"
 ---
-# <a name="azure-blockchain-service-development-overview"></a>Az Azure Blockchain-szolgáltatás fejlesztői áttekintés
+# <a name="azure-blockchain-service-development-overview"></a>Az Azure Blockchain Service Development áttekintése
 
-Az Azure Blockchain-szolgáltatás consortium ahhoz enterprise helyzetek, például az eszköz követési, digitális jogkivonatot, hűségprogramok használatán keresztül és a fejében, pénzügyi ellátási lánc és származási hely blockchain hálózatot hozhat létre. Ez a cikk az Azure Blockchain-szolgáltatás fejlesztői áttekintés és megvalósításához a blockchain a vállalat számára a legfontosabb témakörök bevezetést.
+Az Azure Blockchain szolgáltatással konzorciumi Blockchain-hálózatokat hozhat létre, amelyek lehetővé teszik a nagyvállalati forgatókönyvek, például az eszközök nyomon követését, a digitális jogkivonatot, a lojalitást és a jutalmat, az ellátási lánc pénzügyi Ez a cikk az Azure Blockchain Service Development és a főbb témakörök bevezetését ismerteti a vállalati Blockchain megvalósításához.
 
-## <a name="client-connection-to-azure-blockchain-service"></a>Az Azure Blockchain Service-Ügyfélkapcsolat
+## <a name="client-connection-to-azure-blockchain-service"></a>Ügyfél-kapcsolódás az Azure Blockchain szolgáltatáshoz
 
-Nincsenek különböző típusú ügyfelek teljes csomópontokat, a könnyű csomópontok és a távoli ügyfelek például blokklánc hálózatok. Az Azure Blockchain-szolgáltatás, amely tartalmazza a csomópontok blockchain hálózati épít fel. Különböző ügyfelek a blokklánc-fejlesztési használhatja az Azure Blockchain-szolgáltatás átjáró. Az Azure Blockchain-szolgáltatás fejlesztési-végpontként kínál az alapszintű hitelesítés vagy az elérési kulcs. Az alábbiakban használhatja népszerű ügyfelek csatlakozni.
+A blockchain-hálózatokhoz különböző típusú ügyfelek tartoznak, beleértve a teljes csomópontokat, a könnyű csomópontokat és a távoli ügyfeleket. Az Azure Blockchain szolgáltatás olyan Blockchain-hálózatot épít, amely csomópontokat tartalmaz. A Blockchain-fejlesztéshez különböző ügyfeleket használhat az Azure Blockchain Service-hez való átjáróként. Az Azure Blockchain szolgáltatás alapszintű hitelesítési vagy hozzáférési kulcsot biztosít fejlesztési végpontként. A következő népszerű ügyfeleket használhatja a csatlakozási lehetőséggel.
 
 ### <a name="metamask"></a>MetaMask
 
-MetaMask egy böngészőalapú wallet (távoli ügyfél), az RPC-ügyfél és az alapszintű szerződés explorer. Ellentétben más böngészőt levéltárcák MetaMask kódtárba a weben 3-példány a böngészőben JavaScript-környezet be, amely csatlakozik a különböző Ethereum blokkláncok RPC-ügyfélként működő (*mainnet*, *Ropsten testnet*, *Kovan testnet*, helyi RPC-csomópont stb.). Beállíthat egyéni RPC egyszerűen való csatlakozáshoz, az Azure Blockchain-szolgáltatás, és indítsa el a blokklánc-fejlesztési Remix használatával.
+A MetaMask egy böngészőalapú mobiltárca (távoli ügyfél), RPC-ügyfél és alapszintű szerződés Explorer. A többi böngészőbeli pénztárcától eltérően a MetaMask egy web3-példányt helyez el a böngésző JavaScript-környezetében, amely egy olyan RPC-ügyfélként működik, amely különböző Ethereum-blokkláncok (*mainnet*, *Ropsten TestNet*, *Kovan TestNet*, helyi RPC-csomóponttal) csatlakozik. stb.). Az Azure Blockchain szolgáltatáshoz való kapcsolódáshoz egyszerűen beállíthatja az egyéni RPC-t, és megkezdheti a Blockchain fejlesztését a Remix használatával.
 
 ### <a name="geth"></a>Geth
 
-Geth a parancssori felület implementálva, lépjen teljes Ethereum csomópont futtatásához. Nem kell futtatnia csomópontot teljes, de el is indíthatja az interaktív konzol is közzéteheti az Azure Blockchain-szolgáltatással való kommunikációhoz JavaScript API a JavaScript futtatási környezetet biztosít.
+A geth az a parancssori felület, amely a Go-ban implementált teljes Ethereum-csomópont futtatására szolgál. Nem kell teljes csomópontot futtatnia, de elindíthatja az interaktív konzolt, amely JavaScript-futtatókörnyezeti környezetet biztosít a JavaScript API-k számára az Azure Blockchain szolgáltatással való kommunikációhoz.
 
 ## <a name="development-framework-configuration"></a>Fejlesztési keretrendszer konfigurációja
 
-A kifinomult vállalati blockchain-megoldások fejlesztése, különböző blockchain hálózatokhoz, intelligens szerződés életciklus kezelése, automatizálhatja a tesztelés, üzembe helyezése parancsfájlok intelligens szerződés és egy interaktív konzolt ellátására egy fejlesztési keretrendszer van szükség.
+A kifinomult vállalati blockchain megoldások fejlesztése érdekében fejlesztési keretrendszerre van szükség a különböző blockchain-hálózatokhoz való kapcsolódáshoz, az intelligens szerződések életciklusának kezeléséhez, a tesztelés automatizálásához, az intelligens szerződés parancsfájlokkal való üzembe helyezéséhez és egy interaktív konzol előkészítéséhez.
 
-Truffle egy olyan népszerű blockchain fejlesztési keretrendszer, írása, összeállítása, üzembe helyezését és Ethereum blokkláncok decentralizált alkalmazások teszteléséhez. Akkor is felfogható Truffle próbál zökkenőmentesen integrálhat intelligens szerződés fejlesztési és a hagyományos webes fejlesztési keretrendszer.
+A szarvasgomba népszerű blockchain-fejlesztési keretrendszer a decentralizált alkalmazások Ethereum blokkláncok történő írásához, fordításához, üzembe helyezéséhez és teszteléséhez. Azt is meggondolhatja, hogy a szarvasgomba olyan keretrendszer, amellyel zökkenőmentesen integrálható az intelligens szerződések fejlesztése és a hagyományos webes fejlesztés.
 
-Még a legkisebb projekt blockchain legalább két csomóponttal kommunikál: Egy, a fejlesztői gépen, és a más jelölő a hálózat, ahol a fejlesztő helyez üzembe alkalmazását. Például a fő nyilvános Ethereum hálózati vagy az Azure Blockchain-szolgáltatás. Truffle biztosít a rendszer minden hálózat összeállítása és üzembe helyezési összetevők kezeléséhez, és úgy valósítja meg úgy, hogy leegyszerűsíti a végső alkalmazás központi telepítését. További információkért lásd: [a rövid útmutató: Truffle használatával csatlakozni egy az Azure Blockchain-szolgáltatás hálózati](connect-truffle.md).
+Még a legkisebb projekt is kommunikál legalább két blockchain-csomóponttal: Az egyik a fejlesztői gépen, a másik pedig azt a hálózatot jelképezi, ahol a fejlesztő üzembe helyezi az alkalmazást. Például a fő nyilvános Ethereum hálózat vagy az Azure Blockchain szolgáltatás. A szarvasgomba egy rendszert biztosít az egyes hálózatok fordítási és üzembe helyezési összetevőinek kezeléséhez, és így egyszerűsíti a végső alkalmazás üzembe helyezését. További információ: gyors útmutató [: A szarvasgomba használatával csatlakozhat egy Azure Blockchain Service networkhez](connect-truffle.md).
 
-## <a name="ethereum-quorum-private-transaction"></a>Privát Ethereum kvórum-tranzakció
+## <a name="ethereum-quorum-private-transaction"></a>Ethereum kvórum privát tranzakciója
 
-Kvórum nem tranzakciós plus szerződés adatvédelmi és új konszenzus mechanizmusok elosztott Főkönyv Ethereum-alapú protokoll. Go-Ethereum keresztül kulcsfontosságú fejlesztések közé tartozik:
+A kvórum egy Ethereum elosztott Főkönyv protokoll, amely tranzakciós plusz szerződéses adatvédelmet és új konszenzusi mechanizmusokat is alkalmaz. A go-Ethereum többek között a következők:
 
-* Adatvédelem – kvórum támogatja a privát tranzakciókat és a privát szerződések keresztül a nyilvános és privát állapot elkülönítése, és már használja a társ-társ titkosított üzenetváltásokban a személyes adatokat a hálózati résztvevők irányított átviteléhez.
-* Alternatív konszenzus mechanizmusok - és a koncepció-az-munkahelyi vagy a koncepció-az-kockán caiq permissioned hálózatban nincs szükség. Kvórum több caiq mechanizmust kínálja, amelyek esetében például egyáltalán és IBFT consortium láncok.  Azure Blockchain-szolgáltatások a IBFT konszenzus mechanizmust használ.
+* Adatvédelem – a kvórum az állami és a magánjellegű állapot elkülönítésével támogatja a privát tranzakciókat és a privát szerződéseket, és a személyes adatoknak a hálózati résztvevők felé irányított továbbítására szolgáló, társ-társ titkosítású üzenetváltást használ.
+* Alternatív Konszenzusi mechanizmusok – az engedéllyel rendelkező hálózatokban nem szükséges a munkahelyi vagy a bizonyítékokkal kapcsolatos konszenzus. A kvórum több konszenzusos mechanizmust kínál, amelyek olyan konzorciumi láncok számára lettek kialakítva, mint például a TUTAJ és a IBFT.  Az Azure Blockchain Services a IBFT konszenzusi mechanizmust használja.
 
-* Társviszonyt csatornákban - csomópont és a társ csatornákban intelligens szerződések, csak az ismert felek biztosító használatával csatlakozhat a hálózaton
-* Nagyobb teljesítmény - kvórum kínál, mint a nyilvános Geth nagyobb teljesítményt
+* Társ-jogosultság – a csomópont-és társ-jogosultságok intelligens szerződések használatával, csak az ismert felek csatlakozhatnak a hálózathoz
+* Nagyobb teljesítmény – a kvórum nagyobb teljesítményt nyújt, mint a nyilvános geth
 
-Lásd: [oktatóanyag: Azure Blockchain-szolgáltatás használatával tranzakció küldése](send-transaction.md) privát tranzakció egy példát.
+Lásd [az oktatóanyagot: Tranzakció küldése az Azure Blockchain szolgáltatással](send-transaction.md) a privát tranzakciók példájának kihasználása céljából.
 
-## <a name="block-explorers"></a>Blokk-tallózók
+## <a name="block-explorers"></a>Felfedezők letiltása
 
-Blokk szoftverkategóriák olyan online blockchain böngészők, amelyek megjelenítik a tartalom egyedi blokkolása, tranzakció cím adatokat és előzményeket. Alapszintű letiltása az információ az Azure Blockchain-szolgáltatás az Azure monitoron keresztül érhető el, azonban, ha részletesebb tájékoztatást a fejlesztés során, blokk szoftverkategóriák hasznos lehet.  Számos népszerű nyílt forráskódú blokk tallózók is használhatja. A következő egy blokk tallózók, amelyek együttműködnek az Azure Blockchain-szolgáltatás listája:
+A blokkoló felfedezők olyan online blockchain böngészők, amelyek egyedi blokk tartalmakat, tranzakciós címeket és előzményeket jelenítenek meg. Az alapszintű blokkolási információk az Azure Blockchain szolgáltatásban Azure Monitor keresztül érhetők el, ha azonban részletesebb információra van szüksége a fejlesztés során, a blokkoló felfedezők hasznosak lehetnek.  Népszerű, nyílt forráskódú blokk-kezelők is használhatók. Az alábbi lista az Azure Blockchain szolgáltatással használható blokk-tallózókat tartalmazza:
 
-* [Az Azure Blockchain-szolgáltatás Explorer](https://web3labs.com/azure-offer) a weben 3 Labs
+* Az [Azure Blockchain Service Explorer](https://web3labs.com/azure-offer) a Web3 Labs-ből
 * [BlockScout](https://github.com/Azure-Samples/blockchain/blob/master/ledger/template/ethereum-on-azure/technology-samples/blockscout/README.md)
 
-## <a name="tps-measurement"></a>TPS mérési
+## <a name="tps-measurement"></a>TPS mérése
 
-Blockchain további nagyvállalati forgatókönyvekben használt, második (TPS) sebességű tranzakció fontos szűk keresztmetszetei és a rendszer hatékonysági elkerülése érdekében. Magas tranzakciós sebességet is nehéz lehet fenntartani egy decentralizált blockchain belül. Egy pontos TPS mérési hatással lehet más tényező befolyásolja, például a kiszolgáló szál, a tranzakciós várólista mérete, a hálózati késés és a biztonság. TPS sebesség mérése a fejlesztés során van szüksége, ha egy népszerű, nyílt forráskódú eszköz van [ChainHammer](https://github.com/drandreaskrueger/chainhammer).
+Mivel a blockchain több vállalati forgatókönyvben is használatos, a másodpercenkénti tranzakciók (TPS) sebessége fontos a szűk keresztmetszetek és a rendszer elégtelenségének elkerülése érdekében. A magas tranzakciós sebességet nehéz fenntartani egy decentralizált blockchain belül. A pontos TPS-mérést befolyásolhatja különböző tényezők, például a kiszolgálói szál, a tranzakciós várólista mérete, a hálózati késés és a biztonság. Ha a fejlesztés során mérni kell a TPS sebességet, egy népszerű, nyílt forráskódú eszköz is [ChainHammer](https://github.com/drandreaskrueger/chainhammer).
 
 ## <a name="next-steps"></a>További lépések
 
-[Rövid útmutató: Truffle használatával csatlakozni egy az Azure Blockchain-szolgáltatás hálózat](connect-truffle.md)
+[Rövid útmutató: A szarvasgomba használata az Azure Blockchain Service networkhez való kapcsolódáshoz](connect-truffle.md)

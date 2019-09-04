@@ -4,14 +4,14 @@ description: Tudnivalók a tárolók Azure Cosmos DB-ben történő létrehozás
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/01/2019
 ms.author: mjbrown
-ms.openlocfilehash: a88d8f33624278ac6e70b918cec7cef133fe4b34
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 876e35e320e37081cf6e6f89fda4f31af8713571
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093476"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240744"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos-tároló létrehozása
 
@@ -25,15 +25,15 @@ Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehoz�
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-sql-api-dotnet.md#create-account), vagy válasszon ki egy meglévő fiókot.
 
-1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új gyűjtemény**lehetőséget. Ezután adja meg a következő adatokat:
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új tároló**elemet. Ezután adja meg a következő adatokat:
 
    * Jelezze, hogy új adatbázist hoz létre, vagy egy meglévőt használ.
-   * Adja meg a gyűjtemény AZONOSÍTÓját.
+   * Adja meg a tároló AZONOSÍTÓját.
    * Adjon meg egy partíciós kulcsot.
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-![Képernyőkép a Adatkezelő panelről, új gyűjtemény kijelölve](./media/how-to-create-container/partitioned-collection-create-sql.png)
+![Képernyőkép a Adatkezelő panelről, új tároló kiemelve](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
 ### <a id="portal-mongodb"></a>MongoDB Azure Cosmos DB API
 
@@ -41,15 +41,15 @@ Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehoz�
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-mongodb-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő fiókot.
 
-1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új gyűjtemény**lehetőséget. Ezután adja meg a következő adatokat:
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új tároló**elemet. Ezután adja meg a következő adatokat:
 
    * Jelezze, hogy új adatbázist hoz létre, vagy egy meglévőt használ.
-   * Adja meg a gyűjtemény AZONOSÍTÓját.
+   * Adja meg a tároló AZONOSÍTÓját.
    * Adja meg a szegmens kulcsát.
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-![Képernyőkép a MongoDB Azure Cosmos DB API-ról, gyűjtemény hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+![Képernyőkép a MongoDB Azure Cosmos DB API-ról, tároló hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
 ### <a id="portal-cassandra"></a>Cassandra API
 

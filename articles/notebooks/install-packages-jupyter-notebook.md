@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 504158f248cde3a399475cdec99de3e6a4ebfcc5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b0881cb6dac9ec83d2126942c758508e760f9c83
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60598010"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274422"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Egy jegyzetfüzetet a csomagok telepítése
 
@@ -40,13 +40,13 @@ Ha a parancs kimenete azt jelzi, hogy már teljesülnek a feltételek, majd Azur
 
 ## <a name="r"></a>R
 
-R-csomagok CRAN vagy a GitHub használatával is telepíthető a `install.packages` egy kódcellába függvény:
+Az R-csomagok a Cran vagy a GitHub használatával telepíthetők `install.packages` a kód cellájában lévő függvénnyel:
 
 ```r
 install.packages("package_name")
 ```
 
-Előzetes verziók és más fejlesztési csomagok a Githubról a devtools kódtár használatával is telepítheti:
+A GitHubon az előzetes verzió és más fejlesztői csomagok is telepíthetők a devtools könyvtár használatával:
 
 ```r
 options(unzip = 'internal')
@@ -66,12 +66,22 @@ Ezután telepítse a csomagokat:
 
 ```fsharp
 Paket.Package
-[ "MathNet.Numerics"
-"MathNet.Numerics.FSharp"
-]
+  [ "MathNet.Numerics"
+    "MathNet.Numerics.FSharp"
+  ]
+```
+
+Ezután töltse be a Paket-generátort:
+```fsharp
+#load "Paket.Generated.Refs.fsx"
+```
+
+Nyissa meg a libray-t:
+```fsharp
+open MathNet.Numerics
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-- [Útmutató: Konfigurálhatja és kezelheti a projektek](configure-manage-azure-notebooks-projects.md)
-- [Útmutató: Diavetítés bemutatásához](present-jupyter-notebooks-slideshow.md)
+- [Útmutató: Projektek konfigurálása és kezelése](configure-manage-azure-notebooks-projects.md)
+- [Útmutató: Bemutató megjelenítése](present-jupyter-notebooks-slideshow.md)

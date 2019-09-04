@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 841c55e9aa05e6b627716b084ad7685683f9faec
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 45eebe5bce819fa59f2ed6779e845afa6b3efaa5
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498354"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276855"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Egyéni műveletek nyomon követése Application Insights .NET SDK-val
 
@@ -125,7 +125,7 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 A korrelációs HTTP-protokoll a `Correlation-Context` fejlécet is deklarálja. Az egyszerűség kedvéért azonban itt kimarad.
 
 ## <a name="queue-instrumentation"></a>Üzenetsor-kialakítás
-Habár HTTP-protokollal kell korrelációt adni a korrelációs adatoknak a HTTP-kéréssel való [megfelelés](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) érdekében, minden üzenetsor-protokollnak meg kell határoznia, hogyan adja meg ugyanazokat az adatokat az üzenetsor üzenetében. Egyes üzenetsor-protokollok (például a AMQP) lehetővé teszik a további metaadatok átadását és mások (például az Azure Storage-üzenetsor) használatát, hogy a környezet kódolva legyen az üzenet tartalmába.
+Habár http- [protokollal kell korrelációt](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) adni a korrelációs adatoknak a http-kéréssel való megfelelés érdekében, minden üzenetsor-protokollnak meg kell határoznia, hogyan adja meg ugyanazokat az adatokat az üzenetsor üzenetében. Egyes üzenetsor-protokollok (például a AMQP) lehetővé teszik a további metaadatok átadását és mások (például az Azure Storage-üzenetsor) használatát, hogy a környezet kódolva legyen az üzenet tartalmába.
 
 ### <a name="service-bus-queue"></a>Service Bus-üzenetsor
 Application Insights nyomon követi az üzenetkezelési hívásokat Service Bus az új [Microsoft Azure ServiceBus-ügyféllel a .net](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) -es vagy újabb verzióhoz.
@@ -318,7 +318,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
     {
         // Update status code and success as appropriate.
         telemetry.Stop();
-        telemetryClient.Track(telemetry);
+        telemetryClient.TrackDependency(telemetry);
     }
 
     return null;
@@ -442,7 +442,7 @@ public async Task RunMyTaskAsync()
 
 Az ártalmatlanítási művelet leállítja a műveletet, így nem kell meghívnia `StopOperation`.
 
-*Figyelmeztetés*: bizonyos esetekben a nem kezelt kivételek `finally` miatt előfordulhat [, hogy a](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) rendszer nem tudja követni a műveleteket.
+*Figyelmeztetés*: bizonyos esetekben a nem kezelt `finally` kivételek miatt [Előfordulhat, hogy a](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) rendszer nem tudja követni a műveleteket.
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Párhuzamos műveletek feldolgozása és nyomon követése
 
@@ -495,7 +495,7 @@ Minden Application Insights művelet (kérelem vagy függőség) magában foglal
 ## <a name="next-steps"></a>További lépések
 
 - Ismerkedjen meg a [telemetria korrelációjának](correlation.md) alapjaival Application Insightsban.
-- Tekintse [](../../azure-monitor/app/data-model.md) meg az adatmodellt Application Insights típusokhoz és adatmodellekhez.
+- Tekintse meg az [adatmodellt](../../azure-monitor/app/data-model.md) Application Insights típusokhoz és adatmodellekhez.
 - Egyéni [eseményeket és mérőszámokat](../../azure-monitor/app/api-custom-events-metrics.md) jelenthet a Application Insights.
-- Tekintse meg [](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) a környezeti tulajdonságok gyűjteményének szabványos konfigurációját.
+- Tekintse meg a környezeti tulajdonságok gyűjteményének szabványos [konfigurációját](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) .
 - Tekintse meg a [System. Diagnostics. Activity felhasználói útmutatót](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , és nézze meg, hogyan korreláljuk a telemetria.

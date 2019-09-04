@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 096b6a13c85d04ebeb4f2ffae72acdd8629ae886
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: cdbb545e981e50e23bbbb011dc54577acf7974f7
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191746"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241752"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric fürt beállításainak testreszabása
 Ez a cikk a Service Fabric-fürthöz testreszabható különböző háló-beállításokat ismerteti. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre. További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Önálló fürtök esetében testreszabhatja a beállításokat a *ClusterConfig. JSON* fájl frissítésével és a fürtön végzett konfigurációs frissítés elindításával. További információ: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -28,7 +28,7 @@ Három különböző frissítési szabályzat létezik:
 
 - **Dinamikus** – a dinamikus konfiguráció módosításai nem okozzák a Service Fabric folyamatok vagy a szolgáltatás-gazdagép folyamatainak újraindítását. 
 - **Statikus** – a statikus konfiguráció módosításai a Service Fabric csomópont újraindítását eredményezik a módosítás felhasználása érdekében. A csomópontok szolgáltatásai újra lesznek indítva.
-- Nincs feldolgozva – ezek a beállítások nem módosíthatók. Ezeknek a beállításoknak a módosításához a fürtöt meg kell semmisíteni, és létre kell hozni egy új fürtöt. 
+- Nincs feldolgozva **– ezek** a beállítások nem módosíthatók. Ezeknek a beállításoknak a módosításához a fürtöt meg kell semmisíteni, és létre kell hozni egy új fürtöt. 
 
 Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-beállításokat sorolja fel.
 
@@ -311,7 +311,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 | **A paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
 |EnableApplicationTypeHealthEvaluation |Bool, az alapértelmezett érték false |Statikus tartalom|A fürt állapotának kiértékelésére szolgáló házirend: az alkalmazás típusának kiértékelésének engedélyezése. |
-|MaxSuggestedNumberOfEntityHealthReports|Int, alapértelmezett érték 500 |Dinamikus|Azon állapot-jelentések maximális száma, amelyekkel az entitások felvehetik a figyelmet a watchdog állapot-jelentési logikája miatt. Minden egyes Health-entitásnak viszonylag kis számú állapotjelentést kell megtörténnie. Ha a jelentések száma túllépi ezt a számot, problémák merülhetnek fel a watchdog megvalósításával kapcsolatban. Az entitás kiértékelése során a túl sok jelentést tartalmazó entitás figyelmeztetési állapotú jelentéssel van megjelölve. |
+|MaxSuggestedNumberOfEntityHealthReports|Int, alapértelmezett érték 100 |Dinamikus|Azon állapot-jelentések maximális száma, amelyekkel az entitások felvehetik a figyelmet a watchdog állapot-jelentési logikája miatt. Minden egyes Health-entitásnak viszonylag kis számú állapotjelentést kell megtörténnie. Ha a jelentések száma túllépi ezt a számot, problémák merülhetnek fel a watchdog megvalósításával kapcsolatban. Az entitás kiértékelése során a túl sok jelentést tartalmazó entitás figyelmeztetési állapotú jelentéssel van megjelölve. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 

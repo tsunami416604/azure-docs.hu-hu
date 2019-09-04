@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: heidist
-ms.openlocfilehash: 71fa4b590b41324536d740da5205977c0cefc448
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186505"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241837"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Oktatóanyag Több adatforrásból származó adatok egyesítése egy Azure Search indexben
 
@@ -70,7 +70,7 @@ Ez a példa két kisebb adathalmazt használ, amelyek a hét kitalált szállod�
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com), majd navigáljon a Azure Cosmos db-fiók áttekintő oldalára.
 
-1. A menüsávban kattintson a tároló hozzáadása elemre. Adja meg az "új adatbázis létrehozása" lehetőséget, és használja a következő nevet: **Hotel-Rooms-db**. Adja meg a **Hotel-Rooms** nevet a gyűjtemény neveként, valamint a **/HotelId** . Az adatbázis és a tároló létrehozásához kattintson **az OK** gombra.
+1. A menüsávban kattintson a tároló hozzáadása elemre. Adja meg az "új adatbázis létrehozása" lehetőséget, és használja a következő nevet: **Hotel-Rooms-db**. Adja **meg a gyűjtemény** nevét, a **/HotelId** pedig a partíciós kulcshoz. Az adatbázis és a tároló létrehozásához kattintson **az OK** gombra.
 
    ![Azure Cosmos db tároló hozzáadása](media/tutorial-multiple-data-sources/cosmos-add-container.png "Azure Cosmos db tároló hozzáadása")
 
@@ -304,7 +304,7 @@ A JSON-Blobok a **HotelId**helyett egy **azonosító** nevű kulcsot tartalmazna
 
 A blob Storage-indexelő a használni kívánt elemzési mód azonosítására szolgáló paramétereket használhatnak. Az elemzési mód eltér az olyan Blobok esetében, amelyek egyetlen dokumentumot jelölnek, vagy több, ugyanazon a blobon belüli dokumentumot. Ebben a példában minden blob egyetlen index-dokumentumot képvisel, ezért a kód a `IndexingParameters.ParseJson()` paramétert használja.
 
-További információ a JSON-Blobok indexelő paramétereinek elemzéséről: [JSON](search-howto-index-json-blobs.md)-Blobok indexelése. A paraméterek .NET SDK használatával történő megadásával kapcsolatos további információkért tekintse meg a [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) osztályt.
+További információ a JSON-Blobok indexelő paramétereinek elemzéséről: [JSON-Blobok indexelése](search-howto-index-json-blobs.md). A paraméterek .NET SDK használatával történő megadásával kapcsolatos további információkért tekintse meg a [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) osztályt.
 
 A program az új létrehozása előtt törli az azonos nevű meglévő indexelő, ha egynél többször szeretné futtatni ezt a példát.
 

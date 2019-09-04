@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9d8ae3a95262b1554e7e97fac8375a44743bf4df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb792034e49b0f8f663eb9ee968ea6fac1372373
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344665"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278611"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Adatelemzési műveletek végrehajtása: feltárás, modellezés és üzembe helyezés
 
 Jellemzően milyen adattudományos feladatokat tartalmazza az adatfeltárás, modellezés és üzembe helyezés. Ez a cikk bemutatja, hogyan használhatja a **interaktív Adatkutatási, elemzési és jelentéskészítési (IDEAR)** és **automatikus modellezési és jelentéskészítési (AMAR)** segédprogramok számos gyakori adatelemzési feladatok végrehajtásához például az interaktív adatkutatási, adatelemzés, jelentés és modell létrehozásához. Azt is ismerteti lehetőségei a különböző eszközökre és az adatok platformok, például a következő ad éles környezetben üzembe helyezéséhez:
 
-- [Azure Machine Learning](../service/index.yml)
+- [Azure Machine Learning](../index.yml)
 - [SQL-Server ML szolgáltatásokkal](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
@@ -73,7 +73,7 @@ További információkért lásd: [automatikus modellezési és segédprogram Re
 ### <a name="model-management"></a>Modellkezelés
 Több modell készített, miután általában szüksége lesz egy rendszer a regisztrálás és a modellek kezelése. Általában szkriptek vagy az API-k és a háttérrendszer adatbázis vagy versioning kombinációját kell. Néhány lehetőség, amely a felügyeleti feladatokhoz érdemes lehet a következők:
 
-1. [Az Azure Machine Learning - modell felügyeleti szolgáltatás](../service/index.yml)
+1. [Az Azure Machine Learning - modell felügyeleti szolgáltatás](../index.yml)
 2. [Az MIT ModelDB](https://mitdbg.github.io/modeldb/) 
 3. [SQL-kiszolgáló egy modell felügyeleti rendszer](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)

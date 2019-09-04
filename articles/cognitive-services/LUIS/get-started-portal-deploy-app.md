@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/07/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 5c310c1943eaf23423be873c6172e27c621fe109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564077"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257076"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Gyors útmutató: Alkalmazás üzembe helyezése a LUIS-portálon
 
@@ -57,13 +57,13 @@ Az előrejelzési végpont erőforrását a Azure Portal hozza létre. Ez az er�
 
 Minden alkalommal, amikor új-erőforrást hoz létre a LUIS számára, hozzá kell rendelnie az erőforrást a LUIS alkalmazáshoz. A hozzárendelés után ezt a lépést csak akkor kell végrehajtania, ha új erőforrást hoz létre. Létrehozhat egy új erőforrást az alkalmazás régiói kibontásához, vagy nagyobb számú előrejelzési lekérdezés támogatásához.
 
-1. Jelentkezzen be a [Luis](https://www.luis.ai) -portálra, és válassza ki a **myEnglishApp** alkalmazást az alkalmazások listából.
+1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai) , és válassza ki a **myEnglishApp** alkalmazást az alkalmazások listából.
 
-1. Válassza a **kezelés** lehetőséget a jobb felső menüben, majd válassza a **kulcsok és végpontok**lehetőséget.
+1. Válassza a **kezelés** lehetőséget a jobb felső menüben, majd válassza az **Azure-erőforrások**lehetőséget.
 
-1. A LUIS hozzáadásához válassza a **hozzárendelés erőforrás +** elemet.
+1. A LUIS hozzáadásához válassza az **előrejelzési erőforrás hozzáadása**lehetőséget.
 
-   [![Erőforrás kiosztása az alkalmazáshoz](./media/get-started-portal-deploy-app/assign-resource-button.png)](./media/get-started-portal-deploy-app/assign-resource-button.png#lightbox)
+    <!-- TBD: get screenshot-->
 
 1. Válassza ki a bérlőt, az előfizetést és az erőforrás nevét. Válassza ki **erőforrás hozzárendelése**.
 
@@ -75,7 +75,7 @@ Minden alkalommal, amikor új-erőforrást hoz létre a LUIS számára, hozzá k
 
 Az alkalmazás betanítása, amikor készen áll a tesztelésre. Tegye közzé az alkalmazást, ha azt szeretné, hogy a jelenleg betanított verzió elérhető legyen az ügyfélalkalmazások számára a lekérdezés-előrejelzési végpont futtatókörnyezetből.
 
-1. Ha az alkalmazás nincs betanítva, a  jobb felső menüben válassza a betanítás lehetőséget.
+1. Ha az alkalmazás nincs betanítva, a jobb felső menüben válassza a **betanítás** lehetőséget.
 
 1. A felső menüben válassza a **Közzététel** lehetőséget. Fogadja el az alapértelmezett környezeti beállításokat, majd válassza a **Közzététel**lehetőséget.
 
@@ -87,7 +87,7 @@ Az alkalmazás betanítása, amikor készen áll a tesztelésre. Tegye közzé a
 
 1. Válassza ki az új erőforrás nevéhez társított végpont URL-címét. Ez a művelet egy megfelelő módon létrehozott URL-címmel nyit meg egy webböngészőt, amely az előrejelzési végpont futtatókörnyezetére `GET` irányuló kérést tesz elérhetővé.
 
-1. Az URL-cím végén a lekérdezés rövid, az pedig az, ahol a felhasználó a Get kérelemhez van hozzáfűzve.  `q=` A `q=`(z) után adja meg ugyanazt a felhasználói kiírást, amelyet az előző rövid útmutató végén használ:
+1. Az URL-cím végén a lekérdezés rövid, az pedig az, ahol a felhasználó a Get kérelemhez van hozzáfűzve. `q=` A `q=`(z) után adja meg ugyanazt a felhasználói kiírást, amelyet az előző rövid útmutató végén használ:
 
     ```Is there a form named hrf-234098```
 
@@ -121,7 +121,7 @@ Az alkalmazás betanítása, amikor készen áll a tesztelésre. Tegye közzé a
     }
     ```
 
-    Ez a válasz több információt nyújt, mint az előző oktatóanyag alapértelmezett teszt panelje. Ha ugyanezt az információt szeretné megtekinteni a teszt ablaktáblán, közzé kell tennie az alkalmazást. Az alkalmazás közzététele után válassza az **összehasonlítás** a közzétételsel a teszt ablaktáblán. A közzétett teszt ablaktáblán a **JSON megjelenítése nézet** használatával megtekintheti az előző lépéssel MEGegyező JSON-t. Így összehasonlíthatja a jelenleg használt alkalmazást a végponton közzétett alkalmazással.
+    Ez a válasz több információt nyújt, mint az előző oktatóanyag alapértelmezett teszt panelje. Ha ugyanezt az információt szeretné megtekinteni a teszt ablaktáblán, közzé kell tennie az alkalmazást. Az alkalmazás közzététele után válassza az **összehasonlítás a közzétételsel** a teszt ablaktáblán. A közzétett teszt ablaktáblán a **JSON megjelenítése nézet** használatával megtekintheti az előző lépéssel MEGegyező JSON-t. Így összehasonlíthatja a jelenleg használt alkalmazást a végponton közzétett alkalmazással.
 
     [![Az alkalmazás aktuális szerkesztésének és közzétett verziójának összehasonlítása](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
 

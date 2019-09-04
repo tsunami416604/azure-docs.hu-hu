@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: c351ee8290b60c81add173bb927b0c12e37f5c7c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 7fe2c39871f1cd512da7f9a2c5146e79abbe74a6
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018128"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279600"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>A VMware felmérésének és migrálásának támogatási mátrixa
 
@@ -35,8 +35,7 @@ A táblázat összefoglalja a VMware virtuális gépek támogatott forgatóköny
 **Támogatás** | **Részletek**
 --- | ---
 **Azure-engedélyek** | Azure Migrate projekt létrehozásához közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az előfizetésben.
-**VMware-korlátozások**  | Egyetlen projektben akár 35 000 VMware virtuális gépet is megvizsgálhat. Egy Azure-előfizetésben több projektet is létrehozhat.
-**Projekt korlátai** | A projektek tartalmazhatják a VMware virtuális gépeket és a Hyper-V virtuális gépeket is, az értékelési korlátokig.
+**VMware-korlátozások**  | Egyetlen projektben akár 35 000 VMware virtuális gépet is megvizsgálhat. Egy Azure-előfizetésben több projektet is létrehozhat. A projektek tartalmazhatják a VMware virtuális gépeket és a Hyper-V virtuális gépeket is, az értékelési korlátokig.
 **Régiócsoport** | Azure Migrate-projektet számos földrajzi régióban is létrehozhat. Habár ezekben a földrajzi területeken csak projekteket hozhat létre, a gépeket más célhelyekre is kielemezheti vagy áttelepítheti. A projekt földrajza csak a felderített metaadatok tárolására szolgál.
 
 **Régiócsoport** | **Metaadatok tárolási helye**
@@ -70,14 +69,15 @@ Az értékeléshez csak olvasható fiókra van szükség a vCenter Server.
 
 ## <a name="assessment-appliance-requirements"></a>Felmérés – készülékre vonatkozó követelmények
 
-A VMware-hez készült Azure Migrate készülék üzembe helyezése vCenter Serverba importált PETESEJT-sablonnal történik.
+Azure Migrate egy könnyű berendezést futtat a VMware virtuális gépek felderítéséhez, valamint a virtuális gép metaadatainak és teljesítményadatait a Azure Migrateba való küldéséhez. A VMware rendszerhez készült készülék üzembe helyezése vCenter Serverba importált PETESEJT-sablonnal történik. A következő táblázat összefoglalja a készülékre vonatkozó követelményeket.
 
 **Támogatás** | **Részletek**
 --- | ---
-**vCenter Server** | Elegendő erőforrásra van szüksége a vCenter Server egy virtuális gép lefoglalásához 32 GB RAM-mal, 8 vCPU és egy külső virtuális kapcsolóval.<br/><br/> A berendezéshez közvetlenül vagy proxyn keresztül kell internet-hozzáférést igényelni.
-**ESXi** | A berendezés virtuális gépnek a 5,5-es vagy újabb verzióját futtató ESXi-gazdagépre kell telepítenie.
-**Azure Migrate projekt** | Egy készülék egyetlen projekthez is társítható.
-**vCenter Server** | A készülékek akár 10 000 VMware virtuális gépet is felfedezhetnek vCenter Serveron.<br/> Egy készülék csatlakozhat egy vCenter Serverhoz.
+**Berendezések üzembe helyezése** | A készüléket VMware virtuális gépként kell üzembe helyezni. Elegendő erőforrásra van szüksége a vCenter Server egy virtuális gép lefoglalásához 32 GB RAM-mal, 8 vCPU és egy külső virtuális kapcsolóval.<br/><br/> A berendezéshez közvetlenül vagy proxyn keresztül kell internet-hozzáférést igényelni.<br/> A berendezés virtuális gépnek a 5,5-es vagy újabb verzióját futtató ESXi-gazdagépre kell telepítenie. 
+**Azure Migrate projekt** | Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> Egy projektben akár 35 000 virtuális gépet is megvizsgálhat.
+**Felfedezés** | A készülékek akár 10 000 VMware virtuális gépet is felfedezhetnek vCenter Serveron.<br/> Egy berendezés egyetlen vCenter Serverhoz tud csatlakozni.
+**Értékelési csoport** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.
+**Assessment** | Egyetlen értékeléssel akár 35 000 virtuális gépet is megvizsgálhat.
 
 
 ## <a name="assessment-url-access-requirements"></a>Assessment-URL-hozzáférési követelmények
@@ -107,6 +107,8 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 Berendezés | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/><br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával:```https://<appliance-ip-or-name>:44368``` <br/><br/>A 443-es, 5671-as és 5672-es porton kimenő kapcsolatok a felderítési és a teljesítménybeli metaadatok küldésére Azure Migrate.
 vCenter Server | A 443-es TCP-porton bejövő kapcsolatok lehetővé teszik, hogy a berendezés konfigurációs és teljesítménybeli metaadatokat gyűjtsön az értékelésekhez. <br/><br/> A készülék alapértelmezés szerint az 443-as porton csatlakozik a vCenter-hez. Ha a vCenter-kiszolgáló egy másik portot figyel, akkor a felderítés beállításakor módosíthatja a portot.
 
+## <a name="migration---limitations"></a>Áttelepítés – korlátozások
+Egyszerre legfeljebb 10 virtuális gépet választhat a replikáláshoz. Ha több gépet szeretne áttelepíteni, a replikálást a 10 csoportba. A VMware ügynök nélküli Migrálás esetében akár 100 replikálást is futtathat egyszerre.
 
 ## <a name="agentless-migration-vmware-server-requirements"></a>Ügynök nélküli áttelepítés – VMware Server-követelmények
 
@@ -220,7 +222,7 @@ A VMware virtuális gépek és a Azure Migrate kiszolgáló áttelepítését bi
 **Összetevő** | **Követelmény**
 --- | ---
  | **VMware-beállítások** (VMware VM-készülék)
-PowerCLI | A [PowerCLI 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) -es verziójának telepítve kell lennie, ha a replikációs berendezés VMWare virtuális gépen fut.
+PowerCLI | A [PowerCLI 6,0-es verziójának](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) telepítve kell lennie, ha a replikációs berendezés VMWare virtuális gépen fut.
 Hálózati adapter típusa | VMXNET3 (ha a készülék VMware virtuális gép)
  | **Hardverbeállítások**
 Processzormagok | 8

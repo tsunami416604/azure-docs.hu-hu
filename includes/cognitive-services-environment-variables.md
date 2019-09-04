@@ -4,41 +4,43 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 6d6451d50a00569eb1da8f5b0a0dc10d3c6b1115
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 367ae27a6afec803d2e3f98f54bdcf852330ddc6
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67841514"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274687"
 ---
-## <a name="configure-an-environment-variable-for-authentication"></a>A hitelesítési környezeti változó konfigurálása
+## <a name="configure-an-environment-variable-for-authentication"></a>Környezeti változó konfigurálása hitelesítéshez
 
-Alkalmazások hozzáférésének engedélyezése a Cognitive Services használata kell. Hitelesítést végezni, azt javasoljuk egy környezeti változót, a kulcsok tárolására az Azure-erőforrások létrehozásához. 
+Az alkalmazásoknak hitelesíteniük kell az általuk használt Cognitive Services hozzáférését. A hitelesítéshez javasoljuk, hogy hozzon létre egy környezeti változót az Azure-erőforrások kulcsainak tárolásához. 
 
-Miután a kulcs, kiírhatja azokat egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje le `your-key` az erőforrás a kulcsok egyikével.
+Miután elvégezte a kulcsot, írja azt egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje `your-key` le az értékét az erőforrás egyik kulcsára.
 
-* Windows
+#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-    ```console
-    setx COGNITIVE_SERVICE_KEY "your-key"
-    ```
+```console
+setx COGNITIVE_SERVICE_KEY "your-key"
+```
 
-    Miután hozzáadta a környezeti változót, előfordulhat, hogy újra kell indítania minden futó programot, amelynek szüksége lehet a környezeti változó beolvasására, beleértve a konzolablakot is. Például ha szerkesztőként a Visual Studio használ, indítsa újra a Visual Studio a példa futtatása előtt.
+Miután hozzáadta a környezeti változót, előfordulhat, hogy újra kell indítania minden futó programot, amelynek szüksége lehet a környezeti változó beolvasására, beleértve a konzolablakot is. Ha például a Visual studiót használja szerkesztőként, indítsa újra a Visual studiót a példa futtatása előtt.
 
-* Linux
-    
-    ```bash
-    export COGNITIVE_SERVICE_KEY=your-key
-    ```
-    
-    A környezeti változó hozzáadását követően futtassa a `source ~/.bashrc` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
-    
-* macOS
-    
-    Módosítsa a .bash_profile fájlt, és adja hozzá a környezeti változót:
-    
-    ```bash
-    export COGNITIVE_SERVICE_KEY=your-key
-    ```
-    
-    A környezeti változó hozzáadását követően futtassa a `source .bash_profile` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+```bash
+export COGNITIVE_SERVICE_KEY=your-key
+```
+
+A környezeti változó hozzáadását követően futtassa a `source ~/.bashrc` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
+
+#### <a name="macostabunix"></a>[macOS](#tab/unix)
+
+Módosítsa a .bash_profile fájlt, és adja hozzá a környezeti változót:
+
+```bash
+export COGNITIVE_SERVICE_KEY=your-key
+```
+
+A környezeti változó hozzáadását követően futtassa a `source .bash_profile` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
+
+***

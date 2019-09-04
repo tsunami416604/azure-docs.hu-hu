@@ -1,28 +1,28 @@
 ---
-title: Hozzon létre egy Azure Key Vault-tanúsítvánnyal |} Az Azure Marketplace-en
-description: Azt ismerteti, hogyan kell regisztrálni a virtuális gép Azure által üzembe helyezett virtuális merevlemezről.
+title: Azure Key Vault tanúsítvány létrehozása | Azure piactér
+description: A cikk azt ismerteti, hogyan regisztrálhat egy virtuális gépet egy Azure-ban üzembe helyezett VHD-ről.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 5163aa0a9195aa712fa333667b3f7ccf227469be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c27605d2f9b87a9d4ba3d2326c0ce7ad437d3441
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938387"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240982"
 ---
-# <a name="create-certificates-for-azure-key-vault"></a>Tanúsítványok létrehozása az Azure Key Vault
+# <a name="create-certificates-for-azure-key-vault"></a>Azure Key Vault tanúsítványok létrehozása
 
-Ez a cikk azt ismerteti, hogyan építheti ki az Azure-ban üzemeltetett virtuális gépeken (VM) a Windows Rendszerfelügyeleti (webszolgáltatások WinRM) kapcsolat létesítéséhez szükséges önaláírt tanúsítványokat. Ez a folyamat három lépésből áll:
+Ez a cikk a Rendszerfelügyeleti webszolgáltatások (WinRM) Azure-ban üzemeltetett virtuális géphez (VM) való létrehozásához szükséges önaláírt tanúsítványok kiépítését ismerteti. Ez a folyamat három lépésből áll:
 
-1.  A biztonsági tanúsítvány létrehozásához. 
-2.  Hozzon létre az Azure Key Vaultban tárolni ezt a tanúsítványt. 
-3.  A tanúsítványok, a kulcstartó Store. 
+1.  Hozza létre a biztonsági tanúsítványt. 
+2.  Hozza létre a Azure Key Vault a tanúsítvány tárolásához. 
+3.  Tárolja a tanúsítványokat a Key vaultban. 
 
-Ezt a munkát használhatja az új vagy meglévő Azure-erőforráscsoportban.  A korábbi megközelítés a következő magyarázatot használatban van.
+Ehhez a munkához egy új vagy egy meglévő Azure-erőforráscsoportot is használhat.  A korábbi módszert a következő magyarázat használja.
 
 
 
@@ -30,15 +30,15 @@ Ezt a munkát használhatja az új vagy meglévő Azure-erőforráscsoportban.  
 
 ## <a name="create-the-certificate"></a>A tanúsítvány létrehozása
 
-Szerkessze és futtassa a következő Azure Powershell-parancsprogram létrehozásához a tanúsítványfájlt (.pfx) a helyi mappában.  Cserélje le a következő paraméterek értékeit kell:
+Szerkessze és futtassa a következő Azure PowerShell-parancsfájlt a tanúsítványfájl (. pfx) helyi mappában való létrehozásához.  A következő paraméterek értékeit kell lecserélnie:
 
 |  **A paraméter**        |   **Leírás**                                                               |
 |  -------------        |   ---------------                                                               |
-| `$certroopath` | A .pfx fájlt a helyi mappa  |
-| `$location`    | Az Azure standard földrajzi helyek egyikén  |
-| `$vmName`      | A tervezett Azure virtuális gép neve   |
-| `$certname`    | A tanúsítvány nevét meg kell egyeznie a tervezett virtuális gép teljesen minősített tartománynevét  |
-| `$certpassword` | A tanúsítvány jelszavát meg kell egyeznie a tervezett virtuális gép használt jelszó  |
+| `$certroopath` | Helyi mappa, ahová menteni szeretné a. pfx-fájlt  |
+| `$location`    | Az Azure standard földrajzi helyeinek egyike  |
+| `$vmName`      | A tervezett Azure-beli virtuális gép neve   |
+| `$certname`    | A tanúsítvány neve; meg kell egyeznie a tervezett virtuális gép teljes tartománynevével  |
+| `$certpassword` | A tanúsítványokhoz tartozó jelszónak meg kell egyeznie a tervezett virtuális géphez használt jelszóval  |
 |  |  |
 
 ```powershell
@@ -68,23 +68,23 @@ Szerkessze és futtassa a következő Azure Powershell-parancsprogram létrehoz�
 
 ```
 > [!TIP]
-> Tartsa meg a PowerShell-konzol ugyanazon munkamenet aktív, ezek a lépések során úgy, hogy a különböző paraméterek megőrzi a rendszer.
+> A fenti lépések során tartsa aktív módon ugyanezt a PowerShell-konzolt, hogy megőrizze a különböző paraméterek értékeit.
 
 > [!WARNING]
-> Ha menti ezt a szkriptet, tárolja biztonságos helyen csak, mert tartalmaz biztonsági információk (jelszó).
+> Ha menti ezt a parancsfájlt, csak biztonságos helyen tárolja, mert biztonsági adatokat (jelszót) tartalmaz.
 
 
-## <a name="create-the-key-vault"></a>A kulcstartó létrehozása
+## <a name="create-the-key-vault"></a>A Key Vault létrehozása
 
-Másolja ki a tartalmát a [központi telepítési sablont a key vault](./cpp-key-vault-deploy-template.md) egy fájl a helyi gépen. (az alábbi példa parancsprogram, ehhez az erőforráshoz van `C:\certLocation\keyvault.json`.)  Szerkessze és futtassa a következő Azure Powershell-parancsfájlt hozhat létre egy Azure Key Vault-példány és a társított erőforráscsoportokhoz.  Cserélje le a következő paraméterek értékeit kell:
+Másolja a [Key Vault telepítési sablon](./cpp-key-vault-deploy-template.md) tartalmát a helyi számítógép egyik fájljába. (az alábbi parancsfájlban ez az erőforrás `C:\certLocation\keyvault.json`.)  Szerkessze és futtassa az alábbi Azure PowerShell-szkriptet Azure Key Vault-példány és a társított erőforráscsoport létrehozásához.  A következő paraméterek értékeit kell lecserélnie:
 
 |  **A paraméter**        |   **Leírás**                                                               |
 |  -------------        |   ---------------                                                               |
-| `$postfix`            | Üzembe helyezés azonosítók hozzáfűzi tetszőleges numerikus karakterlánc                     |
-| `$rgName`             | Hozhat létre Azure-erőforrás (RG) csoport neve                                        |
-|  `$location`          | Az Azure standard földrajzi helyek egyikén                                  |
-| `$kvTemplateJson`     | A key vaulthoz Resource Manager-sablont tartalmazó könyvtárban (keyvault.json) fájl elérési útja |
-| `$kvname`             | Az új kulcstartó neve                                                       |
+| `$postfix`            | A központi telepítési azonosítóhoz fűzött tetszőleges numerikus karakterlánc                     |
+| `$rgName`             | Létrehozandó Azure-erőforráscsoport (RG) neve                                        |
+|  `$location`          | Az Azure standard földrajzi helyeinek egyike                                  |
+| `$kvTemplateJson`     | A Key Vault Resource Manager-sablonját tartalmazó fájl (kulcstartó. JSON) elérési útja |
+| `$kvname`             | Az új kulcstároló neve                                                       |
 |  |  |
 
 ```powershell
@@ -183,9 +183,9 @@ Másolja ki a tartalmát a [központi telepítési sablont a key vault](./cpp-ke
         
 ```
 
-## <a name="store-the-certificate"></a>A tanúsítvány Store
+## <a name="store-the-certificate"></a>A tanúsítvány tárolása
 
-Most már tárolhat a tanúsítványok, a .pfx fájlban a következő szkript futtatásával új kulcstartóba. 
+A következő szkript futtatásával a. pfx fájlban található tanúsítványokat az új kulcstartóba is tárolhatja. 
 
 ```powershell
     #push certificate to key vault secret
@@ -201,7 +201,7 @@ Most már tárolhat a tanúsítványok, a .pfx fájlban a következő szkript fu
     "dataType" :"pfx",
     "password": "$certpassword"
     }
-    "@
+"@
             echo $certpassword
             $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
             $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
@@ -214,4 +214,4 @@ Most már tárolhat a tanúsítványok, a .pfx fájlban a következő szkript fu
 
 ## <a name="next-steps"></a>További lépések
 
-A rendszer ezután [virtuális gép üzembe helyezése a felhasználói Virtuálisgép-rendszerképből](./cpp-deploy-vm-user-image.md).
+A következő lépésként [üzembe kell helyeznie egy virtuális gépet a felhasználói VM-rendszerképből](./cpp-deploy-vm-user-image.md).

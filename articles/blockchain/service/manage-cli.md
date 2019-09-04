@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-vel az Azure Blockchain szolgáltatás kezelése
-description: Hogyan hozhat létre és kezelhet az Azure Blockchain-szolgáltatás az Azure CLI-vel
+title: Az Azure Blockchain szolgáltatás kezelése az Azure CLI-vel
+description: Azure Blockchain-szolgáltatás létrehozása és kezelése az Azure CLI-vel
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,24 +10,24 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: d078ca181b2eed4b80d4f12f1c03b42f4e242194
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee7e529593960c3a7c62021225122370c122b3c4
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154441"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240970"
 ---
-# <a name="manage-azure-blockchain-service-with-azure-cli"></a>Az Azure CLI-vel az Azure Blockchain-szolgáltatás kezelése
+# <a name="manage-azure-blockchain-service-using-azure-cli"></a>Az Azure Blockchain szolgáltatás kezelése az Azure CLI-vel
 
-Az Azure Portalon kívül az Azure CLI használatával hozhat létre és kezelhet a blockchain-tagok és a tranzakciós csomópontok az Azure Blockchain-szolgáltatás.
+A Azure Portalon kívül az Azure CLI használatával is kezelheti az Azure Blockchain szolgáltatás blockchain-tagjait és tranzakciós csomópontjait.
 
-Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli) és hogy bejelentkezett egy Azure-fiókjába a következővel `az login`.
+Győződjön meg arról, hogy telepítette a legújabb [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -t, és bejelentkezett egy Azure `az login`-fiókba a-ben.
 
-A következő példákban cserélje le a példában `<parameter names>` a saját értékeire.
+Az alábbi példákban cserélje le a `<parameter names>` példát a saját értékeire.
 
 ## <a name="create-blockchain-member"></a>Blockchain-tag létrehozása
 
-Példa az Azure Blockchain Service-ben, amely a kvórum Főkönyv protokoll egy új consortium hoz létre a blockchain-tag.
+Példa létrehoz egy blockchain tagot az Azure Blockchain szolgáltatásban, amely egy új konzorciumban futtatja a kvórum Ledger protokollt.
 
 ```azurecli
 az resource create --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --is-full-object --properties "{ \"location\": \"<myBlockchainLocation>\", \"properties\": {\"password\": \"<myStrongPassword>\", \"protocol\": \"Quorum\", \"consortium\": \"<myConsortiumName>\", \"consortiumManagementAccountPassword\": \"<myConsortiumManagementAccountPassword>\", \"firewallRules\": [ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ] }, \"sku\": { \"name\": \"<skuName>\" } }"
@@ -35,35 +35,34 @@ az resource create --resource-group <myResourceGroup> --name <myMemberName> --re
 
 | Paraméter | Leírás |
 |---------|-------------|
-| **resource-group** | Erőforráscsoport neve, az Azure Blockchain-szolgáltatási erőforrások jönnek létre. |
-| **name** | Egyedi név, amely azonosítja az Azure Blockchain-szolgáltatás blockchain tag. A név szolgál a nyilvános végpont címe. Például: `myblockchainmember.blockchain.azure.com`. |
-| **hely** | Az Azure régióban, amelyben létrehozza a blockchain tag. Például: `eastus`. Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet. |
-| **jelszó** | A tag fiók jelszavát. A tag fiók jelszavát az alapszintű hitelesítést használ, a blockchain tag nyilvános végpont hitelesítéséhez használatos. A jelszónak meg kell felelnie a következő négy követelmények három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági ajánlat (\`), quote("), egyetlen quote('), csal és semicolumn(;) duplán|
-| **protokoll** | Nyilvános előzetes verziója támogatja a kvórum. |
-| **consortium** | A csatlakozás, vagy hozzon létre consortium neve. |
-| **consortiumManagementAccountPassword** | Consortium felügyeleti jelszava. A jelszó konzorcium való csatlakozásra szolgál. |
-| **ruleName** | IP-címtartomány engedélyezési szabály neve. Nem kötelező paraméter a tűzfalszabályok esetében.|
-| **startIpAddress** | Az engedélyezési listára helyezési IP-címtartomány kezdete. Nem kötelező paraméter a tűzfalszabályok esetében. |
-| **endIpAddress** | Az engedélyezési listára helyezési IP-címtartomány vége. Nem kötelező paraméter a tűzfalszabályok esetében. |
-| **skuName** | Csomag típusa. S0 Standard és B0 használata alapszintű. |
+| **resource-group** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai jönnek létre. |
+| **name** | Egy egyedi név, amely az Azure Blockchain szolgáltatás Blockchain-tagját azonosítja. A nevet a rendszer a nyilvános végpont címeként használja. Például: `myblockchainmember.blockchain.azure.com`. |
+| **hely** | Az az Azure-régió, ahol a blockchain-tag létrejött. Például: `eastus`. Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet. |
+| **jelszó** | A tag fiók jelszava. A tag fiók jelszava a blockchain-tag nyilvános végpontján történő hitelesítésre szolgál alapszintű hitelesítés használatával. A jelszónak meg kell felelnie a következő négy követelmény három követelményének: a hossznak 12 & 72 karakterből kell állnia, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 különleges karakter, amely nem szám előjel (#), százalék (%), vessző (,), csillag (*), vissza idézőjel (\`), idézőjel ("), szimpla idézőjel ('), kötőjel (-) és semicolumn (;)|
+| **protokoll** | A nyilvános előzetes verzió támogatja a kvórumot. |
+| **consortium** | A csatlakozáshoz vagy létrehozáshoz használandó konzorcium neve. |
+| **consortiumManagementAccountPassword** | A konzorcium felügyeleti jelszava. A rendszer a jelszót használja a konzorciumhoz való csatlakozáshoz. |
+| **ruleName** | Az IP-címtartomány engedélyezési szabályának neve. A tűzfalszabályok választható paramétere.|
+| **startIpAddress** | Az engedélyezési listán szereplő IP-címtartomány kezdete. A tűzfalszabályok választható paramétere. |
+| **endIpAddress** | Az engedélyezési listán szereplő IP-címtartomány vége. A tűzfalszabályok választható paramétere. |
+| **skuName** | A rétegek típusa. A standard és a B0 S0 használata alapszintű. |
 
-## <a name="change-blockchain-member-password"></a>Blockchain-tag jelszó módosítása
+## <a name="change-blockchain-member-password"></a>Blockchain-tag jelszavának módosítása
 
-Példa módosítja a blockchain-tagok jelszót.
+Példa egy blockchain-tag jelszavának módosítására.
 
 ```azurecli
 az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.password="<myStrongPassword>" --remove properties.consortiumManagementAccountAddress
 ```
 | Paraméter | Leírás |
 |---------|-------------|
-| **resource-group** | Erőforráscsoport neve, az Azure Blockchain-szolgáltatási erőforrások jönnek létre. |
-| **name** | Az Azure Blockchain-szolgáltatás tag azonosító név. |
-| **jelszó** | A tag fiók jelszavát. A jelszónak meg kell felelnie a következő négy követelmények három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági ajánlat (\`), quote("), egyetlen quote('), csal és semicolon(;) duplán. |
+| **resource-group** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai jönnek létre. |
+| **name** | Az Azure Blockchain-szolgáltatás tagját azonosító név. |
+| **jelszó** | A tag fiók jelszava. A jelszónak meg kell felelnie a következő négy követelmény három követelményének: a hossznak 12 & 72 karakterből kell állnia, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 különleges karakter, amely nem szám előjel (#), százalék (%), vessző (,), csillag (*), vissza idézőjel (\`), dupla idézőjel ("), szimpla idézőjel ('), kötőjel (-) és pontosvessző (;). |
 
+## <a name="create-transaction-node"></a>Tranzakciós csomópont létrehozása
 
-## <a name="create-transaction-node"></a>Tranzakció csomópont létrehozása
-
-Egy meglévő blockchain tag belül tranzakció csomópontot hozhat létre. Tranzakció csomópontok hozzáadásával növelheti a biztonsági elkülönítés-terhelés. Például lehet egy másik ügyfélalkalmazások tranzakció csomópont végpontot.
+Hozzon létre egy tranzakciós csomópontot egy meglévő blockchain-tag belsejében. A tranzakciós csomópontok hozzáadásával növelheti a biztonsági elkülönítést és terjesztheti a terhelést. Rendelkezhet például egy tranzakciós csomópont végponttal különböző ügyfélalkalmazások számára.
 
 ```azurecli
 az resource create --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers  --is-full-object --properties "{ \"location\": \"<myRegion>\", \"properties\": { \"password\": \"<myStrongPassword>\", \"firewallRules\": [ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ] } }"
@@ -71,17 +70,17 @@ az resource create --resource-group <myResourceGroup> --name <myMemberName>/tran
 
 | Paraméter | Leírás |
 |---------|-------------|
-| **resource-group** | Erőforráscsoport neve, az Azure Blockchain-szolgáltatási erőforrások jönnek létre. |
-| **name** | Az Azure Blockchain-szolgáltatás, amely a tranzakció új csomópont nevét is tartalmazza blockchain tag nevét. |
-| **hely** | Az Azure régióban, amelyben létrehozza a blockchain tag. Például: `eastus`. Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet. |
-| **jelszó** | A tranzakció csomópont jelszót. A jelszónak meg kell felelnie a következő négy követelmények három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági ajánlat (\`), quote("), egyetlen quote('), csal és semicolon(;) duplán. |
-| **ruleName** | IP-címtartomány engedélyezési szabály neve. Nem kötelező paraméter a tűzfalszabályok esetében. |
-| **startIpAddress** | Az engedélyezési listára helyezési IP-címtartomány kezdete. Nem kötelező paraméter a tűzfalszabályok esetében. |
-| **endIpAddress** | Az engedélyezési listára helyezési IP-címtartomány vége. Nem kötelező paraméter a tűzfalszabályok esetében.|
+| **resource-group** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai jönnek létre. |
+| **name** | Az Azure Blockchain szolgáltatás Blockchain azon tagja, amely az új tranzakciós csomópont nevét is tartalmazza. |
+| **hely** | Az az Azure-régió, ahol a blockchain-tag létrejött. Például: `eastus`. Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet. |
+| **jelszó** | A tranzakciós csomópont jelszava. A jelszónak meg kell felelnie a következő négy követelmény három követelményének: a hossznak 12 & 72 karakterből kell állnia, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 különleges karakter, amely nem szám előjel (#), százalék (%), vessző (,), csillag (*), vissza idézőjel (\`), dupla idézőjel ("), szimpla idézőjel ('), kötőjel (-) és pontosvessző (;). |
+| **ruleName** | Az IP-címtartomány engedélyezési szabályának neve. A tűzfalszabályok választható paramétere. |
+| **startIpAddress** | Az engedélyezési listán szereplő IP-címtartomány kezdete. A tűzfalszabályok választható paramétere. |
+| **endIpAddress** | Az engedélyezési listán szereplő IP-címtartomány vége. A tűzfalszabályok választható paramétere.|
 
-## <a name="change-transaction-node-password"></a>Tranzakció-csomópont jelszó módosítása
+## <a name="change-transaction-node-password"></a>Tranzakciós csomópont jelszavának módosítása
 
-A példában a tranzakció csomópont jelszót módosít.
+Példa a tranzakciós csomópont jelszavának módosítására.
 
 ```azurecli
 az resource update --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers  --set properties.password="<myStrongPassword>"
@@ -89,13 +88,13 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName>/tran
 
 | Paraméter | Leírás |
 |---------|-------------|
-| **resource-group** | Ha az Azure Blockchain-szolgáltatási erőforrások léteznek erőforráscsoport nevét. |
-| **name** | Az Azure Blockchain-szolgáltatás, amely a tranzakció új csomópont nevét is tartalmazza blockchain tag nevét. |
-| **jelszó** | A tranzakció csomópont jelszót. A jelszónak meg kell felelnie a következő négy követelmények három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági ajánlat (\`), quote("), egyetlen quote('), csal és semicolon(;) duplán. |
+| **resource-group** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai léteznek. |
+| **name** | Az Azure Blockchain szolgáltatás Blockchain azon tagja, amely az új tranzakciós csomópont nevét is tartalmazza. |
+| **jelszó** | A tranzakciós csomópont jelszava. A jelszónak meg kell felelnie a következő négy követelmény három követelményének: a hossznak 12 & 72 karakterből kell állnia, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 különleges karakter, amely nem szám előjel (#), százalék (%), vessző (,), csillag (*), vissza idézőjel (\`), dupla idézőjel ("), szimpla idézőjel ('), kötőjel (-) és pontosvessző (;). |
 
-## <a name="change-consortium-management-account-password"></a>Consortium felügyeleti fiók jelszó módosítása
+## <a name="change-consortium-management-account-password"></a>A konzorcium-felügyeleti fiók jelszavának módosítása
 
-A consortium felügyeleti fiókja consortium tagsági felügyeleti szolgál. Minden tag egyedileg azonosítja a consortium felügyeleti fiókját, és módosíthatja az a következő parancsot a fiókhoz tartozó jelszót.
+A konzorcium-felügyeleti fiók a konzorcium tagságának felügyeletére szolgál. Az egyes tagokat a konzorciumi felügyeleti fiókok egyedileg azonosítják, és a fiók jelszavát a következő paranccsal módosíthatja.
 
 ```azurecli
 az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.consortiumManagementAccountPassword="<myConsortiumManagementAccountPassword>" --remove properties.consortiumManagementAccountAddress
@@ -103,9 +102,9 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 
 | Paraméter | Leírás |
 |---------|-------------|
-| **resource-group** | Erőforráscsoport neve, az Azure Blockchain-szolgáltatási erőforrások jönnek létre. |
-| **name** | Az Azure Blockchain-szolgáltatás tag azonosító név. |
-| **consortiumManagementAccountPassword** | A consortium felügyeleti fiók jelszavát. A jelszónak meg kell felelnie a következő négy követelmények három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági ajánlat (\`), quote("), egyetlen quote('), csal és semicolon(;) duplán. |
+| **resource-group** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai jönnek létre. |
+| **name** | Az Azure Blockchain-szolgáltatás tagját azonosító név. |
+| **consortiumManagementAccountPassword** | A konzorcium felügyeleti fiókjának jelszava. A jelszónak meg kell felelnie a következő négy követelmény három követelményének: a hossznak 12 & 72 karakterből kell állnia, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 különleges karakter, amely nem szám előjel (#), százalék (%), vessző (,), csillag (*), vissza idézőjel (\`), dupla idézőjel ("), szimpla idézőjel ('), kötőjel (-) és pontosvessző (;). |
   
 ## <a name="update-firewall-rules"></a>Tűzfalszabályok frissítése
 
@@ -115,15 +114,15 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 
 | Paraméter | Leírás |
 |---------|-------------|
-| **resource-group** | Ha az Azure Blockchain-szolgáltatási erőforrások léteznek erőforráscsoport nevét. |
-| **name** | Az Azure Blockchain-szolgáltatás blockchain tag nevét. |
-| **ruleName** | IP-címtartomány engedélyezési szabály neve. Nem kötelező paraméter a tűzfalszabályok esetében.|
-| **startIpAddress** | Az engedélyezési listára helyezési IP-címtartomány kezdete. Nem kötelező paraméter a tűzfalszabályok esetében.|
-| **endIpAddress** | Az engedélyezési listára helyezési IP-címtartomány vége. Nem kötelező paraméter a tűzfalszabályok esetében.|
+| **resource-group** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai léteznek. |
+| **name** | Az Azure Blockchain Service Blockchain-tag neve. |
+| **ruleName** | Az IP-címtartomány engedélyezési szabályának neve. A tűzfalszabályok választható paramétere.|
+| **startIpAddress** | Az engedélyezési listán szereplő IP-címtartomány kezdete. A tűzfalszabályok választható paramétere.|
+| **endIpAddress** | Az engedélyezési listán szereplő IP-címtartomány vége. A tűzfalszabályok választható paramétere.|
 
-## <a name="list-api-keys"></a>Kulcsok listázása API
+## <a name="list-api-keys"></a>API-kulcsok listázása
 
-API-kulcsok csomópont elérése felhasználónévvel és jelszóval hasonló használható. Nincsenek két API-kulcs kulcsrotálás támogatása. A következő paranccsal listázhatja az API-kulcsokat.
+Az API-kulcsok a felhasználónévhez és a jelszóhoz hasonló csomópont-hozzáféréshez használhatók. A kulcs rotációjának támogatásához két API-kulcs szükséges. Használja az alábbi parancsot az API-kulcsok listázásához.
 
 ```azurecli
 az resource invoke-action --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --action "listApiKeys" --resource-type Microsoft.Blockchain/blockchainMembers
@@ -131,12 +130,12 @@ az resource invoke-action --resource-group <myResourceGroup> --name <myMemberNam
 
 | Paraméter | Leírás |
 |---------|-------------|
-| **resource-group** | Ha az Azure Blockchain-szolgáltatási erőforrások léteznek erőforráscsoport nevét. |
-| **name** | Az Azure Blockchain-szolgáltatás, amely a tranzakció új csomópont nevét is tartalmazza blockchain tag nevét. |
+| **resource-group** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai léteznek. |
+| **name** | Az Azure Blockchain szolgáltatás Blockchain azon tagja, amely az új tranzakciós csomópont nevét is tartalmazza. |
 
 ## <a name="regenerate-api-keys"></a>API-kulcsok újragenerálása
 
-Az alábbi parancs segítségével az API-kulcsok újragenerálása.
+Használja az alábbi parancsot az API-kulcsok újragenerálása érdekében.
 
 ```azurecli
 az resource invoke-action --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --action "regenerateApiKeys" --resource-type Microsoft.Blockchain/blockchainMembers --request-body '{"keyName":"<keyValue>"}'
@@ -145,13 +144,13 @@ az resource invoke-action --resource-group <myResourceGroup> --name <myMemberNam
 
 | Paraméter | Leírás |
 |---------|-------------|
-| **resource-group** | Ha az Azure Blockchain-szolgáltatási erőforrások léteznek erőforráscsoport nevét. |
-| **name** | Az Azure Blockchain-szolgáltatás, amely a tranzakció új csomópont nevét is tartalmazza blockchain tag nevét. |
-| **keyName** | Cserélje le \<párokat tartalmazó\> key1 és key2. |
+| **resource-group** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai léteznek. |
+| **name** | Az Azure Blockchain szolgáltatás Blockchain azon tagja, amely az új tranzakciós csomópont nevét is tartalmazza. |
+| **Kulcsnév** | Cserélje \<le a\> key1 vagy a key2 értéket. |
 
-## <a name="delete-a-transaction-node"></a>Egy tranzakció csomópont törlése
+## <a name="delete-a-transaction-node"></a>Tranzakciós csomópont törlése
 
-Példa a blockchain tag tranzakció csomópont törli.
+Példa töröl egy blockchain-tag tranzakciós csomópontot.
 
 ```azurecli
 az resource delete --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers
@@ -159,12 +158,12 @@ az resource delete --resource-group <myResourceGroup> --name <myMemberName>/tran
 
 | Paraméter | Leírás |
 |---------|-------------|
-| **resource-group** | Ha az Azure Blockchain-szolgáltatási erőforrások léteznek erőforráscsoport nevét. |
-| **name** | Az Azure Blockchain-szolgáltatás az új csomópont tranzakciónév törölni is tartalmazó blockchain tag nevét. |
+| **resource-group** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai léteznek. |
+| **name** | Az Azure Blockchain szolgáltatás Blockchain azon tagja, amely a törlendő új tranzakciós csomópont nevét is tartalmazza. |
 
-## <a name="delete-a-blockchain-member"></a>Blockchain tag törlése
+## <a name="delete-a-blockchain-member"></a>Blockchain-tag törlése
 
-Példa törli a blockchain tagja.
+Példa egy blockchain-tag törlésére.
 
 ```azurecli
 az resource delete --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers
@@ -172,12 +171,12 @@ az resource delete --resource-group <myResourceGroup> --name <myMemberName> --re
 
 | Paraméter | Leírás |
 |---------|-------------|
-| **resource-group** | Ha az Azure Blockchain-szolgáltatási erőforrások léteznek erőforráscsoport nevét. |
-| **name** | A törlendő tag blockchain Azure Blockchain-szolgáltatás neve. |
+| **resource-group** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai léteznek. |
+| **name** | A törlendő Azure Blockchain Service Blockchain-tag neve. |
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
-### <a name="grant-access-for-azure-ad-user"></a>Az Azure AD-felhasználó számára
+### <a name="grant-access-for-azure-ad-user"></a>Hozzáférés biztosítása az Azure AD-felhasználó számára
 
 ```azurecli
 az role assignment create --role <role> --assignee <assignee> --scope /subscriptions/<subId>/resourceGroups/<groupName>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>
@@ -185,13 +184,13 @@ az role assignment create --role <role> --assignee <assignee> --scope /subscript
 
 | Paraméter | Leírás |
 |---------|-------------|
-| **Szerepkör** | Neve az Azure AD-szerepkörhöz. |
-| **assignee** | Az Azure AD felhasználói azonosítóját. Például: `user@contoso.com` |
-| **Hatókör** | A szerepkör-hozzárendelés hatókörét. Blockchain tagjának tranzakció csomópont lehet. |
+| **szerepkör** | Az Azure AD-szerepkör neve. |
+| **megbízott** | Azure AD-felhasználói azonosító. Például: `user@contoso.com` |
+| **hatókör** | A szerepkör-hozzárendelés hatóköre. A tranzakciós csomópont blockchain tagja lehet. |
 
-**Példa**
+**Példa:**
 
-Csomópont hozzáférést biztosít az Azure AD-felhasználót a blockchain **tag**:
+Csomópont-hozzáférés biztosítása az Azure AD-felhasználó számára a blockchain- **tag**számára:
 
 ```azurecli
 az role assignment create \
@@ -200,9 +199,9 @@ az role assignment create \
   --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-**Példa**
+**Példa:**
 
-Csomópont hozzáférést biztosít az Azure AD-felhasználót a blockchain **tranzakció csomópont**:
+Csomópont-hozzáférés biztosítása az Azure AD-felhasználó számára a blockchain **tranzakciós csomópontja**számára:
 
 ```azurecli
 az role assignment create \
@@ -211,20 +210,20 @@ az role assignment create \
   --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1/transactionNodes/contosoTransactionNode1
 ```
 
-### <a name="grant-node-access-for-azure-ad-group-or-application-role"></a>Csomópont hozzáférést biztosít az Azure AD-csoport vagy alkalmazás szerepkör
+### <a name="grant-node-access-for-azure-ad-group-or-application-role"></a>Csomópont-hozzáférés biztosítása Azure AD-csoport vagy alkalmazás-szerepkör számára
 
 ```azurecli
 az role assignment create --role <role> --assignee-object-id <assignee_object_id>
 ```
 | Paraméter | Leírás |
 |---------|-------------|
-| **Szerepkör** | Neve az Azure AD-szerepkörhöz. |
-| **assignee-object-id** | Az Azure AD-Csoportazonosító vagy az alkalmazás azonosítóját. |
-| **Hatókör** | A szerepkör-hozzárendelés hatókörét. Blockchain tagjának tranzakció csomópont lehet. |
+| **szerepkör** | Az Azure AD-szerepkör neve. |
+| **assignee-object-id** | Azure AD-csoport azonosítója vagy az alkalmazás azonosítója. |
+| **hatókör** | A szerepkör-hozzárendelés hatóköre. A tranzakciós csomópont blockchain tagja lehet. |
 
-**Példa**
+**Példa:**
 
-A csomópont hozzáférést **alkalmazás-szerepkör**
+Csomópont-hozzáférés megadása az **alkalmazási szerepkörhöz**
 
 ```azurecli
 az role assignment create \
@@ -233,7 +232,7 @@ az role assignment create \
   --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-### <a name="remove-azure-ad-node-access"></a>Távolítsa el az Azure AD-csomópont elérése
+### <a name="remove-azure-ad-node-access"></a>Azure AD-csomópont-hozzáférés eltávolítása
 
 ```azurecli
 az role assignment delete --role <myRole> --assignee <assignee> --scope /subscriptions/mySubscriptionId/resourceGroups/<myResourceGroup>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>/transactionNodes/<myTransactionNode>
@@ -241,11 +240,11 @@ az role assignment delete --role <myRole> --assignee <assignee> --scope /subscri
 
 | Paraméter | Leírás |
 |---------|-------------|
-| **Szerepkör** | Neve az Azure AD-szerepkörhöz. |
-| **assignee** | Az Azure AD felhasználói azonosítóját. Például: `user@contoso.com` |
-| **Hatókör** | A szerepkör-hozzárendelés hatókörét. Blockchain tagjának tranzakció csomópont lehet. |
+| **szerepkör** | Az Azure AD-szerepkör neve. |
+| **megbízott** | Azure AD-felhasználói azonosító. Például: `user@contoso.com` |
+| **hatókör** | A szerepkör-hozzárendelés hatóköre. A tranzakciós csomópont blockchain tagja lehet. |
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure Blockchain-szolgáltatás tranzakció csomópontok konfigurálása az Azure portal használatával](configure-transaction-nodes.md)
+> [Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak konfigurálása a Azure Portal](configure-transaction-nodes.md)

@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure biztonsági kód elemzésének előkészítési útmutatója
-description: Ez a cikk a biztonsági kód elemzési bővítményének telepítését ismerteti
+title: Microsoft biztonsági kód elemzése – bevezetési útmutató
+description: Ez a cikk a Microsoft biztonsági kód elemzése bővítmény telepítését ismerteti.
 author: vharindra
 manager: sukhans
 ms.author: terrylan
@@ -12,72 +12,80 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8a8eca73205d4f8f33d4d069fda72638af61d355
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8936bc21af951cbabb90188b6a31d610caf80395
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718300"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241778"
 ---
-# <a name="how-to-onboarding-and-installing"></a>kézikönyv: Előkészítés és telepítés
+# <a name="onboarding-and-installing"></a>Előkészítés és telepítés
 
-Előfeltételek a Microsoft biztonsági kód elemzésének megkezdéséhez
-  - Jogosult Microsoft Egyesített támogatás szolgáltatások ajánlata (részletek alább)
-  - Azure DevOps-szervezet
-  - Engedélyek az Azure DevOps-szervezet bővítményeinek telepítéséhez
-  - A felhőben üzemeltetett Azure DevOps-folyamattal szinkronizálható forráskód
+A Microsoft biztonsági kód elemzésének megkezdéséhez szükséges előfeltételek:
 
+- A következő szakaszban részletezett, jogosult Microsoft Egyesített támogatás-ajánlat.
+- Egy Azure DevOps-szervezet.
+- Engedélyt ad a bővítmények telepítésére az Azure DevOps-szervezet számára.
+- A felhőben üzemeltetett Azure DevOps-folyamattal szinkronizálható forráskód.
 
-## <a name="onboarding-microsoft-security-code-analysis-extension"></a>A Microsoft biztonsági kód elemzési bővítményének bevezetése
+## <a name="onboarding-the-microsoft-security-code-analysis-extension"></a>A Microsoft biztonsági kód elemzési bővítményének bevezetése
 
-- Ha már rendelkezik az alábbi támogatási ajánlatok valamelyikével, egyszerűen lépjen kapcsolatba a technikai fiókkezelő és a purchase\swap meglévő órájával, hogy hozzáférjen a bővítményhez.
-   - Egységes támogatás – speciális és teljesítményszint, Premier szintű támogatás fejlesztők számára, Premier szintű támogatás a partnerek számára, vagy a nagyvállalati Premier szintű támogatás.
-- Ha a következő támogatási szolgáltatások valamelyikével rendelkezik, vagy nem rendelkezik támogatási csomaggal a Microsofttal, frissítenie kell egy jogosult támogatási ajánlatra:
-   - Azure-támogatás partnerek számára, Azure alapszintű, Azure-fejlesztő, Azure standard, Azure Professional Direct vagy Unified support – Core szint
-- Egy jogosult támogatási ajánlat megvásárlásához tekintse meg a [támogatási szolgáltatások kezdőlapját](https://www.microsoft.com/enterprise/services/support)
-- A támogatási szerződés beszerzése után lépjen kapcsolatba a technikai fiók kezelőjével, amely segítséget nyújt az első lépésekhez és az összes szükséges adat összegyűjtéséhez.
- 
->[!NOTE]
-> Csak a Microsoft partneri hálózatban regisztrált partnerek vásárolhatnak Premier szintű támogatás partnereknek, ellenkező esetben a korábban említett jogosult támogatási ajánlatok egyikét vásárolhatja meg.
-
-## <a name="installing-microsoft-security-code-analysis-extension"></a>A Microsoft biztonsági kód Analysis Extension telepítése
-
-1. Miután megtörtént a bővítmény megosztása az Azure DevOps-szervezettel, navigáljon az Azure DevOps-szervezet lapjára (például: http://dev.azure.com/contoso)
-2. Kattintson a Shopping Bag ikonra a jobb felső sarokban a neve mellett, majd kattintson a Bővítmények kezelése lehetőségre. 
-3. Kattintson a Microsoft biztonsági kód elemzése bővítményre, és indítsa el az Azure DevOps UI varázslót a telepítés megkezdéséhez.
-4. Válassza ki az Azure DevOps-szervezetet, hogy a bővítményt a legördülő menüből telepítse.
-5. Kattintson a telepítés gombra. Ha befejeződik, folytathatja a bővítmény használatát
+- Ha a következő támogatási ajánlatok valamelyikével rendelkezik, forduljon a technikai menedzserhez a meglévő órák megvásárlásához vagy lecserélésekor a bővítményhez való hozzáféréshez:
+   - Egységes támogatás – speciális szintű
+   - Egyesített támogatás teljesítményi szintje
+   - Premier szintű támogatás fejlesztők számára
+   - Premier szintű támogatás partnerek számára
+   - Nagyvállalati Premier szintű támogatás
+- Ha a következő támogatási szolgáltatások valamelyikével rendelkezik, vagy nem rendelkezik Microsoft támogatási csomaggal, akkor a jogosult támogatási ajánlatra kell frissítenie:
+   - Azure-támogatás partnereknek
+   - Azure Alapszintű támogatás
+   - Azure-Fejlesztői támogatás
+   - Azure-Standard szintű támogatás
+   - Közvetlen Azure Professional
+   - Egységesített támogatás – alapszintű
+- A jogosult támogatási ajánlat megvásárlásához lépjen a [támogatási szolgáltatások kezdőlapjára](https://www.microsoft.com/enterprise/services/support).
+- A támogatási szerződés beszerzése után lépjen kapcsolatba a technikai fiók kezelőjével, és segítsen a szükséges adatok gyűjtésében.
 
 >[!NOTE]
-> Még ha nincs hozzáférése, folytassa a telepítési lépéseket, és a folyamat során az Azure DevOps-szervezet rendszergazdájától kérhet hozzáférést.
->
-A bővítmény telepítése után a biztonságos fejlesztési felépítési feladatok láthatók és elérhetők lesznek az Azure-folyamatokhoz való hozzáadáshoz.
+> Ha Ön a Microsoft partnerek hálózatában regisztrált partner, akkor jogosult Premier szintű támogatás megvásárlására partnereink számára. Ellenkező esetben a korábban említett jogosult támogatási ajánlatok egyikét kell megvásárolnia.
 
-## <a name="adding-specific-build-tasks-to-your-devops-pipeline"></a>Konkrét Build-feladatok hozzáadása a DevOps-folyamathoz
+## <a name="installing-the-microsoft-security-code-analysis-extension"></a>A Microsoft biztonsági kód elemzése bővítmény telepítése
 
-1. Nyissa meg a csapat projektjét az Azure DevOps-szervezetből.
-2. Navigáljon a **buildek** lapra a **folyamatok** területen 
-3. Válassza ki azt a folyamatot, amelyben hozzá szeretné adni a bővítmény felépítési feladatait. 
-   - Új – kattintson az **új** elemre, és kövesse az új folyamat létrehozásához szükséges lépéseket.
-   - Szerkesztés – válassza ki a folyamatot, és kattintson a **Szerkesztés** gombra egy meglévő folyamat szerkesztésének megkezdéséhez.
-4. Kattintson a + gombra a **feladatok hozzáadása** panel megnyitásához.
-5. Keresse meg azt a felépítési feladatot, amelyet hozzá szeretne adni a listából, vagy használja a keresőmezőt, majd kattintson a **Hozzáadás**gombra. 
-6. Most már továbbra is megadhatja a feladathoz szükséges paramétereket.
+1. A bővítmény Azure DevOps-szervezettel való megosztása után nyissa meg az Azure DevOps-szervezet lapját. Ilyen oldal http://dev.azure.com/contoso például a következő URL-cím:.
+1. Válassza a bevásárló táska ikont a neve melletti jobb felső sarokban, majd válassza a **Bővítmények kezelése**lehetőséget.
+1. Válassza ki a Microsoft biztonsági kód elemzése bővítményt, majd nyissa meg az Azure DevOps UI varázslót a telepítés megkezdéséhez.
+1. A legördülő listában válassza ki az Azure DevOps-szervezetet a bővítmény telepítéséhez.
+1. Válassza az **Install** (Telepítés) lehetőséget. A telepítés befejezése után elkezdheti használni a bővítményt.
+
 >[!NOTE]
->A fájl-vagy könyvtár elérési útjai a forrás-tárház gyökeréhez képest, a kimeneti mappát/fájlokat meghatározó paraméterek pedig a Build ügynökön definiált közös hellyel lesznek lecserélve.
+> Még ha nincs hozzáférése a bővítmény telepítéséhez, folytassa a telepítési lépésekkel. A telepítési folyamat során az Azure DevOps-szervezet rendszergazdájától kérhet hozzáférést.
 
-7. Új Build várólistára helyezése.
+A bővítmény telepítése után a biztonságos fejlesztési felépítési feladatok láthatók és elérhetők az Azure-folyamatokhoz való hozzáadáshoz.
+
+## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>Konkrét felépítési feladatok hozzáadása az Azure DevOps-folyamathoz
+
+1. Az Azure DevOps-szervezetből nyissa meg a csapat projektjét.
+1. Válassza a **folyamatok** > **buildek**lehetőséget.
+1. Válassza ki azt a folyamatot, amelyben hozzá szeretné adni a bővítmény felépítési feladatait:
+   - Új folyamat: Válassza az **új** lehetőséget, majd az új folyamat létrehozásához kövesse a részletes lépéseket.
+   - Folyamat szerkesztése: Válasszon ki egy meglévő folyamatot, majd válassza a **Szerkesztés** lehetőséget a folyamat szerkesztésének megkezdéséhez.
+1. Válassza **+** ki, majd lépjen a **feladatok hozzáadása** ablaktáblára.
+1. A listából vagy a keresőmező használatával keresse meg a felvenni kívánt felépítési feladatot. Válassza a **Hozzáadás** lehetőséget.
+1. Határozza meg a feladathoz szükséges paramétereket.
+1. Új Build várólistára helyezése.
+   >[!NOTE]
+   >A fájlok és mappák elérési útjai a forrás tárház gyökeréhez képest relatívak. Ha paraméterként adja meg a kimeneti fájlokat és mappákat, azokat a rendszer a Build ügynökön definiált közös helyre cseréli.
+
 > [!TIP]
->  - Ha a Build után szeretné futtatni az elemzést, helyezze el a Microsoft biztonsági kód elemzésének felépítése feladatot a Build-összeállítási összetevők közzététele lépés után. Így a Build befejezhető, és a statikus elemzési eszközök futtatása előtt is közzéteheti az eredményeket.
->  - Mindig győződjön meg arról, hogy a biztonságos fejlesztési felépítési feladatok **"Folytatás hiba esetén"** lehetőség van. Még ha az egyik eszköz meghibásodik, a többiek futhatnak. Nincsenek egymásrautaltságok.
->  - A Microsoft biztonsági kód elemzésekor felmerülő feladatok csak akkor lesznek sikertelenek, ha az eszköz sikeres futtatása sikertelen, de nem fog sikerülni, ha és amikor az eszköz a kódban felmerülő problémákat azonosítja. A buildet beállíthatja úgy, hogy megszakítsa, ha egy eszköz a kódban felmerülő problémákat azonosítja, az **elemzés utáni** Build feladat használatával.
->  - Egyes Azure DevOps-felépítési feladatok nem támogatottak, ha "kiadás" folyamaton keresztül futnak. Ez az Azure-DevOps korlátozása. Nem támogatják azokat a feladatokat, amelyek a kiadási folyamaton belül teszik közzé az összetevőket.
->  - Az Azure DevOps Team buildben előre definiált változók listáját, amelyeket paraméterekként adhat meg, lásd: [Azure DevOps Build változók](https://docs.microsoft.com/azure/devops/pipelines/build/variables?tabs=batch&view=vsts)
+>
+> - Ha a Build után szeretne elemzést futtatni, helyezze el a Microsoft biztonsági kód elemzése felépítési feladatokat a Build-összeállítási összetevők közzététele lépés után. Így a Build befejezhető, és a statikus elemzési eszközök futtatása előtt is közzéteheti az eredményeket.
+> - A biztonságos fejlesztési felépítési feladatokhoz mindig válassza **a folytatás hiba** esetén lehetőséget. Még ha egy eszköz meghibásodik, a többi futtatható. Nincsenek összefüggőségek az eszközök között.
+> - A Microsoft biztonsági kód elemzésekor felépítési feladatok csak akkor működnek, ha egy eszköz nem tud sikeresen futni. De akkor is sikeresek lesznek, ha az eszköz hibákat azonosít a kódban. Az elemzés utáni Build feladattal beállíthatja, hogy a Build működése meghiúsuljon, ha egy eszköz hibákat azonosít a kódban.
+> - Egyes Azure DevOps-Build feladatok nem támogatottak, ha kiadási folyamaton keresztül futnak. Konkrétabban az Azure DevOps nem támogatja azokat a feladatokat, amelyek egy kiadási folyamaton belül teszik közzé az összetevőket.
+> - Az Azure DevOps Team buildben paraméterként megadható előre definiált változók listáját az [Azure DevOps Build változói](https://docs.microsoft.com/azure/devops/pipelines/build/variables?tabs=batch&view=vsts)című témakörben tekintheti meg.
 
 ## <a name="next-steps"></a>További lépések
 
-A Build-feladatok konfigurálásával kapcsolatos további információkért tekintse meg a [konfigurációs útmutatót](security-code-analysis-customize.md)
+A Build-feladatok konfigurálásával kapcsolatos további információkért tekintse meg a [konfigurációs útmutatót](security-code-analysis-customize.md).
 
-Ha további kérdései vannak a bővítményről és a rendelkezésre álló eszközökről, tekintse meg a [Gyakori kérdések oldalát.](security-code-analysis-faq.md)
-
-
+Ha további kérdései vannak a bővítményről és a rendelkezésre álló eszközökről, tekintse meg a [Gyakori kérdések oldalát](security-code-analysis-faq.md).

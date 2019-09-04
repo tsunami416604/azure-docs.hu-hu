@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 6991ebfa58099a42b09e482d11c0d3c3983decce
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f6f409c42c7ffa5639315e71ff565f9c672e227c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535060"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279744"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Kereskedelmi piactér tranzakciós képességei és szempontjai
 
@@ -75,7 +75,7 @@ Az ingyenes vagy a saját licencű tranzakciós ajánlat közzététele esetén 
 
 ### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>Utólagos elszámolás és előfizetés (hely alapján) díjszabása
 
-A WPay és az előfizetés díjszabása az utólagos elszámolású vagy előfizetési tranzakciós ajánlatok közzétételekor a Microsoft biztosítja a technológiát és szolgáltatásokat a szoftverlicenc-vásárlások, a visszaadások és a jóváírások feldolgozásához. Ebben a forgatókönyvben a közzétevő engedélyezi a Microsoft számára, hogy ügynökként működjön ezen célokból. A közzétevő lehetővé teszi a Microsoft számára, hogy elősegítse a szoftverlicencelési tranzakciót, miközben megtartja a megjelölését eladóként, szolgáltatóként, terjesztőként és licencelőként.
+Az utólagos elszámolású vagy előfizetési tranzakciós ajánlat közzétételekor a Microsoft biztosítja a technológiát és szolgáltatásokat a szoftverlicenc-vásárlások, a visszaadott adatok és a jóváírások feldolgozásához. Ebben a forgatókönyvben a közzétevő engedélyezi a Microsoft számára, hogy ügynökként működjön ezen célokból. A közzétevő lehetővé teszi a Microsoft számára, hogy elősegítse a szoftverlicencelési tranzakciót, miközben megtartja a megjelölését eladóként, szolgáltatóként, terjesztőként és licencelőként.
 
 A Microsoft lehetővé teszi, hogy az ügyfelek a Microsoft kereskedelmi piactér és a kiadó végfelhasználói licencszerződésének feltételei és kikötései alapján közzétevő szoftvert rendeljenek, licencet és használjanak. A kiadóknak meg kell adniuk a végfelhasználói licencszerződést, vagy az ajánlat létrehozásakor a [szokásos szerződést](https://docs.microsoft.com/azure/marketplace/standard-contract) kell választaniuk.
 
@@ -209,7 +209,7 @@ Ha az előfizetés vagy az utólagos elszámolású díjszabási modell van kiv�
 
 #### <a name="billing-questions-and-support"></a>Számlázási kérdések és támogatás
 
-További információkat és jogi szabályzatokat a kiadói [szerződésben](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf) talál (a Cloud Partner Portalban érhető el).
+További információkat és jogi szabályzatokat a [kiadói szerződésben](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf) talál (a Cloud Partner Portalban érhető el).
 
 Ha segítséget szeretne kapni a számlázási kérdésekkel kapcsolatban, forduljon a [kereskedelmi piactér kiadója támogatási szolgálatához](https://aka.ms/marketplacepublishersupport).
 

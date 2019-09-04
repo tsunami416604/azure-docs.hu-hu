@@ -9,31 +9,31 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 90f064ce5d6dc7ffa6b4c532ac30d9b4dd60e13f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 00e69d9222444e3b700fca10e3f15b4b110e0c60
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981140"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241741"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
-Az Azure Storage egy többrétegű biztonsági modellt biztosít. Ez a modell lehetővé teszi, hogy a tárfiókok egy adott csoportjának támogatott hálózatok biztonságos. Ha a hálózati szabályok vannak beállítva, csak a megadott készlet hálózatok összefoglaló adatokat kéri alkalmazások férhetnek hozzá egy tárfiókot.
+Az Azure Storage egy többrétegű biztonsági modellt biztosít. Ez a modell lehetővé teszi a Storage-fiókok védelmét a hálózatok egy adott részhalmaza számára. A hálózati szabályok konfigurálásakor csak a megadott hálózatokon adatokat kérő alkalmazások férhetnek hozzá egy Storage-fiókhoz. A Storage-fiókhoz való hozzáférést korlátozhatja a megadott IP-címekről, IP-tartományokról vagy az Azure Virtual Networks alhálózatok listájáról érkező kérésekre.
 
-Egy alkalmazás, amely hozzáfér a storage-fiók, a hálózati szabályok akkor vannak érvényben, amikor a kérést a megfelelő engedély szükséges. Az engedélyezést Azure Active Directory (Azure AD) hitelesítő adatok támogatják a blobok és várólisták esetében, érvényes fiók-hozzáférési kulccsal vagy SAS-jogkivonattal.
+Egy olyan alkalmazás, amely hozzáfér egy Storage-fiókhoz, ha a hálózati szabályok érvényben vannak, megfelelő jogosultságot kell adni a kéréshez. Az engedélyezést Azure Active Directory (Azure AD) hitelesítő adatok támogatják a blobok és várólisták esetében, érvényes fiók-hozzáférési kulccsal vagy SAS-jogkivonattal.
 
 > [!IMPORTANT]
-> Alapértelmezés szerint ne tudják bekapcsolni a tűzfalszabályok a tárfiók beérkező adatok blokkolja, kivéve, ha a kérések származhatnak olyan szolgáltatás, amely egy Azure virtuális hálózaton (VNet) belül. Blokkolt közé tartoznak az egyéb Azure-szolgáltatások, a naplózás és mérőszámok szolgáltatások, az Azure Portalról, és így tovább.
+> Ha bekapcsolja a tűzfalszabályok bekapcsolását a Storage-fiókhoz, az alapértelmezés szerint letiltja a bejövő adatkéréseket, kivéve, ha a kérelmek egy Azure-Virtual Network (VNet) belül működő szolgáltatásból származnak. Blokkolt közé tartoznak az egyéb Azure-szolgáltatások, a naplózás és mérőszámok szolgáltatások, az Azure Portalról, és így tovább.
 >
-> Az Azure-szolgáltatások, amelyek azáltal, hogy az alhálózat, a szolgáltatáspéldány virtuális hálózaton belüli működnie hozzáférést biztosíthat. Korlátozott számú keresztül forgatókönyvek engedélyezése a [kivételek](#exceptions) az alábbi szakaszban ismertetett mechanizmus. Az Azure portal eléréséhez kell egy gépen belül a megbízható (IP vagy virtuális hálózatok közötti) beállításával lehet.
+> Hozzáférést biztosíthat az olyan Azure-szolgáltatásokhoz, amelyek egy VNet belül működnek, és lehetővé teszik a szolgáltatás-példányt üzemeltető alhálózatról érkező forgalom elérését. A következő szakaszban ismertetett [kivételek](#exceptions) használatával korlátozott számú forgatókönyvet is engedélyezhet. Ha a Azure Portal keresztül szeretne hozzáférni a Storage-fiókból, a beállított megbízható határon (IP-vagy VNet) belüli gépen kell lennie.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-Alapértelmezés szerint konfigurálja a storage-fiókok (beleértve az internetes forgalmat) minden hálózati forgalmat hozzáférését. Majd hozzáférést biztosítani a forgalom az adott virtuális hálózatok. Ez a konfiguráció lehetővé teszi az alkalmazások biztonságos hálózati határt hozhat létre. Is is hozzáférést biztosít a nyilvános internetes IP-címtartományok, adott interneten vagy a helyi ügyfelektől érkező kapcsolatokat engedélyezi.
+A Storage-fiók biztonságossá tételéhez először konfigurálnia kell egy olyan szabályt, amely alapértelmezés szerint letiltja az összes hálózatról (beleértve az internetes forgalmat is) érkező forgalom elérését. Ezután olyan szabályokat kell konfigurálnia, amelyek hozzáférést biztosítanak az adott virtuális hálózatok érkező forgalomhoz. Ez a konfiguráció lehetővé teszi az alkalmazások biztonságos hálózati határt hozhat létre. Olyan szabályokat is beállíthat, amelyek hozzáférést biztosítanak a forgalomhoz a nyilvános internetes IP-címtartományok kiválasztásával, valamint az adott internetes vagy helyszíni ügyfelek kapcsolatainak engedélyezésével.
 
-Az összes hálózati protokollok, az Azure storage, beleértve a REST és az SMB hálózati szabályok életbe lépnek. Elérni az adatokat, például az Azure portal, a Storage Explorer és az AZCopy explicit hálózati szabályok szükségesek.
+Az összes hálózati protokollok, az Azure storage, beleértve a REST és az SMB hálózati szabályok életbe lépnek. Ha olyan eszközökkel szeretné elérni az adatelérést, mint a Azure Portal, a Storage Explorer és a AZCopy, akkor explicit hálózati szabályokat kell konfigurálni.
 
 Hálózati szabályokat alkalmazhat a meglévő tárfiókok, vagy ha új storage-fiókokat hozhat létre.
 
@@ -50,7 +50,7 @@ A storage-fiókok nem felügyelt lemez is használható a biztonsági mentési �
 Alapértelmezés szerint a tárfiókok bármely hálózati ügyfelek kapcsolatokat fogadjon. A kiválasztott hálózatok való hozzáférés korlátozásához, először módosítania kell az alapértelmezett művelet.
 
 > [!WARNING]
-> A hálózati szabályok módosítása hatással lehet a Kapcsolódás az Azure Storage lehetővé teszi az alkalmazások. Beállítás az alapértelmezett hálózati szabály **megtagadása** blokkolja az összes az adatokhoz való hozzáférés, kivéve, ha az adott hálózati szabályok **biztosítson** hozzáférést is alkalmazza a rendszer. Győződjön meg arról, hozzáférést minden olyan engedélyezett hálózatok, hálózati szabályok segítségével, hogy megtagadja a hozzáférést az alapértelmezett szabály módosítása előtt.
+> A hálózati szabályok módosítása hatással lehet a Kapcsolódás az Azure Storage lehetővé teszi az alkalmazások. Ha az alapértelmezett hálózati szabályt állítja **be, az letiltja** az összes hozzáférését az összes adathoz **, kivéve** , ha a hozzáférést biztosító meghatározott hálózati szabályok is érvényesek. Győződjön meg arról, hozzáférést minden olyan engedélyezett hálózatok, hálózati szabályok segítségével, hogy megtagadja a hozzáférést az alapértelmezett szabály módosítása előtt.
 
 ### <a name="managing-default-network-access-rules"></a>Alapértelmezett hálózati hozzáférési szabályok kezelése
 
@@ -112,9 +112,9 @@ Alapértelmezett hálózati hozzáférési szabályok storage-fiókok az Azure p
 
 ## <a name="grant-access-from-a-virtual-network"></a>Egy virtuális hálózathoz való hozzáférés engedélyezése
 
-Beállíthatja, hogy engedélyezi a hozzáférést csak adott virtuális hálózatok a storage-fiókokat.
+A Storage-fiókokat úgy is konfigurálhatja, hogy csak bizonyos alhálózatokról engedélyezze a hozzáférést. Az engedélyezett alhálózatok ugyanahhoz az előfizetéshez vagy egy másik előfizetéshez tartozó VNet tartozhatnak, beleértve a más Azure Active Directory bérlőhöz tartozó előfizetéseket is.
 
-Engedélyezze a [szolgáltatásvégpont](/azure/virtual-network/virtual-network-service-endpoints-overview) az Azure Storage a virtuális hálózaton belül. Ezt a végpontot egy vezető optimális útvonalat biztosít a forgalom az Azure Storage szolgáltatást. Minden egyes kérelemmel is továbbítja az identitások, a virtuális hálózatot és alhálózatot. A rendszergazdák konfigurálhatják majd hálózati szabályokat a tárfiók, amelyek lehetővé teszik a kérelmek fogadását az adott alhálózatok a virtuális hálózaton. Az ügyfelek kapnak a szabályokban a hálózaton keresztüli hozzáférés továbbra is az adatok a storage-fiók a engedélyezési követelmények teljesítéséhez.
+Engedélyezze a [szolgáltatásvégpont](/azure/virtual-network/virtual-network-service-endpoints-overview) az Azure Storage a virtuális hálózaton belül. A szolgáltatási végpont az Azure Storage szolgáltatás optimális elérési útján irányítja át a forgalmat a VNet. Az alhálózat és a virtuális hálózat identitásait is továbbítjuk az egyes kérésekhez. A rendszergazdák ezután konfigurálhatják a Storage-fiók hálózati szabályait, amelyek lehetővé teszik a kérelmek fogadását egy adott alhálózatról egy VNet. Az ügyfelek kapnak a szabályokban a hálózaton keresztüli hozzáférés továbbra is az adatok a storage-fiók a engedélyezési követelmények teljesítéséhez.
 
 Minden tárfióknak támogatja a legfeljebb 100 virtuális hálózati szabályok, amelyek kombinálható [IP-hálózati szabályok](#grant-access-from-an-internet-ip-range).
 
@@ -131,7 +131,10 @@ Vészhelyreállítás tervezése egy regionális kimaradás során, amikor kell 
 
 Egy virtuális hálózati szabályt alkalmazni egy tárfiókot, a felhasználó a hozzáadott alhálózatokra vonatkozó megfelelő engedélyekkel kell rendelkeznie. Az engedély szükséges *alhálózathoz csatlakozzon szolgáltatás* és szerepel a *Tárfiók-közreműködő* beépített szerepkör. Azt is hozzáadhat egyéni szerepkör-definíciók.
 
-Storage-fiók és a virtuális hálózatok biztosított hozzáférés lehet különböző előfizetésben található, de ezen előfizetések kell lennie az Azure AD-bérlőhöz tartozik.
+A Storage-fiók és a hozzáférést biztosító virtuális hálózatok különböző előfizetésekben lehetnek, beleértve az olyan előfizetéseket, amelyek egy másik Azure AD-bérlő részét képezik.
+
+> [!NOTE]
+> A virtuális hálózatok olyan alhálózatokhoz való hozzáférését biztosító szabályok konfigurálása, amelyek egy másik Azure Active Directory bérlő részét képezik, jelenleg csak a PowerShell, a CLI és a REST API-k támogatják. Ezek a szabályok nem konfigurálhatók a Azure Portalon keresztül, de a portálon is megtekinthetők.
 
 ### <a name="managing-virtual-network-rules"></a>A virtuális hálózati szabályok kezelése
 
@@ -149,6 +152,8 @@ Virtuális hálózati szabályok tárfiókok az Azure portal, PowerShell vagy CL
 
     > [!NOTE]
     > Ha az Azure Storage-szolgáltatásvégpontot korábban nem volt beállítva a kiválasztott virtuális hálózat és alhálózatok, konfigurálhatja a művelet részeként.
+    >
+    > Jelenleg csak az ugyanahhoz a Azure Active Directory bérlőhöz tartozó virtuális hálózatok jelennek meg a szabályok létrehozásakor. Egy másik bérlőhöz tartozó virtuális hálózatban lévő alhálózathoz való hozzáférés biztosításához használja a PowerShell, a CLI vagy a REST API-kat.
 
 1. Egy virtuális hálózat vagy alhálózat szabály eltávolításához kattintson **...**  nyissa meg a virtuális hálózat vagy alhálózat helyi menüjére, majd kattintson a **eltávolítása**.
 
@@ -176,6 +181,9 @@ Virtuális hálózati szabályok tárfiókok az Azure portal, PowerShell vagy CL
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
+
+    > [!TIP]
+    > Egy másik Azure AD-bérlőhöz tartozó VNet lévő alhálózat hálózati szabályának hozzáadásához használjon egy teljesen minősített **VirtualNetworkResourceId** paramétert "/Subscriptions/Subscription-ID/resourceGroups/resourceGroup-Name/Providers/Microsoft.Network/virtualNetworks/vNet-Name/Subnets/subnet-Name" formátumban.
 
 1. Távolítsa el a virtuális hálózatot és alhálózatot a hálózati szabályt.
 
@@ -209,6 +217,11 @@ Virtuális hálózati szabályok tárfiókok az Azure portal, PowerShell vagy CL
     $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
     ```
+
+    > [!TIP]
+    > Egy másik Azure AD-bérlőhöz tartozó VNet lévő alhálózat szabályának hozzáadásához használjon egy teljesen minősített alhálózati azonosítót a "/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name" formában.
+    > 
+    > Az **előfizetés** paraméter használatával lekérheti az alhálózati azonosítót egy másik Azure ad-bérlőhöz tartozó VNet.
 
 1. Távolítsa el a virtuális hálózatot és alhálózatot a hálózati szabályt.
 
@@ -344,7 +357,7 @@ A hálózati szabályok engedélyezheti a biztonságos hálózati konfiguráció
 
 Bizonyos Microsoft-szolgáltatások, amelyek a storage-fiókok kezelése, amelyek nem adható hozzáférés hálózati jogcímszabályai hálózatokról működnek.
 
-Az ilyen típusú szolgáltatás munkahelyi helyesen érdekében lehetővé teszi a megbízható Microsoft-szolgáltatások megkerülése a hálózati szabályok készletét. Ezek a szolgáltatások fogja használni a tárfiók eléréséhez erős hitelesítés.
+Ahhoz, hogy egyes szolgáltatások a kívánt módon működjenek, engedélyezni kell a megbízható Microsoft-szolgáltatások egy részhalmazát a hálózati szabályok megkerülése érdekében. Ezek a szolgáltatások fogja használni a tárfiók eléréséhez erős hitelesítés.
 
 Ha engedélyezi a **engedélyezése a Microsoft-szolgáltatások megbízható...**  kivétel, a következő szolgáltatásokat (ha regisztrált az előfizetésben), a storage-fiók hozzáféréssel rendelkeznek:
 

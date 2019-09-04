@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: a11dec8998a77153cd10b6caf72f5885c69b70c3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8c0843db216ff99aabfda9074ee751597b43a2a2
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094771"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258405"
 ---
 # <a name="pool-resize-complete-event"></a>Készlet átméretezése kész esemény
 
@@ -26,28 +26,32 @@ ms.locfileid: "70094771"
 
 ```
 {
-    "id": "p_1_0_01503750-252d-4e57-bd96-d6aa05601ad8",
+    "id": "myPool",
     "nodeDeallocationOption": "invalid",
-    "currentDedicated": 4,
-    "targetDedicated": 4,
+        "currentDedicatedNodes": 10,
+        "targetDedicatedNodes": 10,
+    "currentLowPriorityNodes": 5,
+        "targetLowPriorityNodes": 5,
     "enableAutoScale": false,
     "isAutoPool": false,
     "startTime": "2016-09-09T22:13:06.573Z",
     "endTime": "2016-09-09T22:14:01.727Z",
-    "result": "Success",
-    "resizeError": "The operation succeeded"
+    "resultCode": "Success",
+    "resultMessage": "The operation succeeded"
 }
 ```
 
 |Elem|Type|Megjegyzések|
 |-------------|----------|-----------|
-|id|Sztring|A készlet azonosítója.|
-|nodeDeallocationOption|Sztring|Megadja, hogy a rendszer mikor távolítsa el a csomópontokat a készletből, ha a készlet mérete csökken.<br /><br /> Lehetséges értékek a következők:<br /><br /> **újravárólista** – leállítja a futó feladatokat, és újravárólistára helyezi őket. A feladatok akkor futnak újra, amikor a feladat engedélyezve van. A csomópontokat a feladatok leállítása után távolítsa el.<br /><br /> **megszakítás** – futó feladatok leállítása. A feladatok nem futnak újra. A csomópontokat a feladatok leállítása után távolítsa el.<br /><br /> **taskcompletion** – a jelenleg futó feladatok befejezésének engedélyezése. A várakozás közben nem ütemezhet új feladatokat. Csomópontok eltávolítása, ha az összes feladat befejeződött.<br /><br /> **Retaineddata** – lehetővé teszi a jelenleg futó feladatok befejezését, majd várjon, amíg az összes feladat adatmegőrzési időszaka lejár. A várakozás közben nem ütemezhet új feladatokat. Csomópontok eltávolítása, ha az összes tevékenység megőrzési időszaka lejárt.<br /><br /> Az alapértelmezett érték az újraüzenetsor.<br /><br /> Ha a készlet mérete növekszik, az érték érvénytelenre van állítva.|
-|currentDedicated|Int32|A készlethez jelenleg hozzárendelt számítási csomópontok száma.|
-|targetDedicated|Int32|A készlethez igényelt számítási csomópontok száma.|
-|enableAutoScale|Bool|Meghatározza, hogy a készlet mérete automatikusan igazodik-e az idő múlásával.|
-|isAutoPool|Bool|Azt határozza meg, hogy a készlet a feladatok autopool mechanizmusán keresztül lett-e létrehozva.|
-|startTime|DateTime|A készlet átméretezésének időpontja.|
-|endTime|DateTime|A készlet átméretezésének időpontja.|
-|resultCode|Sztring|Az átméretezés eredménye.|
-|resultMessage|Sztring|Az átméretezési hiba az eredmény részleteit tartalmazza.<br /><br /> Ha az átméretezés sikeresen befejeződött, az azt jelzi, hogy a művelet sikeres volt.|
+|`id`|Sztring|A készlet azonosítója.|
+|`nodeDeallocationOption`|Sztring|Megadja, hogy a rendszer mikor távolítsa el a csomópontokat a készletből, ha a készlet mérete csökken.<br /><br /> Lehetséges értékek a következők:<br /><br /> **újravárólista** – leállítja a futó feladatokat, és újravárólistára helyezi őket. A feladatok akkor futnak újra, amikor a feladat engedélyezve van. A csomópontokat a feladatok leállítása után távolítsa el.<br /><br /> **megszakítás** – futó feladatok leállítása. A feladatok nem futnak újra. A csomópontokat a feladatok leállítása után távolítsa el.<br /><br /> **taskcompletion** – a jelenleg futó feladatok befejezésének engedélyezése. A várakozás közben nem ütemezhet új feladatokat. Csomópontok eltávolítása, ha az összes feladat befejeződött.<br /><br /> **Retaineddata** – lehetővé teszi a jelenleg futó feladatok befejezését, majd várjon, amíg az összes feladat adatmegőrzési időszaka lejár. A várakozás közben nem ütemezhet új feladatokat. Csomópontok eltávolítása, ha az összes tevékenység megőrzési időszaka lejárt.<br /><br /> Az alapértelmezett érték az újraüzenetsor.<br /><br /> Ha a készlet mérete növekszik, az érték **érvénytelenre**van állítva.|
+|`currentDedicatedNodes`|Int32|A készlethez jelenleg hozzárendelt dedikált számítási csomópontok száma.|
+|`targetDedicatedNodes`|Int32|A készlethez igényelt dedikált számítási csomópontok száma.|
+|`currentLowPriorityNodes`|Int32|A készlethez jelenleg hozzárendelt alacsony prioritású számítási csomópontok száma.|
+|`targetLowPriorityNodes`|Int32|A készlethez igényelt alacsony prioritású számítási csomópontok száma.|
+|`enableAutoScale`|Bool|Meghatározza, hogy a készlet mérete automatikusan igazodik-e az idő múlásával.|
+|`isAutoPool`|Bool|Azt határozza meg, hogy a készlet a feladatok autopool mechanizmusán keresztül lett-e létrehozva.|
+|`startTime`|DateTime|A készlet átméretezésének időpontja.|
+|`endTime`|DateTime|A készlet átméretezésének időpontja.|
+|`resultCode`|Sztring|Az átméretezés eredménye.|
+|`resultMessage`|Sztring| Részletes üzenet az eredményről.<br /><br /> Ha az átméretezés sikeresen befejeződött, az azt jelzi, hogy a művelet sikeres volt.|

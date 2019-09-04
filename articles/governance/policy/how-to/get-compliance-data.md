@@ -7,12 +7,12 @@ ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 869be11639fd4e957a991cadb44f2714875ddf7e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d9aadc477c3f39cfbb108d2f3eece0c9e0b06264
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232725"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239147"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi információk beolvasása
 
@@ -27,8 +27,6 @@ Mielőtt megnézzük a jelentés a megfelelőségi módszereket, tekintsük át 
 
 > [!WARNING]
 > Ha a megfelelőségi állapotot **nem regisztráltként**jelenti, ellenőrizze, hogy a **Microsoft. PolicyInsights** erőforrás-szolgáltató regisztrálva van-e, és hogy a felhasználó rendelkezik-e a megfelelő szerepköralapú hozzáférés-vezérlési (RBAC) engedélyekkel a RBAC című témakörben leírtak szerint. [ Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
-
-[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="evaluation-triggers"></a>Értékelés eseményindítók
 
@@ -177,7 +175,7 @@ $response
 
 ### <a name="summarize-results"></a>Összegzés eredményei
 
-A REST API-val összegzési tároló, a definition vagy a hozzárendelés alapján végezheti el. Íme egy példa az előfizetés szintjén az Azure Policy Insight összefoglalása az előfizetéshez: [](/rest/api/policy-insights/policystates/summarizeforsubscription)
+A REST API-val összegzési tároló, a definition vagy a hozzárendelés alapján végezheti el. Íme egy példa az előfizetés szintjén az Azure Policy Insight összefoglalása az [előfizetéshez](/rest/api/policy-insights/policystates/summarizeforsubscription):
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
@@ -415,7 +413,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
-Ha az előfizetéshez kötött Activity log Analytics `AzureActivity` megoldásból [](../../../azure-monitor/platform/activity-log-collect.md) származó [log Analytics](../../../log-analytics/log-analytics-overview.md) munkaterülettel rendelkezik, akkor a kiértékelési ciklusból az egyszerű Kusto lekérdezések és a `AzureActivity` tábla. Azure Monitor naplók részleteivel a riasztások úgy konfigurálhatók, hogy megfigyeljék a nem megfelelőséget.
+Ha az előfizetéshez kötött `AzureActivity` [Activity log Analytics megoldásból](../../../azure-monitor/platform/activity-log-collect.md) származó `AzureActivity` [log Analytics munkaterülettel](../../../log-analytics/log-analytics-overview.md) rendelkezik, akkor a kiértékelési ciklusból az egyszerű Kusto lekérdezések és a tábla. Azure Monitor naplók részleteivel a riasztások úgy konfigurálhatók, hogy megfigyeljék a nem megfelelőséget.
 
 
 ![Megfelelőség Azure Policy Azure Monitor naplók használatával](../media/getting-compliance-data/compliance-loganalytics.png)
@@ -425,6 +423,6 @@ Ha az előfizetéshez kötött Activity log Analytics `AzureActivity` megoldásb
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).
-- Megtudhatja, hogyan [hozhat létre programozott](programmatically-create.md)módon házirendeket.
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](programmatically-create.md).
 - Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](remediate-resources.md).
 - Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).

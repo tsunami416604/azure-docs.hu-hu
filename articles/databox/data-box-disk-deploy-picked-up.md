@@ -10,12 +10,12 @@ ms.date: 09/03/2019
 ms.localizationpriority: high
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 259c20aead3bbe7b44c59efe031a079ba80e2905
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: aab97257ff2e917dc264017043d3ca11a2ced1fc
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232951"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240214"
 ---
 ::: zone target="chromeless"
 
@@ -86,7 +86,7 @@ Ha az eszközt Európa-ban adja vissza, hajtsa végre a következő lépéseket.
 Az Ausztráliában található Azure-adatközpontok további biztonsági értesítésekkel rendelkeznek. Az összes bejövő szállítmánynak speciális értesítéssel kell rendelkeznie. Kövesse az alábbi lépéseket az Ausztráliában való felvételhez.
 
 1. E `adbops@microsoft.com` -mail-cím, amely egyedi bejövő azonosítóval vagy a Tau-kóddal kéri a küldemények címkézését. Helyezze el a kérést legalább 3 nappal a tervezett szállítási dátum előtt, hogy időben beolvassa a címkét.
-2. Az e-mail-tárgynak a-reverse típusú visszaszállítási címkéhez a *Tau-kóddal*kell rendelkeznie. Ügyeljen arra, hogy a következő adatokat tartalmazza az e-mailben: 
+2. Az e-mail-tárgynak a- *reverse típusú visszaszállítási címkéhez a Tau-kóddal*kell rendelkeznie. Ügyeljen arra, hogy a következő adatokat tartalmazza az e-mailben: 
 
     - Rendelés neve
     - Cím
@@ -112,7 +112,7 @@ A felvételi utasítások a japán, Korea és Szingapúr esetében eltérőek.
         c. 15：00-17：00 
         d. 17：00-19：00 
     ```
-    - **Ha az osakaban**végez beszedést, akkor módosítsa a tárgyat az e-mail sablonban `Pickup request for Microsoft Azure OSA`a következőre:.
+    - **Ha az osakaban végez beszedést**, akkor módosítsa a tárgyat az e-mail sablonban `Pickup request for Microsoft Azure OSA`a következőre:.
     - Ha a Japan post Chakubarai-fuvarlevél nem tartalmazott vagy hiányzik, jegyezze fel ezt az e-mailt. A Quantium-megoldások Japán a postán kérik a küldeményt, hogy vegye fel a figyelmét a felvételre.
     - Ha több megrendelés is van, e-mailben gondoskodhat az egyéni felvételről.
 
@@ -145,7 +145,7 @@ Ha szükséges, lépjen kapcsolatba a Quantium-megoldás támogatásával (Japá
 
 2. Felvétel kérése:
     - Hívja meg az **SingPost** forródrótot **6845 6485** -kor az irodai óra alatt (9 – 5 óra, hétfő és péntek között).  
-    - A gyűjtemény rendezéséhez adja meg *Microsoft Azure* a pickupot és a szolgáltatási kérelem számát (a visszaszállítási címke nyomon követési számát). 
+    - A gyűjtemény rendezéséhez adja meg *Microsoft Azure a pickupot* és a szolgáltatási kérelem számát (a visszaszállítási címke nyomon követési számát). 
     - A felvételi ütemtervre vonatkozó szóbeli megerősítést fog kapni. 
     - Ha a futár nem érkezik meg a gyűjteményhez, a **SingPost** címen hívhatja meg a **6845 6485** -at Alternatív megoldásként. 
 3. Adja át a futárnak. 

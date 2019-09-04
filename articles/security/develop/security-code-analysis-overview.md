@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure biztonsági kód elemzése – dokumentáció áttekintése
-description: Ez a cikk a biztonsági kód elemzése bővítmény áttekintését mutatja be
+title: A Microsoft biztonsági kód elemzésének dokumentációja – áttekintés
+description: Ez a cikk áttekintést nyújt a Microsoft biztonsági kód elemzése bővítményről
 author: vharindra
 manager: sukhans
 ms.author: terrylan
@@ -12,93 +12,106 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 283d63bafc583f2ac9da3294644aaebd17d7c950
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a7ab908673f60a651db48ae0485592a362741b6d
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718287"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242320"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Tudnivalók a Microsoft biztonsági kódok elemzéséről
 
-A **Microsoft biztonsági kód elemzése bővítmény** lehetővé teszi a csapatok számára, hogy zökkenőmentesen integrálják a biztonsági kód elemzését az Azure DevOps CI/CD-folyamataiba a Microsoft [biztonságos fejlesztési életciklus (SDL)](https://www.microsoft.com/securityengineering/sdl/practices) szakértői által ajánlott módon. A biztonság egy egységes UX-en keresztül egyszerűsíthető, amely a különböző eszközök futtatásának bonyolultságát is elvonta. Az eszközök NuGet-alapú kézbesítésével a csapatoknak már nincs szükségük az eszközkészlet telepítésének és frissítésének kezeléséhez. A parancssorral és az alapszintű Build-feladattal, az összes felhasználóval, a hozzáértési eszközökről a mindennapi fejlesztőkig, akár alig, akár sokkal többen vezérelheti az eszközöket. A csapatok olyan hatékony post-feldolgozási képességeket is kihasználhatnak, mint például az adatmegőrzési naplók közzététele, a hasznosítható fejlesztői fókuszált jelentések generálása & a kiépítési megszakítások konfigurálása a regressziók
+A Microsoft biztonsági kód elemzése bővítménnyel a csapatok hozzáadhatják a biztonsági kód elemzését az Azure DevOps folyamatos integrációs és szállítási (CI/CD) folyamataihoz. Ezt az elemzést a [biztonságos fejlesztési életciklus (SDL)](https://www.microsoft.com/securityengineering/sdl/practices) szakértői a Microsoftnál ajánljuk.
 
-## <a name="why-microsoft-security-code-analysis"></a>A Microsoft biztonsági kódjának elemzése
+Az egységes UX a futó eszközök összetettségének elrejtésével leegyszerűsíti a biztonságot. Az eszközök NuGet-alapú kézbesítésével a csapatoknak már nincs szükségük a szerszámozás telepítésének vagy frissítésének kezeléséhez. A felépítési feladatok esetében mind a parancssori, mind a alapszintű illesztőfelületek képesek az eszközök minél több feletti vezérlésére.
+
+A csapatok olyan hatékony utófeldolgozó képességeket is használhatnak, mint például a következők:
+
+- Naplók közzététele a megőrzéshez.
+- Kezelhető, fejlesztő által irányított jelentések generálása.
+- A Build-megszakítások beállítása regressziós teszteken.
+
+## <a name="why-should-i-use-microsoft-security-code-analysis"></a>Miért érdemes a Microsoft biztonsági kód elemzését használni?
 
 ### <a name="security-simplified"></a>A biztonság egyszerűsített
 
-A biztonsági kód elemzési eszközeinek az Azure DevOps-folyamathoz való hozzáadása olyan egyszerű, mint az új feladatok hozzáadása. Szabja testre őket, vagy lépjen az alapértelmezett beállításokkal. A feladatok a DevOps folyamat részeként futnak, és a naplókat készítenek a különböző megállapítások részleteiről.
+A Microsoft biztonsági kód-elemzési eszközeinek az Azure DevOps-folyamathoz való hozzáadása olyan egyszerű, mint az új feladatok hozzáadása. Szabja testre a feladatokat, vagy használja az alapértelmezett viselkedését. A feladatok az Azure DevOps-folyamat részeként futnak, és olyan naplókat készítenek, amelyek számos különböző eredményt részleteznek.
 
 ### <a name="clean-builds"></a>Tiszta buildek
 
-Az eszközök által jelentett kezdeti problémák kezelése után beállíthatja, hogy a bővítmény új problémák esetén is kibontsa a buildeket. A folyamatos integráció létrehozása minden lekéréses kérelem esetében még soha nem volt ilyen egyszerű!
+Az eszközök által jelentett kezdeti problémák kezelése után beállíthatja, hogy a bővítmény új problémák esetén is kibontsa a buildeket. A folyamatos integrációs buildek beállítása minden lekéréses kérelem esetében egyszerű.
 
 ### <a name="set-it-and-forget-it"></a>Beállítás és felejtsd el
 
-A Build-feladatok és-eszközök beállítható úgy, hogy naprakészek maradjanak (és alapértelmezés szerint). Ha az eszköz frissített verziója van, nincs szükség a letöltésére és telepítésére; Ez a bővítmény gondoskodik az Ön számára. 
+Alapértelmezés szerint a Build-feladatok és-eszközök naprakészek maradnak. Ha egy eszköz frissített verziója van telepítve, nem kell letöltenie és telepítenie. A bővítmény gondoskodik a frissítésről.
 
->>>
-### <a name="under-the-hood"></a>A motorháztető alatt
+### <a name="under-the-hood"></a>Technikai részletek
 
-A Microsoft biztonsági kód Analysis Extension felépítési feladatait a (z) bonyolultságának tulajdonítja:
-  - A biztonsági statikus elemzési eszközök futtatása, valamint
+A bővítmény felépítési feladatai az alábbiak bonyolultságát rejtik el:
+  - A Security static-Analysis Tools futtatása.
   - A naplófájlokból származó eredmények feldolgozásával hozzon létre egy összegző jelentést, vagy szakítsa meg a buildet.
->>>
 
-## <a name="security-code-analysis-toolset"></a>Biztonsági kód elemzése eszközkészlet
+## <a name="microsoft-security-code-analysis-tool-set"></a>Microsoft biztonsági kód Analysis Tool set
 
-A Microsoft biztonsági kód elemzése bővítmény azonnal elérhetővé teszi a fontos Analysis Tools legújabb verzióit. A bővítmény a Microsoft belső és a nyílt forráskódú eszközöket is tartalmazza. Az eszközök automatikusan letöltődnek a felhőben üzemeltetett ügynökön, miután konfigurálta & a folyamat futtatását a megfelelő felépítési feladattal. Alább láthatók a bővítményben jelenleg elérhető eszközök. Tájékozódjon a további információkért, és küldje el nekünk javaslatait a hozzáadott eszközökhöz.
+A Microsoft biztonsági kód elemzése bővítmény a fontos elemzési eszközök legújabb verzióit teszi elérhetővé az Ön számára. A bővítmény a Microsoft által felügyelt eszközöket és a nyílt forráskódú eszközöket is tartalmazza.
+
+Ezeket az eszközöket a rendszer automatikusan letölti a felhőalapú ügynökre, miután a megfelelő felépítési feladatot használja a folyamat konfigurálásához és futtatásához.
+
+Ez a szakasz felsorolja a bővítményben jelenleg elérhető eszközök készletét. Tekintse meg a további eszközök hozzáadását. Emellett küldje el nekünk javaslatait a hozzáadni kívánt eszközökhöz.
 
 ### <a name="anti-malware-scanner"></a>Kártevő szoftver víruskereső
 
-A kártevő-elhárító képolvasó felépítési feladata mostantól a Microsoft biztonsági kód elemzése bővítmény részét képezi. Olyan Build-ügynökön kell futnia, amelyen már telepítve van a Windows Defender. További információért látogasson el a [Defender](https://aka.ms/defender) webhelyére 
+A kártevő-elhárító képolvasó felépítési feladata mostantól a Microsoft biztonsági kód elemzése bővítmény részét képezi. Ezt a feladatot olyan Build-ügynökön kell futtatni, amelyen már telepítve van a Windows Defender. További információt a [Windows Defender webhelyén](https://aka.ms/defender)talál.
 
 ### <a name="binskim"></a>BinSkim
 
-A BinSkim egy hordozható végrehajtható fájl (PE), amely ellenőrzi a fordító/a csatoló beállításait és az egyéb, a biztonság szempontjából releváns bináris jellemzőit. A Build feladat parancssori burkolót biztosít a BinSkim. exe alkalmazás köré. A BinSkim egy nyílt forráskódú eszköz, és további információért látogasson el [a BinSkim-ra a githubon](https://github.com/Microsoft/binskim)
+A BinSkim egy hordozható végrehajtható fájl (PE), amely a fordítóprogram beállításait, a kapcsolati beállításokat és a bináris fájlok egyéb biztonsági jellemzőit ellenőrzi. Ez a Build feladat egy parancssori burkolót biztosít a binskim. exe konzol alkalmazás köré. A BinSkim egy nyílt forráskódú eszköz. További információ: [BinSkim a githubon](https://github.com/Microsoft/binskim).
 
 ### <a name="credential-scanner"></a>Hitelesítőadat-olvasó
 
-A forráskódban tárolt jelszavak és egyéb titkos kódok jelenleg jelentős problémát jelentenek. A hitelesítőadat-olvasó egy szabadalmaztatott statikus elemzési eszköz, amely a forráskódban és a Build kimenetében észleli a hitelesítő adatokat, titkokat, tanúsítványokat és más bizalmas tartalmakat.
+A forráskódban tárolt jelszavak és egyéb titkos kódok jelentős problémát jelentenek. A hitelesítő adatok szkennere egy szabadalmaztatott statikus elemzési eszköz, amely segít a probléma megoldásában. Az eszköz a forráskódban és a Build kimenetében észleli a hitelesítő adatokat, a titkos kulcsokat, a tanúsítványokat és a bizalmas tartalmakat.
 
 ### <a name="microsoft-security-risk-detection"></a>Microsoft biztonsági kockázatok észlelése
 
-A biztonsági kockázatok észlelése a Microsoft egyedi felhőalapú fuzz Testing Service a szoftverben található kihasználható biztonsági hibák azonosításához. A szolgáltatáshoz külön előkészítési folyamat szükséges. További információért látogasson el [a MSRD on docs.microsoft.com](https://docs.microsoft.com/security-risk-detection/)
+A Microsoft biztonsági kockázatok észlelése (MSRD) egy felhőalapú szolgáltatás a fuzz Testing rendszerhez. Azonosíthatja a szoftverben található kihasználható biztonsági hibákat. A szolgáltatáshoz külön előkészítési folyamat szükséges. További információ: [MSRD fejlesztői központ](https://docs.microsoft.com/security-risk-detection/).
 
 ### <a name="roslyn-analyzers"></a>-Elemzők
 
-A Microsoft fordító-integrált statikus elemzési eszköze a felügyelt kód (C# és a VB) elemzéséhez. További információért látogasson el [a docs.microsoft.com](https://docs.microsoft.com/dotnet/standard/analyzers/)
+A a a Microsoft fordítói szolgáltatásának integrált eszköze a felügyelt C# és a Visual Basic kódok statikus elemzéséhez. További információkért lásd: a [-alapú elemzők](https://docs.microsoft.com/dotnet/standard/analyzers/).
 
 ### <a name="tslint"></a>TSLint
 
-A TSLint egy bővíthető statikus elemzési eszköz, amely az olvashatóságot, a karbantartást és a funkcionalitással kapcsolatos hibákat a géppel vizsgálja. A modern szerkesztők széles körben támogatottak, és a saját vonali szabályokkal, konfigurációkkal és Formázók használatával testreszabhatók. A TSLint egy nyílt forráskódú eszköz, és további információért látogasson el [a TSLint-ra a githubon](https://github.com/palantir/tslint)
+A TSLint egy bővíthető, statikus elemzési eszköz, amely a működés közbeni olvashatóságot, karbantartást és hibákat is ellenőrzi. A modern szerkesztők és a Build rendszerek széles körben támogatottak. Testre szabhatja a saját, a konfigurációt és a formázó alakzatokat. A TSLint egy nyílt forráskódú eszköz. További információ: [TSLint a githubon](https://github.com/palantir/tslint).
 
 ## <a name="analysis-and-post-processing-of-results"></a>Az eredmények elemzése és utólagos feldolgozása
 
-A Microsoft biztonsági kód elemzése bővítmény három hasznos utólagos feladattal is rendelkezik, amelyek segítségével feldolgozhatja és elemezheti a biztonsági eszközök feladatai által talált eredményeket. Ezek általában a folyamatba kerülnek, az összes többi eszköz feladatát követően.
+A Microsoft biztonsági kód elemzése bővítmény három utófeldolgozó feladattal is rendelkezik. Ezek a feladatok segítenek elemezni a biztonság-eszköz feladatok által talált eredményeket. Egy folyamathoz való hozzáadáskor ezek a feladatok általában az összes többi eszköz feladatait követik.
 
 ### <a name="publish-security-analysis-logs"></a>Biztonsági elemzési naplók közzététele
-A biztonsági elemzési naplók közzététele felépítési feladat megőrzi a biztonsági eszközök naplófájljait a létrehozás során a vizsgálathoz és a követéshez.
 
-Ezek közzétehetők az Azure-kiszolgálói összetevőkön (zip-fájlként), vagy a privát Build-ügynökből egy elérhető fájlmegosztás másolatait.
+A biztonsági elemzési naplók közzététele felépítési feladat megőrzi a Build során futtatott biztonsági eszközök naplófájljait. Ezeket a naplókat a vizsgálathoz és a követéshez is elolvashatja.
+
+A naplófájlokat egy. zip-fájlként teheti közzé az Azure-összetevőkben. Azt is megteheti, hogy átmásolja őket egy elérhető fájlmegosztás számára a saját Build-ügynökből.
 
 ### <a name="security-report"></a>Biztonsági jelentés
-A biztonsági jelentés létrehozása feladat elemzi a biztonsági eszközök által létrehozott naplófájlokat a létrehozás során, és létrehoz egy összegző jelentési fájlt az Analysis Tools által talált összes problémával.
 
-A feladat beállítható úgy, hogy az adott eszközök vagy az összes eszköz esetében jelentést készítsenek, és azt is kiválaszthatja, hogy a rendszer milyen szintű problémákat (hibákat és hibákat és figyelmeztetéseket) jelentsen.
+A biztonsági jelentés létrehozása feladat elemzi a naplófájlokat. Ezeket a fájlokat a Build során futó biztonsági eszközök hozzák létre. A Build feladat Ezután létrehoz egy összefoglaló jelentési fájlt. Ez a fájl az Analysis Tools által talált összes problémát megjeleníti.
+
+Ezt a feladatot beállíthatja úgy, hogy az adott eszközökre vagy az összes eszközre vonatkozó eredményeket jelentsen. Kiválaszthatja azt is, hogy milyen problémát jelentsen a jelentés, például a hibák, illetve a hibák és a figyelmeztetések.
 
 ### <a name="post-analysis-build-break"></a>Elemzés utáni (Build Break)
-Az elemzés utáni felépítési feladat lehetővé teszi, hogy az ügyfél beinjektáljon egy összeállítási megszakítást, és a kiépítés meghiúsuljon abban az esetben, ha egy vagy több elemzési eszköz jelentést tesz a kód megállapításairól vagy problémáiról.
 
-A feladat beállítható úgy, hogy az adott eszközök vagy az összes eszköz által észlelt problémákra felépítse a buildet, valamint a talált problémák súlyossága (hibák vagy figyelmeztetések) alapján.
+Az elemzés utáni Build feladattal olyan Build-megszakítást adhat meg, amely szándékosan egy buildet eredményez. Ha egy vagy több elemzési eszköz hibát jelent a kódban, be kell szúrnia egy összeállítási megszakítást.
+
+Ezt a feladatot úgy is beállíthatja, hogy az adott eszközök vagy az összes eszköz által talált problémákra kibontsa a buildet. Azt is megteheti, hogy a talált problémák súlyossága (például hibák vagy figyelmeztetések) alapján van-e konfigurálva.
 
 >[!NOTE]
->Az egyes felépítési feladatok sikeresek lesznek, tervezéssel, ha az eszköz sikeresen befejeződik, függetlenül attól, hogy vannak-e megállapítások, vagy sem, hogy a Build az összes eszköz futtatásának befejezését követően is futtatható legyen.
+>A tervezés szerint az egyes felépítési feladatok sikeresek lesznek, ha a feladat sikeresen befejeződik. Ez igaz, hogy az eszköz hibákat észlel-e, így az összes eszköz futtatásához a Build a befejezéshez is futtatható.
 
 ## <a name="next-steps"></a>További lépések
 
-A biztonsági kód elemzésének bevezetésére és telepítésére vonatkozó utasításokért tekintse meg a bevezetési [és telepítési útmutatót](security-code-analysis-onboard.md)
+A Microsoft biztonsági kódok elemzésének bevezetésével és telepítésével kapcsolatos útmutatásért tekintse meg a bevezetési [és telepítési útmutatót](security-code-analysis-onboard.md).
 
-A Build-feladatok konfigurálásával kapcsolatos további információkért tekintse meg a [konfigurációs útmutatót](security-code-analysis-customize.md)
+A Build-feladatok konfigurálásával kapcsolatos további információkért tekintse meg a [konfigurációs útmutatót](security-code-analysis-customize.md).
 
-Ha további kérdései vannak a bővítményről és a rendelkezésre álló eszközökről, tekintse meg a [Gyakori kérdések oldalát.](security-code-analysis-faq.md)
+Ha további kérdései vannak a bővítményről és a rendelkezésre álló eszközökről, tekintse meg a [Gyakori kérdések oldalát](security-code-analysis-faq.md).

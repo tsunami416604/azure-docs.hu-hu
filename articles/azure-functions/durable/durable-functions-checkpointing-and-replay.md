@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 79cb276f121c351a9954994038d9d826819edf5d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1e6d3b78887c9d195fdf0137553860c141bdaaba
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087456"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241061"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Ellenőrzőpontok és visszajátszás Durable Functions (Azure Functions)
 
@@ -146,6 +146,9 @@ Az újrajátszás viselkedése korlátozásokat hoz létre a Orchestrator függv
 
 * A Orchestrator-kódnak **soha nem kell aszinkron műveletet kezdeményeznie** , kivéve a [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API vagy `context.df` az objektum API-ját. `Task.Run`Például: nem ,`setTimeout()` .net `Task.Delay` vagy`setInterval()` JavaScript esetén. `HttpClient.SendAsync` A tartós feladat-keretrendszer egyetlen szálon hajtja végre a Orchestrator-kódot, és nem tud kommunikálni más aszinkron API-k által ütemezhető más szálakkal. Ha ez történik, `InvalidOperationException` a kivételt a rendszer kidobja.
 
+> [!NOTE]
+> A [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) API aszinkron I/O-t hajt végre, ami nem engedélyezett a Orchestrator függvényben, és csak nem Orchestrator függvényekben használható.
+
 * A **végtelen hurkokat el kell kerülni** a Orchestrator-kódban. Mivel a tartós feladatok keretrendszere menti a végrehajtási előzményeket, mivel a folyamat előrehaladtával egy végtelen hurok miatt előfordulhat, hogy egy Orchestrator-példány elfogyott a memóriából. Végtelen hurkos forgatókönyvek esetén használjon API-kat (például [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) ( `continueAsNew` .net) vagy (JavaScript)) a függvény végrehajtásának újraindításához és a korábbi végrehajtási előzmények elvetéséhez.
 
 * A JavaScript Orchestrator functions `async`nem lehet. Ezeket szinkron létrehozó függvényekként kell deklarálni.
@@ -160,13 +163,13 @@ Habár ezek a megkötések először is ijesztőnek tűnhet, a gyakorlatban nem 
 > [!NOTE]
 > Ez a szakasz a tartós feladatok keretrendszerének belső megvalósítási részleteit ismerteti. A Durable Functions az információk ismerete nélkül is használhatja. Ez csak az újrajátszás viselkedésének megismerésére szolgál.
 
-A Orchestrator függvényekben biztonságosan megtekinthető feladatok időnként *tartós*feladatoknak is nevezik. Ezek olyan feladatok, amelyeket a tartós feladatok keretrendszere hozott létre és felügyel. Ilyenek például a, `CallActivityAsync` `WaitForExternalEvent`a és `CreateTimer`a által visszaadott feladatok.
+A Orchestrator függvényekben biztonságosan megtekinthető feladatok időnként *tartós feladatoknak*is nevezik. Ezek olyan feladatok, amelyeket a tartós feladatok keretrendszere hozott létre és felügyel. Ilyenek például a, `CallActivityAsync` `WaitForExternalEvent`a és `CreateTimer`a által visszaadott feladatok.
 
 Ezek a *tartós feladatok* belsőleg kezelhetők `TaskCompletionSource` objektumok listájának használatával. Az újrajátszás során ezek a feladatok a Orchestrator-kód végrehajtásának részeként jönnek létre, és a kiosztók a megfelelő előzmény-események enumerálásával lesznek végrehajtva. Mindez szinkron módon történik egyetlen szál használatával, amíg az összes előzmény újra nem lett játszva. Minden olyan tartós feladat, amelyet az előzmények végén nem végez el, a megfelelő műveleteket hajtja végre. Előfordulhat például, hogy egy várólistán lévő hívni egy üzenetet.
 
 Az itt leírt végrehajtási viselkedésnek meg kell ismernie, hogy miért nem tartós `await` feladat a Orchestrator funkció kódjának: a diszpécser szál nem várja meg, amíg befejeződik, és az adott feladat által visszaadott visszahívások esetleg megsértik a követést a Orchestrator függvény állapota. A rendszer bizonyos futásidejű ellenőrzéseket végez, hogy elkerülje ennek elkerülését.
 
-Ha további információra van szüksége arról, hogy az állandó feladati keretrendszer hogyan hajtja végre a Orchestrator functions szolgáltatást, a [](https://github.com/Azure/durabletask)legjobb megoldás, ha az állandó feladathoz tartozó forráskódot a githubon tekinti át. Különösen lásd: [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) és [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
+Ha további információra van szüksége arról, hogy az állandó feladati keretrendszer hogyan hajtja végre a Orchestrator functions szolgáltatást, a legjobb megoldás, ha az állandó [feladathoz tartozó forráskódot a githubon](https://github.com/Azure/durabletask)tekinti át. Különösen lásd: [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) és [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
 
 ## <a name="next-steps"></a>További lépések
 

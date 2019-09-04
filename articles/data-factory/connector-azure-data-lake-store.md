@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: e0626d847b22c11ce5acca5633c9b1291c03742d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: d64a8431cb0331b58afc635bf8cf9d0fe0f1f225
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839869"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276050"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Adatok másolása Azure Data Lake Storage Gen1 a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használt Azure Data Factory verzióját:"]
@@ -30,7 +30,7 @@ Ez a cikk az adatok Azure Data Lake Storage Gen1ba való másolásának módját
 
 Ez az Azure Data Lake Storage Gen1-összekötő a következő tevékenységek esetén támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-vagy](copy-activity-overview.md) fogadó mátrixtal
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-vagy fogadó mátrixtal](copy-activity-overview.md)
 - [Adatfolyam hozzárendelése](concepts-data-flow-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
@@ -46,7 +46,7 @@ Pontosabban, ezzel az összekötővel a következőket teheti:
 ## <a name="get-started"></a>Bevezetés
 
 > [!TIP]
-> Az Azure Data Lake Store-összekötő használatáról a következő témakörben olvashat: az adatAzure Data Lake Storeba való [Betöltés](load-azure-data-lake-store.md).
+> Az Azure Data Lake Store-összekötő használatáról a következő témakörben olvashat: az [adatAzure Data Lake Storeba való betöltés](load-azure-data-lake-store.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -75,7 +75,7 @@ Az egyszerű szolgáltatás hitelesítésének használatához regisztráljon eg
 >[!IMPORTANT]
 > Adja meg az egyszerű szolgáltatás megfelelő engedélyét Data Lake Storeban:
 >- **Forrásként**: Az **adatkezelő** > **eléréséhez**adjon meg legalább **olvasási és végrehajtási** engedélyt a mappák és almappákban található fájlok listázásához és másolásához. Emellett **olvasási** engedélyt is biztosíthat egyetlen fájl másolásához. Dönthet úgy, hogy felveszi **ezt a mappát és minden gyermeket** a rekurzív értékre, és hozzá kívánja adni **hozzáférési engedélyként és alapértelmezett engedély-bejegyzést**. A fiók szintű hozzáférés-vezérlés (IAM) nem követelmény.
->- Fogadóként: Az **adatkezelő** > **eléréséhez**adjon meg legalább **írási + végrehajtási** engedélyt a gyermekobjektumok létrehozásához a mappában. Dönthet úgy, hogy felveszi **ezt a mappát és minden gyermeket** a rekurzív értékre, és hozzá kívánja adni **hozzáférési engedélyként és alapértelmezett engedély-bejegyzést**. Ha Azure Integration Runtime-t használ a másoláshoz (a forrás és a fogadó is a felhőben van), a IAM- ban legalább az olvasói szerepkört kell biztosítania ahhoz, hogy Data Factory felderítse a Data Lake Store régióját. Ha el szeretné kerülni ezt a IAM-szerepkört, explicit módon [hozzon létre egy Azure Integration Runtime](create-azure-integration-runtime.md#create-azure-ir) -t Data Lake Store helyével. Ha például a Data Lake Store Nyugat-Európában található, hozzon létre egy "Nyugat-európai" nevű Azure Integration Runtime-t a helyhez. Társítsa őket a Data Lake Store társított szolgáltatáshoz az alábbi példában látható módon.
+>- **Fogadóként:** Az **adatkezelő** > **eléréséhez**adjon meg legalább **írási + végrehajtási** engedélyt a gyermekobjektumok létrehozásához a mappában. Dönthet úgy, hogy felveszi **ezt a mappát és minden gyermeket** a rekurzív értékre, és hozzá kívánja adni **hozzáférési engedélyként és alapértelmezett engedély-bejegyzést**. Ha Azure Integration Runtime-t használ a másoláshoz (a forrás és a fogadó is a felhőben van), a IAM-ban legalább az **olvasói** szerepkört kell biztosítania ahhoz, hogy Data Factory felderítse a Data Lake Store régióját. Ha el szeretné kerülni ezt a IAM-szerepkört, explicit módon [hozzon létre egy Azure Integration Runtime](create-azure-integration-runtime.md#create-azure-ir) -t Data Lake Store helyével. Ha például a Data Lake Store Nyugat-Európában található, hozzon létre egy "Nyugat-európai" nevű Azure Integration Runtime-t a helyhez. Társítsa őket a Data Lake Store társított szolgáltatáshoz az alábbi példában látható módon.
 
 >[!NOTE]
 >Ahhoz, hogy a mappák a gyökerétől kezdődően legyenek listázva, be kell állítania az egyszerű szolgáltatásnév engedélyét a **"végrehajtás" engedéllyel rendelkező gyökérszintű szinten**. Ez akkor igaz, ha a következőt használja:
@@ -129,7 +129,7 @@ Azure-erőforrások hitelesítéshez használandó felügyelt identitások:
 >[!IMPORTANT]
 > Győződjön meg arról, hogy az adat-előállító felügyelt identitásának megfelelő engedélyt ad a Data Lake Storeban:
 >- **Forrásként**: Az **adatkezelő** > **eléréséhez**adjon meg legalább **olvasási és végrehajtási** engedélyt a mappák és almappákban található fájlok listázásához és másolásához. Emellett **olvasási** engedélyt is biztosíthat egyetlen fájl másolásához. Dönthet úgy, hogy felveszi **ezt a mappát és minden gyermeket** a rekurzív értékre, és hozzá kívánja adni **hozzáférési engedélyként és alapértelmezett engedély-bejegyzést**. A fiók szintű hozzáférés-vezérlés (IAM) nem követelmény.
->- Fogadóként: Az **adatkezelő** > **eléréséhez**adjon meg legalább **írási + végrehajtási** engedélyt a gyermekobjektumok létrehozásához a mappában. Dönthet úgy, hogy felveszi **ezt a mappát és minden gyermeket** a rekurzív értékre, és hozzá kívánja adni **hozzáférési engedélyként és alapértelmezett engedély-bejegyzést**. Ha Azure Integration Runtime-t használ a másoláshoz (a forrás és a fogadó is a felhőben van), a IAM- ban legalább az olvasói szerepkört kell biztosítania ahhoz, hogy Data Factory felderítse a Data Lake Store régióját. Ha el szeretné kerülni ezt a IAM-szerepkört, explicit módon [hozzon létre egy Azure Integration Runtime](create-azure-integration-runtime.md#create-azure-ir) -t Data Lake Store helyével. Társítsa őket a Data Lake Store társított szolgáltatáshoz az alábbi példában látható módon.
+>- **Fogadóként:** Az **adatkezelő** > **eléréséhez**adjon meg legalább **írási + végrehajtási** engedélyt a gyermekobjektumok létrehozásához a mappában. Dönthet úgy, hogy felveszi **ezt a mappát és minden gyermeket** a rekurzív értékre, és hozzá kívánja adni **hozzáférési engedélyként és alapértelmezett engedély-bejegyzést**. Ha Azure Integration Runtime-t használ a másoláshoz (a forrás és a fogadó is a felhőben van), a IAM-ban legalább az **olvasói** szerepkört kell biztosítania ahhoz, hogy Data Factory felderítse a Data Lake Store régióját. Ha el szeretné kerülni ezt a IAM-szerepkört, explicit módon [hozzon létre egy Azure Integration Runtime](create-azure-integration-runtime.md#create-azure-ir) -t Data Lake Store helyével. Társítsa őket a Data Lake Store társított szolgáltatáshoz az alábbi példában látható módon.
 
 >[!NOTE]
 >Ahhoz, hogy a mappák a gyökerétől kezdődően legyenek listázva, a **"végrehajtás" engedéllyel**kell megadnia a felügyelt identitásnak a legfelső szintű jogosultságát. Ez akkor igaz, ha a következőt használja:
@@ -163,12 +163,12 @@ Azure Data Factory a társított szolgáltatás általános Data Lake Store info
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. 
 
-- A **parketta, a tagolt szöveg és a bináris formátum**esetében tekintse meg a [parketta, tagolt szöveg és bináris formátum adatkészlet](#format-based-dataset) szakaszt.
-- Más formátumok, például az **ork/Avro/JSON formátum**esetében tekintse meg a [más formátumú adatkészlet](#other-format-dataset) szakaszt.
+- A **Parquet, a tagolt szöveget, a Avro és a bináris formátumot**a [parketta, a tagolt szöveg, a Avro és a bináris formátum adatkészlet](#format-based-dataset) szakaszban találja.
+- Más formátumok, például az **ork/JSON formátum**esetében tekintse meg a [más formátumú adatkészlet](#other-format-dataset) szakaszt.
 
-### <a name="format-based-dataset"></a>Parketta, tagolt szöveg és bináris formátum adatkészlet
+### <a name="format-based-dataset"></a>Parketta, tagolt szöveg, Avro és bináris formátum adatkészlet
 
-Ha a **parketta, a tagolt szöveg vagy a bináris formátum**között szeretne adatokat másolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md) és a [bináris formátumú](format-binary.md) cikket a Format-alapú adatkészlet és a támogatott beállítások területen.
+Ha a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**között szeretne adatokat másolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a Format-alapú adatkészleten és a támogatott beállításokon.
 A következő tulajdonságok támogatottak Azure Data Lake Store Gen1 `location` a Format-alapú adatkészlet beállítások területén:
 
 | Tulajdonság   | Leírás                                                  | Szükséges |
@@ -209,12 +209,12 @@ A következő tulajdonságok támogatottak Azure Data Lake Store Gen1 `location`
 
 ### <a name="other-format-dataset"></a>Egyéb formátumú adatkészlet
 
-Az adatok Azure Data Lake Store Gen1 az **ork/Avro/JSON formátumban**történő másolásához a következő tulajdonságok támogatottak:
+Az adatok Azure Data Lake Store Gen1 az **ork/JSON formátumban**történő másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát **AzureDataLakeStoreFile**értékre kell állítani. |Igen |
-| folderPath | A Data Lake Store mappájának elérési útja. Ha nincs megadva, a legfelső szintű mutat. <br/><br/>A helyettesítő karakteres szűrő használata támogatott. Az `*` engedélyezett helyettesítő karakterek (nulla vagy több karakternek felelnek `?` meg) és (nulla vagy egyetlen karakternek felelnek meg). Akkor `^` használja a-et, ha a tényleges mappanév helyettesítő karakterrel rendelkezik, vagy a menekülési karakter szerepel a belsejében. <br/><br/>Például: gyökérmappa/almappa/. További példákat a [mappák és a fájlok szűrésére](#folder-and-file-filter-examples)szolgáló példákban talál. |Nem |
+| folderPath | A Data Lake Store mappájának elérési útja. Ha nincs megadva, a legfelső szintű mutat. <br/><br/>A helyettesítő karakteres szűrő használata támogatott. Az `*` engedélyezett helyettesítő karakterek (nulla vagy több karakternek felelnek `?` meg) és (nulla vagy egyetlen karakternek felelnek meg). Akkor `^` használja a-et, ha a tényleges mappanév helyettesítő karakterrel rendelkezik, vagy a menekülési karakter szerepel a belsejében. <br/><br/>Például: gyökérmappa/almappa/. További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. |Nem |
 | fileName | A megadott "folderPath" alatt lévő fájlok neve vagy helyettesítő karakteres szűrője. Ez a tulajdonság értékét nem adja meg, ha az adatkészlet mutat a mappában lévő összes fájlt. <br/><br/>A Filter `*` (szűrő) esetében a megengedett helyettesítő karakterek (nulla vagy több karakternek `?` felelnek meg) és (a nulla vagy egyetlen karakternek felel meg).<br/>-1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/>Ha `^` a tényleges fájl neve helyettesítő karakterrel rendelkezik, vagy a menekülési karakter szerepel a következőben, használja a Escape karaktert.<br/><br/>Ha nincs megadva a fájlnév egy kimeneti adatkészlethez, és a **preserveHierarchy** nincs megadva a tevékenység fogadójában, a másolási tevékenység automatikusan létrehozza a fájlnevet a következő mintával: "*Az adatgyűjtés. [tevékenység futtatásának azonosítója GUID]. [GUID if FlattenHierarchy]. [formátum, ha konfigurálva]. [tömörítés, ha be van állítva]* ", például" az "adat. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt. gz". Ha egy táblázatos forrásból másol egy tábla nevét egy lekérdezés helyett, akkor a név minta a következő: " *[Table Name]. [ Format]. [tömörítés, ha konfigurálva]* ", például" sajáttábla. csv ". |Nem |
 | modifiedDatetimeStart | A fájlok szűrése a legutóbb módosított attribútum alapján. A fájlok akkor vannak kiválasztva, ha az utolsó módosítás időpontja a és `modifiedDatetimeStart` `modifiedDatetimeEnd`a közötti időtartományon belül van. Az időpontot az UTC időzónára alkalmazza a "2018-12-01T05:00:00Z" formátumban. <br/><br/> Ha ezt a beállítást szeretné elvégezni, nagy mennyiségű fájl használata esetén a rendszer az adatáthelyezés általános teljesítményét érinti. <br/><br/> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre. Ha `modifiedDatetimeStart` a dátum datetime értékkel `modifiedDatetimeEnd` rendelkezik, de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték. Ha `modifiedDatetimeEnd` a dátum datetime értékkel `modifiedDatetimeStart` rendelkezik, de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.| Nem |
 | modifiedDatetimeEnd | A fájlok szűrése a legutóbb módosított attribútum alapján. A fájlok akkor vannak kiválasztva, ha az utolsó módosítás időpontja a és `modifiedDatetimeStart` `modifiedDatetimeEnd`a közötti időtartományon belül van. Az időpontot az UTC időzónára alkalmazza a "2018-12-01T05:00:00Z" formátumban. <br/><br/> Ha ezt a beállítást szeretné elvégezni, nagy mennyiségű fájl használata esetén a rendszer az adatáthelyezés általános teljesítményét érinti. <br/><br/> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre. Ha `modifiedDatetimeStart` a dátum datetime értékkel `modifiedDatetimeEnd` rendelkezik, de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték. Ha `modifiedDatetimeEnd` a dátum datetime értékkel `modifiedDatetimeStart` rendelkezik, de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.| Nem |
@@ -223,7 +223,7 @@ Az adatok Azure Data Lake Store Gen1 az **ork/Avro/JSON formátumban**történő
 
 
 >[!TIP]
->Másolja egy mappában található összes fájlt, adja meg a **folderPath** csak.<br>Egy adott névvel rendelkező egyetlen fájl másolásához adja meg a **folderPath** mappát, és nevezze el a fájlnevet.<br>Ha egy mappában lévő fájlok egy részhalmazát szeretné másolni, akkor a **folderPath** és a **fájlnevet** egy helyettesítő szűrővel kell megadnia. 
+>Másolja egy mappában található összes fájlt, adja meg a **folderPath** csak.<br>Egy adott névvel rendelkező egyetlen fájl másolásához adja meg a **folderPath** mappát, és nevezze el a **fájlnevet** .<br>Ha egy mappában lévő fájlok egy részhalmazát szeretné másolni, akkor a **folderPath** és a **fájlnevet** egy helyettesítő szűrővel kell megadnia. 
 
 **Példa:**
 
@@ -261,19 +261,19 @@ A tevékenységek definiálásához rendelkezésre álló csoportok és tulajdon
 
 ### <a name="azure-data-lake-store-as-source"></a>Az Azure Data Lake Store mint forrás
 
-- A **parketta, a tagolt szöveg és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg és a bináris formátum forrás](#format-based-source) szakaszát.
-- Más formátumokból, például az **ork/Avro/JSON formátumból**való másoláshoz tekintse meg a [más formátumú forrás](#other-format-source) szakaszt.
+- A **parketta, a tagolt szöveg, a Avro és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg, a Avro és a bináris formátum forrás](#format-based-source) szakaszát.
+- Más formátumokból, például az **ork/JSON formátumból**való másoláshoz tekintse meg a [más formátumú forrás](#other-format-source) szakaszt.
 
-#### <a name="format-based-source"></a>Parketta, tagolt szöveg és bináris formátum forrása
+#### <a name="format-based-source"></a>Parketta, tagolt szöveg, Avro és bináris formátum forrása
 
-Ha a **parketta, a tagolt szöveg vagy a bináris formátum**adatait szeretné átmásolni, tekintse meg a [parketta formátuma](format-parquet.md), a [tagolt szöveg formátuma](format-delimited-text.md) és a [bináris formátum](format-binary.md) című cikket a másolási tevékenység forrására és a támogatott beállításokra vonatkozóan.  A következő tulajdonságok támogatottak Azure Data Lake Store Gen1 a Format `storeSettings` -alapú másolási forrás beállításai alatt:
+Ha a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**adatait szeretné átmásolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a formátum-alapú másolási tevékenység forrására .  A következő tulajdonságok támogatottak Azure Data Lake Store Gen1 a Format `storeSettings` -alapú másolási forrás beállításai alatt:
 
 | Tulajdonság                 | Leírás                                                  | Szükséges                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | A Type tulajdonságot `storeSettings` a **AzureDataLakeStoreReadSetting**értékre kell állítani. | Igen                                           |
 | recursive                | Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappába. Ha a rekurzív értéke TRUE (igaz), a fogadó pedig egy fájl alapú tároló, akkor a fogadó nem másol vagy hoz létre üres mappát vagy almappát. Engedélyezett értékek a következők **igaz** (alapértelmezett), és **hamis**. | Nem                                            |
-| wildcardFolderPath       | A mappa elérési útja helyettesítő karakterekkel a forrás mappák szűréséhez. <br>Az `*` engedélyezett helyettesítő karakterek (nulla vagy több karakternek felelnek `?` meg) és (nulla vagy egyetlen karakternek felelnek meg). Akkor `^` használja a-et, ha a tényleges mappanév helyettesítő karakterrel rendelkezik, vagy a menekülési karakter szerepel a belsejében. <br>További példákat a [mappák és a fájlok szűrésére](#folder-and-file-filter-examples)szolgáló példákban talál. | Nem                                            |
-| wildcardFileName         | A forrásfájl szűréséhez a megadott folderPath/wildcardFolderPath helyettesítő karaktereket tartalmazó fájlnév. <br>Az `*` engedélyezett helyettesítő karakterek (nulla vagy több karakternek felelnek `?` meg) és (nulla vagy egyetlen karakternek felelnek meg). Akkor `^` használja a-et, ha a tényleges mappanév helyettesítő karakterrel rendelkezik, vagy a menekülési karakter szerepel a belsejében. További példákat a [mappák és a fájlok szűrésére](#folder-and-file-filter-examples)szolgáló példákban talál. | Igen, `fileName` ha nincs megadva az adatkészletben |
+| wildcardFolderPath       | A mappa elérési útja helyettesítő karakterekkel a forrás mappák szűréséhez. <br>Az `*` engedélyezett helyettesítő karakterek (nulla vagy több karakternek felelnek `?` meg) és (nulla vagy egyetlen karakternek felelnek meg). Akkor `^` használja a-et, ha a tényleges mappanév helyettesítő karakterrel rendelkezik, vagy a menekülési karakter szerepel a belsejében. <br>További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Nem                                            |
+| wildcardFileName         | A forrásfájl szűréséhez a megadott folderPath/wildcardFolderPath helyettesítő karaktereket tartalmazó fájlnév. <br>Az `*` engedélyezett helyettesítő karakterek (nulla vagy több karakternek felelnek `?` meg) és (nulla vagy egyetlen karakternek felelnek meg). Akkor `^` használja a-et, ha a tényleges mappanév helyettesítő karakterrel rendelkezik, vagy a menekülési karakter szerepel a belsejében. További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Igen, `fileName` ha nincs megadva az adatkészletben |
 | modifiedDatetimeStart    | A fájlok szűrése a legutóbb módosított attribútum alapján. A fájlok akkor vannak kiválasztva, ha az utolsó módosítás időpontja a és `modifiedDatetimeStart` `modifiedDatetimeEnd`a közötti időtartományon belül van. Az időpontot az UTC időzónára alkalmazza a "2018-12-01T05:00:00Z" formátumban. <br> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre. Ha `modifiedDatetimeStart` a dátum datetime értékkel `modifiedDatetimeEnd` rendelkezik, de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték. Ha `modifiedDatetimeEnd` a dátum datetime értékkel `modifiedDatetimeStart` rendelkezik, de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél. | Nem                                            |
 | modifiedDatetimeEnd      | Ugyanaz, mint a fenti.                                               | Nem                                            |
 | maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | Nem                                            |
@@ -324,7 +324,7 @@ Ha a **parketta, a tagolt szöveg vagy a bináris formátum**adatait szeretné �
 
 #### <a name="other-format-source"></a>Egyéb formátum forrása
 
-Az adatok Azure Data Lake Store Gen1 az **ork, Avro vagy JSON formátumban**való másolásához a következő tulajdonságok támogatottak a másolási tevékenység **forrása** szakaszban:
+Az adatok Azure Data Lake Store Gen1 az **ork vagy JSON formátumban**való másolásához a következő tulajdonságok támogatottak a másolási tevékenység **forrása** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -366,12 +366,12 @@ Az adatok Azure Data Lake Store Gen1 az **ork, Avro vagy JSON formátumban**val�
 
 ### <a name="azure-data-lake-store-as-sink"></a>Az Azure Data Lake Store mint fogadó
 
-- A **parkettázott, tagolt szövegre vagy bináris formátumra**való másoláshoz tekintse meg a következőt: [parketta, tagolt szöveg és bináris formátum](#format-based-sink) fogadó szakasz.
-- Ha más formátumokra szeretne másolni, például az **ork/Avro/JSON formátumra**, tekintse meg a [más formátumú mosogató](#other-format-sink) szakaszt.
+- A parketta, a **tagolt szöveg, a Avro vagy a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg, a Avro és a bináris formátum](#format-based-sink) fogadó szakaszát.
+- Más formátumokba, például az **ork/JSON formátumba**való másoláshoz tekintse meg a [más Format mosogató](#other-format-sink) szakaszt.
 
-#### <a name="format-based-sink"></a>Parketta, tagolt szöveg és bináris formátum fogadó
+#### <a name="format-based-sink"></a>Parketta, tagolt szöveg, Avro és bináris formátumú fogadó
 
-Ha az Adatmásolást a **parketta, a tagolt szöveg vagy a bináris formátum**mezőbe szeretné másolni, tekintse meg a [parketta formátuma](format-parquet.md), a [tagolt szöveg formátuma](format-delimited-text.md) és a [bináris formátum](format-binary.md) című cikket a másolási tevékenység fogadója és a támogatott beállítások területen.  A következő tulajdonságok támogatottak Azure Data Lake Store Gen1 a Format `storeSettings` -alapú másolási fogadó beállításai alatt:
+Az adatmásoláshoz a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**a [parketta formátuma](format-parquet.md), a [tagolt szöveg formátuma](format-delimited-text.md), a [Avro formátum](format-avro.md) és a [bináris formátum](format-binary.md) cikk a Format-alapú másolási tevékenység fogadója és a támogatott beállítások alapján.  A következő tulajdonságok támogatottak Azure Data Lake Store Gen1 a Format `storeSettings` -alapú másolási fogadó beállításai alatt:
 
 | Tulajdonság                 | Leírás                                                  | Szükséges |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -419,7 +419,7 @@ Ha az Adatmásolást a **parketta, a tagolt szöveg vagy a bináris formátum**m
 
 #### <a name="other-format-sink"></a>Egyéb formátumú fogadó
 
-Ha az Azure Data Lake Store Gen1 szeretné másolni az **ork, a Avro vagy a JSON formátumba**, a fogadó szakasz a következő tulajdonságokat támogatja:
+Ha az Azure Data Lake Store Gen1 az **ork vagy JSON formátumban**szeretné másolni, a **fogadó szakasz a** következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -489,7 +489,7 @@ Ha a hozzáférés-vezérlési listákat (ACL-eket) az adatfájlokkal együtt sz
 
 ## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
 
-További információ a [forrás](data-flow-source.md) -átalakításról és a fogadó [transzformációról](data-flow-sink.md) a leképezési adatfolyam funkcióban.
+További információ a [forrás-átalakításról](data-flow-source.md) és a fogadó [transzformációról](data-flow-sink.md) a leképezési adatfolyam funkcióban.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: b6b353e0e01f3f598048e5fbb2682603045b1037
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.localizationpriority: high
+ms.openlocfilehash: f5473ae7bd9ac1615d59d18c996e01902e1adbd6
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164464"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241415"
 ---
 ::: zone target = "docs"
 
@@ -50,7 +51,7 @@ Ez az útmutató útmutatást nyújt az előfeltételek, a kábelek és az eszk�
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 1. Elvégezte az [oktatóanyagot: Megrendelés Azure Data Box Heavy](data-box-heavy-deploy-ordered.md).
-2. Megkapta a Data Box Heavyt, és a portálon megjelenőmegrendelés állapota kézbesítve.
+2. Megkapta a Data Box Heavyt, és a portálon megjelenő megrendelés állapota **kézbesítve**.
 3. Áttekintette a [Data Box Heavy biztonsági irányelveit](data-box-safety.md).
 4. Hozzá kell férnie egy olyan, az adatközpontban található lapos webhelyhez, amely egy olyan elérhető hálózati kapcsolat közelében van, amely képes az adott helyigényű eszköz befogadására. Az eszköz nem csatlakoztatható állványhoz.
 5. Négy megalapozott tápkábelt kapott a tárolóeszköz használatára.

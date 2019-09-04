@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 6b13eab0824307ef42f25d52a293f0f22818c1aa
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 937a076b3e0e3c5170779d3449776f0aa1cf5b49
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210032"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259001"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Az adatok áttelepíthetők a Azure Data Factory használatával az Azure-ba vagy az adattárházból 
 
@@ -60,4 +60,5 @@ Ha két héten belül szeretné végrehajtani az adatáttelepítést (áttelepí
 ## <a name="next-steps"></a>További lépések
 
 - [Adatok migrálása az AWS S3-ből az Azure-ba](data-migration-guidance-s3-azure-storage.md)
-- [Adatok migrálása a helyszíni Hadoop-fürtről az Azure-ba](data-migration-guidance-hdfs-azure-storage.md)
+- [Adatok migrálása helyszíni Hadoop-fürtről az Azure-ba](data-migration-guidance-hdfs-azure-storage.md)
+- [Adatok migrálása a helyszíni Netezza-kiszolgálóról az Azure-ba](data-migration-guidance-netezza-azure-sqldw.md)

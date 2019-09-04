@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: d03c5f66f760a2bea9f99501cec478831a347c5d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 31243b5e9da55aafbc376fa416c1b00a4499c116
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668723"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242414"
 ---
-# <a name="feature-evaluation"></a>Szolgáltatások kiértékelése
+# <a name="feature-evaluation"></a>Szolgáltatások értékelése
 
 Ha kiértékelést futtat a [Azure Portal](https://portal.azure.com)személyre szabott erőforrásában, a személyre szabott információval megtudhatja, hogy a rendszer milyen funkciókat és műveleteket befolyásol a modellben. 
 
@@ -32,9 +32,9 @@ A fontosabb funkciók nagyobb súlyokkal rendelkeznek a modellben. Mivel ezek a 
 
 ## <a name="getting-feature-importance-evaluation"></a>A funkciók fontossági kiértékelésének beolvasása
 
-A funkciók fontossági eredményeinek megjelenítéséhez próbaverziót kell futtatnia. A funkció fontosságával kapcsolatos információk a jelenlegi személyre szabott online modellt jelölik. A kiértékelés elemzi a kiértékelési időszak végén elmentett modell funkciójának fontosságát. 
+A funkciók fontossági eredményeinek megjelenítéséhez próbaverziót kell futtatnia. A kiértékelés során a rendszer a próbaidőszak alatt megfigyelt szolgáltatások nevei alapján létrehoz egy emberi olvasási funkciót.
 
-A kiértékelés során a rendszer a próbaidőszak alatt megfigyelt szolgáltatások nevei alapján létrehoz egy emberi olvasási funkciót.
+A funkció fontosságával kapcsolatos információk a jelenlegi személyre szabott online modellt jelölik. A kiértékelés a kiértékelési időszak végén elmentett modell fontosságát elemzi, miután az értékelés során végzett összes betanítást elvégezte a jelenlegi online tanulási szabályzattal. 
 
 A funkció fontossági eredményei nem jelentenek más, a kiértékelés során tesztelt vagy létrehozott szabályzatokat és modelleket.  A kiértékelés nem tartalmaz olyan szolgáltatásokat, amelyeket a rendszer a próbaidőszak lejárta után személyre Szabottnak küld.
 

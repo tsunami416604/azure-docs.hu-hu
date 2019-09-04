@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: bb37c9106149397f50e84b340b1be1189e0de7d1
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 726fdd6aeebac970142fa9225381af77114bfe42
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186269"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274115"
 ---
 # <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>Oktatóanyag: Struktúra hozzáadása strukturálatlan tartalomhoz kognitív kereséssel
 
@@ -22,10 +22,10 @@ Ha strukturálatlan szöveg-vagy képtartalommal rendelkezik, a Azure Search [ko
 
 > [!div class="checklist"]
 > * Az Azure Blob Storage-ban a teljes dokumentumokkal (strukturálatlan szöveggel), például a PDF, az MD, a DOCX és a PPTX formátummal kezdheti meg a használatot.
-> * Létrehozhat egy olyan folyamatot, amely Kinyeri a szöveget, észleli a nyelvet, felismeri az entitásokat, és észleli a kulcsfontosságú kifejezéseket.
+> * Definiáljon egy olyan folyamatot, amely kibontja a szöveget, észleli a nyelvet, felismeri az entitásokat, és észleli a legfontosabb kifejezéseket.
 > * Definiáljon egy indexet a kimenet (nyers tartalom, valamint a folyamat által generált név-érték párok) tárolására.
-> * A folyamat végrehajtásával hozza létre és töltse be az indexet.
-> * Teljes szöveges kereséssel és részletes lekérdezési szintaxissal tárja fel a tartalmakat.
+> * A folyamat végrehajtásával megkezdheti az átalakításokat és az elemzést, valamint az index létrehozását és betöltését.
+> * A teljes szöveges kereséssel és a részletes lekérdezési szintaxissal megismerheti az eredményeket.
 
 A bemutató elvégzéséhez több szolgáltatásra is szüksége lesz, valamint a [Poster Desktop alkalmazás](https://www.getpostman.com/) vagy egy másik webes tesztelési eszköz, amellyel REST API hívásokat hajthat végre. 
 
@@ -35,7 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt nyisson meg egy [ingy
 
 1. Nyissa meg ezt a [OneDrive mappát](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) , és a bal felső sarokban kattintson a **Letöltés** elemre a fájlok számítógépre másolásához. 
 
-1. Kattintson a jobb gombbal a zip-fájlra, és válassza az **összes**kibontása lehetőséget. A különböző típusok 14 fájlból állnak. Ehhez a gyakorlathoz a 7-et fogja használni.
+1. Kattintson a jobb gombbal a zip-fájlra, és válassza az **összes kibontása**lehetőséget. A különböző típusok 14 fájlból állnak. Ehhez a gyakorlathoz a 7-et fogja használni.
 
 ## <a name="1---create-services"></a>1 – szolgáltatások létrehozása
 
@@ -45,7 +45,7 @@ Ez az útmutató Azure Searcht használ az indexeléshez és lekérdezésekhez, 
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/) , és kattintson az **+ erőforrás létrehozása**elemre.
 
-1. Keressen rá a *Storage* -fiókra, és válassza ki a Microsoft Storage-fiók ajánlatát.
+1. Keressen rá a *Storage-fiókra* , és válassza ki a Microsoft Storage-fiók ajánlatát.
 
    ![Storage-fiók létrehozása](media/cognitive-search-tutorial-blob/storage-account.png "Storage-fiók létrehozása")
 
@@ -63,7 +63,7 @@ Ez az útmutató Azure Searcht használ az indexeléshez és lekérdezésekhez, 
 
 1. A létrehozás után kattintson **az erőforrás** megnyitása lehetőségre az Áttekintés lap megnyitásához.
 
-1. Kattintson a Blobok szolgáltatás elemre.
+1. Kattintson a **Blobok** szolgáltatás elemre.
 
 1. Kattintson a **+ tároló** elemre egy tároló létrehozásához, és nevezze el a *fogaskerék-Search-demo kifejezést*.
 
@@ -111,7 +111,7 @@ Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes k
 
 ## <a name="2---set-up-postman"></a>2 – Poster beállítása
 
-Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha nem ismeri ezt az eszközt, tekintse meg a következőt: [Azure Search REST API](search-get-started-postman.md)-k megismerése a Poster használatával.
+Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha nem ismeri ezt az eszközt, tekintse meg a következőt: [Azure Search REST API-k megismerése a Poster használatával](search-get-started-postman.md).
 
 Az oktatóanyagban használt metódusok a **post**, a **put**és a **Get**. A következő módszerekkel hozhat létre négy API-hívást a keresési szolgáltatáshoz: adatforrás, készségkészlet, index és indexelő létrehozása.
 

@@ -1,105 +1,105 @@
 ---
-title: Az Azure Monitor Azure Cosmos DB metrikáinak beolvasása
+title: Azure Monitor Azure Cosmos DB metrikáinak beolvasása
 description: ''
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/18/2019
-ms.openlocfilehash: 2eb61a6b9afa3cabf1733be120dfbdacb7de4534
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 09/01/2019
+ms.openlocfilehash: 762c910336fa2b50a46eda23cf66d8a7aa383c52
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276794"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241220"
 ---
-# <a name="monitor-and-debug-azure-cosmos-db-metrics-from-azure-monitor"></a>Figyelheti és hibakeresése az Azure Cosmos DB az Azure Monitor metrikái
+# <a name="monitor-and-debug-azure-cosmos-db-metrics-from-azure-monitor"></a>Azure Cosmos DB metrikák figyelése és hibakeresése Azure Monitor
 
-Azure Cosmos DB-mérőszámok az Azure Monitor API tekintheti meg. Az Azure Monitor mérőszámokat, együttműködhet több módszert is biztosít, többek között az Azure Portalon, a hozzájuk férni a REST API-n keresztül vagy a lekérdezési őket a PowerShell vagy parancssori felület használatával. Az Azure Cosmos DB-metrikák közel valós idejű numerikus értékeket, alapértelmezés szerint gyűjtött perces gyakorisággal, ezeket a metrikákat is lehet összesíteni. Ezek a metrikák képesek a valós idejű felhasználói helyzetek támogatása.  
+Azure Monitor API-ból Azure Cosmos DB metrikákat tekinthet meg. A Azure Monitor számos módszert biztosít a metrikák, például a Azure Portal, a REST APIon keresztül történő hozzáférés vagy a PowerShell vagy a parancssori felület használatával történő lekérdezéséhez. Azure Cosmos DB mérőszámok alacsony késésű numerikus értékek, amelyek alapértelmezés szerint egyperces gyakorisággal vannak összegyűjtve, ezeket a mérőszámokat összesítheti is. Ezek a metrikák valós idejű forgatókönyvek támogatására alkalmasak.  
 
-Ez a cikk ismerteti a különböző Azure Cosmos DB tekintheti meg az Azure Monitor metrikái Azure portal használatával. Ha érdekli a gyakori használati eseteket, és újra az Azure Cosmos DB-metrikák elemzéséhez, és ezek hibakeresési módjáról lásd: problémák [figyelése és hibakeresése az Azure Cosmos DB metrikákkal](use-metrics.md) cikk. Ön a meglévő Azure-Cosmos-fiókok valamelyikével, és az adatbázis, tároló, régió, kérelem vagy művelet szintek, a másik metrikákat tekinthet meg. Ügyeljen, hogy rendelkezik egy Azure Cosmos-fiókkal, mintaadatokkal, és az adatok CRUD-műveletek végrehajtása.
+Ez a cikk a Azure Portal használatával megtekinthető Azure Monitor különböző Azure Cosmos DB metrikákat ismerteti. Ha a gyakori használati esetek érdeklik, és az ilyen problémák elemzéséhez és hibakereséséhez használt Azure Cosmos DB mérőszámok Azure Cosmos DB cikkben található [mérőszámok figyelése és hibakeresése](use-metrics.md) . A meglévő Azure Cosmos-fiókok egyikét fogja használni, és megtekintheti az adatbázis, a tároló, a régió, a kérelem vagy a műveleti szintek különböző metrikáit. Ezért győződjön meg róla, hogy rendelkezik egy Azure Cosmos-fiókkal, és végezze el az adatokon végzett SZIFILISZt.
 
-## <a name="view-metrics-from-azure-portal"></a>Metrikák megtekintése az Azure Portalról
+## <a name="view-metrics-from-azure-portal"></a>Metrikák megtekintése Azure Portal
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Válassza ki **figyelő** a bal oldali navigációs sávban, a **metrikák**.
+1. Válassza a **figyelő** lehetőséget a bal oldali navigációs sávon, és válassza a **metrikák**lehetőséget.
 
-   ![Az Azure Monitor metrikák paneljén](./media/cosmos-db-azure-monitor-metrics/monitor-metrics-blade.png)
+   ![Metrikák ablaktábla Azure Monitor](./media/cosmos-db-azure-monitor-metrics/monitor-metrics-blade.png)
 
-1. Az a **metrikák** panel > **válasszon ki egy erőforrást** > Válassza ki a szükséges **előfizetés**, és **erőforráscsoport**. Az a **erőforrástípus**válassza **Azure Cosmos DB-fiókokhoz**, válasszon egyet a meglévő Azure-Cosmos-fiókoknak, és válassza ki **alkalmaz**. 
+1. A **metrikák** ablaktáblán > **válasszon ki egy erőforrást** > Válassza ki a szükséges **előfizetést**és **erőforráscsoportot**. Az **erőforrástípus**mezőben válassza a **Azure Cosmos db fiókok**lehetőséget, válasszon ki egy meglévő Azure Cosmos-fiókot, majd válassza az **alkalmaz**lehetőséget. 
 
-   ![Válassza ki a Cosmos DB-fiók metrikák megtekintése](./media/cosmos-db-azure-monitor-metrics/select-cosmosdb-account.png)
+   ![Cosmos DB fiók kiválasztása a metrikák megtekintéséhez](./media/cosmos-db-azure-monitor-metrics/select-cosmosdb-account.png)
 
-1. Ezután kiválaszthatja a metrika az elérhető mérőszámok listájából. Kiválaszthatja, hogy a metrikák meghatározott kérelemegység, storage, késést, rendelkezésre állást, Cassandra és mások. A listában szereplő összes rendelkezésre álló metrikák kapcsolatos részletes tudnivalókért lásd: a [metrikák kategória szerint](#metrics-by-category) című szakaszát. Ebben a példában válassza **Kérelemegységek** és **átlagos** összesítési értékeként. 
+1. Következő lépésként kiválaszthat egy mérőszámot az elérhető metrikák listájából. Kiválaszthatja a kérelmekhez tartozó mérőszámokat, a tárolást, a késést, a rendelkezésre állást, a Cassandra és másokat. A lista összes elérhető metrikájának részletes megismeréséhez tekintse meg a jelen cikk [mérőszámok kategóriánként](#metrics-by-category) című szakaszát. Ebben a példában a **kérelmek egységeit** és az **átlagot** adja meg az összesítési értékként. 
 
-   Ezek az adatok mellett is választhat a **időtartomány** és **idő részletessége** metrikák. Maximális száma, a metrikák megtekintheti az elmúlt 30 napra vonatkozóan.  A szűrő alkalmazása után egy diagram jelenik meg a szűrő alapján. Láthatja, hogy a kijelölt időszakra vonatkozóan percenként felhasznált kérelemegységek átlagos száma.  
+   Ezen részletek mellett kiválaszthatja a metrikák **időtartományát** és **időrészletességét** is. A maximális értéknél megtekintheti az elmúlt 30 nap mérőszámait.  A szűrő alkalmazása után egy diagram jelenik meg a szűrő alapján. A kiválasztott időszakra vonatkozóan percenként felhasználható kérelmek átlagos számát láthatja.  
 
-   ![Metrika kiválasztása az Azure Portalról](./media/cosmos-db-azure-monitor-metrics/metric-types.png)
+   ![Metrika kiválasztása a Azure Portal](./media/cosmos-db-azure-monitor-metrics/metric-types.png)
 
-## <a name="add-filters-to-metrics"></a>Mérőszámok szűrése
+## <a name="add-filters-to-metrics"></a>Szűrők hozzáadása metrikához
 
-Metrikák és a egy adott szerint jelenik meg a diagramot is szűrheti **CollectionName**, **DatabaseName**, **OperationType**, **régió**, és **StatusCode**. A metrikák szűréséhez válasszon **szűrő hozzáadása** , és válassza ki például a kötelező tulajdonság **OperationType** , és válassza ki az értéket például **lekérdezés**. A diagram ekkor a a kijelölt időszakra vonatkozóan a lekérdezési művelethez felhasznált kérelemegységek jeleníti meg. A tárolt eljárás használatával végrehajtott műveletek nem jelentkezett be, így nem érhető el az OperationType metrika alapján.
+Az adott **CollectionName**, **databasename**, **OperationType**, **régió**és **statuscode**által megjelenített mérőszámokat és diagramokat is szűrheti. A metrikák szűréséhez válassza a **szűrő hozzáadása** lehetőséget, és válassza ki a szükséges tulajdonságot (például **OperationType** ), és válasszon egy értéket (például **lekérdezés**). A gráf ezután megjeleníti a kiválasztott időszakban a lekérdezési művelethez felhasznált kérelmek egységeit. A tárolt eljáráson keresztül végrehajtott műveletek nincsenek naplózva, így azok nem érhetők el az OperationType metrika alatt.
 
-![Jelölje be a metrika granularitási szűrő hozzáadása](./media/cosmos-db-azure-monitor-metrics/add-metrics-filter.png)
+![Szűrő hozzáadása a metrika részletességének kiválasztásához](./media/cosmos-db-azure-monitor-metrics/add-metrics-filter.png)
 
-Metrikák használatával csoportosíthatja a **alkalmazni a felosztás** lehetőséget. Például a kérelemegység művelettípusonként csoport és a gráf összes műveletet a következő képen látható módon egyszerre megtekintése: 
+A metrikákat a **felosztás alkalmazása** lehetőség használatával csoportosíthatja. Például csoportosíthatja a kérelmek egységeit, és megtekintheti az összes művelet gráfját, amint az alábbi képen is látható: 
 
-![Adjon hozzá bontásával szűrő alkalmazása](./media/cosmos-db-azure-monitor-metrics/apply-metrics-splitting.png)
+![Alkalmazás-felosztási szűrő hozzáadása](./media/cosmos-db-azure-monitor-metrics/apply-metrics-splitting.png)
 
 
-## <a id="metrics-by-category"></a>Metrikák kategória szerint
+## <a id="metrics-by-category"></a>Metrikák kategóriánként
 
 ### <a name="request-metrics"></a>Kérelem-metrikák
             
-|A metrika (metrikus megjelenített név)|Egység (aggregáció típusa) |Leírás|Dimenziók| Idő granularitással| Örökölt metrika leképezés | Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa) |Leírás|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---| ---|
-| TotalRequests (összes kérelem) | Count (darabszám) | Kérelmek száma| DatabaseName, CollectionName, Region, StatusCode| Összes | TotalRequests, Http 2xx, 3xx Http, a Http 400-as, a Http 401-es, belső kiszolgálóhiba szolgáltatás nem érhető el, a kérelmek szabályozva, másodpercenként átlagosan | Kérések száma állapot kódja, gyűjtemény jelenleg egy perces pontossággal figyelésére használható. A kérelmek másodpercenkénti átlagos száma az összesítés használatát perc, és nullával való osztás 60. |
-| MetadataRequests (metaadat-kérelmek) |Count (darabszám) | A metaadat-kérelmek száma. Az Azure Cosmos DB tárolja a rendszer metaadat-gyűjtemény minden fiókhoz, amely lehetővé teszi, hogy számba venni a gyűjteményeket, adatbázisok, stb., és a konfigurációját, ingyenesen. | DatabaseName, CollectionName, Region, StatusCode| Összes| |A metaadat-kérelmek miatt szabályozások figyelésére használható.|
-| MongoRequests (Mongo-kérelmek) | Count (darabszám) | Mongo-kérelmek száma | DatabaseName, CollectionName, Region, CommandName, ErrorCode| Összes |Mongo-lekérdezési kérelmek arányának, a Mongo-frissítési kérés arány, a Mongo kérelmek arányának törléséhez Mongo beszúrása a kérések aránya, Mongo száma kérelmek gyakorisága| Mongo-kérelem hibák nyomon követésére, a tanúsítványalgoritmusok parancsonként írja be. |
+| TotalRequests (összes kérelem) | Darabszám (darabszám) | Benyújtott kérelmek száma| DatabaseName, CollectionName, régió, StatusCode| Összes | TotalRequests, http-2xx, http-3xx, http 400, HTTP 401, belső kiszolgálóhiba, szolgáltatás nem érhető el, szabályozott kérelmek, átlagos kérelmek másodpercenként | Az állapotkód, a tároló percenkénti részletességgel történő figyelésére használatos. Az átlagos kérelmek másodpercenkénti lekéréséhez használja a Count összesítést percek alatt, és ossza meg a 60-as számmal. |
+| MetadataRequests (metaadat-kérelmek) |Darabszám (darabszám) | A metaadat-kérelmek száma. Azure Cosmos DB minden fiókhoz rendszermetaadat-tárolót tart fenn, amely lehetővé teszi a gyűjtemények, adatbázisok stb. és azok konfigurációinak számbavételét díjmentesen. | DatabaseName, CollectionName, régió, StatusCode| Összes| |Metaadat-kérelmek miatti szabályozások figyelésére használatos.|
+| MongoRequests (Mongo kérelmek) | Darabszám (darabszám) | A Mongo kérelmek száma | DatabaseName, CollectionName, régió, CommandName, ErrorCode| Összes |Mongo-lekérdezési kérelmek gyakorisága, a Mongo frissítési kérelmi aránya, a Mongo törlési kérelmi aránya, a Mongo beszúrási kérelmi aránya, a Mongo száma kérelmek aránya| Mongo-kérési hibák figyelésére használatos. |
 
-### <a name="request-unit-metrics"></a>Kérelem egységek metrikáit
+### <a name="request-unit-metrics"></a>Adategység metrikáinak kérése
 
-|A metrika (metrikus megjelenített név)|Egység (aggregáció típusa)|Leírás|Dimenziók| Idő granularitással| Örökölt metrika leképezés | Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---| ---|
-| MongoRequestCharge (Mongo kérés díj) | Száma (összesen) |Felhasznált Kérelemegységek mongo| DatabaseName, CollectionName, Region, CommandName, ErrorCode| Összes |Mongo-lekérdezés kérelem díjmentes, a Mongo frissítési kérelem díjmentes, a Mongo törlése kérelem díja, Mongo beszúrása kérelem számolunk fel, Mongo száma kérelem díja| Egy perc alatt Mongo erőforrás RUs figyelésére használható.|
-| TotalRequestUnits (kérelmek teljes egység)| Száma (összesen) | Felhasznált egységek kérése| DatabaseName, CollectionName, Region, StatusCode |Összes| TotalRequestUnits| Jelenleg egy perces pontossággal teljes RU-használat figyelésére használható. Átlagos RU másodpercenként felhasznált perc teljes összesítést használ, és nullával való osztás 60.|
-| ProvisionedThroughput (kiosztott átviteli sebesség)| Darabszám (Maximum) |Kiosztott átviteli sebességet gyűjtemény részletessége| DatabaseName, CollectionName| 5M| | Kiosztott átviteli sebesség gyűjteményenként figyelésére használható.|
+| MongoRequestCharge (Mongo-kérelem díja) | Darabszám (összesen) |Felhasznált Mongo-kérelmek egységei| DatabaseName, CollectionName, régió, CommandName, ErrorCode| Összes |Mongo-lekérdezési kérelem díja, Mongo frissítési kérelmének díja, Mongo törlési kérelmének díja, Mongo-kérelem díja, Mongo száma kérelmek díja| Egy percen belül figyeli a Mongo-erőforrást.|
+| TotalRequestUnits (összes kérelem egysége)| Darabszám (összesen) | Felhasználható kérési egységek| DatabaseName, CollectionName, régió, StatusCode |Összes| TotalRequestUnits| A teljes RU-használat figyelésére használható percenkénti részletességgel. Ha másodpercenként átlagosan felhasznált RU-t szeretné lekérni, használja a teljes összesítést percenként, és ossza meg a 60-as számmal.|
+| ProvisionedThroughput (kiépített átviteli sebesség)| Darabszám (maximum) |Kiépített átviteli sebesség a tároló részletessége szerint| DatabaseName, ContainerName| 5P| | Tárolón kiépített átviteli sebesség figyelésére szolgál.|
 
-### <a name="storage-metrics"></a>Storage-mérőszámok
+### <a name="storage-metrics"></a>Tárolási metrikák
 
-|A metrika (metrikus megjelenített név)|Egység (aggregáció típusa)|Leírás|Dimenziók| Idő granularitással| Örökölt metrika leképezés | Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---| ---|
-| AvailableStorage (rendelkezésre álló tár) |Bájtok száma (összesen) | 5 percenként részletesség régiónként, jelentett összes rendelkezésre álló tár| DatabaseName, CollectionName, régió| 5M| Rendelkezésre álló tár| Figyelhető a rendelkezésre álló tár kapacitása (csak a rögzített tároló gyűjtemények alkalmazható) minimális részletessége 5 percnek kell lennie.| 
-| DataUsage (használati adatok) |Bájtok száma (összesen) |Teljes adathasználat jelenteni 5 percenként granularitási régiónként| DatabaseName, CollectionName, régió| 5M |Adatok mérete | Gyűjtemény és a régió teljes adathasználat figyelésére használható, minimális részletessége 5 percnek kell lennie.|
-| IndexUsage (Index-használat) | Bájtok száma (összesen) |5 percenként granularitási régiónként jelenteni teljes Index használata| DatabaseName, CollectionName, régió| 5M| Index mérete| Gyűjtemény és a régió teljes adathasználat figyelésére használható, minimális részletessége 5 percnek kell lennie. |
-| DocumentQuota (a dokumentum kvóta) | Bájtok száma (összesen) | Teljes tárolási kvótája régiónként 5 percenként granularitási jelenteni.| DatabaseName, CollectionName, régió| 5M |Tárkapacitás| Gyűjtemény és a régió teljes kvóta figyelésére használható, minimális részletessége 5 percnek kell lennie.|
-| DocumentCount (dokumentumok száma) | Száma (összesen) |Teljes számát jelenti, 5 percenként granularitási régiónként| DatabaseName, CollectionName, régió| 5M |Dokumentumok száma|Dokumentumok száma, gyűjtemény és a régió figyelésére használható, minimális részletessége 5 percnek kell lennie.|
+| AvailableStorage (rendelkezésre álló tár) |Bájtok (összesen) | Régiónként 5 perces részletességgel jelentett teljes rendelkezésre álló tárterület| DatabaseName, CollectionName, régió| 5P| Rendelkezésre álló tár| A rendelkezésre álló tárolókapacitás (csak a rögzített tárolási gyűjtemények esetében érvényes) figyeléséhez használatos minimális részletességnek 5 percnek kell lennie.| 
+| DataUsage (adathasználat) |Bájtok (összesen) |Régiónként 5 perces részletességgel jelentett teljes adatfelhasználás| DatabaseName, CollectionName, régió| 5P |Adatok mérete | A tároló és régió teljes adatfelhasználásának figyelésére szolgál, a minimális részletességnek 5 percnek kell lennie.|
+| IndexUsage (használat indexelése) | Bájtok (összesen) |Az összes indexelési használat összesen 5 perces részletességgel számolt be régiónként| DatabaseName, CollectionName, régió| 5P| Index mérete| A tároló és régió teljes adatfelhasználásának figyelésére szolgál, a minimális részletességnek 5 percnek kell lennie. |
+| DocumentQuota (dokumentum kvótája) | Bájtok (összesen) | Régiónként 5 perces részletességgel jelentett teljes tárolási kvóta.| DatabaseName, CollectionName, régió| 5P |Tárkapacitás| A tároló és régió teljes kvótájának figyelésére szolgál, a minimális részletességnek 5 percnek kell lennie.|
+| DocumentCount (dokumentumok száma) | Darabszám (összesen) |Régiónként 5 perces részletességgel jelentett dokumentumok száma összesen| DatabaseName, CollectionName, régió| 5P |Dokumentumok száma|A dokumentumok számának a tárolóban és régióban való figyelésére szolgál, a minimális részletességnek 5 percnek kell lennie.|
 
-### <a name="latency-metrics"></a>Késés metrikák
+### <a name="latency-metrics"></a>Késési metrikák
 
-|A metrika (metrikus megjelenített név)|Egység (aggregáció típusa)|Leírás|Dimenziók| Idő granularitással| Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Használat |
 |---|---|---|---| ---| ---|
-| ReplicationLatency (replikáció késése)| Idő ezredmásodpercben (Minimum, Maximum, átlag) | Fiók geo-kompatibilis a forrás- és régiók közötti P99 replikáció késése| SourceRegion, TargetRegion| Összes | Egy georeplikált fiók bármely két régió között P99 replikációs késésétől figyelésére használható. |
+| ReplicationLatency (replikációs késés)| Ezredmásodperc (minimum, maximum, átlag) | P99 replikációs késés a forrás-és a célcsoportok között a Geo-kompatibilis fiókhoz| SourceRegion, TargetRegion| Összes | Egy földrajzilag replikált fiók két régiója közötti P99-replikációs késés figyelésére használatos. |
 
 
 ### <a name="availability-metrics"></a>Rendelkezésre állási metrikák
 
-|A metrika (metrikus megjelenített név) |Egység (aggregáció típusa)|Leírás| Idő granularitással| Örökölt metrika leképezés | Használat |
+|Metrika (metrika megjelenítendő neve) |Egység (aggregáció típusa)|Leírás| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---|
-| ServiceAvailability (a szolgáltatás rendelkezésre állása)| Százalék (Minimum, Maximum) | Egy órás részletességgel fiók kérelmek rendelkezésre állásáról| 1H | Szolgáltatás rendelkezésre állása | Az átadott kérelmek teljes összeg százalékában jelöli. Rendszerhiba miatt kell végrehajtani, ha az állapotkód értéke 410, tekinthető a kérelem 500 vagy 503-as használható a fiókját órás részletességgel rendelkezésre állásának figyeléséhez. |
+| ServiceAvailability (szolgáltatás rendelkezésre állása)| Százalék (minimum, maximum) | A fiók egy órás részletességgel kéri a rendelkezésre állást| 1H | Szolgáltatás rendelkezésre állása | Az átadott kérelmek százalékos arányát jelöli. A rendszer hibát okozó kérést küld, ha az állapotkód 410, 500 vagy 503, amely a fiók rendelkezésre állásának figyelésére használatos az óránkénti részletességgel. |
 
 
-### <a name="cassandra-api-metrics"></a>Cassandra API-metrikák
+### <a name="cassandra-api-metrics"></a>Cassandra API metrikák
 
-|A metrika (metrikus megjelenített név)|Egység (aggregáció típusa)|Leírás|Dimenziók| Idő granularitással| Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Használat |
 |---|---|---|---| ---| ---|
-| CassandraRequests (Cassandra Requests) | Count (darabszám) | Cassandra API-kérelmek száma| DatabaseName, CollectionName, ErrorCode, Region, OperationType, ResourceType| Összes| Jelenleg egy perces pontossággal Cassandra kérelmek figyelésére használható. A kérelmek másodpercenkénti átlagos száma az összesítés használatát perc, és nullával való osztás 60.|
-| CassandraRequestCharges (Cassandra-kérelem díjon felül) | (Sum, Min, Max, Avg) száma | Cassandra API-kérések által felhasznált kérelemegységek| DatabaseName, CollectionName, Region, OperationType, ResourceType| Összes| Kérelemegység / perc a Cassandra API-fiók által használt figyelésére használható.|
-| CassandraConnectionClosures (Cassandra kapcsolat szünnapok) |Count (darabszám) |Lezárt Cassandra-kapcsolatok száma| ClosureReason, régió| Összes | Az ügyfélszámítógépek és az Azure Cosmos DB Cassandra API közötti kapcsolatok figyelésére használható.|
+| CassandraRequests (Cassandra-kérelmek) | Darabszám (darabszám) | Cassandra API kérelmek száma| DatabaseName, CollectionName, ErrorCode, Region, OperationType, ResourceType| Összes| A Cassandra-kérések figyelésére szolgál percenkénti részletességgel. Az átlagos kérelmek másodpercenkénti lekéréséhez használja a Count összesítést percek alatt, és ossza meg a 60-as számmal.|
+| CassandraRequestCharges (Cassandra-kérelmek díjai) | Darabszám (Sum, min, Max, AVG) | Cassandra API kérelmek által felhasznált kérési egységek| DatabaseName, CollectionName, Region, OperationType, ResourceType| Összes| Egy Cassandra API fiók által percenként használt RUs figyelésére használatos.|
+| CassandraConnectionClosures (Cassandra-kapcsolatok bezárása) |Darabszám (darabszám) |Lezárt Cassandra-kapcsolatok száma| ClosureReason, régió| Összes | Az ügyfelek és a Azure Cosmos DB Cassandra API közötti kapcsolat figyelésére használatos.|
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure Cosmos DB-fiók metrikák panelről megtekintheti és figyelheti metrikák](use-metrics.md)
+* [Metrikák megtekintése és figyelése Azure Cosmos DB-fiók metrikái paneljéről](use-metrics.md)
 
-* [Diagnosztikai naplózás az Azure Cosmos DB-ben](logging.md)
+* [Diagnosztikai naplózás a Azure Cosmos DBban](logging.md)

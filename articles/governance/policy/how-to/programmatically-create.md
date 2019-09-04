@@ -7,20 +7,18 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: d158950749a9704276a666b58101bb5ad9dcbc42
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 1039073aaaf9d1a6b7bd9ac21a95c73871ce3ba3
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232642"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239029"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programozott módon szabályzatok létrehozása és a megfelelőségi adatok megtekintése
 
 Ez a cikk végigvezeti programozott módon szabályzatok létrehozása és kezelése. Azure Policy definíciók különböző szabályokat és hatásokat alkalmaznak az erőforrásokra. Kényszerítési gondoskodik arról, hogy az erőforrások maradjon felelnek meg a vállalati szabványoknak és szolgáltatói szerződéseknek.
 
 Megfelelőségi kapcsolatos információkért lásd: [megfelelőségi adatok](getting-compliance-data.md).
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -94,14 +92,14 @@ Az erőforrások jobb rálátást biztosít az első lépését, hogy a szabály
    Cserélje le _ContosoRG_ az importálni kívánt erőforráscsoport nevét.
 
    A **hatókör** -paraméter `New-AzPolicyAssignment` a felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter használja a teljes erőforrás-elérési útját, amely a **ResourceId** tulajdonsága `Get-AzResourceGroup` adja vissza. Minta **hatókör** az egyes tárolók a következőképpen történik. Cserélje le `{rName}`a,, `{mgName}` , és az erőforrás nevét, az erőforráscsoport nevét, az előfizetés azonosítóját és a felügyeleti csoport nevét. `{subId}` `{rgName}`
-   `{rType}`lecserélve az erőforrás erőforrástípus, például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
+   `{rType}`lecserélve az erőforrás **erőforrástípus,** például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
 
    - Erőforrás`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Erőforráscsoport- `/subscriptions/{subId}/resourceGroups/{rgName}`
    - Előfizetés – `/subscriptions/{subId}/`
    - Felügyeleti csoport – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Az erőforrás-házirendek Azure Resource Manager PowerShell-modul használatával történő kezelésével kapcsolatos további információkért lásd [az az.](/powershell/module/az.resources/#policies)Resources című témakört.
+Az erőforrás-házirendek Azure Resource Manager PowerShell-modul használatával történő kezelésével kapcsolatos további információkért lásd [az az. Resources](/powershell/module/az.resources/#policies)című témakört.
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Hozzon létre és ARMClient használatával szabályzatdefiníció hozzárendelése
 
@@ -222,7 +220,7 @@ Szabályzatdefiníció létrehozásához használja az alábbi eljárást:
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   A **--scope** paraméter a `az policy assignment create` felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter teljes erőforrás-elérési utat használ. Az egyes tárolók **hatóköre** a következő. Cserélje le `{rName}`a,, `{mgName}` , és az erőforrás nevét, az erőforráscsoport nevét, az előfizetés azonosítóját és a felügyeleti csoport nevét. `{subId}` `{rgName}` `{rType}`lecserélve az erőforrás erőforrástípus, például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
+   A **--scope** paraméter a `az policy assignment create` felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter teljes erőforrás-elérési utat használ. Az egyes tárolók **hatóköre** a következő. Cserélje le `{rName}`a,, `{mgName}` , és az erőforrás nevét, az erőforráscsoport nevét, az előfizetés azonosítóját és a felügyeleti csoport nevét. `{subId}` `{rgName}` `{rType}`lecserélve az erőforrás **erőforrástípus,** például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
 
    - Erőforrás`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Erőforráscsoport- `/subscriptions/{subID}/resourceGroups/{rgName}`

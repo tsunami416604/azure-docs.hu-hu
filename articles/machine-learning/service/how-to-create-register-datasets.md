@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: e5d5d36e82914f1d6d03299db0ed1427ac5a389a
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 2ce64df5eeb8aa44ef714d6b465b7f2e1819635d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147591"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259294"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Adatkészletek létrehozása és elérése (előzetes verzió) Azure Machine Learning
 
@@ -26,9 +26,9 @@ Azure Machine Learning adatkészletek esetében a következőket teheti:
 
 * Az adatkészletek által hivatkozott **tárolóban lévő adatokat egyetlen példányban tárolja** . 
 
-* **Egyszerűen férhet hozzá az adatmodell** -képzésekhez a kapcsolati karakterláncok vagy az adatelérési utak miatti gond nélkül.
+* **Egyszerűen férhet hozzá az adatmodell-képzésekhez** a kapcsolati karakterláncok vagy az adatelérési utak miatti gond nélkül.
 
-* Az adatmegosztással **& dolgozhat** más felhasználókkal.
+* Az **Adatmegosztással & dolgozhat** más felhasználókkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,7 +36,7 @@ Az adatkészletek létrehozásához és működéséhez a következőkre lesz sz
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Egy [Azure Machine learning szolgáltatás](how-to-manage-workspace.md) munkaterülete
+* Egy [Azure Machine learning szolgáltatás munkaterülete](how-to-manage-workspace.md)
 
 * A [Azure Machine learning SDK for Python telepítve](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), amely tartalmazza a azureml-adatkészletek csomagot.
 
@@ -46,8 +46,8 @@ Az adatkészletek létrehozásához és működéséhez a következőkre lesz sz
 ## <a name="dataset-types"></a>Adathalmazok típusai
 
 Az adatkészletek különböző típusokra vannak kategorizálva, attól függően, hogy a felhasználók hogyan használják őket a képzésben. Adatkészlet-típusok listája:
-* A [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) táblázatos formátumban jeleníti meg az adatokat a megadott fájl vagy fájlok listájának elemzésével. Ez lehetővé teszi, hogy egy Panda DataFrame megvalósuljon az információ. Létrehozhat `TabularDataset` egy objektumot a CSV, a TSV, a Parquet Files, az SQL-lekérdezési eredmények stb. alapján. A teljes listát a dokumentációban találhatja [](https://aka.ms/tabulardataset-api-reference)meg.
-* A FileDataset egy vagy több fájlt hivatkozik az adattárolókban vagy a nyilvános URL-címeken. Ezzel lehetővé teszi a fájlok letöltését vagy csatlakoztatását a számítási feladatokhoz. A fájlok bármilyen formátummal rendelkezhetnek, ami lehetővé teszi a gépi tanulási forgatókönyvek széles körét, beleértve a mély tanulást is.
+* A [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) táblázatos formátumban jeleníti meg az adatokat a megadott fájl vagy fájlok listájának elemzésével. Ez lehetővé teszi, hogy egy Panda DataFrame megvalósuljon az információ. Létrehozhat `TabularDataset` egy objektumot a CSV, a TSV, a Parquet Files, az SQL-lekérdezési eredmények stb. alapján. A teljes listát a [dokumentációban találhatja](https://aka.ms/tabulardataset-api-reference)meg.
+* A [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) egy vagy több fájlt hivatkozik az adattárolókban vagy a nyilvános URL-címeken. Ezzel lehetővé teszi a fájlok letöltését vagy csatlakoztatását a számítási feladatokhoz. A fájlok bármilyen formátummal rendelkezhetnek, ami lehetővé teszi a gépi tanulási forgatókönyvek széles körét, beleértve a mély tanulást is.
 
 További információ a közelgő API-változásokról: [itt](https://aka.ms/tabular-dataset)található.
 
@@ -179,5 +179,5 @@ df = titanic_ds.to_pandas_dataframe()
 
 ## <a name="next-steps"></a>További lépések
 
-* Az automatizált gépi tanulást a [TabularDatasets](https://aka.ms/automl-dataset)-mel való betanításhoz használhatja.
+* Az automatizált gépi tanulást a TabularDatasets-mel való [betanításhoz](https://aka.ms/automl-dataset)használhatja.
 * Az adatkészletek betanításával kapcsolatos további példákért tekintse meg a [minta jegyzetfüzeteket](https://aka.ms/dataset-tutorial).

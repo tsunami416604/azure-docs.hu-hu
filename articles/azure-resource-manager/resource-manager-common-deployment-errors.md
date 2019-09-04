@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 08/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: df5362028a38a86ba8df46efae2e3c3109856463
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: fc6fdde4daa2d671b9d93673c2a78c2d9d85963c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194363"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275740"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Az Azure üzembe helyezésével kapcsolatos gyakori hibák elhárítása Azure Resource Manager
 
@@ -29,14 +29,14 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Kövesse a Storage-fiókok elnevezési korlátozásait. | [A Storage-fiók nevének feloldása](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | Keresse meg a rendelkezésre álló Storage-fiók tulajdonságait. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | A fürt vagy a régió nem rendelkezik elérhető erőforrásokkal, vagy nem támogatja a kért virtuálisgép-méretet. Ismételje meg a kérést később, vagy igényeljen egy másik virtuálisgép-méretet. | A Linux, a kiépítési és a foglalási problémák kiosztása [és](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)lefoglalása [a Windows rendszerhez és a](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) foglalási [hibák elhárítása](../virtual-machines/troubleshooting/allocation-failure.md)|
+| AllocationFailed | A fürt vagy a régió nem rendelkezik elérhető erőforrásokkal, vagy nem támogatja a kért virtuálisgép-méretet. Ismételje meg a kérést később, vagy igényeljen egy másik virtuálisgép-méretet. | A Linux, a [kiépítési és a foglalási problémák](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) kiosztása [és lefoglalása](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)a Windows rendszerhez és a foglalási [hibák elhárítása](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Várjon, amíg az egyidejű művelet befejeződik. | |
 | AuthorizationFailed | A fiók vagy az egyszerű szolgáltatásnév nem rendelkezik megfelelő hozzáféréssel az üzemelő példány befejezéséhez. Győződjön meg arról, hogy a fiókja a szerepkörhöz tartozik, valamint a központi telepítési hatókörhöz való hozzáférése.<br><br>Ez a hiba akkor jelenhet meg, ha egy szükséges erőforrás-szolgáltató nincs regisztrálva. | [Azure szerepköralapú Access Control](../role-based-access-control/role-assignments-portal.md)<br><br>[Regisztráció feloldása](resource-manager-register-provider-errors.md) |
-| Hibás kérés | Olyan központi telepítési értékeket küldtünk, amelyek nem egyeznek a Resource Manager által várttal. A hibaelhárítással kapcsolatos segítségért olvassa el a belső állapotjelző üzenetet. | A [sablon referenciája](/azure/templates/) és a [támogatott helyszínek](resource-group-authoring-templates.md#resource-location) |
+| Hibás kérés | Olyan központi telepítési értékeket küldtünk, amelyek nem egyeznek a Resource Manager által várttal. A hibaelhárítással kapcsolatos segítségért olvassa el a belső állapotjelző üzenetet. | A [sablon referenciája](/azure/templates/) és a [támogatott helyszínek](resource-location.md) |
 | Ütközés | Olyan műveletet kér, amely nem engedélyezett az erőforrás jelenlegi állapotában. Például a lemezek átméretezése csak a virtuális gép létrehozásakor vagy a virtuális gép kiosztása esetén engedélyezett. | |
 | DeploymentActive | Várjon, amíg a rendszer végrehajtja az adott erőforráscsoport egyidejű üzembe helyezését. | |
 | DeploymentFailed | A DeploymentFailed hiba általános hiba, amely nem adja meg a hiba megoldásához szükséges adatokat. Tekintse meg a hiba részletes adatait, amely további információkat tartalmaz. | [Hibakód keresése](#find-error-code) |
-| DeploymentQuotaExceeded | Ha eléri a 800-es üzemelő példányok számát egy erőforráscsoport esetében, törölje a már nem szükséges előzményekből származó központi telepítéseket. Törölheti az előzményekből származó bejegyzéseket az [](/cli/azure/group/deployment#az-group-deployment-delete) az Azure CLI, illetve a [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) használatával a PowerShellben. Az üzembe helyezési előzményekből való törlés nem befolyásolja az erőforrások üzembe helyezését. | |
+| DeploymentQuotaExceeded | Ha eléri a 800-es üzemelő példányok számát egy erőforráscsoport esetében, törölje a már nem szükséges előzményekből származó központi telepítéseket. Törölheti az előzményekből származó bejegyzéseket az [Az Azure](/cli/azure/group/deployment#az-group-deployment-delete) CLI, illetve a [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) használatával a PowerShellben. Az üzembe helyezési előzményekből való törlés nem befolyásolja az erőforrások üzembe helyezését. | |
 | DnsRecordInUse | A DNS-rekord nevének egyedinek kell lennie. Adjon meg másik nevet. | |
 | ImageNotFound | A VM-rendszerkép beállításainak megtekintése. |  |
 | InUseSubnetCannotBeDeleted | Ez a hiba akkor fordulhat elő, ha egy erőforrást próbál frissíteni, és az erőforrás törlésével és létrehozásával dolgozza fel a kérést. Győződjön meg arról, hogy az összes változatlan értéket meg kell adni. | [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -53,7 +53,7 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | InvalidTemplateCircularDependency | Felesleges függőségek eltávolítása. | [Körkörös függőségek feloldása](resource-manager-invalid-template-errors.md#circular-dependency) |
 | LinkedAuthorizationFailed | Ellenőrizze, hogy a fiókja ugyanahhoz a bérlőhöz tartozik-e, mint a központilag telepíteni kívánt erőforráscsoport. | |
 | LinkedInvalidPropertyId | Egy erőforrás erőforrás-azonosítója nem oldja meg megfelelően a megoldást. Győződjön meg arról, hogy az erőforrás-AZONOSÍTÓhoz szükséges összes értéket megadja, beleértve az előfizetés-azonosítót, az erőforráscsoport nevét, az erőforrás típusát, a szülő erőforrás nevét (ha szükséges) és az erőforrás nevét. | |
-| LocationRequired | Adja meg az erőforrás helyét. | [Hely beállítása](resource-group-authoring-templates.md#resource-location) |
+| LocationRequired | Adja meg az erőforrás helyét. | [Hely beállítása](resource-location.md) |
 | MismatchingResourceSegments | Győződjön meg arról, hogy a beágyazott erőforrás megfelelő számú szegmenst tartalmaz a név és a típus mezőben. | [Erőforrás-szegmensek feloldása](resource-manager-invalid-template-errors.md#incorrect-segment-lengths)
 | MissingRegistrationForLocation | Az erőforrás-szolgáltató regisztrációs állapotának és a támogatott helyeinek az ellenőrzését. | [Regisztráció feloldása](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Regisztrálja az előfizetését az erőforrás-szolgáltatónál. | [Regisztráció feloldása](resource-manager-register-provider-errors.md) |

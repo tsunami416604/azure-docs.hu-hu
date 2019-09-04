@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2019
 ms.author: atsenthi
-ms.openlocfilehash: b7d34095568fa1d98c5f2987a70397ca042c8867
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ca7a3cfe62520ed82dcf494a33f3bd188dbebe76
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036405"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279978"
 ---
 # <a name="supported-service-fabric-versions"></a>Támogatott Service Fabric verziók
 
-Győződjön meg arról, hogy a fürt mindig támogatott Azure Service Fabric verziót futtat. Legalább 60 nappal azután, hogy bejelentjük a Service Fabric új verziójának kiadását, az előző verzió támogatása megszűnik. Az új kiadásokról a [Service Fabric csapat blogján](https://blogs.msdn.microsoft.com/azureservicefabric/)talál hirdetményeket.
+Győződjön meg arról, hogy a fürt mindig támogatott Azure Service Fabric verziót futtat. Legalább 60 nappal azután, hogy bejelentjük a Service Fabric új verziójának kiadását, az előző verzió támogatása megszűnik. Az új kiadásokról a [Service Fabric csapat blogján](https://azure.microsoft.com/updates/?product=service-fabric)talál hirdetményeket.
 
 A következő dokumentumokban tájékozódhat arról, hogyan tarthatja meg a fürt egy támogatott Service Fabric verzióját:
 

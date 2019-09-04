@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: e3c2c7e4f3bb6c4c06d2f445adc5056c854a7503
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 14ced5ed45bcc91e6b6c812f2d1cbb61e139cc4f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138549"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278949"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -35,9 +35,9 @@ Az üzembe helyezési munkafolyamatban részt vevő fogalmakkal kapcsolatos tov�
 
 - Az Azure Machine Learning szolgáltatás munkaterületén. További információ: [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md).
 
-- A modell. Ha nem rendelkezik betanított modellel, az oktatóanyagban szereplő & függőségi fájlok modelljét is használhatja [](https://aka.ms/azml-deploy-cloud).
+- A modell. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](https://aka.ms/azml-deploy-cloud)szereplő & függőségi fájlok modelljét is használhatja.
 
-- Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](https://aka.ms/aml-sdk)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](how-to-vscode-tools.md).
+- Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](how-to-vscode-tools.md).
 
 ## <a name="connect-to-your-workspace"></a>Kapcsolódás a munkaterülethez
 
@@ -74,7 +74,7 @@ A gépi tanulási modellek regisztrálva vannak a Azure Machine Learning munkate
 Az ebben a szakaszban szereplő kódrészletek bemutatják, hogyan regisztrálhat egy modellt egy képzési futtatásból:
 
 > [!IMPORTANT]
-> Ezek a kódrészletek feltételezik, hogy korábban már elvégezte a betanítást `run` , és hozzáfér az objektumhoz (SDK-példa) vagy a futtatási azonosító értékét (CLI-példa). A modellek betanításával kapcsolatos további információkért lásd: [számítási célok létrehozása és használata a modell](how-to-set-up-training-targets.md)betanításához.
+> Ezek a kódrészletek feltételezik, hogy korábban már elvégezte a betanítást `run` , és hozzáfér az objektumhoz (SDK-példa) vagy a futtatási azonosító értékét (CLI-példa). A modellek betanításával kapcsolatos további információkért lásd: [számítási célok létrehozása és használata a modell betanításához](how-to-set-up-training-targets.md).
 
 + **Az SDK használata**
 
@@ -176,7 +176,7 @@ A modell üzembe helyezéséhez több dolog szükséges:
     > Ha a kérelem adatai olyan formátumban vannak, amely nem használható a modellben, a parancsfájl elfogadható formátumba alakíthatja át. A válasz is át lehet alakítani, mielőtt visszatért az ügyfélhez.
 
     > [!IMPORTANT]
-    > A Azure Machine Learning SDK nem biztosítja a webszolgáltatások vagy IoT Edge központi telepítések elérését az adattárhoz vagy az adatkészletekhez való hozzáféréshez. Ha a központi telepítésen kívül tárolt adatokat szeretné elérni az üzembe helyezett modellel, például egy Azure Storage-fiókban, egyéni kódot kell létrehoznia a megfelelő SDK használatával. Például a Pythonhoz készült [Azure Storage SDK](https://github.com/Azure/azure-storage-python)-t.
+    > A Azure Machine Learning SDK nem biztosítja a webszolgáltatások vagy IoT Edge központi telepítések elérését az adattárhoz vagy az adatkészletekhez való hozzáféréshez. Ha a központi telepítésen kívül tárolt adatokat szeretné elérni az üzembe helyezett modellel, például egy Azure Storage-fiókban, egyéni kódot kell létrehoznia a megfelelő SDK használatával. Például a [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python)-t.
     >
     > Egy másik alternatíva, amely a forgatókönyv esetében is működhet, a [Batch-előrejelzések](how-to-run-batch-predictions.md), amelyek a pontozáskor hozzáférést biztosítanak az adattárolóhoz.
 
@@ -184,7 +184,7 @@ A modell üzembe helyezéséhez több dolog szükséges:
 
 * Az üzembe helyezett modellt futtató számítási cél __telepítési konfigurációja__ . Ez a konfiguráció a modell futtatásához szükséges memória-és CPU-követelményeket ismerteti.
 
-Ezek az entitások egy következtetési __konfigurációba__és egy __központi telepítési konfigurációba__vannak ágyazva. A következtetési konfiguráció a bejegyzési parancsfájlra és más függőségekre hivatkozik. Ezek a konfigurációk programozott módon vannak definiálva az SDK használatakor, és JSON-fájlként, amikor a CLI használatával végzik el a telepítést.
+Ezek az entitások egy __következtetési konfigurációba__és egy __központi telepítési konfigurációba__vannak ágyazva. A következtetési konfiguráció a bejegyzési parancsfájlra és más függőségekre hivatkozik. Ezek a konfigurációk programozott módon vannak definiálva az SDK használatakor, és JSON-fájlként, amikor a CLI használatával végzik el a telepítést.
 
 ### <a id="script"></a> 1. Adja meg a bejegyzési parancsfájlt & függőségeket
 
@@ -562,7 +562,7 @@ További információkért tekintse meg a [LocalWebservice](https://docs.microso
 A CLI használatával történő üzembe helyezéshez használja a következő parancsot. Cserélje `mymodel:1` le a nevet a regisztrált modell nevére és verziójára:
 
 ```azurecli-interactive
-az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [aml-local-deploy-config](../../../includes/machine-learning-service-local-deploy-config.md)]
@@ -617,7 +617,7 @@ print(response.elapsed)
 print(response.json())
 ```
 
-További információ: [ügyfélalkalmazások létrehozása a](how-to-consume-web-service.md)webszolgáltatások felhasználásához.
+További információ: [ügyfélalkalmazások létrehozása a webszolgáltatások felhasználásához](how-to-consume-web-service.md).
 
 ### <a name="web-service-schema-openapi-specification"></a>Webszolgáltatás sémája (OpenAPI-specifikáció)
 
@@ -778,11 +778,11 @@ A peremhálózati üzembe helyezésének támogatása előzetes verzióban érhe
 
 Az [Azure DevOps](https://azure.microsoft.com/services/devops/)Machine learning-bővítményével folyamatosan üzembe helyezhet modelleket. Az Azure DevOps Machine Learning-bővítményének használatával aktiválhat egy központi telepítési folyamatot, ha új gépi tanulási modellt regisztrálnak Azure Machine Learning szolgáltatás munkaterületen. 
 
-1. Regisztráljon az [Azure](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)-folyamatokra, amelyek lehetővé teszik az alkalmazás folyamatos integrálását és továbbítását bármilyen platformra vagy felhőre. [Az Azure-folyamatok különböznek a ml-folyamatoktól](concept-ml-pipelines.md#compare). 
+1. Regisztráljon az [Azure-folyamatokra](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops), amelyek lehetővé teszik az alkalmazás folyamatos integrálását és továbbítását bármilyen platformra vagy felhőre. [Az Azure-folyamatok különböznek a ml-folyamatoktól](concept-ml-pipelines.md#compare). 
 
 1. [Hozzon létre egy Azure DevOps-projektet.](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
 
-1. Az [Azure-folyamatok Machine learning](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList) -bővítményének telepítése 
+1. Az [Azure-folyamatok Machine learning-bővítményének](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList) telepítése 
 
 1. A __szolgáltatási kapcsolatok__ használatával állítson be egy egyszerű szolgáltatásnevet a Azure Machine learning szolgáltatási munkaterülethez az összes összetevő eléréséhez. Nyissa meg a projekt beállításait, kattintson a szolgáltatás kapcsolatai elemre, majd válassza a Azure Resource Manager lehetőséget.
 
@@ -820,7 +820,7 @@ Mindkét csomag használható helyi Docker-rendszerkép lekérésére.
 > A csomagok létrehozása hasonló a modell üzembe helyezéséhez, mivel a regisztrált modellt és a következtetések konfigurációját használja.
 
 > [!IMPORTANT]
-> Az olyan funkciók, mint például a teljes mértékben létrehozott rendszerképek letöltése vagy a rendszerkép [](https://www.docker.com) helyi létrehozása a fejlesztői környezetben működő Docker-telepítést igényelnek.
+> Az olyan funkciók, mint például a teljes mértékben létrehozott rendszerképek letöltése vagy a rendszerkép helyi létrehozása a fejlesztői környezetben működő [Docker](https://www.docker.com) -telepítést igényelnek.
 
 ### <a name="download-a-packaged-model"></a>Csomagolt modell letöltése
 
