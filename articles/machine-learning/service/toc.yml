@@ -73,9 +73,6 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Alapelvek
   items:
-    - name: Deep learning
-      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
-      href: concept-deep-learning-vs-machine-learning.md
     - name: Munkaterület
       href: concept-workspace.md
     - name: Számítási cél
@@ -111,6 +108,9 @@
           href: how-to-secure-web-service.md
         - name: Tárelérési kulcsok újragenerálása
           href: how-to-change-storage-access-key.md
+    - name: Deep learning
+      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
+      href: concept-deep-learning-vs-machine-learning.md
 - name: Útmutatók
   items:
     - name: Munkaterületek kezelése

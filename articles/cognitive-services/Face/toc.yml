@@ -9,12 +9,8 @@
   items:
     - name: Az ügyfél-SDK használata
       items:
-        - name: Arcok felismerése a képeken
-          items:
-            - name: 'C#'
-              href: QuickStarts/csharp-detect-sdk.md
-            - name: Python
-              href: Tutorials/FaceAPIinPythonTutorial.md
+        - name: .NET SDK
+          href: Quickstarts/csharp-sdk.md
         - name: Python SDK
           href: QuickStarts/python-sdk.md
     - name: A REST API használata
