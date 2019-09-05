@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 03651ecb073d02a373c434b8cb55bdafec6d142a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142222"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279503"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Gyakori kérdések (GYIK)
 
@@ -27,7 +27,7 @@ Tekintse [meg a VMware](https://docs.microsoft.com/azure/migrate/migrate-support
 
 Azure Migrate központosított hubot biztosít a Migrálás elindításához, a gépek és munkaterhelések felderítésének és értékelésének végrehajtásához, valamint a gépek és számítási feladatok Azure-ba való áttelepítésének végrehajtásához és nyomon követéséhez. [Azure site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) vész-helyreállítási megoldás. Azure Migrate kiszolgáló áttelepítése a háttér-Azure Site Recovery használatával lehetővé teszi az áttelepítési forgatókönyvek használatát a helyszíni gépek áttelepítéséhez.
 
-## <a name="azure-migrate-appliance-vmwarephysical-servers"></a>Azure Migrate berendezés (VMware/fizikai kiszolgálók)
+## <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
 ### <a name="how-does-the-azure-migrate-appliance-connect-to-azure"></a>Hogyan kapcsolódik az Azure Migrate készülék az Azure-hoz?
 
@@ -53,7 +53,7 @@ A Azure Migrate berendezés a helyszíni gépeket folyamatosan a virtuális gép
 
 Az Azure Migrate készülék által gyűjtött adatokat az Azure-beli helyen tárolja, amelyet az áttelepítési projekt létrehozásakor választott ki. Az adattárolást a Microsoft-előfizetések biztonságosan tárolják, és a Azure Migrate-projekt törlésekor törlődnek.
 
-A függőségi vizualizációk esetében, ha ügynököket telepít a virtuális gépekre, a függőségi ügynökök által gyűjtött adatokat az Egyesült Államokban tárolja az Azure-előfizetésben létrehozott Log Analytics munkaterületen. Ezek az adatai törlődnek, amikor törli a Log Analytics munkaterületet az előfizetésében. További információ: függőségi [vizualizáció](concepts-dependency-visualization.md).
+A függőségi vizualizációk esetében, ha ügynököket telepít a virtuális gépekre, a függőségi ügynökök által gyűjtött adatokat az Egyesült Államokban tárolja az Azure-előfizetésben létrehozott Log Analytics munkaterületen. Ezek az adatai törlődnek, amikor törli a Log Analytics munkaterületet az előfizetésében. További információ: [függőségi vizualizáció](concepts-dependency-visualization.md).
 
 ### <a name="what-volume-of-data-is-uploaded-by-the-azure-migrate-appliance-during-continuous-profiling"></a>Milyen adatmennyiséget töltenek fel a Azure Migrate berendezés a folyamatos profilkészítés során?
 
@@ -88,6 +88,9 @@ A Hyper-V esetében a felderítés a Hyper-V gazdagép hitelesítő adatait hasz
 
 Akár 10 000 VMware virtuális gépet és akár 5 000 Hyper-V virtuális gépet is felfedezhet egyetlen áttelepítési berendezéssel. Ha több géppel rendelkezik a helyszíni környezetben, Ismerje meg, hogyan méretezheti a [Hyper-V](scale-hyper-v-assessment.md) és a [VMware](scale-vmware-assessment.md) értékelését.
 
+### <a name="can-i-delete-the-azure-migrate-appliance-from-the-project"></a>Törölhetem a Azure Migrate készüléket a projektből?
+A készülék jelenleg nem törlődik a projektből. A készülék törlésének egyetlen módja, ha törli a Azure Migrate projektet tartalmazó erőforráscsoportot, amely a berendezéshez van társítva, de más regisztrált berendezéseket is töröl, a felderített leltárt, az értékeléseket és az összes többi Azure-összetevőt. az erőforráscsoport projekthez van társítva.
+
 ## <a name="azure-migrate-server-assessment"></a>Azure Migrate kiszolgáló értékelése
 
 ### <a name="does-azure-migrate-server-assessment-support-assessment-of-physical-servers"></a>A Azure Migrate Server Assessment támogatja a fizikai kiszolgálók értékelését?
@@ -112,7 +115,7 @@ Vész- **helyreállítás a VMware/Hyper-V-ről az Azure-** ba: Az Azure-ban Sit
 
 ### <a name="does-azure-migrate-support-cost-estimation-for-the-enterprise-agreement-ea-program"></a>Azure Migrate támogatja a Nagyvállalati Szerződés (EA) programra vonatkozó költségbecslés összegét?
 
-A Azure Migrate jelenleg nem támogatja a [nagyvállalati szerződés programhoz](https://azure.microsoft.com/offers/enterprise-agreement-support/)tartozó költségbecslés használatát. A megkerülő megoldás az **ajánlat** utólagos elszámolású módja, és az értékelési tulajdonságok **kedvezmény** mezőjében manuálisan megadhatja az engedmény százalékos arányát (az előfizetésre érvényes):
+A Azure Migrate jelenleg nem támogatja a [nagyvállalati szerződés programhoz](https://azure.microsoft.com/offers/enterprise-agreement-support/)tartozó költségbecslés használatát. A megkerülő megoldás az **ajánlat** utólagos **elszámolású** módja, és az értékelési tulajdonságok **kedvezmény** mezőjében manuálisan megadhatja az engedmény százalékos arányát (az előfizetésre érvényes):
 
   ![Értékelés tulajdonságai](./media/resources-faq/discount.png)
 
@@ -164,7 +167,7 @@ Ezek az ügynökök csak akkor szükségesek, ha függőségi vizualizációt ha
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>Használhatok egy meglévő munkaterületet a függőségi vizualizációhoz?
 
-Igen, csatlakoztathat egy meglévő munkaterületet az áttelepítési projekthez, és használhatja azt a függőségi vizualizációhoz. További információ: "hogyan működik ez a funkció" a függőségi [vizualizációban](concepts-dependency-visualization.md#how-does-it-work) .
+Igen, csatlakoztathat egy meglévő munkaterületet az áttelepítési projekthez, és használhatja azt a függőségi vizualizációhoz. További információ: "hogyan működik ez a funkció" a [függőségi vizualizációban](concepts-dependency-visualization.md#how-does-it-work) .
 
 ### <a name="can-i-export-the-dependency-visualization-report"></a>Exportálhatók a függőségi vizualizációs jelentés?
 

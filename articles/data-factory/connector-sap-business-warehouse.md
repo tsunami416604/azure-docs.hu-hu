@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: cd17dcb7a9f68c25617c9e6b928ddebebcdbddbe
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 4ee9048202a5953ff27ea83cfb39cb1af0739e7a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211728"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277507"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -98,9 +98,9 @@ Az SAP Business Warehouse (BW) társított szolgáltatása a következő tulajdo
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz a SAP BW adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a SAP BW adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatok SAP BWból való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **RelationalTable**értékre. A RelationalTable típusú SAP BW adatkészlet esetében nem támogatottak a típus-specifikus tulajdonságok.
+Az adatok SAP BWból való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **SapBwCube**értékre. A RelationalTable típusú SAP BW adatkészlet esetében nem támogatottak a típus-specifikus tulajdonságok.
 
 **Példa:**
 
@@ -108,15 +108,18 @@ Az adatok SAP BWból való másolásához állítsa az adatkészlet Type (típus
 {
     "name": "SAPBWDataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "SapBwCube",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP BW linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+Ha a beírt adatkészletet használta `RelationalTable` , a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
@@ -124,11 +127,11 @@ Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját l
 
 ### <a name="sap-bw-as-source"></a>SAP BW forrásként
 
-Az adatok SAP BWból való másolásához állítsa a forrás típusát a másolás tevékenység **RelationalSource**. A következő tulajdonságok támogatottak a másolási tevékenység **source** szakaszban:
+Az adatok SAP BWból történő másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **RelationalSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SapBwSource** | Igen |
 | query | Megadja az MDX-lekérdezést, amely beolvassa az SAP BW-példány adatait. | Igen |
 
 **Példa:**
@@ -152,7 +155,7 @@ Az adatok SAP BWból való másolásához állítsa a forrás típusát a másol
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "SapBwSource",
                 "query": "<MDX query for SAP BW>"
             },
             "sink": {
@@ -162,6 +165,8 @@ Az adatok SAP BWból való másolásához állítsa a forrás típusát a másol
     }
 ]
 ```
+
+Ha a beírt forrást használta `RelationalSource` , a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
 
 ## <a name="data-type-mapping-for-sap-bw"></a>SAP BW adattípusának leképezése
 

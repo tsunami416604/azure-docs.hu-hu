@@ -2,38 +2,38 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 04/19/2019
+ms.date: 07/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8bd16378e9c82a011309c12cf241b59d03405a77
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.openlocfilehash: f027f5b295d75c105e81360a10718239e5b08e4d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179485"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698275"
 ---
 | Resource | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
-| Erőforrások száma [erőforráscsoport](../articles/azure-resource-manager/resource-group-overview.md#resource-groups), erőforrás-típusonként |800 |Erőforrás típusa szerint változó |
-| Az üzembe helyezési előzmények erőforráscsoportonként központi telepítések |800<sup>1</sup> |800 |
-| Erőforrások száma üzemelő példányonként |800 |800 |
+| Erőforrások erőforrás [-csoportonként](../articles/azure-resource-manager/resource-group-overview.md#resource-groups), erőforrás-típus szerint |800 |Egyes erőforrástípusok túllépik a 800 korlátot. Tekintse [meg az erőforrásokat, amelyek erőforráscsoport esetén nem korlátozódnak 800 példányra](../articles/azure-resource-manager/resources-without-rg-limit.md). |
+| Üzemelő példányok erőforráscsoport szerint az üzembe helyezési előzményekben |800<sup>1</sup> |800 |
+| Erőforrások üzembe helyezése |800 |800 |
 | Felügyeleti zárolások egyedi hatókör szerint |20 |20 |
-| Egy erőforrás vagy erőforráscsoport címkék száma |15 |15 |
-| Címke kulcs hossza |512 |512 |
-| Címke hossza |256 |256 |
+| Címkék száma erőforrás vagy erőforráscsoport szerint |15 |15 |
+| Címke kulcsának hossza |512 |512 |
+| Címke értékének hossza |256 |256 |
 
-<sup>1</sup>eléri a korlátot, az adott erőforráscsoport esetében 800 központi telepítések, ha törli a központi telepítések az előzményekben tekintheti át, hogy már nincs rá szükség. Az üzembe helyezési előzmények bejegyzés törlése nem befolyásolja az üzembe helyezett erőforrásokat. Bejegyzések törölheti az előzményekből [az csoport központi telepítésének törlése](/cli/azure/group/deployment) Azure CLI-hez, vagy [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) a PowerShellben.  Egy PowerShell-parancsfájlt, amely automatizálja a folyamatos integráció és folyamatos készregyártás (CI/CD) a forgatókönyvben szereplő telepítések törlése lásd [remove-deployments.ps1](https://gist.github.com/bmoore-msft/ed33fb940dafb09380174b7fca57651f).
+<sup>1</sup> Ha eléri a 800-es üzemelő példányok számát egy erőforráscsoport esetében, törölje a már nem szükséges előzményekből származó központi telepítéseket. Az üzembe helyezési előzményekből származó bejegyzések törlése nem befolyásolja az üzembe helyezett erőforrásokat. Törölheti az előzményekből származó bejegyzéseket az [](/cli/azure/group/deployment) az Azure CLI, illetve a [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) használatával a PowerShellben.  Egy PowerShell-parancsfájlhoz, amely automatizálja az üzemelő példányok folyamatos integrációs és folyamatos teljesítési (CI/CD) forgatókönyvben történő törlését, lásd: [Remove-Deployments. ps1](https://gist.github.com/bmoore-msft/ed33fb940dafb09380174b7fca57651f).
 
-#### <a name="template-limits"></a>Sablon korlátok
+#### <a name="template-limits"></a>Sablonok korlátai
 
-| Érték | Alapértelmezett korlát | Felső korlát |
+| Value | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
 | Paraméterek |256 |256 |
 | Változók |256 |256 |
-| Erőforrások (beleértve a másolási száma) |800 |800 |
+| Erőforrások (beleértve a példányszámot is) |800 |800 |
 | Kimenetek |64 |64 |
-| Kifejezés |24,576 karakter |24,576 karakter |
-| Az exportált sablonok erőforrások |200 |200 | 
-| Sablon mérete |1 MB |1 MB |
-| Fájl mérete paraméter |64 KB |64 KB |
+| Sablon kifejezése |24 576 karakter |24 576 karakter |
+| Exportált sablonok erőforrásai |200 |200 | 
+| Sablon mérete |4 MB |4 MB |
+| Paraméter fájlmérete |64 KB |64 KB |
 
-Néhány sablon korlát beágyazott sablonok segítségével is lehet. További információkért lásd: [kapcsolt sablonok használata Azure-erőforrások központi telepítésekor](../articles/azure-resource-manager/resource-group-linked-templates.md). A paraméterek, a változók és a kimenetek számának csökkentése, több értéket is egyesítendő objektum. További információkért lásd: [paraméterekként objektumok](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md).
+Az egyes sablonokra vonatkozó korlátokat egy beágyazott sablon használatával lehet meghaladni. További információ: a [csatolt sablonok használata az Azure-erőforrások telepítésekor](../articles/azure-resource-manager/resource-group-linked-templates.md). A paraméterek, változók és kimenetek számának csökkentése érdekében több értéket is egyesítheti egy objektumban. További információ: [objektumok paraméterként](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md).

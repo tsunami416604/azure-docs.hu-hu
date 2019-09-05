@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: a344c94561c43652e360f7da02c16877e4d70529
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 01712508b15be947f4c3d7df401ad431d9f25455
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966966"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276384"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Adatmásolás az Impala Azure Data Factory (előzetes verzió) használatával
 
@@ -95,7 +95,9 @@ Adatok másolása az Impala, állítsa be a type tulajdonság, az adatkészlet *
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ImpalaObject** | Igen |
-| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+| schema | A séma neve. |Nem (Ha a tevékenység forrása az "query" van megadva)  |
+| table | A tábla neve. |Nem (Ha a tevékenység forrása az "query" van megadva)  |
+| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. A `schema` és`table` az új számítási feladatok használata. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -104,11 +106,12 @@ Adatok másolása az Impala, állítsa be a type tulajdonság, az adatkészlet *
     "name": "ImpalaDataset",
     "properties": {
         "type": "ImpalaObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Impala linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

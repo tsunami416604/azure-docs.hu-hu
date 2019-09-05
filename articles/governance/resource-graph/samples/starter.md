@@ -7,13 +7,12 @@ ms.date: 04/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: a2e315cee204d0fee6f53112af83b4d24e8d3974
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 688c591cbe94c69c73779843011cb24c3d2fd4cf
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186713"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241095"
 ---
 # <a name="starter-resource-graph-queries"></a>Alapszintű Resource Graph-lekérdezések
 
@@ -36,8 +35,6 @@ A következő alapszintű lekérdezéseken vezetjük végig:
 > - [Egy adott alias különböző értékeinek megjelenítése](#distinct-alias-values)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="language-support"></a>Nyelvi támogatás
 

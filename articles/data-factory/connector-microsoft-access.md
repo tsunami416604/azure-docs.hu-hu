@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: 79a960b106cc9de4116e8e59b2fa17f48c896221
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 796d2a4730f5de8d2f294fb2b30a0616b81f3e59
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061454"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276235"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Adatok másolása a és a rendszerből a Microsoft Access-adattárakba Azure Data Factory használatával
 
@@ -51,7 +51,7 @@ A Microsoft Access társított szolgáltatás a következő tulajdonságokat tá
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **MicrosoftAccess** | Igen |
 | connectionString | Az ODBC-kapcsolatok karakterlánca a hitelesítő adatok kivételével. Megadhatja a kapcsolati karakterláncot, vagy használhatja a Integration Runtime gépen beállított rendszeradatforrás-nevet (az adatforrás nevét) (ennek megfelelően a társított szolgáltatás hitelesítő adatait is meg kell adnia).<br>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md).| Igen |
-| authenticationType | A Microsoft Access adattárhoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: Alapszintű és **Névtelen**. | Igen |
+| authenticationType | A Microsoft Access adattárhoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű** és **Névtelen**. | Igen |
 | userName | Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. | Nem |
 | password | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | credential | Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. A mező megjelölése SecureString. | Nem |
@@ -86,7 +86,7 @@ A Microsoft Access társított szolgáltatás a következő tulajdonságokat tá
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz a Microsoft Access adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Microsoft Access adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
 Az adatok Microsoft Accessből való másolásához a következő tulajdonságok támogatottak:
 

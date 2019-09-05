@@ -16,12 +16,12 @@ ms.date: 08/28/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74e0539095701ec104495bf5a44dec668494d444
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: a17b64cbfffbe9cabd909bccb16d55c07bba8bb0
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207174"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241445"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure AD Identity Governance?
 
@@ -58,9 +58,9 @@ A szervezeteknek olyan folyamatra van szükségük, amely túllépi az adott fel
 
 Ez általában a hozzáférés-jóváhagyási döntéseket delegálja az üzleti döntéshozóknak.  Emellett maguk is bejárhatják a felhasználókat.  A vállalati marketing alkalmazásban található bizalmas ügyféladatokat használó felhasználóknak például ismerniük kell a vállalat szabályzatait. Előfordulhat, hogy a vendég felhasználói nem tudnak az olyan szervezeten belüli adatkezelési követelményekkel kapcsolatban, amelyeknek meghívásra kerültek.
 
-A szervezetek az olyan technológiákon keresztül automatizálják a hozzáférési életciklus folyamatát, mint a [dinamikus csoportok](../users-groups-roles/groups-dynamic-membership.md), valamint a [scim integrált](../manage-apps/use-scim-to-provision-users-and-groups.md) [SaaS](../saas-apps/tutorial-list.md) -alkalmazásokhoz vagy alkalmazásokhoz való felhasználói kiépítés.  A szervezetek azt is megadhatják [, hogy mely vendég felhasználók férhetnek hozzá a](../b2b/hybrid-cloud-to-on-premises.md)helyszíni alkalmazásokhoz.  Ezek a hozzáférési jogosultságok rendszeresen áttekinthetők az ismétlődő [Azure ad hozzáférési felülvizsgálatok](access-reviews-overview.md)használatával.
+A szervezetek az olyan technológiákon keresztül automatizálják a hozzáférési életciklus folyamatát, mint a [dinamikus csoportok](../users-groups-roles/groups-dynamic-membership.md), valamint a scim integrált [SaaS-alkalmazásokhoz](../saas-apps/tutorial-list.md) vagy [alkalmazásokhoz](../manage-apps/use-scim-to-provision-users-and-groups.md)való felhasználói kiépítés.  A szervezetek azt is megadhatják [, hogy mely vendég felhasználók férhetnek hozzá a helyszíni alkalmazásokhoz](../b2b/hybrid-cloud-to-on-premises.md).  Ezek a hozzáférési jogosultságok rendszeresen áttekinthetők az ismétlődő [Azure ad hozzáférési felülvizsgálatok](access-reviews-overview.md)használatával.
 
-Amikor egy felhasználó megpróbál hozzáférni az alkalmazásokhoz, az Azure AD kikényszeríti a [feltételes hozzáférési](/azure/active-directory/conditional-access/) szabályzatokat. A feltételes hozzáférési szabályzatok tartalmazhatják például a használati [feltételek](../conditional-access/terms-of-use.md) megjelenítését, és biztosítják, hogy [a felhasználó az](../conditional-access/require-tou.md) alkalmazáshoz való hozzáférés megkezdése előtt jóváhagyja ezeket a feltételeket.
+Amikor egy felhasználó megpróbál hozzáférni az alkalmazásokhoz, az Azure AD kikényszeríti a [feltételes hozzáférési](/azure/active-directory/conditional-access/) szabályzatokat. A feltételes hozzáférési szabályzatok tartalmazhatják például a használati [feltételek](../conditional-access/terms-of-use.md) megjelenítését, és biztosítják, hogy a felhasználó az alkalmazáshoz való hozzáférés megkezdése előtt [jóváhagyja ezeket a feltételeket](../conditional-access/require-tou.md) .
 
 ## <a name="privileged-access-lifecycle"></a>Emelt szintű hozzáférés életciklusa
 
@@ -72,7 +72,7 @@ A Azure AD Privileged Identity Management (PIM) további vezérlőket biztosít 
 
 ## <a name="least-privileged-roles"></a>Legkevésbé Kiemelt szerepkörök
 
-A PIM használata lehetővé teszi a felhasználó rendszergazdai engedélyeinek korlátozását a további biztonság érdekében. Az Azure AD Identity irányítási funkciói a legkevesebb jogosultsággal rendelkező címtár-szerepkört használják a konfiguráláshoz: 
+Ajánlott eljárás a legkevésbé Kiemelt szerepkör használata a rendszergazdai feladatok elvégzéséhez az Identitáskezelés irányításában. Javasoljuk, hogy az Azure AD PIM használatával aktiválja a szerepköröket a feladatok elvégzéséhez szükséges módon. Az identitás-irányítási funkciók konfigurálásához az alábbi legkevesebb jogosultsággal rendelkező címtár-szerepkört kell megadni: 
 
 | Funkció | Legkevésbé Kiemelt szerepkör |
 | ------- | --------------------- |
@@ -89,7 +89,7 @@ Habár nincs tökéletes megoldás vagy javaslat minden ügyfélhez, az alábbi 
 - [Identitás- és eszköz-hozzáférési konfigurációk](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Emelt szintű hozzáférés biztonsága](../users-groups-roles/directory-admin-roles-secure.md)
 
-A Azure Portal **identitás** -irányításának első lépések lapján is megtekintheti a jogosultsági felügyelet, a hozzáférési felülvizsgálatok, a Privileged Identity Management és a használati feltételek használatának megkezdéséhez szükséges lépéseket.
+A Azure Portal **identitás-irányításának** első lépések lapján is megtekintheti a jogosultsági felügyelet, a hozzáférési felülvizsgálatok, a Privileged Identity Management és a használati feltételek használatának megkezdéséhez szükséges lépéseket.
 
 ![A személyazonosság szabályozása – első lépések](./media/identity-governance-overview/getting-started.png)
 

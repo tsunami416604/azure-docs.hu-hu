@@ -7,16 +7,16 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 8c3b9523f6e6991723b0da721dbf7667ee340772
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c28469e15841e2675c20868b74cf044159c4e9ca
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207969"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259193"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>A kereskedelmi piactér-fiók kezelése a partner Centerben 
 
-Ha létrehozta [a partner Center-fiókot](./create-account.md), a [kereskedelmi piactér irányítópultján](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)kezelheti a fiókját és ajánlatait.
+Ha [létrehozta a partner Center-fiókot](./create-account.md), a [kereskedelmi piactér irányítópultján](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)kezelheti a fiókját és ajánlatait.
 
 Ebben a cikkben bemutatjuk, hogyan kezelheti a partneri központ fiókját, többek között a következőket: 
 
@@ -77,7 +77,7 @@ Ha csak az ingyenes ajánlatokat szeretné megtervezni, nem kell beállítania a
 
 A kifizetési fiók az a bankszámla, amelynek a bevételeit az értékesítések küldik. Ennek a bankszámlának ugyanabban az országban kell lennie, ahol a partner Center-fiókot regisztrálta.
 
-A kifizetési fiók beállításához hozzá kell rendelnie **a Microsoft**-fiókját:
+A kifizetési fiók beállításához hozzá kell **rendelnie a Microsoft-fiókját**:
 1. A **Fiókbeállítások**területen a **pénzügyi részletek** szakaszban válassza a Microsoft- **fiók hozzárendelése**lehetőséget. 
 2. Ha a rendszer kéri, jelentkezzen be Microsoft-fiókjával (MSA). Ez a fiók már nem társítható egy másik partner Center-fiókhoz. 
 3. A kifizetési fiók beállításának befejezéséhez jelentkezzen be a partner Center szolgáltatásból, majd jelentkezzen be újra a Microsoft-fiókjával (nem a munkahelyi fiókjával). 
@@ -115,9 +115,9 @@ Ha a Egyesült Államokon kívül esik, lehetősége lesz az adózási szerződ�
 
 Alapértelmezés szerint a Microsoft havi rendszerességgel küldi a kifizetéseket. Lehetősége van azonban arra is, hogy a befizetéseit megtartsa, ami megakadályozza a befizetések küldését a fiókjába. Ha úgy dönt, hogy megtartja a befizetését, továbbra is rögzítjük a beszerzett bevételt, és megadhatjuk a **nyeremények összegzésének**részleteit. Azonban addig nem küldünk fizetést a fiókjába, amíg el nem távolítja a tárolót. 
 
-A befizetések tárolásához lépjen a **Fiókbeállítások**menüpontra. A **pénzügyi részletek**alatt, a **kifizetési Hold állapota** szakaszban kapcsolja be a csúszkát a **be**értékre. Bármikor módosíthatja a kifizetési állapotot, de vegye figyelembe, hogy a döntés a következő havi kifizetésre is hatással van. Ha például a április végét szeretné megtartani, mindenképpen a március vége előtt állítsa be a kifizetési Holding állapotát.
+A befizetések tárolásához lépjen a **Fiókbeállítások**menüpontra. A **pénzügyi részletek**alatt, a **kifizetési Hold állapota** szakaszban kapcsolja be a csúszkát a **be**értékre. Bármikor módosíthatja a kifizetési állapotot, de vegye figyelembe, hogy a döntés a következő havi kifizetésre is hatással van. Ha például a április végét szeretné megtartani, mindenképpen **a március vége előtt állítsa** be a kifizetési Holding állapotát.
 
-Miután beállította a kifizetési állapotot **a be**értékre, a rendszer minden kifizetést megtart, amíg vissza nem kapcsolja a csúszkát. Ha így tesz, a következő havi kifizetési ciklusban is szerepelni fog (ha teljesülnek az érvényes fizetési küszöbértékek). Ha például megtartotta a befizetését, de a júniusi kifizetést szeretné kinyerni, akkor a határidő lejárta előtt mindenképpen **kapcsolja ki** a kifizetési Hold állapotot.
+Miután beállította a kifizetési állapotot **a be**értékre, a rendszer minden kifizetést megtart, amíg vissza **nem kapcsolja**a csúszkát. Ha így tesz, a következő havi kifizetési ciklusban is szerepelni fog (ha teljesülnek az érvényes fizetési küszöbértékek). Ha például megtartotta a befizetését, de a júniusi kifizetést szeretné kinyerni, akkor a határidő lejárta előtt mindenképpen **kapcsolja ki** a kifizetési Hold állapotot.
 
 > [!NOTE]
 > A **kifizetési Holding status** Selection a Microsoft partner centeren keresztül fizetett **összes** bevételi forrásra vonatkozik, beleértve az Azure Marketplace-t, a AppSource-t, a Microsoft Storet, a reklámozást stb.). Az egyes bevételi forrásokhoz nem választhat különböző tartási állapotokat.
@@ -162,7 +162,7 @@ Miután bejelentkezett a munkahelyi fiókjával (Azure AD-Bérlővel), a követk
 - [Felhasználói szerepkörök és engedélyek definiálása](#define-user-roles-and-permissions)
 
 
-Ne feledje, hogy az összes partner Center-felhasználónak (beleértve a csoportokat és az Azure AD-alkalmazásokat) aktív munkahelyi fiókkal kell rendelkeznie a partner Center-fiókhoz társított [Azure ad](#manage-tenants) -bérlőben. 
+Ne feledje, hogy az összes partner Center-felhasználónak (beleértve a csoportokat és az Azure AD-alkalmazásokat) aktív munkahelyi fiókkal kell rendelkeznie a partner Center-fiókhoz társított [Azure ad-bérlőben](#manage-tenants) . 
 
 ### <a name="add-or-remove-users"></a>Felhasználók hozzáadása vagy eltávolítása
 
@@ -185,7 +185,7 @@ Felhasználók hozzáadása a partner Center-fiókhoz, amely már szerepel a vá
 
 1. Nyissa meg a **felhasználók** (a **Fiókbeállítások**szakaszban), válassza a **felhasználók hozzáadása**, majd az **új felhasználók létrehozása**lehetőséget.
 1. Adja meg az összes új felhasználó utónevét, vezetéknevét és felhasználónevét. 
-1. Ha azt szeretné, hogy az új felhasználó globális rendszergazdai fiókkal rendelkezzen a szervezet címtárában, jelölje be a felhasználó globális rendszergazdaként való megjelölése az Azure AD-ben jelölőnégyzetet az **összes címtár-erőforrás teljes körű vezérlése mellett**. Ez teljes hozzáférést biztosít a felhasználónak a vállalat Azure AD összes felügyeleti funkciójához. A szervezet munkahelyi fiókjában (Azure AD-bérlő) lévő felhasználók hozzáadhatók és kezelhetők, bár nem a partner Centerben, hacsak nem a megfelelő szerepkört/engedélyeket adja meg a fióknak. 
+1. Ha azt szeretné, hogy az új felhasználó globális rendszergazdai fiókkal rendelkezzen a szervezet címtárában, jelölje be a **felhasználó globális rendszergazdaként való megjelölése az Azure ad-ben jelölőnégyzetet az összes címtár-erőforrás teljes körű vezérlése mellett**. Ez teljes hozzáférést biztosít a felhasználónak a vállalat Azure AD összes felügyeleti funkciójához. A szervezet munkahelyi fiókjában (Azure AD-bérlő) lévő felhasználók hozzáadhatók és kezelhetők, bár nem a partner Centerben, hacsak nem a megfelelő szerepkört/engedélyeket adja meg a fióknak. 
 1. Ha bejelölte a jelölőnégyzetet, hogy a **felhasználó globális rendszergazda legyen**, **Jelszó-helyreállítási e-mailt** kell megadnia a felhasználónak, ha szükséges.
 1. A **csoporttagság** szakaszban válassza ki azokat a csoportokat, amelyekhez az új felhasználót be szeretné állítani.
 1. A **szerepkörök** szakaszban határozza meg a felhasználó szerepkör (eke) t vagy a testreszabott engedélyeket.
@@ -204,11 +204,11 @@ Ha olyan felhasználókat szeretne meghívni, akik jelenleg nem részei a munkah
 
 A meghívott felhasználók e-mailben meghívót kapnak a partner Center-fiókhoz való csatlakozáshoz. A rendszer létrehoz egy új vendég-felhasználói fiókot a munkahelyi fiókjában (Azure AD-bérlő). Minden felhasználónak el kell fogadnia a meghívót, mielőtt hozzáférhessen a fiókjához.
 
-Ha újra el kell küldenie egy meghívót, látogasson el a **felhasználók** oldalra, keresse meg a meghívót a felhasználók listájában, válassza ki az e-mail-címét (vagy a meghívót *függőben lévő*szöveget). Ezután a lap alján válassza a **meghívás újraküldése**lehetőséget.
+Ha újra el kell küldenie egy meghívót, látogasson el a **felhasználók** oldalra, keresse meg a meghívót a felhasználók listájában, válassza ki az e-mail-címét (vagy a *meghívót függőben lévő*szöveget). Ezután a lap alján válassza a **meghívás újraküldése**lehetőséget.
  
 
 > [!NOTE]
-> Ha a szervezete [címtár](https://go.microsoft.com/fwlink/p/?LinkID=724033) -integrációt használ a helyszíni CÍMTÁRSZOLGÁLTATÁS Azure ad-val való szinkronizálásához, nem fog tudni új felhasználókat, csoportokat vagy Azure ad-alkalmazásokat létrehozni a partner Centerben. Önnek (vagy egy másik rendszergazdának a helyszíni címtárban) közvetlenül a helyszíni címtárban kell létrehoznia őket, mielőtt látni és hozzá tudná adni őket a partner Centerben.
+> Ha a szervezete [címtár-integrációt](https://go.microsoft.com/fwlink/p/?LinkID=724033) használ a helyszíni CÍMTÁRSZOLGÁLTATÁS Azure ad-val való szinkronizálásához, nem fog tudni új felhasználókat, csoportokat vagy Azure ad-alkalmazásokat létrehozni a partner Centerben. Önnek (vagy egy másik rendszergazdának a helyszíni címtárban) közvetlenül a helyszíni címtárban kell létrehoznia őket, mielőtt látni és hozzá tudná adni őket a partner Centerben.
 
 #### <a name="remove-a-user"></a>Felhasználó eltávolítása
 
@@ -219,7 +219,7 @@ Ha el szeretne távolítani egy felhasználót a munkahelyi fiókjából (Azure 
 Ha az egyik felhasználónak módosítania kell a jelszavát, akkor megteheti, ha **Jelszó-helyreállítási e-mailt** adott a felhasználói fiók létrehozásakor. A felhasználó jelszavát az alábbi lépések végrehajtásával is frissítheti. Ha módosítani szeretné egy felhasználó jelszavát a munkahelyi munkahelyi fiókjában (Azure AD-bérlő), [**globális rendszergazdai**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) jogosultságokkal rendelkező fiókba kell bejelentkeznie. Vegye figyelembe, hogy ez megváltoztatja a felhasználó jelszavát az Azure AD-bérlőben, valamint a partner Center eléréséhez használt jelszót.
 
 1.  A **felhasználók** lapon ( **Fiókbeállítások**alatt) válassza ki a szerkeszteni kívánt felhasználói fiók nevét.
-2.  A lap alján kattintson a **jelszó** alaphelyzetbe állítása gombra.
+2.  A lap alján kattintson a **jelszó alaphelyzetbe állítása** gombra.
 3.  Ekkor megjelenik egy megerősítést kérő oldal, amely a felhasználó bejelentkezési adatait tartalmazza, beleértve az ideiglenes jelszót is. Ügyeljen arra, hogy kinyomtassa vagy átmásolja ezt az információt, és megadja azt a felhasználónak, mivel az oldal elhagyása után nem fog tudni hozzáférni az ideiglenes jelszóhoz.
 
 
@@ -274,7 +274,7 @@ A vállalat Azure Active Directory már meglévő alkalmazások hozzáadásához
 
 #### <a name="add-new-azure-ad-applications"></a>Új Azure AD-alkalmazások hozzáadása 
 
-Ha egy új Azure AD-alkalmazáshoz szeretne hozzáférést adni a partneri Központ számára, létrehozhat egyet a **felhasználók** szakaszban. Vegye figyelembe, hogy ez egy új fiókot hoz létre a vállalati munkahelyi fiókban (Azure AD-bérlő), nem csupán a partner Center-fiókban. Ha elsődlegesen ezt az Azure AD-alkalmazást használja a fiókpartner-hitelesítéshez, és nincs szükség arra, hogy a felhasználók közvetlenül hozzáférjenek, megadhat bármilyen érvényes címet a **Válasz URL** -címéhez és az **alkalmazás-azonosító URI azonosítóhoz**, feltéve, hogy ezeket az értékeket nem használja más Azure AD-alkalmazás a címtárban.
+Ha egy új Azure AD-alkalmazáshoz szeretne hozzáférést adni a partneri Központ számára, létrehozhat egyet a **felhasználók** szakaszban. Vegye figyelembe, hogy ez egy új fiókot hoz létre a vállalati munkahelyi fiókban (Azure AD-bérlő), nem csupán a partner Center-fiókban. Ha elsődlegesen ezt az Azure AD-alkalmazást használja a fiókpartner-hitelesítéshez, és nincs szükség arra, hogy a felhasználók közvetlenül hozzáférjenek, megadhat bármilyen érvényes címet a **Válasz URL-címéhez** és az **alkalmazás-azonosító URI azonosítóhoz**, feltéve, hogy ezeket az értékeket nem használja más Azure AD-alkalmazás a címtárban.
 
 1.  A **felhasználók** lapon (a **Fiókbeállítások**alatt) válassza az **Azure ad-alkalmazások hozzáadása**lehetőséget.
 2.  A következő lapon válassza az **új Azure ad-alkalmazás**lehetőséget.
@@ -312,7 +312,7 @@ A vállalat felhasználóinak a következő szerepköröket és engedélyeket re
   - Megtekintheti a kiadói jelentéseket
 
 > [!NOTE]
-> A globális rendszergazda, az üzleti közreműködő, a pénzügyi közreműködő és a marketinges szerepkörök nem használhatók a kereskedelmi piactér programban, és nincsenek hozzájuk társított engedélyek.
+> A kereskedelmi piactér programban a globális rendszergazda, az üzleti közreműködő, a pénzügyi közreműködő és a marketinges szerepkörök nem használatosak. A szerepkörök felhasználóknak való kiosztása nincs hatással. Csak a kezelő és a fejlesztői szerepkörök adnak engedélyeket a felhasználóknak.
 
 További információ a szerepkörök és engedélyek kezeléséről a partner Center más területein, például a Azure Active Directory (AD), a felhőalapú megoldás-szolgáltató (CSP), a Vezérlőpult-gyártó (CPV), a vendég felhasználók vagy a Microsoft Partner Network (MPN): [felhasználói szerepkörök társítása és engedélyek a partner Centerben](https://docs.microsoft.com/partner-center/permissions-overview).
 
@@ -345,16 +345,16 @@ Ha a társítás sikeres, akkor készen áll a fiók felhasználóinak hozzáad�
 3. A **Létrehozás** gombra kattintva erősítse meg az új tartomány és fiókadatok adatait.
 4. A [felhasználók hozzáadásának és kezelésének](#manage-users)megkezdéséhez jelentkezzen be az új Azure ad globális rendszergazdai felhasználónevével és jelszavával.
 
-Ha további információt szeretne arról, hogyan hozhat létre új bérlőket a Azure Portal belül, és nem a partneri központ portálon keresztül, tekintse meg a következő cikket: [új bérlő létrehozása](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)a Azure Active Directoryban.
+Ha további információt szeretne arról, hogyan hozhat létre új bérlőket a Azure Portal belül, és nem a partneri központ portálon keresztül, tekintse meg a következő cikket: [új bérlő létrehozása a Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
 
 ### <a name="remove-a-tenant"></a>Bérlő eltávolítása
 
-Ha el szeretne távolítani egy bérlőt a partner Center-fiókból, keresse meg a bérlők lapon található nevet a **fiók beállításai**között, majd válassza az **Eltávolítás**lehetőséget. A rendszer felszólítja, hogy erősítse meg, hogy el kívánja távolítani a bérlőt. Ha így tesz, az adott bérlő egyik felhasználója sem tud bejelentkezni a partner Center-fiókba, és a felhasználók számára konfigurált engedélyek el lesznek távolítva.
+Ha el szeretne távolítani egy bérlőt a partner Center-fiókból, keresse meg a **bérlők** lapon található nevet a **fiók beállításai**között, majd válassza az **Eltávolítás**lehetőséget. A rendszer felszólítja, hogy erősítse meg, hogy el kívánja távolítani a bérlőt. Ha így tesz, az adott bérlő egyik felhasználója sem tud bejelentkezni a partner Center-fiókba, és a felhasználók számára konfigurált engedélyek el lesznek távolítva.
 
 Ha eltávolít egy bérlőt, az adott bérlőtől a partner Center-fiókba felvett összes felhasználó nem fog tudni bejelentkezni a fiókba.
 
 > [!TIP]
-> Nem távolíthat el bérlőt, ha a partner központba van bejelentkezve ugyanazzal a Bérlővel. Bérlő eltávolításához be kell jelentkeznie a partner központba egy másik , a fiókhoz társított bérlőhöz. Ha a fiókhoz csak egy bérlő van társítva, akkor a bérlő csak a fiókot megnyitó Microsoft-fiók való bejelentkezés után távolítható el.
+> Nem távolíthat el bérlőt, ha a partner központba van bejelentkezve ugyanazzal a Bérlővel. Bérlő eltávolításához be kell jelentkeznie a partner központba **egy másik** , a fiókhoz társított bérlőhöz. Ha a fiókhoz csak egy bérlő van társítva, akkor a bérlő csak a fiókot megnyitó Microsoft-fiók való bejelentkezés után távolítható el.
 
 
 ## <a name="agreements"></a>Szerződések

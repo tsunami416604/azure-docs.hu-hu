@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: a5fe77ace5f745911bb9085dd6996a8d21fe265f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879038"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274475"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Tintaadatok küldése az Ink Recognizer API-nak 
 
@@ -30,7 +30,7 @@ A tinta-felismerő API nem használ optikai karakterfelismerést (OCR). Az OCR-s
 A tinta-felismerő API-nak az X és az Y koordinátákat kell megadnia, amelyek a bemeneti eszköz által létrehozott szabadkézi ecsetvonásokat jelölik, az észlelési felületet a felemelt állapothoz képest. Az egyes ecsetvonások pontjainak vesszővel tagolt értékeket tartalmazó sztringnek kell lenniük, és a JSON-ban kell formázni, például az alábbi példában látható módon. Emellett minden egyes tollvonásnak egyedi AZONOSÍTÓval kell rendelkeznie minden kérelemben. Ha az azonosítót ugyanazzal a kéréssel ismétli meg, az API hibaüzenetet ad vissza. A legpontosabb felismerési eredményekhez legalább nyolc számjegynek kell lennie a tizedesvessző után. A vászon kezdőpontja (0, 0) a szabadkézi vászon bal felső sarkát feltételezi.
 
 > [!NOTE]
-> A következő példa nem érvényes JSON. A githubon egy teljes kézírás-felismerő JSON-kérés [](https://go.microsoft.com/fwlink/?linkid=2089909)található.
+> A következő példa nem érvényes JSON. A [githubon](https://go.microsoft.com/fwlink/?linkid=2089909)egy teljes kézírás-felismerő JSON-kérés található.
  
 ```json
 {
@@ -62,7 +62,7 @@ A tinta-felismerő API egy elemzési választ ad vissza a szabadkézi tartalomb�
 
 ## <a name="shapes-recognized-by-the-ink-recognizer-api"></a>A tinta-felismerő API által felismert alakzatok
 
-A kézírás-felismerő API képes azonosítani a leggyakrabban használt alakzatokat a megjegyzésekben. Az alábbi képen néhány alapvető példa látható. Az API által felismert alakzatok és egyéb szabadkézi tartalmak teljes listáját az API-referenciát ismertető [cikkben](https://go.microsoft.com/fwlink/?linkid=2089907)találja. 
+A kézírás-felismerő API képes azonosítani a leggyakrabban használt alakzatokat a megjegyzésekben. Az alábbi képen néhány alapvető példa látható. Az API által felismert alakzatok és egyéb szabadkézi tartalmak teljes listáját az [API-referenciát ismertető cikkben](https://go.microsoft.com/fwlink/?linkid=2089907)találja. 
 
 ![A tinta-felismerő API által felismert alakzatok listája](../media/shapes.png)
 
@@ -82,7 +82,7 @@ Az elismerési eredmények előzetesen információt adnak a szabadkézi ecsetvo
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>A tinta-felismerő API integrálása Windows-tintával
 
-A [Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) olyan eszközöket és technológiákat biztosít, amelyekkel számos különböző eszközön engedélyezhető a digitális és a többkirályos élmény. A Windows tinta platformot kombinálhatja a Ink-felismerő API-val a digitális tollvonásokat megjelenítő és értelmező alkalmazások létrehozásához.
+A [Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) olyan eszközöket és technológiákat biztosít, amelyekkel számos különböző eszközön engedélyezhető a digitális és a többkirályos élmény. A tinta-felismerő API-val kombinálhatja a Windows tinta platformot a digitális tollvonásokat megjelenítő és értelmező alkalmazások létrehozásához.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 9c27b81717c32ccf4c78143a3d3d31de7181c5fe
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 28c7ca6470e15f4ff1f5e80df2ab63fa19da1544
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996628"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277793"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az Oracle-ből és a rendszerből a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -73,7 +73,7 @@ Az Oracle társított szolgáltatás a következő tulajdonságokat támogatja:
 
 Az Oracle-kapcsolatok titkosításának engedélyezéséhez két lehetőség közül választhat:
 
--   A **Triple-des encryption (3DES) és a Advanced Encryption Standard (AES)** használatához az Oracle Server oldalán nyissa meg az Oracle Advanced Security (OAS) oldalt, és konfigurálja a titkosítási beállításokat. További részletekért tekintse meg ezt az [Oracle](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)-dokumentációt. Az Oracle Application Development Framework (ADF) összekötő automatikusan egyezteti a titkosítási módszert, hogy a OAS-ben konfigurált konfigurációt használja az Oracle-hez való kapcsolódáskor.
+-   A **Triple-des encryption (3DES) és a Advanced Encryption Standard (AES)** használatához az Oracle Server oldalán nyissa meg az Oracle Advanced Security (OAS) oldalt, és konfigurálja a titkosítási beállításokat. További részletekért tekintse meg ezt az [Oracle-dokumentációt](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Az Oracle Application Development Framework (ADF) összekötő automatikusan egyezteti a titkosítási módszert, hogy a OAS-ben konfigurált konfigurációt használja az Oracle-hez való kapcsolódáskor.
 
 -   Az **SSL**használata:
 
@@ -163,14 +163,16 @@ Az Oracle-kapcsolatok titkosításának engedélyezéséhez két lehetőség kö
 ```
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Ez a szakasz az Oracle-adatkészlet által támogatott tulajdonságok listáját tartalmazza. Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [](concepts-datasets-linked-services.md)adatkészletek. 
+Ez a szakasz az Oracle-adatkészlet által támogatott tulajdonságok listáját tartalmazza. Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [adatkészletek](concepts-datasets-linked-services.md). 
 
 Az adatok és az Oracle közötti másoláshoz állítsa az adatkészlet `OracleTable`Type (típus) tulajdonságát a következőre:. A következő tulajdonságok támogatottak.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát be kell állítani `OracleTable`. | Igen |
-| tableName |Annak az Oracle-adatbázisnak a neve, amelyre a társított szolgáltatás hivatkozik. | Igen |
+| schema | A séma neve. |Nincs forrás, a fogadó Igen  |
+| table | A tábla vagy nézet neve. |Nincs forrás, a fogadó Igen  |
+| tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz `table`használja `schema` a és a elemet. | Nincs forrás, a fogadó Igen |
 
 **Példa:**
 
@@ -180,12 +182,14 @@ Az adatok és az Oracle közötti másoláshoz állítsa az adatkészlet `Oracle
     "properties":
     {
         "type": "OracleTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "<schema_name>",
+            "table": "<table_name>"
+        },
         "linkedServiceName": {
             "referenceName": "<Oracle linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "MyTable"
         }
     }
 }
@@ -198,7 +202,7 @@ Ez a szakasz az Oracle-forrás és a fogadó által támogatott tulajdonságok l
 ### <a name="oracle-as-source"></a>Oracle forrásként
 
 >[!TIP]
->Az Oracle-adatoknak az adatparticionálással való hatékony betöltéséhez az [Oracle](#parallel-copy-from-oracle)-ből származó párhuzamos másolásról többet is megtudhat.
+>Az Oracle-adatoknak az adatparticionálással való hatékony betöltéséhez az Oracle-ből származó [párhuzamos másolásról](#parallel-copy-from-oracle)többet is megtudhat.
 
 Az Oracle-adatok másolásához állítsa a forrás típusát a másolási tevékenységbe `OracleSource`. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban.
 
@@ -206,7 +210,7 @@ Az Oracle-adatok másolásához állítsa a forrás típusát a másolási tevé
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre `OracleSource`kell beállítani:. | Igen |
 | oracleReaderQuery | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`.<br>Ha engedélyezi a particionált terhelést, össze kell kapcsolnia a lekérdezéshez tartozó beépített partíciós paramétereket. Példaként tekintse meg az [Oracle párhuzamos másolási](#parallel-copy-from-oracle) szakaszát. | Nem |
-| partitionOptions | Az Oracle-adatok betöltéséhez használt adatparticionálási beállításokat adja meg. <br>Engedélyezett értékek a következők: **Nincs** (alapértelmezett), **PhysicalPartitionsOfTable** és **DynamicRange**.<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None`), konfigurálja a [`parallelCopies`](copy-activity-performance.md#parallel-copy) beállítást is a másolási tevékenységhez. Ez határozza meg az Oracle-adatbázisokból való egyidejű betöltés párhuzamos mértékét. Beállíthatja például a következőt: 4. | Nem |
+| partitionOptions | Az Oracle-adatok betöltéséhez használt adatparticionálási beállításokat adja meg. <br>Engedélyezett értékek a következők: **Nincs** (alapértelmezett), **PhysicalPartitionsOfTable** és **DynamicRange**.<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None`), az Oracle-adatbázisok adatainak párhuzamos betöltésének foka a másolási tevékenység [`parallelCopies`](copy-activity-performance.md#parallel-copy) beállításai vezérlik. | Nem |
 | partitionSettings | Határozza meg az adatparticionálási beállítások csoportját. <br>Akkor alkalmazza, ha a partíció `None`lehetőség nem. | Nem |
 | partitionNames | A másolandó fizikai partíciók listája. <br>Akkor alkalmazza, ha a partíciós beállítás van `PhysicalPartitionsOfTable`. Ha lekérdezést használ a forrásadatok beolvasásához, a WHERE záradékban lévő hookot `?AdfTabularPartitionName` . Példaként tekintse meg az [Oracle párhuzamos másolási](#parallel-copy-from-oracle) szakaszát. | Nem |
 | partitionColumnName | Adja meg a forrás oszlop **olyan egész típusú** nevét, amelyet a párhuzamos másolási tartomány particionálásakor fog használni. Ha nincs megadva, a rendszer automatikusan észleli a tábla elsődleges kulcsát, és a partíció oszlopként használja. <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange`. Ha lekérdezést használ a forrásadatok beolvasásához, a WHERE záradékban lévő hookot `?AdfRangePartitionColumnName` . Példaként tekintse meg az [Oracle párhuzamos másolási](#parallel-copy-from-oracle) szakaszát. | Nem |
@@ -295,7 +299,7 @@ A Data Factory Oracle Connector beépített adatparticionálást biztosít az ad
 
 A particionált másolás engedélyezésekor a Data Factory párhuzamos lekérdezéseket futtat az Oracle-forráson az adatpartíciók alapján történő betöltéshez. A párhuzamos mértéket a másolási [`parallelCopies`](copy-activity-performance.md#parallel-copy) tevékenység beállításai vezérlik. Ha például négyre van állítva `parallelCopies` , Data Factory egyidejűleg létrehoz és futtat négy lekérdezést a megadott partíciós beállítás és beállítások alapján, és mindegyik lekérdezés az Oracle-adatbázisból származó adatok egy részét kéri le.
 
-Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatparticionálással, különösen akkor, ha nagy mennyiségű adattal tölt be az Oracle-adatbázisból. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek. Az adatok file-alapú adattárba való másolása során a rendszer úgy helyezi át, hogy több fájlként írjon egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájl írásakor.
+Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálásával, különösen akkor, ha nagy mennyiségű adatmennyiséget tölt be az Oracle-adatbázisból. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek. Az adatok file-alapú adattárba való másolása során a rendszer úgy helyezi át, hogy több fájlként írjon egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájl írásakor.
 
 | Forgatókönyv                                                     | Javasolt beállítások                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -337,7 +341,7 @@ Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatparticionálássa
 
 ## <a name="data-type-mapping-for-oracle"></a>Az Oracle adattípusának leképezése
 
-Amikor a és az Oracle rendszerbe másol adatokból, a következő leképezések érvényesek. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadónak, tekintse meg a [séma-és adattípus](copy-activity-schema-and-type-mapping.md)-leképezéseket.
+Amikor a és az Oracle rendszerbe másol adatokból, a következő leképezések érvényesek. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadónak, tekintse meg a [séma-és adattípus-leképezéseket](copy-activity-schema-and-type-mapping.md).
 
 | Oracle-adattípus | Data Factory közbenső adattípus |
 |:--- |:--- |

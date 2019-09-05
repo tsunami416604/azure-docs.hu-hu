@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 20c27a3e4e9a96a19b347e5ef57ab9fb3c047140
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f054d0665c49ee048451681a7cc34d2a648a6e9e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194426"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240219"
 ---
 ::: zone target="docs"
 
@@ -30,7 +30,7 @@ A rendszerkövetelmények tartalmazzák a lemezekhez, a támogatott Storage-fió
 
 # <a name="review-prerequisites"></a>Előfeltételek áttekintése
 
-1. A Data Box Disk az oktatóanyag használatával kell elrendeznie: Rendeljen Azure Data Box Disk. Lemezeket és egy csatlakoztatott kábelt fogadott el lemezenként.
+1. A Data Box Disk az [oktatóanyag használatával kell elrendeznie: Rendeljen Azure Data Box Disk](data-box-disk-deploy-ordered.md). Lemezeket és egy csatlakoztatott kábelt fogadott el lemezenként.
 2. Van olyan ügyfélszámítógép, amelyről másolatot készíthet az adatokról. Az ügyfélszámítógépen:
 
     - Futtasson egy támogatott operációs rendszert.

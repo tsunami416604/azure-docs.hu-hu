@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 891273a98c61b59e08b4a15f3b0892e6828a2a47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 401b33c28e4ba91a0da5e4ab38f920e173302ea1
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099434"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242365"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>A Azure Logic Apps korlátai és konfigurációs adatai
 
@@ -80,7 +80,7 @@ Egyetlen logikai alkalmazás futtatásának korlátai:
 | Egyidejűség kiváltása | * Korlátlan, ha a Egyidejűség vezérlő ki van kapcsolva <p><p>* 25 a Egyidejűség vezérlőelem bekapcsolásának alapértelmezett korlátja, amely a vezérlő bekapcsolását követően nem vonható vissza. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a logikai alkalmazások azon példányainak a maximális számát ismerteti, amelyek egyszerre vagy párhuzamosan futtathatók. <p><p>Ha az alapértelmezett határértéket 1 és 50 közötti értékre szeretné módosítani, a következő témakörben talál további információt: [trigger egyidejűségi korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy az [indító példányok egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Várakozó futtatások maximális száma | Ha a Egyidejűség-vezérlő be van kapcsolva, a várakozási idő minimális száma 10, az egyidejű futtatások száma (Egyidejűség). A maximális számot akár 100-ig is megváltoztathatja. | Ez a korlát a logikai alkalmazások azon példányainak a maximális számát írja le, amelyek csak akkor tudnak futni, ha a logikai alkalmazás már futtatja az egyidejű példányokat. <p><p>Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)című témakört. |
 | Foreach | 100,000 | Ez a korlát a "for each" ciklusban feldolgozható tömb elemeinek legnagyobb számát mutatja. <p><p>Nagyobb tömbök szűréséhez használhatja a [lekérdezési műveletet](../connectors/connectors-native-query.md). |
-| Foreach Egyidejűség | a 20 az alapértelmezett korlát, ha a Egyidejűség vezérlőelem ki van kapcsolva. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a "minden" hurok-iteráció esetében a legmagasabb szám, amely egyszerre vagy párhuzamosan futtatható. <p><p>Ha az alapértelmezett határértéket 1 és 50 közötti értékre szeretné módosítani, az egyes [](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) "egyidejűségek korlátait vagy futtatását" részben tekintse meg egymás [után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
+| Foreach Egyidejűség | a 20 az alapértelmezett korlát, ha a Egyidejűség vezérlőelem ki van kapcsolva. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a "minden" hurok-iteráció esetében a legmagasabb szám, amely egyszerre vagy párhuzamosan futtatható. <p><p>Ha az alapértelmezett határértéket 1 és 50 közötti értékre szeretné módosítani, az egyes " [egyidejűségek korlátait](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) vagy [futtatását](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)" részben tekintse meg egymás után. |
 | SplitOn elemek | 100,000 | Egy tömböt visszaadó eseményindítók esetében megadhat egy olyan kifejezést, amely egy "SplitOn" tulajdonságot használ, amely a [Tömb elemeit több munkafolyamat-példányba bontja vagy bontotta](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) a feldolgozásra, nem pedig "foreach" ciklust használ. Ez a kifejezés az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához használható tömböt hivatkozik. |
 | Iterációig | 5,000 | |
 ||||
@@ -148,9 +148,9 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 
 | Name (Név) | Korlát | Megjegyzések |
 | ---- | ----- | ----- |
-| Újrapróbálkozások száma | 90 | Az alapértelmezett érték 4. Az alapértelmezett érték módosításához használja az újrapróbálkozási [házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
-| Újrapróbálkozás maximális késleltetése | 1 nap | Az alapértelmezett érték módosításához használja az újrapróbálkozási [házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
-| Újrapróbálkozás minimális késleltetéssel | 5 másodperc | Az alapértelmezett érték módosításához használja az újrapróbálkozási [házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
+| Újrapróbálkozások száma | 90 | Az alapértelmezett érték 4. Az alapértelmezett érték módosításához használja az [újrapróbálkozási házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
+| Újrapróbálkozás maximális késleltetése | 1 nap | Az alapértelmezett érték módosításához használja az [újrapróbálkozási házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
+| Újrapróbálkozás minimális késleltetéssel | 5 másodperc | Az alapértelmezett érték módosításához használja az [újrapróbálkozási házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 ||||
 
 <a name="custom-connector-limits"></a>
@@ -220,9 +220,9 @@ Az egyes integrációs fiókok szintjein található összetevők számának kor
 
 | Összetevő | Korlát | Megjegyzések |
 | -------- | ----- | ----- |
-| Szerelvény | 8 MB | 2 MB-nál nagyobb fájlok feltöltéséhez használjon egy [Azure Storage-fiókot és egy blob](../logic-apps/logic-apps-enterprise-integration-schemas.md)-tárolót. |
+| Szerelvény | 8 MB | 2 MB-nál nagyobb fájlok feltöltéséhez használjon egy [Azure Storage-fiókot és egy BLOB-tárolót](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
 | Térkép (XSLT-fájl) | 8 MB | A 2 MB-nál nagyobb fájlok feltöltéséhez használja a [Azure Logic Apps REST API-Maps](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)szolgáltatást. |
-| Séma | 8 MB | 2 MB-nál nagyobb fájlok feltöltéséhez használjon egy [Azure Storage-fiókot és egy blob](../logic-apps/logic-apps-enterprise-integration-schemas.md)-tárolót. |
+| Séma | 8 MB | 2 MB-nál nagyobb fájlok feltöltéséhez használjon egy [Azure Storage-fiókot és egy BLOB-tárolót](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
 ||||
 
 | Futásidejű végpont | Korlát | Megjegyzések |
@@ -260,15 +260,13 @@ Amikor törli a logikai alkalmazást, a rendszer nem kezdeményez új futtatáso
 
 Az ugyanabban a régióban található logikai alkalmazások ugyanazt az IP-címtartományt használják. A logikai alkalmazások által a [http](../connectors/connectors-native-http.md)-, [http + hencegő](../connectors/connectors-native-http-swagger.md)és egyéb http-kérésekkel közvetlenül elérhető hívások támogatásához állítsa be a tűzfalakat a Logic Apps szolgáltatás által használt *összes* [bejövő](#inbound) *és* [kimenő](#outbound) IP-címmel. , azon régiók alapján, ahol a logikai alkalmazások léteznek. Ezek a címek a jelen szakasz **bejövő** és **kimenő** fejlécei alatt jelennek meg, és régiónként vannak rendezve. 
 
-A [Microsoft által felügyelt összekötők](../connectors/apis-list.md) által kezdeményezett hívások támogatásához állítsa be a tűzfalat az összekötők által használt *összes* [kimenő](#outbound) IP-címmel azon régiók alapján, ahol a logikai alkalmazások léteznek. Ezek a címek a szakasz **kimenő** fejlécében jelennek meg, és régiónként vannak rendezve.
+A [Microsoft által felügyelt összekötők](../connectors/apis-list.md) által kezdeményezett hívások támogatásához állítsa be a tűzfalat az összekötők által használt *összes* [kimenő](#outbound) IP-címmel azon régiók alapján, ahol a logikai alkalmazások léteznek. Ezek a címek a szakasz **kimenő** fejlécében jelennek meg, és régiónként vannak rendezve. Az integrációs szolgáltatási környezetben (ISE) futó Logic apps esetén győződjön meg arról, hogy [megnyitotta ezeket a portokat](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
 
-Az integrációs szolgáltatási környezetben (ISE) futó Logic apps esetén győződjön meg arról, hogy megnyitotta [ezeket](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)a portokat.
-
-A [Azure Government](../azure-government/documentation-government-overview.md) és az [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)esetében jelenleg nem érhetők el az összekötők fenntartott IP-címei.
+Egyéni összekötők, [Azure Government](../azure-government/documentation-government-overview.md)és [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)esetén a rögzített vagy fenntartott IP-címek nem érhetők el.
 
 > [!IMPORTANT]
 >
-> Ha rendelkezik meglévő konfigurációkkal, a lehető leghamarabb frissítse őket a **2018. szeptember 1. előtt** , így azok beletartoznak és egyeznek a listában szereplő IP-címekkel azokon a régiókban, ahol a logikai alkalmazások léteznek.
+> Ha rendelkezik meglévő konfigurációkkal, a **lehető leghamarabb frissítse őket a 2018. szeptember 1. előtt** , így azok beletartoznak és egyeznek a listában szereplő IP-címekkel azokon a régiókban, ahol a logikai alkalmazások léteznek.
 
 Logic Apps nem támogatja közvetlenül az Azure Storage-fiókokhoz való csatlakozást a tűzfalakon keresztül. A Storage-fiókok eléréséhez használja az alábbi lehetőségek egyikét:
 

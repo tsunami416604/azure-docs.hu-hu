@@ -1,7 +1,7 @@
 ---
 title: Mélyreható tanulás és gépi tanulás
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg a Deep learning és a gépi tanulás közötti kapcsolatot, valamint azt, hogy azok hogyan illeszkednek a mesterséges intelligencia kategóriába. Ez a cikk azt ismerteti, Hogyan oldhatók meg a Deep learning olyan forgatókönyvek, mint például a csalások észlelése, a hang-és Arcfelismerés, a hangulat-elemzés és az idősorozat-előrejelzés.
+description: Ismerkedjen meg a Deep learning és a Machine learning szolgáltatással, valamint a mesterséges intelligenciával kapcsolatos fogalmakkal. A mélyreható tanulás olyan helyzetekben alkalmazható, mint például a csalások észlelése, a hang-és Arcfelismerés, a hangulat-elemzés és az idősorozat-előrejelzés.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,94 +9,106 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 5301be493ef22fc2d74cc337d88b04caf391fdaa
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 3b0546c42ddd5252b35d1a77d7b152733beec233
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982813"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240960"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Mélyreható tanulás és gépi tanulás
 
-Ez a cikk segít megérteni a Deep learning és a Machine learning közötti kapcsolatot. Megtudhatja, hogyan hasonlítja össze a két fogalmat, és hogyan illeszkednek a mesterséges intelligencia tágabb kategóriába. Végül a cikk leírja, hogyan alkalmazhatók a mély tanulás a valós forgatókönyvekre, például a csalások észlelésére, a hang-és Arcfelismerés, a hangulat-elemzés és az idősorozat-előrejelzés alapján.
+Ez a cikk segítséget nyújt a Deep learning és a Machine learning összehasonlításában. Megtudhatja, hogyan hasonlítja össze a két fogalmat, és hogyan illeszkednek a mesterséges intelligencia tágabb kategóriába. A cikk azt is leírja, hogyan alkalmazhatók a mély tanulás olyan valós forgatókönyvekre, mint például a csalások észlelése, a hang-és Arcfelismerés, a hangulat-elemzés és az idősorozat-előrejelzés.
 
-## <a name="how-do-deep-learning-machine-learning-and-ai-relate-to-one-another"></a>Hogyan kapcsolódnak egymáshoz a mély tanulás, a gépi tanulás és az AI?
+## <a name="deep-learning-machine-learning-and-ai"></a>Mély tanulás, gépi tanulás és AI
 
 ![Kapcsolati diagram: AI vs. Machine learning és Deep learning](./media/concept-deep-learning-vs-machine-learning/ai-vs-machine-learning-vs-deep-learning.png)
 
-A Deep learning és a Machine learning és a közötti különbség megismerése érdekében AI, ismerkedjen meg a következő tanulmányi mezőkkel:
+Vegye figyelembe az alábbi definíciókat a Deep learning és a Machine learning megismerése érdekében. AI
 
-- A **Deep learning** a gépi tanulás egy részhalmaza, amely lehetővé teszi, hogy a gép betanítsa magát a mesterséges neurális hálózatokon. Ebben az esetben a _tanulási folyamatot_ mélynek nevezzük, mert a mesterséges neurális hálózatok szerkezete több bemeneti, kimeneti és rejtett rétegből áll. Minden réteg olyan egységeket tartalmaz, amelyek átalakítja a bemeneti adatokat olyan adatokba, amelyeket a következő réteg használhat egy bizonyos prediktív feladat végrehajtásához. Ennek a struktúrának köszönhetően a gépek saját adatfeldolgozáson keresztül képesek megtanulni.
+- A **Deep learning** a gépi tanulás egy olyan részhalmaza, amely mesterséges neurális hálózatokon alapul. A _tanulási folyamat_ _mély_ , mert a mesterséges neurális hálózatok szerkezete több bemeneti, kimeneti és rejtett rétegből áll. Minden réteg olyan egységeket tartalmaz, amelyek átalakítja a bemeneti adatokat olyan adatokba, amelyeket a következő réteg használhat egy adott prediktív feladathoz. Ennek a struktúrának köszönhetően a gépek saját adatfeldolgozással is megismerhetik.
 
-- A **gépi tanulás** a mesterséges intelligencia olyan részhalmaza, amely olyan technikákat (például mély tanulást) tartalmaz, amelyek lehetővé teszik a gépek számára, hogy a tapasztalatok alapján javítsák a feladatokat. Ebben az esetben a _tanulási folyamat_ a következő lépésektől függ:
+- A **gépi tanulás** a mesterséges intelligencia olyan részhalmaza, amely technikákat használ (például a mély tanulást), amely lehetővé teszi a gépek számára, hogy a feladatok fejlesztéséhez használják a felhasználói élményt. A _tanulási folyamat_ a következő lépéseken alapul:
 
-    1. Egy algoritmust az adatokkal több információ megadásával (például a szolgáltatások kinyerésének elindításával) kell megetetni.
-    2. Ezekkel az értékekkel betaníthatja a modelleket.
-    3. Tesztelje és telepítse a modellt.
-    4. Egy adott automatizált prediktív feladat elvégzéséhez használja fel a központilag telepített modellt.
+   1. Adatcsatorna átalakítása egy algoritmusba. (Ebben a lépésben további információkat adhat meg a modellhez, például a szolgáltatások kinyerésének végrehajtásával.)
+   1. Ezekkel az értékekkel betaníthatja a modelleket.
+   1. Tesztelje és telepítse a modellt.
+   1. Az üzembe helyezett modell használata automatizált prediktív feladathoz. (Más szóval hívja meg és használja az üzembe helyezett modellt a modell által visszaadott előrejelzések fogadásához.)
 
-- A **mesterséges intelligencia (AI)** olyan technika, amely lehetővé teszi a számítógépek számára az emberi intelligenciát. A gépi tanulást is magában foglalja. Fontos megérteni az AI és a _Machine learning és a Deep learning_közötti kapcsolatot: A gépi tanulás lehetővé teszi a mesterséges intelligencia elérését, ami a gépi tanulás és a mélyreható tanulási technikák használatával olyan számítógépes rendszerek és alkalmazások készítésére használható, amelyek az emberi intelligenciához gyakran kapcsolódó feladatokat hajthatnak végre, például vizuális észlelés, beszédfelismerés, döntéshozatal és fordítás nyelvek között.
+- A **mesterséges intelligencia (AI)** olyan technika, amely lehetővé teszi a számítógépek számára az emberi intelligenciát. A gépi tanulást is magában foglalja. 
+ 
+Fontos megérteni az AI, a gépi tanulás és a mély tanulás közötti kapcsolatot. A gépi tanulás a mesterséges intelligencia elérésének módja. A gépi tanulás és a mélyreható tanulási technikák használatával olyan számítógéprendszer és alkalmazások hozhatók létre, amelyek az emberi intelligenciához gyakran társított feladatokat látnak el. A feladatok közé tartoznak a vizuális észlelés, a beszédfelismerés, a döntéshozatal és a nyelvi fordítás.
 
-## <a name="comparison-of-deep-learning-vs-machine-learning"></a>A Deep learning és a Machine learning összehasonlítása
+## <a name="techniques-of-deep-learning-vs-machine-learning"></a>A Deep learning és a Machine learning módszerei 
 
-Most, hogy áttekintette a Machine learning és a Deep learning áttekintését, hasonlítsa össze a két technikát. Gépi tanulás esetén az algoritmusnak azt kell megadnia, hogyan lehet pontos előrejelzést készíteni további információk megadásával. míg a mély tanulás esetében az algoritmus képes megtanulni, hogy a mesterséges neurális hálózati struktúrának köszönhetően a saját adatfeldolgozása révén.
+Most, hogy áttekintette a Machine learning és a Deep learning áttekintését, vesse össze a két technikát. A gépi tanulásban az algoritmusnak azt kell megadnia, hogyan lehet pontos előrejelzést készíteni a további információk felhasználásával (például a szolgáltatások kinyerésének elvégzésével). A Deep learningben az algoritmus megtudhatja, hogyan készíthet pontos előrejelzést a saját adatfeldolgozásával, a mesterséges neurális hálózati struktúra köszönhetően.
 
-Az alábbi táblázat részletesebben összehasonlítja a két technikát:
+A következő táblázat részletesebben összehasonlítja a két technikát:
 
 | |Minden gépi tanulás |Csak mély tanulás|
 |---|---|---|
-|  **Adatpontok száma** | Használhat a felhasználók által biztosított kis adatmennyiségeket | Nagy mennyiségű betanítási adattal kell rendelkeznie a rövid következtetések elvégzéséhez |
-|  **Hardver függőségei** | Az alacsony végű gépeken is működhet. Nincs szükség nagy mennyiségű számítási teljesítményre | A magas végú gépektől függ. Természeténél fogva nagy számú mátrix-szorzási műveletet végez. Ezek a műveletek hatékonyan optimalizálható GPU használatával |
-|  **Featurization folyamat** | A funkciók pontos azonosítását és létrehozását igénylik a felhasználók számára | Megismerheti az adatok magas szintű funkcióit, és önmagában új szolgáltatásokat hoz létre |
-|  **Tanulási megközelítés** | Kis méretűre osztja a tevékenységeket, majd egyetlen következtetésbe egyesítheti a kapott eredményeket. | Feloldja a problémát egy teljes körű alapon |
-|  **Végrehajtási idő** | Viszonylag kevesebb időt vesz igénybe a betanítás, néhány másodperctől néhány órára | Szokatlanul hosszú időt vesz igénybe a betanítás során, mert számos paraméter szerepel egy mély tanulási algoritmusban |
-|  **Kimenet** | A kimenet általában numerikus érték, például pontszám vagy besorolás | A kimenet bármi lehet egy pontszámból, egy szövegből, egy elemből vagy egy hangból |
+|  **Adatpontok száma** | A a felhasználók által biztosított kis adatmennyiségeket is használhatja. | Nagy mennyiségű betanítási adattal kell rendelkeznie a rövid következtetések elvégzéséhez. |
+|  **Hardver függőségei** | Az alacsony végű gépeken is működhet. Nincs szükség nagy mennyiségű számítási teljesítményre. | A magas végú gépektől függ. Természeténél fogva nagy számú mátrix-szorzási műveletet végez. A GPU képes hatékonyan optimalizálni ezeket a műveleteket. |
+|  **Featurization folyamat** | A funkciók pontos azonosítását és létrehozását igénylik a felhasználók számára. | Megismerheti az adatok magas szintű funkcióit, és saját maga is létrehoz új szolgáltatásokat. |
+|  **Tanulási megközelítés** | A feladatokat kis méretűre osztja, majd egyetlen következtetésbe ötvözi a kapott eredményeket. | A probléma teljes körű megoldás. |
+|  **Végrehajtási idő** | Viszonylag kevés időt vesz igénybe a betanítás, néhány másodperctől néhány órára. | Szokatlanul hosszú ideig tart a betanítás, mert a Deep learning algoritmus számos paramétert foglal magában. |
+|  **Kimenet** | A kimenet általában numerikus érték, például pontszám vagy besorolás. | A kimenet szöveg, pontszám, elem vagy hang lehet. |
 
-## <a name="deep-learning-use-cases-what-problems-does-it-solve"></a>Mély tanulási használati esetek: Milyen problémák megoldására?
+## <a name="deep-learning-use-cases"></a>Mély tanulási használati esetek
 
-A mesterséges neurális hálózati struktúra miatt a Deep learning kiemelkedik a strukturálatlan adatmennyiségek, például képek, hangok, videók és szövegek azonosítására. Emiatt gyorsan át lehet alakítani számos iparágat, például az egészségügyet, az energiát, a fintechnek, a szállítást és másokat a hagyományos üzleti folyamatok újragondolása érdekében. A Deep learning leggyakoribb alkalmazásai a következő bekezdésekben olvashatók.
+A mesterséges neurális hálózati struktúra miatt a Deep learning kiemelkedik a strukturálatlan adat, például képek, hang, videó és szöveg mintázatának azonosítására. Emiatt a Deep learning gyorsan átalakítja számos iparágat, például az egészségügyet, az energiát, a pénzügyt és a szállítást. Ezek az iparágak mostantól a hagyományos üzleti folyamatokat gondolják át. 
+
+A Deep learning leggyakoribb alkalmazásai a következő bekezdésekben olvashatók.
 
 ### <a name="named-entity-recognition"></a>Nevesített entitások felismerése
 
-A mélyreható tanulási hálózatok egyike a nevesített entitások felismerése, amely a strukturálatlan, címkézetlen adatok bizonyos típusai, például személyek, helyek, vállalatok vagy dolgok kinyerésének módja. Ezek az adatok egy strukturált sémában tárolhatók, és a címek listájának összeállítására szolgálnak, illetve az Identity Validation Engine-nek is.
+A mélyreható tanulási hálózatok egyikének használata a nevesített entitások felismerése, amely bizonyos típusú információk kinyerését strukturálatlan és címkézetlen adatokból. Ezek az adatok lehetnek személyek, helyek, vállalatok vagy dolgok. Az adatok egy strukturált sémában tárolhatók, és a címek listájának összeállíthatók, vagy egy Identity Validation Engine viszonyítási céljaként szolgálnak.
 
 ### <a name="object-detection"></a>Objektumészlelés
 
-A Deep learning számos objektum-észlelési használati esettel lett alkalmazva. Az objektumok észlelése tulajdonképpen egy kétrészes folyamat: a képbesorolás, majd a rendszerkép honosítása. A rendszerkép besorolása határozza meg, hogy a képen milyen objektumok láthatók, például egy autó vagy egy személy, míg a képhonosítás megadja az objektumok adott helyét. Az objektumok észlelése már használatban van a játékokban, a kiskereskedelemben, a turizmusban és az önkiszolgáló személygépkocsi-iparban.
+A Deep learning számos objektum-észlelési használati esettel lett alkalmazva. Az objektumok észlelése két részből áll: a képek besorolása, majd a képek honosítása. A rendszerkép _besorolása_ azonosítja a rendszerkép objektumait, például az autókat vagy a személyeket. A rendszerkép _honosítása_ megadja az objektumok adott helyét. 
+
+Az objektumok észlelése már használatban van olyan iparágakban, mint például a játékok, a kiskereskedelem, a turizmus és az önkiszolgáló autók.
 
 ### <a name="image-caption-generation"></a>Képfelirat létrehozása
 
-A képfelismerési feladathoz hasonlóan a képfelirat is az a feladat, ahol egy adott rendszerkép esetében a rendszernek egy olyan feliratot kell létrehoznia, amely leírja a rendszerkép tartalmát. Ha a fényképek objektumainak észleléséhez és az objektumok címkéjének létrehozásához azt láthatja, hogy a következő lépés a címkék egy koherens mondat-leírásba való bekapcsolása. A rendszerek általában a nagy mennyiségű, egyidejű neurális hálózatok használatát igénylik az objektumok észleléséhez a fényképekben, majd egy visszatérő neurális hálózatot (RNN), amely egy koherens mondatba kapcsolja a címkéket.
+A rendszerkép-feliratozásban, az adott képhez hasonlóan a képfeliratok esetében a rendszernek egy olyan feliratot kell létrehoznia, amely leírja a rendszerkép tartalmát. Ha a fényképekben objektumokat tud felderíteni és címkézni, a következő lépés a címkék leíró, koherens mondatba való bekapcsolása. A képfeliratos rendszerek általában nagyon nagy méretű, párhuzamos neurális hálózatokat használnak a fényképek objektumainak észleléséhez, majd egy visszatérő neurális hálózat (RNN) használatával, hogy a címkéket következetes mondatokra fordítsa.
 
 ### <a name="machine-translation"></a>Gépi fordítás
 
-A gépi fordítás szavakat, kifejezéseket vagy mondatokat használ az egyik nyelvről, és automatikusan lefordítja őket egy másik nyelvre. Az automatikus gépi fordítás sok időt vett igénybe, de a Deep learning két konkrét területen érhető el: a szöveg automatikus fordítása és a képek automatikus fordítása. A megfelelő adatátalakítással a mély hálózat képes megérteni a szöveg-, hang-és vizuális jeleket. A gépi fordítás használatával azonosíthatók a hangtöredékek a nagyobb hangfájlokban, és szövegként is áthelyezhetők a kimondott szövegből vagy képekből.
+A gépi fordítás szavakat, kifejezéseket vagy mondatokat használ az egyik nyelvről, és automatikusan lefordítja őket egy másik nyelvre. Az automatikus gépi fordítás sok időt vett részt, de a Deep learning két konkrét területen látványos eredményeket érhet el: a szöveg automatikus fordítását (és a beszéd szövegének fordítását), valamint a képek automatikus fordítását. 
+
+A megfelelő adatátalakítással a Deep Network képes értelmezni a szöveg-, hang-és vizuális jeleket. A gépi fordítás használatával azonosíthatók a hangtöredékek a nagyobb hangfájlokban, és szövegként is áthelyezhetők a kimondott szövegből vagy képekből.
 
 ### <a name="text-analytics"></a>Szövegelemzés
 
-Az e-Discovery egy fontos feladat, amelyet a Deep learning képes elvégezni. A vállalatok mélyreható, tanuláson alapuló szöveges elemzéseket használnak a bennfentes kereskedelmi észleléshez és a kormányzati előírások betartásához. A fedezeti alapok a Text Analytics használatával részletezik a nagyméretű dokumentumok tárházait, így betekintést nyerhetnek a jövőbeli befektetési teljesítményre és piaci hangulatra. A Deep learning-alapú szöveges elemzések esetében a használati eset a nagy mennyiségű szöveges adat elemzésére és összesítések készítésére való képességére mutat.
+A Deep learning egyik fontos feladata az e-felderítés. A vállalatok a mélyreható tanuláson alapuló szöveges elemzéseket használnak a bennfentes kereskedelem és a kormányzati szabályozásoknak való megfelelés észlelésére. A fedezeti alapok a Text Analytics használatával részletezik a nagyméretű dokumentumok tárházait, hogy betekintést nyerjenek a jövőbeli befektetési teljesítményre és piaci hangulatra. A mélyreható tanuláson alapuló szöveges elemzések esetében a használati eset nagy mennyiségű szöveges adat elemzését és elemzések készítését, illetve összesítések elvégzését teszi lehetővé.
 
-## <a name="what-are-artificial-neural-networks"></a>Mik azok a mesterséges neurális hálózatok?
+## <a name="artificial-neural-networks"></a>Mesterséges neurális hálózatok
 
-A mesterséges neurális hálózatokat összekapcsolt csomópontok rétegei alkotják. A Deep learning-modellek nagyon nagy számú réteggel rendelkező neurális hálózatokat használnak. A legnépszerűbb mesterséges neurális hálózati tipológiák az alábbiakban tárgyaljuk.
+A mesterséges neurális hálózatokat összekapcsolt csomópontok rétegei alkotják. A Deep learning-modellek nagy mennyiségű réteget használó neurális hálózatokat használnak. 
+
+A következő fejezetek a legnépszerűbb mesterséges neurális hálózati tipológiák ismertetik.
 
 ### <a name="feedforward-neural-network"></a>Feedforward neurális hálózat
 
-A feedforward neurális hálózat a mesterséges neurális hálózat legalapvetőbb típusa, amelyben az információ csak egy irányba utazik a bemeneti rétegből a kimeneti rétegbe. A Feedforward neurális hálózatokat a rendszer a rejtett rétegek sorozatán keresztül alakítja át. Minden réteg idegsejtekből tevődik össze, ahol minden réteg teljes mértékben csatlakozik a rétegben lévő összes neuronokhoz. Végül van egy utolsó teljesen csatlakoztatott réteg – a kimeneti réteg, amely a generált előrejelzéseket jelöli.
+A feedforward neurális hálózat a mesterséges neurális hálózat legalapvetőbb típusa. Egy feedforward-hálózatban az információ csak egy irányban halad át a bemeneti rétegből a kimeneti rétegbe. A Feedforward neurális hálózatokat a rendszer a rejtett rétegek sorozatán keresztül alakítja át. Minden réteg idegsejtekből tevődik össze, és minden réteg teljesen csatlakoztatva van a rétegben lévő összes neuronokhoz. Az utolsó teljesen csatlakoztatott réteg (a kimeneti réteg) a generált előrejelzéseket jelöli.
 
 ### <a name="recurrent-neural-network"></a>Visszatérő neurális hálózat
 
-Az ismétlődő neurális hálózatok egy szélesebb körben használt mesterséges neurális hálózat, amely a rétegek kimenetének mentésének és a bemeneti rétegbe való visszaetetésének elvén működik, így segítve a réteg eredményének előrejelzésében. Ezek a neurális hálózatok nagyobb tanulási képességekkel rendelkeznek, és széles körben használják az összetettebb feladatokhoz, például a kézírásos vagy a nyelvi felismeréshez.
+Az ismétlődő neurális hálózatok széles körben használják a mesterséges neurális hálózatot. Ezek a hálózatok elmentik egy réteg kimenetét, és visszaküldik a bemeneti rétegnek a réteg eredményének előrejelzéséhez. Az ismétlődő neurális hálózatok nagy tanulási képességekkel rendelkeznek. Ezek széles körben használatosak olyan összetett feladatokhoz, mint például a kézírásos tanulás és a nyelv felismerése.
 
 ### <a name="convolutional-neural-networks"></a>Összetartozó neurális hálózatok
 
-A többrészes neurális hálózat különösen hatékony mesterséges neurális hálózat, amely egyedi architektúrát mutat be. Először a rétegek három dimenzióban vannak rendszerezve: szélesség, magasság és mélység. Ezen túlmenően a neuronok az egyik rétegben nem csatlakoznak a következő rétegben lévő összes neuronokhoz, hanem csak egy kis régióhoz. Végül a végső kimenetet a rendszer a mélységi dimenzió mentén rendezi a valószínűségi pontszámok egyetlen vektorára. Ezek a neurális hálózatok olyan területeken lettek felhasználva, mint a képfelismerés és a besorolás.
+A többrendszeres neurális hálózat egy különösen hatékony mesterséges neurális hálózat, amely egyedi architektúrát mutat be. A rétegek három dimenzióban vannak rendezve: szélesség, magasság és mélység. Az egyik rétegben lévő neuronok nem a következő rétegben lévő összes neuronokhoz csatlakoznak, hanem csak a réteg neuronok kis régiójához. A végső kimenetet a rendszer a mélységi dimenzió mentén szervezett valószínűségi pontszámok egyetlen vektorára csökkenti. 
+
+A többrészes neurális hálózatok olyan területeken lettek felhasználva, mint a képfelismerés és a besorolás.
 
 ## <a name="next-steps"></a>További lépések
 
-A következő cikkek bemutatják, hogyan használhatja a Deep learning-technológiát a [Azure Machine learning szolgáltatásban](/azure/machine-learning/service/):
+A következő cikkek bemutatják, hogyan használhatja a Deep learning-technológiát a [Azure Machine learning szolgáltatásban](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri):
 
-- [Kézzel írt számjegyek osztályozása TensorFlow-modellel](how-to-train-tensorflow.md)
-- [Kézzel írt számjegyek besorolása TensorFlow-becsléssel és kerasz](how-to-train-keras.md)
-- [Rendszerképek besorolása Pytorch-modellel](how-to-train-pytorch.md)
-- [Kézzel írt számjegyek besorolása egy Chainer-modellel](how-to-train-pytorch.md)
+- [Kézzel írt számjegyek osztályozása TensorFlow-modell használatával](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+- [Kézzel írt számjegyek osztályozása TensorFlow-kalkulátor és kerasz használatával](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
+- [Rendszerképek osztályozása Pytorch-modell használatával](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
+- [Kézzel írt számjegyek besorolása egy Láncer-modell használatával](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)

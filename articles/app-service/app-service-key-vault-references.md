@@ -8,15 +8,15 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 30bd7c68ae1c88aba288b515d0ec32581f90b868
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b33f0dec9e6ec685b19e01ce82cfe4adec88b575
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088189"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258604"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Key Vault referenciák használata App Service és Azure Functionshoz (előzetes verzió)
 
@@ -36,7 +36,7 @@ A Key Vault titkainak beolvasásához létre kell hoznia egy tárolót, és enge
    > [!NOTE] 
    > Key Vault referenciák jelenleg csak a rendszer által hozzárendelt felügyelt identitásokat támogatják. Felhasználó által hozzárendelt identitások nem használhatók.
 
-1. Hozzon létre egy [hozzáférési szabályzatot](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) a Key Vaultban a korábban létrehozott alkalmazás-identitáshoz. A "Get" Secret engedély engedélyezése a szabályzathoz. Ne konfigurálja a "meghatalmazott alkalmazást" vagy `applicationId` a beállításokat, mivel ez nem kompatibilis a felügyelt identitással.
+1. Hozzon létre egy [hozzáférési szabályzatot a Key Vaultban](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott alkalmazás-identitáshoz. A "Get" Secret engedély engedélyezése a szabályzathoz. Ne konfigurálja a "meghatalmazott alkalmazást" vagy `applicationId` a beállításokat, mivel ez nem kompatibilis a felügyelt identitással.
 
     A Key vaultban való hozzáférés biztosítása egy egyszeri művelet, amely minden Azure-előfizetésnél azonos marad. Azt is megteheti, hogy tetszőleges számú tanúsítványt telepít. 
 
@@ -184,3 +184,27 @@ A psuedo-sablon például a következőhöz hasonló lehet:
 
 > [!NOTE] 
 > Ebben a példában a verziókövetés központi telepítése az alkalmazásbeállításoktől függ. Ez általában nem biztonságos viselkedés, mivel az Alkalmazásbeállítások frissítése aszinkron módon történik. Mivel azonban az `WEBSITE_ENABLE_SYNC_UPDATE_SITE` alkalmazás beállítása is megtörtént, a frissítés szinkronban van. Ez azt jelenti, hogy a verziókövetés központi telepítése csak akkor kezdődik el, ha az Alkalmazásbeállítások teljes mértékben frissültek.
+
+## <a name="troubleshooting-key-vault-references"></a>Hibaelhárítási Key Vault referenciái
+
+Ha egy hivatkozás nem oldható fel megfelelően, a rendszer a hivatkozási értéket fogja használni. Ez azt jelenti, hogy az Alkalmazásbeállítások esetében létrejön egy környezeti változó, amelynek az `@Microsoft.KeyVault(...)` értéke szintaxissal rendelkezik. Ez azt eredményezheti, hogy az alkalmazás hibát jelez, mivel egy adott struktúra titkát várta.
+
+Ez általában a [Key Vault hozzáférési házirend](#granting-your-app-access-to-key-vault)helytelen konfigurációja miatt fordul elő. Az is előfordulhat azonban, hogy egy titkos kulcs már nem létezik, vagy szintaktikai hiba történt a hivatkozásban.
+
+Ha a szintaxis helyes, a hiba egyéb okait úgy tekintheti meg, ha ellenőrzi a jelenlegi feloldási állapotot egy beépített detektor használatával.
+
+### <a name="using-the-detector-for-app-service"></a>A App Service detektorának használata
+
+1. A portálon navigáljon az alkalmazáshoz.
+2. Válassza **a Prolems diagnosztizálása és megoldása**lehetőséget.
+3. Válassza a **rendelkezésre állás és teljesítmény** lehetőséget, majd válassza a **webalkalmazás lehetőséget.**
+4. Keresse meg **Key Vault az Alkalmazásbeállítások diagnosztikát** , és kattintson a **További információ**elemre.
+
+
+### <a name="using-the-detector-for-azure-functions"></a>A Azure Functions detektorának használata
+
+1. A portálon navigáljon az alkalmazáshoz.
+2. Navigáljon a **platform szolgáltatásaihoz.**
+3. Válassza **a Prolems diagnosztizálása és megoldása**lehetőséget.
+4. Válassza a **rendelkezésre állás és teljesítmény** lehetőséget, majd válassza a **Function app Down vagy a jelentéskészítési hibák lehetőséget.**
+5. Kattintson **Key Vault alkalmazás-beállítások diagnosztika** elemre.

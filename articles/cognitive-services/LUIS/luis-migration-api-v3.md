@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: diberry
-ms.openlocfilehash: 82285b27822b6c93f8efc24579bb99c308649ac0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5b0516f3d610c0a518d6afc461dddebfb68a7c5d
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932673"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213515"
 ---
 # <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Előzetes verzió: Migrálás a 3. x verziójú API-ra a LUIS-alkalmazásokhoz
 
@@ -164,7 +164,7 @@ const score = intents[topIntentName];
 A válasz JSON-sémájának módosítása az alábbiakat teszi lehetővé:
 
 * Törölje az eredeti Kimondás `query`és a visszaadott `prediction`előrejelzés közötti különbséget.
-* Egyszerűbb programozott hozzáférés az előre jelzett adatértékekhez. A v2-ben a tömbön keresztüli számbavétel helyett a leképezések és az entitások nevével érheti el az értékeket. Az előre jelzett entitási szerepkörök esetében a rendszer a szerepkör nevét adja vissza, mert az a teljes alkalmazásban egyedi.
+* Egyszerűbb programozott hozzáférés az előre jelzett adatértékekhez. A v2-ben a tömbön keresztüli számbavétel helyett a szándékok és az entitások nevével is elérheti az értékeket. Az előre jelzett entitási szerepkörök esetében a rendszer a szerepkör nevét adja vissza, mert az a teljes alkalmazásban egyedi.
 * Az adattípusok, ha meg vannak határozva, figyelembe veszik azokat. A numerikus értékeket a rendszer már nem adja vissza karakterláncként.
 * Az első prioritású előrejelzési információk és az `$instance` objektumban visszaadott további metaadatok megkülönböztetése. 
 
@@ -223,7 +223,7 @@ A v2-ben az entitás neve azonosítja az entitás _nevét_ az objektum tulajdons
 ]
 ```
 
-A v3-as verzióban az entitásra az _entitás szerepkör_ hivatkozik, ha az előrejelzés a következő szerepkörre vonatkozik:
+A v3-as verzióban az entitásra az _entitás szerepkör_hivatkozik, ha az előrejelzés a következő szerepkörre vonatkozik:
 
 ```JSON
 "entities":{
@@ -418,7 +418,7 @@ A következő JSON-törzsbe való küldéssel adjon hozzá egy új, szinonimákk
     },
     "dynamicLists": [
         {
-            "listEntityName":"ProductList",
+            "listEntity*":"ProductList",
             "requestLists":[
                 {
                     "name": "Azure Cognitive Services",

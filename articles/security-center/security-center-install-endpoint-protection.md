@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4274b3684a2e9e79385a561b1cad426b4ffd954e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 58a220192d6a02c6ad66094e8421405578a82a01
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609941"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231301"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Az Endpoint Protection szolgáltatással kapcsolatos problémák kezelése Azure Security Center
 Azure Security Center figyeli a kártevők elleni védelem állapotát, és jelentést készít az Endpoint Protection-problémák paneljén. Security Center kiemeli a problémákat, például az észlelt fenyegetéseket és a nem megfelelő védelmet, amely lehetővé teszi, hogy a virtuális gépek (VM) és a számítógépek sebezhetőek legyenek a kártevők elleni fenyegetésekkel szemben. Az **Endpoint Protection-problémák**alatt lévő információk használatával meghatározhatja az azonosított problémák megoldására szolgáló tervet.
@@ -31,12 +31,12 @@ Security Center a következő Endpoint Protection-problémákat jelenti:
 - Endpoint Protection állapota:
 
   - Az aláírás elavult – antimalware-megoldás van telepítve ezekre a virtuális gépekre és számítógépekre, de a megoldás nem rendelkezik a legújabb antimalware-aláírásokkal.
-  - Nincs valós idejű védelem – antimalware-megoldás van telepítve ezekre a virtuális gépekre és számítógépekre, de nincs beállítva a valós idejű védelemre.   Lehet, hogy a szolgáltatás le van tiltva, vagy előfordulhat, hogy a Security Center nem tudja megszerezni az állapotot, mert a megoldás nem támogatott. A támogatott megoldások listáját lásd: [partner-integráció](security-center-os-coverage.md#supported-endpoint-protection-solutions) .
+  - Nincs valós idejű védelem – antimalware-megoldás van telepítve ezekre a virtuális gépekre és számítógépekre, de nincs beállítva a valós idejű védelemre.   Lehet, hogy a szolgáltatás le van tiltva, vagy előfordulhat, hogy a Security Center nem tudja megszerezni az állapotot, mert a megoldás nem támogatott. A támogatott megoldások listáját lásd: [partner-integráció](security-center-services.md#endpoint-supported) .
   - Nem jelentéskészítés – a rendszer egy antimalware-megoldást telepít, de nem küld jelentést.
   - Ismeretlen – az antimalware megoldás telepítve van, de az állapota ismeretlen, vagy ismeretlen hibát jelentett.
 
     > [!NOTE]
-    > Lásd: a [biztonsági megoldások integrálása](security-center-os-coverage.md#supported-endpoint-protection-solutions) a Security Center integrált Endpoint Protection biztonsági megoldások listájára.
+    > Lásd: a [biztonsági megoldások integrálása](security-center-services.md#endpoint-supported) a Security Center integrált Endpoint Protection biztonsági megoldások listájára.
     >
     >
 

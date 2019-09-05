@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 53f8742df0a03327069da083e6cb46a7c03118c1
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 103d09da3fedf9c31d4e5255456e63cab34bc0ee
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68773061"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258583"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számítási feladat futtatása Azure Batch a .NET API használatával
 
@@ -153,7 +153,7 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnection
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
 
-Az alkalmazás létrehoz egy [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) objektumot a Batch szolgáltatásban lévő készletek, feladatok és tevékenységek létrehozásához és kezeléséhez. A példákban szereplő Batch-ügyfél megosztott kulcsos hitelesítést használ. A Batch a Azure Active Directoryon [](batch-aad-auth.md) keresztüli hitelesítést is támogatja az egyes felhasználók vagy a felügyelet nélküli alkalmazások hitelesítéséhez.
+Az alkalmazás létrehoz egy [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) objektumot a Batch szolgáltatásban lévő készletek, feladatok és tevékenységek létrehozásához és kezeléséhez. A példákban szereplő Batch-ügyfél megosztott kulcsos hitelesítést használ. A Batch a [Azure Active Directoryon](batch-aad-auth.md) keresztüli hitelesítést is támogatja az egyes felhasználók vagy a felügyelet nélküli alkalmazások hitelesítéséhez.
 
 ```csharp
 BatchSharedKeyCredentials sharedKeyCredentials = new BatchSharedKeyCredentials(BatchAccountUrl, BatchAccountName, BatchAccountKey);
@@ -167,7 +167,7 @@ using (BatchClient batchClient = BatchClient.Open(sharedKeyCredentials))
 Az alkalmazás továbbítja a `CreateContainerIfNotExistAsync` objektumot a `blobClient` metódusnak, hogy az létrehozzon egy Storage-tárolót a bemeneti MP4-fájlokhoz, valamint egy tárolót a tevékenység kimenetének.
 
 ```csharp
-CreateContainerIfNotExistAsync(blobClient, inputContainerName;
+CreateContainerIfNotExistAsync(blobClient, inputContainerName);
 CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 ```
 

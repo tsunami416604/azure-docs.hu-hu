@@ -7,13 +7,13 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: cc28cf590a1fd2c3fdfe8651f136526188801c04
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 09/01/2019
+ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615645"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241247"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Kapcsolódás Azure Cosmos DB Cassandra API a Sparkból
 
@@ -29,7 +29,7 @@ Ez a cikk többek között a Sparkból való Azure Cosmos DB Cassandra API-integ
 
 * **Azure Cosmos DB segítő könyvtár a Cassandra APIhoz:** A Spark-összekötőn kívül szüksége lesz egy másik, [Azure-Cosmos-Cassandra-Spark-Helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) nevű könyvtárra Azure Cosmos db. Ez a könyvtár tartalmazza az egyéni kapcsolatok gyárát, és újrapróbálkozási házirend-osztályokat tartalmaz.
 
-  Az újrapróbálkozási szabályzat a (z) Azure Cosmos DBban úgy van konfigurálva, hogy kezelje a 429-es HTTP-állapotkódot ("kérelmek aránya – nagy") A Azure Cosmos DB Cassandra API lefordítja ezeket a kivételeket a Cassandra Native protokollon túlterhelt hibákra, és újra tud próbálkozni a visszalépéssel. Mivel a Azure Cosmos DB kiépített átviteli sebességi modellt használ, a kérelmek arányának korlátozása kivételeket eredményez, ha a bejövő és a kimenő forgalom aránya növekszik. Az újrapróbálkozási szabályzat védi a Spark-feladatokat olyan adatugrások ellen, amelyek egy pillanatra túllépik a gyűjteményhez lefoglalt átviteli sebességet.
+  Az újrapróbálkozási szabályzat a (z) Azure Cosmos DBban úgy van konfigurálva, hogy kezelje a 429-es HTTP-állapotkódot ("kérelmek aránya – nagy") A Azure Cosmos DB Cassandra API lefordítja ezeket a kivételeket a Cassandra Native protokollon túlterhelt hibákra, és újra tud próbálkozni a visszalépéssel. Mivel a Azure Cosmos DB kiépített átviteli sebességi modellt használ, a kérelmek arányának korlátozása kivételeket eredményez, ha a bejövő és a kimenő forgalom aránya növekszik. Az újrapróbálkozási szabályzat védi a Spark-feladatokat olyan adattüskékkel szemben, amelyek egy pillanatra túllépik a tárolóhoz lefoglalt átviteli sebességet.
 
   > [!NOTE] 
   > Az újrapróbálkozási szabályzat csak a pillanatnyi tüskékkel tudja védeni a Spark-feladatokat. Ha még nem konfigurálta a számítási feladat futtatásához szükséges RUs-t, akkor az újrapróbálkozási szabályzat nem alkalmazható, és az újrapróbálkozási szabályzat osztálya átadja a kivételt.

@@ -4,7 +4,7 @@ description: Ismerje meg a machine learning-eszközöket és keretrendszereket e
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: e8876306e4ffbd0fa9a8aafc6d5d757fd3c9c614
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.author: vijetaj
+ms.openlocfilehash: 3b05d076a61593e8c34ce642f2fe2fd137e07109
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502093"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565241"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Machine learning és adatelemzési eszközök
 Az Azure Data Science Virtual Machines rendelkezik eszközök széles skáláját, és -kódtárak a machine learning (gépi tanulás) például Python, R és Julia népszerű nyelveken érhető el. 
@@ -32,7 +32,7 @@ Az Azure Data Science Virtual Machines rendelkezik eszközök széles skálájá
 |    |           |
 | ------------- | ------------- |
 | Mi ez?   |   Az Azure Machine Learning egy felhőalapú szolgáltatás, amellyel fejleszthet és helyezhet üzembe gépi Tanulási modelleket. Nyomon követheti a modellek, fejleszthet, betanítását, méretezési és a Python SDK-val kezelheti azokat. Tárolókként modellek üzembe helyezése, és futtathatók a felhőben, a helyszínen, vagy az Azure IoT Edge-ben.   |
-| Támogatott kiadások     | Windows (conda-környezetben: Az AzureML), Linux (conda-környezet: py36)    |
+| Támogatott kiadások     | Windows (Conda-környezet: AzureML), Linux (Conda Environment: py36)    |
 | Gyakori használati      | Általános gépi Tanulási platform      |
 | Hogyan azt konfigurálni vagy telepíteni?      |  GPU-támogatással rendelkező telepítve   |
 | Használatával, vagy futtassa      | A Python SDK-t és az Azure parancssori felület. Aktiválja a conda-környezet `AzureML` Windows Edition *vagy* való `py36` Linux rendszeren.      |

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: cb783630b32b4cc28d4e4f1cfb33027da3b8d2e0
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 3325cb7170ebe42962c403d25d04c9fe2bae3b45
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966565"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276024"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Adatok másolása Azure Database for MariaDB használatával Azure Data Factory 
 
@@ -41,7 +41,7 @@ Azure Database for MariaDB társított szolgáltatás a következő tulajdonság
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **MariaDB** | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **AzureMariaDB** | Igen |
 | connectionString | Azure Database for MariaDBhoz való kapcsolódáshoz használandó kapcsolati karakterlánc. Megtalálhatja a Azure Portal-> Az Azure Database for MariaDB-> kapcsolatok karakterláncait – > ADO.NET egyet. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A jelszót a Azure Key Vaultban is elhelyezheti, és `pwd` lekérheti a konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
@@ -51,7 +51,7 @@ Azure Database for MariaDB társított szolgáltatás a következő tulajdonság
 {
     "name": "AzureDatabaseForMariaDBLinkedService",
     "properties": {
-        "type": "MariaDB",
+        "type": "AzureMariaDB",
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
@@ -72,7 +72,7 @@ Azure Database for MariaDB társított szolgáltatás a következő tulajdonság
 {
     "name": "AzureDatabaseForMariaDBLinkedService",
     "properties": {
-        "type": "MariaDB",
+        "type": "AzureMariaDB",
         "typeProperties": {
             "connectionString": {
                  "type": "SecureString",
@@ -99,11 +99,11 @@ Azure Database for MariaDB társított szolgáltatás a következő tulajdonság
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Azure Database for MariaDB adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatok Azure Database for MariaDBból való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **MariaDBTable**értékre. A következő tulajdonságok támogatottak:
+Az adatok Azure Database for MariaDBból történő másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **MariaDBTable** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AzureMariaDBTable** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
@@ -112,12 +112,13 @@ Az adatok Azure Database for MariaDBból való másolásához állítsa az adatk
 {
     "name": "AzureDatabaseForMariaDBDataset",
     "properties": {
-        "type": "MariaDBTable",
+        "type": "AzureMariaDBTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Azure Database for MariaDB linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -128,11 +129,11 @@ Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját l
 
 ### <a name="azure-database-for-mariadb-as-source"></a>Azure Database for MariaDB forrásként
 
-Az adatok Azure Database for MariaDBból való másolásához állítsa a forrás típusát a másolás tevékenység **MariaDBSource**. A következő tulajdonságok támogatottak a másolási tevékenység **source** szakaszban:
+Az adatok Azure Database for MariaDBból történő másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MariaDBSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AzureMariaDBSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
@@ -156,7 +157,7 @@ Az adatok Azure Database for MariaDBból való másolásához állítsa a forrá
         ],
         "typeProperties": {
             "source": {
-                "type": "MariaDBSource",
+                "type": "AzureMariaDBSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {

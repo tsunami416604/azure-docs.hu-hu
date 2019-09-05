@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/03/2019
 ms.author: raynew
-ms.openlocfilehash: 6882476cabc3dc3a737f31eeeb4ccd92e5ea6ee0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d415f303976ae454cb99f07e8d6e15e338e24d7d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872748"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231469"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
@@ -66,7 +66,7 @@ Az Azure-beli virtuális gépek replikálásának engedélyezésekor a Site Reco
 **Szabályzat-beállítás** | **Részletek** | **Alapértelmezett**
 --- | --- | ---
 **Helyreállítási pont megőrzése** | Meghatározza, hogy a Site Recovery mennyi ideig tart a helyreállítási pontok | 24 óra
-**Alkalmazás-konzisztens pillanatkép gyakorisága** | Milyen gyakran Site Recovery egy alkalmazás-konzisztens pillanatképet. | 60 percenként.
+**Alkalmazás-konzisztens pillanatkép gyakorisága** | Milyen gyakran Site Recovery egy alkalmazás-konzisztens pillanatképet. | Négy óránként
 
 ### <a name="managing-replication-policies"></a>Replikációs házirendek kezelése
 

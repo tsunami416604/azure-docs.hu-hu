@@ -14,10 +14,10 @@ ms.date: 03/05/2019
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: c113521a1828a27ce9454ea142cb1708b7c5a1b6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: MT
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68322838"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Tevékenységadatok megőrzése az Azure Storage-ban a Batch szolgáltatás API-val
@@ -178,7 +178,7 @@ Ha a-től eltérő nyelven fejleszt C#, a fájlokra vonatkozó konvenciókat is 
 
 ## <a name="code-sample"></a>Kódminta
 
-A githubon lévő [PersistOutputs][github_persistoutputs] sample project is one of the [Azure Batch code samples][github_samples] . Ez a Visual Studio-megoldás bemutatja, hogyan használható a Batch ügyféloldali kódtára a .NET-hez a feladat kimenetének tartós tárterületre való megőrzéséhez. A minta futtatásához kövesse az alábbi lépéseket:
+A [PersistOutputs][github_persistoutputs] minta projekt a githubon lévő [Azure batch Code-minták][github_samples] egyike. Ez a Visual Studio-megoldás bemutatja, hogyan használható a Batch ügyféloldali kódtára a .NET-hez a feladat kimenetének tartós tárterületre való megőrzéséhez. A minta futtatásához kövesse az alábbi lépéseket:
 
 1. Nyissa meg a projektet a **Visual Studio 2019**-ben.
 2. Adja hozzá a Batch és a Storage- **fiók hitelesítő adatait** a Microsoft. Azure. Batch. Samples. Common projekt **AccountSettings. Settings** eleméhez.

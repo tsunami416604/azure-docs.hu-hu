@@ -7,31 +7,28 @@ ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 269d13e0b64d2da7a21316b16c88acde46ba1722
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 06a767af71f457273e0e20d1248d64c22b3563e7
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194636"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274949"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy Vendég konfiguráció ismertetése
 
 Az Azure-erőforrások naplózása és [szervizelését](../how-to/remediate-resources.md) mellett Azure Policy is naplózhatja a beállításokat a gépen belül. A Vendég Configuration bővítmény és az ügyfél az érvényesítést végzi. A bővítményt, az ügyfélen, érvényesíti a konfigurációt az operációs rendszer, alkalmazás-konfigurációs vagy jelenléte, környezeti beállítások és beállításait.
 
-Jelenleg Azure Policy vendég konfiguráció csak a gépen belüli setings naplózását végzi.
+Jelenleg Azure Policy vendég konfiguráció csak a gépen belüli beállítások naplózását végzi.
 A konfigurációk alkalmazása még nem lehetséges.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="extension-and-client"></a>Bővítmény és az ügyfél
 
 A beállítások számítógépeken belüli naplózásához a [virtuálisgép-bővítmény](../../../virtual-machines/extensions/overview.md) engedélyezve van. A bővítmény letölti a megfelelő szabályzat-hozzárendelés és a megfelelő konfiguráció definíciója.
 
-### <a name="limits-set-on-the-exension"></a>A exension beállított korlátok
+### <a name="limits-set-on-the-extension"></a>A bővítményre beállított korlátok
 
 Ha korlátozni szeretné a bővítményt a gépen futó alkalmazások hatására, a vendég konfigurációja nem lépheti túl a CPU-kihasználtság 5%-át.
-Ez a Microsoft által a "beépített" és az ügyfelek által létrehozott egyéni konfigurációk esetében érvényes BOH.
+Ez a Microsoft által a "beépített" és az ügyfelek által készített egyéni konfigurációk esetében egyaránt igaz.
 
 ## <a name="register-guest-configuration-resource-provider"></a>Vendég-konfigurációs erőforrás-szolgáltató regisztrálása
 
@@ -71,7 +68,7 @@ Az alábbi táblázat az egyes támogatott operációs rendszeren használja a h
 
 ### <a name="validation-frequency"></a>Ellenőrzés gyakorisága
 
-A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-hozzárendelés fogadása után a rendszer 15 percenként ellenőrzi a beállításokat. A rendszer a naplózás befejeződése után azonnal elküldi az eredményeket a vendég konfiguráció erőforrás-szolgáltatójának. A szabályzatok [](../how-to/get-compliance-data.md#evaluation-triggers) kiértékelésének bekövetkeztekor a számítógép állapota a vendég konfiguráció erőforrás-szolgáltatóba íródik. Ennek hatására a Azure Policy kiértékeli a Azure Resource Manager tulajdonságait. Az igény szerinti Azure Policy kiértékelése a vendég konfiguráció erőforrás-szolgáltató legújabb értékét kérdezi le. Azonban nem aktiválja a számítógép konfigurációjának új naplózását.
+A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-hozzárendelés fogadása után a rendszer 15 percenként ellenőrzi a beállításokat. A rendszer a naplózás befejeződése után azonnal elküldi az eredményeket a vendég konfiguráció erőforrás-szolgáltatójának. A szabályzatok [kiértékelésének](../how-to/get-compliance-data.md#evaluation-triggers) bekövetkeztekor a számítógép állapota a vendég konfiguráció erőforrás-szolgáltatóba íródik. Ennek hatására a Azure Policy kiértékeli a Azure Resource Manager tulajdonságait. Az igény szerinti Azure Policy kiértékelése a vendég konfiguráció erőforrás-szolgáltató legújabb értékét kérdezi le. Azonban nem aktiválja a számítógép konfigurációjának új naplózását.
 
 ## <a name="supported-client-types"></a>Támogatott ügyfél típusú
 
@@ -146,6 +143,32 @@ Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<ver
 
 Ahol `<version>` az aktuális verziószámra hivatkozik.
 
+### <a name="collecting-logs-remotely"></a>Naplók távoli gyűjtése
+
+A vendég konfigurációs konfigurációk vagy modulok hibaelhárításának első lépéseként a `Test-GuestConfigurationPackage` parancsmagot kell használnia, amely a [vendég konfigurációs csomag tesztelésének](../how-to/guest-configuration-create.md#test-a-guest-configuration-package)lépéseit követi.  Ha ez nem sikerül, az ügyfél naplói összegyűjtése segíthet a problémák diagnosztizálásában.
+
+#### <a name="windows"></a>Windows
+
+Ha az Azure virtuális gép futtatási parancsának funkcióját szeretné használni a Windows rendszerű számítógépeken található naplófájlok adatainak rögzítéséhez, a következő példa a PowerShell-szkript hasznos lehet. A szkript Azure Portalról történő futtatásával vagy a Azure PowerShell használatával kapcsolatos részletekért lásd: [PowerShell-parancsfájlok futtatása a Windows rendszerű virtuális gépen a Run paranccsal](../../../virtual-machines/windows/run-command.md).
+
+```powershell
+$linesToIncludeBeforeMatch = 0
+$linesToIncludeAfterMatch = 10
+$latestVersion = Get-ChildItem -Path 'C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\' | ForEach-Object {$_.FullName} | Sort-Object -Descending | Select-Object -First 1
+Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCManagedEngine' -CaseSensitive -Context $linesToIncludeBeforeMatch,$linesToIncludeAfterMatch | Select-Object -Last 10
+```
+
+#### <a name="linux"></a>Linux
+
+Ha az Azure virtuális gép futtatási parancsának funkcióját szeretné használni a Linux rendszerű számítógépeken található naplófájlok adatainak rögzítéséhez, a következő példa a bash-szkript hasznos lehet. A szkript Azure Portalról vagy az Azure CLI használatával történő futtatásával kapcsolatos részletekért lásd: [rendszerhéj-parancsfájlok futtatása a Linux rendszerű virtuális gépen a Run paranccsal](../../../virtual-machines/linux/run-command.md)
+
+```Bash
+linesToIncludeBeforeMatch=0
+linesToIncludeAfterMatch=10
+latestVersion=$(find /var/lib/waagent/ -type d -name "Microsoft.GuestConfiguration.ConfigurationforLinux-*" -maxdepth 1 -print | sort -z | sed -n 1p)
+egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' "$latestVersion/GCAgent/logs/dsc.log" | tail
+```
+
 ## <a name="guest-configuration-samples"></a>Vendég konfigurációs minták
 
 A házirend vendég konfigurációjának mintái a következő helyszíneken érhetők el:
@@ -158,7 +181,7 @@ A házirend vendég konfigurációjának mintái a következő helyszíneken ér
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](effects.md).
-- Megtudhatja, hogyan [hozhat létre programozott](../how-to/programmatically-create.md)módon házirendeket.
-- Ismerje meg, hogyan kérheti le a [megfelelőségi információkat](../how-to/getting-compliance-data.md).
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](../how-to/programmatically-create.md).
+- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](../how-to/getting-compliance-data.md).
 - Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](../how-to/remediate-resources.md).
 - Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/index.md).

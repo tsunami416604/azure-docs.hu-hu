@@ -4,8 +4,10 @@
   items:
     - name: Tudnivalók a Security Centerről
       href: security-center-intro.md
-    - name: A Security Center által támogatott platformok és funkciók
+    - name: Támogatott platformok
       href: security-center-os-coverage.md
+    - name: Támogatott funkciók
+      href: security-center-services.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -129,24 +131,16 @@
           href: security-center-vulnerability-assessment-recommendations.md
         - name: Fenyegetésekkel kapcsolatos jelentések
           href: security-center-threat-report.md
-        - name: Egyéni riasztások
-          href: security-center-custom-alert.md
         - name: Riasztás megbízhatósági pontszáma
           href: security-center-confidence-score.md
-        - name: Biztonsági riasztások térképe és fenyegetések felderítése
-          href: security-center-threat-intel.md
         - name: Vizsgálat
           href: security-center-investigation.md
         - name: Felhasználói adatok vizsgálatának kezelése
           href: security-center-investigation-user-data.md
         - name: Logic Apps-forgatókönyvek
           href: security-center-playbooks.md
-        - name: Keresés
-          href: security-center-search.md
         - name: Tervezés és műveletek
           href: security-center-planning-and-operations-guide.md
-        - name: Biztonsági konfigurációk testreszabása
-          href: security-center-customize-os-security-config.md
 - name: Referencia
   items:
     - name: REST API-k

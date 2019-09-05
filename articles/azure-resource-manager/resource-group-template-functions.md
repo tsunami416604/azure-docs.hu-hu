@@ -6,15 +6,15 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5333bfd8c7f7d24e497e4b7ba7da3543aee54da6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 968e55cc07d10a0d4b54d4a7e866417d18e98bb5
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194761"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258885"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager sablon függvények
-Ez a cikk a Azure Resource Manager-sablonokban használható összes funkciót ismerteti. További információ a függvények használatáról a sablonban: [sablon szintaxisa](resource-group-authoring-templates.md#syntax).
+Ez a cikk a Azure Resource Manager-sablonokban használható összes funkciót ismerteti. További információ a függvények használatáról a sablonban: [sablon szintaxisa](template-expressions.md).
 
 Saját függvények létrehozásához tekintse meg a [felhasználó által definiált függvények](resource-group-authoring-templates.md#functions)című témakört.
 

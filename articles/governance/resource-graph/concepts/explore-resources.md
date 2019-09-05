@@ -7,19 +7,16 @@ ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 7c6fdebad3cd84699e1ac7d06bb58a33d1522af1
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 148d69b96291737088a1472a9affd8bb9e43ab1b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972316"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241125"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Az Azure-erőforrások felfedezése a Resource Graph használatával
 
 Az Azure Resource Graph lehetővé teszi az Azure-erőforrások gyors és méretezhető feltárását és felderítését. A gyors reagáláshoz nagyszerű lehetőség a környezet megismerésére és az Azure-erőforrások készítésére szolgáló tulajdonságokkal kapcsolatos információk megtervezésére.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="explore-virtual-machines"></a>A virtuális gépek megismerése
 
@@ -310,5 +307,5 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Network/publicIPAddresses' | whe
 ## <a name="next-steps"></a>További lépések
 
 - További információk a [lekérdezés nyelvéről](query-language.md)
-- Megtekintheti az alapszintű [lekérdezésekben](../samples/starter.md) használt nyelvet
+- Megtekintheti az [alapszintű lekérdezésekben](../samples/starter.md) használt nyelvet
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md)

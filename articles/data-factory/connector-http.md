@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: a6fa08596f5778b2c188fe3402801cf487b32ae4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: cdd7cfcb9d835c2ccac1dc367b9a1b34b509e8cf
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966988"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276427"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Adatok másolása HTTP-végpontból Azure Data Factory használatával
 
@@ -40,7 +40,7 @@ A HTTP-forrásokból származó adatok bármely támogatott fogadó adattárba m
 Ezt a HTTP-összekötőt a következő célra használhatja:
 
 - Adatok lekérése HTTP/S-végpontról a HTTP **Get** vagy **post** metódusok használatával.
-- Az alábbi hitelesítések egyikével kérheti le az adatkérést: **Névtelen**,alapszintű, **kivonatoló**, **Windows**vagy **ClientCertificate**.
+- Az alábbi hitelesítések egyikével kérheti le az adatkérést: **Névtelen**, **alapszintű**, **kivonatoló**, **Windows**vagy **ClientCertificate**.
 - Másolja a HTTP-választ a-ként, vagy elemezze a [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs.md)használatával.
 
 > [!TIP]
@@ -65,12 +65,12 @@ A HTTP társított szolgáltatás a következő tulajdonságokat támogatja:
 | type | A **Type** tulajdonságot **HttpServer**értékre kell beállítani. | Igen |
 | url | A webkiszolgáló alap URL-címe. | Igen |
 | enableServerCertificateValidation | Itt adhatja meg, hogy engedélyezi-e a kiszolgáló SSL-tanúsítványának érvényesítését egy HTTP-végponthoz való csatlakozáskor. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, állítsa **hamis**értékre a tulajdonságot. | Nem<br /> (az alapértelmezett érték **igaz**) |
-| authenticationType | Megadja a hitelesítési típust. Az engedélyezett értékek: névtelen, alapszintű, **kivonatoló**, **Windows**és **ClientCertificate**. <br><br> A következő szakaszokban találhat további tulajdonságokat és JSON-mintákat a fenti hitelesítési típusokhoz. | Igen |
+| authenticationType | Megadja a hitelesítési típust. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **kivonatoló**, **Windows**és **ClientCertificate**. <br><br> A következő szakaszokban találhat további tulajdonságokat és JSON-mintákat a fenti hitelesítési típusokhoz. | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>Alapszintű, kivonatoló vagy Windows-hitelesítés használata
 
-Állítsa a **authenticationType** tulajdonságotalapszintű, **kivonatoló**vagy **Windows**értékre. Az előző szakaszban leírt általános tulajdonságok mellett a következő tulajdonságokat is meg kell adni:
+Állítsa a **authenticationType** tulajdonságot **alapszintű**, **kivonatoló**vagy **Windows**értékre. Az előző szakaszban leírt általános tulajdonságok mellett a következő tulajdonságokat is meg kell adni:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
@@ -166,12 +166,12 @@ Ha **certThumbprint** használ a hitelesítéshez, és a tanúsítvány a helyi 
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. 
 
-- A **parketta, a tagolt szöveg és a bináris formátum**esetében tekintse meg a [parketta, tagolt szöveg és bináris formátum adatkészlet](#format-based-dataset) szakaszt.
+- A **Parquet, a tagolt szöveget, a Avro és a bináris formátumot**a [parketta, a tagolt szöveg, a Avro és a bináris formátum adatkészlet](#format-based-dataset) szakaszban találja.
 - Más formátumok, például az **ork/Avro/JSON formátum**esetében tekintse meg a [más formátumú adatkészlet](#other-format-dataset) szakaszt.
 
-### <a name="format-based-dataset"></a>Parketta, tagolt szöveg és bináris formátum adatkészlet
+### <a name="format-based-dataset"></a>Parketta, tagolt szöveg, Avro és bináris formátum adatkészlet
 
-Ha a **parketta, a tagolt szöveg vagy a bináris formátum**között szeretne adatokat másolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md) és a [bináris formátumú](format-binary.md) cikket a Format-alapú adatkészlet és a támogatott beállítások területen. A http `location` a következő tulajdonságokat támogatja a formátum-alapú adatkészlet beállításai között:
+Ha a **parketta, a tagolt szöveg vagy a bináris formátum**között szeretne adatokat másolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a Format-alapú adatkészlet és a támogatott beállítások területen. A http `location` a következő tulajdonságokat támogatja a formátum-alapú adatkészlet beállításai között:
 
 | Tulajdonság    | Leírás                                                  | Szükséges |
 | ----------- | ------------------------------------------------------------ | -------- |
@@ -212,7 +212,7 @@ Ha a **parketta, a tagolt szöveg vagy a bináris formátum**között szeretne a
 
 ### <a name="other-format-dataset"></a>Egyéb formátumú adatkészlet
 
-Az adatok HTTP-ből az **ork/Avro/JSON formátumban**való másolásához a következő tulajdonságok támogatottak:
+Az adatok HTTP-ből az **ork/JSON formátumban**való másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -222,7 +222,7 @@ Az adatok HTTP-ből az **ork/Avro/JSON formátumban**való másolásához a köv
 | additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
 | requestBody | A HTTP-kérelem törzse. | Nem |
 | format | Ha az adatokat a HTTP-végpontról kívánja lekérdezni, az elemzés nélkül, majd másolja az adatokat egy fájl alapú tárolóba, ugorja át a **Formátum** szakaszt a bemeneti és a kimeneti adatkészlet-definíciókban is.<br/><br/>Ha a HTTP-válasz tartalmát a másolás során szeretné elemezni, a következő fájlformátum-típusok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**és **ParquetFormat**. A **Formátum**alatt állítsa be a **Type** tulajdonságot az alábbi értékek egyikére. További információ: JSON- [Formátum](supported-file-formats-and-compression-codecs.md#json-format), [szöveges formátum](supported-file-formats-and-compression-codecs.md#text-format), [Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), ork- [Formátum](supported-file-formats-and-compression-codecs.md#orc-format)és [parketta formátum](supported-file-formats-and-compression-codecs.md#parquet-format). |Nem |
-| compression | Adja meg a típus és az adatok tömörítési szintje. További információkért lásd: [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Támogatott típusok: **Gzip**,deflate, **BZip2**és **ZipDeflate**.<br/>Támogatott szintek:  **Optimális** és **leggyorsabb**. |Nem |
+| compression | Adja meg a típus és az adatok tömörítési szintje. További információkért lásd: [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Támogatott típusok: **Gzip**, **deflate**, **BZip2**és **ZipDeflate**.<br/>Támogatott szintek:  **Optimális** és **leggyorsabb**. |Nem |
 
 > [!NOTE]
 > A HTTP-kérések támogatott mérete körülbelül 500 KB. Ha a webes végpontnak átadni kívánt hasznos adatok mérete meghaladja a 500 KB-ot, érdemes lehet kisebb adattömbökbe felvenni a hasznos adatokat.
@@ -274,12 +274,12 @@ Szakaszok és a tevékenységek definiálását tulajdonságok teljes listáját
 
 ### <a name="http-as-source"></a>HTTP forrásként
 
-- A **parketta, a tagolt szöveg és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg és a bináris formátum forrás](#format-based-source) szakaszát.
+- A **parketta, a tagolt szöveg, a Avro és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg, a Avro és a bináris formátum forrás](#format-based-source) szakaszát.
 - Más formátumokból, például az **ork/Avro/JSON formátumból**való másoláshoz tekintse meg a [más formátumú forrás](#other-format-source) szakaszt.
 
-#### <a name="format-based-source"></a>Parketta, tagolt szöveg és bináris formátum forrása
+#### <a name="format-based-source"></a>Parketta, tagolt szöveg, Avro és bináris formátum forrása
 
-Ha a **parketta, a tagolt szöveg vagy a bináris formátum**adatait szeretné átmásolni, tekintse meg a [parketta formátuma](format-parquet.md), a [tagolt szöveg formátuma](format-delimited-text.md) és a [bináris formátum](format-binary.md) című cikket a másolási tevékenység forrására és a támogatott beállításokra vonatkozóan. A http `storeSettings` a következő tulajdonságokat támogatja a Format-alapú másolási forrás beállításaiban:
+Ha a **parketta, a tagolt szöveg vagy a bináris formátum**adatait szeretné másolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a másolási tevékenység forrására és a támogatott beállításokra vonatkozóan. A http `storeSettings` a következő tulajdonságokat támogatja a Format-alapú másolási forrás beállításaiban:
 
 | Tulajdonság                 | Leírás                                                  | Szükséges |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -336,7 +336,7 @@ Ha a **parketta, a tagolt szöveg vagy a bináris formátum**adatait szeretné �
 
 #### <a name="other-format-source"></a>Egyéb formátum forrása
 
-Az adatok HTTP-ből az **ork/Avro/JSON formátumban**való másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
+Az adatok HTTP-ből **ork/JSON formátumban**való másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |

@@ -7,16 +7,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7c4af8346b5da20c662b5549284a3540d08908f8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4ebdf1d14b1f8721a3709a7e8c90f2a1db76b6fc
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072924"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259129"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Használja az Apache Beeline-ügyfelet Apache Hive
 
-Ismerje meg, hogyan használható az [Apache](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) beeline Apache Hive lekérdezések futtatásához a HDInsight.
+Ismerje meg, hogyan használható az [Apache beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) Apache Hive lekérdezések futtatásához a HDInsight.
 
 A Beeline egy kaptár-ügyfél, amely a HDInsight-fürt fő csomópontjain található. A Beeline JDBC használatával csatlakozik a HDInsight-fürtön üzemeltetett HiveServer2-hez. A Beeline használatával távolról is elérheti a HDInsight a struktúrát az interneten keresztül. Az alábbi példák a HDInsight való kapcsolódáshoz használt leggyakoribb kapcsolati karakterláncokat biztosítják a következő esetekben:
 
@@ -44,9 +44,9 @@ Cserélje `<headnode-FQDN>` le a helyére egy fürt átjárócsomóponthoz telje
 
 ---
 
-### <a name="to-hdinsight-enterprise-security-package-esp-cluster"></a>HDInsight Enterprise Security Package (ESP) fürthöz
+### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Enterprise Security Package (ESP) fürt HDInsight Kerberos használatával
 
-Ha az ügyfélről egy, a fürt azonos tartományában található Azure Active Directoryhoz (HRE) csatlakoztatott Enterprise Security Package (ESP) fürthöz kapcsolódik, akkor meg kell adnia a tartománynevet `<AAD-Domain>` és annak a tartományi felhasználói fióknak a nevét is, amelynek engedélyekkel rendelkezik a fürt `<username>`elérése:
+Ha az ügyfélről egy Enterprise Security Package (ESP) fürthöz csatlakozik a (z) Azure Active Directory (HRE) – DS-hez egy olyan gépen, amely a fürt azonos tartományában található, akkor `<AAD-Domain>` a tartománynevet és a tartományi felhasználói fiók nevét is meg kell adnia a következővel: a fürt `<username>`eléréséhez szükséges engedélyek:
 
 ```bash
 kinit <username>
@@ -57,12 +57,18 @@ Cserélje `<username>` le a nevet a tartomány egy olyan fiókjának nevére, am
 
 ---
 
-### <a name="over-public-internet"></a>Nyilvános interneten keresztül
+### <a name="over-public-or-private-endpoints"></a>Nyilvános vagy privát végpontokon keresztül
 
-Ha nem ESP-hez vagy Azure Active Directoryhoz (HRE) csatlakoztatta az ESP-fürtöt a nyilvános interneten keresztül, meg kell adnia a fürt bejelentkezési fiókjának nevét (alapértelmezett `admin`) és a jelszót. Ha például egy ügyfélrendszer beelinét használja a `<clustername>.azurehdinsight.net` címnek való kapcsolódáshoz. Ez a kapcsolat a porton `443`keresztül történik, és SSL használatával titkosítva:
+Ha nyilvános vagy privát végpontokat használó fürthöz csatlakozik, meg kell adnia a fürt bejelentkezési fiókjának nevét (alapértelmezett `admin`) és jelszavát. Ha például egy ügyfélrendszer beelinét használja a `<clustername>.azurehdinsight.net` címnek való kapcsolódáshoz. Ez a kapcsolat a porton `443`keresztül történik, és SSL használatával titkosítva:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
+```
+
+vagy privát végpont esetén:
+
+```bash
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
 ```
 
 Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje `admin` le a-t a fürthöz tartozó bejelentkezési fiókra. Cserélje `password` le a nevet a fürt bejelentkezési fiókjának jelszavára.
@@ -73,13 +79,21 @@ Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje `a
 
 Apache Spark a HiveServer2 saját implementációját biztosítja, amelyet más néven a Spark-takarékossági kiszolgálónak nevezünk. Ez a szolgáltatás a Spark SQL-t használja a lekérdezések feloldásához a struktúra helyett, és a lekérdezéstől függően jobb teljesítményt nyújthat.
 
-#### <a name="over-public-internet-with-apache-spark"></a>Nyilvános interneten keresztül Apache Spark
+#### <a name="through-public-or-private-endpoints"></a>Nyilvános vagy privát végpontokon keresztül
 
-Az interneten keresztüli csatlakozáskor használt kapcsolati sztring kis mértékben eltér. A nem tartalmazza `httpPath=/hive2` `httpPath/sparkhive2`a következőket:
+A használt kapcsolatok karakterlánca némileg eltér. A nem tartalmazza `httpPath=/hive2` `httpPath/sparkhive2`a következőket:
 
 ```bash 
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
 ```
+
+vagy privát végpont esetén:
+
+```bash 
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+```
+
+Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje `admin` le a-t a fürthöz tartozó bejelentkezési fiókra. Cserélje `password` le a nevet a fürt bejelentkezési fiókjának jelszavára.
 
 ---
 
@@ -97,7 +111,7 @@ Ha közvetlenül a fürt fő csomópontja vagy egy, a HDInsight-fürttel azonos 
 
 * Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Figyelje meg a fürt elsődleges tárolójának [URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) -sémáját. Például `wasb://` az Azure Storage-hoz, `abfs://` Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1hoz. Ha a biztonságos átvitel engedélyezve van az Azure Storage vagy a Data Lake Storage Gen2 számára, `wasbs://` akkor `abfss://`az URI vagy a. További információ: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
+* Figyelje meg a fürt elsődleges tárolójának [URI-sémáját](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Például `wasb://` az Azure Storage-hoz, `abfs://` Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1hoz. Ha a biztonságos átvitel engedélyezve van az Azure Storage vagy a Data Lake Storage Gen2 számára, `wasbs://` akkor `abfss://`az URI vagy a. További információ: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
 
 
 * 1\. lehetőség: Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md). A jelen dokumentumban ismertetett lépések többsége azt feltételezi, hogy egy SSH-munkamenetből a fürtre használja a Beeline-t.

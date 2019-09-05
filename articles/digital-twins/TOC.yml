@@ -73,32 +73,6 @@
   items:
     - name: Felhasználó által meghatározott függvények ügyfélkódtára
       href: reference-user-defined-functions-client-library.md
-- name: Kapcsolódó témakörök
-  items:
-    - name: Megoldások
-      items:
-        - name: IoT-megoldásgyorsítók
-          href: /azure/iot-accelerators
-        - name: IoT-központ
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: Platformszolgáltatások
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
-        - name: IoT szolgáltatásoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: IoT eszközoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: További források
   items:
     - name: 'Azure Digital Twins-minták C# nyelvhez (.NET)'

@@ -1,54 +1,54 @@
 ---
-title: Tömeges importálás és frissítheti az adatokat az Azure Cosmos DB a tömeges végrehajtó kódtár használatával
-description: Tömeges műveletek végrehajtása az Azure Cosmos DB tömeges importálás keresztül, és tömeges frissítése a tömeges végrehajtó kódtár által nyújtott API-k.
+title: A tömeges importálás és a Azure Cosmos DB adatai frissítése a tömeges végrehajtó kódtár használatával
+description: Tömeges műveleteket hajthat végre Azure Cosmos DB a tömeges importálási és tömeges frissítési API-k használatával, amelyet a tömeges végrehajtó függvénytár kínál.
 author: tknandu
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: e4357007ec1cfac2cf6a10d339c6b3aa3ae41488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 1716bd64286f1882b9fc224712d227967d78058a
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257103"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637778"
 ---
-# <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Az Azure Cosmos DB tömeges végrehajtó erőforrástár áttekintése
+# <a name="azure-cosmos-db-bulk-executor-library-overview"></a>A Azure Cosmos DB tömeges végrehajtó függvénytárának áttekintése
  
-Az Azure Cosmos DB egy gyors, rugalmas és globálisan elosztott adatbázis-szolgáltatás, amely rugalmas horizontális felskálázási támogatására: 
+Az Azure Cosmos DB egy gyors, rugalmas, globálisan elosztott adatbázis-szolgáltatás, amelyet rugalmas horizontális felskálázásra terveztek a következők támogatása érdekében: 
 
-* Nagy írási és olvasási átviteli sebesség (másodpercenként több millió).  
-* Nagy mennyiségű (több terabájtnyi vagy akár több száz) tárolása kiszámítható ezredmásodperces késéssel tranzakciós és a működési adatokat.  
+* Nagy olvasási és írási átviteli sebesség (több millió művelet másodpercenként).  
+* Nagy mennyiségű (több száz terabájt, vagy még annál is több) tranzakciós és műveleti adat tárolása kiszámítható, ezredmásodperces késéssel.  
 
-A tömeges végrehajtó könyvtár kihasználja a nagy teljesítményt és tárolókapacitást nyújt segítséget. A tömeges végrehajtó kódtár lehetővé teszi tömeges műveletek az Azure Cosmos DB tömeges importálás és tömeges frissítése API-k. Tudjon meg többet tömeges végrehajtó könyvtár a következő szakaszokban az szolgáltatásokról. 
+A tömeges végrehajtói kódtár segít kihasználni ezt a hatalmas átviteli sebességet és tárterületet. A tömeges végrehajtói kódtár tömeges importálási és tömeges frissítési API-k segítségével teszi lehetővé a tömeges műveletek végrehajtást az Azure Cosmos DB-ben. A tömeges végrehajtási kódtár funkcióiról a következő szakaszokban talál további információt. 
 
 > [!NOTE] 
-> Jelenleg tömeges végrehajtó kódtár támogatja az importálási és frissítési műveleteket és a könyvtár csak az Azure Cosmos DB SQL API és a Gremlin API fiókok által támogatott.
+> Jelenleg a tömeges végrehajtó függvénytár támogatja az importálási és frissítési műveleteket, és ezt a kódtárat csak Azure Cosmos DB SQL API és a Gremlin API-fiókok támogatják.
  
-## <a name="key-features-of-the-bulk-executor-library"></a>A tömeges végrehajtó library kulcsfunkciói  
+## <a name="key-features-of-the-bulk-executor-library"></a>A tömeges végrehajtó könyvtár legfontosabb funkciói  
  
-* Jelentősen csökkenti a szükséges egy tároló kiosztott átviteli telítéséhez ügyféloldali számítási erőforrások. Egyetlen szálon futó alkalmazás írja az adatokat a tömeges importálási API eléri-e 10 alkalommal nagyobb a lemezírás teljesítménye egy több szálon futó alkalmazás írja az adatok párhuzamos során az ügyfél mágneses erősítő gép CPU képest.  
+* Jelentősen csökkenti az ügyféloldali számítási erőforrásokat, amelyek a tárolóhoz lefoglalt átviteli sebesség telítettségét igénylik. Egy többszálú alkalmazás, amely a tömeges importálási API használatával ír be adatot, 10 szor nagyobb írási sebességet tesz elérhetővé egy többszálas alkalmazáshoz képest, amely az adatok párhuzamos írását is lehetővé teszi, miközben az ügyfélszámítógép CPU-ját telítettnek kell lennie.  
 
-* Kódbázis, kezelni a sebességkorlátozás kérelem, a kérelem időtúllépése és egyéb átmeneti kivételek hatékonyan kezeli őket a könyvtárból alkalmazás logika fárasztó feladat tevékenységeit.  
+* Elvonta az alkalmazás logikájának írásával járó unalmas feladatokat a kérések arányának korlátozása, a kérelmek időtúllépése és egyéb átmeneti kivételek kezelése érdekében, a könyvtárban lévő hatékony kezeléssel.  
 
-* Az alkalmazások horizontális felskálázása tömeges műveletek végrehajtása egy egyszerűsített mechanizmust biztosít. Egy egyetlen tömeges végrehajtó példány-beli virtuális gépen futó nagyobb, mint 500 ezer Kérelemegység/s is használják, és a egy nagyobb átviteli sebességet érhet el, további példányok hozzáadása a különálló ügyfél virtuális gépeket.  
+* Egyszerűsített mechanizmust biztosít a tömeges műveleteket végző alkalmazások számára a vertikális felskálázáshoz. Egy Azure-beli virtuális gépen futó egyetlen tömeges végrehajtó példány több mint 500 kb/s-nál nagyobb mennyiségű, a magasabb átviteli sebességet pedig további példányok hozzáadásával is elérheti az egyes ügyfél virtuális gépeken.  
  
-* Azt is tömeges importálás több, mint a terabájt adat egy órán belül egy kibővített architektúra használatával.  
+* A kibővíthető architektúra használatával több mint egy terabájtos adatmennyiséget is importálhat egy órán belül.  
 
-* Meglévő adatok frissítése az Azure Cosmos DB-tárolók, a javítások, tömegesen. 
+* A Azure Cosmos DB tárolókban lévő meglévő adatmennyiséget javításként is frissítheti. 
  
 ## <a name="how-does-the-bulk-executor-operate"></a>Hogyan működik a tömeges végrehajtó? 
 
-Importálásához vagy a dokumentumok frissítéséhez csoportos művelet akkor aktiválódik, a teljes entitásköteget, kezdetben összekeverve be az Azure Cosmos DB partíciókulcs-tartományok megfelelő gyűjtőkbe. Belül az egyes gyűjtők, amely megfelel a partíciókulcs-tartományok azok bontásban mini-kötegek és minden egyes mini batch act as egy hasznos, amelyek a kiszolgálói oldalon előjegyzett. A tömeges végrehajtó könyvtár rendelkezik beépített optimalizálását a mini-kötegek belül és között: partíció kulcstartományokkal egyidejű végrehajtása. Következő kép mutatja be, hogyan tömeges végrehajtó kötegeli az adatokat az eltérő partíciókulcsok:  
+Ha a dokumentumok importálására vagy frissítésére szolgáló tömeges művelet az entitások egy kötegével aktiválódik, a rendszer először a Azure Cosmos DB partíciós tartományának megfelelő gyűjtőbe rendezi azokat. A partíciós kulcs tartományának megfelelő gyűjtőn belül a rendszer lebontja a mini-batchs szolgáltatást, és minden egyes mini Batch a kiszolgálón véglegesített adattartalomként működik. A tömeges végrehajtó függvénytár a következő mini-kötegek egyidejű végrehajtásához a partíciós kulcs-tartományokon belül és azok között is beépített optimalizációkat tartalmaz. Az alábbi ábra azt szemlélteti, hogy a tömeges végrehajtó hogyan hajtja végre az adatok különböző partíciós kulcsokban való feldolgozását:  
 
-![Tömeges végrehajtó architektúra](./media/bulk-executor-overview/bulk-executor-architecture.png)
+![Tömeges végrehajtó architektúrája](./media/bulk-executor-overview/bulk-executor-architecture.png)
 
-A tömeges végrehajtó kódtár biztosítja, hogy standardként felhasználja a gyűjteményhez kiosztott átviteli sebesség. Használ egy [AIMD stílusú torlódás vezérlési mechanizmus](https://tools.ietf.org/html/rfc5681) minden egyes Azure Cosmos DB hatékonyan kezeli a sebességkorlátozás és időtúllépéseket kulcstartományhoz particionálásához. 
+A tömeges végrehajtó könyvtára gondoskodik a gyűjteményhez lefoglalt átviteli sebesség maximális kihasználásáról. Egy [AIMD stílusú torlódás-vezérlési mechanizmust](https://tools.ietf.org/html/rfc5681) használ minden Azure Cosmos db partíciós kulcs tartományához, így hatékonyan kezelheti a díjszabást és az időtúllépéseket. 
 
 ## <a name="next-steps"></a>További lépések 
   
-* További tudnivalókért próbálja ki a tömeges végrehajtó kódtárat a felhasználásához mintaalkalmazásból [.NET](bulk-executor-dot-net.md) és [Java](bulk-executor-java.md).  
-* Tekintse meg a tömeges végrehajtó SDK információkat és a kibocsátási megjegyzések a [.NET](sql-api-sdk-bulk-executor-dot-net.md) és [Java](sql-api-sdk-bulk-executor-java.md).
-* A tömeges végrehajtó könyvtár integrálva van a Cosmos DB Spark-összekötő, további tudnivalókért lásd: [Azure Cosmos DB Spark-összekötő](spark-connector.md) cikk.  
-* A tömeges végrehajtó könyvtárban is integrálva van egy új verziója [Azure Cosmos DB-összekötő](https://aka.ms/bulkexecutor-adf-v2) az Azure Data Factoryben az adatok.
+* További információ: a [.net](bulk-executor-dot-net.md) és a [Java](bulk-executor-java.md)szolgáltatásban a tömeges végrehajtó függvénytárat használó minta alkalmazások kipróbálása.  
+* Tekintse meg a tömeges végrehajtó SDK-információkat, valamint a [.net](sql-api-sdk-bulk-executor-dot-net.md) és a [Java](sql-api-sdk-bulk-executor-java.md)kiadási megjegyzéseit.
+* A tömeges végrehajtó függvénytár integrálva van a Cosmos DB Spark-összekötőbe, és további információt a [Azure Cosmos db Spark-összekötő](spark-connector.md) című cikkben talál.  
+* A tömeges végrehajtó függvénytár a [Azure Cosmos db Connector](https://aka.ms/bulkexecutor-adf-v2) új verziójába is integrálva van, Azure Data Factory az adatmásoláshoz.

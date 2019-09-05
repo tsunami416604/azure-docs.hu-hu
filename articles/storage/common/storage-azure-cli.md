@@ -10,38 +10,38 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: d259ea02824937f0c496bb253fa4b6c1f5cea412
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 46ae70bf4f1c2fe0276a3327ff37650dd57341d0
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015636"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259389"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Using the Azure CLI with Azure Storage (Az Azure CLI és az Azure Storage együttes használata)
 
-A nyílt forráskódú, platformfüggetlen Azure CLI számos parancsot biztosít az Azure platformmal való használathoz. Ez a funkció számos, a Azure Portalban található funkciót [](https://portal.azure.com)biztosít, beleértve a gazdag adatelérést is.
+A nyílt forráskódú, platformfüggetlen Azure CLI számos parancsot biztosít az Azure platformmal való használathoz. Ez a funkció számos, a [Azure Portalban](https://portal.azure.com)található funkciót biztosít, beleértve a gazdag adatelérést is.
 
 Ebben az útmutatóban bemutatjuk, hogyan használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) -t az Azure Storage-fiók erőforrásaival kapcsolatos feladatok elvégzéséhez. Javasoljuk, hogy az útmutató használata előtt töltse le és telepítse vagy frissítse a CLI legújabb verzióját.
 
 Az útmutatóban szereplő példák feltételezik a bash-rendszerhéj Ubuntu-on való használatát, de a többi platformnak hasonlóképpen kell működnie. 
 
-[!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
-
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
+[!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató feltételezi, hogy ismeri az Azure Storage alapfogalmait. Azt is feltételezi, hogy képes megfelelni az Azure-hoz és a Storage szolgáltatáshoz alább megadott fiók-létrehozási követelményeknek.
 
 ### <a name="accounts"></a>Fiókok
 * **Azure-fiók**: Ha még nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókot](https://azure.microsoft.com/free/).
-* **Storage-fiók**: Lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md) az [Azure Storage](storage-create-storage-account.md)-fiókokról.
+* **Storage-fiók**: Lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md) az [Azure Storage-fiókokról](storage-create-storage-account.md).
 
 ### <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
 
 Töltse le és telepítse az Azure CLI-t az [Azure CLI telepítése](/cli/azure/install-az-cli2)című témakörben ismertetett utasítások szerint.
 
 > [!TIP]
-> Ha problémája van a telepítéssel, tekintse meg [](/cli/azure/install-az-cli2) a cikk telepítésének hibaelhárítási szakaszát, valamint a githubon a [hibaelhárítási](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md) útmutatót.
+> Ha problémája van a telepítéssel, tekintse meg a cikk [telepítésének hibaelhárítási](/cli/azure/install-az-cli2) szakaszát, valamint a githubon a [hibaelhárítási](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md) útmutatót.
 >
 
 ## <a name="working-with-the-cli"></a>A parancssori felület használata
@@ -170,7 +170,7 @@ Done
 ```
 
 > [!TIP]
-> Az előző kimenet táblázatos formátumú. Megadhatja, hogy melyik kimeneti formátumot szeretné használni a CLI `--output` -parancsok argumentumának megadásával, vagy globálisan `az configure`a használatával.
+> Az előző kimenet **táblázatos** formátumú. Megadhatja, hogy melyik kimeneti formátumot szeretné használni a CLI `--output` -parancsok argumentumának megadásával, vagy globálisan `az configure`a használatával.
 >
 
 ## <a name="manage-storage-accounts"></a>Tárfiókok kezelése
@@ -236,7 +236,7 @@ export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 > A cikk alábbi fejezeteiben szereplő példák azt feltételezik, hogy beállította a `AZURE_STORAGE_ACCOUNT` és `AZURE_STORAGE_KEY` a környezeti változókat.
 
 ## <a name="create-and-manage-blobs"></a>Blobok létrehozása és kezelése
-Az Azure Blob Storage egy olyan szolgáltatás, amely nagy mennyiségű strukturálatlan adat, például szöveges vagy bináris adatok tárolására szolgál, amelyek HTTP-vagy HTTPS-kapcsolaton keresztül bárhonnan elérhetők a világ bármely pontján. Ez a szakasz azt feltételezi, hogy már ismeri az Azure Blob Storage-fogalmakat. Részletes információkért lásd: [Az Azure Blob Storage használatának első lépései a .net](../blobs/storage-dotnet-how-to-use-blobs.md) -és blob-szolgáltatásokkal kapcsolatos [fogalmakkal](/rest/api/storageservices/blob-service-concepts).
+Az Azure Blob Storage egy olyan szolgáltatás, amely nagy mennyiségű strukturálatlan adat, például szöveges vagy bináris adatok tárolására szolgál, amelyek HTTP-vagy HTTPS-kapcsolaton keresztül bárhonnan elérhetők a világ bármely pontján. Ez a szakasz azt feltételezi, hogy már ismeri az Azure Blob Storage-fogalmakat. Részletes információkért lásd: [Az Azure Blob Storage használatának első lépései a .net](../blobs/storage-dotnet-how-to-use-blobs.md) -és [blob-szolgáltatásokkal kapcsolatos fogalmakkal](/rest/api/storageservices/blob-service-concepts).
 
 ### <a name="create-a-container"></a>Tároló létrehozása
 Az Azure Storage-ban minden blobnak tárolóban kell lennie. A tárolót a `az storage container create` parancs használatával hozhatja létre:

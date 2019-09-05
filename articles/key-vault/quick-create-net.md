@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 01d1183d82d4d3a0f9d423a2dd64876fb4e3d6a4
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: c4f80c977ea56da14d90d4c0d1784bc379d3a5e9
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147562"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259277"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Gyors útmutató: A .NET-hez készült ügyféloldali kódtár Azure Key Vault
 
@@ -25,7 +25,7 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 - Leegyszerűsítheti és automatizálhatja az SSL/TLS-tanúsítványok feladatait.
 - Használja az FIPS 140-2 2-es szintű hitelesített HSM.
 
-[API](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | -referenciák dokumentációs[könyvtárának forráskód](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | [-csomagja (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
+[API-referenciák dokumentációs](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [könyvtárának forráskód](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | [-csomagja (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -210,5 +210,12 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse [meg a teljes körű konzol alkalmazást](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet) a githubon
-- [További információ a Key Vault](key-vault-whatis.md)
+Ebben a rövid útmutatóban létrehozott egy titkos kulcsot, és lekérte a titkos kulcsot. Tekintse [meg a teljes konzol alkalmazást a githubon](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet).
+
+Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
+
+- [Szolgáltatások közötti hitelesítés megvalósítása Azure Key Vault .NET használatával](service-to-service-authentication.md)
+- [A Azure Key Vault áttekintése](key-vault-overview.md)
+- Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](key-vault-developers-guide.md)
+- Tudnivalók a [kulcsokról, a titkokról és a tanúsítványokról](about-keys-secrets-and-certificates.md)
+- [Azure Key Vault ajánlott eljárások](key-vault-best-practices.md) áttekintése

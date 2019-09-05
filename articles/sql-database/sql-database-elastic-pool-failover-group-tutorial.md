@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
-manager: jroth
 ms.date: 06/19/2019
-ms.openlocfilehash: a9c4fb43717788703184522109301e88d4c94f0e
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.openlocfilehash: 0507b3cb64b4b12bac92cc6bc90120ab4ec56dee
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444811"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568738"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Oktatóanyag: Azure SQL Database rugalmas készlet hozzáadása feladatátvételi csoporthoz
 
@@ -114,7 +113,7 @@ Ebben a lépésben a feladatátvételi csoportot a másodlagos kiszolgálóra fo
    ![Az SQL-adatbázist tartalmazó feladatátvételi csoport feladatátvétele](media/sql-database-single-database-create-failover-group-tutorial/failover-sql-db.png)
 
 1. Tekintse át, hogy melyik kiszolgáló elsődleges, melyik kiszolgáló a másodlagos. Ha a feladatátvétel sikeres volt, a két kiszolgálónak felcserélt szerepkörrel kell rendelkeznie. 
-1. Válassza  újra a feladatátvételt, hogy a feladatátvételi csoportot vissza lehessen térni az eredeti beállításokhoz. 
+1. Válassza újra a feladatátvételt, hogy a feladatátvételi csoportot vissza lehessen térni az eredeti beállításokhoz. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 Törölje az erőforrásokat az erőforráscsoport törlésével. 

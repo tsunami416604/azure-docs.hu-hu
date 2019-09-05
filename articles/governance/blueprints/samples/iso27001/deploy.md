@@ -7,12 +7,12 @@ ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 00e60d41b34531462a4e85623a19f1dd22c6e4e6
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4fd162020fc7acf6c005302a1cb8038e8de424d7
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816810"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231706"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>Az ISO 27001 tervrajzi minta üzembe helyezése
 
@@ -111,9 +111,9 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |\[Előzetes\]verzió: A Windows VM Scale Sets (VMSS) Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: A hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája|Egy üres tömb is felhasználható a nem kötelező paraméterek jelölésére:\[\]|
 |\[Előzetes\]verzió: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Log Analytics munkaterület a Windows rendszerű virtuális gépekhez|Ha ez a munkaterület kívül esik a hozzárendelés hatókörén, manuálisan kell megadnia a "Log Analytics közreműködői" engedélyeket (vagy hasonlókat) a szabályzat-hozzárendelés elsődleges AZONOSÍTÓjának.|
 |\[Előzetes\]verzió: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: A hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája|Egy üres tömb is felhasználható a nem kötelező paraméterek jelölésére:\[\]|
-|Engedélyezett tárfiók-termékváltozatok|Szabályzat-hozzárendelés|Engedélyezett tárolási SKU-ket tartalmazó lista|A tárfiókok esetében megadható termékváltozatok listája.|
-|Engedélyezett VM-termékváltozatok|Szabályzat-hozzárendelés|Engedélyezett virtuálisgép-SKU-ket tartalmazó lista|A virtuális gépek esetében megadható termékváltozatok listája.|
-|ISO 27001-alapú tervkezdeményezés|Szabályzat-hozzárendelés|Azon erőforrástípusok listája, amelyek esetében engedélyezni kell a diagnosztikai naplókat|A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)között.|
+|Engedélyezett tárfiók-termékváltozatok|Szabályzat-hozzárendelés|Engedélyezett tárolási SKU-ket tartalmazó lista|A Storage-fiókok számára megadható SKU-ket tartalmazó lista.|
+|Engedélyezett VM-termékváltozatok|Szabályzat-hozzárendelés|Engedélyezett virtuálisgép-SKU-ket tartalmazó lista|A virtuális gépekhez megadható SKU-ket tartalmazó lista.|
+|ISO 27001-alapú tervkezdeményezés|Szabályzat-hozzárendelés|Azon erőforrástípusok listája, amelyeknek engedélyezve kell lennie a diagnosztikai naplóknak|A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)között.|
 
 ## <a name="next-steps"></a>További lépések
 
@@ -125,7 +125,7 @@ Most, hogy áttekintette az ISO 27001 tervrajzi minta üzembe helyezésének lé
 
 További cikkek a tervekről és azok használatáról:
 
-- Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
+- A [terv életciklusának](../../concepts/lifecycle.md)megismerése.
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.
 - A [tervekkel kapcsolatos műveleti sorrend](../../concepts/sequencing-order.md) testreszabásának elsajátítása.
 - A [tervek erőforrás-zárolásának](../../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.

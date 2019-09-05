@@ -14,14 +14,14 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: yagup
-ms.openlocfilehash: ca3174ad69185da88bf89c843f641dd2b20d9ac5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
-ms.translationtype: MT
+ms.openlocfilehash: 03c0106d793fc7b77ccc8a9176f158a9928ab291
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872477"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620122"
 ---
-# <a name="traffic-analytics"></a>Forgalmi elemzések
+# <a name="traffic-analytics"></a>Forgalomelemzés
 
 Traffic Analytics egy felhőalapú megoldás, amely láthatóságot biztosít a felhasználói és alkalmazási tevékenységeknek a felhőalapú hálózatokban. A Traffic Analytics Network Watcher hálózati biztonsági csoport (NSG) folyamatábráit elemzi, hogy betekintést nyújtson az Azure-felhőbe irányuló forgalomba. A Traffic Analytics segítségével a következőket teheti:
 
@@ -55,7 +55,7 @@ A Traffic Analytics megvizsgálja a nyers NSG-naplókat, és rögzíti a csökke
 
 ![Adatáramlás a NSG-folyamat naplói feldolgozásához](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
-## <a name="supported-regions"></a>Támogatott régiók
+## <a name="supported-regions-nsg"></a>Támogatott régiók: NSG 
 
 A NSG Traffic Analytics a következő támogatott régiókban használható:
 
@@ -84,6 +84,8 @@ A NSG Traffic Analytics a következő támogatott régiókban használható:
 * Kelet-Japán 
 * Nyugat-Japán
 * USA-beli államigazgatás – Virginia
+
+## <a name="supported-regions-log-analytics-workspaces"></a>Támogatott régiók: Munkaterületek Log Analytics
 
 A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
 * Közép-Kanada
@@ -137,7 +139,7 @@ A felhasználói hozzáférési engedélyek vizsgálatával kapcsolatos informá
 
 ### <a name="enable-network-watcher"></a>A Network Watcher engedélyezése
 
-A forgalom elemzéséhez rendelkeznie kell egy meglévő hálózati figyelővel, vagy [engedélyeznie kell egy hálózati figyelőt](network-watcher-create.md) minden olyan régióban, amelyhez NSG szeretné elemezni a forgalmat. A Traffic Analytics a [támogatott régiókban](#supported-regions)üzemeltetett NSG is engedélyezhető.
+A forgalom elemzéséhez rendelkeznie kell egy meglévő hálózati figyelővel, vagy [engedélyeznie kell egy hálózati figyelőt](network-watcher-create.md) minden olyan régióban, amelyhez NSG szeretné elemezni a forgalmat. A Traffic Analytics a [támogatott régiókban](#supported-regions-nsg)üzemeltetett NSG is engedélyezhető.
 
 ### <a name="select-a-network-security-group"></a>Hálózati biztonsági csoport kiválasztása
 
@@ -147,7 +149,7 @@ A Azure Portal bal oldalán válassza a **figyelés**, majd a **Network Watcher*
 
 ![A NSG flow naplójának engedélyezését igénylő NSG kiválasztása](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
-Ha olyan NSG próbálja meg a Traffic Analytics szolgáltatást, amely a [támogatott régión](#supported-regions)kívül más régióban található, "nem található" hibaüzenet jelenik meg.
+Ha olyan NSG próbálja meg a Traffic Analytics szolgáltatást, amely a [támogatott régión](#supported-regions-nsg)kívül más régióban található, "nem található" hibaüzenet jelenik meg.
 
 ## <a name="enable-flow-log-settings"></a>Folyamat naplójának beállításainak engedélyezése
 
@@ -172,25 +174,26 @@ New-AzStorageAccount `
 
 Válassza ki a következő beállításokat a képen látható módon:
 
-1. **Állapot** kiválasztása
+1. **Állapot** *kiválasztása*
 2. Válassza a *2. verziót* a flow- **naplók verziójának**kiválasztásához. A 2. verzió folyamat-munkameneti statisztikát tartalmaz (bájtok és csomagok)
-3. Válasszon ki egy meglévő Storage-fiókot a folyamat naplófájljainak tárolásához a alkalmazásban. Ha örökre szeretné tárolni az adattárolást, állítsa az értéket *0-ra*. A Storage-fiókhoz Azure Storage-díjakat kell fizetnie.
-4. Állítsa  be a megőrzési időt arra, hogy hány napig szeretné tárolni az adatok tárolását.
+3. Válasszon ki egy meglévő Storage-fiókot a folyamat naplófájljainak tárolásához a alkalmazásban. Ha örökre szeretné tárolni az adattárolást, állítsa az értéket *0-ra*. A Storage-fiókhoz Azure Storage-díjakat kell fizetnie. Győződjön meg arról, hogy a tároló nem rendelkezik "Data Lake Storage Gen2 hierarchikus névtér engedélyezve" beállítás értéke TRUE (igaz). Emellett a NSG nem tárolhatók tűzfallal rendelkező Storage-fiókban. 
+4. Állítsa be a megőrzési időt arra, hogy hány napig szeretné tárolni az adatok tárolását.
 5. **Traffic Analytics állapothoz**válassza *a* be lehetőséget.
-6. Válasszon ki egy meglévő Log Analytics (OMS) munkaterületet, vagy válassza az **Új munkaterület létrehozása** lehetőséget egy új létrehozásához. A Traffic Analytics a Log Analytics munkaterületet használja az elemzés létrehozásához használt összesített és indexelt adatokat tárolására. Ha egy meglévő munkaterületet választ ki, akkor azt a [támogatott régiók](#supported-regions) egyikében kell megadnia, és az új lekérdezési nyelvre kell frissíteni. Ha nem szeretne frissíteni egy meglévő munkaterületet, vagy nem rendelkezik egy támogatott régióbeli munkaterülettel, hozzon létre egy újat. További információ a lekérdezési nyelvekről: az [Azure log Analytics frissítése az új naplók keresésére](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+6. Válassza ki a feldolgozási időközt. Az Ön választása alapján a rendszer begyűjti a flow-naplókat a Storage-fiókból, és Traffic Analytics dolgozza fel. 1 óránként vagy 10 percenként is kiválaszthatja a feldolgozási időközt.
+7. Válasszon ki egy meglévő Log Analytics (OMS) munkaterületet, vagy válassza az **Új munkaterület létrehozása** lehetőséget egy új létrehozásához. A Traffic Analytics a Log Analytics munkaterületet használja az elemzés létrehozásához használt összesített és indexelt adatokat tárolására. Ha egy meglévő munkaterületet választ ki, akkor azt a [támogatott régiók](#supported-regions-log-analytics-workspaces) egyikében kell megadnia, és az új lekérdezési nyelvre kell frissíteni. Ha nem szeretne frissíteni egy meglévő munkaterületet, vagy nem rendelkezik egy támogatott régióbeli munkaterülettel, hozzon létre egy újat. További információ a lekérdezési nyelvekről: az [Azure log Analytics frissítése az új naplók keresésére](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
     A Traffic Analytics-megoldást üzemeltető log Analytics-munkaterületnek és a NSG nem kell ugyanabban a régióban lennie. Előfordulhat például, hogy a Traffic Analytics egy olyan munkaterületen található a Nyugat-európai régióban, amely NSG az USA keleti régiójában és az USA nyugati régiójában. Több NSG is konfigurálható ugyanabban a munkaterületen.
-7. Kattintson a **Mentés** gombra.
+8. Kattintson a **Mentés** gombra.
 
-    ![A Storage-fiók kiválasztása, a Log Analytics munkaterület és a Traffic Analytics engedélyezése](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
+    ![A Storage-fiók kiválasztása, a Log Analytics munkaterület és a Traffic Analytics engedélyezése](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-Ismételje meg az előző lépéseket minden olyan NSG, amelyhez engedélyezni szeretné a Traffic Analytics szolgáltatást. A rendszer a munkaterületre küldi a folyamatokból származó adatok adatait, ezért ügyeljen arra, hogy az országában/régiójában lévő helyi törvények és rendeletek engedélyezzék az adattárolást abban a régióban, ahol a munkaterület létezik.
+Ismételje meg az előző lépéseket minden olyan NSG, amelyhez engedélyezni szeretné a Traffic Analytics szolgáltatást. A rendszer elküldi a munkaterületnek a flow-naplókból származó adatok adatait, ezért gondoskodjon arról, hogy a helyi törvények és rendeletek engedélyezze az adattárolást abban a régióban, ahol a munkaterület létezik. Ha eltérő feldolgozási intervallumokat állított be különböző NSG, az adatok gyűjtése különböző időközönként történik. Példa: Dönthet úgy, hogy 10 percen belül engedélyezi a feldolgozási időközt a kritikus virtuális hálózatok, és 1 órát a nem kritikus virtuális hálózatok.
 
 A Traffic Analytics szolgáltatást a Azure PowerShell [set-AzNetworkWatcherConfigFlowLog PowerShell-](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) parancsmagjának használatával is konfigurálhatja. Futtassa `Get-Module -ListAvailable Az` a parancsot a telepített verzió megkereséséhez. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 
 ## <a name="view-traffic-analytics"></a>Traffic Analytics megtekintése
 
-A portál bal oldalán válassza a **minden szolgáltatás**lehetőséget, majd a **szűrő** mezőbe írja  be a figyelőt. Ha a **figyelő** megjelenik a keresési eredmények között, válassza ki. A Traffic Analytics és képességei megismeréséhez válassza a **Network Watcher**, majd a **Traffic Analytics**lehetőséget.
+A portál bal oldalán válassza a **minden szolgáltatás**lehetőséget, majd a **szűrő** mezőbe írja be a figyelőt. Ha a **figyelő** megjelenik a keresési eredmények között, válassza ki. A Traffic Analytics és képességei megismeréséhez válassza a **Network Watcher**, majd a **Traffic Analytics**lehetőséget.
 
 ![A Traffic Analytics irányítópult elérése](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 

@@ -12,19 +12,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: f3d7edf21edf116732eceb332cb8725a0dee85dc
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: acdf52022d8498a186ed4cff90284cd6e299d6c0
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742016"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240845"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>A Azure Cloud Shell áttekintése
-A Azure Cloud Shell egy interaktív, böngészővel elérhető rendszerhéj az Azure-erőforrások kezeléséhez.
-Rugalmasságot biztosít a működésének legmegfelelőbb rendszerhéj-élmény kiválasztásában.
-A Linuxot használók választhatják a Basht, a Windows-használók pedig a PowerShellt.
+A Azure Cloud Shell egy interaktív, hitelesített, böngészővel elérhető rendszerhéj az Azure-erőforrások kezeléséhez.
+Rugalmasságot biztosít a működésének legmegfelelőbb rendszerhéj-élmény kiválasztásában, vagy bash vagy PowerShell használatával.
 
 Az alábbi gombra kattintva próbálja ki a shell.azure.com.
 

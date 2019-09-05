@@ -10,25 +10,25 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 26f965169f1fd01676efd3356534a8ac9f2121f7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7afa96c3c4d1a163e323aa0bb50ec361ff74aac3
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036073"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278690"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése Azure Kubernetes Service-fürtön
 
 Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként az Azure Kubernetes szolgáltatásban (ak) a Azure Machine Learning szolgáltatás használatával. Az Azure Kubernetes szolgáltatás kiválóan alkalmas a nagy léptékű éles környezetekben való üzembe helyezésre. Ha a következő lehetőségek közül egyet vagy többet szeretne használni, használja az Azure Kubernetes szolgáltatást:
 
 - __Gyors válaszidő__.
-- A telepített szolgáltatás automatikus skálázása.
+- A telepített szolgáltatás automatikus __skálázása__ .
 - __Hardveres gyorsítási__ lehetőségek, például GPU és mező – programozható Gate-tömbök (FPGA).
 
 > [!IMPORTANT]
-> A fürttípus skálázás nem érhető el a Azure Machine Learning SDK-n keresztül. Az AK-fürtök csomópontjainak méretezésével kapcsolatos további információkért lásd: a csomópontok számának skálázása [egy AK-fürtben](../../aks/scale-cluster.md).
+> A fürttípus skálázás nem érhető el a Azure Machine Learning SDK-n keresztül. Az AK-fürtök csomópontjainak méretezésével kapcsolatos további információkért lásd: [a csomópontok számának skálázása egy AK-fürtben](../../aks/scale-cluster.md).
 
-Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a munkaterülethez __csatlakoztatott__AK-fürtbe helyezi üzembe a szolgáltatást. Az AK-fürtök kétféleképpen csatlakoztathatók a munkaterülethez:
+Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a __munkaterülethez csatlakoztatott__AK-fürtbe helyezi üzembe a szolgáltatást. Az AK-fürtök kétféleképpen csatlakoztathatók a munkaterülethez:
 
 * Hozza létre az AK-fürtöt a Azure Machine Learning Service SDK, a Machine Learning parancssori felület vagy a Azure Portal használatával. Ez a folyamat automatikusan csatlakoztatja a fürtöt a munkaterülethez.
 * Csatoljon egy meglévő AK-fürtöt a Azure Machine Learning szolgáltatás munkaterületéhez. A fürtök csatlakoztathatók a Azure Machine Learning Service SDK-val, Machine Learning parancssori felülettel vagy a Azure Portalsal.
@@ -42,7 +42,7 @@ Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a munkaterületh
 
 - A munkaterületen regisztrált gépi tanulási modell. Ha nem rendelkezik regisztrált modellel, tekintse meg a [modellek üzembe helyezésének módját és helyét](how-to-deploy-and-where.md).
 
-- Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](https://aka.ms/aml-sdk)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](how-to-vscode-tools.md).
+- Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](how-to-vscode-tools.md).
 
 - A cikkben szereplő __Python__ -kódrészletek azt feltételezik, hogy a következő változók vannak beállítva:
 
@@ -231,13 +231,13 @@ A VS Code használatával kapcsolatos információkért lásd: [üzembe helyezé
 
 Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a __kulcs alapú__ hitelesítés alapértelmezés szerint engedélyezve van. Engedélyezheti a __jogkivonat-alapú__ hitelesítést is. A jogkivonat-alapú hitelesítéshez az szükséges, hogy az ügyfelek egy Azure Active Directory fiókot használjanak a hitelesítési jogkivonat igényléséhez, amely a központilag telepített szolgáltatásra irányuló kérések elvégzésére szolgál.
 
-A hitelesítés letiltásához állítsa `auth_enabled=False` be a paramétert a központi telepítési konfiguráció létrehozásakor. Az alábbi példa az SDK használatával letiltja a hitelesítést:
+A hitelesítés __letiltásához__ állítsa `auth_enabled=False` be a paramétert a központi telepítési konfiguráció létrehozásakor. Az alábbi példa az SDK használatával letiltja a hitelesítést:
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, auth_enabled=False)
 ```
 
-Az ügyfélalkalmazások általi hitelesítéssel kapcsolatos információkért tekintse meg a webszolgáltatásként [üzembe helyezett Azure Machine learning modell](how-to-consume-web-service.md)felhasználását ismertető témakört.
+Az ügyfélalkalmazások általi hitelesítéssel kapcsolatos információkért tekintse meg a [webszolgáltatásként üzembe helyezett Azure Machine learning modell](how-to-consume-web-service.md)felhasználását ismertető témakört.
 
 ### <a name="authentication-with-keys"></a>Hitelesítés kulcsokkal
 

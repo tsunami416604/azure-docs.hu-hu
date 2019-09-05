@@ -1,5 +1,5 @@
 ---
-title: Környezet konfigurálása tervrajz-kezelőhöz
+title: A környezet konfigurálása Blueprint Operatorhoz
 description: Ismerje meg, hogyan konfigurálhatja Azure-környezetét a Blueprint Operator beépített szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel való használatra.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,14 +7,14 @@ ms.date: 08/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8c39eadc6f1448e19ffee6d741cc50a7b6e09475
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 27f7c747dfd39fed7a67924da71b9293979e0f94
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70148608"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231891"
 ---
-# <a name="configure-your-environment-for-a-blueprint-operator"></a>Környezet konfigurálása tervrajz-kezelőhöz
+# <a name="configure-your-environment-for-a-blueprint-operator"></a>A környezet konfigurálása Blueprint Operatorhoz
 
 A terv-definíciók és a tervrajz-hozzárendelések kezelése különböző csapatokhoz rendelhető. Az építész vagy az irányítási csapat feladata az, hogy a terv definícióinak életciklus-felügyeletéhez felelősek legyenek, miközben egy operatív csapat felelős a központilag ellenőrzött tervrajz-definíciók hozzárendeléseinek kezeléséért.
 
@@ -40,7 +40,7 @@ A tervrajzok definíciója rendszer által hozzárendelt vagy felhasználó ált
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
+- A [terv életciklusának](../concepts/lifecycle.md)megismerése.
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.
 - A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása.
 - A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.

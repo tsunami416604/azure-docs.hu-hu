@@ -1,131 +1,131 @@
 ---
-title: Minta - 800-53 előírásain NIST SP R4 tervezet - telepítés lépéseit
-description: Az NIST SP fázisaiban 800-53 előírásain R4 tervezet minta üzembe helyezése.
+title: Minta-NIST SP 800-53 R4 Blueprint – a lépések üzembe helyezése
+description: Telepítse a NIST SP 800-53 R4 Blueprint minta lépéseit.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 206763e2d17f4ad711ff5fd897f1429814e61837
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a4b2690c067e1081efdc9637e79b181fc75ad6d4
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228904"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232706"
 ---
-# <a name="deploy-the-nist-sp-800-53-r4-blueprint-sample"></a>Az NIST SP 800-53 előírásain R4 tervezet minta üzembe helyezése
+# <a name="deploy-the-nist-sp-800-53-r4-blueprint-sample"></a>A NIST SP 800-53 R4 Blueprint minta üzembe helyezése
 
-A 800-53 előírásain R4 tervezet minta üzembe helyezése az Azure-tervek NIST SP, az alábbi lépéseket kell tenni:
+Az Azure-tervezetek NIST SP 800-53 R4 Blueprint-minta üzembe helyezéséhez a következő lépéseket kell végrehajtani:
 
 > [!div class="checklist"]
-> - Hozzon létre egy új tervezet arról a minta
-> - Jelölje meg a mintát, másolatának **közzétett**
-> - A másolatát a tervezet hozzárendelése egy meglévő előfizetés
+> - Új terv létrehozása a mintából
+> - A minta másolatának megjelölése **közzétettként**
+> - A terv másolatának kiosztása meglévő előfizetéshez
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-blueprint-from-sample"></a>Tervrajz létrehozása mintából
+## <a name="create-blueprint-from-sample"></a>Terv létrehozása mintából
 
-Először meg a tervezet minta létrehoz egy új tervezet alapszintű, a minta az környezet.
+Először is implementálja a terv mintáját úgy, hogy létrehoz egy új tervet a környezetben a minta kezdőként való használatával.
 
-1. Válassza ki **minden szolgáltatás** , és keresse meg és válassza **házirend** a bal oldali panelen. Az a **házirend** lapon jelölje be **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget, és keresse meg és válassza ki a **házirend** elemet a bal oldali ablaktáblán. A **szabályzat** lapon válassza a **tervrajzok**lehetőséget.
 
-1. Az a **bevezetés** oldal bal oldalán válassza a **létrehozás** gomb alatt _tervrajz létrehozása_.
+1. A bal oldali **első lépések** lapon kattintson a **Létrehozás** gombra a _terv létrehozása_területen.
 
-1. Keresse meg a **NIST SP 800-53 előírásain R4** tervezet minta alapján _egyéb minták_ válassza **a minta használata**.
+1. Keresse meg a **NIST SP 800-53 R4** tervrajz mintát _más minták_ alatt, és válassza **a minta használata**lehetőséget.
 
-1. Adja meg a _alapjai_ a tervezet-minta:
+1. Adja meg a tervezet mintájának alapjait:
 
-   - **Tervrajz neve**: Adja meg a NIST SP 800-53 előírásain R4 tervezet minta példányának nevét.
-   - **Definíció helye**: Használja a három pontra, és válassza ki a felügyeleti csoport a minta másolatának mentése.
+   - **Terv neve**: Adja meg a NIST SP 800-53 R4 Blueprint minta példányának nevét.
+   - **Definíció helye**: Használja a három pontot, és válassza ki a felügyeleti csoportot, és mentse a minta másolatát a következőre:.
 
-1. Válassza ki a _összetevők_ fülre az oldal tetején lévő vagy **tovább: Összetevők** az oldal alján.
+1. Válassza ki az összetevők fület a lap tetején, vagy **a következőt:**  Az oldal alján található összetevők.
 
-1. Tekintse át a tervezet minta alkotó összetevők listáját. Az összetevők számos rendelkezik, paraméterek, amelyeket később fogunk meghatározni. Válassza ki **Piszkozat mentése** amikor befejezte a tervezet-minta áttekintése.
+1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
-## <a name="publish-the-sample-copy"></a>A minta másolási közzététele
+## <a name="publish-the-sample-copy"></a>A minta másolatának közzététele
 
-A tervezet minta másolatának létrehozása megtörtént a környezetben. A létrehozást **Draft** módban kell lennie, és **közzétett** előtt az hozzárendelve, és telepítve. A tervezet minta másolatát is beállítható, hogy a környezet és az igényeinek, azonban, hogy a módosítás lehet, hogy esniük, NIST SP ciklustól 800-53 előírásain vezérlők.
+A terv mintájának másolata már létre lett hozva a környezetében. A rendszer **Piszkozat** módban jön létre, és **közzé** kell tenni ahhoz, hogy hozzá lehessen rendelni és telepíteni lehessen. A terv mintájának másolata testreszabható a környezetében és a szükséges, de ez a módosítás a NIST SP 800-53-vezérlőkkel való összehangolást is elvégezheti.
 
-1. Válassza ki **minden szolgáltatás** , és keresse meg és válassza **házirend** a bal oldali panelen. Az a **házirend** lapon jelölje be **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget, és keresse meg és válassza ki a **házirend** elemet a bal oldali ablaktáblán. A **szabályzat** lapon válassza a **tervrajzok**lehetőséget.
 
-1. Válassza ki a **definíciók tervezetet** a bal oldalon. A szűrők segítségével keresse meg a tervezet minta példányát, és válassza ki azt.
+1. Válassza a bal oldali **terv** -definíciók lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Válassza ki **közzététel tervezet** az oldal tetején. A jobb oldalon az új lap, adja meg egy **verzió** a tervezet-minta a másolatát. Ez a tulajdonság hasznos Ha később egy módosítása. Adja meg **megjegyzések módosítása** például az "első verziója közzétett a NIST SP 800-53 előírásain R4 tervezet minta." Válassza ki **közzététel** az oldal alján.
+1. Válassza a **terv közzététele** lehetőséget az oldal tetején. A jobb oldalon található új lapon adjon meg egy **verziót** a tervezet mintájának másolatához. Ez a tulajdonság akkor hasznos, ha később módosítja a módosítást. Adjon meg olyan **módosítási megjegyzéseket** , mint az "első verzió a NIST SP 800-53 R4 Blueprint Sample minta" című részből. Ezután válassza a **Közzététel** elemet az oldal alján.
 
-## <a name="assign-the-sample-copy"></a>A minta másolási hozzárendelése
+## <a name="assign-the-sample-copy"></a>A minta másolatának kiosztása
 
-Miután a tervezet minta másolata sikeresen megtörtént **közzétett**, előfizetésre történő mentése felügyeleti csoporton belül is hozzárendelhető. Ez a lépés nem, melyekben a paraméterek vannak-e adva az, hogy az egyes telepítések a példány a tervezet minta egyedi.
+Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ezzel a lépéssel megadhatja, hogy az egyes központi telepítések egyediek legyenek-e.
 
-1. Válassza ki **minden szolgáltatás** , és keresse meg és válassza **házirend** a bal oldali panelen. Az a **házirend** lapon jelölje be **tervezetek**.
+1. Válassza a **minden szolgáltatás** lehetőséget, és keresse meg és válassza ki a **házirend** elemet a bal oldali ablaktáblán. A **szabályzat** lapon válassza a **tervrajzok**lehetőséget.
 
-1. Válassza ki a **definíciók tervezetet** a bal oldalon. A szűrők segítségével keresse meg a tervezet minta példányát, és válassza ki azt.
+1. Válassza a bal oldali **terv** -definíciók lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Válassza ki **tervezet hozzárendelése** a tervrajz-definíció lap tetején.
+1. Válassza a terv kiosztása elemet a terv definíciója oldal tetején.
 
-1. Adja meg a paraméter értékét a tervezet-hozzárendelést:
+1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
    - Alapvető beállítások
 
-     - **Előfizetések**: Válasszon ki egy vagy több az előfizetéseket, amelyek a felügyeleti csoportban, a tervezet minta másolatának mentése. Ha egynél több előfizetéssel, hozzárendelést a megadott paraméterek használatával hozható létre.
-     - **Hozzárendelés neve**: Az Ön a tervrajz neve alapján előre megadott név.
-       Szükség szerint változtassa meg, vagy hagyja üresen, mivel.
-     - **Hely**: Válassza ki a régiót, a felügyelt identitás kell létrehozni. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Tervrajz-definíció verziója**: Válasszon ki egy **közzétett** a tervezet minta másolatának verzióját.
+     - **Előfizetések**: Válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, a terv mintájának másolatát a következőre mentette:. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
+     - **Hozzárendelés neve**: A név előre ki van töltve a terv neve alapján.
+       Szükség szerint módosítsa a változást, vagy hagyja a következőt:.
+     - **Hely**: Válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Terv definíciójának verziója**: Válasszon egy **közzétett** verziót a tervezet mintájának másolatáról.
 
-   - Zárolási hozzárendelés
+   - Hozzárendelés zárolása
 
-     Válassza ki a tervezet zárolás, a környezet beállítása. További információkat talál a [terv-erőforrások zárolásáról](../../concepts/resource-locking.md) szóló cikkben.
+     Válassza ki a környezethez tartozó terv zárolási beállítását. További információkat talál a [terv-erőforrások zárolásáról](../../concepts/resource-locking.md) szóló cikkben.
 
    - Felügyelt identitás
 
-     Hagyja meg az alapértelmezett _rendszerhez rendelt_ felügyelt identitás lehetőséget.
+     Hagyja meg az alapértelmezett _rendszerhez rendelt_ felügyelt identitás beállítást.
 
-   - Összetevő-paraméterek
+   - Összetevő paraméterei
 
-     A lehívandó összetevő definiálva van ebben a szakaszban definiált paraméterek érvényesek. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) mivel azok van megadva a a tervezet-hozzárendelés során. A teljes listát vagy összetevő paraméterek és ezek leírását: [összetevő paramétereket tartalmazó](#artifact-parameters-table).
+     Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. A teljes listát vagy az összetevő paramétereit és azok leírását lásd: összetevő- [Paraméterek táblázata](#artifact-parameters-table).
 
-1. Után minden paraméter van megadva, válassza a **hozzárendelése** az oldal alján. A tervezet-hozzárendelést jön létre, és összetevő telepítési kezdődik. Üzembe helyezés eltarthat nagyjából egy óra. Üzembe helyezés állapotának ellenőrzéséhez nyissa meg a tervezet-hozzárendelést.
+1. Az összes paraméter megadása után válassza a lap alján található **hozzárendelés** elemet. A terv-hozzárendelés létrejött, és az összetevő üzembe helyezése megkezdődik. Az üzembe helyezés nagyjából egy órát vesz igénybe. Az üzembe helyezés állapotának megtekintéséhez nyissa meg a terv-hozzárendelést.
 
 > [!WARNING]
-> Az Azure-tervek szolgáltatás és a beépített tervezet minták **díjmentes**. Az Azure-erőforrások [termék díjszabása](https://azure.microsoft.com/pricing/). Használja a [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) a tervezet minta által üzembe helyezett erőforrások futtatásával járó költségeket megbecsülheti.
+> Az Azure BluePrints szolgáltatás és a beépített tervrajzi minták díjmentesek. Az Azure-erőforrások [díjszabása termékenként](https://azure.microsoft.com/pricing/)történik. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával megbecsülheti a tervrajzi minta által üzembe helyezett erőforrások futtatásának költségeit.
 
-## <a name="artifact-parameters-table"></a>Összetevő paraméterek táblában
+## <a name="artifact-parameters-table"></a>Összetevő-paraméterek táblázata
 
-A következő táblázat felsorolja a tervezet összetevő paraméterek:
+A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-|Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
+|Elemnév|Összetevő típusa|Paraméternév|Leírás|
 |-|-|-|-|
-|\[Előzetes verzió\]: Naplózási NIST SP 800-53 előírásain R4 vezérlők és naplózási követelmények támogatására adott Virtuálisgép-bővítmények telepítése|Szabályzat-hozzárendelés|Virtuális gépek konfigurálni kell a log Analytics munkaterület azonosítója|Ez az az Azonosítóját (GUID), amely a virtuális gépek konfigurálni kell a Log Analytics-munkaterületen.|
-|\[Előzetes verzió\]: Naplózási NIST SP 800-53 előírásain R4 vezérlők és naplózási követelmények támogatására adott Virtuálisgép-bővítmények telepítése|Szabályzat-hozzárendelés|Erőforrástípusok, amely elvben engedélyezett a diagnosztikai naplók listája|Ha diagnosztikai naplót a beállítás nincs engedélyezve a naplózandó erőforrástípusok listája. Elfogadható értékek található [Azure Monitor-diagnosztikai naplók sémák](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
-|\[Előzetes verzió\]: Naplózási NIST SP 800-53 előírásain R4 vezérlők és naplózási követelmények támogatására adott Virtuálisgép-bővítmények telepítése|Szabályzat-hozzárendelés|Windows virtuális gép Rendszergazdák csoportot ki kell zárni, felhasználók listája|Ki kell zárni a helyi Rendszergazdák csoport tagjainak pontosvesszővel tagolt listája. Például: Rendszergazda; myUser1; myUser2|
-|\[Előzetes verzió\]: Naplózási NIST SP 800-53 előírásain R4 vezérlők és naplózási követelmények támogatására adott Virtuálisgép-bővítmények telepítése|Szabályzat-hozzárendelés|Windows virtuális gép Rendszergazdák csoportjában bevonandó felhasználók listája|Szerepelnie kell a helyi Rendszergazdák csoport tagjai pontosvesszővel tagolt listája. Például: Rendszergazda; myUser1; myUser2|
-|\[Előzetes verzió\]: Log Analytics-ügynököket Linux Virtuálisgép-méretezési csoportok (VMSS) üzembe helyezése|Szabályzat-hozzárendelés|Log Analytics-munkaterület Linux rendszerű virtuális gép méretezési csoportok (VMSS)|Ha ez a munkaterület a hozzárendelés hatókörén kívül esik, kell manuálisan adjon jogosultságot "Log Analytics-közreműködő" (vagy hasonlót) a szabályzat-hozzárendelés egyszerű azonosító.|
-|\[Előzetes verzió\]: Log Analytics-ügynököket Linux Virtuálisgép-méretezési csoportok (VMSS) üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hogy támogatott Linux operációs rendszer hatókör hozzáadása Virtuálisgép-rendszerképek listája|Üres tömb jelzi a választható paraméterek nélkül használható: \[\]|
-|\[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése|Szabályzat-hozzárendelés|Log Analytics-munkaterület Linux rendszerű virtuális gépekhez|Ha ez a munkaterület a hozzárendelés hatókörén kívül esik, kell manuálisan adjon jogosultságot "Log Analytics-közreműködő" (vagy hasonlót) a szabályzat-hozzárendelés egyszerű azonosító.|
-|\[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hogy támogatott Linux operációs rendszer hatókör hozzáadása Virtuálisgép-rendszerképek listája|Üres tömb jelzi a választható paraméterek nélkül használható: \[\]|
-|\[Előzetes verzió\]: Log Analytics-ügynököket Windows Virtuálisgép-méretezési csoportok (VMSS) üzembe helyezése|Szabályzat-hozzárendelés|Log Analytics-munkaterület Windows virtuális gép méretezési csoportok (VMSS)|Ha ez a munkaterület a hozzárendelés hatókörén kívül esik, kell manuálisan adjon jogosultságot "Log Analytics-közreműködő" (vagy hasonlót) a szabályzat-hozzárendelés egyszerű azonosító.|
-|\[Előzetes verzió\]: Log Analytics-ügynököket Windows Virtuálisgép-méretezési csoportok (VMSS) üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hatókör hozzáadása a Windows operációs rendszer rendelkezik támogatott Virtuálisgép-rendszerképek listája|Üres tömb jelzi a választható paraméterek nélkül használható: \[\]|
-|\[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése|Szabályzat-hozzárendelés|Log Analytics-munkaterület Windows-beli virtuális gépek|Ha ez a munkaterület a hozzárendelés hatókörén kívül esik, kell manuálisan adjon jogosultságot "Log Analytics-közreműködő" (vagy hasonlót) a szabályzat-hozzárendelés egyszerű azonosító.|
-|\[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hatókör hozzáadása a Windows operációs rendszer rendelkezik támogatott Virtuálisgép-rendszerképek listája|Üres tömb jelzi a választható paraméterek nélkül használható: \[\]|
-|Komplex veszélyforrások elleni védelem a Storage-fiókok üzembe helyezése|Szabályzat-hozzárendelés|Következmény|Házirend hatások információkat tekinthet meg [Azure házirend hatások ismertetése](../../../policy/concepts/effects.md)|
-|Az SQL Server-kiszolgálók üzembe helyezése a naplózás|Szabályzat-hozzárendelés|(A 0 korlátlan megőrzési jelzi) megőrzési időszak napban megadott értéke|Adatmegőrzési napok (nem kötelező, 180 nap, ha nincs megadva)|
-|Az SQL Server-kiszolgálók üzembe helyezése a naplózás|Szabályzat-hozzárendelés|SQL server-naplózás a storage-fiók erőforráscsoportjának neve|Naplózási adatbázis felvezeti ezeket egy naplófájlba, jelentkezzen be az Azure Storage-fiók (storage-fiók létrejön az egyes régiókban, ahol jön létre egy SQL Server által az adott régióban található összes kiszolgáló megosztott). Fontos – a naplózási megfelelő működéséhez nem törli vagy nevezze át az erőforráscsoportot, vagy a storage-fiókok.|
-|Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése|Szabályzat-hozzárendelés|Hálózati biztonsági csoport diagnosztikai tárfiók-előtagja|A hálózati biztonsági csoport helye alkotnak a létrehozott tárfiók neve értékkel egyesítve jön létre ezt az előtagot.|
-|Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése|Szabályzat-hozzárendelés|Erőforráscsoport neve hálózati biztonsági csoport diagnosztikai tárfiók (már léteznie kell)|Az erőforráscsoport, amely a tárfiók létrejön. Ennek az erőforráscsoportnak már léteznie kell.|
+|\[Előzetes\]verzió: A NIST SP 800-53 R4 által felügyelt és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|Log Analytics munkaterület-azonosító, amelyhez a virtuális gépeket konfigurálni kell|Ez a Log Analytics munkaterület azonosítója (GUID), amelyhez a virtuális gépeket konfigurálni kell.|
+|\[Előzetes\]verzió: A NIST SP 800-53 R4 által felügyelt és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|Azon erőforrástípusok listája, amelyeknek engedélyezve kell lennie a diagnosztikai naplóknak|A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)között.|
+|\[Előzetes\]verzió: A NIST SP 800-53 R4 által felügyelt és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|A Windows rendszerű virtuális gépek rendszergazdái csoportból kizárandó felhasználók listája|A rendszergazdák helyi csoportba kizárandó tagok pontosvesszővel tagolt listája. Például: Rendszergazda myUser1; myUser2|
+|\[Előzetes\]verzió: A NIST SP 800-53 R4 által felügyelt és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|A Windows rendszerű virtuális gépek rendszergazdái csoportjának részét képező felhasználók listája|A rendszergazdák helyi csoportba foglalandó tagok pontosvesszővel tagolt listája. Például: Rendszergazda myUser1; myUser2|
+|\[Előzetes\]verzió: A Linux VM Scale Sets (VMSS) Log Analytics-ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Log Analytics a Linux VM Scale Sets (VMSS) munkaterülete|Ha ez a munkaterület kívül esik a hozzárendelés hatókörén, manuálisan kell megadnia a "Log Analytics közreműködői" engedélyeket (vagy hasonlókat) a szabályzat-hozzárendelés elsődleges AZONOSÍTÓjának.|
+|\[Előzetes\]verzió: A Linux VM Scale Sets (VMSS) Log Analytics-ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: A hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája|Egy üres tömb is felhasználható a nem kötelező paraméterek jelölésére:\[\]|
+|\[Előzetes\]verzió: A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|A Linux rendszerű virtuális gépek Log Analytics munkaterülete|Ha ez a munkaterület kívül esik a hozzárendelés hatókörén, manuálisan kell megadnia a "Log Analytics közreműködői" engedélyeket (vagy hasonlókat) a szabályzat-hozzárendelés elsődleges AZONOSÍTÓjának.|
+|\[Előzetes\]verzió: A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: A hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája|Egy üres tömb is felhasználható a nem kötelező paraméterek jelölésére:\[\]|
+|\[Előzetes\]verzió: A Windows VM Scale Sets (VMSS) Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Log Analytics munkaterület a Windows VM Scale Setshoz (VMSS)|Ha ez a munkaterület kívül esik a hozzárendelés hatókörén, manuálisan kell megadnia a "Log Analytics közreműködői" engedélyeket (vagy hasonlókat) a szabályzat-hozzárendelés elsődleges AZONOSÍTÓjának.|
+|\[Előzetes\]verzió: A Windows VM Scale Sets (VMSS) Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: A hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája|Egy üres tömb is felhasználható a nem kötelező paraméterek jelölésére:\[\]|
+|\[Előzetes\]verzió: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Log Analytics munkaterület a Windows rendszerű virtuális gépekhez|Ha ez a munkaterület kívül esik a hozzárendelés hatókörén, manuálisan kell megadnia a "Log Analytics közreműködői" engedélyeket (vagy hasonlókat) a szabályzat-hozzárendelés elsődleges AZONOSÍTÓjának.|
+|\[Előzetes\]verzió: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: A hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája|Egy üres tömb is felhasználható a nem kötelező paraméterek jelölésére:\[\]|
+|Komplex veszélyforrások elleni védelem üzembe helyezése a Storage-fiókokon|Szabályzat-hozzárendelés|Következmény|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok ismertetése](../../../policy/concepts/effects.md) című témakörben találhatók|
+|Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|A megőrzési időtartam napokban megadott értéke (a 0 korlátlan megőrzést jelez)|Megőrzési napok (nem kötelező, 180 nap, ha nincs megadva)|
+|Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|Az SQL Server naplózásához használt Storage-fiók erőforráscsoport-neve|A naplózás az adatbázis-eseményeket egy naplóba írja az Azure Storage-fiókban (a Storage-fiók minden régióban létrejön, ahol létrejön egy SQL Server, amelyet az adott régióban lévő összes kiszolgáló megoszt majd). Fontos – a naplózás megfelelő működéséhez ne törölje vagy nevezze át az erőforráscsoportot vagy a Storage-fiókokat.|
+|Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése|Szabályzat-hozzárendelés|A hálózati biztonsági csoport diagnosztika Storage-fiókjának előtagja|Ezt az előtagot a hálózati biztonsági csoport helyével együtt kell összekapcsolni a létrehozott Storage-fiók nevének létrehozásához.|
+|Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése|Szabályzat-hozzárendelés|A hálózati biztonsági csoport diagnosztikát szolgáló Storage-fiók erőforráscsoport-neve (léteznie kell)|Az az erőforráscsoport, amelyben a Storage-fiók létre lesz hozva. Ez az erőforráscsoport már léteznie kell.|
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy áttekintette a lépéseket a NIST SP 800-53 előírásain R4 tervezet minta üzembe helyezése, látogasson el a további információt talál a tervezet-vezérlő leképezés a következő cikkeket:
+Most, hogy áttekintette a NIST SP 800-53 R4 Blueprint-minta üzembe helyezésének lépéseit, tekintse meg a következő cikkeket a terv és a vezérlés leképezésének megismeréséhez:
 
 > [!div class="nextstepaction"]
-> [800-53 előírásain NIST SP R4 tervezet - áttekintés](./index.md)
-> [NIST SP 800-53 előírásain R4 tervezet - vezérlő leképezés](./control-mapping.md)
+> [NIST SP 800-53 R4 terv – áttekintés](./index.md)
+> [NIST SP 800-53 R4 terv – vezérlés leképezése](./control-mapping.md)
 
 További cikkek a tervekről és azok használatáról:
 
-- Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
+- A [terv életciklusának](../../concepts/lifecycle.md)megismerése.
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.
 - A [tervekkel kapcsolatos műveleti sorrend](../../concepts/sequencing-order.md) testreszabásának elsajátítása.
 - A [tervek erőforrás-zárolásának](../../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.

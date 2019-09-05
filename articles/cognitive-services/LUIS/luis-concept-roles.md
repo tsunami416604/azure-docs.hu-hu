@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: b4bd61ea74055a04718d8a9d8d5ccd42671af2ac
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: eead9e0fec8ac4322bc7816de4a4774f8be8129c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638348"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257956"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>Környezetfüggő altípusok entitás-szerepkörei
 
@@ -48,7 +48,7 @@ A kiírásban "a találkozó 8 és 9 között történő megjelölése" esetén 
 Schedule the meeting from 8 to 9
 ```
 
-|Entitástípus|Szerepkörnév|Érték|
+|Entitástípus|Szerepkörnév|Value|
 |--|--|--|
 |Előre összeállított datetimeV2|StartTime|8|
 |Előre összeállított datetimeV2|EndTime|9|
@@ -67,7 +67,7 @@ Ha a Kimondás tartalmazza a jelentéssel `I want to travel from Seattle, with a
 
 ### <a name="roles-can-indicate-order"></a>A szerepkörök jelezhetik a sorrendet
 
-Ha a Kimondás úgy módosult, hogy a kinyerni `I want to first start with Seattle, second London, then third Cairo`kívánt sorrendet jelzi, több módon is kinyerheti azt. Megcímkézheti a jogkivonatokat, amelyek jelzik `first start with`a `second`szerepkört `third`,,,. Az előre elkészített entitások sorszámát és az **GeographyV2** előre összeépített entitását is használhatja egy összetett entitásban a megrendelés és a hely gondolatának rögzítéséhez. 
+Ha a Kimondás úgy módosult, hogy a kinyerni `I want to first start with Seattle, second London, then third Cairo`kívánt sorrendet jelzi, több módon is kinyerheti azt. Megcímkézheti a jogkivonatokat, amelyek jelzik `first start with`a `second`szerepkört `third`,,,. Az előre elkészített entitások **sorszámát** és az **GeographyV2** előre összeépített entitását is használhatja egy összetett entitásban a megrendelés és a hely gondolatának rögzítéséhez. 
 
 ## <a name="how-are-roles-used-in-example-utterances"></a>Hogyan használják például a hosszúságú kimondott szöveg a szerepköröket?
 
@@ -93,7 +93,7 @@ Az entitás- és szerepkör csúcsos zárójelek között, között `{}`. Az ent
 
 ## <a name="entity-roles-versus-collaborator-roles"></a>Entitás-szerepkörök és közreműködő szerepkörök
 
-Az entitás szerepkörei a LUIS alkalmazás adatmodelljére vonatkoznak. A [közreműködő](luis-concept-collaborator.md) szerepkörök a szerzői hozzáférés szintjeire vonatkoznak. 
+Az entitás szerepkörei a LUIS alkalmazás adatmodelljére vonatkoznak. A közreműködő [vagy közreműködő](luis-concept-keys.md#contributions-from-other-authors) szerepkörök a szerzői hozzáférés szintjére vonatkoznak. 
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 

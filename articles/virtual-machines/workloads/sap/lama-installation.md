@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/17/2018
+ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 28a3183114db206e55814d1b25eaef37a2819c1d
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
-ms.translationtype: MT
+ms.openlocfilehash: 4a4421b87aa094306a42212f76f7590d4f139047
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68495024"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607970"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Az Azure SAP LaMa összekötője
 
@@ -560,7 +560,7 @@ Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszéd
   iaxxbaccount.cpp: 430: CIaOsAccount::validatePasswordPolicy_impl()  
   synxcaccmg.cpp: 297: ISyAccountMgt::PasswordValidationMessage CSyAccountMgtImpl::validatePasswordPolicy(saponazure,*****) const )
   * Megoldás  
-    Ügyeljen arra, hogy a virtuális gép és a  tartományvezérlő közötti kommunikáció engedélyezéséhez adjon hozzá egy gazdagép-szabályt a lépés elkülönítése beállításhoz.
+    Ügyeljen arra, hogy a virtuális gép és a tartományvezérlő közötti kommunikáció engedélyezéséhez adjon hozzá egy gazdagép-szabályt a lépés elkülönítése beállításhoz.
 
 ## <a name="next-steps"></a>További lépések
 * [SAP HANA az Azure-műveletek útmutatójában][hana-ops-guide]

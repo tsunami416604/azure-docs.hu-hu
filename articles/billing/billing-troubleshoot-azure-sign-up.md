@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
-ms.openlocfilehash: 57dc9c05778563bc0c5df1a8ac8895b51008b01f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5032762c1275d3f1c8d1a020a54d20555f8ba3fe
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657072"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242435"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Azure-regisztráció – problémamegoldás
 
@@ -53,9 +53,9 @@ Az Identity-ellenőrzés kártyán való elvégzéséhez engedélyezni kell a ha
  
 A böngésző cookie-beállításainak frissítéséhez kövesse az alábbi lépéseket.
 
-1. Ha a Chrome-ot használja, válassza a **Beállítások** > **Speciális beállítások** > megjelenítése**adatvédelmi** > **tartalom beállításai**lehetőséget. **A harmadik féltől származó cookie-k és a hely**adattípusának törlése.
+1. Ha a Chrome-ot használja, válassza a **Beállítások** > **Speciális beállítások** > megjelenítése**adatvédelmi** > **tartalom beállításai**lehetőséget. **A harmadik féltől származó cookie-k és a hely adattípusának**törlése.
 
-2. Ha a Microsoft Edge-t használja, > válassza a**Speciális beállítások** > megtekintése**cookie** > -k**nem blokkolja a cookie-** kat lehetőséget.
+2. Ha a Microsoft Edge-t használja, **válassza a** > **Speciális beállítások** > megtekintése**cookie** > -k**nem blokkolja a cookie-** kat lehetőséget.
 
 3. Frissítse az Azure regisztrációs oldalát, és győződjön meg arról, hogy a probléma megoldódott-e.
 
@@ -80,11 +80,11 @@ Amikor megjelenik a szöveges üzenet vagy telefonhívás, adja meg a szövegmez
 
 ### <a name="credit-card-declined-or-not-accepted"></a>A bankkártya visszautasítva vagy nem fogadta el
 
-Az Azure-előfizetések esetében nem engedélyezett a virtuális vagy előre fizetett kredit vagy bankkártyás fizetés. Ha szeretné megtekinteni, hogy mi okozhatja a kártya elutasítását, tekintse meg a bankkártyáját vagy a hitelkártyát az [Azure-regisztráció](https://support.microsoft.com/help/4042960)elutasításakor.
+Az Azure-előfizetések esetében nem engedélyezett a virtuális vagy előre fizetett kredit vagy bankkártyás fizetés. Ha szeretné megtekinteni, hogy mi okozhatja a kártya elutasítását, tekintse meg a bankkártyáját vagy a hitelkártyát az [Azure-regisztráció elutasításakor](https://support.microsoft.com/help/4042960).
 
 ### <a name="free-trial-is-not-available"></a>Az ingyenes próbaverzió nem érhető el
 
-Korábban már használta az Azure-előfizetést? Az Azure használati feltételeinek értelmében az ingyenes próbaverzió aktiválására csak az Azure új felhasználói jogosultak. Ha korábban már volt bármilyen típusú Azure-előfizetése, akkor nem aktiválhatja az ingyenes próbaverziót. Az utólagos elszámolású [](https://azure.microsoft.com/offers/ms-azr-0003p/)előfizetéshez érdemes regisztrálni.
+Korábban már használta az Azure-előfizetést? Az Azure használati feltételeinek értelmében az ingyenes próbaverzió aktiválására csak az Azure új felhasználói jogosultak. Ha korábban már volt bármilyen típusú Azure-előfizetése, akkor nem aktiválhatja az ingyenes próbaverziót. Az utólagos elszámolású [előfizetéshez](https://azure.microsoft.com/offers/ms-azr-0003p/)érdemes regisztrálni.
 
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>Az ingyenes próbaverziós fiók díját is megláttam
 
@@ -96,17 +96,17 @@ Győződjön meg arról, hogy a megfelelő bejelentkezési hitelesítő adatokat
 
 - MSDN 
   - Ellenőrizze a jogosultsági státuszát az [MSDN-fiók oldalán](https://msdn.microsoft.com/subscriptions/manage/default.aspx).
-  - Ha nem tudja ellenőrizni az állapotát, forduljon az [MSDN](https://msdn.microsoft.com/library/aa493452.aspx)-előfizetések ügyfél-szolgáltatási központhoz.
+  - Ha nem tudja ellenőrizni az állapotát, forduljon az [MSDN-előfizetések ügyfél-szolgáltatási központhoz](https://msdn.microsoft.com/library/aa493452.aspx).
 - Microsoft Startupoknak
   - Jelentkezzen be a [Microsoft for Startups portálra](https://startups.microsoft.com/#start-two) , és ellenőrizze a Microsoft for Startups jogosultsági állapotát.
   - Ha nem tudja ellenőrizni az állapotát, segítséget kaphat a [Microsoft for Startups fórumokhoz](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups).
 - MPN 
-  - Jelentkezzen be az [MPN](https://mspartner.microsoft.com/Pages/Locale.aspx) -portálra a jogosultsági állapot ellenőrzéséhez. Ha rendelkezik a megfelelő [felhőalapú platform](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx)-kompetenciákkal, akkor jogosult lehet a további előnyökre.
+  - Jelentkezzen be az [MPN-portálra](https://mspartner.microsoft.com/Pages/Locale.aspx) a jogosultsági állapot ellenőrzéséhez. Ha rendelkezik a megfelelő [felhőalapú platform-kompetenciákkal](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx), akkor jogosult lehet a további előnyökre.
   - Ha nem tudja ellenőrizni az állapotát, forduljon az [MPN támogatási szolgálatához](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx).
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>Az új Azure nem aktiválható nyílt előfizetésben
 
-Ha az Azure-t nyitott előfizetésben szeretné létrehozni, rendelkeznie kell egy érvényes online szolgáltatás-aktiválási (OSA) kulccsal, amely legalább egy Azure-beli nyitott tokenben van társítva. Ha nem rendelkezik OSA-kulccsal, lépjen kapcsolatba a [Microsoft Pinpointban](http://pinpoint.microsoft.com/)felsorolt Microsoft-partnerek egyikével.
+Ha az Azure-t nyitott előfizetésben szeretné létrehozni, rendelkeznie kell egy érvényes online szolgáltatás-aktiválási (OSA) kulccsal, amely legalább egy Azure-beli nyitott tokenben van társítva. Ha nem rendelkezik OSA-kulccsal, lépjen kapcsolatba a [Microsoft Pinpointban](https://pinpoint.microsoft.com/)felsorolt Microsoft-partnerek egyikével.
 
 ### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Hiba: *Nem jogosult Azure-előfizetésre*
 
@@ -118,7 +118,7 @@ A probléma megoldásához ellenőrizze, hogy a következő elemek teljesülnek-
 
 ### <a name="error-your-current-account-type-is-not-supported"></a>Hiba: *Az aktuális fiók típusa nem támogatott*
 
-Ez a probléma akkor fordulhat elő, ha a fiók regisztrálva van egy nem [felügyelt Azure ad](../active-directory/users-groups-roles/directory-self-service-signup.md)-címtárban, és nem szerepel a szervezet Azure ad-címtárában. 
+Ez a probléma akkor fordulhat elő, ha a fiók regisztrálva van egy nem [felügyelt Azure ad-címtárban](../active-directory/users-groups-roles/directory-self-service-signup.md), és nem szerepel a szervezet Azure ad-címtárában. 
 
 A probléma megoldásához jelentkezzen be az Azure-fiókba egy másik fiók használatával, vagy vegye át a nem felügyelt AD könyvtárat. További információ: nem [felügyelt címtár átvétele rendszergazdaként Azure Active Directory](../active-directory/users-groups-roles/domains-admin-takeover.md).
  

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 64bd71d89446a19d2afe56a32b0c7124e897cb48
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8d7346bb61fad09e3f7c9098809463285ef57e93
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072416"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242477"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Az Azure API Management IP-címei
 
@@ -27,7 +27,9 @@ Az IP-címek használatával tűzfalszabályok hozhatók létre, szűrheti a há
 
 ## <a name="ip-addresses-of-api-management-service"></a>API Management szolgáltatás IP-címei
 
-Ha a API Management szolgáltatás fejlesztői, alapszintű, standard vagy prémium szintű szolgáltatás, akkor az IP-címeket az erőforrás áttekintés irányítópultján kérheti le a Azure Portal.
+A fejlesztői, az alapszintű, a standard vagy a prémium szintű API Management Service-példányok nyilvános IP-címekkel rendelkeznek, amelyek kizárólag az adott szolgáltatási példányra vonatkoznak (ezek nem vannak megosztva más erőforrásokkal). 
+
+Az IP-címeket a Azure Portal erőforrásának áttekintés irányítópultján kérheti le.
 
 ![API Management IP-cím](media/api-management-howto-ip-addresses/public-ip.png)
 
@@ -53,7 +55,7 @@ A nyilvános IP-címek a válasz részét képezik:
 }
 ```
 
-A [](api-management-howto-deploy-multi-region.md)többrégiós környezetekben minden regionális telepítés egy nyilvános IP-címmel rendelkezik.
+A [többrégiós](api-management-howto-deploy-multi-region.md)környezetekben minden regionális telepítés egy nyilvános IP-címmel rendelkezik.
 
 ## <a name="ip-addresses-of-api-management-service-in-vnet"></a>API Management szolgáltatás IP-címei a VNET-ben
 
@@ -101,4 +103,4 @@ A API Management fejlesztői, alapszintű, standard és prémium szintjein a nyi
 * A szolgáltatás előfizetése fel van [függesztve](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) vagy [figyelmeztetve](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) van (például nem fizetés esetén), majd visszaállították.
 * Az Azure Virtual Network hozzáadva vagy eltávolítva a szolgáltatásból.
 
-A [](api-management-howto-deploy-multi-region.md)többrégiós környezetekben a regionális IP-cím akkor változik, ha egy régiót kiürítettek, majd visszaállították.
+A többrégiós környezetekben a regionális IP-cím akkor [változik, ha](api-management-howto-deploy-multi-region.md)egy régiót kiürítettek, majd visszaállították.

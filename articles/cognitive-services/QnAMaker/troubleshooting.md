@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 60a2b63c7d37440bb08c7a7f15f052cfa2607406
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 95b4978b66accce0182e58493cb9d600dbe5e35f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193684"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277486"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker hibaelhárítása
 
@@ -42,7 +42,7 @@ QnAMaker szolgáltatás gazdagépneve hasznos hibakeresés céljából forduljon
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>A QnA Maker portál Súgó robotjának használata
 
-A QnA Maker segítséget nyújt a QnA Maker portálon a segítségére. A Súgó robot minden weblapon elérhető. A robot a QnA Maker segítségével ad választ, és biztosítja a [ C# robot-keretrendszer kódjának projektjét](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support) a robot számára, így gyorsan megkezdheti a saját válaszának használatát. 
+A **QnA Maker segítséget nyújt** a QnA Maker portálon a segítségére. A Súgó robot minden weblapon elérhető. A robot a QnA Maker segítségével ad választ, és biztosítja a [ C# robot-keretrendszer kódjának projektjét](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support) a robot számára, így gyorsan megkezdheti a saját válaszának használatát. 
 
 ![! [QnA Maker egy * * Súgó * * robotot biztosít a QnA Maker portálon, hogy segítsen.] (./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
@@ -134,7 +134,7 @@ Több nyelv és több tudásbázisok szeretné használni, a felhasználók szá
 
 ### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>Hogyan módosíthatom a QnA Maker által használt Azure Search-erőforrás neve?
 
-Az Azure Search-erőforrás neve a QnA Maker erőforrásnév bizonyos betűk hozzáfűzi a végén a rendszer. Így nehéz különbséget tenni a QnA Maker több keresési erőforrások között. Hozzon létre egy külön Azure Search-szolgáltatás (elnevezési azt a kívánt módon), és csatlakoztassa a kérdések és válaszok szolgáltatást. A lépések hasonlóak a lépéseket kell tennie hogy [frissítése az Azure Search](How-To/set-up-qnamaker-service-azure.md#upgrade-azure-search-service).
+Az Azure Search-erőforrás neve a QnA Maker erőforrásnév bizonyos betűk hozzáfűzi a végén a rendszer. Így nehéz különbséget tenni a QnA Maker több keresési erőforrások között. Hozzon létre egy külön Azure Search-szolgáltatás (elnevezési azt a kívánt módon), és csatlakoztassa a kérdések és válaszok szolgáltatást. A lépések hasonlóak az [Azure Search verziófrissítéséhez](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-search-service)szükséges lépésekhez.
 
 ### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>Ha QnA Maker visszaadja `Runtime core is not initialized,` , Hogyan javíthatom?
 

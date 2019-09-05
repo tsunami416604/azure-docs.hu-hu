@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 09/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: dbacec6e8f91480996150e73f2a81dbcde67550b
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: b349576f5e9f5410afc29f48e40c38e12168252d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494789"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258892"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Erőforrás, tulajdonság vagy változó iteráció Azure Resource Manager-sablonokban
 
@@ -43,13 +43,13 @@ Ha változót vagy tulajdonságot használ, a másolási objektum formátuma a k
 
 A jelen cikk részletesebben ismerteti mindkét felhasználási leírást. Oktatóanyagért lásd [: oktatóanyag: több erőforrás-példány létrehozása Resource Manager-sablonok használatával](./resource-manager-tutorial-create-multiple-instances.md).
 
-Ha meg kell adnia, hogy az erőforrás telepítve van-e, tekintse meg a [feltétel elemet](resource-group-authoring-templates.md#condition).
+Ha meg kell adnia, hogy az erőforrás telepítve van-e, tekintse meg a [feltétel elemet](conditional-resource-deployment.md).
 
 ## <a name="copy-limits"></a>Másolási korlátok
 
 Az ismétlések számának megadásához adja meg a Count tulajdonság értékét. A szám nem lehet nagyobb, mint 800.
 
-A darabszám nem lehet negatív szám. Ha a **2019-05-10** -es vagy újabb verziójú REST API-es verzióval rendelkező sablont telepít, beállíthatja a Count értéket nulla értékre. A REST API korábbi verziói nem támogatják a nulla értéket a Count számára. Az Azure CLI vagy a PowerShell jelenleg nem támogatja a nulla értéket a darabszámhoz, de ez a támogatás egy későbbi kiadásban lesz hozzáadva.
+A darabszám nem lehet negatív szám. Ha Azure PowerShell 2,6-as vagy újabb verziójú sablont telepít, vagy REST API **2019-05-10** -es vagy újabb verzióját, akkor a Count értéket nullára állíthatja. A PowerShell korábbi verziói és a REST API nem támogatják a nulla értéket a Count számára. Az Azure CLI jelenleg nem támogatja a nulla értéket a darabszámhoz, de ez a támogatás egy későbbi kiadásban lesz hozzáadva.
 
 Ügyeljen arra, hogy a [teljes telepítési mód](deployment-modes.md) legyen a másolással. Ha egy erőforráscsoport esetében újratelepíti a teljes módot, a másolási hurok feloldása után a sablonban nem megadott erőforrások törlődnek.
 
@@ -174,7 +174,7 @@ Ha például a Storage-fiókokat egyszerre két sorba szeretné telepíteni, has
 }
 ```
 
-A Mode (mód) tulajdonság szintén párhuzamosan fogadja el az alapértelmezett értéket.
+A Mode (mód) tulajdonság szintén **párhuzamosan**fogadja el az alapértelmezett értéket.
 
 További információ a másolás beágyazott sablonokkal történő használatáról: [a másolás használata](resource-group-linked-templates.md#using-copy).
 

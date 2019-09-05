@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a47bb70ef87783d9b275329452c94526c67a2c3
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: d82f843cb5cdd7b910c734f26a93144374061b74
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211733"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274497"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból az Open hub használatával Azure Data Factory
 
@@ -56,7 +56,7 @@ Az SAP InfoProviders Azure Data Factory (ADF)-ből való kinyerése összesség�
 
 1. **SAP BW adatátvitel folyamat (DTP)** Ez a lépés átmásolja az adatait egy SAP BW InfoProvider egy SAP BW Open hub-táblába. 
 
-1. **Az ADF** adatmásolása Ebben a lépésben az ADF-összekötő beolvassa az Open hub táblát 
+1. **Az ADF adatmásolása** Ebben a lépésben az ADF-összekötő beolvassa az Open hub táblát 
 
 ![Különbözeti kinyerési folyamat](media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png)
 
@@ -83,7 +83,7 @@ Az SAP Business Warehouse nyitott hub-összekötő használatához a következő
     - Az RFC és a SAP BW engedélyezése. 
     - A "S_SDSAUTH" engedélyezési objektum "EXECUTE" tevékenységének engedélyei.
 
-- Hozzon létre egy SAP nyitott hub-célhelyet **adatbázis** -táblázatként a "technikai kulcs" beállítással.  Azt is javasoljuk, hogy az adatok törlését ne törölje a táblából, bár ez nem kötelező. Kihasználhatja a DTP-t (közvetlenül végrehajthatja vagy integrálhatja a meglévő feldolgozási láncot) az adatoknak a forrás objektumból (például adatkockából) való kiválasztásához, amelyet a nyitott hub-cél táblához választott.
+- Hozzon létre egy SAP nyitott hub-célhelyet **adatbázis-táblázatként** a "technikai kulcs" beállítással.  Azt is javasoljuk, hogy az adatok törlését ne törölje a táblából, bár ez nem kötelező. Kihasználhatja a DTP-t (közvetlenül végrehajthatja vagy integrálhatja a meglévő feldolgozási láncot) az adatoknak a forrás objektumból (például adatkockából) való kiválasztásához, amelyet a nyitott hub-cél táblához választott.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -145,11 +145,8 @@ Ha adatokat szeretne másolni a és a rendszerből SAP BW nyitott hubhoz, állí
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot **SapOpenHubTable**értékre kell beállítani.  | Igen |
 | openHubDestinationName | Annak az Open hub-célhelynek a neve, amelyből az adatok másolása megtörténjen. | Igen |
-| excludeLastRequest | Azt határozza meg, hogy ki kell-e zárni a legutóbbi kérelem rekordjait. | Nem (alapértelmezett érték a **true**) |
-| baseRequestId | A különbözeti betöltésre vonatkozó kérelem azonosítója. Ha be van állítva, csak a tulajdonság értékénél **nagyobb** kérelemazonosító rendelkező adatmennyiségeket kéri le a rendszer.  | Nem |
 
->[!TIP]
->Ha a nyitott hub-tábla csak az egyszeres kérelem-azonosító által generált adatait tartalmazza, akkor a teljes terhelést és a táblázat meglévő adatait felülírja, vagy csak egyszer futtatja a DTP-tesztet, ne feledje, hogy törölje a "excludeLastRequest" lehetőséget a d ATA kimenő.
+Ha a beállítást `excludeLastRequest` és `baseRequestId` az adatkészletet választotta, akkor továbbra is támogatott, miközben az új modellt a tevékenység forrásában fogja használni.
 
 **Példa:**
 
@@ -158,12 +155,13 @@ Ha adatokat szeretne másolni a és a rendszerből SAP BW nyitott hubhoz, állí
     "name": "SAPBWOpenHubDataset",
     "properties": {
         "type": "SapOpenHubTable",
+        "typeProperties": {
+            "openHubDestinationName": "<open hub destination name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP BW Open Hub linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "openHubDestinationName": "<open hub destination name>"
         }
     }
 }
@@ -175,7 +173,16 @@ Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját l
 
 ### <a name="sap-bw-open-hub-as-source"></a>A hub megnyitása forrásként SAP BW
 
-SAP BW Open hub adatainak másolásához állítsa a forrás típusát a másolás tevékenység **SapOpenHubSource**. A másolási tevékenység **forrása** szakaszban nem szükségesek további Type-specifikus tulajdonságok.
+SAP BW Open hub adatainak másolásához a következő tulajdonságok támogatottak a másolási tevékenység **forrása** szakaszban:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A másolási tevékenység forrásának **Type** tulajdonságát **SapOpenHubSource**értékre kell állítani. | Igen |
+| excludeLastRequest | Azt határozza meg, hogy ki kell-e zárni a legutóbbi kérelem rekordjait. | Nem (alapértelmezett érték a **true**) |
+| baseRequestId | A különbözeti betöltésre vonatkozó kérelem azonosítója. Ha be van állítva, csak a tulajdonság értékénél **nagyobb** kérelemazonosító rendelkező adatmennyiségeket kéri le a rendszer.  | Nem |
+
+>[!TIP]
+>Ha a nyitott hub-tábla csak az egyszeres kérelem-azonosító által generált adatait tartalmazza, akkor a teljes terhelést és a táblázat meglévő adatait felülírja, vagy csak egyszer futtatja a DTP-tesztet, ne feledje, hogy törölje a "excludeLastRequest" lehetőséget a d ATA kimenő.
 
 Az adatok betöltésének felgyorsításához beállíthatja [`parallelCopies`](copy-activity-performance.md#parallel-copy) , hogy a másolási tevékenység a SAP BW Open hub adatainak párhuzamosan történő betöltéséhez. Ha például a négy értékre `parallelCopies` van állítva, Data Factory egyszerre négy RFC-hívást hajt végre, és mindegyik RFC-hívás lekéri az adatok egy részét a SAP BW Open hub táblából, particionálva a DTP-kérés azonosítója és a csomag azonosítója alapján. Ez akkor érvényes, ha az egyedi DTP-kérések és-csomagok AZONOSÍTÓjának száma nagyobb, `parallelCopies`mint a értéke. Az adatok file-alapú adattárba másolásakor a rendszer úgy is Újrafuttatja, hogy több fájlként is ír egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájlba írás.
 
@@ -200,7 +207,8 @@ Az adatok betöltésének felgyorsításához beállíthatja [`parallelCopies`](
         ],
         "typeProperties": {
             "source": {
-                "type": "SapOpenHubSource"
+                "type": "SapOpenHubSource",
+                "excludeLastRequest": true
             },
             "sink": {
                 "type": "<sink type>"

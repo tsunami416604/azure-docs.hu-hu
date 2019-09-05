@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 49a0c7597e8d44e3f60e2d3b6bd4c14cad1524b5
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: d3365f0a893c80043c93091c3e4e91382bdcd67e
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172627"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275864"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -146,7 +146,7 @@ Szolgáltatás egyszerűszolgáltatás-alapú Azure AD alkalmazástoken-hiteles�
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Adja meg a szükséges engedélyekkel a szolgáltatásnév** szokásos módon SQL-felhasználók vagy mások számára. Futtassa a következő kódot, vagy tekintse meg a [](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)további lehetőségeket. Ha az adatok betöltéséhez szeretné használni a Base-t, olvassa el a [szükséges adatbázis-engedélyt](#required-database-permission).
+4. **Adja meg a szükséges engedélyekkel a szolgáltatásnév** szokásos módon SQL-felhasználók vagy mások számára. Futtassa a következő kódot, vagy tekintse meg a [további lehetőségeket.](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017) Ha az adatok betöltéséhez szeretné használni a Base-t, olvassa el a [szükséges adatbázis-engedélyt](#required-database-permission).
 
     ```sql
     EXEC sp_addrolemember db_owner, [your application name];
@@ -196,7 +196,7 @@ A felügyelt identitásos hitelesítés használatához kövesse az alábbi lép
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. **Adja meg a Data Factory felügyelt identitáshoz szükséges engedélyeket** , ahogyan az SQL-felhasználók és mások számára általában nem. Futtassa a következő kódot, vagy tekintse meg a [](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)további lehetőségeket. Ha az adatok betöltéséhez szeretné használni a Base-t, olvassa el a [szükséges adatbázis-engedélyt](#required-database-permission).
+3. **Adja meg a Data Factory felügyelt identitáshoz szükséges engedélyeket** , ahogyan az SQL-felhasználók és mások számára általában nem. Futtassa a következő kódot, vagy tekintse meg a [további lehetőségeket.](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017) Ha az adatok betöltéséhez szeretné használni a Base-t, olvassa el a [szükséges adatbázis-engedélyt](#required-database-permission).
 
     ```sql
     EXEC sp_addrolemember db_owner, [your Data Factory name];
@@ -234,7 +234,9 @@ Az adatok Azure SQL Data Warehouseba való másolásához a következő tulajdon
 | Tulajdonság  | Leírás                                                  | Szükséges                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | A **típus** értékre kell állítani a tulajdonságot az adatkészlet **AzureSqlDWTable**. | Igen                         |
-| tableName | A tábla vagy nézet az Azure SQL Data Warehouse-példányhoz, a társított szolgáltatás hivatkozik a neve. | Nincs forrás, a fogadó Igen |
+| schema | A séma neve. |Nincs forrás, a fogadó Igen  |
+| table | A tábla vagy nézet neve. |Nincs forrás, a fogadó Igen  |
+| tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz `table`használja `schema` a és a elemet. | Nincs forrás, a fogadó Igen |
 
 #### <a name="dataset-properties-example"></a>Adatkészlet tulajdonságai példa
 
@@ -250,7 +252,8 @@ Az adatok Azure SQL Data Warehouseba való másolásához a következő tulajdon
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }
@@ -379,6 +382,7 @@ Adatok másolása az Azure SQL Data Warehouse, állítsa a fogadó típusa máso
 | writeBatchSize    | A **kötegekben**az SQL-táblába beillesztett sorok száma. Érvényes, csak ha a PolyBase nem használja.<br/><br/>Az engedélyezett érték **egész** (sorok száma). Alapértelmezés szerint a Data Factory dinamikusan határozza meg a megfelelő batch-méretet a sor mérete alapján. | Nem                                            |
 | writeBatchTimeout | Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot. Érvényes, csak ha a PolyBase nem használja.<br/><br/>Az engedélyezett érték **timespan**. Példa: "00:30:00" (30 perc). | Nem                                            |
 | preCopyScript     | Adja meg a másolási tevékenység futtatása előtt az adatok Azure SQL Data Warehouse-bA írt minden egyes futtatásához egy SQL-lekérdezést. Ez a tulajdonság használatával az előre betöltött adatokat. | Nem                                            |
+| disableMetricsCollection | A Data Factory olyan mérőszámokat gyűjt, mint például a SQL Data Warehouse DWU a másolási teljesítmény optimalizálása és a javaslatok tekintetében. Ha ezt a viselkedést érinti, a kikapcsolásához válassza `true` a következőt:. | Nem (alapértelmezett `false`érték) |
 
 #### <a name="sql-data-warehouse-sink-example"></a>Az SQL Data Warehouse fogadó példa
 
@@ -413,7 +417,7 @@ Használatával [PolyBase](https://docs.microsoft.com/sql/relational-databases/p
 SQL Data Warehouse a közvetlenül támogatja az Azure blobot, Azure Data Lake Storage Gen1 és Azure Data Lake Storage Gen2. Ha a forrásadatok megfelelnek az ebben a szakaszban ismertetett feltételeknek, használja a következőt a forrás adattárból közvetlenül a Azure SQL Data Warehouseba való másoláshoz. Ellenkező esetben használjon [szakaszos Másolás a PolyBase használatával](#staged-copy-by-using-polybase).
 
 > [!TIP]
-> Ha az adatok hatékony másolását SQL Data Warehousera szeretné elvégezni, további információt a [Azure Data Factory még könnyebbé és kényelmesebben is](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/)megtudhatja, hogy a Data Lake Store SQL Data Warehouse használatával hogyan lehet az adatokból információkat feltárni.
+> Ha az adatok hatékony másolását SQL Data Warehousera szeretné elvégezni, további információt a [Azure Data Factory még könnyebbé és kényelmesebben is megtudhatja, hogy a Data Lake Store SQL Data Warehouse használatával hogyan lehet az adatokból információkat feltárni](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
 
 A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beállításokat, és automatikusan visszavált az adatok áthelyezése a BULKINSERT mechanizmusa.
 
@@ -426,7 +430,7 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Fiók kulcsának hitelesítése, felügyelt identitások hitelesítése |
 
     >[!IMPORTANT]
-    >Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor felügyelt identitás-hitelesítést kell használnia – a [VNet szolgáltatás-végpontok Azure Storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményeire utal. Ismerje meg az [Azure Blob által felügyelt identitás-hitelesítés](connector-azure-blob-storage.md#managed-identity) és a [Azure Data Lake Storage Gen2 által felügyelt identitás-hitelesítési](connector-azure-data-lake-storage.md#managed-identity) szakasz Data Factory szükséges konfigurációit.
+    >Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor felügyelt identitás-hitelesítést kell használnia – a [VNet szolgáltatás-végpontok Azure Storage-ban való használatának következményeire](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)utal. Ismerje meg az [Azure Blob által felügyelt identitás-hitelesítés](connector-azure-blob-storage.md#managed-identity) és a [Azure Data Lake Storage Gen2 által felügyelt identitás-hitelesítési](connector-azure-data-lake-storage.md#managed-identity) szakasz Data Factory szükséges konfigurációit.
 
 2. A **forrásadatok formátuma** a következő konfigurációkkal rendelkező **parketta**, **ork**vagy **tagolt szöveg**:
 
@@ -481,7 +485,7 @@ Ha a forrásadatok nem felel meg az előző szakaszban, lehetővé teszik az ada
 A szolgáltatás használatához hozzon létre egy [azure blob Storage társított szolgáltatást](connector-azure-blob-storage.md#linked-service-properties) , amely az Azure Storage-fiókra hivatkozik az ideiglenes blob Storage-tárolóval. Ezután adja meg `enableStaging` a `stagingSettings` és a tulajdonságokat a másolási tevékenységhez, ahogy az a következő kódban is látható.
 
 >[!IMPORTANT]
->Ha az előkészítési Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor felügyelt identitás-hitelesítést kell használnia – a [VNet szolgáltatás-végpontok Azure Storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményeire utal. Az [Azure Blob által felügyelt identitás-hitelesítés](connector-azure-blob-storage.md#managed-identity)Data Factory a szükséges konfigurációk megismerése.
+>Ha az előkészítési Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor felügyelt identitás-hitelesítést kell használnia – a [VNet szolgáltatás-végpontok Azure Storage-ban való használatának következményeire](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)utal. Az [Azure Blob által felügyelt identitás-hitelesítés](connector-azure-blob-storage.md#managed-identity)Data Factory a szükséges konfigurációk megismerése.
 
 ```json
 "activities":[
@@ -589,7 +593,7 @@ A forrás- [átalakítás](data-flow-source.md) és a fogadó [átalakítás](da
 Másolt adatok vagy az Azure SQL Data Warehouse, a következő hozzárendeléseket használják az Azure SQL Data Warehouse adattípusok Azure Data Factory-közbenső adattípusok. Lásd: [séma és adatok írja be a hozzárendelések](copy-activity-schema-and-type-mapping.md) megtudhatja, hogyan másolási tevékenység leképezi a forrás séma és adatok típusa a fogadó.
 
 >[!TIP]
->Tekintse meg az SQL DW által támogatott adattípusok és a nem támogatott megoldások [Azure SQL Data Warehouse cikkében található táblázat](../sql-data-warehouse/sql-data-warehouse-tables-data-types.md) adattípusait.
+>Tekintse meg az SQL DW által támogatott adattípusok és a nem támogatott megoldások [Azure SQL Data Warehouse cikkében található táblázat adattípusait](../sql-data-warehouse/sql-data-warehouse-tables-data-types.md) .
 
 | Az Azure SQL Data Warehouse-adattípus    | Data Factory közbenső adattípus |
 | :------------------------------------ | :----------------------------- |

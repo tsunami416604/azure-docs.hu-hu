@@ -4,14 +4,14 @@ description: Az Azure Cosmos DB ismertetése. Ez a globálisan elosztott, többm
 author: rimman
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 07/23/2019
+ms.date: 09/01/2019
 ms.author: rimman
-ms.openlocfilehash: 5e53a671c866b9482296622d19d4ad6bec46829d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: f7396a747852e98b15c8c85e9b0d9a46326e6b25
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905288"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240705"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -41,11 +41,11 @@ A Cosmos DB segítségével bármikor hozzáadhat vagy eltávolíthat egy Azure-
 
 ### <a name="always-on"></a>Mindig bekapcsolva
 
-Az Azure-infrastruktúrával és az átlátszó, [több](global-dist-under-the-hood.md)főkiszolgálós replikációval való szoros integráció révén Cosmos db [99,999%-os magas rendelkezésre állást](high-availability.md) biztosít mind az olvasási, mind az írási műveletekhez. A Cosmos DB lehetővé teszi, hogy programozott módon (vagy a portálon keresztül) meghívja a Cosmos-fiók regionális feladatátvételét. Ezzel a képességgel biztosítható, hogy az alkalmazás a regionális katasztrófa esetén feladatátvételre legyen kialakítva.
+Az Azure-infrastruktúrával és az átlátszó, [több főkiszolgálós replikációval](global-dist-under-the-hood.md)való szoros integráció révén Cosmos db [99,999%-os magas rendelkezésre állást](high-availability.md) biztosít mind az olvasási, mind az írási műveletekhez. A Cosmos DB lehetővé teszi, hogy programozott módon (vagy a portálon keresztül) meghívja a Cosmos-fiók regionális feladatátvételét. Ezzel a képességgel biztosítható, hogy az alkalmazás a regionális katasztrófa esetén feladatátvételre legyen kialakítva.
 
 ### <a name="elastic-scalability-of-throughput-and-storage-worldwide"></a>Az átviteli sebesség és a tárterület rugalmas skálázhatósága világszerte
 
-A transzparens horizontális particionálással és a több főkiszolgálós replikációval tervezett Cosmos DB példátlanul rugalmas méretezhetőséget biztosít az írások és olvasások számára, szerte a világon. Akár több ezer, akár több, akár több millió kérés/másodperc közötti, egyetlen API-hívással is méretezhető, és csak a szükséges átviteli sebességért (és tárterületért) kell fizetnie. Ez a funkció segítséget nyújt a számítási feladatok váratlan tüskékkel való ellátásához anélkül, hogy a csúcsra kellene felépíteni. További információ: [particionálás Cosmos db](partitioning-overview.md), kiépített [átviteli sebesség a tárolók és adatbázisok](set-throughput.md)számára, valamint a [kiépített átviteli sebesség méretezése globálisan](scaling-throughput.md).
+A transzparens horizontális particionálással és a több főkiszolgálós replikációval tervezett Cosmos DB példátlanul rugalmas méretezhetőséget biztosít az írások és olvasások számára, szerte a világon. Akár több ezer, akár több, akár több millió kérés/másodperc közötti, egyetlen API-hívással is méretezhető, és csak a szükséges átviteli sebességért (és tárterületért) kell fizetnie. Ez a funkció segítséget nyújt a számítási feladatok váratlan tüskékkel való ellátásához anélkül, hogy a csúcsra kellene felépíteni. További információ: [particionálás Cosmos db](partitioning-overview.md), [kiépített átviteli sebesség a tárolók és adatbázisok](set-throughput.md)számára, valamint a [kiépített átviteli sebesség méretezése globálisan](scaling-throughput.md).
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>Garantált alacsony késés a esetek 99% percentilisnál, világszerte
 
@@ -53,11 +53,11 @@ A Cosmos DB használatával rendkívül rugalmas, bolygó-méretezési alkalmaz�
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Pontosan meghatározott, több konzisztencia-választás
 
-Globálisan elosztott alkalmazások Cosmos DB-ben történő létrehozásakor a [konzisztencia, a rendelkezésre állás, a késés és az átviteli sebesség közötti](consistency-levels-tradeoffs.md)rendkívüli kompromisszumok nem szükségesek. Az Cosmos db több főkiszolgálós replikációs protokollját gondosan tervezték, hogy [öt jól meghatározott konzisztencia-választási lehetőséget](consistency-levels.md) - biztosítson*erős*, *kötött*elavulás, *munkamenet*, *konzisztens előtag*és *végleges* – intuitív programozási modell esetében, alacsony késéssel és magas rendelkezésre állással a globálisan elosztott alkalmazáshoz.
+Globálisan elosztott alkalmazások Cosmos DB-ben történő létrehozásakor a [konzisztencia, a rendelkezésre állás, a késés és az átviteli sebesség közötti rendkívüli kompromisszumok](consistency-levels-tradeoffs.md)nem szükségesek. Az Cosmos db több főkiszolgálós replikációs protokollját gondosan tervezték, hogy [öt jól meghatározott konzisztencia-választási lehetőséget](consistency-levels.md) - biztosítson*erős*, *kötött*elavulás, *munkamenet*, *konzisztens előtag*és *végleges* – intuitív programozási modell esetében, alacsony késéssel és magas rendelkezésre állással a globálisan elosztott alkalmazáshoz.
 
 ### <a name="no-schema-or-index-management"></a>Nincs séma-vagy indexelési felügyelet
 
-Az adatbázis-séma és az indexek szinkronizálása az alkalmazás sémájával különösen fájdalmas a globálisan elosztott alkalmazások esetében. A Cosmos DB nem kell foglalkoznia a séma vagy az indexelés kezelésével. Az adatbázismotor teljes mértékben séma-független.  Mivel nincs szükség séma-és indexelési felügyeletre, a sémák áttelepítése során nem kell aggódnia az alkalmazás leállása miatt. Cosmos DB [automatikusan indexeli az összes](index-policy.md) adatforrást, és gyors lekérdezéseket szolgáltat.
+Az adatbázis-séma és az indexek szinkronizálása az alkalmazás sémájával különösen fájdalmas a globálisan elosztott alkalmazások esetében. A Cosmos DB nem kell foglalkoznia a séma vagy az indexelés kezelésével. Az adatbázismotor teljes mértékben séma-független.  Mivel nincs szükség séma-és indexelési felügyeletre, a sémák áttelepítése során nem kell aggódnia az alkalmazás leállása miatt. Cosmos DB [automatikusan indexeli az összes adatforrást](index-policy.md) , és gyors lekérdezéseket szolgáltat.
 
 ### <a name="battle-tested-database-service"></a>A tesztelt adatbázis-szolgáltatás csata
 
@@ -69,7 +69,7 @@ A Cosmos DB az összes Azure-régióban elérhető, beleértve a nyilvános felh
 
 ### <a name="secure-by-default-and-enterprise-ready"></a>Alapértelmezés szerint biztonságos, vállalati használatra kész
 
-A Cosmos DB a megfelelőségi [szabványok széles körének](compliance.md)tanúsítására szolgál. Emellett a Cosmos DBban lévő összes adatforgalom inaktív és mozgásban van titkosítva. A Cosmos DB a sorok szintjének engedélyezését és szigorú biztonsági normák betartását biztosítja.
+A Cosmos DB a [megfelelőségi szabványok széles körének](compliance.md)tanúsítására szolgál. Emellett a Cosmos DBban lévő összes adatforgalom inaktív és mozgásban van titkosítva. A Cosmos DB a sorok szintjének engedélyezését és szigorú biztonsági normák betartását biztosítja.
 
 ### <a name="significant-tco-savings"></a>Jelentős TCO-megtakarítás
 
@@ -81,7 +81,7 @@ A Cosmos DB az első és egyetlen szolgáltatás, amely az [iparágban vezető �
 
 ### <a name="globally-distributed-operational-analytics-and-ai-with-natively-built-in-apache-spark"></a>Globálisan elosztott operatív elemzés és AI natív módon beépített Apache Spark
 
-A Sparkot [](spark-connector.md) közvetlenül a Cosmos db tárolt adattárolón is futtathatja. Ez a funkció lehetővé teszi, hogy az alacsony késleltetésű, működés közbeni elemzéseket globális szinten hajtsa végre anélkül, hogy ez hatással lenne a közvetlenül a Cosmos DBon működő tranzakciós munkaterhelésekre További információ: globálisan [elosztott operatív elemzések](lambda-architecture.md).
+A [Sparkot](spark-connector.md) közvetlenül a Cosmos db tárolt adattárolón is futtathatja. Ez a funkció lehetővé teszi, hogy az alacsony késleltetésű, működés közbeni elemzéseket globális szinten hajtsa végre anélkül, hogy ez hatással lenne a közvetlenül a Cosmos DBon működő tranzakciós munkaterhelésekre További információ: [globálisan elosztott operatív elemzések](lambda-architecture.md).
 
 ### <a name="develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis"></a>Alkalmazások fejlesztése a Cosmos DB népszerű, nyílt forráskódú szoftverek (OSS) API-k használatával
 

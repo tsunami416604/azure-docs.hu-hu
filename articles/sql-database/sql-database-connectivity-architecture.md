@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-manager: craigg
 ms.date: 07/02/2019
-ms.openlocfilehash: 9dfc22be45b68ba4ff59d88810435db35bafc8b6
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
-ms.translationtype: MT
+ms.openlocfilehash: 0e9bdb22baed74ef948f369f9259784900486860
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494970"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569087"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL-kapcsolat architektúrája
 
@@ -55,7 +54,7 @@ Ha az Azure-on kívülről csatlakozik, a kapcsolatok alapértelmezés `Proxy` s
 
 ![architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
-## <a name="azure-sql-database-gateway-ip-addresses"></a>Átjáró IP-címeinek Azure SQL Database
+## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL Database-átjárók IP-címei
 
 Az alábbi táblázat az átjárók régió szerinti IP-címeit sorolja fel. Azure SQL Databasehoz való kapcsolódáshoz engedélyeznie kell a hálózati forgalmat, hogy & a régió **összes** átjáróján.
 

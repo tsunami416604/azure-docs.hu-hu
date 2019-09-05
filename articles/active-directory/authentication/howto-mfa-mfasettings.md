@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6260a619ad3dfda65fcdfc1180cba4002dd23d0
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
-ms.translationtype: MT
+ms.openlocfilehash: 7011025a1d94a5c99bf2338d9f80c683c2fd7b35
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499894"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68514976"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure multi-Factor Authentication beállításainak konfigurálása
 
@@ -35,7 +35,7 @@ Ezen beállítások némelyike az MFA-kiszolgálóra, az Azure MFA-ra vagy mindk
 | Fiókzárolás | A fiókok ideiglenes zárolása a multi-Factor Authentication szolgáltatásban, ha túl sok megtagadott hitelesítési kísérlet van egy sorban. Ez a funkció csak azokra a felhasználókra vonatkozik, akik hitelesítő PIN-kódot ad meg. (MFA-kiszolgáló) |
 | [Felhasználók blokkolása/feloldása](#block-and-unblock-users) | Annak letiltására szolgál, hogy bizonyos felhasználók képesek legyenek a multi-Factor Authentication kérések fogadására. A letiltott felhasználók hitelesítési kísérleteit a rendszer automatikusan letiltja. A felhasználók a blokkolásuk időpontjában 90 napig maradnak letiltva. |
 | [Csalási riasztás](#fraud-alert) | A felhasználókhoz kapcsolódó beállítások konfigurálása a csalárd ellenőrzési kérelmek jelentéséhez |
-| Értesítések | Az MFA-kiszolgálóról érkező események értesítéseinek engedélyezése. |
+| [Értesítések](#notifications) | Az MFA-kiszolgálóról érkező események értesítéseinek engedélyezése. |
 | [ESKÜ tokenek](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Felhőalapú Azure MFA-környezetekben használatos a felhasználók eskü-jogkivonatának kezeléséhez. |
 | [Telefonhívás beállításai](#phone-call-settings) | A Felhőbeli és a helyszíni környezetekhez kapcsolódó telefonhívások és üdvözlések beállításainak konfigurálása. |
 | Szolgáltatók | Ez megjeleníti a fiókjához esetlegesen hozzárendelt meglévő hitelesítési szolgáltatókat is. Az új hitelesítési szolgáltatók nem hozhatók létre szeptember 1-től 2018-ig |
@@ -92,13 +92,19 @@ Konfigurálja a _csalási riasztás_ funkciót, hogy a felhasználók jelentsene
 * **Kód a csalás jelentéséhez a kezdeti üdvözlés során**: Ha a felhasználók telefonhívást kapnak a kétlépéses ellenőrzés végrehajtásához, a rendszer **#** általában megnyomja a bejelentkezés megerősítését. A csalások jelentéséhez a felhasználónak be kell írnia egy **#** kódot a gomb megnyomása előtt. Alapértelmezés szerint ez a kód **0** , de testre is szabhatja.
 
    >[!NOTE]
-   >A Microsoft alapértelmezett hang-üdvözlése arra utasítja a felhasználókat, hogy a **0 #** lenyomásával küldjenek csalási riasztást. Ha nullától eltérő kódot szeretne használni, jegyezze fel és töltse fel a saját egyéni hangfelvételeit a felhasználókra vonatkozó megfelelő utasításokkal.
+   >A Microsoft alapértelmezett hang-üdvözlése arra utasítja a felhasználókat, hogy a **0 #** lenyomásával küldjenek csalási riasztást. Ha nullától eltérő kódot szeretne használni, jegyezzefel és töltse fel a saját egyéni hangfelvételeit a felhasználókra vonatkozó megfelelő utasításokkal.
    >
 
 ### <a name="view-fraud-reports"></a>Csalási jelentések megtekintése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki **Azure Active Directory** > a**bejelentkezéseket**. A csalási jelentés mostantól a szabványos Azure AD-beli bejelentkezési jelentés része.
+
+## <a name="notifications"></a>Értesítések
+
+Adja meg az e-mail-címeket azon felhasználók számára, akik csalási értesítő e-mailt kapnak.
+
+![Értesítési csalások riasztási e-mail mintája](./media/howto-mfa-mfasettings/multi-factor-authentication-fraud-alert-email.png)
 
 ## <a name="phone-call-settings"></a>Telefonhívás beállításai
 
@@ -246,7 +252,7 @@ Az Azure AD támogatja az összevonást vagy az egyszeri bejelentkezést (SSO) h
 >A következő pontok csak az összevont (SSO) ügyfelekre érvényesek.
 
 * Az alkalmazások jelszavait az Azure AD ellenőrzi, ezért az összevonás mellőzése. Az összevonás csak az alkalmazás jelszavának beállításakor használatos.
-* Az identitás-szolgáltató (identitásszolgáltató) nem kapcsolódik az összevont (SSO) felhasználókhoz, a passzív folyamattól eltérően. Az alkalmazás jelszavait a munkahelyi vagy iskolai fiók tárolja. Ha a felhasználó elhagyja a vállalatot, a felhasználó adatai valós időben, a felhasználók adatait a munkahelyi vagy  iskolai fiókba áramlanak. A fiók letiltása/törlése akár három órát is igénybe vehet, ami késleltetheti az alkalmazás jelszavának letiltását/törlését az Azure AD-ben.
+* Az identitás-szolgáltató (identitásszolgáltató) nem kapcsolódik az összevont (SSO) felhasználókhoz, a passzív folyamattól eltérően. Az alkalmazás jelszavait a munkahelyi vagy iskolai fiók tárolja. Ha a felhasználó elhagyja a vállalatot, a felhasználó adatai valós időben, a felhasználók adatait a munkahelyi vagy iskolai fiókba áramlanak. A fiók letiltása/törlése akár három órát is igénybe vehet, ami késleltetheti az alkalmazás jelszavának letiltását/törlését az Azure AD-ben.
 * A helyszíni ügyfél Access Control beállításait az alkalmazás jelszavai szolgáltatása nem veszi figyelembe.
 * Nem érhető el helyszíni hitelesítési naplózási/naplózási képesség az alkalmazás jelszavai szolgáltatással való használatra.
 * Néhány speciális architektúrához a hitelesítő adatok kombinációja szükséges a kétlépéses ellenőrzéshez az ügyfelekkel. Ezek a hitelesítő adatok a munkahelyi vagy iskolai fiókhoz tartozó felhasználónevet és jelszót, valamint az alkalmazás jelszavait is tartalmazhatják. A követelmények attól függnek, hogyan történik a hitelesítés. A helyszíni infrastruktúrát, a munkahelyi vagy iskolai fiókhoz tartozó felhasználónevet és jelszót hitelesítő ügyfelek esetében kötelező megadni. Az Azure AD-t hitelesítő ügyfelek esetében szükség van egy alkalmazás jelszavára.

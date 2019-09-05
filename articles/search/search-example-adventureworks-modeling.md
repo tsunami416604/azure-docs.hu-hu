@@ -1,27 +1,27 @@
 ---
 title: 'Példa: A AdventureWorks-leltári adatbázis modellezése – Azure Search'
 description: Megtudhatja, hogyan modellezheti a kapcsolatokat, és hogyan alakíthatja át azt egy összevont adatkészletbe az indexeléshez és a teljes szöveges kereséshez Azure Searchban.
-author: cstone
+author: HeidiSteen
 manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/25/2019
-ms.author: chstone
-ms.openlocfilehash: 52ccf3edfca5b3481b038bd5d3449c1dd6354179
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 09/05/2019
+ms.author: heidist
+ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649918"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274037"
 ---
 # <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Példa: A Azure Search AdventureWorks-leltározási adatbázisának modellezése
 
-A strukturált adatbázis-tartalmak hatékony keresési indexbe való modellezése ritkán egyszerű feladat. Az ütemezési és a változási felügyelet hatálya alá esik, hogy a táblázathoz csatlakoztatott állapotból származó forrás sorok denormalizálása a Search-barát entitások között fennáll. Ez a cikk az elérhető online AdventureWorks-mintaadatok használatával kiemeli az adatbázisból a keresésre való áttérés gyakori tapasztalatait. 
+A Azure Search az [indexelési (adatfeldolgozási) folyamat](search-what-is-an-index.md)bemenetként fogadja az összeolvasztott sorhalmazt. Ha a forrásadatok egy SQL Server viszonyítási adatbázisból származnak, ez a cikk azt mutatja be, hogyan hozható létre egy összevont sorhalmaz az indexelés előtt, az AdventureWorks példaként használva.
 
 ## <a name="about-adventureworks"></a>A AdventureWorks névjegye
 
-Ha SQL Server példánya van, akkor lehet, hogy ismeri a AdventureWorks-minta adatbázisát. Az adatbázis táblái között öt tábla látható, amelyek a termékre vonatkozó információkat tartalmaznak.
+Ha SQL Server példánya van, akkor lehet, hogy ismeri a [AdventureWorks-minta adatbázisát](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017). Az adatbázis táblái között öt tábla látható, amelyek a termékre vonatkozó információkat tartalmaznak.
 
 + **ProductModel**: név
 + **Termék**: név, szín, Ár, méret, súly, rendszerkép, kategória (minden sor egy adott ProductModel csatlakozik)
@@ -29,7 +29,7 @@ Ha SQL Server példánya van, akkor lehet, hogy ismeri a AdventureWorks-minta ad
 + **ProductModelProductDescription**: területi beállítás (minden sor egy adott nyelvhez csatlakozik egy ProductModel egy adott ProductDescription)
 + **ProductCategory**: név, szülő kategória
 
-Az összes adat egyesítése egy összevont sorhalmazba, amely a keresési indexbe betölthető a feladat. 
+Ennek a példának a célja, hogy az összes adatot egy összevont sorhalmazba kombinálja, amely a keresési indexbe betölthető. 
 
 ## <a name="considering-our-options"></a>A lehetőségek figyelembevétele
 
@@ -43,13 +43,13 @@ A probléma megoldása nem annyira egyszerű, hogy a cél indexet a ProductModel
 
 ## <a name="use-a-collection-data-type"></a>Gyűjtemény adattípusának használata
 
-A "helyes megközelítés" olyan keresési séma funkció használata, amely nem rendelkezik közvetlen párhuzamosan az adatbázis-modellben: **Collection(Edm.String)** . A gyűjtemény adattípusa akkor használatos, ha az egyes karakterláncok listája nem egy nagyon hosszú (egyetlen) karakterlánc. Ha címkéket vagy kulcsszavakat tartalmaz, a mezőhöz gyűjtemény adattípust kell használnia.
+A "helyes megközelítés" olyan keresési séma funkció használata, amely nem rendelkezik közvetlen párhuzamosan az adatbázis-modellben: **Collection(Edm.String)** . Ez a szerkezet a Azure Search index sémában van definiálva. A gyűjtemény adattípusa akkor használatos, ha egy nagyon hosszú (szimpla) karakterlánc helyett az egyes karakterláncok listáját kell képviselnie. Ha címkéket vagy kulcsszavakat tartalmaz, a mezőhöz gyűjtemény adattípust kell használnia.
 
 A többértékű index mezők **(EDM. String)** a "Color", a "size" és a "képhez" tulajdonság megadásával a kiegészítő információk megmaradnak az elemzéshez és a szűréshez, az index ismétlődő bejegyzésekkel való szennyezése nélkül. Ehhez hasonlóan alkalmazzon összesítő függvényeket a numerikus termékek mezőire, az indexelési **minListPrice** az egyes termékek **listPrice**helyett.
 
 Az ilyen struktúrákkal rendelkező indexek esetében a "Mountain Bikes" kifejezés a különálló kerékpár-modelleket jeleníti meg, miközben a fontos metaadatokat, például a színt, a méretet és a legalacsonyabb árat őrzi meg. Az alábbi képernyőfelvétel egy illusztrációt tartalmaz.
 
-  ![Példa Mountain Bike] -keresésre (./media/search-example-adventureworks/mountain-bikes-visual.png "Példa Mountain Bike") -keresésre
+  ![Példa Mountain Bike-keresésre](./media/search-example-adventureworks/mountain-bikes-visual.png "Példa Mountain Bike-keresésre")
 
 ## <a name="use-script-for-data-manipulation"></a>Az adatkezeléshez használt parancsfájl használata
 
@@ -164,5 +164,3 @@ WHERE
 
 > [!div class="nextstepaction"]
 > [Példa: Többszintű dimenziók besorolása Azure Search](search-example-adventureworks-multilevel-faceting.md)
-
-

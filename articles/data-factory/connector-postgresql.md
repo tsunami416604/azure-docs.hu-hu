@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0efb884de9deaa2784e160785c26d78179da6567
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 84a82e5fae7c56a13aeb4603079e9378b38785cb
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966892"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277559"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Adatok másolása a PostgreSQL-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -36,7 +36,7 @@ Ez a PostgreSQL-összekötő támogatja a PostgreSQL **7,4-es vagy újabb verzi�
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-A 3,7-nál kisebb, saját üzemeltetésű IR-verziók esetében telepítenie kell a [PostgreSQL-hez készült Ngpsql](https://go.microsoft.com/fwlink/?linkid=282716) -adatszolgáltatót a 2.0.12 és a 3.1.9 között a Integration Runtime gépen.
+A 3,7-nál kisebb, saját üzemeltetésű IR-verziók esetében telepítenie kell a [PostgreSQL-hez készült Ngpsql-adatszolgáltatót](https://go.microsoft.com/fwlink/?linkid=282716) a 2.0.12 és a 3.1.9 között a Integration Runtime gépen.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -139,14 +139,16 @@ Ha a PostgreSQL-hez társított szolgáltatást használta a következő hasznos
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz a PostgreSQL-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a PostgreSQL-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatok PostgreSQL-ből való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **RelationalTable**értékre. A következő tulajdonságok támogatottak:
+Az adatok PostgreSQL-ből való másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **RelationalTable** | Igen |
-| tableName | A PostgreSQL-adatbázisban található tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **PostgreSqlTable** | Igen |
+| schema | A séma neve. |Nem (Ha a tevékenység forrása az "query" van megadva)  |
+| table | A tábla neve. |Nem (Ha a tevékenység forrása az "query" van megadva)  |
+| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. A `schema` és`table` az új számítási feladatok használata. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -155,15 +157,18 @@ Az adatok PostgreSQL-ből való másolásához állítsa az adatkészlet Type (t
     "name": "PostgreSQLDataset",
     "properties":
     {
-        "type": "RelationalTable",
+        "type": "PostgreSqlTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<PostgreSQL linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+Ha a beírt adatkészletet használta `RelationalTable` , a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
@@ -171,11 +176,11 @@ Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját l
 
 ### <a name="postgresql-as-source"></a>PostgreSQL forrásként
 
-Az adatok PostgreSQL-ből való másolásához állítsa a forrás típusát a másolás tevékenység **RelationalSource**. A következő tulajdonságok támogatottak a másolási tevékenység **source** szakaszban:
+Az adatok PostgreSQL-ből való másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **RelationalSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **PostgreSqlSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 > [!NOTE]
@@ -202,7 +207,7 @@ Az adatok PostgreSQL-ből való másolásához állítsa a forrás típusát a m
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "PostgreSqlSource",
                 "query": "SELECT * FROM \"MySchema\".\"MyTable\""
             },
             "sink": {
@@ -212,6 +217,8 @@ Az adatok PostgreSQL-ből való másolásához állítsa a forrás típusát a m
     }
 ]
 ```
+
+Ha a beírt forrást használta `RelationalSource` , a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

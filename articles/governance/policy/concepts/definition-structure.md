@@ -7,13 +7,12 @@ ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 44bf3171f9da73dac17b29e86c80fc8f0d011498
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 1999a47d18fd3ce6388d6177be85c7debd3c1e97
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69557933"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239185"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -67,8 +66,6 @@ A következő JSON például olyan szabályzatot, amely korlátozza, hogy üzemb
 ```
 
 Az összes Azure Policy minta [Azure Policy minta](../samples/index.md).
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="mode"></a>Mód
 
@@ -250,7 +247,7 @@ A feltétel azt értékeli, hogy egy **mező** vagy az **érték** -hozzáféré
 Használatakor a **például** és **notLike** , feltételek meg helyettesítő karakter `*` értéke.
 Az érték nem tartalmazhat egynél több helyettesítő `*`.
 
-A egyezési és **notMatch** `#` feltételek használatakor az adott számjegyre `?` , betűre, `.` bármilyen karakterre és bármely más karakterre illeszkedik, amely megfelel a tényleges karakternek.
+A **egyezési** és **notMatch** `#` feltételek használatakor az adott számjegyre `?` , betűre, `.` bármilyen karakterre és bármely más karakterre illeszkedik, amely megfelel a tényleges karakternek.
 a **Match** és a **notMatch** megkülönbözteti a kis-és nagybetűket. Kis-és nagybetűket megkülönböztető alternatívák a **matchInsensitively** és a **notMatchInsensitively**szolgáltatásban érhetők el. Példák: [lehetővé teszik több név minták](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Mezők
@@ -306,7 +303,7 @@ A következő példában `concat` a **TagName** paraméter értékének megadás
 
 ### <a name="value"></a>Value
 
-A feltételek az **érték**használatával is létrehozhatók. az **érték** a [paraméterekkel](#parameters), a [támogatott sablon](#policy-functions)-funkciókkal vagy a literálokkal kapcsolatos feltételeket ellenőrzi.
+A feltételek az **érték**használatával is létrehozhatók. az **érték** a [paraméterekkel](#parameters), a [támogatott sablon-funkciókkal](#policy-functions)vagy a literálokkal kapcsolatos feltételeket ellenőrzi.
 az **érték** a támogatott [feltételekkel](#conditions)párosítva van.
 
 > [!WARNING]
@@ -314,7 +311,7 @@ az **érték** a támogatott [feltételekkel](#conditions)párosítva van.
 
 #### <a name="value-examples"></a>Példák az értékekre
 
-Ez a házirend-szabály például az **érték** használatával hasonlítja össze `resourceGroup()` a függvény eredményét és a visszaadott `*netrg` **Name** tulajdonságot a hasonló feltétellel. A szabály minden olyan erőforrást megtagad, `Microsoft.Network/*` amely nem egy olyan erőforráscsoport, amelynek a `*netrg`neve véget ér.
+Ez a házirend-szabály például az **érték** használatával hasonlítja össze `resourceGroup()` a függvény eredményét és a visszaadott `*netrg` **Name** tulajdonságot a hasonló feltétellel. A szabály minden olyan erőforrást megtagad, `Microsoft.Network/*` amely **nem egy olyan** erőforráscsoport, amelynek a `*netrg`neve véget ér.
 
 ```json
 {
@@ -370,9 +367,9 @@ A _template functions_ in **Value** használata számos összetett beágyazott f
 }
 ```
 
-A fenti példában az alsztring [()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) érték a **név** első három karakterének **ABC**-re való összevetését használja. Ha a **név** rövidebb, mint három karakter, `substring()` a függvény hibát eredményez. Ez a hiba azt eredményezi, hogy a házirend megtagadási hatást vált ki.
+A fenti példában az [alsztring ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) érték a **név** első három karakterének **ABC**-re való összevetését használja. Ha a **név** rövidebb, mint három karakter, `substring()` a függvény hibát eredményez. Ez a hiba azt eredményezi, hogy a házirend **megtagadási** hatást vált ki.
 
-Ehelyett a [IF ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) függvény használatával ellenőrizze, hogy az első három karakter egyenlő- e az **ABC** -vel anélkül, hogy a **név** három karakternél rövidebb legyen, ami hibát okozhat:
+Ehelyett a [IF ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) függvény használatával ellenőrizze, hogy az első három **karakter egyenlő-e** az **ABC** -vel anélkül, hogy a **név** három karakternél rövidebb legyen, ami hibát okozhat:
 
 ```json
 {
@@ -517,7 +514,7 @@ Az aliasok rendelkezésre álló számos rendelkezik egy olyanra, amely egy "nor
 
 A "normál" alias a mezőt egyetlen értékként jelöli. Ez a mező az összehasonlítási forgatókönyvek pontos egyeztetésére szolgál, ha az értékek teljes halmazának pontosan meghatározottnak kell lennie, nem több és nem kevesebb.
 
-A **[\*]** alias lehetővé teszi, hogy összehasonlítsa a tömbben lévő egyes elemek értékével és az egyes elemek adott tulajdonságaival. Ez a módszer lehetővé teszi, hogy összehasonlítsa a "Ha nincs", "," vagy "Ha az összes" forgatókönyvhöz tartozó elem tulajdonságait. A **ipRules [\*]** használatával egy példa azt ellenőrzi, hogy minden _művelet_ megtagadva van-e, de nem kell aggódnia, hogy hány szabály létezik, vagy hogy mi az IP- _érték_ . Ez a minta-szabály a következő **ipRules keresi:\*[]. az érték** a **10.0.4.1** , és csak akkor alkalmazza a **effectType** , ha nem talál legalább egy egyezést:
+A **[\*]** alias lehetővé teszi, hogy összehasonlítsa a tömbben lévő egyes elemek értékével és az egyes elemek adott tulajdonságaival. Ez a módszer lehetővé teszi, hogy összehasonlítsa a "Ha nincs", "," vagy "Ha az összes" forgatókönyvhöz tartozó elem tulajdonságait. A **ipRules [\*]** használatával egy példa azt ellenőrzi, hogy minden _művelet_ _megtagadva_van-e, de nem kell aggódnia, hogy hány szabály létezik, vagy hogy mi az IP- _érték_ . Ez a minta-szabály a következő **ipRules keresi:\*[]. az érték** a **10.0.4.1** , és csak akkor alkalmazza a **effectType** , ha nem talál legalább egy egyezést:
 
 ```json
 "policyRule": {
@@ -539,7 +536,7 @@ A **[\*]** alias lehetővé teszi, hogy összehasonlítsa a tömbben lévő egye
 }
 ```
 
-További információ: [[\*] alias](../how-to/author-policies-for-arrays.md#evaluating-the--alias)kiértékelése.
+További információ: [[\*] alias kiértékelése](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
 ## <a name="initiatives"></a>Kezdeményezések
 
@@ -623,7 +620,7 @@ A következő példa bemutatja, hogyan hozhat létre a kezdeményezés két cím
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatok hatásainak ismertetése](effects.md).
-- Megtudhatja, hogyan [hozhat létre programozott](../how-to/programmatically-create.md)módon házirendeket.
-- Ismerje meg, hogyan kérheti le a [megfelelőségi információkat](../how-to/getting-compliance-data.md).
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](../how-to/programmatically-create.md).
+- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](../how-to/getting-compliance-data.md).
 - Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](../how-to/remediate-resources.md).
 - Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).

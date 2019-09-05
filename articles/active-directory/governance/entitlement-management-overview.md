@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/10/2019
+ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d93a20494886bb7d563439e2699f60bedb646dcd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 0c99ee1987b592a2e8314d529b118fb26945271e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032556"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241696"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Mi az az Azure AD-jogosultságkezelés? (Előzetes verzió)
 
@@ -80,11 +80,11 @@ A jogosultság-kezeléssel a következő típusú erőforrásokat kezelheti:
 Az Azure AD biztonsági csoportjaira vagy az Office 365-csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Példa:
 
 - A Microsoft Office 365-es verzióra vonatkozó licenccel rendelkező felhasználók számára engedélyezheti az Azure AD biztonsági csoportját egy hozzáférési csomagban, és konfigurálhatja az adott csoportra vonatkozó [csoport alapú licencelést](../users-groups-roles/licensing-groups-assign.md) .
-- Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD biztonsági csoport használatával és az adott csoport [Azure](../../role-based-access-control/role-assignments-portal.md) -beli szerepkör-hozzárendelésének létrehozásával
+- Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD biztonsági csoport használatával és az adott csoport [Azure-beli szerepkör-hozzárendelésének](../../role-based-access-control/role-assignments-portal.md) létrehozásával
 
 ## <a name="what-are-access-packages-and-policies"></a>Mik azok a hozzáférési csomagok és szabályzatok?
 
-A jogosultságok kezelése bevezeti a *hozzáférési csomag*fogalmát. A hozzáférési csomag az összes olyan erőforrás kötegét képezi, amelyet a felhasználónak egy projekten kell dolgoznia, vagy feladatait kell végrehajtania. Az erőforrások közé tartoznak a csoportok, az alkalmazások és a webhelyek hozzáférése. A hozzáférési csomagok a belső alkalmazottak és a szervezeten kívüli felhasználók hozzáférésének szabályozására szolgálnak. A hozzáférési csomagok a katalógusok nevűtárolókban vannak meghatározva.
+A jogosultságok kezelése bevezeti a *hozzáférési csomag*fogalmát. A hozzáférési csomag az összes olyan erőforrás kötegét képezi, amelyet a felhasználónak egy projekten kell dolgoznia, vagy feladatait kell végrehajtania. Az erőforrások közé tartoznak a csoportok, az alkalmazások és a webhelyek hozzáférése. A hozzáférési csomagok a belső alkalmazottak és a szervezeten kívüli felhasználók hozzáférésének szabályozására szolgálnak. A hozzáférési csomagok a *katalógusok*nevű tárolókban vannak meghatározva.
 
 A hozzáférési csomagok egy vagy több *szabályzatot*is tartalmaznak. A szabályzatok határozzák meg a hozzáférési csomag elérésére vonatkozó szabályokat vagy guardrails. A szabályzat engedélyezése kényszeríti, hogy csak a megfelelő felhasználók férhessenek hozzá a megfelelő erőforrásokhoz, és a megfelelő időtartamra.
 
@@ -139,6 +139,18 @@ A jogosultságok kezelésének és dokumentációjának jobb megismeréséhez te
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 A speciális felhők, például az Azure Government, az Azure Germany és az Azure China 21Vianet jelenleg nem használhatók ebben az előzetes verzióban.
+
+### <a name="which-users-must-have-licenses"></a>Mely felhasználóknak kell licenccel rendelkezniük?
+
+A bérlőnek legalább annyi prémium szintű Azure AD P2-licenccel kell rendelkeznie, mint az aktív tag felhasználóinak. Az aktív tag felhasználói a jogosultságok kezelésében a következők:
+
+- Az a felhasználó, aki egy hozzáférési csomagra vonatkozó kérelmet indít vagy fogad el.
+- Olyan felhasználó, akinek hozzáférési csomagja van hozzárendelve. 
+- A hozzáférési csomagokat kezelő felhasználó.
+
+A tagok felhasználói számára a licencek részeként több vendég is engedélyezheti a jogosultságok felügyeletét. További információ a felvehető vendég felhasználók számának kiszámításáról: [Azure Active Directory B2B együttműködés licencelési útmutatója](../b2b/licensing-guidance.md).
+
+További információ a licenceknek a felhasználókhoz való hozzárendeléséről: [licencek kiosztása vagy eltávolítása a Azure Active Directory portál használatával](../fundamentals/license-users-groups.md).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: 5883c1aa20af106dd39bffc95036ee90f312ffea
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: bac784ea3050111184e2908fe5656a1d16545a99
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051589"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231016"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő közvetítés a Azure Media Services v3-val
 
@@ -96,7 +96,7 @@ Az Media Services v3 élő közvetítési munkafolyamatának megismeréséhez el
     * Állítsa le az élő eseményt. Az élő esemény leállítását követően nem számítunk fel díjat. A betöltési URL-cím nem módosul, ezért a csatorna ismételt elindításához nem szükséges újrakonfigurálni a kódolót.
     * A streamvégpontot is leállíthatja, kivéve, ha szeretné elérhetővé tenni az élő esemény archívumát igényalapú streamingre. Ha az élő esemény leállított állapotban van, nem számítunk fel díjat.
 
-Az élő esemény automatikusan átalakítja az eseményeket az igény szerinti tartalomba, ha leállt. Ha már leállította és törölte is az eseményt, a felhasználók igény szerinti videóként le tudják játszani az archivált tartalmat mindaddig, amíg az objektumot nem törli. Olyan objektumot nem lehet törölni, amelyet használ egy esemény. Először az eseményt kell törölni.
+Az az objektum, amelyet az élő kimenet archivál, automatikusan egy igény szerinti eszközvé válik az élő kimenet törlésekor. Az élő események leállításához minden élő kimenetet törölnie kell. A nem kötelező jelző [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) használatával automatikusan eltávolíthatja az élő kimeneteket a leállítás után. 
 
 > [!TIP]
 > Lásd: [élő közvetítés oktatóanyaga](stream-live-tutorial-with-api.md), a cikk megvizsgálja a fent ismertetett lépéseket megvalósító kódot.

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: faae9ae335e391afac4ed2ef75472f1fecdaca86
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 1d64a25fc60a1a1cbe1ed04f87a57556b7de0b88
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211676"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259019"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Adatok másolása SAP-táblából Azure Data Factory használatával
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok SAP-táblából való másolásához. További információ: másolási [tevékenység áttekintése](copy-activity-overview.md).
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok SAP-táblából való másolásához. További információ: [másolási tevékenység áttekintése](copy-activity-overview.md).
 
 >[!TIP]
 >Az ADF SAP-adatintegrációs forgatókönyvre vonatkozó általános támogatásának megismeréséhez tekintse meg az [SAP-Adatintegráció Azure Data Factory tanulmány használatával](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) részletes bevezetést, comparsion és útmutatást.
@@ -35,9 +35,9 @@ Az SAP Table Connector különösen a következőket támogatja:
 - Adatok másolása SAP-táblából a következőben:
 
   - SAP ERP központi összetevő (SAP ECC) 7,01-es vagy újabb verzió (az SAP-támogatási csomag egy, a 2015-es kiadás után kiadott új veremben).
-  - Az SAP Business Warehouse (SAP BW) 7,01-es vagy újabb verziója.
+  - Az SAP Business Warehouse (SAP BW) 7,01-es vagy újabb verziója (egy, az 2015-es verzió után kiadott SAP-támogatási csomagban).
   - SAP S/4HANA.
-  - Más termékek az SAP Business Suite 7,01-es vagy újabb verziójával.
+  - Más termékek az SAP Business Suite 7,01-es vagy újabb verziójával (az SAP támogatási csomagjának a 2015 után kiadott legújabb verziójában).
 
 - Adatok másolása egy SAP átlátszó táblából, egy készletezett táblából, egy fürtözött táblából és egy nézetből.
 - Adatok másolása egyszerű hitelesítéssel vagy biztonságos hálózati kommunikáció (SNC) használatával, ha a SNC konfigurálva van.
@@ -47,7 +47,7 @@ Az SAP Table Connector különösen a következőket támogatja:
 
 Az SAP Table Connector használatához a következőket kell tennie:
 
-- Saját üzemeltetésű integrációs modul (3,17-es vagy újabb verzió) beállítása. További információ: saját üzemeltetésű integrációs modul [létrehozása és konfigurálása](create-self-hosted-integration-runtime.md).
+- Saját üzemeltetésű integrációs modul (3,17-es vagy újabb verzió) beállítása. További információ: saját üzemeltetésű [integrációs modul létrehozása és konfigurálása](create-self-hosted-integration-runtime.md).
 
 - Töltse le a 64 bites [SAP-összekötőt Microsoft .NET 3,0](https://support.sap.com/en/product/connectors/msnet.html) -re az SAP webhelyéről, és telepítse a saját üzemeltetésű Integration Runtime-gépre. A telepítés során győződjön meg arról, hogy az **opcionális telepítési lépések** ablakban a **szerelvények telepítése a GAC** -ba lehetőségre van kiválasztva.
 
@@ -86,7 +86,7 @@ A SAP BW Open hub társított szolgáltatás a következő tulajdonságokat tám
 | `sncPartnerName` | A kommunikációs partner SNC-neve az SAP-kiszolgáló eléréséhez, ahol a tábla található.<br/>Akkor érvényes `sncMode` , ha be van kapcsolva. | Nem |
 | `sncLibraryPath` | A külső biztonsági termék könyvtára, amely hozzáfér az SAP-kiszolgálóhoz, ahol a tábla található.<br/>Akkor érvényes `sncMode` , ha be van kapcsolva. | Nem |
 | `sncQop` | Az alkalmazni kívánt védelmi szint SNC-minőség.<br/>Akkor érvényes `sncMode` , ha be van kapcsolva. <br/>Az `1` engedélyezett értékek: (hitelesítés) `2` , (integritás) `3` , (adatvédelem) `8` , (alapértelmezett) `9` , (maximum). | Nem |
-| `connectVia` | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. A saját üzemeltetésű integrációs modulra van szükség, ahogy azt [](#prerequisites)az előfeltételekben korábban említettük. |Igen |
+| `connectVia` | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. A saját üzemeltetésű integrációs modulra van szükség, ahogy azt az [Előfeltételekben](#prerequisites)korábban említettük. |Igen |
 
 **1. példa: Kapcsolódás SAP-alkalmazáskiszolgáló**
 
@@ -172,7 +172,7 @@ A SAP BW Open hub társított szolgáltatás a következő tulajdonságokat tám
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához szükséges csoportok és tulajdonságok teljes listáját lásd: adatkészletek. [](concepts-datasets-linked-services.md) A következő szakasz az SAP-táblázat adatkészletében támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálásához szükséges csoportok és tulajdonságok teljes listáját lásd: [adatkészletek](concepts-datasets-linked-services.md). A következő szakasz az SAP-táblázat adatkészletében támogatott tulajdonságok listáját tartalmazza.
 
 Az adatoknak a és a SAP BW Open hub társított szolgáltatásba való másolásához a következő tulajdonságok támogatottak:
 
@@ -281,7 +281,7 @@ A `rfcTableOptions`alkalmazásban a következő általános SAP-lekérdezési op
 
 ## <a name="data-type-mappings-for-an-sap-table"></a>Az SAP-táblázat adattípus-hozzárendelései
 
-Az adatok SAP-táblából való másolása során a rendszer a következő leképezéseket használja az SAP Table adattípusokból a Azure Data Factory köztes adattípusokra. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadóra, tekintse meg a [séma-és adattípus](copy-activity-schema-and-type-mapping.md)-leképezéseket
+Az adatok SAP-táblából való másolása során a rendszer a következő leképezéseket használja az SAP Table adattípusokból a Azure Data Factory köztes adattípusokra. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadóra, tekintse meg a [séma-és adattípus-leképezéseket](copy-activity-schema-and-type-mapping.md)
 
 | SAP ABAP-típus | Data Factory közbenső adattípus |
 |:--- |:--- |

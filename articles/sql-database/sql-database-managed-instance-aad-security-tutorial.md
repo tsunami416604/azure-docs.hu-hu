@@ -9,12 +9,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: 87bd22ec4f2cfae62d1f80284ad8346ca292d016
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37098411f465c611dc9d2e2443f369e01d6e338c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567671"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230996"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Oktatóanyag: Felügyelt példányok biztonsága Azure SQL Database az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) használatával
 
@@ -55,10 +55,12 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 
 ## <a name="limiting-access-to-your-managed-instance"></a>A felügyelt példányhoz való hozzáférés korlátozása
 
-A felügyelt példányok csak magánhálózati IP-címen keresztül érhetők el. Nincsenek olyan szolgáltatási végpontok, amelyek a felügyelt példány hálózatán kívülről csatlakozhatnak egy felügyelt példányhoz. Az elszigetelt SQL Server helyszíni környezetekhez hasonlóan az alkalmazásoknak és a felhasználóknak a kapcsolat létesítése előtt hozzá kell férniük a felügyelt példány hálózatához (VNet). További információt a következő cikkben talál az [alkalmazás felügyelt példányhoz való](sql-database-managed-instance-connect-app.md)összekapcsolásához.
+A felügyelt példányok magánhálózati IP-címen keresztül érhetők el. Az elszigetelt SQL Server helyszíni környezetekhez hasonlóan az alkalmazásoknak és a felhasználóknak a kapcsolat létesítése előtt hozzá kell férniük a felügyelt példány hálózatához (VNet). További információt a következő cikkben talál az [alkalmazás felügyelt példányhoz való](sql-database-managed-instance-connect-app.md)összekapcsolásához.
+
+A felügyelt példányon is konfigurálhat szolgáltatási végpontot, amely lehetővé teszi a nyilvános kapcsolatok használatát, ugyanúgy, mint a Azure SQL Database. További információkért tekintse meg a [nyilvános végpont konfigurálása Azure SQL Database felügyelt példányban](sql-database-managed-instance-public-endpoint-configure.md)című cikket.
 
 > [!NOTE] 
-> Mivel a felügyelt példányok csak a VNET belül érhetők el, [SQL Database tűzfalszabályok](sql-database-firewall-configure.md) nem érvényesek. A felügyelt példány saját [beépített tűzfallal](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)rendelkezik.
+> Még ha a szolgáltatási végpontok engedélyezve vannak, [SQL Database tűzfalszabályok](sql-database-firewall-configure.md) nem érvényesek. A felügyelt példány saját [beépített tűzfallal](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) rendelkezik a kapcsolatok kezeléséhez.
 
 ## <a name="create-an-azure-ad-server-principal-login-for-a-managed-instance-using-ssms"></a>Felügyelt példányhoz tartozó Azure AD-kiszolgáló rendszerbiztonsági tag (login) létrehozása a SSMS használatával
 
@@ -155,7 +157,7 @@ Ha az Azure ad-kiszolgáló rendszerbiztonsági tag (login) létrejött, és `sy
 
      További információkért tekintse meg a következő cikket: [Univerzális hitelesítés az SQL Database és az SQL Data Warehouse használatával (SSMS-támogatás az MFA-hoz)](sql-database-ssms-mfa-authentication.md)
 
-1. Válassza **a Active Directory-Universal lehetőséget MFA-támogatással**. Ez egy multi-Factor Authentication-(MFA-) bejelentkezési ablakot hoz létre. Jelentkezzen be az Azure AD-jelszavával.
+1. Válassza **a Active Directory-Universal lehetőséget MFA-támogatással**. Ez egy Multi-Factor Authentication (MFA) bejelentkezési ablakot hoz létre. Jelentkezzen be az Azure AD-jelszavával.
 
     ![mfa-login-prompt.png](media/sql-database-managed-instance-security-tutorial/mfa-login-prompt.png)
 
@@ -212,7 +214,7 @@ Ha az Azure ad-kiszolgáló rendszerbiztonsági tag (login) létrejött, és `sy
       ```
 
 > [!NOTE]
-> Az Azure AD vendég felhasználói csak akkor támogatottak a felügyelt példányok bejelentkezésekor, ha az Azure AD-csoport részeként van hozzáadva. Az Azure AD vendég felhasználója egy olyan fiók, amelyet a felügyelt példányhoz tartozó Azure AD-hoz egy másik Azure AD-ből kell meghívni. Például joe@contoso.com : (Azure ad-fiók) vagy steve@outlook.com (MSA-fiók) hozzáadhatók egy csoporthoz az Azure ad-aadsqlmi. A felhasználók egy csoportba való felvétele után a bejelentkezési szintaxis létrehozásával létrehozhat egy bejelentkezést a csoport felügyelt példány főadatbázisában  . Azok a vendég felhasználók, akik tagjai ennek a csoportnak, csatlakozhatnak a felügyelt példányhoz az aktuális bejelentkezésük joe@contoso.com ( steve@outlook.compéldául vagy) használatával.
+> Az Azure AD vendég felhasználói csak akkor támogatottak a felügyelt példányok bejelentkezésekor, ha az Azure AD-csoport részeként van hozzáadva. Az Azure AD vendég felhasználója egy olyan fiók, amelyet a felügyelt példányhoz tartozó Azure AD-hoz egy másik Azure AD-ből kell meghívni. Például joe@contoso.com : (Azure ad-fiók) vagy steve@outlook.com (MSA-fiók) hozzáadhatók egy csoporthoz az Azure ad-aadsqlmi. A felhasználók egy csoportba való felvétele után a bejelentkezési szintaxis **létrehozásával** létrehozhat egy bejelentkezést a csoport felügyelt példány főadatbázisában. Azok a vendég felhasználók, akik tagjai ennek a csoportnak, csatlakozhatnak a felügyelt példányhoz az aktuális bejelentkezésük joe@contoso.com ( steve@outlook.compéldául vagy) használatával.
 
 ## <a name="create-an-azure-ad-user-from-the-azure-ad-server-principal-login-and-give-permissions"></a>Azure AD-felhasználó létrehozása az Azure AD-kiszolgáló rendszerbiztonsági tag (login) segítségével, és engedélyek megadása
 
@@ -260,7 +262,7 @@ További információ az adatbázis-engedélyek megadásáról: [első lépések
     A **mygroup** -hez tartozó összes felhasználó hozzáférhet a **MyMITestDB** -adatbázishoz.
 
     > [!IMPORTANT]
-    > Amikor létrehoz egy **felhasználót** egy Azure ad-kiszolgálói rendszerbiztonsági tag (login) alapján, a felhasználónévvel azonos login_name kell megadnia a bejelentkezéshez.
+    > Amikor létrehoz egy **felhasználót** egy Azure ad-kiszolgálói rendszerbiztonsági tag (login) alapján, a felhasználónévvel azonos login_namekell megadnia a bejelentkezéshez.
 
     További információt a [felhasználó létrehozása](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current)című témakörben talál.
 

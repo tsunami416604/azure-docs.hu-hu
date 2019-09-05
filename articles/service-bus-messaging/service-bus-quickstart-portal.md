@@ -1,23 +1,22 @@
 ---
-title: Rövid útmutató – az Azure portal segítségével hozza létre a Service Bus-üzenetsorba |} A Microsoft Docs
-description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre a Service Bus-üzenetsorba az Azure portal használatával. Ezután használja a ügyfélalkalmazásra, üzenetek küldéséhez és üzenetek fogadása az üzenetsorból.
+title: Gyors útmutató – Service Bus üzenetsor létrehozásához használja a Azure Portalt | Microsoft Docs
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Service Bus-várólistát a Azure Portal használatával. Ezt követően egy minta ügyfélalkalmazás használatával üzeneteket küldhet és fogadhat üzeneteket a várólistából.
 services: service-bus-messaging
 author: spelluru
-manager: timlt
 ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/10/2019
+ms.date: 09/03/2019
 ms.author: spelluru
-ms.openlocfilehash: 315f8d30b7c7559947c599edd0e18eaa5a99ac22
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: dc9b8260a8ddde6633bc9215d9efff7aaaa71ad3
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67513641"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242380"
 ---
-# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Gyors útmutató: A Service Bus-üzenetsor létrehozása az Azure portal használatával
-Ez a rövid útmutató azt ismerteti, hogyan küldhet és fogadhat üzeneteket a Service Bus-üzenetsorba, használja a [az Azure portal][Azure portal] hozhat létre egy üzenetkezelési névteret és a egy adott névtéren belül várólista, valamint az, hogy az engedélyezési hitelesítő adatok beszerzése a névtér. Az eljárás ezután bemutatja, hogyan küldhet és fogadhat üzeneteket az üzenetsorból a [.NET Standard-kódtárral](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
+# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Gyors útmutató: Service Bus üzenetsor létrehozásához használja a Azure Portal
+Ez a rövid útmutató azt ismerteti, hogyan lehet üzeneteket küldeni és fogadni egy Service Bus-várólistából, a [Azure Portal][Azure portal] használatával üzenetküldési névteret és a névtéren belüli üzenetsor létrehozására, valamint az engedélyezési hitelesítő adatok megszerzésére az adott névtéren. Az eljárás ezután bemutatja, hogyan küldhet és fogadhat üzeneteket az üzenetsorból a [.NET Standard-kódtárral](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
@@ -26,7 +25,7 @@ Ez a rövid útmutató azt ismerteti, hogyan küldhet és fogadhat üzeneteket a
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a következőket:
 
 - Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként létrehozhat egy [ingyenes fiókot][].
-- [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb. A Visual Studio használatával hozhat létre, amely üzeneteket küld, és üzenetet fogad egy mintát. A minta, hogy tesztelni a PowerShell használatával létrehozott üzenetsorba. 
+- [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb. A Visual Studióval olyan mintát hozhat létre, amely üzeneteket küld egy várólistából, és üzenetet fogad. A minta a PowerShell használatával létrehozott üzenetsor tesztelése. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
@@ -34,6 +33,18 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a kö
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
 ## <a name="send-and-receive-messages"></a>Üzenetek küldése és fogadása
+
+> [!NOTE]
+> Az ebben a szakaszban az üzenetek küldésére és fogadására használt minta egy .NET-minta. Ha más programozási nyelvekkel szeretne üzeneteket küldeni/fogadni, tekintse meg a [Service Bus mintákat](service-bus-samples.md). 
+> 
+> Az üzenetek különböző programozási nyelvekkel történő küldésével és fogadásával kapcsolatos részletes utasításokért tekintse meg a következő rövid útmutatót:
+> - [.NET](service-bus-dotnet-get-started-with-queues.md)
+> - [Java](service-bus-java-how-to-use-queues.md)
+> - [Node. js az Azure/Service-Bus csomag használatával](service-bus-nodejs-how-to-use-queues-new-package.md)
+> - [Node. js az Azure-SB-csomag használatával](service-bus-nodejs-how-to-use-queues.md)
+> - [PHP](service-bus-php-how-to-use-queues.md)
+> - [Python](service-bus-python-how-to-use-queues.md)
+> - [Ruby](service-bus-ruby-how-to-use-queues.md)
 
 Miután kiépítette a névteret és az üzenetsort, valamint beszerezte a szükséges hitelesítő adatokat, készen áll az üzenetek küldésére és fogadására. A kódot [ebben a GitHub-mintamappában](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters) vizsgálhatja meg.
 
@@ -45,7 +56,7 @@ A kód futtatásához tegye a következőt:
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 3. Lépjen a következő mintamappához: `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`.
-4. Másolja a kapcsolati karakterláncot, és az üzenetsor neve beolvasott a beszerzése a felügyeleti hitelesítő adatok szakaszban.
+4. Másolja a felügyeleti hitelesítő adatok beszerzése című szakaszban leírtak szerint a kapcsolatok karakterláncát és a várólista nevét.
 5.  Írja be a parancssorba a következő parancsot:
 
     ```
@@ -71,7 +82,7 @@ Ez a szakasz a mintakód működésének további részleteit ismerteti.
 
 ### <a name="get-connection-string-and-queue"></a>A kapcsolati sztring és az üzenetsor lekérése
 
-A kapcsolati karakterlánc és a várólista nevét lesznek átadva a `Main()` parancssori argumentumok módját. A `Main()` metódus két sztringváltozót jelöl ki az értékek tárolásához:
+A rendszer a `Main()` metódushoz adja át a kapcsolódási karakterláncot és a várólista nevét parancssori argumentumként. A `Main()` metódus két sztringváltozót jelöl ki az értékek tárolásához:
 
 ```csharp
 static void Main(string[] args)
@@ -108,7 +119,7 @@ A `Main()` metódus ezután elindítja a `MainAsync()` aszinkron üzenethurkot.
 
 ### <a name="message-loop"></a>Üzenethurok
 
-A MainAsync() metódus várólista ügyfél hoz létre a parancssori argumentumokat, meghívja a nevű fogadó üzenetkezelőként `RegisterOnMessageHandlerAndReceiveMessages()`, és a üzenetkészletet küld:
+A MainAsync () metódus egy üzenetsor-ügyfelet hoz létre a parancssori argumentumokkal, meghívja a nevű `RegisterOnMessageHandlerAndReceiveMessages()`üzenet-kezelőt, és elküldi az üzenetek készletét:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -198,11 +209,11 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 }
 ```
 > [!NOTE]
-> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
+> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenetküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. Üzenetek küldése és fogadása, kódírás kapcsolatos további információkért folytassa szereplő oktatóanyagok a **üzenetek küldése és fogadása** szakaszban. 
+Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenetküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. Ha többet szeretne megtudni az üzenetek küldésére és fogadására szolgáló kód írásához, folytassa az oktatóanyagokat a **küldési és fogadási üzenetek** szakaszban. 
 
 > [!div class="nextstepaction"]
 > [Üzenetek küldése és fogadása](service-bus-dotnet-get-started-with-queues.md)

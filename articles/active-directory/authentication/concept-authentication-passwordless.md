@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae8f6854241240249cb3b7494872cbbd8fd41e6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: fc633780d8b816d8fc2e313bb1955a5719979efe
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823767"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240869"
 ---
-# <a name="what-is-passwordless"></a>Mi az a jelszó?
+# <a name="what-is-passwordless"></a>Mi a jelszó nélküli hitelesítés?
 
 A többtényezős hitelesítés (MFA) egy nagyszerű módszer a szervezet biztonságossá tételére, de a felhasználók a további rétegekkel is megjegyezik a jelszavukat. A jelszóval nem rendelkező hitelesítési módszerek sokkal kényelmesebbek, mert a jelszó el lett távolítva, és lecserélve valamire, amit Ön, vagy amit tud.
 
@@ -26,7 +26,7 @@ A többtényezős hitelesítés (MFA) egy nagyszerű módszer a szervezet bizton
 | --- | --- | --- |
 | Jelszó nélküli | Telefon vagy biztonsági kulcs | Biometrikus vagy PIN-kód |
 
-A hitelesítéshez minden szervezetnek eltérő igényeire van szüksége. A Microsoft jelenleg a Windows Hello-et, a Windows rendszerű számítógépeket kínálja. Felvesszük a Microsoft Authenticator alkalmazást és a FIDO2 biztonsági kulcsait a jelszóval nem rendelkező családba.
+A hitelesítéshez minden szervezetnek eltérő igényeire van szüksége. A Microsoft jelenleg a Windows Hello-et kínálja a Windows rendszerű számítógépekhez. Felvesszük a Microsoft Authenticator alkalmazást és a FIDO2 biztonsági kulcsait a jelszóval nem rendelkező családba.
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator alkalmazás
 

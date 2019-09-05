@@ -8,18 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ee359b76072da3caee9ae1f5fab3d0fc28d25c0e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: c06cd53e408ebcae24de487fe1d4d25e14aae11b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972688"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240718"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Kapcsolódás a helyszínről a CloudSimple a ExpressRoute használatával
 
 Ha már rendelkezik Azure ExpressRoute-kapcsolattal egy külső helyről (például a helyszínen) az Azure-ba, akkor csatlakoztathatja azt a CloudSimple-környezethez. Ezt egy olyan Azure-szolgáltatáson keresztül teheti meg, amely lehetővé teszi, hogy két ExpressRoute áramkör kapcsolódjon egymáshoz. Ez a módszer biztonságos, privát, nagy sávszélességű, kis késleltetésű kapcsolatot létesít a két környezet között.
 
 [![Helyszíni ExpressRoute-kapcsolatok – Global Reach](media/cloudsimple-global-reach-connection.png)](media/cloudsimple-global-reach-connection.png)
+
+## <a name="before-you-begin"></a>Előkészületek
+
+A helyszíni környezetből Global Reach-kapcsolatok létrehozásához a **/29** hálózati címterület szükséges.  A/29 címterület a ExpressRoute-áramkörök közötti átviteli hálózaton van használatban.  Az átviteli hálózat nem fedi átfedésben az Ön Azure-beli virtuális hálózatait, a helyszíni hálózatokat vagy a CloudSimple.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,10 +62,15 @@ A ExpressRoute-kapcsolat létrehozásához létre kell hoznia egy engedélyt a E
     > [!IMPORTANT]
     > Az **erőforrás-azonosítót** át kell másolni a felhasználói felületről, és a ```/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/expressRouteCircuits/<express-route-circuit-name>``` formátumot kell megadni a támogatáshoz.
 
-6. Hozzon létre egy <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank"></a> jegyet a létrehozandó kapcsolatok támogatásával.
+6. Hozzon létre egy jegyet a létrehozandó kapcsolatok <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">támogatásával</a> .
     * Probléma típusa: **Technikai**
     * Előfizetés: **Előfizetés, ahol a CloudSimple szolgáltatás telepítve van**
     * Szolgáltatás: **VMware-megoldás CloudSimple szerint**
     * Probléma típusa: **Szolgáltatási kérelem**
     * Probléma altípusa: **Helyszíni ExpressRoute-kapcsolatok létrehozása**
     * Adja meg a részleteket tartalmazó ablaktáblán a vágólapra másolt és mentett erőforrás-azonosítót és engedélyezési kulcsot.
+    * Adjon meg egy/29 hálózati címtartományt az átviteli hálózat számára.
+
+## <a name="next-steps"></a>További lépések
+
+* [További információ az Azure hálózati kapcsolatairól](cloudsimple-azure-network-connection.md)  

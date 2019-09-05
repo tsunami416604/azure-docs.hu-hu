@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: b69bd39e97cc97830142c8b1911f1116927643b2
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: ae3530af7741b8ce48e08c2a85589ffae8a83f49
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467516"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276776"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Kérelmek hitelesítése az Azure Cognitive Services
 
@@ -66,7 +66,7 @@ Az alábbi videó egy Cognitive Services kulcs használatát mutatja be.
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>Hitelesítés több szolgáltatásból álló előfizetési kulccsal
 
 >[!WARNING]
-> Ezek a szolgáltatások jelenleg **nem** támogatják a több szolgáltatásból származó kulcsokat: QnA Maker, Speech Services és Custom Vision.
+> Ezek a szolgáltatások jelenleg **nem** támogatják a több szolgáltatásból származó kulcsokat: QnA Maker, Speech Services, Custom Vision és anomália detektor.
 
 Ez a beállítás egy előfizetési kulcsot is használ a kérelmek hitelesítéséhez. A fő különbség az, hogy egy előfizetési kulcs nem kötődik egy adott szolgáltatáshoz, hanem egyetlen kulcsot is használhat több Cognitive Services kérelmek hitelesítéséhez. A regionális rendelkezésre állással, a támogatott funkciókkal és a díjszabással kapcsolatos információkért tekintse meg a [Cognitive Services díjszabását](https://azure.microsoft.com/pricing/details/cognitive-services/) .
 

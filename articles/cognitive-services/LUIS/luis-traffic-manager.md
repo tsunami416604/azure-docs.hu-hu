@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 85f6be7a897908ef9198ac71ada809efb7c033bc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: c4ea9c5663755a4feb1693dd925d99b10c466140
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650543"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256607"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>A Microsoft Azure Traffic Manager használatával kezelheti a végpont kvóta kulcsok
 Language Understanding (LUIS) lehetővé teszi, hogy a végpont kérelmi kvótát egy kulcs kvóta túl kínál. További kulcsokat hoz létre a LUIS, és hozzáadni azokat a LUIS-alkalmazás az ehhez a **közzététel** lapját a **erőforrások és a kulcsok** szakaszban. 
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![Képernyőkép az Azure portal két LUIS kulcsokkal a luis-traffic-manager erőforráscsoportban](./media/traffic-manager/luis-keys.png)
 
-2. A [Luis][LUIS] webhely **kezelés** szakaszában, a **kulcsok és végpontok** lapon rendeljen kulcsokat az alkalmazáshoz, és tegye közzé újból az alkalmazást a jobb felső menü **Közzététel** gombjára kattintva. 
+2. A [Luis][LUIS] webhely **kezelés** szakaszában, az **Azure-erőforrások** lapon rendeljen kulcsokat az alkalmazáshoz, és tegye közzé újból az alkalmazást a jobb felső menü **Közzététel** gombjára kattintva. 
 
     Példa URL-cím a **végpont** oszlop egy GET kéréssel használ a végpont kulcs lekérdezési paramétert. Másolja a két új kulcsok végponti URL-címek. A Traffic Manager konfigurálásakor a cikk későbbi részében használják.
 

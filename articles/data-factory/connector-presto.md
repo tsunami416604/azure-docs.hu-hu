@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: b0bbfe973f18067284514e39d36442a63bd3efc8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19c450a1832e725fa5fbf171b991a6b617291cfe
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60508942"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276705"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Presto
 
@@ -44,7 +44,7 @@ Presto társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **A presto** | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **Presto** | Igen |
 | host | Az IP-cím vagy a gazdagép a Presto kiszolgáló neve. (azaz 192.168.222.160)  | Igen |
 | serverVersion | A Presto kiszolgáló verziója. (azaz 0.148-t)  | Igen |
 | catalog | A katalógus környezet összes kérelem a kiszolgálón.  | Igen |
@@ -91,8 +91,10 @@ Presto adatmásolás, állítsa be a type tulajdonság, az adatkészlet **Presto
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **PrestoObject** | Igen |
-| tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **PrestoObject** | Igen |
+| schema | A séma neve. |Nem (Ha a tevékenység forrása az "query" van megadva)  |
+| table | A tábla neve. |Nem (Ha a tevékenység forrása az "query" van megadva)  |
+| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. A `schema` és`table` az új számítási feladatok használata. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
 
@@ -101,11 +103,12 @@ Presto adatmásolás, állítsa be a type tulajdonság, az adatkészlet **Presto
     "name": "PrestoDataset",
     "properties": {
         "type": "PrestoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Presto linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -120,7 +123,7 @@ Adatok másolása Presto, állítsa be a forrás típusaként a másolási tevé
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **PrestoSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **PrestoSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**

@@ -8,12 +8,12 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 7da31e09157b8877db4d36d0f061f29433d02d11
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: b53f293f6289377d85f4346933f7edb7369065cf
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515627"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231626"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása
 
@@ -35,11 +35,11 @@ Annak megismerése, hogy az Azure-erőforrások nem optimális titkosítási kon
 
 - Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
 - A lemezes titkosítást a virtuális gépeken kell alkalmazni
-- Automation-fiók-változókat titkosítani kell
+- Az Automation-fiók változóit titkosítani kell
 - A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell
 - Service Fabric-fürtökön a ClusterProtectionLevel tulajdonságot EncryptAndSign értékre kell beállítani
 - Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
-- SQL-adatbázisok transzparens adattitkosításának üzembe helyezése
+- Az SQL DB transzparens adattitkosításának üzembe helyezése
 - Titkosítás megkövetelése Data Lake Store fiókokon
 - Engedélyezett helyszínek (az "Egyesült Királyság déli régiója" és az "Egyesült Királyság nyugati régiója" között rögzített)
 - Engedélyezett telephelyek az erőforráscsoportok számára (az "Egyesült Királyság déli régiója" és az "Egyesült Királyság nyugati régiója" között rögzített kód)
@@ -58,9 +58,9 @@ Ebből a tervből megtudhatja, hogyan kezelheti az információs rendszer bizton
 
 Ez a terv segítséget nyújt az információs rendszer eszközeinek védelméhez olyan [Azure Policy](../../../policy/overview.md) -definíciók kiosztásával, amelyek védelmet nyújtanak a korlátlan hozzáféréshez, a engedélyezési listán szereplő tevékenységekhez és a fenyegetésekhez.
 
-- Tárfiókokhoz való korlátlan hálózati hozzáférés naplózása
+- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 - Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken
-- Fenyegetésészlelés üzembe helyezése SQL-kiszolgálókon
+- Veszélyforrások észlelésének üzembe helyezése SQL-kiszolgálókon
 - Az alapértelmezett Microsoft IaaS anti-malware bővítmény telepítése a Windows Serverhez
 
 ## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 biztonságos felhasználói felügyelet/10 identitás és hitelesítés
@@ -117,7 +117,7 @@ A terv az Azure-erőforrásokhoz való hozzáférés szabályozását is lehető
 
 Ha több mint 25 házirendet használ a megfelelő biztonságos felhasználói felügyelethez, ez a terv a nem korlátozott tárolási fiókokat figyelő [Azure Policy](../../../policy/overview.md) -definíció hozzárendelésével segíti a szolgáltatási felületek jogosulatlan hozzáférés elleni védelmét. A korlátlan hozzáféréssel rendelkező Storage-fiókok nem kívánt hozzáférést biztosíthatnak az információs rendszeren belül található információkhoz. Ez a terv egy olyan szabályzatot is hozzárendel, amely lehetővé teszi az adaptív alkalmazások vezérlését a virtuális gépeken.
 
-- Tárfiókokhoz való korlátlan hálózati hozzáférés naplózása
+- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 - Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken
 
 ## <a name="12-secure-service-administration"></a>12 biztonságos szolgáltatás felügyelete
@@ -153,7 +153,7 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erő
 
 - A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
 - Diagnosztikai beállítás naplózása
-- SQL-kiszolgálói szintű naplózási beállítások naplózása
+- Az SQL Server szintű naplózási beállítások naplózása
 - \[Előzetes\]verzió: A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
 - \[Előzetes\]verzió: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
 - A Network Watcher üzembe helyezése virtuális hálózatok létrehozásakor
@@ -168,7 +168,7 @@ Most, hogy áttekintette az Egyesült Királyság hivatalos és egyesült királ
 
 További cikkek a tervekről és azok használatáról:
 
-- Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
+- A [terv életciklusának](../../concepts/lifecycle.md)megismerése.
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.
 - A [tervekkel kapcsolatos műveleti sorrend](../../concepts/sequencing-order.md) testreszabásának elsajátítása.
 - A [tervek erőforrás-zárolásának](../../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.

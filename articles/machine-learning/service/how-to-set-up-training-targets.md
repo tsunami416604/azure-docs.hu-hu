@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9bc9d64d7f21498acd5cb0c23447e7ff77de629
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 07176fbe22e70658856dd266687a15d719e78e9f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195573"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231085"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modell betanításához 
 
@@ -422,6 +422,19 @@ az ml folder attach
 ```
 
 Ez a parancs létrehoz egy `.azureml` almappát, amely tartalmazza a sablon futtatására szolgáló konfigurációs fájlokat a különböző számítási célokhoz. Ezen fájlok másolásával és szerkesztésével testreszabhatja a konfigurációt, például a Python-csomagok hozzáadásához vagy a Docker-beállítások módosításához.  
+
+### <a name="structure-of-run-configuration-file"></a>A futtatási konfigurációs fájl szerkezete
+
+A futtatási konfigurációs fájl YAML van formázva, a következő szakaszokkal
+ * A futtatandó szkript és az argumentumai
+ * A számítási cél neve, a "helyi" vagy a munkaterületen található számítás neve.
+ * A Futtatás: keretrendszer, a Communicator az elosztott futtatásokhoz, a maximális időtartam és a számítási csomópontok számának végrehajtásához szükséges paraméterek.
+ * Környezet szakasz. A jelen szakasz mezőinek részleteiért tekintse meg a [környezetek létrehozása és kezelése a képzéshez és üzembe helyezéshez](how-to-use-environments.md) című szakaszt.
+   * A futtatáshoz telepítendő Python-csomagok, a Conda- [környezeti fájl](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually)létrehozása és a __condaDependenciesFile__ mező megadása.
+ * Futtatási előzmények részletei a naplófájl mappájának megadásához, valamint a kimeneti gyűjtemények és a futtatási előzmények pillanatképének engedélyezéséhez vagy letiltásához.
+ * A kiválasztott keretrendszerre vonatkozó konfigurációs részletek.
+ * Az adathivatkozás és az adattár részletei.
+ * Az új fürt létrehozásához Machine Learning Computera vonatkozó konfigurációs részletek.
 
 ### <a name="create-an-experiment"></a>Kísérlet létrehozása
 

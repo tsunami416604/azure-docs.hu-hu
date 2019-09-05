@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy szabályzatot a nem megfelelő erőforrások
+title: Szabályzat létrehozása nem megfelelő erőforrásokhoz
 description: Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat egy szabályzatdefiníciót a nem megfelelő erőforrások azonosítására.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,15 +7,14 @@ ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 291152b46f97c9b6dd10b67c7ce812fcc791ce09
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 805f9178cb77241b8332fb78687a8409206e5c05
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979604"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231576"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Gyors útmutató: Hozzon létre egy szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Gyors útmutató: Szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához
 
 Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása.
 Ez a rövid útmutató végigvezeti Önt a folyamaton, amellyel létrehozhat egy felügyelt lemezeket nem használó virtuális gépek azonosítására szolgáló szabályzat-hozzárendelést.
@@ -30,15 +29,15 @@ Ebben a rövid útmutatóban egy szabályzat-hozzárendelés létrehozása és h
 
 1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet.
 
-   ![Az összes szolgáltatás szabályzat keresése](./media/assign-policy-portal/search-policy.png)
+   ![Szabályzat keresése az összes szolgáltatásban](./media/assign-policy-portal/search-policy.png)
 
 1. Válassza ki a **Hozzárendelések** elemet az Azure Policy oldal bal oldalán. A hozzárendelés egy olyan szabályzat, amely egy adott hatókörön belül érvényes.
 
-   ![Válassza ki a hozzárendeléseket lapon a házirendek – Áttekintés lap](./media/assign-policy-portal/select-assignments.png)
+   ![Hozzárendelések lap kiválasztása a házirend áttekintő oldaláról](./media/assign-policy-portal/select-assignments.png)
 
 1. Válassza a **Szabályzat hozzárendelése** lehetőséget a **Szabályzat – Hozzárendelések** oldal tetején.
 
-   ![Hozzárendeléseket lapon szabályzatdefiníció hozzárendelése](./media/assign-policy-portal/select-assign-policy.png)
+   ![Házirend-definíció hozzárendelése a hozzárendelések lapról](./media/assign-policy-portal/select-assign-policy.png)
 
 1. A **Szabályzat hozzárendelése** oldalon a **Hatókör** kiválasztásához kattintson a három pontra, majd válasszon felügyeleti csoportot vagy előfizetést. Ha szeretne, válasszon erőforráscsoportot. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ezután kattintson a **Kiválasztás** gombra a **Hatókör** oldal alján.
 
@@ -50,9 +49,9 @@ Ebben a rövid útmutatóban egy szabályzat-hozzárendelés létrehozása és h
 
    - Címke és a hozzá tartozó érték kényszerítése
    - Címke és a hozzá tartozó érték alkalmazása
-   - SQL Server 12.0-s verziójának megkövetelése
+   - Az SQL Server 12.0-ás verziójának megkövetelése
 
-   Elérhető beépített szabályzatok részleges listáját lásd: [Azure Policy minták](./samples/index.md).
+   Az elérhető beépített szabályzatok részleges listáját lásd: [Azure Policy minták](./samples/index.md).
 
 1. Keresse meg a *Felügyelt lemezeket nem használó virtuális gépek naplózása* definíciót a szabályzatdefiníciók listájában. Kattintson a szabályzatra, majd kattintson a **Kiválasztás** elemre.
 
@@ -71,7 +70,7 @@ Most már készen áll a nem megfelelő erőforrások azonosítására a környe
 
 Válassza ki **megfelelőségi** az oldal bal oldalán található. Keresse meg a **felügyelt lemezeket nem használó virtuális gépek naplózása** létrehozott szabályzat-hozzárendelést.
 
-![A szabályzatoknak való megfelelés oldalon megfelelőségi részletei](./media/assign-policy-portal/policy-compliance.png)
+![Megfelelőségi részletek a szabályzat megfelelőségi lapján](./media/assign-policy-portal/policy-compliance.png)
 
 Ha vannak olyan meglévő erőforrások, amelyek nem felelnek meg az új hozzárendelésnek, azok jelennek meg **nem megfelelő erőforrások**.
 
@@ -95,7 +94,7 @@ A létrehozott hozzárendelést eltávolításához kövesse az alábbi lépése
 
 1. Kattintson a jobb gombbal a **Felügyelt lemezeket nem használó virtuális gépek naplózása** szabályzat-hozzárendelésre, és válassza a **Hozzárendelés törlése** lehetőséget.
 
-   ![Hozzárendelés törlése a megfelelőségi oldaláról](./media/assign-policy-portal/delete-assignment.png)
+   ![Hozzárendelés törlése a megfelelőség lapról](./media/assign-policy-portal/delete-assignment.png)
 
 ## <a name="next-steps"></a>További lépések
 

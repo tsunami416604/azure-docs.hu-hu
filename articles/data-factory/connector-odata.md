@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 30bad3dd519d622d7e224da7bd53e7c6625014f6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a31f0618f7e9dc8fdb0e9b2988d3d3c32fefcf64
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966481"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277671"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Adatok másolása OData-forrásból Azure Data Factory használatával
 
@@ -34,7 +34,7 @@ A OData-forrásból származó adatok bármely támogatott fogadó adattárba m�
 Ez a OData-összekötő a következőket támogatja:
 
 - A OData 3,0-es és 4,0-es verziója.
-- Adatok másolása a következő hitelesítések egyikének használatával: **Névtelen**,alapszintű, **Windows**, **HRE egyszerű szolgáltatásnév**és **felügyelt identitások az Azure**-erőforrásokhoz.
+- Adatok másolása a következő hitelesítések egyikének használatával: **Névtelen**, **alapszintű**, **Windows**, **HRE egyszerű szolgáltatásnév**és **felügyelt identitások az Azure-erőforrásokhoz**.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -54,7 +54,7 @@ Egy OData társított szolgáltatás esetében a következő tulajdonságok tám
 |:--- |:--- |:--- |
 | type | A **Type** tulajdonságot **OData**értékre kell beállítani. |Igen |
 | url | A OData szolgáltatás gyökerének URL-címe. |Igen |
-| authenticationType | A OData-forráshoz való kapcsolódáshoz használt hitelesítés típusa. Az engedélyezett értékek: névtelen, alapszintű, **Windows**, **AadServicePrincipal**és **ManagedServiceIdentity**. A felhasználó-alapú OAuth nem támogatott. | Igen |
+| authenticationType | A OData-forráshoz való kapcsolódáshoz használt hitelesítés típusa. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **Windows**, **AadServicePrincipal**és **ManagedServiceIdentity**. A felhasználó-alapú OAuth nem támogatott. | Igen |
 | userName | Adja meg **userName** alapszintű vagy Windows-hitelesítés használata esetén. | Nem |
 | password | Adja meg **password** a felhasználó számára megadott fiók **felhasználónév**. Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. | Nem |
 | servicePrincipalId | Azure Active Directory alkalmazás ügyfél-AZONOSÍTÓjának megadásához. | Nem |
@@ -212,6 +212,7 @@ Az adatok OData való másolásához állítsa az adatkészlet **Type (típus** 
     "properties":
     {
         "type": "ODataResource",
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<OData linked service name>",
             "type": "LinkedServiceReference"
@@ -232,11 +233,11 @@ Szakaszok és a tevékenységek definiálását tulajdonságok teljes listáját
 
 ### <a name="odata-as-source"></a>OData forrásként
 
-Az adatok OData való másolásához állítsa a **forrás** típusát a másolás tevékenység **RelationalSource**értékére. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
+Az adatok OData történő másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának **Type** tulajdonságát **RelationalSource**értékre kell állítani. | Igen |
+| type | A másolási tevékenység forrásának **Type** tulajdonságát **ODataSource**értékre kell állítani. | Igen |
 | query | OData-lekérdezési beállítások az adatszűréshez. Példa: `"$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés**: Az OData-összekötő a következő összetett URL-címről `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`másolja az adatokból:. További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 **Példa**
@@ -260,7 +261,7 @@ Az adatok OData való másolásához állítsa a **forrás** típusát a másol�
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "ODataSource",
                 "query": "$select=Name,Description&$top=5"
             },
             "sink": {
@@ -271,9 +272,11 @@ Az adatok OData való másolásához állítsa a **forrás** típusát a másol�
 ]
 ```
 
+Ha a beírt forrást használta `RelationalSource` , a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
+
 ## <a name="data-type-mapping-for-odata"></a>Adattípusok leképezése OData
 
-Amikor OData másol az adatokból, a következő leképezések használatosak a OData adattípusok és a Azure Data Factory köztes adattípusok között. Ha meg szeretné tudni, hogyan képezi le a másolási tevékenység a forrás sémáját és az adattípust a fogadóra, tekintse meg a [séma és adattípus](copy-activity-schema-and-type-mapping.md)-leképezések
+Amikor OData másol az adatokból, a következő leképezések használatosak a OData adattípusok és a Azure Data Factory köztes adattípusok között. Ha meg szeretné tudni, hogyan képezi le a másolási tevékenység a forrás sémáját és az adattípust a fogadóra, tekintse meg a [séma és adattípus-leképezések](copy-activity-schema-and-type-mapping.md)
 
 | OData adattípusa | Data Factory közbenső adattípus |
 |:--- |:--- |

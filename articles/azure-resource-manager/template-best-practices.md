@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: cf6a5b07dd72c4e2364281b755e77e642f8fe167
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 161539aaec4d3b7162405f437b7fb3dd1f6a00e6
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542981"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258851"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager sablon – ajánlott eljárások
 
@@ -169,13 +169,13 @@ A következő információk hasznosak lehetnek a [változók](resource-group-aut
 
 ## <a name="resource-dependencies"></a>Erőforrás-függőségek
 
-A beállított függőségek [](resource-group-define-dependencies.md) meghatározásakor kövesse az alábbi irányelveket:
+A beállított [függőségek](resource-group-define-dependencies.md) meghatározásakor kövesse az alábbi irányelveket:
 
 * Használja a **hivatkozási** függvényt, és adja meg az erőforrás nevét, és adjon meg egy implicit függőséget olyan erőforrások között, amelyeknek meg kell osztaniuk egy tulajdonságot. Ha már definiált `dependsOn` implicit függőséget, ne adjon hozzá explicit elemet. Ez a megközelítés csökkenti a szükségtelen függőségek kockázatát.
 
 * Adja meg a gyermek erőforrást a szülő erőforrástól függőként.
 
-* A False értékre beállított [állapotú](resource-group-authoring-templates.md#condition) erőforrásokat a rendszer automatikusan eltávolítja a függőségi sorrendből. Állítsa be a függőségeket úgy, hogy az erőforrás mindig telepítve legyen.
+* A False értékre beállított [állapotú](conditional-resource-deployment.md) erőforrásokat a rendszer automatikusan eltávolítja a függőségi sorrendből. Állítsa be a függőségeket úgy, hogy az erőforrás mindig telepítve legyen.
 
 * A függőségek kaszkádolt beállítása explicit módon történő beállítás nélkül. A virtuális gép például egy virtuális hálózati adaptertől függ, és a virtuális hálózati adapter a virtuális hálózattól és a nyilvános IP-címektől függ. Ezért a virtuális gépet mindhárom erőforrás után telepíti a rendszer, de a virtuális gépet a mindhárom erőforrástól függőként nem állítja be explicit módon. Ez a megközelítés tisztázza a függőségi sorrendet, és megkönnyíti a sablon későbbi módosítását.
 
@@ -183,9 +183,9 @@ A beállított függőségek [](resource-group-define-dependencies.md) meghatár
 
 ## <a name="resources"></a>További források
 
-A következő információk hasznosak lehetnek az erőforrásokkal való [](resource-group-authoring-templates.md#resources)munka során:
+A következő információk hasznosak lehetnek az [erőforrásokkal](resource-group-authoring-templates.md#resources)való munka során:
 
-* Annak érdekében, hogy más közreműködők is megértsék az erőforrás célját , a sablonban szereplő egyes erőforrások megjegyzéseit kell megadnia:
+* Annak érdekében, hogy más közreműködők is megértsék az erőforrás célját, a sablonban szereplő egyes erőforrások **megjegyzéseit** kell megadnia:
    
    ```json
    "resources": [

@@ -5,84 +5,85 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 55d73b2602a9a862375ca3e72dee4597c1d6f1d6
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
-ms.translationtype: MT
+ms.openlocfilehash: fa34baa7569b0552708cd1a9b57d79186e5acd57
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659823"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68669677"
 ---
-Szabványos virtuális gép (VM) rendszerképek lehetővé teszik a szervezetek migrálása a felhőbe, és győződjön meg, hogy a központi telepítések egységességét. Képek rendszerint előre definiált biztonsági és a konfigurációs beállításokat és a szükséges szoftvereket. A saját lemezkép-készítési folyamat beállítása szükséges idő, az infrastruktúra és a telepítés, de az Azure virtuális gép az Image Builder, csak adja meg a lemezkép leíró egy egyszerű konfigurálás küldheti el a szolgáltatás és a kép gyártja és forgalmazza.
+A szabványosított virtuálisgép-lemezképek lehetővé teszik a szervezetek számára a felhőbe való Migrálás és az üzemelő példányok egységességének biztosítását. A képek jellemzően előre definiált biztonsági és konfigurációs beállításokat és szükséges szoftvereket tartalmaznak. A saját képfeldolgozási folyamatának beállítása idő, infrastruktúra és beállítás szükséges, de az Azure VM rendszerkép-készítővel egyszerűen egy egyszerű konfigurációt kell megadnia, amely leírja a lemezképet, beküldi a szolgáltatást, és a lemezképet összeállította és terjeszti.
  
-Az Azure virtuális gép az Image Builder (az Azure az Image Builder) lehetővé teszi egy Windows vagy Linux-alapú Azure Marketplace kép, már létező egyéni rendszerképek vagy a Red Hat Enterprise Linux (RHEL) ISO, és kezdje el saját egyéni. Mert az Image Builder épül [HashiCorp Packer](https://packer.io/), a meglévő Packer rendszerhéj webhelykiépítőt parancsfájlokat is importálhat. Azt is megadhatja, hogy hova szeretné a lemezképek lévő üzemeltetett a [Azure közös lemezkép-katalógusában](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries), egy felügyelt rendszerképet, vagy egy virtuális Merevlemezt.
+Az Azure VM Image Builder (Azure Image Builder) segítségével elkezdheti a Windows vagy Linux-alapú Azure Marketplace-rendszerkép, a meglévő Egyéni rendszerképek vagy a Red Hat Enterprise Linux (RHEL) ISO-fájljának megadását, és megkezdheti saját testreszabásainak hozzáadását. Mivel a rendszerkép-szerkesztő a [HashiCorp Packer](https://packer.io/)-re épül, importálhatja a meglévő csomagoló rendszerhéj-kiépítési parancsfájlokat is. Megadhatja azt is, hogy hol szeretné tárolni a rendszerképeket az [Azure megosztott rendszerkép](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)-katalógusban felügyelt képként vagy virtuális merevlemezként.
 
 > [!IMPORTANT]
-> Az Azure az Image Builder jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="preview-features"></a>Előzetes verziójú funkciók
 
-Az előzetes verzióra támogatja ezeket a szolgáltatásokat:
+Az előzetes verzióban ezek a funkciók támogatottak:
 
-- Létrehozása arany alapkonfiguráció-lemezképek, amelyek a minimális biztonsági és a vállalati konfigurációkat tartalmazza, és lehetővé teszik a szervezeti egységek testreszabása végezhetők rajtuk az igényeiknek.
-- Meglévő lemezképek javítása, az Image Builder lehetővé teszi, hogy a meglévő egyéni rendszerképek folyamatos javítása.
-- Az Azure Shared lemezkép-katalógusában, integráció lehetővé teszi terjeszt, verzió, és a méretezési globálisan lemezképeket, és a egy kép felügyeleti rendszer biztosít.
-- Integráció a meglévő lemezkép folyamatok alakíthatók ki, csak az Image Builder hívása a folyamatot, vagy az egyszerű előzetes képet Builder Azure DevOps feladat.
-- Telepítse át egy meglévő lemezkép-testreszabási folyamatot az Azure-bA. A meglévő szkriptekre, parancsokat és folyamatok segítségével lemezképek testreszabása.
-- Red Hat használata a saját előfizetés-támogatás használata. Hozzon létre Red Hat Enterprise lemezképek használatra jogosult, használaton kívüli Red Hat-előfizetéseit.
-- A VHD formátum létrehozását.
+- Az alapszintű rendszerképek létrehozása, amely magában foglalja a minimális biztonsági és vállalati konfigurációkat, és lehetővé teszi a részlegek számára, hogy igényeiknek megfelelően testre szabják azokat.
+- A meglévő lemezképek javításához a rendszerkép-készítő lehetővé teszi a meglévő Egyéni rendszerképek folyamatos javítását.
+- Az Azure Shared Image Gallery integrációja lehetővé teszi a lemezképek globális terjesztését, verzióját és méretezését, valamint egy rendszerkép-kezelő rendszer létrehozását.
+- Integráció meglévő rendszerkép-létrehozási folyamatokkal, csak a rendszerkép-készítő hívása a folyamatból, vagy az egyszerű előzetes rendszerkép-készítő Azure DevOps feladat használata.
+- Meglévő rendszerkép-testreszabási folyamat migrálása az Azure-ba. A lemezképek testreszabásához használja meglévő parancsfájlait, parancsait és folyamatait.
+- A Red Hat használatával saját előfizetését támogathatja. Hozzon létre Red Hat Enterprise-lemezképeket a jogosult, nem használt Red Hat-előfizetésekkel való használatra.
+- Lemezképek létrehozása VHD formátumban.
  
 
 ## <a name="regions"></a>Regions
-Az Azure lemezkép Builder Service előzetes verziója az ezekben a régiókban elérhető lesz. Ezekben a régiókban kívül lemezképek terjeszthetők ki.
+Az Azure rendszerkép-szerkesztő szolgáltatás elérhető lesz az előzetes verzióban ezekben a régiókban. A képeket ezen régiókon kívül is el lehet osztani.
 - East US
 - USA 2. keleti régiója
 - USA nyugati középső régiója
 - USA nyugati régiója
 - USA nyugati régiója, 2.
 
-## <a name="os-support"></a>Operációsrendszer-támogatást
-AIB Azure Marketplace-en alap operációsrendszer-lemezképeket fogja támogatni:
+## <a name="os-support"></a>Operációs rendszer támogatása
+A AIB az Azure Marketplace alap operációsrendszer-lemezképeit fogja támogatni:
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 7.6
-- CentOS 7.6
+- RHEL 7,6
+- CentOS 7,6
+- Windows 10 RS5 Enterprize/Professional/Enterprise virtuális asztali gépekhez (EVD) 
 - Windows 2016
 - Windows 2019
 
-AIB támogatni fogja az RHEL ISO's, forrásaként:
-- RHEL 7.3.
-- 7\.4 RHEL
+A AIB a következők forrásaként támogatja a RHEL ISO-t:
+- RHEL 7,3
+- RHEL 7,4
 - RHEL 7.5
 
-RHEL 7.6 ISO nem támogatottak, de a tesztelt.
+A RHEL 7,6 ISOs nem támogatott, de tesztelés alatt állnak.
 
 ## <a name="how-it-works"></a>Működés
 
 
-![Az Azure az Image Builder elméleti rajza](./media/virtual-machines-image-builder-overview/image-builder.png)
+![Az Azure rendszerkép-készítő fogalmi rajza](./media/virtual-machines-image-builder-overview/image-builder.png)
 
-Az Azure az Image Builder egy teljes körűen felügyelt Azure-szolgáltatás, amely egy Azure-erőforrás-szolgáltató által elérhető. Az Azure az Image Builder folyamat három fő részből: forrás, testreszabása és terjesztheti, ezek szerepelnek a sablonban. Az alábbi ábrán az összetevők, a hozzájuk tartozó tulajdonságok némelyike. 
+Az Azure rendszerkép-szerkesztő egy teljes körűen felügyelt Azure-szolgáltatás, amelyet egy Azure-erőforrás-szolgáltató is elérhet. Az Azure rendszerkép-készítő folyamat három fő részből áll: forrás, testreszabás és terjesztés, ezek egy sablonban jelennek meg. Az alábbi ábrán az összetevők láthatók a tulajdonságaik némelyikével. 
  
 
 
-**Image Builder-folyamat** 
+**Rendszerkép-készítő folyamat** 
 
-![Az Azure az Image Builder folyamat elméleti rajza](./media/virtual-machines-image-builder-overview/image-builder-process.png)
+![Az Azure rendszerkép-készítő folyamatának elméleti rajza](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
-1. Hozzon létre egy .JSON kiterjesztésű fájlt a lemezkép-sablont. Ezt a .JSON kiterjesztésű fájlt a forrása, a testreszabások és a terjesztési információkat tartalmaz. Nincsenek a több példát a [Azure kép Builder GitHub-adattár](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
-1. Küldheti el a szolgáltatást, ez egy kép sablon összetevőt hoz létre a megadott erőforráscsoport. A háttérben az Image Builder tölti le a forrás lemezkép vagy ISO és szkriptek igény szerint. Ezek vannak tárolva egy külön erőforráscsoportot, amely automatikusan jön létre az előfizetésében, a következő formátumban: IT_\<DestinationResourceGroup>_\<TemplateName>. 
-1. A lemezkép-sablon létrehozása után a lemezkép ezután hozhat létre. A háttérben az Image Builder sablon és a forrás-fájlokat használja a IT_ létrehozása egy virtuális gép, hálózati és tárolási\<DestinationResourceGroup > _\<TemplateName > erőforráscsoportot.
-1. A lemezkép létrehozásának részeként az Image builder osztja el a kép azt a sablont, majd törli a további erőforrások az IT_\<DestinationResourceGroup > _\<TemplateName > a létrehozott erőforráscsoport a folyamat.
+1. Hozza létre a rendszerkép sablonját. JSON-fájlként. Ez a. JSON fájl a rendszerkép forrásával, testreszabásával és terjesztésével kapcsolatos információkat tartalmaz. Az [Azure rendszerkép-készítő GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)-tárházban több példa is van.
+1. Küldje el a szolgáltatást, amely létrehoz egy Képsablon-összetevőt az Ön által megadott erőforráscsoporthoz. A háttérben a rendszerkép-szerkesztő szükség szerint letölti a forrás-vagy ISO-és parancsfájl-fájlokat. Ezeket egy külön erőforráscsoport tárolja, amely automatikusan létrejön az előfizetésben, a következő formátumban: IT_\<DestinationResourceGroup>_\<TemplateName>. 
+1. A rendszerkép-sablon létrehozása után létrehozhatja a rendszerképet. A háttérben futó rendszerkép-készítő a sablon és a forrásfájlok használatával hozza létre a virtuális gépet, a hálózatot és a tárolót a\<IT_\<DestinationResourceGroup > _ TemplateName > erőforráscsoporthoz.
+1. A rendszerkép létrehozása során a rendszerkép-szerkesztő a sablon alapján osztja el a képet, majd törli a további erőforrásokat a IT_\<DestinationResourceGroup > _\<TemplateName > erőforráscsoporthoz, amely a következőhöz lett létrehozva: a folyamat.
 
 
 ## <a name="permissions"></a>Engedélyek
 
-Ahhoz, hogy az Azure virtuális gép az Image Builder képek vagy a felügyelt képeket, vagy egy megosztott lemezkép-katalógus terjesztéséhez, meg kell megadnia az "Azure virtuális gép az Image Builder" szolgáltatás "Közreműködői" engedélyek (Alkalmazásazonosító: cf32a0cc-373c-47c9-9156-0db11f6a6dfc ) erőforráscsoportokról. 
+Annak engedélyezéséhez, hogy az Azure VM Image Builder lemezképeket terjesszen a felügyelt lemezképekre vagy egy megosztott képkatalógusba, meg kell adnia a "közreműködői" jogosultságokat a (z) "Azure-beli virtuális gép rendszerkép-szerkesztője" szolgáltatáshoz (alkalmazás azonosítója: cf32a0cc-373c-47c9-9156-0db11f6a6dfc ) Az erőforráscsoportok. 
 
-Ha egy meglévő egyénileg kezelt rendszerképről vagy rendszerképverzió használ, az Azure az Image Builder ezen erőforráscsoportok "Olvasó" hozzáférési legalább lesz szüksége.
+Ha meglévő egyéni felügyelt rendszerképeket vagy rendszerképeket használ, az Azure-rendszerkép-szerkesztőnek legalább "olvasó" hozzáférésre van szüksége az erőforráscsoportok számára.
 
-Hozzáférés az Azure CLI használatával rendelheti hozzá:
+A hozzáférést az Azure CLI használatával rendelheti hozzá:
 
 ```azurecli-interactive
 az role assignment create \
@@ -91,20 +92,20 @@ az role assignment create \
     --scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName>
 ```
 
-Ha a fiók nem található, amely azt jelentheti, hogy az előfizetés, amelyben ad hozzá a szerepkör-hozzárendelés van még nem regisztrált az erőforrás-szolgáltató számára.
+Ha a szolgáltatásfiók nem található, az azt jelentheti, hogy az előfizetés, amelyhez hozzáadja a szerepkör-hozzárendelést, még nincs regisztrálva az erőforrás-szolgáltatónál.
 
 
 ## <a name="costs"></a>Költségek
-Egyes számítási, hálózatkezelési és tárolási költségek létrehozásakor, létrehozását és az Azure az Image Builder a rendszerképek tárolására számítunk fel. Ezeket a díjakat hasonlóak az egyéni lemezképek manuális létrehozása során felmerülő költségek. Az erőforrások akkor díjat számítunk fel az Azure díjszabása. 
+A lemezképek Azure Image Builder szolgáltatással való létrehozásakor, kiépítésekor és tárolásakor a számítási, hálózati és tárolási költségek is felmerülhetnek. Ezek a költségek hasonlóak az egyéni lemezképek manuális létrehozása során felmerülő költségekhez. Az erőforrásokra az Azure díjszabása alapján számítunk fel díjat. 
 
-A lemezkép létrehozása során fájlok letöltődnek és tárolja a `IT_<DestinationResourceGroup>_<TemplateName>` költségekkel fog egy kis méretű tároló erőforráscsoportot. f nem szeretné, hogy ezek a lemezkép sablon törlése után a rendszerkép összeállítását.
+A rendszerkép-létrehozási folyamat során a `IT_<DestinationResourceGroup>_<TemplateName>` rendszer letölti és tárolja a fájlokat az erőforráscsoporthoz, ami kisebb tárolási költségekkel jár. f ezeket nem kívánja megőrizni, törölje a rendszerkép-sablont a rendszerkép létrehozása után.
  
-Az Image Builder létrehoz egy virtuális Gépet D1v2 virtuális gép mérete és a tárolási és hálózati szükséges a virtuális gép. Ezeket az erőforrásokat a buildelési folyamat időtartama az elmúlt lesz, és törlődik, miután az Image Builder befejeződött, a lemezkép létrehozása. 
+A rendszerkép-készítő létrehoz egy virtuális gépet egy D1v2 VM-mérettel, valamint a virtuális gép számára szükséges tárterületet és hálózatkezelést. Ezek az erőforrások a létrehozási folyamat időtartama alatt maradnak, és törölve lesznek, ha a rendszerkép-készítő befejezte a rendszerkép létrehozását. 
  
-Az Azure az Image Builder fog terjessze a lemezképet a kiválasztott régiókban, ahol a hálózati kimenő forgalmi költségek léphetnek fel.
+Az Azure-rendszerkép-szerkesztő továbbítja a rendszerképet a kiválasztott régióknak, ami hálózati kimenő forgalomra is felmerülhet.
  
 ## <a name="next-steps"></a>További lépések 
  
-Próbálja ki az Azure az Image Builder, tekintse meg a az épület cikkeket [Linux](../articles/virtual-machines/linux/image-builder.md) vagy [Windows](../articles/virtual-machines/windows/image-builder.md) lemezképek.
+Az Azure Image Builder kipróbálásához tekintse meg a [Linux](../articles/virtual-machines/linux/image-builder.md) -és [Windows](../articles/virtual-machines/windows/image-builder.md) -rendszerképek készítésével foglalkozó cikkeket.
  
  

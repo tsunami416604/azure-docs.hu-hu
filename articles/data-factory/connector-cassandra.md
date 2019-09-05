@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b42313a83be413a9c34a45fca946ea165f8fc9a3
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 7d3f29327f9a671a631b01ad688da3a523a7b0c8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967043"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275843"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Adatok másolása a Cassandra használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -33,7 +33,7 @@ Az adatok a Cassandra Database-ből bármilyen támogatott fogadó adattárba m�
 Pontosabban, ez a Cassandra Connector a következőket támogatja:
 
 - Cassandra **2. x és 3. x verzió**.
-- Adatok másolása az alapszintű vagy a **Névtelen** hitelesítés használatával.
+- Adatok másolása az **alapszintű** vagy a **Névtelen** hitelesítés használatával.
 
 >[!NOTE]
 >A saját üzemeltetésű Integration Runtimeon futó tevékenységek esetében a Cassandra 3. x az IR 3,7-es és újabb verzió óta támogatott.
@@ -59,7 +59,7 @@ A Cassandra társított szolgáltatás a következő tulajdonságokat támogatja
 | type |A Type tulajdonságot a következőre kell beállítani: **Cassandra** |Igen |
 | host |A Cassandra-kiszolgálók egy vagy több IP-címe vagy állomásneve.<br/>Megadhatja az IP-címek vagy állomásnevek vesszővel tagolt listáját, hogy az összes kiszolgálóhoz egyszerre kapcsolódjon. |Igen |
 | port |A Cassandra-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem (az alapértelmezett érték 9042) |
-| authenticationType | A Cassandra-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők:Alapszintű és **Névtelen**. |Igen |
+| authenticationType | A Cassandra-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű**és **Névtelen**. |Igen |
 | username |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha a authenticationType értéke alapszintű. |
 | password |A felhasználói fiók jelszavának megadása. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen, ha a authenticationType értéke alapszintű. |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
@@ -93,7 +93,7 @@ A Cassandra társított szolgáltatás a következő tulajdonságokat támogatja
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz a Cassandra adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a Cassandra adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
 Az adatok Cassandra-ből való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **CassandraTable**értékre. A következő tulajdonságok támogatottak:
 

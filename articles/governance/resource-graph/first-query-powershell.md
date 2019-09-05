@@ -7,13 +7,12 @@ ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 92d397a1bac5a4c65de41b3cb61f566cf42877f2
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 7c47b233e508c22ef7b380acfb7720ad763d8de3
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164940"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241109"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Gyors útmutató: Az első Resource Graph-lekérdezés futtatása az Azure PowerShell használatával
 
@@ -23,11 +22,9 @@ Ezen folyamatban a modult hozzáadja az Azure PowerShell-telepítéshez, és fut
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
-
 ## <a name="add-the-resource-graph-module"></a>A Resource Graph modul hozzáadása
 
-Ahhoz, hogy az Azure PowerShell lekérdezhesse az Azure Resource Graphot, el kell végezni a modul hozzáadását. Ez a modul helyileg telepített PowerShell-lel, [Azure Cloud Shell](https://shell.azure.com)vagy a PowerShell Docker- [lemezképpel](https://hub.docker.com/_/microsoft-powershell)is használható.
+Ahhoz, hogy az Azure PowerShell lekérdezhesse az Azure Resource Graphot, el kell végezni a modul hozzáadását. Ez a modul helyileg telepített PowerShell-lel, [Azure Cloud Shell](https://shell.azure.com)vagy a [PowerShell Docker-lemezképpel](https://hub.docker.com/_/microsoft-powershell)is használható.
 
 ### <a name="base-requirements"></a>Alapszintű követelmények
 

@@ -8,12 +8,12 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d720f220b8903d960e7bba2a75aa5a86bd0391ce
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 10d1e2fc607df205ea8922a81a1322d4121f30f7
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226001"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232293"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Az Egyesült Királyság hivatalos és egyesült királysági NHS-mintáinak üzembe helyezése
 
@@ -36,12 +36,12 @@ Először is implementálja a terv mintáját úgy, hogy létrehoz egy új terve
 
 1. Keresse meg az **Egyesült Királyság hivatalos** vagy **Egyesült Királysági NHS** -tervezetét _más minták_ alatt, és válassza **a minta használata**lehetőséget.
 
-1. Adja meg  a tervezet mintájának alapjait:
+1. Adja meg a tervezet mintájának alapjait:
 
    - **Terv neve**: Adjon meg egy nevet a terv mintájának másolatához.
    - **Definíció helye**: Használja a három pontot, és válassza ki a felügyeleti csoportot, és mentse a minta másolatát a következőre:.
 
-1. Válassza ki  az összetevők fület a lap tetején, vagy **a következőt:**  Az oldal alján található összetevők.
+1. Válassza ki az összetevők fület a lap tetején, vagy **a következőt:**  Az oldal alján található összetevők.
 
 1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
@@ -63,7 +63,7 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 1. Válassza a bal oldali **terv** -definíciók lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Válassza  a terv kiosztása elemet a terv definíciója oldal tetején.
+1. Válassza a terv kiosztása elemet a terv definíciója oldal tetején.
 
 1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
@@ -83,20 +83,20 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
      Hagyja meg az alapértelmezett _rendszerhez rendelt_ felügyelt identitás beállítást.
 
-   - Összetevő paramétereinek
+   - Összetevő paraméterei
 
      Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. A teljes listát vagy az összetevő paramétereit és azok leírását lásd: összetevő- [Paraméterek táblázata](#artifact-parameters-table).
 
 1. Az összes paraméter megadása után válassza a lap alján található **hozzárendelés** elemet. A terv-hozzárendelés létrejött, és az összetevő üzembe helyezése megkezdődik. Az üzembe helyezés nagyjából egy órát vesz igénybe. Az üzembe helyezés állapotának megtekintéséhez nyissa meg a terv-hozzárendelést.
 
 > [!WARNING]
-> Az Azure BluePrints szolgáltatás és a beépített tervrajzi minták díjmentesek . Az Azure-erőforrások [díjszabása termékenként](https://azure.microsoft.com/pricing/)történik. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával megbecsülheti a tervrajzi minta által üzembe helyezett erőforrások futtatásának költségeit.
+> Az Azure BluePrints szolgáltatás és a beépített tervrajzi minták díjmentesek. Az Azure-erőforrások [díjszabása termékenként](https://azure.microsoft.com/pricing/)történik. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával megbecsülheti a tervrajzi minta által üzembe helyezett erőforrások futtatásának költségeit.
 
 ## <a name="artifact-parameters-table"></a>Összetevő-paraméterek táblázata
 
 A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
+Elemnév|Összetevő típusa|Paraméternév|Leírás|
 |-|-|-|-|
 |Tervezet kezdeményezés az Egyesült Királyság hivatalos vagy Egyesült Királysági NHS-hez|Szabályzat-hozzárendelés |A diagnosztikai naplók naplózására szolgáló erőforrástípusok (házirend: Tervezet kezdeményezés az Egyesült Királyság hivatalos vagy Egyesült Királysági NHS-hez) |A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása Megjegyzés engedélyezve van.  Elfogadható értékek: [támogatott szolgáltatások, sémák és kategóriák az Azure diagnosztikai naplóihoz](../../../../azure-monitor/platform/diagnostic-logs-schema.md). |
 |\[Előzetes\]verzió: A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése |Szabályzat-hozzárendelés |Nem kötelező: Azon virtuálisgép-lemezképek listája, amelyek támogatottak a hatókörbe felvenni kívánt linuxos operációs rendszer (házirend: \[Előzetes\]verzió: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken) |Választható Az alapértelmezett érték _none_. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/learn/quick-create-workspace.md). |
@@ -112,7 +112,7 @@ Most, hogy áttekintette a brit hivatalos és az Egyesült Királysági NHS-terv
 
 További cikkek a tervekről és azok használatáról:
 
-- Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
+- A [terv életciklusának](../../concepts/lifecycle.md)megismerése.
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.
 - A [tervekkel kapcsolatos műveleti sorrend](../../concepts/sequencing-order.md) testreszabásának elsajátítása.
 - A [tervek erőforrás-zárolásának](../../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.

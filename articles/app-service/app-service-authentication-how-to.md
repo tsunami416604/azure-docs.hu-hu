@@ -4,21 +4,21 @@ description: Bemutatja, hogyan szabhatja testre a hitelesítést és az engedél
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: gwallace
 editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ee8d8c54bd618780e00d9975f2fc6950cd795d44
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 105728bdab9c70bb807f38e4a09d5be863694c16
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098540"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231972"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és az engedélyezés speciális használata Azure App Service
 
@@ -130,7 +130,7 @@ Teljes URL-címek használatakor az URL-címnek vagy ugyanabban a tartományban 
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-A következő parancsot kell futtatnia a [Azure Cloud Shellban](../cloud-shell/quickstart.md):
+Futtassa a következő parancsot a [Azure Cloud Shellban](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -197,7 +197,7 @@ Ha a szolgáltató hozzáférési jogkivonata (nem a [munkamenet](#extend-sessio
 
 Miután konfigurálta a szolgáltatót, megkeresheti a [frissítési jogkivonatot és a hozzáférési token](#retrieve-tokens-in-app-code) lejárati idejét a jogkivonat-tárolóban. 
 
-Ha bármikor frissíteni szeretné a hozzáférési jogkivonatot, `/.auth/refresh` csak tetszőleges nyelven hívhat meg. A következő kódrészlet a jQuery használatával frissíti a hozzáférési jogkivonatait egy JavaScript-ügyfélről.
+Ha bármikor frissíteni szeretné a hozzáférési jogkivonatot, csak `/.auth/refresh` tetszőleges nyelven hívhat meg. A következő kódrészlet a jQuery használatával frissíti a hozzáférési jogkivonatait egy JavaScript-ügyfélről.
 
 ```JavaScript
 function refreshTokens() {
@@ -230,7 +230,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>Bejelentkezési fiókok tartományának korlátozása
 
-A Microsoft-fiók és a Azure Active Directory egyaránt lehetővé teszi több tartományból való bejelentkezést. A Microsoft-fiók például lehetővé teszi a _Outlook.com_, a _live.com_és a _hotmail.com_ fiók használatát. Azure Active Directory lehetővé teszi a bejelentkezési fiókok tetszőleges számú egyéni tartományának használatát. Előfordulhat, hogy ez a viselkedés egy belső alkalmazás esetében nem kívánatos, mert nem szeretné, hogy bárki _Outlook.com_ -fiókkal hozzáférhessen. A bejelentkezési fiókok tartománynevének korlátozásához kövesse az alábbi lépéseket.
+A Microsoft-fiók és a Azure Active Directory egyaránt lehetővé teszi több tartományból való bejelentkezést. A Microsoft-fiók például lehetővé teszi a _Outlook.com_, a _live.com_és a _hotmail.com_ fiók használatát. Az Azure AD lehetővé teszi a bejelentkezési fiókok tetszőleges számú egyéni tartományának használatát. Előfordulhat azonban, hogy a felhasználóknak azonnal fel kell gyorsítania a saját márkás Azure AD bejelentkezési oldalát (például `contoso.com`). Ha a bejelentkezési fiókok tartománynevét szeretné javasolni, kövesse az alábbi lépéseket.
 
 A [https://resources.azure.com](https://resources.azure.com)alkalmazásban navigáljon >  azelőfizetés >  - **_\_ előfizetésneve\<_** resourceGroups >  **_erőforráshoz\<\_ Csoportnév\_ >_** **_szolgáltatók Microsoft.webhelyekalkalmazás\_ neve >\<_**  >  >  >  >  >  **konfiguráció**  >  **authsettings elemre**. 
 
@@ -239,6 +239,54 @@ Kattintson a **Szerkesztés**gombra, módosítsa a következő tulajdonságot, m
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
+
+Ezzel a beállítással a `domain_hint` rendszer hozzáfűzi a lekérdezési karakterlánc paramétert a bejelentkezési átirányítás URL-címéhez. 
+
+> [!IMPORTANT]
+> Lehetséges, hogy az ügyfél el szeretné távolítani a `domain_hint` paramétert az átirányítási URL-cím fogadása után, majd egy másik tartományba való bejelentkezést. Így amíg ez a függvény kényelmes, nem biztonsági funkció.
+>
+
+## <a name="authorize-or-deny-users"></a>Felhasználók engedélyezése vagy megtagadása
+
+Míg App Service gondoskodik a legegyszerűbb engedélyezési esetről (azaz a nem hitelesített kérelmek elutasításáról), az alkalmazás részletesebb engedélyezési viselkedést igényelhet, például csak egy adott felhasználói csoportra korlátozhatja a hozzáférést. Bizonyos esetekben egyéni programkódot kell írnia a bejelentkezett felhasználó hozzáférésének engedélyezéséhez vagy megtagadásához. Más esetekben előfordulhat, hogy a App Service vagy az Ön személyazonosság-szolgáltatója a kód módosítása nélkül tud segítséget nyújtani.
+
+- [Kiszolgáló szintje](#server-level-windows-apps-only)
+- [Identitás-szolgáltató szintje](#identity-provider-level)
+- [Alkalmazás szintje](#application-level)
+
+### <a name="server-level-windows-apps-only"></a>Kiszolgáló szintje (csak Windows-alkalmazások esetén)
+
+Bármely Windows-alkalmazás esetében megadhatja az IIS-webkiszolgáló engedélyezési viselkedését a *web. config* fájl szerkesztésével. A Linux-alkalmazások nem használják az IIS-t, és nem konfigurálhatók a *web. config*fájlon keresztül.
+
+1. Navigáljon a`https://<app-name>.scm.azurewebsites.net/DebugConsole`
+
+1. A App Service-fájlok böngésző-tallózójában navigáljon a *hely/wwwroot*elemre. Ha a *web. config* nem létezik, hozza létre az **+** **új fájl**lehetőség kiválasztásával  > . 
+
+1. A szerkesztéshez válassza a *web. config* ceruza elemet. Adja hozzá a következő konfigurációs kódot, és kattintson a **Mentés**gombra. Ha a *web. config* fájl már létezik, egyszerűen `<authorization>` adja hozzá a elemet a benne található összes elemhez. Adja hozzá azokat a fiókokat, amelyeket engedélyezni `<allow>` szeretne a elemben.
+
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <configuration>
+       <system.web>
+          <authorization>
+            <allow users="user1@contoso.com,user2@contoso.com"/>
+            <deny users="*"/>
+          </authorization>
+       </system.web>
+    </configuration>
+    ```
+
+### <a name="identity-provider-level"></a>Identitás-szolgáltató szintje
+
+Az identitás-szolgáltató bizonyos kulcsrakész engedélyezést is biztosíthat. Példa:
+
+- [Azure app Service](configure-authentication-provider-aad.md)esetében a [vállalati szintű hozzáférés](../active-directory/manage-apps/what-is-access-management.md) közvetlenül az Azure ad-ben is kezelhető. Útmutatásért lásd: [felhasználó hozzáférésének eltávolítása egy alkalmazáshoz](../active-directory/manage-apps/methods-for-removing-user-access.md).
+- A [Google](configure-authentication-provider-google.md)-ban a szervezethez tartozó Google API [](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) -projektek konfigurálhatók úgy, hogy csak a szervezet felhasználói számára engedélyezzenek hozzáférést (lásd: a [Google **OAuth 2,0** -támogatás beállítása oldal](https://support.google.com/cloud/answer/6158849?hl=en)).
+
+### <a name="application-level"></a>Alkalmazás szintje
+
+Ha a többi szint valamelyike nem rendelkezik a szükséges engedélyekkel, vagy ha a platform vagy az identitás szolgáltatója nem támogatott, egyéni kódot kell írnia a felhasználók engedélyezéséhez a [felhasználói](#access-user-claims)jogcímek alapján.
+
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]

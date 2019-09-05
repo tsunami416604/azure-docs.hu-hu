@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 65b6eb07a866db405af3e5bc609a540c36f148a8
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 84109cf04588a5de6fb3fd946a89b5dfee4baa1b
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186444"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259152"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Információk feldolgozása és kinyerése a rendszerképekből a kognitív keresési helyzetekben
 
@@ -34,18 +34,17 @@ A képnormalizálás nem kapcsolható ki. A képeken ismétlődő képességek n
 | Konfigurációs paraméter | Leírás |
 |--------------------|-------------|
 | imageAction   | A "None" értékre van állítva, ha a rendszer nem hajt végre műveletet a beágyazott képek vagy képfájlok előfordulásakor. <br/>A "generateNormalizedImages" értékre állítva a normalizált képek tömbjét hozza létre a dokumentum repedésének részeként.<br/>A "generateNormalizedImagePerPage" értékre állítva olyan normalizált lemezképek tömbjét hozza létre, ahol az adatforrásban található PDF-fájlok esetében minden oldal egy kimeneti képhez jelenik meg.  A funkció ugyanaz, mint a nem PDF fájltípusok esetében a "generateNormalizedImages".<br/>Minden olyan lehetőség esetében, amely nem "None", a képek a *normalized_images* mezőben lesznek elérhetők. <br/>Az alapértelmezett érték a "None". Ez a konfiguráció csak a blob-adatforrásokra vonatkozik, ha a "dataToExtract" tulajdonság értéke "contentAndMetadata". <br/>Egy adott dokumentumból legfeljebb 1000 lemezkép lesz kinyerve. Ha a dokumentumban több mint 1000 kép található, akkor a rendszer kinyeri az első 1000, és egy figyelmeztetést fog generálni. |
-|  normalizedImageMaxWidth | A generált normalizált képek maximális szélessége (képpontban). Az alapértelmezett érték a 2000.|
-|  normalizedImageMaxHeight | A generált normalizált képek maximális magassága (képpontban). Az alapértelmezett érték a 2000.|
+|  normalizedImageMaxWidth | A generált normalizált képek maximális szélessége (képpontban). Az alapértelmezett érték a 2000. A maximálisan engedélyezett érték 10000. | 
+|  normalizedImageMaxHeight | A generált normalizált képek maximális magassága (képpontban). Az alapértelmezett érték a 2000. A maximálisan engedélyezett érték 10000.|
 
 > [!NOTE]
 > Ha a *imageAction* tulajdonságot a "None" értékre állítja, a *parsingMode* tulajdonság nem állítható be a "default" értéktől eltérő értékre.  Az indexelő konfigurációjában csak az alábbi két tulajdonság egyikét állíthatja be nem alapértelmezett értékre.
 
 Állítsa a **parsingMode** paramétert `json` (az egyes Blobok egyetlen dokumentumként való indexeléséhez `jsonArray` ), vagy (ha a Blobok JSON-tömböket tartalmaznak, és egy tömb minden eleméhez külön dokumentumként kell kezelni őket).
 
-A normalizált képek maximális szélességének és magasságának 2000 képpont alapértéke az [OCR-képesség](cognitive-search-skill-ocr.md) és a képelemzési [képesség](cognitive-search-skill-image-analysis.md)által támogatott maximális méretektől függ. Ha megnöveli a maximális korlátot, a feldolgozás sikertelen lehet a nagyobb lemezképeken.
+A normalizált képek maximális szélességének és magasságának 2000 képpont alapértéke az [OCR-képesség](cognitive-search-skill-ocr.md) és a [képelemzési képesség](cognitive-search-skill-image-analysis.md)által támogatott maximális méretektől függ. Az [OCR-képesség](cognitive-search-skill-ocr.md) legfeljebb 4200-es szélességet és magasságot támogat a nem angol nyelvű és a 10000 angol nyelv esetén.  Ha csökkenti a maximális korlátot, a feldolgozás a készségkészlet-definíciótól és a dokumentumok nyelvétől függően meghiúsulhat a nagyobb rendszerképeken. 
 
-
-A imageAction az alábbi módon adhatja [](https://docs.microsoft.com/rest/api/searchservice/create-indexer) meg az indexelő definíciójában:
+A imageAction az alábbi módon adhatja meg az [Indexelő definíciójában](https://docs.microsoft.com/rest/api/searchservice/create-indexer) :
 
 ```json
 {

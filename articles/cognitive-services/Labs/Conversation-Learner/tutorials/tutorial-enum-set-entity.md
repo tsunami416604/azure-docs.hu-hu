@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: nolachar
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5443b97febd6bf3831690531bceb540181e7676c
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 429570d81f7e15758d8ea60951bb4d01b96f8f2c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706978"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256485"
 ---
 # <a name="when-to-use-enum-entities-and-set-entity-actions"></a>Mikor kell használni az ENUMERÁLÁSi entitásokat és beállítani az ENTITÁSok műveleteit
 
@@ -46,14 +46,14 @@ Képzelje el, hogy a közeli személyek közötti beszélgetés egy részét meg
 Pontosítsa a következő példát:
 
 Bot Tetszik az Azure Cognitive Services?
-Felhasználó: Igen bot: Szeret fagylaltot?
-Felhasználó: Igen
+Felhasználói Igen bot: Szeret fagylaltot?
+Felhasználói Igen
 
-Az előző oktatóanyagokban megvizsgáltuk az [Egyéni](04-introduction-to-entities.md) betanított entitásokat, és az első gondolat, hogy létrehoz egy "likesCogServices" nevű entitást, és az első "igen" címkét adja meg az entitásként.  A System azonban a második "igen" címkét is felcímkézi. Amikor megpróbálta kijavítani a második "igen" címkét a "likesIceCream" értékre, akkor két azonos bemenetből álló "igen" típusú ütközést hozunk létre, ami különböző dolgokat jelent, és beragadhat.
+Az előző oktatóanyagokban megvizsgáltuk az [Egyéni betanított](04-introduction-to-entities.md) entitásokat, és az első gondolat, hogy létrehoz egy "likesCogServices" nevű entitást, és az első "igen" címkét adja meg az entitásként.  A System azonban a második "igen" címkét is felcímkézi. Amikor megpróbálta kijavítani a második "igen" címkét a "likesIceCream" értékre, akkor két azonos bemenetből álló "igen" típusú ütközést hozunk létre, ami különböző dolgokat jelent, és beragadhat.
 
 Ezekben az esetekben az ENUMERÁLÁSi entitásokat és a SET_ENTITY műveleteket kell használnia.
 
-## <a name="when-to-use-enums-or-setentity-actions"></a>Mikor használjon ENUMERÁLÁSokat vagy SET_ENTITY műveleteket
+## <a name="when-to-use-enums-or-set_entity-actions"></a>Mikor használjon ENUMERÁLÁSokat vagy SET_ENTITY műveleteket
 
 Az alábbi szabályok segítségével tájékozódhat az ENUMERÁLÁSi entitások és a SET_ENTITY műveletek használatáról:
 
@@ -66,13 +66,13 @@ Más szóval ezeket minden olyan lezárult kérdéshez használhatja, mint péld
 > Az enumerálási entitások esetében jelenleg legfeljebb 5 érték van korlátozva. Minden érték az aktuális 64-as korlát egyik tárolóhelyét használja. Lásd: [CL-Values-and-határok](../cl-values-and-boundaries.md)
 
 Példa: Bot Helyes a megrendelés?
-Felhasználó: Igen
+Felhasználói Igen
 
 Ha az entitás lehetséges értékei nyitottak és nem rögzítettek, alternatív szolgáltatást kell használni, például a [várt entitást](05-expected-entity.md).
 
 Példa: Bot hogy hívnak?
-Felhasználó: Matt bot: Mi a kedvenc színe?
-Felhasználó: Silver
+Felhasználói Matt bot: Mi a kedvenc színe?
+Felhasználói Silver
 
 Ezek a kérések nyílt végűek, mert tetszőleges értékekkel megválaszolható.
 

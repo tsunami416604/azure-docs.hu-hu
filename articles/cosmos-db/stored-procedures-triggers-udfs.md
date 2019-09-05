@@ -1,107 +1,107 @@
 ---
-title: Tárolt eljárások, eseményindítók és felhasználó által definiált függvények az Azure Cosmos DB használata
-description: Ez a cikk bemutatja a például a tárolt eljárások, eseményindítók és felhasználó által definiált függvények az Azure Cosmos DB-ben.
+title: Tárolt eljárások, eseményindítók és felhasználó által definiált függvények használata Azure Cosmos DB
+description: Ez a cikk bemutatja az olyan fogalmakat, mint például a tárolt eljárások, eseményindítók és felhasználó által definiált függvények a Azure Cosmos DBban.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 53ff318dcc034fb11e2d554f9ad8e8814eb32879
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
-ms.translationtype: MT
+ms.openlocfilehash: 1c2bf53a610c566ac58df588f6d96389f2206563
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672592"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717538"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
 
-Az Azure Cosmos DB a JavaScript nyelvintegrált, a tranzakciós végrehajtását biztosítja. Ha az SQL API használatával az Azure Cosmos DB, írhat **tárolt eljárások**, **eseményindítók**, és **felhasználó által definiált függvények (UDF)** JavaScript nyelven. A logikai írhat a JavaScript, amely az adatbázis motorjában. Hozhat létre, és hajtsa végre az UDF-EK, eseményindítók és tárolt eljárások használatával [az Azure portal](https://portal.azure.com/), a [JavaScript nyelvű lekérdezési API-t az Azure Cosmos DB integrált](javascript-query-api.md) vagy a [Cosmos DB SQL API-ügyfél SDK-k](how-to-use-stored-procedures-triggers-udfs.md).
+A Azure Cosmos DB a JavaScript nyelvvel integrált, tranzakciós végrehajtását teszi lehetővé. Ha az SQL API-t Azure Cosmos DB használja, a JavaScript nyelven írhat **tárolt eljárásokat**, **eseményindítókat**és **felhasználó által definiált függvényeket (UDF)** . Megírhatja az adatbázis-motoron belül végrehajtott JavaScript-logikát. Eseményindítókat, tárolt eljárásokat és UDF hozhat létre és futtathat [Azure Portal](https://portal.azure.com/)használatával, a [JavaScript nyelv integrált lekérdezési API-ját Azure Cosmos DB](javascript-query-api.md) vagy az [Cosmos db SQL API ügyféloldali SDK](how-to-use-stored-procedures-triggers-udfs.md)-kat.
 
-## <a name="benefits-of-using-server-side-programming"></a>Kiszolgálóoldali programozása használatának előnyei
+## <a name="benefits-of-using-server-side-programming"></a>A kiszolgálóoldali programozás használatának előnyei
 
-Javascriptben tárolt eljárások, eseményindítók és felhasználó által definiált függvények (UDF) írása lehetővé teszi, hogy olyan funkciógazdag alkalmazások létrehozására és rendelkeznek a következő előnyökkel jár:
+A tárolt eljárások, eseményindítók és felhasználó által definiált függvények (UDF-EK) írása a JavaScriptben lehetővé teszi, hogy sokoldalú alkalmazásokat építsen ki, és az alábbi előnyökkel jár:
 
-* **Eljárási logikai:** A JavaScript egy magas szintű programozási nyelv, amely expressz üzleti logika gazdag és ismerős felületet biztosít. Az adatok összetett műveletek sorozata hajthat végre.
+* **Eljárási logika:** JavaScript magas szintű programozási nyelv, amely gazdag és ismerős felületet biztosít az üzleti logika kiváltásához. Az adatokon összetett műveleteket is végrehajthat.
 
-* **Elemi tranzakciókat:** Az Azure Cosmos DB garantálja, hogy egyetlen tárolt eljárás vagy eseményindító belül végzett adatbázis-műveletek elemiek. A atomi funkció lehetővé teszi, hogy egy alkalmazás az egy kötegben kapcsolódó műveletek egyesíteni, hogy minden művelet sikeres legyen, vagy egyiket sem sikerült.
+* **Atomi tranzakciók:** Azure Cosmos DB garantálja, hogy az egyetlen tárolt eljáráson vagy triggeren belül végrehajtott adatbázis-műveletek atomiak. Ez az atomi funkció lehetővé teszi, hogy egy alkalmazás a kapcsolódó műveleteket egyetlen kötegbe egyesítse, hogy az összes művelet sikeres legyen, vagy egyik sem sikeres legyen.
 
-* **Teljesítmény:** A JSON-adatokat a JavaScript nyelvű típus rendszer belsőleg képeződik le. Ez a leképezés optimalizálások Lusta materialization a pufferkészletben és az így elérhető igény szerinti a végrehajtó kód JSON-dokumentumok, például számos tesz lehetővé. Vannak más üzleti logikát az adatbázis, amely tartalmazza a szállítási társított teljesítmény előnyeit:
+* **Teljesítmény** A JSON-adattípusok belsőleg le vannak képezve a JavaScript Language Type rendszerre. Ez a leképezés több optimalizációt is lehetővé tesz, például a JSON-dokumentumok lusta megvalósításának gyakorlatban a pufferben, és igény szerint elérhetővé teszi őket a végrehajtó kód számára. Más teljesítménybeli előnyökkel jár a hajózás üzleti logikája az adatbázishoz, amely a következőket tartalmazza:
 
-   * *Kötegelés:* Csoport műveletek, mint a beszúrások, és küldheti el ezeket a tömegesen. A hálózati forgalom késés költségeket és a tároló terhelését a létrehozott különálló tranzakciók jelentősen csökken.
+   * *Adagoló* Csoportosíthatja a műveleteket, például a lapkákat és tömegesen is elküldheti azokat. A hálózati forgalom késési költségei és a tárolók terhelése a különálló tranzakciók létrehozásához jelentősen csökken.
 
-   * *Üzem előtti fordítási:* Tárolt eljárások, eseményindítók és felhasználói függvények minden szkripthívás időpontjában fordítási költségek elkerülése érdekében olyan implicit módon előre lefordított kód bájt formátumra. Üzem előtti fordítás miatt a tárolt eljárások hívása gyors és alacsony erőforrás-igényű.
+   * *Előzetes fordítás:* A tárolt eljárásokat, eseményindítókat és UDF implicit módon előre le kell fordítani a bájtos kód formátumára, hogy el lehessen kerülni a fordítási költségeket az egyes parancsfájlok meghívásakor. Az előzetes fordítás miatt a tárolt eljárások meghívása gyors, és alacsony a lábnyoma.
 
-   * *Alkalmazás-előkészítés:* Műveletek igények egy eseményindító mechanizmust, amely végrehajthat egyet vagy az adatok további frissítései. Atomitást kívül is teljesítménybeli előnyök a kiszolgáló oldalán végrehajtása közben.
+   * *Sorrendvezérlő* Időnként a műveleteknek olyan kiváltó mechanizmusra van szükségük, amely az adatokhoz egy vagy több frissítést is végrehajthat. Az atomenergia mellett a kiszolgálói oldalon történő végrehajtás esetén is teljesítménybeli előnyökkel jár.
 
-* **Beágyazás:** Tárolt eljárások segítségével egy helyen logikai csoportosítása. Beágyazás hozzáad egy olyan absztrakciós réteget az adatokat, ami lehetővé teszi a való összpontosításnak köszönhetően az alkalmazások egymástól függetlenül az adatok felett. Absztrakciós réteg akkor hasznos, ha az adatok séma nélküli, és nem kell további logikát hozzáadása közvetlenül az alkalmazásba való kezeléséhez. Az absztrakciós lehetővé teszi, hogy az adatok biztonságos egyszerűsítheti a parancsfájlokat a hozzáférést a megtartása.
+* **Beágyazás** A tárolt eljárások a logika egy helyen való csoportosítására használhatók. A beágyazás egy absztrakt réteget ad hozzá az adatokhoz, ami lehetővé teszi, hogy az alkalmazások egymástól függetlenül fejlődjön az adatokból. Ez az absztrakciós réteg akkor hasznos, ha az adatai séma nélküliek, és nem kell közvetlenül az alkalmazásba felvennie a további logika hozzáadását. Az absztrakció lehetővé teszi az adatok biztonságának megőrzését a parancsfájlok elérésének egyszerűsítésével.
 
 > [!TIP]
-> Tárolt eljárások a legalkalmasabbak írási műveltekből és olyan tranzakciót igényelnek, partíciókulcs-értékkel különböző műveletekhez. Amikor eldönti, hogy a tárolt eljárások, optimalizálhatja körül fejlécbe foglalja az írások lehetséges maximális számát. Általánosan fogalmazva tárolt eljárások nem a lehető leghatékonyabb módon, nagy számú olvasási vagy lekérdezési műveletek adatelemzésre, így tárolt eljárások kötegelt olvasási és térjen vissza az ügyfél nagy számú nem eredményez, a kívánt juttatásra. A legjobb teljesítmény érdekében az ügyféloldali, Cosmos SDK-val az olvasási műveletek kell elvégezni. 
+> A tárolt eljárások az írható és nehéz műveletekhez legmegfelelőbbek, és a partíciós kulcs értékének megkövetelése a tranzakcióhoz. Ha eldönti, hogy a tárolt eljárásokat szeretné-e használni, optimalizálja a maximálisan megengedett írási mennyiség beágyazását. Általánosságban elmondható, hogy a tárolt eljárások nem a leghatékonyabb eszköz nagy mennyiségű olvasási vagy lekérdezési művelet elvégzéséhez, így a tárolt eljárások használatával a kötegek nagy számú olvasást adhatnak vissza az ügyfélnek. A legjobb teljesítmény érdekében ezeket az olvasási műveleteket az ügyféloldali, a Cosmos SDK használatával kell elvégezni. 
 
 ## <a name="transactions"></a>Tranzakciók
 
-Egy tipikus adatbázisban lévő tranzakció munka egyetlen logikai egységként végrehajtott műveletek sorozataként lehet definiálni. Minden egyes tranzakciót biztosít **ACID tulajdonság garanciák**. ACID egy jól ismert rövidítése jelző: **A**tomicity, **C**onsistency, **I**solation, és **D**urability. 
+Egy tipikus adatbázisban lévő tranzakció munka egyetlen logikai egységként végrehajtott műveletek sorozataként lehet definiálni. Minden tranzakció **savas Property garanciát**biztosít. A sav egy jól ismert betűszó, amely a következőt jelenti: **Tomicity,** **C**onsistency, **I**solation és **D**urability. 
 
-* Atomitást garantálja, hogy minden a tranzakción belül végzett műveletek kezeli a rendszer egyetlen egységet, és ezek közül bármelyik minden elkötelezettek, vagy egyikük vannak. 
+* Az atomenergia garantálja, hogy a tranzakción belül végrehajtott összes művelet egyetlen egységként lesz kezelve, és ezek mindegyike véglegesítve van, vagy egyik sem. 
 
-* Konzisztencia gondoskodik arról, hogy az adatok mindig érvényes állapotban a tranzakciók között. 
+* A konzisztencia gondoskodik arról, hogy az adategységek mindig érvényes állapotban legyenek a tranzakciók között. 
 
-* Elkülönítés garantálja, hogy két tranzakciók egymással ütköző – számos kereskedelmi rendszer adja meg, hogy több elkülönítési szintet, amely használható alkalmazás igényeinek megfelelően. 
+* Az elkülönítés garantálja, hogy két tranzakció sem zavarja egymást – számos kereskedelmi rendszer több elkülönítési szintet is biztosít, amelyeket az alkalmazás igényei alapján használhat. 
 
-* Tartóssági biztosítja, hogy bármilyen változás, amely egy adatbázisban előjegyzett mindig legyen jelen.
+* A tartósság biztosítja, hogy az adatbázisban véglegesített módosítások mindig jelen lesznek.
 
-Az Azure Cosmos DB a JavaScript futásidejű üzemel az adatbázis motorjában. Ezért a tárolt eljárások és triggerek-kérelmek végrehajtása ugyanabban a hatókörben, mint az adatbázis-munkamenet. Ez a funkció lehetővé teszi, hogy az Azure Cosmos DB garantálja az ACID tulajdonságok tárolt eljárás vagy eseményindító részét képező összes művelethez. Példák: [tranzakció megvalósítása](how-to-write-stored-procedures-triggers-udfs.md#transactions) cikk.
+Azure Cosmos DB a JavaScript futtatókörnyezet az adatbázismotor belsejében van tárolva. Ezért a tárolt eljárásokban és az eseményindítókban végrehajtott kérelmek ugyanabban a hatókörben futnak, mint az adatbázis-munkamenet. Ez a funkció lehetővé teszi, hogy a Azure Cosmos DB a tárolt eljárás vagy egy trigger részét képező összes művelet savas tulajdonságainak garantálása érdekében. Példákat a [tranzakciók implementálása](how-to-write-stored-procedures-triggers-udfs.md#transactions) című cikkben talál.
 
-### <a name="scope-of-a-transaction"></a>A tranzakciók hatóköre
+### <a name="scope-of-a-transaction"></a>Tranzakció hatóköre
 
-Ha egy tárolt eljárást társítva az Azure Cosmos-tárolókat, majd a tárolt eljárás a tranzakció-hatókörben, egy logikai partíciókulcs végrehajtja a függvény. Minden egyes tárolt eljárás végrehajtása tartalmaznia kell egy logikai partíciókulcs-értékkel, amely megfelel a tranzakció hatókörén. További információkért lásd: [Azure Cosmos DB particionálási](partition-data.md) cikk.
+Ha egy tárolt eljárás egy Azure Cosmos-tárolóhoz van társítva, akkor a tárolt eljárást a logikai partíciós kulcs tranzakciós hatókörében hajtja végre a rendszer. Minden tárolt eljárás végrehajtásához tartalmaznia kell egy logikai partíció kulcsának értékét, amely megfelel a tranzakció hatókörének. További információ: [Azure Cosmos db particionálási](partition-data.md) cikk.
 
 ### <a name="commit-and-rollback"></a>Érvényesítés és visszaállítás
 
-Tranzakciók natív módon integrálva vannak az Azure Cosmos DB a JavaScript-programozási modellt. JavaScript-függvény, belül minden művelet automatikusan burkolja egyetlen tranzakció alatt. A JavaScript-logika egy tárolt eljárást az összes kivétel nélkül befejeződött, a tranzakción belül minden művelet esetén fontos, hogy az adatbázis. Utasítások, például `BEGIN TRANSACTION` és `COMMIT TRANSACTION` (jól ismert, relációs adatbázisok) az Azure Cosmos DB járnak. Ha vannak olyan kivételek, amelyek a parancsfájlból, az Azure Cosmos DB a JavaScript futásidejű rendszer állítja vissza a teljes tranzakció. Ennek megfelelően hatékonyan egyenértékű hívása kivétel egy `ROLLBACK TRANSACTION` Azure Cosmos DB-ben.
+A tranzakciók natív módon vannak integrálva a Azure Cosmos DB JavaScript programozási modellbe. JavaScript-függvényen belül az összes művelet automatikusan egyetlen tranzakció alá lesz csomagolva. Ha egy tárolt eljárás JavaScript-logikája kivétel nélkül fejeződik be, a tranzakción belüli összes művelet véglegesítve lesz az adatbázisban. Az olyan `BEGIN TRANSACTION` utasítások `COMMIT TRANSACTION` , mint a és a (a kapcsolatok adatbázisaiban ismertek) implicitek Azure Cosmos db. Ha a szkript alól kivételek vannak, a Azure Cosmos DB JavaScript futtatókörnyezet visszaállítja a teljes tranzakciót. Ilyen esetben a kivételek a Azure Cosmos DBban ténylegesen egyenértékűek `ROLLBACK TRANSACTION` .
 
 ### <a name="data-consistency"></a>Adatkonzisztencia
 
-Tárolt eljárások és eseményindítók mindig futtatja egy Azure Cosmos-tároló az elsődleges replikán. Ez a funkció biztosítja, hogy beolvassa a tárolt eljárások ajánlat [erős konzisztencia](consistency-levels-tradeoffs.md). Az elsődleges vagy bármely másodlagos replikája hajtható végre felhasználó által definiált függvények használatával lekérdezéseket. Tárolt eljárások és eseményindítók tranzakciós írások támogatására készültek – a csapattagok pedig nyugodtabban aludhatnak a csak olvasható logikai alkalmazás kiszolgálóoldali logikát legjobb megvalósítása, és végzett lekérdezések a [Azure Cosmos DB SQL API SDK-k](sql-api-dotnet-samples.md), segít telítsük a adatbázis-átviteli sebessége. 
+A tárolt eljárásokat és eseményindítókat mindig az Azure Cosmos-tároló elsődleges replikáján hajtja végre a rendszer. Ez a funkció biztosítja, hogy a tárolt eljárásokból beolvasott adatok [erős konzisztenciát](consistency-levels-tradeoffs.md)biztosítanak. A felhasználó által definiált függvényeket használó lekérdezések az elsődleges vagy bármely másodlagos replikán hajthatók végre. A tárolt eljárások és eseményindítók a tranzakciós írások támogatásához szükségesek. a csak olvasási logikát az [Azure Cosmos db SQL API SDK](sql-api-dotnet-samples.md)-k használatával lehet legjobban megvalósítani az alkalmazás-és a lekérdezésekben, az adatbázis átviteli sebességének csökkentése érdekében. 
 
 ## <a name="bounded-execution"></a>Korlátozott végrehajtása
 
-Azure Cosmos DB minden művelet a megadott időtúllépési időtartam belül kell végrehajtania. Ez a korlátozás vonatkozik JavaScript-függvények - tárolt eljárások, eseményindítók és felhasználó által definiált függvények. Ha egy művelet adott időkorláton belül nem fejeződik, a tranzakció vissza lesz állítva.
+Az összes Azure Cosmos DB műveletnek a megadott időtúllépési időtartamon belül kell lennie. Ez a korlátozás a JavaScript-függvények – tárolt eljárások, eseményindítók és felhasználó által definiált függvények esetében érvényes. Ha egy művelet nem fejeződik be az adott időkorláton belül, a tranzakció vissza lesz állítva.
 
-Vagy biztosíthatja, hogy a JavaScript-függvények befejezni az időkorláton belül, vagy egy folytatási-alapú modell, batch és folytathat végrehajtási megvalósítására. Annak érdekében, hogy a tárolt eljárások és eseményindítók a kezeléséhez határidők fejlesszen, az összes functions az Azure Cosmos-tárolóban található (például létrehozása, olvasása, frissítése és az elemek törlése) logikai érték, amely azt jelöli, hogy a művelet vissza végezze el. Ha az értéke FALSE (hamis), utal, hogy az eljárást kell belefoglalni végrehajtása, mert a parancsfájlt is használja további idő vagy a kiosztott átviteli sebesség, mint a beállított érték. Az első elfogadhatatlan store művelet műveletek aszinkron előtt garantáltan elvégezni, ha a tárolt eljárás ideje alatt befejeződik, és nem várólistára további kérések eredményéről. Így az operations kell lennie az aszinkron egyszerre csak egy JavaScript visszahívási egyezmény használatával kezelheti a parancsfájl átvitelvezérlés. Szkriptek végrehajtása az egy kiszolgálóoldali környezetben, mert azok szigorúan szabályozza. Szkriptek végrehajtása határok ismételten megsértő inaktív lehet megjelölni, és nem hajtható végre, és, hogy tartsa tiszteletben a végrehajtási határok létre kell hozni.
+Gondoskodhat arról, hogy a JavaScript-függvények az adott időkorláton belül legyenek végrehajtva, vagy egy folytatáson alapuló modellt hajtsanak végre a Batch/folytatás végrehajtásához. A tárolt eljárások és eseményindítók az időbeli korlátok kezelésére szolgáló működésének egyszerűbbé tétele érdekében az Azure Cosmos tárolóban található összes funkció (például az elemek létrehozása, olvasása, frissítése és törlése) egy logikai értéket ad vissza, amely azt jelzi, hogy a művelet a következő lesz-e: teljes. Ha ez az érték hamis, akkor azt jelzi, hogy az eljárásnak le kell csomagolnia a végrehajtást, mert a parancsfájl a beállított értéknél több időt vagy kiépített átviteli sebességet használ. Az első elfogadhatatlan store művelet műveletek aszinkron előtt garantáltan elvégezni, ha a tárolt eljárás ideje alatt befejeződik, és nem várólistára további kérések eredményéről. Így a műveleteket a JavaScript visszahívási konvenciójának használatával, a parancsfájl vezérlési folyamatának kezeléséhez egy időben kell várólistába venni. Mivel a parancsfájlokat kiszolgálóoldali környezetben hajtják végre, szigorúan szabályozva vannak. A végrehajtási határokat ismételten sértő parancsfájlok inaktívként jelölhetők meg, és nem hajthatók végre, és újra létre kell őket hozni a végrehajtási határok tiszteletben tartásához.
 
-JavaScript-függvények megkülönböztetik státuszban [kiosztott átviteli kapacitás](request-units.md). JavaScript-függvények sikerült potenciálisan végül a kérelemegység rövid időn belül nagy számú használatával, és lehet, hogy sebessége korlátozott, ha a kiosztott átviteli kapacitás határértékét. Fontos megjegyezni, hogy parancsfájlok használata mellett az átviteli sebesség töltött végrehajtó adatbázis-művelet átviteli sebességben, bár ezek az adatbázis-műveletek némileg kevésbé költséges, mint az ügyfél ugyanazokat a műveleteket végrehajtó.
+A JavaScript-függvények kiosztott [átviteli kapacitásra](request-units.md)is vonatkoznak. A JavaScript-függvények egy rövid időn belül nagy mennyiségű kérést használhatnak, és a kiosztott átviteli kapacitásra vonatkozó korlát elérésekor a díjszabás korlátozott lehet. Fontos megjegyezni, hogy a szkriptek az adatbázis-műveletek végrehajtásával töltött átviteli sebesség mellett további átviteli sebességet is felhasználnak, bár ezek az adatbázis-műveletek valamivel kevésbé költségesek, mint az ügyféltől származó azonos műveletek végrehajtása.
 
-## <a name="triggers"></a>Eseményindítók
+## <a name="triggers"></a>Triggerek
 
-Az Azure Cosmos DB az eseményindítók két típusát támogatja:
+Azure Cosmos DB az eseményindítók két típusát támogatja:
 
-### <a name="pre-triggers"></a>Üzem előtti eseményindítók
+### <a name="pre-triggers"></a>Trigger előtti
 
-Az Azure Cosmos DB biztosít eseményindítókat, amelyek egy Azure Cosmos DB elemet egy művelet végrehajtásával is elindítható. Például megadhatja egy üzem előtti eseményindító egy elem létrehozásakor. Ebben az esetben az üzem előtti eseményindítót fog futni, az elem létrehozása előtt. Üzem előtti eseményindítók nem lehet bemeneti paramétereket. Ha szükséges, a támogatásikérelem-objektum használható frissíteni a dokumentum törzsében eredeti kérelemből. Eseményindítók regisztrálásakor a felhasználók megadhatják a műveletek, amelyek való futtatás. Ha az eseményindító készült `TriggerOperation.Create`, ez azt jelenti, hogy az eseményindító használatával a cserét nem fog tudni. Példák: [eseményindítók írásával](how-to-write-stored-procedures-triggers-udfs.md#triggers) cikk.
+A Azure Cosmos DB olyan eseményindítókat biztosít, amelyek meghívhatók egy Azure Cosmos DB elemen végrehajtott művelet végrehajtásával. Megadhat például egy előindítást egy elem létrehozásakor. Ebben az esetben a pre-trigger az elem létrehozása előtt fog futni. Üzem előtti eseményindítók nem lehet bemeneti paramétereket. Ha szükséges, a kérelem objektum használatával frissítheti a dokumentum törzsét az eredeti kérelemből. Eseményindítók regisztrálásakor a felhasználók megadhatják a műveletek, amelyek való futtatás. Ha egy triggert a- `TriggerOperation.Create`vel hoztak létre, akkor az trigger használata nem engedélyezett a csere műveletben. Példákat az [Eseményindítók írása](how-to-write-stored-procedures-triggers-udfs.md#triggers) című cikkben talál.
 
-### <a name="post-triggers"></a>Utáni eseményindítók
+### <a name="post-triggers"></a>Triggerek utáni
 
-Üzem előtti eseményindítók hasonlóan utáni eseményindítók is társítva legyenek egy Azure Cosmos DB elemet egy olyan műveletet, és nem kívánnak bemeneti paraméterek. Ezek futtatása *után* a művelet befejeződött, és hozzáférhetnek a az ügyfélnek küldött válaszüzenet. Példák: [eseményindítók írásával](how-to-write-stored-procedures-triggers-udfs.md#triggers) cikk.
+Az eseményindítók előállításához hasonlóan az eseményindítók is társítva vannak egy Azure Cosmos DB elem egyik műveletéhez, és nincs szükségük bemeneti paraméterekre. A művelet befejezését *követően* futnak, és hozzáférnek az ügyfélnek küldött válaszüzenetekhez. Példákat az [Eseményindítók írása](how-to-write-stored-procedures-triggers-udfs.md#triggers) című cikkben talál.
 
 > [!NOTE]
-> Eseményindítók nem automatikus futtatása mikor regisztrált megfelelő műveleteket (létrehozása / törlése / cseréje / frissítése) történik. Ezek a műveletek végrehajtásakor meghívni rendelkeznek. További tudnivalókért lásd: [futtatása triggerek](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) cikk.
+> A regisztrált eseményindítók nem futnak automatikusan, ha a kapcsolódó műveletek (létrehozás/törlés/csere/frissítés) történnek. A műveletek végrehajtásakor explicit módon meg kell hívni őket. További információt az eseményindítók [futtatása](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) című cikkben talál.
 
 ## <a id="udfs"></a>Felhasználó által definiált függvények
 
-Felhasználó által definiált függvények (UDF) kiterjesztése az SQL API-lekérdezési nyelv szintaxisát, és egyéni üzleti logika megvalósítása könnyen használhatók. Ezek csak a lekérdezések belül is meghívható. UDF-EK nem rendelkeznek hozzáféréssel a context objektumot, és van kialakítva, hogy a számítási csak JavaScript használható. Ezért UDF-et futtatni a másodlagos replikákon. Példák: [felhasználó által definiált függvények írása](how-to-write-stored-procedures-triggers-udfs.md#udfs) cikk.
+A felhasználó által definiált függvények (UDF-k) az SQL API-lekérdezés nyelvi szintaxisának kibővítésére és az egyéni üzleti logika egyszerű megvalósítására szolgálnak. Csak lekérdezéseken belül hívhatók. A UDF nem rendelkezik hozzáféréssel a környezeti objektumhoz, és csak számítási JavaScriptként használhatók. Ezért a UDF a másodlagos replikán is futtatható. Példákat a [felhasználó által definiált függvények írása](how-to-write-stored-procedures-triggers-udfs.md#udfs) című cikkben talál.
 
-## <a id="jsqueryapi"></a>A JavaScript nyelvintegrált lekérdezési API
+## <a id="jsqueryapi"></a>JavaScript nyelv – integrált lekérdezési API
 
-Dokumentumkeresési lekérdezések használata SQL API-lekérdezési szintaxis, valamint a [kiszolgálóoldali SDK](https://azure.github.io/azure-cosmosdb-js-server) lehetővé teszi, hogy a lekérdezések végrehajtása SQL ismerete egy JavaScript-felület használatával. A JavaScript-lekérdezés API lehetővé teszi, hogy programozott módon hozhat létre lekérdezéseket predikátum funkciók függvény hívássorozatot való átadásával. Lekérdezések a JavaScript futásidejű rendszer elemzi, és hatékonyan az Azure Cosmos DB tevékenységében. JavaScript lekérdezési API-támogatással kapcsolatos további információkért lásd: [működő JavaScript nyelvvel integrált query API](javascript-query-api.md) cikk. Példák: [hogyan tárolt eljárások és eseményindítók lekérdezési API a Javascript használatával írhat](how-to-write-javascript-query-api.md) cikk.
+Az SQL API-lekérdezési szintaxist használó lekérdezések kiadása mellett a [KISZOLGÁLÓOLDALI SDK](https://azure.github.io/azure-cosmosdb-js-server) lehetővé teszi, hogy az SQL ismerete nélkül JavaScript-interfész használatával végezzen lekérdezéseket. A JavaScript lekérdezési API lehetővé teszi, hogy programozott módon hozza létre a lekérdezéseket. A lekérdezéseket a JavaScript futtatókörnyezet elemzi, és a Azure Cosmos DBon belül hatékonyan hajtja végre. A JavaScript-lekérdezési API-támogatással kapcsolatos további információkért lásd: [a JavaScript nyelvi integrált lekérdezési API használata](javascript-query-api.md) című cikk. Példákat a [tárolt eljárások és eseményindítók írása JavaScript-lekérdezési API használatával](how-to-write-javascript-query-api.md) című cikkben talál.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan írási és tárolt eljárások, eseményindítók és felhasználó által definiált függvények használata az Azure Cosmos DB az alábbi cikkeket:
+Megtudhatja, hogyan írhat és használhat tárolt eljárásokat, eseményindítókat és felhasználó által definiált függvényeket Azure Cosmos DB a következő cikkekkel:
 
 * [Tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása](how-to-write-stored-procedures-triggers-udfs.md)
 
 * [Tárolt eljárások, eseményindítók és felhasználó által definiált függvények használata](how-to-use-stored-procedures-triggers-udfs.md)
 
-* [Működő JavaScript nyelvvel integrált lekérdezési API](javascript-query-api.md)
+* [A JavaScript nyelvi integrált lekérdezési API használata](javascript-query-api.md)

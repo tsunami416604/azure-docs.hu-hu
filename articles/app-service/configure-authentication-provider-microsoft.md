@@ -1,6 +1,6 @@
 ---
 title: Microsoft-fiók hitelesítésének konfigurálása – Azure App Service
-description: Ismerje meg, hogyan konfigurálhatja a Microsoft-fiók hitelesítését a App Services alkalmazáshoz.
+description: Ismerje meg, hogyan konfigurálhatja a Microsoft-fiók hitelesítését App Service alkalmazásához.
 author: mattchenderson
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 5ef0cb2da26fcc00d1daf4b2dd0faf8bde8b743b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0832c1e5f10cdb8e1d7a2edbb88162230ab13401
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098528"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233077"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>A App Service alkalmazás konfigurálása a Microsoft-fiók bejelentkezési használatára
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -61,7 +61,7 @@ Ebből a témakörből megtudhatja, hogyan konfigurálhatja a Azure App Servicet
 
 4. Választható Ha korlátozni szeretné Microsoft-fiók felhasználók hozzáférését, állítsa be **a végrehajtandó műveletet, ha a kérés nincs hitelesítve** a Microsoft-fiókkal való **bejelentkezéshez**. Ehhez minden kérést hitelesíteni kell, és az összes nem hitelesített kérelem át lesz irányítva a hitelesítéshez Microsoft-fiók.
 
-> [!CAUTION]
+> [!NOTE]
 > A hozzáférés ezen a módon való korlátozása az alkalmazás összes hívására vonatkozik, ami nem kívánatos, ha az alkalmazások nyilvánosan elérhető kezdőlapot szeretnének, például sok egyoldalas alkalmazásban. Ilyen alkalmazások esetén **engedélyezze a névtelen kérelmeket (nincs művelet)** előnyben részesített, ha az alkalmazás manuálisan indítja el a bejelentkezést, az [itt](overview-authentication-authorization.md#authentication-flow)leírtak szerint.
 
 5. Kattintson a **Save** (Mentés) gombra.

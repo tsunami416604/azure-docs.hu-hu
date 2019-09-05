@@ -1,85 +1,84 @@
 ---
-title: A lekérdezési nyelv ismertetése
-description: Ismerteti az elérhető Kusto-operátorok és funkciók lehet majd használni az Azure Erőforrás-grafikon.
+title: A lekérdezés nyelvének megismerése
+description: Az Azure Resource Graph-ban használható Kusto-operátorok és függvények ismertetése.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: dcb21a6aedf16b034fad4f0822e22758dda03c33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6e35d688581d0839e12806117e63c7d71fbc459
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800509"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231513"
 ---
-# <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure-erőforrás Graph lekérdezési nyelv ismertetése
+# <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure Resource Graph lekérdezési nyelvének megismerése
 
-A lekérdezési nyelv, az Azure Erőforrás-grafikon a kezelők és a funkciók számos támogatja. Minden működik, és üzemeltethet alapján [Azure adatkezelő](../../../data-explorer/data-explorer-overview.md).
+Az Azure Resource Graph lekérdezési nyelve számos operátort és funkciót támogat. Minden munka és működés az [Azure Adatkezelőon](../../../data-explorer/data-explorer-overview.md)alapul.
 
-Erőforrás-grafikon által használt lekérdezési nyelvvel kapcsolatos legjobb módja az, hogy kezdje a dokumentáció az Azure Data Explorer [lekérdezési nyelv](/azure/kusto/query/index). Egy ismertetése, hogyan épül fel a nyelvet, és hogyan a különböző támogatott operátorok biztosít, és functions működnek együtt.
+Az erőforrás-gráf által használt lekérdezési nyelv megismeréséhez a legjobb módszer az Azure Adatkezelő [lekérdezési nyelv](/azure/kusto/query/index)dokumentációjának használata. Bemutatjuk, hogyan épülnek fel a nyelv, és hogyan működnek együtt a különböző támogatott operátorok és függvények.
 
-## <a name="supported-tabular-operators"></a>Támogatja a táblázatos operátorok
+## <a name="supported-tabular-operators"></a>Támogatott táblázatos operátorok
 
-A következő erőforrás Graph támogatott táblázatos szereplők listáját:
+Az alábbi lista a támogatott táblázatos operátorok listáját tartalmazza az erőforrás-gráfban:
 
 - [count](/azure/kusto/query/countoperator)
-- [distinct](/azure/kusto/query/distinctoperator)
-- [extend](/azure/kusto/query/extendoperator)
+- [különböző](/azure/kusto/query/distinctoperator)
+- [kiterjesztése](/azure/kusto/query/extendoperator)
 - [limit](/azure/kusto/query/limitoperator)
-- [rendezési](/azure/kusto/query/orderoperator)
+- [rendezési sorrend](/azure/kusto/query/orderoperator)
 - [project](/azure/kusto/query/projectoperator)
 - [project-away](/azure/kusto/query/projectawayoperator)
-- [Minta](/azure/kusto/query/sampleoperator)
+- [minta](/azure/kusto/query/sampleoperator)
 - [sample-distinct](/azure/kusto/query/sampledistinctoperator)
-- [Rendezés](/azure/kusto/query/sortoperator)
-- [summarize](/azure/kusto/query/summarizeoperator)
-- [hajtsa végre a megfelelő](/azure/kusto/query/takeoperator)
-- [felső](/azure/kusto/query/topoperator)
+- [Rendezés szempontja](/azure/kusto/query/sortoperator)
+- [Összegzés](/azure/kusto/query/summarizeoperator)
+- [take](/azure/kusto/query/takeoperator)
+- [Top](/azure/kusto/query/topoperator)
 - [top-nested](/azure/kusto/query/topnestedoperator)
-- [TOP-hitters](/azure/kusto/query/tophittersoperator)
+- [Top-ütő](/azure/kusto/query/tophittersoperator)
 - [ahol](/azure/kusto/query/whereoperator)
 
-## <a name="supported-functions"></a>Támogatott funkciók
+## <a name="supported-functions"></a>Támogatott függvények
 
-A következő erőforrás Graph támogatott funkciók listáját:
+Az alábbi lista a támogatott függvények listáját tartalmazza az erőforrás-gráfban:
 
 - [ago()](/azure/kusto/query/agofunction)
 - [buildschema()](/azure/kusto/query/buildschema-aggfunction)
 - [strcat()](/azure/kusto/query/strcatfunction)
 - [isnotempty()](/azure/kusto/query/isnotemptyfunction)
-- [ToString()](/azure/kusto/query/tostringfunction)
+- [ToString ()](/azure/kusto/query/tostringfunction)
 - [zip()](/azure/kusto/query/zipfunction)
 
-## <a name="escape-characters"></a>Escape karakter
+## <a name="escape-characters"></a>Escape-karakterek
 
-Néhány tulajdonság nevét, például azokkal, amelyek tartalmazzák a `.` vagy `$`, kell csomagolni, vagy escape-karakterrel a lekérdezés vagy a tulajdonság neve nem megfelelően értelmezi, és nem az elvárt eredményeket biztosít.
+Egyes tulajdonságokat, például `.` a vagy `$`a karaktert tartalmazó neveket be kell csomagolni, vagy el kell menekülni a lekérdezésben, vagy a tulajdonság nevét nem megfelelően értelmezi a rendszer, és nem biztosítja a várt eredményeket.
 
-- `.` -Wrap ilyen tulajdonság neve: `['propertyname.withaperiod']`
+- `.`– A tulajdonság nevét a következőképpen csomagolja be:`['propertyname.withaperiod']`
   
-  Példa lekérdezés, amely a tulajdonság _odata.type_:
+  Példa lekérdezésre, amely a OData tulajdonságot csomagolja _. írja be_a következőt:
 
   ```kusto
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- `$` -A a tulajdonságnév karakterek elkerülésére. Az escape-karaktert használja az Erőforrás-grafikon fut shell függ.
+- `$`-Escape a tulajdonság nevében szereplő karakter. A használatban lévő escape-karakter a rendszerhéj-erőforrás Gráftól függ.
 
   - **bash** - `\`
 
-    Példalekérdezést, amely lehet kilépni a tulajdonság  _\$típus_ a bash:
+    Példa olyan lekérdezésre, amely megmenekül a tulajdonság  _\$típusa_ a bashben:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
     ```
 
-  - **cmd** -escape nem a `$` karakter.
+  - **cmd** – ne elkerülje a `$` karaktert.
 
   - **PowerShell** - ``` ` ```
 
-    Példalekérdezést, amely lehet kilépni a tulajdonság  _\$típus_ a PowerShellben:
+    Példa olyan lekérdezésre, amely megmenekül a tulajdonság  _\$típusa_ a PowerShellben:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
@@ -87,6 +86,6 @@ Néhány tulajdonság nevét, például azokkal, amelyek tartalmazzák a `.` vag
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg a használt nyelv [alapszintű lekérdezések](../samples/starter.md)
-- Tekintse meg a speciális használ [összetettebb lekérdezésekhez](../samples/advanced.md)
+- Megtekintheti az alapszintű [lekérdezésekben](../samples/starter.md) használt nyelvet
+- Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md)
 - Információ az [erőforrások felfedezéséről](explore-resources.md)

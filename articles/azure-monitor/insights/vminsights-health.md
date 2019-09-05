@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 18297410842b432af0093a71406df71f7e03db9d
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 311db544a119d4b9bee7d31cfdfac33aa3c4ed79
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602055"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233168"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Az Azure-beli virtuális gépek állapotának megismerése
 
@@ -199,7 +199,7 @@ Indítsa el az Health diagnosticsot az alábbi módszerek használatával:
 
     1. Az **állapot** lapon válassza a **kritikus**, **Figyelmeztetés**, **kifogástalan**vagy **ismeretlen** állapot ikont a **vendég virtuális gép állapota**szakasz alatt.
     2. Nyissa meg az oldalt, amely felsorolja az összes, a szűrt kategóriának megfelelő virtuális gépet.
-    3. Válassza ki az **Állapot oszlopban az** értéket, hogy megnyissa az adott virtuális gépre vonatkozó állapot-diagnosztika hatókörét.
+    3. Válassza ki az Állapot oszlopban az értéket, hogy megnyissa az adott virtuális gépre vonatkozó állapot-diagnosztika hatókörét.
 
 * Operációs rendszer alapján a Azure Monitor összesített virtuálisgép-szemszögéből. A **virtuális gép eloszlása**területen az oszlopok bármelyikének kiválasztásakor megnyílik a **Virtual Machines** lap, és egy listát ad vissza a szűrt kategóriának megfelelő táblázatban. Az **állapot állapota** oszlopban lévő érték kiválasztásával megnyílik a kiválasztott virtuális géphez tartozó Health Diagnostics.
  
@@ -285,7 +285,7 @@ A frissített állapot megjelenítéséhez a **frissítés** hivatkozásra katti
 
 Azure Monitor for VMs az állapot integrálható az [Azure](../../azure-monitor/platform/alerts-overview.md)-riasztásokkal. Riasztást küld, ha a rendszer előre definiált feltételek alapján észleli, hogy kifogástalan állapotról sérült állapotra vált. A riasztások súlyosság szerint vannak kategorizálva, a "0" és "4" között, a legmagasabb szinttel 0.
 
-A riasztások nincsenek társítva egy műveleti csoporttal, hogy értesítést kapjon a riasztás aktiválásakor. Az előfizetés tulajdonosának a [riasztások beállítása](#configure-alerts) szakaszban leírt lépéseket követve konfigurálnia kell az értesítéseket.
+A riasztások nincsenek társítva egy műveleti csoporttal, hogy értesítést kapjon a riasztás aktiválásakor. Az előfizetés hatókörében lévő tulajdonosi szerepkörrel rendelkező felhasználónak a [riasztások beállítása](#configure-alerts) szakaszban leírt lépésekkel kell konfigurálnia az értesítéseket.
 
 A súlyosság szerint kategorizált virtuálisgép-állapot-riasztások teljes száma a **riasztások** szakaszban található **állapot** -irányítópulton érhető el. Amikor kiválasztja a riasztások teljes számát vagy a súlyossági szintnek megfelelő számot, megnyílik a **riasztások** lap, és felsorolja a kijelölésnek megfelelő összes riasztást.
 

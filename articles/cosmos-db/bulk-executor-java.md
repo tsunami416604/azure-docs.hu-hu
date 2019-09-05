@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 68c83809cba0585d99751760c0e4f51893806170
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: f8cb7458deddc95f33fa5e4582ffa7c25c3c64e6
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257196"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619811"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Tömeges végrehajtó Java-kódtár használatával tömeges műveletek végrehajtása az Azure Cosmos DB-adatai
 
 Ebben az oktatóanyagban ez útmutatást nyújt az Azure Cosmos DB tömeges végrehajtó Java-kódtár használatával importálása és frissítése az Azure Cosmos DB-dokumentumot. Tömeges végrehajtó kódtár, és segítséget nyújt a nagy átviteli sebesség és a storage kapcsolatos további információkért lásd: [végrehajtó Ügyfélkódtár áttekintése tömeges](bulk-executor-overview.md) cikk. Ebben az oktatóanyagban a Java-alkalmazás által generált, véletlenszerű dokumentumok létrehozása és tömegesen importálni egy Azure Cosmos DB-tárolóhoz. Az importálás után lesz tömeges frissítése néhány tulajdonságát egy dokumentumot. 
 
-Tömeges végrehajtó könyvtár jelenleg az Azure Cosmos DB SQL API-t, és csak a Gremlin API-fiókok által támogatott. Ez a cikk ismerteti a tömeges végrehajtó .NET-kódtár használata SQL API-fiókok. Tömeges végrehajtó .NET-kódtár használatával a Gremlin API-val kapcsolatos további információkért lásd: [tömeges műveletek végrehajtása az Azure Cosmos DB Gremlin API](bulk-executor-graph-dotnet.md).
+Jelenleg a tömeges végrehajtó függvénytárat csak Azure Cosmos DB SQL API és Gremlin API-fiókok támogatják. Ez a cikk azt ismerteti, hogyan használható a tömeges végrehajtó Java-függvénytár SQL API-fiókokkal. Tömeges végrehajtó .NET-kódtár használatával a Gremlin API-val kapcsolatos további információkért lásd: [tömeges műveletek végrehajtása az Azure Cosmos DB Gremlin API](bulk-executor-graph-dotnet.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.  
 
-* Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/try/cosmosdb/), Azure-előfizetés, díjfizetés és elköteleződés nélkül. Vagy használhatja a [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) együtt a `https://localhost:8081` végpont. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.  
+* Az Azure-előfizetések nélkül, díjmentesen és kötelezettségvállalásokon keresztül [Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen kipróbálhatja. Vagy használhatja a [Azure Cosmos db emulátort](https://docs.microsoft.com/azure/cosmos-db/local-emulator) a `https://localhost:8081` végponttal. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.  
 
 * [Java fejlesztői készlet (JDK) 1.7+](https://aka.ms/azure-jdks)  
   - Ubuntu rendszeren futtassa az `apt-get install default-jdk` parancsot a JDK telepítéséhez.  
@@ -37,7 +37,7 @@ Tömeges végrehajtó könyvtár jelenleg az Azure Cosmos DB SQL API-t, és csak
   
   - Ubuntu rendszeren futtathatja az `apt-get install maven` parancsot a Maven telepítéséhez.
 
-* Hozzon létre egy Azure Cosmos DB SQL API-fiókot az ismertetett lépéseket követve [adatbázisfiók létrehozása](create-sql-api-java.md#create-a-database-account) Java rövid cikkének.
+* Hozzon létre egy Azure Cosmos DB SQL API-fiókot a Java rövid útmutató című cikk [adatbázis-fiók létrehozása](create-sql-api-java.md#create-a-database-account) című szakaszában ismertetett lépések segítségével.
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
@@ -118,8 +118,8 @@ A klónozott adattár tartalmazza a két minta "bulkimport" és "bulkupdate" a "
    |int getNumberOfDocumentsImported()  |   Sikeresen importálva lettek a tömeges megadott dokumentumból dokumentumok száma importálja az API-hívás.      |
    |dupla getTotalRequestUnitsConsumed()   |  A tömeges által felhasznált teljes kérelemegység (RU) importálni az API-hívás.       |
    |Időtartam getTotalTimeTaken()   |    Teljes idő a tömeges importálás API-hívás végrehajtása befejeződik.     |
-   |Lista\<kivétel > getErrors() |  Hibák listáját olvassa be, ha néhány dokumentumot a köteg megadott tömeges importálása nem sikerült beszúrni első API-hívás.       |
-   |Lista\<objektum > getBadInputDocuments()  |    A lista rossz formátumú dokumentumok importálása nem sikerült a tömeges importálása API-hívás. Felhasználó kell hárítsa el a dokumentumokat ad vissza, és próbálkozzon újra az importálással. Hibás formátumú dokumentumok tartalmazzák a dokumentumok, amelynek azonosító értéke nem egy karakterláncot (NULL értékű vagy bármely más adattípus érvénytelen akkor tekinthető).     |
+   |Kivételek listázása\<> getErrors () |  Hibák listáját olvassa be, ha néhány dokumentumot a köteg megadott tömeges importálása nem sikerült beszúrni első API-hívás.       |
+   |Objektum\<listázása > getBadInputDocuments ()  |    A lista rossz formátumú dokumentumok importálása nem sikerült a tömeges importálása API-hívás. Felhasználó kell hárítsa el a dokumentumokat ad vissza, és próbálkozzon újra az importálással. Hibás formátumú dokumentumok tartalmazzák a dokumentumok, amelynek azonosító értéke nem egy karakterláncot (NULL értékű vagy bármely más adattípus érvénytelen akkor tekinthető).     |
 
 5. Miután a tömeges importálása alkalmazást kész, a 'tiszta csomag mvn' parancs használatával hozhat létre a parancssori eszköz forrásból. Ez a parancs létrehoz egy jar-fájlt a cél mappában:  
 
@@ -182,7 +182,7 @@ Meglévő dokumentumok frissítheti a BulkUpdateAsync API-val. Ebben a példába
    |int getNumberOfDocumentsUpdated()  |   A sikeresen frissített a dokumentumból dokumentumok teljes számát a tömeges frissítés megadott API-hívás.      |
    |dupla getTotalRequestUnitsConsumed() |  A teljes kérelemegység (RU) a tömeges frissítés által használt API-hívás.       |
    |Időtartam getTotalTimeTaken()  |   A tömeges teljes idő frissítés API-hívás végrehajtása befejeződik.      |
-   |Lista\<kivétel > getErrors()   |    Hibák listáját olvassa be, ha olyan néhány dokumentumot a batch a tömeges frissítés API-hívás nem sikerült beszúrni beolvasása.      |
+   |Kivételek listázása\<> getErrors ()   |    Hibák listáját olvassa be, ha olyan néhány dokumentumot a batch a tömeges frissítés API-hívás nem sikerült beszúrni beolvasása.      |
 
 3. Miután a tömeges frissítése alkalmazást kész, a 'tiszta csomag mvn' parancs használatával hozhat létre forrásból a parancssori eszköz. Ez a parancs létrehoz egy jar-fájlt a cél mappában:  
 

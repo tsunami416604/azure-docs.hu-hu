@@ -10,22 +10,22 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f54643883028d93b56c7e122f43db95bb6d0b8c1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3bdada262df3778ab8781f967fdbd64a780009b2
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560877"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258277"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Gyors útmutató: Új alkalmazás létrehozása a LUIS portálon
 
-Ebben a rövid útmutatóban egy új alkalmazást hoz létre a [Luis portálon](https://www.luis.ai). Először hozza létre az alkalmazás, a szándékok és az **entitások**alapvető részeit. Ezt követően tesztelheti az alkalmazást úgy, hogy az interaktív tesztelési panelen megadta a minta felhasználótól az előre jelzett szándékot.
+Ebben a rövid útmutatóban egy új alkalmazást hoz létre a [Luis portálon](https://www.luis.ai). Először hozza létre az alkalmazás, a **szándékok**és az **entitások**alapvető részeit. Ezt követően tesztelheti az alkalmazást úgy, hogy az interaktív tesztelési panelen megadta a minta felhasználótól az előre jelzett szándékot.
 
 Az alkalmazások létrehozása ingyenes, és nem igényel Azure-előfizetést. Ha készen áll az alkalmazás üzembe helyezésére, tekintse meg az [alkalmazás üzembe helyezésének](get-started-portal-deploy-app.md)rövid útmutatóját. Bemutatja, hogyan hozhat létre egy Azure kognitív szolgáltatás-erőforrást, és hogyan rendelheti hozzá az alkalmazáshoz.
 
-## <a name="create-an-app"></a>Alkalmazás létrehozása
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
-1. Nyissa meg a [Luis portált](https://www.luis.ai) egy böngészőben, és jelentkezzen be. Ha első alkalommal jelentkezik be, létre kell hoznia egy ingyenes LUIS-portál felhasználói fiókot.
+## <a name="create-an-app"></a>Alkalmazás létrehozása
 
 1. Válassza az **új alkalmazás létrehozása** lehetőséget a helyi eszköztáron.
 
@@ -49,16 +49,16 @@ A LUIS-alkalmazás létrehozása után szándékait kell létrehoznia. A szánd�
  1. Feladatok keresése és alkalmazása
  1. A feladatokra alkalmazandó űrlapok keresése
 
-Az alkalmazás két különböző szándéka az alábbi _célokhoz_ igazodik:
+Az alkalmazás két különböző _szándéka az alábbi célokhoz_ igazodik:
 
-|Szándék|Példa szövegre a felhasználótól<br>más néven a  Kimondás|
+|Szándék|Példa szövegre a felhasználótól<br>más néven a _Kimondás_|
 |--|--|
 |ApplyForJob|`I want to apply for the new software engineering position in Cairo.`|
 |FindForm|`Where is the job transfer form hrf-123456?`|
 
 A leképezések létrehozásához hajtsa végre a következő lépéseket:
 
-1. Az alkalmazás létrehozása után a **Build** szakasz szándékok lapján  található. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget.
+1. Az alkalmazás létrehozása után a **Build** szakasz **szándékok** lapján található. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget.
 
    [![Válassza az új leképezés létrehozása gombot](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
@@ -108,7 +108,7 @@ Ez a példa a hosszúságú kimondott szöveg a következő módokon változhat:
 
 Ha vissza szeretné állítani az űrlap számát a futásidejű előrejelzési válaszban, az űrlapot entitásként kell megjelölni. Mivel az űrlap-szám szövege erősen strukturált, egy reguláris kifejezéssel rendelkező entitás használatával jelölheti meg. Hozza létre az entitást a következő lépésekkel:
 
-1. Válassza  az entitások lehetőséget a bal oldali menüben.
+1. Válassza az **entitások** lehetőséget a bal oldali menüben.
 
 1. Válassza az **új entitás létrehozása** elemet az **entitások** lapon.
 
@@ -124,7 +124,7 @@ A **none** cél a tartalék szándék, és nem hagyható üresen. Ennek a szánd
 
 A **nincs** leképezési példa hosszúságú kimondott szöveg az ügyfélalkalmazás tartományán kívül kell lennie.
 
-1. Válassza  a bal oldali menüben a leképezések lehetőséget, majd válassza a **nincs** lehetőséget a leképezések listából.
+1. Válassza a bal oldali menüben a **leképezések** lehetőséget, majd válassza a **nincs** lehetőséget a leképezések listából.
 
 1. Adja hozzá a következő példa hosszúságú kimondott szöveg a szándékhoz:
 
@@ -138,13 +138,13 @@ A **nincs** leképezési példa hosszúságú kimondott szöveg az ügyfélalkal
 
 ## <a name="train-the-app"></a>Az alkalmazás betanítása
 
-A jobb felső sarokban válassza a betanítás lehetőséget  a szándék és az entitás modell módosításának az alkalmazás aktuális verziójára való alkalmazásához.
+A jobb felső sarokban válassza a **betanítás** lehetőséget a szándék és az entitás modell módosításának az alkalmazás aktuális verziójára való alkalmazásához.
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Tekintse meg a reguláris kifejezés entitást a példában szereplő hosszúságú kimondott szöveg
 
 1. Győződjön meg arról, hogy az entitás a **FindForm** szándékban található, a bal oldali menüben a **leképezések** lehetőség kiválasztásával. Ezután válassza a **FindForm** szándék lehetőséget.
 
-   Az entitás meg van jelölve, ahol megjelenik a példában szereplő hosszúságú kimondott szöveg. Ha az entitás neve helyett az eredeti szöveget szeretné látni, váltson az entitások **nézetre** az eszköztárból.
+   Az entitás meg van jelölve, ahol megjelenik a példában szereplő hosszúságú kimondott szöveg. Ha az entitás neve helyett az eredeti szöveget szeretné látni, váltson az **entitások nézetre** az eszköztárból.
 
    [![Az összes példa entitásokkal jelölt hosszúságú kimondott szöveg](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 

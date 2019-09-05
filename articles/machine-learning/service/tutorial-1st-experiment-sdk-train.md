@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 07/20/2019
-ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 09/03/2019
+ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051630"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241291"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: Az első ML-modell betanítása
 
@@ -35,14 +35,33 @@ Az egyetlen előfeltétel az oktatóanyag, a [telepítési környezet és a munk
 
 Az oktatóanyag ezen részében az első rész végén megnyitott minta Jupyter jegyzetfüzetben `tutorials/tutorial-1st-experiment-sdk-train.ipynb` futtatja a kódot. Ez a cikk a jegyzetfüzetben található kódot mutatja be.
 
+## <a name="launch-jupyter-web-interface"></a>A Jupyter webes felületének elindítása
+
+1. A Azure Portal munkaterület lapján válassza a bal oldalon található **notebook virtuális gépek** elemet.
+
+1. Az oktatóanyag első részében létrehozott virtuális gép **URI** oszlopában válassza a **Jupyter** lehetőséget.
+
+    ![A Jupyter notebook-kiszolgáló elindítása](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
+
+   A hivatkozás elindítja a notebook-kiszolgálót, és megnyitja a Jupyter notebook weboldalát egy új böngésző lapon.  Ez a hivatkozás csak a virtuális gépet létrehozó személy számára fog működni. A munkaterület minden felhasználójának létre kell hoznia a saját virtuális gépet.
+
+1. A Jupyter notebook weboldalán válassza ki a saját felhasználónevével rendelkező legfelső szintű mappanév-nevet.  
+
+   Ez a mappa nem a jegyzetfüzet virtuális gépén, hanem a munkaterület [Storage-fiókjában](concept-workspace.md#resources) található.  Ha törli a notebook VM-et, továbbra is megtarthatja a munkáját.  Amikor később hoz létre egy új jegyzetfüzet virtuális gépet, a rendszer ezt a mappát fogja betölteni. Ha a munkaterületet másokkal is megosztja, látni fogja a mappát, és látni fogja a sajátját.
+
+1. Nyissa `samples-*` meg az alkönyvtárat, majd nyissa meg a `.yml` Jupyter-jegyzetfüzetet `tutorials/tutorial-1st-experiment-sdk-train.ipynb`, **ne** pedig az azonos nevű fájlt. 
+
 ## <a name="connect-workspace-and-create-experiment"></a>Munkaterület összekötése és kísérlet létrehozása
+
+> [!Important]
+> A cikk többi része ugyanazt a tartalmat tartalmazza, mint amit a jegyzetfüzetben lát.  
+>
+> Váltson a Jupyter jegyzetfüzetre, ha a kód futtatása közben szeretné olvasni. 
+> Ha egyetlen kód cellát szeretne futtatni egy jegyzetfüzetben, kattintson a kód cellára, és nyomja le a **SHIFT + ENTER billentyűkombinációt**. Vagy futtassa a teljes jegyzetfüzetet úgy, hogy kijelöli a **cella > az összes futtatása** lehetőséget a felső menüben.
 
 Importálja `Workspace` az osztályt, és töltse be az előfizetési `config.json` adatokat a fájlból az aktuális könyvtárban található JSON-fájlhoz tartozó függvény `from_config().` használatával, de a fájlra mutató elérésiút-paramétert is megadhat. a `from_config(path="your/file/path")`használata. A Felhőbeli jegyzetfüzet-kiszolgálókon a fájl automatikusan megjelenik a gyökérkönyvtárban.
 
 Ha a következő kód további hitelesítést kér, egyszerűen illessze be a hivatkozást egy böngészőben, és adja meg a hitelesítési jogkivonatot.
-
-> [!TIP]
-> Ha most ismerkedik a jegyzetfüzetek Jupyter, futtasson kódot a kód cellára kattintva, és a **SHIFT + ENTER** billentyűkombinációval futtassa a cellákat egyszerre. Ha a teljes jegyzetfüzetet egyszerre szeretné futtatni, kattintson a felső menüsorban található **cella** elemre, majd az **összes futtatása**parancsra.
 
 ```python
 from azureml.core import Workspace

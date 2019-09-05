@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 110040592474ec432912e7f545abad19ca3ae1ff
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: bc0455b34ebdcb080e0cd702e58d8163228b60ff
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991976"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278069"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Kezelését és kérését kvóták az Azure-erőforrásokhoz
 
@@ -78,10 +78,10 @@ Rendelkezésre álló erőforrások:
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning folyamatok
 Azure Machine Learning folyamatok esetében a folyamat lépéseinek száma, valamint az előfizetésben régiónként megjelenő közzétett folyamatok ütemezett futtatásának száma.
 - A folyamatokban engedélyezett lépések maximális száma 30 000
-- A közzétett folyamatokon alapuló ütemezett futtatások maximális száma havonta 100 000
+- Az ütemezett futtatások és a blob-lekérések összegének maximális száma az előfizetéshez tartozó közzétett folyamatokra vonatkozóan, havonta 100 000
 
 > [!NOTE]
-> Ha szeretné megnövelni ezt a korlátot [](https://azure.microsoft.com/support/options/), forduljon a Microsoft ügyfélszolgálatahoz.
+> Ha szeretné megnövelni ezt a korlátot, forduljon a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
 ### <a name="container-instances"></a>Container Instances szolgáltatásban
 
@@ -99,7 +99,7 @@ Storage-fiókok, valamint az adott előfizetésben régiónként száma korláto
 
 A különböző erőforrások, például a virtuális gépek, tárolási, hálózati, a kvóta megtekintése is egyszerűen az Azure Portalon keresztül.
 
-1. A bal oldali ablaktáblán válassza a **minden szolgáltatás** lehetőséget, majd az általános kategóriában válassza az előfizetések lehetőséget.
+1. A bal oldali ablaktáblán válassza a **minden szolgáltatás** lehetőséget, majd az általános kategóriában válassza az **előfizetések** lehetőséget.
 
 1. Előfizetések listájából válassza ki az előfizetést, amelynek Ön által keresett kvótát.
 

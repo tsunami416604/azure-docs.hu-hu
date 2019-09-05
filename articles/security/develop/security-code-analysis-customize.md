@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure biztonsági kód elemzése feladat testreszabási útmutatója
-description: Ez a cikk a biztonsági kód elemzése bővítményben található feladatok testreszabását ismerteti
+description: Ez a cikk a Microsoft biztonsági kód elemzése bővítmény feladatainak testreszabását ismerteti
 author: vharindra
 manager: sukhans
 ms.author: terrylan
@@ -12,168 +12,193 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: ab219b71eb8cd6f6172b7d02a639301c67811b49
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: c0d49c3ce06f6fa72daf7aff466ef65e09ced09a
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718352"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241802"
 ---
-# <a name="how-to-configure--customize-the-build-tasks"></a>kézikönyv: & Konfigurálása a felépítési feladatok testreszabásához
+# <a name="configure-and-customize-the-build-tasks"></a>A Build-feladatok konfigurálása és testreszabása
 
-Ez az oldal részletesen ismerteti az egyes összeállítási feladatokban elérhető konfigurációs beállításokat, kezdve a biztonsági kód elemzési eszközeinek feladataival, majd a feldolgozás utáni feladatok
+Ez a cikk részletesen ismerteti az egyes összeállítási feladatokban elérhető konfigurációs beállításokat. A cikk a biztonsági kód elemzési eszközeinek feladataival kezdődik. A feldolgozás utáni feladatokkal végződik.
 
 ## <a name="anti-malware-scanner-task"></a>Kártevők elleni víruskereső feladat
 
-> [!NOTE]
-> A kártevő szoftvereket felépítő feladathoz olyan Build ügynökre van szükség, amelyen engedélyezve van a Windows Defender, amely az "üzemeltetett VS2017" és a későbbi Build-ügynökök esetében igaz. (Nem fog futni az örökölt/VS2015 "tárolt" ügynökön) Az aláírások nem frissíthetők ezen ügynökökön, de az aláírásnak mindig viszonylag aktuálisnak kell lennie, és kevesebb, mint 3 óra.
+>[!NOTE]
+> A kártevő szoftverek elleni ellenőrzőeszköz felépítési feladatához szükség van egy Build ügynökre, amelyen engedélyezve van a Windows Defender. Az üzemeltetett Visual Studio 2017-es és újabb verziói biztosítják ezt az ügynököt. A Build feladat nem fut a Visual Studio 2015 üzemeltetett ügynökön.
+>
+> Bár az aláírások nem frissíthetők ezen az ügynökökön, az aláírásoknak mindig kevesebbnek kell lenniük, mint három órával régebbiek.
 
-Képernyőfelvétel és részletek az alábbi konfiguráláshoz.
+A feladat konfigurációjának részletei a következő képernyőképen és szövegen láthatók.
 
-![A kártevő-elhárító képolvasó felépítési feladatának testreszabása](./media/security-tools/5-add-anti-malware-task600.png) 
+![A kártevő-elhárító képolvasó felépítési feladatának konfigurálása](./media/security-tools/5-add-anti-malware-task600.png)
 
-- A Type = **Basic** típus beállításai
-- A Type = **Custom**paraméterrel megadhatja a vizsgálat testreszabásához szükséges parancssori argumentumokat.
+A képernyőkép **típus** listájában válassza az **alapszintű** lehetőséget. Válassza az **Egyéni** lehetőséget a vizsgálat testreszabására szolgáló parancssori argumentumok megadásához.
 
-A Windows Defender az Windows Update ügyfelet használja az aláírások letöltésére és telepítésére. Ha az aláírás frissítése sikertelen a Build-ügynökön, a HRESULT valószínűleg Windows Update származik. A Windows Update hibákra és a mérséklésre vonatkozó további információkért tekintse meg [ezt a lapot](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference) és a [TechNet-oldalt](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx)
+A Windows Defender az Windows Update ügyfelet használja az aláírások letöltésére és telepítésére. Ha az aláírás frissítése sikertelen a Build-ügynökön, a **HRESULT** valószínűleg Windows Update származik.
+
+A Windows Update hibákkal és azok enyhítésével kapcsolatos további információkért lásd: [Windows Update hibakódok összetevő szerint](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference) és a TechNet [-cikk Windows Update ügynök – hibakódok](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx).
 
 ## <a name="binskim-task"></a>BinSkim feladat
 
 > [!NOTE]
-> A BinSkim feladat futtatásának előfeltétele, hogy a buildnek meg kell felelnie az alábbi feltételek egyikének.
+> A BinSkim feladat futtatása előtt a buildnek meg kell felelnie az alábbi feltételek egyikének:
 >    - A Build bináris összetevőket hoz létre a felügyelt kódból.
->    - A BinSkim-mel elemezni kívánt bináris összetevőkkel rendelkezik.
+>    - Olyan bináris összetevők vannak véglegesítve, amelyeket a BinSkim-mel kíván elemezni.
 
-Képernyőfelvétel és részletek az alábbi konfiguráláshoz. 
+A feladat konfigurációjának részletei a következő képernyőképen és listában láthatók.
 
-![BinSkim-telepítő](./media/security-tools/7-binskim-task-details.png)  
-1. Állítsa be úgy a Build konfigurációját, hogy hibakeresést végezzen * **. pdb** hibakeresési fájlok létrehozásához. A BinSkim a kimeneti bináris fájlban található hibák leképezésére szolgálnak. 
-2. Válassza a Type = **Basic** & függvény = **elemzés** lehetőséget, hogy elkerülje a saját parancssorok keresését és létrehozását. 
-3. **Cél** – egy vagy több olyan fájl-, könyvtár-vagy szűrési minta, amely az elemzéshez egy vagy több bináris fájlt feloldja. 
-    - Több célt pontosvesszővel kell elválasztani **(;)** . 
-    - Egyetlen fájl lehet, vagy helyettesítő karakterekkel is rendelkezhet.
-    - A címtáraknak mindig véget kell\*
+![A BinSkim-létrehozási feladat konfigurálása](./media/security-tools/7-binskim-task-details.png)
+
+- Állítsa a Build konfigurációját hibakeresésre, hogy a. pdb hibakeresési fájljait hozza létre. A BinSkim ezeket a fájlokat használja a kimeneti bináris fájljaiban felmerülő problémák a forráskódba való visszaállításához.
+- A saját parancssorok keresésének és létrehozásának elkerüléséhez tegye a következőket:
+     - A **típus** listában válassza az **alapszintű**lehetőséget.
+     - A **függvény** listából válassza az **elemzés**lehetőséget.
+- A **cél**mezőben adjon meg egy vagy több megjelölést egy fájlhoz, könyvtárhoz vagy szűrési mintához. Ezek a megadott beállítások egy vagy több elemzett bináris fájlra oldhatók fel:
+    - Több megadott célpontot pontosvesszővel kell elválasztani (;).
+    - A megadott elem lehet egyetlen fájl, vagy helyettesítő karakter is szerepelhet.
+    - A könyvtár specifikációinak mindig a \\* értékkel kell végződnie.
     - Példák:
 
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
            $(BUILD_STAGINGDIRECTORY)\*.dll;$(BUILD_STAGINGDIRECTORY)\*.exe;
-4. Ha a Type = **Command sort**választja, 
-     - Győződjön meg arról, hogy a **BinSkim. exe** első argumentuma a teljes elérési utakat vagy a forrás könyvtárához viszonyított elérési utakat használó művelet **elemzése** .
-     - **Parancssori** bemenet esetén a több célt szóközzel kell elválasztani.
-     - Kihagyhatja az **/o** vagy a **/output** file paramétert; a rendszer felveszi vagy lecseréli. 
-     - **Szabványos parancssori konfiguráció** 
+
+- Ha a **Type (típus** ) listában kiválasztja a **parancssort** , a binskim. exe fájlt kell futtatnia:
+     - Győződjön meg arról, hogy a binskim. exe első argumentumai a művelet **elemzése** után egy vagy több elérésiút-specifikáció. Minden elérési út lehet teljes elérési út vagy a forrás könyvtárhoz viszonyított elérési út.
+     - A célként megadott elérési utakat szóközzel kell elválasztani.
+     - Kihagyhatja az **/o** vagy a **/output** beállítást. A kimeneti érték hozzá lesz adva vagy lecserélve.
+     - A standard parancssori konfigurációk a következőképpen láthatók.
 
            analyze $(Build.StagingDirectory)\* --recurse --verbose
            analyze *.dll *.exe --recurse --verbose
-          > [!NOTE]
-          > A záró \* érték nagyon fontos a cél könyvtárának vagy könyvtárainak megadásakor. 
 
-További információ a parancssori argumentumokról, az azonosító-vagy kilépési kódok BinSkim: a [BinSkim felhasználói útmutatója](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md)
+          > [!NOTE]
+          > A záró \\* fontos, ha a célként megadott könyvtárakat ad meg.
+
+További információ a BinSkim parancssori argumentumokról, a szabályok azonosító alapján vagy kilépési kódokról: [BinSkim felhasználói útmutató](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md).
 
 ## <a name="credential-scanner-task"></a>Hitelesítőadat-olvasó feladat
-Képernyőfelvétel és részletek az alábbi konfiguráláshoz.
- 
-![Hitelesítőadat-képolvasó testreszabása](./media/security-tools/3-taskdetails.png)
 
-Az elérhető lehetőségek a következők: 
-  - **Kimeneti formátum** – TSV/CSV/SARIF/előgyors
-  - **Eszköz verziója** Ajánlott Legújabb
-  - **Scan Folder (mappa vizsgálata** ) – a tárházban a beolvasandó mappa
-  - **Keresők** fájltípusa – beállítások a vizsgálathoz használt keresők kereséséhez.
-  - **Mellőzési fájl** – a rendszer egy [JSON](https://json.org/) -fájlt használ a kimeneti naplóban felmerülő problémák letiltásához (további részleteket az erőforrások szakaszban talál). 
-  - **Részletes kimenet** – magától értetődő 
-  - **Köteg mérete** – a hitelesítőadat-képolvasók párhuzamos futtatásához használt egyidejű szálak száma. Alapértelmezett értéke 20 (az értéknek 1 és 2147483647 között kell lennie).
-  - **Egyeztetési időkorlát** – a kereső egyezésének megkezdéséhez szükséges idő az ellenőrzések elhagyása előtt. 
-  - **Fájl vizsgálata olvasási puffer mérete** – puffer mérete a tartalom bájtban való olvasása közben. (Alapértelmezett értéke 524288) 
-  - **Maximális fájl vizsgálata – olvasási bájt** – a tartalom elemzése során egy adott fájlból beolvasott bájtok maximális száma. (Alapértelmezett értéke 104857600) 
-  - **Feladat futtatása** (a **vezérlési beállítások**alatt) – Megadja, hogy a feladat Mikor fusson. Összetettebb feltételek megadásához válassza az "egyéni feltételek" lehetőséget. 
-  - **Verzió** – felépítési feladat verziója az Azure DevOps-n belül. Nem gyakran használt. 
+A feladat konfigurációjának részletei a következő képernyőképen és listában láthatók.
+
+![A hitelesítőadat-képolvasó felépítési feladatának konfigurálása](./media/security-tools/3-taskdetails.png)
+
+Az elérhető lehetőségek a következők:
+
+  - **Kimeneti formátum**: A rendelkezésre álló értékek a következők: **TSV**, **CSV**, **SARIF**és **előgyors**.
+  - **Eszköz verziója**: Javasoljuk, hogy válassza a **legutóbbi**lehetőséget.
+  - **Vizsgálati mappa**: A beolvasandó adattár mappája.
+  - **Keresők**fájltípusa: A vizsgálathoz használt kereső fájl megkeresésének lehetőségei.
+  - **Mellőzési fájl**: A [JSON](https://json.org/) -fájlok kihagyhatják a kimeneti napló hibáit. A letiltási forgatókönyvekkel kapcsolatos további információkért tekintse meg a jelen cikk gyakori kérdések című szakaszát.
+  - **Részletes kimenet**: Magától értetődő.
+  - **Köteg mérete**: A hitelesítőadat-olvasó futtatásához használt egyidejű szálak száma. Az alapértelmezett értéke 20. A lehetséges értékek 1 és 2 147 483 647 közötti tartományba esnek.
+  - **Egyeztetési időkorlát**: Az az időtartam másodpercben, ameddig a keresőnek meg kell felelnie az ellenőrzések elhagyása előtt.
+  - **Fájl vizsgálata olvasási puffer mérete**: A tartalom olvasásakor használt puffer mérete bájtban megadva. Az alapértelmezett érték a 524 288.  
+  - **Maximális fájl vizsgálatának olvasási bájtjai**: A tartalom elemzése során egy fájlból beolvasott bájtok maximális száma. Az alapértelmezett érték a 104 857 600.
+  - **A vezérlési beállítások** > **a következő feladatot futtatják**: Megadja, hogy a feladat Mikor fusson. Összetettebb feltételek megadásához válassza az **Egyéni feltételek** lehetőséget.
+  - **Verzió**: A felépítési feladat verziója az Azure DevOps-n belül. Ez a beállítás nem gyakran használatos.
 
 ## <a name="microsoft-security-risk-detection-task"></a>Microsoft biztonsági kockázatok észlelése feladat
+
 > [!NOTE]
-> Létre kell hoznia és konfigurálnia kell egy fiókot a kockázati észlelési szolgáltatással, hogy használhassa ezt a feladatot. A szolgáltatáshoz külön bevezetési folyamat szükséges; Ez a bővítmény nem "Plug and Play" típusú, mint a többi feladat. Tekintse meg a [Microsoft biztonsági kockázatok észlelése](https://aka.ms/msrddocs) és [a Microsoft biztonsági kockázatok észlelése: ](https://docs.microsoft.com/security-risk-detection/how-to/) Útmutató az utasításokhoz.
+> A MSRD feladat használata előtt létre kell hoznia és konfigurálnia kell egy fiókot a Microsoft biztonsági kockázatok észlelése (MSRD) szolgáltatással. A szolgáltatáshoz külön előkészítési folyamat szükséges. A bővítmény legtöbb más feladatával ellentétben ehhez a feladathoz külön előfizetésre van szükség a MSRD.
+>
+> Tekintse meg a [Microsoft biztonsági kockázatok észlelése](https://aka.ms/msrddocs) és [a Microsoft biztonsági kockázatok észlelése: ](https://docs.microsoft.com/security-risk-detection/how-to/) Útmutató az utasításokhoz.
 
-Az alábbi konfigurálás részletei.
+A feladat konfigurálásának részletei az alábbi listában láthatók. Bármely felhasználói felületi elemhez rákattinthat erre az elemre, ha segítségre van szüksége.
 
-Adja meg a szükséges adatértékeket; minden beállításhoz a hover Text súgója tartozik.
-   - **Az Azure DevOps szolgáltatás végpontjának neve a MSRD**: Ha létrehozta az Azure DevOps Service-végpont általános típusát a MSRD-példány URL-címének (a bevezetéséhez) és a REST API hozzáférési jogkivonat tárolásához, akkor a szolgáltatási végpontot is kiválaszthatja. Ha nem, a kezelés hivatkozásra kattintva hozzon létre és konfiguráljon egy új szolgáltatási végpontot ehhez a MSRD-feladathoz. 
-   - **Fiókazonosító**: Ez egy GUID, amely a MSRD-fiók URL-címéből kérhető le.
-   - **Bináris fájlok URL-címei**: A nyilvánosan elérhető URL-címek pontosvesszővel tagolt listája (amelyet a fuzzy gép a bináris fájlok letöltéséhez használ).
-   - **A vetőmag-fájlok URL-címei**: A nyilvánosan elérhető URL-címek pontosvesszővel tagolt listája (amelyet a rendszer a fuzzy gép a magok letöltéséhez használ). Ez a mező nem kötelező, ha a magok fájljai a bináris fájlokkal együtt letöltődnek.
-   - **Operációsrendszer-platform típusa**: A számítógép operációsrendszer-platformjának típusa (Windows vagy Linux), amelyen a Fuzzing feladatot futtatni kívánja.
-   - **Windows Edition/Linux kiadás**: Azon gépek operációsrendszer-kiadása, amelyeken a Fuzzing feladatot futtatni kívánja. Ha a gépek eltérő operációsrendszer-kiadással rendelkeznek, felülírhatja az alapértelmezett értéket.
-   - **Csomag telepítési parancsfájlja**: Adja meg a tesztelési gépen futtatni kívánt parancsfájlt a tesztkörnyezet és a függőségeinek a zavaros feladatok elküldése előtt történő telepítéséhez.
+   - **Az Azure DevOps szolgáltatás végpontjának neve a MSRD**: Az Azure DevOps Service-végpont általános típusa tárolja a betárolt MSRD-példány URL-címét és a REST API hozzáférési tokenjét. Ha létrehozott egy ilyen végpontot, itt adhatja meg. Ellenkező esetben válassza a **kezelés** hivatkozást, hogy új szolgáltatási végpontot hozzon létre és konfiguráljon ehhez a MSRD feladathoz.
+   - **Fiókazonosító**: Egy GUID, amely a MSRD-fiók URL-címéből kérhető le.
+   - **Bináris fájlok URL-címei**: Nyilvánosan elérhető URL-címek pontosvesszővel tagolt listája. A fuzzy számítógép ezeket az URL-eket használja a bináris fájlok letöltéséhez.
+   - **A vetőmag-fájlok URL-címei**: Nyilvánosan elérhető URL-címek pontosvesszővel tagolt listája. A fuzzy számítógép ezeket az URL-címeket használja a magok letöltéséhez. Az érték megadása nem kötelező, ha a magok fájljai a bináris fájlokkal együtt letöltődnek.
+   - **Operációsrendszer-platform típusa**: A zavaros feladatot futtató gépek operációs rendszerének platformja. Az elérhető értékek a **Windows** és a **Linux**.
+   - **Windows Edition/Linux kiadás**: A zavaros feladatot futtató gépek operációsrendszer-kiadása. Ha a gépek eltérő operációsrendszer-kiadással rendelkeznek, felülírhatja az alapértelmezett értéket.
+   - **Csomag telepítési parancsfájlja**: A tesztelési gépen futtatandó szkript. Ez a szkript telepíti a tesztelési célként megadott programot és annak függőségeit a zavaros feladatok elküldése előtt.
    - **Feladatok küldésének paraméterei**:
-       - **Vetőmag könyvtára**: A magot tartalmazó fuzzy számítógép könyvtárának elérési útja.
-       - **Vetőmag-kiterjesztés**: A magok fájlkiterjesztés
-       - **Tesztelési illesztőprogram végrehajtható fájlja**: A cél végrehajtható fájl elérési útja a fuzzy számítógépen.
-       - **Illesztőprogram-végrehajtható fájl tesztelési architektúrája**: A cél végrehajtható fájl architektúrája (x86 vagy amd64).
-       - **Tesztelési illesztőprogram argumentumai**: A tesztelési cél végrehajtható fájljába átadott parancssori argumentumok. Vegye figyelembe, hogy a (z) "% TESTFILE%" szimbólumot, beleértve az idézőjeleket is, automatikusan lecseréli a célfájl teljes elérési útjára, amelyet a teszt illesztőprogramnak el kell elemezni, és szükség van rá.
-       - Teszt **befejezése után a teszt-illesztőprogram folyamata kilép**: Ellenőrizze, hogy befejeződött-e a tesztelési illesztőprogram befejezése; Törölje a jelet, ha a teszt illesztőprogramjának kényszerített lezártnak kell lennie.
-       - **Maximális időtartam (másodperc)** : Adja meg annak a leghosszabb ésszerű várható időtartamnak a becslését, amely szükséges ahhoz, hogy a program egy bemeneti fájlt elemezzen. Minél pontosabb ez a becslés, annál hatékonyabb a zavaros Futtatás.
-       - **A tesztelési illesztőprogram többször is futtatható**: Ellenőrizze, hogy a tesztelési illesztőprogram többször is futtatható-e a megőrzött/megosztott globális állapottól függően.
-       - **A tesztelési illesztőprogram átnevezhető**: Ellenőrizze, hogy a teszt-illesztőprogram végrehajtható fájlja átnevezhető-e, és hogy továbbra is megfelelően működik-e.
-       - **A Fuzzing alkalmazás egyetlen operációsrendszer-folyamatként fut**: Ellenőrizze, hogy a tesztelési illesztőprogram egyetlen operációsrendszer-folyamat alatt fut-e; Törölje a jelölést, ha a teszt-illesztőprogram további folyamatokat indít el.
-
+       - **Vetőmag könyvtára**: A magot tartalmazó, a kitalált számítógép könyvtárának elérési útja.
+       - **Vetőmag-kiterjesztés**: A magok fájlnév-kiterjesztése.
+       - **Tesztelési illesztőprogram végrehajtható fájlja**: A megcélzott végrehajtható fájl elérési útja a zavaros gépen.
+       - **Illesztőprogram-végrehajtható fájl tesztelési architektúrája**: A célként megadott végrehajtható fájl architektúrája. Az elérhető értékek: **x86** és **amd64**.
+       - **Tesztelési illesztőprogram argumentumai**: A teszt végrehajtható fájlnak átadott parancssori argumentumok. A (z) "% TESTFILE%" argumentumot, beleértve az idézőjeleket is, a rendszer automatikusan a célfájl teljes elérési útjára cseréli. Ezt a fájlt a tesztelési illesztőprogram elemzi, és kötelező megadni.
+       - Teszt **befejezése után a teszt-illesztőprogram folyamata kilép**: Jelölje be ezt a jelölőnégyzetet, ha a teszt illesztőprogramját a befejezés után meg kell szakítani. Törölje a jelölést, ha a teszt illesztőprogramjának kényszerített lezártnak kell lennie.
+       - **Maximális időtartam (másodperc)** : A megcélzott program által a bemeneti fájl elemzéséhez szükséges leghosszabb várható időtartam becslése. Minél pontosabb a becslés, annál hatékonyabban fut a zavaros alkalmazás.
+       - **A tesztelési illesztőprogram többször is futtatható**: Jelölje be ezt a jelölőnégyzetet, ha a tesztelési illesztőprogram egy állandó vagy közös globális állapottól függően többször is futtatható.
+       - **A tesztelési illesztőprogram átnevezhető**: Jelölje be ezt a jelölőnégyzetet, ha a teszt-illesztőprogram végrehajtható fájlja átnevezhető, és továbbra is megfelelően működik.
+       - **A Fuzzing alkalmazás egyetlen operációsrendszer-folyamatként fut**: Jelölje be ezt a jelölőnégyzetet, ha a tesztelési illesztőprogram egyetlen operációsrendszer-folyamat alatt fut. Törölje, ha a teszt-illesztőprogram további folyamatokat indít el.
 
 ## <a name="roslyn-analyzers-task"></a>A-elemzők feladata
-> [!NOTE]
-> A következő feltételeknek kell megfelelnie, hogy a-hoz szükséges a a-hoz tartozó-elemző feladat futtatása.
->  - A Build definíciója tartalmazza a beépített MSBuild vagy VSBuild Build feladatot a fordítási C# (vagy VB) kód létrehozásához. Ez a feladat az adott felépítési feladat bemenetére és kimenetére támaszkodik az MSBuild-fordítás ismételt futtatásához.
->  - A Build feladatot futtató Build ügynök rendelkezik a Visual Studio 2017 v 15.5 vagy újabb verzióval (a fordítóprogram 2.6. x verziója).
->
-
-Az alábbi konfigurálás részletei.
-
-Az elérhető lehetőségek a következők: 
-- **Szabályrendszert** – az SDL szükséges, az SDL használatát ajánljuk, vagy használhat saját egyéni szabályokat is.
-- **Elemző verziója** Ajánlott Legújabb
-- **Fordítói figyelmeztetések mellőzése fájl** – egy szöveges fájl, amely a figyelmeztetések azonosítóinak listáját tartalmazza, amelyeket le kell tiltani. 
-- **Feladat futtatása** (a **vezérlési beállítások**alatt) – Megadja, hogy a feladat Mikor fusson. Összetettebb feltételek megadásához válassza az "**Egyéni feltételek**" lehetőséget. 
 
 > [!NOTE]
-> - A a a fordító-elemzők a fordítóprogramok integráltak, és csak a CSC. exe összeállításának részeként futtathatók. Ezért ehhez a feladathoz a buildben korábban futtatott fordítói parancs újrajátszása/újrafuttatása szükséges. Ezt az MSBuild Build VSTS lekérdezésével végezheti el (a feladatnak nincs más módja arra, hogy megbízhatóan lekérje az MSBuild fordítási parancssort a Build-definícióból. a Szabadkézi szövegmező hozzáadásával lehetővé teheti a felhasználók számára a parancssorok megadását. , de nehéz lenne ezeket naprakészen tartani és szinkronizálni a fő buildtel. Az egyéni buildek esetében a parancsok teljes készletét újra le kell játszani, nem csak a fordítóprogram parancsait, és ez nem triviális/megbízható ahhoz, hogy ezekben az esetekben engedélyezzék a következőt:. 
-> - A a a fordítóval integrált, és a fordítás meghívása szükséges. Ez a felépítési feladat olyan projektek újrafordításával C# valósul meg, amelyek már csak az MSBuild/VSBuild Build feladattal lettek felépítve, ugyanabban az összeállítási/összeállítási definícióban, de ebben az esetben az elemzők engedélyezve vannak. Ha ez a felépítési feladat az eredeti felépítési feladattal megegyező ügynökön fut, az eredeti MSBuild/VSBuild felépítési feladat kimenete felül lesz írva a "Sources" mappában a Build feladat kimenete alapján. A Build kimenete azonos lesz, de javasoljuk, hogy futtassa az MSBuild-t, másolja a kimenetet az összetevők átmeneti könyvtárába, majd futtassa a következőt:.
+> A (z) létrehozásához a következő feltételeknek kell megfelelnie:
+> - A Build definíciója tartalmazza a beépített MSBuild vagy VSBuild felépítési feladatot a kód fordításához C# vagy Visual Basicához. Az elemzők tevékenység a beépített feladat bemenetére és kimenetére támaszkodik, hogy az MSBuild-fordítást a (z) és a (z) által engedélyezett, a (z).
+> - Az ezt az összeállítási feladatot futtató Build ügynök rendelkezik a Visual Studio 2017 15,5-es vagy újabb verziójával, hogy az a fordító 2,6-es vagy újabb verzióját használja.
+
+A feladatok konfigurációjának részletei a következő listában láthatók, és Megjegyzés:.
+
+Az elérhető lehetőségek a következők:
+
+- **Szabályrendszert**: Az értékek: **SDL szükséges**, **SDL ajánlott**, vagy a saját egyéni szabálykészlet.
+- **Elemző verziója**: Javasoljuk, hogy válassza a **legutóbbi**lehetőséget.
+- **Fordítói figyelmeztetések mellőzése fájl**: A letiltott figyelmeztetések azonosítóit tartalmazó szövegfájl.
+- **A vezérlési beállítások** > **a következő feladatot futtatják**: Megadja, hogy a feladat Mikor fusson. Összetettebb feltételek megadásához válassza az **Egyéni feltételek** lehetőséget.
+
+> [!NOTE]
+> - A a a fordítóval integrált, és csak a CSC. exe összeállítás részeként futtatható. Ezért ehhez a feladathoz a fordításban korábban futtatott fordítói parancsnak újra kell játszania vagy újra futnia. Ezt a lekérést vagy futtatást a Visual Studio Team Services (VSTS) lekérdezésével végezheti el az MSBuild Build feladat naplóihoz.
 >
+>   Nincs más mód arra, hogy a feladat megbízhatóan lekérje az MSBuild fordítási parancssort a Build definícióból. Egy Szabadkézi szövegmező hozzáadásával engedélyezte a felhasználóknak a parancssorok megadását. Azonban nehéz lenne ezeket a parancssori vonalakat naprakészen tartani, és szinkronizálni a fő buildtel.
+>
+>   Az egyéni buildek használatához a parancsok teljes készletét kell visszajátszani, nem csak a fordítóprogram parancsait. Ezekben az esetekben a nem triviális vagy a megbízható adatelemzők engedélyezése.
+>
+> - A a a fordítóval integrált a-elemzők. Ahhoz, hogy meghívja a meghívást, a (a "a" és a "szükséges
+>
+>   Ez az új felépítési feladat a már létrehozott C# projektek újrafordításával valósul meg. Az új feladat csak az MSBuild és a VSBuild felépítési feladatokat használja az eredeti feladattal azonos Build vagy Build definícióban. Ebben az esetben azonban az új feladat a a következővel rendelkező, a-t használó, a és a.
+>
+>   Ha az új feladat az eredeti feladattal megegyező ügynökön fut, az új tevékenység kimenete felülírja az eredeti feladat kimenetét az *s* Sources mappában. Bár a Build kimenete azonos, javasoljuk, hogy futtassa az MSBuild-et, másolja a kimenetet az összetevők előkészítési könyvtárába, majd futtassa a következőt:.
 
-További források a (z) [Microsoft docs](https://docs.microsoft.com/dotnet/standard/analyzers/)
+Ha további erőforrásokat kíván felderíteni a (z)-elemzők feladathoz, tekintse meg a Microsoft Docs-on végzett, a [-alapú elemzéseket](https://docs.microsoft.com/dotnet/standard/analyzers/) .
 
-A Build feladat által telepített és használt Analyzer-csomag [itt](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers) található 
+A Build feladat által telepített és használt Analyzer-csomag a [Microsoft. CodeAnalysis. FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers)NuGet oldalon található.
 
 ## <a name="tslint-task"></a>TSLint feladat
 
-További információ a TSLint-ről: [TSLint GitHub](https://github.com/palantir/tslint) -tárház
+A TSLint kapcsolatos további információkért nyissa meg a [TSLint GitHub](https://github.com/palantir/tslint)-tárházat.
+
 >[!NOTE] 
->Az is előfordulhat, hogy a TSLint egy ideig elavulttá válik a 2019-as verzióban (forrás: [TSLint GitHub](https://github.com/palantir/tslint)-adattár) A csapat jelenleg a [ESLint](https://github.com/eslint/eslint) vizsgálja, és egy új feladatot hoz létre a ESLint-hez az ütemtervben.
+>Az is előfordulhat, hogy a [TSLint GitHub](https://github.com/palantir/tslint) -tárház kezdőlapja azt állítja be, hogy a TSLint valamikor elavulttá válik a 2019-as verzióban. A Microsoft a [ESLint](https://github.com/eslint/eslint) vizsgálja alternatív feladatként.
 
 ## <a name="publish-security-analysis-logs-task"></a>Biztonsági elemzési naplók közzététele feladat
-Képernyőfelvétel és részletek az alábbi konfiguráláshoz.
 
-![A közzétételi biztonsági elemzés testreszabása](./media/security-tools/9-publish-security-analsis-logs600.png)  
+A feladat konfigurációjának részletei a következő képernyőképen és listában láthatók.
 
-- Összetevő **neve** – bármely karakterlánc-azonosító lehet
-- Összetevő **típusa** – a naplókat közzéteheti az Azure-DevOps-kiszolgálóra vagy egy olyan fájlmegosztás számára, amely elérhető a Build ügynök számára. 
-- **Eszközök** – dönthet úgy, hogy megőrzi a naplókat az egyes/meghatározott eszközökhöz, vagy kiválasztja az **összes eszközt** az összes napló megőrzéséhez. 
+![A biztonsági elemzési naplók közzétételének beállítása feladat konfigurálása](./media/security-tools/9-publish-security-analsis-logs600.png)  
+
+- Összetevő **neve**: Bármely karakterlánc-azonosító.
+- Összetevő **típusa**: A kiválasztástól függően közzéteheti a naplókat az Azure DevOps-kiszolgálóra vagy egy olyan megosztott fájlba, amely elérhető a Build-ügynök számára.
+- **Eszközök**: Dönthet úgy is, hogy megőrzi a naplókat az egyes eszközökön, vagy kiválaszthatja az összes **eszközt** az összes napló megőrzéséhez.
 
 ## <a name="security-report-task"></a>Biztonsági jelentés feladata
-Képernyőfelvétel és részletek az alábbi konfiguráláshoz.  
-![Telepítés utáni elemzés](./media/security-tools/4-createsecurityanalysisreport600.png) 
-- **Jelentések** – a létrehozandó jelentési fájlok kiválasztása; az egyik minden formátum-konzolban, **TSV**-ben és/vagy **HTML** -ben jön létre 
-- **Eszközök** – válassza ki a Build-definícióban szereplő eszközöket, amelyekhez az észlelt problémák összegzését szeretné. Minden kiválasztott eszköz esetében lehetőség van annak kiválasztására, hogy csak a hibákat, illetve a jelentésben szereplő hibákat és figyelmeztetéseket szeretné-e látni. 
-- **Speciális beállítások** – megadhatja, hogy a rendszer figyelmeztetést vagy hibát (a feladat elvégzését) naplózza-e, ha nincsenek naplók a kiválasztott eszközök valamelyikéhez.
-Testreszabhatja az alapnaplók mappát, ahol a naplók találhatók, de ez nem egy tipikus forgatókönyv. 
+
+A biztonsági jelentések konfigurációjának részletei a következő képernyőképen és listában láthatók.
+
+![A biztonsági jelentés létrehozási feladatának konfigurálása](./media/security-tools/4-createsecurityanalysisreport600.png)
+
+- **Jelentések**: Válassza ki a **folyamat konzolját**, a **TSV-fájlt**és a **HTML** -fájlformátumot. Minden kiválasztott formátumhoz létrejön egy jelentési fájl.
+- **Eszközök**: Válassza ki azokat az eszközöket a Build-definícióban, amelyekhez az észlelt problémákat szeretné összefoglalni. Minden kiválasztott eszköz esetében lehetőség van kijelölni, hogy csak a hibák jelennek-e meg, vagy az összegző jelentésben a hibák és a figyelmeztetések láthatók.
+- **Speciális beállítások**: Ha nincsenek naplók az egyik kiválasztott eszközhöz, dönthet úgy, hogy bejelentkezik egy figyelmeztetés vagy egy hiba. Ha hibát naplóz, a feladat meghiúsul.
+- **Alapnaplók mappa**: Testreszabhatja az alapnaplók mappát, ahol a naplók találhatók. Ez a beállítás azonban általában nincs használatban.
 
 ## <a name="post-analysis-task"></a>Az elemzést követő feladat
-Képernyőfelvétel és részletek az alábbi konfiguráláshoz.
 
-![Az elemzések testreszabása](./media/security-tools/a-post-analysis600.png) 
-- **Eszközök** – válassza ki azokat az eszközöket a Build-definícióban, amelyekhez az eredmények alapján létre kíván adni egy összeállítási megszakítást. Minden kiválasztott eszköz esetében lehetőség van annak kiválasztására, hogy csak a hibákat, illetve a hibákat és a figyelmeztetéseket szeretné-e megszakítani. 
-- **Jelentés** – megadhatja a talált eredményeket, és a Build-töréspontot felhasználhatja az Azure DevOps-konzol ablakába és a naplófájlba. 
-- **Speciális beállítások** – megadhatja, hogy a rendszer figyelmeztetést vagy hibát (a feladat elvégzését) naplózza-e, ha nincsenek naplók a kiválasztott eszközök valamelyikéhez.
+A feladat konfigurációjának részletei a következő képernyőképen és listában láthatók.
+
+![Az elemzés utáni Build feladat konfigurálása](./media/security-tools/a-post-analysis600.png)
+
+- **Eszközök**: Válassza ki azokat az eszközöket a Build-definícióban, amelyekhez feltételesen szeretne beszúrni egy Build-megszakítást. Minden kiválasztott eszköz esetében lehetőség van annak kiválasztására, hogy csak a hibákat vagy a hibákat és a figyelmeztetéseket kívánja-e megszakítani.
+- **Jelentés**: Igény szerint megírhatja a létrehozási megszakítást okozó eredményeket. Az eredmények az Azure DevOps-konzol ablakába és a naplófájlba íródnak.
+- **Speciális beállítások**: Ha nincsenek naplók az egyik kiválasztott eszközhöz, dönthet úgy, hogy bejelentkezik egy figyelmeztetés vagy egy hiba. Ha hibát naplóz, a feladat meghiúsul.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha további kérdései vannak a bővítményről és a rendelkezésre álló eszközökről, tekintse meg a [Gyakori kérdések oldalát.](security-code-analysis-faq.md)
-
-
+Ha további kérdése van a biztonsági kód elemzési bővítménnyel és a rendelkezésre álló eszközökkel kapcsolatban, tekintse meg a [Gyakori kérdések oldalát](security-code-analysis-faq.md).

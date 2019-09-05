@@ -5,15 +5,15 @@ ms.service: cosmos-db
 author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: a997f1d0fd304b43f56953c51e6a8944a4c93ce0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.date: 08/01/2019
+ms.openlocfilehash: 70f3471b22027bbf5ece87897e678370767f6743
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257188"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717079"
 ---
-# <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Az Azure Cosmos DB: Lambda architektúra megvalósítása az Azure platformon 
+# <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Az Azure Cosmos DB: Lambda-architektúra implementálása az Azure platformon 
 
 Lambda architektúra nagy adatkészletek hatékony adatfeldolgozó engedélyezése. Lambda architektúra kötegelt feldolgozási, az adatfolyam-feldolgozás és a egy kiszolgálórétegbe használja a big Data típusú adatok lekérdezése részt a késés minimalizálása érdekében. 
 
@@ -59,7 +59,7 @@ Ezek a rétegek fontos:
  4. A **gyors réteg** HDInsight (az Apache Spark), olvassa el az Azure Cosmos DB-módosítási hírcsatorna használja. Ez lehetővé teszi, hogy továbbra is fennáll, valamint az adatok lekérdezése és a egy időben feldolgozni azt.
  5. Az összes lekérdezés batch nézetek és a valós idejű nézetek vagy a pingelés őket egyenként példányösszevonás eredmények alapján választ.
  
-### <a name="code-example-spark-structured-streaming-to-an-azure-cosmos-db-change-feed"></a>Példa: A Spark strukturált streamelés, egy Azure Cosmos DB – csatorna módosítása
+### <a name="code-example-spark-structured-streaming-to-an-azure-cosmos-db-change-feed"></a>Kód példa: Spark strukturált streaming Azure Cosmos DB változási csatornához
 Futtatásához az Azure Cosmos DB változáscsatorna részeként egy gyors prototípust a **gyors réteg**, Twitter-adatok használatával részeként ki tesztelheti a [Stream feldolgozása módosításait az Azure Cosmos DB módosítása hírcsatorna és Apache Spark](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)példa. Indítsa be a Twitter-kimenetben, lásd a Kódmintát [Cosmos DB-hez a Twitter hírcsatorna Stream](https://github.com/tknandu/TwitterCosmosDBFeed). Az előző példában a Twitter-adatok tölt be az Azure Cosmos DB-be, és ezután beállíthat a HDInsight (az Apache Spark-) fürthöz való csatlakozáshoz a változáscsatorna. Ez a konfiguráció beállítása a további információkért lásd: [Apache Spark az Azure Cosmos DB-összekötő telepítése](https://github.com/Azure/azure-cosmosdb-spark/wiki/Spark-to-Cosmos-DB-Connector-Setup).  
 
 A következő kódrészletet bemutatja, hogyan konfigurálhatja `spark-shell` strukturált folyamatos átviteli feladatok futtatásához szeretne csatlakozni egy Azure Cosmos DB változáscsatorna, amely áttekinti a valós idejű Twitter data stream futtatásának időköz száma végrehajtásához.
@@ -103,7 +103,7 @@ További információ az Azure Cosmos DB módosításcsatornáját, lásd:
 
 * [A módosítási hírcsatorna támogatása az Azure Cosmos DB használata](change-feed.md)
 * [Bemutatkozik az Azure cosmos DB-módosítási hírcsatorna feldolgozói kódtára](https://azure.microsoft.com/blog/introducing-the-azure-cosmosdb-change-feed-processor-library/)
-* [A Stream feldolgozni a módosításokat: Az Azure cosmos DB-módosítási hírcsatorna + Apache Spark](https://azure.microsoft.com/blog/stream-processing-changes-azure-cosmosdb-change-feed-apache-spark/)
+* [Adatfolyam-feldolgozás változásai: Azure CosmosDB-változási hírcsatorna + Apache Spark](https://azure.microsoft.com/blog/stream-processing-changes-azure-cosmosdb-change-feed-apache-spark/)
 
 ## <a name="batch-and-serving-layers"></a>Batch- és szolgálja ki a Rétegek
 Mivel az új adatok betöltése az Azure Cosmos DB (ahol a módosítási hírcsatorna használatos a gyors réteg), ez hol van a **fő adatkészletet** (egy nem módosítható, csak hozzáfűzése nyers adatok készletét) található. Innentől kezdve használni (az Apache Spark) HDInsight előtti számítási feladatait a **kötegelt réteg** való **kiszolgálórétegbe**, ahogy az alábbi képen látható:
@@ -118,7 +118,7 @@ Ezek a rétegek fontos:
  4. A **gyors réteg** Ez a cikk későbbi részében olvashat.
  5. Az összes lekérdezés eredményeinek valós idejű és a batch-nézeteket az egyesítés vagy külön-külön ping paranccsal választ.
 
-### <a name="code-example-pre-computing-batch-views"></a>Példa: Előre számítási batch-nézetek
+### <a name="code-example-pre-computing-batch-views"></a>Kód példa: Előre számítástechnikai batch-nézetek
 Hogyan hajtható végre előre számított nézeteinek bemutatására a **fő adatkészletet** Apache Spark az Azure Cosmos DB, használja az alábbi kódrészletek az a notebookok [Lambda architektúra Rearchitected - kötegelt réteg ](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) és [Lambda architektúra Rearchitected - köteg réteg szolgáltató](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb). Ebben a forgatókönyvben az Azure Cosmos DB-ben tárolt Twitter-adatok használata.
 
 Először hozzon létre a konfigurációs kapcsolat, a Twitter-adatok az Azure Cosmos DB az alábbi PySpark-kód használatával.
@@ -240,7 +240,7 @@ var streamingQuery = streamingQueryWriter.start()
 
 ```
 
-## <a name="lambda-architecture-rearchitected"></a>Lambda architektúra: Rearchitected
+## <a name="lambda-architecture-rearchitected"></a>Lambda architektúra: Újraépítész
 Az előző szakaszokban leírtaknak egyszerűsítheti az eredeti lambda architektúra a következő összetevők használatával:
 * Azure Cosmos DB
 * Az Azure Cosmos DB módosítási hírcsatorna Library elkerülése érdekében a csoportos küldésre kell az adatokat a batch- és sebesség rétegek között
@@ -258,12 +258,12 @@ Ez a kialakítás a két felügyelt szolgáltatások, az Azure Cosmos DB és a H
 
 ### <a name="resources"></a>További források
 
-* **Az új adatok**: A [a cosmosdb-be a Twitter hírcsatorna stream](https://github.com/tknandu/TwitterCosmosDBFeed), amely az új adatok leküldése az Azure Cosmos DB-be való mechanizmusa.
-* **Kötegelt réteg:** A kötegelt réteg áll, amelyek a *fő adatkészletet* (egy nem módosítható, csak hozzáfűzése nyers adatok készletét), és előre a batch nézeteket, amelyek leküldéssel kerülnek az adatok számítási lehetővé teszi a **kiszolgálórétegbe**.
+* **Új**adatértékek: A [stream](https://github.com/tknandu/TwitterCosmosDBFeed)a Twitterről a CosmosDB, amely az új adatok Azure Cosmos DBba való leküldésének mechanizmusa.
+* **Batch-réteg:** A Batch-réteg a *fő* adatkészletből (a nyers adatok nem módosítható, csak Hozzáfűzéses készletből) áll, és lehetővé teszi, hogy előre kiszámítsa a Batch-nézeteket a kiszolgáló **rétegbe**küldött adatokból.
    * A **Lambda architektúra Rearchitected - kötegelt réteg** notebook [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) lekérdezések a *fő adatkészletet* batch-nézetek készlete.
-* **Kiszolgálórétegbe:** A **kiszolgálórétegbe** áll előre kiszámított adatok kötegelt nézeteket (például összesítések, adott szeletelők, stb.) gyors lekérdezéseket eredményez.
+* **Kiszolgáló létrehozása:** A **kiszolgáló réteg** előre kiszámított adatokból áll, amelyek a gyors lekérdezések esetében a kötegelt nézeteket (például összesítéseket, specifikus szeletelőket stb.) eredményezik.
   * A **Lambda architektúra Rearchitected - kötegelt réteg szolgáltató** notebook [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) a batch-adatokat leküldi az kiszolgálórétegbe a; azt jelenti, Spark- lekérdezi a tweeteket batch gyűjteménye, dolgozza fel, és tárolja azokat egy másik gyűjteménybe (számított batch).
-    * **Gyors réteg:** A **gyors réteg** szintből áll, a Spark használatával az Azure Cosmos DB változáscsatorna, olvassa el, és azonnal reagálhat rájuk. Az adatok is menthetők *RT számított* úgy, hogy más rendszerek lekérdezheti a feldolgozott valós idejű adatokat figyelésekor fut egy valós idejű lekérdezési magukat.
+    * **Sebesség réteg:** A **sebesség réteg** a sparkból áll, amely a Azure Cosmos db változási hírcsatornát használja az olvasáshoz, és azonnal intézkedik. Az adatok is menthetők *RT számított* úgy, hogy más rendszerek lekérdezheti a feldolgozott valós idejű adatokat figyelésekor fut egy valós idejű lekérdezési magukat.
   * A [adatfolyam-lekérdezést az, Cosmos DB módosítása hírcsatorna](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) scala parancsfájl végrehajtja a streamelési lekérdezést a Azure Cosmos DB-Váltás az intervallum száma a spark-shell a compute-hírcsatorna.
   * A [címkék lekérdezése Streamelési Cosmos DB módosítása hírcsatorna](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala) scala parancsfájl végrehajtja a streamelési lekérdezést az Azure Cosmos DB változáscsatorna számítási-címkéket a spark-shell az intervallum száma.
   
