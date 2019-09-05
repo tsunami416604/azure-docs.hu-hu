@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 0ae82f8980b995edab3419374e27a2cb905935d5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9d242c48068e96498a811f52dbc599abd32bc936
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099500"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383003"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>Azure IoT Central-alkalmazás létrehozása (előzetes verziójú funkciók)
 
@@ -36,17 +36,17 @@ Egy új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassz
 Új Azure IoT Central-alkalmazás létrehozása, amely tartalmazza az előzetes verziójú funkciókat, például a IoT Plug and Play:
 
 1. Válassza ki a fizetési konstrukciót:
-   - A próbaverziós alkalmazások érvényessége hét napig ingyenes. A lejárat előtt bármikor átalakíthatók használatalapú fizetéses alkalmazássá. Ha létrehoz egy **próbaverziós** alkalmazást, meg kell adnia a kapcsolattartási adatait, és el kell döntenie, hogy szeretne-e információkat és tippeket kapni a Microsofttól.
-   - Az utólagos elszámolású alkalmazások számlázása eszközönként történik, és az első öt eszköz díjmentes. Ha utólagos elszámolású alkalmazást hoz létre, ki kell választania a *címtárat*, az Azure- *előfizetést*és a *régiót*:
+   - A **próbaverziós** alkalmazások érvényessége hét napig ingyenes. A lejárat előtt bármikor átalakíthatók használatalapú fizetéses alkalmazássá. Ha létrehoz egy **próbaverziós** alkalmazást, meg kell adnia a kapcsolattartási adatait, és el kell döntenie, hogy szeretne-e információkat és tippeket kapni a Microsofttól.
+   - Az **utólagos elszámolású alkalmazások** számlázása eszközönként történik, és az első öt eszköz díjmentes. Ha **utólagos elszámolású alkalmazást hoz** létre, ki kell választania a *címtárat*, az Azure- *előfizetést*és a *régiót*:
       - Az alkalmazás létrehozásához a *könyvtár* a Azure Active Directory (ad). Felhasználói identitásokat, hitelesítő adatokat és egyéb szervezeti információkat tartalmaz. Ha még nem rendelkezik Azure AD-vel, akkor létrejön egy Azure-előfizetés létrehozásakor.
       - Az *Azure-előfizetéssel* Azure-szolgáltatások példányait hozhatja létre. Az előfizetésben lévő erőforrásokat az IoT Central osztja ki. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet az [Azure regisztrációs lapján](https://aka.ms/createazuresubscription). Az Azure-előfizetés létrehozása után lépjen vissza az **alkalmazás-létrehozási** lapra. Az új előfizetése megjelenik az **Azure-előfizetések** legördülő menüjében.
-      - A *régió* az a fizikai hely, ahol létre szeretné hozni az alkalmazást. Általában az eszközökhöz legközelebb eső régiót kell kiválasztania az optimális teljesítmény eléréséhez. Megtekintheti azokat a régiókat, amelyekben az Azure IoT Central elérhető a régiók oldalon [elérhető termékek területen](https://azure.microsoft.com/regions/services/) . Miután kiválasztott egy régiót, később nem helyezheti át az alkalmazást egy másik régióba.
+      - A *régió* az a fizikai hely, ahol létre szeretné hozni az alkalmazást. A nyilvános előzetes verzióban az **előzetes verziójú alkalmazások** egyetlen elérhető régiói **Észak-Európa** és az **USA középső**régiója.
 
       További információk a díjszabásról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/) találhatók.
 
 1. Válasszon egy rövid alkalmazásnevet, például a **Contoso IoT** nevet. Az Azure IoT Central létrehoz egy egyéni URL-előtagot. Ezt az URL-előtagot egy könnyebben megjegyezhető előtagra módosíthatja.
 
-1. Válassza ki az előnézeti **alkalmazás** sablonját. Az alkalmazássablon előre megadott elemeket, például eszközsablonokat és irányítópultokat tartalmazhat, amelyek segítséget nyújtanak az első lépésekhez.
+1. Válassza ki az **előnézeti alkalmazás** sablonját. Az alkalmazássablon előre megadott elemeket, például eszközsablonokat és irányítópultokat tartalmazhat, amelyek segítséget nyújtanak az első lépésekhez.
 
 1. A lap alján kattintson a **Létrehozás** gombra.
 

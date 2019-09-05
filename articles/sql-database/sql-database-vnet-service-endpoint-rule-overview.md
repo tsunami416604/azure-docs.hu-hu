@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: 8948a0fe6112df0d29c0f04685dadbd379a4a382
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d924f0eb89984fbe77f94eff553d00a25b4b7a3a
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098924"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309616"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Virtuális hálózati szolgáltatási végpontok és az adatbázis-kiszolgálók szabályainak használata
 
@@ -72,8 +72,6 @@ Használhat [szerepköralapú hozzáférés-vezérlést (RBAC)][rbac-what-is-813
 
 Azure SQL Database esetében a virtuális hálózati szabályok funkció a következő korlátozásokkal rendelkezik:
 
-- A webalkalmazások egy VNet/alhálózat magánhálózati IP-címére képezhetők le. Még ha a szolgáltatási végpontok be vannak kapcsolva a megadott VNet/alhálózatból, akkor a webalkalmazás és a kiszolgáló közötti kapcsolatok Azure nyilvános IP-címmel rendelkeznek, nem VNet/alhálózat-forrásként. Ha egy webalkalmazás kapcsolatát szeretné engedélyezni egy olyan kiszolgálóra, amely VNet rendelkezik, engedélyeznie kell az **Azure-szolgáltatások számára** a kiszolgáló elérését a kiszolgálón.
-
 - A SQL Database tűzfalában minden egyes virtuális hálózati szabály egy alhálózatra hivatkozik. Az összes hivatkozott alhálózatnak ugyanabban a földrajzi régióban kell lennie, amely a SQL Database üzemelteti.
 
 - Minden Azure SQL Database-kiszolgáló legfeljebb 128 ACL-bejegyzést tartalmazhat bármely adott virtuális hálózathoz.
@@ -91,7 +89,7 @@ Azure SQL Database esetében a virtuális hálózati szabályok funkció a köve
 
 Ha Azure SQL Database szolgáltatási végpontokat használ, tekintse át a következő szempontokat:
 
-- **Azure SQL Database nyilvános IP-címekre való kimenő forgalom kötelező**: A kapcsolat engedélyezéséhez meg kell nyitni a hálózati biztonsági csoportokat (NSG) Azure SQL Database IP-címekre. Ezt a Azure SQL Database NSG-szolgáltatásának [címkéi](../virtual-network/security-overview.md#service-tags) segítségével teheti meg.
+- **Azure SQL Database nyilvános IP-címekre való kimenő forgalom kötelező**: A kapcsolat engedélyezéséhez meg kell nyitni a hálózati biztonsági csoportokat (NSG) Azure SQL Database IP-címekre. Ezt a Azure SQL Database NSG- [szolgáltatásának címkéi](../virtual-network/security-overview.md#service-tags) segítségével teheti meg.
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -123,7 +121,7 @@ A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseb
 
 1.  Azure PowerShell telepítése az [útmutató](https://docs.microsoft.com/powershell/azure/install-az-ps)segítségével.
 2.  Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)használatával kell frissítenie az általános célú v2-re.
-3.  Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage** -fiókhoz az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .
+3.  Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .
  
 #### <a name="steps"></a>Lépések
 1. A PowerShellben **regisztrálja Azure-SQL Server** a Azure SQL Data Warehouse-példány üzemeltetése Azure Active Directory (HRE) használatával:
@@ -137,17 +135,17 @@ A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseb
    1. Hozzon létre egy **általános célú v2 Storage-fiókot** az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)segítségével.
 
    > [!NOTE]
-   > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re** kell frissítenie az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)segítségével.
+   > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)segítségével.
    > - Azure Data Lake Storage Gen2 kapcsolatos ismert problémák esetén tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendelje hozzá a **Storage blob** -adatközreműködői RBAC szerepkört az azure-SQL Server, amely az 1. lépésben az Azure Active DIRECOTORY (HRE) szolgáltatásban regisztrált Azure SQL Data Warehouse.
+1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendelje hozzá a **Storage blob-adatközreműködői** RBAC szerepkört az azure-SQL Server, amely az 1. lépésben az Azure Active DIRECOTORY (HRE) szolgáltatásban regisztrált Azure SQL Data Warehouse.
 
    > [!NOTE] 
    > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
   
 1. **Alapszintű kapcsolat az Azure Storage-fiókkal:**
 
-   1. Hozzon létre **[](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** egy adatbázis-főkulcsot, ha még nem hozott létre egy korábbiat:
+   1. Hozzon létre egy adatbázis- **[főkulcsot](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** , ha még nem hozott létre egy korábbiat:
        ```SQL
        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
        ```
@@ -158,7 +156,7 @@ A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseb
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
        ```
        > [!NOTE] 
-       > - Nincs szükség a titkos kulcs megadására az Azure Storage-hozzáférési kulccsal, mert [](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ez a mechanizmus felügyelt identitást használ a borítók alatt.
+       > - Nincs szükség a titkos kulcs megadására az Azure Storage-hozzáférési kulccsal, mert ez a mechanizmus [felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) használ a borítók alatt.
        > - Az identitás nevének **"Managed Service Identity"** kell lennie a VNet által védett Azure Storage-fiókkal való együttműködéshez.    
     
    1. Hozzon létre egy külső adatforrást a abfss://sémával az általános célú v2 Storage-fiókhoz való csatlakozáshoz a következő paranccsal:
@@ -255,8 +253,8 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 5. Az új **Létrehozás/frissítés** panelen töltse ki a vezérlőket az Azure-erőforrások neveivel.
 
     > [!TIP]
-    > Meg kell adnia az alhálózat helyes címének előtagját. Az értéket a portálon találja.
-    > Navigáljon az összes **virtuális hálózat** **típusú** &gt; **erőforráshoz** &gt; . A szűrő megjeleníti a virtuális hálózatokat. Kattintson a virtuális hálózatra, majd azalhálózatok elemre. A **címtartomány** oszlopban a szükséges előtag szerepel.
+    > Meg kell adnia az alhálózat helyes **címének előtagját** . Az értéket a portálon találja.
+    > Navigáljon az összes **virtuális hálózat** **típusú** &gt; **erőforráshoz** &gt; . A szűrő megjeleníti a virtuális hálózatokat. Kattintson a virtuális hálózatra, majd az **alhálózatok**elemre. A **címtartomány** oszlopban a szükséges előtag szerepel.
 
     ![Adja meg a mezőket az új szabályhoz.][image-portal-firewall-create-update-vnet-rule-20-png]
 

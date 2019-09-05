@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/28/2019
-ms.openlocfilehash: b1da94a2644c299447271b447f51ae4f7750774c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f1003324e9f4b3762b5d8eca703af4a1fbd4613a
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231074"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308818"
 ---
-# <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Oktatóanyag: Ismerkedés az első ML-kísérlet létrehozásával
+# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Oktatóanyag: Ismerkedés az első ML-kísérlet létrehozásával a Python SDK-val
 
 Ebben az oktatóanyagban a teljes körű lépéseket követve megkezdheti a Jupyter-jegyzetfüzetekben futó Azure Machine Learning Python SDK megkezdését. Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat első része**, amely a Python környezet beállítását és konfigurálását, valamint a kísérletek és a gépi tanulási modellek kezelésére szolgáló munkaterület létrehozását ismerteti. A második [**rész**](tutorial-1st-experiment-sdk-train.md) erre épít több gépi tanulási modell betanításához, és a Azure Portal és az SDK használatával is bevezeti a modell felügyeleti folyamatát.
 
@@ -41,7 +41,7 @@ Ez a példa a Felhőbeli notebook-kiszolgálót használja a munkaterületen a t
 
 A munkaterületről hozzon létre egy felhőalapú erőforrást a Jupyter-jegyzetfüzetek használatának megkezdéséhez. Ez az erőforrás egy felhőalapú Linux rendszerű virtuális gép, amely minden Azure Machine Learning szolgáltatás futtatásához szükséges.
 
-1. Nyissa meg a munkaterületet a [Azure Portalban](https://portal.azure.com/).  Ha nem tudja, hogyan keresse meg a munkaterületét a portálon, tekintse meg a [munkaterület](how-to-manage-workspace.md#view)megkeresése című témakört.
+1. Nyissa meg a munkaterületet a [Azure Portalban](https://portal.azure.com/).  Ha nem tudja, hogyan keresse meg a munkaterületét a portálon, tekintse meg a [munkaterület megkeresése](how-to-manage-workspace.md#view)című témakört.
 
 1. A Azure Portal munkaterület lapján válassza a bal oldalon található **notebook virtuális gépek** elemet.
 

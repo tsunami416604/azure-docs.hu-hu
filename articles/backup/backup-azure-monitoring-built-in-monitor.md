@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 5fde581f322504c7e329da7fa153671b8a91183d
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
-ms.translationtype: HT
+ms.openlocfilehash: bae05e890ef76ada9f775293c673cb8baa82c8bf
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688365"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954588"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup munkaterhelések figyelése
 
@@ -87,6 +87,9 @@ A riasztások kiemelése után a rendszer értesíti a felhasználókat. A Azure
 
 ![RS-tároló beépített e-mail-értesítése](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
 
+> [!NOTE]
+> Az SQL biztonsági mentések riasztásai konszolidálva lesznek, és az e-mailt csak az első alkalommal küldi el a rendszer. Ha azonban a felhasználó inaktiválja a riasztást, akkor a következő esemény egy másik e-mailt indít el.
+
 Ha az értesítés konfigurálva van, egy üdvözlő vagy bevezető e-mailt fog kapni. Ezzel erősíti meg, hogy Azure Backup e-maileket küldhet ezekre a címekre riasztás esetén.<br>
 
 Ha a gyakoriság egy óránkénti kivonatoló értékre lett beállítva, és egy órán belül megoldották a riasztást, akkor nem lesz része a közelgő óránkénti kivonatnak.
@@ -95,6 +98,14 @@ Ha a gyakoriság egy óránkénti kivonatoló értékre lett beállítva, és eg
 >
 > * Ha olyan roncsolásos műveletet végez, mint például a **védelem leállítása a törlési adatokkal** , akkor a rendszer riasztást küld, és e-mailt küld az előfizetés-tulajdonosoknak, a rendszergazdáknak és a társ-rendszergazdáknak akkor is, ha az értesítések nincsenek konfigurálva a helyreállítási tárolóhoz.
 > * A sikeres feladatok értesítésének konfigurálásához használja a [log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
+
+## <a name="inactivating-alerts"></a>Riasztások inaktiválása
+
+Aktív riasztás inaktiválásához/feloldásához kattintson az inaktiválni kívánt riasztáshoz tartozó listaelemre. Ekkor megnyílik egy képernyő, amely részletes információkat jelenít meg a riasztásról, és a felül található "inaktiválás" gombra kattint. Erre a gombra kattintva megváltoztathatja a riasztás állapotát az "inaktív" értékre. Inaktiválhat egy riasztást, ha egyszerűen rákattint a jobb gombbal az adott riasztáshoz tartozó listaelemre, és kiválasztja az inactivate (inaktiválás) elemet.
+
+![RS Vault-riasztás inaktiválása](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,16 +10,15 @@ ms.assetid: 8b7ad5ee-a873-4966-a400-7e508bbbe158
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: cd7b2cecce443e821e233d97a260b7dfb3471752
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
-ms.translationtype: HT
+ms.openlocfilehash: 63ff91c6b4db351e5ec72973874466cff74432b5
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667214"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073450"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>A felhasználói regisztráció és a termék-előfizetés delegálása
 
@@ -116,7 +115,7 @@ Ezután győződjön meg arról, hogy a delegálási végpont a következő műv
      * "Leiratkozás": egy termék felhasználójának lemondására vonatkozó kérelem
      * "Megújítás": az előfizetés megújítására vonatkozó kérelem (például lejáró lehet)
    * **Termékkód**: annak a terméknek az azonosítója, amelyre az előfizetést kérte
-   * **subscriptionId**: lemondás és *megújítás* – a termék-előfizetés azonosítója
+   * **subscriptionId**: *lemondás* és *megújítás* – a termék-előfizetés azonosítója
    * **felhasználóazonosító**: annak a felhasználónak az azonosítója, akinek a kérelmét elvégezték
    * **Salt**: a biztonsági kivonatok feldolgozásához használt speciális sós sztring
    * **SIG**: a saját számított kivonathoz való összehasonlításhoz használt számított biztonsági kivonat
@@ -129,8 +128,8 @@ Ezután győződjön meg arról, hogy a delegálási végpont a következő műv
      > 
      > 
    * Hasonlítsa össze a fenti számított kivonatot a **SIG** Query paraméter értékével. Ha a két kivonat egyezik, lépjen a következő lépésre, ellenkező esetben tagadja meg a kérést.
-3. Termék-előfizetés feldolgozása a műveletben kért művelet típusa alapján – például számlázás, további kérdések stb.
-4. Ha sikeresen előfizette a felhasználót az oldalán lévő termékre, a [az előfizetések REST APIának meghívása]előfizetések meghívásával előfizethet a felhasználóra a API Management termékre.
+3. Termék-előfizetés feldolgozása a **műveletben** kért művelet típusa alapján – például számlázás, további kérdések stb.
+4. Ha sikeresen előfizette a felhasználót az oldalán lévő termékre, a [az előfizetések REST APIának meghívása]előfizethet a felhasználóra a API Management termékre.
 
 ## <a name="delegate-example-code"></a> Példa kódja
 

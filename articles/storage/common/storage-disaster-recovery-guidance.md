@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7785c6b5c575bf862b1ba0edccc75fc1c6031b08
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: b2cd7232bce674dfa5aa2c6f4b6d9386fa7a189b
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015643"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376452"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Vész-helyreállítási és Storage-fiók feladatátvétele (előzetes verzió) az Azure Storage-ban
 
@@ -43,7 +43,7 @@ Egyéb Azure Storage-redundancia-beállítások közé tartozik a zóna-redundá
 > [!WARNING]
 > A Geo-redundáns tárolás az adatvesztés kockázatát hordozza. Az adatreplikációt aszinkron módon replikálja a rendszer a másodlagos régióba, ami azt jelenti, hogy az elsődleges régióba írt adatsorok a másodlagos régióba íródnak. Kimaradás esetén a rendszer elveszi az olyan írási műveleteket az elsődleges végpontra, amelyek még nem replikálódnak a másodlagos végpontra.
 
-## <a name="design-for-high-availability"></a>Magas rendelkezésre állás tervezése
+## <a name="design-for-high-availability"></a>Tervezés magas rendelkezésre álláshoz
 
 Fontos, hogy az alkalmazást a kezdettől kezdve a magas rendelkezésre állás érdekében tervezze meg. Tekintse át ezeket az Azure-erőforrásokat az alkalmazások tervezéséhez és a vész-helyreállítás megtervezéséhez:
 
@@ -55,7 +55,7 @@ Fontos, hogy az alkalmazást a kezdettől kezdve a magas rendelkezésre állás 
 Emellett vegye figyelembe ezeket az ajánlott eljárásokat az Azure Storage-beli adattárolási adatai magas rendelkezésre állásának fenntartásához:
 
 * **Lemezek** A [Azure Backup](https://azure.microsoft.com/services/backup/) használatával biztonsági mentést készíthet az Azure-beli virtuális gépek által használt VM-lemezekről. Vegye fontolóra a [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) használatát a virtuális gépek biztonságának biztosítása érdekében regionális katasztrófa esetén is.
-* **Blobok letiltása:** Ha a [AzCopy](storage-use-azcopy.md), a [Azure PowerShell](storage-powershell-guide-full.md)vagy az [Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)adatátviteli függvénytárat használja, a [Soft delete](../blobs/storage-blob-soft-delete.md) bekapcsolásával védelmet biztosíthat az objektum-szintű törlések és a felülírások ellen, vagy más régióba másolja a blokk blobokat egy másikba.
+* **Blobok letiltása:** Ha a [AzCopy](storage-use-azcopy.md), a [Azure PowerShell](storage-powershell-guide-full.md)vagy az [Azure adatátviteli függvénytárat](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)használja, a [Soft delete](../blobs/storage-blob-soft-delete.md) bekapcsolásával védelmet biztosíthat az objektum-szintű törlések és a felülírások ellen, vagy más régióba másolja a blokk blobokat egy másikba.
 * **Fájlokat** A [AzCopy](storage-use-azcopy.md) vagy a [Azure PowerShell](storage-powershell-guide-full.md) segítségével másolja át a fájlokat egy másik különböző régióban lévő Storage-fiókba.
 * **Táblák:** a [AzCopy](storage-use-azcopy.md) használatával exportálhatja a tábla-és más tárolási fiókokat egy másik régióban.
 
@@ -168,14 +168,13 @@ Ne feledje, hogy az ideiglenes lemezen tárolt összes adatmennyiség elvész a 
 A következő szolgáltatások vagy szolgáltatások nem támogatottak az előzetes verzióhoz tartozó fiók feladatátvétele esetén:
 
 - A Azure File Sync nem támogatja a Storage-fiók feladatátvételét. A Azure File Syncban Felhőbeli végpontként használt Azure-fájlmegosztást tartalmazó Storage-fiókok feladatátvétele nem lehetséges. Ennek hatására a szinkronizálás leáll, és az újonnan rétegű fájlok esetében váratlan adatvesztést okozhat.  
-- Azure Data Lake Storage Gen2 hierarchikus névteret használó Storage-fiókok feladatátvétele nem végezhető el.
 - Az archivált blobokat tartalmazó Storage-fiókok feladatátvétele nem végezhető el. Az archivált blobokat egy különálló Storage-fiókban kezelheti, amelyet nem szeretne átadni.
 - A prémium szintű blokk blobokat tartalmazó Storage-fiókok feladatátvétele nem végezhető el. A prémium szintű blokk blobokat támogató Storage-fiókok jelenleg nem támogatják a Geo-redundanciát.
-- A feladatátvétel befejezése után a következő funkciók nem fognak működni, ha eredetileg engedélyezve van: [Esemény](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview)-előfizetések, [életciklus](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)-szabályzatok, [Storage Analytics naplózás](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
+- A feladatátvétel befejezése után a következő funkciók nem fognak működni, ha eredetileg engedélyezve van: [Esemény-előfizetések](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [életciklus-szabályzatok](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Storage Analytics naplózás](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Adatok másolása a feladatátvétel alternatívájaként
 
-Ha a Storage-fiókja RA-GRS van konfigurálva, akkor a másodlagos végpont használatával olvasási hozzáféréssel rendelkezik az adataihoz. Ha nem szeretné átvenni a feladatátvételt az elsődleges régió meghibásodása esetén, olyan eszközöket használhat, mint például a [AzCopy](storage-use-azcopy.md), a [Azure PowerShell](storage-powershell-guide-full.md)vagy az Azure adatátviteli [függvénytár](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) a másodlagos régióban lévő Storage-fiókból egy másikra másolhatja az adatait nem érintett régióban lévő Storage-fiók. Ezután a Storage-fiókra irányíthatja az alkalmazásokat az olvasási és az írási rendelkezésre álláshoz is.
+Ha a Storage-fiókja RA-GRS van konfigurálva, akkor a másodlagos végpont használatával olvasási hozzáféréssel rendelkezik az adataihoz. Ha nem szeretné átvenni a feladatátvételt az elsődleges régió meghibásodása esetén, olyan eszközöket használhat, mint például a [AzCopy](storage-use-azcopy.md), a [Azure PowerShell](storage-powershell-guide-full.md)vagy az [Azure adatátviteli függvénytár](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) a másodlagos régióban lévő Storage-fiókból egy másikra másolhatja az adatait nem érintett régióban lévő Storage-fiók. Ezután a Storage-fiókra irányíthatja az alkalmazásokat az olvasási és az írási rendelkezésre álláshoz is.
 
 ## <a name="microsoft-managed-failover"></a>Microsoft által felügyelt feladatátvétel
 

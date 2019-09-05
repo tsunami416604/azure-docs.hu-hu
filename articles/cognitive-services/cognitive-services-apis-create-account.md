@@ -9,52 +9,48 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: c7db2b4d49e3b9297c32d2e11ffe7c7702c17544
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ae25ffdf3f819c30fdfb1d3110042579f0b197b9
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274669"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381769"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Cognitive Services-erőforrás létrehozása a Azure Portal használatával
 
-Ezzel a rövid útmutatóval létrehozhat egy Azure Cognitive Services-erőforrást a Azure Portal használatával. Miután sikeresen létrehozott egy Cognitive Services erőforrást, egy végpontot és egy kulcsot fog kapni, amely az alkalmazások hitelesítéséhez használható.
+Ez a rövid útmutató az Azure Cognitive Services használatának megkezdésére használható. Miután létrehozta a kognitív szolgáltatás erőforrását a Azure Portalban, egy végpontot és egy kulcsot fog kapni az alkalmazások hitelesítéséhez.
+
+
+[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Érvényes Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 
-[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
-
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>Új Azure Cognitive Services-erőforrás létrehozása
 
-Cognitive Services erőforrás létrehozása előtt rendelkeznie kell egy Azure-erőforrással, amely tartalmazza az erőforrást. Új erőforrás létrehozásakor létrehozhat egy új erőforráscsoportot, vagy használhat egy meglévőt. Ez a cikk bemutatja, hogyan hozhat létre egy új erőforráscsoportot.
-
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és kattintson az **+ erőforrás létrehozása**elemre.
-
-    ![Cognitive Services API-k kiválasztása](media/cognitive-services-apis-create-account/azurePortalScreenMulti.png)
-
-2. A korábban leírtaknak megfelelően létrehozhat egy Cognitive Services-erőforrást két módon – több szolgáltatást használó erőforrás vagy egyetlen szolgáltatásból álló erőforrás használatával.
+1. Hozzon létre egy erőforrást.
 
     #### <a name="multi-service-resourcetabmultiservice"></a>[Több szolgáltatásból álló erőforrás](#tab/multiservice)
 
-    Több szolgáltatásból álló erőforrás létrehozásához írja be a **Cognitive Services** kifejezést a keresősávba.
-
-    ![Cognitive Services keresése](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
-
-    A Cognitive Services lapon válassza a **Létrehozás**lehetőséget.
-
-    ![Cognitive Services fiók létrehozása](media/cognitive-services-apis-create-account/azurecogservsearchmulti-2.png)
+    A Multi-Service erőforrás neve **Cognitive Services** a portálon. [Cognitive Services erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne).
+    
+    Jelenleg ezek a szolgáltatások **nem** hívhatók meg több szolgáltatásból álló kulcsok használatával: QnA Maker, Speech Services, Custom Vision és anomália detektor.
+    
 
     #### <a name="single-service-resourcetabsingleservice"></a>[Egy szolgáltatásból származó erőforrás](#tab/singleservice)
 
-    Az összes rendelkezésre álló kognitív szolgáltatás megjelenítéséhez válassza az **AI + Machine learning**lehetőséget az **Azure Marketplace**-en. Ha nem látja a kívánt szolgáltatást, kattintson az **összes** megjelenítése elemre, és görgessen **Cognitive Services**. Kattintson a **továbbiak** gombra a Cognitive Services teljes katalógusának megtekintéséhez.
+    Az alábbi hivatkozásokat követve hozhat létre erőforrást az elérhető Cognitive Serviceshoz:
 
-    Ha a szolgáltatás érdekli, kattintson a **Létrehozás**gombra.
-    
-    ![Cognitive Services API-k kiválasztása](media/cognitive-services-apis-create-account/azureMarketplace.png)
-
+    | Látás                      | Beszéd                  | Nyelv                          | Döntés             | Keresés                 |
+    |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
+    | [Számítógépes látástechnológia](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Speech Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Magával ragadó olvasó](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomália detektor](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing Search API v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
+    | [Egyéni jövőkép szolgáltatás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Speaker Recognition](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUIS) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing Custom Search](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
+    | [Arcfelismerés](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Személyre szabás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Bing Entity Search](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
+    | [Kézírás-felismerő](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Szövegelemzés](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |                      | [Bing helyesírás-ellenőrzés](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
+    |           |                         | [Translator Text](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing Autosuggest](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
     ***
+
 3. A **Létrehozás** lapon adja meg a következő információkat:
 
     #### <a name="multi-service-resourcetabmultiservice"></a>[Több szolgáltatásból álló erőforrás](#tab/multiservice)
@@ -89,32 +85,23 @@ Cognitive Services erőforrás létrehozása előtt rendelkeznie kell egy Azure-
 
 ## <a name="get-the-keys-for-your-resource"></a>Az erőforrás kulcsainak beolvasása
 
-Az erőforrás sikeres létrehozása után megjelenik egy előugró értesítés a képernyő jobb felső részén. Az értesítésben kattintson az **erőforrás keresése** lehetőségre a létrehozott kognitív szolgáltatási erőforrás megtekintéséhez. 
+Az erőforrás sikeres üzembe helyezése után kattintson az **Ugrás az erőforráshoz** lehetőségre a **következő lépések**alatt.
 
-![Ugrás a kognitív szolgáltatás erőforrásaira](media/cognitive-services-apis-create-account/cog-serv-go-to-resource.png)
+![Cognitive Services keresése](media/cognitive-services-apis-create-account/resource-next-steps.png)
 
-A megnyíló Gyorsindítás ablaktáblán elérheti a végpontot és a kulcsot.
+A megnyíló Gyorsindítás ablaktáblán elérheti a kulcsot és a végpontot.
 
 ![Kulcs és végpont beolvasása](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
 
-## <a name="pricing-tiers-and-billing"></a>Árképzési szintek és számlázás
-
-A díjszabási szintek (és a felszámított összeg) a hitelesítési adatok használatával elküldött tranzakciók számától függenek. Az egyes díjszabási szintek a következőket határozzák meg:
-* a másodpercenként engedélyezett tranzakciók maximális száma (TPS).
-* a szolgáltatási funkciók a díjszabási szinten engedélyezve vannak.
-* Az előre meghatározott számú tranzakció díja. Ezen összeg fölött a szolgáltatás [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) szerint külön díjat számítunk fel.
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlése a csoportban található egyéb erőforrásokat is törli.
 
-Erőforráscsoport eltávolítása az Azure Portallal:
-
 1. Az Azure Portalon bontsa ki a bal oldalon a szolgáltatásmenüt, és válassza az **Erőforráscsoportok** lehetőséget az erőforráscsoportok listájának megjelenítéséhez.
-2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán található további gombra (...).
-3. Válassza az **Erőforráscsoport törlése** elemet, és erősítse meg a választását.
+2. Keresse meg a törölni kívánt erőforrást tartalmazó erőforráscsoportot.
+3. Kattintson a jobb gombbal az erőforráscsoport listájára. Válassza az **Erőforráscsoport törlése** elemet, és erősítse meg a választását.
 
 ## <a name="see-also"></a>Lásd még
 

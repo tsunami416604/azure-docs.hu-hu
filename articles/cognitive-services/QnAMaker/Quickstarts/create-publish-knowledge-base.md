@@ -1,25 +1,25 @@
 ---
-title: Létrehozását, betanítását és közzététele a Tudásbázis – QnA Maker
+title: 'Gyors útmutató: Tudásbázis létrehozása, betanítása és közzététele – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. A QnA Maker Tudásbázis ebben a példában egy egyszerű – gyakori kérdések weblap kérdésre, a BitLocker-helyreállítás jön létre.
+description: Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. Ebben a példában a QnA Maker tudásbázist egy egyszerű gyakori kérdések weboldaláról hozza létre a BitLocker-kulcs helyreállításával kapcsolatos kérdések megválaszolásához.
 author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 03ce1047dd175ae4a676fa1461632a8e23122a8d
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 229956b41f7f26637e6a6aa62e341c4b06b8a429
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249730"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376364"
 ---
-# <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>A QnA Maker-tudásbázis létrehozása, betanítása és közzététele
+# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Gyors útmutató: A QnA Maker-tudásbázis létrehozása, betanítása és közzététele
 
-Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. Ez a cikk tartalmaznak egy kérdésre, a BitLocker-helyreállítás egy egyszerű – gyakori kérdések weblapon, QnA Maker Tudásbázis hoz létre.
+Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. Ebből a cikkből megtudhatja, hogyan hozhat létre egy QnA Maker tudásbázist egy egyszerű gyakori kérdések weblapján, hogy válaszoljon a BitLocker-kulcsok helyreállításával kapcsolatos kérdésekre.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
@@ -28,80 +28,80 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 
 ## <a name="create-a-qna-maker-knowledge-base"></a>QnA Maker-tudásbázis létrehozása
 
-1. Jelentkezzen be a [QnAMaker.ai](https://QnAMaker.ai) portál az Azure hitelesítő adataival.
+1. Jelentkezzen be az [QnAMaker.ai](https://QnAMaker.ai) -portálra az Azure-beli hitelesítő adataival.
 
-1. Jelölje be a QnA Maker portal **Tudásbázis létrehozása**.
+1. A QnA Maker portálon válassza a **Tudásbázis létrehozása**elemet.
 
-   ![Képernyőfelvétel: a QnA Maker portal](../media/qna-maker-create-kb.png)
+   ![Képernyőkép a QnA Maker-portálról](../media/qna-maker-create-kb.png)
 
 1. A **Create** (Létrehozás) oldalon az 1. lépésben válassza a **Create a QnA service** (QnA Maker-szolgáltatás létrehozása) lehetőséget. A rendszer átirányítja az [Azure Portalra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker), ahol be kell állítania az előfizetésében egy QnA Maker-szolgáltatást. Ha az Azure Portalon időtúllépés fordul elő, kattintson a webhelyen a **Try Again** (Újrapróbálkozás) elemre. Miután csatlakozott, megjelenik az Azure irányítópultja.
 
-1. Miután az Azure-ban sikeresen létrehozott egy új QnA Maker-szolgáltatást, lépjen vissza a qnamaker.ai/create webhelyre. Válassza ki a QnA Maker szolgáltatást a 2. lépésben a legördülő listából. Ha létrehozott egy új QnA Maker szolgáltatást, mindenképpen frissítse az oldalt.
+1. Miután az Azure-ban sikeresen létrehozott egy új QnA Maker-szolgáltatást, lépjen vissza a qnamaker.ai/create webhelyre. Válassza ki a QnA Maker szolgáltatást a 2. lépésben legördülő listában. Ha új QnA Maker szolgáltatást hozott létre, frissítse a lapot.
 
-   ![Képernyőkép a QnA Maker szolgáltatás Tudásbázis kiválasztása](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
+   ![Képernyőkép a QnA Maker szolgáltatás tudásbázisának kiválasztásáról](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. A 3. lépésben, nevezze el a Tudásbázis **saját minta QnA KB**.
+1. A 3. lépésben nevezze el az Ön tudásbázisát a **minta QNA kb**-ra.
 
-1. Tartalom hozzáadása a Tudásbázis, válassza a három típusú adatforrásokat. A 4. lépésben a **Populate your KB** (Tudásbázis feltöltése) területen adja meg a [BitLocker-helyreállítás gyakori kérdéseinek](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview-and-requirements-faq) URL-címét az **URL** mezőben.
+1. Ha tartalmat szeretne hozzáadni a tudásbázishoz, válasszon három adatforrást. A 4. lépésben a **Populate your KB** (Tudásbázis feltöltése) területen adja meg a [BitLocker-helyreállítás gyakori kérdéseinek](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview-and-requirements-faq) URL-címét az **URL** mezőben.
 
-   ![Képernyőkép az adatforrások hozzáadása](../media/qnamaker-quickstart-kb/add-datasources.png)
+   ![Az adatforrások hozzáadásának képernyőképe](../media/qnamaker-quickstart-kb/add-datasources.png)
 
 1. A 5. lépésben válassza a **Create your KB** (Tudásbázis létrehozása) lehetőséget.
 
-1. A QnA Maker a Tudásbázis hoz létre, amíg egy előugró ablak jelenik meg. A kinyerési folyamatnak néhány percbe telik, hogy beolvassa a HTML-oldalt és azonosítsa a kérdéseket és válaszokat.
+1. Míg a QnA Maker létrehozza a tudásbázist, megjelenik egy előugró ablak. A kinyerési folyamatnak néhány percbe telik, hogy beolvassa a HTML-oldalt és azonosítsa a kérdéseket és válaszokat.
 
-1. Miután a QnA Maker sikeresen létrehozta a Tudásbázis a **Tudásbázis** lap megnyitásakor. Ezen az oldalon a Tudásbázis tartalmát szerkesztheti.
+1. Miután QnA Maker sikeresen létrehozta a tudásbázist, megnyílik a **Tudásbázis** lap. Ezen a lapon szerkesztheti a Tudásbázis tartalmát.
 
 ## <a name="edit-the-knowledge-base"></a>A Tudásbázis szerkesztése
 
-1. A QnA Maker Portal az a **szerkesztése** szakaszban jelölje be **hozzáadása kérdés-válasz párt** hozzáadása egy új sort a Tudásbázis. A **Question** (Kérdés) területen adja meg: **Üdv.** Az **Answer** (Válasz) területen adja meg: **Üdvözlöm. A BitLocker kérdéseket fel.**
+1. A QnA Maker portál **Szerkesztés** szakaszában válassza a **QnA-pár hozzáadása** lehetőséget, hogy új sort adjon hozzá a tudásbázishoz. A **Question** (Kérdés) területen adja meg: **Üdv.** Az **Answer** (Válasz) területen adja meg: **Üdvözlöm. Kérdezze meg a BitLocker kérdéseit.**
 
-    ![Képernyőfelvétel: a QnA Maker portal](../media/qnamaker-quickstart-kb/add-qna-pair.png)
+    ![Képernyőkép a QnA Maker-portálról](../media/qnamaker-quickstart-kb/add-qna-pair.png)
 
 1. Kattintson a jobb felső sarokban a **Save and train** (Mentés és betanítás) elemre, amely menti a módosításokat és betanítja a QnA Maker-modellt. A rendszer a módosításokat csak akkor őrzi meg, ha menti őket.
 
 ## <a name="test-the-knowledge-base"></a>A Tudásbázis tesztelése
 
-1. A QnA Maker portálon kattintson a jobb felső sarokban, válassza ki a **tesztelése** tesztelése, hogy a végzett módosítások érvénybe tartott-e. Adjon meg `hi there` a box és a select adjon meg. Meg kell jelennie a létrehozott válasznak.
+1. A QnA Maker portál jobb felső részén válassza a **tesztelés** lehetőséget, hogy a módosítások érvénybe léptetése megtörténjen. Írja `hi there` be a mezőbe, majd kattintson az ENTER gombra. Meg kell jelennie a létrehozott válasznak.
 
-1. Válassza az **Inspect** (Vizsgálat) lehetőséget a válasz részletesebb vizsgálatához. A Teszt ablak segítségével tesztelheti a módosításokat a Tudásbázis, mielőtt azok van közzétéve.
+1. Válassza az **Inspect** (Vizsgálat) lehetőséget a válasz részletesebb vizsgálatához. A teszt ablak a közzétett Tudásbázisban végzett módosítások tesztelésére szolgál.
 
-    ![Teszt panel képernyőképe](../media/qnamaker-quickstart-kb/inspect.png)
+    ![A teszt panel képernyőképe](../media/qnamaker-quickstart-kb/inspect.png)
 
 1. Válassza ismét a **Test** (Tesztelés) gombot a **Test** (Tesztelés) előugró ablak bezárásához.
 
 ## <a name="publish-the-knowledge-base"></a>A tudásbázis közzététele
 
-Tudásbázis közzététele, amikor a Tudásbázis kérdés és válasz tartalma áthelyezi a teszt indexből egy éles indexet az Azure Search szolgáltatásban.
+Ha közzétesz egy tudásbázist, a Tudásbázisban a kérdés és a válasz tartalma a tesztelési indexből egy éles indexbe kerül az Azure Search-ben.
 
-![A Tudásbázis tartalmának áthelyezésével képernyőképe](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
+![Képernyőkép a Tudásbázis tartalmának áthelyezéséről](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
 
-1. A QnA Maker Portal, a menüben a **szerkesztése**válassza **közzététel**. Ezután a megerősítéshez válassza az oldalon a **Publish** (Közzététel) lehetőséget.
+1. A QnA Maker portálon, a **Szerkesztés**elem melletti menüben válassza a **Közzététel**lehetőséget. Ezután a megerősítéshez válassza az oldalon a **Publish** (Közzététel) lehetőséget.
 
 1. Ezzel a QnA Maker-szolgáltatás sikeresen közzé lett téve. Mostantól használhatja a végpontot az alkalmazásában vagy robotkódjában.
 
-    ![Képernyőkép a sikeres közzététel](../media/qnamaker-quickstart-kb/publish-sucess.png)
+    ![A sikeres közzététel képernyőképe](../media/qnamaker-quickstart-kb/publish-sucess.png)
 
-## <a name="create-a-bot"></a>Hozzon létre egy robot
+## <a name="create-a-bot"></a>Robot létrehozása
 
-A közzététel után, a robotprogramok hozhat létre a **közzététel** oldalon: 
+A közzététel után létrehozhat egy robotot a **közzétételi lapról:** 
 
-* Létrehozhat több robotok gyors, a különböző régiókban azonos Tudásbázisban mutató összes vagy díjszabása az egyes robotokat terveket. 
-* Ha azt szeretné, csak egy robot számára a Tudásbázis, használja a **minden a robotok megtekintése az Azure Portalon** hivatkozásra kattintva a jelenlegi robotok listáját. 
+* Több robotot is létrehozhat, amelyek mindegyike azonos tudásbázisra mutat a különböző régiókban vagy díjszabási tervekben az egyes robotok számára. 
+* Ha csak egy robotot szeretne használni a Tudásbázisban, használja a Azure Portal hivatkozásán látható **összes robot megtekintését** az aktuális robotok listájának megtekintéséhez. 
 
-Ha módosítja a Tudásbázis és újra közzétettük, nem kell további műveleteket a robottal végrehajtania. A Tudásbázis dolgozhat már konfigurálva van, és működik együtt a Tudásbázis jövőbeli módosításai. Minden alkalommal, amikor közzéteszi a Tudásbázis, az ahhoz kapcsolódó összes robotokat automatikusan frissülnek.
+Ha módosítja a tudásbázist, és újból közzéteszi, nem kell további műveleteket végrehajtania a robottal. Már konfigurálva van a Tudásbázisban való együttműködésre, és a Tudásbázis minden jövőbeli módosításával működik. Minden alkalommal, amikor közzétesz egy tudásbázist, az ahhoz kapcsolódó összes robot automatikusan frissül.
 
-1. A QnA Maker Portal az a **közzététel** lapon jelölje be **létrehozni a bot**. Ez a gomb csak a Tudásbázis közzététele után jelenik meg.
+1. A QnA Maker portál **Közzététel** lapján válassza a **robot létrehozása**lehetőséget. Ez a gomb csak azután jelenik meg, hogy közzétette a tudásbázist.
 
     ![A robot létrehozásának képernyőképe](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
 
-1. Az Azure Portalon, az Azure Bot Service-létrehozási oldalon megnyílik egy böngészőablak. Az Azure bot service konfigurálása. Ezeket a konfigurációs beállításokat a további információkért lásd: [hozzon létre egy QnA robotot az Azure Bot Service v4](../tutorials/create-qna-bot.md).
+1. Megnyílik egy új böngésző lap a Azure Portal számára a Azure Bot Service létrehozási oldalával. Konfigurálja az Azure bot Service-t. További információ ezekről a konfigurációs beállításokról: [QnA-robot létrehozása Azure bot Service v4](../tutorials/create-qna-bot.md)-mel.
     
-    * Az Azure Portalon a következő beállítások nem változnak, a robot létrehozásakor. Azok a rendszer előre kitölti az a meglévő Tudásbázis: 
-        * A QnA hitelesítési kulcs
-        * App service-csomagot és helye
+    * A robot létrehozásakor ne módosítsa a Azure Portal következő beállításait. A meglévő Tudásbázisban előre ki vannak töltve: 
+        * QnA-hitelesítési kulcs
+        * App Service-csomag és-hely
         * Azure Storage
-    * A robot és a QnA Maker megoszthatja a web app service-csomag, de nem oszthat meg a webalkalmazás. Ez azt jelenti, hogy a **alkalmazásnév** az alkalmazás nevét, a QnA Maker szolgáltatás létrehozásakor használt különbözőnek kell lennie. 
+    * A robot és a QnA Maker megoszthatják a Web App Service-csomagot, de nem oszthatják meg a webalkalmazást. Ez azt jelenti, hogy az **alkalmazás nevének** eltérőnek kell lennie az QnA Maker szolgáltatás létrehozásakor használt alkalmazás nevével. 
 
 
 ## <a name="next-steps"></a>További lépések

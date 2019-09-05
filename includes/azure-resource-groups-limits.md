@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 07/30/2019
+ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: f027f5b295d75c105e81360a10718239e5b08e4d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
-ms.translationtype: HT
+ms.openlocfilehash: 25928ef35da1ce4b3824303a5d46749c32aa701f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698275"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626344"
 ---
 | Resource | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
@@ -17,11 +17,11 @@ ms.locfileid: "68698275"
 | Üzemelő példányok erőforráscsoport szerint az üzembe helyezési előzményekben |800<sup>1</sup> |800 |
 | Erőforrások üzembe helyezése |800 |800 |
 | Felügyeleti zárolások egyedi hatókör szerint |20 |20 |
-| Címkék száma erőforrás vagy erőforráscsoport szerint |15 |15 |
+| Címkék száma erőforrás vagy erőforráscsoport szerint |50 |50 |
 | Címke kulcsának hossza |512 |512 |
 | Címke értékének hossza |256 |256 |
 
-<sup>1</sup> Ha eléri a 800-es üzemelő példányok számát egy erőforráscsoport esetében, törölje a már nem szükséges előzményekből származó központi telepítéseket. Az üzembe helyezési előzményekből származó bejegyzések törlése nem befolyásolja az üzembe helyezett erőforrásokat. Törölheti az előzményekből származó bejegyzéseket az [](/cli/azure/group/deployment) az Azure CLI, illetve a [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) használatával a PowerShellben.  Egy PowerShell-parancsfájlhoz, amely automatizálja az üzemelő példányok folyamatos integrációs és folyamatos teljesítési (CI/CD) forgatókönyvben történő törlését, lásd: [Remove-Deployments. ps1](https://gist.github.com/bmoore-msft/ed33fb940dafb09380174b7fca57651f).
+<sup>1</sup> Ha eléri a 800-es üzemelő példányok számát egy erőforráscsoport esetében, törölje a már nem szükséges előzményekből származó központi telepítéseket. Az üzembe helyezési előzményekből származó bejegyzések törlése nem befolyásolja az üzembe helyezett erőforrásokat. Törölheti az előzményekből származó bejegyzéseket az [Az Azure](/cli/azure/group/deployment) CLI, illetve a [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) használatával a PowerShellben.  Egy PowerShell-parancsfájlhoz, amely automatizálja az üzemelő példányok folyamatos integrációs és folyamatos teljesítési (CI/CD) forgatókönyvben történő törlését, lásd: [Remove-Deployments. ps1](https://gist.github.com/bmoore-msft/ed33fb940dafb09380174b7fca57651f).
 
 #### <a name="template-limits"></a>Sablonok korlátai
 

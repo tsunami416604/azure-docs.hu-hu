@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 26b7f185a05bcf50db3af6bd3b75d5e61d6ec84b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279572"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376097"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>A Hyper-V felmérésének és migrálásának támogatási mátrixa
 
@@ -82,7 +82,7 @@ Az értékeléshez Azure Migrate egy könnyű berendezést futtat a Hyper-V virt
 
 | **Támogatás**                | **Részletek**               
 | :-------------------       | :------------------- |
-| **Berendezések üzembe helyezése**   |  A berendezést Hyper-V virtuális gépként kell üzembe helyezni.<br/> Az Azure Migrate által biztosított Appliance VM a Hyper-V VM 5,0-es verziója.<br/> A Hyper-V-gazdagépen Windows Server 2012 R2 vagy újabb rendszernek kell futnia.<br/> A gazdagépnek elegendő helyet kell biztosítania 16 GB RAM, 8 vCPU és 1 külső kapcsoló lefoglalásához a készülék virtuális gépe számára.<br/> A készüléknek statikus vagy dinamikus IP-címnek, valamint internet-hozzáférésre van szüksége.
+| **Berendezések üzembe helyezése**   |  A berendezést Hyper-V virtuális gépként kell üzembe helyezni.<br/> Az Azure Migrate által biztosított Appliance VM a Hyper-V VM 5,0-es verziója.<br/> A Hyper-V-gazdagépen Windows Server 2012 R2 vagy újabb rendszernek kell futnia.<br/> A gazdagépnek elegendő helyet kell biztosítania 16 GB RAM, 8 vCPU, körülbelül 80 GB tárterület és egy külső kapcsoló lefoglalásához a készülék virtuális gépe számára.<br/> A készüléknek statikus vagy dinamikus IP-címnek, valamint internet-hozzáférésre van szüksége.
 | **Azure Migrate projekt**  |  Egy készülék egyetlen projekthez is társítható.<br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> Egy projektben akár 35 000 virtuális gépet is megvizsgálhat.
 | **Hyper-V-gazdagépek**          | Egy készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
 | **Felfedezés**              | Egyetlen készülék akár 5000 virtuális gépet is képes felderíteni.

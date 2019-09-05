@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 4252ce3e0dfdaf9033221d86b0aacc728783b75b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eeea0cff1d6445abd45715eda707b97843107341
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559778"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308105"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Gyors útmutató: Tudásbázis közzététele QnA Maker Java használatával
 
@@ -41,7 +41,7 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
     Ha még nem rendelkezik tudásbázissal, létrehozhat egy, az ehhez a rövid útmutatóhoz használandó mintát: [Hozzon létre egy új tudásbázist](create-new-kb-csharp.md).
 
 > [!NOTE] 
-> A teljes megoldás fájl (ok) az [ **Azure-Samples/kognitív-Services-qnamaker-Java** GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base)-tárházból érhetők el.
+> A teljes megoldás fájl (ok) az [ **Azure-Samples/kognitív-Services-qnamaker-Java** GitHub-tárházból](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base)érhetők el.
 
 ## <a name="create-a-java-file"></a>Hozzon létre egy Java-fájlt
 

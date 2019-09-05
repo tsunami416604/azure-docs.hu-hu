@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 1716bd64286f1882b9fc224712d227967d78058a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
-ms.translationtype: HT
+ms.openlocfilehash: 8d2cb30e0f18485d500344e571b3ac5f2cde008f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637778"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615702"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>A Azure Cosmos DB tömeges végrehajtó függvénytárának áttekintése
  
@@ -36,7 +36,7 @@ A tömeges végrehajtói kódtár segít kihasználni ezt a hatalmas átviteli s
  
 * A kibővíthető architektúra használatával több mint egy terabájtos adatmennyiséget is importálhat egy órán belül.  
 
-* A Azure Cosmos DB tárolókban lévő meglévő adatmennyiséget javításként is frissítheti. 
+* Az Azure Cosmos-tárolókban lévő meglévő adatmennyiséget javítások formájában is frissítheti. 
  
 ## <a name="how-does-the-bulk-executor-operate"></a>Hogyan működik a tömeges végrehajtó? 
 

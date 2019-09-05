@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56a94ef3f6ea5737b629efe44bd3e1cc1f36a693
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: aaa60a7737b7781a21e23516d139332f10bdf448
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127130"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306003"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD naplózott tevékenységekre vonatkozó referencia
 
@@ -408,6 +408,14 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Címtárkezelés|Adott rendszergazdai folyamathoz tartozó identitásszolgáltatók lekérése|
 |Címtárkezelés|Az összes rendszergazdai folyamat|
 |Címtárkezelés|Az összes felhasználó összes rendszergazdai folyamatához tartozó címkék listájának lekérése|
+|Csoportkezelés|Csoporttagok tömeges letöltése – elindítva|
+|Csoportkezelés|Csoporttagok tömeges letöltése – kész|
+|Csoportkezelés|Csoporttagok csoportos importálása – elindítva|
+|Csoportkezelés|Csoporttagok tömeges importálása – kész|
+|Csoportkezelés|Csoporttagok tömeges eltávolítása – elindítva|
+|Csoportkezelés|Csoporttagok tömeges eltávolítása – kész|
+|Csoportkezelés|Csoportos letöltési csoportok – elindítva|
+|Csoportkezelés|Csoportos letöltési csoportok – kész|
 |Csoportkezelés|Felhasználó bérlői listájának lekérése|
 |Csoportkezelés|Helyi fiókok önellenőrző jogcímeinek lekérése|
 |Csoportkezelés|Honosított json-erőforrás lekérése|
@@ -454,28 +462,42 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Szerepkörkezelés|Eszköz konfigurációjának törlése|
 |Szerepkörkezelés|Az eszköz már nem megfelelő|
 |Szerepkörkezelés|Az eszköz már nincs felügyelve|
-|Felhasználókezelés|Regisztrált felhasználó eltávolítása az eszközről|
-|Felhasználókezelés|Regisztrált felhasználók eltávolítása az eszközről|
-|Felhasználókezelés|Eszköz frissítése|
-|Felhasználókezelés|Eszköz konfigurációjának frissítése|
-|Felhasználókezelés|Jogosult tag hozzáadása szerepkörhöz|
-|Felhasználókezelés|Tag hozzáadása szerepkörhöz|
-|Felhasználókezelés|Szerepkör-hozzárendelés hozzáadása szerepkör-definícióhoz|
-|Felhasználókezelés|Szerepkör hozzáadása sablonból|
-|Felhasználókezelés|Hatókörön belüli tag hozzáadása a szerepkörhöz|
-|Felhasználókezelés|Jogosult tag eltávolítása a szerepkörből|
-|Felhasználókezelés|Tag eltávolítása a szerepkörből|
-|Felhasználókezelés|Szerepkör-hozzárendelés eltávolítása a szerepkör-definícióból|
-|Felhasználókezelés|Hatókörön belüli tag eltávolítása a szerepkörből|
-|Felhasználókezelés|Szerepkör frissítése|
 |Felhasználókezelés|AccessReview_Review|
 |Felhasználókezelés|AccessReview_Update|
 |Felhasználókezelés|ActivationAborted|
 |Felhasználókezelés|ActivationApproved|
 |Felhasználókezelés|ActivationCanceled|
 |Felhasználókezelés|ActivationRequested|
+|Felhasználókezelés|Jogosult tag hozzáadása szerepkörhöz|
+|Felhasználókezelés|Tag hozzáadása szerepkörhöz|
+|Felhasználókezelés|Szerepkör-hozzárendelés hozzáadása szerepkör-definícióhoz|
+|Felhasználókezelés|Szerepkör hozzáadása sablonból|
+|Felhasználókezelés|Hatókörön belüli tag hozzáadása a szerepkörhöz|
 |Felhasználókezelés|Hozzáadva|
 |Felhasználókezelés|Hozzárendelés|
+|Felhasználókezelés|Felhasználók tömeges létrehozása – elindítva|
+|Felhasználókezelés|Felhasználók tömeges létrehozása – kész|
+|Felhasználókezelés|Felhasználók tömeges törlése – elindítva|
+|Felhasználókezelés|Felhasználók tömeges törlése – kész|
+|Felhasználókezelés|Felhasználók tömeges letöltése – elindítva|
+|Felhasználókezelés|Felhasználók tömeges letöltése – kész|
+|Felhasználókezelés|Törölt felhasználók tömeges visszaállítása – elindítva|
+|Felhasználókezelés|Törölt felhasználók tömeges visszaállítása – kész|
+|Felhasználókezelés|Felhasználók tömeges meghívása – elindítva|
+|Felhasználókezelés|Felhasználók tömeges meghívása – kész|
+|Felhasználókezelés|Regisztrált felhasználó eltávolítása az eszközről|
+|Felhasználókezelés|Regisztrált felhasználók eltávolítása az eszközről|
+|Felhasználókezelés|Jogosult tag eltávolítása a szerepkörből|
+|Felhasználókezelés|Tag eltávolítása a szerepkörből|
+|Felhasználókezelés|Szerepkör-hozzárendelés eltávolítása a szerepkör-definícióból|
+|Felhasználókezelés|Hatókörön belüli tag eltávolítása a szerepkörből|
+|Felhasználókezelés|Eszköz frissítése|
+|Felhasználókezelés|Eszköz konfigurációjának frissítése|
+|Felhasználókezelés|Szerepkör frissítése|
+
+
+
+
 
 
 ## <a name="identity-protection"></a>Identitásvédelem

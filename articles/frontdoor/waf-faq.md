@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: c993e465bc439ff52cba3241dbff64b7655d1f12
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: f7d205920704ce8aedf3b2e3c07bd429b3c64964
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849177"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375340"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Gyakori kérdések az Azure webalkalmazási tűzfallal kapcsolatban
 
@@ -53,12 +53,6 @@ A WAF-szabályzatok globális üzembe helyezése általában körülbelül 5 per
 
 A bejárati ajtó szolgáltatással integrált WAF globális erőforrás. Ugyanaz a konfiguráció az összes bejárati hely esetében érvényes.
  
-## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>Hogyan a háttérbeli hozzáférés korlátozása csak a bejárati ajtóról?
-
-A háttérbeli IP-Access Control listát úgy is konfigurálhatja, hogy csak a kimenő IP-címtartományok számára engedélyezze a közvetlen hozzáférést az internetről. A szolgáltatás címkéi a virtuális hálózaton való használatra támogatottak. Emellett ellenőrizheti, hogy az X által továbbított-Host HTTP-fejléc mező érvényes-e a webalkalmazáshoz.
-
-
-
 
 ## <a name="which-azure-waf-options-should-i-choose"></a>Mely Azure WAF-beállításokat válasszam?
 
@@ -73,7 +67,10 @@ Jelenleg a ModSec CRS 2.2.9 és a CRS 3,0 szabályai csak a WAF esetében támog
 
 Az Azure-beli hálózati éleken globálisan elosztott Azure bejárati ajtó képes felvenni és földrajzilag elkülöníteni a nagy mennyiségű támadásokat. Létrehozhat egyéni WAF szabályzatot, amellyel automatikusan blokkolhatja és korlátozhatja az ismert aláírásokkal rendelkező http (s) támadásokat. További részletekként engedélyezheti DDoS Protection szabványt azon a VNet, amelyen a háttérrendszer üzembe lett helyezve. Azure DDoS Protection standard ügyfeleink további kedvezményeket kapnak, például a költséghatékonyságot, az SLA-garanciát és a DDoS gyors reagálású csapat szakembereinek hozzáférését a támadás során felmerülő azonnali segítségért. 
 
+Javasoljuk, hogy a DDoS-támadási felület csökkentése érdekében az éles környezetben zárolja a háttérrendszer-környezeteket. Lásd [hogyan a háttérbeli hozzáférés zárolása csak az Azure bejárati ajtót?](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door) című témakört.
+
+
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg az [Azure](waf-overview.md)webalkalmazási tűzfalat.
-- További információ az [Azure](front-door-overview.md)bejáratáról.
+- Ismerje meg az [Azure webalkalmazási tűzfalat](waf-overview.md).
+- További információ az [Azure bejáratáról](front-door-overview.md).

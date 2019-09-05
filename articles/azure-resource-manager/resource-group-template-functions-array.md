@@ -3,15 +3,15 @@ title: Azure Resource Manager template functions – tömbök és objektumok | M
 description: Leírja a Azure Resource Manager-sablonban a tömbök és objektumok kezeléséhez használt függvényeket.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: ec671c8698676b237021352e963ba08e0ddfe47e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
-ms.translationtype: HT
+ms.openlocfilehash: cd4a74a9e9e9bb1c91a0a7a103a1cfb861fa7770
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698222"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194414"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok tömb-és objektum-funkciói
 
@@ -99,7 +99,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | intOutput | Array | [1] |
 | stringOutput | Array | ["efgh"] |
@@ -554,7 +554,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -623,7 +623,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Sztring | egy |
-| stringOutput | Karakterlánc | O |
+| stringOutput | Sztring | O |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -699,7 +699,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"One": "a", "három": "c"} |
 | arrayOutput | Array | ["kettő", "három"] |
@@ -734,7 +734,7 @@ A megadott karakterlánc JSON-objektuma vagy egy üres objektum, ha **Null** van
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ha a JSON-objektumban szerepelnie kell egy paraméter értékének vagy változónak, [](resource-group-template-functions-string.md#concat) használja a concat függvényt a függvénynek átadott karakterlánc létrehozásához.
+Ha a JSON-objektumban szerepelnie kell egy paraméter értékének vagy változónak, használja a [concat](resource-group-template-functions-string.md#concat) függvényt a függvénynek átadott karakterlánc létrehozásához.
 
 ### <a name="example"></a>Példa
 
@@ -839,7 +839,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| arrayOutput | Karakterlánc | három |
+| arrayOutput | Sztring | három |
 | stringOutput | Sztring | e |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
@@ -1210,10 +1210,10 @@ A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["három"] |
-| stringOutput | Karakterlánc | 2 3 |
+| stringOutput | Sztring | 2 3 |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -1370,7 +1370,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"One": "a", "kettő": "b", "három": "C2", "Four": "d", "öt": "e"} |
 | arrayOutput | Array | ["egy", "kettő", "három", "négy"] |

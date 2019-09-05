@@ -1,24 +1,24 @@
 ---
-title: A Azurite nyílt forráskódú emulátor használata a blob Storage fejlesztéséhez és teszteléséhez (előzetes verzió)
-description: A Azurite nyílt forráskódú emulátor (előzetes verzió) ingyenes helyi környezetet biztosít az Azure Blob Storage-alkalmazások teszteléséhez.
+title: A Azurite nyílt forráskódú emulátor használata az Azure Storage fejlesztéséhez és teszteléséhez (előzetes verzió)
+description: A nyílt forráskódú Azurite-emulátor (előzetes verzió) ingyenes helyi környezetet biztosít az Azure Storage-alkalmazások teszteléséhez.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/12/2019
+ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: ebecd6cf9af5395e4da2b395ca9b2ff974a75409
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e611afd6f10154636eb2e0dd08437b4f7468d6b3
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721696"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309536"
 ---
-# <a name="use-the-azurite-open-source-emulator-for-blob-storage-development-and-testing-preview"></a>A Azurite nyílt forráskódú emulátor használata a blob Storage fejlesztéséhez és teszteléséhez (előzetes verzió)
+# <a name="use-the-azurite-open-source-emulator-for-azure-storage-development-and-testing-preview"></a>A Azurite nyílt forráskódú emulátor használata az Azure Storage fejlesztéséhez és teszteléséhez (előzetes verzió)
 
-A Azurite 3-as verziójú nyílt forráskódú emulátora (előzetes verzió) ingyenes helyi környezetet biztosít az Azure Blob Storage-alkalmazások teszteléséhez. Ha elégedett az alkalmazás helyi működésével, váltson egy Azure Storage-fiók használatára a felhőben. Az emulátor platformfüggetlen támogatást biztosít Windows, Linux és MacOS platformokon. A Azurite v3 támogatja az Azure Blob service által megvalósított API-kat.
+A Azurite 3,2-es verziójának nyílt forráskódú emulátora (előzetes verzió) ingyenes helyi környezetet biztosít az Azure Blob-és üzenetsor-tárolási alkalmazások teszteléséhez. Ha elégedett az alkalmazás helyi működésével, váltson egy Azure Storage-fiók használatára a felhőben. Az emulátor platformfüggetlen támogatást biztosít Windows, Linux és MacOS platformokon. A Azurite v3 támogatja az Azure Blob service által megvalósított API-kat.
 
-A Azurite a jövőbeli Storage Emulator platform. A Azurite felülírja az [Azure Storage](storage-use-emulator.md)-emulátort. A Azurite továbbra is frissülni fog az Azure Storage API-k legújabb verzióinak támogatásához.
+A Azurite a jövőbeli Storage Emulator platform. A Azurite felülírja az [Azure Storage-emulátort](storage-use-emulator.md). A Azurite továbbra is frissülni fog az Azure Storage API-k legújabb verzióinak támogatásához.
 
 A Azurite számos különböző módon telepíthetők és futtathatók a helyi rendszeren:
 
@@ -29,24 +29,27 @@ A Azurite számos különböző módon telepíthetők és futtathatók a helyi r
 
 ## <a name="install-and-run-the-azurite-visual-studio-code-extension"></a>A Azurite Visual Studio Code bővítmény telepítése és futtatása
 
-A Visual Studio Code-ban válassza a bővítmények ablaktáblát, és keressen rá a *Azurite* kifejezésre a következő **bővítményekben: piactér**.
+A Visual Studio Code-ban válassza a **bővítmények** ablaktáblát, és keressen rá a *Azurite* kifejezésre a következő **bővítményekben: piactér**.
 
 ![Visual Studio Code Extensions piactér](media/storage-use-azurite/azurite-vs-code-extension.png)
 
 Másik lehetőségként navigáljon a [vs Code bővítmény piacához](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) a böngészőben. A **telepítés** gombra kattintva nyissa meg a Visual Studio Code-ot, és lépjen közvetlenül a Azurite bővítmény oldalára.
 
-Gyorsan elindíthatja vagy lezárhatja a Azurite, ha a VS Code állapotsorban a **Azurite blob Service** elemre kattint, vagy a vs Code parancs palettáján a következő parancsokat adja ki. A parancs paletta megnyitásához nyomja le az **F1** billentyűt a vs Code-ban.
+Az Azurite gyors elindításához vagy bezárásához kattintson a **[Azurite blob Service]** vagy a **[Azurite üzenetsor-szolgáltatás]** elemre a vs Code állapotsorban, vagy adja ki a következő parancsokat a vs Code parancs palettáján. A parancs paletta megnyitásához nyomja le az **F1** billentyűt a vs Code-ban.
 
 A bővítmény a következő Visual Studio Code-parancsokat támogatja:
 
    * **Azurite: Start** – az összes Azurite-szolgáltatás elindítása
    * **Azurite: Az** összes Azurite-szolgáltatás bezárásának lezárása
    * **Azurite: Az összes Azurite Services-perzisztenciatörlése**
-   * **Azurite: Start** -blob Start blob Service
-   * **Azurite: Bezárás** – blob záró blob szolgáltatás
-   * **Azurite: Clean** -blob tiszta blob szolgáltatás
+   * **Azurite: BLOB Service** indítása – blob szolgáltatás indítása
+   * **Azurite: BLOB-szolgáltatás** lezárása – blob szolgáltatás lezárása
+   * **Azurite: A blob Service** tisztítása – a blob szolgáltatás tisztítása
+   * **Azurite: Üzenetsor-szolgáltatás** indítása – üzenetsor-szolgáltatás indítása
+   * **Azurite: Várólista-szolgáltatás** lezárása – várólista-szolgáltatás lezárása
+   * **Azurite: A várólista** -szolgáltatás tiszta várólistájának szolgáltatása
 
-Ha a Azurite a Visual Studio Code-ban szeretné konfigurálni, válassza a bővítmények ablaktáblát, és kattintson a jobb gombbal a **Azurite**elemre. Válassza a **bővítmény beállításainak konfigurálása**lehetőséget.
+A Azurite Visual Studio code-on belüli konfigurálásához válassza a kiterjesztések panelt. Válassza a **kezelés** (fogaskerék) ikont a **Azurite**. Válassza a **bővítmény beállításainak konfigurálása**lehetőséget.
 
 ![Azurite konfigurálása](media/storage-use-azurite/azurite-configure-extension-settings.png)
 
@@ -56,6 +59,8 @@ A következő beállítások támogatottak:
    * **Azurite: BLOB port** – a blob Service figyelési port. Az alapértelmezett port a 10000.
    * **Azurite: Hibakeresés** – a hibakeresési napló kimenete a Azurite csatornára. Az alapértelmezett érték **hamis**.
    * **Azurite: Hely** – a munkaterület helyének elérési útja. Az alapértelmezett érték a Visual Studio Code Working mappa.
+   * **Azurite: Üzenetsor-** állomás – a Queue szolgáltatás figyelő végpontja. Az alapértelmezett beállítás a 127.0.0.1.
+   * **Azurite: Várólista portja** – a Queue szolgáltatás figyelési port. Az alapértelmezett port a 10001.
    * **Azurite: A** csendes-csendes üzemmód letiltja a hozzáférési naplót. Az alapértelmezett érték **hamis**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>A Azurite telepítése és futtatása a NPM használatával
@@ -70,26 +75,33 @@ A Azurite telepítése után tekintse meg [a Azurite futtatása parancssorból](
 
 ## <a name="install-and-run-the-azurite-docker-image"></a>A Azurite Docker-rendszerkép telepítése és futtatása
 
-A [DockerHub](https://hub.docker.com/) használatával a [legújabb Azurite](https://hub.docker.com/_/microsoft-azure-storage-azurite) -lemezképet a következő paranccsal kérheti le:
+A [DockerHub](https://hub.docker.com/) használatával a [legújabb Azurite-lemezképet](https://hub.docker.com/_/microsoft-azure-storage-azurite) a következő paranccsal kérheti le:
 
 ```console
 docker pull mcr.microsoft.com/azure-storage/azurite
 ```
 
-**Futtassa a Azurite Docker**-rendszerképet:
+**Futtassa a Azurite Docker-rendszerképet**:
 
 A következő parancs futtatja a Azurite Docker-rendszerképet. A `-p 10000:10000` paraméter átirányítja a gazdagépről a 10000-as portra érkező kéréseket a Docker-példányra.
 
 ```console
-docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
 ```
 
 **Munkaterület helyének meghatározása**:
 
-A következő példában a `-v c:/azurite:/data` paraméter a Azurite megőrzött adatterületet adja meg. `c:/azurite`
+A következő példában a `-v c:/azurite:/data` paraméter a *c:/Azurite* adja meg a Azurite megőrzött adathelyként. A Docker-parancs futtatása előtt létre kell hozni a könyvtárat ( *c:/Azurite*).
 
 ```console
-docker run -p 10000:10000 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
+```
+
+**Csak a blob szolgáltatás futtatása**
+
+```console
+docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
+    azurite-blob --blobHost 0.0.0.0 --blobPort 10000
 ```
 
 **Az összes Azurite-paraméter beállítása**:
@@ -98,18 +110,21 @@ Ez a példa bemutatja, hogyan állíthatja be az összes parancssori paramétert
 
 ```console
 docker run -p 8888:8888
+           -p 9999:9999
            -v c:/azurite:/workspace mcr.microsoft.com/azure-storage/azurite azurite
            -l /workspace
            -d /workspace/debug.log
            --blobPort 8888
            --blobHost 0.0.0.0
+           --queuePort 9999
+           --queueHost 0.0.0.0
 ```
 
 További információ a Azurite konfigurálásáról az indításkor: [parancssori kapcsolók](#command-line-options) .
 
 ## <a name="clone-build-and-run-azurite-from-the-github-repository"></a>Azurite klónozása, létrehozása és futtatása a GitHub-adattárból
 
-Ez a telepítési módszer megköveteli, hogy a [git](https://git-scm.com/) telepítve legyen. A Azurite-projekt [GitHub](https://github.com/azure/azurite) -tárházának klónozásához használja az alábbi parancsot.
+Ez a telepítési módszer megköveteli, hogy a [git](https://git-scm.com/) telepítve legyen. A Azurite-projekt [GitHub-tárházának](https://github.com/azure/azurite) klónozásához használja az alábbi parancsot.
 
 ```console
 git clone https://github.com/Azure/Azurite.git
@@ -143,13 +158,15 @@ Ez a parancs arra utasítja a Azurite, hogy egy adott címtárban ( **c:\azurite
 Ez a szakasz részletesen ismerteti a Azurite indításakor elérhető parancssori kapcsolókat. Az összes parancssori kapcsoló nem kötelező.
 
 ```console
-C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>]
-    [-l | --location <workspace path>] [-s | --silent] [-d | --debug <log file path>]
+C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>] 
+    [-d | --debug <log file path>] [-l | --location <workspace path>]
+    [--queueHost <IP address>] [--queuePort <port address>]
+    [-s | --silent] [-h | --help]
 ```
 
-Az **-l** kapcsoló a **--Location**,- **s** egy parancsikon a-- **Silent**, a **-d** pedig a-- **Debug**billentyűparancs.
+A **-d** billentyűparancs a-- **Debug**, **-l** kapcsoló parancsikonja a-- **helyhez**, a **-s** pedig a- **-Silent**, a- **h** pedig egy parancsikon a-- **help**parancshoz.
 
-### <a name="listening-host"></a>Figyelő állomás
+### <a name="blob-listening-host"></a>BLOB figyelő gazdagép
 
 Nem **kötelező** Alapértelmezés szerint a Azurite helyi kiszolgálóként fogja figyelni a 127.0.0.1-t. A **--blobHost** kapcsoló használatával állítsa be a címeket a követelményekre.
 
@@ -168,7 +185,7 @@ azurite --blobHost 0.0.0.0
 > [!CAUTION]
 > A távoli kérelmek lehetővé tehetik, hogy a rendszer sebezhető legyen a külső támadásokkal szemben.
 
-### <a name="listening-port-configuration"></a>Figyelő port konfigurálása
+### <a name="blob-listening-port-configuration"></a>BLOB figyelési portjának konfigurációja
 
 Nem **kötelező** Alapértelmezés szerint a Azurite a 10000-es porton fogja figyelni a Blob service. Használja a **--blobPort** kapcsolót a szükséges figyelési port megadásához.
 
@@ -185,6 +202,46 @@ Az elérhető port automatikus kiválasztásának engedélyezése a rendszer sz�
 
 ```console
 azurite --blobPort 0
+```
+
+A használatban lévő port a Azurite indításakor jelenik meg.
+
+### <a name="queue-listening-host"></a>Üzenetsor-figyelő gazdagép
+
+Nem **kötelező** Alapértelmezés szerint a Azurite helyi kiszolgálóként fogja figyelni a 127.0.0.1-t. A **--queueHost** kapcsoló használatával állítsa be a címeket a követelményekre.
+
+Kérelmek elfogadása csak a helyi gépen:
+
+```console
+azurite --queueHost 127.0.0.1
+```
+
+Távoli kérelmek engedélyezése:
+
+```console
+azurite --queueHost 0.0.0.0
+```
+
+> [!CAUTION]
+> A távoli kérelmek lehetővé tehetik, hogy a rendszer sebezhető legyen a külső támadásokkal szemben.
+
+### <a name="queue-listening-port-configuration"></a>Várólista-figyelő portjának konfigurációja
+
+Nem **kötelező** Alapértelmezés szerint a Azurite a 10001-es porton fogja figyelni a Queue szolgáltatás. Használja a **--queuePort** kapcsolót a szükséges figyelési port megadásához.
+
+> [!NOTE]
+> Ha testreszabott portot használ, frissítenie kell a kapcsolódási karakterláncot vagy az Azure Storage-eszközök vagy SDK-k megfelelő konfigurációját.
+
+Queue szolgáltatás figyelési port testreszabása:
+
+```console
+azurite --queuePort 8888
+```
+
+Az elérhető port automatikus kiválasztásának engedélyezése a rendszer számára:
+
+```console
+azurite --queuePort 0
 ```
 
 A használatban lévő port a Azurite indításakor jelenik meg.
@@ -289,7 +346,7 @@ A Azurite az Azure Storage-hibák kezelésére szolgáló logikával van összha
 
 ### <a name="ra-grs"></a>RA-GRS
 
-A Azurite támogatja az olvasási hozzáférésű geo-redundáns replikálást (RA-GRS). A tárolási erőforrások esetében a másodlagos helyet a fióknév hozzáfűzésével érheti el. Például a következő címnek lehet a blobokhoz való hozzáférése a Azurite írásvédett másodlagos használatával:
+A Azurite támogatja az olvasási hozzáférésű geo-redundáns replikálást (RA-GRS). A tárolási erőforrások esetében a másodlagos helyet a fióknév hozzáfűzésével **érheti el.** Például a következő címnek lehet a blobokhoz való hozzáférése a Azurite írásvédett másodlagos használatával:
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 

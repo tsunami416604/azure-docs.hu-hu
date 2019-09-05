@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2019
 ms.author: magoedte
 ms.openlocfilehash: f395ba5d63463aa177b453d187d025a4461eff28
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "69905581"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor for VMs (előzetes verzió) engedélyezése – áttekintés
@@ -43,7 +43,7 @@ A Kezdés előtt győződjön meg arról, hogy tisztában van-e az alábbi szaka
 A Azure Monitor for VMs a következő régiókban támogatja a Log Analytics munkaterületet:
 
 - USA nyugati középső régiója
-- USA 2.<sup></sup> nyugati régiója
+- USA<sup>2.</sup> nyugati régiója
 - East US
 - Közép-Kanada
 - Az Egyesült Királyság déli régiója
@@ -166,7 +166,7 @@ A következő táblázat ismerteti a térkép funkció támogatja a hibrid körn
 | Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
 | Windows-ügynökök | Igen | A Windows [log Analytics ügynökével](../../azure-monitor/platform/log-analytics-agent.md)együtt a Windows-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
-| Linux-ügynökök | Igen | A [Linux rendszerhez készült log Analytics](../../azure-monitor/platform/log-analytics-agent.md)-ügynökkel együtt a Linux-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
+| Linux-ügynökök | Igen | A [Linux rendszerhez készült log Analytics-ügynökkel](../../azure-monitor/platform/log-analytics-agent.md)együtt a Linux-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
 | System Center Operations Manage felügyeleti csoport | Nem | |
 
 A függőségi ügynököt a következő helyekről töltheti le:
@@ -178,7 +178,7 @@ A függőségi ügynököt a következő helyekről töltheti le:
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-A Azure Monitor for VMs szolgáltatásainak engedélyezéséhez és eléréséhez a *log Analytics közreműködő* szerepkörrel kell rendelkeznie. A teljesítmény-, állapot-és leképezési adat megtekintéséhez az Azure- beli virtuális gép figyelési olvasójának szerepkörrel kell rendelkeznie. A Log Analytics-munkaterület-beli virtuális gépek az Azure Monitor kell konfigurálni.
+A Azure Monitor for VMs szolgáltatásainak engedélyezéséhez és eléréséhez a *log Analytics közreműködő* szerepkörrel kell rendelkeznie. A teljesítmény-, állapot-és leképezési adat megtekintéséhez az Azure-beli virtuális gép *figyelési olvasójának* szerepkörrel kell rendelkeznie. A Log Analytics-munkaterület-beli virtuális gépek az Azure Monitor kell konfigurálni.
 
 A Log Analytics-munkaterülethez való hozzáférésének kapcsolatos további információkért lásd: [munkaterületeinek kezeléséhez](../../azure-monitor/platform/manage-access.md).
 

@@ -8,14 +8,14 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 4d20256381eab155d4b7532591cea85e43080ec0
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: d7c538bd98b3924b422a93bc67cac405a6e4b7af
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019802"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383121"
 ---
-# <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>CSP-ként hozzon létre és kezeljen egy Azure IoT Central alkalmazást az ügyfél nevében 
+# <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>CSP-ként hozzon létre és kezeljen egy Azure IoT Central alkalmazást az ügyfél nevében
 
 A Microsoft Cloud Solution Provider (CSP) program egy Microsoft viszonteladói program. Célja, hogy a Microsoft kereskedelmi online szolgáltatásainak viszonteladása érdekében egy egyablakos program keretében biztosítjuk a Channel partnereit. További információ a [Cloud Solution Provider programról](https://partner.microsoft.com/cloud-solution-provider).
 
@@ -67,11 +67,14 @@ Az Azure-előfizetések lehetővé teszik az Azure-szolgáltatások példányain
 
 Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet a Microsoft partner Centerben. Az Azure-előfizetés létrehozása után lépjen vissza az **alkalmazás-létrehozási** lapra. Az új előfizetése megjelenik az **Azure-előfizetések** legördülő menüjében.
 
-További információt az [Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)-előfizetések című témakörben talál.
+További információt az Azure- [előfizetések](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)című témakörben talál.
 
 ## <a name="region"></a>Régió
 
 Válassza ki azt a régiót, amelyben létre szeretné hozni az Azure IoT Central alkalmazást. Az optimális teljesítmény érdekében általában ki kell választania azt a régiót, amely fizikailag az eszközeinek a legközelebb van.
+
+> [!NOTE]
+> Az **előzetes verziójú alkalmazás** sablonja jelenleg csak az **észak-európai** és az **USA középső** régiójában érhető el.
 
 További információ: Azure- [régiók](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#azure-regions).
 

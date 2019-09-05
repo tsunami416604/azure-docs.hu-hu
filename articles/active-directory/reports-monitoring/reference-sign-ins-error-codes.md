@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c5f7e45a1e1daa5d8504db2506a79e88c28bcc1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1b5aedd5c9bde7689df14c7efdf8d58692680c13
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989600"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383175"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenység jelentésének hibakódja 
 
@@ -153,6 +153,8 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |70018|Érvénytelen ellenőrzőkód: a felhasználó rossz felhasználói kódot írt be az eszközkód-folyamathoz. Az engedélyezés nincs jóváhagyva.|
 |70019|Az ellenőrzőkód lejárt. A felhasználó próbálja megismételni a bejelentkezést.|
 |70037|Helytelen válasz az ellenőrző kérdésre. Távoli hitelesítési munkamenet megtagadva.|
+|70043|Az Azure feltételes hozzáférés munkamenet-kezelésének hatására a munkamenet lejár|
+|70044|Az Azure feltételes hozzáférés munkamenet-kezelésének hatására a munkamenet lejár|
 |75001|Hiba történt a SAML-üzenetkötés során.|
 |75003|Az alkalmazás nem támogatott kötéssel kapcsolatos hibát adott vissza (a SAML-protokollválasz csak HTTP POST-kötésen keresztül küldhető el). Lépjen kapcsolatba az alkalmazás tulajdonosával.|
 |75005|Az Azure AD nem támogatja az alkalmazás egyszeri bejelentkezésre vonatkozó SAML-kérelmét. Lépjen kapcsolatba az alkalmazás tulajdonosával.|

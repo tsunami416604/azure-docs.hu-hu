@@ -12,12 +12,12 @@ ms.reviewer: klam, deli, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/05/2018
-ms.openlocfilehash: f0b568289a50b9883e6e0f1cba6b793c9e6e90e8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: b9f9a402ecde09dd00c2b070f784858a141e556b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051733"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309003"
 ---
 # <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Gyors útmutató: Automatizált logikai alkalmazások munkafolyamatainak létrehozása és kezelése – Visual Studio Code
 
@@ -33,15 +33,15 @@ Mielőtt elkezdené, győződjön meg róla, hogy rendelkezik az alábbi elemekk
 
 * Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Alapszintű ismeretek a [Logic app](../logic-apps/logic-apps-workflow-definition-language.md) -munkafolyamatok meghatározásáról és azok struktúrájáról, amely JavaScript Object Notationt (JSON) használ 
+* Alapszintű ismeretek a [Logic app-munkafolyamatok meghatározásáról](../logic-apps/logic-apps-workflow-definition-language.md) és azok struktúrájáról, amely JavaScript Object Notationt (JSON) használ 
 
-  Ha még nem ismeri a Logic Appst, próbálja ki az [első logikai alkalmazás létrehozásával](../logic-apps/quickstart-create-first-logic-app-workflow.md)kapcsolatos útmutatót a Azure Portalban, amely az alapfogalmakra összpontosít. 
+  Ha még nem ismeri a Logic Appst, próbálja ki az [első logikai alkalmazás létrehozásával kapcsolatos útmutatót a Azure Portalban](../logic-apps/quickstart-create-first-logic-app-workflow.md), amely az alapfogalmakra összpontosít. 
 
 * Hozzáférés a webhelyhez az Azure-ba való bejelentkezéshez és az Azure-előfizetéshez
 
 * Ha még nincsenek telepítve, töltse le és telepítse az alábbi eszközöket: 
 
-  * A [Visual Studio Code 1.25.1 vagy újabb verziója]("https://code.visualstudio.com/), amely ingyenes
+  * A [Visual Studio Code 1.25.1 vagy újabb verziója](https://code.visualstudio.com/), amely ingyenes
 
   * Visual Studio Code-bővítmény a Azure Logic Appshoz
 
@@ -54,7 +54,7 @@ Mielőtt elkezdené, győződjön meg róla, hogy rendelkezik az alábbi elemekk
 
     ![Bővítmény telepítve](./media/create-logic-apps-visual-studio-code/installed-extension.png)
 
-    További információ: [bővítmény piactér](https://code.visualstudio.com/docs/editor/extension-gallery). Megtekintheti és elküldheti a bővítmény nyílt forráskódú verziójához való hozzájárulást a [Visual Studio Code Azure Logic apps](https://github.com/Microsoft/vscode-azurelogicapps)-bővítményének a githubon való megkeresésével. 
+    További információ: [bővítmény piactér](https://code.visualstudio.com/docs/editor/extension-gallery). Megtekintheti és elküldheti a bővítmény nyílt forráskódú verziójához való hozzájárulást a [Visual Studio Code Azure Logic apps-bővítményének a githubon](https://github.com/Microsoft/vscode-azurelogicapps)való megkeresésével. 
 
 <a name="sign-in-azure"></a>
 
@@ -84,7 +84,7 @@ Mielőtt elkezdené, győződjön meg róla, hogy rendelkezik az alábbi elemekk
 
    ![Előfizetés kiválasztása](./media/create-logic-apps-visual-studio-code/select-azure-subscription.png)
 
-   Ha nem látja a várt előfizetéseket, **Logic apps** címke mellett válassza az előfizetések **kiválasztása** (szűrő ikon) lehetőséget. Keresse meg és válassza ki a kívánt előfizetéseket.
+   Ha nem látja a várt előfizetéseket, **Logic apps** címke mellett válassza az **előfizetések kiválasztása** (szűrő ikon) lehetőséget. Keresse meg és válassza ki a kívánt előfizetéseket.
 
 1. Az Azure-előfizetésében meglévő logikai alkalmazások vagy integrációs fiókok megtekintéséhez bontsa ki az előfizetését.
 
@@ -94,7 +94,7 @@ Mielőtt elkezdené, győződjön meg róla, hogy rendelkezik az alábbi elemekk
 
 ## <a name="create-logic-app"></a>Logikai alkalmazás létrehozása
 
-1. Ha még nem jelentkezett be az Azure-előfizetésbe a Visual Studio code-on belül, kövesse a cikk [](#sign-in-azure)lépéseit a bejelentkezéshez.
+1. Ha még nem jelentkezett be az Azure-előfizetésbe a Visual Studio code-on belül, kövesse a cikk lépéseit a [bejelentkezéshez](#sign-in-azure).
 
 1. Az előfizetés helyi menüjében válassza a **Létrehozás**elemet.
 
@@ -202,7 +202,7 @@ Mielőtt elkezdené, győződjön meg róla, hogy rendelkezik az alábbi elemekk
 
 Ha az Azure-ban már üzembe helyezett meglévő logikai alkalmazáson szeretne dolgozni, megnyithatja az alkalmazás munkafolyamat-definíciós fájlját a Visual Studio Code-ban.
 
-1. Ha még nem jelentkezett be az Azure-előfizetésbe a Visual Studio code-on belül, kövesse a cikk [](#sign-in-azure)lépéseit a bejelentkezéshez.
+1. Ha még nem jelentkezett be az Azure-előfizetésbe a Visual Studio code-on belül, kövesse a cikk lépéseit a [bejelentkezéshez](#sign-in-azure).
 
 1. Az Azure ablakban **Logic apps**alatt bontsa ki az Azure-előfizetését, és válassza ki a kívánt logikai alkalmazást. 
 

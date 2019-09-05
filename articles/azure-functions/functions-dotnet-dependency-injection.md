@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 05/28/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1dbbb6e7bd88e08520225515c422529dc260e1b2
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: e31f3dc166177ce36289b97d85d90a9582c9cae5
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377371"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375984"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőségi befecskendezés használata a .NET-Azure Functions
 
@@ -71,7 +71,7 @@ namespace MyNamespace
 
 ## <a name="use-injected-dependencies"></a>Beinjektált függőségek használata
 
-ASP.NET Core a konstruktor injekcióját használja, hogy a függőségek elérhetők legyenek a függvény számára. Az alábbi minta azt mutatja be, `IMyService` hogyan `HttpClient` történik a és a függőségek beadása egy http-triggerrel elindított függvénybe.
+ASP.NET Core a konstruktor injekcióját használja, hogy a függőségek elérhetők legyenek a függvény számára. Az alábbi minta azt mutatja be, `IMyService` hogyan `HttpClient` történik a és a függőségek beadása egy http-triggerrel elindított függvénybe. 
 
 ```csharp
 using System;
@@ -112,7 +112,7 @@ namespace MyNamespace
 }
 ```
 
-A konstruktor-injektálás használata azt jelenti, hogy nem használhat statikus függvényeket, ha szeretné kihasználni a függőségi injekciót.
+A konstruktor-injektálás használata azt jelenti, hogy nem használhat statikus függvényeket, ha szeretné kihasználni a függőségi injekciót. A Cosmos-ügyfél [ezt](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/CodeSamples/AzureFunctions/AzureFunctionsCosmosClient.cs)ajánlja.
 
 ## <a name="service-lifetimes"></a>Szolgáltatás élettartama
 

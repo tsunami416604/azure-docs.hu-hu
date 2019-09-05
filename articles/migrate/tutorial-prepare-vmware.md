@@ -4,15 +4,15 @@ description: Ismerteti, hogyan lehet felkészülni a helyszíni VMware virtuáli
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5bd4926494e13c1dd0cfb6283292ade967471238
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3b623675343d63385213091b66e220c5358c6437
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013437"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383326"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware virtuális gépek előkészítése az Azure-ba történő értékeléshez és áttelepítéshez
 
@@ -47,7 +47,7 @@ Ezekre az Azure-engedélyekre van szüksége:
 
 1. A Azure Portal nyissa meg az előfizetést, és válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
 2. A **hozzáférés engedélyezése**területen keresse meg a megfelelő fiókot, és kattintson rá az engedélyek megtekintéséhez.
-3. **Közreműködői** vagy tulajdonosi engedélyekkel kell rendelkeznie.
+3. **Közreműködői** vagy **tulajdonosi** engedélyekkel kell rendelkeznie.
     - Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajdonosa.
     - Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal társítsa a szerepkört.
 
@@ -114,7 +114,7 @@ A VMware virtuális gépek értékelésének előkészítéséhez ellenőriznie 
 
 Azure Migrate el kell érnie a vCenter Server, hogy felderítse a virtuális gépeket az értékeléshez és az ügynök nélküli áttelepítéshez. Csak az értékeléshez van szükség a vCenter Server írásvédett fiókjára.
 
-Ha URL-alapú tűzfal. proxyt használ, engedélyezze a hozzáférést a szükséges [Azure URL](migrate-support-matrix-vmware.md#assessment-url-access-requirements)-címekhez.
+Ha URL-alapú tűzfal. proxyt használ, engedélyezze a hozzáférést a szükséges [Azure URL-címekhez](migrate-support-matrix-vmware.md#assessment-url-access-requirements).
 
 Győződjön meg arról, hogy a proxy feloldja az URL-címek keresése során fogadott CNAME-rekordokat.
 

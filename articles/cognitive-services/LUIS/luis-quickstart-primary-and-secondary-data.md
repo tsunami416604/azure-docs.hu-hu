@@ -1,5 +1,5 @@
 ---
-title: Egyszerű entitás, kifejezések listája – LUIS
+title: 'Oktatóanyag: Egyszerű entitás, kifejezések listája – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban az egyszerű entitás használatával kinyerheti a feldolgozói feladatokból származó, a vállalat által megtanult adatok nevét. A kinyerés pontosságának növeléséhez adjon hozzá egy kifejezéslistát az egyszerű entitásra jellemző kifejezésekről.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 1b731d8000e748813649ea32c91b9566a8bc245a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 87e4fe3671f419383cb342fdb7dca55a8d2eb45d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648605"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376262"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Oktatóanyag: Nevek kinyerése egyszerű entitással és egy kifejezés listával
 
@@ -79,7 +79,7 @@ Miután megjelöli az entitásokat a példaszövegekben, fontos lépés a kifeje
 
 ## <a name="import-example-app"></a>Alkalmazás importálása – példa
 
-1.  Töltse le és mentse az [alkalmazás JSON](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/intentonly.json) -fájlját a szándékok oktatóanyagból.
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/intentonly.json) a szándékok oktatóanyagból.
 
 2. Importálja a JSON-t egy új alkalmazásba.
 
@@ -99,7 +99,7 @@ Miután megjelöli az entitásokat a példaszövegekben, fontos lépés a kifeje
 
     ![Job (állás) nevű és simple (egyszerű) típusú egyszerű entitás modális előugró párbeszédpaneljének létrehozása](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-1. A fennmaradó hosszúságú kimondott szöveg jelölje meg a feladattal kapcsolatos szavakat a feladattal együtt a szó vagy kifejezés kiválasztásával, majd a felugró menüből válassza a feladat lehetőséget. 
+1. A fennmaradó hosszúságú kimondott szöveg jelölje meg a feladattal kapcsolatos szavakat a **feladattal** együtt a szó vagy kifejezés kiválasztásával, majd a felugró menüből válassza a **feladat** lehetőséget. 
 
     [![Képernyőkép a LUIS kiemelt feladat entitás címkézés](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "képernyőképe, a LUIS címkézés feladat entitás kiemelésével")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
@@ -233,9 +233,9 @@ Nyissa meg a [Jobs-phrase-list. csv](https://github.com/Azure-Samples/cognitive-
 
     [![Képernyőkép a hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Képernyőkép az új kifejezést tartalmazó párbeszédpanelen előugró létrehozása")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    Ha további szavakat szeretne felvenni a kifejezés listára, válassza az újraellenőrzés lehetőséget, majd tekintse át az új **kapcsolódó értékeket** , és adja hozzá a megfelelőt. 
+    Ha további szavakat szeretne felvenni a kifejezés listára, válassza az újraellenőrzés **lehetőséget,** majd tekintse át az új **kapcsolódó értékeket** , és adja hozzá a megfelelőt. 
 
-    Ügyeljen arra, hogy az **alábbi értékek** legyenek felcserélhetők, mert ezeket az értékeket mind a feladatok szinonimájának kell tekinteni. További információ a megváltoztathatatlan és nem cserélhető [kifejezések listájának fogalmakról](luis-concept-feature.md#how-to-use-phrase-lists).
+    Ügyeljen arra, hogy az **alábbi értékek legyenek felcserélhetők** , mert ezeket az értékeket mind a feladatok szinonimájának kell tekinteni. További információ a megváltoztathatatlan és nem cserélhető [kifejezések listájának fogalmakról](luis-concept-feature.md#how-to-use-phrase-lists).
 
 1. Kattintson a **kész** gombra a kifejezések listájának aktiválásához.
 

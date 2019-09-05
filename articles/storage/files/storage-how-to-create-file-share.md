@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e56be394bc7667dfca9a0b417593e8e587073712
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
-ms.translationtype: HT
+ms.openlocfilehash: 000dacb7530b52784a68663d295fde9784d50e29
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699648"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013564"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Fájlmegosztás létrehozása az Azure Filesban
 Azure-fájlmegosztás a [Azure Portal](https://portal.azure.com/), az Azure Storage PowerShell-parancsmagok, az Azure Storage ügyféloldali kódtárak vagy az azure Storage REST API használatával hozható létre. Az oktatóanyag során a következőket fogja elsajátítani:
@@ -41,24 +41,25 @@ Azure-fájlmegosztás létrehozásához használhat meglévő tárfiókot, vagy 
 
 
 ## <a name="create-file-share-through-powershell"></a>Fájlmegosztás létrehozása PowerShell-lel
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-A PowerShell használatának előkészítéseként töltse le és telepítse az Azure PowerShell-parancsmagokat. Lásd:  [Azure PowerShell telepítése és konfigurálása](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)a telepítési ponthoz és a telepítési utasításokhoz.
+A PowerShell használatának előkészítéseként töltse le és telepítse az Azure PowerShell-parancsmagokat. Lásd:  [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/overview)a telepítési ponthoz és a telepítési utasításokhoz.
 
 > [!Note]  
 > Javasoljuk, hogy frissítsen a legújabb Azure PowerShell modulra, vagy töltse le és telepítse azt.
 
-1. **Hozzon létre egy környezetet a tárfiókhoz és a fiókkulcshoz** A környezet magában foglalja a tárfiók nevét és a fiókkulcsot. A fiók kulcsának a Azure Portalból történő másolásával kapcsolatos utasításokért lásd: [Storage-fiók elérési kulcsa](../common/storage-account-manage.md#access-keys). [](https://portal.azure.com/)
+1. **Hozzon létre egy új Storage-fiókot:** A Storage-fiók olyan tárolók közös készlete, amelyekben az Azure-fájlmegosztás, valamint más tárolási erőforrások, például Blobok vagy várólisták helyezhetők üzembe.
 
-    ```powershell
-    $storageContext = New-AzStorageContext <storage-account-name> <storage-account-key>
+    ```PowerShell
+    $resourceGroup = "myresourcegroup"
+    $storAcctName = "myuniquestorageaccount"
+    $region = "westus2"
+    $storAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name $storAcctName -SkuName Standard_LRS -Location $region -Kind StorageV2
     ```
-    
+
 2. **Hozzon létre egy új fájlmegosztást**:    
     
     ```powershell
-    $share = New-AzStorageShare logs -Context $storageContext
+    $shareName = "myshare"
+    $share = New-AzStorageShare -Context $storAcct.Context -Name $shareName
     ```
 
 > [!Note]  

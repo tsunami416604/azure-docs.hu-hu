@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: d932164f972169c93e368a41c09df039196341b5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b6c04edb3fc843dfe1b9176dc06bf312473591c3
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141635"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376444"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott rendszerváltozók
 Ez a cikk a Azure Data Factory által támogatott rendszerváltozókat ismerteti. Ezeket a változókat kifejezésekben használhatja Data Factory entitások definiálásához.
@@ -39,8 +39,8 @@ Ezeket a rendszerváltozókat az trigger JSON-ban bárhol lehet hivatkozni, ha a
 
 | Változó neve | Leírás |
 | --- | --- |
-| @trigger().scheduledTime |Az az idő, amikor az eseményindító ütemezve lett a folyamat futásának meghívására. Például egy 5 percenként elindított trigger esetén ez a változó a következőt fogja `2017-06-01T22:20:00Z`visszaadni `2017-06-01T22:25:00Z` `2017-06-01T22:29:00Z` :.|
-| @trigger(). kezdő időpont |Az az idő, amikor az eseményindító **ténylegesen** elindította a folyamat futtatását. Például egy 5 percenként elindított trigger esetén ez a változó a következőhöz `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:25:00.7958577Z` `2017-06-01T22:29:00.9935483Z` hasonló értéket adhat vissza:. (Megjegyzés: Az időbélyeg alapértelmezés szerint ISO 8601 formátumú.|
+| @trigger().scheduledTime |Az az idő, amikor az eseményindító ütemezve lett a folyamat futásának meghívására. Például egy 5 percenként elindított trigger esetén ez a változó a következőt fogja `2017-06-01T22:20:00Z`visszaadni `2017-06-01T22:25:00Z` `2017-06-01T22:30:00Z` :.|
+| @trigger(). kezdő időpont |Az az idő, amikor az eseményindító **ténylegesen** elindította a folyamat futtatását. Például egy 5 percenként elindított trigger esetén ez a változó a következőhöz `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:25:00.7958577Z` `2017-06-01T22:30:00.9935483Z` hasonló értéket adhat vissza:. (Megjegyzés: Az időbélyeg alapértelmezés szerint ISO 8601 formátumú.|
 
 ## <a name="tumbling-window-trigger-scope"></a>Kiesési ablak Triggerének hatóköre
 Ezeket a rendszerváltozókat az trigger JSON-ban bárhol lehet hivatkozni, ha az trigger típusa: "TumblingWindowTrigger."

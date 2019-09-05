@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213540a5b6c77146155365133f2cca08eea25351
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
-ms.translationtype: HT
+ms.openlocfilehash: b00b061b1763d4b4e7236d8dc9ac1eedf7f923bc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608157"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533021"
 ---
 # <a name="baseline-policy-require-mfa-for-admins-preview"></a>Alapterv házirend: MFA megkövetelése a rendszergazdák számára (előzetes verzió)
 
 A rendszerjogosultságú fiókokhoz hozzáféréssel rendelkező felhasználók korlátlan hozzáféréssel rendelkeznek a környezethez. Ezeknek a fiókoknak a kihasználása miatt speciális gondossággal kell kezelnie őket. A rendszerjogosultságú fiókok védelmének egyik gyakori módszere, ha a bejelentkezéshez a fiókok ellenőrzésének erősebb formáját igényli. Azure Active Directory a többtényezős hitelesítés (MFA) megkövetelésével erősebb fiókokat lehet ellenőrizni.
 
-**Az MFA megkövetelése a rendszergazdák számára (előzetes verzió)**  olyan alapszintű [szabályzat](concept-baseline-protection.md) , amely minden alkalommal megköveteli az MFA használatát, amikor az alábbi jogosultsági szintű rendszergazdai szerepkörök valamelyike jelentkezik be:
+Az **MFA megkövetelése a rendszergazdák számára (előzetes verzió)** olyan alapszintű [szabályzat](concept-baseline-protection.md) , amely minden alkalommal megköveteli az MFA használatát, amikor az alábbi jogosultsági szintű rendszergazdai szerepkörök valamelyike jelentkezik be:
 
 * Globális rendszergazda
 * SharePoint-rendszergazda
@@ -52,14 +52,14 @@ A házirend **alapkonfigurációjának házirendje: Az MFA megkövetelése a ren
 
 A szabályzat engedélyezése és a rendszergazdák általi védelem:
 
-1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
+1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory** > a**feltételes hozzáférést**.
 1. A szabályzatok listájában válassza ki **az alapházirend elemet: MFA megkövetelése a rendszergazdák számára**(előzetes verzió).
 1. Állítsa be a házirend **engedélyezése** beállítást a **szabályzat azonnali használatára**.
-1. Kattintson a **Mentés**gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
 > [!WARNING]
-> Ha a szabályzat előzetes verzióban volt, **a későbbiekben automatikusan engedélyezheti a szabályzatot** . Ezzel a beállítással csökkenthető a felhasználói hatás hirtelen csökkentése. Ha ezt a lehetőséget választotta, ha elérhetővé vált, **ne használja** automatikusan a házirendet. Ha ezt az alapkonfigurációt szeretné használni, tekintse meg a fenti lépéseket az engedélyezéshez.
+> Ha a szabályzat előzetes verzióban volt, **a későbbiekben automatikusan engedélyezheti a szabályzatot** . Ezzel a beállítással csökkenthető a felhasználói hatás hirtelen csökkentése. Ha ezt a lehetőséget választotta, ha elérhetővé vált, **ne használja automatikusan a házirendet** . Ha ezt az alapkonfigurációt szeretné használni, tekintse meg a fenti lépéseket az engedélyezéshez.
 
 ## <a name="next-steps"></a>További lépések
 

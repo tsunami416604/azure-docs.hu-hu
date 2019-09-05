@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 4a4421b87aa094306a42212f76f7590d4f139047
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
-ms.translationtype: HT
+ms.openlocfilehash: 1b8297a797f83935f16365a15d100ce88cadca30
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607970"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099541"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Az Azure SAP LaMa összekötője
 
@@ -99,10 +98,10 @@ Az egyszerű szolgáltatás nem rendelkezik engedélyekkel alapértelmezés szer
 
 Nyissa meg az SAP láma webhelyét, és navigáljon az infrastruktúrához. Lépjen a Cloud managerek lapra, és kattintson a Hozzáadás gombra. Válassza ki a Microsoft Azure Felhőadapter majd kattintson a Tovább gombra. Adja meg a következő információkat:
 
-* Címke: Válassza ki az összekötő-példány nevét
+* Címke Válassza ki az összekötő-példány nevét
 * Felhasználónév: Egyszerű szolgáltatás alkalmazásazonosítója
-* Jelszó: Egyszerű szolgáltatásnév kulcs/jelszó
-* URL: Alapértelmezett érték megtartása https://management.azure.com/
+* Jelszó Egyszerű szolgáltatásnév kulcs/jelszó
+* URL-cím: Alapértelmezett érték megtartása https://management.azure.com/
 * Figyelési időköz (másodperc): Legalább 300 kell lennie
 * Előfizetés azonosítója: Azure-előfizetés azonosítója
 * Azure Active Directory bérlő azonosítója: A Active Directory bérlő azonosítója
@@ -352,7 +351,7 @@ Adjon hozzá egy másik virtuális állomásnevet és IP-címet ahhoz a névhez,
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-db -n 255.255.255.128
 ```
 
-Futtassa a SWPM adatbázis-példányának telepítését az alkalmazáskiszolgáló virtuális gépen, ne a HANA virtuális gépen. Használja az *ah1-db-* t az *adatbázis* -gazdagéphez az SAP-rendszerhez készült párbeszédablak- *adatbázisban*.
+Futtassa a SWPM adatbázis-példányának telepítését az alkalmazáskiszolgáló virtuális gépen, ne a HANA virtuális gépen. Használja az *ah1-db-* t az *adatbázis-gazdagéphez* az *SAP-rendszerhez*készült párbeszédablak-adatbázisban.
 
 #### <a name="install-sap-netweaver-application-server-for-sap-hana"></a>Az SAP NetWeaver Application Server telepítése SAP HANA
 
@@ -388,7 +387,7 @@ Ha manuálisan állítja be, új HDB-userstore-bejegyzéseket is létre kell hoz
 /usr/sap/AH1/hdbclient/hdbuserstore SET DEFAULT ah1-db:35041@AH1 SAPABAP1 <password>
 ```
 
-Használja az *ah1-di-0 értéket* a *Pas instance Host neveként* a párbeszédablak *elsődleges Application Server*-példányában.
+Használja az *ah1-di-0 értéket* a *Pas instance Host neveként* a párbeszédablak *elsődleges Application Server-példányában*.
 
 #### <a name="post-installation-steps-for-sap-hana"></a>A SAP HANA telepítés utáni lépései
 
@@ -431,7 +430,7 @@ Az SAP Software kiépítési vezető (SWPM) elindítása előtt csatlakoztatnia 
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di-0 -n 255.255.255.128
 ```
 
-Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszédablak *elsődleges Application Server*-példányában.
+Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszédablak *elsődleges Application Server-példányában*.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -467,7 +466,7 @@ Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszéd
 
 ### <a name="errors-and-warnings-during-a-system-clone"></a>Hibák és figyelmeztetések a rendszer klónozásakor
 
-* Hiba történt, amikor a rendszer megpróbálta regisztrálni a példány-ügynököt az alkalmazáskiszolgáló vagy a ASCS- *példány kényszerített regisztrálási és indítási példány* -ügynöke számára.
+* Hiba történt, amikor a rendszer megpróbálta regisztrálni a példány-ügynököt az alkalmazáskiszolgáló vagy a ASCS- *példány kényszerített regisztrálási és indítási példány-ügynöke* számára.
   * Hiba történt a példány-ügynök regisztrálására tett kísérlet során. (RemoteException: ' Nem sikerült betölteni a példány adatait a (\\z) AS1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0 profilból:  Cannot access profile '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0': Nincs ilyen fájl vagy könyvtár. ')
   * Megoldás  
    Győződjön meg arról, hogy a ASCS/SCS sapmnt-megosztásának teljes hozzáférése van a SAP_AS1_GlobalAdmin
@@ -504,12 +503,12 @@ Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszéd
 ### <a name="errors-and-warnings-during-application-server-installation"></a>Hibák és figyelmeztetések az alkalmazáskiszolgáló telepítésekor
 
 * Hiba történt a SAPinst lépés végrehajtásakor: getProfileDir
-  * HIBA: (A lépés által jelentett utolsó hiba: Megfogott ESAPinstException a modulban – hívás: A következő lépés validatorja: "| NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | ind | getSid | 0 | NW_readProfileDir | ind | ind | ind | ind | readProfile | 0 | getProfileDir "hibát jelzett: A \\csomópont \as1-ascs\sapmnt\AS1\SYS\profile nem létezik. A probléma megoldásához interaktív módban indítsa el a SAPinst.
+  * HIBA (A lépés által jelentett utolsó hiba: Megfogott ESAPinstException a modulban – hívás: A következő lépés validatorja: "| NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | ind | getSid | 0 | NW_readProfileDir | ind | ind | ind | ind | readProfile | 0 | getProfileDir "hibát jelzett: A \\csomópont \as1-ascs\sapmnt\AS1\SYS\profile nem létezik. A probléma megoldásához interaktív módban indítsa el a SAPinst.
   * Megoldás  
     Győződjön meg arról, hogy a SWPM olyan felhasználóval fut, amely hozzáfér a profilhoz. Ez a felhasználó konfigurálható az alkalmazáskiszolgáló telepítővarázslója
 
 * Hiba történt a SAPinst lépés végrehajtásakor: askUnicode
-  * HIBA: (A lépés által jelentett utolsó hiba: Megfogott ESAPinstException a modulban – hívás: A következő lépés validatorja: "| NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | ind | getSid | 0 | NW_getUnicode | ind | ind | ind | ind | Unicode | 0 | askUnicode "hibát jelzett: A probléma megoldásához interaktív módban indítsa el a SAPinst.
+  * HIBA (A lépés által jelentett utolsó hiba: Megfogott ESAPinstException a modulban – hívás: A következő lépés validatorja: "| NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | ind | getSid | 0 | NW_getUnicode | ind | ind | ind | ind | Unicode | 0 | askUnicode "hibát jelzett: A probléma megoldásához interaktív módban indítsa el a SAPinst.
   * Megoldás  
     Ha egy legutóbbi SAP-kernelt használ, a SWPM nem tudja megállapítani, hogy a rendszer egy Unicode rendszer-e már a ASCS lévő Message Server használatával. További részletekért lásd az SAP Megjegyzés [2445033] .  
     Ezt a problémát az SAP láma új támogatási csomagja/javítása határozza meg.  
@@ -560,7 +559,7 @@ Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszéd
   iaxxbaccount.cpp: 430: CIaOsAccount::validatePasswordPolicy_impl()  
   synxcaccmg.cpp: 297: ISyAccountMgt::PasswordValidationMessage CSyAccountMgtImpl::validatePasswordPolicy(saponazure,*****) const )
   * Megoldás  
-    Ügyeljen arra, hogy a virtuális gép és a tartományvezérlő közötti kommunikáció engedélyezéséhez adjon hozzá egy gazdagép-szabályt a lépés elkülönítése beállításhoz.
+    Ügyeljen arra, hogy a virtuális gép és a tartományvezérlő közötti kommunikáció engedélyezéséhez adjon hozzá egy gazdagép-szabályt a lépés *elkülönítése* beállításhoz.
 
 ## <a name="next-steps"></a>További lépések
 * [SAP HANA az Azure-műveletek útmutatójában][hana-ops-guide]

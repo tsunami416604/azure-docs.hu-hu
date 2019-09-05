@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: atsenthi
-ms.openlocfilehash: 440d5e37e03e58a39275e715ebce4fa07961cc84
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
-ms.translationtype: HT
+ms.openlocfilehash: 2e730ae8ecf6f1fab12aff23cab0ac3aa246233a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598580"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173362"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric-fürt portjainak megnyitása
 
@@ -111,4 +110,4 @@ A parancshoz `-FrontendPort` tartozó érték azt a portot jelöli, amelyet a te
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [hálózatkezelésről Service Fabric](service-fabric-patterns-networking.md). rvice-Fabric-Patterns-Networking.MD).
+További információ a [Service Fabric hálózatkezeléséről](service-fabric-patterns-networking.md).

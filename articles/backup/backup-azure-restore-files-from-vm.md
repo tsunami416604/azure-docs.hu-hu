@@ -7,14 +7,14 @@ manager: carmonm
 keywords: elemszintű helyreállítás; fájl helyreállítása az Azure-beli virtuális gép biztonsági másolatából; fájlok visszaállítása az Azure-beli virtuális gépről
 ms.service: backup
 ms.topic: conceptual
-ms.date: 3/01/2019
+ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 524d0854e8691428738cee321e394f572ea80112
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
-ms.translationtype: HT
+ms.openlocfilehash: 5ff4f1ff8a3d6143285b2842c351e1d26bd356ea
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689181"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210367"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -68,7 +68,7 @@ A fájlok vagy mappák helyreállítási pontról történő visszaállításáh
     - download.microsoft.com
     - Helyreállítási szolgáltatás URL-címei (a Geo-név arra a régióra utal, ahol a helyreállítási tár található)
         - https:\//pod01-rec2.Geo-Name.backup.windowsazure.com (Azure nyilvános térségek)
-        - https:\//pod01-rec2.Geo-Name.backup.windowsazure.cn (az Azure China esetében)
+        - https:\//pod01-rec2.Geo-Name.backup.windowsazure.cn (Azure China 21Vianet)
         - https:\//pod01-rec2.Geo-Name.backup.windowsazure.us (az USA kormányzati szervei számára)
         - https:\//pod01-rec2.Geo-Name.backup.windowsazure.de (az Azure Germany esetében)
     - 3260-es kimenő port
@@ -101,7 +101,7 @@ A Linux rendszerben a helyreállítási pont kötetei ahhoz a mappához vannak c
 
 ## <a name="closing-the-connection"></a>A kapcsolatok bezárása
 
-A fájlok azonosítása és a helyi tárolóhelyre való másolása után távolítsa el (vagy válassza le) a további meghajtókat. A meghajtók leválasztásához a Azure Portal **Fájl-helyreállítási** menüjében kattintson a **lemezek**leválasztása elemre.
+A fájlok azonosítása és a helyi tárolóhelyre való másolása után távolítsa el (vagy válassza le) a további meghajtókat. A meghajtók leválasztásához a Azure Portal **Fájl-helyreállítási** menüjében kattintson a **lemezek leválasztása**elemre.
 
 ![Lemezek leválasztása](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
@@ -231,7 +231,7 @@ Ha problémák merülnek fel a virtuális gépek fájljainak helyreállítása k
 | Azon a gépen, amelyen az exe fut: Ha a Leválasztás gombra kattint, az új kötetek nem lesznek leválasztva | A gépen lévő iSCSI-kezdeményező nem válaszol, és nem frissíti a megcélzott kapcsolatát, és megtartja a gyorsítótárat. |  A **Leválasztás**gombra kattintva várjon néhány percet. Ha az új kötetek nincsenek leválasztva, böngésszen végig az összes köteten. Ha az összes kötetet megkeresi, a kezdeményező frissíti a csatlakozást, és a kötet le van választva, és a lemez nem érhető el.|
 | Exe-kimenet: A parancsfájl sikeresen fut, de az "új kötetek csatolva" elem nem jelenik meg a parancsfájl kimenetén. |    Ez egy átmeneti hiba    | A kötetek már csatlakoztatva lettek volna. Nyissa meg a Explorert a tallózáshoz. Ha ugyanazt a gépet használja a parancsfájlok futtatásához, érdemes megfontolni a gép újraindítását, és a listát a következő exe-futtatásokban kell megjeleníteni. |
 | Linux-specifikus: Nem sikerült megtekinteni a kívánt köteteket | Előfordulhat, hogy a parancsfájlt futtató gép operációs rendszere nem ismeri fel a védett virtuális gép mögöttes fájlrendszerét | Győződjön meg arról, hogy a helyreállítási pont összeomlása konzisztens vagy fájl-konzisztens. Ha a fájl konzisztens, futtassa a parancsfájlt egy másik gépen, amelynek operációs rendszere felismeri a védett virtuális gép fájlrendszerét |
-| Windows-specifikus: Nem sikerült megtekinteni a kívánt köteteket | Lehet, hogy a lemezek csatlakoztatva lettek, de a kötetek nincsenek konfigurálva | A Lemezkezelés képernyőn azonosítsa a helyreállítási ponthoz kapcsolódó további lemezeket. Ha a lemezek bármelyike offline állapotban van, próbálja meg azokat online állapotba helyezni, ha a jobb gombbal a lemezre kattint, és az "online" gombra kattint.|
+| Windows-specifikus: Nem sikerült megtekinteni a kívánt köteteket | Lehet, hogy a lemezek csatlakoztatva lettek, de a kötetek nincsenek konfigurálva | A Lemezkezelés képernyőn azonosítsa a helyreállítási ponthoz kapcsolódó további lemezeket. Ha a lemezek bármelyike offline állapotban van, próbálja meg őket online állapotba helyezni, ha a jobb gombbal a lemezre kattint, és az "online" gombra kattint.|
 
 ## <a name="security"></a>Biztonság
 
@@ -257,7 +257,7 @@ A generált parancsfájl a Microsoft Azure Backup Service-hez készült hivatalo
 
 Csak a rendszergazda futtathatja a szkriptet, és emelt szintű módban kell futtatnia. A parancsfájl csak előre létrehozott lépéseket futtat, és nem fogadja el a külső forrásból érkező adatokat.
 
-A parancsfájl futtatásához egy jelszóra van szükség, amely a Azure Portal vagy a PowerShell/parancssori felületének létrehozásakor csak a jogosultsággal rendelkező felhasználó számára jelenik meg. Ezzel biztosíthatja, hogy a parancsfájlt letöltő jogosult felhasználó a parancsfájl futtatásához is felelős legyen.
+A parancsfájl futtatásához egy olyan jelszót kell megadnia, amely a Azure Portal vagy a PowerShell/CLI parancsfájl generálásának időpontjában csak a jogosultsággal rendelkező felhasználó számára jelenik meg. Ezzel biztosíthatja, hogy a parancsfájlt letöltő jogosult felhasználó a parancsfájl futtatásához is felelős legyen.
 
 #### <a name="browse-files-and-folders"></a>Fájlok és mappák tallózása
 
@@ -269,4 +269,4 @@ A helyreállítási szolgáltatás és a gép közötti adatforgalom védelme a 
 
 A szülő/biztonsági mentés alatt lévő virtuális gépen található összes fájl Access Control lista (ACL) a csatlakoztatott fájlrendszerben is megmarad.
 
-A parancsfájl csak olvasási hozzáférést biztosít egy helyreállítási ponthoz, és csak 12 órára érvényes. Ha a felhasználó korábban el szeretné távolítani a hozzáférést, jelentkezzen be az Azure Portalra, a PowerShellbe vagy a CLI-be, majd hajtsa végre az adott helyreállítási ponthoz tartozó leválasztási lemezeket. A parancsfájl azonnal érvénytelenítve lesz.
+A parancsfájl csak olvasási hozzáférést biztosít egy helyreállítási ponthoz, és csak 12 órára érvényes. Ha a felhasználó korábban el szeretné távolítani a hozzáférést, jelentkezzen be az Azure Portalra, a PowerShellbe vagy a CLI-be, majd hajtsa végre az adott helyreállítási ponthoz tartozó **leválasztási lemezeket** . A parancsfájl azonnal érvénytelenítve lesz.

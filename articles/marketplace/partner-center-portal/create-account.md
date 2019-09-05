@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: b1839316f8f11af7e4f365694fc017c262d00a86
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 71a74476bcec6cb2ab3dc5efabe1a550577f0107
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191724"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383242"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactér-fiók létrehozása a partner Centerben
 
@@ -20,7 +20,7 @@ Az ajánlatok [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en v
 
 ## <a name="create-a-partner-center-account"></a>Partner Center-fiók létrehozása
 
-Ebben a cikkben bemutatjuk, hogyan hozhat létre partner Center-fiókot, beleértve a következőket: 
+Ebben a cikkben bemutatjuk, hogyan hozhat létre partner Center-fiókot, beleértve a következőket:
 
 - [Regisztrálás a partner Center beléptetési oldal használatával](#to-create-a-commercial-marketplace-account-in-partner-center)
 - [Bejelentkezés munkahelyi fiókkal](#sign-in-with-a-work-account)
@@ -28,7 +28,7 @@ Ebben a cikkben bemutatjuk, hogyan hozhat létre partner Center-fiókot, beleér
 - [Adja meg a közzétevői profilját](#provide-your-publisher-profile)
 
 >[!Important]
->Ha van olyan fiókja a [Cloud Partner Portal (CPP)](https://cloudpartner.azure.com) , amelyet a partner központba helyeztek át, nem kell új fiókot létrehoznia. További információkért lásd: [a CPP-ről](#publishers-moving-from-cpp) áthelyezett közzétevők. 
+>Ha van olyan fiókja a [Cloud Partner Portal (CPP)](https://cloudpartner.azure.com) , amelyet a partner központba helyeztek át, nem kell új fiókot létrehoznia. További információkért lásd: [a CPP-ről áthelyezett közzétevők](#publishers-moving-from-cpp) . 
 
 ### <a name="before-you-begin"></a>Előkészületek
 
@@ -48,7 +48,7 @@ Tekintse át az [**üdvözli a Microsoft partner Center**](https://partner.micro
 Így a vállalati munkahelyi e-mail-fiók tartományát összekapcsolhatja az új partner Center-fiókkal. A fiókok társításával a vállalat alkalmazottai a munkahelyi fiók felhasználónevével és jelszavával jelentkezhetnek be a fiókpartner-központba.
 
 >[!Note]
->Annak megállapításához, hogy a vállalata rendelkezik-e már munkahelyi fiókkal, hogyan hozhat létre új munkahelyi fiókot, illetve hogyan állíthat be több munkahelyi fiókot a partner centerrel való használatra, látogasson el [a munkahelyi fiókra és a partner](./company-work-accounts.md)központba. 
+>Annak megállapításához, hogy a vállalata rendelkezik-e már munkahelyi fiókkal, hogyan hozhat létre új munkahelyi fiókot, illetve hogyan állíthat be több munkahelyi fiókot a partner centerrel való használatra, látogasson el [a munkahelyi fiókra és a partner központba](./company-work-accounts.md). 
 
 #### <a name="agree-to-terms-and-conditions"></a>A feltételek és Kikötések elfogadása
 
@@ -56,11 +56,11 @@ Meg kell egyeznie a [Microsoft Marketplace kiadói szerződésben](http://go.mic
 
 #### <a name="provide-your-publisher-profile"></a>Adja meg a közzétevői profilját
 
-A közzétevői profil tartalmazza a vállalat nevét és az MPN-AZONOSÍTÓját. Ha még nem tette meg, akkor csatlakoznia kell a Microsoft Partner Networkhoz. [](https://partner.microsoft.com/commercial) A Microsoft Partner Network csatlakoztatása után egy MPN-azonosítót fog megadni. 
+A közzétevői profil tartalmazza a vállalat nevét és az MPN-AZONOSÍTÓját. Ha még nem tette meg, akkor csatlakoznia kell a [Microsoft partner Networkhoz](https://partner.microsoft.com/commercial). A Microsoft Partner Network csatlakoztatása után egy MPN-azonosítót fog megadni.
 
-Hozzon létre egy közzétevői azonosítót. A közzétevő azonosítója egyedileg azonosítja a vállalatot és az ajánlatait a piactéren és a AppSource. 
+Hozzon létre egy közzétevői azonosítót. A közzétevő azonosítója egyedileg azonosítja a vállalatot és az ajánlatait a piactéren és a AppSource.
 
-Miután megerősítette a közzétevői profil adatait, fogadja el a feltételeket és kikötéseket, és hozza létre a partner Center-fiókot az **elfogadás és folytatás**lehetőség kiválasztásával. 
+Miután megerősítette a közzétevői profil adatait, fogadja el a feltételeket és kikötéseket, és hozza létre a partner Center-fiókot az **elfogadás és folytatás**lehetőség kiválasztásával.
 
 >[!Important]
 >*A feltételek elfogadásához engedélyezni kell a vállalat nevében való részvételt.*
@@ -96,7 +96,7 @@ A Azure Active Directory bérlő egy másik felhasználója hozzáadhat egy új 
    1. **PublisherID**: A partner központ által a közzétevő egyedi azonosítására használt azonosító. A mező alapértelmezett értéke leképezi a rendszer egy meglévő `PublisherID` és egyedi elemét, amely nem használható fel újra, ezért ezt a mezőt frissíteni kell. <br>
    1. **Kapcsolattartási adatok**: Szükség esetén frissítse a kapcsolattartási adatokat.
 
-1. A folyamat elvégzése után az újonnan létrehozott közzétevőt a bal oldali navigációs menü listájában a **kereskedelmi piactér** program segítségével kezelheti. Ha nem látja a **kereskedelmi piactér** programját, frissítse az oldalt.  Az új közzétevő megjelenik a közzétevők listájában.
+1. A folyamat elvégzése után az újonnan létrehozott közzétevőt a bal oldali navigációs menü listájában a **kereskedelmi piactér** program segítségével kezelheti. Ha nem látja a **kereskedelmi piactér** programját, frissítse az oldalt.  Az új közzétevő megjelenik a **közzétevők** listájában.
 
 ## <a name="next-steps"></a>További lépések
 

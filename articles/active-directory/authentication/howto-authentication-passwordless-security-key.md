@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a063891339a46366490447b7c7a7a1a14fd81be6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 316a523a6216354ae5b6166be55e183a4e050766
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828916"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305075"
 ---
 # <a name="enable-passwordless-security-key-sign-in-for-azure-ad-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése az Azure AD-ben (előzetes verzió)
 
@@ -39,8 +39,8 @@ A szervezetek dönthetnek úgy, hogy az alábbi módszerek közül egy vagy töb
 ### <a name="enable-credential-provider-via-intune"></a>Hitelesítő adatok szolgáltatójának engedélyezése az Intune-on keresztül
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Tallózással **Microsoft Intune** > **eszköz** > beléptetése Windows-**regisztráció** > Windows**Hello for Business** > -**Tulajdonságok**.
-1. A **Settings (beállítások** ) beállításnál a bejelentkezéshez a **biztonsági kulcsok használata** **engedélyezett**.
+1. Tallózással **Microsoft Intune** > **eszköz beléptetése** > Windows-**regisztráció** > Windows**Hello for Business** > -**Tulajdonságok**.
+1. A **Settings (beállítások** ) beállításnál a **bejelentkezéshez a biztonsági kulcsok használata** **engedélyezett**.
 
 A bejelentkezéshez szükséges biztonsági kulcsok konfigurálása nem függ a vállalati Windows Hello konfigurálásának.
 
@@ -54,12 +54,12 @@ A hitelesítő adatok szolgáltatójának engedélyezéséhez a következő egy�
    1. Név: Biztonsági kulcsok a Windows-bejelentkezéshez
    1. Leírás: Lehetővé teszi, hogy a Windows bejelentkezéskor használni lehessen a következő biztonsági kulcsokat:
    1. Platform: Windows 10 és újabb verziók
-   1. Platform típusa: Egyéni
+   1. Profil típusa: Egyéni
    1. Egyéni OMA-URI beállítások:
       1. Név: A Windows-bejelentkezéshez tartozó a biztonsági kulcsok bekapcsolása
       1. OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
-      1. Adattípus: Egész szám
-      1. Érték: 1 
+      1. Adattípus: Integer
+      1. Érték 1 
 1. Ezt a házirendet meghatározott felhasználókhoz, eszközökhöz vagy csoportokhoz lehet hozzárendelni. További információt a következő cikkben talál: [Microsoft Intune felhasználói és eszköz profiljának társítása](https://docs.microsoft.com/intune/device-profile-assign).
 
 ![Egyéni Intune-eszköz konfigurációs szabályzatának létrehozása](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
@@ -72,12 +72,12 @@ Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telep
 1. Válassza a **fájl** > **új projekt**lehetőséget.
 1. Adjon nevet a projektnek, és jegyezze fel az elérési utat, ahol a projekt létrejött.
 1. Kattintson a **Tovább** gombra.
-1. Hagyja kiválasztva a **kiépítési csomagot** a **kiválasztott projekt** -munkafolyamatként, és válassza a **tovább**lehetőséget.
+1. Hagyja kiválasztva a **kiépítési csomagot** a **kiválasztott projekt-munkafolyamatként** , és válassza a **tovább**lehetőséget.
 1. Válassza ki az **összes Windows asztali kiadás** elemet a **válassza ki a megtekinteni és konfigurálni kívánt beállításokat** , majd válassza a **tovább**lehetőséget.
 1. Válassza a **Finish** (Befejezés) elemet.
 1. Az újonnan létrehozott projektben keresse meg a **Futásidejű beállítások** > **WindowsHelloForBusiness** > **SecurityKeys** > **UseSecurityKeyForSignIn**.
 1. Állítsa be a **UseSecurityKeyForSignIn** beállítást **engedélyezve**értékre.
-1. Válassza > ki a**kiépítési csomag** exportálása lehetőséget
+1. Válassza ki a**kiépítési csomag** **exportálása** > lehetőséget
 1. Hagyja meg az alapértelmezett értékeket a **létrehozási** ablakban a **kiépítési csomag leírása** szakaszban, majd válassza a **tovább**lehetőséget.
 1. Hagyja meg az alapértelmezett értékeket a **létrehozási** ablakban a kiépítési **csomag biztonsági adatainak kiválasztása** területen, majd válassza a **tovább**lehetőséget.
 1. Jegyezze fel, vagy módosítsa a **Build** -ablakok elérési útját a **válassza ki, hová szeretné menteni a kiépítési csomagot** , és válassza a **tovább**lehetőséget.
@@ -87,7 +87,7 @@ Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telep
 
 ## <a name="obtain-fido2-security-keys"></a>FIDO2 biztonsági kulcsainak beszerzése
 
-A támogatott kulcsokkal és gyártókkal kapcsolatos további információkért [](concept-authentication-passwordless.md) tekintse meg a FIDO2 biztonsági kulcsait ismertető cikket.
+A támogatott kulcsokkal és gyártókkal kapcsolatos további információkért tekintse meg a FIDO2 biztonsági kulcsait [ismertető cikket.](concept-authentication-passwordless.md)
 
 > [!NOTE]
 > Az NFC-alapú biztonsági kulcsok megvásárlása és megtervezése esetén támogatott NFC-olvasóra lesz szüksége.
@@ -101,7 +101,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 ### <a name="enable-new-passwordless-authentication-method"></a>Új, jelszóval nem rendelkező hitelesítési módszer engedélyezése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **hitelesítési**módszerekhitelesítési > módszerének házirendjét **(előzetes verzió)**
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **hitelesítési**módszerekhitelesítési > **módszerének házirendjét (előzetes verzió)**
 1. Az egyes **módszerek**alatt válassza ki a következő beállításokat
    1. **Engedélyezés** – igen vagy nem
    1. **Cél** – az összes felhasználó vagy a felhasználók kiválasztása
@@ -118,8 +118,8 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 1. Tallózással keresse meg a[https://myprofile.microsoft.com](https://myprofile.microsoft.com)
 1. Ha még nem tette meg, jelentkezzen be
 1. Kattintson a **biztonsági adatok** lehetőségre
-   1. Ha a felhasználó már rendelkezik legalább egy olyan Azure multi-Factor Authentication-hitelesítési módszerrel, amely regisztrálva van, akkor azonnal regisztrálhatnak egy FIDO2 biztonsági kulcsot.
-   1. Ha nincs regisztrálva legalább egy Azure multi-Factor Authentication-módszer, hozzá kell adnia egyet.
+   1. Ha a felhasználónak már van legalább egy Azure Multi-Factor Authentication-metódusa, akkor azonnal regisztrálhatnak egy FIDO2 biztonsági kulcsot.
+   1. Ha nincs legalább egy Azure Multi-Factor Authentication-metódus regisztrálva, hozzá kell adnia egyet.
 1. Adjon hozzá egy FIDO2 biztonsági kulcsot a **metódus hozzáadása** és a **biztonsági kulcs** kiválasztása elemre kattintva.
 1. **USB-eszköz** vagy **NFC-eszköz** kiválasztása
 1. Álljon készen a kulcsra, és válassza a **tovább** lehetőséget.
@@ -137,7 +137,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Microsoft Authenticator alkalmazás felhasználói regisztrációja és kezelése
 
-Ha be szeretné állítani a Microsoft Authenticator alkalmazást a telefonos bejelentkezéshez, kövesse a bejelentkezni a [fiókba a Microsoft Authenticator alkalmazás használatával](../user-help/user-help-auth-app-sign-in.md)című cikkben található útmutatást.
+Ha be szeretné állítani a Microsoft Authenticator alkalmazást a telefonos bejelentkezéshez, kövesse a [bejelentkezni a fiókba a Microsoft Authenticator alkalmazás használatával](../user-help/user-help-auth-app-sign-in.md)című cikkben található útmutatást.
 
 ## <a name="sign-in-with-passwordless-credential"></a>Bejelentkezés jelszó nélküli hitelesítő adatokkal
 
@@ -171,4 +171,4 @@ Dolgozunk azon funkció támogatásán, amely lehetővé teszi az UPN-változás
 
 [Tudnivalók az eszközök regisztrálásáról](../devices/overview.md)
 
-[Az Azure multi-Factor Authentication ismertetése](../authentication/howto-mfa-getstarted.md)
+[További tudnivalók az Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

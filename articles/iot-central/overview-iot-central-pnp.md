@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: af5b16448a39e0106dbc04724607ff603483484c
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: e1c206c329b491ec9f8d36a12e2b4bf8ed8107b3
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997746"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383016"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Mi az Azure IoT Central (előzetes verziójú funkciók)?
 
@@ -62,7 +62,7 @@ Ez a cikk az Azure IoT Central esetében ismerteti:
 - A tömb sémájának típusai nem támogatottak.
 - Az alkalmazás sablonjának exportálása és az alkalmazás másolása nem támogatott.
 - A rendszer csak a C eszközoldali SDK-t és a Node. js-eszközt és a Service SDK-kat támogatja.
-- Csak a Select régiókban érhető el.
+- Ez csak az észak-európai és az USA középső régiójában érhető el.
 
 ## <a name="personas"></a>Szerepek
 

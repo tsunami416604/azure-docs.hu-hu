@@ -1,5 +1,5 @@
 ---
-title: Language Understanding bot Node. js v4
+title: 'Oktatóanyag: Language Understanding bot Node. js v4'
 titleSuffix: Azure Cognitive Services
 description: A Node.js használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). Ez csevegőrobot a Human Resources app használatával rövid idő alatt megvalósít egy robotmegoldást. A robot összeállításához a Bot Framework 4-es verzióját és az Azure webalkalmazás-robotot használja.
 services: cognitive-services
@@ -9,18 +9,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 08/30/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8455a9c9ecff89643e090f1d763a44f97f5779f5
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 8227a7683c1333b21537630f7f074f624926f984
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70206879"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375771"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Oktatóanyag: Webalkalmazás-robot használata Language Understanding a Node. js-ben 
 
-A Node. js használatával a Language Understanding (LUIS) nyelvvel integrált csevegési robot hozható létre. A robot az Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) Resource és a [bot Framework](https://github.com/Microsoft/botbuilder-dotnet) v4-es verziójával készült.
+A Node. js használatával a Language Understanding (LUIS) nyelvvel integrált csevegési robot hozható létre. A robot az Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) Resource és a bot Framework v4-es [verziójával](https://github.com/Microsoft/botbuilder-dotnet) készült.
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -58,7 +58,7 @@ A Node. js használatával a Language Understanding (LUIS) nyelvvel integrált c
     |Application Insights|Ne módosítsa a megadott alapértelmezett értéket.|
     |Microsoft-alkalmazás azonosítója és jelszava|Ne módosítsa a megadott alapértelmezett értéket.|
 
-1. A **bot**-sablonban válassza ki a következőt, majd a beállítások területen válassza a **kiválasztás** gombot:
+1. A **bot-sablonban**válassza ki a következőt, majd a beállítások területen válassza a **kiválasztás** gombot:
 
     |Beállítás|Cél|Kiválasztás|
     |--|--|--|
@@ -305,7 +305,7 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
 
 1. Indítsa el a robot-emulátort, és válassza a **robot megnyitása**lehetőséget.
 1. A **bot megnyitása** előugró ablakban adja meg a robot URL-címét, például `http://localhost:3978/api/messages`:. Az `/api/messages` útvonal a robot webes címe.
-1. Adja meg a **Microsoft-alkalmazás azonosítóját** és a Microsoft- **alkalmazás jelszavát**, amely a letöltött robot gyökerében található **. env** fájlban található.
+1. Adja meg a **Microsoft-alkalmazás azonosítóját** és a **Microsoft-alkalmazás jelszavát**, amely a letöltött robot gyökerében található **. env** fájlban található.
 
     Szükség esetén létrehozhat egy új bot-konfigurációt, és a robothoz `MicrosoftAppPassword` tartozó Visual Studio-projektben található **. env** fájlból másolhatja `MicrosoftAppId` . A bot-konfigurációs fájl nevének meg kell egyeznie a robot nevével. 
 

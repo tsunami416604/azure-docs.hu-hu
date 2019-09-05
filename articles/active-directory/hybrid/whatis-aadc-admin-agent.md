@@ -1,5 +1,5 @@
 ---
-title: Mi az az Azure AD Connect felügyeleti ügynök – az Azure AD Connect |} A Microsoft Docs
+title: Mi a Azure AD Connect felügyeleti ügynök – Azure AD Connect | Microsoft Docs
 description: Szinkronizálását és figyelni a helyszíni környezetet az Azure ad-vel használt eszközöket írja le.
 services: active-directory
 author: billmath
@@ -7,55 +7,57 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 09/04/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ab3fff4294b4cda3d1554ef2761d3f4acaca35
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 222dab87ee71870e564e426d7466555893cc565b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687220"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305199"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Mi az az Azure AD Connect felügyeleti ügynök? 
-Az Azure AD Connect felügyeleti ügynök része egy új Azure Active Directory Connect, amelyet telepíthet egy Azure Active Directory Connect-kiszolgálón. Adott adatok gyűjtését az Active Directory-környezetet, amelynek segítségével a Microsoft támogatási szakértője hibák elhárításához, ha a támogatási eset nyitása szolgál. 
+A Azure AD Connect felügyeleti ügynök a Azure Active Directory Connect egy új összetevője, amely Azure Active Directory Connect-kiszolgálóra telepíthető. A szolgáltatás a Active Directory-környezetből származó adatok összegyűjtésére szolgál, amely segít a Microsoft támogatási szakemberének a támogatási eset megnyitásakor felmerülő problémák megoldásában. 
 
 >[!NOTE]
->A felügyeleti ügynök nincs telepítve, és alapértelmezés szerint engedélyezve van.  Annak érdekében, hogy az adatgyűjtést, amelyek segítik a támogatási esetek telepítenie kell az ügynököt.
+>A rendszergazdai ügynök nincs telepítve, és alapértelmezés szerint nincs engedélyezve.  Telepítenie kell az ügynököt, hogy adatokat gyűjtsön a támogatási esetekkel való segítségnyújtás érdekében.
 
-Telepítésekor a bizonyos kéréseket az Azure AD Connect felügyeleti ügynök vár az adatokat az Azure Active Directoryból, a kért adatokat olvas be a sync-környezetet, és elküldi azt az Azure Active Directoryhoz, ahol mutatnak be a Microsoft támogatja a visszafejtés. 
+Ha telepítve van, a Azure AD Connect felügyeleti ügynök megvárja a Azure Active Directorytól érkező adatokra vonatkozó kérelmeket, lekéri a kért adatokat a szinkronizálási környezetből, és elküldi azt a Azure Active Directorynak, ahol a Microsoft támogatási szolgálata látja el mérnök. 
 
-Semmilyen módon nem tárolja a az Azure AD Connect felügyeleti ügynök kérdezi le a környezetből információkat – csak jelenik meg a Microsoft támogatási szakértője vizsgálata és elhárítása az Azure Active Directory Connect kapcsolódó támogatási esetet, hogy megnyitotta az Azure AD Connect felügyeleti ügynök nincs telepítve a kiszolgálón az Azure AD Connect alapértelmezés szerint. 
+A Azure AD Connect felügyeleti ügynöknek a környezetből való lekérésére vonatkozó információk semmilyen módon nem tárolódnak, csak a Microsoft támogatási szakembere láthatja, hogy segítse őket a Azure Active Directory Connect kivizsgálásában és hibaelhárításában. a Azure AD Connect felügyeleti ügynök megnyitásával kapcsolatos támogatási eset alapértelmezés szerint nincs telepítve a Azure AD Connect-kiszolgálón. 
 
-## <a name="install-the-azure-ad-connect-administration-agent-on-the-azure-ad-connect-server"></a>Az Azure AD Connect felügyeleti ügynök telepítése az Azure AD Connect-kiszolgálón 
-Az Azure AD Connect felügyeleti ügynök bináris fájljainak kerülnek az AAD Connect-kiszolgálón. Az ügynök telepítéséhez tegye a következőket: 
+## <a name="install-the-azure-ad-connect-administration-agent-on-the-azure-ad-connect-server"></a>Telepítse a Azure AD Connect felügyeleti ügynököt a Azure AD Connect-kiszolgálóra 
 
+Előfeltételek:
+1.  Azure AD Connect telepítve van a kiszolgálón
+2.  Azure AD Connect Health telepítve van a kiszolgálón
 
+![felügyeleti ügynök](media/whatis-aadc-admin-agent/adminagent0.png)
 
-1. Adminisztrátori módban megnyitott powershell 
-2. Keresse meg azt a könyvtárat, ahol az alkalmazás található cd "C:\Program Files\Microsoft Azure Active Directory Connect\SetupFiles" 
-3. A AADConnectAdminAgentSetup.exe alkalmazás futtatása 
- 
-Amikor a rendszer kéri, adja meg az Azure AD globális rendszergazdai hitelesítő adatait. 
+A Azure AD Connect felügyeleti ügynök bináris fájljait a HRE-összekötő kiszolgálója helyezi el. Az ügynök telepítéséhez tegye a következőket:
 
->[!NOTE]
->Nincs olyan ismert probléma, ahol kérni fogja a hitelesítő adatok több alkalommal. Ez a következő kiadás javítja.
+1.  A PowerShell megnyitása rendszergazdai módban
+2.  Navigáljon ahhoz a könyvtárhoz, ahol az alkalmazás található CD "C:\Program Files\Microsoft Azure Active Directory Connect\Tools"
+3.  ConfigureAdminAgent. ps1 futtatása
 
-Az ügynök telepítését követően látni fogja az alábbi két új program a kiszolgáló a Vezérlőpulton a "Program eltávolítása" listában: 
+Ha a rendszer kéri, adja meg az Azure AD globális rendszergazdai hitelesítő adatait. A Azure AD Connect telepítés során megadott hitelesítő adatoknak kell szerepelniük.
+
+Az ügynök telepítése után a következő két új program jelenik meg a "programok telepítése és törlése" listában a kiszolgáló Vezérlőpultján: 
 
 ![felügyeleti ügynök](media/whatis-aadc-admin-agent/adminagent1.png)
 
-## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>A Microsoft szolgáltatás-mérnökkel, megjelennek a saját szinkronizálási szolgáltatás milyen adatok? 
-Támogatási eset megnyitásakor a Microsoft támogatási szakembere látható, az adott felhasználó, a vonatkozó adatokat az Active Directory, az Azure Active Directory Connect-kiszolgálón az Active Directory-összekötő-térben az Azure Active Directory összekötőterében, az Azure-ban Az Active Directory Connect-kiszolgáló és az Azure Active Directory Connect-kiszolgálón a Metaverzumba. 
+## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>A szinkronizálási szolgáltatásom milyen adatai jelennek meg a Microsoft Service engineerben? 
+Amikor megnyit egy támogatási esetet, az Microsoft ügyfélszolgálata mérnök láthatja, hogy egy adott felhasználó számára a Active Directory, a Active Directory-összekötő területe a Azure Active Directory Connect-kiszolgálón, a Azure Active Directory-összekötő területe az Azure-ban Active Directory összekapcsolási kiszolgálót és a metaverse-t a Azure Active Directory Connect-kiszolgálón. 
 
-A Microsoft támogatási szakembere nem módosítják az adatokat a rendszer, és nem látható a jelszavakat. 
+A Microsoft ügyfélszolgálata mérnök nem módosíthatja a rendszeren lévő összes információt, és nem láthat jelszavakat. 
 
-## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>Mi történik, ha most nem kívánok adatok eléréséhez a Microsoft támogatási szakértő? 
-Az ügynök telepítve van, ha nem szeretné, hogy a Microsoft-szolgáltatás mérnök, egy támogatási hívás az adatok eléréséhez, ha a szolgáltatás konfigurációs fájl módosításával, az alább ismertetett letilthatják a funkciók: 
+## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>Mi a teendő, ha nem szeretném, hogy a Microsoft támogatási szakembere hozzáférjen az adataim eléréséhez? 
+Ha az ügynök telepítése után nem szeretné, hogy a Microsoft szolgáltatási mérnöke hozzáférjen az adataihoz egy támogatási híváshoz, a szolgáltatás konfigurációs fájljának módosításával letilthatja a funkciót a következő módon: 
 
-1.  Nyissa meg **C:\Program Files\Microsoft Azure AD Connect felügyeleti Agent\AzureADConnectAdministrationAgentService.exe.config** a Jegyzettömbben.
-2.  Tiltsa le **UserDataEnabled** beállítása a lent látható módon. Ha **UserDataEnabled** beállítás létezik, és igaz értékre, majd állítsa be hamis értékre van állítva. Ha a beállítás nem létezik, majd adja hozzá a beállítást alább látható módon.    
+1.  Nyissa meg a **C:\Program Files\Microsoft Azure ad Connect felügyeleti Agent\AzureADConnectAdministrationAgentService.exe.config** a Jegyzettömbben.
+2.  Tiltsa le a **UserDataEnabled** beállítást az alább látható módon. Ha a **UserDataEnabled** -beállítás létezik, és igaz értékre van állítva, állítsa hamis értékre. Ha a beállítás nem létezik, adja hozzá a beállítást az alább látható módon.    
 
     ```xml
     <appSettings>
@@ -65,7 +67,7 @@ Az ügynök telepítve van, ha nem szeretné, hogy a Microsoft-szolgáltatás m�
     ```
 
 3.  Mentse a konfigurációs fájlt.
-4.  Azure AD Connect felügyeleti ügynök szolgáltatás újraindításához, ahogy az alábbi
+4.  Azure AD Connect felügyeleti ügynök szolgáltatás újraindítása az alább látható módon
 
 ![felügyeleti ügynök](media/whatis-aadc-admin-agent/adminagent2.png)
 

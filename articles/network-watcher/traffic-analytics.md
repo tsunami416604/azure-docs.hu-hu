@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: yagup
-ms.openlocfilehash: 03c0106d793fc7b77ccc8a9176f158a9928ab291
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
-ms.translationtype: HT
+ms.openlocfilehash: dbc0829adc29848c9047368295a2ade589834e8b
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620122"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70031858"
 ---
 # <a name="traffic-analytics"></a>Forgalomelemzés
 
@@ -177,7 +177,9 @@ Válassza ki a következő beállításokat a képen látható módon:
 1. **Állapot** *kiválasztása*
 2. Válassza a *2. verziót* a flow- **naplók verziójának**kiválasztásához. A 2. verzió folyamat-munkameneti statisztikát tartalmaz (bájtok és csomagok)
 3. Válasszon ki egy meglévő Storage-fiókot a folyamat naplófájljainak tárolásához a alkalmazásban. Ha örökre szeretné tárolni az adattárolást, állítsa az értéket *0-ra*. A Storage-fiókhoz Azure Storage-díjakat kell fizetnie. Győződjön meg arról, hogy a tároló nem rendelkezik "Data Lake Storage Gen2 hierarchikus névtér engedélyezve" beállítás értéke TRUE (igaz). Emellett a NSG nem tárolhatók tűzfallal rendelkező Storage-fiókban. 
-4. Állítsa be a megőrzési időt arra, hogy hány napig szeretné tárolni az adatok tárolását.
+4. Állítsa be a **megőrzési** időt arra, hogy hány napig szeretné tárolni az adatok tárolását.
+> [!IMPORTANT]
+> Jelenleg hiba történt a [hálózati biztonsági csoport (NSG) Network Watcher adatforgalmának naplózása](network-watcher-nsg-flow-logging-overview.md) során, ezért a rendszer nem törli automatikusan a blob Storage-ból a megőrzési házirend beállításai alapján. Ha meglévő, nem nulla adatmegőrzési szabályzattal rendelkezik, javasoljuk, hogy rendszeresen törölje a megőrzési időtartamon felüli tárolási blobokat a felmerülő költségek elkerülése érdekében. További információ a NSG flow log-tárolási blog törléséről: [NSG flow log Storage-Blobok törlése](network-watcher-delete-nsg-flow-log-blobs.md).
 5. **Traffic Analytics állapothoz**válassza *a* be lehetőséget.
 6. Válassza ki a feldolgozási időközt. Az Ön választása alapján a rendszer begyűjti a flow-naplókat a Storage-fiókból, és Traffic Analytics dolgozza fel. 1 óránként vagy 10 percenként is kiválaszthatja a feldolgozási időközt.
 7. Válasszon ki egy meglévő Log Analytics (OMS) munkaterületet, vagy válassza az **Új munkaterület létrehozása** lehetőséget egy új létrehozásához. A Traffic Analytics a Log Analytics munkaterületet használja az elemzés létrehozásához használt összesített és indexelt adatokat tárolására. Ha egy meglévő munkaterületet választ ki, akkor azt a [támogatott régiók](#supported-regions-log-analytics-workspaces) egyikében kell megadnia, és az új lekérdezési nyelvre kell frissíteni. Ha nem szeretne frissíteni egy meglévő munkaterületet, vagy nem rendelkezik egy támogatott régióbeli munkaterülettel, hozzon létre egy újat. További információ a lekérdezési nyelvekről: az [Azure log Analytics frissítése az új naplók keresésére](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
@@ -193,7 +195,7 @@ A Traffic Analytics szolgáltatást a Azure PowerShell [set-AzNetworkWatcherConf
 
 ## <a name="view-traffic-analytics"></a>Traffic Analytics megtekintése
 
-A portál bal oldalán válassza a **minden szolgáltatás**lehetőséget, majd a **szűrő** mezőbe írja be a figyelőt. Ha a **figyelő** megjelenik a keresési eredmények között, válassza ki. A Traffic Analytics és képességei megismeréséhez válassza a **Network Watcher**, majd a **Traffic Analytics**lehetőséget.
+A portál bal oldalán válassza a **minden szolgáltatás**lehetőséget, majd a **szűrő** mezőbe írja be a *figyelőt* . Ha a **figyelő** megjelenik a keresési eredmények között, válassza ki. A Traffic Analytics és képességei megismeréséhez válassza a **Network Watcher**, majd a **Traffic Analytics**lehetőséget.
 
 ![A Traffic Analytics irányítópult elérése](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 

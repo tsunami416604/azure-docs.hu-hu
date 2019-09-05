@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1ea736b560e2e910ede203e8ce8c0b157ebbce71
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: aecbaab1ed29a1acfdcb4eec53b88fc266bbab09
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640872"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309408"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök-alapú)
 
@@ -26,8 +26,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Állítsa be a forrás-környezetet, és helyezzen üzembe egy Azure Migrate replikációs berendezést az ügynök-alapú áttelepítéshez.
 > * Állítsa be a célként megadott környezetet az áttelepítéshez.
-> * Állítsa be a replikációs házirendet.
-> * Replikáció engedélyezése.
+> * Állítson be replikációs szabályzatot.
+> * Engedélyezze a replikációt.
 > * Futtasson egy teszt-áttelepítést, és győződjön meg róla, hogy minden a várt módon működik-e.
 > * Futtasson teljes áttelepítést az Azure-ba.
 
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Javasoljuk, hogy a virtuális gépek Azure-ba való áttelepítését megelőzően próbálja ki a VMware virtuális gép értékelését Azure Migrate Server Assessment használatával. Az értékelést a következőképpen állíthatja be:
 
 1. Az oktatóanyagot követve [készítse elő az Azure és a VMware](tutorial-prepare-vmware.md) értékelését.
-2. Ezután kövesse [ezt](tutorial-assess-vmware.md) az oktatóanyagot egy Azure Migrate berendezés értékeléshez való beállításához, valamint a virtuális gépek felderítéséhez és értékeléséhez.
+2. Ezután kövesse [ezt az oktatóanyagot](tutorial-assess-vmware.md) egy Azure Migrate berendezés értékeléshez való beállításához, valamint a virtuális gépek felderítéséhez és értékeléséhez.
 
 
 Bár javasoljuk, hogy kipróbáljon egy értékelést, a virtuális gépek áttelepítését megelőzően nem kell értékelést futtatnia.
@@ -56,7 +56,7 @@ A VMware virtuális gépeket áttelepítheti az Azure-ba az Azure Migrate Server
 Annak eldöntéséhez, hogy ügynök nélkül vagy ügynökön alapuló áttelepítést szeretne-e használni, tekintse át a következő cikkeket:
 
 - [További](server-migrate-overview.md) információ a VMware áttelepítési lehetőségekről.
-- Az áttelepítési [módszerek összehasonlítása](server-migrate-overview.md#compare-migration-methods).
+- Az [áttelepítési módszerek összehasonlítása](server-migrate-overview.md#compare-migration-methods).
 - Az ügynök nélküli áttelepítés kipróbálásához [kövesse ezt a cikket](tutorial-migrate-vmware.md) .
 
 
@@ -90,7 +90,7 @@ Ha még nem futtatott értékelést, be kell állítania az Azure-engedélyeket,
 
 1. A Azure Portal nyissa meg az előfizetést, és válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
 2. A **hozzáférés engedélyezése**területen keresse meg a megfelelő fiókot, és kattintson rá az engedélyek megtekintéséhez.
-3. **Közreműködői** vagy tulajdonosi engedélyekkel kell rendelkeznie.
+3. **Közreműködői** vagy **tulajdonosi** engedélyekkel kell rendelkeznie.
     - Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajdonosa.
     - Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal társítsa a szerepkört.
 
@@ -187,19 +187,19 @@ Győződjön meg arról, hogy a VMware-kiszolgálók és a virtuális gépek meg
 
 Ha nem követte az oktatóanyagot a VMware virtuális gépek felméréséhez, állítson be egy Azure Migrate projektet, majd adja hozzá a Azure Migrate Server áttelepítési eszközt:
 
-1. A Azure Portal > **minden szolgáltatás**területen keressen **Azure Migrate**.
-2. A **szolgáltatások**területen válassza a **Azure Migrate**lehetőséget.
+1. Az Azure Portal > **Minden szolgáltatás** területén keressen az **Azure Migrate** szolgáltatásra.
+2. A **Szolgáltatások** területen válassza az **Azure Migrate** lehetőséget.
 
     ![Azure Migrate beállítása](./media/tutorial-migrate-vmware-agent/azure-migrate-search.png)
 
-3. Az **Áttekintés**területen kattintson a **kiszolgálók felmérése és migrálása**elemre.
+3. Az **Áttekintés** területen kattintson a **Kiszolgálók értékelése és migrálása** lehetőségre.
 4. A **kiszolgálók felderítése, felmérése és migrálása**területen kattintson a **kiszolgálók felmérése és migrálása**elemre.
 
     ![Kiszolgálók felderítése és értékelése](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
 
-1. A **kiszolgálók felderítése, felmérése és migrálása**területen kattintson az **eszközök hozzáadása**elemre.
-2. A **projekt**átmigrálása lapon válassza ki az Azure-előfizetését, és hozzon létre egy erőforráscsoportot, ha még nem rendelkezik ilyennel.
-3. A **Project**Details (projekt részletei) mezőben adja meg a projekt nevét és a földrajzot, amelyben létre kívánja hozni a projektet, majd kattintson a **tovább** gombra.
+1. A **Kiszolgálók felderítése, értékelése és migrálása** területen kattintson az **Eszközök hozzáadása** lehetőségre.
+2. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.
+3. A **Project details**(projekt részletei) mezőben adja meg a projekt nevét és a földrajzot, amelyben létre kívánja hozni a projektet, majd kattintson a **tovább** gombra.
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-migrate-vmware-agent/migrate-project.png)
 
@@ -213,9 +213,9 @@ Ha nem követte az oktatóanyagot a VMware virtuális gépek felméréséhez, á
 
     A projekthez megadott földrajzi hely csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál. A tényleges áttelepítéshez kiválaszthatja a kívánt régiót.
 4. Az **értékelési eszköz kiválasztása**lapon válassza **a kiértékelési eszköz hozzáadásának mellőzése most** > **tovább**lehetőséget.
-5. Az **áttelepítési eszköz kiválasztása**lapon válassza **a Azure Migrate: Kiszolgáló áttelepítése** > **tovább**.
+5. A **Migrálási eszköz kiválasztása** területen válassza az **Azure Migrate: Kiszolgáló áttelepítése** > **tovább**.
 6. A **felülvizsgálat + eszközök hozzáadása**lapon tekintse át a beállításokat, majd kattintson az **eszközök hozzáadása** elemre.
-7. Az eszköz hozzáadása után megjelenik a Azure Migrate Project > **Servers** > áttelepítési**eszközök**területen.
+7. Az eszköz hozzáadása után megjelenik a Azure Migrate Project > **Servers** > **áttelepítési eszközök**területen.
 
 ## <a name="set-up-the-replication-appliance"></a>A replikációs berendezés beállítása
 
@@ -231,13 +231,13 @@ A replikációs berendezés beállításához le kell töltenie egy előkészít
 
 Töltse le a sablont a következőképpen:
 
-1. A Azure Migrate projektben kattintson az áttelepítési **célok**területen található **kiszolgálók** elemre.
+1. A Azure Migrate projektben kattintson az **áttelepítési célok**területen található **kiszolgálók** elemre.
 2. **Azure Migrate-**  > kiszolgálók**Azure Migrate: Kiszolgáló áttelepítése**, kattintson a **felderítés**gombra.
 
     ![Virtuális gépek felderítése](./media/tutorial-migrate-vmware-agent/migrate-discover.png)
 
-3. A **felderítési gépeken** > a**gépek virtualizáltak?** , kattintson **az igen, a VMware vSphere hypervisor**lehetőségre.
-4. A **Hogyan**kívánja áttelepíteni? területen válassza az **ügynök-alapú replikáció használata**lehetőséget.
+3. A **Gépek felderítése** > **Virtualizáltak a gépek?** területen kattintson az **Igen, a VMware vSphere hipervizorral** lehetőségre.
+4. A **hogyan kívánja áttelepíteni?** területen válassza az **ügynök-alapú replikáció használata**lehetőséget.
 5. A **cél régióban**válassza ki azt az Azure-régiót, amelyre át szeretné telepíteni a gépeket.
 6. Válassza **a megerősítés lehetőséget, hogy az áttelepítéshez a régió neve legyen**.
 7. Kattintson az **erőforrások létrehozása**gombra. Ezzel létrehoz egy Azure Site Recovery tárolót a háttérben.
@@ -263,7 +263,7 @@ A OVF-sablon letöltése után importálja a VMware-be a replikációs alkalmaz�
 5. A **név és mappa kiválasztása** és a **konfiguráció kiválasztása lapon**fogadja el az alapértelmezett beállításokat.
 6. A **tárterület** > kiválasztása területen**válassza a virtuális lemez formátum**lehetőséget, a legjobb teljesítményhez válassza a **vastag kiépítés lelkesen nulla értéket**.
 7. A varázsló többi lapján fogadja el az alapértelmezett beállításokat.
-8. A **készen áll**, ha a virtuális gépet az alapértelmezett beállításokkal szeretné beállítani, válassza a bekapcsolás az **üzembe helyezés** > után**lehetőséget.**
+8. A **készen áll**, ha a virtuális gépet az alapértelmezett beállításokkal szeretné beállítani, válassza a **bekapcsolás az üzembe helyezés** > után**lehetőséget.**
 
    > [!TIP]
    > Ha további hálózati adaptereket szeretne hozzáadni, törölje a **Power on after deployment** > **Finish** (Bekapcsolás a telepítést követően > Befejezés) beállítás jelölését. Alapértelmezés szerint a sablon egyetlen hálózati adaptert tartalmaz. Az üzembe helyezés után további hálózati adaptereket is hozzáadhat.
@@ -300,51 +300,56 @@ A replikációs berendezés beállításának és regisztrálásának befejezés
 12. Válassza a **Konfiguráció véglegesítése** elemet a regisztráció befejezéséhez.
 
 
-A replikációs berendezés regisztrálása után Azure Migrate Server Assessment a megadott beállítások használatával csatlakozik a VMware-kiszolgálókhoz, és felfedi a virtuális gépeket. A felderített virtuális gépeket a **többi** lapon tekintheti meg a felderített**elemek** **kezelése** > lehetőséggel.
+A replikációs berendezés regisztrálása után Azure Migrate Server Assessment a megadott beállítások használatával csatlakozik a VMware-kiszolgálókhoz, és felfedi a virtuális gépeket. A felderített virtuális gépeket a **többi** lapon tekintheti meg a**felderített elemek** **kezelése** > lehetőséggel.
 
 
 ## <a name="replicate-vms"></a>Virtuális gépek replikálása
 
-1. A Azure Migrate projekt > **kiszolgálók** **Azure Migrate: Kiszolgáló áttelepítése**, kattintson a **replikálás**gombra.
+Most válassza a virtuális gépek lehetőséget az áttelepítéshez.
+
+> [!NOTE]
+> Egyszerre legfeljebb 10 gépet replikálhat. Ha többre van szüksége, replikálja őket egyszerre 10 kötegben.
+
+1. Az Azure Migrate-projektben kattintson a **Kiszolgálók**, **Azure Migrate: Server Migration**, majd a **Replikálás** gombra.
 
     ![Virtuális gépek replikálása](./media/tutorial-migrate-vmware-agent/select-replicate.png)
 
-2. A **replikálás**során > a **forrás beállításait** > **a gépek virtualizálják?** területen válassza **az igen, a VMware vSphere**lehetőséget.
+2. A **Replikálás**, > **Forrásbeállítások** > **Virtualizáltak a gépek?** területen válassza az **Igen, a VMware vSphere szolgáltatással** lehetőséget.
 3. A helyszíni **készülék**területen válassza ki a beállított Azure Migrate berendezés nevét.
 4. A **vCenter-kiszolgáló**lapon adja meg a virtuális gépeket kezelő vCenter-kiszolgáló nevét, vagy azt a vSphere-kiszolgálót, amelyen a virtuális gépek futnak.
 5. A **Process Server**lapon válassza ki a replikációs berendezés nevét.
-6. A **vendég hitelesítő adatai**területen határozza meg a mobilitási szolgáltatás leküldéses telepítéséhez használni kívánt virtuális gép rendszergazdai fiókját. Ezután kattintson **a Tovább gombra: Virtuális gépek**.
+6. A **vendég hitelesítő adatai**területen határozza meg a mobilitási szolgáltatás leküldéses telepítéséhez használni kívánt virtuális gép rendszergazdai fiókját. Ezután kattintson a **Tovább: Virtuális gépek**.
 
     ![Virtuális gépek replikálása](./media/tutorial-migrate-vmware-agent/source-settings.png)
 
 7. **Virtual Machines**válassza ki a replikálni kívánt gépeket.
 
-    - Ha a virtuális gépek értékelését futtatja, a kiértékelési eredmények alapján a virtuálisgép-méretezési és a lemez típusa (prémium/standard) javaslatok is alkalmazhatók. Ehhez az áttelepítési **Beállítások importálása Azure Migrate értékelésből?** területen válassza az **Igen** lehetőséget.
-    - Ha nem futtatott értékelést, vagy nem szeretné használni az értékelési beállításokat, válassza a **nincs** lehetőséget.
+    - Ha futtatta a virtuális gépek értékelését, alkalmazhatja az eredményekben szereplő, a virtuális gépek méretezésére és a lemeztípusra (prémium/standard) vonatkozó javaslatokat. Ehhez a **Importálja a migrálási beállításokat az Azure Migrate-értékelésből?** területen válassza az **Igen** lehetőséget.
+    - Ha nem futtatott értékelést, vagy nem szeretné használni az értékelés beállításait, válassza a **Nem** lehetőséget.
     - Ha az értékelés használatát választotta, válassza ki a virtuálisgép-csoportot és az értékelés nevét.
 
-8. Tekintse át az áttelepíteni kívánt virtuális gépeket. Ezután kattintson **a Tovább gombra: Cél beállításai**
-9. A **cél beállításai**területen válassza ki azt az előfizetést és célcsoportot, amelyre az áttelepítést végezni szeretné, majd adja meg azt az erőforráscsoportot, amelyben az Azure-beli virtuális gépek a Migrálás után lesznek tárolva.
-10. **Virtual Network**válassza ki azt az Azure VNet/alhálózatot, amelyhez az Azure-beli virtuális gépek csatlakozni fognak az áttelepítés után.
-11. **Azure Hybrid Benefit**:
+8. Tekintse át az áttelepíteni kívánt virtuális gépeket. Ezután kattintson a **Tovább: Célbeállítások** gombra.
+9. A **Célbeállítások** között válassza ki az előfizetést és a célrégiót, ahova migrálni szeretne, majd adja meg az erőforráscsoportot, amelyben az Azure-beli virtuális gépek megtalálhatóak lesznek a migrálást követően.
+10. A **Virtuális hálózat** területen válassza ki az Azure-beli virtuális hálózatot/alhálózatot, amelyhez az Azure-beli virtuális gépek a migrálást követően csatlakoznak majd.
+11. Az **Azure Hybrid Benefit** területen:
 
-    - Válassza a **nem** lehetőséget, ha nem kívánja alkalmazni a Azure Hybrid Benefit. Ezután kattintson a **Next** (Tovább) gombra.
-    - Válassza az **Igen** lehetőséget, ha olyan Windows Server-gépekkel rendelkezik, amelyek aktív frissítési garanciával vagy Windows Server-előfizetésekkel rendelkeznek, és az áttelepíteni kívánt gépekre alkalmazni kívánja a kedvezményt. Ezután kattintson a **Next** (Tovább) gombra.
+    - Válassza a **Nem** lehetőséget, ha nem szeretné alkalmazni az Azure Hybrid Benefit szolgáltatást. Ezután kattintson a **Next** (Tovább) gombra.
+    - Válassza az **Igen** lehetőséget, ha aktív frissítési garanciával vagy Windows Server-előfizetéssel rendelkező gépei vannak, és alkalmazni szeretné az előnyöket a migrált gépekre. Ezután kattintson a **Next** (Tovább) gombra.
 
-12. A **számításban**tekintse át a virtuális gép nevét, a méretet, az operációsrendszer-lemez típusát és a rendelkezésre állási készletet. A virtuális gépeknek meg kell felelniük az [Azure-követelményeknek](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements).
+12. A **Számítás** területen ellenőrizze a virtuális gép nevét, méretét, az operációs rendszer lemeztípusát és a rendelkezésreállási csoportot. A virtuális gépeknek meg kell felelniük az [Azure-követelményeknek](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements).
 
-    - **Virtuális gép mérete**: Ha értékelési javaslatokat használ, a virtuális gép mérete legördülő lista az ajánlott méretet fogja tartalmazni. Ellenkező esetben Azure Migrate az Azure-előfizetés legközelebbi egyezése alapján kell megkeresnie egy méretet. Alternatív megoldásként válasszon egy manuális méretet az Azure-beli **virtuális gép méretében**. 
-    - **Operációsrendszer-lemez**: A virtuális gép operációsrendszer-(rendszerindító) lemezének megadása. Az operációsrendszer-lemez az operációs rendszer rendszerbetöltőjét és telepítőjét tartalmazó lemez. 
-    - **Rendelkezésre állási csoport**: Ha a virtuális gépnek az áttelepítés után Azure-beli rendelkezésre állási csoportba kell tartoznia, adja meg a készletet. A készletnek az áttelepítéshez megadott cél erőforráscsoporthoz kell lennie.
+    - **Virtuális gép mérete**: Ha értékelési javaslatokat használ, a virtuális gép méretéhez tartozó legördülő lista tartalmazni fogja az ajánlott méretet. Egyéb esetben az Azure Migrate az Azure-előfizetésben található leginkább megfelelő érték alapján választja ki a méretet. Alternatív megoldásként az **Azure-beli virtuális gép mérete** területen manuálisan is kiválaszthatja a méretet. 
+    - **Operációsrendszer-lemez**: Adja meg a virtuális gép operációsrendszer-lemezét (indítási lemez). Az operációsrendszer-lemez az a lemez, amelyen az operációs rendszer rendszerbetöltője és telepítője található. 
+    - **Rendelkezésreállási csoport**: Ha a migrálást követően a virtuális gépnek egy Azure-beli rendelkezésreállási csoportba kell tartoznia, adja meg a csoportot. A csoportnak a migrálás során megadott cél-erőforráscsoportban kell lennie.
 
 13. A **lemezek**területen adja meg, hogy a virtuálisgép-lemezeket replikálni kell-e az Azure-ba, majd válassza ki a lemez típusát (standard SSD/HDD vagy prémium szintű felügyelt lemez) az Azure-ban. Ezután kattintson a **Next** (Tovább) gombra.
-    - A lemezeket kizárhatja a replikációból.
-    - Ha kizárja a lemezeket, a Migrálás után nem jelennek meg az Azure-beli virtuális gépen. 
+    - Kizárhat lemezeket a replikációból.
+    - Ha kizárja a lemezeket, azok nem lesznek jelen az Azure-beli virtuális gépen a migrációt követően. 
 
-14. A **replikáció áttekintése és elindítása**területen tekintse át a beállításokat, majd kattintson a **replikálás** gombra a kiszolgálók kezdeti replikálásának elindításához.
+14. Az **Áttekintés és a replikáció megkezdése** területen tekintse át a beállításokat, majd kattintson a **Replikálás** gombra a kiszolgálók kezdeti replikálásának elindításához.
 
 > [!NOTE]
-> A replikálási beállításokat a replikáció elindítása előtt bármikor frissítheti > , kezelheti a**replikáló gépeket**. A beállítások nem módosíthatók a replikáció elindítása után.
+> A replikálási beállításokat a replikáció elindítása előtt bármikor frissítheti, **kezelheti** > a**replikáló gépeket**. A replikáció kezdete után a beállítások már nem módosíthatók.
 
 
 
@@ -360,7 +365,7 @@ A feladatok állapotát a portál értesítéseiben követheti nyomon.
 
 ![Feladatok nyomon követése](./media/tutorial-migrate-vmware-agent/jobs.png)
 
-A replikálási állapot figyeléséhez kattintson a **kiszolgálók** **replikálásához Azure Migrate: Kiszolgáló áttelepítése**.
+A replikálási állapot figyeléséhez kattintson **a **kiszolgálók replikálásához** Azure Migrate: Kiszolgáló áttelepítése**.
 ![Replikáció figyelése](./media/tutorial-migrate-vmware-agent/replicate-servers.png)
 
 ## <a name="run-a-test-migration"></a>Migrálási teszt futtatása
@@ -375,18 +380,18 @@ A különbözeti replikáció megkezdése előtt futtasson egy teszt-áttelepít
 Végezzen el egy teszt-áttelepítést a következőképpen:
 
 
-1. Az **áttelepítési célok** > **kiszolgálói** > **Azure Migrate: Kiszolgáló áttelepítése**, kattintson az áttelepített **kiszolgálók tesztelése**elemre.
+1. A **Migrálási célok** > **Kiszolgálók** > **Azure Migrate: Server Migration** területen kattintson a **Migrált kiszolgálók tesztelése** gombra.
 
-     ![Végrehajtott migrálási tesztű kiszolgálók](./media/tutorial-migrate-vmware-agent/test-migrated-servers.png)
+     ![Migrált kiszolgálók tesztelése](./media/tutorial-migrate-vmware-agent/test-migrated-servers.png)
 
-2. Kattintson a jobb gombbal a tesztelni kívánt virtuális gépre, majd kattintson az **áttelepítés tesztelése**elemre.
+2. Kattintson a jobb gombbal a tesztelni kívánt virtuális gépre, majd válassza a **Migrálás tesztelése** lehetőséget.
 
-    ![Migrálás tesztelése](./media/tutorial-migrate-vmware-agent/test-migrate.png)
+    ![Migrálási teszt](./media/tutorial-migrate-vmware-agent/test-migrate.png)
 
-3. Az **áttelepítés tesztelése**lapon válassza ki azt az Azure-VNet, amelyben az Azure-beli virtuális gép az áttelepítés után lesz elhelyezve. Javasoljuk, hogy használjon nem üzemi VNet.
-4. Elindul a **teszt** áttelepítési feladata. Figyelje a feladatot a portál értesítéseiben.
-5. Az áttelepítés befejeződése után tekintse meg az áttelepített Azure-beli virtuális gépet a Azure Portal Virtual Machinesban. A számítógépnév utótag **-teszt**.
-6. A teszt után kattintson a jobb gombbal az Azure-beli virtuális gépre a **replikáló gépek**területen, majd kattintson a teszt áttelepítésének **tisztítása**elemre.
+3. A **Migrálási teszt** területen válassza ki az Azure-beli virtuális hálózatot, amelyen az Azure-beli virtuális gép a migrálást követően megtalálható lesz. Javasoljuk, hogy ne éles virtuális hálózatot használjon.
+4. A **Migrálási teszt** feladat elindul. A feladatot a portál értesítései között követheti nyomon.
+5. A migrálás befejeztével az Azure Portal **Virtuális gépek** területén tekintheti meg a migrált Azure-beli virtuális gépet. A gép nevében a **-Test** utótag szerepel.
+6. A teszt elvégzése után a **Gépek replikálása** területen kattintson a jobb gombbal az Azure-beli virtuális gépre, majd kattintson a **Migrálási teszt törlése** gombra.
 
     ![Migrálás törlése](./media/tutorial-migrate-vmware-agent/clean-up.png)
 
@@ -395,16 +400,16 @@ Végezzen el egy teszt-áttelepítést a következőképpen:
 
 Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, áttelepítheti a helyszíni gépeket.
 
-1. A Azure Migrate Project > **Servers** > **Azure Migrate: Kiszolgáló áttelepítése**, kattintson a **kiszolgálók replikálása**elemre.
+1. Az Azure Migrate-projektben kattintson a **Kiszolgálók** > **Azure Migrate: Server Migration**, majd a **Kiszolgálók replikálása** gombra.
 
     ![Kiszolgálók replikálása](./media/tutorial-migrate-vmware-agent/replicate-servers.png)
 
-2. A **gépek replikálásához**kattintson a jobb gombbal a virtuális gépre> Migrálás elemre.
-3. Az **áttelepítés** > során**állítsa le a virtuális gépeket, és végezze el az adatvesztés nélküli tervezett**áttelepítést, válassza az **Igen** > **OK**lehetőséget.
-    - Alapértelmezés szerint Azure Migrate leállítja a helyszíni virtuális gépet, és igény szerinti replikálást futtat a legutóbbi replikáció óta bekövetkezett virtuális gépek változásainak szinkronizálásához. Ez biztosítja az adatvesztést.
-    - Ha nem szeretné leállítani a virtuális gépet, válassza a **nem** lehetőséget.
-4. Egy áttelepítési feladatot indít a virtuális gép számára. A feladatot nyomon követheti az Azure-értesítésekben.
-5. A művelet befejezése után megtekintheti és kezelheti a virtuális gépet a **Virtual Machines** lapon.
+2. A **Gépek replikálása** területen kattintson jobb gombbal a virtuális gépre, majd kattintson a **Migrálás** elemre.
+3. A **Migrálás** > **Virtuális gépek leállítása és adatvesztés nélküli tervezett migrálás végrehajtása** területen válassza az **Igen** > **OK** lehetőséget.
+    - Alapértelmezés szerint az Azure Migrate leállítja a helyszíni virtuális gépet, majd igény szerint replikációt végez a legutóbbi replikáció óta a virtuális gépen történt módosítások szinkronizálása érdekében. Így elkerülhető az adatvesztés.
+    - Ha nem szeretné leállítani a virtuális gépet, válassza a **Nem** lehetőséget.
+4. A virtuálisgép-migrálási feladat elindul. A feladatot az Azure-értesítések között követheti nyomon.
+5. A feladat befejeztével a virtuális gépet a **Virtuális gépek** oldalon tekintheti meg és kezelheti.
 
 ## <a name="complete-the-migration"></a>A migrálás befejezése
 
@@ -423,7 +428,7 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
     - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információk](../backup/quick-backup-vm-portal.md).
     - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - A biztonság fokozása érdekében:
-    - Zárolja és korlátozza a bejövő adatforgalom elérését [Azure Security Center – igény](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)szerinti felügyelettel.
+    - Zárolja és korlátozza a bejövő adatforgalom elérését [Azure Security Center – igény szerinti felügyelettel](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
     - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview) használatával.
     - Az [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) üzembe helyezésével biztonságba helyezheti a lemezeket, és megóvhatja az adatokat a lopási kísérletektől és a jogosulatlan hozzáféréstől.
     - Látogasson el a [az Azure Security Center](https://azure.microsoft.com/services/security-center/) webhelyére, és tudjon meg többet az [IaaS-erőforrások biztosításáról](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/).

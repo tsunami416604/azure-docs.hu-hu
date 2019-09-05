@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382ffab090613a2b14ce710a45be10b4c36e5222
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: b4fdbbd4d71a9c97259678413cd9e59ee8aeae6b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561740"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032664"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Az Azure Active Directory felhasználói jelszó alaphelyzetbe állítása
 
@@ -43,7 +43,8 @@ A rendszergazdák, ha elfelejti a jelszavát, ha a felhasználó-eszköz lekérd
 
 3. Az a **jelszó alaphelyzetbe állítása** lapon jelölje be **jelszó alaphelyzetbe állítása**.
 
-    Ideiglenes jelszó jön létre automatikusan a felhasználó számára.
+    > [!Note]
+    > Azure Active Directory használatakor a rendszer automatikusan létrehoz egy ideiglenes jelszót a felhasználó számára. Active Directory helyszíni használatakor hozza létre a felhasználó jelszavát.
 
 4. Másolja a jelszót, és adjon meg a felhasználó számára. A felhasználónak kell módosítani a jelszót a következő bejelentkezési folyamat során.
 

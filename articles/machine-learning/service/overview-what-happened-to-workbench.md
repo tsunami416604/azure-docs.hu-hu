@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 42c6671479c299c3229a3769a0410223274bc87f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 22f9ff8c493e850152e1fd74c8787e2cde507685
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279087"
+ms.locfileid: "70308853"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
@@ -100,7 +100,7 @@ További tudnivalók az alábbi cikkeket:
 
 ## <a name="what-about-the-old-sdk-and-cli"></a>Mi a helyzet a régi SDK-val és a parancssori felülettel?
 
-Igen, januárig továbbra is működni fognak. Lásd az előző [idővonalat](#timeline). Javasoljuk, hogy kezdje el létrehozni az új kísérleteket és modelleket a legújabb SDK-val vagy parancssori felülettel.
+Lásd az előző [idővonalat](#timeline). Javasoljuk, hogy kezdje el létrehozni az új kísérleteket és modelleket a legújabb SDK-val vagy parancssori felülettel.
 
 A legújabb kiadásban az új Python SDK használatával bármilyen Python-környezetben használhatja a Azure Machine Learning szolgáltatást. Ismerje meg, hogyan telepítheti a legújabb <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK-t</a>. A frissített [Azure Machine learning CLI-bővítményt](reference-azure-machine-learning-cli.md) a `az ml` parancsok gazdag készletével is használhatja a szolgáltatással való interakcióhoz bármely parancssori környezetben, beleértve a Azure Cloud Shell is.
 

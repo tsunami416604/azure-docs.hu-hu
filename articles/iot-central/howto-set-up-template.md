@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ede7167d570c7bd2ba7e04c3a9a703555efb35cd
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
-ms.translationtype: HT
+ms.openlocfilehash: 63c0a04a6d18d6af850b1492d2efa9df9aa65219
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698525"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877377"
 ---
 # <a name="set-up-a-device-template"></a>Eszközsablon beállítása
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Az eszköz sablonja egy olyan terv, amely meghatározza egy Azure IoT Central-alkalmazáshoz csatlakozó eszköz típusának jellemzőit és viselkedését.
 
@@ -85,7 +87,7 @@ A telemetria megjelenítésekor a következő összesítési lehetőségek köz�
 
 Adja meg az esemény **megjelenítendő nevét**, a **mező nevét**és a **súlyossági** adatokat. A következő három elérhető súlyossági szint közül választhat: **Hiba**, **Figyelmeztetés**és **információ**.
 
-Hozzáadhat például egy új ventilátoros motort **jelző** eseményt.
+Hozzáadhat például egy új **ventilátoros motort jelző** eseményt.
 
 | Megjelenítendő név        | Mező neve    |  Alapértelmezett súlyosság |
 | --------------------| ------------- |-----------|
@@ -106,7 +108,7 @@ Egy esemény további részleteinek megtekintéséhez válassza ki az esemény i
 
 Új állapot mértékének hozzáadásához válassza az **+ új mérték** gombot, és válassza az **állapot** lehetőséget a mérték típusaként. Adja meg a részleteket az **állapot létrehozása** űrlapon.
 
-Adja **meg a megjelenítendő név**, a **mező neve**és az állapot értékeinek részleteit. Minden érték rendelkezhet egy megjelenítendő névvel, amelyet akkor fog használni, amikor az érték megjelenik a diagramokban és a táblákban.
+Adja **meg a megjelenítendő név**, a **mező neve**és az állapot **értékeinek** részleteit. Minden érték rendelkezhet egy megjelenítendő névvel, amelyet akkor fog használni, amikor az érték megjelenik a diagramokban és a táblákban.
 
 Hozzáadhat például egy új **ventilátor mód** állapotot, amely két lehetséges értékkel rendelkezik, amelyeket az eszköz képes elküldeni, **működni** és **leállítani**.
 
@@ -163,7 +165,7 @@ A beállítások a három állapot egyike lehet. Az eszköz ezeket az állapotok
 
 - **Hiba**: Az eszköz hibát adott vissza.
 
-Hozzáadhat például egy új ventilátor sebességét úgy, hogy kiválasztja a Settings ( **Beállítások** ) lehetőséget, és beírja az új **szám** beállítást:
+Hozzáadhat például egy új ventilátor sebességét úgy, hogy kiválasztja a **Settings (beállítások** ) lehetőséget, és beírja az új **szám** beállítást:
 
 | Megjelenítendő név  | Mező neve    |  Mértékegységek  | Tizedesek |Kezdeti|
 | --------------| ------------- |---------| ---------|---- |
@@ -192,7 +194,7 @@ Például hozzáadhatja az eszköz utolsó kiszolgált dátumát új **Date** (a
 
 A Save ( **Mentés**) gombra kattintva a rendszer csempeként jeleníti meg az eszköz utolsó kiszolgált dátumát.
 
-Miután létrehozta a csempét, módosíthatja az alkalmazás tulajdonság értékét a Device Explorerban.
+Miután létrehozta a csempét, módosíthatja az alkalmazás tulajdonság értékét a **Device Explorerban**.
 
 ### <a name="create-a-location-property"></a>Location tulajdonság létrehozása
 
@@ -275,7 +277,7 @@ A Save ( **Mentés**) gombra kattintva a **echo** parancs csempeként jelenik me
 
 A szabályok segítségével a kezelők közel valós időben figyelheti az eszközöket. A szabályok automatikusan kezdeményeznek olyan műveleteket, mint például az e-mailek küldése a szabály indításakor. Jelenleg az egyik szabály elérhető:
 
-- **Telemetria-szabály**, amely akkor aktiválódik, ha a kiválasztott eszköz telemetria átlép egy megadott küszöbértéket. [További információ a telemetria](howto-create-telemetry-rules.md)-szabályokról.
+- **Telemetria-szabály**, amely akkor aktiválódik, ha a kiválasztott eszköz telemetria átlép egy megadott küszöbértéket. [További információ a telemetria-szabályokról](howto-create-telemetry-rules.md).
 
 ## <a name="dashboard"></a>Irányítópult
 
@@ -285,7 +287,7 @@ Hozzáadhat például egy **beállításokat és tulajdonságokat tartalmazó** 
 
 !["Az eszköz részleteinek konfigurálása" űrlap a beállítások és a tulajdonságok részleteivel](./media/howto-set-up-template/dashboardsettingsandpropertiesform1.png)
 
-Most, amikor egy operátor megtekinti azirányítópultot a Device Explorerban, láthatják a csempét.
+Most, amikor egy operátor megtekinti az irányítópultot a **Device Explorerban**, láthatják a csempét.
 
 ### <a name="add-a-location-measurement-in-the-dashboard"></a>Hely mértékének megadása az irányítópulton
 

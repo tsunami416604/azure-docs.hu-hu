@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 9ef35e0865a7c5bbfb4accc058a8d63bb6f1e80b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 246e3550650dfd458b4aeecda3b5b7733e49f017
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70243073"
+ms.locfileid: "70307333"
 ---
 # <a name="use-powershell-to-accept-a-data-share-invitation"></a>Adatmegosztási meghívás elfogadása a PowerShell használatával
 
@@ -42,8 +42,8 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzDataShareInvitation](/powershell/module/az.resources/get-azdatashareinvitation) | Az elküldött adatmegosztási meghívások beolvasása és listázása |
-| [Új – AzDataShareSubscription](/powershell/module/az.resources/get-azdatashareinvitation) | Hozzon létre egy adatmegosztási előfizetést. |
+| [Get-AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation?view=azps-2.6.0) | Az elküldött adatmegosztási meghívások beolvasása és listázása |
+| [Új – AzDataShareSubscription](/powershell/module/az.datashare/get-azdatasharesubscription?view=azps-2.6.0) | Hozzon létre egy adatmegosztási előfizetést. |
 |||
 
 ## <a name="next-steps"></a>További lépések

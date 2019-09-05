@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: c84d457c51f71bdf315bbbcec674ff1186dd905f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: d914c020553bace7ea5ab8898ac4093fea30e6c9
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249016"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306992"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Riasztások beállítása a diagnosztikai naplózási eseményekről VPN Gateway
 
@@ -33,7 +33,7 @@ Az Azure-ban az alábbi naplók érhetők el:
 A következő példa egy riasztást hoz létre egy leválasztási eseményhez, amely a helyek közötti VPN-alagutat foglalja magában:
 
 
-1. A Azure Portal a **minden szolgáltatás** területen keresse meg a **log Analytics** , és válassza a **log Analytics**munkaterületek lehetőséget.
+1. A Azure Portal a **minden szolgáltatás** területen keresse meg a **log Analytics** , és válassza a **log Analytics munkaterületek**lehetőséget.
 
    ![Log Analytics munkaterületek kijelölésének kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Létrehozás")
 
@@ -49,7 +49,7 @@ A következő példa egy riasztást hoz létre egy leválasztási eseményhez, a
 
    ![A VPN Gateway diagnosztikai beállításokban való keresésének kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Válassza ki")
 
-5. A diagnosztika bekapcsolásához kattintson duplán az átjáróra, majd válassza a **diagnosztika**bekapcsolása elemet.
+5. A diagnosztika bekapcsolásához kattintson duplán az átjáróra, majd válassza a **diagnosztika bekapcsolása**elemet.
 
    A ![diagnosztika bekapcsolásának kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "Válassza ki")
 
@@ -70,12 +70,17 @@ A következő példa egy riasztást hoz létre egy leválasztási eseményhez, a
 
    ![Egyéni naplók keresésének kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Válassza ki")
 
-10. Adja meg az alábbi lekérdezést a **Keresési lekérdezés** szövegmezőben. Szükség szerint cserélje le a < > értékeit.
+10. Adja meg az alábbi lekérdezést a **Keresési lekérdezés** szövegmezőben. Szükség szerint cserélje le a < > és a TimeGenerated értékeit.
 
     ```
-    AzureDiagnostics |
-      where Category  == "TunnelDiagnosticLog" and ResourceId == toupper("<RESOURCEID OF GATEWAY>") and TimeGenerated > ago(5m) and
-      remoteIP_s == "<REMOTE IP OF TUNNEL>" and status_s == "Disconnected"
+    AzureDiagnostics
+    | where Category == "TunnelDiagnosticLog"
+    | where _ResourceId == tolower("<RESOURCEID OF GATEWAY>")
+    | where TimeGenerated > ago(5m) 
+    | where remoteIP_s == "<REMOTE IP OF TUNNEL>"
+    | where status_s == "Disconnected"
+    | project TimeGenerated, OperationName, instance_s, Resource, ResourceGroup, _ResourceId 
+    | sort by TimeGenerated asc
     ```
 
     Állítsa 0 értékre a küszöbértéket, és válassza a **kész**lehetőséget.

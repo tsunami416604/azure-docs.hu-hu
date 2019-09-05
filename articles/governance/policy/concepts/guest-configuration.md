@@ -3,23 +3,26 @@ title: A gép tartalmának naplózása
 description: Megtudhatja, hogyan használja a Azure Policy a vendégek konfigurációját egy Azure-gépen lévő beállítások naplózására.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/18/2019
+ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 06a767af71f457273e0e20d1248d64c22b3563e7
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: bfa7f7486a9fa5ef62e8bf9e01dbe39d675d8d27
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274949"
+ms.locfileid: "70308571"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy Vendég konfiguráció ismertetése
 
-Az Azure-erőforrások naplózása és [szervizelését](../how-to/remediate-resources.md) mellett Azure Policy is naplózhatja a beállításokat a gépen belül. A Vendég Configuration bővítmény és az ügyfél az érvényesítést végzi. A bővítményt, az ügyfélen, érvényesíti a konfigurációt az operációs rendszer, alkalmazás-konfigurációs vagy jelenléte, környezeti beállítások és beállításait.
+Az Azure-erőforrások naplózása és [szervizelését](../how-to/remediate-resources.md) után Azure Policy naplózhatja a beállításokat a gépen belül. A Vendég Configuration bővítmény és az ügyfél az érvényesítést végzi. A bővítmény az ügyfélen keresztül ellenőrzi a beállításokat, például:
 
-Jelenleg Azure Policy vendég konfiguráció csak a gépen belüli beállítások naplózását végzi.
-A konfigurációk alkalmazása még nem lehetséges.
+- Az operációs rendszer konfigurációja
+- Alkalmazás konfigurációja vagy jelenléte
+- Környezet beállításai
+
+Jelenleg Azure Policy vendég konfiguráció csak a gépen belüli beállításokat naplózza. Nem alkalmaz konfigurációkat.
 
 ## <a name="extension-and-client"></a>Bővítmény és az ügyfél
 
@@ -27,8 +30,7 @@ A beállítások számítógépeken belüli naplózásához a [virtuálisgép-b�
 
 ### <a name="limits-set-on-the-extension"></a>A bővítményre beállított korlátok
 
-Ha korlátozni szeretné a bővítményt a gépen futó alkalmazások hatására, a vendég konfigurációja nem lépheti túl a CPU-kihasználtság 5%-át.
-Ez a Microsoft által a "beépített" és az ügyfelek által készített egyéni konfigurációk esetében egyaránt igaz.
+Ha korlátozni szeretné a bővítménynek a gépen belül futó alkalmazásoktól való korlátozását, a vendég konfigurációja nem lépheti túl a CPU-kihasználtság 5%-át. Ez a korlátozás a beépített és az egyéni definíciók esetében is létezik.
 
 ## <a name="register-guest-configuration-resource-provider"></a>Vendég-konfigurációs erőforrás-szolgáltató regisztrálása
 
@@ -68,7 +70,7 @@ Az alábbi táblázat az egyes támogatott operációs rendszeren használja a h
 
 ### <a name="validation-frequency"></a>Ellenőrzés gyakorisága
 
-A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-hozzárendelés fogadása után a rendszer 15 percenként ellenőrzi a beállításokat. A rendszer a naplózás befejeződése után azonnal elküldi az eredményeket a vendég konfiguráció erőforrás-szolgáltatójának. A szabályzatok [kiértékelésének](../how-to/get-compliance-data.md#evaluation-triggers) bekövetkeztekor a számítógép állapota a vendég konfiguráció erőforrás-szolgáltatóba íródik. Ennek hatására a Azure Policy kiértékeli a Azure Resource Manager tulajdonságait. Az igény szerinti Azure Policy kiértékelése a vendég konfiguráció erőforrás-szolgáltató legújabb értékét kérdezi le. Azonban nem aktiválja a számítógép konfigurációjának új naplózását.
+A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-hozzárendelés fogadása után a rendszer 15 percenként ellenőrzi a beállításokat. A rendszer a naplózás befejeződése után azonnal elküldi az eredményeket a vendég konfiguráció erőforrás-szolgáltatójának. A szabályzatok [kiértékelésének](../how-to/get-compliance-data.md#evaluation-triggers) bekövetkeztekor a számítógép állapota a vendég konfiguráció erőforrás-szolgáltatóba íródik. Ez a frissítés Azure Policyt okoz a Azure Resource Manager tulajdonságainak kiértékeléséhez. Az igény szerinti Azure Policy kiértékelése a vendég konfiguráció erőforrás-szolgáltató legújabb értékét kérdezi le. Azonban nem aktiválja a számítógép konfigurációjának új naplózását.
 
 ## <a name="supported-client-types"></a>Támogatott ügyfél típusú
 
@@ -93,7 +95,7 @@ A Windows Server Nano Server semmilyen verzióban nem támogatott.
 
 ## <a name="guest-configuration-extension-network-requirements"></a>A vendég konfigurációs bővítmény hálózati követelményei
 
-Az Azure-beli vendég-konfigurációs erőforrás-szolgáltatóval való kommunikációhoz a gépeknek kimenő hozzáférésre van szükségük az Azure-adatközpontok **443**-es portján Ha az Azure-ban privát virtuális hálózatot használ, és nem engedélyezi a kimenő forgalmat, a kivételeket a [hálózati biztonsági csoport](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) szabályainak megfelelően kell konfigurálni. Jelenleg nem létezik szolgáltatási címke Azure Policy vendég konfigurációhoz.
+Az Azure-beli vendég-konfigurációs erőforrás-szolgáltatóval való kommunikációhoz a gépeknek kimenő hozzáférésre van szükségük az Azure-adatközpontok **443**-es portján Ha az Azure-ban olyan magánhálózati virtuális hálózatot használ, amely nem engedélyezi a kimenő forgalmat, konfigurálja a kivételeket a [hálózati biztonsági csoport](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) szabályaival. Azure Policy vendég konfigurációhoz jelenleg nem létezik szolgáltatási címke.
 
 Az IP-címlisták esetében letöltheti [Microsoft Azure adatközpont IP-tartományait](https://www.microsoft.com/download/details.aspx?id=41653). A fájl hetente frissül, és a jelenleg üzembe helyezett tartományokat és az IP-címtartományok közelgő változásait tartalmazza. Csak a virtuális gépeket üzembe helyező régiókban lévő IP-címekhez kell engedélyeznie a kimenő hozzáférést.
 
@@ -113,16 +115,14 @@ A **DeployIfNotExists** szabályzatdefiníció ellenőrzi és javítja a követk
 
 Ha a **DeployIfNotExists** -hozzárendelés nem megfelelő, akkor a rendszer [szervizelési feladatot](../how-to/remediate-resources.md#create-a-remediation-task) is felhasználhat.
 
-Ha a **DeployIfNotExists** -hozzárendelés megfelelő, a **AuditIfNotExists** szabályzat-hozzárendelés a helyi ellenőrzési eszközöket használja annak megállapításához, hogy a konfigurációs hozzárendelés megfelelő vagy nem megfelelő-e.
-A fürtérvényesítési eszköz biztosít a Vendég konfigurációs ügyfél az eredményeket. Az ügyfél a Vendég a bővítmény elérhetővé teszi azokat a Vendég-konfigurációs erőforrás-szolgáltatón keresztül továbbítja az eredményeket.
+Ha a **DeployIfNotExists** -hozzárendelés megfelelő, a **AuditIfNotExists** szabályzat-hozzárendelés a helyi ellenőrzési eszközöket használja annak megállapításához, hogy a konfigurációs hozzárendelés megfelelő vagy nem megfelelő-e. A fürtérvényesítési eszköz biztosít a Vendég konfigurációs ügyfél az eredményeket. Az ügyfél a Vendég a bővítmény elérhetővé teszi azokat a Vendég-konfigurációs erőforrás-szolgáltatón keresztül továbbítja az eredményeket.
 
 Az Azure Policy használja a Vendég-konfigurációs erőforrás-szolgáltatók **complianceStatus** való megfelelőség jelentéséhez a tulajdonság a **megfelelőségi** csomópont. További információkért lásd: [megfelelőségi adatok](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> Az **DeployIfNotExists** szabályzat szükséges ahhoz, hogy a **AuditIfNotExists** -házirend eredményét visszaállítsa.
-> A **DeployIfNotExists**nélkül a **AuditIfNotExists** házirend "0/0" erőforrást jelenít meg állapotként.
+> Az **DeployIfNotExists** szabályzat szükséges ahhoz, hogy a **AuditIfNotExists** -házirend eredményét visszaállítsa. A **DeployIfNotExists**nélkül a **AuditIfNotExists** házirend "0/0" erőforrást jelenít meg állapotként.
 
-Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A [Preview] nevű *beépített kezdeményezés: A jelszó biztonsági beállításainak naplózása Linux és Windows* rendszerű gépeken 18 szabályzatot tartalmaz. Hat **DeployIfNotExists** és **AuditIfNotExists** Windows és Linux-három pár párokat. Minden esetben a logika belül a definíció érvényesíti csak a cél operációs rendszer alapján értékeli ki a [felügyeletiházirend-szabálya](definition-structure.md#policy-rule) definíciója.
+Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A [Preview] nevű *beépített kezdeményezés: A jelszó biztonsági beállításainak naplózása Linux és Windows* rendszerű gépeken 18 szabályzatot tartalmaz. Hat **DeployIfNotExists** és **AuditIfNotExists** Windows és Linux-három pár párokat. A [szabályzat-definíció](definition-structure.md#policy-rule) logikája ellenőrzi, hogy csak a cél operációs rendszer van-e kiértékelve.
 
 ### <a name="multiple-assignments"></a>Több hozzárendelés
 
@@ -145,11 +145,12 @@ Ahol `<version>` az aktuális verziószámra hivatkozik.
 
 ### <a name="collecting-logs-remotely"></a>Naplók távoli gyűjtése
 
-A vendég konfigurációs konfigurációk vagy modulok hibaelhárításának első lépéseként a `Test-GuestConfigurationPackage` parancsmagot kell használnia, amely a [vendég konfigurációs csomag tesztelésének](../how-to/guest-configuration-create.md#test-a-guest-configuration-package)lépéseit követi.  Ha ez nem sikerül, az ügyfél naplói összegyűjtése segíthet a problémák diagnosztizálásában.
+A vendég konfigurációs konfigurációk vagy modulok hibaelhárításának első lépéseként a `Test-GuestConfigurationPackage` parancsmagot kell használnia, amely a [vendég konfigurációs csomag tesztelésének](../how-to/guest-configuration-create.md#test-a-guest-configuration-package)lépéseit követi.
+Ha ez nem sikerül, az ügyfél naplói összegyűjtése segíthet a problémák diagnosztizálásában.
 
 #### <a name="windows"></a>Windows
 
-Ha az Azure virtuális gép futtatási parancsának funkcióját szeretné használni a Windows rendszerű számítógépeken található naplófájlok adatainak rögzítéséhez, a következő példa a PowerShell-szkript hasznos lehet. A szkript Azure Portalról történő futtatásával vagy a Azure PowerShell használatával kapcsolatos részletekért lásd: [PowerShell-parancsfájlok futtatása a Windows rendszerű virtuális gépen a Run paranccsal](../../../virtual-machines/windows/run-command.md).
+Ha az Azure virtuális gép futtatási parancsát szeretné használni a Windows rendszerű számítógépeken található naplófájlok adatainak rögzítéséhez, a következő példa a PowerShell-szkript hasznos lehet. További információ: [PowerShell-parancsfájlok futtatása a Windows rendszerű virtuális gépen a Run paranccsal](../../../virtual-machines/windows/run-command.md).
 
 ```powershell
 $linesToIncludeBeforeMatch = 0
@@ -160,7 +161,7 @@ Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCM
 
 #### <a name="linux"></a>Linux
 
-Ha az Azure virtuális gép futtatási parancsának funkcióját szeretné használni a Linux rendszerű számítógépeken található naplófájlok adatainak rögzítéséhez, a következő példa a bash-szkript hasznos lehet. A szkript Azure Portalról vagy az Azure CLI használatával történő futtatásával kapcsolatos részletekért lásd: [rendszerhéj-parancsfájlok futtatása a Linux rendszerű virtuális gépen a Run paranccsal](../../../virtual-machines/linux/run-command.md)
+Ha az Azure virtuális gép futtatási parancsát szeretné használni a Linux rendszerű számítógépeken található naplófájlok adatainak rögzítéséhez, a következő példa a bash-szkript hasznos lehet. További információ: [rendszerhéj-parancsfájlok futtatása Linux rendszerű virtuális gépen a Run paranccsal](../../../virtual-machines/linux/run-command.md)
 
 ```Bash
 linesToIncludeBeforeMatch=0

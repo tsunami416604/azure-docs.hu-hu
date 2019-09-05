@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0a258630fcb3639f20de4c72591611b7af15b90
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: 2a1378a5c00acbbce5e7ec73a75902ec55140575
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68322982"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094620"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Tevékenységek függőségeinek létrehozása a más feladatoktól függő feladatok futtatásához
 
@@ -38,7 +37,7 @@ Alapértelmezés szerint a függő tevékenységek csak a fölérendelt feladat 
 Létrehozhat olyan feladatokat, amelyek az egy-az-egyhez vagy egy-a-többhöz kapcsolat más feladataitól függenek. Létrehozhat olyan tartomány-függőséget is, amelyben a feladatok egy adott munkacsoportnak a tevékenységek egy adott tartományán belüli befejeződésétől függenek. Ezt a három alapvető forgatókönyvet kombinálhatja több-a-többhöz kapcsolat létrehozásához.
 
 ## <a name="task-dependencies-with-batch-net"></a>Feladatok függőségei a Batch .NET-tel
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja a feladatok függőségeit a [Batch .net][net_msdn] -kódtár használatával. Először bemutatjuk, hogyan lehet [engedélyezni](#enable-task-dependencies) a feladatok függőségét a feladatokon, majd bemutatjuk, hogyan [konfigurálhatja a](#create-dependent-tasks)feladatokat függőségekkel. Azt is leírjuk, hogyan adhat meg függőségi műveletet a függő feladatok futtatásához, ha a szülő meghibásodik. Végezetül megbeszéljük a [](#dependency-scenarios) batch által támogatott függőségi helyzeteket.
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja a feladatok függőségeit a [Batch .net][net_msdn] -kódtár használatával. Először bemutatjuk, hogyan lehet engedélyezni a feladatok [függőségét](#enable-task-dependencies) a feladatokon, majd bemutatjuk, hogyan [konfigurálhatja a feladatokat függőségekkel](#create-dependent-tasks). Azt is leírjuk, hogyan adhat meg függőségi műveletet a függő feladatok futtatásához, ha a szülő meghibásodik. Végezetül megbeszéljük a Batch által támogatott [függőségi helyzeteket](#dependency-scenarios) .
 
 ## <a name="enable-task-dependencies"></a>Feladat függőségeinek engedélyezése
 A feladatok függőségeinek a Batch-alkalmazásban való használatához először a feladat-függőségek használatára kell konfigurálnia a feladatot. A Batch .NET-ben engedélyezze a [CloudJob][net_cloudjob] a [UsesTaskDependencies][net_usestaskdependencies] tulajdonságának `true`beállításához a következőre:
@@ -68,7 +67,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 Ez a kódrészlet létrehoz egy függő feladatot a "Flowers" AZONOSÍTÓJÚ feladathoz. A "virágok" feladat az "Rain" és a "Sun" tevékenységtől függ. A "Flowers" feladat csak akkor lesz ütemezve a számítási csomópontokon való futtatásra, ha az "Rain" és a "Sun" feladatok végrehajtása sikeresen befejeződött.
 
 > [!NOTE]
-> Alapértelmezés szerint a rendszer úgy tekinti a feladatot, hogy a **befejezett** állapotban van, és a kilépési **kódja** is `0`sikeres. A Batch .NET-ben ez egy [CloudTask][net_cloudtask]jelent. Az [állapot][net_taskstate] tulajdonság értéke `Completed` és a CloudTask [TaskExecutionInformation][net_taskexecutioninformation].[ A ExitCode tulajdonság][net_exitcode] értéke:`0`. Ennek módjáról a [függőségi műveletek](#dependency-actions) című szakaszban olvashat.
+> Alapértelmezés szerint a rendszer úgy tekinti a feladatot, hogy a **befejezett** állapotban van, és a **kilépési kódja** is `0`sikeres. A Batch .NET-ben ez egy [CloudTask][net_cloudtask]jelent. Az [állapot][net_taskstate] tulajdonság értéke `Completed` és a CloudTask [TaskExecutionInformation][net_taskexecutioninformation].[ A ExitCode tulajdonság][net_exitcode] értéke:`0`. Ennek módjáról a [függőségi műveletek](#dependency-actions) című szakaszban olvashat.
 > 
 > 
 

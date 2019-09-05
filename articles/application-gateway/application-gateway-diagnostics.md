@@ -7,14 +7,14 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: d9b0c551cdfb92b380a967aaa5bdce7c278fd39e
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 6df78a46e6bc8055f8cce89e199d01ad631e178e
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183571"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306193"
 ---
-# <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttérbeli állapot, diagnosztikai naplók és metrikák a Application Gateway
+# <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway háttérbeli állapot-és diagnosztikai naplói
 
 Az Azure Application Gateway használatával az alábbi módokon figyelheti az erőforrásokat:
 
@@ -22,7 +22,7 @@ Az Azure Application Gateway használatával az alábbi módokon figyelheti az e
 
 * [Naplók](#diagnostic-logging): A naplók lehetővé teszik a teljesítmény, hozzáférés és egyéb adatok mentését, illetve az erőforrásokból való felhasználását figyelés céljából.
 
-* [Metrikák](#metrics): A Application Gateway jelenleg hét mérőszámot tartalmaz a teljesítményszámlálók megtekintéséhez.
+* [Metrikák](application-gateway-metrics.md): Application Gateway több metrikával rendelkezik, amelyek segítségével ellenőrizheti, hogy a rendszer a várt módon működik-e.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -38,7 +38,7 @@ A háttér-állapot jelentés a Application Gateway Health-mintavétel kimeneté
 
 ### <a name="view-back-end-health-through-the-portal"></a>Háttérbeli állapot megtekintése a portálon keresztül
 
-A portálon a háttér állapota automatikusan elérhető. Egy meglévő Application Gateway-ben válassza > a háttér figyelése**állapot**lehetőséget. 
+A portálon a háttér állapota automatikusan elérhető. Egy meglévő Application Gateway-ben válassza a háttér **figyelése** > **állapot**lehetőséget. 
 
 Ezen az oldalon a háttér-készlet minden tagja megjelenik (legyen az a hálózati adapter, az IP-cím vagy a teljes tartománynév). Megjelenik a háttér-készlet neve, a port, a háttérbeli HTTP-beállítások neve és az állapot állapota. Az állapot állapota **kifogástalan**, **sérült**és **ismeretlen**.
 
@@ -139,7 +139,7 @@ A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manage
    * Teljesítménynapló
    * Tűzfal naplója
 
-2. Az adatok gyűjtésének megkezdéséhez kattintson **a diagnosztika**bekapcsolása elemre.
+2. Az adatok gyűjtésének megkezdéséhez kattintson **a diagnosztika bekapcsolása**elemre.
 
    ![Diagnosztika bekapcsolása][1]
 
@@ -164,7 +164,7 @@ A hozzáférési napló csak akkor jön létre, ha minden Application Gateway p�
 |clientPort     | A kérelemből származó port.       |
 |httpMethod     | A kérelem által használt HTTP-metódus.       |
 |requestUri     | A fogadott kérelem URI-ja.        |
-|RequestQuery     | **Kiszolgáló –** átirányítva: A kérést küldő háttérbeli készlet példánya.</br>**X-AzureApplicationGateway-LOG-ID**: A kérelemhez használt korrelációs azonosító. Felhasználható a háttér-kiszolgálók forgalmával kapcsolatos problémák elhárítására. </br>**KISZOLGÁLÓ – ÁLLAPOT**: A háttérben Application Gateway fogadott HTTP-válasz kódja.       |
+|RequestQuery     | **Kiszolgáló – átirányítva**: A kérést küldő háttérbeli készlet példánya.</br>**X-AzureApplicationGateway-LOG-ID**: A kérelemhez használt korrelációs azonosító. Felhasználható a háttér-kiszolgálók forgalmával kapcsolatos problémák elhárítására. </br>**KISZOLGÁLÓ – ÁLLAPOT**: A háttérben Application Gateway fogadott HTTP-válasz kódja.       |
 |UserAgent     | Felhasználói ügynök a HTTP-kérelem fejlécében.        |
 |httpStatus     | A HTTP-állapotkódot a rendszer visszaküldi az ügyfélnek a Application Gatewayból.       |
 |httpVersion     | A kérelem HTTP-verziója.        |
@@ -172,7 +172,7 @@ A hozzáférési napló csak akkor jön létre, ha minden Application Gateway p�
 |– Küldött bájtok| Az elküldött csomagok mérete bájtban kifejezve.|
 |Eltelt idő| A kérelem feldolgozására és a hozzá tartozó válasz elküldésekor szükséges időtartam (ezredmásodpercben). Ez a számítás azt az időintervallumot számítja ki, amikor a Application Gateway egy HTTP-kérelem első bájtját kapja meg a válasz küldési műveletének befejezési idejére. Fontos megjegyezni, hogy az idő mező általában magában foglalja azt az időpontot, ameddig a kérelem és a válasz csomagjai a hálózaton keresztül utaznak. |
 |sslEnabled| Azt jelzi, hogy a háttér-készletekkel való kommunikáció SSL protokollt használ-e. Az érvényes értékek be-és kikapcsolva.|
-|host| Az az állomásnév, amellyel a rendszer elküldte a kérést a háttér-kiszolgálónak. Ha a háttérbeli állomásnév felülbírálható, akkor ez a név fog megjelenni.|
+|host| Az az állomásnév, amellyel a rendszer elküldte a kérést a háttér-kiszolgálónak. Ha a háttérbeli állomásnév felülbírálva van, akkor ez a név fog megjelenni.|
 |originalHost| Az az állomásnév, amellyel a kérést a Application Gateway fogadta az ügyféltől.|
 ```json
 {
@@ -359,67 +359,6 @@ A Storage-fiókjához is csatlakozhat, és lekérheti a hozzáférés- és telje
 #### <a name="analyzing-access-logs-through-goaccess"></a>Hozzáférési naplók elemzése a GoAccess-on keresztül
 
 Közzétettünk egy Resource Manager-sablont, amely a népszerű [GoAccess](https://goaccess.io/) log Analyzert telepíti és futtatja Application Gateway hozzáférési naplókhoz. A GoAccess olyan értékes HTTP-forgalmi statisztikát biztosít, mint például az egyedi látogatók, a kért fájlok, gazdagépek, operációs rendszerek, böngészők, HTTP-állapotkódok és egyebek. További részletekért tekintse meg az [információs fájlt a GitHub Resource Manager-sablon mappájából](https://aka.ms/appgwgoaccessreadme).
-
-## <a name="metrics"></a>Mérőszámok
-
-A metrikák bizonyos Azure-erőforrások egy szolgáltatása, ahol a teljesítményszámlálók a portálon tekinthetők meg. Application Gateway esetén a következő metrikák érhetők el:
-
-- **Aktuális kapcsolatok**
-- **Sikertelen kérelmek**
-- **Kifogástalan állapotú gazdagépek száma**
-
-   Egy adott háttérbeli készlet kifogástalan/nem megfelelő állapotú gazdagépének megjelenítéséhez szűrést végezhet a háttérbeli készlet alapján.
-
-
-- **Válasz állapota**
-
-   A válasz állapotkód-eloszlása tovább kategorizálható a válaszok megjelenítéséhez a 2xx, a 3xx, a 4xx és a 5xx kategóriákban.
-
-- **Átviteli sebesség**
-- **Kérelmek összesen**
-- **Nem kifogástalan állapotú gazdagépek száma**
-
-   Egy adott háttérbeli készlet kifogástalan/nem megfelelő állapotú gazdagépének megjelenítéséhez szűrést végezhet a háttérbeli készlet alapján.
-
-Tallózással keresse meg az Application Gatewayt a **figyelés** kiválasztása **mérőszámok**területen. Az elérhető értékeket a **METRIKÁK** legördülő listában találja.
-
-Az alábbi képen egy példa látható három mérőszámmal az elmúlt 30 percben:
-
-[![](media/application-gateway-diagnostics/figure5.png "Metrika nézet")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
-
-A metrikák aktuális listájának megjelenítéséhez tekintse meg a [támogatott metrikák a Azure Monitorkal](../azure-monitor/platform/metrics-supported.md)című témakört.
-
-### <a name="alert-rules"></a>Riasztási szabályok
-
-A riasztási szabályokat az erőforrás metrikái alapján indíthatja el. A riasztások például meghívhatnak egy webhookot vagy e-mailt a rendszergazdának, ha az Application Gateway átviteli sebessége meghaladja a következőt, vagy a küszöbértéket egy adott időszakra vonatkozóan.
-
-Az alábbi példa végigvezeti egy olyan riasztási szabály létrehozásán, amely e-mailt küld egy rendszergazdának az átviteli sebesség megsértése után:
-
-1. a **szabály hozzáadása** lap megnyitásához válassza a **metrika hozzáadása riasztás** elemet. Ezt a lapot a metrikák lapról is elérheti.
-
-   !["Metrikai riasztás hozzáadása" gomb][6]
-
-2. A **szabály hozzáadása** lapon töltse ki a nevet, a feltételt és az értesítési szakaszt, majd kattintson **az OK gombra**.
-
-   * A **feltétel** -választóban válassza ki a négy érték egyikét: **Nagyobb**, mint, **nagyobb vagy egyenlő**, **kisebb**, mint, vagy kisebb vagy **egyenlő**.
-
-   * Az **időszak** -választóban válasszon ki egy pontot öt perc és hat óra között.
-
-   * Ha az **e-mail-tulajdonosok, a közreműködők és az olvasók**lehetőséget választja, az e-mailek az adott erőforráshoz hozzáférő felhasználók alapján dinamikusak lehetnek. Ellenkező esetben a **további rendszergazdai e-mailek (ek)** mezőben megadhatja a felhasználók vesszővel elválasztott listáját.
-
-   ![Szabály hozzáadása lap][7]
-
-Ha a küszöbértéket megszegik, az alábbi képen láthatóhoz hasonló e-mail érkezik:
-
-![Sérült küszöbértékre vonatkozó e-mail][8]
-
-A riasztások listája a metrikai riasztás létrehozása után jelenik meg. Áttekintést nyújt az összes riasztási szabályról.
-
-![Riasztások és szabályok listája][9]
-
-A riasztási értesítésekről további információt a [Riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)című témakörben talál.
-
-Ha többet szeretne megtudni a webhookokról, és arról, hogyan használhatja őket riasztásokkal, látogasson el [a webhook konfigurálása Azure metrikai riasztásra](../azure-monitor/platform/alerts-webhooks.md)című témakörben.
 
 ## <a name="next-steps"></a>További lépések
 

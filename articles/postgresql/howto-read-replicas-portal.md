@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: d0f29e2c01d6295935ac56cb19c37e1ad6bbd21b
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: bd1317242f84b4d8bd039da89d991a73f6cd3781
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907385"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309311"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet olvasási replikákat Azure Database for PostgreSQL a Azure Portalból. Az olvasási replikákkal kapcsolatos további tudnivalókért tekintse meg [](concepts-read-replicas.md)az áttekintést.
-
-> [!IMPORTANT]
-> Létrehozhat egy olvasási replikát a főkiszolgálóval megegyező régióban, vagy bármely más, az Ön által választott Azure-régióban is. A régiók közötti replikáció jelenleg nyilvános előzetes verzióban érhető el.
+Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet olvasási replikákat Azure Database for PostgreSQL a Azure Portalból. Az olvasási replikákkal kapcsolatos további tudnivalókért tekintse meg az [áttekintést](concepts-read-replicas.md).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -79,7 +76,7 @@ A replika ugyanazokkal a számítási és tárolási beállításokkal jön lét
 > [!IMPORTANT]
 > A főkiszolgálói beállítás új értékre való frissítése előtt frissítse a replika beállításait egy egyenlő vagy nagyobb értékre. Ez a művelet segíti a replikát a főkiszolgálón végrehajtott bármilyen módosítással.
 
-Az olvasási replika létrehozása után a replikálási ablakból lehet megtekinteni :
+Az olvasási replika létrehozása után a **replikálási** ablakból lehet megtekinteni:
 
 ![Az új replika megtekintése a replikálási ablakban](./media/howto-read-replicas-portal/list-replica.png)
  
@@ -135,7 +132,7 @@ A főkiszolgálók törléséhez hasonlóan törölhet egy olvasási replikát i
 
    ![A replika áttekintése lapon válassza a (z) lehetőséget a replika törléséhez.](./media/howto-read-replicas-portal/delete-replica.png)
  
-Az olvasási replikát a replikálási ablakból is törölheti a következő lépések végrehajtásával:
+Az olvasási replikát a **replikálási** ablakból is törölheti a következő lépések végrehajtásával:
 
 1. A Azure Portal válassza ki a fő Azure Database for PostgreSQL kiszolgálót.
 

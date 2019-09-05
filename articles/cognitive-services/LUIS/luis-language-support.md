@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f46757b97fb2dd38be36459e5aafb70f5b5a3bf6
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 3b1b31da68d821ff27fa30e75ec1522b9d4875c8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932707"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307437"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelvéhez és régiójához támogatása
 
@@ -38,6 +38,7 @@ A LUIS tisztában van azzal a kimondott szöveg a következő nyelveken:
 | francia (Franciaország) |`fr-FR` |-| ✔ |✔ |✔|
 | francia (Kanada) |`fr-CA` |-|   -   |-|✔|
 | német |`de-DE` |-| ✔ |✔ |✔|
+| hindi | `hi-IN`|-|-|-|-|
 | olasz |`it-IT` |-| ✔ |✔|✔|
 | *[japán](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Csak a kulcsfontosságú kifejezések|
 | koreai |`ko-KR` |-|   -   |-|Csak a kulcsfontosságú kifejezések|
@@ -53,7 +54,7 @@ Nyelvi támogatás esetében eltérő [előre összeállított entitások](luis-
 
  - Az a `zh-cn` kulturális környezet, LUIS vár helyett a hagyományos karakterkészlet egyszerűsített kínai karakterkészlet.
  - Leképezések, az entitások, a funkciók és a reguláris kifejezések nevei a kínai vagy latin karaktereket lehet.
- - Tekintse meg az előre elkészített [tartományok hivatkozását](luis-reference-prebuilt-domains.md) , amely alapján az előre elkészített `zh-cn` tartományok a kulturális környezetekben támogatottak.
+ - Tekintse meg az előre [elkészített tartományok hivatkozását](luis-reference-prebuilt-domains.md) , amely alapján az előre elkészített `zh-cn` tartományok a kulturális környezetekben támogatottak.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>\* Japán támogatja a jegyzeteket
@@ -88,6 +89,7 @@ Machine learning alkalmazásához, LUIS bontja az utterance (kifejezés) [jogkiv
 |Francia (fr-FR)|✔||||
 |Francia (fr, CA)|✔||||
 |német|||✔|✔|
+| hindi |✔|-|-|-|-|
 |olasz|✔||||
 |japán||||✔|
 |koreai||✔||✔|

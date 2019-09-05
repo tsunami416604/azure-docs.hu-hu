@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: 9b58d6e189c891d0dd2917d7d150f133dc35f917
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: b938d55749373711ddf2a19df12b987276b224ca
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019097"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376296"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>A betanítási futtatások elindítása, figyelése és megszakítása a Pythonban
 
@@ -35,7 +35,7 @@ A következő elemekre lesz szüksége:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Egy [Azure Machine learning szolgáltatás](how-to-manage-workspace.md)munkaterülete.
+* Egy [Azure Machine learning szolgáltatás munkaterülete](how-to-manage-workspace.md).
 
 * A Pythonhoz készült Azure Machine Learning SDK (1.0.21 vagy újabb verzió). Az SDK legújabb verziójának telepítéséhez vagy frissítéséhez lásd: [az SDK telepítése vagy frissítése](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
@@ -226,7 +226,7 @@ Sok gyermek hatékony futtatásához használja a [`create_children()`](https://
 
 Alárendelt futtatásokat is el lehet küldeni egy szülő futtatásból. Ez lehetővé teszi a szülő-és gyermek-futtatási hierarchiák létrehozását, amelyek mindegyike különböző számítási célokon fut.
 
-A ["submit_child ()"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-count-none--tag-key-none--tag-values-none-) metódus használatával küldheti el a gyermek futtatását szülő futtatásból. Ehhez a szülő futtatási parancsfájlban le kell kérni a futtatási környezetet, és el kell küldenie a gyermek futtatását a környezeti példány "submit_child" metódusának használatával.
+A ["submit_child ()"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) metódus használatával küldheti el a gyermek futtatását szülő futtatásból. Ehhez a szülő futtatási parancsfájlban le kell kérni a futtatási környezetet, és el kell küldenie a gyermek futtatását a környezeti példány "submit_child" metódusának használatával.
 
 ```python
 ## In parent run script
@@ -341,4 +341,4 @@ A következő jegyzetfüzetek a cikkben ismertetett fogalmakat mutatják be:
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha szeretné megtudni, hogyan naplózhatja a kísérletek mérőszámait, [](how-to-track-experiments.md)tekintse meg a következő témakört: a betanítási mérőszámok.
+* Ha szeretné megtudni, hogyan naplózhatja a kísérletek mérőszámait, tekintse meg a következő témakört: a [betanítási mérőszámok](how-to-track-experiments.md).

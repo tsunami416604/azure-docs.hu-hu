@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: f04dd628ae0999edd202c98521526ae70e1ff0af
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 367027a48dd51dd88de63cb163e05e0e8503755d
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141217"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308585"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -64,7 +64,7 @@ A meglévő alkalmazásokat áttelepítheti App Servicera az [Online áttelepít
 
 > **Mikor kell használni**: App Service használata a meglévő webalkalmazások Azure-ba való áttelepítésekor, és ha teljes körűen felügyelt üzemeltetési platformra van szüksége a Web Apps számára. App Service akkor is használhatja, ha a mobileszközök támogatásához vagy a REST API-k az alkalmazással való eléréséhez szükséges.
 > 
-> Első **lépések**: A App Service megkönnyíti az első webalkalmazás, a [](../../app-service/app-service-web-get-started-dotnet.md) [Mobile App](../../app-service-mobile/app-service-mobile-ios-get-started.md)vagy az [API-alkalmazás](../../app-service/app-service-web-tutorial-rest-api.md)létrehozását és üzembe helyezését.
+> Első **lépések**: A App Service megkönnyíti az első [webalkalmazás](../../app-service/app-service-web-get-started-dotnet.md), a [Mobile App](../../app-service-mobile/app-service-mobile-ios-get-started.md)vagy az [API-alkalmazás](../../app-service/app-service-web-tutorial-rest-api.md)létrehozását és üzembe helyezését.
 > 
 > **Próbálja ki most**: App Service lehetővé teszi egy rövid élettartamú alkalmazás kiépítését a platform kipróbálásához anélkül, hogy regisztrálnia kellene egy Azure-fiókra. Próbálja ki a platformot, és [hozza létre a Azure app Service alkalmazást](https://tryappservice.azure.com/).
 
@@ -86,7 +86,7 @@ Nem kell aggódnia a teljes alkalmazás vagy infrastruktúra kiépítésével é
 > 
 > Első **lépések**: Kövesse a functions gyors oktatóanyagot az [első függvény létrehozásához](../../azure-functions/functions-create-first-azure-function.md) a portálon.
 > 
-> **Próbálja ki most**: Azure Functions lehetővé teszi a kód futtatását anélkül, hogy regisztrálnia kellene egy Azure-fiókra. Próbálja ki most, és [hozza létre első Azure](https://tryappservice.azure.com/)-függvényét.
+> **Próbálja ki most**: Azure Functions lehetővé teszi a kód futtatását anélkül, hogy regisztrálnia kellene egy Azure-fiókra. Próbálja ki most, és [hozza létre első Azure-függvényét](https://tryappservice.azure.com/).
 
 #### <a name="azure-service-fabric"></a>Azure Service Fabric
 
@@ -109,13 +109,13 @@ A legtöbb alkalmazásnak tárolnia kell az adatait, függetlenül attól, hogy 
 - **Azure Cosmos db**: Egy globálisan elosztott, többmodelles adatbázis-szolgáltatás, amely lehetővé teszi az átviteli sebesség és a tárterület rugalmas méretezését tetszőleges számú földrajzi régióban, átfogó SLA-val. 
   > **Mikor kell használni:** Ha az alkalmazásnak dokumentum-, tábla-vagy Graph-adatbázisokra, például MongoDB-adatbázisokra van szüksége, több jól meghatározott konzisztencia-modellel. 
   > 
-  > Első **lépések**: [Hozzon létre egy Azure Cosmos db](../../cosmos-db/create-sql-api-dotnet.md)webalkalmazást. Ha Ön MongoDB-fejlesztő, tekintse meg [a MongoDB](../../cosmos-db/create-mongodb-dotnet.md)-Webalkalmazás létrehozása a Azure Cosmos DBkal című témakört.
+  > Első **lépések**: [Hozzon létre egy Azure Cosmos db webalkalmazást](../../cosmos-db/create-sql-api-dotnet.md). Ha Ön MongoDB-fejlesztő, tekintse meg [a MongoDB-Webalkalmazás létrehozása a Azure Cosmos DBkal](../../cosmos-db/create-mongodb-dotnet.md)című témakört.
 
 - **Azure Storage**: Tartós, magasan elérhető tárhelyet kínál a blobokhoz, a várólistákhoz, a fájlokhoz és más típusú nem kapcsolódó adattípusokhoz. A Storage biztosítja a virtuális gépek tárolási alapjait.
 
   > **Mikor kell használni**: Ha az alkalmazás nem kapcsolódó adattípusokat, például kulcs-érték párokat (táblákat), blobokat, fájlokat, megosztásokat vagy üzeneteket (várólistákat) tárol.
   > 
-  > Első **lépések**: Válasszon az alábbi típusok közül: Blobok [](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [táblák](../../cosmos-db/table-storage-how-to-use-dotnet.md), [várólisták](../../storage/queues/storage-dotnet-how-to-use-queues.md)vagy [fájlok](../../storage/files/storage-dotnet-how-to-use-files.md).
+  > Első **lépések**: Válasszon az alábbi típusok közül: [Blobok](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [táblák](../../cosmos-db/table-storage-how-to-use-dotnet.md), [várólisták](../../storage/queues/storage-dotnet-how-to-use-queues.md)vagy [fájlok](../../storage/files/storage-dotnet-how-to-use-files.md).
 
 - **Azure SQL Database**: A Microsoft SQL Server motor Azure-alapú verziója, amely a felhőben található, a kapcsolódó táblázatos adatokat tárolja. SQL Database az állásidő, az üzletmenet folytonossága és az adatvédelem nélkül biztosít kiszámítható teljesítményt, méretezhetőséget.
 
@@ -134,7 +134,7 @@ Az Azure számos lehetőséget kínál a tárolók használatára az alkalmazás
 
 - **Azure Docker VM-bővítmény**: Lehetővé teszi a virtuális gép Docker-gazdagépként való megadását a Docker-eszközök használatával.
 
-  > **Mikor kell használni**: Ha egységes tároló-üzembe helyezést szeretne készíteni az alkalmazásaihoz egy virtuális gépen, vagy ha a Docker- [összeállítást](https://docs.docker.com/compose/overview/)szeretné használni.
+  > **Mikor kell használni**: Ha egységes tároló-üzembe helyezést szeretne készíteni az alkalmazásaihoz egy virtuális gépen, vagy ha a [Docker-összeállítást](https://docs.docker.com/compose/overview/)szeretné használni.
   > 
   > Első **lépések**: [Docker-környezet létrehozása az Azure-ban a Docker VM bővítmény használatával](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
@@ -152,7 +152,7 @@ Az Azure számos lehetőséget kínál a tárolók használatára az alkalmazás
 
   > **Mikor kell használni**: A Linux rendszerű webalkalmazások Docker-rendszerképekre való telepítésekor.
   > 
-  > Első **lépések**: [Egyéni Docker-rendszerképet használhat](../../app-service/containers/quickstart-docker-go.md)a linuxon futó app Servicehoz.
+  > Első **lépések**: [Egyéni Docker-rendszerképet használhat a Linuxon futó app Servicehoz](../../app-service/containers/quickstart-docker-go.md).
 
 ### <a name="authentication"></a>Authentication
 
@@ -188,7 +188,7 @@ Az Azure-ban futó alkalmazásokkal nyomon követheti a teljesítményt, figyelh
 
 Függetlenül attól, hogy a virtuális gépek kiépítése vagy a webalkalmazások folyamatos integrációval való közzététele, az Azure integrálható a legtöbb népszerű DevOps-eszközzel. A Jenkins, a GitHub, a Puppet, a Chef, a TeamCity, a Ansible, az Azure DevOps és mások eszközeinek támogatásával a már meglévő eszközökkel dolgozhat, és maximalizálhatja a meglévő felhasználói élményt.
 
-> **Próbálja ki most:** [Próbálja ki több DevOps](https://azure.microsoft.com/try/devops/)-integrációt.
+> **Próbálja ki most:** [Próbálja ki több DevOps-integrációt](https://azure.microsoft.com/try/devops/).
 > 
 > Első **lépések**: App Service alkalmazás DevOps-beállításainak megtekintéséhez tekintse meg a [Azure app Service folyamatos üzembe helyezését](../../app-service/deploy-continuous-deployment.md)ismertető témakört.
 
@@ -227,14 +227,14 @@ A Azure Portal egy webalapú alkalmazás, amely Azure-erőforrások és-szolgál
 
 ### <a name="rest-apis"></a>REST API-k
 
-Az Azure a Azure Portal felhasználói felületét támogató REST API-k készletére épül. A REST API-k többsége támogatja az Azure-erőforrások és-alkalmazások programozott módon történő üzembe helyezését és kezelését bármely internetalapú eszközről. Az REST API dokumentációjának teljes készletét az [Azure Rest SDK](https://docs.microsoft.com/rest/api/)-referenciában találja.
+Az Azure a Azure Portal felhasználói felületét támogató REST API-k készletére épül. A REST API-k többsége támogatja az Azure-erőforrások és-alkalmazások programozott módon történő üzembe helyezését és kezelését bármely internetalapú eszközről. Az REST API dokumentációjának teljes készletét az [Azure Rest SDK-referenciában](https://docs.microsoft.com/rest/api/)találja.
 
 ### <a name="apis"></a>API-k
 
 A REST API-kon kívül számos Azure-szolgáltatás is lehetővé teszi, hogy programozott módon kezelhesse az alkalmazások erőforrásait a platform-specifikus Azure SDK-k használatával, beleértve az alábbi fejlesztői platformokhoz készült SDK-kat:
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/javascript/azure)
+-   [Node.js](https://docs.microsoft.com/azure/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)
@@ -261,19 +261,19 @@ A fejlesztőknek jobb, ha a kódot vesszük figyelembe, és a lehető leggyorsab
 
 ### <a name="what-is-an-azure-account"></a>Mi az Azure-fiók?
 
-Azure-előfizetések létrehozásához vagy használatához Azure-fiókkal kell rendelkeznie. Az Azure-fiókok egyszerűen az Azure ad-ben vagy egy címtárban, például munkahelyi vagy iskolai szervezetben lévő identitások, amelyeket az Azure AD megbízhatónak tekint. Ha nem tartozik ilyen szervezethez, bármikor létrehozhat egy előfizetést az Azure AD által megbízhatóként használt Microsoft-fiókkal. Ha többet szeretne megtudni a helyszíni Windows Server Active Directory Azure AD-vel való integrálásáról, tekintse [meg a](../../active-directory/hybrid/whatis-hybrid-identity.md)helyszíni identitások integrálása a Azure Active Directorykal című témakört.
+Azure-előfizetések létrehozásához vagy használatához Azure-fiókkal kell rendelkeznie. Az Azure-fiókok egyszerűen az Azure ad-ben vagy egy címtárban, például munkahelyi vagy iskolai szervezetben lévő identitások, amelyeket az Azure AD megbízhatónak tekint. Ha nem tartozik ilyen szervezethez, bármikor létrehozhat egy előfizetést az Azure AD által megbízhatóként használt Microsoft-fiókkal. Ha többet szeretne megtudni a helyszíni Windows Server Active Directory Azure AD-vel való integrálásáról, tekintse [meg a helyszíni identitások integrálása a Azure Active Directorykal](../../active-directory/hybrid/whatis-hybrid-identity.md)című témakört.
 
-Minden Azure-előfizetés bizalmi kapcsolattal rendelkezik egy Azure AD-példányhoz. Ez azt jelenti, hogy megbízik ebben a címtárban a felhasználók, szolgáltatások és eszközök hitelesítéséhez. Több előfizetés is megbízhat ugyanabban a címtárban, de egy előfizetés csak egy címtárban bízhat meg. További információkért lásd: [Az Azure](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)-előfizetések társítása Azure Active Directoryhoz.
+Minden Azure-előfizetés bizalmi kapcsolattal rendelkezik egy Azure AD-példányhoz. Ez azt jelenti, hogy megbízik ebben a címtárban a felhasználók, szolgáltatások és eszközök hitelesítéséhez. Több előfizetés is megbízhat ugyanabban a címtárban, de egy előfizetés csak egy címtárban bízhat meg. További információkért lásd: [Az Azure-előfizetések társítása Azure Active Directoryhoz](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 Az egyes Azure-fiókok identitásai (más néven *felhasználók*) definiálásán kívül *csoportokat* is meghatározhat az Azure ad-ben. A felhasználói csoportok létrehozása jó módja a szerepköralapú hozzáférés-vezérlés (RBAC) használatával az előfizetések erőforrásaihoz való hozzáférés kezelésére. A csoportok létrehozásával kapcsolatos további információkért lásd: [csoport létrehozása Azure Active Directory előzetes](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)verzióban. Csoportokat a [PowerShell használatával](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)is létrehozhat és kezelhet.
 
 ### <a name="manage-your-subscriptions"></a>Előfizetések kezelése
 
-Az előfizetés egy Azure-fiókhoz kapcsolódó Azure-szolgáltatások logikai csoportosítása. Egyetlen Azure-fiók több előfizetést is tartalmazhat. Az Azure-szolgáltatások számlázása előfizetési alapon történik. Az elérhető előfizetési ajánlatok listáját a következő típus szerint tekintheti meg: [Microsoft Azure ajánlat részletei](https://azure.microsoft.com/support/legal/offer-details/). Az Azure-előfizetések rendelkeznek egy fiók rendszergazdájával, aki teljes körűen szabályozhatja az előfizetést, valamint egy szolgáltatás-rendszergazdát, aki az előfizetés összes szolgáltatását felügyeli. További információ a klasszikus előfizetési rendszergazdákról: Azure-előfizetések [rendszergazdáinak hozzáadása vagy módosítása](../../billing/billing-add-change-azure-subscription-administrator.md). A rendszergazdákon kívül az egyes fiókok a [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével az Azure-erőforrások részletes ellenőrzését is megadhatják.
+Az előfizetés egy Azure-fiókhoz kapcsolódó Azure-szolgáltatások logikai csoportosítása. Egyetlen Azure-fiók több előfizetést is tartalmazhat. Az Azure-szolgáltatások számlázása előfizetési alapon történik. Az elérhető előfizetési ajánlatok listáját a következő típus szerint tekintheti meg: [Microsoft Azure ajánlat részletei](https://azure.microsoft.com/support/legal/offer-details/). Az Azure-előfizetések rendelkeznek egy fiók rendszergazdájával, aki teljes körűen szabályozhatja az előfizetést, valamint egy szolgáltatás-rendszergazdát, aki az előfizetés összes szolgáltatását felügyeli. További információ a klasszikus előfizetési rendszergazdákról: [Azure-előfizetések rendszergazdáinak hozzáadása vagy módosítása](../../billing/billing-add-change-azure-subscription-administrator.md). A rendszergazdákon kívül az egyes fiókok a [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével az Azure-erőforrások részletes ellenőrzését is megadhatják.
 
 #### <a name="resource-groups"></a>Erőforráscsoportok
 
-Új Azure-szolgáltatások kiépítésekor ezt egy adott előfizetésben teheti meg. Az egyes Azure-szolgáltatások, amelyek más néven erőforrások, egy erőforráscsoport kontextusában jönnek létre. Az erőforráscsoportok megkönnyítik az alkalmazás erőforrásainak üzembe helyezését és kezelését. Az erőforráscsoport az alkalmazás összes olyan erőforrását tartalmazza, amelyet egységként szeretne használni. Az erőforrásokat az erőforráscsoportok és a különböző előfizetések között is áthelyezheti. További információ az erőforrások áthelyezéséről: [erőforrások áthelyezése új erőforráscsoporthoz vagy](../../resource-group-move-resources.md)előfizetésbe.
+Új Azure-szolgáltatások kiépítésekor ezt egy adott előfizetésben teheti meg. Az egyes Azure-szolgáltatások, amelyek más néven erőforrások, egy erőforráscsoport kontextusában jönnek létre. Az erőforráscsoportok megkönnyítik az alkalmazás erőforrásainak üzembe helyezését és kezelését. Az erőforráscsoport az alkalmazás összes olyan erőforrását tartalmazza, amelyet egységként szeretne használni. Az erőforrásokat az erőforráscsoportok és a különböző előfizetések között is áthelyezheti. További információ az erőforrások áthelyezéséről: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../resource-group-move-resources.md).
 
 A Azure Erőforrás-kezelő nagyszerű eszköz az előfizetésben már létrehozott erőforrások megjelenítéséhez. További információ: az [erőforrások megtekintése és módosítása a Azure erőforrás-kezelő használatával](../../resource-manager-resource-explorer.md).
 

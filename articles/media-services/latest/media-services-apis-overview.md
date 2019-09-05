@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 26fea4322df625b2e38028a3b7121fb41f2acf81
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 5558eeb4012ac563388ad47df61114534e9859ed
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311860"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308339"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Fejlesztés Media Services V3 API-kkal
 
@@ -38,7 +38,7 @@ Egyszerű szolgáltatásnév létrehozása helyett érdemes lehet felügyelt ide
 
 ### <a name="azure-ad-service-principal"></a>Azure AD egyszerű szolgáltatás 
 
-Ha Azure AD-alkalmazást és egyszerű szolgáltatásnevet hoz létre, akkor az alkalmazásnak saját bérlőn kell lennie. Az alkalmazás létrehozása után adja meg az alkalmazás **közreműködői** vagy tulajdonosi **** szerepkörének hozzáférését az Media Services fiókhoz. 
+Ha Azure AD-alkalmazást és egyszerű szolgáltatásnevet hoz létre, akkor az alkalmazásnak saját bérlőn kell lennie. Az alkalmazás létrehozása után adja meg az alkalmazás **közreműködői** vagy **tulajdonosi** szerepkörének hozzáférését az Media Services fiókhoz. 
 
 Ha nem biztos abban, hogy rendelkezik-e engedéllyel Azure AD-alkalmazás létrehozásához, tekintse meg a [szükséges engedélyeket](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
@@ -77,9 +77,13 @@ A Media Services-erőforrás neve nem tartalmazhatja a következőket: "<", ">",
 
 A Azure Resource Manager elnevezéssel kapcsolatos további információkért lásd: [Elnevezési követelmények](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) és [elnevezési konvenciók](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
+### <a name="names-of-filesblobs-within-an-asset"></a>Egy eszközön belüli fájlok/Blobok nevei
+
+Az eszközön belüli fájlok/Blobok nevének a [blob neve](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) és az [NTFS-név követelményeit](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)is követnie kell. Ennek a követelménynek az oka, hogy a fájlok a blob Storage-ból egy helyi NTFS-lemezre másolhatók feldolgozásra.
+
 ## <a name="long-running-operations"></a>Hosszan futó műveletek
 
-A Azure Media Services hencegő `x-ms-long-running-operation` fájlokban megjelölt [](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) műveletek hosszú ideig futó műveletek. 
+A Azure Media Services `x-ms-long-running-operation` [hencegő fájlokban](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) megjelölt műveletek hosszú ideig futó műveletek. 
 
 Az aszinkron Azure-műveletek nyomon követésével kapcsolatos részletekért lásd: [aszinkron műveletek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
 
@@ -129,11 +133,11 @@ Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében c
 
 [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) A (AMSE) eszköz olyan Windows-ügyfelek számára érhető el, akik szeretnének többet megtudni a Media Servicesról. A AMSE egy WinForms/C# alkalmazás, amely feltölti, letölti, kódolja, TOVÁBBÍTJA a VOD-t és az élő tartalmakat Media Services. A AMSE eszköz olyan ügyfelek számára készült, akik kód írása nélkül szeretnék tesztelni Media Services. A AMSE-kód olyan ügyfelek számára biztosít erőforrásként, akik Media Serviceskal szeretnének fejleszteni.
 
-A AMSE egy nyílt forráskódú projekt, amely a Közösség által biztosított támogatással kapcsolatos https://github.com/Azure/Azure-Media-Services-Explorer/issues). A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információkért tekintse meg [](https://opensource.microsoft.com/codeofconduct/faq/) a viselkedési szabályzatot, opencode@microsoft.com vagy forduljon a további kérdésekhez vagy megjegyzésekhez.
+A AMSE egy nyílt forráskódú projekt, amely a Közösség által biztosított támogatással kapcsolatos https://github.com/Azure/Azure-Media-Services-Explorer/issues). A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információkért tekintse meg a [viselkedési szabályzatot](https://opensource.microsoft.com/codeofconduct/faq/) , opencode@microsoft.com vagy forduljon a további kérdésekhez vagy megjegyzésekhez.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
 
-Lásd: [Azure Media Services entitások szűrése, rendezése](entities-overview.md) és lapozása
+Lásd: [Azure Media Services entitások szűrése, rendezése és lapozása](entities-overview.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
 

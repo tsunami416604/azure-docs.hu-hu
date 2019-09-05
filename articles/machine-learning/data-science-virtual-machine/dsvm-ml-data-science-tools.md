@@ -1,43 +1,39 @@
 ---
-title: Gépi tanulási és adatelemzési eszközök – Azure |} A Microsoft Docs
+title: Gépi tanulás & adatelemzési eszközök
+titleSuffix: Azure Data Science Virtual Machine
 description: Ismerje meg a machine learning-eszközöket és keretrendszereket előre telepítve van a Data Science virtuális gépen.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: 3b05d076a61593e8c34ce642f2fe2fd137e07109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: f97412bc3f8d8b046df1324c7e1a0ad568f5db52
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565241"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278784"
 ---
-# <a name="machine-learning-and-data-science-tools"></a>Machine learning és adatelemzési eszközök
+# <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Gépi tanulási és adatelemzési eszközök az Azure adatelemzési Virtual Machines
 Az Azure Data Science Virtual Machines rendelkezik eszközök széles skáláját, és -kódtárak a machine learning (gépi tanulás) például Python, R és Julia népszerű nyelveken érhető el. 
 
 Íme néhány, a gépi Tanulási eszközök és kódtárak Data Science Virtual Machines gépeken. 
 
-## <a name="azure-machine-learninghttpsdocsmicrosoftcomazuremachine-learningserviceoverview-what-is-azure-ml-sdk"></a>[Az Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml) SDK
+## <a name="azure-machine-learning-sdk-for-python"></a>A Pythonhoz készült Azure Machine Learning SDK
+Tekintse meg a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml)teljes referenciáját.
+
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   |   Az Azure Machine Learning egy felhőalapú szolgáltatás, amellyel fejleszthet és helyezhet üzembe gépi Tanulási modelleket. Nyomon követheti a modellek, fejleszthet, betanítását, méretezési és a Python SDK-val kezelheti azokat. Tárolókként modellek üzembe helyezése, és futtathatók a felhőben, a helyszínen, vagy az Azure IoT Edge-ben.   |
-| Támogatott kiadások     | Windows (Conda-környezet: AzureML), Linux (Conda Environment: py36)    |
-| Gyakori használati      | Általános gépi Tanulási platform      |
-| Hogyan azt konfigurálni vagy telepíteni?      |  GPU-támogatással rendelkező telepítve   |
-| Használatával, vagy futtassa      | A Python SDK-t és az Azure parancssori felület. Aktiválja a conda-környezet `AzureML` Windows Edition *vagy* való `py36` Linux rendszeren.      |
-| A minták mutató hivatkozás      | Mintául szolgáló Jupyter notebookok szerepelnek a `AzureML` notebookok a könyvtárban.  |
-| Kapcsolódó eszközök      | A Visual Studio Code-ban Jupyter   |
+| Mi ez? |   Az Azure Machine Learning egy felhőalapú szolgáltatás, amellyel fejleszthet és helyezhet üzembe gépi Tanulási modelleket. Nyomon követheti a modellek, fejleszthet, betanítását, méretezési és a Python SDK-val kezelheti azokat. Tárolókként modellek üzembe helyezése, és futtathatók a felhőben, a helyszínen, vagy az Azure IoT Edge-ben. |
+| Támogatott kiadások  | Windows (Conda-környezet: AzureML), Linux (Conda Environment: py36) |
+| Gyakori használati      | Általános gépi Tanulási platform  |
+| Hogyan azt konfigurálni vagy telepíteni? |  GPU-támogatással rendelkező telepítve |
+| Használatával, vagy futtassa | A Python SDK-t és az Azure parancssori felület. Aktiválja a conda-környezet `AzureML` Windows Edition *vagy* való `py36` Linux rendszeren.  |
+| A minták mutató hivatkozás | Mintául szolgáló Jupyter notebookok szerepelnek a `AzureML` notebookok a könyvtárban.  |
+| Kapcsolódó eszközök  | A Visual Studio Code-ban Jupyter   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |

@@ -1,5 +1,5 @@
 ---
-title: Language Understanding bot C# v4
+title: 'Oktatóanyag: Language Understanding bot C# v4'
 titleSuffix: Azure Cognitive Services
 description: A C# használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). A robot a robot Framework 4-es verziójával és az Azure Web App bot Service-szel készült.
 services: cognitive-services
@@ -9,18 +9,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 08/30/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: c78359920ebc5faab2e0a678a901bcb8581a4e45
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 79f75fbae9a13db985f46408145c7d6762ff56b9
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207332"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375585"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Oktatóanyag: Webalkalmazás-robot használata Language Understanding használatávalC#
 
-A C# használatával a Language Understanding (Luis) segítségével integrált csevegési robotot hozhat létre. A robot az Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) Resource és a [bot Framework](https://github.com/Microsoft/botbuilder-dotnet) v4-es verziójával készült.
+A C# használatával a Language Understanding (Luis) segítségével integrált csevegési robotot hozhat létre. A robot az Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) Resource és a bot Framework v4-es [verziójával](https://github.com/Microsoft/botbuilder-dotnet) készült.
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -58,7 +58,7 @@ A C# használatával a Language Understanding (Luis) segítségével integrált 
     |Application Insights|Ne módosítsa a megadott alapértelmezett értéket.|
     |Microsoft-alkalmazás azonosítója és jelszava|Ne módosítsa a megadott alapértelmezett értéket.|
 
-1. A **bot**-sablonban válassza ki a következőt, majd a beállítások területen válassza a **kiválasztás** gombot:
+1. A **bot-sablonban**válassza ki a következőt, majd a beállítások területen válassza a **kiválasztás** gombot:
 
     |Beállítás|Cél|Kiválasztás|
     |--|--|--|
@@ -188,7 +188,7 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
     }
     ```
 
-1. Párbeszédpanelek megnyitása **– > BookingDialog.cs** , hogy megtudja, hogyan használják a BookingDetails objektumot a beszélgetési folyamat kezeléséhez. Az utazási adatokat a rendszer a következő lépésekben kérdezi le: a teljes foglalás megerősítve, végül pedig visszakerül a felhasználóhoz. 
+1. **Párbeszédpanelek megnyitása – > BookingDialog.cs** , hogy megtudja, hogyan használják a BookingDetails objektumot a beszélgetési folyamat kezeléséhez. Az utazási adatokat a rendszer a következő lépésekben kérdezi le: a teljes foglalás megerősítve, végül pedig visszakerül a felhasználóhoz. 
 
     ```csharp
     // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -313,7 +313,7 @@ Indítsa el a robotot a Visual Studióban. Ekkor megnyílik egy böngészőablak
 
 1. Indítsa el a robot-emulátort, és válassza a **robot megnyitása**lehetőséget.
 1. A **bot megnyitása** előugró ablakban adja meg a robot URL-címét, például `http://localhost:3978/api/messages`:. Az `/api/messages` útvonal a robot webes címe.
-1. Adja meg a **Microsoft-alkalmazás azonosítóját** és a Microsoft- **alkalmazás jelszavát**, amely a letöltött robot-kód gyökerében található **appSettings. JSON** fájlban található.
+1. Adja meg a **Microsoft-alkalmazás azonosítóját** és a **Microsoft-alkalmazás jelszavát**, amely a letöltött robot-kód gyökerében található **appSettings. JSON** fájlban található.
 
     Szükség esetén létrehozhat egy új bot-konfigurációt, és `appId` átmásolhatja `appPassword` a **appSettings. JSON** fájlt a robothoz tartozó Visual Studio-projektből. A bot-konfigurációs fájl nevének meg kell egyeznie a robot nevével. 
 

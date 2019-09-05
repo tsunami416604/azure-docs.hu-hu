@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 63150b8924438df8d77fdd088811d9fbe3ec2d84
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: bff6268507c0d2ec0aa1eac0c7e2e9d2513ded58
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967315"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376124"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure-beli virtuális gépek áthelyezése Azure Government és a nyilvános régiók között 
 
@@ -44,7 +44,7 @@ Ez az oktatóanyag bemutatja, hogyan helyezheti át az Azure-beli virtuális gé
 > Győződjön meg arról, hogy ismeri a forgatókönyv [architektúráját és összetevőit](physical-azure-architecture.md) . Ez az architektúra a **virtuális gépek fizikai kiszolgálóként való kezelésével az**Azure-beli virtuális gépek áthelyezésére szolgál.
 
 - Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](vmware-physical-secondary-support-matrix.md).
-- Győződjön meg arról, hogy a replikálni kívánt kiszolgálók megfelelnek az Azure-beli [virtuális](vmware-physical-secondary-support-matrix.md#replicated-vm-support)gépek követelményeinek.
+- Győződjön meg arról, hogy a replikálni kívánt kiszolgálók megfelelnek az Azure-beli [virtuális gépek követelményeinek](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 - Készítsen elő egy fiókot a mobilitási szolgáltatás automatikus telepítéséhez minden replikálni kívánt kiszolgálón.
 
 - Vegye figyelembe, hogy miután felvette a feladatátvételt az Azure-beli célcsoportba, nem végezheti el a feladatátvételt közvetlenül a forrás régiójába. A replikációt újra be kell állítania a célhelyre.
@@ -98,8 +98,8 @@ A mobilitási szolgáltatást minden replikálni kívánt kiszolgálón telepít
      A következő dokumentumokban a forrás virtuális gép konfigurációja alapján hozza létre az Ön számára releváns leggyakrabban használt hálózati erőforrásokat.
 
     - [Hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Terheléselosztók](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [Nyilvános IP-cím](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [Terheléselosztók](https://docs.microsoft.com/azure/load-balancer)
+    - [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md)
     
     Bármely más hálózati összetevő esetében tekintse meg a hálózatkezelés [dokumentációját.](https://docs.microsoft.com/azure/#pivot=products&panel=network) 
 
@@ -127,7 +127,7 @@ Az alábbi lépések bemutatják, hogyan használhatja a Azure Site Recovery az 
 2. Ha nem rendelkezik konfigurációs kiszolgálóval, kattintson a **+ konfigurációs kiszolgáló**elemre.
 3. A **kiszolgáló hozzáadása**területen győződjön meg arról, hogy a **konfigurációs kiszolgáló** megjelenik a **kiszolgáló típusa mezőben**.
 4. Töltse le a Site Recovery egyesített telepítési telepítőfájlt.
-5. Töltse le a tároló regisztrációs kulcsát. Ezt az egyesített telepítő futtatásakor kell megadnia. A kulcs a generálásától számított öt napig érvényes.
+5. Töltse le a tárolóregisztrációs kulcsot. Ezt az egyesített telepítő futtatásakor kell megadnia. A kulcs a generálásától számított öt napig érvényes.
 
    ![A forrás beállítása](./media/physical-azure-disaster-recovery/source-environment.png)
 
@@ -137,7 +137,7 @@ Az alábbi lépések bemutatják, hogyan használhatja a Azure Site Recovery az 
 A Kezdés előtt tegye a következőket: 
 
 #### <a name="verify-time-accuracy"></a>Időtartam pontosságának ellenőrzése
-Győződjön meg arról, hogy a konfigurációs kiszolgáló számítógépén a rendszer órája szinkronizálva van egy [](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)időkiszolgálóval. Meg kell egyeznie. Ha legalább 15 perc van hátra, a telepítés sikertelen lehet.
+Győződjön meg arról, hogy a konfigurációs kiszolgáló számítógépén a rendszer órája szinkronizálva van egy [időkiszolgálóval](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service). Meg kell egyeznie. Ha legalább 15 perc van hátra, a telepítés sikertelen lehet.
 
 #### <a name="verify-connectivity"></a>Kapcsolat ellenőrzése
 Győződjön meg arról, hogy a számítógép a környezet alapján fér hozzá ezekhez az URL-címekhez: 
@@ -146,8 +146,8 @@ Győződjön meg arról, hogy a számítógép a környezet alapján fér hozzá
 
 Az IP-cím alapú tűzfalszabályok lehetővé teszik a kommunikációt a HTTPS (443) porton fent felsorolt összes Azure URL-címhez. Az IP-címtartományok egyszerűsítése és korlátozása érdekében javasoljuk, hogy az URL-szűrést végezze el.
 
-- **Kereskedelmi IP** -címek – engedélyezi az [Azure-adatközpont IP](https://www.microsoft.com/download/confirmation.aspx?id=41653)-tartományait és a https (443) portot. Az előfizetéshez tartozó Azure-régió IP-címtartományok engedélyezése a HRE, a biztonsági mentési, a replikálási és a tárolási URL-címek támogatásához.  
-- **Kormányzati IP** -címek – engedélyezi a [Azure Government adatközpont IP](https://www.microsoft.com/en-us/download/details.aspx?id=57063)-tartományait és a https (443) portot az összes USA Korm.-régióhoz (Virginia, Texas, Arizona és Iowa) a HRE, a biztonsági mentési, a replikálási és a tárolási URL-címek támogatásához.  
+- **Kereskedelmi IP** -címek – engedélyezi az [Azure-adatközpont IP-tartományait](https://www.microsoft.com/download/confirmation.aspx?id=41653)és a https (443) portot. Az előfizetéshez tartozó Azure-régió IP-címtartományok engedélyezése a HRE, a biztonsági mentési, a replikálási és a tárolási URL-címek támogatásához.  
+- **Kormányzati IP** -címek – engedélyezi a [Azure Government adatközpont IP-tartományait](https://www.microsoft.com/en-us/download/details.aspx?id=57063)és a https (443) portot az összes USA Korm.-régióhoz (Virginia, Texas, Arizona és Iowa) a HRE, a biztonsági mentési, a replikálási és a tárolási URL-címek támogatásához.  
 
 #### <a name="run-setup"></a>A telepítő futtatása
 Futtassa az egyesített telepítőt helyi rendszergazdaként a konfigurációs kiszolgáló telepítéséhez. A Process Server és a fő célkiszolgáló is alapértelmezés szerint telepítve van a konfigurációs kiszolgálón.
@@ -175,12 +175,12 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 4. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú (hány órás) legyen az egyes helyreállítási pontok adatmegőrzési időtartama. A replikált virtuális gépek ezen az időtartamon belül bármikor helyreállíthatók. A rendszer a prémium tárolóra replikált gépek esetében 24 órás, a standard tárolóra replikált gépek esetében 72 órás megőrzést támogat.
 5. Az alkalmazás **-konzisztens Pillanatképek gyakorisága**mezőben adhatja meg, hogy az alkalmazás-konzisztens pillanatképeket tartalmazó helyreállítási pontok milyen gyakran jöjjenek létre. A szabályzat létrehozásához kattintson az **OK** gombra.
 
-    ![Replikációs szabályzat](./media/physical-azure-disaster-recovery/replication-policy.png)
+    ![Replikációs házirend](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
 A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval. Alapértelmezés szerint a rendszer automatikusan létrehoz egy megfelelő szabályzatot a feladat-visszavételre is. Ha például a replikációs házirend a **rep-Policy** , akkor létrejön egy feladat-visszavételi szabályzat **rep-Policy-feladat-visszavétel** . Ezt a szabályzatot nem használja a rendszer, amíg nem indít el egy feladat-visszavételt az Azure-ból.
 
-### <a name="enable-replication"></a>A replikáció engedélyezése
+### <a name="enable-replication"></a>Replikáció engedélyezése
 
 - Site Recovery telepíti a mobilitási szolgáltatást, ha a replikáció engedélyezve van.
 - Ha engedélyezi a replikálást egy-kiszolgáló számára, a módosítások életbe léptetése 15 percet vagy hosszabb időt is igénybe vehet, és megjelenik a portálon.
@@ -234,14 +234,14 @@ A hozzáadott kiszolgálók figyeléséhez ellenőrizheti a **konfigurációs ki
 
 ## <a name="discard-the-resource-in-the-source-region"></a>Az erőforrás elvetése a forrás régióban 
 
-- Navigáljon a virtuális géphez.  Kattintson a **replikáció**letiltására.  Ezzel leállítja a virtuális gép adatok másolásának folyamatát.  
+- Navigáljon a virtuális géphez.  Kattintson a **replikáció letiltására**.  Ezzel leállítja a virtuális gép adatok másolásának folyamatát.  
 
    > [!IMPORTANT]
    > Ennek a lépésnek a végrehajtásával elkerülhető az ASR-replikáció felszámítása.
 
 Ha nem tervezi a forrás-erőforrások újrafelhasználását, folytassa a következő lépésekkel.
 
-1. Folytassa az összes olyan hálózati erőforrás törlését a forrás régiójában, amelyet a forrásként szolgáló [virtuális gépek előkészítése](#prepare-the-source-vms) során a 4. lépés részeként adott meg. 
+1. Folytassa az összes olyan hálózati erőforrás törlését a forrás régiójában, amelyet a [forrásként szolgáló virtuális gépek előkészítése](#prepare-the-source-vms) során a 4. lépés részeként adott meg. 
 2. Törölje a megfelelő Storage-fiókot a forrás régióban.
 
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 55af6d17f18efd11fe2d6f89b9b87ca9f407ec25
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
-ms.translationtype: HT
+ms.openlocfilehash: 26ba811eba1a25dacddd04814f8e0d2805360920
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688662"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018781"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rendszerállapot biztonsági mentésének hibáinak megoldása
 
@@ -25,7 +25,7 @@ Javasoljuk, hogy a rendszerállapot biztonsági mentésének megkezdése előtt 
 
 - [Győződjön meg arról, Microsoft Azure Recovery Services (MARS) ügynök naprakész](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Győződjön meg arról, hogy a MARS-ügynök és az Azure között van hálózati kapcsolat](https://aka.ms/AB-A4dp50)
-- Győződjön meg arról, hogy a Microsoft Azure Recovery Services fut (a Szolgáltatás konzolon). Ha szükséges, indítsa újra a gépet, és próbálja meg újra a műveletet
+- Győződjön meg arról, hogy a Microsoft Azure Recovery Services fut (a Szolgáltatás konzolon). Szükség esetén indítsa újra, és ismételje meg a műveletet.
 - [Győződjön meg arról, hogy 5-10% szabad hellyel rendelkezik az ideiglenes mappa helyén](https://aka.ms/AB-AA4dwtt)
 - [Ellenőrizze, hogy egy másik folyamat vagy víruskereső szoftver nem zavarja-e az Azure Backup működését](https://aka.ms/AB-AA4dwtk)
 - [Az ütemezett biztonsági mentés meghiúsul, de a manuális biztonsági mentés sikeres](https://aka.ms/ScheduledBackupFailManualWorks)
@@ -45,14 +45,14 @@ Javasoljuk, hogy a rendszerállapot biztonsági mentésének megkezdése előtt 
 
 ## <a name="pre-requisite"></a>Előfeltétel
 
-Mielőtt a rendszerállapot biztonsági mentését a Azure Backupával hárítsa el, győződjön meg róla, hogy az alábbi előfeltételek ellenőrzését előkészíti.  
+Mielőtt elhárítja a rendszerállapot biztonsági mentését Azure Backupval, hajtsa végre az alábbi előfeltételek ellenőrzését.  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>Windows Server biztonsági másolat telepítésének ellenőrzése
 
-Győződjön meg arról, hogy a Windows Server biztonsági másolat telepítve van és engedélyezve van a kiszolgálón. A telepítés állapotának megtekintéséhez futtassa az alábbi PowerShell-parancsot:
+Győződjön meg arról, hogy a Windows Server biztonsági másolat telepítve van és engedélyezve van a kiszolgálón. A telepítés állapotának megtekintéséhez futtassa a következő PowerShell-parancsot:
 
- ```
- PS C:\> Get-WindowsFeature Windows-Server-Backup
+ ```powershell
+Get-WindowsFeature Windows-Server-Backup
  ```
 Ha a kimenet a telepítési **állapotot** **elérhetőként**jeleníti meg, akkor az azt jelenti, hogy a Windows Server biztonsági másolat szolgáltatás elérhető a telepítéshez, de nincs telepítve a kiszolgálón. Ha azonban Windows Server biztonsági másolat nincs telepítve, a telepítéshez használja az alábbi módszerek egyikét.
 
@@ -60,15 +60,15 @@ Ha a kimenet a telepítési **állapotot** **elérhetőként**jeleníti meg, akk
 
 Windows Server biztonsági másolat a PowerShell használatával történő telepítéséhez futtassa az alábbi parancsot:
 
-  ```
-  PS C:\> Install-WindowsFeature -Name Windows-Server-Backup
+  ```powershell
+  Install-WindowsFeature -Name Windows-Server-Backup
   ```
 
 **2. módszer: Windows Server biztonsági másolat telepítése a Kiszolgálókezelő használatával**
 
-A Windows Server biztonsági másolat Kiszolgálókezelő használatával történő telepítéséhez hajtsa végre az alábbi lépéseket:
+Windows Server biztonsági másolat telepítéséhez a Kiszolgálókezelő használatával hajtsa végre az alábbi lépéseket:
 
-1. A **sever jászolban** kattintson a **szerepkörök és szolgáltatások hozzáadása**elemre. Megjelenik a **szerepkörök és szolgáltatások hozzáadása varázsló** .
+1. A **Server Managerben**kattintson a **szerepkörök és szolgáltatások hozzáadása**elemre. Megjelenik a **szerepkörök és szolgáltatások hozzáadása varázsló** .
 
     ![Irányítópult](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
@@ -82,7 +82,7 @@ A Windows Server biztonsági másolat Kiszolgálókezelő használatával tört�
     ![funkciókkal](./media/backup-azure-system-state-troubleshoot/features.png)
 
 5. A **megerősítés** lapon kattintson a **telepítés** gombra a telepítési folyamat elindításához.
-6. A Results ( **eredmények** ) lapon megjelenik a Windows Server biztonsági másolat funkció a Windows Serverre való telepítése sikeres volt.
+6. A **Results (eredmények** ) lapon megjelenik a Windows Server biztonsági másolat funkció a Windows Serverre való telepítése sikeres volt.
 
     ![Eredmény](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
@@ -114,7 +114,7 @@ Windows Server biztonsági másolat állapotának ellenőrzéséhez hajtsa végr
     > [!WARNING]
     > Get-WBJob: A "Get-WBJob" kifejezés nem ismerhető fel parancsmag, függvény, parancsfájl vagy működőképes program neveként. Ellenőrizze a név helyesírását, vagy ha egy elérési utat tartalmaz, ellenőrizze, hogy helyes-e az elérési út, és próbálkozzon újra.
 
-    -   Ha ez a hiba meghiúsul, akkor telepítse újra a Windows Server biztonsági másolat szolgáltatást a kiszolgáló gépen az 1. lépés előfeltételeiben leírtak szerint.
+    -   Ha ez a hiba meghiúsul, akkor telepítse újra a Windows Server biztonsági másolat szolgáltatást a kiszolgálói gépen az 1. lépés előfeltételeiben leírtak szerint.
 
   * Győződjön meg arról, hogy a WSB biztonsági mentése megfelelően működik, és futtassa az alábbi parancsot a rendszergazda jogú parancssorból:
 
@@ -126,7 +126,7 @@ Windows Server biztonsági másolat állapotának ellenőrzéséhez hajtsa végr
     - A feladatok állapotának rendszeres ellenőrzéséhez futtassa `Get-WBJob` a parancsot a rendszergazda jogú powershellből        
     - A biztonsági mentési feladatok befejezése után a parancs futtatásával `Get-WBJob -Previous 1` vizsgálja meg a feladatok végső állapotát.
 
-Ha a feladat meghiúsul, egy WSB-hibát jelez, amely miatt a MARS-ügynök rendszerállapot-biztonsági mentései sikertelenek voltak.
+Ha a feladat meghiúsul, egy WSB-problémát jelez, amely a MARS-ügynök rendszerállapot-biztonsági Mentéseinak meghibásodását eredményezné.
 
 ## <a name="common-errors"></a>Gyakori hibák
 
@@ -141,7 +141,7 @@ Ha a feladat meghiúsul, egy WSB-hibát jelez, amely miatt a MARS-ügynök rends
 
 | Jelenség | Megoldás:
 | -- | --
-| -A MARS-ügynök a következő hibaüzenettel meghiúsul: A biztonsági mentés nem sikerült, mert az árnyékmásolat-kötet nem nő, mert nincs elég szabad lemezterület a rendszerfájlokat tartalmazó köteteken <br/><br/> -A VolSnap rendszeresemény-naplókban a következő hiba/figyelmeztető napló szerepel: "Nincs elég szabad lemezterület a C köteten: Ha az árnyékmásolat-tárolót növelni szeretné a C árnyékmásolatok számára, a hiba oka, hogy a C kötet összes árnyékmásolat-másolata törlődik a következő helyen:" | – Szabadítson fel lemezterületet a kijelölt köteten az eseménynaplóban, hogy elegendő lemezterület álljon rendelkezésre az árnyékmásolatok növekedéséhez, miközben a biztonsági mentés folyamatban van. <br/><br/> – Az árnyékmásolat-terület konfigurálásakor korlátozhatja az árnyékmásolat-használatot, ha további információra van szükség a következő [cikkben](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax) :
+| -A MARS-ügynök a következő hibaüzenettel meghiúsul: A biztonsági mentés nem sikerült, mert az árnyékmásolat-kötet nem nő, mert nincs elég szabad lemezterület a rendszerfájlokat tartalmazó köteteken <br/><br/> -A VolSnap rendszeresemény-naplókban a következő hiba/figyelmeztető napló szerepel: "Nincs elég szabad lemezterület a C köteten: Ha az árnyékmásolat-tárolót növelni szeretné a C árnyékmásolatok számára, a hiba oka, hogy a C kötet összes árnyékmásolat-másolata törlődik a következő helyen:" | – Szabadítson fel lemezterületet a kijelölt köteten az eseménynaplóban, hogy elegendő lemezterület álljon rendelkezésre az árnyékmásolatok növekedéséhez, miközben a biztonsági mentés folyamatban van. <br/><br/> – Az árnyékmásolat-terület konfigurálásával korlátozható az árnyékmásolat-használathoz felhasznált terület mennyisége. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax)
 
 
 ### <a name="efi-partition-locked"></a>EFI-partíció zárolva

@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: a9451b5dcd572eee27809cf66df889f06da960ed
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: e2a94f82e4830bd1e9c96039f5ef8fe6546b0d0b
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571496"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982675"
 ---
 # <a name="role-based-access-control-rbac-and-privileged-identity-management-pim"></a>Szerepköralapú Access Control (RBAC) és Privileged Identity Management (PIM)
 
@@ -27,9 +27,9 @@ A RBAC megvalósítása magas szinten három összetevőt igényel:
 
 ![RBAC – áttekintés](media/rbac-overview.png)
 
-* **Rendszerbiztonsági tag**: A rendszerbiztonsági tag a következők egyike lehet: egy felhasználó, egy csoport, [egyszerű szolgáltatásnév vagy [felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). A rendszerbiztonsági tag Azure Active Directory csoportok használatával kell hozzárendelni a jogosultságokat.
+* **Rendszerbiztonsági tag**: A rendszerbiztonsági tag a következők egyike lehet: felhasználó, csoport, [egyszerű szolgáltatásnév](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)vagy [felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). A rendszerbiztonsági tag Azure Active Directory csoportok használatával kell hozzárendelni a jogosultságokat.
 
-* **Szerepkör**-definíciók: A szerepkör-definíciók (más néven szerepkör) az engedélyek gyűjteményei. Ezek az engedélyek határozzák meg azokat a műveleteket, amelyeket a szerepkör-definícióhoz rendelt rendszerbiztonsági tag is elvégez. Ezt a funkciót az Azure-erőforrás szerepkörei és Azure Active Directory rendszergazdai szerepkörök biztosítják. Az Azure beépített szerepkörök (hivatkozás) készletét tartalmazza, amely egyéni szerepkörökkel kiegészíthető.
+* **Szerepkör-definíciók**: A szerepkör-definíciók (más néven szerepkör) az engedélyek gyűjteményei. Ezek az engedélyek határozzák meg azokat a műveleteket, amelyeket a szerepkör-definícióhoz rendelt rendszerbiztonsági tag is elvégez. Ezt a funkciót az Azure-erőforrás szerepkörei és Azure Active Directory rendszergazdai szerepkörök biztosítják. Az Azure beépített szerepkörök (hivatkozás) készletét tartalmazza, amely egyéni szerepkörökkel kiegészíthető.
 
 * **Hatókör**: A hatókör azon Azure-erőforrások készlete, amelyekre a szerepkör-definíció vonatkozik. Az Azure-szerepkörök az Azure Management Groups használatával rendelhetők hozzá az Azure-erőforrásokhoz.
 
@@ -43,7 +43,7 @@ Hibrid felhőalapú forgatókönyv esetén a helyszíni Windows Server Active Di
 
 ### <a name="azure-resource-roles-versus-azure-active-directory-administrator-roles"></a>Azure-erőforrás szerepkörei és Azure Active Directory rendszergazdai szerepkörök
 
-A Microsoft Azure számos beépített szerepkört kínál az [Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) -erőforrásokhoz és a [Azure Active Directory felügyelethez](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles). Mindkét típusú szerepkör adott részletes hozzáférést biztosít az Azure-erőforrásokhoz vagy az Azure AD-rendszergazdákhoz. Fontos megjegyezni, hogy az Azure-erőforrás-szerepkörök nem használhatók az Azure AD-hez és az Azure AD-szerepkörökhöz való rendszergazdai hozzáférés biztosításához, és nem biztosítanak konkrét hozzáférést az Azure-erőforrásokhoz.
+A Microsoft Azure számos beépített szerepkört kínál az [Azure-erőforrásokhoz](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) és a [Azure Active Directory felügyelethez](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles). Mindkét típusú szerepkör adott részletes hozzáférést biztosít az Azure-erőforrásokhoz vagy az Azure AD-rendszergazdákhoz. Fontos megjegyezni, hogy az Azure-erőforrás-szerepkörök nem használhatók az Azure AD-hez és az Azure AD-szerepkörökhöz való rendszergazdai hozzáférés biztosításához, és nem biztosítanak konkrét hozzáférést az Azure-erőforrásokhoz.
 
 Néhány példa arra, hogy milyen típusú hozzáféréseket lehet hozzárendelni egy Azure-erőforráshoz egy beépített szerepkör használatával:
 
@@ -167,8 +167,8 @@ Rendkívül fontos, hogy a környezetekben lévő rendszerbiztonsági tagokat re
 
 * A **felhasználóknak meg kell adniuk a hozzáférés okát**: A hozzáférési felülvizsgálat elvégzése során a felhasználóknak meg kell adniuk a jogosultsági szint fenntartásának okát.
 
-A függőben lévő hozzáférési felülvizsgálatok előrehaladása bármikor megfigyelhető a Azure Portal irányítópultján keresztül. Az áttekintett szerepkörhöz való hozzáférés változatlan marad, amíg a hozzáférési felülvizsgálat be nem fejeződik. Az összes PIM-felhasználó [](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-use-audit-log) hozzárendelését és aktiválását is naplózhatja egy megadott időszakon belül.
+A függőben lévő hozzáférési felülvizsgálatok előrehaladása bármikor megfigyelhető a Azure Portal irányítópultján keresztül. Az áttekintett szerepkörhöz való hozzáférés változatlan marad, amíg a hozzáférési felülvizsgálat be nem fejeződik. Az összes PIM-felhasználó hozzárendelését és aktiválását is [naplózhatja](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-use-audit-log) egy megadott időszakon belül.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a rendszer monitorozásáról szóló cikket az [Azure Ausztráliában](system-monitor.md).
+Tekintse át a [rendszer monitorozásáról](system-monitor.md)szóló cikket az Azure Ausztráliában.

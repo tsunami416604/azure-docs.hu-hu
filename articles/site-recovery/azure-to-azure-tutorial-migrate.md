@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3790b543a1a6dcbb793dbf661441700e6fa24232
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4404f785116110d99dc242d2dae39c4a462f45e9
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611876"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376248"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
 
@@ -71,9 +71,9 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
     A forrás virtuális gép konfigurációja alapján a leggyakrabban használt hálózati erőforrások létrehozásához tekintse meg a következő dokumentációt:
     - [Hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Terheléselosztók](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [Terheléselosztók](https://docs.microsoft.com/azure/load-balancer)
     -  [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md)
-    - Bármely más hálózati összetevőnél tekintse meg [](https://docs.microsoft.com/azure/#pivot=products&panel=network)a hálózatkezelési dokumentációt.
+    - Bármely más hálózati összetevőnél tekintse meg a [hálózatkezelési dokumentációt](https://docs.microsoft.com/azure/#pivot=products&panel=network).
 
 
 
@@ -90,7 +90,7 @@ A következő lépések bemutatják, hogyan készítheti elő a virtuális gépe
 1. **Recovery Services**-tárolókban válassza az **Áttekintés** > **ContosoVMVault** >  **+ replikálás**lehetőséget.
 1. A **Forrás** beállításnál válassza az **Azure** értéket.
 1. A **Forrás helye** értékeként válassza ki azt az Azure-régiót, ahol az adott virtuális gépek éppen futnak.
-1. Válassza ki a Resource Manager-alapú üzemi modellt. Ezután válassza ki a **forrás** -előfizetést és a **forrás erőforráscsoportot**.
+1. Válassza ki a Resource Manager-alapú üzemi modellt. Ezután válassza ki a **forrás-előfizetést** és a **forrás erőforráscsoportot**.
 1. A beállítások mentéséhez kattintson **az OK gombra** .
 
 ### <a name="enable-replication-for-azure-vms-and-start-copying-the-data"></a>Az Azure-beli virtuális gépek replikálásának engedélyezése és az adatok másolásának megkezdése
@@ -101,7 +101,7 @@ Site Recovery beolvassa az előfizetéshez és az erőforráscsoporthoz társít
 1. A **Beállítások**területen válassza a vész- **helyreállítás**lehetőséget.
 1. A vész- **helyreállítási** > **célcsoport**konfigurálása területen válassza ki azt a régiót, amelyre a replikálást végzi.
 1. A jelen oktatóanyag esetében fogadja el a többi alapértelmezett értéket.
-1. Válassza a **replikáció engedélyezése**lehetőséget. Ezzel a lépéssel elindít egy feladatot a virtuális gép replikálásának engedélyezéséhez.
+1. Válassza a **Replikáció engedélyezése** elemet. Ezzel a lépéssel elindít egy feladatot a virtuális gép replikálásának engedélyezéséhez.
 
     ![Replikáció engedélyezése](media/tutorial-migrate-azure-to-azure/settings.png)
 

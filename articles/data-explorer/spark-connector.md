@@ -7,12 +7,12 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 4/29/2019
-ms.openlocfilehash: 0fe81926327bcccac56718cc0d06e336e1af17fe
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 6a95cbad161906bd12a608880ac694d6bdf1ed27
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165091"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383054"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Azure Adatkezelő-összekötő a Apache Sparkhoz (előzetes verzió)
 
@@ -21,7 +21,7 @@ A [Apache Spark](https://spark.apache.org/) egy egységes analitikai motor a nag
 Az Azure Adatkezelő-összekötő a Sparkhoz olyan adatforrást és adatfogadót valósít meg, amely az Azure Adatkezelő és a Spark-fürtök közötti adatáthelyezést is lehetővé tenné. Az Azure Adatkezelő és Apache Spark használatával gyors és méretezhető alkalmazásokat hozhat létre az adatvezérelt forgatókönyvek, például a gépi tanulás (ML), a kinyerés átalakítása-Load (ETL) és a Log Analytics számára. Az Azure Adatkezelőba való írás kötegelt és streaming módban is elvégezhető.
 Az Azure Adatkezelő-ból való olvasás támogatja az oszlopok metszését és a predikátum pushdown, ami csökkenti az átvitt adatok mennyiségét az Azure-Adatkezelőban lévő adatok kiszűrésével.
 
-Az Azure Adatkezelő Spark-összekötő egy [nyílt forráskódú projekt](https://github.com/Azure/azure-kusto-spark) , amely bármely Spark-fürtön futtatható.
+Az Azure Adatkezelő Spark-összekötő egy [nyílt forráskódú projekt](https://github.com/Azure/azure-kusto-spark) , amely bármely Spark-fürtön futtatható. Az Azure Adatkezelő Spark-összekötő lehetővé teszi, hogy az Azure Adatkezelő egy érvényes adattárat a standard Spark-forrásokhoz és a fogadó műveletekhez, például írás, olvasás és writeStream. 
 
 > [!NOTE]
 > Bár az alábbi példák némelyike egy [Azure Databricks](https://docs.azuredatabricks.net/) Spark-fürtre vonatkozik, az Azure adatkezelő Spark-összekötő nem veszi figyelembe a közvetlen függőségeket a Databricks vagy más Spark-disztribúción.
@@ -37,7 +37,7 @@ Az Azure Adatkezelő Spark-összekötő egy [nyílt forráskódú projekt](https
 
 ## <a name="how-to-build-the-spark-connector"></a>A Spark-összekötő létrehozása
 
-A Spark-összekötő az alábbiakban [](https://github.com/Azure/azure-kusto-spark) részletezett forrásokból is kiépíthető.
+A Spark-összekötő az alábbiakban részletezett [forrásokból](https://github.com/Azure/azure-kusto-spark) is kiépíthető.
 
 > [!NOTE]
 > Ez a lépés nem kötelező. Ha előre elkészített kódtárakat használ, ugorjon a [Spark-fürt beállítása](#spark-cluster-setup)lehetőségre.
@@ -103,7 +103,7 @@ További információ: [összekötő használata](https://github.com/Azure/azure
 
 ## <a name="authentication"></a>Authentication
 
-Az Azure Adatkezelő Spark Connector lehetővé teszi, hogy az Azure ad-alkalmazással, az [](#azure-ad-application-authentication) [Azure ad hozzáférési](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token)jogkivonatával, az [eszköz](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) -hitelesítéssel (nem éles környezetekben) vagy az [Azure-kulccsal hitelesítse Azure Active Directory (Azure ad-val). ](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault)Tároló. A felhasználónak telepítenie kell az Azure-kulcstartó csomagot, és meg kell adnia az alkalmazás hitelesítő adatait a Key Vault erőforrás eléréséhez.
+Az Azure Adatkezelő Spark Connector lehetővé teszi, hogy az Azure ad- [alkalmazással](#azure-ad-application-authentication), az [Azure ad hozzáférési jogkivonatával](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token), az [eszköz-hitelesítéssel](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (nem éles környezetekben) vagy az Azure-kulccsal hitelesítse Azure Active Directory (Azure ad-val). [ ](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault)Tároló. A felhasználónak telepítenie kell az Azure-kulcstartó csomagot, és meg kell adnia az alkalmazás hitelesítő adatait a Key Vault erőforrás eléréséhez.
 
 ### <a name="azure-ad-application-authentication"></a>Azure AD-alkalmazás hitelesítése
 
@@ -119,8 +119,8 @@ A legegyszerűbb és gyakori hitelesítési módszer. Ez a módszer az Azure Ada
 
 Az Azure Adatkezelő-fürtön a következő jogosultságokat kell megadni:
 
-* Az olvasáshoz (adatforráshoz) az Azure AD- alkalmazásnak meg kell adni a megjelenítői jogosultságokat a céladatbázis számára, vagy *rendszergazdai* jogosultságokat kell megadnia a cél táblában.
-* Íráshoz (adatfogadó) az Azure AD-alkalmazásnak betöltési jogosultságokkal kell rendelkeznie a céladatbázis számára. Emellett a céladatbázis *felhasználói* jogosultságokkal is rendelkeznie kell, hogy új táblákat hozzon létre. Ha a céltábla már létezik, akkor konfigurálható a *rendszergazdai* jogosultságok a céltábla számára.
+* Az olvasáshoz (adatforráshoz) az Azure AD-alkalmazásnak meg kell adni a *megjelenítői* jogosultságokat a céladatbázis számára, vagy *rendszergazdai* jogosultságokat kell megadnia a cél táblában.
+* Íráshoz (adatfogadó) az Azure AD-alkalmazásnak betöltési *jogosultságokkal kell rendelkeznie* a céladatbázis számára. Emellett a céladatbázis *felhasználói* jogosultságokkal is rendelkeznie kell, hogy új táblákat hozzon létre. Ha a céltábla már létezik, akkor konfigurálható a *rendszergazdai* jogosultságok a céltábla számára.
  
 Az Azure Adatkezelő rendszerbiztonsági szerepkörrel kapcsolatos további információkért lásd: [szerepköralapú hitelesítés](/azure/kusto/management/access-control/role-based-authorization). A biztonsági szerepkörök kezelésével kapcsolatban lásd: [biztonsági szerepkörök kezelése](/azure/kusto/management/security-roles).
 

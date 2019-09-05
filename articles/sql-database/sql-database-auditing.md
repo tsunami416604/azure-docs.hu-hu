@@ -7,20 +7,20 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-ms.date: 04/16/2019
-ms.openlocfilehash: 69fe3287083523a3a47975a3db51d7241681f5c4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.date: 08/22/2019
+ms.openlocfilehash: c8533f79dd2bf02a03ff4a37283359f3b3a5bf39
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569510"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066037"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
-Az Azure [SQL Database](sql-database-technical-overview.md) naplózása és a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) nyomon követi az adatbázis eseményeit, és az Azure Storage-FIÓKjában, a OMS-munkaterületen vagy a Event Hubsban naplózza őket. Naplózás is:
+Az Azure [SQL Database](sql-database-technical-overview.md) naplózása és a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) nyomon követi az adatbázis eseményeit, és az Azure Storage-fiókban, log Analytics munkaterületen vagy Event Hubsban naplózza a naplóba. Naplózás is:
 
 - Segít megőrizni a jogszabályi megfelelőséget, értelmezni az adatbázis tevékenységeit, és betekintést nyerhet olyan eltérésekkel és rendellenességekkel, amelyek üzleti vagy feltételezett biztonsági szabálysértéseket jelezhetnek.
 
@@ -42,7 +42,7 @@ Az SQL Database naplózási szolgáltatásával a következőket végezheti el:
 - Jelentések **elemzése** . Megtalálhatja a gyanús eseményeket, a szokatlan tevékenységeket és a trendeket.
 
 > [!IMPORTANT]
-> A naplófájlok az Azure blob Storage-ban az Azure-előfizetéshez tartozó Blobok hozzáfűzésével íródnak.
+> A naplófájlok az Azure Blob Storage-ban az Azure-előfizetéshez tartozó Blobok **hozzáfűzésével** íródnak.
 >
 > - Az összes tárolási típus (v1, v2, blob) támogatott.
 > - Minden tárolási replikációs konfiguráció támogatott.
@@ -58,11 +58,11 @@ Egy naplózási szabályzat definiálható egy adott adatbázishoz vagy alapért
 
 - Ha a *kiszolgáló blob-naplózása engedélyezve van*, az *mindig az adatbázisra vonatkozik*. A rendszer naplózza az adatbázist, az adatbázis naplózási beállításaitól függetlenül.
 
-- A blob-naplózás engedélyezése az adatbázisban vagy az adatraktárban a kiszolgálón való engedélyezés mellett a *nem bírálja* felül, sem módosítja a kiszolgáló blob-naplózásának beállításait. Mindkét naplózás egymás mellett fog létezni. Ez azt jelenti, hogy az adatbázist párhuzamosan, kétszer kell naplózni. egyszer a kiszolgálói házirend és egyszer az adatbázis-házirend alapján.
+- A blob-naplózás engedélyezése az adatbázisban vagy az adatraktárban a kiszolgálón való engedélyezés mellett a *nem bírálja felül, sem módosítja* a kiszolgáló blob-naplózásának beállításait. Mindkét naplózás egymás mellett fog létezni. Ez azt jelenti, hogy az adatbázist párhuzamosan, kétszer kell naplózni. egyszer a kiszolgálói házirend és egyszer az adatbázis-házirend alapján.
 
    > [!NOTE]
    > Ne engedélyezze egyszerre a kiszolgáló blob-naplózási és az adatbázis-blob naplózását, kivéve, ha:
-    > - Egy adott adatbázishoz eltérő *Storage-fiókot* vagy adatmegőrzési *időszakot* szeretne használni.
+    > - Egy adott adatbázishoz eltérő *Storage-fiókot* vagy *adatmegőrzési időszakot* szeretne használni.
     > - Egy adott adatbázishoz tartozó eseménytípus vagy kategóriák naplózására van szükség, amely eltér a kiszolgálón lévő többi adatbázistól. Előfordulhat például, hogy olyan táblákat szúr be, amelyeket csak egy adott adatbázisra kell naplózni.
    >
    > Ellenkező esetben javasoljuk, hogy csak a kiszolgálói szintű blob-naplózást engedélyezze, és hagyja letiltani az adatbázis-szintű naplózást minden adatbázis esetében.
@@ -89,7 +89,7 @@ A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal h
 5. **Új** – mostantól több beállítással is konfigurálhatja, hogy a rendszer hol írja be a naplókat. Naplókat írhat egy Azure Storage-fiókba, Log Analytics munkaterületre Azure Monitor naplók általi felhasználáshoz, vagy az Event hub használatával történő felhasználásra. Ezen beállítások bármely kombinációját konfigurálhatja, és a rendszer a naplókat is megírja a naplókba.
 
    > [!WARNING]
-   > A Log Analytics naplózásának engedélyezése a betöltési díjak alapján jár. Vegye figyelembe a kapcsolódó költségeket ezzel a lehetőséggel, [](https://azure.microsoft.com/pricing/details/monitor/)vagy a naplókat egy Azure Storage-fiókban kell tárolnia.
+   > A Log Analytics naplózásának engedélyezése a betöltési díjak alapján jár. Vegye figyelembe a kapcsolódó költségeket ezzel a [lehetőséggel](https://azure.microsoft.com/pricing/details/monitor/), vagy a naplókat egy Azure Storage-fiókban kell tárolnia.
 
     ![tárolási beállítások](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
@@ -106,7 +106,7 @@ A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal h
     ![Eseményközpont](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
 9. Kattintson a **Save** (Mentés) gombra.
-10. Ha testre szeretné szabni a naplózott eseményeket, ezt [PowerShell](#subheading-7) -parancsmagok vagy a [REST API](#subheading-9)használatával végezheti el.
+10. Ha testre szeretné szabni a naplózott eseményeket, ezt [PowerShell-parancsmagok](#subheading-7) vagy a [REST API](#subheading-9)használatával végezheti el.
 11. A naplózási beállítások konfigurálása után bekapcsolhatja az új veszélyforrások észlelése funkciót, és konfigurálhatja az e-maileket a biztonsági riasztások fogadására. A veszélyforrások észlelése esetén a rendellenes adatbázis-tevékenységekkel kapcsolatos proaktív riasztásokat kap, amelyek potenciális biztonsági fenyegetéseket jelezhetnek. További információkért lásd: [a fenyegetések észlelésének első lépései](sql-database-threat-detection-get-started.md).
 
 > [!IMPORTANT]
@@ -119,15 +119,26 @@ A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal h
 
 Ha úgy döntött, hogy naplókat ír Azure Monitor naplókba:
 
-- Használja a [Azure Portal](https://portal.azure.com).  Nyissa meg a megfelelő adatbázist. Az adatbázis naplózási lapjának felső részén kattintson a **naplók megtekintése**elemre.
+- Használja a [Azure Portal](https://portal.azure.com).  Nyissa meg a megfelelő adatbázist. Az adatbázis **naplózási** lapjának felső részén kattintson a **naplók megtekintése**elemre.
 
-    ![naplók megtekintése](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
+    ![naplók megtekintése](./media/sql-database-auditing-get-started/auditing-view-audit-logs.png)
 
-- Ezután a **naplózási rekordok** oldal tetején lévő **Megnyitás** gombra kattintva megnyílik a naplók nézet a log Analytics, ahol testreszabhatja az időtartományt és a keresési lekérdezést.
+- Ezt követően két módon megtekintheti a naplókat:
+    
+    Ha a **naplózási rekordok** lap tetején lévő **log Analytics** gombra kattint, megnyílik a naplók nézet a log Analytics munkaterületen, ahol testreszabhatja az időtartományt és a keresési lekérdezést.
+    
+    ![Megnyitás Log Analytics munkaterületen](./media/sql-database-auditing-get-started/auditing-log-analytics.png)
 
-    ![Megnyitás Log Analytics](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
+    Ha a **naplózási rekordok** oldal tetején található **irányítópult megtekintése** elemre kattint, megnyílik egy irányítópult, amely a naplók információit jeleníti meg, ahol a biztonsági elemzéseket, a bizalmas adatokhoz való hozzáférést és más adatokat is megtekintheti. Ez az irányítópult úgy lett kialakítva, hogy segítséget nyújtson az adataihoz szükséges biztonsági információk megszerzésében.
+    Testreszabhatja az időtartományt és a keresési lekérdezést is. 
+    ![Log Analytics-irányítópult megtekintése](media/sql-database-auditing-get-started/auditing-view-dashboard.png)
 
-- Azt is megteheti, hogy a naplókat a Log Analytics panelről is elérheti. Nyissa meg Log Analytics munkaterületét, és az **általános** szakaszban kattintson a **naplók**elemre. Egy egyszerű lekérdezéssel kezdheti meg a naplókat, például a következőt: *Search "SQLSecurityAuditEvents"* .
+    ![Log Analytics irányítópult](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard.png)
+
+    ![Log Analytics biztonsági ismeretek](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard-data.png)
+ 
+
+- Azt is megteheti, hogy a naplókat a Log Analytics panelről is elérheti. Nyissa meg Log Analytics munkaterületét, és az **általános** szakaszban kattintson a **naplók**elemre. Egy egyszerű lekérdezéssel kezdheti meg a naplókat, például a *következőt: Search "SQLSecurityAuditEvents"* .
     Itt is használhatja [Azure monitor naplókat](../log-analytics/log-analytics-log-search.md) a speciális keresések futtatásához a naplózási napló adatain. A Azure Monitor naplók valós idejű üzemeltetési elemzéseket biztosítanak az integrált keresés és az egyéni irányítópultok használatával, amelyekkel a munkaterhelések és a kiszolgálók több millió rekordját is könnyedén elemezheti. További hasznos információk Azure Monitor naplók keresési nyelvéről és parancsairól: [Azure monitor naplók keresési referenciája](../log-analytics/log-analytics-log-search.md).
 
 Ha úgy döntött, hogy naplókat ír az Event hub-ba:
@@ -139,7 +150,7 @@ Ha úgy döntött, hogy naplózza a naplókat egy Azure Storage-fiókba, a napl�
 
 - A rendszer összesíti a naplókat a telepítés során kiválasztott fiókban. A naplókat a [Azure Storage Explorer](https://storageexplorer.com/)eszközzel is megismerheti. Az Azure Storage-ban a naplózási naplók a **sqldbauditlogs**nevű tárolóban lévő blob-fájlok gyűjteményében lesznek mentve. A tárolási mappa hierarchiájának, az elnevezési konvencióknak és a napló formátumának további részleteiért tekintse meg a [SQL Database a naplózási napló formátumát](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Használja a [Azure Portal](https://portal.azure.com).  Nyissa meg a megfelelő adatbázist. Az adatbázis naplózási lapjának felső részén kattintson a **naplók megtekintése**elemre.
+- Használja a [Azure Portal](https://portal.azure.com).  Nyissa meg a megfelelő adatbázist. Az adatbázis **naplózási** lapjának felső részén kattintson a **naplók megtekintése**elemre.
 
     ![Navigációs ablak][7]
 
@@ -213,7 +224,7 @@ A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást
     > [!IMPORTANT]
     > Azure SQL Database naplózási szolgáltatás 4000 karakterből álló karaktert tárol egy naplózási rekordban. Ha egy auditálható művelet által visszaadott **utasítás** vagy **data_sensitivity_information** -érték több mint 4000 karaktert tartalmaz, a rendszer az első 4000 karakternél nagyobb értéket **csonkít, és nem naplózza**.
 
-- A naplók az Azure- előfizetéshez tartozó Azure Blob-tárolóban lévő Blobok hozzáfűzésére vannak írva:
+- A naplók az Azure-előfizetéshez tartozó Azure Blob-tárolóban lévő **Blobok hozzáfűzésére** vannak írva:
   - A hozzáfűzési Blobok jelenleg **nem támogatják** a **Premium Storage** .
   - **A VNet-ben** jelenleg **nem támogatott**a tárterület.
 
@@ -257,7 +268,7 @@ Kiterjesztett szabályzat a WHERE záradék támogatásával további szűréshe
 - [Adatbázis *kiterjesztett* naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Kiszolgáló *kiterjesztett* naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-10"></a>Az SQL Database naplózásának kezelése ARM-sablonokkal
+## <a id="subheading-10"></a>Az SQL Database naplózásának kezelése Azure Resource Manager sablonokkal
 
 Az Azure SQL Database naplózását [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) sablonok használatával felügyelheti, ahogy az alábbi példákban is látható:
 

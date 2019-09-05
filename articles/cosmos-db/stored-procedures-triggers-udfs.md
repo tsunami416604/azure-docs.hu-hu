@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 1c2bf53a610c566ac58df588f6d96389f2206563
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
-ms.translationtype: HT
+ms.openlocfilehash: 700cd6c0c75b25d56e812a394d6bdd193e4fb57c
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717538"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614056"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
 
@@ -26,7 +26,7 @@ A tárolt eljárások, eseményindítók és felhasználó által definiált fü
 
 * **Atomi tranzakciók:** Azure Cosmos DB garantálja, hogy az egyetlen tárolt eljáráson vagy triggeren belül végrehajtott adatbázis-műveletek atomiak. Ez az atomi funkció lehetővé teszi, hogy egy alkalmazás a kapcsolódó műveleteket egyetlen kötegbe egyesítse, hogy az összes művelet sikeres legyen, vagy egyik sem sikeres legyen.
 
-* **Teljesítmény** A JSON-adattípusok belsőleg le vannak képezve a JavaScript Language Type rendszerre. Ez a leképezés több optimalizációt is lehetővé tesz, például a JSON-dokumentumok lusta megvalósításának gyakorlatban a pufferben, és igény szerint elérhetővé teszi őket a végrehajtó kód számára. Más teljesítménybeli előnyökkel jár a hajózás üzleti logikája az adatbázishoz, amely a következőket tartalmazza:
+* **Teljesítmény:** A JSON-adattípusok belsőleg le vannak képezve a JavaScript Language Type rendszerre. Ez a leképezés több optimalizációt is lehetővé tesz, például a JSON-dokumentumok lusta megvalósításának gyakorlatban a pufferben, és igény szerint elérhetővé teszi őket a végrehajtó kód számára. Más teljesítménybeli előnyökkel jár a hajózás üzleti logikája az adatbázishoz, amely a következőket tartalmazza:
 
    * *Adagoló* Csoportosíthatja a műveleteket, például a lapkákat és tömegesen is elküldheti azokat. A hálózati forgalom késési költségei és a tárolók terhelése a különálló tranzakciók létrehozásához jelentősen csökken.
 
@@ -71,7 +71,7 @@ Az összes Azure Cosmos DB műveletnek a megadott időtúllépési időtartamon 
 
 Gondoskodhat arról, hogy a JavaScript-függvények az adott időkorláton belül legyenek végrehajtva, vagy egy folytatáson alapuló modellt hajtsanak végre a Batch/folytatás végrehajtásához. A tárolt eljárások és eseményindítók az időbeli korlátok kezelésére szolgáló működésének egyszerűbbé tétele érdekében az Azure Cosmos tárolóban található összes funkció (például az elemek létrehozása, olvasása, frissítése és törlése) egy logikai értéket ad vissza, amely azt jelzi, hogy a művelet a következő lesz-e: teljes. Ha ez az érték hamis, akkor azt jelzi, hogy az eljárásnak le kell csomagolnia a végrehajtást, mert a parancsfájl a beállított értéknél több időt vagy kiépített átviteli sebességet használ. Az első elfogadhatatlan store művelet műveletek aszinkron előtt garantáltan elvégezni, ha a tárolt eljárás ideje alatt befejeződik, és nem várólistára további kérések eredményéről. Így a műveleteket a JavaScript visszahívási konvenciójának használatával, a parancsfájl vezérlési folyamatának kezeléséhez egy időben kell várólistába venni. Mivel a parancsfájlokat kiszolgálóoldali környezetben hajtják végre, szigorúan szabályozva vannak. A végrehajtási határokat ismételten sértő parancsfájlok inaktívként jelölhetők meg, és nem hajthatók végre, és újra létre kell őket hozni a végrehajtási határok tiszteletben tartásához.
 
-A JavaScript-függvények kiosztott [átviteli kapacitásra](request-units.md)is vonatkoznak. A JavaScript-függvények egy rövid időn belül nagy mennyiségű kérést használhatnak, és a kiosztott átviteli kapacitásra vonatkozó korlát elérésekor a díjszabás korlátozott lehet. Fontos megjegyezni, hogy a szkriptek az adatbázis-műveletek végrehajtásával töltött átviteli sebesség mellett további átviteli sebességet is felhasználnak, bár ezek az adatbázis-műveletek valamivel kevésbé költségesek, mint az ügyféltől származó azonos műveletek végrehajtása.
+A JavaScript-függvények [kiosztott átviteli kapacitásra](request-units.md)is vonatkoznak. A JavaScript-függvények egy rövid időn belül nagy mennyiségű kérést használhatnak, és a kiosztott átviteli kapacitásra vonatkozó korlát elérésekor a díjszabás korlátozott lehet. Fontos megjegyezni, hogy a szkriptek az adatbázis-műveletek végrehajtásával töltött átviteli sebesség mellett további átviteli sebességet is felhasználnak, bár ezek az adatbázis-műveletek valamivel kevésbé költségesek, mint az ügyféltől származó azonos műveletek végrehajtása.
 
 ## <a name="triggers"></a>Triggerek
 
@@ -79,14 +79,14 @@ Azure Cosmos DB az eseményindítók két típusát támogatja:
 
 ### <a name="pre-triggers"></a>Trigger előtti
 
-A Azure Cosmos DB olyan eseményindítókat biztosít, amelyek meghívhatók egy Azure Cosmos DB elemen végrehajtott művelet végrehajtásával. Megadhat például egy előindítást egy elem létrehozásakor. Ebben az esetben a pre-trigger az elem létrehozása előtt fog futni. Üzem előtti eseményindítók nem lehet bemeneti paramétereket. Ha szükséges, a kérelem objektum használatával frissítheti a dokumentum törzsét az eredeti kérelemből. Eseményindítók regisztrálásakor a felhasználók megadhatják a műveletek, amelyek való futtatás. Ha egy triggert a- `TriggerOperation.Create`vel hoztak létre, akkor az trigger használata nem engedélyezett a csere műveletben. Példákat az [Eseményindítók írása](how-to-write-stored-procedures-triggers-udfs.md#triggers) című cikkben talál.
+A Azure Cosmos DB olyan eseményindítókat biztosít, amelyek meghívhatók egy művelet Azure Cosmos-elemen való végrehajtásával. Megadhat például egy előindítást egy elem létrehozásakor. Ebben az esetben a pre-trigger az elem létrehozása előtt fog futni. Üzem előtti eseményindítók nem lehet bemeneti paramétereket. Ha szükséges, a kérelem objektum használatával frissítheti a dokumentum törzsét az eredeti kérelemből. Eseményindítók regisztrálásakor a felhasználók megadhatják a műveletek, amelyek való futtatás. Ha egy triggert a- `TriggerOperation.Create`vel hoztak létre, akkor az trigger használata nem engedélyezett a csere műveletben. Példákat az [Eseményindítók írása](how-to-write-stored-procedures-triggers-udfs.md#triggers) című cikkben talál.
 
 ### <a name="post-triggers"></a>Triggerek utáni
 
-Az eseményindítók előállításához hasonlóan az eseményindítók is társítva vannak egy Azure Cosmos DB elem egyik műveletéhez, és nincs szükségük bemeneti paraméterekre. A művelet befejezését *követően* futnak, és hozzáférnek az ügyfélnek küldött válaszüzenetekhez. Példákat az [Eseményindítók írása](how-to-write-stored-procedures-triggers-udfs.md#triggers) című cikkben talál.
+Az előtriggerekhez hasonlóan az eseményindítók is társítva vannak egy Azure Cosmos-elem műveleteihez, és nincs szükségük bemeneti paraméterekre. A művelet befejezését *követően* futnak, és hozzáférnek az ügyfélnek küldött válaszüzenetekhez. Példákat az [Eseményindítók írása](how-to-write-stored-procedures-triggers-udfs.md#triggers) című cikkben talál.
 
 > [!NOTE]
-> A regisztrált eseményindítók nem futnak automatikusan, ha a kapcsolódó műveletek (létrehozás/törlés/csere/frissítés) történnek. A műveletek végrehajtásakor explicit módon meg kell hívni őket. További információt az eseményindítók [futtatása](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) című cikkben talál.
+> A regisztrált eseményindítók nem futnak automatikusan, ha a kapcsolódó műveletek (létrehozás/törlés/csere/frissítés) történnek. A műveletek végrehajtásakor explicit módon meg kell hívni őket. További információt az [Eseményindítók futtatása](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) című cikkben talál.
 
 ## <a id="udfs"></a>Felhasználó által definiált függvények
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 9b809681b68fe3347a68cb2b2006c41783a356a6
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c617e4aa62ce2ff468545bef0b2ebe2c4d0e4f03
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932815"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382356"
 ---
 # <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>Az Endpoint hosszúságú kimondott szöveg áttekintése a LUIS portálon az aktív tanuláshoz
 
@@ -25,11 +25,11 @@ Az [aktív tanulás](luis-concept-review-endpoint-utterances.md) rögzíti a vé
 
 ## <a name="enable-active-learning"></a>Aktív tanulás engedélyezése
 
-Az aktív tanulás engedélyezéséhez jelentkezzen be a felhasználói lekérdezésekre. Ezt úgy érheti el, ha a [végpont-lekérdezést](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) a `log=true` querystring paraméterrel és értékkel állítja be.
+Az aktív tanulás engedélyezéséhez jelentkezzen be a felhasználói lekérdezésekre. Ezt úgy érheti el, ha a [végpont-lekérdezést](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) a `log=true` querystring paraméterrel és értékkel állítja be.
 
 ## <a name="disable-active-learning"></a>Aktív tanulás letiltása
 
-Az aktív tanulás letiltásához ne naplózza a felhasználói lekérdezéseket. Ezt úgy érheti el, ha a [végpont-lekérdezést](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) a `log=false` querystring paraméterrel és értékkel állítja be.
+Az aktív tanulás letiltásához ne naplózza a felhasználói lekérdezéseket. Ezt úgy érheti el, ha a [végpont-lekérdezést](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) a `log=false` querystring paraméterrel és értékkel állítja be.
 
 ## <a name="filter-utterances"></a>Szűrő kimondott szöveg
 

@@ -6,26 +6,29 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/03/2019
 ms.author: danlep
-ms.openlocfilehash: d555ba6b8c2b32fc6ec56d6c51dda9626b6f0cb0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 3103fe7fbf7dcd587f43b673ef53f32893908ecb
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325551"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307711"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Tárolók frissítése Azure Container Instances
 
-A tároló példányainak normál működése során előfordulhat, hogy a tárolók csoportjában frissítenie kell a tárolókat. Előfordulhat például, hogy frissíteni szeretné a rendszerkép verzióját, módosítania kell egy DNS-nevet, frissíti a környezeti változókat, vagy frissítenie kell egy olyan tároló állapotát, amelynek az alkalmazása összeomlott.
+A tároló példányainak normál működése során előfordulhat, hogy frissítenie kell a futó tárolókat egy [tároló csoportba](container-instances-container-groups.md). Előfordulhat például, hogy frissíteni szeretné a rendszerkép verzióját, módosítania kell egy DNS-nevet, frissíti a környezeti változókat, vagy frissítenie kell egy olyan tároló állapotát, amelynek az alkalmazása összeomlott.
+
+> [!NOTE]
+> A leállított vagy törölt tároló-csoportok nem frissíthetők. Ha a tároló csoport leállt (vagy sikeres vagy sikertelen állapotban van), vagy törölve lett, a csoportot újként kell telepíteni.
 
 ## <a name="update-a-container-group"></a>Tároló csoport frissítése
 
-Frissítse a tárolókat egy adott csoportba egy meglévő csoport legalább egy módosított tulajdonsággal való újbóli üzembe helyezésével. Egy tároló csoport frissítésekor a rendszer a csoportban lévő összes futó tárolót újraindítja helyben.
+Frissítse a tárolókat egy futó tároló csoportban egy meglévő csoport legalább egy módosított tulajdonsággal való újbóli üzembe helyezésével. Amikor frissít egy tároló csoportot, a csoportban lévő összes futó tárolót a rendszer helyben indítja újra, általában ugyanarra az alapul szolgáló tároló-gazdagépre.
 
-Egy meglévő tároló csoport újratelepítése a Create parancs kiadásával (vagy a Azure Portal használatával) és egy meglévő csoport nevének megadásával. Módosítsa a csoport legalább egy érvényes tulajdonságát, amikor a Create parancs kiadja az újratelepítést. Nem minden tároló csoport tulajdonságai érvényesek az újratelepítéshez. A nem támogatott tulajdonságok listáját a [törlést igénylő tulajdonságok](#properties-that-require-container-delete) között tekintheti meg.
+Egy meglévő tároló csoport újratelepítése a Create parancs kiadásával (vagy a Azure Portal használatával) és egy meglévő csoport nevének megadásával. Módosítsa a csoport legalább egy érvényes tulajdonságát, amikor a Create parancsot kiadja az újratelepítési művelet elindításához, és a fennmaradó tulajdonságokat változatlanul hagyja (vagy továbbra is használja az alapértelmezett értékeket). Nem minden tároló csoport tulajdonságai érvényesek az újratelepítéshez. A nem támogatott tulajdonságok listáját a [törlést igénylő tulajdonságok](#properties-that-require-container-delete) között tekintheti meg.
 
-A következő Azure CLI-példa egy új DNS-név címkével rendelkező tároló-csoportot frissít. Mivel a csoport DNS-név címkéjének tulajdonsága módosul, a rendszer újratelepíti a tároló csoportot, és a tárolói újraindulnak.
+A következő Azure CLI-példa egy új DNS-név címkével rendelkező tároló-csoportot frissít. Mivel a csoport DNS-név felirat tulajdonsága frissíthető, a tároló csoport újratelepítése történik, és a tárolók újraindulnak.
 
 Kezdeti üzembe helyezés DNS-névvel feliratú *myapplication – átmeneti*:
 
@@ -35,10 +38,10 @@ az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication-staging
 ```
 
-Frissítse a tároló csoportot egy új DNS-név címkével, *myapplication*:
+Frissítse a tároló csoportot egy új DNS-név címkével, *myapplication*, és hagyja változatlanul a többi tulajdonságot:
 
 ```azurecli-interactive
-# Update container group (restarts container)
+# Update DNS name label (restarts container), leave other properties unchanged
 az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication
 ```
@@ -57,7 +60,7 @@ A tároló csoport összes tárolója újraindul a tároló csoport frissítése
 
 A tárolók IP-címe általában nem változik a frissítések között, de nem garantált, hogy változatlan marad. Ha a tároló csoport ugyanarra a mögöttes gazdagépre van telepítve, a tároló csoport megőrzi az IP-címét. Bár ritka, és bár Azure Container Instances minden erőfeszítést megtesz az ugyanarra a gazdagépre való újbóli üzembe helyezésre, néhány olyan Azure-belső esemény is van, amely egy másik gazdagépre való újratelepítést okozhat. A probléma megoldásához mindig használjon DNS-név címkét a tároló példányaihoz.
 
-A leállított vagy törölt tároló-csoportok nem frissíthetők. Ha egy tároló csoport leállt (leállított állapotban  van), vagy törölve lett, a rendszer újként telepíti a csoportot.
+A leállított vagy törölt tároló-csoportok nem frissíthetők. Ha egy tároló csoport leállt (leállított állapotban *van* ), vagy törölve lett, a rendszer újként telepíti a csoportot.
 
 ## <a name="properties-that-require-container-delete"></a>Tároló törlését igénylő tulajdonságok
 
@@ -81,10 +84,10 @@ Ebben a cikkben többször is említettük a **Container csoportot**. Azure Cont
 
 [Többtárolós csoport üzembe helyezése](container-instances-multi-container-group.md)
 
+[Tárolók manuális leállítása vagy elindítása Azure Container Instances](container-instances-stop-start.md)
+
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
-[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
 [azure-cli-install]: /cli/azure/install-azure-cli

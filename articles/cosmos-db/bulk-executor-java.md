@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f8cb7458deddc95f33fa5e4582ffa7c25c3c64e6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
-ms.translationtype: HT
+ms.openlocfilehash: ef006e94ee22886f1129c7c9ca31e20503312fe3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619811"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616933"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Tömeges végrehajtó Java-kódtár használatával tömeges műveletek végrehajtása az Azure Cosmos DB-adatai
 
-Ebben az oktatóanyagban ez útmutatást nyújt az Azure Cosmos DB tömeges végrehajtó Java-kódtár használatával importálása és frissítése az Azure Cosmos DB-dokumentumot. Tömeges végrehajtó kódtár, és segítséget nyújt a nagy átviteli sebesség és a storage kapcsolatos további információkért lásd: [végrehajtó Ügyfélkódtár áttekintése tömeges](bulk-executor-overview.md) cikk. Ebben az oktatóanyagban a Java-alkalmazás által generált, véletlenszerű dokumentumok létrehozása és tömegesen importálni egy Azure Cosmos DB-tárolóhoz. Az importálás után lesz tömeges frissítése néhány tulajdonságát egy dokumentumot. 
+Ebben az oktatóanyagban ez útmutatást nyújt az Azure Cosmos DB tömeges végrehajtó Java-kódtár használatával importálása és frissítése az Azure Cosmos DB-dokumentumot. Tömeges végrehajtó kódtár, és segítséget nyújt a nagy átviteli sebesség és a storage kapcsolatos további információkért lásd: [végrehajtó Ügyfélkódtár áttekintése tömeges](bulk-executor-overview.md) cikk. Ebben az oktatóanyagban egy olyan Java-alkalmazást hoz létre, amely véletlenszerű dokumentumokat hoz létre, és tömegesen importálnak egy Azure Cosmos-tárolóba. Az importálás után lesz tömeges frissítése néhány tulajdonságát egy dokumentumot. 
 
 Jelenleg a tömeges végrehajtó függvénytárat csak Azure Cosmos DB SQL API és Gremlin API-fiókok támogatják. Ez a cikk azt ismerteti, hogyan használható a tömeges végrehajtó Java-függvénytár SQL API-fiókokkal. Tömeges végrehajtó .NET-kódtár használatával a Gremlin API-val kapcsolatos további információkért lásd: [tömeges műveletek végrehajtása az Azure Cosmos DB Gremlin API](bulk-executor-graph-dotnet.md).
 
@@ -26,7 +26,7 @@ Jelenleg a tömeges végrehajtó függvénytárat csak Azure Cosmos DB SQL API �
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.  
 
-* Az Azure-előfizetések nélkül, díjmentesen és kötelezettségvállalásokon keresztül [Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen kipróbálhatja. Vagy használhatja a [Azure Cosmos db emulátort](https://docs.microsoft.com/azure/cosmos-db/local-emulator) a `https://localhost:8081` végponttal. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.  
+* Az Azure-előfizetések nélkül, díjmentesen és kötelezettségvállalásokon keresztül [Azure Cosmos db ingyen kipróbálhatja](https://azure.microsoft.com/try/cosmosdb/) . Vagy használhatja a [Azure Cosmos db emulátort](https://docs.microsoft.com/azure/cosmos-db/local-emulator) a `https://localhost:8081` végponttal. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.  
 
 * [Java fejlesztői készlet (JDK) 1.7+](https://aka.ms/azure-jdks)  
   - Ubuntu rendszeren futtassa az `apt-get install default-jdk` parancsot a JDK telepítéséhez.  
@@ -88,7 +88,7 @@ A klónozott adattár tartalmazza a két minta "bulkimport" és "bulkupdate" a "
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
    ```
 
-4. Hívja meg a paraméter értéke importAll API, amely létrehoz egy Azure Cosmos DB-tárolón történő tömeges véletlenszerű dokumentumok. Beállíthatja, hogy a parancssor konfigurációk CmdLineConfiguration.java fájlon belül.
+4. Hívja meg a beosztott API-t, amely véletlenszerű dokumentumokat hoz létre tömeges importálásra egy Azure Cosmos-tárolóba. Beállíthatja, hogy a parancssor konfigurációk CmdLineConfiguration.java fájlon belül.
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
@@ -155,7 +155,7 @@ Meglévő dokumentumok frissítheti a BulkUpdateAsync API-val. Ebben a példába
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
 
-2. Hívja meg az API-t kell majd importálja az Azure Cosmos DB-tárolók tömeges véletlenszerű dokumentumokat létrehozó updateAll. Konfigurálhatja a CmdLineConfiguration.java fájlban átadandó parancssori konfigurációkat.
+2. Hívja meg a updateAll API-t, amely véletlenszerű dokumentumokat hoz létre, majd tömegesen importálja őket egy Azure Cosmos-tárolóba. Konfigurálhatja a CmdLineConfiguration.java fájlban átadandó parancssori konfigurációkat.
 
    ```java
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
@@ -206,7 +206,7 @@ A jobb teljesítmény érdekében a következő szempontokat vegye figyelembe, t
    * Állítsa be a JVM-halommemória mérete elég nagy számú, nagy számú dokumentumot kezelése bármely memória probléma elkerülése érdekében. Javasolt halommemória mérete: maximális (3GB, 3 * (minden dokumentum tömeges átadott API importálása egy kötegben) sizeof).  
    * Nincs egy előfeldolgozási idő, ami kap magasabb átviteli sebesség tömeges műveletek nagy számú dokumentumot a végrehajtása során. Tehát 10,000,000 dokumentumok importálni kívánt, ha futó tömeges importálás 10 alkalommal dokumentumok 10 tömeges mérete 1 000 000 mindegyike célszerű a futó tömeges importálás 100-szor dokumentumok 100 tömeges mérete 100 000 dokumentumok mindegyike-nál.  
 
-* Javasoljuk, hogy a teljes alkalmazás egyetlen virtuális gép, amely megfelel egy adott Azure Cosmos DB-tárolón belül egyetlen DocumentBulkExecutor objektumot hozza létre.  
+* Ajánlott egyetlen DocumentBulkExecutor objektumot létrehozni a teljes alkalmazáshoz egyetlen virtuális gépen belül, amely egy adott Azure Cosmos-tárolónak felel meg.  
 
 * Mivel egy egyszeri tömeges API művelet végrehajtása egy nagy szövegrészletet, az ügyfél gépének Processzor- és hálózati i/o használ fel. Több feladat indítja belsőleg szerint ez történik, elkerülheti, hogy az alkalmazás folyamatának minden tömeges műveletet végrehajtó API-hívások belül több egyidejű feladat indítja. Nem lehet felhasználni a teljes tárolót átviteli egyetlen virtuális gépen futó egyetlen tömeges művelet API hívás esetén (Ha a tároló átviteli > 1 millió RU/s), ezért célszerű egyidejűleg hajtsa végre a tömeges különálló virtuális gépet hoz létre a művelet API-hívások száma.
 

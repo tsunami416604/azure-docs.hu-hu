@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 7fe2c39871f1cd512da7f9a2c5146e79abbe74a6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ecceb1177d7b7015afc92f10284a9372d0cfb4a2
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279600"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375310"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>A VMware felmérésének és migrálásának támogatási mátrixa
 
@@ -73,7 +73,7 @@ Azure Migrate egy könnyű berendezést futtat a VMware virtuális gépek felder
 
 **Támogatás** | **Részletek**
 --- | ---
-**Berendezések üzembe helyezése** | A készüléket VMware virtuális gépként kell üzembe helyezni. Elegendő erőforrásra van szüksége a vCenter Server egy virtuális gép lefoglalásához 32 GB RAM-mal, 8 vCPU és egy külső virtuális kapcsolóval.<br/><br/> A berendezéshez közvetlenül vagy proxyn keresztül kell internet-hozzáférést igényelni.<br/> A berendezés virtuális gépnek a 5,5-es vagy újabb verzióját futtató ESXi-gazdagépre kell telepítenie. 
+**Berendezések üzembe helyezése** | A készüléket VMware virtuális gépként kell üzembe helyezni. Elegendő erőforrásra van szüksége a vCenter Server egy virtuális gép lefoglalásához 32 GB RAM-mal, 8 vCPU, körülbelül 80 GB lemezes tárterülettel és egy külső virtuális kapcsolóval.<br/><br/> A berendezéshez közvetlenül vagy proxyn keresztül kell internet-hozzáférést igényelni.<br/> A berendezés virtuális gépnek a 5,5-es vagy újabb verzióját futtató ESXi-gazdagépre kell telepítenie. 
 **Azure Migrate projekt** | Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> Egy projektben akár 35 000 virtuális gépet is megvizsgálhat.
 **Felfedezés** | A készülékek akár 10 000 VMware virtuális gépet is felfedezhetnek vCenter Serveron.<br/> Egy berendezés egyetlen vCenter Serverhoz tud csatlakozni.
 **Értékelési csoport** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.

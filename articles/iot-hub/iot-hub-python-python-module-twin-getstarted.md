@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: menchi
-ms.openlocfilehash: 2c388ff86e782c916916bfb08c7a55ec5c845b13
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
-ms.translationtype: HT
+ms.openlocfilehash: b54b81a78072664ef47ace917fb3db85a5b1f297
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667915"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147609"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (Python)
 
@@ -31,7 +31,7 @@ Az oktatóanyag végén két Python-alkalmazás áll rendelkezésére:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-Az előfeltételek a következő telepítési utasításokkal rendelkeznek.
+## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
@@ -95,7 +95,7 @@ Ez az alkalmazás létrehoz egy **MYFIRSTDEVICE** azonosítóval és egy **myFir
 
 Ebben a szakaszban egy Python-alkalmazást hoz létre a szimulált eszközön, amely frissíti a modul Twin jelentett tulajdonságait.
 
-1. **A modulhoz tartozó kapcsolatok karakterláncának** beolvasása – most, [](https://portal.azure.com/)ha bejelentkezik a Azure Portalba. Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice, nyissa meg, és láthatja, hogy a myFirstModule létrehozása sikeresen megtörtént. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
+1. **A modulhoz tartozó kapcsolatok karakterláncának beolvasása** – most, ha bejelentkezik a [Azure Portalba](https://portal.azure.com/). Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice, nyissa meg, és láthatja, hogy a myFirstModule létrehozása sikeresen megtörtént. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
 
    ![Az Azure Portal moduladatai](./media/iot-hub-python-python-module-twin-getstarted/module-detail.png)
 

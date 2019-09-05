@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: damaerte
-ms.openlocfilehash: f60125123d019cbfa93bfc1b06da7ac90b54e311
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: b2823c935d11ae99ab1d87ae708945721820ad8c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742038"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306734"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -31,18 +31,35 @@ A Cloud Shell a következő módszerekkel is megőrzi a fájlokat:
 > [!NOTE]
 > A `$Home` címtárban lévő összes fájl, például az ssh-kulcsok megmaradnak a felhasználói lemezképben, amelyet a csatlakoztatott fájlmegosztás tárol. Alkalmazza az ajánlott eljárásokat, ha a címtárban `$Home` és a csatlakoztatott fájlmegosztás adataiban marad.
 
-## <a name="bash-specific-commands"></a>Bash-specifikus parancsok
+## <a name="clouddrive-commands"></a>clouddrive parancsok
 
 ### <a name="use-the-clouddrive-command"></a>A `clouddrive` parancs használata
-A Cloud SHELL bash használatával futtathatja a nevű `clouddrive`parancsot, amely lehetővé teszi a Cloud Shellhoz csatlakoztatott fájlmegosztás manuális frissítését.
+Cloud Shell futtathatja a nevű `clouddrive`parancsot, amely lehetővé teszi a Cloud Shellhoz csatlakoztatott fájlmegosztás manuális frissítését.
 ![A "clouddrive" parancs futtatása](media/persisting-shell-storage/clouddrive-h.png)
+
+### <a name="list-clouddrive"></a>Listáját`clouddrive`
+`clouddrive` A`df` parancs futtatásával derítheti fel, hogy melyik fájlmegosztás van csatlakoztatva. 
+
+A clouddrive elérési útja a Storage-fiók nevét és a fájlmegosztás URL-címét jeleníti meg. Például: `//storageaccountname.file.core.windows.net/filesharename`
+
+```
+justin@Azure:~$ df
+Filesystem                                          1K-blocks   Used  Available Use% Mounted on
+overlay                                             29711408 5577940   24117084  19% /
+tmpfs                                                 986716       0     986716   0% /dev
+tmpfs                                                 986716       0     986716   0% /sys/fs/cgroup
+/dev/sda1                                           29711408 5577940   24117084  19% /etc/hosts
+shm                                                    65536       0      65536   0% /dev/shm
+//mystoragename.file.core.windows.net/fileshareName 5368709120    64 5368709056   1% /home/justin/clouddrive
+justin@Azure:~$
+```
 
 ### <a name="mount-a-new-clouddrive"></a>Új clouddrive csatlakoztatása
 
 #### <a name="prerequisites-for-manual-mounting"></a>Manuális csatlakoztatás előfeltételei
 A `clouddrive mount` parancs használatával frissítheti Cloud Shellhoz társított fájlmegosztást.
 
-Ha meglévő fájlmegosztást csatlakoztat, a Storage-fiókoknak a Select Cloud Shell régióban kell elhelyezkedniük. Kérje le a helyet a `env` bash-ből való futtatással, és ellenőrizze a `ACC_LOCATION`következőt:.
+Ha meglévő fájlmegosztást csatlakoztat, a Storage-fiókoknak a Select Cloud Shell régióban kell elhelyezkedniük. Kérje le a helyet a `env` futtatásával, `ACC_LOCATION`majd ellenőrizze a alkalmazást.
 
 #### <a name="the-clouddrive-mount-command"></a>A `clouddrive mount` parancs
 
@@ -70,24 +87,7 @@ A fájlmegosztás továbbra is fennáll, hacsak nem törli manuálisan. A követ
 ![A "clouddrive unmount'command futtatása](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> Bár a parancs futtatása nem törli az erőforrásokat, manuálisan törli az erőforráscsoportot, a Storage-fiókot vagy az Cloud Shellra leképezett fájlmegosztást, törli a `$Home` könyvtár lemezének lemezképét és a fájlmegosztás összes fájlját. A művelet nem vonható vissza.
-
-### <a name="list-clouddrive"></a>Listáját`clouddrive`
-`clouddrive` A`df` parancs futtatásával derítheti fel, hogy melyik fájlmegosztás van csatlakoztatva. 
-
-A clouddrive elérési útja a Storage-fiók nevét és a fájlmegosztás URL-címét jeleníti meg. Például: `//storageaccountname.file.core.windows.net/filesharename`
-
-```
-justin@Azure:~$ df
-Filesystem                                          1K-blocks   Used  Available Use% Mounted on
-overlay                                             29711408 5577940   24117084  19% /
-tmpfs                                                 986716       0     986716   0% /dev
-tmpfs                                                 986716       0     986716   0% /sys/fs/cgroup
-/dev/sda1                                           29711408 5577940   24117084  19% /etc/hosts
-shm                                                    65536       0      65536   0% /dev/shm
-//mystoragename.file.core.windows.net/fileshareName 5368709120    64 5368709056   1% /home/justin/clouddrive
-justin@Azure:~$
-```
+> Bár a parancs futtatása nem törli az erőforrásokat, manuálisan törli az erőforráscsoportot, a Storage-fiókot vagy az Cloud Shellra leképezett fájlmegosztást, törli a `$Home` könyvtár lemezének lemezképét és a fájlmegosztás összes fájlját. Ez a művelet nem vonható vissza.
 ## <a name="powershell-specific-commands"></a>PowerShell-specifikus parancsok
 
 ### <a name="list-clouddrive-azure-file-shares"></a>Azure `clouddrive` -fájlmegosztás listázása
@@ -105,7 +105,6 @@ A `Dismount-CloudDrive` parancsmag leválasztja az Azure-fájlmegosztást az akt
 Megjegyzés: Ha meg kell határoznia egy függvényt egy fájlban, és hívnia kell a PowerShell-parancsmagokból, akkor a pont operátort is tartalmaznia kell. Például:. .\MyFunctions.ps1
 
 ## <a name="next-steps"></a>További lépések
-[Bash Cloud Shell rövid útmutatóban](quickstart.md) <br>
-[PowerShell Cloud Shell rövid útmutató](quickstart-powershell.md) <br>
+[Cloud Shell rövid útmutató](quickstart.md) <br>
 [Tudnivalók a Microsoft Azure file Storage-ról](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
 [Tudnivalók a tárolási címkékről](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

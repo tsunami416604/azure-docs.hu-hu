@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 08/15/2019
 ms.author: mimart
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d85fc7ed16f397cb91232e9648df4e8741b37a
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
-ms.translationtype: HT
+ms.openlocfilehash: aa0dc2081aff5a24fb830b756131cccd5c6ce810
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705786"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533703"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Hardcoded-hivatkozások átirányítása az Azure AD Application Proxy-ban közzétett alkalmazásokra
 
@@ -30,13 +30,16 @@ Az Azure AD Application Proxy elérhetővé teszi a helyszíni alkalmazásokat a
 A legjobb módszer annak biztosítására, hogy a kapcsolatok ugyanúgy működjenek, mint a vállalati hálózaton belül és kívül is, hogy az alkalmazások külső URL-címei megegyezzenek a belső URL-címekkel. [Egyéni tartományokkal](application-proxy-configure-custom-domain.md) konfigurálhatja a külső URL-címeket úgy, hogy az alapértelmezett alkalmazásproxy-tartomány helyett a vállalati tartománynevet használják.
 
 
-Ha nem használhat egyéni tartományokat a bérlőben, több további lehetőség is rendelkezésre áll a funkció biztosításához. Ezek mindegyike az egyéni tartományokkal és egymással is kompatibilis, így szükség esetén egyéni tartományokat és egyéb megoldásokat is beállíthat. 
+Ha nem használhat egyéni tartományokat a bérlőben, több további lehetőség is rendelkezésre áll a funkció biztosításához. Ezek mindegyike az egyéni tartományokkal és egymással is kompatibilis, így szükség esetén egyéni tartományokat és egyéb megoldásokat is beállíthat.
+
+> [!NOTE]
+> A hivatkozás fordítása nem támogatott a JavaScript használatával generált, rögzített belső URL-címek esetében.
 
 **1. lehetőség: A Managed Browser vagy a Microsoft Edge** használata – ez a megoldás csak akkor alkalmazható, ha azt tervezi, hogy a felhasználók a Intune Managed Browser vagy a Microsoft Edge böngésző használatával érik el az alkalmazást. A szolgáltatás minden közzétett URL-címet kezelni fog. 
 
 **2. lehetőség: A MyApps bővítmény** használata – ehhez a megoldáshoz a felhasználóknak ügyféloldali böngésző-bővítményt kell telepíteniük, de az összes közzétett URL-címet kezelni fogják, és a legnépszerűbb böngészőkkel működnek. 
 
-**3. lehetőség: Használja a fordítási beállítás** hivatkozását – ez egy rendszergazdai oldal, amely láthatatlan a felhasználók számára. Azonban csak HTML-és CSS-URL-címeket fog kezelni. A JavaScripten keresztül generált, rögzített belső URL-címek (például) nem fognak működni.  
+**3. lehetőség: Használja a fordítási beállítás** hivatkozását – ez egy rendszergazdai oldal, amely láthatatlan a felhasználók számára. Azonban csak HTML-és CSS-URL-címeket fog kezelni.   
 
 Ez a három funkció tárolja a hivatkozásokat, függetlenül attól, hogy a felhasználók hol vannak. Ha olyan alkalmazásokkal rendelkezik, amelyek közvetlenül a belső végpontokra vagy portokra mutatnak, ezeket a belső URL-címeket a közzétett külső alkalmazásproxy URL-címeire képezheti le. 
 

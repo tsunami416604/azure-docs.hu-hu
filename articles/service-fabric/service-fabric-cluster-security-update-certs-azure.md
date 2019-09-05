@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2018
 ms.author: atsenthi
 ms.openlocfilehash: d84525e869d47fc609ee8aac7feb7feda36a5f23
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68599952"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Service Fabric-fürthöz tartozó tanúsítványok hozzáadása vagy eltávolítása az Azure-ban
@@ -65,7 +65,7 @@ Az egyszerűség kedvéért a következő minta 5-VM-1-NodeTypes-Secure_Step2. J
 
 1. Nyissa meg a fürt üzembe helyezéséhez használt Resource Manager-sablont. (Ha letöltötte a mintát az előző tárházból, az 5-VM-1-NodeTypes-Secure_Step1. JSON használatával helyezzen üzembe egy biztonságos fürtöt, majd nyissa meg a sablont).
 
-2. Adjon hozzá **két** "string" típusú "secCertificateThumbprint" és "secCertificateUrlValue" paramétert a sablon paraméter szakaszához. Másolja a következő kódrészletet, és adja hozzá a sablonhoz. A sablon forrása alapján előfordulhat, hogy már rendelkezik a megadott beállításokkal, ha a következő lépésre lép. 
+2. Adjon hozzá két "string" típusú "secCertificateThumbprint" és "secCertificateUrlValue" **paramétert** a sablon paraméter szakaszához. Másolja a következő kódrészletet, és adja hozzá a sablonhoz. A sablon forrása alapján előfordulhat, hogy már rendelkezik a megadott beállításokkal, ha a következő lépésre lép. 
  
     ```json
        "secCertificateThumbprint": {
@@ -210,7 +210,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 
 ```
 
-Telepítse a sablont az erőforráscsoporthoz. Használja ugyanazt az erőforráscsoportot, amelyben a fürt jelenleg telepítve van. Futtassa a New-AzResourceGroupDeployment parancsot. Nem kell megadnia a módot, mert az alapértelmezett érték növekményes.
+Telepítse a sablont az erőforráscsoporthoz. Használja ugyanazt az erőforráscsoportot, amelyben a fürt jelenleg telepítve van. Futtassa a New-AzResourceGroupDeployment parancsot. Nem kell megadnia a módot, mert az alapértelmezett érték **növekményes**.
 
 > [!NOTE]
 > Ha a mód be van állítva, akkor véletlenül törölheti a sablonban nem szereplő erőforrásokat. Ezt ne használja ebben a forgatókönyvben.

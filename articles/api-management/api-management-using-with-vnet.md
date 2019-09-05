@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: f79fffe2117de77e4e44dcbbaa782b2ade81e04b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b89f4d2264924983aac93fb266efd71e46bea6bf
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164193"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305229"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure Virtual Networks (virtuális hálózatok) lehetővé teszi, hogy az Azure-erőforrások bármelyikét olyan, nem internetes útválasztású hálózatba helyezze, amelynek hozzáférését szabályozhatja. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: Az [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -25,7 +25,7 @@ Az Azure Virtual Networks (virtuális hálózatok) lehetővé teszi, hogy az Azu
 Az Azure API Management a virtuális hálózaton (VNET) belül üzembe helyezhető, így a hálózaton belül elérhetővé válik a háttér-szolgáltatások. A fejlesztői portál és az API-átjáró úgy konfigurálható, hogy az internetről vagy csak a virtuális hálózaton belül legyen elérhető.
 
 > [!NOTE]
-> Az Azure API Management a klasszikus és a Azure Resource Manager virtuális hálózatok is támogatja.
+> Az API-importálási dokumentum URL-címét nyilvánosan elérhető internetes címen kell üzemeltetni.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -52,7 +52,7 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
     ![API Management virtuális hálózatának menüje][api-management-using-vnet-menu]
 4. Válassza ki a kívánt hozzáférési típust:
 
-   * Kikapcsolva: ez az alapértelmezett. API Management nincs üzembe helyezve virtuális hálózatban.
+   * **Kikapcsolva**: ez az alapértelmezett. API Management nincs üzembe helyezve virtuális hálózatban.
 
    * **Külső**: a API Management átjáró és a fejlesztői portál a nyilvános internetről külső terheléselosztó használatával érhető el. Az átjáró hozzáférhet a virtuális hálózaton belüli erőforrásokhoz.
 
@@ -75,7 +75,7 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 
 > [!NOTE]
 > A API Management példány virtuális IP-címe minden alkalommal megváltozik, amikor a VNET engedélyezve vagy le van tiltva.
-> A virtuális IP-cím akkor is megváltozik, ha a API Management külsőről **belsőre** vagy fordítva van áthelyezve
+> A virtuális IP-cím akkor is megváltozik, ha a API Management **külsőről** **belsőre** vagy fordítva van áthelyezve
 >
 
 > [!IMPORTANT]

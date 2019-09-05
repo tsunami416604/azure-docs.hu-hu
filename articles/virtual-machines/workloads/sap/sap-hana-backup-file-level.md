@@ -7,18 +7,17 @@ author: hermanndms
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 86a0633a433623c2b43bb26721e5fcee08d4301f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
-ms.translationtype: HT
+ms.openlocfilehash: 8860c943dafdb9d166510519d0fb058f523537b3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640807"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078902"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup a fájl szintjén
 
@@ -52,7 +51,7 @@ A megkerülő megoldás az, hogy először másolja SAP HANA biztonsági mentés
 
 Az Azure Storage-beli könyvtárak és fájlok tárolására a CLI vagy a PowerShell használatával, illetve az [Azure SDK](https://azure.microsoft.com/downloads/)-k egyikének használatával lehet létrehozni egy eszközt. Az adatok Azure Storage-ba történő másolásához használható használatra kész AzCopy is. (lásd: [adatok átvitele a AzCopy parancssori segédprogrammal](../../../storage/common/storage-use-azcopy.md)).
 
-Ezért a blobxfer SAP HANA biztonságimásolat-fájlok másolására használták. Nyílt forráskód, amelyet számos ügyfél használ éles környezetben, és elérhető a githubon. [](https://github.com/Azure/blobxfer) Ez az eszköz lehetővé teszi, hogy az egyiket közvetlenül az Azure Blob Storage-ba vagy az Azure-fájlmegosztásba másolja. Számos hasznos funkciót is kínál, például az MD5-kivonatot vagy az automatikus párhuzamosságot, ha több fájllal rendelkező könyvtárat másol.
+Ezért a blobxfer SAP HANA biztonságimásolat-fájlok másolására használták. Nyílt forráskód, amelyet számos ügyfél használ éles környezetben, és elérhető a [githubon](https://github.com/Azure/blobxfer). Ez az eszköz lehetővé teszi, hogy az egyiket közvetlenül az Azure Blob Storage-ba vagy az Azure-fájlmegosztásba másolja. Számos hasznos funkciót is kínál, például az MD5-kivonatot vagy az automatikus párhuzamosságot, ha több fájllal rendelkező könyvtárat másol.
 
 ## <a name="sap-hana-backup-performance"></a>SAP HANA biztonsági mentési teljesítmény
 
@@ -140,7 +139,7 @@ A helyi sávokra történő biztonsági mentés alternatívája, és az operáci
 
 Egy Azure Files-megosztást egy Azure Linux rendszerű virtuális gépen lehet csatlakoztatni. Az [Azure file Storage és a Linux használatáról](../../../storage/files/storage-how-to-use-files-linux.md) szóló cikk részletesen ismerteti, hogyan teheti meg. Ne feledje, hogy egy Azure-fájlmegosztás esetében jelenleg egy 5 TB-os kvóta van korlátozva, és a fájl mérete legfeljebb 1 TB lehet. A tárolási korlátokkal kapcsolatos információkért tekintse meg az [Azure Storage skálázhatósági és teljesítményi célkitűzéseit](../../../storage/common/storage-scalability-targets.md) ismertető témakört.
 
-A tesztek azonban azt mutatták, hogy SAP HANA biztonsági másolat&#39;jelenleg nem működik közvetlenül ilyen típusú CIFS-csatlakoztatással. Emellett a 1820529-es [SAP](https://launchpad.support.sap.com/#/notes/1820529) -megjegyzésben is szerepel, hogy a CIFS nem ajánlott.
+A tesztek azonban azt mutatták, hogy SAP HANA biztonsági másolat&#39;jelenleg nem működik közvetlenül ilyen típusú CIFS-csatlakoztatással. Emellett a 1820529-es [SAP-megjegyzésben](https://launchpad.support.sap.com/#/notes/1820529) is szerepel, hogy a CIFS nem ajánlott.
 
 ![Ez az ábra hibát jelez a SAP HANA Studióban található biztonsági mentési párbeszédablakban](media/sap-hana-backup-file-level/image038.png)
 

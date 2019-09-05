@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 7a2802bd4daa1a009c610688120c9a56583b054f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 91ff99f674439580d369aad1490ded85d39d377c
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639274"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382878"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Ajánlott eljárások a Cognitive Services language understanding alkalmazás létrehozásához
 A LUIS-alkalmazás létrehozásához használja az alkalmazás-létrehozási folyamatot: 
@@ -27,7 +27,7 @@ A LUIS-alkalmazás létrehozásához használja az alkalmazás-létrehozási fol
 * A végpont tesztelése 
 * Funkciók hozzáadása
 
-Miután közzétette az [](luis-how-to-publish-app.md)alkalmazást, használja a szerzői ciklust a szolgáltatások hozzáadásához, közzétételéhez és teszteléséhez a végpontról. Ne kezdje el a következő szerzői ciklus további példa utterances hozzáadásával. Amely nem teszi lehetővé a LUIS ismerje meg, a modell a való életből vett felhasználói kimondott szöveg. 
+Miután [közzétette](luis-how-to-publish-app.md)az alkalmazást, használja a szerzői ciklust a szolgáltatások hozzáadásához, közzétételéhez és teszteléséhez a végpontról. Ne kezdje el a következő szerzői ciklus további példa utterances hozzáadásával. Amely nem teszi lehetővé a LUIS ismerje meg, a modell a való életből vett felhasználói kimondott szöveg. 
 
 Ahhoz, hogy a feladat a tanulás, hatékony, LUIS nem bontsa ki a kimondott szöveg mindaddig, amíg az aktuális készletét példa és a végpont utterances vannak visszaadó biztosabb, magas előrejelzési pontszámokat. A pontszámok fejlesztése az [aktív tanulás](luis-concept-review-endpoint-utterances.md), a [minták](luis-concept-patterns.md)és a [kifejezések listáját](luis-concept-feature.md)használva. 
 
@@ -40,7 +40,7 @@ Az alábbi lista tartalmazza az ajánlott eljárások a LUIS-alkalmazások:
 |[Keres édes helyet túl általános, és túl adott között a minden egyes leképezés](#do-find-sweet-spot-for-intents)|[Használja a LUIS képzési platform](#dont-use-luis-as-a-training-platform)|
 |[Iteratív az alkalmazás létrehozása](#do-build-the-app-iteratively)|[Ugyanazt a formátumot, figyelmen kívül hagyja a más formátumú, sok példa beszédmódok hozzáadása](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[Újabb iterációban kifejezés listák és a minták hozzáadása](#do-add-phrase-lists-and-patterns-in-later-iterations)|[Vegyes szándékok és entitások definíciója](#dont-mix-the-definition-of-intents-and-entities)|
-|A [hosszúságú kimondott szöveg egyensúlyt](#balance-your-utterances-across-all-intents) kell kiosztania az összes szándékon, kivéve a none szándékot.<br>[Nincs leképezés példa beszédmódok hozzáadása](#do-add-example-utterances-to-none-intent)|[Az összes lehetséges értékét kifejezés listák létrehozása](#dont-create-phrase-lists-with-all-the-possible-values)|
+|A [hosszúságú kimondott szöveg egyensúlyt kell kiosztania az összes](#balance-your-utterances-across-all-intents) szándékon, kivéve a none szándékot.<br>[Nincs leképezés példa beszédmódok hozzáadása](#do-add-example-utterances-to-none-intent)|[Az összes lehetséges értékét kifejezés listák létrehozása](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[A javaslat szolgáltatás aktív tanulás](#do-leverage-the-suggest-feature-for-active-learning)|[Túl sok mintázat hozzáadása](#dont-add-many-patterns)|
 |[Az alkalmazás teljesítményének figyelése](#do-monitor-the-performance-of-your-app)|[Betanítás, közzététel és minden hozzá egyetlen példa utterance](#dont-train-and-publish-with-every-single-example-utterance)|
 |[Verziók használata az egyes alkalmazások iterációhoz](#do-use-versions-for-each-app-iteration)||
@@ -84,7 +84,7 @@ Ha megértette, hogy az alkalmazás ezek nélkül viselkedik, adja hozzá ezeket
 
 A modell kialakításának elején nem árt felvenni a problémát, de könnyebben láthatja, hogy az egyes szolgáltatások hogyan változnak az eredmények a modell hosszúságú kimondott szöveg való tesztelése után. 
 
-Az ajánlott eljárás az, hogy a [végponton](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) keresztül tesztelje az [aktív tanulás](luis-concept-review-endpoint-utterances.md)előnyeit. Az [interaktív tesztelési panel](luis-interactive-test.md) is érvényes tesztelési módszer. 
+Az ajánlott eljárás az, hogy a [végponton](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) keresztül tesztelje az [aktív tanulás](luis-concept-review-endpoint-utterances.md)előnyeit. Az [interaktív tesztelési panel](luis-interactive-test.md) is érvényes tesztelési módszer. 
  
 
 ### <a name="phrase-lists"></a>Kifejezéslisták

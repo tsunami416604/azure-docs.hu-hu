@@ -16,12 +16,12 @@ ms.date: 08/19/2019
 ms.author: negoe
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 77a2e571b76044ff9114f6671b187118cf03c0ba
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: fe3ad29cfd113deba5824ce25721dc543c6267c0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135813"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305050"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Kivételek és hibák kezelése a MSAL használatával
 A Microsoft Authentication Library (MSAL) kivételei az alkalmazások fejlesztői számára készültek a hibák megoldásához, és nem a végfelhasználók számára történő megjelenítéshez. A kivételek üzenetei nincsenek honosítva.
@@ -142,7 +142,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 ```
 
 ## <a name="conditional-access-and-claims-challenges"></a>A feltételes hozzáférés és a jogcímek kihívásai
-Ha a tokeneket csendes módban kéri le, előfordulhat, hogy az alkalmazás hibát jelez, ha egy olyan API-ra van szükség, amely egy olyan [feltételes hozzáférési](conditional-access-dev-guide.md) jogcímet igényel, mint például az MFA-szabályzat.
+Ha a tokeneket csendes módban kéri le, előfordulhat, hogy az alkalmazás hibát jelez, ha egy olyan API-ra van szükség, amely egy olyan [feltételes hozzáférési jogcímet](conditional-access-dev-guide.md) igényel, mint például az MFA-szabályzat.
 
 Ennek a hibának a kezelésére szolgáló minta a jogkivonat interaktív beszerzése a MSAL használatával. A jogkivonat interaktív beszerzése arra kéri a felhasználót, hogy adja meg a szükséges feltételes hozzáférési szabályzatot.
 
@@ -154,7 +154,7 @@ Ha a MSAL.NET feltételes hozzáférést igénylő API-t hív meg, az alkalmazá
 A jogcím-kihívás kezeléséhez az `.WithClaim()` `PublicClientApplicationBuilder` osztály metódusát kell használnia.
 
 ### <a name="javascript"></a>JavaScript
-Ha a tokeneket a MSAL. js `acquireTokenSilent`használatával csendesen (a használatával) kérdezi le, az alkalmazás hibákat kaphat, ha egy olyan API-nak szüksége van egy [feltételes hozzáférési](conditional-access-dev-guide.md) jogcímek feladatára, mint például az MFA-szabályzat.
+Ha a tokeneket a MSAL. js `acquireTokenSilent`használatával csendesen (a használatával) kérdezi le, az alkalmazás hibákat kaphat, ha egy olyan API-nak szüksége van egy [feltételes hozzáférési jogcímek feladatára](conditional-access-dev-guide.md) , mint például az MFA-szabályzat.
 
 A hiba kezelésére szolgáló minta egy interaktív hívást tesz lehetővé a token MSAL. js-ben való beszerzéséhez `acquireTokenPopup` , `acquireTokenRedirect` például a következő példában vagy a-ben:
 
@@ -179,7 +179,7 @@ A jogkivonat interaktív beszerzése kéri a felhasználót, és lehetőséget b
 
 Ha feltételes hozzáférést igénylő API-t hív meg, az API-val kapcsolatos hiba esetén a jogcímek kérdését is megkaphatja. Ebben az esetben átadhatja a hibában `claimsRequest` visszaadott jogcímeket az `AuthenticationParameters.ts` osztály mezőjébe, hogy az megfeleljen a megfelelő házirendnek. 
 
-További részletekért lásd: [további]() jogcímek igénylése.
+További részletekért lásd: [további jogcímek igénylése](active-directory-optional-claims.md) .
 
 ## <a name="retrying-after-errors-and-exceptions"></a>Próbálkozás a hibák és kivételek után
 

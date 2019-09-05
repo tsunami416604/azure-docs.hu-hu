@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 40eaabb149e2e897ecd4e1109e0db7c42b990925
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 31137bba8c9b6b88c6a8b9569c02ae887e73e8d0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101548"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309601"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Oracle Golden Gate megvalósítása Azure Linux rendszerű virtuális gépen 
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez az útmutató részletesen ismerteti, hogyan használható az Azure CLI egy Oracle 12c-adatbázis üzembe helyezéséhez az Azure Marketplace Gallery-rendszerképből. 
 
-Ez a dokumentum részletesen ismerteti, hogyan hozhat létre, telepíthet és konfigurálhat Oracle Golden Gate-t egy Azure-beli virtuális gépen.
+Ez a dokumentum részletesen ismerteti, hogyan hozhat létre, telepíthet és konfigurálhat Oracle Golden Gate-t egy Azure-beli virtuális gépen. Ebben az oktatóanyagban két virtuális gép van beállítva egy rendelkezésre állási csoportba egyetlen régióban. Ugyanez az oktatóanyag használható a OracleGolden-kapuk beállítására a különböző Availability Zones lévő virtuális gépekhez egyetlen Azure-régióban, illetve két különböző régióban lévő virtuális gépek beállításához is.
 
 A kezdés előtt győződjön meg arról, hogy az Azure CLI telepítve van. További információért lásd az [Azure CLI telepítési útmutatóját](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -347,7 +347,7 @@ SQL> EXIT;
 ### <a name="download-golden-gate-software"></a>A Golden Gate szoftver letöltése
 Az Oracle Golden Gate szoftver letöltéséhez és előkészítéséhez végezze el a következő lépéseket:
 
-1. Töltse le a **fbo_ggs_Linux_x64_shiphome. zip** fájlt az [Oracle Golden Gate letöltési oldaláról](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). A letöltési cím **Oracle GoldenGate 12. x. x. x Oracle Linux x86-64-** es verziójában a letölteni kívánt. zip-fájlok készletének kell lennie.
+1. Töltse le a **fbo_ggs_Linux_x64_shiphome. zip** fájlt az [Oracle Golden Gate letöltési oldaláról](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). A letöltési cím **Oracle GoldenGate 12. x. x. x Oracle Linux x86-64-es verziójában**a letölteni kívánt. zip-fájlok készletének kell lennie.
 
 2. Miután letöltötte a. zip-fájlokat az ügyfélszámítógépre, a biztonságos másolási protokoll (SCP) használatával másolja a fájlokat a virtuális gépre:
 
@@ -431,7 +431,7 @@ Az Oracle Golden Gate telepítéséhez hajtsa végre a következő lépéseket:
    $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
    $ ./runInstaller
    ```
-2. Válassza az "Oracle GoldenGate for Oracle Database 12c" lehetőséget. Ezután kattintson a Tovább gombra a folytatáshoz.
+2. Válassza az "Oracle GoldenGate for Oracle Database 12c" lehetőséget. Ezután kattintson **a Tovább gombra a** folytatáshoz.
 
    ![A telepítő képernyőképe – a telepítés kiválasztása lap](./media/oracle-golden-gate/golden_gate_install_01.png)
 

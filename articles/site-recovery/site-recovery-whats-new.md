@@ -5,29 +5,61 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/29/2019
 ms.author: raynew
-ms.openlocfilehash: 1ce71665a924c6681af418075d8cc635c73f8a1a
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
-ms.translationtype: HT
+ms.openlocfilehash: 5cd4b86c9c70f713a207f7feea9fa8efc06b6247
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717674"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146899"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
 
 A [Azure site Recovery](site-recovery-overview.md) szolgáltatás folyamatosan frissül és fejleszthető. Ez a cikk a legfrissebb kiadásokról, új funkciókról és új tartalmakról nyújt tájékoztatást. Ez az oldal rendszeresen frissül.
 
-Ha Site Recovery-funkciókra vonatkozó javaslatokkal rendelkezik, szívesen vesszük [a visszajelzését](https://feedback.azure.com/forums/256299-site-recovery).
+Az [Azure](https://azure.microsoft.com/updates/?product=site-recovery) Updates csatornán követheti és előfizethet site Recovery frissítési értesítéseire.
+
+## <a name="supported-updates"></a>Támogatott frissítések
+
+Site Recovery-összetevők esetében az N-4 verziót támogatjuk, ahol N a legújabb kiadású verzió. Ezeket az alábbi táblázat foglalja össze.
+
+**Update** |  **Egyesített beállítás** | **Konfigurációs kiszolgáló petesejtjei** | **Mobilitási szolgáltatás ügynöke** | **Site Recovery szolgáltató** | **Recovery Services ügynök** 
+--- | --- | --- | --- | ---
+[39-es összesítés](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
+[38-es összesítés](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
+[37-es összesítés](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
+[36-es összesítés](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
+[35-es összesítés](https://support.microsoft.com/help/4494485/) | 9.23.5163.1 | 5.1.4000.0 | 9.23.5163.1 | 5.1.4000.0 | 2.0.9156.0 
+        
+
+[További](service-updates-how-to.md) információ a frissítések telepítéséről és támogatásáról.
 
 
-## <a name="installing-updates"></a>Frissítések telepítése
+## <a name="updates-august-2019"></a>Frissítések (2019. augusztus)
 
-[Tekintse át ezt a cikket](service-updates-how-to.md) site Recovery frissítés támogatásának és útmutatásának megtekintéséhez.
+### <a name="update-rollup-39"></a>39-es kumulatív frissítés
+
+A 39-es [kumulatív frissítés](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) a következő frissítéseket tartalmazza.
+
+**Update** | **Részletek**
+--- | ---
+**Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítései (a kumulatív részletezéssel)
+**Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
+
+
+### <a name="azure-vm-disaster-recovery"></a>Azure-beli virtuális gép vész-helyreállítási
+
+Az Azure-beli virtuális gép vész-helyreállításának új funkciói a táblázatban vannak összegezve.
+
+**Funkció** | **Részletek**
+--- | ---
+**Titkosítás az Azure AD nélkül** | Az Azure AD-alkalmazás nélküli titkosítás mostantól támogatott az Azure-beli virtuális gépek replikálásához Windows rendszerű felügyelt lemezeken.
+**Feladatátvételhez szükséges hálózati erőforrások** | Ha feladatátvételt végez egy másik régióba, most hálózati erőforrás-beállításokat (NSG, terheléselosztást, nyilvános IP-címet) csatolhat egy virtuális géphez. 
 
 ## <a name="updates-july-2019"></a>Frissítések (2019. július)
 
-### <a name="update-rollup-38"></a>38-es kumulatív frissítés
+### <a name="update-rollup-38"></a>38. kumulatív frissítés
 
 A 38-es [kumulatív frissítés](https://support.microsoft.com/help/4513507/) a következő frissítéseket tartalmazza.
 
@@ -239,7 +271,7 @@ A frissítések nem igénylik a virtuális gépek újraindítását, és nem ér
 
 ### <a name="pricing-calculator-for-azure-vm-disaster-recovery"></a>Díjszabás az Azure-beli virtuális gép vész-helyreállításához
 
-Az Azure-beli virtuális gépek vész-helyreállítási költségei a virtuálisgép-licencelési költségek, valamint a hálózati és tárolási költségek. Az Azure egy [díjszabási számológépet](https://aka.ms/a2a-cost-estimator) biztosít, amely segít kideríteni ezeket a költségeket. A Site Recovery mostantól [](https://aka.ms/a2a-cost-estimator) egy példaként értékeli a becslést, amely egy három rétegből álló, 12 standard HDD lemezzel és 6 prémium SSD lemezzel rendelkező, háromrészes alkalmazáson alapuló minta-telepítés árát tartalmazza.
+Az Azure-beli virtuális gépek vész-helyreállítási költségei a virtuálisgép-licencelési költségek, valamint a hálózati és tárolási költségek. Az Azure egy [díjszabási számológépet](https://aka.ms/a2a-cost-estimator) biztosít, amely segít kideríteni ezeket a költségeket. A Site Recovery mostantól egy példaként értékeli a [becslést](https://aka.ms/a2a-cost-estimator) , amely egy három rétegből álló, 12 standard HDD lemezzel és 6 prémium SSD lemezzel rendelkező, háromrészes alkalmazáson alapuló minta-telepítés árát tartalmazza.
 
 - A minta azt feltételezi, hogy a standard és 20 GB-os adatváltozások napi 10 GB-ban változnak.
 - Az adott központi telepítés esetében módosíthatja a változókat a költségek becslése érdekében.

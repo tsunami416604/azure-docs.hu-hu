@@ -1,5 +1,5 @@
 ---
-title: Reguláris kifejezésű entitás – LUIS
+title: 'Oktatóanyag: Reguláris kifejezésű entitás – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Konzisztensen formázott adatok kinyerése kimondott szövegből a Reguláris kifejezés entitással.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 958d880829e9524389a25f029415786231644c04
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: db60d87b441836f38309166318dd1778ce828483
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563598"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307585"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Oktatóanyag: Jól formázott adatok beolvasása a teljes területről
 Ebben az oktatóanyagban hozzon létre egy alkalmazást a konzisztens formátumú adatok kinyeréséhez a **reguláris kifejezés** entitás használatával.

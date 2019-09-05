@@ -7,16 +7,16 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 6aa729e4f32769ec50632bea582c8b69c7c0ce91
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
-ms.translationtype: HT
+ms.openlocfilehash: bcaf2918c92ec7b8223d394290a1d7c624fc451c
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68642136"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509240"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Külső hitelesítés egy ACR-feladatban egy Azure által felügyelt identitás használatával 
 
-Egy [ACR](container-registry-tasks-overview.md)-feladatban engedélyezheti az [Azure-erőforrások felügyelt identitását](container-registry-tasks-authentication-managed-identity.md). A feladat használhatja az identitást más Azure-erőforrások elérésére, anélkül, hogy hitelesítő adatokat kellene megadnia vagy kezelnie. 
+Egy [ACR-feladatban](container-registry-tasks-overview.md) [engedélyezheti az Azure-erőforrások felügyelt identitását](container-registry-tasks-authentication-managed-identity.md). A feladat használhatja az identitást más Azure-erőforrások elérésére, anélkül, hogy hitelesítő adatokat kellene megadnia vagy kezelnie. 
 
 Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitásokat egy olyan feladatban, amely hozzáfér az Azure Key vaultban tárolt titkokhoz. 
 
@@ -107,7 +107,7 @@ Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és enged
 
 ### <a name="create-task"></a>Feladat létrehozása
 
-Hozza létre a feladat *dockerhubtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat környezete a helyi rendszer, és a parancs a munkakönyvtárban található fájlra `dockerhubtask.yaml` hivatkozik. A `--assign-identity` paraméter átadja a felhasználó által hozzárendelt identitás erőforrás-azonosítóját. 
+Hozza létre a feladat *dockerhubtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a munkakönyvtárban `dockerhubtask.yaml` található fájlra hivatkozik. A `--assign-identity` paraméter átadja a felhasználó által hozzárendelt identitás erőforrás-azonosítóját. 
 
 ```azurecli
 az acr task create \
@@ -126,7 +126,7 @@ Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és enged
 
 ### <a name="create-task"></a>Feladat létrehozása
 
-Hozza létre a feladat *dockerhubtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat környezete a helyi rendszer, és a parancs a munkakönyvtárban található fájlra `dockerhubtask.yaml` hivatkozik.  Az `--assign-identity` érték nélküli paraméter lehetővé teszi a rendszer által hozzárendelt identitást a feladatban.  
+Hozza létre a feladat *dockerhubtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a munkakönyvtárban `dockerhubtask.yaml` található fájlra hivatkozik. Az `--assign-identity` érték nélküli paraméter lehetővé teszi a rendszer által hozzárendelt identitást a feladatban.  
 
 ```azurecli
 az acr task create \
@@ -207,7 +207,7 @@ A rendszerkép leküldésének megerősítéséhez keresse meg a saját Docker`c
 ## <a name="next-steps"></a>További lépések
 
 * További információ a [felügyelt identitások ACR-feladatokban való engedélyezéséről](container-registry-tasks-authentication-managed-identity.md).
-* Lásd az [ACR-feladatok YAML](container-registry-tasks-reference-yaml.md) -referenciáját
+* Lásd az [ACR-feladatok YAML-referenciáját](container-registry-tasks-reference-yaml.md)
 
 
 <!-- LINKS - Internal -->

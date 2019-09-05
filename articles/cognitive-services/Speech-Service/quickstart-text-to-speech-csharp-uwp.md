@@ -1,27 +1,27 @@
 ---
 title: 'Gyors útmutató: Beszédszintetizátor-beszéd, C# (UWP) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a cikkben létrehoz egy C# univerzális Windows Platform (UWP-) alkalmazások a Cognitive Services beszédfelismerő SDK használatával. A beszédet valós időben szintetizálhatja a szövegből az eszköz hangszóróján. Az alkalmazást a létrehozása a Speech SDK NuGet-csomagot és a Microsoft Visual Studio 2017-ben.
+description: Ebben a cikkben létrehoz egy C# univerzális Windows Platform (UWP-) alkalmazások a Cognitive Services beszédfelismerő SDK használatával. A beszédet valós időben szintetizálhatja a szövegből az eszköz hangszóróján. Az alkalmazás a Speech SDK NuGet csomagjával és a Microsoft Visual Studio 2019-mel készült.
 services: cognitive-services
 author: yinhew
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 6/24/2019
+ms.date: 08/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 5e1f8aea1b00cbba7fec6c7ca416a965458ab526
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 65b65c9af377b6a9951f9f328e0732850d3b9c1d
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607755"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382213"
 ---
 # <a name="quickstart-synthesize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Gyors útmutató: Beszéd készítése UWP alkalmazásban a Speech SDK használatával
 
-A gyors útmutatókat beszédfelismerési [](quickstart-csharp-uwp.md), beszédfelismerési és [](quickstart-translate-speech-uwp.md) [hang-első virtuális asszisztensként](quickstart-virtual-assistant-csharp-uwp.md)is elérhetővé teheti.
+A gyors útmutatók a [beszédfelismerés](quickstart-csharp-uwp.md), a [beszédfelismerés](quickstart-translate-speech-uwp.md)és a [hang-első virtuális asszisztens](quickstart-virtual-assistant-csharp-uwp.md)számára is elérhetők.
 
-Ebben a cikkben egy C# univerzális Windows-platform FEJLESZT (UWP; Windows Version 1709 újabb verzió) alkalmazás a Cognitive Services [SPEECH SDK](speech-sdk.md)használatával. A program valós időben készít beszédet a szövegből az eszköz hangszóróján. Az alkalmazás a [SPEECH SDK NuGet csomagjával](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-es vagy újabb verziójával (bármely kiadással) készült.
+Ebben a cikkben egy C# univerzális Windows-platform (UWP) alkalmazást fejleszt ki a Cognitive Services [Speech SDK](speech-sdk.md)használatával. A program valós időben szintetizálja a beszédet a szövegből az eszköz hangszórójának. Az alkalmazást a [SPEECH SDK NuGet csomag](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2019 (bármely kiadás) használatával építheti ki.
 
 > [!NOTE]
 > A Universal Windows Platformon olyan alkalmazásokat fejleszthet, amelyek a Windows 10-et támogató minden eszközön futtathatók: PC-n, Xboxon, Surface Hubon stb.
@@ -30,7 +30,7 @@ Ebben a cikkben egy C# univerzális Windows-platform FEJLESZT (UWP; Windows Vers
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) vagy újabb
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
@@ -39,33 +39,39 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Az alkalmazás felhasználói felületét az XAML-lel lehet definiálni. Nyissa meg a `MainPage.xaml` fájlt a Megoldáskezelőben. A tervezői XAML-nézetben illessze be a következő XAML-kódrészletet a Grid címkébe (a `<Grid>` és a `</Grid>` közé).
+Most adja hozzá az alkalmazás felhasználói felületét meghatározó XAML-kódot, és adja hozzá a C# kód mögötti implementációt.
+
+1. A **megoldáskezelő**megnyitásához `MainPage.xaml`nyissa meg a t.
+
+1. A tervező XAML nézetében szúrja be a következő XAML-kódrészletet a **Grid** címkébe `<Grid>` ( `</Grid>`és között):
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
 
-1. Nyissa meg a `MainPage.xaml.cs` háttérkód-forrásfájlt (a `MainPage.xaml` alatt található meg). Cserélje a teljes kódot a következőre.
+1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs`. (Ez a következő alá `MainPage.xaml`van csoportosítva:.)
+
+1. Cserélje le az összes kódot a következő kódrészletre:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-uwp/helloworld/MainPage.xaml.cs#code)]
 
-1. A fájl `Speak_ButtonClicked` kezelőjében cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
+1. A forrásfájl `Speak_ButtonClicked` kezelőjében keresse meg a karakterláncot `YourSubscriptionKey`, és cserélje le az előfizetési kulcsra.
 
-1. A `Speak_ButtonClicked` kezelőben cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
+1. A kezelőben keresse meg a karakterláncot `YourServiceRegion`, és cserélje le az előfizetéséhez tartozó [régióra](regions.md) . `Speak_ButtonClicked` (Például használja `westus` az ingyenes próbaverziós előfizetést.)
 
-1. Mentse a projekten végrehajtott összes módosítást.
+1. A menüsávban válassza a **fájl** > **Mentés** lehetőséget a módosítások mentéséhez.
 
-## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-1. Hozza létre az alkalmazást. A menüsávon válassza a **Létrehozás** > **Megoldás fordítása** elemet. A kód fordításának hiba nélkül végbe kell mennie.
+Most már készen áll az alkalmazás létrehozására és tesztelésére.
 
-    ![A Visual Studio képernyőképe, amelyen ki van emelve a Megoldás fordítása lehetőség](media/sdk/qs-csharp-uwp-08-build.png "Sikeres létrehozás")
+1. Az alkalmazás létrehozásához a menüsávon válassza a **Build** > **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
-1. Indítsa el az alkalmazást. A menüsávon válassza a **Hibakeresés** > **Hibakeresés indítása** elemet, vagy nyomja le az **F5** billentyűt.
+1. Az alkalmazás **indításához válassza a hibakeresés** **indítása hibakeresést** (vagy nyomja le az F5 billentyűt). >  Megjelenik a **HelloWorld** ablak.
 
-    ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-csharp-uwp-09-start-debugging.png "Hibakeresés indítása az alkalmazáson")
+   ![Példa UWP Speech szintézis alkalmazásra C# – gyors üzembe helyezés](media/sdk/qs-text-to-speech-uwp-helloworld-window.png)
 
 1. Írjon be egy szöveget a szövegmezőbe, majd kattintson a **Speak (beszéd**) gombra. A rendszer továbbítja a szöveget a Speech Servicesnek, és szintetizálta a beszédet, amely a beszélőn játszik.
 
-    ![A Speech szintézis felhasználói felületének képernyőképe](media/sdk/qs-tts-csharp-uwp-ui-result.png)
+    ![Speech szintézis felhasználói felület](media/sdk/qs-tts-csharp-uwp-ui-result.png)
 
 ## <a name="next-steps"></a>További lépések
 
@@ -74,5 +80,5 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 ## <a name="see-also"></a>Lásd még
 
-- [Hangbetűkészletek testreszabása](how-to-customize-voice-font.md)
+- [Egyéni hangmodellek létrehozása és használata](how-to-custom-voice-create-voice.md)
 - [Hangminták rögzítése](record-custom-voice-samples.md)

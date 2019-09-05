@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5ff6755f1391ff19e65df669fb51967a904f4f
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
-ms.translationtype: HT
+ms.openlocfilehash: 99f31c5928273973a9089ae9ef1fd184cdb78bbb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707564"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033315"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Alkalmazás regisztrációs altípusai és engedélyei Azure Active Directory
 
@@ -46,12 +46,12 @@ Az egyéni szerepkörök előzetes verziójához tartozó következő engedélye
 
 ### <a name="create-and-delete"></a>Létrehozás és törlés
 
-Az alkalmazások regisztrációjának megadására két engedély áll rendelkezésre:
+Két engedély áll rendelkezésre az alkalmazás-regisztrációk létrehozásának lehetőségére, amelyek mindegyike különböző viselkedéssel rendelkezik:
 
-- **Microsoft. Directory/alkalmazások/createAsOwner**
-- **Microsoft. Directory/alkalmazások/létrehozás**
+- **Microsoft. Directory/alkalmazások/createAsOwner**: Az engedély kiosztása azt eredményezi, hogy a létrehozó létrehozta a létrehozott alkalmazás regisztrációjának első tulajdonosát, és a létrehozott alkalmazás regisztrálása a létrehozó 250 létrehozott objektumok kvótájának megfelelően fog megjelenni.
+- **Microsoft. Directory/applicationPolicies/Create**: Az engedély kiosztása azt eredményezi, hogy a létrehozó nem lesz hozzáadva a létrehozott alkalmazás regisztrációjának első tulajdonosaként, és a létrehozott alkalmazás regisztrálása nem fog megjelenni a létrehozó 250 létrehozott objektum-kvótájában. Ezt az engedélyt körültekintően kell használni, mivel semmi nem akadályozza meg, hogy az alkalmazás regisztrációkat hozzon létre, amíg meg nem találja a címtár-szintű kvótát. Ha mindkét engedély hozzá van rendelve, ez az engedély elsőbbséget élvez.
 
-Ha mindkét engedély hozzá van rendelve, akkor a létrehozási engedély elsőbbséget élvez. Bár a createAsOwner engedély nem adja hozzá automatikusan a létrehozót az első tulajdonosként, a tulajdonosok a Graph API-k vagy a PowerShell-parancsmagok használatakor is megadhatók az alkalmazás regisztrációjának létrehozása során.
+Ha mindkét engedély hozzá van rendelve, akkor a/Create engedély elsőbbséget élvez. Bár a/createAsOwner engedély nem adja hozzá automatikusan a létrehozót az első tulajdonosként, a tulajdonosok a Graph API-k vagy a PowerShell-parancsmagok használatakor is megadhatók az alkalmazás regisztrációjának létrehozása során.
 
 A létrehozási engedélyek hozzáférést biztosítanak az **új regisztrációs** parancshoz.
 

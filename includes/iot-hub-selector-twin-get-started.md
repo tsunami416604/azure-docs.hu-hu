@@ -3,13 +3,13 @@ author: wesmc7777
 ms.author: wesmc
 ms.service: iot-hub
 ms.topic: include
-ms.date: 10/26/2018
-ms.openlocfilehash: eef073f5f4d1eb39fd5ccd8dafacd7074158fa37
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
-ms.translationtype: HT
+ms.date: 08/20/2019
+ms.openlocfilehash: c412f7f3e20e4d04083e457bfb245b850b65e126
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667841"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050398"
 ---
 > [!div class="op_single_selector"]
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-twin-getstarted.md)
@@ -17,7 +17,7 @@ ms.locfileid: "68667841"
 > * [Java](../articles/iot-hub/iot-hub-java-java-twin-getstarted.md)
 > * [Python](../articles/iot-hub/iot-hub-python-twin-getstarted.md)
 
-Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációit (metaadatokat, konfigurációkat és állapotokat) tárolják. A IoT Hub minden olyan eszközön megtartja a különálló eszközt, amely csatlakozik hozzá.
+Az ikrek olyan JSON-dokumentumok, amelyek az eszköz állapotával kapcsolatos információkat tárolnak, beleértve a metaadatokat, a konfigurációkat és a feltételeket. A IoT Hub minden olyan eszközön megtartja a különálló eszközt, amely csatlakozik hozzá.
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 
@@ -25,30 +25,34 @@ Az eszközökhöz tartozó ikrek használata:
 
 * Tárolja az eszköz metaadatait a megoldás hátterében.
 
-* A jelenlegi állapotadatok, például a rendelkezésre álló képességek és feltételek (például a használt kapcsolati módszer) jelentése az eszköz alkalmazásában.
+* A jelenlegi állapotinformációkat, például az elérhető képességeket és feltételeket jelenti, például a használt csatlakozási módszert az eszköz alkalmazásból.
 
-* Szinkronizálhatja a hosszan futó munkafolyamatok (például a belső vezérlőprogram és a konfigurációs frissítések) állapotát egy eszköz-alkalmazás és egy háttérbeli alkalmazás között.
+* Szinkronizálhatja a hosszan futó munkafolyamatok, például a belső vezérlőprogram és a konfigurációs frissítések állapotát egy eszköz-alkalmazás és egy háttérbeli alkalmazás között.
 
 * Az eszköz metaadatait, konfigurációját vagy állapotát kérdezheti le.
 
 Az eszközökhöz készült ikrek szinkronizálásra és az eszközök konfigurációjának és feltételeit kérdezik le. További információ az eszköz-ikrek használatáról: az [eszközök megismerése](../articles/iot-hub/iot-hub-devguide-device-twins.md).
 
-Az eszközök ikrek egy IoT-központban tárolódnak, és a következőket tartalmazzák:
+Az eszközök az ikrek egy IoT-központban tárolódnak, és az alábbi elemeket tartalmazzák:
 
-* *címkék*, az eszköz metaadatai csak a megoldás hátterében érhetők el;
+* **Címkék**. Az eszköz metaadatai csak a megoldás hátterében érhetők el.
 
-* a *kívánt tulajdonságok*, JSON-objektumok a megoldás háttérbeli és az eszköz alkalmazás által Megfigyelhető módon módosíthatók. és
+* **Kívánt tulajdonságok**. A megoldás háttérbe állításával és az eszköz alkalmazás által Megfigyelhető JSON-objektumok.
 
-* *jelentett tulajdonságok*, a JSON-objektumok az eszköz alkalmazás által módosítható, és a megoldás hátterében olvashatók. A címkék és a tulajdonságok nem tartalmazhatnak tömböket, az objektumok pedig ágyazhatók egymásba.
+* **Jelentett tulajdonságok**. Az eszköz alkalmazás által módosítható JSON-objektumok, amelyek a megoldás hátterében olvashatók.
+
+A címkék és a tulajdonságok nem tartalmazhatnak tömböket, az objektumok pedig ágyazhatók egymásba.
+
+Az alábbi ábrán az eszköz kettős szervezete látható:
 
 ![Eszköz különálló képe, amely funkcionalitást mutat](./media/iot-hub-selector-twin-get-started/twin.png)
 
 Emellett a megoldás háttérbe állítása az eszközökhöz tartozó ikreket is lekérdezheti az összes fenti adattal függően.
-További információ [](../articles/iot-hub/iot-hub-devguide-device-twins.md) az eszközökről az ikrekről, valamint a lekérdezési [IoT hub lekérdezési nyelvre](../articles/iot-hub/iot-hub-devguide-query-language.md) való hivatkozással kapcsolatban.
+További információ az eszközökről az ikrekről: az [eszközök megismerése](../articles/iot-hub/iot-hub-devguide-device-twins.md). A lekérdezéssel kapcsolatos további információkért lásd: [IoT hub lekérdezési nyelv](../articles/iot-hub/iot-hub-devguide-query-language.md).
 
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* Hozzon létre egy háttérbeli alkalmazást, amely *címkéket* tesz a Twin eszközhöz, valamint egy szimulált eszköz alkalmazást, amely a kapcsolati csatornát *jelentett tulajdonságként* jelenti a Twin eszközön.
+* Hozzon létre egy háttérbeli alkalmazást, amely címkéket tesz a Twin eszközhöz, valamint egy szimulált eszköz alkalmazást, amely a kapcsolati csatornát jelentett tulajdonságként jelenti a Twin eszközön.
 
 * A korábban létrehozott címkék és tulajdonságok szűrőinek használatával lekérdezheti a háttérbeli alkalmazásból származó eszközöket.

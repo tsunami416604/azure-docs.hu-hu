@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 21b046a54c2fbe309113222f54dbad4405fc409d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 530f38289afb3fce85bbb025e7b699862eedbadc
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136568"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382699"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Felügyelt Storage-fiók Azure Key Vault – PowerShell
 
@@ -40,7 +40,7 @@ A felügyelt Storage-fiók kulcsa funkció használata esetén:
 
 - **Csak Key Vault engedélyezése a Storage-fiók kulcsainak kezeléséhez.** Ne próbálja meg önállóan kezelni őket, mert az Key Vault folyamatait zavarja.
 - **Ne engedélyezze, hogy a Storage-fiókok kulcsai egynél több Key Vault objektummal felügyelhetők legyenek**.
-- **Ne végezze el manuálisan a Storage-fiók kulcsainak**újragenerálása. Javasoljuk, hogy Key Vault használatával újra létrehozza őket.
+- **Ne végezze el manuálisan a Storage-fiók kulcsainak újragenerálása**. Javasoljuk, hogy Key Vault használatával újra létrehozza őket.
 
 Az alábbi példa bemutatja, hogyan engedélyezheti Key Vault a Storage-fiók kulcsainak kezelését.
 
@@ -63,7 +63,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 > - Az Azure Government Cloud Azure AD-bérlői az alkalmazás `7e7c393b-45d0-48b1-a35e-2905ddf8183c`azonosítóját használják.
 > - Azure AD-bérlők az Azure nyilvános felhőben, az összes többi `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`pedig az alkalmazás azonosítóját használja.
 
-Mielőtt Key Vault a Storage-fiók kulcsainak elérését és kezelését, engedélyeznie kell a Storage-fiókjához való hozzáférését. A Key Vault alkalmazásnak engedélyekkel kell rendelkeznie a Storage-fiók kulcsainak listázásához és *újbóli létrehozásához* . Ezek az engedélyek engedélyezve vannak a beépített RBAC szerepkör- [kezelő szolgáltatás](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)szerepkörrel. 
+Mielőtt Key Vault a Storage-fiók kulcsainak elérését és kezelését, engedélyeznie kell a Storage-fiókjához való hozzáférését. A Key Vault alkalmazásnak engedélyekkel kell rendelkeznie a Storage-fiók kulcsainak *listázásához* és *újbóli létrehozásához* . Ezek az engedélyek engedélyezve vannak a beépített RBAC szerepkör- [kezelő szolgáltatás](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)szerepkörrel. 
 
 Rendelje hozzá ezt a szerepkört az Key Vault egyszerű szolgáltatáshoz, és korlátozza a hatókört a Storage-fiókra az alábbi lépések segítségével. A (z), `$resourceGroupName`, `$storageAccountName`és `$storageAccountKey` `$keyVaultName` változókat a parancsfájl futtatása előtt frissítse:
 
@@ -111,7 +111,7 @@ Ugyanazzal a PowerShell-munkamenettel frissítse a felügyelt Storage-fiókok Ke
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
 
-Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -PermissionsToStorage get, list, delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, recover, backup, restore, purge
 ```
 
 Vegye figyelembe, hogy a Storage-fiókokra vonatkozó engedélyek nem érhetők el a Azure Portal "hozzáférési szabályzatok" lapján.

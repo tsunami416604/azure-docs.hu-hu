@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: gwallace
-ms.openlocfilehash: 251fd8ec3708ed154e12b0511be24eb776a48fbf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: bbeaacd4c7028905e279dd5dc421414f4eafae54
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359081"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306758"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Node. js csevegési alkalmazás létrehozása Azure Cloud Service-Socket.IO
 
@@ -53,16 +53,16 @@ A következő lépésekkel hozza létre a Cloud Service-projektet, amely a Socke
     ![A New-azureservice és a Add-azurenodeworkerrolecmdlets kimenete](./media/cloud-services-nodejs-chat-app-socketio/socketio-1.png)
 
 ## <a name="download-the-chat-example"></a>A csevegési példa letöltése
-Ebben a projektben a csevegés példáját fogjuk használni a [Socket.IO GitHub-adattár]-adattárból. A példa letöltéséhez és a korábban létrehozott projekthez való hozzáadásához hajtsa végre a következő lépéseket.
+Ebben a projektben a csevegés példáját fogjuk használni a [Socket.IO GitHub-adattár]. A példa letöltéséhez és a korábban létrehozott projekthez való hozzáadásához hajtsa végre a következő lépéseket.
 
 1. Hozzon létre egy helyi másolatot a tárházból a **klónozás** gomb használatával. A projekt letöltéséhez használhatja a **zip** gombot is.
    
    ![A böngészőablakban megtekinthető https://github.com/LearnBoost/socket.io/tree/master/examples/chat zip-Letöltés ikon kiemelve](./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png)
-2. Navigáljon a helyi tárház címtár-struktúrájához, amíg meg nem érkezik a **\\példákat** tartalmazó csevegési könyvtárba. Másolja a könyvtár tartalmát a **C:\\\\Node chatapp\\WorkerRole1** könyvtárba, amelyet korábban hozott létre.
+2. Navigáljon a helyi tárház címtár-struktúrájához, amíg meg nem érkezik a **\\példákat tartalmazó csevegési** könyvtárba. Másolja a könyvtár tartalmát a **C:\\\\Node chatapp\\WorkerRole1** könyvtárba, amelyet korábban hozott létre.
    
    ![Explorer – az archívumból kinyert\\példákat tartalmazó csevegő könyvtár tartalmának megjelenítése][chat-contents]
    
-   A fenti képernyőképen szereplő Kiemelt elemek a **\\példákat** tartalmazó csevegési könyvtárból másolt fájlok.
+   A fenti képernyőképen szereplő Kiemelt elemek a **\\példákat tartalmazó csevegési** könyvtárból másolt fájlok.
 3. A **C:\\Node\\chatapp\\WorkerRole1** könyvtárban törölje a **Server. js** fájlt, majd nevezze át az **app. js** fájlt a **Server. js**fájlba. Ezzel eltávolítja az **Add-AzureNodeWorkerRole** parancsmag által korábban létrehozott alapértelmezett **Server. js** fájlt, és lecseréli azt a csevegési példa alkalmazás fájljára.
 
 ### <a name="modify-serverjs-and-install-modules"></a>A Server. js és a install modulok módosítása
@@ -144,7 +144,7 @@ Az alkalmazás mostantól fut az Azure-ban, és a csevegési üzeneteket tovább
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy Azure Cloud Service-ben üzemeltetett alapszintű csevegési alkalmazást. Az alkalmazás Azure-webhelyen való üzemeltetésével kapcsolatos további információkért lásd: [Node. js csevegési alkalmazás létrehozása az socket.IO-mel egy Azure][chatwebsite]-webhelyen.
 
-További információ: a [Node. js fejlesztői központ](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)is.
+További információ: a [Node. js fejlesztői központ](https://docs.microsoft.com/azure/javascript/)is.
 
 [chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
 

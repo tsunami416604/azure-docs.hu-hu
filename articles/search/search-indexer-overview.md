@@ -8,16 +8,16 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: af01b6127a8a3e20edfac19ce3b54cecb9d561d1
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e50d88181a27dcc46da858f220404eb09ad9b4bd
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640590"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308975"
 ---
 # <a name="indexers-in-azure-search"></a>Indexelők az Azure Search szolgáltatásban
 
-A Azure Search indexelő egy olyan webbejáró, amely egy külső Azure-adatforrásból Kinyeri a kereshető adatokat és metaadatokat, és az index és az adatforrás közötti mező – mező leképezések alapján tölti fel az indexet. Ezt a módszert más néven "lekéréses modellnek" is nevezzük, mert a szolgáltatás olyan kódot kér le, amely nem rendelkezik olyan kóddal, amely az adott indexbe felveszi az adattípust.
+A Azure Search *Indexelő* egy olyan webbejáró, amely egy külső Azure-adatforrásból Kinyeri a kereshető adatokat és metaadatokat, és az index és az adatforrás közötti mező – mező leképezések alapján tölti fel az indexet. Ezt a módszert más néven "lekéréses modellnek" is nevezzük, mert a szolgáltatás olyan kódot kér le, amely nem rendelkezik olyan kóddal, amely az adott indexbe felveszi az adattípust.
 
 Az indexelő az adatforrások típusain vagy platformokon alapulnak, és az Azure-ban, a Cosmos db, az Azure Table Storage és a blob Storage SQL Server indexelő egyedi indexekkel rendelkeznek. A blob Storage-indexelő a blob tartalomtípusokhoz tartozó további tulajdonságokkal rendelkeznek.
 
@@ -48,17 +48,13 @@ Az indexelő adattárakat térképez fel az Azure-ban.
 * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md) 
-
-> [!Note]
-> Az Azure Table Storage a [kognitív keresések](cognitive-search-concept-intro.md)esetében nem támogatott.
->
+* [Azure Table Storage](search-howto-indexing-azure-tables.md)
 
 ## <a name="basic-configuration-steps"></a>Alapszintű konfigurációs lépések
 Az indexelők az adott adatforrások esetében egyedi funkciókat biztosítanak. Ezért az indexelő- vagy az adatforrás-konfiguráció egyes szempontjai az indexelő típusától függően változnak. Az alapvető felépítés és követelmények azonban minden indexelő esetében azonosak. Az alábbiakban az összes indexelőre érvényes lépések láthatóak.
 
 ### <a name="step-1-create-a-data-source"></a>1\. lépés: Adatforrás létrehozása
-Az indexelő beolvassa az adatforrás-kapcsolatokat egy adatforrás-objektumból. Az adatforrás-definíció egy kapcsolati karakterláncot és esetleg hitelesítő adatokat biztosít. Az erőforrás létrehozásához hívja meg a [create datasource](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API vagy az [DataSource osztályt](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) .
+Az indexelő beolvassa az adatforrás-kapcsolatokat *egy adatforrás-objektumból* . Az adatforrás-definíció egy kapcsolati karakterláncot és esetleg hitelesítő adatokat biztosít. Az erőforrás létrehozásához hívja meg a [create datasource](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API vagy az [DataSource osztályt](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) .
 
 Az adatforrások konfigurálása és kezelése az azokat használó indexelőktől függetlenül történik, ami azt jelenti, hogy egy adatforrást több indexelő is használhat egyidejűleg, egynél több index betöltésére.
 
@@ -89,7 +85,7 @@ Az indexelő állapotát a portálon vagy az indexelő status API-n keresztül k
 
 ## <a name="get-indexer-status"></a>Indexelő állapotának beolvasása
 
-Az indexelő állapotának és végrehajtásának előzményeit az indexelő állapotának lekérése [paranccsal](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)kérheti le:
+Az indexelő állapotának és végrehajtásának előzményeit az [Indexelő állapotának lekérése paranccsal](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)kérheti le:
 
 
     GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: c76dfea83d0f736dbd48239cc3be3496a88ec8a2
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 54d5dc35cf230b62cbe5f8c3cb4a1dc81eccf1e3
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242995"
+ms.locfileid: "70307248"
 ---
 # <a name="use-powershell-to-create-a-data-share-in-azure"></a>Adatmegosztás létrehozása az Azure-ban a PowerShell használatával
 
@@ -41,7 +41,7 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új – AzDataShare](/powershell/module/az.resources/new-azdatashare) | Létrehoz egy adatmegosztást. |
+| [Új – AzDataShare](/powershell/module/az.datashare/new-azdatashare?view=azps-2.6.0) | Létrehoz egy adatmegosztást. |
 |||
 
 ## <a name="next-steps"></a>További lépések

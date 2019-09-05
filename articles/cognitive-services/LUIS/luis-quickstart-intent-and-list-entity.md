@@ -1,5 +1,5 @@
 ---
-title: Pontos szöveges egyezés – LUIS
+title: 'Oktatóanyag: Pontos szöveges egyezés – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Elemek előre meghatározott listájával egyező adatok lekérése. A lista minden elemének lehetnek pontosan megegyező szinonimái
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: a5aeeb74d26ce633beb0e9feef20a2315bc0ff1d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 25882f2aaa5d32dfb594d5f8fdb9cdc46f2ad958
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560403"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307615"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Oktatóanyag: Pontos szöveggel egyező adatok beolvasása a teljes használatból
 
@@ -169,7 +169,7 @@ Az egyes elemek elsődleges, _kanonikus_és neve a részleg neve. Az egyes kanon
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-* [Entitás](luis-concept-entity-types.md#list-entity) fogalmi információinak listázása
+* Entitás fogalmi információinak [listázása](luis-concept-entity-types.md#list-entity)
 * [Betanítás](luis-how-to-train.md)
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
 * [Tesztelés a LUIS portálon](luis-interactive-test.md)

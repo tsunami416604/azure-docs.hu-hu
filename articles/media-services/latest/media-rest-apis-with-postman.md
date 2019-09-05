@@ -1,6 +1,6 @@
 ---
-title: Postman konfigurálása az Azure Media Services REST API-hívások
-description: Ismerje meg, a Media Services REST API-hívások a Postman konfigurálása.
+title: Poster konfigurálása Azure Media Services REST API hívásokhoz
+description: Megtudhatja, hogyan konfigurálhatja a Poster-t Media Services REST API-hívásokhoz.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,26 +13,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2019
 ms.author: juliako
-ms.openlocfilehash: a2171ff8a4354a59ec2f790f9bf38b7a687419ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d25596884acdb356779eafa4348240239855ce37
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60322549"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308452"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>A Media Services REST API-hívások a Postman konfigurálása
+# <a name="configure-postman-for-media-services-rest-api-calls"></a>Poster konfigurálása Media Services REST API hívásokhoz
 
-Ez a cikk bemutatja, hogyan konfigurálhatja **Postman** így is használható az Azure Media Services (AMS) REST API-k meghívására. A cikk bemutatja, hogyan környezet és a gyűjtemény fájlok importálását **Postman**. A gyűjtemény, amely az Azure Media Services (AMS) REST API-k hívása a HTTP-kérések csoportosított definíciókat tartalmazza. A környezeti változókat, amelyek a gyűjteményt tartalmaz.
+Ez a cikk bemutatja, hogyan konfigurálhatja a **Poster** -t, hogy felhasználható legyen Azure Media Services (AMS) REST API-k meghívására. A cikk bemutatja, hogyan importálhatja a környezet és a gyűjtemény fájljait a **Poster**-ba. A gyűjtemény a Azure Media Services (AMS) REST API-kat meghívó HTTP-kérések csoportosított definícióit tartalmazza. A környezeti fájl a gyűjtemény által használt változókat tartalmazza.
 
-Fejlesztés megkezdése előtt tekintse át a [fejlesztés a Media Services v3 API-k](media-services-apis-overview.md).
+A fejlesztés megkezdése előtt tekintse át [Media Services V3 API-k fejlesztését](media-services-apis-overview.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [A Media Services-fiók létrehozása](create-account-cli-how-to.md). Ellenőrizze, hogy ne felejtse el az erőforráscsoport nevét és a Media Services-fiók nevét. 
-- Szükséges információk [API-k elérése](access-api-cli-how-to.md)
+- Az API-k [eléréséhez](access-api-cli-how-to.md) szükséges információk beolvasása
 - Telepítse a [Postman](https://www.getpostman.com/) REST-ügyfelet, hogy végrehajtsa az AMS REST oktatóanyagok egy részében látható REST API-kat. 
 
-    A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Egyéb választható lehetőségek: **A Visual Studio Code** az REST beépülő modullal vagy **Telerik Fiddler**. 
+    A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Egyéb választható lehetőségek: **Visual Studio Code** a REST beépülő modullal vagy **Telerik Hegedűs**. 
+
+> [!IMPORTANT]
+> Tekintse át az [elnevezési konvenciókat](media-services-apis-overview.md#naming-conventions).
 
 ## <a name="download-postman-files"></a>Postman-fájlok letöltése
 
@@ -59,7 +62,7 @@ Ebben a szakaszban konfiguráljuk a Postmant.
     > [!Note]
     > Frissítse a hozzáférési változókat a fenti **Hozzáférés a Media Services API-hoz** szakaszban található értékekkel.
 
-7. Kattintson duplán a kiválasztott fájlra, és adja meg az értékeket, a hozzáférés API szakasz lépéseit követve.
+7. Kattintson duplán a kiválasztott fájlra, és adja meg azokat az értékeket, amelyeket az API-k elérésére vonatkozó lépések követésével kapott.
 8. Zárja be a párbeszédpanelt.
 9. Válassza az **Azure Media Service v3 Environment** környezetet a legördülő menüből.
 
@@ -75,9 +78,9 @@ Ebben a szakaszban konfiguráljuk a Postmant.
 
 ## <a name="get-azure-ad-token"></a>Azure AD-jogkivonat lekérése 
 
-Mielőtt elkezdené az AMS v3 erőforrások kezelésére szolgáló, és állítsa be a tokent az Azure-AD a szolgáltatásnév hitelesítési szüksége.
+Az AMS v3-erőforrások kezelésének megkezdése előtt be kell szereznie és be kell állítania az Azure AD-tokent az egyszerű szolgáltatásnév hitelesítéséhez.
 
-1. A Postman a bal oldali ablakban válassza ki az "1. lépés: AAD-hitelesítési token beszerzése".
+1. A Poster bal oldali ablakában válassza az "1. lépés: HRE-hitelesítési jogkivonat beszerzése ".
 2. Ezután válassza az „Get Azure AD Token for Service Principal Authentication” (Azure AD-jogkivonat lekérése egyszerű szolgáltatásnév hitelesítéséhez) lehetőséget.
 3. Kattintson a **Küldés** gombra.
 
@@ -93,11 +96,11 @@ Mielőtt elkezdené az AMS v3 erőforrások kezelésére szolgáló, és állít
 
 ## <a name="see-also"></a>Lásd még
 
-- [Fájlok feltöltése Media Services-fiók – REST](upload-files-rest-how-to.md)
-- [Szűrők létrehozása a Media Services – REST](filters-dynamic-manifest-rest-howto.md)
+- [Fájlok feltöltése egy Media Services fiókba – REST](upload-files-rest-how-to.md)
+- [Szűrők létrehozása Media Services-REST használatával](filters-dynamic-manifest-rest-howto.md)
 - [Azure Resource Manager-alapú REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
 
 ## <a name="next-steps"></a>További lépések
 
-- [REST-tel fájlok Stream](stream-files-tutorial-with-rest.md).  
+- [Adatfolyam-fájlok a REST](stream-files-tutorial-with-rest.md)-tel.  
 - [Oktatóanyag: Távoli fájl kódolása URL-cím alapján és videó streamelése – REST](stream-files-tutorial-with-rest.md)

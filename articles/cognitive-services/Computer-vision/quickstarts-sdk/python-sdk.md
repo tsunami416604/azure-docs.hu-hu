@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/17/2019
+ms.date: 09/03/2019
 ms.author: pafarley
-ms.openlocfilehash: c03568ece97bdaad86f4564debf9f3b2fa14c6ed
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: bc42edc3e97aa68c5fe9d2b3162913e8925df4ee
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67786651"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375660"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Azure Cognitive Services Computer Vision SDK a Pythonhoz
 
@@ -42,7 +42,7 @@ További dokumentációt keres?
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>Ha nem rendelkezik Azure-előfizetéssel
 
-Hozzon létre egy 7 napig érvényes ingyenes kulcsot a **[][computervision_resource]** Computer Vision szolgáltatáshoz tartozó kipróbálási élményben. A kulcs létrehozásakor másolja a kulcs és a végpont nevét. Erre szüksége lesz a- [ügyfél létrehozásához](#create-client).
+Hozzon létre egy 7 napig érvényes ingyenes kulcsot a Computer Vision szolgáltatáshoz tartozó **[kipróbálási][computervision_resource]** élményben. A kulcs létrehozásakor másolja a kulcs és a végpont nevét. Erre szüksége lesz a- [ügyfél létrehozásához](#create-client).
 
 A kulcs létrehozása után tartsa meg a következőket:
 
@@ -92,7 +92,7 @@ pip install azure-cognitiveservices-vision-computervision
 
 ## <a name="authentication"></a>Authentication
 
-Miután létrehozta a Computer Vision erőforrást, szüksége lesza végpontra, és az egyik **fiókjának kulcsát** az ügyfél-objektum létrehozásához.
+Miután létrehozta a Computer Vision erőforrást, szüksége lesz a **végpontra**, és az egyik **fiókjának kulcsát** az ügyfél-objektum létrehozásához.
 
 Ezeket az értékeket akkor használja, ha létrehozza a [ComputerVisionClient][ref_computervisionclient] -ügyfél objektumának példányát.
 
@@ -105,7 +105,7 @@ ACCT_NAME=<computervision-account-name>
 
 ### <a name="for-azure-subscription-users-get-credentials-for-key-and-endpoint"></a>Azure-előfizetéssel rendelkező felhasználók számára a kulcs és a végpont hitelesítő adatainak beolvasása
 
-Ha nem emlékszik a végpontra és a kulcsra, a következő módszer segítségével keresheti meg őket. Ha kulcsot és végpontot kell létrehoznia, használhatja az Azure-előfizetések [tulajdonosait](#if-you-have-an-azure-subscription) , illetve az Azure-előfizetést [nem használó felhasználókra](#if-you-dont-have-an-azure-subscription)vonatkozó módszert.
+Ha nem emlékszik a végpontra és a kulcsra, a következő módszer segítségével keresheti meg őket. Ha kulcsot és végpontot kell létrehoznia, használhatja az [Azure-előfizetések tulajdonosait](#if-you-have-an-azure-subscription) , illetve az [Azure-előfizetést nem használó felhasználókra](#if-you-dont-have-an-azure-subscription)vonatkozó módszert.
 
 Az alábbi [Azure CLI][cloud_shell] -kódrészlettel két környezeti változót tölthet fel a Computer Vision fiók **végpontja** és az egyik **kulcsa** alapján (ezeket az értékeket is megtalálhatja a [Azure Portal][azure_portal]). A kódrészlet a bash-rendszerhéjhoz van formázva.
 
@@ -255,7 +255,7 @@ if result.status == TextOperationStatusCodes.succeeded:
 
 Létrehozhat egy képet tartalmazó miniatűrt (JPG) a [`generate_thumbnail`][ref_computervisionclient_generate_thumbnail]következővel:. A miniatűrnek nem kell azonos arányban lennie az eredeti képpel.
 
-Telepítse a párnát a példa használatára:
+Telepítse a **párnát** a példa használatára:
 
 ```bash
 pip install Pillow

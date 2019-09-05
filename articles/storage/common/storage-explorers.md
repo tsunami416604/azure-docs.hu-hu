@@ -1,20 +1,20 @@
 ---
-title: Az Azure Storage használatának eszközei | Microsoft Docs
+title: Az Azure Storage használatának eszközei
 description: Az Azure Storage-adatai megtekintését és kezelését lehetővé tevő eszközök listája.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 08/26/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 14cbc076f4c9eebd2647cd667acc856b393e4d93
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
-ms.translationtype: HT
+ms.openlocfilehash: 11838a50d70d1b9a0216505e9ef0958d3b18bdac
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68665739"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035267"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage-ügyféleszközök
 Az Azure Storage-felhasználók gyakran szeretnék megtekinteni/használni az adataikat az Azure Storage-ügyfélprogram használatával. Az alábbi táblázatokban számos eszközt listázunk, amelyek lehetővé teszik ezt. Minden blokkban "X"-et helyezünk el, ha az adatabsztrakció enumerálását és/vagy elérését teszi lehetővé. A táblázat azt is megjeleníti, hogy az eszközök ingyenesek-e. A "próbaverzió" kifejezés azt jelzi, hogy az ingyenes próbaverzió, de a teljes termék nem ingyenes. Az "i/N" érték azt jelzi, hogy egy verzió ingyenesen elérhető, míg a vásárláshoz egy másik verzió érhető el.
@@ -116,20 +116,6 @@ Nem ellenőrizte, hogy a következő harmadik féltől származó eszközök mil
     <td>X</td>
     <td>X</td>
     <td>Próba</td>
-    <td></td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">RedGate Azure Explorer</a></td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>I</td>
     <td></td>
     <td>X</td>
     <td></td>

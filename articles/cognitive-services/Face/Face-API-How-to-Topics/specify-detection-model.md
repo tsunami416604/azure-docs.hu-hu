@@ -1,7 +1,7 @@
 ---
-title: A modell – Face API megadása
+title: Észlelési modell meghatározása – Face API
 titleSuffix: Azure Cognitive Services
-description: Ebből a cikkből megtudhatja, mely face modell használata az Azure Face API-alkalmazás kiválasztása.
+description: Ez a cikk bemutatja, hogyan választhatja ki, hogy melyik Arcfelismerés modellt használja az Azure Face API alkalmazásához.
 services: cognitive-services
 author: yluiu
 manager: nitinme
@@ -10,55 +10,55 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: 26ab3cb247309aa21791ca5a984f39ef40ce9a78
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 4306a918d56240bfe038100124b3c2b94964cebc
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249633"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306685"
 ---
 # <a name="specify-a-face-detection-model"></a>Arcfelismerési modell megadása
 
-Ez az útmutató bemutatja, hogyan kell megadnia a face modell az Azure Face API-t.
+Ez az útmutató bemutatja, hogyan határozhatja meg az Azure-Face API Arcfelismerés modelljét.
 
-A Face API használja a machine learning-modellek műveletek végrehajtása az emberi arcok a képeken. A felhasználói visszajelzések és a kutatási fejlődésére alapuló modellek pontossága fejlesztésével, és ezek a fejlesztések adatmodell-frissítéseket, tudunk. A fejlesztők adja meg, a face modell melyik verzióját szeretnék használni, lehetősége van. a modell, amely legjobban megfelel a kérjünk a használat kiválaszthatnak.
+A Face API gépi tanulási modelleket használ a képeken található emberi arcokon végzett műveletek végrehajtásához. Folyamatosan fejlesztjük modelljeink pontosságát az ügyfelek visszajelzései és a kutatás előrehaladása alapján, és ezeket a fejlesztéseket a modell frissítéseiként tesszük elérhetővé. A fejlesztők megadhatják, hogy az Arcfelismerés modell melyik verzióját szeretné használni; kiválaszthatják azt a modellt, amelyik a legjobban megfelel a használati esetnek.
 
-Látogasson el lapunkra megtudhatja, hogyan adja meg a face modell bizonyos face műveletek. A Face API használja az arcfelismerés, amikor egy ARC képe alakítja más valamilyen, az adatok.
+Olvassa el, hogy megtudja, hogyan határozhatja meg az Arcfelismerés modellt bizonyos Face műveletekben. A Face API Arcfelismerés, ha egy arc képét valamilyen más formában alakítja át.
 
-Ha nem tudja, hogy a legújabb modellre kell használni, ugorjon a [különböző modell kiértékelése](#evaluate-different-models) szakasz az új modell értékelése és az aktuális adatok használatával eredmények összehasonlítása.
+Ha nem biztos abban, hogy a legújabb modellt használja, ugorjon a [különböző modellek kiértékelése](#evaluate-different-models) szakaszra az új modell kiértékeléséhez és az eredmények összehasonlításához a jelenlegi adatkészlettel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mesterséges Intelligencia arcfelismerés jelentésével ismernie kell. Ha nem, tekintse meg az arcok észlelése fogalmi útmutató vagy útmutatója:
+Ismernie kell a mesterséges intelligencia Arcfelismerés fogalmát. Ha nem, tekintse meg az Arcfelismerés fogalmi útmutatóját vagy útmutatóját:
 
-* [Arcok észlelése fogalmak](../concepts/face-detection.md)
-* [A kép arcok észlelése](HowtoDetectFacesinImage.md)
+* [Arcfelismerés – fogalmak](../concepts/face-detection.md)
+* [Arcok észlelése egy képben](HowtoDetectFacesinImage.md)
 
-## <a name="detect-faces-with-specified-model"></a>A megadott modell arcok észlelése
+## <a name="detect-faces-with-specified-model"></a>A megadott modellel rendelkező arcok észlelése
 
-Arcfelismerés megkeresi az emberi arcok határolókeret helyét, és azonosítja a vizuális arcrész. Kinyeri az arcfelismerési funkciókat, és a tárolja őket a későbbi használatra [felismerés](../concepts/face-recognition.md) műveleteket.
+Az Arcfelismerés megkeresi az emberi arcok határos helyét, és azonosítja a vizuális tereptárgyait. Kibontja az arc funkcióit, és a későbbi használat érdekében tárolja azokat az [elismerési](../concepts/face-recognition.md) műveletekben.
 
-Használatakor a [A Face – észlelése] API-hoz, hozzárendelhet a modell a következőt a `detectionModel` paraméter. Az elérhető értékek a következők:
+Az [Szembenézés észlelése] API használatakor a modell verzióját `detectionModel` hozzárendelheti a (z) paraméterrel. Az elérhető értékek a következők:
 
 * `detection_01`
 * `detection_02`
 
-A kérelem URL-CÍMÉT a [A Face – észlelése] REST API-t fog kinézni:
+Az [Szembenézés észlelése] Rest APIhoz tartozó kérelem URL-címe a következőképpen fog kinézni:
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]&subscription-key=<Subscription key>`
 
-Az ügyféloldali kódtárat használja, ha az érték rendelhet `detectionModel` ad egy megfelelő karakterláncot. Ha meghagyja a hozzá nem rendelt, az API-t fogja használni az alapértelmezett modellverziója (`detection_01`). Tekintse meg a következő mintakód a .NET ügyféloldali kódtár.
+Ha az ügyféloldali függvénytárat használja, a értékét `detectionModel` a megfelelő sztring átadásával rendelheti hozzá. Ha nem törli a hozzárendelést, az API az alapértelmezett modell (`detection_01`) verziót fogja használni. Tekintse meg a .NET-ügyfél függvénytárának következő kódrészletét.
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_02", detectionModel: "detection_02");
 ```
 
-## <a name="add-face-to-person-with-specified-model"></a>Face személy megadott modell hozzáadása
+## <a name="add-face-to-person-with-specified-model"></a>Arc hozzáadása a megadott modellel rendelkező személyhez
 
-A Face API face adatok kinyerése egy képet, és társítsa azt egy **személy** keresztül objektum a [is lehet PersonGroup személy – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API-t. Az API-hívás, megadhatja a modell ugyanúgy, mint a [A Face – észlelése].
+A Face API képes kinyerni az arc adatait egy képből, és társíthatja azt egy **személy** objektumhoz a [PersonGroup-Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API használatával. Ebben az API-hívásban megadhatja az észlelési modellt ugyanúgy, mint az [Szembenézés észlelése].
 
-Tekintse meg a következő mintakód a .NET ügyféloldali kódtár.
+Tekintse meg a .NET-ügyfél függvénytárának következő kódrészletét.
 
 ```csharp
 // Create a PersonGroup and add a person with face detected by "detection_02" model
@@ -71,14 +71,14 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
 ```
 
-Ez a kód létrehoz egy **is lehet PersonGroup** azonosítójú `mypersongroupid` , és hozzáadja egy **személy** rá. Majd hozzáadja a egy oldallal a **személy** használatával a `detection_02` modell. Ha nem adja meg a *detectionModel* paramétert, az API-t fogja használni az alapértelmezett modellt `detection_01`.
+Ez a kód egy azonosítóval `mypersongroupid` rendelkező PersonGroup hoz létre, és egy **személyt** helyez el hozzá. Ezután hozzáadja az adott **személyt** a `detection_02` modell használatával. Ha nem ad meg *detectionModel* paramétert, az API az alapértelmezett modellt `detection_01`fogja használni.
 
 > [!NOTE]
-> Nem kell az azonos modell használata az összes arcok egy **személy** objektum, és nem kell használnia az ugyanazon modell új arcok észlelése összehasonlítandó egy **személy** objektum (az a [Face - Identify] API-t, a példában).
+> Nem kell ugyanazt az észlelési modellt használnia egy **személy** objektum összes arcához, és nem kell ugyanazt az észlelési modellt használnia, amikor az új arcok észlelésével összehasonlítja a **személy** objektummal (például a [Face - Identify] API-val).
 
-## <a name="add-face-to-facelist-with-specified-model"></a>A megadott modell FaceList face hozzáadása
+## <a name="add-face-to-facelist-with-specified-model"></a>Arc hozzáadása a FaceList a megadott modellel
 
-Azt is beállíthatja a modell egy ARC hozzáadásakor egy meglévő **FaceList** objektum. Tekintse meg a következő mintakód a .NET ügyféloldali kódtár.
+Az észlelési modellt is megadhatja, ha egy meglévő **FaceList** -objektumhoz ad hozzá egy arcot. Tekintse meg a .NET-ügyfél függvénytárának következő kódrészletét.
 
 ```csharp
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
@@ -87,31 +87,32 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
 ```
 
-Ez a kód létrehoz egy **FaceList** nevű `My face collection` , és hozzáadja azt egy ARC a `detection_02` modell. Ha nem adja meg a *detectionModel* paramétert, az API-t fogja használni az alapértelmezett modellt `detection_01`.
+Ez a kód létrehoz egy nevű `My face collection` FaceList, és hozzáadja `detection_02` a modellt a modellhez. Ha nem ad meg *detectionModel* paramétert, az API az alapértelmezett modellt `detection_01`fogja használni.
 
 > [!NOTE]
-> Nem kell az azonos modell használata az összes arcok egy **FaceList** objektum, és nem kell használnia az ugyanazon modell új arcok észlelése összehasonlítandó egy **FaceList** objektum.
+> Nem kell ugyanazt az észlelési modellt használnia egy **FaceList** objektum összes arcához, és nem kell ugyanazt az észlelési modellt használnia, amikor a **FaceList** objektummal összehasonlítandó új arcokat észlel.
 
-## <a name="evaluate-different-models"></a>Különböző modell értékelése
+## <a name="evaluate-different-models"></a>Különböző modellek kiértékelése
 
-A különböző arcok észlelése modellek különböző feladatok vannak optimalizálva. Tekintse meg az alábbi táblázat a különbségeket áttekintését.
+A különböző Arcfelismerés modellek különböző feladatokra vannak optimalizálva. A különbségek áttekintését a következő táblázat tartalmazza.
 
 |**detection_01**  |**detection_02**  |
 |---------|---------|
-|Alapértelmezett választás az összes arcok észlelése művelet. | Kiadás dátuma: 2019. május, és szükség esetén minden arcok észlelése művelet érhető el.
-|Nem optimalizált kicsi, oldalnézet vagy határozatlan arcokat.  | A kisméretű, oldalnézet és határvonalú arcok pontosság jobb legyen. |
-|Értéket ad eredményül, ha azok van megadva, a hibakeresés hívás az a attribútumok (fő testtartás, kor, érzelem és így tovább) face. |  Olyan tulajdonságok nem ad vissza.     |
-|Értéket ad eredményül, ha azok van megadva, a hibakeresés hívás az a arcrész face.   | Arcrészek nem ad vissza.  |
+|Alapértelmezett választás az összes Arcfelismerés művelethez. | Május 2019-ben jelent meg, és opcionálisan elérhető az összes Arcfelismerés műveletben.
+|Kisméretű, oldalnézet vagy elmosódott arcokat nem optimalizált.  | Nagyobb pontosság a kis, az oldalsó és a homályos arcokon. |
+|Arc-attribútumokat ad vissza (fej, kor, érzelem stb.), ha az észlelési hívásban van megadva. |  Nem ad vissza arc-attribútumokat.     |
+|Arc tereptárgyak visszaadása, ha meg vannak adva az észlelési hívásban.   | Nem tér vissza az arcokhoz tartozó tereptárgyak.  |
 
-A legjobb módszer annak teljesítményét összehasonlítása a `detection_01` és `detection_02` modelleket, hogy a minta adatkészlet használni őket. Azt javasoljuk, hogy hívása a [A Face – észlelése] API a lemezképek különböző különösen lemezképek rendezésére vagy az arcokat, nehezen látható, minden egyes modell használatával. Minden modell visszaadó arcok száma figyelmet fordítania.
+A `detection_01` és`detection_02` a modellek teljesítményének összehasonlítására a legjobb módszer, ha egy minta adatkészleten használják őket. Azt javasoljuk, hogy az egyes észlelési modellek használatával különböző rendszerképeken hívja meg az [Szembenézés észlelése] t, különösen a sok arc vagy olyan arc képeit, amelyek nehezen láthatók. Ügyeljen arra, hogy hány arcot ad vissza az egyes modellek.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan, adja meg a modell különböző Arcfelismerési API-k használata. Ezután kövesse a gyors üzembe helyezés arcfelismerés használatának megkezdéséhez.
+Ebben a cikkben megtanulta, hogyan határozhatja meg a különböző Face API-kkal használandó észlelési modellt. Ezután kövessen egy rövid útmutatót a Arcfelismerés használatának megkezdéséhez.
 
-* [Arcfelismerés képen egy (.NET SDK-val)](../quickstarts/csharp-detect-sdk.md)
+* [Face .NET SDK](../Quickstarts/csharp-sdk.md)
+* [Face Python SDK](../Quickstarts/python-sdk.md)
 
-[A Face – észlelése]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
+[Szembenézés észlelése]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237
 [Face - Identify]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239
 [Face - Verify]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a

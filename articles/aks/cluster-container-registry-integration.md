@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: mlearned
-ms.openlocfilehash: 1f07581be8fc416f8aae5eec1460ca3d33bda8f9
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 3c11367945b74db9be20ade86c7bc26901440e4d
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114236"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305166"
 ---
 # <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Előzetes verzió – hitelesítés a Azure Container Registry az Azure Kubernetes Service-ben
 
@@ -31,13 +31,13 @@ Beállíthatja az AK-t az ACR-integrációra néhány egyszerű parancsban az Az
 
 A következőkkel kell rendelkeznie:
 
-* Az **Azure** -előfizetéshez tartozó tulajdonosi vagy **Azure-fiók rendszergazdai** szerepköre
+* Az **Azure-előfizetéshez** tartozó **tulajdonosi** vagy **Azure-fiók rendszergazdai** szerepköre
 * Szüksége lesz az Azure CLI 2.0.70 vagy újabb verziójára, valamint az AK-előnézet 0.4.8-bővítményre
 * Szüksége van az ügyfélre [telepített Docker](https://docs.docker.com/install/) -ra, és hozzá kell férnie a [Docker hub](https://hub.docker.com/) -hoz
 
 ## <a name="install-latest-aks-cli-preview-extension"></a>A legújabb AK CLI előnézet bővítmény telepítése
 
-Szüksége lesz az **AK-előnézet 0.4.8-** bővítményre vagy újabb verzióra.
+Szüksége lesz az **AK-előnézet 0.4.13-** bővítményre vagy újabb verzióra.
 
 ```azurecli
 az extension remove --name aks-preview 
@@ -46,25 +46,33 @@ az extension add -y --name aks-preview
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Új AK-fürt létrehozása ACR-integrációval
 
-Itt állíthatja be az AK-t és az ACR-integrációt az AK-fürt kezdeti létrehozása során.  Annak engedélyezéséhez, hogy egy AK-fürt együttműködjön az ACR-szel, egy Azure Active Directory **egyszerű szolgáltatásnevet** használ. A következő CLI-parancs létrehoz egy ACR-t az Ön által megadott erőforráscsoporthoz, és konfigurálja az egyszerű szolgáltatásnév megfelelő **ACRPull** -szerepkörét. Ha az *ACR-Name* nem létezik az Ön által megadott erőforráscsoporthoz, automatikusan létrejön egy alapértelmezett ACR- `aks<resource-group>acr` név.  Adja meg az alábbi paraméterek érvényes értékeit.  A szögletes zárójelek paraméterei nem kötelezőek.
+Itt állíthatja be az AK-t és az ACR-integrációt az AK-fürt kezdeti létrehozása során.  Annak engedélyezéséhez, hogy egy AK-fürt együttműködjön az ACR-szel, egy Azure Active Directory **egyszerű szolgáltatásnevet** használ. A következő CLI-parancs lehetővé teszi egy meglévő ACR engedélyezését az előfizetésében, és konfigurálja az egyszerű szolgáltatásnév megfelelő **ACRPull** -szerepkörét. Adja meg az alábbi paraméterek érvényes értékeit.  A szögletes zárójelek paraméterei nem kötelezőek.
 ```azurecli
 az login
-az aks create -n myAKSCluster -g myResourceGroup --enable-acr [--acr <acr-name-or-resource-id>]
+az acr create -n myContainerRegistry -g myContainerRegistryResourceGroup --sku basic [in case you do not have an existing ACR]
+az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resource-id>
 ```
 \* * Az ACR erőforrás-azonosító formátuma a következő: 
 
-/Subscriptions/< előfizetés-d >/resourceGroups/< Resource-Group-Name >/providers/Microsoft.ContainerRegistry/registries/<name> 
+/Subscriptions/< előfizetés-d >/resourceGroups/< Resource-Group-Name >/providers/Microsoft.ContainerRegistry/registries/{name} 
   
 Ez a lépés több percet is igénybe vehet.
 
-## <a name="create-acr-integration-for-existing-aks-clusters"></a>ACR-integráció létrehozása meglévő AK-fürtökhöz
+## <a name="configure-acr-integration-for-existing-aks-clusters"></a>ACR-integráció konfigurálása meglévő AK-fürtökhöz
 
 Az alábbihoz tartozó **ACR-Name** vagy **ACR-Resource-id** érvényes értékek megadásával integrálhat egy meglévő, meglévő "ACR" típusú fürtöket.
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --enable-acr --acr <acrName>
-az aks update -n myAKSCluster -g myResourceGroup --enable-acr --acr <acr-resource-id>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 ```
+
+Az ACR és az AK-fürt közötti integrációt is eltávolíthatja a következőkkel
+```azurecli
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
+```
+
 
 ## <a name="log-in-to-your-acr"></a>Jelentkezzen be az ACR-be
 

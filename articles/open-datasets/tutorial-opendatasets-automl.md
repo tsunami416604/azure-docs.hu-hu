@@ -9,12 +9,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: 6f72daa4a601df0e3592910645c2f9b35ab64431
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0218221426351b0b508021fc74693557f200b4e8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845820"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309264"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Oktatóanyag: Regressziós modell létrehozása automatizált gépi tanulással és nyitott adatkészletekkel
 
@@ -147,7 +147,7 @@ green_taxi_df.head(10)
       <td>2016-01-20 17:46:33</td>
       <td>1</td>
       <td>0,98</td>
-      <td>None</td>
+      <td>Nincsenek</td>
       <td>Nincsenek</td>
       <td>-73.921715</td>
       <td>40.766682</td>
@@ -220,7 +220,7 @@ green_taxi_df.head(10)
       <td>1</td>
       <td>2,87</td>
       <td>Nincsenek</td>
-      <td>None</td>
+      <td>Nincsenek</td>
       <td>-73.977730</td>
       <td>40.684647</td>
       <td>-73.931259</td>
@@ -243,8 +243,8 @@ green_taxi_df.head(10)
       <td>2016-01-13 08:52:16</td>
       <td>1</td>
       <td>0,50</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>-73.942589</td>
       <td>40,841423</td>
       <td>-73.943672</td>
@@ -292,7 +292,7 @@ green_taxi_df.head(10)
       <td>1</td>
       <td>1,93</td>
       <td>Nincsenek</td>
-      <td>None</td>
+      <td>Nincsenek</td>
       <td>-73.927109</td>
       <td>40.762848</td>
       <td>-73.909302</td>
@@ -315,8 +315,8 @@ green_taxi_df.head(10)
       <td>2016-01-09 14:32:48</td>
       <td>2</td>
       <td>0,80</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>-73.881195</td>
       <td>40,741779</td>
       <td>– 73,872086</td>
@@ -364,7 +364,7 @@ green_taxi_df.head(10)
       <td>6</td>
       <td>2,82</td>
       <td>Nincsenek</td>
-      <td>None</td>
+      <td>Nincsenek</td>
       <td>– 73,845200</td>
       <td>40.722134</td>
       <td>– 73,810638</td>
@@ -453,8 +453,8 @@ green_taxi_df.head(10)
       <td>2016-01-20 17:46:33</td>
       <td>1</td>
       <td>0,98</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>-73.921715</td>
       <td>40.766682</td>
       <td>-73.916908</td>
@@ -501,8 +501,8 @@ green_taxi_df.head(10)
       <td>2016-01-01 01:05:37</td>
       <td>1</td>
       <td>2.44</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>-73.863045</td>
       <td>40,882923</td>
       <td>-73.839836</td>
@@ -549,8 +549,8 @@ green_taxi_df.head(10)
       <td>2016-01-13 08:52:16</td>
       <td>1</td>
       <td>0,50</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>-73.942589</td>
       <td>40,841423</td>
       <td>-73.943672</td>
@@ -597,7 +597,7 @@ green_taxi_df.head(10)
       <td>2016-01-14 00:54:16</td>
       <td>1</td>
       <td>1,93</td>
-      <td>None</td>
+      <td>Nincsenek</td>
       <td>Nincsenek</td>
       <td>-73.927109</td>
       <td>40.762848</td>
@@ -645,7 +645,7 @@ green_taxi_df.head(10)
       <td>2016-01-25 18:23:50</td>
       <td>1</td>
       <td>1,04</td>
-      <td>None</td>
+      <td>Nincsenek</td>
       <td>Nincsenek</td>
       <td>-73.954376</td>
       <td>40,805729</td>
@@ -669,8 +669,8 @@ green_taxi_df.head(10)
       <td>2016-01-24 21:04:03</td>
       <td>6</td>
       <td>2,82</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,845200</td>
       <td>40.722134</td>
       <td>– 73,810638</td>
@@ -874,7 +874,7 @@ holidays_df.head(5)
       <th>40688</th>
       <td>Albánia</td>
       <td>Új év napja</td>
-      <td>None</td>
+      <td>Nincsenek</td>
       <td>AL</td>
       <td>Új év napja</td>
       <td>2008-01-01</td>
@@ -901,7 +901,7 @@ holidays_df.head(5)
       <th>40691</th>
       <td>Angola</td>
       <td>Új év napja</td>
-      <td>None</td>
+      <td>Nincsenek</td>
       <td>AO</td>
       <td>Új év napja</td>
       <td>2008-01-01</td>
@@ -910,7 +910,7 @@ holidays_df.head(5)
       <th>40692</th>
       <td>Argentína</td>
       <td>Új év napja</td>
-      <td>None</td>
+      <td>Nincsenek</td>
       <td>AR</td>
       <td>Új év napja</td>
       <td>2008-01-01</td>
@@ -1246,7 +1246,7 @@ weather_df.head(10)
 
 Ismét hívja `pandas.Series.dt.normalize` `datetime` meg a mezőt az időjárási adatsorokban, hogy az `taxi_holidays_df`megfeleljen a (z) értékének. Törölje a szükségtelen oszlopokat, és szűrje ki azokat a rekordokat, ahol `NaN`a hőmérséklet van.
 
-A következő csoport az időjárási adatokat, hogy napi összesített időjárási értékeket lehessen. Definiáljon egy `aggregations` dict, amely meghatározza, hogy az egyes mezők hogyan legyenek összesítve napi szinten. `precipTime` `precipDepth` A és a`temperature` , a és a esetében pedig a napi maximumot használja. `snowDepth` Használja a `groupby()` függvényt az összesítésekkel együtt az adat csoportosításához. Tekintse meg az adatok előnézetét, és győződjön meg róla, hogy naponta egy rekord van.
+A következő csoport az időjárási adatokat, hogy napi összesített időjárási értékeket lehessen. Definiáljon egy nevű `aggregations` dict, amely meghatározza, hogyan összesíthető az egyes mezők napi szinten. `precipTime` `precipDepth` A és a`temperature` , a és a esetében pedig a napi maximumot használja. `snowDepth` Használja a `groupby()` függvényt az összesítésekkel együtt az adat csoportosításához. Tekintse meg az adatok előnézetét, és győződjön meg róla, hogy naponta egy rekord van.
 
 ```python
 weather_df["datetime"] = weather_df["datetime"].dt.normalize()
@@ -1369,7 +1369,7 @@ weather_df_grouped.head(10)
 </div>
 
 > [!NOTE]
-> Az oktatóanyagban szereplő példák a Panda functions és az egyéni összesítések használatával egyesítik az adatokat, de a nyílt adatkészletek SDK olyan osztályokat tartalmaz, amelyekkel egyszerűen egyesíthető és bővíthetők az adatkészletek. Tekintse [](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) meg a jegyzetfüzetben a tervezési mintákhoz tartozó példákat.
+> Az oktatóanyagban szereplő példák a Panda functions és az egyéni összesítések használatával egyesítik az adatokat, de a nyílt adatkészletek SDK olyan osztályokat tartalmaz, amelyekkel egyszerűen egyesíthető és bővíthetők az adatkészletek. Tekintse meg a [jegyzetfüzetben](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) a tervezési mintákhoz tartozó példákat.
 
 ### <a name="cleanse-data"></a>Adatok megtisztítása
 
@@ -1944,5 +1944,5 @@ Ha nem tervezi a létrehozott erőforrások használatát, törölje őket, így
 
 ## <a name="next-steps"></a>További lépések
 
-* További példákért tekintse meg [](https://github.com/Azure/OpenDatasetsNotebooks) az Azure Open adatkészletek jegyzetfüzeteit.
+* További példákért tekintse meg az Azure Open adatkészletek [jegyzetfüzeteit](https://github.com/Azure/OpenDatasetsNotebooks) .
 * A Azure Machine Learning szolgáltatásban a gépi tanulással kapcsolatos további információkért kövesse az [útmutató](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train) című témakört.

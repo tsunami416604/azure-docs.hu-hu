@@ -1,5 +1,5 @@
 ---
-title: Batch test – LUIS
+title: 'Oktatóanyag: Batch test – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Ez az oktatóanyag bemutatja, hogyan használja a batch tesztelése az alkalmazásban az előrejelzési problémák utterance (kifejezés) megkeresheti és kijavíthatja azokat.
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 08/20/2019
+ms.topic: tutorial
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 45520d39c822c734e3fc725bca3375e93983a118
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a0aa4d334dc5a42da8a3a8f269f70c874c9ad54d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637454"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375512"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Oktatóanyag: Batch test adatkészletek
 
@@ -123,7 +123,7 @@ A látszólag gyors javítás ezek batch fájl beszédmódok hozzáadása a megf
 
 A kimondott szöveg eltávolításával kapcsolatos is vezetőnév **ApplyForJob** mindaddig, amíg az utterance (kifejezés) mennyiség megegyezik a **GetJobInformation**. Amely előfordulhat, hogy javítsa ki a vizsgálati eredmények, de a pontos előrejelzésére adott szándékot legközelebb akadályozná az intelligens HANGFELISMERÉSI. 
 
-A javítás célja, hogy további hosszúságú kimondott szöveg adjon hozzá a **GetJobInformation**-hoz. Ne felejtse el, hogy eltér a teljes hossz, a Word Choice és a Word megegyezése, miközben továbbra is a feladatra vonatkozó információk keresésének szándékát célozza meg.
+A javítás célja, hogy további hosszúságú kimondott szöveg adjon hozzá a **GetJobInformation**-hoz. Ne felejtse el, hogy eltér a teljes hossz, a Word Choice és a Word megegyezése _, miközben_ továbbra is a feladatra vonatkozó információk keresésének szándékát célozza meg.
 
 ### <a name="add-more-utterances"></a>További beszédmódok hozzáadása
 

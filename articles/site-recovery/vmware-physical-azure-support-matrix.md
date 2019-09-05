@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: raynew
-ms.openlocfilehash: 65c330a9b2dcc97160280daede926573fdef4c00
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
-ms.translationtype: HT
+ms.openlocfilehash: fd24d0d9f05855cf22da547f95b16da0a8d2c788
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679366"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617649"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
 Ez a cikk a VMware virtuális gépek és a fizikai kiszolgálók Azure-ba való vész-helyreállításának támogatott összetevőit és beállításait foglalja össze [Azure site Recovery](site-recovery-overview.md)használatával.
 
 - [További](vmware-azure-architecture.md) információ a VMware VM/fizikai kiszolgáló vész-helyreállítási architektúráról.
-- A vész [](tutorial-prepare-azure.md) -helyreállítás kipróbálásához kövesse az oktatóanyagokat.
+- A vész-helyreállítás kipróbálásához kövesse az [oktatóanyagokat](tutorial-prepare-azure.md) .
 
 ## <a name="deployment-scenarios"></a>Üzembe helyezési forgatókönyvek
 
@@ -181,7 +181,7 @@ Vendég/kiszolgáló VMDK | Igen
 Vendég/kiszolgáló megosztott fürtözött lemeze | Nem
 Vendég/kiszolgáló által titkosított lemez | Nem
 Vendég/kiszolgáló NFS | Nem
-Vendég/kiszolgáló iSCSI | Nem
+Vendég/kiszolgáló iSCSI | Áttelepítéshez – igen<br/>Vész-helyreállítás esetén az iSCSI a virtuális géphez csatlakoztatott lemezként fogja felvenni a feladat-visszavételt
 Vendég/kiszolgáló SMB 3,0 | Nem
 Vendég/kiszolgáló RDM | Igen<br/><br/> N/A fizikai kiszolgálókhoz
 Vendég/kiszolgáló lemez > 1 TB | Igen, a lemeznek nagyobbnak kell lennie, mint 1024 MB<br/><br/>Akár 8 192 GB a felügyelt lemezekre való replikáláskor (9,26-es verzió)<br></br> Akár 4 095 GB a Storage-fiókokba való replikáláskor
@@ -287,8 +287,8 @@ Helyezze át a tárterületet, a hálózatot és az Azure-beli virtuális gépek
 
 **Name** | **Leírás** | **Részletek**
 --- | --- | ---
-Konfigurációs kiszolgáló | A helyszíni telepítése.<br/> Koordinálja a helyszíni VMware-kiszolgálók, a fizikai gépek és az Azure közötti kommunikációt. | - A konfigurációs kiszolgáló [ismertetése](vmware-physical-azure-config-process-server-overview.md) .<br/> - [További](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) információ a legújabb verzióra való frissítésről.<br/> - Tudnivalók a konfigurációs [kiszolgáló beállításáról](vmware-azure-deploy-configuration-server.md) . 
-Folyamatkiszolgáló | Alapértelmezés szerint telepítve van a konfigurációs kiszolgálón.<br/> Fogadja a replikációs adatokat, optimalizálja azt gyorsítótárazással, tömörítéssel és titkosítással, majd elküldi az Azure-nak.<br/> Az üzembe helyezés során további folyamat-kiszolgálókat adhat hozzá a replikációs forgalom nagyobb mennyiségének kezeléséhez. | - [](vmware-physical-azure-config-process-server-overview.md) A folyamat kiszolgálójának megismerése.<br/> - [További](vmware-azure-manage-process-server.md#upgrade-a-process-server) információ a legújabb verzióra való frissítésről.<br/> - [További információ a](vmware-physical-large-deployment.md#set-up-a-process-server) kibővíthető folyamat-kiszolgálók beállításáról.
+Konfigurációs kiszolgáló | A helyszíni telepítése.<br/> Koordinálja a helyszíni VMware-kiszolgálók, a fizikai gépek és az Azure közötti kommunikációt. | - A konfigurációs kiszolgáló [ismertetése](vmware-physical-azure-config-process-server-overview.md) .<br/> - [További](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) információ a legújabb verzióra való frissítésről.<br/> - [Tudnivalók a konfigurációs kiszolgáló beállításáról](vmware-azure-deploy-configuration-server.md) . 
+Folyamatkiszolgáló | Alapértelmezés szerint telepítve van a konfigurációs kiszolgálón.<br/> Fogadja a replikációs adatokat, optimalizálja azt gyorsítótárazással, tömörítéssel és titkosítással, majd elküldi az Azure-nak.<br/> Az üzembe helyezés során további folyamat-kiszolgálókat adhat hozzá a replikációs forgalom nagyobb mennyiségének kezeléséhez. | - A folyamat kiszolgálójának [megismerése](vmware-physical-azure-config-process-server-overview.md) .<br/> - [További](vmware-azure-manage-process-server.md#upgrade-a-process-server) információ a legújabb verzióra való frissítésről.<br/> - [További információ a](vmware-physical-large-deployment.md#set-up-a-process-server) kibővíthető folyamat-kiszolgálók beállításáról.
 Mobilitási szolgáltatás | A replikálni kívánt VMware virtuális gépen vagy fizikai kiszolgálókon telepítve van.<br/> A helyszíni VMware-kiszolgálók/fizikai kiszolgálók és az Azure közötti replikáció koordinálása.| - [Ismerje meg](vmware-physical-mobility-service-overview.md) a mobilitási szolgáltatást.<br/> - [További](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) információ a legújabb verzióra való frissítésről.<br/> 
 
 

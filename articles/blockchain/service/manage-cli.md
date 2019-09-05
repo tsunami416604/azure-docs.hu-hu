@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: ee7e529593960c3a7c62021225122370c122b3c4
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4dd58f2542674633f2d5e2a1724adc7934d7f030
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240970"
+ms.locfileid: "70307045"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Az Azure Blockchain szolgáltatás kezelése az Azure CLI-vel
 
@@ -186,7 +186,7 @@ az role assignment create --role <role> --assignee <assignee> --scope /subscript
 |---------|-------------|
 | **szerepkör** | Az Azure AD-szerepkör neve. |
 | **megbízott** | Azure AD-felhasználói azonosító. Például: `user@contoso.com` |
-| **hatókör** | A szerepkör-hozzárendelés hatóköre. A tranzakciós csomópont blockchain tagja lehet. |
+| **hatókör** | A szerepkör-hozzárendelés hatóköre. Blockchain-tag vagy tranzakciós csomópont lehet. |
 
 **Példa:**
 
@@ -219,7 +219,7 @@ az role assignment create --role <role> --assignee-object-id <assignee_object_id
 |---------|-------------|
 | **szerepkör** | Az Azure AD-szerepkör neve. |
 | **assignee-object-id** | Azure AD-csoport azonosítója vagy az alkalmazás azonosítója. |
-| **hatókör** | A szerepkör-hozzárendelés hatóköre. A tranzakciós csomópont blockchain tagja lehet. |
+| **hatókör** | A szerepkör-hozzárendelés hatóköre. Blockchain-tag vagy tranzakciós csomópont lehet. |
 
 **Példa:**
 
@@ -242,7 +242,7 @@ az role assignment delete --role <myRole> --assignee <assignee> --scope /subscri
 |---------|-------------|
 | **szerepkör** | Az Azure AD-szerepkör neve. |
 | **megbízott** | Azure AD-felhasználói azonosító. Például: `user@contoso.com` |
-| **hatókör** | A szerepkör-hozzárendelés hatóköre. A tranzakciós csomópont blockchain tagja lehet. |
+| **hatókör** | A szerepkör-hozzárendelés hatóköre. Blockchain-tag vagy tranzakciós csomópont lehet. |
 
 ## <a name="next-steps"></a>További lépések
 

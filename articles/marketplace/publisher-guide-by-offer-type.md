@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 4864e2c040ad6771ad187269de43d5978fc6324f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 8a06573e6bcb2d5a6c6c97ad19e168f9c71aaa13
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876058"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308221"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Közzétételi útmutató ajánlattípusok szerint
 
@@ -34,7 +34,7 @@ Az Azure Marketplace-ajánlatok típusai az alábbi táblázatban találhatók.
 | **Ajánlat típusa**    | **Leírás**  |
 | :------------------- | :-------------------|
 | [**Virtual machines (Virtuális gépek)** ](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) | Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát. |
-| [**Megoldási sablonok**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | Akkor használja a megoldás sablonjának típusát, ha a megoldáshoz egy egyszerű virtuális gépen kívül további üzembe helyezési és konfigurálási automatizálásra van szükség. |
+| [**Megoldási sablonok**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | Használja a megoldás sablont (más néven Azure-alkalmazás), ha a megoldás további üzembe helyezést és konfigurációs automatizálást igényel egy egyszerű virtuális gépen kívül. A megoldási sablonok számos különböző Azure-erőforrást alkalmazhatnak, többek között a virtuális gépeket is beleértve.  |
 | [**Felügyelt alkalmazások**](https://docs.microsoft.com/azure/marketplace/marketplace-managed-apps) | Használja az Azure-alkalmazást: felügyelt alkalmazás-ajánlat típusa, ha a következő feltételek szükségesek: <br> <ul> <li> Az ügyfél előfizetésen alapuló megoldását egy virtuális gép vagy egy teljes IaaS-alapú megoldás használatával helyezheti üzembe. </li> <li>Ön vagy az ügyfele megköveteli, hogy a megoldást egy partner felügyelje. </li> <ul> |
 | [**SaaS-alkalmazások**](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) | A SaaS app Offer típus használatával engedélyezheti az ügyfél számára, hogy előfizetésként vásárolja meg SaaS-alapú, technikai megoldását. |
 | [**Tároló ajánlatok**](https://docs.microsoft.com/azure/marketplace/marketplace-containers) | Ha a megoldás egy, a Kubernetes-alapú Azure Container Service-ben kiépített Docker-tároló-rendszerkép, akkor használja a Container ajánlat típusát. |

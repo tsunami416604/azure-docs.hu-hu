@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 08/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5b48a41f025ef06c69e6de126e0a64ad359ce09a
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
-ms.translationtype: HT
+ms.openlocfilehash: 138894f10a4865a5ea251caff6683ed70721c000
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666367"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172924"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Hozzon létre egy hivatkozási adatkészletet a Time Series Insights-környezethez a Azure Portal használatával
 
@@ -52,7 +52,7 @@ A hivatkozási adathalmazok nem csatlakoznak visszamenőlegesen. Így a rendszer
 
 1. Az **új hivatkozási adatkészlet** lapon válassza ki az adatformátumot:
    - Vesszővel tagolt adatmennyiség esetén válassza a **CSV** lehetőséget. Az első sor fejléc sorként lesz kezelve.
-   - Válassza a **JSON** -tömböt a JavaScript-objektumok jelölésére formázott adathoz.
+   - Válassza a **JSON-tömböt** a JavaScript-objektumok jelölésére formázott adathoz.
 
    [![Válassza az adatformátum lehetőséget.](media/add-reference-data-set/add-data.png)](media/add-reference-data-set/add-data.png#lightbox)
 
@@ -94,7 +94,7 @@ A hivatkozási adathalmazok nem csatlakoznak visszamenőlegesen. Így a rendszer
 
     [![Feltöltése](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
 
-    Az oldal megerősíti a befejezett feltöltést, és megjeleníti az üzenet **sikeresen feltöltött**adatkészletét.
+    Az oldal megerősíti a befejezett feltöltést, és megjeleníti az üzenet **sikeresen feltöltött adatkészletét**.
 
 ## <a name="next-steps"></a>További lépések
 

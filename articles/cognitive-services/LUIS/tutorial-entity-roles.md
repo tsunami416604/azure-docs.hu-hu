@@ -1,5 +1,5 @@
 ---
-title: Környezetfüggő adat szerepkörökkel – LUIS
+title: 'Oktatóanyag: Környezetfüggő adat szerepkörökkel – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Kapcsolódó adat keresése a kontextus alapján. Kapcsolódó lehet például az indulási hely és a cél egy épületből és irodából egy másik épületbe és irodába történő fizikai mozgás során.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 2eac05712dc7b3deceba52681195101f9bf2b40c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2af35e08b523d782418ab356bf148e038f397f83
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560011"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308055"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Oktatóanyag: Kontextussal kapcsolatos adatok kinyerése a teljes tartalomból
 
@@ -81,7 +81,7 @@ A kinyerni kívánt entitások esetében egy szerepkört kell használni:
 
 Az előre elkészített entitás, geographyV2, Kinyeri a hely adatait, beleértve a városok nevét. Mivel a hosszúságú kimondott szöveg két városi névvel rendelkeznek, a kontextusban egymással kapcsolatban, a szerepkörök használatával kinyerheti ezt a környezetet.
 
-1. Válassza  ki az entitásokat a bal oldali navigációs sávon.
+1. Válassza ki az **entitásokat** a bal oldali navigációs sávon.
 
 1. Válassza az **előre elkészített entitás hozzáadása**lehetőséget `geo` , majd a keresési sávban válassza az előre elkészített entitások szűrése lehetőséget. 
 
@@ -91,7 +91,7 @@ Az előre elkészített entitás, geographyV2, Kinyeri a hely adatait, beleértv
 1. Vegyen fel két `Origin`szerepkört `Destination`, és. 
 
     ![Szerepkörök hozzáadása előre felépített entitáshoz](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
-1. A  bal oldali navigációs sávon válassza a leképezések lehetőséget, majd válassza ki a **MoveEmployeeToCity** szándékát. Figyelje meg, hogy a város neve az előre elkészített entitás **geographyV2**van megjelölve.
+1. A bal oldali navigációs sávon válassza a **leképezések** lehetőséget, majd válassza ki a **MoveEmployeeToCity** szándékát. Figyelje meg, hogy a város neve az előre elkészített entitás **geographyV2**van megjelölve.
 1. A lista első teljes tartalmában válassza ki a forrás helyét. Megjelenik egy legördülő menü. A listából válassza a **geographyV2** lehetőséget, majd a **forrás**elem kiválasztásához kövesse a teljes menüt.
 1. Az előző lépés metódusának használatával megjelölheti az összes hely összes szerepkörét az összes hosszúságú kimondott szöveg. 
 
@@ -120,38 +120,38 @@ Az előre elkészített entitás, geographyV2, Kinyeri a hely adatait, beleértv
       "query": "Please move Carl Chamerlin from Tampa to Portland",
       "topScoringIntent": {
         "intent": "MoveEmployeeToCity",
-        "score": 0.979823351
+        "score": 0.9706451
       },
       "intents": [
         {
           "intent": "MoveEmployeeToCity",
-          "score": 0.979823351
+          "score": 0.9706451
         },
         {
           "intent": "None",
-          "score": 0.0156363435
+          "score": 0.0307451729
         }
       ],
       "entities": [
         {
-          "entity": "geographyV2",
-          "role": "Destination",
-          "startIndex": 41,
-          "endIndex": 48,
-          "score": 0.6044041
-        },
-        {
-          "entity": "geographyV2",
-          "role": "Origin",
+          "entity": "tampa",
+          "type": "builtin.geographyV2.city",
           "startIndex": 32,
           "endIndex": 36,
-          "score": 0.739491045
+          "role": "Origin"
+        },
+        {
+          "entity": "portland",
+          "type": "builtin.geographyV2.city",
+          "startIndex": 41,
+          "endIndex": 48,
+          "role": "Destination"
         }
       ]
     }
     ```
     
-    A megfelelő szándék előre jelezve van, és az entitások tömbje a megfelelő entitások tulajdonságban található  forrás-és célhelyi szerepköröket is tartalmaz.
+    A megfelelő szándék előre jelezve van, és az entitások tömbje a megfelelő **entitások** tulajdonságban található forrás-és célhelyi szerepköröket is tartalmaz.
     
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

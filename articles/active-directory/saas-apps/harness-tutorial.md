@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/22/2019
+ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37a527e8cd83d292d8af8af5acd0c903c63081f2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014075"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305943"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integrációja a hevederrel
 
@@ -67,7 +67,7 @@ Az Azure AD SSO és a hám használatával történő konfigurálásához és te
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 1. A **[HÁM SSO konfigurálása](#configure-harness-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Hozzon létre](#create-harness-test-user)** egy felhasználói hám-tesztelési felhasználót – a felhasználó Azure ad-beli képviseletéhez kapcsolódó B. Simon-ügyfélként.
+    1. **[Hozzon létre egy felhasználói hám-tesztelési felhasználót](#create-harness-test-user)** – a felhasználó Azure ad-beli képviseletéhez kapcsolódó B. Simon-ügyfélként.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -76,11 +76,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/)a **hám** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az alapszintű **SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
     A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.harness.io/gateway/api/users/saml-login?accountId=<harness_account_id>`
 
@@ -89,9 +89,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://app.harness.io/`
 
     > [!NOTE]
-    > A válasz URL-cím értéke nem valódi. A tényleges válasz URL-címét a következő oktatóanyagban ismertetett, a **hám egyszeri bejelentkezésének konfigurálása** című szakaszban találja. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > A válasz URL-cím értéke nem valódi. A tényleges válasz URL-címét a következő oktatóanyagban ismertetett, a **hám egyszeri bejelentkezésének konfigurálása** című szakaszban találja. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML** -fájlját, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
@@ -131,21 +131,29 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-harness-sso"></a>A hám SSO konfigurálása
 
-1. Nyisson meg egy új böngészőablakot, és jelentkezzen be a hám vállalati webhelyre rendszergazdaként.
+1. Ha automatizálni szeretné a konfigurációt a hevederen belül, telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
-1. A lap jobb felső részén kattintson a **folyamatos biztonsági** > **hozzáférés-kezelési** > **hitelesítési beállítások**elemre.
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítő hám** lehetőségre a hám alkalmazásban. Itt adja meg a rendszergazdai hitelesítő adatokat a rendszerbe való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-6-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha manuálisan szeretné beállítani a hevedert, nyisson meg egy új böngészőablakot, és jelentkezzen be a vállalati webhelyre rendszergazdaként, és hajtsa végre a következő lépéseket:
+
+4. A lap jobb felső részén kattintson a **folyamatos biztonsági** > **hozzáférés-kezelési** > **hitelesítési beállítások**elemre.
 
     ![A hám konfigurálása](./media/harness-tutorial/configure01.png)
 
-1. Az **SSO-szolgáltatók** szakaszban kattintson az SSO **-szolgáltatók** > **SAML**hozzáadása lehetőségre.
+5. Az **SSO-szolgáltatók** szakaszban kattintson az SSO **-szolgáltatók** > **SAML**hozzáadása lehetőségre.
 
     ![A hám konfigurálása](./media/harness-tutorial/configure03.png)
 
-1. Az **SAML-szolgáltató** előugró ablakában hajtsa végre a következő lépéseket:
+6. Az **SAML-szolgáltató** előugró ablakában hajtsa végre a következő lépéseket:
 
     ![A hám konfigurálása](./media/harness-tutorial/configure02.png)
 
-    a. Másolja be az **SSO-szolgáltatót, engedélyezze az SAML-alapú bejelentkezést, majd adja meg a következő URL-példányt,** és illessze be a válasz URL-címe szövegmezőbe a Azure Portal alapszintű **SAML-konfiguráció** szakaszában.
+    a. Másolja be az **SSO-szolgáltatót, engedélyezze az SAML-alapú bejelentkezést, majd adja meg a következő URL-példányt,** és illessze be a válasz URL-címe szövegmezőbe a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszában.
 
     b. A **megjelenítendő név** szövegmezőbe írja be a megjelenítendő nevet.
 

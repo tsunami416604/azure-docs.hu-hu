@@ -1,5 +1,5 @@
 ---
-title: Előrejelzési szándékok – LUIS
+title: 'Oktatóanyag: Előrejelzési szándékok – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban hozzon létre egy egyéni alkalmazást, amely előrejelzést készít a felhasználó szándékáról. Ez az alkalmazás a legegyszerűbb típusú LUIS-alkalmazás, mert a kimondott szövegből nem nyer ki különféle adatelemeket, például e-mail-címeket vagy dátumokat.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 249ac689f855d175fa5df7cc5fed9438c0873289
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7139876f64841a877e688ec6faf03597c527d1f2
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560388"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375821"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Oktatóanyag: LUIS-alkalmazás létrehozása a felhasználói szándékok meghatározásához
 
@@ -139,7 +139,7 @@ Térjen vissza a LUIS-portálra, és hozzon létre egy új szándékot annak meg
 
 1. Válassza a **Build** (Létrehozás) lehetőséget a jobb felső menüben az alkalmazáskészítéshez való visszatéréshez.
 
-1. A bal oldali **menüben válassza a** szándékok lehetőséget, hogy megszerezze a szándékok listáját.
+1. A bal oldali **menüben válassza a szándékok** lehetőséget, hogy megszerezze a szándékok listáját.
 
 1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget, majd adja meg a következő nevet: `ApplyForJob`. 
 

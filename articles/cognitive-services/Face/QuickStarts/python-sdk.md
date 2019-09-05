@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: d3128144a06f4faa46d18650c3dd2c21f72afc1c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 2a74dbe9c306c1bf2420fdaac78a9b9183cacab1
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164788"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376139"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Gyors útmutató: A Pythonhoz készült Face ügyféloldali kódtár
 
@@ -26,9 +26,10 @@ A Pythonhoz készült Face ügyféloldali kódtár a következőre használható
 * Hasonló arcok keresése
 * Személy csoport létrehozása és betanítása
 * Arc azonosítása
+* Arcok ellenőrzése
 * Pillanatkép készítése az adatok áttelepítéséhez
 
-[](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | A dokumentációs[könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [-csomagjához (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | tartozó[minták](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)
+[A dokumentációs](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [-csomagjához (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | tartozó[minták](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -78,7 +79,7 @@ A következő osztályok és felületek a Face Python SDK főbb funkcióit kezel
 |[DetectedFace](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface?view=azure-python)|Ez az osztály a rendszerkép egyetlen arca által észlelt összes adatmennyiséget jelképezi. Ezzel az oldallal kapcsolatos részletes információkat kérhet le.|
 |[FaceListOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.facelistoperations?view=azure-python)|Ez az osztály kezeli a felhőben tárolt **FaceList** -szerkezeteket, amelyek az arcok válogatott készleteit tárolják. |
 |[PersonGroupPersonOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python)| Ez az osztály kezeli a felhőalapú tárolt **személyek** szerkezetét, amelyek egyetlen személyhez tartozó arcok készletét tárolják.|
-|[PersonGroupOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongroupoperations?view=azure-python)| Ez az osztály kezeli a felhőben tárolt **PersonGroup** -szerkezeteket, amelyek a különböző személyre kiterjedő objektumok készletét tárolják. |
+|[PersonGroupOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongroupoperations?view=azure-python)| Ez az osztály kezeli a felhőben tárolt **PersonGroup** -szerkezeteket, amelyek a különböző **személyre** kiterjedő objektumok készletét tárolják. |
 |[ShapshotOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.snapshotoperations?view=azure-python)|Ez az osztály kezeli a pillanatkép funkciót; a használatával ideiglenesen mentheti az összes felhőalapú Arcfelismerés, és áttelepítheti az adott adatait egy új Azure-előfizetésbe. |
 
 ## <a name="code-examples"></a>Példák a kódokra
@@ -90,6 +91,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 * [Hasonló arcok keresése](#find-similar-faces)
 * [Személy csoport létrehozása és betanítása](#create-and-train-a-person-group)
 * [Arc azonosítása](#identify-a-face)
+* [Arcok ellenőrzése](#verify-faces)
 * [Pillanatkép készítése az adatok áttelepítéséhez](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
@@ -108,6 +110,14 @@ A következő kód egy távoli rendszerképben észlel egy arcot. Kinyomtatja az
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detect)]
 
 További észlelési helyzetekben a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) tekintse meg a mintakód című témakört.
+
+### <a name="display-and-frame-faces"></a>Arcok megjelenítése és kerete
+
+A következő kód kiírja a megadott képet a kijelzőre, és téglalapokat rajzol az arcok köré az DetectedFace. faceRectangle tulajdonság használatával.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_frame)]
+
+![A piros téglalap körül a face fiatal nő](../images/face-rectangle-result.png)
 
 ## <a name="find-similar-faces"></a>Hasonló arcok keresése
 
@@ -155,7 +165,7 @@ A következő kód a képeket előtagjaként rendezi, észleli az arcokat, és h
 
 ### <a name="train-persongroup"></a>PersonGroup betanítása
 
-Az arcok hozzárendelése után be kell tanítania a **PersonGroup** , hogy azonosítani tudja az egyes **személy** objektumaihoz kapcsolódó vizuális funkciókat. A következő kód meghívja az aszinkron betanítási módszert, és lekérdezi az eredményt, kinyomtatja az állapotot a konzolra.
+Az arcok hozzárendelése után be kell tanítania a **PersonGroup** , hogy azonosítani tudja az egyes **személy** objektumaihoz kapcsolódó vizuális funkciókat. A következő kód meghívja az aszinkron **betanítási** módszert, és lekérdezi az eredményt, kinyomtatja az állapotot a konzolra.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_train)]
 
@@ -178,11 +188,37 @@ Az **azonosítási** módszer az észlelt arcok tömbjét veszi fel, és összeh
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify)]
 
+## <a name="verify-faces"></a>Arcok ellenőrzése
+
+Az ellenőrzési művelet egy arcfelismerés és egy másik Arcfelismerés, vagy egy **személy** objektum, és meghatározza, hogy ugyanahhoz a személyhez tartoznak-e.
+
+A következő kód észleli a két forrás képét, majd ellenőrzi azokat egy, a megcélzott képből észlelt arc alapján.
+
+### <a name="get-test-images"></a>Tesztelési lemezképek beolvasása
+
+A következő kódrészletek deklarálják azokat a változókat, amelyek az ellenőrzési művelet forrás-és célként megadott képeire mutatnak majd.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_baseurl)]
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_photos)]
+
+### <a name="detect-faces-for-verification"></a>Arcok észlelése ellenőrzéshez
+
+A következő kód észleli a forrás-és a célként megadott képeket, és azokat változókba menti.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_detect)]
+
+### <a name="get-verification-results"></a>Ellenőrzési eredmények beolvasása
+
+A következő kód összehasonlítja az egyes forrás-lemezképeket a célként megadott képpel, és kinyomtat egy üzenetet, amely jelzi, hogy ugyanahhoz a személyhez tartoznak-e.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
+
 ## <a name="take-a-snapshot-for-data-migration"></a>Pillanatkép készítése az adatok áttelepítéséhez
 
-A pillanatképek funkció lehetővé teszi a mentett Arcfelismerés, például a betanított **PersonGroup**áthelyezését egy másik Azure Cognitive Services Face-előfizetésbe. Érdemes lehet ezt a funkciót használni, ha például egy ingyenes próbaverziós előfizetéssel létrehozott egy **PersonGroup** objektumot, és most szeretné áttelepíteni egy fizetős előfizetésre. A pillanatképek szolgáltatás széles körű áttekintéséhez tekintse [meg az Arcfelismerés](../Face-API-How-to-Topics/how-to-migrate-face-data.md) áttelepítését ismertető cikket.
+A pillanatképek funkció lehetővé teszi a mentett Arcfelismerés, például a betanított **PersonGroup**áthelyezését egy másik Azure Cognitive Services Face-előfizetésbe. Érdemes lehet ezt a funkciót használni, ha például egy ingyenes próbaverziós előfizetéssel létrehozott egy **PersonGroup** objektumot, és most szeretné áttelepíteni egy fizetős előfizetésre. A pillanatképek szolgáltatás széles körű áttekintéséhez tekintse [meg az Arcfelismerés áttelepítését](../Face-API-How-to-Topics/how-to-migrate-face-data.md) ismertető cikket.
 
-Ebben a példában a [személy csoport létrehozása és](#create-and-train-a-person-group)betanítása során létrehozott **PersonGroup** kell áttelepítenie. Először hajtsa végre az adott szakaszt, vagy használjon saját Face adatszerkezet (eke) t.
+Ebben a példában a [személy csoport létrehozása és betanítása](#create-and-train-a-person-group)során létrehozott **PersonGroup** kell áttelepítenie. Először hajtsa végre az adott szakaszt, vagy használjon saját Face adatszerkezet (eke) t.
 
 ### <a name="set-up-target-subscription"></a>Cél-előfizetés beállítása
 
@@ -202,7 +238,7 @@ A parancsfájlban később mentse a jelenlegi ügyfél-objektumot a forrás-ügy
 
 A pillanatképek többi művelete egy aszinkron függvényen belül történik. 
 
-1. Első lépésként készítse el a pillanatképet, amely az eredeti előfizetése adatait egy ideiglenes Felhőbeli helyre menti. Ez a metódus egy azonosítót ad vissza, amelyet a művelet állapotának lekérdezéséhez használ.
+1. Első lépésként **készítse el a** pillanatképet, amely az eredeti előfizetése adatait egy ideiglenes Felhőbeli helyre menti. Ez a metódus egy azonosítót ad vissza, amelyet a művelet állapotának lekérdezéséhez használ.
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_take)]
 

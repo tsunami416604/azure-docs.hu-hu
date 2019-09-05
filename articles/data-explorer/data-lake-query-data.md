@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: ef4dfc4370c71eac1978a6f3535b571a5e6009b5
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: b0056df16dccaf1dc7e94aad1a2c6c262ffd89ee
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950142"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383361"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Azure Data Lake lekérdezése az Azure Adatkezelő használatával (előzetes verzió)
 
@@ -50,6 +50,7 @@ Az Azure Adatkezelő integrálható az Azure Blob Storage és Azure Data Lake St
     > * Nagyobb teljesítmény várható részletesebb particionálással. Többek között a napi partíciókat tartalmazó külső táblák lekérdezései jobb teljesítményt kapnak, mint a havonta particionált táblákkal rendelkező lekérdezések.
     > * Ha partíciót tartalmazó külső táblát határoz meg, a tárolási struktúra megegyeznek.
 Ha például a tábla egy DateTime partícióval van definiálva éééé/hh/nn formátumban (alapértelmezett), az URI-tár elérési útja csak *container1/éééé/hh/nn/all_exported_blobs*lehet. 
+    > * Ha a külső tábla egy datetime oszlop szerint van particionálva, mindig adja meg a lekérdezésben lévő lezárt tartományhoz tartozó időszűrőt (például a lekérdezésnek `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)` ), amely jobb, mint a (nyitott tartomány). `ArchivedProducts | where Timestamp > ago(1h)` 
 
 1. A külső tábla látható a webes felhasználói felület bal oldali ablaktábláján.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1342616a0d32d8ac68965bc04f1fd3ca60146369
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 1450d6b41d9a193f8069509aacd3343ae646c6ac
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966768"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307020"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>A QnA Maker Tudásbázis szerkesztése
 
@@ -54,7 +54,7 @@ A QnA Maker lehetővé teszi a Tudásbázis tartalmát kezelését azáltal, hog
 
 ## <a name="add-a-qna-pair"></a>Kérdés-válasz pár hozzáadása
 
-A **Beállítások** lapon válassza a **QnA pár hozzáadása** lehetőséget egy új sor hozzáadásához a Tudásbázis-táblához.
+Az **Edit (Szerkesztés** ) lapon válassza a **QnA pár hozzáadása** elemet új sor hozzáadásához a Tudásbázis-táblához.
 
 ![A QnA pár hozzáadása](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
@@ -85,7 +85,7 @@ Adja hozzá a metaadatokat úgy, hogy először kiválasztja a **megtekintési b
 
     ![Az adatforrással kapcsolatos kérdések és válaszok összecsukása és kibontása a QnA Maker adatforrás-sávjának használatával](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
 
-* **Keresés**az Tudásbázisban: A Tudásbázisban a Tudásbázis tábla tetején található szövegmezőbe írja be a keresést. Kattintson a kérdés válasz metaadat-tartalom, vagy a kereséshez adja meg. Kattintson az X ikont a keresési szűrő eltávolításához.
+* **Keresés az Tudásbázisban**: A Tudásbázisban a Tudásbázis tábla tetején található szövegmezőbe írja be a keresést. Kattintson a kérdés válasz metaadat-tartalom, vagy a kereséshez adja meg. Kattintson az X ikont a keresési szűrő eltávolításához.
 
     ![A kérdések és válaszok fölötti QnA Maker keresőmező használatával csökkentse a nézetet csak a szűrővel egyező elemek](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
 

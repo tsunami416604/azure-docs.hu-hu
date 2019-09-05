@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: e18f1db80b8fcb2c8846ce0c7294e1766cfa1ca3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: accc59ee31ddb7371774da3235cc9ccff24ad641
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091388"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309227"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux rendszerképek az Azure-ban
 Ez a cikk az Azure Marketplace-en elérhető Red Hat Enterprise Linux-(RHEL-) rendszerképeket ismerteti, valamint az elnevezési és adatmegőrzési szabályzatok körét.
@@ -133,12 +133,12 @@ RHEL-SAP-HANA | 6.7      | RAW    | Linux-ügynök | RHEL 6,7 SAP HANA
 |             | 7.3      | LVM    | Linux-ügynök | RHEL 7,3 SAP HANA
 RHEL-SAP-APPS | 6.8      | RAW    | Linux-ügynök | RHEL 6,8 for SAP Business Applications
 |             | 7.3      | LVM    | Linux-ügynök | RHEL 7,3 for SAP Business Applications
-RHEL – HA       | 7.4      | RAW    | Linux-ügynök | RHEL 7,4 és HA bővítmény
-|             | 7.5      | RAW    | Linux-ügynök | RHEL 7,5 és HA bővítmény
-|             | 7,6      | RAW    | Linux-ügynök | RHEL 7,6 és HA bővítmény
-RHEL – SAP-HA   | 7.4      | RAW    | Linux-ügynök | RHEL 7,4 for SAP és HA bővítmény
-|             | 7.5      | RAW    | Linux-ügynök | RHEL 7,5 for SAP és HA bővítmény
-|             | 7,6      | RAW    | Linux-ügynök | RHEL 7,6 for SAP és HA bővítmény
+RHEL – HA       | 7.4      | LVM    | Linux-ügynök | RHEL 7,4 és HA bővítmény
+|             | 7.5      | LVM    | Linux-ügynök | RHEL 7,5 és HA bővítmény
+|             | 7,6      | LVM    | Linux-ügynök | RHEL 7,6 és HA bővítmény
+RHEL – SAP-HA   | 7.4      | LVM    | Linux-ügynök | RHEL 7,4 for SAP és HA bővítmény
+|             | 7.5      | LVM    | Linux-ügynök | RHEL 7,5 for SAP és HA bővítmény
+|             | 7,6      | LVM    | Linux-ügynök | RHEL 7,6 for SAP és HA bővítmény
 
 ### <a name="old-naming-convention"></a>Régi elnevezési konvenció
 A RHEL 7 rendszerképek és a RHEL 6 operációsrendszer-lemezképek az SKU-ban meghatározott verziókat használnak, egészen addig, amíg az elnevezési konvenció fentebb ismertetett változása nem következett be.
@@ -160,5 +160,5 @@ Egy adott rendszerkép-családban csak az aktuális alverziót frissítjük. Egy
 Aktuális szabályzatunk az összes korábban közzétett rendszerkép megőrzése. Fenntartjuk a jogot arra, hogy olyan rendszerképeket távolítson el, amelyek bármilyen típusú problémát okozhatnak. Előfordulhat például, hogy a rendszer a következő platform vagy összetevő frissítései miatt helytelen konfigurációval rendelkező lemezképeket távolít el. Az eltávolítható rendszerképeket az aktuális Piactéri szabályzat szerint kell megadni, hogy a kép eltávolítása előtt akár 30 napig is biztosítson értesítéseket.
 
 ## <a name="next-steps"></a>További lépések
-* További információ az Azure Red Hat frissítési infrastruktúráról [](https://aka.ms/rhui-update).
+* További információ az Azure Red Hat [frissítési infrastruktúráról](https://aka.ms/rhui-update).
 * A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.

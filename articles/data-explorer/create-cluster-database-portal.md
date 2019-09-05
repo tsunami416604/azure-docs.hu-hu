@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: cfab883f9b9b063bd51b9fdb7306d45371449180
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 079f87dec67f98d502d135fc012b5523211d5957
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406100"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381791"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Gyors útmutató: Azure Adatkezelő-fürt és-adatbázis létrehozása
 
@@ -53,11 +53,11 @@ Hozzon létre egy Azure Adatkezelő-fürtöt egy Azure-erőforráscsoport szám�
     |---|---|---|
     | Subscription | Az Ön előfizetése | Válassza ki a fürthöz használni kívánt Azure-előfizetést.|
     | Resource group | Az erőforráscsoport | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
-    | Fürt neve | A fürt egyedi neve | Válasszon egy egyedi nevet a fürt azonosításához. A rendszer hozzáfűzi a *[régiónév].kusto.windows.net* tartománynevet a megadott fürtnévhez. A név csak kisbetűket és számokat tartalmaz. 4 – 22 karakterből kell állnia.
+    | Fürt neve | A fürt egyedi neve | Válasszon egy egyedi nevet a fürt azonosításához. A rendszer hozzáfűzi a *[régiónév].kusto.windows.net* tartománynevet a megadott fürtnévhez. A név csak kisbetűket és számokat tartalmazhat, 4 – 22 karakterből kell állnia.
     | Régió | USA *nyugati* régiója vagy *USA 2. nyugati* régiója | Válassza az *USA nyugati* régiója vagy az *USA nyugati* régiója (ha rendelkezésre állási zónák használata) lehetőséget ehhez a rövid útmutatóhoz. Éles üzemben az igényeinek leginkább megfelelő régiót válassza.
-    | Rendelkezésre állási zónák | *1*, *2*és/vagy *3* | A zónák redundancia támogatott régiói esetében válassza ki, hogy a példányok melyik zónában lesznek (nem kötelező). A fürtcsomópontok alapértelmezés szerint ugyanabban az adatközpontban jönnek létre. A [Azure Availability Zones](/azure/availability-zones/az-overview) használatával helyezze el a fürt példányait a különböző rendelkezésre állási zónákba ugyanabban a régióban. Több rendelkezésre állási zóna kiválasztásával egyetlen meghibásodási pontot törölheti, és biztosíthatja a magas rendelkezésre állást. 
+    | Rendelkezésre állási zónák | *1*, *2*és/vagy *3* | Helyezze a fürt példányait a különböző rendelkezésre állási zónákba ugyanabban a régióban (opcionális). [Azure Availability Zones](/azure/availability-zones/az-overview) az azonos Azure-régióban található egyedi fizikai helyszínek. Egy Azure Adatkezelő-fürtöt és a részleges régió meghibásodásának adatait védik. A fürtcsomópontok alapértelmezés szerint ugyanabban az adatközpontban jönnek létre. Több rendelkezésre állási zóna kiválasztásával egyetlen meghibásodási pontot törölheti, és biztosíthatja a magas rendelkezésre állást. A rendelkezésre állási zónákra történő központi telepítés csak a fürt létrehozása során lehetséges, és később nem módosítható.
     | Számítási specifikációk | *D13_v2* | Ehhez az útmutatóhoz válassza a legalacsonyabb díjszabást. Éles üzemben az igényeinek leginkább megfelelő díjszabást válassza.
-    | | |
+    | | | |
 
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a fürt adatainak áttekintéséhez, és **hozzon létre** a fürt kiépítéséhez. A kiépítés általában körülbelül 10 percet vesz igénybe.
 

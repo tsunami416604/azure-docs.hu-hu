@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: aahi
-ms.openlocfilehash: 8f3d30866ac6db0cdece9af8144fcfa266871172
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e57bb55f5bbeba9cb476672723511a4d19c46165
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697889"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383257"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Cognitive Services-erőforrás létrehozása az Azure parancssori felületének (CLI) használatával
 
@@ -23,12 +23,12 @@ Ez a rövid útmutató az Azure Cognitive Services [Azure parancssori felületen
 
 Ebből a rövid útmutatóból megtudhatja, hogyan regisztrálhat az Azure Cognitive Servicesra, és hogyan hozhat létre egy olyan fiókot, amely az [Azure parancssori felületének (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)használatával egyetlen szolgáltatást vagy többszolgáltatásos előfizetéssel rendelkezik. Ezeket a szolgáltatásokat az Azure- [erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)képviselik, amelyek lehetővé teszik egy vagy több azure-Cognitive Services API-khoz való kapcsolódást.
 
+[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Érvényes Azure-előfizetés – [hozzon létre egyet](https://azure.microsoft.com/free/) ingyen.
 * Az [Azure parancssori felülete (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-
-[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>Az Azure CLI telepítése és bejelentkezés 
 
@@ -38,7 +38,7 @@ Telepítse az [Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-c
 az login
 ```
 
-A parancsok a böngészőben való futtatásához a zöld kipróbálom gombot is használhatja.
+A parancsok a böngészőben való futtatásához a zöld **kipróbálom** gombot is használhatja.
  
 ## <a name="create-a-new-azure-cognitive-services-resource-group"></a>Új Azure Cognitive Services erőforráscsoport létrehozása
 
@@ -168,7 +168,7 @@ A kognitív szolgáltatás erőforrásaihoz tartozó kulcsok beszerzéséhez has
 A díjszabási szintek (és a felszámított összeg) a hitelesítési adatok használatával elküldött tranzakciók számától függenek. Az egyes díjszabási szintek a következőket határozzák meg:
 * a másodpercenként engedélyezett tranzakciók maximális száma (TPS).
 * a szolgáltatási funkciók a díjszabási szinten engedélyezve vannak.
-* Az előre meghatározott mennyiségű tranzakció díja. Ezen összeg fölött a szolgáltatás díjszabása szerint külön díjat számítunk fel [](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) .
+* Az előre meghatározott mennyiségű tranzakció díja. Ezen összeg fölött a szolgáltatás [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) szerint külön díjat számítunk fel.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
