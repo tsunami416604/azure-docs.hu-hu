@@ -173,17 +173,17 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | id | string | Az esemény azonosítója. |
 | timestamp | string | Az az időpont, amikor az esemény történt. |
 | action | string | A művelet, amely magában foglalja a megadott esemény. |
-| target | objektum | A cél az esemény. |
-| request | objektum | A kérelem, ami az esemény jön létre. |
+| target | object | A cél az esemény. |
+| request | object | A kérelem, ami az esemény jön létre. |
 
 A célobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | mediaType | string | A hivatkozott objektum MIME-típusát. |
-| size | egész szám | A tartalom bájtok száma. Ugyanaz, mint a Hossz mezőben. |
+| size | integer | A tartalom bájtok száma. Ugyanaz, mint a Hossz mezőben. |
 | digest | string | A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat. |
-| length | egész szám | A tartalom bájtok száma. Ugyanaz, mint mérete mező. |
+| length | integer | A tartalom bájtok száma. Ugyanaz, mint mérete mező. |
 | repository | string | A tárház nevét. |
 | tag | string | A címke neve. |
 | name | string | A diagram neve. |
