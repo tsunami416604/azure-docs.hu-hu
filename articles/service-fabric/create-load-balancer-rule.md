@@ -1,9 +1,9 @@
 ---
-title: Egy Azure Load Balancer-szabályt egy fürt
-description: Állítsa be az Azure Load Balancerhez az Azure Service Fabric-fürt a portok megnyitásához.
+title: Azure Load Balancer szabály létrehozása fürthöz
+description: Azure Load Balancer konfigurálása az Azure Service Fabric-fürthöz tartozó portok megnyitásához.
 services: service-fabric
 documentationcenter: na
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,43 +13,43 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
-ms.author: aljo
-ms.openlocfilehash: d95d2802398a61b948ff6c59fb3eab0e1ddddbc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.author: atsenthi
+ms.openlocfilehash: 440d5e37e03e58a39275e715ebce4fa07961cc84
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66147461"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598580"
 ---
-# <a name="open-ports-for-a-service-fabric-cluster"></a>Nyissa meg a portokat a Service Fabric-fürt
+# <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric-fürt portjainak megnyitása
 
-A terheléselosztó az Azure Service Fabric-fürtben üzembe helyezett irányítja a forgalmat a csomóponton futó alkalmazásnak. Ha megváltoztatja az alkalmazás egy másik port használatára, a portok (vagy az útvonal egy másik portot) az Azure Load balancerben.
+Az Azure Service Fabric-fürttel üzembe helyezett terheléselosztó átirányítja a forgalmat a csomóponton futó alkalmazás felé. Ha úgy módosítja az alkalmazást, hogy másik portot használjon, ki kell jelölnie ezt a portot (vagy egy másik portot kell átirányítani) a Azure Load Balancer.
 
-A Service Fabric-fürt üzembe helyezésekor az Azure-ba, az Ön számára automatikusan létrehozott egy terheléselosztót. Ha nem rendelkezik egy terheléselosztót, [egy internetkapcsolattal rendelkező load balancer konfigurálása](../load-balancer/load-balancer-get-started-internet-portal.md).
+Amikor üzembe helyezte a Service Fabric-fürtöt az Azure-ban, a terheléselosztó létrehozása automatikusan megtörténik. Ha nincs terheléselosztó, tekintse meg [az internetre irányuló terheléselosztó konfigurálása](../load-balancer/load-balancer-get-started-internet-portal.md)című témakört.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="configure-service-fabric"></a>A service fabric beállítása
+## <a name="configure-service-fabric"></a>A Service Fabric konfigurálása
 
-A Service Fabric-alkalmazás **ServiceManifest.xml** konfigurációs fájl definiálja a használandó vár az alkalmazás végpontok. Miután a konfigurációs fájl frissült a végpontokat, a terheléselosztó frissíteni kell, hogy elérhetővé, amely (vagy egy másik) porton. A service fabric-végpont létrehozása további információkért lásd: [egy végpont beállítása](service-fabric-service-manifest-resources.md).
+Az Service Fabric Application **ServiceManifest. XML** konfigurációs fájl határozza meg az alkalmazás által használni kívánt végpontokat. Miután a konfigurációs fájlt frissítette egy végpont definiálásához, frissítenie kell a terheléselosztó számára, hogy elérhető legyen (vagy egy másik) port. A Service Fabric-végpont létrehozásával kapcsolatos további információkért lásd: [végpont beállítása](service-fabric-service-manifest-resources.md).
 
 ## <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 
-A terheléselosztási szabállyal egy internetre irányuló portot nyitja meg, és továbbítja a forgalmat a belső csomópont port az alkalmazása által használt. Ha nem rendelkezik egy terheléselosztót, [egy internetkapcsolattal rendelkező load balancer konfigurálása](../load-balancer/load-balancer-get-started-internet-portal.md).
+A Load Balancer szabály egy internetkapcsolattal rendelkező portot nyit meg, és továbbítja a forgalmat az alkalmazás által használt belső csomópont portjához. Ha nincs terheléselosztó, tekintse meg [az internetre irányuló terheléselosztó konfigurálása](../load-balancer/load-balancer-get-started-internet-portal.md)című témakört.
 
-Hozzon létre egy terheléselosztó-szabályt, hogy kell gyűjtenie a következő információkat:
+Load Balancer szabály létrehozásához a következő információkat kell összegyűjtenie:
 
 - Terheléselosztó neve.
-- A load balancer és a service fabric-fürt erőforráscsoportja.
-- Külső porton.
+- A Load Balancer és a Service Fabric-fürt erőforráscsoport.
+- Külső port.
 - Belső port.
 
 ## <a name="azure-cli"></a>Azure CLI
-Mindössze egyetlen paranccsal hozhat létre egy terheléselosztó-szabályt az a **Azure CLI-vel**. Csak kell tudni, hogy mindkét hozzon létre egy új szabályt a terhelés terheléselosztó és az erőforrás csoport nevére.
+Csak egyetlen paranccsal hozható létre terheléselosztó-szabály az **Azure CLI**-vel. Új szabály létrehozásához csak a terheléselosztó és az erőforráscsoport nevét kell ismernie.
 
 >[!NOTE]
->Meg kell határoznia a terheléselosztó nevét, ha ez a parancs segítségével gyorsan hozzáférhet az összes terheléselosztókról, illetve a kapcsolódó erőforráscsoportok listája.
+>Ha meg kell határoznia a terheléselosztó nevét, ezzel a paranccsal gyorsan lekérheti az összes terheléselosztó és a kapcsolódó erőforráscsoportok listáját.
 >
 >`az network lb list --query "[].{ResourceGroup: resourceGroup, Name: name}"`
 >
@@ -59,31 +59,31 @@ Mindössze egyetlen paranccsal hozhat létre egy terheléselosztó-szabályt az 
 az network lb rule create --backend-port 40000 --frontend-port 39999 --protocol Tcp --lb-name LB-svcfab3 -g svcfab_cli -n my-app-rule
 ```
 
-Az Azure CLI-paranccsal néhány az alábbi táblázatban ismertetett paraméterekkel rendelkezik:
+Az Azure CLI-parancs néhány paraméterrel rendelkezik, amelyek a következő táblázatban olvashatók:
 
 | Paraméter | Leírás |
 | --------- | ----------- |
-| `--backend-port`  | A Service Fabric-alkalmazás port figyel. |
-| `--frontend-port` | A port a terheléselosztót külső kapcsolatok tesz elérhetővé. |
-| `-lb-name` | Módosíthatja, hogy a terheléselosztó neve. |
-| `-g`       | Az erőforráscsoport, amely rendelkezik a load balancer és a Service Fabric-fürtön. |
-| `-n`       | A szabály a kívánt nevet. |
+| `--backend-port`  | Az Service Fabric-alkalmazás által figyelt port. |
+| `--frontend-port` | A terheléselosztó által a külső kapcsolatok számára elérhető port. |
+| `-lb-name` | A módosítandó terheléselosztó neve. |
+| `-g`       | Az erőforráscsoport, amelyben a terheléselosztó és a Service Fabric fürt is szerepel. |
+| `-n`       | A szabály kívánt neve. |
 
 
 >[!NOTE]
->Terheléselosztó létrehozása az Azure CLI-vel kapcsolatos további információkért lásd: [load balancer létrehozása az Azure CLI-vel](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
+>A terheléselosztó Azure CLI-vel történő létrehozásával kapcsolatos további információkért lásd: terheléselosztó [létrehozása az Azure CLI-vel](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
 
 ## <a name="powershell"></a>PowerShell
 
-PowerShell az egy kicsit bonyolultabb, mint az Azure parancssori felület. Kövesse az alábbi általános lépéseket szabály létrehozása:
+A PowerShell valamivel bonyolultabb, mint az Azure CLI. Egy szabály létrehozásához kövesse az alábbi elméleti lépéseket:
 
-1. A terheléselosztó lekérése az Azure-ból.
+1. A terheléselosztó beszerzése az Azure-ból.
 2. Hozzon létre egy szabályt.
-3. A szabály hozzáadása a terheléselosztóhoz.
-4. Frissítse a terheléselosztót.
+3. Adja hozzá a szabályt a terheléselosztó számára.
+4. Frissítse a Load balancert.
 
 >[!NOTE]
->Határozza meg a terheléselosztó nevét kell, ha ez a parancs segítségével gyorsan hozzáférhet a terheléselosztókkal és a kapcsolódó erőforráscsoportok listája.
+>Ha meg kell határoznia a terheléselosztó nevét, ezzel a paranccsal gyorsan lekérheti az összes terheléselosztó és a hozzá tartozó erőforráscsoport listáját.
 >
 >`Get-AzLoadBalancer | Select Name, ResourceGroupName`
 
@@ -104,11 +104,11 @@ $lb.LoadBalancingRules.Add($lbrule)
 $lb | Set-AzLoadBalancer
 ```
 
-Kapcsolatos a `New-AzLoadBalancerRuleConfig` parancsot, a `-FrontendPort` jelenti. a portot a load balancer tesz elérhetővé a külső kapcsolatokat, és a `-BackendPort` jelenti. a portot, a service fabric-alkalmazás figyel.
+A parancshoz `-FrontendPort` tartozó érték azt a portot jelöli, amelyet a terheléselosztó a `-BackendPort` külső kapcsolatok számára tesz elérhetővé, és azt a portot jelöli, amelyen a Service Fabric-alkalmazás figyeli a szolgáltatást. `New-AzLoadBalancerRuleConfig`
 
 >[!NOTE]
->Load balancer létrehozása a PowerShell-lel kapcsolatos további információkért lásd: [load balancer létrehozása a PowerShell-lel](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
+>A terheléselosztó PowerShell-lel történő létrehozásával kapcsolatos további információkért lásd: [Load Balancer létrehozása a PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)-lel.
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet [hálózatkezelés a Service Fabric](service-fabric-patterns-networking.md).rvice-fabric-minták – networking.md).
+További információ a [hálózatkezelésről Service Fabric](service-fabric-patterns-networking.md). rvice-Fabric-Patterns-Networking.MD).

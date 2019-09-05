@@ -1,6 +1,6 @@
 ---
-title: Az Azure Storage használatához szükséges eszközök |} A Microsoft Docs
-description: Eszközök, amelyek lehetővé teszik, hogy megtekintése és kezelése az Azure Storage-adatokkal listája.
+title: Az Azure Storage használatának eszközei | Microsoft Docs
+description: Az Azure Storage-adatai megtekintését és kezelését lehetővé tevő eszközök listája.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,30 +9,30 @@ ms.date: 09/06/2017
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 6d80bc71c01d0f1c887d9161edee5516d6b0925b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
-ms.translationtype: MT
+ms.openlocfilehash: 14cbc076f4c9eebd2647cd667acc856b393e4d93
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443690"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68665739"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage-ügyféleszközök
-Az Azure Storage felhasználói gyakran szeretné tudni megtekintése/felhasználhatja azok adatait egy Azure Storage ügyféloldali eszközzel. Az alábbi táblázatokban látható számos olyan eszközt, amely lehetővé teszi ezt. Az "X" elhelyezni a minden egyes Ha, lehetővé teszi a számba venni, illetve az adatok absztrakciós eléréséhez. A táblázatban is látható, ha az eszközök ingyenes-e vagy sem. "Próbaverzió" jelzi, hogy van egy ingyenes próbaverzióra, de a teljes termékkiadásban használata nem ingyenes. "Y/N", az azt jelzi, hogy egy verzió érhető el ingyenes, amíg egy másik verzió elérhető és megvásárolható kiadása.
+Az Azure Storage-felhasználók gyakran szeretnék megtekinteni/használni az adataikat az Azure Storage-ügyfélprogram használatával. Az alábbi táblázatokban számos eszközt listázunk, amelyek lehetővé teszik ezt. Minden blokkban "X"-et helyezünk el, ha az adatabsztrakció enumerálását és/vagy elérését teszi lehetővé. A táblázat azt is megjeleníti, hogy az eszközök ingyenesek-e. A "próbaverzió" kifejezés azt jelzi, hogy az ingyenes próbaverzió, de a teljes termék nem ingyenes. Az "i/N" érték azt jelzi, hogy egy verzió ingyenesen elérhető, míg a vásárláshoz egy másik verzió érhető el.
 
-Csak az elérhető Azure Storage-ügyféleszközök pillanatképét mellékelt. Ezek az eszközök, fejlődnek és a funkciók továbbra is. Ha vannak, javításokat és frissítéseket, írt hozzászólásban tudassa velünk, hogy. Ugyanez érvényes Ha ismeri az eszközöket tartalmazza, amelyek kell lennie a ide - készséggel adja hozzá őket.
+Csak pillanatképet adott meg az elérhető Azure Storage-ügyféleszközök számára. Ezek az eszközök továbbra is fejlődnek és növekednek a funkcionalitásban. Ha vannak javítások vagy frissítések, küldjön egy megjegyzést, hogy tudassa velünk. Ugyanez igaz, ha ismeri az itt található eszközöket – örömmel vesszük őket.
 
-**A Microsoft Azure Storage-ügyféleszközök**
+**Ügyféleszközök Microsoft Azure Storage**
 
 <table>
   <tr>
-    <th rowspan="2">Az Azure Storage-ügyféleszköz</th>
+    <th rowspan="2">Azure Storage-ügyfél eszköz</th>
     <th rowspan="2">Blokkblob</th>
-    <th rowspan="2">Page Blob</th>
-    <th rowspan="2">Hozzáfűző Blob</th>
+    <th rowspan="2">Lapblob</th>
+    <th rowspan="2">Blob hozzáfűzése</th>
     <th rowspan="2">Táblák</th>
-    <th rowspan="2">Üzenetsorok</th>
+    <th rowspan="2">Várólisták</th>
     <th rowspan="2">Fájlok</th>
-    <th rowspan="2">Ingyenes</th>
+    <th rowspan="2">Free</th>
     <th colspan="4">Platform</th>
   </tr>
   <tr>
@@ -42,7 +42,7 @@ Csak az elérhető Azure Storage-ügyféleszközök pillanatképét mellékelt. 
     <td>Linux</td>
   </tr>
   <tr>
-    <td><a href="https://azure.microsoft.com/features/azure-portal/">Microsoft Azure Portal</a></td>
+    <td><a href="https://azure.microsoft.com/features/azure-portal/">Microsoft Azure portál</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -85,20 +85,20 @@ Csak az elérhető Azure Storage-ügyféleszközök pillanatképét mellékelt. 
   </tr>
 </table>
 
-**Külső Azure Storage-ügyféleszközök**
+**Külső gyártótól származó Azure Storage-ügyféleszközök**
 
-A Microsoft nem ellenőrizte a funkció vagy engedte, hogy a következő külső eszközök minőségét, és a listaelem nem jelenti azt, a Microsoft feltüntetése.
+Nem ellenőrizte, hogy a következő harmadik féltől származó eszközök milyen funkcionalitást vagy minőséget igényelnek, és azok listája nem a Microsoft jóváhagyását jelenti.
 
 <table>
   <tr>
-    <th rowspan="2">Az Azure Storage-ügyféleszköz</th>
+    <th rowspan="2">Azure Storage-ügyfél eszköz</th>
     <th rowspan="2">Blokkblob</th>
-    <th rowspan="2">Page Blob</th>
-    <th rowspan="2">Hozzáfűző Blob</th>
+    <th rowspan="2">Lapblob</th>
+    <th rowspan="2">Blob hozzáfűzése</th>
     <th rowspan="2">Táblák</th>
-    <th rowspan="2">Üzenetsorok</th>
+    <th rowspan="2">Várólisták</th>
     <th rowspan="2">Fájlok</th>
-    <th rowspan="2">Ingyenes</th>
+    <th rowspan="2">Free</th>
     <th colspan="4">Platform</th>
   </tr>
   <tr>
@@ -115,14 +115,14 @@ A Microsoft nem ellenőrizte a funkció vagy engedte, hogy a következő külső
     <td>X</td>
     <td>X</td>
     <td>X</td>
-    <td>Próbaverzió</td>
+    <td>Próba</td>
     <td></td>
     <td>X</td>
     <td></td>
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">Redgate: Azure Explorer</a></td>
+    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">RedGate Azure Explorer</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -142,15 +142,15 @@ A Microsoft nem ellenőrizte a funkció vagy engedte, hogy a következő külső
     <td></td>
     <td>X</td>
     <td>X</td>
-    <td></td>
-    <td>I</td>
-    <td></td>
     <td>X</td>
+    <td>I</td>
+    <td>X</td>
+    <td></td>
     <td></td>
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://www.cloudberrylab.com/explorer/microsoft-azure.aspx">CloudBerry Explorer</a></td>
+    <td><a href="https://www.cloudberrylab.com/explorer/microsoft-azure.aspx">Törpemálna Explorer</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
@@ -164,14 +164,14 @@ A Microsoft nem ellenőrizte a funkció vagy engedte, hogy a következő külső
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://www.gapotchenko.com/cloudcombine">Felhőalapú egyesítése</a></td>
+    <td><a href="https://www.gapotchenko.com/cloudcombine">Felhőbeli egyesítés</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
     <td>X</td>
     <td>X</td>
     <td></td>
-    <td>Próbaverzió</td>
+    <td>Próba</td>
     <td></td>
     <td>X</td>
     <td></td>
@@ -199,7 +199,7 @@ A Microsoft nem ellenőrizte a funkció vagy engedte, hogy a következő külső
     <td></td>
     <td></td>
     <td></td>
-    <td>Próbaverzió</td>
+    <td>Próba</td>
     <td></td>
     <td>X</td>
     <td></td>

@@ -3,7 +3,7 @@ title: Azure Service Fabric Reliable Actors Java-alkalmazás létrehozása Linux
 description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe egy Java Service Fabric Reliable Actors-alkalmazást öt perc alatt.
 services: service-fabric
 documentationcenter: java
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/18/2018
-ms.author: aljo
-ms.openlocfilehash: 37d9c17ff10922aa524fa2fe3eb8abff92c83052
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 4b008c001e1c4749b6ab6f9f21eff479f007c05c
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394047"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599681"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Az első Java Service Fabric Reliable Actors-alkalmazás létrehozása Linuxon
 > [!div class="op_single_selector"]
@@ -50,8 +50,8 @@ A Reliable Actors használatának elsajátításához csak néhány alapfogalomm
 * **Aktorillesztő**. Az aktor illesztője határozza meg az aktor erős típusmegadású nyilvános illesztőjét. A Reliable Actor modellterminológiában az aktor illesztője határozza meg azt, hogy az aktor milyen típusú üzeneteket képes értelmezni és feldolgozni. Az aktor illesztőjét használják a további aktorok és ügyfélalkalmazások, hogy üzeneteket „küldjenek” (aszinkron módon) az aktor felé. A Reliable Actors több illesztőt is képes implementálni.
 * **ActorProxy-osztály**. Az ActorProxy-osztály használatával hívják meg az ügyfélalkalmazások az aktor illesztőjén keresztül közzétett metódusokat. Az ActorProxy-osztály két fontos funkciót lát el:
   
-  * Névfeloldás: Milyen pontossággal képes megállapítani az aktor helyét a fürtben (megtalálja a fürt hol található a csomópont).
-  * Tevékenységhibák kezelése: Képes újra megpróbálkozni és újra feloldani az aktor helyét például a fürt egy másik csomópont át kellett helyezni az aktort hiba után.
+  * Névfeloldás: Képes megkeresni a szereplőt a fürtben (keresse meg a fürt azon csomópontját, ahol a gazdagép található).
+  * Sikertelen kezelést: Újrapróbálkozhat a metódus meghívásával, és újból feloldja a színész helyét, például olyan hibát, amely megköveteli, hogy a szereplő a fürt egy másik csomópontjára legyen áthelyezve.
 
 Az aktorok illesztőivel kapcsolatban a következő szabályokat érdemes megemlíteni:
 
@@ -219,18 +219,18 @@ Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel 
 Bontsa ki az **Alkalmazások** csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazás típusához, és egy másik a típus első példányához.
 
 > [!IMPORTANT]
-> Biztonságos Linux-fürt az Azure-ban az alkalmazás központi telepítése, konfigurálása a Service Fabric-futtatókörnyezet az alkalmazás érvényesítendő tanúsítvánnyal kell. Ez lehetővé teszi a Reliable Actors szolgáltatások kommunikálni az alapul szolgáló Service Fabric-futtatókörnyezet API-k. További tudnivalókért lásd: [egy Reliable Services-alkalmazás Linux-fürtök konfigurálása](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Ha az alkalmazást egy biztonságos Linux-fürtön szeretné üzembe helyezni az Azure-ban, konfigurálnia kell egy tanúsítványt, hogy érvényesítse az alkalmazást a Service Fabric futtatókörnyezettel. Ezzel lehetővé teszi, hogy a Reliable Actors szolgáltatásai kommunikáljanak a mögöttes Service Fabric Runtime API-kkal. További információ: [Reliable Services alkalmazás konfigurálása Linux-fürtökön való futtatásra](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Tesztügyfél elindítása és feladatátvétel végrehajtása
 Egy aktor semmit sem tesz önmagában. Egy másik szolgáltatást vagy alkalmazást igényel, amely üzeneteket küld a számára. Az aktorsablon egy egyszerű tesztszkriptet tartalmaz, amelyet az aktorszolgáltatással való kommunikációra használhat.
 
 > [!Note]
-> A tesztügyfél az ActorProxy-osztály szereplők, amelyek a fürtön, az aktorszolgáltatás belül futtatandó vagy megoszthatja az ugyanazon IP-címtér folytatott kommunikációhoz használ.  A tesztügyfél futtathatja a helyi fejlesztési fürt ugyanazon a számítógépen.  A távoli fürt actors folytatott kommunikációhoz, azonban telepítenie kell egy átjárót a fürtön, amely az aktorokat külső kommunikációt kezeli.
+> A tesztelési ügyfél a ActorProxy osztályt használja a szereplőkkel folytatott kommunikációhoz, amelyeknek a Actor szolgáltatással megegyező fürtön kell futniuk, vagy meg kell osztaniuk ugyanazt az IP-címtartományt.  A tesztelési ügyfelet futtathatja ugyanazon a számítógépen is, mint a helyi fejlesztési fürtön.  Egy távoli fürtben lévő szereplőkkel való kommunikációhoz azonban olyan átjárót kell üzembe helyeznie a fürtön, amely a szereplőkkel folytatott külső kommunikációt kezeli.
 
 1. Futtassa a szkriptet a figyelési segédprogram használatával az aktorszolgáltatás kimenetének megtekintéséhez.  A teszt-szkript a(z) `setCountAsync()` metódust hívja meg az aktorhoz a számláló léptetéséhez és a(z) `getCountAsync()` metódust a számláló új értékének beolvasásához, majd megjeleníti ezt az értéket a konzolon.
 
-   MAC OS X esetén kell tárolón belül az egy helyre a HelloWorldTestClient mappába másolja a következő további parancsok futtatásával.    
+   MAC OS X esetén a következő további parancsok futtatásával át kell másolnia a HelloWorldTestClient mappát a tárolóban lévő néhány helyre.    
     
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
@@ -243,7 +243,7 @@ Egy aktor semmit sem tesz önmagában. Egy másik szolgáltatást vagy alkalmaz�
     watch -n 1 ./testclient.sh
     ```
 
-2. Keresse meg az aktorszolgáltatás elsődleges replikáját futtató csomópontot a Service Fabric Explorerben. Az alábbi képernyőképen ez a 3. csomópont. A szolgáltatás elsődleges replikája kezeli az olvasási és írási műveleteket.  A szolgáltatás állapotváltozásai replikálódnak, 0 és 1 az alábbi képernyőképen csomóponton futó másodlagos replikára.
+2. Keresse meg az aktorszolgáltatás elsődleges replikáját futtató csomópontot a Service Fabric Explorerben. Az alábbi képernyőképen ez a 3. csomópont. A szolgáltatás elsődleges replikája kezeli az olvasási és írási műveleteket.  A szolgáltatás állapotának módosításait ezután a rendszer replikálja a másodlagos replikák között, az alábbi képernyőképen a 0. és az 1. csomóponton fut.
 
     ![Az elsődleges replika megkeresése a Service Fabric Explorerben][sfx-primary]
 
@@ -303,7 +303,7 @@ A Service Fabric Reliable Services támogatása az alkalmazáshoz.
   }
   ```
 
-### <a name="others"></a>Egyéb
+### <a name="others"></a>Továbbiak
 #### <a name="transport"></a>Átvitel
 
 Az átviteli réteg támogatása a Service Fabric Java-alkalmazáshoz. Ezt a függőséget nem kell kifejezetten hozzáadnia a Reliable Actor- vagy Service-alkalmazásaihoz, hacsak a programozást nem az átviteli réteg szintjén végzi.

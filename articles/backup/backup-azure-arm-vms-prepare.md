@@ -1,270 +1,270 @@
 ---
-title: Azure virtuális gépek biztonsági mentése az Azure Backup segítségével a Recovery Services-tároló
-description: Ismerteti, hogyan lehet Azure virtuális gépek biztonsági mentése a Recovery Services-tároló az Azure Backup használatával
+title: Azure-beli virtuális gépek biztonsági mentése egy Recovery Services tárolóban Azure Backup használatával
+description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure-beli virtuális gépekről egy Recovery Services-tárolóban a Azure Backup használatával
 service: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: raynew
-ms.openlocfilehash: 0835c3af52a16e7549698e35b3fded0f64c71dc4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
-ms.translationtype: MT
+ms.author: dacurwin
+ms.openlocfilehash: 9a6ea961f7433f511ef22a6ac9aaefa51b5df8aa
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447709"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663692"
 ---
-# <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure virtuális gépek biztonsági mentése Recovery Services-tárolóban
+# <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
 
-Ez a cikk bemutatja, hogyan lehet Azure virtuális gépek biztonsági mentése Recovery Services-tárolót, a használatával a [Azure Backup](backup-overview.md) szolgáltatás.
+Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure-beli virtuális gépekről egy Recovery Services-tárolóban a [Azure Backup](backup-overview.md) szolgáltatás használatával.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Az Azure virtuális gépek előkészítése.
+> * Azure-beli virtuális gépek előkészítése.
 > * Hozzon létre egy tárolót.
-> * Virtuális gépek felderítéséhez és a egy biztonsági mentési szabályzat konfigurálása.
-> * Az Azure virtuális gépek biztonsági mentésének engedélyezése.
+> * Virtuális gépek felderítése és biztonsági mentési szabályzat konfigurálása.
+> * Azure-beli virtuális gépek biztonsági mentésének engedélyezése.
 > * Futtatja a kezdeti biztonsági mentést.
 
 
 > [!NOTE]
-> Ez a cikk azt ismerteti, hogyan állítsa be a tárolót, és válassza ki a virtuális gépek biztonsági mentése. Ez hasznos, ha azt szeretné, hogy több virtuális gépek biztonsági mentése. Lehetőségként [egyetlen Azure virtuális gép biztonsági mentése](backup-azure-vms-first-look-arm.md) közvetlenül a a virtuális gép beállításait.
+> Ez a cikk bemutatja, hogyan állíthat be egy tárolót, és válassza ki a virtuális gépeket a biztonsági mentéshez. Akkor hasznos, ha több virtuális gépről szeretne biztonsági mentést készíteni. Azt is megteheti, hogy [egy Azure-beli virtuális gép biztonsági mentését](backup-azure-vms-first-look-arm.md) közvetlenül a virtuális gép beállításaiból végezheti el.
 
 ## <a name="before-you-start"></a>Előkészületek
 
 
-- [Felülvizsgálat](backup-architecture.md#architecture-direct-backup-of-azure-vms) az Azure virtuális gép biztonsági mentési architektúra.
-- [Ismerje meg](backup-azure-vms-introduction.md) Azure virtuális gépek biztonsági mentését, és a biztonsági mentési bővítményt.
-- [Tekintse át a támogatási mátrix](backup-support-matrix-iaas.md) biztonsági mentés konfigurálása előtt.
+- [Tekintse át](backup-architecture.md#architecture-direct-backup-of-azure-vms) az Azure virtuális gép biztonsági mentési architektúráját.
+- [További](backup-azure-vms-introduction.md) információ Az Azure virtuális gépek biztonsági mentése és a biztonsági mentési bővítmény.
+- A biztonsági mentés konfigurálása előtt [tekintse át a támogatási mátrixot](backup-support-matrix-iaas.md) .
 
-Ezenkívül van néhány dolgot, amely a bizonyos körülmények között szüksége lehet:
+Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
 
-- **A Virtuálisgép-ügynök telepítése a virtuális gépen**: Az Azure Backup biztonsági másolatot készít az Azure virtuális gépek a gépen futó Azure-beli Virtuálisgép-ügynök bővítmény telepítésével. Ha a virtuális gép az Azure marketplace-lemezképből lett létrehozva, az ügynök telepítve és fut. Ha egy egyéni virtuális Gépet hoz létre, vagy egy helyszíni gép áttelepítése, szüksége lehet [telepítse kézzel az ügynököt](#install-the-vm-agent).
-- **Explicit módon engedélyezi a kimenő hozzáférést**: Általában nem kell explicit módon engedélyezi a kimenő hálózati hozzáférés egy Azure virtuális gép ahhoz, hogy azt az Azure Backup folytatott kommunikációhoz. Azonban néhány virtuális gépet is szembesülhet kapcsolódási problémák, megjelenítése a **ExtensionSnapshotFailedNoNetwork** hiba csatlakozásra tett kísérlet közben. Ha ez történik, akkor [explicit módon engedélyezi a kimenő hozzáférést](#explicitly-allow-outbound-access), így az Azure Backup bővítmény képes kommunikálni az Azure nyilvános IP-címeket, a biztonsági mentések forgalmától.
+- **Telepítse a**virtuálisgép-ügynököt a virtuális gépre: Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a számítógépen futó Azure virtuálisgép-ügynök bővítményének telepítésével. Ha a virtuális gép Azure Piactéri rendszerképből lett létrehozva, akkor az ügynök telepítve van és fut. Ha egyéni virtuális gépet hoz létre, vagy egy helyszíni gépet telepít át, előfordulhat, hogy [manuálisan kell telepítenie az ügynököt](#install-the-vm-agent).
+- **Kimenő hozzáférés explicit módon történő engedélyezése**: Általában nem kell explicit módon engedélyeznie az Azure-beli virtuális gépek kimenő hálózati hozzáférését ahhoz, hogy kommunikálni tudjon a Azure Backupával. Előfordulhat azonban, hogy egyes virtuális gépek kapcsolódási problémákba ütközik, és a kapcsolódási kísérlet során **ExtensionSnapshotFailedNoNetwork** hibaüzenetet jelenítenek meg. Ha ez történik, [explicit módon engedélyeznie kell a kimenő hozzáférést](#explicitly-allow-outbound-access), így a Azure Backup bővítmény képes kommunikálni az Azure nyilvános IP-címeivel a biztonsági mentési forgalomhoz.
 
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
- A tároló tárolja a biztonsági másolatok és az idők során létrehozott helyreállítási pontokat, és tárolja a biztonsági másolat gépek társított biztonsági mentési szabályzatok. Hozzon létre egy tárolót a következőképpen:
+ Egy tároló tárolja az idő múlásával létrehozott biztonsági mentéseket és helyreállítási pontokat, és a biztonsági mentési szabályzatokat a biztonsági másolattal rendelkező gépekhez társítja. Hozzon létre egy tárolót az alábbiak szerint:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Írja be a kifejezést a keresőmezőbe, **Recovery Services**. A **szolgáltatások**, kattintson a **Recovery Services-tárolók**.
+2. A Keresés mezőbe írja be a következőt: **Recovery Services**. A **szolgáltatások**területen kattintson a **Recovery Services**-tárolók elemre.
 
-     ![Keresse meg a Recovery Services-tárolók](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
+     ![Recovery Services-tárolók keresése](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
 
-3. A **Recovery Services-tárolók** menüben kattintson a **+ Hozzáadás**.
+3. A **Recovery Services** -tárolók menüben kattintson a **+ Hozzáadás**elemre.
 
      ![Recovery Services-tároló létrehozása – 2. lépés](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
 
-4. A **Recovery Services-tároló**, adjon meg egy rövid nevet, a tárolót azonosító.
+4. A **Recovery Services**-tárolóban írjon be egy rövid nevet a tároló azonosításához.
     - A névnek egyedinek kell lennie az Azure-előfizetéshez.
-    - 2 – 50 karaktert tartalmazhat.
+    - 2 – 50 karakterből állhat.
     - Betűvel kell kezdődnie, és csak betűket, számokat és kötőjeleket tartalmazhat.
-5. Válassza ki az Azure-előfizetést, erőforráscsoportot és a földrajzi régióban, amelyben a tároló kell létrehozni. Ezt követően kattintson a **Create** (Létrehozás) gombra.
-    - A tároló létrehozása egy ideig is eltarthat.
-    - Figyelje a jobb felső területén, a portál.
+5. Válassza ki azt az Azure-előfizetést, erőforráscsoportot és földrajzi régiót, amelyben létre kívánja hozni a tárolót. Ezt követően kattintson a **Create** (Létrehozás) gombra.
+    - A tár létrehozása eltarthat egy ideig.
+    - Figyelje az állapotjelző értesítéseket a portál jobb felső részén.
 
 
- Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listája. Ha nem látja a tárolót, válassza ki a **frissítése**.
+ A tároló létrehozása után megjelenik a Recovery Services-tárolók listájában. Ha nem látja a tárolót, válassza a **frissítés**lehetőséget.
 
 ![A Backup-tárolók listája](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
 > [!NOTE]
-> Az Azure Backup szolgáltatás létrehoz egy külön erőforráscsoportot (nem a virtuális gép erőforráscsoportja) pillanatkép, a névadási tárolására **AzureBackupRG_geography_number** (Példa: AzureBackupRG_northeurope_1). Ebben az erőforráscsoportban lévő adatok lesznek megőrizve a időtartam napban megadott *megőrzése azonnali helyreállítási pillanatképének* szakaszban az Azure virtuális gép biztonsági mentési házirend.  Egy zárolás alkalmazza ezt az erőforráscsoportot, a biztonsági mentési hibáját okozhatja.<br>
-Ebben az erőforráscsoportban kell is zárható ki minden olyan név/kód korlátozások, egy eszközkorlátozási szabályzatot blokkolhatja az erőforrás azt újra a biztonsági mentési hibák miatt a gyűjtemények létrehozása.
+> Azure Backup szolgáltatás létrehoz egy különálló erőforráscsoportot (a virtuálisgép-erőforráscsoport kivételével) a pillanatkép tárolására a **AzureBackupRG_geography_number** elnevezési formátumával (példa: AzureBackupRG_northeurope_1). Az ebben az erőforráscsoportban található adatok az Azure-beli virtuális gép biztonsági mentési szabályzatának az *azonnali helyreállítási pillanatkép* megtartása szakaszában megadott időtartam alatt lesznek tárolva.  Az erőforráscsoport zárolásának alkalmazása biztonsági mentési hibákhoz vezethet.<br>
+Ezt az erőforráscsoportot ki kell zárni bármely név/címke korlátozásból, mivel a korlátozási szabályzat letilthatja az erőforrás-pont gyűjtemények létrehozását a biztonsági mentési hibák miatt.
 
 
-### <a name="modify-storage-replication"></a>Tárreplikáció módosítása
+### <a name="modify-storage-replication"></a>Tárolási replikáció módosítása
 
-Alapértelmezés szerint a tárolók használata [georedundáns tárolás (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+Alapértelmezés szerint a tárolók a [geo-redundáns tárolást (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)használják.
 
-- Ha a tároló az elsődleges biztonsági mentési mechanizmus, javasoljuk, GRS-t használ.
-- Használhat [helyileg redundáns tárolás (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) egy olcsóbb számára.
+- Ha a tároló elsődleges biztonsági mentési mechanizmusa, javasoljuk, hogy használja a GRS-t.
+- A [helyileg redundáns tárolást (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) is használhatja egy olcsóbb megoldáshoz.
 
-Módosítsa a következőképpen tárolóreplikáció típusa:
+Módosítsa a tárolási replikálás típusát a következőképpen:
 
-1. Kattintson az új tároló **tulajdonságok** a a **beállítások** szakaszban.
-2. A **tulajdonságok**alatt **biztonsági mentés konfigurációja**, kattintson a **frissítés**.
-3. Válassza ki a tárolóreplikáció típusa, és kattintson a **mentése**.
+1. Az új tárolóban kattintson a **Tulajdonságok** elemre a **Beállítások** szakaszban.
+2. A **Tulajdonságok**alatt a **biztonsági mentés konfigurálása**területen kattintson a **frissítés**elemre.
+3. Válassza ki a tárolási replikálás típusát, majd kattintson a **Mentés**gombra.
 
       ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/full-blade.png)
 > [!NOTE]
-   > A tárolóreplikáció típusa nem módosítható, miután a tároló be van állítva, és tartalmazza a biztonsági másolati elemek. Ha azt szeretné, ehhez létre kell hoznia a tárolóban.
+   > A tárolási replikálási típus nem módosítható a tároló beállítása és a biztonsági mentési elemek létrehozása után. Ha ezt szeretné tenni, újra létre kell hoznia a tárolót.
 
 ## <a name="apply-a-backup-policy"></a>Biztonsági mentési szabályzat alkalmazása
 
-A tároló biztonsági mentési szabályzat konfigurálása.
+Állítson be biztonsági mentési szabályzatot a tárolóhoz.
 
-1. Kattintson a tárolóban **+ biztonsági mentés** a a **áttekintése** szakaszban.
+1. A tárolóban kattintson a **+ biztonsági mentés** elemre az **Áttekintés** szakaszban.
 
    ![Biztonsági mentés gomb](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
 
-2. A **biztonsági mentés célja** > **a számítási feladat futtató?** kiválasztása **Azure**. A **miről szeretne biztonsági másolatot készíteni?** kiválasztása **virtuális gép** >  **OK**. Ez regisztrálja a Virtuálisgép-bővítményt a tárolóban.
+2. A **biztonsági mentés célja** > , hogy**hol fut a munkaterhelés?** válassza az **Azure**lehetőséget. A **Miről szeretne biztonsági másolatot készíteni?** válassza a **virtuális gép** >  **OK**elemet. Ezzel regisztrálja a virtuálisgép-bővítményt a tárolóban.
 
-   ![Biztonsági mentés és a biztonsági mentés célja panel](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
+   ![Biztonsági mentési és biztonsági mentési célok ablaktáblái](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
-3. A **biztonsági mentési szabályzat**, válassza ki a tárolóval társítani kívánt házirendet.
-    - A virtuális gép naponta egyszer készít az alapértelmezett szabályzat. A napi biztonsági mentések 30 napig megőrződnek. Az azonnali helyreállítás pillanatfelvételek megmaradnak a két napig.
-    - Ha nem szeretné használni az alapértelmezett házirendet, válassza ki a **hozzon létre új**, és a egy egyéni szabályzat létrehozása a következő eljárásban leírtak szerint.
+3. A **biztonsági mentési házirendben**válassza ki a tárolóhoz társítandó szabályzatot.
+    - Az alapértelmezett házirend naponta egyszer biztonsági másolatot készít a virtuális gépről. A napi biztonsági mentések 30 napig őrződnek meg. Az azonnali helyreállítási pillanatképeket két napig őrzi meg a rendszer.
+    - Ha nem szeretné használni az alapértelmezett házirendet, válassza az **új létrehozása**lehetőséget, és hozzon létre egy egyéni szabályzatot a következő eljárásban leírtak szerint.
 
       ![Alapértelmezett biztonsági mentési szabályzat](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
-4. A **válassza ki a virtuális gépek**, válassza ki a virtuális gépek biztonsági mentését a szabályzattal szeretné. Ezután kattintson az **OK** gombra.
+4. A **virtuális gépek kiválasztása**területen válassza ki azokat a virtuális gépeket, amelyekről biztonsági másolatot szeretne készíteni a szabályzat használatával. Ezután kattintson az **OK** gombra.
 
-   - A kijelölt virtuális gépek ellenőrzése megtörtént.
-   - Választhat a virtuális gépek és a tárolónak ugyanabban a régióban.
-   - Virtuális gépek csak biztonsági mentésre alkalmas Ezenkívül egyetlen tárban.
+   - A kiválasztott virtuális gépek ellenőrzése megtörtént.
+   - Csak a tárolóval megegyező régióban lévő virtuális gépeket lehet kiválasztani.
+   - A virtuális gépek csak egyetlen tárolóban készíthetők biztonsági mentésre.
 
-     !["A virtuális gépek kiválasztása" panelen](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
+     !["Virtuális gépek kiválasztása" panel](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-5. A **biztonsági mentési**, kattintson a **biztonsági mentés engedélyezése**. Telepítheti a szabályzatot a tárolóban, és a virtuális gépeket, és telepíti a biztonsági mentési bővítményt a Virtuálisgép-ügynök az Azure virtuális gépen.
+5. A **biztonsági mentés**területen kattintson a **biztonsági mentés engedélyezése**elemre. Ezzel telepíti a szabályzatot a tárolóba és a virtuális gépekre, és telepíti a biztonsági mentési bővítményt az Azure-beli virtuális gépen futó virtuálisgép-ügynökön.
 
-     !["A biztonsági mentés engedélyezése" gombra](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
+     !["Biztonsági mentés engedélyezése" gomb](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
-Biztonsági mentés engedélyezése után:
+A biztonsági mentés engedélyezése után:
 
-- A Backup szolgáltatás telepíti a biztonsági mentési bővítményt, a virtuális gép fut-e.
-- Egy kezdeti biztonsági mentés a biztonsági mentési ütemterv szerint fog futni.
-- Ha futtatja a biztonsági mentések, vegye figyelembe, hogy:
-    - Egy futó virtuális Gépre van a legnagyobb valószínűséggel egy alkalmazáskonzisztens helyreállítási pont rögzítésére.
-    - Azonban akkor is, ha a virtuális gép ki van kapcsolva biztonsági mentését. Az ilyen virtuális Gépet egy offline állapotú virtuális gép néven ismert. Ebben az esetben a helyreállítási pont összeomlás-konzisztens lesz.
+- A Backup szolgáltatás telepíti a biztonsági mentési bővítményt, függetlenül attól, hogy a virtuális gép fut-e.
+- A kezdeti biztonsági mentés a biztonsági mentési ütemterv szerint fog futni.
+- A biztonsági mentések futtatásakor vegye figyelembe a következőket:
+    - A-t futtató virtuális gépeknek a legnagyobb esélye van egy alkalmazás-konzisztens helyreállítási pont rögzítésére.
+    - Azonban akkor is, ha a virtuális gép ki van kapcsolva, biztonsági másolat készül róla. Az ilyen virtuális gépek offline virtuális gép néven ismertek. Ebben az esetben a helyreállítási pont összeomlás-konzisztens lesz.
 
 
 ### <a name="create-a-custom-policy"></a>Egyéni szabályzat létrehozása
 
-Ha egy új biztonsági mentési szabályzat létrehozása lehetőséget választotta, adja meg a házirend-beállításokat.
+Ha új biztonsági mentési szabályzatot jelölt ki, töltse ki a házirend-beállításokat.
 
-1. A **házirendnév**, adjon meg egy kifejező nevet.
-2. A **biztonsági mentés ütemezése** adja meg, amikor a biztonsági mentéseket kell tenni. Az Azure virtuális gépek napi vagy heti biztonsági mentéseket is igénybe vehet.
-2. A **azonnali visszaállítása**, adja meg, hogy mennyi ideig szeretné megőrizni a pillanatképek helyi az azonnali helyreállítás.
-    - Visszaállításkor, biztonsági másolatot a virtuális gép lemezek vannak storage-tárhelyéből, helyreállítási tárolási helyét a hálózaton keresztül. Az azonnali helyreállítás biztonsági mentési adatok átvitele a tárolóba való várakozás nélkül egy biztonsági mentési feladat során vett helyileg tárolt pillanatképek használhatja.
-    - Öt nap közötti, az azonnali helyreállítás pillanatképeinek őrizheti meg. Két napot az alapértelmezett beállítása.
-3. A **megőrzési**, adja meg, hogy mennyi ideig szeretné megőrizni a a napi vagy heti biztonsági mentési pontok.
-4. A **havi biztonsági mentési pontok megőrzése**, adja meg, hogy szeretné-e egy-egy havi biztonsági másolat a napi vagy heti biztonsági mentések megtartása.
-5. Kattintson a **OK** mentse a szabályzatot.
+1. A **Házirend neve**mezőben adjon meg egy értelmes nevet.
+2. A **biztonsági mentés ütemezése** beállításnál válassza ki a biztonsági mentéseket. Az Azure-beli virtuális gépek napi vagy heti biztonsági mentését is elvégezheti.
+2. Az **azonnali visszaállítás**mezőben adja meg, hogy az azonnali visszaállításhoz milyen hosszan szeretné megőrizni a pillanatképeket helyileg.
+    - A visszaállításkor a rendszer átmásolja a virtuális gép lemezeit a tárterületről a hálózatról a helyreállítási tároló helyére. Az azonnali visszaállítással a biztonsági mentési feladatok során a helyileg tárolt pillanatképeket is kihasználhatja, anélkül, hogy a biztonsági mentési adatok átvitelére kellene várnia a tárolóba.
+    - Az azonnali visszaállításhoz a pillanatképeket egy-öt nap alatt megtarthatja. Két nap az alapértelmezett beállítás.
+3. A **megőrzési tartomány**mezőben adja meg, hogy mennyi ideig szeretné megőrizni a napi vagy heti biztonsági mentési pontokat.
+4. A **havi biztonsági mentési pontok megőrzése**mezőben adja meg, hogy a napi vagy heti biztonsági mentések havi biztonsági mentését szeretné-e megőrizni.
+5. A szabályzat mentéséhez kattintson **az OK** gombra.
 
     ![Új biztonsági mentési szabályzat](./media/backup-azure-arm-vms-prepare/new-policy.png)
 
 > [!NOTE]
-   > Az Azure Backup nem támogatja az Azure virtuális gép biztonsági mentéseinek a nyári időszámítás – mentés módosítása a óra automatikus illesztését. Idő változás esetén módosítsa a biztonsági mentési szabályzatok manuálisan szükség szerint.
+   > A Azure Backup nem támogatja az automatikus óra-beállítást az Azure-beli virtuális gépek biztonsági mentésének napfényes változásaihoz. Az idő változásakor a biztonsági mentési szabályzatokat szükség szerint manuálisan kell módosítani.
 
-## <a name="trigger-the-initial-backup"></a>Az eseményindító a kezdeti biztonsági mentés
+## <a name="trigger-the-initial-backup"></a>A kezdeti biztonsági mentés elindítása
 
-A kezdeti biztonsági mentés a ütemterv szerint fog futni, de is futtatható legyen azonnal az alábbiak szerint:
+A kezdeti biztonsági mentés az ütemterv szerint fog futni, de az alábbiak szerint azonnal futtatható:
 
-1. A tároló menüjében kattintson **biztonsági mentési elemek**.
-2. A **biztonsági másolati elemek** kattintson **Azure virtuális gép**.
-3. Az a **biztonsági másolati elemek** listában, kattintson a három pontra (...).
-4. Kattintson a **biztonsági mentés**.
-5. A **biztonsági mentés**, használja a naptárvezérlőt annak, hogy megőrződjön-e a helyreállítási pont kiválasztására. Ezután kattintson az **OK** gombra.
-6. A portál feladatértesítések figyelésére. Figyelheti a feladat előrehaladását a tároló irányítópultján > **biztonsági mentési feladatok** > **folyamatban**. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
+1. A tároló menüjében kattintson a **biztonsági másolati elemek elemre**.
+2. A **biztonsági mentési elemek** lehetőségnél kattintson az **Azure virtuális gép**elemre.
+3. A **biztonsági mentési elemek** listában kattintson a három pontra (...).
+4. Kattintson a **biztonsági mentés**gombra.
+5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ezután kattintson az **OK** gombra.
+6. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok** > **folyamatban**vannak. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
 
-## <a name="verify-backup-job-status"></a>Biztonsági mentési feladat állapotának ellenőrzése
+## <a name="verify-backup-job-status"></a>Biztonsági mentési feladatok állapotának ellenőrzése
 
-A biztonsági mentési feladat részleteit a minden egyes virtuális gépek biztonsági mentésének 2 fázisból áll a **pillanatkép** fázis követ a **adatok átvitele a tárba** fázisban.<br/>
-A pillanatkép fázis együtt a lemezen tárolt helyreállítási pont rendelkezésre állását garantálja **azonnali visszaállítja** és legfeljebb 5 napig attól függően, a felhasználó által beállított pillanatkép megőrzési érhetők el. Adatok átvitele a tárba létrehoz egy helyreállítási pontot a hosszú távú megőrzésének tárolóban. Adatok átvitele a tárba csak elindul a pillanatkép fázis befejezése után.
+Az egyes virtuális gépek biztonsági mentésének biztonsági mentési feladata 2 fázisból áll, a **Pillanatkép** fázisát, majd az **adatok átvitele a tároló** fázisát.<br/>
+A pillanatkép-fázis garantálja egy helyreállítási pont rendelkezésre állását az **azonnali** helyreállításhoz használt lemezekkel együtt, és legfeljebb 5 napig elérhető, a felhasználó által konfigurált pillanatkép-megőrzéstől függően. Az adatok tárolóba való átvitele egy helyreállítási pontot hoz létre a tárban a hosszú távú megőrzés érdekében. Az adatok a tárba való átvitele csak a pillanatkép-fázis befejeződése után kezdődik.
 
-  ![Biztonsági mentési feladat állapota](./media/backup-azure-arm-vms-prepare/backup-job-status.png)
+  ![Biztonsági mentési feladatok állapota](./media/backup-azure-arm-vms-prepare/backup-job-status.png)
 
-Kettő **részfeladatok** a háttér egy előtér biztonsági mentési feladatot, amely a ellenőrizni kell az alkalmazás futtatását a **biztonsági mentési feladat** részleteit tartalmazó panel adott, az alábbi:
+Két Alfeladat fut a háttérben, egyet az előtér-biztonsági mentési feladathoz, amely az alábbi módon ellenőrizhető a **biztonsági mentési feladat** részletei panelen:
 
-  ![Biztonsági mentési feladat állapota](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
+  ![Biztonsági mentési feladatok állapota](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
 
-A **adatok átvitele a tárba** fázis a lemezek méretétől függően befejeződik, a lemez és számos más tényező churn több napig tarthat.
+Az **adatok átvitele a tárba** fázisba több napot is igénybe vehet, a lemezek méretétől, a lemeztől és számos más tényezőtől függően.
 
-Feladat állapotának függvényében a következő esetekben:
+A feladatok állapota a következő esetektől függően változhat:
 
-**Snapshot** | **Adatok átvitele a tárba** | **Feladat állapota**
+**Snapshot** | **Adatok átvitele a tárba** | **Feladatok állapota**
 --- | --- | ---
-Befejeződött | Folyamatban van | Folyamatban van
+Befejeződött | Folyamatban | Folyamatban
 Befejeződött | Kihagyva | Befejeződött
 Befejeződött | Befejeződött | Befejeződött
 Befejeződött | Meghiúsult | Figyelmeztetéssel fejeződött be
 Meghiúsult | Meghiúsult | Meghiúsult
 
 
-Most már ezzel a képességgel az ugyanazon virtuális géphez, két biztonsági mentést is futtatható egyszerre, de mindkét fázisban (pillanatkép, az adatok átvitele a tárba) csak egy részfeladat futtathat. Ezért a forgatókönyvek is, hogy egy folyamatban lévő biztonsági mentési feladat sikertelen lesz a következő nap backup eredményezett elkerülik a elválasztás funkciót. Ezt követő napi biztonsági mentések is rendelkezik pillanatkép készítése során befejezett **adatok átvitele a tárba** lesz szükség, ha egy korábbi napi biztonsági mentési feladat előrehaladásának állapotban van.
-A növekményes helyreállítási pont létrehozása a tárolóban, a legutóbbi helyreállítási pont létrehozása a tárolóban lévő összes forgalom rögzíti. A felhasználó nincs nincs hatással a költségek.
+Ezzel a képességgel ugyanezen a virtuális gépen két biztonsági mentés futtatható párhuzamosan, de mindkét fázisban (pillanatkép, adatok átvitele a tárba) csak egy Alfeladat futhat. Így az olyan helyzetekben, amikor a következő napi biztonsági mentés sikertelen lesz, a biztonsági mentési feladat elkerülhető a leválasztási funkciókkal. A következő napi biztonsági másolatok rendelkezhetnek pillanatképtel **, miközben az adatok átvitele a tárba** kihagyva, ha egy korábbi nap biztonsági mentési feladata folyamatban van.
+A tárolóban létrehozott növekményes helyreállítási pont rögzíti a tárolóban létrehozott utolsó helyreállítási pont összes változását. Nincs hatással a felhasználóra.
 
 
-## <a name="optional-steps-install-agentallow-outbound"></a>Nem kötelező lépések (telepíthetik az ügynök/kimenő forgalom engedélyezése)
-### <a name="install-the-vm-agent"></a>Virtuálisgép-ügynök telepítése
+## <a name="optional-steps-install-agentallow-outbound"></a>Választható lépések (ügynök telepítése/kimenő engedélyezése)
+### <a name="install-the-vm-agent"></a>A virtuálisgép-ügynök telepítése
 
-Az Azure Backup biztonsági másolatot készít az Azure virtuális gépek a gépen futó Azure-beli Virtuálisgép-ügynök bővítmény telepítésével. Ha a virtuális gép létrejött, az Azure Marketplace-rendszerképpel, az ügynök telepítve és fut. Ha egy egyéni virtuális Gépet hoz létre, vagy egy helyszíni gép áttelepítése, szüksége lehet az ügynök telepítése manuálisan, a táblázat foglalja össze.
+Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a számítógépen futó Azure virtuálisgép-ügynök bővítményének telepítésével. Ha a virtuális gép Azure Piactéri rendszerképből lett létrehozva, akkor az ügynök telepítve van és fut. Ha egyéni virtuális gépet hoz létre, vagy egy helyszíni gépet telepít át, előfordulhat, hogy manuálisan kell telepítenie az ügynököt a táblázatban foglaltak szerint.
 
 **VM** | **Részletek**
 --- | ---
-**Windows** | 1. [Töltse le és telepítse](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) az ügynök MSI-fájlt.<br/><br/> 2. Telepítse a rendszergazdai engedélyekkel a gépen.<br/><br/> 3. Ellenőrizze a telepítést. A *C:\WindowsAzure\Packages* a virtuális gépen, kattintson a jobb gombbal **WaAppAgent.exe** > **tulajdonságok**. A a **részletei** lapon **termékverzió** kell 2.6.1198.718 vagy újabb.<br/><br/> Amikor az ügynököt frissít, győződjön meg arról, hogy nincs biztonsági mentési műveletek futnak, és [telepítse újra az ügynököt](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
-**Linux** | Telepítse az RPM- vagy DEB-csomag a terjesztési csomag adattárból. Ez a telepítése és frissítése az Azure Linux-ügynök az előnyben részesített módszere. Az összes a [terjesztési szolgáltatók által támogatott](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrálhatja az Azure-beli Linuxos ügynök csomag adattárak, valamint a lemezképek. Az ügynök nem érhető el a [GitHub](https://github.com/Azure/WALinuxAgent), de nem ajánlott, hogy ott telepítése.<br/><br/> Amikor az ügynököt frissít, ellenőrizze, nincs biztonsági mentési műveletek futnak, és a bináris fájlok frissítése.
+**Windows** | 1. [Töltse le és telepítse](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) az ügynök MSI-fájlját.<br/><br/> 2. Telepítsen rendszergazdai engedélyekkel a gépen.<br/><br/> 3. Ellenőrizze a telepítést. A virtuális gép *C:\WindowsAzure\Packages* kattintson a jobb gombbal a **WaAppAgent. exe** > **tulajdonságai**elemre. A **részletek** lapon a **termék verziószámának** 2.6.1198.718 vagy magasabbnak kell lennie.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, majd [telepítse újra az ügynököt](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
+**Linux** | A telepítést egy RPM vagy egy DEB-csomag használatával telepítheti a terjesztési csomag adattárában. Ez az Azure Linux-ügynök telepítésének és frissítésének előnyben részesített módszere. Az összes [támogatott terjesztési szolgáltató](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrálja az Azure Linux-ügynök csomagját a lemezképbe és a tárházba. Az ügynök elérhető a [githubon](https://github.com/Azure/WALinuxAgent), de nem javasoljuk, hogy innen telepítsen.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, és frissítse a bináris fájlokat.
 
-### <a name="explicitly-allow-outbound-access"></a>Explicit módon engedélyezi a kimenő hozzáférést
+### <a name="explicitly-allow-outbound-access"></a>Kimenő hozzáférés explicit engedélyezése
 
-A biztonsági mentési bővítményt a virtuális gépen az Azure nyilvános IP-címek kimenő hozzá kell férnie.
+A virtuális gépen futó biztonsági mentési bővítménynek kimenő hozzáférésre van szüksége az Azure nyilvános IP-címeihez.
 
-- Általában nem kell explicit módon engedélyezi a kimenő hálózati hozzáférés egy Azure virtuális gép ahhoz, hogy azt az Azure Backup folytatott kommunikációhoz.
-- Ha nehézségek rendelkező virtuális gépek csatlakoztatása, vagy ha a hibát látja **ExtensionSnapshotFailedNoNetwork** próbál csatlakozni, amikor érdemes explicit módon engedélyezi a hozzáférést, a biztonsági mentési bővítményt kommunikálhatnak az Azure nyilvános IP-címhez biztonsági mentési forgalom címeit. Hozzáférési módszer a következő táblázat foglalja össze.
+- Általában nem kell explicit módon engedélyeznie egy Azure-beli virtuális gép kimenő hálózati hozzáférését ahhoz, hogy kommunikálni tudjon a Azure Backupával.
+- Ha nehézségekbe ütközik a csatlakozó virtuális gépekkel kapcsolatban, vagy ha a kapcsolódási kísérlet során **ExtensionSnapshotFailedNoNetwork** hibaüzenet jelenik meg, explicit módon engedélyeznie kell a hozzáférést, hogy a biztonsági mentési bővítmény képes legyen kommunikálni az Azure nyilvános IP-címeivel a biztonsági mentéshez. forgalom. A hozzáférési módszereket az alábbi táblázat foglalja össze.
 
 
 **Beállítás** | **Művelet** | **Részletek**
 --- | --- | ---
-**Az NSG-szabályok beállítása** | Lehetővé teszi a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653).<br/><br/> Lehetővé teszi, és minden címtartományt kezelése, helyett hozzáadhat egy szabályt, amely engedélyezi a hozzáférést az Azure Backup szolgáltatás használata egy [szolgáltatáscímke](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure). | [További](../virtual-network/security-overview.md#service-tags) szolgáltatáscímkék kapcsolatban.<br/><br/> Szolgáltatások címkék hozzáférés-kezelés egyszerűsítése és többletköltséggel nem.
-**A proxy üzembe helyezése** | A forgalom útválasztási HTTP-proxy kiszolgáló telepítése. | Az Azure és a tároló nem csak a teljes hozzáférést biztosít.<br/><br/> Szabályozható a tároló URL-címek használata engedélyezett.<br/><br/> A virtuális gépek internet egyetlen pont hozzáférést.<br/><br/> Proxy további költségekkel.
-**Az Azure-tűzfal beállítása** | A virtuális gép, egy teljesen minősített tartománynév-címke az Azure Backup szolgáltatás a forgalom az Azure-tűzfalon keresztül | Könnyen használható, ha rendelkezik Azure-tűzfal beállítása egy virtuális hálózat alhálózatához.<br/><br/> Nem a saját FQDN-címkék létrehozása, és teljes tartománynevek módosíthatja a címke.<br/><br/> Ha az Azure-beli virtuális gépek felügyelt lemezekkel rendelkezik, szükség lehet további megnyitásához a tűzfalas (8443) portot.
+**NSG-szabályok beállítása** | Engedélyezze az [Azure-adatközpont IP-tartományait](https://www.microsoft.com/download/details.aspx?id=41653).<br/><br/> Az összes címtartomány engedélyezése és kezelése helyett hozzáadhat egy olyan szabályt, amely lehetővé teszi a Azure Backup szolgáltatás elérését egy [szolgáltatási címkével](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure). | [További](../virtual-network/security-overview.md#service-tags) információ a szolgáltatási címkékről.<br/><br/> A szolgáltatások címkéi leegyszerűsítik a hozzáférés-kezelést, és nem merülnek fel további költségek.
+**Proxy üzembe helyezése** | HTTP-proxykiszolgáló üzembe helyezése az útválasztási forgalomhoz. | Hozzáférést biztosít az egész Azure-hoz, és nem csupán a tárterülethez.<br/><br/> A tárolási URL-címek részletes szabályozása engedélyezett.<br/><br/> Virtuális gépek egypontos internet-hozzáférése.<br/><br/> A proxy további költségei.
+**Azure Firewall beállítása** | A virtuális gépen a Azure Firewallon átmenő forgalom engedélyezése a Azure Backup szolgáltatáshoz tartozó FQDN címke használatával | Egyszerűen használható, ha Azure Firewall beállítani egy VNet-alhálózatban.<br/><br/> Nem hozhat létre saját FQDN-címkéket, illetve nem módosíthatja a címke teljes tartománynevét.<br/><br/> Ha az Azure-beli virtuális gépek felügyelt lemezekkel rendelkeznek, lehetséges, hogy egy további portot (8443) kell megnyitnia a tűzfalakon.
 
-#### <a name="establish-network-connectivity"></a>Hálózati kapcsolatok létrehozása
+#### <a name="establish-network-connectivity"></a>Hálózati kapcsolat létesítése
 
-NSG-t, csatlakozni proxy, illetve a tűzfalon keresztül
+Kapcsolat létesítése NSG, proxy vagy a tűzfalon keresztül
 
-##### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>Az Azure kimenő hozzáférésének engedélyezéséhez egy NSG-szabály beállítása
+##### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>NSG-szabály beállítása az Azure-hoz való kimenő hozzáférés engedélyezéséhez
 
-Ha az NSG-KET a virtuális gép hozzáférés kezel, engedélyezi a kimenő hozzáférést a szükséges tartományok és a portok a biztonságimásolat-tároláshoz.
+Ha egy NSG kezeli a virtuális gép hozzáférését, engedélyezze a biztonsági mentési tár kimenő hozzáférését a szükséges tartományokhoz és portokhoz.
 
-1. A virtuális gép tulajdonságainak > **hálózatkezelés**válassza **porton keresztüli kimenő szabály felvétele**.
-2. A **kimenő biztonsági szabály felvétele**válassza **speciális**.
-3. A **forrás**válassza **VirtualNetwork**.
-4. A **alkalmazásport-tartományok forrás**, írjon be egy csillagot (*) bármely porton a kimenő hozzáférésének engedélyezéséhez.
-5. A **cél**válassza **Szolgáltatáscímke**. Válassza ki a listából **Storage.region**. A régióban, amelyben a tároló és a virtuális gépek biztonsági mentése, kívánt találhatók.
-6. A **Célporttartomány**, válassza ki azt a portot.
-    - Nem felügyelt virtuális gép nem titkosított storage-fiók: 80
-    - Nem felügyelt virtuális gép titkosított storage-fiók: 443-as (alapértelmezett beállítás)
-    - A felügyelt virtuális gép: 8443.
-7. A **protokoll**válassza **TCP**.
-8. A **prioritású**, adja meg a prioritás értéke kisebb, mint minden újabb megtagadási szabályoknak.
+1. A virtuális gép tulajdonságai > **hálózatkezelés**területen válassza a **kimenő Portszabály hozzáadása**elemet.
+2. A **kimenő biztonsági szabály hozzáadása**lapon válassza a **speciális**lehetőséget.
+3. A **forrás**területen válassza a **VirtualNetwork**lehetőséget.
+4. A **forrásport tartományokban**adjon meg egy csillagot (*), amely engedélyezi a kimenő hozzáférést bármely portról.
+5. A **cél**mezőben válassza a **szolgáltatás címkéje**elemet. A listából válassza a **Storage. region**elemet. A régió az a hely, ahol a tároló és a biztonsági mentésre használni kívánt virtuális gépek találhatók.
+6. A **célport tartományokban**válassza ki a portot.
+    - Nem felügyelt lemezeket használó virtuális gép titkosítatlan Storage-fiókkal: 80
+    - Titkosított Storage-fiókkal rendelkező nem felügyelt lemezeket használó virtuális gép: 443 (alapértelmezett beállítás)
+    - Felügyelt lemezeket használó virtuális gép: 8443.
+7. A **protokoll**területen válassza a **TCP**lehetőséget.
+8. A **prioritás**mezőben a magasabb megtagadási szabályoknál kisebb prioritást kell megadni.
 
-   Ha egy szabályt, amely megtagadja a hozzáférést, az új engedélyezése szabály magasabbnak kell lennie. Ha például van egy **Deny_All** prioritással 1000, az új szabályra szabálykészlet 1000-nél kisebb értékre kell állítani.
-9. Adjon meg egy nevet és leírást a szabályhoz, és válassza ki **OK**.
+   Ha van olyan szabály, amely megtagadja a hozzáférést, az új engedélyezési szabálynak magasabbnak kell lennie. Ha például a 1000-es prioritású **Deny_All** -szabály van beállítva, az új szabály értéke nem lehet kisebb, mint 1000.
+9. Adja meg a szabály nevét és leírását, majd kattintson **az OK gombra**.
 
-Az NSG-szabály több virtuális gép kimenő hozzáférésének engedélyezéséhez alkalmazhat. Ez a videó végigvezeti a folyamatot.
+A NSG szabályt több virtuális gépre is alkalmazhatja a kimenő hozzáférés engedélyezéséhez. Ez a videó végigvezeti a folyamaton.
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
 
-##### <a name="route-backup-traffic-through-a-proxy"></a>Biztonsági mentési forgalomirányítást proxyn keresztül
+##### <a name="route-backup-traffic-through-a-proxy"></a>Biztonsági mentési forgalom irányítása proxyn keresztül
 
-Irányíthatja a biztonsági mentési forgalmat egy proxyn keresztül, és ezután a proxy hozzáférést biztosít a szükséges Azure-tartományokat. Konfigurálja a proxyt, hogy a következő virtuális Géphez:
+A biztonsági mentési forgalmat egy proxyn keresztül irányíthatja, majd a proxyhoz hozzáférést adhat a szükséges Azure-tartományokhoz. Konfigurálja a proxy virtuális gépet a következők engedélyezéséhez:
 
-- Az Azure virtuális gép kell irányítani a proxyn keresztül a nyilvános internetes kötött összes HTTP-forgalmat.
-- A proxy kell engedélyezik a bejövő forgalmat a virtuális gépek a megfelelő virtuális hálózatban.
-- Az NSG-t **Elégtelen-zárolási** szüksége van egy szabályt, amely lehetővé teszi, hogy a kimenő internetes forgalmat a virtuális gép érkezett.
+- Az Azure virtuális gépnek a proxyn keresztül kell átirányítani az összes, a nyilvános internethez kötött HTTP-forgalmat.
+- A proxynak engedélyeznie kell a bejövő forgalmat a megfelelő virtuális hálózatban lévő virtuális gépekről.
+- A NSG **NSF-Lockdown** olyan szabályt igényel, amely lehetővé teszi a proxy virtuális gépről kimenő internetes forgalmat.
 
-###### <a name="set-up-the-proxy"></a>A proxy beállítása.
+###### <a name="set-up-the-proxy"></a>A proxy beállítása
 
-Ha nem rendelkezik a system fiók proxy, egyet az alábbiak szerint állíthatja:
+Ha nem rendelkezik rendszerfiók-proxyval, állítsa be egyet a következő módon:
 
-1. Töltse le [PsExec](https://technet.microsoft.com/sysinternals/bb897553).
-2. Futtatás **PsExec.exe -i -s cmd.exe** a parancssor a rendszerfiók alatt való futtatásához.
-3. A böngészőben a rendszerkörnyezetben fut. Például **%PROGRAMFILES%\Internet Explorer\iexplore.exe** az Internet Explorerben.  
-4. A proxy-beállítások megadása.
-   - Linuxos gépeken:
-     - Adja hozzá a sort, hogy a **/etc/környezet** fájlt:
-       - **http_proxy = http:\//proxy IP-cím: proxy portja**
-     - Adja hozzá ezeket a sorokat a **/etc/waagent.conf** fájlt:
+1. Töltse le a [PsExec](https://technet.microsoft.com/sysinternals/bb897553).
+2. Futtassa a **PsExec. exe-i-s cmd. exe** parancsot, hogy a parancssort egy rendszerfiókban futtassa.
+3. Futtassa a böngészőt a rendszerkörnyezetben. Használja például a **%ProgramFiles%\Internet Explorer\iexplore.exe** for Internet Explorert.  
+4. Adja meg a proxybeállításokat.
+   - Linux rendszerű gépeken:
+     - Adja hozzá ezt a sort a **/etc/Environment** -fájlhoz:
+       - **http_proxy = http:\//proxy IP-cím: proxy port**
+     - Adja hozzá ezeket a sorokat a **/etc/waagent.conf** -fájlhoz:
          - **HttpProxy.Host=proxy IP address**
-         - **HttpProxy.Port=proxy port**
-   - Windows gépeken, a böngésző beállításait adja meg, hogy egy proxyt kell használni. Ha proxyt a felhasználói fiók jelenleg használ, ez a szkript használatával alkalmazza a beállítást, a fiók szintjén.
+         - **Http. port = proxy port**
+   - Windows rendszerű gépeken a böngésző beállításainál határozza meg, hogy a proxyt kell-e használni. Ha jelenleg használ egy proxyt egy felhasználói fiókon, akkor a parancsfájl segítségével alkalmazhatja a beállítást a rendszerfiók szintjén.
        ```powershell
       $obj = Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
       Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
@@ -275,43 +275,43 @@ Ha nem rendelkezik a system fiók proxy, egyet az alábbiak szerint állíthatja
 
        ```
 
-###### <a name="allow-incoming-connections-on-the-proxy"></a>A proxy bejövő kapcsolatok engedélyezése
+###### <a name="allow-incoming-connections-on-the-proxy"></a>Bejövő kapcsolatok engedélyezése a proxyn
 
-A bejövő kapcsolatok engedélyezése a proxybeállításokat.
+Bejövő kapcsolatok engedélyezése a proxybeállítások között.
 
-1. A Windows tűzfal, nyissa meg a **fokozott biztonságú Windows tűzfal**.
-2. Kattintson a jobb gombbal **bejövő szabályok** > **új szabály**.
-3. A **szabálytípus**válassza **egyéni** > **tovább**.
-4. A **Program**válassza **minden program** > **tovább**.
-5. A **protokollok és portok**:
-   - A típusa **TCP**.
-   - Állítsa be **helyi portok** való **adott**.
-   - Állítsa be **távoli port** való **minden port**.
+1. A Windows tűzfalban nyissa meg **a fokozott biztonságú Windows tűzfalat**.
+2. Kattintson a jobb gombbal a **Bejövő szabályok** > **új szabály**elemre.
+3. A **szabály típusa mezőben**válassza az **Egyéni** > **tovább**lehetőséget.
+4. A **program**területen válassza a **minden program** > **tovább**lehetőséget.
+5. A **protokollok és portok**területén:
+   - Állítsa a típust a **TCP**értékre.
+   - **Helyi portok** beállítása **adott portokra**.
+   - Állítsa be a **távoli portot** az **összes portra**.
 
 6. Fejezze be a varázslót, és adja meg a szabály nevét.
 
-###### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>Vegyen fel egy kivételt az NSG-hez a proxy
+###### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>Kivételi szabály hozzáadása a proxy NSG
 
-Az NSG-t a **Elégtelen-zárolási**, bármely internetes címre a 80-as (HTTP) vagy a 443-as (HTTPS) porton a 10.0.0.5 bármely porton érkező adatforgalom engedélyezéséhez.
+A NSG **NSF-Lockdown**esetében engedélyezze a 10.0.0.5 bármely portjáról érkező forgalmat a 80-as (http) vagy a 443-es (https-) porton lévő internetes címekre.
 
-A következő PowerShell-parancsfájl egy példát biztosít forgalom engedélyezéséhez.
-Ne hagyja a nyilvános internet-címeire irányuló kimenő, adjon meg egy IP-címtartomány (`-DestinationPortRange`), vagy használja a storage.region szolgáltatáscímke.   
+A következő PowerShell-szkript egy példát biztosít a forgalom engedélyezésére.
+Ahelyett, hogy az összes nyilvános internetes címre engedélyezné a kimenő forgalmat, megadhat egy IP-`-DestinationPortRange`címtartományt (), vagy használhatja a Storage. region szolgáltatás címkéjét.   
 
 ```powershell
 Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
 Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
 ```
 
-##### <a name="allow-firewall-access-with-an-fqdn-tag"></a>Egy teljesen minősített tartománynév-címke a tűzfal hozzáférés engedélyezése
+##### <a name="allow-firewall-access-with-an-fqdn-tag"></a>Tűzfal hozzáférésének engedélyezése FQDN-címkével
 
-Azure-tűzfal engedélyezi a kimenő hozzáférést a hálózati forgalmat az Azure Backup szolgáltatásban is beállítása.
+A Azure Firewall beállítható úgy, hogy engedélyezze a kimenő hozzáférést Azure Backup számára a hálózati forgalom számára.
 
-- [Ismerje meg](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) üzembe helyezése az Azure-tűzfal.
-- [További információ](https://docs.microsoft.com/azure/firewall/fqdn-tags) FQDN címkék.
+- [Tudnivalók a](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) Azure Firewall üzembe helyezéséről.
+- [További információ](https://docs.microsoft.com/azure/firewall/fqdn-tags) FQDN-Címkék
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Az esetleges problémák megoldásához [Azure Virtuálisgép-ügynökökkel](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) vagy [Azure VM backup](backup-azure-vms-troubleshoot.md).
-- [Visszaállítás](backup-azure-arm-restore-vms.md) Azure virtuális gépek.
+- Az [Azure VM](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) -ügynökökkel vagy az [Azure-beli virtuális gépek biztonsági mentésével](backup-azure-vms-troubleshoot.md)kapcsolatos problémák elhárítása.
+- [Visszaállítás](backup-azure-arm-restore-vms.md) Azure-beli virtuális gépek.

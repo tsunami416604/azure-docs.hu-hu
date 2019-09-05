@@ -1,6 +1,6 @@
 ---
-title: Annak a referencia-adatkészlet hozzáadása Azure Time Series Insights-környezethez |} A Microsoft Docs
-description: Ez a cikk ismerteti, mivel megvédi az adatokat Azure Time Series Insights-környezete egy referencia-adatkészlet hozzáadása.
+title: Hivatkozási adathalmaz hozzáadása a Azure Time Series Insights-környezethez | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan adhat hozzá egy hivatkozási adatkészletet a Azure Time Series Insights-környezetében lévő adatbővítéshez.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -11,93 +11,93 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 99933fa36cc822598ec9c173a470f90264d06d54
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
-ms.translationtype: MT
+ms.openlocfilehash: 5b48a41f025ef06c69e6de126e0a64ad359ce09a
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461262"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666367"
 ---
-# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>A Time Series Insights-környezethez az Azure portal használatával egy referencia-adatkészlet létrehozása
+# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Hozzon létre egy hivatkozási adatkészletet a Time Series Insights-környezethez a Azure Portal használatával
 
-Ez a cikk ismerteti a referencia-adatkészlet hozzáadása Azure Time Series Insights-környezethez. Referenciaadatok akkor hasznos, mivel megvédi az értékeket a forrásadatokban csatlakoztatása.
+Ez a cikk azt ismerteti, hogyan adhat hozzá egy hivatkozási adatkészletet a Azure Time Series Insights-környezethez. A hivatkozási adatok hasznosak a forrásadatok összekapcsolásához az értékek kibővítéséhez.
 
-Referencia-adatkészlet egy bővítésével kiolvassa az eseményeket az eseményforrás gyűjteménye. Time Series Insights bejövő forgalmat kezelő motorja a referencia-adatkészlet minden eseményt az eseményforrás a megfelelő adatok sor csatlakozik. Ez a kibővített esemény ezután lekérdezhető. A csatolás a referencia-adatkészlet meghatározott elsődleges kulcs oszlopoknak alapul.
+A hivatkozási adatkészletek olyan elemek gyűjteményei, amelyek kibővítik az esemény forrásának eseményeit. Time Series Insights beáramlási motor az eseményforrás minden eseményét összekapcsolja a hivatkozási adathalmaz megfelelő adatsorával. Ez a kibővített esemény ezután lekérdezhető. Ez a csatlakozás a hivatkozási adatkészletben definiált elsődleges kulcs oszlop (ok) alapján történik.
 
-Referenciaadatok visszamenőlegesen nem csatlakozik tartományhoz. Így csak a jelenlegi és jövőbeli bejövő adatainak matched és referencia meghatározott időpontban csatlakozik, konfigurálása és feltöltése után.
+A hivatkozási adathalmazok nem csatlakoznak visszamenőlegesen. Így a rendszer csak a jelenlegi és a jövőbeli bejövő adatok összeegyeztetését és a hivatkozási dátumhoz való csatlakozást követően csatlakozik, miután konfigurálta és feltöltötte.
 
 ## <a name="video"></a>Videó
 
-### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>Tudnivalók a Time Series Insight-hivatkozás adatmodellt.</br>
+### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>Tudnivalók a Time Series Insight hivatkozási adatmodelljéről.</br>
 
 > [!VIDEO https://www.youtube.com/embed/Z0NuWQUMv1o]
 
-## <a name="add-a-reference-data-set"></a>Referencia-adatkészlet hozzáadása
+## <a name="add-a-reference-data-set"></a>Hivatkozási adathalmaz hozzáadása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Keresse meg a meglévő Time Series Insights-környezetbe. Válassza ki **összes erőforrás** az Azure portal bal oldali menüben. Válassza ki az Azure Time Series Insights-környezetet.
+1. Keresse meg a meglévő Time Series Insights-környezetbe. A Azure Portal bal oldalán található menüben válassza az **összes erőforrás** lehetőséget. Válassza ki az Azure Time Series Insights-környezetet.
 
-1. Válassza ki a **áttekintése** lapot. Keresse meg a **Time Series Insights explorer URL-cím** és a hivatkozás megnyitásához.  
+1. Válassza az **Áttekintés** lapot. Keresse meg a **Time Series Insights Explorer URL-címét** , és nyissa meg a hivatkozást.  
 
-   Tekintse meg a explorer TSI-környezete számára.
+   Tekintse meg az ÁME-környezet explorerjét.
 
-1. Bontsa ki a környezet választó a TSI Explorerben. Válassza ki az aktív környezetet. Kattintson a jobb felső sarokban a hivatkozás adatok ikonra az adatkezelő oldal.
+1. Bontsa ki a környezeti választót az ÁME Explorerben. Válassza ki az aktív környezetet. Kattintson a jobb felső sarokban található hivatkozási adatikonra az Explorer oldalon.
 
-   [![Referencia-adatok hozzáadása](media/add-reference-data-set/add-reference-data.png)](media/add-reference-data-set/add-reference-data.png#lightbox)
+   [![Hivatkozási érték hozzáadása](media/add-reference-data-set/add-reference-data.png)](media/add-reference-data-set/add-reference-data.png#lightbox)
 
-1. Válassza ki a **+ adatkészlet hozzáadása** gombra kattintva kezdje el hozzáadni az új adatkészletet.
+1. Az új adatkészlet hozzáadásának megkezdéséhez kattintson az **+ adatkészlet hozzáadása** gombra.
 
-   [![Adatkészlet hozzáadása](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
+   [![Adathalmaz hozzáadása](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
 
-1. Az a **új referencia-adatkészlete** lapon a adatok formátumát:
-   - Válasszon **CSV** vesszővel tagolt adatok. Az első sor a fejlécsor számít.
-   - Válasszon **JSON-tömböt** JavaScript object notation (JSON) formátumú adatok.
+1. Az **új hivatkozási adatkészlet** lapon válassza ki az adatformátumot:
+   - Vesszővel tagolt adatmennyiség esetén válassza a **CSV** lehetőséget. Az első sor fejléc sorként lesz kezelve.
+   - Válassza a **JSON** -tömböt a JavaScript-objektumok jelölésére formázott adathoz.
 
-   [![Válassza ki az adatok formátuma.](media/add-reference-data-set/add-data.png)](media/add-reference-data-set/add-data.png#lightbox)
+   [![Válassza az adatformátum lehetőséget.](media/add-reference-data-set/add-data.png)](media/add-reference-data-set/add-data.png#lightbox)
 
-1. Adja meg az adatokat, a két módszer egyikével:
-   - Illessze be az adatokat a szövegszerkesztőben. Ezután válassza ki **referenciaadatok elemzése** gombra.
-   - Válassza ki **fájl kiválasztása** gombra kattintva adhat hozzá adatokat egy helyi szöveges fájlból.
+1. Adja meg az adatmennyiséget a két módszer egyikének használatával:
+   - Illessze be az adatfájlokat a szövegszerkesztőbe. Ezután válassza a **hivatkozási adatelemzés** gomb lehetőséget.
+   - Kattintson a **Fájl választása** gombra, ha helyi szövegfájlból kívánja felvenni az adatforrást.
 
-   Illessze be például a CSV-adatokat: [![A beillesztett CSV-adatokat](media/add-reference-data-set/csv-data-pasted.png)](media/add-reference-data-set/csv-data-pasted.png#lightbox)
+   Például illessze be a CSV-fájlokat: [![Beillesztett CSV-fájl](media/add-reference-data-set/csv-data-pasted.png)](media/add-reference-data-set/csv-data-pasted.png#lightbox)
 
-   Illessze be például a JSON-tömb adatokat: [![Illessze be a JSON-adatok](media/add-reference-data-set/json-data-pasted.png)](media/add-reference-data-set/json-data-pasted.png#lightbox)
+   Például illessze be a JSON-tömböt: [![JSON-adattárolás beillesztése](media/add-reference-data-set/json-data-pasted.png)](media/add-reference-data-set/json-data-pasted.png#lightbox)
 
-   Az adatértékek elemzése hiba történik, ha a hiba vörös színnel jelenik meg a lap alján például `CSV parsing error, no rows extracted`.
+   Ha hiba történik az adatértékek elemzésekor, a hiba az oldal alján piros színnel jelenik meg, például `CSV parsing error, no rows extracted`:.
 
-1. Miután sikeresen elemzi az adatokat, egy adatrács látható oszlopainak és sorainak jelölő az adatok megjelenítése.  Tekintse át az adatrácsban annak biztosítása érdekében helyességét.
+1. Az adatgyűjtés sikeres elemzése után egy adatrács jelenik meg, amely megjeleníti az adatoszlopokat és az azokat jelképező sorokat.  A pontosság érdekében tekintse át az adatrácsot.
 
-   [![Referencia-adatok hozzáadása](media/add-reference-data-set/parse-data.png)](media/add-reference-data-set/parse-data.png#lightbox)
+   [![Hivatkozási érték hozzáadása](media/add-reference-data-set/parse-data.png)](media/add-reference-data-set/parse-data.png#lightbox)
 
-1. Tekintse át az adattípus feltételezi, hogy minden oszlop, és ha szükséges, módosítsa az adattípust.  Válassza ki az adat típusa szimbólum az oszlop fejlécére: **#** double (numerikus adatot), a **T |} F** Boolean, vagy **Abc** karakterlánc.
+1. Tekintse át az egyes oszlopokat a feltételezett adattípus megjelenítéséhez, és szükség esetén módosítsa az adattípust.  Válassza ki az adattípus szimbólumát az oszlop fejlécében **#** : dupla (numerikus), **T | F** logikai vagy **ABC** karakterlánchoz.
 
-   [![Válassza ki az oszlopfejlécek adattípusokat.](media/add-reference-data-set/choose-datatypes.png)](media/add-reference-data-set/choose-datatypes.png#lightbox)
+   [![Válassza az oszlopok fejlécek adattípusok elemét.](media/add-reference-data-set/choose-datatypes.png)](media/add-reference-data-set/choose-datatypes.png#lightbox)
 
-1. Nevezze át az oszlopfejléceket, ha szükséges. Az elsődlegeskulcs-oszlop neve szükség a megfelelő tulajdonság az eseményforrás csatlakoztatása. Győződjön meg arról, hogy a hivatkozás az elsődlegeskulcs-oszlop nevének annak pontosan egyeznie az esemény nevét, a bejövő adatokat, beleértve a kisbetű/nagybetű megkülönböztetése. Nem kulcs oszlop nevét használják, mivel megvédi a bejövő adatok a megfelelő hivatkozás adatok értékekkel.
+1. Szükség esetén nevezze át az oszlopfejléceket. A kulcs oszlopának neve szükséges az eseményforrás megfelelő tulajdonságához való csatlakozáshoz. Győződjön meg arról, hogy a hivatkozási adatkulcs oszlopainak nevei pontosan egyeznek az esemény nevével a bejövő adataihoz, beleértve a kis-és nagybetűket is. A nem kulcsos oszlopnevek a beérkező adatoknak a megfelelő hivatkozási adatértékekkel való kiegészítésére szolgálnak.
 
-1. Válassza ki **adjon hozzá egy sort** vagy **oszlop hozzáadása** hozzáadása további referencia adatértékek, igény szerint.
+1. Válassza **a sor hozzáadása** vagy az **oszlop hozzáadása** lehetőséget a további hivatkozási adatértékek igény szerinti hozzáadásához.
 
-1. Adjon meg egy értéket a **a sorok szűrése...**  mezőt, tekintse át az adott sorokat, igény szerint. A szűrő hasznos, tekintse át az adatokat, de a rendszer nem alkalmazza az adatok feltöltése közben.
+1. Írjon be egy értéket a **sorok...** mezőre, és szükség szerint tekintse át az adott sorokat. A szűrő hasznos az adatelemzéshez, de a rendszer nem alkalmazza az adatfeltöltés során.
 
-1. Az adatkészlet neve kitöltésével a **adatkészlet neve** mezőt az adatrácsban felett.
+1. Nevezze el az adathalmazt az adatrács fölötti **adatkészlet neve** mező kitöltésével.
 
-    [![Az adatkészlet nevét.](media/add-reference-data-set/name-reference-dataset.png)](media/add-reference-data-set/name-reference-dataset.png#lightbox)
+    [![Nevezze el az adathalmazt.](media/add-reference-data-set/name-reference-dataset.png)](media/add-reference-data-set/name-reference-dataset.png#lightbox)
 
-1. Adja meg a **elsődleges kulcs** az adatkészlet kiválasztásával a legördülő fent az adatrácsban oszlopa.
+1. Az adatrács fölötti legördülő lista kiválasztásával adja meg az **elsődleges kulcs** oszlopát az adatkészletben.
 
-    [![Válassza ki a fő oszlopoknak.](media/add-reference-data-set/set-primary-key.png)](media/add-reference-data-set/set-primary-key.png#lightbox)
+    [![Válassza ki a kulcs oszlop (oka) t.](media/add-reference-data-set/set-primary-key.png)](media/add-reference-data-set/set-primary-key.png#lightbox)
 
-    Választhatja a **+** gombra kattintva adhat hozzá egy másodlagos kulcs oszlop egy összetett elsődleges kulcsként. A kijelölés visszavonása van szüksége, ha eltávolítja a másodlagos kulcsot a legördülő listából válassza ki az üres érték.
+    Kiválaszthatja a **+** gombot egy másodlagos kulcs oszlopának összetett elsődleges kulcsként való hozzáadásához. Ha vissza kell vonnia a kijelölést, válassza ki az üres értéket a legördülő menüből a másodlagos kulcs eltávolításához.
 
-1. Töltse fel az adatokat, válassza a **sorok feltöltése** gombra.
+1. Az adatok feltöltéséhez kattintson a **sorok feltöltése** gombra.
 
-    [![Feltöltés](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
+    [![Feltöltése](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
 
-    Az oldal megerősíti, hogy a befejezett feltöltése és az üzenet megjelenítéséhez **sikeresen feltöltve az adatkészlet**.
+    Az oldal megerősíti a befejezett feltöltést, és megjeleníti az üzenet **sikeresen feltöltött**adatkészletét.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Referencia-adatok kezelése](time-series-insights-manage-reference-data-csharp.md) programozott módon.
 
-* Az alkalmazásprogramozási felület (API) teljes leírását a [Referencia-adatok API](/rest/api/time-series-insights/ga-reference-data-api) dokumentum tartalmazza.
+* Az alkalmazásprogramozási felület (API) teljes leírását a [Referencia-adatok API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) dokumentum tartalmazza.

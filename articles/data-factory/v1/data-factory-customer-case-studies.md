@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Factory - ügyféleset-tanulmányok |} A Microsoft Docs
-description: Ismerje meg hogyan néhány ügyfelünk már használja az Azure Data Factoryban.
+title: Azure Data Factory – ügyfél-esettanulmányok | Microsoft Docs
+description: Ismerje meg, hogy ügyfeleink miként használják Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,36 +13,36 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 952a8aa2dbfdabfb7f0df198a7453b847c33f7e2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: c636032766b90af78e7794b3d515b924fa31d6cd
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486974"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596027"
 ---
-# <a name="azure-data-factory---customer-case-studies"></a>Az Azure Data Factory - ügyfelekről készült esettanulmányok
-Data Factory egy felhőalapú felügyeleti szolgáltatás, amely automatizálja az adatáthelyezési és -adatok átalakítása az. Ügyfeleink számos iparággal használatával a Data Factory és más Azure-szolgáltatások saját elemzési folyamatok alakíthatók ki, és az üzleti problémák megoldásában.  Közvetlenül az ügyfeleinktől megtudhatja, hogyan és miért használják a Data Factoryban.
+# <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory – ügyfél-esettanulmányok
+A Data Factory egy felhőalapú információkezelés szolgáltatás, amely automatizálja az adatok áthelyezését és átalakítását. Számos iparág ügyfelei Data Factory és más Azure-szolgáltatásokat használnak az elemzési folyamatok létrehozásához és az üzleti problémák megoldásához.  Tanulja meg közvetlenül az ügyfelektől, hogy miként és miért használják Data Factory.
 
 ## <a name="milliman"></a>Milliman
-[Felső Actuarial vállalkozás alakítja át a biztosítási ágazatban](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20096)
+[A legfontosabb aktuáriusi cég átalakítja a biztosítási ágazatot](https://customers.microsoft.com/en-us/story/732463-top-actuarial-firm-transforms-the-insurance-industry-w)
 
 ## <a name="rockwell-automation"></a>Rockwell Automation
-[Ipari automatizálás vállalkozás csökkenti radikálisan a költségek akár 90 %-os big Data típusú megoldások](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18356)
+[Az ipari automatizálási cég a big data-megoldásokkal akár 90 százalékkal csökkenti a költségeket](https://customers.microsoft.com/en-us/story/726192-industrial-automation-firm-cuts-costs-up-to-90-percent)
 
 ## <a name="ziosk"></a>Ziosk
-[Milyen játékot szeretne lépni az adott burger? Előfordulhat, hogy már ismeri a Ziosk.](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
+[Milyen játékot szeretne a Burger? Előfordulhat, hogy a Ziosk már tudja.](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
 
-## <a name="alaska-airlines"></a>Alaska Airlines
-[Légitársaság használt táblagépek, hogy vonzóbbá szükségszerű Szórakozás Cloud Services](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
+## <a name="alaska-airlines"></a>Alaszka-légitársaságok
+[A légitársaság tablettákat használ, Cloud Services a fedélzeti szórakozást nyújtja](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
 
-## <a name="tacoma-public-schools"></a>Tacoma public schools
-[Tanulói jelkiesés kockázatokat, felhőanalitika diploma megszerzésének fizetendő díjak növelése előrejelzése](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20703)
+## <a name="tacoma-public-schools"></a>Tacoma állami iskolák
+[A tanulói lemorzsolódás kockázatainak előrejelzése, a rangsorolási arány növelése a Cloud Analytics használatával](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20703)
 
-## <a name="real-madrid-fc"></a>A Real Madrid FC
-[A Real Madrid biztosít a Microsoft Cloud világszerte 450 millió szurkolóhoz viszi közelebb a stadiont](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20522)
+## <a name="real-madrid-fc"></a>Real Madrid FC
+[A Real Madrid a Microsoft Cloud a világ minden pontján meg450 000 000 közelíti a stadiont, és a](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20522)
 
 ## <a name="pier-1-imports"></a>Pier 1 Imports
-[Az ügyfelek jobb kapcsolat keresése a felhőn keresztül gépi tanulás](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)
+[Az ügyfelekkel való jobb kapcsolatok megkeresése a Cloud Machine Learning](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)
 
 ## <a name="microsoft-studio"></a>Microsoft Studio
-[Továbbítása százmilliárdjai Xbox-élmények játékesemények több száz minden nap](https://customers.microsoft.com/en-us/story/xboxunlimited)
+[Az Epic Xbox-élmények révén naponta több milliárd játék eseményt elemezve](https://customers.microsoft.com/en-us/story/xboxunlimited)

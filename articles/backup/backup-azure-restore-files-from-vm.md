@@ -1,19 +1,20 @@
 ---
 title: 'Azure Backup: Fájlok és mappák helyreállítása Azure virtuális gépek biztonsági másolatából'
 description: Fájlok helyreállítása Azure-beli virtuális gépek helyreállítási pontjából
-author: pvrk
-manager: shivamg
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 keywords: elemszintű helyreállítás; fájl helyreállítása az Azure-beli virtuális gép biztonsági másolatából; fájlok visszaállítása az Azure-beli virtuális gépről
 ms.service: backup
 ms.topic: conceptual
 ms.date: 3/01/2019
-ms.author: pullabhk
-ms.openlocfilehash: 678b187eb49c84b5b4cf17fe063d21d09b333434
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
-ms.translationtype: MT
+ms.author: dacurwin
+ms.openlocfilehash: 524d0854e8691428738cee321e394f572ea80112
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465662"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689181"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -268,4 +269,4 @@ A helyreállítási szolgáltatás és a gép közötti adatforgalom védelme a 
 
 A szülő/biztonsági mentés alatt lévő virtuális gépen található összes fájl Access Control lista (ACL) a csatlakoztatott fájlrendszerben is megmarad.
 
-A parancsfájl csak olvasási hozzáférést biztosít egy helyreállítási ponthoz, és csak 12 órára érvényes. Ha a felhasználó korábban el szeretné távolítani a hozzáférést, jelentkezzen be az Azure Portalra, a PowerShellbe vagy  a CLI-be, majd hajtsa végre az adott helyreállítási ponthoz tartozó leválasztási lemezeket. A parancsfájl azonnal érvénytelenítve lesz.
+A parancsfájl csak olvasási hozzáférést biztosít egy helyreállítási ponthoz, és csak 12 órára érvényes. Ha a felhasználó korábban el szeretné távolítani a hozzáférést, jelentkezzen be az Azure Portalra, a PowerShellbe vagy a CLI-be, majd hajtsa végre az adott helyreállítási ponthoz tartozó leválasztási lemezeket. A parancsfájl azonnal érvénytelenítve lesz.

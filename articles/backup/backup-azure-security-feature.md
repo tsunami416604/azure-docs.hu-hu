@@ -1,18 +1,19 @@
 ---
 title: Biztonsági funkciók a Azure Backupt használó hibrid biztonsági másolatok védelméhez
 description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentéseket a Azure Backup biztonsági funkciói segítségével
-author: utraghuv
-manager: vijayts
+ms.reviewer: utraghuv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.author: utraghuv
-ms.openlocfilehash: 1e643e74f35b381dfb329453d81615bc69785ed7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
-ms.translationtype: MT
+ms.author: dacurwin
+ms.openlocfilehash: 2c1890089bcb713d8ef80bca25b123b425d96607
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465403"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688672"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó hibrid biztonsági másolatok védelméhez
 A biztonsági problémákkal, például a kártevővel, a ransomware és a behatolással kapcsolatos problémák egyre nagyobbak. Ezek a biztonsági problémák költségesek lehetnek a pénz és az adatmennyiség tekintetében. Az ilyen támadások elleni védelem érdekében Azure Backup mostantól biztonsági funkciókat biztosít a hibrid biztonsági másolatok védelméhez. Ez a cikk bemutatja, hogyan engedélyezheti és használhatja ezeket a szolgáltatásokat Azure Recovery Services-ügynök és-Azure Backup Server használatával. Ezek a szolgáltatások a következők:
@@ -88,7 +89,7 @@ A PIN-kód fogadása:
 
 1. Jelentkezzen be az Azure portálra.
 2. Tallózással keresse meg **Recovery Services** > tár**Beállítások** > **tulajdonságait**.
-3. A **biztonsági PIN**-kód alatt kattintson a előállítás elemre. Ekkor megnyílik egy panel, amely tartalmazza az Azure Recovery Services Agent felhasználói felületén beírni kívánt PIN-kódot.
+3. A **biztonsági PIN**-kódalatt kattintson a előállítás elemre. Ekkor megnyílik egy panel, amely tartalmazza az Azure Recovery Services Agent felhasználói felületén beírni kívánt PIN-kódot.
     Ez a PIN-kód csak öt percre érvényes, és az adott időszak után automatikusan létrejön.
 
 ### <a name="maintain-a-minimum-retention-range"></a>Minimális megőrzési időtartam fenntartása

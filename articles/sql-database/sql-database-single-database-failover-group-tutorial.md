@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
-manager: jroth
 ms.date: 06/19/2019
-ms.openlocfilehash: 6125fd087d40f9ac6ae24d9200fc0cd1e7843f82
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.openlocfilehash: d11dd72c65ea32fb5a262f325bdcad0b5a8ab863
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444980"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566649"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Oktatóanyag: Azure SQL Database önálló adatbázis hozzáadása egy feladatátvételi csoporthoz
 
@@ -206,7 +205,7 @@ Feladatátvételi teszt a Azure Portal használatával.
    ![Az SQL-adatbázist tartalmazó feladatátvételi csoport feladatátvétele](media/sql-database-single-database-create-failover-group-tutorial/failover-sql-db.png)
 
 1. Tekintse át, hogy melyik kiszolgáló legyen az elsődleges, és melyik kiszolgáló a másodlagos. Ha a feladatátvétel sikeres volt, a két kiszolgálónak felcserélt szerepkörrel kell rendelkeznie. 
-1. Válassza  újra a feladatátvételt, hogy a kiszolgálókat visszaállítsa az eredeti szerepköreire. 
+1. Válassza újra a feladatátvételt, hogy a kiszolgálókat visszaállítsa az eredeti szerepköreire. 
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 Feladatátvételi teszt a PowerShell használatával. 

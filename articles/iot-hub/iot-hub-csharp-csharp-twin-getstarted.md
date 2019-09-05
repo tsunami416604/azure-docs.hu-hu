@@ -9,14 +9,14 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: robinsh
-ms.openlocfilehash: c1b8f60fd155cf9bce0b999da7459299b6f3c7aa
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
-ms.translationtype: MT
+ms.openlocfilehash: 9bf34fd48c3a4a9a9672ac162f63dcce118b2c0a
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404527"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668175"
 ---
-# <a name="get-started-with-device-twins-netnet"></a>Ismerkedés az eszközökhöz készült ikrekkel (.NET/.NET)
+# <a name="get-started-with-device-twins-net"></a>Ismerkedés az eszközökhöz készült ikrek (.NET) használatával
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
 Az oktatóanyag végén a következő .NET-konzolos alkalmazásokkal fog rendelkezni:
@@ -111,7 +111,7 @@ Ebben a szakaszban létrehoz egy .NET-konzol alkalmazást (a használatával C#)
    
     A frissítés után két lekérdezést hajt végre: az első kiválasztja csak a **Redmond43** -üzemben található eszközökből álló ikreket, a második pedig csak azokat az eszközöket jelöli ki, amelyek a mobil hálózaton keresztül is csatlakoztatva vannak.
    
-    Vegye figyelembe, hogy az előző kód a lekérdezési  objektum létrehozásakor megadja a visszaadott dokumentumok maximális számát. A **lekérdezési** objektum egy **HasMoreResults** logikai tulajdonságot tartalmaz, amelyet a **GetNextAsTwinAsync** metódusok többszöri meghívására használhat az összes eredmény lekéréséhez. A **GetNextAsJson** nevű metódus olyan eredményekhez érhető el, amelyek nem az eszközök ikrek, például az összesítési lekérdezések eredményei.
+    Vegye figyelembe, hogy az előző kód a lekérdezési objektum létrehozásakor megadja a visszaadott dokumentumok maximális számát. A **lekérdezési** objektum egy **HasMoreResults** logikai tulajdonságot tartalmaz, amelyet a **GetNextAsTwinAsync** metódusok többszöri meghívására használhat az összes eredmény lekéréséhez. A **GetNextAsJson** nevű metódus olyan eredményekhez érhető el, amelyek nem az eszközök ikrek, például az összesítési lekérdezések eredményei.
 
 7. Végül adja a következő sorokat a **Main** metódushoz:
 
@@ -122,7 +122,7 @@ Ebben a szakaszban létrehoz egy .NET-konzol alkalmazást (a használatával C#)
     Console.ReadLine();
     ```
 
-8. A Megoldáskezelő nyissa meg az **indítási projektek beállítása... beállítást** , és győződjön meg arról, hogy a  **AddTagsAndQuery** projekthez tartozó **művelet** elindult. Hozza létre a megoldást.
+8. A Megoldáskezelő nyissa meg az **indítási projektek beállítása... beállítást** , és győződjön meg arról, hogy a **AddTagsAndQuery** projekthez tartozó **művelet** elindult. Hozza létre a megoldást.
 
 9. Az alkalmazás futtatásához kattintson a jobb gombbal a **AddTagsAndQuery** projektre, és válassza a **hibakeresés**lehetőséget, majd az **új példány elindítása**parancsot. A lekérdezés eredményei között egy eszközt kell látnia, amely a **Redmond43** -ban található összes eszközt kéri, a nem pedig a lekérdezést, amely a mobil hálózatot használó eszközökre korlátozza az eredményeket.
    
@@ -226,7 +226,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a **myDe
     Console.ReadLine();
     ```
 
-9. A Megoldáskezelő nyissa meg az **indítási projektek beállítása... beállítást** , és győződjön meg arról, hogy a  **ReportConnectivity** projekthez tartozó **művelet** elindult. Hozza létre a megoldást.
+9. A Megoldáskezelő nyissa meg az **indítási projektek beállítása... beállítást** , és győződjön meg arról, hogy a **ReportConnectivity** projekthez tartozó **művelet** elindult. Hozza létre a megoldást.
 
 10. Az alkalmazás futtatásához kattintson a jobb gombbal a **ReportConnectivity** projektre, és válassza a **hibakeresés**lehetőséget, majd az **új példány elindítása**parancsot. Látnia kell, hogy a Twin adatokat kapja meg, majd *jelentett tulajdonságként*küldi el a kapcsolatot.
    
