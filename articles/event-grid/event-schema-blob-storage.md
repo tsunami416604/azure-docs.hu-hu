@@ -307,20 +307,21 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| api | Karakterlánc | Az eseményt kiváltó művelet. |
-| clientRequestId | Karakterlánc | ügyfél által megadott kérelem azonosítója a tárolási API-művelethez. Ez az azonosító használható az Azure Storage diagnosztikai naplóinak az "ügyfél-kérelem-azonosító" mezővel való összekapcsolására a naplókban, és az "x-MS-Client-Request-id" fejléc használatával megadható az ügyfelek kérései. Lásd: [naplózási formátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-| Kérelemazonosító | Karakterlánc | A szolgáltatás által generált kérelem azonosítója a tárolási API-művelethez. Felhasználható az Azure Storage diagnosztikai naplóinak a naplók "Request-ID-header" mezővel való összekapcsolására, és a rendszer az "x-MS-Request-id" fejlécben az API-hívás kezdeményezését adja vissza. Lásd: [naplózási formátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-| eTag | Karakterlánc | Az az érték, amelyet a műveletek feltételes végrehajtásához használhat. |
-| contentType | Karakterlánc | A blobhoz megadott tartalomtípus. |
-| contentLength | integer | A blob mérete bájtban megadva. |
-| blobType | Karakterlánc | A blob típusa. Az érvényes értékek: "BlockBlob" vagy "PageBlob". |
-| contentOffset | number | Egy írási művelet bájtban kifejezett eltolása azon a ponton, ahol az eseményindító alkalmazás befejezte a fájlba való írást. <br>Csak olyan eseményeknél jelenik meg, amelyek hierarchikus névtérrel rendelkező blob Storage-fiókokban aktiválódnak.|
-| destinationUrl |Karakterlánc | A művelet befejeződése után létező fájl URL-címe. Ha például egy fájl átnevezve lett, a `destinationUrl` tulajdonság az új fájlnév URL-címét tartalmazza. <br>Csak olyan eseményeknél jelenik meg, amelyek hierarchikus névtérrel rendelkező blob Storage-fiókokban aktiválódnak.|
-| sourceUrl |Karakterlánc | A művelet előtt létező fájl URL-címe. Ha például egy fájl átnevezve lett, a az `sourceUrl` átnevezési művelet előtt az eredeti fájlnév URL-címét tartalmazza. <br>Csak olyan eseményeknél jelenik meg, amelyek hierarchikus névtérrel rendelkező blob Storage-fiókokban aktiválódnak. |
-| url | Karakterlánc | A blob elérési útja. <br>Ha az ügyfél blobot REST API használ, akkor az URL-cím a következő struktúrával rendelkezik:  *\<Storage\>-Account\<-Name.\>blob.Core.Windows.net/tároló-/\<fájlnév fájl neve\>* . <br>Ha az ügyfél egy Data Lake Storage REST API használ, akkor az URL-cím a következő struktúrával rendelkezik:  *\<Storage\>-Account\<-Name. DFS.Core.Windows.net/fájl\>-rendszer-név/\<fájl neve \>* . |
-| recursive | Karakterlánc | `True`a művelet végrehajtása az összes alárendelt könyvtáron; ellenkező `False`esetben. <br>Csak olyan eseményeknél jelenik meg, amelyek hierarchikus névtérrel rendelkező blob Storage-fiókokban aktiválódnak. |
-| sequencer | Karakterlánc | Egy átlátszatlan karakterlánc-érték, amely az események logikai sorát jelképezi az adott blob nevénél.  A felhasználók a szabványos sztringek összehasonlításával megértették, hogy az adott blob nevében két esemény relatív sorszáma látható. |
-| storageDiagnostics | object | Az Azure Storage szolgáltatás időnként diagnosztikai adatelemzéseket is tartalmaz. Ha van ilyen, figyelmen kívül kell hagyni az esemény felhasználói számára. |
+| api | string | A művelet, amely kiváltotta az eseményt. |
+| clientRequestId | string | egy ügyfél által biztosított kérelemazonosító a Storage API-művelet. Ez az azonosító korrelációját, ha az Azure Storage diagnosztikai naplókat a naplók "client-request-id" mezője is használható, és az ügyfélkérések használja az "x-ms-client-request-id" fejléc adható meg. Lásd: [naplóformátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+| requestId | string | Szolgáltatás által létrehozott kérelemazonosító a storage API-művelet. Az Azure Storage-diagnosztikai naplók "fejléc-kérelem-azonosító" mező a naplók használatával, és adja vissza a megoldásig API-hívás az "x-ms-request-id" fejléc korrelációját használható. Lásd: [naplóformátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+| eTag | string | Az érték, amely feltételesen műveletek végrehajtásához használhatja. |
+| contentType | string | A blob megadott tartalom típusa. |
+| contentLength | integer | A blob (bájt) mérete. |
+| blobType | string | A blob típusa. Érvényes értékek: "BlockBlob" vagy "PageBlob". |
+| contentOffset | number | Az eltolás egy írási művelet, a pont, ahol az eseményt kiváltó alkalmazás befejeződött-e a fájl írása időpontokban (bájt). <br>Csak az a blob storage-fiókok hierarchikus névtérrel rendelkező indított esemény jelenik meg.|
+| destinationUrl |string | A művelet befejezése után fog létező fájl URL-címe. Ha egy fájl át lett nevezve, például a `destinationUrl` tulajdonság tartalmazza az URL-címét az új fájl neve. <br>Csak az a blob storage-fiókok hierarchikus névtérrel rendelkező indított esemény jelenik meg.|
+| sourceUrl |string | Az URL-címe a fájl létezik-e a művelet előtt. Ha egy fájl át lett nevezve, például a `sourceUrl` URL-címét az eredeti fájl neve előtt az átnevezési műveletet tartalmaz. <br>Csak az a blob storage-fiókok hierarchikus névtérrel rendelkező indított esemény jelenik meg. |
+| url | string | A blob elérési útja. <br>Ha az ügyfél egy Blob REST API-t használ, akkor az URL-cím van ez a struktúra:  *\<-tárfióknév\>.blob.core.windows.net/\<Tárolónév\>/\<fájlnév \>* . <br>Ha az ügyfél használja a Data Lake Storage REST API-t, akkor az URL-cím van ez a struktúra:  *\<-tárfióknév\>.dfs.core.windows.net/\<system-Fájlnév\> / \<Fájlnév\>* .
+|
+| recursive| string| `True` az összes gyermek-könyvtár; a művelet végrehajtásához Ellenkező esetben `False`. <br>Csak az a blob storage-fiókok hierarchikus névtérrel rendelkező indított esemény jelenik meg. |
+| sequencer | string | Egy nem átlátszó karakterláncértéket, amely a logikai eseménysorozatát bármely adott blob neve.  Felhasználók szabványos karakterláncok összehasonlítása segítségével megismerheti a relatív eseménysorozat két azonos blob neve. |
+| storageDiagnostics | object | Diagnosztikai adatok az Azure Storage szolgáltatás időnként tartalmazza. Ha igen, figyelmen kívül hagyja az eseményfelhasználók által. |
 |Tulajdonság|Típus|Leírás|
 |-------------------|------------------------|-----------------------------------------------------------------------|
 
