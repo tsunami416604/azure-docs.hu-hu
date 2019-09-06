@@ -1,92 +1,103 @@
-### YamlMime:YamlDocument
-abstract:
-  description: 'Megtudhatja, hogyan építhet be intelligens algoritmusokat az alkalmazásokba és webhelyekbe ezekkel az Azure Machine Learning-termékekkel.  Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.'
-documentType: LandingData
-metadata:
-  author: j-martens
-  description: 'Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, weboldalakat és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.'
-  ms.author: jmartens
-  ms.subservice: core
-  ms.date: 8/14/2019
-  ms.devlang: na
-  ms.service: machine-learning
-  ms.tgt_pltfrm: na
-  ms.topic: landing-page
-  services: machine-learning
-  title: Az Azure Machine Learning dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-sections:
-  - items:
-      - className: cardsM
-        columns: 2
-        items:
-          - href: /azure/machine-learning/service/overview-what-is-azure-ml
-            html: '<p>Ismerje meg, hogyan teszik lehetővé ezek a szolgáltatások az adatelemzők számára a mesterségesintelligencia-megoldások fejlesztését és kezelését<br/> az Azure CLI és a Python eszközeinek és kódtárainak, valamint az Azure különböző adatelemzési és számítási szolgáltatásainak használatával. További információ...</p>'
-            image:
-              src: /azure/machine-learning/media/index/i_machine-learning.svg
-            title: Azure Machine Learning szolgáltatás
-        style: cards
-        type: list
-  - items:
-      - text: Az Azure Machine Learning szolgáltatás beállítása és használatának megkezdése.
-        type: paragraph
-      - text: 'A könnyen, kódolás nélkül használható Azure Portalon gépi tanulási modelleket taníthat be, helyezhet üzembe és kezelhet:'
-        type: paragraph
-      - items:
-          - html: <a href="service/ui-tutorial-automobile-price-train-score">Az első kísérlet betanítása a vizuális felület áthúzást használó felhasználói felületére</a>
-          - html: <a href="service/tutorial-first-experiment-automated-ml">Automatizált gépi tanulás használata az első osztályozási modell betanításához és üzembe helyezéséhez</a>
-        style: unordered
-        type: list
-      - text: 'A szkriptekben és a jegyzetfüzetekben a Python SDK-val gépi tanulási modelleket taníthat be, helyezhet üzembe és kezelhet:'
-        type: paragraph
-      - items:
-          - html: <a href="service/tutorial-1st-experiment-sdk-setup">A környezet beállítása és az első gépi tanulási kísérlet betanítása</a>
-          - html: <a href="service/tutorial-train-models-with-aml">Képbesorolási modellek betanítása és üzembe helyezése</a>
-          - html: <a href="service/tutorial-auto-train-models">Automatizált gépi tanulás használata a taxiutak árának előrejelzéséhez</a>
-        style: unordered
-        type: list
-      - text: 'Modellek felhasználása:'
-        type: paragraph
-      - items:
-          - html: <a href="service/how-to-consume-web-service">Kérés-válasz modell felhasználása</a>
-          - html: <a href="service/how-to-run-batch-predictions">Kötegelt előrejelzések gépi tanulási folyamatokkal</a>
-        style: unordered
-        type: list
-    title: Részletes útmutatók
-  - items:
-      - className: cardsM
-        columns: 2
-        items:
-          - href: /azure/cognitive-services/
-            html: '<p>Az alkalmazásokhoz, webhelyekhez és robotprogramokhoz tervezett intelligens algoritmusokat biztosító API-k.</p>'
-            image:
-              src: /azure/machine-learning/media/index/cognitive-services.png
-            title: Cognitive Services
-          - href: /azure/machine-learning/studio/
-            html: "<p>Együttműködést támogató, egérrel kezelhető eszköz az adataira alkalmazható prediktív elemzési megoldások létrehozásához, teszteléséhez és üzembe helyezéséhez R vagy Python használatával.\_</p>"
-            image:
-              src: /azure/machine-learning/media/index/machine-learning-studio.svg
-            title: Azure Machine Learning Studio
-          - href: /sql/advanced-analytics/r/r-services
-            html: <p>Adatbázison belüli elemzés R- és Python-támogatással.</p>
-            image:
-              src: /azure/machine-learning/media/index/logo_sql.png
-            title: SQL Server Machine Learning-szolgáltatások
-          - href: /machine-learning-server/
-            html: '<p>Rugalmas vállalati gépi tanulási platform, amely támogatja az R- és Python-környezeteket a Windows-, Linux-, HDInsight Spark- és Hadoop-fürtökön.</p>'
-            image:
-              src: /azure/machine-learning/media/index/ml-server.png
-            title: Microsoft Machine Learning-kiszolgáló
-          - href: /azure/machine-learning/team-data-science-process
-            html: '<p>Együttműködésen alapuló adatelemzési módszer, amely segít az adatelemző csapatoknak a prediktív elemzési megoldások és intelligens alkalmazások hatékony megvalósításában.</p>'
-            image:
-              src: /azure/machine-learning/media/index/tdsp.png
-            title: Csoportos adatelemzési folyamat
-          - href: /azure/machine-learning/data-science-virtual-machine/
-            html: '<p>A Data Science (DSVM) és Deep Learning (DLVM) virtuális gépek használatával szoftverek telepítése és konfigurálása nélkül is kísérletezhet. A népszerű adatelemzési, gépi tanulási és mesterségesintelligencia-eszközök már előre telepítve vannak.</p>'
-            image:
-              src: /azure/machine-learning/media/index/virtualmachine.svg
-            title: Adatelemzési virtuális gép
-        style: cards
-        type: list
-    title: Egyéb Microsoft Machine Learning-technológiák
+### YamlMime:Landing
 title: Az Azure Machine Learning dokumentációja
+summary: Az Azure Machine Learning webes felületeket és SDK-kat biztosít a gépi tanulási modellek és folyamatok gyors betanításához és üzembe helyezéséhez. Ezeket a képességeket mind használhatja olyan nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn.
+metadata:
+  title: A Machine Learning szolgáltatás dokumentációja – Azure
+  description: Az Azure Machine Learning webes felületeket és SDK-kat biztosít a gépi tanulási modellek és folyamatok gyors betanításához és üzembe helyezéséhez. Ezeket a képességeket mind használhatja olyan nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn.
+  services: machine-learning
+  ms.service: machine-learning
+  ms.subservice: core
+  ms.topic: landing-page
+  ms.collection: collection
+  author: j-martens
+  ms.author: jmartens
+  ms.date: 09/03/2019
+  ms.openlocfilehash: e2c5e592c2330f1e5514c5c59c92ff5c8a3a62b2
+  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70278312"
+landingContent:
+- title: Ismerkedés az Azure ML szolgáltatással
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Kísérletezés notebookokkal
+      url: service/tutorial-1st-experiment-sdk-setup.md
+    - text: Kísérlet a vizuális felületen
+      url: service/ui-tutorial-automobile-price-train-score.md
+    - text: Az első kísérlet automatizálása
+      url: service/tutorial-first-experiment-automated-ml.md
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure ML?
+      url: service/overview-what-is-azure-ml.md
+    - text: Architektúra és fogalmak
+      url: service/concept-azure-machine-learning-architecture.md
+  - linkListType: how-to-guide
+    links:
+    - text: Fejlesztési környezetek beállítása
+      url: service/how-to-configure-environment.md
+    - text: Betanítási számítási célok beállítása
+      url: service/how-to-set-up-training-targets.md
+- title: Betanítás a Python használatával
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Az első gépi tanulási kísérlet létrehozása
+      url: service/tutorial-1st-experiment-sdk-setup.md
+    - text: Képbesorolási modellek betanítása
+      url: service/tutorial-train-models-with-aml.md
+    - text: Taxiutak árának előrejelzése automatizált gépi tanulással
+      url: service/tutorial-auto-train-models.md
+  - linkListType: how-to-guide
+    links:
+    - text: Betanítás a Scikit-learn használatával
+      url: service/how-to-train-scikit-learn.md
+    - text: Betanítás a TensorFlow használatával
+      url: service/how-to-train-tensorflow.md
+    - text: Betanítás a PyTorch használatával
+      url: service/how-to-train-pytorch.md
+    - text: Betanítás a Keras használatával
+      url: service/how-to-train-keras.md
+- title: Betanítás vizuális felületen
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Automatizált gépi tanulási kísérletek betanítása
+      url: service/tutorial-first-experiment-automated-ml.md
+    - text: Betanítás a vizuális felületen
+      url: service/ui-tutorial-automobile-price-train-score.md
+  - linkListType: how-to-guide
+    links:
+    - text: 'Vizuális felület: gépjárművek árainak előrejelzése'
+      url: service/ui-sample-regression-predict-automobile-price-basic.md
+    - text: 'Vizuális felület: hitelkockázat előrejelzése'
+      url: service/ui-sample-classification-predict-credit-risk-cost-sensitive.md
+    - text: 'Vizuális felület: késések előrejelzése'
+      url: service/ui-sample-classification-predict-flight-delay.md
+    - text: 'Vizuális felület: adatváltozások előrejelzése'
+      url: service/ui-sample-classification-predict-churn.md
+- title: Modellek üzembe helyezése és kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Mi az az MLOps?
+      url: service/concept-model-management-and-deployment.md
+    - text: Az üzembe helyezés módja és helye
+      url: service/how-to-deploy-and-where.md
+    - text: Valós idejű előrejelzés
+      url: service/how-to-consume-web-service.md
+    - text: Kötegelt előrejelzés
+      url: service/how-to-run-batch-predictions.md
+- title: Referenciadokumentumok áttekintése
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure ML Python SDK
+      url: https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py
+    - text: Azure ML CLI
+      url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
+    - text: Vizuális felületi algoritmusok és modulok
+      url: algorithm-module-reference/module-reference.md

@@ -60,9 +60,6 @@
   items:
     - name: Sablonalapú üzembe helyezések
       href: template-deployment-overview.md
-    - name: Sablonfájl szerkezete
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: resource-group-authoring-templates.md
     - name: Ajánlott eljárások a sablonok használatához
       href: template-best-practices.md
     - name: Felhőkonzisztencia-sablonok
@@ -85,26 +82,38 @@
   items:
     - name: Sablonok létrehozása
       items:
-        - name: Fejlesztői eszköz – VS Code
+        - name: A VS Code használata
           href: resource-manager-tools-vs-code.md
-        - name: Sablon létrehozása
-          href: how-to-create-template.md
-        - name: Gyermekerőforrás neve és típusa
-          href: child-resource-name-type.md
-        - name: Erőforráscsoportok és erőforrások létrehozása az előfizetésben
-          displayName: subscription level deployment
-          href: deploy-to-subscription.md
-        - name: Erőforrás-függőségek meghatározása
-          href: resource-group-define-dependencies.md
+        - name: Sablonkifejezések írása
+          href: template-expressions.md
+        - name: Paraméterek
+          href: template-parameters.md
+        - name: Változók
+          href: template-variables.md
+        - name: Felhasználó által meghatározott függvények
+          href: template-user-defined-functions.md
+        - name: További források
+          items:
+            - name: Gyermekerőforrás neve és típusa
+              href: child-resource-name-type.md
+            - name: Feltételes üzembe helyezés
+              href: conditional-resource-deployment.md
+            - name: Erőforrás függőségeinek beállítása
+              href: resource-group-define-dependencies.md
+            - name: Erőforrás helyének beállítása
+              href: resource-location.md
+            - name: Sablonbővítmények használata
+              href: resource-manager-use-extensions.md
+        - name: Kimenetek
+          href: template-outputs.md
         - name: Sablonok modularizálása
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
         - name: Több példány létrehozása
           href: resource-group-create-multiple.md
-        - name: Sablonbővítmények használata
-          href: resource-manager-use-extensions.md
-        - name: Erőforrások frissítése
-          href: /azure/architecture/building-blocks/extending-templates/update-resource
+        - name: Erőforráscsoportok és erőforrások létrehozása az előfizetésben
+          displayName: subscription level deployment
+          href: deploy-to-subscription.md
     - name: Sablonok üzembe helyezése
       items:
         - name: Üzembe helyezés – portál
@@ -244,6 +253,9 @@
       href: resource-manager-async-operations.md
 - name: Referencia
   items:
+    - name: Sablonfájl szerkezete
+      displayName: 'parameters,variables,resources,outputs,condition'
+      href: resource-group-authoring-templates.md
     - name: Sablonreferencia
       href: /azure/templates/
     - name: Sablonfüggvények

@@ -12,14 +12,16 @@
       href: virtual-wan-expressroute-portal.md
 - name: Alapelvek
   items:
-    - name: Helyekkel és partnerekkel kapcsolatos információk
+    - name: Helyek és partnerek
       href: virtual-wan-locations-partners.md
-    - name: Információk a globális átviteli hálózati architektúráról
-      href: virtual-wan-global-transit-network-architecture.md
-    - name: Információk az Office 365-vezérlősíkról a Virtual WAN-ban
-      href: virtual-wan-office365-overview.md
-    - name: Információk az IPsec-házirendekről
+    - name: IPsec-szabályzatok
       href: virtual-wan-ipsec.md
+    - name: Architektúra
+      items:
+        - name: Globális átviteli hálózati architektúra
+          href: virtual-wan-global-transit-network-architecture.md
+        - name: Office 365-vezérlősík a Virtual WAN-ban
+          href: virtual-wan-office365-overview.md
 - name: Útmutatók
   items:
     - name: Forgalom irányítása virtuális központról NVA-ra

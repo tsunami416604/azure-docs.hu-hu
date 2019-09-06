@@ -219,10 +219,16 @@
       items:
         - name: A felügyelt példány dokumentációja
           href: sql-database-managed-instance-index.yml
-        - name: Felügyelt példány képességei
+        - name: Felügyelt példány áttekintése
           href: sql-database-managed-instance.md
         - name: Felügyelt példány – gyakori kérdések
           href: sql-database-managed-instance-faq.md
+        - name: Példánykészletek
+          items:
+            - name: Példánykészletek áttekintése
+              href: sql-database-instance-pools.md
+            - name: Példánykészletekkel kapcsolatos útmutató
+              href: sql-database-instance-pools-how-to.md
         - name: Felügyeleti API-referencia
           href: sql-database-managed-instance-create-manage.md
         - name: Erőforráskorlátok

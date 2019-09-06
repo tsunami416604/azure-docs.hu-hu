@@ -125,6 +125,14 @@
               href: map-events.md
             - name: Alkalmazás elérhetővé tétele
               href: map-accessibility.md
+        - name: Rajzeszközök
+          items:
+            - name: Rajzolási eszköztár hozzáadása
+              href: map-add-drawing-toolbar.md
+            - name: Rajzolási beállítások megadása
+              href: set-drawing-options.md
+            - name: Formázott adatok lekérése
+              href: map-get-shape-data.md
         - name: Szolgáltatások modul
           items:
             - name: A szolgáltatásmodul használata
@@ -198,7 +206,7 @@
 - name: További források
   items:
     - name: Az Azure Maps használati feltételei
-      href: 'https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31'
+      href: 'https://azure.microsoft.com/support/legal/'
     - name: Az Azure Maps árképzése
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: Díjkalkulátor
@@ -209,6 +217,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Azure Maps-videók
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Azure Maps-esettanulmányok
+      href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Azure Maps-szószedet
       href: glossary.md
     - name: Szolgáltatási hírek

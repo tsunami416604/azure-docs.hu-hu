@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Az Azure SQL Database felügyelt példány
+title: Felügyelt Azure SQL Database-példány
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: Felügyelt példány dokumentációja – oktatóanyagok és API-referencia
+  title: A felügyelt példány dokumentációja – oktatóanyagok és API-referencia
   meta.description: Learn how to use a managed instance in Azure SQL Database.
   services: sql-database
   author: jovanpop-msft
@@ -18,14 +18,14 @@ metadata:
   ms.date: 04/09/2019
   ms.author: jovanpop
 abstract:
-  description: 'Az Azure SQL Database felügyelt példány egy teljes körűen felügyelt SQL Server adatbázismotor-példánnyal az Azure-felhő üzemeltet. Ez a lehetőség ajánlott PaaS az SQL Server-adatbázis migrálása a felhőbe. Ismerje meg, hogyan hozhat létre, és a felügyelt példány használata a útmutatóink, oktatóanyagaink és példáink segítségével.'
+  description: 'Az Azure SQL Database-ben futó felügyelt példány egy teljes körűen felügyelt SQL Server-adatbázismotorpéldány, amely az Azure-felhőben fut. Ez a legjobb PaaS-lehetőség az SQL Server-adatbázisok felhőbe való migrálására. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megtudhatja, hogyan hozhat létre és használhat felügyelt példányokat.'
   aside:
     image:
       alt: null
       height: 110
       src: media/sql-database-managed-instance-index/intro.png
       width: 250
-    title: 'Felügyelt példány az Azure SQL Database (5:38) bemutatása'
+    title: 'Az Azure SQL Database-beli felügyelt példány ismertetése (5:38)'
     href: 'https://www.youtube.com/watch?v=W8feSZXm2Ec'
     width: 250
 sections:
@@ -37,54 +37,55 @@ sections:
         items:
           - title: Áttekintés
             href: /azure/sql-database/sql-database-managed-instance
-            html: <p>Ismerje meg bővebben az Azure SQL Database felügyelt példány.</p>
-          - title: Gazdag felülettel
+            html: <p>Tudjon meg többet az Azure SQL Database-beli felügyelt példányról.</p>
+          - title: Tartalomban gazdag felület
             href: '/azure/sql-database/sql-database-managed-instance#sql-features-supported'
-            html: <p>Közel 100 %-os SQL a szolgáltatások kompatibilitása az SQL Server adatbázismotor legújabb verzióját.</p>
+            html: <p>Közel 100%-os SQL-funkciókompatibilitás az SQL Server-adatbázismotor legújabb verziójával.</p>
           - title: VNet-integráció
             href: /azure/sql-database/sql-database-managed-instance-connectivity-architecture
-            html: <p>Biztonságos szolgáltatás a privát Azure virtuális hálózat privát IP-elhelyezni.</p>
-          - title: Egyszerű áttelepítés
+            html: <p>Biztonságos szolgáltatás a magánhálózati IP-címeket használó privát Azure-beli saját virtuális hálózaton.</p>
+          - title: Egyszerű migrálás
             href: /azure/sql-database/sql-database-managed-instance-get-started-restore
-            html: <p>Egyszerűen migrálhatja a helyszíni adatbázisok Azure-felhőbe natív visszaállítással.</p>
-          - title: Migrálás leállás nélkül
+            html: <p>Egyszerűen migrálhatja helyszíni adatbázisait az Azure-felhőbe a natív visszaállítás segítségével.</p>
+          - title: Migrálás állásidő nélkül
             href: /azure/dms/tutorial-sql-server-to-managed-instance
-            html: <p>Telepítse át egy járműflotta adatbázisok minimális állásidővel Database Migration Service segítségével.</p>
+            html: <p>Nagy számú adatbázist migrálhat minimális állásidővel a Database Migration Service használatával.</p>
           - title: Díjszabás
             href: 'https://azure.microsoft.com/pricing/hybrid-benefit/'
-            html: <p>Akár 40 %-os az Azure Hybrid Benefit (AHB) mentse a meglévő helyszíni licenceit.</p>
-          - title: PaaS-megoldásaink
+            html: <p>Takarítson meg akár 40%-ot az Azure Hybrid Benefit segítségével a meglévő helyszíni licenceivel.</p>
+          - title: PaaS-képességek
             href: /azure/sql-database/sql-database-paas
-            html: '<p>Azure PaaS lehetővé teszi, hogy 99,99 %-os elérhető példányhoz, minimális kezelési használjon.</p>'
+            html: '<p>Az Azure PaaS lehetővé teszi egy 99,99%-os rendelkezésre állású példány minimális felügyeletet igénylő használatát.</p>'
           - title: Szolgáltatásszintek
             href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
-            html: <p>Általános célú és a kritikus fontosságú üzleti szolgáltatásszintek üzleti igényeitől függően választhat.</p>
+            html: <p>A saját üzleti igényeinek megfelelően választhat az Általános célú és az Üzleti szempontból kritikus szint között.</p>
           - title: Magas szintű biztonság
             href: /azure/sql-database/sql-database-security-index
-            html: <p>A példány és az adatbázisok az Azure SQL database beépített biztonsági szolgáltatások biztonságos.<p>
+            html: <p>Példánya és adatbázisainak biztonságáról az Azure SQL Database beépített biztonsági funkcióival gondoskodhat.<p>
   - title: Új és előzetes verziójú funkciók
     items:
       - type: paragraph
-        text: 'Folyamatosan folyamatosan fejlesztjük a felügyelt példány új funkciókkal:'
+        text: 'A felügyelt példányt folyamatosan fejlesztjük új funkciók hozzáadásával:'
       - type: list
         style: unordered
         items:
-          - html: '<a href="https://aka.ms/four-cores-sql-mi-update"> 4 virtuális magot kapnak a Gen5 hardver generációja</a>'
-          - html: 'Az előfizetések támogatása <a href="https://aka.ms/sql-mi-visual-studio-subscribers" > Azure havi kredit a Visual Studio-előfizetők </a>'
-          - html: 'Támogatja a <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> a SharePoint 2016 és a SharePoint 2019 </a> és <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>'
-          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">Konfigurálja az időzóna</a> példány létrehozása során.'
-          - html: 'A példányok létrehozásához <a href="https://aka.ms/managed-instance-collation">a választott a kiszolgálói szintű rendezés</a>.'
-          - html: 'A GEO-visszaállítás funkcióval <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">állíthatja vissza az adatbázist a PowerShell használatával egy másik adatközpontba</a>.'
-          - html: '(Előzetes verzió) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">Hozza létre újból eldobott adatbázisokat PowerShell használatával</a>'
-          - html: Felügyelt példányok védett <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">beépített tűzfal</a>.
-          - html: '(Előzetes verzió) <a href="https://aka.ms/managed-instance-tde-byok">Saját titkosítási kulcsok használata</a> Bár a migrálás a helyszíni adatbázisok, amelyek már rendelkeznek engedélyezve van a transzparens adattitkosítás (TDE).'
-          - html: '(Előzetes verzió) Használat <a href="https://aka.ms/managed-instance-failover-groups">földrajzilag elosztott feladatátvételi csoportok</a> adatpéldányok példány egy másik régióban, és győződjön meg arról, hogy az adatai akkor lesznek érhető el, még akkor is, a regionális vészhelyreállítási forgatókönyv.'
-          - html: '<a href="https://aka.ms/managed-instance-configurable-backup-retention">A biztonsági másolatok konfigurálása mentése 35 napon belül</a> időponthoz visszaállításhoz. Vegye figyelembe, hogy hosszú távú megőrzésének (legfeljebb 10 évre) még nincs engedélyezve, így használhatja <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">csak másolatot biztonsági mentések</a> alternatívájaként.'
-          - html: '(Előzetes verzió) Hozzon létre <a href="https://aka.ms/managed-instance-aadlogins">példányszintű Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések)</a> használatával <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">külső SZOLGÁLTATÓ a bejelentkezés létrehozása</a> .'
+          - html: (Előzetes verzió) <a href="/azure/sql-database/sql-database-instance-pools"> Példánykészletek</a> – kényelmes és költséghatékony megoldás a kisebb SQL-példányok felhőbe való migrálására.
+          - html: '<a href="https://aka.ms/four-cores-sql-mi-update"> 4 virtuális mag a Gen5 hardvergeneráción</a>'
+          - html: 'Visual Studio-előfizetők havi <a href="https://aka.ms/sql-mi-visual-studio-subscribers" > Azure-kreditjét használó előfizetések támogatása</a>'
+          - html: 'A <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 és SharePoint 2019 </a> és a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a> támogatása'
+          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">Időzóna konfigurálása</a> a példány létrehozása során.'
+          - html: '<a href="https://aka.ms/managed-instance-collation">Szabadon választott kiszolgálói szintű rendezéssel</a> rendelkező példányok létrehozása.'
+          - html: 'A georedundáns visszaállítási funkció lehetővé teszi az <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">adatbázis egy másik adatközpontba történő visszaállítását a PowerShell használatával</a>.'
+          - html: '(Előzetes verzió) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">Elvetett adatbázisok újbóli létrehozása a PowerShell használatával</a>'
+          - html: A felügyelt példányokat <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">beépített tűzfal</a> védi.
+          - html: '(Előzetes verzió) <a href="https://aka.ms/managed-instance-tde-byok">Saját titkosítási kulcs használata</a> a helyszíni adatbázisok migrálásakor, amelyeken már engedélyezve van a transzparens adattitkosítás (TDE).'
+          - html: '(Előzetes verzió) A <a href="https://aka.ms/managed-instance-failover-groups">földrajzilag elosztott feladatátvételi csoportokkal</a> megőrizheti a példány másolatát egy másik régióban, és biztosíthatja, hogy az adatai még egy regionális katasztrófa esetén is elérhetők legyenek.'
+          - html: '<a href="https://aka.ms/managed-instance-configurable-backup-retention">Akár 35 napig megőrizheti a biztonsági másolatokat</a> az időponthoz kötött visszaállítás céljából. Vegye figyelembe, hogy a biztonsági másolatok hosszú távú (legfeljebb 10 éves) megőrzése továbbra sem támogatott, így másik megoldásként a <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">Csak másolással készült biztonsági másolatok</a> használhatók.'
+          - html: '(Előzetes verzió) <a href="https://aka.ms/managed-instance-aadlogins">Példányszintű Azure AD-szolgáltatásnevek (-bejelentkezések)</a> létrehozása a <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> utasítással.'
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph
-        text: 'Felügyelt példány lehetővé teszi, hogy könnyen alapszintű felügyeleti feladatokat az Azure Portalon, az Azure CLI és az Azure PowerShell használatával. Az alábbi rövid útmutatókból megtudhatja, hogyan végezhetők el különböző alapszintű felügyeleti feladatok:'
+        text: 'A felügyelt példány lehetővé teszi alapszintű felügyeleti feladatok az Azure Portal, az Azure CLI és az Azure PowerShell segítségével történő egyszerű ellátását. Az alábbi rövid útmutatókból megtudhatja, hogyan végezhetők el különböző alapszintű felügyeleti feladatok:'
       - type: table
         style: dataMatrix
         columns:
@@ -113,7 +114,7 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: '/powershell/module/az.sql/set-azsqlinstance#examples'
               - href: null
-          - title: Az Azure hálózati környezet konfigurálása
+          - title: Az Azure-beli hálózati környezet konfigurálása
             values:
               - href: /azure/sql-database/sql-database-managed-instance-get-started
               - href: null
@@ -125,59 +126,59 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: '/powershell/module/az.sql/restore-azsqlinstancedatabase#examples'
               - href: null
-          - title: Állítsa vissza az adatbázist egy másik példányhoz
+          - title: Adatbázisok visszaállítása egy másik példányra
             values:
               - href: null
               - href: 'https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/'
               - href: 'https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?view=azps-2.0.0#examples'
               - href: null
-          - title: Adatbázis visszaállítása
+          - title: Elvetett adatbázis visszaállítása
             values:
               - href: null
               - href: null
               - href: 'https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Recreate-dropped-database-on-Azure-SQL-Managed-Instance/ba-p/386285'
               - href: null
-          - title: A GEO-visszaállítás adatbázis
+          - title: Adatbázis georedundáns visszaállítása
             values:
               - href: null
               - href: null
               - href: /azure/sql-database/scripts/sql-managed-instance-restore-geo-backup
               - href: null
-          - title: Set public IP endpoint
+          - title: Nyilvános IP-címvégpont beállítása
             values:
               - href: 'sql-database-managed-instance-public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal'
               - href: null
               - href: 'sql-database-managed-instance-public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell'
               - href: null
-  - title: Lépésről lépésre haladó oktatóanyagok és oktatási anyagainak
+  - title: Részletes útmutatók és oktatóanyagok
     items:
       - type: paragraph
-        text: 'Ismerje meg, hogyan létrehozása, kezelése és használata a figyelt példányokat.'
+        text: 'Útmutató a felügyelt példányok létrehozásához, felügyeletéhez és használatához.'
       - type: list
         style: ordered
         items:
-          - html: 'Ismerje meg, hogyan lehet gyorsan <a href="sql-database-managed-instance-quickstart-guide.md">Ismerkedés a felügyelt példány</a> a gyors útmutatók használatával.'
-          - html: 'Ismerje meg <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">hardverjellemzők és korlátozások</a>, <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">Transact-SQL nyelv különbségek</a>, és <a href="/azure/sql-database/sql-database-managed-instance-create-manage">Transact-SQL, PowerShell, az Azure CLI API konfigurálása a felügyelt példány<a/>.'
-          - html: '<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurálása</a> Azure virtuális hálózat, ahol a felügyelt példány üzembe helyezve.'
-          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">Érvényesítése</a> , hogy a a meglévő Azure virtuális hálózat üzembe helyezéséhez használható felügyelt példányok.'
-          - html: 'Csatlakozzon a példány <a href="sql-database-managed-instance-public-endpoint-securely">nyilvános IP-cím végpontból</a>, <a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-easiest-way-to-create-Azure-VM-that-can-access-your-Azure/ba-p/386247">Azure virtuális gép</a> vagy <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">pont – hely kapcsolat</a>, vagy <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">alkalmazások</a>.'
-          - html: 'Győződjön meg arról, hogy az adatbázis áttelepíthető-e használatával <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Assistant</a> vagy <a href="https://blogs.msdn.microsoft.com/datamigration/20../../release-database-experimentation-assistant-dea-v2-6/">adatbázis Kísérletezési Segéd</a>.'
-          - html: Felügyelt példány használatával az adatbázisok életre <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natív visszaállítási</a> vagy <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Data Migration Service</a>.
-          - html: 'Helyezze át az SSIS-csomagokat a <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a>, SSAS táblázatos modellek <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service</a>, és a jelentéseket az SSRS <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power bi Premium</a>.'
-          - html: 'További információ a tárolási réteg <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">általános célú csomagban</a> és a alkalmazni <a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">tárolási teljesítmény ajánlott eljárást és szempontot, általános célú szolgáltatási szinten</a>.'
-          - html: 'Keresse meg az ajánlott eljárásokat és javaslatokat <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">biztonságossá tétele a-példány</a>.'
-          - html: 'További információ <a href="sql-database-howto-managed-instance.md">útmutató végigvezeti a</a> , amelyek segítségével a felügyelt példány konfigurálását.'
-  - title: Hivatkozás
+          - html: Ismerje meg gyorsútmutatóinkból <a href="sql-database-managed-instance-quickstart-guide.md">a felügyelt példányok</a> használatának első lépéseit.
+          - html: 'Ismerje meg <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">a hardverjellemzőket és korlátozásokat</a>, <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">a Transact-SQL nyelvi különbségeit</a> és <a href="/azure/sql-database/sql-database-managed-instance-create-manage">a Transact-SQL, a PowerShell és az Azure CLI API használatát a felügyelt példány konfigurálásához<a/>.'
+          - html: '<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurálja</a> az Azure VNetet, ahová a felügyelt példány telepítve lesz.'
+          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">Ellenőrizze</a>, hogy a meglévő Azure VNetre telepíthető-e felügyelt példány.'
+          - html: 'Csatlakozzon a példányához <a href="sql-database-managed-instance-public-endpoint-securely">nyilvános IP-végponttal</a>, <a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-easiest-way-to-create-Azure-VM-that-can-access-your-Azure/ba-p/386247">Azure-beli virtuális géppel</a> vagy <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">pont–hely kapcsolattal</a>, illetve <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">alkalmazásokkal</a>.'
+          - html: 'Ellenőrizze, hogy adatbázisa migrálható-e a <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Assistant</a> vagy a <a href="https://blogs.msdn.microsoft.com/datamigration/20../../release-database-experimentation-assistant-dea-v2-6/">Database Experimentation Assistant</a> használatával.'
+          - html: Helyezze át adatbázisait a felügyelt példányra a <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natív visszaállítás</a> vagy a <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Database Migration Service</a> használatával.
+          - html: 'Helyezze át SSIS-csomagjait az <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factorybe</a>, SSAS táblázatos modelljeit az <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service-be</a> és SSRS-jelentéseit a <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">PowerBI Premiumba</a>.'
+          - html: 'Ismerkedjen meg az <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">általános célú szint</a> tárolási rétegével, és alkalmazza az <a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">általános célú szolgáltatási szint tárolási teljesítményre vonatkozó ajánlott eljárásait és szempontjait</a>.'
+          - html: 'Ismerje meg a <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">példánya biztonságossá tételére</a> vonatkozó ajánlott eljárásokat és javaslatokat.'
+          - html: 'Tekintsen át további <a href="sql-database-howto-managed-instance.md">útmutatókat</a>, amelyek segítségével konfigurálhatja a felügyelt példányt.'
+  - title: Referencia
     items:
       - type: list
         style: cards
         className: cardsD
         items:
           - title: Blogok
-            html: '<p><a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/bg-p/Azure-SQL-Database/label-name/SQLServerStorageEngine">Techcommunity</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">Közepes</a></p>'
+            html: '<p><a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/bg-p/Azure-SQL-Database/label-name/SQLServerStorageEngine">Techcommunity</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">Medium</a></p>'
           - title: Gyakori kérdések
             html: '<p><a href="https://stackoverflow.com/questions/tagged/azure-sql-managed-instance">Stack Overflow</a></p>'
-          - title: Közösségi csatornák
-            html: '<p><a href="https://sqlcommunity.slack.com/messages/CH854GD7D/">SQL-Közösség (felügyelt példány)</a></p>'
-          - title: Oktatási anyagok
-            html: '<p><a href="https://www.microsoft.com/handsonlabs/selfpacedlabs">Laborgyakorlatok</a></p><p><a href="https://www.microsoft.com/handsonlabs/instructorledlabs">Az utasítás vezetett laborgyakorlatok</a></p>'
+          - title: Közösségi csatorna
+            html: '<p><a href="https://sqlcommunity.slack.com/messages/CH854GD7D/">Sql-közösség (felügyelt példány)</a></p>'
+          - title: Képzési anyagok
+            html: '<p><a href="https://www.microsoft.com/handsonlabs/selfpacedlabs">Gyakorlati tesztkörnyezet</a></p><p><a href="https://www.microsoft.com/handsonlabs/instructorledlabs">Utasításalapú tesztkörnyezetek</a></p>'

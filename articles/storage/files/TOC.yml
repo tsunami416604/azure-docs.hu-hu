@@ -1,5 +1,5 @@
-- name: Azure Storage-dokumentáció
-  href: /azure/storage/
+- name: Az Azure Files dokumentációja
+  href: index.yml
 - name: Áttekintés
   expanded: true
   items:

@@ -712,6 +712,8 @@
       items:
         - name: A Power BI használata
           href: powerbi-visualize.md
+        - name: Élő időjárási irányítópult létrehozása
+          href: create-real-time-weather-dashboard-powerbi.md
         - name: Qlik Sense használata
           href: visualize-qlik-sense.md
     - name: Integráció más Azure-szolgáltatásokkal

@@ -273,6 +273,8 @@
           href: troubleshoot-outbound-smtp-connectivity.md
         - name: Információ a 168.63.129.16 IP-címről
           href: what-is-ip-address-168-63-129-16.md
+        - name: Azure-beli virtuális gép csatlakozási problémáinak elhárítása
+          href: troubleshoot-vm-connectivity.md
     - name: Klasszikus
       items:
         - name: Virtuális hálózat létrehozása és kezelése

@@ -153,6 +153,9 @@
     - name: Hozzárendelések kezelése a PowerShell-lel
       displayName: 'create, update, remove'
       href: ./how-to/manage-assignments-ps.md
+    - name: Importálás és exportálás a PowerShell-lel
+      displayName: 'import, export, folders'
+      href: ./how-to/import-export-ps.md
     - name: Meglévő hozzárendelések frissítése a portálról
       displayName: 'lock, errors'
       href: ./how-to/update-existing-assignments.md
