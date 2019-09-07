@@ -4,6 +4,8 @@
   items:
     - name: Mi az a Resource Manager?
       href: resource-group-overview.md
+    - name: Sablonok áttekintése
+      href: template-deployment-overview.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -58,8 +60,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: Alapelvek
   items:
-    - name: Sablonalapú üzembe helyezések
-      href: template-deployment-overview.md
     - name: Ajánlott eljárások a sablonok használatához
       href: template-best-practices.md
     - name: Felhőkonzisztencia-sablonok
