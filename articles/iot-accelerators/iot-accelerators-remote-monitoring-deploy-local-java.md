@@ -1,6 +1,6 @@
 ---
-title: Üzembe helyezése a távoli figyelési megoldás helyileg (keresztül IntelliJ IDE) – Azure |} A Microsoft Docs
-description: Ez az útmutató bemutatja, a távoli figyelési megoldásgyorsító üzembe helyezése IntelliJ használatával teszteléshez és fejlesztéshez a helyi gépen.
+title: A távoli figyelési megoldás üzembe helyezése helyileg (IntelliJ IDE-n keresztül) – Azure | Microsoft Docs
+description: Ez a útmutató bemutatja, hogyan helyezheti üzembe a távoli figyelési megoldás gyorsítása a helyi gépen a IntelliJ használatával tesztelés és fejlesztés céljából.
 author: v-krghan
 manager: dominicbetts
 ms.author: v-krghan
@@ -8,226 +8,232 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b55fea69fe1affb6cab5d360f1e8355c3bb720d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f3c11763bb2f406caf9d33275fc29b0d140da9a
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66015432"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "70743323"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>A távoli figyelési megoldásgyorsító helyileg - IntelliJ telepítése
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>A távoli figyelési megoldás helyi telepítése – IntelliJ
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-Ez a cikk bemutatja, hogyan való teszteléshez és fejlesztéshez a helyi gépre a távoli figyelési megoldásgyorsító üzembe helyezése. Ismerteti a mikroszolgáltatási az intellij-ben való futtatásához. Egy helyi mikroszolgáltatások üzembe helyezés az alábbi cloud-szolgáltatásokat használja: Az IoT Hub, Cosmos DB, az Azure Stream Analytics és az Azure Time Series Insights-szolgáltatások a felhőben.
+Ebből a cikkből megtudhatja, hogyan helyezheti üzembe a távoli figyelési megoldás Gyorssegédjét a helyi gépre tesztelés és fejlesztés céljából. Megtudhatja, hogyan futtathatja a IntelliJ a Service szolgáltatásait. A helyi fürtszolgáltatások üzembe helyezése a következő felhőalapú szolgáltatásokat fogja használni: IoT Hub, Azure Cosmos DB, Azure streaming Analytics és Azure Time Series Insights.
 
-Ha szeretné a távoli figyelési megoldásgyorsító Futtatás a Dockerben a helyi gépén, [a Docker üzembe helyezése a távoli figyelési megoldásgyorsító helyileg -](iot-accelerators-remote-monitoring-deploy-local-docker.md).
+Ha a távoli figyelési megoldás gyorssegédét a Docker-ben szeretné futtatni a helyi gépen, tekintse meg [a távoli figyelési megoldás központi telepítése helyileg – Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure-szolgáltatások használják a távoli figyelési megoldásgyorsító üzembe helyezéséhez aktív Azure-előfizetés szükséges.
+A távoli figyelési megoldás által használt Azure-szolgáltatások üzembe helyezéséhez aktív Azure-előfizetésre van szükség.
 
 Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="machine-setup"></a>Gép beállítása
 
-A helyi telepítés befejezéséhez, szüksége van a helyi fejlesztői gépen telepítve van a következő eszközöket:
+A helyi telepítés befejezéséhez a következő eszközökre van szükség a helyi fejlesztési gépen:
 
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
-* [Az IntelliJ beépülő modul Scala](https://plugins.jetbrains.com/plugin/1347-scala)
-* [IntelliJ Plugin SBT](https://plugins.jetbrains.com/plugin/5007-sbt)
-* [Az IntelliJ beépülő modul SBT végrehajtó](https://plugins.jetbrains.com/plugin/7247-sbt-executor)
+* [IntelliJ Scala beépülő modul](https://plugins.jetbrains.com/plugin/1347-scala)
+* [IntelliJ SBT beépülő modul](https://plugins.jetbrains.com/plugin/5007-sbt)
+* [IntelliJ SBT végrehajtó beépülő modul](https://plugins.jetbrains.com/plugin/7247-sbt-executor)
 * [Nginx](https://nginx.org/en/download.html)
-* [NODE.js v8](https://nodejs.org/) – Ez a szoftver előfeltétele a számítógépek parancssori felület, amely a parancsfájlok használata Azure-erőforrások létrehozásához. Ne használja a Node.js v10.
+* [Node. js V8](https://nodejs.org/)
+
+A Node. js V8 előfeltétele annak a PC CLI-nek, amelyet a parancsfájlok az Azure-erőforrások létrehozásához használnak. Ne használja a Node. js v10-et.
 
 > [!NOTE]
-> IntelliJ IDE érhető el a Windows és Mac rendszerre.
+> A IntelliJ IDE a Windows és a Mac rendszerhez érhető el.
 
-## <a name="download-the-source-code"></a>Letöltheti a forráskódot
+## <a name="download-the-source-code"></a>Forráskód letöltése
 
-A távoli figyelési forráskódtárházak forráskódját és a Docker konfigurációs fájlokat kell futtatnia a mikroszolgáltatások Docker-rendszerképeket tartalmazza.
+A távfelügyelet forráskódja tartalmazza a forráskódot és a Docker konfigurációs fájljait, amelyekre szüksége van a Service Docker-rendszerképek futtatásához.
 
-Klónozza, és hozza létre a tárház helyi verzióját, a parancssori környezetet használatával keresse meg a megfelelő mappát a helyi gépen. A következő eljárások egyikét a java-tárház klónozásához parancsok egyikét futtatja:
+A tárház helyi verziójának klónozásához és létrehozásához használja a parancssori környezetet, hogy a megfelelő mappába lépjen a helyi gépen. Ezután futtassa a következő parancsok egyikét a Java-tárház klónozásához:
 
-Töltse le a legújabb verzióját a java-mikroszolgáltatások megvalósításokhoz, futtassa:
+* A Java-szolgáltatások implementációjának legújabb verziójának letöltéséhez futtassa a következő parancsot:
 
+  ```cmd/sh
+  git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
+  ```
 
-```cmd/sh
-git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
+* A legújabb almodulok beolvasásához futtassa a következő parancsokat:
 
-# To retrieve the latest submodules, run the following command:
-
-cd azure-iot-pcs-remote-monitoring-java
-git submodule foreach git pull origin master
-```
+   ```cmd/sh
+   cd azure-iot-pcs-remote-monitoring-java
+   git submodule foreach git pull origin master
+    ```
 
 > [!NOTE]
-> Ezek a parancsok letöltheti a forráskódot, a mikroszolgáltatások helyi futtatásához használja a parancsfájlok mellett a mikroszolgáltatások. Már nincs szüksége a forráskódra futtassa a mikroszolgáltatások a Dockerben, bár a forráskód hasznos, ha később kívánja módosítani a megoldásgyorsító és módosítások helyi tesztelése.
+> Ezek a parancsok az összes szolgáltatás forráskódját letöltik a helyi webszolgáltatás futtatásához használt parancsfájlokon kívül. Nincs szüksége a forráskód futtatására a Docker szolgáltatásban. A forráskód azonban akkor is hasznos, ha később módosítani szeretné a megoldás-gyorssegédet, és helyileg teszteli a módosításokat.
 
 ## <a name="deploy-the-azure-services"></a>Az Azure-szolgáltatások üzembe helyezése
 
-Bár ez a cikk bemutatja, hogyan helyileg történő futtatása a mikroszolgáltatás-alapú, Azure-szolgáltatások a felhőben futó függenek. Használja a következő szkriptet az Azure-szolgáltatások üzembe helyezéséhez. A következő parancsfájl példák feltételezik, hogy használja a java-tárház egy Windows-gépen. Ha egy másik környezetben dolgozik, állítsa be az elérési utak, fájlkiterjesztések, és elérési út elválasztók megfelelően.
+Bár ez a cikk bemutatja, hogyan futtathatja helyileg a Service-t, a felhőben futó Azure-szolgáltatásoktól függenek. Az Azure-szolgáltatások üzembe helyezéséhez használja az alábbi szkriptet. A parancsfájl például feltételezi, hogy a Java-tárházat használja a Windows rendszerű gépen. Ha más környezetben dolgozik, állítsa be megfelelően az elérési utakat, a fájlkiterjesztések és az elérési út elválasztóit.
 
 ### <a name="create-new-azure-resources"></a>Új Azure-erőforrások létrehozása
 
-Ha még nem hozott a szükséges Azure-erőforrásokat, kövesse az alábbi lépéseket:
+Ha még nem hozta létre a szükséges Azure-erőforrásokat, kövesse az alábbi lépéseket:
 
-1. A parancssori környezetben, keresse meg a **\services\scripts\local\launch** mappájához klónozott másolatának a tárházban.
+1. A parancssori környezetben lépjen a tárház klónozott példányának **\services\scripts\local\launch** mappájába.
 
-1. Futtassa az alábbi parancsokat a **számítógépek** parancssori eszközt, és jelentkezzen be az Azure-fiókjával:
+1. Futtassa a következő parancsokat a **számítógépek** CLI-eszköz telepítéséhez, és jelentkezzen be az Azure-fiókjába:
 
     ```cmd
     npm install -g iot-solutions
     pcs login
     ```
 
-1. Futtassa a **start.cmd** parancsfájlt. A parancsfájl kérni fogja, hogy a következő információkat:
-   * A megoldás nevét.
+1. Futtassa a **Start. cmd** parancsfájlt. A parancsfájl a következő információk megadását kéri:
+
+   * Egy megoldás neve.
    * A használandó előfizetés.
-   * Használata az Azure-adatközpont helyét.
+   * A használni kívánt Azure-Adatközpont helye.
 
-     A parancsfájl hoz létre, a megoldás nevű erőforráscsoportot az Azure-ban. Ez az erőforráscsoport tartalmazza az Azure-erőforrások a megoldásgyorsító használja. Ez az erőforráscsoport már nincs szüksége a megfelelő erőforrások után törölheti.
+   A szkript létrehoz egy erőforráscsoportot az Azure-ban, amelyben a megoldás neve szerepel. Ez az erőforráscsoport tartalmazza a megoldás-gyorsító által használt Azure-erőforrásokat. Ezt az erőforráscsoportot akkor törölheti, ha már nincs szüksége a megfelelő erőforrásokra.
 
-     A parancsfájl is hozzáad egy előtaggal rendelkező környezeti változók készletét **számítógépek** a helyi gépen. Ezek a környezeti változók adja meg a távoli Monitorozáshoz tudják olvasni az Azure Key Vault erőforrás részleteit. A Key Vault erőforrás, ahol távoli megfigyelés fogja beolvasni a konfigurációs értékeket az.
+   A parancsfájl környezeti változókat is hozzáad a helyi géphez. Mindegyik változó neve a **számítógépek**előtagját adja meg. Ezek a környezeti változók olyan részleteket biztosítanak, amelyek lehetővé teszik a távoli megfigyelés számára, hogy beolvassák a konfigurációs értékeket egy Azure Key Vault erőforrásból.
 
-     > [!TIP]
-     > Miután a parancsfájl futása befejeződött, azt is menti a környezeti változók nevű fájlba  **\<a kezdőmappa\>\\.pcs\\\<megoldásnevet\>.env** . A jövőbeli megoldás megoldásgyorsító központi telepítések használhatja őket. Vegye figyelembe, hogy a helyi gépen állítsa be a környezeti változók felülbírálási értékeket a **szolgáltatások\\parancsfájlok\\helyi\\.env** fájl futtatásakor **docker-compose**.
+   > [!TIP]
+   > A parancsfájl befejeződése után a környezeti változókat egy saját kezdőmappa nevű  **\<\>\>\\fájlba menti. a\\számítógépek\<megoldás neve. env**. Használhatja őket a jövőbeli megoldás-gyorsító üzembe helyezésekhez. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **Services\\-\\parancsfájlok helyi\\. env** fájljának értékeit.
 
-1. Lépjen ki a parancssori környezetből.
+1. A parancssori környezet lezárása.
 
-### <a name="use-existing-azure-resources"></a>A meglévő Azure-erőforrások
+### <a name="use-existing-azure-resources"></a>Meglévő Azure-erőforrások használata
 
-Ha már létrehozta a szükséges Azure-erőforrások, a helyi gépén hozzon létre a megfelelő környezeti változókat.
-Állítsa be a környezeti változókat a következőket:
-* **PCS_KEYVAULT_NAME** – az Azure Key Vault-erőforrás neve
-* **PCS_AAD_APPID** – az AAD-Alkalmazásazonosító
-* **PCS_AAD_APPSECRET** – az AAD-alkalmazás titkos kulcs
+Ha már létrehozta a szükséges Azure-erőforrásokat, állítsa be a megfelelő környezeti változókat a helyi gépen:
+* **PCS_KEYVAULT_NAME**: Az Key Vault erőforrás neve.
+* **PCS_AAD_APPID**: A Azure Active Directory-(Azure AD-) alkalmazás azonosítója.
+* **PCS_AAD_APPSECRET**: Az Azure AD-alkalmazás titka.
 
-Konfigurációs értékeket az Azure Key Vault erőforrás lesz olvasható. Előfordulhat, hogy menteni ezeket a környezeti változókat a  **\<a kezdőmappa\>\\.pcs\\\<megoldásnevet\>.env** a központi telepítési fájlt. Vegye figyelembe, hogy a helyi gépen beállított környezeti változókat felülbírálási értékeket a **szolgáltatások\\parancsfájlok\\helyi\\.env** fájl futtatásakor **docker-compose**.
+A konfigurációs értékek beolvasása ebből a Key Vault erőforrásból történik. Ezek a környezeti változók menthetők a  **\<\>\\saját kezdőmappa. számítógép\\\<-megoldás\>neve. env** fájlból a telepítésből. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **szolgáltatások\\\\\\helyi. env** fájljának értékeit.
 
-Az egyes konfigurációs szükség szerint a mikroszolgáltatás egy példányát tárolja **Key Vault** , amely a kezdeti telepítés jött létre. Igény szerint módosítani kell a megfelelő változók kulcstartóban.
+A webszolgáltatás által igényelt néhány konfiguráció a kezdeti telepítéskor létrehozott Key Vault egy példányában van tárolva. A Key Vault megfelelő változóit szükség szerint módosítani kell.
 
-## <a name="run-the-microservices"></a>A mikroszolgáltatások futtatása
+## <a name="run-the-microservices"></a>A szervizcsomagok futtatása
 
-Ebben a szakaszban a távoli figyelési mikroszolgáltatások fogja futtatni. A webes felhasználói felület futtatása natív módon, az Eszközszimuláció, hitelesítés és az ASA-kezelő szolgáltatás, a Docker és a mikroszolgáltatás-alapú, az intellij-ben.
+Ebben a szakaszban a távoli monitorozási szolgáltatásait futtatja. Futtatás:
 
-### <a name="run-the-device-simulation-service"></a>Eszköz szimulálása szolgáltatás futtatásához
+* A webes KEZELŐFELÜLET natív módon.
+* Az Azure IoT-eszköz szimulációja, hitelesítése és Azure Stream Analytics Manager szolgáltatások a Docker-ben.
+* A IntelliJ található szolgáltatások.
 
-Nyisson meg egy új parancsablakot győződjön meg arról, hogy a által beállított környezeti változókat a hozzáférést a **start.cmd** parancsfájlt az előző szakaszban.
+### <a name="run-the-device-simulation-service"></a>Az eszköz szimulációs szolgáltatásának futtatása
 
-Futtassa a következő parancsot a Docker-tárolót, az eszköz szimulálása szolgáltatás elindításához. A szolgáltatás a távoli figyelési megoldásban az eszközök szimulálja.
+Nyisson meg egy új parancssori ablakot. Győződjön meg arról, hogy van hozzáférése az előző szakaszban található **Start. cmd** parancsfájl által beállított környezeti változókhoz.
+
+A következő parancs futtatásával nyissa meg az eszköz szimulációs szolgáltatásának Docker-tárolóját. A szolgáltatás szimulálja az eszközöket a távoli figyelési megoldáshoz.
 
 ```cmd
 <path_to_cloned_repository>\services\device-simulation\scripts\docker\run.cmd
 ```
 
-### <a name="run-the-auth-service"></a>A hitelesítési szolgáltatás
+### <a name="run-the-auth-service"></a>Az Auth szolgáltatás futtatása
 
-Nyisson meg egy új parancsablakot, és futtassa a következő parancsot a hitelesítési szolgáltatás a Docker-tároló elindításához. A szolgáltatás lehetővé teszi, hogy a felhasználók férhetnek hozzá az Azure IoT-megoldások kezelése.
+Nyisson meg egy új parancssorablakot, majd futtassa a következő parancsot az Auth szolgáltatás Docker-tárolójának megnyitásához. A szolgáltatás használatával felügyelheti azokat a felhasználókat, akik jogosultak az Azure IoT-megoldások elérésére.
 
 ```cmd
 <path_to_cloned_repository>\services\auth\scripts\docker\run.cmd
 ```
 
-### <a name="run-the-asa-manager-service"></a>Futtassa az ASA-kezelő szolgáltatás
+### <a name="run-the-stream-analytics-manager-service"></a>A Stream Analytics Manager szolgáltatás futtatása
 
-Nyisson meg egy új parancsablakot, és futtassa a következő parancsot a Docker-tároló az ASA-kezelő szolgáltatás elindításához. A szolgáltatás lehetővé teszi, hogy az Azure Stream Analytics (ASA) feladatok, például a konfigurációs beállítást és indítása, leállítása és azok állapotát a figyelési kezelését.
+Nyisson meg egy új parancssorablakot, majd futtassa a következő parancsot a Docker-tároló megnyitásához a Stream Analytics Manager szolgáltatáshoz. Ezzel a szolgáltatással kezelheti Stream Analytics feladatait. Ilyen felügyelet magában foglalja a feladatok konfigurációjának beállítását, valamint a feladatok állapotának indítását, leállítását és figyelését.
 
 ```cmd
 <path_to_cloned_repository>\services\asa-manager\scripts\docker\run.cmd
 ```
 
-### <a name="deploy-all-other-microservices-on-local-machine"></a>A helyi számítógépen az összes többi mikroszolgáltatások üzembe helyezéséhez
+### <a name="deploy-all-other-microservices-on-your-local-machine"></a>Az összes többi szolgáltatás üzembe helyezése a helyi gépen
 
-A következő lépések bemutatják, hogyan az intellij-ben a távoli figyelési mikroszolgáltatások futtatásához:
+A következő lépések bemutatják, hogyan futtathatja a távoli monitorozási szolgáltatásait a IntelliJ-ben.
 
-#### <a name="import-project"></a>Projekt importálása
+#### <a name="import-a-project"></a>Projekt importálása
 
-1. Indítsa el az intellij-vel IDE
-1. Válassza ki **projekt importálása** válassza **azure-iot-pcs-remote-monitoring-java\services\build.sbt**
+1. Nyissa meg a IntelliJ IDE.
+1. Válassza a **Projekt importálása**lehetőséget.
+1. Válassza a **Azure-IOT-PCs-Remote-Monitoring-java\services\build.SBT**lehetőséget.
 
-#### <a name="create-run-configurations"></a>Futtatási beállítások létrehozása
+#### <a name="create-run-configurations"></a>Futtatási konfigurációk létrehozása
 
-1. Válassza ki **Futtatás > konfigurációk szerkesztése**
-1. Válassza ki **adja hozzá az új konfiguráció > sbt feladat** 
-1. Adja meg **neve** , és adja meg **feladatok** futtatásakor 
-1. Válassza ki a **Working Directory** a futtatni kívánt szolgáltatás alapján
-1. Kattintson a **alkalmaz > Ok** menteni a beállításokat.
-1. Hozzon létre futtatási konfigurációt a következő szolgáltatásokat:
-    * WebService (services\config)
-    * Webszolgáltatás (services\device-telemetria)
-    * WebService (services\iothub-manager)
-    * WebService (services\storage-adapter)
+1. Válassza a**szerkesztési konfigurációk** **futtatása** > lehetőséget.
+1. Válassza az **új konfigurációs** > **SBT feladat**hozzáadása lehetőséget.
+1. Adja meg a **nevet**, majd adja meg a **feladatokat** **futtatásként**.
+1. Válassza ki a **munkakönyvtárat** a futtatni kívánt szolgáltatás alapján.
+1. Válassza az**OK** **alkalmazása** > lehetőséget a beállítások mentéséhez.
+1. Hozzon létre futtatási konfigurációkat a következő webszolgáltatásokhoz:
+    * Webszolgáltatás (services\config)
+    * Webszolgáltatás (services\device-telemetry)
+    * Webszolgáltatás (services\iothub-Manager)
+    * Webszolgáltatás (services\storage-adapter)
 
-Tegyük fel, az alábbi képen egy szolgáltatás konfiguráció hozzáadása:
+Az alábbi képen például egy szolgáltatás konfigurációjának hozzáadása látható:
 
-[![Add-Configuration](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
+[![Képernyőkép a IntelliJ IDE Run/debug konfigurációk ablakáról, amely a bal oldali ablaktábla SBT feladatok listájában, a jobb oldali ablaktáblában pedig a név, a feladatok, a munkakönyvtár és a virtuálisgép-paraméterek bejegyzéseiben Kiemelt storageAdapter lehetőséget jeleníti meg.](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
+#### <a name="create-a-compound-configuration"></a>Összetett konfiguráció létrehozása
 
-#### <a name="create-compound-configuration"></a>Összetett konfiguráció létrehozása
+1. Az összes szolgáltatás együttes futtatásához válassza az **új konfigurációs** > **összetett**hozzáadása elemet.
+1. Adja meg a **nevet**, majd kattintson a **SBT-feladatok hozzáadása**lehetőségre.
+1. Válassza az**OK** **alkalmazása** > lehetőséget a beállítások mentéséhez.
 
-1. Összes szolgáltatás futtatásához együtt válassza **adja hozzá az új konfiguráció > összetett**
-1. Adja meg a **neve** és **sbt tevékenységek hozzáadása**
-1. Kattintson a **alkalmaz > Ok** menteni a beállításokat.
+Az alábbi képen látható, hogyan adhat hozzá az összes SBT-feladatot egyetlen konfigurációhoz:
 
-Tegyük fel az alábbi képen látható, minden sbt feladatot ad hozzá egyetlen konfigurációs:
+[![Képernyőkép a IntelliJ IDE Run/debug konfigurációk ablakáról, amely a bal oldali ablaktábla összetett listájában, a jobb oldali ablaktáblán pedig a "deviceTelemetry" SBT-feladat kiemelésével jelölt AllServices beállítást mutatja.](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
-[![Add-All-Services](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
+Válassza a **Futtatás** lehetőséget a webszolgáltatások helyi számítógépen való létrehozásához és futtatásához.
 
-Kattintson a **futtatása** létrehozását és futtatását a webes szolgáltatások a helyi gépen.
+Minden webszolgáltatás megnyílik egy parancssori ablak és egy webböngésző ablak. A parancssorban megjelenik a futó szolgáltatás kimenete. A böngészőablak lehetővé teszi az állapot figyelését. Ne zárjunk be Windows vagy weblapokat, mivel ezek a műveletek leállítják a webszolgáltatást.
 
-Minden webszolgáltatáshoz nyitja meg egy parancssort, és a webes böngészőablakban. Parancsot a parancssorba láthatja a futó szolgáltatás, és a böngésző ablakához lehetővé teszi, hogy monitorozhatja az állapotát. Ne zárja be a parancs felszólítja vagy weblapokhoz, ez a művelet leállítja a webszolgáltatást.
+A szolgáltatások állapotának eléréséhez nyissa meg a következő URL-címeket:
 
+* IoT-hub kezelője:[http://localhost:9002/v1/status](http://localhost:9002/v1/status)
+* Eszköz telemetria:[http://localhost:9004/v1/status](http://localhost:9004/v1/status)
+* config[http://localhost:9005/v1/status](http://localhost:9005/v1/status)
+* Storage-adapter:[http://localhost:9022/v1/status](http://localhost:9022/v1/status)
 
-Hozzáférhet a szolgáltatások állapotát, a következő URL-címek ugorhat:
-* IoT-Hub Manager [http://localhost:9002/v1/status](http://localhost:9002/v1/status)
-* Eszköztelemetria  [http://localhost:9004/v1/status](http://localhost:9004/v1/status)
-* config [http://localhost:9005/v1/status](http://localhost:9005/v1/status)
-* Storage-adapter [http://localhost:9022/v1/status](http://localhost:9022/v1/status)
+### <a name="start-the-stream-analytics-job"></a>A Stream Analytics-feladatok elindítása
 
+A Stream Analytics feladat elindításához kövesse az alábbi lépéseket:
 
-### <a name="start-the-stream-analytics-job"></a>A Stream Analytics-feladat indítása
-
-Kövesse az alábbi lépéseket a Stream Analytics-feladat indítása:
-
-1. Lépjen az [Azure Portalra](https://portal.azure.com).
-1. Keresse meg a **erőforráscsoport** létrehozott a megoldáshoz. Az erőforráscsoport neve nem a választott név a megoldáshoz, ha futtatta a **start.cmd** parancsfájlt.
-1. Kattintson a **Stream Analytics-feladat** az erőforrások listájában.
-1. A Stream Analytics-feladat a **áttekintése** lap, kattintson a **Start** gombra. Kattintson a **Start** a feladat elindításához.
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Lépjen a megoldáshoz létrehozott **erőforráscsoporthoz** . Az erőforráscsoport neve az a név, amelyet a megoldáshoz választott a **Start. cmd** parancsfájl futtatásakor.
+1. Válassza ki a **stream Analytics feladatot** az erőforrások listájában.
+1. A Stream Analytics feladatok **Áttekintés** lapján kattintson a **Start** gombra, majd válassza a Start ( **Indítás** ) lehetőséget a feladatok elindításához.
 
 ### <a name="run-the-web-ui"></a>A webes felhasználói felület futtatása
 
-Ebben a lépésben indítsa el a webes felhasználói felületen. Nyisson meg egy új parancsablakot győződjön meg arról, hogy a által beállított környezeti változókat a hozzáférést a **start.cmd** parancsfájlt. Keresse meg a **mire** mappát a helyi tárház másolja, és futtassa a következő parancsokat:
+Ebben a lépésben elindítja a webes felhasználói felületet. Nyisson meg egy új parancssori ablakot. Győződjön meg arról, hogy van hozzáférése a **Start. cmd** parancsfájl által beállított környezeti változókhoz. Nyissa meg a **WebUI** mappát a tárház helyi példányában, majd futtassa a következő parancsokat:
 
 ```cmd
 npm install
 npm start
 ```
 
-A kezdő befejeződése után a böngésző megjeleníti-e az oldal **http:\//localhost:3000 / irányítópult**. Ezen az oldalon a hibák várhatóan. Hibák nélkül az alkalmazás megtekintéséhez hajtsa végre a következő lépéssel.
+A **Start** parancs befejezése után a böngésző megjeleníti a lapot a címen [http://localhost:3000/dashboard](http://localhost:3000/dashboard). A rendszer a lapon szereplő hibákat várta. Ha hiba nélkül szeretné megtekinteni az alkalmazást, hajtsa végre az alábbi lépéseket.
 
-### <a name="configure-and-run-nginx"></a>Konfigurálása és futtatása az nginx-et
+### <a name="configure-and-run-nginx"></a>Az Nginx konfigurálása és futtatása
 
-Állítsa be a fordított proxykiszolgáló mutató hivatkozást a webalkalmazás és a helyi gépen futó mikroszolgáltatásokat:
+Állítson be egy fordított proxykiszolgálót, amely a webalkalmazást a helyi gépen futó Service-hez kapcsolja:
 
-* Másolás a **nginx.conf** fájlt a **webui\scripts\localhost** a tárház helyi példányának mappájában a **nginx\conf** telepítési könyvtár.
-* Futtatás **nginx**.
+1. Másolja az **Nginx. conf** fájlt a **webui\scripts\localhost** mappából a tárház helyi példányában a **nginx\conf** telepítési könyvtárába.
+1. Az Nginx futtatása.
 
-További információ a futó **nginx**, lásd: [nginx-et a Windows](https://nginx.org/en/docs/windows.html).
+További információ az Nginx futtatásáról: [Nginx for Windows](https://nginx.org/en/docs/windows.html).
 
-### <a name="connect-to-the-dashboard"></a>Csatlakozás az irányítópulton
+### <a name="connect-to-the-dashboard"></a>Kapcsolódás az irányítópulthoz
 
-A távoli figyelési megoldás irányítópultján eléréséhez lépjen a http:\//localhost:9000 a böngészőben.
+A távoli figyelési megoldás irányítópultjának eléréséhez nyissa meg a t http://localhost:9000 a böngészőben.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Kerülje a szükségtelen költségek, a tesztelés befejezése után távolítsa el a cloud services az Azure-előfizetésből. Távolítsa el a szolgáltatásokat, lépjen a [az Azure portal](https://ms.portal.azure.com) és törölje az erőforrást, amely a **start.cmd** létrehozott parancsfájlt.
+A szükségtelen díjak elkerüléséhez távolítsa el a Cloud Servicest az Azure-előfizetésből a tesztelés befejezése után. A szolgáltatások eltávolításához nyissa meg a [Azure Portal](https://ms.portal.azure.com), és törölje a **Start. cmd** parancsfájl által létrehozott erőforráscsoportot.
 
-A távoli figyelési jön létre, amikor a forráskódját a Githubról klónozott tárház helyi példányának is törölheti.
+Törölheti a távoli figyelési tárház helyi példányát is, amely a forráskódnak a GitHubról történő klónozásakor jött létre.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy a távoli figyelési megoldás üzembe helyezte, a következő lépés, hogy [Fedezze fel a megoldás irányítópultján képességeit](quickstart-remote-monitoring-deploy.md).
+Most, hogy üzembe helyezte a távoli figyelési megoldást, a következő lépés a [megoldás irányítópultjának képességeinek megismerése](quickstart-remote-monitoring-deploy.md).

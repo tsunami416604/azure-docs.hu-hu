@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: Hibaelhárítás a hálózati biztonsági csoport konfigurálása |} A Microsoft Docs'
-description: Az Azure AD tartományi szolgáltatásokhoz NSG konfigurációs hibáinak elhárítása
+title: 'Azure Active Directory Domain Services: Hálózati biztonsági csoportok – problémamegoldás | Microsoft Docs'
+description: A hálózati biztonsági csoport konfigurációjának hibaelhárítása Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,46 +15,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 08875ec23740eab7787c4a919566df521deba9a5
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 450ee5635b378ed7c4d4e4bedc1c4245f6b52d70
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473922"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "70743444"
 ---
-# <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>A felügyelt tartomány konfigurációja érvénytelen hálózati hibaelhárítása
-Ez a cikk segítséget nyújt a hibaelhárításához és megoldásához hálózati konfigurációs hibák, amelyek a következő figyelmeztető üzenet:
+# <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>A felügyelt tartomány érvénytelen hálózati konfigurációjának hibáinak megoldása
+Ez a cikk segítséget nyújt a hálózattal kapcsolatos olyan konfigurációs hibák elhárításához és megoldásához, amelyek a következő riasztási üzenetet eredményezik:
 
-## <a name="alert-aadds104-network-error"></a>Alert AADDS104: Hálózati hiba
-**Riasztás jelenik meg:** *A Microsoft nem tudja elérni a tartományvezérlőket, a felügyelt tartományhoz. Ez akkor fordulhat elő, ha a virtuális hálózati blokkolja a hozzáférést a felügyelt tartományhoz konfigurált hálózati biztonsági csoport (NSG). Egy másik oka az lehet, ha egy felhasználó által definiált útvonal van, amely blokkolja az internetről bejövő forgalmat.*
+## <a name="alert-aadds104-network-error"></a>Riasztás AADDS104: Hálózati hiba történt
+**Riasztási üzenet:** *A Microsoft nem tudja elérni a tartományvezérlőket ehhez a felügyelt tartományhoz. Ez akkor fordulhat elő, ha a virtuális hálózaton konfigurált hálózati biztonsági csoport (NSG) blokkolja a hozzáférést a felügyelt tartományhoz. Egy másik lehetséges ok, ha van egy felhasználó által megadott útvonal, amely blokkolja az internetről érkező bejövő forgalmat.*
 
-Érvénytelen az NSG-konfiguráció olyan hálózati hibák leggyakoribb oka az Azure AD tartományi szolgáltatásokhoz. A hálózati biztonsági csoport (NSG) a virtuális hálózat engedélyeznie kell a hozzáférést konfigurált [bizonyos portokat](network-considerations.md#ports-required-for-azure-ad-domain-services). Ezeket a portokat le vannak tiltva, ha a Microsoft nem figyelése és a felügyelt tartomány frissítése. Emellett az Azure AD-címtár és a felügyelt tartomány közötti szinkronizálásra van hatással. Az NSG létrehozásakor ne zárja be ezeket a portokat a szolgáltatás megszakadásának elkerülése érdekében.
+A hálózati hibák leggyakoribb okai a Azure AD Domain Services esetében érvénytelenek a NSG-konfigurációk. A virtuális hálózathoz konfigurált hálózati biztonsági csoportnak (NSG) engedélyeznie kell [bizonyos portok](network-considerations.md#network-security-groups-and-required-ports)elérését. Ha ezek a portok le vannak tiltva, a Microsoft nem tudja figyelni vagy frissíteni a felügyelt tartományt. Emellett hatással van az Azure AD-címtár és a felügyelt tartomány közötti szinkronizálásra is. A NSG létrehozása közben tartsa nyitva ezeket a portokat a szolgáltatás megszakadásának elkerülése érdekében.
 
-### <a name="checking-your-nsg-for-compliance"></a>Az NSG-t a megfelelőség ellenőrzése
+### <a name="checking-your-nsg-for-compliance"></a>A NSG megfelelőségének ellenőrzése
 
-1. Keresse meg a [hálózati biztonsági csoportok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) oldal az Azure Portalon
-2. A táblából válasszon, amelyben a felügyelt tartomány engedélyezve van az alhálózathoz társított NSG-t.
-3. A **beállítások** kattintson a bal oldali panel **bejövő biztonsági szabályok**
-4. Tekintse át a szabályokat a helyen, és azonosítsa, mely szabályok forgalomszűrők blokkolják a hozzáférést [ezeket a portokat](network-considerations.md#ports-required-for-azure-ad-domain-services)
-5. Szerkessze az NSG-t a megfelelőség biztosítása a szabály törlése folyamatban van, szabály hozzáadása, vagy egy új NSG-t teljes mértékben létrehozása. A lépések [adjon meg egy szabályt](#add-a-rule-to-a-network-security-group-using-the-azure-portal) vagy hozzon létre egy új, a megfelelő NSG alatt van
+1. Navigáljon a [hálózati biztonsági csoportok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) lapra a Azure Portal
+2. A táblából válassza ki azt az alhálózathoz társított NSG, amelyben a felügyelt tartomány engedélyezve van.
+3. A bal oldali panel **Beállítások** területén kattintson a **bejövő biztonsági szabályok** elemre.
+4. Tekintse át a szabályokat, és határozza meg, hogy mely szabályok blokkolják a hozzáférést [ezekhez a portokhoz](network-considerations.md#network-security-groups-and-required-ports)
+5. Szerkessze a NSG, és győződjön meg arról, hogy a szabály törlése, szabály hozzáadása vagy új NSG létrehozása teljes mértékben megtörténjen. A [szabály hozzáadásának](#add-a-rule-to-a-network-security-group-using-the-azure-portal) vagy új, megfelelő NSG létrehozásának lépései alább találhatók
 
-## <a name="sample-nsg"></a>Minta NSG-t
-Az alábbi táblázat mutatja be, hogy egy NSG-t, hogy az lenne a felügyelt tartomány secure miközben lehetővé teszi a figyelése, kezelése és adatok frissítése a Microsoft mintát.
+## <a name="sample-nsg"></a>Minta NSG
+Az alábbi táblázat egy olyan NSG ábrázol, amely a felügyelt tartomány védelmét fogja biztosítani, miközben lehetővé teszi a Microsoft számára az információk figyelését, kezelését és frissítését.
 
-![Minta NSG-t](./media/active-directory-domain-services-alerts/default-nsg.png)
+![minta NSG](./media/active-directory-domain-services-alerts/default-nsg.png)
 
 >[!NOTE]
-> Az Azure AD tartományi szolgáltatások a virtuális hálózatról korlátlan kimenő hozzáféréssel kell rendelkeznie. Azt javasoljuk, hogy nem minden olyan további NSG-szabályt, amely korlátozza a kimenő hozzáférést a virtuális hálózat létrehozása.
+> Azure AD Domain Services a virtuális hálózat nem korlátozott kimenő hozzáférését igényli. Azt javasoljuk, hogy ne hozzon létre olyan további NSG-szabályt, amely korlátozza a virtuális hálózat kimenő hozzáférését.
 
-## <a name="add-a-rule-to-a-network-security-group-using-the-azure-portal"></a>Egy szabály hozzáadása egy hálózati biztonsági csoportot az Azure portal használatával
-Ha nem szeretné, ha a PowerShell segítségével, manuálisan is hozzáadhat egyetlen szabályokat az NSG-k az Azure portal használatával. A hálózati biztonsági csoport szabályainak létrehozásához hajtsa végre az alábbi lépéseket:
+## <a name="add-a-rule-to-a-network-security-group-using-the-azure-portal"></a>Szabály hozzáadása hálózati biztonsági csoporthoz a Azure Portal használatával
+Ha nem kívánja használni a PowerShellt, manuálisan is hozzáadhat egyetlen szabályt a NSG a Azure Portal használatával. A hálózati biztonsági csoportban lévő szabályok létrehozásához hajtsa végre a következő lépéseket:
 
-1. Keresse meg a [hálózati biztonsági csoportok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) oldal az Azure Portalon.
-2. A táblából válasszon, amelyben a felügyelt tartomány engedélyezve van az alhálózathoz társított NSG-t.
-3. A **beállítások** kattintson a bal oldali panelen **bejövő biztonsági szabályok** vagy **kimenő biztonsági szabályok**.
-4. A szabály létrehozása gombra kattintva **Hozzáadás** és kitölti az adatokat. Kattintson az **OK** gombra.
-5. Ellenőrizze, hogy a szabály létrejött, a szabályok tábla megkeresésével.
+1. Navigáljon a [hálózati biztonsági csoportok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) lapra a Azure Portal.
+2. A táblából válassza ki azt az alhálózathoz társított NSG, amelyben a felügyelt tartomány engedélyezve van.
+3. A bal oldali panel **Beállítások** területén kattintson a **bejövő biztonsági szabályok** vagy a **kimenő biztonsági szabályok**lehetőségre.
+4. A szabály létrehozásához kattintson a **Hozzáadás** gombra, és töltse ki az adatokat. Kattintson az **OK** gombra.
+5. Ellenőrizze, hogy létrejött-e a szabály a szabályok táblában.
 
 
 ## <a name="need-help"></a>Segítség
-Lépjen kapcsolatba az Azure Active Directory Domain Services termékért felelős csoport [visszajelzés és támogatás](contact-us.md).
+A [visszajelzések megosztásához és a támogatáshoz](contact-us.md)forduljon a Azure Active Directory Domain Services termék csapatához.
