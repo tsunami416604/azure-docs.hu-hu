@@ -1,5 +1,5 @@
 ---
-title: A CORS - az Azure App Service RESTful API üzemeltetése |} A Microsoft Docs
+title: 'Oktatóanyag: Gazdagép REST API-ját CORS-Azure App Service'
 description: Ismerje meg, hogyan üzemeltethet CORS-támogatással rendelkező RESTful API-kat az Azure App Service-ben.
 services: app-service\api
 documentationcenter: dotnet
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b8c1130a45f60b9caaacd365cd1c256f50ed7675
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 137b569820ea7394b6a3beb24129c905a2efd123
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138635"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743861"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Oktatóanyag: CORS-támogatással rendelkező RESTful API üzemeltetése az Azure App Service-ben
 
@@ -58,7 +58,7 @@ Futtassa a következő parancsot a minta tárház klónozásához.
 git clone https://github.com/Azure-Samples/dotnet-core-api
 ```
 
-A tárház a következő oktatóanyag alapján létrehozott alkalmazást tartalmaz: [Az ASP.NET Core Web API Swagger használatával súgóoldalak](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Ez egy Swagger-generátort használ a [Swagger felhasználói felület](https://swagger.io/swagger-ui/) és a Swagger JSON-végpont kiszolgálásához.
+Ez a tárház egy, az alábbi oktatóanyag alapján létrehozott alkalmazást tartalmaz: [ASP.net Core webes API-k súgójának oldalai a hencegés használatával](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Ez egy Swagger-generátort használ a [Swagger felhasználói felület](https://swagger.io/swagger-ui/) és a Swagger JSON-végpont kiszolgálásához.
 
 ### <a name="run-the-application"></a>Az alkalmazás futtatása
 
@@ -132,7 +132,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-app"></a>Az Azure alkalmazás megkeresése tallózással
+### <a name="browse-to-the-azure-app"></a>Tallózással keresse meg az Azure-alkalmazást
 
 Egy böngészőben nyissa meg a `http://<app_name>.azurewebsites.net/swagger` címet a Swagger felhasználói felületének kipróbálásához.
 
@@ -177,7 +177,7 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 Több ügyfél URL-címét is beállíthatja a `properties.cors.allowedOrigins` (`"['URL1','URL2',...]"`) tulajdonságban. Az összes URL-címet is engedélyezheti a `"['*']"` érték megadásával.
 
 > [!NOTE]
-> Az alkalmazás például a cookie-k vagy a hitelesítési tokenek küldendő hitelesítő adatok szükségesek, ha a böngésző szükség lehet a `ACCESS-CONTROL-ALLOW-CREDENTIALS` a válasz fejléce. Az App Service-ben engedélyezéséhez állítsa `properties.cors.supportCredentials` való `true` a CORS-konfigurációt. Ez nem lehet engedélyezve, ha `allowedOrigins` tartalmaz `'*'`.
+> Ha az alkalmazáshoz olyan hitelesítő adatok szükségesek, mint például a cookie-k vagy a hitelesítési tokenek `ACCESS-CONTROL-ALLOW-CREDENTIALS` , a böngészőnek szüksége lehet a válasz fejlécére. Ha app Service szeretné engedélyezni ezt a lehetőséget `properties.cors.supportCredentials` , `true` a CORS-konfigurációban állítsa be a következőt:. Ez nem engedélyezhető, `allowedOrigins` ha `'*'`tartalmaz.
 
 ### <a name="test-cors-again"></a>A CORS újbóli tesztelése
 
@@ -211,4 +211,4 @@ Az alábbiak elvégzését ismerte meg:
 A következő oktatóanyag a felhasználók hitelesítését és engedélyezését mutatja be.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Hitelesítés és engedélyezés felhasználóknak-végpontok](app-service-web-tutorial-auth-aad.md)
+> [Oktatóanyag: Felhasználók hitelesítése és engedélyezése végpontok között](app-service-web-tutorial-auth-aad.md)

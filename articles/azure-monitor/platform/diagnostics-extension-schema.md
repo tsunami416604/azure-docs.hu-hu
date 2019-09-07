@@ -6,15 +6,15 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 09/20/2018
+ms.date: 09/04/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e8ea8ea749243821e5382fc285e3c38f05d4c6b5
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60527318"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735087"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure Diagnostics bővítmények konfigurációs sémájának verziói és előzményei
 Ez az oldal indexeli Azure Diagnostics bővítmények sémájának a Microsoft Azure SDK részeként szállított verzióit.  
@@ -54,13 +54,7 @@ A Azure Diagnostics bővítményt más Microsoft diagnosztikai termékek (péld�
  Az SDK 2,5-as verziójától kezdve (a diagnosztika 1,2-es verziója) az Azure Diagnostics bővítmény-modellbe került. Az új funkciók felhasználására szolgáló eszközök csak az újabb Azure SDK-k esetében voltak elérhetők, de az Azure Diagnostics szolgáltatást használó bármely szolgáltatás közvetlenül az Azure-ból fogja használni a legújabb szállítási verziót. Előfordulhat például, hogy az SDK 2,5-et használó bárki betölti az előző táblázatban látható legújabb verziót, függetlenül attól, hogy az újabb funkciókat használja-e.  
 
 ## <a name="schemas-index"></a>Sémák indexe  
-Az Azure Diagnostics különböző verziói eltérő konfigurációs sémákat használnak.
-
-[Diagnosztika 1,0 konfigurációs séma](diagnostics-extension-schema-1dot0.md)  
-
-[Diagnosztika 1,2 konfigurációs séma](diagnostics-extension-schema-1dot2.md)  
-
-[Diagnosztika 1,3 és újabb konfigurációs séma](diagnostics-extension-schema-1dot3.md)  
+Az Azure Diagnostics különböző verziói eltérő konfigurációs sémákat használnak. A 1,0-es és a 1,2-es séma elavult. További információ a 1,3-es és újabb verziókról: [diagnosztika 1,3 és újabb konfigurációs séma](diagnostics-extension-schema-1dot3.md)  
 
 ## <a name="version-history"></a>Verzióelőzmények
 

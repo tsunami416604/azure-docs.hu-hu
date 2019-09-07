@@ -11,21 +11,21 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 8a3a325cbfced13b6e2ac4cb842b5d5f4f764750
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2aae0ce7bbf5c8804dcaab90fcb60a66dfe59cf0
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567473"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744408"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Gyors útmutató: Adatbázis visszaállítása felügyelt példányra
 
-Ebben a rövid útmutatóban SQL Server Management Studio (SSMS) használatával állítja vissza az adatbázist (a Wide World Importers-standard Backup fájlt) az Azure Blob Storage-ból egy [](sql-database-managed-instance.md)Azure SQL Database felügyelt példányba.
+Ebben a rövid útmutatóban SQL Server Management Studio (SSMS) használatával állítja vissza az adatbázist (a Wide World Importers-standard Backup fájlt) az Azure Blob Storage-ból egy Azure SQL Database [felügyelt példányba](sql-database-managed-instance.md).
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 > [!NOTE]
-> A Azure Database Migration Service (DMS) használatával történő áttelepítéssel kapcsolatos további információkért lásd: a felügyelt példányok áttelepítése a [DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md).
+> A Azure Database Migration Service (DMS) használatával történő áttelepítéssel kapcsolatos további információkért lásd: a [felügyelt példányok áttelepítése a DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md).
 > A különböző áttelepítési módszerekkel kapcsolatos további információkért lásd: [SQL Server példány áttelepítése Azure SQL Database felügyelt példányra](sql-database-managed-instance-migrate.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -33,13 +33,14 @@ Ebben a rövid útmutatóban SQL Server Management Studio (SSMS) használatával
 Ez a rövid útmutató:
 
 - Erőforrásokat használ a [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) rövid útmutatóból.
-- A számítógépen telepítve kell lennie [](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) a legújabb SQL Server Management Studionak.
+- A számítógépen telepítve kell lennie a legújabb [SQL Server Management Studionak](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) .
 - A SSMS használata szükséges a felügyelt példányhoz való kapcsolódáshoz. A kapcsolódás menetét a következő útmutatókban tekintheti meg:
   - [Csatlakozás Azure SQL Database felügyelt példányhoz egy Azure virtuális gépről](sql-database-managed-instance-configure-vm.md)
   - [Pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszínen](sql-database-managed-instance-configure-p2s.md).
+- Az Azure Blob Storage fiók (például a Standard_LRS v2) használatát igényli a **nyilvános IP-címekhez** , `rw` amelyeken engedélyezve van az **sas-hitelesítő adat** . A tűzfal és az Azure Blob Storage Service-végpontok [által védett blob Storage magánhálózati IP](https://docs.microsoft.com/azure/storage/common/storage-network-security) -címei jelenleg nem támogatottak.
 
 > [!NOTE]
-> A SQL Server-adatbázisok Azure Blob Storage használatával történő biztonsági mentéséről és visszaállításáról további információt a [](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) [SQL Server biztonsági mentés az URL-címre](sql-database-managed-instance-get-started-restore.md)című témakörben talál.
+> A SQL Server-adatbázisok Azure Blob Storage használatával történő biztonsági mentéséről és visszaállításáról további [információt a](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) [SQL Server biztonsági mentés az URL-címre](sql-database-managed-instance-get-started-restore.md)című témakörben talál.
 
 ## <a name="restore-the-database-from-a-backup-file"></a>Adatbázis visszaállítása biztonságimásolat-fájlból
 

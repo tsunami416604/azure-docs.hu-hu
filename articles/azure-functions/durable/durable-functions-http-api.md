@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 11ae418ddbe007c6fd5aa44ef22ed7fddec9c702
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b34fd30b8e43e674b0b346672366d680d99ebd5c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087269"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734270"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>HTTP-API-k Durable Functions (Azure Functions)
 
@@ -27,13 +27,17 @@ A tartós feladathoz tartozó bővítmény olyan HTTP API-kat tesz elérhetővé
 A HTTP API-k mindegyike egy webhook-művelet, amelyet közvetlenül a tartós feladatok bővítménye kezel. Nem tartoznak a Function alkalmazás egyik függvényéhez sem.
 
 > [!NOTE]
-> Ezek a műveletek közvetlenül is meghívhatók a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) osztály példány-felügyeleti API-jai használatával. További információ: példányok [kezelése](durable-functions-instance-management.md).
+> Ezek a műveletek közvetlenül is meghívhatók a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) osztály példány-felügyeleti API-jai használatával. További információ: [példányok kezelése](durable-functions-instance-management.md).
 
 ## <a name="http-api-url-discovery"></a>HTTP API URL-cím felderítése
 
 A [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) osztály egy [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_) API-t tesz elérhetővé, amely az összes támogatott műveletre mutató hivatkozásokat tartalmazó http-válasz adattartalom létrehozásához használható. Az alábbi példa egy HTTP-trigger függvényt mutat be, amely bemutatja, hogyan használhatja ezt az API-t:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>ElőfordítottC#
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
+
+### <a name="c-script"></a>C#Parancsfájl
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
 
@@ -157,7 +161,7 @@ A **http 200** és a **http 202** esetek válaszának adattartalma egy JSON-obje
 
 | Mező                 | Adattípus | Leírás |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | Karakterlánc    | A példány futtatókörnyezeti állapota. Az értékek közé tartoznak a következők: *Futtatás*, *függő*, *sikertelen*, megszakított, leállított, *befejezett*. |
+| **`runtimeStatus`**   | Karakterlánc    | A példány futtatókörnyezeti állapota. Az értékek közé tartoznak a következők: *Futtatás*, *függő*, *sikertelen*, *megszakított*, *leállított*, *befejezett*. |
 | **`input`**           | JSON      | A példány inicializálásához használt JSON-adatbázis. Ez a mező `null` akkor van `showInput` beállítva, ha a lekérdezési `false`karakterlánc paraméter értéke.|
 | **`customStatus`**    | JSON      | Az egyéni előkészítési állapothoz használt JSON-adatértékek. `null` Ha nincs beállítva ez a mező. |
 | **`output`**          | JSON      | A példány JSON-kimenete. Ez a mező `null` akkor áll fenn, ha a példány nem befejezett állapotban van. |
@@ -326,7 +330,7 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 ```
 
 > [!NOTE]
-> Ez a művelet nagyon költséges lehet az Azure Storage I/O esetében, ha a példányok táblában sok sor van. A példányok táblával kapcsolatos további részleteket a [Durable functions (Azure functions)](durable-functions-perf-and-scale.md#instances-table) dokumentációjának teljesítményében és méretezésében találhat.
+> Ez a művelet nagyon költséges lehet az Azure Storage I/O esetében, ha a példányok táblában sok sor van. A példányok táblával kapcsolatos további részleteket a [Durable functions (Azure functions) dokumentációjának teljesítményében és méretezésében](durable-functions-perf-and-scale.md#instances-table) találhat.
 >
 
 Ha több találat is létezik, a rendszer egy folytatási tokent ad vissza a válasz fejlécében.  A fejléc `x-ms-continuation-token`neve:.

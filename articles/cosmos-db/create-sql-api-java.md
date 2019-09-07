@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.custom: seo-java-august2019
-ms.openlocfilehash: 110c4a343909a81e092b147b79ed69d6bd5c2d9c
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: a34cb8e13d32cbeb6d289869dca3a8cb1391d68f
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981757"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390853"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB SQL API-alapú adatkezeléshez
 
@@ -26,7 +26,7 @@ ms.locfileid: "69981757"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-Ez a rövid útmutató azt mutatja be, hogyan hozhatja létre és kezelheti Java-alkalmazással egy Azure Cosmos DB [SQL API](sql-api-introduction.md)-fiók erőforrásait. Először létrehoz egy Azure Cosmos DB SQL API-fiókot az Azure Portallal, majd létrehoz egy Java-alkalmazást az [SQL Java SDK](sql-api-sdk-async-java.md)-val, végül pedig erőforrásokat ad hozzá a Cosmos DB-fiókhoz a Java-alkalmazással. A rövid útmutatóban lévő utasítások bármilyen, Java-programok futtatására alkalmas operációs rendszeren végrehajthatók. A rövid útmutató elvégzése után megismerheti a Cosmos-adatbázisok, a felhasználói felületen vagy programozott módon létrehozott tárolók létrehozását és módosítását, attól függően, hogy melyik a beállítás.
+Ez a rövid útmutató azt ismerteti, hogyan használható egy Java-alkalmazás egy dokumentum-adatbázis létrehozásához és kezeléséhez a Azure Cosmos DB SQL API-fiókból. Először hozzon létre egy Azure Cosmos DB SQL API-fiókot a Azure Portal használatával, hozzon létre egy Java-alkalmazást az SQL Java SDK használatával, majd adja hozzá az erőforrásokat a Cosmos DB-fiókjához a Java-alkalmazás használatával. A rövid útmutatóban lévő utasítások bármilyen, Java-programok futtatására alkalmas operációs rendszeren végrehajthatók. A rövid útmutató elvégzése után megismerheti a Cosmos DB adatbázisok, tárolók létrehozását és módosítását a felhasználói felületen vagy programozott módon, attól függően, hogy melyik a beállítás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

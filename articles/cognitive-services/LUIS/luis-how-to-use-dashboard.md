@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: a5c60a4c7d4f1b441ec5e8444b10594a1e67d7db
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 22e187bba3782e485685354c203a6273d5bcc618
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932721"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735054"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Az alkalmazás fejlesztése az irányítópult használatával
 
@@ -56,7 +56,7 @@ Ez megjeleníti a külső szolgáltatásokat, a közzétett régiókat és az ö
 
 ## <a name="review-training-evaluation"></a>A betanítás értékelésének áttekintése
 
-A betanítási kiértékelési kártya az alkalmazás teljes pontossága terület összesített összegzését tartalmazza. A pontszám a szándék minőségét jelzi. 
+A **betanítási kiértékelési** kártya az alkalmazás teljes pontossága terület összesített összegzését tartalmazza. A pontszám a szándék minőségét jelzi. 
 
 ![A betanítási kiértékelési kártya az alkalmazás általános pontosságával kapcsolatos első adatterületet tartalmazza.](./media/luis-how-to-use-dashboard/analytics-card-2-shows-app-overall-accuracy.png)
 
@@ -68,7 +68,7 @@ Minden egyes problémás térségnek meg kell oldania a szándékait. Ha kivála
 
 ### <a name="compare-changes-across-versions"></a>Változások összehasonlítása verziók között
 
-Az alkalmazás módosítása előtt hozzon létre egy új verziót. Az új verzióban végezze el a javasolt módosításokat a cél példa hosszúságú kimondott szöveg, majd a tanítás újra. Az irányítópult lap betanítási kiértékelési kártyáján a változtatások összevetéséhez használja a Megjelenítés a betanított **verzióról** lehetőséget. 
+Az alkalmazás módosítása előtt hozzon létre egy új verziót. Az új verzióban végezze el a javasolt módosításokat a cél példa hosszúságú kimondott szöveg, majd a tanítás újra. Az irányítópult lap **betanítási kiértékelési** kártyáján a változtatások összevetéséhez használja a **Megjelenítés a betanított verzióról** lehetőséget. 
 
 ![Változások összehasonlítása verziók között](./media/luis-how-to-use-dashboard/compare-improvement-across-versions.png)
 
@@ -78,13 +78,13 @@ Az alkalmazás javításának elsődleges módszere a példa hosszúságú kimon
 
 A példaként szolgáló hosszúságú kimondott szöveg olyan személynek kell elvégeznie, aki:
 
-* nagy mértékben megértette, hogy milyen hosszúságú kimondott szöveg találhatók a különböző szándékok
-* tudja, hogyan tévesztendő össze a hosszúságú kimondott szöveg egy másik szándékkal
-* el tudja dönteni, hogy két szándékkal, amelyek gyakran zavarosak egymással, egyetlen szándékkal kell összecsukni, és a különböző adategységeket
+* nagy mértékben megértette, hogy milyen hosszúságú kimondott szöveg vannak a különböző szándékok.
+* tudja, hogyan tévesztendő össze a hosszúságú kimondott szöveg egy másik szándékkal.
+* eldöntheti, hogy két szándékkal, amelyek gyakran zavarosak egymással, egyetlen szándékkal kell összecsukni. Ebben az esetben a különböző adategységeket kell kihúzni.
 
 ### <a name="patterns-and-phrase-lists"></a>Minták és kifejezések listája
 
-Az elemzési lap nem jelzi, hogy mikor [](luis-concept-patterns.md) használjon mintázatokat vagy [kifejezéseket tartalmazó listát](luis-concept-feature.md). Ha hozzáadja őket, akkor a helytelen vagy nem egyértelmű előrejelzésekkel segíthet, de nem segít az adategyensúlyhiányban. 
+Az elemzési lap nem jelzi, hogy mikor használjon [mintázatokat](luis-concept-patterns.md) vagy [kifejezéseket tartalmazó listát](luis-concept-feature.md). Ha hozzáadja őket, akkor a helytelen vagy nem egyértelmű előrejelzésekkel segíthet, de nem segít az adategyensúlyhiányban. 
 
 ### <a name="review-data-imbalance"></a>Az adategyensúlyhiány áttekintése
 

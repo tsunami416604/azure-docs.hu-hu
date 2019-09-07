@@ -1,6 +1,6 @@
 ---
 title: HDInsight-fürtön futó lassú vagy sikertelen feladat hibáinak megoldása – Azure HDInsight
-description: Lassú vagy sikertelen HDInsight-fürt diagnosztizálása és megoldása.
+description: Lassú vagy sikertelen feladat diagnosztizálása és megoldása egy Azure HDInsight-fürtön.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: b7afeee554a1faee9507f0a891803024f3bc11e4
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8c50068914c1519a5522372310bd0f5863a94b39
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573595"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735790"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight-fürtön futó lassú vagy sikertelen feladat hibáinak megoldása
 
-Ha egy alkalmazás egy HDInsight-fürtön lévő, lassú vagy hibás hibát okozó alkalmazást használ, több hibaelhárítási lehetőség is van. Ha a feladatok a vártnál hosszabb ideig tartanak, vagy általánosságban a lassú válaszadási idő látható, előfordulhat, hogy a fürtből a leállási hibák, például a fürt által futtatott szolgáltatások futnak. Ezeknek a lassulásoknak a leggyakoribb oka azonban nem elegendő skálázás. Amikor új HDInsight-fürtöt hoz létre, válassza ki a megfelelő [virtuálisgép](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)-méreteket.
+Ha egy alkalmazás egy HDInsight-fürtön lévő, lassú vagy hibás hibát okozó alkalmazást használ, több hibaelhárítási lehetőség is van. Ha a feladatok a vártnál hosszabb ideig tartanak, vagy általánosságban a lassú válaszadási idő látható, előfordulhat, hogy a fürtből a leállási hibák, például a fürt által futtatott szolgáltatások futnak. Ezeknek a lassulásoknak a leggyakoribb oka azonban nem elegendő skálázás. Amikor új HDInsight-fürtöt hoz létre, válassza ki a megfelelő [virtuálisgép-méreteket](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters).
 
 Lassú vagy sikertelen fürtök diagnosztizálásához gyűjtsön információkat a környezet minden aspektusáról, például a társított Azure-szolgáltatásokról, a fürtkonfiguráció és a feladat-végrehajtási információkról. A hasznos diagnosztika a hiba állapotának egy másik fürtön való újbóli előállítására szolgál.
 
@@ -48,7 +48,7 @@ A probléma azonosításához vegye figyelembe a következő kérdéseket:
 A fürt fontos adatai a következők:
 
 * Fürt neve.
-* Fürt régiója – a [régiók](https://azure.microsoft.com/status/)kiesésének keresése.
+* Fürt régiója – a [régiók kiesésének](https://azure.microsoft.com/status/)keresése.
 * HDInsight-fürt típusa és verziója.
 * A fő-és munkavégző csomópontokhoz megadott HDInsight-példányok típusa és száma.
 
@@ -86,12 +86,12 @@ A szolgáltatási nézetek listájának megnyitásához válassza a **Ambari né
 
 #### <a name="check-for-azure-service-outages"></a>Az Azure-szolgáltatások kimaradásának keresése
 
-A HDInsight számos Azure-szolgáltatásra támaszkodik. Virtuális kiszolgálókat futtat az Azure HDInsight, tárolja az Azure Blob Storage-ban vagy a Azure Data Lake Storageban tárolt adatfájlokat és parancsfájlokat, és indexeli a naplófájlokat az Azure Table Storage-ban. A szolgáltatásokkal kapcsolatos fennakadások, bár ritkán fordulnak elő, problémákat okozhatnak a HDInsight. Ha váratlan munkalassítás vagy meghibásodás történt a fürtben, tekintse meg az [Azure állapot](https://azure.microsoft.com/status/)-irányítópultját. Az egyes szolgáltatások állapota régiónként van felsorolva. Tekintse meg a fürt régióját, valamint a kapcsolódó szolgáltatásokhoz tartozó régiókat is.
+A HDInsight számos Azure-szolgáltatásra támaszkodik. Virtuális kiszolgálókat futtat az Azure HDInsight, tárolja az Azure Blob Storage-ban vagy a Azure Data Lake Storageban tárolt adatfájlokat és parancsfájlokat, és indexeli a naplófájlokat az Azure Table Storage-ban. A szolgáltatásokkal kapcsolatos fennakadások, bár ritkán fordulnak elő, problémákat okozhatnak a HDInsight. Ha váratlan munkalassítás vagy meghibásodás történt a fürtben, tekintse meg az [Azure állapot-irányítópultját](https://azure.microsoft.com/status/). Az egyes szolgáltatások állapota régiónként van felsorolva. Tekintse meg a fürt régióját, valamint a kapcsolódó szolgáltatásokhoz tartozó régiókat is.
 
 #### <a name="check-azure-service-usage-limits"></a>Az Azure-szolgáltatások használati korlátainak keresése
 
-Ha nagyméretű fürtöt indít, vagy egyszerre sok fürtöt indított el, a fürt meghiúsulhat, ha túllépte az Azure-szolgáltatási korlátot. A szolgáltatás korlátai az Azure-előfizetéstől függően változnak. További információ: Azure- [előfizetések és-szolgáltatások korlátai, kvótái és](https://docs.microsoft.com/azure/azure-subscription-service-limits)megkötései.
-Kérheti, hogy a Microsoft növelje a rendelkezésre álló HDInsight-erőforrások (például a virtuálisgép-magok és a virtuálisgép-példányok) számát a [Resource Manager Core kvóta növelésére](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)vonatkozó kéréssel.
+Ha nagyméretű fürtöt indít, vagy egyszerre sok fürtöt indított el, a fürt meghiúsulhat, ha túllépte az Azure-szolgáltatási korlátot. A szolgáltatás korlátai az Azure-előfizetéstől függően változnak. További információk: [Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Kérheti, hogy a Microsoft növelje a rendelkezésre álló HDInsight-erőforrások (például a virtuálisgép-magok és a virtuálisgép-példányok) számát a [Resource Manager Core kvóta növelésére vonatkozó kéréssel](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 #### <a name="check-the-release-version"></a>A kiadás verziójának keresése
 
@@ -212,7 +212,7 @@ A Ambari felhasználói felületi **verem és verziója** lapon információkat 
 
 ## <a name="step-5-examine-the-log-files"></a>5\. lépés: A naplófájlok vizsgálata
 
-A HDInsight-fürtöt alkotó számos szolgáltatásból és összetevőből számos típusú napló jön létre. A [webhcaten](#check-your-webhcat-service) -naplófájlok korábban vannak leírva. A következő szakaszokban leírtak szerint számos más hasznos naplófájl is megvizsgálható a fürttel kapcsolatos problémák szűkítéséhez.
+A HDInsight-fürtöt alkotó számos szolgáltatásból és összetevőből számos típusú napló jön létre. A [webhcaten-naplófájlok](#check-your-webhcat-service) korábban vannak leírva. A következő szakaszokban leírtak szerint számos más hasznos naplófájl is megvizsgálható a fürttel kapcsolatos problémák szűkítéséhez.
 
 * A HDInsight-fürtök több csomópontból állnak, amelyek többsége elküldött feladatok futtatására szolgál. A feladatok párhuzamosan futnak, de a naplófájlok csak lineárisan jelenítik meg az eredményeket. A HDInsight új feladatokat hajt végre, és leállítja azokat, amelyek nem teljesítik az első lépéseket. A program minden tevékenységet naplóz a és `stderr` `syslog` a fájlok között.
 

@@ -1,18 +1,18 @@
 ---
-title: Node.js-alapú webes alkalmazás létrehozása
-description: Node. js üzembe helyezése az Azure App Services
-author: KarlErickson
-ms.author: karler
-ms.date: 07/18/2019
+title: Node. js-alapú Webalkalmazás létrehozása – Azure App Service
+description: Node. js-alkalmazás üzembe helyezése Azure App Service
+author: msangapu
+ms.author: msangapu
+ms.date: 08/12/2019
 ms.topic: quickstart
 ms.service: app-service
 ms.devlang: javascript
-ms.openlocfilehash: ced2977509f16f8dab2abe5546e19b7e05fb2a3d
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 8d679a95cc89c2ae7774b7f7b51b9d0aadd89d12
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975809"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390977"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Node. js-alkalmazás létrehozása az Azure-ban
 
@@ -57,7 +57,7 @@ A VS Code-ban az Azure **app Service** Explorerben tekintse meg az Azure-beli e-
 Ezután hozzon létre egy Node. js-alkalmazást, amely üzembe helyezhető a felhőben. Ez a rövid útmutató egy alkalmazás-generátort használ az alkalmazás egy terminálból való gyors előkészítéséhez.
 
 > [!TIP]
-> Ha már végrehajtotta a [Node. js](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)-oktatóanyagot, ugorjon [a webhely üzembe helyezése](#deploy-the-website)lehetőségre.
+> Ha már végrehajtotta a [Node. js-oktatóanyagot](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial), ugorjon [a webhely üzembe helyezése](#deploy-the-website)lehetőségre.
 
 ### <a name="install-the-express-generator"></a>Az Express Generator telepítése
 
@@ -118,7 +118,7 @@ Az **Azure app Service** Explorerben kattintson a kék felfelé mutató nyíl ik
 ![Üzembe helyezés a webalkalmazásban](./media/quickstart-nodejs/deploy.png)
 
 > [!TIP]
-> A parancssorból is üzembe helyezhető (CTRL + SHIFT + P) a "központi telepítés webalkalmazásba" beírásával és a **Azure app Service futtatásával: Üzembe helyezés a webalkalmazásban** parancs.
+> A **parancssorból** is üzembe helyezhető (CTRL + SHIFT + P) a "központi telepítés webalkalmazásba" beírásával és a **Azure app Service futtatásával: Üzembe helyezés a webalkalmazásban** parancs.
 
 1. Válassza ki a jelenleg megnyitott `myExpressApp`könyvtárat.
 
@@ -143,7 +143,7 @@ Ha elindul az üzembe helyezés, a rendszer kéri, hogy frissítse a munkaterül
 
 ### <a name="browse-the-website"></a>Böngészés a webhelyen
 
-Miután az üzembe helyezés befejeződött, kattintson a **Tallózás** webhelyre a kérdésben a frissen telepített webhely megtekintéséhez.
+Miután az üzembe helyezés befejeződött, kattintson a **Tallózás webhelyre** a kérdésben a frissen telepített webhely megtekintéséhez.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 

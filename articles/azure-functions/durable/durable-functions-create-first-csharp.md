@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 07/19/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 40e25fc0cfc9d08ef59092929d2cf1d51dcf83d1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e34d000f77ca5a5ac75fadab61b4280d528c6805
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087557"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735286"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Hozza létre első tartós funkcióját a C-ben\#
 
@@ -69,7 +69,7 @@ A következő lépésekkel hozhatja létre a projektben a tartós függvény kó
 
 1. Ellenőrizze, hogy az **Azure Function** be van-e jelölve a Hozzáadás menüben, C# írja be a fájl nevét, majd válassza a **Hozzáadás**lehetőséget.
 
-1. Válassza ki a **Durable functions** a hangszerelési sablont, majd kattintson **az OK gombra** .
+1. Válassza ki a **Durable functions a hangszerelési** sablont, majd kattintson **az OK gombra** .
 
     ![Tartós sablon kiválasztása](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 

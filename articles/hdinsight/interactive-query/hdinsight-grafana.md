@@ -1,31 +1,31 @@
 ---
-title: Az Azure HDInsight a Grafana használata
-description: Útmutató a Grafana az Azure HDInsight eléréséhez.
+title: A Grafana használata az Azure HDInsight
+description: Ismerje meg, hogyan érheti el a Grafana-irányítópultot Apache Hadoop-fürtökkel az Azure HDInsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: be804ac1aea76daf5f17e62dd97b8b57b8fdf1fb
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: a8d79e15a0c967c4b00f337928f00e76f6d296fd
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67458811"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733215"
 ---
-# <a name="access-grafana-in-azure-hdinsight"></a>Az Azure HDInsight hozzáférést Grafana
+# <a name="access-grafana-in-azure-hdinsight"></a>Grafana elérése az Azure HDInsight
 
 
-[Grafana](https://grafana.com/) egy népszerű, nyílt forráskódú graph és az irányítópult szerkesztő van. Grafana funkciója gazdag; nem csak nem, hogy a felhasználók létrehozásához, testre szabható és megosztható irányítópultok is kínál sablonalapú/parancsfájlalapú irányítópultokat, LDAP-integráció, több adatforrást és egyéb.
+A [Grafana](https://grafana.com/) egy népszerű, nyílt forráskódú gráf-és irányítópult-szerkesztő. A Grafana funkció gazdag; nem csupán azt teszi lehetővé, hogy a felhasználók testre szabható és megosztható irányítópultokat hozzanak létre, valamint a sablonban szereplő/megírt irányítópultokat, az LDAP-integrációt, több adatforrást és egyebeket is kínál.
 
-Jelenleg az Azure HDInsight, a Grafana használata támogatott a Hbase és interaktív lekérdezési fürt típusú.
+Jelenleg az Azure HDInsight-ben a Grafana a Hbase és az interaktív lekérdezési fürt típusait támogatja.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Apache Hadoop-fürt létrehozása
 
-Ebben a szakaszban egy interaktív lekérdezési fürt a HDInsight egy Azure Resource Manager-sablon használatával hoz létre. Nem kell a Resource Manager-sablonok használatára vonatkozó tapasztalattal rendelkeznie a cikk lépéseinek követéséhez. 
+Ebben a szakaszban egy interaktív lekérdezési fürtöt hoz létre a HDInsight egy Azure Resource Manager sablon használatával. Nem kell a Resource Manager-sablonok használatára vonatkozó tapasztalattal rendelkeznie a cikk lépéseinek követéséhez. 
 
 1. Az alábbi **Üzembe helyezés az Azure-ban** gombra kattintva jelentkezzen be az Azure-ba, és nyissa meg a Resource Manager-sablont az Azure Portalon. 
    
@@ -48,11 +48,11 @@ Ebben a szakaszban egy interaktív lekérdezési fürt a HDInsight egy Azure Res
     |**Erőforráscsoport**     | Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy már meglévőt.  Az erőforráscsoport az Azure összetevőit tartalmazó tároló.  Ebben az esetben az erőforráscsoport a HDInsight-fürtöt és a függő Azure Storage-fiókot tartalmazza. |
     |**Hely**     | Válassza ki, melyik Azure-helyen kívánja létrehozni a fürtöt.  A legjobb teljesítmény érdekében válassza az Önhöz legközelebb eső helyet. |
     |**Fürt típusa**     | Válassza a **Hadoop** lehetőséget. |
-    |**Fürt neve**     | Adja meg az Apache Hadoop-fürt nevét. Mivel a HDInsightban az összes fürt ugyanazt a DNS-névteret használja, a névnek egyedinek kell lennie. A név legfeljebb 59 karakter hosszúságú lehet, és csak betűket, számokat, illetve kötőjelet tartalmazhat. A név első és utolsó karaktere nem lehet kötőjel. |
+    |**Fürt neve**     | Adja meg a Apache Hadoop-fürt nevét. Mivel a HDInsightban az összes fürt ugyanazt a DNS-névteret használja, a névnek egyedinek kell lennie. A név legfeljebb 59 karakter hosszúságú lehet, és csak betűket, számokat, illetve kötőjelet tartalmazhat. A név első és utolsó karaktere nem lehet kötőjel. |
     |**A fürt bejelentkezési neve és jelszava**     | Az alapértelmezett bejelentkezési név az **admin**. A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, egy nagybetűs és egy kisbetűs, illetve egy nem alfanumerikus karaktert (ami nem lehet ' " ` \)). Győződjön meg róla, hogy **ne adjon meg** gyakori jelszót, mint például a következő: Pass@word1.|
     |**SSH-felhasználónév és jelszó**     | Az alapértelmezett felhasználónév az **sshuser**.  Az SSH-felhasználónevet át lehet nevezni.  Az SSH-felhasználói jelszóra ugyanazon követelmények vonatkoznak, mint a fürt bejelentkezési jelszavára.|
        
-    Egyes tulajdonságok szoftveresen kötöttek a sablonban.  Ezeket az értéteket a sablonból konfigurálhatja. További magyarázat ezeket a tulajdonságokat, lásd: [Apache Hadoop-fürtök létrehozása a HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+    Egyes tulajdonságok szoftveresen kötöttek a sablonban.  Ezeket az értéteket a sablonból konfigurálhatja. A tulajdonságok részletes ismertetését lásd: [Apache Hadoop-fürtök létrehozása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md).
 
 3. Jelölje be az **Elfogadom a fenti feltételeket** és a **Rögzítés az irányítópulton** lehetőséget, majd válassza a **Vásárlás** lehetőséget. A portál irányítópultján egy új csempe jelenik meg **Üzembe helyezés beküldése** címmel. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
 
@@ -62,29 +62,29 @@ Ebben a szakaszban egy interaktív lekérdezési fürt a HDInsight egy Azure Res
    
     ![A HDInsight (Linux) használatának első lépései – erőforráscsoport](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Azure HDInsight-alapú fürt erőforráscsoportja")
     
-5. A csempe a fürthöz tartozó alapértelmezett tárterületet is felsorolja. Minden egyes fürt egy [Azure Storage-fióktól](../hdinsight-hadoop-use-blob-storage.md) vagy egy [Azure Data Lake-fióktól](../hdinsight-hadoop-use-data-lake-store.md) függ. Ez az alapértelmezett tárfiók. HDInsight-fürt és az alapértelmezett tárfióknak ugyanazon Azure-régióban kell felhőátjárónak. A fürtök törlésével a tárfiók nem törlődik.
+5. A csempe a fürthöz tartozó alapértelmezett tárterületet is felsorolja. Minden egyes fürt egy [Azure Storage-fióktól](../hdinsight-hadoop-use-blob-storage.md) vagy egy [Azure Data Lake-fióktól](../hdinsight-hadoop-use-data-lake-store.md) függ. Ez az alapértelmezett tárfiók. A HDInsight-fürtnek és az alapértelmezett Storage-fióknak ugyanabban az Azure-régióban kell elhelyezkednie. A fürtök törlésével a tárfiók nem törlődik.
     
 
 > [!NOTE]  
-> Egyéb Fürtlétrehozási módszerekhez és ebben a cikkben használt tulajdonságok megértéséhez, lásd: [létre HDInsight-fürtök](../hdinsight-hadoop-provision-linux-clusters.md). 
+> A további fürtök létrehozási módszereivel és a cikkben használt tulajdonságok megismerésével kapcsolatban lásd: [HDInsight-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md). 
 
-## <a name="access-the-grafana-dashboard"></a>Hozzáférés a lesz a Grafana irányítópultja
+## <a name="access-the-grafana-dashboard"></a>Hozzáférés a Grafana irányítópulthoz
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Válassza ki **HDInsight-fürtök**, majd válassza ki az előző szakaszban létrehozott fürt nevét.
+2. Válassza ki a **HDInsight-fürtök**lehetőséget, majd válassza ki az utolsó szakaszban létrehozott fürtöt.
 
-3. A **Gyorshivatkozások**, kattintson a **fürt irányítópultja**.
+3. A **Gyorshivatkozások**területen kattintson a **fürt irányítópultja**elemre.
 
-    ![HDInsight-fürt irányítópult portál](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "HDInsight-fürt irányítópultja a portálon")
+    ![HDInsight-fürt irányítópult-portál](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "HDInsight-fürt irányítópultja a portálon")
 
-4. Az irányítópultról, kattintson a **Grafana** csempére. Azt is megteheti, keresse meg a `/grafana/` elérési útját a fürt URL-CÍMÉT. Például: `https://<clustername>.azurehdinsight.net/grafana/`.
+4. Az irányítópulton kattintson a **Grafana** csempére. Másik lehetőségként keresse `/grafana/` meg a fürt URL-címének elérési útját. Például: `https://<clustername>.azurehdinsight.net/grafana/`.
 
 5. Adja meg a Hadoop-fürt felhasználói hitelesítő adatait.
 
-6. A Grafana irányítópult jelenik meg, és a példához hasonlóan néz ki:
+6. Megjelenik a Grafana irányítópultja, amely a következő példához hasonlóan néz ki:
 
-    ![HDInsight lesz a Grafana irányítópultja](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight lesz a Grafana irányítópultja")
+    ![HDInsight Grafana-irányítópult](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana-irányítópult")
 
    
 
@@ -105,10 +105,10 @@ A cikk befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Sto
 3. Válassza az **Erőforráscsoport törlése** lehetőséget a fürtöt és az alapértelmezett tárfiókot tartalmazó erőforráscsoport törléséhez. Vegye figyelembe, hogy az erőforráscsoport törlése a tárfiókot is törli. Ha szeretné megtartani a tárfiókot, csak a fürtöt törölje.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan hozhat létre egy Linux-alapú HDInsight-fürt Resource Manager-sablon használatával, és hogyan hajthat végre alapszintű Apache Hive-lekérdezéseket. A következő cikkben megtudhatja, hogyan végezheti el az adatok kinyerési, átalakítási és betöltési (ETL) műveleteit a Hadoop használatával a HDInsighton.
+Ebben a cikkben megtanulta, hogyan hozhat létre egy Linux-alapú HDInsight-fürtöt egy Resource Manager-sablonnal, és hogyan hajthat végre alapszintű Apache Hive lekérdezéseket. A következő cikkben megtudhatja, hogyan végezheti el az adatok kinyerési, átalakítási és betöltési (ETL) műveleteit a Hadoop használatával a HDInsighton.
 
 > [!div class="nextstepaction"]
->[A kinyerési, átalakítási és a HDInsight interaktív lekérdezés segítségével adatok betöltése](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+>[Adatok kinyerése, átalakítása és betöltése az interaktív lekérdezés használatával a HDInsight-on](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 
 Ha készen áll dolgozni a saját adataival, és szeretne többet megtudni a HDInsight adattárolási módszereiről, illetve arról, hogyan kerülnek az adatok a HDInsightba, tekintse meg a következő cikkeket:
 
@@ -117,8 +117,8 @@ Ha készen áll dolgozni a saját adataival, és szeretne többet megtudni a HDI
 
 A HDInsight használatával történő adatelemzésről az alábbi cikkekben talál további információt:
 
-* További információ a Hive a HDInsight, beleértve a Visual Studióban a Hive-lekérdezések végrehajtása: [Apache Hive használata a HDInsight](../hdinsight-use-hive.md).
-* További információ az adatok átalakítására szolgáló Pig: [Apache Pig használata a HDInsight](../hdinsight-use-pig.md).
+* Ha többet szeretne megtudni a kaptár és a HDInsight használatával kapcsolatban, többek között a kaptár-lekérdezések Visual studióból történő végrehajtásával kapcsolatban, tekintse meg a [Apache Hive használata a HDInsight](../hdinsight-use-hive.md)szolgáltatással
+* Ha szeretne többet megtudni a Pig-ről, az adatátalakításhoz használt nyelvet lásd: az [Apache Pig és a HDInsight használata](../hdinsight-use-pig.md).
 * További információ a Hadoopon adatokat feldolgozó programok írására szolgáló MapReduce módszerről: [A MapReduce használata a HDInsighttal](../hdinsight-use-mapreduce.md).
 * A HDInsight-adatok elemzésére szolgáló HDInsight Tools for Visual Studio szolgáltatással kapcsolatos további információkért lásd: [Get started using Visual Studio Hadoop tools for HDInsight](../hadoop/apache-hadoop-visual-studio-tools-get-started.md) (A HDInsight Visual Studio Hadoop-eszközeinek használatára vonatkozó első lépések).
 

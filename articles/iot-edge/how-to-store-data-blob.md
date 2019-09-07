@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f2b26e3418e264c2613a183570c7e27f75ab5d63
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 1a48088d0d7ef1e14614629340ee477833535861
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208224"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390396"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Az Azure Blob Storage IoT Edge
 
@@ -123,7 +123,7 @@ Az üzemelő példány értéke `<storage mount>` lehet **G:/ContainerData: C:/B
 ## <a name="granting-directory-access-to-container-user-on-linux"></a>Címtár-hozzáférés megadása a tároló felhasználója számára Linux rendszeren
 Ha a Linux-tárolók létrehozási lehetőségeiben a [Volume Mount](https://docs.docker.com/storage/volumes/) for Storage szolgáltatást használta, akkor nem kell további lépéseket végrehajtania, de ha a [kötési csatlakoztatást](https://docs.docker.com/storage/bind-mounts/) használta, akkor ezek a lépések szükségesek a szolgáltatás megfelelő futtatásához.
 
-A minimális jogosultság elve alapján korlátozhatja a felhasználók hozzáférési jogait a munkájuk elvégzéséhez szükséges minimális engedélyekre, ez a modul tartalmaz egy felhasználót (név: absie, azonosító: 11000) és egy felhasználói csoport (név: absie, azonosító: 11000). Ha a tároló gyökérként van elindítva (az alapértelmezett felhasználó a **root**), a szolgáltatás az alacsony jogosultságú **absie** felhasználóként fog elindulni. 
+A minimális jogosultság elve alapján korlátozhatja a felhasználók hozzáférési jogait a munkájuk elvégzéséhez szükséges minimális engedélyekre, ez a modul tartalmaz egy felhasználót (név: absie, azonosító: 11000) és egy felhasználói csoport (név: absie, azonosító: 11000). Ha a tároló **gyökérként** van elindítva (az alapértelmezett felhasználó a **root**), a szolgáltatás az alacsony jogosultságú **absie** felhasználóként fog elindulni. 
 
 Ez a viselkedés lehetővé teszi, hogy a szolgáltatás megfelelő működéséhez az gazdaelérési út-kötésekhez szükséges engedélyek konfigurálása elengedhetetlen, ellenkező esetben a szolgáltatás a hozzáférés-megtagadási hibákkal összeomlik. A címtár-kötésben használt elérési utat a tároló felhasználójának kell elérhetőnek lennie (például: absie 11000). Az alábbi parancsoknak a gazdagépen való futtatásával megadhatja a tároló felhasználói hozzáférését a címtárhoz:
 
@@ -173,7 +173,6 @@ Az Azure Blob Storage dokumentációja több nyelven is tartalmaz gyors üzembe 
 A következő rövid útmutatók a IoT Edge által is támogatott nyelveket használják, így a blob Storage modul mellett IoT Edge modulként is üzembe helyezhetők:
 
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [Java](../storage/blobs/storage-quickstart-blobs-java-v10.md)
 - [Python](../storage/blobs/storage-quickstart-blobs-python.md)
     - Az SDK használata során ismert probléma van, mivel a modul ezen verziója nem adja vissza a blob létrehozási idejét. Ezért néhány módszer, például a List Blobok nem működnek. Megkerülő megoldásként állítsa explicit módon az API-verziót a blob-ügyfélen a "2017-04-17" értékre. <br>Például`block_blob_service._X_MS_VERSION = '2017-04-17'`
 - [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
@@ -184,7 +183,7 @@ A következő rövid útmutatók a IoT Edge által is támogatott nyelveket hasz
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Kapcsolódjon a helyi tárhelyhez Azure Storage Explorer
 
-A helyi Storage [](https://azure.microsoft.com/features/storage-explorer/) -fiókhoz való kapcsolódáshoz Azure Storage Explorert használhat.
+A helyi Storage-fiókhoz való kapcsolódáshoz [Azure Storage Explorert](https://azure.microsoft.com/features/storage-explorer/) használhat.
 
 1. Azure Storage Explorer letöltése és telepítése
 

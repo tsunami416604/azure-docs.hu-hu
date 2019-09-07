@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d607809b6e0356c8807879962927e99f2bd12fd
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 2a2b62cc0548b0bbedae35f6a0d72ac327723e60
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382723"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743838"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
@@ -75,8 +75,7 @@ A következő táblázat a támogatott operációs rendszerek listáját tartalm
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
-|Windows Server 2008, Windows Server 2008 R2 RTM    | A csak a frissítési felméréseket támogatja.         |
-|Windows Server 2019 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2008 R2 (RTM és SP1 standard)|A .NET-keretrendszer 4.5.1-es vagy újabb verziója szükséges. ([.NET-keretrendszer letöltése](/dotnet/framework/install/guide-for-developers))<br/> A Windows PowerShell 4,0-es vagy újabb verziójára van szükség. ([WMF 4,0 letöltése](https://www.microsoft.com/download/details.aspx?id=40855))<br/> A fokozott megbízhatóság érdekében ajánlott a Windows PowerShell 5,1.  ([WMF 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2019 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2008 R2 (RTM és SP1 standard)|**Frissítési felmérések**: Támogatott<br><br>**Javítás**: Hibrid Runbook-feldolgozót igényel. Lásd: [hibrid Runbook Worker-követelmények](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
 |CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz. A besoroláson alapuló javításhoz a "yum" utasítás szükséges ahhoz, hogy a CentOS ne legyen a dobozban. A CentOS besoroláson alapuló javításával kapcsolatos további információkért lásd: [frissítési besorolások Linux](#linux-2) rendszeren          |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
@@ -244,7 +243,7 @@ Az Azure piactéren elérhető, igény szerinti Red Hat Enterprise Linux (RHEL) 
 | Frissítendő gépek |Válasszon ki egy mentett keresést, importált csoportot, vagy válasszon gépet a legördülő listából, és válassza az egyes gépek lehetőséget. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md) |
 |Frissítési besorolások|Válassza ki az összes szükséges frissítési besorolást|
 |Frissítések belefoglalása/kizárása|Ekkor megnyílik a **Belefoglalás/kizárás** oldal. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. További információ a bevonások kezeléséről: a [beilleszkedési viselkedés](automation-update-management.md#inclusion-behavior) |
-|Ütemezési beállítások|Válassza ki a kezdéshez szükséges időt, és válasszon egyszer vagy ismétlődő lehetőséget az ismétlődéshez|
+|Ütemezett beállítások|Válassza ki a kezdéshez szükséges időt, és válasszon egyszer vagy ismétlődő lehetőséget az ismétlődéshez|
 | Parancsfájlok előtti + parancsfájlok utáni|Válassza ki az üzembe helyezés előtt és után futtatandó parancsfájlokat|
 | Karbantartási időszak |A frissítések számára beállított percek száma. Az érték nem lehet kevesebb, mint 30 perc, legfeljebb 6 óra |
 | Vezérlő újraindítása| Meghatározza az újraindítások kezelését. Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
@@ -300,7 +299,7 @@ Az alábbi táblázat a Update Management frissítési besorolásait sorolja fel
 |Kumulatív frissítések     | Az egyszerű üzembe helyezéshez együtt csomagolt gyorsjavítások összesített készlete.        |
 |Funkciócsomagok     | A termék kiadásán kívül terjesztett új termék-szolgáltatások.        |
 |Szervizcsomagok     | Egy alkalmazásra alkalmazott gyorsjavítások kumulatív készlete.        |
-|A definíciók frissítései     | Vírus-vagy egyéb definíciós fájlok frissítése.        |
+|Definíciófrissítések     | Vírus-vagy egyéb definíciós fájlok frissítése.        |
 |Eszközök     | Olyan segédprogram vagy szolgáltatás, amely egy vagy több feladat elvégzését segíti elő.        |
 |Frissítések     | Egy aktuálisan telepített alkalmazás vagy fájl frissítése.        |
 
@@ -381,7 +380,7 @@ A kivételek meghatározásakor a felsorolt címek használatát javasoljuk. IP-
 
 Az Internet-hozzáférés [nélküli számítógépek összekapcsolására](../azure-monitor/platform/gateway.md) vonatkozó utasításokat követve konfigurálja azokat a gépeket, amelyek nem rendelkeznek interneteléréssel.
 
-## <a name="search-logs"></a>Keresés naplókban
+## <a name="search-logs"></a>Keresési naplók
 
 A Azure Portalban megadott részletek mellett a naplókon is végezhet keresést. A megoldás oldalain válassza a **log Analytics**lehetőséget. Megnyílik a **napló keresése** panel.
 

@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: quickstart
 ms.date: 07/09/2019
 ms.author: heidist
-ms.openlocfilehash: a4654e5895e9c7768b9fa6b975ef848294bcc8cc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 72546e6327fc3286455482943dcaedbd5a8e2943
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648911"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744734"
 ---
 # <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Gyors útmutató: AI-indexelési folyamat létrehozása a kognitív képességek használatával Azure Search
 
@@ -22,7 +22,7 @@ A Azure Search a [Cognitive Services](https://azure.microsoft.com/services/cogni
 
 Számos Cognitive Services erőforrás – például az [OCR](cognitive-search-skill-ocr.md), a [nyelvfelismerés](cognitive-search-skill-language-detection.md), az [entitások felismerése](cognitive-search-skill-entity-recognition.md) , hogy a név néhány – egy indexelési folyamathoz csatolható. A Cognitive Services AI-algoritmusai olyan minták, funkciók és tulajdonságok keresésére szolgálnak, amelyek a forrásadatok, a visszatérő struktúrák és a szöveges tartalom alapján használhatók, amelyek Azure Search alapján teljes szöveges keresési megoldásokban használhatók.
 
-Ebben a rövid útmutatóban létrehozza az első alkoholtartalom-növelési [](https://portal.azure.com) folyamatát a Azure Portalban, mielőtt egyetlen sor kódot írna elő:
+Ebben a rövid útmutatóban létrehozza az első alkoholtartalom-növelési folyamatát a [Azure Portalban](https://portal.azure.com) , mielőtt egyetlen sor kódot írna elő:
 
 > [!div class="checklist"]
 > * Kezdje az Azure Blob Storage mintaadataival
@@ -33,7 +33,7 @@ Ebben a rövid útmutatóban létrehozza az első alkoholtartalom-növelési [](
 Ez a rövid útmutató az ingyenes szolgáltatáson fut, de az ingyenes tranzakciók száma napi 20 dokumentumra korlátozódik. Ha naponta többször szeretné futtatni ezt a rövid útmutatót, használjon kisebb fájlméretet, hogy több futtatással is elférjen.
 
 > [!NOTE]
-> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást](cognitive-search-attach-cognitive-services.md)kell csatolnia. Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
+> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
 >
 > A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását a [Azure Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
 
@@ -45,7 +45,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) biztosítja a mesterséges intelligenciát. Ez a rövid útmutató a folyamat megadásához szükséges lépéseket tartalmazza ezen erőforrások vonalbeli hozzáadásához. A fiókokat nem szükséges előre beállítani.
 
-Az Azure-szolgáltatásoknak meg kell adniuk az indexelési folyamat bemeneteit. Az [Azure Search indexelő](search-indexer-overview.md) által támogatott bármely adatforrás használható, kivéve az Azure Table Storaget, ami AI-indexeléshez nem támogatott. Ez a rövid útmutató az [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) -t használja tárolóként a forrásként szolgáló adatfájlokhoz. 
+Az Azure-szolgáltatásoknak meg kell adniuk az indexelési folyamat bemeneteit. [Azure Search indexelő](search-indexer-overview.md)által támogatott adatforrások is használhatók. Ez a rövid útmutató az [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) -t használja tárolóként a forrásként szolgáló adatfájlokhoz. 
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Az Azure Blob szolgáltatás beállítása és a mintaadatok betöltése
 
@@ -59,7 +59,7 @@ Az Azure-szolgáltatásoknak meg kell adniuk az indexelési folyamat bemeneteit.
 
 ## <a name="create-the-enrichment-pipeline"></a>A bővítési folyamat létrehozása
 
-Térjen vissza a Azure Search szolgáltatás irányítópultja lapra, és kattintson az adatimportálás parancsra a parancssávban, és állítsa be a kognitív dúsítást négy lépésben.
+Térjen vissza a Azure Search szolgáltatás irányítópultja lapra, és kattintson az **adatimportálás** parancsra a parancssávban, és állítsa be a kognitív dúsítást négy lépésben.
 
   ![Adatok importálása parancs](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
@@ -79,11 +79,11 @@ Ezután adja hozzá a bővítési lépéseket az indexelési folyamathoz. Ha nem
 
 1. Bontsa ki a **csatolás Cognitive Services** elemet a Cognitive Services API-k újraforrására vonatkozó beállítások megtekintéséhez. Ebben az oktatóanyagban használhatja az **ingyenes** erőforrást.
 
-   ![A Cognitive Services csatolása](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   ![Cognitive Services csatolása](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
 2. Bontsa ki a bővítések **hozzáadása** lehetőséget, és válassza ki a természetes nyelvi feldolgozást végző szaktudást. Ebben a rövid útmutatóban válassza az entitások felismerése lehetőséget a személyekhez, szervezetekhez és helyekhez.
 
-   ![A Cognitive Services csatolása](media/cognitive-search-quickstart-blob/skillset.png)
+   ![Cognitive Services csatolása](media/cognitive-search-quickstart-blob/skillset.png)
 
    A portál beépített képességeket kínál az OCR-feldolgozáshoz és a szöveges elemzésekhez. A portálon egy képességcsoport egyetlen forrásmezőn végez műveleteket. Ez kis célnak tűnhet, de az Azure-blobok esetében a blobdokumentum (például egy Word-dokumentum vagy egy PowerPoint-bemutató) legnagyobb részét a `content` mező tartalmazza. Ez a mező tehát nem ideális bemenet, mert egy blob összes tartalma szerepel benne.
 
@@ -106,13 +106,13 @@ Ebben a rövid útmutatóban a varázsló észszerű alapértelmezett beállít�
 
 + Az alapértelmezett kulcs a *metadata_storage_path* (ez a mező egyedi értékeket tartalmaz).
 
-+ Az alapértelmezett attribútumok lekérhető és kereshetők ezekhez a mezőkhöz. **Kereshető** azt jelzi, hogy egy mező kereshető. A lekérdezhető érték azt jelenti, hogy visszaadható az eredmények között. A varázsló feltételezi, hogy ezek a mezők lekérhető és kereshetők, mert egy készségkészlet keresztül hozta létre őket.
++ Az alapértelmezett attribútumok lekérhető és **kereshetők** ezekhez a mezőkhöz. **Kereshető** azt jelzi, hogy egy mező kereshető. A lekérdezhető érték **azt jelenti,** hogy visszaadható az eredmények között. A varázsló feltételezi, hogy ezek a mezők lekérhető és kereshetők, mert egy készségkészlet keresztül hozta létre őket.
 
   ![Indexmezők](media/cognitive-search-quickstart-blob/index-fields.png)
 
-Figyelje meg a `content` lekéréses attribútum áthúzott és kérdőjel értékét a mező alapján. Szöveg – nagy méretű blob-dokumentumok esetén `content` a mező a fájl nagy részét tartalmazza, amely akár több ezer sorra is futhat. Ha meg kell adnia a fájl tartalmát az ügyfél kódjához, győződjön meg arról, hogy a beolvasható maradok lehetőség van kiválasztva. Ellenkező esetben érdemes lehet törölni ezt az `content` attribútumot, ha a`people`kinyert `locations`elemek (, `organizations`és) elegendőek a célra.
+Figyelje meg a **lekéréses** attribútum `content` áthúzott és kérdőjel értékét a mező alapján. Szöveg – nagy méretű blob-dokumentumok esetén `content` a mező a fájl nagy részét tartalmazza, amely akár több ezer sorra is futhat. Ha meg kell adnia a fájl tartalmát az ügyfél kódjához, győződjön meg arról, hogy a **beolvasható** maradok lehetőség van kiválasztva. Ellenkező esetben érdemes lehet törölni ezt az `content` attribútumot, ha a`people`kinyert `locations`elemek (, `organizations`és) elegendőek a célra.
 
-A mezők beolvasható való megjelölése nem jelenti azt, hogy a mezőnek jelen kell lennie a keresési eredmények között. A keresési eredmények összetételét pontosan vezérelheti a **$Select** lekérdezési paraméterrel, hogy megadja, hogy mely mezők szerepeljenek hozzá. A Text-nagy méretű mezőkhöz hasonlóan `content`a **$Select** paraméter a felügyelhető keresési eredmények az alkalmazás emberi felhasználói számára való biztosítására szolgáló megoldás, miközben az ügyfél kódjának hozzáférése van az összes szükséges információhoz aBeolvasható attribútum.
+A mezők **beolvasható** való megjelölése nem jelenti azt, hogy a mezőnek jelen *kell lennie* a keresési eredmények között. A keresési eredmények összetételét pontosan vezérelheti a **$Select** lekérdezési paraméterrel, hogy megadja, hogy mely mezők szerepeljenek hozzá. A Text-nagy méretű mezőkhöz hasonlóan `content`a **$Select** paraméter a felügyelhető keresési eredmények az alkalmazás emberi felhasználói számára való biztosítására szolgáló megoldás, miközben az ügyfél kódjának hozzáférése van az összes szükséges információhoz a  **Beolvasható** attribútum.
   
 Folytassa a következő oldallal.
 

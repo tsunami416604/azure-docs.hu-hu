@@ -1,19 +1,19 @@
 ---
-title: Strukturált streaming Apache Spark Apache Kafkaról a Azure Cosmos DB-Azure HDInsight
+title: Adatok Apache Spark Apache Kafkaból Azure Cosmos DB – Azure HDInsight
 description: Megtudhatja, hogyan használhatja Apache Spark strukturált adatfolyamot az adatok Apache Kafkaból való beolvasásához, majd Azure Cosmos DBba való tárolásához. Ebben a példában Jupyter notebookkal streamel adatokat a Spark on HDInsightból.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: c2d2f56f2a0686b23a3a907686dcee0760d37365
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 546dd094614a72cada2aff60704c4fc191301ad2
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947069"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734935"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Spark strukturált adatfolyam használata Apache Kafka és Azure Cosmos DB
 
@@ -101,7 +101,7 @@ Habár az Azure Virtual Network, a Kafka és a Spark-fürtök manuálisan is lé
 
 ## <a name="create-the-cosmos-db-database-and-collection"></a>A Cosmos DB adatbázis és gyűjtemény létrehozása
 
-Az ebben a dokumentumban használt projekt Cosmos DB tárolja az adattárakat. A kód futtatása előtt először létre kell hoznia egy _adatbázist_ és egy gyűjteményt az Cosmos db-példányban. A dokumentum-végpontot és a Cosmos DBra irányuló kérelmek hitelesítéséhez használt _kulcsot_ is le kell kérni. 
+Az ebben a dokumentumban használt projekt Cosmos DB tárolja az adattárakat. A kód futtatása előtt először létre kell hoznia egy _adatbázist_ és egy _gyűjteményt_ az Cosmos db-példányban. A dokumentum-végpontot és a Cosmos DBra irányuló kérelmek hitelesítéséhez használt _kulcsot_ is le kell kérni. 
 
 Ennek egyik módja az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használata. A következő szkript létrehoz egy nevű `kafkadata` adatbázist és egy nevű `kafkacollection`gyűjteményt. Ezután visszaadja az elsődleges kulcsot.
 

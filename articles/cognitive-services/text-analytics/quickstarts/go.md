@@ -10,17 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 9d04d00be52619d220a698697459376e4937942d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 5c97648bd11a506d3c818584ed7d82d0a12d2e2c
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134963"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387479"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A go használata a Text Analytics kognitív szolgáltatás meghívásához 
 <a name="HOLTop"></a>
 
-Ebből a cikkből megtudhatja, hogyan [](#SentimentAnalysis)derítheti fel [text Analytics](//go.microsoft.com/fwlink/?LinkID=759711) a [nyelveket](#Detect), elemezheti a véleményeket, kinyerheti a [kulcsfontosságú kifejezéseket](#KeyPhraseExtraction), és hogyan azonosíthatja a [csatolt entitásokat](#Entities) az
+Ebből a cikkből megtudhatja, hogyan [derítheti](#Detect)fel [text Analytics](//go.microsoft.com/fwlink/?LinkID=759711) a nyelveket, [elemezheti](#SentimentAnalysis)a véleményeket, [kinyerheti a kulcsfontosságú kifejezéseket](#KeyPhraseExtraction), és hogyan [azonosíthatja a csatolt entitásokat](#Entities) az
 
 Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
 
@@ -28,7 +28,8 @@ Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.micro
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) is rendelkeznie kell.
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+
 
 <a name="Detect"></a>
 
@@ -427,7 +428,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="identify-entities"></a>Entitások azonosítása
 
-Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. [](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) Az entitások szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" `location`típusa, míg a `https://en.wikipedia.org/wiki/United_States`wikipedia-ra mutató hivatkozás.  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
+Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. Az [entitások](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" `location`típusa, míg a `https://en.wikipedia.org/wiki/United_States`wikipedia-ra mutató hivatkozás.  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
 
 1. Hozzon létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` környezeti `TEXT_ANALYTICS_ENDPOINT` változókat és az erőforrás Azure-végpontját és előfizetési kulcsát. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor a környezeti változók eléréséhez be kell majd állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a rendszerhéjat.
 1. Hozzon létre egy új Go-projektet a kedvenc kódszerkesztőjében.

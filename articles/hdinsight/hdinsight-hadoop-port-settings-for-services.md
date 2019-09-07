@@ -1,6 +1,6 @@
 ---
 title: A Hadoop Services által a HDInsight-ben használt portok – Azure
-description: A HDInsight-on futó Hadoop Services által használt portok listája.
+description: Ez az Azure HDInsight futó Apache Hadoop-szolgáltatások által használt portok listáját tartalmazza.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: 34ab49378f9237a42bed869a6f6d67249b5238f9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 1fe66c1c171e779f48f4cc7c6767307feaafbd5f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464693"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733423"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>A HDInsight Apache Hadoop Services által használt portok
 
@@ -28,7 +28,7 @@ Belsőleg a HDInsight-t több Azure-Virtual Machines (a fürtben lévő csomópo
 > [!IMPORTANT]  
 > Ha nem ad meg Azure-Virtual Network a HDInsight konfigurációs beállításaként, az egyik automatikusan létrejön. Ehhez a virtuális hálózathoz azonban nem csatlakozhat más gépekhez (például az Azure Virtual Machines vagy az ügyféloldali fejlesztői géphez).
 
-Ha további gépeket szeretne csatlakoztatni a virtuális hálózathoz, először létre kell hoznia a virtuális hálózatot, majd meg kell adnia a HDInsight-fürt létrehozásakor. További információ: [virtuális hálózat](hdinsight-plan-virtual-network-deployment.md)megtervezése a HDInsight.
+Ha további gépeket szeretne csatlakoztatni a virtuális hálózathoz, először létre kell hoznia a virtuális hálózatot, majd meg kell adnia a HDInsight-fürt létrehozásakor. További információ: [virtuális hálózat megtervezése a HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
 ## <a name="public-ports"></a>Nyilvános portok
 

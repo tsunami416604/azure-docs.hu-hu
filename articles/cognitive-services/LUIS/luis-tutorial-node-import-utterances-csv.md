@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: tutorial
-ms.date: 07/29/2019
+ms.topic: conceptual
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 192c5c7a2d4c671aec0dcf72bef78abd1845b1ea
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1bee26dc57fd844703e2c9c97b38b9a433227fbf
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946081"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387939"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Programozott módon a Node.js használatával a LUIS alkalmazás készítése
 
@@ -26,11 +26,11 @@ A LUIS programozható API-t, amely minden, amely biztosít a [LUIS](luis-referen
 
 * Jelentkezzen be a [Luis](luis-reference-regions.md) webhelyre, és keresse meg a [szerzői kulcsot](luis-concept-keys.md#authoring-key) a Fiókbeállítások menüpontban. Ezt a kulcsot a jelentéskészítési API-kat használhatja.
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-* Ebben az oktatóanyagban egy kitalált vállalat naplófájljainak a felhasználói kérések CSV kezdődik. Töltse le [Itt](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
+* Ez a cikk CSV-vel kezdődik a feltételezett vállalati naplófájlok felhasználói kérésekhez. Töltse le [Itt](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
 * A legfrissebb Node.js telepítése az npm-mel. Töltse le [Itt](https://nodejs.org/en/download/).
 * **[Ajánlott]**  Visual Studio Code IntelliSense és a hibakereséshez, töltse le [Itt](https://code.visualstudio.com/) ingyenes.
 
-Az oktatóanyagban szereplő összes kód elérhető az [Azure-samples Language Understanding GitHub-tárházban](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv). 
+A cikkben szereplő összes kód az [Azure-samples Language Understanding GitHub-tárházban](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)érhető el. 
 
 ## <a name="map-preexisting-data-to-intents-and-entities"></a>Már létező adatokat leképezze szándékok és entitások felismerésére
 Ha már rendelkezik egy rendszer, amely szem előtt, az intelligens hangfelismerési szolgáltatással nem lett létrehozva, ha maps kezdhet a felhasználók számára szeretné szöveges adatok tartalmazza, lehet felhasználói bevitelt a LUIS szándék, a meglévő kategóriák egy leképezéssel merülnek fel. Amennyiben azonosítani lehet fontos szavak vagy kifejezések a felhasználók mondta, előfordulhat, hogy ezeknek a szavaknak képezze le entitásokat.

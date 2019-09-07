@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ae6c2bd27e9192966ecffb4d4296063201fca970
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 992e3f7aa53fdd006d29c06113cd30b07a406f3b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098023"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734337"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Figyelő forgatókönyv Durable Functions-Weather Watcher minta
 
@@ -31,7 +31,7 @@ Ez a minta figyeli a hely aktuális időjárási feltételeit, és SMS-ben figye
 * A figyelők leállhatnak, ha valamilyen feltétel teljesül, vagy egy másik folyamat leállítja azt.
 * A figyelők paramétereket hozhatnak. A minta azt mutatja be, hogyan alkalmazható az időjárás-figyelési folyamat a kért helyekre és telefonszámokra.
 * A figyelők méretezhetők. Mivel minden figyelő egy előkészítési példány, több figyelő is létrehozható anélkül, hogy új funkciókat kellene létrehoznia, vagy további kódokat kellene megadnia.
-* A monitorok könnyen integrálhatók a nagyobb munkafolyamatokban. Egy figyelő lehet egy összetettebb összehangoló függvény, vagy egy alfolyamatok egyik [](durable-functions-sub-orchestrations.md)szakasza is.
+* A monitorok könnyen integrálhatók a nagyobb munkafolyamatokban. Egy figyelő lehet egy összetettebb összehangoló függvény, vagy egy [alfolyamatok](durable-functions-sub-orchestrations.md)egyik szakasza is.
 
 ## <a name="configuring-twilio-integration"></a>Twilio-integráció konfigurálása
 
@@ -67,7 +67,7 @@ A **E3_Monitor** függvény a standard *function. JSON* fájlt használja a Orch
 
 Itt látható a függvényt megvalósító kód:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Parancsfájl
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
@@ -77,7 +77,7 @@ Itt látható a függvényt megvalósító kód:
 
 Ez a Orchestrator-függvény a következő műveleteket hajtja végre:
 
-1. Lekérdezi a figyelni kívánt *helyet* tartalmazó **MonitorRequest** , valamint azt a telefonszámot, amelyre SMS-értesítést fog küldeni.
+1. Lekérdezi a figyelni kívánt *helyet* tartalmazó **MonitorRequest** , valamint azt a *telefonszámot* , amelyre SMS-értesítést fog küldeni.
 2. Meghatározza a figyelő lejárati idejét. A minta egy nehezen kódolt értéket használ a rövidség kedvéért.
 3. Meghívja a **E3_GetIsClear** annak megállapítására, hogy van-e egyértelmű égbolt a kért helyen.
 4. Ha az időjárás egyértelmű, a meghívja a **E3_SENDGOODWEATHERALERT** SMS-értesítés küldését a kért telefonszámra.
@@ -103,7 +103,7 @@ Más mintákhoz hasonlóan a segítő tevékenység funkciói az `activityTrigge
 
 Itt pedig a megvalósítás. Az adatátvitelhez használt POCOs-hez hasonlóan az API-hívás kezeléséhez és a válasz JSON értelmezéséhez tartozó logika is egy megosztott osztályba van beosztva C#. A [Visual Studio-mintakód](#run-the-sample)részeként is megtalálhatja.
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Parancsfájl
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
@@ -117,7 +117,7 @@ A **E3_SendGoodWeatherAlert** függvény a Twilio kötés használatával küld 
 
 Itt látható az SMS-üzenetet küldő kód:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Parancsfájl
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 

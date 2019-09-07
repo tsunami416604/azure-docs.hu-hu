@@ -2,15 +2,15 @@
 author: msmbaldwin
 ms.service: security
 ms.topic: include
-ms.date: 07/23/2019
+ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4aea8c1d1d7112ac1f9ff9042ff01d173ed986c5
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: b7881d38e04f9b5793f61110e0e3e4c76baeddf2
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68440889"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743774"
 ---
-A biztonsági attribútumok az Azure-szolgáltatások minősége vagy funkciói. A szolgáltatás hozzájárul a biztonsági rések megelőzésére, észlelésére és reagálására.
+A biztonsági ellenőrzés olyan Azure-szolgáltatás minősége vagy funkciója, amely hozzájárul a szolgáltatás a biztonsági rések megelőzésére, észlelésére és reagálására.
 
-Az egyes kategóriákban a "yes" vagy a "No" érték jelenik meg, amely jelzi, hogy az attribútum használatban van-e. Egyes szolgáltatások esetében "N/A" (nem alkalmazható) attribútumot mutatunk be. Egy Megjegyzés vagy egy hivatkozás is megadható, amely további információkat tartalmaz egy attribútumról.
+Az egyes vezérlőknél az "igen" vagy a "nem" értékkel jelezheti, hogy a szolgáltatás jelenleg van-e érvényben, "N/A" a szolgáltatáshoz nem alkalmazható vezérlőelem esetén. Az attribútummal kapcsolatos további információkra mutató hivatkozásokat is megadhat.

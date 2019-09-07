@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/27/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9718185b41795da6d95486972441ee20bc250316
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ae9daaf797d3d82200ee094b63bad1f5c1ff68cc
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850699"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743820"
 ---
 # <a name="my-first-powershell-runbook"></a>Az első PowerShell-forgatókönyvem
 
@@ -34,7 +34,7 @@ Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szükség
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-fiók](automation-quickstart-create-account.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez. Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
 * Egy Azure virtuális gép. A gép leállítása és elindítása így nem lehet éles virtuális gép.
-* Előfordulhat, hogy az Ön által használt parancsmagok alapján frissítenie kell [Az Azure](automation-update-azure-modules.md) -modulokat.
+* Előfordulhat, hogy az Ön által használt parancsmagok alapján [frissítenie kell az Azure-modulokat](automation-update-azure-modules.md) .
 
 ## <a name="create-new-runbook"></a>Új runbook létrehozása
 
@@ -65,7 +65,7 @@ Mielőtt közzéteszi a runbookot, hogy éles üzemben is elérhető legyen, tes
 2. Kattintson az **Indítás** gombra a teszt elindításához. Elvileg ez az egyetlen engedélyezett lehetőség.
 3. Létrejön egy [forgatókönyv-feladat](automation-runbook-execution.md), és megjelenik annak állapota.
 
-   A feladatok állapota várólistára kerül, ami azt jelzi, hogy a felhőben lévő runbook-feldolgozó elérhetővé válására vár. A művelet akkor *indul* el, amikor egy feldolgozó kiállítja a feladatot, majd *fut* , amikor a runbook ténylegesen elindul.
+   A feladatok állapota *várólistára* kerül, ami azt jelzi, hogy a felhőben lévő runbook-feldolgozó elérhetővé válására vár. A művelet akkor *indul* el, amikor egy feldolgozó kiállítja a feladatot, majd *fut* , amikor a runbook ténylegesen elindul.
 
 4. Amikor a forgatókönyv feladat befejeződik, megjelenik a kimenete. Ebben az esetben *"Helló világ!" alkalmazás*kell látnia.
 
@@ -78,7 +78,7 @@ Mielőtt közzéteszi a runbookot, hogy éles üzemben is elérhető legyen, tes
 A létrehozott runbook még mindig Piszkozat módban van. Az éles környezetben való futtatás előtt közzé kell tenni.  Amikor elérhetővé tesz egy forgatókönyvet, felülírja a Közzétett verziót a Piszkozattal. Ebben az esetben még nem rendelkezik közzétett verzióval, mert most létrehozta a runbook.
 
 1. A forgatókönyv közzétételéhez kattintson a **Közzététel** lehetőségre, és ha a rendszer kéri, kattintson az **Igen** gombra.
-1. Ha balra görgetve megtekinti a runbook a **runbookok** panelen, a **közzétett**szerzői **állapotot** jeleníti meg.
+1. Ha balra görgetve megtekinti a runbook a **runbookok** panelen, a **közzétett** **szerzői állapotot** jeleníti meg.
 1. Görgessen vissza jobbra a **MyFirstRunbook-PowerShell** panel megtekintéséhez.
    A felül látható lehetőségekkel elindíthatjuk és megtekinthetjük a runbookot, ütemezhetjük egy későbbi időpontban való indításra, vagy létrehozhatunk egy [webhookot](automation-webhooks.md), amely segítségével elindítható a runbook egy HTTP-hívással.
 1. El szeretné indítani a runbook, kattintson a **Start** gombra, majd kattintson az **OK** gombra a runbook indítása Lap megnyitásakor.
@@ -87,7 +87,7 @@ A létrehozott runbook még mindig Piszkozat módban van. Az éles környezetben
 
    ![Feladat összegzése](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)
 
-1. Miután a runbook állapota megjelenik, az **Áttekintés** területen kattintson a **kimenet**elemre. Megnyílik a kimenet panel, és megtekintheti a *"Helló világ!" alkalmazás*.
+1. Miután a runbook *állapota megjelenik, az* **Áttekintés** területen kattintson a **kimenet**elemre. Megnyílik a kimenet panel, és megtekintheti a *"Helló világ!" alkalmazás*.
 
    ![Feladat kimenete](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png)
 
@@ -112,8 +112,21 @@ Most már befejeződött a runbook tesztelése és közzététele, de még nem c
    Disable-AzureRmContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
--ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+
+   # Wrap authentication in retry logic for transient network failures
+   $logonAttempt = 0
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+       $LogonAttempt++
+       # Logging in to Azure...
+       $connectionResult =    Connect-AzureRmAccount `
+                                  -ServicePrincipal `
+                                  -Tenant $connection.TenantID `
+                                  -ApplicationID $connection.ApplicationID `
+                                  -CertificateThumbprint $connection.CertificateThumbprint
+
+       Start-Sleep -Seconds 30
+   }
 
    $AzureContext = Select-AzureRmSubscription -SubscriptionId $connection.SubscriptionID
 
@@ -129,8 +142,19 @@ Most már befejeződött a runbook tesztelése és közzététele, de még nem c
    Disable-AzureRmContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
-   -ApplicationId $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+       $LogonAttempt++
+       # Logging in to Azure...
+       $connectionResult =    Connect-AzureRmAccount `
+                                  -ServicePrincipal `
+                                  -Tenant $connection.TenantID `
+                                  -ApplicationID $connection.ApplicationID `
+                                  -CertificateThumbprint $connection.CertificateThumbprint
+
+       Start-Sleep -Seconds 30
+   }
    ```
 
    > [!IMPORTANT]
@@ -152,8 +176,19 @@ Most, hogy a runbook hitelesítést végez az Azure-előfizetésében, kezelheti
    Disable-AzureRmContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
-   -ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+       $LogonAttempt++
+       # Logging in to Azure...
+       $connectionResult =    Connect-AzureRmAccount `
+                                  -ServicePrincipal `
+                                  -Tenant $connection.TenantID `
+                                  -ApplicationID $connection.ApplicationID `
+                                  -CertificateThumbprint $connection.CertificateThumbprint
+
+       Start-Sleep -Seconds 30
+   }
+
    Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
    ```
 
@@ -175,8 +210,19 @@ A runbook jelenleg a runbook hardcoded elindítja a virtuális gépet, de haszno
    Disable-AzureRmContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
-   -ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+       $LogonAttempt++
+       # Logging in to Azure...
+       $connectionResult =    Connect-AzureRmAccount `
+                                  -ServicePrincipal `
+                                  -Tenant $connection.TenantID `
+                                  -ApplicationID $connection.ApplicationID `
+                                  -CertificateThumbprint $connection.CertificateThumbprint
+
+       Start-Sleep -Seconds 30
+   }
+
    Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
    ```
 

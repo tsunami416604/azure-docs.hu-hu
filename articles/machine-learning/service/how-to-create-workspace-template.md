@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 89c24512e50dedbf10d145088ec77c2e6e303d1e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 34522c9a672de51cfa53ce52c5a6a6506fcd5454
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873153"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390513"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Munkaterületek létrehozása Azure Machine Learning szolgáltatáshoz Azure Resource Manager sablon használatával
 
@@ -55,6 +55,11 @@ A példában szereplő sablonnak két paramétere van:
 * A **munkaterület neve**, amely a Azure Machine learning munkaterület rövid neve.
 
     A többi szolgáltatás neve véletlenszerűen jön létre.
+
+> [!TIP]
+> Míg a dokumentumhoz társított sablon új Azure Container Registry hoz létre, a tároló-beállításjegyzék létrehozása nélkül is létrehozhat egy új munkaterületet. Ha a tároló beállításjegyzéke megtalálható a munkaterületen, akkor egy tároló-beállításjegyzéket igénylő művelet végrehajtásakor létrejön egy. Például egy modell betanítása vagy üzembe helyezése.
+>
+> Egy meglévő tároló beállításjegyzék-vagy Storage-fiókra is hivatkozhat a Azure Resource Manager sablonban, ahelyett, hogy újat hozna létre.
 
 A sablonokkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 

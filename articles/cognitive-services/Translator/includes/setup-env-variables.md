@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 156486f4f4f0df3d4bb4ab76492709bbecfb8eb5
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c737447c3a3bd2d76d3ed620b7c61aaa81250130
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906586"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70393816"
 ---
 ## <a name="set-up"></a>Beállítás
 
@@ -23,4 +23,4 @@ Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. H
 A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekérése után hozzon létre két [környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
 * `TRANSLATOR_TEXT_SUBSCRIPTION_KEY`– A Translator Text erőforráshoz tartozó előfizetési kulcs.
-* `TRANSLATOR_TEXT_ENDPOINT`– Az erőforrás területi végpontja vagy egyéni altartományának neve.
+* `TRANSLATOR_TEXT_ENDPOINT`– A Translator Text globális végpontja. Használat `https://api.cognitive.microsofttranslator.com/`.

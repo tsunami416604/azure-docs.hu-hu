@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Adatok feldolgozása Azure-Event Hubs az Azure HDInsight Apache Sparkával '
+title: 'Oktatóanyag: Adatok feldolgozása az Azure Event Hubs és az Apache Spark a HDInsight'
 description: Oktatóanyag – Apache Spark összekapcsolását az Azure HDInsight az Azure-ban Event Hubs és feldolgozza a folyamatos átviteli adatátvitelt.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: 0d47c3f0838e22ad8c5185a42f5f0c748335dfa8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 2483ba22d3d502479e87ae385bcc837ec87a103c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049490"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735334"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Oktatóanyag: Tweetek feldolgozása az Azure Event Hubs és a HDInsight-Apache Spark használatával
 
@@ -74,7 +74,7 @@ Ezt az Event hub-t használja a tweetek tárolásához.
 
 3. **A dolgok internete**területen válassza a **Event Hubs**lehetőséget. 
 
-    ![Event hub létrehozása Spark streaming] -példaként (./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Event hub létrehozása Spark streaming") -példaként
+    ![Event hub létrehozása Spark streaming-példaként](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Event hub létrehozása Spark streaming-példaként")
 
 4. Válassza a **+ Hozzáadás** lehetőséget.
 
@@ -122,7 +122,7 @@ Hozzon létre egy Event hubot az Event Hubs névtér üzembe helyezése után.  
     
      ![Event hub-szabályzatok beállítása a Spark streaming példához](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Event hub-szabályzatok beállítása a Spark streaming példához")
 
-1. Mentse az **elsődleges kulcs** és a **kapcsolódási karakterlánc** elsődleges kulcsának értékeit az oktatóanyag későbbi részében való használatra.
+1. Mentse az **elsődleges kulcs** és a **kapcsolódási karakterlánc elsődleges kulcsának** értékeit az oktatóanyag későbbi részében való használatra.
 
      ![Az Event hub-szabályzatok kulcsainak megtekintése a Spark streaming példához](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Az Event hub-szabályzatok kulcsainak megtekintése a Spark streaming példához")
 

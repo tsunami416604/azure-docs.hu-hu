@@ -5,28 +5,28 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 05/17/2019
+ms.date: 09/04/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0486b595bffd18b06d54e8377b24deab04e2aa93
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4604616cd4f2d6c75c272586df1331fc405061cb
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179187"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70737491"
 ---
-## <a name="error-conditionheadersnotsupported-from-a-web-application-using-azure-files-from-browser"></a>Hiba ConditionHeadersNotSupported böngészőből az Azure Files használata egy webalkalmazásból
+## <a name="error-conditionheadersnotsupported-from-a-web-application-using-azure-files-from-browser"></a>Hiba történt a webalkalmazásból való ConditionHeadersNotSupported Azure Files böngészőből való használatával
 
-Amikor feltételes fejlécek, mint például a webböngésző egy alkalmazáson keresztül, amely lehetővé teszi az Azure Files-ban üzemeltetett tartalom eléréséhez használja hozzáférés meghiúsul, egy ConditionHeadersNotSupported hiba megjelenítése.
+A ConditionHeadersNotSupported hiba akkor fordul elő, amikor a Azure Files futtatott tartalmat egy olyan alkalmazáson keresztül éri el, amely feltételes fejléceket (például webböngészőt) használ, és a hozzáférés meghiúsul. Ez a hiba azt jelzi, hogy a feltétel fejlécei nem támogatottak.
 
-![ConditionHeaderNotSupported Error](media/storage-files-condition-headers/conditionalerror.png)
+![Feltételes fejlécek Azure Files hiba](media/storage-files-condition-headers/conditionalerror.png)
 
 ### <a name="cause"></a>Ok
 
-Feltételes fejlécek még nem támogatott. Alkalmazások azok megvalósítását kell kérnie a teljes fájl minden alkalommal, amikor a fájl érhető el.
+A feltételes fejlécek még nem támogatottak. Az azokat megvalósító alkalmazásoknak a fájlhoz való hozzáféréskor minden alkalommal le kell kérniük a teljes fájlt.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
-Amikor új fájlt töltenek fel, a cache-control tulajdonság alapértelmezés szerint a "no-cache". A kérelem a fájl alkalmazásának a kényszerítéséhez minden alkalommal, a fájlt a cache-control tulajdonság frissíteni kell a "no-cache" a "no-cache, no-store, kell-revalidate". Ez tehető [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+Új fájl feltöltésekor a Cache-Control tulajdonság alapértelmezés szerint "no-cache". Ha szeretné kényszeríteni az alkalmazást, hogy minden alkalommal igényelje a fájlt, a fájl Cache-Control tulajdonságát frissíteni kell a "no-cache" értékről a "no-cache", a No-Store, a revalidate "műveletre. Ezt [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)használatával lehet megvalósítani.
 
-![Storage explorer tartalom-gyorsítótárában módosítása](media/storage-files-condition-headers/storage-explorer-cache.png)
+![A Storage Explorer tartalom-gyorsítótárának módosítása Azure Files feltételes fejlécek esetében](media/storage-files-condition-headers/storage-explorer-cache.png)

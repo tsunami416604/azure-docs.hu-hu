@@ -10,17 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 669cd43b73bc66289a355f7fbf9c4498d8a7b99a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: e763c1a5bebddcb76647b4ecff02506fc41f6a47
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135015"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387391"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Python-REST API használata a Text Analytics kognitív szolgáltatás meghívásához 
 <a name="HOLTop"></a>
 
-Ezzel a rövid útmutatóval megkezdheti a nyelv elemzését a Text Analytics REST API és a Python használatával. Ebből a cikkből megtudhatja, hogyan derítheti fel a [nyelveket](#Detect), [elemezheti](#SentimentAnalysis)a [fontos kifejezéseket](#KeyPhraseExtraction), és hogyan azonosíthatja a [társított entitásokat](#Entities).
+Ezzel a rövid útmutatóval megkezdheti a nyelv elemzését a Text Analytics REST API és a Python használatával. Ebből a cikkből megtudhatja, hogyan [derítheti fel a nyelveket](#Detect), [elemezheti](#SentimentAnalysis)a [fontos kifejezéseket](#KeyPhraseExtraction), és hogyan [azonosíthatja a társított entitásokat](#Entities).
 
 Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
 
@@ -71,7 +71,7 @@ Az alábbi szakaszok azt ismertetik, hogyan hívhatók meg az egyes API-funkció
 
 ## <a name="detect-languages"></a>Nyelvek felismerése
 
-Hozzáfűzés `languages` a Text Analytics alap végponthoz a nyelvfelismerés URL-címének megalkotása érdekében. Például:`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
+Hozzáfűzés `/text/analytics/v2.1/languages` a Text Analytics alap végponthoz a nyelvfelismerés URL-címének megalkotása érdekében. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
     
 ```python
 language_api_url = endpoint + "/text/analytics/v2.1/languages"
@@ -140,7 +140,7 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>Vélemények elemzése
 
-Ahhoz, hogy észlelni lehessen a dokumentumok egy halmazának pozitív vagy negatív közötti tartományát, fűzze `sentiment` hozzá az Text Analytics Base végponthoz a nyelvfelismerés URL-címének megadásához. Például:`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+Ahhoz, hogy észlelni lehessen a dokumentumok egy halmazának pozitív vagy negatív közötti tartományát, fűzze `/text/analytics/v2.1/sentiment` hozzá az Text Analytics Base végponthoz a nyelvfelismerés URL-címének megadásához. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
     
 ```python
 sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
@@ -202,7 +202,7 @@ A dokumentumra vonatkozó hangulati pontszám 0,0 és 1,0 között van, és egy 
 
 ## <a name="extract-key-phrases"></a>Kulcsszavak keresése
  
-Ha a legfontosabb kifejezéseket szeretné kibontani a dokumentumok egy `keyPhrases` csoportján, fűzze hozzá az Text Analytics Base végponthoz a nyelvfelismerés URL-címének megadásához. Például:`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+Ha a legfontosabb kifejezéseket szeretné kibontani a dokumentumok egy `/text/analytics/v2.1/keyPhrases` csoportján, fűzze hozzá az Text Analytics Base végponthoz a nyelvfelismerés URL-címének megadásához. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
     
 ```python
 keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
@@ -278,7 +278,7 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>Entitások azonosítása
 
-A jól ismert entitások (személyek, helyek és dolgok) a szöveges dokumentumokban való azonosításához `entities` fűzze hozzá az Text Analytics Base végpontot a nyelvfelismerés URL-címének létrehozásához. Például:`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+A jól ismert entitások (személyek, helyek és dolgok) a szöveges dokumentumokban való azonosításához `/text/analytics/v2.1/entities` fűzze hozzá az Text Analytics Base végpontot a nyelvfelismerés URL-címének létrehozásához. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
     
 ```python
 entities_url = endpoint + "/text/analytics/v2.1/entities"

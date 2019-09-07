@@ -1,5 +1,5 @@
 ---
-title: QnA robotot – Azure Bot Service – QnA Maker
+title: 'Oktatóanyag: QnA robotot – Azure Bot Service – QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Hozzon létre egy QnA csevegési robotot a közzétételi lapról egy meglévő tudásbázishoz. Ez a robot a bot Framework SDK v4-et használja. A robot létrehozásához nem kell kódot írnia, az összes kódot Önnek kell megadnia.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 07/31/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 4bb987a5a091871bec2c0cc8cec6d9ab804bb244
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: ea6e0d266c181d930f3d18171b09d222e53da7ab
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697994"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390912"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Oktatóanyag: QnA-robot létrehozása Azure Bot Service v4-mel
 
@@ -31,7 +31,7 @@ Hozzon létre egy QnA csevegési robotot a **közzétételi** lapról egy meglé
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz egy közzétett Tudásbázis ehhez az oktatóanyaghoz. Ha még nem rendelkezik ilyennel, a [Létrehozás és válasz](create-publish-query-in-portal.md) a Tudásbázisból című oktatóanyag lépéseit követve hozzon létre egy QnA Maker tudásbázist kérdésekkel és válaszokkal.
+Szüksége lesz egy közzétett Tudásbázis ehhez az oktatóanyaghoz. Ha még nem rendelkezik ilyennel, a [Létrehozás és válasz a Tudásbázisból](create-publish-query-in-portal.md) című oktatóanyag lépéseit követve hozzon létre egy QnA Maker tudásbázist kérdésekkel és válaszokkal.
 
 <a name="create-a-knowledge-base-bot"></a>
 
@@ -57,7 +57,7 @@ Hozzon létre egy robotot ügyfélalkalmazásként a Tudásbázisban.
     |App neve|`my-tutorial-kb-bot-app`|Ez egy webalkalmazás, amely csak a robotot támogatja. Ez nem lehet azonos az alkalmazás nevével, mert a QnA Maker szolgáltatás már használatban van. A QnA Maker webalkalmazásának más erőforrásokkal való megosztása nem támogatott.|
     |SDK nyelve|C#|Ez a robot Framework SDK által használt mögöttes programozási nyelv. Az Ön választása [C#](https://github.com/Microsoft/botbuilder-dotnet) vagy [Node. js](https://github.com/Microsoft/botbuilder-js).|
     |QnA-hitelesítési kulcs|**Ne változzon**|Ezt az értéket Önnek kell kitöltenie.|
-    |App Service-csomag helye|**Ne változzon**|Ebben az oktatóanyagban a hely nem fontos.|
+    |App Service-csomag/hely|**Ne változzon**|Ebben az oktatóanyagban a hely nem fontos.|
     |Azure Storage|**Ne változzon**|A beszélgetési adatként az Azure Storage-táblákban tárolódnak.|
     |Application Insights|**Ne változzon**|A rendszer elküldi a naplózást Application Insightsba.|
     |Microsoft-alkalmazás azonosítója|**Ne változzon**|Az Active Directory-felhasználó és a jelszó megadása kötelező.|
@@ -74,7 +74,7 @@ Hozzon létre egy robotot ügyfélalkalmazásként a Tudásbázisban.
 
     ![A Azure Portalban nyissa meg az új robot-erőforrást az értesítésből.](../media/qnamaker-tutorials-create-bot/azure-portal-notifications.png)
 
-1. A **bot Management**szolgáltatásban válassza a **tesztelés webes csevegésben** lehetőséget `How large can my KB be?`, és írja be a következőt:. A bot a következőket fogja válaszolni: 
+1. A **bot Management** **szolgáltatásban válassza a tesztelés webes csevegésben** lehetőséget `How large can my KB be?`, és írja be a következőt:. A bot a következőket fogja válaszolni: 
 
 
     `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment)for more details.`

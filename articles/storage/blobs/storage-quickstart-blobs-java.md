@@ -7,19 +7,16 @@ ms.date: 02/04/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 8cb9a9c6dd2e84318cd4d05bf6e67e127fc39ce3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0aa3af754082d91c4a5994e42146d1f1f475f64d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726368"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390320"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Blobok feltöltése, letöltése és listázása a Java v7-hez készült ügyféloldali kódtár használatával
 
 Ebben a útmutatóban megtudhatja, hogyan használhatja a Java v7-hez készült ügyféloldali kódtárat az Azure Blob Storage-tárolóban lévő tárolók felfeltöltésére, letöltésére és listázására.
-
-> [!TIP]
-> A Javához készült Azure Storage ügyféloldali kódtár legújabb verziója a V10-es verzió. A Microsoft azt javasolja, hogy ha lehetséges, használja az ügyféloldali kódtár legújabb verzióját. A v10 használatának megkezdéséhez tekintse meg a gyors útmutató [: Blobok feltöltése, letöltése és listázása a Java Storage SDK v10](storage-quickstart-blobs-java-v10.md)használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

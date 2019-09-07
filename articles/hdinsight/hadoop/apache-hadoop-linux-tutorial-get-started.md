@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Apache Hadoop-fürtök létrehozása a Resource Managerrel – Azure HDInsight'
+title: 'Gyors útmutató: Apache Hadoop-fürtök létrehozása Resource Manager – Azure HDInsight'
 description: Ebben a rövid útmutatóban Apache Hadoop-fürtöt hoz létre az Azure HDInsight Resource Manager-sablon használatával
 keywords: hadoop első lépések, hadoop linux, hadoop rövid útmutató, hive első lépések, hive rövid útmutató
 ms.service: hdinsight
@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 420a5bb4cec6101f3db36212a9b8fd6690e0e077
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: b65e642e19a9dd34c0f64f2d311fda0c70d4af72
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207255"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736150"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Gyors útmutató: Apache Hadoop-fürt létrehozása az Azure HDInsight Resource Manager-sablon használatával
 
@@ -52,9 +52,9 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
     ![A HDInsight Linux elindítja a Resource Manager-sablont a portálon](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png "Hadoop-fürt üzembe helyezése a HDInsight-ben a Azure Portal és egy Resource Group Manager-sablon használatával")
 
-3. Jelölje be **az Elfogadom a fenti feltételeket és**kikötéseket, majd válassza a **vásárlás**lehetőséget. A rendszer értesítést küld arról, hogy a telepítés folyamatban van.  Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
+3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket**, majd válassza a **vásárlás**lehetőséget. A rendszer értesítést küld arról, hogy a telepítés folyamatban van.  Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
 
-4. A fürt létrehozása után az **üzembe helyezés sikeres** értesítést fog kapni a **Go to erőforráscsoport** hivatkozással.  Az **erőforráscsoport** lap felsorolja az új HDInsight-fürtöt és a fürthöz társított alapértelmezett tárolót. Minden fürt rendelkezik egy [Azure Storage](../hdinsight-hadoop-use-blob-storage.md) -fiókkal vagy egy [Azure Data Lake Storage fióktól](../hdinsight-hadoop-use-data-lake-store.md) . Ez az alapértelmezett tárfiók. A HDInsight-fürtnek és az alapértelmezett Storage-fióknak ugyanabban az Azure-régióban kell elhelyezkednie. A fürtök törlésével a tárfiók nem törlődik.
+4. A fürt létrehozása után az **üzembe helyezés sikeres** értesítést fog kapni a **Go to erőforráscsoport** hivatkozással.  Az **erőforráscsoport** lap felsorolja az új HDInsight-fürtöt és a fürthöz társított alapértelmezett tárolót. Minden fürt rendelkezik egy [Azure Storage-fiókkal](../hdinsight-hadoop-use-blob-storage.md) vagy egy [Azure Data Lake Storage fióktól](../hdinsight-hadoop-use-data-lake-store.md) . Ez az alapértelmezett tárfiók. A HDInsight-fürtnek és az alapértelmezett Storage-fióknak ugyanabban az Azure-régióban kell elhelyezkednie. A fürtök törlésével a tárfiók nem törlődik.
 
 > [!NOTE]  
 > A további fürtök létrehozási módszereivel és az ebben a rövid útmutatóban használt tulajdonságok megismerésével kapcsolatban lásd: [HDInsight-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md).

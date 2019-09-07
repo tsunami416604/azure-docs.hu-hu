@@ -1,6 +1,6 @@
 ---
 title: Fürt kapacitásának megtervezése az Azure HDInsight
-description: HDInsight-fürt megadása a kapacitáshoz és a teljesítményhez.
+description: Azonosíthatja az Azure HDInsight-fürtök kapacitásának és teljesítményének tervezésével kapcsolatos legfontosabb kérdéseket.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3d82846c02754f23b4a2e86a7881c952e503b36f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 608d097f1ebad9e4e1092c7ec54a573ccb58ad81
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207156"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734666"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight-fürtök kapacitásának megtervezése
 
@@ -94,7 +94,7 @@ A fürt élettartama után számítunk fel díjat. Ha csak bizonyos időpontokra
 
 ### <a name="isolate-cluster-job-errors"></a>A fürt feladataival kapcsolatos hibák elkülönítése
 
-Időnként hibák merülhetnek fel több Térkép párhuzamos végrehajtása, valamint a több csomópontot tartalmazó fürt összetevőinek csökkentése miatt. A probléma elkülönítéséhez próbálja meg az elosztott tesztelést úgy, hogy egyidejűleg több feladatot futtat egyetlen feldolgozó csomópont-fürtön, majd ezt a megközelítést kiterjesztve több feladatot is futtathat egyszerre több csomópontot tartalmazó fürtökön. Egy egycsomópontos HDInsight-fürt az Azure-ban való létrehozásához használja az *Egyéni (méret, beállítások, alkalmazások)* beállítást, és használja az 1 értéket a **fürt mérete** szakaszban lévő munkavégző *csomópontok* számára, ha új fürtöt szeretne kiépíteni a portálon.
+Időnként hibák merülhetnek fel több Térkép párhuzamos végrehajtása, valamint a több csomópontot tartalmazó fürt összetevőinek csökkentése miatt. A probléma elkülönítéséhez próbálja meg az elosztott tesztelést úgy, hogy egyidejűleg több feladatot futtat egyetlen feldolgozó csomópont-fürtön, majd ezt a megközelítést kiterjesztve több feladatot is futtathat egyszerre több csomópontot tartalmazó fürtökön. Egy egycsomópontos HDInsight-fürt az Azure-ban való létrehozásához használja az *Egyéni (méret, beállítások, alkalmazások)* beállítást, és használja az 1 értéket a **fürt mérete** szakaszban lévő *munkavégző csomópontok* számára, ha új fürtöt szeretne kiépíteni a portálon.
 
 A helyi számítógépen is telepítheti az egycsomópontos fejlesztési környezetet, és tesztelheti a megoldást. A Hortonworks egyetlen csomópontos helyi fejlesztési környezetet biztosít a Hadoop-alapú megoldások számára, amely a kezdeti fejlesztés, a koncepció igazolása és a tesztelés szempontjából hasznos. További információ: [Hortonworks sandbox](https://hortonworks.com/products/hortonworks-sandbox/).
 
@@ -107,7 +107,7 @@ A célként megadott fürt virtuálisgép-méretének, méretezésének és típ
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. A lap bal alsó részén kattintson a **Súgó és támogatás** elemre.
 1. Válasszon **új támogatási kérést**.
-1. Az **új támogatási kérelem** oldal alapismeretek lapján válassza a következő beállításokat:
+1. Az **új támogatási kérelem** oldal **alapismeretek** lapján válassza a következő beállításokat:
    - **Probléma típusa**: **Szolgáltatás-és előfizetési korlátok (kvóták)**
    - **Előfizetés**: a módosítani kívánt előfizetés
    - **Kvóta típusa**: **HDInsight**
@@ -124,7 +124,7 @@ A célként megadott fürt virtuálisgép-méretének, méretezésének és típ
 
 [Az ügyfélszolgálattól kérheti a kvóta növelését](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-Vannak azonban rögzített kvóták, például egyetlen Azure-előfizetés legfeljebb 10 000 magot tartalmazhat. A korlátokkal kapcsolatos további információkért lásd: Azure-előfizetések [és-szolgáltatások korlátai, kvótái és](https://docs.microsoft.com/azure/azure-subscription-service-limits)megkötései.
+Vannak azonban rögzített kvóták, például egyetlen Azure-előfizetés legfeljebb 10 000 magot tartalmazhat. A korlátokkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
 ## <a name="next-steps"></a>További lépések
 

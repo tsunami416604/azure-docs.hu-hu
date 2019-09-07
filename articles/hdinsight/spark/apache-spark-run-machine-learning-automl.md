@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning munkaterhelések futtatása automatikus gépi tanulással (AutoML) az Azure HDInsight Apache Spark
+title: Azure Machine Learning munkaterhelések futtatása Apache Spark Azure HDInsight
 description: Megtudhatja, hogyan futtathat Azure Machine Learning számítási feladatokat automatikus gépi tanulással (AutoML) az Azure HDInsight Apache Spark.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: a731d9e0c97cb8431b1294d961ad46ff324f32be
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: aaea8a1af7ad6df89d41dc0e39d13bafbb610224
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141184"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736051"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Azure Machine Learning munkaterhelések futtatása automatikus gépi tanulással (AutoML) az Azure HDInsight Apache Spark
 
@@ -34,7 +34,7 @@ Azt is megteheti, hogy a Zeppelin jegyzetfüzeteket is használhatja a AutoML ha
 
 ## <a name="authentication-for-workspace"></a>A munkaterület hitelesítése
 
-A Munkaterületek létrehozása és a kísérlet elküldése hitelesítési jogkivonatot igényel. Ez a jogkivonat [Azure ad](../../active-directory/develop/app-objects-and-service-principals.md)-alkalmazással hozható létre. Az [Azure ad-felhasználó](/azure/python/python-sdk-azure-authenticate) a szükséges hitelesítési jogkivonat létrehozásához is használható, ha a többtényezős hitelesítés nincs engedélyezve a fiókban.  
+A Munkaterületek létrehozása és a kísérlet elküldése hitelesítési jogkivonatot igényel. Ez a jogkivonat [Azure ad-alkalmazással](../../active-directory/develop/app-objects-and-service-principals.md)hozható létre. Az [Azure ad-felhasználó](/azure/python/python-sdk-azure-authenticate) a szükséges hitelesítési jogkivonat létrehozásához is használható, ha a többtényezős hitelesítés nincs engedélyezve a fiókban.  
 
 A következő kódrészlet létrehoz egy hitelesítési tokent egy **Azure ad-alkalmazás**használatával.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 5ce0a81f6c9c886fcbe9186dd7363c38170ca580
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 65cc2d9ac2b96822f2c1b740f3180ba1d9eaf98c
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382952"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389978"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képgyűjtemény használata Azure Lab Services
 Ebből a cikkből megtudhatja, hogy a tanárok/labor-rendszergazdák hogyan menthetik a sablonhoz tartozó virtuálisgép-rendszerképeket, hogy azok újra felhasználhatók legyenek Ezeket a lemezképeket egy Azure-beli [megosztott rendszerkép](../../virtual-machines/windows/shared-image-galleries.md)-katalógusba menti a rendszer. Első lépésként a tesztkörnyezet rendszergazdája csatol egy meglévő megosztott képtárat a labor-fiókhoz. Miután csatolta a megosztott képtárat, a labor fiókban létrehozott laborok menthetik a lemezképeket a megosztott képkatalógusba. Más oktatók is kiválaszthatják ezt a rendszerképet a megosztott képkatalógusból, hogy sablont hozzanak létre az osztályaik számára. 
@@ -40,8 +40,11 @@ Egy megosztott képkatalógus csatolása után egy labor-fiók rendszergazdája 
 3. Keresse meg az állapotot a labor csempén. 
 
     ![A rendszerkép mentése művelet állapota](../media/how-to-use-shared-image-gallery/save-image-status.png)
+4. Győződjön meg arról, hogy a művelet sikeres.
 
- Képeket is feltölthet a megosztott rendszerkép-katalógusba egy labor kontextusán kívül. További információ: [megosztott képgyűjtemény – áttekintés](../../virtual-machines/windows/shared-images.md). 
+    ![A rendszerkép mentése művelet sikeresen befejeződött.](../media/how-to-use-shared-image-gallery/save-image-successful.png)
+
+Képeket is feltölthet a megosztott rendszerkép-katalógusba egy labor kontextusán kívül. További információ: [megosztott képgyűjtemény – áttekintés](../../virtual-machines/windows/shared-images.md). 
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>Rendszerkép használata a megosztott rendszerkép-gyűjteményből
 Egy tanár/professzor kiválaszthat egy egyéni rendszerképet, amely a sablon megosztott képgalériájában elérhető az új tesztkörnyezet létrehozása során.

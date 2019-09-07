@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e303fe5ca1869249d57373aab9c60a5f92b7ea9c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60238055"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735099"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostics 1,3-es és újabb konfigurációs séma
 > [!NOTE]
@@ -27,13 +27,11 @@ ms.locfileid: "60238055"
 >
 > Ez a lap csak akkor fontos, ha az egyik szolgáltatást használja.
 
-Ez az oldal a 1,3-es és újabb verziókban érvényes (Azure SDK 2,4 és újabb). Az újabb konfigurációs szakaszban megjegyezhető, hogy milyen verziót adtak hozzá.  
+Ez az oldal a 1,3-es és újabb verziókban érvényes (Azure SDK 2,4 és újabb). Az újabb konfigurációs szakaszban megjegyezhető, hogy milyen verziót adtak hozzá. A séma 1,0-es és 1,2-es verziója archiválva lett, és már nem érhető el. 
 
 Az itt ismertetett konfigurációs fájl a diagnosztika-figyelő indításakor a diagnosztikai konfigurációs beállítások megadására szolgál.  
 
 A bővítményt más Microsoft diagnosztikai termékekkel (például Azure Monitor) együtt használják, beleértve a Application Insights és a Log Analytics.
-
-
 
 Töltse le a nyilvános konfigurációs fájl sémájának definícióját a következő PowerShell-parancs végrehajtásával:  
 
@@ -421,7 +419,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Gyermek elemek|Leírás|  
 |--------------------|-----------------|  
 |**PublicConfig**|Kötelező. Ezen a lapon a Leírás máshol található.|  
-|**PrivateConfig**|Választható. Ezen a lapon a Leírás máshol található.|  
+|**PrivateConfig**|Nem kötelező. Ezen a lapon a Leírás máshol található.|  
 |**IsEnabled**|Logikai. Ezen a lapon a Leírás máshol található.|  
 
 ## <a name="publicconfig-element"></a>PublicConfig elem  
@@ -451,7 +449,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |----------------|-----------------|  
 | **overallQuotaInMB** | A Azure Diagnostics által gyűjtött különböző diagnosztikai adatok által felhasználható helyi lemezterület maximális mérete. Az alapértelmezett beállítás 4096 MB.<br />
 |**useProxyServer** | Konfigurálja Azure Diagnostics az IE-beállításokban beállított proxykiszolgáló-beállítások használatára.|
-|**fogadóként** | 1,5-ben hozzáadva. Választható. A fogadó helyre mutat, hogy az összes olyan gyermekobjektum számára is küldjön diagnosztikai adatokat, amelyek támogatják a mosogatókat. A fogadó példa Application Insights vagy Event Hubs.|  
+|**fogadóként** | 1,5-ben hozzáadva. Nem kötelező. A fogadó helyre mutat, hogy az összes olyan gyermekobjektum számára is küldjön diagnosztikai adatokat, amelyek támogatják a mosogatókat. A fogadó példa Application Insights vagy Event Hubs.|  
 
 
 <br /> <br />
@@ -476,9 +474,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Attribútumok|Leírás|  
 |----------------|-----------------|  
-|**containerName**|Választható. Az összeomlási memóriaképek tárolására szolgáló Azure Storage-fiókban található blob-tároló neve.|  
-|**crashDumpType**|Választható.  A Azure Diagnostics konfigurálja a mini-vagy teljes összeomlási memóriaképek gyűjtésére.|  
-|**directoryQuotaPercentage**|Választható.  Az összeomlási memóriaképek számára fenntartott **overallQuotaInMB** százalékos arányát konfigurálja a virtuális gépen.|  
+|**containerName**|Nem kötelező. Az összeomlási memóriaképek tárolására szolgáló Azure Storage-fiókban található blob-tároló neve.|  
+|**crashDumpType**|Nem kötelező.  A Azure Diagnostics konfigurálja a mini-vagy teljes összeomlási memóriaképek gyűjtésére.|  
+|**directoryQuotaPercentage**|Nem kötelező.  Az összeomlási memóriaképek számára fenntartott **overallQuotaInMB** százalékos arányát konfigurálja a virtuális gépen.|  
 
 |Gyermek elemek|Leírás|  
 |--------------------|-----------------|  
@@ -584,7 +582,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Gyermek elem|Leírás|  
 |-------------------|-----------------|  
 |**PerformanceCounterConfiguration**|A következő attribútumok szükségesek:<br /><br /> - **counterSpecifier** – a teljesítményszámláló neve. Például: `\Processor(_Total)\% Processor Time`. A gazdagépen található teljesítményszámlálók listájának lekéréséhez futtassa a parancsot `typeperf`.<br /><br /> - **mintavételi** – milyen gyakran kell mintát venni a számlálóból.<br /><br /> Nem kötelező attribútum:<br /><br /> **Unit (egység** ) – a számláló mértékegysége.|
-|**fogadóként** | 1,5-ben hozzáadva. Választható. A fogadó helyre mutat, és a diagnosztikai információk küldésére is. Például Azure Monitor vagy Event Hubs.|    
+|**fogadóként** | 1,5-ben hozzáadva. Nem kötelező. A fogadó helyre mutat, és a diagnosztikai információk küldésére is. Például Azure Monitor vagy Event Hubs.|    
 
 
 
@@ -612,10 +610,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Attribútum|Type|Leírás|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|**unsignedInt**|Választható. Meghatározza a fájlrendszer tárterületének maximális számát, amely elérhető a megadott adatmennyiség esetében.<br /><br /> Az alapértelmezett érték a 0.|  
-|**scheduledTransferLogLevelFilter**|**string**|Választható. Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**, amely az összes naplót átviszi. A többi lehetséges érték (a legkevesebb információhoz képest) **részletes**, **információ**, **Figyelmeztetés**, **hiba**és **kritikus**.|  
-|**scheduledTransferPeriod**|**Időtartam**|Választható. Meghatározza az ütemezett adatátvitelek közötti időközt, a legközelebbi percre kerekítve.<br /><br /> Az alapértelmezett érték a PT0S.|  
-|**fogadóként** |**string**| 1,5-ben hozzáadva. Választható. A fogadó helyre mutat, és a diagnosztikai információk küldésére is. Például Application Insights vagy Event Hubs.|  
+|**bufferQuotaInMB**|**unsignedInt**|Nem kötelező. Meghatározza a fájlrendszer tárterületének maximális számát, amely elérhető a megadott adatmennyiség esetében.<br /><br /> Az alapértelmezett érték a 0.|  
+|**scheduledTransferLogLevelFilter**|**string**|Nem kötelező. Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**, amely az összes naplót átviszi. A többi lehetséges érték (a legkevesebb információhoz képest) **részletes**, **információ**, **Figyelmeztetés**, **hiba**és **kritikus**.|  
+|**scheduledTransferPeriod**|**Időtartam**|Nem kötelező. Meghatározza az ütemezett adatátvitelek közötti időközt, a legközelebbi percre kerekítve.<br /><br /> Az alapértelmezett érték a PT0S.|  
+|**fogadóként** |**string**| 1,5-ben hozzáadva. Nem kötelező. A fogadó helyre mutat, és a diagnosztikai információk küldésére is. Például Application Insights vagy Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-DockerSources*
@@ -644,12 +642,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Attribútum|Type|Leírás|  
 |---------------|----------|-----------------|  
-|**name**|sztring|A sinkname azonosító sztring.|  
+|**name**|Karakterlánc|A sinkname azonosító sztring.|  
 
 |Elem|Type|Leírás|  
 |-------------|----------|-----------------|  
 |**Application Insights**|Karakterlánc|Csak akkor használható, ha az adatokat Application Insightsba küldi. Egy aktív Application Insights fiók kialakítási kulcsát tartalmazza, amelyhez hozzáféréssel rendelkezik.|  
-|**Csatornák**|sztring|Egy minden további szűréshez, amelyet a stream|  
+|**Csatornák**|Karakterlánc|Egy minden további szűréshez, amelyet a stream|  
 
 ## <a name="channels-element"></a>Csatornák elem  
  *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-mosogató-csatornák*
@@ -660,7 +658,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elem|Type|Leírás|  
 |-------------|----------|-----------------|  
-|**Csatorna**|sztring|Ezen a lapon a Leírás máshol található.|  
+|**Csatorna**|Karakterlánc|Ezen a lapon a Leírás máshol található.|  
 
 ## <a name="channel-element"></a>Csatorna elem
  *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-mosogató-csatornák-csatorna*

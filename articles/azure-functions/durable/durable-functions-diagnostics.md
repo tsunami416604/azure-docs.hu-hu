@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2cc60ee2c73aa6858f68d6b13a895a0188bb5735
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c02d4dfde7869da7985817b06f6de398bbef38d
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098132"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734487"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnosztika Durable Functions az Azure-ban
 
-Több lehetőség is van a Durable Functionsával kapcsolatos problémák [](durable-functions-overview.md)diagnosztizálására. Ezek némelyike megegyezik a hagyományos függvényekre vonatkozó módszerekkel, mások pedig csak a Durable Functions függvényeihez használhatók.
+Több lehetőség is van a [Durable Functionsával](durable-functions-overview.md)kapcsolatos problémák diagnosztizálására. Ezek némelyike megegyezik a hagyományos függvényekre vonatkozó módszerekkel, mások pedig csak a Durable Functions függvényeihez használhatók.
 
 ## <a name="application-insights"></a>Application Insights
 
@@ -38,7 +38,7 @@ Egy összehangoló példány minden életciklus-eseménye egy követési esemén
 * **instanceId**: A koordináló példány egyedi azonosítója.
 * **állapot**: A példány életciklus-végrehajtási állapota. Érvényes értékek a következők:
   * **Ütemezett**: A függvény ütemezése végrehajtásra lett ütemezve, de még nem indult el.
-  * Elindítva: A függvény futása megkezdődött, de még nem várt vagy nem fejeződött be.
+  * **Elindítva**: A függvény futása megkezdődött, de még nem várt vagy nem fejeződött be.
   * **Várt**: A Orchestrator ütemezett némi munkát, és arra vár, hogy befejeződjön.
   * **Figyelés**: A Orchestrator egy külső eseményről szóló értesítést figyel.
   * **Befejezve**: A függvény sikeresen befejeződött.
@@ -158,9 +158,26 @@ Ennek eredménye a példány-azonosítók és az aktuális futtatókörnyezeti �
 
 Fontos, hogy a Orchestrator-újrajátszás viselkedését ne feledje, amikor közvetlenül egy Orchestrator-függvényből ír naplókat. Vegyük például a következő Orchestrator függvényt:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>ElőfordítottC#
 
-```cs
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
+### <a name="c-script"></a>C#Parancsfájl
+
+```csharp
 public static async Task Run(
     DurableOrchestrationContext context,
     ILogger log)
@@ -207,9 +224,26 @@ Done!
 ```
 
 > [!NOTE]
-> Ne feledje, hogy míg a naplók az F1, az F2 és az F3 meghívását kérik , ezeket a függvényeket csak az első alkalommal nevezik. A rendszer kihagyja az újrajátszás során megjelenő további hívásokat, és a kimeneteket visszajátssza a Orchestrator logikába.
+> Ne feledje, hogy míg a naplók az F1, az F2 és az F3 meghívását kérik, ezeket a függvényeket *csak az* első alkalommal nevezik. A rendszer kihagyja az újrajátszás során megjelenő további hívásokat, és a kimeneteket visszajátssza a Orchestrator logikába.
 
 Ha csak a nem újrajátszható végrehajtást szeretné bejelentkezni, írhat egy feltételes kifejezést úgy, hogy csak akkor `IsReplaying` jelentkezzen be, ha a. `false` Vegye figyelembe a fenti példát, de ezúttal újrajátszás-ellenőrzésekkel.
+
+#### <a name="precompiled-c"></a>ElőfordítottC#
+
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    if (!context.IsReplaying) log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    if (!context.IsReplaying) log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    if (!context.IsReplaying) log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
 
 #### <a name="c"></a>C#
 
@@ -257,7 +291,7 @@ Done!
 
 Az egyéni előkészítési állapot lehetővé teszi egyéni állapot értékének megadását a Orchestrator függvényhez. Ezt az állapotot a http-állapot lekérdezési API- `DurableOrchestrationClient.GetStatusAsync` jával vagy az API-n keresztül biztosítjuk. Az egyéni előkészítési állapot lehetővé teszi a Orchestrator függvények szélesebb körű figyelését. A Orchestrator függvény kódja például tartalmazhat `DurableOrchestrationContext.SetCustomStatus` hívásokat a hosszan futó művelet előrehaladásának frissítéséhez. Az ügyfél, például egy weblap vagy más külső rendszer, rendszeres időközönként lekérdezheti a HTTP-állapot lekérdezési API-jait a részletes végrehajtási információkhoz. Az alábbi minta `DurableOrchestrationContext.SetCustomStatus` használatával kell megadnia a mintát:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>ElőfordítottC#
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)
@@ -316,7 +350,7 @@ Az ügyfelek a következő választ kapják:
 Azure Functions támogatja a hibakeresési funkció programkódjának közvetlen használatát, és ugyanezen támogatás a Durable Functions, akár az Azure-ban, akár helyileg fut. Előfordulhat azonban, hogy a hibakeresés során néhány viselkedést kell figyelembe vennie:
 
 * **Visszajátszás**: A Orchestrator függvények rendszeresen újrajátszják az új bemenetek fogadását. Ez azt jelenti, hogy egy Orchestrator-függvény egyetlen *logikai* végrehajtásával több alkalommal is megtalálhatja ugyanazt a töréspontot, különösen akkor, ha a függvény kódja korán van beállítva.
-* **Várakozás**: Amikor a `await` rendszer megtalálta a műveletet, visszaadja a vezérlést a tartós feladatokra szolgáló Framework-diszpécsernek. Ha az első alkalommal `await` fordul elő, a kapcsolódó feladat *soha nem* folytatódik. Mivel a feladat soha nem folytatódik, a várakozás (az F10 a Visual Studióban) nem lehetséges. Az átlépés csak akkor működik, ha egy feladat újra van játszva.
+* **Várakozás**: Amikor a `await` rendszer megtalálta a műveletet, visszaadja a vezérlést a tartós feladatokra szolgáló Framework-diszpécsernek. Ha az első alkalommal `await` fordul elő, a kapcsolódó feladat *soha nem* folytatódik. Mivel a feladat soha nem folytatódik *, a várakozás (az F10* a Visual Studióban) nem lehetséges. Az átlépés csak akkor működik, ha egy feladat újra van játszva.
 * **Üzenetkezelési időtúllépések**: A belső Durable Functions üzenetsor-üzeneteket használ a Orchestrator függvények és a tevékenységek funkcióinak végrehajtásához. A több virtuális gépre kiterjedő környezetekben a hosszabb ideig tartó hibakeresés miatt egy másik virtuális gép is felveheti az üzenetet, ami ismétlődő végrehajtást eredményezhet. Ez a viselkedés a rendszeres üzenetsor-trigger függvények esetében is létezik, de fontos, hogy ebben a környezetben is kimutasson, mivel a várólisták megvalósítási részletességgel rendelkeznek.
 
 > [!TIP]

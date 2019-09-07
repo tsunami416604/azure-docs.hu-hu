@@ -1,5 +1,5 @@
 ---
-title: Application Insights, C# -Luis
+title: 'Oktatóanyag: Application Insights, C# -Luis'
 titleSuffix: Azure Cognitive Services
 description: Ez az oktatóanyag a robotokat és a Language Understanding információt adja hozzá Application Insights telemetria adattároláshoz.
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/16/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: bc8cf9973ed6889b0820e5ada5565d0541532fa3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: MT
+ms.openlocfilehash: 93a75945025b2ab98541f1e1cf678145ddff0123
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560061"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387996"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-bot-in-c"></a>LUIS-eredmények hozzáadása a Application Insights egy robotbólC#
+# <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-c"></a>Oktatóanyag: LUIS-eredmények hozzáadása a Application Insights egy robotbólC#
 
 Ez az oktatóanyag a robotokat és a Language Understanding információt adja hozzá [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetria adattároláshoz. Az ilyen adatokat lekérdezheti a Kusto nyelvével vagy Power BI a leképezések elemzéséhez, összesítéséhez és jelentésekhez, valamint a teljes körű, valós idejű entitások megjelenítéséhez. Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
 
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure bot Service-robot, amely Application Insights engedélyezve lett létrehozva.
-* Az előző robot-oktatóanyagból letöltött **[](luis-csharp-tutorial-bf-v4.md)** robot-kód. 
+* Az előző robot- **[oktatóanyagból](luis-csharp-tutorial-bf-v4.md)** letöltött robot-kód. 
 * [Bot Emulator](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
@@ -173,7 +173,7 @@ Nyissa meg az Application Insights a LUIS-bejegyzések megtekintéséhez. Néhá
     ![Az Application Insightsban tárolt LUIS egyéni tulajdonságok áttekintése](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-csharp.png)
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Lekérdezés az Application Insights szándékot, pontszám és utterance (kifejezés)
-Application Insights lehetővé teszi az adatlekérdezést a [Kusto](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#what-language-do-log-queries-use) nyelvével, valamint a Power BIba való exportálással. [](https://powerbi.microsoft.com) 
+Application Insights lehetővé teszi az adatlekérdezést a [Kusto](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#what-language-do-log-queries-use) nyelvével, valamint a [Power BIba](https://powerbi.microsoft.com)való exportálással. 
 
 1. Válassza a **napló (elemzés)** lehetőséget. Egy lekérdezési ablak tetején, és a egy tábla ablak, amely alatt megjelenik egy új ablak. Ha a használt adatbázisokat korábban, ezzel az elrendezéssel fokozott tisztában van-e. A lekérdezés az előző szűrt adatait jelöli. A **CustomDimensions** oszlop a bot és a Luis információval rendelkezik.
 1. A felső szándék, a pontszám és a Kimondás lekéréséhez adja hozzá a következőt a lekérdezési ablak utolsó `|top...` sora (a sor) fölé:

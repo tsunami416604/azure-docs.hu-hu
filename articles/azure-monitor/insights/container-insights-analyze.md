@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 09/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 154848c33960cb78b10c58e7a39ddec669d4fae0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c63feb02712447d2427061cbfabc525622107043
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872989"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744576"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Az AKS fürtteljesítmény és az Azure Monitor-tárolókhoz ismertetése
 A tárolók Azure Monitor a teljesítmény-diagramok és az állapot használatával figyelheti az Azure Kubernetes Service-(ak-) fürtök munkaterhelését két perspektívából. A monitort közvetlenül egy AK-fürtről is figyelheti, vagy a Azure Monitor-előfizetésben lévő összes AK-fürtöt nyomon követheti. A Azure Container Instances megtekintése akkor is lehetséges, ha egy adott AK-fürtöt figyel.
@@ -66,7 +66,7 @@ Tartalmazza a rendszerállapot-állapotok az alábbiak:
 * **Helytelenül van konfigurálva**: A tárolók Azure Monitor nem megfelelően lettek konfigurálva a megadott munkaterületen.
 * **Nincs adat**: Az elmúlt 30 percben nem jelentettek jelentést a munkaterületre.
 
-Az állapot kiszámítja a fürt általános állapotát úgy, hogy a három állapot közül a legrosszabbat egy kivétellel adja ki. Ha a három állam bármelyike ismeretlen, a teljes fürt állapota **ismeretlen**. 
+Az állapot kiszámítja a fürt általános állapotát úgy, hogy a három állapot közül a *legrosszabbat* egy kivétellel adja ki. Ha a három állam bármelyike ismeretlen, a teljes fürt állapota **ismeretlen**. 
 
 A következő táblázat a megfigyelt fürt állapotának a többfürtes nézeten belüli állapotát szabályozó számítás részletezését tartalmazza.
 
@@ -92,21 +92,21 @@ A fürtök listájából kiválaszthatja a **fürt** lapját a fürt nevének ki
 
 ## <a name="view-performance-directly-from-an-aks-cluster"></a>AKS-fürt közvetlenül a teljesítmény megtekintése
 
-A tárolók Azure Monitorhoz való hozzáférése közvetlenül egy AK-fürtből érhető el, ha a bal oldali panelen kijelöli az eredményeket. Az AK-fürtre vonatkozó információk négy perspektívába vannak rendezve:
+A tárolók Azure Monitorhoz való hozzáférése közvetlenül egy AK-fürtből érhető el, ha a bal oldali panelen **kijelöli** az eredményeket. Az AK-fürtre vonatkozó információk négy perspektívába vannak rendezve:
 
 - Fürt
 - Csomópontok 
 - Vezérlők 
 - Containers
 
-Az alapértelmezett lap megnyílik, amikor kiválasztja > az áttekintési**fürtöt**. A négy soros teljesítményű diagram a fürt fő teljesítménymutatóit jeleníti meg. 
+Az alapértelmezett lap megnyílik, amikor kiválasztja az **áttekintési** > **fürtöt**. A négy soros teljesítményű diagram a fürt fő teljesítménymutatóit jeleníti meg. 
 
 ![Példa teljesítménydiagramok fürt lapján](./media/container-insights-analyze/containers-cluster-perfview.png)
 
 A teljesítmény-diagramok négy teljesítménymutatót jelenítenek meg:
 
-- **&nbsp;Csomópont CPU-%kihasználtsága**: A teljes fürt CPU-kihasználtságának összesített perspektívája. Az időtartomány eredményeinek szűréséhez válassza az **AVG**, a **min**, az **50**, a **kilencven**, a **95.** vagy a **Max** lehetőséget a diagram feletti percentilis-választóban. A szűrők akár egyénileg, akár kombinálva is használhatók. 
-- **&nbsp;Csomópont memóriájának%kihasználtsága**: A teljes fürt memória-kihasználtságának összesített perspektívája. Az időtartomány eredményeinek szűréséhez válassza az **AVG**, a **min**, az **50**, a **kilencven**, a **95.** vagy a **Max** lehetőséget a diagram feletti percentilis-választóban. A szűrők akár egyénileg, akár kombinálva is használhatók. 
+- **Csomópont CPU-kihasználtsága&nbsp;%** : A teljes fürt CPU-kihasználtságának összesített perspektívája. Az időtartomány eredményeinek szűréséhez válassza az **AVG**, a **min**, az **50**, a **kilencven**, a **95.** vagy a **Max** lehetőséget a diagram feletti percentilis-választóban. A szűrők akár egyénileg, akár kombinálva is használhatók. 
+- **Csomópont memóriájának&nbsp;%kihasználtsága**: A teljes fürt memória-kihasználtságának összesített perspektívája. Az időtartomány eredményeinek szűréséhez válassza az **AVG**, a **min**, az **50**, a **kilencven**, a **95.** vagy a **Max** lehetőséget a diagram feletti percentilis-választóban. A szűrők akár egyénileg, akár kombinálva is használhatók. 
 - **Csomópontok száma**: Csomópontok száma és állapota a Kubernetes. A megjelenített fürtcsomópontok állapota összesen, kész és nem üzemkész. A diagram felett a választóban egyenként vagy kombinálva is szűrhetők. 
 - **Aktív Pod-szám**: A Kubernetes származó Pod-szám és-állapot. A képviselt hüvelyek állapota összesen, függőben, fut, ismeretlen, sikeres vagy sikertelen. A diagram felett a választóban egyenként vagy kombinálva is szűrhetők. 
 
@@ -118,20 +118,20 @@ A tárolók Azure Monitor támogatja a Azure Monitor [metrikák Explorert](../pl
 
 A metrikák Explorerben megtekintheti az összesített csomópont-és Pod-kihasználtsági metrikákat Azure Monitor a tárolók számára. A következő táblázat összefoglalja a részleteket, amelyekkel megismerheti, Hogyan jeleníthető meg a metrikai diagramok a tároló metrikáinak megjelenítéséhez.
 
-|Névtér | Metrika |
-|----------|--------|
+|Névtér | Metrika | Leírás | 
+|----------|--------|-------------|
 | insights.container/nodes | |
-| | cpuUsageMillicores |
-| | cpuUsagePercentage |
-| | memoryRssBytes |
-| | memoryRssPercentage |
-| | memoryWorkingSetBytes |
-| | memoryWorkingSetPercentage |
-| | nodesCount |
+| | cpuUsageMillicores | A processzor kihasználtságának összesített mérése a fürtön belül. Ez egy CPU-mag, amely 1000 egységre oszlik (Millet = 1000). A magok olyan tárolóban való használatának megállapítására szolgál, amelyben sok alkalmazás egy mag használatát is felhasználhatja.| 
+| | cpuUsagePercentage | Összesített átlagos CPU-kihasználtság a fürtben mért százalékban kifejezve.|
+| | memoryRssBytes | A tároló RSS-memóriája bájtban használatos.| 
+| | memoryRssPercentage | A tárolóban használt RSS-memória százalékban megadva.|
+| | memoryWorkingSetBytes | A tároló munkakészletének felhasznált memóriája.| 
+| | memoryWorkingSetPercentage | A tároló munkakészletének%-ban használt memóriája. | 
+| | nodesCount | Csomópontok száma a Kubernetes.|
 | bepillantást nyerhet. tároló/hüvely | |
-| | PodCount |
+| | PodCount | A Kubernetes származó Pod-szám.|
 
-A mérőszámokat megtekintheti dimenzió alapján, és megjelenítheti, hogy a különböző szegmensek hogyan hasonlítanak egymáshoz. [](../platform/metrics-charts.md#apply-splitting-to-a-chart) Csomópont esetén a diagramot a *gazdagép* dimenziója alapján is szegmentálhatja. Egy Pod-ból a következő méretek alapján szegmentálhatja azt:
+[A mérőszámokat megtekintheti](../platform/metrics-charts.md#apply-splitting-to-a-chart) dimenzió alapján, és megjelenítheti, hogy a különböző szegmensek hogyan hasonlítanak egymáshoz. Csomópont esetén a diagramot a *gazdagép* dimenziója alapján is szegmentálhatja. Egy Pod-ból a következő méretek alapján szegmentálhatja azt:
 
 * Vezérlő
 * Kubernetes-névtér
@@ -168,9 +168,9 @@ Egy kibontott csomópontból lehatolhat a csomóponton futó Pod vagy tárolób�
  
 ![Példa a csomópontról a teljesítmény nézet vezérlőre való részletezésére](./media/container-insights-analyze/drill-down-node-controller.png)
 
-Válassza az oldal tetején található vezérlők vagy tárolók lehetőséget az objektumok állapotának és erőforrás-kihasználtságának áttekintéséhez. A memóriahasználat áttekintéséhez a **metrika** legördülő listában válassza ki a **memória RSS** vagy a **memória**munkakészlete elemet. **Memória RSS** csak Kubernetes 1.8-as és újabb verziók esetében támogatott. Ellenkező esetben, tekintse meg az értékeket **Min&nbsp; %**  , *NaN&nbsp;%* , azaz egy nem definiált képviselő numerikus típus értéke vagy ábrázolható érték.
+Válassza az oldal tetején található vezérlők vagy tárolók lehetőséget az objektumok állapotának és erőforrás-kihasználtságának áttekintéséhez. A memóriahasználat áttekintéséhez a **metrika** legördülő listában válassza ki a **memória RSS** vagy a **memória munkakészlete**elemet. **Memória RSS** csak Kubernetes 1.8-as és újabb verziók esetében támogatott. Ellenkező esetben, tekintse meg az értékeket **Min&nbsp; %**  , *NaN&nbsp;%* , azaz egy nem definiált képviselő numerikus típus értéke vagy ábrázolható érték.
 
-A **memória** -munkakészletben a rezidens memória és a virtuális memória (gyorsítótár) is látható, és az alkalmazás teljes egészében a használatos. A **memória RSS** csak a fő memóriát jeleníti meg, amely a rezidens memória. Ez a metrika a rendelkezésre álló memória tényleges kapacitását mutatja.
+A **memória-munkakészletben** a rezidens memória és a virtuális memória (gyorsítótár) is látható, és az alkalmazás teljes egészében a használatos. A **memória RSS** -je csak a fő memóriát jeleníti meg (amely nem más, mint a rezidens memória, más szóval). Ez a metrika a rendelkezésre álló memória tényleges kapacitását mutatja.
 
 ![Tároló csomópontok teljesítmény nézet](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
@@ -188,7 +188,7 @@ A következő példában a lista első csomópontjának *AK-nodepool1 –* ért�
 
 Ezek az információk segítenek gyorsan megállapítani, hogy megfelelő-e a tárolók közötti egyensúly a fürt csomópontjai között. 
 
-A csomópontok lap megtekintésekor megjelenő információkat az alábbi táblázat ismerteti.
+A **csomópontok** lap megtekintésekor megjelenő információkat az alábbi táblázat ismerteti.
 
 | Oszlop | Leírás | 
 |--------|-------------|
@@ -222,7 +222,7 @@ A vezérlők megtekintésekor megjelenő információkat az alábbi táblázat i
 | Oszlop | Leírás | 
 |--------|-------------|
 | Name (Név) | A vezérlő neve.|
-| State | A tárolók összesítési állapota, miután befejezte az állapotot, például *az OK*, a leállítva, a *sikertelen*, a leállított vagy a *szüneteltetve*állapotot. Ha a tároló fut, de az állapot nem volt megfelelően megjelenítve, vagy nem az ügynök vette át, és 30 percnél nem válaszolt, az állapot *ismeretlen*. Az állapotjelző ikon további részleteit a következő táblázat tartalmazza.|
+| State | A tárolók összesítési állapota, miután befejezte az állapotot, például *az OK*, a leállítva *, a* *sikertelen*, a *leállított*vagy a *szüneteltetve*állapotot. Ha a tároló fut, de az állapot nem volt megfelelően megjelenítve, vagy nem az ügynök vette át, és 30 percnél nem válaszolt, az állapot *ismeretlen*. Az állapotjelző ikon további részleteit a következő táblázat tartalmazza.|
 | Min&nbsp;.%,&nbsp;AVG%,&nbsp;50%,&nbsp;90%,&nbsp;95.%, Max&nbsp;%| Minden entitás, a kiválasztott metrika és PERCENTILIS hányada összesítő átlaga. |
 | Min, AVG, 50, 90, 95., Max  | A kiválasztott PERCENTILIS tárolója átlagos CPU millicore vagy memóriát teljesítményének összesítése. Az átlagos érték podot beállított CPU/memória felső korlátja mérése történik. |
 | Containers | A vezérlő vagy a pod tárolók száma összesen. |

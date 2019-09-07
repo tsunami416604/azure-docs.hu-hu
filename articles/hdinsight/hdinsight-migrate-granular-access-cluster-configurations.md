@@ -1,5 +1,5 @@
 ---
-title: Migrálás részletes szerepköralapú hozzáférésre fürt-konfigurációkhoz – Azure HDInsight
+title: Migrálás részletes szerepköralapú hozzáférésre – Azure HDInsight-fürt beállításai
 description: Ismerje meg az áttelepítés részeként szükséges módosításokat a HDInsight-fürtök részletes szerepköralapú hozzáféréséhez.
 author: tylerfox
 ms.author: tyfox
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 03bea7b9df929914e25ca97b382dc5c120b5a769
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9eb77b3e4066712aecebee4660d50baf45957cb8
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983034"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733237"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -24,7 +24,7 @@ Korábban a titkos kulcsokat a HDInsight API-n keresztül lehet megszerezni a tu
 
 2019. szeptember 3-ától a `Microsoft.HDInsight/clusters/configurations/action` titkos kulcsokhoz való hozzáféréshez engedély szükséges, ami azt jelenti, hogy a felhasználók már nem férhetnek hozzá az olvasó szerepkörrel rendelkező felhasználókhoz. Az ezzel az engedéllyel rendelkező szerepkörök a közreműködők, a tulajdonosok és az új HDInsight-fürt szerepkör (továbbiak az alább láthatók).
 
-Egy új [HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) -fürtszolgáltatási szerepkört is bevezetünk, amely lehetővé teszi a titkok beolvasását anélkül, hogy a közreműködő vagy a tulajdonos rendszergazdai engedélyeit kellene megadnia. Összefoglalás:
+Egy új [HDInsight-fürtszolgáltatási](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) szerepkört is bevezetünk, amely lehetővé teszi a titkok beolvasását anélkül, hogy a közreműködő vagy a tulajdonos rendszergazdai engedélyeit kellene megadnia. Összefoglalás:
 
 | Role                                  | Korábban                                                                                       | Továbbítás folyamatban       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
@@ -57,10 +57,10 @@ Az Ön forgatókönyvéhez használandó migrálási lépéseket az alábbi szak
 
 A következő API-k módosulnak vagy elavultak lesznek:
 
-- [ **/Configurations/{configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) beolvasása (bizalmas adatok eltávolítva)
+- [ **/Configurations/{configurationName} beolvasása**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (bizalmas adatok eltávolítva)
     - Korábban az egyes konfigurációs típusok (például titkok) beszerzésére használták.
     - Az API-hívás 2019 szeptember 3-ától kezdődően az egyes konfigurációs típusokat is visszaadja a titkos kulcsokkal. Az összes konfiguráció, köztük a titkok beszerzéséhez használja az új POST/configurations hívást. Az átjáró beállításainak beszerzéséhez használja az új POST/getGatewaySettings hívást.
-- [ **/Configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) beolvasása elavult
+- [ **/Configurations beolvasása**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) elavult
     - Korábban az összes konfiguráció beszerzésére használták (beleértve a titkokat is)
     - A 2019. szeptember 3-ától kezdődően ez az API-hívás elavult lesz, és már nem támogatott. Az összes elérhető konfiguráció beszerzéséhez használja az új POST/configurations hívást. A bizalmas paraméterekkel rendelkező konfigurációk beszerzéséhez használja a GET/configurations/{configurationName} hívást.
 - [ **/Configurations/{configurationName} közzététele**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) elavult
@@ -110,7 +110,7 @@ Frissítse a .NET-hez készült HDInsight SDK [verziójának 2.1.0](https://www.
 
 #### <a name="versions-3x-and-up"></a>3\. x és újabb verziók
 
-Frissítsen a .NET-hez készült HDInsight SDK [5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) vagy újabb verziójára. Ha a változások által érintett módszert használ, minimális kód-módosításokra lehet szükség:
+Frissítsen a .NET-hez készült HDInsight SDK 5.0.0 vagy újabb [verziójára](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) . Ha a változások által érintett módszert használ, minimális kód-módosításokra lehet szükség:
 
 - [`ConfigurationOperationsExtensions.Get`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet)a **többé nem ad vissza bizalmas paramétereket** , például a tárolási kulcsokat (Core-site) vagy a http hitelesítő adatokat (Gateway).
     - Az összes konfiguráció beolvasásához, beleértve a bizalmas [`ConfigurationOperationsExtensions.List`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet) paramétereket is, használja a jövőt.  Vegye figyelembe, hogy az "olvasó" szerepkörrel rendelkező felhasználók nem fogják tudni használni ezt a metódust. Ez lehetővé teszi, hogy részletesen szabályozható legyen, hogy mely felhasználók férhetnek hozzá a fürt bizalmas adataihoz. 
@@ -120,7 +120,7 @@ Frissítsen a .NET-hez készült HDInsight SDK [5.0.0](https://www.nuget.org/pac
 
 ### <a name="sdk-for-python"></a>Pythonhoz készült SDK
 
-A Pythonhoz készült HDInsight SDK-hoz tartozó [1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/) vagy újabb verzióra történő frissítés. Ha a változások által érintett módszert használ, minimális kód-módosításokra lehet szükség:
+A Pythonhoz készült HDInsight SDK-hoz tartozó 1.0.0 vagy újabb [verzióra](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/) történő frissítés. Ha a változások által érintett módszert használ, minimális kód-módosításokra lehet szükség:
 
 - [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-)a **többé nem ad vissza bizalmas paramétereket** , például a tárolási kulcsokat (Core-site) vagy a http hitelesítő adatokat (Gateway).
     - Az összes konfiguráció beolvasásához, beleértve a bizalmas [`ConfigurationsOperations.list`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) paramétereket is, használja a jövőt.  Vegye figyelembe, hogy az "olvasó" szerepkörrel rendelkező felhasználók nem fogják tudni használni ezt a metódust. Ez lehetővé teszi, hogy részletesen szabályozható legyen, hogy mely felhasználók férhetnek hozzá a fürt bizalmas adataihoz. 
@@ -129,7 +129,7 @@ A Pythonhoz készült HDInsight SDK-hoz tartozó [1.0.0](https://pypi.org/projec
 
 ### <a name="sdk-for-java"></a>Javához készült SDK
 
-Frissítse a Java-hoz készült HDInsight SDK-val kapcsolatos [1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) vagy újabb verzióra. Ha a változások által érintett módszert használ, minimális kód-módosításokra lehet szükség:
+Frissítse a Java-hoz készült HDInsight SDK-val kapcsolatos 1.0.0 vagy újabb [verzióra](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) . Ha a változások által érintett módszert használ, minimális kód-módosításokra lehet szükség:
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get)a **többé nem ad vissza bizalmas paramétereket** , például a tárolási kulcsokat (Core-site) vagy a http hitelesítő adatokat (Gateway).
     - Az összes konfiguráció beolvasásához, beleértve a bizalmas [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable) paramétereket is, használja a jövőt.  Vegye figyelembe, hogy az "olvasó" szerepkörrel rendelkező felhasználók nem fogják tudni használni ezt a metódust. Ez lehetővé teszi, hogy részletesen szabályozható legyen, hogy mely felhasználók férhetnek hozzá a fürt bizalmas adataihoz. 
@@ -138,7 +138,7 @@ Frissítse a Java-hoz készült HDInsight SDK-val kapcsolatos [1.0.0](https://se
 
 ### <a name="sdk-for-go"></a>SDK for go
 
-Frissítsen a Go-hoz készült HDInsight SDK [27.1.0](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight) vagy újabb verziójára. Ha a változások által érintett módszert használ, minimális kód-módosításokra lehet szükség:
+Frissítsen a Go-hoz készült HDInsight SDK 27.1.0 vagy újabb [verziójára](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight) . Ha a változások által érintett módszert használ, minimális kód-módosításokra lehet szükség:
 
 - [`ConfigurationsClient.get`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Get)a **többé nem ad vissza bizalmas paramétereket** , például a tárolási kulcsokat (Core-site) vagy a http hitelesítő adatokat (Gateway).
     - Az összes konfiguráció beolvasásához, beleértve a bizalmas [`ConfigurationsClient.list`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.List) paramétereket is, használja a jövőt.  Vegye figyelembe, hogy az "olvasó" szerepkörrel rendelkező felhasználók nem fogják tudni használni ezt a metódust. Ez lehetővé teszi, hogy részletesen szabályozható legyen, hogy mely felhasználók férhetnek hozzá a fürt bizalmas adataihoz. 
@@ -146,13 +146,13 @@ Frissítsen a Go-hoz készült HDInsight SDK [27.1.0](https://github.com/Azure/a
 - [`ConfigurationsClient.update`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Update)a már elavult, és lecserélte [`ClustersClient.update_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.UpdateGatewaySettings).
 
 ### <a name="azhdinsight-powershell"></a>Az az. HDInsight PowerShell
-A megszakítások elkerülése érdekében frissítsen az [az PowerShell Version 2.0.0](https://www.powershellgallery.com/packages/Az) vagy újabb verzióra.  Ha a módosítások által érintett módszert használ, minimális kód-módosításokra lehet szükség.
+A megszakítások elkerülése érdekében frissítsen az [az PowerShell Version 2.0.0 vagy újabb verzióra](https://www.powershellgallery.com/packages/Az) .  Ha a módosítások által érintett módszert használ, minimális kód-módosításokra lehet szükség.
 - `Grant-AzHDInsightHttpServicesAccess`már elavult, és az új `Set-AzHDInsightGatewayCredential` parancsmag váltotta fel.
 - `Get-AzHDInsightJobOutput`frissítve lett, hogy támogassa a részletes szerepköralapú hozzáférést a tárolási kulcshoz.
     - Ez nem érinti a HDInsight-fürt operátor, közreműködő vagy tulajdonos szerepkörrel rendelkező felhasználóit.
     - A csak az olvasó szerepkörrel rendelkező felhasználók számára explicit módon `DefaultStorageAccountKey` kell megadni a paramétert.
 - `Revoke-AzHDInsightHttpServicesAccess`már elavult. A HTTP mostantól mindig engedélyezve van, ezért erre a parancsmagra már nincs szükség.
- Lásd az az [. ](https://github.com/Azure/azure-powershell/blob/master/documentation/migration-guides/Az.2.0.0-migration-guide.md#azhdinsight)További részleteket a HDInsight áttelepítési útmutatójában talál.
+ Lásd az az [. További részleteket a HDInsight áttelepítési útmutatójában](https://github.com/Azure/azure-powershell/blob/master/documentation/migration-guides/Az.2.0.0-migration-guide.md#azhdinsight) talál.
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>A HDInsight-fürt szerepkör-hozzárendelésének hozzáadása egy felhasználóhoz
 

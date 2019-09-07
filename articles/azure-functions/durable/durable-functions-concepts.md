@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 828bcaa8c93454ba845c30c03c76144310891123
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe3000181ed02e3640e7af48fa492f4a7db55191
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098254"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734572"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions minták és technikai fogalmak (Azure Functions)
 
@@ -37,6 +37,25 @@ A függvény láncolása mintában a függvények sorrendje egy adott sorrendben
 
 Az Durable Functions használatával a függvény láncolása minta tömören valósítható meg, ahogy az alábbi példában is látható:
 
+#### <a name="precompiled-c"></a>ElőfordítottC#
+
+```csharp
+public static async Task<object> Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    try
+    {
+        var x = await context.CallActivityAsync<object>("F1");
+        var y = await context.CallActivityAsync<object>("F2", x);
+        var z = await context.CallActivityAsync<object>("F3", y);
+        return  await context.CallActivityAsync<object>("F4", z);
+    }
+    catch (Exception)
+    {
+        // Error handling or compensation goes here.
+    }
+}
+```
+
 #### <a name="c-script"></a>C#-szkript
 
 ```csharp
@@ -57,7 +76,7 @@ public static async Task<object> Run(DurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Az előre lefordított tartós függvények írása C# és az előre lefordított tartós függvények írása között finom különbségek vannak a C# példában látható parancsfájlban. Egy C# előre lefordított függvényben a tartós paramétereket megfelelő attribútumokkal kell megdíszíteni. Ilyen például a `[OrchestrationTrigger]` `DurableOrchestrationContext` paraméter attribútuma. Egy C# előre lefordított tartós függvényben, ha a paraméterek nincsenek megfelelően dekorálva, a futásidejű nem tudja beszúrni a változókat a függvénybe, és hiba történik. További példákért tekintse [meg az Azure-functions-tartós kiterjesztésű mintákat a githubon](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples).
+> Az előre lefordított tartós függvények írása C# és a C# parancsfájlban szereplő előre lefordított tartós függvények írása között finom különbségek vannak. Egy C# előre lefordított függvényben a tartós paramétereket megfelelő attribútumokkal kell megdíszíteni. Ilyen például a `[OrchestrationTrigger]` `DurableOrchestrationContext` paraméter attribútuma. Egy C# előre lefordított tartós függvényben, ha a paraméterek nincsenek megfelelően dekorálva, a futásidejű nem tudja beszúrni a változókat a függvénybe, és hiba történik. További példákért tekintse [meg az Azure-functions-tartós kiterjesztésű mintákat a githubon](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples).
 
 #### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
@@ -88,6 +107,29 @@ A fan out/Fan in mintában több függvényt hajt végre párhuzamosan, majd vá
 A normál függvények segítségével kipróbálhatja, hogy a függvény több üzenetet küld egy várólistára. A Fanning sokkal nagyobb kihívást jelent. Ahhoz, hogy egy normál függvényben bekapcsolja a ventilátort, kódot írhat, amely nyomon követheti a várólista által aktivált függvények befejezését, majd tárolhatja a függvény kimeneteit. 
 
 A Durable Functions bővítmény ezt a mintát viszonylag egyszerű kóddal kezeli:
+
+#### <a name="precompiled-c"></a>ElőfordítottC#
+
+```csharp
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    var parallelTasks = new List<Task<int>>();
+
+    // Get a list of N work items to process in parallel.
+    object[] workBatch = await context.CallActivityAsync<object[]>("F1");
+    for (int i = 0; i < workBatch.Length; i++)
+    {
+        Task<int> task = context.CallActivityAsync<int>("F2", workBatch[i]);
+        parallelTasks.Add(task);
+    }
+
+    await Task.WhenAll(parallelTasks);
+
+    // Aggregate all N outputs and send the result to F3.
+    int sum = parallelTasks.Sum(t => t.Result);
+    await context.CallActivityAsync("F3", sum);
+}
+```
 
 #### <a name="c-script"></a>C#-szkript
 
@@ -177,7 +219,29 @@ A Durable Functions bővítmény olyan beépített webhookokkal rendelkezik, ame
 
 Íme néhány példa a HTTP API-minta használatára:
 
-#### <a name="c"></a>C#
+#### <a name="precompiled-c"></a>ElőfordítottC#
+
+```csharp
+// An HTTP-triggered function starts a new orchestrator function instance.
+[FunctionName("StartNewOrchestration")]
+public static async Task<HttpResponseMessage> Run(
+    [HttpTrigger] HttpRequestMessage req,
+    [OrchestrationClient] DurableOrchestrationClient starter,
+    string functionName,
+    ILogger log)
+{
+    // The function name comes from the request URL.
+    // The function input comes from the request content.
+    dynamic eventData = await req.Content.ReadAsAsync<object>();
+    string instanceId = await starter.StartNewAsync(functionName, eventData);
+
+    log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
+
+    return starter.CreateCheckStatusResponse(req, instanceId);
+}
+```
+
+#### <a name="c-script"></a>C#-szkript
 
 ```csharp
 // An HTTP-triggered function starts a new orchestrator function instance.
@@ -224,7 +288,7 @@ Az előző példákban egy http által aktivált függvény a beérkező URL- `f
 
 ### <a name="monitoring"></a>Minta #4: Figyelés
 
-A figyelő minta egy rugalmas, ismétlődő folyamatra hivatkozik egy munkafolyamatban. Egy példa egy lekérdezésre, amíg az adott feltételek teljesülnek. Egy alapszintű forgatókönyv [](../functions-bindings-timer.md) , például egy rendszeres karbantartási feladat, az intervallum statikus, a példányok élettartamának kezelése pedig összetett lesz. A Durable Functions használatával rugalmas ismétlődési időközöket hozhat létre, kezelheti a feladatok élettartamát, és több figyelő folyamat is létrehozható egyetlen előkészítéssel.
+A figyelő minta egy rugalmas, ismétlődő folyamatra hivatkozik egy munkafolyamatban. Egy példa egy lekérdezésre, amíg az adott feltételek teljesülnek. Egy alapszintű forgatókönyv, például [egy rendszeres karbantartási](../functions-bindings-timer.md) feladat, az intervallum statikus, a példányok élettartamának kezelése pedig összetett lesz. A Durable Functions használatával rugalmas ismétlődési időközöket hozhat létre, kezelheti a feladatok élettartamát, és több figyelő folyamat is létrehozható egyetlen előkészítéssel.
 
 A figyelő minta példája a korábbi aszinkron HTTP API-forgatókönyv fordítottja. Ahelyett, hogy egy külső ügyfél végpontját kitéve egy hosszan futó művelet figyelésére, a hosszan futó figyelő külső végpontot használ, majd megvárja az állapot változását.
 
@@ -233,6 +297,35 @@ A figyelő minta példája a korábbi aszinkron HTTP API-forgatókönyv fordíto
 Néhány sornyi kódban a Durable Functions használatával több, tetszőleges végpontokat figyelő figyelőt hozhat létre. A figyelők a feltételek teljesülése esetén a végrehajtás végén, vagy a [DurableOrchestrationClient](durable-functions-instance-management.md) megszakítják a figyelőket. Egy adott feltétel alapján módosíthatja a `wait` figyelő intervallumát (például exponenciális leállítási.) 
 
 A következő kód egy alapszintű figyelőt valósít meg:
+
+#### <a name="precompiled-c"></a>ElőfordítottC#
+
+```csharp
+[FunctionName("Orchestrator")]
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    int jobId = context.GetInput<int>();
+    int pollingInterval = GetPollingInterval();
+    DateTime expiryTime = GetExpiryTime();
+
+    while (context.CurrentUtcDateTime < expiryTime)
+    {
+        var jobStatus = await context.CallActivityAsync<string>("GetJobStatus", jobId);
+        if (jobStatus == "Completed")
+        {
+            // Perform an action when a condition is met.
+            await context.CallActivityAsync("SendAlert", machineId);
+            break;
+        }
+
+        // Orchestration sleeps until this time.
+        var nextCheck = context.CurrentUtcDateTime.AddSeconds(pollingInterval);
+        await context.CreateTimer(nextCheck, CancellationToken.None);
+    }
+
+    // Perform more work here, or let the orchestration end.
+}
+```
 
 #### <a name="c-script"></a>C#-szkript
 
@@ -304,6 +397,32 @@ Ebben a példában egy Orchestrator függvény használatával valósítható me
 
 Ezek a példák jóváhagyási folyamatot hoznak létre az emberi interakciós minta bemutatásához:
 
+#### <a name="precompiled-c"></a>ElőfordítottC#
+
+```csharp
+[FunctionName("Orchestrator")]
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    await context.CallActivityAsync("RequestApproval");
+    using (var timeoutCts = new CancellationTokenSource())
+    {
+        DateTime dueTime = context.CurrentUtcDateTime.AddHours(72);
+        Task durableTimeout = context.CreateTimer(dueTime, timeoutCts.Token);
+
+        Task<bool> approvalEvent = context.WaitForExternalEvent<bool>("ApprovalEvent");
+        if (approvalEvent == await Task.WhenAny(approvalEvent, durableTimeout))
+        {
+            timeoutCts.Cancel();
+            await context.CallActivityAsync("ProcessApproval", approvalEvent.Result);
+        }
+        else
+        {
+            await context.CallActivityAsync("Escalate");
+        }
+    }
+}
+```
+
 #### <a name="c-script"></a>C#-szkript
 
 ```csharp
@@ -355,6 +474,20 @@ Tartós időzítő, hívás `context.CreateTimer` (.net) vagy `context.df.create
 
 Egy külső ügyfél a [beépített http API](durable-functions-http-api.md#raise-event) -kkal vagy a [DurableOrchestrationClient. RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) API-val egy másik függvény használatával kézbesítheti az esemény-értesítést a várakozó Orchestrator függvénynek:
 
+#### <a name="precompiled-c"></a>ElőfordítottC#
+
+```csharp
+public static async Task Run(
+  [HttpTrigger] string instanceId,
+  [OrchestrationClient] DurableOrchestrationClient client)
+{
+    bool isApproved = true;
+    await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
+}
+```
+
+#### <a name="c-script"></a>C#Parancsfájl
+
 ```csharp
 public static async Task Run(string instanceId, DurableOrchestrationClient client)
 {
@@ -362,6 +495,8 @@ public static async Task Run(string instanceId, DurableOrchestrationClient clien
     await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
 }
 ```
+
+#### <a name="javascript"></a>Javascript
 
 ```javascript
 const df = require("durable-functions");
@@ -455,7 +590,7 @@ A színfalak mögött a Durable Functions bővítmény a [tartós feladatok kere
 
 ### <a name="event-sourcing-checkpointing-and-replay"></a>Események beszerzése, ellenőrzőpontok és visszajátszás
 
-Az Orchestrator függvények az [esemény](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) -beszerzések kialakítási mintája alapján megbízhatóan karbantartják végrehajtási állapotukat. A folyamat aktuális állapotának közvetlen tárolása helyett a Durable Functions-bővítmény egy csak Hozzáfűzéses tárolót használ a függvények összehangolása által végrehajtott műveletek teljes sorozatának rögzítéséhez. A csak Hozzáfűzéses tároló számos előnnyel jár, mint a teljes futtatókörnyezet állapotának "kiírása". Az előnyök többek között a teljesítmény, a méretezhetőség és a rugalmasság. A tranzakciós és a teljes naplózási nyomvonalak és előzmények végleges konzisztenciáját is biztosítjuk. A naplózási nyomvonalak támogatják a megbízható kompenzáló műveleteket.
+Az Orchestrator függvények az [esemény-beszerzések](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) kialakítási mintája alapján megbízhatóan karbantartják végrehajtási állapotukat. A folyamat aktuális állapotának közvetlen tárolása helyett a Durable Functions-bővítmény egy csak Hozzáfűzéses tárolót használ a függvények összehangolása által végrehajtott műveletek teljes sorozatának rögzítéséhez. A csak Hozzáfűzéses tároló számos előnnyel jár, mint a teljes futtatókörnyezet állapotának "kiírása". Az előnyök többek között a teljesítmény, a méretezhetőség és a rugalmasság. A tranzakciós és a teljes naplózási nyomvonalak és előzmények végleges konzisztenciáját is biztosítjuk. A naplózási nyomvonalak támogatják a megbízható kompenzáló műveleteket.
 
 A Durable Functions az események beszerzését transzparens módon használja. A színfalak mögött a `await` (C#) vagy `yield` a (JavaScript) operátor egy Orchestrator függvényben a Orchestrator-szál vezérlését eredményezi a tartós feladatokhoz. A diszpécser ezután véglegesít minden olyan új műveletet, amelyet a Orchestrator függvény ütemez (például egy vagy több alárendelt függvény hívása vagy tartós időzítő ütemezése) a tárolóba. Az átlátszó véglegesítő művelet hozzáfűzi a rendszerelőkészítési példány végrehajtási előzményeihez. Az előzmények tárolása egy tárolási táblában történik. A commit művelet ezután üzeneteket hoz létre egy várólistához a tényleges munka időzítése érdekében. Ezen a ponton a Orchestrator függvény eltávolítható a memóriából. 
 
@@ -467,7 +602,7 @@ Ha a kód megpróbál meghívni egy függvényt (vagy bármilyen más aszinkron 
 
 ### <a name="orchestrator-code-constraints"></a>Orchestrator-kód megkötései
 
-A Orchestrator kód újrajátszása a Orchestrator függvényben írható kód típusára vonatkozó korlátozásokat hoz létre. A Orchestrator-kódnak például determinisztikus kell lennie, mert többször is le kell játszani, és minden alkalommal ugyanazt az eredményt kell létrehoznia. A megkötések teljes listáját lásd: [Orchestrator-kódok](durable-functions-checkpointing-and-replay.md#orchestrator-code-constraints)megkötései.
+A Orchestrator kód újrajátszása a Orchestrator függvényben írható kód típusára vonatkozó korlátozásokat hoz létre. A Orchestrator-kódnak például determinisztikus kell lennie, mert többször is le kell játszani, és minden alkalommal ugyanazt az eredményt kell létrehoznia. A megkötések teljes listáját lásd: [Orchestrator-kódok megkötései](durable-functions-checkpointing-and-replay.md#orchestrator-code-constraints).
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
 

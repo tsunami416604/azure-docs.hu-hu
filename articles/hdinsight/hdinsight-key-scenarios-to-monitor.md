@@ -1,6 +1,6 @@
 ---
-title: Fürtteljesítmény monitorozása – Azure HDInsight
-description: Hogyan lehet a kapacitás és teljesítmény érdekében egy HDInsight-fürt monitorozására.
+title: A fürt teljesítményének figyelése – Azure HDInsight
+description: Apache Hadoop-fürtök állapotának és teljesítményének figyelése az Azure HDInsight-ben.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,84 +8,84 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3fcd1e54a8993b2693b169a2c8b4c6e9bca57119
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 591fd2e0f5c6d36ad6b84b1f3ec035488fa02614
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393413"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733245"
 ---
 # <a name="monitor-cluster-performance"></a>Fürtteljesítmény monitorozása
 
-Figyelési állapotát és teljesítményét egy HDInsight-fürt elengedhetetlen biztosítják az optimális teljesítmény és az erőforrás-használatot. Figyelés is segíthet észlelni és -fürt konfigurációs hibák és felhasználói hibákat.
+A HDInsight-fürtök állapotának és teljesítményének figyelése elengedhetetlen az optimális teljesítmény és erőforrás-kihasználtság fenntartása érdekében. A figyelés a fürt konfigurációs hibái és a felhasználói kódok problémáinak észlelésében és kezelésében is segítséget nyújt.
 
-A következő szakaszok ismertetik a figyelése és -fürtök, az Apache Hadoop YARN-üzenetsorok a terhelés optimalizálása és tárolási szabályozási problémák észleléséhez.
+A következő szakaszok azt ismertetik, hogyan lehet figyelni és optimalizálni a fürtök terhelését, Apache Hadoop a fonal-várólistákat és észlelni a tárolási sávszélesség-szabályozással kapcsolatos problémákat.
 
-## <a name="monitor-cluster-load"></a>A figyelő fürt betöltése
+## <a name="monitor-cluster-load"></a>Fürt terhelésének figyelése
 
-Hadoop-fürtök a legoptimálisabb teljesítményt biztosíthat, amikor a fürt a terhelés egyenletesen a csomópontokon. Ez lehetővé teszi a feldolgozási feladatok futtatását anélkül RAM memória, Processzor vagy az egyes csomópontokon lemezerőforrásokat korlátozza.
+A Hadoop-fürtök a legoptimálisabb teljesítményt biztosíthatják, ha a fürt terhelése egyenletesen oszlik el az összes csomóponton. Ez lehetővé teszi a feldolgozási feladatok futtatását anélkül, hogy a RAM, a CPU vagy a lemez erőforrásai korlátozzák az egyes csomópontokon.
 
-A csomópontok a fürt és a betöltés áttekintése kapni, jelentkezzen be a [az Ambari webes felhasználói felület](hdinsight-hadoop-manage-ambari.md), majd válassza ki a **gazdagépek** fülre. A gazdagépek a teljes tartománynevek alapján vannak listázva. Minden gazdagép működési állapota színes állapotjelző szerint jelenik meg:
+Ha magas szintű áttekintést szeretne kapni a fürt csomópontjairól és betöltéséről, jelentkezzen be a [Ambari webes felhasználói felületére](hdinsight-hadoop-manage-ambari.md), majd válassza a **gazdagépek** lapot. A gazdagépek teljes tartományneveik szerepelnek a felsorolásban. Az egyes gazdagépek működési állapotát színes állapot kijelzője mutatja:
 
 | Szín | Leírás |
 | --- | --- |
-| Piros | A gazdagépen legalább egy fő összetevője leállt. Listák összetevőhöz elemleírásokban megtekintéséhez mutasson. |
-| Narancssárga | A gazdagépen legalább egy másodlagos összetevő nem működik. Listák összetevőhöz elemleírásokban megtekintéséhez mutasson. |
-| Sárga | Az Ambari kiszolgáló nem kapott szívverést a gazdagépről a több mint 3 perc alatt. |
-| Zöld | A normál futó állapotban. |
+| Piros | A gazdagépen legalább egy fő összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
+| Narancssárga | A gazdagépen legalább egy másodlagos összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
+| Sárga | A Ambari-kiszolgáló több mint 3 percen belül nem kapott szívverést a gazdagépen. |
+| Zöld | Normál Futási állapot. |
 
-Azt is láthatja minden gazdagéphez a magok számát és a RAM mennyisége megjelenítő oszlopokat, és a használat és a terhelés átlagos.
+Emellett az egyes gazdagépek magok számát és a RAM mennyiségét, valamint a lemezek kihasználtságát és a terhelés átlagát ábrázoló oszlopokat is láthat.
 
-![Lap](./media/hdinsight-key-scenarios-to-monitor/hosts-tab.png)
+![Gazdagépek lap](./media/hdinsight-key-scenarios-to-monitor/hosts-tab.png)
 
-Válassza ki, sem a gazdagép részletes tekintse meg, hogy a gazdagép és a metrikák futó összetevők számára. Egy választható idővonalának CPU használati, betöltése, használat, memóriahasználat, hálózati használati és folyamatok számát, a metrikák jelennek meg.
+A gazdagépen futó összetevők és azok metrikáinak részletes megtekintéséhez válassza ki az állomásnév bármelyikét. A metrikák a CPU-használat, a terhelés, a lemezhasználat, a memóriahasználat, a hálózati használat és a folyamatok száma szerint választható idővonalként jelennek meg.
 
-![gazdagép részletei](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
+![Gazdagép adatai](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
 
-Lásd: [kezelése a HDInsight-fürtök az Apache Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md) -riasztások beállítása és mérőszámok megtekintésével.
+A riasztások beállításával és a metrikák megtekintésével kapcsolatos részletekért lásd: [HDInsight-fürtök kezelése az Apache Ambari webes felületének használatával](hdinsight-hadoop-manage-ambari.md) .
 
-## <a name="yarn-queue-configuration"></a>YARN üzenetek sorának konfigurációját
+## <a name="yarn-queue-configuration"></a>A FONALak várólistájának konfigurációja
 
-Hadoop elosztott platformja futó különböző szolgáltatásokat tartalmaz. YARN (még egy másik Resource Negotiator) koordinálja a ezeket a szolgáltatásokat, és győződjön meg arról, hogy tetszőleges terhelés egyenletesen oszlik el a fürt a fürt erőforrásokat foglal le.
+A Hadoop különböző szolgáltatásokkal rendelkezik, amelyek az elosztott platformon futnak. A fonal (még egy másik erőforrás-egyeztető) koordinálja ezeket a szolgáltatásokat, és lefoglalja a fürt erőforrásait, így biztosítva, hogy a terhelés egyenletesen oszlik el a fürtön.
 
-YARN osztja fel a két felelősséget a JobTracker, az erőforrás-kezelést és a feladat ütemezése és figyelése, a két démonok: globális erőforrás-kezelő és a egy alkalmazásonkénti ApplicationMaster (kor).
+A fonal a JobTracker, az erőforrás-kezelés és a feladatok ütemezésének és figyelésének két feladatát osztja el két démonban: egy globális erőforrás-kezelőt és egy alkalmazáson belüli ApplicationMaster (AM).
 
-Az erőforrás-kezelő egy *tiszta scheduler*, és kizárólag arbitrates elérhető erőforrások összes versengő alkalmazások között. A Resource Manager biztosítja, hogy az összes erőforrás mindig a használatát, SLA-k, például különböző konstansok optimalizálása garantálja a kapacitás, és így tovább. A ApplicationMaster egyezteti a Resource Manager erőforrásokat, és működik együtt a NodeManager(s) végrehajtásához és a tárolók és az erőforrás-használat figyeléséhez.
+A Resource Manager egy *tiszta ütemező*, és kizárólag az összes versengő alkalmazás között a rendelkezésre álló erőforrások egyeztetését. A Resource Manager biztosítja, hogy minden erőforrás mindig használatban legyen, optimalizálja a különböző állandókat, például a SLA-kat, a kapacitási garanciákat és így tovább. A ApplicationMaster egyezteti az erőforrásokat a Resource Managerben, és együttműködik a NodeManager (ok) val a tárolók és az erőforrások felhasználásának végrehajtásához és figyeléséhez.
 
-Ha több bérlő osztozik egy nagy fürt, nincs a fürt az erőforrásokért való. A CapacityScheduler moduláris ütemező, amely segíti a várólista által végrehajtott kérelmek által megosztás erőforrás. Emellett támogatja a CapacityScheduler *hierarchikus üzenetsorok* annak érdekében, hogy a szervezet, mielőtt más alkalmazások várólisták használata ingyenes erőforrások alárendelt várólisták megosztott erőforrások.
+Ha több bérlő is osztozik egy nagyméretű fürtön, a fürt erőforrásainak versenye van. A CapacityScheduler egy csatlakoztatható ütemező, amely a kérések várólistára helyezésével segíti az erőforrások megosztását. A CapacityScheduler a *hierarchikus várólistákat* is támogatja annak biztosítására, hogy az erőforrások meg legyenek osztva egy szervezet alvárólisták között, mielőtt más alkalmazások várólistái is használhatják az ingyenes erőforrásokat.
 
-YARN lehetővé teszi számunkra, hogy ezek a várólisták erőforrásokat, és bemutatja, hogy az összes rendelkezésre álló erőforrás rendelt. Az üzenetsorokkal kapcsolatos információk megtekintéséhez jelentkezzen be az Ambari webes felhasználói Felületet, majd jelölje ki **YARN üzenetsor-kezelő** a felső menüben.
+A fonal lehetővé teszi, hogy erőforrásokat foglaljon le ezekhez a várólistákhoz, és megjeleníti, hogy az összes rendelkezésre álló erőforrás hozzá van-e rendelve. A várólistákkal kapcsolatos információk megtekintéséhez jelentkezzen be a Ambari webes felhasználói felületére, majd a felső menüben válassza a **fonal Queue Manager** lehetőséget.
 
-![YARN üzenetsor-kezelő](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
+![A FONALak üzenetsor-kezelője](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
 
-A YARN üzenetsor-kezelő lap az üzenetsorok listája látható, a bal oldalon, a hozzárendelt kapacitás százalékos együtt.
+A FONALak üzenetsor-kezelője lapon láthatók a bal oldali várólisták listája, valamint az egyesekhez rendelt kapacitások százalékos aránya.
 
-![YARN üzenetsor-kezelő Részletek lap](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
+![A CÉRNA üzenetsor-kezelő részletei lap](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
 
-Válassza ki a várólisták, az Ambari irányítópultról részletesebb tekintse meg a **YARN** szolgáltatást, a bal oldali listából. Majd a **Gyorshivatkozások** legördülő menüjében válassza **erőforrás-kezelő felhasználói felületén** az aktív csomópont alá.
+Részletesebben tekintse meg a várólistákat a Ambari irányítópultján, a bal oldali listából válassza ki a **fonal** szolgáltatást. Ezután a **gyors hivatkozások** legördülő menüben válassza ki a **Resource Manager felhasználói felületét** az aktív csomópont alatt.
 
-![Erőforrás-kezelő felhasználói felületén menü-hivatkozás](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+![Resource Manager felhasználói felület menü hivatkozása](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
-Az erőforrás-kezelő felhasználói felületén, válassza ki a **Scheduler** elemet a bal oldali menüben. Láthatja, hogy az alatta lévő üzenetsorok listája *alkalmazás üzenetsorok*. Itt láthatja a kapacitást, az üzenetsorok, arról, hogy a feladatok oszlanak meg közöttük, minden egyes használt, és e feladatok bármelyik erőforrás korlátozott.
+A Resource Manager felhasználói felületén válassza a **Scheduler** lehetőséget a bal oldali menüben. Megjelenik az *alkalmazás-várólisták*alatt található várólisták listája. Itt megtekintheti az egyes várólistákhoz használt kapacitást, a feladatok elosztásának módját, valamint azt, hogy az adott feladatok erőforrás-korlátozottak-e.
 
-![Erőforrás-kezelő felhasználói felületén menü-hivatkozás](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![Resource Manager felhasználói felület menü hivatkozása](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
 
-## <a name="storage-throttling"></a>Storage-szabályozás
+## <a name="storage-throttling"></a>Tárolás szabályozása
 
-Egy fürt teljesítménybeli szűk keresztmetszetet fordulhat elő, a tárolási szinten. Ez a szűk keresztmetszetet típus leggyakoribb oka az, hogy *blokkolja* bemeneti/kimeneti (I/O) műveleteket, amelyeket fordulhat elő, ha a futó feladatok küldése további IO, mint a storage szolgáltatás képes kezelni. Ez a blokkolás létrehoz egy üzenetsort, az IOS-es feldolgozása után amíg feldolgozásra váró i/o-kérések. A blokkok miatt vannak *tárolási szabályozás*, amely nem fizikai korlátozva, hanem inkább egy által előírt határérték a storage szolgáltatás egy szolgáltatásiszint-szerződés (SLA). Ez a korlátozás biztosítja, hogy nincs egyetlen ügyfél vagy a bérlő is kisajátítja a szolgáltatást. Az SLA korlátozza az IOS-es másodpercenként (IOPS) az Azure Storage - részletekért, lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
+A fürt teljesítményének szűk keresztmetszete a tárolási szinten fordulhat elő. Ezt a szűk keresztmetszetet gyakran a bemeneti/kimeneti (IO) műveletek *blokkolása* okozza, amely akkor fordul elő, amikor a futó feladatok több IO-t küldenek, mint amennyit a Storage szolgáltatás kezelhet. Ez a blokkolás létrehoz egy várólistát a feldolgozásra váró IO-kérelmekről, amíg a jelenlegi IOs-t nem dolgozza fel. A blokkokat a *tárolási sávszélesség*okozta, amely nem egy fizikai korlát, hanem a tárolási szolgáltatás által a szolgáltatói szerződés (SLA) által előírt korlát. Ez a korlát biztosítja, hogy egyetlen ügyfél vagy bérlő se Sajátítsa el a szolgáltatást. Az SLA korlátozza a másodpercenkénti IOs-(IOPS-) adatok számát az Azure Storage-ban – részletekért lásd: az [Azure Storage skálázhatósági és teljesítményi céljai](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
 
-Ha Azure Storage, a storage szolgáltatással kapcsolatos problémák figyelési információkat használ, beleértve a szabályozás, lásd [figyelése, diagnosztizálása és hibaelhárítása a Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
+Ha az Azure Storage szolgáltatást használja, a tárolással kapcsolatos problémák figyelésével, beleértve a szabályozást, lásd: [figyelés, diagnosztizálás és hibaelhárítás Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
 
-Ha a fürt háttértárban Azure Data Lake Storage (ADLS), a szabályozás oka valószínűleg sávszélesség korlátozásai miatt. Szabályozás ebben az esetben sikerült azonosítható a feladat naplókban szabályozási hibákat észlelt problémát. ADLS tekintse meg a sávszélesség-szabályozási szakaszban a megfelelő szolgáltatás a következő cikkeket:
+Ha a fürtön lévő tároló Azure Data Lake Storage (ADLS), a sávszélesség-korlátozás miatt a szabályozás legvalószínűbb. Ebben az esetben a szabályozás a feladatok naplóiban előforduló szabályozási hibák megfigyelésével azonosítható. A ADLS kapcsolatos további információkért tekintse meg a szabályozás szakaszt a megfelelő szolgáltatáshoz a következő cikkekben:
 
-* [Teljesítmény-finomhangolási útmutató az Apache Hive a HDInsight és az Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-hive.md)
-* [Teljesítmény-finomhangolási útmutató a MapReduce on HDInsight és az Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
-* [Teljesítmény-finomhangolási útmutató a Apache Storm on HDInsight és az Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+* [Teljesítmény-finomhangolási útmutató a HDInsight és a Azure Data Lake Storage Apache Hive](../data-lake-store/data-lake-store-performance-tuning-hive.md)
+* [Teljesítmény-finomhangolási útmutató a HDInsight és Azure Data Lake Storage MapReduce](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
+* [Teljesítmény-finomhangolási útmutató a HDInsight és a Azure Data Lake Storage Apache Storm](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
 ## <a name="next-steps"></a>További lépések
 
-Látogasson el az alábbi hivatkozások további információ a hibaelhárítás és a fürtök figyelése:
+A fürtök hibaelhárításával és figyelésével kapcsolatos további információkért tekintse meg az alábbi hivatkozásokat:
 
 * [HDInsight-naplók elemzése](hdinsight-debug-jobs.md)
-* [Az Apache Hadoop YARN-naplók használatával alkalmazások hibakeresése](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [A Linux-alapú HDInsight az Apache Hadoop-szolgáltatásokhoz halomürítések engedélyezése](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Alkalmazások hibakeresése Apache Hadoop FONALak naplóival](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Halom-memóriaképek engedélyezése Apache Hadoop-szolgáltatásokhoz Linux-alapú HDInsight](hdinsight-hadoop-collect-debug-heap-dump-linux.md)

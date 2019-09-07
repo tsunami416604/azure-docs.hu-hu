@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2e32fb57a5ee34da8c342649cc1740d111723ec
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
-ms.translationtype: MT
+ms.openlocfilehash: 7ec30e2445a5ed6008256f7abcef496247922968
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662905"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744479"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics mentett keresések és riasztások hozzáadása a felügyeleti megoldáshoz (előzetes verzió)
 
@@ -28,7 +28,7 @@ ms.locfileid: "68662905"
 > [!NOTE]
 > Ez a jelenleg előzetes verzióban elérhető felügyeleti megoldások létrehozásának előzetes dokumentációja. Az alább ismertetett sémák változhatnak.
 
-A [felügyeleti megoldások](solutions.md) általában a log Analytics [mentett kereséseket](../../azure-monitor/log-query/log-query-overview.md) is tartalmaznak a megoldás által gyűjtött adatok elemzéséhez. Emellett riasztásokat is [](../../azure-monitor/platform/alerts-overview.md) meghatározhatnak a felhasználó értesítése céljából, vagy a kritikus problémákra reagálva automatikusan műveleteket hajtanak végre. Ez a cikk azt ismerteti, hogyan határozható meg Log Analytics mentett keresések és riasztások egy [erőforrás-kezelési sablonban](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) , hogy azok a [felügyeleti megoldásokban](solutions-creating.md)is szerepeljenek.
+A [felügyeleti megoldások](solutions.md) általában a log Analytics [mentett kereséseket](../../azure-monitor/log-query/log-query-overview.md) is tartalmaznak a megoldás által gyűjtött adatok elemzéséhez. Emellett [riasztásokat](../../azure-monitor/platform/alerts-overview.md) is meghatározhatnak a felhasználó értesítése céljából, vagy a kritikus problémákra reagálva automatikusan műveleteket hajtanak végre. Ez a cikk azt ismerteti, hogyan határozható meg Log Analytics mentett keresések és riasztások egy [erőforrás-kezelési sablonban](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) , hogy azok a [felügyeleti megoldásokban](solutions-creating.md)is szerepeljenek.
 
 > [!NOTE]
 > A cikkben szereplő minták olyan paramétereket és változókat használnak, amelyek szükségesek vagy közösek a felügyeleti megoldásokhoz, és az Azure-beli [felügyeleti megoldás kialakítása és](solutions-creating.md) létrehozása című témakörben olvashatók.
@@ -38,7 +38,7 @@ Ez a cikk azt feltételezi, hogy már ismeri a [felügyeleti megoldás létrehoz
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics-munkaterület
-Log Analytics összes erőforrása egy munkaterületen [](../../azure-monitor/platform/manage-access.md)található. A [log Analytics munkaterület és az Automation-fiók](solutions.md#log-analytics-workspace-and-automation-account)című témakörben leírtak szerint a munkaterület nem szerepel a felügyeleti megoldásban, de a megoldás telepítése előtt léteznie kell. Ha nem érhető el, a megoldás telepítése sikertelen lesz.
+Log Analytics összes erőforrása egy [munkaterületen](../../azure-monitor/platform/manage-access.md)található. A [log Analytics munkaterület és az Automation-fiók](solutions.md#log-analytics-workspace-and-automation-account)című témakörben leírtak szerint a munkaterület nem szerepel a felügyeleti megoldásban, de a megoldás telepítése előtt léteznie kell. Ha nem érhető el, a megoldás telepítése sikertelen lesz.
 
 A munkaterület neve minden Log Analytics erőforrás neve. Ezt a megoldásban a **munkaterület** paraméterrel végezheti el, mint a SavedSearch-erőforrás következő példájában.
 
@@ -169,30 +169,30 @@ A riasztási műveletek az alábbi struktúrával rendelkeznek. Ilyenek példáu
 
 A riasztási művelet erőforrásaihoz tartozó tulajdonságokat az alábbi táblázatokban ismertetjük.
 
-| Elem neve | Szükséges | description |
+| Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
-| type | Igen | A művelet típusa.  Riasztás a riasztási műveletekhez. |
-| name | Igen | A riasztás megjelenítendő neve.  Ez a név jelenik meg a konzolon a riasztási szabályhoz. |
-| description | Nem | A riasztás opcionális leírása. |
-| severity | Igen | A riasztási rekord súlyossága a következő értékekkel:<br><br> **critical**<br>**Figyelmeztetés**<br>**tájékoztató**
+| `Type` | Igen | A művelet típusa.  **Riasztás a** riasztási műveletekhez. |
+| `Name` | Igen | A riasztás megjelenítendő neve.  Ez a név jelenik meg a konzolon a riasztási szabályhoz. |
+| `Description` | Nem | A riasztás opcionális leírása. |
+| `Severity` | Igen | A riasztási rekord súlyossága a következő értékekkel:<br><br> **critical**<br>**Figyelmeztetés**<br>**tájékoztató**
 
 
 #### <a name="threshold"></a>Küszöbérték
 Ezt a szakaszt kötelező megadni. Meghatározza a riasztási küszöbérték tulajdonságait.
 
-| Elem neve | Szükséges | description |
+| Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
-| Operator | Igen | A következő értékek összehasonlítására szolgáló operátor:<br><br>**gt = nagyobb,<br>mint lt = kisebb, mint** |
-| Value | Igen | Az eredmények összehasonlítására szolgáló érték. |
+| `Operator` | Igen | A következő értékek összehasonlítására szolgáló operátor:<br><br>**gt = nagyobb,<br>mint lt = kisebb, mint** |
+| `Value` | Igen | Az eredmények összehasonlítására szolgáló érték. |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Ez a szakasz nem kötelező. Adja meg egy metrika-mérési riasztáshoz.
 
-| Elem neve | Szükséges | description |
+| Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
-| TriggerCondition | Igen | Azt határozza meg, hogy a küszöbérték a következő értékek összes megszegése vagy egymást követő megszegése esetén:<br><br>**Összesen<br>egymást követő** |
-| Operator | Igen | A következő értékek összehasonlítására szolgáló operátor:<br><br>**gt = nagyobb,<br>mint lt = kisebb, mint** |
-| Value | Igen | Azon időpontok száma, amelyeknek a feltételeknek teljesülnie kell a riasztás indításához. |
+| `TriggerCondition` | Igen | Azt határozza meg, hogy a küszöbérték a következő értékek összes megszegése vagy egymást követő megszegése esetén:<br><br>**Összesen<br>egymást követő** |
+| `Operator` | Igen | A következő értékek összehasonlítására szolgáló operátor:<br><br>**gt = nagyobb,<br>mint lt = kisebb, mint** |
+| `Value` | Igen | Azon időpontok száma, amelyeknek a feltételeknek teljesülnie kell a riasztás indításához. |
 
 
 #### <a name="throttling"></a>Szabályozás

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: ae25ffdf3f819c30fdfb1d3110042579f0b197b9
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: d0b2c9c7450b8a44ca93a9d9fa8770b7ab3d9282
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70381769"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743853"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Cognitive Services-erőforrás létrehozása a Azure Portal használatával
 
@@ -32,12 +32,17 @@ Ez a rövid útmutató az Azure Cognitive Services használatának megkezdésér
 1. Hozzon létre egy erőforrást.
 
     #### <a name="multi-service-resourcetabmultiservice"></a>[Több szolgáltatásból álló erőforrás](#tab/multiservice)
-
+    
     A Multi-Service erőforrás neve **Cognitive Services** a portálon. [Cognitive Services erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne).
     
-    Jelenleg ezek a szolgáltatások **nem** hívhatók meg több szolgáltatásból álló kulcsok használatával: QnA Maker, Speech Services, Custom Vision és anomália detektor.
+    A több szolgáltatásból álló erőforrás jelenleg a következő Cognitive Serviceshoz biztosít hozzáférést:
     
-
+    |                  |                                                      |                    |                               |                  |
+    |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
+    | Computer Vision  | Tartalommoderátor                                    | Face               | Language Understanding (LUIS) | Szövegelemzések   |
+    | Translator Text  | Bing Search 7-es verzió <br>(Web, kép, hírek, videó, vizualizáció) | Bing Custom Search | Bing Entity Search            | Bing Autosuggest |
+    | Bing Spell Check |                                                      |                    |                               |                  |
+    
     #### <a name="single-service-resourcetabsingleservice"></a>[Egy szolgáltatásból származó erőforrás](#tab/singleservice)
 
     Az alábbi hivatkozásokat követve hozhat létre erőforrást az elérhető Cognitive Serviceshoz:
@@ -85,13 +90,13 @@ Ez a rövid útmutató az Azure Cognitive Services használatának megkezdésér
 
 ## <a name="get-the-keys-for-your-resource"></a>Az erőforrás kulcsainak beolvasása
 
-Az erőforrás sikeres üzembe helyezése után kattintson az **Ugrás az erőforráshoz** lehetőségre a **következő lépések**alatt.
+1. Az erőforrás sikeres üzembe helyezése után kattintson az **Ugrás az erőforráshoz** lehetőségre a **következő lépések**alatt.
 
-![Cognitive Services keresése](media/cognitive-services-apis-create-account/resource-next-steps.png)
+    ![Cognitive Services keresése](media/cognitive-services-apis-create-account/resource-next-steps.png)
 
-A megnyíló Gyorsindítás ablaktáblán elérheti a kulcsot és a végpontot.
+2. A megnyíló Gyorsindítás ablaktáblán elérheti a kulcsot és a végpontot.
 
-![Kulcs és végpont beolvasása](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
+    ![Kulcs és végpont beolvasása](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
 

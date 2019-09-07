@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: ab633ca47f684688019b1313de61571252760a20
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f101a8885d9bf67e8bd589d7cf932b0d35cdfe32
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967748"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744501"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés a Azure Monitor
 
@@ -42,7 +42,7 @@ Annak érdekében, hogy a teljes környezeten belül betekintést nyerjen, enged
 Az alkalmazások csak a mögöttes infrastruktúrájuk megbízhatóak. Ha a figyelést a teljes infrastruktúrán keresztül engedélyezte, a teljes körű monitorozást tesz lehetővé, és megkönnyíti a lehetséges kiváltó ok felderítését, ha valami meghiúsul. Azure Monitor segítségével nyomon követheti a teljes hibrid infrastruktúra állapotát és teljesítményét, beleértve a virtuális gépeket, a tárolókat, a tárolást és a hálózatot.
 
 - A [platform metrikáit, a tevékenységek naplóit és a diagnosztikai naplókat](platform/data-sources.md) a konfiguráció nélkül, a legtöbb Azure-erőforrásból automatikusan beolvashatja.
-- A Azure Monitor for VMsrel rendelkező virtuális gépek [](insights/vminsights-overview.md)mélyebb monitorozásának engedélyezése.
+- A [Azure monitor for VMsrel](insights/vminsights-overview.md)rendelkező virtuális gépek mélyebb monitorozásának engedélyezése.
 -  A [Azure monitor for containers esetében](insights/container-insights-overview.md)lehetővé teszi az AK-fürtök mélyebb figyelését.
 - [Figyelési megoldások](insights/solutions-inventory.md) hozzáadása a környezet különböző alkalmazásaihoz és szolgáltatásaihoz.
 
@@ -56,7 +56,7 @@ Az [infrastruktúra mint kód](/azure/devops/learn/what-is-infrastructure-as-cod
 ##  <a name="combine-resources-in-azure-resource-groups"></a>Erőforrások egyesítése Azure-erőforráscsoportok
 Az Azure-ban egy tipikus alkalmazás több olyan erőforrást tartalmaz, mint például a virtuális gépek és a App Services Cloud Services, AK-alapú fürtökön vagy Service Fabricokon üzemeltetett szolgáltatások. Ezek az alkalmazások gyakran használják a függőségeket, például a Event Hubs, a Storage, az SQL és a Service Bus.
 
-- Az erőforrások kombinálása az Azure-erőforráscsoportok használatával teljes körű láthatóságot biztosít a különböző alkalmazásokat alkotó összes erőforráson. Az [erőforráscsoportok Azure monitor](../azure-monitor/insights/resource-group-insights.md) egyszerű módszert biztosít a teljes teljes verembeli alkalmazás állapotának és teljesítményének nyomon követésére, és lehetővé teszi, hogy bármilyen vizsgálat vagy hibakeresés céljából lebontsa a megfelelő összetevőket.
+- Az Azure-erőforráscsoportok erőforrásainak egyesítésével teljes mértékben megtekintheti a különböző alkalmazásokat alkotó összes erőforrást. Az [erőforráscsoportok Azure monitor](../azure-monitor/insights/resource-group-insights.md) egyszerű módszert biztosít a teljes teljes verembeli alkalmazás állapotának és teljesítményének nyomon követésére, és lehetővé teszi, hogy bármilyen vizsgálat vagy hibakeresés céljából lebontsa a megfelelő összetevőket.
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>A minőség biztosítása folyamatos üzembe helyezéssel
 A folyamatos integráció/folyamatos üzembe helyezés lehetővé teszi, hogy automatikusan integrálja és telepítse a kód módosításait az alkalmazásba az automatizált tesztelés eredményei alapján. Egyszerűsíti az üzembe helyezés folyamatát, és gondoskodik arról, hogy az éles környezetbe való áttérés előtt a változások minősége is megtörténjen.
@@ -70,9 +70,9 @@ A folyamatos integráció/folyamatos üzembe helyezés lehetővé teszi, hogy au
 ## <a name="create-actionable-alerts-with-actions"></a>Végrehajtható riasztások létrehozása műveletekkel
 A figyelés kritikus aspektusa proaktív módon értesíti a rendszergazdákat az aktuális és az előre jelzett problémákról. 
 
-- Riasztásokat hozhat létre [Azure monitor](../azure-monitor/platform/alerts-overview.md) naplók és metrikák alapján a kiszámítható meghibásodási állapotok azonosításához. Az összes riasztást úgy kell kipróbálni, hogy a tényleges kritikus feltételeknek megfelelőek legyenek, és hogy csökkentsék a téves pozitív állapotot. A [dinamikus](platform/alerts-dynamic-thresholds.md) küszöbértékek használatával automatikusan kiszámíthatja a metrikus adatok alapterveit, és nem határozhatja meg a saját statikus küszöbértékeit. 
+- [Riasztásokat](../azure-monitor/platform/alerts-overview.md) hozhat létre Azure monitor naplók és metrikák alapján a kiszámítható meghibásodási állapotok azonosításához. Az összes riasztást úgy kell kipróbálni, hogy a tényleges kritikus feltételeknek megfelelőek legyenek, és hogy csökkentsék a téves pozitív állapotot. A [dinamikus](platform/alerts-dynamic-thresholds.md) küszöbértékek használatával automatikusan kiszámíthatja a metrikus adatok alapterveit, és nem határozhatja meg a saját statikus küszöbértékeit. 
 - A riasztásokra vonatkozó műveletek definiálása a leghatékonyabb módon a rendszergazdák értesítéséhez. [Az értesítésekhez elérhető műveletek az](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) SMS, az e-mailek, a leküldéses értesítések vagy a hanghívások.
-- További speciális műveletekkel [csatlakozhat a ITSM eszközhöz](platform/itsmc-overview.md) vagy más riasztási felügyeleti rendszerekhez [](platform/activity-log-alerts-webhook.md)webhookok használatával.
+- További speciális műveletekkel [csatlakozhat a ITSM eszközhöz](platform/itsmc-overview.md) vagy más riasztási felügyeleti rendszerekhez [webhookok](platform/activity-log-alerts-webhook.md)használatával.
 - A riasztásokban azonosított helyzetek javítása, valamint [Azure Automation runbookok](../automation/automation-webhooks.md) vagy [Logic apps](/connectors/custom-connectors/create-webhook-trigger) , amely webhookok használatával indítható riasztásból. 
 - Az automatikus [skálázás](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md) használatával dinamikusan növelheti és csökkentheti a számítási erőforrásokat az összegyűjtött mérőszámok alapján.
 
@@ -85,7 +85,7 @@ Annak biztosítása, hogy a fejlesztési és üzemeltetési műveletek azonos te
 ## <a name="continuously-optimize"></a>Folyamatos optimalizálás
  A monitorozás a népszerű Build-mérték – Learn filozófia egyik alapvető aspektusa, amely a KPI-k és a felhasználói viselkedési mérőszámok folyamatos nyomon követését javasolja, majd a tervezési iterációk segítségével optimalizálja őket. A Azure Monitor segítséget nyújt a vállalata számára releváns mérőszámok és naplók összegyűjtésében, valamint új adatpontok hozzáadásában a szükséges módon.
 
-- A Application Insights eszközeit használva [nyomon követheti a végfelhasználói viselkedést és](../azure-monitor/learn/tutorial-users.md)a részvételt.
+- A Application Insights eszközeit használva [nyomon követheti a végfelhasználói viselkedést és a részvételt](../azure-monitor/learn/tutorial-users.md).
 - Az [Impact Analysis](../azure-monitor/app/usage-impact.md) segítségével rangsorolhatja, hogy mely területek összpontosítanak a fontos KPI-k elérésére.
 
 

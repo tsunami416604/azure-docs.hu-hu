@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Igény szerinti Apache Hadoop-fürtök létrehozása az Azure HDInsight Data Factory használatával '
+title: 'Oktatóanyag: Igény szerinti Apache Hadoop-fürtök az Azure HDInsight-Data Factory'
 description: Oktatóanyag – megtudhatja, hogyan hozhat létre igény szerinti Apache Hadoop-fürtöket a HDInsight-ben Azure Data Factory használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: 7af70de91a7f7696be3b003fec11390d6db9ba60
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: de12725952a2bac6a0b86b1d2e239428c0eaa709
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854987"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736177"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Oktatóanyag: Igény szerinti Apache Hadoop-fürtök létrehozása a HDInsight-ben Azure Data Factory használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -153,7 +153,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 2. Válassza az **erőforráscsoportok** lehetőséget a bal oldali ablaktáblán.
 3. Válassza ki a PowerShell-parancsfájlban létrehozott erőforráscsoport-nevet. Ha túl sok erőforráscsoport van felsorolva, használja a szűrőt.
 4. Az **erőforrások** csempén egy adott erőforrás jelenik meg, kivéve, ha az erőforráscsoportot más projektekkel osztja meg. Ez az erőforrás a korábban megadott névvel rendelkező Storage-fiók. Válassza ki a tárfiók nevét.
-5. Válassza ki a Blobok csempéket.
+5. Válassza ki a **Blobok** csempéket.
 6. Válassza ki a **adfgetstarted** tárolót. Ekkor megjelenik egy **hivescripts**nevű mappa.
 7. Nyissa meg a mappát, és győződjön meg róla, hogy tartalmazza a minta parancsfájlt, a **partitionweblogs. HQL**fájlt.
 
@@ -183,7 +183,7 @@ Ebben a cikkben a struktúra tevékenységét konfigurálja egy igény szerinti 
 
 2. A bal oldali menüben navigáljon a **+ erőforrás** > létrehozása**elemzési** > **Data Factory**elemre.
 
-    ![Azure Data Factory] a portálon (./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "Azure Data Factory") a portálon
+    ![Azure Data Factory a portálon](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "Azure Data Factory a portálon")
 
 3. Adja meg vagy válassza ki a következő értékeket az **új adatok gyári** csempéhez:
 
@@ -294,7 +294,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
         ![A folyamathoz tartozó struktúra-parancsfájl részleteinek megadása](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "A folyamathoz tartozó struktúra-parancsfájl részleteinek megadása")
 
-    1. A **speciális** > **Paraméterek**területen válassza **az automatikus kitöltés a szkriptből**lehetőséget. Ez a beállítás minden olyan paramétert megkeres a kaptár-parancsfájlban, amely futásidőben értéket igényel. A használt szkript (**partitionweblogs. HQL**) **kimeneti** paraméterrel rendelkezik. Adja meg a formátumot `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` úgy, hogy az Azure Storage-beli meglévő mappára mutasson. Az elérési út megkülönbözteti a kis- és nagybetűket. Ez az az elérési út, ahol a rendszer a parancsfájl kimenetét tárolja. A `wasbs` séma azért szükséges, mert a Storage-fiókok esetében alapértelmezés szerint engedélyezve van a biztonságos átvitel.
+    1. A **speciális** > **Paraméterek**területen válassza **az automatikus kitöltés a szkriptből**lehetőséget. Ez a beállítás minden olyan paramétert megkeres a kaptár-parancsfájlban, amely futásidőben értéket igényel. A használt szkript (**partitionweblogs. HQL**) **kimeneti** paraméterrel rendelkezik. Adja meg **a formátumot** `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` úgy, hogy az Azure Storage-beli meglévő mappára mutasson. Az elérési út megkülönbözteti a kis- és nagybetűket. Ez az az elérési út, ahol a rendszer a parancsfájl kimenetét tárolja. A `wasbs` séma azért szükséges, mert a Storage-fiókok esetében alapértelmezés szerint engedélyezve van a biztonságos átvitel.
     
         ![Adja meg a kaptár parancsfájl paramétereit](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "Adja meg a kaptár parancsfájl paramétereit")
 
@@ -308,7 +308,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
 ## <a name="trigger-a-pipeline"></a>Folyamat elindítása
 
-1. A tervező felületének eszköztárán válassza az aktiválási > trigger **hozzáadása** **most**lehetőséget.
+1. A tervező felületének eszköztárán válassza az **aktiválási** > **trigger hozzáadása most**lehetőséget.
 
     ![A Azure Data Factory folyamat elindítása](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "A Azure Data Factory folyamat elindítása")
 

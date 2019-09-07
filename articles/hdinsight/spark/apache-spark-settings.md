@@ -1,6 +1,6 @@
 ---
 title: A Spark beállításainak konfigurálása – Azure HDInsight
-description: A Spark konfigurálása Azure HDInsight-fürthöz.
+description: Azure HDInsight-fürt Apache Spark beállításainak megtekintése és konfigurálása
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: eb948aa2b683f426831e1b0d34b44f814eab6b9f
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 2d369af7c11473d811677f33f9112d41260fcecf
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441918"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736017"
 ---
 # <a name="configure-apache-spark-settings"></a>Az Apache Spark beállításainak konfigurálása
 
@@ -86,18 +86,18 @@ A következő ábrán a legfontosabb Spark-objektumok láthatók: az illesztőpr
 
 A Spark-feladatok a feldolgozói erőforrásokat, különösen a memóriát használják, ezért gyakori a Spark-konfigurációs értékek beállítása a feldolgozó csomópont-végrehajtók számára.
 
-Három fő paraméter, amelyet gyakran a Spark-konfigurációk hangolására módosítanak az alkalmazási `spark.executor.cores`követelmények `spark.executor.instances`javítása `spark.executor.memory`érdekében, és. A végrehajtó egy Spark-alkalmazáshoz indított folyamat. Egy végrehajtó fut a munkavégző csomóponton, és felelős az alkalmazás feladataiért. Minden egyes fürt esetében a végrehajtók alapértelmezett száma és a végrehajtó mérete a munkavégző csomópontok száma és a feldolgozó csomópont mérete alapján számítható ki. Ezeket a rendszer a `spark-defaults.conf` fürt fő csomópontjain tárolja.  Ezeket az értékeket egy futó fürtben is szerkesztheti, ha kiválasztja az **Egyéni Spark-** alapértékek hivatkozást a Ambari webes felhasználói felületén.  A módosítások elvégzése után a felhasználói felület az összes érintett  szolgáltatás újraindítását kéri.
+Három fő paraméter, amelyet gyakran a Spark-konfigurációk hangolására módosítanak az alkalmazási `spark.executor.cores`követelmények `spark.executor.instances`javítása `spark.executor.memory`érdekében, és. A végrehajtó egy Spark-alkalmazáshoz indított folyamat. Egy végrehajtó fut a munkavégző csomóponton, és felelős az alkalmazás feladataiért. Minden egyes fürt esetében a végrehajtók alapértelmezett száma és a végrehajtó mérete a munkavégző csomópontok száma és a feldolgozó csomópont mérete alapján számítható ki. Ezeket a rendszer a `spark-defaults.conf` fürt fő csomópontjain tárolja.  Ezeket az értékeket egy futó fürtben is szerkesztheti, ha kiválasztja az **Egyéni Spark-alapértékek** hivatkozást a Ambari webes felhasználói felületén.  A módosítások elvégzése után a felhasználói felület az összes érintett szolgáltatás **újraindítását** kéri.
 
 > [!NOTE]  
 > Ez a három konfigurációs paraméter konfigurálható a fürt szintjén (a fürtön futó összes alkalmazás esetében), valamint az egyes alkalmazásokhoz is.
 
-A Spark-végrehajtók által használt erőforrásokkal kapcsolatos további információforrás a Spark-alkalmazás felhasználói felülete.  A Spark felhasználói felületén válassza a **végrehajtók** fület a konfiguráció és a végrehajtók által felhasznált erőforrások összesített és részletes nézeteinek megjelenítéséhez.  Ezek a nézetek segítenek eldönteni, hogy a teljes fürthöz tartozó Spark-végrehajtók alapértelmezett értékeit vagy a feladatok egy adott készletét kell-e módosítani.
+A Spark-végrehajtók által használt erőforrásokkal kapcsolatos információkat a Spark-alkalmazás felhasználói felületén is megtalálhatja.  A Spark felhasználói felületén válassza a **végrehajtók** fület a konfiguráció és a végrehajtók által felhasznált erőforrások összesített és részletes nézeteinek megjelenítéséhez.  E nézetek segítségével meghatározhatja, hogy a teljes fürt Spark-végrehajtóinak, vagy csak a feladat-végrehajtások adott részének alapértelmezett értékeit szeretné-e módosítani.
 
 ![Spark-végrehajtók](./media/apache-spark-settings/spark-executors.png)
 
-Azt is megteheti, hogy a Ambari REST API használatával programozottan ellenőrizheti a HDInsight és a Spark-fürt konfigurációs beállításait.  További információ a GitHubon elérhető [Apache AMBARI API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)-referenciában található.
+Azt is megteheti, hogy a Ambari REST API használatával programozottan ellenőrizheti a HDInsight és a Spark-fürt konfigurációs beállításait.  További információ a [githubon elérhető Apache AMBARI API-referenciában](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)található.
 
-A Spark számítási feladattól függően megállapíthatja, hogy egy nem alapértelmezett Spark-konfiguráció optimalizálja a Spark-feladatok optimalizált végrehajtását.  A nem alapértelmezett fürtkonfiguráció érvényesítéséhez teljesítményteszt-tesztelést kell végezni a minta számítási feladatokkal.  A módosítani kívánt általános paraméterek némelyike a következőkre használható:
+A Spark számítási feladattól függően előfordulhat, hogy egy nem alapértelmezett Spark-konfiguráció optimálisabb Spark feladat-végrehajtásokat biztosít.  A nem alapértelmezett fürtkonfigurációk ellenőrzéséhez hajtson végre teljesítménytesztelést számításifeladat-mintákkal.  Néhány gyakori paraméter, amelyeket érdemes lehet módosítani:
 
 * `--num-executors`beállítja a végrehajtók számát.
 * `--executor-cores`beállítja a magok számát az egyes végrehajtók számára. Javasoljuk, hogy a közepes méretű végrehajtók használatával más folyamatok is használják a rendelkezésre álló memória egy részét.

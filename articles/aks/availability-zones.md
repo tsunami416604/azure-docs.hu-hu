@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 4c2058072df4fcb068257c3e265dfe365c6d7e65
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 690d22eadf37a24b4679ce10838074533ac65fcb
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033136"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390069"
 ---
 # <a name="preview---create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Előzetes verzió – az Availability Zonest használó Azure Kubernetes Service (ak) fürt létrehozása
 
@@ -34,7 +34,7 @@ Szüksége lesz az Azure CLI-verzió 2.0.66 vagy újabb verziójára, és konfig
 
 ### <a name="install-aks-preview-cli-extension"></a>Az Kabai szolgáltatás telepítése – előnézeti CLI-bővítmény
 
-A rendelkezésre állási zónákat használó AK *-alapú* fürtök létrehozásához a CLI-0.4.1 vagy újabb verziójára van szükség. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg az elérhető frissítéseket:
+A rendelkezésre állási zónákat használó AK *-alapú* fürtök létrehozásához a CLI-0.4.1 vagy újabb verziójára van szükség. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg a rendelkezésre álló frissítéseket:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -44,25 +44,21 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-feature-flags-for-your-subscription"></a>Az előfizetéshez tartozó szolgáltatás-jelzők regisztrálása
+### <a name="register-the-availabilityzonepreview-feature-flag-for-your-subscription"></a>Regisztrálja az előfizetéshez tartozó AvailabilityZonePreview-szolgáltatás jelölőjét
 
-Ha egy AK-fürtöt szeretne létrehozni a rendelkezésre állási zónákhoz, először engedélyezzen néhány funkció-jelzőt az előfizetésében. A fürtök virtuálisgép-méretezési csoporttal kezelik a Kubernetes-csomópontok központi telepítését és konfigurálását. Az Azure Load Balancer *szabványos* SKU-jának rugalmasságot is biztosítania kell a hálózati összetevők számára, hogy átirányítsa a forgalmat a fürtbe. Regisztrálja az *AvailabilityZonePreview*, a *AKSAzureStandardLoadBalancer*és a *VMSSPreview* funkció jelzőit az az [Feature Register][az-feature-register] paranccsal az alábbi példában látható módon:
+Ha egy AK-fürtöt szeretne létrehozni a rendelkezésre állási zónákhoz, először engedélyezze a *AvailabilityZonePreview* szolgáltatás jelölőjét az előfizetésében. Regisztrálja a *AvailabilityZonePreview* szolgáltatás jelölőjét az az [Feature Register][az-feature-register] paranccsal az alábbi példában látható módon:
 
 > [!CAUTION]
 > Ha regisztrál egy szolgáltatást egy előfizetéshez, jelenleg nem tudja regisztrálni a szolgáltatást. Az előzetes verziójú funkciók engedélyezése után az alapértelmezett beállítások az előfizetésben létrehozott összes AK-fürthöz használhatók. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
 
 ```azurecli-interactive
 az feature register --name AvailabilityZonePreview --namespace Microsoft.ContainerService
-az feature register --name AKSAzureStandardLoadBalancer --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
 Néhány percet vesz igénybe, amíg az állapot *regisztrálva*jelenik meg. A regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával tekintheti meg:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AvailabilityZonePreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAzureStandardLoadBalancer')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
 Ha elkészült, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját az az [Provider Register][az-provider-register] paranccsal:
@@ -90,7 +86,7 @@ A következő korlátozások érvényesek az AK-fürtök rendelkezésre állási
 * A rendelkezésre állási zónákat engedélyező fürtök esetében az Azure standard Load Balancer használata szükséges a zónák közötti elosztáshoz.
 * Standard Load Balancer üzembe helyezéséhez a Kubernetes 1.13.5 vagy újabb verzióját kell használnia.
 
-A rendelkezésre állási zónákat használó AK-fürtöknek az Azure Load Balancer *standard* SKU-t kell használniuk. Az Azure Load Balancer alapértelmezett alapszintű SKU-jának nem támogatja a rendelkezésre állási zónák közötti eloszlást. További információ és a standard Load Balancer korlátai: az [Azure Load Balancer standard SKU előzetes][standard-lb-limitations]verziójának korlátai.
+A rendelkezésre állási zónákat használó AK-fürtöknek az Azure Load Balancer *standard* SKU-t kell használniuk. Az Azure Load Balancer alapértelmezett *alapszintű* SKU-jának nem támogatja a rendelkezésre állási zónák közötti eloszlást. További információ és a standard Load Balancer korlátai: az [Azure Load Balancer standard SKU-korlátai][standard-lb-limitations].
 
 ### <a name="azure-disks-limitations"></a>Azure-lemezek korlátozásai
 

@@ -1,7 +1,6 @@
 ---
-title: Gépi tanulás & adatelemzési eszközök
-titleSuffix: Azure Data Science Virtual Machine
-description: Ismerje meg a machine learning-eszközöket és keretrendszereket előre telepítve van a Data Science virtuális gépen.
+title: Machine learning és adatelemzési eszközök
+description: Ismerkedjen meg a Data Science Virtual Machine előtelepített gépi tanulási eszközökkel és keretrendszerekkel.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 ms.service: machine-learning
@@ -10,39 +9,39 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: f97412bc3f8d8b046df1324c7e1a0ad568f5db52
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: dec1589898cf6cc239dbe737519e078f1c4bc7b1
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278784"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744928"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Gépi tanulási és adatelemzési eszközök az Azure adatelemzési Virtual Machines
-Az Azure Data Science Virtual Machines rendelkezik eszközök széles skáláját, és -kódtárak a machine learning (gépi tanulás) például Python, R és Julia népszerű nyelveken érhető el. 
+Az Azure adatelemzési Virtual Machines (Dsvm) számos eszközt és kódtárat tartalmaz a gépi tanuláshoz, amely népszerű nyelveken érhető el, például a Python, az R és a Julia.
 
-Íme néhány, a gépi Tanulási eszközök és kódtárak Data Science Virtual Machines gépeken. 
+Íme néhány, a Dsvm-alapú gépi tanulási eszköz és könyvtár.
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>A Pythonhoz készült Azure Machine Learning SDK
 Tekintse meg a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml)teljes referenciáját.
 
 |    |           |
 | ------------- | ------------- |
-| Mi ez? |   Az Azure Machine Learning egy felhőalapú szolgáltatás, amellyel fejleszthet és helyezhet üzembe gépi Tanulási modelleket. Nyomon követheti a modellek, fejleszthet, betanítását, méretezési és a Python SDK-val kezelheti azokat. Tárolókként modellek üzembe helyezése, és futtathatók a felhőben, a helyszínen, vagy az Azure IoT Edge-ben. |
-| Támogatott kiadások  | Windows (Conda-környezet: AzureML), Linux (Conda Environment: py36) |
-| Gyakori használati      | Általános gépi Tanulási platform  |
-| Hogyan azt konfigurálni vagy telepíteni? |  GPU-támogatással rendelkező telepítve |
-| Használatával, vagy futtassa | A Python SDK-t és az Azure parancssori felület. Aktiválja a conda-környezet `AzureML` Windows Edition *vagy* való `py36` Linux rendszeren.  |
-| A minták mutató hivatkozás | Mintául szolgáló Jupyter notebookok szerepelnek a `AzureML` notebookok a könyvtárban.  |
-| Kapcsolódó eszközök  | A Visual Studio Code-ban Jupyter   |
+| Mi ez?   |   A Azure Machine Learning egy felhőalapú szolgáltatás, amely gépi tanulási modellek fejlesztésére és üzembe helyezésére használható. Nyomon követheti a modellek, fejleszthet, betanítását, méretezési és a Python SDK-val kezelheti azokat. Tárolókként modellek üzembe helyezése, és futtathatók a felhőben, a helyszínen, vagy az Azure IoT Edge-ben.   |
+| Támogatott kiadások     | Windows (Conda-környezet: AzureML), Linux (Conda Environment: py36)    |
+| Gyakori használati      | Általános gépi tanulási platform      |
+| Hogyan azt konfigurálni vagy telepíteni?      |  GPU-támogatással rendelkező telepítve   |
+| Használatával, vagy futtassa      | Python SDK-val és az Azure CLI-vel. Aktiválja a conda-környezet `AzureML` Windows Edition *vagy* való `py36` Linux rendszeren.      |
+| A minták mutató hivatkozás      | Mintául szolgáló Jupyter notebookok szerepelnek a `AzureML` notebookok a könyvtárban.  |
+| Kapcsolódó eszközök      | A Visual Studio Code-ban Jupyter   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   |    XGBoost kiemelési (GBDT, GBRT vagy GBM) könyvtár a Python, R, Java, Scala, C++ és további gyors, hordozható és elosztott színátmenet. Egyetlen gép, Hadoop és Spark futtatja.    |
+| Mi ez?   |   Gyors, hordozható és elosztott gradiens-növelő (GBDT, GBRT vagy GBM) függvénytár a Python, az R, a Java, a Scala C++és más rendszerekhez. Egyetlen gépen fut, Apache Hadoop és Sparkon.    |
 | Támogatott kiadások     | Windows, Linux     |
-| Gyakori használati      | Általános gépi Tanulási kódtár      |
+| Gyakori használati      | Általános gépi tanulási könyvtár      |
 | Hogyan azt konfigurálni vagy telepíteni?      |  GPU-támogatással rendelkező telepítve   |
-| Használatával, vagy futtassa      | Python, könyvtár (2.7-es és 3.5-ös), az R-csomaggal, és a parancssori eszköz elérési útját (`C:\dsvm\tools\xgboost\bin\xgboost.exe` Windows, a `/dsvm/tools/xgboost/xgboost` Linux)    |
+| Használatával, vagy futtassa      | Python-függvénytárként (2,7 és 3,5), R Package és on-Path parancssori eszköz (`C:\dsvm\tools\xgboost\bin\xgboost.exe` Windows és `/dsvm/tools/xgboost/xgboost` Linux rendszerekhez)    |
 | A minták mutató hivatkozások      | A minták szerepelnek a virtuális gépen, `/dsvm/tools/xgboost/demo` , linuxon és `C:\dsvm\tools\xgboost\demo` a Windows.   |
 | Kapcsolódó eszközök      | LightGBM, MXNet   |
 
@@ -51,10 +50,10 @@ Tekintse meg a [Pythonhoz készült Azure Machine learning SDK](https://docs.mic
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   |   Vowpal Wabbit (más néven "VW") egy nyílt forráskódú, a gyors, out-az-core rendszerkönyvtár tanulási.    |
+| Mi ez?   |   Gyors, nyílt forráskódú, nem alapszintű tanulási rendszerkönyvtár    |
 | Támogatott kiadások     | Windows, Linux     |
-| Gyakori használati      | Általános gépi Tanulási kódtár      |
-| Hogyan azt konfigurálni vagy telepíteni?      |  Windows – msi-telepítőt, Linux – apt-get paranccsal |
+| Gyakori használati      | Általános gépi tanulási könyvtár      |
+| Hogyan azt konfigurálni vagy telepíteni?      |  Windows: msi-telepítő<br/>Linux: apt-get |
 | Használatával, vagy futtassa      | Az elérési út parancssori eszköz (`C:\Program Files\VowpalWabbit\vw.exe` Windows, a `/usr/bin/vw` Linux rendszeren)    |
 | A minták mutató hivatkozás      | [VowPal Wabbit minták](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
 | Kapcsolódó eszközök      |LightGBM, MXNet, XGBoost   |
@@ -63,29 +62,29 @@ Tekintse meg a [Pythonhoz készült Azure Machine learning SDK](https://docs.mic
 ## <a name="weka"></a>Weka
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   |  Weka adatbányászati feladatokhoz gépi Tanulási algoritmusok gyűjteménye. Az algoritmusok kell közvetlenül egy adatkészlet a alkalmazni, vagy saját Java kódot meghívva. Weka előtti adatfeldolgozás, besorolás, regressziós, fürtözés, társítási szabályok és megjelenítési eszközöket tartalmaz. |
+| Mi ez?   |  Gépi tanulási algoritmusok gyűjteménye adatbányászati feladatokhoz. Az algoritmusok kell közvetlenül egy adatkészlet a alkalmazni, vagy saját Java kódot meghívva. Weka előtti adatfeldolgozás, besorolás, regressziós, fürtözés, társítási szabályok és megjelenítési eszközöket tartalmaz. |
 | Támogatott kiadások     | Windows, Linux     |
-| Gyakori használati      | Általános gépi Tanulási eszköz     |
-| Használatával, vagy futtassa      | A Windows, Weka keresése a Start menüben. Linuxon, jelentkezzen be X2Go, és folytassa a **alkalmazások** > **fejlesztési** > **Weka**. |
+| Gyakori használati      | Általános gépi tanulási eszköz     |
+| Használatával, vagy futtassa      | Windows rendszeren keresse meg a WEKA a **Start** menüben. Linuxon, jelentkezzen be X2Go, és folytassa a **alkalmazások** > **fejlesztési** > **Weka**. |
 | A minták mutató hivatkozás      | [Weka minták](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | Kapcsolódó eszközök      |LightGBM, Rattle, XGBoost   |
 
 ## <a name="rattle"></a>Rattle
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   |   Rattle data szintű adatbányászatra grafikus felhasználói felületen az R.   |
+| Mi ez?   |   Grafikus felhasználói felület az adatbányászathoz az R használatával.   |
 | Támogatott kiadások     | Windows, Linux     |
-| Gyakori használati      | Általános felhasználói felület adatbányászati eszköz az R    |
-| Használatával, vagy futtassa      | UI-eszköz. A Windows, indítson el egy parancssort, R futtassa, és belül R futtassa `rattle()`. Linuxon, X2Go összekapcsolása, indítsa el a parancsot egy terminálban, R futtassa, és belül R futtassa `rattle()`. |
+| Gyakori használati      | Általános felhasználói felületi adatbányászati eszköz az R-hez    |
+| Használatával, vagy futtassa      | Felhasználói felületi eszközként. Windows rendszeren indítson el egy parancssort, futtassa az R-t, majd az `rattle()`r-ben futtassa a parancsot. Linux rendszeren kapcsolódjon a X2Go, indítson el egy terminált, futtassa az R parancsot, majd `rattle()`az r-ben futtassa a parancsot. |
 | A minták mutató hivatkozás      | [Rattle](https://togaware.com/onepager/) |
 | Kapcsolódó eszközök      |LightGBM, Weka, XGBoost   |
 
 ## <a name="lightgbm"></a>LightGBM
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | LightGBM gyorsított döntési fa típusú algoritmusok alapján (GBDT, GBRT, GBM vagy ADATKÖZPONT) keretrendszer gyors, elosztott, nagy teljesítményű átmenetes. Ennek a területnek besorolási és sok más gépi Tanulási feladatok használatos.    |
+| Mi ez?   | Egy gyors, elosztott, nagy teljesítményű színátmenet-fokozó (GBDT, GBRT, GBM vagy MART) keretrendszer döntési fa algoritmusok alapján. Ez a rangsorolás, besorolás és sok más gépi tanulási feladat esetében használatos.    |
 | Támogatott verziók      | Windows, Linux    |
-| Gyakori használati      | Általános célú átmenetes kiemelési keretrendszer      |
+| Gyakori használati      | Általános célú átmenet – fellendítő keretrendszer      |
 | Hogyan azt konfigurálni vagy telepíteni?      | A Windows Python-csomag LightGBM van telepítve. A Linux, a parancssori végrehajtható fájl szerepel `/opt/LightGBM/lightgbm`, az R-csomag telepítve van, és a Python-csomagok települnek.     |
 | A minták mutató hivatkozás      | [LightGBM útmutató](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
 | Kapcsolódó eszközök      | MXNet, XgBoost  |
@@ -93,12 +92,12 @@ Tekintse meg a [Pythonhoz készült Azure Machine learning SDK](https://docs.mic
 ## <a name="h2o"></a>H2O
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | H2O egy nyílt forráskódú AI-platform, amely támogatja a memórián belüli, elosztott, gyors és skálázható gépi Tanulási.  |
+| Mi ez?   | Egy nyílt forráskódú AI platform, amely támogatja a memóriában, az elosztott, a gyors és a méretezhető gépi tanulást.  |
 | Támogatott verziók      | Linux   |
-| Gyakori használati      | Általános célú elosztott, skálázható gépi tanulás   |
+| Gyakori használati      | Általános célú elosztott, méretezhető gépi tanulás   |
 | Hogyan azt konfigurálni vagy telepíteni?      | A H2O települ `/dsvm/tools/h2o`.      |
 | Használatával, vagy futtassa      | Csatlakozás a virtuális gép X2Go használatával. Indítsa el egy új terminálablakban, majd futtassa `java -jar /dsvm/tools/h2o/current/h2o.jar`. Ezután indítson el egy webböngészőt, és csatlakozhat `http://localhost:54321`.      |
 | A minták mutató hivatkozás      | Minták érhetők el a virtuális gépen az Jupyter alatt a `h2o` könyvtár.      |
 | Kapcsolódó eszközök      | Az Apache Spark, MXNet, XGBoost, pezsgő vízzel, mély víz    |
 
-Nincsenek számos más gépi Tanulási függvénytárak Data Science virtuális gépeken, például a népszerű `scikit-learn` csomagot, amely a Data Science virtuális gépeken telepített Anaconda Python elosztási része. Tekintse meg a Python, R és Julia elérhető csomagok listájában, futtassa a megfelelő csomagkezelők.
+A dsvm-on számos más gépi tanulási kódtár található, például a népszerű `scikit-learn` csomag, amely a dsvm-hez készült anaconda Python-eloszlás részét képezi. Tekintse meg a Python, R és Julia elérhető csomagok listájában, futtassa a megfelelő csomagkezelők.

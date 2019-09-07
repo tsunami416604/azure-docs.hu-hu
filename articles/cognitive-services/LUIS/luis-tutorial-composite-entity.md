@@ -1,5 +1,5 @@
 ---
-title: Összetett entitások oktatóanyaga – LUIS
+title: 'Oktatóanyag: Összetett entitások oktatóanyaga – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Adjon hozzá egy összetett entitást szeretné a különböző típusú kinyert adatok egyetlen tartalmazó entitásba. A kötegelés az adatokat, az ügyfélalkalmazás is könnyen kinyerheti az különböző adattípusok kapcsolódó adatokat.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 698635b3f216c556e1e36a033703b8786a028e38
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: f20661a74397487e141e69681f207418db8ac386
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946133"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70388032"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Oktatóanyag: Kapcsolódó adatok csoportosítása és kinyerése
 Ebben az oktatóanyagban egy összetett entitás szeretné a kinyert adatokkal történő tartalmazó egyetlen entitás hozzáadása. A kötegelés az adatokat, az ügyfélalkalmazás is könnyen kinyerheti az különböző adattípusok kapcsolódó adatokat.
@@ -44,7 +44,7 @@ Az összetett entitás ideális ehhez az adattípushoz, mert az adatok:
 
 ## <a name="import-example-app"></a>Alkalmazás importálása – példa
 
-1.  Töltse le és mentse az [alkalmazás JSON](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json) -fájlját az entitás listázása oktatóanyagból.
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json) az entitás listázása oktatóanyagból.
 
 2. Importálja a JSON-t egy új alkalmazásba.
 

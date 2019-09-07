@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1645e97e5648032a1281e7cb410c42f0a28b6767
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4f0cffbb65192a3698df0c658742147aea354b70
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559657"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744532"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Emberi címkével ellátott átiratok létrehozása
 
@@ -74,7 +74,7 @@ A következő normalizálás szabályok automatikusan érvényesek az átíráso
 | Go Get-em! | Go Get em |
 | Dupla közös | Dupla közös |
 | 104 Elm utca | 1 0 4 Elm utca |
-| Hangolás a 102,7-re | hangolás a 1 0 2 7-re |
+| Hangolás a 102,7-re | hangolás a 1 0 2 pont Seven |
 | A PI körülbelül 3,14 | a PI körülbelül három pontot 1 4 |
 Informatikai költségek $3,14| informatikai költségek 3 14 |
 

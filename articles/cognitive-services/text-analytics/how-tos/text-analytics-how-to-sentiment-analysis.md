@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 19654a4902ae64e5de63ffc93a8d143cc518e254
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b37de45099362fda7288db52cf17749da6e44ea6
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697734"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390220"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Példa: Érzelmek észlelése Text Analytics
 
@@ -26,7 +26,7 @@ Ez a funkció akkor hasznos, ha a közösségi média, a vevő értékelések é
 A Hangulatelemzés API jelenleg az angol, a német, a spanyol és a francia nyelveket támogatja. Más nyelvek előzetes verzióban érhetők el. További információk: [Támogatott nyelvek](../text-analytics-supported-languages.md).
 
 > [!TIP]
-> Az Azure Text Analytics API egy Linux-alapú Docker-tároló képet is biztosít az érzelmek elemzéséhez, így [a Text Analytics tárolót](text-analytics-how-to-install-containers.md) az adatokhoz közelebb is telepítheti és futtathatja.
+> Az Azure Text Analytics API egy Linux-alapú Docker-tároló képet is biztosít az érzelmek elemzéséhez, így [a Text Analytics tárolót az adatokhoz közelebb is telepítheti és futtathatja](text-analytics-how-to-install-containers.md) .
 
 ## <a name="concepts"></a>Alapelvek
 
@@ -76,22 +76,22 @@ A dokumentum méretének 5 120 karakternél rövidebbnek kell lennie a dokumentu
 
 ## <a name="step-1-structure-the-request"></a>1\. lépés: A kérelem szerkezete
 
-A kérelem meghatározásával kapcsolatos további információkért lásd [a Text Analytics API](text-analytics-how-to-call-api.md)meghívása című témakört. A következő pontokat a kényelem kedvéért itt megismételjük:
+A kérelem meghatározásával kapcsolatos további információkért lásd [a Text Analytics API meghívása](text-analytics-how-to-call-api.md)című témakört. A következő pontokat a kényelem kedvéért itt megismételjük:
 
 + Hozzon létre egy POST-kérelmet. A kérelem API-dokumentációjának áttekintéséhez tekintse meg a [HANGULATELEMZÉS API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)-t.
 
-+ Állítsa be a HTTP-végpontot az Text Analytics Azure-beli erőforrás vagy egy példányos [text Analytics tároló](text-analytics-how-to-install-containers.md)használatával. Tartalmaznia kell az `/sentiment` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`.
++ Állítsa be a HTTP-végpontot az Text Analytics Azure-beli erőforrás vagy egy példányos [text Analytics tároló](text-analytics-how-to-install-containers.md)használatával. Meg kell `/text/analytics/v2.1/sentiment` adnia az URL-címet. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`.
 
 + Állítsa be a kérelem fejlécét, hogy tartalmazza a Text Analytics műveletekhez tartozó [hozzáférési kulcsot](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 
 + A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót.
 
 > [!Tip]
-> Használja [](text-analytics-how-to-call-api.md) a Poster szolgáltatást, vagy nyissa meg a [dokumentáció](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) **API-tesztelési konzolját** a kérelem felépítéséhez és a szolgáltatáshoz való közzétételéhez.
+> Használja a [Poster](text-analytics-how-to-call-api.md) szolgáltatást, vagy nyissa meg a [dokumentáció](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) **API-tesztelési konzolját** a kérelem felépítéséhez és a szolgáltatáshoz való közzétételéhez.
 
 ## <a name="step-2-post-the-request"></a>2\. lépés: A kérelem közzététele
 
-Az elemzés a kérelem megkapásakor történik meg. További információ a másodpercenként elküldhető kérelmek méretéről és számáról: az adatkorlátozások szakasz [](../overview.md#data-limits) az áttekintésben.
+Az elemzés a kérelem megkapásakor történik meg. További információ a másodpercenként elküldhető kérelmek méretéről és számáról: az [adatkorlátozások](../overview.md#data-limits) szakasz az áttekintésben.
 
 Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol semmilyen adatot. Az eredményeket azonnal visszaadja a válaszban.
 
@@ -137,10 +137,10 @@ A következő példa a dokumentum-gyűjtemény válaszát mutatja be ebben a cik
 A [Hangulatelemzés következő verziója](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-preview/operations/56f30ceeeda5650db055a3c9) már elérhető a nyilvános előzetes verzióban. Jelentős mértékben javítja az API szövegének és pontozásának pontosságát és részletességét.
 
 > [!NOTE]
-> * Az Hangulatelemzés v3 kérelem formátuma [](../overview.md#data-limits) és adatkorlátja megegyezik az előző verzióval.
+> * Az Hangulatelemzés v3 kérelem formátuma és [adatkorlátja](../overview.md#data-limits) megegyezik az előző verzióval.
 > * Most Hangulatelemzés v3:
->    * Jelenleg csak az angol nyelvet támogatja.
->    * A következő régiókban érhető el: `Central US`, `Central Canada`és `East Asia`.
+>    * Jelenleg az angol, az egyszerűsített kínai és a japán nyelveket támogatja.
+>    * A következő régiókban érhető el: `Central US`, `Central Canada`és `East Asia`. 
 
 |Funkció |Leírás  |
 |---------|---------|
@@ -257,7 +257,7 @@ Míg a kérelem formátuma megegyezik az előző verzióval, a válasz formátum
 
 ### <a name="example-c-code"></a>Példa C# kódja
 
-Megtalálhatja a githubon Hangulatelemzés ezen verzióját meghívó C# alkalmazást. [](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs)
+Megtalálhatja a C# [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs)Hangulatelemzés ezen verzióját meghívó alkalmazást.
 
 ## <a name="summary"></a>Összegzés
 

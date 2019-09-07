@@ -13,17 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 18a14981c97af8e9d90480f7b04d50fc6df6b01d
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: d8f16baccd3a4980ee9dbe410cb2a95878b346d4
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382710"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390028"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képgyűjtemény csatolása vagy leválasztása Azure Lab Services
 A tanárok/laborok rendszergazdái egy sablon virtuálisgép-rendszerképét menthetik az Azure [megosztott rendszerkép](../../virtual-machines/windows/shared-image-galleries.md) -katalógusában, amelyet mások is felhasználhatnak. Első lépésként a tesztkörnyezet rendszergazdája csatol egy meglévő megosztott képtárat a labor-fiókhoz. Miután csatolta a megosztott képtárat, a labor fiókban létrehozott laborok menthetik a lemezképeket a megosztott képkatalógusba. Más oktatók is kiválaszthatják ezt a rendszerképet a megosztott képkatalógusból, hogy sablont hozzanak létre az osztályaik számára. 
 
 Ebből a cikkből megtudhatja, hogyan csatolhat vagy leválaszthatja a megosztott képgyűjteményt egy labor-fiókhoz. 
+
+> [!NOTE]
+> A megosztott képkatalógus szolgáltatással kapcsolatos költségek megismeréséhez tekintse meg a [megosztott képgyűjtemény számlázása](../../virtual-machines/windows/shared-image-galleries.md#billing)című témakört.
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurálás a labor-fiók létrehozásakor
 Labor-fiók létrehozásakor csatlakoztathat egy megosztott képtárat a labor-fiókhoz. Választhat egy meglévő megosztott képtárat a legördülő listából, vagy létrehozhat egy újat. Megosztott képtárat a labor-fiókhoz való létrehozásához és csatolásához válassza az **új létrehozása**lehetőséget, adja meg a katalógus nevét, majd írja be **az OK gombot**. 

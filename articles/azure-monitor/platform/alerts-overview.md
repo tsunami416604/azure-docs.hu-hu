@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 67318fee540195fc913739d78e80649100c54e70
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
-ms.translationtype: MT
+ms.openlocfilehash: defc317618dfffd0e2b28c75b6168ec1dbda36b7
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034819"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735128"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztások áttekintése 
 
@@ -41,7 +41,7 @@ A riasztási szabályok legfontosabb attribútumai a következők:
 
 **Cél erőforrás** – meghatározza a riasztáshoz elérhető hatókört és jeleket. A cél lehet bármilyen Azure-erőforrás. Példa: egy virtuális gép, egy Storage-fiók, egy virtuálisgép-méretezési csoport, egy Log Analytics munkaterület vagy egy Application Insights-erőforrás. Bizonyos erőforrások (például a Virtual Machines) esetében több erőforrást is megadhat a riasztási szabály céljaként.
 
-A jeleket a cél erőforrás bocsátja ki, és számos típus lehet. Metrika, műveletnapló, Application Insights és napló.
+A **jeleket a** cél erőforrás bocsátja ki, és számos típus lehet. Metrika, műveletnapló, Application Insights és napló.
 
 **Feltételek** – a feltételek a cél erőforráson alkalmazott jel és logika kombinációja. Példák: 
    - Százalékos CPU > 70%
@@ -53,12 +53,13 @@ A jeleket a cél erőforrás bocsátja ki, és számos típus lehet. Metrika, m�
 **Riasztás leírása** – a felhasználó által konfigurált riasztási szabály leírása
 
 **Súlyosság** – a riasztás súlyossága, ha a riasztási szabályban megadott feltételek teljesülnek. A súlyosság 0 és 4 között lehet.
+3\., 0 = kritikus, 1. hiba: a 2. figyelmeztetés = 3. tájékoztató
 
 **Művelet** – a riasztás indításakor végrehajtott művelet. További információ: [Action groups](../../azure-monitor/platform/action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>A riasztás bekapcsolása
 
-A metrikák és naplók riasztása az adatforrások [figyelése](../../azure-monitor/platform/data-sources-reference.md)című témakörben leírtak szerint végezhető el. Ilyenek például a következők:
+A metrikák és naplók riasztása az [adatforrások figyelése](../../azure-monitor/platform/data-sources-reference.md)című témakörben leírtak szerint végezhető el. Ilyenek például a következők:
 - Metrika értékei
 - Naplóbeli keresési lekérdezések
 - Műveletnapló eseményei
@@ -83,7 +84,7 @@ A következő riasztási állapotok támogatottak.
 | Arra vonatkozik | A rendszergazda áttekintette a riasztást, és megkezdte a munkát. |
 | Lezárva | A probléma megoldódott. A riasztások bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
 
-A **riasztási állapot** különbözik, és független a **figyelő**feltételtől. A riasztási állapotot a felhasználó állítja be. A figyelő feltételét a rendszer állítja be. Riasztás esetén a riasztás figyelési feltétele az elindított állapotra van állítva. Ha az alapul szolgáló feltétel, amely miatt a riasztás tüzet töröl, a figyelő feltétele megoldottra van állítva. A riasztási állapot addig nem változik, amíg a felhasználó nem módosítja. Útmutató a [riasztások és az intelligens csoportok állapotának módosításához](https://aka.ms/managing-alert-smart-group-states).
+A **riasztási állapot** különbözik, és független a **figyelő feltételtől**. A riasztási állapotot a felhasználó állítja be. A figyelő feltételét a rendszer állítja be. Riasztás esetén a riasztás figyelési feltétele az elindított állapotra van *állítva.* Ha az alapul szolgáló feltétel, amely miatt a riasztás tüzet töröl, a figyelő feltétele *megoldottra*van állítva. A riasztási állapot addig nem változik, amíg a felhasználó nem módosítja. Útmutató a [riasztások és az intelligens csoportok állapotának módosításához](https://aka.ms/managing-alert-smart-group-states).
 
 ## <a name="smart-groups"></a>Intelligens csoportok 
 Az intelligens csoportok előzetes verzióban érhetők el. 
@@ -130,9 +131,9 @@ A **szabályok** lap megjelenítéséhez kattintson a **riasztási szabályok ke
 A riasztások a figyelési szolgáltatástól vagy a jel típusától függetlenül konzisztens módon hozhatók létre. Az összes kilőtt riasztás és a kapcsolódó részletek egyetlen lapon érhetők el.
  
 Hozzon létre egy új riasztási szabályt a következő három lépéssel:
-1. Válassza ki a riasztás célját.
+1. Válassza ki a riasztás _célját_ .
 1. Válassza ki a kívánt _jelet_ a cél számára elérhető jelek közül.
-1. Itt adhatja meg a jel alapján az adatokra alkalmazandó logikát.
+1. Itt adhatja meg a jel alapján az adatokra alkalmazandó _logikát_ .
  
 Ez az egyszerűsített létrehozási folyamat már nem igényli az Azure-erőforrások kiválasztása előtt a támogatott megfigyelési forrás vagy jelek megismerését. A rendszer automatikusan szűri az elérhető jelek listáját a kiválasztott cél erőforrás alapján. Emellett a cél alapján végigvezeti a riasztási szabály automatikus logikájának meghatározásán.  
 

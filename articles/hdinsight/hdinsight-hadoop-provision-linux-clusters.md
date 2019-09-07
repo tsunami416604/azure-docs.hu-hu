@@ -1,5 +1,5 @@
 ---
-title: Fürt beállítása Apache Hadoop, Apache Spark, Apache Kafka, Apache HBase vagy R Server-Azure HDInsight
+title: Fürt beállítása Apache Hadoop, Spark, Kafka, HBase vagy R Server – Azure
 description: Hadoop-, Kafka-, Spark-, HBase-, R Server-vagy Storm-fürtöket állíthat be a HDInsight böngészőből, a klasszikus Azure CLI-ből, a Azure PowerShell, a REST-ból vagy az SDK-ból.
 keywords: Hadoop-fürt beállítása, Kafka-fürt beállítása, Spark-fürt beállítása, mi a fürt a Hadoop-ben
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: c2aad97cea39221da56666dbeff72ce56fcb2a22
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: f59455374299e25d0c5d6a06c7ec9efc1f220ecf
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113698"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733489"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Fürtök beállítása a HDInsight-ben Apache Hadoop, Apache Spark, Apache Kafka és más szolgáltatásokkal
 
@@ -199,7 +199,7 @@ Ha csak kipróbálja a HDInsight, javasoljuk, hogy használjon egy feldolgozói 
 > [!NOTE]  
 > A fürt méretének korlátozása az Azure-előfizetések között változhat. A korlát növeléséhez vegye fel a kapcsolatot az [Azure számlázási támogatási szolgálatával](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) .
 
-Ha a Azure Portal a fürt konfigurálására használja, a csomópont mérete a csomópontok díjszabási **szintjei** panelen érhető el. A portálon megtekintheti a különböző csomópont-méretekhez kapcsolódó költségeket is. 
+Ha a Azure Portal a fürt konfigurálására használja, a csomópont mérete a **csomópontok díjszabási szintjei** panelen érhető el. A portálon megtekintheti a különböző csomópont-méretekhez kapcsolódó költségeket is. 
 
 ![HDInsight VM-csomópontok mérete](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-node-sizes.png)
 
@@ -217,7 +217,7 @@ További információkért lásd: [virtuális gépek méretei](../virtual-machin
 
 ## <a name="advanced-settings-script-actions"></a>Speciális beállítások: Szkriptműveletek
 
-További összetevőket is telepíthet, vagy testre szabhatja a fürt konfigurációját parancsfájlok használatával a létrehozás során. Az ilyen parancsfájlokat parancsfájl- **művelettel**hívja meg, amely a Azure Portal, a HDInsight Windows PowerShell-parancsmagok vagy a HDINSIGHT .net SDK használatával használható konfigurációs lehetőség. További információ: a [HDInsight-fürt testreszabása parancsfájl](hdinsight-hadoop-customize-cluster-linux.md)-művelettel.
+További összetevőket is telepíthet, vagy testre szabhatja a fürt konfigurációját parancsfájlok használatával a létrehozás során. Az ilyen parancsfájlokat parancsfájl- **művelettel**hívja meg, amely a Azure Portal, a HDInsight Windows PowerShell-parancsmagok vagy a HDINSIGHT .net SDK használatával használható konfigurációs lehetőség. További információ: a [HDInsight-fürt testreszabása parancsfájl-művelettel](hdinsight-hadoop-customize-cluster-linux.md).
 
 Egyes natív Java-összetevők, például az Apache Mahout és a kaszkádolt, Java Archive (JAR) fájlokként futtathatók a fürtön. Ezek a JAR-fájlok eloszthatók az Azure Storage-ba, és a Hadoop-feladatok beküldési mechanizmusaival HDInsight-fürtökbe elküldve További információt a [Apache Hadoop feladatok programozott beküldése](hadoop/submit-apache-hadoop-jobs-programmatically.md)című témakörben talál.
 

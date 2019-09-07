@@ -1,19 +1,19 @@
 ---
-title: 'Oktatóanyag – Azure Toolkit for IntelliJ: Spark-alkalmazások létrehozása HDInsight-fürtökhöz'
+title: 'Oktatóanyag – Azure Toolkit for IntelliJ: Spark-alkalmazás a HDInsight-fürthöz'
 description: Oktatóanyag – a Azure Toolkit for IntelliJ használatával fejlesztheti a Scala-ben írt Spark-alkalmazásokat, és beküldheti azokat egy HDInsight Spark-fürtbe.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 06/26/2019
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 32f5ff2ebc9d938b1936d7f2929af83d552a543d
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: dac72cee62a3bd4cc4c315e15ace784bf24deff3
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489863"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736480"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Oktatóanyag: Azure Toolkit for IntelliJ használata Apache Spark-alkalmazások HDInsight-fürthöz való létrehozásához
 
@@ -129,11 +129,11 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
     A kód beolvassa az adatokat a HVAC. csv fájlból (az összes HDInsight Spark-fürtön elérhető), lekéri azokat a sorokat, amelyek csak egy számjegytel rendelkeznek a CSV-fájl hetedik `/HVACOut` oszlopában, és a kimenetet a fürt alapértelmezett tárolójában írja.
 
 ## <a name="connect-to-your-hdinsight-cluster"></a>Kapcsolódás a HDInsight-fürthöz
-A felhasználó [bejelentkezhet az Azure](#sign-in-to-your-azure-subscription)-előfizetésbe, vagy összekapcsolhat [egy HDInsight](#link-a-cluster) -fürtöt a Ambari Felhasználónév/jelszó vagy a tartományhoz csatlakoztatott hitelesítő adatok használatával a HDInsight-fürthöz való csatlakozáshoz.
+A felhasználó [bejelentkezhet az Azure-előfizetésbe](#sign-in-to-your-azure-subscription), vagy [összekapcsolhat egy HDInsight-fürtöt](#link-a-cluster) a Ambari Felhasználónév/jelszó vagy a tartományhoz csatlakoztatott hitelesítő adatok használatával a HDInsight-fürthöz való csatlakozáshoz.
 
-### <a name="sign-in-to-your-azure-subscription"></a>Bejelentkezés az Azure-előfizetésbe
+### <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetésébe
 
-1. A menüsávban navigáljon a **Megtekintés** > eszközre a**Windows** > **Azure Explorerben**.
+1. A menüsávban navigáljon a **Megtekintés** > **eszközre a Windows** > **Azure Explorerben**.
        
    ![Az Azure Explorer hivatkozása](./media/apache-spark-intellij-tool-plugin/show-azure-explorer.png)
 
@@ -157,7 +157,7 @@ A felhasználó [bejelentkezhet az Azure](#sign-in-to-your-azure-subscription)-e
    
    ![Az Azure bejelentkezési párbeszédpanelje](./media/apache-spark-intellij-tool-plugin/view-explorer-7.png)
 
-7. Miután bejelentkezett, az előfizetések **kiválasztása** párbeszédpanel felsorolja az összes olyan Azure-előfizetést, amely társítva van a hitelesítő adatokhoz. Válassza ki az előfizetését, majd kattintson a **kiválasztás** gombra.
+7. Miután bejelentkezett, az **előfizetések kiválasztása** párbeszédpanel felsorolja az összes olyan Azure-előfizetést, amely társítva van a hitelesítő adatokhoz. Válassza ki az előfizetését, majd kattintson a **kiválasztás** gombra.
 
     ![Az előfizetések kiválasztása párbeszédpanel](./media/apache-spark-intellij-tool-plugin/Select-Subscriptions.png)
 
@@ -173,7 +173,7 @@ A felhasználó [bejelentkezhet az Azure](#sign-in-to-your-azure-subscription)-e
 
 Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsolhat össze. Hasonlóképpen, a tartományhoz csatlakoztatott HDInsight-fürtökhöz a tartomány és a Felhasználónév használatával is kapcsolódhat, például `user1@contoso.com`:. Emellett a Livy Service-fürtöt is összekapcsolhatja.
 
-1. A menüsávban navigáljon a **Megtekintés** > eszközre a**Windows** > **Azure Explorerben**.
+1. A menüsávban navigáljon a **Megtekintés** > **eszközre a Windows** > **Azure Explorerben**.
 
 2. Az Azure Explorerben kattintson a jobb gombbal a **HDInsight** csomópontra, majd válassza a **fürt csatolása**lehetőséget.
 
@@ -183,11 +183,11 @@ Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsol
 
     * **HDInsight-fürt**  
   
-        |Tulajdonság |Érték |
+        |Tulajdonság |Value |
         |----|----|
-        |Erőforrás típusának csatolása|Válassza ki a **HDInsight** -fürtöt a legördülő listából.|
+        |Erőforrás típusának csatolása|Válassza ki a **HDInsight-fürtöt** a legördülő listából.|
         |Fürt neve/URL-címe| Adja meg a fürt nevét.|
-        |Hitelesítés típusa| Szabadság alapszintű **hitelesítésként**|
+        |Hitelesítés típusa| Szabadság **alapszintű hitelesítésként**|
         |Felhasználónév| Adja meg a fürt felhasználói nevét, az alapértelmezett érték a rendszergazda.|
         |Windows 10| Adja meg a felhasználónévhez tartozó jelszót.|
     
@@ -200,8 +200,8 @@ Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsol
         |Erőforrás típusának csatolása|Válassza ki a **Livy szolgáltatást** a legördülő listából.|
         |Livy végpont| Livy-végpont megadása|
         |Fürt neve| Adja meg a fürt nevét.|
-        |Fonal végpontja|Választható.|
-        |Hitelesítés típusa| Szabadság alapszintű **hitelesítésként**|
+        |Fonal végpontja|Nem kötelező.|
+        |Hitelesítés típusa| Szabadság **alapszintű hitelesítésként**|
         |Felhasználónév| Adja meg a fürt felhasználói nevét, az alapértelmezett érték a rendszergazda.|
         |Windows 10| Adja meg a felhasználónévhez tartozó jelszót.|
 
@@ -227,7 +227,7 @@ A Scala-alkalmazás létrehozása után elküldheti azt a fürtnek.
 
 3. A **konfiguráció szerkesztése** ablakban adja meg a következő értékeket, majd kattintson **az OK gombra**:
 
-    |Tulajdonság |Érték |
+    |Tulajdonság |Value |
     |----|----|
     |Spark-fürtök (csak Linux)|Válassza ki azt a HDInsight Spark-fürtöt, amelyen futtatni szeretné az alkalmazást.|
     |Válassza ki a elküldeni kívánt összetevőt|Hagyja meg az alapértelmezett beállítást.|
@@ -236,7 +236,7 @@ A Scala-alkalmazás létrehozása után elküldheti azt a fürtnek.
     |Parancssori argumentumok|Szükség esetén megadhat argumentumokat szóközzel elválasztva a Main osztály számára.|
     |Hivatkozott tégelyek és hivatkozott fájlok|Megadhatja a hivatkozott tégelyek és fájlok elérési útját, ha van ilyen. Tallózással is tallózhat az Azure-beli virtuális fájlrendszerben, amely jelenleg csak a ADLS Gen 2 fürtöt támogatja. További információk: [Apache Spark konfiguráció](https://spark.apache.org/docs/latest/configuration.html#runtime-environment).  Lásd még: [erőforrások feltöltése a fürtbe](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer).|
     |Feladatok feltöltési tárolója|Kibontás a további beállítások megjelenítéséhez.|
-    |Tárolási típus|Válassza az **Azure Blob használata** a feltöltéshez lehetőséget a legördülő listából.|
+    |Tárolási típus|Válassza az **Azure Blob használata a feltöltéshez** lehetőséget a legördülő listából.|
     |Tárfiók|Adja meg a Storage-fiókját.|
     |Tárkulcs|Adja meg a tárolási kulcsot.|
     |Storage-tároló|A Storage- **fiók** és a **Storage-kulcs** megadása után válassza ki a tárolót a legördülő listából.|
@@ -253,7 +253,7 @@ Azt is javasoljuk, hogy a Spark-alkalmazást a fürtön küldje el. Ehhez állí
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-azure-toolkit-for-intellij"></a>HDInsight Spark-fürtök elérése és kezelése Azure Toolkit for IntelliJ használatával
 
-Azure Toolkit for IntelliJ használatával különböző műveleteket hajthat végre.  A műveletek többsége az **Azure Explorerben**indítható el.  A menüsávban navigáljon a **Megtekintés** > eszközre a**Windows** > **Azure Explorerben**.
+Azure Toolkit for IntelliJ használatával különböző műveleteket hajthat végre.  A műveletek többsége az **Azure Explorerben**indítható el.  A menüsávban navigáljon a **Megtekintés** > **eszközre a Windows** > **Azure Explorerben**.
 
 ### <a name="access-the-job-view"></a>A feladatok nézet elérése
 
@@ -292,9 +292,9 @@ Azure Toolkit for IntelliJ használatával különböző műveleteket hajthat v�
 
 Alapértelmezés szerint a Azure Toolkit for IntelliJ felsorolja a Spark-fürtöket az összes Azure-előfizetésből. Szükség esetén megadhatja az elérni kívánt előfizetéseket.  
 
-1. Az Azure Explorerben kattintson a jobb gombbal az **Azure** -legfelső szintű csomópontra, majd válassza az előfizetések **kiválasztása**lehetőséget.  
+1. Az Azure Explorerben kattintson a jobb gombbal az **Azure** -legfelső szintű csomópontra, majd válassza az **előfizetések kiválasztása**lehetőséget.  
 
-2. Az előfizetések **kiválasztása** ablakban törölje a jelölőnégyzet jelölését azon előfizetések mellett, amelyeket nem szeretne elérni, majd válassza a **Bezárás**lehetőséget.
+2. Az **előfizetések kiválasztása** ablakban törölje a jelölőnégyzet jelölését azon előfizetések mellett, amelyeket nem szeretne elérni, majd válassza a **Bezárás**lehetőséget.
 
 ## <a name="spark-console"></a>Spark-konzol
 
@@ -304,7 +304,7 @@ Futtathatja a Spark helyi konzolt (Scala), vagy futtathatja a Spark Livy interak
 
 Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
 
-1. A menüsávban navigáljon  > a**konfigurációk szerkesztése..** . lehetőségre.
+1. A menüsávban navigáljon > a**konfigurációk szerkesztése..** . lehetőségre.
 
 2. A **Futtatás/hibakeresés konfigurációk** ablak bal oldali ablaktábláján navigáljon **Apache Spark a HDInsight** >  **[Spark on HDInsight] SajátPr**.
 
@@ -312,7 +312,7 @@ Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
 
 4. Adja meg a következő értékeket, majd kattintson **az OK gombra**:
 
-    |Tulajdonság |Érték |
+    |Tulajdonság |Value |
     |----|----|
     |Job Main osztály|Az alapértelmezett érték a kijelölt fájl fő osztálya. Az osztályt a három pont ( **..** .) lehetőség kiválasztásával módosíthatja.  és válasszon másik osztályt.|
     |Környezeti változók|Győződjön meg arról, hogy a HADOOP_HOME értéke helyes.|
@@ -338,7 +338,7 @@ Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
 
 Csak a 2018,2-es és a 2018,3-es IntelliJ esetén támogatott.
 
-1. A menüsávban navigáljon  > a**konfigurációk szerkesztése..** . lehetőségre.
+1. A menüsávban navigáljon > a**konfigurációk szerkesztése..** . lehetőségre.
 
 2. A **Futtatás/hibakeresés konfigurációk** ablak bal oldali ablaktábláján navigáljon **Apache Spark a HDInsight** >  **[Spark on HDInsight] SajátPr**.
 
@@ -355,7 +355,7 @@ Csak a 2018,2-es és a 2018,3-es IntelliJ esetén támogatott.
 
 5. A projekt területen navigáljon **a SajátPr** > **src** > **Main** > **Scala** > -**SajátPr**.  
 
-6. A menüsávban navigáljon az **eszközök** > **Spark** > -konzolon a**Spark Livy interaktív munkamenet-konzolja (Scala)** elemre.
+6. A menüsávban navigáljon az **eszközök** > **Spark-konzolon** > a**Spark Livy interaktív munkamenet-konzolja (Scala)** elemre.
 
 7. A konzolnak az alábbi ábrához hasonlóan kell kinéznie. A konzol ablakában írja `sc.appName`be a következőt:, majd nyomja le a CTRL + ENTER billentyűkombinációt.  Ekkor megjelenik az eredmény. A helyi konzolt a vörös gombra kattintva állíthatja le.
 
@@ -391,9 +391,9 @@ Ha a felhasználók a csak olvasási szerepkörrel rendelkező fürthöz külden
 
 ### <a name="link-cluster-by-expanding-jobs-node"></a>Fürt csatolása a feladatok csomópont kibontásával
 
-1. Kattintson a **feladatok** csomópontra, majd a **fürthöz való hozzáférés** megtagadva ablakra.
+1. Kattintson a **feladatok** csomópontra, majd a **fürthöz való hozzáférés megtagadva** ablakra.
    
-2. Kattintson **a fürt** összekapcsolása elemre a fürt csatolásához.
+2. Kattintson **a fürt összekapcsolása** elemre a fürt csatolásához.
    
     ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/view-explorer-9.png)
 
@@ -401,19 +401,19 @@ Ha a felhasználók a csak olvasási szerepkörrel rendelkező fürthöz külden
 
 1. Hozzon létre egy HDInsight-konfigurációt. Ezután válassza **a távoli Futtatás a fürtben**lehetőséget.
    
-2. Válasszon ki egy olyan fürtöt, amely csak a csak a **Linux**rendszerre vonatkozó szerepkör-engedéllyel rendelkezik a Spark-fürtökhöz. Figyelmeztető üzenet jelenik meg. A fürt csatolásához kattintson **a fürt csatolása** lehetőségre.
+2. Válasszon ki egy olyan fürtöt, amely csak a csak a Linux rendszerre vonatkozó szerepkör-engedéllyel rendelkezik a **Spark-fürtökhöz**. Figyelmeztető üzenet jelenik meg. A fürt csatolásához kattintson **a fürt csatolása** lehetőségre.
    
    ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/create-config-1.png)
    
 ### <a name="view-storage-accounts"></a>Storage-fiókok megtekintése
 
-* A csak olvasási szerepkörrel rendelkező fürtök esetében kattintson a **Storage-fiókok** csomópontra, majd a **tárterület-hozzáférés** megtagadva ablakra. A **Azure Storage Explorer** megnyitása lehetőségre kattintva megnyithatja Storage Explorer.
+* A csak olvasási szerepkörrel rendelkező fürtök esetében kattintson a **Storage-fiókok** csomópontra, majd a **tárterület-hozzáférés megtagadva** ablakra. A **Azure Storage Explorer** megnyitása lehetőségre kattintva megnyithatja Storage Explorer.
      
    ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/view-explorer-14.png)
 
    ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/view-explorer-10.png)
 
-* A csatolt fürtök esetében kattintson a **Storage-fiókok** csomópontra, majd a tárterület-hozzáférés megtagadva ablak jelenik meg. Az **Azure Storage megnyitása** lehetőségre kattintva megnyithatja Storage Explorer.
+* A csatolt fürtök esetében kattintson a **Storage-fiókok** csomópontra, majd a tárterület- **hozzáférés megtagadva** ablak jelenik meg. Az **Azure Storage megnyitása** lehetőségre kattintva megnyithatja Storage Explorer.
      
    ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/view-explorer-13.png)
 

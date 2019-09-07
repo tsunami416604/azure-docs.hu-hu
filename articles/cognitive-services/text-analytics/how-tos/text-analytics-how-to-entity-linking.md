@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: ea7d3f56aa512b8f5998d710451ff3b37659ca13
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 93d5b3de47ec0b3c0494589da0baf87f91a0233a
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697844"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390264"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -31,7 +31,7 @@ Az entitások összekapcsolása lehetővé teszi egy szövegben talált entitás
 ### <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
 Az elnevezett entitások felismerése lehetővé teszi a különböző entitások azonosítását a szövegben, és azokat előre definiált osztályokra kategorizálja. Az entitások támogatott osztályai alább láthatók.
 
-A (z) Text Analytics [2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)-es verziójában az entitások összekapcsolása és elnevezett entitás-felismerés is számos nyelven elérhető. További információért tekintse meg a [nyelvi támogatásról](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) szóló cikket.
+A (z) Text Analytics 2,1-es [verziójában](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)az entitások összekapcsolása és elnevezett entitás-felismerés is számos nyelven elérhető. További információért tekintse meg a [nyelvi támogatásról](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) szóló cikket.
 
 ### <a name="language-support"></a>Nyelvi támogatás
 
@@ -52,14 +52,14 @@ Az entitások különböző nyelveken való összekapcsolásához a megfelelő t
 | Mennyiség      | Currency      | „$10.99”     |
 | Mennyiség      | Dimenzió     | „10 miles”, „40 cm”     |
 | Mennyiség      | Hőmérséklet   | „32 degrees”    |
-| Datetime      | N/A\*         | „6:30PM February 4, 2012”      |
-| Datetime      | Date          | „May 2nd, 2017”, „05/02/2017”   |
-| Datetime      | Time          | "08:00", "8:00"  |
-| Datetime      | Dátumtartomány     | „May 2nd to May 5th”    |
-| Datetime      | Időtartomány     | „6pm to 7pm”     |
-| Datetime      | Duration      | „1 minute and 45 seconds”   |
-| Datetime      | Beállítás           | „every Tuesday”     |
-| Datetime      | Időzóna      |    |
+| DateTime      | N/A\*         | „6:30PM February 4, 2012”      |
+| DateTime      | Date          | „May 2nd, 2017”, „05/02/2017”   |
+| DateTime      | Time          | "08:00", "8:00"  |
+| DateTime      | Dátumtartomány     | „May 2nd to May 5th”    |
+| DateTime      | Időtartomány     | „6pm to 7pm”     |
+| DateTime      | Duration      | „1 minute and 45 seconds”   |
+| DateTime      | Beállítás           | „every Tuesday”     |
+| DateTime      | Időzóna      |    |
 | URL           | N/A\*         | "https:\//www.Bing.com"    |
 | Email         | N/A\*         | "support@contoso.com" |
 
@@ -98,7 +98,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 
 + Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentációját: [Entitások API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Állítsa be a HTTP-végpontot az entitások kinyeréséhez. Tartalmaznia kell a `/entities` erőforrást: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`
++ Állítsa be a HTTP-végpontot a kulcsfontosságú kifejezés kinyeréséhez az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Tartalmaznia kell a `/text/analytics/v2.1/entities`következőket:. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
 
 + Állítsa be a kérelem fejlécét, hogy tartalmazza a Text Analytics műveletekhez tartozó [hozzáférési kulcsot](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 
@@ -109,7 +109,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 
 ## <a name="step-2-post-the-request"></a>2\. lépés: A kérelem közzététele
 
-Az elemzés a kérelem megkapásakor történik meg. Az áttekinthető kérelmek méretével és számával kapcsolatos információkat az Áttekintés lapon tekintheti meg a percenkénti küldéshez. [](../overview.md#data-limits)
+Az elemzés a kérelem megkapásakor történik meg. Az áttekinthető kérelmek méretével és számával kapcsolatos információkat az [Áttekintés lapon](../overview.md#data-limits) tekintheti meg a percenkénti küldéshez.
 
 Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol semmilyen adatot. Az eredményeket azonnal visszaadja a válaszban.
 

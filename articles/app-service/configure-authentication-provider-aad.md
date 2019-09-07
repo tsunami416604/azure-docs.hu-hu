@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 8b4b6549f9553773cc44c311f49befbb3eec9dc9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8de464a00867dd397f28de1dc35cf264244f6905
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233097"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743255"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>App Service alkalmazás konfigurálása Azure Active Directory bejelentkezés használatára
 
@@ -40,7 +40,7 @@ Javasoljuk, hogy minden egyes App Service alkalmazást saját regisztrációval 
 3. Válassza a **Azure Active Directory**lehetőséget, majd válassza az **expressz** lehetőséget a **felügyeleti mód**alatt.
 4. Kattintson az **OK** gombra, hogy regisztrálja a app Service alkalmazást a Azure Active Directoryban. Ez létrehoz egy új alkalmazás-regisztrációt. Ha ehelyett egy meglévő alkalmazás-regisztrációt szeretne választani, kattintson a **meglévő alkalmazás kiválasztása** lehetőségre, majd keressen rá egy korábban létrehozott alkalmazás-regisztráció nevére a bérlőn belül. A kiválasztásához kattintson az alkalmazás regisztrálása elemre, majd kattintson **az OK**gombra. Ezután kattintson az **OK gombra** a Azure Active Directory beállítások lapon.
 Alapértelmezés szerint a App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-khoz való jogosult hozzáférést. Engedélyezni kell a felhasználókat az alkalmazás kódjában.
-5. Választható Ha korlátozni szeretné az alkalmazáshoz való hozzáférést az Azure Active Directory által hitelesített felhasználók számára, akkor állítsa be **a műveletet, ha a kérelem nem hitelesítve van** a Azure Active Directoryval való **bejelentkezéshez**. Ehhez minden kérést hitelesíteni kell, és az összes nem hitelesített kérelem át lesz irányítva a hitelesítéshez Azure Active Directory.
+5. Választható Ha korlátozni szeretné az alkalmazáshoz való hozzáférést az Azure Active Directory által hitelesített felhasználók számára, akkor állítsa be **a műveletet, ha a kérelem nem hitelesítve van** a **Azure Active Directoryval való bejelentkezéshez**. Ehhez minden kérést hitelesíteni kell, és az összes nem hitelesített kérelem át lesz irányítva a hitelesítéshez Azure Active Directory.
 
     > [!NOTE]
     > A hozzáférés ezen a módon való korlátozása az alkalmazás összes hívására vonatkozik, ami nem kívánatos, ha az alkalmazások nyilvánosan elérhető kezdőlapot szeretnének, például sok egyoldalas alkalmazásban. Ilyen alkalmazások esetén **engedélyezze a névtelen kérelmeket (nincs művelet)** előnyben részesített, ha az alkalmazás manuálisan indítja el a bejelentkezést, az [itt](overview-authentication-authorization.md#authentication-flow)leírtak szerint.
@@ -59,11 +59,11 @@ Az alkalmazások regisztrálásának manuális létrehozásakor jegyezze fel a h
 1. Az **alkalmazás regisztrálása** lapon adja meg az alkalmazás regisztrációjának **nevét** .
 1. Az **átirányítási URI**-ban válassza a **web** lehetőséget, és írja be a app Service alkalmazás URL `/.auth/login/aad/callback`-címét, és adja hozzá az elérési utat. Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Ezután kattintson a **Létrehozás** elemre.
 1. Miután létrehozta az alkalmazás regisztrációját, másolja az **alkalmazás-(ügyfél-) azonosítót** és a **címtár-(bérlői) azonosítót** későbbi verzióra.
-1. Válasszaa branding elemet. A **Kezdőlap URL-címe**mezőbe írja be a app Service alkalmazás URL-címét, majd válassza a **Mentés**lehetőséget.
+1. Válassza a **branding**elemet. A **Kezdőlap URL-címe**mezőbe írja be a app Service alkalmazás URL-címét, majd válassza a **Mentés**lehetőséget.
 1. Válasszon ki **egy API** > -**készletet**. Illessze be a App Service alkalmazás URL-címét, majd válassza a **Mentés**lehetőséget.
 
     > [!NOTE]
-    > Ez az érték az alkalmazás regisztrációs **azonosítójának URI** azonosítója. Ha szeretné, hogy egy előtér-webalkalmazás hozzáférjen egy háttér-API-hoz, például ha szeretné, hogy a háttérrendszer explicit módon engedélyezze a hozzáférést az előtérhöz, akkor a < c2 App Service alkalmazás-erőforrásának konfigurálásakor az előtér- **alkalmazás azonosítójának URI-ja** szükséges. >.
+    > Ez az érték az alkalmazás regisztrációs **azonosítójának URI** azonosítója. Ha szeretné, hogy egy előtér-webalkalmazás hozzáférjen egy háttér-API-hoz, például ha szeretné, hogy a háttérrendszer explicit módon engedélyezze a hozzáférést az előtérhöz, akkor a < c2 App Service alkalmazás-erőforrásának konfigurálásakor az *előtér-* **alkalmazás azonosítójának URI-ja** szükséges. >.
 1. Válassza a **Hatókör hozzáadása** lehetőséget. A **hatókör neve**mezőbe írja be a következőt: *user_impersonation*. A szövegmezőbe írja be a belefoglalni kívánt hatókör nevét és leírását, amelyet a felhasználók a beleegyező lapon láthatnak, például a *hozzáférés az alkalmazáshoz*. Ha elkészült, kattintson a **hatókör hozzáadása**lehetőségre.
 1. Választható Az ügyfél titkos kulcsának létrehozásához válassza a **tanúsítványok & Secrets** > **új ügyfél titkos** > **hozzáadása**elemet. Másolja a lapon látható ügyfél titkos kulcs értékét. Ha elmozdul, nem jelenik meg újra.
 1. Választható Több **Válasz URL-cím**hozzáadásához válassza a menü **hitelesítés** elemét.
@@ -71,7 +71,7 @@ Az alkalmazások regisztrálásának manuális létrehozásakor jegyezze fel a h
 ### <a name="secrets"> </a>Azure Active Directory információk hozzáadása a app Service alkalmazáshoz
 
 1. A [Azure Portal]navigáljon a app Service alkalmazáshoz. A bal oldali menüben válassza a **hitelesítés/engedélyezés**lehetőséget. Ha a hitelesítés/engedélyezés funkció nincs engedélyezve, válassza **a be**lehetőséget. 
-1. Választható Alapértelmezés szerint a App Service hitelesítés lehetővé teszi a nem hitelesített hozzáférést az alkalmazáshoz. A felhasználói hitelesítés érvénybe léptetéséhez állítsa be a **műveletet, ha a kérelem nem hitelesítve van** a Azure Active Directoryba való **bejelentkezéshez**.
+1. Választható Alapértelmezés szerint a App Service hitelesítés lehetővé teszi a nem hitelesített hozzáférést az alkalmazáshoz. A felhasználói hitelesítés érvénybe léptetéséhez állítsa be a **műveletet, ha a kérelem nem hitelesítve van** a **Azure Active Directoryba való bejelentkezéshez**.
 1. A hitelesítésszolgáltatók területen válassza a **Azure Active Directory**lehetőséget.
 1. **Felügyeleti módban**válassza a **speciális** lehetőséget, és konfigurálja app Service hitelesítést az alábbi táblázatnak megfelelően:
 
@@ -81,6 +81,9 @@ Az alkalmazások regisztrálásának manuális létrehozásakor jegyezze fel a h
     |Kiállító azonosítója| Használja `https://login.microsoftonline.com/<tenant-id>`és cserélje le  *\<a bérlő-azonosító >* az alkalmazás regisztrációjának **címtár-(bérlői) azonosítójával** . |
     |Ügyfél titka (nem kötelező)| Használja az alkalmazás regisztrációjában létrehozott ügyfél-titkos kulcsot.|
     |Jogkivonatok engedélyezett célrendszerei| Ha ez egy *háttérbeli* alkalmazás, és engedélyezni szeretné a hitelesítési jogkivonatokat egy előtér-alkalmazásból, adja hozzá az *ELŐTÉR* - **alkalmazás azonosítójának URI-ját** itt. |
+
+    > [!NOTE]
+    > A konfigurált **ügyfél** -azonosító *mindig* implicit módon engedélyezett célközönségnek minősül, függetlenül attól, hogy az **engedélyezett jogkivonat-célközönségek**hogyan lettek konfigurálva.
 1. Válassza **az OK**, majd a **Mentés**lehetőséget.
 
 Most már készen áll a Azure Active Directory használatára a App Service alkalmazásban való hitelesítéshez.
@@ -96,7 +99,7 @@ Ha olyan ügyféloldali kódtár használatával kívánja végrehajtani a bejel
     > Windows-alkalmazások esetén a [csomag biztonsági azonosítóját](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) használja inkább URI-ként.
 1. Az alkalmazás regisztrációjának létrehozása után másolja az **Application (ügyfél) azonosító**értékét.
 1. A bal oldali menüben válassza az **API-engedélyek** > **Hozzáadás engedély** > **saját API**-k lehetőséget.
-1. Válassza ki a korábban létrehozott App Service alkalmazás regisztrációját. Ha nem látja az alkalmazás regisztrációját, ellenőrizze, hogy az alkalmazás regisztrálása az [Azure ad](#register)-ban című cikk **user_impersonation** -hatókörét adta-e hozzá app Service alkalmazásához.
+1. Válassza ki a korábban létrehozott App Service alkalmazás regisztrációját. Ha nem látja az alkalmazás regisztrációját, ellenőrizze, hogy az alkalmazás [regisztrálása az Azure ad](#register)-ban című cikk **user_impersonation** -hatókörét adta-e hozzá app Service alkalmazásához.
 1. Válassza a **user_impersonation** lehetőséget, majd kattintson az **engedélyek hozzáadása**lehetőségre.
 
 Ezzel konfigurált egy natív ügyfélalkalmazás, amely hozzáfér a App Service-alkalmazáshoz.

@@ -1,22 +1,22 @@
 ---
 title: A skálázhatóság és a Spark használata az Azure HDInsight
-description: A Scaleer és a Sparker használata ML-szolgáltatásokkal a HDInsight-on
+description: A skálázhatóság és a Sparker használata az adatkezeléshez és a modellek fejlesztéséhez az Azure HDInsight ML-szolgáltatásaival
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: b96779a0a37602b6d114c9baf517df2637f734a2
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a91d2d569b4900e3d5b787145c242a75b928d822
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231121"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733369"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>A Scaleer és a Spark kombinálása a HDInsight-ben
 
-Ebből a dokumentumból megtudhatja, hogyan jósolhatja meg a repülési beérkezés késéseit egy skálázhatósági logisztikai regressziós modell használatával. A példa repülési késést és időjárási adatátvitelt használa sparker használatával.
+Ebből a dokumentumból megtudhatja, hogyan jósolhatja meg a repülési beérkezés késéseit egy **skálázhatósági** logisztikai regressziós modell használatával. A példa repülési késést és időjárási adatátvitelt használ a **sparker**használatával.
 
 Habár mindkét csomag a Apache Hadoop Spark-végrehajtó motorján fut, a memóriában tárolt adatok megosztása blokkolja őket, mivel Mindegyikhez saját Spark-munkamenet szükséges. Amíg ez a probléma nem kerül a ML Server következő verziójában, a megkerülő megoldás a nem átfedő Spark-munkamenetek fenntartása, valamint az adatcsere közbenső fájlokon keresztül. Ebben az útmutatóban látható, hogy ezek a követelmények egyszerűen elérhetők.
 
@@ -30,7 +30,7 @@ A jelen dokumentumban ismertetett lépések feltételezik, hogy az R-nek van egy
 
 A repülési adatok az [Egyesült Államok kormányzati levéltárában](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)érhetők el. A [AirOnTimeCSV. zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)fájlból zip-ként is elérhető.
 
-Az időjárási adatok zip-fájlként tölthetők le nyers formában, a [nemzeti óceáni és](https://www.ncdc.noaa.gov/orders/qclcd/)a légköri adminisztrációs tárházban. Ebben a példában a május 2007 – december 2012. Az óránkénti adatfájlok és `YYYYMMMstation.txt` a fájlok használata az egyes zip-fájlokon belül. 
+Az időjárási adatok zip-fájlként tölthetők le nyers formában, a [nemzeti óceáni és a légköri adminisztrációs tárházban](https://www.ncdc.noaa.gov/orders/qclcd/). Ebben a példában a május 2007 – december 2012. Az óránkénti adatfájlok és `YYYYMMMstation.txt` a fájlok használata az egyes zip-fájlokon belül. 
 
 ## <a name="setting-up-the-spark-environment"></a>A Spark-környezet beállítása
 

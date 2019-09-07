@@ -1,5 +1,5 @@
 ---
-title: Enterprise Security Package konfiguráció Azure Active Directory Domain Services használatával – Azure HDInsight
+title: Enterprise Security Package Azure Active Directory a HDInsight
 description: Ismerje meg, hogyan állíthat be és konfigurálhat egy HDInsight Enterprise Security Package-fürtöt a Azure Active Directory Domain Services használatával.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 1165cbeff1144567e43f408c0866c0b8a571882d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 76f95e74c8150ac797d20c3166c0e8d6ea085bf9
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125586"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734956"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>HDInsight-fürt konfigurálása Enterprise Security Package-dzsel az Azure Active Directory Domain Services használatával
 
@@ -37,7 +37,7 @@ Ha az Azure AD-DS engedélyezve van, az összes felhasználó és objektum alap�
 
 Az Azure AD-DS szolgáltatásban használt tartománynévnek 39 karakter vagy kevesebbnek kell lennie, hogy működjön a HDInsight.
 
-Dönthet úgy is, hogy csak azokat a csoportokat szinkronizálja, amelyeknek hozzáférésre van szüksége a HDInsight-fürtökhöz. Ezzel a beállítással csak bizonyos csoportok szinkronizálhatók, hatókörön belüli *szinkronizálásnak*nevezzük. Útmutatásért lásd: [hatókörön belüli szinkronizálás konfigurálása az Azure ad-ből a felügyelt tartományba](../../active-directory-domain-services/scoped-synchronization.md) .
+Dönthet úgy is, hogy csak azokat a csoportokat szinkronizálja, amelyeknek hozzáférésre van szüksége a HDInsight-fürtökhöz. Ezzel a beállítással csak bizonyos csoportok szinkronizálhatók, *hatókörön belüli szinkronizálásnak*nevezzük. Útmutatásért lásd: [hatókörön belüli szinkronizálás konfigurálása az Azure ad-ből a felügyelt tartományba](../../active-directory-domain-services/scoped-synchronization.md) .
 
 A biztonságos LDAP engedélyezésekor a tulajdonos neve és a tulajdonos alternatív neve mezőbe helyezze a tartománynevet a tanúsítványban. Ha például a tartománynév *contoso100.onmicrosoft.com*, győződjön meg arról, hogy a pontos név létezik a tanúsítvány tulajdonosának neve és a tulajdonos alternatív neve mezőben. További információ: [Secure LDAP konfigurálása Azure AD-DS felügyelt tartományhoz](../../active-directory-domain-services/tutorial-configure-ldaps.md). Az alábbi példa egy önaláírt tanúsítványt hoz létre, és a tulajdonos neve és a DnsName (a tulajdonos alternatív neve) tartománynévvel (*contoso100.onmicrosoft.com*) rendelkezik:
 
@@ -55,7 +55,7 @@ A Azure Active Directory Domain Services állapotának megtekintéséhez válass
 
 ## <a name="create-and-authorize-a-managed-identity"></a>Felügyelt identitás létrehozása és engedélyezése
 
-Egy **felhasználó által hozzárendelt felügyelt identitás** használatával egyszerűsítheti és biztonságossá teheti a tartományi szolgáltatások műveleteit. Ha a HDInsight tartományi szolgáltatások közreműködői szerepkört rendeli hozzá a felügyelt identitáshoz, akkor az képes a tartományi szolgáltatások műveleteinek olvasására, létrehozására, módosítására és törlésére. Bizonyos tartományi szolgáltatási műveletek, például szervezeti egységek és egyszerű szolgáltatások létrehozása szükséges a HDInsight Enterprise Security Package. A felügyelt identitások bármelyik előfizetésben létrehozhatók. Az általános felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure](../../active-directory/managed-identities-azure-resources/overview.md)-erőforrásokhoz. További információ arról, hogyan működnek a felügyelt identitások az Azure HDInsight-ben: [felügyelt identitások az Azure HDInsight](../hdinsight-managed-identities.md).
+Egy **felhasználó által hozzárendelt felügyelt identitás** használatával egyszerűsítheti és biztonságossá teheti a tartományi szolgáltatások műveleteit. Ha a HDInsight tartományi szolgáltatások közreműködői szerepkört rendeli hozzá a felügyelt identitáshoz, akkor az képes a tartományi szolgáltatások műveleteinek olvasására, létrehozására, módosítására és törlésére. Bizonyos tartományi szolgáltatási műveletek, például szervezeti egységek és egyszerű szolgáltatások létrehozása szükséges a HDInsight Enterprise Security Package. A felügyelt identitások bármelyik előfizetésben létrehozhatók. Az általános felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md). További információ arról, hogyan működnek a felügyelt identitások az Azure HDInsight-ben: [felügyelt identitások az Azure HDInsight](../hdinsight-managed-identities.md).
 
 Az ESP-fürtök beállításához hozzon létre egy felhasználó által hozzárendelt felügyelt identitást, ha még nem rendelkezik ilyennel. További útmutatásért tekintse meg a [felhasználó által hozzárendelt felügyelt Azure Portal identitáshoz tartozó szerepkör létrehozása, listázása, törlése vagy hozzárendelése](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) című témakört. Ezután rendelje hozzá a **HDInsight tartományi szolgáltatások közreműködői** szerepkört a felügyelt identitáshoz az Azure AD-DS hozzáférés-vezérlés (HRE-DS rendszergazdai jogosultságok szükségesek ennek a szerepkör-hozzárendelésnek a végrehajtásához).
 

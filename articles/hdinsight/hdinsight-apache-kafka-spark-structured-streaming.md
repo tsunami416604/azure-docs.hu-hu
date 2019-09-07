@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Strukturált streaming Apache Spark Apache Kafka-Azure HDInsight'
+title: Oktatóanyag Apache Spark strukturált streaming Apache Kafka – Azure HDInsight
 description: Megtudhatja, hogyan használhatja az Apache Spark streamelést az adatok az Apache Kafkába való betöltéséhez, illetve az onnan való exportálásához. Ebben az oktatóanyagban egy Jupyter notebookkal streamelünk adatokat a Spark on HDInsightból.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: hrasheed
-ms.openlocfilehash: da31b6a880344de918a3b3e0f89f60d985db2ce7
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: bf877b9422581cd77349a2a9eddf0ab262977062
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406022"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734762"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Apache Spark strukturált streaming használata a HDInsight Apache Kafka használatával
 
@@ -140,7 +140,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Spark-fürtök 
 
 2. A következő információkkal töltheti ki a **Testreszabott sablon** szakaszban lévő bejegyzéseket:
 
-    | Beállítás | Érték |
+    | Beállítás | Value |
     | --- | --- |
     | Subscription | Az Azure-előfizetése |
     | Resource group | Az erőforrásokat tartalmazó erőforráscsoport. |
@@ -330,7 +330,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan használhatja [Apache Spark strukturált adatfolyamot](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) a HDInsight-on található [Apache Kafka](https://kafka.apache.org/) adatok írásához és olvasásához. A következő hivatkozásra kattintva megtudhatja, hogyan [](https://storm.apache.org/) használhatja a Apache Stormt a Kafka használatával.
+Ebben az oktatóanyagban megtanulta, hogyan használhatja [Apache Spark strukturált adatfolyamot](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) a HDInsight-on található [Apache Kafka](https://kafka.apache.org/) adatok írásához és olvasásához. A következő hivatkozásra kattintva megtudhatja, hogyan használhatja a [Apache Stormt](https://storm.apache.org/) a Kafka használatával.
 
 > [!div class="nextstepaction"]
 > [Apache Storm használata a Apache Kafka](hdinsight-apache-storm-with-kafka.md)

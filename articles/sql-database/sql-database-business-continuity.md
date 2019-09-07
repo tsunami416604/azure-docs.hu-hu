@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: e57427fbb7e0d3c67fc4fcbab1a50f14ef8c9501
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569333"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744467"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -45,8 +45,8 @@ Az adatvesztés elleni védelem érdekében SQL Database automatikusan létrehoz
 A SQL Database számos üzletmenet-folytonossági funkciót is biztosít, amelyek segítségével csökkentheti a különböző nem tervezett forgatókönyveket. 
 
 - A [historikus táblák](sql-database-temporal-tables.md) segítségével a sorverziókat bármely időpontra visszaállíthatja.
-- A [beépített automatizált biztonsági mentések](sql-database-automated-backups.md) és időpontok [visszaállítása](sql-database-recovery-using-backups.md#point-in-time-restore) lehetővé teszi a teljes adatbázis visszaállítását egy bizonyos időpontra a beállított megőrzési időtartamon belül, legfeljebb 35 napig.
-- Visszaállíthat [egy törölt adatbázist](sql-database-recovery-using-backups.md#deleted-database-restore) arra a pontra, amelyen törölve lett, ha a **SQL Database-kiszolgáló nem lett törölve**.
+- A [beépített automatizált biztonsági mentések](sql-database-automated-backups.md) és [időpontok visszaállítása](sql-database-recovery-using-backups.md#point-in-time-restore) lehetővé teszi a teljes adatbázis visszaállítását egy bizonyos időpontra a beállított megőrzési időtartamon belül, legfeljebb 35 napig.
+- [Visszaállíthat egy törölt adatbázist](sql-database-recovery-using-backups.md#deleted-database-restore) arra a pontra, amelyen törölve lett, ha a **SQL Database-kiszolgáló nem lett törölve**.
 - A [biztonsági másolatok hosszú távú megőrzése](sql-database-long-term-retention.md) lehetővé teszi, hogy a biztonsági mentések akár 10 évig is megmaradjanak.
 - Az [aktív geo-replikáció](sql-database-active-geo-replication.md) lehetővé teszi, hogy a rendszer olvasható replikákat hozzon létre, és manuálisan végezze el a feladatátvételt az adatközpont-kimaradás vagy az alkalmazások frissítése esetén bármelyik replikára.
 - Az [automatikus feladatátvételi csoport](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) lehetővé teszi, hogy az alkalmazás automatikusan helyreállítsa az adatközpont-kimaradás esetén.
@@ -85,7 +85,7 @@ Az üzletmenet-folytonossági terv kidolgozása során meg kell állapítania az
 
 A különböző helyreállítási módszerek különböző szintű RPO és RTO biztosítanak. Kiválaszthat egy adott helyreállítási módszert, vagy használhat metódusok kombinációját a teljes alkalmazás-helyreállítás eléréséhez. A következő táblázat összehasonlítja az egyes helyreállítási lehetőségek RPO és RTO. Az automatikus feladatátvételi csoportok egyszerűbbé teszik a Geo-replikáció üzembe helyezését és használatát, és hozzáadja a további képességeket az alábbi táblázatban leírtak szerint.
 
-| Helyreállítási módszer | RTO | Helyreállítási időkorlát |
+| Helyreállítási módszer | RTO | RPO |
 | --- | --- | --- | 
 | Geo-visszaállítás földrajzilag replikált biztonsági másolatokból | 12 óra | 1 óra |
 | Automatikus feladatátvételi csoportok | 1 óra | 5 s |
@@ -123,7 +123,7 @@ Ha nem készít megfelelő előfizetést, a feladatátvétel vagy adatbázis-hel
 
 ### <a name="fail-over-to-a-geo-replicated-secondary-database"></a>Feladatátvétel egy földrajzilag replikált másodlagos adatbázisba
 
-Ha aktív geo-replikációs vagy automatikus feladatátvételi csoportokat használ helyreállítási mechanizmusként, konfigurálhat egy automatikus feladatátvételi házirendet, vagy manuális, nem [tervezett feladatátvételt](sql-database-active-geo-replication-portal.md#initiate-a-failover)is használhat. A művelet megkezdése után a feladatátvétel az új elsődlegesvé válik, és készen áll az új tranzakciók rögzítésére és a lekérdezésekre való reagálásra – a még nem replikált adatok minimális adatvesztése miatt. A feladatátvételi folyamat megtervezésével kapcsolatos információkért lásd: [alkalmazás tervezése a Felhőbeli](sql-database-designing-cloud-solutions-for-disaster-recovery.md)vész-helyreállításhoz.
+Ha aktív geo-replikációs vagy automatikus feladatátvételi csoportokat használ helyreállítási mechanizmusként, konfigurálhat egy automatikus feladatátvételi házirendet, vagy manuális, nem [tervezett feladatátvételt](sql-database-active-geo-replication-portal.md#initiate-a-failover)is használhat. A művelet megkezdése után a feladatátvétel az új elsődlegesvé válik, és készen áll az új tranzakciók rögzítésére és a lekérdezésekre való reagálásra – a még nem replikált adatok minimális adatvesztése miatt. A feladatátvételi folyamat megtervezésével kapcsolatos információkért lásd: [alkalmazás tervezése a Felhőbeli vész-helyreállításhoz](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
 > [!NOTE]
 > Amikor az adatközpont ismét elérhetővé válik, a régi alapértékek automatikusan újra csatlakoznak az új elsődlegeshöz, és másodlagos adatbázisok lesznek. Ha át kell helyeznie az elsődlegest az eredeti régióba, manuálisan kezdeményezheti a tervezett feladatátvételt (feladat-visszavétel).
@@ -140,7 +140,7 @@ Ha az automatikus biztonsági mentést a Geo-redundáns tárolóval (alapértelm
 A helyreállítási mechanizmusok végrehajtása után a következő további feladatokat kell végrehajtania a felhasználók és az alkalmazások újbóli üzembe helyezéséhez:
 
 - Irányítsa át az ügyfeleket és az ügyfélalkalmazásokat az új kiszolgálóra és a helyreállított adatbázisra.
-- Győződjön meg arról, hogy a megfelelő kiszolgálói szintű IP-tűzfalszabályok vannak érvényben a felhasználók számára a megfelelő szabályok engedélyezéséhez, illetve az [adatbázis-szintű tűzfalak](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal) használatával történő kapcsolódáshoz.
+- Győződjön meg arról, hogy a megfelelő kiszolgálói szintű IP-tűzfalszabályok vannak érvényben a felhasználók számára a megfelelő szabályok engedélyezéséhez, illetve az [adatbázis-szintű tűzfalak](sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) használatával történő kapcsolódáshoz.
 - Biztosítsa a megfelelő bejelentkezési adatok és főadatbázis-szintű jogosultságok rendelkezésre állását (vagy használjon [tartalmazott felhasználókat](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
 - Konfigurálja a naplózást, ha szükséges.
 - Konfigurálja a riasztásokat, ha szükséges.
@@ -154,4 +154,4 @@ Időnként előfordulhat, hogy egy alkalmazást a tervezett karbantartás, péld
 
 ## <a name="next-steps"></a>További lépések
 
-Az önálló adatbázisok és a rugalmas készletek alkalmazás-kialakítási szempontjaival kapcsolatban lásd: [alkalmazás tervezése a Felhőbeli](sql-database-designing-cloud-solutions-for-disaster-recovery.md) vész-helyreállításhoz és a [rugalmas készlet vész-helyreállítási stratégiái](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+Az önálló adatbázisok és a rugalmas készletek alkalmazás-kialakítási szempontjaival kapcsolatban lásd: [alkalmazás tervezése a Felhőbeli vész-helyreállításhoz](sql-database-designing-cloud-solutions-for-disaster-recovery.md) és a [rugalmas készlet vész-helyreállítási stratégiái](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

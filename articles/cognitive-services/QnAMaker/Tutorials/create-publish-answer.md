@@ -1,5 +1,5 @@
 ---
-title: Létrehozás, közzététel, válasz-QnA Maker
+title: 'Oktatóanyag: Létrehozás, közzététel, válasz-QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Ez a REST-alapú oktatóanyag végigvezeti egy tudásbázis programozott módon történő létrehozásának és közzétételének, majd egy kérdés a tudásbázisból való megválaszolásának folyamatán.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: f81492dcdd095762127baabda14da602c6698ef6
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: e5b8cd01a64274e58927a5647897b1f9d86f7c24
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69646988"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390870"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Oktatóanyag: A C#, Tudásbázis létrehozása, majd a kérdés megválaszolása
 
@@ -44,7 +44,7 @@ Ez a rövid útmutató meghívja a QnA Maker REST API-kat:
 * Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza az irányítópulton az **Erőforrás-kezelés** területen lévő **Kulcsok** lehetőséget. 
 
 > [!NOTE] 
-> A teljes megoldás fájl (ok) az [ **Azure-Samples/kognitív-Services-qnamaker-csharp** GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)-adattárból érhetők el.
+> A teljes megoldás fájl (ok) az [ **Azure-Samples/kognitív-Services-qnamaker-csharp** GitHub-adattárból](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)érhetők el.
 
 ## <a name="create-a-knowledge-base-project"></a>Tudásbázisprojekt létrehozása
 

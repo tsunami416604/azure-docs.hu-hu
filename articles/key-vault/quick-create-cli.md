@@ -1,5 +1,5 @@
 ---
-title: Rövid Azure-útmutató – Titkos kulcs beállítása és lekérése a Key Vaultból az Azure CLI használatával | Microsoft Docs
+title: 'Gyors útmutató: Titkos kód beállítása és beolvasása Azure Key Vault'
 description: Rövid útmutató, amely bemutatja a titkos kulcsok beállítását és lekérését az Azure Key Vaultból az Azure CLI használatával
 services: key-vault
 author: msmbaldwin
@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, seo-javascript-september2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 37fc4003ba19e9e8f3d156a7fcb9bb84001d2e90
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 70c450304c13a5c4b453226140ae699e0cabda19
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259317"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744769"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Gyors útmutató: Azure Key Vault titkos kód beállítása és beolvasása az Azure CLI használatával
 

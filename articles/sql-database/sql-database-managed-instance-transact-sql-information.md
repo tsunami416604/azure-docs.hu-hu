@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9d99bb6db56a8db9d78952e4cf16465e386358cc
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 8f12f07d22387e5625b10e564cd05109e5bc73fc
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383140"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744402"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Felügyelt példányok – T-SQL-különbségek, korlátozások és ismert problémák
 
@@ -339,7 +339,7 @@ A felügyelt példányok nem férnek hozzá a fájlmegosztás és a Windows-mapp
 - `ALTER ASSEMBLY`nem lehet hivatkozni a fájlokra. Lásd: az [Alter Assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Database Mail (db_mail)
- - `sp_send_dbmail`a @file_attachments atachments nem küldhető paraméterrel. Ez az eljárás nem érhető el a helyi fájlrendszer és a kiterjedési megosztások vagy az Azure Blob Storage szolgáltatásban.
+ - `sp_send_dbmail`a @file_attachments mellékletek nem küldhetők paraméterrel. Ez az eljárás nem érhető el a helyi fájlrendszer és a kiterjedési megosztások vagy az Azure Blob Storage szolgáltatásban.
  - Tekintse meg `@query` a paraméterrel és a hitelesítéssel kapcsolatos ismert problémákat.
  
 ### <a name="dbcc"></a>DBCC

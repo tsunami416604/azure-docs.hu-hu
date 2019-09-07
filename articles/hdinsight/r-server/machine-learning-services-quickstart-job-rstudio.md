@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: R-szkript végrehajtása egy ML Services-fürtön az Azure HDInsight az RStudio-kiszolgáló használatával'
+title: 'Gyors útmutató: RStudio-kiszolgáló az R-t a ML-szolgáltatások (Azure HDInsight) használatával hajtja végre'
 description: A gyors útmutatóban egy R-szkriptet hajt végre az Azure HDInsight egy ML Services-fürtön az RStudio-kiszolgáló használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 295430027afabcfcf793a87ae5859dc9c6675966
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6d87e46b522bb7c7e55c711194cc6456fcd89e92
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876304"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736209"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Gyors útmutató: R-szkript végrehajtása egy ML Services-fürtön az Azure HDInsight az RStudio-kiszolgáló használatával
 

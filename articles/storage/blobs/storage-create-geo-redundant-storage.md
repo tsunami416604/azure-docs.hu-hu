@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 124b10607f710ddfb76787eac09dea7ec6ffc03c
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 3302402ae791ac17b8ac09ab91b061a558eb7c75
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173052"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390365"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Oktatóanyag: A blob Storage szolgáltatással rendelkező, magasan elérhető alkalmazások létrehozása
 
@@ -49,11 +49,6 @@ Az oktatóanyag elvégzéséhez:
 
 * Telepítse a [Pythont](https://www.python.org/downloads/).
 * A [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python) letöltése és telepítése
-
-# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
-
-* A [Maven](https://maven.apache.org/download.cgi) telepítése, és konfigurálása a parancssorból való működésre
-* [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) telepítése és konfigurálása
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
@@ -107,14 +102,6 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
-
-[Töltse le a mintaprojektet](https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs), és bontsa ki a storage-java-ragrs.zip fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A mintaprojekt tartalmaz egy egyszerű Java-alkalmazást.
-
-```bash
-git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
-```
-
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 [Töltse le a minta projektet](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) , és bontsa ki a fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A minta projekt egy alapszintű Node. js-alkalmazást tartalmaz.
@@ -131,7 +118,7 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati sztringet. Ezt a kapcsolati sztringet tárolhatja egy környezeti változóban az alkalmazást futtató helyi gépen. A környezeti változó létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
 
-Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati sztringjét**. Futtassa a következő parancsok egyikét az operációs rendszer alapján, és cserélje \<le\> az yourconnectionstring kifejezést-t a tényleges kapcsolatok karakterláncára. A parancs egy környezeti változót ment a helyi számítógépen. A Windows rendszerben a környezeti változó nem érhető el, amíg újra nem tölti be a használni kívánt parancssort vagy rendszerhéjat.
+Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati sztringjét**. Futtassa a következő parancsok egyikét az operációs rendszer alapján, és cserélje \<le\> az yourconnectionstring kifejezést-t a tényleges kapcsolatok karakterláncára. A parancs egy környezeti változót ment a helyi számítógépen. A Windows rendszerben a környezeti változó nem érhető el, amíg újra nem tölti be a használni kívánt **parancssort** vagy rendszerhéjat.
 
 ### <a name="linux"></a>Linux
 
@@ -149,7 +136,7 @@ setx storageconnectionstring "<yourconnectionstring>"
 
 Az alkalmazásban meg kell adnia a Storage-fiók hitelesítő adatait. Ezeket az információkat az alkalmazást futtató helyi gépen található környezeti változókban tárolhatja. A környezeti változók létrehozásához kövesse az alábbi példák egyikét az operációs rendszertől függően.
 
-Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Illessze be a **Storage-fiók nevét** és a **kulcs** értékeit a következő parancsokra, és cserélje le \<a youraccountname\> és \<a youraccountkey\> helyőrzőket. Ez a parancs menti a környezeti változókat a helyi gépre. A Windows rendszerben a környezeti változó nem érhető el, amíg újra nem tölti be a használni kívánt parancssort vagy rendszerhéjat.
+Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Illessze be a **Storage-fiók nevét** és a **kulcs** értékeit a következő parancsokra, és cserélje le \<a youraccountname\> és \<a youraccountkey\> helyőrzőket. Ez a parancs menti a környezeti változókat a helyi gépre. A Windows rendszerben a környezeti változó nem érhető el, amíg újra nem tölti be a használni kívánt **parancssort** vagy rendszerhéjat.
 
 ### <a name="linux"></a>Linux
 
@@ -163,24 +150,6 @@ export accountkey=<youraccountkey>
 ```powershell
 setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
-```
-
-# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
-
-Ehhez a mintához biztonságosan kell tárolnia a Storage-fiók nevét és kulcsát. Tárolja azokat a helyi környezeti változókban a mintát futtató gép számára. A környezeti változók létrehozásához használja a Linux vagy a Windows példa használatát az operációs rendszertől függően. A Windows rendszerben a környezeti változó addig nem érhető el, amíg be nem tölti a használni kívánt parancssort vagy rendszerhéjat.
-
-### <a name="linux-example"></a>Linuxos példa
-
-```
-export AZURE_STORAGE_ACCOUNT="<youraccountname>"
-export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
-```
-
-### <a name="windows-example"></a>Windowsos példa
-
-```powershell
-setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
-setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
 ```
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
@@ -202,7 +171,7 @@ Telepítse a szükséges függőségeket. Ehhez nyisson meg egy parancssort, lé
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-A Visual Studióban nyomja le az **F5** billentyűt, vagy kattintson a **Start** gombra az alkalmazás hibakeresésének megkezdéséhez. A Visual Studio automatikusan visszaállítja a hiányzó NuGet-csomagokat, ha vannak konfigurálva. További információért látogasson el a [csomagok telepítése és újratelepítése csomag](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview) -visszaállítással című témakörre.
+A Visual Studióban nyomja le az **F5** billentyűt, vagy kattintson a **Start** gombra az alkalmazás hibakeresésének megkezdéséhez. A Visual Studio automatikusan visszaállítja a hiányzó NuGet-csomagokat, ha vannak konfigurálva. További információért látogasson el a [csomagok telepítése és újratelepítése csomag-visszaállítással](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview) című témakörre.
 
 Megnyílik a konzolablak, és az alkalmazás futni kezd. Az alkalmazás feltölti a **HelloWorld.png** képet a megoldásból a tárfiókra. Az alkalmazás ellenőrzi, hogy a kép replikálása valóban megtörtént-e a másodlagos RA-GRS-végpontra. Ezután elkezdi letölteni a képet legfeljebb 999 alkalommal. Minden olvasást egy **P** vagy egy **S**jelöl. ahol a **P** az elsődleges végpontot, az **S** a másodlagos végpontot jelenti.
 
@@ -222,49 +191,6 @@ A Storage-objektum újrapróbálkozási függvénye lineáris újrapróbálkozá
 
 A letöltés előtt a szolgáltatás objektum [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) és [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) függvény van definiálva. Ezek a függvények határozzák meg az eseménykezelőket, amelyek a letöltés sikeres befejezésekor vagy a sikertelen letöltés utáni újrapróbálkozásokkal aktiválódnak.
 
-# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
-
-A minta futtatásához használja a Maven parancsot a parancssorban.
-
-1. Nyisson meg egy rendszerhéjat, és keresse meg a **Storage-Blobs-Java-v10-Gyorsindítás** mappát a klónozott címtárban.
-2. Írja be a `mvn compile exec:java` (igen) kifejezést.
-
-Ez a példa egy tesztoldalt hoz létre az alapértelmezett címtárban. Windows-felhasználók esetén ez a könyvtár **AppData\Local\Temp**. A minta ezután a következő parancsokkal jeleníti meg a parancsokat:
-
-- Adja meg a **P** értéket a Put blob művelet végrehajtásához, ezzel a paranccsal feltölt egy ideiglenes fájlt a Storage-fiókjába.
-- Adja meg az **L** értéket a Blobok listázásához, ezzel a paranccsal listázhatja a jelenleg a tárolóban lévő blobokat.
-- Adja meg a **G** értéket a blob lekérése művelet végrehajtásához, ez a parancs letölt egy fájlt a Storage-fiókjából a helyi gépre.
-- Írja be a **D** értéket a blob törlése művelet végrehajtásához, ez a parancs törli a blobot a Storage-fiókból.
-- Adja meg az **e** -t a minta bezárásához, ezzel a paranccsal a létrehozott minta összes erőforrását is törli.
-
-A következő példa az alkalmazás Windows rendszeren végzett futtatásakor látható kimenetet mutatja.
-
-```
-Created quickstart container
-Enter a command
-(P)utBlob | (L)istBlobs | (G)etBlob | (D)eleteBlobs | (E)xitSample
-# Enter a command :
-P
-Uploading the sample file into the container: https://<storageaccount>.blob.core.windows.net/quickstart
-# Enter a command :
-L
-Listing blobs in the container: https://<storageaccount>.blob.core.windows.net/quickstart
-Blob name: SampleBlob.txt
-# Enter a command :
-G
-Get the blob: https://<storageaccount>.blob.core.windows.net/quickstart/SampleBlob.txt
-The blob was downloaded to C:\Users\<useraccount>\AppData\Local\Temp\downloadedFile13097087873115855761.txt
-# Enter a command :
-D
-Delete the blob: https://<storageaccount>.blob.core.windows.net/quickstart/SampleBlob.txt
-
-# Enter a command :
->> Blob deleted: https://<storageaccount>.blob.core.windows.net/quickstart/SampleBlob.txt
-E
-Cleaning up the sample and exiting!
-```
-
-A mintát a felhasználó vezérli, így parancsokat kell megadnia a kód futtatásához. A bemenetek megkülönböztetik a kis-és nagybetűket.
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
@@ -389,18 +315,6 @@ def response_callback(response):
         if secondary_read_count >= secondary_threshold:
             blob_client.location_mode = LocationMode.PRIMARY
             secondary_read_count = 0
-```
-
-# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
-
-A Java v10 SDK-val a visszahívási kezelők nem szükségesek, és az SDK-val már van néhány alapvető különbség a v7 SDK-ból. A Blobrequestoptions locationmode helyett másodlagos folyamatunk van. Megadhat egy másodlagos folyamatot a **RequestRetryOptions** , és ha meg van adva, lehetővé teszi az alkalmazás számára, hogy automatikusan átváltson a másodlagos folyamatra, ha az nem éri el az adatait az elsődleges folyamaton keresztül.
-
-```java
-// We create pipeline options here so that they can be easily used between different pipelines
-PipelineOptions myOptions = new PipelineOptions();
-myOptions.withRequestRetryOptions(new RequestRetryOptions(RetryPolicyType.EXPONENTIAL, 3, 10, 500L, 1000L, accountName + "-secondary.blob.core.windows.net"));
-// We are using a default pipeline here, you can learn more about it at https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview
-final ServiceURL serviceURL = new ServiceURL(new URL("https://" + accountName + ".blob.core.windows.net"), StorageURL.createPipeline(creds, myOptions));
 ```
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)

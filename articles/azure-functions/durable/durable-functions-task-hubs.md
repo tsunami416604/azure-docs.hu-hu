@@ -9,18 +9,18 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 40144fb50a01a64bbd67d541562b4fe0842fbf10
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0a58251530467d788710b0584b15715a207e20f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097800"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734324"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) feladat-hubok
 
-A Durable Functionsban található [](durable-functions-overview.md) egyik *feladat* egy olyan Azure Storage-erőforrások logikai tárolója, amelyeket a rendszer az előkészítéshez használ. A Orchestrator és a Activity függvények csak akkor kommunikálhatnak egymással, ha ugyanahhoz a feladathoz tartozó hubhoz tartoznak.
+A [Durable Functionsban](durable-functions-overview.md) található egyik *feladat* egy olyan Azure Storage-erőforrások logikai tárolója, amelyeket a rendszer az előkészítéshez használ. A Orchestrator és a Activity függvények csak akkor kommunikálhatnak egymással, ha ugyanahhoz a feladathoz tartozó hubhoz tartoznak.
 
-Ha több Function-alkalmazás is osztozik egy Storage-fiókkal , minden egyes Function-alkalmazást külön feladat-központtal kell konfigurálni. A Storage-fiókok több feladatot tartalmazó hubokat is tartalmazhatnak. A következő diagram egy Function hub-t ábrázol a megosztott és a dedikált Storage-fiókokban.
+Ha több Function-alkalmazás is osztozik egy Storage-fiókkal, minden egyes Function *-alkalmazást külön* feladat-központtal kell konfigurálni. A Storage-fiókok több feladatot tartalmazó hubokat is tartalmazhatnak. A következő diagram egy Function hub-t ábrázol a megosztott és a dedikált Storage-fiókokban.
 
 ![A megosztott és dedikált Storage-fiókokat bemutató diagram.](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
@@ -101,6 +101,8 @@ A feladat hub neve az Alkalmazásbeállítás értékére `MyTaskHub` lesz áll�
 
 Íme egy előre lefordított C# példa arra, hogyan írhat egy olyan függvényt, amely egy [OrchestrationClientBinding](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) -t használ egy olyan feladattal való együttműködéshez, amely alkalmazás-beállításként van konfigurálva:
 
+### <a name="c"></a>C#
+
 ```csharp
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
@@ -119,8 +121,9 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-Az alábbiakban a JavaScript szükséges konfigurációja látható. A `function.json` fájl Task hub tulajdonsága az alkalmazás beállításain keresztül van beállítva:
+### <a name="javascript"></a>JavaScript
 
+A `function.json` fájl Task hub tulajdonsága az alkalmazás beállításain keresztül van beállítva:
 ```json
 {
     "name": "input",

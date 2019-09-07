@@ -1,18 +1,18 @@
 ---
 title: Az Azure HDInsight SDK for go
-description: Az Azure HDInsight SDK for go referenciája
+description: Az Azure HDInsight SDK for Go és a Apache Hadoop-fürtök használatára szolgáló anyagminta
 author: tylerfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/8/2019
 ms.author: tyfox
 ms.custom: seodec18
-ms.openlocfilehash: 299e99d291e593ec01d2951c62541a7666565528
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: fccca42a7185f430c679e0128649575620bdce0f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977052"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733151"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for go (előzetes verzió)
 
@@ -477,4 +477,4 @@ for (page.NotDone()) {
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerkedjen meg a [GoDoc](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)-anyagmintával. A GoDocs az SDK összes funkciója számára biztosít dokumentációt.
+* Ismerkedjen meg a [GoDoc-anyagmintával](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight). A GoDocs az SDK összes funkciója számára biztosít dokumentációt.

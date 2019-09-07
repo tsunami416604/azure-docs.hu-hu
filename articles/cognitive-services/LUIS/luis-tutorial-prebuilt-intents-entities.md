@@ -1,5 +1,5 @@
 ---
-title: Előre összeépített leképezések és entitások – LUIS
+title: 'Oktatóanyag: Előre összeépített leképezések és entitások – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban előre elkészített leképezéseket és entitásokat ad hozzá egy alkalmazáshoz, amellyel gyorsan elsajátíthatja a szándék előrejelzését és az kinyerést. A kimondott szövegeket nem szükséges megcímkézni előre összeállított entitásokkal. Az entitást a rendszer automatikusan észleli.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 4697bad15a374bed0de08b7cabc5aceaad7f1259
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: aaeddac98e3f192d5e6a87ecfd48005526379ff2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876709"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390982"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Oktatóanyag: Közös szándékok és entitások azonosítása
 

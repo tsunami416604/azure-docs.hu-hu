@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82b8dcfa02d21183a06fa510adb774338e72cb4e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8a1914b7cf79287831e0e94c19c50107c2ac216d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851723"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390792"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Egyéni tartományok használata az Azure AD-alkalmazásproxy
 
@@ -40,7 +40,7 @@ Azt javasoljuk, hogy beállította az egyéni tartományokban az alkalmazásokho
 
 Mielőtt egy egyéni tartományt állít be, győződjön meg arról, hogy rendelkezik-e előkészítve az alábbi követelményeknek: 
 - A [ellenőrzött tartomány hozzáadása az Azure Active Directoryhoz](../fundamentals/add-custom-domain.md).
-- Egyéni-tanúsítványt a tartomány, a PFX-fájlok formájában. 
+- Egyéni-tanúsítványt a tartomány, a PFX-fájlok formájában.
 - A helyszíni alkalmazás [alkalmazásproxyn keresztül közzétett](application-proxy-add-on-premises-application.md).
 
 ### <a name="configure-your-custom-domain"></a>Az egyéni tartomány konfigurálása
@@ -72,6 +72,8 @@ Ha készen áll három követelményekről, kövesse az alábbi lépéseket az e
 A tanúsítvány-aláírás módszerek korlátozva van. Elliptikus görbéjű titkosítási (ECC), a tulajdonos alternatív nevére (SAN) és egyéb gyakori tanúsítványtípusok egyaránt támogatottak. 
 
 Helyettesítő tanúsítvány mindaddig, amíg a helyettesítő karakteres megegyezik a kívánt külső URL-cím használható.
+
+A tanúsítványnak tartalmaznia kell a titkos kulcsot.
 
 A saját nyilvános kulcsokra épülő infrastruktúrája (PKI) által kiadott tanúsítványok akkor használhatók, ha a tanúsítványlánc telepítve van az ügyféleszközök számára. Az Intune használatával ezeket a tanúsítványokat a felügyelt eszközökön is üzembe helyezheti. Nem felügyelt eszközök esetén ezeket a tanúsítványokat manuálisan kell telepíteni.
 

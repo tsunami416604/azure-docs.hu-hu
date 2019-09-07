@@ -1,5 +1,5 @@
 ---
-title: Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – motiváció és előnyök
+title: Helyszíni Apache Hadoop migrálása az Azure HDInsight – motiváció és előnyök
 description: Megismerheti a helyszíni Hadoop-fürtök Azure-HDInsight való áttelepítésének motivációját és előnyeit.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f886cb71d4dbc191dae317e8ea72d8c896f37c03
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 3c122a68e9f28772be4e3a17a21e5457aa187ce6
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442078"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736113"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – motiváció és előnyök
 
@@ -33,13 +33,13 @@ Az Azure HDInsight a Hadoop-összetevők Felhőbeli eloszlása. Az Azure HDInsig
 
 ## <a name="azure-hdinsight-advantages-over-on-premises-hadoop"></a>Az Azure HDInsight előnyei a helyszíni Hadoop
 
-- Az **alacsony költségek** csökkentéséhez a fürtöket [igény](../hdinsight-hadoop-create-linux-clusters-adf.md) szerint kell létrehozni, és csak azért kell fizetnie, amit ténylegesen használ. A leválasztott számítás és tárolás rugalmasságot biztosít azáltal, hogy az adatmennyiséget a fürt méretétől függetlenül tartja.
+- Az **alacsony költségek** csökkentéséhez a [fürtöket igény](../hdinsight-hadoop-create-linux-clusters-adf.md) szerint kell létrehozni, és csak azért kell fizetnie, amit ténylegesen használ. A leválasztott számítás és tárolás rugalmasságot biztosít azáltal, hogy az adatmennyiséget a fürt méretétől függetlenül tartja.
 
 - **Automatikus fürt létrehozása** – a fürt automatikus létrehozásához minimális beállítás és konfigurálás szükséges. Az Automation használható igény szerinti fürtökhöz.
 
 - **Felügyelt hardverek és konfigurációk** – nem kell aggódnia a fizikai hardver vagy infrastruktúra HDInsight-fürttel való használatával kapcsolatban. Csak adja meg a fürt konfigurációját, és az Azure beállítja.
 
-- A **könnyen méretezhető** HDInsight lehetővé teszi a [számítási](../hdinsight-administer-use-portal-linux.md) feladatok fel-és leskálázását. Az Azure az adatfeldolgozási feladatok megszakítása nélkül gondoskodik az adatok újraelosztásáról és a számítási feladatok kiegyensúlyozásáról.
+- A **könnyen méretezhető** HDInsight lehetővé teszi a számítási feladatok fel-és [leskálázását](../hdinsight-administer-use-portal-linux.md) . Az Azure az adatfeldolgozási feladatok megszakítása nélkül gondoskodik az adatok újraelosztásáról és a számítási feladatok kiegyensúlyozásáról.
 
 - **Globális rendelkezésre állás** – a HDInsight több [régióban](https://azure.microsoft.com/regions/services/) is elérhető, mint bármely más Big Data elemzési ajánlat. Az Azure HDInsight elérhető az Azure Governmentben, Kínában, és Németországban is, így megfelelhet a vállalati igényeknek a főbb szuverén területeken.
 
@@ -51,11 +51,11 @@ Az Azure HDInsight a Hadoop-összetevők Felhőbeli eloszlása. Az Azure HDInsig
 
 - **Termelékenység** – különböző eszközöket használhat a Hadoop és a sparkhoz az előnyben részesített fejlesztési környezetben.
 
-- **Bővíthetőség egyéni eszközökkel vagy harmadik féltől származó alkalmazásokkal** – a HDInsight-fürtök kiterjeszthetők a telepített összetevőkkel, és a többi Big Data [-](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) megoldással is integrálhatók, ha egykattintásos üzembe helyezést végeznek a Azure Market-hely.
+- **Bővíthetőség egyéni eszközökkel vagy harmadik féltől származó alkalmazásokkal** – a HDInsight-fürtök kiterjeszthetők a telepített összetevőkkel, és a többi Big Data-megoldással is integrálhatók, ha [egykattintásos](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) üzembe helyezést végeznek a Azure Market-hely.
 
 - **Egyszerű felügyelet, felügyelet és figyelés** – az Azure HDInsight integrálható [Azure monitor naplókkal](../hdinsight-hadoop-oms-log-analytics-tutorial.md) , így egyetlen felületet biztosít, amellyel az összes fürtöt nyomon követheti.
 
-- **Integráció más Azure** -szolgáltatásokkal – a HDInsight könnyen integrálható más népszerű Azure-szolgáltatásokkal, például a következőkkel:
+- **Integráció más Azure-szolgáltatásokkal** – a HDInsight könnyen integrálható más népszerű Azure-szolgáltatásokkal, például a következőkkel:
 
     - Azure Data Factory (ADF)
     - Azure Blob Storage
@@ -149,13 +149,13 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |**Témakör**: **Fürt kihasználtsága**|||
 |Átlagos CPU-használat (%)|60%||
 |Felhasznált memória átlagos százaléka (%)|75%||
-|Használt lemezterület|75%||
+|Felhasznált lemezterület|75%||
 |Átlagos hálózati használat%-ban|25%
 |**Témakör**: **Személyzet**|||
 |Nem. a rendszergazdák|2||
 |Nem. Fejlesztőknek|10||
 |Nem. a végfelhasználók számára|100||
-|Képességek|Hadoop, Spark||
+|Ismereteit|Hadoop, Spark||
 |Nem. az áttelepítési erőfeszítésekhez rendelkezésre álló erőforrások|2||
 |**Témakör**: **Korlátozások**|||
 |Aktuális korlátozások|A késés magas||

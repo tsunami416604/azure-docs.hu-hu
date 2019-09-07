@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3918c37d985c6766fe6ad4601b70ddbd4597b0ba
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4d8955517450ce3b4efdf30e2790e4be678dfc7b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087152"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735181"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Emberi interakció Durable Functions – telefonos ellenőrzési minta
 
@@ -53,7 +53,7 @@ A **E4_SmsPhoneVerification** függvény a standard *function. JSON* fájlt hasz
 
 Itt látható a függvényt megvalósító kód:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Parancsfájl
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
@@ -63,7 +63,7 @@ Itt látható a függvényt megvalósító kód:
 
 Az indítás után a Orchestrator függvény a következő műveleteket végzi el:
 
-1. Beolvas egy telefonszámot, amelyre az SMS-értesítést küldi.
+1. Beolvas egy telefonszámot, amelyre az SMS-értesítést *küldi* .
 2. Meghívja a **E4_SendSmsChallenge** , hogy SMS-üzenetet küldjön a felhasználónak, és visszaadja a várt 4 számjegyű Challenge-kódot.
 3. Egy tartós időzítőt hoz létre, amely az aktuális időpontból 90 másodpercet indít el.
 4. Az időzítővel párhuzamosan vár egy **SmsChallengeResponse** eseményt a felhasználótól.
@@ -74,7 +74,7 @@ A felhasználó egy négyjegyű kóddal rendelkező SMS-üzenetet kap. Az ellen�
 > Előfordulhat, hogy először nem nyilvánvaló, de ez a Orchestrator függvény teljesen determinisztikus. Ennek az az oka `CurrentUtcDateTime` , hogy a ( `currentUtcDateTime` .net) és a (JavaScript) tulajdonságokat használja az időzítő lejárati idejének kiszámításához, és ezek a tulajdonságok ugyanazt az értéket adják vissza a Orchestrator-kód ezen pontján lévő összes visszajátszás esetében. Ez fontos annak biztosítása érdekében, hogy a `winner` `Task.WhenAny` (.net) vagy `context.df.Task.any` a (JavaScript) minden ismétlődő hívása ugyanaz legyen.
 
 > [!WARNING]
-> Fontos megszakítani [](durable-functions-timers.md) az időzítőt, ha már nincs rájuk szükség a lejárathoz, ahogy a fenti példában a kérdéses válasz elfogadásakor is.
+> Fontos [megszakítani az időzítőt](durable-functions-timers.md) , ha már nincs rájuk szükség a lejárathoz, ahogy a fenti példában a kérdéses válasz elfogadásakor is.
 
 ## <a name="send-the-sms-message"></a>SMS-üzenet küldése
 
@@ -84,7 +84,7 @@ A **E4_SendSmsChallenge** függvény a Twilio kötés használatával küldi el 
 
 Itt látható a 4 számjegyből álló hibakódot generáló kód, amely az SMS-üzenetet küldi el:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Parancsfájl
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 

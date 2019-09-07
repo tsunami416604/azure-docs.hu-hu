@@ -3,18 +3,17 @@ title: Ellenőrzőpontok és visszajátszás a Durable Functions-ben – Azure
 description: Ismerje meg, hogyan működik az ellenőrzőpontok és a válasz a Azure Functions Durable Functions-bővítményében.
 services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1e6d3b78887c9d195fdf0137553860c141bdaaba
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 5d0527de556c25a1d369d7b22c3f62579bc508f0
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241061"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735259"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Ellenőrzőpontok és visszajátszás Durable Functions (Azure Functions)
 
@@ -80,7 +79,7 @@ Ha végzett, a korábban bemutatott függvény előzményei a következőhöz ha
 | PartitionKey (InstanceId)                     | EventType             | Timestamp               | Input (Bemenet) | Name (Név)             | Eredmény                                                    | State |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | NULL  | E1_HelloSequence |                                                           |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
@@ -128,17 +127,9 @@ Az újrajátszás viselkedése korlátozásokat hoz létre a Orchestrator függv
 
   Ha a Orchestrator-kódnak le kell kérnie az aktuális dátumot és időpontot, akkor a [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) ( `currentUtcDateTime` .net) vagy a (JavaScript) API-t kell használnia, amely biztonságos az újrajátszás számára.
 
-  Ha a Orchestrator-kódnak véletlenszerű GUID-azonosítót kell létrehoznia, akkor a [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.net) API-t kell használnia, amely biztonságos az újrajátszás számára, vagy delegálja a GUID-generációt egy Activity függvénynek (JavaScript), ahogy az a következő példában is látható:
+  Ha a Orchestrator-kódnak véletlenszerű GUID-azonosítót kell kiállítania, akkor a [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.net) vagy `newGuid` a (JavaScript) API-t kell használnia, amely biztonságos az újrajátszás számára.
 
-  ```javascript
-  const uuid = require("uuid/v1");
-
-  module.exports = async function(context) {
-    return uuid();
-  }
-  ```
-
-  A nem determinisztikus műveleteket tevékenységi funkciókban kell elvégezni. Ez magában foglalja a más bemeneti vagy kimeneti kötésekkel való interakciót is. Ez biztosítja, hogy az első végrehajtáskor és a végrehajtási előzményekbe való mentés után minden nem determinisztikus értéket generáljon a rendszer. A következő végrehajtások ezt követően automatikusan a mentett értéket fogják használni.
+   Az ilyen különleges esetektől eltérő esetekben a nem determinisztikus műveleteket a tevékenységi funkciókban kell elvégezni. Ez magában foglalja a más bemeneti vagy kimeneti kötésekkel való interakciót is. Ez biztosítja, hogy az első végrehajtáskor és a végrehajtási előzményekbe való mentés után minden nem determinisztikus értéket generáljon a rendszer. A következő végrehajtások ezt követően automatikusan a mentett értéket fogják használni.
 
 * A Orchestrator kód **nem blokkolható**. Ez azt jelenti például, hogy nincs I/O, és nem `Thread.Sleep` a (.net) vagy az egyenértékű API-k hívása.
 
@@ -165,7 +156,7 @@ Habár ezek a megkötések először is ijesztőnek tűnhet, a gyakorlatban nem 
 
 A Orchestrator függvényekben biztonságosan megtekinthető feladatok időnként *tartós feladatoknak*is nevezik. Ezek olyan feladatok, amelyeket a tartós feladatok keretrendszere hozott létre és felügyel. Ilyenek például a, `CallActivityAsync` `WaitForExternalEvent`a és `CreateTimer`a által visszaadott feladatok.
 
-Ezek a *tartós feladatok* belsőleg kezelhetők `TaskCompletionSource` objektumok listájának használatával. Az újrajátszás során ezek a feladatok a Orchestrator-kód végrehajtásának részeként jönnek létre, és a kiosztók a megfelelő előzmény-események enumerálásával lesznek végrehajtva. Mindez szinkron módon történik egyetlen szál használatával, amíg az összes előzmény újra nem lett játszva. Minden olyan tartós feladat, amelyet az előzmények végén nem végez el, a megfelelő műveleteket hajtja végre. Előfordulhat például, hogy egy várólistán lévő hívni egy üzenetet.
+Ezek a *tartós feladatok* belsőleg kezelhetők `TaskCompletionSource` objektumok listájának használatával. Az újrajátszás során ezek a feladatok a Orchestrator-kód végrehajtásának részeként jönnek létre, és a kiosztók a megfelelő előzmény-események enumerálásával lesznek végrehajtva. Mindez szinkron módon történik egyetlen szál használatával, amíg az összes előzmény újra nem lett játszva. Az előzmények végének újrajátszása által nem befejezett tartós feladatok megfelelő műveleteket hajtanak végre. Előfordulhat például, hogy egy várólistán lévő hívni egy üzenetet.
 
 Az itt leírt végrehajtási viselkedésnek meg kell ismernie, hogy miért nem tartós `await` feladat a Orchestrator funkció kódjának: a diszpécser szál nem várja meg, amíg befejeződik, és az adott feladat által visszaadott visszahívások esetleg megsértik a követést a Orchestrator függvény állapota. A rendszer bizonyos futásidejű ellenőrzéseket végez, hogy elkerülje ennek elkerülését.
 

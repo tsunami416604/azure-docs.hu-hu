@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/23/2019
+ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0d5a87d4723bcc21b75db1b31ada72823abdf02
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5f9d727154adf0a2099d7a9144c109cef9c91238
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171414"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743966"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a nagyítással
 
@@ -44,7 +44,8 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A nagyítás támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A nagyítás támogatja az **SP** által kezdeményezett SSO-t és 
+* A nagyítás támogatja a [felhasználók **automatikus** kiépítési](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)felállítását.
 
 ## <a name="adding-zoom-from-the-gallery"></a>Nagyítás hozzáadása a katalógusból
 
@@ -74,20 +75,20 @@ Az Azure AD SSO nagyítással való konfigurálásához és teszteléséhez hajt
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a nagyítási alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **nagyítási** alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az alapszintű **SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
+1. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.zoom.us`
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`<companyname>.zoom.us`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez vegye fel a kapcsolatot a [nagyítási ügyfél támogatási csoportjával](https://support.zoom.us/hc/en-us) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez vegye fel a kapcsolatot a [nagyítási ügyfél támogatási csoportjával](https://support.zoom.us/hc/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -98,10 +99,10 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
 > [!NOTE]
-> Ha meg szeretné tudni, hogyan konfigurálhatja a szerepkört az Azure AD-ben, olvassa el a [vállalati alkalmazások SAML-jogkivonatában kiadott szerepkör](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)-jogcímek konfigurálása című részt
+> Ha meg szeretné tudni, hogyan konfigurálhatja a szerepkört az Azure AD-ben, olvassa el a [vállalati alkalmazások SAML-jogkivonatában kiadott szerepkör-jogcímek konfigurálása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)című részt
 
 > [!NOTE]
-> A nagyítás várhatóan egy csoportos jogcímet várhat az SAML-adattartalomban. Ha bármilyen csoportot hozott létre, lépjen kapcsolatba a [nagyítási ügyfél támogatási](https://support.zoom.us/hc/en-us) csoportjával, és adja meg a csoport adatait a csoport adatainak konfigurálásához. Emellett meg kell adnia az objektumazonosító számára az [ügyfél-támogatási csapat nagyítását](https://support.zoom.us/hc/en-us) , hogy az objektum azonosítója a végén is konfigurálható legyen. Az objektumazonosító beszerzéséhez tekintse meg a [Nagyítás konfigurálása az Azure](https://support.zoom.us/hc/en-us/articles/115005887566)-ban című témakört.
+> A nagyítás várhatóan egy csoportos jogcímet várhat az SAML-adattartalomban. Ha bármilyen csoportot hozott létre, lépjen kapcsolatba a [nagyítási ügyfél támogatási](https://support.zoom.us/hc/) csoportjával, és adja meg a csoport adatait a csoport adatainak konfigurálásához. Emellett meg kell adnia az objektumazonosító számára az [ügyfél-támogatási csapat nagyítását](https://support.zoom.us/hc/) , hogy az objektum azonosítója a végén is konfigurálható legyen. Az objektumazonosító beszerzéséhez tekintse meg a [Nagyítás konfigurálása az Azure](https://support.zoom.us/hc/articles/115005887566)-ban című témakört.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -172,30 +173,10 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ### <a name="create-zoom-test-user"></a>Nagyítási teszt felhasználó létrehozása
 
-Annak érdekében, hogy az Azure AD-felhasználók bejelentkezzenek a Nagyításba, a nagyításhoz kell őket kiépíteni. Nagyítás esetén a kiépítés manuális feladat.
-
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
-
-1. Jelentkezzen be a **nagyítású** vállalati webhelyre rendszergazdaként.
-
-2. Kattintson a **Fiókkezelés** lapra, majd a **felhasználói kezelés**elemre.
-
-3. A felhasználói kezelés szakaszban kattintson a **felhasználók hozzáadása**elemre.
-
-    ![Felhasználói felügyelet](./media/zoom-tutorial/ic784703.png "Felhasználói felügyelet")
-
-4. A **felhasználók hozzáadása** oldalon hajtsa végre a következő lépéseket:
-
-    ![Felhasználók hozzáadása](./media/zoom-tutorial/ic784704.png "Felhasználók hozzáadása")
-
-    a. A **felhasználó típusa**területen válasszaaz alapszintű lehetőséget.
-
-    b. Az **e-mailek** szövegmezőbe írja be a kiépíteni kívánt érvényes Azure ad-fiók e-mail-címét.
-
-    c. Kattintson a **Hozzáadás**lehetőségre.
+A szakasz célja, hogy létrehozzon egy B. Simon nevű felhasználót a nagyításban. A nagyítás támogatja az automatikus felhasználó-kiépítés beállítást, amely alapértelmezés szerint engedélyezve van. További részletekért tekintse [meg az automatikus](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial) felhasználó-kiépítés konfigurálását ismertető témakört.
 
 > [!NOTE]
-> Az Azure Active Directory felhasználói fiókok kiépítéséhez a nagyítással elérhető bármely más nagyítású felhasználói fiók létrehozási eszközét vagy API-jait használhatja.
+> Ha manuálisan kell létrehoznia egy felhasználót, fel kell vennie a kapcsolatot a [nagyítási ügyfél támogatási csoportjával](https://support.zoom.us/hc/) .
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

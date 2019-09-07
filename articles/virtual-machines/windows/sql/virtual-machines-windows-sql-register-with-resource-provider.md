@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eeabb4547e3c02ebf540e6d156df97954e612fbc
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: edda6dffa04bfc0492b7336893c5b167ccc42ca5
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208336"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743914"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>SQL Server virtuális gép regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 
@@ -202,7 +202,7 @@ Az ügynök üzemmódjának teljes frissítése:
 
    ![A mód a portálról való módosításának kiválasztása](media/virtual-machines-windows-sql-server-agent-extension/change-sql-iaas-mode-portal.png)
 
-1. Jelölje be az Elfogadom a **SQL Server szolgáltatás újraindítása a virtuális gépen** jelölőnégyzetet, majd válassza a **megerősítés** lehetőséget a IaaS mód teljes állapotra való frissítéséhez. 
+1. Jelölje be az **Elfogadom a SQL Server szolgáltatás újraindítása a virtuális gépen** jelölőnégyzetet, majd válassza a **megerősítés** lehetőséget a IaaS mód teljes állapotra való frissítéséhez. 
 
     ![A virtuális gépen SQL Server szolgáltatás újraindítását kérő jelölőnégyzet](media/virtual-machines-windows-sql-server-agent-extension/enable-full-mode-iaas.png)
 
@@ -238,10 +238,10 @@ Ha regisztrálni szeretné a SQL Server VM az SQL VM erőforrás-szolgáltatóva
 ### <a name="azure-portal"></a>Azure Portal
 
 1. Nyissa meg a Azure Portalt, és válassza a **minden szolgáltatás**lehetőséget. 
-1. Lépjen az előfizetések elemre, és válassza ki a kamat előfizetését.  
-1. Az előfizetések lapon lépjen az **erőforrás-szolgáltatók**elemre. 
-1. Adja meg az SQL-t a szűrőben az SQL-hez kapcsolódó erőforrás-szolgáltatók létrehozásához. 
-1. Válassza a **Microsoft. SqlVirtualMachine** -szolgáltató **regisztrálása**, újbóli **regisztrálása**vagy **regisztrációjának** törlése lehetőséget a kívánt művelettől függően. 
+1. Lépjen az **előfizetések** elemre, és válassza ki a kamat előfizetését.  
+1. Az **előfizetések** lapon lépjen az **erőforrás-szolgáltatók**elemre. 
+1. Adja **meg az SQL-** t a szűrőben az SQL-hez kapcsolódó erőforrás-szolgáltatók létrehozásához. 
+1. Válassza a **Microsoft. SqlVirtualMachine** -szolgáltató **regisztrálása**, **újbóli regisztrálása**vagy **regisztrációjának** törlése lehetőséget a kívánt művelettől függően. 
 
 ![A szolgáltató módosítása](media/virtual-machines-windows-sql-ahb/select-resource-provider-sql.png)
 
@@ -298,7 +298,7 @@ Az SQL VM erőforrás-szolgáltatóhoz nem szükséges előfeltétel, hogy egysz
 
 Igen, ha nem rendelkezik a virtuális gépre telepített SQL Server IaaS bővítménnyel, akkor az egyszerűsített felügyeleti módban regisztrálhatja az SQL VM erőforrás-szolgáltatót. A könnyű mód esetében az SQL VM erőforrás-szolgáltató egy konzol alkalmazást fogja használni a SQL Server példány verziójának és kiadásának ellenőrzéséhez. 
 
-Az SQL VM erőforrás-szolgáltatóval való regisztráláskor az alapértelmezett SQL-kezelési mód megtelt. Ha az SQL-alapú virtuális gép erőforrás-szolgáltatójának regisztrálásakor nincs beállítva az SQL Management tulajdonság, a mód teljes Kezelhetőségként lesz beállítva. Ha a virtuális gépen telepítve van az SQL IaaS bővítmény, a teljes körű kezelhetőségi módban regisztrálnia kell az SQL VM erőforrás-szolgáltatót.
+Az SQL VM erőforrás-szolgáltatóval való regisztráláskor az alapértelmezett SQL-kezelési mód _megtelt_. Ha az SQL-alapú virtuális gép erőforrás-szolgáltatójának regisztrálásakor nincs beállítva az SQL Management tulajdonság, a mód teljes Kezelhetőségként lesz beállítva. Ha a virtuális gépen telepítve van az SQL IaaS bővítmény, a teljes körű kezelhetőségi módban regisztrálnia kell az SQL VM erőforrás-szolgáltatót.
 
 **Regisztrálja az SQL VM erőforrás-szolgáltatót az ügynök telepítése a virtuális gépre?**
 

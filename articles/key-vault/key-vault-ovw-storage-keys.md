@@ -8,18 +8,18 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 7ba85d74f9126f4586313dc4e2b365d1e11f3798
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 251a7c21b671052a23f6ee18cb4278737464b25c
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934182"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744874"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>A Storage-fiók kulcsainak kezelése a Azure Key Vault és az Azure CLI használatával 
 
 A Azure Key Vault az Azure Storage-fiókok és a klasszikus Storage-fiókok kulcsait kezeli. A Key Vault felügyelt tár fiók funkció használatával több kulcskezelő funkciót is elvégezhet.
 
-Az [Azure Storage-fiók](/azure/storage/storage-create-storage-account) olyan hitelesítő adatokat használ, amely egy fióknevet és egy kulcsot tartalmaz. A kulcs automatikusan létrejön, és jelszóként szolgál, nem pedig titkosítási kulcsként. A Key Vault a Storage-fiókok kulcsait úgy kezeli, hogy [Key Vault titokként](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets)tárolja őket. A kulcsok egy Azure Storage-fiókkal vannak felsorolva (szinkronizálva), és rendszeresen újragenerálják vagy elforgatják őket. 
+Az [Azure Storage-fiók](/azure/storage/storage-create-storage-account) olyan hitelesítő adatokat használ, amely egy fióknevet és egy kulcsot tartalmaz. A kulcs automatikusan létrejön, és jelszóként szolgál, nem pedig titkosítási kulcsként. A Key Vault a Storage-fiókok kulcsait úgy kezeli, hogy [Key Vault titokként](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets)tárolja őket. A kulcsok egy Azure Storage-fiókkal vannak felsorolva (szinkronizálva), és rendszeresen újragenerálják vagy _elforgatják_őket. 
 
 A felügyelt Storage-fiók kulcsa funkció használata esetén vegye figyelembe a következő szempontokat:
 
@@ -48,7 +48,7 @@ A Key Vault egy olyan Microsoft-alkalmazás, amely az összes Azure AD-bérlőbe
 | Bérlők | Felhő | Alkalmazásazonosító |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Azure – nyilvános | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Azure AD | Nyilvános Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | Egyéb  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 <!-- Add closing sentences to summarize what the user accomplished in this section. -->
@@ -67,7 +67,7 @@ A Storage-fiók kulcsainak kezeléséhez négy alapvető lépést kell megtenni 
 
 1. Meglévő Storage-fiók beszerzése.
 1. Meglévő kulcstartó beolvasása.
-1. Vegyen fel egy Key Vault felügyelt Storage-fiókot a tárolóba. Állítsa `key1` aktív kulcsként egy 180 napos újragenerálási időszakra.
+1. Vegyen fel egy Key Vault felügyelt Storage-fiókot a tárolóba. Állítsa `key1` aktív kulcsként egy 90 napos újragenerálási időszakra.
 1. Ezzel `key1` a beállítással állíthatja be a megadott Storage-fiók tárolási környezetét.
 
 > [!NOTE]
@@ -97,7 +97,7 @@ A Storage-fiók kulcsainak kezeléséhez négy alapvető lépést kell megtenni 
     az role assignment create --role "Storage Account Key Operator Service Role" --assignee-object-id 93c27d83-f79b-4cb2-8dd4-4aa716542e74 --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>"
     ```
     
-    `93c27d83-f79b-4cb2-8dd4-4aa716542e74`Az Azure-beli nyilvános felhőben Key Vault objektum azonosítója. A Azure Government felhőben lévő Key Vault objektumazonosító beszerzéséhez tekintse meg a [szolgáltatásnév alkalmazás](#service-principal-application-id)-azonosítóját.
+    `93c27d83-f79b-4cb2-8dd4-4aa716542e74`Az Azure-beli nyilvános felhőben Key Vault objektum azonosítója. A Azure Government felhőben lévő Key Vault objektumazonosító beszerzéséhez tekintse meg a [szolgáltatásnév alkalmazás-azonosítóját](#service-principal-application-id).
     
 1. Key Vault felügyelt Storage-fiók létrehozása:
 
@@ -150,7 +150,7 @@ Az előző szakaszban ismertetett lépések elvégzése után futtassa a követk
 
 ## <a name="fetch-tokens-in-code"></a>Jogkivonatok beolvasása a kódban
 
-Hajtson végre műveleteket a Storage-fiókban a [közös hozzáférésű aláírási](../storage/common/storage-dotnet-shared-access-signature-part-1.md) jogkivonatok beolvasásával Key Vaultból.
+Hajtson végre műveleteket a Storage-fiókban a [közös hozzáférésű aláírási jogkivonatok](../storage/common/storage-dotnet-shared-access-signature-part-1.md) beolvasásával Key Vaultból.
 
 A Key Vault háromféleképpen lehet hitelesíteni:
 
@@ -196,5 +196,5 @@ A felügyelt tárolási fiókokhoz kapcsolódó Azure CLI-parancsokkal kapcsolat
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [kulcsokról, a titkokról és](https://docs.microsoft.com/rest/api/keyvault/)a tanúsítványokról.
+- További információ a [kulcsokról, a titkokról és a tanúsítványokról](https://docs.microsoft.com/rest/api/keyvault/).
 - Tekintse át a [Azure Key Vault csapat blogján](https://blogs.technet.microsoft.com/kv/)található cikkeket.

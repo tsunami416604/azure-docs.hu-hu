@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 078a29fc1ab66151aa41c3901bb6a3af6479a0ba
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: dd3b68d600edcbbae73fff542e677d3ebc6b16ee
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233268"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390822"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>FSLogix-profil tárolójának létrehozása a Azure NetApp Files használatával
 
@@ -22,7 +22,7 @@ A FSLogix-profil tárolókat a [Azure NetApp Files](https://azure.microsoft.com/
 
 Ebből az útmutatóból megtudhatja, hogyan állíthat be egy Azure NetApp Files fiókot, és hogyan hozhat létre FSLogix-profilok tárolókat a Windows virtuális asztalon.
 
-Ez a cikk azt feltételezi, [](create-host-pools-azure-marketplace.md) hogy már rendelkezik a Windows rendszerű virtuális asztali környezetben egy vagy több bérlőbe beállított és csoportosított gazdagépekkel. A bérlők beállításával kapcsolatos további információkért lásd: [bérlő létrehozása a Windows Virtual Desktopban](tenant-setup-azure-active-directory.md) és [a technikai Közösség blogbejegyzése](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
+Ez a cikk azt feltételezi, hogy már rendelkezik a Windows rendszerű virtuális asztali környezetben egy vagy több bérlőbe beállított és csoportosított [gazdagépekkel](create-host-pools-azure-marketplace.md) . A bérlők beállításával kapcsolatos további információkért lásd: [bérlő létrehozása a Windows Virtual Desktopban](tenant-setup-azure-active-directory.md) és [a technikai Közösség blogbejegyzése](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
 
 Az útmutatóban szereplő utasítások kifejezetten a Windows rendszerű virtuális asztali felhasználók számára készültek. Ha további általános útmutatást szeretne arról, hogyan kell beállítani Azure NetApp Files és létrehozni a FSLogix-profilok tárolóit a Windows virtuális asztalon kívül, tekintse [meg a Azure NetApp Files beállítása és az NFS-kötet létrehozása](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)című rövid útmutatót.
 
@@ -110,7 +110,7 @@ Ezután csatlakoznia kell egy Active Directory-csatlakozáshoz.
 
     - Az **elsődleges DNS**esetében adja meg a környezetben található DNS-kiszolgáló IP-címét, amely képes a tartománynév feloldására.
     - A **tartomány**mezőben adja meg a teljes tartománynevet (FQDN).
-    - Az **SMB-kiszolgáló (számítógépfiók)** előtagjaként adja meg azt a karakterláncot, amelyet hozzá szeretne fűzni a számítógépfiók nevéhez.
+    - Az **SMB-kiszolgáló (számítógépfiók) előtagjaként**adja meg azt a karakterláncot, amelyet hozzá szeretne fűzni a számítógépfiók nevéhez.
     - A **Felhasználónév**mezőbe írja be annak a fióknak a nevét, amely a tartományhoz való csatlakozáshoz szükséges engedélyekkel rendelkezik.
     - A **jelszó**mezőben adja meg a fiók jelszavát.
 
@@ -138,14 +138,14 @@ Ezután létre kell hoznia egy új kötetet.
 A kötet létrehozása után konfigurálja a kötet-hozzáférési paramétereket.
 
 1.  Válassza az **SMB** lehetőséget a protokoll típusaként.
-2.  A **Active Directory** legördülő menüben a konfiguráció területen válassza ki ugyanazt a könyvtárat, amelyhez eredetileg kapcsolódott a [Csatlakozás egy Active Directory](create-fslogix-profile-container.md#join-an-active-directory-connection)-kapcsolathoz. Ne feledje, hogy az előfizetés legfeljebb egy Active Directory.
+2.  A **Active Directory** legördülő menüben a konfiguráció területen válassza ki ugyanazt a könyvtárat, amelyhez eredetileg kapcsolódott a [Csatlakozás egy Active Directory-kapcsolathoz](create-fslogix-profile-container.md#join-an-active-directory-connection). Ne feledje, hogy az előfizetés legfeljebb egy Active Directory.
 3.  A **megosztás neve** szövegmezőbe írja be a munkamenet-gazda készlet és a felhasználók által használt megosztás nevét.
 
 4.  Kattintson a lap alján található **felülvizsgálat + létrehozás** lehetőségre. Ekkor megnyílik az érvényesítési oldal. A kötet sikeres ellenőrzése után válassza a **Létrehozás**lehetőséget.
 
 5.  Ezen a ponton az új kötet üzembe helyezése megkezdődik. Az üzembe helyezés befejeztével használhatja a Azure NetApp Files megosztást.
 
-6.  A csatlakoztatási útvonal megtekintéséhez válassza az **Ugrás** az erőforráshoz lehetőséget, és keresse meg az Áttekintés lapon.
+6.  A csatlakoztatási útvonal megtekintéséhez válassza az **Ugrás az erőforráshoz** lehetőséget, és keresse meg az Áttekintés lapon.
 
     ![Az áttekintő képernyő képernyőképe egy piros nyíllal, amely a csatlakoztatási útvonalra mutat.](media/overview-mount-path.png)
 
@@ -175,7 +175,7 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
 11.  Hozzon létre egy megnevezett értéket egy **REG_DWORD** típusú értékkel, amely **1**adatértékre **van** beállítva.
 
-12. Hozzon létre egy **VHDLocations** nevű értéket egy többkarakterláncos típussal, és állítsa az adatértékét az Azure NetApp Files-megosztás URI-ja számára.
+12. Hozzon létre egy **VHDLocations** nevű értéket egy **többkarakterláncos** típussal, és állítsa az adatértékét az Azure NetApp Files-megosztás URI-ja számára.
 
 ## <a name="assign-users-to-session-host"></a>Felhasználók társítása a munkamenet-gazdagéphez
 
@@ -195,11 +195,11 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 4. Futtassa a következő parancsmagokat egy felhasználó Távoli asztal csoporthoz való hozzárendeléséhez:
 
    ```powershell
-   $tenant = "<your-wvd-tenant>"
-   $pool1 = "<wvd-pool>"
-   $appgroup = "Desktop Application Group"
-   $user1 = "<user-principal>"
-   Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
+   $wvdTenant = "<your-wvd-tenant>"
+   $hostPool = "<wvd-pool>"
+   $appGroup = "Desktop Application Group"
+   $user = "<user-principal>"
+   Add-RdsAppGroupUser $wvdTenant $hostPool $appGroup $user
    ```
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Győződjön meg arról, hogy a felhasználók el tudják érni az Azure NetApp-fájlmegosztást

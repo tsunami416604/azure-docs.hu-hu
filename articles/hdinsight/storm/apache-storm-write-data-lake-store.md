@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Apache Storm használata a Storage/Data Lake Storageba való íráshoz – Azure HDInsight
+title: Oktatóanyag – Apache Storm írás a Storage/Data Lake Storageba – Azure HDInsight
 description: Oktatóanyag – Ismerje meg, hogy a Apache Storm használatával hogyan írhat a HDFS-kompatibilis tárolóba az Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 17cb1091d34c8c0800d0b4dd1f9044fee0ef313f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 752bf1919634d29221a00d983b4e88fefaf628d5
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946455"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736339"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Oktatóanyag: Írás Apache Hadoop HDFS az Azure HDInsight Apache Storm
 
@@ -38,7 +38,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* A fürtök elsődleges tárolójának [URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) -sémája. Ez az Azure `wasb://` `abfs://` Storage számára lenne Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1 esetén. Ha az Azure Storage vagy a Data Lake Storage Gen2 esetében engedélyezve van a biztonságos átvitel, az `wasbs://` URI `abfss://`-t vagy a-t, illetve a [biztonságos átvitelt](../../storage/common/storage-require-secure-transfer.md)is el kell látnia.
+* A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az Azure `wasb://` `abfs://` Storage számára lenne Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1 esetén. Ha az Azure Storage vagy a Data Lake Storage Gen2 esetében engedélyezve van a biztonságos átvitel, az `wasbs://` URI `abfss://`-t vagy a-t, illetve a [biztonságos átvitelt](../../storage/common/storage-require-secure-transfer.md)is el kell látnia.
 
 ### <a name="example-configuration"></a>Konfigurációs példa
 
@@ -114,7 +114,7 @@ Alapértelmezés szerint a Storm on HDInsight nem tartalmazza az Azure Storage s
 
 | Tulajdonság | Value |
 |---|---|
-|Szkripttípus |- Egyéni|
+|Szkripttípus |– Egyéni|
 |Bash parancsfájl URI azonosítója |`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`|
 |Csomópont típusa (i) |Nimbus, felügyelő|
 |Paraméterek |Nincsenek|
@@ -160,7 +160,7 @@ További információ a parancsfájlnak a fürthöz való használatáról: [HDI
     hdfs.url: wasbs:///
     ```
 
-    A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__ , majd az __Y__ billentyűt, és végül __írja be__ a következőt:. A fájl értékei a tárolási URL-címet és annak a könyvtárnak a nevét írják be, amelybe az adatok bekerülnek.
+    A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__, majd az __Y__billentyűt, és végül __írja be__a következőt:. A fájl értékei a tárolási URL-címet és annak a könyvtárnak a nevét írják be, amelybe az adatok bekerülnek.
 
 1. A topológia elindításához használja a következő parancsot:
 

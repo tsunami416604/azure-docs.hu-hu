@@ -10,17 +10,17 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 8712af60df2454b29c0691602260c8b826eae75c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 98e6b515d5e9d60f95873016ad1cb06a13799bb2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165002"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390118"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Kapcsolódás SAP-rendszerekhez Azure Logic Apps
 
 > [!IMPORTANT]
-> A korábbi SAP-alkalmazáskiszolgáló és az SAP Message Server-összekötők elavultnak vannak ütemezve. A jelenlegi SAP-összekötő összevonja ezeket az előző SAP-összekötőket, így nem kell módosítania a kapcsolat típusát, teljes mértékben kompatibilis az előző összekötővel, számos további képességet biztosít, és folytatja az SAP .net-összekötő függvénytár használatát ( SAP-NKH).
+> A korábbi SAP-alkalmazáskiszolgáló és az SAP Message Server-összekötők ütemezése a 2019. november 30-án elavult. A jelenlegi SAP-összekötő összevonja ezeket az előző SAP-összekötőket, így nem kell módosítania a kapcsolat típusát, teljes mértékben kompatibilis az előző összekötővel, számos további képességet biztosít, és folytatja az SAP .net-összekötő függvénytár használatát ( SAP-NKH).
 >
 > A régebbi összekötőket használó logikai alkalmazások esetében [telepítse át a legújabb összekötőt](#migrate) az Érvénytelenítési dátum előtt. Ellenkező esetben ezek a logikai alkalmazások a végrehajtási hibákat tapasztalják, és nem tudnak üzeneteket küldeni az SAP-rendszernek.
 
@@ -30,11 +30,11 @@ Az SAP-összekötő az [SAP .net Connector (NKH) függvénytárát](https://supp
 
 * **Küldés az SAP-be**: Küldje el az IDoc-t a tRFC-on keresztül, hívja meg az BAPI függvényt az RFC-en keresztül, vagy hívja meg az RFC/tRFC
 * **Fogadás az SAP-tól**: Fogadjon IDoc a tRFC-en keresztül, hívja meg a BAPI functions-t a tRFC-on keresztül, vagy hívja az RFC/tRFC-t
-* **Sémák**előállítása: Sémák előállítása az SAP-összetevőkhöz a IDoc, a BAPI és az RFC számára.
+* **Sémák előállítása**: Sémák előállítása az SAP-összetevőkhöz a IDoc, a BAPI és az RFC számára.
 
 Ezen műveletek esetében az SAP-összekötő a felhasználónevek és jelszavak használatával támogatja az alapszintű hitelesítést. Az összekötő támogatja a [biztonságos hálózati kommunikációt (Snc)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true)is. A SNC az SAP NetWeaver egyszeri bejelentkezéshez (SSO), vagy egy külső biztonsági termék által biztosított további biztonsági képességekhez használható.
 
-Az SAP-összekötő helyszíni SAP-rendszerekkel integrálódik a helyszíni [](../logic-apps/logic-apps-gateway-connection.md)adatátjárón keresztül. A küldési forgatókönyvek esetében például, amikor egy logikai alkalmazásból egy SAP-rendszerbe küldenek egy üzenetet, az adatátjáró RFC-ügyfélként működik, és továbbítja a logikai alkalmazástól az SAP-nek fogadott kérelmeket. Hasonlóképpen, a fogadási helyzetekben az adatátjáró olyan RFC-kiszolgálóként működik, amely az SAP-kérelmeket fogadja, és továbbítja őket a logikai alkalmazásnak.
+Az SAP-összekötő helyszíni SAP-rendszerekkel integrálódik a helyszíni [adatátjárón](../logic-apps/logic-apps-gateway-connection.md)keresztül. A küldési forgatókönyvek esetében például, amikor egy logikai alkalmazásból egy SAP-rendszerbe küldenek egy üzenetet, az adatátjáró RFC-ügyfélként működik, és továbbítja a logikai alkalmazástól az SAP-nek fogadott kérelmeket. Hasonlóképpen, a fogadási helyzetekben az adatátjáró olyan RFC-kiszolgálóként működik, amely az SAP-kérelmeket fogadja, és továbbítja őket a logikai alkalmazásnak.
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre az SAP-nal integrálható, például a korábban leírt integrációs forgatókönyveket használó logikai alkalmazásokat. A régebbi SAP-összekötőket használó Logic apps esetén ez a cikk bemutatja, hogyan telepíthet át logikai alkalmazásait a legújabb SAP-összekötőre.
 
@@ -44,13 +44,13 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre az SAP-nal integrálható, p
 
 Ennek a cikknek a követéséhez a következő elemek szükségesek:
 
-* Azure-előfizetés. Ha még nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure](https://azure.microsoft.com/free/)-fiókra.
+* Azure-előfizetés. Ha még nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
 * Az a logikai alkalmazás, amelyről el szeretné érni az SAP-rendszerét, valamint egy triggert, amely elindítja a logikai alkalmazás munkafolyamatát. Ha most ismerkedik a Logic apps szolgáltatással, tekintse meg [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md) és [a gyors útmutató: Hozza létre az első logikai](../logic-apps/quickstart-create-first-logic-app-workflow.md)alkalmazását.
 
 * Az [SAP-alkalmazáskiszolgáló](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) vagy az [SAP-üzenetküldési kiszolgáló](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
 
-* Töltse le és telepítse a legújabb [helyszíni](https://www.microsoft.com/download/details.aspx?id=53127) adatátjárót a helyszíni számítógépen. A folytatás előtt győződjön meg arról, hogy az átjárót a Azure Portalban állítja be. Az átjáró segítségével biztonságosan férhet hozzá a helyszíni információkhoz és erőforrásokhoz. További információ: [helyszíni adatátjáró telepítése Azure Logic Appshoz](../logic-apps/logic-apps-gateway-install.md).
+* Töltse le és telepítse a legújabb [helyszíni adatátjárót](https://www.microsoft.com/download/details.aspx?id=53127) a helyszíni számítógépen. A folytatás előtt győződjön meg arról, hogy az átjárót a Azure Portalban állítja be. Az átjáró segítségével biztonságosan férhet hozzá a helyszíni információkhoz és erőforrásokhoz. További információ: [helyszíni adatátjáró telepítése Azure Logic Appshoz](../logic-apps/logic-apps-gateway-install.md).
 
 * Ha a SNC-t egyszeri bejelentkezéssel használja, győződjön meg róla, hogy az átjáró az SAP-felhasználóhoz hozzárendelt felhasználóként fut. Az alapértelmezett fiók módosításához válassza a **fiók módosítása**lehetőséget, és adja meg a felhasználói hitelesítő adatokat.
 
@@ -72,7 +72,7 @@ Ennek a cikknek a követéséhez a következő elemek szükségesek:
 
 ## <a name="migrate-to-current-connector"></a>Migrálás az aktuális összekötőre
 
-1. Ha még nem tette [meg](https://www.microsoft.com/download/details.aspx?id=53127) , frissítse a helyszíni adatátjárót, hogy a legújabb verzióval rendelkezzen. További információ: [helyszíni adatátjáró telepítése Azure Logic Appshoz](../logic-apps/logic-apps-gateway-install.md).
+1. Ha még nem tette meg, frissítse a helyszíni [adatátjárót](https://www.microsoft.com/download/details.aspx?id=53127) , hogy a legújabb verzióval rendelkezzen. További információ: [helyszíni adatátjáró telepítése Azure Logic Appshoz](../logic-apps/logic-apps-gateway-install.md).
 
 1. A régebbi SAP-összekötőt használó logikai alkalmazásban törölje a **Küldés az SAP-** ba műveletet.
 
@@ -88,9 +88,9 @@ Ez a példa egy logikai alkalmazást használ, amely HTTP-kéréssel aktiválhat
 
 ### <a name="add-an-http-request-trigger"></a>HTTP-kérelem triggerének hozzáadása
 
-Azure Logic Apps minden logikai alkalmazásnak egy eseményindítóval kell kezdődnie [](../logic-apps/logic-apps-overview.md#logic-app-concepts), amely akkor következik be, amikor egy adott esemény történik, vagy ha egy adott feltétel teljesül. A Logic Apps motor létrehoz egy Logic app-példányt, és elindítja az alkalmazás munkafolyamatát.
+Azure Logic Apps minden logikai alkalmazásnak egy [eseményindítóval](../logic-apps/logic-apps-overview.md#logic-app-concepts)kell kezdődnie, amely akkor következik be, amikor egy adott esemény történik, vagy ha egy adott feltétel teljesül. A Logic Apps motor létrehoz egy Logic app-példányt, és elindítja az alkalmazás munkafolyamatát.
 
-Ebben a példában egy Azure-beli végponttal rendelkező logikai alkalmazást hoz létre, így *http post* -kéréseket küldhet a logikai alkalmazásnak. Ha a logikai alkalmazás fogadja ezeket a HTTP-kéréseket, az eseményindító elindít és futtatja a következő lépést a munkafolyamatban.
+Ebben a példában egy Azure-beli végponttal rendelkező logikai alkalmazást hoz létre, így *http post-kéréseket* küldhet a logikai alkalmazásnak. Ha a logikai alkalmazás fogadja ezeket a HTTP-kéréseket, az eseményindító elindít és futtatja a következő lépést a munkafolyamatban.
 
 1. A [Azure Portal](https://portal.azure.com)hozzon létre egy üres logikai alkalmazást, amely megnyitja a Logic app designert.
 
@@ -153,7 +153,7 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
       > [!TIP]
       > Adja meg az **SAP-művelet** értékét a kifejezés-szerkesztőben. Így ugyanazt a műveletet használhatja a különböző típusú üzenetekhez.
 
-      További információ a IDoc-műveletekről: [IDoc-műveletek üzenet](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)-sémái.
+      További információ a IDoc-műveletekről: [IDoc-műveletek üzenet-sémái](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
 
    1. Kattintson a **beviteli üzenet** szövegmezőbe, hogy megjelenjen a dinamikus tartalmak listája. A listából válassza ki a **törzs** MEZŐT a **http-kérelem fogadása**alatt.
 
@@ -206,7 +206,7 @@ Adja meg az üzenet tartalmát a kérelemmel. A kérelem elküldéséhez olyan e
 1. A HTTP-kérés elküldése után várjon a logikai alkalmazás válaszára.
 
    > [!NOTE]
-   > Előfordulhat, hogy a logikai alkalmazás túllépi az időkorlátot, ha a válaszhoz szükséges összes lépés nem fejeződik be a [kérés](./logic-apps-limits-and-config.md)időkorlátján belül. Ha ez az állapot történik, előfordulhat, hogy a kérések le vannak tiltva. A problémák diagnosztizálásához megtudhatja, hogyan [ellenőrizheti és figyelheti a logikai alkalmazásokat](../logic-apps/logic-apps-monitor-your-logic-apps.md).
+   > Előfordulhat, hogy a logikai alkalmazás túllépi az időkorlátot, ha a válaszhoz szükséges összes lépés nem fejeződik be a [kérés időkorlátján](./logic-apps-limits-and-config.md)belül. Ha ez az állapot történik, előfordulhat, hogy a kérések le vannak tiltva. A problémák diagnosztizálásához megtudhatja, hogyan [ellenőrizheti és figyelheti a logikai alkalmazásokat](../logic-apps/logic-apps-monitor-your-logic-apps.md).
 
 Ezzel létrehozott egy logikai alkalmazást, amely képes kommunikálni az SAP-kiszolgálóval. Most, hogy beállított egy SAP-csatlakozást a logikai alkalmazáshoz, megismerheti a többi elérhető SAP-műveletet, például a BAPI és az RFC-t is.
 
@@ -258,7 +258,7 @@ Ez a példa egy olyan logikai alkalmazást használ, amely akkor aktiválódik, 
 
    ![Példa triggerre](media/logic-apps-using-sap-connector/example-trigger.png)  
 
-   Az SAP-művelettel kapcsolatos további információkért lásd: [IDOC-műveletek üzenet](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations) -sémái
+   Az SAP-művelettel kapcsolatos további információkért lásd: [IDOC-műveletek üzenet-sémái](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
 
 1. Most mentse a logikai alkalmazást, így elkezdheti az SAP-rendszerből érkező üzenetek fogadását.
 A tervező eszköztárán válassza a **Mentés**lehetőséget.
@@ -272,7 +272,7 @@ A logikai alkalmazás most már készen áll az SAP-rendszerből érkező üzene
 
 1. A logikai alkalmazás elindításához küldjön üzenetet az SAP-rendszerből.
 
-1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget. Tekintse át a logikai alkalmazás futtatási előzményeit.
+1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget. Tekintse át a logikai alkalmazás **futtatási előzményeit** .
 
 1. Nyissa meg a legutóbbi futtatást, amely az SAP-rendszerből a trigger kimenetek szakaszban küldött üzenetet mutatja.
 
@@ -336,7 +336,7 @@ A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
    ![Válassza az "új lépés" lehetőséget](./media/logic-apps-using-sap-connector/add-action.png)
 
-1. A keresőmezőbe írja be a "SAP" kifejezést a szűrőként. A **műveletek** listából válassza a **sémák**előállítása lehetőséget.
+1. A keresőmezőbe írja be a "SAP" kifejezést a szűrőként. A **műveletek** listából válassza a **sémák előállítása**lehetőséget.
   
    ![SAP küldési művelet kiválasztása](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
 
@@ -380,7 +380,7 @@ A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
    ![Két elem megjelenítése](media/logic-apps-using-sap-connector/schema-generator-example.png)
 
-   Az SAP-művelettel kapcsolatos további információkért tekintse meg az [IDOC-műveletek üzenet](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)-sémái című témakört.
+   Az SAP-művelettel kapcsolatos további információkért tekintse meg az [IDOC-műveletek üzenet-sémái](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)című témakört.
 
 1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -388,7 +388,7 @@ A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
 1. A tervező eszköztárán válassza a **Futtatás** elemet a logikai alkalmazás futtatásának elindításához.
 
-1. Nyissa meg a futtatást, és keresse meg a **sémák** előállítása művelet kimeneteit.
+1. Nyissa meg a futtatást, és keresse meg a **sémák előállítása** művelet kimeneteit.
 
    A kimenetek megjelenítik a létrehozott sémákat az üzenetek adott listájához.
 
@@ -410,7 +410,7 @@ A létrehozott sémákat (például blob, Storage vagy integrációs fiók) is l
 
       ![Adja meg Azure Resource Manager művelet részleteit](media/logic-apps-using-sap-connector/azure-resource-manager-action.png)
 
-   Az SAP -létrehozási sémák művelet gyűjteményként hoz létre sémákat, így a tervező automatikusan hozzáadja az **egyes** hurkokat a művelethez. Az alábbi példa bemutatja, hogyan jelenik meg ez a művelet:
+   Az SAP- **létrehozási sémák** művelet gyűjteményként hoz létre sémákat, így a tervező automatikusan hozzáadja az **egyes** hurkokat a művelethez. Az alábbi példa bemutatja, hogyan jelenik meg ez a művelet:
 
    ![Azure Resource Manager művelet az "for each" ciklussal](media/logic-apps-using-sap-connector/azure-resource-manager-action-foreach.png)  
    > [!NOTE]
@@ -434,7 +434,7 @@ A létrehozott sémákat (például blob, Storage vagy integrációs fiók) is l
 
 ## <a name="enable-secure-network-communications"></a>Biztonságos hálózati kommunikáció engedélyezése
 
-Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a korábban [](#pre-reqs)felsorolt előfeltételeket:
+Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a korábban felsorolt [előfeltételeket](#pre-reqs):
 
 * A helyszíni adatátjáró olyan gépre van telepítve, amely az SAP-rendszerrel megegyező hálózaton van.
 * Az SSO esetében az átjáró egy SAP-felhasználóhoz hozzárendelt felhasználóként fut.

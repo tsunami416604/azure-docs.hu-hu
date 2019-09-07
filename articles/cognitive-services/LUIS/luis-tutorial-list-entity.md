@@ -7,20 +7,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: tutorial
-ms.date: 07/29/2019
+ms.topic: conceptual
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 979cbe16653c09ea1b019310d820b070be4a5a91
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a722ce39a679fa13e1fe849c46b44f786ea5ee42
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946067"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390272"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Egy lista entitás használatával növelheti az entitás észlelése 
-Ez az oktatóanyag bemutatja, hogy egy [entitás listában](luis-concept-entity-types.md) entitás észlelési növelése érdekében. Lista entitások nem kell címkével ellátott, mivel ezek a feltételek pontosan egyeznie kell.  
+Ez a cikk a [lista entitások](luis-concept-entity-types.md) használatát mutatja be az entitások észlelésének növeléséhez. Lista entitások nem kell címkével ellátott, mivel ezek a feltételek pontosan egyeznie kell.  
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Lista entitás létrehozása 
@@ -37,7 +37,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!Tip]
 > Ha Ön még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
-Az oktatóanyagban szereplő összes kód az [Azure-Samples GitHub-tárházban](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)érhető el. 
+A cikkben szereplő összes kód az [Azure-Samples GitHub-tárházban](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)érhető el. 
 
 ## <a name="use-homeautomation-app"></a>HomeAutomation alkalmazás használata
 Meghatározhatja az eszközök, például lámpa, szórakoztató rendszerek és a környezet azt szabályozza, például fűtés és hűtéssel HomeAutomation alkalmazás lehetőséget biztosít. Ezek a rendszerek rendelkeznie több különböző gyártó neveket, beceneveinek, Betűszavak és szleng kifejezéseket is tartalmazhat. 
@@ -59,7 +59,7 @@ A HomeAutomation.Device entitás kiválóan alkalmazható az eszközök vagy a n
 
 A **entitás listában** azért megfelelő választás az ebben a forgatókönyvben egy épületben vagy campus eszköz feltételkészlet olyan ismert készlete, akkor is, ha egy hatalmas beállítása. Egy lista entitás használatával LUIS is lehetséges értéket kapják meg a készletet az okosórák, és csak az egyetlen eszköz "thermostat" lefelé oldható meg. 
 
-Ebben az oktatóanyagban a-ra entitás lista létrehozása történik. Ebben az oktatóanyagban egy thermostat tartozó alternatív nevek a következők: 
+Ez a cikk a termosztáttal rendelkező entitások listáját fogja létrehozni. Ebben a cikkben a termosztát alternatív nevei a következők: 
 
 |alternatív neveket, az okosórák|
 |--|

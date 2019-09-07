@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: raymondl
-ms.openlocfilehash: 1d94cff3eb3299692fc4172f5bb5211532ef1002
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2d90fe4d40c51b21deea23675d6b51b972429237
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697821"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390243"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Példa: Kulcsszavak kinyerése a Text Analytics használatával
 
@@ -70,11 +70,11 @@ A dokumentum méretének 5 120 vagy kevesebb karakterből kell állnia, és egy 
 
 ## <a name="step-1-structure-the-request"></a>1\. lépés: A kérelem szerkezete
 
-További információ a kérelem meghatározásáról: [a Text Analytics API](text-analytics-how-to-call-api.md)meghívása. A következő pontokat a kényelem kedvéért itt megismételjük:
+További információ a kérelem meghatározásáról: [a Text Analytics API meghívása](text-analytics-how-to-call-api.md). A következő pontokat a kényelem kedvéért itt megismételjük:
 
 + Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentációját: [Legfontosabb kifejezések API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6).
 
-+ Állítsa be a HTTP-végpontot a kulcsfontosságú kifejezés kinyeréséhez az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Tartalmaznia kell az `/keyPhrases` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`.
++ Állítsa be a HTTP-végpontot a kulcsfontosságú kifejezés kinyeréséhez az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Meg kell `/text/analytics/v2.1/keyPhrases` adnia az URL-címet. Például: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`.
 
 + Állítsa be a kérelem fejlécét, hogy tartalmazza a Text Analytics műveletekhez tartozó [hozzáférési kulcsot](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 

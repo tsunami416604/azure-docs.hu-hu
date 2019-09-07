@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 05/04/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ea3f4f295da747b3a53956c0888797a5f8607d6e
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 25a0ef528d67deb5ea71720d2ff8e4d62b3b98a5
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310477"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744569"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: A tároló rendszerképének automatizálása a forráskód elküldésekor
 
-Egy [gyors](container-registry-tutorial-quick-task.md)feladaton kívül az ACR-feladatok támogatják az automatizált Docker-tárolók rendszerképét a felhőben, amikor a forráskódot egy git-tárházba véglegesíti.
+Egy [gyors feladaton](container-registry-tutorial-quick-task.md)kívül az ACR-feladatok támogatják az automatizált Docker-tárolók rendszerképét a felhőben, amikor a forráskódot egy git-tárházba véglegesíti.
 
-Ebben az oktatóanyagban az ACR-feladat létrehozza és leküldi a Docker megadott egyetlen tároló-rendszerképet, amikor egy git-tárházba véglegesíti a forráskódot. Ha olyan többlépéses [feladatot](container-registry-tasks-multi-step.md) szeretne létrehozni, amely YAML-fájlt használ a kód végrehajtásához szükséges több tároló létrehozásához, leküldéséhez és opcionális teszteléséhez [, tekintse meg a következőt: oktatóanyag: Futtasson egy többlépéses tároló munkafolyamatot a felhőben, amikor](container-registry-tutorial-multistep-task.md)a forráskódot véglegesíti. Az ACR-feladatok áttekintését lásd: az [operációs rendszer és a keretrendszer javításának automatizálása az ACR-](container-registry-tasks-overview.md) feladatokkal
+Ebben az oktatóanyagban az ACR-feladat létrehozza és leküldi a Docker megadott egyetlen tároló-rendszerképet, amikor egy git-tárházba véglegesíti a forráskódot. Ha olyan [többlépéses feladatot](container-registry-tasks-multi-step.md) szeretne létrehozni, amely YAML-fájlt használ a kód végrehajtásához szükséges több tároló létrehozásához, leküldéséhez és opcionális teszteléséhez [, tekintse meg a következőt: oktatóanyag: Futtasson egy többlépéses tároló munkafolyamatot a felhőben, amikor](container-registry-tutorial-multistep-task.md)a forráskódot véglegesíti. Az ACR-feladatok áttekintését lásd: az [operációs rendszer és a keretrendszer javításának automatizálása az ACR-feladatokkal](container-registry-tasks-overview.md)
 
 Ebben az oktatóanyagban:
 
@@ -58,7 +58,6 @@ az acr task create \
     --name taskhelloworld \
     --image helloworld:{{.Run.ID}} \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
-    --branch master \
     --file Dockerfile \
     --git-access-token $GIT_PAT
 ```

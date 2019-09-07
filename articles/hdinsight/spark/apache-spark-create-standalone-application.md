@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Scala Maven-alkalmazás létrehozása a Sparkhoz az Azure HDInsight a IntelliJ használatával'
+title: 'Oktatóanyag: IntelliJ-alapú Scala Maven-alkalmazás a Sparkhoz – Azure HDInsight'
 description: Oktatóanyag – hozzon létre egy új Spark-alkalmazást, amely az Apache Maven használatával készült, és egy meglévő Maven archetípus for Scala, amelyet a IntelliJ IDEA biztosít.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: 263eea88182a947eccc8a57450432fce8d2fcfc9
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 3b9001b9c7fa81b86c70d5c07a33a54bae539add
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839722"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736447"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Oktatóanyag: Scala Maven-alkalmazás létrehozása a HDInsight-Apache Sparkhoz a IntelliJ használatával
 
@@ -94,7 +94,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
 
 3. Adjon meg egy **Projekt SDK**-t. Ha üres, válassza az **új...** lehetőséget, és navigáljon a Java telepítési könyvtárához.
 
-4. Jelölje be a **Létrehozás** az archetípuson jelölőnégyzetet.  
+4. Jelölje be a **Létrehozás az archetípuson** jelölőnégyzetet.  
 
 5. Az archetype-ok listájából válassza ki a következőt: **org.scala-tools.archetypes:scala-archetype-simple**. Ez az archetípus létrehozza a megfelelő címtár-struktúrát, és letölti a szükséges alapértelmezett függőségeket a Scala programba való íráshoz.
 
@@ -128,7 +128,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
     ![A Maven konfigurálása automatikus letöltésekhez](./media/apache-spark-create-standalone-application/configure-maven.png)
 
 
-17. A bal oldali > panelen navigáljon a**fő** > **Scala** > **com. microsoft. Spark. example**parancsra, majd kattintson duplán az alkalmazás elemre az app. Scala megnyitásához.
+17. A bal oldali panelen navigáljon > a**fő** > **Scala** > **com. microsoft. Spark. example**parancsra, majd kattintson duplán az **alkalmazás elemre az App** . Scala megnyitásához.
 
 18. Cserélje le a meglévő mintakódot a következő kódra, majd mentse a módosításokat. Ez a kód a (minden HDInsight Spark-fürtön megtalálható) HVAC.csv fájlból olvassa be az adatokat, lekéri azokat a sorokat, amelyek hatodik oszlopában csak egy számjegy szerepel, a kimenetet pedig a fürt alapértelmezett Storage-tárolójának **/HVACOut** mappájába írja.
 
@@ -175,17 +175,17 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
 
     1. A **fájl** menüben válassza a **projekt szerkezete...** lehetőséget.
 
-    2. A >  **projekt szerkezete** ablakban navigáljon**a plusz szimbólum +**  > **jar** > elemhez a**függőségekkel rendelkező moduloknál..** .
+    2. A **projekt szerkezete** ablakban navigáljon > **a plusz szimbólum +**  > **jar** > **elemhez a függőségekkel rendelkező moduloknál..** .
 
         ![JAR-fájl létrehozása](./media/apache-spark-create-standalone-application/create-jar-1.png)
 
-    3. A **jar létrehozása** a modulokból ablakban válassza ki a mappa ikont a **Főosztály** szövegmezőben.
+    3. A **jar létrehozása a modulokból** ablakban válassza ki a mappa ikont a **Főosztály** szövegmezőben.
 
     4. A **Főosztály kiválasztása** ablakban válassza ki az alapértelmezés szerint megjelenő osztályt, majd kattintson az **OK gombra**.
 
         ![JAR-fájl létrehozása](./media/apache-spark-create-standalone-application/create-jar-2.png)
 
-    5. A **jar létrehozása** a modulokból ablakban győződjön meg arról, hogy a kibontás a **cél jar** beállítás be van jelölve, majd kattintson **az OK gombra**.  Ez a beállítás egyetlen JAR-fájlt hoz létre az összes függőséggel együtt.
+    5. A **jar létrehozása a modulokból** ablakban győződjön meg arról, **hogy a kibontás a cél jar** beállítás be van jelölve, majd kattintson **az OK gombra**.  Ez a beállítás egyetlen JAR-fájlt hoz létre az összes függőséggel együtt.
 
         ![JAR-fájl létrehozása](./media/apache-spark-create-standalone-application/create-jar-3.png)
 
@@ -193,9 +193,9 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
 
         ![JAR-fájl létrehozása](./media/apache-spark-create-standalone-application/delete-output-jars.png)
 
-        Győződjön meg arról, hogy be van jelölve a Belefoglalás a **Project buildbe** jelölőnégyzet, amely biztosítja, hogy a rendszer minden alkalommal létrehozza a jar-t, amikor a projekt létrejött vagy frissül. Válassza az **alkalmaz** , majd **az OK gombot**.
+        Győződjön meg arról, hogy be van jelölve a **Belefoglalás a Project buildbe** jelölőnégyzet, amely biztosítja, hogy a rendszer minden alkalommal létrehozza a jar-t, amikor a projekt létrejött vagy frissül. Válassza az **alkalmaz** , majd **az OK gombot**.
 
-    7. A jar létrehozásához > navigáljon > a Build-összetevők kiépítéséhez. A projekt körülbelül 30 másodperc múlva lesz lefordítva.  A kimeneti JAR-fájl az **\out\artifacts** mappában jön létre.
+    7. A jar létrehozásához > navigáljon > a **Build-összetevők**kiépítéséhez. A projekt körülbelül 30 másodperc múlva lesz lefordítva.  A kimeneti JAR-fájl az **\out\artifacts** mappában jön létre.
 
         ![JAR-fájl létrehozása](./media/apache-spark-create-standalone-application/output.png)
 

@@ -1,5 +1,5 @@
 ---
-title: A végpont hosszúságú kimondott szöveg-LUIS áttekintése
+title: 'Oktatóanyag: A végpont hosszúságú kimondott szöveg-LUIS áttekintése'
 titleSuffix: Azure Cognitive Services
 description: Fejlesztheti az alkalmazás előrejelzéseit a LUIS által nem ismert LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: dd5c0012bad567623fdfc0a70760f692aafe0e3e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f81066ed21702dfe94ad7897adc3b82ed5a49f4d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563319"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387522"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: A nem biztos előrejelzések kijavítása a végpontok hosszúságú kimondott szöveg áttekintésével
 Ebben az oktatóanyagban az alkalmazás előrejelzéseit fejlesztheti a LUIS által nem ismert LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni. A végponti kimondott szövegek áttekintésének az ütemezett LUIS-karbantartás szerves részét kell képeznie. 
@@ -85,15 +85,17 @@ Ehhez a következő lépések szükségesek:
     |:--|:--|:--|
     |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Állás – „Természetes nyelvi feldolgozás”|
 
+    Ha egy `natural language processing` keyPhrase entitást szeretne módosítani egy feladatelemre, válassza ki a kifejezést, majd válassza a **feladatok** elemet a listából. Ha csak a keyPhrase egy részét szeretné kijelölni egy másik entitáshoz, el kell távolítania a keyPhrase entitásként, egy másik entitás címkével, majd újra kell alkalmaznia az keyPhrase entitást az alkalmazásra. 
+
     A Kimondás hozzáadásával áthelyezi a kilépést a **felülvizsgálati végpont hosszúságú kimondott szöveg** a **GetJobInformation** szándékba. A végponti kimondott szöveg mostantól ennek a szándéknak a példaként szolgáló kimondott szövege. 
 
     A Kimondás megfelelő igazítása mellett további hosszúságú kimondott szöveg kell hozzáadni a **GetJobInformation** szándékához. Ezt a feladatot önállóan kell végrehajtania. Minden szándéknak, a **None** szándék kivételével, megközelítőleg ugyanannyi példaként használt kimondott szöveggel kell rendelkeznie. A **None** szándéknak az összes kimondott szöveg 10%-ával kell rendelkeznie az alkalmazásban. 
 
-1. Tekintse át a szándékban található további kimondott szövegeket, és lássa el őket címkével, illetve javítsa ki az **Igazított szándékot**, ha az nem megfelelő.
+    Tekintse át a szándékban található további kimondott szövegeket, és lássa el őket címkével, illetve javítsa ki az **Igazított szándékot**, ha az nem megfelelő.
 
-1. A listán már nem szabad ezeknek a kimondott szövegeknek megjelenniük. Ha további kimondott szövegek jelennek meg, haladjon végig a listán, javítsa ki a szándékokat, és címkézze meg a hiányzó entitásokat, amíg a listán már nem szerepel több elem. 
+    A **felülvizsgálati végpont hosszúságú kimondott szöveg** listájának már nem kell megjelennie a hosszúságú kimondott szöveg. Ha további kimondott szövegek jelennek meg, haladjon végig a listán, javítsa ki a szándékokat, és címkézze meg a hiányzó entitásokat, amíg a listán már nem szerepel több elem. 
 
-1. A Filter (Szűrő) listájában válassza ki a következő szándékot, majd folytassa a kimondott szövegek javítását és az entitások címkézését. Ne feledje, hogy minden szándék utolsó lépése az **Add to aligned intent** (Hozzáadás igazított szándékhoz) lehetőség kiválasztása a kimondott szöveg sorában, vagy a jelölőnégyzet bejelölése az egyes szándékok mellett és az **Add selected** (Kiválasztott hozzáadása) lehetőség kiválasztása a tábla felett.
+    A Filter (Szűrő) listájában válassza ki a következő szándékot, majd folytassa a kimondott szövegek javítását és az entitások címkézését. Ne feledje, hogy minden szándék utolsó lépése az **Add to aligned intent** (Hozzáadás igazított szándékhoz) lehetőség kiválasztása a kimondott szöveg sorában, vagy a jelölőnégyzet bejelölése az egyes szándékok mellett és az **Add selected** (Kiválasztott hozzáadása) lehetőség kiválasztása a tábla felett.
 
     Addig folytassa, amíg a szűrési listában szereplő összes szándék és entitás listája üres nem lesz. Ez egy nagyon kicsi alkalmazás. Az áttekintési folyamat csak néhány percet vesz igénybe. 
 

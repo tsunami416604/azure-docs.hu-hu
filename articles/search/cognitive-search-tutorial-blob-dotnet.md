@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: ad0710a3492eeecd56989e627211da5d4a5e0e0a
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 260f6a6141903ea1fd7edcfe2e031091bba322be
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186254"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744761"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Oktatóanyag Cognitive Services API-k hívása egy Azure Search indexelési folyamatban
 
@@ -66,11 +66,11 @@ A Azure Search szolgáltatással való kommunikációhoz szüksége lesz a szolg
 
 ## <a name="prepare-sample-data"></a>Mintaadatok előkészítése
 
-A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forrásadatoknak egy [Azure Search-indexelő](search-indexer-overview.md) által támogatott adatforrástípusból kell származniuk. Az Azure Table Storage a kognitív keresések esetében nem támogatott. Ebben a gyakorlatban a blobtárolót használjuk több tartalomtípus bemutatásához.
+A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forrásadatoknak egy [Azure Search-indexelő](search-indexer-overview.md) által támogatott adatforrástípusból kell származniuk. Ebben a gyakorlatban a blobtárolót használjuk több tartalomtípus bemutatásához.
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com), navigáljon az Azure Storage-fiókjához, kattintson a **Blobok**elemre, majd a **+ tároló**elemre.
 
-1. [Hozzon létre egy blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) -tárolót a mintaadatok tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez. Ez az oktatóanyag azt feltételezi, hogy a tároló neve "Basic-demo-adat-PR".
+1. [Hozzon létre egy BLOB-tárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) a mintaadatok tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez. Ez az oktatóanyag azt feltételezi, hogy a tároló neve "Basic-demo-adat-PR".
 
 1. A tároló létrehozása után nyissa meg, és válassza a parancssáv **feltöltés** elemét a [mintaadatok](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)feltöltéséhez.
 
@@ -201,7 +201,7 @@ Mivel ez az első kérése, az Azure Portalon ellenőrizze, hogy létrejött-e a
 
 ## <a name="create-a-skillset"></a>Képességcsoport létrehozása
 
-Ebben a szakaszban megadhatja az adataira alkalmazni kívánt gazdagító lépések készletét. Az egyes alkoholtartalom-növelési lépéseket egy *készségkészlet*nevezzük, és a dúsítási lépések egyike. Ez az oktatóanyag [előre meghatározott kognitív képességeket](cognitive-search-predefined-skills.md) használ a képességcsoporthoz:
+Ebben a szakaszban megadhatja az adataira alkalmazni kívánt gazdagító lépések készletét. Az egyes *alkoholtartalom-növelési lépéseket egy* *készségkészlet*nevezzük, és a dúsítási lépések egyike. Ez az oktatóanyag [előre meghatározott kognitív képességeket](cognitive-search-predefined-skills.md) használ a képességcsoporthoz:
 
 + [Optikai karakterfelismerés](cognitive-search-skill-ocr.md) a nyomtatott és a kézírásos szöveg felismeréséhez a képfájlokban.
 
@@ -326,7 +326,7 @@ SplitSkill splitSkill = new SplitSkill(
 
 ### <a name="entity-recognition-skill"></a>Entitás-felismerési szakértelem
 
-Ez `EntityRecognitionSkill` a példány a kategória típusának `organization`felismerésére van beállítva. Az **entitás** -felismerési képesség is felismerheti `location`a kategóriák típusát `person` és a.
+Ez `EntityRecognitionSkill` a példány a kategória típusának `organization`felismerésére van beállítva. Az **entitás-felismerési** képesség is felismerheti `location`a kategóriák típusát `person` és a.
 
 Figyelje meg, hogy a "Context" mező csillaggal van beállítva ```"/document/pages/*"``` , ami azt jelenti, hogy a dúsítási lépést minden egyes ```"/document/pages"```lapon meg kell hívni.
 

@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3db98039ae057e48867c91d1081c38066067c621
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 81c1279670e786ddaa03946869773121a859d3b7
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087436"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735238"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-out/ventilátor – forgatókönyv Durable Functions – Felhőbeli biztonsági mentési példa
 
-A *ventilátor ki-* és bekapcsolása a több függvény egyidejű végrehajtásával, majd az eredmények összesítésének végrehajtásával kapcsolatos mintázatra utal. Ez a cikk egy olyan mintát ismertet [](durable-functions-overview.md) , amely Durable Functionst használ egy ventilátor-vagy ventilátor-kijelentkezési forgatókönyv megvalósításához. A minta egy olyan tartós funkció, amely egy alkalmazás összes vagy néhány oldalának tartalmát az Azure Storage-ba készíti.
+A *ventilátor ki-* és bekapcsolása a több függvény egyidejű végrehajtásával, majd az eredmények összesítésének végrehajtásával kapcsolatos mintázatra utal. Ez a cikk egy olyan mintát ismertet, amely [Durable Functionst](durable-functions-overview.md) használ egy ventilátor-vagy ventilátor-kijelentkezési forgatókönyv megvalósításához. A minta egy olyan tartós funkció, amely egy alkalmazás összes vagy néhány oldalának tartalmát az Azure Storage-ba készíti.
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -106,7 +106,7 @@ A C# megvalósítás is elég egyszerű. Az Azure functions-kötések (azaz a `B
 
 ### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
 
-A JavaScript-implementáció nem fér hozzá a `Binder` Azure functions funkcióhoz, így a csomóponthoz tartozó [Azure Storage SDK](https://github.com/Azure/azure-storage-node) -val rendelkezik.
+A JavaScript-implementáció nem fér hozzá a `Binder` Azure functions funkcióhoz, így a [csomóponthoz tartozó Azure Storage SDK](https://github.com/Azure/azure-storage-node) -val rendelkezik.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 

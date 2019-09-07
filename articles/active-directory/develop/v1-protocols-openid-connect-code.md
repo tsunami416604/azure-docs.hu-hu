@@ -13,21 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a82571260f5da679202e96f5e6f72aa2db6788a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7c2e80f80ea5d7e7d5ee26eee8b26506386a6e2f
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834688"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389791"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Hozzáférés engedélyezése webalkalmazásokhoz OpenID Connect és Azure Active Directory használatával
 
-Az [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) egy egyszerű, az OAuth 2,0 protokollra épülő identitási réteg. A OAuth 2,0 a védett erőforrások eléréséhez szükséges [**hozzáférési**](access-tokens.md) jogkivonatok beszerzésére és használatára vonatkozó mechanizmusokat határoz meg, de nem határoz meg szabványos metódusokat az azonosító adatok biztosításához. Az OpenID Connect a OAuth 2,0 engedélyezési folyamatának kiterjesztéseként valósítja meg a hitelesítést. Információt nyújt a végfelhasználóról [`id_token`](id-tokens.md) , amely igazolja a felhasználó identitását, és alapszintű profilt biztosít a felhasználóról.
+Az [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) egy egyszerű, az OAuth 2,0 protokollra épülő identitási réteg. A OAuth 2,0 a védett erőforrások eléréséhez szükséges [**hozzáférési jogkivonatok**](access-tokens.md) beszerzésére és használatára vonatkozó mechanizmusokat határoz meg, de nem határoz meg szabványos metódusokat az azonosító adatok biztosításához. Az OpenID Connect a OAuth 2,0 engedélyezési folyamatának kiterjesztéseként valósítja meg a hitelesítést. Információt nyújt a végfelhasználóról [`id_token`](id-tokens.md) , amely igazolja a felhasználó identitását, és alapszintű profilt biztosít a felhasználóról.
 
 Az OpenID Connect ajánljuk, ha olyan webalkalmazást hoz létre, amely egy kiszolgálón fut, és böngészőn keresztül érhető el.
 
@@ -181,7 +181,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| post_logout_redirect_uri |ajánlott |Az URL-cím, amelyet a felhasználónak át kell irányítani a sikeres kijelentkezés után. Ha nem szerepel, a felhasználó általános üzenetet jelenít meg. |
+| post_logout_redirect_uri |ajánlott |Az URL-cím, amelyet a felhasználónak át kell irányítani a sikeres kijelentkezés után.  Ennek az URL-címnek meg kell egyeznie az alkalmazás regisztrációs portálján az alkalmazáshoz regisztrált átirányítási URI-k egyikével.  Ha a *post_logout_redirect_uri* nem szerepel, a felhasználó általános üzenetet jelenít meg. |
 
 ## <a name="single-sign-out"></a>Egyszeri kijelentkezés
 
@@ -190,7 +190,7 @@ Amikor átirányítja a felhasználót a `end_session_endpoint`szolgáltatásba,
 1. Lépjen az [Azure Portalra](https://portal.azure.com).
 2. A lap jobb felső sarkában található fiókra kattintva válassza ki a Active Directory.
 3. A bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget, majd válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki az alkalmazást.
-4. Kattintson a **Beállítások**, majd a **Tulajdonságok** elemre, és keresse meg a kijelentkezési **URL-cím** szövegmezőt. 
+4. Kattintson a **Beállítások**, majd a **Tulajdonságok** elemre, és keresse meg a **kijelentkezési URL-cím** szövegmezőt. 
 
 ## <a name="token-acquisition"></a>Jogkivonat-beszerzés
 Számos webalkalmazásnak nem csak a felhasználónak kell aláírnia a-t, hanem az adott felhasználó nevében egy webszolgáltatáshoz is hozzá kell férnie a OAuth használatával. Ez a forgatókönyv ötvözi az OpenID connectet a felhasználói hitelesítéshez, `authorization_code` miközben egy, a [OAuth engedélyezési kód](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token) `access_tokens` használatával történő beszerzéséhez használható.
@@ -251,9 +251,9 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 A lehetséges hibakódok és a javasolt ügyfél-művelet leírását lásd: [hibakódok az engedélyezési végpont hibáihoz](#error-codes-for-authorization-endpoint-errors).
 
-Miután megkapta az engedélyt `code` `id_token`és a-t, aláírhatja a felhasználót a nevében, és elérheti a hozzáférési jogkivonatokat is. [](access-tokens.md) A felhasználó a alkalmazásban való aláírásához a fentiekben leírtak szerint pontosan kell érvényesíteni a `id_token` következőt:. A hozzáférési jogkivonatok beszerzéséhez kövesse az [OAuth Code flow dokumentációjának](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)"az engedélyezési kód használata hozzáférési token kérése" című szakaszának lépéseit.
+Miután megkapta az engedélyt `code` `id_token`és a-t, aláírhatja a felhasználót a nevében, és [elérheti a hozzáférési jogkivonatokat](access-tokens.md) is. A felhasználó a alkalmazásban való aláírásához a fentiekben leírtak szerint pontosan kell érvényesíteni a `id_token` következőt:. A hozzáférési jogkivonatok beszerzéséhez kövesse az [OAuth Code flow dokumentációjának](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)"az engedélyezési kód használata hozzáférési token kérése" című szakaszának lépéseit.
 
 ## <a name="next-steps"></a>További lépések
 
 * További információ a [hozzáférési tokenekről](access-tokens.md).
-* További információ a [ `id_token` és](id-tokens.md)a jogcímekről.
+* További információ a [ `id_token` és a jogcímekről](id-tokens.md).

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 09/06/2019
 ms.author: helohr
-ms.openlocfilehash: cd80ed3c3db2453a333c87ed706dd358ba248b47
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 66441e852ebe0a391a5807b90eeadae230130815
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516183"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734452"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Oktatóanyag: Bérlő létrehozása a Windows rendszerű virtuális asztali verzióban – előzetes verzió
 
@@ -49,7 +49,7 @@ A szolgáltatás engedélyeinek megadása:
    >https://login.microsoftonline.com/{tenant}/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
    >```
 
-2. Jelentkezzen be a Windows rendszerű virtuális asztal engedélyezési lapjára egy globális rendszergazdai fiókkal. Ha például a contoso szervezete volt, a fiókja lehet admin@contoso.com vagy. admin@contoso.onmicrosoft.com  
+2. Jelentkezzen be a Windows rendszerű virtuális asztal engedélyezési lapjára egy globális rendszergazdai fiókkal. Ha például a contoso szervezete volt, a fiókja lehet admin@contoso.com vagy. admin@contoso.onmicrosoft.com
 3. Válassza ki az **Elfogadás** lehetőséget.
 4. Várjon egy percet, hogy az Azure AD jegyezze fel a beleegyező engedélyt.
 5. Nyisson meg egy böngészőt, és kezdje meg a rendszergazdai jogosultságokat a [Windows rendszerű virtuális asztali ügyfélalkalmazás](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback)számára.
@@ -68,7 +68,7 @@ Azure Active Directory felhasználó kiosztása a TenantCreator alkalmazási sze
 
 A TenantCreator-alkalmazás szerepkörének hozzárendeléséhez:
 
-1. Nyisson meg egy böngészőt, és [](https://portal.azure.com) kapcsolódjon a Azure Portalhoz a globális rendszergazdai fiókkal.
+1. Nyisson meg egy böngészőt, és kapcsolódjon a [Azure Portalhoz](https://portal.azure.com) a globális rendszergazdai fiókkal.
    
    Ha több Azure Active Directory Bérlővel dolgozik, ajánlott megnyitnia egy privát böngésző-munkamenetet, és az URL-címeket a címsorba másolhatja és beillesztheti.
 2. A Azure Portal található keresési sávban keresse meg a **vállalati alkalmazások** kifejezést, és válassza ki a **szolgáltatások** kategória alatt megjelenő bejegyzést.
@@ -78,6 +78,7 @@ A TenantCreator-alkalmazás szerepkörének hozzárendeléséhez:
    ![Képernyőkép a "Windows Virtual Desktop" vállalati alkalmazás kezeléséhez hozzárendelt felhasználókról és csoportokról. A képernyőképen csak egy hozzárendelés látható, amely az "alapértelmezett hozzáférés" értékre mutat.](media/tenant-default-access.png)
 5. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok** lehetőséget.
 6. Keressen egy olyan felhasználói fiókot, amely létrehozza a Windows rendszerű virtuális asztali bérlőt. Az egyszerűség kedvéért ez lehet a globális rendszergazdai fiók.
+   - Ha a (z) rendszerhez hasonló contosoadmin@live.com contosoadmin@outlook.comMicrosoft-identitás-szolgáltatót használ, előfordulhat, hogy nem tud bejelentkezni a Windows virtuális asztalra. Azt javasoljuk, hogy használjon egy, a tartományra admin@contoso.onmicrosoft.com vonatkozó fiókot (például admin@contoso.com vagy inkább).
 
    ![Képernyőkép a "TenantCreator" felvenni kívánt felhasználó kiválasztásáról.](media/tenant-assign-user.png)
 
@@ -100,7 +101,7 @@ A Azure Active Directory bérlői AZONOSÍTÓjának (vagy a **könyvtár azonos�
    ![Képernyőkép a Azure Active Directory tulajdonságairól. Az egérmutatót a vágólap ikonja fölé helyezi a másoláshoz és beillesztéshez.](media/tenant-directory-id.png)
 
 Az Azure-előfizetés AZONOSÍTÓjának megkeresése:
-1. Ugyanebben a Azure Portal-munkamenetben keresse meg az előfizetéseket a keresősáv alatt, és válassza ki a **szolgáltatások** kategória alatt megjelenő bejegyzést.
+1. Ugyanebben a Azure Portal-munkamenetben keresse meg az **előfizetéseket** a keresősáv alatt, és válassza ki a **szolgáltatások** kategória alatt megjelenő bejegyzést.
    ![A Azure Portal "Azure Active Directory" keresési eredményeinek képernyőképe. A "szolgáltatások" alatt a keresési eredmények ki vannak emelve.](media/tenant-search-subscription.png)
 2. Válassza ki azt az Azure-előfizetést, amelyet a Windows rendszerű virtuális asztali szolgáltatás értesítéseinek fogadásához használni kíván.
 3. Keresse meg az **előfizetés azonosítóját**, majd vigye a kurzort az érték fölé, amíg meg nem jelenik a vágólap ikonja. Válassza a vágólap ikont, és illessze be egy praktikus helyre, hogy később a **AzureSubscriptionId** értékeként is használhassa.

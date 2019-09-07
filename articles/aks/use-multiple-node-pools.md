@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 675d3e2f0dc27e70af497284ce273e87d005a2e1
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2a18362546ae3c31b06fc5294495d8f5ac5f0be3
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241070"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389941"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Előzetes verzió – több Node-készlet létrehozása és kezelése az Azure Kubernetes Service-ben (ak)
 
@@ -47,14 +47,13 @@ az extension update --name aks-preview
 
 ### <a name="register-multiple-node-pool-feature-provider"></a>Több csomópontos készlet szolgáltatás-szolgáltató regisztrálása
 
-Ha olyan AK-fürtöt szeretne létrehozni, amely több Node-készletet is használhat, először engedélyezzen két szolgáltatás jelölőt az előfizetésben. A többcsomópontos készlet fürtök virtuálisgép-méretezési csoport (VMSS) használatával kezelik a Kubernetes-csomópontok központi telepítését és konfigurációját. Regisztrálja a *MultiAgentpoolPreview* és a *VMSSPreview* funkció jelzőit az az [Feature Register][az-feature-register] paranccsal az alábbi példában látható módon:
+Ha olyan AK-fürtöt szeretne létrehozni, amely több Node-készletet is használhat, először engedélyezzen egy szolgáltatás-jelölőt az előfizetésben. Regisztrálja a *MultiAgentpoolPreview* szolgáltatás jelölőjét az az [Feature Register][az-feature-register] paranccsal az alábbi példában látható módon:
 
 > [!CAUTION]
 > Ha regisztrál egy szolgáltatást egy előfizetéshez, jelenleg nem tudja regisztrálni a szolgáltatást. Az előzetes verziójú funkciók engedélyezése után az alapértelmezett beállítások az előfizetésben létrehozott összes AK-fürthöz használhatók. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
 
 ```azurecli-interactive
 az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
 > [!NOTE]
@@ -64,7 +63,6 @@ Néhány percet vesz igénybe, amíg az állapot *regisztrálva*jelenik meg. A r
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
 Ha elkészült, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját az az [Provider Register][az-provider-register] paranccsal:
@@ -77,7 +75,7 @@ az provider register --namespace Microsoft.ContainerService
 
 A több csomópontot támogató AK-fürtök létrehozásakor és kezelésekor a következő korlátozások érvényesek:
 
-* Több csomópontos készlet csak akkor érhető el az előfizetéshez tartozó *MultiAgentpoolPreview* és *VMSSPreview* funkciók sikeres regisztrálása után létrehozott fürtökhöz. Nem adhat hozzá és nem kezelhet olyan csomópont-készleteket, amelyekhez már létre van hozva a szolgáltatások sikeres regisztrálása előtt.
+* Több csomópontos készlet csak akkor érhető el az előfizetéshez tartozó *MultiAgentpoolPreview* funkció sikeres regisztrálása után létrehozott fürtökhöz. A szolgáltatás sikeres regisztrálása előtt nem adhat hozzá és nem kezelhet meglévő AK-fürtöt tartalmazó csomópont-készleteket.
 * Az első csomópont-készlet nem törölhető.
 * A HTTP-alkalmazás útválasztási bővítménye nem használható.
 * Csomópont-készleteket nem lehet hozzáadni/frissíteni vagy törölni egy meglévő Resource Manager-sablon használatával a legtöbb művelethez hasonlóan. Ehelyett [használjon egy különálló Resource Manager-sablont](#manage-node-pools-using-a-resource-manager-template) , amellyel módosításokat hajthat végre egy AK-fürtben lévő csomópont-készleteken.
@@ -86,7 +84,7 @@ Habár ez a funkció előzetes verzióban érhető el, a következő további ko
 
 * Az AK-fürt legfeljebb nyolc csomópont-készletet tartalmazhat.
 * Az AK-fürt legfeljebb 400 csomóponttal rendelkezhet a nyolc csomópontos készletben.
-* Az összes csomópont-készletnek ugyanabban az alhálózatban kell lennie
+* Az összes csomópont-készletnek ugyanabban az alhálózatban kell lennie.
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 

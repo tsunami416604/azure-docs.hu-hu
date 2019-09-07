@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 8a0b974e9b64d477e53c37757b4f2fa952befba2
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 09e9a89fc79763eee5d154ba589b599fe8a180b2
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061860"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743394"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Biztonságos Azure SQL Database-kapcsolatok a App Service felügyelt identitás használatával
 
@@ -46,7 +46,7 @@ A következőket fogja megtanulni:
 > * Kapcsolódás SQL Database a Visual studióból az Azure AD-hitelesítés használatával
 
 > [!NOTE]
->Az Azure AD- hitelesítés különbözik a helyszíni Active Directory (AD DS) [integrált Windows](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) -hitelesítéstől. AD DS és az Azure AD teljesen különböző hitelesítési protokollokat használ. További információkért lásd: [az Azure AD Domain Services – dokumentáció](https://docs.microsoft.com/azure/active-directory-domain-services/).
+>Az Azure AD-hitelesítés _különbözik_ a helyszíni Active Directory (AD DS) [integrált Windows-hitelesítéstől](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) . AD DS és az Azure AD teljesen különböző hitelesítési protokollokat használ. További információkért lásd: [az Azure AD Domain Services – dokumentáció](https://docs.microsoft.com/azure/active-directory-domain-services/).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -54,7 +54,7 @@ A következőket fogja megtanulni:
 
 Ez a cikk az oktatóanyagban való [abbahagyás helyétől folytatódik. ASP.NET-alkalmazás létrehozása az Azure-ban](app-service-web-tutorial-dotnet-sqldatabase.md) SQL Database [vagy oktatóanyaggal: Hozzon létre egy ASP.NET Core és SQL Database alkalmazást](app-service-web-tutorial-dotnetcore-sqldb.md)a Azure app Service. Ha még nem tette meg, kövesse az első két oktatóanyag egyikét. Azt is megteheti, hogy a saját .NET-alkalmazásának lépéseit a SQL Database használatával is módosíthatja.
 
-Ha a háttérrendszer használatával szeretne hibakeresést végezni az alkalmazásban SQL Database, győződjön meg arról, hogy engedélyezte az ügyfélkapcsolatot a számítógépről. Ha nem, adja hozzá az ügyfél IP-címét a [kiszolgálói szintű IP-tűzfalszabályok kezelése a Azure Portal használatával](../sql-database/sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal)című témakör lépéseit követve.
+Ha a háttérrendszer használatával szeretne hibakeresést végezni az alkalmazásban SQL Database, győződjön meg arról, hogy engedélyezte az ügyfélkapcsolatot a számítógépről. Ha nem, adja hozzá az ügyfél IP-címét a [kiszolgálói szintű IP-tűzfalszabályok kezelése a Azure Portal használatával](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)című témakör lépéseit követve.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -83,7 +83,7 @@ Active Directory-rendszergazda hozzáadásával kapcsolatos további informáci�
 
 ## <a name="set-up-visual-studio"></a>A Visual Studio beállítása
 
-A fejlesztés és a hibakeresés a Visual Studióban való engedélyezéséhez adja hozzá az Azure ad-felhasználót > a Visual Studióban a**Fiókbeállítások** kiválasztásával a menüben, majd kattintson a **fiók hozzáadása**lehetőségre.
+A fejlesztés és a hibakeresés a Visual Studióban való engedélyezéséhez adja hozzá az Azure ad-felhasználót a Visual Studióban a**Fiókbeállítások** **kiválasztásával** > a menüben, majd kattintson a **fiók hozzáadása**lehetőségre.
 
 Az Azure ad-felhasználó Azure-szolgáltatásbeli hitelesítéshez való beállításához válassza az **eszközök** > **lehetőséget** a menüben, majd válassza az **Azure szolgáltatás-hitelesítési** > **fiók kiválasztása**lehetőséget. Válassza ki a hozzáadott Azure AD-felhasználót, és kattintson **az OK**gombra.
 
@@ -204,7 +204,7 @@ az webapp identity assign --resource-group myResourceGroup --name <app-name>
 
 ### <a name="add-managed-identity-to-an-azure-ad-group"></a>Felügyelt identitás hozzáadása egy Azure AD-csoporthoz
 
-Ahhoz, hogy ez az identitás hozzáférhessen a SQL Databasehoz, hozzá kell adnia azt egy [Azure ad](../active-directory/fundamentals/active-directory-manage-groups.md)-csoporthoz. A Cloud Shell vegye fel azt egy új, _myAzureSQLDBAccessGroup_nevű csoportba, amely a következő parancsfájlban látható:
+Ahhoz, hogy ez az identitás hozzáférhessen a SQL Databasehoz, hozzá kell adnia azt egy [Azure ad-csoporthoz](../active-directory/fundamentals/active-directory-manage-groups.md). A Cloud Shell vegye fel azt egy új, _myAzureSQLDBAccessGroup_nevű csoportba, amely a következő parancsfájlban látható:
 
 ```azurecli-interactive
 groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)

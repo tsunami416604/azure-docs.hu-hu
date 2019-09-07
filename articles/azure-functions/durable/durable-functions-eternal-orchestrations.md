@@ -9,20 +9,20 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a04221a61ae057185ddd8ad37bbba2d387ee5eda
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 788693698e75a24269e29c54e03af35c1853f1f6
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097986"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735210"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Örök összeszerelések Durable Functionsban (Azure Functions)
 
-Az *örök* Összehangolók olyan Orchestrator függvények, amelyek soha nem fejeződik be. Akkor hasznosak, ha a Durable Functionst [](durable-functions-overview.md) szeretné használni a gyűjtők számára, és olyan forgatókönyveket, amelyek végtelen hurkot igényelnek.
+Az *örök* Összehangolók olyan Orchestrator függvények, amelyek soha nem fejeződik be. Akkor hasznosak, ha a [Durable Functionst](durable-functions-overview.md) szeretné használni a gyűjtők számára, és olyan forgatókönyveket, amelyek végtelen hurkot igényelnek.
 
 ## <a name="orchestration-history"></a>Előkészítési előzmények
 
-Az ellenőrzőpontok [és a visszajátszás](durable-functions-checkpointing-and-replay.md)terén kifejtetteknek megfelelően a tartós feladatok keretrendszere nyomon követi az egyes függvények előkészítésének előzményeit. Az előzmények folyamatosan növekednek, amíg a Orchestrator függvény továbbra is új munkát ütemezhet. Ha a Orchestrator függvény végtelen ciklusba kerül, és folyamatosan dolgozik, az előzmények kritikusan nagy mértékben növekednek, és jelentős teljesítménnyel kapcsolatos problémákat okozhatnak. Az *örök* előkészítési koncepció célja, hogy enyhítse az ilyen típusú problémákat a végtelen hurkokat igénylő alkalmazások esetében.
+Az [ellenőrzőpontok és a visszajátszás](durable-functions-checkpointing-and-replay.md)terén kifejtetteknek megfelelően a tartós feladatok keretrendszere nyomon követi az egyes függvények előkészítésének előzményeit. Az előzmények folyamatosan növekednek, amíg a Orchestrator függvény továbbra is új munkát ütemezhet. Ha a Orchestrator függvény végtelen ciklusba kerül, és folyamatosan dolgozik, az előzmények kritikusan nagy mértékben növekednek, és jelentős teljesítménnyel kapcsolatos problémákat okozhatnak. Az *örök* előkészítési koncepció célja, hogy enyhítse az ilyen típusú problémákat a végtelen hurkokat igénylő alkalmazások esetében.
 
 ## <a name="resetting-and-restarting"></a>Alaphelyzetbe állítás és újraindítás
 
@@ -77,7 +77,7 @@ A példa és az időzítő által aktivált függvény közötti különbség az
 Az [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) metódus használatával elindíthat egy örök előkészítést. Ez nem más, mint bármely más összehangoló függvény elindítása.  
 
 > [!NOTE]
-> Ha meg kell győződnie arról, hogy egy egypéldányos örök előkészítés fut, fontos, hogy ugyanazt a `id` példányt őrizze meg az előkészítés megkezdése során. További információ: példányok [kezelése](durable-functions-instance-management.md).
+> Ha meg kell győződnie arról, hogy egy egypéldányos örök előkészítés fut, fontos, hogy ugyanazt a `id` példányt őrizze meg az előkészítés megkezdése során. További információ: [példányok kezelése](durable-functions-instance-management.md).
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -96,7 +96,7 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 
 Ha egy Orchestrator függvénynek végül végre kell hajtania a műveletet, akkor mindössze annyit kell `ContinueAsNew` tennie, hogy *nem* hívja meg a függvényt, és hagyja ki a funkciót.
 
-Ha egy Orchestrator-függvény végtelen ciklusban van, és le kell állítani, a [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) metódus használatával állítsa le. További információ: példányok [kezelése](durable-functions-instance-management.md).
+Ha egy Orchestrator-függvény végtelen ciklusban van, és le kell állítani, a [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) metódus használatával állítsa le. További információ: [példányok kezelése](durable-functions-instance-management.md).
 
 ## <a name="next-steps"></a>További lépések
 

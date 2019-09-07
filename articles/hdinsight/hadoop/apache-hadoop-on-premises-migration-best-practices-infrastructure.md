@@ -1,19 +1,19 @@
 ---
-title: Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-infrastruktúrára – ajánlott eljárások
+title: Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-infrastruktúrába
 description: Ismerje meg a helyszíni Hadoop-fürtök Azure HDInsight való áttelepítésére vonatkozó ajánlott eljárásokat.
 author: hrasheed-msft
 ms.reviewer: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0707f08d7c1447ff9aaae919cabfe1a668b25e3d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: dbd4cc987883c959ad9b13b60491dd2288bd5643
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404372"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735732"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-infrastruktúrára – ajánlott eljárások
 
@@ -28,7 +28,7 @@ A HDInsight-fürt kapacitásának megtervezéséhez szükséges legfontosabb leh
 - **Válassza ki a virtuális gép méretét és típusát (most már támogatja a G-sorozatot)** – minden egyes fürt típusa csomópont típusú, és minden csomópont-típushoz speciális beállítások vonatkoznak a virtuálisgép-mérethez és-típushoz. A virtuális gép méretét és típusát a CPU feldolgozási teljesítmény, a RAM mérete és a hálózati késés határozza meg. A virtuális gépek optimális méretének és típusának meghatározásához szimulált számítási feladatok használhatók.
 - **A munkavégző csomópontok számának kiválasztása** – a feldolgozó csomópontok kezdeti száma a szimulált számítási feladatokkal határozható meg. A fürt később is méretezhető, ha további munkavégző csomópontokat ad hozzá a maximális terhelési igények kielégítéséhez. A fürt később is méretezhető, ha a további munkavégző csomópontok nem szükségesek.
 
-További információt a [HDInsight-fürtök kapacitásának](../hdinsight-capacity-planning.md)megtervezése című cikkben talál.
+További információt a [HDInsight-fürtök kapacitásának megtervezése](../hdinsight-capacity-planning.md)című cikkben talál.
 
 ## <a name="use-recommended-virtual-machine-type-for-cluster"></a>Ajánlott virtuálisgép-típus használata a fürthöz
 
@@ -73,7 +73,7 @@ További információ: [Apache Hadoop különböző HDInsight-verziókban elérh
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>HDInsight-fürtök testreszabása parancsfájl-műveletek használatával
 
-A HDInsight egy **parancsfájl**-műveletnek nevezett fürtkonfiguráció-metódust biztosít. A parancsfájl művelet olyan bash-parancsfájl, amely egy HDInsight-fürt csomópontjain fut, és további összetevők telepítéséhez és a konfigurációs beállítások módosításához használható.
+A HDInsight egy **parancsfájl-műveletnek**nevezett fürtkonfiguráció-metódust biztosít. A parancsfájl művelet olyan bash-parancsfájl, amely egy HDInsight-fürt csomópontjain fut, és további összetevők telepítéséhez és a konfigurációs beállítások módosításához használható.
 
 A parancsfájl-műveleteket olyan URI-n kell tárolni, amely elérhető a HDInsight-fürtből. A fürtök létrehozása során vagy után is használhatók, és csak bizonyos csomópontok esetében korlátozhatók.
 
@@ -86,7 +86,7 @@ A HDInsight előre megírt parancsfájlokat biztosít a következő összetevők
 - A Presto telepítése
 - A Solr telepítése
 - A Giraph telepítése
-- Hive-kódtárak előzetes betöltése
+- Struktúra-kódtárak előzetes betöltése
 - A Mono telepítése vagy frissítése
 
 > [!Note]  
@@ -160,7 +160,7 @@ Az Azure Virtual Network és a HDInsight használata a következő forgatóköny
 - HDInsight csatlakoztatása az adattárakhoz egy Azure-beli virtuális hálózaton.
 - Közvetlenül az interneten keresztül nyilvánosan nem elérhető Hadoop-szolgáltatásokhoz férhet hozzá. Például: Kafka API-k vagy a HBase Java API.
 
-A HDInsight új vagy meglévő Azure-Virtual Networkhoz is hozzáadhatók. Ha a HDInsight bekerül egy meglévő Virtual Networkba, a meglévő hálózati biztonsági csoportokat és a felhasználó által megadott útvonalakat frissíteni kell, hogy az Azure-adatközpont [több IP-címéhez](../hdinsight-management-ip-addresses.md) való korlátlan hozzáférést engedélyezzen. Ügyeljen arra is, hogy ne tiltsa le a HDInsight [](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)-szolgáltatások által használt portokra irányuló forgalmat.
+A HDInsight új vagy meglévő Azure-Virtual Networkhoz is hozzáadhatók. Ha a HDInsight bekerül egy meglévő Virtual Networkba, a meglévő hálózati biztonsági csoportokat és a felhasználó által megadott útvonalakat frissíteni kell, hogy az Azure-adatközpont [több IP-címéhez](../hdinsight-management-ip-addresses.md) való korlátlan hozzáférést engedélyezzen. Ügyeljen arra is, hogy ne tiltsa le a HDInsight-szolgáltatások által használt [portokra](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)irányuló forgalmat.
 
 > [!Note]  
 > A HDInsight jelenleg nem támogatja a kényszerített bújtatást. A kényszerített bújtatás egy olyan alhálózat-beállítás, amely az eszközre irányuló kimenő internetes forgalmat ellenőrzés és naplózás céljából kényszeríti. Távolítsa el a kényszerített bújtatást, mielőtt telepítené a HDInsight egy alhálózatba, vagy hozzon létre egy új alhálózatot a HDInsight. A HDInsight emellett nem támogatja a kimenő hálózati kapcsolatok korlátozását.
@@ -172,7 +172,7 @@ További információkért tekintse át a következő cikkeket:
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Biztonságos kapcsolódás az Azure-szolgáltatásokhoz az Azure Virtual Network Service-végpontokkal
 
-A HDInsight támogatja a [virtuális hálózati szolgáltatás](../../virtual-network/virtual-network-service-endpoints-overview.md)-végpontokat, amelyek lehetővé teszik az Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos db és SQL-adatbázisokhoz való biztonságos kapcsolódást. A szolgáltatás-végpont Azure HDInsight való engedélyezésével a forgalom a biztonságos útvonalon halad át az Azure-adatközponton belül. Ezzel a fokozott biztonsággal a hálózati rétegben zárolhatja big data Storage-fiókjait a megadott virtuális hálózatokra (virtuális hálózatok), és továbbra is zökkenőmentesen használhatja a HDInsight-fürtöket az adateléréshez és a feldolgozáshoz.
+A HDInsight támogatja a [virtuális hálózati szolgáltatás-végpontokat](../../virtual-network/virtual-network-service-endpoints-overview.md), amelyek lehetővé teszik az Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos db és SQL-adatbázisokhoz való biztonságos kapcsolódást. A szolgáltatás-végpont Azure HDInsight való engedélyezésével a forgalom a biztonságos útvonalon halad át az Azure-adatközponton belül. Ezzel a fokozott biztonsággal a hálózati rétegben zárolhatja big data Storage-fiókjait a megadott virtuális hálózatokra (virtuális hálózatok), és továbbra is zökkenőmentesen használhatja a HDInsight-fürtöket az adateléréshez és a feldolgozáshoz.
 
 További információkért tekintse át a következő cikkeket:
 
@@ -187,7 +187,7 @@ A HDInsight Azure-beli virtuális hálózatok és VPN-átjáró használatával 
 - Konfigurálja a DNS-névfeloldást a virtuális hálózat és a helyszíni hálózat között.
 - Konfigurálja a hálózati biztonsági csoportokat vagy a felhasználó által megadott útvonalakat (UDR) a hálózati forgalom szabályozásához.
 
-További információ: a [HDInsight](../connect-on-premises-network.md) összekapcsolása a helyszíni hálózattal.
+További információ: a [HDInsight összekapcsolása a helyszíni hálózattal](../connect-on-premises-network.md) .
 
 ## <a name="next-steps"></a>További lépések
 

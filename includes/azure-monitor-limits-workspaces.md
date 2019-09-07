@@ -8,63 +8,62 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 21e2d3f75028d239175effa7a3608cc18ccfc95c
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 5d0c43fbcc1c59c3281f412aad96a3942a5c79b1
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67305290"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70392897"
 ---
-**Gyűjtemény adatmennyiség és megőrzés** 
+**Adatgyűjtés mennyisége és megőrzése** 
 
-| Szint | Korlátozza a naponta | Adatmegőrzés | Megjegyzés |
+| Szint | Napi korlát | Adatmegőrzés | Megjegyzés |
 |:---|:---|:---|:---|
-| Jelenlegi GB tarifacsomag kiválasztása<br>(a 2018 április ismertetése) | Korlátlan | 30 - 730 napig | Adatmegőrzés 31 napos időszak letelte után számítunk fel további díjat érhető el. További információ az Azure Monitor díjszabásáról. |
-| Régi ingyenes szint<br>(2016. április jelent meg). | 500 MB | 7 nap | Ha a munkaterület eléri a napi 500 MB-os, adatbetöltés leállítja, és a következő nap kezdetekor folytatódik. A napi elszámolás UTC-alapú. Vegye figyelembe, hogy az Azure Security Center által gyűjtött adatokat nem tartalmazza ezt a napi 500 MB-ban, és továbbra is meghaladja a gyűjtendő.  |
-| Örökölt önálló GB szint<br>(2016. április jelent meg). | Korlátlan | 30 és 730 nap | Adatmegőrzés 31 napos időszak letelte után számítunk fel további díjat érhető el. További információ az Azure Monitor díjszabásáról. |
-| Örökölt Csomópontonkénti (OMS)<br>(2016. április jelent meg). | Korlátlan | 30 és 730 nap | Adatmegőrzés 31 napos időszak letelte után számítunk fel további díjat érhető el. További információ az Azure Monitor díjszabásáról. |
-| Örökölt Standard csomag | Korlátlan | 30 nap  | Nem módosítható a megőrzési |
-| Örökölt prémium szint | Korlátlan | 365 nap  | Nem módosítható a megőrzési |
+| Aktuális/GB-os árképzési szintek<br>(bevezetve április 2018.) | Korlátlan | 30-730 nap | A 31 napos adatmegőrzés további költségek mellett is elérhető. További információ a Azure Monitor díjszabásáról. |
+| Örökölt ingyenes szintek<br>(bevezetve április 2016.) | 500 MB | 7 nap | Ha a munkaterület eléri a napi 500 MB-os korlátot, az adatfeldolgozás leáll, és a következő nap elején folytatódik. A napi elszámolás UTC-alapú. Vegye figyelembe, hogy a Azure Security Center által gyűjtött adatok nem szerepelnek a napi 500 MB-os korláton, és ezen a korláton felül tovább lesznek gyűjtve.  |
+| Örökölt önálló/GB szintű<br>(bevezetve április 2016.) | Korlátlan | 30 – 730 nap | A 31 napos adatmegőrzés további költségek mellett is elérhető. További információ a Azure Monitor díjszabásáról. |
+| Örökölt csomópontok száma (OMS)<br>(bevezetve április 2016.) | Korlátlan | 30 – 730 nap | A 31 napos adatmegőrzés további költségek mellett is elérhető. További információ a Azure Monitor díjszabásáról. |
+| Örökölt standard szint | Korlátlan | 30 nap  | A megőrzés nem módosítható |
+| Örökölt prémium szint | Korlátlan | 365 nap  | A megőrzés nem módosítható |
 
-**Munkaterületek száma előfizetésenként száma.**
+**Munkaterületek száma/előfizetés.**
 
-| Tarifacsomag    | Munkaterület-korlát | Megjegyzések
+| Tarifacsomag    | Munkaterület korlátja | Megjegyzések
 |:---|:---|:---|
-| Ingyenes szint  | 10 | Ez a korlát nem növelhető. |
-| Minden más szinten | Korlátlan | Az erőforráscsoporton belül erőforrások száma és az előfizetésenkénti erőforráscsoportok száma korlátot jelent. |
+| Ingyenes csomag  | 10 | Ez a korlát nem növelhető. |
+| Az összes többi szintje | Korlátlan | Az erőforráscsoport erőforrásainak száma és az egyes előfizetésekhez tartozó erőforráscsoportok száma korlátozza. |
 
 **Azure Portal**
 
-| Category | Limits | Megjegyzések |
+| Category | Korlátok | Megjegyzések |
 |:---|:---|:---|
-| A napló lekérdezés által visszaadott rekordok maximális | 10,000 | Csökkentse a lekérdezés hatókörébe, idő tartomány és szűrők használatával a lekérdezés eredményeit. |
+| Egy napló lekérdezés által visszaadott maximális rekordok | 10,000 | Csökkentheti az eredményeket a lekérdezés hatóköre, az időtartomány és a lekérdezésben szereplő szűrők használatával. |
 
 
 **Adatgyűjtő API**
 
-| Category | Limits | Megjegyzések |
+| Category | Korlátok | Megjegyzések |
 |:---|:---|:---|
-| Az egyedi közzétételek maximális mérete | 30 MB | A nagyobb mennyiségeket bontsa több közzétételre. |
-| A mezőértékek maximális mérete  | 32 KB | A 32 KB-nál hosszabb mezők csonkolva lesznek. |
+| Egyetlen bejegyzés maximális mérete | 30 MB | Nagyobb kötetek felosztása több bejegyzésbe. |
+| Mezőértékek maximális mérete  | 32 KB | A 32 KB-nál hosszabb mezők csonkolva lesznek. |
 
 **Keresési API**
 
-| Category | Limits | Megjegyzések |
+| Category | Korlátok | Megjegyzések |
 |:---|:---|:---|
-| Nem összesített adatok a visszaadott rekordok maximális | 5,000 | |
-| Maximális rekord az összesített adatok | 500,000 | Összesített adatok tartalmazó kereséssel a `summarize` parancsot. |
-| Visszaadott adatok maximális mérete | 64,000,000 bájtok (KB 61 MiB)| |
-| Maximális futási idejének lekérdezés | 10 perc | Lásd: [időtúllépések](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) részleteiről.  |
-| Kérelem maximális sebesség | AAD-felhasználó vagy az ügyfél IP-címenként 30 másodpercenként 200 kérelmek | Lásd: [sebességhatárok](https://dev.loganalytics.io/documentation/Using-the-API/Limits) részleteiről. |
+| Egyetlen lekérdezésben visszaadott rekordok maximális száma | 500,000 | |
+| Visszaadott adatmennyiség maximális mérete | 64 000 000 bájt (~ 61 MiB)| |
+| Lekérdezés maximális futási ideje | 10 perc | További részletek: [időtúllépések](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) .  |
+| Kérelmek maximális száma | 200 kérelem/30 másodperc/HRE felhasználó vagy ügyfél IP-címe | Részletekért lásd a [díjszabási korlátokat](https://dev.loganalytics.io/documentation/Using-the-API/Limits) . |
 
-**Általános munkaterület korlátok**
+**Általános munkaterület korlátai**
 
-| Category | Limits | Megjegyzések |
+| Category | Korlátok | Megjegyzések |
 |:---|:---|:---|
-| Egy tábla oszlopok maximális száma         | 500 | |
-| Az oszlop neve legfeljebb karakter | 500 | |
-| Régiók kapacitással | USA nyugati középső régiója | Ön jelenleg nem lehet létrehozni egy új munkaterületet ebben a régióban, ideiglenes kapacitásának határát, mert. Ez a korlátozás tervezett elhárítandó 2019. szeptember végéig. |
-| Adatok exportálása | Jelenleg nem érhető el | Használja az Azure-függvény vagy a logikai alkalmazás összesítéséhez és exportálhat adatokat. | 
+| Oszlopok maximális száma egy táblában         | 500 | |
+| Oszlop nevének maximális száma | 500 | |
+| Kapacitású régiók | USA nyugati középső régiója | Ebben a régióban jelenleg nem hozhat létre új munkaterületet, mert az átmeneti kapacitási korláttal rendelkezik. Ez a korlát 2019 október végére tervezett. |
+| Adatexportálás | Jelenleg nem érhető el | Az Azure Function vagy a Logic App használatával összesítheti és exportálhatja az adatokat. | 
 
 >[!NOTE]
->Attól függően, hogy mennyi ideig már használja egy Log Analytics előfordulhat, hogy hozzáfér a régi díjszabási szint. Tudjon meg többet [tarifacsomagok Log Analytics örökölt](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 
+>Attól függően, hogy mennyi ideig használta a Log Analytics, lehet, hogy hozzáfér a régi díjszabási csomagokhoz. További információ a [log Analytics korábbi díjszabási szintjeiről](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 

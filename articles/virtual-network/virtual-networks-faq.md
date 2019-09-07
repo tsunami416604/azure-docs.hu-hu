@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ecb840d97a45479d32079766807b4f2788cc29ec
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 836a9fd0b441ff9669c224dc41537e3c177d7dde
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382903"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389711"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -42,7 +42,7 @@ A kezdéshez látogasson el a [virtuális hálózat dokumentációjában](https:
 Igen. A VNet a helyszíni csatlakoztatása nélkül is használhatja. Futtathatja például a Microsoft Windows Server Active Directory tartományvezérlőket és a SharePoint-farmokat kizárólag Azure-VNet.
 
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Használhatok WAN-optimalizálást a virtuális hálózatok vagy a VNet és a helyszíni adatközpontok között?
-Igen. Az Azure Marketplace-en keresztül üzembe helyezhet egy [WAN-optimalizálási hálózati virtuális készüléket](https://azure.microsoft.com/marketplace/?term=wan+optimization) több gyártótól.
+Igen. Az Azure Marketplace-en keresztül üzembe helyezhet egy [WAN-optimalizálási hálózati virtuális készüléket](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization) több gyártótól.
 
 ## <a name="configuration"></a>Konfiguráció
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b15c9730f7e469fde8fabd1bc4cbcd28efa66c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5949f57a87f324dc2e6651611574f4b66215c8a8
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953019"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389765"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD jelszóvédelem üzembe helyezése
 
@@ -42,15 +42,15 @@ Ha a szolgáltatás egy ésszerű időszakra vonatkozóan a vizsgálati módban 
 
 ## <a name="deployment-requirements"></a>Üzembe helyezési követelmények
 
-* Az Azure AD jelszavas védelemmel kapcsolatos licencelési követelmények a következő cikkben találhatók: [helytelen jelszavak eltávolítása](concept-password-ban-bad.md#license-requirements)a szervezetében.
-* A Windows Server 2012-es vagy újabb verziójának kell futnia minden olyan tartományvezérlőn, amely az Azure AD jelszavas védelméhez a DC Agent szolgáltatást telepíti. Ez a követelmény nem jelenti azt, hogy a Active Directory tartománynak vagy erdőnek Windows Server 2012 tartomány vagy erdő működési szintjén kell lennie. A [tervezési](concept-password-ban-bad-on-premises.md#design-principles)alapelvekben említettek szerint nem szükséges minimális DFL vagy FFL a DC-ügynök vagy a proxy szoftver futtatásához.
+* Az Azure AD jelszavas védelemmel kapcsolatos licencelési követelmények a következő cikkben találhatók: [helytelen jelszavak eltávolítása a szervezetében](concept-password-ban-bad.md#license-requirements).
+* A Windows Server 2012-es vagy újabb verziójának kell futnia minden olyan tartományvezérlőn, amely az Azure AD jelszavas védelméhez a DC Agent szolgáltatást telepíti. Ez a követelmény nem jelenti azt, hogy a Active Directory tartománynak vagy erdőnek Windows Server 2012 tartomány vagy erdő működési szintjén kell lennie. A [tervezési alapelvekben](concept-password-ban-bad-on-premises.md#design-principles)említettek szerint nem szükséges minimális DFL vagy FFL a DC-ügynök vagy a proxy szoftver futtatásához.
 * A DC Agent szolgáltatást futtató összes gépnek telepítve kell lennie a .NET 4,5-nek.
 * Az Azure AD jelszavas védelemhez telepített proxy szolgáltatást futtató összes gépnek Windows Server 2012 R2 vagy újabb rendszernek kell futnia.
    > [!NOTE]
    > A proxykiszolgáló üzembe helyezése kötelezően szükséges az Azure AD jelszavas védelem üzembe helyezéséhez, annak ellenére, hogy a tartományvezérlő rendelkezik kimenő közvetlen internetkapcsolattal. 
    >
 * Minden olyan gépen, amelyen telepítve van az Azure AD jelszavas védelmi proxy szolgáltatás, telepítve kell lennie a .NET 4,7-nek.
-  A .NET 4,7-es verziójához már telepítve kell lennie egy teljesen frissített Windows Server rendszerre. Ha ez nem igaz, töltse le és futtassa a következőt: a [.NET-keretrendszer 4,7](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)-es offline telepítője a Windowshoz.
+  A .NET 4,7-es verziójához már telepítve kell lennie egy teljesen frissített Windows Server rendszerre. Ha ez nem igaz, töltse le és futtassa a következőt: a [.NET-keretrendszer 4,7-es offline telepítője a Windowshoz](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
 * Az Azure AD jelszavas védelem összetevőit futtató összes gépnek telepítve kell lennie az univerzális C futtatókörnyezetnek. A futtatókörnyezet beszerzéséhez győződjön meg arról, hogy Windows Update összes frissítését elvégezte. Azt is megteheti, hogy egy operációs rendszerre vonatkozó frissítési csomagban van. További információ: az [univerzális C futtatókörnyezet frissítése a Windowsban](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * A hálózati kapcsolatnak léteznie kell legalább egy, az egyes tartományokban lévő tartományvezérlő és legalább egy olyan kiszolgáló között, amely a proxykiszolgáló számára a jelszavas védelmet tárolja. Ez a kapcsolat lehetővé teszi, hogy a tartományvezérlő hozzáférhessen az RPC Endpoint Mapper port 135-es portjához és a proxykiszolgáló RPC-kiszolgáló portjához. Alapértelmezés szerint az RPC-kiszolgáló portja egy dinamikus RPC-port, de konfigurálható [statikus port használatára](#static)is.
 * A proxy szolgáltatást futtató összes gépnek hálózati hozzáféréssel kell rendelkeznie a következő végpontokhoz:
@@ -105,7 +105,7 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
 
       `Get-Service AzureADPasswordProtectionProxy | fl`.
 
-     Az eredménynek a " Running" állapotot kell mutatnia.
+     Az eredménynek a "Running" **állapotot** kell mutatnia.
 
 1. Regisztrálja a proxyt.
    * A 3. lépés befejezése után a proxy szolgáltatás fut a gépen. A szolgáltatás azonban még nem rendelkezik az Azure AD-vel való kommunikációhoz szükséges hitelesítő adatokkal. Az Azure AD-vel való regisztráció szükséges:
@@ -142,7 +142,7 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
         ```
 
         > [!NOTE]
-        > Ez a mód meghiúsul, ha az Azure multi-Factor Authentication szükséges a fiókhoz. Ebben az esetben használja az előző két hitelesítési mód egyikét, vagy használjon egy másik fiókot, amely nem igényel MFA-t.
+        > Ez a mód meghiúsul, ha az Azure Multi-Factor Authentication szükséges a fiókhoz. Ebben az esetben használja az előző két hitelesítési mód egyikét, vagy használjon egy másik fiókot, amely nem igényel MFA-t.
         >
         > Azt is megteheti, hogy az MFA szükséges, ha az Azure-eszköz regisztrációja (amelyet az Azure AD jelszavas védelem keretében használ) úgy van konfigurálva, hogy globálisan megkövetelje az MFA-t. A megkerülő megoldáshoz használhat egy másik fiókot, amely támogatja az MFA-t az előző két hitelesítési mód egyikével, vagy átmenetileg is kihasználhatja az Azure-eszköz regisztrációjának MFA-követelményét. Ehhez nyissa meg az Azure felügyeleti portálját, majd válassza a Azure Active Directory, majd az eszközök, majd az eszközbeállítások lehetőséget, majd a "többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához" beállítást. Ügyeljen rá, hogy ezt a beállítást állítsa vissza az Igen értékre, ha a regisztráció befejeződött.
         >
@@ -186,7 +186,7 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
         ```
 
         > [!NOTE]
-        > Ez a mód meghiúsul, ha az Azure multi-Factor Authentication szükséges a fiókhoz. Ebben az esetben használja az előző két hitelesítési mód egyikét, vagy használjon egy másik fiókot, amely nem igényel MFA-t.
+        > Ez a mód meghiúsul, ha az Azure Multi-Factor Authentication szükséges a fiókhoz. Ebben az esetben használja az előző két hitelesítési mód egyikét, vagy használjon egy másik fiókot, amely nem igényel MFA-t.
         >
         > Azt is megteheti, hogy az MFA szükséges, ha az Azure-eszköz regisztrációja (amelyet az Azure AD jelszavas védelem keretében használ) úgy van konfigurálva, hogy globálisan megkövetelje az MFA-t. A megkerülő megoldáshoz használhat egy másik fiókot, amely támogatja az MFA-t az előző két hitelesítési mód egyikével, vagy átmenetileg is kihasználhatja az Azure-eszköz regisztrációjának MFA-követelményét. Ehhez nyissa meg az Azure felügyeleti portálját, majd válassza a Azure Active Directory, majd az eszközök, majd az eszközbeállítások lehetőséget, majd a "többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához" beállítást. Ügyeljen rá, hogy ezt a beállítást állítsa vissza az Igen értékre, ha a regisztráció befejeződött.
         >
@@ -295,7 +295,7 @@ Ha elérhető az Azure ad jelszavas védelmi proxy szoftver újabb verziója, a 
 
 A proxy szoftver aktuális verziójának eltávolítása nem szükséges – a telepítő helyben történő frissítést hajt végre. A proxy szoftver frissítése során nincs szükség újraindításra. Előfordulhat, hogy a szoftverfrissítés szabványos MSI-eljárások használatával automatizálható, például `AzureADPasswordProtectionProxySetup.exe /quiet`:.
 
-A proxy ügynök támogatja az automatikus frissítést. Az automatikus frissítés a Microsoft Azure AD összekapcsolási ügynök frissítési szolgáltatását használja, amely a proxy szolgáltatással párhuzamosan települ. Az automatikus frissítés alapértelmezés szerint be van kapcsolva, és a set-AzureADPasswordProtectionProxyConfiguration parancsmag használatával engedélyezhető vagy letiltható. Az aktuális beállítás a Get-AzureADPasswordProtectionProxyConfiguration parancsmag használatával kérdezhető le. A Microsoft azt javasolja, hogy az automatikus frissítés engedélyezve legyen.
+A proxy ügynök támogatja az automatikus frissítést. Az automatikus frissítés a Microsoft Azure AD összekapcsolási ügynök frissítési szolgáltatását használja, amely a proxy szolgáltatással párhuzamosan települ. Az automatikus frissítés alapértelmezés szerint be van kapcsolva, és a `Set-AzureADPasswordProtectionProxyConfiguration` parancsmag használatával engedélyezhető vagy letiltható. Az aktuális beállítás a `Get-AzureADPasswordProtectionProxyConfiguration` parancsmag használatával kérdezhető le. A Microsoft azt javasolja, hogy az automatikus frissítés engedélyezve legyen.
 
 A `Get-AzureADPasswordProtectionProxy` parancsmag segítségével lekérdezhető a jelenleg telepített proxy-ügynökök szoftveres verziója egy erdőben.
 
