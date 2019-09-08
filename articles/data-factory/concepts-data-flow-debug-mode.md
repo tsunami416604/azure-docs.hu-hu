@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: 71e08f00600bebcc21eba32d991353c9bcaeaa97
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/06/2019
+ms.openlocfilehash: 7d1023f6c46c15b6f982193350923f5c91cdc4b9
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991921"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801711"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Adatfolyam-hibakeresési mód leképezése
 
@@ -20,16 +20,17 @@ ms.locfileid: "69991921"
 
 ## <a name="overview"></a>Áttekintés
 
-Azure Data Factory a leképezési adatfolyam hibakeresési módja bekapcsolható a tervezési felület tetején található "adatfolyam-hibakeresés" gombbal. Az adatfolyamatok tervezésekor a hibakeresési mód bekapcsolása lehetővé teszi, hogy interaktív módon figyelje az adatalakzatok átalakítóját az adatfolyamatok létrehozásakor és hibakeresése során. A hibakeresési munkamenet egyaránt használható az adatfolyam-tervezési munkamenetekben, valamint az adatfolyamatok hibakeresési folyamatának végrehajtása során.
+Azure Data Factory a leképezési adatfolyam hibakeresési módja lehetővé teszi, hogy interaktív módon figyelje az adatalakzatok átalakítóját az adatfolyamatok létrehozásakor és hibakeresése során. A hibakeresési munkamenet egyaránt használható az adatfolyam-tervezési munkamenetekben, valamint az adatfolyamatok hibakeresési folyamatának végrehajtása során. A hibakeresési mód bekapcsolásához használja a tervezési felület tetején található "adatfolyam-hibakeresés" gombot.
 
-![Hibakeresés gomb](media/data-flow/debugbutton.png "Hibakeresés gomb")
+![Hibakeresési csúszka](media/data-flow/debugbutton.png "Hibakeresési csúszka")
+
+A csúszka bekapcsolását követően meg kell adnia, hogy melyik Integration Runtime-konfigurációt kívánja használni. Ha a AutoResolveIntegrationRuntime van kiválasztva, akkor a rendszer egy, a 60 perces élettartammal rendelkező, nyolc maggal rendelkező fürtöt hoz létre. Az adatfolyam-integrációs modulokkal kapcsolatos további információkért lásd: [adatáramlási teljesítmény](concepts-data-flow-performance.md#increase-size-of-your-compute-engine-in-azure-integration-runtime).
+
+![IR-kijelölés hibakeresése](media/data-flow/debugbutton2.png "IR-kijelölés hibakeresése")
 
 Ha a hibakeresési mód be van kapcsolva, interaktív módon felépítheti az adatfolyamot egy aktív Spark-fürttel. A munkamenet akkor zárul le, ha a Azure Data Factoryban bekapcsolja a hibakeresést. Tisztában kell lennie azzal, hogy a hibakeresési munkamenet bekapcsolásának ideje alatt a Azure Databricks óradíjat számol fel.
 
 A legtöbb esetben célszerű hibakeresési módban felépíteni az adatfolyamatokat, hogy ellenőrizni tudja az üzleti logikát, és megtekintheti az adatátalakításokat, mielőtt közzéteszi a munkáját a Azure Data Factoryban. Az adatfolyamatok folyamaton belüli teszteléséhez használja a folyamat panel "hibakeresés" gombját.
-
-> [!NOTE]
-> Míg a hibakeresési mód fénye zöld színnel jelenik meg a Data Factory eszköztáron, az adatforgalom hibakeresési sebessége 8 mag/HR az általános számításhoz egy 60 perces élettartammal 
 
 ## <a name="cluster-status"></a>Fürt állapota
 

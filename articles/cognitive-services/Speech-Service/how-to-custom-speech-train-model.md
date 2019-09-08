@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b5893b4f07444b07bf142971a5df4776e549d307
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 21a0cd5e257f57a9371a30c6fe57afb88e174b53
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562813"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801435"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Custom Speech modell betanítása
 
@@ -37,13 +37,14 @@ Ha a modell felismerésével kapcsolatos problémákat tapasztal, az emberi cím
 
 A modellek betanításának első lépése a betanítási adatok feltöltése. Az emberi címkével ellátott átiratok és a kapcsolódó szövegek (hosszúságú kimondott szöveg és kiejtések) előkészítéséhez használja az [előkészítés és a tesztelés](how-to-custom-speech-test-data.md) részletes útmutatását. A betanítási adatai feltöltése után kövesse az alábbi utasításokat a modell képzésének megkezdéséhez:
 
-1. Navigáljon a **beszéd-szöveg > Custom Speech > képzésre**.
-2. Kattintson a **tanítási modell**elemre.
-3. Ezután adja meg a betanítás **nevét** és **leírását**.
-4. A **forgatókönyv és az alapterv modell** legördülő menüben válassza ki a tartományhoz legjobban illő forgatókönyvet. Ha nem biztos abban, hogy melyik forgatókönyvet szeretné kiválasztani, válassza az **általános**lehetőséget. Az alapmodell a betanítás kiindulási pontja. Ha nem rendelkezik a beállításokkal, a legújabbat használhatja.
-5. A betanítási **adatok kiválasztása** lapon válasszon ki egy vagy több hang + emberi címkével ellátott átírási adatkészletet, amelyeket képzésre szeretne használni.
-6. A képzés befejezését követően dönthet úgy, hogy pontossági tesztelést végez az újonnan betanított modellen. Ez a lépés nem kötelező.
-7. Válassza a **Létrehozás** lehetőséget az egyéni modell kiépítéséhez.
+1. Jelentkezzen be a [Custom Speech portálra](https://speech.microsoft.com/customspeech).
+2. Navigáljon a **beszéd-szöveg > Custom Speech > képzésre**.
+3. Kattintson a **tanítási modell**elemre.
+4. Ezután adja meg a betanítás **nevét** és **leírását**.
+5. A **forgatókönyv és az alapterv modell** legördülő menüben válassza ki a tartományhoz legjobban illő forgatókönyvet. Ha nem biztos abban, hogy melyik forgatókönyvet szeretné kiválasztani, válassza az **általános**lehetőséget. Az alapmodell a betanítás kiindulási pontja. Ha nem rendelkezik a beállításokkal, a legújabbat használhatja.
+6. A **betanítási adatok kiválasztása** lapon válasszon ki egy vagy több hang + emberi címkével ellátott átírási adatkészletet, amelyeket képzésre szeretne használni.
+7. A képzés befejezését követően dönthet úgy, hogy pontossági tesztelést végez az újonnan betanított modellen. Ez a lépés nem kötelező.
+8. Válassza a **Létrehozás** lehetőséget az egyéni modell kiépítéséhez.
 
 A betanítási táblázat egy új bejegyzést jelenít meg, amely megfelel az újonnan létrehozott modellnek. A tábla az állapotot is megjeleníti:  A feldolgozás, sikeres, sikertelen.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 11eae0e3bae501cdf39d7fe1d5d39524c1f83e6c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c5399f46106d94d593a15530ee0c223a3f5f3eaf
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036004"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802048"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Oktatóanyag: Csatolt Azure Resource Manager-sablonok létrehozása
 
@@ -287,7 +287,7 @@ Az oktatóanyagból való [visszahívás: A függő erőforrásokkal](./resource
 
 Mivel a tárfiók jelenleg az összekapcsolt sablonban van definiálva, módosítania kell a `Microsoft.Compute/virtualMachines` erőforrás következő két elemét.
 
-* Konfigurálja újra a `dependOn` elemet. A tárfiók definíciója az összekapcsolt sablonba lett áthelyezve.
+* Konfigurálja újra a `dependsOn` elemet. A tárfiók definíciója az összekapcsolt sablonba lett áthelyezve.
 * Konfigurálja újra a `properties/diagnosticsProfile/bootDiagnostics/storageUri` elemet. [Az összekapcsolt sablon létrehozása](#create-the-linked-template) című szakaszban hozzáadott egy kimeneti értéket:
 
     ```json

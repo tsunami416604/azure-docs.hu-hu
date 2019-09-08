@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 5b13c3c93f8b2d6f3eed5a32c49baf1b9d1b201e
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 738d6738469960c8b21809b9320c4d034613c4e3
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773341"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802376"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Kiszolgáló nélküli Azure SQL Database (előzetes verzió)
 
@@ -292,7 +292,7 @@ A számlázott számítások mennyisége a felhasznált CPU és a másodpercenk�
 - **Számlázott összeg**: virtuális mag egység ára * Max (min virtuális mag, virtuális mag felhasznált, minimális memória gb * 1/3, memória GB használatban * 1/3) 
 - **Számlázási gyakoriság**: Másodpercenként
 
-A virtuális mag egységenkénti díja a virtuális mag/másodpercben. Egy adott régióban az adott egység áraira vonatkozó [Azure SQL Database díjszabási oldalán](https://azure.microsoft.com/pricing/details/sql-database/single/) talál további információt.
+A virtuális mag egység díja virtuális mag/másodperc. Egy adott régióban az adott egység áraira vonatkozó [Azure SQL Database díjszabási oldalán](https://azure.microsoft.com/pricing/details/sql-database/single/) talál további információt.
 
 A számlázott számítások mennyiségét a következő metrika teszi elérhetővé:
 

@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: c8533f79dd2bf02a03ff4a37283359f3b3a5bf39
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b145b341a4db503a00d517decf6406e26f23c3cd
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066037"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802460"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -201,8 +201,6 @@ A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást
 
     >[!IMPORTANT]
     >Az adatbázis szintű naplózással a másodlagos adatbázis tárolási beállításai azonosak lesznek az elsődleges adatbázissal, ami régiók közötti forgalmat okoz. Javasoljuk, hogy csak a kiszolgálói szintű naplózást engedélyezze, és hagyja letiltani az adatbázis-szintű naplózást minden adatbázis esetében.
-    > [!WARNING]
-    > Ha az Event hub-t vagy Azure Monitor naplókat használja a naplózási naplókhoz, a kiszolgáló szintjén jelenleg nem támogatott a másodlagos geo-replikált adatbázisok használata.
 
 ### <a id="subheading-6">Tárolási kulcs újragenerálása</a>
 

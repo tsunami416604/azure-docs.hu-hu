@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: 0125fa20e61890317d4df510cb668f68e5049c43
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 520eded941f625bf90204213188ac1afc94d3111
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231857"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802578"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>A Microsoft Cloud bevezetési keretrendszer üzembe helyezése az Azure áttelepítési zóna terve minta
 
@@ -33,17 +33,17 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Először is implementálja a terv mintáját úgy, hogy létrehoz egy új tervet a környezetben a minta kezdőként való használatával.
 
-1. Válassza a **minden szolgáltatás** lehetőséget, és keresse meg és válassza ki a **házirend** elemet a bal oldali ablaktáblán. A **szabályzat** lapon válassza a **tervrajzok**lehetőséget.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
 1. A bal oldali **első lépések** lapon kattintson a **Létrehozás** gombra a _terv létrehozása_területen.
 
 1. Keresse meg a **CAF Migration Landing Zone** Blueprint mintát _más minták_ alatt, és válassza **a minta használata**lehetőséget.
 
-1. Adja meg a tervezet mintájának alapjait:
+1. Adja meg a tervezet mintájának _alapjait_ :
    - **Terv neve** Adjon meg egy nevet a CAF Migration Landing Zone Blueprint minta példányához.
    - **Definíció helye** Használja a három pontot, és válassza ki a felügyeleti csoportot, és mentse a minta másolatát a következőre:.
 
-1. Válassza ki az összetevők fület a lap tetején, vagy **a következőt:**  Az oldal alján található összetevők.
+1. Válassza ki az _összetevők fület_ a lap tetején, vagy **a következőt:**  Az oldal alján található összetevők.
 
 1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
@@ -51,9 +51,9 @@ Először is implementálja a terv mintáját úgy, hogy létrehoz egy új terve
 
 A terv mintájának másolata már létre lett hozva a környezetében. A rendszer **Piszkozat** módban jön létre, és **közzé** kell tenni ahhoz, hogy hozzá lehessen rendelni és telepíteni lehessen. A terv mintájának másolata testreszabható a környezet és a szükséges igények alapján, de ez a módosítás áthelyezhető a CAF-beli bevezetési zóna útmutatása szerint.
 
-1. Válassza a **minden szolgáltatás** lehetőséget, és keresse meg és válassza ki a **házirend** elemet a bal oldali ablaktáblán. A **szabályzat** lapon válassza a **tervrajzok**lehetőséget.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Válassza a bal oldali **terv** -definíciók lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
+1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
 1. Válassza a **terv közzététele** lehetőséget az oldal tetején. A jobb oldalon található új lapon adjon meg egy **verziót** a tervezet mintájának másolatához. Ez a tulajdonság akkor hasznos, ha később módosítja a módosítást. Adjon meg olyan **módosítási megjegyzéseket** , mint például az "első verzió megjelent a CAF Migration Landing Zone Blueprint minta". Ezután válassza a **Közzététel** elemet az oldal alján.
 
@@ -61,11 +61,11 @@ A terv mintájának másolata már létre lett hozva a környezetében. A rendsz
 
 Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ezzel a lépéssel megadhatja, hogy az egyes központi telepítések egyediek legyenek-e.
 
-1. Válassza a **minden szolgáltatás** lehetőséget, és keresse meg és válassza ki a **házirend** elemet a bal oldali ablaktáblán. A **szabályzat** lapon válassza a **tervrajzok**lehetőséget.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Válassza a bal oldali **terv** -definíciók lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
+1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Válassza a terv kiosztása elemet a terv definíciója oldal tetején.
+1. Válassza a terv **kiosztása** elemet a terv definíciója oldal tetején.
 
 1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
@@ -84,7 +84,7 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
    - Felügyelt identitás
 
-     Válassza ki az alapértelmezett _rendszerhez rendelt_ felügyelt identitás vagy a _felhasználó_ által hozzárendelt identitás lehetőséget.
+     Válassza ki az alapértelmezett _rendszerhez rendelt_ felügyelt identitás vagy a _felhasználó által hozzárendelt_ identitás lehetőséget.
 
    - Terv paraméterei
 
@@ -100,7 +100,7 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 1. Az összes paraméter megadása után válassza a lap alján található **hozzárendelés** elemet. A terv-hozzárendelés létrejött, és az összetevő üzembe helyezése megkezdődik. Az üzembe helyezés nagyjából öt percet vesz igénybe. Az üzembe helyezés állapotának megtekintéséhez nyissa meg a terv-hozzárendelést.
 
 > [!WARNING]
-> Az Azure BluePrints szolgáltatás és a beépített tervrajzi minták díjmentesek. Az Azure-erőforrások [díjszabása termékenként](https://azure.microsoft.com/pricing/)történik. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával megbecsülheti a tervrajzi minta által üzembe helyezett erőforrások futtatásának költségeit.
+> Az Azure BluePrints szolgáltatás és a beépített tervrajzi minták **díjmentesek**. Az Azure-erőforrások [díjszabása termékenként](https://azure.microsoft.com/pricing/)történik. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával megbecsülheti a tervrajzi minta által üzembe helyezett erőforrások futtatásának költségeit.
 
 ## <a name="artifact-parameters-table"></a>Összetevő-paraméterek táblázata
 
@@ -123,7 +123,7 @@ Most, hogy áttekintette a CAF Migrálás bevezetési zóna üzembe helyezésén
 
 További cikkek a tervekről és azok használatáról:
 
-- A [terv életciklusának](../../concepts/lifecycle.md)megismerése.
+- Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.
 - A [tervekkel kapcsolatos műveleti sorrend](../../concepts/sequencing-order.md) testreszabásának elsajátítása.
 - A [tervek erőforrás-zárolásának](../../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.

@@ -1,6 +1,6 @@
 ---
-title: Egy eszköz alkalmazás Node.js-ben az IoT Hub eszköz adatfolyamok (előzetes verzió) keresztül kommunikáljon |} A Microsoft Docs
-description: Ebben a rövid útmutatóban fog futtatni a Node.js Szolgáltatásoldali alkalmazásokat, melyekkel egy IoT-eszközzel rendelkező eszköz adatfolyam-n keresztül.
+title: Kommunikáció a Node. js-ben lévő eszköz-alkalmazásokkal IoT Hub eszköz-adatfolyamok használatával (előzetes verzió) | Microsoft Docs
+description: Ebben a rövid útmutatóban egy Node. js-alapú szolgáltatás-oldali alkalmazást fog futtatni, amely egy IoT eszközzel kommunikál egy eszköz-adatfolyamon keresztül.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,32 +9,32 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 74a9e5e6be326bf9cef3dc6d26594b80491deb3e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e85f2ea849aca9deeb92da7d7b2381d6c2b1b725
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446040"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802447"
 ---
-# <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Gyors útmutató: Egy eszköz alkalmazás Node.js-ben az IoT Hub eszköz adatfolyamok (előzetes verzió) használatával való kommunikáció során
+# <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Gyors útmutató: Kommunikáció a Node. js-ben lévő eszköz-alkalmazásokkal IoT Hub eszköz-adatfolyamok használatával (előzetes verzió)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-A Microsoft Azure IoT Hub jelenleg támogatja az eszköz adatfolyamok, mint egy [előzetes verziójú funkció](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+A Microsoft Azure IoT Hub jelenleg [előzetes verziójú szolgáltatásként](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)támogatja az eszközök adatfolyamait.
 
-[Az IoT Hub eszköz Streamek](./iot-hub-device-streams-overview.md) szolgáltatás és eszköz alkalmazások biztonságos és tűzfalbarát módon kommunikálnak. A nyilvános előzetes verzióban Node.js SDK csak támogatja eszköz Streamek Szolgáltatásoldali. Ez a rövid útmutató ennek eredményeképpen csak a Szolgáltatásoldali alkalmazás futtatásához útmutatást terjed ki. Kísérő eszközoldali alkalmazás futtassa az alábbi rövid útmutatókat közül:
+[IoT hub az eszközökön elérhető streamek](./iot-hub-device-streams-overview.md) lehetővé teszik a szolgáltatás-és eszköz-alkalmazások számára a biztonságos és tűzfalon alapuló kommunikációt. A nyilvános előzetes verzióban a Node. js SDK csak a szolgáltatási oldalon található eszköz-adatfolyamokat támogatja. Ennek eredményeképpen ez a rövid útmutató csak a szolgáltatási oldali alkalmazások futtatására vonatkozó utasításokat tartalmazza. A következő rövid útmutatók egyikéről kell futtatnia egy csatolt eszköz-előfizetést:
 
-* [Eszközalkalmazások a C IoT Hub eszköz Streamek keresztül való kommunikáció során](./quickstart-device-streams-echo-c.md)
+* [Kommunikáció a C eszköz alkalmazásaival IoT Hub eszköz streamen keresztül](./quickstart-device-streams-echo-c.md)
 
-* [Az eszköz Apps kommunikációhoz C# keresztül az IoT Hub eszköz Streamek](./quickstart-device-streams-echo-csharp.md).
+* [Kommunikáció az eszköz alkalmazásaival C# IoT hub eszköz streameken keresztül](./quickstart-device-streams-echo-csharp.md).
 
-Ebben a rövid útmutatóban a Szolgáltatásoldali Node.js-alkalmazás a következő funkciókkal rendelkezik:
+Az ebben a rövid útmutatóban található kiszolgálóoldali Node. js-alkalmazás a következő funkciókat nyújtja:
 
-* Létrehoz egy eszköz stream IoT-eszközökön.
+* Egy eszköz streamet hoz létre egy IoT-eszközhöz.
 
-* Beolvassa a bemenetet a parancssorból, és elküldi az eszköz alkalmazásról, így vissza echo azt.
+* Beolvassa a bemenetet a parancssorból, és elküldi az eszköz alkalmazásának, amely visszaadja a visszalépést.
 
-Bemutatjuk, hogy a kód egy eszköz stream, valamint hogyan használható a adatokat küldeni és fogadni a kezdeményezés folyamatán.
+A kód bemutatja egy eszköz adatfolyamának kezdeményezési folyamatát, valamint azt, hogy hogyan használható az adatküldés és az Adatfogadás.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,23 +42,23 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Előzetes verziójának eszköz Streamek jelenleg csak a az IoT-központok létrehozni a következő régiókban támogatott:
+Az adatfolyamok előnézete jelenleg csak a következő régiókban létrehozott IoT hubok esetében támogatott:
 
-*  **USA középső RÉGIÓJA**
+*  **USA középső régiója**
 
-*  **USA középső RÉGIÓJA – EUAP**
+*  **USA középső – EUAP**
 
-Ebben a rövid útmutatóban a Szolgáltatásoldali alkalmazás futtatásához szüksége Node.js v10.x.x vagy annál újabb verzió a fejlesztői gépére.
+A szolgáltatás-oldali alkalmazás ebben a rövid útmutatóban való futtatásához a fejlesztői gépen a Node. js v10. x. x vagy újabb verziójára van szükség.
 
-Node.js letöltheti a több platformon [Nodejs.org](https://nodejs.org).
+A Node. js-t a [NodeJS.org](https://nodejs.org)több platformján is letöltheti.
 
 A Node.js aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői gépen:
 
-```
+```cmd/sh
 node --version
 ```
 
-Futtassa a következő parancsot a Microsoft Azure IoT-bővítmény hozzáadása a Cloud Shell-példány Azure CLI-hez. Az IOT-bővítmény hozzáadása Azure CLI-vel az IoT Hub, IoT Edge és IoT Device Provisioning Service (DPS) parancsok.
+A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz. Az IOT bővítmény a IoT Hub, IoT Edge és IoT Device kiépítési szolgáltatás (DPS) adott parancsait hozzáadja az Azure CLI-hez.
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -68,21 +68,21 @@ Ha még nem tette meg, töltse le a Node.js-mintaprojektet a https://github.com/
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-Ha elvégezte az előző [a rövid útmutató: Telemetria küldése egy eszközről IoT hubra](quickstart-send-telemetry-node.md), kihagyhatja ezt a lépést.
+Ha végrehajtotta az előző [rövid útmutatót: Telemetria küldése az eszközről egy IoT-hubhoz](quickstart-send-telemetry-node.md), ezt a lépést kihagyhatja.
 
 [!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-Ha elvégezte az előző [a rövid útmutató: Telemetria küldése egy eszközről IoT hubra](quickstart-send-telemetry-node.md), kihagyhatja ezt a lépést.
+Ha végrehajtotta az előző [rövid útmutatót: Telemetria küldése az eszközről egy IoT-hubhoz](quickstart-send-telemetry-node.md), ezt a lépést kihagyhatja.
 
 Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a rövid útmutatóban az Azure Cloud Shell használatával regisztrál egy szimulált eszközt.
 
-1. Futtassa a következő parancsot az Azure Cloud Shellben, hozza létre az eszközidentitást.
+1. Futtassa az alábbi parancsot a Azure Cloud Shell az eszköz identitásának létrehozásához.
 
-   **YourIoTHubName**: Alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
+   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
-   **Sajáteszköz**: Ez az eszköz a megadott név. Használjon Sajáteszköz látható módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
+   **MyDevice**: Ez a regisztrált eszköz nevét adja meg. Használja a MyDevice az ábrán látható módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
@@ -90,37 +90,37 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 2. Szüksége van egy *szolgáltatáskapcsolati sztringre* is azért, hogy a háttéralkalmazás csatlakozhasson az IoT Hubhoz, és üzeneteket kérhessen le. Az alábbi parancs lekéri az IoT Hub szolgáltatáskapcsolati sztringjét:
 
-    **YourIoTHubName**: Alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
+    **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub show-connection-string --policy-name service --name YourIoTHubName
     ```
 
-    Jegyezze fel, a visszaadott érték, amely a következőhöz hasonló:
+    Jegyezze fel a visszaadott értéket, amely a következőképpen néz ki:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
-## <a name="communicate-between-device-and-service-via-device-streams"></a>Eszköz és szolgáltatás keresztül eszköz adatfolyamok közötti kommunikáció
+## <a name="communicate-between-device-and-service-via-device-streams"></a>Kommunikáció az eszköz és a szolgáltatás között az eszköz streamen keresztül
 
-Ebben a szakaszban az eszközoldali alkalmazás, mind a Szolgáltatásoldali alkalmazás futtatásához, és a kettő közötti kommunikációhoz.
+Ebben a szakaszban az eszköz-és a kiszolgálóoldali alkalmazást is futtatja, és kommunikál a kettő között.
 
-### <a name="run-the-device-side-application"></a>Az eszközoldali alkalmazás futtatása
+### <a name="run-the-device-side-application"></a>Az eszköz oldali alkalmazás futtatása
 
-Ahogy korábban említettük, IoT Hub Node.js SDK-t csak támogatja az eszköz Streamek Szolgáltatásoldali. Eszközoldali alkalmazáshoz használja a hozzájuk tartozó eszköz program ezeket a rövid útmutatók egyikében:
+Ahogy korábban említettük, IoT Hub Node. js SDK csak a szolgáltatás oldalán lévő eszközökön futó adatfolyamokat támogatja. Az eszközökön elérhető alkalmazások esetében használja az alábbi rövid útmutatók egyikét:
 
-   * [Eszközalkalmazások a C IoT Hub eszköz Streamek keresztül való kommunikáció során](./quickstart-device-streams-echo-c.md)
+   * [Kommunikáció a C eszköz alkalmazásaival IoT Hub eszköz streamen keresztül](./quickstart-device-streams-echo-c.md)
 
-   * [Az eszköz Apps kommunikációhoz C# keresztül az IoT Hub eszköz Streamek](./quickstart-device-streams-echo-csharp.md)
+   * [Kommunikáció az eszköz alkalmazásaival C# IoT hub eszköz streamen keresztül](./quickstart-device-streams-echo-csharp.md)
 
-Győződjön meg róla, az eszközoldali alkalmazás fut, a folytatás előtt a következő lépéssel.
+Mielőtt továbblép a következő lépésre, győződjön meg arról, hogy az eszközön futó alkalmazás fut.
 
-### <a name="run-the-service-side-application"></a>A Szolgáltatásoldali alkalmazás futtatása
+### <a name="run-the-service-side-application"></a>A szolgáltatás-oldali alkalmazás futtatása
 
-Feltéve, hogy az eszköz ügyféloldali alkalmazás fut, a node.js-ben a Szolgáltatásoldali alkalmazás futtatásához az alábbi lépésekkel:
+Feltéve, hogy az eszközön futó alkalmazás fut, kövesse az alábbi lépéseket a kiszolgálóoldali alkalmazás a Node. js-ben való futtatásához:
 
-* Környezeti változókként adja meg a szolgáltatás hitelesítő adatai és Eszközazonosító.
+* Adja meg a szolgáltatás hitelesítő adatait és az eszköz AZONOSÍTÓját környezeti változókként.
  
-   ```
+   ```cmd/sh
    # In Linux
    export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
    export STREAMING_TARGET_DEVICE="MyDevice"
@@ -130,11 +130,11 @@ Feltéve, hogy az eszköz ügyféloldali alkalmazás fut, a node.js-ben a Szolg�
    SET STREAMING_TARGET_DEVICE=MyDevice
    ```
   
-   Változás `MyDevice` , az eszköz azonosítója, az eszköz számára is választott.
+   Váltson `MyDevice` át az eszközhöz kiválasztott eszköz-azonosítóra.
 
-* Navigáljon a `Quickstarts/device-streams-service` a kicsomagolt a mappa projektre, és futtassa a mintát a csomópontot.
+* `Quickstarts/device-streams-service` Navigáljon a kibontott projekt mappájába, és futtassa a mintát a csomópont használatával.
 
-   ```
+   ```cmd/sh
    cd azure-iot-samples-node-streams-preview/iot-hub/Quickstarts/device-streams-service
     
    # Install the preview service SDK, and other dependencies
@@ -144,11 +144,11 @@ Feltéve, hogy az eszköz ügyféloldali alkalmazás fut, a node.js-ben a Szolg�
    node echo.js
    ```
 
-Az utolsó lépés végén a Szolgáltatásoldali program egy streamet, az eszközre, és lesz létrejöttét követően megkezdődik a szolgáltatás egy karakterláncpuffert küldenie a streamet. Ebben a példában a Szolgáltatásoldali program egyszerűen beolvassa a `stdin` meg a terminált, és elküldi az eszköz, amely lesz majd echo azt vissza. Ez azt mutatja be a sikeres kétirányú kommunikációt a két alkalmazás között.
+Az utolsó lépés végén a szolgáltatási oldali program elindít egy streamet az eszközön, és a létrehozás után karakterlánc-puffert küld a szolgáltatásnak az adatfolyamon keresztül. Ebben a példában a szolgáltatás-oldali program egyszerűen beolvassa `stdin` a terminálon, és elküldi azt az eszköznek, amely ezt követően visszhangot ad vissza. Ez a két alkalmazás közötti sikeres kétirányú kommunikációt mutatja be.
 
-![Szolgáltatásoldali konzolkimenet](./media/quickstart-device-streams-echo-nodejs/service-console-output.png)
+![Szolgáltatás oldali konzol kimenete](./media/quickstart-device-streams-echo-nodejs/service-console-output.png)
 
-Billentyű lenyomásával majd megszüntetheti a programot meg újra.
+Ezután leállíthatja a programot az ENTER billentyű lenyomásával.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -156,9 +156,9 @@ Billentyű lenyomásával majd megszüntetheti a programot meg újra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid, rendelkezik állítsa be az IoT hub, regisztrált egy eszközt, létrehozott egy eszköz stream eszköz és szolgáltatás oldalán az alkalmazások között és a stream használt oda-vissza az alkalmazások közötti adatküldéshez.
+Ebben a rövid útmutatóban egy IoT hub-t állított be, regisztrált egy eszközt, létrehozott egy eszközt az alkalmazások között az eszközön és a szolgáltatás oldalán, és a stream használatával visszaküldheti az adatátvitelt az alkalmazások között.
 
-További információ az eszköz adatfolyamok az alábbi hivatkozásokat:
+Az alábbi hivatkozásokat követve további információkat tudhat meg az eszközök streamekről:
 
 > [!div class="nextstepaction"]
-> [Eszköz Streamek áttekintése](./iot-hub-device-streams-overview.md) 
+> [Az eszközök adatfolyamának áttekintése](./iot-hub-device-streams-overview.md) 

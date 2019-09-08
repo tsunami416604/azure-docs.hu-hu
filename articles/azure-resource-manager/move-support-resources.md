@@ -3,15 +3,15 @@ title: A művelet támogatásának áthelyezése Azure-erőforrástípus szerint
 description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthelyezhető Azure-erőforrástípusok listáját.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: conceptual
-ms.date: 08/23/2019
+ms.topic: reference
+ms.date: 09/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3100ce897a09c2747c2b339662c699d197ba73d7
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 9dc86fe7876a050fe67ec73a665be6141a4b98da
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194843"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801360"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet-támogatás áthelyezése az erőforrásokhoz
 Ez a cikk azt mutatja be, hogy az Azure-erőforrástípus támogatja-e az áthelyezési műveletet. Emellett az erőforrások áthelyezésekor megfontolandó speciális feltételekkel kapcsolatos információkat is tartalmaz.
@@ -1346,6 +1346,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
 
 ## <a name="next-steps"></a>További lépések
-Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy](resource-group-move-resources.md)előfizetésbe.
+Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](resource-group-move-resources.md).
 
 Ha ugyanazokat az adatokkal szeretné lekérni a vesszővel tagolt értékeket, töltse le a [Move-support-Resources. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv)fájlt.

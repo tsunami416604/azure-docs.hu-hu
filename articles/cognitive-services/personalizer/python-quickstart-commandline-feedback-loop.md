@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 08/09/2019
 ms.author: diberry
-ms.openlocfilehash: ca1478801ad704888266175a23b6f436d067dd10
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9ad220287685dd2405931cd6f8cd460b06f340b2
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950792"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801566"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Gyors útmutató: Az ügyféloldali kódtár testreszabása a Pythonhoz
 
@@ -109,13 +109,15 @@ Ezután hozzon létre egy metódust, amely egy személyre szabott ügyfelet ad v
 
 A műveletek a személyre szabáshoz használni kívánt tartalmi beállításokat jelölik. Adja hozzá a következő metódusokat a program osztályhoz, hogy beolvassa a felhasználó bemenetét a parancssorból a nap időpontjában és az aktuális élelmiszer-preferencia alapján.
 
+[!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=getActions)]
+
 [!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=createUserFeatureTimeOfDay)]
 
 [!code-python[Present food taste preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=createUserFeatureTastePreference)]
 
 ## <a name="create-the-learning-loop"></a>A tanulási hurok létrehozása
 
-A személyre szabott tanulási hurok a Range [](#request-a-rank) és a [jutalmazási](#send-a-reward) hívások ciklusa. Ebben a rövid útmutatóban a tartalom személyre szabásához a rangsorban megjelenő minden egyes hívást egy jutalmazási hívás követ, amely azt jelzi, hogy a szolgáltatás milyen jól rangsorolja a tartalmat. 
+A személyre szabott tanulási hurok a [Range](#request-a-rank) és a [jutalmazási](#send-a-reward) hívások ciklusa. Ebben a rövid útmutatóban a tartalom személyre szabásához a rangsorban megjelenő minden egyes hívást egy jutalmazási hívás követ, amely azt jelzi, hogy a szolgáltatás milyen jól rangsorolja a tartalmat. 
 
 A program `main` metódusában a következő kód hurkot mutat a felhasználó preferenciáinak a parancssorban való megadására, az információknak a személyre szabására való elküldésére, valamint a rangsorolt kijelölés az ügyfélnek való kiválasztására listáról, majd egy jutalom küldésével személyre szabhatja, hogy a szolgáltatás mennyire rangsorolta a kijelölést.
 
@@ -135,7 +137,7 @@ Ez a rövid útmutató a napszak és a felhasználói élelmiszer-beállítások
 
 A jutalmazási kérelem elvégzéséhez a program beolvassa a felhasználó kijelölését a parancssorból, hozzárendel egy numerikus értéket az egyes kijelölésekhez, majd elküldi az egyedi rangú esemény AZONOSÍTÓját és a numerikus értéket a jutalmazási metódusnak.
 
-Ez a rövid útmutató egy egyszerű számot rendel hozzá jutalomként, akár nulla, akár 1. Az éles rendszerekben az adott igényektől függően nem triviális kérdés [](concept-rewards.md) lehet annak meghatározása, hogy mikor és mit kell elküldeni a jutalmazási hívásnak. 
+Ez a rövid útmutató egy egyszerű számot rendel hozzá jutalomként, akár nulla, akár 1. Az éles rendszerekben az adott igényektől függően nem triviális kérdés lehet annak meghatározása, hogy mikor és mit kell elküldeni a [jutalmazási](concept-rewards.md) hívásnak. 
 
 [!code-python[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/python/sample.py?name=reward&highlight=9)]
 

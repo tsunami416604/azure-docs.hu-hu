@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fad0fada4d9dd888b0b2a37b59e4eac1e016aec4
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: b18e1b755b4e1339bf00380d8228fc28e355d3e1
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663597"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802517"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speechi adatfeldolgozás előkészítése
 
@@ -35,7 +35,7 @@ A fájlokat típus szerint kell csoportosítani egy adatkészletbe, és zip-fáj
 
 ## <a name="upload-data"></a>Adatok feltöltése
 
-Amikor készen áll az adatok feltöltésére, kattintson az **adatok feltöltése** gombra a varázsló indításához és az első adatkészlet létrehozásához. Az adatok feltöltésének engedélyezése előtt meg kell adnia, hogy ki kell választania egy beszédfelismerési adattípust az adatkészlethez.
+Amikor készen áll az adatok feltöltésére, navigáljon a [Custom Speech portálra](https://speech.microsoft.com/customspeech), majd kattintson az **adatok feltöltése** elemre a varázsló indításához és az első adatkészlet létrehozásához. Az adatok feltöltésének engedélyezése előtt meg kell adnia, hogy ki kell választania egy beszédfelismerési adattípust az adatkészlethez.
 
 ![Hang kiválasztása a Speech Portalon](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -43,7 +43,7 @@ A feltöltött adatkészleteknek meg kell felelniük a választott adattípusra 
 
 Az adatkészlet feltöltése után néhány lehetőség közül választhat:
 
-* Navigáljon a Testing ( **tesztelés** ) lapra, és vizuálisan vizsgálja meg a csak hang-és hang-és emberi-címkézett átírási adatok.
+* Navigáljon a **Testing (tesztelés** ) lapra, és vizuálisan vizsgálja meg a csak hang-és hang-és emberi-címkézett átírási adatok.
 * Az egyéni modell betanításához navigáljon a **betanítás** lapra, és használja a hang + emberi átírási adatok vagy a kapcsolódó szöveges adatok használatát.
 
 ## <a name="audio-data-for-testing"></a>Hangadatok teszteléshez
@@ -52,7 +52,7 @@ A hangadatok optimálisan tesztelik a Microsoft alapvető beszédfelismerési mo
 
 Ezzel a táblázattal ellenőrizheti, hogy a hangfájlok formátuma helyesen van-e formázva a Custom Speech használatával:
 
-| Tulajdonság | Érték |
+| Tulajdonság | Value |
 |----------|-------|
 | Fájl formátuma | RIFF (WAV) |
 | Mintavételi frekvencia | 8 000 Hz vagy 16 000 Hz |
@@ -62,7 +62,7 @@ Ezzel a táblázattal ellenőrizheti, hogy a hangfájlok formátuma helyesen van
 | Archív formátum | .zip |
 | Archiválás maximális mérete | 2 GB |
 
-Ha a hang nem elégíti ki ezeket a tulajdonságokat, vagy ha igen, akkor javasoljuk, hogy a rendszer a hanganyagot [a letöltéshez](http://sox.sourceforge.net) . Az alábbiakban néhány példát láthat arra, hogyan végezheti el ezeket a tevékenységeket a parancssorból:
+Ha a hang nem elégíti ki ezeket a tulajdonságokat, vagy ha igen, akkor javasoljuk, hogy a [rendszer a hanganyagot a letöltéshez](http://sox.sourceforge.net) . Az alábbiakban néhány példát láthat arra, hogyan végezheti el ezeket a tevékenységeket a parancssorból:
 
 | Tevékenység | Leírás | SOx-parancs |
 |----------|-------------|-------------|
@@ -96,7 +96,7 @@ A Word törlési vagy helyettesítési problémák megoldásához jelentős menn
 
 Az átiratokat a rendszer normalizálja, hogy fel tudja őket dolgozni. Bizonyos fontosabb normalizálási tevékenységeket azonban a felhasználónak kell végrehajtania az adatok a Custom Speech Service szolgáltatásba való feltöltése _előtt_. Az átírások előkészítésekor használandó megfelelő nyelvet lásd: [Human-címkével ellátott átirat létrehozása](how-to-custom-speech-human-labeled-transcriptions.md)
 
-A hangfájlok és a megfelelő átírások gyűjtése után egyetlen. zip-fájlként kell őket becsomagolni a Custom Speech portálra való feltöltés előtt. Ez egy példaként szolgáló adatkészlet három hangfájllal és egy emberi címkével ellátott átírási fájllal:
+A hangfájlok és a megfelelő átírások gyűjtése után egyetlen. zip-fájlként kell őket becsomagolni a [Custom Speech portálra](https://speech.microsoft.com/customspeech)való feltöltés előtt. Ez egy példaként szolgáló adatkészlet három hangfájllal és egy emberi címkével ellátott átírási fájllal:
 
 ![Hang kiválasztása a Speech Portalon](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
@@ -109,7 +109,7 @@ Ha olyan terméknév vagy szolgáltatás van, amely egyedi, és szeretné meggy�
 | Hosszúságú kimondott szöveg és/vagy mondatok | Ezek a termékek neveinak felismerése, illetve az iparágra jellemző Szószedet a mondatok kontextusában javíthatják a pontosságot. |
 | Kiejtés | Ezek a meghatározatlan kifejezések, mozaikszavak vagy más szavak kiejtését javítják a nem definiált kiejtésekkel. |
 
-A hosszúságú kimondott szöveg egyetlen vagy több szövegfájlként is megadhatók. Minél közelebb van a szöveges adatokhoz, hogy mi lesz a beszéd, annál nagyobb a valószínűsége annak, hogy javul a pontosság. A kiejtéseket egyetlen szövegfájlként kell megadni. Minden egyes zip-fájlként becsomagolható, és a Custom Speech portálra tölthető fel.
+A hosszúságú kimondott szöveg egyetlen vagy több szövegfájlként is megadhatók. Minél közelebb van a szöveges adatokhoz, hogy mi lesz a beszéd, annál nagyobb a valószínűsége annak, hogy javul a pontosság. A kiejtéseket egyetlen szövegfájlként kell megadni. Minden egyes zip-fájlként becsomagolható, és a [Custom Speech portálra](https://speech.microsoft.com/customspeech)tölthető fel.
 
 ### <a name="guidelines-to-create-an-utterances-file"></a>Útmutató hosszúságú kimondott szöveg-fájl létrehozásához
 

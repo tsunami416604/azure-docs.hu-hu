@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: yushwang
-ms.openlocfilehash: add6fbf0177586bc8969a563260427bc8397d97e
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 2fd83162c17950b34394e4fce52f2f40805ca84c
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773763"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801573"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeinek IPsec/IKE-paramétereiről
 
@@ -44,13 +44,13 @@ A VPN-eszköz konfigurálásának megkönnyítéséhez tekintse meg a megfelelő
 | Ellenőrzőpont |Biztonsági átjáró |R-80.10 |[Konfigurációs útmutató](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Konfigurációs útmutató](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |Támogatott |[Konfigurációs útmutató*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
 | Cisco |ASR |Házirendalapú IOS 15,1<br>Útvonalalapú IOS 15,2 |Támogatott |Támogatott |
-| Cisco | CSR | Útvonalalapú IOS-XE 16.10 | | [Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
+| Cisco | CSR | Útvonalalapú IOS-XE 16.10 | (nincs tesztelve) | [Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |Házirendalapú IOS 15,0<br>Útvonalalapú *: IOS 15,1 |Támogatott |Támogatott |
 | Cisco |Meraki |– |Nem kompatibilis |Nem kompatibilis |
 | Citrix |NetScaler MPX, SDX, VPX |10.1-es vagy újabb verzió |[Konfigurációs útmutató](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Nem kompatibilis |
 | F5 |BIG-IP sorozat |12.0 |[Konfigurációs útmutató](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Konfigurációs útmutató](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
-| Fortinet |FortiGate |FortiOS 5.6 |  |[Konfigurációs útmutató](https://docs.fortinet.com/document/fortigate/6.2.0/azure-cookbook/989216/connecting-a-local-fortigate-to-an-azure-vnet-vpn) |
-| Hillstone hálózatok | Next-Gen tűzfalak (NGFW) | 5.5 R7  |  | [Konfigurációs útmutató](https://www.hillstonenet.com/wp-content/uploads/How-to-setup-Site-to-Site-VPN-between-Microsoft-Azure-and-an-on-premise-Hillstone-Networks-Security-Gateway.pdf) |
+| Fortinet |FortiGate |FortiOS 5.6 | (nincs tesztelve) |[Konfigurációs útmutató](https://web.archive.org/web/20180613172511/http:/cookbook.fortinet.com/ipsec-vpn-microsoft-azure-56/) |
+| Hillstone hálózatok | Next-Gen tűzfalak (NGFW) | 5.5 R7  | (nincs tesztelve) | [Konfigurációs útmutató](https://www.hillstonenet.com/wp-content/uploads/How-to-setup-Site-to-Site-VPN-between-Microsoft-Azure-and-an-on-premise-Hillstone-Networks-Security-Gateway.pdf) |
 | Internet Initiative Japan (IIJ) |SEIL sorozat |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[Konfigurációs útmutató](https://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |Nem kompatibilis |
 | Juniper |SRX |Házirendalapú JunOs 10,2<br>Útvonalalapú JunOs 11,4 |Támogatott |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |J sorozat |Házirendalapú JunOs 10.4 R9<br>Útvonalalapú JunOs 11,4 |Támogatott |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
@@ -59,14 +59,14 @@ A VPN-eszköz konfigurálásának megkönnyítéséhez tekintse meg a megfelelő
 | Juniper |MX |JunOs 12. x|Támogatott |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |Útválasztás és távelérés szolgáltatás |Windows Server 2012 |Nem kompatibilis |Támogatott |
 | Open Systems AG |Mission Control biztonsági átjáró |– |[Konfigurációs útmutató](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Nem kompatibilis |
-| Palo Alto Networks |Az összes PAN-OS rendszert futtató eszköz |PAN-OS<br>Házirendalapú 6.1.5 vagy újabb<br>Útvonalalapú 7.1.4 |[Konfigurációs útmutató](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Konfigurációs útmutató](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
+| Palo Alto Networks |Az összes PAN-OS rendszert futtató eszköz |PAN-OS<br>Házirendalapú 6.1.5 vagy újabb<br>Útvonalalapú 7.1.4 |Támogatott |[Konfigurációs útmutató](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | ShareTech | Következő generációs UTM (NU sorozat) | 9.0.1.3 | Nem kompatibilis | [Konfigurációs útmutató](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ sorozat, NSA sorozat<br>SuperMassive sorozat<br>E-Class NSA sorozat |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Nem kompatibilis |[Konfigurációs útmutató](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
-| Sophos | XG Next Gen tűzfal | XG v17 | | [Konfigurációs útmutató](https://community.sophos.com/kb/127546)<br><br>[Konfigurációs útmutató – több SAs](https://community.sophos.com/kb/en-us/133154) |
-| Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM1.1.5/VpnPlusServer-1.2.0 |  | [Konfigurációs útmutató](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
-| Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [BGP over IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI IKEv2/IPsec protokollon keresztül](https://help.ubnt.com/hc/en-us/articles/115012305347)
+| Sophos | XG Next Gen tűzfal | XG v17 | (nincs tesztelve) | [Konfigurációs útmutató](https://community.sophos.com/kb/127546)<br><br>[Konfigurációs útmutató – több SAs](https://community.sophos.com/kb/en-us/133154) |
+| Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM1.1.5/VpnPlusServer-1.2.0 | (nincs tesztelve) | [Konfigurációs útmutató](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
+| Ubiquiti | EdgeRouter | EdgeOS v1.10 | (nincs tesztelve) | [BGP over IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI IKEv2/IPsec protokollon keresztül](https://help.ubnt.com/hc/en-us/articles/115012305347)
 | WatchGuard |Összes |Fireware XTM<br> Házirendalapú: v11.11.x<br>Útvonalalapú: v11.12.x |[Konfigurációs útmutató](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Konfigurációs útmutató](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
-| Zyxel |ZyWALL ÁLLAMIGAZGATÁSBAN sorozat<br>ZyWALL ATP-sorozat<br>ZyWALL VPN-sorozat | ZLD v 4.32 + | | [VTI IKEv2/IPsec protokollon keresztül](https://businessforum.zyxel.com/discussion/2648/)<br>[BGP over IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2650/)|
+| Zyxel |ZyWALL ÁLLAMIGAZGATÁSBAN sorozat<br>ZyWALL ATP-sorozat<br>ZyWALL VPN-sorozat | ZLD v 4.32 + | (nincs tesztelve) | [VTI IKEv2/IPsec protokollon keresztül](https://businessforum.zyxel.com/discussion/2648/)<br>[BGP over IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2650/)|
 
 > [!NOTE]
 >

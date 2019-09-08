@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aa81f181c8d062e5fd68b0fbb2445f5c37540889
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 163c3cbaeed1526f08d047c3bf357232ccb534a3
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309561"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802391"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -206,14 +206,17 @@ Ez a szakasz csak a normál fájlmegosztás esetében érvényes. A prémium szi
 
 A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régiókban 100 TiB-korláttal érhető el, ezek a régiók az alábbi táblázatban láthatók:
 
-|Régió |Támogatott redundancia |Meglévő Storage-fiókok támogatása |Portál támogatása *   |
+|Régió |Támogatott redundancia |Meglévő Storage-fiókok támogatása |Portál támogatása * |
 |-------|---------|---------|---------|
-|Kelet-Ausztrália  |LRS     |Nem    |Igen|
-|Közép-Franciaország  |LRS     |Nem    |még nem|
-|Dél-Franciaország    |LRS     |Nem    |még nem|
-|Délkelet-Ázsia  |LRS, ZRS|Nem    |Igen|
-|Nyugat-Európa     |LRS, ZRS|Nem    |Igen|
-|USA nyugati régiója, 2.       |LRS, ZRS|Nem    |Igen|
+|Kelet-Ausztrália |LRS     |Nem    |Igen|
+|Délkelet-Ausztrália|LRS     |Nem    |még nem|
+|Közép-India  |LRS     |Nem    |még nem|
+|Közép-Franciaország  |LRS, ZRS|Nem    |LRS-Yes, ZRS-még nem|
+|Dél-India    |LRS     |Nem    |még nem|
+|Délkelet-Ázsia |LRS, ZRS|Nem    |Igen|
+|USA nyugati középső régiója|LRS     |Nem    |még nem|
+|Nyugat-Európa    |LRS, ZRS|Nem    |Igen|
+|USA nyugati régiója, 2.      |LRS, ZRS|Nem    |Igen|
 
 \* A portál támogatása nélküli régiók esetében továbbra is használhatja a PowerShell vagy az Azure parancssori felület (CLI) használatát 5 TiB-nál nagyobb megosztás létrehozásához. Másik lehetőségként létrehozhat egy új megosztást a portálon a kvóta meghatározása nélkül. Ezzel létrehoz egy, az 100 TiB alapértelmezett mérettel rendelkező megosztást, amely később frissíthető a PowerShell vagy az Azure CLI használatával.
 

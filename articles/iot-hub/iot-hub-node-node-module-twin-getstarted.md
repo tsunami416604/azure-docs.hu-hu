@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 803162110ead050f9d1a595b11c29ec6707640a8
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 3796017af643c993871757482ed17d1765cd6494
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147408"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802415"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (node. js)
 
@@ -129,7 +129,7 @@ Futtassa ezt a következő csomópont használatával: Add. js. Megadja az eszk�
 
 Ebben a szakaszban egy Node. js-alkalmazást hoz létre a szimulált eszközön, amely frissíti a modul Twin jelentett tulajdonságait.
 
-1. **A modul kapcsolódási karakterláncának** beszerzése – bejelentkezés [](https://portal.azure.com/)a Azure Portalba. Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice, nyissa meg, és láthatja, hogy a myFirstModule létrehozása sikeresen megtörtént. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
+1. **A modul kapcsolódási karakterláncának beszerzése** – bejelentkezés a [Azure Portalba](https://portal.azure.com/). Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice, nyissa meg, és láthatja, hogy a myFirstModule létrehozása sikeresen megtörtént. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
 
    ![Az Azure Portal moduladatai](./media/iot-hub-node-node-module-twin-getstarted/module-detail.png)
 
@@ -194,16 +194,21 @@ Ebben a szakaszban egy Node. js-alkalmazást hoz létre a szimulált eszközön,
 
 4. Ezután futtassa a következő parancsot a **Twin. js**parancs használatával.
 
-    ```
-    F:\temp\module_twin>node twin.js
-    client opened
-    twin contents:
-    { reported: { update: [Function: update], '$version': 1 },
-      desired: { '$version': 1 } }
-    new desired properties received:
-    {"$version":1}
-    twin state reported
-    ```
+   ```cmd/sh
+   F:\temp\module_twin>node twin.js
+   ```
+
+   Ekkor megjelenik a következő:
+
+   ```console
+   client opened
+   twin contents:
+   { reported: { update: [Function: update], '$version': 1 },
+     desired: { '$version': 1 } }
+   new desired properties received:
+   {"$version":1}
+   twin state reported
+   ```
 
 ## <a name="next-steps"></a>További lépések
 

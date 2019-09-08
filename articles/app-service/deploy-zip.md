@@ -14,12 +14,12 @@ ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: b69488c971d6ab10e0a95e3825be097f8713016d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 83951f6408094b8d1e04d19650a5f2ef596be988
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070442"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801147"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Az alkalmazás üzembe helyezése egy ZIP-vagy WAR-fájllal való Azure App Service
 
@@ -66,6 +66,7 @@ Compress-Archive -Path * -DestinationPath <file-name>.zip
 ``` 
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
+A fenti végpont jelenleg nem működik Linux App Services esetén. Ehelyett használjon FTP-t vagy a [zip üzembe helyezési API](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#continuous-integration-and-deployment) -t.
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>ZIP-fájl üzembe helyezése az Azure CLI-vel
 
@@ -81,7 +82,7 @@ az webapp deployment source config-zip --resource-group myResourceGroup --name <
 
 Ez a parancs üzembe helyezi a ZIP-fájlban szereplő fájlokat és könyvtárakat az alapértelmezett App Service-alkalmazásmappában (`\home\site\wwwroot`), majd újraindítja az alkalmazást.
 
-Alapértelmezés szerint az üzembe helyezési motor feltételezi, hogy egy ZIP-fájl készen áll a futtatásra, és nem futtat Build automationt. Ha ugyanazt a Build-automatizálást szeretné engedélyezni, mint a [git](deploy-local-git.md)- `SCM_DO_BUILD_DURING_DEPLOYMENT` telepítésben, akkor az alábbi parancs futtatásával állítsa be az alkalmazás beállításait a [Cloud Shellban](https://shell.azure.com):
+Alapértelmezés szerint az üzembe helyezési motor feltételezi, hogy egy ZIP-fájl készen áll a futtatásra, és nem futtat Build automationt. Ha ugyanazt a Build-automatizálást szeretné engedélyezni, mint a git- `SCM_DO_BUILD_DURING_DEPLOYMENT` [telepítésben](deploy-local-git.md), akkor az alábbi parancs futtatásával állítsa be az alkalmazás beállításait a [Cloud Shellban](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
@@ -97,7 +98,7 @@ További információ: kudu- [dokumentáció](https://github.com/projectkudu/kud
 
 Ha a WAR-fájlt App Servicere kívánja telepíteni, küldjön POST `https://<app_name>.scm.azurewebsites.net/api/wardeploy`-kérelmet a következőnek:. A POST kérelem üzenettörzsének tartalmaznia kell a .war fájlt. Az alkalmazás üzembehelyezési hitelesítő adatai a kérelemben alapszintű HTTP-hitelesítéssel vannak megadva.
 
-Az egyszerű HTTP-hitelesítéshez szükség van a App Service központi telepítési hitelesítő adataira. A központi telepítési hitelesítő adatok beállításával kapcsolatban lásd: [felhasználói szintű hitelesítő adatok beállítása és](deploy-configure-credentials.md#userscope)alaphelyzetbe állítása.
+Az egyszerű HTTP-hitelesítéshez szükség van a App Service központi telepítési hitelesítő adataira. A központi telepítési hitelesítő adatok beállításával kapcsolatban lásd: [felhasználói szintű hitelesítő adatok beállítása és alaphelyzetbe állítása](deploy-configure-credentials.md#userscope).
 
 ### <a name="with-curl"></a>A cURLtal
 

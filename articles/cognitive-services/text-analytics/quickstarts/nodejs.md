@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Node. js használata a Text Analytics API meghívásához'
+title: 'Gyors útmutató: A Node. js használatával hívja meg a Text Analytics REST API'
 titleSuffix: Azure Cognitive Services
 description: Az Azure Cognitive Services Text Analytics API használatának gyors megkezdéséhez olvassa el az információk és a kódok mintáit.
 services: cognitive-services
@@ -10,17 +10,18 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 5d441b51d75f032ecf6e60419218ef3f902e2cbd
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: 9f9bc3bfe0c8eb023dcc9cca879eeb92175fc094
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142739"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801528"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Node. js használata a Text Analytics kognitív szolgáltatás meghívásához  
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan [derítheti](#Detect)fel a nyelvet, elemezheti a [hangulatát](#SentimentAnalysis), kinyerheti a [legfontosabb kifejezéseket](#KeyPhraseExtraction), és azonosíthatja a [társított entitásokat](#Entities) a Node. js-sel rendelkező [text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) 
+Ez a cikk bemutatja, hogyan [derítheti](#Detect)fel a nyelvet, [elemezheti a hangulatát](#SentimentAnalysis), [kinyerheti a legfontosabb kifejezéseket](#KeyPhraseExtraction), és [azonosíthatja a társított entitásokat](#Entities) a Node. js-sel rendelkező [text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) 
 
 Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
 
@@ -357,7 +358,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="identify-linked-entities"></a>Társított entitások azonosítása
 
-Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. [](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) Az entitások szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" `location`típusa, míg a `https://en.wikipedia.org/wiki/United_States`wikipedia-ra mutató hivatkozás.  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
+Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. Az [entitások](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" `location`típusa, míg a `https://en.wikipedia.org/wiki/United_States`wikipedia-ra mutató hivatkozás.  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
 
 1. Hozzon létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` környezeti `TEXT_ANALYTICS_ENDPOINT` változókat és az erőforrás Azure-végpontját és előfizetési kulcsát. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
 1. Hozzon létre egy új Node. JS-projektet a kedvenc IDE vagy egy, az asztalon lévő mappában.

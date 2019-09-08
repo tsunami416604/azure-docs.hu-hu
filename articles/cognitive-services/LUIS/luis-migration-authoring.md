@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: 7fe35edfbfc8f50aa9428e41e7d807a0838417ec
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: bfd11254ffccd5085701071fcdb2116ca368bc82
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259661"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801451"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrálás Azure Resource authoring-kulcsba
 
@@ -43,7 +43,7 @@ A tulajdonos nem választhat az áttelepítendő alkalmazások egy részhalmazá
 Az áttelepítés nem: 
 
 * Egy folyamat, amely összegyűjti a közreműködőket, és automatikusan áthelyezi vagy hozzáadja az Azure authoring-erőforráshoz. Az alkalmazás tulajdonosaként el kell végeznie ezt a lépést. Ehhez a lépéshez szükséges a megfelelő erőforráshoz való hozzáférés.
-* Az előrejelzési futtatókörnyezet erőforrásának létrehozásának és hozzárendelésének folyamata. Ha előrejelzési futtatókörnyezeti erőforrásra van szüksége, akkor ez [egy külön folyamat](/luis-how-to-azure-subscription.md#create-runtime-resource-in-the-azure-portal) , és változatlan marad. 
+* Az előrejelzési futtatókörnyezet erőforrásának létrehozásának és hozzárendelésének folyamata. Ha előrejelzési futtatókörnyezeti erőforrásra van szüksége, akkor ez [egy külön folyamat](luis-how-to-azure-subscription.md##create-resources-in-the-azure-portal) , és változatlan marad. 
 
 ## <a name="how-are-the-apps-migrating"></a>Hogyan történik az alkalmazások áttelepítése?
 

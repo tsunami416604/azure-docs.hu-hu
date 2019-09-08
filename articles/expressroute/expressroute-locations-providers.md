@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/03/2019
+ms.date: 09/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: 43f858f0e08b622bcd198be3ed0166076a4f0d54
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: f864384dd5b86420fd9edf446b2573421a05f807
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734286"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801509"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -132,8 +132,8 @@ A **helyi Azure-régiók** olyanok, amelyek az egyes [ExpressRoute helyi](expres
 | **Taipei** | Telekommunikációs vezető | n/a | Telekommunikációs vezető, FarEasTone |
 | **Tokió** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | Kelet-Japán | Aryaka Networks, AT&T NetBond, British Telecom, CenturyLink Cloud Connect, Colt, Equinix, Internet Initiative Japan Inc. - IIJ, NTT Communications, NTT EAST, Orange, Softbank, Verizon |
 | **Toronto** | [Cologix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | Közép-Kanada | & T NetBond, Bell Canada, CenturyLink Cloud kapcsolatba, Cologix, Equinix, IX REACH Megaport, Telus, Verizon, Zayo |
-| **Washington DC** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | USA keleti régiója, USA 2. keleti régiója | Aryaka Networks hálózatok, & T NetBond, British Telecom, CenturyLink Cloud-kapcsolat, Cologix, Comcast, Coresite, Equinix, Internet2, felhő, 3. szintű kommunikáció, Megaport, Neutrona hálózatok, NTT Communications, Orange, PacketFabric, sprint, Tata Kommunikáció, Telia-szállító, Verizon, Zayo |
-| **Washington DC2** | [Coresite Restonban](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | USA keleti régiója, USA 2. keleti régiója |Coresite | 
+| **Washington DC** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | USA keleti régiója, USA 2. keleti régiója | Aryaka Networks hálózatok, & T NetBond, British Telecom, CenturyLink Cloud-kapcsolat, Cologix, Comcast, Coresite, Equinix, Internet2, felhő, 3. szintű kommunikáció, Megaport, Neutrona hálózatok, NTT Communications, Orange, PacketFabric, SES, sprint, Tata Kommunikáció, Telia-szállító, Verizon, Zayo |
+| **Washington DC2** | [Coresite Restonban](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | USA keleti régiója, USA 2. keleti régiója |Coresite, Viasat | 
 | **Zurich** | [Interxion ZUR2](https://www.interxion.com/Locations/zurich/) | n/a | Felhő, Interxion |
 
  **+** = hamarosan elérhető

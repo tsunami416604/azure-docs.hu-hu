@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: bd8bbc28247ecd924db25cb4b916d1d466065606
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 77dc50df7b46aeb6ddfddf92710d576f85492471
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562872"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801543"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Custom Speech pontosságának kiértékelése
 
@@ -51,11 +51,12 @@ Ha szeretné kipróbálni a Microsoft beszéd-szöveg típusú alapmodelljét va
 
 Modellek kiértékelése egymás mellett:
 
-1. Navigáljon a **beszéd-szöveg > Custom Speech > teszteléshez**.
-2. Kattintson a **teszt hozzáadása**gombra.
-3. Válassza ki a **pontosság**kiértékelése elemet. Adja meg a teszt nevét, leírását, és válassza ki a hang + emberi-címkével ellátott átírási adatkészletet.
-4. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.
-5. Kattintson a **Create** (Létrehozás) gombra.
+1. Jelentkezzen be a [Custom Speech portálra](https://speech.microsoft.com/customspeech).
+2. Navigáljon a **beszéd-szöveg > Custom Speech > teszteléshez**.
+3. Kattintson a **teszt hozzáadása**gombra.
+4. Válassza ki a **pontosság kiértékelése**elemet. Adja meg a teszt nevét, leírását, és válassza ki a hang + emberi-címkével ellátott átírási adatkészletet.
+5. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.
+6. Kattintson a **Create** (Létrehozás) gombra.
 
 A teszt sikeres létrehozása után összehasonlíthatja az eredményeket egymás mellett.
 

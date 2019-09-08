@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Linux-alapú virtuális gép létrehozása az Azure CLI használatával | Microsoft Docs
+title: 'Gyors útmutató: Linux rendszerű virtuális gép létrehozása az Azure CLI használatával'
 description: Ebből a rövid útmutatóból elsajátíthatja, hogyan hozhat létre Linux rendszerű virtuális gépet az Azure CLI használatával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 3d69157bb6c8c493d7ea4baed35bb8c89a99a911
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, seo-javascript-september2019
+ms.openlocfilehash: 2d66064167741b59766763f4fc1313409de1e649
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082373"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801056"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Gyors útmutató: Linux virtuális gép létrehozása az Azure CLI-vel
 

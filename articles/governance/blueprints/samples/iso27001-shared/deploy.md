@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 04285ace1713a03a812f1c79895da64e6dac42a8
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 882228c7cb49a6a419b2b5e0bb200da3391d4584
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231718"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802570"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001 Shared Services Blueprint minta üzembe helyezése
 
@@ -29,18 +29,18 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Először is implementálja a terv mintáját úgy, hogy létrehoz egy új tervet a környezetben a minta kezdőként való használatával.
 
-1. Válassza a **minden szolgáltatás** lehetőséget, és keresse meg és válassza ki a **házirend** elemet a bal oldali ablaktáblán. A **szabályzat** lapon válassza a **tervrajzok**lehetőséget.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
 1. A bal oldali **első lépések** lapon kattintson a **Létrehozás** gombra a _terv létrehozása_területen.
 
 1. Az **ISO 27001 megkeresése: A megosztott** szolgáltatások tervezetének mintája _más minták_ alatt, majd válassza **a minta használata**lehetőséget.
 
-1. Adja meg a tervezet mintájának alapjait:
+1. Adja meg a tervezet mintájának _alapjait_ :
 
    - **Terv neve**: Adja meg az ISO 27001 Shared Services Blueprint minta példányának nevét.
    - **Definíció helye**: Használja a három pontot, és válassza ki a felügyeleti csoportot, és mentse a minta másolatát a következőre:.
 
-1. Válassza ki az összetevők fület a lap tetején, vagy **a következőt:**  Az oldal alján található összetevők.
+1. Válassza ki az _összetevők fület_ a lap tetején, vagy **a következőt:**  Az oldal alján található összetevők.
 
 1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
@@ -48,9 +48,9 @@ Először is implementálja a terv mintáját úgy, hogy létrehoz egy új terve
 
 A terv mintájának másolata már létre lett hozva a környezetében. A rendszer **Piszkozat** módban jön létre, és **közzé** kell tenni ahhoz, hogy hozzá lehessen rendelni és telepíteni lehessen. A terv mintájának másolata testreszabható a környezet és a szükséges igények alapján, de ez a módosítás az ISO 27001 szabványból is áthelyezhető.
 
-1. Válassza a **minden szolgáltatás** lehetőséget, és keresse meg és válassza ki a **házirend** elemet a bal oldali ablaktáblán. A **szabályzat** lapon válassza a **tervrajzok**lehetőséget.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Válassza a bal oldali **terv** -definíciók lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
+1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
 1. Válassza a **terv közzététele** lehetőséget az oldal tetején. A jobb oldalon található új lapon adjon meg egy **verziót** a tervezet mintájának másolatához. Ez a tulajdonság akkor hasznos, ha később módosítja a módosítást. Adjon meg olyan **módosítási megjegyzéseket** , mint az "első verzió, amely az ISO 27001 Blueprint Sample-ből lett közzétéve." Ezután válassza a **Közzététel** elemet az oldal alján.
 
@@ -58,11 +58,11 @@ A terv mintájának másolata már létre lett hozva a környezetében. A rendsz
 
 Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ezzel a lépéssel megadhatja, hogy az egyes központi telepítések egyediek legyenek-e.
 
-1. Válassza a **minden szolgáltatás** lehetőséget, és keresse meg és válassza ki a **házirend** elemet a bal oldali ablaktáblán. A **szabályzat** lapon válassza a **tervrajzok**lehetőséget.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Válassza a bal oldali **terv** -definíciók lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
+1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Válassza a terv kiosztása elemet a terv definíciója oldal tetején.
+1. Válassza a terv **kiosztása** elemet a terv definíciója oldal tetején.
 
 1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
@@ -99,7 +99,7 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 1. Az összes paraméter megadása után válassza a lap alján található **hozzárendelés** elemet. A terv-hozzárendelés létrejött, és az összetevő üzembe helyezése megkezdődik. Az üzembe helyezés nagyjából egy órát vesz igénybe. Az üzembe helyezés állapotának megtekintéséhez nyissa meg a terv-hozzárendelést.
 
 > [!WARNING]
-> Az Azure BluePrints szolgáltatás és a beépített tervrajzi minták díjmentesek. Az Azure-erőforrások [díjszabása termékenként](https://azure.microsoft.com/pricing/)történik. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával megbecsülheti a tervrajzi minta által üzembe helyezett erőforrások futtatásának költségeit.
+> Az Azure BluePrints szolgáltatás és a beépített tervrajzi minták **díjmentesek**. Az Azure-erőforrások [díjszabása termékenként](https://azure.microsoft.com/pricing/)történik. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával megbecsülheti a tervrajzi minta által üzembe helyezett erőforrások futtatásának költségeit.
 
 ## <a name="artifact-parameters-table"></a>Összetevő-paraméterek táblázata
 
@@ -134,8 +134,8 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Azure Firewall alhálózati címelőtagja|Az [Azure tűzfal](../../../../firewall/overview.md) alhálózatának CIDR-jelölése. Tartalmaznia kell az **Azure tűzfal magánhálózati IP-** paraméterét.|
 |Key Vault erőforráscsoport|Resource group|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** , `-sharedsvcs-kv-rg` hogy az erőforráscsoport egyedi legyen.|
 |Key Vault erőforráscsoport|Resource group|Location|**Zárolt** – a terv paramétert használja.|
-|Kulcstartósablon|Resource Manager-sablon|Jumpbox-rendszergazda felhasználóneve|A Jumpbox tartozó Felhasználónév. Meg kell egyeznie a **Jumpbox**-sablonban szereplő tulajdonság értékével. Az alapértelmezett érték a _JB-Admin-User_.|
-|Kulcstartósablon|Resource Manager-sablon|Jumpbox rendszergazdai SSH-kulcs vagy jelszó|A Jumpbox lévő fiók kulcsa vagy jelszava. Meg kell egyeznie a **Jumpbox**-sablonban szereplő tulajdonság értékével. Nincs alapértelmezett érték, és nem hagyható üresen.|
+|Kulcstartósablon|Resource Manager-sablon|Jumpbox-rendszergazda felhasználóneve|A Jumpbox tartozó Felhasználónév. Meg kell egyeznie a **Jumpbox-sablonban**szereplő tulajdonság értékével. Az alapértelmezett érték a _JB-Admin-User_.|
+|Kulcstartósablon|Resource Manager-sablon|Jumpbox rendszergazdai SSH-kulcs vagy jelszó|A Jumpbox lévő fiók kulcsa vagy jelszava. Meg kell egyeznie a **Jumpbox-sablonban**szereplő tulajdonság értékével. Nincs alapértelmezett érték, és nem hagyható üresen.|
 |Kulcstartósablon|Resource Manager-sablon|Tartományi rendszergazda felhasználóneve|A Active Directory virtuális gép eléréséhez és más virtuális gépek tartományhoz való csatlakoztatásához használt Felhasználónév. Meg kell egyeznie a **tartományi rendszergazda felhasználói** tulajdonság értékével **Active Directory tartományi szolgáltatások sablonban**. Az alapértelmezett érték a _tartományi rendszergazda – felhasználó_.|
 |Kulcstartósablon|Resource Manager-sablon|Tartományi rendszergazda jelszava|A tartományi rendszergazda felhasználói jelszava. Nincs alapértelmezett érték, és nem hagyható üresen.|
 |Kulcstartósablon|Resource Manager-sablon|AAD-objektum-azonosító|Annak a fióknak a HRE-azonosítója, amelyhez hozzáférést kell adni a Key Vault-példányhoz. Nincs alapértelmezett érték, és nem hagyható üresen. Ha meg szeretné keresni ezt az értéket a Azure Portal, keresse meg és válassza a "felhasználók" lehetőséget a _szolgáltatások_területen. A _Name (név_ ) mező használatával szűrheti a fióknevet, és kiválaszthatja a fiókot. A _felhasználói profil_ lapon válassza az _objektumazonosító_melletti "kattintson ide a másoláshoz" ikont.  |
@@ -166,7 +166,7 @@ Most, hogy áttekintette az ISO 27001 Shared Services Blueprint-minta üzembe he
 
 További cikkek a tervekről és azok használatáról:
 
-- A [terv életciklusának](../../concepts/lifecycle.md)megismerése.
+- Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.
 - A [tervekkel kapcsolatos műveleti sorrend](../../concepts/sequencing-order.md) testreszabásának elsajátítása.
 - A [tervek erőforrás-zárolásának](../../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.

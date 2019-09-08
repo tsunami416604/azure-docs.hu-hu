@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/07/2019
+ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: f4a859f1e63866a50167031569dca05de3e9af27
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 618aa58fe8553789c831ca933ae6be73843b93dd
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856305"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801387"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -32,8 +32,12 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 > [!NOTE]
 > Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [Rest APIt](https://aka.ms/ams-v3-rest-sdk), a CLI-t vagy az egyik támogatott SDK-t.
 
-További információ: áttelepítési [útmutató Media Services v2-ről v3-re](migrate-from-v2-to-v3.md#known-issues)való áttéréshez.
+További információ: [áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="september-2019"></a>Szeptember 2019
+
+Media Services v3 bejelenti az élő események élő lineáris kódolásának 24 órás x 365 napos előzetes verzióját.
+ 
 ## <a name="august-2019"></a>Augusztus 2019
 
 ### <a name="south-africa-regional-pair-is-open-for-media-services"></a>A Dél-afrikai regionális pár nyitva van a Media Services 
@@ -46,7 +50,7 @@ További információkért tekintse [meg a felhőket és a régiókat, amelyekbe
 
 ### <a name="content-protection"></a>Tartalomvédelem
 
-A jogkivonatok korlátozásával védett tartalom továbbításakor a végfelhasználóknak meg kell szerezniük egy jogkivonatot, amelyet a rendszer a kézbesítési kérelem részeként küld. A *jogkivonat* -Visszajátszások megelőzési funkciója lehetővé teszi, hogy Media Services ügyfelek megszabják, hogy egy adott jogkivonat hányszor használható kulcs vagy licenc igénylésére. További információ: [jogkivonat](content-protection-overview.md#token-replay-prevention)-újrajátszás megakadályozása.
+A jogkivonatok korlátozásával védett tartalom továbbításakor a végfelhasználóknak meg kell szerezniük egy jogkivonatot, amelyet a rendszer a kézbesítési kérelem részeként küld. A *jogkivonat-Visszajátszások megelőzési* funkciója lehetővé teszi, hogy Media Services ügyfelek megszabják, hogy egy adott jogkivonat hányszor használható kulcs vagy licenc igénylésére. További információ: jogkivonat- [újrajátszás megakadályozása](content-protection-overview.md#token-replay-prevention).
 
 Ez a szolgáltatás jelenleg az USA középső és nyugati középső régiójában érhető el.
 
@@ -54,7 +58,7 @@ Ez a szolgáltatás jelenleg az USA középső és nyugati középső régiójá
 
 ### <a name="video-subclipping"></a>Videó kivágása
 
-Most már elvégezheti a videó kivágását vagy alvágását [](https://docs.microsoft.com/rest/api/media/jobs), amikor feladatokkal kódolja. 
+Most már elvégezheti a videó kivágását vagy alvágását, amikor [feladatokkal](https://docs.microsoft.com/rest/api/media/jobs)kódolja. 
 
 Ez a funkció a [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -előállítók vagy a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) -előállítók használatával létrehozott bármely [átalakítással](https://docs.microsoft.com/rest/api/media/transforms) működik. 
 
@@ -70,7 +74,7 @@ Példák:
 Mostantól a Azure Monitor használatával megtekintheti a telemetria-emmited Media Services alapján.
 
 * A Media Services kulcs kézbesítési végpontja által küldött kérelmek figyeléséhez használja a Azure Monitor diagnosztikai naplókat. 
-* Media Services [streaming](streaming-endpoint-concept.md)-végpontok által kibocsátott mérőszámok figyelése.   
+* Media Services [streaming-végpontok](streaming-endpoint-concept.md)által kibocsátott mérőszámok figyelése.   
 
 Részletekért lásd: [Media Services metrikák és diagnosztikai naplók figyelése](media-services-metrics-diagnostic-logs.md).
 
@@ -100,7 +104,7 @@ A Media Services teljesítmény-fejlesztési funkciókat tartalmazó frissítés
 
 ## <a name="march-2019"></a>Március 2019
 
-A dinamikus csomagolás mostantól támogatja a Dolby Atmos-t. További információ: [dinamikus csomagolás által támogatott](dynamic-packaging-overview.md#audio-codecs)hangkodekek.
+A dinamikus csomagolás mostantól támogatja a Dolby Atmos-t. További információ: [dinamikus csomagolás által támogatott hangkodekek](dynamic-packaging-overview.md#audio-codecs).
 
 Mostantól megadhatja az eszköz vagy a fiók szűrőinek listáját, amely a folyamatos átviteli Lokátorra vonatkozik. További információ: [szűrők hozzárendelése a streaming Locator](filters-concept.md#associating-filters-with-streaming-locator)szolgáltatáshoz.
 
@@ -254,12 +258,12 @@ Ha 09/28 és 10/12 közötti eszközöket vagy fiók-szűrőket hozott létre Me
 
 A .NET SDK-ban a következő funkciók találhatók:
 
-* **Átalakítja** és feladatait a médiatartalom kódolásához vagy elemzéséhez. Példák: adatfolyam- [fájlok](stream-files-tutorial-with-api.md) és- [elemzés](analyze-videos-tutorial-with-api.md).
-* **Streaming** -lokátorok tartalmak közzétételéhez és a végfelhasználói eszközökre való továbbításához
+* **Átalakítja** és **feladatait** a médiatartalom kódolásához vagy elemzéséhez. Példák: adatfolyam- [fájlok](stream-files-tutorial-with-api.md) és- [elemzés](analyze-videos-tutorial-with-api.md).
+* **Streaming-lokátorok** tartalmak közzétételéhez és a végfelhasználói eszközökre való továbbításához
 * **Folyamatos átviteli szabályzatok** és **tartalmi kulcsokra vonatkozó házirendek** a kulcsfontosságú kézbesítés és a tartalomvédelem (DRM) konfigurálásához a tartalmak kézbesítése során.
 * Élő **események** és **élő kimenetek** élő adatfolyam-tartalmak betöltésének és archiválásának konfigurálásához.
 * A médiatartalom tárolására és közzétételére szolgáló **eszközök** az Azure Storage-ban. 
-* **Adatfolyam** -végpontok a dinamikus csomagolás, a titkosítás és a folyamatos átviteli sebesség konfigurálásához és méretezéséhez mind az élő, mind az igény szerinti médiatartalmak esetében.
+* **Adatfolyam-végpontok** a dinamikus csomagolás, a titkosítás és a folyamatos átviteli sebesség konfigurálásához és méretezéséhez mind az élő, mind az igény szerinti médiatartalmak esetében.
 
 ### <a name="known-issues"></a>Ismert problémák
 
