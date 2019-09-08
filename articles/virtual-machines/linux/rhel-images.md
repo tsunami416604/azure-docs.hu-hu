@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: accc59ee31ddb7371774da3235cc9ccff24ad641
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c11ce31913baa8c638e94bdf92ef622cd8899e03
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309227"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764304"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux rendszerképek az Azure-ban
 Ez a cikk az Azure Marketplace-en elérhető Red Hat Enterprise Linux-(RHEL-) rendszerképeket ismerteti, valamint az elnevezési és adatmegőrzési szabályzatok körét.
@@ -114,18 +114,19 @@ A következő ajánlatok jelenleg általános használatra elérhetők:
 
 Ajánlat| SKU | Particionálás | Kiépítés | Megjegyzések
 :----|:----|:-------------|:-------------|:-----
-RHEL          | 7 – NYERS    | RAW    | Linux-ügynök | RHEL 7 operációsrendszer-család. <br> Alapértelmezés szerint nincs csatolva a EUS-adattárakhoz.
-|             | 7-LVM    | LVM    | Linux-ügynök | RHEL 7 operációsrendszer-család. <br> Alapértelmezés szerint nincs csatolva a EUS-adattárakhoz.
-|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7 operációsrendszer-család. <br> Alapértelmezés szerint nincs csatolva a EUS-adattárakhoz.
-|             | 6.7      | RAW    | Linux-ügynök | RHEL 6,7 lemezképek, régi elnevezési konvenció
-|             | 6.8      | RAW    | Linux-ügynök | Ugyanaz, mint a fentiekben a RHEL 6,8
-|             | 6.9      | RAW    | Linux-ügynök | Ugyanaz, mint a fentiekben a RHEL 6,9
-|             | 6.10     | RAW    | Linux-ügynök | Ugyanaz, mint a fentiekben a RHEL 6,10
-|             | 7.2      | RAW    | Linux-ügynök | Ugyanaz, mint a fentiekben a RHEL 7,2
-|             | 7.3      | RAW    | Linux-ügynök | Ugyanaz, mint a fentiekben a RHEL 7,3
-|             | 7.4      | RAW    | Linux-ügynök | Ugyanaz, mint a fentiekben a RHEL 7,4 esetében. <br> EUS-tárházhoz csatolva, alapértelmezés szerint április 2019
-|             | 7.5      | RAW    | Linux-ügynök | Ugyanaz, mint a fentiekben a RHEL 7,5 esetében. <br> EUS-tárházhoz csatolva, alapértelmezés szerint június 2019
-|             | 7,6      | RAW    | Linux-ügynök | Ugyanaz, mint a fentiekben a RHEL 7,6 esetében. <br> EUS-tárházhoz csatolva, alapértelmezés szerint a 2019-as számú
+RHEL          | 7 – NYERS    | RAW    | Linux-ügynök | RHEL 7. x rendszerképekből álló család. <br> Alapértelmezés szerint nincs csatolva a EUS-adattárakhoz.
+|             | 7-LVM    | LVM    | Linux-ügynök | RHEL 7. x rendszerképekből álló család. <br> Alapértelmezés szerint nincs csatolva a EUS-adattárakhoz.
+|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7. x rendszerképekből álló család. <br> Alapértelmezés szerint nincs csatolva a EUS-adattárakhoz.
+|             | 6.7      | RAW    | Linux-ügynök |
+|             | 6.8      | RAW    | Linux-ügynök |
+|             | 6.9      | RAW    | Linux-ügynök |
+|             | 6.10     | RAW    | Linux-ügynök |
+|             | 7.2      | RAW    | Linux-ügynök |
+|             | 7.3      | RAW    | Linux-ügynök |
+|             | 7.4      | RAW    | Linux-ügynök | A EUS-adattárakhoz van csatolva, alapértelmezés szerint április 2019.
+|             | 7.5      | RAW    | Linux-ügynök | A EUS-adattárakhoz a 2019-as számú alapértelmezett módon van csatolva.
+|             | 7,6      | RAW    | Linux-ügynök | A EUS-adattárakhoz a 2019-as számú alapértelmezett módon csatolva.
+|             | 7,7      | LVM    | Linux-ügynök | Alapértelmezés szerint csatolva van a EUS-adattárakhoz.
 RHEL-SAP      | 7.4      | LVM    | Linux-ügynök | RHEL 7,4 SAP HANA és üzleti alkalmazások számára
 |             | 7.5      | LVM    | Linux-ügynök | RHEL 7,5 SAP HANA és üzleti alkalmazások számára
 RHEL-SAP-HANA | 6.7      | RAW    | Linux-ügynök | RHEL 6,7 SAP HANA

@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: 63a0717e615ff85dbc5cfc06567f83cb9aa83a30
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: HT
+ms.openlocfilehash: 8f0438ab015f9d16fd3776421b8d0032fc0a0639
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735020"
+ms.locfileid: "70772903"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Oktatóanyag: Webalkalmazás-robot használata Language Understanding a Node. js-ben 
 
@@ -101,7 +101,7 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
 
     [![Webalkalmazás-robot forráskódjának letöltése alapszintű robothoz](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. Ha az előugró ablak **a letöltött zip-fájlban is**megkéri az Alkalmazásbeállítások megadását, válassza az **Igen**lehetőséget.
+1. Ha az előugró ablak **a letöltött zip-fájlban is**megkéri az Alkalmazásbeállítások megadását, válassza az **Igen**lehetőséget. Ez biztosítja a LUIS beállításait. 
 
 1. Tömörített forráskód esetén az üzenet tartalmazza a kód letöltéséhez szükséges hivatkozást. Kattintson a hivatkozásra. 
 
@@ -134,6 +134,13 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
 
     ````javascript
     class MainDialog extends ComponentDialog {
+
+        constructor(luisRecognizer, bookingDialog) {
+            ...
+            this.luisRecognizer = luisRecognizer;
+            ...
+        }
+
 
         ...
 
@@ -185,40 +192,6 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
 
     }
     ````
-
-
-## <a name="install-dependencies-and-start-the-bot-code-in-visual-studio"></a>Függőségek telepítése és a robot kódjának elindítása a Visual Studióban
-
-1. A VSCode-ben az integrált terminálból telepítse a függőségeket a `npm install`paranccsal.
-1. Az integrált terminálból is indítsa el a robotot a paranccsal `npm start`. Ez egy webalkalmazást kezd a robothoz egy HTTP-végponttal. A konzol biztosítja az URL-címet és a portszámot a futó webhely eléréséhez. A portszámot az oktatóanyag következő szakaszában kell megadnia.
-
-    ```console
-    > core-bot@1.0.0 start C:\Users\diberry\repos\bots\2019-bot-nodejs-basic
-    > node ./index.js
-    
-    
-    restify listening to http://[::]:3978
-    
-    Get Bot Framework Emulator: https://aka.ms/botframework-emulator
-    ```
-
-## <a name="create-an-environment-file-and-add-luis-values"></a>Hozzon létre egy környezeti fájlt, és adja hozzá a LUIS-értékeket
-
-A robot-emulátornak hozzá kell férnie a LUIS-erőforráshoz a részletes LUIS-eredmények biztosítása érdekében.
-
-1. A projekt gyökerében hozzon létre egy nevű `.env` fájlt, és adja hozzá a következő környezeti változókat:
-
-    ```console
-    LuisAppId= 
-    LuisAPIKey=
-    LuisAPIHostName=
-    ```
-
-1. A Azure Portal a robot-erőforráshoz nyissa meg a App Service konfigurációs beállításait az alkalmazáshoz.
-1. Nyissa meg a **speciális szerkesztést**, hogy megtekintse az egyes beállítások értékét.
-
-    ![Az egyes beállítások értékének megjelenítéséhez nyissa meg a * * speciális szerkesztés * * lehetőséget.](./media/bfv4-nodejs/environment-settings-for-luis-app.png)
-
 <a name="ask-bot-a-question-for-the-book-flight-intent"></a>
 
 ## <a name="use-the-bot-emulator-to-test-the-bot"></a>A bot-emulátor használata a robot teszteléséhez
@@ -227,6 +200,7 @@ Kérdezze meg a robotot a könyv repülési szándékáról.
 
 1. Indítsa el a robot-emulátort, és válassza a **robot megnyitása**lehetőséget.
 1. A **bot megnyitása** előugró ablakban adja meg a robot URL-címét, például `http://localhost:3978/api/messages`:. Az `/api/messages` útvonal a robot webes címe.
+1. Adja meg a **Microsoft-alkalmazás azonosítóját** és a **Microsoft-alkalmazás jelszavát**, amely a letöltött robot gyökerében található **. env** fájlban található.
 
 1. A bot-emulátorban adja `Book a flight from Seattle to Berlin tomorrow` meg és kérje le ugyanazt a választ az alapszintű robotra, mint amit a **teszt webes csevegésben**kapott.
 

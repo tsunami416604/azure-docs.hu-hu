@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 12a6af73dc0abc9598184f6c83e9d7652973a99e
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544447"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773803"
 ---
 # <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Nyilvános IP-címek lefoglalása a saját felhőalapú környezethez
 
 Nyissa meg a nyilvános IP-címek lapot a hálózat lapon a saját felhőalapú környezetében lévő virtuális gépek nyilvános IP-címeinek lefoglalásához.
 
-1. [Nyissa meg a CloudSimple](monitor-activity.md) -portált, és válassza a **hálózat** lehetőséget az oldalsó menüben.
+1. [Nyissa meg a CloudSimple-portált](access-cloudsimple-portal.md) , és válassza a **hálózat** lehetőséget az oldalsó menüben.
 2. Válassza a **nyilvános IP**-címek lehetőséget.
 3. Kattintson az **új nyilvános IP-cím**elemre.
 

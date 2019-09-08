@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 8c6f13f85b692d2405928fe06605d8b2ac0ec8e7
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 36d24e798e73ef336324eedadee1ba3fec4c0e1d
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012716"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773031"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
 
@@ -24,7 +24,7 @@ Ez a cikk részletesen ismerteti, hogyan írhat Azure Functions a PowerShell has
 
 [!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
-A PowerShell Azure-függvény (Function) egy PowerShell-parancsfájlként jelenik meg, amely az aktiváláskor fut. Mindegyik függvény parancsfájlhoz tartozik egy `function.json` kapcsolódó fájl, amely meghatározza, hogy a függvény hogyan viselkedik, például hogyan aktiválódik, valamint a bemeneti és kimeneti paramétereket. További információt az [Eseményindítók és](functions-triggers-bindings.md)a kötések című cikkben talál. 
+A PowerShell Azure-függvény (Function) egy PowerShell-parancsfájlként jelenik meg, amely az aktiváláskor fut. Mindegyik függvény parancsfájlhoz tartozik egy `function.json` kapcsolódó fájl, amely meghatározza, hogy a függvény hogyan viselkedik, például hogyan aktiválódik, valamint a bemeneti és kimeneti paramétereket. További információt az [Eseményindítók és a kötések című cikkben](functions-triggers-bindings.md)talál. 
 
 Más típusú függvényekhez hasonlóan a PowerShell-parancsfájlok is a `function.json` fájlban meghatározott összes bemeneti kötés nevével egyező paramétereket fogadnak el. Egy `TriggerMetadata` paraméter is át lett adva, amely további információkat tartalmaz a függvényt elindító triggerről.
 
@@ -59,7 +59,7 @@ PSFunctionApp
 
 A projekt gyökerében található egy megosztott [`host.json`](functions-host-json.md) fájl, amely a Function alkalmazás konfigurálására használható. Minden függvényhez tartozik egy mappa, amely a saját kódjával (. ps1) és a kötési`function.json`konfigurációs fájllal () rendelkezik. A function. JSON fájljának szülő könyvtárának neve mindig a függvény neve.
 
-Bizonyos kötések egy `extensions.csproj` fájl jelenlétét igénylik. A függvények futtatókörnyezet [2. x verziójában](functions-versions.md) szükséges kötési kiterjesztések a `extensions.csproj` fájlban vannak definiálva, a `bin` mappában lévő tényleges függvénytár-fájlokkal. Helyi fejlesztés esetén regisztrálnia kell a [kötési bővítményeket](functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
+Bizonyos kötések egy `extensions.csproj` fájl jelenlétét igénylik. A függvények futtatókörnyezet [2. x verziójában](functions-versions.md) szükséges kötési kiterjesztések a `extensions.csproj` fájlban vannak definiálva, a `bin` mappában lévő tényleges függvénytár-fájlokkal. Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
 
 A PowerShell-függvény alkalmazásaiban megadhatja, hogy `profile.ps1` a rendszer mikor fusson, amikor egy Function-alkalmazás elindul (más néven a *[hidegindító kezdete](#cold-start)* ). További információ: PowerShell- [profil](#powershell-profile).
 
@@ -92,7 +92,7 @@ Minden trigger típushoz eltérő metaadatok vannak megadva. `$TriggerMetadata` 
 
 ## <a name="bindings"></a>Kötések
 
-A PowerShellben [](functions-triggers-bindings.md) a kötések konfigurálva és definiálva vannak egy függvény function. JSON fájljában. A függvények számos módon működnek együtt a kötésekkel.
+A PowerShellben a [kötések](functions-triggers-bindings.md) konfigurálva és definiálva vannak egy függvény function. JSON fájljában. A függvények számos módon működnek együtt a kötésekkel.
 
 ### <a name="reading-trigger-and-input-data"></a>Trigger-és bemeneti adatok olvasása
 
@@ -243,7 +243,7 @@ A PowerShell-függvények naplózása ugyanúgy működik, mint a rendszeres Pow
 | ------------- | -------------- |
 | Hiba | **`Write-Error`** |
 | Figyelmeztetés | **`Write-Warning`**  | 
-| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | Az adatszint naplózásának megírása. |
+| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | _Az_ adatszint naplózásának megírása. |
 | Hibakeresés | **`Write-Debug`** |
 | Híváslánc | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
@@ -403,14 +403,18 @@ Az aktuális verziót bármely függvényből kinyomtatva `$PSVersionTable` lát
 
 ## <a name="dependency-management"></a>Függőségkezelés
 
-A PowerShell-függvények támogatják az Azure-modulok szolgáltatás általi kezelését. Ha módosítja a Host. JSON fájlt, és a managedDependency enabled tulajdonságot True értékre állítja, a rendszer feldolgozza a követelmények. psd1 fájlját. A rendszer automatikusan letölti és elérhetővé teszi a legújabb Azure-modulokat a függvény számára.
+A PowerShell-függvények támogatják a szolgáltatásban a [PowerShell](https://www.powershellgallery.com) -katalógus moduljainak letöltését és felügyeletét. Ha módosítja a Host. JSON fájlt, és a managedDependency enabled tulajdonságot True értékre állítja, a rendszer feldolgozza a követelmények. psd1 fájlját. A rendszer automatikusan letölti és elérhetővé teszi a megadott modulokat a függvény számára. 
+
+A jelenleg támogatott modulok maximális száma 10. A támogatott szintaxis a MajorNumber. * vagy a modul pontos verziója, ahogy az alább látható. Az Azure az modul alapértelmezés szerint az új PowerShell-függvény alkalmazás létrehozásakor szerepel.
+
+A nyelvi feldolgozó a frissített modulokat is felveszi az újraindításra.
 
 host.json
 ```json
 {
-    "managedDependency": {
-        "enabled": true
-    }
+  "managedDependency": {
+          "enabled": true
+       }
 }
 ```
 
@@ -419,10 +423,11 @@ követelmények. psd1
 ```powershell
 @{
     Az = '1.*'
+    SqlServer = '21.1.18147'
 }
 ```
 
-A saját egyéni moduljainak vagy moduljainak kihasználása a [PowerShell-Galéria](https://powershellgallery.com) egy kicsit más, mint a szokásos módon.
+A saját egyéni moduljainak kihasználása kicsit eltér a megszokott módon.
 
 Ha telepíti a modult a helyi gépre, az a saját `$env:PSModulePath`globálisan elérhető mappáiba kerül. Mivel a függvény az Azure-ban fut, nem fog hozzáférni a gépen telepített modulokhoz. Ehhez az szükséges, `$env:PSModulePath` hogy a PowerShell `$env:PSModulePath` -függvény alkalmazása eltér a szokásos PowerShell-parancsfájloktól.
 
@@ -433,16 +438,19 @@ A függvények `PSModulePath` között két elérési út található:
 
 ### <a name="function-app-level-modules-folder"></a>Függvény alkalmazás-szintű `Modules` mappája
 
-Ha egyéni modulokat vagy PowerShell-modulokat szeretne használni a PowerShell-Galéria, olyan modulokat helyezhet el, amelyeken `Modules` a függvények egy mappától függenek. Ebből a mappából a modulok automatikusan elérhetők a functions Runtime számára. A Function alkalmazás bármely funkciója használhatja ezeket a modulokat.
+Egyéni modulok használatához olyan modulokat helyezhet el, amelyeken a függvények egy `Modules` mappától függenek. Ebből a mappából a modulok automatikusan elérhetők a functions Runtime számára. A Function alkalmazás bármely funkciója használhatja ezeket a modulokat. 
 
-A szolgáltatás kihasználása érdekében hozzon létre `Modules` egy mappát a Function alkalmazás gyökerében. Mentse a függvényekben használni kívánt modulokat ezen a helyen.
+> [!NOTE]
+> A követelmények. psd1 fájlban megadott modulokat a rendszer automatikusan letölti és belefoglalja az elérési útra, így nem kell felvennie őket a modulok mappába. Ezeket a rendszer helyileg tárolja a $env: LOCALAPPDATA/AzureFunctions mappában és a/data/ManagedDependencies mappában a felhőben való futtatáskor.
+
+Az egyéni modul funkció kihasználása érdekében hozzon létre `Modules` egy mappát a Function alkalmazás gyökerében. Másolja a függvényekben használni kívánt modulokat erre a helyre.
 
 ```powershell
 mkdir ./Modules
-Save-Module MyGalleryModule -Path ./Modules
+Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-A `Save-Module` használatával mentheti a függvények által használt összes modult, vagy átmásolhatja a saját egyéni moduljait a `Modules` mappába. A modules mappában a Function alkalmazásnak a következő mappastruktúrát kell megjelennie:
+A modules mappában a Function alkalmazásnak a következő mappastruktúrát kell megjelennie:
 
 ```
 PSFunctionApp
@@ -450,11 +458,12 @@ PSFunctionApp
  | | - run.ps1
  | | - function.json
  | - Modules
- | | - MyGalleryModule
- | | - MyOtherGalleryModule
- | | - MyCustomModule.psm1
+ | | - MyCustomModule
+ | | - MyOtherCustomModule
+ | | - MySpecialModule.psm1
  | - local.settings.json
  | - host.json
+ | - requirements.psd1
 ```
 
 Ha elindítja a Function alkalmazást, a PowerShell nyelvi feldolgozó hozzáadja ezt `Modules` a mappát a `$env:PSModulePath` modulhoz, így a modulok automatikus betöltését ugyanúgy használhatja, mint egy normál PowerShell-parancsfájlban.
@@ -503,17 +512,7 @@ Ezt a környezeti változót a függvényalkalmazás [alkalmazás beállításai
 
 ### <a name="considerations-for-using-concurrency"></a>A párhuzamosság használatának szempontjai
 
-Alapértelmezés szerint a PowerShell egyszálas parancsfájlkezelési nyelv. A párhuzamosság azonban több PowerShell-futási terek is hozzáadható ugyanabban a folyamatban. Ez a funkció azt ismerteti, hogyan működik a Azure Functions PowerShell-futtatókörnyezet.
-
-Ennek a megközelítésnek van néhány hátránya.
-
-#### <a name="concurrency-is-only-as-good-as-the-machine-its-running-on"></a>A Egyidejűség csak olyan jól működik, mint a gép, amelyen fut
-
-Ha a Function alkalmazás olyan [app Service](functions-scale.md#app-service-plan) -csomagon fut, amely csak egyetlen mag használatát támogatja, akkor a Egyidejűség nem fog sokat segíteni. Ennek oka, hogy nincsenek további magok a terhelés kiegyensúlyozásához. Ebben az esetben a teljesítmény akkor változhat, ha az önálló mag a futási terek közötti kontextusban van.
-
-A használati [terv](functions-scale.md#consumption-plan) csak egy mag használatával fut, ezért nem használhatja a párhuzamosságot. Ha teljes mértékben ki szeretné használni a párhuzamosságot, helyette helyezze üzembe a függvényeket egy dedikált App Service-csomagon futó Function alkalmazásban, amely elegendő magot használ.
-
-#### <a name="azure-powershell-state"></a>Azure PowerShell állapota
+Alapértelmezés szerint a PowerShell _egyszálas_ parancsfájlkezelési nyelv. A párhuzamosság azonban több PowerShell-futási terek is hozzáadható ugyanabban a folyamatban. A létrehozott futási terek mérete megegyezik a PSWorkerInProcConcurrencyUpperBound alkalmazás beállításával. Az átviteli sebességet a kiválasztott csomagban elérhető CPU és memória mennyisége befolyásolja.
 
 A Azure PowerShell egyes _folyamat-szintű_ kontextusokat és állapotot használ, hogy segítsen a felesleges gépelésben. Ha azonban a függvény alkalmazásban bekapcsolja a párhuzamosságot, és meghívja az állapotot megváltoztató műveleteket, akkor a verseny feltételei is megváltozhatnak. Ezek a versenyhelyzet nehéz hibakeresést végezni, mert egy hívás egy bizonyos állapotra támaszkodik, és a másik meghívás megváltoztatta az állapotot.
 
@@ -599,7 +598,7 @@ Azure Functions a [kiszolgáló nélküli üzemeltetési modellben](functions-sc
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>Köteg modulok használata helyett`Install-Module`
 
-A szkript minden meghívásnál fut. Kerülje a `Install-Module` használatát a parancsfájlban. Ehelyett használja `Save-Module` a közzététel előtt, hogy a függvénynek ne kelljen időt pazarolnia a modul letöltésével. Ha a ritkán használt funkciók hatással vannak a függvényekre, érdemes lehet a Function alkalmazást egy olyan [app Service-csomagra](functions-scale.md#app-service-plan) telepíteni, amely a [prémium](functions-scale.md#premium-plan)szintű csomagra van beállítva.
+A szkript minden meghívásnál fut. Kerülje a `Install-Module` használatát a parancsfájlban. Ehelyett használja `Save-Module` a közzététel előtt, hogy a függvénynek ne kelljen időt pazarolnia a modul letöltésével. Ha a ritkán használt funkciók hatással vannak a függvényekre, érdemes lehet a Function alkalmazást egy olyan [app Service-csomagra](functions-scale.md#app-service-plan) telepíteni *, amely* a [prémium szintű csomagra](functions-scale.md#premium-plan)van beállítva.
 
 ## <a name="next-steps"></a>További lépések
 

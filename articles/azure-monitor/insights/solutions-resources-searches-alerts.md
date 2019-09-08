@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7ec30e2445a5ed6008256f7abcef496247922968
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
-ms.translationtype: HT
+ms.openlocfilehash: d5372ac8b31db91aaac018b203ee8868fa313fd8
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744479"
+ms.locfileid: "70772988"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics mentett keresések és riasztások hozzáadása a felügyeleti megoldáshoz (előzetes verzió)
 
@@ -171,11 +171,10 @@ A riasztási művelet erőforrásaihoz tartozó tulajdonságokat az alábbi táb
 
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
-| `Type` | Igen | A művelet típusa.  **Riasztás a** riasztási műveletekhez. |
-| `Name` | Igen | A riasztás megjelenítendő neve.  Ez a név jelenik meg a konzolon a riasztási szabályhoz. |
-| `Description` | Nem | A riasztás opcionális leírása. |
-| `Severity` | Igen | A riasztási rekord súlyossága a következő értékekkel:<br><br> **critical**<br>**Figyelmeztetés**<br>**tájékoztató**
-
+| `type` | Igen | A művelet típusa.  **Riasztás a** riasztási műveletekhez. |
+| `name` | Igen | A riasztás megjelenítendő neve.  Ez a név jelenik meg a konzolon a riasztási szabályhoz. |
+| `description` | Nem | A riasztás opcionális leírása. |
+| `severity` | Igen | A riasztási rekord súlyossága a következő értékekkel:<br><br> **critical**<br>**Figyelmeztetés**<br>**tájékoztató**
 
 #### <a name="threshold"></a>Küszöbérték
 Ezt a szakaszt kötelező megadni. Meghatározza a riasztási küszöbérték tulajdonságait.

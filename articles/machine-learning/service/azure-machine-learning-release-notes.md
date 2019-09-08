@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0880b5706f2621971a4e5c82a6db03cdd22ce4d6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 78d16e8e6fc43644cdb318f8e402c2e8bbe0363e
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278294"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772506"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -70,6 +70,12 @@ Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismer
   + **azureml-train-core**
     + Néhány hiperparaméter-hely definíciós hibájának korai meghibásodása közvetlenül az SDK-ban a kiszolgálóoldali helyett.
 
+### <a name="azure-machine-learning-data-prep-sdk-v1114"></a>Azure Machine Learning adat-előkészítési SDK v 1.1.14
++ **Hibajavítások és javítások**
+  + A ADLS/ADLSGen2 írásának engedélyezése a nyers elérési út és a hitelesítő adatok használatával.
+  + Kijavított egy hibát, `include_path=True` amely miatt nem `read_parquet`működött.
+  + A `to_pandas_dataframe()` (z) "Érvénytelen tulajdonságérték: hostSecret" kivétel okozta rögzített hiba.
+  + Kijavítva egy hiba, ahol a DBFS Spark módban nem olvashatók a fájlok.
   
 ## <a name="2019-08-19"></a>2019-08-19
 

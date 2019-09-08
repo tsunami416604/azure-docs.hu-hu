@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 09/06/2019
 ms.author: spelluru
-ms.openlocfilehash: 11ac4e10cbd116ed204a8a11274408f5a5a9b4d9
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 7a089eae935fe5ecbf3dd2836d86912d0c63ef84
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183135"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773105"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Virtuális gépek létrehozása és kezelése az Azure CLI-vel a DevTest Labs használatával
 Ez a rövid útmutató végigvezeti a fejlesztői gépek tesztkörnyezetben való létrehozásával, indításával, csatlakoztatásával, frissítésével és tisztításával. 
@@ -50,7 +50,7 @@ A következő parancs egy virtuális gépet hoz létre a laborban elérhető egy
 az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "My Custom Image" --image-type custom --size 'Standard_D2s_v3' --admin-username 'AdminUser' --admin-password 'Password1!'
 ```
 
-A **rendszerkép típusú** argumentum a katalógusból a **Custom**értékre változott. A rendszerkép neve megegyezik azzal, amit látni fog, ha a Azure Portalban hozza létre a virtuális gépet.
+A **rendszerkép típusú** argumentum a katalógusból a **Custom** **értékre** változott. A rendszerkép neve megegyezik azzal, amit látni fog, ha a Azure Portalban hozza létre a virtuális gépet.
 
 A következő parancs létrehoz egy virtuális gépet egy, az SSH-hitelesítéssel rendelkező Piactéri rendszerképből:
 
@@ -58,7 +58,7 @@ A következő parancs létrehoz egy virtuális gépet egy, az SSH-hitelesítéss
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 
-A képletek alapján is létrehozhat virtuális gépeket, ha a **rendszerkép-típus** paramétert **képletre**állítja. Ha ki kell választania egy adott virtuális hálózatot a virtuális géphez, használja a **vnet** és az alhálózati paramétereket. További információ: [az Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
+A képletek alapján is létrehozhat virtuális gépeket, ha a **rendszerkép-típus** paramétert **képletre**állítja. Ha ki kell választania egy adott virtuális hálózatot a virtuális géphez, használja a **vnet** és az **alhálózati** paramétereket. További információ: [az Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
 
 ## <a name="verify-that-the-vm-is-available"></a>Ellenőrizze, hogy a virtuális gép elérhető-e.
 A `az lab vm show` parancs használatával ellenőrizze, hogy a virtuális gép elérhető-e, mielőtt elkezdi és csatlakozik hozzá. 
@@ -123,15 +123,31 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 ]
 ```
 
-A laborban elérhető összetevők listázása.
-```azurecli
-az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand "properties(\$expand=artifacts)" --query 'artifacts[].{artifactId: artifactId, status: status}'
+### <a name="list-artifacts-available-in-the-lab"></a>A laborban elérhető összetevők listázása
+
+A laborban található virtuális gépen elérhető összetevők listázásához futtassa a következő parancsokat.
+
+**Cloud Shell – PowerShell**: figyelje meg, hogy a kezdő (\`) a $-ban $Expand előtt (azaz "$Expand") használja:
+
+```azurecli-interactive
+az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(`$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
 ```
+
+**Cloud SHELL – bash**: figyelje meg a perjel () karakter\\használatát a (z) parancsban. 
+
+```azurecli-interactive
+az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(\$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
+```
+
+Példa a kimenetre: 
+
 ```json
-{
-  "artifactId": "/subscriptions/abcdeftgh1213123/resourceGroups/lisalab123RG822645/providers/Microsoft.DevTestLab/labs/lisalab123/artifactSources/public repo/artifacts/linux-install-nodejs",
-  "status": "Succeeded"
-}
+[
+  {
+    "artifactId": "/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.DevTestLab/labs/<lab name>/artifactSources/public repo/artifacts/windows-7zip",
+    "status": "Succeeded"
+  }
+]
 ```
 
 ## <a name="stop-and-delete-the-virtual-machine"></a>A virtuális gép leállítása és törlése    
@@ -147,4 +163,4 @@ az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group s
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő tartalmakat: [Azure DevTest Labs Azure CLI](/cli/azure/lab?view=azure-cli-latest)-dokumentációja. 
+Tekintse meg a következő tartalmakat: [Azure DevTest Labs Azure CLI-dokumentációja](/cli/azure/lab?view=azure-cli-latest). 

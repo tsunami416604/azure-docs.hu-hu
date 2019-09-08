@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 08/26/2019
-ms.openlocfilehash: 418ca6f8d6258b826bb126252d7cf7b1c5fee299
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 09/06/2019
+ms.openlocfilehash: 5b13c3c93f8b2d6f3eed5a32c49baf1b9d1b201e
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035726"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773341"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Kiszolgáló nélküli Azure SQL Database (előzetes verzió)
 
@@ -41,7 +41,7 @@ Az önálló adatbázisok kiszolgáló nélküli számítási rétegét egy szá
 - Ha az adatbázis szüneteltetve van, a számítási költség nulla, és csak a tárolási költségek merülnek fel.
 - A tárolási költségeket ugyanúgy határozzák meg, mint a kiépített számítási szinten.
 
-További részletekért tekintse meg [](sql-database-serverless.md#billing)a számlázást ismertető témakört.
+További részletekért tekintse meg a [számlázást](sql-database-serverless.md#billing)ismertető témakört.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
@@ -115,7 +115,8 @@ A következő szolgáltatások nem támogatják az autoszüneteltetést.  Azaz h
 
 - Geo-replikáció (aktív geo-replikáció és automatikus feladatátvételi csoportok).
 - A biztonsági másolatok hosszú távú megőrzése (LTR).
-- Az SQL-adatszinkronizálás során használt szinkronizálási adatbázis.
+- Az SQL-adatszinkronizálás során használt szinkronizálási adatbázis.  A szinkronizálási adatbázisoktól eltérően a központ és a tagok adatbázisai támogatják az autoszüneteltetést.
+- A rugalmas feladatokban használt feladat adatbázisa.
 
 Az autoszüneteltetés átmenetileg megakadályozható néhány olyan szolgáltatás telepítése során, amelyekhez az adatbázisnak online állapotra van szüksége.  Ilyen esetekben a szolgáltatás frissítésének befejeződése után ismét engedélyezve lesz az autoszüneteltetés.
 

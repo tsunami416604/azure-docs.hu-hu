@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 8524a315228601adbb30a5def383f7b54a8f1495
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f021ac0a7c9c46592f7969dd0df10f76aec88cb7
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076107"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773222"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Közös értékesítés lehetősége a partner Centerben
 
@@ -47,10 +47,10 @@ A megoldási területek segítségével meghatározhatja, hogy az ajánlat mely 
 
 | **Dokumentumok**    | **Leírás**  |
 | :------------------- | :-------------------|
-| *Ügyfél – pager* | Az ajánlat ügyfél általi használatra kész leírása. A Microsoft értékesítési csapatai megoszthatják ezeket az információkat az ügyfelekkel annak megállapítása érdekében, hogy az ajánlat megfelelő-e, és hogy az ügyfél készen áll-e. <br> <br> Az alábbi megfelelő sablonok egyikét használja: <br> <ul> <li> [Microsoft Azure egy pager-sablon](https://aka.ms/Customer-One-Pager_MicrosoftAzure) </li> <li> [Microsoft Dynamics 365 1 – pager sablon](https://aka.ms/Customer-One-Pager_MicrosoftDynamics365) </li> <li> [Office 365 1 – pager sablon](https://aka.ms/Customer-One-Pager_MicrosoftOffice365) </li> <li> [Windows 10 1 – pager sablon](https://aka.ms/Customer-One-Pager_Windows) </li> </ul>
+| *Ügyfél – pager* | Az ajánlat ügyfél általi használatra kész leírása. A Microsoft értékesítési csapatai megoszthatják ezeket az információkat az ügyfelekkel annak megállapítása érdekében, hogy az ajánlat megfelelő-e, és hogy az ügyfél készen áll-e. <br> <br> Használja a partner Centerben elérhető megfelelő sablonok egyikét: <br> <ul> <li> Microsoft Azure egy pager-sablon </li> <li> Microsoft Dynamics 365 1 – pager sablon </li> <li> Office 365 1 – pager sablon </li> <li> Windows 10 1 – pager sablon </li> </ul>
  |
-| *Ügyfél bemutatása* | Csúsztassa a paklit a megoldás és a hozzá tartozó érték kiosztására. Miután meggyőződött arról, hogy ajánlata az ügyfél számára elkészült, a Microsoft értékesítési csapatai megoszthatják a bemutatót az ügyfelekkel, hogy megfogalmazzák azt az értéket, amelyet mindkét vállalat a közös megoldás telepítésekor végez. A bemutatónak ki kell terjednie a megoldásra, hogy miként segítheti az ügyfeleknek, hogy milyen iparágakban lehet a megoldás, és hogyan hasonlítható össze a versengő megoldásokkal. <br> <br> További információ: [Customer Presentation template](https://aka.ms/GTMServices_CustomerPresentation).|
-| *Ügyfél-esettanulmány* | Ez az információ egy potenciális ügyfelet mutat be, hogy a Microsoft milyen módon sikeresen telepítette ezt a megoldást az előző esetekben. <br> <br> További információ: [esettanulmány sablonja](https://aka.ms/GTM_Case_Study_Template). |
+| *Ügyfél bemutatása* | Csúsztassa a paklit a megoldás és a hozzá tartozó érték kiosztására. Miután meggyőződött arról, hogy ajánlata az ügyfél számára elkészült, a Microsoft értékesítési csapatai megoszthatják a bemutatót az ügyfelekkel, hogy megfogalmazzák azt az értéket, amelyet mindkét vállalat a közös megoldás telepítésekor végez. A bemutatónak ki kell terjednie a megoldásra, hogy miként segítheti az ügyfeleknek, hogy milyen iparágakban lehet a megoldás, és hogyan hasonlítható össze a versengő megoldásokkal. <br> <br> Használja a partner Centerben elérhető sablont.|
+| *Ügyfél-esettanulmány* | Ez az információ egy potenciális ügyfelet mutat be, hogy a Microsoft milyen módon sikeresen telepítette ezt a megoldást az előző esetekben. <br> <br> Használja a partner Centerben elérhető sablont. |
 | *Ellenőrizhető ügyfél-WINS (nem kötelező)* | Az ügyfelek sikereire adott példák a megoldás telepítése után. |
 | *Channel pitch Deck (nem kötelező)* | Egy olyan információkkal, amelyek segítségével a csatornák viszonteladói többet tudhatnak meg a megoldásról, és elérhetik az értékesítési csapatait, hogy eladják az ajánlatot. A szolgáltatás általában egy liftre, a megcélzott ügyfelekre, az ügyfelek megkérdezésére, a beszélgetési pontokra, valamint a videókra, a dokumentációra és a támogatási információkra mutató hivatkozásokat tartalmaz. |
 | *Hivatkozási architektúra diagramjai* | Egy dokumentum, amely a partner által létrehozott IP-címet jelképező modellt, valamint a Microsoft Cloud Services szolgáltatással való kapcsolatát, valamint az IP-cím közös értékesítésének technikai követelményeit mutatja be. |

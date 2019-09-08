@@ -1,6 +1,6 @@
 ---
-title: Biztonságosabbá erőforrásokat az Azure Advisorral |} A Microsoft Docs
-description: Azure Advisor használata az Azure-környezetek biztonságának javítása érdekében.
+title: Erőforrások biztonságosabbá tétele a Azure Advisorkal | Microsoft Docs
+description: A Azure Advisor segítségével javíthatja az Azure-beli üzembe helyezések biztonságát.
 services: advisor
 documentationcenter: NA
 author: kasparks
@@ -12,35 +12,35 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 290af605525d552e73c5f3a7a961593689326946
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e9c3556d904dd961a2b8f99f84983c35ccf5c6a
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467680"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772280"
 ---
-# <a name="make-resources-more-secure-with-azure-advisor"></a>Győződjön meg arról, erőforrások biztonságosabb, az Azure Advisor szolgáltatással
+# <a name="make-resources-more-secure-with-azure-advisor"></a>Erőforrások biztonságosabbá tétele a Azure Advisor
 
-Az Azure Advisor egy ajánlásokat az Azure-erőforrások egységes, összevont nézetének biztosít. Ahhoz, hogy Ön a biztonsági javaslatok az Azure Security Center integrálható. A biztonsági javaslatokat kaphat a **biztonsági** az Advisor irányítópult lapon.
+Azure Advisor egységes, összevont áttekintést nyújt az összes Azure-erőforrásra vonatkozó javaslatokról. A Azure Security Center a biztonsági javaslatok bevonásával integrálható. A biztonsági javaslatokat az Advisor irányítópult **Biztonság** lapján érheti el.
 
-A Security Center az Azure-erőforrások biztonsági felügyeletének átláthatóbbá és szabályozhatóbbá tételével megkönnyíti a fenyegetések megelőzését, észlelését és elhárítását. Rendszeresen elemzi a az Azure-erőforrások biztonsági állapotát. A Security Center javaslatokat hoz létre, amikor lehetséges biztonsági réseket észlel. A javaslatok végigvezetik a szükséges vezérlők konfigurálásának folyamatán. 
+A Security Center az Azure-erőforrások biztonsági felügyeletének átláthatóbbá és szabályozhatóbbá tételével megkönnyíti a fenyegetések megelőzését, észlelését és elhárítását. Rendszeresen elemzi az Azure-erőforrások biztonsági állapotát. A Security Center javaslatokat hoz létre, amikor lehetséges biztonsági réseket észlel. A javaslatok végigvezetik a szükséges vezérlők konfigurálásának lépésein. 
 
-További információ a biztonsági javaslatok: [biztonsági javaslatok kezelése az Azure Security Center](https://azure.microsoft.com/documentation/articles/security-center-recommendations/).
+A biztonsági javaslatokkal kapcsolatos további információkért lásd: [biztonsági javaslatok kezelése Azure Security Centerban](https://azure.microsoft.com/documentation/articles/security-center-recommendations/).
 
-## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Biztonsági javaslatok az Azure Advisor elérése
+## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Biztonsági javaslatok elérése Azure Advisor
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), majd nyissa meg [Advisor](https://aka.ms/azureadvisordashboard).
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd nyissa meg az [Advisor alkalmazást](https://aka.ms/azureadvisordashboard).
 
-2.  Az Advisor irányítópultján kattintson a **biztonsági** fülre.
+2.  Az Advisor Irányítópultján kattintson a **Biztonság** fülre.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Advisor-javaslatok kapcsolatos további információkért lásd:
+Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 * [Az Advisor bemutatása](advisor-overview.md)
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
-* [Az Advisor díjakkal kapcsolatos ajánlások](advisor-performance-recommendations.md)
-* [Advisor-teljesítményajánlások](advisor-performance-recommendations.md)
-* [Az Advisor magas rendelkezésre állás – javaslatok](advisor-high-availability-recommendations.md)
+* [Advisor – Cost-javaslatok](advisor-cost-recommendations.md)
+* [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
+* [Advisor – magas rendelkezésre állási javaslatok](advisor-high-availability-recommendations.md)
 
 
  

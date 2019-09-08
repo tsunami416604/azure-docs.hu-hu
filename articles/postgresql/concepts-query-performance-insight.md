@@ -6,16 +6,16 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: cd07656ab4e6e0f684eecf35d241eac539b7a552
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 748c6f08da535013724f68b8be424e50a2d49dfd
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907470"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764434"
 ---
 # <a name="query-performance-insight"></a>Lekérdezési terheléselemző 
 
-**A következőkre vonatkozik:** Azure Database for PostgreSQL – egyetlen kiszolgáló 9,6 és 10
+**A következőkre vonatkozik:** Azure Database for PostgreSQL – egykiszolgálós verzió: 9,6, 10, 11
 
 Lekérdezési terheléselemző segítségével gyorsan azonosíthatja a leghosszabb ideig futó lekérdezéseket, hogyan változnak az idő múlásával, és mi vár rájuk.
 
@@ -28,7 +28,7 @@ A Lekérdezési terheléselemző működéséhez az adatnak léteznie kell a [le
 ## <a name="viewing-performance-insights"></a>A teljesítmény-áttekintés megtekintése
 A Microsoft Azure Portal [Lekérdezési terheléselemző](concepts-query-performance-insight.md) nézete a Lekérdezéstárból származó fontos információk vizualizációit jeleníti meg. 
 
-A Azure Database for PostgreSQL-kiszolgáló portál lapján válassza a lekérdezési **teljesítmény** betekintése lehetőséget a menüsáv **intelligens teljesítmény** szakaszában.
+A Azure Database for PostgreSQL-kiszolgáló portál lapján válassza a **lekérdezési teljesítmény betekintése** lehetőséget a menüsáv **intelligens teljesítmény** szakaszában.
 
 ![Hosszú ideig futó lekérdezések Lekérdezési terheléselemző](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
 

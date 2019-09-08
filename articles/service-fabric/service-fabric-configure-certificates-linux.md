@@ -11,14 +11,14 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/26/2018
+ms.date: 09/06/2019
 ms.author: chackdan
-ms.openlocfilehash: 3816fb56b806029d7a23b67741197e32de6a6ff3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9599d59f7f23de4e54ce323aa4a2ad837d8ed074
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102994"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773257"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Tanúsítványok és biztonság Linux-fürtökön
 
@@ -30,7 +30,7 @@ A Service Fabric általában X. 509 tanúsítványokat vár a Linux-fürtcsomóp
 
 Linux-fürtök esetén Service Fabric a tanúsítványokat olyan. PEM fájlként kell megadnia, amely tartalmazza a tanúsítványt és a titkos kulcsot, vagy egy. CRT-fájlt, amely tartalmazza a tanúsítványt és a titkos kulcsot tartalmazó. Key fájlt. Minden fájlnak PEM formátumúnak kell lennie. 
 
-Ha a tanúsítványt egy [Resource Manager-sablonnal](./service-fabric-cluster-creation-create-template.md) vagy [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/?view=latest#service_fabric) -parancsokkal telepíti Azure Key Vaultból, a tanúsítványt a */var/lib/sfcerts* könyvtárban, az egyes csomópontokon a megfelelő formátumban kell telepíteni. Ha a tanúsítványt egy másik módszerrel telepíti, meg kell győződnie arról, hogy a tanúsítvány megfelelően van telepítve a fürtcsomópontokon.
+Ha a tanúsítványt egy [Resource Manager-sablonnal](./service-fabric-cluster-creation-create-template.md) vagy [PowerShell](https://docs.microsoft.com/powershell/module/az.servicefabric/?view=azps-2.6.0) -parancsokkal telepíti Azure Key Vaultból, a tanúsítványt a */var/lib/sfcerts* könyvtárban, az egyes csomópontokon a megfelelő formátumban kell telepíteni. Ha a tanúsítványt egy másik módszerrel telepíti, meg kell győződnie arról, hogy a tanúsítvány megfelelően van telepítve a fürtcsomópontokon.
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>Az alkalmazás jegyzékfájljában hivatkozott tanúsítványok
 
@@ -42,7 +42,7 @@ Egyes szolgáltatások esetében X. 509 tanúsítványokat állíthat be a [Conf
 
 ### <a name="using-x509-securitycredentialstype"></a>A X509 SecurityCredentialsType használata
 
-A .NET-vagy Java SDK-k segítségével megadhatja a **SecurityCredentialsType** **X509** . Ez megfelel a `X509Credentials` [](https://docs.microsoft.com/java/api/system.fabric.x509credentials) `SecurityCredentials` [](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)[](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/(.net Java) típusának/(.net[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
+A .NET-vagy Java SDK-k segítségével megadhatja a **SecurityCredentialsType** **X509** . Ez `X509Credentials` megfelel[](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)a/[](https://docs.microsoft.com/java/api/system.fabric.x509credentials) `SecurityCredentials` [](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/(.net Java) típusának (.net[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
 
 A **X509** -hivatkozás megkeresi a tanúsítványt a tanúsítványtárolóban. A következő XML a tanúsítvány helyének megadásához használt paramétereket mutatja be:
 
@@ -52,7 +52,7 @@ A **X509** -hivatkozás megkeresi a tanúsítványt a tanúsítványtárolóban.
     <Parameter Name="CertificateStoreName" Value="My" />
 ```
 
-A Linux rendszeren futó szolgáltatások esetében a **LocalMachine**/a tanúsítványok alapértelmezett helyére, a */var/lib/sfcerts* könyvtárra mutatnak. Linux esetén a **CertificateStoreLocation** és a **CertificateStoreName** bármely más kombinációja nincs meghatározva. 
+A Linux rendszeren futó szolgáltatások esetében a **LocalMachine**/a tanúsítványok alapértelmezett helyére, a */var/lib/sfcerts* könyvtárra**mutatnak** . Linux esetén a **CertificateStoreLocation** és a **CertificateStoreName** bármely más kombinációja nincs meghatározva. 
 
 Mindig **LocalMachine** megadása a **CertificateStoreLocation** paraméterhez. Nem kell megadnia a **CertificateStoreName** paramétert, mert az alapértelmezett értéke "My". **X509** -hivatkozás esetén a tanúsítványfájl a fürtcsomópont */var/lib/sfcerts* könyvtárában kell, hogy legyen.  
 
@@ -73,7 +73,7 @@ A következő XML egy **TransportSettings** szakaszt mutat be a stílus alapján
 
 ### <a name="using-x509_2-securitycredentialstype"></a>A X509_2 SecurityCredentialsType használata
 
-A Java SDK segítségével megadhatja a **SecurityCredentialsType** **X509_2** . Ez megfelel a `X509Credentials2` (Java) ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) `SecurityCredentials` típusának.[](https://docs.microsoft.com/java/api/system.fabric.securitycredentials) 
+A Java SDK segítségével megadhatja a **SecurityCredentialsType** **X509_2** . Ez `X509Credentials2` megfelel a (Java[) (](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) `SecurityCredentials` típusának. 
 
 **X509_2** -hivatkozás esetén meg kell adnia egy Path paramétert, így a tanúsítvány a */var/lib/sfcerts*-től eltérő könyvtárban is megkereshető.  A következő XML a tanúsítvány helyének megadásához használt paramétereket mutatja be: 
 
@@ -111,7 +111,7 @@ Egy alkalmazás konfigurálásához adjon hozzá egy [**SecretsCertificate**](ht
    </Certificates>   
 ```
 
-Hivatkozhat a fürt tanúsítványára vagy a fürt egyes csomópontjaira telepített tanúsítványokra. Linux rendszeren a tanúsítvány fájljainak jelen kell lenniük a */var/lib/sfcerts* könyvtárban. További információért lásd: [X. 509 tanúsítványok helye és formátuma Linux](#location-and-format-of-x509-certificates-on-linux-nodes)-csomópontokon.
+Hivatkozhat a fürt tanúsítványára vagy a fürt egyes csomópontjaira telepített tanúsítványokra. Linux rendszeren a tanúsítvány fájljainak jelen kell lenniük a */var/lib/sfcerts* könyvtárban. További információért lásd: [X. 509 tanúsítványok helye és formátuma Linux-csomópontokon](#location-and-format-of-x509-certificates-on-linux-nodes).
 
 
 

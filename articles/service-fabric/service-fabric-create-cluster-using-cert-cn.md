@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2018
+ms.date: 09/06/2019
 ms.author: atsenthi
-ms.openlocfilehash: 49c733c475f401b0e8c9329e2e5d7b463175f81a
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 73e02b4482f69ec0c9d5a602f30cefea77279778
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599743"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764726"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Tanúsítvány köznapi nevét használó Service Fabric-fürt üzembe helyezése ujjlenyomat helyett
 Két tanúsítvány nem rendelkezhet ugyanazzal az ujjlenyomattal, ami lehetővé teszi a fürt tanúsítványainak átváltását vagy felügyeletét. Több tanúsítvány, azonban ugyanaz a köznapi név vagy a tárgy lehet.  A tanúsítvány köznapi neveit használó fürtök sokkal egyszerűbbé teszik a Tanúsítványkezelőt. Ez a cikk bemutatja, hogyan helyezhet üzembe egy Service Fabric-fürtöt a tanúsítványhoz tartozó köznapi név használatára a Tanúsítvány ujjlenyomata helyett.
@@ -62,7 +62,7 @@ $resourceId = $newKeyVault.ResourceId
 
 # Add the certificate to the key vault.
 $PasswordSec = ConvertTo-SecureString -String $Password -AsPlainText -Force
-$KVSecret = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
+$KVSecret = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
 
 $CertificateThumbprint = $KVSecret.Thumbprint
 $CertificateURL = $KVSecret.SecretId
@@ -224,7 +224,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFi
 
 ## <a name="next-steps"></a>További lépések
 * További információ a [fürt biztonságáról](service-fabric-cluster-security.md).
-* Tudnivalók a [fürt tanúsítványainak](service-fabric-cluster-rollover-cert-cn.md) átváltásáról
+* Tudnivalók a [fürt tanúsítványainak átváltásáról](service-fabric-cluster-rollover-cert-cn.md)
 * [Fürt tanúsítványainak frissítése és kezelése](service-fabric-cluster-security-update-certs-azure.md)
 * A Tanúsítványkezelő leegyszerűsítése a [fürt a tanúsítvány ujjlenyomatáról a köznapi névre való módosításával](service-fabric-cluster-change-cert-thumbprint-to-cn.md)
 

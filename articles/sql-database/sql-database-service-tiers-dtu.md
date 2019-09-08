@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/25/2019
-ms.openlocfilehash: c46913f24deffc7c4db95d8a77db1c49ae54b6ae
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 09/06/2019
+ms.openlocfilehash: 03f16987941f79f9161ccbc172bb2ca1a7139384
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566685"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773208"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Szolgáltatási szintek a DTU-alapú vásárlási modellben
 
-A DTU-alapú vásárlási modellben a szolgáltatási szintek különböző számítási méretekből állnak, amelyek rögzített mennyiségű foglalt tárterülettel, rögzített megőrzési időtartammal rendelkeznek a biztonsági mentésekhez és a rögzített árakhoz képest. A DTU-alapú vásárlási modell minden szolgáltatási szintje rugalmasságot biztosít a számítási méretek minimális állásidővel való módosításához [](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/). van azonban egy olyan időszak, amelyben a kapcsolat megszakadt az adatbázisba rövid idő alatt, ami az újrapróbálkozási logika használatával enyhíthető. Önálló adatbázisok és rugalmas készletek számlázása óraszám alapján, a szolgáltatási szint és a számítási méret.
+A DTU-alapú vásárlási modellben a szolgáltatási szintek különböző számítási méretekből állnak, amelyek rögzített mennyiségű foglalt tárterülettel, rögzített megőrzési időtartammal rendelkeznek a biztonsági mentésekhez és a rögzített árakhoz képest. A DTU-alapú vásárlási modell minden szolgáltatási szintje rugalmasságot biztosít a számítási méretek minimális [állásidővel](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)való módosításához. van azonban egy olyan időszak, amelyben a kapcsolat megszakadt az adatbázisba rövid idő alatt, ami az újrapróbálkozási logika használatával enyhíthető. Önálló adatbázisok és rugalmas készletek számlázása óraszám alapján, a szolgáltatási szint és a számítási méret.
 
 > [!IMPORTANT]
 > SQL Database felügyelt példány nem támogatja a DTU-alapú vásárlási modellt. További információkért lásd: [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md).
@@ -37,7 +37,7 @@ Szolgáltatásszint kiválasztása elsődlegesen az üzleti folytonosság, táro
 |SLA-ban garantált üzemidő|99.99%|99.99%|99.99%|
 |Biztonsági mentés megőrzése|7 nap|35 napon belül|35 napon belül|
 |CPU|Alacsony|Alacsony, közepes, nagy|Közepes, nagy|
-|IO-átviteli sebesség (becsült) |2,5 dtu-k IOPS| 2,5 dtu-k IOPS | Dtu-k 48 IOPS|
+|IO-átviteli sebesség (becsült) |1-5 IOPS/DTU| 1-5 IOPS/DTU | 25 IOPS/DTU|
 |IO-késés (becsült)|5 ezredmásodperc (olvasás), 10 ms (írás)|5 ezredmásodperc (olvasás), 10 ms (írás)|2 ms (olvasás/írás)|
 |Oszlopcentrikus indexelés |–|S3 vagy újabb verzió|Támogatott|
 |Memóriabeli OLTP beállítása|–|–|Támogatott|

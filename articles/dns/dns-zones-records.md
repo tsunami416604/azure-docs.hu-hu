@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 1a62a4d5f06856ca0fe6356ca388047679097e3f
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: ccc418cd3af14c0468ab8d669ad2e2e11a0b6d57
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68004476"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772257"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS-zónák és-rekordok áttekintése
 
@@ -30,7 +30,7 @@ Ez az oldal ismerteti a tartományok, a DNS-zónák és a DNS-rekordok és-rekor
 
 A tartománynévrendszer tartományok hierarchiájából áll. A hierarchia első eleme a „gyökértartomány”, amelynek neve egyszerűen „ **.** ”.  Ez alatt találhatók a legfelső szintű tartományok, mint a „com”, a „net”, az „org”, az „uk” vagy a „jp”.  Ezek alatt találhatók a másodlagos szintű tartományok, mint az „org.uk” vagy a „co.jp”. A DNS-hierarchia tartományait globálisan osztják el, és a DNS-névkiszolgálók világszerte futnak.
 
-A tartománynév-regisztráló egy olyan szervezet, amely lehetővé teszi egy tartománynév (például "contoso.com") megvásárlását.  A tartománynév megvásárlásával jogosult a név alatti DNS-hierarchia szabályozására, például lehetővé teszi, hogy a "www.contoso.com" nevet a vállalati webhelyre irányítsa. A regisztrátor a saját nevében üzemeltetheti a tartományt, vagy alternatív névkiszolgálók megadását is lehetővé teszi.
+A tartománynév-regisztráló egy olyan szervezet, amely lehetővé teszi egy tartománynév (például "contoso.com") megvásárlását.  A tartománynév megvásárlásával jogosult a név alatti DNS-hierarchia szabályozására, például lehetővé teszi, hogy a www.contoso.com nevet a vállalati webhelyre irányítsa. A regisztrátor a saját nevében üzemeltetheti a tartományt, vagy alternatív névkiszolgálók megadását is lehetővé teszi.
 
 A Azure DNS globálisan elosztott, magas rendelkezésre állású névkiszolgáló-infrastruktúrát biztosít, amely a tartomány üzemeltetésére használható. A tartományok Azure DNS-ban való üzemeltetésével a DNS-rekordokat a többi Azure-szolgáltatáshoz hasonló hitelesítő adatokkal, API-kkal, eszközökkel, számlázással és támogatással kezelheti.
 
@@ -96,7 +96,7 @@ A SOA rekordban lévő zóna sorozatszáma nem frissül automatikusan, ha a zón
 
 ### <a name="srv-records"></a>SRV-rekordok
 
-Az [SRV](https://en.wikipedia.org/wiki/SRV_record) -rekordokat a különböző szolgáltatások használják a kiszolgálók helyeinek megadására. SRV-rekord megadásakor a Azure DNSban:
+Az [SRV-rekordokat](https://en.wikipedia.org/wiki/SRV_record) a különböző szolgáltatások használják a kiszolgálók helyeinek megadására. SRV-rekord megadásakor a Azure DNSban:
 
 * A *szolgáltatást* és a *protokollt* a rekordtípus nevének részeként kell megadni, az aláhúzások előtaggal.  Például: '\_SIP.\_ tcp.name '.  A zóna csúcsán lévő rekord esetében nem kell megadnia a (z\@) "" nevet a rekord nevében, egyszerűen használja a szolgáltatást és a protokollt\_, például\_ "SIP". TCP ".
 * A *prioritás*, a *súlyozás*, a *port*és a *cél* paraméterként van megadva a rekordban lévő rekordok mindegyikében.
@@ -135,7 +135,7 @@ A Azure DNS REST API szintjén a Etagek HTTP-fejlécek használatával vannak me
 
 | Fejléc | Viselkedés |
 | --- | --- |
-| None |Mindig sikeres (nincs ETAG-ellenőrzés) |
+| Nincsenek |Mindig sikeres (nincs ETAG-ellenőrzés) |
 | If-Match \<ETAG > |A PUT csak akkor sikeres, ha az erőforrás létezik, és a ETAG megfelel |
 | If-Match * |A PUT csak akkor sikeres, ha az erőforrás létezik |
 | If-None-Match * |A csak akkor sikeres, ha az erőforrás nem létezik |
@@ -149,5 +149,5 @@ Azure DNS használatakor a következő alapértelmezett korlátok érvényesek:
 
 ## <a name="next-steps"></a>További lépések
 
-* A Azure DNS használatának megkezdéséhez Ismerje meg, hogyan [hozhat létre DNS](dns-getstarted-create-dnszone-portal.md) -zónát, és hogyan [hozhat létre DNS-rekordokat](dns-getstarted-create-recordset-portal.md).
+* A Azure DNS használatának megkezdéséhez Ismerje meg, hogyan [hozhat létre DNS-zónát](dns-getstarted-create-dnszone-portal.md) , és hogyan [hozhat létre DNS-rekordokat](dns-getstarted-create-recordset-portal.md).
 * Meglévő DNS-zóna áttelepítéséhez tekintse meg [a DNS-zónafájl importálását és exportálását](dns-import-export.md)ismertető témakört.

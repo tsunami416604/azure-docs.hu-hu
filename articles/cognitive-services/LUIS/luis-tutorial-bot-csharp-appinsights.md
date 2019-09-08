@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: 93a75945025b2ab98541f1e1cf678145ddff0123
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
-ms.translationtype: HT
+ms.openlocfilehash: 51860efdcc440d6b8a4ea57777ad31fa718657b5
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387996"
+ms.locfileid: "70772825"
 ---
 # <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-c"></a>Oktatóanyag: LUIS-eredmények hozzáadása a Application Insights egy robotbólC#
 
@@ -160,7 +160,7 @@ Az Application-elemzésekhez való adathozzáadáshoz szükség van a kialakít�
 1. A Visual Studióban hozza létre és futtassa a robotot. 
 1. Indítsa el a robot-emulátort, és nyissa meg a robotot. Ez a [lépés](luis-csharp-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot) az előző oktatóanyagban van megadva.
 
-1. Kérdezze meg a robot kérdését. Ez a [lépés](luis-csharp-tutorial-bf-v4.md#ask-bot-a-question-for-the-book-flight-intent) az előző oktatóanyagban van megadva.
+1. Kérdezze meg a robot kérdését. Ez a [lépés](luis-csharp-tutorial-bf-v4.md##use-the-bot-emulator-to-test-the-bot) az előző oktatóanyagban van megadva.
 
 ## <a name="view-luis-entries-in-application-insights"></a>Nézet LUIS bejegyzések az Application insights szolgáltatásban
 

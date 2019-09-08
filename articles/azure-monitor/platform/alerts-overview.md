@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: defc317618dfffd0e2b28c75b6168ec1dbda36b7
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: HT
+ms.openlocfilehash: 3ac6ec9fe55e901e593f201b5ff71668d80d66e3
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735128"
+ms.locfileid: "70773008"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztások áttekintése 
 
@@ -53,7 +53,11 @@ A **jeleket a** cél erőforrás bocsátja ki, és számos típus lehet. Metrika
 **Riasztás leírása** – a felhasználó által konfigurált riasztási szabály leírása
 
 **Súlyosság** – a riasztás súlyossága, ha a riasztási szabályban megadott feltételek teljesülnek. A súlyosság 0 és 4 között lehet.
-3\., 0 = kritikus, 1. hiba: a 2. figyelmeztetés = 3. tájékoztató
+   - 0 = kritikus
+   - 1\. sz = hiba
+   - 2\. szint = figyelmeztetés
+   - 3\. szint = tájékoztató
+   - 4\. szint = részletes 
 
 **Művelet** – a riasztás indításakor végrehajtott művelet. További információ: [Action groups](../../azure-monitor/platform/action-groups.md).
 

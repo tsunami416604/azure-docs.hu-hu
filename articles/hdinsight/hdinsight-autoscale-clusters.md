@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: 333eecb11f0bd20c747bc44419fea26765f886c5
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f7e34d2bbad5f5d8e6b063269b7e87c314fdce90
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509110"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70770698"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Azure HDInsight-fürtök automatikus méretezése (előzetes verzió)
 
@@ -31,7 +31,7 @@ Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típu
 | HDInsight 3,6 ESP nélkül | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
 | HDInsight 4,0 ESP nélkül | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
 | HDInsight 3,6, ESP-vel | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
-| HDInsight 3,6, ESP-vel | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
+| HDInsight 4,0, ESP-vel | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
 
 ## <a name="how-it-works"></a>Működés
 
@@ -77,8 +77,8 @@ A csomópontok száma és a jelenlegi CPU-és memória-követelmények alapján 
 Ha az automatikus skálázási funkciót terheléselosztásos skálázással szeretné engedélyezni, hajtsa végre a következő lépéseket a fürt normál létrehozási folyamatának részeként:
 
 1. **Gyors létrehozás**helyett válassza **az egyéni (méret, beállítások, alkalmazások)** lehetőséget.
-1. Az 5. **Egyéni** lépés (**fürt mérete**) területen jelölje be a munkavégző csomópontok autoskálázása jelölőnégyzetet.
-1. Válassza az **automatikus** **skálázás típusa**beállításnál a betöltés lehetőséget.
+1. Az 5. **Egyéni** lépés (**fürt mérete**) területen jelölje be a **munkavégző csomópontok autoskálázása** jelölőnégyzetet.
+1. Válassza az automatikus **skálázás típusa**beállításnál a **Betöltés** lehetőséget.
 1. Adja meg a kívánt értékeket a következő tulajdonságokhoz:  
 
     * **A munkavégző csomópontok kezdeti száma**.  
@@ -94,7 +94,7 @@ A munkavégző csomópontok kezdeti számának a minimális és a maximális ér
 Ha az automatikus skálázási funkciót ütemezett méretezéssel szeretné engedélyezni, hajtsa végre a következő lépéseket a fürt normál létrehozási folyamatának részeként:
 
 1. **Gyors létrehozás**helyett válassza **az egyéni (méret, beállítások, alkalmazások)** lehetőséget.
-1. Az 5. **Egyéni** lépés (**fürt mérete**) területen jelölje be a munkavégző csomópontok autoskálázása jelölőnégyzetet.
+1. Az 5. **Egyéni** lépés (**fürt mérete**) területen jelölje be a **munkavégző csomópontok autoskálázása** jelölőnégyzetet.
 1. Adja meg a **munkavégző csomópontok számát**, amely a fürt skálázásának korlátját vezérli.
 1. Válassza az **ütemezett** beállítás lehetőséget az **autoskálázás típusa**területen.
 1. Kattintson a **Konfigurálás** elemre az **automatikus skálázási konfiguráció** ablak megnyitásához.
@@ -204,7 +204,7 @@ Használja a kérelem hasznos adatainak megfelelő paramétereket. Az alábbi JS
 { autoscale: { capacity: { minInstanceCount: 1, maxInstanceCount: 2 } } }
 ```
 
-Tekintse meg az előző szakaszt a betöltési [alapú automatikus skálázás engedélyezéséhez](#load-based-autoscaling) az összes hasznos adat paraméterének teljes leírásához.
+Tekintse meg az előző szakaszt a [betöltési alapú automatikus skálázás engedélyezéséhez](#load-based-autoscaling) az összes hasznos adat paraméterének teljes leírásához.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
@@ -243,7 +243,7 @@ Az alábbi listában az összes olyan fürt állapotüzenetek látható, amelyet
 | Frissítési hiba  | A HDInsight problémákba ütközött az automatikus skálázási konfiguráció frissítése során. Az ügyfelek dönthetnek úgy, hogy megpróbálják megismételni a frissítést vagy letiltani az autoskálázást.  |
 | Hiba  | Probléma van a fürttel, és nem használható. Törölje a fürtöt, és hozzon létre egy újat.  |
 
-A fürtben lévő csomópontok aktuális számának megtekintéséhez nyissa meg a fürt áttekintő lapján a fürt **mérete** diagramot, vagy kattintson a **fürt mérete** lehetőségre a **Beállítások**területen.
+A fürtben lévő csomópontok aktuális számának megtekintéséhez nyissa meg a fürt **áttekintő** lapján a fürt **mérete** diagramot, vagy kattintson a **fürt mérete** lehetőségre a **Beállítások**területen.
 
 ### <a name="operation-history"></a>Műveleti előzmények
 

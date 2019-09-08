@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e6f781926e2a30ecf6d34274b20991b81f0bb96d
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0f8e605db3d647b5907c8c6741e4e2200bf14c4f
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972904"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772363"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>VLAN-ok/alhálózatok létrehozása és kezelése saját felhők számára
 
@@ -21,8 +21,8 @@ Nyissa meg a hálózat oldalon a VLAN-ok/alhálózatok lapot, és hozzon létre 
 
 ## <a name="create-a-vlansubnet"></a>VLAN/alhálózat létrehozása
 
-1. [Nyissa meg a CloudSimple](monitor-activity.md) -portált, és válassza a **hálózat** lehetőséget az oldalsó menüben.
-2. Válassza a **VLAN-ok/** alhálózatok lehetőséget.
+1. [Nyissa meg a CloudSimple-portált](access-cloudsimple-portal.md) , és válassza a **hálózat** lehetőséget az oldalsó menüben.
+2. Válassza a **VLAN-ok/alhálózatok**lehetőséget.
 3. Kattintson a **VLAN/alhálózat létrehozása**lehetőségre.
 
     ![VLAN/alhálózat lap](media/vlan-subnet-page.png)
@@ -43,7 +43,7 @@ Ha elosztott portot szeretne létrehozni a vSphere-ben, kövesse az <a href="htt
 
 ## <a name="select-a-firewall-table"></a>Tűzfalszabály kiválasztása
 
-A tűzfalak és a kapcsolódó szabályok a **Network > Firewall Tables** lapon vannak meghatározva. Ha ki szeretné választani a tűzfalat, amelyre alkalmazni kívánja a VLAN-t/alhálózatot a privát felhőhöz, válassza a VLAN/alhálózat kattintson a **tűzfal tábla melléklet** elemre a **VLAN-ok/** alhálózatok lapon. A tűzfalszabályok beállításával és a szabályok definiálásával kapcsolatos utasításokért tekintse meg a [Tűzfalszabályok](firewall.md) című témakört.
+A tűzfalak és a kapcsolódó szabályok a **Network > Firewall Tables** lapon vannak meghatározva. Ha ki szeretné választani a tűzfalat, amelyre alkalmazni kívánja a VLAN-t/alhálózatot a privát felhőhöz, válassza a VLAN/alhálózat kattintson a **tűzfal tábla melléklet** elemre a **VLAN-ok/alhálózatok** lapon. A tűzfalszabályok beállításával és a szabályok definiálásával kapcsolatos utasításokért tekintse meg a [Tűzfalszabályok](firewall.md) című témakört.
 
 ![Tűzfalszabály hivatkozása](media/vlan-subnet-firewall-link.png)
 
@@ -52,8 +52,8 @@ A tűzfalak és a kapcsolódó szabályok a **Network > Firewall Tables** lapon 
 
 ## <a name="edit-a-vlansubnet"></a>VLAN/alhálózat szerkesztése
 
-Egy VLAN/alhálózat beállításainak szerkesztéséhez válassza ki a **VLAN-ok/** alhálózatok lapon, és kattintson a **Szerkesztés** ikonra. Módosítsa a módosításokat, és kattintson a **Submet**elemre.
+Egy VLAN/alhálózat beállításainak szerkesztéséhez válassza ki a **VLAN-ok/alhálózatok** lapon, és kattintson a **Szerkesztés** ikonra. Módosítsa a módosításokat, és kattintson a **Submet**elemre.
 
 ## <a name="delete-a-vlansubnet"></a>VLAN/alhálózat törlése
 
-VLAN/alhálózat törléséhez válassza ki a VLAN-ok **/** alhálózatok lapon, és kattintson a **Törlés** ikonra. A megerősítéshez kattintson a **Törlés** gombra.
+VLAN/alhálózat törléséhez válassza ki a VLAN-ok **/alhálózatok** lapon, és kattintson a **Törlés** ikonra. A megerősítéshez kattintson a **Törlés** gombra.

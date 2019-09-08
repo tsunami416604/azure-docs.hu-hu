@@ -1,18 +1,27 @@
 ---
-ms.openlocfilehash: fe9879f9574fe1496ebdf20ac76fe5b759d4ea6a
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+title: Tárolók és lemezképek
+services: cognitive-services
+author: IEvangelist
+manager: nitinme
+description: Két tábla, amely az összes kognitív szolgáltatási ajánlat tároló-nyilvántartásait, tárházait és képneveit jelképezi.
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 09/06/2019
+ms.author: dapine
+ms.openlocfilehash: 600c01fc2a273141b06996369231c2389c5d6d57
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051233"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70775859"
 ---
 ### <a name="container-repositories-and-images"></a>Tárolók és lemezképek
 
 Az alábbi táblázat az Azure Cognitive Services által kínált elérhető tároló-lemezképek átfogó listáját tartalmazza.
 
-#### <a name="public-container-registry-mcrmicrosoftcom"></a>Nyilvános (Container Registry: `mcr.microsoft.com`)
+#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Nyilvános "ungated" (tároló-beállításjegyzék `mcr.microsoft.com`:)
 
-A Microsoft Container Registry a Cognitive Services összes általánosan elérhető (GA) tárolóját üzemelteti.
+A Microsoft Container Registry a Cognitive Services összes nyilvánosan elérhető "nem kihelyezett" tárolóját üzemelteti.
 
 | Szolgáltatás | Tároló | Container Registry/adattár/rendszerkép neve |
 |--|--|--|
@@ -21,9 +30,9 @@ A Microsoft Container Registry a Cognitive Services összes általánosan elérh
 | [Szövegelemzés](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Nyelvfelismerés | `mcr.microsoft.com/azure-cognitive-services/language` |
 | [Szövegelemzés](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Véleményelemzés | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-#### <a name="public-preview-container-registry-containerpreviewazurecrio"></a>Nyilvános előzetes (Container Registry: `containerpreview.azurecr.io`)
+#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Nyilvános "lezárt" előzetes verzió (Container `containerpreview.azurecr.io`Registry:)
 
-A tároló előzetes verziójának beállításjegyzéke tartalmazza az összes "nyilvános előzetes" tárolót a Cognitive Services számára, amelyek még nem haladták meg az általános elérhetőséget (GA). Ezeknek a tárolóknak formális kérelemre van szükségük ahhoz, hogy használni lehessen őket.
+A tároló előzetes verziójának beállításjegyzéke az összes nyilvánosan elérhető "GateD" tárolót tárolja Cognitive Services számára. Ezeknek a tárolóknak formális kérelemre van szükségük ahhoz, hogy használni lehessen őket.
 
 | Szolgáltatás | Tároló | Container Registry/adattár/rendszerkép neve |
 |--|--|--|

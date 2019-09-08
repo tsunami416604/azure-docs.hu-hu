@@ -1,61 +1,61 @@
 ---
-title: Az Azure Database for PostgreSQL - kiszolgáló egyetlen Query Store használati forgatókönyvek
-description: A cikk néhány olyan forgatókönyvet a Query Store az Azure Database for PostgreSQL - hez-kiszolgáló egyetlen.
+title: Lekérdezési tár használati forgatókönyvei Azure Database for PostgreSQL – egyetlen kiszolgálón
+description: Ez a cikk a Azure Database for PostgreSQL-Single Server lekérdezési tárolójának egyes forgatókönyveit ismerteti.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 029c595ba983d3b758568fbacaf6577014d893db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cdb0d4e00e667b0369cdf612662830f18dc5fb8
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067347"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764278"
 ---
-# <a name="usage-scenarios-for-query-store"></a>A Query Store használati forgatókönyvek
+# <a name="usage-scenarios-for-query-store"></a>A lekérdezési tároló használati forgatókönyvei
 
-**A következőkre vonatkozik:** Azure Database for PostgreSQL – egyetlen kiszolgáló 9.6 és 10
+**A következőkre vonatkozik:** Azure Database for PostgreSQL – egykiszolgálós verzió: 9,6, 10, 11
 
-Számos olyan forgatókönyvekben, ahol nyomkövetési és karbantartása kiszámítható számítási feladatokra teljesítmény kritikus fontosságú a Query Store is használhatja. Vegye figyelembe az alábbi példák: 
-- Azonosító és a leggyakoribb drága lekérdezések hangolása 
+A lekérdezési tároló számos olyan forgatókönyvben használható, amelyben kritikus fontosságú a kiszámítható számítási feladatok teljesítményének nyomon követése és karbantartása. Vegye figyelembe az alábbi példákat: 
+- A legfontosabb költséges lekérdezések azonosítása és finomhangolása 
 - A / B tesztelés 
-- Frissítések során gondoskodik a teljesítmény stabil 
-- Azonosító és az ad-hoc számítási feladatok javítása 
+- A teljesítmény stabil tartása a frissítések során 
+- Ad hoc számítási feladatok azonosítása és javítása 
 
-## <a name="identify-and-tune-expensive-queries"></a>Azonosíthatja és drága Lekérdezések finomhangolása 
+## <a name="identify-and-tune-expensive-queries"></a>Költséges lekérdezések azonosítása és finomhangolása 
 
-### <a name="identify-longest-running-queries"></a>Leghosszabb futó lekérdezések azonosítása 
-Használja a [lekérdezési Terheléselemző](concepts-query-performance-insight.md) megtekintése az Azure Portalon gyorsan azonosíthatja a leghosszabb futó lekérdezések. Ezek a lekérdezések általában általában használnak egy jelentős erőforrásokat. Leghosszabban futó kérdéseire optimalizálása a jobb teljesítmény érdekében a rendszeren futó más lekérdezések által használható erőforrások felszabadítása. 
+### <a name="identify-longest-running-queries"></a>A leghosszabb ideig futó lekérdezések azonosítása 
+Használja a Azure Portal [lekérdezési terheléselemző](concepts-query-performance-insight.md) nézetét a leghosszabb ideig futó lekérdezések gyors azonosításához. Ezek a lekérdezések általában jelentős mennyiségű erőforrást használnak. A leghosszabb ideig tartó kérdések optimalizálása a teljesítmény javítása érdekében a rendszeren futó egyéb lekérdezések által használt erőforrások felszabadításával növelheti a teljesítményt. 
 
-### <a name="target-queries-with-performance-deltas"></a>Teljesítmény eltérések cél lekérdezéseket. 
-Query Store a teljesítményadatok darabolja fel a windows indításakor, így nyomon követheti a lekérdezési teljesítmény az idő függvényében. Ennek segítségével azonosíthatja pontosan amely lekérdezések járulnak töltött teljes idő növekedéséhez. Ennek eredményeképpen teheti az alkalmazások és szolgáltatások célzott hibaelhárítás.
+### <a name="target-queries-with-performance-deltas"></a>Célzott lekérdezések teljesítménybeli különbözetekkel 
+A lekérdezési tároló a teljesítményadatokat a Windows időben tárolja, így az idő múlásával nyomon követheti a lekérdezés teljesítményét. Ez segít azonosítani, hogy pontosan mely lekérdezések járulnak hozzá a teljes töltött idő növekedéséhez. Ennek eredményeképpen megteheti a számítási feladatok megkeresését.
 
-### <a name="tuning-expensive-queries"></a>Drága lekérdezések hangolása 
-Ha azonosította a lekérdezés rosszabb teljesítménnyel, a végrehajtott művelet a probléma jellegétől függ: 
-- Használat [teljesítménnyel kapcsolatos javaslatok](concepts-performance-recommendations.md) a javasolt indexek határozza meg, ha vannak ilyenek. Ha igen, hozza létre az indexet, és ezután a Query Store segítségével kiértékelheti az index létrehozása után a lekérdezési teljesítmény. 
-- Győződjön meg arról, hogy naprakészek-e a statisztikák a lekérdezés által használt mögöttes táblákhoz.
-- Fontolja meg a drága lekérdezések újraírását. Például a lekérdezés paraméterezésének előnyeit, és dinamikus SQL-felhasználás csökkentése. Optimális a logikát alkalmazzák, például a szűrést az adatbázisoldalon, nem az alkalmazás ügyféloldali adatok alkalmazása az adatok olvasásakor. 
+### <a name="tuning-expensive-queries"></a>Költséges lekérdezések finomhangolása 
+Ha az optimális teljesítményt biztosító lekérdezést azonosít, a művelet a probléma jellegétől függ: 
+- A [teljesítménnyel kapcsolatos javaslatok](concepts-performance-recommendations.md) segítségével állapítsa meg, hogy vannak-e javasolt indexek. Ha igen, hozza létre az indexet, majd a Query Store használatával értékelje ki a lekérdezés teljesítményét az index létrehozása után. 
+- Győződjön meg arról, hogy a lekérdezés által használt mögöttes táblák naprakészek a statisztikákban.
+- Érdemes lehet költséges lekérdezéseket újraírni. Kihasználhatja például a lekérdezési paraméterezés előnyeit, és csökkentheti a dinamikus SQL használatát. Az Adatszűrés az adatbázis-oldalon való alkalmazásakor, például az alkalmazás oldalán nem alkalmazható, optimális logikát kell megvalósítani. 
 
 
 ## <a name="ab-testing"></a>A / B tesztelés 
-Használja Query Store a számítási feladat teljesítményét előtt és után az alkalmazás megváltoztatására tervezi bevezetni. Számítási feladatok teljesítményére módosítása a környezetben vagy az alkalmazás hatásainak kiértékelését a Query Store használatára vonatkozó forgatókönyvek példái: 
-- Egy alkalmazás új verzióját is hatályba lépnek. 
+A lekérdezési tároló használatával hasonlíthatja össze a számítási feladatok teljesítményét a bevezetéshez szükséges alkalmazások módosítása előtt és után. Példák a lekérdezési tároló használatára a környezet vagy az alkalmazás munkaterhelés-teljesítményre gyakorolt hatásának felméréséhez: 
+- Egy alkalmazás új verziójának elkészítése. 
 - További erőforrások hozzáadása a kiszolgálóhoz. 
-- Hiányzó indexek létrehozása a drága lekérdezések által hivatkozott táblákban. 
+- Hiányzó indexek létrehozása a költséges lekérdezések által hivatkozott táblákon. 
  
-Ezek az esetek bármelyikében alkalmazza az alábbi munkafolyamat: 
-1. Futtassa a Query Store a számítási feladat a tervezett változtatás teljesítmény alapterv létrehozása előtt. 
-2. Alkalmazás módosítás(ok) időben ellenőrzött jelenleg érvényes. 
-3. Továbbra is a számítási feladatok elég hosszú futtatása a rendszer teljesítményének lemezkép létrehozásához a váltás után. 
-4. Hasonlítsa össze az eredményeket az előtt, és a váltás után. 
-5. Döntse el, a módosítás vagy visszaállítási megőrzi-e. 
+Ezen forgatókönyvek bármelyikében alkalmazza a következő munkafolyamatot: 
+1. Futtassa a munkaterhelést a Query Store-ban, mielőtt a tervezett módosítással létrehozza a teljesítmény alaptervét. 
+2. Alkalmazás-módosítás (ok) alkalmazása az ellenőrzött időpontban. 
+3. A módosítás után folytassa a munkaterhelés futtatását a rendszer teljesítményének rendszerképének létrehozásához. 
+4. Az eredmények összehasonlítása a módosítás előtt és után. 
+5. Döntse el, hogy megtartja-e a módosítást vagy a visszaállítást. 
 
 
-## <a name="identify-and-improve-ad-hoc-workloads"></a>Azonosíthatja és javíthatja az ad-hoc számítási feladatokhoz 
-Bizonyos munkaterhelések nem rendelkezik, amely a teljes alkalmazás teljesítményének javítása érdekében hangolhassa domináns lekérdezések. Számítási feladatok jellemzően viszonylag nagy számú egyedi lekérdezéseket, azok egy részét a rendszer-erőforrásokat használó jellemző. Minden egyedi hajtja végre a lekérdezést ritkán, így külön-külön futásidejű fogyasztásuk nem fontos. Másrészről tekintve, hogy az alkalmazás folyamatosan generáló új lekérdezéseket, rendszer erőforrások jelentős részét van költött lekérdezés fordítása, amely nem optimális. Általában ez a helyzet akkor történik, ha az alkalmazás lekérdezések (helyett a tárolt eljárások, vagy a paraméteres lekérdezések) hoz létre vagy objektumrelációs leképezés keretrendszerek, lekérdezések alapértelmezés szerint generáló támaszkodik. 
+## <a name="identify-and-improve-ad-hoc-workloads"></a>Ad hoc számítási feladatok azonosítása és fejlesztése 
+Bizonyos munkaterhelések nem rendelkeznek olyan domináns lekérdezésekkel, amelyek az alkalmazások teljes teljesítményének javítására használhatók. Ezek a számítási feladatok jellemzően viszonylag nagy számú egyedi lekérdezéssel vannak ellátva, amelyek mindegyike a rendszererőforrások egy részét felhasználja. A rendszer minden egyes egyedi lekérdezést ritkán hajt végre, ezért a futásidejű felhasználás nem kritikus. Másfelől, mivel az alkalmazás minden alkalommal új lekérdezéseket generál, a rendszererőforrások jelentős részét a lekérdezés fordítása tölti le, ami nem optimális. Ez általában akkor fordul elő, ha az alkalmazás lekérdezéseket hoz létre (a tárolt eljárások és a paraméteres lekérdezések használata helyett), vagy ha olyan objektum-összehasonlító leképezési keretrendszerekre támaszkodik, amelyek alapértelmezés szerint generálnak lekérdezéseket. 
  
-Ha az alkalmazás kódja felett, akkor fontolja meg az adatelérési réteg tárolt eljárásokat és paraméteres lekérdezések újraírását. Azonban ez a helyzet is javítható alkalmazás módosítása nélkül a teljes adatbázisról (az összes lekérdezés) vagy az egyéni lekérdezések sablonok lekérdezés kivonata a lekérdezés paraméterezésének kényszerítése. 
+Az alkalmazás kódjának ellenőrzésekor érdemes lehet átírni az adatelérési réteget a tárolt eljárások vagy a paraméteres lekérdezések használatára. Ez a helyzet azonban javítható az alkalmazások módosítása nélkül is, ha a lekérdezési paraméterezés a teljes adatbázisra (az összes lekérdezésre) vagy az ugyanazon lekérdezési kivonattal rendelkező különálló lekérdezési sablonokra kényszeríti. 
 
 ## <a name="next-steps"></a>További lépések
-- Tudjon meg többet a [ajánlott eljárások a Query Store](concepts-query-store-best-practices.md)
+- További információ a [query Store használatának ajánlott eljárásairól](concepts-query-store-best-practices.md)

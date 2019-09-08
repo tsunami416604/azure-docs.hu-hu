@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 80f7185b69a7953656235d3bd622b7f61611de1a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1865b1b96b5b8794f1518d639825ccd2f1dcd090
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210176"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773134"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával
 
@@ -53,7 +53,7 @@ Használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
 
 ## <a name="create-the-local-function-app-project"></a>A helyi függvényalkalmazás-projekt létrehozása
 
-Futtassa a következő parancsot a parancssorból, hogy létrehozzon az aktuális helyi könyvtár `MyFunctionProj` mappájába egy függvényalkalmazás-projektet. Python-projektekhez [virtuális környezetben](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional)kell futnia.
+Futtassa a következő parancsot a parancssorból, hogy létrehozzon az aktuális helyi könyvtár `MyFunctionProj` mappájába egy függvényalkalmazás-projektet. Python-projektekhez [virtuális környezetben kell futnia](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional).
 
 ```bash
 func init MyFunctionProj --docker
@@ -143,9 +143,8 @@ Amikor az egyéni rendszerkép fut a helyi Docker-tárolóban, a függvényalkal
 
 ![Tesztelje helyben a függvényalkalmazást.](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-Ha kívánja, ismét tesztelheti a függvényt, ezúttal a helyi tárolóban a következő URL-cím használatával:
-
-`http://localhost:8080/api/myhttptrigger?name=<yourname>`
+> [!NOTE]
+> Ezen a ponton, amikor megpróbálja meghívni az adott HTTP-függvényt, HTTP 401-es hibaüzenetet kap. Ennek az az oka, hogy a függvény a helyi tárolóban fut, ahogyan az az Azure-ban lenne, ami azt jelenti, hogy a függvény kulcsának megadása kötelező. Mivel a tároló még nem lett közzétéve egy Function alkalmazásban, nincs elérhető funkcióbillentyű. Később láthatja, hogy amikor a fő eszközöket használja a tároló közzétételéhez, a funkciógombok megjelennek Önnek. Ha tesztelni szeretné a függvényt a helyi tárolóban, módosíthatja az [engedélyezési kulcsot](functions-bindings-http-webhook.md#authorization-keys) `anonymous`a következőre:. 
 
 Miután ellenőrizte a függvényalkalmazást a tárolóban, állítsa le a végrehajtást. Most leküldheti az egyéni rendszerképet a Docker Hub-fiókjába.
 
@@ -159,7 +158,7 @@ A rendszerkép leküldése előtt be kell jelentkeznie a Docker Hubra a [docker 
 docker login --username <docker-id>
 ```
 
-A „login succeeded” (sikeres bejelentkezés) üzenet jelzi, hogy sikerült bejelentkeznie. Miután bejelentkezett, a rendszerképet a Docker Hubba a [docker push](https://docs.docker.com/engine/reference/commandline/push/) paranccsal küldheti le.
+A "sikeres bejelentkezés" üzenet megerősíti, hogy bejelentkezett. Miután bejelentkezett, a rendszerképet a Docker Hubba a [docker push](https://docs.docker.com/engine/reference/commandline/push/) paranccsal küldheti le.
 
 ```bash
 docker push <docker-id>/mydockerimage:v1.0.0
@@ -209,7 +208,7 @@ A _deployment-container-image-name_ paraméter jelöli a Docker Hubon tárolt re
 
 ## <a name="configure-the-function-app"></a>A függvényalkalmazás konfigurálása
 
-A függvénynek a kapcsolati sztringre az alapértelmezett tárfiókhoz való kapcsolódáshoz van szüksége. Ha az egyéni rendszerképet egy privát tárolófiókon teszi közzé, ehelyett ezeket az alkalmazásbeállításokat környezeti változókként kell megadnia a Docker-fájlban az [ENV utasítás](https://docs.docker.com/engine/reference/builder/#env) vagy egy hasonló utasítás használatával.
+A függvénynek a kapcsolati sztringre az alapértelmezett tárfiókhoz való kapcsolódáshoz van szüksége. Amikor egyéni rendszerképet tesz közzé egy privát Container-fiókban, ehelyett környezeti változókként kell beállítania ezeket az Alkalmazásbeállítások a Docker az [env utasítás](https://docs.docker.com/engine/reference/builder/#env)használatával, vagy valami hasonló.
 
 Ebben az esetben a `<storage_name>` a létrehozott tárfiók neve. Kérje le a kapcsolati sztringet az [az storage account show-connection-string](/cli/azure/storage/account) paranccsal. Adja hozzá ezeket az alkalmazásbeállításokat a függvényalkalmazáshoz az [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) paranccsal.
 
@@ -247,7 +246,7 @@ az functionapp deployment container config --enable-cd \
 
 Ez a parancs visszaadja a üzembe helyezési webhook URL-címét a folyamatos üzembe helyezés engedélyezése után. Az URL-cím visszaküldéséhez használhatja az az [functionapp Deployment Container show-CD-URL](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) parancsot is. 
 
-Másolja a telepítési URL-címet, és keresse meg a DockerHub- tárházat, válassza a webhookok fület, írja be a webhook **nevét** , illessze be az URL-címet a webhook **URL**-címébe, majd válassza a pluszjelet ( **+** ).
+Másolja a telepítési URL-címet, és keresse meg a DockerHub-tárházat, válassza a **webhookok** fület, írja be a webhook **nevét** , illessze be az URL-címet a **webhook URL-címébe**, majd válassza a pluszjelet ( **+** ).
 
 ![Webhook hozzáadása a DockerHub-tárházban](media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 

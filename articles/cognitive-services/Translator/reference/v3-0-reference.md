@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: ad619ad965cf4b7d94b781818c658152f71250a7
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cb5a3b8572cebfd6c0731a9e572e966fda280be6
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595002"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772786"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v 3.0
 
@@ -57,7 +57,7 @@ Az előfizetés hitelesítéséhez három fejléc használható. Ez a táblázat
 
 |Fejlécek|Leírás|
 |:----|:----|
-|OCP-Apim-Subscription-Key|*Ha a titkos kulcsot átadja, használja Cognitive Services*-előfizetéssel.<br/>Az érték a Translator Text API előfizetéséhez tartozó Azure titkos kulcs.|
+|OCP-Apim-Subscription-Key|*Ha a titkos kulcsot átadja, használja Cognitive Services-előfizetéssel*.<br/>Az érték a Translator Text API előfizetéséhez tartozó Azure titkos kulcs.|
 |Authorization|*Ha hitelesítési tokent továbbít, használja Cognitive Services-előfizetést.*<br/>Az érték a tulajdonosi jogkivonat: `Bearer <token>`.|
 |Ocp-Apim-Subscription-Region|*Ha több szolgáltatásból álló titkos kulcsot továbbít, használja a Cognitive Services Multi-Service előfizetést.*<br/>Az érték a Multi-Service előfizetés régiója. Ez az érték nem kötelező, ha nem használ több szolgáltatást használó előfizetést.|
 
@@ -99,7 +99,7 @@ Több szolgáltatásból álló titkos kulcs használata esetén két hitelesít
 
 A Multi-Service Text API-előfizetéshez régió szükséges. A kiválasztott régió az egyetlen olyan régió, amelyet a többszolgáltatásos előfizetési kulcs használatakor használhat a szöveges fordításhoz, és a Azure Portalon keresztül a többszolgáltatásos előfizetésre való feliratkozáskor választott régiónak kell lennie.
 
-Az elérhető régiók `australiaeast`a `brazilsouth`következők `canadacentral`, `centralindia` `centraluseuap` `eastasia` ,,`eastus2`,,,,,,,,, `eastus` `japaneast` `northeurope` `southcentralus` `southeastasia` ,`uksouth`,,és .`westus2` `westcentralus` `westeurope` `westus`
+Az elérhető régiók `australiaeast`a `brazilsouth`következők `canadacentral`, `centralindia` `centralus` `centraluseuap` ,,`eastus`,,,,,,,,, `eastasia` `eastus2` `francecentral` `japaneast` `japanwest` `koreacentral` ,,,`westus2`, ,`westcentralus`,, ,,és`southafricanorth`. `uksouth` `westeurope` `southeastasia` `northcentralus` `northeurope` `southcentralus` `westus`
 
 Ha a lekérdezési sztringben megadja a titkos kulcsot a paraméterrel `Subscription-Key`, akkor a régiót a lekérdezési paraméterrel `Subscription-Region`kell megadnia.
 
