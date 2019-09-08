@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Webszolgáltatás üzembe helyezése az AK-ban az Azure dev Spaces szolgáltatással
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 39fb7658140a2eda948cd0dc0e58d71b0b9a053b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 6ce5338bd2b3d6153255fcdb67cb8afe10e8101c
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67706270"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772583"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: Alkalmazás fejlesztése Kubernetes az Azure dev Spaces használatával
 Ebből az útmutatóból a következőket tudhatja meg:
@@ -34,7 +34,7 @@ Létre kell hoznia egy AK-fürtöt egy [támogatott régióban][supported-region
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az Azure dev-helyek engedélyezése az AK-fürtön
@@ -117,7 +117,7 @@ Ha a `azds up` *CTRL + c billentyűkombinációval*állítja le a parancsot, a s
 A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, majd újra futtathatja a `azds up` parancsot. Példa:
 
 1. Ha `azds up` még fut, nyomja le a *CTRL + c*billentyűkombinációt.
-1. [A 13. sor `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) frissítése a következőre:
+1. [A 13. sor `server.js` frissítése a következőre](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) :
     
     ```javascript
         res.send('Hello from webfrontend in Azure');

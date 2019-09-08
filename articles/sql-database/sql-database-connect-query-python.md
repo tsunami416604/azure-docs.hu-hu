@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 89e67fd58f6cfc54e21406e9385e7ca5e5bc1d17
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 659f6333d16f84cc35be45c45b7a7119e53fd0d0
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569160"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764282"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Gyors útmutató: Python használata Azure SQL-adatbázis lekérdezéséhez
 
- Ez a rövid útmutató azt ismerteti, hogyan lehet a [Python](https://python.org) használatával Azure SQL-adatbázishoz csatlakozni, valamint a Transact-SQL-utasítások használatával adatokat lekérdezni. További SDK-részletekért tekintse meg [a dokumentációt](https://docs.microsoft.com/python/api/overview/azure/sql) , a [pyodbc GitHub](https://github.com/mkleehammer/pyodbc/wiki/)-tárházat és egy [pyodbc-mintát](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
+ Ez a rövid útmutató azt ismerteti, hogyan lehet a [Python](https://python.org) használatával Azure SQL-adatbázishoz csatlakozni, valamint a Transact-SQL-utasítások használatával adatokat lekérdezni. További SDK-részletekért tekintse meg [a dokumentációt](https://docs.microsoft.com/python/api/overview/azure/sql) , a [pyodbc GitHub-tárházat](https://github.com/mkleehammer/pyodbc/wiki/)és egy [pyodbc-mintát](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,9 +46,9 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
   
   - **MacOS**: Telepítse a Homebrew-t és a Pythont, telepítse az ODBC-illesztőt és a SQLCMD, majd telepítse a Python-illesztőprogramot a SQL Serverhoz. Tekintse meg a 1,2, 1,3 és 2,1 lépéseket a [Python-alkalmazások létrehozása a macOS SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)című témakörben. További információ: [a Microsoft ODBC-illesztőprogram telepítése Linux és MacOS](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)rendszereken.
 
-  - **Ubuntu**: Telepítse a Pythont és az egyéb `sudo apt-get install python python-pip gcc g++ build-essential`szükséges csomagokat a-val. Töltse le és telepítse az ODBC-illesztőt, a SQLCMD-t és a SQL Server Python-illesztőprogramját. Útmutatásért lásd: [fejlesztési környezet konfigurálása Pyodbc Python](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux)-fejlesztéshez.
+  - **Ubuntu**: Telepítse a Pythont és az egyéb `sudo apt-get install python python-pip gcc g++ build-essential`szükséges csomagokat a-val. Töltse le és telepítse az ODBC-illesztőt, a SQLCMD-t és a SQL Server Python-illesztőprogramját. Útmutatásért lásd: [fejlesztési környezet konfigurálása Pyodbc Python-fejlesztéshez](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux).
 
-  - **Windows**: Telepítse a Pythont, az ODBC-illesztőt és a SQLCMD, valamint a SQL Server Python-illesztőprogramját. Útmutatásért lásd: [fejlesztési környezet konfigurálása Pyodbc Python](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows)-fejlesztéshez.
+  - **Windows**: Telepítse a Pythont, az ODBC-illesztőt és a SQLCMD, valamint a SQL Server Python-illesztőprogramját. Útmutatásért lásd: [fejlesztési környezet konfigurálása Pyodbc Python-fejlesztéshez](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows).
 
 ## <a name="get-sql-server-connection-information"></a>SQL Server-kapcsolatok adatainak beolvasása
 
@@ -56,7 +56,7 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
+2. Nyissa meg az **SQL-adatbázisok** vagy az SQL- **felügyelt példányok** lapot.
 
 3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett egyetlen adatbázishoz vagy a felügyelt példányhoz tartozó **gazdagép** melletti teljes kiszolgálónévhez. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
 

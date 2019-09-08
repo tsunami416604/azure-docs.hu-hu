@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés a tárolókkal, a szolgáltatásokkal és a Node. js-szel az Azure-ban
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 4ee11b4bebe32ff4a9af38a0789823178f388e10
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 8148f7858ac9de458daa1c15220507b0de1bad19
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725791"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772625"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Visual Studio Code és a Node. js segítségével a Kubernetes az Azure dev Spaces használatával
 
@@ -38,7 +38,7 @@ Létre kell hoznia egy AK-fürtöt egy [támogatott régióban][supported-region
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az Azure dev-helyek engedélyezése az AK-fürtön
@@ -102,14 +102,14 @@ Ez a parancs az Azure dev Spaces szolgáltatásban hozza létre és futtatja a s
 
 A szolgáltatás futását a nyilvános URL-cím megnyitásával tekintheti meg.
 
-A hibakereső leállításához kattintson a *hibakeresés* gombra, majd *állítsa le* a hibakeresést.
+A hibakereső leállításához kattintson a *hibakeresés* gombra, majd *állítsa le a hibakeresést* .
 
 ## <a name="update-code"></a>Kód frissítése
 
 A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, majd újra futtathatja a *Launch Servert*. Példa:
 
 1. Ha az alkalmazás még fut, kattintson a *hibakeresés* lehetőségre, majd állítsa le a *hibakeresést* .
-1. [A 13. sor `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) frissítése a következőre:
+1. [A 13. sor `server.js` frissítése a következőre](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) :
     
     ```javascript
         res.send('Hello from webfrontend in Azure');
@@ -118,7 +118,7 @@ A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a
 1. Mentse a módosításokat.
 1. Futtassa újra a *elindítja a kiszolgálót*.
 1. Navigáljon a futó szolgáltatáshoz, és figyelje meg a módosításokat.
-1. Az alkalmazás leállításához kattintson a *hibakeresés* gombra, majd *állítsa* le a hibakeresést.
+1. Az alkalmazás leállításához kattintson a *hibakeresés* gombra, majd állítsa le a *hibakeresést* .
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>Töréspontok beállítása és használata hibakereséshez
 
@@ -126,17 +126,17 @@ Indítsa el a szolgáltatást a *Launch Server (AZDS)* használatával.
 
 A *nézet* , majd az *Intéző*elemre kattintva térjen vissza a *tallózó* nézethez. Nyissa meg `server.js` a 13. sorban a kurzort, és kattintson a kívánt helyre. Ha a töréspontot az *F9 billentyűre* szeretné beállítani, vagy kattintson a *hibakeresés* lehetőségre, majd a *töréspontot*.
 
-Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy nem jelenik meg üzenet. Térjen vissza a Visual Studio Code-ba, és figyelje meg, hogy a 13. sor ki van emelve. A megadott töréspont szüneteltette a szolgáltatást a 13. sorban. A szolgáltatás folytatásához nyomja meg az *F5 billentyűt* , vagy kattintson a *hibakeresés* gombra, és *folytassa*a művelettel. Térjen vissza a böngészőhöz, és figyelje meg, hogy az üzenet most megjelenik.
+Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy nem jelenik meg üzenet. Térjen vissza a Visual Studio Code-ba, és figyelje meg, hogy a 13. sor ki van emelve. A megadott töréspont szüneteltette a szolgáltatást a 13. sorban. A szolgáltatás folytatásához nyomja meg az *F5 billentyűt* , vagy kattintson a *hibakeresés* gombra, és *folytassa a művelettel*. Térjen vissza a böngészőhöz, és figyelje meg, hogy az üzenet most megjelenik.
 
 A szolgáltatás Kubernetes való futtatásakor a hibakeresőhöz csatolva teljes hozzáférése van a hibakeresési adatokhoz, például a hívási verem, a helyi változók és a kivételek adataihoz.
 
 Távolítsa el a töréspontot úgy, hogy a kurzort a 13. sorba helyezi, és az `server.js` *F9 billentyűt*.
 
-A hibakereső leállításához kattintson a *hibakeresés* gombra, majd *állítsa le* a hibakeresést.
+A hibakereső leállításához kattintson a *hibakeresés* gombra, majd *állítsa le a hibakeresést* .
 
 ## <a name="update-code-from-visual-studio-code"></a>Kód frissítése a Visual Studio Code-ból
 
-Módosítsa a hibakeresési módot *egy kiszolgálóhoz (AZDS)* való csatoláshoz, és indítsa el a szolgáltatást:
+Módosítsa a hibakeresési módot *egy kiszolgálóhoz (AZDS) való csatoláshoz* , és indítsa el a szolgáltatást:
 
 ![](media/get-started-node/attach-nodejs.png)
 

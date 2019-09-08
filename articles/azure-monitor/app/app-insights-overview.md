@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: d702b2f76531bad53e3fd98645d2b6bbf0582c54
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 7c4a0aa01b1895ece2e77bed5ee4837704546b4b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774743"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773076"
 ---
 # <a name="what-is-application-insights"></a>Mi az Application Insights?
 Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Az alkalmazások számos platformon használhatók, többek között a .NET, a Node. js és a Java EE, helyszíni, hibrid vagy nyilvános felhőben. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal. Képes monitorozni és elemezni a mobilalkalmazások telemetriáját a Visual Studio App Center integrálásával.
@@ -78,7 +78,7 @@ Az adatokat többféle módon lehet böngészni. Olvassa el az alábbi cikkeket:
 ### <a name="monitor"></a>Figyelés
 Telepítse az Application Insightsot az alkalmazásba, állítsa be a [rendelkezésre állási webes teszteket](../../azure-monitor/app/monitor-web-app-availability.md), és az alábbiakra nyílik lehetőség:
 
-* Nézze meg az alapértelmezett [alkalmazás](../../azure-monitor/app/overview-dashboard.md) -irányítópultot a munkaterületén, és tartsa szem előtt a terhelést, a válaszadást és a függőségek, az oldalak terhelését és az Ajax-hívásokat.
+* Nézze meg az alapértelmezett [alkalmazás-irányítópultot](../../azure-monitor/app/overview-dashboard.md) a munkaterületén, és tartsa szem előtt a terhelést, a válaszadást és a függőségek, az oldalak terhelését és az Ajax-hívásokat.
 * Megismerheti a leglassabb és a legsikertelenebb kéréseket.
 * Figyelheti az [élő streamet](../../azure-monitor/app/live-stream.md) új kiadások telepítésekor, és azonnal értesülhet bármilyen teljesítménycsökkenésről.
 
@@ -139,12 +139,6 @@ Első lépések fejlesztéskor:
   * [UserVoice-on](https://feedback.azure.com/forums/357324-application-insights/filters/top)
 * Blog:
   * [Application Insights blog](https://azure.microsoft.com/blog/tag/application-insights)
-
-## <a name="videos"></a>Videók
-
-- Külső videó: [Application Insights konfigurálása ASP.net](https://www.youtube.com/watch?v=blnGAVgMAfA)-alkalmazással.
-- Külső videó: [Application Insights konfigurálása a ASP.net Core és a Visual Studióval](https://www.youtube.com/watch?v=NoS9UhcR4gA&t).
-- Külső videó: [Application Insights konfigurálása a ASP.net Core és a Visual Studio Code-](https://youtu.be/ygGt84GDync)ban.
 
 <!--Link references-->
 
